@@ -9,12 +9,12 @@
 #import <Foundation/NSFileCoordinationRetainedAccess-Protocol.h>
 
 @class NSString;
+@protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
-@interface NSFileCoordinatorAccessorBlockCompletion : NSObject <NSFileCoordinationRetainedAccess>
+@interface NSFileCoordinatorReacquisitionBlockCompletion : NSObject <NSFileCoordinationRetainedAccess>
 {
-    CDUnknownBlockType block;
-    _Atomic int count;
+    NSObject<OS_dispatch_group> *group;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)completionWithBlock:(CDUnknownBlockType)arg1;
++ (id)completionWithBlock:(CDUnknownBlockType)arg1 queue:(id)arg2;
 - (void)dealloc;
 - (void)decrement;
 - (void)increment;
