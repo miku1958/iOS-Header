@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIStatusBarBackgroundActivityView *backgroundView; // @synthesize backgroundView=_backgroundView;
 
 + (id)backgroundDisplayIdentifier;
++ (BOOL)shouldKeepIconVisibleForActivityType:(long long)arg1;
 - (void).cxx_destruct;
 - (id)_backgroundColorForActivityType:(long long)arg1;
 - (id)_imageNameForActivityType:(long long)arg1;

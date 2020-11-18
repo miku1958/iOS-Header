@@ -29,14 +29,18 @@ __attribute__((visibility("hidden")))
         unsigned int horizontallyResizable:1;
         unsigned int verticallyResizable:1;
         unsigned int freezeTextContainerSize:1;
+        unsigned int contentFormatEvaluationEnabled:1;
+        unsigned int containedInTextView:1;
     } _tcvFlags;
     NSMutableSet *_ghostedRanges;
     NSMutableSet *_hiddenAreaRects;
     struct CGRect _constrainedTiledRenderingRect;
     NSArray *_maskedRectangles;
+    long long _contentsFormat;
     id<_UITextContainerViewDelegate> _delegate;
 }
 
+@property (nonatomic, getter=isContentFormatEvaluationEnabled) BOOL contentFormatEvaluationEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_UITextContainerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -61,11 +65,15 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_addHiddenArea:(struct CGRect)arg1;
 - (void)_constrainTiledRenderingToRect:(struct CGRect)arg1;
+- (long long)_contentsFormatForNonDeepDrawing;
+- (id)_currentTextColor;
+- (long long)_determineContentsFormat;
 - (void)_didScroll;
 - (BOOL)_ensureLayoutCompleteForRect:(struct CGRect)arg1 withExtension:(BOOL)arg2;
 - (BOOL)_ensureLayoutCompleteForRect:(struct CGRect)arg1 withExtensionFactor:(double)arg2 minimumExtensionDistance:(double)arg3 repetitions:(unsigned long long)arg4;
 - (void)_ensureLayoutCompleteToEndOfCharacterRange:(struct _NSRange)arg1;
 - (void)_ensureMinAndMaxSizesConsistentWithBounds;
+- (void)_evaluateContentsFormat;
 - (struct _NSRange)_extendedGlyphRangeForRange:(struct _NSRange)arg1 maxGlyphIndex:(unsigned long long)arg2 drawingToScreen:(BOOL)arg3;
 - (struct CGRect)_intersectRectWithConstrainedTiledRenderingRect:(struct CGRect)arg1;
 - (void)_removeHiddenAreas;
@@ -75,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_textTiledLayer:(id)arg1 constrainTileableBounds:(struct CGRect)arg2;
 - (id)_textTiledLayer:(id)arg1 maskedRectsInVisibleRect:(struct CGRect)arg2;
 - (void)_unconstrainTiledRendering;
+- (BOOL)_wantsDeepDrawing;
 - (void)addGhostedRange:(struct _NSRange)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -96,6 +105,7 @@ __attribute__((visibility("hidden")))
 - (void)tintColorDidChange;
 - (void)updateInsertionPointStateAndRestartTimer:(BOOL)arg1;
 - (struct CGRect)visibleRect;
+- (void)willMoveToSuperview:(id)arg1;
 
 @end
 

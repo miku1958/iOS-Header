@@ -133,6 +133,7 @@
 - (void)_loadStateFromTouch:(id)arg1;
 - (struct CGPoint)_locationInSceneReferenceSpace;
 - (struct CGPoint)_locationInWindow:(id)arg1;
+- (BOOL)_mightBeConsideredForForceSystemGesture;
 - (id)_mutableForwardingRecord;
 - (float)_pathMajorRadius;
 - (id)_phaseDescription;

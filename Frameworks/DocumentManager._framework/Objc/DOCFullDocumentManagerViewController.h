@@ -101,7 +101,7 @@
 - (void)actionBarButtonTriggered:(id)arg1;
 - (id)actionButtonsForSide:(long long)arg1;
 - (id)additionalToolbarButtonItems;
-- (void)browser:(id)arg1 didResolveShownLocation:(id)arg2;
+- (void)browser:(id)arg1 didResolveShownLocation:(id)arg2 previousLocation:(id)arg3;
 - (void)browser:(id)arg1 didSelectItems:(id)arg2;
 - (void)browser:(id)arg1 didUpdateCurrentLocationCanSelect:(BOOL)arg2;
 - (void)browser:(id)arg1 didUpdateCurrentLocationIsWritable:(BOOL)arg2;

@@ -6,10 +6,12 @@
 
 #import <QuartzCore/CALayer.h>
 
-@class NSMutableArray, UIBezierPath;
+#import <UIKit/CALayerDelegate-Protocol.h>
+
+@class NSMutableArray, NSString, UIBezierPath;
 
 __attribute__((visibility("hidden")))
-@interface __UITextTiledLayer : CALayer
+@interface __UITextTiledLayer : CALayer <CALayerDelegate>
 {
     NSMutableArray *_visibleTiles;
     NSMutableArray *_unusedTiles;
@@ -22,11 +24,16 @@ __attribute__((visibility("hidden")))
         unsigned int suspendLayout:4;
         unsigned int delegateConstrainsTileableBounds:1;
         unsigned int delegateSupportsMaskedRects:1;
+        unsigned int delegateImplementsWillDraw:1;
     } _tcTiledLayerFlags;
     double _maxTileHeight;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) double maxTileHeight; // @synthesize maxTileHeight=_maxTileHeight;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL usesTiledLayers;
 
 - (void).cxx_destruct;
@@ -38,10 +45,12 @@ __attribute__((visibility("hidden")))
 - (void)drawDirtyLayer:(id)arg1 intoContext:(struct CGContext *)arg2;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (id)init;
+- (void)layerWillDraw:(id)arg1;
 - (void)layoutSublayers;
 - (void)resumeTiling;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setContentsFormat:(id)arg1;
+- (void)setContentsMultiplyColor:(struct CGColor *)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDrawsAsynchronously:(BOOL)arg1;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;

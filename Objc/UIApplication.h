@@ -214,7 +214,6 @@
 + (BOOL)_isSystemUIService;
 + (void)_screensHaveConnected;
 + (BOOL)_shouldBigify;
-+ (BOOL)_shouldForceClassicForExtensions;
 + (void)_startStatusBarServerIfNecessary;
 + (void)_startWindowServerIfNecessary;
 + (Class)_statusBarClass;
@@ -306,7 +305,7 @@
 - (void)_createStatusBarWithRequestedStyle:(long long)arg1 orientation:(long long)arg2 hidden:(BOOL)arg3;
 - (long long)_currentExpectedInterfaceOrientation;
 - (id)_currentFrameCountForTestDisplay;
-- (unsigned long long)_currentScreenEdgesDeferringSystemGesturesAffectedByStatusBar:(BOOL)arg1;
+- (unsigned long long)_currentScreenEdgesDeferringSystemGestures;
 - (id)_currentTests;
 - (double)_currentTintViewDuration;
 - (id)_currentTintViewWindow;
@@ -572,7 +571,6 @@
 - (void)_sheetWithRemoteIdentifierDidDismiss:(id)arg1;
 - (BOOL)_shouldAllowKeyboardArbiter;
 - (BOOL)_shouldAttemptOpenURL:(id)arg1;
-- (BOOL)_shouldDelayTouchesForControlCenter;
 - (BOOL)_shouldForceClassicMode;
 - (BOOL)_shouldHandleTestURL:(id)arg1;
 - (BOOL)_shouldIgnoreHeadsetClicks;

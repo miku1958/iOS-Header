@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)_textTiledLayer:(id)arg1 maskedRectsInRect:(struct CGRect)arg2;
 - (void)addGhostedRange:(struct _NSRange)arg1;
 - (void)drawRect:(struct CGRect)arg1;
+- (void)drawTextInRect:(struct CGRect)arg1;
 - (id)initWithContentContext:(id)arg1;
 - (id)layer;
 - (void)removeAllGhostedRanges;

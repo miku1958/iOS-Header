@@ -13,6 +13,7 @@
 
 @interface DOCConcreteLocation : NSObject <DOCLocation, NSSecureCoding>
 {
+    BOOL _needsToResolveHierarchy;
     BOOL _isFPV2;
     FPItem *_fileProviderItem;
     NSString *_promptText;
@@ -23,6 +24,7 @@
 
 @property (strong) FPItem *fileProviderItem; // @synthesize fileProviderItem=_fileProviderItem;
 @property BOOL isFPV2; // @synthesize isFPV2=_isFPV2;
+@property BOOL needsToResolveHierarchy; // @synthesize needsToResolveHierarchy=_needsToResolveHierarchy;
 @property (copy) NSString *promptText; // @synthesize promptText=_promptText;
 @property (copy) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
 @property (readonly, copy) NSArray *tags; // @synthesize tags=_tags;

@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_preUpdateActions;
     BOOL _dirtyGestureRecognizersUnsorted;
     BOOL _updateExclusivity;
+    BOOL _isUpdatingGestureEnvironment;
     UIGestureGraph *_dependencyGraph;
     NSMapTable *_nodesByGestureRecognizer;
 }
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)_deliverEvent:(id)arg1 toGestureRecognizers:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)_enqueueDelayedPressToSend:(id)arg1;
 - (void)_enqueueDelayedTouchToSend:(id)arg1;
+- (void)_forceUpdateForSpringBoardOnly;
 - (void)_gestureNeedsReset:(id)arg1;
 - (id)_gestureRecognizerForNode:(id)arg1;
 - (id)_graphDictionary:(BOOL)arg1;
