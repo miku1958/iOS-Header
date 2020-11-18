@@ -9,6 +9,7 @@
 @interface UITableView (SwiftUI)
 
 @property (nonatomic, getter=_sectionContentInset, setter=_setSectionContentInset:) struct UIEdgeInsets sectionContentInset;
+@property (nonatomic, getter=_sectionContentInsetFollowsLayoutMargins, setter=_setSectionContentInsetFollowsLayoutMargins:) BOOL sectionContentInsetFollowsLayoutMargins;
 
 - (double)horizontalMargin;
 @end

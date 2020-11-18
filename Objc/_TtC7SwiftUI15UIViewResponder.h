@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SwiftUI/_TtC7SwiftUI13ViewResponder.h>
+#import <SwiftUI/_TtC7SwiftUI18UnaryViewResponder.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC7SwiftUI15UIViewResponder : _TtC7SwiftUI13ViewResponder
+@interface _TtC7SwiftUI15UIViewResponder : _TtC7SwiftUI18UnaryViewResponder
 {
     MISSING_TYPE *hostView;
     MISSING_TYPE *representedView;

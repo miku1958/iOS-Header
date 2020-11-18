@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13RBDrawingView : _TtC7SwiftUI13RenderBoxView
 {
-    MISSING_TYPE *renderer;
+    MISSING_TYPE *callback;
     MISSING_TYPE *displayListRenderer;
     MISSING_TYPE *options;
 }

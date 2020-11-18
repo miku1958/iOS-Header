@@ -11,11 +11,15 @@
 __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI22UIKitGestureRecognizer : UIGestureRecognizer
 {
-    MISSING_TYPE *eventBindingManager;
-    MISSING_TYPE *responderWasBoundHandler;
+    MISSING_TYPE *eventBridge;
+    MISSING_TYPE *hoverSeed;
+    MISSING_TYPE *transformSeed;
+    MISSING_TYPE *initialScale;
+    MISSING_TYPE *initialAngle;
 }
 
 - (void).cxx_destruct;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;

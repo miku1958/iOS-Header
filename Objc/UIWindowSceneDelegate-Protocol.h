@@ -6,7 +6,7 @@
 
 #import <SwiftUI/UISceneDelegate-Protocol.h>
 
-@class UIApplicationShortcutItem, UITraitCollection, UIWindow, UIWindowScene;
+@class CKShareMetadata, UIApplicationShortcutItem, UITraitCollection, UIWindow, UIWindowScene;
 @protocol UICoordinateSpace;
 
 @protocol UIWindowSceneDelegate <UISceneDelegate>
@@ -17,5 +17,6 @@
 @optional
 - (void)windowScene:(UIWindowScene *)arg1 didUpdateCoordinateSpace:(id<UICoordinateSpace>)arg2 interfaceOrientation:(long long)arg3 traitCollection:(UITraitCollection *)arg4;
 - (void)windowScene:(UIWindowScene *)arg1 performActionForShortcutItem:(UIApplicationShortcutItem *)arg2 completionHandler:(void (^)(BOOL))arg3;
+- (void)windowScene:(UIWindowScene *)arg1 userDidAcceptCloudKitShareWithMetadata:(CKShareMetadata *)arg2;
 @end
 

@@ -11,11 +11,12 @@
 @interface _TtC7SwiftUI16PreferenceBridge : _TtCs12_SwiftObject
 {
     MISSING_TYPE *viewGraph;
+    MISSING_TYPE *children;
     MISSING_TYPE *requestedPreferences;
     MISSING_TYPE *bridgedViewInputs;
+    MISSING_TYPE *_hostPreferenceKeys;
+    MISSING_TYPE *_hostPreferencesCombiner;
     MISSING_TYPE *bridgedPreferences;
-    MISSING_TYPE *invalidationCallback;
-    MISSING_TYPE *preferencesNeedUpdate;
 }
 
 @end

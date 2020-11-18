@@ -13,7 +13,6 @@
     MISSING_TYPE *host;
     MISSING_TYPE *delegate;
     MISSING_TYPE *eventBindings;
-    MISSING_TYPE *eventBindingSeed;
     MISSING_TYPE *isActive;
     MISSING_TYPE *eventTimer;
 }

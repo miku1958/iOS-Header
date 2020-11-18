@@ -6,18 +6,18 @@
 
 #import <SwiftUI/NSObject-Protocol.h>
 
-@class NSDiffableDataSourceSnapshot, NSIndexPath, NSOrderedCollectionDifference, NSString;
+@class NSDiffableDataSourceSnapshot, NSFetchedResultsController, NSIndexPath, NSOrderedCollectionDifference, NSString;
 @protocol NSFetchedResultsSectionInfo;
 
 @protocol NSFetchedResultsControllerDelegate <NSObject>
 
 @optional
-- (void)controller:(id)arg1 didChangeContentWithDifference:(NSOrderedCollectionDifference *)arg2;
-- (void)controller:(id)arg1 didChangeContentWithSnapshot:(NSDiffableDataSourceSnapshot *)arg2;
-- (void)controller:(id)arg1 didChangeObject:(id)arg2 atIndexPath:(NSIndexPath *)arg3 forChangeType:(unsigned long long)arg4 newIndexPath:(NSIndexPath *)arg5;
-- (void)controller:(id)arg1 didChangeSection:(id<NSFetchedResultsSectionInfo>)arg2 atIndex:(long long)arg3 forChangeType:(unsigned long long)arg4;
-- (NSString *)controller:(id)arg1 sectionIndexTitleForSectionName:(NSString *)arg2;
-- (void)controllerDidChangeContent:(id)arg1;
-- (void)controllerWillChangeContent:(id)arg1;
+- (void)controller:(NSFetchedResultsController *)arg1 didChangeContentWithDifference:(NSOrderedCollectionDifference *)arg2;
+- (void)controller:(NSFetchedResultsController *)arg1 didChangeContentWithSnapshot:(NSDiffableDataSourceSnapshot *)arg2;
+- (void)controller:(NSFetchedResultsController *)arg1 didChangeObject:(id)arg2 atIndexPath:(NSIndexPath *)arg3 forChangeType:(unsigned long long)arg4 newIndexPath:(NSIndexPath *)arg5;
+- (void)controller:(NSFetchedResultsController *)arg1 didChangeSection:(id<NSFetchedResultsSectionInfo>)arg2 atIndex:(unsigned long long)arg3 forChangeType:(unsigned long long)arg4;
+- (NSString *)controller:(NSFetchedResultsController *)arg1 sectionIndexTitleForSectionName:(NSString *)arg2;
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)arg1;
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)arg1;
 @end
 

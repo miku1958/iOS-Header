@@ -13,6 +13,7 @@
     MISSING_TYPE *host;
     MISSING_TYPE *_focusedItem;
     MISSING_TYPE *needsFocusedItemUpdate;
+    MISSING_TYPE *defaultFocusNamespace;
 }
 
 @end

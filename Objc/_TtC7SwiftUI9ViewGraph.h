@@ -4,70 +4,51 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <SwiftUI/_TtC7SwiftUI9GraphHost.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC7SwiftUI9ViewGraph : _TtCs12_SwiftObject
+@interface _TtC7SwiftUI9ViewGraph : _TtC7SwiftUI9GraphHost
 {
-    MISSING_TYPE *storage;
-    MISSING_TYPE *globalSubgraph;
-    MISSING_TYPE *rootSubgraph;
     MISSING_TYPE *rootViewType;
     MISSING_TYPE *makeRootView;
     MISSING_TYPE *delegate;
     MISSING_TYPE *centersRootView;
-    MISSING_TYPE *inputs;
     MISSING_TYPE *rootView;
-    MISSING_TYPE *time;
-    MISSING_TYPE *rootTransform;
-    MISSING_TYPE *zeroPoint;
-    MISSING_TYPE *emptyViewResponders;
-    MISSING_TYPE *proposedSize;
-    MISSING_TYPE *rootGeometry;
-    MISSING_TYPE *position;
-    MISSING_TYPE *dimensions;
-    MISSING_TYPE *environment;
-    MISSING_TYPE *viewPhase;
-    MISSING_TYPE *hostPreferenceKeys;
-    MISSING_TYPE *transaction;
-    MISSING_TYPE *updateSeed;
-    MISSING_TYPE *gestureTime;
-    MISSING_TYPE *gestureEvents;
-    MISSING_TYPE *inheritedPhase;
-    MISSING_TYPE *gestureResetSeed;
-    MISSING_TYPE *failedPhase;
-    MISSING_TYPE *rootPhase;
+    MISSING_TYPE *_rootTransform;
+    MISSING_TYPE *_zeroPoint;
+    MISSING_TYPE *_emptyViewResponders;
+    MISSING_TYPE *_proposedSize;
+    MISSING_TYPE *_safeAreaInsets;
+    MISSING_TYPE *_rootGeometry;
+    MISSING_TYPE *_position;
+    MISSING_TYPE *_dimensions;
+    MISSING_TYPE *_updateSeed;
+    MISSING_TYPE *_gestureTime;
+    MISSING_TYPE *_gestureEvents;
+    MISSING_TYPE *_inheritedPhase;
+    MISSING_TYPE *_gestureResetSeed;
+    MISSING_TYPE *_failedPhase;
+    MISSING_TYPE *_rootPhase;
     MISSING_TYPE *eventSubgraph;
-    MISSING_TYPE *isInstantiated;
-    MISSING_TYPE *defaultIdealSize;
-    MISSING_TYPE *defaultLayoutComputer;
-    MISSING_TYPE *defaultViewListTraits;
-    MISSING_TYPE *rootResponders;
-    MISSING_TYPE *rootAccessibilityNodes;
-    MISSING_TYPE *rootLayoutComputer;
-    MISSING_TYPE *rootDisplayList;
-    MISSING_TYPE *rootPlatformItemList;
-    MISSING_TYPE *hostPreferenceValues;
-    MISSING_TYPE *viewDebugValues;
+    MISSING_TYPE *_defaultLayoutComputer;
+    MISSING_TYPE *_focusedValues;
+    MISSING_TYPE *_rootResponders;
+    MISSING_TYPE *_rootAccessibilityNodes;
+    MISSING_TYPE *_rootLayoutComputer;
+    MISSING_TYPE *_rootDisplayList;
+    MISSING_TYPE *_rootPlatformItemList;
+    MISSING_TYPE *_viewDebugValues;
     MISSING_TYPE *cachedIdealSize;
     MISSING_TYPE *cachedSizeThatFits;
     MISSING_TYPE *sizeThatFitsObserver;
     MISSING_TYPE *requestedOutputs;
     MISSING_TYPE *disabledOutputs;
     MISSING_TYPE *needsFocusUpdate;
-    MISSING_TYPE *pendingTransactions;
     MISSING_TYPE *nextUpdate;
     MISSING_TYPE *preferenceBridge;
-    MISSING_TYPE *observedPreferenceKeys;
-    MISSING_TYPE *observedPreferenceValues;
-    MISSING_TYPE *observedPreferenceValuesSeed;
-    MISSING_TYPE *observedPreferenceValuesDirty;
-    MISSING_TYPE *inTransaction;
-    MISSING_TYPE *updateDepth;
-    MISSING_TYPE *continuations;
-    MISSING_TYPE *sharedUpdateWrapper;
-    MISSING_TYPE *sharedInvalidationCallback;
+    MISSING_TYPE *bridgedPreferences;
+    MISSING_TYPE *accessibilityRelationshipScope;
 }
 
 @end
