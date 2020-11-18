@@ -100,6 +100,7 @@
 - (void)_vsyncRenderForTime:(double)arg1 preRender:(CDUnknownBlockType)arg2 postRender:(CDUnknownBlockType)arg3;
 - (double)alphaValue;
 - (id)archiveToFile:(id)arg1;
+- (id)captureToFile:(id)arg1;
 - (struct SKCRenderer *)chooseViewRenderer;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromScene:(id)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toScene:(id)arg2;

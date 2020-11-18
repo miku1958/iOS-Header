@@ -109,7 +109,7 @@
 - (BOOL)_isStoreFront:(id)arg1 equalToStoreFront:(id)arg2;
 - (id)_launchOptionsWithURL:(id)arg1;
 - (void)_legacyResolveExternalURL:(id)arg1;
-- (void)_loadApplicationFromUpdatableAssetsCache;
+- (void)_loadApplicationFromUpdatableAssetsCache:(id)arg1;
 - (void)_loadApplicationScript;
 - (id)_navigationContainerViewController;
 - (BOOL)_needsStatusOverlay;
@@ -135,7 +135,7 @@
 - (void)_sendDidDisplayFirstPageIfNecessary;
 - (BOOL)_sendNativeBackButtonMetricEvents;
 - (void)_setClientContextWithDictionary:(id)arg1;
-- (void)_setManifestURLOnUpdatableAssetController:(CDUnknownBlockType)arg1;
+- (void)_setManifestURLOnUpdatableAssetController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_shouldUseLegacyURLHandlingForExternalURL:(id)arg1;
 - (void)_showFloatingStatusOverlayAnimated:(BOOL)arg1;
 - (void)_showStatusOverlayForNavigationController:(id)arg1 viewController:(id)arg2 animated:(BOOL)arg3;

@@ -26,6 +26,7 @@
     NSArray *_constraints;
     unsigned int _version;
     BOOL _userInteractionEnabled;
+    BOOL _performFullCapture;
     SKReachConstraints *_reachConstraints;
 }
 
@@ -49,6 +50,7 @@
 @property (readonly, nonatomic) const struct CGPath *outline;
 @property (readonly, nonatomic) SKNode *parent;
 @property (nonatomic, getter=isPaused) BOOL paused;
+@property BOOL performFullCapture; // @synthesize performFullCapture=_performFullCapture;
 @property (strong, nonatomic) SKPhysicsBody *physicsBody;
 @property (nonatomic) struct CGPoint position;
 @property (copy, nonatomic) SKReachConstraints *reachConstraints; // @synthesize reachConstraints=_reachConstraints;

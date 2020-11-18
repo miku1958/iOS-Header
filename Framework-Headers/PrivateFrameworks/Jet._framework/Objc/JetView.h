@@ -10,12 +10,12 @@
 
 @interface JetView : UIView
 {
-    shared_ptr_b5835ee0 _ctx;
-    shared_ptr_2ce53ef7 _framebuffer;
+    struct jet_context *_ctx;
+    struct jet_framebuffer *_framebuffer;
     CAEAGLLayer *_eaglLayer;
     EAGLContext *_glContext;
-    shared_ptr_bb77cfd9 _frameBufferColorTexture;
-    shared_ptr_bb77cfd9 _frameBufferDepthStencilTexture;
+    struct jet_texture *_frameBufferColorTexture;
+    struct jet_texture *_frameBufferDepthStencilTexture;
     unsigned int _colorRenderBuffer;
     BOOL _didRunOnce;
     double _beginTime;
@@ -23,7 +23,7 @@
     struct shared_ptr<jet_fence> _renderFence;
 }
 
-@property (readonly) shared_ptr_b5835ee0 context;
+@property (readonly) struct jet_context *context;
 
 + (BOOL)canRenderToContextType:(unsigned int)arg1;
 + (Class)layerClass;
@@ -35,7 +35,7 @@
 - (void)_renderCallback;
 - (void)_reshape;
 - (unsigned int)contextType;
-- (shared_ptr_bb77cfd9)createTextureFromImageNamed:(id)arg1;
+- (struct jet_texture *)createTextureFromImageNamed:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -43,7 +43,7 @@
 - (void)layoutSubviews;
 - (void)onInit;
 - (void)remakeFramebuffer;
-- (void)renderInFramebuffer:(shared_ptr_2ce53ef7)arg1 forTime:(double)arg2;
+- (void)renderInFramebuffer:(struct jet_framebuffer *)arg1 forTime:(double)arg2;
 - (void)runOnce;
 
 @end

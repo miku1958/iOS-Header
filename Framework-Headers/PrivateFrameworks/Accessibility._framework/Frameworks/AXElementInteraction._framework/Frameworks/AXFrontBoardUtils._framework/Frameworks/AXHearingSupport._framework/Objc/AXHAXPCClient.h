@@ -23,7 +23,7 @@
 - (void)dealloc;
 - (id)description;
 - (id)initWithConnection:(id)arg1;
-- (void)sendMessage:(id)arg1 withError:(id *)arg2;
+- (BOOL)sendMessage:(id)arg1 withError:(id *)arg2;
 - (void)setWantsUpdates:(BOOL)arg1 forIdentifier:(unsigned long long)arg2;
 - (void)teardownConnection;
 - (BOOL)wantsUpdatesForIdentifier:(unsigned long long)arg1;

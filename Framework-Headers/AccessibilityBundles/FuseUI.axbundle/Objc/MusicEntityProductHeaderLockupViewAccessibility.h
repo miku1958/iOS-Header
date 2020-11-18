@@ -15,7 +15,6 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (long long)_accessibilitySortPriority;
-- (void)_accessibilityUpdateAccessibilityLabelForButton:(id)arg1;
 - (void)_accessibilityUpdateAccessibilityValueForLikeDislikeButton;
 - (void)_layoutEditingSubviews;
 - (void)_updateLikeDislikeButtonStateAppearance;

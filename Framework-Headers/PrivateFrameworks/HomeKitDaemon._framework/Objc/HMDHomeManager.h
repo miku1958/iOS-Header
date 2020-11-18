@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HAPFragmentationStreamDelegate-Protocol.h>
 #import <HomeKitDaemon/HAPTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDAccessoryManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMMessageReceiver-Protocol.h>
@@ -14,7 +15,7 @@
 @class HAPTimer, HMDAccessoryManager, HMDApplicationRegistry, HMDApplicationVendorIDStore, HMDAssistantGather, HMDClientConnection, HMDCloudDataSyncManager, HMDCloudDataSyncStateFilter, HMDIDSMessageDispatcher, HMDIdentityRegistry, HMDLocation, HMDMessageFilterChain, HMDNameValidator, HMDPendingCloudSyncTransactions, HMDPowerManager, HMMessageDispatcher, NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSUUID;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface HMDHomeManager : NSObject <HMMessageReceiver, IDSServiceDelegate, HMDAccessoryManagerDelegate, HAPTimerDelegate>
+@interface HMDHomeManager : NSObject <HMMessageReceiver, IDSServiceDelegate, HMDAccessoryManagerDelegate, HAPTimerDelegate, HAPFragmentationStreamDelegate>
 {
     BOOL _accountActive;
     BOOL _accountStatusFailedDueToNetworkFailure;
@@ -22,12 +23,14 @@
     BOOL _uploadToCloudIsPending;
     BOOL _uploadHomeDataToCloud;
     BOOL _lastAnswerForShouldCloudSyncData;
-    BOOL _newiCloudAccountAdded;
-    BOOL _receivedAccountChangedNotification;
     BOOL _uploadMetadataToCloud;
     BOOL _ignoreFirstTimeReachabilityChanged;
     BOOL _companionReachable;
     BOOL _accountStatusIsAuthenticated;
+    BOOL _homeDataLoadedFromArchive;
+    BOOL _cloudkitAccountStatusDetermined;
+    BOOL _needToCleanUpKeys;
+    unsigned short _nextRequestTransactionIdentifier;
     int _assetUpdatedNotification;
     int _newAssetInstalledNotification;
     NSUUID *_uuid;
@@ -72,6 +75,8 @@
     HMDAssistantGather *_gatherer;
     HMDApplicationVendorIDStore *_applicationVendorIDStore;
     HAPTimer *_remoteAccessHealthMonitorTimer;
+    NSMutableDictionary *_pendingFragmentationStream;
+    HAPTimer *_cloudkitAccountChangedDebounceTimer;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *accessoryFinderTimer; // @synthesize accessoryFinderTimer=_accessoryFinderTimer;
@@ -92,6 +97,8 @@
 @property (nonatomic) unsigned long long cloudOperationRetryCount; // @synthesize cloudOperationRetryCount=_cloudOperationRetryCount;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *cloudOperationRetryTimer; // @synthesize cloudOperationRetryTimer=_cloudOperationRetryTimer;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *cloudUploadTimer; // @synthesize cloudUploadTimer=_cloudUploadTimer;
+@property (strong, nonatomic) HAPTimer *cloudkitAccountChangedDebounceTimer; // @synthesize cloudkitAccountChangedDebounceTimer=_cloudkitAccountChangedDebounceTimer;
+@property (nonatomic) BOOL cloudkitAccountStatusDetermined; // @synthesize cloudkitAccountStatusDetermined=_cloudkitAccountStatusDetermined;
 @property (nonatomic) BOOL companionReachable; // @synthesize companionReachable=_companionReachable;
 @property (strong, nonatomic) NSUUID *dataTag; // @synthesize dataTag=_dataTag;
 @property (readonly, copy) NSString *debugDescription;
@@ -100,6 +107,7 @@
 @property (strong, nonatomic) HMDAssistantGather *gatherer; // @synthesize gatherer=_gatherer;
 @property (nonatomic) unsigned long long generationCounter; // @synthesize generationCounter=_generationCounter;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL homeDataLoadedFromArchive; // @synthesize homeDataLoadedFromArchive=_homeDataLoadedFromArchive;
 @property (nonatomic) unsigned long long homeDatabaseSize; // @synthesize homeDatabaseSize=_homeDatabaseSize;
 @property (strong, nonatomic) NSMutableDictionary *homeNames; // @synthesize homeNames=_homeNames;
 @property (strong, nonatomic) NSMutableArray *homes; // @synthesize homes=_homes;
@@ -114,10 +122,12 @@
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HMDMessageFilterChain *msgFilterChain; // @synthesize msgFilterChain=_msgFilterChain;
 @property (strong, nonatomic) HMDNameValidator *nameValidator; // @synthesize nameValidator=_nameValidator;
+@property (nonatomic) BOOL needToCleanUpKeys; // @synthesize needToCleanUpKeys=_needToCleanUpKeys;
 @property (nonatomic) long long networkConnectionAvailable; // @synthesize networkConnectionAvailable=_networkConnectionAvailable;
 @property (nonatomic) int newAssetInstalledNotification; // @synthesize newAssetInstalledNotification=_newAssetInstalledNotification;
-@property (nonatomic) BOOL newiCloudAccountAdded; // @synthesize newiCloudAccountAdded=_newiCloudAccountAdded;
+@property (readonly, nonatomic) unsigned short nextRequestTransactionIdentifier; // @synthesize nextRequestTransactionIdentifier=_nextRequestTransactionIdentifier;
 @property (strong, nonatomic) NSMutableDictionary *pendingDataSyncAcks; // @synthesize pendingDataSyncAcks=_pendingDataSyncAcks;
+@property (strong, nonatomic) NSMutableDictionary *pendingFragmentationStream; // @synthesize pendingFragmentationStream=_pendingFragmentationStream;
 @property (strong, nonatomic) NSMutableDictionary *pendingRemoteSessions; // @synthesize pendingRemoteSessions=_pendingRemoteSessions;
 @property (strong, nonatomic) NSMutableSet *pendingResidentSetupSessions; // @synthesize pendingResidentSetupSessions=_pendingResidentSetupSessions;
 @property (strong, nonatomic) NSMutableArray *pendingResponsesForAccessoryFinder; // @synthesize pendingResponsesForAccessoryFinder=_pendingResponsesForAccessoryFinder;
@@ -126,7 +136,6 @@
 @property (strong, nonatomic) NSUUID *primaryHomeUUID; // @synthesize primaryHomeUUID=_primaryHomeUUID;
 @property (nonatomic) struct __SCNetworkReachability *reachability; // @synthesize reachability=_reachability;
 @property (strong, nonatomic) NSArray *reachableWatchDeviceAddresses; // @synthesize reachableWatchDeviceAddresses=_reachableWatchDeviceAddresses;
-@property (nonatomic) BOOL receivedAccountChangedNotification; // @synthesize receivedAccountChangedNotification=_receivedAccountChangedNotification;
 @property (strong, nonatomic) HAPTimer *remoteAccessHealthMonitorTimer; // @synthesize remoteAccessHealthMonitorTimer=_remoteAccessHealthMonitorTimer;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableSet *unassociatedRemotePeers; // @synthesize unassociatedRemotePeers=_unassociatedRemotePeers;
@@ -192,6 +201,7 @@
 - (void)_handleDismissDialogRequest:(id)arg1;
 - (void)_handleDoYouSeeUnpairedAccessories:(id)arg1;
 - (void)_handleDumpState:(id)arg1;
+- (void)_handleHomeDataFragmentedSync:(id)arg1;
 - (void)_handleHomeDataSync:(id)arg1;
 - (void)_handleHomesConfigSync:(id)arg1;
 - (void)_handleLogControl:(id)arg1;
@@ -223,9 +233,11 @@
 - (void)_handleUserRemoved:(id)arg1;
 - (id)_homeWithName:(id)arg1;
 - (id)_homeWithUUID:(id)arg1;
+- (void)_loadMessageDispatcher:(id)arg1 idsMessageDispatcher:(id)arg2 accessoryManager:(id)arg3 messageFilterChain:(id)arg4 homeData:(id)arg5 identityRegistry:(id)arg6 appRegistry:(id)arg7 reloadData:(BOOL)arg8;
 - (void)_loadMetadataFromURL:(id)arg1 identifier:(id)arg2 remoteSource:(BOOL)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (void)_mergeHomeDataWithRemoteHomes:(id)arg1 remotePrimaryHome:(id)arg2 remoteAccessories:(id)arg3 needConflictResolution:(BOOL)arg4 idsDataSync:(BOOL)arg5 idsSyncUser:(id)arg6 dataVersion:(long long)arg7;
 - (void)_monitorReachability;
+- (unsigned short)_nextTransactionIdentifier;
 - (void)_notifySyncDataChanged;
 - (void)_postCloudSyncNotificationWithSuccess:(BOOL)arg1;
 - (void)_postHomesDidUpdateNotification;
@@ -245,9 +257,11 @@
 - (void)_pushMetadataChangesToUsers;
 - (void)_pushMetadataToCloud;
 - (void)_registerForMessages;
+- (void)_reloadHomeDataFromLocalStore;
 - (void)_remoteAccessHealthMonitorTimerDidFire:(id)arg1;
 - (void)_removeAllUsersOfHome:(id)arg1;
 - (BOOL)_removeAndAddKeyPair:(id)arg1 userName:(id)arg2;
+- (void)_removeFromAssociatedPeers:(id)arg1 home:(id)arg2;
 - (void)_removeFromUnassociatedPeers:(id)arg1 home:(id)arg2;
 - (void)_removeHome:(id)arg1 withMessage:(id)arg2 saveToStore:(BOOL)arg3 removedByLocalUser:(BOOL)arg4;
 - (void)_removePendingDataSyncAcksForUser:(id)arg1 forHome:(id)arg2;
@@ -259,6 +273,7 @@
 - (void)_saveWithReason:(id)arg1 information:(id)arg2 postSyncNotification:(BOOL)arg3;
 - (void)_saveWithReason:(id)arg1 information:(id)arg2 saveOptions:(unsigned long long)arg3;
 - (void)_saveWithReason:(id)arg1 postSyncNotification:(BOOL)arg2;
+- (void)_sendFragmentedMessage:(id)arg1 messageIndex:(unsigned long long)arg2 messageIdentity:(id)arg3 userID:(id)arg4 destination:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_sendHomeDataToAllWatches;
 - (void)_sendHomeDataToWatch:(id)arg1 performVersionCheck:(BOOL)arg2;
 - (void)_sendInviteRequestToUser:(id)arg1 inviteIdentifier:(id)arg2 forHome:(id)arg3 confirm:(BOOL)arg4 expiryDate:(id)arg5 queue:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
@@ -295,15 +310,18 @@
 - (void)accessoryManager:(id)arg1 didRemovePairedAccessories:(id)arg2 fromBridgeAccessory:(id)arg3;
 - (void)accountAvailabilityChanged:(id)arg1;
 - (id)addName:(id)arg1 namespace:(id)arg2;
+- (void)archiveServerToken:(id)arg1;
 - (void)checkAndPushMetadataToUser:(id)arg1 destination:(id)arg2 userInfo:(id)arg3;
 - (void)checkForRemotePeers;
-- (void)checkTimerTriggersForHomes;
 - (void)dealloc;
 - (void)dismissBulletinOnAllMyTransientDevicesWithContext:(id)arg1;
 - (void)dismissDialogOnAllMyTransientDevicesWithContext:(id)arg1 selection:(BOOL)arg2;
 - (void)electDeviceForUser:(id)arg1 destination:(id)arg2 deviceCapabilities:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)electRemoteAccessPeerForHome:(id)arg1;
 - (void)eraseLocalHomeData;
+- (void)forcePushLocalDataToCloud;
+- (void)fragmentationStream:(id)arg1 didCloseWithError:(id)arg2;
+- (void)fragmentationStream:(id)arg1 didReceiveData:(id)arg2 transactionIdentifier:(unsigned short)arg3 error:(id)arg4;
 - (void)handleBackgroundTaskAgentJob:(const char *)arg1 forHomeWithUUID:(id)arg2;
 - (id)identifiersOfAccessories:(id)arg1;
 - (id)initWithMessageDispatcher:(id)arg1 idsMessageDispatcher:(id)arg2 accessoryManager:(id)arg3 messageFilterChain:(id)arg4 homeData:(id)arg5 identityRegistry:(id)arg6 appRegistry:(id)arg7;
@@ -312,9 +330,9 @@
 - (void)postHomesDidUpdateNotification;
 - (void)pushMetadataToCloud;
 - (void)redispatchMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3 toResidentForHome:(id)arg4;
+- (void)reloadHomeDataFromLocalStore;
 - (id)removeName:(id)arg1 namespace:(id)arg2;
 - (id)replaceName:(id)arg1 withNewName:(id)arg2 inNamespaces:(id)arg3;
-- (void)resetMessageFilterChain;
 - (void)saveMetadata:(id)arg1 pushChangesToCloud:(BOOL)arg2;
 - (void)saveWithReason:(id)arg1 information:(id)arg2 postSyncNotification:(BOOL)arg3;
 - (void)saveWithReason:(id)arg1 information:(id)arg2 saveOptions:(unsigned long long)arg3;

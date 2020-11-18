@@ -55,6 +55,7 @@
 - (void)setContinuousColorSamplingEnabled:(BOOL)arg1;
 - (void)setRotating:(BOOL)arg1;
 - (void)setWallpaperAnimationEnabled:(BOOL)arg1;
+- (id)snapshotImage;
 - (void)wallpaper:(id)arg1 didComputeAverageColor:(id)arg2 forRect:(struct CGRect)arg3;
 - (void)wallpaper:(id)arg1 didGenerateBlur:(void *)arg2 forRect:(struct CGRect)arg3;
 

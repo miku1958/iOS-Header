@@ -66,7 +66,7 @@
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (BOOL)_canCapturePhoto;
 - (void)_captureTimerFired;
-- (id)_createPlaceholderAssetForTimelapseState:(id)arg1;
+- (id)_createThumbnailImageFromPlaceholderResult:(id)arg1;
 - (void)_deviceStarted:(id)arg1;
 - (void)_dismissDiskSpaceAlert;
 - (BOOL)_enqueueCaptureRequest;

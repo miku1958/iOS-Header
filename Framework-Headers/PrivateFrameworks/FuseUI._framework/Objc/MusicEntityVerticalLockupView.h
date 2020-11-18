@@ -7,20 +7,25 @@
 #import <FuseUI/MusicEntityAbstractLockupView.h>
 
 #import <FuseUI/MusicEntityContentDescriptorViewConfiguring-Protocol.h>
+#import <FuseUI/MusicEntityViewDownloadInformationObserving-Protocol.h>
 
-@class MusicEntityViewContentDescriptor, NSString;
+@class MusicEntityViewContentDescriptor, NSString, UIImageView;
 @protocol MusicEntityValueProviding, MusicEntityVerticalLockupViewDelegate;
 
-@interface MusicEntityVerticalLockupView : MusicEntityAbstractLockupView <MusicEntityContentDescriptorViewConfiguring>
+@interface MusicEntityVerticalLockupView : MusicEntityAbstractLockupView <MusicEntityContentDescriptorViewConfiguring, MusicEntityViewDownloadInformationObserving>
 {
+    UIImageView *_availableOfflineBadgeImageView;
+    BOOL _isAvailableOffline;
     double _textLateralEdgePadding;
     id<MusicEntityVerticalLockupViewDelegate> _delegate;
+    struct MusicEntityDownloadInformation _downloadInformation;
 }
 
 @property (strong, nonatomic) MusicEntityViewContentDescriptor *contentDescriptor;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MusicEntityVerticalLockupViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) struct MusicEntityDownloadInformation downloadInformation; // @synthesize downloadInformation=_downloadInformation;
 @property (strong, nonatomic) id<MusicEntityValueProviding> entityValueProvider;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;

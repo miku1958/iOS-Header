@@ -12,6 +12,7 @@
 
 @interface UIOpenInIBooksActivity : UIActivity <LSOpenResourceOperationDelegate>
 {
+    BOOL _sourceIsManaged;
     BOOL _shouldUnlinkFile;
     NSURL *_url;
     NSString *_applicationIdentifier;
@@ -26,6 +27,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSOperation *operation; // @synthesize operation=_operation;
 @property (nonatomic) BOOL shouldUnlinkFile; // @synthesize shouldUnlinkFile=_shouldUnlinkFile;
+@property (nonatomic) BOOL sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSURL *url; // @synthesize url=_url;
 

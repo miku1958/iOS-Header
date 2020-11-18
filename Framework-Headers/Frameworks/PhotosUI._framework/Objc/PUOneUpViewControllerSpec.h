@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
     BOOL _shouldUseCommentTiles;
     double _maximumToolbarHeight;
     UIColor *_backgroundColorOverride;
-    double _maximumInitialZoomToFillScale;
+    long long _tileInitialContentMode;
     struct CGSize _progressIndicatorSize;
     struct CGSize _bufferingIndicatorSize;
     struct CGSize _loadingIndicatorSize;
@@ -44,7 +44,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=setPresentedForPreview:) BOOL isPresentedForPreview; // @synthesize isPresentedForPreview=_isPresentedForPreview;
 @property (nonatomic, setter=setShowingPlayPauseButtonInBars:) BOOL isShowingPlayPauseButtonInBars; // @synthesize isShowingPlayPauseButtonInBars=_isShowingPlayPauseButtonInBars;
 @property (nonatomic) struct CGSize loadingIndicatorSize; // @synthesize loadingIndicatorSize=_loadingIndicatorSize;
-@property (nonatomic) double maximumInitialZoomToFillScale; // @synthesize maximumInitialZoomToFillScale=_maximumInitialZoomToFillScale;
 @property (nonatomic) double maximumToolbarHeight; // @synthesize maximumToolbarHeight=_maximumToolbarHeight;
 @property (readonly, nonatomic) struct CGSize playButtonSize;
 @property (nonatomic) struct CGSize progressIndicatorSize; // @synthesize progressIndicatorSize=_progressIndicatorSize;
@@ -63,12 +62,12 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL shouldUseCompactTitleView; // @synthesize shouldUseCompactTitleView=_shouldUseCompactTitleView;
 @property (nonatomic) BOOL shouldUseContentGuideInsets; // @synthesize shouldUseContentGuideInsets=_shouldUseContentGuideInsets;
 @property (nonatomic) BOOL shouldUseUserTransformTiles; // @synthesize shouldUseUserTransformTiles=_shouldUseUserTransformTiles;
+@property (nonatomic) long long tileInitialContentMode; // @synthesize tileInitialContentMode=_tileInitialContentMode;
 
 - (void).cxx_destruct;
 - (void)_setBackgroundColorOverride:(id)arg1;
 - (void)_setBufferingIndicatorSize:(struct CGSize)arg1;
 - (void)_setLoadingIndicatorSize:(struct CGSize)arg1;
-- (void)_setMaximumInitialZoomToFillScale:(double)arg1;
 - (void)_setMaximumToolbarHeight:(double)arg1;
 - (void)_setProgressIndicatorSize:(struct CGSize)arg1;
 - (void)_setShouldAutoplayOnAppear:(BOOL)arg1;
@@ -86,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)_setShouldUseCompactTitleView:(BOOL)arg1;
 - (void)_setShouldUseContentGuideInsets:(BOOL)arg1;
 - (void)_setShouldUseUserTransformTiles:(BOOL)arg1;
+- (void)_setTileInitialContentMode:(long long)arg1;
 - (id)newSpecChange;
 - (void)updateIfNeeded;
 

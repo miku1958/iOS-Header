@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_playButtonTapped:(id)arg1;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)initWithStyle:(long long)arg1;

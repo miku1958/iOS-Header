@@ -99,6 +99,7 @@
 - (void)setParticleRotationSequence:(id)arg1;
 - (void)setPhysicsWorld:(id)arg1;
 - (void)setWantsNewParticles:(BOOL)arg1;
+- (void)setZPosition:(double)arg1;
 - (BOOL)wantsNewParticles;
 
 @end

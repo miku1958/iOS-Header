@@ -6,7 +6,7 @@
 
 #import <VectorKit/VKCameraController.h>
 
-@class VKTimedAnimation, VKTimer;
+@class VKTimedAnimation;
 @protocol VKTrackableAnnotation, VKTrackableAnnotationPresentation;
 
 __attribute__((visibility("hidden")))
@@ -36,8 +36,8 @@ __attribute__((visibility("hidden")))
         unsigned int annotationImplementsAccuracy:1;
         unsigned int annotationImplementsHeading:1;
         unsigned int annotationImplementsExpectedCoordinateUpdateInterval:1;
+        unsigned int annotationImplementsExpectedHeadingUpdateInterval:1;
     } _flags;
-    VKTimer *_headingRegionChangeEndTimer;
 }
 
 @property (readonly, nonatomic) id<VKTrackableAnnotation> annotation; // @synthesize annotation=_annotation;
@@ -48,7 +48,6 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void)_goToAnnotationAnimated:(BOOL)arg1 duration:(double)arg2 isInitial:(BOOL)arg3;
-- (void)_headingRegionChangeTimerFired:(id)arg1;
 - (void)_rotateToHeadingAnimated:(BOOL)arg1 duration:(double)arg2;
 - (void)dealloc;
 - (id)init;

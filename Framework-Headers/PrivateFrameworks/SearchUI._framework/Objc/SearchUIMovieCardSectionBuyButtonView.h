@@ -6,16 +6,18 @@
 
 #import <UIKit/UIView.h>
 
-@class NSURL, SKUIItemOfferButton, UILabel;
+@class NSURL, SKUIItemOfferButton, SearchUICardViewController, UILabel;
 
 @interface SearchUIMovieCardSectionBuyButtonView : UIView
 {
     UILabel *_subtitleLabel;
     SKUIItemOfferButton *_button;
     NSURL *_url;
+    SearchUICardViewController *_controller;
 }
 
 @property (strong) SKUIItemOfferButton *button; // @synthesize button=_button;
+@property (strong, nonatomic) SearchUICardViewController *controller; // @synthesize controller=_controller;
 @property (strong) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property (strong) NSURL *url; // @synthesize url=_url;
 

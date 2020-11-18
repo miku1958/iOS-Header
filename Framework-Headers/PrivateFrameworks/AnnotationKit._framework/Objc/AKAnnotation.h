@@ -44,6 +44,7 @@
 + (BOOL)supportsSecureCoding;
 - (void)adjustModelToCompensateForOriginalExif;
 - (void)encodeWithCoder:(id)arg1;
+- (void)flattenModelExifOrientation:(long long)arg1 withModelSize:(struct CGSize)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)keysForValuesToObserveForAdornments;

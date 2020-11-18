@@ -8,11 +8,12 @@
 
 #import <HomeKitDaemon/HAPAccessoryServerBrowserDelegate-Protocol.h>
 #import <HomeKitDaemon/HAPAccessoryServerDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDWatchSystemStateDelegate-Protocol.h>
 
 @class HAPAccessoryServerBrowserBTLE, HAPAccessoryServerBrowserIP, HAPAccessoryServerBrowserRelay, NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSSet, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface HMDAccessoryManager : NSObject <HAPAccessoryServerBrowserDelegate, HAPAccessoryServerDelegate>
+@interface HMDAccessoryManager : NSObject <HAPAccessoryServerBrowserDelegate, HAPAccessoryServerDelegate, HMDWatchSystemStateDelegate>
 {
     NSMutableSet *_pairedAccessories;
     BOOL _appIsInForeground;

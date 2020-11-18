@@ -12,7 +12,5 @@
 
 @property (readonly, nonatomic) NSString *abbreviation;
 
-- (id)_bundleWithAbbreviations;
-- (id)_filePathForAbbreviationsResource;
 @end
 

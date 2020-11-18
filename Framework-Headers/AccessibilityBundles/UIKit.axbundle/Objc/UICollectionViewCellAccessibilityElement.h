@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
 
 - (BOOL)_accessibilityBackingElementIsValid;
+- (BOOL)_accessibilityCanBecomeNativeFocused;
 - (void)_accessibilityCopy;
 - (void)_accessibilityCut;
 - (id)_accessibilityDataDetectorScheme:(struct CGPoint)arg1;

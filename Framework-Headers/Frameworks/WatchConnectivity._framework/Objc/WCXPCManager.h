@@ -43,6 +43,7 @@
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(BOOL)arg3;
 - (void)handleApplicationContext:(id)arg1;
 - (void)handleFileTransferFinishedWithIdentifier:(id)arg1 error:(id)arg2;
+- (void)handleInterruptedConnection;
 - (void)handleMessageSendingAllowed;
 - (void)handleRequest:(id)arg1;
 - (void)handleResponse:(id)arg1;

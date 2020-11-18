@@ -13,7 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axAnnotateView;
 - (void)indexBarControl:(id)arg1 didSelectEntryAtIndexPath:(id)arg2;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

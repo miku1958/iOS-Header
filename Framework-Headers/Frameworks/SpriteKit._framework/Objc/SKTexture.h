@@ -34,11 +34,11 @@
     NSString *_subTextureName;
     SKTextureCache *_textureCache;
     struct jet_texture *_backingTexture;
+    BOOL _performFullCapture;
     unsigned int *_alphaMap;
     struct CGSize _alphaMapSize;
 }
 
-@property (readonly, nonatomic) struct CGImage *CGImage;
 @property (readonly, nonatomic) unsigned int *alphaMap; // @synthesize alphaMap=_alphaMap;
 @property (readonly, nonatomic) struct CGSize alphaMapSize; // @synthesize alphaMapSize=_alphaMapSize;
 @property (nonatomic) struct CGPoint cropOffset; // @synthesize cropOffset=_cropOffset;
@@ -50,6 +50,7 @@
 @property (readonly, nonatomic) BOOL isRepeatable;
 @property (nonatomic) BOOL isRotated;
 @property (copy, nonatomic) NSString *originalAtlasName; // @synthesize originalAtlasName=_originalAtlasName;
+@property BOOL performFullCapture; // @synthesize performFullCapture=_performFullCapture;
 @property (readonly, nonatomic) struct CGSize pixelSize;
 @property (copy, nonatomic) NSString *subTextureName; // @synthesize subTextureName=_subTextureName;
 @property (nonatomic) unsigned int textureTarget;
@@ -85,6 +86,7 @@
 + (id)textureWithRect:(struct CGRect)arg1 inTexture:(id)arg2;
 + (void)updateTextures;
 - (void).cxx_destruct;
+- (struct CGImage *)CGImage;
 - (shared_ptr_bb77cfd9)_backingTexture;
 - (id)_copyImageData;
 - (struct CGImage *)_createCGImage;

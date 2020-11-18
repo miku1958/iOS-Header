@@ -16,13 +16,13 @@
 @property (readonly, nonatomic) id<CNAutocompleteProbeProvider> probeProvider; // @synthesize probeProvider=_probeProvider;
 
 + (void)userIgnoredResultsForRequest:(id)arg1 afterDelay:(double)arg2;
-+ (void)userSelectedResult:(id)arg1 atSortedIndex:(unsigned long long)arg2 forRequest:(id)arg3;
++ (void)userSelectedResult:(id)arg1 atSortedIndex:(unsigned long long)arg2 forRequest:(id)arg3 gotResultsFromDuet:(BOOL)arg4;
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithProbeProvider:(id)arg1;
 - (void)userIgnoredResultsOfBatch:(unsigned long long)arg1 forRequest:(id)arg2 afterDelay:(double)arg3;
-- (void)userSawResultsOfBatch:(unsigned long long)arg1 forRequest:(id)arg2;
-- (void)userSelectedResult:(id)arg1 atSortedIndex:(unsigned long long)arg2 forRequest:(id)arg3;
+- (void)userSawResultsOfBatch:(unsigned long long)arg1 includingResultsConsideredSuggestion:(unsigned long long)arg2 forRequest:(id)arg3;
+- (void)userSelectedResult:(id)arg1 atSortedIndex:(unsigned long long)arg2 forRequest:(id)arg3 gotResultsFromDuet:(BOOL)arg4;
 
 @end
 

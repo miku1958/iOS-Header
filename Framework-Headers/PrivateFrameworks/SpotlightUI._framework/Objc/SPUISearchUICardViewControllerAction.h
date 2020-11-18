@@ -6,10 +6,20 @@
 
 #import <SpotlightUI/SPUISearchResultsDetailsViewControllerAction.h>
 
-@interface SPUISearchUICardViewControllerAction : SPUISearchResultsDetailsViewControllerAction
+#import <SpotlightUI/SearchUIFeedbackDelegate-Protocol.h>
+
+@class NSString;
+
+@interface SPUISearchUICardViewControllerAction : SPUISearchResultsDetailsViewControllerAction <SearchUIFeedbackDelegate>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
+- (void)feedbackEvent:(id)arg1 triggeredOnResult:(id)arg2;
 - (id)performWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)slideInCardForResult:(id)arg1;
 

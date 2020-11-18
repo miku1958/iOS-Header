@@ -19,6 +19,8 @@
 @property (strong, nonatomic) ICPerson *person; // @dynamic person;
 @property (strong, nonatomic) NSNumber *status; // @dynamic status;
 
++ (id)authorForPerson:(id)arg1 inGroup:(id)arg2 createIfNecessary:(BOOL)arg3 context:(id)arg4;
++ (id)currentAuthorInGroup:(id)arg1 context:(id)arg2;
 
 @end
 

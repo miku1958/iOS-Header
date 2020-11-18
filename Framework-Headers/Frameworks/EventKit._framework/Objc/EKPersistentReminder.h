@@ -19,6 +19,7 @@
 @property (copy, nonatomic) NSDate *dueDate;
 @property (nonatomic) BOOL dueDateAllDay;
 @property (copy, nonatomic) NSTimeZone *dueDateTimeZone;
+@property (copy, nonatomic) NSDate *firstAlertDate;
 @property (copy, nonatomic) EKObjectID *parentID; // @synthesize parentID=_parentID;
 
 + (id)generateUniqueIDWithReminder:(id)arg1 calendar:(id)arg2;

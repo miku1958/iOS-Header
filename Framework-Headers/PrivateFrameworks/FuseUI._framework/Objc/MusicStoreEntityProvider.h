@@ -15,17 +15,18 @@
 @interface MusicStoreEntityProvider : NSObject <MusicEntityProviding, NSCopying, NSSecureCoding>
 {
     long long _entityType;
-    NSArray *_filteredPlayableItemMetadataContexts;
     MPSparseArray *_storeEntityValueProviders;
     BOOL _shouldReloadEntityValueProvidersForInvalidation;
     BOOL _shouldIncludeUnplayableContent;
     BOOL _shouldRespectSystemContentRestrictions;
     NSArray *_storeItemMetadataContexts;
+    NSArray *_filteredPlayableItemMetadataContexts;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long entityType; // @synthesize entityType=_entityType;
+@property (readonly, copy, nonatomic) NSArray *filteredPlayableItemMetadataContexts; // @synthesize filteredPlayableItemMetadataContexts=_filteredPlayableItemMetadataContexts;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL shouldIncludeUnplayableContent; // @synthesize shouldIncludeUnplayableContent=_shouldIncludeUnplayableContent;
 @property (nonatomic) BOOL shouldReloadEntityValueProvidersForInvalidation; // @synthesize shouldReloadEntityValueProvidersForInvalidation=_shouldReloadEntityValueProvidersForInvalidation;
@@ -60,6 +61,7 @@
 - (id)indexPathForStoreItemMetadataContext:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)newDownloadInformationController;
 - (unsigned long long)numberOfEntitiesInSection:(unsigned long long)arg1;
 - (unsigned long long)numberOfIndexBarEntries;
 - (unsigned long long)numberOfSections;

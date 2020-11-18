@@ -6,7 +6,7 @@
 
 #import <PhotosUI/PUSectionedTilingLayout.h>
 
-@class NSIndexPath, NSMutableDictionary, PUParallaxComputer;
+@class NSIndexPath, NSMutableDictionary, PUParallaxComputer, UITraitCollection;
 @protocol PUOneUpTilingLayoutDelegate;
 
 @interface PUOneUpTilingLayout : PUSectionedTilingLayout
@@ -36,7 +36,8 @@
     BOOL _useUserTransformTiles;
     BOOL _shouldPinContentToTop;
     id<PUOneUpTilingLayoutDelegate> _delegate;
-    double _tileContentMaximumInitialZoomToFillScale;
+    long long _tileInitialContentMode;
+    UITraitCollection *_traitCollection;
     PUParallaxComputer *_parallaxComputer;
     struct CGSize _interpageSpacing;
     struct CGSize _playButtonSize;
@@ -58,7 +59,8 @@
 @property (nonatomic) struct CGSize playButtonSize; // @synthesize playButtonSize=_playButtonSize;
 @property (nonatomic) struct CGSize progressIndicatorSize; // @synthesize progressIndicatorSize=_progressIndicatorSize;
 @property (nonatomic) BOOL shouldPinContentToTop; // @synthesize shouldPinContentToTop=_shouldPinContentToTop;
-@property (nonatomic) double tileContentMaximumInitialZoomToFillScale; // @synthesize tileContentMaximumInitialZoomToFillScale=_tileContentMaximumInitialZoomToFillScale;
+@property (nonatomic) long long tileInitialContentMode; // @synthesize tileInitialContentMode=_tileInitialContentMode;
+@property (strong, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property (readonly, nonatomic) double transitionProgress; // @synthesize transitionProgress=_transitionProgress;
 @property (nonatomic) BOOL useBackgroundTile; // @synthesize useBackgroundTile=_useBackgroundTile;
 @property (nonatomic) BOOL useBadgeTiles; // @synthesize useBadgeTiles=_useBadgeTiles;

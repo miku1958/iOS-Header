@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICSearchString, NSString;
+@class NSString;
 @protocol ICSearchIndexable;
 
 @interface ICSearchResult : NSObject
@@ -14,15 +14,14 @@
     unsigned long long _cachedHash;
     id<ICSearchIndexable> _object;
     unsigned long long _relevance;
-    ICSearchString *_searchString;
+    NSString *_searchString;
     NSString *_highlightString;
 }
 
 @property (readonly, nonatomic) NSString *highlightString; // @synthesize highlightString=_highlightString;
 @property (readonly, nonatomic) id<ICSearchIndexable> object; // @synthesize object=_object;
 @property (readonly, nonatomic) unsigned long long relevance; // @synthesize relevance=_relevance;
-@property (readonly, copy, nonatomic) ICSearchString *searchString; // @synthesize searchString=_searchString;
-@property (readonly, nonatomic) NSString *string;
+@property (readonly, copy, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 
 + (id)attributedStringWithMatchHighlightedWithString:(id)arg1 withinString:(id)arg2 usingAttributes:(id)arg3 insideFrame:(struct CGRect)arg4;
 + (id)attributesByHighlightingAttributes:(id)arg1;
@@ -46,6 +45,7 @@
 - (id)initWithObject:(id)arg1 relevance:(unsigned long long)arg2 searchString:(id)arg3;
 - (id)initWithObject:(id)arg1 relevance:(unsigned long long)arg2 searchString:(id)arg3 highlightString:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
+- (void)refetchObjectFromContext:(id)arg1;
 - (id)searchResultByHighlightingWithString:(id)arg1;
 
 @end

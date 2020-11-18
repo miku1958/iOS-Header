@@ -9,14 +9,16 @@
 #import <FuseUI/MusicEntityContentDescriptorViewConfiguring-Protocol.h>
 #import <FuseUI/MusicEntityHorizontalLockupViewDelegate-Protocol.h>
 #import <FuseUI/MusicEntityVerticalLockupViewDelegate-Protocol.h>
+#import <FuseUI/MusicEntityViewDownloadInformationObserving-Protocol.h>
 #import <FuseUI/MusicEntityViewPlaybackStatusObserving-Protocol.h>
 
 @class MusicEntityVerticalLockupView, MusicEntityViewContentDescriptor, NSString, UIColor, UIImageView, UITraitCollection, UIView;
 @protocol MusicEntityValueProviding;
 
-@interface MusicEntityLockupContainerCollectionViewCell : UICollectionViewCell <MusicEntityVerticalLockupViewDelegate, MusicEntityHorizontalLockupViewDelegate, MusicEntityContentDescriptorViewConfiguring, MusicEntityViewPlaybackStatusObserving>
+@interface MusicEntityLockupContainerCollectionViewCell : UICollectionViewCell <MusicEntityVerticalLockupViewDelegate, MusicEntityHorizontalLockupViewDelegate, MusicEntityContentDescriptorViewConfiguring, MusicEntityViewDownloadInformationObserving, MusicEntityViewPlaybackStatusObserving>
 {
     UITraitCollection *_cachedTraitCollection;
+    struct MusicEntityDownloadInformation _downloadInformation;
     BOOL _entityDisabled;
     UIImageView *_highlightBackgroundView;
     BOOL _highlightBackgroundViewVisible;
@@ -50,6 +52,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setBackgroundColor:(id)arg1;
+- (void)setDownloadInformation:(struct MusicEntityDownloadInformation)arg1;
 - (void)setEntityDisabled:(BOOL)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setPlaybackStatus:(id)arg1;

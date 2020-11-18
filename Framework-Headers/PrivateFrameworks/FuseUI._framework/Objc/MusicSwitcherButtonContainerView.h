@@ -17,22 +17,24 @@
     MPUTextButton *_trailingButton;
     UIView *_rightHairlineView;
     UIButton *_switcherButton;
-    BOOL _isSwitcherButtonHidden;
+    BOOL _hairlineHidden;
+    BOOL _switcherButtonHidden;
+    id<MusicSwitcherButtonContainerViewDelegate> _delegate;
     UIFont *_fontOfTextRightAbove;
     UIFont *_fontOfLeadingAndTrailingButtons;
     NSString *_leadingButtonTitle;
-    NSString *_trailingButtonTitle;
     UIFont *_switcherButtonFont;
     NSString *_switcherButtonTitle;
-    id<MusicSwitcherButtonContainerViewDelegate> _delegate;
+    NSString *_trailingButtonTitle;
 }
 
 @property (weak, nonatomic) id<MusicSwitcherButtonContainerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UIFont *fontOfLeadingAndTrailingButtons; // @synthesize fontOfLeadingAndTrailingButtons=_fontOfLeadingAndTrailingButtons;
 @property (strong, nonatomic) UIFont *fontOfTextRightAbove; // @synthesize fontOfTextRightAbove=_fontOfTextRightAbove;
-@property (nonatomic) BOOL isSwitcherButtonHidden; // @synthesize isSwitcherButtonHidden=_isSwitcherButtonHidden;
+@property (nonatomic, getter=isHairlineHidden) BOOL hairlineHidden; // @synthesize hairlineHidden=_hairlineHidden;
 @property (copy, nonatomic) NSString *leadingButtonTitle; // @synthesize leadingButtonTitle=_leadingButtonTitle;
 @property (strong, nonatomic) UIFont *switcherButtonFont; // @synthesize switcherButtonFont=_switcherButtonFont;
+@property (nonatomic, getter=isSwitcherButtonHidden) BOOL switcherButtonHidden; // @synthesize switcherButtonHidden=_switcherButtonHidden;
 @property (copy, nonatomic) NSString *switcherButtonTitle; // @synthesize switcherButtonTitle=_switcherButtonTitle;
 @property (readonly, nonatomic) UIView *switcherButtonView;
 @property (copy, nonatomic) NSString *trailingButtonTitle; // @synthesize trailingButtonTitle=_trailingButtonTitle;

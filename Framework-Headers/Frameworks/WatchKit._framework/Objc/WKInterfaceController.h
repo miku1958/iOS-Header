@@ -29,7 +29,6 @@
 + (struct CGRect)screenBounds;
 + (double)screenScale;
 - (void).cxx_destruct;
-- (void)_setContentFrame:(struct CGRect)arg1;
 - (void)addMenuItemWithImage:(id)arg1 title:(id)arg2 action:(SEL)arg3;
 - (void)addMenuItemWithImageNamed:(id)arg1 title:(id)arg2 action:(SEL)arg3;
 - (void)addMenuItemWithItemIcon:(long long)arg1 title:(id)arg2 action:(SEL)arg3;
@@ -45,7 +44,7 @@
 - (void)didAppear;
 - (void)didDeactivate;
 - (void)dismissAddPassesController;
-- (void)dismissAudioRecordingController;
+- (void)dismissAudioRecorderController;
 - (void)dismissController;
 - (void)dismissMediaPlayerController;
 - (void)dismissTextInputController;
@@ -62,7 +61,7 @@
 - (void)popController;
 - (void)popToRootController;
 - (void)presentAddPassesControllerWithPasses:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)presentAudioRecordingControllerWithOutputURL:(id)arg1 preset:(long long)arg2 maximumDuration:(double)arg3 actionTitle:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)presentAudioRecorderControllerWithOutputURL:(id)arg1 preset:(long long)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentControllerWithName:(id)arg1 context:(id)arg2;
 - (void)presentControllerWithNames:(id)arg1 contexts:(id)arg2;
 - (void)presentMediaPlayerControllerWithURL:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;

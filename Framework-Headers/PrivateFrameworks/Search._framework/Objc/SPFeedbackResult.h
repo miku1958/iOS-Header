@@ -29,6 +29,7 @@
     NSData *_thumbnailData;
     NSString *_appShortVersion;
     NSString *_lastSearchQuery;
+    NSString *_url;
 }
 
 @property (strong, nonatomic) NSData *activityData; // @synthesize activityData=_activityData;
@@ -49,6 +50,7 @@
 @property (readonly) NSString *parsecString;
 @property (strong, nonatomic) NSData *thumbnailData; // @synthesize thumbnailData=_thumbnailData;
 @property (nonatomic) BOOL topHit; // @synthesize topHit=_topHit;
+@property (strong, nonatomic) NSString *url; // @synthesize url=_url;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

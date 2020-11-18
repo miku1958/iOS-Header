@@ -8,7 +8,7 @@
 
 #import <AWDSupportFramework/NSCopying-Protocol.h>
 
-@class AWDLibnetcoreMbufStatsReport, AWDLibnetcoreNetworkdStatsReport, AWDLibnetcoreTCPECNStatsReport, AWDLibnetcoreTCPStatsReport, AWDLibnetcoreTCPTFOStatsReport;
+@class AWDLibnetcoreMbufStatsReport, AWDLibnetcoreNetworkdStatsReport, AWDLibnetcoreTCPECNStatsReport, AWDLibnetcoreTCPStatsReport, AWDLibnetcoreTCPTFOStatsReport, NSMutableArray;
 
 @interface AWDLibnetcoreStatsReport : PBCodable <NSCopying>
 {
@@ -16,6 +16,7 @@
     AWDLibnetcoreMbufStatsReport *_mbufStatisticsReport;
     AWDLibnetcoreNetworkdStatsReport *_networkdStatisticsReport;
     unsigned int _reportReason;
+    NSMutableArray *_tcpECNInterfaceReports;
     AWDLibnetcoreTCPECNStatsReport *_tcpECNStatisticsReport;
     AWDLibnetcoreTCPStatsReport *_tcpStatisticsReport;
     AWDLibnetcoreTCPTFOStatsReport *_tcpTFOStatisticsReport;
@@ -35,11 +36,14 @@
 @property (strong, nonatomic) AWDLibnetcoreMbufStatsReport *mbufStatisticsReport; // @synthesize mbufStatisticsReport=_mbufStatisticsReport;
 @property (strong, nonatomic) AWDLibnetcoreNetworkdStatsReport *networkdStatisticsReport; // @synthesize networkdStatisticsReport=_networkdStatisticsReport;
 @property (nonatomic) unsigned int reportReason; // @synthesize reportReason=_reportReason;
+@property (strong, nonatomic) NSMutableArray *tcpECNInterfaceReports; // @synthesize tcpECNInterfaceReports=_tcpECNInterfaceReports;
 @property (strong, nonatomic) AWDLibnetcoreTCPECNStatsReport *tcpECNStatisticsReport; // @synthesize tcpECNStatisticsReport=_tcpECNStatisticsReport;
 @property (strong, nonatomic) AWDLibnetcoreTCPStatsReport *tcpStatisticsReport; // @synthesize tcpStatisticsReport=_tcpStatisticsReport;
 @property (strong, nonatomic) AWDLibnetcoreTCPTFOStatsReport *tcpTFOStatisticsReport; // @synthesize tcpTFOStatisticsReport=_tcpTFOStatisticsReport;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 
+- (void)addTcpECNInterfaceReport:(id)arg1;
+- (void)clearTcpECNInterfaceReports;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -49,6 +53,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)tcpECNInterfaceReportAtIndex:(unsigned long long)arg1;
+- (unsigned long long)tcpECNInterfaceReportsCount;
 - (void)writeTo:(id)arg1;
 
 @end

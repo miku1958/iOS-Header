@@ -22,7 +22,7 @@
 #import <SafariServices/_SFSafeBrowsingControllerDelegate-Protocol.h>
 #import <SafariServices/_SFSingleBookmarkNavigationControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, SFReaderEnabledWebViewController, SFReaderViewController, UITapGestureRecognizer, WBSFluidProgressController, WBSFluidProgressState, WBUSheetController, WebUIAuthenticationManager, _SFBrowserView, _SFDownloadController, _SFDynamicBarAnimator, _SFNavigationBarItem, _SFPageLoadErrorController, _SFSafeBrowsingController, _SFURLSpoofingMitigator, _WKActivatedElementInfo;
+@class NSArray, NSString, SFReaderEnabledWebViewController, SFReaderViewController, UITapGestureRecognizer, WBSFluidProgressController, WBSFluidProgressState, WBUSheetController, WebUIAuthenticationManager, _SFBrowserView, _SFDownloadController, _SFDynamicBarAnimator, _SFNavigationBarItem, _SFPageLoadErrorController, _SFReloadOptionsController, _SFSafariSharingExtensionController, _SFSafeBrowsingController, _SFURLSpoofingMitigator, _WKActivatedElementInfo;
 
 @interface _SFBrowserContentViewController : UIViewController <SFReaderEnabledWebViewControllerDelegate, _SFDynamicBarAnimatorDelegate, _SFSingleBookmarkNavigationControllerDelegate, _SFPageLoadErrorControllerDelegate, _SFSafeBrowsingControllerDelegate, _SFBrowserToolbarDataSource, _SFBrowserToolbarDelegate, WBSFluidProgressStateSource, WBSFluidProgressControllerWindowDelegate, _SFNavigationBarDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate, SFReaderAppearanceViewControllerDelegate, UIPopoverPresentationControllerDelegate, _SFDownloadControllerDelegate>
 {
@@ -53,7 +53,10 @@
     BOOL _isShowingSheetController;
     WebUIAuthenticationManager *_authenticationManager;
     BOOL _isSuppressingPreviewProgressAnimation;
+    _SFSafariSharingExtensionController *_sharingExtensionController;
+    _SFReloadOptionsController *_reloadOptionsController;
     BOOL _entersReaderIfAvailable;
+    BOOL _remoteSwipeGestureEnabled;
     long long _displayMode;
     long long _preferredStatusBarStyle;
     SFReaderEnabledWebViewController *_webViewController;
@@ -69,6 +72,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *linkActions; // @synthesize linkActions=_linkActions;
 @property (nonatomic) long long preferredStatusBarStyle; // @synthesize preferredStatusBarStyle=_preferredStatusBarStyle;
+@property (nonatomic) BOOL remoteSwipeGestureEnabled; // @synthesize remoteSwipeGestureEnabled=_remoteSwipeGestureEnabled;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) SFReaderEnabledWebViewController *webViewController; // @synthesize webViewController=_webViewController;
 
@@ -82,6 +86,7 @@
 - (id)_currentWebView;
 - (void)_didLoadWebView;
 - (void)_dismiss;
+- (void)_fetchCustomActivitiesForURL:(id)arg1 title:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_hideCrashBanner;
 - (void)_initialLoadFinishedWithSuccess:(BOOL)arg1;
 - (void)_invalidateEVOrganizationName;
@@ -92,11 +97,11 @@
 - (id)_previewViewControllerForURL:(id)arg1 defaultActions:(id)arg2 elementInfo:(id)arg3;
 - (void)_redirectToExternalNavigationResult:(id)arg1 fromOriginalRequest:(id)arg2 isMainFrame:(BOOL)arg3 userInitiated:(BOOL)arg4;
 - (BOOL)_redirectToHostAppWithNavigationResult:(id)arg1 options:(id)arg2;
-- (void)_requestToShowActionSheetForURL:(id)arg1 title:(id)arg2 fromRect:(struct CGRect)arg3;
 - (void)_scrollToTopFromScrollToTopView;
 - (void)_setShowingCrashBanner:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setShowingReader:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setSuppressingPreviewProgressAnimation:(BOOL)arg1;
+- (void)_setUpReloadOptionsControllerIfNeeded;
 - (void)_setUpSafeBrowsingController;
 - (void)_setUpToolbar;
 - (void)_setUpTopBarAndBottomBar;
@@ -114,6 +119,7 @@
 - (void)_updateInterfaceFillsScreen;
 - (void)_updateNavigationBar;
 - (void)_updatePreviewLoadingUI;
+- (void)_updateRemoteSwipeGestureState;
 - (void)_updateScrollToTopView;
 - (void)_updateStatusBarAppearance;
 - (void)_updateStatusBarStyleForced:(BOOL)arg1;
@@ -173,6 +179,7 @@
 - (void)pageLoadErrorControllerDidShowErrorPage:(id)arg1;
 - (BOOL)pageLoadErrorControllerShouldHandleCertificateError:(id)arg1;
 - (void)pageLoadErrorControllerWillShowPrintingDuringLoadAlert:(id)arg1 action:(int)arg2;
+- (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)presentingViewControllerForAlertInAuthenticationManager:(id)arg1;
 - (id)previewActions;
 - (id)progressState;
@@ -180,7 +187,9 @@
 - (void)readerAppearanceViewControllerDidChangeTheme:(id)arg1;
 - (void)readerAppearanceViewControllerDidDecreaseTextSize:(id)arg1;
 - (void)readerAppearanceViewControllerDidIncreaseTextSize:(id)arg1;
+- (void)reloadWithoutContentBlockers;
 - (void)safeBrowsingController:(id)arg1 didIgnoreWarningWithURL:(id)arg2;
+- (void)safeBrowsingControllerClosePage:(id)arg1;
 - (void)safeBrowsingControllerDidShowSecurityWarningPage:(id)arg1;
 - (void)safeBrowsingControllerGoBack:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;

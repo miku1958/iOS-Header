@@ -17,9 +17,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_customPropertyHandlersCollection;
-+ (void)registerCustomProperty:(id)arg1 withValueHandler:(CDUnknownBlockType)arg2;
-+ (void)registerSupportedCustomProperties;
++ (id)customPropertyHandlersCollection;
++ (void)registerSupportedCustomPropertiesWithHandlersCollection:(id)arg1;
 + (BOOL)supportsConcurrentLoadingOfEntityProperties;
 - (id)_valuesForRegularEntityProperties:(id)arg1;
 - (id)entityUniqueIdentifier;

@@ -11,6 +11,7 @@
 @interface MusicEntityViewTracklistItemContentDescriptor : MusicEntityViewContentDescriptor
 {
     BOOL _wantsMediaTypeImage;
+    BOOL _indentDetailText;
     NSArray *_detailTextDescriptors;
     MusicEntityViewContentTextDescriptor *_leadingTextDescriptor;
     MusicEntityViewContentTextDescriptor *_trailingTextDescriptor;
@@ -19,6 +20,7 @@
 }
 
 @property (copy, nonatomic) NSArray *detailTextDescriptors; // @synthesize detailTextDescriptors=_detailTextDescriptors;
+@property (nonatomic) BOOL indentDetailText; // @synthesize indentDetailText=_indentDetailText;
 @property (strong, nonatomic) MusicEntityViewContentTextDescriptor *leadingTextDescriptor; // @synthesize leadingTextDescriptor=_leadingTextDescriptor;
 @property (strong, nonatomic) UIColor *mediaTypeTintColor; // @synthesize mediaTypeTintColor=_mediaTypeTintColor;
 @property (strong, nonatomic) MusicEntityViewContentArtworkDescriptor *trailingAccessoryArtworkDescriptor; // @synthesize trailingAccessoryArtworkDescriptor=_trailingAccessoryArtworkDescriptor;

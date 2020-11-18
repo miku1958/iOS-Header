@@ -9,14 +9,13 @@
 #import <CloudKitDaemon/CKDSystemAvailabilityWatcher-Protocol.h>
 
 @class NSMutableDictionary, NSMutableSet, NSString;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue;
 
 @interface CKDTokenRegistrationScheduler : NSObject <CKDSystemAvailabilityWatcher>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_callbackBlocks;
     NSMutableDictionary *_callbackTimers;
-    NSObject<OS_dispatch_source> *_scheduleTimer;
     NSMutableSet *_requests;
 }
 
@@ -27,14 +26,12 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSMutableSet *requests; // @synthesize requests=_requests;
-@property (strong, nonatomic) NSObject<OS_dispatch_source> *scheduleTimer; // @synthesize scheduleTimer=_scheduleTimer;
 @property (readonly) Class superclass;
 
 + (id)sharedScheduler;
 - (void).cxx_destruct;
 - (void)_refreshToken:(id)arg1 appContainerTuple:(id)arg2 apsEnvironmentString:(id)arg3 usesAPSPublicToken:(long long)arg4 darkWakeEnabled:(BOOL)arg5 isCKSystemService:(BOOL)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (void)_removeToken:(id)arg1 appContainerTuple:(id)arg2 apsEnvironmentString:(id)arg3 usesAPSPublicToken:(long long)arg4 darkWakeEnabled:(BOOL)arg5 isCKSystemService:(BOOL)arg6 completionBlock:(CDUnknownBlockType)arg7;
-- (void)_scheduleTokenRefresh;
 - (BOOL)canRunGivenAvailabilityState:(unsigned long long)arg1;
 - (void)dealloc;
 - (void)ensureTokenRefreshForAppContainerTuple:(id)arg1 apsEnvironmentString:(id)arg2 useAPSPublicToken:(BOOL)arg3 darkWakeEnabled:(BOOL)arg4 isCKSystemService:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6;
@@ -43,7 +40,7 @@
 - (void)handlePushTokenDidUpdate:(id)arg1;
 - (id)init;
 - (void)refreshAllClientsNow;
-- (void)scheduleTokenRefresh;
+- (void)registerTokenRefreshActivity;
 - (void)setSchedulerAvailable:(BOOL)arg1;
 - (void)systemAvailabilityChanged:(unsigned long long)arg1;
 - (void)tokenRefreshChanged;

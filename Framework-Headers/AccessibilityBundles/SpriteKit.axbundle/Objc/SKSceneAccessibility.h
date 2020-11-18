@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityContainer;
+- (struct CGRect)accessibilityFrame;
 - (void)didChangeSize:(struct CGSize)arg1;
 - (void)didMoveToView:(id)arg1;
 - (void)willMoveFromView:(id)arg1;

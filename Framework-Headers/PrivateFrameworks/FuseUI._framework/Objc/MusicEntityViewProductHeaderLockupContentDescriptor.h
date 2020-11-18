@@ -11,7 +11,6 @@
 @interface MusicEntityViewProductHeaderLockupContentDescriptor : MusicEntityViewContentDescriptor
 {
     BOOL _wantsAddSongsButton;
-    BOOL _wantsAddToLibraryButton;
     BOOL _wantsBackgroundBlur;
     BOOL _wantsBackgroundImage;
     BOOL _wantsCameraButtonWhenEditing;
@@ -35,7 +34,6 @@
 @property (strong, nonatomic) MusicEntityViewContentTextDescriptor *editableTextDescriptor; // @synthesize editableTextDescriptor=_editableTextDescriptor;
 @property (strong, nonatomic) MusicEntityViewContentTextDescriptor *editableTextHeaderDescriptor; // @synthesize editableTextHeaderDescriptor=_editableTextHeaderDescriptor;
 @property (nonatomic) BOOL wantsAddSongsButton; // @synthesize wantsAddSongsButton=_wantsAddSongsButton;
-@property (nonatomic) BOOL wantsAddToLibraryButton; // @synthesize wantsAddToLibraryButton=_wantsAddToLibraryButton;
 @property (nonatomic) BOOL wantsBackgroundBlur; // @synthesize wantsBackgroundBlur=_wantsBackgroundBlur;
 @property (nonatomic) BOOL wantsBackgroundImage; // @synthesize wantsBackgroundImage=_wantsBackgroundImage;
 @property (nonatomic) BOOL wantsCameraButtonWhenEditing; // @synthesize wantsCameraButtonWhenEditing=_wantsCameraButtonWhenEditing;

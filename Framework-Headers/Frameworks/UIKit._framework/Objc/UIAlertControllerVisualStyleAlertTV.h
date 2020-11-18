@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)focusedActionAnimatesOnPresentationAndDismissal;
 - (BOOL)hideActionSeparators;
 - (BOOL)hideCancelAction:(id)arg1 inAlertController:(id)arg2;
-- (struct CGAffineTransform)highlightedActionTransformForActionSize:(struct CGSize)arg1;
+- (struct CATransform3D)highlightedActionTransformForActionSize:(struct CGSize)arg1;
 - (double)marginAboveMessageLabelFirstBaseline;
 - (double)marginAboveTitleLabelFirstBaseline;
 - (double)marginBelowLastLabelLastBaseline;
@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (id)messageLabelColor;
 - (id)messageLabelFont;
 - (double)minimumActionHeight;
+- (id)motionEffects;
 - (long long)permittedActionLayoutDirection;
 - (id)preferredActionFont;
 - (id)regularActionFont;

@@ -8,28 +8,29 @@
 
 #import <MediaSocial/NSCopying-Protocol.h>
 
-@class MSCLStoreItem, NSArray, NSData, NSString, NSURL, UIImage;
+@class MPMediaItem, MSCLStoreItem, NSArray, NSData, NSString, NSURL, UIImage;
 
 @interface MSCLAttachment : NSObject <NSCopying>
 {
-    MSCLStoreItem *_album;
-    NSArray *_artists;
+    BOOL _explicitContent;
     UIImage *_assetImage;
     NSURL *_assetURL;
+    NSData *_data;
+    MPMediaItem *_mediaItem;
+    NSString *_UTI;
+    double _duration;
+    MSCLStoreItem *_album;
+    NSArray *_artists;
     NSString *_attachmentDescription;
     NSString *_categoryName;
-    NSData *_data;
-    double _duration;
-    BOOL _explicitContent;
     NSString *_message;
-    struct CGSize _pixelSize;
     UIImage *_thumbnailImage;
     double _thumbnailImageTime;
     NSString *_title;
-    NSString *_uti;
+    struct CGSize _pixelSize;
 }
 
-@property (copy, nonatomic) NSString *UTI; // @synthesize UTI=_uti;
+@property (copy, nonatomic) NSString *UTI; // @synthesize UTI=_UTI;
 @property (copy, nonatomic) MSCLStoreItem *album; // @synthesize album=_album;
 @property (copy, nonatomic) NSArray *artists; // @synthesize artists=_artists;
 @property (strong, nonatomic) UIImage *assetImage; // @synthesize assetImage=_assetImage;
@@ -38,8 +39,10 @@
 @property (readonly, nonatomic) long long attachmentType;
 @property (copy, nonatomic) NSString *categoryName; // @synthesize categoryName=_categoryName;
 @property (copy, nonatomic) NSData *data; // @synthesize data=_data;
+@property (readonly, nonatomic, getter=isDownloadable) BOOL downloadable;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (nonatomic, getter=isExplicitContent) BOOL explicitContent; // @synthesize explicitContent=_explicitContent;
+@property (strong, nonatomic) MPMediaItem *mediaItem; // @synthesize mediaItem=_mediaItem;
 @property (copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property (nonatomic) struct CGSize pixelSize; // @synthesize pixelSize=_pixelSize;
 @property (strong, nonatomic) UIImage *thumbnailImage; // @synthesize thumbnailImage=_thumbnailImage;
@@ -47,12 +50,14 @@
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
+- (void)_configureWithMediaItem:(id)arg1;
 - (id)copyMediaSocialPostAttachment;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initWithAssetData:(id)arg1 typeIdentifier:(id)arg2;
 - (id)initWithAssetURL:(id)arg1 typeIdentifier:(id)arg2;
 - (id)initWithImage:(id)arg1 typeIdentifier:(id)arg2;
+- (id)initWithMediaItem:(id)arg1;
 
 @end
 

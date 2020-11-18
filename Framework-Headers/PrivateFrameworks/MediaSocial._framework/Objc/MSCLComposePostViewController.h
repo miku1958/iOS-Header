@@ -14,7 +14,7 @@
 #import <MediaSocial/MSCLSoundBiteViewControllerDelegate-Protocol.h>
 #import <MediaSocial/MSCLTagListDelegate-Protocol.h>
 
-@class MSCLAccountStore, MSCLAttachment, MSCLAudioPickerViewController, MSCLAuthorView, MSCLComposeImagePickerController, MSCLComposeLabelValueButton, MSCLComposePostView, MSCLConfiguration, MSCLTagListViewController, NSMutableArray, NSString, SKUIMediaSocialAuthor, SKUIResourceLoader;
+@class MSCLAccountStore, MSCLAttachment, MSCLAttachmentDownloadOperation, MSCLAudioPickerViewController, MSCLAuthorView, MSCLComposeImagePickerController, MSCLComposeLabelValueButton, MSCLComposePostView, MSCLConfiguration, MSCLTagListViewController, NSMutableArray, NSString, SKUIMediaSocialAuthor, SKUIResourceLoader;
 @protocol MSCLComposePostViewControllerDelegate;
 
 @interface MSCLComposePostViewController : SKUIViewController <MSCLAttachmentAlertDelegate, MSCLAttachmentPropertiesDelegate, MSCLAudioPickerDelegate, MSCLComposeImagePickerDelegate, MSCLComposePostViewDelegate, MSCLTagListDelegate, MSCLSoundBiteViewControllerDelegate>
@@ -35,9 +35,13 @@
     SKUIMediaSocialAuthor *_selectedAuthor;
     NSMutableArray *_soundBiteViewControllers;
     MSCLTagListViewController *_tagCompletionViewController;
+    BOOL _attachmentWasDownloadedAndNeedsRemoval;
     id<MSCLComposePostViewControllerDelegate> _delegate;
+    MSCLAttachmentDownloadOperation *_attachmentDownloadOperation;
 }
 
+@property (weak, nonatomic) MSCLAttachmentDownloadOperation *attachmentDownloadOperation; // @synthesize attachmentDownloadOperation=_attachmentDownloadOperation;
+@property (nonatomic) BOOL attachmentWasDownloadedAndNeedsRemoval; // @synthesize attachmentWasDownloadedAndNeedsRemoval=_attachmentWasDownloadedAndNeedsRemoval;
 @property (readonly, nonatomic) MSCLConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MSCLComposePostViewControllerDelegate> delegate; // @synthesize delegate=_delegate;

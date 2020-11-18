@@ -8,7 +8,7 @@
 
 #import <FuseUI/UITextViewDelegate-Protocol.h>
 
-@class MPUTextButton, MusicDownloadStatusSashView, MusicEntityViewProductHeaderLockupContentDescriptor, MusicNowPlayingFloatingButton, NSString, UIActivityIndicatorView, UIButton, UILabel, UITextView, UIView, _UIBackdropView;
+@class MPUTextButton, MusicDownloadProgressButton, MusicEntityViewProductHeaderLockupContentDescriptor, MusicNowPlayingFloatingButton, NSString, UIActivityIndicatorView, UIButton, UILabel, UITextView, UIView, _UIBackdropView;
 @protocol MusicEntityProductHeaderLockupViewDelegate;
 
 @interface MusicEntityProductHeaderLockupView : MusicEntityAbstractLockupView <UITextViewDelegate>
@@ -18,7 +18,6 @@
     _UIBackdropView *_backdropView;
     UIView *_bottomHairlineView;
     MusicNowPlayingFloatingButton *_cameraButton;
-    MusicDownloadStatusSashView *_downloadStatusSashView;
     NSString *_editableText;
     UIView *_editableTextBottomHairlineView;
     UILabel *_editableTextHeaderLabel;
@@ -31,21 +30,23 @@
     BOOL _shouldIgnoreArtworkImageChanges;
     BOOL _editing;
     BOOL _editableTitleShouldBecomeFirstResponder;
-    UIButton *_addToLibraryButton;
-    long long _addToLibraryButtonState;
     UIButton *_contextualActionsButton;
+    double _downloadProgress;
+    MusicDownloadProgressButton *_downloadProgressButton;
+    long long _downloadProgressType;
     long long _likeDislikeButtonState;
     UIButton *_shareButton;
     id<MusicEntityProductHeaderLockupViewDelegate> _delegate;
     MusicEntityViewProductHeaderLockupContentDescriptor *_productHeaderLockupContentDescriptor;
 }
 
-@property (readonly, nonatomic) UIButton *addToLibraryButton; // @synthesize addToLibraryButton=_addToLibraryButton;
-@property (nonatomic) long long addToLibraryButtonState; // @synthesize addToLibraryButtonState=_addToLibraryButtonState;
 @property (readonly, nonatomic) UIButton *contextualActionsButton; // @synthesize contextualActionsButton=_contextualActionsButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MusicEntityProductHeaderLockupViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) double downloadProgress; // @synthesize downloadProgress=_downloadProgress;
+@property (readonly, nonatomic) MusicDownloadProgressButton *downloadProgressButton; // @synthesize downloadProgressButton=_downloadProgressButton;
+@property (nonatomic) long long downloadProgressType; // @synthesize downloadProgressType=_downloadProgressType;
 @property (readonly, nonatomic) NSString *editableText;
 @property (nonatomic) BOOL editableTitleShouldBecomeFirstResponder; // @synthesize editableTitleShouldBecomeFirstResponder=_editableTitleShouldBecomeFirstResponder;
 @property (nonatomic, getter=isEditing) BOOL editing; // @synthesize editing=_editing;
@@ -59,20 +60,19 @@
 + (double)maximumRowHeightForHorizontalLockupContentDescriptor:(id)arg1 traitCollection:(id)arg2;
 - (void).cxx_destruct;
 - (void)_addSongsButtonTapped:(id)arg1;
-- (void)_addToLibraryButtonTapped:(id)arg1;
-- (struct CGRect)_adjustAvailableContentBounds:(struct CGRect)arg1 forActionButton:(id)arg2;
+- (struct CGRect)_adjustAvailableContentBounds:(struct CGRect)arg1 forActionControl:(id)arg2;
 - (struct CGRect)_adjustAvailableContentBounds:(struct CGRect)arg1 forActionView:(id)arg2;
 - (void)_artworkViewImageDidChange;
 - (void)_cameraButtonTapped:(id)arg1;
 - (void)_contentDescriptorDidChange:(id)arg1;
 - (void)_contextualActionsButtonTapped:(id)arg1;
-- (id)_currentAddToLibraryButtonImage;
+- (void)_downloadProgressButtonTapped:(id)arg1;
 - (void)_editButtonTapped:(id)arg1;
 - (id)_genericActionButtonWithImage:(id)arg1;
 - (id)_genericActionButtonWithImageName:(id)arg1;
 - (id)_genericActionButtonWithText:(id)arg1;
 - (void)_handlePlayButtonTappedWithAction:(unsigned long long)arg1;
-- (void)_layoutButtonsWithAvailableContentBounds:(struct CGRect)arg1 insetContentBounds:(struct CGRect)arg2 availableContentBoundsAdjustmentBlock:(CDUnknownBlockType)arg3;
+- (void)_layoutButtonsWithAvailableContentBounds:(struct CGRect)arg1 insetContentBounds:(struct CGRect)arg2;
 - (void)_layoutEditingSubviews;
 - (void)_layoutEditingSubviewsForEditing:(BOOL)arg1 editingViewsAlpha:(double)arg2;
 - (void)_layoutSubviewsForCompactHorizontalSizeClass;
@@ -81,11 +81,12 @@
 - (id)_newTextView;
 - (void)_refreshButtonTapped:(id)arg1;
 - (id)_refreshImage;
-- (void)_setFrameOfActionButton:(id)arg1 basedOnAvailableContentBounds:(struct CGRect)arg2 insetContentBounds:(struct CGRect)arg3 customHeight:(double)arg4 maximumHeightForCentering:(double)arg5;
+- (void)_setFrameOfActionButton:(id)arg1 basedOnAvailableContentBounds:(struct CGRect)arg2 customHeight:(double)arg3 maximumHeightForCentering:(double)arg4;
+- (void)_setFrameOfActionControl:(id)arg1 basedOnAvailableContentBounds:(struct CGRect)arg2 maximumHeightForCentering:(double)arg3 buttonHeightForCentering:(double)arg4 buttonBaselineOffset:(double)arg5;
 - (void)_shareButtonTapped:(id)arg1;
 - (BOOL)_shouldEnableArtworkViewUserInteraction;
 - (BOOL)_shouldShowPlayButton;
-- (void)_updateColorsOfGenericActionButton:(id)arg1;
+- (void)_updateColorsOfGenericActionControl:(id)arg1;
 - (void)_updateColorsOfGenericActionView:(id)arg1;
 - (void)_updateEditableTextPlaceholderViewVisibility;
 - (void)_updateLikeDislikeButtonStateAppearance;

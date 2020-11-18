@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<_SFBrowserToolbarDataSource> dataSource; // @synthesize dataSource=_dataSource;
 
 - (void).cxx_destruct;
+- (double)URLFieldHorizontalMargin;
 - (id)_toolbarItems;
 - (void)actionButtonPressed;
 - (void)addBookmarkButtonPressed;

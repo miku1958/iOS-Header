@@ -46,6 +46,7 @@
     BOOL _backTorchPatternSupported;
     BOOL _frontTorchPatternSupported;
     BOOL _hasSystemTelephonyOfAnyKind;
+    BOOL _forceTouchSupported;
     BOOL _internalInstall;
     BOOL _lockButtonAppropriateForShutter;
     BOOL _shutterSoundRequired;
@@ -81,6 +82,7 @@
 @property (readonly, nonatomic, getter=isBackTimelapseSupported) BOOL backTimelapseSupported; // @synthesize backTimelapseSupported=_backTimelapseSupported;
 @property (readonly, nonatomic, getter=isBackTorchPatternSupported) BOOL backTorchPatternSupported; // @synthesize backTorchPatternSupported=_backTorchPatternSupported;
 @property (readonly, nonatomic, getter=isBackTorchSupported) BOOL backTorchSupported; // @synthesize backTorchSupported=_backTorchSupported;
+@property (readonly, nonatomic, getter=isForceTouchSupported) BOOL forceTouchSupported; // @synthesize forceTouchSupported=_forceTouchSupported;
 @property (readonly, nonatomic, getter=isFront1080p120Supported) BOOL front1080p120Supported; // @synthesize front1080p120Supported=_front1080p120Supported;
 @property (readonly, nonatomic, getter=isFront4kVideoSupported) BOOL front4kVideoSupported; // @synthesize front4kVideoSupported=_front4kVideoSupported;
 @property (readonly, nonatomic, getter=isFront60FPSVideoSupported) BOOL front60FPSVideoSupported; // @synthesize front60FPSVideoSupported=_front60FPSVideoSupported;

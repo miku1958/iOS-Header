@@ -18,6 +18,8 @@
 - (id)_accessibilityFirstVisibleItem;
 - (id)_accessibilityFooterElement;
 - (id)_accessibilityFuzzyHitTest:(struct CGPoint *)arg1 withEvent:(id)arg2;
+- (BOOL)_accessibilityHasAccessibleOrContainerSubview;
+- (BOOL)_accessibilityHasAccessibleOrContainerSubviewWithSubviewTree:(id)arg1;
 - (id)_accessibilityHeaderElement;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_accessibilityInitializeInternalData;

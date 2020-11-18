@@ -17,7 +17,6 @@
 - (id)_accessibilityNonVisibleElements:(BOOL)arg1;
 - (id)_accessibilityNonVisibleElementsAfterVisible;
 - (id)_accessibilityNonVisibleElementsBeforeVisible;
-- (BOOL)accessibilityScroll:(long long)arg1;
 - (void)dealloc;
 - (void)viewDidLoad;
 

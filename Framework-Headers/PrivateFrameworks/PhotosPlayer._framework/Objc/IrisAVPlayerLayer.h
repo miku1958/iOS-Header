@@ -15,8 +15,11 @@
 }
 
 - (void).cxx_destruct;
+- (void)_forceLayout;
 - (id)init;
+- (void)setBounds:(struct CGRect)arg1;
 - (void)setPlayer:(id)arg1;
+- (void)setVideoGravity:(id)arg1;
 
 @end
 

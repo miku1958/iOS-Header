@@ -24,7 +24,7 @@
 #import <SpotlightUI/UITextFieldDelegate-Protocol.h>
 #import <SpotlightUI/_SFSpeechRecognitionTaskDelegatePrivate-Protocol.h>
 
-@class NSArray, NSDate, NSMutableSet, NSString, NSTimer, SFSpeechRecognitionTask, SFSpeechRecognizer, SPFeedbackVoiceSearch, SPUISearchDictationView, SPUISearchFirstTimeViewController, SPUISearchHeader, SPUISearchResultsActionManager, SPUISearchTableView, UIPanGestureRecognizer, UISwipeGestureRecognizer, UITapGestureRecognizer, UIView, _UIBackdropView;
+@class NSDate, NSLayoutConstraint, NSMutableSet, NSString, NSTimer, SFSpeechRecognitionTask, SFSpeechRecognizer, SPFeedbackVoiceSearch, SPUISearchDictationView, SPUISearchFirstTimeViewController, SPUISearchHeader, SPUISearchResultsActionManager, SPUISearchTableView, UIPanGestureRecognizer, UISwipeGestureRecognizer, UITapGestureRecognizer, UIView, _UIBackdropView;
 
 @interface SPUISearchViewController : UIViewController <SPUISearchResultsActionManagerDelegate, SPUISearchFirstTimeViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, SPUISearchTableViewDelegate, SPSearchAgentDelegate, UISearchBarDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate, SPUISearchHeaderDelegate, _SFSpeechRecognitionTaskDelegatePrivate, SFSpeechRecognizerDelegate, SearchUIDelegate, SPUISearchViewControllerPresentation, SPUISearchPluginClientInterface, SPUISearchDictationViewProtocol>
 {
@@ -65,9 +65,13 @@
     SPUISearchDictationView *_flamesView;
     NSString *_voiceQueryIdentifier;
     SPFeedbackVoiceSearch *_voiceSearchFeedback;
+    BOOL _disabledUpdates;
     BOOL _userIsTyping;
+    BOOL _avoidRenderFeedback;
     BOOL _isTransitioningZKWBackdropView;
     BOOL _userInitiatedScrollInProgress;
+    int _updateSequenceNumber;
+    int _lastRenderUpdateSequenceNumber;
     unsigned long long _presentsFromEdge;
     NSDate *_deactivateTime;
     NSTimer *_hysteresisTimer;
@@ -82,36 +86,40 @@
     double _zkwExpirationInterval;
     NSTimer *_clearSearchTimer;
     double _clearSearchTimeInterval;
-    double _clippingHeight;
-    NSArray *_clippedCells;
     UIView *_topDividerView;
     unsigned long long _currentPresentationSource;
     NSString *_lastSearchQuery;
+    UIView *_replicatorView;
+    NSLayoutConstraint *_replicatorViewHeightConstraint;
 }
 
 @property (readonly, nonatomic) BOOL _hasResults;
+@property BOOL avoidRenderFeedback; // @synthesize avoidRenderFeedback=_avoidRenderFeedback;
 @property double clearSearchTimeInterval; // @synthesize clearSearchTimeInterval=_clearSearchTimeInterval;
 @property (strong) NSTimer *clearSearchTimer; // @synthesize clearSearchTimer=_clearSearchTimer;
-@property (strong) NSArray *clippedCells; // @synthesize clippedCells=_clippedCells;
-@property double clippingHeight; // @synthesize clippingHeight=_clippingHeight;
 @property (nonatomic) unsigned long long currentPresentationSource; // @synthesize currentPresentationSource=_currentPresentationSource;
 @property (strong) NSDate *deactivateTime; // @synthesize deactivateTime=_deactivateTime;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL disabledUpdates; // @synthesize disabledUpdates=_disabledUpdates;
 @property (readonly, nonatomic, getter=isFadingOut) BOOL fadingOut;
 @property (readonly) unsigned long long hash;
 @property (strong) NSTimer *hysteresisTimer; // @synthesize hysteresisTimer=_hysteresisTimer;
 @property BOOL isTransitioningZKWBackdropView; // @synthesize isTransitioningZKWBackdropView=_isTransitioningZKWBackdropView;
 @property (strong) NSString *lastQuery; // @synthesize lastQuery=_lastQuery;
+@property int lastRenderUpdateSequenceNumber; // @synthesize lastRenderUpdateSequenceNumber=_lastRenderUpdateSequenceNumber;
 @property (strong, nonatomic) NSString *lastSearchQuery; // @synthesize lastSearchQuery=_lastSearchQuery;
 @property unsigned long long minimumQueryLengthForTableUpdate; // @synthesize minimumQueryLengthForTableUpdate=_minimumQueryLengthForTableUpdate;
 @property (nonatomic) unsigned long long presentsFromEdge; // @synthesize presentsFromEdge=_presentsFromEdge;
 @property (strong) NSMutableSet *purgeableTableViewCells; // @synthesize purgeableTableViewCells=_purgeableTableViewCells;
 @property unsigned long long queryStartTime; // @synthesize queryStartTime=_queryStartTime;
+@property (strong) UIView *replicatorView; // @synthesize replicatorView=_replicatorView;
+@property (strong) NSLayoutConstraint *replicatorViewHeightConstraint; // @synthesize replicatorViewHeightConstraint=_replicatorViewHeightConstraint;
 @property (readonly) Class superclass;
 @property (strong) NSDate *timeOfLastZKWUpdate; // @synthesize timeOfLastZKWUpdate=_timeOfLastZKWUpdate;
 @property (strong) UIView *topDividerView; // @synthesize topDividerView=_topDividerView;
 @property double typingHysteresis; // @synthesize typingHysteresis=_typingHysteresis;
+@property int updateSequenceNumber; // @synthesize updateSequenceNumber=_updateSequenceNumber;
 @property BOOL userInitiatedScrollInProgress; // @synthesize userInitiatedScrollInProgress=_userInitiatedScrollInProgress;
 @property BOOL userIsTyping; // @synthesize userIsTyping=_userIsTyping;
 @property (readonly, nonatomic, getter=isVisible) BOOL visible;
@@ -164,8 +172,6 @@
 - (BOOL)_showingKeyboard;
 - (void)_springBoardDidGoToHomeScreen:(id)arg1;
 - (void)_triggerDismissForGesture:(id)arg1;
-- (void)_updateClipping;
-- (void)_updateFeedback:(id)arg1 forSectionIndex:(int)arg2;
 - (void)_updateFirstTimeExperienceSeenCount;
 - (void)_updateGestureRecognizerEnabledStatus;
 - (void)_updateQuery;
@@ -250,7 +256,6 @@
 - (void)setSearchMode:(long long)arg1;
 - (void)setTableViewShown:(BOOL)arg1;
 - (void)setVoiceQueryIdentifier:(id)arg1 reason:(id)arg2;
-- (BOOL)shouldHideExpandabilityOfSections;
 - (BOOL)shouldShowMoreButtonForSection:(unsigned long long)arg1;
 - (void)speechRecognitionDidDetectSpeech:(id)arg1;
 - (void)speechRecognitionTask:(id)arg1 didFinishRecognition:(id)arg2;
@@ -282,6 +287,7 @@
 - (BOOL)textFieldShouldClear:(id)arg1;
 - (void)timeToStartDictation:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateHeaderHeights;
 - (void)updatePresentationProgress:(double)arg1;
 - (void)updateZKWBlurProgress:(double)arg1;
 - (void)userFinishedTyping;
@@ -291,6 +297,7 @@
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
+- (id)visibleResultsInSection:(long long)arg1;
 - (void)willBeginDismissing:(BOOL)arg1;
 - (void)willBeginPresentingAnimated:(BOOL)arg1;
 - (void)willBeginPresentingAnimated:(BOOL)arg1 fromSource:(unsigned long long)arg2;

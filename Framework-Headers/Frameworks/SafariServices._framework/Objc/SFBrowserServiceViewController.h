@@ -7,12 +7,15 @@
 #import <SafariServices/_SFBrowserContentViewController.h>
 
 #import <SafariServices/SFServiceViewControllerProtocol-Protocol.h>
+#import <SafariServices/_SFActivityDelegate-Protocol.h>
+#import <SafariServices/_SFAddBookmarkActivityDelegate-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SFBrowserServiceViewController : _SFBrowserContentViewController <SFServiceViewControllerProtocol>
+@interface SFBrowserServiceViewController : _SFBrowserContentViewController <_SFActivityDelegate, _SFAddBookmarkActivityDelegate, SFServiceViewControllerProtocol>
 {
+    CDUnknownBlockType _customActivitiesFetchCompletionHandler;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,20 +25,25 @@ __attribute__((visibility("hidden")))
 
 + (id)_exportedInterface;
 + (id)_remoteViewControllerInterface;
+- (void).cxx_destruct;
 - (void)_didLoadWebView;
 - (void)_dismiss;
+- (void)_fetchCustomActivitiesForURL:(id)arg1 title:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_hostApplicationDidEnterBackground;
 - (void)_hostApplicationWillEnterForeground;
 - (void)_notifyInitialLoadDidFinish:(BOOL)arg1;
 - (BOOL)_redirectToHostAppWithNavigationResult:(id)arg1 options:(id)arg2;
-- (void)_requestToShowActionSheetForURL:(id)arg1 title:(id)arg2 fromRect:(struct CGRect)arg3;
+- (void)_updateRemoteSwipeGestureState;
 - (void)_updateStatusBarAppearance;
 - (void)_willAppearInRemoteViewController;
-- (void)addCurrentPageToBookmarks;
+- (void)addBookmarkActivityDidFinish:(id)arg1;
+- (void)didFetchHostAppCustomActivities:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadURL:(id)arg1;
 - (void)repostNotificationInViewService:(id)arg1;
+- (void)safariActivity:(id)arg1 didFinish:(BOOL)arg2;
 - (void)setEntersReaderIfAvailable:(BOOL)arg1;
+- (void)setIsRunningTransitionAnimation:(BOOL)arg1;
 - (void)setShowingLinkPreview:(BOOL)arg1;
 - (void)setTintColor:(id)arg1;
 

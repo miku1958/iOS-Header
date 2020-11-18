@@ -31,7 +31,6 @@
 - (id)keysForValuesToObserveForAdornments;
 - (id)keysForValuesToObserveForRedrawing;
 - (id)keysForValuesToObserveForUndo;
-- (void)translateBy:(struct CGPoint)arg1;
 
 @end
 

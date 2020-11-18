@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_axPhotoDescriptionFromItem:(id)arg1;
-- (void)didLoad;
+- (void)loadWithHints:(id)arg1;
 
 @end
 

@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSLayoutConstraint *topInsetConstraint; // @synthesize topInsetConstraint=_topInsetConstraint;
 
 - (void).cxx_destruct;
+- (id)accessibilityLabel;
 - (void)addLayoutConstraints;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;

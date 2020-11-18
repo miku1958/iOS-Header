@@ -79,9 +79,11 @@
     BOOL _drawsOwnRowSeparators;
     BOOL _usesVibrantSeparatorOverlayDrawing;
     BOOL _usesInsetMargin;
+    UIColor *_rowSeparatorColor;
 }
 
 @property (nonatomic) BOOL drawsOwnRowSeparators; // @synthesize drawsOwnRowSeparators=_drawsOwnRowSeparators;
+@property (strong, nonatomic) UIColor *rowSeparatorColor; // @synthesize rowSeparatorColor=_rowSeparatorColor;
 @property (nonatomic) BOOL usesInsetMargin; // @synthesize usesInsetMargin=_usesInsetMargin;
 @property (nonatomic) BOOL usesVibrantSeparatorOverlayDrawing; // @synthesize usesVibrantSeparatorOverlayDrawing=_usesVibrantSeparatorOverlayDrawing;
 

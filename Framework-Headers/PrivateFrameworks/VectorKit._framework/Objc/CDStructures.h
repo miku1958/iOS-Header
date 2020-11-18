@@ -2202,18 +2202,6 @@ struct map<std::__1::basic_string<char>, unsigned long, std::__1::less<std::__1:
     } __tree_;
 };
 
-struct map<unsigned int, ggl::RibbonBatch<ggl::TransitRibbonDescriptor>*, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, ggl::RibbonBatch<ggl::TransitRibbonDescriptor>*>>> {
-    struct __tree<std::__1::__value_type<unsigned int, ggl::RibbonBatch<ggl::TransitRibbonDescriptor>*>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, ggl::RibbonBatch<ggl::TransitRibbonDescriptor>*>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, ggl::RibbonBatch<ggl::TransitRibbonDescriptor>*>>> {
-        struct __tree_node<std::__1::__value_type<unsigned int, ggl::RibbonBatch<ggl::TransitRibbonDescriptor>*>, void *> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, ggl::RibbonBatch<ggl::TransitRibbonDescriptor>*>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __first_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, ggl::RibbonBatch<ggl::TransitRibbonDescriptor>*>, std::__1::less<unsigned int>, true>> {
-            unsigned long long __first_;
-        } __pair3_;
-    } __tree_;
-};
-
 struct map<vk::Anchor *, float, std::__1::less<vk::Anchor *>, std::__1::allocator<std::__1::pair<vk::Anchor *const, float>>> {
     struct __tree<std::__1::__value_type<vk::Anchor *, float>, std::__1::__map_value_compare<vk::Anchor *, std::__1::__value_type<vk::Anchor *, float>, std::__1::less<vk::Anchor *>, true>, std::__1::allocator<std::__1::__value_type<vk::Anchor *, float>>> {
         struct __tree_node<std::__1::__value_type<vk::Anchor *, float>, void *> *__begin_node_;

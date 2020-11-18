@@ -11,11 +11,11 @@
 @interface WebAppViewController : UIViewController
 {
     BOOL _setupRootViewColor;
-    long long _statusBarStyle;
+    unsigned long long _statusBarStyle;
     WebAppController *_webAppController;
 }
 
-@property (nonatomic) long long statusBarStyle; // @synthesize statusBarStyle=_statusBarStyle;
+@property (nonatomic) unsigned long long statusBarStyle; // @synthesize statusBarStyle=_statusBarStyle;
 @property (weak, nonatomic) WebAppController *webAppController; // @synthesize webAppController=_webAppController;
 
 - (void).cxx_destruct;

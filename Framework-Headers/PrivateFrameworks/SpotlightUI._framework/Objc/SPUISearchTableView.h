@@ -35,6 +35,7 @@
 - (BOOL)allowsHeaderViewsToFloat;
 - (void)clearExpansionState;
 - (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
+- (struct UIEdgeInsets)layoutMargins;
 - (void)layoutMarginsDidChange;
 - (void)layoutSublayersOfLayer:(id)arg1;
 - (BOOL)sectionIsExpanded:(long long)arg1;

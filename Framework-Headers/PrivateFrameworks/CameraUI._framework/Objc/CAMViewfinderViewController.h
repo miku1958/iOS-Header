@@ -359,7 +359,6 @@
 - (BOOL)_isShowingFilterGrid;
 - (BOOL)_isZoomAllowed;
 - (BOOL)_modeChangeSwipeMatchesExposureBiasPanDirection;
-- (void)_notifyCameraRollDidPersistAssetWithUUID:(id)arg1 captureSession:(unsigned short)arg2;
 - (long long)_numberOfTicksForTimerDuration:(long long)arg1;
 - (id)_panoramaCaptureRequestWithCurrentSettings;
 - (void)_pausePairedVideoCaptureOnControllerForModeIfNecessary:(long long)arg1 isShowingCameraRoll:(BOOL)arg2;
@@ -594,8 +593,8 @@
 - (void)stopShowingLivePhotoIndicator;
 - (unsigned long long)supportedInterfaceOrientations;
 - (double)timeIntervalForDuration:(long long)arg1;
-- (void)timelapseController:(id)arg1 generatedThumbnailImage:(id)arg2 forAssetUUID:(id)arg3 inCaptureSession:(unsigned short)arg4;
-- (void)timelapseController:(id)arg1 persistedPlaceholderResult:(id)arg2;
+- (void)timelapseController:(id)arg1 generatedPlaceholderResult:(id)arg2 withThumbnailImage:(id)arg3 forAssetUUID:(id)arg4 inCaptureSession:(unsigned short)arg5;
+- (void)timelapseController:(id)arg1 persistedPlaceholderResult:(id)arg2 error:(id)arg3;
 - (void)timelapseControllerStarted:(id)arg1;
 - (void)timelapseControllerStopped:(id)arg1;
 - (void)updateControlVisibilityAnimated:(BOOL)arg1;

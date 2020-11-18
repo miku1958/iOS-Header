@@ -33,6 +33,7 @@
 - (unsigned long long)_addChapterMetadataItem:(id)arg1 timeRange:(CDStruct_e83c9415)arg2 toChapters:(id)arg3 fromIndex:(unsigned long long)arg4;
 - (id)_assetInspector;
 - (id)_assetInspectorLoader;
+- (id)_availableCanonicalizedChapterLanguages;
 - (id)_chapterDataTypeForMediaSubType:(int)arg1;
 - (id)_chapterMetadataGroupsBestMatchingPreferredLanguages:(id)arg1 containingItemsWithCommonKeys:(id)arg2;
 - (id)_chapterMetadataGroupsWithFigChapterGroups:(id)arg1 titleLanguage:(id)arg2 containingItemsWithCommonKeys:(id)arg3;

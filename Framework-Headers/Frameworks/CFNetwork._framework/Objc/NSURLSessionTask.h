@@ -93,6 +93,7 @@
 - (const struct XCredentialStorage *)_createXCredentialStorage;
 - (const struct XURLCache *)_createXURLCache;
 - (void)_initializeTimingDataWithSessionConfiguration:(id)arg1;
+- (void)_onSessionQueue_cleanupAndBreakCycles;
 - (void)_onqueue_adjustBytesPerSecondLimit:(long long)arg1;
 - (void)_onqueue_adjustPriorityHint:(float)arg1;
 - (void)_onqueue_releasePowerAsssertion;
@@ -101,7 +102,6 @@
 - (void)_setExplicitStorageSession:(struct __CFURLStorageSession *)arg1;
 - (void)_setSocketProperties:(struct __CFDictionary *)arg1 connectionProperties:(struct __CFDictionary *)arg2;
 - (void)cancel;
-- (void)cleanupAndBreakCycles;
 - (long long)computeAdjustedPoolPriority;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithOriginalRequest:(id)arg1 updatedRequest:(id)arg2 ident:(unsigned long long)arg3 session:(id)arg4;

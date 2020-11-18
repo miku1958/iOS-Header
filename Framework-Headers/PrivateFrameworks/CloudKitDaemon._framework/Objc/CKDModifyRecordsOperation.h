@@ -18,11 +18,13 @@ __attribute__((visibility("hidden")))
     BOOL _shouldOnlySaveAssetContent;
     BOOL _haveOutstandingMetadatas;
     BOOL _atomic;
+    BOOL _shouldReportRecordsInFlight;
     int _numPCSRetries;
     CDUnknownBlockType _saveProgressBlock;
     CDUnknownBlockType _saveCompletionBlock;
     CDUnknownBlockType _deleteCompletionBlock;
     CDUnknownBlockType _uploadCompletionBlock;
+    CDUnknownBlockType _recordsInFlightBlock;
     NSArray *_recordsToSave;
     NSArray *_recordIDsToDelete;
     NSDictionary *_recordIDsToDeleteToEtags;
@@ -48,6 +50,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *recordIDsToDelete; // @synthesize recordIDsToDelete=_recordIDsToDelete;
 @property (strong, nonatomic) NSDictionary *recordIDsToDeleteToEtags; // @synthesize recordIDsToDeleteToEtags=_recordIDsToDeleteToEtags;
 @property (strong, nonatomic) NSMutableDictionary *recordsByServerID; // @synthesize recordsByServerID=_recordsByServerID;
+@property (copy, nonatomic) CDUnknownBlockType recordsInFlightBlock; // @synthesize recordsInFlightBlock=_recordsInFlightBlock;
 @property (strong, nonatomic) NSArray *recordsToSave; // @synthesize recordsToSave=_recordsToSave;
 @property (nonatomic) BOOL retriedRecords; // @synthesize retriedRecords=_retriedRecords;
 @property (nonatomic) BOOL retryPCSFailures; // @synthesize retryPCSFailures=_retryPCSFailures;
@@ -55,6 +58,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long savePolicy; // @synthesize savePolicy=_savePolicy;
 @property (copy, nonatomic) CDUnknownBlockType saveProgressBlock; // @synthesize saveProgressBlock=_saveProgressBlock;
 @property (nonatomic) BOOL shouldOnlySaveAssetContent; // @synthesize shouldOnlySaveAssetContent=_shouldOnlySaveAssetContent;
+@property (nonatomic) BOOL shouldReportRecordsInFlight; // @synthesize shouldReportRecordsInFlight=_shouldReportRecordsInFlight;
 @property (readonly, nonatomic) CKDProtocolTranslator *translator;
 @property (copy, nonatomic) CDUnknownBlockType uploadCompletionBlock; // @synthesize uploadCompletionBlock=_uploadCompletionBlock;
 
@@ -82,6 +86,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_prepareAsset:(id)arg1 recordKey:(id)arg2 record:(id)arg3 error:(id *)arg4;
 - (id)_prepareAssetsForUpload;
 - (BOOL)_prepareRecordsForSave;
+- (void)_reportRecordsInFlight;
 - (BOOL)_topoSortRecords;
 - (void)_unwrapRecordPCSForShare:(id)arg1;
 - (void)_unwrapRecordPCSForZone:(id)arg1;

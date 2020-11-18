@@ -7,16 +7,18 @@
 #import <objc/NSObject.h>
 
 @class NSMutableOrderedSet;
-@protocol CNAutocompleteFetchDelegate, CNFuture;
+@protocol CNAutocompleteFetchDelegate, CNFuture, CNPromise;
 
 @interface CNAutocompleteQueryResponsePreparer : NSObject
 {
     NSMutableOrderedSet *_previouslyReturnedResults;
     id<CNAutocompleteFetchDelegate> _delegate;
     id<CNFuture> _priorityResultsFuture;
+    id<CNPromise> _matchingPriorityResultsPromise;
 }
 
 @property (readonly, weak, nonatomic) id<CNAutocompleteFetchDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) id<CNPromise> matchingPriorityResultsPromise; // @synthesize matchingPriorityResultsPromise=_matchingPriorityResultsPromise;
 @property (strong, nonatomic) id<CNFuture> priorityResultsFuture; // @synthesize priorityResultsFuture=_priorityResultsFuture;
 
 - (void).cxx_destruct;

@@ -49,7 +49,8 @@
     double _parallaxFactor;
     double _barsAreaVerticalOutset;
     double _defaultMaximumZoomFactor;
-    double _maximumInitialZoomToFillScale;
+    double _maximumInitialZoomToFillScaleForCompactSizeClass;
+    double _maximumInitialZoomToFillScaleForRegularSizeClass;
     double _doubleTapZoomFactor;
     double _videoPauseThreshold;
     double _livePhotoInteractionThreshold;
@@ -94,7 +95,8 @@
 @property (nonatomic) double interpageSpacing; // @synthesize interpageSpacing=_interpageSpacing;
 @property (nonatomic) double livePhotoInteractionThreshold; // @synthesize livePhotoInteractionThreshold=_livePhotoInteractionThreshold;
 @property (nonatomic) BOOL lockScrollDuringLivePhotoPlayback; // @synthesize lockScrollDuringLivePhotoPlayback=_lockScrollDuringLivePhotoPlayback;
-@property (nonatomic) double maximumInitialZoomToFillScale; // @synthesize maximumInitialZoomToFillScale=_maximumInitialZoomToFillScale;
+@property (nonatomic) double maximumInitialZoomToFillScaleForCompactSizeClass; // @synthesize maximumInitialZoomToFillScaleForCompactSizeClass=_maximumInitialZoomToFillScaleForCompactSizeClass;
+@property (nonatomic) double maximumInitialZoomToFillScaleForRegularSizeClass; // @synthesize maximumInitialZoomToFillScaleForRegularSizeClass=_maximumInitialZoomToFillScaleForRegularSizeClass;
 @property (nonatomic) long long minNavigationDistanceForFastRegime; // @synthesize minNavigationDistanceForFastRegime=_minNavigationDistanceForFastRegime;
 @property (nonatomic) long long minNavigationDistanceForQuickPagingRegime; // @synthesize minNavigationDistanceForQuickPagingRegime=_minNavigationDistanceForQuickPagingRegime;
 @property (nonatomic) double pagingFrictionAdjustment; // @synthesize pagingFrictionAdjustment=_pagingFrictionAdjustment;

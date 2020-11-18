@@ -7,27 +7,32 @@
 #import <SearchUI/SearchUITableViewController.h>
 
 @class NSArray, UIColor;
-@protocol SearchUIResult;
+@protocol SearchUIFeedbackDelegate, SearchUIResult;
 
 @interface SearchUICardViewController : SearchUITableViewController
 {
+    id<SearchUIResult> _result;
     unsigned long long _style;
     NSArray *_cardSectionViews;
-    id<SearchUIResult> _result;
+    id<SearchUIFeedbackDelegate> _feedbackDelegate;
 }
 
 @property (strong) NSArray *cardSectionViews; // @synthesize cardSectionViews=_cardSectionViews;
-@property (strong) id<SearchUIResult> result; // @synthesize result=_result;
+@property (weak, nonatomic) id<SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
+@property (strong, nonatomic) id<SearchUIResult> result; // @synthesize result=_result;
 @property unsigned long long style; // @synthesize style=_style;
 @property (readonly) UIColor *textColor;
 
 + (id)cardViewControllerForResult:(id)arg1 style:(unsigned long long)arg2;
++ (id)cardViewControllerForResult:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
 + (double)separatorHeight;
 - (void).cxx_destruct;
 - (id)fallbackURLForIndexPath:(id)arg1;
 - (id)initWithResult:(id)arg1 style:(unsigned long long)arg2;
+- (id)initWithResult:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
 - (id)initWithResult:(id)arg1 style:(unsigned long long)arg2 inline:(BOOL)arg3;
-- (void)openPunchout:(id)arg1 fallbackURL:(id)arg2;
+- (id)initWithResult:(id)arg1 style:(unsigned long long)arg2 inline:(BOOL)arg3 feedbackDelegate:(id)arg4;
+- (void)openPunchout:(id)arg1 fallbackURL:(id)arg2 fromSection:(id)arg3;
 - (id)punchoutsForIndexPath:(id)arg1;
 - (void)setupTableViewInsetsForTraitCollection:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

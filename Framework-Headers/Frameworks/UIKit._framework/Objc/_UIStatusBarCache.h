@@ -12,11 +12,13 @@ __attribute__((visibility("hidden")))
 @interface _UIStatusBarCache : NSObject
 {
     CPBitmapStore *_store;
+    BOOL _writeable;
 }
+
+@property (readonly, nonatomic, getter=isWriteable) BOOL writeable; // @synthesize writeable=_writeable;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (BOOL)_canCacheImages;
 - (void)cacheImage:(id)arg1 named:(id)arg2 forGroup:(id)arg3;
 - (id)imageNamed:(id)arg1 forGroup:(id)arg2 withScale:(double)arg3;
 - (id)init;

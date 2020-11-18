@@ -43,6 +43,7 @@
 @property BOOL hasHadSuccessfulQuery;
 @property (readonly) BOOL isArchived;
 @property BOOL isFiltered;
+@property (readonly, nonatomic) BOOL isUnnamedChat;
 @property (copy) NSString *lastAddressedLocalHandle;
 @property (strong) IMMessageItem *lastMessage;
 @property (copy) NSArray *participants;
@@ -66,6 +67,7 @@
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentationIncludingLastMessage;
+- (id)generateNewGroupID;
 - (id)initWithAccountID:(id)arg1 service:(id)arg2 guid:(id)arg3 groupID:(id)arg4 chatIdentifier:(id)arg5 participants:(id)arg6 roomName:(id)arg7 displayName:(id)arg8 lastAddressedLocalHandle:(id)arg9 properties:(id)arg10 state:(long long)arg11 style:(unsigned char)arg12 isFiltered:(BOOL)arg13 hasHadSuccessfulQuery:(BOOL)arg14;
 - (void)removeParticipant:(id)arg1;
 - (void)removeParticipants:(id)arg1;

@@ -231,8 +231,8 @@
 - (BOOL)_convertTransitLineKeys:(CDStruct_183601bc **)arg1 countKeys:(unsigned long long)arg2 lineIndices:(unsigned long long **)arg3;
 - (BOOL)_decodeLabelTextPlacementsFromStream:(CDStruct_8bf61218 *)arg1 count:(unsigned long long)arg2 firstFeature:(CDStruct_d374d81c *)arg3 featureStride:(unsigned long long)arg4 tilePrecision:(unsigned char)arg5;
 - (BOOL)_decodeTransitLabelsFromStream:(CDStruct_8bf61218 *)arg1 count:(unsigned long long)arg2 firstFeature:(CDStruct_58d0ca89 *)arg3 featureStride:(unsigned long long)arg4;
-- (void)_findJunctions;
-- (void)_findOverpasses;
+- (BOOL)_findJunctions;
+- (BOOL)_findOverpasses;
 - (BOOL)_handleGenericTile:(CDStruct_effb527d *)arg1;
 - (id)_initWithVMP4:(id)arg1 localizationData:(id)arg2 tileKey:(const struct _GEOTileKey *)arg3;
 - (unsigned long long)_makeSpaceForLabels:(unsigned long long)arg1;

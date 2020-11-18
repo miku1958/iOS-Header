@@ -19,6 +19,7 @@
     NSLock *_activeTileGroupLock;
     NSDictionary *_resourceNamesToPaths;
     NSSet *_allResourceNames;
+    NSSet *_allRegionalResourceNames;
     BOOL _needsToLoadTileGroupFromDisk;
     NSMutableArray *_tileGroupObservers;
     NSLock *_tileGroupObserversLock;
@@ -60,6 +61,7 @@
 - (void)addTileGroupObserver:(id)arg1 queue:(id)arg2;
 - (id)allRegionalResourceNames;
 - (id)allResourceNames;
+- (id)allResourcePaths;
 - (id)authToken;
 - (id)baseURLStringForTileKey:(const struct _GEOTileKey *)arg1;
 - (void)closeServerConnection;

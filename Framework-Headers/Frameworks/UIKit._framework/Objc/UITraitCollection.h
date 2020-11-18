@@ -13,7 +13,7 @@
 
 @interface UITraitCollection : NSObject <NSCopying, NSSecureCoding>
 {
-    CDStruct_a687ed74 _builtinTraits;
+    CDStruct_e384231c _builtinTraits;
     NSDictionary *_clientDefinedTraits;
 }
 
@@ -34,13 +34,14 @@
 + (id)traitCollectionWithForceTouchCapability:(long long)arg1;
 + (id)traitCollectionWithHorizontalSizeClass:(long long)arg1;
 + (id)traitCollectionWithInteractionModel:(unsigned long long)arg1;
++ (id)traitCollectionWithPrimaryInteractionModel:(unsigned long long)arg1;
 + (id)traitCollectionWithTouchLevel:(long long)arg1;
 + (id)traitCollectionWithTraitsFromCollections:(id)arg1;
 + (id)traitCollectionWithUserInterfaceIdiom:(long long)arg1;
 + (id)traitCollectionWithUserInterfaceStyle:(long long)arg1;
 + (id)traitCollectionWithVerticalSizeClass:(long long)arg1;
 - (long long)_compare:(id)arg1;
-- (id)_initWithBuiltinTraitStorage:(CDStruct_a687ed74 *)arg1 clientDefinedTraits:(id)arg2;
+- (id)_initWithBuiltinTraitStorage:(CDStruct_e384231c *)arg1 clientDefinedTraits:(id)arg2;
 - (BOOL)_matchesIntersectionWithTraitCollection:(id)arg1;
 - (id)_namedImageDescription;
 - (id)_valueForTraitNamed:(id)arg1;
@@ -54,6 +55,7 @@
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)interactionModel;
 - (BOOL)isEqual:(id)arg1;
+- (unsigned long long)primaryInteractionModel;
 - (long long)touchLevel;
 - (long long)userInterfaceStyle;
 

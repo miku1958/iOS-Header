@@ -17,8 +17,10 @@
     NSDate *_unlockEndDate;
     NSDate *_suStartDate;
     NSDate *_suEndDate;
+    NSDate *_firstUnlock;
 }
 
+@property (strong, nonatomic) NSDate *firstUnlock; // @synthesize firstUnlock=_firstUnlock;
 @property (strong, nonatomic) NSDate *suEndDate; // @synthesize suEndDate=_suEndDate;
 @property (strong, nonatomic) NSDate *suStartDate; // @synthesize suStartDate=_suStartDate;
 @property (strong, nonatomic) NSDate *unlockEndDate; // @synthesize unlockEndDate=_unlockEndDate;

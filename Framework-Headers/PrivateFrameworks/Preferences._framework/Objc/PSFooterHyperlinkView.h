@@ -37,6 +37,7 @@
 - (void)layoutSubviews;
 - (double)preferredHeightForWidth:(double)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct UIEdgeInsets)textInsets;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3;
 
 @end

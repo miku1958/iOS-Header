@@ -7,7 +7,6 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (SPUIImageSizing)
-+ (struct CGSize)ZKWIconSize;
 + (struct CGSize)nonZKWIconSize;
 - (id)spui_resizeImageToSize:(struct CGSize)arg1;
 - (id)spui_resizeImageToSize:(struct CGSize)arg1 preservingAspectRatio:(BOOL)arg2;

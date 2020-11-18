@@ -8,11 +8,12 @@
 
 #import <FuseUI/MusicEntityContentDescriptorViewConfiguring-Protocol.h>
 #import <FuseUI/MusicEntityHorizontalLockupViewDelegate-Protocol.h>
+#import <FuseUI/MusicEntityViewDownloadInformationObserving-Protocol.h>
 
 @class MusicEntityHorizontalLockupView, MusicEntityViewContentDescriptor, NSString;
 @protocol MusicEntityValueProviding;
 
-@interface MusicEntityHorizontalLockupTableViewHeaderFooterView : MusicTableViewSelectableHeaderFooterView <MusicEntityHorizontalLockupViewDelegate, MusicEntityContentDescriptorViewConfiguring>
+@interface MusicEntityHorizontalLockupTableViewHeaderFooterView : MusicTableViewSelectableHeaderFooterView <MusicEntityHorizontalLockupViewDelegate, MusicEntityContentDescriptorViewConfiguring, MusicEntityViewDownloadInformationObserving>
 {
     MusicEntityHorizontalLockupView *_lockupView;
 }
@@ -22,8 +23,10 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) id<MusicEntityValueProviding> entityValueProvider;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) MusicEntityHorizontalLockupView *lockupView; // @synthesize lockupView=_lockupView;
 @property (readonly) Class superclass;
 
++ (Class)lockupViewClass;
 + (double)maximumHeightForContentDescriptor:(id)arg1 width:(double)arg2 traitCollection:(id)arg3;
 - (void).cxx_destruct;
 - (void)dealloc;
@@ -31,6 +34,7 @@
 - (void)horizontalLockupViewDidSelectContextualActionsButton:(id)arg1;
 - (id)initWithReuseIdentifier:(id)arg1;
 - (void)layoutSubviews;
+- (void)setDownloadInformation:(struct MusicEntityDownloadInformation)arg1;
 - (void)setEntityDisabled:(BOOL)arg1;
 - (void)updateForAsynchronousPropertyLoadCompleted;
 

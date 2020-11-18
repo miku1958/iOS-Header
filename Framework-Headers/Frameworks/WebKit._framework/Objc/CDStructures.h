@@ -3317,7 +3317,6 @@ struct WebPageProxy {
     BOOL _field167;
     struct Vector<unsigned long long, 0, WTF::CrashOnOverflow, 16> _field168;
     unsigned int _field169;
-    BOOL _field170;
 };
 
 struct WebPlatformTouchPoint;

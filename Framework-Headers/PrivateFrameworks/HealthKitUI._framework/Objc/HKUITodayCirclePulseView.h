@@ -6,28 +6,23 @@
 
 #import <UIKit/UIView.h>
 
-@class HKUITodayCirclePulseBackground, NSDictionary, NSString, UIFont, UILabel;
+@class CALayer, HKUITodayCirclePulseBackground;
 
 @interface HKUITodayCirclePulseView : UIView
 {
     UIView *_backgroundContainer;
     HKUITodayCirclePulseBackground *_background;
-    UILabel *_label;
-    NSDictionary *_attributes;
-    NSDictionary *_overlayAttributes;
+    CALayer *_dayLabel;
     double _circleDiameter;
 }
 
-@property (strong, nonatomic) NSDictionary *attributes;
 @property (nonatomic) double circleDiameter; // @synthesize circleDiameter=_circleDiameter;
-@property (strong, nonatomic) UIFont *font;
-@property (copy, nonatomic) NSString *string;
 
 - (void).cxx_destruct;
 - (void)_layoutSubviews;
-- (void)_updateLabelAttributedString;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)pulse:(CDUnknownBlockType)arg1;
+- (void)setDayLabelContent:(id)arg1;
 
 @end
 

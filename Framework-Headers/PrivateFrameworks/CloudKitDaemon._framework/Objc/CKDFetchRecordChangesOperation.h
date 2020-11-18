@@ -6,7 +6,7 @@
 
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
-@class CKRecordZoneID, CKServerChangeToken, NSArray, NSData, NSObject;
+@class CKDRecordFetchAggregator, CKRecordZoneID, CKServerChangeToken, NSArray, NSData, NSObject;
 @protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
     long long _changeTypes;
     NSObject<OS_dispatch_group> *_fetchRecordsGroup;
     NSObject<OS_dispatch_group> *_pendingClientHandlingGroup;
+    CKDRecordFetchAggregator *_recordFetcher;
 }
 
 @property (nonatomic) long long changeTypes; // @synthesize changeTypes=_changeTypes;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *pendingClientHandlingGroup; // @synthesize pendingClientHandlingGroup=_pendingClientHandlingGroup;
 @property (strong, nonatomic) CKServerChangeToken *previousServerChangeToken; // @synthesize previousServerChangeToken=_previousServerChangeToken;
 @property (copy, nonatomic) CDUnknownBlockType recordChangedBlock; // @synthesize recordChangedBlock=_recordChangedBlock;
+@property (strong, nonatomic) CKDRecordFetchAggregator *recordFetcher; // @synthesize recordFetcher=_recordFetcher;
 @property (strong, nonatomic) CKRecordZoneID *recordZoneID; // @synthesize recordZoneID=_recordZoneID;
 @property (readonly, nonatomic) NSData *resultClientChangeToken; // @synthesize resultClientChangeToken=_resultClientChangeToken;
 @property (strong, nonatomic) NSData *resultClientChangeTokenData; // @synthesize resultClientChangeTokenData=_resultClientChangeTokenData;
@@ -51,7 +53,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleFetchChangesRequestFinished:(id)arg1;
+- (void)_handleFetchChangesRequestFinished:(id)arg1 callbackGroup:(id)arg2;
+- (void)_handleRecordChange:(id)arg1 callbackGroup:(id)arg2;
 - (void)_sendFetchChangesRequestWithChangeToken:(id)arg1;
 - (unsigned long long)activityStart;
 - (void)fillOutOperationResult:(id)arg1;

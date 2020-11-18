@@ -8,7 +8,7 @@
 
 #import <MusicCarDisplayUI/RURadioDataSourceDelegate-Protocol.h>
 
-@class MCDNoContentView, NSArray, NSString, RURadioDataSource, RadioRecentStationsController, UIView;
+@class MCDNoContentView, NSArray, NSIndexPath, NSString, RURadioDataSource, RadioRecentStationsController, RadioStation, UIActivityIndicatorView, UINavigationController, UIView;
 
 @interface MCDRadioViewController : MCD_OLD_TableViewController <RURadioDataSourceDelegate>
 {
@@ -18,13 +18,23 @@
     NSString *_featuredStationNamesBrief;
     MCDNoContentView *_placeholderView;
     UIView *_MCD_tableView;
+    BOOL _loadingRadioStation;
     RadioRecentStationsController *_recentStationsController;
+    NSIndexPath *_selectedIndexPath;
+    UINavigationController *_nowPlayingNavigationController;
+    UIActivityIndicatorView *_activityIndicator;
+    RadioStation *_currentlyPlayingRadioStation;
 }
 
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
+@property (strong, nonatomic) RadioStation *currentlyPlayingRadioStation; // @synthesize currentlyPlayingRadioStation=_currentlyPlayingRadioStation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL loadingRadioStation; // @synthesize loadingRadioStation=_loadingRadioStation;
+@property (strong, nonatomic) UINavigationController *nowPlayingNavigationController; // @synthesize nowPlayingNavigationController=_nowPlayingNavigationController;
 @property (weak, nonatomic) RadioRecentStationsController *recentStationsController; // @synthesize recentStationsController=_recentStationsController;
+@property (strong, nonatomic) NSIndexPath *selectedIndexPath; // @synthesize selectedIndexPath=_selectedIndexPath;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -34,12 +44,14 @@
 - (id)_stationFromIndexPath:(id)arg1;
 - (void)_updateViewForNetworkType:(long long)arg1;
 - (void)dealloc;
+- (void)didStartPlaying:(id)arg1;
 - (id)initWithPlayer:(id)arg1 serviceProvider:(id)arg2;
 - (void)radioDataSourceDidInvalidate:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)viewControllerForRowAtIndexPath:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

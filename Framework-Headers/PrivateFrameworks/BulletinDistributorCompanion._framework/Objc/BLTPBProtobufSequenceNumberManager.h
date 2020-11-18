@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BLTCircularBitBuffer, NSLock, NSString;
+@class BLTCircularBitBuffer, NSLock, NSString, NSUUID;
 
 @interface BLTPBProtobufSequenceNumberManager : NSObject
 {
@@ -14,12 +14,16 @@
     unsigned long long _recvSequenceNumber;
     NSLock *_sequenceNumberAccess;
     BLTCircularBitBuffer *_duplicateEntries;
-    BOOL _isInitialSendSequenceNumber;
+    unsigned long long _sessionState;
     NSString *_serviceName;
+    NSUUID *_currentSessionIdentifier;
+    NSUUID *_recvSessionIdentifier;
 }
 
-@property (nonatomic) BOOL isInitialSendSequenceNumber; // @synthesize isInitialSendSequenceNumber=_isInitialSendSequenceNumber;
+@property (readonly, nonatomic) NSUUID *currentSessionIdentifier; // @synthesize currentSessionIdentifier=_currentSessionIdentifier;
+@property (readonly, nonatomic) NSUUID *recvSessionIdentifier; // @synthesize recvSessionIdentifier=_recvSessionIdentifier;
 @property (readonly, copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
+@property (nonatomic) unsigned long long sessionState; // @synthesize sessionState=_sessionState;
 
 - (void).cxx_destruct;
 - (BOOL)_isSequenceNumberInOrder:(unsigned long long)arg1;
@@ -29,7 +33,7 @@
 - (id)initWithServiceName:(id)arg1;
 - (id)initWithServiceName:(id)arg1 duplicateCapacity:(unsigned long long)arg2;
 - (unsigned long long)nextSendSequenceNumber;
-- (long long)setRecvSequenceNumber:(unsigned long long)arg1 force:(BOOL)arg2;
+- (long long)setRecvSequenceNumber:(unsigned long long)arg1 recvSessionIdentifier:(id)arg2 force:(BOOL)arg3;
 
 @end
 

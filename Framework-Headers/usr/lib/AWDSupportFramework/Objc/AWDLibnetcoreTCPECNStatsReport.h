@@ -17,6 +17,9 @@
     unsigned long long _tcpECNConnPacketLossNoCE;
     unsigned long long _tcpECNConnRecvCE;
     unsigned long long _tcpECNConnRecvECE;
+    unsigned long long _tcpECNFallbackCE;
+    unsigned long long _tcpECNFallbackReorder;
+    unsigned long long _tcpECNFallbackSynLoss;
     unsigned long long _tcpECNNotSupportedPeer;
     unsigned long long _tcpECNRecvCE;
     unsigned long long _tcpECNRecvECE;
@@ -35,6 +38,9 @@
         unsigned int tcpECNConnPacketLossNoCE:1;
         unsigned int tcpECNConnRecvCE:1;
         unsigned int tcpECNConnRecvECE:1;
+        unsigned int tcpECNFallbackCE:1;
+        unsigned int tcpECNFallbackReorder:1;
+        unsigned int tcpECNFallbackSynLoss:1;
         unsigned int tcpECNNotSupportedPeer:1;
         unsigned int tcpECNRecvCE:1;
         unsigned int tcpECNRecvECE:1;
@@ -56,6 +62,9 @@
 @property (nonatomic) BOOL hasTcpECNConnPacketLossNoCE;
 @property (nonatomic) BOOL hasTcpECNConnRecvCE;
 @property (nonatomic) BOOL hasTcpECNConnRecvECE;
+@property (nonatomic) BOOL hasTcpECNFallbackCE;
+@property (nonatomic) BOOL hasTcpECNFallbackReorder;
+@property (nonatomic) BOOL hasTcpECNFallbackSynLoss;
 @property (nonatomic) BOOL hasTcpECNNotSupportedPeer;
 @property (nonatomic) BOOL hasTcpECNRecvCE;
 @property (nonatomic) BOOL hasTcpECNRecvECE;
@@ -73,6 +82,9 @@
 @property (nonatomic) unsigned long long tcpECNConnPacketLossNoCE; // @synthesize tcpECNConnPacketLossNoCE=_tcpECNConnPacketLossNoCE;
 @property (nonatomic) unsigned long long tcpECNConnRecvCE; // @synthesize tcpECNConnRecvCE=_tcpECNConnRecvCE;
 @property (nonatomic) unsigned long long tcpECNConnRecvECE; // @synthesize tcpECNConnRecvECE=_tcpECNConnRecvECE;
+@property (nonatomic) unsigned long long tcpECNFallbackCE; // @synthesize tcpECNFallbackCE=_tcpECNFallbackCE;
+@property (nonatomic) unsigned long long tcpECNFallbackReorder; // @synthesize tcpECNFallbackReorder=_tcpECNFallbackReorder;
+@property (nonatomic) unsigned long long tcpECNFallbackSynLoss; // @synthesize tcpECNFallbackSynLoss=_tcpECNFallbackSynLoss;
 @property (nonatomic) unsigned long long tcpECNNotSupportedPeer; // @synthesize tcpECNNotSupportedPeer=_tcpECNNotSupportedPeer;
 @property (nonatomic) unsigned long long tcpECNRecvCE; // @synthesize tcpECNRecvCE=_tcpECNRecvCE;
 @property (nonatomic) unsigned long long tcpECNRecvECE; // @synthesize tcpECNRecvECE=_tcpECNRecvECE;

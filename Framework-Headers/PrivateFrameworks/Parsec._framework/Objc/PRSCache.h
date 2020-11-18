@@ -6,26 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <Parsec/NSCacheDelegate-Protocol.h>
 #import <Parsec/NSFastEnumeration-Protocol.h>
 
-@class NSMutableOrderedSet, NSMutableSet, NSString;
+@class NSMapTable, NSMutableOrderedSet;
 
-@interface PRSCache : NSObject <NSCacheDelegate, NSFastEnumeration>
+@interface PRSCache : NSObject <NSFastEnumeration>
 {
     NSMutableOrderedSet *_cache;
-    NSMutableSet *_observers;
+    NSMapTable *_observers;
 }
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)addObject:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (id)cachedResultSetForQuery:(id)arg1;
+- (id)cachedResultSetForQuery:(id)arg1 withObserver:(id)arg2;
 - (id)copyCachedResult:(id)arg1;
 - (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;

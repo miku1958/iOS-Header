@@ -11,6 +11,7 @@
 @protocol MCDNowPlayingViewControllerDelegate <NSObject>
 
 @optional
+- (BOOL)nowPlayingViewController:(MCDNowPlayingViewController *)arg1 buttonShouldBeActive:(long long)arg2;
 - (void)nowPlayingViewController:(MCDNowPlayingViewController *)arg1 didSendAction:(long long)arg2 state:(long long)arg3;
 - (BOOL)nowPlayingViewController:(MCDNowPlayingViewController *)arg1 shouldDisplayButton:(long long)arg2 withImage:(out id *)arg3 tinted:(out BOOL *)arg4;
 - (BOOL)nowPlayingViewController:(MCDNowPlayingViewController *)arg1 shouldEnableButton:(long long)arg2;

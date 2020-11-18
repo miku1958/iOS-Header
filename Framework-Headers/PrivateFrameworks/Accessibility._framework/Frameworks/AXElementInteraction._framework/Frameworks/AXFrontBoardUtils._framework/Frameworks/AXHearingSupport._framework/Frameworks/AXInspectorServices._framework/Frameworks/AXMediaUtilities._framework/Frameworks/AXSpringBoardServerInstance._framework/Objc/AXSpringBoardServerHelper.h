@@ -88,7 +88,7 @@
 - (id)allowedMedusaGesturesWithServerInstance:(id)arg1;
 - (BOOL)areSystemGesturesDisabledByAccessibilityWithServerInstance:(id)arg1;
 - (BOOL)areSystemGesturesDisabledNativelyWithServerInstance:(id)arg1;
-- (void)backboardSnarfedMenuDownWithServerInstance:(id)arg1;
+- (void)backboardSnarfedMenuDownWithServerInstance:(id)arg1 atTimestamp:(unsigned long long)arg2;
 - (BOOL)clearSideAppStateWithServerInstance:(id)arg1;
 - (void)dealloc;
 - (void)dismissAlertWithCancel;
@@ -151,6 +151,7 @@
 - (void)setReachabilityActive:(BOOL)arg1;
 - (void)setSiriIsTalking:(BOOL)arg1 withServerInstance:(id)arg2;
 - (BOOL)shouldOverrideInterfaceOrientation;
+- (void)simulateEdgePressHaptics:(id)arg1;
 - (void)toggleNotificationCenterWithServerInstance:(id)arg1;
 - (void)unlockDeviceWithServerInstance:(id)arg1;
 - (double)volumeLevelWithServerInstance:(id)arg1;

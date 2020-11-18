@@ -60,8 +60,8 @@
 - (void)noteWatchOfferShownForPaymentPass:(id)arg1;
 - (void)paymentPassUniqueIDs:(CDUnknownBlockType)arg1;
 - (void)paymentPassWithDeviceAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)paymentPassWithPrimaryAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)paymentPassWithUniqueID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)paymentPassesWithPrimaryAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)redownloadAllPaymentPassesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removePaymentPassWithUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)savePaymentPass:(id)arg1 completion:(CDUnknownBlockType)arg2;

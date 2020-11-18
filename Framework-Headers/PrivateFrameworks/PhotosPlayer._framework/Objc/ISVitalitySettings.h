@@ -36,6 +36,7 @@
 - (long long)behavior;
 - (double)endTimeOffset;
 - (double)maximumDeceleration;
+- (double)maximumDelayBeforePlayback;
 - (long long)maximumNumberOfFrames;
 - (double)maximumRate;
 - (double)minimumDurationForColorMismatch;

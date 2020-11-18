@@ -106,6 +106,7 @@
 - (BOOL)isZonePushed:(id)arg1;
 - (void)logErrorAndRetryUpdateSubscription:(id)arg1;
 - (void)logStartModifyRecordsOperation:(id)arg1 cloudObjectsByRecordID:(id)arg2;
+- (id)managedObjectContext;
 - (id)newCloudObjectForRecord:(id)arg1;
 - (void)noteContextObjectsDidChange:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

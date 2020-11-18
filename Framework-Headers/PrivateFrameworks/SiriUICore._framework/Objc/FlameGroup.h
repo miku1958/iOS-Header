@@ -31,6 +31,7 @@
 @property (nonatomic) float *transitionPhasePtr; // @synthesize transitionPhasePtr=_transitionPhasePtr;
 @property (nonatomic) float zTime; // @synthesize zTime=_zTime;
 
+- (id)description;
 - (id)init;
 
 @end

@@ -14,6 +14,7 @@
 {
     BOOL _atomic;
     BOOL _shouldOnlySaveAssetContent;
+    BOOL _shouldReportRecordsInFlight;
     NSArray *_recordsToSave;
     NSArray *_recordIDsToDelete;
     NSData *_clientChangeTokenData;
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) NSArray *recordsToSave; // @synthesize recordsToSave=_recordsToSave;
 @property (nonatomic) long long savePolicy; // @synthesize savePolicy=_savePolicy;
 @property (nonatomic) BOOL shouldOnlySaveAssetContent; // @synthesize shouldOnlySaveAssetContent=_shouldOnlySaveAssetContent;
+@property (nonatomic) BOOL shouldReportRecordsInFlight; // @synthesize shouldReportRecordsInFlight=_shouldReportRecordsInFlight;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

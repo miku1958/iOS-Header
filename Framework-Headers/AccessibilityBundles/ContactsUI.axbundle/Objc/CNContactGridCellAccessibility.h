@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilitySupportsActivateAction;
+- (id)_accessibilityUserTestingChildren;
 - (void)_axPerformCustomAction:(id)arg1;
 - (void)_createViewsIfNeeded;
 - (BOOL)accessibilityActivate;

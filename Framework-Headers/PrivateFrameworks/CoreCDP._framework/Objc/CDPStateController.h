@@ -11,14 +11,16 @@
 
 @interface CDPStateController : NSObject
 {
-    CDPDaemonConnection *_daemonConn;
-    CDPStateUIProviderProxy *_uiProviderProxy;
     CDPContext *_context;
     id<CDPStateUIProvider> _uiProvider;
+    CDPDaemonConnection *_daemonConn;
+    CDPStateUIProviderProxy *_uiProviderProxy;
 }
 
 @property (readonly, nonatomic) CDPContext *context; // @synthesize context=_context;
+@property (strong, nonatomic) CDPDaemonConnection *daemonConn; // @synthesize daemonConn=_daemonConn;
 @property (strong, nonatomic) id<CDPStateUIProvider> uiProvider; // @synthesize uiProvider=_uiProvider;
+@property (strong, nonatomic) CDPStateUIProviderProxy *uiProviderProxy; // @synthesize uiProviderProxy=_uiProviderProxy;
 
 - (void).cxx_destruct;
 - (void)_handleRejoinURLActionWithInfo:(id)arg1;

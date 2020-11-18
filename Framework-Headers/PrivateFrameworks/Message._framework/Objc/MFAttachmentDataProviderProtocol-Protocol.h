@@ -6,12 +6,13 @@
 
 #import <Message/NSObject-Protocol.h>
 
-@class MFAttachment, MFMessage, NSData;
+@class MFAttachment, MFMessage, NSData, NSString;
 @protocol MFDataConsumer;
 
 @protocol MFAttachmentDataProviderProtocol <NSObject>
-- (BOOL)fetchDataForAttachment:(MFAttachment *)arg1 withDataConsumer:(id<MFDataConsumer>)arg2 error:(id *)arg3;
+- (void)fetchDataForAttachment:(MFAttachment *)arg1 withDataConsumer:(id<MFDataConsumer>)arg2 completion:(void (^)(BOOL, NSError *, BOOL))arg3;
 - (NSData *)fetchLocalDataForAttachment:(MFAttachment *)arg1;
 - (MFMessage *)messageForAttachment:(MFAttachment *)arg1;
+- (NSString *)storageLocationForAttachment:(MFAttachment *)arg1 withMessage:(MFMessage *)arg2;
 @end
 

@@ -20,12 +20,16 @@
     UICollectionView *_collectionView;
     NSLayoutConstraint *_rowHeightConstraint;
     NSLayoutConstraint *_collectionHeightConstraint;
+    NSLayoutConstraint *_collectionViewLeadingConstraint;
+    NSLayoutConstraint *_collectionViewTrailingConstraint;
     double _oneRowHeight;
     double _twoRowHeight;
 }
 
 @property (strong) NSLayoutConstraint *collectionHeightConstraint; // @synthesize collectionHeightConstraint=_collectionHeightConstraint;
 @property (strong) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
+@property (strong) NSLayoutConstraint *collectionViewLeadingConstraint; // @synthesize collectionViewLeadingConstraint=_collectionViewLeadingConstraint;
+@property (strong) NSLayoutConstraint *collectionViewTrailingConstraint; // @synthesize collectionViewTrailingConstraint=_collectionViewTrailingConstraint;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong) SearchUIRowFormatter *formatter; // @synthesize formatter=_formatter;
@@ -41,6 +45,7 @@
 + (double)baselineSpacing;
 + (Class)classForResults:(id)arg1;
 + (double)horizontalImagePadding;
++ (struct CGSize)iconSize;
 + (id)labelFont;
 + (id)reuseIdentifierForResults:(id)arg1;
 + (id)rowViewForResults:(id)arg1 style:(unsigned long long)arg2;
@@ -53,23 +58,21 @@
 - (id)collectionViewDataSource;
 - (id)collectionViewLayout;
 - (id)collectionViewWrapper;
-- (struct CGSize)imageSize;
 - (BOOL)includeTopPaddingInSingleRowHeight;
 - (id)initWithResults:(id)arg1 style:(unsigned long long)arg2;
 - (BOOL)isExpandable;
-- (BOOL)isExpanded;
 - (double)itemWidth;
 - (void)layoutSubviews;
 - (id)makeCollectionView;
 - (long long)maxDisplayedResults;
 - (long long)minDisplayedResults;
 - (double)numberOfColumnsForCurrentLayout;
-- (long long)numberOfVisibleResults;
-- (void)setExpanded:(BOOL)arg1;
+- (unsigned long long)numberOfVisibleResults;
 - (void)setupCollectionView:(id)arg1;
 - (double)topInset;
 - (double)topPadding;
 - (id)trimResults:(id)arg1;
+- (void)updateExpanded:(BOOL)arg1;
 - (void)updateNumberOfColumns:(long long)arg1;
 - (void)updateWithResults:(id)arg1;
 

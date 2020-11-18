@@ -53,6 +53,7 @@
 - (void)clearPurgeableMemory;
 - (void)defaultAction;
 - (id)initWithResult:(id)arg1 style:(unsigned long long)arg2;
+- (void)layoutSubviews;
 - (struct CGSize)maxThumbnailSize;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateThumbnailViewForResult:(id)arg1;

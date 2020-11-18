@@ -10,7 +10,7 @@
 {
 }
 
-- (id)_loadTracklistEntityViewDescriptor;
+- (id)_loadTracklistTableViewDescriptor;
 
 @end
 

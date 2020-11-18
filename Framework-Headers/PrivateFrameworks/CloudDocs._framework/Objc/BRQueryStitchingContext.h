@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class BRNotificationReceiver, BRQuery, NSArray, NSDictionary;
+@class BRNotificationReceiver, BRQuery;
 
 __attribute__((visibility("hidden")))
 @interface BRQueryStitchingContext : NSObject
@@ -14,10 +14,6 @@ __attribute__((visibility("hidden")))
     BRQuery *_query;
     BRNotificationReceiver *_receiver;
 }
-
-@property (readonly, nonatomic) BRNotificationReceiver *receiver; // @synthesize receiver=_receiver;
-@property (readonly, nonatomic) NSArray *results;
-@property (readonly, nonatomic) NSDictionary *resultsByRowID;
 
 - (void)dealloc;
 - (id)initWithQuery:(id)arg1;

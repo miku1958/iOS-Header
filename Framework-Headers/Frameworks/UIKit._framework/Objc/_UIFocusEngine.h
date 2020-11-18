@@ -8,13 +8,14 @@
 
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CADisplayLink, NSArray, NSMapTable, NSString, UIMoveEvent, UIScrollView, UITapGestureRecognizer, UIView, UIWindow, _UIFocusEnginePanGestureRecognizer, _UIFocusSoundPool, _UIFocusTouchDebugView;
+@class CADisplayLink, NSArray, NSMapTable, NSString, UIMoveEvent, UIScrollView, UITapGestureRecognizer, UIView, UIWindow, _UIFocusEnginePanGestureRecognizer, _UIFocusPressGestureRecognizer, _UIFocusSoundPool, _UIFocusTouchDebugView;
 @protocol OS_dispatch_queue, _UIFocusScrollAnimator;
 
 @interface _UIFocusEngine : NSObject <UIGestureRecognizerDelegate>
 {
     _UIFocusEnginePanGestureRecognizer *_panGestureRecognizer;
     UITapGestureRecognizer *_tapGestureRecognizer;
+    _UIFocusPressGestureRecognizer *_selectGestureRecognizer;
     struct CGPoint _touchBeganPoint;
     struct CGPoint _lastKnownTouchPoint;
     struct CGVector _progressAccumulator;
@@ -106,6 +107,7 @@
 - (void)_gestureRecognizerFailed:(id)arg1;
 - (void)_handleButtonGesture:(id)arg1;
 - (void)_handlePanGesture:(id)arg1;
+- (void)_handleSelectGesture:(id)arg1;
 - (void)_handleTapGesture:(id)arg1;
 - (double)_horizontalFrictionInterpolationForMomentumSpeed:(double)arg1 totalDistance:(double)arg2;
 - (void)_invalidateControllerDisplayLink;

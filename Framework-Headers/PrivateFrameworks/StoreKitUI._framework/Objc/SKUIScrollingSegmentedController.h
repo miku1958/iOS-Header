@@ -15,7 +15,7 @@
 #import <StoreKitUI/UICollectionViewDataSource-Protocol.h>
 #import <StoreKitUI/UICollectionViewDelegate-Protocol.h>
 
-@class NSArray, NSMapTable, NSMutableArray, NSString, SKUIInteractiveSegmentedControl, SKUIProxyScrollView, SKUIScrollingSegmentedControllerCollectionView, SKUIScrollingSegmentedControllerNavigationBarTitleView, UIScrollView, UIView, UIViewController;
+@class NSArray, NSMapTable, NSMutableArray, NSString, SKUIInteractiveSegmentedControl, SKUIProxyScrollView, SKUIScrollingSegmentedControllerCollectionView, SKUIScrollingSegmentedControllerNavigationBarTitleView, UIScrollView, UIViewController;
 @protocol SKUIScrollingSegmentedControllerDelegate;
 
 @interface SKUIScrollingSegmentedController : SKUIViewController <SKUIProxyScrollViewDelegate, SKUIScrollingSegmentedControllerCollectionViewDelegate, SKUIScrollingSegmentedControllerItemContextDelegate, UICollectionViewDataSource, UICollectionViewDelegate, SKUIScrollingTabAppearanceStatusObserver, SKUIScrollingTabNestedPagedScrolling, SKUIViewControllerWithFocusedViewController>
@@ -30,15 +30,13 @@
     SKUIInteractiveSegmentedControl *_titlesSegmentedControl;
     BOOL _viewBackgroundIsWhite;
     NSMapTable *_viewControllerToItemContext;
+    BOOL _scrollEnabled;
     BOOL _wantsWhiteBackgroundBeyondLeftEdgeWhenBouncing;
     BOOL _wantsWhiteBackgroundBeyondRightEdgeWhenBouncing;
     id<SKUIScrollingSegmentedControllerDelegate> _delegate;
     double _maximumContentWidth;
     NSArray *_viewControllers;
-    double _segmentedControlHeight;
-    long long _segmentedControlLayoutStyle;
     unsigned long long _focusedViewControllerIndex;
-    struct UIEdgeInsets _segmentedControlContentEdgeInsets;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -48,19 +46,18 @@
 @property (readonly, nonatomic) unsigned long long focusedViewControllerIndex; // @synthesize focusedViewControllerIndex=_focusedViewControllerIndex;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double maximumContentWidth; // @synthesize maximumContentWidth=_maximumContentWidth;
-@property (readonly, nonatomic) UIView *navigationBarTitleView; // @synthesize navigationBarTitleView=_navigationBarTitleView;
+@property (readonly, nonatomic) SKUIScrollingSegmentedControllerNavigationBarTitleView *navigationBarTitleView; // @synthesize navigationBarTitleView=_navigationBarTitleView;
+@property (nonatomic) BOOL scrollEnabled; // @synthesize scrollEnabled=_scrollEnabled;
 @property (readonly, nonatomic) UIScrollView *scrollingTabNestedPagingScrollView;
-@property (nonatomic) struct UIEdgeInsets segmentedControlContentEdgeInsets; // @synthesize segmentedControlContentEdgeInsets=_segmentedControlContentEdgeInsets;
-@property (nonatomic) double segmentedControlHeight; // @synthesize segmentedControlHeight=_segmentedControlHeight;
-@property (nonatomic) long long segmentedControlLayoutStyle; // @synthesize segmentedControlLayoutStyle=_segmentedControlLayoutStyle;
+@property (nonatomic) struct UIEdgeInsets segmentedControlContentEdgeInsets;
+@property (nonatomic) double segmentedControlHeight;
+@property (nonatomic) long long segmentedControlLayoutStyle;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=_titlesSegmentedControl) SKUIInteractiveSegmentedControl *titlesSegmentedControl; // @synthesize titlesSegmentedControl=_titlesSegmentedControl;
 @property (copy, nonatomic) NSArray *viewControllers; // @synthesize viewControllers=_viewControllers;
 @property (nonatomic) BOOL wantsWhiteBackgroundBeyondLeftEdgeWhenBouncing; // @synthesize wantsWhiteBackgroundBeyondLeftEdgeWhenBouncing=_wantsWhiteBackgroundBeyondLeftEdgeWhenBouncing;
 @property (nonatomic) BOOL wantsWhiteBackgroundBeyondRightEdgeWhenBouncing; // @synthesize wantsWhiteBackgroundBeyondRightEdgeWhenBouncing=_wantsWhiteBackgroundBeyondRightEdgeWhenBouncing;
 
-+ (struct UIEdgeInsets)defaultSegmentedControlContentEdgeInsetsForLayoutStyle:(long long)arg1;
-+ (double)defaultSegmentedControlHeight;
 - (void).cxx_destruct;
 - (BOOL)_configureSegment:(id)arg1 forViewController:(id)arg2;
 - (id)_indexPathOfFocusedItemAllowingLayoutIfNeeded:(BOOL)arg1;

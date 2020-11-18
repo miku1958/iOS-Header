@@ -7,6 +7,7 @@
 #import <MediaPlayer/MPMediaItemCollection.h>
 
 @interface MPMediaItemCollection (MusicCustomProperties)
-+ (void)registerSupportedCustomProperties;
++ (id)customPropertyHandlersCollection;
++ (void)registerSupportedCustomPropertiesWithHandlersCollection:(id)arg1;
 @end
 

@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)_finishAllow;
 - (void)_finishBecomeDownload:(id)arg1;
 - (void)_finishBecomeStream:(id)arg1 forConnection:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_onSessionQueue_disavow;
 - (void)_onqueue_adjustBytesPerSecondLimit:(long long)arg1;
 - (void)_onqueue_adjustLoadingPoolPriority;
 - (void)_onqueue_adjustPoolPriority;
@@ -71,7 +72,6 @@ __attribute__((visibility("hidden")))
 - (void)_onqueue_didReceiveResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_onqueue_didReceiveResponse:(id)arg1 redirectRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_onqueue_didSendBodyBytes:(long long)arg1 totalBytesSent:(long long)arg2 totalBytesExpectedToSend:(long long)arg3;
-- (void)_onqueue_disavow;
 - (void)_onqueue_needNewBodyStream:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_onqueue_resume;
 - (void)_onqueue_startPayloadTransmissionTimer;

@@ -189,6 +189,7 @@ __attribute__((visibility("hidden")))
 - (void)_interactionStartedFromPreviewItemController:(id)arg1;
 - (void)_interactionStoppedFromPreviewItemController:(id)arg1;
 - (BOOL)_interpretKeyEvent:(id)arg1 isCharEvent:(BOOL)arg2;
+- (BOOL)_isInteractingWithAssistedNode;
 - (void)_longPressRecognized:(id)arg1;
 - (void)_lookup:(struct CGPoint)arg1;
 - (struct _NSRange)_markedTextNSRange;

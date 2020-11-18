@@ -13,7 +13,7 @@
 - (void)addContactsObservable:(CNObservable *)arg1;
 - (void)addCoreRecentsObservable:(CNObservable *)arg1;
 - (void)addDirectoryServerObservable:(CNObservable *)arg1;
-- (void)addDuetObservable:(CNObservable *)arg1;
+- (void)addDuetObservable:(CNObservable *)arg1 doOnTimeout:(void (^)(void))arg2;
 - (void)addSuggestionsObservable:(CNObservable *)arg1;
 - (void)addSupplementalObservable:(CNObservable *)arg1;
 - (CNObservable *)makeObservable;

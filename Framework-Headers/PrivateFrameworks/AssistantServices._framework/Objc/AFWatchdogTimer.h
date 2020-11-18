@@ -15,6 +15,8 @@
 
 - (void).cxx_destruct;
 - (void)cancel;
+- (BOOL)cancelIfNotAlreadyCanceled;
+- (id)initWithTimeoutInterval:(double)arg1 onQueue:(id)arg2 timeoutHandler:(CDUnknownBlockType)arg3;
 - (id)initWithTimeoutInterval:(double)arg1 timeoutHandler:(CDUnknownBlockType)arg2;
 - (void)start;
 

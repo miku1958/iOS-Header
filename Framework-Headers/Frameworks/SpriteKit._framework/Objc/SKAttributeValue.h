@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <SpriteKit/NSCoding-Protocol.h>
+
 @class MISSING_TYPE;
 
-@interface SKAttributeValue : NSObject
+@interface SKAttributeValue : NSObject <NSCoding>
 {
     long long _type;
     float floatValues[4];
@@ -26,7 +28,9 @@
 + (id)valueWithVectorFloat3: /* Error: Ran out of types for this method. */;
 + (id)valueWithVectorFloat4: /* Error: Ran out of types for this method. */;
 - (BOOL)copyValueTo:(void *)arg1 type:(long long)arg2 count:(unsigned int)arg3;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

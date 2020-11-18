@@ -10,6 +10,7 @@
 
 @interface PKPaymentOptionGroupItemCardCell : PKPaymentOptionGroupItemCell
 {
+    BOOL _isRightToLeft;
     UILabel *_displayLabel;
     UILabel *_censoredPANLabel;
     UIImageView *_cardArtView;

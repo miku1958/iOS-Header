@@ -12,7 +12,7 @@
 - (NSArray *)allowedMedusaGesturesWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)areSystemGesturesDisabledByAccessibilityWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)areSystemGesturesDisabledNativelyWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
-- (void)backboardSnarfedMenuDownWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (void)backboardSnarfedMenuDownWithServerInstance:(_AXSpringBoardServerInstance *)arg1 atTimestamp:(unsigned long long)arg2;
 - (BOOL)clearSideAppStateWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)dismissAppSwitcherWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)dismissSiriWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
@@ -68,6 +68,7 @@
 - (NSDictionary *)serverInstance:(_AXSpringBoardServerInstance *)arg1 springBoardSystemInfoQuery:(unsigned long long)arg2;
 - (void)setReachabilityActive:(BOOL)arg1;
 - (void)setSiriIsTalking:(BOOL)arg1 withServerInstance:(_AXSpringBoardServerInstance *)arg2;
+- (void)simulateEdgePressHaptics:(_AXSpringBoardServerInstance *)arg1;
 - (void)toggleNotificationCenterWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)unlockDeviceWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (double)volumeLevelWithServerInstance:(_AXSpringBoardServerInstance *)arg1;

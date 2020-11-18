@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import "NSArray.h"
+#import <Foundation/NSArray.h>
 
 @interface NSArray (AXSpriteKitAdditions)
 - (id)accessibilityElementAtIndex:(long long)arg1;

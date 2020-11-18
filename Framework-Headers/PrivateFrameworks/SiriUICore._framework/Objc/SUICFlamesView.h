@@ -40,11 +40,13 @@
     UIImageView *_overlayImageView;
     double _startTime;
     SUICAudioLevelSmoother *_levelSmoother;
+    int _fidelity;
     BOOL _isInitialized;
     BOOL _hasCustomActiveFrame;
     BOOL _shadersAreCompiled;
     BOOL _reduceMotionEnabled;
     BOOL _showAura;
+    BOOL _reduceFrameRate;
     int _mode;
     int _state;
     id<SUICFlamesViewDelegate> _delegate;
@@ -56,11 +58,13 @@
 @property (weak, nonatomic) id<SUICFlamesViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) int mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) UIImage *overlayImage; // @synthesize overlayImage=_overlayImage;
+@property (nonatomic) BOOL reduceFrameRate; // @synthesize reduceFrameRate=_reduceFrameRate;
 @property (nonatomic) BOOL showAura; // @synthesize showAura=_showAura;
 @property (nonatomic) int state; // @synthesize state=_state;
 
 + (Class)layerClass;
 + (void)prewarmShadersForScreen:(id)arg1 size:(struct CGSize)arg2;
++ (void)prewarmShadersForScreen:(id)arg1 size:(struct CGSize)arg2 fidelity:(int)arg3;
 - (void).cxx_destruct;
 - (void)_cleanupGL;
 - (float)_currentMicPowerLevel;

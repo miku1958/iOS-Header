@@ -54,7 +54,7 @@
 - (id)registerForAvailableDevicesUpdates:(id)arg1;
 - (id)registerForDeviceUpdates:(id)arg1;
 - (id)registerForLiveListenUpdates:(id)arg1;
-- (void)sendMessage:(id)arg1 withError:(id *)arg2;
+- (BOOL)sendMessage:(id)arg1 withError:(id *)arg2;
 - (void)sendUpdateMessage:(id)arg1 forIdentifier:(unsigned long long)arg2;
 - (void)sendUpdatesForProperties:(id)arg1 excludingClient:(id)arg2;
 - (void)setListenForAvailableDeviceUpdates:(BOOL)arg1;

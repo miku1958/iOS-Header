@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityDetectFaces:(BOOL)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (void)_handleSessionDidStartRunning:(id)arg1;
 - (void)_handleSessionDidStopRunning:(id)arg1;
 

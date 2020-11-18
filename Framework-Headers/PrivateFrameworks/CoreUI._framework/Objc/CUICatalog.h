@@ -23,6 +23,7 @@
 + (id)bestMatchUsingObjects:(id)arg1 getAttributeValueUsing:(CDUnknownBlockType)arg2 scaleFactor:(double)arg3 deviceIdiom:(long long)arg4 deviceSubtype:(unsigned long long)arg5 sizeClassHorizontal:(long long)arg6 sizeClassVertical:(long long)arg7 memoryClass:(long long)arg8 graphicsFeatureSetClass:(long long)arg9 graphicsFallBackOrder:(id)arg10;
 + (id)defaultUICatalog;
 + (id)defaultUICatalogForBundle:(id)arg1;
++ (BOOL)isValidAssetStorageWithURL:(id)arg1;
 + (BOOL)isValidLCRWithBytes:(const void *)arg1 length:(unsigned long long)arg2;
 + (id)systemUICatalog;
 - (id)_baseAtlasContentsKeyForName:(id)arg1;

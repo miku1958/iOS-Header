@@ -10,6 +10,21 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CGPoint {
+    double _field1;
+    double _field2;
+};
+
+struct CGRect {
+    struct CGPoint _field1;
+    struct CGSize _field2;
+};
+
+struct CGSize {
+    double _field1;
+    double _field2;
+};
+
 struct NoteAccountObject {
     Class _field1;
     int _field2;
@@ -36,14 +51,20 @@ struct NoteContext {
     id _field7;
     id _field8;
     id _field9;
-    id _field10;
-    id _field11;
-    unsigned long long _field12;
+    unsigned long long _field10;
+    BOOL _field11;
+    BOOL _field12;
     BOOL _field13;
     BOOL _field14;
-    BOOL _field15;
-    BOOL _field16;
-    id _field17;
+    id _field15;
+};
+
+struct UIColor {
+    Class _field1;
+};
+
+struct UIImage {
+    Class _field1;
 };
 
 struct _NSRange {

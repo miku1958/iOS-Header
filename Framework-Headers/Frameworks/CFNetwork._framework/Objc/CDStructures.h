@@ -264,14 +264,16 @@ struct PerformanceTiming {
     struct AutoRetainReleaseTypePtr<const __CFDictionary *, CFObject> _field38;
     BOOL _field39;
     BOOL _field40;
-    struct AutoRetainReleaseTypePtr<const __CFDictionary *, CFObject> _field41;
+    BOOL _field41;
     struct AutoRetainReleaseTypePtr<const __CFDictionary *, CFObject> _field42;
-    double _field43;
-    struct __CFString *_field44;
-    BOOL _field45;
-    BOOL _field46;
-    long long _field47;
-    struct unique_ptr<__CFDictionary, Deleter_CFRelease> _field48;
+    struct AutoRetainReleaseTypePtr<const __CFDictionary *, CFObject> _field43;
+    struct unique_ptr<const __CFDictionary, Deleter_CFRelease> _field44;
+    double _field45;
+    struct __CFString *_field46;
+    BOOL _field47;
+    BOOL _field48;
+    long long _field49;
+    struct unique_ptr<__CFDictionary, Deleter_CFRelease> _field50;
 };
 
 struct RedirectionRecorder;
@@ -453,6 +455,12 @@ struct timespec {
 
 struct unique_ptr<__CFDictionary, Deleter_CFRelease> {
     struct __compressed_pair<__CFDictionary *, Deleter_CFRelease> {
+        struct __CFDictionary *_field1;
+    } _field1;
+};
+
+struct unique_ptr<const __CFDictionary, Deleter_CFRelease> {
+    struct __compressed_pair<const __CFDictionary *, Deleter_CFRelease> {
         struct __CFDictionary *_field1;
     } _field1;
 };

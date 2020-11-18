@@ -12,8 +12,10 @@ __attribute__((visibility("hidden")))
 @interface CKDFetchWebAuthTokenOperation : CKDDatabaseOperation
 {
     NSString *_webAuthToken;
+    NSString *_APIToken;
 }
 
+@property (copy, nonatomic) NSString *APIToken; // @synthesize APIToken=_APIToken;
 @property (copy, nonatomic) NSString *webAuthToken; // @synthesize webAuthToken=_webAuthToken;
 
 - (void).cxx_destruct;

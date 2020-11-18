@@ -10,6 +10,7 @@
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
 @class CKRecord, CKSQLite, NSArray, NSData, NSString, NSURL;
+@protocol OS_dispatch_queue;
 
 @interface CKPackage : NSObject <NSSecureCoding, CKRecordValue>
 {
@@ -35,6 +36,7 @@
     CKSQLite *_sqlite;
     long long _packageID;
     unsigned long long _nextItemIndex;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (strong, nonatomic) NSString *UUID; // @synthesize UUID=_UUID;
@@ -51,6 +53,7 @@
 @property (nonatomic, getter=isOpen) BOOL open; // @synthesize open=_open;
 @property (nonatomic) BOOL ownsTheAnchor; // @synthesize ownsTheAnchor=_ownsTheAnchor;
 @property (nonatomic) long long packageID; // @synthesize packageID=_packageID;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (weak, nonatomic) CKRecord *record; // @synthesize record=_record;
 @property (copy, nonatomic) NSString *recordKey; // @synthesize recordKey=_recordKey;
 @property (nonatomic) struct _OpaquePCSShareProtection *recordPCS; // @synthesize recordPCS=_recordPCS;
@@ -74,6 +77,11 @@
 - (id)_initWithPath:(id)arg1 UUID:(id)arg2;
 - (id)_itemOrNilAtIndex:(unsigned long long)arg1;
 - (id)_itemWithColumnsByName:(id)arg1;
+- (void)_locked_beginTransaction;
+- (BOOL)_locked_decReferenceCount;
+- (void)_locked_endTransaction;
+- (void)_locked_incReferenceCount;
+- (void)_locked_open;
 - (id)_packageDatabasePathWithUUID:(id)arg1;
 - (void)_setReferenceCount:(long long)arg1;
 - (void)addItem:(id)arg1;

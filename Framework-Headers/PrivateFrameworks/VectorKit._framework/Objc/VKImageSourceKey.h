@@ -23,6 +23,7 @@
     NSString *_relatedText;
     BOOL _hasDataValue;
     unsigned int _dataValue;
+    struct CGPoint _imageCenter;
 }
 
 @property (nonatomic) unsigned char dataType; // @synthesize dataType=_dataType;
@@ -30,6 +31,7 @@
 @property (readonly, nonatomic) BOOL hasDataValue; // @synthesize hasDataValue=_hasDataValue;
 @property (readonly, nonatomic) unsigned int iconAttributeKey; // @synthesize iconAttributeKey=_iconAttributeKey;
 @property (readonly, nonatomic) unsigned int iconAttributeValue; // @synthesize iconAttributeValue=_iconAttributeValue;
+@property (nonatomic) struct CGPoint imageCenter; // @synthesize imageCenter=_imageCenter;
 @property (readonly, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
 @property (readonly, nonatomic) unsigned int keyType; // @synthesize keyType=_keyType;
 @property (strong, nonatomic) NSString *relatedText; // @synthesize relatedText=_relatedText;

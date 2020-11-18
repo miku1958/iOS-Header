@@ -19,6 +19,7 @@
     BOOL _enabled;
     BOOL _shouldDrawSeperator;
     BOOL _shouldDrawFullWidthSeperator;
+    BOOL _canResignFirstResponder;
     id<PKPaymentSetupFieldCellDelegate> _delegate;
     PKPaymentSetupField *_paymentSetupField;
     double _minimumTextLabelWidth;
@@ -27,6 +28,7 @@
     UIColor *_editableTextFieldCameraCapturedTextColor;
 }
 
+@property (nonatomic) BOOL canResignFirstResponder; // @synthesize canResignFirstResponder=_canResignFirstResponder;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<PKPaymentSetupFieldCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -70,6 +72,7 @@
 - (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (BOOL)textFieldShouldBeginEditing:(id)arg1;
 - (BOOL)textFieldShouldClear:(id)arg1;
+- (BOOL)textFieldShouldEndEditing:(id)arg1;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (void)updatePaymentSetupFieldWithCurrentCellValue;
 

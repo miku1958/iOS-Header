@@ -34,7 +34,6 @@
 + (id)_errorForOSStatus:(int)arg1;
 + (id)assetWriterWithURL:(id)arg1 fileType:(id)arg2 error:(id *)arg3;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
-+ (void)declareKeyPathDependenciesWithRegistry:(id)arg1;
 + (void)initialize;
 - (BOOL)_setHelper:(id)arg1 ifCurrentHelper:(id)arg2;
 - (BOOL)_setHelper:(id)arg1 ifCurrentHelper:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
@@ -48,6 +47,7 @@
 - (BOOL)canApplyOutputSettings:(id)arg1 forMediaType:(id)arg2;
 - (void)cancelWriting;
 - (void)dealloc;
+- (void)declareKeyPathDependenciesWithRegistry:(id)arg1;
 - (void)endSessionAtSourceTime:(CDStruct_1b6d18a9)arg1;
 - (void)finalize;
 - (BOOL)finishWriting;

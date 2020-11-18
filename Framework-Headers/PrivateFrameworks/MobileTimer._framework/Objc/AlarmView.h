@@ -14,6 +14,8 @@
 {
     UIView *_singleStyleDetailContainer;
     id _contentSizeFontAdjustObserver;
+    BOOL _shouldAddLayoutConstraints;
+    BOOL _switchVisible;
     long long _style;
     DigitalClockLabel *_timeLabel;
     NSString *_name;
@@ -41,8 +43,10 @@
 @property (readonly, nonatomic) UILabel *repeatLabel; // @synthesize repeatLabel=_repeatLabel;
 @property (copy, nonatomic) NSString *repeatText; // @synthesize repeatText=_repeatText;
 @property (readonly, nonatomic) UILabel *secondaryDesignatorLabel; // @synthesize secondaryDesignatorLabel=_secondaryDesignatorLabel;
+@property (nonatomic) BOOL shouldAddLayoutConstraints; // @synthesize shouldAddLayoutConstraints=_shouldAddLayoutConstraints;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=isSwitchVisible) BOOL switchVisible; // @synthesize switchVisible=_switchVisible;
 @property (readonly, nonatomic) DigitalClockLabel *timeLabel; // @synthesize timeLabel=_timeLabel;
 @property (readonly, nonatomic) NSDictionary *viewsByIdentifier;
 

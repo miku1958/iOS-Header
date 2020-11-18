@@ -31,12 +31,14 @@
     BOOL _limited;
     BOOL _hasCarScreen;
     BOOL _visible;
+    NSIndexPath *_selectedIndexPath;
 }
 
 @property (readonly, nonatomic) MCDPCContainer *container; // @synthesize container=_container;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSIndexPath *selectedIndexPath; // @synthesize selectedIndexPath=_selectedIndexPath;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isVisible) BOOL visible; // @synthesize visible=_visible;
 

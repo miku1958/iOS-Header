@@ -223,7 +223,6 @@
 + (id)_placeAnnotationFromAnnotationData:(id)arg1;
 + (id)_ptpCalendar;
 + (id)_ptpEventInfoIsolationQueue;
-+ (id)_resourceForQualityClass:(unsigned short)arg1 onAsset:(id)arg2;
 + (id)_supportedAssetTypesForUpload;
 + (id)abbreviatedMetadataDirectoryForDirectory:(id)arg1;
 + (long long)adjustmentBaseVersionFromImageFormat:(int)arg1;
@@ -429,7 +428,6 @@
 - (BOOL)canPerformEditOperation:(unsigned long long)arg1;
 - (int)cloudCommentsStatusForOwnedAsset:(BOOL)arg1;
 - (BOOL)cloudHasSameOwnerAsAsset:(id)arg1;
-- (id)cloudResourceForQualityClass:(unsigned short)arg1;
 - (id)cloudResourceForResourceType:(unsigned long long)arg1;
 - (long long)cloudSharedAssetPlaceholderKind;
 - (long long)compareToAsset:(id)arg1;
@@ -479,7 +477,6 @@
 - (void)getFileURL:(id *)arg1 originalFilename:(id *)arg2 uti:(id *)arg3 forSidecarMatchingUTI:(id)arg4 requireExactMatch:(BOOL)arg5;
 - (void)getSearchIndexContents:(id)arg1 dateFormatter:(id)arg2 keywords:(id)arg3;
 - (id)globalUUID;
-- (BOOL)hasFullDerivativesSet;
 - (BOOL)hasGPS;
 - (BOOL)hasJustBeenHidden;
 - (BOOL)hasJustBeenShown;
@@ -573,7 +570,6 @@
 - (void)registerForChanges;
 - (void)removeLegacyAdjustments;
 - (id)reservedPathForLargeDisplayableImageFileForceLarge:(BOOL)arg1 forceUpgradeFromSubstandardIfNecessary:(BOOL)arg2 outImageType:(long long *)arg3;
-- (id)resourceForQualityClass:(unsigned short)arg1;
 - (id)reverseGeoDescription;
 - (void)revertToOriginal;
 - (void)setAdjustmentDataBlob:(id)arg1 formatIdentifier:(id)arg2 formatVersion:(id)arg3 baseVersion:(long long)arg4 editorBundleID:(id)arg5 renderedContentURL:(id)arg6 penultimateRenderedJPEGData:(id)arg7;
@@ -597,7 +593,6 @@
 - (void)setUploadAttempts:(short)arg1;
 - (BOOL)setVideoInfoFromFileAtURL:(id)arg1 fullSizeRenderURL:(id)arg2 overwriteOriginalProperties:(BOOL)arg3;
 - (id)shortenedFilePath;
-- (id)supportingResourcesForQualityClass:(unsigned short)arg1;
 - (BOOL)supportsCloudUpload;
 - (void)synchronizeWithPersistedFileSystemAttributes;
 - (void)synchronouslyFetchAdjustmentDataWithCompletionHandler:(CDUnknownBlockType)arg1;

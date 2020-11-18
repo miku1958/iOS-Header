@@ -17,9 +17,10 @@
     HMCharacteristic *_characteristic;
 }
 
-@property (readonly, nonatomic) HMCharacteristic *characteristic; // @synthesize characteristic=_characteristic;
+@property (strong, nonatomic) HMCharacteristic *characteristic; // @synthesize characteristic=_characteristic;
 @property (copy, nonatomic) id<NSCopying> triggerValue; // @synthesize triggerValue=_triggerValue;
 
++ (id)createWithDictionary:(id)arg1 home:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;

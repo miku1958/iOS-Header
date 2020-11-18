@@ -13,18 +13,22 @@
     CDUnknownBlockType _firstTrackBlock;
     RURadioGetTracksOperation *_getTracksOperation;
     NSLock *_lock;
+    RadioStationMatchContext *_nowPlayingMatchContext;
     SSVPlaybackLease *_playbackLease;
     CDUnknownBlockType _preparedBlock;
     RadioRequestContext *_requestContext;
     RadioStation *_station;
     RadioStationMatchContext *_stationMatchContext;
+    BOOL _willContinuePlayback;
 }
 
+@property (strong) RadioStationMatchContext *nowPlayingMatchContext;
 @property (strong) SSVPlaybackLease *playbackLease;
 @property (copy) CDUnknownBlockType preparedBlock;
 @property (copy) RadioRequestContext *requestContext; // @synthesize requestContext=_requestContext;
 @property (strong) RadioStation *station;
 @property (strong) RadioStationMatchContext *stationMatchContext;
+@property BOOL willContinuePlayback;
 
 - (void).cxx_destruct;
 - (void)cancel;

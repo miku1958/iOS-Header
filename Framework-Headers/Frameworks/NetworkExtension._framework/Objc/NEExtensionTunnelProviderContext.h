@@ -28,8 +28,8 @@
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void).cxx_destruct;
+- (void)cancelWithError:(id)arg1;
 - (void)didSetReasserting:(BOOL)arg1;
-- (void)dispose;
 - (void)establishIPCWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleAppMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleIPCDetached;

@@ -357,11 +357,12 @@ typedef struct {
     double displayScale;
     long long touchLevel;
     unsigned long long interactionModel;
+    unsigned long long primaryInteractionModel;
     long long horizontalSizeClass;
     long long verticalSizeClass;
     long long userInterfaceStyle;
     long long forceTouchCapability;
-} CDStruct_a687ed74;
+} CDStruct_e384231c;
 
 typedef struct {
     long long width;

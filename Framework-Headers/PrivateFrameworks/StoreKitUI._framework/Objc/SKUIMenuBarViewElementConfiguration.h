@@ -16,6 +16,7 @@
     IKAppMenuBarDocument *_menuBarDocument;
     long long _menuBarStyle;
     NSArray *_menuItemViewElements;
+    BOOL _scrollEnabled;
     SKUIMenuItemViewElement *_selectedMenuItemViewElement;
     BOOL _needsReload;
     id<SKUIMenuBarViewElementConfigurationDelegate> _delegate;
@@ -30,13 +31,14 @@
 @property (nonatomic, getter=_needsReload, setter=_setNeedsReload:) BOOL needsReload; // @synthesize needsReload=_needsReload;
 @property (readonly, nonatomic) unsigned long long numberOfMenuItems;
 @property (weak, nonatomic, getter=_reloadDelegate, setter=_setReloadDelegate:) id<_SKUIMenuBarViewElementConfigurationReloadDelegate> reloadDelegate; // @synthesize reloadDelegate=_reloadDelegate;
+@property (readonly, nonatomic) BOOL scrollEnabled; // @synthesize scrollEnabled=_scrollEnabled;
 @property (readonly, nonatomic) SKUIMenuItemViewElement *selectedMenuItemViewElement; // @synthesize selectedMenuItemViewElement=_selectedMenuItemViewElement;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_ensureDataLoaded;
 - (id)_initWithMenuBarDocument:(id)arg1;
-- (void)_reloadWithMenuBarStyle:(long long)arg1 menuItemViewElements:(id)arg2;
+- (void)_reloadWithMenuBarStyle:(long long)arg1 menuItemViewElements:(id)arg2 scrollEnabled:(BOOL)arg3;
 - (void)contentWillAppearForMenuItemAtIndex:(unsigned long long)arg1 withEntityValueProvider:(id)arg2 clientContext:(id)arg3;
 - (id)documentForEntityUniqueIdentifier:(id)arg1;
 - (id)documentForMenuItemAtIndex:(unsigned long long)arg1;

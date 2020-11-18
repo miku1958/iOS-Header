@@ -18,8 +18,8 @@
 @property (readonly) Class superclass;
 
 + (CDUnknownBlockType)_music_entityValueHandlerForProperty:(id)arg1;
++ (void)_registerCustomEntityValueHandlers;
 + (void)_registerEntityValueHandler:(CDUnknownBlockType)arg1 forProperty:(id)arg2;
-+ (void)initialize;
 - (id)entityUniqueIdentifier;
 - (id)imageURLForEntityArtworkProperty:(id)arg1 fittingSize:(struct CGSize)arg2 destinationScale:(double)arg3;
 - (id)valueForEntityProperty:(id)arg1;

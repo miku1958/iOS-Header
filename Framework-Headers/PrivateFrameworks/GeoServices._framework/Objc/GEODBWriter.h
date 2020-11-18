@@ -87,7 +87,7 @@
 - (BOOL)prepareSingleStatement:(struct sqlite3_stmt **)arg1 forSql:(id)arg2;
 - (void)setExpirationRecords:(CDStruct_e4886f83 *)arg1 count:(unsigned long long)arg2;
 - (void)shrinkBySize:(unsigned long long)arg1 callback:(CDUnknownBlockType)arg2 onQueue:(id)arg3;
-- (void)shrinkToSize:(unsigned long long)arg1 finished:(CDUnknownBlockType)arg2;
+- (void)shrinkToSize:(unsigned long long)arg1 finished:(CDUnknownBlockType)arg2 onQueue:(id)arg3;
 
 @end
 

@@ -24,8 +24,10 @@
 + (struct CGAffineTransform)_rawAffineTransformForExifOrientation:(long long)arg1;
 + (struct CGRect)_rectForRect:(struct CGRect)arg1 alignToContent:(BOOL)arg2 alignToScreenUsingPageController:(id)arg3 orAlignToBitmapContext:(struct CGContext *)arg4 usingAnnotation:(id)arg5 withAlignmentBlock:(CDUnknownBlockType)arg6;
 + (struct CGRect)_strokeAlignedRectForRect:(struct CGRect)arg1 withStrokeWidth:(double)arg2 shouldAlignStrictlyToScreen:(BOOL)arg3 alignToScreenUsingPageController:(id)arg4 orAlignToBitmapContext:(struct CGContext *)arg5 usingAnnotation:(id)arg6;
++ (void)adjustOriginalExifOrientationOnAnnotation:(id)arg1 flatteningOriginalModelExif:(long long)arg2;
 + (struct CGPoint)adjustPoint:(struct CGPoint)arg1 forExifOrientation:(long long)arg2 aboutCenter:(struct CGPoint)arg3;
 + (struct CGRect)adjustRect:(struct CGRect)arg1 forExifOrientation:(long long)arg2 aboutCenter:(struct CGPoint)arg3;
++ (struct CGAffineTransform)affineTransformFlatteningOriginalModelExif:(long long)arg1 withOriginalModelSize:(struct CGSize)arg2;
 + (struct CGAffineTransform)affineTransformForExifOrientation:(long long)arg1 aboutCenter:(struct CGPoint)arg2;
 + (struct CGAffineTransform)affineTransformRecenteringAboutOriginForExifOrientation:(long long)arg1 withOriginalSize:(struct CGSize)arg2;
 + (double)angleBetweenPoint:(struct CGPoint)arg1 andPoint:(struct CGPoint)arg2;
@@ -34,6 +36,7 @@
 + (struct CGRect)boundsOfRotatedRectangle:(struct CGRect)arg1 angle:(double)arg2;
 + (struct CGAffineTransform)centeredCircleToEllipseTransform:(struct CGRect)arg1;
 + (struct CGPoint)compareVectorDirectionsFirstVector:(struct CGPoint)arg1 secondVector:(struct CGPoint)arg2;
++ (long long)concatExifOrientation:(long long)arg1 withExifOrientation:(long long)arg2;
 + (struct CGPoint)convertModelToScreenOrientationForPoint:(struct CGPoint)arg1 relativeToRect:(struct CGRect)arg2 withPageController:(id)arg3;
 + (struct CGRect)convertModelToScreenOrientationForRect:(struct CGRect)arg1 withPageController:(id)arg2;
 + (struct CGPoint)convertScreenToModelOrientationForPoint:(struct CGPoint)arg1 relativeToRect:(struct CGRect)arg2 withPageController:(id)arg3;
@@ -62,6 +65,7 @@
 + (BOOL)isUnpresentablePoint:(struct CGPoint)arg1;
 + (BOOL)isUnpresentableRect:(struct CGRect)arg1;
 + (double)lengthOfVector:(struct CGVector)arg1;
++ (struct CGPath *)newPathWithPath:(struct CGPath *)arg1 applyingExifOrientation:(long long)arg2 aboutCenter:(struct CGPoint)arg3;
 + (struct CGVector)normalizeVector:(struct CGVector)arg1;
 + (struct CGPoint)normalizeVectorPoint:(struct CGPoint)arg1;
 + (struct CGPoint)pointAtAngle:(double)arg1 inCircleWithCenter:(struct CGPoint)arg2 andRadius:(double)arg3;

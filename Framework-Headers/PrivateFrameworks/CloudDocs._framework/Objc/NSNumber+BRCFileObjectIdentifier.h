@@ -11,11 +11,11 @@
 @property (readonly, nonatomic) NSNumber *brc_documentID;
 @property (readonly, nonatomic) NSNumber *brc_folderID;
 @property (readonly, nonatomic) BOOL brc_isDocumentID;
-@property (readonly, nonatomic) BOOL brc_isFolderID;
+@property (readonly, nonatomic) BOOL brc_isFolderOrAliasID;
 @property (readonly, nonatomic) unsigned long long brc_rawID;
 
 + (id)brc_fileObjectIDForURL:(id)arg1 allocateDocID:(BOOL)arg2;
 + (id)brc_fileObjectIDWithDocumentID:(unsigned int)arg1;
-+ (id)brc_fileObjectIDWithFolderID:(unsigned long long)arg1;
++ (id)brc_fileObjectIDWithFolderOrAliasID:(unsigned long long)arg1;
 @end
 

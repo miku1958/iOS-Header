@@ -8,17 +8,27 @@
 
 #import <BulletinDistributorCompanion/NSCopying-Protocol.h>
 
+@class NSData;
+
 @interface BLTPBAckInitialSequenceNumberRequest : PBRequest <NSCopying>
 {
+    NSData *_sessionIdentifier;
+    unsigned int _sessionState;
     BOOL _assert;
     struct {
+        unsigned int sessionState:1;
         unsigned int assert:1;
     } _has;
 }
 
 @property (nonatomic) BOOL assert; // @synthesize assert=_assert;
 @property (nonatomic) BOOL hasAssert;
+@property (readonly, nonatomic) BOOL hasSessionIdentifier;
+@property (nonatomic) BOOL hasSessionState;
+@property (strong, nonatomic) NSData *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
+@property (nonatomic) unsigned int sessionState; // @synthesize sessionState=_sessionState;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

@@ -15,6 +15,7 @@
 {
     id<UIDocumentPickerDelegate> _weak_delegate;
     BOOL _ignoreApplicationEntitlementForImport;
+    BOOL _sourceIsManaged;
     id<UIDocumentPickerDelegate> _delegate;
     unsigned long long _documentPickerMode;
     _UIResilientRemoteViewContainerViewController *_childViewController;
@@ -29,6 +30,7 @@
 @property (nonatomic) unsigned long long documentPickerMode; // @synthesize documentPickerMode=_documentPickerMode;
 @property (readonly, strong, nonatomic, getter=_remoteViewController) _UIDocumentPickerRemoteViewController *remoteViewController;
 @property (strong, nonatomic) _UIRemoteViewService *remoteViewService; // @synthesize remoteViewService=_remoteViewService;
+@property (nonatomic, getter=_sourceIsManaged, setter=_setSourceIsManaged:) BOOL sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
 @property (strong, nonatomic) NSMutableArray *stitchingTokens; // @synthesize stitchingTokens=_stitchingTokens;
 @property (copy, nonatomic) NSURL *uploadURL; // @synthesize uploadURL=_uploadURL;
 

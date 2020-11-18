@@ -12,6 +12,7 @@
 @interface MusicLibrarySearchResultsViewController : MusicLibraryBrowseHeterogenousCollectionViewController
 {
     MusicEntityCollectionViewDescriptor *_collectionViewDescriptor;
+    BOOL _hasPreviousReceivedSearchTerm;
     MusicEntityValueContext *_itemEntityValueContext;
     MusicLibrarySearchResultsEntityProviderConfiguration *_searchResultsEntityProviderConfiguration;
     NSMutableDictionary *_layoutMetricsForSection;
@@ -35,6 +36,7 @@
 - (unsigned long long)_overrideMaximumNumberOfEntitesForSection:(unsigned long long)arg1;
 - (void)_recordRecentForIndexPath:(id)arg1;
 - (void)_updateForResultsCount;
+- (void)_updateLayoutForSize:(struct CGSize)arg1;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumLineSpacingForSectionAtIndex:(long long)arg3;
@@ -51,6 +53,7 @@
 - (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
 - (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)willPresentPreviewViewController:(id)arg1 forLocation:(struct CGPoint)arg2 inSourceView:(id)arg3;

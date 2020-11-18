@@ -12,13 +12,12 @@
 #import <PhotosPlayer/ISPlayerItemObserver-Protocol.h>
 
 @class AVPlayer, ISInputController, ISPlaybackController, ISPlaybackSpec, ISPlayerItem, ISVitalityInput, NSError, NSHashTable, NSSet, NSString;
-@protocol OS_dispatch_queue;
+@protocol ISPlayerDelegate, OS_dispatch_queue;
 
 @interface ISPlayer : NSObject <ISInputControllerDelegate, ISPlaybackSpecObserver, ISPlaybackControllerObserver, ISPlayerItemObserver>
 {
     BOOL _photoVisible;
     ISPlaybackSpec *_playbackSpec;
-    NSObject<OS_dispatch_queue> *_audioSessionConfigurationQueue;
     NSObject<OS_dispatch_queue> *_observerQueue;
     AVPlayer *_videoPlayer;
     BOOL _managesAudioSession;
@@ -36,17 +35,14 @@
     ISInputController *__inputController;
     ISPlaybackController *__playbackController;
     ISVitalityInput *__vitalityHintInput;
-    NSString *__defaultAudioCategory;
-    long long __defaultAudioCategoryOptions;
     long long __currentMediaServicesResetID;
+    id<ISPlayerDelegate> _delegate;
     NSHashTable *__changeObservers;
     CDStruct_1b6d18a9 _photoTime;
 }
 
 @property (readonly, nonatomic) NSHashTable *_changeObservers; // @synthesize _changeObservers=__changeObservers;
 @property (nonatomic, setter=_setCurrentMediaServicesResetID:) long long _currentMediaServicesResetID; // @synthesize _currentMediaServicesResetID=__currentMediaServicesResetID;
-@property (strong, nonatomic, setter=_setDefaultAudioCategory:) NSString *_defaultAudioCategory; // @synthesize _defaultAudioCategory=__defaultAudioCategory;
-@property (nonatomic, setter=_setDefaultAudioCategoryOptions:) long long _defaultAudioCategoryOptions; // @synthesize _defaultAudioCategoryOptions=__defaultAudioCategoryOptions;
 @property (nonatomic, setter=_setHasPendingHint:) BOOL _hasPendingVitalityHint; // @synthesize _hasPendingVitalityHint=__hasPendingVitalityHint;
 @property (strong, nonatomic, setter=_inputController:) ISInputController *_inputController; // @synthesize _inputController=__inputController;
 @property (nonatomic, setter=_setNeedsUpdateContent:) BOOL _needsUpdateContent; // @synthesize _needsUpdateContent=__needsUpdateContent;
@@ -56,6 +52,7 @@
 @property (strong, nonatomic, setter=_setPlaybackController:) ISPlaybackController *_playbackController; // @synthesize _playbackController=__playbackController;
 @property (readonly, nonatomic) ISVitalityInput *_vitalityHintInput; // @synthesize _vitalityHintInput=__vitalityHintInput;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<ISPlayerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (nonatomic) BOOL forcesPhotoHidden; // @synthesize forcesPhotoHidden=_forcesPhotoHidden;
@@ -70,7 +67,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_audioSessionCategoryDidChange;
 - (void)_configurePlayerItemWithPlaybackSpec;
 - (void)_enumerateObserversWithBlock:(CDUnknownBlockType)arg1;
 - (void)_handleMediaServicesResetIfNecessaryForError:(id)arg1;
@@ -85,7 +81,6 @@
 - (void)_setStatus:(long long)arg1;
 - (void)_setupAVObjects;
 - (void)_triggerVitalyHintPlayback;
-- (void)_updateAudioCategory;
 - (void)_updateContentIfNeeded;
 - (void)_updateIfNeeded;
 - (BOOL)_updateNeeded;
@@ -99,12 +94,10 @@
 - (CDStruct_1b6d18a9)duration;
 - (id)init;
 - (id)initWithManagesAudioSession:(BOOL)arg1;
-- (id)initWithManagesAudioSession:(BOOL)arg1 videoPlayer:(id)arg2;
 - (id)initWithVideoPlayer:(id)arg1;
 - (void)inputControllerDidChange:(id)arg1;
 - (BOOL)isPhotoVisible;
 - (BOOL)isPlayingVitalityHint;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)playVitalityHint;
 - (void)playbackControllerPlaybackStateDidChange:(id)arg1;
 - (void)playbackControllerPlayerStatusDidChange:(id)arg1;

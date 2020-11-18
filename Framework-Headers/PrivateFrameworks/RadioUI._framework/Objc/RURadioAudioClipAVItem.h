@@ -17,7 +17,6 @@
 - (BOOL)isLikedStateEnabled;
 - (void)loadAssetAndPlayerItem;
 - (BOOL)supportsSkip;
-- (unsigned long long)type;
 
 @end
 

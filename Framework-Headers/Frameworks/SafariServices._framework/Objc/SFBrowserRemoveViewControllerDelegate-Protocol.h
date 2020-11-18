@@ -6,12 +6,14 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSError, NSString, NSURL, SFBrowserRemoteViewController;
+@class NSError, NSNumber, NSString, NSURL, SFBrowserRemoteViewController;
 
 @protocol SFBrowserRemoveViewControllerDelegate <NSObject>
 - (void)remoteViewController:(SFBrowserRemoteViewController *)arg1 didFinishInitialLoad:(BOOL)arg2;
+- (void)remoteViewController:(SFBrowserRemoteViewController *)arg1 executeCustomActivityProxyID:(NSNumber *)arg2;
+- (void)remoteViewController:(SFBrowserRemoteViewController *)arg1 fetchHostAppCustomActivitiesForURL:(NSURL *)arg2 title:(NSString *)arg3;
+- (void)remoteViewController:(SFBrowserRemoteViewController *)arg1 setSwipeGestureEnabled:(BOOL)arg2;
 - (void)remoteViewController:(SFBrowserRemoteViewController *)arg1 viewServiceDidTerminateWithError:(NSError *)arg2;
-- (void)remoteViewController:(SFBrowserRemoteViewController *)arg1 willShowActivitySheetForURL:(NSURL *)arg2 title:(NSString *)arg3 fromRect:(struct CGRect)arg4;
 - (void)remoteViewController:(SFBrowserRemoteViewController *)arg1 willUpdateStatusBarStyle:(long long)arg2;
 - (void)remoteViewControllerDidLoadWebView:(SFBrowserRemoteViewController *)arg1;
 - (void)remoteViewControllerWillDismiss:(SFBrowserRemoteViewController *)arg1;

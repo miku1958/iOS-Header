@@ -13,9 +13,11 @@
     NSString *_address;
     NSString *_displayName;
     NSString *_identifier;
+    NSString *_cnContactID;
 }
 
 @property (strong) NSString *address; // @synthesize address=_address;
+@property (strong) NSString *cnContactID; // @synthesize cnContactID=_cnContactID;
 @property (strong) NSString *displayName; // @synthesize displayName=_displayName;
 @property (strong) NSString *identifier; // @synthesize identifier=_identifier;
 

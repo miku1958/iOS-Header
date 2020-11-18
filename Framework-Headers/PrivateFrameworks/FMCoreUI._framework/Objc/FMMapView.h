@@ -102,7 +102,7 @@
 @property (nonatomic) BOOL shouldDisplayOverlay; // @synthesize shouldDisplayOverlay=_shouldDisplayOverlay;
 @property (nonatomic) BOOL showUserLocationCallout; // @synthesize showUserLocationCallout=_showUserLocationCallout;
 @property (readonly) Class superclass;
-@property (weak, nonatomic) MKUserLocation *userLocation; // @synthesize userLocation=_userLocation;
+@property (strong, nonatomic) MKUserLocation *userLocation; // @synthesize userLocation=_userLocation;
 @property (weak, nonatomic) MKUserLocationView *userLocationView; // @synthesize userLocationView=_userLocationView;
 @property (strong, nonatomic) NSTimer *userSelectionTimer; // @synthesize userSelectionTimer=_userSelectionTimer;
 @property (strong, nonatomic) _MKUserTrackingButton *userTrackingButton; // @synthesize userTrackingButton=_userTrackingButton;
@@ -143,6 +143,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)initialize;
+- (void)invalidateLayoutTimer;
 - (BOOL)isOverlayOnMap:(id)arg1;
 - (BOOL)isValidLocation:(CDStruct_c3b9c2ee)arg1;
 - (void)layoutMapView;

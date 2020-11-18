@@ -16,12 +16,14 @@
     CNPostalAddress *_postalAddress;
     NSString *_emailAddress;
     CNPhoneNumber *_phoneNumber;
+    NSString *_supplementarySubLocality;
 }
 
 @property (strong, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
 @property (strong, nonatomic) NSPersonNameComponents *name; // @synthesize name=_name;
 @property (strong, nonatomic) CNPhoneNumber *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property (strong, nonatomic) CNPostalAddress *postalAddress; // @synthesize postalAddress=_postalAddress;
+@property (strong, nonatomic) NSString *supplementarySubLocality; // @synthesize supplementarySubLocality=_supplementarySubLocality;
 
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;

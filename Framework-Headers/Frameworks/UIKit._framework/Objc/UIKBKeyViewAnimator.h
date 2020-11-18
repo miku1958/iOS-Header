@@ -9,7 +9,11 @@
 __attribute__((visibility("hidden")))
 @interface UIKBKeyViewAnimator : NSObject
 {
+    BOOL _disabled;
 }
+
+@property (nonatomic) BOOL disabled; // @synthesize disabled=_disabled;
+@property (readonly, nonatomic) BOOL shouldPurgeKeyViews;
 
 + (id)normalizedAnimationWithKeyPath:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3;
 + (id)normalizedUnwindAnimationWithKeyPath:(id)arg1 originallyFromValue:(id)arg2 toValue:(id)arg3;

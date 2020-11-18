@@ -15,9 +15,11 @@
 {
     long long _type;
     unsigned long long _machAbsoluteTime;
+    long long _categoryType;
     NSDictionary *_context;
 }
 
+@property (readonly, nonatomic) long long categoryType; // @synthesize categoryType=_categoryType;
 @property (readonly, nonatomic) NSDictionary *context; // @synthesize context=_context;
 @property (readonly, nonatomic) unsigned long long machAbsoluteTime; // @synthesize machAbsoluteTime=_machAbsoluteTime;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
@@ -30,7 +32,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithType:(long long)arg1 machAbsoluteTime:(unsigned long long)arg2 context:(id)arg3;
+- (id)initWithType:(long long)arg1 machAbsoluteTime:(unsigned long long)arg2 categoryType:(long long)arg3 context:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

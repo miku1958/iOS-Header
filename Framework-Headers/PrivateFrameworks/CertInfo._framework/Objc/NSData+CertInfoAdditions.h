@@ -7,6 +7,6 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (CertInfoAdditions)
-- (id)hexString;
+- (id)CertUIHexString;
 @end
 

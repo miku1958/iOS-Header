@@ -11,6 +11,7 @@
 @interface SKUIItemOfferButtonProperties : NSObject
 {
     BOOL _hasBorderView;
+    BOOL _borderCornerRadiusMatchesHalfBoundingDimension;
     BOOL _hasTitleLabel;
     BOOL _universal;
     BOOL _progressIndeterminate;
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) UIColor *borderColor; // @synthesize borderColor=_borderColor;
 @property (strong, nonatomic) CAFilter *borderCompositingFilter; // @synthesize borderCompositingFilter=_borderCompositingFilter;
 @property (nonatomic) double borderCornerRadius; // @synthesize borderCornerRadius=_borderCornerRadius;
+@property (nonatomic) BOOL borderCornerRadiusMatchesHalfBoundingDimension; // @synthesize borderCornerRadiusMatchesHalfBoundingDimension=_borderCornerRadiusMatchesHalfBoundingDimension;
 @property (nonatomic) double borderWidth; // @synthesize borderWidth=_borderWidth;
 @property (nonatomic) BOOL cancelRecognizer; // @synthesize cancelRecognizer=_cancelRecognizer;
 @property (nonatomic) long long confirmationTitleStyle; // @synthesize confirmationTitleStyle=_confirmationTitleStyle;

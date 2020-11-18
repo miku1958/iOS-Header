@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class DeliveryAccount, MFMailDelivery, MFMessage, MFMutableMessageHeaders, MFPlainTextDocument, MailAccount, NSArray, NSDictionary, NSString;
+@class DeliveryAccount, MFAttachmentCompositionContext, MFMailDelivery, MFMessage, MFMutableMessageHeaders, MFPlainTextDocument, MailAccount, NSArray, NSDictionary, NSString;
 @protocol MFDeliveryDelegate;
 
 @interface MFOutgoingMessageDelivery : NSObject
@@ -25,10 +25,12 @@
     NSDictionary *_compositionSpecification;
     MFMailDelivery *_currentDeliveryObject;
     BOOL _isUserRequested;
+    MFAttachmentCompositionContext *_attachmentContext;
     unsigned long long _conversationFlags;
     long long _originalConversationId;
 }
 
+@property (strong, nonatomic) MFAttachmentCompositionContext *attachmentContext; // @synthesize attachmentContext=_attachmentContext;
 @property (strong, nonatomic) NSDictionary *compositionSpecification; // @synthesize compositionSpecification=_compositionSpecification;
 @property (nonatomic) unsigned long long conversationFlags; // @synthesize conversationFlags=_conversationFlags;
 @property (nonatomic) BOOL isUserRequested; // @synthesize isUserRequested=_isUserRequested;

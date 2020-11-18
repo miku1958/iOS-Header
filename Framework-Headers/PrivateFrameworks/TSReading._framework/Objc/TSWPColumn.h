@@ -137,6 +137,7 @@
 - (id)smartFieldAtCharIndex:(unsigned long long)arg1 attributeKind:(unsigned int)arg2;
 - (double)textHeight;
 - (double)topOfLineAtCharIndex:(unsigned long long)arg1;
+- (void)trimFromCharIndex:(unsigned long long)arg1 inTarget:(id)arg2 layoutChore:(struct TSWPLayoutChore *)arg3;
 - (double)trimToCharIndex:(unsigned long long)arg1 inTarget:(id)arg2;
 - (void)trimToCharIndex:(unsigned long long)arg1 inTarget:(id)arg2 removeAutoNumberFootnoteCount:(unsigned long long)arg3;
 

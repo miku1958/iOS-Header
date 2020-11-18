@@ -6,35 +6,33 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-#import <ChatKit/ISPlayerViewDelegate-Protocol.h>
+#import <ChatKit/PHLivePhotoViewDelegate-Protocol.h>
 
-@class CKPhotoTileBadgeView, ISPlayerView, NSString, PLRoundProgressView, UIImageView;
+@class CKPhotoTileBadgeView, NSString, PHLivePhotoView, PLRoundProgressView, UIImageView;
 @protocol CKPhotoPickerCellDelegate;
 
-@interface CKPhotoPickerCell : UICollectionViewCell <ISPlayerViewDelegate>
+@interface CKPhotoPickerCell : UICollectionViewCell <PHLivePhotoViewDelegate>
 {
     BOOL _isVideo;
-    BOOL _isPhotoIris;
+    BOOL _isLivePhoto;
     id<CKPhotoPickerCellDelegate> _delegate;
     UIImageView *_imageView;
     PLRoundProgressView *_progressView;
     UIImageView *_videoImageView;
-    ISPlayerView *__irisPlayerView;
-    CKPhotoTileBadgeView *_irisBadgeView;
-    double _scrubOffset;
+    PHLivePhotoView *_livePhotoView;
+    CKPhotoTileBadgeView *_livePhotoBadgeView;
 }
 
-@property (strong, nonatomic, setter=_setIrisPlayerView:) ISPlayerView *_irisPlayerView; // @synthesize _irisPlayerView=__irisPlayerView;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<CKPhotoPickerCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
-@property (strong, nonatomic) CKPhotoTileBadgeView *irisBadgeView; // @synthesize irisBadgeView=_irisBadgeView;
-@property (nonatomic) BOOL isPhotoIris; // @synthesize isPhotoIris=_isPhotoIris;
+@property (nonatomic) BOOL isLivePhoto; // @synthesize isLivePhoto=_isLivePhoto;
 @property (nonatomic) BOOL isVideo; // @synthesize isVideo=_isVideo;
+@property (strong, nonatomic) CKPhotoTileBadgeView *livePhotoBadgeView; // @synthesize livePhotoBadgeView=_livePhotoBadgeView;
+@property (strong, nonatomic) PHLivePhotoView *livePhotoView; // @synthesize livePhotoView=_livePhotoView;
 @property (strong, nonatomic) PLRoundProgressView *progressView; // @synthesize progressView=_progressView;
-@property (nonatomic) double scrubOffset; // @synthesize scrubOffset=_scrubOffset;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIImageView *videoImageView; // @synthesize videoImageView=_videoImageView;
 
@@ -42,6 +40,8 @@
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)livePhotoView:(id)arg1 didEndPlaybackWithStyle:(long long)arg2;
+- (void)livePhotoView:(id)arg1 willBeginPlaybackWithStyle:(long long)arg2;
 - (void)prepareForReuse;
 - (void)setSelected:(BOOL)arg1;
 - (void)updateProgress:(double)arg1;

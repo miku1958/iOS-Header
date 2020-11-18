@@ -7,6 +7,6 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (CertUIAdditions)
-+ (id)verifiedColor;
++ (id)CertUIVerifiedColor;
 @end
 

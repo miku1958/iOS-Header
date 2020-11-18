@@ -313,6 +313,7 @@
 - (void)_cancelPhysicalButtonsWithType:(long long)arg1;
 - (void)_cancelTouches:(id)arg1 withEvent:(id)arg2;
 - (void)_cancelTouches:(id)arg1 withEvent:(id)arg2 includingGestures:(BOOL)arg3 notificationBlock:(CDUnknownBlockType)arg4;
+- (void)_cancelUnfinishedPressesForEvent:(id)arg1;
 - (void)_cancelUnfinishedTouchesForEvent:(id)arg1;
 - (void)_cancelViewProcessingOfTouches:(id)arg1 withEvent:(id)arg2 sendingTouchesCancelledToViewsOfTouches:(id)arg3;
 - (long long)_carefulChoiceOrientation;
@@ -362,7 +363,6 @@
 - (void)_executeResizeTest;
 - (id)_extendLaunchTest;
 - (BOOL)_fakingRequiresHighResolution;
-- (id)_fallbackPresentationViewController;
 - (void)_fetchInfoPlistFlags;
 - (id)_fetchUserActivityWithUUID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_findBestActivityToMakeCurrent:(id)arg1;
@@ -532,6 +532,7 @@
 - (id)_sceneSettingsGeometryMutationDiffInspector;
 - (id)_sceneSettingsPostLifecycleEventDiffInspector;
 - (id)_sceneSettingsPreLifecycleEventDiffInspector;
+- (void)_scheduleSceneEventResponseForScene:(id)arg1 withResponseBlock:(CDUnknownBlockType)arg2;
 - (void)_scrollsToTopInitiatorView:(id)arg1 touchesEnded:(id)arg2 withEvent:(id)arg3;
 - (void)_sendButtonEventWithType:(long long)arg1 phase:(long long)arg2 timestamp:(double)arg3;
 - (void)_sendButtonEventWithType:(long long)arg1 phase:(long long)arg2 timestamp:(double)arg3 synthetic:(BOOL)arg4;
@@ -792,6 +793,7 @@
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)proximityStateChanged:(BOOL)arg1;
+- (long long)pureUserInterfaceLayoutDirection;
 - (void)pushRunLoopMode:(id)arg1;
 - (void)pushRunLoopMode:(id)arg1 requester:(id)arg2;
 - (void)registerForRemoteNotificationTypes:(unsigned long long)arg1;

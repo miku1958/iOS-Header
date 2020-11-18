@@ -6,12 +6,10 @@
 
 #import <Notes/ICSearchIndexable-Protocol.h>
 
-@class ICSearchIndexerContext, NSArray, NSNumber, NSString, NSURL;
+@class NSArray, NSString;
 
 @protocol ICSearchIndexableNote <ICSearchIndexable>
-- (NSURL *)appURLForIndexerContext:(ICSearchIndexerContext *)arg1;
 - (NSString *)contentInfoText;
-- (NSNumber *)integerId;
 - (NSString *)noteAsPlainTextWithoutTitle;
 - (NSArray *)searchableContentKeyPaths;
 - (NSString *)title;

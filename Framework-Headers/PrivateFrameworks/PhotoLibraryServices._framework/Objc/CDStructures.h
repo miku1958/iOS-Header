@@ -103,14 +103,6 @@ struct tokenOutput_t {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    BOOL _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    id _field4;
-    id _field5;
-} CDStruct_af20e25b;
-
-typedef struct {
     unsigned long long _field1;
     id *_field2;
     unsigned long long *_field3;

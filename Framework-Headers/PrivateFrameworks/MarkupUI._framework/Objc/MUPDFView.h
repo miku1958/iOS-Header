@@ -65,7 +65,7 @@
 
 - (void).cxx_destruct;
 - (id)_addPageAtIndex:(unsigned long long)arg1;
-- (void)_addSubViewsInViewCoordsBounds:(struct CGRect)arg1 force:(BOOL)arg2;
+- (void)_addSubViewsInViewCoordsBounds:(struct CGRect)arg1;
 - (BOOL)_checkIfDocumentNeedsUnlock;
 - (void)_didScroll;
 - (BOOL)_hasPageRects;
@@ -74,7 +74,6 @@
 - (id)_pageWithSelection;
 - (void)_recreateUIPDFDocument;
 - (void)_removeBackgroundImageObserverIfNeeded:(id)arg1;
-- (void)_removePageViewsNotInCurrentViewCoordsRect;
 - (void)_removePageViewsNotInViewCoordsRect:(struct CGRect)arg1;
 - (id)_selection;
 - (void)_tapGestureRecognized:(id)arg1;

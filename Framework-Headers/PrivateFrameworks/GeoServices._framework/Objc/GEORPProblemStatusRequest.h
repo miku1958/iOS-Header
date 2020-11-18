@@ -8,15 +8,21 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPUserCredentials, NSMutableArray, NSString;
+@class GEOPDAnalyticMetadata, GEORPClientCapabilities, GEORPUserCredentials, NSMutableArray, NSString;
 
 @interface GEORPProblemStatusRequest : PBRequest <NSCopying>
 {
+    GEOPDAnalyticMetadata *_analyticMetadata;
+    GEORPClientCapabilities *_clientCapabilities;
     NSMutableArray *_problemIds;
     NSString *_statusNotificationId;
     GEORPUserCredentials *_userCredentials;
 }
 
+@property (strong, nonatomic) GEOPDAnalyticMetadata *analyticMetadata; // @synthesize analyticMetadata=_analyticMetadata;
+@property (strong, nonatomic) GEORPClientCapabilities *clientCapabilities; // @synthesize clientCapabilities=_clientCapabilities;
+@property (readonly, nonatomic) BOOL hasAnalyticMetadata;
+@property (readonly, nonatomic) BOOL hasClientCapabilities;
 @property (readonly, nonatomic) BOOL hasStatusNotificationId;
 @property (readonly, nonatomic) BOOL hasUserCredentials;
 @property (strong, nonatomic) NSMutableArray *problemIds; // @synthesize problemIds=_problemIds;
@@ -33,6 +39,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)populateAnalyticsMetadata;
 - (id)problemIdAtIndex:(unsigned long long)arg1;
 - (unsigned long long)problemIdsCount;
 - (BOOL)readFrom:(id)arg1;

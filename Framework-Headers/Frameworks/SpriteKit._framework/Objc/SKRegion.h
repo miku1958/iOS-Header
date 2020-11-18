@@ -29,6 +29,8 @@
 - (id)initWithRadius:(float)arg1;
 - (id)initWithSize:(struct CGSize)arg1;
 - (id)inverseRegion;
+- (BOOL)isEmpty;
+- (BOOL)isInfinite;
 - (id)regionByDifferenceFromRegion:(id)arg1;
 - (id)regionByIntersectionWithRegion:(id)arg1;
 - (id)regionByUnionWithRegion:(id)arg1;

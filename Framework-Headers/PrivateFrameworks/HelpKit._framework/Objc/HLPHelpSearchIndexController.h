@@ -6,17 +6,21 @@
 
 #import <HelpKit/HLPRemoteDataController.h>
 
-@class NSDictionary;
+@class HLPHelpBookController, NSDictionary;
 
 @interface HLPHelpSearchIndexController : HLPRemoteDataController
 {
+    HLPHelpBookController *_helpBookController;
     NSDictionary *_searchIndex;
 }
 
+@property (strong, nonatomic) HLPHelpBookController *helpBookController; // @synthesize helpBookController=_helpBookController;
 @property (strong, nonatomic) NSDictionary *searchIndex; // @synthesize searchIndex=_searchIndex;
 
 - (void).cxx_destruct;
 - (void)processData:(id)arg1 formattedData:(id)arg2;
+- (id)resultsWithSearchText:(id)arg1 localeCode:(id)arg2 searchTerms:(id *)arg3;
+- (id)searchTermsForSearchText:(id)arg1 localeCode:(id)arg2;
 
 @end
 

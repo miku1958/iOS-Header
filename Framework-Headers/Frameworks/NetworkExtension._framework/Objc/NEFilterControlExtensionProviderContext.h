@@ -31,6 +31,7 @@
 - (void)provideRemediationMap:(id)arg1;
 - (void)provideURLAppendStringMap:(id)arg1;
 - (void)startFilterWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)stopWithReason:(int)arg1;
 
 @end
 

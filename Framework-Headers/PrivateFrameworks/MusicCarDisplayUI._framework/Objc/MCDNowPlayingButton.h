@@ -12,6 +12,7 @@
 {
     CALayer *_leadingBorder;
     CALayer *_focusColorLayer;
+    struct CGSize _layoutFrameSize;
     BOOL _hidesLeadingBorder;
 }
 
@@ -23,6 +24,7 @@
 - (BOOL)canBecomeFocused;
 - (void)focusedViewDidChange;
 - (void)layoutSubviews;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)sizeToFit;
 
 @end

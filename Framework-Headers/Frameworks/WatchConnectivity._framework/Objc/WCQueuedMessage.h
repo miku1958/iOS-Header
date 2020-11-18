@@ -13,11 +13,13 @@
     WCMessage *_message;
     CDUnknownBlockType _completionHandler;
     NSDate *_creationDate;
+    long long _retryCount;
 }
 
 @property (copy) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (readonly) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (strong) WCMessage *message; // @synthesize message=_message;
+@property long long retryCount; // @synthesize retryCount=_retryCount;
 
 - (void).cxx_destruct;
 - (long long)compare:(id)arg1;

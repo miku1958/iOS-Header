@@ -12,23 +12,36 @@
 {
     BOOL _shouldFailWithoutForce;
     BOOL _didLongPress;
+    BOOL _touchEclipsesVelocity;
     UIKBPanGestureVelocitySample *_velocitySample;
     UIKBPanGestureVelocitySample *_previousVelocitySample;
+    UIKBPanGestureVelocitySample *_liftOffSample;
+    double _increasingForceTimestamp;
     double _lastTouchTime;
+    long long _liftOffState;
+    long long _increasingForceState;
     struct CGPoint _lastSceneReferenceLocation;
     struct CGPoint _lastUnadjustedSceneReferenceLocation;
+    struct CGRect _velocityRange;
 }
 
+@property (readonly, getter=_liftOffSample) UIKBPanGestureVelocitySample *_liftOffSample; // @synthesize _liftOffSample;
 @property (readonly, getter=_previousVelocitySample) UIKBPanGestureVelocitySample *_previousVelocitySample; // @synthesize _previousVelocitySample;
 @property (readonly, getter=_velocitySample) UIKBPanGestureVelocitySample *_velocitySample; // @synthesize _velocitySample;
 @property (nonatomic) BOOL didLongPress; // @synthesize didLongPress=_didLongPress;
+@property (nonatomic) long long increasingForceState; // @synthesize increasingForceState=_increasingForceState;
+@property (nonatomic) double increasingForceTimestamp; // @synthesize increasingForceTimestamp=_increasingForceTimestamp;
 @property (nonatomic) struct CGPoint lastSceneReferenceLocation; // @synthesize lastSceneReferenceLocation=_lastSceneReferenceLocation;
 @property (nonatomic) double lastTouchTime; // @synthesize lastTouchTime=_lastTouchTime;
 @property (nonatomic) struct CGPoint lastUnadjustedSceneReferenceLocation; // @synthesize lastUnadjustedSceneReferenceLocation=_lastUnadjustedSceneReferenceLocation;
+@property (nonatomic) long long liftOffState; // @synthesize liftOffState=_liftOffState;
 @property (nonatomic) BOOL shouldFailWithoutForce; // @synthesize shouldFailWithoutForce=_shouldFailWithoutForce;
+@property (nonatomic) BOOL touchEclipsesVelocity; // @synthesize touchEclipsesVelocity=_touchEclipsesVelocity;
+@property (nonatomic) struct CGRect velocityRange; // @synthesize velocityRange=_velocityRange;
 
 - (struct CGPoint)_adjustSceneReferenceLocation:(struct CGPoint)arg1;
-- (void)_centroidMovedTo:(struct CGPoint)arg1 atTime:(double)arg2;
+- (struct CGPoint)_centroidInView:(id)arg1;
+- (void)_centroidMovedTo:(struct CGPoint)arg1 atTime:(double)arg2 physicalTouch:(id)arg3;
 - (struct CGPoint)_convertPoint:(struct CGPoint)arg1 fromSceneReferenceCoordinatesToView:(id)arg2;
 - (struct CGPoint)_convertPoint:(struct CGPoint)arg1 toSceneReferenceCoordinatesFromView:(id)arg2;
 - (struct CGPoint)_convertVelocitySample:(id)arg1 fromSceneReferenceCoordinatesToView:(id)arg2;
@@ -37,11 +50,15 @@
 - (void)_resetVelocitySamples;
 - (struct CGPoint)_shiftPanLocationToNewSceneReferenceLocation:(struct CGPoint)arg1;
 - (BOOL)_shouldDelayUntilForceLevelRequirementIsMet;
+- (void)_updateLiftOffState;
 - (void)dealloc;
 - (void)enoughTimeElapsed:(id)arg1;
+- (BOOL)forceHasIncreasedForTimeInterval:(double)arg1;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (void)reset;
+- (BOOL)shouldResetRangeForVelocity:(struct CGPoint)arg1 previousVelocity:(struct CGPoint)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (struct CGPoint)velocityInView:(id)arg1;
 

@@ -16,6 +16,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)accessibilityPlaceholderValue;
 - (id)clearButton;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

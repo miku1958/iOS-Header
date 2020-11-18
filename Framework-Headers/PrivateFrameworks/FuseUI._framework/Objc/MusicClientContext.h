@@ -6,7 +6,7 @@
 
 #import <StoreKitUI/SKUIClientContext.h>
 
-@class MusicJSNativeViewEventRegistry, MusicJSNowPlayingController, MusicJSPlaybackCoordinator, MusicJSRecentStationsManager, MusicJSUserInterfaceStatusController, NSDictionary, RadioRecentStationsController, SKUILocalizedStringDictionary;
+@class MusicJSNativeViewEventRegistry, MusicJSNowPlayingController, MusicJSPlaybackCoordinator, MusicJSRecentStationsManager, MusicJSUserInterfaceStatusController, MusicTransferAggregator, NSDictionary, RadioRecentStationsController, SKUILocalizedStringDictionary;
 
 @interface MusicClientContext : SKUIClientContext
 {
@@ -18,6 +18,7 @@
     MusicJSRecentStationsManager *_jsRecentStationsManager;
     MusicJSUserInterfaceStatusController *_jsUserInterfaceStatusController;
     RadioRecentStationsController *_recentStationsController;
+    MusicTransferAggregator *_transferAggregator;
 }
 
 @property (readonly, nonatomic) MusicJSNativeViewEventRegistry *jsNativeViewEventRegistry; // @synthesize jsNativeViewEventRegistry=_jsNativeViewEventRegistry;
@@ -26,6 +27,7 @@
 @property (readonly, nonatomic) MusicJSRecentStationsManager *jsRecentStationsManager; // @synthesize jsRecentStationsManager=_jsRecentStationsManager;
 @property (readonly, nonatomic) MusicJSUserInterfaceStatusController *jsUserInterfaceStatusController; // @synthesize jsUserInterfaceStatusController=_jsUserInterfaceStatusController;
 @property (strong, nonatomic) RadioRecentStationsController *recentStationsController; // @synthesize recentStationsController=_recentStationsController;
+@property (strong, nonatomic) MusicTransferAggregator *transferAggregator; // @synthesize transferAggregator=_transferAggregator;
 
 + (id)_fallbackConfigurationDictionary;
 - (void).cxx_destruct;
@@ -38,6 +40,7 @@
 - (id)localizedAlertWithError:(id)arg1;
 - (id)localizedStringForKey:(id)arg1 inTable:(id)arg2;
 - (id)modalDocumentViewControllerForDocument:(id)arg1 options:(id)arg2;
+- (Class)moviePlayerViewControllerClass;
 - (id)previewViewControllerForViewElement:(id)arg1;
 - (void)sendOnSubscriptionRequiredWithOptions:(id)arg1;
 - (void)setUpdatableAssetController:(id)arg1;

@@ -13,21 +13,20 @@
 @interface SBSUICarDisplayNowPlayingStateContext : NSObject <NSSecureCoding>
 {
     NSString *_stateName;
-    NSString *_animationName;
     NSString *_associatedBundleID;
 }
 
-@property (copy, nonatomic) NSString *animationName; // @synthesize animationName=_animationName;
+@property (readonly, copy, nonatomic) NSString *animationName;
 @property (copy, nonatomic) NSString *associatedBundleID; // @synthesize associatedBundleID=_associatedBundleID;
 @property (copy, nonatomic) NSString *stateName; // @synthesize stateName=_stateName;
 
-+ (id)contextWithState:(id)arg1 animationName:(id)arg2;
++ (id)contextWithState:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithState:(id)arg1 animationName:(id)arg2;
+- (id)initWithState:(id)arg1;
 
 @end
 

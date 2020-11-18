@@ -167,6 +167,7 @@
 - (void)_finishHandlingInteraction:(id)arg1;
 - (double)_firstBaselineOffsetFromTop;
 - (struct CGPoint)_firstGlyphBaselineLeftPointWithLayoutManager:(id)arg1;
+- (struct CGPoint)_firstGlyphBaselineRightPointWithLayoutManager:(id)arg1;
 - (BOOL)_getCloseQuoteAnchor:(struct CGPoint *)arg1;
 - (BOOL)_getOpenQuoteAnchor:(struct CGPoint *)arg1;
 - (void)_highlightLinkAtPoint:(struct CGPoint)arg1;
@@ -182,6 +183,7 @@
 - (BOOL)_isDisplayingShortcutViewController;
 - (BOOL)_isInteractiveTextSelectionDisabled;
 - (void)_keyboardDidShow:(id)arg1;
+- (struct CGPoint)_lastGlyphBaselineLeftPointWithLayoutManager:(id)arg1;
 - (struct CGPoint)_lastGlyphBaselineRightPointWithLayoutManager:(id)arg1;
 - (id)_layoutDebuggingTitle;
 - (void)_layoutPlaceholder;

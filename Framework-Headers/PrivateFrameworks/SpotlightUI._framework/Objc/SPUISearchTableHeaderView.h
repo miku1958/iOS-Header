@@ -30,6 +30,7 @@
 - (id)initWithReuseIdentifier:(id)arg1;
 - (void)layoutSubviews;
 - (void)moreButtonPressed;
+- (void)setFloating:(BOOL)arg1;
 - (void)setMoreButtonVisible:(BOOL)arg1;
 - (void)updateWithTitle:(id)arg1 section:(unsigned long long)arg2 isExpanded:(BOOL)arg3;
 

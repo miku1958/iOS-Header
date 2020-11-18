@@ -18,13 +18,15 @@ __attribute__((visibility("hidden")))
     unsigned long long _limit;
     CKRecordZoneID *_zoneID;
     NSArray *_requestedFields;
+    CDUnknownBlockType _recordResponseBlock;
     NSData *_resultsCursor;
 }
 
 @property (strong, nonatomic) NSData *cursor; // @synthesize cursor=_cursor;
 @property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property (strong, nonatomic) CKQuery *query; // @synthesize query=_query;
-@property (strong, nonatomic) NSArray *queryResponses; // @synthesize queryResponses=_queryResponses;
+@property (strong, nonatomic) NSMutableArray *queryResponses; // @synthesize queryResponses=_queryResponses;
+@property (copy, nonatomic) CDUnknownBlockType recordResponseBlock; // @synthesize recordResponseBlock=_recordResponseBlock;
 @property (strong, nonatomic) NSArray *requestedFields; // @synthesize requestedFields=_requestedFields;
 @property (strong, nonatomic) NSData *resultsCursor; // @synthesize resultsCursor=_resultsCursor;
 @property (nonatomic) BOOL shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;

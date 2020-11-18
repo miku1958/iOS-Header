@@ -42,9 +42,9 @@
 @property (readonly, nonatomic) BOOL wantsFollowingNewLine;
 @property (nonatomic) long long writingDirection; // @synthesize writingDirection=_writingDirection;
 
-+ (unordered_map_854c4e29)paragraphStyleAlignmentMap;
-+ (unordered_map_55d0f771)paragraphStyleAlignmentMapReverse;
++ (int)paragraphStyleAlignmentForTextAlignment:(long long)arg1;
 + (id)paragraphStyleNamed:(unsigned int)arg1;
++ (long long)textAlignmentForParagraphStyleAlignment:(int)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

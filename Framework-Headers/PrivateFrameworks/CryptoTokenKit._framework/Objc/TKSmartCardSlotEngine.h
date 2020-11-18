@@ -14,6 +14,7 @@
 
 @interface TKSmartCardSlotEngine : NSObject <TKProtocolSmartCardSlot, NSXPCListenerDelegate>
 {
+    unsigned long long _lastId;
     long long _state;
     long long _powerState;
     TKSmartCardATR *_atr;
@@ -53,6 +54,8 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_findReservation:(id)arg1 connection:(id)arg2;
+- (id)_getReservationId;
 - (void)cardPresent:(BOOL)arg1;
 - (void)changeStateTo:(long long)arg1 powerState:(long long)arg2;
 - (void)connectCardSessionWithParameters:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -66,7 +69,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)powerDownWithEject:(BOOL)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)powerRequestFinished;
-- (void)reserveProtocols:(id)arg1 currentlyReserved:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)reserveProtocols:(id)arg1 reservationId:(id)arg2 exclusive:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)resetWithReply:(CDUnknownBlockType)arg1;
 - (void)runUserInteraction:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)scheduleIdlePowerDown;

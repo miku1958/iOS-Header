@@ -6,12 +6,13 @@
 
 #import <WebUI/WBUWebProcessPlugInAutoFillPageController.h>
 
+#import <SafariServices/RequestDesktopSiteWebProcessPlugInListener-Protocol.h>
 #import <SafariServices/SFReaderWebProcessControllerProtocol-Protocol.h>
 
-@class NSDictionary, NSString, _SFReaderWebProcessPlugInPageController, _SFWebProcessPlugInPageSafeBrowsingController, _WKRemoteObjectInterface;
-@protocol SFReaderEventsListener;
+@class NSDictionary, NSMutableSet, NSString, SFWebProcessPlugInPageExtensionController, _SFReaderWebProcessPlugInPageController, _SFWebProcessPlugInPageSafeBrowsingController, _WKRemoteObjectInterface;
+@protocol RequestDesktopSiteUIProcessListener, SFReaderEventsListener;
 
-@interface _SFWebProcessPlugInReaderEnabledPageController : WBUWebProcessPlugInAutoFillPageController <SFReaderWebProcessControllerProtocol>
+@interface _SFWebProcessPlugInReaderEnabledPageController : WBUWebProcessPlugInAutoFillPageController <RequestDesktopSiteWebProcessPlugInListener, SFReaderWebProcessControllerProtocol>
 {
     struct unique_ptr<SafariServices::ReaderAvailabilityController, std::__1::default_delete<SafariServices::ReaderAvailabilityController>> _readerAvailabilityController;
     _WKRemoteObjectInterface *_availabilityControllerInterface;
@@ -20,15 +21,20 @@
     long long _cachedReaderTopScrollOffset;
     NSDictionary *_initialScrollPositionAsDictionary;
     _SFWebProcessPlugInPageSafeBrowsingController *_safeBrowsingController;
+    SFWebProcessPlugInPageExtensionController *_extensionController;
+    id<RequestDesktopSiteUIProcessListener> _requestDesktopSiteUIProcessListener;
+    _WKRemoteObjectInterface *_requestDesktopSiteWebProcessPlugInListenerInterface;
     BOOL _viewingReadingListArchive;
     NSDictionary *_initalArticleScrollPositionAsDictionary;
     NSDictionary *_initialReaderConfiguration;
     double _readerUserVisibleWidth;
+    NSMutableSet *_domainsNeedingDesktopUserAgent;
 }
 
 @property (nonatomic) long long cachedReaderTopScrollOffset; // @synthesize cachedReaderTopScrollOffset=_cachedReaderTopScrollOffset;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSMutableSet *domainsNeedingDesktopUserAgent; // @synthesize domainsNeedingDesktopUserAgent=_domainsNeedingDesktopUserAgent;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSDictionary *initalArticleScrollPositionAsDictionary; // @synthesize initalArticleScrollPositionAsDictionary=_initalArticleScrollPositionAsDictionary;
 @property (readonly, nonatomic) NSDictionary *initialReaderConfiguration; // @synthesize initialReaderConfiguration=_initialReaderConfiguration;
@@ -53,6 +59,7 @@
 - (void)increaseReaderTextSize;
 - (id)initWithPlugIn:(id)arg1 contextController:(id)arg2;
 - (void)loadNewReaderArticle;
+- (void)markURLAsNeedingDesktopUserAgent:(id)arg1;
 - (struct OpaqueJSValue *)originalArticleFinder;
 - (void)prepareReaderContentForPrinting;
 - (void)prepareToTransitionToReader;

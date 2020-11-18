@@ -65,7 +65,7 @@
 - (void)_contentDescriptorDidChange:(id)arg1;
 - (id)_effectiveArtworkBackgroundColor;
 - (void)_entityDisabledDidChange;
-- (void)_getViewToProposedFrameMap:(id *)arg1 withTextDescriptors:(id)arg2 availableContentBounds:(struct CGRect)arg3 totalInsetContentBounds:(struct CGRect)arg4 totalTextHeight:(double *)arg5;
+- (void)_getViewToProposedFrameMap:(id *)arg1 withTextDescriptors:(id)arg2 availableContentBounds:(struct CGRect)arg3 exclusionRectangle:(struct CGRect)arg4 totalTextHeight:(double *)arg5;
 - (void)_handleArtworkImageUpdate:(id)arg1 idealArtworkSize:(struct CGSize)arg2;
 - (void)_handleArtworkViewTapped;
 - (void)_handleContentDescriptorDidInvalidate:(id)arg1;

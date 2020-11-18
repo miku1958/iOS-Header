@@ -141,6 +141,7 @@
 - (id)initWithDefaultValues;
 - (id)initWithDefaultValuesForGraphicsQuality:(long long)arg1;
 - (void)removeKeyPathObserver:(id)arg1;
+- (BOOL)requiresBackdropLayer;
 - (void)restoreDefaultValues;
 - (void)scheduleSettingsDidChangeIfNeeded;
 - (void)setDefaultValues;

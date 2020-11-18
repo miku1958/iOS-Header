@@ -24,6 +24,7 @@
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)resultAtIndexPath:(id)arg1;
 - (void)selectRowAtIndexPath:(id)arg1;
+- (void)showMore:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForHeaderInSection:(long long)arg2;

@@ -53,6 +53,7 @@
 + (id)contactResultWithDisplayName:(id)arg1 value:(id)arg2 nameComponents:(id)arg3 identifier:(id)arg4;
 + (id)contactStoreForFetchingFullContacts;
 + (id)groupResultWithDisplayName:(id)arg1 identifier:(id)arg2;
++ (BOOL)isSourceTypeConsideredSuggestion:(unsigned long long)arg1;
 + (id)localeForHashing;
 + (id)messagesResultWithAddress:(id)arg1 displayName:(id)arg2 nameComponents:(id)arg3 resultType:(long long)arg4 addressType:(long long)arg5 identifier:(id)arg6 contactProvider:(CDUnknownBlockType)arg7 groupMembersProvider:(CDUnknownBlockType)arg8 userInfo:(id)arg9;
 + (id)messagesResultWithAddress:(id)arg1 displayName:(id)arg2 nameComponents:(id)arg3 resultType:(long long)arg4 groupMembersProvider:(CDUnknownBlockType)arg5 userInfo:(id)arg6;

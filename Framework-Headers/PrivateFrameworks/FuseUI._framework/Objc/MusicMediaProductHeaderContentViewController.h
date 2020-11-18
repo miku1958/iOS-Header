@@ -19,6 +19,7 @@
     MusicContextualLibraryUpdateAlertAction *_addRemoveLibraryAlertAction;
     NSArray *_addRemoveNotificationObservers;
     MusicHairlineView *_hairlineView;
+    MusicContextualLibraryUpdateAlertAction *_keepLocalAlertAction;
     BOOL _needToMakeTitleFirstResponder;
     MusicEntityPlaybackStatusController *_playbackStatusController;
     MPAVController *_player;
@@ -39,6 +40,7 @@
     NSString *_lockupArtworkProperty;
     MusicMediaDetailTintInformation *_mediaDetailTintInformation;
     long long _presentationSource;
+    struct MusicEntityDownloadInformation _downloadInformation;
 }
 
 @property (readonly, nonatomic) MusicEntityValueContext *_containerEntityValueContext; // @synthesize _containerEntityValueContext;
@@ -49,6 +51,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MusicMediaProductHeaderContentViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) struct MusicEntityDownloadInformation downloadInformation; // @synthesize downloadInformation=_downloadInformation;
 @property (readonly, copy, nonatomic) NSString *editableText;
 @property (strong, nonatomic) UIImage *editedContentArtworkImage; // @synthesize editedContentArtworkImage=_editedContentArtworkImage;
 @property (nonatomic, getter=isHairlineVisible) BOOL hairlineVisible; // @synthesize hairlineVisible=_hairlineVisible;
@@ -75,8 +78,9 @@
 - (id)_loadProductHeaderLockupContentDescriptor;
 - (void)_presentContextualActionsFromButton:(id)arg1;
 - (id)_productHeaderLockupContentDescriptor;
+- (void)_reloadAddRemoveLibraryAndKeepLocalActions;
 - (void)_reloadContainerEntityValueContextProperties;
-- (void)_reloadWantsAddToLibraryButton;
+- (void)_reloadDownloadProgressButtonState;
 - (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1;
 - (void)_updateContentTaste;
 - (void)_updateHairline;
@@ -92,8 +96,8 @@
 - (void)playbackStatusControllerPlaybackStatusDidChange:(id)arg1;
 - (void)productHeaderLockupView:(id)arg1 didSelectCameraButton:(id)arg2;
 - (void)productHeaderLockupView:(id)arg1 didSelectPlayButtonAction:(unsigned long long)arg2;
-- (void)productHeaderLockupViewDidSelectAddToLibraryButton:(id)arg1;
 - (void)productHeaderLockupViewDidSelectContextualActionsButton:(id)arg1;
+- (void)productHeaderLockupViewDidSelectDownloadProgressButton:(id)arg1;
 - (void)productHeaderLockupViewDidSelectEditButton:(id)arg1;
 - (void)productHeaderLockupViewDidSelectLikeDislikeButton:(id)arg1;
 - (void)productHeaderLockupViewDidSelectRefreshButton:(id)arg1;

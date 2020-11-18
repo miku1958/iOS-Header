@@ -11,7 +11,7 @@
 @protocol MusicContextualActionsHeaderLockupViewDelegate <MusicEntityHorizontalLockupViewDelegate>
 
 @optional
-- (void)contextualActionsHeaderLockupViewDidSelectAddToLibraryButton:(MusicContextualActionsHeaderLockupView *)arg1;
+- (void)contextualActionsHeaderLockupViewDidSelectDownloadButton:(MusicContextualActionsHeaderLockupView *)arg1;
 - (void)contextualActionsHeaderLockupViewDidSelectLikeButton:(MusicContextualActionsHeaderLockupView *)arg1;
 - (void)contextualActionsHeaderLockupViewDidSelectRadioButton:(MusicContextualActionsHeaderLockupView *)arg1;
 - (void)contextualActionsHeaderLockupViewDidSelectShareButton:(MusicContextualActionsHeaderLockupView *)arg1;

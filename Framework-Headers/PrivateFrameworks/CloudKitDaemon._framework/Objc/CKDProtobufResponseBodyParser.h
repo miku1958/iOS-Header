@@ -16,6 +16,7 @@
     BOOL _isParsing;
     Class _messageClass;
     CDUnknownBlockType _objectParsedBlock;
+    CDUnknownBlockType _logParsedObjectBlock;
     NSError *_parserError;
     NSObject<OS_dispatch_queue> *_parseQueue;
     NSData *_parserData;
@@ -29,6 +30,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isParsing; // @synthesize isParsing=_isParsing;
+@property (copy, nonatomic) CDUnknownBlockType logParsedObjectBlock; // @synthesize logParsedObjectBlock=_logParsedObjectBlock;
 @property (nonatomic) struct CC_SHA256state_st mescalSignature; // @synthesize mescalSignature=_mescalSignature;
 @property (nonatomic) Class messageClass; // @synthesize messageClass=_messageClass;
 @property (copy, nonatomic) CDUnknownBlockType objectParsedBlock; // @synthesize objectParsedBlock=_objectParsedBlock;

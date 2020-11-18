@@ -6,41 +6,43 @@
 
 #import <CloudKitDaemon/CKDURLRequest.h>
 
-@class CKRecordZoneID, NSArray, NSData, NSMutableArray;
+@class CKRecordZoneID, NSArray, NSData;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchRecordChangesURLRequest : CKDURLRequest
 {
-    NSMutableArray *_resultChangedRecords;
-    NSMutableArray *_resultDeletedRecordIdentifiers;
-    NSMutableArray *_resultChangedShares;
-    NSMutableArray *_resultDeletedShareIdentifiers;
     BOOL _shouldFetchAssetContent;
     unsigned long long _resultsLimit;
+    long long _changeTypes;
+    CDUnknownBlockType _recordChangedBlock;
+    CDUnknownBlockType _recordDeletedBlock;
+    CDUnknownBlockType _shareChangedBlock;
+    CDUnknownBlockType _shareDeletedBlock;
     NSData *_resultServerChangeTokenData;
     NSData *_resultClientChangeTokenData;
     long long _status;
-    long long _changeTypes;
     CKRecordZoneID *_recordZoneID;
     NSData *_serverChangeTokenData;
     NSArray *_requestedFields;
 }
 
 @property (nonatomic) long long changeTypes; // @synthesize changeTypes=_changeTypes;
+@property (copy, nonatomic) CDUnknownBlockType recordChangedBlock; // @synthesize recordChangedBlock=_recordChangedBlock;
+@property (copy, nonatomic) CDUnknownBlockType recordDeletedBlock; // @synthesize recordDeletedBlock=_recordDeletedBlock;
 @property (strong, nonatomic) CKRecordZoneID *recordZoneID; // @synthesize recordZoneID=_recordZoneID;
 @property (strong, nonatomic) NSArray *requestedFields; // @synthesize requestedFields=_requestedFields;
-@property (readonly, nonatomic) NSArray *resultChangedRecords; // @synthesize resultChangedRecords=_resultChangedRecords;
-@property (readonly, nonatomic) NSArray *resultChangedShares; // @synthesize resultChangedShares=_resultChangedShares;
 @property (strong, nonatomic) NSData *resultClientChangeTokenData; // @synthesize resultClientChangeTokenData=_resultClientChangeTokenData;
-@property (readonly, nonatomic) NSArray *resultDeletedRecordIdentifiers; // @synthesize resultDeletedRecordIdentifiers=_resultDeletedRecordIdentifiers;
-@property (readonly, nonatomic) NSArray *resultDeletedShareIdentifiers; // @synthesize resultDeletedShareIdentifiers=_resultDeletedShareIdentifiers;
 @property (strong, nonatomic) NSData *resultServerChangeTokenData; // @synthesize resultServerChangeTokenData=_resultServerChangeTokenData;
 @property (nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
 @property (strong, nonatomic) NSData *serverChangeTokenData; // @synthesize serverChangeTokenData=_serverChangeTokenData;
+@property (copy, nonatomic) CDUnknownBlockType shareChangedBlock; // @synthesize shareChangedBlock=_shareChangedBlock;
+@property (copy, nonatomic) CDUnknownBlockType shareDeletedBlock; // @synthesize shareDeletedBlock=_shareDeletedBlock;
 @property (nonatomic) BOOL shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
 @property (nonatomic) long long status; // @synthesize status=_status;
 
 - (void).cxx_destruct;
+- (id)_handleRecordChanges:(id)arg1;
+- (id)_handleShareChanges:(id)arg1;
 - (id)initWithRecordZoneID:(id)arg1 serverChangeTokenData:(id)arg2 requestedFields:(id)arg3;
 - (int)operationType;
 - (id)requestDidParseProtobufObject:(id)arg1;

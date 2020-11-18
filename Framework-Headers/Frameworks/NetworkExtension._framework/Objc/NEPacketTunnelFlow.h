@@ -31,6 +31,7 @@
 - (void)dealloc;
 - (id)initWithVirtualInterfaceType:(long long)arg1;
 - (void)readPacketsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)resetReadHandler;
 - (BOOL)setVirtualInterfaceSocket:(id)arg1;
 - (BOOL)writePackets:(id)arg1 withProtocols:(id)arg2;
 

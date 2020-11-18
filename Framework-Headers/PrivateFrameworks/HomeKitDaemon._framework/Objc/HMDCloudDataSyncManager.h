@@ -46,6 +46,7 @@
     NSUUID *_uuid;
     HMMessageDispatcher *_msgDispatcher;
     HMDHomeManager *_homeManager;
+    NSMutableArray *_currentBackoffTimerValuesInMinutes;
     CKRecordID *_metadataBlobRecordID;
     CKRecord *_metadataRecord;
     NSString *_lastMetadataChangeTag;
@@ -64,6 +65,7 @@
 @property (strong, nonatomic) CKContainer *container; // @synthesize container=_container;
 @property (copy, nonatomic) CDUnknownBlockType controllerKeyAvailableNotificationHandler; // @synthesize controllerKeyAvailableNotificationHandler=_controllerKeyAvailableNotificationHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *controllerKeyPollTimer; // @synthesize controllerKeyPollTimer=_controllerKeyPollTimer;
+@property (strong, nonatomic) NSMutableArray *currentBackoffTimerValuesInMinutes; // @synthesize currentBackoffTimerValuesInMinutes=_currentBackoffTimerValuesInMinutes;
 @property (strong, nonatomic) CKDatabase *database; // @synthesize database=_database;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL decryptionFailed; // @synthesize decryptionFailed=_decryptionFailed;
@@ -117,6 +119,8 @@
 - (void)_resetMetadataRecordState;
 - (void)_setupSubscription;
 - (void)_startControllerKeyPollTimer;
+- (void)_startControllerKeyPollTimerWithBackoff;
+- (void)_startControllerKeyPollTimerWithValue:(long long)arg1;
 - (void)_startFetchPollTimer;
 - (void)_startFetchRetryTimer;
 - (void)_stopControllerKeyPollTimer;
@@ -137,6 +141,7 @@
 - (void)setControllerKeyAvailableNotificationBlock:(CDUnknownBlockType)arg1;
 - (void)setDataAvailableFromCloudCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)updateAccountStatusChanged:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateServerTokenStatusOnCloudFilter;
 - (void)uploadHomeData:(id)arg1 metadata:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end

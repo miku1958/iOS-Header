@@ -29,9 +29,11 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)didFinishInitialLoad:(BOOL)arg1;
 - (void)didLoadWebView;
+- (void)executeCustomActivityProxyID:(id)arg1;
+- (void)fetchHostAppCustomActivitiesForURL:(id)arg1 title:(id)arg2;
+- (void)setRemoteSwipeGestureEnabled:(BOOL)arg1;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 - (void)willDismissServiceViewController;
-- (void)willShowActivitySheetForURL:(id)arg1 title:(id)arg2 fromRect:(struct CGRect)arg3;
 - (void)willUpdateStatusBarStyle:(id)arg1;
 
 @end

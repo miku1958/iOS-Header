@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SplashBoard/XBSnapshotDataProvider-Protocol.h>
 
-@class NSData, NSString, XBDisplaySnapshot, XBSnapshotDataProviderContext;
+@class NSString, UIImage, XBDisplaySnapshot, XBSnapshotDataProviderContext;
 
 @interface XBLaunchImageDataProvider : NSObject <XBSnapshotDataProvider>
 {
     XBDisplaySnapshot *_snapshot;
-    NSData *_cachedImageData;
+    UIImage *_cachedImage;
 }
 
 @property (readonly, strong, nonatomic) XBSnapshotDataProviderContext *context;
@@ -24,7 +24,7 @@
 
 - (void)_invalidateSnapshotData;
 - (void)dealloc;
-- (id)fetchImageData:(out struct CGAffineTransform *)arg1;
+- (id)fetchImage;
 - (id)initWithRequest:(id)arg1 contextID:(unsigned int)arg2;
 
 @end

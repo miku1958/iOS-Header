@@ -23,6 +23,7 @@
 - (struct GKCGraphNode *)cGraphNode;
 - (float)costToNode:(id)arg1;
 - (void)dealloc;
+- (void)deleteCGraphNode;
 - (float)estimatedCostToNode:(id)arg1;
 - (id)findPathFromNode:(id)arg1;
 - (id)findPathToNode:(id)arg1;

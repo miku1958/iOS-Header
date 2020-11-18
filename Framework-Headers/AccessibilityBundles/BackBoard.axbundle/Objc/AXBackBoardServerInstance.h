@@ -48,6 +48,7 @@
 - (id)_handleRegisterAssistiveTouchPID:(id)arg1;
 - (id)_handleRegisterSiriViewServicePID:(id)arg1;
 - (id)_handleRegisterZoomConflict:(id)arg1;
+- (id)_handleSetCapsLockLightOn:(id)arg1;
 - (void)_handleSetGuidedAccessEnabledByRequestingApp:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_handleSetInPreBoardMode:(id)arg1;
 - (id)_handleSetSwitchControlRendersDeviceUnusable:(id)arg1;

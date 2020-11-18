@@ -12,7 +12,10 @@
 {
     NSObject<OS_dispatch_queue> *_queue;
     id<AFAnalyticsService> _service;
+    long long _defaultCategoryType;
 }
+
+@property (readonly, nonatomic) long long defaultCategoryType; // @synthesize defaultCategoryType=_defaultCategoryType;
 
 + (id)sharedAnalytics;
 - (void).cxx_destruct;
@@ -20,13 +23,14 @@
 - (void)_stageEvent:(id)arg1;
 - (void)_stageEvents:(id)arg1;
 - (id)init;
+- (id)initWithDefaultCategoryType:(long long)arg1;
 - (void)logEvent:(id)arg1;
 - (void)logEventWithType:(long long)arg1 context:(id)arg2;
 - (void)logEventWithType:(long long)arg1 context:(id)arg2 contextNoCopy:(BOOL)arg3;
 - (void)logEventWithType:(long long)arg1 contextProvider:(CDUnknownBlockType)arg2;
 - (void)logEventWithType:(long long)arg1 contextProvider:(CDUnknownBlockType)arg2 contextProvidingQueue:(id)arg3;
-- (void)logEventWithType:(long long)arg1 machAbsoluteTime:(unsigned long long)arg2 context:(id)arg3 contextNoCopy:(BOOL)arg4;
-- (void)logEventWithType:(long long)arg1 machAbsoluteTime:(unsigned long long)arg2 contextProvider:(CDUnknownBlockType)arg3 contextProvidingQueue:(id)arg4;
+- (void)logEventWithType:(long long)arg1 machAbsoluteTime:(unsigned long long)arg2 categoryType:(long long)arg3 context:(id)arg4 contextNoCopy:(BOOL)arg5;
+- (void)logEventWithType:(long long)arg1 machAbsoluteTime:(unsigned long long)arg2 categoryType:(long long)arg3 contextProvider:(CDUnknownBlockType)arg4 contextProvidingQueue:(id)arg5;
 - (void)logEvents:(id)arg1;
 - (void)setService:(id)arg1;
 

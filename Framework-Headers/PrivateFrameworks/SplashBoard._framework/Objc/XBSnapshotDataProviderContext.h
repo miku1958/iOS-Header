@@ -4,20 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @interface XBSnapshotDataProviderContext : NSObject
 {
     double _scale;
     BOOL _opaque;
-    struct CGAffineTransform _transform;
 }
 
-@property (nonatomic) struct CGAffineTransform baseTransform; // @synthesize baseTransform=_transform;
 @property (nonatomic, getter=isOpaque) BOOL opaque; // @synthesize opaque=_opaque;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 
-- (id)init;
 
 @end
 

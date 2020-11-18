@@ -7,7 +7,7 @@
 #import <TSReading/NSObject-Protocol.h>
 
 @class NSArray, NSMutableArray, NSObject, TSDBezierPath, TSDCanvas, TSDDrawableInfo, TSDLayout, TSPObject, TSWPDrawableAttachment;
-@protocol TSDHint, TSDInfo, TSWPColumnMetrics, TSWPFootnoteHeightMeasurer, TSWPFootnoteMarkProvider, TSWPOffscreenColumn;
+@protocol TSDHint, TSDInfo, TSWPColumnMetrics, TSWPFootnoteHeightMeasurer, TSWPFootnoteMarkProvider, TSWPOffscreenColumn, TSWPStyleProvider;
 
 @protocol TSWPLayoutTarget <NSObject>
 
@@ -65,6 +65,7 @@
 - (struct CGPoint)anchoredAttachmentPositionFromLayoutPosition:(struct CGPoint)arg1;
 - (void)drawableAttachment:(TSWPDrawableAttachment *)arg1 didFinalizePosition:(struct CGPoint)arg2;
 - (void)drawableAttachment:(TSWPDrawableAttachment *)arg1 willStartNewIterationWithIndex:(unsigned long long)arg2;
+- (struct _NSRange)expandedRangeForLayoutRange:(struct _NSRange)arg1 styleProvider:(id<TSWPStyleProvider>)arg2;
 - (TSDBezierPath *)interiorClippingPath;
 - (BOOL)invalidateForPageCountChange;
 - (struct CGPoint)layoutPositionFromAnchoredAttachmentPosition:(struct CGPoint)arg1;

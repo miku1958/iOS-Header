@@ -13,7 +13,9 @@
     ISDialogOperation *_dialogOperation;
     MPUserNotification *_explicitUserNotification;
     RadioGetTracksRequest *_getTracksRequest;
+    BOOL _hasSetWillContinuePlayback;
     NSLock *_lock;
+    RadioStationMatchContext *_nowPlayingMatchContext;
     unsigned long long _numberOfTracks;
     RadioPlaybackContext *_playbackContext;
     SSVPlaybackLease *_playbackLease;
@@ -22,9 +24,11 @@
     BOOL _shouldIncludeStationInResponse;
     RadioStation *_station;
     RadioStationMatchContext *_stationMatchContext;
+    BOOL _willContinuePlayback;
     long long _reasonType;
 }
 
+@property (strong, nonatomic) RadioStationMatchContext *nowPlayingMatchContext;
 @property unsigned long long numberOfTracks;
 @property (copy) RadioPlaybackContext *playbackContext;
 @property (strong) SSVPlaybackLease *playbackLease;
@@ -34,6 +38,7 @@
 @property BOOL shouldIncludeStationInResponse;
 @property (strong) RadioStation *station;
 @property (strong) RadioStationMatchContext *stationMatchContext;
+@property (nonatomic) BOOL willContinuePlayback;
 
 - (void).cxx_destruct;
 - (id)_heartbeatTokenDataAllowingDelay:(BOOL)arg1 error:(id *)arg2;

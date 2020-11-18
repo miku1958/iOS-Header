@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _dismissed;
     BOOL _geocodedEventEncountered;
+    BOOL _hypothesizerSentAtLeastOneHypothesis;
     EKTravelEngineHypothesis *_latestHypothesis;
     CDUnknownBlockType _updateBlock;
     CDUnknownBlockType _entrySignificantlyChangedBlock;
@@ -25,6 +26,8 @@ __attribute__((visibility("hidden")))
     GEORouteHypothesizer *_hypothesizer;
     CLLocation *_geoLocation;
     NSData *_mapKitHandle;
+    long long _travelTimeThresholdExceededState;
+    double _maximumTravelDurationEncountered;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
@@ -34,25 +37,37 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL geocodedEventEncountered; // @synthesize geocodedEventEncountered=_geocodedEventEncountered;
 @property (strong, nonatomic) CalGeocoder *geocoder; // @synthesize geocoder=_geocoder;
 @property (strong, nonatomic) GEORouteHypothesizer *hypothesizer; // @synthesize hypothesizer=_hypothesizer;
+@property (nonatomic) BOOL hypothesizerSentAtLeastOneHypothesis; // @synthesize hypothesizerSentAtLeastOneHypothesis=_hypothesizerSentAtLeastOneHypothesis;
 @property (strong, nonatomic) EKTravelEngineHypothesis *latestHypothesis; // @synthesize latestHypothesis=_latestHypothesis;
 @property (strong, nonatomic) NSData *mapKitHandle; // @synthesize mapKitHandle=_mapKitHandle;
+@property (nonatomic) double maximumTravelDurationEncountered; // @synthesize maximumTravelDurationEncountered=_maximumTravelDurationEncountered;
 @property (readonly, nonatomic) EKTravelEngineOriginalEvent *originalEvent;
 @property (strong, nonatomic) EKTravelEngineOriginalEvent *originalEventInternal; // @synthesize originalEventInternal=_originalEventInternal;
 @property (strong, nonatomic) EKTravelEngineThrottle *throttle; // @synthesize throttle=_throttle;
+@property (nonatomic) long long travelTimeThresholdExceededState; // @synthesize travelTimeThresholdExceededState=_travelTimeThresholdExceededState;
 @property (copy, nonatomic) CDUnknownBlockType updateBlock; // @synthesize updateBlock=_updateBlock;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (void)_accountForGeocodingFailureWithError:(id)arg1;
++ (void)_accountForHypothesizerNeverHavingSentHypothesis;
++ (void)_accountForHypothesizerSendingHypothesis;
++ (void)_accountForLocationEnhancementSuccess;
++ (void)_accountForNoLocationEnhancementNeeded;
 + (double)_maximumAllowableTravelTime;
 + (double)fuzzyMaximumInitialUpdateIntervalBeforeStartDate;
 - (void).cxx_destruct;
 - (void)_accountForGeocodedEventEncounter;
+- (void)_accountForMaximumTravelDuration;
+- (void)_accountForTravelDurationThresholdExceededState;
 - (void)_clearEverything;
 - (void)_createHypothesizerForDestination:(id)arg1;
 - (void)_createSyntheticHypothesis;
 - (void)_enhanceLocation;
 - (id)_generateDestination;
+- (void)_performAnalyticsPostProcessing;
 - (void)_sendFeedbackToHypothesizerForPostingNotification:(unsigned long long)arg1;
 - (void)_setUpRouteMonitoring;
+- (void)_updateTravelTimeExceededThresholdStateUsingExceededValue:(BOOL)arg1;
 - (void)_updateWithHypothesis:(id)arg1;
 - (id)init;
 - (void)reset;

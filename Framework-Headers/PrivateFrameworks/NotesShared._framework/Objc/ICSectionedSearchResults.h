@@ -25,7 +25,9 @@
 - (void)dealloc;
 - (id)description;
 - (void)filterSearchResultsUsingVisiblityTesting:(id)arg1;
+- (BOOL)hideSearchResultsForIdentifier:(id)arg1;
 - (id)init;
+- (void)noteWillBeUndeletedOrUntrashed:(id)arg1;
 - (void)objectsDidChange:(id)arg1;
 - (BOOL)passesVisibilityTesting:(id)arg1 forSearchResult:(id)arg2;
 - (id)removeSearchResultAtRow:(long long)arg1 section:(unsigned long long)arg2;

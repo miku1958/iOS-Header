@@ -6,16 +6,23 @@
 
 #import <Foundation/NSOperation.h>
 
-@class MPUContentItemIdentifierCollection;
+@class MPUContentItemIdentifierCollection, NSError, NSObject;
+@protocol OS_dispatch_queue;
 
 @interface MusicLibraryActionDeleteOperation : NSOperation
 {
+    NSObject<OS_dispatch_queue> *_accessQueue;
+    NSError *_resultError;
+    BOOL _success;
     MPUContentItemIdentifierCollection *_contentItemIdentifierCollection;
 }
 
 @property (readonly, copy) MPUContentItemIdentifierCollection *contentItemIdentifierCollection; // @synthesize contentItemIdentifierCollection=_contentItemIdentifierCollection;
+@property (readonly, copy) NSError *resultError;
+@property (readonly) BOOL success;
 
 - (void).cxx_destruct;
+- (id)init;
 - (id)initWithContentItemIdentifierCollection:(id)arg1;
 - (void)main;
 

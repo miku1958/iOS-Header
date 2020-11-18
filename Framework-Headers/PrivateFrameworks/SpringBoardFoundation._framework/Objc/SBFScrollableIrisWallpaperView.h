@@ -6,20 +6,26 @@
 
 #import <SpringBoardFoundation/SBFScrollableStaticWallpaperView.h>
 
+#import <SpringBoardFoundation/ISPlayerViewDelegate-Protocol.h>
+#import <SpringBoardFoundation/SBFIrisWallpaperView-Protocol.h>
 #import <SpringBoardFoundation/UIGestureRecognizerDelegate-Protocol.h>
 
 @class AVAsset, ISPlayerView, NSString;
+@protocol SBFIrisWallpaperViewDelegate;
 
-@interface SBFScrollableIrisWallpaperView : SBFScrollableStaticWallpaperView <UIGestureRecognizerDelegate>
+@interface SBFScrollableIrisWallpaperView : SBFScrollableStaticWallpaperView <UIGestureRecognizerDelegate, ISPlayerViewDelegate, SBFIrisWallpaperView>
 {
     AVAsset *_video;
     ISPlayerView *_playerView;
+    id<SBFIrisWallpaperViewDelegate> _irisDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) ISPlayerView *playerView; // @synthesize playerView=_playerView;
+@property (nonatomic) id<SBFIrisWallpaperViewDelegate> irisDelegate;
+@property (readonly, nonatomic) long long irisPlaybackState;
+@property (readonly, nonatomic) BOOL isIrisInteracting;
 @property (readonly) Class superclass;
 
 - (id)_newImageView;
@@ -27,6 +33,9 @@
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 variant:(long long)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 wallpaperVideo:(id)arg3 stillTimeInVideo:(double)arg4 variant:(long long)arg5;
+- (id)irisGestureRecognizer;
+- (void)playerViewIsInteractingDidChange:(id)arg1;
+- (void)playerViewPlaybackStateDidChange:(id)arg1;
 
 @end
 

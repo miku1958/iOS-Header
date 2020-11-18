@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVNetworkPlaybackPerfHUDLayer, AVPlayer, AVPlayerItem, AVPlayerLayer, CALayer, FigSubtitleCALayer, FigVideoContainerLayer, NSDictionary, NSString;
+@class AVNetworkPlaybackPerfHUDLayer, AVPlayer, AVPlayerItem, AVPlayerLayer, CALayer, FigSubtitleCALayer, FigVideoContainerLayer, NSDictionary, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface AVPlayerLayerInternal : NSObject
@@ -31,6 +31,7 @@
     BOOL shouldObservePlayer;
     BOOL isObservingPlayer;
     BOOL hasPlayerToObserve;
+    NSSet *KVOInvokers;
     NSObject<OS_dispatch_queue> *serialQueue;
     BOOL isPresentationLayer;
     BOOL isReadyForDisplay;

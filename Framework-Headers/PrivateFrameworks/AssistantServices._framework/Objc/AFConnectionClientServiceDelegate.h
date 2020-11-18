@@ -45,6 +45,7 @@
 - (oneway void)speechRecordingDidChangeAVRecordRoute:(id)arg1;
 - (oneway void)speechRecordingDidEnd;
 - (oneway void)speechRecordingDidFail:(id)arg1;
+- (oneway void)speechRecordingStartpointDetected;
 - (oneway void)speechRecordingWillBeginWithLevelsSharedMem:(id)arg1;
 
 @end

@@ -26,6 +26,7 @@
 - (UIColor *)averageColorForRect:(struct CGRect)arg1;
 - (UIColor *)averageLifetimeColor;
 - (void *)copyBlurForRect:(inout struct CGRect *)arg1;
+- (void *)copySnapshotImageForRect:(inout struct CGRect *)arg1;
 - (void)setWallpaperOptions:(NSDictionary *)arg1;
 - (void)setWallpaperVariant:(long long)arg1;
 - (void)startComputingAverageColorForRect:(struct CGRect)arg1;

@@ -354,6 +354,8 @@ struct TSWPChangeAttributeArray {
     int _field10;
 };
 
+struct TSWPCoreTextTypesetter;
+
 struct TSWPDrawingState {
     id _field1;
     id _field2;
@@ -381,6 +383,161 @@ struct TSWPDrawingState {
     struct _NSRange _field24;
     id _field25;
     id _field26;
+};
+
+struct TSWPDropCapCTState {
+    id _field1;
+    struct {
+        unsigned int :1;
+        double _field1;
+        struct _NSRange _field2;
+    } _field2;
+};
+
+struct TSWPDropCapLayoutState {
+    id _field1;
+    struct TSWPDropCapCTState _field2;
+    struct {
+        unsigned long long _field1;
+        unsigned long long _field2;
+        unsigned long long _field3;
+        unsigned long long _field4;
+        BOOL _field5;
+        double _field6;
+        unsigned long long _field7;
+        int _field8;
+        double _field9;
+        double _field10;
+        double _field11;
+        double _field12;
+        double _field13;
+        double _field14;
+        double _field15;
+        double _field16;
+        double _field17;
+        double _field18;
+        double _field19;
+        double _field20;
+        double _field21;
+        unsigned long long _field22;
+        unsigned long long _field23;
+        unsigned long long _field24;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+    } _field3;
+    struct shared_ptr<TSWPLineFragment> _field4;
+};
+
+struct TSWPLayoutChore {
+    CDUnknownFunctionPointerType *_field1;
+    id _field2;
+    id _field3;
+    id _field4;
+    int _field5;
+    unsigned long long _field6;
+    unsigned long long _field7;
+    int _field8;
+    unsigned long long _field9;
+    unsigned long long _field10;
+    struct TSWPLayoutState _field11;
+    struct TSWPTopicNumberHints _field12;
+    struct TSWPTopicNumberHints _field13;
+    struct TSWPDropCapLayoutState _field14;
+    struct vector<TSWPLayoutState, std::__1::allocator<TSWPLayoutState>> _field15;
+    struct TSWPCoreTextTypesetter *_field16;
+    struct _NSRange _field17;
+    long long _field18;
+    id _field19;
+    struct __CFLocale *_field20;
+};
+
+struct TSWPLayoutState {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    struct TSWPParagraphEnumerator _field4;
+    struct _NSRange _field5;
+    id _field6;
+    id _field7;
+    id _field8;
+    struct _NSRange _field9;
+    double _field10;
+    struct _NSRange _field11;
+    unsigned long long _field12;
+    BOOL _field13;
+    BOOL _field14;
+    double _field15;
+    id _field16;
+    unsigned long long _field17;
+    id _field18;
+    double _field19;
+    double _field20;
+    double _field21;
+    double _field22;
+    double _field23;
+    double _field24;
+    int _field25;
+    double _field26;
+    double _field27;
+    double _field28;
+    double _field29;
+    double _field30;
+    double _field31;
+    double _field32;
+    double _field33;
+    BOOL _field34;
+    BOOL _field35;
+    BOOL _field36;
+    BOOL _field37;
+    BOOL _field38;
+    BOOL _field39;
+    BOOL _field40;
+    BOOL _field41;
+    BOOL _field42;
+    BOOL _field43;
+    int _field44;
+    id _field45;
+    double _field46;
+    BOOL _field47;
+    double _field48;
+    BOOL _field49;
+    unsigned int _field50;
+    id _field51;
+    double _field52;
+    id _field53;
+    double _field54;
+    struct __CFLocale *_field55;
+    id _field56;
+    id _field57;
+    unsigned long long _field58;
+    id _field59;
+    BOOL _field60;
+    BOOL _field61;
+    unsigned long long _field62;
+    unsigned long long _field63;
+    BOOL _field64;
+    BOOL _field65;
+    struct CGRect _field66;
+    double _field67;
+    BOOL _field68;
+    BOOL _field69;
+    struct CGRect _field70;
+    id _field71;
+    id _field72;
+    unsigned int _field73;
+    BOOL _field74;
+    BOOL _field75;
+    double _field76;
+    id _field77;
+    id _field78;
+    id _field79;
+    unsigned long long _field80;
+    double _field81;
+    double _field82;
+    id _field83;
 };
 
 struct TSWPLineFragment {
@@ -522,6 +679,8 @@ struct _TSWPCharIndexAndPosition {
     int _field4;
     double _field5;
 };
+
+struct __CFLocale;
 
 struct __CFString;
 
@@ -1360,6 +1519,11 @@ struct set<id<TSWPStorageObserver>, std::__1::less<id<TSWPStorageObserver>>, std
     } __tree_;
 };
 
+struct shared_ptr<TSWPLineFragment> {
+    struct TSWPLineFragment *_field1;
+    struct __shared_weak_count *_field2;
+};
+
 struct shared_ptr<TSWPLineFragmentArray> {
     struct TSWPLineFragmentArray *__ptr_;
     struct __shared_weak_count *__cntrl_;
@@ -1592,6 +1756,14 @@ struct vector<TSWPLFCharIndexData, std::__1::allocator<TSWPLFCharIndexData>> {
     CDStruct_183601bc *_field2;
     struct __compressed_pair<TSWPLFCharIndexData *, std::__1::allocator<TSWPLFCharIndexData>> {
         CDStruct_183601bc *_field1;
+    } _field3;
+};
+
+struct vector<TSWPLayoutState, std::__1::allocator<TSWPLayoutState>> {
+    struct TSWPLayoutState *_field1;
+    struct TSWPLayoutState *_field2;
+    struct __compressed_pair<TSWPLayoutState *, std::__1::allocator<TSWPLayoutState>> {
+        struct TSWPLayoutState *_field1;
     } _field3;
 };
 

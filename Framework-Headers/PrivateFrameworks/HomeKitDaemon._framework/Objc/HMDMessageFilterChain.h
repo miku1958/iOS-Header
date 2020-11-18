@@ -25,7 +25,7 @@
 - (void)executeChainForMessage:(id)arg1 queue:(id)arg2 target:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)init;
 - (void)removeMessageFilter:(id)arg1;
-- (void)resetConfiguration;
+- (void)resetConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)shouldCloudSyncData;
 
 @end

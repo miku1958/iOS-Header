@@ -13,6 +13,7 @@
 
 @interface ACXIDSSocketManager : NSObject <IDSServiceDelegate>
 {
+    int _socketInUseCount;
     BOOL _wiFiAsserted;
     id<ACXIDSSocketManagerDelegateProtocol> _delegate;
     NSObject<OS_dispatch_queue> *_queue;
@@ -44,6 +45,7 @@
 
 + (id)sharedSocketManager;
 - (void).cxx_destruct;
+- (void)_doneUsingSocket;
 - (void)_onInternalQueue_armSocketShutdownTimer;
 - (void)_onInternalQueue_beginUsingSocketAsDelegate:(id)arg1 onQueue:(id)arg2 tryWiFi:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_onInternalQueue_disarmSocketShutdownTimer;
@@ -53,6 +55,7 @@
 - (void)_onQueue_stopSocketSetupTimer;
 - (void)_readSourceReturnedDictionaryOrData:(id)arg1 error:(id)arg2;
 - (id)_sendMessage:(id)arg1 messageDictionary:(id)arg2 error:(id *)arg3;
+- (void)_waitForSocket;
 - (void)beginUsingSocketAsDelegate:(id)arg1 onQueue:(id)arg2 tryWiFi:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)endUsingSocket;
 - (void)handleIDSRelayConnection:(id)arg1 fromID:(id)arg2 UUID:(id)arg3;

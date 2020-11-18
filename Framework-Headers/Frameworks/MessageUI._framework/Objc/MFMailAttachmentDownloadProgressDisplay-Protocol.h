@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class NSProgress, NSString;
+
 @protocol MFMailAttachmentDownloadProgressDisplay
-- (void)downloadProgressDidCancel;
-- (void)downloadProgressDidEnd;
-- (void)downloadProgressDidStart;
-- (void)downloadProgressDidUpdatePercentageComplete:(float)arg1;
+
+@property (readonly, nonatomic) NSString *uniqueIdentifier;
+
+- (void)observeProgress:(NSProgress *)arg1;
 - (void)setTheme:(int)arg1;
 @end
 

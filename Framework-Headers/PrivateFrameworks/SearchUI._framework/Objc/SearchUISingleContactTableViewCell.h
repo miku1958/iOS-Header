@@ -25,7 +25,7 @@
 - (void).cxx_destruct;
 - (void)clearPurgeableMemory;
 - (BOOL)hasActionButton;
-- (void)reset;
+- (id)initWithResult:(id)arg1 style:(unsigned long long)arg2;
 - (void)updateThumbnailViewForResult:(id)arg1;
 - (void)updateWithContact:(id)arg1;
 - (void)updateWithResult:(id)arg1;

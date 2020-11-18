@@ -9,6 +9,7 @@
 @protocol AUAudioUnitXPCProtocol
 - (void)addPropertyObserver:(AUAudioUnitProperty *)arg1;
 - (void)addRemoteParameterObserver:(BOOL)arg1 reply:(void (^)(unsigned long long))arg2;
+- (void)close:(void (^)(void))arg1;
 - (void)getBusses:(unsigned int)arg1 reply:(void (^)(NSArray *))arg2;
 - (void)getParameter:(unsigned long long)arg1 reply:(void (^)(float))arg2;
 - (void)getParameterTree:(void (^)(AUParameterTree *))arg1;

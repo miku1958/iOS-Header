@@ -6,18 +6,9 @@
 
 #import <UIKit/__UITransitionViewAccessibility_super.h>
 
-#import <UIKit/UIAXDelegateClearerDelegateeProtocol-Protocol.h>
-
-@class NSString;
-
-@interface UITransitionViewAccessibility : __UITransitionViewAccessibility_super <UIAXDelegateClearerDelegateeProtocol>
+@interface UITransitionViewAccessibility : __UITransitionViewAccessibility_super
 {
 }
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
@@ -25,19 +16,10 @@
 - (id)_accessibilityDimmingView;
 - (id)_accessibilityDimmingViewForAlertController;
 - (id)_accessibilityDimmingViewSubview;
-- (BOOL)_accessibilityIgnoreDelegate;
-- (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityRetrieveDelegate;
-- (void)_accessibilitySetDelegateClearer:(id)arg1;
-- (void)_axCleanupDelegateClearer;
-- (void)_axClearDelegate:(id)arg1;
-- (id)_axDelegateClearerKey;
 - (void)_didCompleteTransition:(BOOL)arg1;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityViewIsModal;
-- (void)clearDelegateClearer;
-- (void)dealloc;
-- (void)setDelegate:(id)arg1;
 
 @end
 

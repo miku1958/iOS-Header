@@ -10,6 +10,7 @@
 {
 }
 
++ (id)availableOfflineBadgeDefaultTintColor;
 + (id)contextualActionsButtonDefaultTintColor;
 + (id)librarySwitcherContentColor;
 + (id)placeholderArtworkBackgroundColor;

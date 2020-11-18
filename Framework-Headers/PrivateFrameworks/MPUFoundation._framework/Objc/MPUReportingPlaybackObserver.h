@@ -18,6 +18,7 @@
     double _lastPlayEventEndTimeForCurrentItem;
     double _lastPlayEventTimeStamp;
     NSString *_playbackSessionID;
+    BOOL _shouldReportAsPlaying;
     double _startTimeForCurrentTimeChange;
     BOOL _offline;
     BOOL _SBEnabled;

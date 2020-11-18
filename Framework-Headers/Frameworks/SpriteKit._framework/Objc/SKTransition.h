@@ -11,12 +11,10 @@
 @interface SKTransition : NSObject <NSCopying>
 {
     struct SKCTransitionNode *_skcTransitionNode;
-    BOOL _pauseIncoming;
-    BOOL _pauseOutgoing;
 }
 
-@property (nonatomic) BOOL pausesIncomingScene; // @synthesize pausesIncomingScene=_pauseIncoming;
-@property (nonatomic) BOOL pausesOutgoingScene; // @synthesize pausesOutgoingScene=_pauseOutgoing;
+@property (nonatomic) BOOL pausesIncomingScene;
+@property (nonatomic) BOOL pausesOutgoingScene;
 
 + (id)crossFadeWithDuration:(double)arg1;
 + (id)doorsCloseHorizontalWithDuration:(double)arg1;

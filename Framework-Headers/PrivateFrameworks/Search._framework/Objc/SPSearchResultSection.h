@@ -18,6 +18,7 @@
     int _flags;
     NSString *_icon;
     NSMutableOrderedSet *_resultSet;
+    NSString *_resultSetIdentifier;
     NSString *_scheme;
     struct {
         unsigned int domain:1;
@@ -41,6 +42,7 @@
 @property (strong, nonatomic) NSArray *hiddenExtResults; // @synthesize hiddenExtResults=_hiddenExtResults;
 @property (strong, nonatomic) NSString *icon; // @synthesize icon=_icon;
 @property (nonatomic) BOOL isGlanceCategory; // @synthesize isGlanceCategory=_isGlanceCategory;
+@property (strong, nonatomic) NSString *resultSetIdentifier; // @synthesize resultSetIdentifier=_resultSetIdentifier;
 @property (strong, nonatomic) NSString *scheme; // @synthesize scheme=_scheme;
 
 - (void).cxx_destruct;

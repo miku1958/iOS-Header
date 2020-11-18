@@ -7,16 +7,19 @@
 #import <FuseUI/MusicEntityAbstractLockupView.h>
 
 #import <FuseUI/MusicEntityContentDescriptorViewConfiguring-Protocol.h>
+#import <FuseUI/MusicEntityViewDownloadInformationObserving-Protocol.h>
 #import <FuseUI/RUTrackDownloadViewDelegate-Protocol.h>
 
 @class MPUHalfTintedTransportButton, MusicEntityViewContentDescriptor, NSString, RUTrackDownloadView, UIButton, UIImageView;
 @protocol MusicEntityHorizontalLockupViewDelegate, MusicEntityValueProviding;
 
-@interface MusicEntityHorizontalLockupView : MusicEntityAbstractLockupView <RUTrackDownloadViewDelegate, MusicEntityContentDescriptorViewConfiguring>
+@interface MusicEntityHorizontalLockupView : MusicEntityAbstractLockupView <RUTrackDownloadViewDelegate, MusicEntityContentDescriptorViewConfiguring, MusicEntityViewDownloadInformationObserving>
 {
     MPUHalfTintedTransportButton *_addButton;
+    UIImageView *_availableOfflineBadgeImageView;
     UIButton *_checkmarkButton;
     UIImageView *_explicitBadgeImageView;
+    BOOL _isAvailableOffline;
     BOOL _isContainedWithinSplitViewPrimary;
     RUTrackDownloadView *_buyButton;
     struct {
@@ -29,6 +32,7 @@
     id<MusicEntityHorizontalLockupViewDelegate> _delegate;
     UIButton *_contextualActionsButton;
     double _textContentLeadingInset;
+    struct MusicEntityDownloadInformation _downloadInformation;
 }
 
 @property (readonly, nonatomic) struct CGSize artworkSize;
@@ -37,6 +41,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MusicEntityHorizontalLockupViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) struct MusicEntityDownloadInformation downloadInformation; // @synthesize downloadInformation=_downloadInformation;
 @property (strong, nonatomic) id<MusicEntityValueProviding> entityValueProvider;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;

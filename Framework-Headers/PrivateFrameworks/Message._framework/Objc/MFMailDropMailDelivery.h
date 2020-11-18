@@ -6,29 +6,27 @@
 
 #import <Message/MFOutgoingMessageDelivery.h>
 
-@class MFMailDropMetadata, NSMutableArray, NSString;
+@class MFMailDropMetadata, NSArray;
 
 @interface MFMailDropMailDelivery : MFOutgoingMessageDelivery
 {
-    NSMutableArray *_attachments;
-    NSString *_attachmentContext;
-    MFMailDropMetadata *_mailDropMetaData;
+    NSArray *_attachments;
+    MFMailDropMetadata *_imageArchiveMetadata;
+    long long _mailDropState;
 }
 
-@property (strong, nonatomic) NSString *attachmentContext; // @synthesize attachmentContext=_attachmentContext;
-@property (strong, nonatomic) NSMutableArray *attachments; // @synthesize attachments=_attachments;
-@property (strong, nonatomic) MFMailDropMetadata *mailDropMetaData; // @synthesize mailDropMetaData=_mailDropMetaData;
+@property (strong, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
+@property (strong, nonatomic) MFMailDropMetadata *imageArchiveMetadata; // @synthesize imageArchiveMetadata=_imageArchiveMetadata;
+@property (nonatomic) long long mailDropState; // @synthesize mailDropState=_mailDropState;
 
 + (id)_mailDropZone;
+- (id)_attachmentManager;
 - (long long)_processAttachments;
 - (void)_recordZoneIDInDatabase:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_uploadAttachmentsViaCloudKit:(id)arg1 zone:(id)arg2 records:(id)arg3 zippedPhotos:(id)arg4 attachmentRecords:(id)arg5 images:(id)arg6;
 - (void)dealloc;
 - (id)deliverSynchronously;
-- (id)initWithHeaders:(id)arg1 HTML:(id)arg2 plainTextAlternative:(id)arg3 other:(id)arg4 charsets:(id)arg5;
-- (id)initWithHeaders:(id)arg1 mixedContent:(id)arg2 textPartsAreHTML:(BOOL)arg3;
-- (id)initWithMessage:(id)arg1;
-- (BOOL)scaleImages:(id)arg1;
+- (id)scaledImages:(id)arg1;
 - (BOOL)updateMessageWithAttachmentsSynchronously;
 
 @end

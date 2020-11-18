@@ -16,16 +16,22 @@
     NSSet *_allPropertiesToPrefetchSynchronously;
     BOOL _hasValidAllPropertiesToLoadAsynchronously;
     NSCountedSet *_textDescriptorsBeingObserved;
-    BOOL _shouldForceBottomSeparatorVisible;
+    BOOL _wantsDownloadProgress;
     BOOL _shouldDisableWhenUnplayable;
     BOOL _allowsDeletionWithoutEditingMode;
     BOOL _leftSeparatorInsetFollowsText;
+    BOOL _shouldDisplayProminently;
+    BOOL _shouldForceBottomSeparatorVisible;
     MusicEntityViewContentArtworkDescriptor *_artworkDescriptor;
+    long long _artworkVerticalAlignment;
     NSArray *_textDescriptors;
+    long long _textDescriptorVerticalAlignment;
     double _minimumHeight;
     NSString *_wantsPlayButtonProperty;
     UIColor *_backgroundColor;
-    long long _selectionStyle;
+    UIColor *_customSelectionTintColor;
+    UIColor *_customSeparatorColor;
+    UIColor *_downloadProgressButtonTintColor;
     NSString *_wantsDisclosureIndicatorProperty;
     NSString *_explicitBadgeProperty;
     NSString *_wantsAddButtonProperty;
@@ -33,14 +39,8 @@
     NSString *_wantsBuyButtonProperty;
     NSString *_storeDownloadIDProperty;
     NSString *_storeOffersProperty;
-    UIColor *_customSelectionTintColor;
-    UIColor *_customSeparatorColor;
     Class _lockupViewClass;
-    NSString *_keepLocalPreferenceProperty;
-    UIColor *_keepLocalDeviceColor;
-    UIColor *_keepLocalSashColor;
-    long long _textDescriptorVerticalAlignment;
-    long long _artworkVerticalAlignment;
+    long long _selectionStyle;
 }
 
 @property (readonly, nonatomic) NSSet *allPropertiesToLoadAsynchronously;
@@ -51,15 +51,14 @@
 @property (copy, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (strong, nonatomic) UIColor *customSelectionTintColor; // @synthesize customSelectionTintColor=_customSelectionTintColor;
 @property (strong, nonatomic) UIColor *customSeparatorColor; // @synthesize customSeparatorColor=_customSeparatorColor;
+@property (strong, nonatomic) UIColor *downloadProgressButtonTintColor; // @synthesize downloadProgressButtonTintColor=_downloadProgressButtonTintColor;
 @property (copy, nonatomic) NSString *explicitBadgeProperty; // @synthesize explicitBadgeProperty=_explicitBadgeProperty;
-@property (strong, nonatomic) UIColor *keepLocalDeviceColor; // @synthesize keepLocalDeviceColor=_keepLocalDeviceColor;
-@property (copy, nonatomic) NSString *keepLocalPreferenceProperty; // @synthesize keepLocalPreferenceProperty=_keepLocalPreferenceProperty;
-@property (strong, nonatomic) UIColor *keepLocalSashColor; // @synthesize keepLocalSashColor=_keepLocalSashColor;
 @property (nonatomic) BOOL leftSeparatorInsetFollowsText; // @synthesize leftSeparatorInsetFollowsText=_leftSeparatorInsetFollowsText;
 @property (strong, nonatomic) Class lockupViewClass; // @synthesize lockupViewClass=_lockupViewClass;
 @property (nonatomic) double minimumHeight; // @synthesize minimumHeight=_minimumHeight;
 @property (nonatomic) long long selectionStyle; // @synthesize selectionStyle=_selectionStyle;
 @property (nonatomic) BOOL shouldDisableWhenUnplayable; // @synthesize shouldDisableWhenUnplayable=_shouldDisableWhenUnplayable;
+@property (nonatomic) BOOL shouldDisplayProminently; // @synthesize shouldDisplayProminently=_shouldDisplayProminently;
 @property (nonatomic) BOOL shouldForceBottomSeparatorVisible; // @synthesize shouldForceBottomSeparatorVisible=_shouldForceBottomSeparatorVisible;
 @property (copy, nonatomic) NSString *storeDownloadIDProperty; // @synthesize storeDownloadIDProperty=_storeDownloadIDProperty;
 @property (copy, nonatomic) NSString *storeOffersProperty; // @synthesize storeOffersProperty=_storeOffersProperty;
@@ -69,6 +68,7 @@
 @property (copy, nonatomic) NSString *wantsBuyButtonProperty; // @synthesize wantsBuyButtonProperty=_wantsBuyButtonProperty;
 @property (copy, nonatomic) NSString *wantsContextualActionsButtonProperty; // @synthesize wantsContextualActionsButtonProperty=_wantsContextualActionsButtonProperty;
 @property (copy, nonatomic) NSString *wantsDisclosureIndicatorProperty; // @synthesize wantsDisclosureIndicatorProperty=_wantsDisclosureIndicatorProperty;
+@property (nonatomic) BOOL wantsDownloadProgress; // @synthesize wantsDownloadProgress=_wantsDownloadProgress;
 @property (copy, nonatomic) NSString *wantsPlayButtonProperty; // @synthesize wantsPlayButtonProperty=_wantsPlayButtonProperty;
 
 + (Class)tableViewCellClass;

@@ -6,12 +6,13 @@
 
 #import <HomeKitDaemon/HMDMessageFilter.h>
 
+#import <HomeKitDaemon/HAPTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMMessageReceiver-Protocol.h>
 
-@class HMMessageDispatcher, NSObject, NSString, NSUUID;
+@class HAPTimer, HMMessageDispatcher, NSDate, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface HMDCloudDataSyncStateFilter : HMDMessageFilter <HMMessageReceiver>
+@interface HMDCloudDataSyncStateFilter : HMDMessageFilter <HMMessageReceiver, HAPTimerDelegate>
 {
     BOOL _keychainSyncEnabled;
     BOOL _keychainSyncRequiredPopShown;
@@ -26,10 +27,15 @@
     long long _totalTransientPeerDevices;
     NSObject<OS_dispatch_source> *_popupTimer;
     long long _totalHomes;
+    HAPTimer *_cloudDataSyncInProgressTimer;
+    double _remainingDataSyncPeriod;
+    NSDate *_dataSyncTimerStartTimestamp;
 }
 
 @property (nonatomic) int circleNotificationToken; // @synthesize circleNotificationToken=_circleNotificationToken;
 @property (nonatomic) BOOL cloudDataSyncCompleted; // @synthesize cloudDataSyncCompleted=_cloudDataSyncCompleted;
+@property (strong, nonatomic) HAPTimer *cloudDataSyncInProgressTimer; // @synthesize cloudDataSyncInProgressTimer=_cloudDataSyncInProgressTimer;
+@property (strong, nonatomic) NSDate *dataSyncTimerStartTimestamp; // @synthesize dataSyncTimerStartTimestamp=_dataSyncTimerStartTimestamp;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL decryptionFailed; // @synthesize decryptionFailed=_decryptionFailed;
 @property (readonly, copy) NSString *description;
@@ -42,6 +48,7 @@
 @property (strong, nonatomic) HMMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (nonatomic) BOOL networkConnectivityAvailable; // @synthesize networkConnectivityAvailable=_networkConnectivityAvailable;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *popupTimer; // @synthesize popupTimer=_popupTimer;
+@property (nonatomic) double remainingDataSyncPeriod; // @synthesize remainingDataSyncPeriod=_remainingDataSyncPeriod;
 @property (nonatomic) BOOL serverTokenAvailable; // @synthesize serverTokenAvailable=_serverTokenAvailable;
 @property (readonly) Class superclass;
 @property (nonatomic) long long totalHomes; // @synthesize totalHomes=_totalHomes;
@@ -55,7 +62,11 @@
 - (void)_handleCircleChangedNotification;
 - (void)_handleRemoteAccessPeersFoundNotification:(id)arg1;
 - (void)_registerForCircleChangeNotifications;
+- (void)_resetCloudDataSyncTimer;
+- (void)_stallCloudDataSyncTimer;
+- (void)_startCloudDataSyncTimer;
 - (void)_startPopupTimer;
+- (void)_stopCloudDataSyncTimer;
 - (void)_stopPopupTimer;
 - (void)_updateCloudDataSyncState:(BOOL)arg1;
 - (BOOL)acceptMessage:(id)arg1 target:(id)arg2 errorReason:(id *)arg3;
@@ -63,6 +74,7 @@
 - (id)initWithName:(id)arg1 messageDispatcher:(id)arg2 totalTransientPeerDevices:(unsigned long long)arg3 serverTokenAvailable:(BOOL)arg4 totalHomes:(long long)arg5;
 - (void)resetConfiguration;
 - (BOOL)shouldCloudSyncData;
+- (void)timerDidFire:(id)arg1;
 - (void)updateCloudDataSyncState:(BOOL)arg1;
 - (void)updateDecryptionFailed:(BOOL)arg1;
 - (void)updateNetworkConnectivity:(BOOL)arg1;

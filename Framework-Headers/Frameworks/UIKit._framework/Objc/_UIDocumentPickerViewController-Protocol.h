@@ -14,6 +14,7 @@
 - (void)_setAuxiliaryOptions:(NSArray *)arg1;
 - (void)_setPickableTypes:(NSArray *)arg1;
 - (void)_setPickerMode:(unsigned long long)arg1;
+- (void)_setSourceIsManaged:(BOOL)arg1;
 - (void)_setTintColor:(UIColor *)arg1;
 - (void)_setUploadURLWrapper:(_UIDocumentPickerNSURLWrapper *)arg1;
 - (void)_showDefaultPicker;

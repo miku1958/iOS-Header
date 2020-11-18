@@ -19,6 +19,7 @@
     AVExternalDevice *_externalDevice;
     BOOL _alwaysShowNavBar;
     BOOL _limitedUI;
+    BOOL _topLevel;
 }
 
 @property (nonatomic) BOOL alwaysShowNavBar; // @synthesize alwaysShowNavBar=_alwaysShowNavBar;
@@ -26,6 +27,7 @@
 @property (readonly, nonatomic) MPAVController *player; // @synthesize player=_player;
 @property (readonly, nonatomic) MPMediaQuery *query; // @synthesize query=_query;
 @property (readonly, nonatomic) id<MCDCarDisplayServiceProvider> serviceProvider; // @synthesize serviceProvider=_serviceProvider;
+@property (nonatomic) BOOL topLevel; // @synthesize topLevel=_topLevel;
 @property (nonatomic) BOOL viewHasAppeared; // @synthesize viewHasAppeared=_viewHasAppeared;
 
 + (id)addAlbumArtViewFromItem:(id)arg1 toCell:(id)arg2 rowHeight:(double)arg3;

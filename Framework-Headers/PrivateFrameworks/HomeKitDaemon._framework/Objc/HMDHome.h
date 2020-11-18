@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HAPTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDAccessoryManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDRelayManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDUserManagementOperationDelegate-Protocol.h>
 #import <HomeKitDaemon/HMMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessoryManager, HMDCharacteristicNotificationRegistry, HMDHomeLocationHandler, HMDHomeManager, HMDRelayManager, HMDRoom, HMDUser, HMMessageDispatcher, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSUUID;
+@class HAPTimer, HMDAccessoryManager, HMDCharacteristicNotificationRegistry, HMDHomeLocationHandler, HMDHomeManager, HMDRelayManager, HMDRoom, HMDUser, HMMessageDispatcher, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDHome : NSObject <HMDUserManagementOperationDelegate, HMDAccessoryManagerDelegate, HMMessageReceiver, HMDRelayManagerDelegate, NSSecureCoding>
+@interface HMDHome : NSObject <HMDUserManagementOperationDelegate, HMDAccessoryManagerDelegate, HMMessageReceiver, HMDRelayManagerDelegate, HAPTimerDelegate, NSSecureCoding>
 {
     BOOL _remoteAccessIsEnabled;
     BOOL _adminUser;
@@ -50,6 +51,10 @@
     HMDCharacteristicNotificationRegistry *_characteristicNotificationRegistry;
     NSMutableSet *_heartbeatPingMessagesQueuedWithServer;
     NSMutableSet *_pendingResponsesForRemoteAccessSetup;
+    NSMutableArray *_assistantOperations;
+    NSMutableDictionary *_enableNotificationPayload;
+    NSMutableDictionary *_disableNotificationPayload;
+    HAPTimer *_modifyNotificationsCoalesceTimer;
 }
 
 @property (strong, nonatomic) NSMutableArray *accessories; // @synthesize accessories=_accessories;
@@ -59,12 +64,15 @@
 @property (readonly, nonatomic) HMDUser *administrator; // @synthesize administrator=_administrator;
 @property (strong, nonatomic) NSString *administratorName; // @synthesize administratorName=_administratorName;
 @property (nonatomic) BOOL allowsRemoteAccess; // @synthesize allowsRemoteAccess=_allowsRemoteAccess;
+@property (strong, nonatomic) NSMutableArray *assistantOperations; // @synthesize assistantOperations=_assistantOperations;
 @property (strong, nonatomic) HMDCharacteristicNotificationRegistry *characteristicNotificationRegistry; // @synthesize characteristicNotificationRegistry=_characteristicNotificationRegistry;
 @property (nonatomic) long long configurationVersion; // @synthesize configurationVersion=_configurationVersion;
 @property (readonly, copy, nonatomic) NSString *contextID;
 @property (readonly, nonatomic) HMDUser *currentUser; // @synthesize currentUser=_currentUser;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSMutableDictionary *disableNotificationPayload; // @synthesize disableNotificationPayload=_disableNotificationPayload;
+@property (readonly, nonatomic) NSMutableDictionary *enableNotificationPayload; // @synthesize enableNotificationPayload=_enableNotificationPayload;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableSet *heartbeatPingMessagesQueuedWithServer; // @synthesize heartbeatPingMessagesQueuedWithServer=_heartbeatPingMessagesQueuedWithServer;
 @property (strong, nonatomic) HMDHomeLocationHandler *homeLocationHandler; // @synthesize homeLocationHandler=_homeLocationHandler;
@@ -73,6 +81,7 @@
 @property (nonatomic) long long lastKnownReachableIPAccessoryCount; // @synthesize lastKnownReachableIPAccessoryCount=_lastKnownReachableIPAccessoryCount;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
+@property (strong, nonatomic) HAPTimer *modifyNotificationsCoalesceTimer; // @synthesize modifyNotificationsCoalesceTimer=_modifyNotificationsCoalesceTimer;
 @property (strong, nonatomic) HMMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSMutableArray *outgoingInvitations; // @synthesize outgoingInvitations=_outgoingInvitations;
@@ -169,6 +178,7 @@
 - (void)_notifyChangedCharacteristics:(id)arg1 identifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)_notifyChangedCharacteristics:(id)arg1 toUserDeviceAddress:(id)arg2;
 - (void)_notifyRemoteUsersOfChangedCharacteristics:(id)arg1;
+- (void)_performOperation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_populateCharacteristicsThatNeedNotificationsFromDictionary:(id)arg1 error:(id *)arg2;
 - (void)_postInternalNotificationForChangedCharacterisitics:(id)arg1 modifiedAccessories:(id)arg2;
 - (void)_postInternalNotificationForChangedCharacterisitics:(id)arg1 modifiedAccessories:(id)arg2 changedByThisDevice:(BOOL)arg3;
@@ -200,6 +210,7 @@
 - (void)_sendResidentInviteWithDestination:(id)arg1;
 - (CDUnknownBlockType)_setupCodeProviderForMessage:(id)arg1;
 - (BOOL)_shouldAddAccessory:(id)arg1;
+- (BOOL)_shouldWaitForAccessoriesToBeReachable;
 - (void)_subscribeForNotificationFromRemoteGateway;
 - (void)_updateBulletinBoardOfChangedCharacteristics:(id)arg1;
 - (void)_updateCloudRelaySupport;
@@ -237,7 +248,6 @@
 - (id)filterBuiltinActionSets:(id)arg1;
 - (void)fixupBridgeForBridgedAccessories:(id)arg1 potentialBridgeAccessories:(id)arg2;
 - (void)fixupReplacementAccessories:(id)arg1 commonAccessories:(id)arg2 idsDataSync:(BOOL)arg3 dataVersion:(long long)arg4 locallyAdded:(id)arg5;
-- (void)fixupUserResidentIdentifiersWithResidents:(id)arg1;
 - (void)handleBackgroundTaskAgentJob:(id)arg1;
 - (void)handleDidReceiveIDSMessageWithNoListener:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -269,7 +279,7 @@
 - (id)replaceName:(id)arg1 withNewName:(id)arg2;
 - (id)roomWithName:(id)arg1;
 - (id)roomWithUUID:(id)arg1;
-- (void)saveToLocalStoreWithReason:(id)arg1;
+- (void)saveToCurrentAccountWithReason:(id)arg1;
 - (void)saveWithReason:(id)arg1 information:(id)arg2 postSyncNotification:(BOOL)arg3;
 - (void)saveWithReason:(id)arg1 postSyncNotification:(BOOL)arg2;
 - (void)sendAccessTokensToUser:(id)arg1 user:(id)arg2;
@@ -278,6 +288,7 @@
 - (void)takeOwnershipOfBuiltinActionSets:(id)arg1;
 - (void)takeOwnershipOfNotificationRegistry:(id)arg1;
 - (void)takeOwnershipOfTriggers:(id)arg1 triggersToReactivate:(id)arg2;
+- (void)timerDidFire:(id)arg1;
 - (id)triggerWithName:(id)arg1;
 - (id)triggerWithUUID:(id)arg1;
 - (void)updateNetworkConnectivity:(BOOL)arg1 companionReachable:(BOOL)arg2;

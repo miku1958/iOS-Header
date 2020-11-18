@@ -32,6 +32,7 @@
     id _gestureInfo;
     NSMutableArray *_gestureRecognizers;
     NSArray *_subviewCache;
+    UIView *_templateLayoutView;
     float _charge;
     long long _tag;
     UIViewController *_viewDelegate;
@@ -136,6 +137,8 @@
         unsigned int hasFocusableContentMargins:1;
         unsigned int shouldReverseLayoutDirection:1;
         unsigned int cannotBeParentTraitEnvironment:1;
+        unsigned int hasTemplateLayoutView:2;
+        unsigned int ignoresTemplateLayoutView:2;
     } _viewFlags;
     long long _retainCount;
     long long _tintAdjustmentDimmingCount;
@@ -176,6 +179,7 @@
 @property (nonatomic) unsigned long long _countOfMotionEffectsInSubtree; // @synthesize _countOfMotionEffectsInSubtree;
 @property (nonatomic, setter=_setDontUpdateInferredLayoutMargins:) BOOL _dontUpdateInferredLayoutMargins;
 @property (readonly, nonatomic) long long _hiddenManagedByLayoutArrangementCount;
+@property (nonatomic, setter=_setIgnoresTemplateLayoutView:) BOOL _ignoresTemplateLayoutView;
 @property (nonatomic, setter=_setInferredLayoutMargins:) struct UIEdgeInsets _inferredLayoutMargins; // @synthesize _inferredLayoutMargins;
 @property (readonly, nonatomic) UIKBRenderConfig *_inheritedRenderConfig;
 @property (strong, nonatomic, setter=_setInteractionTintColor:) UIColor *_interactionTintColor; // @synthesize _interactionTintColor;
@@ -196,6 +200,7 @@
 @property (readonly, nonatomic) struct CGSize _sensitivitySize;
 @property (nonatomic, setter=_setShouldArchiveUIAppearanceTags:) BOOL _shouldArchiveUIAppearanceTags; // @synthesize _shouldArchiveUIAppearanceTags;
 @property (readonly, nonatomic) BOOL _shouldReverseLayoutDirection;
+@property (strong, nonatomic, setter=_setTemplateLayoutView:) UIView *_templateLayoutView;
 @property (readonly, nonatomic) _UITouchForceObservable *_touchForceObservable;
 @property (nonatomic, setter=_setTracksFocusedAncestors:) BOOL _tracksFocusedAncestors;
 @property (nonatomic, getter=_userInterfaceIdiom, setter=_setUserInterfaceIdiom:) long long _userInterfaceIdiom;
@@ -289,6 +294,7 @@
 + (double)_durationForRotationFromInterfaceOrientation:(long long)arg1 toInterfaceOrientation:(long long)arg2 withBaseDuration:(double)arg3;
 + (double)_durationOfSpringAnimationWithMass:(double)arg1 stiffness:(double)arg2 damping:(double)arg3 velocity:(double)arg4;
 + (id)_enableAnimationTracking;
++ (BOOL)_enableLegacyRTL;
 + (BOOL)_enableRTL;
 + (void)_enableToolsDebugAlignmentRects:(BOOL)arg1;
 + (void)_enableToolsDebugColorViewBounds:(BOOL)arg1;
@@ -304,11 +310,13 @@
 + (BOOL)_isAddingResponderToTree;
 + (BOOL)_isAnimationTracking;
 + (BOOL)_isInAnimationBlock;
++ (BOOL)_legacyRTLPreferenceEnabled;
 + (id)_motionEffectEngine;
 + (BOOL)_motionEffectsEnabled;
 + (BOOL)_motionEffectsSupported;
 + (void)_performBlockDelayingTriggeringResponderEvents:(CDUnknownBlockType)arg1;
 + (void)_performBlockwithAutomaticAppearanceDisabled:(CDUnknownBlockType)arg1;
++ (void)_performForcedAppearanceModifications:(CDUnknownBlockType)arg1;
 + (void)_performInitializationForIdiomIfNeccessary:(long long)arg1;
 + (void)_performSystemAppearanceModifications:(CDUnknownBlockType)arg1;
 + (id)_performWithAnimationTracking:(CDUnknownBlockType)arg1;
@@ -430,7 +438,6 @@
 - (BOOL)_appliesExclusiveTouchToSubviewTree;
 - (void)_applyAppearanceInvocations;
 - (void)_applyAutoresizingMaskWithOldSuperviewSize:(struct CGSize)arg1;
-- (void)_applyISEngineLayoutToSubviewsSkippingSubview:(id)arg1;
 - (void)_applyISEngineLayoutValues;
 - (BOOL)_applyKeyPathsAndRelativeValues:(id)arg1 forMotionEffect:(id)arg2;
 - (void)_applyScreenScaleToContentScaleFactorIfNotSpecifiedByDeveloperTargetScreen:(id)arg1;
@@ -655,6 +662,7 @@
 - (BOOL)_isInTransitionBlock;
 - (BOOL)_isInVisibleHierarchy;
 - (BOOL)_isInteractiveElement;
+- (BOOL)_isLayoutEngineSuspended;
 - (BOOL)_isMemberOfViewControllerHierarchy:(id)arg1;
 - (BOOL)_isPromiseFocusRegion;
 - (BOOL)_isRootForKeyResponderCycle;
@@ -770,6 +778,7 @@
 - (void)_resizeWithOldSuperviewSize_ancient:(struct CGSize)arg1;
 - (struct CGRect)_responderExternalTouchRectForWindow:(id)arg1;
 - (struct CGRect)_responderSelectionRectForWindow:(id)arg1;
+- (void)_resumeLayoutEngine;
 - (id)_rootForKeyResponderCycle;
 - (id)_rootInputWindowController;
 - (id)_rootView;
@@ -823,6 +832,7 @@
 - (void)_setInterceptMouseEvent:(BOOL)arg1;
 - (void)_setIsAncestorOfFirstResponder:(BOOL)arg1;
 - (void)_setLayoutEngineHostConstraints:(id)arg1;
+- (void)_setLayoutEngineSuspended:(BOOL)arg1;
 - (void)_setNeedsNonDeferredFocusUpdate;
 - (void)_setNeedsUpdateConstraints;
 - (void)_setNeedsUpdateConstraintsNeedingLayout:(BOOL)arg1;
@@ -852,6 +862,8 @@
 - (BOOL)_shouldInheritScreenScaleAsContentScaleFactor;
 - (BOOL)_shouldNotifyGeometryObservers;
 - (BOOL)_shouldResignFirstResponderWithInteractionDisabled;
+- (BOOL)_shouldSkipNormalLayoutForSakeOfTemplateLayout;
+- (BOOL)_shouldSuspendLayoutEngine;
 - (BOOL)_shouldTryPromoteDescendantToFirstResponder;
 - (BOOL)_shouldUpdateFocusInContext:(id)arg1;
 - (BOOL)_shouldUseKeyboardBackground;
@@ -914,6 +926,8 @@
 - (void)_updateLayoutMarginsGuideConstraintsIfApplicable;
 - (void)_updateNeedsDisplayOnBoundsChange;
 - (void)_updateParallaxEffectWithAltitude:(double)arg1 bias:(struct CGSize)arg2;
+- (void)_updateSubviewFramesFromTemplateLayoutView:(id)arg1;
+- (void)_updateTemplateViewLayoutIfNeeded;
 - (BOOL)_useContentDimensionVariablesForConstraintLowering;
 - (BOOL)_usesAutoresizingConstraints;
 - (BOOL)_usesLayoutEngineHostingConstraints;

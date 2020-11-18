@@ -15,6 +15,7 @@
     NSArray *chapterGroupInfo;
     NSString *anchorChapterType;
     NSArray *availableChapterLanguages;
+    NSArray *availableCanonicalizedChapterLanguages;
     NSArray *availableChapterLocales;
 }
 

@@ -59,6 +59,7 @@
 @property (weak, nonatomic) id<MusicMediaDetailSplitViewControllerDelegate> mediaSplitViewControllerDelegate; // @synthesize mediaSplitViewControllerDelegate=_mediaSplitViewControllerDelegate;
 @property (readonly, nonatomic) long long presentationSource; // @synthesize presentationSource=_presentationSource;
 @property (nonatomic) long long productDescriptionTextStyle; // @synthesize productDescriptionTextStyle=_productDescriptionTextStyle;
+@property (nonatomic) long long prominentTrackStoreID;
 @property (strong, nonatomic) UIViewController *relatedContentViewController; // @synthesize relatedContentViewController=_relatedContentViewController;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<MusicEntityProviding> tracklistEntityProvider; // @synthesize tracklistEntityProvider=_tracklistEntityProvider;

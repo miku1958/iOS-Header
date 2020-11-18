@@ -53,6 +53,7 @@
     BOOL _waitingForPasses;
     double _lastFieldExitTime;
     NSNumber *_pendingPresentationContextState;
+    double _lastFingerOnTime;
     PKPaymentConfirmationAlertController *_confirmationAlertController;
     NSData *_stashedAuthenticationCredential;
     long long _style;

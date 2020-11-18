@@ -16,7 +16,7 @@
 #import <FuseUI/SKUIScrollingSegmentedControllerDelegate-Protocol.h>
 #import <FuseUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class MusicClientContext, MusicLibrarySearchResultsViewController, MusicSearchBar, MusicSearchHintsViewController, NSString, SKUIClientContext, UISearchBar, UIViewController, _UINavigationControllerPalette;
+@class MusicClientContext, MusicLibrarySearchResultsViewController, MusicSearchBar, MusicSearchHintsViewController, NSArray, NSString, SKUIClientContext, UISearchBar, UIViewController, _UINavigationControllerPalette;
 @protocol MusicSearchViewControllerMediaPickerDelegate;
 
 @interface MusicSearchViewController : SKUIScrollingSegmentedController <MusicJSNativeViewControllerFactory, MusicJSSearchNativeViewControllerDelegate, MusicLibrarySearchResultsViewControllerDelegate, MusicSearchBarDelegate, MusicSearchHintsViewControllerDelegate, MusicSearchRecentsViewControllerDelegate, SKUIScrollingSegmentedControllerDelegate, MusicClientContextConsuming, UIViewControllerTransitioningDelegate>
@@ -25,6 +25,8 @@
     BOOL _allowsRadioContentInStoreSearch;
     BOOL _didInsertStoreSearchResultsDocument;
     BOOL _didMakeSearchBarFirstResponder;
+    BOOL _hasPreviouslyShownLibrarySearchResults;
+    BOOL _hasPreviouslyShownStoreSearchResults;
     MusicLibrarySearchResultsViewController *_librarySearchResultsViewController;
     _UINavigationControllerPalette *_palette;
     MusicSearchBar *_searchBar;
@@ -33,6 +35,7 @@
     NSString *_partialSearchString;
     BOOL _storeSearchViewNeedsChangeUponAppearance;
     BOOL _storeSearchViewNeedsSubmitUponAppearance;
+    NSArray *_titleViewPaletteConstraints;
     BOOL _mediaPickerAllowsLocalSearchOnly;
     BOOL _mediaPickerAllowsMultipleSelection;
     BOOL _mediaPickerIncludePlaylists;
@@ -62,6 +65,7 @@
 + (id)searchViewControllerForPresentingViewController:(id)arg1 withSearchBar:(id)arg2;
 - (void).cxx_destruct;
 - (BOOL)_allowsLocalSearchOnly;
+- (void)_applyConstraints;
 - (void)_attachPaletteIfNecessary;
 - (void)_configureNavigationBar;
 - (void)_detachPalette;
@@ -70,8 +74,9 @@
 - (void)_handleCanShowRadioDidChangeNotification:(id)arg1;
 - (void)_handleCanShowSubscriptionContentDidChangeNotification:(id)arg1;
 - (void)_handleCancelButtonPressed;
+- (void)_handleMetricsWithSearchTerm:(id)arg1 focusedViewControllerIndex:(unsigned long long)arg2;
 - (void)_recordSearchRecent:(id)arg1;
-- (struct UIEdgeInsets)_searchSegmentedControlContentEdgeInsets;
+- (void)_removeConstraints;
 - (id)_storeSearchSegmentTitle;
 - (void)_updateForStoreContentAvailabilityChange;
 - (id)animationControllerForDismissedController:(id)arg1;

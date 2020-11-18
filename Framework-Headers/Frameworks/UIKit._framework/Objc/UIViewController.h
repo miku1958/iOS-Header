@@ -511,6 +511,7 @@
 - (id)_modalPresenterForPresentationController:(id)arg1;
 - (id)_modalPreservedFirstResponder;
 - (id)_moreListTitle;
+- (id)_navigationItemCreatingDefaultIfNotSet;
 - (id)_nearestFullScreenAncestorViewController;
 - (id)_nextViewController;
 - (id)_nextViewControllerForUnwindSegueSearch;
@@ -556,6 +557,7 @@
 - (id)_printHierarchy;
 - (BOOL)_reallyWantsFullScreenLayout;
 - (void)_recordContentScrollView;
+- (void)_rememberPresentingFocusedView:(id)arg1;
 - (id)_remoteViewControllerProxy;
 - (id)_remoteViewControllerProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)_removeChildViewController:(id)arg1;

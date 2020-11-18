@@ -17,10 +17,12 @@
     NSDictionary *_cachedPropertyValuesLoadedSynchronously;
     NSSet *_propertiesToLoadAsynchronously;
     NSSet *_propertiesToPrefetchSynchronously;
+    NSSet *_additionalPropertiesToPrefetchSynchronously;
     id<MusicEntityValueProviding> _baseEntityValueProvider;
     MusicEntityViewContentDescriptor *_contentDescriptor;
 }
 
+@property (copy, nonatomic) NSSet *additionalPropertiesToPrefetchSynchronously; // @synthesize additionalPropertiesToPrefetchSynchronously=_additionalPropertiesToPrefetchSynchronously;
 @property (readonly, nonatomic) id<MusicEntityValueProviding> baseEntityValueProvider; // @synthesize baseEntityValueProvider=_baseEntityValueProvider;
 @property (readonly, nonatomic) MusicEntityViewContentDescriptor *contentDescriptor; // @synthesize contentDescriptor=_contentDescriptor;
 @property (readonly, copy) NSString *debugDescription;

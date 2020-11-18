@@ -9,7 +9,7 @@
 #import <MessageUI/WebPolicyDelegate-Protocol.h>
 #import <MessageUI/WebResourceLoadDelegate-Protocol.h>
 
-@class DOMRange, MFLibraryMessage, MFMessageReformattingContext, NSMutableDictionary, NSObject, NSString, NSTimer;
+@class DOMNodeList, DOMRange, MFLibraryMessage, MFMessageReformattingContext, NSMutableDictionary, NSObject, NSString, NSTimer;
 @protocol MFMessageWebLayerDelegate;
 
 @interface MFMessageWebLayer : UIWebBrowserView <WebPolicyDelegate, WebResourceLoadDelegate>
@@ -32,6 +32,7 @@
     NSMutableDictionary *_displayInfoCache;
     BOOL _stoppedLoading;
     BOOL _didReformatMessage;
+    DOMNodeList *_imageElements;
     BOOL _shouldAttemptToReformatMessage;
     NSString *_originalHTMLString;
     MFMessageReformattingContext *_reformattingContext;
@@ -60,6 +61,7 @@
 - (void)_cancelPendingIgnoreStylesheets;
 - (id)_createInlinePluginElementWithHTMLRepresentation:(id)arg1 inDocument:(id)arg2;
 - (void)_didFinishReformattingMessage;
+- (id)_elementForAttachmentWithCID:(id)arg1 inDocument:(id)arg2;
 - (BOOL)_elementHasDefinedWidth:(id)arg1;
 - (void)_frameDidFinishPrePrintURLification:(id)arg1;
 - (void)_ignorePendingStylesheets:(id)arg1;
@@ -72,7 +74,6 @@
 - (BOOL)_rescaleTopLevelElements;
 - (void)_schedulePendingIgnoreStylesheets;
 - (void)_sendDelegateSizeDidChange;
-- (BOOL)_shouldApplyEdgeToEdgeStylingToNode:(id)arg1;
 - (BOOL)_shouldContinueResizingMessage;
 - (BOOL)_shouldRescaleMessage;
 - (BOOL)_shouldResizeMessage;
@@ -98,6 +99,7 @@
 - (void)displayDidEnd;
 - (int)displayStyle;
 - (BOOL)hasPluginWithUninitializedSize;
+- (id)imageElements;
 - (id)initWithFrame:(struct CGRect)arg1 visibleSize:(struct CGSize)arg2 viewportWidth:(double)arg3 displayStyle:(int)arg4;
 - (void)invalidateDisplayInfoCache;
 - (BOOL)isCancelled;
@@ -107,8 +109,10 @@
 - (id)messageWebLayerDelegate;
 - (id)newQuoteSubparser;
 - (id)objectForDisplayInfoCacheKey:(id)arg1;
+- (void)parseAttachmentNodes;
 - (void)parseDocument:(id)arg1;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1;
+- (id)pluginViews;
 - (void)prepareDisplayInfoCacheWithLibraryMessage:(id)arg1;
 - (void)redrawWithViewportSize:(struct CGSize)arg1;
 - (void)reformatAttachments:(id)arg1;
@@ -122,9 +126,10 @@
 - (void)setMessageWebLayerDelegate:(id)arg1;
 - (void)setObject:(id)arg1 forDisplayInfoCacheKey:(id)arg2;
 - (void)setPostDisplayOperationBlock:(CDUnknownBlockType)arg1 cancellationBlock:(CDUnknownBlockType)arg2;
+- (BOOL)shouldApplyEdgeToEdgeStylingToNode:(id)arg1;
 - (void)stopLoading:(id)arg1;
 - (void)stopLoadingAndClear;
-- (void)updateImageURL:(id)arg1 withURL:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)updateImageWithCID:(id)arg1 withNewCID:(id)arg2 newImageSize:(struct CGSize)arg3;
 - (void)updateImageWithSource:(id)arg1 withHTMLRepresentation:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)updateInlinePluginWithContentID:(id)arg1 withHTMLRepresentation:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (BOOL)usePadDisplayStyle;

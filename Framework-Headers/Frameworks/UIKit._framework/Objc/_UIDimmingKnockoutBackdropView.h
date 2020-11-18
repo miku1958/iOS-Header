@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)_filterForBackdropStyle:(long long)arg1;
 - (id)_visualEffectForStyle:(long long)arg1;
 - (id)initWithStyle:(long long)arg1;
+- (void)layoutSubviews;
 - (void)setAlpha:(double)arg1;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setPressed:(BOOL)arg1 animated:(BOOL)arg2;

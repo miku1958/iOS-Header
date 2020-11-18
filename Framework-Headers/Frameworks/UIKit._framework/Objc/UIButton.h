@@ -42,6 +42,7 @@
         unsigned int blurEnabled:1;
         unsigned int visualEffectViewEnabled:1;
         unsigned int suppressAccessibilityUnderline:1;
+        unsigned int requiresLayoutForPropertyChange:1;
     } _buttonFlags;
     UIView *_effectiveContentView;
     _UIButtonMaskAnimationView *_maskAnimationView;
@@ -176,6 +177,7 @@
 - (void)_populateArchivedSubviews:(id)arg1;
 - (id)_preferredConfigurationForFocusAnimation:(long long)arg1 inContext:(id)arg2;
 - (void)_prepareMaskAnimationViewIfNecessary;
+- (BOOL)_requiresLayoutForPropertyChange;
 - (id)_scriptingInfo;
 - (void)_selectGestureChanged:(id)arg1;
 - (double)_selectedIndicatorAlpha;
@@ -214,6 +216,7 @@
 - (id)_shadowColorForState:(unsigned long long)arg1;
 - (BOOL)_shouldDefaultToTemplatesForImageViewBackground:(BOOL)arg1;
 - (BOOL)_shouldHaveFloatingAppearance;
+- (BOOL)_shouldSkipNormalLayoutForSakeOfTemplateLayout;
 - (BOOL)_shouldUpdatePressedness;
 - (void)_takeContentFromArchivableContent:(id)arg1;
 - (BOOL)_textNeedsCompositingModeWhenSelected;

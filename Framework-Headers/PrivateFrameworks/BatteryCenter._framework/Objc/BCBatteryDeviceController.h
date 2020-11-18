@@ -36,6 +36,9 @@
 - (int)_displayChargePercentForCurrentCapacity:(id)arg1 andMaxCapacity:(id)arg2 updateZeroValue:(BOOL)arg3;
 - (BOOL)_displayIsChargingFromPowerSourceDescription:(id)arg1;
 - (id)_displayNameForBaseIdentifier:(id)arg1 andParts:(unsigned long long)arg2 fromPowerSourceDescription:(id)arg3;
+- (id)_fakeDeviceA111PowerSourceDescription;
+- (id)_fakeDeviceB222PowerSourceDescription;
+- (id)_fakeDeviceB244PowerSourceDescription;
 - (id)_fakeDeviceInternalBatteryDescription;
 - (id)_fakeDevicePowerSourceDescriptions;
 - (void)_handlePSChange;

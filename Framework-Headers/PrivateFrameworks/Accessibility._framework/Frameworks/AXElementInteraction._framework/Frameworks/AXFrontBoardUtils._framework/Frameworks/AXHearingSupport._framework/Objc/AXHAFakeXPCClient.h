@@ -13,7 +13,7 @@
 
 - (void)dealloc;
 - (void)registerMessageBlock:(CDUnknownBlockType)arg1;
-- (void)sendMessage:(id)arg1 withError:(id *)arg2;
+- (BOOL)sendMessage:(id)arg1 withError:(id *)arg2;
 - (BOOL)wantsUpdatesForIdentifier:(unsigned long long)arg1;
 
 @end

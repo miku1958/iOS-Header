@@ -6,7 +6,7 @@
 
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
-@class CKQuery, CKQueryCursor, CKRecordZoneID, NSSet;
+@class CKDRecordFetchAggregator, CKQuery, CKQueryCursor, CKRecordZoneID, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface CKDQueryOperation : CKDDatabaseOperation
@@ -19,12 +19,14 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _recordFetchedBlock;
     NSSet *_desiredKeySet;
     CKRecordZoneID *_zoneID;
+    CKDRecordFetchAggregator *_recordFetcher;
 }
 
 @property (readonly, nonatomic) CKQueryCursor *cursor; // @synthesize cursor=_cursor;
 @property (strong, nonatomic) NSSet *desiredKeySet; // @synthesize desiredKeySet=_desiredKeySet;
 @property (readonly, nonatomic) CKQuery *query; // @synthesize query=_query;
 @property (copy, nonatomic) CDUnknownBlockType recordFetchedBlock; // @synthesize recordFetchedBlock=_recordFetchedBlock;
+@property (strong, nonatomic) CKDRecordFetchAggregator *recordFetcher; // @synthesize recordFetcher=_recordFetcher;
 @property (strong, nonatomic) CKQueryCursor *resultsCursor; // @synthesize resultsCursor=_resultsCursor;
 @property (readonly, nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
 @property (nonatomic) BOOL shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleQueryRequestFinished:(id)arg1;
+- (void)_handleRecordResponse:(id)arg1;
 - (unsigned long long)activityStart;
 - (void)fillOutOperationResult:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSLayoutConstraint, UIButton, UITextField;
+@class NSArray, NSLayoutConstraint, UIButton, UITextField;
 @protocol SPUISearchHeaderDelegate;
 
 @interface SPUISearchHeader : UIView
@@ -17,6 +17,8 @@
     UIButton *_voiceButton;
     UIView *insetContainer;
     BOOL _shouldHideCancel;
+    NSArray *_insetConstraints;
+    BOOL _inputFieldHasFocus;
     UITextField *_searchField;
     id<SPUISearchHeaderDelegate> _delegate;
     NSLayoutConstraint *_cancelButtonTrailingConstraint;
@@ -24,6 +26,7 @@
 
 @property (strong) NSLayoutConstraint *cancelButtonTrailingConstraint; // @synthesize cancelButtonTrailingConstraint=_cancelButtonTrailingConstraint;
 @property (nonatomic) id<SPUISearchHeaderDelegate> delegate; // @synthesize delegate=_delegate;
+@property BOOL inputFieldHasFocus; // @synthesize inputFieldHasFocus=_inputFieldHasFocus;
 @property (readonly, strong, nonatomic) UITextField *searchField; // @synthesize searchField=_searchField;
 
 + (id)barTintColor;

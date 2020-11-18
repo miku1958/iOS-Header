@@ -31,6 +31,7 @@
     BOOL _disableSiriVoiceDeletion;
     BOOL _disableCDLevel4;
     BOOL _disableAppDemotion;
+    BOOL _disableIntallTonight;
     NSDictionary *_systemPartitionPadding;
     BOOL _downloadableOverCellular;
     BOOL _streamingZipCapable;
@@ -39,6 +40,7 @@
 @property (nonatomic) BOOL autoDownloadAllowableForCellular; // @synthesize autoDownloadAllowableForCellular=_autoDownloadAllowableForCellular;
 @property (nonatomic, getter=appDemotionDisabled, setter=_setDisableAppDemotion:) BOOL disableAppDemotion; // @synthesize disableAppDemotion=_disableAppDemotion;
 @property (nonatomic, getter=cdLevel4Disabled, setter=_setDisableCDLevel4:) BOOL disableCDLevel4; // @synthesize disableCDLevel4=_disableCDLevel4;
+@property (nonatomic, getter=installTonightDisabled, setter=_setDisableInstallTonight:) BOOL disableInstallTonight; // @synthesize disableInstallTonight=_disableIntallTonight;
 @property (nonatomic, getter=siriVoiceDeletionDisabled, setter=_setDisableSiriVoiceDeletion:) BOOL disableSiriVoiceDeletion; // @synthesize disableSiriVoiceDeletion=_disableSiriVoiceDeletion;
 @property (strong, nonatomic) SUDocumentation *documentation; // @synthesize documentation=_documentation;
 @property (nonatomic) unsigned long long downloadSize; // @synthesize downloadSize=_downloadSize;

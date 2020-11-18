@@ -19,7 +19,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)selectedRestoreFromBackup:(id)arg1;
 - (void)selectedSetupNewDevice:(id)arg1;
-- (void)showInsignaAnimated:(BOOL)arg1;
+- (void)showInsigniaAnimated:(BOOL)arg1;
 - (void)showOptionsAnimated:(BOOL)arg1;
 
 @end

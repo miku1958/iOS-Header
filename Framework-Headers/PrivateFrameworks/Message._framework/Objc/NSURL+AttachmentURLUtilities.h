@@ -8,6 +8,7 @@
 
 @interface NSURL (AttachmentURLUtilities)
 - (id)mf_firstPartNumber;
+- (BOOL)mf_isResourceURL;
 - (BOOL)mf_isValidAttachmentURL;
 - (id)mf_lastPartNumber;
 - (id)mf_partNumbers;

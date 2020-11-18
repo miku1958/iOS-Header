@@ -19,6 +19,7 @@
     BOOL _reversesMoreVideoFramesInMemory;
     BOOL _aggressivelyCacheVideoFrames;
     BOOL _shouldLoadCrossfadeContent;
+    BOOL _preparesForVitalityOnLoad;
     ISAsset *_asset;
     long long _status;
     NSError *_error;
@@ -46,6 +47,7 @@
 @property (nonatomic, setter=_setPeriod:) double period; // @synthesize period=_period;
 @property (strong, nonatomic, setter=_setPhoto:) struct CGImage *photo; // @synthesize photo=_photo;
 @property (nonatomic, setter=_setphotoTime:) double photoTime; // @synthesize photoTime=_photoTime;
+@property (nonatomic) BOOL preparesForVitalityOnLoad; // @synthesize preparesForVitalityOnLoad=_preparesForVitalityOnLoad;
 @property (nonatomic) BOOL reversesMoreVideoFramesInMemory; // @synthesize reversesMoreVideoFramesInMemory=_reversesMoreVideoFramesInMemory;
 @property (nonatomic) BOOL shouldLoadCrossfadeContent; // @synthesize shouldLoadCrossfadeContent=_shouldLoadCrossfadeContent;
 @property (nonatomic) long long status; // @synthesize status=_status;

@@ -17,6 +17,7 @@
     BOOL _devSigned;
     BOOL _transactionServiceDisabled;
     BOOL _messageServiceDisabled;
+    BOOL _ignoreProvisioningEnablementPercentage;
     long long _version;
     NSString *_deviceID;
     NSString *_secureElementID;
@@ -39,6 +40,7 @@
 @property long long consistencyCheckBackoffLevel; // @synthesize consistencyCheckBackoffLevel=_consistencyCheckBackoffLevel;
 @property BOOL devSigned; // @synthesize devSigned=_devSigned;
 @property (copy) NSString *deviceID; // @synthesize deviceID=_deviceID;
+@property BOOL ignoreProvisioningEnablementPercentage; // @synthesize ignoreProvisioningEnablementPercentage=_ignoreProvisioningEnablementPercentage;
 @property (copy) NSString *lastUpdatedTag; // @synthesize lastUpdatedTag=_lastUpdatedTag;
 @property BOOL messageServiceDisabled; // @synthesize messageServiceDisabled=_messageServiceDisabled;
 @property (readonly) PKPaymentWebServiceRegion *primaryRegion;
@@ -56,8 +58,10 @@
 + (id)contextWithArchive:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)TSMPushTopics;
+- (double)_contextProvisioningEnablementValue;
 - (void)addVerificationRequestRecord:(id)arg1 forUniqueID:(id)arg2;
 - (void)archiveAtPath:(id)arg1;
+- (BOOL)contextMeetsProvisioningEnablementPercentageThreshold;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

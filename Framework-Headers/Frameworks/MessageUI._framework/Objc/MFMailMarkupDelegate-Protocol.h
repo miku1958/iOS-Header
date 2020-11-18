@@ -13,7 +13,7 @@
 - (void)dismissMarkupViewController;
 - (void)handleMarkupData:(NSData *)arg1 fileName:(NSString *)arg2 mimeType:(NSString *)arg3 attachment:(MFAttachment *)arg4;
 - (void)handleMarkupError:(NSError *)arg1 attachment:(MFAttachment *)arg2;
-- (void)handleMarkupURL:(NSURL *)arg1 attachment:(MFAttachment *)arg2;
+- (void)handleMarkupURL:(NSURL *)arg1 attachment:(MFAttachment *)arg2 completion:(void (^)(MFAttachment *))arg3;
 - (struct CGRect)markupAttachmentBoundsForAttachment:(MFAttachment *)arg1;
 - (struct CGRect)markupAttachmentMaskForAttachment:(MFAttachment *)arg1;
 - (MFAttachment *)markupReplacementAttachment;

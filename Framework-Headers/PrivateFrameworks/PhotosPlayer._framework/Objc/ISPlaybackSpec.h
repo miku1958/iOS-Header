@@ -79,6 +79,7 @@
 - (id)init;
 - (void)registerObserver:(id)arg1;
 - (void)setDefaultValues;
+- (void)setHintPlaybackValuesWithPhotoHasColorAdjustments:(BOOL)arg1;
 - (void)unregisterObserver:(id)arg1;
 
 @end

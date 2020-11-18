@@ -24,6 +24,7 @@
     NSString *_fbq;
     NSString *_web_fbq;
     NSString *_predictionIdentifier;
+    NSString *_resultSetIdentifier;
     NSString *_keyboardLanguage;
     NSString *_geoUserSessionIDString;
     double _geoUserSessionStartTime;
@@ -41,6 +42,7 @@
 @property (strong, nonatomic) NSString *keyboardLanguage; // @synthesize keyboardLanguage=_keyboardLanguage;
 @property (copy, nonatomic) NSString *predictionIdentifier; // @synthesize predictionIdentifier=_predictionIdentifier;
 @property (strong, nonatomic) NSString *protectionClass; // @synthesize protectionClass=_protectionClass;
+@property (copy, nonatomic) NSString *resultSetIdentifier; // @synthesize resultSetIdentifier=_resultSetIdentifier;
 @property (strong, nonatomic) NSArray *results; // @synthesize results=_results;
 @property (readonly, nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property (copy, nonatomic) NSString *web_fbq; // @synthesize web_fbq=_web_fbq;

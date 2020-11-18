@@ -11,7 +11,7 @@
 #import <PhotoLibraryServices/PLBatterySaverWatcherDelegate-Protocol.h>
 #import <PhotoLibraryServices/PLForegroundObserver-Protocol.h>
 
-@class CPLLibraryManager, NSDate, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString, PLBatterySaverWatcher, PLCloudTaskManager, PLPhotoLibrary;
+@class CPLLibraryManager, NSDate, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString, PFCoalescer, PLBatterySaverWatcher, PLCloudTaskManager, PLPhotoLibrary;
 @protocol OS_dispatch_queue, OS_dispatch_source, OS_xpc_object;
 
 @interface PLCloudPhotoLibraryManager : NSObject <CPLResourceProgressDelegate, CPLLibraryManagerDelegate, PLForegroundObserver, PLBatterySaverWatcherDelegate>
@@ -59,6 +59,8 @@
     NSDate *_lastResetSyncDate;
     NSDate *_lastIdleDate;
     BOOL _initializedMaster;
+    PFCoalescer *_coalescer;
+    NSObject<OS_dispatch_queue> *_uploadDownloadCountQueue;
     NSNumber *__numberOfPhotosToPush;
     NSNumber *__numberOfVideosToPush;
     NSNumber *__numberOfOtherItemsToPush;

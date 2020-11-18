@@ -6,15 +6,23 @@
 
 #import <UIKit/UIView.h>
 
-@class CALayer;
+#import <UIKit/_UILayoutEngineSuspending-Protocol.h>
+
+@class CALayer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface UITableViewCellContentView : UIView
+@interface UITableViewCellContentView : UIView <_UILayoutEngineSuspending>
 {
+    BOOL _isLayoutEngineSuspended;
     CALayer *_mask;
 }
 
+@property (nonatomic, getter=_isLayoutEngineSuspended, setter=_setLayoutEngineSuspended:) BOOL _layoutEngineSuspended; // @synthesize _layoutEngineSuspended=_isLayoutEngineSuspended;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CALayer *mask; // @synthesize mask=_mask;
+@property (readonly) Class superclass;
 
 + (id)classFallbacksForKeyedArchiver;
 - (void).cxx_destruct;

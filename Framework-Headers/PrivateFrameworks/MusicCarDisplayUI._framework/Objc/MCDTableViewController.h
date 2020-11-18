@@ -17,12 +17,14 @@
     MPMediaPredicate *_localPredicate;
     BOOL _shouldHideIndexTitles;
     BOOL _limitedUI;
+    BOOL _topLevel;
     BOOL _showMore;
 }
 
 @property (nonatomic) BOOL limitedUI; // @synthesize limitedUI=_limitedUI;
 @property (nonatomic) BOOL shouldHideIndexTitles; // @synthesize shouldHideIndexTitles=_shouldHideIndexTitles;
 @property (nonatomic) BOOL showMore; // @synthesize showMore=_showMore;
+@property (nonatomic) BOOL topLevel; // @synthesize topLevel=_topLevel;
 
 + (Class)_tableViewClass;
 - (void).cxx_destruct;
@@ -30,6 +32,7 @@
 - (void)_MCD_nowPlayingButtonAction:(id)arg1;
 - (void)_itemChanged:(id)arg1;
 - (void)_limitedUIDidChange;
+- (void)_updateNowPlayingVisibility;
 - (BOOL)_viewControllerWasSelected;
 - (void)dataSourceDidInvalidate;
 - (void)dealloc;

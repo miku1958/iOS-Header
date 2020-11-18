@@ -8,18 +8,20 @@
 
 #import <CoreSpotlight/_MDRemoteExtensionContextProtocol-Protocol.h>
 
-@class NSString;
+@class CSIndexExtensionRequestHandler, NSString;
 
 @interface _MDRemoteExtensionContext : _MDExtensionContext <_MDRemoteExtensionContextProtocol>
 {
+    CSIndexExtensionRequestHandler *_requestHandler;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) CSIndexExtensionRequestHandler *requestHandler; // @synthesize requestHandler=_requestHandler;
 @property (readonly) Class superclass;
 
-- (id)_extensionRequestHandler;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)getLastUpdateTimeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)hostContext;

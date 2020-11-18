@@ -117,6 +117,7 @@
 - (void)_updateShadowPositionWithOffset:(struct CGPoint)arg1;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (void)dealloc;
+- (id)init;
 - (void)layoutSublayers;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setBounds:(struct CGRect)arg1;

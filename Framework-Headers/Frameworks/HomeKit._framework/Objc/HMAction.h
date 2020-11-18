@@ -38,7 +38,6 @@
 + (id)_lookupActionWithInfo:(id)arg1 inArray:(id)arg2;
 - (void).cxx_destruct;
 - (void)_configure:(id)arg1 actionSet:(id)arg2 clientQueue:(id)arg3 delegateCaller:(id)arg4;
-- (void)_configureWithMerge:(id)arg1 actionSet:(id)arg2;
 - (BOOL)_handleUpdates:(id)arg1;
 - (void)_invalidate;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;

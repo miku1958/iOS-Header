@@ -19,6 +19,7 @@
 + (id)nodeWithPoint: /* Error: Ran out of types for this method. */;
 - (struct GKCGraphNode2D *)cGraphNode2D;
 - (float)costToNode:(id)arg1;
+- (void)deleteCGraphNode;
 - (id)description;
 - (float)estimatedCostToNode:(id)arg1;
 - (id)init;

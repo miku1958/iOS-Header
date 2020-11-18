@@ -15,7 +15,6 @@
 {
     BOOL __autoCreatedForV2AU;
     BOOL __suppressObserverCallbacks;
-    int _numObservers;
     int _numRecorders;
     NSObject<OS_dispatch_queue> *_observationQueue;
     struct AUObserverController *_observerController;
@@ -30,7 +29,6 @@
 @property (nonatomic) BOOL _autoCreatedForV2AU; // @synthesize _autoCreatedForV2AU=__autoCreatedForV2AU;
 @property (nonatomic) BOOL _suppressObserverCallbacks; // @synthesize _suppressObserverCallbacks=__suppressObserverCallbacks;
 @property (nonatomic) vector_2580a1ea addrToParamIndex; // @synthesize addrToParamIndex=_addrToParamIndex;
-@property (nonatomic) int numObservers; // @synthesize numObservers=_numObservers;
 @property (nonatomic) int numRecorders; // @synthesize numRecorders=_numRecorders;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *observationQueue; // @synthesize observationQueue=_observationQueue;
 @property (nonatomic) struct AUObserverController *observerController; // @synthesize observerController=_observerController;

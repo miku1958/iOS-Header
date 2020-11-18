@@ -10,6 +10,7 @@
 
 @protocol _SFSafeBrowsingControllerDelegate <NSObject>
 - (void)safeBrowsingController:(_SFSafeBrowsingController *)arg1 didIgnoreWarningWithURL:(NSURL *)arg2;
+- (void)safeBrowsingControllerClosePage:(_SFSafeBrowsingController *)arg1;
 - (void)safeBrowsingControllerDidShowSecurityWarningPage:(_SFSafeBrowsingController *)arg1;
 - (void)safeBrowsingControllerGoBack:(_SFSafeBrowsingController *)arg1;
 @end

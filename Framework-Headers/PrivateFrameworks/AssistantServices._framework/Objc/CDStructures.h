@@ -34,6 +34,11 @@ struct AudioStreamBasicDescription {
 
 struct AudioStreamPacketDescription;
 
+struct AvailabilityState {
+    unsigned int availabilityIsKnown:1;
+    unsigned int isAvailable:1;
+};
+
 struct internal_state;
 
 struct z_stream_s {

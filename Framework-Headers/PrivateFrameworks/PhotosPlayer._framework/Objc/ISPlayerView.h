@@ -8,13 +8,14 @@
 
 #import <PhotosPlayer/ISGestureInputDelegate-Protocol.h>
 #import <PhotosPlayer/ISPlayerChangeObserver-Protocol.h>
+#import <PhotosPlayer/ISPlayerDelegate-Protocol.h>
 #import <PhotosPlayer/ISPlayerOutput-Protocol.h>
 #import <PhotosPlayer/UIGestureRecognizerDelegate-Protocol.h>
 
 @class AVPlayer, AVPlayerLayer, CALayer, ISCrossfadeLayer, ISGestureInput, ISMutedAudioInput, ISPlaybackSpec, ISPlayer, ISVitalityFilter, ISVitalityInput, NSError, NSHashTable, NSMutableSet, NSObject, NSString, UIGestureRecognizer, UIScrollView, _ISAVPlayerView, _ISCrossfadeView, _ISPlayerDebugView, _ISTargetView;
 @protocol ISPlayerViewDelegate, NSObject, OS_dispatch_queue;
 
-@interface ISPlayerView : UIView <ISGestureInputDelegate, ISPlayerOutput, UIGestureRecognizerDelegate, ISPlayerChangeObserver>
+@interface ISPlayerView : UIView <ISGestureInputDelegate, ISPlayerOutput, UIGestureRecognizerDelegate, ISPlayerChangeObserver, ISPlayerDelegate>
 {
     ISPlayer *_player;
     NSHashTable *_observers;
@@ -164,13 +165,14 @@
 - (void)_updateVideoLayer;
 - (void)_updateVideoSizeIfNeeded;
 - (void)_updateVitalityInput;
+- (id)avPlayerForPlayer:(id)arg1;
 - (void)awakeFromNib;
 - (void)cancelGestureRecognizers;
 - (id)contentLayer;
 - (void)dealloc;
 - (id)gestureInput:(id)arg1 delegateForGestureRecognizer:(id)arg2;
+- (id)gestureInput:(id)arg1 viewHostingGestureRecognizer:(id)arg2;
 - (void)gestureInputGestureRecognizerDidChange:(id)arg1;
-- (id)gestureInputViewHostingGestureRecognizers:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithVideoPlayer:(id)arg1;

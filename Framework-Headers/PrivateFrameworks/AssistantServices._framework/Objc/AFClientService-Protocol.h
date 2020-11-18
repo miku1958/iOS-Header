@@ -41,7 +41,7 @@
 - (oneway void)rollbackRequest;
 - (oneway void)setAlertContextDirty;
 - (oneway void)setApplicationContext:(SASetApplicationContext *)arg1;
-- (oneway void)setApplicationContextForApplicationInfos:(NSArray *)arg1;
+- (oneway void)setApplicationContextForApplicationInfos:(NSArray *)arg1 withRefId:(NSString *)arg2;
 - (oneway void)setIsStark:(BOOL)arg1;
 - (oneway void)setLockState:(BOOL)arg1 showingLockScreen:(BOOL)arg2;
 - (oneway void)setOverriddenApplicationContext:(NSString *)arg1 withContext:(id)arg2;

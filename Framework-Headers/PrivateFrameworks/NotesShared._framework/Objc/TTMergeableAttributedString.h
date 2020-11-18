@@ -10,14 +10,14 @@
 {
 }
 
++ (int)attributeForWritingDirection:(long long)arg1;
 + (id)attributesForRun:(const struct AttributeRun *)arg1;
-+ (unordered_map_94028151)paragraphStyleWritingDirectionMap;
-+ (unordered_map_27012e82)paragraphStyleWritingDirectionMapReverse;
 + (void)saveAttributes:(id)arg1 toArchive:(struct AttributeRun *)arg2;
 + (void)saveAttributesOfString:(id)arg1 toArchive:(struct String *)arg2;
 + (id)whitelistedAttributesForModel;
 + (id)whitelistedAttributesForStyle;
 + (id)whitelistedTypingAttributes;
++ (long long)writingDirectionForAttribute:(int)arg1;
 - (id)attributesAtIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (BOOL)attributesEqual:(id)arg1 to:(id)arg2 modelEqual:(BOOL *)arg3;
 - (BOOL)attributesEqual:(id)arg1 toRange:(struct _NSRange)arg2 modelEqual:(BOOL *)arg3;

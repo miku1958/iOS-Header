@@ -13,7 +13,7 @@
 #import <PhotosUI/PLRootLibraryNavigationController-Protocol.h>
 #import <PhotosUI/UINavigationControllerDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSMutableIndexSet, NSString, PUMomentsZoomLevelManager, PUSessionInfo, PUTabbedLibraryViewControllerSpec, UINavigationController;
+@class NSMutableDictionary, NSMutableIndexSet, NSString, PUImportViewController, PUMomentsZoomLevelManager, PUSessionInfo, PUTabbedLibraryViewControllerSpec, UINavigationController;
 
 @interface PUTabbedLibraryViewController : UITabBarController <PLAssetContainerListChangeObserver, PLAssetContainerObserver, PLInvitationRecordsObserver, PLDismissableViewController, PLRootLibraryNavigationController, UINavigationControllerDelegate>
 {
@@ -24,11 +24,13 @@
     NSMutableDictionary *_filteredAlbumListsByContentMode;
     PUMomentsZoomLevelManager *_zoomLevelManager;
     NSMutableIndexSet *_everDisplayedContentModes;
+    PUImportViewController *_importViewController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) PUImportViewController *importViewController; // @synthesize importViewController=_importViewController;
 @property (nonatomic) int selectedContentMode;
 @property (readonly, nonatomic) UINavigationController *selectedNavigationController;
 @property (strong, nonatomic) PUSessionInfo *sessionInfo; // @synthesize sessionInfo=_sessionInfo;
@@ -49,6 +51,7 @@
 - (void)_libraryDidChange:(id)arg1;
 - (void)_navigateToAlbum:(struct NSObject *)arg1 andPerformAction:(int)arg2 initiallyHidden:(BOOL)arg3 animated:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_navigateToAsset:(id)arg1 andPerformAction:(int)arg2 inAlbum:(struct NSObject *)arg3 animated:(BOOL)arg4;
+- (void)_navigateToContentMode:(int)arg1 defaultLocationIfNeverDisplayed:(BOOL)arg2 animated:(BOOL)arg3;
 - (BOOL)_navigateToDefaultLocationInNavigationController:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)_navigateToRootOfCurrentTabAnimated:(BOOL)arg1;
 - (id)_navigationControllerForContentMode:(int)arg1;
@@ -99,6 +102,7 @@
 - (void)prepareForDefaultImageSnapshot;
 - (BOOL)prepareForDismissingForced:(BOOL)arg1;
 - (BOOL)pu_shouldSelectViewController:(id)arg1;
+- (void)setImportViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)setSelectedViewController:(id)arg1;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (BOOL)shouldShowTabForContentMode:(int)arg1;

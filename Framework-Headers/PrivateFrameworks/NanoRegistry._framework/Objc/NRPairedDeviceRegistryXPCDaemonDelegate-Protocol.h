@@ -30,6 +30,7 @@
 - (void)xpcGizmoPasscodeAdvertiseAndPairWithName:(NSString *)arg1 operationHasBegun:(void (^)(NSError *, unsigned long long))arg2;
 - (void)xpcNotifyActivationCompleted:(NSUUID *)arg1 withSuccess:(BOOL)arg2;
 - (void)xpcNotifyPasscode:(NSNumber *)arg1 withDeviceID:(NSUUID *)arg2;
+- (void)xpcPairingClientDidEnterPhase:(NSString *)arg1 withBlock:(void (^)(void))arg2;
 - (void)xpcPairingShouldContinue;
 - (void)xpcQueryStatus:(NSUUID *)arg1 statusData:(void (^)(unsigned long long, NSDictionary *, BOOL, unsigned short, long long, long long, long long, unsigned long long, unsigned long long))arg2;
 - (void)xpcRecoveryDescription:(void (^)(NSString *))arg1;

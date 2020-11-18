@@ -9,11 +9,12 @@
 #import <UIKit/NSCoding-Protocol.h>
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKit/UIScrollViewDelegate-Protocol.h>
+#import <UIKit/_UILayoutEngineSuspending-Protocol.h>
 
 @class NSIndexPath, NSString, NSTimer, UIColor, UIControl, UIFocusGuide, UIImage, UIImageView, UILabel, UILongPressGestureRecognizer, UIStoryboardPreviewingSegueTemplateStorage, UITableView, UITableViewCellDeleteConfirmationView, UITapGestureRecognizer, UITextField, UIVisualEffect, _UIFloatingContentView, _UITableViewCellOldEditingData, _UITableViewCellSeparatorView;
 @protocol UITableViewConstants;
 
-@interface UITableViewCell : UIView <UIScrollViewDelegate, NSCoding, UIGestureRecognizerDelegate>
+@interface UITableViewCell : UIView <UIScrollViewDelegate, _UILayoutEngineSuspending, NSCoding, UIGestureRecognizerDelegate>
 {
     UITableView *_tableView;
     id _layoutManager;
@@ -140,8 +141,10 @@
         unsigned int hasEditingFocusGuides:1;
         unsigned int focusStyle:3;
     } _tableCellFlags;
+    BOOL _isLayoutEngineSuspended;
 }
 
+@property (nonatomic, getter=_isLayoutEngineSuspended, setter=_setLayoutEngineSuspended:) BOOL _layoutEngineSuspended; // @synthesize _layoutEngineSuspended=_isLayoutEngineSuspended;
 @property (nonatomic) long long accessoryType;
 @property (strong, nonatomic) UIView *accessoryView;
 @property (strong, nonatomic) UIView *backgroundView;

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_scaleRect:(struct CGRect)arg1 factor:(struct CGSize)arg2;
 - (id)geometryByScalingShapeGeometry:(id)arg1 factor:(struct CGSize)arg2;
 - (id)shapeByScalingShape:(id)arg1 factor:(struct CGSize)arg2;
+- (id)shapesByCenteringShapes:(id)arg1 insideRect:(struct CGRect)arg2;
 - (id)shapesByElaboratingShapes:(id)arg1 insideShape:(id)arg2 count:(long long)arg3;
 - (id)shapesByScalingShapes:(id)arg1 factor:(struct CGSize)arg2;
 

@@ -16,6 +16,7 @@
     NSTimeZone *_timeZone;
     long long _nowInMinutes;
     BOOL _editing;
+    BOOL _shouldAddLayoutConstraints;
     BOOL _started;
     id<WorldClockCellViewDelegate> _delegate;
     long long _style;
@@ -35,6 +36,7 @@
 @property (readonly, nonatomic) DigitalClockLabel *digitalClock; // @synthesize digitalClock=_digitalClock;
 @property (readonly, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
 @property (readonly, nonatomic) int runMode;
+@property (nonatomic) BOOL shouldAddLayoutConstraints; // @synthesize shouldAddLayoutConstraints=_shouldAddLayoutConstraints;
 @property (readonly, nonatomic) BOOL started; // @synthesize started=_started;
 @property (nonatomic) long long style; // @synthesize style=_style;
 
@@ -48,7 +50,6 @@
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setStyle:(long long)arg1 animated:(BOOL)arg2;
 - (void)setTimeZone:(id)arg1;
-- (void)setupConstraints;
 - (void)significantTimeChange:(id)arg1;
 - (void)start;
 - (void)stop;

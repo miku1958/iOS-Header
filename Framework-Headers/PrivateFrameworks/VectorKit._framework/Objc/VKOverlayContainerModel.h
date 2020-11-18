@@ -76,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)reset;
 - (void)routeContextStateDidChange:(id)arg1;
 - (void)setApplicationState:(unsigned char)arg1;
+- (BOOL)shouldLayoutWithoutStyleManager;
 - (void)stylesheetDidChange;
 - (void)updatedMatchedSection:(fast_shared_ptr_502c59d0)arg1 index:(struct PolylineCoordinate *)arg2;
 

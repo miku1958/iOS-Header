@@ -98,6 +98,8 @@
 + (id)outboxMessageStore:(BOOL)arg1;
 + (id)predefinedValueForKey:(id)arg1;
 + (BOOL)primaryDeliveryAccountIsDynamic;
++ (id)purgableAccounts;
++ (id)purgableAccountsWithError:(id *)arg1;
 + (void)reloadAccounts;
 + (void)resetMailboxTimers;
 + (void)saveStateForAllAccounts;
@@ -322,6 +324,7 @@
 - (BOOL)supportsMailDrop;
 - (BOOL)supportsMailboxEditing;
 - (BOOL)supportsMessageFlagging;
+- (BOOL)supportsPurge;
 - (BOOL)supportsRangeOperations;
 - (BOOL)supportsRemoteAppend;
 - (BOOL)supportsSyncingReadState;

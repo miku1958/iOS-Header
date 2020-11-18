@@ -13,8 +13,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_axScrollToAssetReference:(id)arg1 inViewModel:(id)arg2;
-- (BOOL)accessibilityScroll:(long long)arg1;
 
 @end
 

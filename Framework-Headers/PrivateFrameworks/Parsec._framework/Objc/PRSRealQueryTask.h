@@ -41,7 +41,6 @@
 @property (nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property (readonly) Class superclass;
 
-+ (id)existingQueryForString:(id)arg1 scaleFactor:(double)arg2 webSearch:(BOOL)arg3 handler:(id)arg4;
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
@@ -53,6 +52,7 @@
 - (id)initWithSession:(id)arg1 handler:(id)arg2 factory:(id)arg3 queue:(id)arg4 scaleFactor:(double)arg5 allowLocation:(BOOL)arg6 feedback:(id)arg7;
 - (void)resume;
 - (void)triggerQuery:(BOOL)arg1;
+- (void)trigger_noresults;
 
 @end
 

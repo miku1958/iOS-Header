@@ -17,6 +17,8 @@
 - (id)_accessibilityEquivalenceTag;
 - (id)_axBook;
 - (id)_axParentGridView;
+- (BOOL)_axTogglePlayback:(id)arg1;
+- (id)accessibilityCustomActions;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

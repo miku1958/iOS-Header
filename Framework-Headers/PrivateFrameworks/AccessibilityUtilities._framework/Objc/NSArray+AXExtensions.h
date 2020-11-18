@@ -11,6 +11,7 @@
 - (id)axFilterObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)axIsEqualToOrderedArray:(id)arg1 withPredicate:(CDUnknownBlockType)arg2;
 - (id)axMapObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (id)axSafeObjectAtIndex:(unsigned long long)arg1;
 - (id)axUniqueArrayWithPredicate:(CDUnknownBlockType)arg1;
 @end
 

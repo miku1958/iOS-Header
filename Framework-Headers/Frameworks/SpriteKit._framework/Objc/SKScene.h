@@ -68,6 +68,7 @@
 - (void)_setNeedsUpdate;
 - (void)_update:(double)arg1;
 - (void)_willMoveFromView:(id)arg1;
+- (void)checkAudioEngine;
 - (struct CGPoint)convertPointFromParent:(struct CGPoint)arg1;
 - (struct CGPoint)convertPointFromView:(struct CGPoint)arg1;
 - (struct CGPoint)convertPointToParent:(struct CGPoint)arg1;

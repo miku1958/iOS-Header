@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, ObjectUpdates, UNSNotificationScheduler;
+#import <MobileTimer/UNSNotificationSchedulerDelegate-Protocol.h>
 
-@interface ClockManager : NSObject
+@class NSArray, NSMutableArray, NSString, ObjectUpdates, UNSNotificationScheduler;
+
+@interface ClockManager : NSObject <UNSNotificationSchedulerDelegate>
 {
     BOOL _performingUpgrade;
     NSMutableArray *_scheduledLocalNotifications;
@@ -18,10 +20,14 @@
     UNSNotificationScheduler *_notificationScheduler;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isIgnoringNotificationPostRequests) BOOL ignoringNotificationPostRequests; // @synthesize ignoringNotificationPostRequests;
 @property (strong, nonatomic) UNSNotificationScheduler *notificationScheduler; // @synthesize notificationScheduler=_notificationScheduler;
 @property (nonatomic, getter=isRunningInAssistantPlugin) BOOL runningInAssistantPlugin; // @synthesize runningInAssistantPlugin;
 @property (readonly, nonatomic) NSArray *scheduledLocalNotificationsCache;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) ObjectUpdates *updatesToLocalNotificationsCache;
 
 + (void)loadUserPreferences;
@@ -33,6 +39,7 @@
 - (void)cancelLocalNotification:(id)arg1;
 - (BOOL)discardOldVersion;
 - (id)init;
+- (void)notificationScheduler:(id)arg1 didChangeScheduledLocalNotifications:(id)arg2;
 - (void)postUserPreferencesChangedNotification;
 - (void)refreshScheduledLocalNotificationsCache;
 - (void)resetUpdatesToLocalNotificationsCache;

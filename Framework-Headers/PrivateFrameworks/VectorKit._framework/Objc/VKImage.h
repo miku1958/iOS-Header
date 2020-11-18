@@ -18,8 +18,10 @@
     BOOL _usedAsTextureAndImage;
     struct Texture2D *_gglTexture;
     VKResourceManager *_resourceManager;
+    unsigned char _imageHash[16];
 }
 
+- (int)compareTo:(id)arg1;
 - (void)dealloc;
 - (struct Texture2D *)gglTexture;
 - (struct CGImage *)image;

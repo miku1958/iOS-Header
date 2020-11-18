@@ -16,11 +16,13 @@
     MusicProductDescription *_editedPlaylistDescription;
     NSNumber *_editedPlaylistPublicState;
     NSNumber *_editedPlaylistVisibleState;
+    NSNumber *_parentFolderPersistentID;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSNumber *parentFolderPersistentID; // @synthesize parentFolderPersistentID=_parentFolderPersistentID;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

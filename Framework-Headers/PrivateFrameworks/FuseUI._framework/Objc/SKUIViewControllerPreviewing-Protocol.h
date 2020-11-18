@@ -10,5 +10,8 @@
 
 @protocol SKUIViewControllerPreviewing <NSObject>
 - (UIViewController *)previewCommitViewController;
+
+@optional
+- (void)prepareForCommit;
 @end
 

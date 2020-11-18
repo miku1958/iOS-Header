@@ -46,7 +46,7 @@
 - (void)_updateDateView;
 - (id)_wallpaperView;
 - (id)_wallpaperViewWithFrame:(struct CGRect)arg1;
-- (id)_wallpaperViewWithFrame:(struct CGRect)arg1 image:(id)arg2 video:(id)arg3 stillTimeInVideo:(double)arg4 supportsCropping:(BOOL)arg5 variant:(long long)arg6;
+- (id)_wallpaperViewWithFrame:(struct CGRect)arg1 image:(id)arg2 video:(id)arg3 videoURL:(id)arg4 stillTimeInVideo:(double)arg5 supportsCropping:(BOOL)arg6 variant:(long long)arg7;
 - (id)_wallpaperViewWithFrame:(struct CGRect)arg1 variant:(long long)arg2 options:(id)arg3;
 - (BOOL)colorSamplingEnabled;
 - (void)dealloc;

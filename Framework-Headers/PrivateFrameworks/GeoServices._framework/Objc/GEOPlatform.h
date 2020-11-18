@@ -10,6 +10,7 @@
 {
 }
 
++ (void)setIsRunningInGeod:(BOOL)arg1;
 + (id)sharedPlatform;
 - (BOOL)_deviceSupportsNavigation;
 - (id)_systemInfoDictionary;

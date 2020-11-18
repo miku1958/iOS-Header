@@ -11,8 +11,10 @@
 @protocol SFRemoteViewControllerProtocol <NSObject>
 - (void)didFinishInitialLoad:(BOOL)arg1;
 - (void)didLoadWebView;
+- (void)executeCustomActivityProxyID:(NSNumber *)arg1;
+- (void)fetchHostAppCustomActivitiesForURL:(NSURL *)arg1 title:(NSString *)arg2;
+- (void)setRemoteSwipeGestureEnabled:(BOOL)arg1;
 - (void)willDismissServiceViewController;
-- (void)willShowActivitySheetForURL:(NSURL *)arg1 title:(NSString *)arg2 fromRect:(struct CGRect)arg3;
 - (void)willUpdateStatusBarStyle:(NSNumber *)arg1;
 @end
 

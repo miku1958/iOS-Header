@@ -17,9 +17,11 @@ __attribute__((visibility("hidden")))
     BOOL _usesRoundedCorners;
     BOOL _usesInnerShadow;
     BOOL _forwardMoveToWindowCallbacks;
+    BOOL __delegateRespondsToSemanticContentAttributeChanged;
     id _delegate;
 }
 
+@property (nonatomic, setter=_setDelegateRespondsToSemanticContentAttributeChanged:) BOOL _delegateRespondsToSemanticContentAttributeChanged; // @synthesize _delegateRespondsToSemanticContentAttributeChanged=__delegateRespondsToSemanticContentAttributeChanged;
 @property (weak, nonatomic) id delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL forwardMoveToWindowCallbacks; // @synthesize forwardMoveToWindowCallbacks=_forwardMoveToWindowCallbacks;
 @property (nonatomic) BOOL usesInnerShadow; // @synthesize usesInnerShadow=_usesInnerShadow;
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)setSemanticContentAttribute:(long long)arg1;
 - (void)willMoveToWindow:(id)arg1;
 
 @end

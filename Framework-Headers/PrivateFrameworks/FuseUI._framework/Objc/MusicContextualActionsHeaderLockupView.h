@@ -6,12 +6,12 @@
 
 #import <FuseUI/MusicEntityHorizontalLockupView.h>
 
-@class MusicContextualActionsHeaderBlendingHighlightView, UIButton, UIImageView;
+@class MusicContextualActionsHeaderBlendingHighlightView, MusicDownloadProgressButton, UIButton, UIImageView;
 @protocol MusicContextualActionsHeaderLockupViewDelegate;
 
 @interface MusicContextualActionsHeaderLockupView : MusicEntityHorizontalLockupView
 {
-    UIButton *_addToLibraryButton;
+    MusicDownloadProgressButton *_downloadProgressButton;
     BOOL _highlighted;
     UIImageView *_disclosureImageView;
     MusicContextualActionsHeaderBlendingHighlightView *_highlightView;
@@ -21,12 +21,14 @@
     BOOL _supportsRadio;
     BOOL _supportsSharing;
     BOOL _supportsSelection;
-    unsigned long long _addToLibraryState;
+    long long _downloadProgressType;
+    double _downloadProgress;
     unsigned long long _likeState;
 }
 
-@property (nonatomic) unsigned long long addToLibraryState; // @synthesize addToLibraryState=_addToLibraryState;
 @property (weak, nonatomic) id<MusicContextualActionsHeaderLockupViewDelegate> delegate; // @dynamic delegate;
+@property (nonatomic) double downloadProgress; // @synthesize downloadProgress=_downloadProgress;
+@property (nonatomic) long long downloadProgressType; // @synthesize downloadProgressType=_downloadProgressType;
 @property (nonatomic) unsigned long long likeState; // @synthesize likeState=_likeState;
 @property (nonatomic) BOOL supportsRadio; // @synthesize supportsRadio=_supportsRadio;
 @property (nonatomic) BOOL supportsSelection; // @synthesize supportsSelection=_supportsSelection;
@@ -34,13 +36,14 @@
 
 + (double)defaultTextDescriptorHeightAdditionsForContentDescriptor:(id)arg1 width:(double)arg2 traitCollection:(id)arg3;
 - (void).cxx_destruct;
-- (void)_addToLibraryButtonAction:(id)arg1;
 - (void)_configureArtworkCatalog:(id)arg1;
+- (void)_downloadProgressButtonAction:(id)arg1;
 - (void)_likeButtonAction:(id)arg1;
 - (void)_radioButtonAction:(id)arg1;
 - (void)_setHighlighted:(BOOL)arg1;
 - (void)_shareButtonAction:(id)arg1;
 - (id)_touchForEvent:(id)arg1;
+- (void)dealloc;
 - (void)layoutSubviews;
 - (struct UIEdgeInsets)music_inheritedLayoutInsets;
 - (void)music_inheritedLayoutInsetsDidChange;

@@ -15,7 +15,6 @@
 + (id)safeCategoryTargetClassName;
 - (void)_axCloseVideoPlaybackAction;
 - (BOOL)_axIsVideoPlayerActivated;
-- (id)_axPhotoChooserValue;
 - (void)_axScrollToAssetReference:(id)arg1 inViewModel:(id)arg2;
 - (id)_axShowingType;
 - (id)_axTileControllerForAsset:(id)arg1;

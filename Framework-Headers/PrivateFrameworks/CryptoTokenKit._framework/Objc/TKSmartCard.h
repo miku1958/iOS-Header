@@ -18,7 +18,7 @@
     long long _sessionCounter;
     BOOL _someoneWantsSession;
     long long _sessionEndPolicy;
-    NSNumber *_reservedProtocols;
+    NSNumber *_reservationId;
     BOOL _useExtendedLength;
     BOOL _useCommandChaining;
     unsigned char _cla;

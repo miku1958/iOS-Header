@@ -6,11 +6,11 @@
 
 #import <NotesShared/ICLocation.h>
 
-#import <NotesShared/ICSearchIndexable-Protocol.h>
+#import <NotesShared/ICSearchIndexableTarget-Protocol.h>
 
 @class ICAttachment, NSString;
 
-@interface ICAttachmentLocation : ICLocation <ICSearchIndexable>
+@interface ICAttachmentLocation : ICLocation <ICSearchIndexableTarget>
 {
 }
 
@@ -22,18 +22,7 @@
 @property (nonatomic) BOOL placeUpdated; // @dynamic placeUpdated;
 @property (readonly) Class superclass;
 
-- (void)deleteFromNoteContextUsingIndexerContext:(id)arg1;
-- (id)identifier;
-- (BOOL)isHiddenFromSearch;
-- (id)modificationDate;
-- (id)objectIdentifier;
-- (id)searchIndexStringsOutHasAdditionalStrings:(BOOL *)arg1;
-- (id)searchIndexableTitleUsingContentTextIfNecessary:(id)arg1;
-- (BOOL)searchResultCanBeDeletedFromNoteContext;
-- (unsigned long long)searchResultsSection;
-- (BOOL)shouldUpdateIndexForChangedValues:(id)arg1;
 - (id)targetSearchIndexable;
-- (long long)visibilityTestingType;
 
 @end
 

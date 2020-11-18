@@ -85,6 +85,8 @@
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)startDate;
 - (long long)statusOfValueForKey:(id)arg1 error:(id *)arg2;
+- (id)unicodeLanguageCode;
+- (id)unicodeLanguageIdentifier;
 
 @end
 

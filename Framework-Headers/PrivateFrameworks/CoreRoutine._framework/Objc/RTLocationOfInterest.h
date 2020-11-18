@@ -41,6 +41,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (long long)frequencyCompare:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2 uncertainty:(double)arg3 confidence:(double)arg4 identifier:(id)arg5 type:(long long)arg6 geoMapItem:(id)arg7 visits:(id)arg8;
 - (BOOL)isEqual:(id)arg1;

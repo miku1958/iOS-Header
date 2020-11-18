@@ -6,20 +6,24 @@
 
 #import <UIKit/UIView.h>
 
-@class SKUIScrollingSegmentedController;
+@class SKUIInteractiveSegmentedControl;
 
 @interface SKUIScrollingSegmentedControllerNavigationBarTitleView : UIView
 {
-    struct CGSize _lastMeasuredNavigationBarTitleViewSizeBeforeCurrentCommit;
-    SKUIScrollingSegmentedController *_owningController;
+    long long _layoutStyle;
+    SKUIInteractiveSegmentedControl *_segmentedControl;
+    double _segmentedControlMinimumHeight;
 }
 
-@property (weak, nonatomic) SKUIScrollingSegmentedController *owningController; // @synthesize owningController=_owningController;
+@property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
+@property (strong, nonatomic) SKUIInteractiveSegmentedControl *segmentedControl; // @synthesize segmentedControl=_segmentedControl;
+@property (nonatomic) double segmentedControlMinimumHeight; // @synthesize segmentedControlMinimumHeight=_segmentedControlMinimumHeight;
 
++ (struct UIEdgeInsets)defaultLayoutMargins;
 - (void).cxx_destruct;
-- (struct CGSize)_navigationBarTitleViewSizeWithDesiredValue:(struct CGSize)arg1 originalValue:(struct CGSize)arg2;
-- (void)didMoveToSuperview;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

@@ -188,6 +188,7 @@
 - (struct OpaqueWKPage *)_pageForTesting;
 - (Class)_printFormatterClass;
 - (void)_processDidExit;
+- (id)_reloadWithoutContentBlockers;
 - (void)_resizeWhileHidingContentWithUpdates:(CDUnknownBlockType)arg1;
 - (void)_restoreFromSessionStateData:(id)arg1;
 - (void)_restorePageStateToExposedRect:(struct FloatRect)arg1 scale:(double)arg2;

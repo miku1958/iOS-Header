@@ -8,14 +8,15 @@
 
 #import <FuseUI/MPUTextDrawingCacheInvalidationObserver-Protocol.h>
 #import <FuseUI/MusicEntityContentDescriptorViewConfiguring-Protocol.h>
+#import <FuseUI/MusicEntityViewDownloadInformationObserving-Protocol.h>
 
-@class MPUNowPlayingIndicatorView, MusicDownloadStatusSashView, MusicEntityViewContentDescriptor, NSMapTable, NSMutableArray, NSString, UIButton, UIImageView;
+@class MPUNowPlayingIndicatorView, MusicDownloadProgressButton, MusicEntityViewContentDescriptor, NSMapTable, NSMutableArray, NSString, UIButton, UIImageView;
 @protocol MusicEntityTracklistItemViewDelegate, MusicEntityValueProviding;
 
-@interface MusicEntityTracklistItemView : MusicEntityAbstractLockupView <MPUTextDrawingCacheInvalidationObserver, MusicEntityContentDescriptorViewConfiguring>
+@interface MusicEntityTracklistItemView : MusicEntityAbstractLockupView <MPUTextDrawingCacheInvalidationObserver, MusicEntityContentDescriptorViewConfiguring, MusicEntityViewDownloadInformationObserving>
 {
     UIButton *_contextualActionsButton;
-    MusicDownloadStatusSashView *_downloadStatusSashView;
+    MusicDownloadProgressButton *_downloadProgressButton;
     MPUNowPlayingIndicatorView *_indicatorView;
     UIImageView *_mediaTypeImageView;
     UIImageView *_explicitBadgeImageView;
@@ -27,16 +28,20 @@
         unsigned int didSelectPlayButton:1;
         unsigned int shouldLayoutAsEditing:1;
     } _delegateRespondsToSelector;
+    BOOL _alwaysApplyLeadingTextColumnWidth;
     id<MusicEntityTracklistItemViewDelegate> _delegate;
     double _leadingTextColumnWidth;
     double _trailingTextColumnWidth;
+    struct MusicEntityDownloadInformation _downloadInformation;
 }
 
+@property (nonatomic) BOOL alwaysApplyLeadingTextColumnWidth; // @synthesize alwaysApplyLeadingTextColumnWidth=_alwaysApplyLeadingTextColumnWidth;
 @property (strong, nonatomic) MusicEntityViewContentDescriptor *contentDescriptor;
 @property (readonly, nonatomic) UIButton *contextualActionsButton; // @synthesize contextualActionsButton=_contextualActionsButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MusicEntityTracklistItemViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) struct MusicEntityDownloadInformation downloadInformation; // @synthesize downloadInformation=_downloadInformation;
 @property (strong, nonatomic) id<MusicEntityValueProviding> entityValueProvider;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double leadingTextColumnWidth; // @synthesize leadingTextColumnWidth=_leadingTextColumnWidth;
@@ -46,6 +51,7 @@
 + (double)maximumHeightForContentDescriptor:(id)arg1 width:(double)arg2 traitCollection:(id)arg3;
 - (void).cxx_destruct;
 - (id)_allTextDescriptorsInTracklistItemContentDescriptor:(id)arg1;
+- (id)_backgroundColorForTracklistItemSubviews;
 - (void)_contentDescriptorDidChange:(id)arg1;
 - (void)_contentDescriptorDidInvalidateNotification:(id)arg1;
 - (void)_contextualActionsButtonTapped:(id)arg1;
@@ -61,6 +67,7 @@
 - (void)_updatePlaybackIndicator;
 - (id)_viewForTextDescriptor:(id)arg1;
 - (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)music_inheritedLayoutInsetsDidChange;
 - (void)setBackgroundColor:(id)arg1;

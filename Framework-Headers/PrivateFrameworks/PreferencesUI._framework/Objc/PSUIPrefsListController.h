@@ -81,6 +81,8 @@
 - (void)_reallyLoadThirdPartySpecifiersForProxies:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_setAirplaneMode:(BOOL)arg1;
 - (void)_setupiCloudSpecifier:(id)arg1;
+- (void)_setupiCloudSpecifier:(id)arg1 withPrimaryAccount:(id)arg2;
+- (void)_setupiCloudSpecifierAsync:(id)arg1;
 - (BOOL)_showCarrier;
 - (void)_showControllerFromSpecifier:(id)arg1;
 - (void)_showDetailTargetDidChange:(id)arg1;

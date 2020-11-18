@@ -9,7 +9,7 @@
 #import <Message/MDSearchQueryDelegate-Protocol.h>
 #import <Message/NSProgressReporting-Protocol.h>
 
-@class MDSearchQuery, MFFuture, NSLock, NSMutableArray, NSPredicate, NSProgress, NSString;
+@class MDSearchQuery, MFFuture, NSLock, NSMutableArray, NSProgress, NSString;
 
 @interface MFLibrarySearchableIndexQuery : NSObject <MDSearchQueryDelegate, NSProgressReporting>
 {
@@ -21,13 +21,11 @@
     unsigned int _cancellableQuery:1;
     MDSearchQuery *_query;
     NSString *_queryString;
-    NSPredicate *_predicate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property (readonly) NSProgress *progress;
 @property (readonly, copy, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
 @property (readonly) Class superclass;
@@ -37,10 +35,8 @@
 + (id)_queryStringForPhrase:(id)arg1 attributes:(id)arg2 modifiers:(unsigned long long)arg3;
 + (id)queryStringByJoiningQueries:(id)arg1 withOperand:(long long)arg2;
 + (id)queryStringForPhrase:(id)arg1 attributes:(id)arg2 modifiers:(unsigned long long)arg3;
-+ (id)queryWithPredicate:(id)arg1 options:(id)arg2;
 + (id)queryWithString:(id)arg1 options:(id)arg2;
 + (id)searchWordsForPhrase:(id)arg1;
-- (void)_commonInitWithOptions:(id)arg1;
 - (void)_completed;
 - (void)_failedWithError:(id)arg1;
 - (void)_foundItems:(id)arg1;
@@ -52,7 +48,6 @@
 - (void)cancel;
 - (void)dealloc;
 - (id)init;
-- (id)initWithPredicate:(id)arg1 options:(id)arg2;
 - (id)initWithQueryString:(id)arg1 options:(id)arg2;
 - (void)searchQuery:(id)arg1 didFailWithError:(id)arg2;
 - (void)searchQuery:(id)arg1 didReturnItems:(id)arg2;

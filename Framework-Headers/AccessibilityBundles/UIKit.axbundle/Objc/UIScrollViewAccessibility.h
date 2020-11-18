@@ -6,18 +6,9 @@
 
 #import <UIKit/__UIScrollViewAccessibility_super.h>
 
-#import <UIKit/UIAXDelegateClearerDelegateeProtocol-Protocol.h>
-
-@class NSString;
-
-@interface UIScrollViewAccessibility : __UIScrollViewAccessibility_super <UIAXDelegateClearerDelegateeProtocol>
+@interface UIScrollViewAccessibility : __UIScrollViewAccessibility_super
 {
 }
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
@@ -36,7 +27,6 @@
 - (BOOL)_accessibilityIsScannerGroup;
 - (BOOL)_accessibilityIsScrollAncestor;
 - (id)_accessibilityLastOpaqueElement;
-- (void)_accessibilityLoadAccessibilityInformation;
 - (struct UIEdgeInsets)_accessibilityNavigationControllerInset;
 - (long long)_accessibilityPageCount;
 - (long long)_accessibilityPageIndex;
@@ -53,7 +43,6 @@
 - (double)_accessibilityScrollWidthDistance;
 - (BOOL)_accessibilityScrollingEnabled;
 - (void)_accessibilitySendScrollStatus;
-- (void)_accessibilitySetDelegateClearer:(id)arg1;
 - (void)_accessibilitySetNavigationControllerInset:(struct UIEdgeInsets)arg1;
 - (void)_accessibilitySetScrollStatus:(id)arg1;
 - (void)_accessibilitySetStoredVisibleContentInset:(id)arg1;
@@ -69,9 +58,6 @@
 - (struct CGPoint)_accessibilityVisibleScrollArea:(BOOL)arg1;
 - (void)_accessibilityZoomAtPoint:(struct CGPoint)arg1 zoomIn:(BOOL)arg2;
 - (void)_announceDelayedStatus;
-- (void)_axCleanupDelegateClearer;
-- (void)_axClearDelegate:(id)arg1;
-- (id)_axDelegateClearerKey;
 - (BOOL)_axShouldScrollToAlignWithPage;
 - (void)_handleScrollViewPullDown;
 - (void)_manipulateWithRefreshControl:(id)arg1;
@@ -91,9 +77,6 @@
 - (BOOL)accessibilityScrollUpPageSupported;
 - (void)accessibilityZoomInAtPoint:(struct CGPoint)arg1;
 - (void)accessibilityZoomOutAtPoint:(struct CGPoint)arg1;
-- (void)clearDelegateClearer;
-- (void)dealloc;
-- (void)setDelegate:(id)arg1;
 
 @end
 

@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 + (id)newDimmingViewWrappingView:(id)arg1 withLeftBorder:(double)arg2 shouldReverseLayoutDirection:(BOOL)arg3;
 - (void).cxx_destruct;
 - (id)_basicAnimationWithKeyPath:(id)arg1;
+- (void)_updateLeftEdgeFade:(BOOL)arg1;
 - (void)crossFade;
 - (id)defaultBorderColor;
 - (void)didMoveToWindow;

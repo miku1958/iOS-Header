@@ -64,6 +64,7 @@
 
 + (void)_prepareQueue;
 + (void)_setPulledItemsCount:(unsigned long long)arg1;
++ (BOOL)hasItemToUploadOrDownload;
 + (id)readPListWithFilename:(id)arg1;
 + (void)setDownloadCountsForImages:(unsigned long long)arg1 videos:(unsigned long long)arg2;
 + (void)setPushedAssetCount:(unsigned long long)arg1;

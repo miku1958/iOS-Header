@@ -13,6 +13,7 @@
 {
     NSObject<OS_dispatch_queue> *_eventListenerQueue;
     struct AUListenerBase *_eventListener;
+    struct AUListenerBase *_parameterListener;
     struct OpaqueAudioComponentInstance *_audioUnit;
     BOOL _audioUnitIsOwned;
     AUV2BridgeBusArray *_inputBusses;
@@ -24,6 +25,8 @@
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_addOrRemoveParameterListeners:(BOOL)arg1;
+- (void)_createEventListenerQueue;
 - (unsigned int)_elementCount:(unsigned int)arg1;
 - (BOOL)_elementCountWritable:(unsigned int)arg1;
 - (void)_invalidateParameterTree;

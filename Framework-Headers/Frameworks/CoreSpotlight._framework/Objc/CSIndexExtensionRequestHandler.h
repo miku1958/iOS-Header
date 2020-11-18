@@ -9,21 +9,19 @@
 #import <CoreSpotlight/CSSearchableIndexDelegate-Protocol.h>
 #import <CoreSpotlight/NSExtensionRequestHandling-Protocol.h>
 
-@class NSExtensionContext, NSString;
+@class NSString;
 
 @interface CSIndexExtensionRequestHandler : NSObject <NSExtensionRequestHandling, CSSearchableIndexDelegate>
 {
-    NSExtensionContext *_context;
 }
 
-@property (strong) NSExtensionContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void).cxx_destruct;
 - (void)beginRequestWithExtensionContext:(id)arg1;
+- (void)dealloc;
 - (void)index:(id)arg1 reindexSearchableItemsWithIdentifiers:(id)arg2 acknowledgementHandler:(CDUnknownBlockType)arg3;
 - (void)reindexAllSearchableItemsForIndex:(id)arg1 acknowledgementHandler:(CDUnknownBlockType)arg2;
 - (void)searchableIndex:(id)arg1 reindexAllSearchableItemsWithAcknowledgementHandler:(CDUnknownBlockType)arg2;

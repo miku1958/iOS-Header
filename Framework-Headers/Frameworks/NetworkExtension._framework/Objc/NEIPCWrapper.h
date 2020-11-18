@@ -22,6 +22,7 @@
 @property (readonly) NSObject<OS_dispatch_queue> *ipcQueue; // @synthesize ipcQueue=_ipcQueue;
 @property (readonly) NSObject<OS_dispatch_queue> *sendQueue; // @synthesize sendQueue=_sendQueue;
 
++ (void)cancelSharedWrapperForSession:(void *)arg1;
 + (id)sharedWrapperForSession:(void *)arg1;
 - (void).cxx_destruct;
 - (void)cancel;

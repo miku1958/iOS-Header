@@ -13,8 +13,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (struct CGRect)_accessibilityConvertRect:(struct CGRect)arg1 toNode:(id)arg2;
-- (struct CGRect)_accessibilityInvertedSpriteKitNodeFrame;
 - (id)_accessibilitySpriteKitChildrenNodes;
 - (id)accessibilityContainer;
 - (id)accessibilityElementAtIndex:(long long)arg1;

@@ -51,23 +51,25 @@
 
 + (BOOL)didChooseToMigrateNote:(id)arg1 context:(struct NoteContext *)arg2;
 + (id)searchIndexableObjectWithIdentifier:(id)arg1 includeDeleted:(BOOL)arg2 inNoteContext:(id)arg3;
-- (id)appURLForIndexerContext:(id)arg1;
 - (BOOL)belongsToCollection:(id)arg1;
 - (BOOL)containsAttachments;
 - (id)contentAsPlainTextPreservingNewlines;
 - (id)contentInfoText;
-- (void)deleteFromNoteContextUsingIndexerContext:(id)arg1;
 - (id)identifier;
+- (BOOL)ignoreInSearchIndexer;
 - (BOOL)isHiddenFromSearch;
 - (void)markForDeletion;
 - (id)noteAsPlainTextWithoutTitle;
-- (id)noteContextForIndexerContext:(id)arg1;
 - (id)objectIdentifier;
+- (void)releaseMemoryForIndexing;
+- (id)searchDomainIdentifier;
 - (id)searchIndexStringsOutHasAdditionalStrings:(BOOL *)arg1;
 - (id)searchIndexableTitleUsingContentTextIfNecessary:(id)arg1;
 - (BOOL)searchResultCanBeDeletedFromNoteContext;
 - (unsigned long long)searchResultsSection;
 - (id)searchableContentKeyPaths;
+- (id)searchableItemAttributeSet;
+- (id)searchableItemIdentifier;
 - (BOOL)shouldUpdateIndexForChangedValues:(id)arg1;
 - (long long)visibilityTestingType;
 

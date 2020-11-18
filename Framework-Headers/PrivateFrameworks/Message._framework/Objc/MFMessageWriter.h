@@ -15,12 +15,14 @@
     unsigned int _allowsBinaryMimeParts:1;
     unsigned int _writeSizeDispositionParameter:1;
     unsigned int _allowsQuotedPrintable:1;
+    BOOL _shouldWriteAttachmentPlaceholders;
     id _delegate;
     NSDictionary *_compositionSpecification;
 }
 
 @property (readonly, nonatomic) NSDictionary *compositionSpecification; // @synthesize compositionSpecification=_compositionSpecification;
 @property (nonatomic) id delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) BOOL shouldWriteAttachmentPlaceholders; // @synthesize shouldWriteAttachmentPlaceholders=_shouldWriteAttachmentPlaceholders;
 
 - (BOOL)allows8BitMimeParts;
 - (BOOL)allowsBinaryMimeParts;

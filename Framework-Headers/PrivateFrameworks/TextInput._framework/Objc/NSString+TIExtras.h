@@ -66,9 +66,11 @@
 - (BOOL)_looksLikeURL;
 - (struct _NSRange)_rangeOfBackwardDeletionClusterAtIndex:(unsigned long long)arg1;
 - (struct _NSRange)_rangeOfCharacterClusterAtIndex:(unsigned long long)arg1 withClusterOffset:(long long)arg2;
+- (struct _NSRange)_rangeOfLongCharacterAtIndex:(unsigned long long)arg1;
 - (struct _NSRange)_rangeOfString:(id)arg1 fromLocation:(unsigned long long)arg2;
 - (BOOL)_shouldBePaddedWithSpaces;
 - (id)_stringByApplyingTransform:(id)arg1;
+- (id)_stringByComposingDiacriticsLogicalOrder:(BOOL)arg1 allowedCharacters:(CDUnknownBlockType)arg2;
 - (id)_stringByConvertingFromFullWidthToHalfWidth;
 - (id)_stringByConvertingFromHalfWidthToFullWidth;
 - (id)_stringByReplacingCharacter:(unsigned int)arg1 withCharacter:(unsigned int)arg2;

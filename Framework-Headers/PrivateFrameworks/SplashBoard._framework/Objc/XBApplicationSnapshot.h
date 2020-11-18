@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SplashBoard/BSDescriptionProviding-Protocol.h>
 #import <SplashBoard/NSCoding-Protocol.h>
@@ -36,7 +36,6 @@
     long long _contentType;
     BOOL _imageOpaque;
     double _imageScale;
-    struct CGAffineTransform _imageTransform;
     long long _imageOrientation;
     XBStatusBarSettings *_statusBarSettings;
     long long _classicMode;
@@ -48,6 +47,7 @@
     unsigned long long _imageAccessCount;
     NSDictionary *_extendedData;
     NSDate *_expirationDate;
+    struct CGAffineTransform _imageTransform;
 }
 
 @property (readonly, nonatomic) unsigned long long _contentTypeMask;
@@ -96,7 +96,7 @@
 @property (copy, nonatomic) NSString *variantID; // @synthesize variantID=_variantID;
 
 + (id)normalizeSnapshotName:(id)arg1;
-- (void)_cacheImage:(id)arg1 withTransform:(struct CGAffineTransform)arg2;
+- (void)_cacheImage:(id)arg1;
 - (id)_cachedImage;
 - (void)_clearImagePurgeTimer;
 - (void)_commonInit;

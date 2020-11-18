@@ -92,6 +92,7 @@
 - (id)contentScrollView;
 - (void)dealloc;
 - (id)initWithProfileType:(unsigned long long)arg1 artistEntity:(id)arg2;
+- (BOOL)music_allowsMetricsEvents;
 - (BOOL)music_handleUserActivityContext:(id)arg1 containerItem:(id)arg2;
 - (void)music_viewInheritedLayoutInsetsDidChange;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

@@ -32,6 +32,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (unsigned long long)_computedItemIndexForIndexPath:(id)arg1;
 - (id)_placeholderImage;
 - (void)_playButtonAction:(id)arg1;
 - (void)_reloadWithSearchText:(id)arg1;
@@ -40,12 +41,16 @@
 - (void)dealloc;
 - (id)initWithQuery:(id)arg1;
 - (void)loadView;
+- (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (void)searchBarCancelButtonClicked:(id)arg1;
 - (void)searchBarSearchButtonClicked:(id)arg1;
+- (id)sectionIndexTitlesForTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (long long)tableView:(id)arg1 sectionForSectionIndexTitle:(id)arg2 atIndex:(long long)arg3;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

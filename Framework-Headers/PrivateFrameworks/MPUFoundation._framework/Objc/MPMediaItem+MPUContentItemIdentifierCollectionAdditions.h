@@ -7,6 +7,7 @@
 #import <MediaPlayer/MPMediaItem.h>
 
 @interface MPMediaItem (MPUContentItemIdentifierCollectionAdditions)
++ (id)MPU_contentItemIdentifierCollectionProperties;
 - (id)MPU_contentItemIdentifierCollection;
 @end
 

@@ -13,6 +13,7 @@
 + (long long)_accessibilityUnitTestingOrientation;
 + (void)_accessibilityUnsetUnitTestingOrientation;
 - (BOOL)__accessibilityReadAllOnFocus;
+- (id)__accessibilityRetrieveFrameOrPathDelegate;
 - (BOOL)__accessibilitySupportsActivateAction;
 - (BOOL)__accessibilitySupportsSecondaryActivateAction;
 - (void)__accessibilityUnregister:(void *)arg1 shouldRelease:(BOOL)arg2;

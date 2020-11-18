@@ -40,6 +40,11 @@ struct EditingEntityProviderEntry {
     id _field3;
 };
 
+struct MusicEntityDownloadInformation {
+    long long downloadStatus;
+    double downloadProgress;
+};
+
 struct UIEdgeInsets {
     double top;
     double left;
@@ -64,6 +69,14 @@ struct vector<_NSRange, std::__1::allocator<_NSRange>> {
     struct _NSRange *__end_;
     struct __compressed_pair<_NSRange *, std::__1::allocator<_NSRange>> {
         struct _NSRange *__first_;
+    } __end_cap_;
+};
+
+struct vector<__weak id<MusicEntityProviderDownloadInformationControllerObserver>, std::__1::allocator<__weak id<MusicEntityProviderDownloadInformationControllerObserver>>> {
+    id *__begin_;
+    id *__end_;
+    struct __compressed_pair<__weak id<MusicEntityProviderDownloadInformationControllerObserver>*, std::__1::allocator<__weak id<MusicEntityProviderDownloadInformationControllerObserver>>> {
+        id *__first_;
     } __end_cap_;
 };
 

@@ -26,16 +26,23 @@
 @property (nonatomic) BOOL versionOutOfDate; // @dynamic versionOutOfDate;
 @property (nonatomic) double width; // @dynamic width;
 
++ (id)allAttachmentPreviewImagesInContext:(id)arg1;
 + (id)allCloudObjects;
++ (id)attachmentPreviewImageWithIdentifier:(id)arg1 inContext:(id)arg2;
++ (id)attachmentPreviewImagesMatchingPredicate:(id)arg1 inContext:(id)arg2;
++ (void)deleteStrandedAttachmentPreviewImagesInContext:(id)arg1;
 + (id)existingCloudObjectForRecordID:(id)arg1;
 + (id)fileQueueGroup;
 + (id)identifierForContentIdentifier:(id)arg1 scale:(double)arg2 width:(double)arg3 height:(double)arg4;
 + (id)imageCache;
++ (id)newAttachmentPreviewImageInContext:(id)arg1;
 + (id)newCloudObjectForRecord:(id)arg1;
 + (struct UIImage *)orientedImage:(struct UIImage *)arg1 withTransform:(struct CGAffineTransform)arg2 background:(int)arg3 backgroundTransform:(struct CGAffineTransform)arg4;
 + (id)previewImageDirectoryURL;
++ (void)purgeAllAttachmentPreviewImagesInContext:(id)arg1;
 + (void)purgeAllPreviewImages;
 + (id)recordType;
++ (id)visibleAttachmentPreviewImagesInContext:(id)arg1;
 + (void)waitUntilAllFileWritesAreFinished;
 - (void).cxx_destruct;
 - (struct UIImage *)cachedImage;

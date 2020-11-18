@@ -16,6 +16,7 @@
     NSString *_uniqueIdentifier;
     UIImage *_image;
     AVAsset *_videoAsset;
+    unsigned long long _options;
     NSString *_assetLocalIdentifier;
     NSURL *_imageURL;
     PHSandboxExtensionWrapper *_imageURLSandboxExtensionWrapper;
@@ -38,6 +39,7 @@
 @property (readonly, nonatomic) NSString *imageTypeIdentifier;
 @property (readonly, nonatomic) NSURL *imageURL; // @synthesize imageURL=_imageURL;
 @property (readonly, nonatomic) PHSandboxExtensionWrapper *imageURLSandboxExtensionWrapper; // @synthesize imageURLSandboxExtensionWrapper=_imageURLSandboxExtensionWrapper;
+@property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (readonly, nonatomic) NSString *originalFilename;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 photoTime; // @synthesize photoTime=_photoTime;
 @property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
@@ -66,8 +68,10 @@
 - (BOOL)_synchronouslyLoadImageURL:(id *)arg1 videoURL:(id *)arg2 error:(id *)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasPhotoColorAdjustments;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithImage:(id)arg1 videoAsset:(id)arg2 photoTime:(CDStruct_1b6d18a9)arg3 assetLocalIdentifier:(id)arg4;
+- (id)initWithImage:(id)arg1 videoAsset:(id)arg2 photoTime:(CDStruct_1b6d18a9)arg3 assetLocalIdentifier:(id)arg4 options:(unsigned long long)arg5;
 - (void)saveToPhotoLibraryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)videoComplement;
 

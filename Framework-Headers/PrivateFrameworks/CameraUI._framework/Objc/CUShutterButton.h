@@ -19,6 +19,7 @@
     UIView *__innerView;
     UIActivityIndicatorView *__progressActivityIndicatorView;
     struct CAMShutterButtonSpec _spec;
+    struct UIEdgeInsets _tappableEdgeInsets;
 }
 
 @property (readonly, nonatomic) UIView *_innerView; // @synthesize _innerView=__innerView;
@@ -30,6 +31,7 @@
 @property (nonatomic, getter=isPulsing) BOOL pulsing; // @synthesize pulsing=_pulsing;
 @property (nonatomic) struct CAMShutterButtonSpec spec; // @synthesize spec=_spec;
 @property (nonatomic, getter=isSpinning) BOOL spinning; // @synthesize spinning=_spinning;
+@property (nonatomic) struct UIEdgeInsets tappableEdgeInsets; // @synthesize tappableEdgeInsets=_tappableEdgeInsets;
 
 + (id)shutterButton;
 + (id)shutterButtonWithSpec:(struct CAMShutterButtonSpec)arg1;
@@ -51,6 +53,7 @@
 - (struct CGSize)_sizeForMode:(long long)arg1;
 - (void)_updateOuterAndInnerLayers;
 - (void)_updateSpinningAnimations;
+- (struct UIEdgeInsets)alignmentRectInsets;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;

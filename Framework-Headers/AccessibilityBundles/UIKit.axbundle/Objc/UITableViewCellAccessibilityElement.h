@@ -26,6 +26,7 @@
 - (double)_accessibilityAllowedGeometryOverlap;
 - (BOOL)_accessibilityBackingElementIsValid;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
+- (BOOL)_accessibilityCanBecomeNativeFocused;
 - (struct CGRect)_accessibilityChargedLineBoundsForRange:(struct _NSRange)arg1;
 - (long long)_accessibilityCompareElement:(id)arg1 toElement:(id)arg2;
 - (void)_accessibilityCopy;

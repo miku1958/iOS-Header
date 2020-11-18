@@ -17,6 +17,7 @@
     NSArray *_gestureRecognizers;
     UIView *_view;
     UIView *_contentView;
+    UIView *_loadedView;
     UIView *__tintView;
     UIView *__visibleRectView;
     CDUnknownBlockType __onReadyToDisplayBlock;
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) NSArray *gestureRecognizers; // @synthesize gestureRecognizers=_gestureRecognizers;
 @property (nonatomic, setter=_setReadyForDisplay:) BOOL isReadyForDisplay; // @synthesize isReadyForDisplay=_isReadyForDisplay;
 @property (readonly, nonatomic) BOOL isViewLoaded;
+@property (strong, nonatomic, setter=_setLoadedView:) UIView *loadedView; // @synthesize loadedView=_loadedView;
 @property (strong, nonatomic) UIView *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;

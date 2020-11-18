@@ -38,6 +38,7 @@
 - (Class)storeClass;
 - (BOOL)supportsAppend;
 - (BOOL)supportsArchiving;
+- (BOOL)supportsPurge;
 - (id)transientDraftsFolder;
 - (id)uniqueId;
 

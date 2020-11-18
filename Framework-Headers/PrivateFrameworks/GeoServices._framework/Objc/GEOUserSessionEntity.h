@@ -31,6 +31,7 @@
 - (id)init;
 - (id)initWithSessionEntityString:(id)arg1;
 - (id)initWithSessionID:(CDStruct_612aec5b)arg1 sessionCreationTime:(double)arg2 sequenceNumber:(unsigned int)arg3;
+- (unsigned int)rawSequenceNumber;
 - (void)updateSessionIDFromUUIDString:(id)arg1;
 - (void)updateWithSessionEntityString:(id)arg1;
 

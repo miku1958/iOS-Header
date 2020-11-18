@@ -18,6 +18,7 @@
 - (long long)_accessibilityPageCount;
 - (long long)_accessibilityPageIndex;
 - (double)_accessibilityScrollAnimationDurationDelay;
+- (double)_accessibilityScrollWidthDistance;
 - (id)_accessibilityUserTestingChildren;
 - (BOOL)accessibilityScrollDownPage;
 - (BOOL)accessibilityScrollLeftPage;

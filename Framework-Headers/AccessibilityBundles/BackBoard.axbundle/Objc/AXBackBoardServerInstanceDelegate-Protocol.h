@@ -19,6 +19,7 @@
 - (void)registerEventListener:(BOOL)arg1;
 - (void)setAccessibilityUIPid:(int)arg1;
 - (void)setAssistiveTouchPid:(int)arg1;
+- (void)setCapsLockLightOn:(BOOL)arg1;
 - (void)setDisableSystemGestureRecognitionInEvents:(BOOL)arg1;
 - (void)setLockScreenDimTimerEnabled:(BOOL)arg1;
 - (void)setSiriViewServicePid:(int)arg1;

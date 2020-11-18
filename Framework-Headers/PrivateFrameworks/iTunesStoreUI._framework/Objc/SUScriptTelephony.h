@@ -27,6 +27,7 @@
 + (id)webScriptNameForKeyName:(id)arg1;
 + (id)webScriptNameForSelector:(SEL)arg1;
 - (void).cxx_destruct;
+- (BOOL)_checkIfIsAllowed;
 - (id)_className;
 - (id)attributeKeys;
 - (void)dealloc;

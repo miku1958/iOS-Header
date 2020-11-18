@@ -11,7 +11,7 @@
 #import <UIKit/UIPreviewInteractionControllerDelegate-Protocol.h>
 #import <UIKit/_UIAlertControllerTextFieldViewControllerContaining-Protocol.h>
 
-@class NSArray, NSAttributedString, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, UIAlertAction, UIAlertControllerVisualStyle, UIGestureRecognizer, UIPopoverController, UIPreviewInteractionController, UITapGestureRecognizer, UIView, _UIAlertControllerTextFieldViewController, _UIAnimationCoordinator;
+@class NSArray, NSAttributedString, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, UIAlertAction, UIAlertControllerVisualStyle, UIGestureRecognizer, UIPopoverController, UIPreviewInteractionController, UITapGestureRecognizer, UIView, _UIAlertControllerSelectGestureRecognizer, _UIAlertControllerTextFieldViewController, _UIAnimationCoordinator;
 @protocol UIAlertControllerSystemProvidedPresentationDelegate, UIAlertControllerVisualStyleProviding;
 
 @interface UIAlertController : UIViewController <UIAlertControllerContaining, _UIAlertControllerTextFieldViewControllerContaining, UIPreviewInteractionControllerDelegate, UIAlertControllerVisualStyleProviding>
@@ -31,7 +31,7 @@
     UIViewController *_contentViewController;
     _UIAlertControllerTextFieldViewController *_textFieldViewController;
     UITapGestureRecognizer *_backButtonDismissGestureRecognizer;
-    UITapGestureRecognizer *_selectGestureRecognizer;
+    _UIAlertControllerSelectGestureRecognizer *_selectGestureRecognizer;
     id _ownedTransitioningDelegate;
     BOOL _shouldInformViewOfAddedContentViewController;
     BOOL _isInSupportedInterfaceOrientations;
@@ -60,6 +60,7 @@
 @property (nonatomic, setter=_setCompatibilityPopoverController:) UIPopoverController *_compatibilityPopoverController; // @synthesize _compatibilityPopoverController=__compatibilityPopoverController;
 @property (weak, nonatomic, setter=_setDefaultAlertAction:) UIAlertAction *_defaultAlertAction;
 @property (readonly) UIView *_dimmingView;
+@property (readonly) UIAlertAction *_focusedAction;
 @property (readonly) UIView *_foregroundView;
 @property (nonatomic, getter=_isHidden, setter=_setHidden:) BOOL _hidden; // @synthesize _hidden;
 @property (strong, nonatomic, setter=_setPresentationSourceRepresentationView:) UIView *_presentationSourceRepresentationView; // @synthesize _presentationSourceRepresentationView=__presentationSourceRepresentationView;

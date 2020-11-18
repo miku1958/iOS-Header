@@ -10,6 +10,8 @@
 {
 }
 
+@property (nonatomic) BOOL hideSnippets;
+
 + (id)hideSiriOverlay;
 + (id)hideSiriOverlayWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;

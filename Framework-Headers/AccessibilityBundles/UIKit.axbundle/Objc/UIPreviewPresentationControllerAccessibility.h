@@ -14,13 +14,15 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityDismissPresentation;
-- (BOOL)_axPerformAction:(id)arg1;
 - (BOOL)_axPerformLeadingAction;
 - (BOOL)_axPerformTrailingAction;
 - (void)_axSetupContainerView;
+- (BOOL)_axShowMoreActions:(id)arg1;
+- (void)_presentSubActionSheetForPreviewActionGroup:(id)arg1;
 - (void)containerViewWillLayoutSubviews;
 - (void)dealloc;
 - (id)initWithPresentedViewController:(id)arg1 presentingViewController:(id)arg2;
+- (void)presentationTransitionWillBegin;
 - (void)updateSwipeActionsIfApplicable;
 
 @end

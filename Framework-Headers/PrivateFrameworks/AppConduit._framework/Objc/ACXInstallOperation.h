@@ -15,7 +15,7 @@
 {
     BOOL _installPlaceholder;
     BOOL _acquiredSocket;
-    unsigned char _lastSentMessageType;
+    unsigned char _nextMessageType;
     BOOL _cancelled;
     CDUnknownBlockType _progressBlock;
     NSDictionary *_appSettingsDict;
@@ -40,7 +40,7 @@
 @property BOOL installPlaceholder; // @synthesize installPlaceholder=_installPlaceholder;
 @property double lastPercentComplete; // @synthesize lastPercentComplete=_lastPercentComplete;
 @property unsigned long long lastPhase; // @synthesize lastPhase=_lastPhase;
-@property unsigned char lastSentMessageType; // @synthesize lastSentMessageType=_lastSentMessageType;
+@property unsigned char nextMessageType; // @synthesize nextMessageType=_nextMessageType;
 @property (copy) CDUnknownBlockType progressBlock; // @synthesize progressBlock=_progressBlock;
 @property (readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong) NSURL *snapshotURL; // @synthesize snapshotURL=_snapshotURL;

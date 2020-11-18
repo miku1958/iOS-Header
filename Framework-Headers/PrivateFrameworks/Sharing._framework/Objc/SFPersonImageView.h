@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL overlay; // @synthesize overlay=_overlay;
 
 - (id)initWithPersonImageView:(id)arg1;
-- (void)setFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setImage:(id)arg1;
 

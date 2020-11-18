@@ -6,27 +6,14 @@
 
 #import <NotesShared/ICAttachmentActivityItemSource.h>
 
-#import <NotesShared/UIActivityItemSourceAttachment-Protocol.h>
-
-@class NSString, UIImage;
-
-@interface ICAttachmentDrawingActivityItemSource : ICAttachmentActivityItemSource <UIActivityItemSourceAttachment>
+@interface ICAttachmentDrawingActivityItemSource : ICAttachmentActivityItemSource
 {
-    struct UIImage *_image;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
-@property (readonly) Class superclass;
-
-- (void).cxx_destruct;
 - (id)activityViewController:(id)arg1 dataTypeIdentifierForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
 - (id)activityViewControllerPlaceholderItem:(id)arg1;
 - (id)attachmentTypeUTI;
-- (id)initWithImage:(struct UIImage *)arg1 attachment:(id)arg2;
 
 @end
 

@@ -19,7 +19,7 @@
 #import <FuseUI/UIViewControllerPreviewingDelegate-Protocol.h>
 #import <FuseUI/UIViewControllerPreviewingDelegate_Private-Protocol.h>
 
-@class MPAVController, MusicAsynchronousPropertyLoadingController, MusicClientContext, MusicCollectionView, MusicEntityCollectionViewDescriptor, MusicEntityPlayabilityController, MusicEntityPlaybackStatusController, MusicEntityValueContext, MusicLibraryBrowseCollectionViewConfiguration, MusicLibraryBrowseCollectionViewLayoutMetrics, MusicSectionEntityValueContext, NSMutableArray, NSString, SKUIClientContext, SKUIDynamicPageSectionIndexMapper, UICollectionView, UICollectionViewFlowLayout;
+@class MPAVController, MusicAsynchronousPropertyLoadingController, MusicClientContext, MusicCollectionView, MusicEntityCollectionViewDescriptor, MusicEntityDownloadInformationController, MusicEntityPlayabilityController, MusicEntityPlaybackStatusController, MusicEntityValueContext, MusicLibraryBrowseCollectionViewConfiguration, MusicLibraryBrowseCollectionViewLayoutMetrics, MusicSectionEntityValueContext, NSMapTable, NSMutableArray, NSString, SKUIClientContext, SKUIDynamicPageSectionIndexMapper, UICollectionView, UICollectionViewFlowLayout;
 @protocol MusicLibraryBrowseCollectionViewControllerDelegate, UIViewControllerPreviewing;
 
 @interface MusicLibraryBrowseCollectionViewController : UIViewController <MusicCollectionViewDelegate, MusicEntityPlaybackStatusControllerObserving, MusicEntityVerticalSectionHeaderViewDelegate, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, MusicClientContextConsuming, MusicIndexBarDataSource, MusicIndexBarScrollDelegate, MusicLibraryViewConfigurationConsuming, MusicSplitInitialStateProviding, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
@@ -27,6 +27,7 @@
     MusicAsynchronousPropertyLoadingController *_asynchronousPropertyLoadingController;
     MusicCollectionView *_collectionView;
     MusicLibraryBrowseCollectionViewConfiguration *_collectionViewConfiguration;
+    MusicEntityDownloadInformationController *_entityDownloadInformationController;
     MusicEntityCollectionViewDescriptor *_entityViewDescriptor;
     SKUIDynamicPageSectionIndexMapper *_indexMapper;
     MusicEntityValueContext *_itemEntityValueContext;
@@ -39,6 +40,7 @@
     NSMutableArray *_reusableCoalescingEntityValueProviders;
     MusicSectionEntityValueContext *_sectionEntityValueContext;
     struct CGSize _sizeForLayoutMetrics;
+    NSMapTable *_viewToDownloadInformationObserverToken;
     Class _cellClass;
     NSString *_cellReuseIdentifier;
     MusicClientContext *_clientContext;
@@ -69,6 +71,7 @@
 - (void)_handleEntityPlayabilityControllerDidChangeNotification:(id)arg1;
 - (void)_handleEntityProviderDidInvalidateNotification:(id)arg1;
 - (void)_invalidateLayoutMetrics;
+- (id)_itemEntityValueContext;
 - (id)_layoutMetrics;
 - (void)_presentContextualActionsWithEntityValueContext:(id)arg1 fromButton:(id)arg2;
 - (void)_recycleCoalescingEntityValueProvider:(id)arg1;

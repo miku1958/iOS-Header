@@ -33,6 +33,7 @@
 @property (readonly, nonatomic) BOOL rightHandDrive;
 @property (readonly, nonatomic) NSArray *screenIDs;
 @property (readonly, nonatomic) NSDictionary *screenInputCapabilities;
+@property (readonly, nonatomic) NSDictionary *screenPrimaryInputDevices;
 @property (readonly, nonatomic) long long transportType;
 
 + (id)currentCarPlayExternalDevice;

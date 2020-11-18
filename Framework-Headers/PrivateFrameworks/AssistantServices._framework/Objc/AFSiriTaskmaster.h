@@ -6,19 +6,20 @@
 
 #import <objc/NSObject.h>
 
+#import <AssistantServices/AFSiriRequestFailureHandling-Protocol.h>
 #import <AssistantServices/AFSiriRequestHandling-Protocol.h>
 #import <AssistantServices/AFSiriUsageResultHandling-Protocol.h>
 #import <AssistantServices/NSXPCListenerDelegate-Protocol.h>
 
-@class NSMutableSet, NSString, NSXPCListener;
+@class NSMapTable, NSString, NSXPCListener;
 @protocol AFSiriTaskDelivering, AFSiriTaskmasterDelegate, OS_dispatch_queue;
 
-@interface AFSiriTaskmaster : NSObject <AFSiriUsageResultHandling, NSXPCListenerDelegate, AFSiriRequestHandling>
+@interface AFSiriTaskmaster : NSObject <AFSiriUsageResultHandling, NSXPCListenerDelegate, AFSiriRequestHandling, AFSiriRequestFailureHandling>
 {
     NSObject<OS_dispatch_queue> *_queue;
     id<AFSiriTaskDelivering> _taskDeliverer;
     NSXPCListener *_usageResultListener;
-    NSMutableSet *_taskExecutions;
+    NSMapTable *_executorForRequest;
     id<AFSiriTaskmasterDelegate> _delegate;
 }
 
@@ -32,7 +33,9 @@
 + (id)taskmasterForMachServiceWithName:(id)arg1;
 + (id)taskmasterForUIApplicationWithBundleIdentifier:(id)arg1;
 - (void).cxx_destruct;
+- (void)_handleFailureOfRequest:(id)arg1 error:(id)arg2;
 - (void)dealloc;
+- (void)handleFailureOfRequest:(id)arg1 error:(id)arg2;
 - (void)handleSiriRequest:(id)arg1 deliveryHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)handleSiriTaskUsageResult:(id)arg1 fromRequest:(id)arg2;
 - (id)initWithTaskDeliverer:(id)arg1;

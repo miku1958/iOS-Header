@@ -64,7 +64,7 @@
 @property (readonly, nonatomic) double zoomToFitZoomFactor;
 
 - (void).cxx_destruct;
-- (double)__jetsam_workaround_minimumZoomScale;
+- (double)__jetsam_workaround_maximumZoomScale;
 - (void)_adjustContentOffsetForKeyboardIfNeeded;
 - (void)_adjustZoomScalesForScrollViewInternal:(id)arg1;
 - (unsigned long long)_calculateCurrentPageIndex;

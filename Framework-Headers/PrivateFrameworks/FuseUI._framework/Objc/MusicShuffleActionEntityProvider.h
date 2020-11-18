@@ -44,7 +44,7 @@
 - (unsigned long long)numberOfIndexBarEntries;
 - (unsigned long long)numberOfSections;
 - (unsigned long long)sectionForSectionIndexBarEntryAtIndex:(unsigned long long)arg1;
-- (void)setEditing:(BOOL)arg1 returningInsertedSectionIndexSet:(id *)arg2 deletedSectionIndexSet:(id *)arg3;
+- (BOOL)setEditing:(BOOL)arg1;
 
 @end
 

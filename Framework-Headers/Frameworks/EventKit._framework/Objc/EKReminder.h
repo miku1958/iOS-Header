@@ -20,6 +20,7 @@
 @property (nonatomic) unsigned long long displayOrder;
 @property (readonly, nonatomic) NSDate *dueDate;
 @property (copy, nonatomic) NSDateComponents *dueDateComponents;
+@property (copy, nonatomic) NSDate *firstAlertDate;
 @property (nonatomic) BOOL hadRecurrences; // @synthesize hadRecurrences;
 @property (readonly, nonatomic) EKObjectID *parentID;
 @property (nonatomic) unsigned long long priority; // @dynamic priority;

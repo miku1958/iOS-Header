@@ -68,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)_presentError:(id)arg1 forThirdPartyPickerWithDescription:(id)arg2;
 - (void)_setPickableTypes:(id)arg1;
 - (void)_setPickerMode:(unsigned long long)arg1;
+- (void)_setSourceIsManaged:(BOOL)arg1;
 - (void)_setTintColor:(id)arg1;
 - (void)_setUploadURL:(id)arg1;
 - (void)_setUploadURLWrapper:(id)arg1;

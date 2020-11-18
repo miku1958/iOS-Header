@@ -8,21 +8,34 @@
 
 #import <BulletinDistributorCompanion/NSCopying-Protocol.h>
 
+@class NSData;
+
 @interface BLTPBTransportData : PBCodable <NSCopying>
 {
     unsigned long long _sequenceNumber;
+    NSData *_md5;
+    NSData *_sessionIdentifier;
+    unsigned int _sessionState;
     BOOL _isInitialSequenceNumber;
     struct {
         unsigned int sequenceNumber:1;
+        unsigned int sessionState:1;
         unsigned int isInitialSequenceNumber:1;
     } _has;
 }
 
 @property (nonatomic) BOOL hasIsInitialSequenceNumber;
+@property (readonly, nonatomic) BOOL hasMd5;
 @property (nonatomic) BOOL hasSequenceNumber;
+@property (readonly, nonatomic) BOOL hasSessionIdentifier;
+@property (nonatomic) BOOL hasSessionState;
 @property (nonatomic) BOOL isInitialSequenceNumber; // @synthesize isInitialSequenceNumber=_isInitialSequenceNumber;
+@property (strong, nonatomic) NSData *md5; // @synthesize md5=_md5;
 @property (nonatomic) unsigned long long sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
+@property (strong, nonatomic) NSData *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
+@property (nonatomic) unsigned int sessionState; // @synthesize sessionState=_sessionState;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

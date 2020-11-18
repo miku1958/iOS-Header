@@ -62,6 +62,7 @@
 
 - (void).cxx_destruct;
 - (id)_displayName;
+- (void)_notifyOfNewIncomingClientMessage;
 - (void)activate;
 - (void)checkinWithName:(id)arg1 handleMessageWithName:(id)arg2 messageIdentifier:(id)arg3 messagePayload:(id)arg4 target:(id)arg5 responseHandler:(CDUnknownBlockType)arg6;
 - (void)deactivate;

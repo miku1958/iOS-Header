@@ -16,13 +16,14 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityUpdatePlayButton;
 - (void)_axUpdateTimeLabels;
-- (void)_pause;
-- (void)_play;
 - (void)_updateMetadataLabelsWithChapter:(id)arg1 scrubberTracking:(BOOL)arg2;
 - (BOOL)accessibilityPerformEscape;
 - (void)mediaPlayerPeriodicUpdate:(id)arg1 elapsed:(double)arg2 duration:(double)arg3 isFinished:(BOOL)arg4;
 - (void)onUserDefaultChange:(id)arg1;
+- (void)pause;
+- (void)play;
 - (void)playbackRateControllerRateChanged:(id)arg1;
+- (void)update;
 - (void)viewDidLayoutSubviews;
 
 @end

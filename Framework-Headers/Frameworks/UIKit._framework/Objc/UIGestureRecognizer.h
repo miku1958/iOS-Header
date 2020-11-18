@@ -126,6 +126,8 @@
 - (void)_clearUpdateTimer;
 - (void)_connectInterfaceBuilderEventConnection:(id)arg1;
 - (long long)_currentForceLevel;
+- (id)_defaultAllowedPressTypes;
+- (id)_defaultAllowedTouchTypes;
 - (void)_delayPress:(id)arg1 forEvent:(id)arg2;
 - (void)_delayPressesForEvent:(id)arg1 inPhase:(long long)arg2;
 - (void)_delayPressesForEventIfNeeded:(id)arg1;

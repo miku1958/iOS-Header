@@ -19,6 +19,7 @@
 + (id)nodeWithGridPosition: /* Error: Ran out of types for this method. */;
 - (struct GKCGridGraphNode *)cGridGraphNode;
 - (float)costToNode:(id)arg1;
+- (void)deleteCGraphNode;
 - (float)estimatedCostToNode:(id)arg1;
 - (id)init;
 - (id)initWithGridPosition: /* Error: Ran out of types for this method. */;

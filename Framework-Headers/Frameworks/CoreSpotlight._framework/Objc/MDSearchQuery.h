@@ -15,12 +15,13 @@
 {
     unsigned long long _status;
     NSString *_queryString;
+    BOOL _canceled;
     NSPredicate *_predicate;
     NSDictionary *_options;
     id<MDSearchQueryDelegate> _delegate;
     id<MDSearchQueryService> _queryServiceProxy;
     NSXPCConnection *_connection;
-    NSObject<OS_dispatch_queue> *_synchronizationQueue;
+    NSObject<OS_dispatch_queue> *_queue;
     NSString *_clientBundleID;
 }
 
@@ -30,8 +31,8 @@
 @property (copy) NSDictionary *options; // @synthesize options=_options;
 @property (copy) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property (strong) id<MDSearchQueryService> queryServiceProxy; // @synthesize queryServiceProxy=_queryServiceProxy;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property unsigned long long status;
-@property (strong) NSObject<OS_dispatch_queue> *synchronizationQueue; // @synthesize synchronizationQueue=_synchronizationQueue;
 
 - (void).cxx_destruct;
 - (void)_didFailWithError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

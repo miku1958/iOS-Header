@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)deviceIsRemotePeripheral:(unsigned int)arg1;
 + (unsigned int)localPeripheral;
 + (id)localPeripheralName;
-+ (void)logEvent:(char *)arg1 length:(unsigned short)arg2 timeStamp:(unsigned long long)arg3;
++ (id)logEvent:(char *)arg1 length:(unsigned short)arg2 timeStamp:(unsigned long long)arg3;
 + (unsigned int)midiDeviceForUUID:(id)arg1;
 + (unsigned int)midiDeviceForUUID:(id)arg1 isLocalPeripheral:(BOOL)arg2 isRemotePeripheral:(BOOL)arg3;
 + (id)nameForMIDIDevice:(unsigned int)arg1;

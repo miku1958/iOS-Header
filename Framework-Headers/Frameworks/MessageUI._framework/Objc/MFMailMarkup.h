@@ -21,12 +21,11 @@
 + (id)markupIcon;
 - (void)_handleMarkupData:(id)arg1 forAttachment:(id)arg2;
 - (void)_handleMarkupImage:(id)arg1 forAttachment:(id)arg2;
-- (void)_handleMarkupURL:(id)arg1 attachment:(id)arg2;
 - (void)_processMarkupURL:(id)arg1 forAttachment:(id)arg2;
 - (void)_requestMarkupData:(id)arg1 forAttachment:(id)arg2;
 - (void)_requestMarkupImage:(id)arg1 forAttachment:(id)arg2;
 - (void)_requestMarkupURL:(id)arg1 forAttachment:(id)arg2;
-- (void)exitMarkupWithReplacementAttachment:(id)arg1;
+- (void)exitMarkupWithReplacementAttachment:(id)arg1 targetRect:(struct CGRect)arg2;
 - (void)handleReturnedMarkupItems:(id)arg1 forAttachment:(id)arg2;
 - (id)initWithMarkupDelegate:(id)arg1;
 - (void)markupAttachment:(id)arg1;

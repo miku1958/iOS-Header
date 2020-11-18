@@ -13,6 +13,9 @@
 + (void)initialize;
 + (BOOL)isAddressContext:(id)arg1;
 + (BOOL)isPhoneContext:(id)arg1;
+- (id)_extractEmailishTokenFromMailHeader:(id)arg1;
+- (id)_makeAlnum:(id)arg1;
+- (id)_makeSimplifiedListIdEmail:(id)arg1;
 - (id)detailTypeFromPrefix:(id)arg1;
 - (id)detailTypeFromPrefix:(id)arg1 detectedLabelPointer:(struct _NSRange *)arg2;
 - (id)detectionFromBodyDDMatch:(id)arg1 onEntity:(id)arg2;

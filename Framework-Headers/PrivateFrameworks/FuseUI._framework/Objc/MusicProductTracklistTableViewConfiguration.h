@@ -6,7 +6,7 @@
 
 #import <FuseUI/MusicLibraryBrowseTableViewConfiguration.h>
 
-@class MusicEntityViewDescriptor, NSString;
+@class MusicCompositeEntityViewDescriptor, MusicEntityViewDescriptor, MusicMediaDetailTintInformation, MusicMediaProductTracklistTableViewDescriptor, NSString;
 @protocol MusicEntityProviding;
 
 @interface MusicProductTracklistTableViewConfiguration : MusicLibraryBrowseTableViewConfiguration
@@ -18,20 +18,26 @@
     MusicEntityViewDescriptor *_copyrightEntityViewDescriptor;
     MusicEntityViewDescriptor *_showCompleteOfferEntityViewDescriptor;
     MusicEntityViewDescriptor *_shuffleEntityViewDescriptor;
-    MusicEntityViewDescriptor *_tracklistEntityViewDescriptor;
+    MusicMediaProductTracklistTableViewDescriptor *_tracklistTableViewDescriptor;
+    MusicCompositeEntityViewDescriptor *_compositeEntityViewDescriptor;
     NSString *_completeOfferLocalizedTitle;
     id<MusicEntityProviding> _entityProvider;
     id<MusicEntityProviding> _copyrightSourceEntityProvider;
+    MusicMediaDetailTintInformation *_mediaDetailTintInformation;
+    long long _prominentTrackStoreID;
 }
 
+@property (readonly, nonatomic) MusicCompositeEntityViewDescriptor *_compositeEntityViewDescriptor; // @synthesize _compositeEntityViewDescriptor;
 @property (readonly, nonatomic) MusicEntityViewDescriptor *_copyrightEntityViewDescriptor; // @synthesize _copyrightEntityViewDescriptor;
 @property (readonly, nonatomic) MusicEntityViewDescriptor *_showCompleteOfferEntityViewDescriptor; // @synthesize _showCompleteOfferEntityViewDescriptor;
 @property (readonly, nonatomic) MusicEntityViewDescriptor *_shuffleEntityViewDescriptor; // @synthesize _shuffleEntityViewDescriptor;
-@property (readonly, nonatomic) MusicEntityViewDescriptor *_tracklistEntityViewDescriptor; // @synthesize _tracklistEntityViewDescriptor;
+@property (readonly, nonatomic) MusicMediaProductTracklistTableViewDescriptor *_tracklistTableViewDescriptor; // @synthesize _tracklistTableViewDescriptor;
 @property (copy, nonatomic) NSString *completeOfferLocalizedTitle; // @synthesize completeOfferLocalizedTitle=_completeOfferLocalizedTitle;
 @property (strong, nonatomic) id<MusicEntityProviding> copyrightSourceEntityProvider; // @synthesize copyrightSourceEntityProvider=_copyrightSourceEntityProvider;
 @property (readonly, nonatomic) id<MusicEntityProviding> entityProvider; // @synthesize entityProvider=_entityProvider;
-@property (readonly, nonatomic) MusicEntityViewDescriptor *tracklistEntityViewDescriptor;
+@property (copy, nonatomic) MusicMediaDetailTintInformation *mediaDetailTintInformation; // @synthesize mediaDetailTintInformation=_mediaDetailTintInformation;
+@property (nonatomic) long long prominentTrackStoreID; // @synthesize prominentTrackStoreID=_prominentTrackStoreID;
+@property (readonly, nonatomic) MusicMediaProductTracklistTableViewDescriptor *tracklistTableViewDescriptor;
 @property (nonatomic) BOOL wantsArtistName; // @synthesize wantsArtistName=_wantsArtistName;
 @property (nonatomic) BOOL wantsArtwork; // @synthesize wantsArtwork=_wantsArtwork;
 @property (nonatomic) BOOL wantsCompleteOffer; // @synthesize wantsCompleteOffer=_wantsCompleteOffer;
@@ -42,17 +48,17 @@
 - (void)_configureCopyrightViewDescriptorWithTintInformation:(id)arg1;
 - (void)_configureShowCompleteAlbumViewDescriptorWithTintInformation:(id)arg1;
 - (void)_configureShuffleEntityViewDescriptorWithTintInformation:(id)arg1;
-- (void)_configureTracklistEntityViewDescriptorWithTintInformation:(id)arg1;
+- (void)_configureTracklistTableViewDescriptorWithTintInformation:(id)arg1;
 - (id)_loadCopyrightEntityViewDescriptorWithSourceEntityProvider:(id)arg1;
 - (id)_loadShowCompleteEntityViewDescriptorWithCompleteOfferEntityProvider:(id)arg1;
 - (id)_loadShuffleEntityViewDescriptorWithSourceEntityProvider:(id)arg1;
-- (id)_loadTracklistEntityViewDescriptor;
-- (void)configureWithTintInformation:(id)arg1;
+- (id)_loadTracklistTableViewDescriptor;
 - (long long)handleSelectionOfEntityValueContext:(id)arg1 fromViewController:(id)arg2;
 - (long long)handleSelectionOfUnplayableEntityValueContext:(id)arg1 withPlayabilityResult:(unsigned long long)arg2 fromViewController:(id)arg3;
 - (id)init;
 - (id)initWithEntityProvider:(id)arg1;
 - (id)loadEntityViewDescriptor;
+- (id)newSelectionEntityValueContext;
 - (id)newViewController;
 
 @end

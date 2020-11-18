@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FuseUI/MusicLibraryPlaylistsViewConfiguration.h>
+#import <FuseUI/MusicPlaylistsWithNewActionViewConfiguration.h>
 
 @protocol MusicContextualPlaylistPickerDelegate;
 
-@interface MusicContextualPlaylistPickerViewConfiguration : MusicLibraryPlaylistsViewConfiguration
+@interface MusicContextualPlaylistPickerViewConfiguration : MusicPlaylistsWithNewActionViewConfiguration
 {
     id<MusicContextualPlaylistPickerDelegate> _playlistPickerDelegate;
 }

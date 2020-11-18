@@ -20,6 +20,7 @@
 @property (nonatomic) int locationAuthorization; // @synthesize locationAuthorization=_locationAuthorization;
 @property (strong, nonatomic) CLRegion *region; // @synthesize region=_region;
 
++ (id)createWithDictionary:(id)arg1 home:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_configure:(id)arg1 eventTrigger:(id)arg2 clientQueue:(id)arg3 delegateCaller:(id)arg4;

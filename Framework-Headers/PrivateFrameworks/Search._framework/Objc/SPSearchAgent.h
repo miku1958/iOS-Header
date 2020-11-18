@@ -16,7 +16,8 @@
 {
     SPDaemonQueryToken *_currentToken;
     NSString *_prefixWithNoResults;
-    NSMutableArray *_sections;
+    NSArray *_sections;
+    NSMutableArray *_mutableSections;
     NSArray *_searchDomains;
     unsigned int _resultCount;
     int _options;
@@ -42,6 +43,11 @@
     int _currentZKWLevel;
     NSMutableArray *_cachedSections;
     NSMutableArray *_savedSections;
+    long long _updatesDisabled;
+    struct WaitingResults_s *_deferredUpdate;
+    NSString *_lastQueryString;
+    int _seqNo;
+    int _storedSeqNo;
     NSDate *_parsecNewsExpireTime;
     int _prefsToken;
     BOOL _newQuery;
@@ -84,10 +90,13 @@
 - (void)cancelCurrentQuery;
 - (BOOL)cleanupObsoleteResults;
 - (void)clear;
+- (void)clearInternal:(int)arg1;
 - (void)clearParsecResultsIfStale;
 - (long long)contentFilters;
 - (void)deactivate;
 - (void)dealloc;
+- (void)disableUpdates;
+- (void)enableUpdates;
 - (void)handleHiddenResult:(id)arg1 shownResult:(id)arg2 inSection:(id)arg3;
 - (void)handleOptionsForNewSections:(id)arg1;
 - (BOOL)hasParsecNews;
@@ -103,9 +112,9 @@
 - (void)postSearchAgentUpdatedResultsToDelegate;
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
 - (BOOL)promoteCachedQuery;
+- (void)pushAndPostUpdates;
 - (id)queryId;
 - (id)queryString;
-- (void)removeSectionAtIndex:(unsigned int)arg1;
 - (void)retrieveImageDataForIdentifier:(id)arg1 inSection:(id)arg2 preferredSize:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)retrieveImageDataForResult:(id)arg1 inSection:(id)arg2 preferredSize:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)searchDaemonQuery:(id)arg1 addedResults:(id)arg2;
@@ -121,12 +130,14 @@
 - (BOOL)setQueryString:(id)arg1 keyboardLanguage:(id)arg2 withResponse:(id)arg3 isStable:(BOOL)arg4;
 - (BOOL)setQueryString:(id)arg1 withResponse:(id)arg2 keyboardLanguage:(id)arg3 keyboardPrimaryLanguage:(id)arg4 isStable:(BOOL)arg5 levelZKW:(int)arg6 allowInternet:(BOOL)arg7;
 - (void)stuffChanged;
+- (void)stuffChangedNotification;
 - (void)testPermuteSection:(id)arg1 domain:(unsigned int)arg2 count:(int)arg3;
 - (void)testRestoreCacheZKW;
 - (void)testSaveCachedZKWPermUsers:(int)arg1 appLinks:(int)arg2 apps:(int)arg3;
 - (void)updateEpilog:(id)arg1;
 - (void)updateProlog:(id)arg1;
 - (void)updateResultsThroughDelegate;
+- (void)updateResultsThroughDelegate:(BOOL)arg1;
 - (void)updateSearchThroughSectionWithQuery:(id)arg1;
 
 @end

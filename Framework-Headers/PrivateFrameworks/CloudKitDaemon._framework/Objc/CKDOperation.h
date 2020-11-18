@@ -7,13 +7,14 @@
 #import <Foundation/NSOperation.h>
 
 #import <CloudKitDaemon/CKDFlowControllable-Protocol.h>
+#import <CloudKitDaemon/CKDURLRequestAuthRetryDelegate-Protocol.h>
 #import <CloudKitDaemon/CKDURLRequestMetricsDelegate-Protocol.h>
 
 @class CKDClientContext, CKDClientProxy, CKDOperationMetrics, CKDURLRequest, CKOperationResult, CKTimeLogger, NSDate, NSError, NSMutableArray, NSObject, NSString;
 @protocol NSObject, OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CKDOperation : NSOperation <CKDURLRequestMetricsDelegate, CKDFlowControllable>
+@interface CKDOperation : NSOperation <CKDURLRequestMetricsDelegate, CKDURLRequestAuthRetryDelegate, CKDFlowControllable>
 {
     unsigned long long _state;
     unsigned long long _activityID;
@@ -95,9 +96,11 @@ __attribute__((visibility("hidden")))
 + (id)_globalOperationCallbackQueueForQOS:(long long)arg1;
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
+- (void)_acquirePowerAssertion;
 - (BOOL)_checkAppVersion;
 - (void)_combineMetricsWithOperation:(id)arg1;
 - (void)_continueOperationStart;
+- (void)_dropPowerAssertion;
 - (BOOL)_errorShouldImpactFlowControl:(id)arg1;
 - (void)_finishInternalOnCallbackQueueWithError:(id)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
@@ -118,6 +121,8 @@ __attribute__((visibility("hidden")))
 - (id)newChildOperationInfoOfClass:(Class)arg1;
 - (Class)operationResultClass;
 - (BOOL)operationShouldBeFlowControlled;
+- (void)requestDidBeginWaitingForUserAuth:(id)arg1;
+- (void)requestDidEndWaitingForUserAuth:(id)arg1;
 - (void)requestDidFinishWithMetrics:(id)arg1;
 - (void)start;
 

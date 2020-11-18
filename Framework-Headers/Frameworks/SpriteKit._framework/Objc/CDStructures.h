@@ -259,12 +259,14 @@ struct SKCCropNode {
     BOOL _field26;
     CDStruct_f1db2b5e _field27;
     CDStruct_f1db2b5e _field28;
-    struct SKCNode *_field29;
-    shared_ptr_2ce53ef7 _field30;
-    shared_ptr_bb77cfd9 _field31;
-    shared_ptr_bb77cfd9 _field32;
-    shared_ptr_2ce53ef7 _field33;
+    BOOL _field29;
+    struct SKCNode *_field30;
+    struct shared_ptr<jet_buffer_pool> _field31;
+    shared_ptr_2ce53ef7 _field32;
+    shared_ptr_bb77cfd9 _field33;
     shared_ptr_bb77cfd9 _field34;
+    shared_ptr_2ce53ef7 _field35;
+    shared_ptr_bb77cfd9 _field36;
 };
 
 struct SKCCustomAction {
@@ -328,8 +330,9 @@ struct SKCEffectNode {
     shared_ptr_bb77cfd9 _field35;
     BOOL _field36;
     unsigned int _field37;
-    BOOL _field38;
+    id _field38;
     BOOL _field39;
+    BOOL _field40;
 };
 
 struct SKCEmitterNode {
@@ -830,11 +833,11 @@ struct SKCRenderBatch {
     unsigned int _field3;
     unsigned int _field4;
     id _field5;
-    shared_ptr_394c00aa _field6;
-    shared_ptr_bb77cfd9 _field7;
-    shared_ptr_bb77cfd9 _field8;
-    struct shared_ptr<jet_sampler> _field9;
-    struct shared_ptr<jet_sampler> _field10;
+    struct jet_program *_field6;
+    struct jet_texture *_field7;
+    struct jet_texture *_field8;
+    struct jet_sampler *_field9;
+    struct jet_sampler *_field10;
     unsigned int _field11;
     unsigned int _field12;
     float _field13;
@@ -867,35 +870,40 @@ struct SKCRenderer {
         shared_ptr_394c00aa _field11;
         shared_ptr_394c00aa _field12;
         shared_ptr_394c00aa _field13;
-        struct shared_ptr<jet_buffer> _field14;
-        struct shared_ptr<jet_buffer> _field15;
-        struct shared_ptr<jet_buffer> _field16;
-        struct shared_ptr<jet_buffer_pool> _field17;
+        shared_ptr_394c00aa _field14;
+        struct jet_buffer *_field15;
+        struct jet_buffer *_field16;
+        struct jet_buffer *_field17;
         struct shared_ptr<jet_buffer_pool> _field18;
         struct shared_ptr<jet_buffer_pool> _field19;
-        struct shared_ptr<jet_buffer> _field20;
+        struct shared_ptr<jet_buffer_pool> _field20;
         struct shared_ptr<jet_buffer> _field21;
-        shared_ptr_bb77cfd9 _field22;
-        struct shared_ptr<jet_sampler> _field23;
+        struct shared_ptr<jet_buffer> _field22;
+        shared_ptr_bb77cfd9 _field23;
         struct shared_ptr<jet_sampler> _field24;
-        struct shared_ptr<jet_depth_stencil_mode> _field25;
-        struct shared_ptr<jet_depth_stencil_mode> _field26;
-        struct shared_ptr<jet_depth_stencil_mode> _field27;
-        unsigned int _field28;
-        struct SKCRenderBatch _field29;
-        struct SKCStats *_field30;
+        struct shared_ptr<jet_sampler> _field25;
+        struct shared_ptr<jet_sampler> _field26;
+        struct shared_ptr<jet_sampler> _field27;
+        struct shared_ptr<jet_depth_stencil_mode> _field28;
+        struct shared_ptr<jet_depth_stencil_mode> _field29;
+        struct shared_ptr<jet_depth_stencil_mode> _field30;
+        BOOL _field31;
+        unsigned int _field32;
+        struct SKCRenderBatch _field33;
+        struct SKCStats *_field34;
     } _field7;
     struct SKCStats *_field8;
     struct SKCStats _field9;
-    BOOL _field10;
+    id _field10;
     BOOL _field11;
-    struct shared_ptr<jet_context> _field12;
-    struct shared_ptr<jet_fence> _field13;
-    struct map<SKCLightNode *, float __attribute__((ext_vector_type(4))), std::__1::less<SKCLightNode *>, std::__1::allocator<std::__1::pair<SKCLightNode *const, float __attribute__((ext_vector_type(4)))>>> _field14;
-    struct vector<SKCRenderSortInfo *, std::__1::allocator<SKCRenderSortInfo *>> _field15;
-    struct map<SKCLightNode *, std::__1::shared_ptr<std::__1::vector<SKCRenderSortInfo *, std::__1::allocator<SKCRenderSortInfo *>>>, std::__1::less<SKCLightNode *>, std::__1::allocator<std::__1::pair<SKCLightNode *const, std::__1::shared_ptr<std::__1::vector<SKCRenderSortInfo *, std::__1::allocator<SKCRenderSortInfo *>>>>>> _field16;
-    struct SKCSpriteNode *_field17;
-    struct SKCLabelNode *_field18;
+    BOOL _field12;
+    struct shared_ptr<jet_context> _field13;
+    struct shared_ptr<jet_fence> _field14;
+    struct map<SKCLightNode *, float __attribute__((ext_vector_type(4))), std::__1::less<SKCLightNode *>, std::__1::allocator<std::__1::pair<SKCLightNode *const, float __attribute__((ext_vector_type(4)))>>> _field15;
+    struct vector<SKCRenderSortInfo *, std::__1::allocator<SKCRenderSortInfo *>> _field16;
+    struct map<SKCLightNode *, std::__1::shared_ptr<std::__1::vector<SKCRenderSortInfo *, std::__1::allocator<SKCRenderSortInfo *>>>, std::__1::less<SKCLightNode *>, std::__1::allocator<std::__1::pair<SKCLightNode *const, std::__1::shared_ptr<std::__1::vector<SKCRenderSortInfo *, std::__1::allocator<SKCRenderSortInfo *>>>>>> _field17;
+    struct SKCSpriteNode *_field18;
+    struct SKCLabelNode *_field19;
     struct {
         struct SKCRenderPass *_field1;
         struct SKCRenderSortGroup *_field2;
@@ -905,8 +913,10 @@ struct SKCRenderer {
         struct __list_iterator<SKCRenderSortInfo *, void *> {
             struct __list_node<SKCRenderSortInfo *, void *> *_field1;
         } _field6;
-    } _field19;
-    id _field20;
+    } _field20;
+    struct vector<std::__1::shared_ptr<jet_framebuffer>, std::__1::allocator<std::__1::shared_ptr<jet_framebuffer>>> _field21;
+    struct vector<std::__1::shared_ptr<jet_constant>, std::__1::allocator<std::__1::shared_ptr<jet_constant>>> _field22;
+    id _field23;
 };
 
 struct SKCRepeat {
@@ -1085,11 +1095,12 @@ struct SKCSceneNode {
     shared_ptr_bb77cfd9 _field35;
     BOOL _field36;
     unsigned int _field37;
-    BOOL _field38;
+    id _field38;
     BOOL _field39;
-    long long _field40;
-    struct SKCSpriteNode *_field41;
+    BOOL _field40;
+    long long _field41;
     struct SKCSpriteNode *_field42;
+    struct SKCSpriteNode *_field43;
 };
 
 struct SKCSequence {
@@ -1475,7 +1486,6 @@ struct jet_sampler;
 
 struct jet_texture {
     CDUnknownFunctionPointerType *_field1;
-    struct jet_context *_field2;
 };
 
 struct list<PKPoint, std::__1::allocator<PKPoint>> {
@@ -1637,6 +1647,8 @@ struct shared_ptr<jet_command_buffer> {
     struct __shared_weak_count *_field2;
 };
 
+struct shared_ptr<jet_constant>;
+
 struct shared_ptr<jet_context> {
     struct jet_context *_field1;
     struct __shared_weak_count *_field2;
@@ -1797,6 +1809,22 @@ struct vector<Token, std::__1::allocator<Token>> {
     struct Token *_field2;
     struct __compressed_pair<Token *, std::__1::allocator<Token>> {
         struct Token *_field1;
+    } _field3;
+};
+
+struct vector<std::__1::shared_ptr<jet_constant>, std::__1::allocator<std::__1::shared_ptr<jet_constant>>> {
+    struct shared_ptr<jet_constant> *_field1;
+    struct shared_ptr<jet_constant> *_field2;
+    struct __compressed_pair<std::__1::shared_ptr<jet_constant>*, std::__1::allocator<std::__1::shared_ptr<jet_constant>>> {
+        struct shared_ptr<jet_constant> *_field1;
+    } _field3;
+};
+
+struct vector<std::__1::shared_ptr<jet_framebuffer>, std::__1::allocator<std::__1::shared_ptr<jet_framebuffer>>> {
+    shared_ptr_2ce53ef7 *_field1;
+    shared_ptr_2ce53ef7 *_field2;
+    struct __compressed_pair<std::__1::shared_ptr<jet_framebuffer>*, std::__1::allocator<std::__1::shared_ptr<jet_framebuffer>>> {
+        shared_ptr_2ce53ef7 *_field1;
     } _field3;
 };
 

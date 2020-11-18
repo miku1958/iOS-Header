@@ -19,6 +19,7 @@
     NSDictionary *_shareDocumentOptions;
     id<MusicJSProductNativeViewControllerDelegate> _delegate;
     NSDictionary *_productEntityValueProviderData;
+    long long _prominentTrackStoreID;
     NSDictionary *_reportingInformation;
     IKAppDocument *_relatedContentDocument;
     NSDictionary *_relatedContentDocumentOptions;
@@ -33,6 +34,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) IKJSNavigationDocument *navigationDocument;
 @property (readonly, nonatomic) NSDictionary *productEntityValueProviderData; // @synthesize productEntityValueProviderData=_productEntityValueProviderData;
+@property (readonly, nonatomic) long long prominentTrackStoreID; // @synthesize prominentTrackStoreID=_prominentTrackStoreID;
 @property (readonly, nonatomic) IKAppDocument *relatedContentDocument; // @synthesize relatedContentDocument=_relatedContentDocument;
 @property (readonly, nonatomic) NSDictionary *relatedContentDocumentOptions; // @synthesize relatedContentDocumentOptions=_relatedContentDocumentOptions;
 @property (readonly, nonatomic) NSDictionary *reportingInformation; // @synthesize reportingInformation=_reportingInformation;
@@ -46,6 +48,7 @@
 - (void)presentShareDocument:(id)arg1:(id)arg2;
 - (void)setNumberOfLikes:(unsigned long long)arg1;
 - (void)setProductEntityValueProvider:(id)arg1;
+- (void)setProminentTrackStoreID:(id)arg1;
 - (void)setRelatedContentDocument:(id)arg1:(id)arg2;
 - (void)setReportingInformation:(id)arg1;
 - (void)setTracklistItems:(id)arg1;

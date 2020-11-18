@@ -6,7 +6,7 @@
 
 #import <FuseUI/MusicLibraryBrowseTableViewConfiguration.h>
 
-@class NSMutableSet, NSSet, NSString;
+@class NSMutableSet, NSNumber, NSSet, NSString;
 
 @interface MusicLibraryPlaylistsViewConfiguration : MusicLibraryBrowseTableViewConfiguration
 {
@@ -14,9 +14,11 @@
     BOOL _playlistsFilterIsCuratorID;
     unsigned long long _playlistsConfigurationOptions;
     NSString *_playlistsFilter;
+    NSNumber *_parentFolderPersistentID;
 }
 
 @property (readonly, copy, nonatomic) NSSet *additionalQueryFilterPredicates;
+@property (strong, nonatomic) NSNumber *parentFolderPersistentID; // @synthesize parentFolderPersistentID=_parentFolderPersistentID;
 @property (nonatomic) unsigned long long playlistsConfigurationOptions; // @synthesize playlistsConfigurationOptions=_playlistsConfigurationOptions;
 @property (copy, nonatomic) NSString *playlistsFilter; // @synthesize playlistsFilter=_playlistsFilter;
 
@@ -28,6 +30,7 @@
 - (void)applyEntityProviderChangeRecords:(id)arg1;
 - (BOOL)canDeleteEntityValueContext:(id)arg1;
 - (BOOL)canPreviewEntityValueContext:(id)arg1;
+- (id)folderDetailViewControllerWithEntityValueContext:(id)arg1 fromViewController:(id)arg2;
 - (void)handleCommitPreviewViewController:(id)arg1 fromViewController:(id)arg2;
 - (long long)handleSelectionFromUserActivityContext:(id)arg1 containerItem:(id)arg2 entityValueContext:(id)arg3 viewController:(id)arg4;
 - (long long)handleSelectionOfEntityValueContext:(id)arg1 fromViewController:(id)arg2;

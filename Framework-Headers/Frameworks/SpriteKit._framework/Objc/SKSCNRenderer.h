@@ -6,12 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, SKLabelNode, SKScene;
+@class MISSING_TYPE, NSMutableDictionary, NSUserDefaults, SKLabelNode, SKScene;
 
 @interface SKSCNRenderer : NSObject
 {
     double _timePreviousUpdate;
     struct SKCRenderer *_skcRenderer;
+    NSUserDefaults *_skDefaults;
+    NSMutableDictionary *_viewRenderOptions;
     SKLabelNode *_statsLabel;
     double _prevViewAspect;
     unsigned int _spritesRendered;

@@ -10,8 +10,8 @@
 #import <CloudKitDaemon/CKDProtobufMessageSigningDelegate-Protocol.h>
 #import <CloudKitDaemon/CKDURLSessionTaskDelegate-Protocol.h>
 
-@class CKDClientContext, CKDOperationMetrics, CKDProtobufStreamWriter, CKDProtocolTranslator, CKTimeLogger, NSArray, NSData, NSDate, NSDictionary, NSError, NSFileHandle, NSHTTPURLResponse, NSInputStream, NSMutableArray, NSMutableData, NSMutableDictionary, NSOperationQueue, NSString, NSURL, NSURLRequest, NSURLSessionConfiguration, NSURLSessionDataTask;
-@protocol CKDAccountInfoProvider, CKDResponseBodyParser, CKDURLRequestMetricsDelegate, OS_voucher;
+@class CKBlockingAsyncQueue, CKDClientContext, CKDOperationMetrics, CKDProtobufStreamWriter, CKDProtocolTranslator, CKTimeLogger, NSArray, NSData, NSDate, NSDictionary, NSError, NSFileHandle, NSHTTPURLResponse, NSInputStream, NSMutableArray, NSMutableData, NSMutableDictionary, NSOperationQueue, NSString, NSURL, NSURLRequest, NSURLSessionConfiguration, NSURLSessionDataTask;
+@protocol CKDAccountInfoProvider, CKDResponseBodyParser, CKDURLRequestAuthRetryDelegate, CKDURLRequestMetricsDelegate, OS_voucher;
 
 __attribute__((visibility("hidden")))
 @interface CKDURLRequest : NSObject <CKDURLSessionTaskDelegate, CKDProtobufMessageSigningDelegate, CKDFlowControllable>
@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_requestProperties;
     CKTimeLogger *_timeLogger;
     id<CKDURLRequestMetricsDelegate> _metricsDelegate;
+    id<CKDURLRequestAuthRetryDelegate> _authRetryDelegate;
     CKDClientContext *_context;
     long long _databaseScope;
     CKDProtocolTranslator *_translator;
@@ -73,6 +74,7 @@ __attribute__((visibility("hidden")))
     NSFileHandle *_requestFileHandle;
     NSFileHandle *_binaryResponseFileHandle;
     NSFileHandle *_binaryRequestFileHandle;
+    CKBlockingAsyncQueue *_trafficQueue;
     NSString *_responseLogFilePath;
     NSString *_requestLogFilePath;
     NSString *_binaryResponseLogFilePath;
@@ -94,6 +96,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL allowsCellularAccess; // @synthesize allowsCellularAccess=_allowsCellularAccess;
 @property (nonatomic) BOOL allowsPowerNapScheduling; // @synthesize allowsPowerNapScheduling=_allowsPowerNapScheduling;
 @property (strong, nonatomic) NSString *authPromptReason; // @synthesize authPromptReason=_authPromptReason;
+@property (weak, nonatomic) id<CKDURLRequestAuthRetryDelegate> authRetryDelegate; // @synthesize authRetryDelegate=_authRetryDelegate;
 @property (strong, nonatomic) NSFileHandle *binaryRequestFileHandle; // @synthesize binaryRequestFileHandle=_binaryRequestFileHandle;
 @property (strong, nonatomic) NSString *binaryRequestLogFilePath; // @synthesize binaryRequestLogFilePath=_binaryRequestLogFilePath;
 @property (strong, nonatomic) NSFileHandle *binaryResponseFileHandle; // @synthesize binaryResponseFileHandle=_binaryResponseFileHandle;
@@ -159,6 +162,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (strong, nonatomic) CKTimeLogger *timeLogger; // @synthesize timeLogger=_timeLogger;
 @property (nonatomic) double timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
+@property (strong, nonatomic) CKBlockingAsyncQueue *trafficQueue; // @synthesize trafficQueue=_trafficQueue;
 @property (strong, nonatomic) CKDProtocolTranslator *translator; // @synthesize translator=_translator;
 @property (readonly, nonatomic) NSURL *url;
 @property (strong) NSURLSessionDataTask *urlSessionTask; // @synthesize urlSessionTask=_urlSessionTask;
@@ -193,13 +197,16 @@ __attribute__((visibility("hidden")))
 - (long long)_handlePlistResult:(id)arg1;
 - (long long)_handleServerJSONResult:(id)arg1;
 - (long long)_handleServerProtobufResult:(id)arg1 rawData:(id)arg2;
+- (CDUnknownBlockType)_jsonObjectParsedBlock;
 - (void)_loadRequest:(id)arg1;
 - (void)_logHTTPResponse:(id)arg1;
 - (void)_logParsedObject:(id)arg1;
 - (void)_logRequest:(id)arg1;
+- (void)_logRequestObject:(id)arg1;
 - (void)_makeTrafficFileHandleWithPrefix:(id)arg1 outPath:(id *)arg2 outHandle:(id *)arg3;
 - (void)_performRequest;
 - (void)_populateURLSessionConfiguration;
+- (CDUnknownBlockType)_protobufObjectParsedBlock;
 - (void)_registerPushTokens;
 - (id)_requestFileHandle;
 - (id)_responseFileHandle;
@@ -208,6 +215,7 @@ __attribute__((visibility("hidden")))
 - (void)_setupPublicDatabaseURL;
 - (void)_tearDownStreamWriter;
 - (id)_versionHeader;
+- (CDUnknownBlockType)_xmlObjectParsedBlock;
 - (BOOL)allowsAnonymousAccount;
 - (BOOL)allowsAuthedAccount;
 - (unsigned long long)cachePolicy;

@@ -10,7 +10,7 @@
 #import <NanoPassKit/PKPaymentWebServiceArchiver-Protocol.h>
 #import <NanoPassKit/PKPaymentWebServiceTargetDeviceProtocol-Protocol.h>
 
-@class IDSService, NSMutableDictionary, NSString;
+@class IDSService, NPKCompanionAgentConnection, NSMutableDictionary, NSString;
 @protocol NPKPaymentWebServiceTargetDeviceDelegate, OS_dispatch_queue;
 
 @interface NPKPaymentWebServiceTargetDevice : NSObject <IDSServiceDelegate, PKPaymentWebServiceTargetDeviceProtocol, PKPaymentWebServiceArchiver>
@@ -18,11 +18,13 @@
     id<NPKPaymentWebServiceTargetDeviceDelegate> _delegate;
     unsigned long long _context;
     IDSService *_provisioningService;
+    NPKCompanionAgentConnection *_companionAgentConnection;
     NSMutableDictionary *_outstandingRequests;
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSObject<OS_dispatch_queue> *_responseQueue;
 }
 
+@property (strong, nonatomic) NPKCompanionAgentConnection *companionAgentConnection; // @synthesize companionAgentConnection=_companionAgentConnection;
 @property (nonatomic) unsigned long long context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<NPKPaymentWebServiceTargetDeviceDelegate> delegate; // @synthesize delegate=_delegate;

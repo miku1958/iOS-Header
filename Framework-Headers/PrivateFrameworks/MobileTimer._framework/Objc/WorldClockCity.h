@@ -35,6 +35,7 @@
 + (BOOL)isCachedLanguageStaleForProperties:(id)arg1;
 + (BOOL)isCachedLanguageStaleForProperties:(id)arg1 systemLanguage:(id)arg2;
 + (BOOL)isWorldClockCityProperties:(id)arg1;
++ (id)unlocalizedExampleCity;
 - (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;

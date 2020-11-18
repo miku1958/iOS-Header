@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <SpriteKit/NSCoding-Protocol.h>
+
 @class NSString;
 
-@interface SKAttribute : NSObject
+@interface SKAttribute : NSObject <NSCoding>
 {
     long long _type;
     NSString *_name;
@@ -21,8 +23,10 @@
 + (id)attributeWithName:(id)arg1 type:(long long)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
 - (const basic_string_805fe43b *)getNameString;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 type:(long long)arg2;
 
 @end

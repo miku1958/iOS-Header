@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)_willRunTransitionForCurrentStateDeferred:(BOOL)arg1;
 - (long long)adaptivePresentationStyle;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
+- (void)containerViewDidLayoutSubviews;
 - (void)containerViewWillLayoutSubviews;
 - (id)initWithPresentedViewController:(id)arg1 presentingViewController:(id)arg2;
 - (struct CGSize)preferredContentSize;

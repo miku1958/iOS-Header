@@ -44,6 +44,7 @@
 - (void)adjustModelToCompensateForOriginalExif;
 - (id)displayName;
 - (void)encodeWithCoder:(id)arg1;
+- (void)flattenModelExifOrientation:(long long)arg1 withModelSize:(struct CGSize)arg2;
 - (struct CGRect)hitTestBounds;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

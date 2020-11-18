@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasTime;
 @property (nonatomic) double time; // @synthesize time=_time;
 
+- (void)_CKLogToFileHandle:(id)arg1 atDepth:(int)arg2;
 - (id)_prettyDictionaryRepresentation;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

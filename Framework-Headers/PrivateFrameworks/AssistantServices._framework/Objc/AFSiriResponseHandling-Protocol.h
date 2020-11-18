@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <AssistantServices/AFSiriRequestFailureHandling-Protocol.h>
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class AFSiriRequest, AFSiriResponse, NSError;
+@class AFSiriResponse;
 
-@protocol AFSiriResponseHandling <NSObject>
-- (void)handleFailureOfRequest:(AFSiriRequest *)arg1 error:(NSError *)arg2;
+@protocol AFSiriResponseHandling <NSObject, AFSiriRequestFailureHandling>
 - (void)handleSiriResponse:(AFSiriResponse *)arg1;
 @end
 

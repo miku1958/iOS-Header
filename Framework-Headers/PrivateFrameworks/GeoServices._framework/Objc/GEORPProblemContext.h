@@ -16,6 +16,7 @@
     double _creationDate;
     unsigned long long _originatingAuxiliaryControlIndex;
     NSMutableArray *_auxiliaryControls;
+    int _deviceGmtOffset;
     NSMutableArray *_directionsRequests;
     NSMutableArray *_directionsResponses;
     NSString *_lastSearchString;
@@ -32,15 +33,18 @@
         unsigned int sessionId:1;
         unsigned int creationDate:1;
         unsigned int originatingAuxiliaryControlIndex:1;
+        unsigned int deviceGmtOffset:1;
         unsigned int pinType:1;
     } _has;
 }
 
 @property (strong, nonatomic) NSMutableArray *auxiliaryControls; // @synthesize auxiliaryControls=_auxiliaryControls;
 @property (nonatomic) double creationDate; // @synthesize creationDate=_creationDate;
+@property (nonatomic) int deviceGmtOffset; // @synthesize deviceGmtOffset=_deviceGmtOffset;
 @property (strong, nonatomic) NSMutableArray *directionsRequests; // @synthesize directionsRequests=_directionsRequests;
 @property (strong, nonatomic) NSMutableArray *directionsResponses; // @synthesize directionsResponses=_directionsResponses;
 @property (nonatomic) BOOL hasCreationDate;
+@property (nonatomic) BOOL hasDeviceGmtOffset;
 @property (readonly, nonatomic) BOOL hasLastSearchString;
 @property (readonly, nonatomic) BOOL hasLastUserTypedSearchString;
 @property (readonly, nonatomic) BOOL hasMapLocation;

@@ -16,7 +16,6 @@
 @property (strong, nonatomic) AAUIFamilyCreditCard *creditCard; // @synthesize creditCard=_creditCard;
 
 - (void).cxx_destruct;
-- (id)_parsedDateForServerMonth:(long long)arg1 year:(long long)arg2;
 - (id)initWithHTTPResponse:(id)arg1 data:(id)arg2;
 
 @end

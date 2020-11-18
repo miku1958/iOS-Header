@@ -41,6 +41,7 @@
 + (void)initialize;
 + (void)requestInteractiveNotificationControllerWithName:(id)arg1 bundleIdentifier:(id)arg2 context:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (id)serviceViewControllerInterface;
+- (BOOL)__shouldRemoteViewControllerFenceOperations;
 - (void)_dismissWithContext:(id)arg1;
 - (void)_proximityStateChanged:(id)arg1;
 - (void)_requestDismissalEnabled:(BOOL)arg1;

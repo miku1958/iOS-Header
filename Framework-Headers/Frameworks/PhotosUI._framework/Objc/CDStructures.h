@@ -140,6 +140,16 @@ struct _NSRange {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    BOOL _field1;
+    BOOL _field2;
+    BOOL _field3;
+    BOOL _field4;
+    BOOL _field5;
+    double _field6;
+    int _field7;
+} CDStruct_e950349b;
+
+typedef struct {
     double left;
     double right;
     double top;

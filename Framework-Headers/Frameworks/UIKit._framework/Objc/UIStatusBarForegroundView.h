@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)setStatusBarData:(id)arg1 actions:(int)arg2 animated:(BOOL)arg3;
 - (void)startIgnoringData;
 - (void)stopIgnoringData:(BOOL)arg1;
+- (BOOL)willChangeNavigationItemDisplayWithSystemNavigationAction:(id)arg1;
 
 @end
 

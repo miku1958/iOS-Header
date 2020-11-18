@@ -44,8 +44,8 @@
 + (void)handleRebuildThumbnailRequestPersistentFailure;
 + (BOOL)hasDeprecationsOnly;
 + (BOOL)hasExceededRebuildThumbnailRequestLimit;
-+ (BOOL)hasObsoleteThumbnailFormats;
 + (BOOL)hasRebuildThumbnailsRequest;
++ (BOOL)hasThumbnailVersionMismatch;
 + (BOOL)isMissingThumbnailTables;
 + (BOOL)isRebuildingThumbnails;
 + (BOOL)isRidingCrudSnow;

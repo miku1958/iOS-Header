@@ -44,6 +44,7 @@
 - (void).cxx_destruct;
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
+- (BOOL)hasNetworkAgentWithDomain:(id)arg1 type:(id)arg2;
 - (id)initWithInterface:(id)arg1;
 - (id)initWithInterfaceIndex:(unsigned long long)arg1;
 - (id)initWithInterfaceName:(id)arg1;

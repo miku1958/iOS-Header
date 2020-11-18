@@ -30,8 +30,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_didFinishDownloadWithSuccess:(BOOL)arg1 error:(id)arg2;
-- (void)_fetchResourcesForConsumingAsset:(id)arg1 networkAccessAllowed:(BOOL)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_fetchResourcesForEditingAsset:(id)arg1 networkAccessAllowed:(BOOL)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_fetchResourcesForSharingAsset:(id)arg1 networkAccessAllowed:(BOOL)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_fetchResourcesWithNetworkAccessAllowed:(BOOL)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_setProgress:(double)arg1;
 - (void)_simulateFetchResourcesWithDuration:(double)arg1 success:(BOOL)arg2 networkAccessAllowed:(BOOL)arg3 handler:(CDUnknownBlockType)arg4;

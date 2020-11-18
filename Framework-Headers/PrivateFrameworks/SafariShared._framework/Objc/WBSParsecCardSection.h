@@ -6,14 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURL;
+@class NSArray, NSString, NSURL, WBSParsecPunchout;
 
 @interface WBSParsecCardSection : NSObject
 {
     NSString *_type;
     NSURL *_url;
+    WBSParsecPunchout *_app;
+    NSArray *_punchouts;
+    NSString *_punchoutPickerLabel;
+    NSString *_punchoutPickerDismissLabel;
 }
 
+@property (readonly, nonatomic) WBSParsecPunchout *app; // @synthesize app=_app;
+@property (readonly, copy, nonatomic) NSString *punchoutPickerDismissLabel; // @synthesize punchoutPickerDismissLabel=_punchoutPickerDismissLabel;
+@property (readonly, copy, nonatomic) NSString *punchoutPickerLabel; // @synthesize punchoutPickerLabel=_punchoutPickerLabel;
+@property (readonly, nonatomic) NSArray *punchouts; // @synthesize punchouts=_punchouts;
 @property (readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 

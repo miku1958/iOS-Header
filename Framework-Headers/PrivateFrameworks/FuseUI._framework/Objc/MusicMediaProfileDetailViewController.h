@@ -105,6 +105,7 @@
 - (void)mediaProfileHeaderContentViewControllerDidSelectProfileTitle:(id)arg1;
 - (void)mediaProfileSplitMainViewController:(id)arg1 needsContentForSegmentWithIdentifier:(id)arg2;
 - (void)mediaProfileSplitMainViewControllerSegmentedControlVisibleDidChange:(id)arg1;
+- (BOOL)music_allowsMetricsEvents;
 - (void)showingSplitDetailViewControllerDidChange;
 - (void)supportsSplitDetailViewControllerDidChange;
 - (void)traitCollectionDidChange:(id)arg1;

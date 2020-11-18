@@ -17,12 +17,14 @@
     id<RPPublishingAgent> _publishingAgent;
     NSString *_descriptionText;
     RPYouTubeActivityProgressOverlay *_progressOverlay;
+    NSURL *_tempFilePath;
 }
 
 @property (strong, nonatomic) NSString *descriptionText; // @synthesize descriptionText=_descriptionText;
 @property (strong, nonatomic) NSURL *movieURL; // @synthesize movieURL=_movieURL;
 @property (strong, nonatomic) RPYouTubeActivityProgressOverlay *progressOverlay; // @synthesize progressOverlay=_progressOverlay;
 @property (strong, nonatomic) id<RPPublishingAgent> publishingAgent; // @synthesize publishingAgent=_publishingAgent;
+@property (strong, nonatomic) NSURL *tempFilePath; // @synthesize tempFilePath=_tempFilePath;
 
 + (long long)activityCategory;
 + (id)photosUIFrameworkBundle;
@@ -42,6 +44,7 @@
 - (void)publishingAgentDoneButtonClicked:(id)arg1;
 - (void)publishingAgentWillBeDisplayed:(id)arg1;
 - (void)showAlertWithError:(id)arg1;
+- (id)tempFileURL;
 
 @end
 

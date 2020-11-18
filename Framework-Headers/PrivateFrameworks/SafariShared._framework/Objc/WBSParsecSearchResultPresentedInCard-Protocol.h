@@ -11,6 +11,7 @@
 @protocol WBSParsecSearchResultPresentedInCard <NSObject>
 
 @property (strong, nonatomic) WBSParsecSearchSession *parsecSearchSession;
+@property (readonly, nonatomic) BOOL willPresentResultInCard;
 
 @end
 

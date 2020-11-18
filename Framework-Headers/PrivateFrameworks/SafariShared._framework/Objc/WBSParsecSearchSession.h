@@ -6,26 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSString, NSURLSession, WBSCompletionQuery, WBSParsecHiddenResultInfo, WBSParsecSearchClient, WBSParsecSearchResultCache;
+@class NSMutableArray, NSMutableDictionary, NSString, NSURLSession, WBSCompletionQuery, WBSParsecHiddenResultInfo, WBSParsecSearchClient, WBSParsecSearchResultCache;
 @protocol WBSParsecSearchSessionDelegate;
 
 @interface WBSParsecSearchSession : NSObject
 {
-    WBSParsecSearchClient *_client;
-    NSURLSession *_urlSession;
     time_point_e708cccf _sessionStartTimestamp;
     NSMutableArray *_feedbackActions;
     WBSParsecSearchResultCache *_searchResultCache;
     BOOL _hasRespondedToCurrentQuery;
     WBSParsecHiddenResultInfo *_lastHiddenResultInfo;
+    NSMutableDictionary *_searchResultIdentifierToCardFetchDispatchGroupDictionary;
+    NSMutableDictionary *_searchResultIdentifierToCardFetchErrorDictionary;
     BOOL _valid;
     id<WBSParsecSearchSessionDelegate> _delegate;
     WBSCompletionQuery *_currentQuery;
+    WBSParsecSearchClient *_client;
     double _uiScale;
     NSString *_connectionType;
 }
 
-@property (readonly, nonatomic) WBSParsecSearchClient *client; // @synthesize client=_client;
+@property (readonly, nonatomic) NSURLSession *_urlSession;
+@property (strong, nonatomic) WBSParsecSearchClient *client; // @synthesize client=_client;
 @property (copy, nonatomic) NSString *connectionType; // @synthesize connectionType=_connectionType;
 @property (strong, nonatomic) WBSCompletionQuery *currentQuery; // @synthesize currentQuery=_currentQuery;
 @property (weak, nonatomic) id<WBSParsecSearchSessionDelegate> delegate; // @synthesize delegate=_delegate;
@@ -49,6 +51,7 @@
 - (id)_queryItemForInputMode;
 - (id)_queryItemForUnitPreference;
 - (void)_respondToCurrentQueryIfNeededWithResults:(id)arg1;
+- (void)_scheduleCardDetailPreFetchIfNecessary:(id)arg1;
 - (id)_searchFallbackURLForQuery:(id)arg1;
 - (void)_searchRequestFailedForQuery:(id)arg1;
 - (id)_searchRequestForQuery:(id)arg1;
@@ -57,7 +60,6 @@
 - (void)_sendGeneratedFeedback;
 - (void)_sendWarmupRequest;
 - (double)_timeToFirstByteForDataTask:(id)arg1;
-- (id)_urlSession;
 - (void)dealloc;
 - (void)didDisplayCompletionListItems:(id)arg1 forQuery:(id)arg2 hiddenResultInfo:(id)arg3;
 - (void)didReceiveLocalResultsForQuery:(id)arg1;

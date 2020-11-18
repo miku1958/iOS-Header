@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class MFComposeBodyField, MFMailMessage, MFMessageViewingContext, NSArray, NSMutableArray, NSString;
+@class MFAttachmentCompositionContext, MFComposeBodyField, MFMailMessage, MFMessageViewingContext, NSArray, NSMutableArray, NSString;
 
 @interface _MFMailCompositionContext : NSObject
 {
@@ -18,7 +18,6 @@
     NSString *_messageBody;
     int _composeType;
     id _autosaveIdentifier;
-    NSString *_contextID;
     MFMailMessage *_originalMessage;
     NSString *_attachmentToMarkupContentID;
     id _originalContent;
@@ -27,6 +26,7 @@
     BOOL _includeAttachments;
     BOOL _showKeyboardImmediately;
     BOOL _showContentImmediately;
+    MFAttachmentCompositionContext *_attachmentContext;
     NSMutableArray *_deferredAttachments;
     BOOL _registeredForDraw;
     BOOL _usingDefaultAccount;
@@ -37,6 +37,7 @@
     MFComposeBodyField *_bodyField;
 }
 
+@property (readonly, nonatomic) MFAttachmentCompositionContext *attachmentContext; // @synthesize attachmentContext=_attachmentContext;
 @property (strong, nonatomic) NSString *attachmentToMarkupContentID; // @synthesize attachmentToMarkupContentID=_attachmentToMarkupContentID;
 @property (readonly, nonatomic) id autosaveIdentifier; // @synthesize autosaveIdentifier=_autosaveIdentifier;
 @property (copy, nonatomic) NSArray *bccRecipients; // @synthesize bccRecipients=_bccRecipients;
@@ -44,7 +45,7 @@
 @property (nonatomic) unsigned long long caretPosition; // @synthesize caretPosition=_caretPosition;
 @property (copy, nonatomic) NSArray *ccRecipients; // @synthesize ccRecipients=_ccRecipients;
 @property (readonly, nonatomic) int composeType; // @synthesize composeType=_composeType;
-@property (readonly, nonatomic) NSString *contextID; // @synthesize contextID=_contextID;
+@property (readonly, nonatomic) NSString *contextID;
 @property (nonatomic) BOOL includeAttachments; // @synthesize includeAttachments=_includeAttachments;
 @property (nonatomic) BOOL loadRest; // @synthesize loadRest=_loadRest;
 @property (strong, nonatomic) MFMessageViewingContext *loadingContext; // @synthesize loadingContext=_loadingContext;
@@ -80,7 +81,6 @@
 - (id)initWithComposeType:(int)arg1 originalMessage:(id)arg2;
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 composeType:(int)arg2 originalMessage:(id)arg3;
-- (void)insertAttachmentWithData:(id)arg1 fileName:(id)arg2 mimeType:(id)arg3;
 - (void)insertAttachmentWithData:(id)arg1 fileName:(id)arg2 mimeType:(id)arg3 contentID:(id)arg4;
 - (void)insertAttachmentWithURL:(id)arg1;
 - (id)messageBody;

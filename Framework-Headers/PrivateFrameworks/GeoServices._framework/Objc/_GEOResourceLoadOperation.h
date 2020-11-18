@@ -9,7 +9,7 @@
 #import <GeoServices/GEOResourceLoadOperation-Protocol.h>
 #import <GeoServices/NSURLConnectionDataDelegate-Protocol.h>
 
-@class NSData, NSMutableData, NSString, NSURL, NSURLConnection;
+@class NSData, NSLock, NSMutableData, NSString, NSURL, NSURLConnection;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSMutableData *_data;
     BOOL _expectsPartialContent;
     NSData *_auditToken;
+    NSLock *_lock;
 }
 
 @property (readonly, nonatomic) NSData *data; // @synthesize data=_data;

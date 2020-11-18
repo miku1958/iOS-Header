@@ -17,18 +17,22 @@
     BOOL _hasAccentKey;
     BOOL _canMultitap;
     BOOL _isAlphabeticPlane;
+    BOOL _diacriticForwardCompose;
     BOOL _interfaceIdiomIsPad;
     NSString *_inputMode;
     NSString *_layoutTag;
+    long long _userInterfaceIdiom;
 }
 
 @property (nonatomic) BOOL canMultitap; // @synthesize canMultitap=_canMultitap;
+@property (nonatomic) BOOL diacriticForwardCompose; // @synthesize diacriticForwardCompose=_diacriticForwardCompose;
 @property (nonatomic) BOOL hasAccentKey; // @synthesize hasAccentKey=_hasAccentKey;
 @property (nonatomic) BOOL hasCandidateKey; // @synthesize hasCandidateKey=_hasCandidateKey;
 @property (copy, nonatomic) NSString *inputMode; // @synthesize inputMode=_inputMode;
 @property (nonatomic) BOOL interfaceIdiomIsPad; // @synthesize interfaceIdiomIsPad=_interfaceIdiomIsPad;
 @property (nonatomic) BOOL isAlphabeticPlane; // @synthesize isAlphabeticPlane=_isAlphabeticPlane;
 @property (copy, nonatomic) NSString *layoutTag; // @synthesize layoutTag=_layoutTag;
+@property (nonatomic) long long userInterfaceIdiom; // @synthesize userInterfaceIdiom=_userInterfaceIdiom;
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -38,6 +42,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (void)setInterfaceIdiomIsPad;
 
 @end
 

@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 + (id)_keyPathsToObserve;
 - (void).cxx_destruct;
 - (void)_cancelDownloadForDocumentID:(id)arg1;
+- (void)_cancelDownloadForDocumentID:(id)arg1 destroyIfLast:(BOOL)arg2;
 - (void)_cancelUploadForDocumentID:(id)arg1 willRetryTransfer:(BOOL)arg2;
 - (long long)_computeDeltaFromSize:(long long)arg1 toSize:(long long)arg2 versionSize:(long long)arg3 progressSize:(long long)arg4 isFinished:(BOOL)arg5;
 - (void)_createNewIndeterminateParentProgress;

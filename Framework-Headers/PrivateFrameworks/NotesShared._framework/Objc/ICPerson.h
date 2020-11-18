@@ -20,6 +20,10 @@
 @property (strong, nonatomic) NSString *publicCloudKitRecordName; // @dynamic publicCloudKitRecordName;
 @property (strong, nonatomic) NSUUID *uuid;
 
++ (id)currentPersonInContext:(id)arg1;
++ (void)initialize;
++ (id)personForDeviceCreatingIfNecessary:(id)arg1 context:(id)arg2;
++ (id)personWithUUIDCreatingIfNecessary:(id)arg1 context:(id)arg2;
 
 @end
 

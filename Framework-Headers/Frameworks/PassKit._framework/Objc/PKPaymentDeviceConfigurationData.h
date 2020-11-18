@@ -8,12 +8,16 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
+@class NSString;
+
 @interface PKPaymentDeviceConfigurationData : NSObject <NSSecureCoding>
 {
     BOOL _devSigned;
+    NSString *_secureElementIdentifier;
 }
 
 @property (nonatomic) BOOL devSigned; // @synthesize devSigned=_devSigned;
+@property (copy, nonatomic) NSString *secureElementIdentifier; // @synthesize secureElementIdentifier=_secureElementIdentifier;
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;

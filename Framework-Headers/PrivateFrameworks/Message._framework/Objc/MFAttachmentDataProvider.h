@@ -35,12 +35,13 @@
 - (void)dealloc;
 - (id)errorWithMessage:(id)arg1 code:(long long)arg2;
 - (BOOL)exists;
-- (BOOL)fetchDataForAttachment:(id)arg1 withDataConsumer:(id)arg2 error:(id *)arg3;
+- (void)fetchDataForAttachment:(id)arg1 withDataConsumer:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)fetchLocalDataForAttachment:(id)arg1;
 - (id)init;
 - (id)initWithURL:(id)arg1;
 - (id)messageForAttachment:(id)arg1;
 - (BOOL)save:(id)arg1;
+- (id)storageLocationForAttachment:(id)arg1 withMessage:(id)arg2;
 
 @end
 

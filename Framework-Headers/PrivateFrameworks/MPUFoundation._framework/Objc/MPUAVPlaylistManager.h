@@ -77,6 +77,7 @@
 - (unsigned long long)displayCountForItem:(id)arg1;
 - (unsigned long long)displayIndexForItem:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)handlePlaybackFailureForItem:(id)arg1;
 - (id)identifierAtIndex:(unsigned long long)arg1 queueFeeder:(id)arg2;
 - (unsigned long long)indexOfItemWithIdentifier:(id)arg1 queueFeeder:(id)arg2;
 - (id)init;
@@ -94,7 +95,6 @@
 - (long long)playlistIndexWithDelta:(long long)arg1 fromIndex:(long long)arg2 ignoreElapsedTime:(BOOL)arg3;
 - (unsigned long long)playlistItemCount;
 - (BOOL)preventsHardQueueModificationsForItem:(id)arg1;
-- (void)queueCoordinator:(id)arg1 failedToLoadItem:(id)arg2;
 - (id)queueCoordinator:(id)arg1 itemToFollowItem:(id)arg2;
 - (void)queueFeeder:(id)arg1 didChangeContentsWithPreferredStartIndex:(unsigned long long)arg2 error:(id)arg3;
 - (void)queueFeeder:(id)arg1 didChangeContentsWithReplacementPlaybackContext:(id)arg2;

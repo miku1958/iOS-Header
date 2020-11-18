@@ -19,8 +19,10 @@
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithEventIdentifier:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

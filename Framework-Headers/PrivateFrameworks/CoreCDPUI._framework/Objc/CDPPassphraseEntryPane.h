@@ -6,14 +6,18 @@
 
 #import <Preferences/DevicePINPane.h>
 
-@class BFFPaneHeaderView;
+@class CDPPaneHeaderView;
 
 @interface CDPPassphraseEntryPane : DevicePINPane
 {
-    BFFPaneHeaderView *_headerView;
+    CDPPaneHeaderView *_headerView;
+    BOOL _formPresentation;
 }
 
+@property (nonatomic) BOOL formPresentation; // @synthesize formPresentation=_formPresentation;
+
 - (void).cxx_destruct;
+- (id)headerView;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isSmallScreen;
 - (double)keyboardHeightOffset;

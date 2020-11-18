@@ -6,22 +6,18 @@
 
 #import <Search/SPFeedback.h>
 
-@class NSArray, NSDictionary;
+@class NSArray;
 
 @interface SPFeedbackRender : SPFeedback
 {
     BOOL _leftOfHome;
     double _triggerTimestamp;
-    NSDictionary *_renderedZKW;
-    NSArray *_renderedZKWMaps;
     NSArray *_hiddentExtResults;
     NSArray *_sections;
 }
 
 @property (strong, nonatomic) NSArray *hiddentExtResults; // @synthesize hiddentExtResults=_hiddentExtResults;
 @property (nonatomic) BOOL leftOfHome; // @synthesize leftOfHome=_leftOfHome;
-@property (strong, nonatomic) NSDictionary *renderedZKW; // @synthesize renderedZKW=_renderedZKW;
-@property (strong, nonatomic) NSArray *renderedZKWMaps; // @synthesize renderedZKWMaps=_renderedZKWMaps;
 @property (strong, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property (nonatomic) double triggerTimestamp; // @synthesize triggerTimestamp=_triggerTimestamp;
 

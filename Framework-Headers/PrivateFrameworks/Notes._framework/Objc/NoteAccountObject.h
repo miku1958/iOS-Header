@@ -22,6 +22,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NoteStoreObject *defaultStore; // @dynamic defaultStore;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didChooseToMigrate; // @dynamic didChooseToMigrate;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *name; // @dynamic name;
 @property (strong, nonatomic) NSString *pathToConstraintsPlist;
@@ -43,6 +44,7 @@
 - (id)storeForExternalId:(id)arg1;
 - (BOOL)supportsAttachments;
 - (BOOL)validateDefaultStore:(id *)arg1 error:(id *)arg2;
+- (void)willSave;
 
 @end
 

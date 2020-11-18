@@ -69,6 +69,7 @@
 - (void)setupSocketSourceWithControlSocket:(int)arg1;
 - (BOOL)socketContentFilterWriteMessageWithControlSocket:(int)arg1 socketID:(unsigned long long)arg2 drop:(BOOL)arg3 inboundPassOffset:(unsigned long long)arg4 inboundPeekOffset:(unsigned long long)arg5 outboundPassOffset:(unsigned long long)arg6 outboundPeekOffset:(unsigned long long)arg7;
 - (void)startFilterWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)stopWithReason:(int)arg1;
 - (void)teardownSocketSource;
 
 @end

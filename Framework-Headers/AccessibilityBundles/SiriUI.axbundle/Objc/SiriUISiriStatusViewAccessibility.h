@@ -17,7 +17,7 @@
 - (struct CGRect)accessibilityFrame;
 - (BOOL)accessibilityPerformMagicTap;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1 screen:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 screen:(id)arg2 configuration:(id)arg3;
 - (BOOL)isAccessibilityElement;
 - (void)setMode:(long long)arg1;
 

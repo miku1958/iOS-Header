@@ -23,6 +23,7 @@
     BOOL _isModal;
     UIAlertView *_tcConfirmationAlert;
     NSString *_agreeURL;
+    BOOL _isPreferringPassword;
     id<AAUIGenericTermsRemoteUIDelegate> _delegate;
 }
 
@@ -39,6 +40,7 @@
 - (void)_cleanUpAndDismissWithSuccess:(BOOL)arg1;
 - (void)_cleanupRUILoader;
 - (void)_displayConnectionErrorAndDismiss;
+- (void)_loadRequestPreferingPassword:(BOOL)arg1;
 - (void)_popObjectModelAnimated:(BOOL)arg1;
 - (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (id)initWithAccount:(id)arg1 inStore:(id)arg2;

@@ -19,8 +19,8 @@
 - (void)noteWatchOfferDisplayedForPaymentPassWithUniqueID:(NSString *)arg1;
 - (void)paymentPassUniqueIDs:(void (^)(NSSet *))arg1;
 - (void)paymentPassWithDeviceAccountIdentifier:(NSString *)arg1 completion:(void (^)(PKPaymentPass *))arg2;
-- (void)paymentPassWithPrimaryAccountIdentifier:(NSString *)arg1 completion:(void (^)(PKPaymentPass *))arg2;
 - (void)paymentPassWithUniqueID:(NSString *)arg1 reply:(void (^)(PKPaymentPass *))arg2;
+- (void)paymentPassesWithPrimaryAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)redownloadAllPaymentPassesWithCompletion:(void (^)(void))arg1;
 - (void)removePaymentPassWithUniqueID:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 - (void)savePaymentPassAtURL:(NSURL *)arg1 withUniqueID:(NSString *)arg2 completion:(void (^)(BOOL))arg3;

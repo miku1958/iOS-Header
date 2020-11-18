@@ -12,6 +12,7 @@
 {
     double _screenScale;
     NSString *_preferredContentSizeCategory;
+    long long _layoutDirection;
     NSString *_systemVersion;
     NSString *_name;
     NSString *_model;
@@ -21,6 +22,7 @@
 }
 
 @property (readonly, nonatomic) NSDictionary *cachedImages;
+@property (readonly, nonatomic) long long layoutDirection; // @synthesize layoutDirection=_layoutDirection;
 @property (copy, nonatomic) NSString *localizedModel; // @synthesize localizedModel=_localizedModel;
 @property (copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;

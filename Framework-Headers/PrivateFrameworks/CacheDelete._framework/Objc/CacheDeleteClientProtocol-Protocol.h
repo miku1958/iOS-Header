@@ -7,7 +7,7 @@
 @class NSDictionary, NSString, NSXPCListenerEndpoint;
 
 @protocol CacheDeleteClientProtocol
-- (void)clientCancelPurge:(void (^)(void))arg1;
+- (void)clientCancelPurge:(NSDictionary *)arg1 replyBlock:(void (^)(void))arg2;
 - (void)clientCheckin:(NSString *)arg1 endpoint:(NSXPCListenerEndpoint *)arg2 info:(NSDictionary *)arg3 reply:(void (^)(NSDictionary *, NSError *))arg4;
 - (void)clientGetState:(NSString *)arg1 replyBlock:(void (^)(id))arg2;
 - (void)clientItemizedPurgeableSpace:(NSDictionary *)arg1 replyBlock:(void (^)(NSDictionary *))arg2;

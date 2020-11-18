@@ -27,7 +27,7 @@
     BOOL _haveFinishedStreaming;
     unsigned long long _bufferSize;
     id<CKDProtobufMessageSigningDelegate> _signingDelegate;
-    NSFileHandle *_humanLogFileHandle;
+    CDUnknownBlockType _logRequestObjectBlock;
     NSFileHandle *_binaryLogFileHandle;
 }
 
@@ -39,7 +39,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL haveFinishedCompression; // @synthesize haveFinishedCompression=_haveFinishedCompression;
 @property BOOL haveFinishedStreaming; // @synthesize haveFinishedStreaming=_haveFinishedStreaming;
-@property (strong, nonatomic) NSFileHandle *humanLogFileHandle; // @synthesize humanLogFileHandle=_humanLogFileHandle;
+@property (copy, nonatomic) CDUnknownBlockType logRequestObjectBlock; // @synthesize logRequestObjectBlock=_logRequestObjectBlock;
 @property (nonatomic) BOOL shouldCompress; // @synthesize shouldCompress=_shouldCompress;
 @property (weak, nonatomic) id<CKDProtobufMessageSigningDelegate> signingDelegate; // @synthesize signingDelegate=_signingDelegate;
 @property (readonly) Class superclass;

@@ -15,6 +15,8 @@
     id<CDPStateUIProvider> _uiProvider;
 }
 
+@property (strong, nonatomic) id<CDPStateUIProvider> uiProvider; // @synthesize uiProvider=_uiProvider;
+
 - (void).cxx_destruct;
 - (void)cdpContext:(id)arg1 promptForAccountPasswordWithCompletion:(CDUnknownBlockType)arg2;
 - (void)cdpContext:(id)arg1 promptForAdoptionOfMultipleICSC:(CDUnknownBlockType)arg2;

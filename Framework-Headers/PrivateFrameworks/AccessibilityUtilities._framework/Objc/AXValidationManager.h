@@ -31,7 +31,7 @@
 @property (nonatomic) BOOL shouldCrashOnError; // @synthesize shouldCrashOnError=_shouldCrashOnError;
 @property (nonatomic) BOOL shouldLogToConsole; // @synthesize shouldLogToConsole=_shouldLogToConsole;
 @property (nonatomic) BOOL shouldReportToServer; // @synthesize shouldReportToServer=_shouldReportToServer;
-@property (strong, nonatomic) id<AXValidationReportingServices> validateionReportingServices; // @synthesize validateionReportingServices=_validationReportingServices;
+@property (strong, nonatomic) id<AXValidationReportingServices> validationReportingServices; // @synthesize validationReportingServices=_validationReportingServices;
 @property (copy, nonatomic) NSString *validationTargetName; // @synthesize validationTargetName=_validationTargetName;
 
 + (id)sharedInstance;
@@ -81,6 +81,7 @@
 - (void)sendValidateExceptionForClass:(id)arg1 isKindOfClass:(id)arg2 errorMessage:(id)arg3 overrideProcessName:(id)arg4;
 - (void)sendValidateExceptionForProtocol:(id)arg1 hasMethod:(id)arg2 errorMessage:(id)arg3 overrideProcessName:(id)arg4;
 - (void)sendValidateExceptionForProtocol:(id)arg1 hasProperty:(id)arg2 errorMessage:(id)arg3 overrideProcessName:(id)arg4;
+- (void)sendValidationSuccessForProcessName:(id)arg1;
 - (BOOL)validateClass:(id)arg1;
 - (BOOL)validateClass:(id)arg1 conformsToProtocol:(id)arg2;
 - (BOOL)validateClass:(id)arg1 hasClassMethod:(id)arg2;

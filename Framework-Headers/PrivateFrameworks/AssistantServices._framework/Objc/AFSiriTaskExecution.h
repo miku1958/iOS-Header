@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <AssistantServices/AFSiriRequestFailureHandling-Protocol.h>
 #import <AssistantServices/AFSiriResponseHandling-Protocol.h>
 #import <AssistantServices/NSXPCListenerDelegate-Protocol.h>
 
 @class AFSiriRequest, AFWatchdogTimer, NSString, NSXPCListener;
 @protocol AFSiriTaskDelivering, OS_dispatch_queue;
 
-@interface AFSiriTaskExecution : NSObject <AFSiriResponseHandling, NSXPCListenerDelegate>
+@interface AFSiriTaskExecution : NSObject <AFSiriResponseHandling, NSXPCListenerDelegate, AFSiriRequestFailureHandling>
 {
     NSObject<OS_dispatch_queue> *_queue;
     AFSiriRequest *_request;

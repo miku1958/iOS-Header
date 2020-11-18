@@ -7,10 +7,11 @@
 #import <UIKit/UICollectionReusableView.h>
 
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKit/_UILayoutEngineSuspending-Protocol.h>
 
 @class NSString, UILongPressGestureRecognizer, UIView, _UIFloatingContentView;
 
-@interface UICollectionViewCell : UICollectionReusableView <UIGestureRecognizerDelegate>
+@interface UICollectionViewCell : UICollectionReusableView <UIGestureRecognizerDelegate, _UILayoutEngineSuspending>
 {
     UIView *_contentView;
     UIView *_backgroundView;
@@ -28,9 +29,11 @@
     } _collectionCellFlags;
     BOOL _selected;
     BOOL _highlighted;
+    BOOL _isLayoutEngineSuspended;
     long long _focusStyle;
 }
 
+@property (nonatomic, getter=_isLayoutEngineSuspended, setter=_setLayoutEngineSuspended:) BOOL _layoutEngineSuspended; // @synthesize _layoutEngineSuspended=_isLayoutEngineSuspended;
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, copy) NSString *debugDescription;

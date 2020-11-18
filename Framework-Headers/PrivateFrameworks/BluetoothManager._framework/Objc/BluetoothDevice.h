@@ -41,6 +41,7 @@
 - (unsigned int)minorClass;
 - (id)name;
 - (BOOL)paired;
+- (unsigned int)productId;
 - (id)scoUID;
 - (void)setDevice:(struct BTDeviceImpl *)arg1;
 - (void)setPIN:(id)arg1;
@@ -53,6 +54,7 @@
 - (CDStruct_8024420c)syncSettings;
 - (int)type;
 - (void)unpair;
+- (unsigned int)vendorId;
 
 @end
 

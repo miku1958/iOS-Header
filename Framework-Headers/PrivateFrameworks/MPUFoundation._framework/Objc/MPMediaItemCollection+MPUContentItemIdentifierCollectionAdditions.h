@@ -7,6 +7,8 @@
 #import <MediaPlayer/MPMediaItemCollection.h>
 
 @interface MPMediaItemCollection (MPUContentItemIdentifierCollectionAdditions)
++ (id)MPU_contentItemIdentifierCollectionPropertiesForGroupingType:(long long)arg1;
++ (void)_MPU_getContentItemIdentifierCollectionItemType:(unsigned long long *)arg1 storeAdamIDProperty:(id *)arg2 forGroupingType:(long long)arg3;
 - (id)MPU_contentItemIdentifierCollection;
 @end
 

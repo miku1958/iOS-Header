@@ -18,6 +18,7 @@
     NSMutableArray *_digitViews;
     NSMutableString *_stringValue;
     BOOL _securePasscodeEntry;
+    BOOL _enabled;
     id<PSPasscodeFieldDelegate> _delegate;
     unsigned long long _numberOfEntryFields;
     UIColor *_foregroundColor;
@@ -30,6 +31,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PSPasscodeFieldDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
 @property (strong, nonatomic) NSArray *fieldSpacing; // @synthesize fieldSpacing=_fieldSpacing;
 @property (strong, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;

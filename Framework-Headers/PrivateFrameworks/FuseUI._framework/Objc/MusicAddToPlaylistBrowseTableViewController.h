@@ -27,12 +27,16 @@
 
 - (void).cxx_destruct;
 - (void)_performBlockAfterDerivingPrepopulatedItems:(CDUnknownBlockType)arg1;
+- (void)_showNewPlaylistCreationFlow;
 - (void)_updateNoContentViewVisibility;
 - (void)dealloc;
 - (void)handleEntityProviderDidInvalidate;
 - (id)initWithLibraryViewConfiguration:(id)arg1;
+- (void)music_handleCreatePlaylistAction;
 - (id)noContentView;
 - (void)noContentViewDidTapButton:(id)arg1;
+- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)viewDidLoad;
 
 @end

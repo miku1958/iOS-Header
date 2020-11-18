@@ -17,6 +17,7 @@
     NSMutableDictionary *_idsSendIDToResponseHandler;
     NSString *_serviceName;
     BOOL _full;
+    double _lastTimeRaisedBadIDSProtobuf;
     NSObject<OS_dispatch_queue> *_idsQueue;
     id<BLTAbstractIDSDevice> _defaultPairedDevice;
     NSLock *_defaultPairedDeviceLock;
@@ -41,6 +42,9 @@
 - (void).cxx_destruct;
 - (BOOL)_callSendCompletionHandlerWithSuccess:(BOOL)arg1 identifier:(id)arg2 error:(id)arg3;
 - (void)_queueSendMessage:(id)arg1 type:(unsigned short)arg2 responseToRequest:(id)arg3 withTimeout:(id)arg4 withDescription:(id)arg5 onlyOneFor:(id)arg6 didSend:(CDUnknownBlockType)arg7 andResponse:(CDUnknownBlockType)arg8;
+- (void)_sendAckInitialSequenceNumberForSession:(id)arg1 sessionState:(unsigned long long)arg2;
+- (void)_sendAckInitialSequenceNumberForSession:(id)arg1 withAssert:(BOOL)arg2 sessionState:(unsigned long long *)arg3;
+- (void)_sendAssertForSession;
 - (void)_sendMessage:(id)arg1 type:(unsigned short)arg2 responseToRequest:(id)arg3 withTimeout:(id)arg4 withDescription:(id)arg5 onlyOneFor:(id)arg6 didSend:(CDUnknownBlockType)arg7 andResponse:(CDUnknownBlockType)arg8;
 - (void)_setStandaloneTestModeEnabled:(BOOL)arg1;
 - (void)_storeProtobufAction:(SEL)arg1 messageType:(unsigned short)arg2 messageSendType:(long long)arg3;

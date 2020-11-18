@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (strong) id<NDBackgroundSessionProtocol> remoteSession; // @synthesize remoteSession=_remoteSession;
 @property (readonly) Class superclass;
 
+- (void)_onSessionQueue_disavow;
 - (void)_onqueue_adjustBytesPerSecondLimit:(long long)arg1;
 - (void)_onqueue_adjustLoadingPoolPriority;
 - (void)_onqueue_adjustPoolPriority;
@@ -41,7 +42,6 @@ __attribute__((visibility("hidden")))
 - (void)_onqueue_didReceiveResponse:(id)arg1;
 - (void)_onqueue_didResume;
 - (void)_onqueue_didSendBodyBytes:(long long)arg1 totalBytesSent:(long long)arg2 totalBytesExpectedToSend:(long long)arg3;
-- (void)_onqueue_disavow;
 - (void)_onqueue_resume;
 - (void)_onqueue_suspend;
 - (void)_onqueue_willSendRequestForEstablishedConnection:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

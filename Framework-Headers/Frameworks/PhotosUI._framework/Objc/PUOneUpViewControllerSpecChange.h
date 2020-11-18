@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
     BOOL _loadingIndicatorSizeChanged;
     BOOL _shouldUseCompactCommentSeparatorChanged;
     BOOL _shouldUseCompactCommentsTitleChanged;
-    BOOL _maximumInitialZoomToFillScaleChanged;
+    BOOL _tileInitialContentModeChanged;
     BOOL _shouldPinContentToTopChanged;
     BOOL _shouldUseCommentTilesChanged;
 }
@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL bufferingIndicatorSizeChanged; // @synthesize bufferingIndicatorSizeChanged=_bufferingIndicatorSizeChanged;
 @property (nonatomic) BOOL chromeVisibilityChanged; // @synthesize chromeVisibilityChanged=_chromeVisibilityChanged;
 @property (nonatomic) BOOL loadingIndicatorSizeChanged; // @synthesize loadingIndicatorSizeChanged=_loadingIndicatorSizeChanged;
-@property (nonatomic) BOOL maximumInitialZoomToFillScaleChanged; // @synthesize maximumInitialZoomToFillScaleChanged=_maximumInitialZoomToFillScaleChanged;
 @property (nonatomic) BOOL maximumToolbarHeightChanged; // @synthesize maximumToolbarHeightChanged=_maximumToolbarHeightChanged;
 @property (nonatomic) BOOL presentedForPreviewChanged; // @synthesize presentedForPreviewChanged=_presentedForPreviewChanged;
 @property (nonatomic) BOOL progressIndicatorSizeChanged; // @synthesize progressIndicatorSizeChanged=_progressIndicatorSizeChanged;
@@ -57,12 +56,12 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL shouldUseCompactTitleViewChanged; // @synthesize shouldUseCompactTitleViewChanged=_shouldUseCompactTitleViewChanged;
 @property (nonatomic) BOOL shouldUseContentGuideInsetsChanged; // @synthesize shouldUseContentGuideInsetsChanged=_shouldUseContentGuideInsetsChanged;
 @property (nonatomic) BOOL shouldUseUserTransformTilesChanged; // @synthesize shouldUseUserTransformTilesChanged=_shouldUseUserTransformTilesChanged;
+@property (nonatomic) BOOL tileInitialContentModeChanged; // @synthesize tileInitialContentModeChanged=_tileInitialContentModeChanged;
 
 - (void)_setBackgroundColorOverrideChanged:(BOOL)arg1;
 - (void)_setBufferingIndicatorSizeChanged:(BOOL)arg1;
 - (void)_setChromeVisibilityChanged:(BOOL)arg1;
 - (void)_setLoadingIndicatorSizeChanged:(BOOL)arg1;
-- (void)_setMaximumInitialZoomToFillScaleChanged:(BOOL)arg1;
 - (void)_setMaximumToolbarHeightChanged:(BOOL)arg1;
 - (void)_setPresentedForPreviewChanged:(BOOL)arg1;
 - (void)_setProgressIndicatorSizeChanged:(BOOL)arg1;
@@ -81,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)_setShouldUseCompactTitleViewChanged:(BOOL)arg1;
 - (void)_setShouldUseContentGuideInsetsChanged:(BOOL)arg1;
 - (void)_setShouldUseUserTransformTilesChanged:(BOOL)arg1;
+- (void)_setTileInitialContentModeChanged:(BOOL)arg1;
 - (BOOL)changed;
 
 @end

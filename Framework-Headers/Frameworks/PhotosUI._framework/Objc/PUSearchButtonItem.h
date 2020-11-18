@@ -7,6 +7,7 @@
 #import <UIKit/UIBarButtonItem.h>
 
 @class PUSearchButtonItemCustomView, UINavigationItem, UISearchBar, UIView;
+@protocol UISearchBarDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PUSearchButtonItem : UIBarButtonItem
@@ -14,17 +15,19 @@ __attribute__((visibility("hidden")))
     PUSearchButtonItemCustomView *_customView;
     UIView *_searchIcon;
     struct CGRect _searchIconDefaultBounds;
+    UISearchBar *_searchBar;
     BOOL _wantsShowingSearchBar;
     BOOL _showingSearchBar;
     BOOL _nudgesSearchIcon;
     UINavigationItem *_navigationItem;
-    UISearchBar *_searchBar;
+    id<UISearchBarDelegate> _searchBarDelegate;
 }
 
 @property (nonatomic) double maxSearchBarWidth;
 @property (readonly, weak, nonatomic) UINavigationItem *navigationItem; // @synthesize navigationItem=_navigationItem;
 @property (nonatomic) BOOL nudgesSearchIcon; // @synthesize nudgesSearchIcon=_nudgesSearchIcon;
-@property (readonly, nonatomic) UISearchBar *searchBar; // @synthesize searchBar=_searchBar;
+@property (readonly, nonatomic) UISearchBar *searchBar;
+@property (weak, nonatomic) id<UISearchBarDelegate> searchBarDelegate; // @synthesize searchBarDelegate=_searchBarDelegate;
 @property (readonly, nonatomic) BOOL showingSearchBar; // @synthesize showingSearchBar=_showingSearchBar;
 
 - (void).cxx_destruct;

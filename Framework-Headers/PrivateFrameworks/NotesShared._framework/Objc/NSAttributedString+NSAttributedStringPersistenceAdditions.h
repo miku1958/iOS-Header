@@ -9,6 +9,8 @@
 @interface NSAttributedString (NSAttributedStringPersistenceAdditions)
 + (id)TT_attributedStringWithArchive:(const struct String *)arg1 createNewAttachmentsInNote:(id)arg2 error:(id *)arg3;
 + (id)TT_attributedStringWithData:(id)arg1 createNewAttachmentsInNote:(id)arg2 error:(id *)arg3;
+- (unsigned long long)TT_approximateAttachmentsSizeIncludingPreviews:(BOOL)arg1;
+- (BOOL)TT_isCopyableSize;
 - (void)TT_saveToArchive:(struct String *)arg1 saveAttachments:(BOOL)arg2;
 - (id)TT_serializeWithAttachments:(BOOL)arg1;
 @end

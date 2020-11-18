@@ -8,8 +8,8 @@
 
 #import <Photos/NSCacheDelegate-Protocol.h>
 
-@class NSCache, NSMutableDictionary, NSRecursiveLock, NSSet, NSString, PHPhotoLibrary;
-@protocol PHBatchFetchingArrayDataSource;
+@class NSCache, NSMutableDictionary, NSObject, NSSet, NSString, PHPhotoLibrary;
+@protocol OS_dispatch_queue, PHBatchFetchingArrayDataSource;
 
 @interface PHBatchFetchingArray : NSArray <NSCacheDelegate>
 {
@@ -21,7 +21,7 @@
     unsigned long long _firstBatchIndex;
     NSArray *_firstBatch;
     NSMutableDictionary *_uuidsByOIDs;
-    NSRecursiveLock *_firstBatchLock;
+    NSObject<OS_dispatch_queue> *_firstBatchQueue;
     unsigned long long _batchSize;
     unsigned long long _propertyHint;
 }

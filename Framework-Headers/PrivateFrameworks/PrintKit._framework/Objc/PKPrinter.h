@@ -87,6 +87,7 @@
     BOOL hasIdentifyPrinterOp;
     BOOL connectionShouldNotBeTrusted;
     BOOL isFromMCProfile;
+    long long identifyActionsSupported;
     NSString *name;
     long long kind;
     long long _jobAccountIDSupport;
@@ -99,6 +100,7 @@
 @property (readonly) BOOL hasIdentifyPrinterOp; // @synthesize hasIdentifyPrinterOp;
 @property (readonly) BOOL hasPrintInfoSupported; // @dynamic hasPrintInfoSupported;
 @property (strong) NSString *hostname; // @dynamic hostname;
+@property (readonly) long long identifyActionsSupported;
 @property (readonly) BOOL isAdobeRGBSupported; // @dynamic isAdobeRGBSupported;
 @property BOOL isFromMCProfile; // @synthesize isFromMCProfile;
 @property (readonly) BOOL isIPPS; // @dynamic isIPPS;

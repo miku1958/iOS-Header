@@ -8,7 +8,7 @@
 
 #import <SafariShared/WBSCompletionListItem-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, WBSParsecActionButton, WBSParsecImageRepresentation;
+@class NSArray, NSDictionary, NSNumber, NSString, NSURL, WBSParsecActionButton, WBSParsecImageRepresentation;
 
 @interface WBSParsecSearchResult : WBSParsecModel <WBSCompletionListItem>
 {
@@ -35,6 +35,7 @@
     NSArray *_cardSections;
     WBSParsecActionButton *_actionButton;
     NSURL *_cardURL;
+    NSNumber *_cardLoadHint;
     NSArray *_supportedStyleOverrides;
     NSDictionary *_styleOverrides;
 }
@@ -44,6 +45,7 @@
 @property (readonly, nonatomic) NSURL *appInstallURL; // @synthesize appInstallURL=_appInstallURL;
 @property (readonly, nonatomic) NSString *appName; // @synthesize appName=_appName;
 @property (readonly, nonatomic) NSURL *appPunchoutURL; // @synthesize appPunchoutURL=_appPunchoutURL;
+@property (readonly, nonatomic) NSNumber *cardLoadHint; // @synthesize cardLoadHint=_cardLoadHint;
 @property (copy, nonatomic) NSArray *cardSections; // @synthesize cardSections=_cardSections;
 @property (readonly, nonatomic) NSURL *cardURL; // @synthesize cardURL=_cardURL;
 @property (readonly, nonatomic) NSString *completion; // @synthesize completion=_completion;

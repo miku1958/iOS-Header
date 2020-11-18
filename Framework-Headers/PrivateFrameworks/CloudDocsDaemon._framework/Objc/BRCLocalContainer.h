@@ -44,6 +44,7 @@
     BRCDeadlineToken *_syncDeadlineToken;
     NSMutableIndexSet *_appliedTombstoneRanks;
     long long _lastInsertedRank;
+    NSDate *_lastSyncDownDate;
     NSMutableIndexSet *_pendingCoordinatedIOs;
     NSMutableSet *_pendingFileCoordinators;
     BOOL _shouldForceContainerForeground;
@@ -148,7 +149,7 @@
 - (void)didFindLostItem:(id)arg1;
 - (void)didGCTombstoneRanks:(id)arg1;
 - (void)didReceiveHandoffRequest;
-- (void)didSyncDownRequestID:(unsigned long long)arg1 maxApplyRank:(long long)arg2 caughtUpWithServer:(BOOL)arg3;
+- (void)didSyncDownRequestID:(unsigned long long)arg1 maxApplyRank:(long long)arg2 caughtUpWithServer:(BOOL)arg3 syncDownDate:(id)arg4;
 - (id)directoryItemIDByFileID:(unsigned long long)arg1;
 - (unsigned long long)documentCount;
 - (unsigned long long)documentEvictableSizeUsage;
@@ -165,6 +166,7 @@
 - (id)fileIDForDirectoryItemID:(id)arg1 db:(id)arg2;
 - (BOOL)handleResetErrorIfNeeded:(id)arg1;
 - (void)handleRootRecordDeletion;
+- (BOOL)hasCompletedInitialSyncDownOnce;
 - (BOOL)hasDocumentsOrDirectory;
 - (BOOL)hasLocalChanges;
 - (BOOL)hasUbiquitousDocuments;

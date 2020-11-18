@@ -16,6 +16,7 @@
     BOOL _supportsDPANNotifications;
     BOOL _supportsFPANNotifications;
     BOOL _supportsDefaultCardSelection;
+    BOOL _supportsSerialNumberBasedProvisioning;
     BOOL _paymentOptionSelectable;
     BOOL _cobranded;
     NSString *_primaryAccountIdentifier;
@@ -55,6 +56,7 @@
 @property (nonatomic) BOOL supportsDPANNotifications; // @synthesize supportsDPANNotifications=_supportsDPANNotifications;
 @property (nonatomic) BOOL supportsDefaultCardSelection; // @synthesize supportsDefaultCardSelection=_supportsDefaultCardSelection;
 @property (nonatomic) BOOL supportsFPANNotifications; // @synthesize supportsFPANNotifications=_supportsFPANNotifications;
+@property (nonatomic) BOOL supportsSerialNumberBasedProvisioning; // @synthesize supportsSerialNumberBasedProvisioning=_supportsSerialNumberBasedProvisioning;
 @property (copy, nonatomic) NSString *transactionPushTopic; // @synthesize transactionPushTopic=_transactionPushTopic;
 @property (copy, nonatomic) NSURL *transactionServiceURL; // @synthesize transactionServiceURL=_transactionServiceURL;
 

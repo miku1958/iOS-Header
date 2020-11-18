@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)initWithCaptureConfiguration:(id)arg1 locationController:(id)arg2 motionController:(id)arg3 burstController:(id)arg4 protectionController:(id)arg5 powerController:(id)arg6 remoteShutterController:(id)arg7;
 
 @end
 

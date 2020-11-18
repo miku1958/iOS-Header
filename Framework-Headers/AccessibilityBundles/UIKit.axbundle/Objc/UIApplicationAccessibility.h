@@ -50,6 +50,7 @@
 - (id)_accessibilityNativeFocusableElements;
 - (long long)_accessibilityOrientationForCompareGeometry;
 - (BOOL)_accessibilityOverrideStartStopExtraExtras;
+- (id)_accessibilityPreviewWindow;
 - (id)_accessibilityResponderElement;
 - (id)_accessibilityResponderElement:(BOOL)arg1;
 - (id)_accessibilityResponderElementForFocus;

@@ -8,6 +8,7 @@
 
 @interface NSString (MFSharedResourcesDirectoryPathUtils)
 - (id)mf_betterStringByResolvingSymlinksInPath;
+- (id)mf_canonicalizedAbsolutePath;
 - (id)mf_stringByAbbreviatingSharedResourcesDirectoryWithTildeInPath;
 - (id)mf_stringByExpandingTildeWithSharedResourcesDirectoryInPath;
 - (id)mf_stringByReallyAbbreviatingSharedResourcesDirectoryWithTildeInPath;

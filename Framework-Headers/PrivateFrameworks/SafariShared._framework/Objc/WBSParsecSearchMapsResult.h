@@ -36,6 +36,7 @@
 @property (readonly, nonatomic) NSString *nearbyBusinessesString; // @synthesize nearbyBusinessesString=_nearbyBusinessesString;
 @property (strong, nonatomic) WBSParsecSearchSession *parsecSearchSession; // @synthesize parsecSearchSession=_parsecSearchSession;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL willPresentResultInCard;
 
 - (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;

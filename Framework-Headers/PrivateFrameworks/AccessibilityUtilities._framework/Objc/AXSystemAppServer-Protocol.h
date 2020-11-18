@@ -20,6 +20,7 @@
 - (BOOL)isSideSwitcherVisible;
 - (BOOL)isSiriTalkingOrListening;
 - (BOOL)isSiriVisible;
+- (BOOL)isSoftwareUpdateUIVisible;
 - (int)pid;
 - (void)pid:(void (^)(int))arg1;
 @end

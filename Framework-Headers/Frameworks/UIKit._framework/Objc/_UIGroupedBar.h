@@ -6,25 +6,34 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, _UIButtonBar, _UIButtonBarButtonVisualProvider;
+@class NSArray, NSLayoutConstraint, _UIButtonBar, _UIButtonBarButtonVisualProvider;
 
 @interface _UIGroupedBar : UIView
 {
     _UIButtonBar *_leftBar;
     _UIButtonBar *_centerBar;
     _UIButtonBar *_rightBar;
+    NSLayoutConstraint *_centeringConstraint;
+    NSLayoutConstraint *_leadingLimitConstraint;
+    NSLayoutConstraint *_trailingLimitConstraint;
+    BOOL _independentGroupSizes;
     double _margin;
     double _minimumInterItemSpace;
     double _minimumInterGroupSpace;
+    double _leadingBarSizeLimit;
+    double _trailingBarSizeLimit;
     _UIButtonBarButtonVisualProvider *_visualProvider;
 }
 
 @property (copy, nonatomic) NSArray *centerBarButtonGroups;
+@property (nonatomic) BOOL independentGroupSizes; // @synthesize independentGroupSizes=_independentGroupSizes;
 @property (copy, nonatomic) NSArray *leadingBarButtonGroups;
+@property (nonatomic) double leadingBarSizeLimit; // @synthesize leadingBarSizeLimit=_leadingBarSizeLimit;
 @property (nonatomic) double margin; // @synthesize margin=_margin;
 @property (nonatomic) double minimumInterGroupSpace; // @synthesize minimumInterGroupSpace=_minimumInterGroupSpace;
 @property (nonatomic) double minimumInterItemSpace; // @synthesize minimumInterItemSpace=_minimumInterItemSpace;
 @property (copy, nonatomic) NSArray *trailingBarButtonGroups;
+@property (nonatomic) double trailingBarSizeLimit; // @synthesize trailingBarSizeLimit=_trailingBarSizeLimit;
 @property (copy, nonatomic) _UIButtonBarButtonVisualProvider *visualProvider; // @synthesize visualProvider=_visualProvider;
 
 - (void).cxx_destruct;

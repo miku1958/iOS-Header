@@ -15,6 +15,7 @@
 + (id)exportedInterface;
 + (void)requestContentViewControllerWithName:(id)arg1 bundleIdentifier:(id)arg2 context:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (id)serviceViewControllerInterface;
+- (BOOL)__shouldRemoteViewControllerFenceOperations;
 
 @end
 

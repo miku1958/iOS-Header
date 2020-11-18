@@ -27,7 +27,7 @@
 - (void)addData:(id)arg1 forContentID:(id)arg2;
 - (id)dataForContentID:(id)arg1;
 - (void)dealloc;
-- (BOOL)fetchDataForAttachment:(id)arg1 withDataConsumer:(id)arg2 error:(id *)arg3;
+- (void)fetchDataForAttachment:(id)arg1 withDataConsumer:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)fetchLocalDataForAttachment:(id)arg1;
 - (id)initWithData:(id)arg1 forContentID:(id)arg2;
 - (id)messageForAttachment:(id)arg1;
@@ -35,6 +35,7 @@
 - (void)recordPasteboardDataForAttachments:(id)arg1;
 - (void)recordUndoDataForAttachments:(id)arg1;
 - (void)removeDataForAttachment:(id)arg1;
+- (id)storageLocationForAttachment:(id)arg1 withMessage:(id)arg2;
 
 @end
 

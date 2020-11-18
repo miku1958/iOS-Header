@@ -52,7 +52,6 @@
 - (BOOL)_jobForTest:(long long)arg1;
 - (void)_notifyIndexAndObserversForActivities:(id)arg1;
 - (void)_userPerformedAction:(id)arg1 withItem:(id)arg2 protectionClass:(id)arg3;
-- (void)acknowledgeReindex;
 - (void)changeStateOfSearchableItemsWithUIDs:(id)arg1 toState:(long long)arg2 protectionClass:(id)arg3 forBundleID:(id)arg4 forUTIType:(id)arg5 options:(long long)arg6;
 - (void)checkInWithProtectionClass:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteAllSearchableItemsWithProtectionClass:(id)arg1 forBundleID:(id)arg2 options:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;

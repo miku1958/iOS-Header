@@ -10,11 +10,15 @@
 
 @interface _CNAutocompleteUserSessionDisplayedResults : NSObject
 {
+    BOOL _ignored;
+    BOOL _containsDuetResults;
     CNAutocompleteFetchRequest *_request;
     NSMutableDictionary *_datesByBatchIndexes;
 }
 
+@property (nonatomic) BOOL containsDuetResults; // @synthesize containsDuetResults=_containsDuetResults;
 @property (strong, nonatomic) NSMutableDictionary *datesByBatchIndexes; // @synthesize datesByBatchIndexes=_datesByBatchIndexes;
+@property (nonatomic) BOOL ignored; // @synthesize ignored=_ignored;
 @property (readonly, nonatomic) CNAutocompleteFetchRequest *request; // @synthesize request=_request;
 
 - (void).cxx_destruct;

@@ -16,6 +16,7 @@
 {
     id<UIDocumentMenuDelegate> _weak_delegate;
     BOOL _ignoreApplicationEntitlementForImport;
+    BOOL _sourceIsManaged;
     BOOL _dismissDelegateCalled;
     id<UIDocumentMenuDelegate> _delegate;
     NSMutableArray *_auxiliaryOptions;
@@ -36,6 +37,7 @@
 @property (nonatomic) unsigned long long documentPickerMode; // @synthesize documentPickerMode=_documentPickerMode;
 @property (readonly) unsigned long long hash;
 @property (readonly, strong, nonatomic, getter=_remoteViewController) _UIDocumentPickerRemoteViewController *remoteViewController;
+@property (nonatomic, getter=_sourceIsManaged, setter=_setSourceIsManaged:) BOOL sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSURL *uploadURL; // @synthesize uploadURL=_uploadURL;
 

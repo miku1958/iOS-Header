@@ -15,12 +15,14 @@ __attribute__((visibility("hidden")))
 {
     NSError *_parserError;
     CDUnknownBlockType _objectParsedBlock;
+    CDUnknownBlockType _logParsedObjectBlock;
     NSMutableData *_parserData;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) CDUnknownBlockType logParsedObjectBlock; // @synthesize logParsedObjectBlock=_logParsedObjectBlock;
 @property (copy, nonatomic) CDUnknownBlockType objectParsedBlock; // @synthesize objectParsedBlock=_objectParsedBlock;
 @property (strong, nonatomic) NSMutableData *parserData; // @synthesize parserData=_parserData;
 @property (strong, nonatomic) NSError *parserError; // @synthesize parserError=_parserError;

@@ -8,7 +8,7 @@
 
 #import <SafariShared/CLLocationManagerDelegate-Protocol.h>
 
-@class CLLocation, CLLocationManager, NSArray, NSMutableDictionary, NSNumber, NSString, NSThread, NSTimer, NSURL, NSURLQueryItem, NSURLSessionConfiguration;
+@class CLLocation, CLLocationManager, NSArray, NSDate, NSMutableDictionary, NSNumber, NSString, NSThread, NSTimer, NSURL, NSURLQueryItem, NSURLSession, NSURLSessionConfiguration;
 @protocol OS_dispatch_queue, WBSParsecSearchClientStorage;
 
 @interface WBSParsecSearchClient : NSObject <CLLocationManagerDelegate>
@@ -46,6 +46,7 @@
     unsigned long long _mescalVersionNumber;
     NSObject<OS_dispatch_queue> *_feedbackQueue;
     NSString *_bagForceFetchVersion;
+    NSDate *_sharedURLSessionExpirationTime;
     BOOL _valid;
     BOOL _enabled;
     BOOL _hasCompletedBagFetch;
@@ -64,6 +65,7 @@
     NSArray *_subscriptionProviderDomainWhitelist;
     NSArray *_subscriptionProviderBundleIdentifierWhitelist;
     double _subscriptionTTL;
+    NSURLSession *_urlSessionForSearchSessions;
     double _minimumIntervalBetweenQueriesFromBag;
     double _minimumIntervalBetweenQueriesFromSearchResponse;
     time_point_e708cccf _latestQueryTimestamp;
@@ -112,6 +114,7 @@
 @property (nonatomic, setter=test_setHasCompletedBagFetch:) BOOL test_hasCompletedBagFetch;
 @property (nonatomic, getter=test_isValid, setter=test_setValid:) BOOL test_valid;
 @property (readonly, nonatomic) NSURLSessionConfiguration *urlSessionConfiguration; // @synthesize urlSessionConfiguration=_urlSessionConfiguration;
+@property (strong, nonatomic) NSURLSession *urlSessionForSearchSessions; // @synthesize urlSessionForSearchSessions=_urlSessionForSearchSessions;
 @property (readonly, nonatomic, getter=isValid) BOOL valid; // @synthesize valid=_valid;
 
 + (id)_preferredLanguages;

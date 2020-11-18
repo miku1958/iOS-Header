@@ -6,23 +6,28 @@
 
 #import <Notes/NSObject-Protocol.h>
 
-@class ICGenerateSearchIndexStringsOperation, ICSearchIndexerContext, NSArray, NSDate, NSDictionary, NSManagedObjectContext, NSString;
+@class CSSearchableItemAttributeSet, ICGenerateSearchIndexStringsOperation, NSArray, NSDate, NSDictionary, NSManagedObjectContext, NSManagedObjectID, NSString;
 
 @protocol ICSearchIndexable <NSObject>
-- (void)deleteFromNoteContextUsingIndexerContext:(ICSearchIndexerContext *)arg1;
 - (NSString *)identifier;
 - (BOOL)isHiddenFromSearch;
 - (NSManagedObjectContext *)managedObjectContext;
 - (NSDate *)modificationDate;
+- (NSManagedObjectID *)objectID;
 - (NSString *)objectIdentifier;
+- (NSString *)searchDomainIdentifier;
 - (NSArray *)searchIndexStringsOutHasAdditionalStrings:(BOOL *)arg1;
 - (NSString *)searchIndexableTitleUsingContentTextIfNecessary:(NSString *)arg1;
 - (BOOL)searchResultCanBeDeletedFromNoteContext;
 - (unsigned long long)searchResultsSection;
+- (CSSearchableItemAttributeSet *)searchableItemAttributeSet;
+- (NSString *)searchableItemIdentifier;
 - (BOOL)shouldUpdateIndexForChangedValues:(NSDictionary *)arg1;
 - (long long)visibilityTestingType;
 
 @optional
 - (ICGenerateSearchIndexStringsOperation *)generateSearchIndexStringsOperation;
+- (BOOL)ignoreInSearchIndexer;
+- (void)releaseMemoryForIndexing;
 @end
 

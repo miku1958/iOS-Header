@@ -16,10 +16,9 @@ __attribute__((visibility("hidden")))
     NSString *_cachedHostname;
     NSObject<OS_dispatch_queue> *_hostCallbackQueue;
     struct MGNotificationTokenStruct *_hostNotificationToken;
-    Class _CKDUITextInputModeClass;
 }
 
-@property (nonatomic) Class CKDUITextInputModeClass; // @synthesize CKDUITextInputModeClass=_CKDUITextInputModeClass;
+@property (readonly, nonatomic) Class CKDUITextInputModeClass;
 @property (readonly, nonatomic) NSArray *enabledKeyboards;
 @property (readonly, nonatomic) NSString *hostname;
 

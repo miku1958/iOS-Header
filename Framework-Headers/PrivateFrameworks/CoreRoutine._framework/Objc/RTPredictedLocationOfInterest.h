@@ -29,8 +29,10 @@
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLocationOfInterest:(id)arg1 confidence:(double)arg2 nextEntryTime:(id)arg3 modeOfTransportation:(long long)arg4 source:(id)arg5;
+- (BOOL)isEqual:(id)arg1;
 - (void)setConfidence:(double)arg1;
 
 @end

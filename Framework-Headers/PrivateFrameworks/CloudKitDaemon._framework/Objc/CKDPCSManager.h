@@ -103,7 +103,7 @@ __attribute__((visibility("hidden")))
 - (void)fetchPCSForShareWithID:(id)arg1 operation:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchPCSForZoneWithID:(id)arg1 operation:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithClientContext:(id)arg1;
-- (id)newAssetKey;
+- (id)newAssetKeyWithError:(id *)arg1;
 - (id)pcsDataFromFetchedShare:(id)arg1 error:(id *)arg2;
 - (id)protectionIdentifierFromShareProtection:(struct _OpaquePCSShareProtection *)arg1;
 - (id)referenceIdentifierStringFromAssetKey:(id)arg1;

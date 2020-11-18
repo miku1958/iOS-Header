@@ -8,27 +8,33 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAnalyticMetadata, GEOPDClientMetadata, GEORPProblem, GEORPUserCredentials, NSData, NSString;
+@class GEOPDAnalyticMetadata, GEOPDClientMetadata, GEORPClientCapabilities, GEORPProblem, GEORPUserCredentials, NSData, NSString;
 
 @interface GEORPProblemRequest : PBRequest <NSCopying>
 {
     GEOPDAnalyticMetadata *_analyticMetadata;
+    GEORPClientCapabilities *_clientCapabilities;
     GEOPDClientMetadata *_clientMetadata;
     NSData *_devicePushToken;
+    NSString *_inputLanguage;
     GEORPProblem *_problem;
     GEORPUserCredentials *_userCredentials;
     NSString *_userEmail;
 }
 
 @property (strong, nonatomic) GEOPDAnalyticMetadata *analyticMetadata; // @synthesize analyticMetadata=_analyticMetadata;
+@property (strong, nonatomic) GEORPClientCapabilities *clientCapabilities; // @synthesize clientCapabilities=_clientCapabilities;
 @property (strong, nonatomic) GEOPDClientMetadata *clientMetadata; // @synthesize clientMetadata=_clientMetadata;
 @property (strong, nonatomic) NSData *devicePushToken; // @synthesize devicePushToken=_devicePushToken;
 @property (readonly, nonatomic) BOOL hasAnalyticMetadata;
+@property (readonly, nonatomic) BOOL hasClientCapabilities;
 @property (readonly, nonatomic) BOOL hasClientMetadata;
 @property (readonly, nonatomic) BOOL hasDevicePushToken;
+@property (readonly, nonatomic) BOOL hasInputLanguage;
 @property (readonly, nonatomic) BOOL hasProblem;
 @property (readonly, nonatomic) BOOL hasUserCredentials;
 @property (readonly, nonatomic) BOOL hasUserEmail;
+@property (strong, nonatomic) NSString *inputLanguage; // @synthesize inputLanguage=_inputLanguage;
 @property (strong, nonatomic) GEORPProblem *problem; // @synthesize problem=_problem;
 @property (strong, nonatomic) GEORPUserCredentials *userCredentials; // @synthesize userCredentials=_userCredentials;
 @property (strong, nonatomic) NSString *userEmail; // @synthesize userEmail=_userEmail;

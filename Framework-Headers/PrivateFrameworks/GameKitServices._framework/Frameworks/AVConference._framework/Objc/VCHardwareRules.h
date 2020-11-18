@@ -56,8 +56,10 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (BOOL)isGVAEncoderAvailable;
 - (BOOL)isHiDefCapapable;
+- (BOOL)isMacBook8x;
 - (BOOL)isMacBookAirModel;
 - (BOOL)isMachineNewerThanSandybridge:(int)arg1;
+- (void)removeEncodingRulesWithWidth:(int)arg1 height:(int)arg2;
 - (void)resetEncodingRulesForCamera:(unsigned int)arg1;
 - (void)setPreferredVideoRules;
 - (id)supportedDecodingRulesForBitrate:(id)arg1 andPayload:(int)arg2;

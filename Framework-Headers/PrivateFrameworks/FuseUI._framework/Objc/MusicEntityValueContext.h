@@ -10,7 +10,7 @@
 #import <FuseUI/NSCopying-Protocol.h>
 
 @class MPPlaybackContext, MPUContentItemIdentifierCollection;
-@protocol MusicEntityValueProviding;
+@protocol MusicEntityProviding, MusicEntityValueProviding;
 
 @interface MusicEntityValueContext : NSObject <NSCoding, NSCopying>
 {
@@ -18,6 +18,7 @@
     BOOL _wantsItemGlobalIndex;
     BOOL _wantsItemIdentifierCollection;
     BOOL _wantsItemPlaybackContext;
+    BOOL _wantsContainerDownloadInformationEntityProvider;
     BOOL _wantsContainerEntityValueProvider;
     BOOL _wantsContainerIdentifierCollection;
     BOOL _wantsContainerPlaybackContext;
@@ -28,8 +29,10 @@
     MPUContentItemIdentifierCollection *_itemIdentifierCollection;
     MPPlaybackContext *_containerPlaybackContext;
     MPPlaybackContext *_itemPlaybackContext;
+    id<MusicEntityProviding> _containerDownloadInformationEntityProvider;
 }
 
+@property (strong, nonatomic) id<MusicEntityProviding> containerDownloadInformationEntityProvider; // @synthesize containerDownloadInformationEntityProvider=_containerDownloadInformationEntityProvider;
 @property (strong, nonatomic) id<MusicEntityValueProviding> containerEntityValueProvider; // @synthesize containerEntityValueProvider=_containerEntityValueProvider;
 @property (copy, nonatomic) MPUContentItemIdentifierCollection *containerIdentifierCollection; // @synthesize containerIdentifierCollection=_containerIdentifierCollection;
 @property (strong, nonatomic) MPPlaybackContext *containerPlaybackContext; // @synthesize containerPlaybackContext=_containerPlaybackContext;
@@ -38,6 +41,7 @@
 @property (nonatomic) unsigned long long itemGlobalIndex; // @synthesize itemGlobalIndex=_itemGlobalIndex;
 @property (copy, nonatomic) MPUContentItemIdentifierCollection *itemIdentifierCollection; // @synthesize itemIdentifierCollection=_itemIdentifierCollection;
 @property (strong, nonatomic) MPPlaybackContext *itemPlaybackContext; // @synthesize itemPlaybackContext=_itemPlaybackContext;
+@property (nonatomic) BOOL wantsContainerDownloadInformationEntityProvider; // @synthesize wantsContainerDownloadInformationEntityProvider=_wantsContainerDownloadInformationEntityProvider;
 @property (nonatomic) BOOL wantsContainerEntityValueProvider; // @synthesize wantsContainerEntityValueProvider=_wantsContainerEntityValueProvider;
 @property (nonatomic) BOOL wantsContainerIdentifierCollection; // @synthesize wantsContainerIdentifierCollection=_wantsContainerIdentifierCollection;
 @property (nonatomic) BOOL wantsContainerPlaybackContext; // @synthesize wantsContainerPlaybackContext=_wantsContainerPlaybackContext;

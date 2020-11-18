@@ -40,6 +40,7 @@
 @property (readonly, nonatomic) BOOL shouldCropImageToCircle;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsActions;
+@property (readonly, nonatomic) BOOL supportsExpansion;
 @property (readonly, nonatomic) BOOL supportsImageAsyncLoading;
 @property (readonly, copy, nonatomic) NSString *title;
 @property (readonly, nonatomic) unsigned long long titleMaxLines;

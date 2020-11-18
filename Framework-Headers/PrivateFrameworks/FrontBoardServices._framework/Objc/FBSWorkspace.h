@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <FrontBoardServices/FBSWorkspaceClientDelegate-Protocol.h>
 
@@ -54,6 +54,7 @@
 - (void)requestSceneCreationWithInitialClientSettings:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)requestSystemAnimationFence;
 - (id)sceneWithIdentifier:(id)arg1;
+- (void)synchronizeSystemAnimationFencesWithCleanUpBlock:(CDUnknownBlockType)arg1;
 - (void)synchronizeSystemAnimationFencesWithSpinCleanUpBlock:(CDUnknownBlockType)arg1;
 - (BOOL)trackSystemAnimationFence:(id)arg1;
 

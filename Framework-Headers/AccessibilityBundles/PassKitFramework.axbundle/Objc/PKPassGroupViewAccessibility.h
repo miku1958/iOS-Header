@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityDismissModalGroup;
 - (BOOL)_accessibilityScrollToVisible;
+- (id)_axHeaderViewObscuredByPasscard;
 - (BOOL)_axIsBackFacing;
 - (BOOL)_axIsCardFirstInPile;
 - (BOOL)_axIsOnlyCardInPile;

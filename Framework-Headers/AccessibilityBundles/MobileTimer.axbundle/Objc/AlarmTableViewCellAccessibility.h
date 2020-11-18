@@ -10,12 +10,12 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityLabel;
-- (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (id)init;
 

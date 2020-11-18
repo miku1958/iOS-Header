@@ -8,18 +8,13 @@
 
 #import <WatchKit/NSCopying-Protocol.h>
 
-@class NSString;
-
 @interface SPProtoAudioFilePlayerCurrentTime : PBCodable <NSCopying>
 {
     double _currentTime;
-    NSString *_identifier;
 }
 
 @property (nonatomic) double currentTime; // @synthesize currentTime=_currentTime;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 
-- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

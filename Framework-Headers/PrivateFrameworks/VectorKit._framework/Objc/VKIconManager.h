@@ -19,6 +19,10 @@
     NSMapTable *_atlases;
     NSLock *_atlasesLock;
     NSArray *_nonRegionalResourceNames;
+    struct _opaque_pthread_rwlock_t {
+        long long __sig;
+        char __opaque[192];
+    } _nameToStyleManagerLock;
     struct map<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StyleManager>, NSStringMapComparison, std::__1::allocator<std::__1::pair<const geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StyleManager>>>> _nameToStyleManager;
 }
 

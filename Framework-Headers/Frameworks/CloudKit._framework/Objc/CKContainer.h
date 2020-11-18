@@ -79,6 +79,7 @@
 - (void)_fetchUserIdentityWithInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_initWithContainerIdentifier:(id)arg1;
 - (id)_initWithContainerIdentifier:(id)arg1 environment:(long long)arg2;
+- (void)_prepareForDaemonLaunch;
 - (void)_setupWithContainerID:(id)arg1 accountInfoOverride:(id)arg2;
 - (long long)_untrustedDatabaseEnvironment;
 - (id)_untrustedEntitlementForKey:(id)arg1;

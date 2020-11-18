@@ -25,6 +25,8 @@
 @property (readonly, nonatomic, getter=isPlayable) BOOL playable;
 @property (readonly, nonatomic) AVAssetTrack *track;
 @property (readonly, nonatomic) int trackID;
+@property (readonly, nonatomic) NSString *unicodeLanguageCode;
+@property (readonly, nonatomic) NSString *unicodeLanguageIdentifier;
 
 + (id)mediaSelectionOptionForAsset:(id)arg1 group:(id)arg2 dictionary:(id)arg3 hasUnderlyingTrack:(BOOL)arg4;
 - (id)_ancillaryDescription;
@@ -41,6 +43,7 @@
 - (id)associatedExtendedLanguageTag;
 - (id)associatedMediaSelectionOptionInMediaSelectionGroup:(id)arg1;
 - (id)associatedPersistentIDs;
+- (id)associatedUnicodeLanguageIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

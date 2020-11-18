@@ -9,16 +9,15 @@
 @interface MusicContextualLibraryUpdateAlertAction : MusicContextualAlertAction
 {
     BOOL _isAddAction;
-    BOOL _isDeleteLibraryUpdate;
     BOOL _isKeepLocalAction;
+    BOOL _isRemoveAction;
 }
 
 @property (readonly, nonatomic) BOOL isAddAction; // @synthesize isAddAction=_isAddAction;
-@property (readonly, nonatomic) BOOL isDeleteLibraryUpdate; // @synthesize isDeleteLibraryUpdate=_isDeleteLibraryUpdate;
 @property (readonly, nonatomic) BOOL isKeepLocalAction; // @synthesize isKeepLocalAction=_isKeepLocalAction;
+@property (readonly, nonatomic) BOOL isRemoveAction; // @synthesize isRemoveAction=_isRemoveAction;
 
-+ (void)_showDeleteConfirmationActionAlertControllerWithTitle:(id)arg1 deleteActionTitle:(id)arg2 additionalPresentationHandler:(CDUnknownBlockType)arg3 deletionHandler:(CDUnknownBlockType)arg4 didDismissHandler:(CDUnknownBlockType)arg5;
-+ (void)getContextualLibraryAddRemoveAction:(id *)arg1 keepLocalAction:(id *)arg2 forEntityValueContext:(id)arg3 overrideItemEntityProvider:(id)arg4 shouldDismissHandler:(CDUnknownBlockType)arg5 additionalPresentationHandler:(CDUnknownBlockType)arg6 didDismissHandler:(CDUnknownBlockType)arg7;
++ (void)getContextualLibraryAddAction:(id *)arg1 removeAction:(id *)arg2 keepLocalAction:(id *)arg3 forEntityValueContext:(id)arg4 overrideItemEntityProvider:(id)arg5 shouldDismissHandler:(CDUnknownBlockType)arg6 additionalPresentationHandler:(CDUnknownBlockType)arg7 didDismissHandler:(CDUnknownBlockType)arg8;
 + (id)notificationTokenForOverrideItemEntityProvider:(id)arg1 queue:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 
 @end

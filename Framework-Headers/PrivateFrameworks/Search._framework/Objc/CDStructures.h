@@ -15,3 +15,9 @@ struct CGSize {
     double _field2;
 };
 
+struct WaitingResults_s {
+    BOOL _field1;
+    struct __CFArray *_field2;
+    int _field3;
+};
+

@@ -19,12 +19,12 @@
 @property (readonly, nonatomic) HMDCharacteristic *characteristic; // @synthesize characteristic=_characteristic;
 @property (strong, nonatomic) id eventValue; // @synthesize eventValue=_eventValue;
 
++ (id)characteristicEventWithDictionary:(id)arg1 home:(id)arg2 error:(id *)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCharacteristic:(id)arg1 eventValue:(id)arg2;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDictionary:(id)arg1 home:(id)arg2;
 
 @end
 

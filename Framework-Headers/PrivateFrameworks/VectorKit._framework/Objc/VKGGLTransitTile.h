@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
     struct vector<std::__1::shared_ptr<vk::TransitParentNode>, std::__1::allocator<std::__1::shared_ptr<vk::TransitParentNode>>> _parentNodes;
     struct vector<std::__1::shared_ptr<vk::TransitOrphanNode>, std::__1::allocator<std::__1::shared_ptr<vk::TransitOrphanNode>>> _orphanNodes;
     struct unique_ptr<ggl::RibbonLayer<ggl::TransitRibbonDescriptor>, std::__1::default_delete<ggl::RibbonLayer<ggl::TransitRibbonDescriptor>>> _lineLayer;
-    struct map<unsigned int, ggl::RibbonBatch<ggl::TransitRibbonDescriptor>*, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, ggl::RibbonBatch<ggl::TransitRibbonDescriptor>*>>> _lineBatches;
     struct unique_ptr<ggl::TransitLineRibbon::Shader::Setup, std::__1::default_delete<ggl::TransitLineRibbon::Shader::Setup>> _lineStrokeShaderSetup;
     struct unique_ptr<ggl::TransitLineRibbon::Shader::Setup, std::__1::default_delete<ggl::TransitLineRibbon::Shader::Setup>> _lineFillShaderSetup;
     struct unique_ptr<md::StyleTexture<vk::TransitLineSegment::StylePixel>, std::__1::default_delete<md::StyleTexture<vk::TransitLineSegment::StylePixel>>> _lineFillStyleTexture;
@@ -33,6 +32,7 @@ __attribute__((visibility("hidden")))
     float _displayConnectionInflation;
     float _alphaScale;
     BOOL _didLineDataChange;
+    BOOL _shouldUpdateMergedLinesForNodes;
     shared_ptr_887a193f _dataOverrideManager;
     VKAnimation *_animation;
 }
@@ -48,8 +48,9 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_createDisplayConnectionsWithLoader:(struct Loader *)arg1;
-- (void)_createLinesWithLoader:(struct Loader *)arg1 countLineSegments:(unsigned long long)arg2;
+- (void)_createLinesWithLoader:(struct Loader *)arg1;
 - (void)_createNodes;
+- (void)_prepareLines;
 - (float)_tilePerPoint:(id)arg1;
 - (void)addTransitLinesAtGroundPoint:(const struct VKPoint *)arg1 toArray:(vector_1e3b8d07 *)arg2;
 - (void)addTransitLinesInRect:(const CDStruct_d2b197d1 *)arg1 toSet:(unordered_set_e09f79ea *)arg2;

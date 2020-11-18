@@ -44,7 +44,7 @@
 - (void)queueDidEndNetworkActivityMessageForFetch:(id)arg1;
 - (void)queueMessageToDelegate:(CDUnknownBlockType)arg1;
 - (void)queueUncancelableMessageToDelegate:(CDUnknownBlockType)arg1;
-- (void)setPriorityResultsFuture:(id)arg1;
+- (void)setDuetResultsFuture:(id)arg1;
 - (id)sortResults;
 - (id)suppressResultsWithAddresses:(id)arg1;
 

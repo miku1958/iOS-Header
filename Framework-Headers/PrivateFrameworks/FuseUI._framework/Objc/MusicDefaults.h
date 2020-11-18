@@ -28,6 +28,8 @@
 @property (strong, nonatomic) NSNumber *lastKnownStoreAccountUniqueIdentifier;
 @property (nonatomic) BOOL lastKnownSupportsConnect;
 @property (copy, nonatomic) NSDictionary *lastKnownTabConfigurations;
+@property (nonatomic) long long lastModifiedPlaylistID;
+@property (strong, nonatomic) NSDate *lastMyMusicSearchDate;
 @property (readonly, nonatomic, getter=isPinningEnabled) BOOL pinningEnabled;
 @property (nonatomic) unsigned long long playbackSpeed;
 @property (nonatomic) BOOL playlistsOverviewShowsOnlyOfflinePlaylists;

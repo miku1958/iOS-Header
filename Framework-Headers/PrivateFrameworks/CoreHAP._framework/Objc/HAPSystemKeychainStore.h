@@ -66,7 +66,7 @@
 - (BOOL)saveKeyPair:(id)arg1 username:(id)arg2 syncable:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)savePeripheralIdentifier:(id)arg1 forAccessoryName:(id)arg2 protocolVersion:(unsigned long long)arg3 error:(id *)arg4;
 - (BOOL)savePublicKey:(id)arg1 forAccessoryName:(id)arg2 error:(id *)arg3;
-- (void)updateActiveControllerPairingIdentifier:(id)arg1;
+- (BOOL)updateActiveControllerPairingIdentifier:(id)arg1;
 - (BOOL)updateCurrentiCloudIdentifier:(id)arg1 controllerPairingIdentifier:(id)arg2 error:(id *)arg3;
 - (BOOL)updatePeripheralIdentifier:(id)arg1 forAccessoryName:(id)arg2 protocolVersion:(unsigned long long)arg3 error:(id *)arg4;
 

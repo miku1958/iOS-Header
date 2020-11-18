@@ -12,6 +12,7 @@
 @interface MFProgressView : UIView
 {
     double _stroke;
+    double _diameter;
     CADisplayLink *_displayLink;
     double _displayedProgress;
     double _targetProgress;
@@ -36,6 +37,7 @@
 - (void)dealloc;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithProgressViewStyle:(int)arg1 stroke:(double)arg2 frame:(struct CGRect)arg3;
+- (struct CGSize)intrinsicContentSize;
 - (void)progressDidFinish;
 - (struct CGRect)scaleBaselineBoundsToScale:(struct CGSize)arg1;
 - (void)setProgress:(double)arg1;

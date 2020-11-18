@@ -26,11 +26,11 @@
 @property (readonly, nonatomic) MusicAVPlayer *player; // @synthesize player=_player;
 
 - (void).cxx_destruct;
-- (id)_addToLibraryActionForItem:(id)arg1;
 - (void)_avItemStoreIDDidChangeNotification:(id)arg1;
 - (void)_buyOffersDidChangeNotification:(id)arg1;
 - (void)_cloudLibraryEnabledDidChangeNotification:(id)arg1;
 - (id)_currentFeederContextID;
+- (void)_getLibraryAddAction:(id *)arg1 removeAction:(id *)arg2 forItem:(id)arg3;
 - (void)_handleAddItemToLibrary:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (long long)_handleAddNowPlayingItemToLibraryCommand:(id)arg1;
 - (long long)_handleAdvanceRepeatModeCommand:(id)arg1;

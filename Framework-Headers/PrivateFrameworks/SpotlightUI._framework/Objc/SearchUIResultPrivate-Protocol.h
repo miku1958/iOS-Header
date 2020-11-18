@@ -17,6 +17,7 @@
 @property (readonly, nonatomic) UIImage *placeholderImage;
 @property (readonly, nonatomic) BOOL preventImageScaling;
 @property (readonly, nonatomic) BOOL supportsActions;
+@property (readonly, nonatomic) BOOL supportsExpansion;
 @property (readonly, nonatomic) BOOL supportsImageAsyncLoading;
 
 @end

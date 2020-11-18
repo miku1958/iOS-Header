@@ -18,6 +18,7 @@
 - (id)_accessibilityTransportButton;
 - (id)_axFindSwitch;
 - (struct CGPoint)accessibilityActivationPoint;
+- (id)accessibilityElements;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 

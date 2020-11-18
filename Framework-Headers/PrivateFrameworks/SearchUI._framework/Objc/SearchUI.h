@@ -11,6 +11,7 @@
 }
 
 + (id)cardViewControllerForResult:(id)arg1 style:(unsigned long long)arg2;
++ (id)cardViewControllerForResult:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
 + (id)rowViewForResult:(id)arg1 style:(unsigned long long)arg2;
 + (id)rowViewForResults:(id)arg1 style:(unsigned long long)arg2;
 

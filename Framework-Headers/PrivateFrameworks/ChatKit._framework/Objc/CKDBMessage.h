@@ -16,6 +16,7 @@
     NSString *_groupID;
     NSString *_guid;
     NSString *_madridRoomname;
+    NSString *_displayName;
     NSString *_madridService;
     NSString *_madridAccount;
     NSString *_madridAccountGUID;
@@ -40,6 +41,7 @@
 @property (readonly, strong, nonatomic) NSString *address; // @synthesize address=_address;
 @property (readonly, copy, nonatomic) NSString *attachmentText;
 @property (readonly, strong, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, strong, nonatomic) NSString *formattedAddress; // @dynamic formattedAddress;
 @property (readonly, strong, nonatomic) NSString *groupID; // @dynamic groupID;
 @property (readonly, strong, nonatomic) NSString *guid; // @synthesize guid=_guid;

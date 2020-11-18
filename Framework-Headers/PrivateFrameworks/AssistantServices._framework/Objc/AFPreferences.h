@@ -20,9 +20,10 @@
 
 + (id)sharedPreferences;
 - (void).cxx_destruct;
+- (id)_alternativeLocaleLanguageFor:(id)arg1;
+- (id)_fallbackLocaleLanguageFor:(id)arg1;
 - (void)_internalPreferencesDidChangeExternally;
 - (void)_languageCodeDidChangeExternally;
-- (id)_localeMappedLanguageFor:(id)arg1;
 - (void)_ouputVoiceDidChangeExternally;
 - (void)_preferencesDidChangeExternally;
 - (void)_registerForInteralPrefs;
@@ -33,6 +34,7 @@
 - (void)_setDictationIsEnabledLocal:(BOOL)arg1;
 - (void)_setLoggingDefaultValue:(id)arg1 forKey:(id)arg2;
 - (BOOL)assistantIsEnabled;
+- (BOOL)assistantLanguageForceRTL;
 - (id)bestSupportedLanguageCodeForLanguageCode:(id)arg1;
 - (long long)bugReportingMode;
 - (void)dealloc;
@@ -48,8 +50,10 @@
 - (id)manualEndpointingThreshold;
 - (BOOL)offlineDictationOverride;
 - (id)outputVoice;
+- (void)resetSessionLanguage;
 - (BOOL)respectsSystemMute;
 - (void)setAssistantIsEnabled:(BOOL)arg1;
+- (void)setAssistantLanguageForceRTL:(BOOL)arg1;
 - (void)setBugReportingMode:(long long)arg1;
 - (void)setDebugButtonIsEnabled:(BOOL)arg1;
 - (void)setDictationIsEnabled:(BOOL)arg1;

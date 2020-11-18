@@ -58,7 +58,6 @@
 - (void)_didFinishAnimatedInvalidation;
 - (void)_notifyDidLayoutSubviewsIfReady;
 - (id)_parentCellForItem:(id)arg1;
-- (unsigned long long)_positionForItemAtIndexPath:(id)arg1;
 - (void)_updateContentOffsetForTucking;
 - (void)_updateLayoutOfCollectionViewCell:(id)arg1;
 - (void)_updateLayoutOfVisibleCollectionViewCells;

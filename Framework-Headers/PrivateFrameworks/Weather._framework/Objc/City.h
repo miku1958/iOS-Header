@@ -155,6 +155,7 @@
 - (long long)timeDigit;
 - (void)update;
 - (id)updateTimeString;
+- (void)updateTimeZoneWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (int)weatherDataAge;
 - (id)windDirectionAsString:(double)arg1;
 

@@ -14,6 +14,7 @@
 @interface SKUIItemOfferButton : UIControl <SKUIViewElementOfferButton>
 {
     UIColor *_backgroundColor;
+    BOOL _borderCornerRadiusMatchesHalfBoundingDimension;
     UIView *_borderView;
     SKUIFocusedTouchGestureRecognizer *_cancelGestureRecognizer;
     UIImage *_cloudImage;
@@ -37,8 +38,12 @@
     BOOL _usesDrawRectPath;
     SKUIItemOfferButtonState *_state;
     UIImageView *_universalImageView;
+    CDUnknownBlockType _centerImageProvider;
+    double _borderColorAlphaMultiplier;
 }
 
+@property (nonatomic) double borderColorAlphaMultiplier; // @synthesize borderColorAlphaMultiplier=_borderColorAlphaMultiplier;
+@property (copy, nonatomic) CDUnknownBlockType centerImageProvider; // @synthesize centerImageProvider=_centerImageProvider;
 @property (copy, nonatomic) UIColor *cloudTintColor; // @synthesize cloudTintColor=_cloudTintColor;
 @property (copy, nonatomic) NSString *confirmationTitle;
 @property (nonatomic) long long confirmationTitleStyle; // @synthesize confirmationTitleStyle=_confirmationTitleStyle;
@@ -76,6 +81,7 @@
 - (id)_buttonPropertiesForState:(id)arg1;
 - (void)_cancelGestureAction:(id)arg1;
 - (double)_horizontalInsetForTitleStyle:(long long)arg1;
+- (id)_imageForProgressType:(long long)arg1;
 - (void)_insertBorderView;
 - (void)_insertCancelGestureRecognizer;
 - (void)_insertImageView;

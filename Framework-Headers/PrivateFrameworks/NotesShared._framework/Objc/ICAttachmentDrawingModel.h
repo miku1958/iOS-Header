@@ -6,7 +6,7 @@
 
 #import <NotesShared/ICAttachmentModel.h>
 
-@class ICDrawing, ICDrawingVersionedDocument;
+@class ICDrawing, ICDrawingVersionedDocument, UIImage;
 
 @interface ICAttachmentDrawingModel : ICAttachmentModel
 {
@@ -14,6 +14,7 @@
 }
 
 @property (readonly, nonatomic) ICDrawing *drawing;
+@property (readonly, nonatomic) UIImage *imageForActivityItem;
 
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
 - (void).cxx_destruct;
@@ -26,7 +27,6 @@
 - (CDUnknownBlockType)genericBrickThumbnailCreator;
 - (CDUnknownBlockType)genericListThumbnailCreator;
 - (BOOL)hasPreviews;
-- (struct UIImage *)imageForActivityItem;
 - (void)mergeWithMergeableData:(id)arg1;
 - (BOOL)needToGeneratePreviews;
 - (long long)previewImageOrientation;

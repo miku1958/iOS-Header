@@ -12,6 +12,8 @@
 @protocol _UISearchControllerPresenting <NSObject>
 
 @property (readonly, nonatomic) UIPresentationController<_UISearchControllerPresenting> *adaptivePresentationController;
+@property (readonly, nonatomic) BOOL animatorShouldSizeResultsContainerView;
+@property (readonly, nonatomic) unsigned long long edgeForHidingNavigationBar;
 @property (readonly, nonatomic) struct CGRect finalFrameForContainerView;
 @property (readonly, nonatomic) BOOL forceObeyNavigationBarInsets;
 @property (readonly, nonatomic) double resultsControllerContentOffset;

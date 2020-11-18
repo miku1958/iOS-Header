@@ -84,7 +84,7 @@
 + (void)loadFlightWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)loadFlightsWithNumber:(unsigned long long)arg1 airlineCode:(id)arg2 date:(id)arg3 dateType:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)cleanParser;
-- (void)extractTimeForFlightStep:(id)arg1 fromNode:(struct _xmlNode *)arg2 formatter:(id)arg3;
+- (void)extractTimeForFlightStep:(id)arg1 fromNode:(struct _xmlNode *)arg2 formatter:(id)arg3 departure:(BOOL)arg4;
 - (id)parseAirlines:(struct _xmlNode *)arg1;
 - (id)parseAirports:(struct _xmlNode *)arg1;
 - (id)parseFlightData:(id)arg1;

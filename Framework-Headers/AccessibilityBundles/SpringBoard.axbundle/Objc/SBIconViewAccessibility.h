@@ -20,6 +20,7 @@
 - (BOOL)_accessibilityIsInCmdTabSwitcher;
 - (BOOL)_accessibilityIsInFolder;
 - (id)_accessibilityScrollStatus;
+- (id)_accessibilitySupportGesturesAttributes;
 - (BOOL)_accessibilitySupportsActivateAction;
 - (id)_accessibilityUserTestingChildren;
 - (void)_updateCloseBoxAnimated:(BOOL)arg1;

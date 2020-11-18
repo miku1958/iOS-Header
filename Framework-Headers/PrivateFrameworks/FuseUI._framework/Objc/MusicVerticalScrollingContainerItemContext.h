@@ -34,10 +34,11 @@
 
 - (void).cxx_destruct;
 - (id)_contentScrollView;
+- (void)_handleContentScrollViewDidChangeNotification:(id)arg1;
 - (void)_notifyDelegateOfUpdatedContentHeightInContentScrollView;
 - (void)_tearDownContentScrollView;
-- (void)_updateLayoutOfItemView:(id)arg1 withContentScrollView:(id)arg2 inCell:(id)arg3 withPosition:(unsigned long long)arg4 containerCollectionView:(id)arg5;
-- (id)_verticallyAdjustableScrollView;
+- (void)_updateLayoutOfItemView:(id)arg1 inCell:(id)arg2 withContainerCollectionView:(id)arg3;
+- (id)_verticallyAdjustableScrollViewAllowingForcedLayoutUpToContentScrollView:(BOOL)arg1;
 - (id)_viewAllowingLoadingFromViewController:(BOOL)arg1;
 - (void)beginOverridingContentHeightToValue:(double)arg1;
 - (double)contentHeightForContentWidth:(double)arg1 withTemporaryParentView:(id)arg2;
@@ -45,9 +46,9 @@
 - (void)endOverridingContentHeight;
 - (id)initWithItem:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)prepareViewForDisplayInCell:(id)arg1 withPosition:(unsigned long long)arg2 containerCollectionView:(id)arg3;
+- (void)prepareViewForDisplayInCell:(id)arg1 withContainerCollectionView:(id)arg2;
 - (void)prepareViewForTearDown;
-- (void)updateLayoutOfItemViewInCell:(id)arg1 withPosition:(unsigned long long)arg2 containerCollectionView:(id)arg3;
+- (void)updateLayoutOfItemViewInCell:(id)arg1 withContainerCollectionView:(id)arg2;
 
 @end
 

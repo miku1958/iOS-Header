@@ -15,6 +15,7 @@
     NSDate *_startDate;
     NSDate *_endDate;
     NSString *_location;
+    NSString *_relatedUniqueIdentifier;
     unsigned long long _view;
 }
 

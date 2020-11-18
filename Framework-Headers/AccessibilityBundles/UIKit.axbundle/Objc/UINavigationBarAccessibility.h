@@ -17,6 +17,7 @@
 - (id)_accessibilityFuzzyHitTestElements;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (BOOL)_accessibilityOnlyComparesByXAxis;
 - (BOOL)_canHandleStatusBarMouseEvents:(struct __GSEvent *)arg1;
 - (void)_navBarButtonPressed:(id)arg1;
 - (void)_setLeftViews:(id)arg1 rightViews:(id)arg2;

@@ -6,11 +6,11 @@
 
 #import <CoreData/NSManagedObject.h>
 
-#import <Notes/ICSearchIndexable-Protocol.h>
+#import <Notes/ICSearchIndexableTarget-Protocol.h>
 
 @class NSData, NSString, NoteObject;
 
-@interface NoteBodyObject : NSManagedObject <ICSearchIndexable>
+@interface NoteBodyObject : NSManagedObject <ICSearchIndexableTarget>
 {
 }
 
@@ -25,18 +25,7 @@
 @property (readonly) Class superclass;
 
 - (id)contentAsPlainTextPreservingNewlines;
-- (void)deleteFromNoteContextUsingIndexerContext:(id)arg1;
-- (id)identifier;
-- (BOOL)isHiddenFromSearch;
-- (id)modificationDate;
-- (id)objectIdentifier;
-- (id)searchIndexStringsOutHasAdditionalStrings:(BOOL *)arg1;
-- (id)searchIndexableTitleUsingContentTextIfNecessary:(id)arg1;
-- (BOOL)searchResultCanBeDeletedFromNoteContext;
-- (unsigned long long)searchResultsSection;
-- (BOOL)shouldUpdateIndexForChangedValues:(id)arg1;
 - (id)targetSearchIndexable;
-- (long long)visibilityTestingType;
 
 @end
 

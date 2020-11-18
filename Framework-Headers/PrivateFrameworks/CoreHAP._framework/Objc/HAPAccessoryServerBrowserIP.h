@@ -37,7 +37,7 @@
 - (void)_handleBonjourBrowserEvent:(unsigned int)arg1 eventInfo:(id)arg2;
 - (void)_handleBonjourRemoveWithEventInfo:(id)arg1;
 - (int)_initializeAndStartBonjourBrowser;
-- (void)_invalidateUnpairedAccessoryServers;
+- (void)_invalidateAccessoryServers:(BOOL)arg1;
 - (void)_pendBonjourEvent:(id)arg1;
 - (void)_pendBonjourRemoveEvent:(id)arg1;
 - (void)_processPendingBonjourEvent:(id)arg1;

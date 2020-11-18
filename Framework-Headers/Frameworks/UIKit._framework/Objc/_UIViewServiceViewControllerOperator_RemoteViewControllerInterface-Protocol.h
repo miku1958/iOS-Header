@@ -10,6 +10,7 @@
 @class BSMachPortSendRight, FBSDisplay, NSArray, NSString, NSUUID, UIColor, UITraitCollection, _UIViewControllerTransitionCoordinatorContextDescription;
 
 @protocol _UIViewServiceViewControllerOperator_RemoteViewControllerInterface <_UIViewServiceDeputy_UIViewServiceInterface, _UIViewServiceUIBehaviorInterface>
+- (void)__cancelAlertActionWithToken:(long long)arg1;
 - (void)__createViewController:(NSString *)arg1 withAppearanceSerializedRepresentations:(NSArray *)arg2 legacyAppearance:(BOOL)arg3 hostAccessibilityServerPort:(BSMachPortSendRight *)arg4 canShowTextServices:(BOOL)arg5 replyHandler:(void (^)(_UIHostedWindowHostingHandle *, NSArray *, long long, BOOL, BSMachPortSendRight *, NSError *))arg6;
 - (void)__createViewController:(NSString *)arg1 withContextToken:(NSUUID *)arg2 fbsDisplays:(NSArray *)arg3 appearanceSerializedRepresentations:(NSArray *)arg4 legacyAppearance:(BOOL)arg5 traitCollection:(UITraitCollection *)arg6 initialInterfaceOrientation:(long long)arg7 hostAccessibilityServerPort:(BSMachPortSendRight *)arg8 canShowTextServices:(BOOL)arg9 replyHandler:(void (^)(_UIHostedWindowHostingHandle *, NSArray *, long long, BOOL, BSMachPortSendRight *, NSError *))arg10;
 - (void)__dimmingViewWasTapped;
@@ -39,6 +40,7 @@
 - (void)__hostedActionSheetClickedButtonAtIndex:(long long)arg1;
 - (void)__hostedActionSheetDidDismissWithClickedButtonIndex:(long long)arg1;
 - (void)__hostedActionSheetDidPresent;
+- (void)__redoActionWithToken:(long long)arg1;
 - (void)__restoreStateForSession:(NSString *)arg1 restorationAnchor:(NSString *)arg2;
 - (void)__saveStateForSession:(NSString *)arg1 restorationAnchor:(NSString *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)__scrollToTopFromTouchAtViewLocation:(struct CGPoint)arg1 resultHandler:(void (^)(BOOL, NSError *))arg2;
@@ -48,5 +50,6 @@
 - (void)__setHostViewUnderlapsStatusBar:(BOOL)arg1;
 - (void)__setServiceInPopover:(BOOL)arg1;
 - (void)__textServiceDidDismiss;
+- (void)__undoActionWithToken:(long long)arg1;
 @end
 

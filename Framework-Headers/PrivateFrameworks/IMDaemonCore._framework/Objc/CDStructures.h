@@ -10,6 +10,10 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct NSArray {
+    Class _field1;
+};
+
 struct _FZChatRoomValidity {
     int _field1;
     unsigned short _field2;

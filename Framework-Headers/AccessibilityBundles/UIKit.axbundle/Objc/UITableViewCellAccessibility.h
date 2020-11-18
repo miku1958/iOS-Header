@@ -27,12 +27,15 @@
 - (long long)_accessibilityCompareElement:(id)arg1 toElement:(id)arg2;
 - (id)_accessibilityContainerElements;
 - (id)_accessibilityCustomActions;
+- (id)_accessibilityDetailTextLabelIfExists;
+- (id)_accessibilityEditableTextFieldIfExists;
 - (id)_accessibilityFindRemoveConfirmSubview;
 - (id)_accessibilityFindRemoveSwitchSubview;
 - (void)_accessibilityHandleRemoveConfirm;
 - (void)_accessibilityHandleRemoveSwitch;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityIgnoreInternalLabels;
+- (id)_accessibilityImageViewIfExists;
 - (id)_accessibilityIndexPath;
 - (struct _NSRange)_accessibilityIndexPathAsRange;
 - (id)_accessibilityInternalData;
@@ -68,6 +71,7 @@
 - (BOOL)_accessibilityTableViewIsOpaque;
 - (id)_accessibilityTableViewSwitch;
 - (id)_accessibilityTextElementText;
+- (id)_accessibilityTextLabelIfExists;
 - (void)_accessibilityUpdateContainerElementReferencesIfNeededForNewElements:(id)arg1;
 - (void)_accessibilityUpdateRemoveControl;
 - (id)_accessibilityUserTestingChildren;

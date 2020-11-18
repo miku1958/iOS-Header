@@ -8,7 +8,7 @@
 
 #import <ITMLKit/ISURLOperationDelegate-Protocol.h>
 
-@class IKJSFoundation, JSContext, NSError, NSMutableArray, NSString;
+@class IKJSFoundation, IKJSInspectorController, JSContext, NSError, NSMutableArray, NSString;
 @protocol IKAppContextDelegate, IKApplication, OS_dispatch_source;
 
 @interface IKAppContext : NSObject <ISURLOperationDelegate>
@@ -27,6 +27,7 @@
     JSContext *_jsContext;
     NSMutableArray *_postEvaluationBlocks;
     IKJSFoundation *_jsFoundation;
+    IKJSInspectorController *_webInspectorController;
     NSString *_responseScript;
     NSError *_responseError;
     id _reloadData;
@@ -52,6 +53,7 @@
 @property (copy, nonatomic) NSString *responseScript; // @synthesize responseScript=_responseScript;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isTrusted) BOOL trusted; // @synthesize trusted=_trusted;
+@property (strong, nonatomic) IKJSInspectorController *webInspectorController; // @synthesize webInspectorController=_webInspectorController;
 
 + (id)currentAppContext;
 + (void)registerPrivateProtocols:(id)arg1 forClass:(Class)arg2;
@@ -62,6 +64,7 @@
 - (id)_errorWithMessage:(id)arg1;
 - (void)_evaluate:(CDUnknownBlockType)arg1;
 - (void)_evaluateFoundationWithDeviceConfig:(id)arg1;
+- (void)_invalidateJSThread;
 - (BOOL)_isAppTrusted;
 - (void)_jsThreadMain;
 - (id)_preferredLaunchURL;

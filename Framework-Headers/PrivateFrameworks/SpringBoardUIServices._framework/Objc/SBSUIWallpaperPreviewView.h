@@ -6,11 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <SpringBoardUIServices/ISPlayerViewDelegate-Protocol.h>
+#import <SpringBoardUIServices/SBFIrisWallpaperViewDelegate-Protocol.h>
 
 @class NSString, SBFLockScreenDateView, SBFWallpaperView, SBSUIEffectsSegmentedControl, _UILegibilityLabel;
 
-@interface SBSUIWallpaperPreviewView : UIView <ISPlayerViewDelegate>
+@interface SBSUIWallpaperPreviewView : UIView <SBFIrisWallpaperViewDelegate>
 {
     BOOL _irisPossible;
     _UILegibilityLabel *_irisInstructionsLabel1;
@@ -43,9 +43,9 @@
 - (void)dealloc;
 - (void)fadeOutIrisInstructions;
 - (id)initWithFrame:(struct CGRect)arg1 wallpaperView:(id)arg2;
+- (void)irisWallpaperViewPlaybackStateDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)playerViewPlaybackStateDidChange:(id)arg1;
 - (void)setIrisInstructionsVisible:(BOOL)arg1 animated:(BOOL)arg2;
 
 @end

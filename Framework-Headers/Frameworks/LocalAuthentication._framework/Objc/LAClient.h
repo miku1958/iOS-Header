@@ -28,10 +28,14 @@
 @property (readonly) NSData *externalizedContext; // @synthesize externalizedContext=_externalizedContext;
 @property (weak, nonatomic) id<LAUIDelegate> uiDelegate; // @synthesize uiDelegate=_uiDelegate;
 
++ (void)_performInvalidationBlocks:(id)arg1;
++ (id)_queue;
++ (id)_recoveryQueue;
 + (id)clientWithExternalizedContext:(id)arg1 uiDelegate:(id)arg2 error:(id *)arg3;
 + (void)clientWithExternalizedContext:(id)arg1 uiDelegate:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
-- (id)_invalidatedCallError;
+- (void)_performCallBool:(CDUnknownBlockType)arg1 finally:(CDUnknownBlockType)arg2;
+- (void)_performCallId:(CDUnknownBlockType)arg1 finally:(CDUnknownBlockType)arg2;
 - (void)_recoverConnection;
 - (void)_scheduleRecovery;
 - (BOOL)_setPermanentError:(id)arg1;

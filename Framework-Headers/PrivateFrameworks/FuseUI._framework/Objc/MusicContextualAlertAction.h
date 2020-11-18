@@ -17,6 +17,7 @@
 
 + (id)_actionWithTitle:(id)arg1 descriptiveText:(id)arg2 image:(id)arg3 style:(long long)arg4 handler:(CDUnknownBlockType)arg5 shouldDismissHandler:(CDUnknownBlockType)arg6;
 - (void).cxx_destruct;
+- (void)clearContextualAction;
 - (void)performContextualAction;
 - (BOOL)performShouldDismiss;
 

@@ -14,7 +14,11 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)__handleHIDEvent:(struct __IOHIDEvent *)arg1;
+- (void)_accessibilityBackboardSnarfedMenuDownAtTimestamp:(unsigned long long)arg1;
+- (id)_accessibilityLastMenuSnarfTimeValue;
+- (void)_accessibilitySetLastMenuSnarfTimeValue:(id)arg1;
 - (void)_menuButtonUp:(struct __IOHIDEvent *)arg1;
+- (double)_menuHoldTime;
 - (BOOL)isMenuDoubleTapAllowed;
 
 @end

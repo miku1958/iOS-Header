@@ -19,9 +19,11 @@
     NSArray *_enabledExternalServices;
     CDUnknownBlockType _outputBlock;
     NSString *_text;
+    BOOL _attachmentWasDownloadedAndNeedsRemoval;
 }
 
 @property (strong, nonatomic) MSCLAccountStore *accountStore; // @synthesize accountStore=_accountStore;
+@property (nonatomic) BOOL attachmentWasDownloadedAndNeedsRemoval; // @synthesize attachmentWasDownloadedAndNeedsRemoval=_attachmentWasDownloadedAndNeedsRemoval;
 @property (copy, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
 @property (nonatomic, getter=isAttributed) BOOL attributed; // @synthesize attributed=_attributed;
 @property (copy, nonatomic) SKUIMediaSocialAuthor *author; // @synthesize author=_author;
@@ -32,6 +34,7 @@
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 
 - (void).cxx_destruct;
+- (id)_URLByCopyingAssetAtURL:(id)arg1 error:(id *)arg2;
 - (id)_URLByResolvingImageAssetURL:(id)arg1 UTI:(id *)arg2 error:(id *)arg3;
 - (id)_URLByResolvingVideoAssetURL:(id)arg1 UTI:(id *)arg2 error:(id *)arg3;
 - (id)_URLByWritingData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;

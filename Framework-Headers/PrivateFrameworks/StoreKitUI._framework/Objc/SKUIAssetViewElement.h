@@ -6,12 +6,13 @@
 
 #import <StoreKitUI/SKUIViewElement.h>
 
-@class NSURL;
+@class NSString, NSURL;
 
 @interface SKUIAssetViewElement : SKUIViewElement
 {
     double _initialPlaybackTime;
     long long _itemIdentifier;
+    NSString *_secureKeyDeliveryType;
     double _playbackDuration;
     NSURL *_url;
 }
@@ -20,6 +21,7 @@
 @property (nonatomic) double initialPlaybackTime; // @synthesize initialPlaybackTime=_initialPlaybackTime;
 @property (readonly, nonatomic) long long itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property (readonly, nonatomic) double playbackDuration; // @synthesize playbackDuration=_playbackDuration;
+@property (readonly, copy, nonatomic) NSString *secureKeyDeliveryType; // @synthesize secureKeyDeliveryType=_secureKeyDeliveryType;
 
 - (void).cxx_destruct;
 - (id)applyUpdatesWithElement:(id)arg1;

@@ -21,14 +21,11 @@
 }
 
 @property (readonly) MTLCompiler *compiler; // @synthesize compiler=_compiler;
-@property (readonly, getter=isDepth24Stencil8PixelFormatSupported) BOOL depth24Stencil8PixelFormatSupported;
 @property (readonly) unsigned long long globalTraceObjectID; // @synthesize globalTraceObjectID=_globalTraceObjectID;
-@property (readonly, getter=isHeadless) BOOL headless;
 @property (readonly) unsigned long long iosurfaceReadOnlyTextureAlignmentBytes;
 @property (readonly) unsigned long long iosurfaceTextureAlignmentBytes;
 @property (readonly) const CDStruct_1f7139fa *limits;
 @property (readonly) unsigned long long linearTextureAlignmentBytes;
-@property (readonly, getter=isLowPower) BOOL lowPower;
 @property (readonly) unsigned long long maxBufferLength;
 @property (readonly) unsigned long long maxColorAttachments;
 @property (readonly) unsigned long long maxComputeBuffers;

@@ -87,6 +87,7 @@
 - (void)_tellSpeechDelegateRecordingDidBeginOnAVRecordRoute:(id)arg1;
 - (void)_tellSpeechDelegateRecordingDidCancel;
 - (void)_tellSpeechDelegateRecordingDidChangeAVRecordRoute:(id)arg1;
+- (void)_tellSpeechDelegateRecordingDidDetectStartpoint;
 - (void)_tellSpeechDelegateRecordingDidEnd;
 - (void)_tellSpeechDelegateRecordingDidFail:(id)arg1;
 - (void)_tellSpeechDelegateRecordingWillBegin;
@@ -126,6 +127,7 @@
 - (void)setAlertContextWithBulletins:(id)arg1;
 - (void)setApplicationContext:(id)arg1;
 - (void)setApplicationContextForApplicationInfos:(id)arg1;
+- (void)setApplicationContextForApplicationInfos:(id)arg1 withRefId:(id)arg2;
 - (void)setIsStark:(BOOL)arg1;
 - (void)setLockState:(BOOL)arg1 screenLocked:(BOOL)arg2;
 - (void)setOverriddenApplicationContext:(id)arg1 withContext:(id)arg2;
@@ -151,6 +153,7 @@
 - (void)usefulUserResultWillPresent;
 - (void)willPresentUI;
 - (void)willPresentUsefulUserResultWithType:(long long)arg1;
+- (void)willPresentUsefulUserResultWithType:(long long)arg1 forCommand:(id)arg2;
 - (void)willSetApplicationContextWithRefId:(id)arg1;
 
 @end

@@ -44,7 +44,7 @@
 - (void).cxx_destruct;
 - (void)executeBTAJob:(const char *)arg1 withXPCDict:(id)arg2;
 - (id)init;
-- (void)initBackgroundTaskAgentForTimerTriggers;
+- (void)initBackgroundTaskAgent;
 - (void)logError:(id)arg1 component:(id)arg2;
 - (void)start;
 

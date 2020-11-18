@@ -107,6 +107,7 @@
 - (id)_items_invokeOnIvarAccessQueue;
 - (void)_logPerformanceDataForCurrentItem;
 - (void)_logPerformanceDataForPreviousItem;
+- (struct CGSize)_maximumAVPlayerLayerDisplaySize;
 - (id)_multichannelAudioStrategy;
 - (void)_noteDisplaySize:(struct CGSize)arg1 forPlayerLayer:(id)arg2;
 - (void)_noteNewNonForcedSubtitleDisplayEnabledForPlayerItem:(id)arg1;

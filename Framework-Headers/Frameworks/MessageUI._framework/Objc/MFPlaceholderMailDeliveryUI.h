@@ -6,13 +6,25 @@
 
 #import <Message/MFOutgoingMessageDelivery.h>
 
-@class _MFPlaceholderMessageRewriter;
+#import <MessageUI/MFMessageRewriterPlaceholderResolver-Protocol.h>
 
-@interface MFPlaceholderMailDeliveryUI : MFOutgoingMessageDelivery
+@class MFPlaceholderMessageRewriter, NSString;
+
+@interface MFPlaceholderMailDeliveryUI : MFOutgoingMessageDelivery <MFMessageRewriterPlaceholderResolver>
 {
-    _MFPlaceholderMessageRewriter *_rewriter;
+    NSString *_contextID;
+    MFPlaceholderMessageRewriter *_rewriter;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
+- (id)_attachmentsContextID;
+- (id)contentForContentID:(id)arg1;
+- (id)contentForPlaceholder:(id)arg1;
+- (id)contentForURL:(id)arg1;
 - (void)dealloc;
 - (id)deliverSynchronously;
 - (id)initWithMessage:(id)arg1;

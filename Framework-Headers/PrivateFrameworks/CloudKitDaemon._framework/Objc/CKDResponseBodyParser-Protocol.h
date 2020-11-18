@@ -10,6 +10,7 @@
 
 @protocol CKDResponseBodyParser <NSObject>
 
+@property (copy, nonatomic) CDUnknownBlockType logParsedObjectBlock;
 @property (copy, nonatomic) CDUnknownBlockType objectParsedBlock;
 @property (readonly, nonatomic) NSError *parserError;
 

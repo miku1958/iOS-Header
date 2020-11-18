@@ -8,7 +8,7 @@
 
 #import <SAObjects/SAServerBoundCommand-Protocol.h>
 
-@class NSArray, NSNumber, NSString, SAVoice, SAWatchData;
+@class NSArray, NSNumber, NSString, SAMediaContentRatingRestrictions, SAVoice, SAWatchData;
 
 @interface SASetAssistantData : SABaseCommand <SAServerBoundCommand>
 {
@@ -35,6 +35,7 @@
 @property (nonatomic) BOOL inRetailStoreDemoMode;
 @property (copy, nonatomic) NSString *lastName;
 @property (copy, nonatomic) NSArray *meCards;
+@property (strong, nonatomic) SAMediaContentRatingRestrictions *mediaContentRatingRestrictions;
 @property (nonatomic) BOOL mediaPlayerExplicitContentDisallowed;
 @property (copy, nonatomic) NSString *osVersion;
 @property (copy, nonatomic) NSArray *parentalRestrictions;

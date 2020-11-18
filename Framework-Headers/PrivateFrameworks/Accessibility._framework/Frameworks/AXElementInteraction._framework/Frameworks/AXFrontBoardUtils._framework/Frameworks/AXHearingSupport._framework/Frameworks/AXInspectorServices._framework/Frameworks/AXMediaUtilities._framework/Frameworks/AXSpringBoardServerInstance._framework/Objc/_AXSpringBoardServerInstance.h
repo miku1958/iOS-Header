@@ -108,6 +108,7 @@
 - (id)_showAlert:(id)arg1;
 - (id)_showControlCenter:(id)arg1;
 - (id)_showNotificationCenter:(id)arg1;
+- (id)_simulateEdgePressHaptics:(id)arg1;
 - (void)_springBoardFinishedLaunching:(id)arg1;
 - (id)_startHearingAidServer:(id)arg1;
 - (id)_takeScreenshot:(id)arg1;

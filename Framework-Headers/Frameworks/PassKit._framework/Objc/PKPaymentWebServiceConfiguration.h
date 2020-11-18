@@ -32,6 +32,7 @@
 - (BOOL)buddyManualProvisioningEnabledForCurrentRegion;
 - (BOOL)buddyProvisioningEnabledForCurrentRegion;
 - (BOOL)cameraFirstProvisioningEnabledForCurrentRegion;
+- (BOOL)currentRegionHasProvisioningEnablementPercentage;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)findWithoutNumberEnabledForCurrentRegion;
@@ -41,6 +42,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)manualProvisioningEnabledForCurrentRegion;
 - (id)paymentSetupFeaturedNetworksForCurrentRegion;
+- (double)provisioningEnablementPercentageForCurrentRegion;
 - (id)supportedRegionsForOSVersion:(id)arg1 deviceClass:(id)arg2;
 - (id)supportedRegionsForOSVersion:(id)arg1 deviceClass:(id)arg2 platform:(id)arg3;
 

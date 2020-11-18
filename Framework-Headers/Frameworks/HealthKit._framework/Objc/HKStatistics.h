@@ -54,6 +54,7 @@
 - (void)_setStartDate:(id)arg1;
 - (id)averageQuantityForSource:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

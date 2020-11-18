@@ -125,6 +125,7 @@
 - (void)notifyPairingShouldContinue;
 - (void)notifyPasscode:(id)arg1 forDevice:(id)arg2;
 - (void)notifyStatus;
+- (void)pairingClientDidEnterPhase:(id)arg1;
 - (id)pairingID;
 - (id)pairingStorePath;
 - (void)pairingStorePathPairingID:(CDUnknownBlockType)arg1;

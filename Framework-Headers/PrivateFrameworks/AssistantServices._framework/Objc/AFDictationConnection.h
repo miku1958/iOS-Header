@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, NSString, NSXPCConnection;
-@protocol AFDictationDelegate, OS_dispatch_queue;
+#import <AssistantServices/AFNetworkAvailabilityObserver-Protocol.h>
 
-@interface AFDictationConnection : NSObject
+@class NSSet, NSString, NSXPCConnection;
+@protocol AFDictationDelegate;
+
+@interface AFDictationConnection : NSObject <AFNetworkAvailabilityObserver>
 {
     NSXPCConnection *_connection;
     NSString *_lastUsedLanguage;
@@ -20,13 +22,13 @@
     BOOL _isCapturingSpeech;
     BOOL _hasActiveRequest;
     BOOL _isWaitingForAudioFile;
-    long long _reachabilityMonitoringCounter;
-    struct __SCNetworkReachability *_reachability;
-    NSObject<OS_dispatch_queue> *_reachabilityQueue;
-    BOOL _cachedReachability;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AFDictationDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (BOOL)dictationIsEnabled;
 + (BOOL)dictationIsSupportedForLanguageCode:(id)arg1 error:(id *)arg2;
@@ -69,7 +71,7 @@
 - (void)dealloc;
 - (BOOL)dictationIsAvailableForLanguage:(id)arg1;
 - (void)endSession;
-- (id)init;
+- (void)networkAvailability:(id)arg1 isAvailable:(BOOL)arg2;
 - (float)peakPower;
 - (void)preheat;
 - (void)sendEngagementFeedback:(long long)arg1 voiceQueryIdentifier:(id)arg2;

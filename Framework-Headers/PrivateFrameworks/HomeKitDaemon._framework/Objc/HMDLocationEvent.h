@@ -18,11 +18,12 @@
 @property (strong, nonatomic) CLRegion *region; // @synthesize region=_region;
 @property (readonly, copy, nonatomic) CLRegion *uniqueRegion;
 
++ (id)locationEventWithDictionary:(id)arg1 error:(id *)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
+- (id)initWithRegion:(id)arg1;
 - (BOOL)setRegionIfValid:(id)arg1;
 
 @end

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @interface CKDJSONResponseBodyParser : NSObject <CKDResponseBodyParser>
 {
     CDUnknownBlockType _objectParsedBlock;
+    CDUnknownBlockType _logParsedObjectBlock;
     NSError *_parserError;
     NSObject<OS_dispatch_queue> *_parseQueue;
     NSMutableData *_parserData;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) CDUnknownBlockType logParsedObjectBlock; // @synthesize logParsedObjectBlock=_logParsedObjectBlock;
 @property (copy, nonatomic) CDUnknownBlockType objectParsedBlock; // @synthesize objectParsedBlock=_objectParsedBlock;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *parseQueue; // @synthesize parseQueue=_parseQueue;
 @property (strong, nonatomic) NSMutableData *parserData; // @synthesize parserData=_parserData;

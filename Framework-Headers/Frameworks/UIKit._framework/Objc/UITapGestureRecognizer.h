@@ -36,6 +36,7 @@
 - (void)_appendSubclassDescription:(id)arg1;
 - (BOOL)_delaysRecognitionForGreaterTapCounts;
 - (struct CGPoint)_digitizerLocation;
+- (long long)_finalStateForRecognition;
 - (void)_resetGestureRecognizer;
 - (void)_setAllowableSeparation:(double)arg1;
 - (void)_setAllowableTouchTimeSeparation:(double)arg1;

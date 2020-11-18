@@ -11,7 +11,9 @@
 @interface RURadioPlaybackContext : MPPlaybackContext
 {
     NSMapTable *_preparedAdSlotByRadioTrack;
+    BOOL _willContinuePlayback;
     NSArray *_allPreparedAdSlotRadioTracks;
+    RadioStationMatchContext *_nowPlayingMatchContext;
     MPAVItem *_prefixItem;
     RadioStation *_station;
     RadioStationMatchContext *_stationMatchContext;
@@ -19,10 +21,12 @@
 }
 
 @property (readonly, copy, nonatomic) NSArray *allPreparedAdSlotRadioTracks; // @synthesize allPreparedAdSlotRadioTracks=_allPreparedAdSlotRadioTracks;
+@property (strong, nonatomic) RadioStationMatchContext *nowPlayingMatchContext; // @synthesize nowPlayingMatchContext=_nowPlayingMatchContext;
 @property (strong, nonatomic) MPAVItem *prefixItem; // @synthesize prefixItem=_prefixItem;
 @property (strong, nonatomic) RadioStation *station; // @synthesize station=_station;
 @property (strong, nonatomic) RadioStationMatchContext *stationMatchContext; // @synthesize stationMatchContext=_stationMatchContext;
 @property (copy, nonatomic) NSArray *tracks; // @synthesize tracks=_tracks;
+@property (nonatomic) BOOL willContinuePlayback; // @synthesize willContinuePlayback=_willContinuePlayback;
 
 + (Class)queueFeederClass;
 - (void).cxx_destruct;

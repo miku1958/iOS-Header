@@ -6,7 +6,7 @@
 
 #import <PhotoLibraryServices/PLCloudService.h>
 
-@class NSObject, PLCloudCoalescingQueue, PLCloudPhotoLibraryManager, PLPhotoLibrary;
+@class NSObject, PLCloudPhotoLibraryManager, PLPhotoLibrary;
 @protocol OS_dispatch_queue;
 
 @interface PLCloudMetadataService : PLCloudService
@@ -14,11 +14,9 @@
     unsigned long long _version;
     NSObject<OS_dispatch_queue> *_agentQueue;
     PLPhotoLibrary *_localLibrary;
-    PLCloudCoalescingQueue *_messageQueue;
     PLCloudPhotoLibraryManager *_remoteLibrary;
 }
 
-- (void)_enumerateNodesWithLayoutStatus:(unsigned int)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)activate;
 - (BOOL)agentRunning;
 - (void)dealloc;

@@ -35,6 +35,7 @@
 - (void)_configurePlayerWhenEnteringPIP;
 - (void)_configurePlayerWhenLeavingPIP;
 - (void)_disassociateWithPIPLayer;
+- (struct CGSize)_displaySize;
 - (void)_forBoundsAnimations:(id)arg1 applyBlock:(CDUnknownBlockType)arg2;
 - (void)_forceLayout;
 - (void)_mergeClientLayersIntoMaskLayer:(id)arg1;

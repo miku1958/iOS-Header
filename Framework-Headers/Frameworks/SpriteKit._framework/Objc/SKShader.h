@@ -18,14 +18,18 @@
     NSMutableDictionary *_uniformData;
     NSString *_source;
     NSString *_fileName;
+    NSString *_compileLog;
+    BOOL _programDirty;
     shared_ptr_394c00aa _backingProgram;
     map_a51e33c7 _attributeBuffers;
+    BOOL _performFullCapture;
 }
 
 @property (readonly) map_a51e33c7 *_attributeBuffers;
 @property (readonly) shared_ptr_394c00aa _backingProgram;
 @property (readonly) shared_ptr_d7c0f433 _commands;
 @property (readonly) NSArray *_textureUniforms;
+@property BOOL performFullCapture; // @synthesize performFullCapture=_performFullCapture;
 @property (copy) NSString *source;
 @property (copy) NSArray *uniforms;
 

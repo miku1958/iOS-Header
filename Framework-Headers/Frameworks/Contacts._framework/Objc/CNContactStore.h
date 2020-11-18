@@ -14,6 +14,7 @@
 
 @property (readonly, nonatomic) CNiOSAddressBook *addressBook;
 @property (readonly, nonatomic) unsigned long long countOfPreferredNamePeople;
+@property (readonly, nonatomic) BOOL hasMultipleGroupsOrAccounts;
 @property (readonly, nonatomic) CNiOSAddressBookDataMapper *iOSMapper;
 
 + (long long)authorizationStatusForEntityType:(long long)arg1;

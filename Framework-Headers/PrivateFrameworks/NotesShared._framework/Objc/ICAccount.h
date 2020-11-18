@@ -8,7 +8,7 @@
 
 #import <NotesShared/ICCloudObject-Protocol.h>
 
-@class ICAccountProxy, ICFolder, NSSet, NSString;
+@class ICAccountProxy, ICFolder, ICSelectorDelayer, NSSet, NSString;
 
 @interface ICAccount : ICNoteContainer <ICCloudObject>
 {
@@ -17,6 +17,7 @@
     ICFolder *_defaultFolder;
     ICFolder *_trashFolder;
     ICAccountProxy *_accountProxy;
+    ICSelectorDelayer *_trashFolderHiddenSelectorDelayer;
 }
 
 @property (strong, nonatomic) ICAccountProxy *accountProxy; // @synthesize accountProxy=_accountProxy;
@@ -40,13 +41,30 @@
 @property (strong, nonatomic) NSSet *serverChangeTokens; // @dynamic serverChangeTokens;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) ICFolder *trashFolder; // @synthesize trashFolder=_trashFolder;
+@property (strong, nonatomic) ICSelectorDelayer *trashFolderHiddenSelectorDelayer; // @synthesize trashFolderHiddenSelectorDelayer=_trashFolderHiddenSelectorDelayer;
 @property (strong, nonatomic) NSString *userRecordName; // @dynamic userRecordName;
 
++ (id)accountWithIdentifier:(id)arg1 context:(id)arg2;
++ (id)accountsMatchingPredicate:(id)arg1 context:(id)arg2;
++ (id)accountsWithAccountType:(int)arg1 context:(id)arg2;
++ (id)allAccountsInContext:(id)arg1;
++ (id)allActiveAccountsInContext:(id)arg1;
 + (id)allCloudObjects;
++ (BOOL)clearAccountForAppleCloudKitTable;
++ (id)cloudKitAccountInContext:(id)arg1;
++ (id)cloudKitIfMigratedElseLocalAccountInContext:(id)arg1;
++ (id)defaultAccountInContext:(id)arg1;
++ (void)deleteAccount:(id)arg1;
 + (id)existingCloudObjectForRecordID:(id)arg1;
++ (void)initialize;
 + (id)keyPathsForValuesAffectingLocalizedName;
 + (id)keyPathsForValuesAffectingVisibleNoteContainerChildren;
++ (id)localAccountInContext:(id)arg1;
++ (void)localeDidChange:(id)arg1;
++ (id)localizedLocalAccountName;
++ (id)newAccountWithIdentifier:(id)arg1 type:(int)arg2 context:(id)arg3;
 + (id)newCloudObjectForRecord:(id)arg1;
++ (id)newLocalAccountInContext:(id)arg1;
 + (id)recordType;
 + (id)standardFolderIdentifierWithPrefix:(id)arg1 accountIdentifier:(id)arg2 accountType:(int)arg3;
 - (void).cxx_destruct;
@@ -57,6 +75,7 @@
 - (void)awakeFromFetch;
 - (void)awakeFromInsert;
 - (long long)compare:(id)arg1;
+- (unsigned long long)countOfVisibleFolders;
 - (void)createStandardFolders;
 - (void)dealloc;
 - (id)defaultFolderIdentifier;
@@ -74,9 +93,12 @@
 - (id)noteVisibilityTestingForSearchingAccount;
 - (void)noteWillBeDeletedOrUndeleted:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)predicateForFolders;
+- (id)predicateForNotesInAccount;
 - (id)predicateForSearchableAttachments;
 - (id)predicateForSearchableNotes;
 - (id)predicateForVisibleAttachments;
+- (id)predicateForVisibleFolders;
 - (id)predicateForVisibleNotes;
 - (id)predicateForVisibleNotesIncludingTrash;
 - (void)prepareForDeletion;
@@ -95,6 +117,7 @@
 - (id)titleForTableViewCell;
 - (id)trashFolderIdentifier;
 - (void)updateAccountNameForAccountListSorting;
+- (void)updateTrashFolderHiddenNoteContainerState;
 - (id)visibleFolders;
 - (id)visibleFoldersWithParent:(id)arg1;
 - (id)visibleNoteContainerChildren;

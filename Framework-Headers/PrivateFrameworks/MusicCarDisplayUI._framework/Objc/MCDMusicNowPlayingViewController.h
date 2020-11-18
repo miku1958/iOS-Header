@@ -42,6 +42,7 @@
 @property (nonatomic) int viewMode; // @synthesize viewMode=_viewMode;
 
 - (void).cxx_destruct;
+- (void)_adjustRightTitleLabelToFit;
 - (void)_itemChanged:(id)arg1;
 - (void)_itemIsExplicitDidChangeNotification:(id)arg1;
 - (void)_itemStoreIDDidChangeNotification:(id)arg1;
@@ -67,6 +68,7 @@
 - (id)initWithRadioStation:(id)arg1 player:(id)arg2 serviceProvider:(id)arg3;
 - (BOOL)likedForNowPlayingViewController:(id)arg1;
 - (id)newPresentationNavigationController;
+- (BOOL)nowPlayingViewController:(id)arg1 buttonShouldBeActive:(long long)arg2;
 - (void)nowPlayingViewController:(id)arg1 didSendAction:(long long)arg2 state:(long long)arg3;
 - (BOOL)nowPlayingViewController:(id)arg1 shouldDisplayButton:(long long)arg2 withImage:(out id *)arg3 tinted:(out BOOL *)arg4;
 - (BOOL)nowPlayingViewController:(id)arg1 shouldEnableButton:(long long)arg2;

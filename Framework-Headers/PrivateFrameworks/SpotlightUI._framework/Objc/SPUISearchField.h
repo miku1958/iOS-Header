@@ -27,6 +27,7 @@
 - (struct CGRect)editingRectForBounds:(struct CGRect)arg1;
 - (id)initWithSearchHeader:(id)arg1;
 - (void)keyboardDictationAvailabiiltyChanged:(id)arg1;
+- (void)layoutSubviews;
 - (struct CGRect)leftViewRectForBounds:(struct CGRect)arg1;
 - (double)leftViewXOffset;
 - (void)microphoneButtonPressed:(id)arg1;
@@ -36,7 +37,6 @@
 - (void)setMicrophoneShown:(BOOL)arg1;
 - (void)textInputModeDidChange:(id)arg1;
 - (struct CGRect)textRectForBounds:(struct CGRect)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateMicrophoneStatus;
 
 @end

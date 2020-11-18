@@ -6,32 +6,37 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSDate, NSTimeZone, UIColor, UIFont, UILabel;
+@class NSArray, NSDate, NSString, NSTimeZone, UIColor, UIFont, UILabel;
 @protocol MTDateLabelObserver;
 
 @interface MTDateLabel : UIView
 {
     NSTimeZone *_timeZone;
     BOOL _hideTimeDesignator;
+    BOOL _shouldAddLayoutConstraints;
     NSDate *_date;
     UILabel *_dateLabel;
-    UILabel *_timeDesignatorLabel;
+    UIColor *_textColor;
+    UIFont *_font;
+    UIFont *_timeDesignatorFont;
     double _paddingFromTimeToDesignator;
     id<MTDateLabelObserver> _observer;
     NSArray *_currentConstraints;
+    NSString *_timeDesignatorString;
 }
 
-@property (strong) NSArray *currentConstraints; // @synthesize currentConstraints=_currentConstraints;
+@property (strong, nonatomic) NSArray *currentConstraints; // @synthesize currentConstraints=_currentConstraints;
 @property (copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (readonly, nonatomic) UILabel *dateLabel; // @synthesize dateLabel=_dateLabel;
-@property (strong, nonatomic) UIFont *font;
+@property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
 @property (readonly, nonatomic) BOOL hasTimeDesignator;
 @property (nonatomic) BOOL hideTimeDesignator; // @synthesize hideTimeDesignator=_hideTimeDesignator;
 @property (weak, nonatomic) id<MTDateLabelObserver> observer; // @synthesize observer=_observer;
 @property (nonatomic) double paddingFromTimeToDesignator; // @synthesize paddingFromTimeToDesignator=_paddingFromTimeToDesignator;
-@property (strong, nonatomic) UIColor *textColor;
-@property (strong, nonatomic) UIFont *timeDesignatorFont;
-@property (readonly, nonatomic) UILabel *timeDesignatorLabel; // @synthesize timeDesignatorLabel=_timeDesignatorLabel;
+@property (nonatomic) BOOL shouldAddLayoutConstraints; // @synthesize shouldAddLayoutConstraints=_shouldAddLayoutConstraints;
+@property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
+@property (strong, nonatomic) UIFont *timeDesignatorFont; // @synthesize timeDesignatorFont=_timeDesignatorFont;
+@property (copy, nonatomic) NSString *timeDesignatorString; // @synthesize timeDesignatorString=_timeDesignatorString;
 @property (strong, nonatomic) NSTimeZone *timeZone;
 
 - (void).cxx_destruct;

@@ -33,7 +33,9 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_readNameCharacterisiticIfNeeded:(id)arg1;
 - (void)_updateName:(id)arg1;
+- (void)_updateProvidedName:(id)arg1;
 - (id)assistantUniqueIdentifier;
 - (id)configureWithService:(id)arg1 accessory:(id)arg2;
 - (id)description;

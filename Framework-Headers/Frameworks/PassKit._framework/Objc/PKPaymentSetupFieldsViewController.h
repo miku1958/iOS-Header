@@ -76,6 +76,7 @@
 - (id)fieldForIdentifier:(id)arg1;
 - (id)firstEmptyCell;
 - (id)firstEmptyField;
+- (id)firstResponderCell;
 - (id)footerView;
 - (BOOL)handleNext:(id)arg1;
 - (void)handlePassSuccessfullyAdded:(id)arg1;

@@ -13,7 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilitySupplementaryFooterViews;
+- (void)reloadWithViewElement:(id)arg1 width:(double)arg2 context:(id)arg3;
+- (BOOL)setImage:(id)arg1 forArtworkRequest:(id)arg2 context:(id)arg3;
 
 @end
 

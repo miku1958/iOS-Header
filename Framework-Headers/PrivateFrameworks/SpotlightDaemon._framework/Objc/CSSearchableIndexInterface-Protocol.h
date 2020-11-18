@@ -21,7 +21,6 @@
 @optional
 - (void)_forceAppWithBundleID:(NSString *)arg1 toPerformJob:(CSIndexJob *)arg2;
 - (void)_issueCommand:(NSString *)arg1 completionHandler:(void (^)(NSData *, NSError *))arg2;
-- (void)acknowledgeReindex;
 - (void)checkInWithProtectionClass:(NSString *)arg1 completionHandler:(void (^)(CSIndexJob *, NSError *))arg2;
 - (void)indexFromBundle:(NSString *)arg1 protectionClass:(NSString *)arg2 options:(long long)arg3 items:(NSData *)arg4 itemsText:(NSData *)arg5 itemsHTML:(NSData *)arg6 clientState:(NSData *)arg7 clientStateName:(NSString *)arg8 deletes:(NSData *)arg9 completionHandler:(void (^)(NSError *))arg10;
 - (void)performDataMigrationWithTimeout:(NSNumber *)arg1 completionHandler:(void (^)(NSError *))arg2;

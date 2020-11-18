@@ -11,6 +11,7 @@
 }
 
 - (id)initWithStyle:(unsigned long long)arg1;
+- (struct UIEdgeInsets)layoutMargins;
 
 @end
 

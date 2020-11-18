@@ -7,6 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (BRCPathAdditions)
++ (id)brc_emptyFilenameAlternativeName;
 + (id)brc_pathWithDeviceID:(int)arg1 fileID:(unsigned long long)arg2;
 + (id)brc_pathWithFileSystemRepresentation:(const char *)arg1;
 + (id)brc_representableHFSFileNameWithBase:(id)arg1 suffix:(id)arg2 extension:(id)arg3 makeDotFile:(BOOL)arg4;

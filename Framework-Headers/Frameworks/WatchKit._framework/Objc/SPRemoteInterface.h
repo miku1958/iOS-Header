@@ -26,7 +26,7 @@
     CDUnknownBlockType _textInputCompletion;
     CDUnknownBlockType _textInputSuggestions;
     CDUnknownBlockType _mediaPlayerControllerCompletion;
-    CDUnknownBlockType _audioRecordingControllerCompletion;
+    CDUnknownBlockType _audioRecorderControllerCompletion;
     NSMutableArray *_openParentRequests;
     CDUnknownBlockType _addPassesCompletion;
 }
@@ -34,7 +34,7 @@
 @property (strong, nonatomic) NSMutableArray *activeComplicationsConnections; // @synthesize activeComplicationsConnections=_activeComplicationsConnections;
 @property (copy, nonatomic) CDUnknownBlockType addPassesCompletion; // @synthesize addPassesCompletion=_addPassesCompletion;
 @property (strong, nonatomic) NSString *appClientIdentifier; // @synthesize appClientIdentifier=_appClientIdentifier;
-@property (copy, nonatomic) CDUnknownBlockType audioRecordingControllerCompletion; // @synthesize audioRecordingControllerCompletion=_audioRecordingControllerCompletion;
+@property (copy, nonatomic) CDUnknownBlockType audioRecorderControllerCompletion; // @synthesize audioRecorderControllerCompletion=_audioRecorderControllerCompletion;
 @property (strong, nonatomic) id<SPRemoteInterfaceDataDelegateProtocol> dataDelegate; // @synthesize dataDelegate=_dataDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -133,12 +133,15 @@
 - (void)dataInterfaceWillResignActive:(id)arg1;
 - (void)dealloc;
 - (void)didFinishHandlingActivity:(id)arg1;
+- (void)extensionDidBeginNotificationUICreation;
+- (void)extensionDidEndNotificationUICreation;
 - (void)fetchNotificationForNotificationID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getComplicationData:(id)arg1;
 - (void)handlePlist:(id)arg1 fromIdentifier:(id)arg2;
 - (id)init;
 - (void)insertPageControllerAtIndexes:(id)arg1 withNames:(id)arg2 initializationContextIDs:(id)arg3;
 - (id)interfaceCreationContextForID:(id)arg1;
+- (void)layoutDirection:(long long)arg1;
 - (void)movePageControllerAtIndex:(long long)arg1 toIndex:(long long)arg2;
 - (void)notificationController:(id)arg1 showNotificationInterfaceType:(long long)arg2;
 - (BOOL)openParentApplication:(id)arg1 reply:(CDUnknownBlockType)arg2;

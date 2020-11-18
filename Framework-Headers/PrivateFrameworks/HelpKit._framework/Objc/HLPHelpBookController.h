@@ -31,6 +31,7 @@
 @property (strong, nonatomic) NSMutableDictionary *helpItemMap; // @synthesize helpItemMap=_helpItemMap;
 @property (strong, nonatomic) HLPURLImageCacheController *imageCacheController; // @synthesize imageCacheController=_imageCacheController;
 @property (strong, nonatomic) HLPHelpSectionItem *rootSectionItem; // @synthesize rootSectionItem=_rootSectionItem;
+@property (readonly, nonatomic, getter=isSemanticHTML) BOOL semanticHTML; // @dynamic semanticHTML;
 @property (strong, nonatomic) NSString *welcomeTopicIdentifier; // @synthesize welcomeTopicIdentifier=_welcomeTopicIdentifier;
 
 - (void).cxx_destruct;

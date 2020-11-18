@@ -12,6 +12,7 @@
 {
     BOOL _atomic;
     BOOL _shouldOnlySaveAssetContent;
+    BOOL _shouldReportRecordsInFlight;
     NSArray *_recordsToSave;
     NSArray *_recordIDsToDelete;
     long long _savePolicy;
@@ -21,6 +22,7 @@
     CDUnknownBlockType _modifyRecordsCompletionBlock;
     NSDictionary *_recordIDsToDeleteToEtags;
     NSDictionary *_conflictLosersToResolveByRecordID;
+    CDUnknownBlockType _recordsInFlightBlock;
     NSMutableArray *_savedRecords;
     NSMutableArray *_deletedRecordIDs;
     NSMutableDictionary *_recordsByRecordIDs;
@@ -40,10 +42,12 @@
 @property (copy, nonatomic) NSArray *recordIDsToDelete; // @synthesize recordIDsToDelete=_recordIDsToDelete;
 @property (copy, nonatomic) NSDictionary *recordIDsToDeleteToEtags; // @synthesize recordIDsToDeleteToEtags=_recordIDsToDeleteToEtags;
 @property (strong, nonatomic) NSMutableDictionary *recordsByRecordIDs; // @synthesize recordsByRecordIDs=_recordsByRecordIDs;
+@property (copy, nonatomic) CDUnknownBlockType recordsInFlightBlock; // @synthesize recordsInFlightBlock=_recordsInFlightBlock;
 @property (copy, nonatomic) NSArray *recordsToSave; // @synthesize recordsToSave=_recordsToSave;
 @property (nonatomic) long long savePolicy; // @synthesize savePolicy=_savePolicy;
 @property (strong, nonatomic) NSMutableArray *savedRecords; // @synthesize savedRecords=_savedRecords;
 @property (nonatomic) BOOL shouldOnlySaveAssetContent; // @synthesize shouldOnlySaveAssetContent=_shouldOnlySaveAssetContent;
+@property (nonatomic) BOOL shouldReportRecordsInFlight; // @synthesize shouldReportRecordsInFlight=_shouldReportRecordsInFlight;
 
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;

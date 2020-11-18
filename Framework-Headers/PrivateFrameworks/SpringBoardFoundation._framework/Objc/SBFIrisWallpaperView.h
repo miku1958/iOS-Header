@@ -6,36 +6,54 @@
 
 #import <SpringBoardFoundation/SBFStaticWallpaperView.h>
 
-@class AVAsset, ISAVPlayer, ISPlayerView, NSURL, UIImageView;
+#import <SpringBoardFoundation/ISPlayerViewDelegatePrivate-Protocol.h>
+#import <SpringBoardFoundation/SBFIrisWallpaperView-Protocol.h>
 
-@interface SBFIrisWallpaperView : SBFStaticWallpaperView
+@class ISAVPlayer, ISPlayerView, NSString, NSURL, UIGestureRecognizer, UIImageView;
+@protocol SBFIrisWallpaperViewDelegate;
+
+@interface SBFIrisWallpaperView : SBFStaticWallpaperView <ISPlayerViewDelegatePrivate, SBFIrisWallpaperView>
 {
-    AVAsset *_video;
+    id<SBFIrisWallpaperViewDelegate> _irisDelegate;
+    long long _currentMode;
+    UIImageView *_imageView;
     NSURL *_videoFileURL;
     double _stillTimeInVideo;
-    BOOL _prewireMemory;
     BOOL _useRewindPlaybackStyle;
-    UIImageView *_imageView;
     ISAVPlayer *_prewiredAVPlayer;
-    BOOL _playerPrepared;
+    struct CGSize _prewiredSize;
     ISPlayerView *_playerView;
-    unsigned long long _currentMode;
+    long long _playerState;
+    long long _playbackState;
+    BOOL _isInteracting;
+    UIGestureRecognizer *_playerGestureRecognizer;
 }
 
-@property (readonly, nonatomic) unsigned long long currentMode; // @synthesize currentMode=_currentMode;
-@property (readonly, nonatomic) BOOL isPlaying;
-@property (readonly, nonatomic) ISPlayerView *playerView; // @synthesize playerView=_playerView;
+@property (readonly, nonatomic) long long currentIrisMode; // @synthesize currentIrisMode=_currentMode;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) id<SBFIrisWallpaperViewDelegate> irisDelegate;
+@property (readonly, nonatomic) long long irisPlaybackState;
+@property (readonly, nonatomic) BOOL isIrisInteracting;
+@property (readonly) Class superclass;
 
 + (void)initialize;
 - (void)_populateContentView;
+- (void)_resetPrewiredAVPlayer;
 - (void)_setImage:(id)arg1;
+- (void)_setPlayerGestureRecognizer:(id)arg1;
 - (void)_setupContentView;
-- (BOOL)_setupContentViewForMode:(unsigned long long)arg1;
+- (BOOL)_setupContentViewForMode:(long long)arg1;
+- (id)avPlayerForPlayerView:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 variant:(long long)arg3;
-- (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 wallpaperVideo:(id)arg3 stillTimeInVideo:(double)arg4 treatWallpaper:(BOOL)arg5 variant:(long long)arg6 prewireMemory:(BOOL)arg7 useRewindPlaybackStyle:(BOOL)arg8;
+- (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 wallpaperVideoURL:(id)arg3 stillTimeInVideo:(double)arg4 treatWallpaper:(BOOL)arg5 variant:(long long)arg6 prewireMemory:(BOOL)arg7 useRewindPlaybackStyle:(BOOL)arg8;
 - (id)irisGestureRecognizer;
-- (void)switchToMode:(unsigned long long)arg1;
+- (void)playerViewGestureRecognizerDidChange:(id)arg1;
+- (void)playerViewIsInteractingDidChange:(id)arg1;
+- (void)playerViewPlaybackStateDidChange:(id)arg1;
+- (void)switchToIrisMode:(long long)arg1;
 
 @end
 

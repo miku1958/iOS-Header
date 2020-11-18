@@ -8,7 +8,7 @@
 
 #import <Message/QLPreviewItem-Protocol.h>
 
-@class MFAttachmentManager, MFAttachmentPlaceholder, MFMailDropMetadata, MFMimePart, NSMutableDictionary, NSString, NSURL;
+@class MFAttachmentManager, MFAttachmentPlaceholder, MFMailDropMetadata, MFMimePart, NSMutableDictionary, NSProgress, NSString, NSURL;
 @protocol MFDataConsumer;
 
 @interface MFAttachment : NSObject <QLPreviewItem>
@@ -17,12 +17,11 @@
     MFAttachmentManager *_attachmentManager;
     BOOL _isDataAvailableLocally;
     MFAttachmentPlaceholder *_placeholder;
+    NSProgress *_downloadProgress;
     BOOL _isUserFacing;
     NSURL *_url;
     MFMimePart *_part;
     NSString *_disposition;
-    unsigned long long _encodedFileSize;
-    MFMailDropMetadata *_mailDropMetadata;
     unsigned long long _progressInterval;
     double _progressTimeInterval;
     CDUnknownBlockType _fetchCompletionBlock;
@@ -39,7 +38,8 @@
 @property (nonatomic) unsigned long long decodedFileSize;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *disposition; // @synthesize disposition=_disposition;
-@property (nonatomic) unsigned long long encodedFileSize; // @synthesize encodedFileSize=_encodedFileSize;
+@property (readonly, nonatomic) NSProgress *downloadProgress;
+@property (nonatomic) unsigned long long encodedFileSize;
 @property (copy, nonatomic) CDUnknownBlockType fetchCompletionBlock; // @synthesize fetchCompletionBlock=_fetchCompletionBlock;
 @property (copy) CDUnknownBlockType fetchProgressBlock; // @synthesize fetchProgressBlock=_fetchProgressBlock;
 @property (copy, nonatomic) NSString *fileName; // @dynamic fileName;
@@ -50,17 +50,21 @@
 @property (readonly) BOOL isContainedInCompose;
 @property (readonly) BOOL isContainedInRFC822;
 @property (readonly) BOOL isDataAvailableLocally;
+@property BOOL isPlaceholder; // @dynamic isPlaceholder;
 @property (nonatomic) BOOL isUserFacing; // @synthesize isUserFacing=_isUserFacing;
 @property (nonatomic) unsigned long long lastProgressBytes; // @synthesize lastProgressBytes=_lastProgressBytes;
 @property (nonatomic) double lastProgressTime; // @synthesize lastProgressTime=_lastProgressTime;
-@property (strong, nonatomic) MFMailDropMetadata *mailDropMetadata; // @synthesize mailDropMetadata=_mailDropMetadata;
+@property (strong, nonatomic) MFMailDropMetadata *mailDropMetadata; // @dynamic mailDropMetadata;
 @property (copy, nonatomic) NSString *mimeType; // @dynamic mimeType;
+@property (copy, nonatomic) NSString *originalCID;
 @property (strong, nonatomic) MFMimePart *part; // @synthesize part=_part;
-@property (copy, nonatomic) NSString *path; // @dynamic path;
+@property (readonly) NSString *path; // @dynamic path;
+@property (strong, nonatomic) MFAttachmentPlaceholder *placeholder; // @synthesize placeholder=_placeholder;
 @property (readonly, nonatomic) NSString *previewItemTitle;
 @property (readonly, nonatomic) NSURL *previewItemURL;
 @property (nonatomic) unsigned long long progressInterval; // @synthesize progressInterval=_progressInterval;
 @property (nonatomic) double progressTimeInterval; // @synthesize progressTimeInterval=_progressTimeInterval;
+@property (copy, nonatomic) NSString *remoteImageFileName;
 @property (readonly) BOOL shouldAutoDownload;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSURL *url; // @synthesize url=_url;
@@ -91,21 +95,18 @@
 - (id)filterData:(id)arg1;
 - (id)filterICSData:(id)arg1;
 - (id)filterVCSData:(id)arg1;
-- (id)init;
 - (id)initWithURL:(id)arg1 attachmentManager:(id)arg2;
 - (BOOL)isAvailable;
 - (BOOL)isCached;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isImageFile;
 - (BOOL)isMailDrop;
-- (BOOL)isPlaceholder;
+- (BOOL)isMailDropPhotoArchive;
 - (id)metadataValueForKey:(id)arg1;
-- (id)placeholder;
 - (id)readFromDisk;
 - (void)setContentID:(id)arg1;
 - (void)setMetadataValue:(id)arg1 forKey:(id)arg2;
 - (unsigned long long)sizeOnDisk;
-- (id)storageLocationWithMessage:(id)arg1;
 - (id)textEncodingGuessWithData:(id)arg1;
 - (id)textEncodingNameForData:(id)arg1 mimeType:(id)arg2;
 - (void)writeToDiskWithData:(id)arg1;

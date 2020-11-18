@@ -485,14 +485,6 @@ struct _NSRange {
 
 struct __hash_node<TopoSubstring *, void *>;
 
-struct __hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *>;
-
-struct __hash_node<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, void *>;
-
-struct __hash_node<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, void *>;
-
-struct __hash_node<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, void *>;
-
 struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
     struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
         struct __rep {
@@ -533,118 +525,6 @@ struct unique_ptr<std::__1::__hash_node<TopoSubstring *, void *>*[], std::__1::_
                 unsigned long long _field1;
             } _field1;
         } _field2;
-    } _field1;
-};
-
-struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *>*>>> {
-    struct __compressed_pair<std::__1::__hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *>*>>> {
-        struct __hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
-struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, void *>*>>> {
-    struct __compressed_pair<std::__1::__hash_node<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, void *>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, void *>*>>> {
-        struct __hash_node<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, void *> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, void *>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, void *>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
-struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, void *>*>>> {
-    struct __compressed_pair<std::__1::__hash_node<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, void *>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, void *>*>>> {
-        struct __hash_node<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, void *> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, void *>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, void *>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
-struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, void *>*>>> {
-    struct __compressed_pair<std::__1::__hash_node<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, void *>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, void *>*>>> {
-        struct __hash_node<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, void *> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, void *>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, void *>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
-struct unordered_map<NSTextAlignment, topotext::ParagraphStyle_Alignment, std::__1::hash<int>, std::__1::equal_to<NSTextAlignment>, std::__1::allocator<std::__1::pair<const NSTextAlignment, topotext::ParagraphStyle_Alignment>>> {
-    struct __hash_table<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, std::__1::__unordered_map_hasher<NSTextAlignment, std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, std::__1::hash<int>, true>, std::__1::__unordered_map_equal<NSTextAlignment, std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, std::__1::equal_to<NSTextAlignment>, true>, std::__1::allocator<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>>> {
-        struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *>*> {
-                struct __hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *> *_field1;
-            } _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<NSTextAlignment, std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, std::__1::hash<int>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<NSTextAlignment, std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, std::__1::equal_to<NSTextAlignment>, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
-};
-
-struct unordered_map<NSWritingDirection, topotext::AttributeRun_WritingDirection, std::__1::hash<int>, std::__1::equal_to<NSWritingDirection>, std::__1::allocator<std::__1::pair<const NSWritingDirection, topotext::AttributeRun_WritingDirection>>> {
-    struct __hash_table<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, std::__1::__unordered_map_hasher<NSWritingDirection, std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, std::__1::hash<int>, true>, std::__1::__unordered_map_equal<NSWritingDirection, std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, std::__1::equal_to<NSWritingDirection>, true>, std::__1::allocator<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>>> {
-        struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, void *>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, void *>*> {
-                struct __hash_node<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, void *> *_field1;
-            } _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<NSWritingDirection, std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, std::__1::hash<int>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<NSWritingDirection, std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, std::__1::equal_to<NSWritingDirection>, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
-};
-
-struct unordered_map<topotext::AttributeRun_WritingDirection, NSWritingDirection, std::__1::hash<int>, std::__1::equal_to<topotext::AttributeRun_WritingDirection>, std::__1::allocator<std::__1::pair<const topotext::AttributeRun_WritingDirection, NSWritingDirection>>> {
-    struct __hash_table<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, std::__1::__unordered_map_hasher<topotext::AttributeRun_WritingDirection, std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, std::__1::hash<int>, true>, std::__1::__unordered_map_equal<topotext::AttributeRun_WritingDirection, std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, std::__1::equal_to<topotext::AttributeRun_WritingDirection>, true>, std::__1::allocator<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>>> {
-        struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, void *>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, void *>*> {
-                struct __hash_node<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, void *> *_field1;
-            } _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<topotext::AttributeRun_WritingDirection, std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, std::__1::hash<int>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<topotext::AttributeRun_WritingDirection, std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, std::__1::equal_to<topotext::AttributeRun_WritingDirection>, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
-};
-
-struct unordered_map<topotext::ParagraphStyle_Alignment, NSTextAlignment, std::__1::hash<int>, std::__1::equal_to<topotext::ParagraphStyle_Alignment>, std::__1::allocator<std::__1::pair<const topotext::ParagraphStyle_Alignment, NSTextAlignment>>> {
-    struct __hash_table<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, std::__1::__unordered_map_hasher<topotext::ParagraphStyle_Alignment, std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, std::__1::hash<int>, true>, std::__1::__unordered_map_equal<topotext::ParagraphStyle_Alignment, std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, std::__1::equal_to<topotext::ParagraphStyle_Alignment>, true>, std::__1::allocator<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>>> {
-        struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, void *>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, void *>*> {
-                struct __hash_node<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, void *> *_field1;
-            } _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<topotext::ParagraphStyle_Alignment, std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, std::__1::hash<int>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<topotext::ParagraphStyle_Alignment, std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, std::__1::equal_to<topotext::ParagraphStyle_Alignment>, true>> {
-            float _field1;
-        } _field4;
     } _field1;
 };
 
@@ -796,74 +676,6 @@ typedef struct {
 typedef struct ICDrawingInputProvider<ICDrawingOutputPoint> {
     CDUnknownFunctionPointerType *_field1;
 } ICDrawingInputProvider_d48c6870;
-
-typedef struct unordered_map<NSTextAlignment, topotext::ParagraphStyle_Alignment, std::__1::hash<int>, std::__1::equal_to<NSTextAlignment>, std::__1::allocator<std::__1::pair<const NSTextAlignment, topotext::ParagraphStyle_Alignment>>> {
-    struct __hash_table<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, std::__1::__unordered_map_hasher<NSTextAlignment, std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, std::__1::hash<int>, true>, std::__1::__unordered_map_equal<NSTextAlignment, std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, std::__1::equal_to<NSTextAlignment>, true>, std::__1::allocator<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>>> {
-        struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *>*> {
-                struct __hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *> *_field1;
-            } _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<NSTextAlignment, std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, std::__1::hash<int>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<NSTextAlignment, std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, std::__1::equal_to<NSTextAlignment>, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
-} unordered_map_854c4e29;
-
-typedef struct unordered_map<NSWritingDirection, topotext::AttributeRun_WritingDirection, std::__1::hash<int>, std::__1::equal_to<NSWritingDirection>, std::__1::allocator<std::__1::pair<const NSWritingDirection, topotext::AttributeRun_WritingDirection>>> {
-    struct __hash_table<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, std::__1::__unordered_map_hasher<NSWritingDirection, std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, std::__1::hash<int>, true>, std::__1::__unordered_map_equal<NSWritingDirection, std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, std::__1::equal_to<NSWritingDirection>, true>, std::__1::allocator<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>>> {
-        struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, void *>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, void *>*> {
-                struct __hash_node<std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, void *> *_field1;
-            } _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<NSWritingDirection, std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, std::__1::hash<int>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<NSWritingDirection, std::__1::__hash_value_type<NSWritingDirection, topotext::AttributeRun_WritingDirection>, std::__1::equal_to<NSWritingDirection>, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
-} unordered_map_94028151;
-
-typedef struct unordered_map<topotext::AttributeRun_WritingDirection, NSWritingDirection, std::__1::hash<int>, std::__1::equal_to<topotext::AttributeRun_WritingDirection>, std::__1::allocator<std::__1::pair<const topotext::AttributeRun_WritingDirection, NSWritingDirection>>> {
-    struct __hash_table<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, std::__1::__unordered_map_hasher<topotext::AttributeRun_WritingDirection, std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, std::__1::hash<int>, true>, std::__1::__unordered_map_equal<topotext::AttributeRun_WritingDirection, std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, std::__1::equal_to<topotext::AttributeRun_WritingDirection>, true>, std::__1::allocator<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>>> {
-        struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, void *>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, void *>*> {
-                struct __hash_node<std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, void *> *_field1;
-            } _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<topotext::AttributeRun_WritingDirection, std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, std::__1::hash<int>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<topotext::AttributeRun_WritingDirection, std::__1::__hash_value_type<topotext::AttributeRun_WritingDirection, NSWritingDirection>, std::__1::equal_to<topotext::AttributeRun_WritingDirection>, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
-} unordered_map_27012e82;
-
-typedef struct unordered_map<topotext::ParagraphStyle_Alignment, NSTextAlignment, std::__1::hash<int>, std::__1::equal_to<topotext::ParagraphStyle_Alignment>, std::__1::allocator<std::__1::pair<const topotext::ParagraphStyle_Alignment, NSTextAlignment>>> {
-    struct __hash_table<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, std::__1::__unordered_map_hasher<topotext::ParagraphStyle_Alignment, std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, std::__1::hash<int>, true>, std::__1::__unordered_map_equal<topotext::ParagraphStyle_Alignment, std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, std::__1::equal_to<topotext::ParagraphStyle_Alignment>, true>, std::__1::allocator<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>>> {
-        struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, void *>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, void *>*> {
-                struct __hash_node<std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, void *> *_field1;
-            } _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<topotext::ParagraphStyle_Alignment, std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, std::__1::hash<int>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<topotext::ParagraphStyle_Alignment, std::__1::__hash_value_type<topotext::ParagraphStyle_Alignment, NSTextAlignment>, std::__1::equal_to<topotext::ParagraphStyle_Alignment>, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
-} unordered_map_55d0f771;
 
 typedef struct unordered_set<TopoSubstring *, std::__1::hash<TopoSubstring *>, std::__1::equal_to<TopoSubstring *>, std::__1::allocator<TopoSubstring *>> {
     struct __hash_table<TopoSubstring *, std::__1::hash<TopoSubstring *>, std::__1::equal_to<TopoSubstring *>, std::__1::allocator<TopoSubstring *>> {

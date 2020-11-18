@@ -69,6 +69,7 @@
 - (void)registerStandaloneTransfer:(id)arg1;
 - (void)removeTransferForGUID:(id)arg1;
 - (void)removeUnassignedTransfers;
+- (void)resetTransfer:(id)arg1 andPostReason:(long long)arg2;
 - (void)resetTransferAndPostError:(id)arg1 error:(id)arg2;
 - (void)startFinalizingTransfer:(id)arg1;
 - (void)startTransfer:(id)arg1;

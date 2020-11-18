@@ -41,7 +41,7 @@
 - (void)addContactsObservable:(id)arg1;
 - (void)addCoreRecentsObservable:(id)arg1;
 - (void)addDirectoryServerObservable:(id)arg1;
-- (void)addDuetObservable:(id)arg1;
+- (void)addDuetObservable:(id)arg1 doOnTimeout:(CDUnknownBlockType)arg2;
 - (void)addSuggestionsObservable:(id)arg1;
 - (void)addSupplementalObservable:(id)arg1;
 - (id)combineObservablesInBatch:(id)arg1 scheduler:(id)arg2;

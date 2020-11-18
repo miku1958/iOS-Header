@@ -26,6 +26,7 @@
 @property (strong, nonatomic) MPMediaQuery *mediaQuery;
 @property (readonly, nonatomic) MusicMediaQueryDataSource *mediaQueryDataSource; // @synthesize mediaQueryDataSource=_mediaQueryDataSource;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long totalEntityCount;
 
 - (void).cxx_destruct;
 - (void)_configureEntityValueContextOutput:(id)arg1 forGlobalIndex:(unsigned long long)arg2;
@@ -34,12 +35,14 @@
 - (void)_loadSectionIndexTitleDataIfNeeded;
 - (id)_localizedSectionIndexTitles;
 - (id)_requiredVisibilityPrioritySectionIndexTitles;
+- (id)additionalPropertiesToFetchSynchronouslyForEntityValueContext:(id)arg1;
 - (void)configureEntityValueContextOutput:(id)arg1 forIndexPath:(id)arg2;
 - (void)configureEntityValueContextOutputForAnyIndexPath:(id)arg1;
 - (void)configureSectionEntityValueContextOutput:(id)arg1 forIndex:(unsigned long long)arg2;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)entityValueProviderAtIndexPath:(id)arg1;
+- (void)handleDeleteChangeRecord:(id)arg1;
 - (BOOL)hasEntities;
 - (BOOL)hasEntitiesNotInLibrary;
 - (id)indexBarEntryAtIndex:(unsigned long long)arg1;
@@ -48,10 +51,12 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMediaQuery:(id)arg1;
 - (id)initWithMediaQueryDataSource:(id)arg1;
+- (id)newDownloadInformationController;
 - (unsigned long long)numberOfEntitiesInSection:(unsigned long long)arg1;
 - (unsigned long long)numberOfIndexBarEntries;
 - (unsigned long long)numberOfSections;
 - (unsigned long long)sectionForSectionIndexBarEntryAtIndex:(unsigned long long)arg1;
+- (BOOL)setEditing:(BOOL)arg1;
 
 @end
 

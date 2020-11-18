@@ -6,7 +6,7 @@
 
 #import <WatchKit/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSString;
 
 @protocol SPRemoteInterfaceProtocol <NSObject>
 - (void)applicationContentsDidReset:(NSString *)arg1;
@@ -19,12 +19,13 @@
 - (void)applicationWillResignActive:(NSString *)arg1;
 - (void)dataInterfaceDidBecomeActive:(NSString *)arg1;
 - (void)dataInterfaceWillResignActive:(NSString *)arg1;
+- (void)layoutDirection:(long long)arg1;
 - (void)preferredContentSizeCategory:(NSString *)arg1;
 - (void)receiveData:(NSData *)arg1 fromIdentifier:(NSString *)arg2;
 - (void)receiveProtoData:(NSData *)arg1 fromIdentifier:(NSString *)arg2;
 
 @optional
-- (void)extensionDidBeginUsing;
+- (void)extensionDidBeginUsingWithLaunchEnv:(NSDictionary *)arg1 launchArgs:(NSArray *)arg2;
 - (void)extensionWillEndUsing;
 - (void)receiveNativeComplicationRequest:(NSDictionary *)arg1 completion:(void (^)(NSDictionary *))arg2;
 - (void)replyTimingData:(NSDictionary *)arg1;

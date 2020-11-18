@@ -71,6 +71,7 @@
 - (void)unstashUserBookmarksFromLabel:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)unstashWhitelistURLStringsWithCompletion:(void (^)(NSError *))arg1;
 - (void)updateProfileIdentifier:(NSString *)arg1 interactive:(BOOL)arg2 completion:(void (^)(NSString *, NSError *))arg3;
+- (void)validateAppBundleIDs:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)waitForMigrationIncludingPostRestoreMigration:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 @end
 

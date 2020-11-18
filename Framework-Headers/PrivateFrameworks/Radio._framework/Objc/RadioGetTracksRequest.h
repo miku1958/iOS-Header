@@ -11,6 +11,7 @@
 @interface RadioGetTracksRequest : RadioRequest
 {
     unsigned long long _globalVersion;
+    BOOL _hasSetWillContinuePlayback;
     BOOL _includeCleanTracksOnly;
     unsigned long long _numberOfTracks;
     SSURLConnectionRequest *_request;
@@ -20,6 +21,7 @@
     NSString *_stationStringID;
     BOOL _shouldIncludeAsset;
     BOOL _skipPromptForSeamlessPlayback;
+    BOOL _willContinuePlayback;
     NSNumber *_accountUniqueIdentifier;
     NSDictionary *_additionalRequestParameters;
     NSData *_heartbeatTokenData;
@@ -29,12 +31,14 @@
     RadioPlaybackContext *_playbackContext;
     long long _reasonType;
     RadioStationMatchContext *_stationMatchContext;
+    RadioStationMatchContext *_nowPlayingMatchContext;
 }
 
 @property (readonly, copy, nonatomic) NSNumber *accountUniqueIdentifier; // @synthesize accountUniqueIdentifier=_accountUniqueIdentifier;
 @property (copy, nonatomic) NSDictionary *additionalRequestParameters; // @synthesize additionalRequestParameters=_additionalRequestParameters;
 @property (copy, nonatomic) NSData *heartbeatTokenData; // @synthesize heartbeatTokenData=_heartbeatTokenData;
 @property (nonatomic) BOOL includeCleanTracksOnly; // @synthesize includeCleanTracksOnly=_includeCleanTracksOnly;
+@property (strong, nonatomic) RadioStationMatchContext *nowPlayingMatchContext; // @synthesize nowPlayingMatchContext=_nowPlayingMatchContext;
 @property (nonatomic) unsigned long long numberOfTracks; // @synthesize numberOfTracks=_numberOfTracks;
 @property (copy, nonatomic) NSArray *playActivityFeedEvents; // @synthesize playActivityFeedEvents=_playActivityFeedEvents;
 @property (copy, nonatomic) RadioPlayEventCollection *playEventCollection; // @synthesize playEventCollection=_playEventCollection;
@@ -45,6 +49,7 @@
 @property (nonatomic) BOOL shouldIncludeStationInResponse; // @synthesize shouldIncludeStationInResponse=_shouldIncludeStationInResponse;
 @property (nonatomic) BOOL skipPromptForSeamlessPlayback; // @synthesize skipPromptForSeamlessPlayback=_skipPromptForSeamlessPlayback;
 @property (strong, nonatomic) RadioStationMatchContext *stationMatchContext; // @synthesize stationMatchContext=_stationMatchContext;
+@property (nonatomic) BOOL willContinuePlayback; // @synthesize willContinuePlayback=_willContinuePlayback;
 
 - (void).cxx_destruct;
 - (id)_playbackContextForStation:(id)arg1;

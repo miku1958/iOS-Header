@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_adjustDatePickerFrame:(id)arg1 toFillEnclosingViewWidth:(id)arg2;
+- (void)_adjustStartAndEndComponentsForEventIfNeeded:(id)arg1;
 - (id)_allDayCell;
 - (void)_allDayChanged:(id)arg1;
 - (id)_calendarForEventComponents:(BOOL)arg1;
@@ -61,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)_hideInlineDateControls;
 - (id)_newDatePicker;
 - (void)_pickNextReasonableTime;
+- (void)_refreshDatePicker;
 - (void)_resetStartString:(BOOL)arg1 endString:(BOOL)arg2;
 - (long long)_rowForSubitem:(long long)arg1;
 - (void)_setAllDay:(BOOL)arg1;

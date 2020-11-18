@@ -62,12 +62,6 @@
 - (id)_itemsBySanitizingItemsForSpotlight:(id)arg1;
 - (void)_performIndexJob:(id)arg1 acknowledgementHandler:(CDUnknownBlockType)arg2;
 - (void)_registerAwakeNotifyToken;
-- (CDUnknownBlockType)_registerCompletionBlock:(CDUnknownBlockType)arg1 label:(id)arg2;
-- (CDUnknownBlockType)_registerCompletionBlock:(CDUnknownBlockType)arg1 label:(id)arg2 throttle:(BOOL)arg3;
-- (CDUnknownBlockType)_registerDataCompletionBlock:(CDUnknownBlockType)arg1 label:(id)arg2;
-- (id)_remoteProxy;
-- (id)_remoteProxyWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (id)_remoteProxyWithDataCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)_setMailMessageAttributes:(id)arg1;
 - (void)_standardizeItems:(id)arg1;
 - (BOOL)_supportsBatching;
@@ -107,6 +101,11 @@
 - (void)performDataMigrationWithTimeout:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performIndexJob:(id)arg1;
 - (void)performIndexJob:(id)arg1 acknowledgementHandler:(CDUnknownBlockType)arg2;
+- (id)remoteProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)requestQueue;
+- (void)throttle;
+- (id)throttleQueue;
+- (void)unthrottle;
 - (void)willModifySearchableItemsWithIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)willModifySearchableItemsWithIdentifiers:(id)arg1 protectionClass:(id)arg2 forBundleID:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 

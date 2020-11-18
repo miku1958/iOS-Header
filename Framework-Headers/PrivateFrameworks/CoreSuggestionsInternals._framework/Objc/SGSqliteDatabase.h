@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSCache, NSString;
+@class NSCache, NSHashTable, NSString;
 @protocol OS_dispatch_queue;
 
 @interface SGSqliteDatabase : NSObject
@@ -16,6 +16,7 @@
     BOOL _transactionRolledback;
     NSString *_filename;
     NSCache *_queryCache;
+    NSHashTable *_weakQueries;
     NSObject<OS_dispatch_queue> *_queue;
     struct _opaque_pthread_t {
         long long _field1;
@@ -33,6 +34,7 @@
 + (int)bindParam:(struct sqlite3_stmt *)arg1 name:(const char *)arg2 double:(double)arg3;
 + (int)bindParam:(struct sqlite3_stmt *)arg1 name:(const char *)arg2 int64:(long long)arg3;
 + (int)bindParam:(struct sqlite3_stmt *)arg1 name:(const char *)arg2 int:(int)arg3;
++ (int)bindParam:(struct sqlite3_stmt *)arg1 name:(const char *)arg2 nscoding:(id)arg3;
 + (int)bindParam:(struct sqlite3_stmt *)arg1 name:(const char *)arg2 nsdata:(id)arg3;
 + (int)bindParam:(struct sqlite3_stmt *)arg1 name:(const char *)arg2 nsstring:(id)arg3;
 + (int)bindParamToNull:(struct sqlite3_stmt *)arg1 name:(const char *)arg2;

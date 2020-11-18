@@ -18,6 +18,7 @@
 - (void)_createNavInAirplaneMode:(BOOL)arg1;
 - (void)_updateAirportNextButton;
 - (id)accessibilityIdentifier;
+- (void)showModalWiFiSettings;
 - (id)wifiController;
 
 @end

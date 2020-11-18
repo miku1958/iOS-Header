@@ -21,6 +21,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_af_analyticsContextDescription;
 - (BOOL)_makeAppFrontmost;
 - (id)appIdentifier;
 - (void)encodeWithCoder:(id)arg1;
