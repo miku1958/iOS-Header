@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCoding-Protocol.h>
 #import <Foundation/NSCopying-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface NSRegularExpression : NSObject <NSCopying, NSCoding>
+@interface NSRegularExpression : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_pattern;
     unsigned long long _options;
@@ -29,6 +29,7 @@
 + (id)escapedTemplateForString:(id)arg1;
 + (void)initialize;
 + (id)regularExpressionWithPattern:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

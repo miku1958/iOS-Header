@@ -29,6 +29,7 @@
 @property (readonly) NSTimeZone *timeZone;
 @property (readonly) void *underlyingResult;
 
++ (BOOL)supportsSecureCoding;
 - (BOOL)_adjustRangesWithOffset:(long long)arg1;
 - (id)date;
 - (void)dealloc;

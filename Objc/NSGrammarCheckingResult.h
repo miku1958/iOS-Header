@@ -14,6 +14,7 @@
     NSArray *_details;
 }
 
++ (BOOL)supportsSecureCoding;
 - (BOOL)_adjustRangesWithOffset:(long long)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

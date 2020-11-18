@@ -14,6 +14,7 @@
     NSURL *_url;
 }
 
++ (BOOL)supportsSecureCoding;
 - (id)URL;
 - (BOOL)_adjustRangesWithOffset:(long long)arg1;
 - (void)dealloc;

@@ -15,6 +15,7 @@
 
 + (id)dataDetectorWithTypes:(unsigned long long)arg1 error:(id *)arg2;
 + (void)initialize;
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

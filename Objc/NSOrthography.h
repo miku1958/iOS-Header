@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCoding-Protocol.h>
 #import <Foundation/NSCopying-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString;
 
-@interface NSOrthography : NSObject <NSCopying, NSCoding>
+@interface NSOrthography : NSObject <NSCopying, NSSecureCoding>
 {
 }
 
@@ -21,6 +21,7 @@
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (void)initialize;
 + (id)orthographyWithDominantScript:(id)arg1 languageMap:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (id)allLanguages;
 - (id)allScripts;
 - (Class)classForCoder;
