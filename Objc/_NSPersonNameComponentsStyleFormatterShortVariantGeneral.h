@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+@property (readonly) long long shortNameFormat;
+
 - (id)fallbackStyleFormatter;
 
 @end
