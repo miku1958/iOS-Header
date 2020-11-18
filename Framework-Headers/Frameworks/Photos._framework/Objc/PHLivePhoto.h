@@ -9,14 +9,16 @@
 #import <Photos/NSCopying-Protocol.h>
 #import <Photos/NSSecureCoding-Protocol.h>
 
-@class AVAsset, NSString, NSURL, PHAsset, PHImageManager, PHSandboxExtensionWrapper, UIImage;
+@class AVAsset, AVVideoComposition, NSString, NSURL, PHAsset, PHImageManager, PHSandboxExtensionWrapper, UIImage;
 
 @interface PHLivePhoto : NSObject <NSCopying, NSSecureCoding>
 {
+    float _audioVolume;
     NSString *_uniqueIdentifier;
     UIImage *_image;
     AVAsset *_videoAsset;
     unsigned long long _options;
+    AVVideoComposition *_videoComposition;
     NSString *_assetLocalIdentifier;
     NSURL *_imageURL;
     PHSandboxExtensionWrapper *_imageURLSandboxExtensionWrapper;
@@ -32,6 +34,7 @@
 
 @property (weak, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
 @property (readonly, copy, nonatomic) NSString *assetLocalIdentifier; // @synthesize assetLocalIdentifier=_assetLocalIdentifier;
+@property (nonatomic) float audioVolume; // @synthesize audioVolume=_audioVolume;
 @property (readonly, nonatomic) long long contentMode; // @synthesize contentMode=_contentMode;
 @property (readonly, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (readonly, nonatomic) CDUnknownBlockType imageFileLoader;
@@ -46,13 +49,14 @@
 @property (readonly, nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
 @property (readonly) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, nonatomic) AVAsset *videoAsset; // @synthesize videoAsset=_videoAsset;
+@property (readonly, copy, nonatomic) AVVideoComposition *videoComposition; // @synthesize videoComposition=_videoComposition;
 @property (readonly, nonatomic) CDUnknownBlockType videoFileLoader;
 @property (readonly, nonatomic) NSString *videoTypeIdentifier;
 @property (readonly, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
 @property (readonly, nonatomic) PHSandboxExtensionWrapper *videoURLSandboxExtensionWrapper; // @synthesize videoURLSandboxExtensionWrapper=_videoURLSandboxExtensionWrapper;
 
 + (BOOL)_canCreateLivePhotoWithURLs:(id)arg1 outError:(id *)arg2;
-+ (void)_identifyResourceURLs:(id)arg1 outError:(id *)arg2 outImageURL:(id *)arg3 outVideoURL:(id *)arg4;
++ (BOOL)_identifyResourceURLs:(id)arg1 outImageURL:(id *)arg2 outVideoURL:(id *)arg3 error:(id *)arg4;
 + (CDStruct_1b6d18a9)_photoTimeForLivePhotoWithImageURL:(id)arg1 videoURL:(id)arg2;
 + (void)cancelLivePhotoRequestWithRequestID:(int)arg1;
 + (id)livePhotoWithResourceFileURLs:(id)arg1 error:(id *)arg2;
@@ -72,6 +76,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithImage:(id)arg1 videoAsset:(id)arg2 photoTime:(CDStruct_1b6d18a9)arg3 assetLocalIdentifier:(id)arg4;
 - (id)initWithImage:(id)arg1 videoAsset:(id)arg2 photoTime:(CDStruct_1b6d18a9)arg3 assetLocalIdentifier:(id)arg4 options:(unsigned long long)arg5;
+- (id)initWithImage:(id)arg1 videoAsset:(id)arg2 photoTime:(CDStruct_1b6d18a9)arg3 assetLocalIdentifier:(id)arg4 options:(unsigned long long)arg5 videoComposition:(id)arg6;
 - (void)saveToPhotoLibraryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)videoComplement;
 

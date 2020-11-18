@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _shouldShowCandidateNumber;
     BOOL _secondaryCandidateAppearance;
     BOOL _emphasizedAppearance;
+    BOOL _needsUpdateLabels;
     int _candidatesVisualStyle;
     NSString *_text;
     NSString *_alternativeText;
@@ -51,9 +52,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long edges; // @synthesize edges=_edges;
 @property (nonatomic) BOOL emphasizedAppearance; // @synthesize emphasizedAppearance=_emphasizedAppearance;
 @property (nonatomic) double minimumWidth; // @synthesize minimumWidth=_minimumWidth;
+@property (nonatomic) BOOL needsUpdateLabels; // @synthesize needsUpdateLabels=_needsUpdateLabels;
 @property (nonatomic) double rightPadding; // @synthesize rightPadding=_rightPadding;
 @property (nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
 @property (nonatomic) BOOL secondaryCandidateAppearance; // @synthesize secondaryCandidateAppearance=_secondaryCandidateAppearance;
+@property (strong, nonatomic) id secureContents;
 @property (nonatomic) BOOL shouldShowCandidateNumber; // @synthesize shouldShowCandidateNumber=_shouldShowCandidateNumber;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
@@ -75,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (void)drawBackgroundAndBorders;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1;

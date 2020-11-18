@@ -29,10 +29,12 @@
 @property (strong, nonatomic) NSString *syncID; // @synthesize syncID=_syncID;
 
 - (void).cxx_destruct;
+- (int)StringAsErrorResolution:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)errorResolutionAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

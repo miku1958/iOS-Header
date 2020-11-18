@@ -36,6 +36,7 @@
 
 + (Class)__CLLocationManagerClass;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_fireCompletionHandlers;
 - (void)_locationManagerTimedOut;
 - (void)_locationUpdateTimerFired:(id)arg1;

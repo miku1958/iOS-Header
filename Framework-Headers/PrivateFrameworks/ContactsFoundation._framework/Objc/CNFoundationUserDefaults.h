@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ContactsFoundation/CNFoundationUserDefaults-Protocol.h>
 
-@class NSString;
+@class CNUserDefaults, NSString;
 
 @interface CNFoundationUserDefaults : NSObject <CNFoundationUserDefaults>
 {
+    CNUserDefaults *_userDefaults;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,11 +21,17 @@
 @property unsigned long long nameOrder;
 @property BOOL preferNickname;
 @property unsigned long long shortNameFormat;
+@property (nonatomic, getter=isShortNameFormatEnabled) BOOL shortNameFormatEnabled;
 @property (readonly) Class superclass;
+@property (strong) CNUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 
 + (unsigned long long)_convertNSNameOrderToCNNameOrder:(long long)arg1;
++ (id)makeRegisteredDefaults;
++ (id)registeredDefaults;
 + (id)sharedDefaults;
 - (id)countryCode;
+- (void)dealloc;
+- (id)init;
 - (unsigned long long)newContactNameOrder;
 - (unsigned long long)sortOrder;
 

@@ -25,6 +25,11 @@ struct CGSize {
     double _field2;
 };
 
+struct CLLocationCoordinate2D {
+    double latitude;
+    double longitude;
+};
+
 struct UIEdgeInsets {
     double top;
     double left;
@@ -35,12 +40,17 @@ struct UIEdgeInsets {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    double latitude;
-    double longitude;
-} CDStruct_2c43369c;
+    double _field1;
+    double _field2;
+} CDStruct_c3b9c2ee;
 
 typedef struct {
-    CDStruct_2c43369c _field1;
-    CDStruct_2c43369c _field2;
-} CDStruct_2f492f29;
+    CDStruct_c3b9c2ee _field1;
+    CDStruct_c3b9c2ee _field2;
+} CDStruct_90e2a262;
+
+typedef struct {
+    struct CLLocationCoordinate2D _field1;
+    CDStruct_c3b9c2ee _field2;
+} CDStruct_26e8d939;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -26,7 +26,7 @@
 @property (strong, nonatomic) NSString *relevantText; // @synthesize relevantText=_relevantText;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -18,15 +18,22 @@
     NSArray *_emailAddresses;
     NSArray *_phones;
     NSArray *_postalAddresses;
+    NSArray *_instantMessageAddresses;
+    NSArray *_socialProfiles;
+    unsigned long long _significance;
 }
 
-@property (readonly, nonatomic) NSArray *emailAddresses; // @synthesize emailAddresses=_emailAddresses;
-@property (readonly, nonatomic) SGName *name; // @synthesize name=_name;
-@property (readonly, nonatomic) NSArray *phones; // @synthesize phones=_phones;
-@property (readonly, nonatomic) NSArray *postalAddresses; // @synthesize postalAddresses=_postalAddresses;
+@property (copy, nonatomic) NSArray *emailAddresses; // @synthesize emailAddresses=_emailAddresses;
+@property (copy, nonatomic) NSArray *instantMessageAddresses; // @synthesize instantMessageAddresses=_instantMessageAddresses;
+@property (copy, nonatomic) SGName *name; // @synthesize name=_name;
+@property (copy, nonatomic) NSArray *phones; // @synthesize phones=_phones;
+@property (copy, nonatomic) NSArray *postalAddresses; // @synthesize postalAddresses=_postalAddresses;
 @property (readonly, nonatomic) SGRecordId *recordId; // @synthesize recordId=_recordId;
+@property (nonatomic) unsigned long long significance; // @synthesize significance=_significance;
+@property (copy, nonatomic) NSArray *socialProfiles; // @synthesize socialProfiles=_socialProfiles;
 
 + (id)contactWithId:(id)arg1 name:(id)arg2 emailAddresses:(id)arg3 phones:(id)arg4 postalAddresses:(id)arg5;
++ (id)contactWithId:(id)arg1 name:(id)arg2 emailAddresses:(id)arg3 phones:(id)arg4 postalAddresses:(id)arg5 instantMessageAddresses:(id)arg6 socialProfiles:(id)arg7;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)addresses;
@@ -39,14 +46,10 @@
 - (BOOL)hasNonTrivialInfo;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithId:(id)arg1 name:(id)arg2 emailAddresses:(id)arg3 phones:(id)arg4 postalAddresses:(id)arg5;
+- (id)initWithId:(id)arg1 name:(id)arg2 emailAddresses:(id)arg3 phones:(id)arg4 postalAddresses:(id)arg5 instantMessageAddresses:(id)arg6 socialProfiles:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToContact:(id)arg1;
 - (unsigned long long)richness;
-- (void)setEmailAddresses:(id)arg1;
-- (void)setName:(id)arg1;
-- (void)setPhones:(id)arg1;
-- (void)setPostalAddresses:(id)arg1;
 
 @end
 

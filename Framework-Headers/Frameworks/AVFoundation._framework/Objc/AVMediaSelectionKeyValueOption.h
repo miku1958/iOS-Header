@@ -30,7 +30,6 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isPlayable;
 - (id)locale;
-- (id)mediaSubTypes;
 - (id)mediaType;
 - (id)metadataForFormat:(id)arg1;
 

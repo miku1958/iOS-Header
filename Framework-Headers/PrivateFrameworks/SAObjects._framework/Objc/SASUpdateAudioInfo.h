@@ -28,10 +28,12 @@
 @property (copy, nonatomic) NSString *headsetName;
 @property (copy, nonatomic) NSNumber *noiseReductionLevel;
 @property (copy, nonatomic) NSString *origin;
+@property (copy, nonatomic) NSString *productId;
 @property (strong, nonatomic) SASRecordingInfo *recordingInfo;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL triggeredTwoShotBorealis;
+@property (copy, nonatomic) NSString *vendorId;
 
 + (id)updateAudioInfo;
 + (id)updateAudioInfoWithDictionary:(id)arg1 context:(id)arg2;

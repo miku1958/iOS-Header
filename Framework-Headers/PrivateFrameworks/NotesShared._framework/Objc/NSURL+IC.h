@@ -8,8 +8,10 @@
 
 @interface NSURL (IC)
 
+@property (readonly, nonatomic) BOOL isAppStoreURL;
 @property (readonly, nonatomic) BOOL isMapURL;
 @property (readonly, nonatomic) BOOL isNewsURL;
+@property (readonly, nonatomic) BOOL isiTunesURL;
 @property (readonly, nonatomic) NSURL *uniquedURL;
 
 @end

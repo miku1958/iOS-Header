@@ -21,9 +21,13 @@
     double _maximumSoundBiteDuration;
     NSArray *_potentalAuthors;
     NSArray *_suggestedTags;
+    BOOL _allowsCamera;
+    BOOL _allowsMicrophone;
 }
 
 @property (copy, nonatomic) NSArray *allowedExternalServices; // @synthesize allowedExternalServices=_allowedExternalServices;
+@property (nonatomic) BOOL allowsCamera; // @synthesize allowsCamera=_allowsCamera;
+@property (nonatomic) BOOL allowsMicrophone; // @synthesize allowsMicrophone=_allowsMicrophone;
 @property (copy, nonatomic) NSArray *audioCategoryNames; // @synthesize audioCategoryNames=_audioCategoryNames;
 @property (copy, nonatomic) SKUIMediaSocialAuthor *authorForActiveAccount; // @synthesize authorForActiveAccount=_authorForActiveAccount;
 @property (copy, nonatomic) MSCLStoreItem *item; // @synthesize item=_item;

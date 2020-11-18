@@ -4,21 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSData, NSString;
+@class NSData, NSString, PKPaymentMerchantSession;
 
 @interface PKPaymentMerchantData : NSObject
 {
+    PKPaymentMerchantSession *_merchantSession;
     NSString *_merchantIdentifier;
     NSData *_applicationData;
 }
 
-@property (strong, nonatomic) NSData *applicationData; // @synthesize applicationData=_applicationData;
-@property (strong, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;
+@property (readonly, nonatomic) NSData *applicationData; // @synthesize applicationData=_applicationData;
+@property (readonly, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)encode;
+- (id)init;
+- (id)initWithPaymentRequest:(id)arg1;
 
 @end
 

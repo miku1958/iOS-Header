@@ -62,6 +62,8 @@
 - (BOOL)_navigationControllerShouldUseBuiltinInteractionController:(id)arg1;
 - (id)_newNavigationControllerWithRootController:(id)arg1;
 - (id)_nextCloudFeedNavigatingObject;
+- (id)_snapBackRootViewControllerInNavigationController:(id)arg1;
+- (id)_tabRootViewControllerInNavigationController:(id)arg1;
 - (void)_updateSharedStreamsTabBadge;
 - (BOOL)albumIsAvailableForNavigation:(struct NSObject *)arg1;
 - (void)assetContainerDidChange:(id)arg1;
@@ -88,6 +90,7 @@
 - (void)navigateToContentMode:(int)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)navigateToInitialLocationInNavigationController:(id)arg1;
 - (void)navigateToLastYearPhotosSearchAnimated:(BOOL)arg1;
+- (id)navigateToMemoryWithLocalIdentifier:(id)arg1;
 - (void)navigateToOneUpForAsset:(id)arg1 inAssetContainer:(id)arg2 animated:(BOOL)arg3;
 - (void)navigateToPhotosContentBottomAnimated:(BOOL)arg1;
 - (void)navigateToPhotosSearchAnimated:(BOOL)arg1;
@@ -104,11 +107,14 @@
 - (void)prepareForDefaultImageSnapshot;
 - (BOOL)prepareForDismissingForced:(BOOL)arg1;
 - (BOOL)pu_shouldSelectViewController:(id)arg1;
+- (struct CGRect)px_frameForTabItem:(unsigned long long)arg1 inCoordinateSpace:(id)arg2;
+- (id)px_navigateToMemoryWithLocalIdentifier:(id)arg1;
 - (void)setImportViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)setSelectedViewController:(id)arg1;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (BOOL)shouldShowTabForContentMode:(int)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
+- (unsigned long long)tabIdentifierForContentMode:(int)arg1;
 - (void)updateDisplayedTabsAnimated:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 

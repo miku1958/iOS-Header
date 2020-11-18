@@ -9,13 +9,18 @@
 __attribute__((visibility("hidden")))
 @interface _UIMotionEffectAttitudeEvent : _UIMotionEffectEvent
 {
-    CDStruct_91d2e2b9 _attitude;
+    struct {
+        double x;
+        double y;
+        double z;
+        double w;
+    } _attitude;
 }
 
-@property (readonly, nonatomic) CDStruct_91d2e2b9 attitude; // @synthesize attitude=_attitude;
+@property (readonly, nonatomic) CDStruct_d2b197d1 attitude; // @synthesize attitude=_attitude;
 
 - (id)copyWithTimestamp:(double)arg1;
-- (id)initWithTimestamp:(double)arg1 attitude:(CDStruct_91d2e2b9)arg2;
+- (id)initWithTimestamp:(double)arg1 attitude:(CDStruct_d2b197d1)arg2;
 - (double)velocityRelativeToPreviousEvent:(id)arg1;
 
 @end

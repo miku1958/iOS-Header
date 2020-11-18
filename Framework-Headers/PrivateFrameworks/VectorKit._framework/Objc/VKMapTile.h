@@ -17,14 +17,14 @@ __attribute__((visibility("hidden")))
     unsigned long long _states[34];
     double _stateDates[34];
     id _stateMetas[34];
-    CDStruct_aca18c62 _localBounds[34];
+    Box_3d7e3c2c _localBounds[34];
     VKRasterTile *_rasterized;
     BOOL _needsRasterization;
     float _maximumStyleZ;
-    shared_ptr_89f9185e _labelMapTile;
+    shared_ptr_d0281386 _labelMapTile;
 }
 
-@property (nonatomic) shared_ptr_89f9185e labelMapTile; // @synthesize labelMapTile=_labelMapTile;
+@property (nonatomic) shared_ptr_d0281386 labelMapTile; // @synthesize labelMapTile=_labelMapTile;
 @property (readonly, nonatomic) float maximumStyleZ; // @synthesize maximumStyleZ=_maximumStyleZ;
 @property (nonatomic) BOOL needsRasterization; // @synthesize needsRasterization=_needsRasterization;
 @property (strong, nonatomic) VKRasterTile *rasterized; // @synthesize rasterized=_rasterized;
@@ -36,12 +36,13 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (id)detailedDescription;
+- (id)detailedDescriptionDictionaryRepresentation;
 - (id)initWithKey:(const struct VKTileKey *)arg1;
-- (CDStruct_d2b197d1)localBoundsForLayer:(unsigned long long)arg1;
+- (Box_3d7e3c2c)localBoundsForLayer:(unsigned long long)arg1;
 - (void)setTile:(id)arg1 state:(unsigned long long)arg2 metadata:(id)arg3 forLayer:(unsigned long long)arg4;
 - (id)tileForLayer:(unsigned long long)arg1;
 - (unsigned long long)tileStateForLayer:(unsigned long long)arg1;
-- (void)updateViewDependentStateWithContext:(id)arg1;
+- (void)updateViewDependentStateWithContext:(struct LayoutContext *)arg1;
 
 @end
 

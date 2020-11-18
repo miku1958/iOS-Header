@@ -18,6 +18,7 @@
     HKQuantity *_height;
     HKQuantity *_weight;
     long long _biologicalSex;
+    long long _wheelchairUse;
     CDUnknownBlockType _updateHandler;
 }
 
@@ -27,11 +28,12 @@
 @property (readonly, nonatomic) HKQuantity *leanBodyMass;
 @property (copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
 @property (strong, nonatomic) HKQuantity *weight; // @synthesize weight=_weight;
+@property (nonatomic) long long wheelchairUse; // @synthesize wheelchairUse=_wheelchairUse;
 
 - (void).cxx_destruct;
 - (BOOL)_commitValue:(id)arg1 forPropertyKey:(id)arg2 error:(id *)arg3;
 - (BOOL)_hasDirtyPropertyForPropertyKey:(id)arg1;
-- (void)_logAndNilError:(id *)arg1 operationDescription:(id)arg2;
+- (BOOL)_logAndNilError:(id *)arg1 operationDescription:(id)arg2;
 - (void)_setUncommitedValue:(id)arg1 forPropertyKey:(id)arg2;
 - (BOOL)commmitWithError:(id *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

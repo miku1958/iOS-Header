@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) CDStruct_e83c9415 slowMotionTimeRange;
 @property (nonatomic) CDStruct_e83c9415 slowMotionTimeRange; // @synthesize slowMotionTimeRange=_slowMotionTimeRange;
 
++ (id)defaultSlowMotionAdjustmentsForAsset:(id)arg1;
 + (float)defaultSlowMotionRateForNominalFrameRate:(float)arg1;
 + (CDStruct_e83c9415)defaultSlowMotionTimeRangeForDuration:(CDStruct_1b6d18a9)arg1;
 + (id)defaultVideoAdjustmentsURLForVideoURL:(id)arg1;

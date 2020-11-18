@@ -6,11 +6,11 @@
 
 #import <FrontBoardUIServices/FBUISceneConduit-Protocol.h>
 
-@class FBUISceneIdentity, FBUISceneParameters;
+@class FBSSceneParameters, FBUISceneIdentity;
 @protocol FBUISceneUpdater;
 
 @protocol FBUISceneSurrogate <FBUISceneConduit>
-- (FBUISceneParameters *)configureWithSceneIdentity:(FBUISceneIdentity *)arg1;
+- (FBSSceneParameters *)configureWithSceneIdentity:(FBUISceneIdentity *)arg1;
 - (void)registerSceneUpdater:(id<FBUISceneUpdater>)arg1;
 @end
 

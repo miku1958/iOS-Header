@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class GKDiscovery, GKMatch, NSDate, NSDictionary, NSMutableDictionary, NSSet;
+@class GKDiscovery, GKMatch, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSSet;
 @protocol OS_dispatch_queue;
 
 @interface GKMatchmaker : NSObject
@@ -30,6 +30,7 @@
     double _nearbyQueryAllowance;
     NSSet *_nearbyCompatibileHashes;
     NSMutableDictionary *_nearbyInvites;
+    NSMutableArray *_shareInvitees;
 }
 
 @property (readonly, nonatomic) BOOL hasInviteListener;
@@ -51,6 +52,7 @@
 @property (nonatomic) double nearbyQueryAllowance; // @synthesize nearbyQueryAllowance=_nearbyQueryAllowance;
 @property (strong, nonatomic) NSDate *nearbyQueryLastCheckDate; // @synthesize nearbyQueryLastCheckDate=_nearbyQueryLastCheckDate;
 @property (copy, nonatomic) CDUnknownBlockType recipientResponseHandler; // @synthesize recipientResponseHandler=_recipientResponseHandler;
+@property (strong, nonatomic) NSMutableArray *shareInvitees; // @synthesize shareInvitees=_shareInvitees;
 @property (nonatomic) BOOL wasNearbyBrowsing; // @synthesize wasNearbyBrowsing=_wasNearbyBrowsing;
 
 + (id)descriptionForNearbyDictionary:(id)arg1;
@@ -100,6 +102,7 @@
 - (void)loadCompatabilityMatrixAsDictionaryWithHandler:(CDUnknownBlockType)arg1;
 - (void)loadConnectivitySettingsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadPhotoDataDictionaryWithHandler:(CDUnknownBlockType)arg1;
+- (void)loadURLForMatch:(id)arg1 matchRequest:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)localPlayerAcceptedGameInvite;
 - (void)localPlayerAcceptedGameInviteNotification:(id)arg1;
 - (void)localPlayerAcceptedNearbyInvite:(id)arg1;
@@ -137,6 +140,7 @@
 - (void)setNearbyPlayerDeclined:(id)arg1 reason:(long long)arg2;
 - (void)setNearbyPlayerFailed:(id)arg1;
 - (void)setNearbyPlayerFailed:(id)arg1 deviceID:(id)arg2;
+- (void)setShareInvitees:(id)arg1 propogateToDaemon:(BOOL)arg2;
 - (void)setupNearbyDiscovery;
 - (BOOL)shouldRespondToNearbyQuery;
 - (void)startBrowsingForNearbyPlayersWithHandler:(CDUnknownBlockType)arg1;

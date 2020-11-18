@@ -8,7 +8,7 @@
 
 #import <SpringBoardFoundation/SBFProceduralWallpaperDelegate-Protocol.h>
 
-@class NSDictionary, NSString, NSTimer, UIImage;
+@class CADisplayLink, NSDictionary, NSString, NSTimer, UIImage;
 @protocol SBFProceduralWallpaper;
 
 @interface SBFProceduralWallpaperView : SBFWallpaperView <SBFProceduralWallpaperDelegate>
@@ -20,6 +20,8 @@
     BOOL _pausedForThermalReasons;
     struct _CAImageQueue *_blurQueue;
     UIImage *_blur;
+    UIImage *_cachedUnblurredImage;
+    CADisplayLink *_cachedUnblurredImageDisplayLinkObserver;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -31,6 +33,7 @@
 + (BOOL)_allowsRasterization;
 - (void).cxx_destruct;
 - (id)_blurredImage;
+- (void)_cachedUnbluredImageDidInvalidate;
 - (id)_computeAverageColor;
 - (BOOL)_deviceMayRotate;
 - (void)_handleVariantChange;
@@ -45,6 +48,7 @@
 - (void)_updateSampleTimer;
 - (void)dealloc;
 - (BOOL)hasBeenInvalidated;
+- (BOOL)hasContentOutsideVisibleBounds;
 - (id)initWithFrame:(struct CGRect)arg1 proceduralWallpaper:(id)arg2 options:(id)arg3 variant:(long long)arg4;
 - (void)invalidate;
 - (BOOL)isDisplayingWallpaperWithConfiguration:(id)arg1 forVariant:(long long)arg2;
@@ -59,6 +63,7 @@
 - (id)snapshotImage;
 - (void)wallpaper:(id)arg1 didComputeAverageColor:(id)arg2 forRect:(struct CGRect)arg3;
 - (void)wallpaper:(id)arg1 didGenerateBlur:(void *)arg2 forRect:(struct CGRect)arg3;
+- (long long)wallpaperType;
 
 @end
 

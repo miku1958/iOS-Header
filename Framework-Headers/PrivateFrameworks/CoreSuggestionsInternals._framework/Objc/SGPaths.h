@@ -15,6 +15,7 @@
 + (id)suggestionsDirectoryFile:(id)arg1;
 + (id)suggestionsDirectoryFile:(id)arg1 creatingSuggestionsDirectoryIfNeeded:(BOOL)arg2;
 + (id)suggestionsSubdirectory:(id)arg1;
++ (id)suggestionsSubdirectory:(id)arg1 creatingDirectoriesIfNeeded:(BOOL)arg2;
 
 @end
 

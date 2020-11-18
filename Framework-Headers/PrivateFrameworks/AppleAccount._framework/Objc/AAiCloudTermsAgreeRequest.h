@@ -6,11 +6,12 @@
 
 #import <AppleAccount/AARequest.h>
 
-@class ACAccount;
+@class ACAccount, ACAccountStore;
 
 @interface AAiCloudTermsAgreeRequest : AARequest
 {
     ACAccount *_account;
+    ACAccountStore *_accountStore;
 }
 
 @property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;

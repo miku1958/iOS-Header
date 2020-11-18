@@ -13,12 +13,12 @@
     unsigned long long _index;
     NSDictionary *_storePlatformDictionary;
     unsigned long long _playActionEventType;
-    unsigned long long _shuffleType;
+    long long _shuffleType;
 }
 
 @property (nonatomic) unsigned long long index; // @synthesize index=_index;
 @property (nonatomic) unsigned long long playActionEventType; // @synthesize playActionEventType=_playActionEventType;
-@property (nonatomic) unsigned long long shuffleType; // @synthesize shuffleType=_shuffleType;
+@property (nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
 @property (copy, nonatomic) NSDictionary *storePlatformDictionary; // @synthesize storePlatformDictionary=_storePlatformDictionary;
 
 - (void).cxx_destruct;

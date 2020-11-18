@@ -4,23 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSString, PKSecureElementCertificateSet;
 
 @interface PKWrappedPayment : NSObject <NSSecureCoding>
 {
     NSString *_transactionIdentifier;
     NSData *_transactionData;
+    PKSecureElementCertificateSet *_certificates;
 }
 
+@property (copy, nonatomic) PKSecureElementCertificateSet *certificates; // @synthesize certificates=_certificates;
 @property (copy, nonatomic) NSData *transactionData; // @synthesize transactionData=_transactionData;
 @property (copy, nonatomic) NSString *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

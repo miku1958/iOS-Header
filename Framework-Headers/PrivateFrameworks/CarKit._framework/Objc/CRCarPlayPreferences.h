@@ -29,6 +29,7 @@
 - (void)_updateCarPlayAllowed;
 - (void)dealloc;
 - (void)handleAssistantLanguageChanged:(id)arg1;
+- (void)handleAssistantPreferencesChanged:(id)arg1;
 - (id)init;
 - (BOOL)isCarPlayAllowed;
 - (BOOL)isCarPlayCapable;

@@ -4,31 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+@protocol NSCopying;
 
 @interface TKVibrationRecorderTouchSurfaceRecordedDataWrapper : NSObject
 {
-    BOOL _warmUpModeEnabled;
-    BOOL _displayLinkHasRefreshedAtLeastOnce;
     double _vibrationPatternMaximumDuration;
     double _vibrationPatternDidStartTimestamp;
     unsigned long long _maximumFramesPerSecondRate;
     void *_recordedData;
     unsigned long long _recordedDataElementsCount;
     unsigned long long _recordedDataCursor;
+    BOOL _isWarmUpModeEnabled;
     double _warmUpModeDidStartTimestamp;
+    BOOL _displayLinkHasRefreshedAtLeastOnce;
+    id<NSCopying> _displayLinkManagerObserverToken;
 }
 
-@property (nonatomic, setter=_setDisplayLinkHasRefreshedAtLeastOnce:) BOOL _displayLinkHasRefreshedAtLeastOnce; // @synthesize _displayLinkHasRefreshedAtLeastOnce;
-@property (nonatomic, setter=_setMaximumFramesPerSecondRate:) unsigned long long _maximumFramesPerSecondRate; // @synthesize _maximumFramesPerSecondRate;
-@property (nonatomic, setter=_setRecordedData:) void *_recordedData; // @synthesize _recordedData;
-@property (nonatomic, setter=_setRecordedDataCursor:) unsigned long long _recordedDataCursor; // @synthesize _recordedDataCursor;
-@property (nonatomic, setter=_setRecordedDataElementsCount:) unsigned long long _recordedDataElementsCount; // @synthesize _recordedDataElementsCount;
-@property (nonatomic, setter=_setVibrationPatternDidStartTimestamp:) double _vibrationPatternDidStartTimestamp; // @synthesize _vibrationPatternDidStartTimestamp;
-@property (nonatomic, setter=_setVibrationPatternMaximumDuration:) double _vibrationPatternMaximumDuration; // @synthesize _vibrationPatternMaximumDuration;
-@property (nonatomic, setter=_setWarmUpModeDidStartTimestamp:) double _warmUpModeDidStartTimestamp; // @synthesize _warmUpModeDidStartTimestamp;
-@property (nonatomic, getter=_isWarmUpModeEnabled, setter=_setWarmUpModeEnabled:) BOOL _warmUpModeEnabled; // @synthesize _warmUpModeEnabled;
-
+- (void).cxx_destruct;
 - (void)_prepareRecordedDataBufferForStoringEnoughElementsForRecordingDuration:(double)arg1;
 - (void)_recordFinalDataWithNormalizedTouchLocation:(struct CGPoint)arg1 touchPhase:(int)arg2 timeIntervalSinceBeginningOfPattern:(double)arg3;
 - (void)_updateMaximumFramesPerSecondRate:(id)arg1;

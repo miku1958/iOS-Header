@@ -9,7 +9,7 @@
 #import <CoreSuggestions/NSCopying-Protocol.h>
 #import <CoreSuggestions/NSSecureCoding-Protocol.h>
 
-@class NSArray, SGContact, SGObject, SGRecordId;
+@class NSArray, SGContact, SGMatchedDetails, SGObject, SGRecordId;
 
 @interface SGContactMatch : NSObject <NSCopying, NSSecureCoding>
 {
@@ -17,10 +17,12 @@
     long long _matchingFieldType;
     SGContact *_contact;
     NSArray *_matchTokens;
+    SGMatchedDetails *_matchedDetails;
 }
 
 @property (readonly, nonatomic) SGContact *contact; // @synthesize contact=_contact;
 @property (readonly, nonatomic) NSArray *matchTokens; // @synthesize matchTokens=_matchTokens;
+@property (readonly, nonatomic) SGMatchedDetails *matchedDetails; // @synthesize matchedDetails=_matchedDetails;
 @property (readonly, nonatomic) SGObject *matchingField;
 @property (readonly, nonatomic) long long matchingFieldType; // @synthesize matchingFieldType=_matchingFieldType;
 
@@ -31,15 +33,13 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithContact:(id)arg1 matchTokens:(id)arg2 matchInfo:(id)arg3;
 - (id)initWithContact:(id)arg1 matchingEmailAddressRecordId:(id)arg2;
 - (id)initWithContact:(id)arg1 matchingEmailAddressRecordId:(id)arg2 matchTokens:(id)arg3;
 - (id)initWithContact:(id)arg1 matchingFieldRecordId:(id)arg2 matchTokens:(id)arg3;
 - (id)initWithContact:(id)arg1 matchingNameRecordId:(id)arg2;
 - (id)initWithContact:(id)arg1 matchingNameRecordId:(id)arg2 matchTokens:(id)arg3;
-- (id)initWithContact:(id)arg1 matchingPhoneRecordId:(id)arg2;
 - (id)initWithContact:(id)arg1 matchingPhoneRecordId:(id)arg2 matchTokens:(id)arg3;
-- (id)initWithContact:(id)arg1 matchingPostalAddressRecordId:(id)arg2;
-- (id)initWithContact:(id)arg1 matchingPostalAddressRecordId:(id)arg2 matchTokens:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToContactMatch:(id)arg1;
 

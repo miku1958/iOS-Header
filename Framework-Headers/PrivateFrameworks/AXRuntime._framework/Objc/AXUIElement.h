@@ -30,6 +30,7 @@
 + (struct __AXUIElement *)systemWideAXUIElement;
 + (id)uiApplicationAtCoordinate:(struct CGPoint)arg1;
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1;
++ (id)uiElementAtCoordinate:(struct CGPoint)arg1 forApplication:(struct __AXUIElement *)arg2 contextId:(unsigned int)arg3;
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1 hitTestOrientation:(int)arg2;
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1 startWithElement:(id)arg2;
 + (id)uiElementWithAXElement:(struct __AXUIElement *)arg1;
@@ -50,6 +51,7 @@
 - (id)arrayWithAXAttribute:(int)arg1;
 - (BOOL)boolWithAXAttribute:(int)arg1;
 - (BOOL)canPerformAXAction:(int)arg1;
+- (struct CGColor *)colorWithAXAttribute:(int)arg1;
 - (void)dealloc;
 - (void)disableCache;
 - (void)enableCache:(BOOL)arg1;
@@ -69,6 +71,7 @@
 - (struct CGPath *)pathWithAXAttribute:(int)arg1;
 - (BOOL)performAXAction:(int)arg1;
 - (BOOL)performAXAction:(int)arg1 withValue:(id)arg2;
+- (BOOL)performAXAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (int)pid;
 - (struct CGPoint)pointWithAXAttribute:(int)arg1;
 - (id)previousElementsWithCount:(unsigned long long)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MultipeerConnectivity/NSStreamDelegate-Protocol.h>
 
@@ -46,9 +46,6 @@
 @property (nonatomic) NSObject<OS_dispatch_queue> *syncQueue; // @synthesize syncQueue=_syncQueue;
 @property (nonatomic) NSObject<OS_dispatch_queue> *targetQueue; // @synthesize targetQueue=_targetQueue;
 
-+ (void)checkConstants;
-+ (unsigned long long)receiveDataLimit;
-+ (unsigned long long)sendDataLimit;
 - (void)attachInputStream:(id)arg1 outputStream:(id)arg2;
 - (void)connectToNetService:(id)arg1;
 - (void)dealloc;
@@ -57,6 +54,7 @@
 - (void)sendData:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)setupInputStream:(id)arg1 outputStream:(id)arg2;
 - (BOOL)shouldDecideAboutConnection;
+- (int)socketForStream:(id)arg1;
 - (void)stream:(id)arg1 handleEvent:(unsigned long long)arg2;
 - (id)stringForStreamEventCode:(unsigned long long)arg1;
 - (void)syncAcceptedConnection;
@@ -64,6 +62,7 @@
 - (void)syncCloseConnectionNow;
 - (void)syncHandleInputStreamEvent:(unsigned long long)arg1;
 - (void)syncHandleOutputStreamEvent:(unsigned long long)arg1;
+- (void)syncHandleStreamEventOpenCompleted:(id)arg1;
 - (void)syncProcessMessage:(int)arg1 data:(id)arg2 sequenceNumber:(unsigned int)arg3;
 - (void)syncReadFromInputStream;
 - (void)syncReceivedData:(id)arg1 error:(id)arg2;

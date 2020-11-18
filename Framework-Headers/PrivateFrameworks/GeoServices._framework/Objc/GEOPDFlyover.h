@@ -12,10 +12,10 @@
 
 @interface GEOPDFlyover : PBCodable <NSCopying>
 {
-    CDStruct_3d4e3f4a *_cameraPaths;
+    struct GEOPDCameraPathFrame *_cameraPaths;
     unsigned long long _cameraPathsCount;
     unsigned long long _cameraPathsSpace;
-    CDStruct_11cc3dfc *_labelFrames;
+    struct GEOPDLabelFrame *_labelFrames;
     unsigned long long _labelFramesCount;
     unsigned long long _labelFramesSpace;
     NSMutableArray *_labels;
@@ -26,23 +26,25 @@
     } _has;
 }
 
-@property (readonly, nonatomic) CDStruct_3d4e3f4a *cameraPaths;
+@property (readonly, nonatomic) struct GEOPDCameraPathFrame *cameraPaths;
 @property (readonly, nonatomic) unsigned long long cameraPathsCount;
 @property (nonatomic) BOOL hasUseSplines;
-@property (readonly, nonatomic) CDStruct_11cc3dfc *labelFrames;
+@property (readonly, nonatomic) struct GEOPDLabelFrame *labelFrames;
 @property (readonly, nonatomic) unsigned long long labelFramesCount;
 @property (strong, nonatomic) NSMutableArray *labels; // @synthesize labels=_labels;
 @property (strong, nonatomic) NSMutableArray *notificationMessages; // @synthesize notificationMessages=_notificationMessages;
 @property (nonatomic) BOOL useSplines; // @synthesize useSplines=_useSplines;
 
 + (id)flyoverForPlaceData:(id)arg1;
-- (void)addCameraPath:(CDStruct_3d4e3f4a)arg1;
++ (Class)labelType;
++ (Class)notificationMessageType;
+- (void)addCameraPath:(struct GEOPDCameraPathFrame)arg1;
 - (void)addLabel:(id)arg1;
-- (void)addLabelFrame:(CDStruct_11cc3dfc)arg1;
+- (void)addLabelFrame:(struct GEOPDLabelFrame)arg1;
 - (void)addNotificationMessage:(id)arg1;
 - (id)bestLocalizedAnnouncementMessage;
 - (id)bestLocalizedLabelAtIndex:(unsigned long long)arg1;
-- (CDStruct_3d4e3f4a)cameraPathAtIndex:(unsigned long long)arg1;
+- (struct GEOPDCameraPathFrame)cameraPathAtIndex:(unsigned long long)arg1;
 - (void)clearCameraPaths;
 - (void)clearLabelFrames;
 - (void)clearLabels;
@@ -55,14 +57,14 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (id)labelAtIndex:(unsigned long long)arg1;
-- (CDStruct_11cc3dfc)labelFrameAtIndex:(unsigned long long)arg1;
+- (struct GEOPDLabelFrame)labelFrameAtIndex:(unsigned long long)arg1;
 - (unsigned long long)labelsCount;
 - (void)mergeFrom:(id)arg1;
 - (id)notificationMessageAtIndex:(unsigned long long)arg1;
 - (unsigned long long)notificationMessagesCount;
 - (BOOL)readFrom:(id)arg1;
-- (void)setCameraPaths:(CDStruct_3d4e3f4a *)arg1 count:(unsigned long long)arg2;
-- (void)setLabelFrames:(CDStruct_11cc3dfc *)arg1 count:(unsigned long long)arg2;
+- (void)setCameraPaths:(struct GEOPDCameraPathFrame *)arg1 count:(unsigned long long)arg2;
+- (void)setLabelFrames:(struct GEOPDLabelFrame *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

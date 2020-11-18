@@ -18,16 +18,7 @@
     int _departure;
     unsigned int _numberOfReroutes;
     int _ttlUiNotificationShown;
-    struct {
-        unsigned int earliestArrivalOffset:1;
-        unsigned int earliestDepartureOffset:1;
-        unsigned int latestArrivalOffset:1;
-        unsigned int latestDepartureOffset:1;
-        unsigned int arrival:1;
-        unsigned int departure:1;
-        unsigned int numberOfReroutes:1;
-        unsigned int ttlUiNotificationShown:1;
-    } _has;
+    CDStruct_90e5f431 _has;
 }
 
 @property (nonatomic) int arrival; // @synthesize arrival=_arrival;
@@ -47,14 +38,20 @@
 @property (nonatomic) unsigned int numberOfReroutes; // @synthesize numberOfReroutes=_numberOfReroutes;
 @property (nonatomic) int ttlUiNotificationShown; // @synthesize ttlUiNotificationShown=_ttlUiNotificationShown;
 
+- (int)StringAsArrival:(id)arg1;
+- (int)StringAsDeparture:(id)arg1;
+- (int)StringAsTtlUiNotificationShown:(id)arg1;
+- (id)arrivalAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)departureAsString:(int)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)ttlUiNotificationShownAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

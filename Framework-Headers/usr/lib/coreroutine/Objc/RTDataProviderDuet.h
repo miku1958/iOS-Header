@@ -4,27 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <coreroutine/RTDataProvider.h>
+#import <coreroutine/RTDataProviderEvent.h>
 
-#import <coreroutine/RTDataProviderProtocol-Protocol.h>
+@class NSMutableArray;
 
-@class NSString, RTDuetHelper;
-
-__attribute__((visibility("hidden")))
-@interface RTDataProviderDuet : RTDataProvider <RTDataProviderProtocol>
+@interface RTDataProviderDuet : RTDataProviderEvent
 {
-    RTDuetHelper *_duetHelper;
+    NSMutableArray *_duetHelpers;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (strong, nonatomic) RTDuetHelper *duetHelper; // @synthesize duetHelper=_duetHelper;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (strong, nonatomic) NSMutableArray *duetHelpers; // @synthesize duetHelpers=_duetHelpers;
 
 - (void).cxx_destruct;
-- (id)initWithName:(id)arg1;
+- (void)_createDuetHelpersWithEventStreamTypes:(id)arg1;
+- (void)_destroyDuetHelpers;
+- (void)_purge;
+- (id)duetHelperForDuetEventStream:(long long)arg1;
+- (id)initWithName:(id)arg1 purgeManager:(id)arg2;
 - (void)shutdown;
+- (id)supportedEventStreams;
 
 @end
 

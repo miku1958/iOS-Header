@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 
 + (id)placementWithHeight:(double)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (struct CGRect)remoteIntrinsicContentSizeForInputViewInSet:(id)arg1;
+- (struct CGRect)remoteIntrinsicContentSizeForInputViewInSet:(id)arg1 includingIAV:(BOOL)arg2;
 - (id)verticalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 
 @end

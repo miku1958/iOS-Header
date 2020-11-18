@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDViewportInfo, NSMutableArray;
+@class GEOPDViewportInfo, NSMutableArray, PBUnknownFields;
 
 @interface GEOPDBatchPopularNearbySearchParameters : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     double _requestLocalTimestamp;
     unsigned int _maxResults;
     NSMutableArray *_suggestionEntryMetadatas;
@@ -28,8 +29,10 @@
 @property (nonatomic) unsigned int maxResults; // @synthesize maxResults=_maxResults;
 @property (nonatomic) double requestLocalTimestamp; // @synthesize requestLocalTimestamp=_requestLocalTimestamp;
 @property (strong, nonatomic) NSMutableArray *suggestionEntryMetadatas; // @synthesize suggestionEntryMetadatas=_suggestionEntryMetadatas;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;
 
++ (Class)suggestionEntryMetadataType;
 - (void)addSuggestionEntryMetadata:(id)arg1;
 - (void)clearSuggestionEntryMetadatas;
 - (void)copyTo:(id)arg1;

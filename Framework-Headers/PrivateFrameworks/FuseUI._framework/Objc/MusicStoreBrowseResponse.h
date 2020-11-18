@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MediaPlayerUI/MPUModelResponse.h>
+#import <MediaPlayer/MPModelResponse.h>
 
-@class MusicStoreBrowseResponseParser;
+@class MPChangeDetails, MusicStoreBrowseResponseParser;
 
-@interface MusicStoreBrowseResponse : MPUModelResponse
+@interface MusicStoreBrowseResponse : MPModelResponse
 {
+    MPChangeDetails *_changeDetails;
     MusicStoreBrowseResponseParser *_parser;
 }
 
+@property (strong, nonatomic) MPChangeDetails *changeDetails; // @synthesize changeDetails=_changeDetails;
 @property (readonly, nonatomic) BOOL hasAdditionalContentItems;
 @property (strong, nonatomic) MusicStoreBrowseResponseParser *parser; // @synthesize parser=_parser;
 

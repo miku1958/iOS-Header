@@ -17,6 +17,7 @@
 }
 
 + (id)URLBagForContext:(id)arg1;
++ (id)bagQueue;
 - (void).cxx_destruct;
 - (void)_enqueueOperationWithContext:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)_finishOperationWithURLBag:(id)arg1 error:(id)arg2;

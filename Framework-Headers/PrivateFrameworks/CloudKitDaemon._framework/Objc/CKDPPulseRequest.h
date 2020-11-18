@@ -44,6 +44,8 @@ __attribute__((visibility("hidden")))
 
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsApnsEnv:(id)arg1;
+- (id)apnsEnvAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

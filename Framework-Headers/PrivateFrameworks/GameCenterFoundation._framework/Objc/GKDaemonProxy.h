@@ -56,6 +56,9 @@
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(BOOL)arg3;
 - (void)dealloc;
 - (oneway void)declineInviteWithNotification:(id)arg1;
+- (oneway void)didConnectToParticipantWithID:(id)arg1;
+- (oneway void)didDisconnectFromParticipantWithID:(id)arg1;
+- (oneway void)didReceiveData:(id)arg1 reliably:(BOOL)arg2 forRecipients:(id)arg3 fromSender:(id)arg4;
 - (void)dispatchCompletedChallenge:(id)arg1;
 - (oneway void)endNetworkActivity;
 - (oneway void)fetchTurnBasedData;
@@ -77,10 +80,17 @@
 - (void)resetServiceLookup;
 - (oneway void)respondedToNearbyInvite:(id)arg1;
 - (oneway void)scoreSelected:(id)arg1;
+- (oneway void)session:(id)arg1 addedPlayer:(id)arg2;
+- (oneway void)session:(id)arg1 didReceiveData:(id)arg2 fromPlayer:(id)arg3;
+- (oneway void)session:(id)arg1 didReceiveMessage:(id)arg2 withData:(id)arg3 fromPlayer:(id)arg4;
+- (oneway void)session:(id)arg1 player:(id)arg2 didChangeConnectionState:(long long)arg3;
+- (oneway void)session:(id)arg1 player:(id)arg2 didSaveData:(id)arg3;
+- (oneway void)session:(id)arg1 removedPlayer:(id)arg2;
 - (oneway void)setBadgeCount:(unsigned long long)arg1 forType:(unsigned long long)arg2;
 - (oneway void)setCurrentGame:(id)arg1 serverEnvironment:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (oneway void)setLogBits:(int)arg1;
 - (oneway void)setPreferencesValues:(id)arg1;
+- (oneway void)setTestGame:(id)arg1;
 
 @end
 

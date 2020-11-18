@@ -35,6 +35,8 @@
     NSArray *_versionOrdering;
     NSDate *_receiptExpirationDate;
     unsigned long long _vppStateFlags;
+    BOOL _launchProhibited;
+    BOOL _didCheckLaunchProhibited;
     unsigned long long _removableStatus;
 }
 
@@ -49,11 +51,13 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *deviceIdentifierForVendor; // @synthesize deviceIdentifierForVendor=_deviceIdentifierForVendor;
+@property (nonatomic) BOOL didCheckLaunchProhibited; // @synthesize didCheckLaunchProhibited=_didCheckLaunchProhibited;
 @property (copy, nonatomic) NSNumber *familyAccountIdentifier; // @synthesize familyAccountIdentifier=_familyAccountIdentifier;
 @property (nonatomic) BOOL hasMIDBasedSINF; // @synthesize hasMIDBasedSINF=_hasMIDBasedSINF;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSNumber *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property (copy, nonatomic) NSString *itemName; // @synthesize itemName=_itemName;
+@property (nonatomic, getter=isLaunchProhibited) BOOL launchProhibited; // @synthesize launchProhibited=_launchProhibited;
 @property (nonatomic) BOOL missingRequiredSINF; // @synthesize missingRequiredSINF=_missingRequiredSINF;
 @property (nonatomic, getter=isPlaceholder) BOOL placeholder; // @synthesize placeholder=_placeholder;
 @property (nonatomic, getter=isProfileValidated) BOOL profileValidated; // @synthesize profileValidated=_profileValidated;

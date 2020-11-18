@@ -54,8 +54,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)createDocumentAtDirectoryURL:(id)arg1 withPluginIdentifier:(id)arg2 guidelines:(id)arg3 mediaURLs:(id)arg4 mediaItemLookupDelegate:(id)arg5 flattenMedia:(BOOL)arg6 flattenProducer:(BOOL)arg7 prepareCaches:(BOOL)arg8 format:(unsigned long long)arg9 keepOpen:(BOOL)arg10 documentClass:(Class)arg11 progressBlock:(CDUnknownBlockType)arg12 completionBlock:(CDUnknownBlockType)arg13;
 - (void)createDocumentAtFileURL:(id)arg1 withPluginIdentifier:(id)arg2 guidelines:(id)arg3 mediaURLs:(id)arg4 mediaItemLookupDelegate:(id)arg5 flattenMedia:(BOOL)arg6 flattenProducer:(BOOL)arg7 prepareCaches:(BOOL)arg8 format:(unsigned long long)arg9 keepOpen:(BOOL)arg10 documentClass:(Class)arg11 progressBlock:(CDUnknownBlockType)arg12 completionBlock:(CDUnknownBlockType)arg13;
-- (void)createPresentationWithPluginIdentifier:(id)arg1 guidelines:(id)arg2 mediaFeeder:(id)arg3 progressBlock:(CDUnknownBlockType)arg4 completionBlock:(CDUnknownBlockType)arg5;
-- (void)createPresentationWithPreset:(id)arg1 guidelines:(id)arg2 mediaFeeder:(id)arg3 progressBlock:(CDUnknownBlockType)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (void)createPresentationWithPluginIdentifier:(id)arg1 guidelines:(id)arg2 mediaFeeder:(id)arg3 mediaItemLookupDelegate:(id)arg4 progressBlock:(CDUnknownBlockType)arg5 completionBlock:(CDUnknownBlockType)arg6;
+- (void)createPresentationWithPreset:(id)arg1 guidelines:(id)arg2 mediaFeeder:(id)arg3 mediaItemLookupDelegate:(id)arg4 progressBlock:(CDUnknownBlockType)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (void)dealloc;
 - (BOOL)hasContentWithIdentifier:(id)arg1;
 - (BOOL)hasInstalledContentWithIdentifier:(id)arg1;

@@ -30,7 +30,7 @@
 @property (strong) NSNumber *signalStrength; // @synthesize signalStrength=_signalStrength;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

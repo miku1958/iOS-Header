@@ -6,15 +6,7 @@
 
 #import <MediaPlayer/MPMediaItem.h>
 
-@class NSString;
-
 @interface MPMediaItem (CarDisplay)
-
-@property (readonly, nonatomic) NSString *albumArtistWithFallback;
-@property (readonly, nonatomic) NSString *albumTitleWithFallback;
-@property (readonly, nonatomic) NSString *artistWithFallback;
-@property (readonly, nonatomic) NSString *titleWithFallback;
-
 - (id)albumImageWithFallbackForSize:(struct CGSize)arg1 doubleLineRow:(BOOL)arg2;
 @end
 

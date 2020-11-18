@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 
 + (id)_filteredCSIDataFromBaseCSIData:(id)arg1;
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
+- (void)_setStructuredThemeStore:(id)arg1;
 - (id)effectPreset;
 
 @end

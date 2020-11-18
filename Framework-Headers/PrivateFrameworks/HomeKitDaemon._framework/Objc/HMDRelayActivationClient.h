@@ -6,18 +6,25 @@
 
 #import <CoreHAP/HAPRelayActivationClient.h>
 
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
+
 @class NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDRelayActivationClient : HAPRelayActivationClient
+@interface HMDRelayActivationClient : HAPRelayActivationClient <HMFLogging>
 {
     NSObject<OS_dispatch_queue> *_workQueue;
     NSString *_challengeIdentifier;
 }
 
 @property (strong, nonatomic) NSString *challengeIdentifier; // @synthesize challengeIdentifier=_challengeIdentifier;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (id)logCategory;
 - (void).cxx_destruct;
 - (void)_closeWithError:(id)arg1;
 - (void)close;

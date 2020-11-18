@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) id<GEOMapItem> geoMapItem;
 @property (readonly, nonatomic) NSData *metadata;
 @property (readonly, nonatomic) GEOSearchCategory *searchCategory;
+@property (readonly, nonatomic) long long type;
 
 - (NSString *)calloutTitle;
 - (BOOL)getCoordinate:(CDStruct_c3b9c2ee *)arg1;

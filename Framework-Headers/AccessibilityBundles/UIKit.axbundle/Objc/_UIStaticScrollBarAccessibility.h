@@ -14,8 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)init;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (void)willMoveToWindow:(id)arg1;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AXEventRepresentation, NSString;
 
@@ -21,6 +21,7 @@
 @property (nonatomic) BOOL homeIsDown; // @synthesize homeIsDown=_homeIsDown;
 
 + (id)sharedManager;
+- (void).cxx_destruct;
 - (BOOL)_assistiveTouchEventTap:(id)arg1;
 - (void)_enableAssistiveTouchEventTap:(BOOL)arg1;
 - (void)_normalizeEventForContext:(id)arg1;
@@ -42,7 +43,6 @@
 - (int)systemAppPid;
 - (unsigned int)systemAppPort;
 - (unsigned int)systemEventPort;
-- (void)wakeUpDeviceIfNecessary;
 - (id)windowServer;
 
 @end

@@ -12,13 +12,14 @@
 #import <TSReading/TSDErrorPresenter-Protocol.h>
 #import <TSReading/TSDModalOperationPresenter-Protocol.h>
 #import <TSReading/TSDRepTrackerDelegateCreation-Protocol.h>
+#import <TSReading/TSDTilingLayerDelegate-Protocol.h>
 #import <TSReading/TSKChangeSourceObserver-Protocol.h>
 #import <TSReading/TSKScrollViewDelegate-Protocol.h>
 
 @class CALayer, NSArray, NSFormatter, NSMutableArray, NSMutableSet, NSRecursiveLock, NSSet, NSString, TSDBackgroundLayoutAndRenderState, TSDCanvas, TSDCanvasAnimation, TSDCanvasLayer, TSDCanvasView, TSDContainerRep, TSDDisplayLinkDispatch, TSDDynamicOperationController, TSDEditorController, TSDGestureDispatcher, TSDGuideController, TSDGuideStorage, TSDLayoutController, TSDTextInputResponder, TSDTileStorage, TSDTrackerManipulatorCoordinator, TSDTrackingController, TSKAccessController, TSKChangeNotifier, TSKDocumentRoot, TSPObjectContext;
 @protocol TSDAnnotationHosting, TSDAnnotationPopoverController, TSDCanvasEditor, TSDCanvasLayerHosting, TSDEditor, TSDImageHUDController, TSDInteractiveCanvasControllerDelegate, TSDRepDirectLayerHostProvider, TSDRulerController, TSKDocumentRootProvider;
 
-@interface TSDInteractiveCanvasController : NSObject <TSDCanvasDelegate, TSDErrorPresenter, TSDModalOperationPresenter, TSKChangeSourceObserver, NSCoding, TSKScrollViewDelegate, TSDBackgroundLayoutAndRenderStateDelegate, TSDRepTrackerDelegateCreation>
+@interface TSDInteractiveCanvasController : NSObject <TSDCanvasDelegate, TSDErrorPresenter, TSDModalOperationPresenter, TSKChangeSourceObserver, NSCoding, TSKScrollViewDelegate, TSDBackgroundLayoutAndRenderStateDelegate, TSDRepTrackerDelegateCreation, TSDTilingLayerDelegate>
 {
     id<TSDInteractiveCanvasControllerDelegate> mDelegate;
     TSDCanvas *mCanvas;

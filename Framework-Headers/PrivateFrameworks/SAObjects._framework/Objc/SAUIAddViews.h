@@ -6,7 +6,7 @@
 
 #import <SAObjects/SABaseClientBoundCommand.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, SASendCommands;
 
 @interface SAUIAddViews : SABaseClientBoundCommand
 {
@@ -14,6 +14,7 @@
 
 @property (copy, nonatomic) NSString *dialogPhase;
 @property (copy, nonatomic) NSString *displayTarget;
+@property (strong, nonatomic) SASendCommands *refreshCommand;
 @property (nonatomic) BOOL scrollToTop;
 @property (nonatomic) BOOL temporary;
 @property (copy, nonatomic) NSArray *views;

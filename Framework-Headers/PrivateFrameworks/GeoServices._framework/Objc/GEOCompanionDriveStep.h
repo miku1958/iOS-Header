@@ -13,7 +13,7 @@
 
 @interface GEOCompanionDriveStep : PBCodable <GEOCompanionManeuverStep, NSCopying>
 {
-    CDStruct_e02beb0c *_junctionElements;
+    struct GEOJunctionElement *_junctionElements;
     unsigned long long _junctionElementsCount;
     unsigned long long _junctionElementsSpace;
     int _drivingSide;
@@ -48,8 +48,8 @@
 @property (nonatomic) BOOL hasShieldType;
 @property (nonatomic) BOOL hasToFreeway;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) CDStruct_e02beb0c *junctionElements;
-@property (readonly, nonatomic) CDStruct_e02beb0c *junctionElements;
+@property (readonly, nonatomic) struct GEOJunctionElement *junctionElements;
+@property (readonly, nonatomic) struct GEOJunctionElement *junctionElements;
 @property (readonly, nonatomic) unsigned long long junctionElementsCount;
 @property (readonly, nonatomic) unsigned long long junctionElementsCount;
 @property (nonatomic) int junctionType;
@@ -66,7 +66,12 @@
 @property (nonatomic) BOOL toFreeway; // @synthesize toFreeway=_toFreeway;
 @property (readonly, nonatomic) int transportType;
 
-- (void)addJunctionElement:(CDStruct_e02beb0c)arg1;
++ (Class)maneuverNameType;
++ (Class)signpostType;
+- (int)StringAsDrivingSide:(id)arg1;
+- (int)StringAsJunctionType:(id)arg1;
+- (int)StringAsManeuverType:(id)arg1;
+- (void)addJunctionElement:(struct GEOJunctionElement)arg1;
 - (void)addManeuverName:(id)arg1;
 - (void)addSignpost:(id)arg1;
 - (void)clearJunctionElements;
@@ -76,13 +81,16 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)dictionaryRepresentation;
+- (id)drivingSideAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (CDStruct_e02beb0c)junctionElementAtIndex:(unsigned long long)arg1;
+- (struct GEOJunctionElement)junctionElementAtIndex:(unsigned long long)arg1;
+- (id)junctionTypeAsString:(int)arg1;
 - (id)maneuverNameAtIndex:(unsigned long long)arg1;
 - (unsigned long long)maneuverNamesCount;
+- (id)maneuverTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (void)setJunctionElements:(CDStruct_e02beb0c *)arg1 count:(unsigned long long)arg2;
+- (void)setJunctionElements:(struct GEOJunctionElement *)arg1 count:(unsigned long long)arg2;
 - (id)signpostAtIndex:(unsigned long long)arg1;
 - (unsigned long long)signpostsCount;
 - (void)writeTo:(id)arg1;

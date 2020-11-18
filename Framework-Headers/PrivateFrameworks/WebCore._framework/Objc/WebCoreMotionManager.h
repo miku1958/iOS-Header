@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSTimer *m_updateTimer;
     BOOL m_gyroAvailable;
     BOOL m_headingAvailable;
+    BOOL m_initialized;
 }
 
 + (id)sharedManager;

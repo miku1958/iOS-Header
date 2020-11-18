@@ -13,6 +13,7 @@
 - (void)_dispose;
 - (void)_xref_dispose;
 - (BOOL)allowsWeakReference;
+- (id)init;
 - (oneway void)release;
 - (id)retain;
 - (unsigned long long)retainCount;

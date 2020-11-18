@@ -12,9 +12,9 @@
 
 @interface GEOUsageCollection : PBCodable <NSCopying>
 {
-    CDStruct_612aec5b _sessionID;
+    struct GEOSessionID _sessionID;
     long long _requestErrorCode;
-    CDStruct_8f5f9923 *_tileUsages;
+    struct GEOTileUsage *_tileUsages;
     unsigned long long _tileUsagesCount;
     unsigned long long _tileUsagesSpace;
     double _timestamp;
@@ -68,25 +68,31 @@
 @property (strong, nonatomic) NSString *requestErrorDomain; // @synthesize requestErrorDomain=_requestErrorDomain;
 @property (nonatomic) int responseDataSize; // @synthesize responseDataSize=_responseDataSize;
 @property (nonatomic) int responseTime; // @synthesize responseTime=_responseTime;
-@property (nonatomic) CDStruct_612aec5b sessionID; // @synthesize sessionID=_sessionID;
+@property (nonatomic) struct GEOSessionID sessionID; // @synthesize sessionID=_sessionID;
 @property (nonatomic) BOOL sessionIDIsPersistent; // @synthesize sessionIDIsPersistent=_sessionIDIsPersistent;
-@property (readonly, nonatomic) CDStruct_8f5f9923 *tileUsages;
+@property (readonly, nonatomic) struct GEOTileUsage *tileUsages;
 @property (readonly, nonatomic) unsigned long long tileUsagesCount;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
-- (void)addTileUsage:(CDStruct_8f5f9923)arg1;
+- (int)StringAsCellWifi:(id)arg1;
+- (int)StringAsGeoService:(id)arg1;
+- (int)StringAsPlaceRequestType:(id)arg1;
+- (void)addTileUsage:(struct GEOTileUsage)arg1;
+- (id)cellWifiAsString:(int)arg1;
 - (void)clearTileUsages;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)geoServiceAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)placeRequestTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (void)setTileUsages:(CDStruct_8f5f9923 *)arg1 count:(unsigned long long)arg2;
-- (CDStruct_8f5f9923)tileUsageAtIndex:(unsigned long long)arg1;
+- (void)setTileUsages:(struct GEOTileUsage *)arg1 count:(unsigned long long)arg2;
+- (struct GEOTileUsage)tileUsageAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

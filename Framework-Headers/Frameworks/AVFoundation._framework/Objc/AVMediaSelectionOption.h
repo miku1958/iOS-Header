@@ -28,8 +28,10 @@
 @property (readonly, nonatomic) NSString *unicodeLanguageCode;
 @property (readonly, nonatomic) NSString *unicodeLanguageIdentifier;
 
++ (BOOL)_plistHasOptionIdentifier:(id)arg1;
 + (id)mediaSelectionOptionForAsset:(id)arg1 group:(id)arg2 dictionary:(id)arg3 hasUnderlyingTrack:(BOOL)arg4;
 - (id)_ancillaryDescription;
+- (id)_displayNameWithLocale:(id)arg1 fallingBackToMatchingUndeterminedAndMultilingual:(BOOL)arg2;
 - (id)_groupID;
 - (id)_groupMediaCharacteristics;
 - (id)_groupMediaType;
@@ -49,7 +51,6 @@
 - (id)description;
 - (id)dictionary;
 - (id)displayNameWithLocale:(id)arg1;
-- (id)displayNameWithLocale:(id)arg1 fallingBackToMatchingUndeterminedAndMultilingual:(BOOL)arg2;
 - (BOOL)displaysNonForcedSubtitles;
 - (id)fallbackIDs;
 - (id)group;

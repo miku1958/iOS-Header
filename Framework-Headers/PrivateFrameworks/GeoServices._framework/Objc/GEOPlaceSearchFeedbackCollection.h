@@ -12,7 +12,7 @@
 
 @interface GEOPlaceSearchFeedbackCollection : PBCodable <NSCopying>
 {
-    CDStruct_612aec5b _sessionID;
+    struct GEOSessionID _sessionID;
     unsigned long long _businessID;
     long long _placeID;
     NSMutableArray *_actionCaptures;
@@ -33,8 +33,9 @@
 @property (nonatomic) BOOL hasSessionID;
 @property (nonatomic) int localSearchProviderID; // @synthesize localSearchProviderID=_localSearchProviderID;
 @property (nonatomic) long long placeID; // @synthesize placeID=_placeID;
-@property (nonatomic) CDStruct_612aec5b sessionID; // @synthesize sessionID=_sessionID;
+@property (nonatomic) struct GEOSessionID sessionID; // @synthesize sessionID=_sessionID;
 
++ (Class)actionCaptureType;
 - (id)actionCaptureAtIndex:(unsigned long long)arg1;
 - (unsigned long long)actionCapturesCount;
 - (void)addActionCapture:(id)arg1;

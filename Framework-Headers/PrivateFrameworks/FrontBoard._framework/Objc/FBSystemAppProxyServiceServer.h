@@ -14,18 +14,19 @@
     FBServiceClientAuthenticator *_deleteSnapshotsAuthenticator;
     FBServiceClientAuthenticator *_shutdownAuthenticator;
     FBServiceClientAuthenticator *_keyboardFocusAuthenticator;
+    FBServiceClientAuthenticator *_dataResetAuthenticator;
 }
 
 - (void)_handleActions:(id)arg1;
-- (void)_handleActivateApplication:(id)arg1;
-- (void)_handleActivateURL:(id)arg1;
+- (void)_handleActivateApplication:(id)arg1 forClient:(id)arg2;
 - (void)_handleAppRequestBrightness:(id)arg1 forClient:(id)arg2;
 - (void)_handleCanActivateApplication:(id)arg1;
+- (void)_handleDataReset:(id)arg1 forClient:(id)arg2;
 - (void)_handleDeleteAllApplicationSnapshots:(id)arg1 forClient:(id)arg2;
 - (void)_handleGetActiveInterfaceOrientation:(id)arg1 forClient:(id)arg2;
 - (void)_handleGetBadgeValue:(id)arg1 forClient:(id)arg2;
 - (void)_handleGetPasscodeLockedOrBlockedStatus:(id)arg1 forClient:(id)arg2;
-- (void)_handleIsClientLoggingEnabled:(id)arg1 forClient:(id)arg2;
+- (void)_handleGetProcessHandle:(id)arg1 forClient:(id)arg2;
 - (void)_handlePidForApplication:(id)arg1;
 - (void)_handleSetBadgeValue:(id)arg1 forClient:(id)arg2;
 - (void)_handleSetKeyboardFocusApplication:(id)arg1 forClient:(id)arg2;

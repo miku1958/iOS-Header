@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _observableIsEmpty;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithObservable:(id)arg1 nextObservable:(id)arg2;
 - (BOOL)isObservableEmpty;
 - (void)observableDidSendResult;

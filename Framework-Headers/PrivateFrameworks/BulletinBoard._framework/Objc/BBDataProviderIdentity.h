@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
@@ -12,7 +12,7 @@
 
 @interface BBDataProviderIdentity : NSObject <NSSecureCoding>
 {
-    CDStruct_1fd009fe _traits;
+    CDStruct_c9fbfe45 _traits;
     NSString *_sectionIdentifier;
     NSString *_universalSectionIdentifier;
     BBSectionInfo *_defaultSectionInfo;
@@ -40,13 +40,13 @@
 @property (copy, nonatomic) NSString *sortKey; // @synthesize sortKey=_sortKey;
 @property (copy, nonatomic) NSDictionary *subsectionDisplayNames; // @synthesize subsectionDisplayNames=_subsectionDisplayNames;
 @property (readonly, nonatomic) BOOL syncsBulletinDismissal; // @synthesize syncsBulletinDismissal=_syncsBulletinDismissal;
-@property (readonly, nonatomic) CDStruct_1fd009fe traits; // @synthesize traits=_traits;
+@property (readonly, nonatomic) CDStruct_c9fbfe45 traits; // @synthesize traits=_traits;
 @property (copy, nonatomic) NSString *universalSectionIdentifier; // @synthesize universalSectionIdentifier=_universalSectionIdentifier;
 
 + (id)identityForDataProvider:(id)arg1;
 + (id)identityForRemoteDataProvider:(id)arg1;
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initForDataProvider:(id)arg1 forRemoteDataProvider:(BOOL)arg2;

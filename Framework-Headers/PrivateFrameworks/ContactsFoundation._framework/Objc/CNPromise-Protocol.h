@@ -9,7 +9,9 @@
 @class NSError;
 
 @protocol CNPromise <NSObject>
+- (void (^)(BOOL, NSError *))boolErrorCompletionHandlerAdapter;
 - (void (^)(id, NSError *))completionHandlerAdapter;
+- (void (^)(id, NSError *))completionHandlerAdapterWithDefaultValue:(id)arg1;
 - (void (^)(NSError *))errorOnlyCompletionHandlerAdapter;
 - (BOOL)finishWithError:(NSError *)arg1;
 - (BOOL)finishWithResult:(id)arg1;

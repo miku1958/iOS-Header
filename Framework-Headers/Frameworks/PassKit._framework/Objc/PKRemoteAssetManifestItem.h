@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -21,14 +21,14 @@
 
 @property (copy, nonatomic) NSURL *localURL; // @synthesize localURL=_localURL;
 @property (copy, nonatomic) NSURL *passURL; // @synthesize passURL=_passURL;
-@property (readonly, nonatomic) NSString *relativeLocalPath;
+@property (readonly, weak, nonatomic) NSString *relativeLocalPath;
 @property (copy, nonatomic) NSURL *remoteURL; // @synthesize remoteURL=_remoteURL;
 @property (copy, nonatomic) NSString *sha1Hex; // @synthesize sha1Hex=_sha1Hex;
 @property (copy, nonatomic) NSNumber *size; // @synthesize size=_size;
 
 + (id)itemWithLocalURL:(id)arg1 passURL:(id)arg2 dictionary:(id)arg3 error:(id *)arg4;
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLocalURL:(id)arg1 passURL:(id)arg2 dictionary:(id)arg3 error:(id *)arg4;

@@ -12,9 +12,11 @@
 {
     int _messageType;
     NSString *_originalMessageId;
+    NSString *_instanceId;
     NSString *_originalFolderId;
     NSString *_originalLongId;
     BOOL _retryWithoutReferences;
+    BOOL _replaceMime;
 }
 
 - (void).cxx_destruct;
@@ -23,7 +25,7 @@
 - (id)contentType;
 - (BOOL)getTopLevelToken:(char *)arg1 outStatusCodePage:(char *)arg2 outStatusToken:(char *)arg3;
 - (void)handleTopLevelErrorStatus:(id)arg1;
-- (id)initWithMessage:(id)arg1 messageID:(id)arg2 messageType:(int)arg3 originalMessageID:(id)arg4 originalFolderID:(id)arg5 originalLongID:(id)arg6;
+- (id)initWithMessage:(id)arg1 messageID:(id)arg2 messageType:(int)arg3 originalMessageID:(id)arg4 instanceId:(id)arg5 originalFolderID:(id)arg6 originalLongID:(id)arg7 replaceMime:(BOOL)arg8;
 - (id)parameterData;
 - (BOOL)processContext:(id)arg1;
 - (id)requestBodyStreamOutKnownSize:(int *)arg1;

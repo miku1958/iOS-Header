@@ -6,10 +6,8 @@
 
 #import <Foundation/NSInvocation.h>
 
-#import <coreroutine/NSCopying-Protocol.h>
-
-@interface NSInvocation (RTExtensions) <NSCopying>
+@interface NSInvocation (RTExtensions)
 + (id)invocationWithSelector:(SEL)arg1 target:(id)arg2;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)copyInvocation;
 @end
 

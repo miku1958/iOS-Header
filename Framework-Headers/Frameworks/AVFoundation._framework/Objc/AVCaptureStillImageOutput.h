@@ -22,7 +22,7 @@
 @property (readonly, nonatomic, getter=isStillImageStabilizationActive) BOOL stillImageStabilizationActive;
 @property (readonly, nonatomic, getter=isStillImageStabilizationSupported) BOOL stillImageStabilizationSupported;
 
-+ (struct CGImage *)cgImageForBGRASurface:(void *)arg1 size:(unsigned long long)arg2;
++ (struct __CFDictionary *)_copyAttachmentsAndPropagateFaceRegionsToExifAuxDictionaryForSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 + (void)initialize;
 + (id)jpegStillImageNSDataRepresentation:(struct opaqueCMSampleBuffer *)arg1;
 + (id)jpegStillImageNSDataRepresentationForSurface:(void *)arg1 size:(unsigned long long)arg2 metadata:(id)arg3;
@@ -53,7 +53,6 @@
 - (unsigned int)imageDataFormatType;
 - (id)init;
 - (BOOL)isEV0CaptureEnabled;
-- (BOOL)isHDRCaptureEnabled;
 - (BOOL)isHDRSupported;
 - (BOOL)isLensStabilizationDuringBracketedCaptureEnabled;
 - (BOOL)isLensStabilizationDuringBracketedCaptureSupported;
@@ -69,7 +68,6 @@
 - (BOOL)resumeVideoProcessing;
 - (void)safelyHandleServerConnectionDeathForFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
 - (void)setEV0CaptureEnabled:(BOOL)arg1;
-- (void)setHDRCaptureEnabled:(BOOL)arg1;
 - (void)setHDRMode:(long long)arg1;
 - (void)setLensStabilizationDuringBracketedCaptureEnabled:(BOOL)arg1;
 - (void)setNoiseReductionEnabled:(BOOL)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSString;
 
@@ -25,8 +25,8 @@
 @property (readonly, copy, nonatomic) NSArray *unifiedProducts;
 @property (readonly, copy, nonatomic) NSArray *unlikelyProducts;
 
+- (void).cxx_destruct;
 - (void)_updatedFilteredProducts;
-- (void)dealloc;
 - (id)initWithProducts:(id)arg1;
 - (id)likelyProductAtIndex:(unsigned long long)arg1;
 - (unsigned long long)numberOfLikelyProducts;

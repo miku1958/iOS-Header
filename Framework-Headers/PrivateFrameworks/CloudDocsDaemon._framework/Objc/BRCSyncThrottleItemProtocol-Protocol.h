@@ -8,6 +8,7 @@
 
 @protocol BRCSyncThrottleItemProtocol
 
+@property (readonly, nonatomic) NSString *appLibraryID;
 @property (readonly, nonatomic) NSString *extension;
 @property (readonly, nonatomic) BRCItemID *itemID;
 @property (readonly, nonatomic) NSString *logicalName;

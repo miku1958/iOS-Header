@@ -16,6 +16,7 @@
     NSArray *_elementStore;
     BOOL _rootGroup;
     int _groupTraits;
+    int _userDefinedScanningBehaviorTraits;
     id<AXElementGroupGenerator> _generator;
     NSHashTable *_groupObservers;
     AXElementGroup *_parentGroup;
@@ -41,25 +42,31 @@
 @property (nonatomic, getter=isRootGroup) BOOL rootGroup; // @synthesize rootGroup=_rootGroup;
 @property (readonly, nonatomic) BOOL shouldBeUngrouped;
 @property (readonly) Class superclass;
+@property (nonatomic) int userDefinedScanningBehaviorTraits; // @synthesize userDefinedScanningBehaviorTraits=_userDefinedScanningBehaviorTraits;
 
 + (id)groupWithElements:(id)arg1;
 + (id)groupWithElements:(id)arg1 label:(id)arg2;
 + (id)groupWithGenerator:(id)arg1;
 - (void)_commonInitWithElements:(id)arg1 label:(id)arg2 generator:(id)arg3;
 - (id)_debugBriefDescription;
+- (id)_debugDescriptionForScanningBehaviorTraits;
 - (id)_debugDescriptionForTraits;
 - (id)_debugFullDescriptionWithIndent:(id)arg1;
 - (void)_generateGroupsIfNeeded;
+- (id)_leafAXElementWithPosition:(long long)arg1;
 - (void)_notifyGroupObserversDidTransferStateToGroup:(id)arg1;
 - (void)_notifyGroupObserversWillTransferStateToGroup:(id)arg1;
 - (id)_siblingOfChild:(id)arg1 inDirection:(BOOL)arg2 didWrap:(BOOL *)arg3;
 - (void)_transferStateToGroup:(id)arg1;
 - (id)ancestorPassingTest:(CDUnknownBlockType)arg1;
+- (id)bottomMostLeafAXElement;
 - (id)childrenPassingTest:(CDUnknownBlockType)arg1;
+- (BOOL)containsNativeFocusElement;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
 - (void)dealloc;
 - (id)debugFullDescription;
+- (id)descendantWithNativeFocus;
 - (id)descendantsPassingTest:(CDUnknownBlockType)arg1;
 - (id)descriptionWithLocale:(id)arg1;
 - (void)enumerateLeafDescendantsUsingBlock:(CDUnknownBlockType)arg1;
@@ -83,11 +90,14 @@
 - (id)keyboardContainerRows;
 - (id)keyboardRow;
 - (id)lastChild;
+- (id)leftMostLeafAXElement;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)nextSiblingOfChild:(id)arg1 didWrap:(BOOL *)arg2;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (id)previousSiblingOfChild:(id)arg1 didWrap:(BOOL *)arg2;
 - (void)registerGroupObserver:(id)arg1;
+- (id)rightMostLeafAXElement;
+- (id)topMostLeafAXElement;
 - (void)unregisterAllGroupObservers;
 - (void)unregisterGroupObserver:(id)arg1;
 

@@ -6,17 +6,12 @@
 
 #import <RemoteUI/RUIElement.h>
 
-@class NSString;
-
 @interface RUIHeaderElement : RUIElement
 {
-    NSString *_text;
 }
 
-@property (copy, nonatomic) NSString *text; // @synthesize text=_text;
-
-- (void).cxx_destruct;
 - (void)configureView:(id)arg1;
+- (long long)labelAlignment;
 
 @end
 

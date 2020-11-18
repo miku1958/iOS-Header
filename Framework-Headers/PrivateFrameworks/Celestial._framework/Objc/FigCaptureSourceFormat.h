@@ -16,6 +16,7 @@
     BOOL _isMultiStreamFormat;
     BOOL _isExternalFormat;
     struct opaqueCMFormatDescription *_formatDescription;
+    NSArray *_frontEndScalerCompanionFormats;
 }
 
 @property (readonly) NSArray *AVCaptureSessionPresets;
@@ -27,16 +28,16 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, getter=isExperimental) BOOL experimental;
 @property (readonly) struct opaqueCMFormatDescription *formatDescription;
-@property (readonly) int frontEndScalerCompanionIndex;
-@property (readonly) BOOL hasFrontEndScalerCompanionIndex;
+@property (readonly) NSArray *frontEndScalerCompanionFormats;
 @property (readonly) BOOL hasSensorHDRCompanionIndex;
 @property (readonly) unsigned long long hash;
 @property (readonly, getter=isHDRSupported) BOOL hdrSupported;
 @property (readonly, getter=isHighProfileH264Supported) BOOL highProfileH264Supported;
 @property (readonly, getter=isHighResPhotoFormat) BOOL highResPhotoFormat;
-@property (readonly) CDStruct_1ef3fb1f highResStillImageDimensions;
+@property (readonly) CDStruct_79c71658 highResStillImageDimensions;
 @property (readonly, getter=isHighResStillImageSupported) BOOL highResStillImageSupported;
 @property (readonly, getter=isIrisSupported) BOOL irisSupported;
+@property (readonly, getter=isIrisVideoStabilizationSupported) BOOL irisVideoStabilizationSupported;
 @property (readonly) BOOL isExternalFormat;
 @property (readonly) BOOL ispChromaNoiseReductionEnabled;
 @property (readonly) CDStruct_1b6d18a9 maxExposureDuration;
@@ -50,19 +51,22 @@
 @property (readonly, getter=isPhotoFormat) BOOL photoFormat;
 @property (readonly) BOOL prefersSensorHDREnabled;
 @property (readonly, getter=isQuadraHighResStillImageSupported) BOOL quadraHighResStillImageSupported;
-@property (readonly) CDStruct_1ef3fb1f sensorCropDimensions;
-@property (readonly) CDStruct_1ef3fb1f sensorDimensions;
+@property (readonly) NSArray *rawLensShadingCorrection;
+@property (readonly) CDStruct_79c71658 sensorCropDimensions;
+@property (readonly) CDStruct_79c71658 sensorDimensions;
 @property (readonly) int sensorHDRCompanionIndex;
-@property (readonly) CDStruct_1ef3fb1f sourceCropAspectRatio;
+@property (readonly) CDStruct_79c71658 sourceCropAspectRatio;
 @property (readonly, getter=isStillImageISPChromaNoiseReductionEnabled) BOOL stillImageISPChromaNoiseReductionEnabled;
-@property (readonly) int stillImageStabilizationFusionScheme;
+@property (readonly) int stillImageNoiseReductionAndStabilizationScheme;
 @property (readonly, getter=isStillImageStabilizationSupported) BOOL stillImageStabilizationSupported;
 @property (readonly) Class superclass;
+@property (readonly) NSArray *supportedColorSpaces;
+@property (readonly) unsigned int supportedRawPixelFormat;
 @property (readonly) int temporalNoiseReductionMode;
 @property (readonly, getter=isVideoBinned) BOOL videoBinned;
 @property (readonly) float videoDefaultMaxFrameRate;
 @property (readonly) float videoDefaultMinFrameRate;
-@property (readonly) CDStruct_1ef3fb1f videoDimensions;
+@property (readonly) CDStruct_79c71658 videoDimensions;
 @property (readonly) float videoFieldOfView;
 @property (readonly) unsigned int videoFormat;
 @property (readonly) int videoFormatIndex;
@@ -77,17 +81,20 @@
 @property (readonly, getter=isVideoZoomDynamicSensorCropSupported) BOOL videoZoomDynamicSensorCropSupported;
 @property (readonly) float videoZoomFactorUpscaleThreshold;
 @property (readonly, getter=isVideoZoomSupported) BOOL videoZoomSupported;
+@property (readonly, getter=isWideColorSupported) BOOL wideColorSupported;
 
 + (void)initialize;
-- (CDStruct_1ef3fb1f)_maxUseableSensorDimensions;
-- (CDStruct_1ef3fb1f)_outputDimensions;
-- (CDStruct_1ef3fb1f)_visibleSensorDimensionsIncludingCinematic:(BOOL)arg1;
+- (CDStruct_79c71658)_maxUseableSensorDimensions;
+- (CDStruct_79c71658)_outputDimensions;
+- (void)_resolveProperties;
+- (CDStruct_79c71658)_visibleSensorDimensionsIncludingCinematic:(BOOL)arg1;
 - (id)copyWithNewVideoPixelFormat:(unsigned int)arg1;
 - (id)copyXPCEncoding;
 - (void)dealloc;
 - (id)initWithFigCaptureStreamFormatDictionary:(id)arg1;
 - (id)initWithXPCEncoding:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isValidDerivedBravoFormatForUnderlyingFormat:(id)arg1;
 - (BOOL)isVideoStabilizationModeSupported:(int)arg1;
 
 @end

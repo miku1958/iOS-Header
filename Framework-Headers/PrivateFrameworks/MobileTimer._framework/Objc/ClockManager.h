@@ -8,7 +8,7 @@
 
 #import <MobileTimer/UNSNotificationSchedulerDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, ObjectUpdates, UNSNotificationScheduler;
+@class NSArray, NSHashTable, NSMutableArray, NSString, ObjectUpdates, UNSNotificationScheduler;
 
 @interface ClockManager : NSObject <UNSNotificationSchedulerDelegate>
 {
@@ -18,12 +18,14 @@
     BOOL runningInAssistantPlugin;
     BOOL ignoringNotificationPostRequests;
     UNSNotificationScheduler *_notificationScheduler;
+    NSHashTable *_notificationObservers;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isIgnoringNotificationPostRequests) BOOL ignoringNotificationPostRequests; // @synthesize ignoringNotificationPostRequests;
+@property (strong, nonatomic) NSHashTable *notificationObservers; // @synthesize notificationObservers=_notificationObservers;
 @property (strong, nonatomic) UNSNotificationScheduler *notificationScheduler; // @synthesize notificationScheduler=_notificationScheduler;
 @property (nonatomic, getter=isRunningInAssistantPlugin) BOOL runningInAssistantPlugin; // @synthesize runningInAssistantPlugin;
 @property (readonly, nonatomic) NSArray *scheduledLocalNotificationsCache;
@@ -36,12 +38,17 @@
 + (id)sharedManager;
 + (id)urlForClockAppSection:(int)arg1;
 - (void).cxx_destruct;
+- (void)_refreshScheduledLocalNotificationsCacheWithNotifications:(id)arg1;
+- (void)addNotificationObserver:(id)arg1;
 - (void)cancelLocalNotification:(id)arg1;
+- (void)cancelLocalNotifications:(id)arg1;
 - (BOOL)discardOldVersion;
 - (id)init;
 - (void)notificationScheduler:(id)arg1 didChangeScheduledLocalNotifications:(id)arg2;
 - (void)postUserPreferencesChangedNotification;
 - (void)refreshScheduledLocalNotificationsCache;
+- (void)refreshScheduledLocalNotificationsCacheAsynchronouslyWithCompletion:(CDUnknownBlockType)arg1;
+- (void)removeNotificationObserver:(id)arg1;
 - (void)resetUpdatesToLocalNotificationsCache;
 - (void)scheduleLocalNotification:(id)arg1;
 - (BOOL)upgrade;

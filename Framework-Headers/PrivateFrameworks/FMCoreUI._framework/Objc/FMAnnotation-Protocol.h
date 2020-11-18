@@ -10,7 +10,7 @@
 
 @protocol FMAnnotation <NSObject>
 
-@property (nonatomic) CDStruct_c3b9c2ee coordinate;
+@property (nonatomic) struct CLLocationCoordinate2D coordinate;
 @property (nonatomic) double distanceFromUser;
 @property (nonatomic) double horizontalAccuracy;
 @property (nonatomic) BOOL isBorderEnabled;

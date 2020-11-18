@@ -7,6 +7,7 @@
 #import <UIKit/UIApplication.h>
 
 @interface UIApplication (MailAccessibilityCategory)
+- (id)_accessibilityFilenameForAttachmentCID:(id)arg1;
 - (id)accessibilityLabel;
 @end
 

@@ -18,6 +18,10 @@ __attribute__((visibility("hidden")))
     CKDPIdentifier *_identifier;
     NSString *_lastName;
     CKDPProtectionInfo *_protectionInfo;
+    BOOL _isInNetwork;
+    struct {
+        unsigned int isInNetwork:1;
+    } _has;
 }
 
 @property (strong, nonatomic) CKDPUserAlias *alias; // @synthesize alias=_alias;
@@ -25,9 +29,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasAlias;
 @property (readonly, nonatomic) BOOL hasFirstName;
 @property (readonly, nonatomic) BOOL hasIdentifier;
+@property (nonatomic) BOOL hasIsInNetwork;
 @property (readonly, nonatomic) BOOL hasLastName;
 @property (readonly, nonatomic) BOOL hasProtectionInfo;
 @property (strong, nonatomic) CKDPIdentifier *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) BOOL isInNetwork; // @synthesize isInNetwork=_isInNetwork;
 @property (strong, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
 @property (strong, nonatomic) CKDPProtectionInfo *protectionInfo; // @synthesize protectionInfo=_protectionInfo;
 

@@ -9,6 +9,9 @@
 @class AFAnalyticsEvent, NSArray;
 
 @protocol AFAnalyticsService <NSObject>
+- (oneway void)stageEvents:(NSArray *)arg1 completion:(void (^)(void))arg2;
+
+@optional
 - (oneway void)stageEvent:(AFAnalyticsEvent *)arg1;
 - (oneway void)stageEvents:(NSArray *)arg1;
 @end

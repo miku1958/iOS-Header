@@ -7,7 +7,6 @@
 #import <UIKit/UIViewController.h>
 
 #import <FuseUI/MusicClientContextConsuming-Protocol.h>
-#import <FuseUI/MusicEntityPlaybackStatusControllerObserving-Protocol.h>
 #import <FuseUI/MusicIndexBarDataSource-Protocol.h>
 #import <FuseUI/MusicIndexBarScrollDelegate-Protocol.h>
 #import <FuseUI/MusicLibraryBrowseSectionHeaderViewDelegate-Protocol.h>
@@ -19,10 +18,10 @@
 #import <FuseUI/UIViewControllerPreviewingDelegate-Protocol.h>
 #import <FuseUI/UIViewControllerPreviewingDelegate_Private-Protocol.h>
 
-@class MPAVController, MusicAsynchronousPropertyLoadingController, MusicClientContext, MusicEditingEntityProvider, MusicEntityDownloadInformationController, MusicEntityPlayabilityController, MusicEntityPlaybackStatusController, MusicEntityValueContext, MusicEntityViewDescriptor, MusicLibraryBrowseTableViewConfiguration, MusicLibraryViewConfiguration, MusicSectionEntityValueContext, MusicTableView, NSArray, NSMapTable, NSMutableArray, NSString, SKUIClientContext, UIColor;
+@class MPAVController, MusicAsynchronousPropertyLoadingController, MusicClientContext, MusicEditingEntityProvider, MusicEntityValueContext, MusicEntityViewDescriptor, MusicLibraryBrowseTableViewConfiguration, MusicLibraryViewConfiguration, MusicSectionEntityValueContext, MusicTableView, NSArray, NSMapTable, NSMutableArray, NSString, SKUIClientContext, UIColor;
 @protocol MusicLibraryBrowseTableViewControllerDelegate, UIViewControllerPreviewing;
 
-@interface MusicLibraryBrowseTableViewController : UIViewController <MusicLibraryBrowseSectionHeaderViewDelegate, MusicMediaPickerSearchDelegate, MusicEntityPlaybackStatusControllerObserving, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, MusicClientContextConsuming, MusicIndexBarDataSource, MusicIndexBarScrollDelegate, MusicLibraryViewConfigurationConsuming, MusicSplitInitialStateProviding, MusicTableViewDelegate, UITableViewDataSource>
+@interface MusicLibraryBrowseTableViewController : UIViewController <MusicLibraryBrowseSectionHeaderViewDelegate, MusicMediaPickerSearchDelegate, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, MusicClientContextConsuming, MusicIndexBarDataSource, MusicIndexBarScrollDelegate, MusicLibraryViewConfigurationConsuming, MusicSplitInitialStateProviding, MusicTableViewDelegate, UITableViewDataSource>
 {
     MusicAsynchronousPropertyLoadingController *_asynchronousPropertyLoadingController;
     NSArray *_contentDescriptors;
@@ -31,7 +30,6 @@
     CDUnknownBlockType _editingChangesCommitBlock;
     MusicEditingEntityProvider *_editingEntityProvider;
     BOOL _editingWasCancelled;
-    MusicEntityDownloadInformationController *_entityDownloadInformationController;
     MusicEntityViewDescriptor *_entityViewDescriptor;
     unsigned long long _firstSectionHeaderIndex;
     BOOL _hasValidFirstSectionHeaderIndex;
@@ -39,8 +37,6 @@
     long long _lastSelectionBehavior;
     MusicLibraryBrowseTableViewConfiguration *_libraryViewConfiguration;
     unsigned long long _numberOfEntities;
-    MusicEntityPlayabilityController *_playabilityController;
-    MusicEntityPlaybackStatusController *_playbackStatusController;
     MPAVController *_player;
     double _previousWidth;
     id<UIViewControllerPreviewing> _viewControllerPreviewing;
@@ -88,7 +84,6 @@
 - (void)_didFinishEditingStateChangeAnimation;
 - (id)_effectiveEntityProvider;
 - (void)_endIgnoringEntityProviderInvalidation;
-- (unsigned long long)_entityPlayabilityResultForEntityValueContext:(id)arg1;
 - (id)_entityValueContextAtIndexPath:(id)arg1;
 - (void)_handleContentDescriptorDidInvalidateNotification:(id)arg1;
 - (void)_handleContentSizeCategoryDidChangeNotification:(id)arg1;
@@ -111,8 +106,6 @@
 - (void)_updateEntityDisabledStateForView:(id)arg1 withEntityValueContext:(id)arg2;
 - (void)_updateEntityDisabledStateForVisibleItems;
 - (void)_updateNumberOfEntities;
-- (void)_updatePlaybackStatusForCell:(id)arg1 withEntityValueContext:(id)arg2;
-- (void)_updatePlaybackStatusForVisibleCells;
 - (void)_updatePropertiesFromContentDescriptors;
 - (BOOL)_wantsPersistentSelection;
 - (void)_willBeginContentHeightAnimation;
@@ -141,7 +134,6 @@
 - (BOOL)music_handleUserActivityContext:(id)arg1 containerItem:(id)arg2;
 - (unsigned long long)numberOfIndexBarEntries;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (void)playbackStatusControllerPlaybackStatusDidChange:(id)arg1;
 - (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
 - (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (void)sectionHeaderViewDidSelectButton:(id)arg1;

@@ -7,12 +7,13 @@
 #import <CoreHAP/HAPRelayStream.h>
 
 #import <HomeKitDaemon/HMDRelayManagerDelegate-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegateHomeKit-Protocol.h>
 
 @class HMDRelayManager, IDSService, NSData, NSMutableArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDRelayStream : HAPRelayStream <HMDRelayManagerDelegate, IDSServiceDelegateHomeKit>
+@interface HMDRelayStream : HAPRelayStream <HMDRelayManagerDelegate, HMFLogging, IDSServiceDelegateHomeKit>
 {
     BOOL _opened;
     BOOL _suspended;
@@ -39,10 +40,12 @@
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isSuspended) BOOL suspended; // @synthesize suspended=_suspended;
 
++ (id)logCategory;
 - (void).cxx_destruct;
 - (void)_closeWithError:(id)arg1;
 - (void)close;
 - (id)initWithRelayManager:(id)arg1 idsService:(id)arg2 accessoryIdentifier:(id)arg3 accessToken:(id)arg4;
+- (id)logIdentifier;
 - (unsigned long long)mtu;
 - (void)open;
 - (void)relayManager:(id)arg1 didUpdateControllerIdentifier:(id)arg2;

@@ -7,7 +7,7 @@
 #import <PhotosUI/PUFeedCell.h>
 
 @class PLPhotoTileBadgeView, PUImageViewExtraction, UIButton, UIImage, UIImageView, UIView;
-@protocol PLVideoOverlayButton;
+@protocol PXVideoOverlayButton;
 
 __attribute__((visibility("hidden")))
 @interface PUFeedImageCell : PUFeedCell
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
     long long _commentCount;
     UIImageView *__imageView;
     long long __imageTag;
-    UIView<PLVideoOverlayButton> *__overlayPlayButton;
+    UIView<PXVideoOverlayButton> *__overlayPlayButton;
     UIImageView *__overlayPlayButtonBackgroundImageView;
     PUImageViewExtraction *__overlayPlayButtonBackgroundExtraction;
     UIImageView *__centerOverlayImageView;
@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setImageFrame:) struct CGRect _imageFrame; // @synthesize _imageFrame=__imageFrame;
 @property (nonatomic, setter=_setImageTag:) long long _imageTag; // @synthesize _imageTag=__imageTag;
 @property (strong, nonatomic, setter=_setImageView:) UIImageView *_imageView; // @synthesize _imageView=__imageView;
-@property (strong, nonatomic, setter=_setOverlayPlayButton:) UIView<PLVideoOverlayButton> *_overlayPlayButton; // @synthesize _overlayPlayButton=__overlayPlayButton;
+@property (strong, nonatomic, setter=_setOverlayPlayButton:) UIView<PXVideoOverlayButton> *_overlayPlayButton; // @synthesize _overlayPlayButton=__overlayPlayButton;
 @property (strong, nonatomic, setter=_setOverlayPlayButtonBackgroundExtraction:) PUImageViewExtraction *_overlayPlayButtonBackgroundExtraction; // @synthesize _overlayPlayButtonBackgroundExtraction=__overlayPlayButtonBackgroundExtraction;
 @property (strong, nonatomic, setter=_setOverlayPlayButtonBackgroundImageView:) UIImageView *_overlayPlayButtonBackgroundImageView; // @synthesize _overlayPlayButtonBackgroundImageView=__overlayPlayButtonBackgroundImageView;
 @property (strong, nonatomic, setter=_setPhotoIrisBadgeView:) PLPhotoTileBadgeView *_photoIrisBadgeView; // @synthesize _photoIrisBadgeView=__photoIrisBadgeView;

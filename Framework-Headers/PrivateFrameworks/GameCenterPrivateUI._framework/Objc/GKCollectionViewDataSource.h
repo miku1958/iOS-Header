@@ -15,13 +15,13 @@
 @interface GKCollectionViewDataSource : NSObject <GKCollectionViewDataSourceDelegate, UICollectionViewDataSource>
 {
     id<GKCollectionViewDataSourceDelegate> _delegate;
-    NSString *_defaultSearchKey;
-    GKGridLayoutMetrics *_dataSourceMetricsInternal;
-    GKSectionMetrics *_defaultSectionMetricsInternal;
     NSMutableDictionary *_kindsToFactories;
     NSHashTable *_listeners;
     NSMutableDictionary *_sectionsToMetrics;
     NSMutableDictionary *_sectionsToSearchKeys;
+    GKGridLayoutMetrics *_dataSourceMetricsInternal;
+    GKSectionMetrics *_defaultSectionMetricsInternal;
+    NSString *_defaultSearchKey;
 }
 
 @property (copy, nonatomic) GKGridLayoutMetrics *dataSourceMetrics; // @dynamic dataSourceMetrics;

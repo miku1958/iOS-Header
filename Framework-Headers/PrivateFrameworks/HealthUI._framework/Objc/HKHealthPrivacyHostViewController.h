@@ -24,6 +24,7 @@
 - (void).cxx_destruct;
 - (id)_healthPrivacyServiceViewControllerProxy;
 - (void)didFinishWithError:(id)arg1;
+- (void)setPromptSession:(id)arg1;
 - (void)setRequestRecord:(id)arg1 updateDescription:(id)arg2 shareDescription:(id)arg3;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 

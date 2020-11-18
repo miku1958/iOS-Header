@@ -15,12 +15,14 @@ __attribute__((visibility("hidden")))
 @interface _BRCFrameworkOperation : _BRCOperation <BRCancellable>
 {
     BOOL _startedFinish;
+    BOOL _ignoreMissingRemoteClientProxy;
     NSObject<BROperationClient> *_remoteClientProxy;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL ignoreMissingRemoteClientProxy; // @synthesize ignoreMissingRemoteClientProxy=_ignoreMissingRemoteClientProxy;
 @property (strong, nonatomic) NSObject<BROperationClient> *remoteClientProxy; // @synthesize remoteClientProxy=_remoteClientProxy;
 @property (readonly) Class superclass;
 

@@ -10,13 +10,16 @@
 
 @interface PUOneUpSettings : PUSettings
 {
-    BOOL _useLegacyOneUp;
     BOOL _allowUserTransform;
     BOOL _allowBadges;
     BOOL _allowScrubber;
     BOOL _allowChromeHiding;
     BOOL _allowDoubleTapZoom;
     BOOL _allowFullsizeJPEGDisplay;
+    BOOL _showFacesAreaRect;
+    BOOL _hideToolbarWhenShowingAccessoryView;
+    BOOL _useGlobalDetailsVisibility;
+    BOOL _useGlobalCommentsVisibility;
     BOOL _persistChromeVisibility;
     BOOL _allowParallax;
     BOOL _allowStatusBar;
@@ -31,9 +34,14 @@
     BOOL _showBufferingIndicatorDuringPlay;
     BOOL _simulateAssetContentDownload;
     BOOL _simulateAssetContentDownloadFailure;
+    long long _titleTapAction;
     PUSwipeDownSettings *_swipeDownSettings;
     PUScrubberSettings *_scrubberSettings;
     long long _userNavigationMaximumDistance;
+    long long _accessoryViewType;
+    double _accessoryInitialTopPosition;
+    double _minimumVisibleContentHeight;
+    double _minimumVisibleCommentedContentHeight;
     double _chromeDefaultAnimationDuration;
     long long _chromeAutoHideBehaviorOnPlayButton;
     long long _chromeAutoHideBehaviorOnSwipe;
@@ -67,6 +75,8 @@
     double _bounceInitialVelocity;
 }
 
+@property (nonatomic) double accessoryInitialTopPosition; // @synthesize accessoryInitialTopPosition=_accessoryInitialTopPosition;
+@property (nonatomic) long long accessoryViewType; // @synthesize accessoryViewType=_accessoryViewType;
 @property (nonatomic) BOOL allowBadges; // @synthesize allowBadges=_allowBadges;
 @property (nonatomic) BOOL allowChromeHiding; // @synthesize allowChromeHiding=_allowChromeHiding;
 @property (nonatomic) BOOL allowDoubleTapZoom; // @synthesize allowDoubleTapZoom=_allowDoubleTapZoom;
@@ -92,6 +102,7 @@
 @property (nonatomic) BOOL doubleTapZoomAreaExcludesBackground; // @synthesize doubleTapZoomAreaExcludesBackground=_doubleTapZoomAreaExcludesBackground;
 @property (nonatomic) BOOL doubleTapZoomAreaExcludesBars; // @synthesize doubleTapZoomAreaExcludesBars=_doubleTapZoomAreaExcludesBars;
 @property (nonatomic) double doubleTapZoomFactor; // @synthesize doubleTapZoomFactor=_doubleTapZoomFactor;
+@property (nonatomic) BOOL hideToolbarWhenShowingAccessoryView; // @synthesize hideToolbarWhenShowingAccessoryView=_hideToolbarWhenShowingAccessoryView;
 @property (nonatomic) double interpageSpacing; // @synthesize interpageSpacing=_interpageSpacing;
 @property (nonatomic) double livePhotoInteractionThreshold; // @synthesize livePhotoInteractionThreshold=_livePhotoInteractionThreshold;
 @property (nonatomic) BOOL lockScrollDuringLivePhotoPlayback; // @synthesize lockScrollDuringLivePhotoPlayback=_lockScrollDuringLivePhotoPlayback;
@@ -99,6 +110,8 @@
 @property (nonatomic) double maximumInitialZoomToFillScaleForRegularSizeClass; // @synthesize maximumInitialZoomToFillScaleForRegularSizeClass=_maximumInitialZoomToFillScaleForRegularSizeClass;
 @property (nonatomic) long long minNavigationDistanceForFastRegime; // @synthesize minNavigationDistanceForFastRegime=_minNavigationDistanceForFastRegime;
 @property (nonatomic) long long minNavigationDistanceForQuickPagingRegime; // @synthesize minNavigationDistanceForQuickPagingRegime=_minNavigationDistanceForQuickPagingRegime;
+@property (nonatomic) double minimumVisibleCommentedContentHeight; // @synthesize minimumVisibleCommentedContentHeight=_minimumVisibleCommentedContentHeight;
+@property (nonatomic) double minimumVisibleContentHeight; // @synthesize minimumVisibleContentHeight=_minimumVisibleContentHeight;
 @property (nonatomic) double pagingFrictionAdjustment; // @synthesize pagingFrictionAdjustment=_pagingFrictionAdjustment;
 @property (nonatomic) double pagingSpringPullAdjustment; // @synthesize pagingSpringPullAdjustment=_pagingSpringPullAdjustment;
 @property (nonatomic) double parallaxFactor; // @synthesize parallaxFactor=_parallaxFactor;
@@ -107,14 +120,17 @@
 @property (nonatomic) BOOL playVideoInScrubber; // @synthesize playVideoInScrubber=_playVideoInScrubber;
 @property (strong, nonatomic) PUScrubberSettings *scrubberSettings; // @synthesize scrubberSettings=_scrubberSettings;
 @property (nonatomic) BOOL showBufferingIndicatorDuringPlay; // @synthesize showBufferingIndicatorDuringPlay=_showBufferingIndicatorDuringPlay;
+@property (nonatomic) BOOL showFacesAreaRect; // @synthesize showFacesAreaRect=_showFacesAreaRect;
 @property (nonatomic) BOOL simulateAssetContentDownload; // @synthesize simulateAssetContentDownload=_simulateAssetContentDownload;
 @property (nonatomic) BOOL simulateAssetContentDownloadFailure; // @synthesize simulateAssetContentDownloadFailure=_simulateAssetContentDownloadFailure;
 @property (strong, nonatomic) PUSwipeDownSettings *swipeDownSettings; // @synthesize swipeDownSettings=_swipeDownSettings;
+@property (nonatomic) long long titleTapAction; // @synthesize titleTapAction=_titleTapAction;
 @property (nonatomic) BOOL useDebuggingBadge; // @synthesize useDebuggingBadge=_useDebuggingBadge;
 @property (nonatomic) BOOL useDebuggingColors; // @synthesize useDebuggingColors=_useDebuggingColors;
 @property (nonatomic) BOOL useDebuggingProgressLabel; // @synthesize useDebuggingProgressLabel=_useDebuggingProgressLabel;
 @property (nonatomic) BOOL useDebuggingTitle; // @synthesize useDebuggingTitle=_useDebuggingTitle;
-@property (nonatomic) BOOL useLegacyOneUp; // @synthesize useLegacyOneUp=_useLegacyOneUp;
+@property (nonatomic) BOOL useGlobalCommentsVisibility; // @synthesize useGlobalCommentsVisibility=_useGlobalCommentsVisibility;
+@property (nonatomic) BOOL useGlobalDetailsVisibility; // @synthesize useGlobalDetailsVisibility=_useGlobalDetailsVisibility;
 @property (nonatomic) long long userNavigationMaximumDistance; // @synthesize userNavigationMaximumDistance=_userNavigationMaximumDistance;
 @property (nonatomic) double videoPauseThreshold; // @synthesize videoPauseThreshold=_videoPauseThreshold;
 @property (nonatomic) unsigned long long viewModelCacheCountLimit; // @synthesize viewModelCacheCountLimit=_viewModelCacheCountLimit;

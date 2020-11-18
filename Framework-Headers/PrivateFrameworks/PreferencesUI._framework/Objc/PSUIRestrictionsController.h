@@ -23,6 +23,7 @@
 + (void)formatSearchEntries:(id)arg1 parent:(id)arg2;
 + (BOOL)requiresPIN;
 - (void).cxx_destruct;
+- (void)_configureIfGreenTeaDevice;
 - (void)_disableFaceTimeRestrictions;
 - (void)_disableSpecifier:(id)arg1;
 - (void)_handleExternalApplicationChange;

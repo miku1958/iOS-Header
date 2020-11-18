@@ -14,9 +14,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)_axNestedObjectForKey:(id)arg1 inArray:(id)arg2;
-- (id)_axSubviewsOfTypes:(id)arg1 fromRootView:(id)arg2;
-- (id)_axTableHeaderForColumn:(long long)arg1;
+- (id)_axFirstRowWithID:(id)arg1 inRowSections:(id)arg2;
+- (id)_axTableHeaderForColumn:(long long)arg1 withString:(id)arg2;
 - (id)initWithResult:(id)arg1 style:(long long)arg2;
 - (BOOL)isAccessibilityElement;
 

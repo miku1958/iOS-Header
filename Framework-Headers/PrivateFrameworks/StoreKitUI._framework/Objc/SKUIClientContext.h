@@ -8,7 +8,7 @@
 
 #import <StoreKitUI/SUClientInterfaceDelegatePrivate-Protocol.h>
 
-@class IKAppContext, NSArray, NSBundle, NSDictionary, NSMapTable, NSMutableArray, NSString, SKUIApplicationController, SKUILocalizedStringDictionary, SKUIStoreDialogController, SKUIURL, SKUIURLBag, SSURLBag, SSUpdatableAssetController, SSVPlatformContext, SUClientInterface;
+@class IKAppContext, NSArray, NSBundle, NSCache, NSDictionary, NSMapTable, NSMutableArray, NSOperationQueue, NSString, SKUIApplicationController, SKUILocalizedStringDictionary, SKUIStoreDialogController, SKUITrendingSearchProvider, SKUIURL, SKUIURLBag, SSURLBag, SSUpdatableAssetController, SSVPlatformContext, SUClientInterface;
 
 @interface SKUIClientContext : NSObject <SUClientInterfaceDelegatePrivate>
 {
@@ -31,11 +31,16 @@
     SSUpdatableAssetController *_updatableAssetController;
     SKUIURLBag *_urlBag;
     long long _userInterfaceIdiomOverride;
+    SKUITrendingSearchProvider *_trendingSearchProvider;
+    NSOperationQueue *_resourceLoadQueue;
+    NSCache *_placeholderImageCache;
 }
 
 @property (readonly, nonatomic) SSURLBag *URLBag;
 @property (weak, nonatomic, getter=_applicationController, setter=_setApplicationController:) SKUIApplicationController *_applicationController; // @synthesize _applicationController;
 @property (strong, nonatomic, getter=_scriptAppContext, setter=_setScriptAppContext:) IKAppContext *_scriptAppContext; // @synthesize _scriptAppContext;
+@property (readonly, weak, nonatomic, getter=applicationController) SKUIApplicationController *applicationController;
+@property (readonly, nonatomic, getter=isBootstrapScriptFallbackDisabled) BOOL bootstrapScriptFallbackDisabled;
 @property (readonly, nonatomic) SUClientInterface *clientInterface; // @synthesize clientInterface=_clientInterface;
 @property (readonly, copy, nonatomic) NSDictionary *configurationDictionary; // @synthesize configurationDictionary=_configurationDictionary;
 @property (readonly, copy) NSString *debugDescription;
@@ -47,17 +52,23 @@
 @property (readonly, nonatomic, getter=isMultiUser) BOOL multiUser;
 @property (readonly, nonatomic) NSArray *navigationHistory;
 @property (copy, nonatomic) NSString *navigationHistoryPersistenceKey; // @synthesize navigationHistoryPersistenceKey=_navigationHistoryPersistenceKey;
+@property (readonly, nonatomic) NSCache *placeholderImageCache; // @synthesize placeholderImageCache=_placeholderImageCache;
 @property (readonly, nonatomic) SSVPlatformContext *platformContext;
 @property (copy, nonatomic) SKUIURL *purchaseReferrerURL; // @synthesize purchaseReferrerURL=_purchaseReferrerURL;
+@property (readonly, nonatomic) NSOperationQueue *resourceLoadQueue;
 @property (readonly, nonatomic) NSString *storeFrontIdentifier; // @synthesize storeFrontIdentifier=_storeFrontIdentifier;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) SKUITrendingSearchProvider *trendingSearchProvider;
 @property (strong, nonatomic) SSUpdatableAssetController *updatableAssetController; // @synthesize updatableAssetController=_updatableAssetController;
 @property (nonatomic) long long userInterfaceIdiomOverride; // @synthesize userInterfaceIdiomOverride=_userInterfaceIdiomOverride;
 
++ (id)_cachePath;
 + (id)_cachePathForStoreFrontIdentifier:(id)arg1;
 + (id)_configurationDictionaryWithBagDictionary:(id)arg1;
 + (id)_fallbackConfigurationDictionary;
 + (id)defaultContext;
++ (id)localizedStringForKey:(id)arg1 inBundles:(id)arg2;
++ (id)localizedStringForKey:(id)arg1 inBundles:(id)arg2 inTable:(id)arg3;
 - (void).cxx_destruct;
 - (id)SAPSessionForVersion:(long long)arg1;
 - (id)_navigationHistory;
@@ -66,13 +77,16 @@
 - (void)_setPurchaseURLBagType:(long long)arg1;
 - (void)_setValue:(id)arg1 forConfigurationKey:(id)arg2;
 - (id)additionalLeftBarButtonItemForDocumentContainerViewController:(id)arg1;
+- (id)additionalLeftBarButtonItemForViewController:(id)arg1;
 - (id)additionalRightBarButtonItemForDocumentContainerViewController:(id)arg1;
+- (id)additionalRightBarButtonItemForViewController:(id)arg1;
 - (void)clientInterface:(id)arg1 dispatchOnPageResponseWithData:(id)arg2 response:(id)arg3;
 - (void)clientInterface:(id)arg1 dispatchXEvent:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)clientInterface:(id)arg1 presentDialog:(id)arg2;
 - (void)customizePurchase:(id)arg1;
 - (void)dealloc;
 - (id)documentViewControllerForTemplateViewElement:(id)arg1;
+- (id)existingBagValueForKey:(id)arg1;
 - (void)getDefaultMetricsControllerWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)initWithConfigurationDictionary:(id)arg1;
 - (void)loadValueForConfigurationKey:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
@@ -87,13 +101,18 @@
 - (id)previewViewControllerForViewElement:(id)arg1;
 - (void)pushNavigationHistoryPageIdentifier:(id)arg1;
 - (id)scriptInterfaceForClientInterface:(id)arg1;
+- (void)sendAppPreviewStateChanged:(BOOL)arg1;
 - (void)sendApplicationDidEnterBackground;
 - (void)sendApplicationWillEnterForeground;
+- (void)sendApplicationWindowSizeDidUpdate:(struct CGSize)arg1;
 - (void)sendOnPageResponseWithDocument:(id)arg1 data:(id)arg2 URLResponse:(id)arg3 performanceMetrics:(id)arg4;
 - (void)sendOnXEventWithDictionary:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)setMetricsPageContext:(id)arg1 forViewController:(id)arg2;
+- (BOOL)shouldForceTransientSearchControllerBahavior;
+- (BOOL)storeViewController:(id)arg1 shouldDisplayDefaultDarButton:(long long)arg2;
 - (BOOL)supportsRenderingVersion:(unsigned int)arg1;
 - (id)tabBarItemsForStyle:(long long)arg1;
+- (long long)tabBarStyleForWidth:(double)arg1;
 - (id)valueForConfigurationKey:(id)arg1;
 
 @end

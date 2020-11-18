@@ -18,7 +18,9 @@
 @property (strong, nonatomic) NSMutableArray *xattrs; // @synthesize xattrs=_xattrs;
 
 + (BOOL)loadXattrsFromFD:(int)arg1 structuralBlob:(id *)arg2 contentBlob:(id *)arg3 withMaximumSize:(unsigned long long)arg4 error:(id *)arg5;
++ (id)loadXattrsFromFD:(int)arg1 withMaximumSize:(unsigned long long)arg2 error:(id *)arg3;
 + (BOOL)removeXattrsOnFD:(int)arg1 includingContentRelated:(BOOL)arg2 error:(id *)arg3;
++ (Class)xattrsType;
 - (void).cxx_destruct;
 - (void)addXattrs:(id)arg1;
 - (BOOL)applyToFileDescriptor:(int)arg1 error:(id *)arg2;
@@ -31,6 +33,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)shortDescription;
 - (void)writeTo:(id)arg1;
 - (id)xattrsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)xattrsCount;

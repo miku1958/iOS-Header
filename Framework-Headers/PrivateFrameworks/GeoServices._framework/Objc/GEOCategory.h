@@ -27,6 +27,7 @@
 @property (nonatomic) int level; // @synthesize level=_level;
 @property (strong, nonatomic) NSMutableArray *localizedNames; // @synthesize localizedNames=_localizedNames;
 
++ (Class)localizedNamesType;
 - (void)addLocalizedNames:(id)arg1;
 - (void)clearLocalizedNames;
 - (void)copyTo:(id)arg1;

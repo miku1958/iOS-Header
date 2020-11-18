@@ -8,6 +8,8 @@
 
 @interface UIColor (SafariSharedExtras)
 + (id)safari_colorWithRGBColorComponents:(id)arg1;
++ (id)safari_colorWithSerializedColorData:(id)arg1;
+- (id)safari_colorDataForSerialization;
 - (id)safari_rgbColorComponents;
 @end
 

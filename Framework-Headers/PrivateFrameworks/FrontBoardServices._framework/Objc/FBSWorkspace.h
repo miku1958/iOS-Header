@@ -55,7 +55,6 @@
 - (id)requestSystemAnimationFence;
 - (id)sceneWithIdentifier:(id)arg1;
 - (void)synchronizeSystemAnimationFencesWithCleanUpBlock:(CDUnknownBlockType)arg1;
-- (void)synchronizeSystemAnimationFencesWithSpinCleanUpBlock:(CDUnknownBlockType)arg1;
 - (BOOL)trackSystemAnimationFence:(id)arg1;
 
 @end

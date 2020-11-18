@@ -19,6 +19,7 @@
 
 + (id)requestWithCharacteristic:(id)arg1;
 - (void).cxx_destruct;
+- (id)description;
 - (id)initWithCharacteristic:(id)arg1;
 
 @end

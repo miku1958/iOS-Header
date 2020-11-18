@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <iAd/ADPlayerDelegate-Protocol.h>
 #import <iAd/ADPrerollViewDelegate-Protocol.h>
@@ -36,6 +36,7 @@
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (strong, nonatomic) ADPrerollView *view; // @synthesize view=_view;
 
+- (void)_addAccessibilityIdentifier:(id)arg1;
 - (id)_advertisementView;
 - (void)_appWillResignActive;
 - (BOOL)_beginPlayback;
@@ -61,6 +62,7 @@
 - (void)playButtonPressed;
 - (void)playPrerollAdWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)prerollViewRequestsEmbeddedStatus;
+- (void)privacyButtonPressed;
 - (void)shutdown;
 - (void)skipButtonPressed;
 - (id)viewControllerForActionFromAdPlayer:(id)arg1;

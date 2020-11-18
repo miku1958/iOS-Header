@@ -4,8 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <CameraUI/CAMNebulaDaemonIrisClientProtocol-Protocol.h>
 #import <CameraUI/CAMNebulaDaemonTimelapseClientProtocol-Protocol.h>
 
-@protocol CAMNebulaDaemonClientProtocol <CAMNebulaDaemonTimelapseClientProtocol>
+@protocol CAMNebulaDaemonClientProtocol <CAMNebulaDaemonTimelapseClientProtocol, CAMNebulaDaemonIrisClientProtocol>
 @end
 

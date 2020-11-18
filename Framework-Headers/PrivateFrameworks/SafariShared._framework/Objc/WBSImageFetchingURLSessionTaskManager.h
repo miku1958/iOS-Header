@@ -8,11 +8,10 @@
 
 #import <SafariShared/NSURLSessionTaskDelegate-Protocol.h>
 
-@class NSHashTable, NSString;
+@class NSString;
 
 @interface WBSImageFetchingURLSessionTaskManager : NSObject <NSURLSessionTaskDelegate>
 {
-    NSHashTable *_challengedTasks;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -21,9 +20,7 @@
 @property (readonly) Class superclass;
 
 + (id)sharedManager;
-- (void).cxx_destruct;
 - (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)init;
 
 @end
 

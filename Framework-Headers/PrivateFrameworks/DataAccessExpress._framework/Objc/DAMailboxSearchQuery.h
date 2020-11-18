@@ -30,10 +30,12 @@
 @property (nonatomic) long long truncationSize; // @synthesize truncationSize=_truncationSize;
 
 + (id)mailboxSearchQueryWithSearchString:(id)arg1 consumer:(id)arg2;
++ (id)mailboxSearchQueryWithSearchString:(id)arg1 predicate:(id)arg2 consumer:(id)arg3;
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 - (id)initWithDictionaryRepresentation:(id)arg1 consumer:(id)arg2;
 - (id)initWithSearchString:(id)arg1 consumer:(id)arg2;
+- (id)initWithSearchString:(id)arg1 predicate:(id)arg2 consumer:(id)arg3;
 
 @end
 

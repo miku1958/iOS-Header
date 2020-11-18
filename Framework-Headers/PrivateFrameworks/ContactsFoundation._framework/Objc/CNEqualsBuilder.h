@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CNEqualsBuilder : NSObject
 {
@@ -12,12 +12,14 @@
 
 + (BOOL)evaluateBuilderBlock:(CDUnknownBlockType)arg1 remainingBlocks:(struct __va_list_tag [1])arg2;
 + (BOOL)isBool:(BOOL)arg1 equalToOther:(BOOL)arg2;
++ (BOOL)isDouble:(double)arg1 equalToOther:(double)arg2 withAccuracy:(double)arg3;
 + (BOOL)isInteger:(long long)arg1 equalToOther:(long long)arg2;
 + (BOOL)isObject:(id)arg1 equalToOther:(id)arg2;
 + (BOOL)isObject:(id)arg1 equalToOther:(id)arg2 withBlocks:(CDUnknownBlockType)arg3;
 + (BOOL)isObject:(id)arg1 kindOfClass:(Class)arg2 andEqualToObject:(id)arg3 withBlocks:(CDUnknownBlockType)arg4;
 + (BOOL)isObject:(id)arg1 memberOfClass:(Class)arg2 andEqualToObject:(id)arg3 withBlocks:(CDUnknownBlockType)arg4;
 + (BOOL)isObject:(id)arg1 memberOfSameClassAndEqualTo:(id)arg2 withBlocks:(CDUnknownBlockType)arg3;
++ (BOOL)isString:(id)arg1 localizedCaseInsensitiveEqualToOther:(id)arg2;
 
 @end
 

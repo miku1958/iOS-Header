@@ -4,27 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <BulletinBoard/NSCopying-Protocol.h>
+#import <BulletinBoard/NSSecureCoding-Protocol.h>
 
 @class BBBulletin;
 
-@interface BBBulletinUpdate : NSObject
+@interface BBBulletinUpdate : NSObject <NSCopying, NSSecureCoding>
 {
-    BOOL _shouldSync;
     BBBulletin *_bulletin;
-    long long _type;
     unsigned long long _feeds;
 }
 
-@property (readonly, strong, nonatomic) BBBulletin *bulletin; // @synthesize bulletin=_bulletin;
+@property (readonly, copy, nonatomic) BBBulletin *bulletin; // @synthesize bulletin=_bulletin;
 @property (readonly, nonatomic) unsigned long long feeds; // @synthesize feeds=_feeds;
-@property (readonly, nonatomic) BOOL shouldSync; // @synthesize shouldSync=_shouldSync;
-@property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
-+ (id)modifyForBulletin:(id)arg1 feeds:(unsigned long long)arg2;
-+ (id)removeForBulletin:(id)arg1 feeds:(unsigned long long)arg2 shouldSync:(BOOL)arg3;
-- (void)dealloc;
-- (id)initWithBulletin:(id)arg1 feeds:(unsigned long long)arg2 type:(long long)arg3 shouldSync:(BOOL)arg4;
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithBulletin:(id)arg1 feeds:(unsigned long long)arg2;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (id)typeDescription;
 
 @end

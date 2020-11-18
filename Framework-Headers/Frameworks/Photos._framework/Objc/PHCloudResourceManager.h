@@ -25,7 +25,7 @@
 - (void)cancelRequest:(int)arg1;
 - (void)dealloc;
 - (id)init;
-- (int)requestCloudResourceType:(unsigned long long)arg1 forAssetWithObjectID:(id)arg2 progressHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (int)requestCloudResourceType:(unsigned long long)arg1 forAssetWithObjectID:(id)arg2 downloadIsTransient:(BOOL)arg3 progressHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 
 @end
 

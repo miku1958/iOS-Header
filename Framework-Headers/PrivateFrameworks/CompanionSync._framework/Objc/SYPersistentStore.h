@@ -16,6 +16,7 @@
     double _timeToLiveCache;
     NSObject<OS_os_transaction> *_transaction;
     BOOL _changeTrackingEnabled;
+    NSString *_peerID;
     NSMutableDictionary *_peerSeqnoSets;
     NSMutableSet *_ignoringMessageIDs;
     NSObject<OS_dispatch_queue> *_syncQ;
@@ -51,7 +52,6 @@
     struct sqlite3_stmt *_setSyncIDSOptions;
     struct sqlite3_stmt *_getSyncIDSOptions;
     BOOL _cachedVersionStale;
-    NSString *_peerID;
     double _unfinishedSyncTimeout;
     NSSet *_cachedChangedSyncIDs;
     unsigned long long _cachedChangedSyncIDsVersion;
@@ -78,7 +78,7 @@
 @property (readonly, nonatomic) BOOL lastSyncFailed;
 @property (copy, nonatomic) NSDate *overflowResyncTime;
 @property (readonly, nonatomic) NSString *path;
-@property (readonly, nonatomic) NSString *peerID; // @synthesize peerID=_peerID;
+@property (readonly, nonatomic) NSString *peerID;
 @property (nonatomic, getter=isPerformingDeltaSync) BOOL performingDeltaSync;
 @property (strong, nonatomic) _SYSharedServiceDB *sharedDB; // @synthesize sharedDB=_sharedDB;
 @property (nonatomic) double timeToLive;
@@ -86,6 +86,8 @@
 @property (strong, nonatomic) NSString *vectorClockJSON;
 @property (copy, nonatomic) NSString *waitingForSyncEndID;
 
++ (id)_loadOrCreatePeerIDForDB:(struct sqlite3 *)arg1;
++ (BOOL)_tableEmpty:(id)arg1 db:(struct sqlite3 *)arg2;
 + (id)sharedPersistentStoreForService:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_LOCKED_storeSequenceNumberSet:(id)arg1 forPeerID:(id)arg2 db:(struct sqlite3 *)arg3 error:(id *)arg4;
@@ -106,7 +108,6 @@
 - (id)_sequenceNumberSetForPeerID:(id)arg1 inDB:(struct sqlite3 *)arg2;
 - (void)_setupSharedDB;
 - (void)_storeSequenceNumberSet:(id)arg1 forPeerID:(id)arg2;
-- (BOOL)_tableEmpty:(id)arg1 db:(struct sqlite3 *)arg2;
 - (void)_verifyInTransactionForFullSync;
 - (void)_withDB:(CDUnknownBlockType)arg1;
 - (void)addMessageIDsToIgnore:(id)arg1;
@@ -134,6 +135,7 @@
 - (BOOL)sequenceNumberIsDuplicate:(unsigned long long)arg1 forPeer:(id)arg2;
 - (void)setLastSequenceNumber:(unsigned long long)arg1 fromPeer:(id)arg2;
 - (BOOL)setLastSequenceNumber:(unsigned long long)arg1 fromPeer:(id)arg2 error:(id *)arg3;
+- (void)setPeerID:(id)arg1;
 - (BOOL)shouldIgnoreMessageID:(id)arg1;
 
 @end

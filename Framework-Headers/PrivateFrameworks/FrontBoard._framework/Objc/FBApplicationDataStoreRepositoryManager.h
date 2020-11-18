@@ -8,7 +8,7 @@
 
 #import <FrontBoard/FBApplicationDataStoreRepositoryDelegate-Protocol.h>
 
-@class FBSSerialQueue, FBSqliteApplicationDataStoreRepository, LSApplicationWorkspace, NSString, NSURL;
+@class FBSqliteApplicationDataStoreRepository, LSApplicationWorkspace, NSString, NSURL;
 @protocol FBApplicationDataStoreRepository;
 
 @interface FBApplicationDataStoreRepositoryManager : NSObject <FBApplicationDataStoreRepositoryDelegate>
@@ -16,7 +16,6 @@
     NSURL *_dataStoreURL;
     FBSqliteApplicationDataStoreRepository *_dataStore;
     LSApplicationWorkspace *_lsApplicationWorkspace;
-    FBSSerialQueue *_queue;
 }
 
 @property (strong, nonatomic) id<FBApplicationDataStoreRepository> dataStore; // @synthesize dataStore=_dataStore;
@@ -26,15 +25,14 @@
 @property (strong, nonatomic) LSApplicationWorkspace *lsApplicationWorkspace; // @synthesize lsApplicationWorkspace=_lsApplicationWorkspace;
 @property (readonly) Class superclass;
 
++ (id)sharedInstance;
 - (void)_handleApplicationInstalled:(id)arg1;
 - (void)_handleApplicationsUninstalled:(id)arg1;
 - (id)_initWithDataStore:(id)arg1 lsWorkspace:(id)arg2;
-- (void)_performAfterDeferredWorkWithBlock:(CDUnknownBlockType)arg1;
 - (id)_safeObjectForKey:(id)arg1 forApplication:(id)arg2 ofType:(Class)arg3;
 - (void)clearExpiredUninstalledApplicationsFromStoreIfNecessary;
 - (void)dealloc;
 - (id)init;
-- (id)initWithQueue:(id)arg1;
 - (void)migrateApplicationStorePathIfNecessary;
 - (BOOL)migrateFromApplicationStore:(id)arg1 toApplicationStore:(id)arg2 error:(id *)arg3;
 - (BOOL)migrateFromPlistStoreAtURL:(id)arg1 toSqliteStoreAtURL:(id)arg2 error:(id *)arg3;

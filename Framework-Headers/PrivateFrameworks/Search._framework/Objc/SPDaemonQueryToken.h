@@ -17,13 +17,19 @@
     SPSearchQuery *_query;
     id<SPDaemonQueryDelegate> _delegate;
     BOOL _queryFinished;
+    BOOL _gotQueryComplete;
+    BOOL _didReissue;
+    BOOL _isLocalQuery;
     NSObject<OS_dispatch_queue> *_queue;
     NSString *_fbq;
     NSString *_web_fbq;
 }
 
 @property (weak, nonatomic) id<SPDaemonQueryDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) BOOL didReissue; // @synthesize didReissue=_didReissue;
 @property (readonly) NSString *fbq; // @synthesize fbq=_fbq;
+@property (readonly, nonatomic) BOOL gotQueryComplete; // @synthesize gotQueryComplete=_gotQueryComplete;
+@property (nonatomic) BOOL isLocalQuery; // @synthesize isLocalQuery=_isLocalQuery;
 @property (readonly, nonatomic) SPSearchQuery *query; // @synthesize query=_query;
 @property BOOL queryFinished; // @synthesize queryFinished=_queryFinished;
 @property (readonly, nonatomic) unsigned int queryID; // @synthesize queryID=_queryID;
@@ -33,9 +39,11 @@
 - (void).cxx_destruct;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)handleLocalQueryWithResultSet:(id)arg1;
 - (void)handleMessage:(id)arg1;
 - (id)initWithQuery:(id)arg1;
 - (id)initWithQuery:(id)arg1 queue:(id)arg2;
+- (void)queryDidComplete;
 
 @end
 

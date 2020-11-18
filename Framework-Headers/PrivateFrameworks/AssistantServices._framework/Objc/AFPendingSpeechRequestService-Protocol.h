@@ -7,6 +7,6 @@
 #import <AssistantServices/NSObject-Protocol.h>
 
 @protocol AFPendingSpeechRequestService <NSObject>
-- (oneway void)continuePendingSpeechRequest;
+- (oneway void)continuePendingSpeechRequestFromTimestamp:(double)arg1;
 @end
 

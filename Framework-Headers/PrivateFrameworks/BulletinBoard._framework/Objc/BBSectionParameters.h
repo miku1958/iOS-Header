@@ -4,17 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <BulletinBoard/BBUniquableObject-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
-@class BBSectionIcon, BBSectionSubtypeParameters, NSLock, NSMutableDictionary, NSString;
+@class BBSectionIcon, BBSectionSubtypeParameters, NSMutableDictionary, NSString, NSUUID;
 
-@interface BBSectionParameters : NSObject <BBUniquableObject, NSSecureCoding>
+@interface BBSectionParameters : NSObject <NSSecureCoding>
 {
-    NSLock *_lock;
-    NSString *_uniqueIdentifier;
     BOOL _showsSubtitle;
     BOOL _usesVariableLayout;
     BOOL _orderSectionUsingRecencyDate;
@@ -25,34 +22,31 @@
     NSMutableDictionary *_allSubtypeParameters;
     NSString *_displayName;
     BBSectionIcon *_icon;
+    NSUUID *_UUID;
 }
 
+@property (strong, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 @property (strong, nonatomic) NSMutableDictionary *allSubtypeParameters; // @synthesize allSubtypeParameters=_allSubtypeParameters;
-@property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) BBSectionSubtypeParameters *defaultSubtypeParameters; // @synthesize defaultSubtypeParameters=_defaultSubtypeParameters;
-@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (nonatomic) BOOL displaysCriticalBulletins; // @synthesize displaysCriticalBulletins=_displaysCriticalBulletins;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) BBSectionIcon *icon; // @synthesize icon=_icon;
 @property (nonatomic) unsigned long long messageNumberOfLines; // @synthesize messageNumberOfLines=_messageNumberOfLines;
 @property (nonatomic) BOOL orderSectionUsingRecencyDate; // @synthesize orderSectionUsingRecencyDate=_orderSectionUsingRecencyDate;
 @property (nonatomic) BOOL showsDateInFloatingLockScreenAlert; // @synthesize showsDateInFloatingLockScreenAlert=_showsDateInFloatingLockScreenAlert;
 @property (nonatomic) BOOL showsSubtitle; // @synthesize showsSubtitle=_showsSubtitle;
-@property (readonly) Class superclass;
 @property (nonatomic) BOOL usesVariableLayout; // @synthesize usesVariableLayout=_usesVariableLayout;
 
-+ (id)addSectionParametersToCache:(id)arg1;
-+ (id)copyCachedSectionParametersWithIdentifier:(id)arg1;
-+ (void)removeSectionParametersFromCache:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)allSubtypes;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (id)parametersForSubtype:(long long)arg1;
-- (id)uniqueIdentifier;
+- (id)replacementObjectForCoder:(id)arg1;
 
 @end
 

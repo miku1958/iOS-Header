@@ -6,37 +6,55 @@
 
 #import <Preferences/PSTableCell.h>
 
-@class PSSoftwareUpdateAnimatedIcon, PSWebContainerView, UIImage, UILabel, UIProgressView;
+@class NSLayoutConstraint, PSSoftwareUpdateAnimatedIcon, PSWebContainerView, UIImage, UIImageView, UILabel, UIProgressView;
 
 @interface PSSoftwareUpdateTitleCell : PSTableCell
 {
     int _progressStyle;
     PSSoftwareUpdateAnimatedIcon *_animatedGearView;
     BOOL _animatingGearView;
+    UIImageView *_gearBackgroundImageView;
     UIProgressView *_progressBar;
     UILabel *_updateStatusLabel;
     PSWebContainerView *_releaseNotesSummaryView;
+    NSLayoutConstraint *_updateStatusLabelVerticalConstraint;
 }
 
-@property (readonly, strong, nonatomic) UIImage *gearBackgroundImage;
-@property (strong, nonatomic) UIProgressView *progressBar; // @synthesize progressBar=_progressBar;
+@property (readonly, nonatomic) UIImage *gearBackgroundImage;
+@property (strong, nonatomic) UIImageView *gearBackgroundImageView; // @synthesize gearBackgroundImageView=_gearBackgroundImageView;
+@property (readonly, nonatomic) UIProgressView *progressBar; // @synthesize progressBar=_progressBar;
 @property (nonatomic) int progressDisplayStyle;
-@property (strong, nonatomic) PSWebContainerView *releaseNotesSummaryView; // @synthesize releaseNotesSummaryView=_releaseNotesSummaryView;
-@property (strong, nonatomic) UILabel *updateStatusLabel; // @synthesize updateStatusLabel=_updateStatusLabel;
+@property (readonly, nonatomic) PSWebContainerView *releaseNotesSummaryView; // @synthesize releaseNotesSummaryView=_releaseNotesSummaryView;
+@property (readonly, nonatomic) UILabel *updateStatusLabel; // @synthesize updateStatusLabel=_updateStatusLabel;
+@property (strong, nonatomic) NSLayoutConstraint *updateStatusLabelVerticalConstraint; // @synthesize updateStatusLabelVerticalConstraint=_updateStatusLabelVerticalConstraint;
 
 + (long long)cellStyle;
 - (void).cxx_destruct;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
+- (void)configureAnimatedGearViewFromImageSize:(struct CGSize)arg1;
+- (void)configureImageView;
+- (void)configureProgressBar;
+- (void)configurePublisherLabel;
+- (void)configureReleaseNotesSummaryView;
+- (void)configureUpdateNameLabel;
+- (void)configureUpdateStatusLabel;
+- (void)createGearIconConstraints;
 - (void)didMoveToSuperview;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
-- (void)layoutSubviews;
+- (id)newGearBackgroundImageView;
+- (id)newProgressBar;
 - (id)newSoftwareUpdateAnimatedIconWithFrame:(struct CGRect)arg1;
+- (id)newUpdateStatusLabel;
 - (double)preferredHeightWithTable:(id)arg1;
 - (void)setAnimatingGearView:(BOOL)arg1;
 - (void)setProgress:(float)arg1;
+- (void)setPublisherText:(id)arg1;
 - (void)setReleaseNotesSummary:(id)arg1;
 - (void)setStatusMessage:(id)arg1;
-- (void)sizeToFitWithTable:(id)arg1;
+- (void)setUpdateName:(id)arg1;
+- (void)setupViews;
+- (void)updateConstraints;
+- (void)updateProgressTintColor;
 
 @end
 

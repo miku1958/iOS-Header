@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithCFClient:(struct URLProtocolClient *)arg1 prot:(struct URLProtocol *)arg2;
 - (void)teardown;
+- (void)withCustomProtocolScheduling:(CDUnknownBlockType)arg1;
 
 @end
 

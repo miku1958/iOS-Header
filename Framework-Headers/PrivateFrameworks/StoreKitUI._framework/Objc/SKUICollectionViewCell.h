@@ -14,10 +14,10 @@
     long long _position;
     UIView *_leftBorderView;
     UIView *_rightBorderView;
-    UIColor *_separatorColor;
-    long long _separatorStyle;
-    struct UIEdgeInsets _separatorWidths;
     UIView *_topBorderView;
+    long long _separatorStyle;
+    UIColor *_separatorColor;
+    struct UIEdgeInsets _separatorWidths;
     struct UIEdgeInsets _separatorInsets;
 }
 

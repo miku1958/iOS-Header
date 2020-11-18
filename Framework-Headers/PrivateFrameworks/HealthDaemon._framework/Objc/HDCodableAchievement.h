@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class NSData;
+@class NSData, NSString;
 
 @interface HDCodableAchievement : PBCodable <NSCopying>
 {
@@ -16,6 +16,8 @@
     double _completedDate;
     double _doubleValue;
     long long _intValue;
+    long long _workoutActivityType;
+    NSString *_definitionIdentifier;
     NSData *_extraData;
     NSData *_uuid;
     BOOL _alerted;
@@ -24,6 +26,7 @@
         unsigned int completedDate:1;
         unsigned int doubleValue:1;
         unsigned int intValue:1;
+        unsigned int workoutActivityType:1;
         unsigned int alerted:1;
     } _has;
 }
@@ -31,21 +34,26 @@
 @property (nonatomic) long long achievementType; // @synthesize achievementType=_achievementType;
 @property (nonatomic) BOOL alerted; // @synthesize alerted=_alerted;
 @property (nonatomic) double completedDate; // @synthesize completedDate=_completedDate;
+@property (strong, nonatomic) NSString *definitionIdentifier; // @synthesize definitionIdentifier=_definitionIdentifier;
 @property (nonatomic) double doubleValue; // @synthesize doubleValue=_doubleValue;
 @property (strong, nonatomic) NSData *extraData; // @synthesize extraData=_extraData;
 @property (nonatomic) BOOL hasAchievementType;
 @property (nonatomic) BOOL hasAlerted;
 @property (nonatomic) BOOL hasCompletedDate;
+@property (readonly, nonatomic) BOOL hasDefinitionIdentifier;
 @property (nonatomic) BOOL hasDoubleValue;
 @property (readonly, nonatomic) BOOL hasExtraData;
 @property (nonatomic) BOOL hasIntValue;
 @property (readonly, nonatomic) BOOL hasUuid;
+@property (nonatomic) BOOL hasWorkoutActivityType;
 @property (nonatomic) long long intValue; // @synthesize intValue=_intValue;
 @property (strong, nonatomic) NSData *uuid; // @synthesize uuid=_uuid;
+@property (nonatomic) long long workoutActivityType; // @synthesize workoutActivityType=_workoutActivityType;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)decodedAchievementType;
 - (id)decodedCreatedDate;
 - (id)decodedUUID;
 - (id)decodedValue;

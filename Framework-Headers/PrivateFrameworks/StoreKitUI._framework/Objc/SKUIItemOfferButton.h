@@ -8,7 +8,7 @@
 
 #import <StoreKitUI/SKUIViewElementOfferButton-Protocol.h>
 
-@class NSMutableAttributedString, NSString, SKUIButtonViewElement, SKUICircleProgressIndicator, SKUIFocusedTouchGestureRecognizer, SKUIItemOfferButtonState, UIColor, UIImage, UIImageView, UILabel, UIView;
+@class NSMutableAttributedString, NSString, SKUIButtonViewElement, SKUIBuyButtonDescriptor, SKUICircleProgressIndicator, SKUIFocusedTouchGestureRecognizer, UIColor, UIImage, UIImageView, UILabel, UIView;
 @protocol SKUIItemOfferButtonDelegate;
 
 @interface SKUIItemOfferButton : UIControl <SKUIViewElementOfferButton>
@@ -36,16 +36,18 @@
     long long _titleStyle;
     BOOL _universal;
     BOOL _usesDrawRectPath;
-    SKUIItemOfferButtonState *_state;
     UIImageView *_universalImageView;
     BOOL _downloadRestores;
+    NSString *_offerButtonStateDescription;
     BOOL _disabledButSelectable;
     CDUnknownBlockType _centerImageProvider;
     double _borderColorAlphaMultiplier;
+    SKUIBuyButtonDescriptor *_buttonDescriptor;
     SKUIButtonViewElement *_element;
 }
 
 @property (nonatomic) double borderColorAlphaMultiplier; // @synthesize borderColorAlphaMultiplier=_borderColorAlphaMultiplier;
+@property (strong, nonatomic) SKUIBuyButtonDescriptor *buttonDescriptor; // @synthesize buttonDescriptor=_buttonDescriptor;
 @property (copy, nonatomic) CDUnknownBlockType centerImageProvider; // @synthesize centerImageProvider=_centerImageProvider;
 @property (copy, nonatomic) UIColor *cloudTintColor; // @synthesize cloudTintColor=_cloudTintColor;
 @property (copy, nonatomic) NSString *confirmationTitle;
@@ -59,6 +61,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImage *image;
 @property (weak, nonatomic) id<SKUIItemOfferButtonDelegate> itemOfferDelegate;
+@property (readonly, nonatomic) NSString *offerButtonStateDescription;
 @property (nonatomic) double progress; // @synthesize progress=_progress;
 @property (nonatomic) long long progressType;
 @property (readonly, nonatomic) BOOL restores;
@@ -78,10 +81,14 @@
 + (BOOL)_sizeMattersForTitleStyle:(long long)arg1;
 + (struct CGSize)_titleSizeThatFitsForSize:(struct CGSize)arg1 titleStyle:(long long)arg2 mutableAttributedString:(id)arg3;
 + (id)_universalPlusImageWithTintColor:(id)arg1;
++ (BOOL)canOpenItemForItemState:(id)arg1 clientContext:(id)arg2;
 + (id)cloudImageWithTintColor:(id)arg1 arrowTintColor:(id)arg2;
 + (id)cloudTintColorForBackgroundColor:(id)arg1;
 + (id)itemOfferButtonWithAppearance:(id)arg1;
 + (id)localizedTitleForItemState:(id)arg1 clientContext:(id)arg2;
++ (id)playHighlightImageWithTintColor:(id)arg1;
++ (id)playImageWithTintColor:(id)arg1;
++ (id)playTintColorForBackgroundColor:(id)arg1;
 - (void).cxx_destruct;
 - (void)_adjustViewOrderingForProperties:(id)arg1;
 - (id)_buttonPropertiesForState:(id)arg1;
@@ -114,6 +121,7 @@
 - (void)didMoveToWindow;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (BOOL)hasImage;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)layoutSizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;

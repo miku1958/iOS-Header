@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVAssetClientURLRequestHelper, AVAssetInspectorLoader, AVAssetResourceLoader, NSArray, NSDictionary, NSURL;
+@class AVAssetCache, AVAssetClientURLRequestHelper, AVAssetInspectorLoader, AVAssetResourceLoader, NSArray, NSDictionary, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface AVURLAssetInternal : NSObject
@@ -17,6 +17,8 @@
     NSArray *tracks;
     AVAssetResourceLoader *resourceLoader;
     long long makeOneResourceLoaderOnly;
+    AVAssetCache *assetCache;
+    long long makeOneAssetDownloadCacheOnly;
     NSObject<OS_dispatch_queue> *tracksAccessQueue;
     NSDictionary *initializationOptions;
     BOOL hasInstanceIdentifierMapping;

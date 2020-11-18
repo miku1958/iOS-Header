@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDictionary, NSString, _ICQAlertSpecification, _ICQBannerSpecification, _ICQButtonSpecification, _ICQFlowSpecification;
+@class NSDate, NSDictionary, NSString, _ICQAlertSpecification, _ICQBannerSpecification, _ICQButtonSpecification, _ICQUpgradeFlowSpecification;
 
 @interface ICQOffer : NSObject
 {
@@ -20,7 +20,7 @@
     _ICQAlertSpecification *_alertSpecification;
     _ICQBannerSpecification *_bannerSpecification;
     _ICQButtonSpecification *_buttonSpecification;
-    _ICQFlowSpecification *_upgradeFlowSpecification;
+    _ICQUpgradeFlowSpecification *_upgradeFlowSpecification;
 }
 
 @property (strong, nonatomic) NSString *accountAltDSID; // @synthesize accountAltDSID=_accountAltDSID;
@@ -32,7 +32,7 @@
 @property (nonatomic) long long level; // @synthesize level=_level;
 @property (strong, nonatomic) NSString *notificationID; // @synthesize notificationID=_notificationID;
 @property (strong, nonatomic) NSDate *retrievalDate; // @synthesize retrievalDate=_retrievalDate;
-@property (strong, nonatomic) _ICQFlowSpecification *upgradeFlowSpecification; // @synthesize upgradeFlowSpecification=_upgradeFlowSpecification;
+@property (strong, nonatomic) _ICQUpgradeFlowSpecification *upgradeFlowSpecification; // @synthesize upgradeFlowSpecification=_upgradeFlowSpecification;
 
 + (id)cachedOffer;
 + (id)sampleOfferForLevel:(long long)arg1;

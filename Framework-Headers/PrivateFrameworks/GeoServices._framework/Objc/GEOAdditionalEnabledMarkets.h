@@ -19,6 +19,7 @@
 
 + (id)_additionalEnabledTransitMarkets;
 + (id)additionalEnabledMarkets;
++ (Class)transitMarketType;
 - (void)addTransitMarket:(id)arg1;
 - (void)clearTransitMarkets;
 - (void)copyTo:(id)arg1;

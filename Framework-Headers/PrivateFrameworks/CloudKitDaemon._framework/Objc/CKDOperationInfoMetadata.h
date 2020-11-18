@@ -8,7 +8,6 @@
 
 @class CKOperationInfo, NSDate, NSNumber;
 
-__attribute__((visibility("hidden")))
 @interface CKDOperationInfoMetadata : NSObject
 {
     CKOperationInfo *_operationInfo;

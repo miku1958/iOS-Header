@@ -12,6 +12,7 @@
 {
     BOOL _usePacketThread;
     struct PacketThread_s *_packetThread;
+    BOOL _isRunning;
     unsigned int _micTimestamp;
     struct AudioStreamBasicDescription _micFormat;
     CDUnknownFunctionPointerType _micCallback;
@@ -25,6 +26,7 @@
     CDUnknownBlockType _startCompletionHandler;
 }
 
+@property (readonly, nonatomic) BOOL isRunning; // @synthesize isRunning=_isRunning;
 @property CDUnknownFunctionPointerType micCallback; // @synthesize micCallback=_micCallback;
 @property void *micCallbackContext; // @synthesize micCallbackContext=_micCallbackContext;
 @property struct AudioStreamBasicDescription micFormat; // @synthesize micFormat=_micFormat;

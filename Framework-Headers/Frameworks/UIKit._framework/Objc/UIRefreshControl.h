@@ -19,17 +19,19 @@
     double _additionalTopInset;
     BOOL _insetsApplied;
     BOOL _adjustingInsets;
+    BOOL _automaticContentOffsetAdjustmentEnabledWhenLastIdle;
+    BOOL _automaticContentOffsetAdjustmentEnabledNeedsReset;
     struct UIEdgeInsets _appliedInsets;
-    int _refreshControlState;
+    long long _refreshControlState;
 }
 
-@property (readonly, nonatomic, getter=_isApplyingInsets) BOOL _applyingInsets;
+@property (readonly, nonatomic) BOOL _areInsetsBeingApplied;
 @property (readonly, nonatomic) double _refreshControlHeight;
 @property (readonly, nonatomic) double _snappingHeight;
 @property (readonly, nonatomic) double _visibleHeight;
 @property (readonly, nonatomic, getter=_appliedInsets) struct UIEdgeInsets appliedInsets;
 @property (strong, nonatomic) NSAttributedString *attributedTitle;
-@property (readonly, nonatomic) int refreshControlState; // @synthesize refreshControlState=_refreshControlState;
+@property (readonly, nonatomic) long long refreshControlState; // @synthesize refreshControlState=_refreshControlState;
 @property (readonly, nonatomic, getter=isRefreshing) BOOL refreshing;
 @property (readonly, nonatomic) long long style;
 @property (strong, nonatomic) UIColor *tintColor;
@@ -40,19 +42,22 @@
 - (void)_addInsetHeight:(double)arg1;
 - (void)_addInsets;
 - (id)_attributedTitle;
-- (BOOL)_canTransitionFromState:(int)arg1 toState:(int)arg2;
+- (BOOL)_canTransitionFromState:(long long)arg1 toState:(long long)arg2;
 - (id)_contentView;
 - (unsigned long long)_controlEventsForActionTriggered;
 - (void)_didScroll;
+- (double)_impactIntensityForVelocity:(double)arg1;
+- (BOOL)_isApplyingInsets;
 - (struct CGPoint)_originForContentOffset:(struct CGPoint)arg1;
 - (void)_populateArchivedSubviews:(id)arg1;
-- (int)_recomputeNewState;
+- (long long)_recomputeNewState;
 - (void)_removeInsetHeight:(double)arg1;
 - (void)_removeInsets;
 - (void)_resizeToFitContents;
+- (id)_scrollView;
 - (double)_scrollViewHeight;
 - (void)_setAttributedTitle:(id)arg1;
-- (void)_setRefreshControlState:(int)arg1 notify:(BOOL)arg2;
+- (void)_setRefreshControlState:(long long)arg1 notify:(BOOL)arg2;
 - (void)_setTintColor:(id)arg1;
 - (void)_setVisibleHeight:(double)arg1;
 - (double)_stiffnessForVelocity:(double)arg1;
@@ -75,7 +80,7 @@
 - (void)setBackgroundColor:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
-- (void)setRefreshControlState:(int)arg1;
+- (void)setRefreshControlState:(long long)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)sizeToFit;
 - (void)willMoveToSuperview:(id)arg1;

@@ -11,12 +11,13 @@
 @interface WebUIAuthenticationManager : NSObject
 {
     NSMutableArray *_authenticationChallenges;
-    BOOL _isShowingAuthenticationPanel;
     UIAlertController *_alertController;
+    BOOL _showingAuthenticationPanel;
     id _delegate;
 }
 
 @property (weak) id delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic, getter=isShowingAuthenticationPanel) BOOL showingAuthenticationPanel; // @synthesize showingAuthenticationPanel=_showingAuthenticationPanel;
 
 - (void).cxx_destruct;
 - (void)_cancel;

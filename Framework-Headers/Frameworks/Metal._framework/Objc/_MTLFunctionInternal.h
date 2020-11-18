@@ -12,23 +12,40 @@ __attribute__((visibility("hidden")))
 @interface _MTLFunctionInternal : _MTLFunction
 {
     struct MTLFunctionData _functionData;
-    unsigned char _vertexAttributesInitialized;
+    unsigned char _publicMetadataInitialized;
     unsigned char _privateMetadataInitialized;
     struct MTLProgramObject *_programObject;
     NSString *_filePath;
     long long _lineNumber;
 }
 
+- (id).cxx_construct;
+- (unsigned long long)bitCodeFileSize;
+- (const CDStruct_41a22ec7 *)bitCodeHash;
 - (unsigned long long)bitCodeOffset;
+- (unsigned char)bitcodeType;
 - (void)dealloc;
 - (id)filePath;
+- (id)functionConstants;
+- (id)functionConstantsDictionary;
 - (const struct MTLFunctionData *)functionData;
+- (id)functionInputs;
 - (id)initWithName:(id)arg1 type:(unsigned long long)arg2 libraryData:(struct MTLLibraryData *)arg3 functionData:(struct MTLFunctionData *)arg4 device:(id)arg5;
 - (void)initializePrivateMetadata;
+- (void)initializePublicMetadata;
 - (long long)lineNumber;
+- (BOOL)needsFunctionConstantValues;
+- (void)newSpecializedFunctionWithConstants:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)newSpecializedFunctionWithConstants:(id)arg1 error:(id *)arg2;
+- (long long)patchControlPointCount;
+- (unsigned long long)patchType;
 - (struct MTLProgramObject *)programObject;
 - (void)setFilePath:(id)arg1;
+- (void)setFunctionConstants:(id)arg1;
 - (void)setLineNumber:(long long)arg1;
+- (void)setStageInputAttributes:(id)arg1;
+- (void)setVertexAttributes:(id)arg1;
+- (id)stageInputAttributes;
 - (id)vertexAttributes;
 
 @end

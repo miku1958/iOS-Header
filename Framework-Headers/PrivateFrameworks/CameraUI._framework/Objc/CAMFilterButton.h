@@ -6,20 +6,17 @@
 
 #import <UIKit/UIButton.h>
 
-@class UIImageView;
-
 @interface CAMFilterButton : UIButton
 {
-    UIImageView *__circlesImageView;
+    long long _orientation;
     struct UIEdgeInsets _tappableEdgeInsets;
 }
 
-@property (readonly, nonatomic) UIImageView *_circlesImageView; // @synthesize _circlesImageView=__circlesImageView;
 @property (nonatomic, getter=isOn) BOOL on;
+@property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (nonatomic) struct UIEdgeInsets tappableEdgeInsets; // @synthesize tappableEdgeInsets=_tappableEdgeInsets;
 
 + (id)filterButton;
-- (void).cxx_destruct;
 - (void)_commonCAMFilterButtonInitialization;
 - (id)_filterImage;
 - (id)_filterOnImage;
@@ -28,6 +25,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;
 
 @end
 

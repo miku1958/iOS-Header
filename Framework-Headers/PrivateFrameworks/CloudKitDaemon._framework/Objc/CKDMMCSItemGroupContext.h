@@ -8,44 +8,62 @@
 
 #import <CloudKitDaemon/CKDCancelling-Protocol.h>
 
-@class CKDMMCS, CKDMMCSItemGroup, CKDOperation, NSMapTable;
+@class CKDMMCS, CKDMMCSItem, CKDMMCSItemGroup, CKDOperation, NSMapTable;
 
 __attribute__((visibility("hidden")))
 @interface CKDMMCSItemGroupContext : NSObject <CKDCancelling>
 {
     CKDOperation *_operation;
+    id _operationInfo;
     CKDMMCS *_MMCS;
     CKDMMCSItemGroup *_itemGroup;
     CDUnknownBlockType _progressBlock;
+    CDUnknownBlockType _commandBlock;
     CDUnknownBlockType _startBlock;
     CDUnknownBlockType _completionBlock;
+    CKDMMCSItem *_MMCSPackageSectionItem;
     NSMapTable *_MMCSItemsByItemID;
+    long long _mmcsOperationType;
 }
 
 @property (strong, nonatomic) CKDMMCS *MMCS; // @synthesize MMCS=_MMCS;
 @property (strong, nonatomic) NSMapTable *MMCSItemsByItemID; // @synthesize MMCSItemsByItemID=_MMCSItemsByItemID;
+@property (strong, nonatomic) CKDMMCSItem *MMCSPackageSectionItem; // @synthesize MMCSPackageSectionItem=_MMCSPackageSectionItem;
+@property (copy, nonatomic) CDUnknownBlockType commandBlock; // @synthesize commandBlock=_commandBlock;
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (strong, nonatomic) CKDMMCSItemGroup *itemGroup; // @synthesize itemGroup=_itemGroup;
+@property (nonatomic) long long mmcsOperationType; // @synthesize mmcsOperationType=_mmcsOperationType;
 @property (weak, nonatomic) CKDOperation *operation; // @synthesize operation=_operation;
+@property (strong, nonatomic) id operationInfo; // @synthesize operationInfo=_operationInfo;
 @property (copy, nonatomic) CDUnknownBlockType progressBlock; // @synthesize progressBlock=_progressBlock;
 @property (copy, nonatomic) CDUnknownBlockType startBlock; // @synthesize startBlock=_startBlock;
 
 - (void).cxx_destruct;
 - (void)_cleanupMMCSItems;
+- (void)_cleanupMMCSRegisterItems;
+- (BOOL)_setupGetMMCSItemsWithError:(id *)arg1;
 - (BOOL)_setupMMCSItemsWithError:(id *)arg1;
+- (BOOL)_setupPutMMCSItemsWithError:(id *)arg1;
+- (BOOL)_setupRegisterMMCSItemsWithError:(id *)arg1;
 - (void)_startTrackingMMCSItems:(id)arg1;
 - (void)_stopTrackingMMCSItems:(id)arg1;
 - (void)cancel;
 - (void)didCompleteRequestWithError:(id)arg1;
-- (void)didGetItemID:(unsigned long long)arg1 signature:(id)arg2 path:(id)arg3 error:(id)arg4;
+- (void)didGetItemID:(unsigned long long)arg1 signature:(id)arg2 path:(id)arg3 error:(id)arg4 results:(id)arg5;
 - (void)didGetMetricsForRequest:(id)arg1;
 - (void)didPutItemID:(unsigned long long)arg1 signature:(id)arg2 receipt:(id)arg3 error:(id)arg4;
-- (void)didPutSectionWithItemID:(unsigned long long)arg1 signature:(id)arg2 receipt:(id)arg3 error:(id)arg4;
+- (void)didPutItemID:(unsigned long long)arg1 signature:(id)arg2 results:(id)arg3;
+- (void)didPutSectionWithSignature:(id)arg1 receipt:(id)arg2 error:(id)arg3;
 - (id)findTrackedMMCSItemByItemID:(unsigned long long)arg1;
-- (struct MMCSItemReader *)getMMCSItemReaderForItemID:(unsigned long long)arg1 error:(id *)arg2;
-- (id)initWithMMCS:(id)arg1 itemGroup:(id)arg2 operation:(id)arg3 progress:(CDUnknownBlockType)arg4 start:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (id)getCKDMMCSItemReaderByPathForMMCSItem:(id)arg1 error:(id *)arg2;
+- (struct MMCSItemReaderWriter *)getMMCSItemReaderForItemID:(unsigned long long)arg1 error:(id *)arg2;
+- (void)handleCommand:(id)arg1 forItem:(id)arg2;
+- (id)initWithMMCS:(id)arg1 itemGroup:(id)arg2 operation:(id)arg3 progress:(CDUnknownBlockType)arg4 command:(CDUnknownBlockType)arg5 start:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (BOOL)shouldFetchAssetContentInMemory;
 - (void)start;
 - (void)updateProgressForItemID:(unsigned long long)arg1 state:(int)arg2 progress:(double)arg3 error:(id)arg4;
+- (void)updateProgressForItemID:(unsigned long long)arg1 state:(int)arg2 progress:(double)arg3 results:(id)arg4;
+- (void)updateProgressForPackageSectionState:(int)arg1 progress:(double)arg2 results:(id)arg3;
 
 @end
 

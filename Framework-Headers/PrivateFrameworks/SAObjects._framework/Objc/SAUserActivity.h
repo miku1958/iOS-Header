@@ -13,7 +13,12 @@
 }
 
 @property (copy, nonatomic) NSString *internalGUID;
+@property (nonatomic) BOOL isEligibleForAppPunchout;
+@property (nonatomic) BOOL isEligibleForDirections;
+@property (nonatomic) BOOL isEligibleForHandoff;
+@property (nonatomic) BOOL isEligibleForPublicIndexing;
 @property (nonatomic) BOOL isEligibleForReminders;
+@property (nonatomic) BOOL isEligibleForSearch;
 
 + (id)userActivity;
 + (id)userActivityWithDictionary:(id)arg1 context:(id)arg2;

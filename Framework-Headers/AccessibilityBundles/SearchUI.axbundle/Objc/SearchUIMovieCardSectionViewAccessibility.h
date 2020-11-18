@@ -13,6 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (id)initWithCardSection:(id)arg1 controller:(id)arg2;
 - (BOOL)isAccessibilityElement;
 
 @end

@@ -17,7 +17,7 @@
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
-- (id)initWithTitle:(id)arg1 image:(id)arg2 url:(id)arg3 controller:(id)arg4;
+- (id)initWithMediaItem:(id)arg1 controller:(id)arg2 section:(id)arg3;
 - (BOOL)isAccessibilityElement;
 
 @end

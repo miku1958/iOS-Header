@@ -34,6 +34,7 @@
 - (id)removeName:(id)arg1 namespace:(id)arg2;
 - (id)removeNamespace:(id)arg1;
 - (id)replaceName:(id)arg1 withNewName:(id)arg2 inNamespaces:(id)arg3;
+- (id)validateName:(id)arg1;
 
 @end
 

@@ -13,10 +13,11 @@
     long long _height;
     long long _imageTreatment;
     long long _width;
-    IKColor *_placeholdeBackgroundColor;
+    IKColor *_placeholderBackgroundColor;
 }
 
 - (void).cxx_destruct;
+- (id)description;
 - (unsigned long long)hash;
 - (id)initWithSize:(struct CGSize)arg1 imageTreatment:(long long)arg2 placeholderBackgroundColor:(id)arg3;
 - (BOOL)isEqual:(id)arg1;

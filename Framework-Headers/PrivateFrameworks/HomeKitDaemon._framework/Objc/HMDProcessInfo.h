@@ -21,6 +21,7 @@
 
 @property (readonly, weak, nonatomic) HMDApplicationInfo *appInfo; // @synthesize appInfo=_appInfo;
 @property (readonly, nonatomic, getter=isBackgrounded) BOOL background;
+@property (readonly, nonatomic, getter=isBackgroundUpgradedToForeground) BOOL backgroundUpgradedToForeground;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, nonatomic) NSHashTable *connectionProxies; // @synthesize connectionProxies=_connectionProxies;
 @property (readonly, nonatomic, getter=isForegrounded) BOOL foreground;

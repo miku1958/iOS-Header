@@ -20,6 +20,7 @@
 - (BOOL)areAnimationsInProgress;
 - (id)endingValueForPropertyType:(unsigned long long)arg1;
 - (void)removeAllAnimationsForPropertyType:(unsigned long long)arg1;
+- (void)setValue:(id)arg1 forPropertyType:(unsigned long long)arg2;
 - (void)update:(double)arg1;
 
 @end

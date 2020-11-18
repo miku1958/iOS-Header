@@ -14,7 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)_accessibilitySpeakThisView;
 
 @end
 

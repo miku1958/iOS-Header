@@ -23,6 +23,7 @@
 
 - (void)dealloc;
 - (id)initWithString:(id)arg1 score:(double)arg2 rare:(BOOL)arg3 wordRanges:(id)arg4 wordIDs:(id)arg5;
+- (id)mecabraCandidate;
 
 @end
 

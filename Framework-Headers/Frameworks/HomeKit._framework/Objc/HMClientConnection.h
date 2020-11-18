@@ -6,16 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKit/HMMessageReceiver-Protocol.h>
+#import <HomeKit/HMFMessageReceiver-Protocol.h>
 
-@class HMMessageDispatcher, HMXpcClient, NSString, NSUUID;
+@class HMFMessageDispatcher, HMXpcClient, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMClientConnection : NSObject <HMMessageReceiver>
+@interface HMClientConnection : NSObject <HMFMessageReceiver>
 {
     NSObject<OS_dispatch_queue> *_clientQueue;
     HMXpcClient *_xpcClient;
-    HMMessageDispatcher *_msgDispatcher;
+    HMFMessageDispatcher *_msgDispatcher;
     NSUUID *_uuid;
 }
 
@@ -25,7 +25,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) HMXpcClient *xpcClient; // @synthesize xpcClient=_xpcClient;
@@ -37,6 +37,7 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithNoValidation;
+- (void)requestSiriSyncDataWithValidity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sendSiriCommand:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

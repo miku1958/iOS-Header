@@ -15,6 +15,7 @@
 @property (nonatomic) unsigned long long capacity; // @synthesize capacity=_capacity;
 @property (readonly, nonatomic) BOOL isMoreToLoad;
 
++ (id)_charactersToIgnoreWhenParsingTextContent;
 - (void)_handleItem:(id)arg1;
 - (unsigned long long)_indexOfItem:(id)arg1;
 - (id)_initWithItems:(id)arg1;
@@ -27,6 +28,7 @@
 - (id)_lastIncomingMessage;
 - (id)_lastMessage;
 - (id)_lastRelatedIncomingFinishedMessageTextContentWithLimit:(long long)arg1;
+- (id)_lastSentMessage;
 - (id)_member:(id)arg1;
 - (void)_removeAllItems;
 - (void)_removeItem:(id)arg1;
@@ -34,7 +36,6 @@
 - (void)_replaceStaleTypingMessage;
 - (BOOL)_trimIfNeeded;
 - (id)_typingMessage;
-- (void)dealloc;
 - (id)init;
 
 @end

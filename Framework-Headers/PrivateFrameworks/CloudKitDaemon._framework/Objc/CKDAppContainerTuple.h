@@ -10,6 +10,7 @@
 
 @class CKContainerID, NSString;
 
+__attribute__((visibility("hidden")))
 @interface CKDAppContainerTuple : NSObject <NSCopying>
 {
     NSString *_applicationBundleID;

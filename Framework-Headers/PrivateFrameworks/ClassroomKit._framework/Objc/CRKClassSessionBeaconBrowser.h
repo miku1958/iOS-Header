@@ -6,14 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, NSSet;
+@class NSSet;
 @protocol CRKClassSessionBeaconBrowserDelegate;
 
 @interface CRKClassSessionBeaconBrowser : NSObject
 {
-    NSMutableSet *mScanningZones;
     BOOL _isBrowsing;
-    BOOL _isScanning;
     id<CRKClassSessionBeaconBrowserDelegate> _delegate;
     NSSet *_organizationUUIDs;
     NSSet *_controlGroupIdentifiers;
@@ -21,16 +19,11 @@
 
 @property (copy, nonatomic) NSSet *controlGroupIdentifiers; // @synthesize controlGroupIdentifiers=_controlGroupIdentifiers;
 @property (weak, nonatomic) id<CRKClassSessionBeaconBrowserDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) BOOL isBrowsing; // @synthesize isBrowsing=_isBrowsing;
-@property (nonatomic) BOOL isScanning; // @synthesize isScanning=_isScanning;
+@property (readonly, nonatomic) BOOL isBrowsing; // @synthesize isBrowsing=_isBrowsing;
 @property (copy, nonatomic) NSSet *organizationUUIDs; // @synthesize organizationUUIDs=_organizationUUIDs;
 
 - (void).cxx_destruct;
-- (void)dealloc;
-- (void)delegateDidFailWithError:(id)arg1;
-- (void)delegateDidFindClassSession:(id)arg1 flags:(unsigned short)arg2;
-- (id)init;
-- (void)setOrganizationUUID:(id)arg1;
+- (void)increaseScanFrequencyForDuration:(double)arg1;
 - (void)startBrowsing;
 - (id)stateDictionary;
 - (void)stopBrowsing;

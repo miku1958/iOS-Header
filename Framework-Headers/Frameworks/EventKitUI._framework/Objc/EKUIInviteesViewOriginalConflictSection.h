@@ -8,12 +8,14 @@
 
 #import <EventKitUI/EKUIInviteesViewConflictResolutionSection-Protocol.h>
 
-@class EKUIInviteeAlternativeTimeSearcher, NSArray, NSDate, NSMutableSet, NSString;
+@class EKInviteeAlternativeTimeSearcher, NSArray, NSDate, NSMutableSet, NSString, NSTimeZone;
 
 @interface EKUIInviteesViewOriginalConflictSection : NSObject <EKUIInviteesViewConflictResolutionSection>
 {
     BOOL _checked;
     BOOL _conflictFound;
+    NSString *_title;
+    NSTimeZone *_timeZone;
     NSDate *_startDate;
     NSDate *_endDate;
     NSArray *_busyParticipants;
@@ -23,10 +25,10 @@
     CDUnknownBlockType _tableViewCellHook;
     CDUnknownBlockType _newTimeChosen;
     CDUnknownBlockType _showPreviewOfEventAtTime;
-    EKUIInviteeAlternativeTimeSearcher *_availabilitySearcher;
+    EKInviteeAlternativeTimeSearcher *_availabilitySearcher;
 }
 
-@property (strong, nonatomic) EKUIInviteeAlternativeTimeSearcher *availabilitySearcher; // @synthesize availabilitySearcher=_availabilitySearcher;
+@property (strong, nonatomic) EKInviteeAlternativeTimeSearcher *availabilitySearcher; // @synthesize availabilitySearcher=_availabilitySearcher;
 @property (strong, nonatomic) NSArray *busyParticipants; // @synthesize busyParticipants=_busyParticipants;
 @property (strong, nonatomic) NSString *cachedCellReuseIdentifier; // @synthesize cachedCellReuseIdentifier=_cachedCellReuseIdentifier;
 @property (nonatomic) BOOL checked; // @synthesize checked=_checked;
@@ -42,6 +44,8 @@
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType tableViewCellHook; // @synthesize tableViewCellHook=_tableViewCellHook;
+@property (strong, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
+@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
 - (BOOL)_isValidRow:(long long)arg1;

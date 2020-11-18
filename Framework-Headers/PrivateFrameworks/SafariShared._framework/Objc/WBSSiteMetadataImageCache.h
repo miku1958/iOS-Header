@@ -6,57 +6,81 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSMutableSet, NSURL;
-@protocol OS_dispatch_queue;
+@class NSCountedSet, NSMutableDictionary, NSMutableSet, NSURL;
+@protocol OS_dispatch_queue, WBSSiteMetadataImageCacheDelegate;
 
 @interface WBSSiteMetadataImageCache : NSObject
 {
     NSObject<OS_dispatch_queue> *_diskAccessQueue;
+    NSObject<OS_dispatch_queue> *_internalQueue;
     NSMutableDictionary *_imagesForKeyStrings;
-    NSMutableDictionary *_imageTypeToRetainCountMaps;
+    NSCountedSet *_imageRetainCounts;
+    NSCountedSet *_negativeImageRetainCounts;
     NSMutableSet *_pendingKeyStringRequests;
     NSMutableSet *_missingImageKeyStrings;
     NSMutableDictionary *_cacheSettings;
     struct unique_ptr<SafariShared::CoalescedAsynchronousWriter, std::__1::default_delete<SafariShared::CoalescedAsynchronousWriter>> _cacheSettingsWriter;
     BOOL _terminating;
     NSURL *_imageDirectoryURL;
+    long long _imageType;
+    id<WBSSiteMetadataImageCacheDelegate> _delegate;
 }
 
+@property (weak, nonatomic) id<WBSSiteMetadataImageCacheDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSURL *imageDirectoryURL; // @synthesize imageDirectoryURL=_imageDirectoryURL;
+@property (readonly, nonatomic) long long imageType; // @synthesize imageType=_imageType;
 @property (readonly, nonatomic, getter=isTerminating) BOOL terminating; // @synthesize terminating=_terminating;
 
-+ (const char *)diskAccessQueueName;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)_cacheSettingsFileURL;
-- (void)_didLoadImage:(id)arg1 forKeyString:(id)arg2 type:(long long)arg3;
-- (id)_fileLocationForKeyString:(id)arg1 type:(long long)arg2;
-- (id)_fileNameForKeyString:(id)arg1 type:(long long)arg2;
-- (id)_loadImageFromDiskForKeyString:(id)arg1 type:(long long)arg2;
+- (void)_didLoadImage:(id)arg1 forKeyString:(id)arg2;
+- (id)_diskAccessQueueName;
+- (void)_dispatchDiskAccessBlock:(CDUnknownBlockType)arg1;
+- (void)_emptyCacheDirectory;
+- (id)_fileLocationForKeyString:(id)arg1;
+- (id)_fileNameForKeyString:(id)arg1;
+- (id)_internalImageForKeyString:(id)arg1;
+- (long long)_internalImageStateForKeyString:(id)arg1;
+- (void)_internalPurgeUnneededImages;
+- (void)_internalQueueDispatchAsync:(CDUnknownBlockType)arg1;
+- (void)_internalQueueDispatchBarrierAsync:(CDUnknownBlockType)arg1;
+- (void)_internalQueueDispatchSync:(CDUnknownBlockType)arg1;
+- (id)_internalQueueName;
+- (void)_internalReleaseImageForKeyString:(id)arg1;
+- (void)_internalRemoveAllImages;
+- (void)_internalRemoveImagesFromCacheForKeyStrings:(id)arg1;
+- (void)_internalRetainImageForKeyString:(id)arg1;
+- (void)_internalSaveImageToDisk:(id)arg1 forKeyString:(id)arg2;
+- (void)_internalSetImageState:(long long)arg1 forKeyString:(id)arg2;
+- (void)_internalSetSetting:(id)arg1 forKey:(id)arg2;
+- (void)_internalSetUpImageCache;
+- (id)_internalSettingForKey:(id)arg1;
+- (id)_loadImageFromDiskForKeyString:(id)arg1;
+- (void)_notifyDidFinishLoadingSettings;
 - (void)_removeImagesPassingTest:(CDUnknownBlockType)arg1;
-- (void)_requestImageForKeyString:(id)arg1 type:(long long)arg2;
-- (BOOL)areSettingsLoaded;
-- (void)didFinishLoadingSettings;
-- (void)didRemoveImageForKeyString:(id)arg1 type:(long long)arg2;
-- (void)dispatchDiskAccessBlock:(CDUnknownBlockType)arg1;
-- (id)imageForKeyString:(id)arg1 type:(long long)arg2;
+- (void)_requestImageForKeyString:(id)arg1;
+- (void)_saveCacheSettingsSoon;
+- (void)emptyCache;
+- (id)imageForKeyString:(id)arg1;
 - (long long)imageStateForKeyString:(id)arg1;
 - (id)init;
-- (id)initWithImageDirectoryURL:(id)arg1;
-- (BOOL)isImageRetainedForKeyString:(id)arg1 type:(long long)arg2;
-- (id)keyStringsToRetainCountsForType:(long long)arg1;
-- (void)notifyDidFinishLoadingSettings;
-- (void)notifyImageWasLoaded:(id)arg1 forKeyString:(id)arg2 type:(long long)arg3;
+- (id)initWithImageDirectoryURL:(id)arg1 imageType:(long long)arg2;
+- (BOOL)isImageRetainedForKeyString:(id)arg1;
 - (void)purgeUnneededImages;
-- (void)releaseImageForKeyString:(id)arg1 type:(long long)arg2;
+- (void)releaseImageForKeyString:(id)arg1;
+- (void)releaseImageWithKeyStringProvider:(CDUnknownBlockType)arg1;
+- (void)releaseImagesForKeyStrings:(id)arg1;
 - (void)removeAllImages;
-- (void)removeImageFromCacheForKeyString:(id)arg1 type:(long long)arg2;
-- (void)retainImageForKeyString:(id)arg1 type:(long long)arg2;
-- (void)saveCacheSettingsSoon;
-- (void)saveImageToDisk:(id)arg1 forKeyString:(id)arg2 type:(long long)arg3;
+- (void)removeImagesFromCacheForKeyStrings:(id)arg1;
+- (void)retainImageForKeyString:(id)arg1;
+- (void)retainImageWithKeyStringProvider:(CDUnknownBlockType)arg1;
+- (void)retainImagesForKeyStrings:(id)arg1;
+- (void)saveImageToDisk:(id)arg1 forKeyString:(id)arg2;
 - (void)savePendingChangesBeforeTermination;
 - (void)setImageState:(long long)arg1 forKeyString:(id)arg2;
 - (void)setSetting:(id)arg1 forKey:(id)arg2;
+- (void)setUpImageCache;
 - (id)settingForKey:(id)arg1;
 
 @end

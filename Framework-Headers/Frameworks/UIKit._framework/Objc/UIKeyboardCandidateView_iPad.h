@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 {
     UIKeyboardCandidatePageControl *_pageControl;
     UIKBInputBackdropView *_backdropView;
+    double _extendedViewHeight;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)candidateBarDidScroll:(id)arg1;
 - (void)dealloc;
 - (void)didEndSplitTransition;
+- (double)extendedViewHeight;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;

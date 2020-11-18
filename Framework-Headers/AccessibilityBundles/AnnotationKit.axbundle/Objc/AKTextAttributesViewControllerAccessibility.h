@@ -13,6 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axAddAlignmentLabels:(id)arg1;
+- (id)createRowAlignmentCell;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 
 @end

@@ -10,8 +10,10 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (void)_addLap:(double)arg1;
 - (void)lapLapTimer;
 - (void)loadView;

@@ -6,19 +6,29 @@
 
 #import <coreroutine/RTNotifier.h>
 
-__attribute__((visibility("hidden")))
+@class RTDarwinNotificationHelper, RTKeybagMonitor;
+
 @interface RTDataProtectionManager : RTNotifier
 {
     BOOL _unlockedSinceBoot;
+    RTDarwinNotificationHelper *_notificationHelper;
+    RTKeybagMonitor *_keybagMonitor;
     long long _encryptedDataAvailability;
 }
 
 @property (nonatomic) long long encryptedDataAvailability; // @synthesize encryptedDataAvailability=_encryptedDataAvailability;
+@property (strong, nonatomic) RTKeybagMonitor *keybagMonitor; // @synthesize keybagMonitor=_keybagMonitor;
+@property (strong, nonatomic) RTDarwinNotificationHelper *notificationHelper; // @synthesize notificationHelper=_notificationHelper;
 @property (nonatomic) BOOL unlockedSinceBoot; // @synthesize unlockedSinceBoot=_unlockedSinceBoot;
 
++ (id)dataProtectionLockStateToString:(long long)arg1;
++ (id)encryptedDataAvailabilityToString:(long long)arg1;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)dealloc;
-- (id)init;
+- (void)handkeKeybagLockStatusChange:(long long)arg1;
+- (void)handleUnlockedSinceBoot;
+- (id)initWithKeybagMonitor:(id)arg1 notificationHelper:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 

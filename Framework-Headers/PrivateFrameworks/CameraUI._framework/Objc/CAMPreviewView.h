@@ -34,10 +34,11 @@
 + (Class)layerClass;
 - (void).cxx_destruct;
 - (struct CGRect)_aspectFaceRectFromSquareFaceRect:(struct CGRect)arg1 angle:(double)arg2;
+- (int)_faceOrientationForRollAngle:(double)arg1;
 - (void)addFaceIndicator:(id)arg1 forIdentifier:(long long)arg2;
 - (struct CGPoint)captureDevicePointOfInterestForPoint:(struct CGPoint)arg1;
 - (void)dealloc;
-- (struct CGRect)frameForFaceResult:(id)arg1;
+- (struct CGRect)faceIndicatorFrameForFaceResult:(id)arg1;
 - (void)indicatePointOfInterest:(struct CGPoint)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

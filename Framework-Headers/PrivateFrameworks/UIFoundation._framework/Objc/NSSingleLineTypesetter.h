@@ -15,7 +15,9 @@
     unsigned long long *_charIndexes;
     struct {
         unsigned int _usesScreenFonts:1;
-        unsigned int _reserved:31;
+        unsigned int _syncAlignmentToDirection:1;
+        unsigned int _mirrorsTextAlignment:1;
+        unsigned int _reserved:29;
     } _slFlags;
 }
 
@@ -23,10 +25,12 @@
 + (void)initialize;
 + (id)singleLineTypesetter;
 - (BOOL)_allowsEllipsisGlyphSubstitution;
+- (BOOL)_mirrorsTextAlignment;
 - (BOOL)_usesScreenFonts;
 - (id)attributedString;
 - (struct _NSRange)characterRangeForGlyphRange:(struct _NSRange)arg1 actualGlyphRange:(struct _NSRange *)arg2;
 - (id)createRenderingContextForCharacterRange:(struct _NSRange)arg1 typesetterBehavior:(long long)arg2 usesScreenFonts:(BOOL)arg3 hasStrongRight:(BOOL)arg4 maximumWidth:(double)arg5;
+- (id)createRenderingContextForCharacterRange:(struct _NSRange)arg1 typesetterBehavior:(long long)arg2 usesScreenFonts:(BOOL)arg3 hasStrongRight:(BOOL)arg4 syncDirection:(BOOL)arg5 mirrorsTextAlignment:(BOOL)arg6 maximumWidth:(double)arg7;
 - (void)deleteGlyphsInRange:(struct _NSRange)arg1;
 - (void)done;
 - (unsigned long long)getGlyphsInRange:(struct _NSRange)arg1 glyphs:(unsigned short *)arg2 properties:(long long *)arg3 characterIndexes:(unsigned long long *)arg4 bidiLevels:(char *)arg5;
@@ -46,6 +50,7 @@
 - (void)setNotShownAttribute:(BOOL)arg1 forGlyphRange:(struct _NSRange)arg2;
 - (id)substituteFontForFont:(id)arg1;
 - (void)substituteGlyphsInRange:(struct _NSRange)arg1 withGlyphs:(unsigned int *)arg2;
+- (BOOL)synchronizesAlignmentToDirection;
 
 @end
 

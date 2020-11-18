@@ -30,6 +30,7 @@
     int _laneClosureType;
     unsigned int _maxZoomLevel;
     unsigned int _minZoomLevel;
+    NSData *_openlr;
     int _significance;
     float _speed;
     NSString *_street;
@@ -97,6 +98,7 @@
 @property (nonatomic) BOOL hasMaxZoomLevel;
 @property (nonatomic) BOOL hasMinZoomLevel;
 @property (nonatomic) BOOL hasNavigationAlert;
+@property (readonly, nonatomic) BOOL hasOpenlr;
 @property (nonatomic) BOOL hasSignificance;
 @property (nonatomic) BOOL hasSpeed;
 @property (nonatomic) BOOL hasStartOffset;
@@ -116,6 +118,7 @@
 @property (nonatomic) unsigned int maxZoomLevel; // @synthesize maxZoomLevel=_maxZoomLevel;
 @property (nonatomic) unsigned int minZoomLevel; // @synthesize minZoomLevel=_minZoomLevel;
 @property (nonatomic) BOOL navigationAlert; // @synthesize navigationAlert=_navigationAlert;
+@property (strong, nonatomic) NSData *openlr; // @synthesize openlr=_openlr;
 @property (nonatomic) int significance; // @synthesize significance=_significance;
 @property (nonatomic) float speed; // @synthesize speed=_speed;
 @property (nonatomic) double startOffset; // @synthesize startOffset=_startOffset;
@@ -126,10 +129,17 @@
 @property (nonatomic) long long updateTime; // @synthesize updateTime=_updateTime;
 @property (strong, nonatomic) NSData *zilch; // @synthesize zilch=_zilch;
 
++ (Class)infoType;
+- (int)StringAsColor:(id)arg1;
+- (int)StringAsLaneClosureType:(id)arg1;
+- (int)StringAsSignificance:(id)arg1;
+- (int)StringAsTrafficTrend:(id)arg1;
+- (int)StringAsType:(id)arg1;
 - (void)addGeoid:(long long)arg1;
 - (void)addInfo:(id)arg1;
 - (void)clearGeoids;
 - (void)clearInfos;
+- (id)colorAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -140,9 +150,13 @@
 - (id)infoAtIndex:(unsigned long long)arg1;
 - (unsigned long long)infosCount;
 - (BOOL)isEqual:(id)arg1;
+- (id)laneClosureTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setGeoids:(long long *)arg1 count:(unsigned long long)arg2;
+- (id)significanceAsString:(int)arg1;
+- (id)trafficTrendAsString:(int)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

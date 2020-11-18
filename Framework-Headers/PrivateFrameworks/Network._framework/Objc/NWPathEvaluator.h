@@ -11,36 +11,30 @@
 
 @interface NWPathEvaluator : NSObject
 {
-    BOOL _shouldRegisterWithHelper;
-    int _helperClientPID;
     NWEndpoint *_endpoint;
-    NWParameters *_parameters;
     NSObject<OS_nw_path_evaluator> *_internalEvaluator;
     NWPath *_internalPath;
-    unsigned long long _helperClientID;
+    NWParameters *_parameters;
 }
 
-@property (readonly) NWEndpoint *endpoint; // @synthesize endpoint=_endpoint;
-@property unsigned long long helperClientID; // @synthesize helperClientID=_helperClientID;
-@property int helperClientPID; // @synthesize helperClientPID=_helperClientPID;
+@property (readonly, nonatomic) NWEndpoint *endpoint; // @synthesize endpoint=_endpoint;
 @property (readonly) NSObject<OS_nw_path_evaluator> *internalEvaluator; // @synthesize internalEvaluator=_internalEvaluator;
 @property (strong) NWPath *internalPath; // @synthesize internalPath=_internalPath;
 @property (readonly) NWParameters *parameters; // @synthesize parameters=_parameters;
-@property (readonly) NWPath *path;
-@property BOOL shouldRegisterWithHelper; // @synthesize shouldRegisterWithHelper=_shouldRegisterWithHelper;
+@property (readonly, nonatomic) NWPath *path;
 
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
-+ (id)getSavedPathEvaluatorForEndpoint:(id)arg1 parameters:(id)arg2 shouldRegisterWithHelper:(BOOL)arg3 helperClientID:(unsigned long long)arg4 helperClientPID:(int)arg5;
++ (id)copySavedPathEvaluatorForEndpoint:(id)arg1 parameters:(id)arg2;
 + (void)initialize;
 + (void)savePathEvaluator:(id)arg1;
 + (id)sharedDefaultEvaluator;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initLocallyWithEndpoint:(id)arg1 parameters:(id)arg2 helperClientID:(unsigned long long)arg3 helperClientPID:(int)arg4;
+- (id)init;
 - (id)initWithEndpoint:(id)arg1 parameters:(id)arg2;
-- (id)initWithEndpoint:(id)arg1 parameters:(id)arg2 shouldRegisterWithHelper:(BOOL)arg3 helperClientID:(unsigned long long)arg4 helperClientPID:(int)arg5;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)matchesEndpoint:(id)arg1 parameters:(id)arg2 shouldRegisterWithHelper:(BOOL)arg3 helperClientID:(unsigned long long)arg4 helperClientPID:(int)arg5;
+- (BOOL)matchesEndpoint:(id)arg1 parameters:(id)arg2;
+- (BOOL)requestNexus;
 - (void)satisfyPathAgentsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)triggerPathAgentsIncludingVoluntary:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)triggerVoluntaryPathAgentsWithCompletionHandler:(CDUnknownBlockType)arg1;

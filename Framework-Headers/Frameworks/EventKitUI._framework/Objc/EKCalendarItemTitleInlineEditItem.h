@@ -10,59 +10,37 @@
 #import <EventKitUI/EKEditItemViewControllerDelegate-Protocol.h>
 #import <EventKitUI/UITextFieldDelegate-Protocol.h>
 
-@class EKParticipant, EKRequestAvailabilityOperation, EKUILocationEditItemCell, NSArray, NSString, UITableViewCell, UIView;
+@class NSString, UITableViewCell, UITextField;
 
 __attribute__((visibility("hidden")))
 @interface EKCalendarItemTitleInlineEditItem : EKCalendarItemEditItem <UITextFieldDelegate, EKEditItemViewControllerDelegate, EKCalendarItemInlineEditItem>
 {
     UITableViewCell *_titleCell;
-    UITableViewCell *_nonConferenceLocationCell;
-    EKUILocationEditItemCell *_conferenceLocationCell;
-    UITableViewCell *_mapCell;
-    BOOL _sourceSupportsAvailabilityRequests;
-    UIView *_clearButtonView;
-    EKRequestAvailabilityOperation *_availabilityRequest;
-    NSArray *_availabilitySpansForLocation;
-    EKParticipant *_conferenceRoom;
-    long long _conferenceRoomAvailabilityType;
-    BOOL _showsLocation;
-    long long _mostRecentStringLengthDelta;
+    BOOL _drawsOwnRowSeparators;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL drawsOwnRowSeparators; // @synthesize drawsOwnRowSeparators=_drawsOwnRowSeparators;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) UITextField *titleTextField;
 
 - (void).cxx_destruct;
-- (void)_clearButtonTapped;
-- (id)_clearButtonView;
 - (void)_contentSizeCategoryChanged:(id)arg1;
 - (id)_makeCell:(unsigned long long)arg1;
-- (void)_refreshConferenceRoomCell;
-- (void)_setNewStructuredLocation:(id)arg1;
-- (BOOL)_showConferenceLocationCell;
-- (BOOL)_showsMap;
-- (void)_updateAvailabilityInformation;
-- (void)_updateLocationWithConferenceRoom:(id)arg1;
-- (void)_updateLocationWithStructuredLocation:(id)arg1;
+- (void)_setDrawsOwnRowSeparatorsForCell:(id)arg1;
 - (void)addStylingToCell:(id)arg1 forSubitemAtIndex:(unsigned long long)arg2;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
-- (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
-- (BOOL)editItemViewControllerSave:(id)arg1;
-- (BOOL)forceRefreshStartAndEndDatesOnSave;
 - (id)init;
-- (id)initWithLocation:(BOOL)arg1;
 - (BOOL)isInline;
 - (BOOL)isSaveable;
-- (BOOL)isSubitemAtIndexSaveable:(unsigned long long)arg1;
 - (unsigned long long)numberOfSubitems;
-- (void)refreshFromCalendarItemAndStore;
 - (void)reset;
 - (BOOL)saveAndDismissWithForce:(BOOL)arg1;
-- (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
+- (id)searchStringForEventAutocomplete;
 - (void)textFieldDidBeginEditing:(id)arg1;
 - (void)textFieldDidChange:(id)arg1;
 - (void)textFieldDidEndEditing:(id)arg1;

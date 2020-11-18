@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CDPDCircleController;
+@class CDPContext, CDPDCircleController;
 
 @protocol CDPDCircleDelegate
 - (void)circleController:(CDPDCircleController *)arg1 secureBackupRecordsArePresentWithCompletion:(void (^)(BOOL, NSError *))arg2;
+- (CDPContext *)contextForController:(CDPDCircleController *)arg1;
 @end
 

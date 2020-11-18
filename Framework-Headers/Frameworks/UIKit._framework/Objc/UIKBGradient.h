@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     BOOL _didQueryRGBColors;
 }
 
+@property (readonly, nonatomic) NSString *flatColorName;
 @property (nonatomic) BOOL horizontal; // @synthesize horizontal=_horizontal;
 @property (nonatomic) double opacity; // @synthesize opacity=_opacity;
 @property (readonly, nonatomic) BOOL usesRGBColors;

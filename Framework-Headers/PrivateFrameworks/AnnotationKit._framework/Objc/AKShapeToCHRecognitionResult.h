@@ -6,23 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class CHRecognitionResult, NSArray, UIBezierPath;
+@class CHRecognitionResult, UIBezierPath;
 
 @interface AKShapeToCHRecognitionResult : NSObject
 {
+    BOOL _doodlePathIsPrestroked;
     long long _tag;
     CHRecognitionResult *_result;
     UIBezierPath *_doodlePath;
-    NSArray *_strokesInInputView;
     struct CGRect _doodlePathBoundsInInputView;
-    struct CGRect _strokesBoundsInInputView;
 }
 
 @property (strong) UIBezierPath *doodlePath; // @synthesize doodlePath=_doodlePath;
 @property struct CGRect doodlePathBoundsInInputView; // @synthesize doodlePathBoundsInInputView=_doodlePathBoundsInInputView;
+@property BOOL doodlePathIsPrestroked; // @synthesize doodlePathIsPrestroked=_doodlePathIsPrestroked;
 @property (strong) CHRecognitionResult *result; // @synthesize result=_result;
-@property struct CGRect strokesBoundsInInputView; // @synthesize strokesBoundsInInputView=_strokesBoundsInInputView;
-@property (strong) NSArray *strokesInInputView; // @synthesize strokesInInputView=_strokesInInputView;
 @property long long tag; // @synthesize tag=_tag;
 
 - (void).cxx_destruct;

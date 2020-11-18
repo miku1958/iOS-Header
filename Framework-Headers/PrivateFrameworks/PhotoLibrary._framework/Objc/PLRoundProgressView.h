@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-@class CAShapeLayer, NSDate, NSTimer, PLProgressArcLayer;
+@class CALayer, CAShapeLayer, NSDate, NSTimer, PLProgressArcLayer;
 
 @interface PLRoundProgressView : UIView
 {
-    CAShapeLayer *_sliceLayer;
-    CAShapeLayer *_circleLayer;
     struct CGPoint _pieCenter;
     double _pieRadius;
     NSTimer *_progressTimer;
@@ -21,12 +19,20 @@
     NSDate *_prevUpdateTime;
     long long _style;
     double _progress;
+    UIView *__contentView;
+    CAShapeLayer *__sliceLayer;
+    CAShapeLayer *__circleLayer;
     PLProgressArcLayer *__progressArcLayer;
+    CALayer *__irisGlyphLayer;
     double __contentsScale;
 }
 
+@property (strong, nonatomic, setter=_setCircleLayer:) CAShapeLayer *_circleLayer; // @synthesize _circleLayer=__circleLayer;
+@property (strong, nonatomic, setter=_setContentView:) UIView *_contentView; // @synthesize _contentView=__contentView;
 @property (nonatomic, setter=_setContentsScale:) double _contentsScale; // @synthesize _contentsScale=__contentsScale;
+@property (strong, nonatomic, setter=_setIrisGlyphLayer:) CALayer *_irisGlyphLayer; // @synthesize _irisGlyphLayer=__irisGlyphLayer;
 @property (strong, nonatomic, setter=_setProgressArcLayer:) PLProgressArcLayer *_progressArcLayer; // @synthesize _progressArcLayer=__progressArcLayer;
+@property (strong, nonatomic, setter=_setSliceLayer:) CAShapeLayer *_sliceLayer; // @synthesize _sliceLayer=__sliceLayer;
 @property (nonatomic) double progress; // @synthesize progress=_progress;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
 
@@ -38,6 +44,7 @@
 - (void)increaseUIProgress:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
+- (void)layoutSubviews;
 - (void)recalculateIncreaseProgress:(double)arg1 withTimeDiff:(double)arg2;
 - (void)resetProgress;
 - (void)setInitialIncreaseRatePerFrame:(double)arg1;

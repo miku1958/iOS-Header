@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEOPDAutocompleteResult : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_sections;
     BOOL _enableRap;
     struct {
@@ -22,7 +23,9 @@
 @property (nonatomic) BOOL enableRap; // @synthesize enableRap=_enableRap;
 @property (nonatomic) BOOL hasEnableRap;
 @property (strong, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)sectionsType;
 - (void)addSections:(id)arg1;
 - (void)clearSections;
 - (void)copyTo:(id)arg1;

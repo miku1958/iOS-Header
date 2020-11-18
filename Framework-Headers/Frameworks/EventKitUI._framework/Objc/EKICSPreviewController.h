@@ -48,8 +48,14 @@
 @property (readonly, nonatomic) unsigned long long unimportedEventCount;
 
 - (void).cxx_destruct;
+- (BOOL)_anyCalendarsSupportingImport;
+- (BOOL)_calendarSupportsImport:(id)arg1;
+- (unsigned long long)_countOfCalendarsSupportingImport;
 - (void)_createCancelButtonWithType:(long long)arg1 target:(id)arg2 action:(SEL)arg3;
 - (void)_databaseChanged:(id)arg1;
+- (id)_defaultCalendarForImport;
+- (void)_enumerateSupportedCalendarsUsingBlock:(CDUnknownBlockType)arg1;
+- (BOOL)_shouldShowCalendarChooser;
 - (void)_updateCancelButton;
 - (void)calendarChooserDidCancel:(id)arg1;
 - (void)calendarChooserDidFinish:(id)arg1;

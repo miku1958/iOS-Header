@@ -6,29 +6,42 @@
 
 #import <objc/NSObject.h>
 
+#import <WebKit/NSCoding-Protocol.h>
 #import <WebKit/WKObject-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface WKUserContentController : NSObject <WKObject>
+@interface WKUserContentController : NSObject <WKObject, NSCoding>
 {
     struct ObjectStorage<WebKit::WebUserContentControllerProxy> _userContentControllerProxy;
 }
 
 @property (readonly) struct Object *_apiObject;
+@property (readonly, copy, nonatomic) NSArray *_userStyleSheets;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSArray *userScripts;
 
+- (void)_addScriptMessageHandler:(id)arg1 name:(id)arg2 userContentWorld:(id)arg3;
 - (void)_addUserContentFilter:(id)arg1;
+- (void)_addUserStyleSheet:(id)arg1;
+- (void)_removeAllScriptMessageHandlersAssociatedWithUserContentWorld:(id)arg1;
 - (void)_removeAllUserContentFilters;
+- (void)_removeAllUserScriptsAssociatedWithUserContentWorld:(id)arg1;
+- (void)_removeAllUserStyleSheets;
+- (void)_removeAllUserStyleSheetsAssociatedWithUserContentWorld:(id)arg1;
+- (void)_removeScriptMessageHandlerForName:(id)arg1 userContentWorld:(id)arg2;
 - (void)_removeUserContentFilter:(id)arg1;
+- (void)_removeUserScript:(id)arg1;
+- (void)_removeUserStyleSheet:(id)arg1;
 - (void)addScriptMessageHandler:(id)arg1 name:(id)arg2;
 - (void)addUserScript:(id)arg1;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (void)removeAllUserScripts;
 - (void)removeScriptMessageHandlerForName:(id)arg1;
 

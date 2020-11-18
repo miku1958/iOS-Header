@@ -38,7 +38,7 @@
 @property (readonly) BOOL hasRegionsOfInterestName;
 @property double latitude; // @synthesize latitude=_latitude;
 @property (readonly) CLLocation *location;
-@property (readonly) CDStruct_c3b9c2ee locationCoordinate;
+@property (readonly) struct CLLocationCoordinate2D locationCoordinate;
 @property double longitude; // @synthesize longitude=_longitude;
 @property (copy) NSString *name; // @synthesize name=_name;
 @property BOOL opaque; // @synthesize opaque=_opaque;

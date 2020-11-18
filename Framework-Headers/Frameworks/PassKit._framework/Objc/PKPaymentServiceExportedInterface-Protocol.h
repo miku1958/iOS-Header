@@ -7,8 +7,6 @@
 @class NSString, PKFieldProperties, PKPaymentMessage, PKPaymentTransaction, PKValueAddedServiceTransaction;
 
 @protocol PKPaymentServiceExportedInterface
-- (void)contactlessInterfaceDidDismissFromSource:(long long)arg1;
-- (void)contactlessInterfaceDidPresentFromSource:(long long)arg1;
 - (void)didUpdateDefaultPaymentPassWithUniqueIdentifier:(NSString *)arg1;
 - (void)passWithUniqueIdentifier:(NSString *)arg1 didReceiveValueAddedServiceTransaction:(PKValueAddedServiceTransaction *)arg2;
 - (void)paymentDeviceDidEnterFieldWithProperties:(PKFieldProperties *)arg1;

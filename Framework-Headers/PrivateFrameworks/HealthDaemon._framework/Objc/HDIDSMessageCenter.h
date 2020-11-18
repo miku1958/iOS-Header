@@ -25,6 +25,7 @@
     HDIDSPersistentDictionary *_persistentContextStore;
     double _nextExpireTimerFireDate;
     NSObject<OS_dispatch_source> *_expireTimer;
+    BOOL _invalidated;
     id<HDIDSMessageCenterDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_queue;
 }
@@ -55,6 +56,7 @@
 - (void)dealloc;
 - (id)deviceForFromID:(id)arg1;
 - (id)initWithIDSServiceIdentifier:(id)arg1 persistentDictionary:(id)arg2 queue:(id)arg3 daemon:(id)arg4;
+- (void)invalidate;
 - (void)mapPBRequest:(Class)arg1 toResponse:(Class)arg2 messageID:(unsigned short)arg3;
 - (id)nanoSyncDevices;
 - (void)resume;

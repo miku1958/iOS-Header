@@ -12,7 +12,7 @@
 #import <MessageUI/NSLayoutManagerDelegate-Protocol.h>
 #import <MessageUI/UITextViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSString, NSTimer, UIButton, UIColor, UIFont, UITextView, UIView, _MFAtomTextAttachment, _MFAtomTextView;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSString, NSTimer, NSUndoManager, UIButton, UIColor, UIFont, UITextView, UIView, _MFAtomTextAttachment, _MFAtomTextView;
 @protocol MFComposeRecipientTextViewDelegate, MFDraggableItem;
 
 @interface MFComposeRecipientTextView : MFComposeHeaderView <UITextViewDelegate, NSLayoutManagerDelegate, MFMultiDragSource, MFMultiDragDestination, MFComposeRecipientAtomDelegate>
@@ -36,6 +36,7 @@
     NSTimer *_collapsableUpdateTimer;
     NSArray *_properties;
     NSMutableArray *_recipientsBeingRemoved;
+    NSUndoManager *_undoManager;
     BOOL _editable;
     BOOL _allowsDragAndDrop;
     BOOL _separatorHidden;
@@ -169,6 +170,7 @@
 - (BOOL)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
 - (void)textViewDidChange:(id)arg1;
 - (void)textViewDidChangeSelection:(id)arg1;
+- (id)undoManager;
 - (id)viewForDragSource;
 - (id)viewForDraggedItem:(id)arg1 atScale:(double)arg2;
 - (void)willDropItems:(id)arg1;

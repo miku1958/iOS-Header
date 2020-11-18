@@ -21,7 +21,7 @@
 - (void)enableDataClassesForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initForDelegateBundleIDs:(id)arg1;
-- (void)loginDelegateAccountsWithUsername:(id)arg1 password:(id)arg2 skipiTunes:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)loginDelegateAccountsWithUsername:(id)arg1 password:(id)arg2 rawPassword:(id)arg3 skipiTunes:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end
 

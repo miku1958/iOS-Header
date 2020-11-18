@@ -9,7 +9,7 @@
 #import <iAd/ADAdRecipient-Protocol.h>
 #import <iAd/ADDimmerViewDelegate-Protocol.h>
 
-@class ADAdSpace, NSString, NSTimer, NSURL, UIViewController;
+@class ADAdSpace, ADDimmerView, ADPrivacyButton, NSString, NSTimer, NSURL, UIViewController;
 @protocol ADBannerViewDelegate, ADBannerViewInternalDelegate;
 
 @interface ADBannerView : UIView <ADAdRecipient, ADDimmerViewDelegate>
@@ -21,17 +21,26 @@
     BOOL _dimmed;
     BOOL _determiningConstraintBasedWidth;
     BOOL _inSecondConstraintsPass;
+    BOOL _displayed;
+    BOOL _scrolling;
+    BOOL _debugHighlightEnabled;
+    BOOL _imageUpdateEnabled;
     int _internalAdType;
+    int _displayMode;
+    int _state;
     long long _options;
     long long _adType;
     NSString *_advertisingSection;
     UIView *_highlightClippedView;
     UIView *_highlightHittableView;
     NSTimer *_highlightUpdateTimer;
+    ADPrivacyButton *_privacyButton;
     NSString *_authenticationUserName;
     NSURL *_serverURL;
     ADAdSpace *_adSpace;
+    ADDimmerView *_dimmerView;
     double _constraintBasedWidth;
+    CDUnknownBlockType _stateChangedBlock;
 }
 
 @property (strong, nonatomic) ADAdSpace *adSpace; // @synthesize adSpace=_adSpace;
@@ -44,19 +53,28 @@
 @property (nonatomic) double constraintBasedWidth; // @synthesize constraintBasedWidth=_constraintBasedWidth;
 @property (readonly, nonatomic) BOOL createdForIBInternal; // @synthesize createdForIBInternal=_createdForIBInternal;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) BOOL debugHighlightEnabled; // @synthesize debugHighlightEnabled=_debugHighlightEnabled;
 @property (weak, nonatomic) id<ADBannerViewDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL determiningConstraintBasedWidth; // @synthesize determiningConstraintBasedWidth=_determiningConstraintBasedWidth;
 @property (nonatomic) BOOL dimmed; // @synthesize dimmed=_dimmed;
+@property (strong, nonatomic) ADDimmerView *dimmerView; // @synthesize dimmerView=_dimmerView;
+@property (nonatomic) int displayMode; // @synthesize displayMode=_displayMode;
+@property (nonatomic) BOOL displayed; // @synthesize displayed=_displayed;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *highlightClippedView; // @synthesize highlightClippedView=_highlightClippedView;
 @property (strong, nonatomic) UIView *highlightHittableView; // @synthesize highlightHittableView=_highlightHittableView;
 @property (strong, nonatomic) NSTimer *highlightUpdateTimer; // @synthesize highlightUpdateTimer=_highlightUpdateTimer;
+@property (nonatomic) BOOL imageUpdateEnabled; // @synthesize imageUpdateEnabled=_imageUpdateEnabled;
 @property (nonatomic) BOOL inSecondConstraintsPass; // @synthesize inSecondConstraintsPass=_inSecondConstraintsPass;
 @property (readonly, nonatomic) int internalAdType; // @synthesize internalAdType=_internalAdType;
 @property (readonly, nonatomic) long long options; // @synthesize options=_options;
 @property (readonly, nonatomic) UIViewController *presentingViewController;
+@property (strong, nonatomic) ADPrivacyButton *privacyButton; // @synthesize privacyButton=_privacyButton;
+@property (nonatomic) BOOL scrolling; // @synthesize scrolling=_scrolling;
 @property (copy, nonatomic) NSURL *serverURL; // @synthesize serverURL=_serverURL;
+@property (nonatomic) int state; // @synthesize state=_state;
+@property (copy, nonatomic) CDUnknownBlockType stateChangedBlock; // @synthesize stateChangedBlock=_stateChangedBlock;
 @property (readonly) Class superclass;
 
 + (struct CGRect)_adWindowBounds;
@@ -86,6 +104,7 @@
 - (void)beginAction;
 - (void)cancelBannerViewAction;
 - (void)cancelScheduledAd;
+- (void)changeBannerViewState:(int)arg1;
 - (id)context;
 - (id)currentContentSizeIdentifier;
 - (void)cycleImpressionImmediately;
@@ -96,6 +115,7 @@
 - (BOOL)enableDimmerView:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasAction;
+- (BOOL)hasTransparencyDetails;
 - (id)headlineForLCD;
 - (id)identifier;
 - (id)initFromIBWithFrame:(struct CGRect)arg1;
@@ -105,6 +125,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)internalDelegate;
 - (struct CGSize)intrinsicContentSize;
+- (BOOL)isiAdContentServer;
 - (void)layoutSubviews;
 - (void)loadAd:(id)arg1;
 - (id)logoImageURL;
@@ -118,7 +139,9 @@
 - (void)playbackStartedForImpressionSource:(int)arg1;
 - (void)prerollDidStart;
 - (void)prerollDidStop;
+- (void)privacyButtonWasTapped;
 - (id)publicImpressionAttributes;
+- (void)reportNativeClickEvent;
 - (id)requiredContentSizeIdentifiers;
 - (void)resizeWithOldSuperviewSize:(struct CGSize)arg1;
 - (void)resumeBannerMedia;
@@ -149,6 +172,7 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)uniqueIdentifier;
 - (void)updateConstraints;
+- (void)updatePlaceholderImage;
 - (void)userDidSkipPreroll;
 - (id)videoAssets;
 

@@ -10,38 +10,44 @@
 
 @interface PBBridgeWatchAttributeController : NSObject
 {
-    int _material;
-    int _hardwareBehavior;
     unsigned long long _edition;
+    unsigned long long _material;
     unsigned long long _internalSize;
+    unsigned long long _hardwareBehavior;
     NRDevice *_device;
     NSCache *_stringCache;
 }
 
 @property (strong, nonatomic) NRDevice *device; // @synthesize device=_device;
 @property (readonly, nonatomic) unsigned long long edition; // @synthesize edition=_edition;
-@property (readonly, nonatomic) int hardwareBehavior; // @synthesize hardwareBehavior=_hardwareBehavior;
+@property (readonly, nonatomic) unsigned long long hardwareBehavior; // @synthesize hardwareBehavior=_hardwareBehavior;
+@property (readonly, nonatomic) BOOL hasTwoYearWarranty;
 @property (readonly, nonatomic) unsigned long long internalSize; // @synthesize internalSize=_internalSize;
-@property (readonly, nonatomic) int material; // @synthesize material=_material;
+@property (readonly, nonatomic) unsigned long long material; // @synthesize material=_material;
 @property (readonly, nonatomic) unsigned long long size;
 @property (strong, nonatomic) NSCache *stringCache; // @synthesize stringCache=_stringCache;
 
++ (unsigned long long)_materialForCLHSValue:(unsigned long long)arg1;
 + (id)editionDescription:(unsigned long long)arg1;
-+ (id)hwBehaviorDescription:(int)arg1;
-+ (id)materialDescription:(int)arg1;
-+ (id)materialKeyColorForMaterial:(int)arg1;
-+ (id)resourceString:(id)arg1 material:(int)arg2 size:(unsigned long long)arg3 forAttributes:(unsigned long long)arg4;
++ (id)hwBehaviorDescription:(unsigned long long)arg1;
++ (id)materialDescription:(unsigned long long)arg1;
++ (unsigned long long)materialFromDevice:(id)arg1;
++ (id)materialKeyColorForMaterial:(unsigned long long)arg1;
++ (id)resourceString:(id)arg1 material:(unsigned long long)arg2 size:(unsigned long long)arg3 forAttributes:(unsigned long long)arg4;
 + (id)sharedDeviceController;
 + (id)sizeDescription:(unsigned long long)arg1;
++ (unsigned long long)sizeFromDevice:(id)arg1;
++ (unsigned short)sizeFromInternalSize:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_populateMaterialDetailsWithDMinProperities:(id)arg1;
+- (void)_setMaterialWithCLHSValue:(unsigned long long)arg1;
 - (id)attributesDescription;
 - (id)getGestaltDmin;
 - (id)init;
 - (id)materialKeyColor;
 - (id)resourceString:(id)arg1 forAttributes:(unsigned long long)arg2;
 - (void)setInternalSize:(unsigned long long)arg1;
-- (void)setMaterial:(int)arg1;
+- (void)setMaterial:(unsigned long long)arg1;
 
 @end
 

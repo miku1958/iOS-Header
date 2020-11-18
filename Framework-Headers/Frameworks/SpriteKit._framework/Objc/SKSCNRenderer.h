@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, NSMutableDictionary, NSUserDefaults, SKLabelNode, SKScene;
+@class MISSING_TYPE, NSMutableDictionary, SKLabelNode, SKScene;
 
 @interface SKSCNRenderer : NSObject
 {
     double _timePreviousUpdate;
     struct SKCRenderer *_skcRenderer;
-    NSUserDefaults *_skDefaults;
     NSMutableDictionary *_viewRenderOptions;
     SKLabelNode *_statsLabel;
     double _prevViewAspect;
@@ -52,7 +51,7 @@
 - (void).cxx_destruct;
 - (double)_fps;
 - (MISSING_TYPE *)_getDestBounds;
-- (CDStruct_f1db2b5e)_getMatrix;
+- (CDStruct_14d5dc5e)_getMatrix;
 - (id)_getOptions;
 - (MISSING_TYPE *)_getViewport;
 - (void)_initialize;

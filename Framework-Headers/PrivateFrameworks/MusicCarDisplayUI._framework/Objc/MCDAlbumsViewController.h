@@ -11,14 +11,20 @@
 @interface MCDAlbumsViewController : MCDTableViewController
 {
     MPMediaPredicate *_compilationPredicate;
+    BOOL _alwaysShowRecents;
 }
+
+@property (nonatomic) BOOL alwaysShowRecents; // @synthesize alwaysShowRecents=_alwaysShowRecents;
 
 + (id)actionCellConfigurationClassesForLocation:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_limitedUIDidChange;
 - (void)_updateQuery;
-- (id)initWithDataSource:(id)arg1 cellConfigurationClass:(Class)arg2;
+- (void)reloadData;
+- (void)shouldShowHeadersAndFooters:(BOOL)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (void)viewDidLoad;
 
 @end
 

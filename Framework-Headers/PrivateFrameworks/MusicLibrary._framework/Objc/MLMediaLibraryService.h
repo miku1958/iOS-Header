@@ -29,6 +29,7 @@
 + (id)sharedMediaLibraryService;
 - (void).cxx_destruct;
 - (id)_serviceConnection;
+- (void)attemptDatabaseFileRecoveryAtPath:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)beginTransactionForDatabaseAtPath:(id)arg1 withPriorityLevel:(unsigned long long)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)cancelImportOperation:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;

@@ -42,6 +42,7 @@
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithType:(long long)arg1;
 

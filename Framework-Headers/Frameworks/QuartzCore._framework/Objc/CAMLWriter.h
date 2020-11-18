@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSURL;
+@protocol CAMLWriterDelegate;
 
 @interface CAMLWriter : NSObject
 {
@@ -14,7 +15,7 @@
 }
 
 @property (strong) NSURL *baseURL;
-@property (weak) id delegate;
+@property (weak) id<CAMLWriterDelegate> delegate;
 
 + (id)writerWithData:(id)arg1;
 - (id)URLStringForResource:(id)arg1;

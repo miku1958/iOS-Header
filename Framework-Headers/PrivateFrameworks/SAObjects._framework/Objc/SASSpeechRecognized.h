@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) SASRecognition *recognition;
 @property (copy, nonatomic) NSString *sessionId;
+@property (copy, nonatomic) NSString *title;
 
 + (id)speechRecognized;
 + (id)speechRecognizedWithDictionary:(id)arg1 context:(id)arg2;

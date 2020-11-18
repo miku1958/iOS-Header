@@ -84,7 +84,6 @@
 - (void)dealloc;
 - (id)delegate;
 - (id)description;
-- (void)finalize;
 - (id)init;
 - (id)initWithEndpoint:(id)arg1;
 - (id)initWithListenerEndpoint:(id)arg1;

@@ -15,10 +15,10 @@
 {
     BOOL _retryOnErrors;
     BOOL _observingChanges;
-    CSSearchableIndex *_searchableIndex;
     NSObject<OS_dispatch_queue> *_indexingQueue;
     NSOperationQueue *_operationQueue;
     NSDictionary *_dataSourcesByIdentifier;
+    CSSearchableIndex *_searchableIndex;
     ICSelectorDelayer *_changeProcessingDelayer;
     NSMutableDictionary *_retryTimers;
 }

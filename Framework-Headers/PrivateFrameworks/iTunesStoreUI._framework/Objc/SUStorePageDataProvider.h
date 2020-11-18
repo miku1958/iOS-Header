@@ -18,9 +18,10 @@
 @property (strong) SUClientInterface *clientInterface; // @synthesize clientInterface=_clientInterface;
 @property long long outputType; // @synthesize outputType=_outputType;
 @property (copy) ISPropertyListProvider *propertyListDataProvider; // @synthesize propertyListDataProvider=_propertyListDataProvider;
+@property (readonly) BOOL shouldProcessTouchIDDialogs;
 
+- (void).cxx_destruct;
 - (void)_loadPersonalizedStoreOffersForPage:(id)arg1;
-- (void)dealloc;
 - (BOOL)parseData:(id)arg1 returningError:(id *)arg2;
 
 @end

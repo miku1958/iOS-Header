@@ -11,15 +11,19 @@
 @interface CAMModeDialItem : UIView
 {
     BOOL _selected;
+    BOOL _shouldShadowTitleText;
     NSString *_title;
     UIFont *_font;
     CAShapeLayer *__scalableTextLayer;
+    struct CGSize __textFrameSize;
 }
 
 @property (readonly, nonatomic) NSAttributedString *_attributedTitle;
 @property (readonly, nonatomic) CAShapeLayer *_scalableTextLayer; // @synthesize _scalableTextLayer=__scalableTextLayer;
+@property (nonatomic, setter=_setTextFrameSize:) struct CGSize _textFrameSize; // @synthesize _textFrameSize=__textFrameSize;
 @property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
 @property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
+@property (nonatomic) BOOL shouldShadowTitleText; // @synthesize shouldShadowTitleText=_shouldShadowTitleText;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;

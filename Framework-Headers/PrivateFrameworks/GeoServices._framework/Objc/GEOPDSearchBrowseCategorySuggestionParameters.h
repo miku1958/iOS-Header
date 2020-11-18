@@ -8,39 +8,56 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDViewportInfo;
+@class GEOPDViewportInfo, PBUnknownFields;
 
 @interface GEOPDSearchBrowseCategorySuggestionParameters : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
+    CDStruct_95bda58d _engineTypes;
     double _requestLocalTimestamp;
     int _minimumNumberOfCategories;
+    int _suggestionType;
     GEOPDViewportInfo *_viewportInfo;
     BOOL _isCarplayRequest;
     struct {
         unsigned int requestLocalTimestamp:1;
         unsigned int minimumNumberOfCategories:1;
+        unsigned int suggestionType:1;
         unsigned int isCarplayRequest:1;
     } _has;
 }
 
+@property (readonly, nonatomic) int *engineTypes;
+@property (readonly, nonatomic) unsigned long long engineTypesCount;
 @property (nonatomic) BOOL hasIsCarplayRequest;
 @property (nonatomic) BOOL hasMinimumNumberOfCategories;
 @property (nonatomic) BOOL hasRequestLocalTimestamp;
+@property (nonatomic) BOOL hasSuggestionType;
 @property (readonly, nonatomic) BOOL hasViewportInfo;
 @property (nonatomic) BOOL isCarplayRequest; // @synthesize isCarplayRequest=_isCarplayRequest;
 @property (nonatomic) int minimumNumberOfCategories; // @synthesize minimumNumberOfCategories=_minimumNumberOfCategories;
 @property (nonatomic) double requestLocalTimestamp; // @synthesize requestLocalTimestamp=_requestLocalTimestamp;
+@property (nonatomic) int suggestionType; // @synthesize suggestionType=_suggestionType;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;
 
+- (int)StringAsEngineTypes:(id)arg1;
+- (int)StringAsSuggestionType:(id)arg1;
+- (void)addEngineType:(int)arg1;
+- (void)clearEngineTypes;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (int)engineTypeAtIndex:(unsigned long long)arg1;
+- (id)engineTypesAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)setEngineTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (id)suggestionTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

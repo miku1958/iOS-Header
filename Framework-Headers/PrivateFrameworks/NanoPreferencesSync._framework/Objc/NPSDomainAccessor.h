@@ -24,6 +24,7 @@
 
 + (id)copyDomainList;
 + (id)copyDomainListForPairingID:(id)arg1 pairingDataStore:(id)arg2;
++ (void)initialize;
 + (void)resolveActivePairedDevicePairingID:(id *)arg1 pairingDataStore:(id *)arg2;
 - (void).cxx_destruct;
 - (id)URLForKey:(id)arg1;

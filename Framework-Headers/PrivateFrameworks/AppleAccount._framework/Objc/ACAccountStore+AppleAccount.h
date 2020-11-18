@@ -13,6 +13,7 @@
 - (id)aa_appleAccountWithPersonID:(id)arg1;
 - (id)aa_appleAccountWithUsername:(id)arg1;
 - (id)aa_appleAccounts;
+- (id)aa_authKitAccountForAltDSID:(id)arg1;
 - (id)aa_grandSlamAccountForiCloudAccount:(id)arg1;
 - (BOOL)aa_isUsingiCloud;
 - (void)aa_lookupEmailAddresses:(id)arg1 withAppleAccount:(id)arg2 completion:(CDUnknownBlockType)arg3;

@@ -4,15 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <CoreBluetooth/CBManager.h>
 
-#import <CoreBluetooth/CBPairingAgentParentDelegate-Protocol.h>
-#import <CoreBluetooth/CBXpcConnectionDelegate-Protocol.h>
-
-@class CBPairingAgent, CBXpcConnection, NSLock, NSMapTable, NSMutableArray, NSMutableDictionary, NSString;
+@class NSLock, NSMapTable, NSMutableArray, NSMutableDictionary, NSNumber;
 @protocol CBPeripheralManagerDelegate;
 
-@interface CBPeripheralManager : NSObject <CBPairingAgentParentDelegate, CBXpcConnectionDelegate>
+@interface CBPeripheralManager : CBManager
 {
     struct {
         unsigned int willRestoreState:1;
@@ -26,39 +23,39 @@
         unsigned int centralDidConnect:1;
         unsigned int centralDidUpdateConnectionParameters:1;
     } _delegateFlags;
-    CBXpcConnection *_connection;
-    CBPairingAgent *_pairingAgent;
+    BOOL _isAdvertising;
+    BOOL _readyForUpdates;
+    BOOL _waitingForReady;
+    id<CBPeripheralManagerDelegate> _delegate;
     NSMapTable *_centrals;
     NSMutableArray *_services;
     NSMutableDictionary *_characteristicIDs;
     NSLock *_updateLock;
-    BOOL _readyForUpdates;
-    BOOL _waitingForReady;
-    BOOL _isAdvertising;
-    id<CBPeripheralManagerDelegate> _delegate;
-    long long _state;
+    NSNumber *_multipleAdvertisingSupported;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<CBPeripheralManagerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property BOOL isAdvertising; // @synthesize isAdvertising=_isAdvertising;
-@property (readonly, nonatomic) CBPairingAgent *sharedPairingAgent; // @synthesize sharedPairingAgent=_pairingAgent;
-@property long long state; // @synthesize state=_state;
-@property (readonly) Class superclass;
+@property (readonly, strong, nonatomic) NSMapTable *centrals; // @synthesize centrals=_centrals;
+@property (readonly, strong, nonatomic) NSMutableDictionary *characteristicIDs; // @synthesize characteristicIDs=_characteristicIDs;
+@property (weak, nonatomic) id<CBPeripheralManagerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) BOOL isAdvertising; // @synthesize isAdvertising=_isAdvertising;
+@property (readonly, nonatomic, getter=supportsMultipleAdvertising) BOOL isSupportingMultipleAdvertising;
+@property (strong, nonatomic) NSNumber *multipleAdvertisingSupported; // @synthesize multipleAdvertisingSupported=_multipleAdvertisingSupported;
+@property (readonly, nonatomic) BOOL readyForUpdates; // @synthesize readyForUpdates=_readyForUpdates;
+@property (readonly, strong, nonatomic) NSMutableArray *services; // @synthesize services=_services;
+@property (readonly, strong, nonatomic) NSLock *updateLock; // @synthesize updateLock=_updateLock;
+@property (readonly, nonatomic) BOOL waitingForReady; // @synthesize waitingForReady=_waitingForReady;
 
 + (long long)authorizationStatus;
+- (void).cxx_destruct;
 - (void)addService:(id)arg1;
 - (id)centralWithInfo:(id)arg1;
 - (void)dealloc;
 - (void)forEachCentral:(CDUnknownBlockType)arg1;
 - (void)handleAdvertisingStarted:(id)arg1;
 - (void)handleAdvertisingStopped:(id)arg1;
-- (void)handleCentralMsg:(int)arg1 args:(id)arg2;
 - (void)handleConnectionParametersUpdated:(id)arg1;
 - (void)handleGetAttributeValue:(id)arg1;
-- (void)handleMTUChanged:(id)arg1;
+- (void)handleMsg:(unsigned short)arg1 args:(id)arg2;
 - (void)handleNotificationAdded:(id)arg1;
 - (void)handleNotificationRemoved:(id)arg1;
 - (void)handleReadyForUpdates:(id)arg1;
@@ -66,29 +63,21 @@
 - (void)handleServiceAdded:(id)arg1;
 - (void)handleSetAttributeValues:(id)arg1;
 - (void)handleSolicitedServicesFound:(id)arg1;
-- (void)handleStateUpdated:(id)arg1;
 - (id)init;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 options:(id)arg3;
-- (BOOL)isMsgAllowedAlways:(int)arg1;
-- (BOOL)isMsgAllowedWhenOff:(int)arg1;
+- (BOOL)isMsgAllowedAlways:(unsigned short)arg1;
+- (BOOL)isMsgAllowedWhenOff:(unsigned short)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)peerWithInfo:(id)arg1;
-- (oneway void)release;
 - (void)removeAllServices;
 - (void)removeService:(id)arg1;
 - (void)respondToRequest:(id)arg1 withResult:(long long)arg2;
 - (void)respondToTransaction:(id)arg1 value:(id)arg2 attributeID:(id)arg3 result:(long long)arg4;
-- (BOOL)sendMsg:(int)arg1 args:(id)arg2;
-- (id)sendSyncMsg:(int)arg1 args:(id)arg2;
 - (void)setDesiredConnectionLatency:(long long)arg1 forCentral:(id)arg2;
 - (void)startAdvertising:(id)arg1;
 - (void)stopAdvertising;
 - (BOOL)updateValue:(id)arg1 forCharacteristic:(id)arg2 onSubscribedCentrals:(id)arg3;
-- (void)xpcConnectionDidFinalize;
-- (void)xpcConnectionDidReceiveMsg:(unsigned short)arg1 args:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)xpcConnectionDidReset;
-- (void)xpcConnectionIsInvalid;
 
 @end
 

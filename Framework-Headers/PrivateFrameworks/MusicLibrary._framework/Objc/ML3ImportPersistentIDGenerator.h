@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)addIdMapping:(id)arg1 forProperty:(unsigned int)arg2;
-- (id)initWithDatabaseConnection:(id)arg1;
+- (id)initWithDatabaseConnection:(id)arg1 tableName:(id)arg2;
 - (long long)nextPersistentIDForImportItem:(shared_ptr_de333b55)arg1;
 - (void)removePersistentIDFromIdMapping:(long long)arg1;
 

@@ -11,18 +11,24 @@
 @interface MFDAMessageStore : MFLibraryStore
 {
     DAFolder *_DAFolder;
+    BOOL _backedByVirtualAllSearchMailbox;
 }
 
+@property (nonatomic) BOOL backedByVirtualAllSearchMailbox; // @synthesize backedByVirtualAllSearchMailbox=_backedByVirtualAllSearchMailbox;
+
 - (id)_additionalHeadersForAction:(int)arg1 ofMessage:(id)arg2;
+- (id)_downloadHeadersForMessages:(id)arg1;
 - (id)_fetchBodyDataForMessage:(id)arg1 andHeaderDataIfReadilyAvailable:(id *)arg2 downloadIfNecessary:(BOOL)arg3 partial:(BOOL *)arg4;
 - (id)_fetchBodyDataForNormalMessage:(id)arg1 format:(int)arg2 part:(id)arg3 streamConsumer:(id)arg4;
-- (id)_fetchBodyDataForSearchResult:(id)arg1 format:(int)arg2 streamConsumer:(id)arg3;
+- (id)_fetchBodyDataForSearchResult:(id)arg1 folderID:(id)arg2 format:(int)arg3 streamConsumer:(id)arg4;
 - (BOOL)_fetchDataForMimePart:(id)arg1 range:(struct _NSRange)arg2 isComplete:(BOOL *)arg3 consumer:(id)arg4;
 - (id)_folderIDForFetching;
-- (void)_remoteIDsMatchingCriterion:(id)arg1 limit:(unsigned int)arg2 filterByDate:(BOOL)arg3 handler:(CDUnknownBlockType)arg4;
+- (BOOL)_messageIsSearchResultWithBogusRemoteId:(id)arg1;
+- (void)_remoteIDsMatchingSearchText:(id)arg1 predicate:(id)arg2 limit:(unsigned int)arg3 filterByDate:(BOOL)arg4 handler:(CDUnknownBlockType)arg5;
 - (id)additionalHeadersForForwardOfMessage:(id)arg1;
 - (id)additionalHeadersForReplyOfMessage:(id)arg1;
 - (BOOL)allowsAppend;
+- (unsigned long long)appendMessages:(id)arg1 unsuccessfulOnes:(id)arg2 newMessageIDs:(id)arg3 newMessages:(id)arg4 flagsToSet:(id)arg5;
 - (id)bestAlternativeForPart:(id)arg1;
 - (BOOL)bodyFetchRequiresNetworkActivity;
 - (BOOL)canDeleteMessage:(id)arg1;
@@ -41,15 +47,15 @@
 - (id)loadMeetingExternalIDForMessage:(id)arg1;
 - (id)loadMeetingMetadataForMessage:(id)arg1;
 - (id)messageForRemoteID:(id)arg1;
+- (id)messageForRemoteID:(id)arg1 inMailbox:(id)arg2;
 - (void)purgeMessagesBeyondLimit:(unsigned long long)arg1 keepingMessage:(id)arg2;
-- (id)remoteIDsMatchingCriterion:(id)arg1 limit:(unsigned int)arg2 error:(id *)arg3;
-- (id)remoteIDsMatchingSearchText:(id)arg1 limit:(unsigned int)arg2 error:(id *)arg3;
 - (void)setFlagsForAllMessagesFromDictionary:(id)arg1;
 - (id)setFlagsFromDictionary:(id)arg1 forMessages:(id)arg2;
 - (void)setServerFlagsFromDictionary:(id)arg1 forMessages:(id)arg2;
 - (BOOL)shouldDownloadBodyDataForMessage:(id)arg1;
 - (BOOL)shouldGrowFetchWindow;
 - (BOOL)shouldSetSummaryForMessage:(id)arg1;
+- (id)storeSearchResultMatchingSearchText:(id)arg1 criterion:(id)arg2 limit:(unsigned int)arg3 error:(id *)arg4;
 - (BOOL)wantsLineEndingConversionForMIMEPart:(id)arg1;
 - (id)willSetFlagsFromDictionary:(id)arg1 forMessages:(id)arg2;
 

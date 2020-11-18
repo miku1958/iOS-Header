@@ -31,6 +31,7 @@
 - (BOOL)isEmpty;
 - (id)messageDigestForUnsentMessage:(id)arg1 messageKey:(id)arg2;
 - (void)recordMessageDigestAsPreviouslySent:(id)arg1 messageKey:(id)arg2;
+- (void)removeDigestForKey:(id)arg1;
 
 @end
 

@@ -6,6 +6,8 @@
 
 #import <SceneKit/SCNTextureSource.h>
 
+@class MISSING_TYPE;
+
 __attribute__((visibility("hidden")))
 @interface SCNTextureOffscreenRenderingSource : SCNTextureSource
 {
@@ -20,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)_createFramebufferWithEngineContext:(struct __C3DEngineContext *)arg1 size:(struct CGSize)arg2;
 - (void)_unbindFramebuffer:(struct __C3DEngineContext *)arg1;
 - (void)cleanup:(struct __C3DRendererContext *)arg1;
+- (MISSING_TYPE *)textureSize;
 
 @end
 

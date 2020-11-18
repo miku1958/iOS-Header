@@ -6,25 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURL;
+@class NSPersonNameComponents, NSString, NSURL;
 
 @interface CKDBackingAccount : NSObject
 {
 }
 
-@property (readonly, nonatomic) NSString *cloudKitAuthToken;
 @property (readonly, nonatomic) BOOL cloudKitIsEnabled;
 @property (readonly, nonatomic) BOOL cloudPhotosIsEnabled;
 @property (readonly, nonatomic) NSString *dsid;
-@property (readonly, nonatomic) NSString *iCloudAuthToken;
+@property (readonly, nonatomic) NSPersonNameComponents *fullName;
 @property (readonly, nonatomic) BOOL iCloudDriveAllowsCellularAccess;
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) BOOL isFakeAccount;
 @property (readonly, nonatomic) NSString *primaryEmail;
 @property (readonly, nonatomic) NSURL *privateCloudDBURL;
+@property (readonly, nonatomic) NSURL *privateCodeServiceURL;
 @property (readonly, nonatomic) NSURL *privateDeviceServiceURL;
 @property (readonly, nonatomic) NSURL *privateShareServiceURL;
 @property (readonly, nonatomic) NSString *serverPreferredPushEnvironment;
+@property (readonly, nonatomic) NSString *username;
 
 + (Class)_platformBackingAccountClass;
 + (id)accountWithIdentifier:(id)arg1 inStore:(id)arg2;
@@ -34,8 +35,14 @@
 - (id)_init;
 - (id)accountPropertiesForDataclass:(id)arg1;
 - (id)ckAccount;
+- (id)cloudKitAuthTokenWithError:(id *)arg1;
+- (void)displayAuthenticationPromptWithReason:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)iCloudAuthTokenWithError:(id *)arg1;
 - (id)init;
+- (BOOL)isDataclassEnabled:(id)arg1;
 - (void)renewAuthTokenInStore:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)updateAccountProperiesInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)validateVettingToken:(id)arg1 vettingEmail:(id)arg2 vettingPhone:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

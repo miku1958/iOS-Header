@@ -16,12 +16,15 @@
 {
     BOOL _canEnable;
     BOOL _enabled;
+    BOOL _canEnableRoaming;
+    BOOL _roamingEnabled;
     int _provisioningStatus;
     NSURL *_provisioningURL;
     NSData *_provisioningPostData;
 }
 
 @property (nonatomic) BOOL canEnable; // @synthesize canEnable=_canEnable;
+@property (nonatomic) BOOL canEnableRoaming; // @synthesize canEnableRoaming=_canEnableRoaming;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
@@ -30,6 +33,7 @@
 @property (nonatomic) int provisioningStatus; // @synthesize provisioningStatus=_provisioningStatus;
 @property (strong, nonatomic) NSURL *provisioningURL; // @synthesize provisioningURL=_provisioningURL;
 @property (readonly, nonatomic, getter=isProvisioningURLInvalid) BOOL provisioningURLInvalid;
+@property (nonatomic, getter=isRoamingEnabled) BOOL roamingEnabled; // @synthesize roamingEnabled=_roamingEnabled;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;

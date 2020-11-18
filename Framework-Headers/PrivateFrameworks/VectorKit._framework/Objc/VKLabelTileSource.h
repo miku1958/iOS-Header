@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface VKLabelTileSource : VKTileSetBackedTileSource
 {
-    shared_ptr_dd1f7020 _labelManager;
+    shared_ptr_e1d4bd06 _labelManager;
     BOOL _localizeLabels;
     unsigned char _labelScaleFactor;
 }
@@ -22,7 +22,8 @@ __attribute__((visibility("hidden")))
 - (unsigned char)_labelTileType;
 - (void)dealloc;
 - (long long)defaultMaximumZoomLevel;
-- (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3 labelManager:(const shared_ptr_dd1f7020 *)arg4;
+- (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3 sharedResources:(id)arg4 labelManager:(const shared_ptr_e1d4bd06 *)arg5;
+- (unsigned int)maximumDownloadZoomLevel;
 - (BOOL)maximumZoomLevelBoundsCamera;
 - (BOOL)minimumZoomLevelBoundsCamera;
 - (BOOL)shouldObeyHybridUnavailableRegions;

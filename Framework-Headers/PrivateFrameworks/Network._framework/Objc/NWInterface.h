@@ -6,45 +6,39 @@
 
 #import <objc/NSObject.h>
 
+#import <Network/NSCopying-Protocol.h>
+#import <Network/NSSecureCoding-Protocol.h>
 #import <Network/NWPrettyDescription-Protocol.h>
 
-@class NSArray, NSString;
+@class NSString;
 @protocol OS_nw_interface;
 
-@interface NWInterface : NSObject <NWPrettyDescription>
+@interface NWInterface : NSObject <NWPrettyDescription, NSSecureCoding, NSCopying>
 {
     NSObject<OS_nw_interface> *_internalInterface;
 }
 
-@property (readonly) NWInterface *delegateInterface;
-@property (readonly, getter=isEligibleForCrazyIvan46) BOOL eligibleForCrazyIvan46;
-@property (readonly, getter=isExpensive) BOOL expensive;
-@property (readonly) unsigned long long interfaceIndex;
-@property (readonly) NSString *interfaceName;
+@property (readonly, nonatomic) NWInterface *delegateInterface;
+@property (readonly, nonatomic, getter=isExpensive) BOOL expensive;
+@property (readonly, nonatomic) unsigned long long generation;
+@property (readonly, nonatomic) unsigned long long interfaceIndex;
+@property (readonly, nonatomic) NSString *interfaceName;
 @property (strong) NSObject<OS_nw_interface> *internalInterface; // @synthesize internalInterface=_internalInterface;
-@property (readonly) long long mtu;
-@property unsigned long long nwiFlags;
-@property (readonly, getter=isPersistent) BOOL persistent;
-@property (readonly, copy) NSString *privateDescription;
-@property BOOL prohibitOpportunistic;
-@property (getter=isRanked) BOOL ranked;
-@property (strong) NSArray *scopedDNSNameServers;
-@property (readonly) NSArray *scopedDNSNameServersAsStrings;
-@property (strong) NSArray *scopedDNSSearchDomains;
-@property (readonly) long long subtype;
-@property (readonly) BOOL supportsDNS;
-@property (readonly) BOOL supportsIPv4;
-@property (readonly) BOOL supportsIPv6;
-@property (readonly) long long type;
-@property (readonly) NSString *typeString;
+@property (readonly, nonatomic) long long mtu;
+@property (readonly, copy, nonatomic) NSString *privateDescription;
+@property (readonly, nonatomic) long long subtype;
+@property (readonly, nonatomic) long long type;
+@property (readonly, nonatomic) NSString *typeString;
 
 + (id)descriptionForSubtype:(long long)arg1;
 + (id)descriptionForType:(long long)arg1;
-+ (void)registerCreateBlocksForIndex:(CDUnknownBlockType)arg1 andName:(CDUnknownBlockType)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
-- (BOOL)hasNetworkAgentWithDomain:(id)arg1 type:(id)arg2;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithInterface:(id)arg1;
 - (id)initWithInterfaceIndex:(unsigned long long)arg1;
 - (id)initWithInterfaceName:(id)arg1;

@@ -6,25 +6,30 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, _PGPlaybackProgressIndicatorMaskView;
+@class NSArray, PGPlaybackProgress, PGTimer, _PGPlaybackProgressIndicatorRangesView;
 
 @interface PGPlaybackProgressIndicator : UIView
 {
-    double _playbackProgress;
-    NSArray *_loadedTimeRanges;
+    PGTimer *_playbackProgressTimer;
+    double _currentProgress;
     UIView *_containerView;
-    _PGPlaybackProgressIndicatorMaskView *_loadedTimeRangesMaskView;
-    _PGPlaybackProgressIndicatorMaskView *_playbackProgressMaskView;
+    _PGPlaybackProgressIndicatorRangesView *_loadedTimeRangesView;
+    _PGPlaybackProgressIndicatorRangesView *_playbackProgressView;
+    PGPlaybackProgress *_playbackProgress;
+    NSArray *_loadedTimeRanges;
 }
 
-@property (strong, nonatomic) NSArray *loadedTimeRanges;
-@property (nonatomic) double playbackProgress;
+@property (strong, nonatomic) NSArray *loadedTimeRanges; // @synthesize loadedTimeRanges=_loadedTimeRanges;
+@property (strong, nonatomic) PGPlaybackProgress *playbackProgress; // @synthesize playbackProgress=_playbackProgress;
 
 - (void).cxx_destruct;
 - (void)_updateLoadedTimeRangesMaskViewMaskRanges;
+- (void)_updatePlaybackProgressMaskViewMaskRanges;
+- (void)_updatePlaybackProgressTimer;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)setBounds:(struct CGRect)arg1;
 
 @end
 

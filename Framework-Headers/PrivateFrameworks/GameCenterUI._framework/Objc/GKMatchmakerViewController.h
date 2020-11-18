@@ -68,7 +68,9 @@
 - (void)setHostedPlayer:(id)arg1 connected:(BOOL)arg2;
 - (void)setHostedPlayer:(id)arg1 didConnect:(BOOL)arg2;
 - (void)setHostedPlayerReady:(id)arg1;
+- (void)setShareInvitees:(id)arg1;
 - (void)setupNotifications;
+- (void)shareMatchWithRequest:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (void)startMatchingWithRequest:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;

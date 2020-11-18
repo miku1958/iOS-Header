@@ -49,12 +49,14 @@
 - (long long)readSint64;
 - (id)readString;
 - (void)readTag:(unsigned short *)arg1 andType:(char *)arg2;
+- (void)readTag:(unsigned int *)arg1 type:(char *)arg2;
 - (unsigned int)readUint32;
 - (unsigned long long)readUint64;
 - (long long)readVarInt;
 - (void)recall:(const CDStruct_4bcfbbae *)arg1;
 - (BOOL)seekToOffset:(unsigned long long)arg1;
 - (BOOL)skipValueWithTag:(unsigned short)arg1 andType:(unsigned char)arg2;
+- (BOOL)skipValueWithTag:(unsigned int)arg1 type:(unsigned char)arg2;
 - (void)updateData:(id)arg1;
 
 @end

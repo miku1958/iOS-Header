@@ -23,10 +23,10 @@
     NSString *_organizationName;
     NSDate *_relevantDate;
     NSDictionary *_userInfo;
-    NSURL *_passURL;
     NSString *_deviceName;
     NSString *_passLibraryMachServiceName;
     NSNumber *_sequenceCounter;
+    NSURL *_passURL;
     NSString *_teamID;
     NSDate *_expirationDate;
     NSString *_groupingID;
@@ -75,6 +75,7 @@
 @property (strong, nonatomic) NSDate *modifiedDate; // @synthesize modifiedDate=_modifiedDate;
 @property (copy, nonatomic, setter=setNFCPayload:) PKNFCPayload *nfcPayload; // @synthesize nfcPayload=_nfcPayload;
 @property (readonly, nonatomic, getter=isNFCPayloadEncrypted) BOOL nfcPayloadEncrypted;
+@property (readonly, nonatomic) PKImage *notificationIconImage;
 @property (copy, nonatomic) NSString *organizationName; // @synthesize organizationName=_organizationName;
 @property (readonly, nonatomic) PKImage *partialFrontFaceImage;
 @property (readonly, nonatomic) PKImage *partialFrontFaceImagePlaceholder; // @synthesize partialFrontFaceImagePlaceholder=_partialFrontFaceImagePlaceholder;
@@ -110,16 +111,17 @@
 + (unsigned long long)defaultSettings;
 + (BOOL)isValidObjectWithFileURL:(id)arg1 warnings:(id *)arg2 orError:(id *)arg3;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_changeMessageForFieldKey:(id)arg1;
 - (id)_localizationKeyForMultipleDiff;
 - (BOOL)availableForAutomaticPresentationUsingBeaconContext;
 - (BOOL)availableForAutomaticPresentationUsingVASContext;
 - (id)backgroundImage;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)diff:(id)arg1;
 - (void)downloadRemoteAssetsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)fieldForKey:(id)arg1;
 - (BOOL)hasLocationRelevancyInfo;
 - (BOOL)hasTimeOrLocationRelevancyInfo;
 - (BOOL)hasValidNFCPayload;
@@ -135,6 +137,7 @@
 - (id)logoImage;
 - (id)stripImage;
 - (BOOL)supportsSharing;
+- (id)thumbnailImage;
 
 @end
 

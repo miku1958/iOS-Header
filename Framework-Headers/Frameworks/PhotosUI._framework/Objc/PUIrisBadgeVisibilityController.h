@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _appearanceState;
 }
 
-@property (nonatomic) unsigned long long appearanceState; // @synthesize appearanceState=_appearanceState;
+@property (nonatomic, setter=_transitionToAppearanceState:) unsigned long long appearanceState; // @synthesize appearanceState=_appearanceState;
 @property (weak, nonatomic) PUAssetViewModel *assetViewModel; // @synthesize assetViewModel=_assetViewModel;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUIrisBadgeVisibilityControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (void)_cancelHideRequest;
 - (unsigned long long)_defaultAppearanceState;
 - (void)_enqueueHideRequest;
-- (void)_transitionToAppearanceState:(unsigned long long)arg1;
 - (void)_updateAppearance;
 - (id)init;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;

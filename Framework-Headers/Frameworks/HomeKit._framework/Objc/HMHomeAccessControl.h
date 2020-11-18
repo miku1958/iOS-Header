@@ -6,14 +6,26 @@
 
 #import <objc/NSObject.h>
 
+@class HMUser;
+@protocol OS_dispatch_queue;
+
 @interface HMHomeAccessControl : NSObject
 {
     BOOL _administrator;
+    BOOL _remoteAccessAllowed;
+    HMUser *_user;
+    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
-@property (readonly, nonatomic, getter=isAdministrator) BOOL administrator; // @synthesize administrator=_administrator;
+@property (nonatomic, getter=isAdministrator) BOOL administrator; // @synthesize administrator=_administrator;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
+@property (nonatomic, getter=isRemoteAccessAllowed) BOOL remoteAccessAllowed; // @synthesize remoteAccessAllowed=_remoteAccessAllowed;
+@property (weak, nonatomic) HMUser *user; // @synthesize user=_user;
 
-- (id)initWithAdministratorPrivilege:(BOOL)arg1;
+- (void).cxx_destruct;
+- (id)initWithUser:(id)arg1 administratorPrivilege:(BOOL)arg2 remoteAccess:(BOOL)arg3;
+- (void)updateAdministratorAccess:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateRemoteAccess:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

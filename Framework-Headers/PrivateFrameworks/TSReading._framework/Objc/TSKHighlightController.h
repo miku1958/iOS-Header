@@ -6,9 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
-@class CALayer, TSUImage;
+#import <TSReading/CALayerDelegate-Protocol.h>
 
-@interface TSKHighlightController : NSObject
+@class CALayer, NSString, TSUImage;
+
+@interface TSKHighlightController : NSObject <CALayerDelegate>
 {
     CALayer *_imageLayer;
     TSUImage *_image;
@@ -20,9 +22,13 @@
     struct CGPath *_path;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) TSUImage *image; // @synthesize image=_image;
 @property (readonly, nonatomic) CALayer *layer; // @synthesize layer=_containingLayer;
 @property (nonatomic) struct CGPath *path; // @synthesize path=_path;
+@property (readonly) Class superclass;
 @property (nonatomic) struct CGAffineTransform transform;
 @property (nonatomic) double viewScale; // @synthesize viewScale=_viewScale;
 

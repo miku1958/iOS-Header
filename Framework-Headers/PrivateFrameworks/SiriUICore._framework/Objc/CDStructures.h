@@ -25,3 +25,12 @@ struct CGSize {
     double height;
 };
 
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    double imageHeight;
+    double imageWidth;
+    int frameCount;
+    char *fileName;
+} CDStruct_65a63019;
+

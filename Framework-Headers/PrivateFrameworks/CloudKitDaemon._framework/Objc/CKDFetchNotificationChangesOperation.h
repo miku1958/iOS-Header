@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleFetchChangesRequestFinished:(id)arg1;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
 - (void)fillOutOperationResult:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;

@@ -12,7 +12,7 @@
 #import <VectorKit/VKStyleManagerObserver-Protocol.h>
 
 @class NSMapTable, NSMutableArray, NSMutableSet, NSSet, NSString, VKRouteContext, VKSkyModel;
-@protocol VKOverlayContainerDelegate, VKOverlayContainerRouteDelegate, VKRouteMatchedAnnotationPresentation;
+@protocol VKOverlayContainerDelegate, VKRouteMatchedAnnotationPresentation;
 
 __attribute__((visibility("hidden")))
 @interface VKOverlayContainerModel : VKMapTileModel <VKRouteMatchedAnnotationPresentationObserver, VKRouteContextObserver, VKMapLayer, VKStyleManagerObserver>
@@ -27,36 +27,36 @@ __attribute__((visibility("hidden")))
     BOOL _shouldCheckForOcclusion;
     BOOL _shouldOccludeTraffic;
     BOOL _shouldShowTraffic;
-    BOOL _isShowingRouteInStandardMode;
+    BOOL _isShowingOuterHaloOnLabels;
     NSMapTable *_persistentOverlaysToPainters;
     NSMutableSet *_persistentOverlays;
     id<VKRouteMatchedAnnotationPresentation> _routeLineSplitAnnotation;
     VKSkyModel *_skyModel;
-    id<VKOverlayContainerRouteDelegate> _routeDelegate;
     struct ClearItem *_clearItem;
     unsigned char _applicationState;
     VKRouteContext *_routeContext;
-    shared_ptr_f06afc6c _styleManager;
-    CDStruct_b926a728 _puckPosition;
+    shared_ptr_a3c46825 _styleManager;
+    struct unique_ptr<md::RouteLineSharedResources, std::__1::default_delete<md::RouteLineSharedResources>> _routeSharedResources;
+    struct unique_ptr<md::RouteLineArrowSharedResources, std::__1::default_delete<md::RouteLineArrowSharedResources>> _arrowSharedResources;
 }
 
+@property (readonly, nonatomic) const struct RouteLineArrowSharedResources *arrowSharedResources;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<VKOverlayContainerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInRealisticMode) BOOL inRealisticMode;
 @property (readonly, nonatomic, getter=isInTransitMode) BOOL inTransitMode;
-@property (readonly, nonatomic) BOOL isShowingRouteInStandardMode; // @synthesize isShowingRouteInStandardMode=_isShowingRouteInStandardMode;
+@property (readonly, nonatomic) BOOL isShowingOuterHaloOnLabels; // @synthesize isShowingOuterHaloOnLabels=_isShowingOuterHaloOnLabels;
 @property (readonly, nonatomic) NSSet *persistentOverlays; // @synthesize persistentOverlays=_persistentOverlays;
-@property (readonly, nonatomic) CDStruct_b926a728 puckPosition; // @synthesize puckPosition=_puckPosition;
 @property (strong, nonatomic) VKRouteContext *routeContext; // @synthesize routeContext=_routeContext;
-@property (nonatomic) id<VKOverlayContainerRouteDelegate> routeDelegate; // @synthesize routeDelegate=_routeDelegate;
 @property (strong, nonatomic) id<VKRouteMatchedAnnotationPresentation> routeLineSplitAnnotation; // @synthesize routeLineSplitAnnotation=_routeLineSplitAnnotation;
+@property (readonly, nonatomic) const struct RouteLineSharedResources *routeSharedResources;
 @property (nonatomic) BOOL shouldCheckForOcclusion; // @synthesize shouldCheckForOcclusion=_shouldCheckForOcclusion;
 @property (nonatomic) BOOL shouldOccludeTraffic; // @synthesize shouldOccludeTraffic=_shouldOccludeTraffic;
 @property (nonatomic) BOOL shouldShowTraffic; // @synthesize shouldShowTraffic=_shouldShowTraffic;
 @property (strong, nonatomic) VKSkyModel *skyModel; // @synthesize skyModel=_skyModel;
-@property (nonatomic) shared_ptr_f06afc6c styleManager;
+@property (nonatomic) shared_ptr_a3c46825 styleManager;
 @property (readonly) Class superclass;
 
 + (BOOL)reloadOnStylesheetChange;
@@ -68,9 +68,9 @@ __attribute__((visibility("hidden")))
 - (void)annotationPresentationDidChangePresentationCoordinate:(id)arg1;
 - (void)dealloc;
 - (void)didReceiveMemoryWarning:(BOOL)arg1;
-- (void)gglLayoutScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
-- (id)init;
-- (void)layoutScene:(id)arg1 withContext:(id)arg2;
+- (void)gglLayoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
+- (id)initWithTarget:(id)arg1 sharedResources:(id)arg2;
+- (void)layoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2;
 - (unsigned long long)mapLayerPosition;
 - (void)removePersistentOverlay:(id)arg1;
 - (void)reset;
@@ -78,7 +78,6 @@ __attribute__((visibility("hidden")))
 - (void)setApplicationState:(unsigned char)arg1;
 - (BOOL)shouldLayoutWithoutStyleManager;
 - (void)stylesheetDidChange;
-- (void)updatedMatchedSection:(fast_shared_ptr_502c59d0)arg1 index:(struct PolylineCoordinate *)arg2;
 
 @end
 

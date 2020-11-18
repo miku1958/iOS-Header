@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
+@protocol NSSecureCoding;
+
 @interface BLTObjectCacheItem : NSObject
 {
-    NSObject *_object;
+    id<NSSecureCoding> _object;
     double _lastAccessedDate;
 }
 
 @property (readonly, nonatomic) double lastAccessedDate; // @synthesize lastAccessedDate=_lastAccessedDate;
-@property (readonly, nonatomic) NSObject *object; // @synthesize object=_object;
+@property (readonly, nonatomic) id<NSSecureCoding> object; // @synthesize object=_object;
 
 + (id)cacheItemWithObject:(id)arg1;
 - (void).cxx_destruct;

@@ -9,7 +9,7 @@
 #import <VectorKit/MDSnapshotMap-Protocol.h>
 #import <VectorKit/VKMapModelDelegate-Protocol.h>
 
-@class NSString, VKMapModel;
+@class NSArray, NSString, VKMapModel;
 
 __attribute__((visibility("hidden")))
 @interface VKMapImageCanvas : VKImageCanvas <VKMapModelDelegate, MDSnapshotMap>
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     VKMapModel *_mapModel;
 }
 
+@property (strong, nonatomic) NSArray *customFeatureDataSources;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -26,18 +27,17 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL showsPointsOfInterest;
 @property (readonly) Class superclass;
 
+- (void)addCustomFeatureDataSource:(id)arg1;
 - (void)cancelTileRequests;
 - (void)clearScene;
 - (void)dealloc;
-- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 useMultisampling:(BOOL)arg3 device:(const shared_ptr_807ec9ac *)arg4 homeQueue:(id)arg5 manifestConfiguration:(id)arg6 locale:(id)arg7;
-- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 useMultisampling:(BOOL)arg3 device:(const shared_ptr_807ec9ac *)arg4 homeQueue:(id)arg5 manifestConfiguration:(id)arg6 locale:(id)arg7 localizeLabels:(BOOL)arg8 mapType:(long long)arg9;
-- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 useMultisampling:(BOOL)arg3 device:(const shared_ptr_807ec9ac *)arg4 homeQueue:(id)arg5 manifestConfiguration:(id)arg6 locale:(id)arg7 mapPurpose:(unsigned long long)arg8;
+- (id)initWithTarget:(id)arg1 device:(struct Device *)arg2 homeQueue:(id)arg3 manifestConfiguration:(id)arg4 locale:(id)arg5;
+- (id)initWithTarget:(id)arg1 device:(struct Device *)arg2 homeQueue:(id)arg3 manifestConfiguration:(id)arg4 locale:(id)arg5 localizeLabels:(BOOL)arg6 mapType:(long long)arg7;
+- (id)initWithTarget:(id)arg1 device:(struct Device *)arg2 homeQueue:(id)arg3 manifestConfiguration:(id)arg4 locale:(id)arg5 mapPurpose:(unsigned long long)arg6;
 - (BOOL)isShowingNoDataPlaceholders;
-- (void)mapModel:(id)arg1 annotationMarker:(id)arg2 didChangeDragState:(long long)arg3 fromOldState:(long long)arg4;
-- (id)mapModel:(id)arg1 markerForAnnotation:(id)arg2;
-- (void)mapModel:(id)arg1 needsPanByOffset:(struct CGPoint)arg2 relativeToScreenPoint:(struct CGPoint)arg3 animated:(BOOL)arg4 duration:(double)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)mapModel:(id)arg1 painterForOverlay:(id)arg2;
-- (void)mapModel:(id)arg1 selectedLabelMarkerWillDisappear:(id)arg2;
+- (void)mapModel:(id)arg1 selectedLabelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
+- (void)mapModel:(id)arg1 selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)mapModel:(id)arg1 willTransitionFrom:(long long)arg2 to:(long long)arg3 duration:(double)arg4;
 - (void)mapModelDidBecomeFullyDrawn:(id)arg1 hasFailedTiles:(BOOL)arg2;
 - (void)mapModelDidBecomePartiallyDrawn:(id)arg1;
@@ -45,11 +45,10 @@ __attribute__((visibility("hidden")))
 - (void)mapModelDidFinishLoadingTiles:(id)arg1;
 - (void)mapModelDidStartLoadingTiles:(id)arg1;
 - (void)mapModelDidUpdateMinMaxZoomLevel:(id)arg1;
-- (BOOL)mapModelInNav:(id)arg1;
-- (BOOL)mapModelInNavAtDefaultZoom:(id)arg1;
 - (void)mapModelLabelsDidLayout:(id)arg1;
 - (void)mapModelWillBecomeFullyDrawn:(id)arg1;
-- (double)mapModelZoomScale:(id)arg1;
+- (void)removeCustomFeatureDataSource:(id)arg1;
+- (void)setMapDisplayStyle:(struct DisplayStyle)arg1;
 - (void)setMapType:(long long)arg1;
 - (void)update;
 

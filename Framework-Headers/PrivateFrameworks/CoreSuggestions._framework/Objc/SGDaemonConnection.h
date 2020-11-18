@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSMutableSet, NSString, NSXPCConnection, NSXPCInterface;
+@class NSMutableArray, NSString, NSXPCConnection, NSXPCInterface;
 @protocol OS_dispatch_queue;
 
 @interface SGDaemonConnection : NSObject
@@ -14,26 +14,17 @@
     NSString *_machServiceName;
     NSXPCInterface *_xpcInterface;
     NSObject<OS_dispatch_queue> *_connectLock;
-    NSMutableDictionary *_aborts;
-    int _abortCounter;
-    int _abortLock;
-    int _disconnectCount;
-    NSMutableSet *_outstandingAsyncCallbacks0;
-    NSMutableSet *_outstandingAsyncCallbacks1;
-    int _outstandingAsyncCallbacksLock;
+    NSMutableArray *_abortBlocks;
+    struct _opaque_pthread_mutex_t _abortLock;
     NSXPCConnection *_xpcConnection;
 }
 
 - (void).cxx_destruct;
-- (void)_cancelAllOutstandingAsyncCallbacks;
 - (void)_connectToServer;
-- (BOOL)addOutstandingAsyncCallback0:(CDUnknownBlockType)arg1;
-- (BOOL)addOutstandingAsyncCallback1:(CDUnknownBlockType)arg1;
+- (void)addConnectionInterruptedHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)disconnect;
 - (id)initWithMachServiceName:(id)arg1 xpcInterface:(id)arg2;
-- (BOOL)removeOutstandingAsyncCallback0:(CDUnknownBlockType)arg1;
-- (BOOL)removeOutstandingAsyncCallback1:(CDUnknownBlockType)arg1;
 - (id)waitUntilReturn:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (id)xpcConnection;
 

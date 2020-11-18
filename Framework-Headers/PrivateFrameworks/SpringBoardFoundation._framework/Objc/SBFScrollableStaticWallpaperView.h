@@ -32,12 +32,12 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)_canCacheImages;
++ (BOOL)_canDownscaleSampleImage;
 + (BOOL)_shouldScaleForParallax;
 - (void).cxx_destruct;
 - (struct CGPoint)_boundedContentOffsetForOverhang;
-- (void)_cacheImagesIfNeeded;
 - (struct CGRect)_cropRect;
-- (id)_displayedSurfaceImage;
 - (struct CGSize)_imageSize;
 - (struct CGPoint)_maximumContentOffsetForOverhang;
 - (struct CGPoint)_minimumContentOffsetForOverhang;
@@ -48,7 +48,6 @@
 - (void)_setupColorBoxObserver;
 - (void)_setupContentView;
 - (void)_setupParallaxObserver;
-- (void)_setupSampleImage:(id)arg1 treated:(BOOL)arg2;
 - (void)_setupScrollView;
 - (void)_setupScrollViewObserver;
 - (double)_throttleDuration;

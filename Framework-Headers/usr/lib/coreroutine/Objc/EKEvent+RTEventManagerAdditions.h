@@ -7,6 +7,7 @@
 #import <EventKit/EKEvent.h>
 
 @interface EKEvent (RTEventManagerAdditions)
++ (id)participationStatusToString:(long long)arg1;
 - (id)description;
 @end
 

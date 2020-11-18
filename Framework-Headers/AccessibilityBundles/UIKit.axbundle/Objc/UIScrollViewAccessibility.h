@@ -75,6 +75,7 @@
 - (BOOL)accessibilityScrollRightPageSupported;
 - (BOOL)accessibilityScrollUpPage;
 - (BOOL)accessibilityScrollUpPageSupported;
+- (struct CGPoint)accessibilityValidateScrollContentOffset:(struct CGPoint)arg1;
 - (void)accessibilityZoomInAtPoint:(struct CGPoint)arg1;
 - (void)accessibilityZoomOutAtPoint:(struct CGPoint)arg1;
 

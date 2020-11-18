@@ -11,7 +11,7 @@
 @interface SGPostalAddress : SGLabeledObject
 {
     NSString *_cachedAddress;
-    long long _cachedAddressDispatchOnceToken;
+    struct _opaque_pthread_mutex_t _cachedAddressLock;
     NSString *_rawAddress;
     SGPostalAddressComponents *_components;
 }
@@ -23,6 +23,7 @@
 + (id)postalAddress:(id)arg1 components:(id)arg2 label:(id)arg3 extractionType:(unsigned long long)arg4 recordId:(id)arg5 origin:(id)arg6;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

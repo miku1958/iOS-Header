@@ -10,6 +10,10 @@
 
 @interface RTWiFiAccessPoint : NSObject
 {
+    BOOL _adHoc;
+    BOOL _captiveNetwork;
+    BOOL _applePersonalHotspot;
+    BOOL _carPlay;
     NSString *_mac;
     NSString *_ssid;
     long long _rssi;
@@ -19,7 +23,11 @@
     NSDate *_date;
 }
 
+@property (readonly, nonatomic) BOOL adHoc; // @synthesize adHoc=_adHoc;
 @property (readonly, nonatomic) double age; // @synthesize age=_age;
+@property (readonly, nonatomic) BOOL applePersonalHotspot; // @synthesize applePersonalHotspot=_applePersonalHotspot;
+@property (readonly, nonatomic) BOOL captiveNetwork; // @synthesize captiveNetwork=_captiveNetwork;
+@property (readonly, nonatomic) BOOL carPlay; // @synthesize carPlay=_carPlay;
 @property (readonly, nonatomic) long long channel; // @synthesize channel=_channel;
 @property (readonly, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (readonly, nonatomic) NSString *mac; // @synthesize mac=_mac;
@@ -29,7 +37,7 @@
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithMac:(id)arg1 ssid:(id)arg2 rssi:(long long)arg3 mode:(long long)arg4 channel:(long long)arg5 age:(double)arg6 date:(id)arg7;
+- (id)initWithMac:(id)arg1 ssid:(id)arg2 rssi:(long long)arg3 mode:(long long)arg4 channel:(long long)arg5 adHoc:(BOOL)arg6 captiveNetwork:(BOOL)arg7 applePersonalHotspot:(BOOL)arg8 carPlay:(BOOL)arg9 age:(double)arg10 date:(id)arg11;
 
 @end
 

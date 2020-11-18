@@ -19,11 +19,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableDictionary *zoneIDsToGateHolders; // @synthesize zoneIDsToGateHolders=_zoneIDsToGateHolders;
 
 - (void).cxx_destruct;
+- (id)CKStatusReportArray;
 - (BOOL)hasStatusToReport;
 - (id)init;
 - (void)registerWaiter:(id)arg1 forZoneIDs:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)relinquishLocksForWaiter:(id)arg1;
-- (id)statusReport;
 
 @end
 

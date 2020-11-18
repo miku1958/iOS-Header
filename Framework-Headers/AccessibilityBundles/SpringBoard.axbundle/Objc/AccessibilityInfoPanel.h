@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AccessibilityInfoPanelWindow, NSString, UILabel, UIView, UIViewController;
 
@@ -23,6 +23,7 @@
 @property (nonatomic) BOOL displayOnBottomEdge; // @dynamic displayOnBottomEdge;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
+- (void).cxx_destruct;
 - (id)_accessibilityInfoPanelController;
 - (id)_accessibilityInfoPanelView;
 - (id)_accessibilityInfoPanelWindow;

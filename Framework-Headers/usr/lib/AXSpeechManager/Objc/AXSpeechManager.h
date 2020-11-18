@@ -8,7 +8,7 @@
 
 #import <AXSpeechManager/TTSSpeechSynthesizerDelegate-Protocol.h>
 
-@class AXSpeechThread, NSMutableArray, NSNumber, NSString, TTSSpeechSynthesizer;
+@class AXSpeechThread, NSArray, NSMutableArray, NSNumber, NSString, TTSSpeechSynthesizer;
 @protocol OS_dispatch_semaphore;
 
 @interface AXSpeechManager : NSObject <TTSSpeechSynthesizerDelegate>
@@ -32,6 +32,7 @@
 @property (nonatomic) BOOL isPaused; // @synthesize isPaused;
 @property (readonly, nonatomic) BOOL isSpeaking; // @dynamic isSpeaking;
 @property (strong, nonatomic) NSNumber *originalSpeechRateForJobOverride; // @synthesize originalSpeechRateForJobOverride=_originalSpeechRateForJobOverride;
+@property (strong, nonatomic) NSArray *outputChannels;
 @property (readonly, nonatomic) BOOL showControlCenterControls; // @synthesize showControlCenterControls=_showControlCenterControls;
 @property (nonatomic) BOOL speechEnabled; // @synthesize speechEnabled=_speechEnabled;
 @property (readonly) Class superclass;
@@ -41,19 +42,24 @@
 + (struct URegularExpression *)createRegularExpressionFromString:(id)arg1;
 + (id)currentLanguageCode;
 + (id)matchedRangesForString:(id)arg1 withRegularExpression:(struct URegularExpression *)arg2;
++ (id)pauseMarkupString:(id)arg1;
++ (id)remapLanguageCode:(id)arg1;
++ (id)spellOutMarkupString:(id)arg1;
++ (void)test_setAvailableVoices:(id)arg1;
++ (void)test_setUnitTestMode:(BOOL)arg1;
 - (void)__speechJobFinished:(id)arg1;
-- (void)__speechJobStarted:(id)arg1;
-- (void)_checkForLanguageMigration:(id)arg1;
 - (void)_clearSpeechQueue;
 - (void)_continueSpeaking;
 - (void)_dispatchSpeechAction:(id)arg1;
 - (void)_initialize;
 - (void)_isSpeaking:(id)arg1;
 - (void)_pauseSpeaking:(id)arg1;
+- (id)_phonemeSubstitutionsForAction:(id)arg1;
 - (void)_speechJobFinished:(BOOL)arg1 action:(id)arg2;
 - (void)_startNextSpeechJob;
 - (void)_stopSpeaking:(id)arg1;
 - (void)_tearDown;
+- (void)_updateUserSubstitutions;
 - (void)clearSpeechQueue;
 - (void)continueSpeaking;
 - (void)dealloc;
@@ -68,6 +74,7 @@
 - (void)stopSpeaking;
 - (void)stopSpeaking:(int)arg1;
 - (void)tearDown;
+- (id)voiceIdentifierUsedForLanguage:(id)arg1;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class NSArray, NSObject, NSProgress, NSString, SFAirDropNode, SFCircleProgressView, SFPersonImageView, UIColor, UILabel;
+@class NSArray, NSLayoutConstraint, NSObject, NSProgress, NSString, SFAirDropNode, SFCircleProgressView, SFPersonImageView, UIColor, UILabel;
 @protocol SFPersonCollectionViewCellDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
     long long _cellState;
     NSString *_sessionID;
     NSObject<SFPersonCollectionViewCellDelegate> *_delegate;
-    UILabel *_nameLabel;
     SFPersonImageView *_imageView;
     SFCircleProgressView *_circleProgressView;
     id _progressToken;
@@ -27,6 +26,8 @@ __attribute__((visibility("hidden")))
     UILabel *_secondLabel;
     NSArray *_secondLabelVisibleConstraintsArray;
     UIColor *_fadedSecondLabelColor;
+    NSLayoutConstraint *_secondLabelFBConstraint;
+    UILabel *_nameLabel;
 }
 
 @property (nonatomic) long long cellState; // @synthesize cellState=_cellState;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *progressKeyPaths; // @synthesize progressKeyPaths=_progressKeyPaths;
 @property (strong, nonatomic) id progressToken; // @synthesize progressToken=_progressToken;
 @property (strong, nonatomic) UILabel *secondLabel; // @synthesize secondLabel=_secondLabel;
+@property (strong, nonatomic) NSLayoutConstraint *secondLabelFBConstraint; // @synthesize secondLabelFBConstraint=_secondLabelFBConstraint;
 @property (strong, nonatomic) NSArray *secondLabelVisibleConstraintsArray; // @synthesize secondLabelVisibleConstraintsArray=_secondLabelVisibleConstraintsArray;
 @property (strong, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property (nonatomic) BOOL stateBeingRestored; // @synthesize stateBeingRestored=_stateBeingRestored;

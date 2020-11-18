@@ -6,18 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HAPTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDFairPlaySAPSessionDelegate-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HAPTimer, HMDFairPlaySAPSession, NSOperationQueue, NSString, NSURLSession;
+@class HMDFairPlaySAPSession, HMFTimer, NSOperationQueue, NSString, NSURLSession;
 @protocol OS_dispatch_queue;
 
-@interface HMDRelayActivationSession : NSObject <HMDFairPlaySAPSessionDelegate, HAPTimerDelegate>
+@interface HMDRelayActivationSession : NSObject <HMDFairPlaySAPSessionDelegate, HMFTimerDelegate, HMFLogging>
 {
     NSObject<OS_dispatch_queue> *_workQueue;
     unsigned long long _state;
     HMDFairPlaySAPSession *_fairPlaySAPSession;
-    HAPTimer *_fairPlaySessionTimer;
+    HMFTimer *_fairPlaySessionTimer;
     NSURLSession *_urlSession;
     NSOperationQueue *_requestOperationQueue;
 }
@@ -25,7 +26,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) HMDFairPlaySAPSession *fairPlaySAPSession; // @synthesize fairPlaySAPSession=_fairPlaySAPSession;
-@property (strong, nonatomic) HAPTimer *fairPlaySessionTimer; // @synthesize fairPlaySessionTimer=_fairPlaySessionTimer;
+@property (strong, nonatomic) HMFTimer *fairPlaySessionTimer; // @synthesize fairPlaySessionTimer=_fairPlaySessionTimer;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSOperationQueue *requestOperationQueue; // @synthesize requestOperationQueue=_requestOperationQueue;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
@@ -33,6 +34,7 @@
 @property (readonly, nonatomic) NSURLSession *urlSession; // @synthesize urlSession=_urlSession;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (id)logCategory;
 + (id)sharedSession;
 - (void).cxx_destruct;
 - (void)_addRequestOperation:(id)arg1;

@@ -76,8 +76,8 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 giftRecipientCell:(id)arg2 didUpdateSearchController:(id)arg3;
-- (void)tableView:(id)arg1 giftRecipientCell:(id)arg2 dismissPeoplePicker:(id)arg3;
-- (void)tableView:(id)arg1 giftRecipientCell:(id)arg2 presentPeoplePicker:(id)arg3;
+- (void)tableView:(id)arg1 giftRecipientCell:(id)arg2 dismissContactPicker:(id)arg3;
+- (void)tableView:(id)arg1 giftRecipientCell:(id)arg2 presentContactPicker:(id)arg3;
 - (void)tableView:(id)arg1 giftRecipientCellDidChangeRecipients:(id)arg2;
 - (void)tableView:(id)arg1 giftRecipientCellDidChangeSize:(id)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
@@ -87,6 +87,7 @@
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

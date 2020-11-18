@@ -42,7 +42,8 @@
 - (id)installedSystemProfileWithIdentifier:(id)arg1;
 - (id)installedUserProfileWithIdentifier:(id)arg1;
 - (void)invalidateCache;
-- (void)removeIdentifierFromManifest:(id)arg1;
+- (void)removeIdentifierFromSystemManifest:(id)arg1;
+- (void)removeIdentifierFromUserManifest:(id)arg1;
 - (id)systemManifest;
 - (id)userManifest;
 

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#pragma mark Function Pointers
+#pragma mark Function Pointers and Blocks
 
 typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
+
+typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
 
@@ -40,7 +42,8 @@ struct CalDatabase {
     BOOL _field21;
     struct __CFArray *_field22;
     struct __CFArray *_field23;
-    id _field24;
+    BOOL _field24;
+    id _field25;
 };
 
 struct CalEventIdsSearchContext {
@@ -124,6 +127,7 @@ typedef struct {
     unsigned int supportsOutgoingInvitations:1;
     unsigned int requiresOutgoingInvitationsInDefaultCalendar:1;
     unsigned int supportsInvitationModifications:1;
+    unsigned int supportsEventForwarding:1;
     unsigned int supportsResponseComments:1;
     unsigned int deliverySourceOrExternalIDRequiredForResponse:1;
     unsigned int proposedStatusRequiredForResponse:1;
@@ -164,7 +168,9 @@ typedef struct {
     unsigned int prohibitsYearlyRecurrenceInterval:1;
     unsigned int requiresOccurrencesConformToRecurrenceRule:1;
     unsigned int prohibitsDetachmentOnCommentChange:1;
-} CDStruct_185c1d32;
+    unsigned int allowsProposeNewTime:1;
+    unsigned int prohibitsICSImport:1;
+} CDStruct_db2ffdc8;
 
 typedef struct {
     int _field1;

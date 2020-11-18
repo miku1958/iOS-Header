@@ -16,27 +16,30 @@
     PHSandboxExtensionWrapper *_sandboxExtensionWrapper;
 }
 
-@property (copy, nonatomic, setter=_setAssetLocalIdentifier:) NSString *assetLocalIdentifier; // @synthesize assetLocalIdentifier=_assetLocalIdentifier;
 @property (readonly, nonatomic) unsigned long long cplResourceType; // @synthesize cplResourceType=_cplResourceType;
 @property (strong, nonatomic) id fileReservation; // @synthesize fileReservation=_fileReservation;
 @property (strong, nonatomic, setter=_setSandboxExtensionWrapper:) PHSandboxExtensionWrapper *sandboxExtensionWrapper; // @synthesize sandboxExtensionWrapper=_sandboxExtensionWrapper;
 
 + (BOOL)_isResourceFileCreatedOnDemandWithType:(long long)arg1 asset:(id)arg2;
-+ (id)resourceForType:(long long)arg1 fromAsset:(id)arg2 usingLibrary:(id)arg3;
++ (id)resourceForType:(long long)arg1 fromAsset:(id)arg2 managedAsset:(id)arg3;
 - (void).cxx_destruct;
 - (void)_acquireSandboxExtensionIfNeeded;
+- (BOOL)_fileExists;
 - (void)_fixupOriginalFilename;
 - (void)_fixupUTI;
-- (BOOL)_nonConformingOrMissingFile:(BOOL)arg1;
+- (BOOL)_inconsistentTypeAndUTIOrMissingFileWithShouldCheckFileExistence:(BOOL)arg1;
 - (CDUnknownBlockType)_onDemandFileLoaderForResourceType:(long long)arg1 asset:(id)arg2;
 - (void)_populateFromAsset:(id)arg1;
-- (void)_populateFromAssetAlternatePath:(id)arg1 alternatePath:(id)arg2;
+- (void)_populateFromAssetAlternatePath:(id)arg1 alternatePath:(id)arg2 assetResourceType:(long long)arg3;
 - (BOOL)_populateFromManagedAsset:(id)arg1 usingCPLType:(unsigned long long)arg2;
 - (void)_populateFromManagedAssetSidecar:(id)arg1 utiHint:(id)arg2;
+- (void)_setAssetLocalIdentifier:(id)arg1;
 - (void)_unpin;
+- (long long)analysisType;
+- (id)assetLocalIdentifier;
 - (void)dealloc;
 - (id)description;
-- (id)initWithResourceType:(long long)arg1 fromAsset:(id)arg2 managedAsset:(id)arg3 usingLibrary:(id)arg4;
+- (id)initWithResourceType:(long long)arg1 fromAsset:(id)arg2 managedAsset:(id)arg3;
 - (BOOL)isLibraryAssetResource;
 - (BOOL)pin;
 

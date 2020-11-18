@@ -47,10 +47,16 @@
 @property (readonly, nonatomic) BOOL hasDeviceLocale;
 @property (readonly, nonatomic) BOOL hasDeviceOutputLocale;
 
+- (int)StringAsDeviceBatteryState:(id)arg1;
+- (int)StringAsDeviceConnectivity:(id)arg1;
+- (int)StringAsDeviceInterfaceOrientation:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)deviceBatteryStateAsString:(int)arg1;
+- (id)deviceConnectivityAsString:(int)arg1;
+- (id)deviceInterfaceOrientationAsString:(int)arg1;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

@@ -16,6 +16,7 @@
 }
 
 @property (readonly, strong, nonatomic) NSArray *documents;
+@property (readonly, weak) SKUIModalDocumentController *modalDocumentController;
 
 - (void).cxx_destruct;
 - (id)_adjustedOptionsWithOptions:(id)arg1;

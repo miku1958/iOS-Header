@@ -13,8 +13,8 @@
     NSString *_mediaType;
     AVOutputSettings *_outputSettings;
     struct opaqueCMFormatDescription *_sourceFormatHint;
+    int _trackID;
     NSDictionary *_sourcePixelBufferAttributes;
-    BOOL _attachedToPixelBufferAdaptor;
     NSArray *_metadataItems;
     struct CGAffineTransform _transform;
     int _mediaTimeScale;
@@ -26,6 +26,7 @@
     float _preferredVolume;
     long long _layer;
     short _alternateGroupID;
+    short _provisionalAlternateGroupID;
     NSDictionary *_trackReferences;
     BOOL _performsMultiPassEncodingIfSupported;
     CDStruct_1b6d18a9 _chunkDuration;
@@ -36,7 +37,6 @@
 }
 
 @property (nonatomic) short alternateGroupID; // @synthesize alternateGroupID=_alternateGroupID;
-@property (nonatomic) BOOL attachedToPixelBufferAdaptor; // @synthesize attachedToPixelBufferAdaptor=_attachedToPixelBufferAdaptor;
 @property (nonatomic) BOOL expectsMediaDataInRealTime; // @synthesize expectsMediaDataInRealTime=_expectsMediaDataInRealTime;
 @property (copy, nonatomic) NSString *extendedLanguageTag; // @synthesize extendedLanguageTag=_extendedLanguageTag;
 @property (copy, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
@@ -52,9 +52,11 @@
 @property (nonatomic) CDStruct_1b6d18a9 preferredMediaChunkDuration; // @synthesize preferredMediaChunkDuration=_chunkDuration;
 @property (nonatomic) long long preferredMediaChunkSize; // @synthesize preferredMediaChunkSize=_chunkSize;
 @property (nonatomic) float preferredVolume; // @synthesize preferredVolume=_preferredVolume;
+@property (nonatomic) short provisionalAlternateGroupID; // @synthesize provisionalAlternateGroupID=_provisionalAlternateGroupID;
 @property (copy, nonatomic) NSURL *sampleReferenceBaseURL; // @synthesize sampleReferenceBaseURL=_sampleReferenceBaseURL;
 @property (strong, nonatomic) struct opaqueCMFormatDescription *sourceFormatHint; // @synthesize sourceFormatHint=_sourceFormatHint;
 @property (copy, nonatomic) NSDictionary *sourcePixelBufferAttributes; // @synthesize sourcePixelBufferAttributes=_sourcePixelBufferAttributes;
+@property (nonatomic) int trackID; // @synthesize trackID=_trackID;
 @property (copy, nonatomic) NSDictionary *trackReferences; // @synthesize trackReferences=_trackReferences;
 @property (nonatomic) struct CGAffineTransform transform; // @synthesize transform=_transform;
 @property (nonatomic) BOOL writesMediaDataToBeginningOfFile; // @synthesize writesMediaDataToBeginningOfFile=_writesMediaDataToBeginningOfFile;

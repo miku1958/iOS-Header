@@ -11,6 +11,7 @@
 @interface MCWiFiPayload : MCPayload
 {
     BOOL _isHidden;
+    BOOL _captiveBypass;
     BOOL _isWEP;
     BOOL _isWPA;
     BOOL _passwordRequired;
@@ -23,8 +24,10 @@
     NSString *_ssid;
     NSString *_encryptionType;
     NSDictionary *_eapClientConfig;
+    NSDictionary *_qosMarkingConfig;
     NSString *_password;
     NSString *_username;
+    NSNumber *_isFirstAutoJoinRestricted;
     NSString *_certificateUUID;
     NSArray *_payloadCertificateAnchorUUID;
     NSString *_proxyServer;
@@ -42,6 +45,7 @@
     NSString *_displayedOperatorName;
     NSNumber *_isHiddenNum;
     NSNumber *_autoJoinNum;
+    NSNumber *_captiveBypassNum;
     NSNumber *_proxyPACFallbackAllowedNum;
     NSNumber *_isHotspotNum;
     NSNumber *_serviceProviderRoamingEnabledNum;
@@ -52,12 +56,15 @@
 @property (strong, nonatomic) NSArray *NAIRealmNames; // @synthesize NAIRealmNames=_NAIRealmNames;
 @property (nonatomic) BOOL autoJoin; // @synthesize autoJoin=_autoJoin;
 @property (strong, nonatomic) NSNumber *autoJoinNum; // @synthesize autoJoinNum=_autoJoinNum;
+@property (nonatomic) BOOL captiveBypass; // @synthesize captiveBypass=_captiveBypass;
+@property (strong, nonatomic) NSNumber *captiveBypassNum; // @synthesize captiveBypassNum=_captiveBypassNum;
 @property (strong, nonatomic) NSString *certificateUUID; // @synthesize certificateUUID=_certificateUUID;
 @property (strong, nonatomic) NSString *credentialUUID; // @synthesize credentialUUID=_credentialUUID;
 @property (strong, nonatomic) NSString *displayedOperatorName; // @synthesize displayedOperatorName=_displayedOperatorName;
 @property (strong, nonatomic) NSString *domainName; // @synthesize domainName=_domainName;
 @property (strong, nonatomic) NSDictionary *eapClientConfig; // @synthesize eapClientConfig=_eapClientConfig;
 @property (strong, nonatomic) NSString *encryptionType; // @synthesize encryptionType=_encryptionType;
+@property (nonatomic) NSNumber *isFirstAutoJoinRestricted; // @synthesize isFirstAutoJoinRestricted=_isFirstAutoJoinRestricted;
 @property (nonatomic) BOOL isHidden; // @synthesize isHidden=_isHidden;
 @property (strong, nonatomic) NSNumber *isHiddenNum; // @synthesize isHiddenNum=_isHiddenNum;
 @property (nonatomic) BOOL isHotspot; // @synthesize isHotspot=_isHotspot;
@@ -76,6 +83,7 @@
 @property (strong, nonatomic) NSNumber *proxyServerPort; // @synthesize proxyServerPort=_proxyServerPort;
 @property (nonatomic) int proxyType; // @synthesize proxyType=_proxyType;
 @property (strong, nonatomic) NSString *proxyUsername; // @synthesize proxyUsername=_proxyUsername;
+@property (strong, nonatomic) NSDictionary *qosMarkingConfig; // @synthesize qosMarkingConfig=_qosMarkingConfig;
 @property (strong, nonatomic) NSArray *roamingConsortiumOIs; // @synthesize roamingConsortiumOIs=_roamingConsortiumOIs;
 @property (nonatomic, getter=isServiceProviderRoamingEnabled) BOOL serviceProviderRoamingEnabled; // @synthesize serviceProviderRoamingEnabled=_serviceProviderRoamingEnabled;
 @property (strong, nonatomic) NSNumber *serviceProviderRoamingEnabledNum; // @synthesize serviceProviderRoamingEnabledNum=_serviceProviderRoamingEnabledNum;
@@ -92,6 +100,7 @@
 - (id)_eapUsernameFromConfig:(id)arg1 isRequired:(BOOL *)arg2;
 - (BOOL)_isEAPSIMConfig:(id)arg1;
 - (id)_localizedEncryptionTypeString;
+- (BOOL)_qosMarkingConfigIsValid:(id)arg1 error:(id *)arg2;
 - (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)installationWarnings;

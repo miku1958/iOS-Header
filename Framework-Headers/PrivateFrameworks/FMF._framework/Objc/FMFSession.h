@@ -47,7 +47,6 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_checkAndDisplayMeDeviceSwitchAlert;
-- (void)_configureLogging;
 - (BOOL)_isNoMappingPacketReturnedError:(id)arg1;
 - (void)_registerForFMFDLaunchedNotification;
 - (void)_sendAutoSwitchMeDevice;
@@ -62,7 +61,9 @@
 - (void)canOfferToHandles:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)canShareLocationWithHandle:(id)arg1 groupId:(id)arg2 callerId:(id)arg3;
 - (void)canShareLocationWithHandle:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)contactForPayload:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)crashDaemon;
+- (void)dataForPayload:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)declineFriendshipRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)didAddFollowerHandle:(id)arg1;
@@ -92,6 +93,7 @@
 - (id)getAllDevices;
 - (void)getAllDevices:(CDUnknownBlockType)arg1;
 - (void)getAllLocations:(CDUnknownBlockType)arg1;
+- (void)getDataForPerformanceRequest:(CDUnknownBlockType)arg1;
 - (id)getFavoritesSharingLocationWithMe;
 - (id)getHandlesFollowingMyLocation;
 - (void)getHandlesFollowingMyLocation:(CDUnknownBlockType)arg1;
@@ -106,6 +108,7 @@
 - (void)getPendingFriendshipRequestsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getPendingMappingPacketsForHandle:(id)arg1 groupId:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getPrettyNameForHandle:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)handleAndLocationForPayload:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleIncomingAirDropURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)hasModelInitialized;
 - (oneway void)iCloudAccountNameWithCompletion:(CDUnknownBlockType)arg1;
@@ -138,6 +141,7 @@
 - (void)sendIDSPacket:(id)arg1 toHandle:(id)arg2;
 - (oneway void)sendMappingPacket:(id)arg1 toHandle:(id)arg2;
 - (id)serverProxy;
+- (void)sessionHandleReport:(CDUnknownBlockType)arg1;
 - (void)sessionWasCreatedRefresh;
 - (void)setActiveDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setExpiredInitTimestamp;

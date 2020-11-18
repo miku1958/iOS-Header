@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) GEOMapAccess *map;
 
 - (void)_buildersInTile:(id)arg1 localPoint:(const Matrix_8746f91e *)arg2 localRadiusSqr:(float)arg3 localSearch:(const Box_3fb92e00 *)arg4 handler:(CDUnknownBlockType)arg5;
-- (BOOL)_checkEdgeForDuplicates:(const shared_ptr_b236f348 *)arg1;
+- (BOOL)_checkEdgeForDuplicates:(const shared_ptr_035a2da2 *)arg1;
 - (void)cancel;
 - (void)dealloc;
 - (void)findEdges:(CDUnknownBlockType)arg1;

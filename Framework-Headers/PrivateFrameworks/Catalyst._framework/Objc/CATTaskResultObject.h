@@ -4,17 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
-#import <Catalyst/NSCopying-Protocol.h>
 #import <Catalyst/NSSecureCoding-Protocol.h>
 
-@interface CATTaskResultObject : NSObject <NSSecureCoding, NSCopying>
+@interface CATTaskResultObject : NSObject <NSSecureCoding>
 {
 }
 
 + (BOOL)supportsSecureCoding;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

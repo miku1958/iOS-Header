@@ -18,12 +18,14 @@
     BOOL _succeeded;
     MFError *_error;
     NSData *_data;
+    BOOL _hasLocalCopyOfData;
 }
 
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) MFError *error; // @synthesize error=_error;
+@property (nonatomic) BOOL hasLocalCopyOfData; // @synthesize hasLocalCopyOfData=_hasLocalCopyOfData;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<MFDAStreamingContentConsumer> streamConsumer; // @synthesize streamConsumer=_streamConsumer;
 @property (readonly, nonatomic) BOOL succeeded; // @synthesize succeeded=_succeeded;

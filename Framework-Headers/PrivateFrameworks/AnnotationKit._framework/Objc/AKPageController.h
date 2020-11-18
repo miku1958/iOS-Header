@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class AKController, AKGeometryHelper, AKLayerPresentationManager, AKPageModelController, UIView;
+#import <AnnotationKit/AKHighlightColorEditorControllerDelegate-Protocol.h>
+#import <AnnotationKit/AKNoteEditorControllerDelegate-Protocol.h>
+
+@class AKController, AKGeometryHelper, AKHighlightColorEditorController, AKLayerPresentationManager, AKPageModelController, NSMutableDictionary, NSString, UIView;
 @protocol AKControllerDelegateProtocol;
 
-@interface AKPageController : NSObject
+@interface AKPageController : NSObject <AKNoteEditorControllerDelegate, AKHighlightColorEditorControllerDelegate>
 {
     BOOL _shouldPixelate;
     BOOL _layerPresentationManagerWasSetup;
@@ -19,21 +22,30 @@
     AKGeometryHelper *_geometryHelper;
     AKLayerPresentationManager *_layerPresentationManager;
     UIView *_overlayView;
+    AKHighlightColorEditorController *_highlightColorEditorController;
+    NSMutableDictionary *_noteEditors;
 }
 
 @property (weak) AKController *controller; // @synthesize controller=_controller;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly) id<AKControllerDelegateProtocol> delegate;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) AKGeometryHelper *geometryHelper; // @synthesize geometryHelper=_geometryHelper;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) AKHighlightColorEditorController *highlightColorEditorController; // @synthesize highlightColorEditorController=_highlightColorEditorController;
 @property (strong, nonatomic) AKLayerPresentationManager *layerPresentationManager; // @synthesize layerPresentationManager=_layerPresentationManager;
 @property BOOL layerPresentationManagerWasSetup; // @synthesize layerPresentationManagerWasSetup=_layerPresentationManagerWasSetup;
+@property (strong) NSMutableDictionary *noteEditors; // @synthesize noteEditors=_noteEditors;
 @property (strong, nonatomic) UIView *overlayView; // @synthesize overlayView=_overlayView;
 @property unsigned long long pageIndex; // @synthesize pageIndex=_pageIndex;
 @property (strong) AKPageModelController *pageModelController; // @synthesize pageModelController=_pageModelController;
 @property BOOL shouldPixelate; // @synthesize shouldPixelate=_shouldPixelate;
+@property (readonly) Class superclass;
 
 + (id)pageControllerWithController:(id)arg1 andPageModelController:(id)arg2;
 - (void).cxx_destruct;
 - (id)_initWithController:(id)arg1 andPageModelController:(id)arg2;
+- (id)_popoverPresentingViewController;
 - (id)annotationsBeneathLoupe:(id)arg1;
 - (struct CGPoint)convertPointFromModelToOverlay:(struct CGPoint)arg1;
 - (struct CGPoint)convertPointFromOverlayToModel:(struct CGPoint)arg1;
@@ -41,14 +53,31 @@
 - (struct CGRect)convertRectFromOverlayToModel:(struct CGRect)arg1;
 - (long long)currentModelToScreenExifOrientation;
 - (double)currentModelToScreenScaleFactor;
+- (unsigned long long)edgeForNoteEditor:(id)arg1;
+- (void)editorController:(id)arg1 deleteAnnotation:(id)arg2;
+- (void)editorController:(id)arg1 editNote:(id)arg2;
+- (void)editorController:(id)arg1 editedAnnotation:(id)arg2 toText:(id)arg3;
+- (BOOL)editorController:(id)arg1 isRightArrowEnabledForAnnotation:(id)arg2;
+- (void)editorController:(id)arg1 setTheme:(id)arg2 forAnnotation:(id)arg3;
+- (void)editorController:(id)arg1 showEditMenuForAnnotation:(id)arg2;
+- (BOOL)handleEditAnnotation:(id)arg1;
 - (id)initForTesting;
 - (struct CGRect)maxPageRect;
 - (double)modelBaseScaleFactor;
 - (id)newContentSnapshotPDFDataAtScale:(double)arg1 inRect:(struct CGRect)arg2 forLoupeAnnotation:(id)arg3;
+- (void)noteEditorDidBeginEditing:(id)arg1;
+- (void)noteEditorDidFinishEditing:(id)arg1;
+- (void)noteEditorWillDismissFromFullScreen:(id)arg1;
+- (void)noteEditorWillPresentFullScreen:(id)arg1;
+- (void)openPopoverForHighlightAnnotation:(id)arg1;
+- (void)openPopoverForNoteAnnotation:(id)arg1;
 - (void)overlayWasAddedToSuperview;
+- (id)popoverPresentingViewControllerForNoteEditor:(id)arg1;
 - (void)releaseRelinquishables;
 - (BOOL)relinquishablesAreLoaded;
 - (void)setupRelinquishables;
+- (id)stickyContainerForNoteEditor:(id)arg1;
+- (struct CGRect)stickyViewFrameForNoteEditor:(id)arg1;
 - (void)teardown;
 - (void)updateScaleFactor:(double)arg1 isLiveUpdate:(BOOL)arg2 forceUpdate:(BOOL)arg3;
 

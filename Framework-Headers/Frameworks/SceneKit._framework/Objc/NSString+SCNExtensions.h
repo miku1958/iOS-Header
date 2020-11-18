@@ -7,6 +7,6 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (SCNExtensions)
-- (id)stringByReplacingCharactersInRanges:(id)arg1 withStrings:(id)arg2;
+- (id)scn_stringByReplacingCharactersInRanges:(id)arg1 withStrings:(id)arg2;
 @end
 

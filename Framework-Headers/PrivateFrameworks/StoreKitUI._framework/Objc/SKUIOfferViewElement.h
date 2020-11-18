@@ -10,6 +10,7 @@
 {
 }
 
+@property (readonly, nonatomic, getter=isCompactModeEnabled) BOOL compactModeEnabled;
 @property (readonly, nonatomic, getter=isSimpleOffer) BOOL simpleOffer;
 
 - (void)enumerateChildrenUsingBlock:(CDUnknownBlockType)arg1;

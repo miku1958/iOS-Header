@@ -6,11 +6,13 @@
 
 #import <MapsSupport/MSPIdentifiable-Protocol.h>
 #import <MapsSupport/MSPTransferableToImmutable-Protocol.h>
+#import <MapsSupport/NSMutableCopying-Protocol.h>
 
 @class Protocol;
 
-@protocol MSPMutableObject <MSPIdentifiable, MSPTransferableToImmutable>
+@protocol MSPMutableObject <NSMutableCopying, MSPIdentifiable, MSPTransferableToImmutable>
 + (Class)immutableObjectClass;
 + (Protocol *)immutableObjectProtocol;
+- (id)mutableCopy;
 @end
 

@@ -10,29 +10,151 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CSMap {
+    unsigned int _field1;
+    struct CSMapCallbacks _field2;
+    struct CSMapContext *_field3;
+    int _field4;
+    unsigned int _field5;
+    struct _CSMapHeader *_field6;
+    unsigned int *_field7;
+    unsigned int *_field8;
+};
+
+struct CSMapCallbacks {
+    CDUnknownFunctionPointerType _field1;
+    CDUnknownFunctionPointerType _field2;
+    CDUnknownFunctionPointerType _field3;
+    CDUnknownFunctionPointerType _field4;
+    CDUnknownFunctionPointerType _field5;
+    CDUnknownFunctionPointerType _field6;
+};
+
+struct CSMapContext;
+
+struct FSNode;
+
+struct LSBundleData {
+    unsigned int _field1;
+    unsigned long long _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned char _field5;
+    unsigned char _field6;
+    unsigned short _field7;
+    unsigned int _field8;
+    unsigned int _field9;
+    unsigned long long _field10;
+    unsigned long long _field11;
+    int _field12;
+    int _field13;
+    unsigned long long _field14;
+    unsigned long long _field15;
+    unsigned long long _field16;
+    unsigned long long _field17;
+    unsigned int _field18[4];
+    unsigned long long _field19;
+    unsigned long long _field20;
+    unsigned char _field21[3];
+    unsigned int _field22;
+    unsigned int _field23;
+    unsigned int _field24;
+    unsigned int _field25;
+    unsigned int _field26;
+    unsigned int _field27;
+    unsigned int _field28;
+    unsigned int _field29;
+    unsigned int _field30;
+    unsigned int _field31;
+    unsigned int _field32;
+    unsigned int _field33;
+    unsigned int _field34;
+    unsigned long long _field35;
+    unsigned long long _field36;
+    unsigned long long _field37;
+    unsigned long long _field38;
+    unsigned int _field39;
+    unsigned int _field40;
+    unsigned long long _field41;
+    unsigned long long _field42;
+    unsigned long long _field43;
+    unsigned int _field44;
+    unsigned int _field45;
+    unsigned int _field46;
+    unsigned int _field47;
+    unsigned int _field48;
+    unsigned int _field49;
+    unsigned int _field50;
+    unsigned int _field51;
+    unsigned int _field52;
+    unsigned int _field53;
+    unsigned int _field54;
+    unsigned int _field55;
+    unsigned int _field56;
+    unsigned int _field57;
+    unsigned int _field58;
+    unsigned int _field59;
+    unsigned int _field60;
+    unsigned int _field61;
+    unsigned char _field62;
+    unsigned char _field63;
+    unsigned char _field64;
+    unsigned char _field65;
+    unsigned int _field66;
+    unsigned int _field67;
+    unsigned int _field68;
+    unsigned int _field69;
+    unsigned int _field70;
+    unsigned int _field71;
+};
+
 struct LSContext {
     struct LSDatabase *_field1;
 };
 
-struct LSDatabase;
-
-struct LSRegistrationInfo {
-    unsigned int _field1;
+struct LSPluginData {
+    int _field1;
     unsigned int _field2;
     unsigned int _field3;
     unsigned int _field4;
     unsigned int _field5;
     unsigned int _field6;
     unsigned int _field7;
-    short _field8;
-    unsigned long long _field9;
+    unsigned int _field8;
+    unsigned int _field9;
     unsigned int _field10;
-    unsigned long long _field11;
-    unsigned long long _field12;
+    unsigned int _field11;
+    unsigned int _field12;
     unsigned int _field13;
-    double _field14;
-    unsigned long long _field15;
+    unsigned int _field14;
+    unsigned int _field15;
+    unsigned int _field16;
+    unsigned int _field17;
+    unsigned int _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    unsigned int _field21;
 };
+
+struct NSDictionary {
+    Class _field1;
+};
+
+struct NSMutableDictionary {
+    Class _field1;
+};
+
+struct _CSMapHeader;
+
+struct __CFDictionary;
+
+struct __CFRuntimeBase {
+    unsigned long long _field1;
+    unsigned char _field2[4];
+    unsigned int _field3;
+};
+
+struct __CSStore;
 
 struct __va_list_tag {
     unsigned int _field1;
@@ -40,4 +162,100 @@ struct __va_list_tag {
     void *_field3;
     void *_field4;
 };
+
+struct _opaque_pthread_rwlock_t {
+    long long _field1;
+    char _field2[192];
+};
+
+struct unordered_map<unsigned int, std::__1::unordered_map<unsigned int, bool, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, bool>>>, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, std::__1::unordered_map<unsigned int, bool, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, bool>>>>>>;
+
+#if 0
+// Names with conflicting types:
+typedef struct {
+    struct __CFRuntimeBase _field1;
+    struct FSNode *_field2;
+    unsigned int _field3;
+    unsigned char _field4;
+    struct __CSStore *_field5;
+    struct LSSchema {
+        CDStruct_13af5226 _field1;
+        CDStruct_c0454aff _field2;
+        unsigned int _field3;
+        unsigned int _field4;
+        unsigned int _field5;
+        unsigned int _field6;
+        CDStruct_538b3674 _field7;
+        unsigned int _field8;
+        CDStruct_c315bc87 _field9[12];
+        unsigned int _field10;
+        unsigned int _field11;
+        unsigned int _field12;
+        unsigned int _field13;
+        unsigned int _field14;
+        struct _LSSchemaCache {
+            struct _opaque_pthread_rwlock_t _field1;
+            struct __CFDictionary *_field2;
+            id _field3;
+            id _field4;
+            struct unordered_map<unsigned int, std::__1::unordered_map<unsigned int, bool, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, bool>>>, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, std::__1::unordered_map<unsigned int, bool, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, bool>>>>>> *_field5;
+            CDStruct_a561fd19 _field6;
+        } _field15;
+    } _field6;
+} LSDatabase_753d25be;
+
+#endif
+
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+} CDStruct_a561fd19;
+
+typedef struct {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned char _field5[16];
+    int _field6;
+    unsigned int _field7;
+    unsigned int _field8;
+    unsigned int _field9[8];
+    unsigned int _field10;
+    unsigned int _field11;
+    unsigned int _field12;
+    unsigned int _field13;
+    unsigned int _field14;
+} CDStruct_b227e4e8;
+
+typedef struct {
+    unsigned int _field1;
+    unsigned int _field2;
+} CDStruct_c0454aff;
+
+typedef struct CDStruct_183601bc;
+
+typedef struct {
+    struct CSMap _field1;
+    unsigned int _field2;
+} CDStruct_13af5226;
+
+typedef struct {
+    struct CSMap _field1;
+    CDStruct_183601bc *_field2;
+    CDStruct_183601bc *_field3;
+    unsigned int _field4;
+    unsigned char _field5;
+} CDStruct_c315bc87;
+
+typedef struct {
+    struct CSMap _field1;
+} CDStruct_538b3674;
 

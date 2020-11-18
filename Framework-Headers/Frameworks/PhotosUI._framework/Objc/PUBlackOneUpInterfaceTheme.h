@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)emptyPlaceholderStyle;
 - (long long)photoBrowserBarStyle;
 - (id)photoBrowserChromeVisibleBackgroundColor;
+- (id)photoBrowserTitleViewTappableTextColor;
 - (id)photoBrowserTitleViewTextColor;
 - (id)playheadBackgroundColor;
 - (id)playheadColor;

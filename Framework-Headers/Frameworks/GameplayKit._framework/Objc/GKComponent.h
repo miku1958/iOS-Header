@@ -6,17 +6,20 @@
 
 #import <objc/NSObject.h>
 
+#import <GameplayKit/NSCoding-Protocol.h>
 #import <GameplayKit/NSCopying-Protocol.h>
 
-@class GKComponentSystem, GKEntity;
+@class GKComponentSystem, GKEntity, NSString;
 
-@interface GKComponent : NSObject <NSCopying>
+@interface GKComponent : NSObject <NSCopying, NSCoding>
 {
     GKEntity *_entity;
     int _usesPerComponentUpdateCount;
     GKComponentSystem *_componentSystem;
+    NSString *_componentName;
 }
 
+@property (nonatomic) NSString *componentName;
 @property (nonatomic) GKComponentSystem *componentSystem;
 @property (readonly, weak, nonatomic) GKEntity *entity;
 @property (nonatomic) BOOL usesPerComponentUpdate;
@@ -24,9 +27,14 @@
 - (void).cxx_destruct;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)didAddToEntity;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithName:(id)arg1;
 - (void)setEntity:(id)arg1;
 - (void)updateWithDeltaTime:(double)arg1;
+- (void)willRemoveFromEntity;
 
 @end
 

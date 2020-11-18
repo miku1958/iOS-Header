@@ -22,6 +22,7 @@
 @property (readonly, strong) NSArray *subscribedCentrals; // @synthesize subscribedCentrals=_subscribedCentrals;
 @property (strong) NSData *value; // @dynamic value;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (BOOL)handleCentralSubscribed:(id)arg1;

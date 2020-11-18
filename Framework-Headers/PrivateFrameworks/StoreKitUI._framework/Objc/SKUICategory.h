@@ -6,20 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, NSURL, SKUIArtworkList;
+@class NSArray, NSString, NSURL;
+@protocol SKUIArtworkProviding;
 
 @interface SKUICategory : NSObject
 {
-    SKUIArtworkList *_artworkList;
     long long _categoryIdentifier;
     NSArray *_children;
     NSString *_name;
     NSString *_parentLabel;
     NSURL *_url;
+    id<SKUIArtworkProviding> _artworkProvider;
 }
 
 @property (readonly, nonatomic) NSURL *URL; // @synthesize URL=_url;
-@property (readonly, nonatomic) SKUIArtworkList *artworkList; // @synthesize artworkList=_artworkList;
+@property (readonly, nonatomic) id<SKUIArtworkProviding> artworkProvider; // @synthesize artworkProvider=_artworkProvider;
 @property (readonly, nonatomic) long long categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
 @property (readonly, nonatomic) NSArray *children; // @synthesize children=_children;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;

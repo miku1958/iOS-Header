@@ -29,6 +29,7 @@
     int _state;
     NSMutableDictionary *_transactions;
     NSMutableArray *_userTransactions;
+    CDUnknownBlockType _getLocalIdentityHandler;
     CDUnknownBlockType _findPeerHandler;
     CDUnknownBlockType _requestHandler;
     CDUnknownBlockType _stoppedHandler;
@@ -44,6 +45,7 @@
 
 @property (strong) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_userQueue;
 @property (copy) CDUnknownBlockType findPeerHandler; // @synthesize findPeerHandler=_findPeerHandler;
+@property (copy) CDUnknownBlockType getLocalIdentityHandler; // @synthesize getLocalIdentityHandler=_getLocalIdentityHandler;
 @property (copy) CDUnknownBlockType internalRequestHandler; // @synthesize internalRequestHandler=_internalRequestHandler;
 @property (copy) CDUnknownBlockType requestHandler; // @synthesize requestHandler=_requestHandler;
 @property (copy) CDUnknownBlockType stoppedHandler; // @synthesize stoppedHandler=_stoppedHandler;
@@ -64,14 +66,14 @@
 - (void)_serverCompletePrepareRequest:(id)arg1;
 - (int)_serverHandleCommitRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (int)_serverHandleDecryptedRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
-- (void)_serverHandleEncryptedRequest:(id)arg1;
+- (void)_serverHandleEncryptedRequest:(id)arg1 options:(id)arg2;
 - (int)_serverHandlePrepareRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
-- (void)_serverPairVerifyExchange:(id)arg1;
+- (void)_serverPairVerifyExchange:(id)arg1 options:(id)arg2;
 - (void)_serverRunStateMachine;
 - (int)_setupEncryption;
 - (void)_start;
 - (void)_stop:(int)arg1;
-- (void)_transportReceivedMessage:(id)arg1;
+- (void)_transportReceivedMessage:(id)arg1 options:(id)arg2;
 - (int)_updateIdleTimer;
 - (void)dealloc;
 - (id)init;
@@ -79,7 +81,7 @@
 - (void)sendRequest:(id)arg1 options:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (void)start;
 - (void)stop;
-- (void)transportReceivedMessage:(id)arg1;
+- (void)transportReceivedMessage:(id)arg1 options:(id)arg2;
 
 @end
 

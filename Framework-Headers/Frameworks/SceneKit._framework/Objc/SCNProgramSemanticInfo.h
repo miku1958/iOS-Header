@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
 
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 + (id)infoWithSemantic:(id)arg1 options:(id)arg2;
 + (BOOL)supportsSecureCoding;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

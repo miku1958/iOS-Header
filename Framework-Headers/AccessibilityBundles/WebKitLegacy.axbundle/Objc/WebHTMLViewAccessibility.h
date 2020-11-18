@@ -12,9 +12,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)accessibilityElementAtIndex:(long long)arg1;
-- (long long)accessibilityElementCount;
-- (long long)indexOfAccessibilityElement:(id)arg1;
+- (id)accessibilityElements;
 
 @end
 

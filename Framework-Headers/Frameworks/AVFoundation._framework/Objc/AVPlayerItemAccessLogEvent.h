@@ -16,8 +16,11 @@
 }
 
 @property (readonly, nonatomic) NSString *URI;
+@property (readonly, nonatomic) double averageAudioBitrate;
+@property (readonly, nonatomic) double averageVideoBitrate;
 @property (readonly, nonatomic) long long downloadOverdue;
 @property (readonly, nonatomic) double durationWatched;
+@property (readonly, nonatomic) double indicatedAverageBitrate;
 @property (readonly, nonatomic) double indicatedBitrate;
 @property (readonly, nonatomic) long long mediaRequestsWWAN;
 @property (readonly, nonatomic) long long numberOfBytesTransferred;
@@ -40,6 +43,7 @@
 @property (readonly, nonatomic) double switchBitrate;
 @property (readonly, nonatomic) double transferDuration;
 
+- (id)_common_init;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (double)currentObservedBitrate;
 - (void)dealloc;

@@ -27,14 +27,13 @@
 @property (nonatomic, setter=_setTime:) double _time; // @synthesize _time=__time;
 @property (nonatomic) double maximumDeceleration; // @synthesize maximumDeceleration=_maximumDeceleration;
 @property (nonatomic) double maximumSpeed; // @synthesize maximumSpeed=_maximumSpeed;
-@property (nonatomic) double outputValue; // @synthesize outputValue=_outputValue;
+@property (nonatomic, setter=_setOutputValue:) double outputValue; // @synthesize outputValue=_outputValue;
 @property (copy, nonatomic) CDUnknownBlockType outputValueChangeHandler; // @synthesize outputValueChangeHandler=_outputValueChangeHandler;
 @property (nonatomic) double targetValue; // @synthesize targetValue=_targetValue;
 
 - (void).cxx_destruct;
 - (void)_handleDisplayLink:(id)arg1;
 - (void)_inputDidChange;
-- (void)_setOutputValue:(double)arg1;
 - (void)_update;
 - (void)performInputChanges:(CDUnknownBlockType)arg1;
 - (void)setVisibilityOffset:(double)arg1;

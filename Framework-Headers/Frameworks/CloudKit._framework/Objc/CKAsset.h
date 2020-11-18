@@ -24,6 +24,8 @@
     NSNumber *_deviceID;
     NSNumber *_fileID;
     NSNumber *_generationCountToSave;
+    NSData *_assetContent;
+    NSString *_itemTypeHint;
     NSString *_UUID;
     NSURL *_downloadURL;
     NSDate *_downloadURLExpiration;
@@ -49,6 +51,7 @@
 
 @property (strong, nonatomic) NSString *UUID; // @synthesize UUID=_UUID;
 @property (nonatomic) long long arrayIndex; // @synthesize arrayIndex=_arrayIndex;
+@property (copy, nonatomic) NSData *assetContent; // @synthesize assetContent=_assetContent;
 @property (readonly, nonatomic) NSString *assetHandleUUID;
 @property (strong, nonatomic) NSData *assetKey; // @synthesize assetKey=_assetKey;
 @property (copy, nonatomic) NSData *authRequest; // @synthesize authRequest=_authRequest;
@@ -68,6 +71,7 @@
 @property (nonatomic) BOOL hasSize; // @synthesize hasSize=_hasSize;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSData *inlineData; // @synthesize inlineData=_inlineData;
+@property (strong, nonatomic) NSString *itemTypeHint; // @synthesize itemTypeHint=_itemTypeHint;
 @property (strong, nonatomic) NSString *owner; // @synthesize owner=_owner;
 @property (weak, nonatomic) CKRecord *record; // @synthesize record=_record;
 @property (strong, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
@@ -93,7 +97,7 @@
 + (id)openWithOpenInfo:(id)arg1 error:(id *)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)CKPropertiesDescription;
+- (id)CKPropertiesToDescribe:(BOOL)arg1;
 - (id)_initBare;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

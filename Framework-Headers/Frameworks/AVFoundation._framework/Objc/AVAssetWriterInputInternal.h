@@ -14,8 +14,7 @@
     AVWeakReference *weakReference;
     AVAssetWriterInputHelper *helper;
     NSObject<OS_dispatch_queue> *helperQueue;
-    BOOL attachedToPixelBufferAdaptor;
-    BOOL attachedToMetadataAdaptor;
+    AVWeakReference *weakReferenceToAttachedAdaptor;
     AVWeakReference *weakReferenceToAssetWriter;
     AVKeyPathDependencyManager *keyPathDependencyManager;
     long long numberOfAppendFailures;

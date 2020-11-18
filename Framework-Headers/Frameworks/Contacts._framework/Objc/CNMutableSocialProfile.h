@@ -6,14 +6,16 @@
 
 #import <Contacts/CNSocialProfile.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface CNMutableSocialProfile : CNSocialProfile
 {
 }
 
+@property (copy, nonatomic) NSArray *bundleIdentifiers; // @dynamic bundleIdentifiers;
 @property (copy, nonatomic) NSString *displayname; // @dynamic displayname;
 @property (copy, nonatomic) NSString *service; // @dynamic service;
+@property (copy, nonatomic) NSString *teamIdentifier; // @dynamic teamIdentifier;
 @property (copy, nonatomic) NSString *urlString; // @dynamic urlString;
 @property (copy, nonatomic) NSString *userIdentifier; // @dynamic userIdentifier;
 @property (copy, nonatomic) NSString *username; // @dynamic username;

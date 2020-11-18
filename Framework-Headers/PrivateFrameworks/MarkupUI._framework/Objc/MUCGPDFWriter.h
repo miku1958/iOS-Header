@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface MUCGPDFWriter : NSObject
 {
 }
 
-- (void)writeDataOfType:(id)arg1 toConsumer:(struct CGDataConsumer *)arg2 withAnnotationsFromController:(id)arg3 replacedAnnotationIndexes:(id)arg4 onBaseImage:(id)arg5 encryptionPassword:(id)arg6;
+- (BOOL)writeCGPDFDocument:(struct CGPDFDocument *)arg1 toConsumer:(struct CGDataConsumer *)arg2 withAnnotationsFromController:(id)arg3 replacedAnnotationMaps:(id)arg4 encryptionPassword:(id)arg5 error:(id *)arg6 delegateBlock:(CDUnknownBlockType)arg7;
 
 @end
 

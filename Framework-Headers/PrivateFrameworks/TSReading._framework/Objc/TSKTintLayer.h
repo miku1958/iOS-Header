@@ -17,6 +17,7 @@
 @property struct CGColor *tintColor;
 
 - (id)contents;
+- (void)dealloc;
 - (void)layoutSublayers;
 - (void)setContents:(id)arg1;
 - (void)setNeedsDisplay;

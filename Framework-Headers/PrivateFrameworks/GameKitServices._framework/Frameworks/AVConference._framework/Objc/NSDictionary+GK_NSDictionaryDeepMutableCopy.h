@@ -7,6 +7,6 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (GK_NSDictionaryDeepMutableCopy)
-- (id)gksDeepMutableCopy;
+- (id)copyGKSDeepMutable;
 @end
 

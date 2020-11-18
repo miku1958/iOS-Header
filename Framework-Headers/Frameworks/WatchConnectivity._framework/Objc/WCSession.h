@@ -9,26 +9,29 @@
 #import <WatchConnectivity/WCXPCManagerDelegate-Protocol.h>
 
 @class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, NSURL, WCQueueManager, WCSessionUserInfoTransfer;
-@protocol OS_dispatch_queue, WCSessionDelegate;
+@protocol WCSessionDelegate;
 
 @interface WCSession : NSObject <WCXPCManagerDelegate>
 {
-    BOOL _paired;
-    BOOL _watchAppInstalled;
-    BOOL _complicationEnabled;
-    BOOL _reachable;
+    BOOL _hasContentPending;
     BOOL _iOSDeviceNeedsUnlockAfterRebootForReachability;
+    BOOL _paired;
+    BOOL _reachable;
+    BOOL _complicationEnabled;
+    BOOL _watchAppInstalled;
     BOOL _hasCompletedInitialActivation;
+    BOOL _connectionWasInterrupted;
     BOOL _delegateSupportsAsyncActivate;
     BOOL _delegateSupportsActiveDeviceSwitch;
     id<WCSessionDelegate> _delegate;
     long long _activationState;
+    unsigned long long _remainingComplicationUserInfoTransfers;
     NSURL *_watchDirectoryURL;
     NSDictionary *_applicationContext;
     NSDictionary *_receivedApplicationContext;
     NSOperationQueue *_delegateOperationQueue;
     NSOperationQueue *_backgroundWorkOperationQueue;
-    NSObject<OS_dispatch_queue> *_workQueue;
+    NSOperationQueue *_workOperationQueue;
     NSMutableDictionary *_currentMessages;
     NSMutableSet *_currentMessageIdentifiersAwaitingReply;
     NSMutableDictionary *_internalOutstandingUserInfoTransfers;
@@ -43,6 +46,7 @@
 @property (copy, nonatomic) NSDictionary *applicationContext; // @synthesize applicationContext=_applicationContext;
 @property (readonly) NSOperationQueue *backgroundWorkOperationQueue; // @synthesize backgroundWorkOperationQueue=_backgroundWorkOperationQueue;
 @property (nonatomic, getter=isComplicationEnabled) BOOL complicationEnabled; // @synthesize complicationEnabled=_complicationEnabled;
+@property (nonatomic) BOOL connectionWasInterrupted; // @synthesize connectionWasInterrupted=_connectionWasInterrupted;
 @property (strong) WCSessionUserInfoTransfer *currentComplicationUserInfoTransfer; // @synthesize currentComplicationUserInfoTransfer=_currentComplicationUserInfoTransfer;
 @property (strong) NSMutableSet *currentMessageIdentifiersAwaitingReply; // @synthesize currentMessageIdentifiersAwaitingReply=_currentMessageIdentifiersAwaitingReply;
 @property (readonly) NSMutableDictionary *currentMessages; // @synthesize currentMessages=_currentMessages;
@@ -53,6 +57,7 @@
 @property (nonatomic) BOOL delegateSupportsAsyncActivate; // @synthesize delegateSupportsAsyncActivate=_delegateSupportsAsyncActivate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasCompletedInitialActivation; // @synthesize hasCompletedInitialActivation=_hasCompletedInitialActivation;
+@property (nonatomic) BOOL hasContentPending; // @synthesize hasContentPending=_hasContentPending;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL iOSDeviceNeedsUnlockAfterRebootForReachability; // @synthesize iOSDeviceNeedsUnlockAfterRebootForReachability=_iOSDeviceNeedsUnlockAfterRebootForReachability;
 @property (strong, nonatomic) NSMutableDictionary *internalOutstandingFileTransfers; // @synthesize internalOutstandingFileTransfers=_internalOutstandingFileTransfers;
@@ -64,11 +69,12 @@
 @property (strong) WCQueueManager *queueManager; // @synthesize queueManager=_queueManager;
 @property (nonatomic, getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
 @property (copy, nonatomic) NSDictionary *receivedApplicationContext; // @synthesize receivedApplicationContext=_receivedApplicationContext;
+@property (nonatomic) unsigned long long remainingComplicationUserInfoTransfers; // @synthesize remainingComplicationUserInfoTransfers=_remainingComplicationUserInfoTransfers;
 @property (readonly) Class superclass;
 @property (strong) NSMutableArray *switchTasksQueue; // @synthesize switchTasksQueue=_switchTasksQueue;
 @property (nonatomic, getter=isWatchAppInstalled) BOOL watchAppInstalled; // @synthesize watchAppInstalled=_watchAppInstalled;
 @property (strong, nonatomic) NSURL *watchDirectoryURL; // @synthesize watchDirectoryURL=_watchDirectoryURL;
-@property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property (readonly) NSOperationQueue *workOperationQueue; // @synthesize workOperationQueue=_workOperationQueue;
 
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)defaultSession;
@@ -146,6 +152,7 @@
 - (void)updatePairingID:(id)arg1;
 - (BOOL)verifySessionFile:(id)arg1;
 - (void)xpcConnectionInterrupted;
+- (void)xpcConnectionRestoredWithState:(id)arg1;
 
 @end
 

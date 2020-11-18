@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGRect edgeInsets; // @synthesize edgeInsets=_edgeInsets;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 
+- (void)dealloc;
 - (id)initWithEdgeInsets:(struct CGRect)arg1;
 - (void)sanitizeEdgeInsets;
 - (void)setEdgeInsets:(struct CGRect)arg1;

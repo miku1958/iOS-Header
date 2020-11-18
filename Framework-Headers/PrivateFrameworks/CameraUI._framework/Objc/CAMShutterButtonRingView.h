@@ -6,27 +6,19 @@
 
 #import <UIKit/UIView.h>
 
-@class CAShapeLayer;
-
 @interface CAMShutterButtonRingView : UIView
 {
-    CAShapeLayer *__outsideRingLayer;
-    struct CGPath *__normalRingPath;
-    double __normalLineWidth;
-    struct CGRect __normalRingBounds;
+    BOOL _showContrastBorder;
+    struct CAMShutterButtonSpec _spec;
 }
 
-@property (readonly, nonatomic) double _normalLineWidth; // @synthesize _normalLineWidth=__normalLineWidth;
-@property (readonly, nonatomic) struct CGRect _normalRingBounds; // @synthesize _normalRingBounds=__normalRingBounds;
-@property (readonly, nonatomic) struct CGPath *_normalRingPath; // @synthesize _normalRingPath=__normalRingPath;
-@property (readonly, nonatomic) CAShapeLayer *_outsideRingLayer; // @synthesize _outsideRingLayer=__outsideRingLayer;
+@property (nonatomic) BOOL showContrastBorder; // @synthesize showContrastBorder=_showContrastBorder;
+@property (nonatomic) struct CAMShutterButtonSpec spec; // @synthesize spec=_spec;
 
-- (void).cxx_destruct;
-- (void)dealloc;
+- (void)drawRect:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithSpec:(struct CAMShutterButtonSpec)arg1;
-- (void)layoutSubviews;
 
 @end
 

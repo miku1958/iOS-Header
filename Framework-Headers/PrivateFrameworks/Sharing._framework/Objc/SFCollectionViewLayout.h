@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)finalLayoutAttributesForDisappearingItemAtIndexPath:(id)arg1;
 - (void)finalizeCollectionViewUpdates;
 - (struct CGPoint)firstItemCenterForContainerWidth:(double)arg1;
+- (id)init;
 - (id)initialLayoutAttributesForAppearingItemAtIndexPath:(id)arg1;
 - (void)invalidateGroupViewLayoutAnimated:(BOOL)arg1;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;

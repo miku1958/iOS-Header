@@ -6,29 +6,51 @@
 
 #import <coreroutine/RTNotifier.h>
 
-@class RTDataController;
+@class NSArray, RTLocationManager, RTMetricManager, RTPredictionControllerApplication, RTPredictionControllerApplicationHome, RTPredictionControllerHero;
 
 @interface RTPredictedApplicationManager : RTNotifier
 {
-    RTDataController *_appPredictionDataController;
+    BOOL _training;
+    RTPredictionControllerApplication *_magicalMomentsPredictionController;
+    RTPredictionControllerApplicationHome *_homeMagicalMomentsPredictionController;
     CDUnknownBlockType _dataProcessingFinalizeBlock;
+    RTLocationManager *_locationManager;
+    RTMetricManager *_metricManager;
+    RTPredictionControllerHero *_heroAppPredictionController;
+    NSArray *_dataProviders;
 }
 
-@property (strong, nonatomic) RTDataController *appPredictionDataController; // @synthesize appPredictionDataController=_appPredictionDataController;
 @property (copy, nonatomic) CDUnknownBlockType dataProcessingFinalizeBlock; // @synthesize dataProcessingFinalizeBlock=_dataProcessingFinalizeBlock;
+@property (strong, nonatomic) NSArray *dataProviders; // @synthesize dataProviders=_dataProviders;
+@property (strong, nonatomic) RTPredictionControllerHero *heroAppPredictionController; // @synthesize heroAppPredictionController=_heroAppPredictionController;
+@property (strong, nonatomic) RTPredictionControllerApplicationHome *homeMagicalMomentsPredictionController; // @synthesize homeMagicalMomentsPredictionController=_homeMagicalMomentsPredictionController;
+@property (strong, nonatomic) RTLocationManager *locationManager; // @synthesize locationManager=_locationManager;
+@property (strong, nonatomic) RTPredictionControllerApplication *magicalMomentsPredictionController; // @synthesize magicalMomentsPredictionController=_magicalMomentsPredictionController;
+@property (strong, nonatomic) RTMetricManager *metricManager; // @synthesize metricManager=_metricManager;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_onHeroAppPrediction:(id)arg1;
+- (void)_processRealtimeEvent:(id)arg1;
 - (void)_startMonitoringForPredictedApplications;
 - (void)_stopMonitoringForPredictedApplications;
-- (void)fetchPredictedApplicationForEvent:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)_submitRealtimeEventMetricWithEvent:(id)arg1;
+- (void)fetchMagicalMomentsModelPropertyListRepresentation:(CDUnknownBlockType)arg1;
+- (void)fetchPredictedApplications:(CDUnknownBlockType)arg1;
+- (void)fetchPredictedApplicationsAtLocation:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)fetchPredictedApplicationsForEvent:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)fetchPredictedApplicationsWithPredicate:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)init;
+- (id)initWithDataProviders:(id)arg1 locationManager:(id)arg2 metricManager:(id)arg3;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
+- (void)onHeroAppPrediction:(id)arg1;
 - (void)onProtectedDataAvailabilityUpdate:(id)arg1;
+- (void)onRealtimeEventNotification:(id)arg1;
 - (void)printMagicalMomentsModel:(CDUnknownBlockType)arg1;
 - (void)processDataForPredictionModelWithHandler:(CDUnknownBlockType)arg1;
 - (void)shutdown;
+- (void)simulateApplicationPredictionWithBundleIdentifier:(id)arg1 reason:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 
 @end
 

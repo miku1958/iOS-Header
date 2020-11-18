@@ -8,7 +8,7 @@
 
 #import <Foundation/NSProgressPublisher-Protocol.h>
 
-@class NSDictionary, NSLock, NSMutableDictionary, NSMutableSet, NSString, NSXPCConnection;
+@class NSDictionary, NSLock, NSMutableDictionary, NSMutableSet, NSString;
 
 @interface NSProgress : NSObject <NSProgressPublisher>
 {
@@ -22,18 +22,17 @@
     unsigned long long _flags;
     id _userInfoProxy;
     NSString *_publisherID;
-    NSXPCConnection *_connection;
-    long long _unpublishingBlockageCount;
-    long long _disconnectingBlockageCount;
-    long long _remoteObserverCount;
-    NSMutableDictionary *_acknowledgementHandlersByBundleID;
+    id _reserved5;
+    long long _reserved6;
+    long long _reserved7;
+    long long _reserved8;
+    NSMutableDictionary *_acknowledgementHandlersByLowercaseBundleID;
     NSMutableDictionary *_lastNotificationTimesByKey;
     NSMutableDictionary *_userInfoLastNotificationTimesByKey;
     NSLock *_lock;
     NSMutableSet *_children;
 }
 
-@property BOOL _adoptChildUserInfo;
 @property (getter=isCancellable) BOOL cancellable;
 @property (copy) CDUnknownBlockType cancellationHandler;
 @property (readonly, getter=isCancelled) BOOL cancelled;
@@ -61,6 +60,7 @@
 + (id)_publisherInterface;
 + (id)_registrarInterface;
 + (void)_removeSubscriber:(id)arg1;
++ (id)_serverConnection;
 + (id)_subscriberInterface;
 + (id)addSubscriberForFileURL:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 + (id)addSubscriberForFileURL:(id)arg1 withPublishingHandler:(CDUnknownBlockType)arg2;
@@ -76,6 +76,7 @@
 - (CDUnknownBlockType)_acknowledgementHandlerForAppBundleIdentifier:(id)arg1;
 - (void)_addCompletedUnitCount:(long long)arg1;
 - (void)_addImplicitChild:(id)arg1;
+- (BOOL)_adoptChildUserInfo;
 - (id)_indentedDescription:(unsigned long long)arg1;
 - (id)_initWithValues:(id)arg1;
 - (void)_notifyRemoteObserversOfValueForKey:(id)arg1 inUserInfo:(BOOL)arg2;
@@ -89,8 +90,6 @@
 - (void)_setRemoteValue:(id)arg1 forKey:(id)arg2 inUserInfo:(BOOL)arg3;
 - (void)_setUserInfoValue:(id)arg1 forKey:(id)arg2 fromChild:(BOOL)arg3;
 - (id)_setValueForKeys:(CDUnknownBlockType)arg1 settingBlock:(CDUnknownBlockType)arg2;
-- (void)_unblockDisconnecting;
-- (void)_unblockUnpublishing;
 - (void)_unpublish;
 - (void)_updateChild:(id)arg1 fraction:(id)arg2 portion:(long long)arg3;
 - (void)_updateFractionCompleted:(id)arg1;
@@ -122,8 +121,7 @@
 - (void)setPrioritizable:(BOOL)arg1;
 - (void)setPrioritizationHandler:(CDUnknownBlockType)arg1;
 - (void)setUserInfoObject:(id)arg1 forKey:(id)arg2;
-- (oneway void)startProvidingValuesWithInitialAcceptor:(CDUnknownBlockType)arg1;
-- (oneway void)stopProvidingValues;
+- (void)set_adoptChildUserInfo:(BOOL)arg1;
 - (void)unpublish;
 
 @end

@@ -13,8 +13,8 @@
 #import <MultipeerConnectivity/UITableViewDataSource-Protocol.h>
 #import <MultipeerConnectivity/UITableViewDelegate-Protocol.h>
 
-@class MCNearbyServiceBrowser, MCPeerID, MCSession, NSBundle, NSMutableArray, NSMutableDictionary, NSString, UIBarButtonItem, UINavigationBar, UITableView;
-@protocol MCBrowserViewControllerDelegate;
+@class MCNearbyServiceBrowser, MCPeerID, MCSession, NSBundle, NSMutableArray, NSMutableDictionary, NSObject, NSString, UIBarButtonItem, UINavigationBar, UITableView;
+@protocol MCBrowserViewControllerDelegate, OS_dispatch_queue;
 
 @interface MCBrowserViewController : UIViewController <MCSessionPrivateDelegate, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, UINavigationBarDelegate, MCNearbyServiceBrowserDelegate>
 {
@@ -34,9 +34,11 @@
     UINavigationBar *_navigationBar;
     NSBundle *_frameworkBundle;
     unsigned long long _declinedPeersCount;
+    NSObject<OS_dispatch_queue> *_callbackQueue;
 }
 
 @property (strong, nonatomic) MCNearbyServiceBrowser *browser; // @synthesize browser=_browser;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property (strong, nonatomic) UIBarButtonItem *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) unsigned long long declinedPeersCount; // @synthesize declinedPeersCount=_declinedPeersCount;
@@ -59,6 +61,8 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 
+- (void)applicationDidEnterBackgroundNotification:(id)arg1;
+- (void)applicationWillEnterForegroundNotification:(id)arg1;
 - (void)browser:(id)arg1 foundPeer:(id)arg2 withDiscoveryInfo:(id)arg3;
 - (void)browser:(id)arg1 lostPeer:(id)arg2;
 - (void)cancelTapped:(id)arg1;
@@ -66,11 +70,14 @@
 - (id)detailStringForPeerState:(int)arg1;
 - (void)didReceiveMemoryWarning;
 - (void)doneTapped:(id)arg1;
+- (void)handleViewDidDisappear;
+- (void)handleViewWillAppear;
 - (id)init;
 - (id)initWithBrowser:(id)arg1 session:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithServiceType:(id)arg1 session:(id)arg2;
+- (BOOL)isVisible;
 - (id)nearbySectionTitle;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)peer:(id)arg1 changedStateTo:(int)arg2;

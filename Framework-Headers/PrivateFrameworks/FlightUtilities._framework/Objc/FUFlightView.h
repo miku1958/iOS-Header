@@ -6,93 +6,80 @@
 
 #import <UIKit/UIView.h>
 
-@class FUFlight, FULabel, FUPlaneTrackerAnnotationView, MKGeodesicPolyline, MKMapView, NSMutableArray, UIButton, UIVisualEffectView;
+#import <FlightUtilities/FUFlightInfoViewProtocol-Protocol.h>
+#import <FlightUtilities/UIPageViewControllerDataSource-Protocol.h>
+#import <FlightUtilities/UIPageViewControllerDelegate-Protocol.h>
 
-__attribute__((visibility("hidden")))
-@interface FUFlightView : UIView
+@class FUFLightTrack, FUPlaneTrackerAnnotationView, MKMapView, NSArray, NSMutableArray, NSString, UIPageControl, UIPageViewController, UIVisualEffectView;
+@protocol FUFlightViewDelegate;
+
+@interface FUFlightView : UIView <UIPageViewControllerDelegate, UIPageViewControllerDataSource, FUFlightInfoViewProtocol>
 {
     FUPlaneTrackerAnnotationView *_planeTracker;
-    NSMutableArray *_arcs;
-    MKGeodesicPolyline *_currentArc;
+    long long _currentFlightIndex;
+    NSMutableArray *_tracks;
+    FUFLightTrack *_currentTrack;
+    UIPageViewController *_pageViewController;
     BOOL _highlightCurrentFlightLeg;
-    FUFlight *_flight;
-    FULabel *_labelAirlineName;
-    FULabel *_labelFlightCode;
-    FULabel *_labelStatusTitle;
-    FULabel *_labelStatus;
-    FULabel *_labelDepartureCity;
-    FULabel *_labelDepartureCode;
-    FULabel *_labelDepartureTerminal;
-    FULabel *_labelDepartureGate;
-    FULabel *_labelArrivalCity;
-    FULabel *_labelArrivalCode;
-    FULabel *_labelArrivalTerminal;
-    FULabel *_labelArrivalGate;
-    FULabel *_labelDepartureTitle;
-    FULabel *_labelDepartureDate;
-    FULabel *_labelDepartureDelay;
-    FULabel *_labelArrivalTitle;
-    FULabel *_labelArrivalDate;
-    FULabel *_labelArrivalDelay;
+    BOOL _showInfoPanel;
     long long _currentFocus;
     MKMapView *_mapView;
-    UIButton *_flightButton;
     UIVisualEffectView *_backBlurView;
-    UIView *_flightInfoView;
     UIView *_borderLineViewLandscape;
     UIView *_borderLineViewPortrait;
+    UIPageControl *_pageControl;
     UIView *_errorView;
     UIView *_loadingView;
+    NSArray *_flights;
+    id<FUFlightViewDelegate> _delegate;
+    struct UIEdgeInsets _mapInsets;
 }
 
 @property (weak) UIVisualEffectView *backBlurView; // @synthesize backBlurView=_backBlurView;
 @property (weak) UIView *borderLineViewLandscape; // @synthesize borderLineViewLandscape=_borderLineViewLandscape;
 @property (weak) UIView *borderLineViewPortrait; // @synthesize borderLineViewPortrait=_borderLineViewPortrait;
 @property long long currentFocus; // @synthesize currentFocus=_currentFocus;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak) id<FUFlightViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (strong) UIView *errorView; // @synthesize errorView=_errorView;
-@property (strong, nonatomic) FUFlight *flight; // @synthesize flight=_flight;
-@property (weak) UIButton *flightButton; // @synthesize flightButton=_flightButton;
-@property (weak) UIView *flightInfoView; // @synthesize flightInfoView=_flightInfoView;
+@property (strong, nonatomic) NSArray *flights; // @synthesize flights=_flights;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL highlightCurrentFlightLeg; // @synthesize highlightCurrentFlightLeg=_highlightCurrentFlightLeg;
-@property (weak) FULabel *labelAirlineName; // @synthesize labelAirlineName=_labelAirlineName;
-@property (weak) FULabel *labelArrivalCity; // @synthesize labelArrivalCity=_labelArrivalCity;
-@property (weak) FULabel *labelArrivalCode; // @synthesize labelArrivalCode=_labelArrivalCode;
-@property (weak) FULabel *labelArrivalDate; // @synthesize labelArrivalDate=_labelArrivalDate;
-@property (weak) FULabel *labelArrivalDelay; // @synthesize labelArrivalDelay=_labelArrivalDelay;
-@property (weak) FULabel *labelArrivalGate; // @synthesize labelArrivalGate=_labelArrivalGate;
-@property (weak) FULabel *labelArrivalTerminal; // @synthesize labelArrivalTerminal=_labelArrivalTerminal;
-@property (weak) FULabel *labelArrivalTitle; // @synthesize labelArrivalTitle=_labelArrivalTitle;
-@property (weak) FULabel *labelDepartureCity; // @synthesize labelDepartureCity=_labelDepartureCity;
-@property (weak) FULabel *labelDepartureCode; // @synthesize labelDepartureCode=_labelDepartureCode;
-@property (weak) FULabel *labelDepartureDate; // @synthesize labelDepartureDate=_labelDepartureDate;
-@property (weak) FULabel *labelDepartureDelay; // @synthesize labelDepartureDelay=_labelDepartureDelay;
-@property (weak) FULabel *labelDepartureGate; // @synthesize labelDepartureGate=_labelDepartureGate;
-@property (weak) FULabel *labelDepartureTerminal; // @synthesize labelDepartureTerminal=_labelDepartureTerminal;
-@property (weak) FULabel *labelDepartureTitle; // @synthesize labelDepartureTitle=_labelDepartureTitle;
-@property (weak) FULabel *labelFlightCode; // @synthesize labelFlightCode=_labelFlightCode;
-@property (weak) FULabel *labelStatus; // @synthesize labelStatus=_labelStatus;
-@property (weak) FULabel *labelStatusTitle; // @synthesize labelStatusTitle=_labelStatusTitle;
 @property (strong) UIView *loadingView; // @synthesize loadingView=_loadingView;
+@property (nonatomic) struct UIEdgeInsets mapInsets; // @synthesize mapInsets=_mapInsets;
 @property (weak) MKMapView *mapView; // @synthesize mapView=_mapView;
+@property (weak) UIPageControl *pageControl; // @synthesize pageControl=_pageControl;
+@property (nonatomic) BOOL showInfoPanel; // @synthesize showInfoPanel=_showInfoPanel;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)addArc:(id)arg1;
+- (void)_refreshMapOverlay;
+- (void)_updateToFocus:(long long)arg1 animated:(BOOL)arg2;
+- (void)addTrack:(id)arg1;
 - (id)arrivalCamera;
 - (void)awakeFromNib;
+- (void)changeCurrentPage:(id)arg1;
 - (void)cleanupView;
+- (id)currentFlight;
 - (id)departureCamera;
 - (void)fitMap:(BOOL)arg1;
-- (void)flightButtonTapped:(id)arg1;
 - (id)flightCamera;
+- (void)flightInfoView:(id)arg1 didUpdateFocus:(long long)arg2;
 - (void)layoutSubviews;
 - (void)mapView:(id)arg1 regionDidChangeAnimated:(BOOL)arg2;
 - (id)mapView:(id)arg1 rendererForOverlay:(id)arg2;
 - (id)mapView:(id)arg1 viewForAnnotation:(id)arg2;
 - (void)mapViewDidFinishRenderingMap:(id)arg1 fullyRendered:(BOOL)arg2;
-- (void)setupLabelStyles;
+- (void)pageViewController:(id)arg1 didFinishAnimating:(BOOL)arg2 previousViewControllers:(id)arg3 transitionCompleted:(BOOL)arg4;
+- (id)pageViewController:(id)arg1 viewControllerAfterViewController:(id)arg2;
+- (id)pageViewController:(id)arg1 viewControllerBeforeViewController:(id)arg2;
+- (void)setCurrentIndex:(long long)arg1 animated:(BOOL)arg2;
+- (void)setupStyles;
 - (void)showError;
 - (void)showInfo;
 - (void)showLoading;
+- (void)updateMapArcs;
 - (void)updateMapCamera;
 
 @end

@@ -40,8 +40,6 @@
     NSString *_uid;
     id<CalDAVAccount> _account;
     NSSet *_calendarUserAddresses;
-    NSURL *_preferredCalendarUserAddress;
-    NSString *_preferredCalendarEmailAddress;
     NSString *_fullName;
     NSString *_principalPath;
     NSString *_inboxCTag;
@@ -50,10 +48,12 @@
     NSString *_calendarHomePushKey;
     NSNumber *_quotaFreeBytes;
     NSString *_supportedCalendarComponentSets;
-    CalDAVRefreshContext *_refreshContext;
     NSMutableDictionary *_calendarUserAddressesPerCalendar;
+    NSURL *_preferredCalendarUserAddress;
+    NSString *_preferredCalendarEmailAddress;
     NSMutableSet *_addedCalendars;
     NSMutableSet *_modifiedCalendars;
+    CalDAVRefreshContext *_refreshContext;
     NSURL *_legacy_principalURL;
 }
 

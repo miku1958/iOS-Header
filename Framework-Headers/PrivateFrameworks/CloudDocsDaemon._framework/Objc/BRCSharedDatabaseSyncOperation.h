@@ -26,11 +26,11 @@ __attribute__((visibility("hidden")))
 - (void)_performAfterAddingOwnerKeysForZoneIDs:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_performAfterRegisteringForPushes:(CDUnknownBlockType)arg1;
 - (void)_performFetchChangedZones;
+- (id)createActivity;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)initWithSyncContext:(id)arg1 changeState:(id)arg2 group:(id)arg3;
 - (void)main;
 - (BOOL)shouldRetryForError:(id)arg1;
-- (unsigned long long)startActivity;
 
 @end
 

@@ -18,6 +18,7 @@
 }
 
 @property (readonly, strong, nonatomic) BKSEventFocusDeferralProperties *deferredProperties; // @synthesize deferredProperties=_deferredProperties;
+@property (readonly, nonatomic) BOOL isCycle;
 @property (readonly, nonatomic) int priority; // @synthesize priority=_priority;
 @property (readonly, strong, nonatomic) BKSEventFocusDeferralProperties *properties; // @synthesize properties=_properties;
 

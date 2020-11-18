@@ -35,6 +35,7 @@
 - (id)description;
 - (struct _GEOTileKey *)firstKey;
 - (id)init;
+- (id)initWithCapacity:(unsigned long long)arg1;
 - (id)initWithMaxCapacity:(unsigned long long)arg1;
 - (BOOL)intersectsList:(id)arg1;
 - (id)listWithout:(id)arg1;

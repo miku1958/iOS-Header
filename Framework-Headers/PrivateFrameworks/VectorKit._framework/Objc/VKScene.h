@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)rasterOverlaySceneAtLevel:(unsigned long long)arg1;
 - (void)reset;
+- (id)unloadedTiles;
 
 @end
 

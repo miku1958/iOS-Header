@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOMapServiceSearchTicket-Protocol.h>
 
-@class GEOMapRegion, GEOMapServiceTraits, NSDictionary, NSString;
+@class GEOMapRegion, GEOMapServiceTraits, GEORelatedSearchSuggestion, NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _GEOPlaceSearchRequestTicket : _GEOPlaceRequestTicket <GEOMapServiceSearchTicket>
@@ -17,12 +17,17 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic, getter=isChainResultSet) BOOL chainResultSet;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) GEORelatedSearchSuggestion *defaultRelatedSuggestion;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSArray *relatedSearchSuggestions;
 @property (readonly, nonatomic) NSDictionary *responseUserInfo;
 @property (readonly, nonatomic) GEOMapRegion *resultBoundingRegion;
+@property (readonly, nonatomic) NSString *resultDisplayHeader;
 @property (readonly, nonatomic) NSString *resultSectionHeader;
 @property (readonly, nonatomic) NSString *searchQuery;
+@property (readonly, nonatomic) int searchResultType;
+@property (readonly, nonatomic) BOOL shouldEnableRedoSearch;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) GEOMapServiceTraits *traits;
 

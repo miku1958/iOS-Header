@@ -10,6 +10,7 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityRemoveAssociationNavItemView:(id)arg1;
@@ -23,6 +24,7 @@
 - (void)setLeftBarButtonItems:(id)arg1 animated:(BOOL)arg2;
 - (void)setRightBarButtonItem:(id)arg1 animated:(BOOL)arg2;
 - (void)setRightBarButtonItems:(id)arg1 animated:(BOOL)arg2;
+- (void)setTitleView:(id)arg1;
 
 @end
 

@@ -58,7 +58,11 @@
 @property (nonatomic) unsigned long long validTextRangeLength; // @synthesize validTextRangeLength=_validTextRangeLength;
 @property (nonatomic) unsigned long long validTextRangeLocation; // @synthesize validTextRangeLocation=_validTextRangeLocation;
 
+- (int)StringAsAutocapitalizationType:(id)arg1;
+- (int)StringAsKeyboardType:(id)arg1;
+- (int)StringAsReturnKeyType:(id)arg1;
 - (void)addPINEntrySeparatorIndexes:(unsigned long long)arg1;
+- (id)autocapitalizationTypeAsString:(int)arg1;
 - (void)clearPINEntrySeparatorIndexes;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -67,9 +71,11 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)keyboardTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)pINEntrySeparatorIndexesAtIndex:(unsigned long long)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)returnKeyTypeAsString:(int)arg1;
 - (void)setPINEntrySeparatorIndexes:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 

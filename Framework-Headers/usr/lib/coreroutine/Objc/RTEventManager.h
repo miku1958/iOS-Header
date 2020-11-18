@@ -27,6 +27,7 @@
 - (void)_fetchPredictedLocationOfInterestAtEvent:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)_fetchPredictedLocationsOfInterestBetweenStartDate:(id)arg1 endDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)_fetchPredictedLocationsOfInterestOnDate:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (id)calendars;
 - (void)fetchCurrentlyInEventWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchEventsBetweenStartDate:(id)arg1 andEndDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)fetchLastEventEndDateWithHandler:(CDUnknownBlockType)arg1;
@@ -39,7 +40,9 @@
 - (id)getEventsBetweenStartDate:(id)arg1 andEndDate:(id)arg2 calendars:(id)arg3;
 - (id)getEventsSortedByEndDateBetweenStartDate:(id)arg1 andEndDate:(id)arg2;
 - (id)getEventsSortedByStartDateBetweenStartDate:(id)arg1 andEndDate:(id)arg2;
+- (id)getEventsSortedByStartDateBetweenStartDate:(id)arg1 andEndDate:(id)arg2 calendars:(id)arg3;
 - (id)init;
+- (id)nextPredictedLocationsOfInterestCalendars;
 
 @end
 

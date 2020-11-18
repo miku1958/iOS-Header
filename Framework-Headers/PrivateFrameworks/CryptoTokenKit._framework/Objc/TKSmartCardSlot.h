@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSXPCConnection, TKSmartCardATR, TKSmartCardSlotProxy, TKSmartCardSlotScreen;
+@class NSString, NSXPCConnection, TKSmartCardATR, TKSmartCardSlotProxy;
 @protocol OS_dispatch_queue;
 
 @interface TKSmartCardSlot : NSObject
@@ -22,35 +22,34 @@
     long long _maxInputLength;
     long long _maxOutputLength;
     TKSmartCardSlotProxy *_proxy;
+    long long _previousState;
 }
 
 @property (strong) TKSmartCardATR *ATR; // @synthesize ATR=_ATR;
 @property (readonly, nonatomic) long long maxInputLength; // @synthesize maxInputLength=_maxInputLength;
 @property (readonly, nonatomic) long long maxOutputLength; // @synthesize maxOutputLength=_maxOutputLength;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly) long long powerState;
 @property long long powerState; // @synthesize powerState=_powerState;
+@property long long previousState; // @synthesize previousState=_previousState;
 @property (readonly, nonatomic) TKSmartCardSlotProxy *proxy; // @synthesize proxy=_proxy;
 @property (readonly) NSObject<OS_dispatch_queue> *queue;
-@property (readonly) TKSmartCardSlotScreen *screen;
-@property (readonly) BOOL securePINChangeSupported;
 @property BOOL securePINChangeSupported; // @synthesize securePINChangeSupported=_securePINChangeSupported;
-@property (readonly) BOOL securePINVerificationSupported;
 @property BOOL securePINVerificationSupported; // @synthesize securePINVerificationSupported=_securePINVerificationSupported;
-@property (readonly) long long shareState;
 @property long long shareState; // @synthesize shareState=_shareState;
 @property long long state; // @synthesize state=_state;
 
-+ (void)slotWithEndpoint:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
-- (void)connectToEndpoint:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)connectToEndpoint:(id)arg1 synchronous:(BOOL)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)control:(id)arg1 data:(id)arg2 expectedLength:(unsigned int)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)dealloc;
-- (void)getAttrib:(unsigned int)arg1 expectedLength:(unsigned int)arg2 reply:(CDUnknownBlockType)arg3;
+- (id)description;
+- (void)getAttrib:(unsigned int)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)initWithEndpoint:(id)arg1 error:(id *)arg2;
 - (void)invalidate;
 - (id)makeSmartCard;
-- (id)remoteSlotWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)screen;
 - (void)setAttrib:(unsigned int)arg1 data:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (id)synchronous:(BOOL)arg1 remoteSlotWithErrorHandler:(CDUnknownBlockType)arg2;
 - (id)userInteractionForConfirmation;
 - (id)userInteractionForStringEntry;
 

@@ -14,6 +14,7 @@
     BOOL _didValidateForInsertion;
     BOOL _valid;
     BOOL _hasAdjustments;
+    BOOL _hasRAW;
     PHAssetCreationRequest *_assetCreationRequest;
     NSArray *_assetResources;
     long long _mediaType;
@@ -25,6 +26,7 @@
 @property (readonly, nonatomic) NSArray *assetResources; // @synthesize assetResources=_assetResources;
 @property (readonly, nonatomic) BOOL didValidateForInsertion; // @synthesize didValidateForInsertion=_didValidateForInsertion;
 @property (readonly, nonatomic) BOOL hasAdjustments; // @synthesize hasAdjustments=_hasAdjustments;
+@property (readonly, nonatomic) BOOL hasRAW; // @synthesize hasRAW=_hasRAW;
 @property (readonly, nonatomic) unsigned long long mediaSubtype; // @synthesize mediaSubtype=_mediaSubtype;
 @property (readonly, nonatomic) long long mediaType; // @synthesize mediaType=_mediaType;
 @property (readonly, nonatomic) PHExternalAssetResource *primaryResource; // @synthesize primaryResource=_primaryResource;

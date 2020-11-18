@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (void)load;
+- (id)init;
 
 @end
 

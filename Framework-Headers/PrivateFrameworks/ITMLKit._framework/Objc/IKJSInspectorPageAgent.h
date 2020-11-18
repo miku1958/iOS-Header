@@ -38,6 +38,7 @@
 - (void)reloadWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 ignoreCache:(BOOL *)arg3 scriptToEvaluateOnLoad:(id *)arg4;
 - (void)removeScriptToEvaluateOnLoadWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 identifier:(id)arg3;
 - (void)searchInResourceWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 frameId:(id)arg3 url:(id)arg4 query:(id)arg5 caseSensitive:(BOOL *)arg6 isRegex:(BOOL *)arg7;
+- (void)searchInResourceWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 frameId:(id)arg3 url:(id)arg4 query:(id)arg5 caseSensitive:(BOOL *)arg6 isRegex:(BOOL *)arg7 requestId:(id *)arg8;
 - (void)searchInResourcesWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 text:(id)arg3 caseSensitive:(BOOL *)arg4 isRegex:(BOOL *)arg5;
 - (void)setCompositingBordersVisibleWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 visible:(BOOL)arg3;
 - (void)setDocumentContentWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 frameId:(id)arg3 html:(id)arg4;

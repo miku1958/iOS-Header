@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -17,7 +17,7 @@
 @property (strong, nonatomic) NSMutableDictionary *genericPasswordQuery; // @synthesize genericPasswordQuery;
 @property (strong, nonatomic) NSMutableDictionary *keychainItemData; // @synthesize keychainItemData;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)dictionaryToSecItemFormat:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 accessGroup:(id)arg2;
 - (id)objectForKey:(id)arg1;

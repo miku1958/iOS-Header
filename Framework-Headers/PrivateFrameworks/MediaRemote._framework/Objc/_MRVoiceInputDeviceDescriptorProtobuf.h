@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) BOOL hasDefaultFormat;
 @property (strong, nonatomic) NSMutableArray *supportedFormats; // @synthesize supportedFormats=_supportedFormats;
 
++ (Class)supportedFormatsType;
 - (void)addSupportedFormats:(id)arg1;
 - (void)clearSupportedFormats;
 - (void)copyTo:(id)arg1;

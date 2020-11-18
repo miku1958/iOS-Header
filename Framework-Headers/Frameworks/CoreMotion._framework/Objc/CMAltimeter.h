@@ -14,15 +14,19 @@
 + (void)dummySelector:(id)arg1;
 + (void)initialize;
 + (BOOL)isRelativeAltitudeAvailable;
++ (BOOL)isSignificantElevationAvailable;
 - (void)dealloc;
 - (void)deallocPrivate;
 - (id)init;
 - (id)initPrivate;
 - (void)onFilteredPressure:(const struct Sample *)arg1;
+- (void)querySignificantElevationChangeFromDate:(id)arg1 toDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)startRelativeAltitudeUpdatesPrivateToQueue:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)startRelativeAltitudeUpdatesToQueue:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)startSignificantElevationUpdatesWithHandler:(CDUnknownBlockType)arg1;
 - (void)stopRelativeAltitudeUpdates;
 - (void)stopRelativeAltitudeUpdatesPrivate;
+- (void)stopSignificantElevationUpdates;
 
 @end
 

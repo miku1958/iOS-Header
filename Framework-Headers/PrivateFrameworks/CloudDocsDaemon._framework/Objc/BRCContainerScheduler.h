@@ -7,16 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <CloudDocsDaemon/APSConnectionDelegate-Protocol.h>
-#import <CloudDocsDaemon/BRCLocalContainerDelegate-Protocol.h>
+#import <CloudDocsDaemon/BRCAppLibraryDelegate-Protocol.h>
+#import <CloudDocsDaemon/BRCClientZoneDelegate-Protocol.h>
 
-@class APSConnection, BRCAccountSession, BRCContainerMetadataSyncPersistedState, BRCDeadlineScheduler, BRCDeadlineToken, BRCSyncBudgetThrottle, NSData, NSDate, NSString;
+@class APSConnection, BRCAccountSession, BRCContainerMetadataSyncPersistedState, BRCDeadlineScheduler, BRCDeadlineSource, BRCMigrateZonePCSOperation, BRCSyncBudgetThrottle, BRCZoneHealthSyncPersistedState, NSData, NSDate, NSString;
 @protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source;
 
-@interface BRCContainerScheduler : NSObject <APSConnectionDelegate, BRCLocalContainerDelegate>
+@interface BRCContainerScheduler : NSObject <APSConnectionDelegate, BRCClientZoneDelegate, BRCAppLibraryDelegate>
 {
     BRCAccountSession *_session;
-    BRCDeadlineToken *_containerMetadataSyncToken;
-    BRCDeadlineToken *_sharedDatabaseSyncToken;
+    BRCDeadlineSource *_containerMetadataSyncSource;
+    BRCDeadlineSource *_sharedDatabaseSyncSource;
+    BRCDeadlineSource *_zoneHealthSyncSource;
     NSObject<OS_dispatch_source> *_pushSource;
     NSString *_environmentName;
     NSData *_pushToken;
@@ -27,8 +29,13 @@
     struct _BRCOperation *_containerMetadataSyncOperation;
     unsigned int _sharedDBSyncState;
     struct _BRCOperation *_sharedDatabaseSyncOperation;
+    BRCZoneHealthSyncPersistedState *_zoneHealthPersistedState;
+    unsigned int _zoneHealthSyncState;
+    struct _BRCOperation *_zoneHealthSyncOperation;
     struct _BRCOperation *_periodicSyncOperation;
     NSDate *_lastPeriodicSyncDate;
+    BRCMigrateZonePCSOperation *_migrateZonePCSOperation;
+    BRCDeadlineSource *_migrateZonePCSSource;
     NSObject<OS_dispatch_group> *_initialSyncDownGroup;
     NSObject<OS_dispatch_group> *_syncGroup;
     BRCSyncBudgetThrottle *_syncUpBudget;
@@ -44,32 +51,39 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_group> *syncGroup; // @synthesize syncGroup=_syncGroup;
 @property (readonly, nonatomic) BRCDeadlineScheduler *syncScheduler; // @synthesize syncScheduler=_syncScheduler;
 @property (readonly, nonatomic) BRCSyncBudgetThrottle *syncUpBudget; // @synthesize syncUpBudget=_syncUpBudget;
+@property (readonly, nonatomic) BRCZoneHealthSyncPersistedState *zoneHealthSyncPersistedState; // @synthesize zoneHealthSyncPersistedState=_zoneHealthPersistedState;
 
 - (void).cxx_destruct;
+- (id)_newSyncDeadlineSource;
+- (void)_scheduleCrossZoneMovePCSPrep;
 - (void)_scheduleUpdatePushTopicsRegistration;
 - (void)_syncScheduleForContainersMetadata;
 - (void)_syncScheduleForSharedDatabase;
-- (void)_unscheduleContainer:(id)arg1;
+- (void)_syncScheduleForZoneHealth;
+- (void)_unscheduleClientZone:(id)arg1;
 - (void)_updatePushTopicsRegistration;
 - (void)close;
-- (void)closeContainers:(id)arg1;
+- (void)closeContainers;
+- (void)completedZoneHealthSyncDownWithServerChangeToken:(id)arg1 requestID:(unsigned long long)arg2 moreComing:(BOOL)arg3 error:(id)arg4;
 - (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;
 - (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;
 - (void)connection:(id)arg1 didReceiveToken:(id)arg2 forTopic:(id)arg3 identifier:(id)arg4;
-- (void)containerDidBecomeBackground:(id)arg1;
-- (void)containerDidBecomeForeground:(id)arg1;
 - (void)didChangeSyncStatusForContainerMetadataForContainer:(id)arg1;
-- (void)didInitialSyncDownForContainer:(id)arg1;
+- (void)didChangeSyncStatusForZoneHealthForContainer:(id)arg1;
+- (void)didInitialSyncDownForClientZone:(id)arg1;
 - (void)dumpToContext:(id)arg1;
 - (id)initWithAccountSession:(id)arg1;
+- (void)redoZonePCSPreperation;
 - (void)refreshPushRegistrationAfterAppsListChanged;
+- (void)resume;
 - (void)schedulePeriodicSyncIfNecessary;
 - (void)scheduleSyncDownForContainerMetadata;
 - (void)scheduleSyncDownForSharedDatabaseImmediately:(BOOL)arg1;
-- (void)setupWithRoot:(id)arg1;
-- (void)syncResume;
-- (void)syncSuspend;
-- (void)willInitialSyncDownForContainer:(id)arg1;
+- (void)scheduleSyncDownForZoneHealth;
+- (void)setup;
+- (void)syncContextDidBecomeBackground:(id)arg1;
+- (void)syncContextDidBecomeForeground:(id)arg1;
+- (void)willInitialSyncDownForClientZone:(id)arg1;
 
 @end
 

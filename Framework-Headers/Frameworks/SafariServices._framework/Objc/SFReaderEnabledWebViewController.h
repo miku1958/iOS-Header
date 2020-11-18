@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<SFReaderEnabledWebViewControllerDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isSafariRestricted;
 @property (readonly, nonatomic) BOOL privateBrowsingEnabled; // @synthesize privateBrowsingEnabled=_privateBrowsingEnabled;
 @property (readonly, nonatomic) SFReaderController *readerController; // @synthesize readerController=_readerController;
 @property (readonly) Class superclass;

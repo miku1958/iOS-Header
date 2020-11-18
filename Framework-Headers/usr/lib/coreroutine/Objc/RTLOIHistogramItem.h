@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)description;
 - (id)initWithLocationOfInterest:(id)arg1 timeOfStay:(double)arg2 andNumOfEvents:(long long)arg3;
-- (BOOL)isHighProbabilityHistogramItem;
 
 @end
 

@@ -6,43 +6,55 @@
 
 #import <Foundation/NSObject.h>
 
+#import <MediaRemote/MRDeviceInfoObserving-Protocol.h>
 #import <MediaRemote/MRTelevisionClientConnectionDelegate-Protocol.h>
 
-@class MRDeviceInfo, MRTelevisionClientConnection, MSVDistributedNotificationObserver, NSData, NSInputStream, NSLock, NSMutableDictionary, NSNetService, NSOutputStream, NSString;
+@class MRDeviceInfo, MRDeviceInfoObserver, MRTelevisionClientConnection, MSVDistributedNotificationObserver, NSData, NSInputStream, NSMutableDictionary, NSNetService, NSOutputStream, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MRTelevision : NSObject <MRTelevisionClientConnectionDelegate>
+@interface MRTelevision : NSObject <MRTelevisionClientConnectionDelegate, MRDeviceInfoObserving>
 {
-    NSNetService *_netService;
     NSObject<OS_dispatch_queue> *_serialQueue;
+    NSObject<OS_dispatch_queue> *_workerQueue;
     struct _MROrigin *_customOrigin;
     void *_playbackQueue;
-    BOOL _isCoalescingClientStateUpdatesConfigMessages;
-    NSLock *_callbacksLock;
+    NSData *_nowPlayingArtwork;
+    unsigned int _cachedServerDisconnectError;
+    MRDeviceInfoObserver *_deviceInfoObserver;
     BOOL _wantsNowPlayingNotifications;
     BOOL _wantsNowPlayingArtworkNotifications;
     BOOL _wantsVolumeNotifications;
+    BOOL _hiliteMode;
+    BOOL _isCoalescingClientStateUpdatesConfigMessages;
+    BOOL _isCallingClientCallback;
     unsigned int _connectionState;
     unsigned int _gameControllerInputMode;
-    NSNetService *_service;
     MRDeviceInfo *_deviceInfo;
-    NSString *_authToken;
+    NSNetService *_netService;
     MRTelevisionClientConnection *_connection;
-    NSData *_nowPlayingArtwork;
     NSMutableDictionary *_nowPlayingInfo;
     MSVDistributedNotificationObserver *_volumeControlNotificationObserver;
+    CDUnknownBlockType _pairingCallback;
+    NSObject<OS_dispatch_queue> *_pairingCallbackQueue;
     CDUnknownBlockType _connectionStateCallback;
     NSObject<OS_dispatch_queue> *_connectionStateCallbackQueue;
-    CDUnknownBlockType _gameControllerClientInputModeCallback;
+    CDUnknownBlockType _gameControllerInputModeCallback;
     NSObject<OS_dispatch_queue> *_gameControllerInputModeCallbackQueue;
+    CDUnknownBlockType _gameControllerPropertiesCallback;
+    NSObject<OS_dispatch_queue> *_gameControllerPropertiesCallbackQueue;
     CDUnknownBlockType _recordingStateCallback;
     NSObject<OS_dispatch_queue> *_recordingStateCallbackQueue;
     CDUnknownBlockType _textInputCallback;
     NSObject<OS_dispatch_queue> *_textInputCallbackQueue;
+    CDUnknownBlockType _nameCallback;
+    NSObject<OS_dispatch_queue> *_nameCallbackQueue;
+    CDUnknownBlockType _pairingAllowedCallback;
+    NSObject<OS_dispatch_queue> *_pairingAllowedCallbackQueue;
+    CDUnknownBlockType _hiliteModeCallback;
+    NSObject<OS_dispatch_queue> *_hiliteModeCallbackQueue;
 }
 
-@property (copy, nonatomic) NSString *authToken; // @synthesize authToken=_authToken;
 @property (strong, nonatomic) MRTelevisionClientConnection *connection; // @synthesize connection=_connection;
 @property (readonly, nonatomic) unsigned int connectionState; // @synthesize connectionState=_connectionState;
 @property (copy, nonatomic) CDUnknownBlockType connectionStateCallback; // @synthesize connectionStateCallback=_connectionStateCallback;
@@ -51,21 +63,35 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) MRDeviceInfo *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
-@property (copy, nonatomic) CDUnknownBlockType gameControllerClientInputModeCallback; // @synthesize gameControllerClientInputModeCallback=_gameControllerClientInputModeCallback;
 @property (nonatomic) unsigned int gameControllerInputMode; // @synthesize gameControllerInputMode=_gameControllerInputMode;
+@property (copy, nonatomic) CDUnknownBlockType gameControllerInputModeCallback; // @synthesize gameControllerInputModeCallback=_gameControllerInputModeCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *gameControllerInputModeCallbackQueue; // @synthesize gameControllerInputModeCallbackQueue=_gameControllerInputModeCallbackQueue;
+@property (copy, nonatomic) CDUnknownBlockType gameControllerPropertiesCallback; // @synthesize gameControllerPropertiesCallback=_gameControllerPropertiesCallback;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *gameControllerPropertiesCallbackQueue; // @synthesize gameControllerPropertiesCallbackQueue=_gameControllerPropertiesCallbackQueue;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL hiliteMode; // @synthesize hiliteMode=_hiliteMode;
+@property (copy, nonatomic) CDUnknownBlockType hiliteModeCallback; // @synthesize hiliteModeCallback=_hiliteModeCallback;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *hiliteModeCallbackQueue; // @synthesize hiliteModeCallbackQueue=_hiliteModeCallbackQueue;
 @property (readonly, nonatomic) NSString *hostName;
 @property (readonly, nonatomic) NSInputStream *inputStream;
+@property (nonatomic) BOOL isCallingClientCallback; // @synthesize isCallingClientCallback=_isCallingClientCallback;
+@property (nonatomic) BOOL isCoalescingClientStateUpdatesConfigMessages; // @synthesize isCoalescingClientStateUpdatesConfigMessages=_isCoalescingClientStateUpdatesConfigMessages;
 @property (readonly, nonatomic) NSString *name;
+@property (copy, nonatomic) CDUnknownBlockType nameCallback; // @synthesize nameCallback=_nameCallback;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *nameCallbackQueue; // @synthesize nameCallbackQueue=_nameCallbackQueue;
+@property (strong, nonatomic) NSNetService *netService; // @synthesize netService=_netService;
 @property (copy, nonatomic) NSData *nowPlayingArtwork; // @synthesize nowPlayingArtwork=_nowPlayingArtwork;
 @property (strong, nonatomic) NSMutableDictionary *nowPlayingInfo; // @synthesize nowPlayingInfo=_nowPlayingInfo;
 @property (readonly, nonatomic) NSOutputStream *outputStream;
-@property (nonatomic) void *playbackQueue;
+@property (readonly, nonatomic, getter=isPaired) BOOL paired;
+@property (readonly, nonatomic) void *pairedDevice;
+@property (copy, nonatomic) CDUnknownBlockType pairingAllowedCallback; // @synthesize pairingAllowedCallback=_pairingAllowedCallback;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *pairingAllowedCallbackQueue; // @synthesize pairingAllowedCallbackQueue=_pairingAllowedCallbackQueue;
+@property (copy, nonatomic) CDUnknownBlockType pairingCallback; // @synthesize pairingCallback=_pairingCallback;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *pairingCallbackQueue; // @synthesize pairingCallbackQueue=_pairingCallbackQueue;
 @property (readonly, nonatomic) long long port;
 @property (copy, nonatomic) CDUnknownBlockType recordingStateCallback; // @synthesize recordingStateCallback=_recordingStateCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *recordingStateCallbackQueue; // @synthesize recordingStateCallbackQueue=_recordingStateCallbackQueue;
-@property (readonly, nonatomic) NSNetService *service; // @synthesize service=_service;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType textInputCallback; // @synthesize textInputCallback=_textInputCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *textInputCallbackQueue; // @synthesize textInputCallbackQueue=_textInputCallbackQueue;
@@ -76,52 +102,75 @@ __attribute__((visibility("hidden")))
 
 + (id)_deviceInfoFromTXTRecordData:(id)arg1;
 - (void)_addArtwork:(id)arg1 toNowPlayingInfo:(id)arg2;
-- (id)_authenticateWithKey:(id)arg1;
+- (void)_callCientHiliteModeCallback;
+- (void)_callClientAllowsPairingCallback;
 - (void)_callClientConnectionStateCallback:(id)arg1;
 - (void)_callClientGameControllerInputModeCallback;
+- (void)_callClientGameControllerPropertiesCallback:(void *)arg1 controller:(unsigned long long)arg2;
+- (void)_callClientNameCallback;
+- (void)_callClientPairingCallback:(CDUnknownBlockType)arg1;
 - (void)_callClientRecordingStateCallback;
+- (void)_callClientTextInputCallback:(id)arg1 type:(unsigned int)arg2;
+- (void)_cleanUp;
 - (id)_errorForCurrentState;
-- (void)_handleContentItemsChangedNotificationMessage:(id)arg1;
+- (void)_handleCryptoPairingMessage:(id)arg1;
+- (void)_handleDeviceInfoUpdateMessage:(id)arg1;
+- (void)_handleHiliteModeMessage:(id)arg1;
 - (void)_handleKeyboardMessage:(id)arg1;
 - (void)_handleNotificationMessage:(id)arg1;
 - (void)_handleRemoteCommand:(unsigned int)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_handleSetArtworkMessage:(id)arg1;
+- (void)_handleSetConnectionStateMessage:(id)arg1;
 - (void)_handleSetStateMessage:(id)arg1;
 - (void)_handleSetVolumeControlAvailabilityMessage:(id)arg1;
+- (void)_handleTransactionMessage:(id)arg1;
 - (id)_initializeConnection;
 - (id)_loadDeviceInfo;
+- (id)_openSecuritySession;
 - (void)_registerPlaybackQueueCallback;
 - (void)_scheduleClientStateUpdatesConfigMessage;
 - (void)_sendTextInputMessageWithActionType:(unsigned long long)arg1 text:(id)arg2;
 - (id)_setupCustomOrigin;
 - (void)_setupCustomOriginWithReplyQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_teardownCustomOrigin;
 - (void)_updateNowPlayingInfo;
 - (void)clearActiveTextEditingSessionData;
 - (void)clientConnection:(id)arg1 didReceiveMessage:(id)arg2;
 - (void)clientDidDisconnect:(id)arg1;
-- (void)connectUsingAuthenticationKey:(id)arg1;
+- (void)connect;
 - (void)dealloc;
 - (void)deleteBackwardInActiveTextEditingSession;
-- (void)disconnect;
+- (void)disconnect:(id)arg1;
+- (void)exitHiliteMode;
 - (void)getTextEditingSessionWithReplyQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithNetService:(id)arg1;
 - (void)insertTextIntoActiveTextEditingSessionWithText:(id)arg1;
-- (BOOL)isConnected;
+- (void)observer:(id)arg1 didObserveNewDeviceInfo:(id)arg2;
 - (void)processVoiceInputAudioDataForDeviceID:(unsigned int)arg1 withBuffer:(id)arg2 time:(CDStruct_ace97b7a)arg3 gain:(float)arg4;
-- (void)registerGameControllerWithProfile:(int)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)registerGameControllerWithProperties:(void *)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)registerTouchDeviceWithDescriptor:(id)arg1 replyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)registerVoiceInputDeviceWithDescriptor:(id)arg1 replyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)sendGameControllerEvent:(const CDStruct_9f528be3 *)arg1 controllerID:(unsigned long long)arg2;
+- (void)sendButtonEvent:(struct _MRHIDButtonEvent)arg1;
+- (void)sendGameControllerEvent:(const CDStruct_06eb3966 *)arg1 controllerID:(unsigned long long)arg2;
 - (void)sendHIDEvent:(struct __IOHIDEvent *)arg1;
 - (void)sendTouchEvent:(struct _MRHIDTouchEvent)arg1 toVirtualDeviceWithID:(unsigned long long)arg2;
 - (void)setConnectionState:(unsigned int)arg1 error:(id)arg2;
 - (void)setConnectionStateCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setGameControllerInputModeCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
+- (void)setGameControllerPropertiesCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
+- (void)setHiliteMode:(BOOL)arg1;
+- (void)setHiliteModeCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
+- (void)setNameCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
+- (void)setPairingAllowedCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
+- (void)setPairingCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setTextEditingCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setTextOnActiveTextEditingSessionWithText:(id)arg1;
 - (void)setVoiceRecordingState:(unsigned int)arg1;
 - (void)setVoiceRecordingStateCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
+- (void)unpair;
 - (void)unregisterGameController:(unsigned long long)arg1;
+- (void)updateWithService:(id)arg1;
+- (void)wake;
 
 @end
 

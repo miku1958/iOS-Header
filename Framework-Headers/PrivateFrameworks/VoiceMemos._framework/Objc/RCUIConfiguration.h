@@ -18,6 +18,7 @@
     float _maximumDecibelDisplayRange;
     NSString *_debugIdentifier;
     UIColor *_backgroundColor;
+    UIColor *_waveformBackgroundColor;
     UIColor *_waveformColor;
     UIColor *_waveformBoundaryLineColor;
     UIColor *_waveformHighlightColor;
@@ -48,6 +49,7 @@
 @property (nonatomic) BOOL showsWaveformCenterline; // @synthesize showsWaveformCenterline=_showsWaveformCenterline;
 @property (strong, nonatomic) UIColor *timeLineMarkerColor; // @synthesize timeLineMarkerColor=_timeLineMarkerColor;
 @property (strong, nonatomic) UIColor *timeLineTimeColor; // @synthesize timeLineTimeColor=_timeLineTimeColor;
+@property (strong, nonatomic) UIColor *waveformBackgroundColor; // @synthesize waveformBackgroundColor=_waveformBackgroundColor;
 @property (strong, nonatomic) UIColor *waveformBoundaryLineColor; // @synthesize waveformBoundaryLineColor=_waveformBoundaryLineColor;
 @property (nonatomic) BOOL waveformBoundaryLineDimInSelectionMode; // @synthesize waveformBoundaryLineDimInSelectionMode=_waveformBoundaryLineDimInSelectionMode;
 @property (strong, nonatomic) UIColor *waveformColor; // @synthesize waveformColor=_waveformColor;

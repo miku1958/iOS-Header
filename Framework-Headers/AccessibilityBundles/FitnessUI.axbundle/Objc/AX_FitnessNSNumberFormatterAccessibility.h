@@ -10,7 +10,7 @@
 {
 }
 
-+ (id)FU_localizedPaceStringForDuration:(double)arg1 distance:(id)arg2 useCyclingFormat:(BOOL)arg3;
++ (id)FU_localizedPaceStringForDuration:(double)arg1 distance:(id)arg2 paceFormatType:(long long)arg3;
 + (id)FU_localizedShortActiveEnergyUnitString;
 + (id)FU_localizedShortUnitStringWithDistanceUnit:(long long)arg1 uppercase:(BOOL)arg2;
 + (void)_accessibilityPerformValidations:(id)arg1;

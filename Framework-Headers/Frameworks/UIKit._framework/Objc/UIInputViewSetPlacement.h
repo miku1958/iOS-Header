@@ -8,13 +8,17 @@
 
 #import <UIKit/NSSecureCoding-Protocol.h>
 
+@protocol UIInputViewSetPlacementDelegate;
+
 __attribute__((visibility("hidden")))
 @interface UIInputViewSetPlacement : NSObject <NSSecureCoding>
 {
     BOOL _dirty;
+    id<UIInputViewSetPlacementDelegate> delegate;
     double _extendedHeight;
 }
 
+@property (nonatomic) id<UIInputViewSetPlacementDelegate> delegate; // @synthesize delegate;
 @property (nonatomic) double extendedHeight; // @synthesize extendedHeight=_extendedHeight;
 @property (readonly, nonatomic) BOOL isInteractive;
 @property (readonly, nonatomic) BOOL isUndocked;
@@ -25,15 +29,20 @@ __attribute__((visibility("hidden")))
 + (id)placement;
 + (BOOL)supportsSecureCoding;
 - (BOOL)accessoryViewWillAppear;
+- (double)alpha;
+- (Class)applicatorClassForKeyboard:(BOOL)arg1;
+- (id)applicatorInfoForOwner:(id)arg1;
+- (void)checkSizeForOwner:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)horizontalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)inputViewWillAppear;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)notificationsForTransitionToPlacement:(id)arg1;
-- (struct CGRect)remoteIntrinsicContentSizeForInputViewInSet:(id)arg1;
+- (struct CGRect)remoteIntrinsicContentSizeForInputViewInSet:(id)arg1 includingIAV:(BOOL)arg2;
 - (void)setDirty;
 - (id)verticalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
+- (id)widthConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 
 @end
 

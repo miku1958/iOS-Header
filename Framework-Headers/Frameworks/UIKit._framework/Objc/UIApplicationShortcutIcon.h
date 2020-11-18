@@ -15,10 +15,10 @@
     SBSApplicationShortcutIcon *_sbsShortcutIcon;
 }
 
-@property (nonatomic) BOOL flipsForRightToLeftLayoutDirection;
 @property (readonly, nonatomic) SBSApplicationShortcutIcon *sbsShortcutIcon; // @synthesize sbsShortcutIcon=_sbsShortcutIcon;
 
 + (id)iconWithCustomImage:(id)arg1;
++ (id)iconWithCustomImage:(id)arg1 isTemplate:(BOOL)arg2;
 + (id)iconWithTemplateImageName:(id)arg1;
 + (id)iconWithType:(long long)arg1;
 + (long long)sbsIconTypeForIconType:(long long)arg1;

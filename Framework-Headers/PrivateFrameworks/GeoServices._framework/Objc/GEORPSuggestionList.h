@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) BOOL hasQuery;
 @property (strong, nonatomic) NSString *query; // @synthesize query=_query;
 
++ (Class)entryType;
 - (void)addEntry:(id)arg1;
 - (void)clearEntrys;
 - (void)copyTo:(id)arg1;

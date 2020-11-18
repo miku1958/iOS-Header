@@ -15,11 +15,11 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_cancelButtonTapped:(id)arg1;
-- (void)_fireButtonsVisibilityTimer:(id)arg1;
 - (void)_handleSingleTapGesture:(id)arg1;
 - (void)_postAnnoucement:(id)arg1;
+- (void)_showControlsIfNeededAndHideIfPossibleAfterDelayIfPlayingWithDelay:(double)arg1;
 - (void)_stopButtonTapped:(id)arg1;
-- (void)_updateButtonVisibility;
+- (void)_updateControlsVisibility;
 - (void)dealloc;
 - (void)loadView;
 - (void)setShowsAlternateActionButtonImage:(BOOL)arg1;

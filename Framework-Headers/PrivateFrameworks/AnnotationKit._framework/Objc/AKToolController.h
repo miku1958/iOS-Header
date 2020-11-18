@@ -10,13 +10,17 @@
 
 @interface AKToolController : NSObject
 {
+    BOOL _shapeDetectionBeforePen;
     unsigned long long _toolMode;
     AKController *_controller;
+    unsigned long long _toolModeBeforePen;
 }
 
 @property (weak) AKController *controller; // @synthesize controller=_controller;
 @property (readonly, nonatomic) BOOL isInDefaultMode;
+@property BOOL shapeDetectionBeforePen; // @synthesize shapeDetectionBeforePen=_shapeDetectionBeforePen;
 @property (nonatomic) unsigned long long toolMode; // @synthesize toolMode=_toolMode;
+@property unsigned long long toolModeBeforePen; // @synthesize toolModeBeforePen=_toolModeBeforePen;
 
 + (void)cascadeAnnotations:(id)arg1 onPageController:(id)arg2 forPaste:(BOOL)arg3;
 - (void).cxx_destruct;
@@ -36,9 +40,12 @@
 - (id)createAnnotationOfType:(long long)arg1 centeredAtPoint:(struct CGPoint)arg2;
 - (void)dealloc;
 - (id)initWithController:(id)arg1;
+- (BOOL)isToolSenderEnabled:(id)arg1;
 - (void)performToolActionForSender:(id)arg1;
 - (void)resetToDefaultMode;
-- (BOOL)validateToolSender:(id)arg1;
+- (void)restoreAfterSketchForPen;
+- (void)setIntelligentSketchForPen;
+- (void)updateToolSenderState:(id)arg1 enabled:(BOOL)arg2;
 
 @end
 

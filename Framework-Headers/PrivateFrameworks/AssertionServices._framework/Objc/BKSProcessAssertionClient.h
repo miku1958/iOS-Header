@@ -28,6 +28,7 @@
 - (void)queue_handleMessage:(id)arg1;
 - (void)registerClientHandler:(id)arg1 forAssertionIdentifier:(id)arg2;
 - (void)sendCreateAssertion:(id)arg1 withResponseHandler:(CDUnknownBlockType)arg2;
+- (id)sendCreateAssertionSync:(id)arg1;
 - (void)sendDestroyAssertion:(id)arg1;
 - (void)sendUpdateAssertion:(id)arg1;
 - (void)unregisterClientHandlerForAssertionIdentifier:(id)arg1;

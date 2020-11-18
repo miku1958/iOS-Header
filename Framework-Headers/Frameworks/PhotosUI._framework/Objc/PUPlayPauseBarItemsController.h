@@ -45,12 +45,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_observerQueue; // @synthesize _observerQueue=__observerQueue;
 @property (strong, nonatomic, setter=_setTimeObservationToken:) id _timeObservationToken; // @synthesize _timeObservationToken=__timeObservationToken;
 @property (strong, nonatomic, setter=_setVideoPlayer:) PUBrowsingVideoPlayer *_videoPlayer; // @synthesize _videoPlayer=__videoPlayer;
-@property (nonatomic) CDStruct_1b6d18a9 currentPlaybackTime; // @synthesize currentPlaybackTime=_currentPlaybackTime;
+@property (nonatomic, setter=_setCurrentPlaybackTime:) CDStruct_1b6d18a9 currentPlaybackTime; // @synthesize currentPlaybackTime=_currentPlaybackTime;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) long long playPauseState; // @synthesize playPauseState=_playPauseState;
-@property (nonatomic) CDStruct_1b6d18a9 playbackDuration; // @synthesize playbackDuration=_playbackDuration;
+@property (nonatomic, setter=_setPlayPauseState:) long long playPauseState; // @synthesize playPauseState=_playPauseState;
+@property (nonatomic, setter=_setPlaybackDuration:) CDStruct_1b6d18a9 playbackDuration; // @synthesize playbackDuration=_playbackDuration;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PUBrowsingViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
@@ -66,10 +66,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_needsUpdate;
 - (void)_performChanges:(CDUnknownBlockType)arg1;
 - (void)_publishChanges;
-- (void)_setCurrentPlaybackTime:(CDStruct_1b6d18a9)arg1;
 - (void)_setNeedsUpdate;
-- (void)_setPlayPauseState:(long long)arg1;
-- (void)_setPlaybackDuration:(CDStruct_1b6d18a9)arg1;
 - (void)_startObservingAVPlayer;
 - (void)_stopObservingAVPlayer;
 - (void)_updateAVPlayerIfNeeded;

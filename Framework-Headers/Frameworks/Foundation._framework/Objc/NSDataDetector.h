@@ -20,7 +20,6 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateMatchesInString:(id)arg1 options:(unsigned long long)arg2 range:(struct _NSRange)arg3 usingBlock:(CDUnknownBlockType)arg4;
-- (void)finalize;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPattern:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;

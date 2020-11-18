@@ -15,6 +15,7 @@
 {
     NSString *_path;
     NSObject<OS_dispatch_queue> *_queue;
+    Class _elementClass;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,7 +24,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithPath:(id)arg1;
+- (id)initWithPath:(id)arg1 elementClass:(Class)arg2;
 - (void)objectCache:(id)arg1 keysWithBlock:(CDUnknownBlockType)arg2;
 - (void)objectCache:(id)arg1 objectForKey:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)objectCache:(id)arg1 removeObjectForKey:(id)arg2 withBlock:(CDUnknownBlockType)arg3;

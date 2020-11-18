@@ -14,6 +14,7 @@
 }
 
 + (id)captionPanel;
+- (void).cxx_destruct;
 - (id)init;
 - (void)orientationChange;
 - (void)setText:(id)arg1;

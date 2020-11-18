@@ -6,44 +6,32 @@
 
 #import <MusicCarDisplayUI/MCD_OLD_TableViewController.h>
 
-#import <MusicCarDisplayUI/MCDTimeoutViewDelegate-Protocol.h>
+#import <MusicCarDisplayUI/MCDErrorViewDelegate-Protocol.h>
 #import <MusicCarDisplayUI/UITableViewDelegate-Protocol.h>
 
-@class MPUOperationQueue, MusicForYouRecommendationsResponse, NSIndexPath, NSString, NSTimer, UIActivityIndicatorView, UINavigationController, UIView;
+@class MPWeakTimer, MusicForYouRecommendationsResponse, NSIndexPath, NSString, UIActivityIndicatorView, UINavigationController, UIView;
 
-@interface MCDForYouViewController : MCD_OLD_TableViewController <UITableViewDelegate, MCDTimeoutViewDelegate>
+@interface MCDForYouViewController : MCD_OLD_TableViewController <UITableViewDelegate, MCDErrorViewDelegate>
 {
     BOOL _hasLoadedRecommendations;
-    BOOL _loadingInitialRecommendations;
-    BOOL _loadingAdditionalRecommendations;
-    BOOL _hasAdditionalRecommendations;
-    MPUOperationQueue *_operationQueue;
     UIView *_MCD_tableView;
     UIView *_placeholderView;
     MusicForYouRecommendationsResponse *_recommendationsResponse;
-    long long _modelRevisionID;
-    unsigned long long _additionalRecommendationsLoadedCount;
     double _screenScale;
     UIActivityIndicatorView *_activityIndicator;
     NSIndexPath *_selectedIndexPath;
     UINavigationController *_nowPlayingNavigationController;
-    NSTimer *_loadingTimer;
+    MPWeakTimer *_loadingTimer;
 }
 
 @property (strong, nonatomic) UIView *MCD_tableView; // @synthesize MCD_tableView=_MCD_tableView;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
-@property (nonatomic) unsigned long long additionalRecommendationsLoadedCount; // @synthesize additionalRecommendationsLoadedCount=_additionalRecommendationsLoadedCount;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL hasAdditionalRecommendations; // @synthesize hasAdditionalRecommendations=_hasAdditionalRecommendations;
 @property (nonatomic) BOOL hasLoadedRecommendations; // @synthesize hasLoadedRecommendations=_hasLoadedRecommendations;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL loadingAdditionalRecommendations; // @synthesize loadingAdditionalRecommendations=_loadingAdditionalRecommendations;
-@property (nonatomic) BOOL loadingInitialRecommendations; // @synthesize loadingInitialRecommendations=_loadingInitialRecommendations;
-@property (strong, nonatomic) NSTimer *loadingTimer; // @synthesize loadingTimer=_loadingTimer;
-@property (nonatomic) long long modelRevisionID; // @synthesize modelRevisionID=_modelRevisionID;
+@property (strong, nonatomic) MPWeakTimer *loadingTimer; // @synthesize loadingTimer=_loadingTimer;
 @property (strong, nonatomic) UINavigationController *nowPlayingNavigationController; // @synthesize nowPlayingNavigationController=_nowPlayingNavigationController;
-@property (strong, nonatomic) MPUOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property (strong, nonatomic) UIView *placeholderView; // @synthesize placeholderView=_placeholderView;
 @property (strong, nonatomic) MusicForYouRecommendationsResponse *recommendationsResponse; // @synthesize recommendationsResponse=_recommendationsResponse;
 @property (nonatomic) double screenScale; // @synthesize screenScale=_screenScale;
@@ -51,23 +39,20 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)_isNetworkTypeAllowed:(long long)arg1;
-- (void)_loadAdditionalRecommendations;
-- (void)_loadInitialRecommendations;
+- (void)_itemDidChange;
+- (void)_loadForYouRecommendations;
 - (void)_networkTypeDidChangeNotification:(id)arg1;
-- (id)_newForYouRecommendationsRequestWithType:(unsigned long long)arg1;
 - (id)_normalizedStringStoreIDForRecommendationItem:(id)arg1;
 - (void)_setCurrentTableView;
 - (void)_showLoadingScreen;
 - (void)_updateViewForNetworkType:(long long)arg1;
 - (void)didStartPlaying:(id)arg1;
+- (void)errorViewDidTapButton:(id)arg1;
 - (id)initWithPlayer:(id)arg1 serviceProvider:(id)arg2;
-- (id)lastRecommendation;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (void)timeoutViewDidPressRetryButton:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

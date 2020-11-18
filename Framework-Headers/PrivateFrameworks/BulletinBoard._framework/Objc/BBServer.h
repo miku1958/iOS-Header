@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/ABPredicateDelegate-Protocol.h>
 #import <BulletinBoard/BBDataProviderManagerDelegate-Protocol.h>
@@ -14,7 +14,7 @@
 #import <BulletinBoard/BBSyncServiceDelegate-Protocol.h>
 #import <BulletinBoard/NSXPCListenerDelegate-Protocol.h>
 
-@class ABFavoritesListManager, BBApplicationLauncher, BBDataProviderManager, BBDismissalSyncCache, BBSyncService, NSArray, NSDate, NSDateComponents, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSXPCListener;
+@class ABFavoritesListManager, BBDataProviderManager, BBDismissalSyncCache, BBMaskedSet, BBSyncService, NSArray, NSDate, NSDateComponents, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSXPCListener;
 @protocol OS_dispatch_source;
 
 @interface BBServer : NSObject <ABPredicateDelegate, BBDataProviderManagerDelegate, BBNotificationBehaviorUtilitiesServerProtocol, BBServerConduitServerInterface, BBSettingsGatewayServerInterface, NSXPCListenerDelegate, BBSyncServiceDelegate>
@@ -30,7 +30,7 @@
     BOOL _isRunning;
     BBDataProviderManager *_dataProviderManager;
     NSMutableSet *_observers;
-    NSMutableSet *_observersByFeed[9];
+    BBMaskedSet *_observerFeedSet;
     NSMutableArray *_observerGateways;
     NSMutableDictionary *_observerGatewaysByName;
     NSMutableDictionary *_observerGatewayEnumerators;
@@ -42,10 +42,7 @@
     NSMutableDictionary *_bulletinsByID;
     NSMutableDictionary *_bulletinIDsBySectionID;
     NSMutableDictionary *_noticeBulletinIDsBySectionID;
-    NSMutableDictionary *_todayBulletinIDsBySectionID;
-    NSMutableDictionary *_futureBulletinIDsBySectionID;
     NSArray *_behaviorOverrides;
-    long long _behaviorOverrideStatus;
     NSDate *_behaviorOverrideStatusEffectiveTime;
     NSObject<OS_dispatch_source> *_behaviorOverridesTimer;
     NSDate *_behaviorOverridesWakeTime;
@@ -53,6 +50,7 @@
     NSMutableArray *_behaviorOverridesEffectiveWhileUnlockedChangeClients;
     NSMutableArray *_behaviorOverrideStatusChangeClients;
     NSMutableArray *_activeBehaviorOverrideTypesChangeSettingsGateways;
+    NSMutableArray *_activeBehaviorOverrideTypesChangeAssertionCountSettingsGateways;
     NSMutableArray *_activeBehaviorOverrideTypesChangeClients;
     BOOL _behaviorOverridesEffectiveWhileUnlocked;
     unsigned long long _activeObserverBehaviorOverrideTypes;
@@ -82,8 +80,12 @@
     NSXPCListener *_systemStateListener;
     NSXPCListener *_settingsListener;
     NSMutableSet *_suspendedConnections;
-    BBApplicationLauncher *_applicationLauncher;
     BBDismissalSyncCache *_dismissalSyncCache;
+    long long _behaviorManualOverrideStatus;
+    long long _behaviorOverrideStatus;
+    NSMutableArray *_quietModeOverrideAssertions;
+    unsigned long long _activeQuietModeAssertionCount;
+    unsigned long long _activeQuietModeAssertionGatewayCount;
     void *_addressBook;
     ABFavoritesListManager *_favoritesListManager;
     BOOL _entryFound;
@@ -110,7 +112,9 @@
 + (void)removeSavedChronologicalSectionInfo:(id)arg1;
 + (id)savedChronologicalSectionOrder;
 + (id)savedSectionInfo;
+- (void).cxx_destruct;
 - (unsigned long long)_activeBehaviorOverrideTypesConsideringSystemState:(BOOL)arg1;
+- (unsigned long long)_activeQuietModeAssertionCount;
 - (id)_activeSectionIDs;
 - (void)_addActiveSectionID:(id)arg1;
 - (void)_addBulletin:(id)arg1;
@@ -145,13 +149,16 @@
 - (void)_clearSection:(id)arg1;
 - (id)_clearedInfoForSectionID:(id)arg1;
 - (id)_clearedSectionsPath;
+- (id)_createQuietModeAssertion;
 - (void)_dataProviderDidClearInfo:(id)arg1 forSection:(id)arg2;
 - (id)_defaultSectionOrderForTopLevelCollection:(id)arg1;
 - (id)_defaultSectionOrders;
 - (BOOL)_deviceSupportsFavorites;
 - (void)_didEffectiveSettingsChange:(id)arg1;
 - (BOOL)_didNotificationCenterSettingsChangeWithSectionInfo:(id)arg1 replacingSectionInfo:(id)arg2;
+- (void)_didReceiveResponseForBulletin:(id)arg1;
 - (BOOL)_doesAddressBookContainDestinationID:(id)arg1;
+- (BOOL)_doesAddressBookPersonContainCallIgnoreMuteForDestinationID:(id)arg1;
 - (BOOL)_doesFavoritesListContainDestinationID:(id)arg1;
 - (BOOL)_doesPrivilegedAddressBookGroupContainDestinationID:(id)arg1;
 - (id)_effectiveSectionFiltersForBulletin:(id)arg1;
@@ -170,7 +177,9 @@
 - (void)_handleSystemSleep;
 - (void)_handleSystemWake;
 - (unsigned long long)_indexForNewDate:(id)arg1 inBulletinIDArray:(id)arg2 sortedAscendingByDateForKey:(id)arg3;
+- (void)_invalidateAllQuietModeAssertions;
 - (BOOL)_isDestinationID:(id)arg1 inAddressBookGroupWithRecordID:(int)arg2;
+- (BOOL)_isQuietModeAssertActive;
 - (void)_loadBehaviorOverrides;
 - (void)_loadClearedSections;
 - (void)_loadDataProvidersAndSettings;
@@ -187,14 +196,15 @@
 - (void)_noteSystemStateChanged;
 - (void)_observeManagedProfileChanges;
 - (id)_observerGatewaysForFeeds:(unsigned long long)arg1;
-- (id)_observersForFeeds:(unsigned long long)arg1;
 - (id)_observersForNoticesFeed;
+- (id)_openApplicationOptionsForResponse:(id)arg1;
 - (void)_performPendingBulletinUpdatesForBulletinID:(id)arg1;
 - (void)_privilegedSenderAddressBookGroupRecordIDChangedFromSource:(unsigned long long)arg1;
 - (void)_privilegedSenderTypesChangedFromSource:(unsigned long long)arg1;
 - (void)_publishBulletinRequest:(id)arg1 forSectionID:(id)arg2 forDestinations:(unsigned long long)arg3;
 - (void)_publishBulletinRequest:(id)arg1 forSectionID:(id)arg2 forDestinations:(unsigned long long)arg3 alwaysToLockScreen:(BOOL)arg4;
 - (void)_publishBulletinsForAllDataProviders;
+- (void)_queue_setPrivilegedSenderTypes:(unsigned long long)arg1 source:(unsigned long long)arg2;
 - (void)_reloadReloadSectionInfoForSectionID:(id)arg1;
 - (void)_reloadSectionParametersForSectionID:(id)arg1;
 - (void)_removeActiveSectionID:(id)arg1;
@@ -222,12 +232,15 @@
 - (void)_sendAddBulletin:(id)arg1 toFeeds:(unsigned long long)arg2;
 - (void)_sendBulletinUpdate:(id)arg1;
 - (void)_sendModifyBulletin:(id)arg1 toFeeds:(unsigned long long)arg2;
+- (void)_sendObserver:(id)arg1 noticesBulletinsForSectionID:(id)arg2;
 - (void)_sendObseversActiveOverrideTypes:(unsigned long long)arg1 state:(unsigned long long)arg2;
 - (void)_sendPrivilegedSenderAddressBookGroupRecordIDChangedFromSource:(unsigned long long)arg1;
 - (void)_sendPrivilegedSenderTypesChangedFromSource:(unsigned long long)arg1;
 - (void)_sendRemoveBulletin:(id)arg1 toFeeds:(unsigned long long)arg2 shouldSync:(BOOL)arg3;
 - (void)_sendRemoveBulletins:(id)arg1 toFeeds:(unsigned long long)arg2 shouldSync:(BOOL)arg3;
+- (void)_sendRemoveSection:(id)arg1;
 - (void)_sendSettingsGatewaysActiveOverrideTypes:(unsigned long long)arg1 fromSource:(unsigned long long)arg2;
+- (void)_sendSettingsGatewaysActiveOverrideTypes:(unsigned long long)arg1 fromSource:(unsigned long long)arg2 activeQuietModeAssertionCount:(unsigned long long)arg3;
 - (void)_sendUpdateSectionInfo:(id)arg1;
 - (void)_sendUpdateSectionOrder;
 - (void)_sendUpdateSectionOrderRule;
@@ -255,7 +268,6 @@
 - (void)_updateSectionInfoForSectionID:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_updateSectionParametersForDataProvider:(id)arg1;
 - (void)_updateShowsMessagePreviewForBulletin:(id)arg1;
-- (id)_updatesForObserver:(id)arg1 bulletinIDs:(id)arg2;
 - (void)_validateExpirationDateForBulletin:(id)arg1;
 - (BOOL)_verifyBulletinRequest:(id)arg1 forDataProvider:(id)arg2;
 - (void)_writeBehaviorOverrides;
@@ -271,26 +283,26 @@
 - (id)dataProviderForSectionID:(id)arg1;
 - (void)dealloc;
 - (unsigned long long)defaultPrivilegedSenderType;
-- (void)deliverResponse:(id)arg1;
+- (void)deliverResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)demo_lockscreen:(unsigned long long)arg1;
 - (void)dpManager:(id)arg1 addDataProvider:(id)arg2 withSectionInfo:(id)arg3;
 - (void)dpManager:(id)arg1 addParentSectionFactory:(id)arg2;
 - (void)dpManager:(id)arg1 removeDataProviderSectionID:(id)arg2;
 - (id)dpManager:(id)arg1 sectionInfoForSectionID:(id)arg2;
 - (unsigned long long)effectivePushSettingsForSectionInfo:(id)arg1;
-- (void)forEachObserverFeedSetInGateways:(CDUnknownBlockType)arg1;
-- (id)futureBulletinIDsForSectionID:(id)arg1;
-- (void)getAttachmentAspectRatioForBulletinID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)getAttachmentPNGDataForBulletinID:(id)arg1 sizeConstraints:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
+- (void)getAspectRatioForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)getBehaviorOverridesEffectiveWhileUnlockedWithHandler:(CDUnknownBlockType)arg1;
 - (void)getBehaviorOverridesEnabledAndEffectiveDateWithHandler:(CDUnknownBlockType)arg1;
 - (void)getBehaviorOverridesEnabledWithHandler:(CDUnknownBlockType)arg1;
 - (void)getBehaviorOverridesWithHandler:(CDUnknownBlockType)arg1;
 - (void)getBulletinsForPublisherMatchIDs:(id)arg1 sectionID:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
+- (void)getBulletinsPublishedAfterDate:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getBulletinsWithHandler:(CDUnknownBlockType)arg1;
-- (void)getPrimaryAttachmentDataForBulletinID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)getDataForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
+- (void)getPNGDataForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(BOOL)arg3 sizeConstraints:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
 - (void)getPrivilegedSenderAddressBookGroupRecordIDAndNameWithHandler:(CDUnknownBlockType)arg1;
 - (void)getPrivilegedSenderTypesWithHandler:(CDUnknownBlockType)arg1;
+- (void)getPublisherMatchIDsOfBulletinsPublishedAfterDate:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getSectionInfoForActiveSectionsWithHandler:(CDUnknownBlockType)arg1;
 - (void)getSectionInfoForSectionID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getSectionInfoForSectionIDs:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
@@ -316,11 +328,9 @@
 - (void)observer:(id)arg1 getSectionInfoForActiveSectionsWithHandler:(CDUnknownBlockType)arg2;
 - (void)observer:(id)arg1 getSectionInfoForSectionIDs:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)observer:(id)arg1 getSectionInfoWithHandler:(CDUnknownBlockType)arg2;
-- (void)observer:(id)arg1 handleResponse:(id)arg2;
+- (void)observer:(id)arg1 handleResponse:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)observer:(id)arg1 removeBulletins:(id)arg2 inSection:(id)arg3 fromFeeds:(unsigned long long)arg4;
-- (void)observer:(id)arg1 requestFutureBulletinsForSectionID:(id)arg2;
 - (void)observer:(id)arg1 requestNoticesBulletinsForSectionID:(id)arg2;
-- (void)observer:(id)arg1 requestTodayBulletinsForSectionID:(id)arg2;
 - (void)observer:(id)arg1 setObserverFeed:(unsigned long long)arg2 asLightsAndSirensGateway:(id)arg3 priority:(unsigned long long)arg4;
 - (void)observer:(id)arg1 setObserverFeed:(unsigned long long)arg2 attachToLightsAndSirensGateway:(id)arg3;
 - (void)ping:(CDUnknownBlockType)arg1;
@@ -330,13 +340,14 @@
 - (void)publishBulletin:(id)arg1 destinations:(unsigned long long)arg2 alwaysToLockScreen:(BOOL)arg3;
 - (void)publishBulletinRequest:(id)arg1 destinations:(unsigned long long)arg2;
 - (void)publishBulletinRequest:(id)arg1 destinations:(unsigned long long)arg2 alwaysToLockScreen:(BOOL)arg3;
-- (void)removeBulletinID:(id)arg1 fromFutureSection:(id)arg2;
 - (void)removeBulletinID:(id)arg1 fromNoticesSection:(id)arg2;
 - (void)removeBulletinID:(id)arg1 fromSection:(id)arg2 inFeed:(unsigned long long)arg3;
-- (void)removeBulletinID:(id)arg1 fromTodaySection:(id)arg2;
+- (void)requestNoticesBulletinsForAllSections:(id)arg1;
+- (void)requestQuietModeOverrideAssertionWithCompletion:(CDUnknownBlockType)arg1;
 - (id)sectionIDForUniversalSectionID:(id)arg1;
 - (void)sendMessageToDataProviderSectionID:(id)arg1 name:(id)arg2 userInfo:(id)arg3;
-- (void)setActiveBehaviorOverrideChangeUpdatesEnabled:(BOOL)arg1 forClient:(id)arg2;
+- (void)setActiveBehaviorOverrideChangeUpdatesEnabled:(BOOL)arg1;
+- (void)setActiveBehaviorOverrideTypesChangeAssertionCountUpdatesEnabled:(BOOL)arg1;
 - (void)setActiveBehaviorOverrideTypesChangeUpdatesEnabled:(BOOL)arg1;
 - (void)setBehaviorOverrideStatus:(long long)arg1 effectiveDate:(id)arg2 source:(unsigned long long)arg3;
 - (void)setBehaviorOverrideStatusChangeUpdatesEnabled:(BOOL)arg1;
@@ -344,7 +355,7 @@
 - (void)setBehaviorOverridesChangeUpdatesEnabled:(BOOL)arg1;
 - (void)setBehaviorOverridesEffectiveWhileUnlocked:(BOOL)arg1 source:(unsigned long long)arg2;
 - (void)setBehaviorOverridesEffectiveWhileUnlockedChangeUpdatesEnabled:(BOOL)arg1;
-- (void)setNotificationPresentationFilteringStateChangeUpdatesEnabled:(BOOL)arg1 forClient:(id)arg2;
+- (void)setNotificationPresentationFilteringStateChangeUpdatesEnabled:(BOOL)arg1;
 - (void)setOrderedSectionIDs:(id)arg1;
 - (void)setPrivilegedSenderAddressBookGroupRecordID:(int)arg1 name:(id)arg2 source:(unsigned long long)arg3;
 - (void)setPrivilegedSenderAddressBookGroupRecordIDChangeUpdatesEnabled:(BOOL)arg1;
@@ -359,7 +370,6 @@
 - (id)syncService:(id)arg1 sectionIdentifierForUniversalSectionIdentifier:(id)arg2;
 - (BOOL)syncService:(id)arg1 shouldAbortDelayedDismissalForBulletin:(id)arg2;
 - (id)syncService:(id)arg1 universalSectionIdentifierForSectionIdentifier:(id)arg2;
-- (id)todayBulletinIDsForSectionID:(id)arg1;
 - (id)universalSectionIDForSectionID:(id)arg1;
 - (void)updateSection:(id)arg1 inFeed:(unsigned long long)arg2 withBulletinRequests:(id)arg3;
 - (void)weeAppWithBundleID:(id)arg1 getHiddenFromUser:(CDUnknownBlockType)arg2;

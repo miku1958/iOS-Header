@@ -9,15 +9,17 @@
 #import <CameraUI/CAMDistinctPersistenceCopying-Protocol.h>
 #import <CameraUI/NSCopying-Protocol.h>
 
-@class CLLocation, NSDictionary, NSMutableDictionary, NSString, NSURL;
+@class CLLocation, NSString, NSURL;
 
 @interface CAMCaptureRequest : NSObject <NSCopying, CAMDistinctPersistenceCopying>
 {
+    long long _origin;
     unsigned int _assertionIdentifier;
     BOOL _capturedFromPhotoBooth;
     CLLocation *_location;
     long long _persistenceOptions;
     unsigned long long _deferredPersistenceOptions;
+    long long _temporaryPersistenceOptions;
     NSURL *_localDestinationURL;
     NSString *_persistenceUUID;
     BOOL _shouldExtractDiagnosticsFromMetadata;
@@ -28,12 +30,9 @@
     long long _captureMode;
     long long _captureOrientation;
     long long _physicalButtonType;
-    NSMutableDictionary *__parameterStorage;
     long long _type;
 }
 
-@property (readonly, copy, nonatomic) NSDictionary *_customParameterStorage;
-@property (readonly, nonatomic) NSMutableDictionary *_parameterStorage; // @synthesize _parameterStorage=__parameterStorage;
 @property (readonly, nonatomic) unsigned int assertionIdentifier; // @synthesize assertionIdentifier=_assertionIdentifier;
 @property (readonly, nonatomic) long long captureDevice; // @synthesize captureDevice=_captureDevice;
 @property (readonly, nonatomic) long long captureMode; // @synthesize captureMode=_captureMode;
@@ -45,6 +44,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSURL *localDestinationURL; // @synthesize localDestinationURL=_localDestinationURL;
 @property (readonly, nonatomic) CLLocation *location; // @synthesize location=_location;
+@property (readonly, nonatomic) long long origin; // @synthesize origin=_origin;
 @property (readonly, nonatomic) long long persistenceOptions; // @synthesize persistenceOptions=_persistenceOptions;
 @property (readonly, copy, nonatomic) NSString *persistenceUUID; // @synthesize persistenceUUID=_persistenceUUID;
 @property (readonly, nonatomic) long long physicalButtonType; // @synthesize physicalButtonType=_physicalButtonType;
@@ -53,6 +53,7 @@
 @property (readonly, nonatomic) BOOL shouldExtractDiagnosticsFromMetadata; // @synthesize shouldExtractDiagnosticsFromMetadata=_shouldExtractDiagnosticsFromMetadata;
 @property (readonly, nonatomic) BOOL shouldPersistDiagnosticsToSidecar; // @synthesize shouldPersistDiagnosticsToSidecar=_shouldPersistDiagnosticsToSidecar;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) long long temporaryPersistenceOptions; // @synthesize temporaryPersistenceOptions=_temporaryPersistenceOptions;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
@@ -61,7 +62,8 @@
 - (id)init;
 - (id)initWithRequest:(id)arg1 distinctPersistence:(BOOL)arg2;
 - (id)initWithType:(long long)arg1;
-- (id)parameterForKey:(id)arg1;
+- (BOOL)shouldPersistToIncomingDirectory;
+- (BOOL)shouldProtectPersistence;
 
 @end
 

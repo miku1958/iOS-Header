@@ -9,6 +9,7 @@
 @interface NSString (MFStringUtils)
 + (id)mf_stringWithData:(id)arg1 encoding:(unsigned long long)arg2;
 - (id)mf_MD5Digest;
+- (id)mf_SHA1Digest;
 - (long long)mf_caseInsensitiveCompareExcludingXDash:(id)arg1;
 - (id)mf_copyStringByDecodingIDNA;
 - (id)mf_copyStringByDecodingIDNAInRange:(struct _NSRange)arg1;

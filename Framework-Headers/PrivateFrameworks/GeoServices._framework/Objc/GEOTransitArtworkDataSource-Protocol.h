@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) long long artworkUseType;
 @property (readonly, nonatomic) BOOL hasRoutingIncidentBadge;
 @property (readonly, nonatomic) id<GEOTransitIconDataSource> iconDataSource;
+@property (readonly, nonatomic) id<GEOTransitShieldDataSource> iconFallbackShieldDataSource;
 @property (readonly, nonatomic) id<GEOTransitShieldDataSource> shieldDataSource;
 
 @end

@@ -6,10 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
+#import <MobileCoreServices/NSSecureCoding-Protocol.h>
+
 @class NSData, NSDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface _LSAppLinkOpenState : NSObject
+@interface _LSAppLinkOpenState : NSObject <NSSecureCoding>
 {
     BOOL _openStrategyChanged;
     NSURL *_URL;
@@ -23,9 +25,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSData *dataRepresentation; // @dynamic dataRepresentation;
 @property BOOL openStrategyChanged; // @synthesize openStrategyChanged=_openStrategyChanged;
 
-+ (id)openStateWithDataRepresentation:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (id)debugDescription;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithDataRepresentation:(id)arg1;
 - (BOOL)validate;
 
 @end

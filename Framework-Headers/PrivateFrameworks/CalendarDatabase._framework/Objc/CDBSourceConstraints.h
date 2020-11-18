@@ -10,19 +10,20 @@
 {
     int _maxAlarmsAllowed;
     int _maxRecurrencesAllowed;
-    CDStruct_185c1d32 _flags;
+    CDStruct_db2ffdc8 _flags;
 }
 
 @property (nonatomic) BOOL alarmTriggerIntervalConstrainedToRecurrenceInterval;
 @property (nonatomic) BOOL allowsCalendarAddDeleteModify;
 @property (nonatomic) BOOL allowsEvents;
+@property (nonatomic) BOOL allowsProposeNewTime;
 @property (nonatomic) BOOL allowsTasks;
 @property (nonatomic) BOOL canSetAvailability;
 @property (nonatomic) BOOL declinedStatusChangeRequiresNoPendingStatus;
 @property (nonatomic) BOOL deliverySourceOrExternalIDRequiredForResponse;
 @property (nonatomic) BOOL eventAvalabilityLimited;
 @property (nonatomic) BOOL eventDurationConstrainedToRecurrenceInterval;
-@property (nonatomic) CDStruct_185c1d32 flags; // @synthesize flags=_flags;
+@property (nonatomic) CDStruct_db2ffdc8 flags; // @synthesize flags=_flags;
 @property (nonatomic) BOOL futureStartDateLimitedToOccurrenceCacheBounds;
 @property (nonatomic) BOOL inviteesCanSeeAttendeeStatuses;
 @property (nonatomic) BOOL isFacebook;
@@ -32,6 +33,7 @@
 @property (nonatomic) BOOL occurrencesMustOccurOnSeparateDays;
 @property (nonatomic) BOOL organizerCanSeeAttendeeStatuses;
 @property (nonatomic) BOOL prohibitsDetachmentOnCommentChange;
+@property (nonatomic) BOOL prohibitsICSImport;
 @property (nonatomic) BOOL prohibitsMultipleDaysInMonthlyRecurrence;
 @property (nonatomic) BOOL prohibitsMultipleMonthsInYearlyRecurrence;
 @property (nonatomic) BOOL prohibitsPrivateEventsWithAttendees;
@@ -54,6 +56,7 @@
 @property (nonatomic) BOOL supportsAlarmsTriggeringAfterStartDate;
 @property (nonatomic) BOOL supportsAllDayDueDates;
 @property (nonatomic) BOOL supportsAvailabilityRequests;
+@property (nonatomic) BOOL supportsEventForwarding;
 @property (nonatomic) BOOL supportsIgnoringEventsInAvailabilityRequests;
 @property (nonatomic) BOOL supportsIncomingInvitations;
 @property (nonatomic) BOOL supportsInvitationModifications;

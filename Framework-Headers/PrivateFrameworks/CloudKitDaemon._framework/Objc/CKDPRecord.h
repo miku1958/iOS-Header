@@ -8,10 +8,13 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPDateStatistics, CKDPIdentifier, CKDPProtectionInfo, CKDPRecordIdentifier, CKDPRecordType, CKDPShareIdentifier, NSMutableArray, NSString;
+@class CKDPDateStatistics, CKDPIdentifier, CKDPProtectionInfo, CKDPRecordChainParent, CKDPRecordIdentifier, CKDPRecordStableUrl, CKDPRecordType, CKDPShare, CKDPShareIdentifier, NSData, NSMutableArray, NSString;
 
 @interface CKDPRecord : PBCodable <NSCopying>
 {
+    CKDPRecordChainParent *_chainParent;
+    NSData *_chainPrivateKey;
+    CKDPProtectionInfo *_chainProtectionInfo;
     NSMutableArray *_conflictLoserEtags;
     CKDPIdentifier *_createdBy;
     NSString *_etag;
@@ -23,17 +26,26 @@
     CKDPProtectionInfo *_protectionInfo;
     CKDPRecordIdentifier *_recordIdentifier;
     CKDPShareIdentifier *_shareId;
+    CKDPShare *_shareInfo;
+    CKDPRecordStableUrl *_stableUrl;
     CKDPDateStatistics *_timeStatistics;
+    NSMutableArray *_tombstonedPublicKeyIDs;
     CKDPRecordType *_type;
     struct {
         unsigned int permission:1;
     } _has;
 }
 
+@property (strong, nonatomic) CKDPRecordChainParent *chainParent; // @synthesize chainParent=_chainParent;
+@property (strong, nonatomic) NSData *chainPrivateKey; // @synthesize chainPrivateKey=_chainPrivateKey;
+@property (strong, nonatomic) CKDPProtectionInfo *chainProtectionInfo; // @synthesize chainProtectionInfo=_chainProtectionInfo;
 @property (strong, nonatomic) NSMutableArray *conflictLoserEtags; // @synthesize conflictLoserEtags=_conflictLoserEtags;
 @property (strong, nonatomic) CKDPIdentifier *createdBy; // @synthesize createdBy=_createdBy;
 @property (strong, nonatomic) NSString *etag; // @synthesize etag=_etag;
 @property (strong, nonatomic) NSMutableArray *fields; // @synthesize fields=_fields;
+@property (readonly, nonatomic) BOOL hasChainParent;
+@property (readonly, nonatomic) BOOL hasChainPrivateKey;
+@property (readonly, nonatomic) BOOL hasChainProtectionInfo;
 @property (readonly, nonatomic) BOOL hasCreatedBy;
 @property (readonly, nonatomic) BOOL hasEtag;
 @property (readonly, nonatomic) BOOL hasModifiedBy;
@@ -42,6 +54,8 @@
 @property (readonly, nonatomic) BOOL hasProtectionInfo;
 @property (readonly, nonatomic) BOOL hasRecordIdentifier;
 @property (readonly, nonatomic) BOOL hasShareId;
+@property (readonly, nonatomic) BOOL hasShareInfo;
+@property (readonly, nonatomic) BOOL hasStableUrl;
 @property (readonly, nonatomic) BOOL hasTimeStatistics;
 @property (readonly, nonatomic) BOOL hasType;
 @property (strong, nonatomic) CKDPIdentifier *modifiedBy; // @synthesize modifiedBy=_modifiedBy;
@@ -51,18 +65,29 @@
 @property (strong, nonatomic) CKDPProtectionInfo *protectionInfo; // @synthesize protectionInfo=_protectionInfo;
 @property (strong, nonatomic) CKDPRecordIdentifier *recordIdentifier; // @synthesize recordIdentifier=_recordIdentifier;
 @property (strong, nonatomic) CKDPShareIdentifier *shareId; // @synthesize shareId=_shareId;
+@property (strong, nonatomic) CKDPShare *shareInfo; // @synthesize shareInfo=_shareInfo;
+@property (strong, nonatomic) CKDPRecordStableUrl *stableUrl; // @synthesize stableUrl=_stableUrl;
 @property (strong, nonatomic) CKDPDateStatistics *timeStatistics; // @synthesize timeStatistics=_timeStatistics;
+@property (strong, nonatomic) NSMutableArray *tombstonedPublicKeyIDs; // @synthesize tombstonedPublicKeyIDs=_tombstonedPublicKeyIDs;
 @property (strong, nonatomic) CKDPRecordType *type; // @synthesize type=_type;
 
++ (Class)conflictLoserEtagsType;
++ (Class)fieldsType;
++ (Class)pluginFieldsType;
 + (id)recordFromData:(id)arg1;
++ (Class)tombstonedPublicKeyIDsType;
 - (void).cxx_destruct;
+- (int)StringAsPermission:(id)arg1;
 - (void)_inflateFieldsFromData:(id)arg1;
+- (id)_permissionAsString;
 - (void)addConflictLoserEtags:(id)arg1;
 - (void)addFields:(id)arg1;
 - (void)addPluginFields:(id)arg1;
+- (void)addTombstonedPublicKeyIDs:(id)arg1;
 - (void)clearConflictLoserEtags;
 - (void)clearFields;
 - (void)clearPluginFields;
+- (void)clearTombstonedPublicKeyIDs;
 - (id)conflictLoserEtagsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)conflictLoserEtagsCount;
 - (void)copyTo:(id)arg1;
@@ -77,9 +102,12 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)permissionAsString:(int)arg1;
 - (id)pluginFieldsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)pluginFieldsCount;
 - (BOOL)readFrom:(id)arg1;
+- (id)tombstonedPublicKeyIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)tombstonedPublicKeyIDsCount;
 - (void)writeTo:(id)arg1;
 
 @end

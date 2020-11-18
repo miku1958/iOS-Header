@@ -8,12 +8,12 @@
 
 #import <HealthDaemon/HDHealthDataCollector-Protocol.h>
 
-@class HDDeviceEntity, HDSourceEntity, HKObjectType, NSString;
-@protocol HDHealthDaemon, OS_dispatch_queue;
+@class HDDeviceEntity, HDPrimaryProfile, HDSourceEntity, HKObjectType, NSString;
+@protocol OS_dispatch_queue;
 
 @interface HDDataCollector : NSObject <HDHealthDataCollector>
 {
-    id<HDHealthDaemon> _healthDaemon;
+    HDPrimaryProfile *_primaryProfile;
     NSObject<OS_dispatch_queue> *_queue;
     HKObjectType *_observedType;
     HDDeviceEntity *_deviceEntity;
@@ -31,6 +31,9 @@
 @property (readonly) HDSourceEntity *sourceEntity; // @synthesize sourceEntity=_sourceEntity;
 @property (readonly) Class superclass;
 
++ (BOOL)_primaryContextExistsForDomain:(id)arg1 profile:(id)arg2;
++ (id)_retrieveContextForKey:(id)arg1 domain:(id)arg2 profile:(id)arg3;
++ (double)defaultCollectionInterval;
 + (id)domain;
 + (id)observedType;
 + (id)secondaryContextClasses;
@@ -67,11 +70,12 @@
 - (void)collectionStoppedForType:(id)arg1;
 - (id)dataCollectorDiagnosticDescription;
 - (id)deviceEntity;
-- (id)initWithHealthDaemon:(id)arg1;
+- (id)initWithPrimaryProfile:(id)arg1;
 - (void)setCollectionInterval:(double)arg1;
 - (void)stopPerformingUpdatesWithErrorEncountered:(BOOL)arg1;
 - (void)updateCollectionInterval:(double)arg1 forType:(id)arg2;
 - (void)updateHistoricalData;
+- (void)updateHistoricalDataWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

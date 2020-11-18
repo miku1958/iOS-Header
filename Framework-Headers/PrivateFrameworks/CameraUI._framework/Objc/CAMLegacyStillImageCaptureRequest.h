@@ -9,16 +9,16 @@
 #import <CameraUI/CAMBurstIdentifierProvider-Protocol.h>
 #import <CameraUI/CAMBurstRequest-Protocol.h>
 #import <CameraUI/CAMEffectFilterTypeProvider-Protocol.h>
-#import <CameraUI/CAMHDRRequest-Protocol.h>
+#import <CameraUI/CAMPossibleOriginalRequest-Protocol.h>
 #import <CameraUI/NSCopying-Protocol.h>
 #import <CameraUI/NSMutableCopying-Protocol.h>
 
 @class NSString;
 @protocol CAMLegacyStillImageCaptureRequestDelegate;
 
-@interface CAMLegacyStillImageCaptureRequest : CAMCaptureRequest <CAMHDRRequest, CAMEffectFilterTypeProvider, CAMBurstIdentifierProvider, NSCopying, NSMutableCopying, CAMBurstRequest>
+@interface CAMLegacyStillImageCaptureRequest : CAMCaptureRequest <CAMPossibleOriginalRequest, CAMEffectFilterTypeProvider, CAMBurstIdentifierProvider, NSCopying, NSMutableCopying, CAMBurstRequest>
 {
-    NSString *_HDREV0PersistenceUUID;
+    NSString *_originalPersistenceUUID;
     long long _effectFilterType;
     unsigned long long _maximumBurstLength;
     BOOL _transient;
@@ -30,7 +30,6 @@
     id<CAMLegacyStillImageCaptureRequestDelegate> _delegate;
 }
 
-@property (readonly, copy, nonatomic) NSString *HDREV0PersistenceUUID; // @synthesize HDREV0PersistenceUUID=_HDREV0PersistenceUUID;
 @property (readonly, copy, nonatomic) NSString *burstIdentifier; // @synthesize burstIdentifier=_burstIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak, nonatomic) id<CAMLegacyStillImageCaptureRequestDelegate> delegate; // @synthesize delegate=_delegate;
@@ -40,6 +39,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long hdrMode; // @synthesize hdrMode=_hdrMode;
 @property (readonly, nonatomic) unsigned long long maximumBurstLength; // @synthesize maximumBurstLength=_maximumBurstLength;
+@property (readonly, copy, nonatomic) NSString *originalPersistenceUUID; // @synthesize originalPersistenceUUID=_originalPersistenceUUID;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isTransient) BOOL transient; // @synthesize transient=_transient;
 @property (readonly, nonatomic) BOOL usesStillImageStabilization; // @synthesize usesStillImageStabilization=_usesStillImageStabilization;

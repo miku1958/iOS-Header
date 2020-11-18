@@ -32,8 +32,27 @@ struct AutoRetainReleaseTypePtr<const __CFUUID *, CFObject> {
     struct __CFUUID *_field2;
 };
 
+struct BackgroundTaskServerTrustTestResult {
+    BOOL _field1;
+    BOOL _field2;
+    BOOL _field3;
+};
+
 struct BaseSocketStreamClient {
     CDUnknownFunctionPointerType *_field1;
+};
+
+struct BlockHolderVar<NSURLSessionTaskMetrics *>;
+
+struct BlockHolderVar<bool>;
+
+struct CBs {
+    CDUnknownBlockType _field1;
+    CDUnknownBlockType _field2;
+    CDUnknownBlockType _field3;
+    CDUnknownBlockType _field4;
+    CDUnknownBlockType _field5;
+    CDUnknownBlockType _field6;
 };
 
 struct CFURLProtocolClient {
@@ -125,8 +144,8 @@ struct HTTPConnectionCacheKey {
     struct __CFDictionary *_field8;
     unsigned long long _field9;
     struct __CFDictionary *_field10;
-    struct NetworkProxy *_field11;
-    struct __CFString *_field12;
+    struct shared_ptr<NetworkProxy> _field11;
+    struct shared_ptr<const __CFString> _field12;
     int _field13;
     int _field14;
 };
@@ -167,12 +186,13 @@ struct HTTPRequestMessage {
     struct HTTPParser *_field11;
     struct HTTPHeaderDict *_field12;
     struct HTTPHeaderDict *_field13;
-    CDUnknownFunctionPointerType *_field14;
-    struct __CFAllocator *_field15;
-    struct HTTPMethodMixedValue _field16;
-    char *_field17;
-    struct __CFURL *_field18;
-    char *_field19;
+    struct __CFDictionary *_field14;
+    CDUnknownFunctionPointerType *_field15;
+    struct __CFAllocator *_field16;
+    struct HTTPMethodMixedValue _field17;
+    char *_field18;
+    struct __CFURL *_field19;
+    char *_field20;
 };
 
 struct HTTPVersionMixedValue {
@@ -250,32 +270,52 @@ struct PerformanceTiming {
     double _field22;
     struct __CFString *_field23;
     double _field24;
-    struct __CFString *_field25;
-    double _field26;
-    struct __CFString *_field27;
-    double _field28;
-    struct __CFString *_field29;
-    int _field30;
-    struct __CFString *_field31;
-    int _field32;
-    struct __CFString *_field33;
-    BOOL _field34;
-    struct AutoRetainReleaseTypePtr<const __CFData *, CFObject> _field35;
-    struct AutoRetainReleaseTypePtr<const __CFString *, CFObject> _field36;
-    struct AutoRetainReleaseTypePtr<const __CFUUID *, CFObject> _field37;
-    struct AutoRetainReleaseTypePtr<const __CFDictionary *, CFObject> _field38;
-    BOOL _field39;
-    BOOL _field40;
-    BOOL _field41;
-    struct AutoRetainReleaseTypePtr<const __CFDictionary *, CFObject> _field42;
-    struct AutoRetainReleaseTypePtr<const __CFDictionary *, CFObject> _field43;
-    struct unique_ptr<const __CFDictionary, Deleter_CFRelease> _field44;
-    double _field45;
-    struct __CFString *_field46;
-    BOOL _field47;
+    double _field25;
+    struct __CFString *_field26;
+    double _field27;
+    struct __CFString *_field28;
+    double _field29;
+    struct __CFString *_field30;
+    double _field31;
+    struct __CFString *_field32;
+    int _field33;
+    struct __CFString *_field34;
+    int _field35;
+    struct __CFString *_field36;
+    double _field37;
+    struct __CFString *_field38;
+    double _field39;
+    struct __CFString *_field40;
+    double _field41;
+    struct __CFString *_field42;
+    BOOL _field43;
+    struct AutoRetainReleaseTypePtr<const __CFData *, CFObject> _field44;
+    struct AutoRetainReleaseTypePtr<const __CFString *, CFObject> _field45;
+    struct AutoRetainReleaseTypePtr<const __CFUUID *, CFObject> _field46;
+    struct shared_ptr<__CFDictionary> _field47;
     BOOL _field48;
-    long long _field49;
-    struct unique_ptr<__CFDictionary, Deleter_CFRelease> _field50;
+    BOOL _field49;
+    BOOL _field50;
+    BOOL _field51;
+    struct AutoRetainReleaseTypePtr<const __CFDictionary *, CFObject> _field52;
+    struct AutoRetainReleaseTypePtr<const __CFDictionary *, CFObject> _field53;
+    struct unique_ptr<const __CFDictionary, Deleter_CFRelease> _field54;
+    struct unique_ptr<const __CFDictionary, Deleter_CFRelease> _field55;
+    double _field56;
+    struct __CFString *_field57;
+    BOOL _field58;
+    BOOL _field59;
+    long long _field60;
+    BOOL _field61;
+    BOOL _field62;
+    struct unique_ptr<const __CFString, Deleter_CFRelease> _field63;
+    struct unique_ptr<__CFDictionary, Deleter_CFRelease> _field64;
+    BOOL _field65;
+    struct unique_ptr<const void, Deleter_CFRelease> _field66;
+    struct unique_ptr<const void, Deleter_CFRelease> _field67;
+    BOOL _field68;
+    BOOL _field69;
+    BOOL _field70;
 };
 
 struct RedirectionRecorder;
@@ -293,18 +333,23 @@ struct SessionConnectionLoadable {
     id _field8;
 };
 
+struct SmartBlockWithArgs<NSURLSessionTaskMetrics *> {
+    struct BlockHolderVar<NSURLSessionTaskMetrics *> *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
+struct SmartBlockWithArgs<bool> {
+    struct BlockHolderVar<bool> *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
 struct TCPIOConnectionObjCPP;
 
 struct TCPIO_BlockCallbacks_Listener {
     CDUnknownFunctionPointerType *_field1;
-    CDUnknownBlockType _field2;
-    CDUnknownBlockType _field3;
-    CDUnknownBlockType _field4;
-    CDUnknownBlockType _field5;
-    CDUnknownBlockType _field6;
-    CDUnknownBlockType _field7;
-    id _field8;
-    int _field9;
+    struct CBs _field2;
+    id _field3;
+    int _field4;
 };
 
 struct TCPIO_EstablishBase;
@@ -440,6 +485,11 @@ struct __shared_weak_count;
 
 struct internal_state;
 
+struct shared_ptr<NetworkProxy> {
+    struct NetworkProxy *_field1;
+    struct __shared_weak_count *_field2;
+};
+
 struct shared_ptr<TCPIOConnectionObjCPP> {
     struct TCPIOConnectionObjCPP *__ptr_;
     struct __shared_weak_count *__cntrl_;
@@ -450,8 +500,18 @@ struct shared_ptr<TCPIO_EstablishBase> {
     struct __shared_weak_count *__cntrl_;
 };
 
+struct shared_ptr<__CFDictionary> {
+    struct __CFDictionary *_field1;
+    struct __shared_weak_count *_field2;
+};
+
 struct shared_ptr<__CFURLCache> {
     struct __CFURLCache *_field1;
+    struct __shared_weak_count *_field2;
+};
+
+struct shared_ptr<const __CFString> {
+    struct __CFString *_field1;
     struct __shared_weak_count *_field2;
 };
 
@@ -490,6 +550,18 @@ struct unique_ptr<__CFDictionary, Deleter_CFRelease> {
 struct unique_ptr<const __CFDictionary, Deleter_CFRelease> {
     struct __compressed_pair<const __CFDictionary *, Deleter_CFRelease> {
         struct __CFDictionary *_field1;
+    } _field1;
+};
+
+struct unique_ptr<const __CFString, Deleter_CFRelease> {
+    struct __compressed_pair<const __CFString *, Deleter_CFRelease> {
+        struct __CFString *_field1;
+    } _field1;
+};
+
+struct unique_ptr<const void, Deleter_CFRelease> {
+    struct __compressed_pair<const void *, Deleter_CFRelease> {
+        void *_field1;
     } _field1;
 };
 
@@ -535,6 +607,16 @@ typedef struct {
 } CDStruct_3c1748cc;
 
 // Template types
+typedef struct SmartBlockWithArgs<NSURLSessionTaskMetrics *> {
+    struct BlockHolderVar<NSURLSessionTaskMetrics *> *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} SmartBlockWithArgs_02d865d6;
+
+typedef struct SmartBlockWithArgs<bool> {
+    struct BlockHolderVar<bool> *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} SmartBlockWithArgs_7064a8fd;
+
 typedef struct shared_ptr<TCPIOConnectionObjCPP> {
     struct TCPIOConnectionObjCPP *__ptr_;
     struct __shared_weak_count *__cntrl_;

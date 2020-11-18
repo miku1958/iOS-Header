@@ -10,7 +10,7 @@
 #import <RemoteUI/UIPickerViewDelegate-Protocol.h>
 #import <RemoteUI/UITextFieldDelegate-Protocol.h>
 
-@class NSData, NSDate, NSDictionary, NSMutableArray, NSString, RUIWebContainerView, RemoteUITableViewCell, UIControl, UISwitch, UIView;
+@class NSData, NSDate, NSDictionary, NSMutableArray, NSString, RUIPage, RemoteUITableViewCell, UIControl, UISwitch, UIView;
 @protocol RUITableViewRowDelegate, RUITextFieldChangeObserver;
 
 @interface RUITableViewRow : RUIElement <RUIWebContainerViewDelegate, UIPickerViewDelegate, UITextFieldDelegate>
@@ -26,15 +26,16 @@
     BOOL _rowInvalid;
     NSDictionary *_deleteAction;
     NSData *_data;
-    RUIWebContainerView *_webContainerView;
     float _cachedHeight;
     BOOL _configured;
     BOOL _selected;
+    BOOL _showingProgressIndicator;
     id<RUITableViewRowDelegate> _delegate;
     long long _datePickerMode;
     UIView *_pickerView;
     double _height;
     id<RUITextFieldChangeObserver> _textFieldChangeObserver;
+    RUIPage *_linkedPage;
     long long _alignment;
 }
 
@@ -52,10 +53,12 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double height; // @synthesize height=_height;
+@property (weak, nonatomic) RUIPage *linkedPage; // @synthesize linkedPage=_linkedPage;
 @property (strong, nonatomic) UIView *pickerView; // @synthesize pickerView=_pickerView;
 @property (nonatomic) BOOL rowInvalid; // @synthesize rowInvalid=_rowInvalid;
 @property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
 @property (readonly, nonatomic) long long selectedRow; // @synthesize selectedRow=_selectedRow;
+@property (nonatomic, getter=isShowingProgressIndicator) BOOL showingProgressIndicator; // @synthesize showingProgressIndicator=_showingProgressIndicator;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<RUITextFieldChangeObserver> textFieldChangeObserver; // @synthesize textFieldChangeObserver=_textFieldChangeObserver;
 
@@ -83,10 +86,15 @@
 - (void)populatePostbackDictionary:(id)arg1;
 - (id)radioGroupSelectedColor;
 - (float)rowHeightWithMax:(float)arg1 peggedHeight:(float)arg2 tableView:(id)arg3 indexPath:(id)arg4;
+- (BOOL)rowSupportsLoadingIndicator;
 - (id)selectOptions;
 - (void)setAttributes:(id)arg1;
+- (void)setEditableTextFieldValue:(id)arg1;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setImage:(id)arg1;
+- (BOOL)setSelectPageRowValue:(id)arg1;
+- (void)setSelectRowValue:(id)arg1;
+- (void)setValueFromString:(id)arg1;
 - (id)sourceURL;
 - (BOOL)supportsAutomaticSelection;
 - (void)switchCanceled;

@@ -11,21 +11,21 @@
 #import <PhotosUI/PUActivityViewControllerDelegate-Protocol.h>
 #import <PhotosUI/PUOneUpAssetTransitionViewController-Protocol.h>
 #import <PhotosUI/PUOneUpPhotosSharingTransitionViewController-Protocol.h>
-#import <PhotosUI/PUPhotoLibraryUIChangeObserver-Protocol.h>
 #import <PhotosUI/PUPhotoViewContentHelperDelegate-Protocol.h>
 #import <PhotosUI/PUPhotosSharingCollectionViewLayoutDelegate-Protocol.h>
 #import <PhotosUI/PUPhotosSharingTransitionViewController-Protocol.h>
 #import <PhotosUI/PUScrollViewSpeedometerDelegate-Protocol.h>
 #import <PhotosUI/PUTransitionViewAnimatorDelegate-Protocol.h>
+#import <PhotosUI/PXPhotoLibraryUIChangeObserver-Protocol.h>
 #import <PhotosUI/UIActivityViewControllerDelegate-Protocol.h>
 #import <PhotosUI/UICollectionViewDataSource-Protocol.h>
 #import <PhotosUI/UICollectionViewDelegate-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSIndexPath, NSMapTable, NSMutableDictionary, NSMutableSet, NSPredicate, NSString, PHAsset, PHCachingImageManager, PHFetchResult, PUActivityViewController, PUOneUpAssetTransitionInfo, PUPhotoPinchGestureRecognizer, PUPhotoSelectionManager, PUPhotosSharingCollectionViewLayout, PUPhotosSharingTransitionContext, PUPhotosSharingViewControllerSpec, PUPhotosZoomingSharingGridCell, PUScrollViewSpeedometer, PUTransitionViewAnimator, UIBarButtonItem, UICollectionView, UICollectionViewLayout, UITapGestureRecognizer, UIView;
-@protocol PUPhotosSharingViewControllerDelegate, PUPresentingPhotoBrowserController;
+@class NSArray, NSIndexPath, NSMapTable, NSMutableDictionary, NSMutableSet, NSPredicate, NSString, PHAsset, PHCachingImageManager, PHFetchResult, PHPerson, PUActivityViewController, PUOneUpAssetTransitionInfo, PUPhotoPinchGestureRecognizer, PUPhotoSelectionManager, PUPhotosSharingCollectionViewLayout, PUPhotosSharingTransitionContext, PUPhotosSharingViewControllerSpec, PUPhotosZoomingSharingGridCell, PUScrollViewSpeedometer, PUTransitionViewAnimator, PXAssetBadgeManager, UIBarButtonItem, UICollectionView, UICollectionViewLayout, UITapGestureRecognizer, UIView;
+@protocol PUPhotosSharingViewControllerDelegate;
 
-@interface PUPhotosSharingViewController : UIViewController <PLDismissableViewController, UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, PUPhotosSharingCollectionViewLayoutDelegate, UIActivityViewControllerDelegate, PUTransitionViewAnimatorDelegate, PUScrollViewSpeedometerDelegate, PUActivityViewControllerDelegate, PUPhotoLibraryUIChangeObserver, PUPhotoViewContentHelperDelegate, PUPhotosSharingTransitionViewController, PHAssetCollectionDataSource, PUOneUpPhotosSharingTransitionViewController, PUOneUpAssetTransitionViewController>
+@interface PUPhotosSharingViewController : UIViewController <PLDismissableViewController, UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, PUPhotosSharingCollectionViewLayoutDelegate, UIActivityViewControllerDelegate, PUTransitionViewAnimatorDelegate, PUScrollViewSpeedometerDelegate, PUActivityViewControllerDelegate, PXPhotoLibraryUIChangeObserver, PUPhotoViewContentHelperDelegate, PUPhotosSharingTransitionViewController, PHAssetCollectionDataSource, PUOneUpPhotosSharingTransitionViewController, PUOneUpAssetTransitionViewController>
 {
     PUScrollViewSpeedometer *_speedometer;
     NSMutableDictionary *_resultsForAssetCollection;
@@ -42,6 +42,7 @@
     BOOL _inFlightRotation;
     BOOL _defaultIrisEnabled;
     BOOL _shouldPlayVitalityHintAfterViewDidAppear;
+    BOOL _allowAirPlayActivity;
     BOOL __viewInSyncWithModel;
     BOOL _lockScreenCamera;
     PHFetchResult *_photoCollectionsFetchResult;
@@ -49,7 +50,7 @@
     PUPhotoSelectionManager *_photoSelectionManager;
     NSArray *_excludedActivityTypes;
     struct __CFString *_aggregateKey;
-    id<PUPresentingPhotoBrowserController> _presentingPhotoBrowserController;
+    PHPerson *_person;
     id<PUPhotosSharingViewControllerDelegate> _delegate;
     PUPhotosSharingViewControllerSpec *_spec;
     UICollectionView *_mainCollectionView;
@@ -67,11 +68,13 @@
     PUOneUpAssetTransitionInfo *_assetTransitionInfo;
     PHAsset *__lastKnownReferenceAsset;
     NSIndexPath *__lastKnownReferenceIndexPath;
+    PXAssetBadgeManager *__badgeManager;
     CDUnknownBlockType __pptOnDidEndScrollingBlock;
     struct CGRect __previousPreheatRect;
 }
 
 @property (readonly, nonatomic) PUActivityViewController *_activityViewController;
+@property (readonly, nonatomic) PXAssetBadgeManager *_badgeManager; // @synthesize _badgeManager=__badgeManager;
 @property (readonly, nonatomic) PHCachingImageManager *_cachingImageManager; // @synthesize _cachingImageManager=__cachingImageManager;
 @property (strong, nonatomic, setter=_setEmbeddedActivityViewController:) PUActivityViewController *_embeddedActivityViewController; // @synthesize _embeddedActivityViewController=__embeddedActivityViewController;
 @property (strong, nonatomic, setter=_setLastKnownReferenceAsset:) PHAsset *_lastKnownReferenceAsset; // @synthesize _lastKnownReferenceAsset=__lastKnownReferenceAsset;
@@ -86,6 +89,7 @@
 @property (strong, nonatomic, setter=_setUnembeddedActivityViewController:) PUActivityViewController *_unembeddedActivityViewController; // @synthesize _unembeddedActivityViewController=__unembeddedActivityViewController;
 @property (nonatomic, getter=_isViewInSyncWithModel, setter=_setViewInSyncWithModel:) BOOL _viewInSyncWithModel; // @synthesize _viewInSyncWithModel=__viewInSyncWithModel;
 @property (strong, nonatomic) struct __CFString *aggregateKey; // @synthesize aggregateKey=_aggregateKey;
+@property (nonatomic) BOOL allowAirPlayActivity; // @synthesize allowAirPlayActivity=_allowAirPlayActivity;
 @property (readonly, nonatomic) PHFetchResult *assetCollectionsFetchResult;
 @property (strong, nonatomic) PUOneUpAssetTransitionInfo *assetTransitionInfo; // @synthesize assetTransitionInfo=_assetTransitionInfo;
 @property (readonly, nonatomic) PHAsset *currentAsset;
@@ -100,10 +104,10 @@
 @property (nonatomic, getter=isLockScreenCamera) BOOL lockScreenCamera; // @synthesize lockScreenCamera=_lockScreenCamera;
 @property (strong, nonatomic, setter=_setMainCollectionView:) UICollectionView *mainCollectionView; // @synthesize mainCollectionView=_mainCollectionView;
 @property (strong, nonatomic, setter=_setMainCollectionViewLayout:) PUPhotosSharingCollectionViewLayout *mainCollectionViewLayout; // @synthesize mainCollectionViewLayout=_mainCollectionViewLayout;
+@property (strong, nonatomic) PHPerson *person; // @synthesize person=_person;
 @property (readonly, nonatomic) PHFetchResult *photoCollectionsFetchResult; // @synthesize photoCollectionsFetchResult=_photoCollectionsFetchResult;
 @property (strong, nonatomic) PUPhotoSelectionManager *photoSelectionManager; // @synthesize photoSelectionManager=_photoSelectionManager;
 @property (strong, nonatomic) PUPhotosSharingTransitionContext *photosSharingTransitionContext; // @synthesize photosSharingTransitionContext=_photosSharingTransitionContext;
-@property (strong, nonatomic) id<PUPresentingPhotoBrowserController> presentingPhotoBrowserController; // @synthesize presentingPhotoBrowserController=_presentingPhotoBrowserController;
 @property (strong, nonatomic) PUPhotosSharingViewControllerSpec *spec; // @synthesize spec=_spec;
 @property (readonly) Class superclass;
 
@@ -198,7 +202,7 @@
 - (BOOL)ppt_scrollToAssetAtRelativeIndex:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)ppt_scrollView;
 - (BOOL)prepareForDismissingForced:(BOOL)arg1;
-- (void)prepareForPhotoLibraryChange:(id)arg1;
+- (id)prepareForPhotoLibraryChange:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;

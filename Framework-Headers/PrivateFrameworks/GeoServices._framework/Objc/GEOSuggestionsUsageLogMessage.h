@@ -47,6 +47,8 @@
 @property (strong, nonatomic) NSData *suggestionEntryMetadata; // @synthesize suggestionEntryMetadata=_suggestionEntryMetadata;
 @property (strong, nonatomic) NSData *suggestionMetadata; // @synthesize suggestionMetadata=_suggestionMetadata;
 
++ (Class)displayedResultType;
+- (int)StringAsSearchFieldType:(id)arg1;
 - (void)addDisplayedResult:(id)arg1;
 - (void)clearDisplayedResults;
 - (void)copyTo:(id)arg1;
@@ -60,6 +62,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)searchFieldTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MultipeerConnectivity/NSNetServiceBrowserDelegate-Protocol.h>
 #import <MultipeerConnectivity/NSNetServiceDelegate-Protocol.h>
@@ -17,6 +17,7 @@
     id<MCNearbyServiceBrowserDelegate> _delegate;
     BOOL _isBrowsing;
     BOOL _wasBrowsing;
+    BOOL _AWDLDisabled;
     MCPeerID *_myPeerID;
     NSString *_serviceType;
     NSString *_formattedServiceType;
@@ -28,6 +29,7 @@
     NSMutableDictionary *_invites;
 }
 
+@property (nonatomic, getter=isAWDLDisabled) BOOL AWDLDisabled; // @synthesize AWDLDisabled=_AWDLDisabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MCNearbyServiceBrowserDelegate> delegate;
 @property (readonly, copy) NSString *description;

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class CalPreferences;
+@class CalPreferences, NSArray;
 
 @interface EKPreferences : NSObject
 {
@@ -14,14 +14,18 @@
 }
 
 @property (nonatomic) BOOL alwaysSetArrivedAndSettledForReminders;
+@property (strong, nonatomic) NSArray *deselectedCalendarIdentifiers;
+@property (strong, nonatomic) NSArray *deselectedCalendarSyncHashes;
 @property (nonatomic) BOOL privacyPaneHasBeenAcknowledged;
 @property (nonatomic) BOOL refiringReminderAlarmsEnabled;
 @property (nonatomic) BOOL remindMeAboutThisInCalendarWidgetEnabled;
+@property (strong, nonatomic) NSArray *selectedCalendarIdentifiers;
 @property (nonatomic) double travelEngineThrottlePeriod;
 @property (nonatomic) BOOL useShortReminderRefireInterval;
 @property (nonatomic) BOOL useShortReminderSnoozeInterval;
 
 + (id)shared;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

@@ -6,25 +6,35 @@
 
 #import <UIKit/UIPanGestureRecognizer.h>
 
-@class NSArray, NSMutableArray;
+#import <AnnotationKit/AKPenDetectionGestureRecognizerProtocol-Protocol.h>
 
-@interface AKPanGestureRecognizer : UIPanGestureRecognizer
+@class NSMutableArray, NSString;
+
+@interface AKPanGestureRecognizer : UIPanGestureRecognizer <AKPenDetectionGestureRecognizerProtocol>
 {
+    BOOL _penGestureDetected;
     double _currentWeight;
     double _currentMaxWeight;
-    NSMutableArray *_accumulatedTouches;
+    NSMutableArray *_currentAccumulatedTouches;
     struct CGPoint _locationOfFirstTouch;
 }
 
-@property (strong, nonatomic) NSMutableArray *accumulatedTouches; // @synthesize accumulatedTouches=_accumulatedTouches;
+@property (strong, nonatomic) NSMutableArray *currentAccumulatedTouches; // @synthesize currentAccumulatedTouches=_currentAccumulatedTouches;
 @property (nonatomic) double currentMaxWeight; // @synthesize currentMaxWeight=_currentMaxWeight;
 @property (nonatomic) double currentWeight; // @synthesize currentWeight=_currentWeight;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGPoint locationOfFirstTouch; // @synthesize locationOfFirstTouch=_locationOfFirstTouch;
-@property (readonly, nonatomic) NSArray *touchesBeforeRecognition;
+@property (nonatomic) BOOL penGestureDetected; // @synthesize penGestureDetected=_penGestureDetected;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_checkTouchForStylus:(id)arg1;
+- (id)accumulatedTouches;
 - (struct CGPoint)locationOfFirstTouchInView:(id)arg1;
 - (void)reset;
+- (void)resetAccumulatedTouches;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;

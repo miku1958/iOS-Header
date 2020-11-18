@@ -6,42 +6,41 @@
 
 #import <UIKit/UIView.h>
 
-@class AKRichBrushStroke, CHBoxcarFilterPointFIFO, CHPointStrokeFIFO, CHQuadCurvePointFIFO, MISSING_TYPE, NSArray, NSMutableArray, UIColor;
+@class AKBitmapFIFO, CHBoxcarFilterPointFIFO, CHPointStrokeFIFO, CHQuadCurvePointFIFO, UIColor;
 
 @interface AKSignatureView : UIView
 {
-    NSMutableArray *_strokes;
     struct CGColor *_cgColor;
     struct CGPoint _lastPoint;
     id _trackingTouchID;
+    double _lastSetNeedsDisplayCallToSuperTime;
+    struct CGRect _accumulatedSignatureDirtyRect;
     BOOL _isAddingPointWithoutSmoothing;
     UIColor *_strokeColor;
     double _minPressure;
     double _maxPressure;
     double _minThickness;
     double _maxThickness;
-    AKRichBrushStroke *_currentBrushStroke;
-    double _currentWeight;
     unsigned long long _totalPointsAdded;
+    double _currentWeight;
     double _strokeStartTime;
     CHPointStrokeFIFO *_strokeFIFO;
     CHBoxcarFilterPointFIFO *_boxcarFIFO;
     CHQuadCurvePointFIFO *_interpolatingFIFO;
+    AKBitmapFIFO *_bitmapFifo;
     struct CGPoint _strokeStartLocation;
     struct CGPoint _strokeLastLocation;
-    MISSING_TYPE *_lastVectorPoint;
     struct CGRect _aggregateInvalid;
     struct CGRect _unionDrawingRect;
 }
 
 @property (nonatomic) struct CGRect aggregateInvalid; // @synthesize aggregateInvalid=_aggregateInvalid;
+@property (strong, nonatomic) AKBitmapFIFO *bitmapFifo; // @synthesize bitmapFifo=_bitmapFifo;
 @property (strong, nonatomic) CHBoxcarFilterPointFIFO *boxcarFIFO; // @synthesize boxcarFIFO=_boxcarFIFO;
-@property (strong, nonatomic) AKRichBrushStroke *currentBrushStroke; // @synthesize currentBrushStroke=_currentBrushStroke;
 @property (nonatomic) double currentWeight; // @synthesize currentWeight=_currentWeight;
 @property (readonly, nonatomic) double interfaceScale;
 @property (strong, nonatomic) CHQuadCurvePointFIFO *interpolatingFIFO; // @synthesize interpolatingFIFO=_interpolatingFIFO;
 @property BOOL isAddingPointWithoutSmoothing; // @synthesize isAddingPointWithoutSmoothing=_isAddingPointWithoutSmoothing;
-@property MISSING_TYPE *lastVectorPoint; // @synthesize lastVectorPoint=_lastVectorPoint;
 @property (nonatomic) double maxPressure; // @synthesize maxPressure=_maxPressure;
 @property (nonatomic) double maxThickness; // @synthesize maxThickness=_maxThickness;
 @property (nonatomic) double minPressure; // @synthesize minPressure=_minPressure;
@@ -51,13 +50,12 @@
 @property struct CGPoint strokeLastLocation; // @synthesize strokeLastLocation=_strokeLastLocation;
 @property struct CGPoint strokeStartLocation; // @synthesize strokeStartLocation=_strokeStartLocation;
 @property double strokeStartTime; // @synthesize strokeStartTime=_strokeStartTime;
-@property (strong, nonatomic) NSArray *strokes; // @synthesize strokes=_strokes;
-@property (readonly, nonatomic) struct CGRect strokesBounds;
 @property unsigned long long totalPointsAdded; // @synthesize totalPointsAdded=_totalPointsAdded;
 @property (nonatomic) struct CGRect unionDrawingRect; // @synthesize unionDrawingRect=_unionDrawingRect;
 
 - (void).cxx_destruct;
 - (void)_commonInit;
+- (void)_forceRedisplay;
 - (double)_windowBackingScaleFactor;
 - (BOOL)ak_forceAvailableForTouch:(id)arg1;
 - (void)clear;
@@ -65,12 +63,12 @@
 - (void)continueStrokeWithoutSmoothing: /* Error: Ran out of types for this method. */;
 - (struct CGPath *)copyStrokedInterpolatedPath;
 - (void)dealloc;
-- (void)deferredInvalidate:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)handleCoalescedTouches:(id)arg1 forTouch:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)setNeedsDisplayInRect:(struct CGRect)arg1;
 - (void)startStroke: /* Error: Ran out of types for this method. */;
 - (void)teardown;
 - (void)terminateStroke;

@@ -4,55 +4,48 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SafariShared/WBSSiteMetadataFetchOperation.h>
+#import <SafariShared/WBSWebViewMetadataFetchOperation.h>
 
 #import <SafariShared/WBSTouchIconObserver-Protocol.h>
-#import <SafariShared/WKNavigationDelegate-Protocol.h>
 
-@class NSArray, NSString, NSTimer, WKProcessPool, WKWebView, _WKRemoteObjectInterface;
+@class NSArray, NSSet, NSString, NSTimer, _WKRemoteObjectInterface;
 
-@interface WBSTouchIconFetchOperation : WBSSiteMetadataFetchOperation <WBSTouchIconObserver, WKNavigationDelegate>
+@interface WBSTouchIconFetchOperation : WBSWebViewMetadataFetchOperation <WBSTouchIconObserver>
 {
     _WKRemoteObjectInterface *_touchIconObserverInterface;
     NSTimer *_loadingTimeoutTimer;
     NSArray *_pendingTouchIconURLs;
+    NSSet *_touchIconURLs;
     long long _state;
     CDUnknownBlockType _completionHandler;
-    WKProcessPool *_processPool;
-    WKWebView *_webView;
 }
 
 @property (readonly, copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) WKProcessPool *processPool; // @synthesize processPool=_processPool;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
 
 - (void).cxx_destruct;
-- (void)_clearWebView;
 - (void)_downloadFirstValidImageWithURLs:(id)arg1 failureHandler:(CDUnknownBlockType)arg2;
 - (void)_downloadPendingTouchIconURLs;
 - (void)_scheduleTimeoutWithTimeInterval:(double)arg1;
-- (void)_startOffscreenTouchIconRequest;
-- (void)_webViewWebProcessDidCrash:(id)arg1;
-- (void)cancel;
-- (void)dealloc;
-- (void)didCompleteWithIcon:(id)arg1 requestDidSucceed:(BOOL)arg2;
-- (void)didFetchIconURLs:(id)arg1 forURL:(id)arg2;
+- (void)_setUpRemoteObjectProxies;
+- (void)_tearDownRemoteObjectProxies;
+- (void)clearWebView;
+- (void)didCompleteWithResult:(id)arg1;
+- (void)didCreateWebView;
+- (void)didFailFetch;
+- (void)didFetchTouchIconURLs:(id)arg1 andFaviconURLs:(id)arg2 forURL:(id)arg3;
 - (id)initWithRequest:(id)arg1;
-- (id)initWithRequest:(id)arg1 processPool:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)preferences;
+- (id)initWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (void)loadRequest;
 - (void)resetState;
-- (void)setUpRemoteObjectProxies;
-- (void)start;
-- (void)tearDownRemoveObjectProxies;
+- (void)startOffscreenFetching;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
-- (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;
-- (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
 - (id)webViewConfiguration;
-- (void)willBeginLoading;
+- (void)willClearWebView;
 
 @end
 

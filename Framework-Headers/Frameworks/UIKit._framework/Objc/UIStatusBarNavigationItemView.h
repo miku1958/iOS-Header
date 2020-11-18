@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)_appBundleIdentifier;
+- (long long)buttonType;
 
 @end
 

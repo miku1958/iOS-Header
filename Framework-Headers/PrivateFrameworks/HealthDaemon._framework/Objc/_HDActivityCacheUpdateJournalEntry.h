@@ -15,8 +15,7 @@
 
 @property (readonly, nonatomic) HKActivityCache *activityCache; // @synthesize activityCache=_activityCache;
 
-+ (void)applyEntries:(id)arg1 withDaemon:(id)arg2;
-+ (long long)behavior;
++ (void)applyEntries:(id)arg1 withProfile:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;

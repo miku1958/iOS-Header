@@ -26,7 +26,6 @@
     unsigned long long _numberOfVideosToUpload;
     unsigned long long _numberOfImagesToDownload;
     unsigned long long _numberOfVideosToDownload;
-    unsigned long long _numberOfPushedAsset;
     unsigned long long _numberOfPulledAssets;
     unsigned long long _totalAssetsOnServer;
     unsigned long long _totalSizeOfUnpushedOriginals;
@@ -51,7 +50,6 @@
 @property (readonly, nonatomic) unsigned long long numberOfImagesToDownload; // @synthesize numberOfImagesToDownload=_numberOfImagesToDownload;
 @property (readonly, nonatomic) unsigned long long numberOfImagesToUpload; // @synthesize numberOfImagesToUpload=_numberOfImagesToUpload;
 @property (readonly, nonatomic) unsigned long long numberOfPulledAssets; // @synthesize numberOfPulledAssets=_numberOfPulledAssets;
-@property (readonly, nonatomic) unsigned long long numberOfPushedAsset; // @synthesize numberOfPushedAsset=_numberOfPushedAsset;
 @property (readonly, nonatomic) unsigned long long numberOfVideosToDownload; // @synthesize numberOfVideosToDownload=_numberOfVideosToDownload;
 @property (readonly, nonatomic) unsigned long long numberOfVideosToUpload; // @synthesize numberOfVideosToUpload=_numberOfVideosToUpload;
 @property (strong, nonatomic, setter=_setProgress:) NSProgress *progress; // @synthesize progress=_progress;

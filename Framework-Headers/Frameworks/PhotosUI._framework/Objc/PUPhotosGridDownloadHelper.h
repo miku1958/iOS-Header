@@ -20,6 +20,7 @@
 @property (readonly, weak, nonatomic) PUPhotosGridViewController *gridViewController; // @synthesize gridViewController=_gridViewController;
 @property (nonatomic) BOOL shouldTreatLivePhotosAsStills; // @synthesize shouldTreatLivePhotosAsStills=_shouldTreatLivePhotosAsStills;
 
++ (id)createAlertControllerForDownloadErrorWithAsset:(id)arg1;
 - (void).cxx_destruct;
 - (void)_downloadForRequest:(id)arg1 didCompleteWithSuccess:(BOOL)arg2 canceled:(BOOL)arg3 error:(id)arg4;
 - (void)_startDownloadingRequiredResourcesForRequest:(id)arg1 inCollection:(id)arg2;

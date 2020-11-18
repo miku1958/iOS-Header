@@ -26,7 +26,8 @@
 @property (strong, nonatomic) CKDPUniqueFieldFailure *uniqueFieldFailure;
 
 - (void).cxx_destruct;
-- (id)_prettyDictionaryRepresentation;
+- (int)StringAsType:(id)arg1;
+- (id)_typeCKLogValue;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -35,6 +36,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

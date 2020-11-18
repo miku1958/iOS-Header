@@ -6,9 +6,13 @@
 
 #import <ManagedConfiguration/MCAppWhitelistPayloadBase.h>
 
+@class NSString;
+
 @interface MCSingleAppPayload : MCAppWhitelistPayloadBase
 {
 }
+
+@property (readonly, nonatomic) NSString *applicationBundleID;
 
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;

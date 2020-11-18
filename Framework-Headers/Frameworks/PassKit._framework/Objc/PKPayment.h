@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -13,26 +13,28 @@
 @interface PKPayment : NSObject <NSSecureCoding>
 {
     PKPaymentToken *_token;
-    const void *_billingAddress;
     PKContact *_billingContact;
-    const void *_shippingAddress;
     PKContact *_shippingContact;
     PKShippingMethod *_shippingMethod;
 }
 
-@property (nonatomic) const void *billingAddress; // @synthesize billingAddress=_billingAddress;
+@property (readonly, nonatomic) const void *billingAddress;
 @property (strong, nonatomic) PKContact *billingContact; // @synthesize billingContact=_billingContact;
-@property (nonatomic) const void *shippingAddress; // @synthesize shippingAddress=_shippingAddress;
+@property (readonly, nonatomic) const void *shippingAddress;
 @property (strong, nonatomic) PKContact *shippingContact; // @synthesize shippingContact=_shippingContact;
 @property (strong, nonatomic) PKShippingMethod *shippingMethod; // @synthesize shippingMethod=_shippingMethod;
 @property (strong, nonatomic) PKPaymentToken *token; // @synthesize token=_token;
 
++ (id)paymentWithProtobuf:(id)arg1;
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
++ (long long)version;
+- (void).cxx_destruct;
 - (id)description;
+- (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithToken:(id)arg1;
+- (id)protobuf;
 
 @end
 

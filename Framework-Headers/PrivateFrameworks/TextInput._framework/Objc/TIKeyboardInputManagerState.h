@@ -19,7 +19,6 @@
         struct {
             unsigned int canHandleKeyHitTest:1;
             unsigned int ignoresDeadKeys:1;
-            unsigned int needsKeyHitTestResults:1;
             unsigned int shouldExtendPriorWord:1;
             unsigned int suppliesCompletions:1;
             unsigned int supportsNumberKeySelection:1;
@@ -66,7 +65,6 @@
 @property (copy, nonatomic) TICharacterSetDescription *inputsToReject; // @synthesize inputsToReject=_inputsToReject;
 @property (strong, nonatomic) TIKeyEventMap *keyEventMap; // @synthesize keyEventMap=_keyEventMap;
 @property (strong, nonatomic) TIKeyboardBehaviors *keyboardBehaviors; // @synthesize keyboardBehaviors=_keyboardBehaviors;
-@property (nonatomic) BOOL needsKeyHitTestResults;
 @property (nonatomic) BOOL nextInputWouldStartSentence;
 @property (copy, nonatomic) NSString *replacementForDoubleSpace; // @synthesize replacementForDoubleSpace=_replacementForDoubleSpace;
 @property (copy, nonatomic) NSString *searchStringForMarkedText; // @synthesize searchStringForMarkedText=_searchStringForMarkedText;

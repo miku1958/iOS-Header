@@ -67,6 +67,8 @@
 - (void)loadView;
 - (void)screenshotsWillBeginDragging:(id)arg1;
 - (id)tableViewForTableViewSection:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 
 @end
 

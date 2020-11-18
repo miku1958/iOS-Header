@@ -9,12 +9,14 @@
 @class CTCellularPlanItem, NSData, NSDictionary, NSNumber, NSString;
 
 @protocol CTCellularPlanClient <NSObject>
+- (void)didProvisionEsimWithIccid:(NSString *)arg1;
 - (void)didPurchasePlanWithIccid:(NSString *)arg1 downloadProfile:(BOOL)arg2;
 - (void)didSelectPlanItem:(CTCellularPlanItem *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)expirePlan;
 - (void)fetchNewProfilesWithCompletion:(void (^)(BOOL, NSError *))arg1 additionalParameters:(NSDictionary *)arg2;
 - (void)getCurrentPlanType:(void (^)(long long))arg1;
 - (void)getDeviceInfo:(void (^)(NSDictionary *))arg1;
+- (void)getESimServerURL:(void (^)(NSString *))arg1;
 - (void)getIMEIPrefix:(void (^)(NSString *))arg1;
 - (void)getSelectedEnv:(void (^)(long long))arg1;
 - (void)getSelectedProxy:(void (^)(long long))arg1;
@@ -29,8 +31,10 @@
 - (void)openInternalUrlId:(long long)arg1;
 - (void)planItemsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)registerHasNewProfileCompletion:(void (^)(BOOL))arg1;
+- (void)remoteSignIdMapForSessionId:(NSString *)arg1 locationRequired:(BOOL)arg2 withCompletion:(void (^)(NSString *, NSError *))arg3;
 - (void)retrieveRequestSettings:(void (^)(NSDictionary *, NSDictionary *, NSDictionary *))arg1;
 - (void)setActivePlan:(NSData *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)setESimServerURL:(NSString *)arg1;
 - (void)setIMEIPrefix:(NSString *)arg1;
 - (void)setLatitude:(NSNumber *)arg1 andLongitude:(NSNumber *)arg2;
 - (void)setMcc:(long long)arg1 andMnc:(long long)arg2;

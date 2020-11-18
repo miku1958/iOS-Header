@@ -7,24 +7,31 @@
 #import <WebKit/NSObject-Protocol.h>
 #import <WebKit/UITextInputTraits-Protocol.h>
 
-@class NSIndexSet, NSString, UIColor, UIImage;
+@class NSIndexSet, NSString, UIColor, UIImage, UIInputContextHistory;
 @protocol UITextInputTraits;
 
 @protocol UITextInputTraits_Private <NSObject, UITextInputTraits>
 
 @property (copy, nonatomic) NSIndexSet *PINEntrySeparatorIndexes;
+@property (nonatomic) BOOL acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
 @property (copy, nonatomic) NSString *autocorrectionContext;
 @property (nonatomic) BOOL contentsIsSingleValue;
 @property (nonatomic) BOOL deferBecomingResponder;
+@property (nonatomic) BOOL disableInputBars;
 @property (nonatomic) BOOL disablePrediction;
 @property (nonatomic) BOOL displaySecureEditsUsingPlainText;
 @property (nonatomic) BOOL displaySecureTextUsingPlainText;
 @property (nonatomic) int emptyContentReturnKeyType;
 @property (nonatomic) BOOL enablesReturnKeyOnNonWhiteSpaceContent;
+@property (nonatomic) BOOL forceDefaultDictationInfo;
+@property (nonatomic) long long forceDictationKeyboardType;
+@property (nonatomic) BOOL forceDisableDictation;
 @property (nonatomic) BOOL forceEnableDictation;
+@property (nonatomic) BOOL hasDefaultContents;
+@property (strong, nonatomic) UIInputContextHistory *inputContextHistory;
 @property (strong, nonatomic) UIColor *insertionPointColor;
 @property (nonatomic) unsigned long long insertionPointWidth;
 @property (nonatomic) BOOL isCarPlayIdiom;
@@ -39,6 +46,7 @@
 @property (nonatomic) int shortcutConversionType;
 @property (nonatomic) BOOL suppressReturnKeyStyling;
 @property (nonatomic) int textLoupeVisibility;
+@property (nonatomic) long long textScriptType;
 @property (nonatomic) int textSelectionBehavior;
 @property (nonatomic) id textSuggestionDelegate;
 @property (nonatomic) struct __CFCharacterSet *textTrimmingSet;

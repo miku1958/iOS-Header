@@ -9,8 +9,9 @@
 @interface HKWorkout (Metrics)
 + (unsigned long long)FU_associatedMetricForGoalType:(unsigned long long)arg1;
 + (BOOL)FU_isHeartRateSupportedForActivityType:(unsigned long long)arg1 isIndoor:(BOOL)arg2;
-+ (BOOL)FU_shouldTrackPaceAsSpeedForActivityType:(unsigned long long)arg1;
-+ (id)FU_supportedWorkoutMetricsForActivityType:(unsigned long long)arg1 isIndoor:(BOOL)arg2;
++ (BOOL)FU_shouldTrackPaceWithOdometerForActivityType:(unsigned long long)arg1;
++ (id)FU_supportedGoalTypesForActivityType:(id)arg1;
++ (id)FU_supportedMetricsForActivityType:(id)arg1;
 + (BOOL)_isHeartRateSupportedInPowerSettingsForActivityType:(unsigned long long)arg1;
 + (BOOL)_isHeartRateSupportedInPrivacySettings;
 @end

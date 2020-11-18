@@ -27,7 +27,7 @@
 
 - (void).cxx_destruct;
 - (void)emailFile:(id)arg1;
-- (void)mailComposeController:(id)arg1 didFinishWithResult:(int)arg2 error:(id)arg3;
+- (void)mailComposeController:(id)arg1 didFinishWithResult:(long long)arg2 error:(id)arg3;
 - (void)setPreferenceSpecifier:(id)arg1;
 
 @end

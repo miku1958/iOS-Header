@@ -4,20 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFMessageTransport.h>
 
-#import <HomeKit/HMMessageTransport-Protocol.h>
+#import <HomeKit/HMXPCMessageTransport-Protocol.h>
 
-@class HMMessageDispatcher, NSString, NSXPCConnection;
+@class HMFMessageDispatcher, NSObject, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
-@interface HMXpcClient : NSObject <HMMessageTransport>
+@interface HMXpcClient : HMFMessageTransport <HMXPCMessageTransport>
 {
     BOOL _connectionValid;
     BOOL _requiresCheckin;
     BOOL _notifyRegistered;
     int _notifyRegisterToken;
-    HMMessageDispatcher *_messageDispatcher;
+    HMFMessageDispatcher *_messageDispatcher;
     NSXPCConnection *_xpcConnection;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     CDUnknownBlockType _reconnectionHandler;
@@ -28,7 +28,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) HMMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
+@property (readonly, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (nonatomic) int notifyRegisterToken; // @synthesize notifyRegisterToken=_notifyRegisterToken;
 @property (nonatomic) BOOL notifyRegistered; // @synthesize notifyRegistered=_notifyRegistered;
 @property (copy, nonatomic) CDUnknownBlockType reconnectionHandler; // @synthesize reconnectionHandler=_reconnectionHandler;
@@ -44,6 +44,7 @@
 - (id)init;
 - (void)recheckinIfRequired:(id)arg1;
 - (void)registerReconnectionHandler:(CDUnknownBlockType)arg1;
+- (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

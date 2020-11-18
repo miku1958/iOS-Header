@@ -12,7 +12,9 @@
 @interface OKVideoPlayerController : NSObject
 {
     NSObject<OS_dispatch_queue> *_videoPlayerControllerSerialQueue;
+    id _timeObserver;
     struct {
+        unsigned int delegateDidStartPlayingItem:1;
         unsigned int delegateDidFinishPlayingItem:1;
         unsigned int delegateDidFailToPlayItem:1;
         unsigned int delegateIsReadyToPlay:1;

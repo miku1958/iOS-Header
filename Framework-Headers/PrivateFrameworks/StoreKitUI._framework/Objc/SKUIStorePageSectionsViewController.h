@@ -9,7 +9,6 @@
 #import <StoreKitUI/SKUIItemStateCenterObserver-Protocol.h>
 #import <StoreKitUI/SKUILayoutCacheDelegate-Protocol.h>
 #import <StoreKitUI/SKUIProductPageOverlayDelegate-Protocol.h>
-#import <StoreKitUI/SKUIResourceLoaderDelegate-Protocol.h>
 #import <StoreKitUI/SKUIStorePageCollectionViewDelegate-Protocol.h>
 #import <StoreKitUI/SKUIViewControllerTesting-Protocol.h>
 #import <StoreKitUI/UICollectionViewDataSource-Protocol.h>
@@ -20,7 +19,7 @@
 @class NSArray, NSIndexPath, NSMapTable, NSMutableArray, NSMutableIndexSet, NSNumber, NSString, SKUICollectionView, SKUIColorScheme, SKUIIndexBarControl, SKUILayoutCache, SKUIMetricsController, SKUIMetricsImpressionSession, SKUIProductPageOverlayController, SKUIResourceLoader, SKUIStackedBar, SKUIStorePageSplitsDescription, UICollectionView, UIRefreshControl, UITapGestureRecognizer, UIView;
 @protocol SKUICollectionViewPullToRefreshDelegate, SKUIStorePageSectionsDelegate, UIViewControllerPreviewing;
 
-@interface SKUIStorePageSectionsViewController : SKUIViewController <UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, SKUIItemStateCenterObserver, SKUILayoutCacheDelegate, SKUIProductPageOverlayDelegate, SKUIResourceLoaderDelegate, SKUIStorePageCollectionViewDelegate, SKUIViewControllerTesting, UICollectionViewDataSource, UIGestureRecognizerDelegate>
+@interface SKUIStorePageSectionsViewController : SKUIViewController <UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, SKUIItemStateCenterObserver, SKUILayoutCacheDelegate, SKUIProductPageOverlayDelegate, SKUIStorePageCollectionViewDelegate, SKUIViewControllerTesting, UICollectionViewDataSource, UIGestureRecognizerDelegate>
 {
     SKUIProductPageOverlayController *_activeOverlayController;
     SKUIMetricsImpressionSession *_activeMetricsImpressionSession;
@@ -60,6 +59,7 @@
     SKUIStackedBar *_stackedBar;
     SKUILayoutCache *_textLayoutCache;
     long long _lastInterfaceOrientation;
+    BOOL _itemsChangedStateWhileDisappeared;
 }
 
 @property (strong, nonatomic) SKUIMetricsImpressionSession *activeMetricsImpressionSession; // @synthesize activeMetricsImpressionSession=_activeMetricsImpressionSession;
@@ -74,6 +74,7 @@
 @property (strong, nonatomic) SKUIMetricsController *metricsController; // @synthesize metricsController=_metricsController;
 @property (nonatomic) long long pinningTransitionStyle; // @synthesize pinningTransitionStyle=_pinningTransitionStyle;
 @property (weak, nonatomic) id<SKUICollectionViewPullToRefreshDelegate> pullToRefreshDelegate; // @synthesize pullToRefreshDelegate=_pullToRefreshDelegate;
+@property (strong, nonatomic) SKUIResourceLoader *resourceLoader; // @synthesize resourceLoader=_resourceLoader;
 @property (readonly, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property (readonly) Class superclass;
 
@@ -115,7 +116,6 @@
 - (void)_registerForNotificationsForEntityProvider:(id)arg1;
 - (void)_reloadCollectionView;
 - (void)_reloadRelevantEntityProviders;
-- (id)_resourceLoader;
 - (void)_scrollFirstAppearanceSectionToView;
 - (void)_setActiveProductPageOverlayController:(id)arg1;
 - (void)_setPageSize:(struct CGSize)arg1;
@@ -130,11 +130,10 @@
 - (void)_updateSectionsAfterMenuChange;
 - (void)_updateSectionsForIndex:(long long)arg1 menuSection:(id)arg2;
 - (id)_visibleMetricsImpressionsString;
-- (void)artworkLoaderDidIdle:(id)arg1;
 - (id)backgroundColorForSection:(long long)arg1;
 - (BOOL)collectionView:(id)arg1 canScrollCellAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
-- (void)collectionView:(id)arg1 didConfirmButtonElement:(id)arg2 forItemAtIndexPath:(id)arg3;
+- (void)collectionView:(id)arg1 didConfirmButtonElement:(id)arg2 withClickInfo:(id)arg3 forItemAtIndexPath:(id)arg4;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 didEndEditingItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
@@ -186,6 +185,7 @@
 - (void)skuiCollectionViewWillLayoutSubviews:(id)arg1;
 - (void)skui_viewWillAppear:(BOOL)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

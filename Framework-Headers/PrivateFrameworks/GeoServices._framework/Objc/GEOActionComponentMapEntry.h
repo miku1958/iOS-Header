@@ -22,6 +22,8 @@
 @property (readonly, nonatomic) int *placeDataComponents;
 @property (readonly, nonatomic) unsigned long long placeDataComponentsCount;
 
+- (int)StringAsActionComponent:(id)arg1;
+- (id)actionComponentAsString:(int)arg1;
 - (void)addPlaceDataComponents:(int)arg1;
 - (void)clearPlaceDataComponents;
 - (void)copyTo:(id)arg1;

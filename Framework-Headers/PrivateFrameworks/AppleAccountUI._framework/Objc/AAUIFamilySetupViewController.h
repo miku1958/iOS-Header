@@ -9,7 +9,7 @@
 #import <AppleAccountUI/AAUIFamilySetupPageDelegate-Protocol.h>
 #import <AppleAccountUI/RemoteUIControllerDelegate-Protocol.h>
 
-@class AAGrandSlamSigner, ACAccount, ACAccountStore, NSMutableURLRequest, NSString, RemoteUIController, UIActivityIndicatorView, UIBarButtonItem, UINavigationItem;
+@class AAGrandSlamSigner, ACAccount, ACAccountStore, NSArray, NSMutableURLRequest, NSString, RemoteUIController, UIActivityIndicatorView, UINavigationItem;
 @protocol AAUIFamilySetupDelegate;
 
 @interface AAUIFamilySetupViewController : AAUIBleachedNavigationController <AAUIFamilySetupPageDelegate, RemoteUIControllerDelegate>
@@ -22,7 +22,7 @@
     NSMutableURLRequest *_currentRemoteUIRequest;
     BOOL _isShowingSpinner;
     UIActivityIndicatorView *_spinnerView;
-    UIBarButtonItem *_originalRightBarButtonItem;
+    NSArray *_originalRightBarButtonItems;
     UINavigationItem *_navigationItemShowingSpinner;
 }
 
@@ -49,7 +49,7 @@
 - (id)initWithAccount:(id)arg1 store:(id)arg2;
 - (id)initWithGrandSlamSigner:(id)arg1 familyEligibilityResponse:(id)arg2;
 - (void)remoteUIController:(id)arg1 didReceiveHTTPResponse:(id)arg2;
-- (void)remoteUIController:(id)arg1 willLoadRequest:(id)arg2;
+- (BOOL)remoteUIController:(id)arg1 shouldLoadRequest:(id)arg2 redirectResponse:(id)arg3;
 - (void)remoteUIController:(id)arg1 willPresentObjectModel:(id)arg2 modally:(BOOL)arg3;
 - (void)remoteUIControllerDidDismiss:(id)arg1;
 - (BOOL)shouldAutorotate;

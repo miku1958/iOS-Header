@@ -14,6 +14,7 @@
 }
 
 @property (nonatomic) BOOL automaticallyConfiguresApplicationAudioSession;
+@property (nonatomic) BOOL automaticallyConfiguresCaptureDeviceForWideColor;
 @property (readonly, nonatomic) NSArray *inputs;
 @property (readonly, nonatomic, getter=isInterrupted) BOOL interrupted;
 @property (readonly, nonatomic) struct OpaqueCMClock *masterClock;
@@ -22,16 +23,20 @@
 @property (copy, nonatomic) NSString *sessionPreset;
 @property (nonatomic) BOOL usesApplicationAudioSession;
 
++ (void)_beginConfiguringActiveColorSpaceForDevice:(id)arg1;
++ (void)_finishConfiguringActiveColorSpaceForDevice:(id)arg1;
++ (BOOL)_isActiveColorSpaceBeingConfiguredForDevice:(id)arg1;
 + (id)allSessionPresets;
 + (BOOL)automaticallyNotifiesObserversOfMasterClock;
 + (BOOL)automaticallyNotifiesObserversOfRunning;
 + (id)dotString;
 + (void)initialize;
-- (void)_addConnection:(id)arg1;
-- (void)_addInputWithNoConnections:(id)arg1;
-- (void)_addOutputWithNoConnections:(id)arg1;
-- (void)_addVideoPreviewLayer:(id)arg1;
-- (void)_addVideoPreviewLayerWithNoConnection:(id)arg1;
+- (BOOL)_addConnection:(id)arg1 exceptionReason:(id *)arg2;
+- (BOOL)_addInputWithNoConnections:(id)arg1 exceptionReason:(id *)arg2;
+- (BOOL)_addOutputWithNoConnections:(id)arg1 exceptionReason:(id *)arg2;
+- (BOOL)_addVideoPreviewLayer:(id)arg1 exceptionReason:(id *)arg2;
+- (BOOL)_addVideoPreviewLayerWithNoConnection:(id)arg1 exceptionReason:(id *)arg2;
+- (BOOL)_allowsRecordingOfPhotoFormats;
 - (void)_beginConfiguration;
 - (BOOL)_buildAndRunGraph;
 - (BOOL)_canAddConnection:(id)arg1 failureReason:(id *)arg2;
@@ -54,6 +59,7 @@
 - (void)_notifyMediaServerdDied;
 - (void)_notifySessionStarted;
 - (void)_notifySessionStopped;
+- (id)_outputWithClass:(Class)arg1 forSourceDevice:(id)arg2;
 - (void)_postRuntimeError:(id)arg1;
 - (void)_rebuildGraph;
 - (void)_removeAllPreviewLayers;
@@ -69,8 +75,7 @@
 - (id)_stopError;
 - (BOOL)_stopFigCaptureSession;
 - (void)_teardownFigCaptureSession;
-- (void)_updateActiveConnections;
-- (void)_updateDeviceActiveFormats;
+- (void)_updateDeviceActiveFormatsAndActiveConnections;
 - (void)addConnection:(id)arg1;
 - (void)addInput:(id)arg1;
 - (void)addInputWithNoConnections:(id)arg1;

@@ -13,15 +13,15 @@
     BOOL _isCompactRow;
     NSArray *_itemWidths;
     NSArray *_itemViews;
-    UIView *_containerView;
+    UIView *_rowContainerView;
     long long _firstTrailingIndex;
 }
 
-@property (strong) UIView *containerView; // @synthesize containerView=_containerView;
 @property long long firstTrailingIndex; // @synthesize firstTrailingIndex=_firstTrailingIndex;
 @property BOOL isCompactRow; // @synthesize isCompactRow=_isCompactRow;
 @property (strong) NSArray *itemViews; // @synthesize itemViews=_itemViews;
 @property (strong) NSArray *itemWidths; // @synthesize itemWidths=_itemWidths;
+@property (strong) UIView *rowContainerView; // @synthesize rowContainerView=_rowContainerView;
 
 + (Class)classForSection:(id)arg1;
 + (id)labelForView:(id)arg1;
@@ -30,17 +30,17 @@
 - (void).cxx_destruct;
 - (BOOL)_isBaseballScoreboardLike;
 - (id)addImageViewWithImage:(id)arg1;
-- (id)addLabelWithAttributedText:(id)arg1;
+- (id)addLabelWithFormattedText:(id)arg1;
 - (void)containerDidLayoutSubviews;
-- (id)font;
 - (double)fontSize;
 - (double)labelBottomBaselineSpacing;
 - (double)labelTopBaselineSpacing;
 - (BOOL)labelsAreVibrant;
 - (void)makeAndSizeViewsWithFirstTrailingIndex:(long long)arg1 isCompactRow:(BOOL)arg2;
-- (void)setAlignment:(id)arg1 forView:(id)arg2;
+- (void)setAlignment:(unsigned long long)arg1 forView:(id)arg2;
 - (void)setupWithLayoutInfo:(id)arg1;
 - (BOOL)shouldAllowOtherViewsToOverlap:(id)arg1;
+- (id)viewForColumn:(unsigned long long)arg1;
 
 @end
 

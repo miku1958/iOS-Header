@@ -6,7 +6,6 @@
 
 #import <Preferences/PSTableCell.h>
 
-__attribute__((visibility("hidden")))
 @interface ActiveDeviceLinkCell : PSTableCell
 {
 }

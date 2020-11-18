@@ -9,7 +9,7 @@
 #import <Celestial/FigXPCCoding-Protocol.h>
 #import <Celestial/NSCopying-Protocol.h>
 
-@class NSString;
+@class FigCaptureIrisPreparedSettings, NSString;
 
 @interface FigCaptureSinkConfiguration : NSObject <FigXPCCoding, NSCopying>
 {
@@ -21,6 +21,7 @@
     CDStruct_1b6d18a9 _irisMovieDuration;
     CDStruct_1b6d18a9 _irisMovieVideoFrameDuration;
     int _irisMovieAutoTrimMethod;
+    FigCaptureIrisPreparedSettings *_irisPreparedSettings;
     BOOL _optimizesImagesForOfflineVideoStabilization;
     BOOL _quadraHighResStillImageCaptureEnabled;
 }
@@ -32,6 +33,7 @@
 @property (nonatomic) BOOL irisMovieCaptureEnabled; // @synthesize irisMovieCaptureEnabled=_irisMovieCaptureEnabled;
 @property (nonatomic) CDStruct_1b6d18a9 irisMovieDuration; // @synthesize irisMovieDuration=_irisMovieDuration;
 @property (nonatomic) CDStruct_1b6d18a9 irisMovieVideoFrameDuration; // @synthesize irisMovieVideoFrameDuration=_irisMovieVideoFrameDuration;
+@property (strong, nonatomic) FigCaptureIrisPreparedSettings *irisPreparedSettings; // @synthesize irisPreparedSettings=_irisPreparedSettings;
 @property (nonatomic) BOOL optimizesImagesForOfflineVideoStabilization; // @synthesize optimizesImagesForOfflineVideoStabilization=_optimizesImagesForOfflineVideoStabilization;
 @property (nonatomic) BOOL quadraHighResStillImageCaptureEnabled; // @synthesize quadraHighResStillImageCaptureEnabled=_quadraHighResStillImageCaptureEnabled;
 @property (copy, nonatomic) NSString *sinkID; // @synthesize sinkID=_sinkID;

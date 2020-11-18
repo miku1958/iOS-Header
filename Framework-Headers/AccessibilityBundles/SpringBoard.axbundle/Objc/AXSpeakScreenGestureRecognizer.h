@@ -22,6 +22,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (double)_edgeRegionSize;
 - (struct CGPoint)_locationForTouch:(id)arg1;
 - (BOOL)_shouldTryToBeginWithEvent:(id)arg1;

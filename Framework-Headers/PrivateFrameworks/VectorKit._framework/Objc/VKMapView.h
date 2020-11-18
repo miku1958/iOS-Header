@@ -6,15 +6,16 @@
 
 #import <QuartzCore/CALayer.h>
 
-#import <VectorKit/GGLLayerDisruptor-Protocol.h>
 #import <VectorKit/GGLRenderQueueSource-Protocol.h>
 #import <VectorKit/MDMapControllerDelegate-Protocol.h>
 #import <VectorKit/VKInteractiveMapDelegate-Protocol.h>
+#import <VectorKit/VKNavCameraControllerObserver-Protocol.h>
+#import <VectorKit/VKPuckAnimatorDelegate-Protocol.h>
 
-@class CADisplay, GEOMapRegion, GEOResourceManifestConfiguration, GGLDisplayLink, MDDisplayLayer, NSArray, NSMutableArray, NSString, VKClassicGlobeCanvas, VKLabelMarker, VKMapCanvas, VKMemoryObserver, VKPolylineOverlayPainter, VKTimedAnimation;
+@class CADisplay, GEOMapRegion, GEOResourceManifestConfiguration, GGLDisplayLink, MDDisplayLayer, NSArray, NSMutableArray, NSString, VKClassicGlobeCanvas, VKLabelMarker, VKMapCameraController, VKMapCanvas, VKMemoryObserver, VKNavCameraController, VKNavContext, VKPolylineOverlayPainter, VKPuckAnimator, VKSceneConfiguration, VKTimedAnimation;
 @protocol GEORoutePreloadSession, VKMapViewDelegate;
 
-@interface VKMapView : CALayer <VKInteractiveMapDelegate, MDMapControllerDelegate, GGLLayerDisruptor, GGLRenderQueueSource>
+@interface VKMapView : CALayer <VKInteractiveMapDelegate, MDMapControllerDelegate, GGLRenderQueueSource, VKPuckAnimatorDelegate, VKNavCameraControllerObserver>
 {
     long long _mapType;
     VKMapCanvas *_canvas;
@@ -24,7 +25,7 @@
     BOOL _loaderOpen;
     BOOL _additionalManifestConfigurationLoaderOpen;
     NSString *_tileLoaderClientID;
-    CDStruct_f0cfbbbb _mapDisplayStyle;
+    CDStruct_80aa614a _mapDisplayStyle;
     VKTimedAnimation *_mapDisplayStyleAnimation;
     VKTimedAnimation *_edgeInsetAnimation;
     struct VKEdgeInsets _animatingToEdgeInsets;
@@ -34,9 +35,12 @@
     double _verticalYaw;
     VKLabelMarker *_selectedLabelMarker;
     unsigned char _applicationState;
+    unsigned char _displayedSearchResultsType;
     VKMemoryObserver *_memoryObserver;
+    VKPuckAnimator *_userLocationAnimator;
     GGLDisplayLink *_displayLink;
     long long _displayRate;
+    long long _navigationDisplayRate;
     long long _requestedRate;
     shared_ptr_06328420 _renderQueue;
     NSMutableArray *_annotationMarkersToAddToNewCanvas;
@@ -44,6 +48,11 @@
     GEOResourceManifestConfiguration *_manifestConfiguration;
     GEOResourceManifestConfiguration *_additionalManifestConfiguration;
     struct vector<OnscreenTimestampData, std::__1::allocator<OnscreenTimestampData>> _onscreenTimestamps;
+    VKMapCameraController *_mapCameraController;
+    VKNavCameraController *_navigationCameraController;
+    VKNavContext *_navContext;
+    Mercator3_d8bb135c _lastAnimatedUserPosition;
+    double _lastAnimatedCourse;
 }
 
 @property (strong, nonatomic) GEOResourceManifestConfiguration *additionalManifestConfiguration; // @synthesize additionalManifestConfiguration=_additionalManifestConfiguration;
@@ -54,11 +63,11 @@
 @property (nonatomic) long long annotationTrackingHeadingAnimationDisplayRate;
 @property (nonatomic) long long annotationTrackingZoomStyle;
 @property (nonatomic) unsigned char applicationState; // @synthesize applicationState=_applicationState;
+@property (nonatomic) long long applicationUILayout;
 @property (readonly, nonatomic) BOOL canEnter3DMode;
 @property (readonly, nonatomic) BOOL canShowFlyover;
 @property (readonly, nonatomic) BOOL canShowFlyoverAnimation;
-@property (nonatomic) CDStruct_071ac149 centerCoordinate;
-@property (readonly, nonatomic) double currentZoomLevel;
+@property (readonly, nonatomic) CDStruct_071ac149 centerCoordinate;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL debugDrawContinuously;
 @property (nonatomic) BOOL debugEnableMultisampling;
@@ -66,7 +75,7 @@
 @property (nonatomic) BOOL debugLayoutContinuously;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long displayRate;
-@property (nonatomic) BOOL dynamicMapModesEnabled;
+@property (nonatomic) unsigned char displayedSearchResultsType; // @synthesize displayedSearchResultsType=_displayedSearchResultsType;
 @property (nonatomic) struct VKEdgeInsets edgeInsets;
 @property (readonly, nonatomic) BOOL enableDebugLabelHighlighting;
 @property (strong, nonatomic) NSArray *externalTrafficIncidents;
@@ -87,18 +96,17 @@
 @property (nonatomic) BOOL localizeLabels;
 @property (readonly, nonatomic) VKMapCanvas *mapCanvas;
 @property (nonatomic) id<VKMapViewDelegate> mapDelegate; // @synthesize mapDelegate=_mapDelegate;
-@property (nonatomic) CDStruct_f0cfbbbb mapDisplayStyle;
-@property (strong, nonatomic) GEOMapRegion *mapRegion;
-@property (readonly, nonatomic) GEOMapRegion *mapRegionOfInterest;
+@property (nonatomic) CDStruct_80aa614a mapDisplayStyle;
+@property (readonly, nonatomic) GEOMapRegion *mapRegion;
 @property (nonatomic) long long mapType;
-@property (readonly, nonatomic) double maximumZoomLevel;
-@property (readonly, nonatomic) double minimumZoomLevel;
+@property (nonatomic) long long navigationDisplayRate;
 @property (nonatomic) long long navigationShieldSize;
 @property (readonly, nonatomic) double pitch;
 @property (readonly, nonatomic, getter=isPitched) BOOL pitched;
 @property (readonly, nonatomic) double presentationYaw;
 @property (nonatomic) BOOL rendersInBackground;
 @property (strong, nonatomic) id<GEORoutePreloadSession> routePreloadSession;
+@property (readonly, nonatomic) VKSceneConfiguration *sceneConfiguration;
 @property (readonly, nonatomic) VKLabelMarker *selectedLabelMarker;
 @property (nonatomic) long long shieldIdiom;
 @property (nonatomic) long long shieldSize;
@@ -111,13 +119,11 @@
 @property (nonatomic) BOOL staysCenteredDuringRotation;
 @property (readonly) Class superclass;
 @property (nonatomic) long long targetDisplay;
-@property (nonatomic) int trackingCameraPanStyle;
+@property (nonatomic) BOOL trackingCameraShouldHandleGestures;
 @property (nonatomic) double trackingZoomScale;
 @property (nonatomic) BOOL trafficEnabled;
 @property (nonatomic) BOOL trafficIncidentsEnabled;
-@property (nonatomic) double userZoomFocusStyleGroundspanMeters;
-@property (nonatomic) double userZoomFocusStyleMaxGroundspanMeters;
-@property (nonatomic) double userZoomFocusStyleMinGroundspanMeters;
+@property (readonly, nonatomic) VKPuckAnimator *userLocationAnimator; // @synthesize userLocationAnimator=_userLocationAnimator;
 @property (nonatomic) CDStruct_b31ca263 vehicleState;
 @property (readonly, nonatomic) double verticalYaw; // @synthesize verticalYaw=_verticalYaw;
 @property (readonly, nonatomic) NSArray *visibleTileSets;
@@ -132,30 +138,27 @@
 - (void)_forceLayoutForSuspensionSnapShot;
 - (void)_notifyDelegateFlyoverTourLabelChanged:(id)arg1;
 - (void)_openAdditionalManifestConfigurationLoaderConnection;
-- (void)_resetMaximumZoomLevel;
 - (void)_runFlyoverTourStateChange:(int)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_setMaximumZoomLevel:(double)arg1;
-- (void)_setStyleTransitionProgress:(double)arg1 targetStyle:(CDStruct_f0cfbbbb)arg2 step:(long long)arg3;
+- (void)_setStyleTransitionProgress:(double)arg1 targetStyle:(CDStruct_80aa614a)arg2 step:(long long)arg3;
 - (double)_styleTransitionProgress;
 - (void)_updateAnalytics:(BOOL)arg1;
 - (void)_updateBackgroundColor;
 - (void)_updateDisplayRate;
 - (void)_updateMapDisplayStyle;
-- (void)addAnnotationMarker:(id)arg1 allowAnimation:(BOOL)arg2;
+- (void)addAnnotationMarker:(id)arg1;
+- (void)addCustomFeatureDataSource:(id)arg1;
 - (void)addExternalAnchor:(id)arg1;
 - (void)addOverlay:(id)arg1;
 - (void)addPersistentOverlay:(id)arg1;
 - (void)addRasterOverlay:(id)arg1;
 - (void)animateStylesWithDuration:(double)arg1 animations:(CDUnknownBlockType)arg2;
-- (void)animateToMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3 duration:(double)arg4 completion:(CDUnknownBlockType)arg5;
 - (CDUnknownBlockType)annotationCoordinateTest;
-- (id)annotationMarkerForSelectionAtPoint:(struct CGPoint)arg1 avoidCurrent:(BOOL)arg2;
 - (CDUnknownBlockType)annotationRectTest;
 - (id)attributionsForCurrentRegion;
 - (id)boundsContextForSelectedTransitLines;
 - (BOOL)buildingFootprintsDisabled;
-- (id)buildingMarkerAtPoint:(struct CGPoint)arg1;
-- (BOOL)canShowAnimationForSearchResultWithMapRegion:(id)arg1;
+- (shared_ptr_430519ce)buildingMarkerAtPoint:(struct CGPoint)arg1;
+- (BOOL)canRotate;
 - (BOOL)canZoomInForTileSize:(long long)arg1;
 - (BOOL)canZoomOutForTileSize:(long long)arg1;
 - (void)clearOnscreenTimestamps;
@@ -169,28 +172,27 @@
 - (CDStruct_c3b9c2ee)convertPoint:(struct CGPoint)arg1 toCoordinateFromLayer:(id)arg2;
 - (CDStruct_c3b9c2ee)convertPoint:(struct CGPoint)arg1 toMapPointFromLayer:(id)arg2;
 - (id)currentCanvas;
-- (BOOL)currentZoomLevelAllowsRotation;
+- (long long)currentMapMode;
 - (double)currentZoomLevelForTileSize:(long long)arg1;
 - (void)dealloc;
-- (BOOL)debugDynamicMapModesEnabled;
+- (void)debugHighlightFeatureMarker:(const shared_ptr_430519ce *)arg1;
 - (void)debugHighlightLabelAtPoint:(struct CGPoint)arg1;
 - (void)debugRunPerformanceTestWithOutputHeader:(id)arg1;
-- (void)deselectAnnotationMarker:(id)arg1;
 - (void)deselectLabelMarker;
 - (void)deselectTransitLineMarker;
 - (id)detailedDescription;
-- (void)didDrawWithTimestamp:(double)arg1;
+- (id)detailedDescriptionDictionaryRepresentation;
 - (void)didEnterBackground;
 - (void)didFinishSnapshotting;
+- (void)didPresent;
 - (void)didReceiveMemoryWarning:(id)arg1;
-- (void)didStartPanningDeceleration;
 - (void)disableFlyoverStatistics;
 - (double)distanceFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2 fromLayer:(id)arg3 withPrecision:(long long)arg4;
 - (double)durationToAnimateToMapRegion:(id)arg1;
 - (void)enableFlyoverStatistics;
 - (void)enter3DMode;
 - (void)exit3DMode;
-- (id)featureMarkerAtPoint:(struct CGPoint)arg1;
+- (shared_ptr_430519ce)featureMarkerAtPoint:(struct CGPoint)arg1;
 - (void)flushTileLoads;
 - (id)flyoverStatistics;
 - (void)forceFrame;
@@ -198,12 +200,15 @@
 - (void)forceSceneLoad;
 - (void)goToTileX:(int)arg1 Y:(int)arg2 Z:(int)arg3 tileSize:(int)arg4;
 - (BOOL)gridDisabled;
-- (id)initWithGlobe:(BOOL)arg1 shouldRasterize:(BOOL)arg2 inBackground:(BOOL)arg3 manifestConfiguration:(id)arg4;
+- (id)iconForStyleAttributes:(id)arg1 contentScale:(double)arg2 size:(long long)arg3 customIconID:(unsigned long long)arg4 transparent:(BOOL)arg5;
+- (id)initWithGlobe:(BOOL)arg1 shouldRasterize:(BOOL)arg2 inBackground:(BOOL)arg3 manifestConfiguration:(id)arg4 contentScale:(double)arg5;
 - (void)insertRasterOverlay:(id)arg1 aboveOverlay:(id)arg2;
 - (void)insertRasterOverlay:(id)arg1 belowOverlay:(id)arg2;
 - (BOOL)isEffectivelyHidden;
 - (BOOL)isPointValidForGesturing:(struct CGPoint)arg1;
 - (BOOL)isShowingNoDataPlaceholders;
+- (id)labelMarkerForCustomFeatureAnnotation:(id)arg1;
+- (id)labelMarkerForCustomFeatureAnnotation:(id)arg1 dataSource:(id)arg2;
 - (id)labelMarkerForSelectionAtPoint:(struct CGPoint)arg1 selectableLabelsOnly:(BOOL)arg2;
 - (BOOL)labelsDisabled;
 - (void)map:(id)arg1 canEnter3DModeDidChange:(BOOL)arg2;
@@ -218,7 +223,8 @@
 - (void)map:(id)arg1 flyoverModeWillChange:(int)arg2;
 - (id)map:(id)arg1 painterForOverlay:(id)arg2;
 - (id)map:(id)arg1 presentationForAnnotation:(id)arg2;
-- (void)map:(id)arg1 selectedLabelMarkerWillDisappear:(id)arg2;
+- (void)map:(id)arg1 selectedLabelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
+- (void)map:(id)arg1 selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)map:(id)arg1 willChangeRegionAnimated:(BOOL)arg2;
 - (void)map:(id)arg1 willTransitionFrom:(long long)arg2 to:(long long)arg3 duration:(double)arg4;
 - (void)mapController:(id)arg1 requestsDisplayRate:(long long)arg2;
@@ -228,7 +234,7 @@
 - (void)mapDidBecomePartiallyDrawn:(id)arg1;
 - (void)mapDidChangeVisibleRegion:(id)arg1;
 - (void)mapDidFailLoadingTiles:(id)arg1 withError:(id)arg2;
-- (void)mapDidFinishChangingMapDisplayStyle:(CDStruct_f0cfbbbb)arg1;
+- (void)mapDidFinishChangingMapDisplayStyle:(CDStruct_80aa614a)arg1;
 - (void)mapDidFinishInitialTrackingAnimation:(id)arg1;
 - (void)mapDidFinishLoadingTiles:(id)arg1;
 - (void)mapDidReloadStylesheet:(id)arg1;
@@ -238,6 +244,9 @@
 - (double)maximumZoomLevelForTileSize:(long long)arg1;
 - (double)minimumZoomLevelForTileSize:(long long)arg1;
 - (void)moveToFlyoverTourStartPosition:(id)arg1 duration:(double)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)navigationCameraHasStartedPanning;
+- (void)navigationCameraHasStoppedPanning;
+- (void)navigationCameraReturnToPuck;
 - (void)onTimerFired:(id)arg1;
 - (void)openLoaderConnection;
 - (void)panWithOffset:(struct CGPoint)arg1 relativeToScreenPoint:(struct CGPoint)arg2 animated:(BOOL)arg3 duration:(double)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -247,15 +256,15 @@
 - (BOOL)polygonsDisabled;
 - (void)preloadNavigationSceneResources;
 - (void)prepareFlyoverAnimation:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)puckAnimator:(id)arg1 updatedPosition:(CDStruct_b926a728 *)arg2;
-- (void)puckAnimator:(id)arg1 updatedTargetPosition:(struct VKPoint)arg2;
+- (void)puckAnimator:(id)arg1 runAnimation:(id)arg2;
+- (void)puckAnimator:(id)arg1 updatedPosition:(const Mercator3_d8bb135c *)arg2 course:(double)arg3;
+- (void)puckAnimator:(id)arg1 updatedTargetPosition:(Matrix_6e1d3589)arg2;
 - (void)puckAnimatorDidStop:(id)arg1;
 - (void)pushNewOnscreenTimestamp:(id)arg1;
 - (BOOL)rastersDisabled;
-- (BOOL)realisticLandDisabled;
-- (BOOL)realisticRoadsDisabled;
 - (void)reloadStylesheet;
 - (void)removeAnnotationMarker:(id)arg1;
+- (void)removeCustomFeatureDataSource:(id)arg1;
 - (void)removeExternalAnchor:(id)arg1;
 - (void)removeOverlay:(id)arg1;
 - (void)removePersistentOverlay:(id)arg1;
@@ -271,52 +280,43 @@
 - (BOOL)roadsDisabled;
 - (void)runAnimation:(id)arg1;
 - (id)secondaryCanvas;
-- (void)selectAnnotationMarker:(id)arg1;
 - (void)selectLabelMarker:(id)arg1;
 - (void)selectTransitLineMarker:(id)arg1;
 - (id)selectedTransitLineIDs;
-- (void)setAnnotationMarkerDeselectionCallback:(CDUnknownBlockType)arg1;
+- (void)setApplicationState:(unsigned char)arg1 displayedSearchResultsType:(unsigned char)arg2;
 - (void)setBounds:(struct CGRect)arg1;
+- (void)setCameraFramingInsets:(struct VKEdgeInsets)arg1;
 - (void)setCameraHorizontalOffset:(double)arg1 duration:(double)arg2 timingFunction:(id)arg3;
 - (void)setCanonicalSkyHeight:(double)arg1;
 - (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 timingCurve:(CDUnknownBlockType)arg6 completion:(CDUnknownBlockType)arg7;
-- (void)setCenterCoordinate:(CDStruct_071ac149)arg1 animated:(BOOL)arg2;
-- (void)setCenterCoordinateSmoothTransition:(CDStruct_071ac149)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 timingCurve:(CDUnknownBlockType)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)setContentsScale:(double)arg1;
 - (void)setCurrentLocationText:(id)arg1;
-- (void)setDebugDynamicMapModesEnabled:(BOOL)arg1;
 - (void)setDesiredMapMode:(long long)arg1 immediate:(BOOL)arg2;
 - (void)setDisableBuildingFootprints:(BOOL)arg1;
 - (void)setDisableGrid:(BOOL)arg1;
 - (void)setDisableLabels:(BOOL)arg1;
 - (void)setDisablePolygons:(BOOL)arg1;
 - (void)setDisableRasters:(BOOL)arg1;
-- (void)setDisableRealisticLand:(BOOL)arg1;
-- (void)setDisableRealisticRoads:(BOOL)arg1;
 - (void)setDisableRoadClass:(BOOL)arg1 forRoadClass:(int)arg2;
 - (void)setDisableRoads:(BOOL)arg1;
 - (void)setDisableTransitLines:(BOOL)arg1;
 - (void)setEdgeInsets:(struct VKEdgeInsets)arg1 duration:(double)arg2 timingFunction:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setFlyoverMode:(int)arg1;
 - (void)setHidden:(BOOL)arg1;
-- (void)setMapDisplayStyle:(CDStruct_f0cfbbbb)arg1 animated:(BOOL)arg2;
-- (void)setMapDisplayStyle:(CDStruct_f0cfbbbb)arg1 animated:(BOOL)arg2 duration:(double)arg3;
-- (void)setMapRegion:(id)arg1 animated:(BOOL)arg2;
-- (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3 animated:(BOOL)arg4;
-- (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3 animated:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)setMapDisplayStyle:(CDStruct_80aa614a)arg1 animated:(BOOL)arg2;
+- (void)setMapDisplayStyle:(CDStruct_80aa614a)arg1 animated:(BOOL)arg2 duration:(double)arg3;
+- (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3;
+- (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3 duration:(double)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)setMapType:(long long)arg1 animated:(BOOL)arg2;
+- (void)setNavContext:(id)arg1;
 - (void)setNeedsDisplay;
 - (void)setNeedsLayout;
 - (void)setRouteContext:(id)arg1;
 - (void)setRouteLineSplitAnnotation:(id)arg1;
 - (void)setRouteUserOffset:(struct PolylineCoordinate)arg1;
-- (void)setShouldLimitTrackingCameraHeight:(BOOL)arg1;
-- (void)setStyleManager:(shared_ptr_f06afc6c)arg1;
 - (void)setStylesheetName:(id)arg1;
-- (void)setTracePlaybackSpeedMultiplier:(double)arg1;
 - (void)setYaw:(double)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldHideOffscreenSelectedAnnotation;
-- (void)showSearchResultAnimationAtCoordinate:(CDStruct_c3b9c2ee)arg1 withMapRegion:(id)arg2;
 - (void)startFlyoverAnimation:(id)arg1 animateToStart:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)startFlyoverTourAnimation:(unsigned long long)arg1 animateToStart:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)startPanningAtPoint:(struct CGPoint)arg1;
@@ -333,11 +333,10 @@
 - (void)stopSnappingAnimations;
 - (void)stopTracking;
 - (void)stopTrackingAnnotation;
-- (shared_ptr_750cb28c)styleForFeature:(id)arg1;
-- (shared_ptr_f06afc6c)styleManager;
-- (shared_ptr_3fff3c66)stylesheet;
+- (shared_ptr_144c31f6)styleForFeature:(shared_ptr_430519ce)arg1;
+- (shared_ptr_a3c46825)styleManager;
+- (shared_ptr_664b6d77)stylesheet;
 - (BOOL)stylesheetIsDevResource;
-- (id)stylesheetName;
 - (BOOL)supportsMapType:(long long)arg1;
 - (BOOL)supportsNightMode;
 - (double)topDownMinimumZoomLevelForTileSize:(long long)arg1;
@@ -345,7 +344,6 @@
 - (id)transitLineMarkersInCurrentViewport;
 - (BOOL)transitLinesDisabled;
 - (void)transitionToTracking:(BOOL)arg1 mapMode:(long long)arg2 pounceCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)updateCameraContext:(id)arg1;
 - (BOOL)updateDisplayLinkStatus;
 - (void)updateOnscreenTimestamps;
 - (void)updatePanWithTranslation:(struct CGPoint)arg1;

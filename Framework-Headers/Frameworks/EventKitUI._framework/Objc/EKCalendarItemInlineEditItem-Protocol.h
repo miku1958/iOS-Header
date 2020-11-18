@@ -6,7 +6,10 @@
 
 #import <EventKitUI/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol EKCalendarItemInlineEditItem <NSObject>
 - (BOOL)isSaveable;
+- (NSString *)searchStringForEventAutocomplete;
 @end
 

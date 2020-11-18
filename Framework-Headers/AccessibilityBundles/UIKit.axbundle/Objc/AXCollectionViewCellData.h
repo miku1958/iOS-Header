@@ -15,6 +15,7 @@
 
 @property (readonly, nonatomic) NSMutableArray *children; // @synthesize children=_children;
 
+- (void).cxx_destruct;
 
 @end
 

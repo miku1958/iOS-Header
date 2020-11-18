@@ -11,6 +11,7 @@
 @interface HAPRecentlySeenPairedBTLEPeripheralTuple : NSObject
 {
     BOOL _notifyingCharacteristicUpdated;
+    BOOL _monitorState;
     double _lastSeen;
     CBPeripheral *_peripheral;
     NSNumber *_statusFlags;
@@ -18,23 +19,31 @@
     NSNumber *_configNumber;
     NSNumber *_categoryIdentifier;
     NSString *_identifier;
+    unsigned long long _advertisementFormat;
     NSMutableDictionary *_cachedDescriptors;
-    NSMapTable *_cachedSignatures;
+    NSMapTable *_cachedCharacteristicSignatures;
+    NSMapTable *_cachedServiceSignatures;
+    unsigned long long _connectionPriority;
 }
 
+@property (readonly, nonatomic) unsigned long long advertisementFormat; // @synthesize advertisementFormat=_advertisementFormat;
+@property (readonly, nonatomic) NSMapTable *cachedCharacteristicSignatures; // @synthesize cachedCharacteristicSignatures=_cachedCharacteristicSignatures;
 @property (readonly, nonatomic) NSMutableDictionary *cachedDescriptors; // @synthesize cachedDescriptors=_cachedDescriptors;
-@property (readonly, nonatomic) NSMapTable *cachedSignatures; // @synthesize cachedSignatures=_cachedSignatures;
+@property (readonly, nonatomic) NSMapTable *cachedServiceSignatures; // @synthesize cachedServiceSignatures=_cachedServiceSignatures;
 @property (strong, nonatomic) NSNumber *categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
 @property (strong, nonatomic) NSNumber *configNumber; // @synthesize configNumber=_configNumber;
+@property (nonatomic) unsigned long long connectionPriority; // @synthesize connectionPriority=_connectionPriority;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) double lastSeen; // @synthesize lastSeen=_lastSeen;
+@property (nonatomic) BOOL monitorState; // @synthesize monitorState=_monitorState;
 @property (nonatomic) BOOL notifyingCharacteristicUpdated; // @synthesize notifyingCharacteristicUpdated=_notifyingCharacteristicUpdated;
 @property (readonly, nonatomic) CBPeripheral *peripheral; // @synthesize peripheral=_peripheral;
 @property (strong, nonatomic) NSNumber *stateNumber; // @synthesize stateNumber=_stateNumber;
 @property (strong, nonatomic) NSNumber *statusFlags; // @synthesize statusFlags=_statusFlags;
 
 - (void).cxx_destruct;
-- (id)initRecentlySeenPairedBTLEPeripheral:(id)arg1 statusFlags:(id)arg2 stateNumber:(id)arg3 category:(id)arg4 configNumber:(id)arg5 identifier:(id)arg6;
+- (id)initRecentlySeenPairedBTLEPeripheral:(id)arg1 statusFlags:(id)arg2 stateNumber:(id)arg3 category:(id)arg4 configNumber:(id)arg5 identifier:(id)arg6 advertisementFormat:(unsigned long long)arg7;
+- (void)updatePairedPeripheralConfiguration:(BOOL)arg1 connectionPriority:(unsigned long long)arg2;
 
 @end
 

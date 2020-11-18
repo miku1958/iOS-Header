@@ -7,24 +7,20 @@
 #import <FuseUI/MusicMediaDetailViewController.h>
 
 #import <FuseUI/MusicClientContextConsuming-Protocol.h>
-#import <FuseUI/MusicEntityProviderDownloadInformationControllerObserver-Protocol.h>
 #import <FuseUI/MusicJSNativeViewControllerFactory-Protocol.h>
 #import <FuseUI/MusicJSProductNativeViewControllerDelegate-Protocol.h>
 #import <FuseUI/MusicMediaProductHeaderContentViewControllerDelegate-Protocol.h>
-#import <FuseUI/MusicTransferObserver-Protocol.h>
 #import <FuseUI/UIViewControllerRestoration-Protocol.h>
 
-@class MPArtworkCatalog, MusicClientContext, MusicEntityProviderDownloadInformationController, MusicEntityValueContext, MusicMediaDetailHeaderViewController, MusicMediaProductDetailHeaderConfiguration, MusicMediaProductHeaderContentViewController, MusicMediaProductSplitDetailViewController, MusicMediaProductSplitMainViewController, MusicTransferAggregator, NSArray, NSMutableArray, NSString, UIBarButtonItem, UIImage, UIScrollView, UIViewController;
+@class MPArtworkCatalog, MusicClientContext, MusicEntityValueContext, MusicMediaDetailHeaderViewController, MusicMediaProductDetailHeaderConfiguration, MusicMediaProductHeaderContentViewController, MusicMediaProductSplitDetailViewController, MusicMediaProductSplitMainViewController, NSArray, NSMutableArray, NSString, UIBarButtonItem, UIImage, UIScrollView, UIViewController;
 @protocol MusicEntityProviding;
 
-@interface MusicMediaProductDetailViewController : MusicMediaDetailViewController <MusicEntityProviderDownloadInformationControllerObserver, MusicJSProductNativeViewControllerDelegate, MusicTransferObserver, UIViewControllerRestoration, MusicMediaProductHeaderContentViewControllerDelegate, MusicClientContextConsuming, MusicJSNativeViewControllerFactory>
+@interface MusicMediaProductDetailViewController : MusicMediaDetailViewController <MusicJSProductNativeViewControllerDelegate, UIViewControllerRestoration, MusicMediaProductHeaderContentViewControllerDelegate, MusicClientContextConsuming, MusicJSNativeViewControllerFactory>
 {
     BOOL _allowsProductHairline;
     MPArtworkCatalog *_artworkCatalog;
     UIBarButtonItem *_cancelButtonItem;
     MusicMediaProductDetailHeaderConfiguration *_detailHeaderConfiguration;
-    struct MusicEntityDownloadInformation _downloadInformation;
-    MusicEntityProviderDownloadInformationController *_entityProviderDownloadInformationController;
     BOOL _hasDetailTintInformation;
     BOOL _hasPresentedExplicitByDefaultAlert;
     BOOL _editingWasCancelled;
@@ -41,7 +37,6 @@
     NSMutableArray *_pendingTintInformationDispatchEvents;
     struct CGSize _previousMaximumHeaderSize;
     UIViewController *_relatedContentViewController;
-    MusicTransferAggregator *_transferAggregator;
     BOOL _forContentCreation;
     MusicEntityValueContext *_containerEntityValueContext;
     MusicClientContext *_clientContext;
@@ -78,7 +73,6 @@
 - (BOOL)_editingWasCancelled;
 - (id)_effectiveNavigationItem;
 - (void)_handleCancelButtonTapped:(id)arg1;
-- (void)_handleClientContextTransferAggregatorDidChangeNotification:(id)arg1;
 - (void)_handleContainerEntityProviderDidInvalidateNotification:(id)arg1;
 - (id)_loadDetailHeaderConfiguration;
 - (id)_loadProductHeaderContentViewController;
@@ -88,9 +82,7 @@
 - (id)_mediaProductHeaderContentViewController;
 - (void)_presentExplicitByDefaultAlertIfNeeded;
 - (long long)_productDescriptionTextStyle;
-- (void)_registerForClientContextTransferAggregatorDidChangeNotification;
 - (void)_reloadContainerEntityValueContextProperties;
-- (void)_reloadTransferAggregator;
 - (void)_sendPendingTintInformationDispatchEvents;
 - (void)_setNeedsDetailHeaderConfigurationUpdate;
 - (BOOL)_shouldAutomaticallyPopForMissingContainerEntityValueProvider;
@@ -104,7 +96,6 @@
 - (BOOL)allowsShowingSplitDetailViewController;
 - (void)dealloc;
 - (void)detailTintInformationDidChange;
-- (void)downloadInformationController:(id)arg1 downloadInformationDidChange:(struct MusicEntityDownloadInformation)arg2;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
 - (id)initWithContainerEntityProvider:(id)arg1 tracklistEntityProvider:(id)arg2 clientContext:(id)arg3 existingJSProductNativeViewController:(id)arg4;
 - (id)initWithContainerEntityProvider:(id)arg1 tracklistEntityProvider:(id)arg2 clientContext:(id)arg3 existingJSProductNativeViewController:(id)arg4 forContentCreation:(BOOL)arg5;
@@ -124,8 +115,6 @@
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)showingSplitDetailViewControllerDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)transferAggregator:(id)arg1 downloadStatusChangedAtIndexes:(id)arg2;
-- (void)transferAggregatorDownloadsDidChange:(id)arg1;
 - (void)updateWithHeaderHeight:(double)arg1 maximumHeaderHeight:(double)arg2 headerVerticalOffset:(double)arg3 transitionProgress:(double)arg4;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

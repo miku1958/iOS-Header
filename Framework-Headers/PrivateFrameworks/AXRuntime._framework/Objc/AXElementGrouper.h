@@ -8,16 +8,15 @@
 
 @interface AXElementGrouper : NSObject
 {
-    unsigned long long _minimumGroupSize;
-    unsigned long long _maximumGroupSize;
-    unsigned long long _preferredGroupSize;
     double _thresholdForDeterminingEqualSize;
+    long long _heuristics;
 }
 
-@property (nonatomic) unsigned long long maximumGroupSize; // @synthesize maximumGroupSize=_maximumGroupSize;
-@property (nonatomic) unsigned long long minimumGroupSize; // @synthesize minimumGroupSize=_minimumGroupSize;
-@property (nonatomic) unsigned long long preferredGroupSize; // @synthesize preferredGroupSize=_preferredGroupSize;
-@property (nonatomic) double thresholdForDeterminingEqualSize; // @synthesize thresholdForDeterminingEqualSize=_thresholdForDeterminingEqualSize;
+@property (nonatomic) long long heuristics; // @synthesize heuristics=_heuristics;
+@property (readonly, nonatomic) unsigned long long maximumGroupSize;
+@property (readonly, nonatomic) unsigned long long minimumGroupSize;
+@property (readonly, nonatomic) unsigned long long preferredGroupSize;
+@property (readonly, nonatomic) double thresholdForDeterminingEqualSize; // @synthesize thresholdForDeterminingEqualSize=_thresholdForDeterminingEqualSize;
 
 - (id)_buildHierarchyForGroup:(id)arg1 indexOfKeyboard:(unsigned long long *)arg2;
 - (id)_flattenHierarchyForGroup:(id)arg1 rootLevel:(BOOL)arg2;
@@ -25,7 +24,8 @@
 - (id)_groupRemovingImpossibleGroups:(id)arg1 isRootLevel:(BOOL)arg2;
 - (id)_groupablesForItems:(id)arg1;
 - (id)groupElementsInRootGroup:(id)arg1;
-- (id)initWithPadInterfaceHeuristics:(BOOL)arg1;
+- (id)init;
+- (id)initWithHeuristics:(long long)arg1;
 
 @end
 

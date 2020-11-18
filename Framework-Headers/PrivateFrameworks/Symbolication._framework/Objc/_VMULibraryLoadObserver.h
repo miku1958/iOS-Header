@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)dealloc;
-- (id)initWithTask:(unsigned int)arg1 delegate:(id)arg2;
+- (id)initWithTask:(unsigned int)arg1 taskIsCorpse:(BOOL)arg2 delegate:(id)arg3;
 - (void)stopObserving;
 
 @end

@@ -6,7 +6,9 @@
 
 #import <SpotlightUI/NSObject-Protocol.h>
 
+@class SFResultSection;
+
 @protocol SPUISearchTableHeaderViewDelegate <NSObject>
-- (void)toggleExpansionForSection:(unsigned long long)arg1;
+- (void)toggleExpansionForSection:(SFResultSection *)arg1;
 @end
 

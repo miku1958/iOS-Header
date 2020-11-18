@@ -10,8 +10,8 @@
 {
 }
 
++ (id)defaultPlaceholderText;
 + (BOOL)deleteAfterEditingIfEmpty;
-+ (id)placeholderText;
 - (id)displayName;
 - (struct CGRect)hitTestBounds;
 - (id)init;

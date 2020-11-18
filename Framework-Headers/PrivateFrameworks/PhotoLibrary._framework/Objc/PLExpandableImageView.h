@@ -78,7 +78,6 @@
 - (void)setFullSizeImageJPEGData:(id)arg1 size:(struct CGSize)arg2 orientation:(long long)arg3;
 - (void)setImage:(id)arg1;
 - (void)setImage:(id)arg1 isFullscreen:(BOOL)arg2;
-- (void)setPosterImage:(id)arg1 regionOfInterest:(struct CGRect)arg2;
 - (void)setShadowEnabled:(BOOL)arg1;
 - (void)setShowsPlaceholder:(BOOL)arg1;
 - (void)setSize:(struct CGSize)arg1 angle:(float)arg2;

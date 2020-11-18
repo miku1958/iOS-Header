@@ -20,8 +20,8 @@ __attribute__((visibility("hidden")))
     BOOL _receivedActionDidFinish;
 }
 
-@property DDAction *action; // @synthesize action=_action;
-@property DDActionController *actionController; // @synthesize actionController=_actionController;
+@property (weak) DDAction *action; // @synthesize action=_action;
+@property (weak) DDActionController *actionController; // @synthesize actionController=_actionController;
 
 + (id)exportedInterface;
 + (id)prepareViewController:(id)arg1 forAction:(id)arg2 actionController:(id)arg3;

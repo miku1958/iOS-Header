@@ -24,6 +24,7 @@
 + (void)_addCalendarUIDsFromPrefs:(id)arg1 toSet:(id)arg2 database:(struct CalDatabase *)arg3;
 + (void)_addCalendarWithUID:(id)arg1 toSet:(id)arg2 database:(struct CalDatabase *)arg3;
 + (void)_addCalendarsForStoreWithUID:(id)arg1 toSet:(id)arg2 database:(struct CalDatabase *)arg3;
+- (void).cxx_destruct;
 - (id)_UIDAntiSetWithCalendars:(id)arg1;
 - (id)_UIDSetWithCalendars:(id)arg1;
 - (id)_addFilterToQuery:(id)arg1 creator:(CDUnknownFunctionPointerType)arg2 userInfo:(void *)arg3;

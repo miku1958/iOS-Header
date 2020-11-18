@@ -29,6 +29,10 @@
 @property (nonatomic) unsigned int y; // @synthesize y=_y;
 @property (nonatomic) unsigned int z; // @synthesize z=_z;
 
++ (Class)attributionType;
++ (Class)childrenType;
++ (Class)iconChecksumType;
++ (Class)iconType;
 - (void)addAttribution:(id)arg1;
 - (void)addChildren:(id)arg1;
 - (void)addIcon:(id)arg1;

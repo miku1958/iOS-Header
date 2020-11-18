@@ -7,7 +7,8 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (FUBackupSupport)
-+ (void)FU_backupStandardUserDefaultsKey:(id)arg1;
 + (id)_npsManager;
++ (void)fu_backupStandardUserDefaultsKey:(id)arg1;
++ (void)fu_synchronizeStandardUserDefaultsKey:(id)arg1;
 @end
 

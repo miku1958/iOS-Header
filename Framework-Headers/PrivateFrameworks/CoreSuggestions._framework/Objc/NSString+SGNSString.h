@@ -8,6 +8,5 @@
 
 @interface NSString (SGNSString)
 - (id)sg_deepCopy;
-- (id)sg_initWithDataNoCopy:(id)arg1 encoding:(unsigned long long)arg2;
 @end
 

@@ -6,24 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class MPUOperationQueue;
+@class NSOperationQueue;
 
 @interface MCDNewBrowseManager : NSObject
 {
-    MPUOperationQueue *_operationQueue;
+    NSOperationQueue *_operationQueue;
 }
 
-@property (strong, nonatomic) MPUOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
+@property (strong, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)additionalRequestForParentSection:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)additionalRequestForRadioGenresForParentSection:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)createRequest;
 - (id)init;
 - (void)loadCuratedPlaylistStoreAdamID:(unsigned long long)arg1 requestWithCompletion:(CDUnknownBlockType)arg2;
 - (void)loadRequestForRadioGenresWithCompletion:(CDUnknownBlockType)arg1;
 - (void)loadRequestWithCompletion:(CDUnknownBlockType)arg1;
-- (id)request;
 
 @end
 

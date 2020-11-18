@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsRequestedChangeTypes:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (unsigned int)requestTypeCode;
+- (id)requestedChangeTypesAsString:(int)arg1;
 - (Class)responseClass;
 - (void)writeTo:(id)arg1;
 

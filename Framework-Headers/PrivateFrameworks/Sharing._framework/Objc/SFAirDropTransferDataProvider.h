@@ -6,12 +6,42 @@
 
 #import <objc/NSObject.h>
 
-@interface SFAirDropTransferDataProvider : NSObject
+#import <Sharing/SFAirDropTransferDataProviderClient-Protocol.h>
+#import <Sharing/SFCompanionXPCManagerObserver-Protocol.h>
+
+@class NSString, NSXPCConnection;
+@protocol SFAirDropTransferDataProviderDelegate;
+
+@interface SFAirDropTransferDataProvider : NSObject <SFCompanionXPCManagerObserver, SFAirDropTransferDataProviderClient>
 {
+    id<SFAirDropTransferDataProviderDelegate> _delegate;
+    NSXPCConnection *_connection;
 }
 
+@property (weak) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak) id<SFAirDropTransferDataProviderDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (id)sharedAlertDataProvider;
+- (void).cxx_destruct;
+- (id)init;
+- (void)performAppStoreSearchForRecordID:(id)arg1;
+- (void)performSaveToiCloudForRecordID:(id)arg1;
+- (void)registerAsAirDropClient;
+- (void)showAcceptAlertForRecordID:(id)arg1;
+- (void)showCancelledAlertForRecordID:(id)arg1;
+- (void)showFailedAlertForRecordID:(id)arg1;
+- (void)showProgressAlertForRecordID:(id)arg1;
 - (void)transferDataWithRecordID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)userDidAcceptTransferWithRecordID:(id)arg1;
+- (void)userDidCancelTransferWithRecordID:(id)arg1;
+- (void)userDidSelectAppWithIndex:(id)arg1 forRecordID:(id)arg2;
+- (void)withdrawTransferDataWithRecordID:(id)arg1;
+- (void)xpcManagerConnectionInterrupted;
+- (void)xpcManagerDidResumeConnection:(id)arg1;
 
 @end
 

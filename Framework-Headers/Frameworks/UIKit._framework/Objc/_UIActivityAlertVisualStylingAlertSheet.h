@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (double)minimumActionHeight;
+- (Class)interfaceActionVisualStyleClassForManagingConcreteVisualStyle;
 
 @end
 

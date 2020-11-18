@@ -6,11 +6,20 @@
 
 #import <UIKit/UITableViewCell.h>
 
+@class QLItem;
+
 __attribute__((visibility("hidden")))
 @interface QLArchiveTableViewCell : UITableViewCell
 {
+    long long _loadingID;
+    QLItem *_previewItem;
 }
 
+@property (strong, nonatomic) QLItem *previewItem; // @synthesize previewItem=_previewItem;
+
+- (void).cxx_destruct;
+- (id)_cachedDescriptionForUTI:(id)arg1;
+- (id)_folderImage;
 - (double)indentationMargin;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;

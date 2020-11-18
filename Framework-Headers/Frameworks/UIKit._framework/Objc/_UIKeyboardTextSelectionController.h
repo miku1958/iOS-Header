@@ -17,9 +17,9 @@ __attribute__((visibility("hidden")))
     BOOL _hasTextInputView;
     UITextPosition *_cursorPosition;
     long long _selectionGranularity;
-    UIResponder<UITextInput> *_inputDelegate;
     UITextRange *_initialSelection;
     UITextRange *_selectionBase;
+    UIResponder<UITextInput> *_inputDelegate;
     struct CGRect _caretRectForCursorPosition;
 }
 
@@ -64,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)selectPositionAtBoundary:(long long)arg1 inDirection:(long long)arg2 executionContext:(id)arg3;
 - (void)selectPositionAtBoundary:(long long)arg1 inDirection:(long long)arg2 relativeToSelection:(id)arg3 executionContext:(id)arg4;
 - (void)selectPositionAtPoint:(struct CGPoint)arg1 executionContext:(id)arg2;
+- (void)selectTextWithGranularity:(long long)arg1 atPoint:(struct CGPoint)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)selectTextWithGranularity:(long long)arg1 atPoint:(struct CGPoint)arg2 executionContext:(id)arg3;
 - (void)selectionDidChange;
 - (void)setRangedSelectionShouldShowGrabbers:(BOOL)arg1;

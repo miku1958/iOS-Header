@@ -7,46 +7,43 @@
 #import <objc/NSObject.h>
 
 @class NSUUID;
-@protocol NWNetworkAgent, OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source;
+@protocol NWNetworkAgent, OS_dispatch_queue, OS_dispatch_source;
 
 @interface NWNetworkAgentRegistration : NSObject
 {
     int _registrationSocket;
-    unsigned int _waitingMessageID;
-    unsigned int _responseMessageID;
-    unsigned int _responseError;
     Class _networkAgentClass;
     NSObject<NWNetworkAgent> *_networkAgent;
     NSUUID *_registeredUUID;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_source> *_readSource;
-    NSObject<OS_dispatch_semaphore> *_readSemaphore;
 }
 
 @property (strong) NSObject<NWNetworkAgent> *networkAgent; // @synthesize networkAgent=_networkAgent;
-@property (strong) Class networkAgentClass; // @synthesize networkAgentClass=_networkAgentClass;
+@property Class networkAgentClass; // @synthesize networkAgentClass=_networkAgentClass;
 @property (strong) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (strong) NSObject<OS_dispatch_semaphore> *readSemaphore; // @synthesize readSemaphore=_readSemaphore;
 @property (strong) NSObject<OS_dispatch_source> *readSource; // @synthesize readSource=_readSource;
-@property (readonly, getter=isRegistered) BOOL registered;
+@property (readonly, nonatomic, getter=isRegistered) BOOL registered;
 @property (strong) NSUUID *registeredUUID; // @synthesize registeredUUID=_registeredUUID;
 @property int registrationSocket; // @synthesize registrationSocket=_registrationSocket;
-@property unsigned int responseError; // @synthesize responseError=_responseError;
-@property unsigned int responseMessageID; // @synthesize responseMessageID=_responseMessageID;
-@property unsigned int waitingMessageID; // @synthesize waitingMessageID=_waitingMessageID;
 
 + (BOOL)addActiveAssertionToNetworkAgent:(id)arg1;
++ (int)newRegistrationFileDescriptor;
 + (BOOL)removeActiveAssertionFromNetworkAgent:(id)arg1;
-+ (id)sharedAssertionRegistration;
 - (void).cxx_destruct;
 - (BOOL)addNetworkAgentToInterfaceNamed:(id)arg1;
+- (BOOL)assignNexusData:(id)arg1 toClient:(id)arg2;
+- (BOOL)createReadSourceWithRegistrationSocket:(int)arg1;
 - (void)dealloc;
+- (int)dupRegistrationFileDescriptor;
+- (void)handleMessageFromAgent;
 - (id)initWithNetworkAgentClass:(Class)arg1;
 - (BOOL)registerNetworkAgent:(id)arg1;
+- (BOOL)registerNetworkAgent:(id)arg1 withFileDescriptor:(int)arg2;
 - (BOOL)removeNetworkAgentFromInterfaceNamed:(id)arg1;
+- (BOOL)setRegisteredNetworkAgent:(id)arg1 fileDescriptor:(int)arg2;
 - (BOOL)unregisterNetworkAgent;
 - (BOOL)updateNetworkAgent:(id)arg1;
-- (BOOL)waitForMessageResponse;
 
 @end
 

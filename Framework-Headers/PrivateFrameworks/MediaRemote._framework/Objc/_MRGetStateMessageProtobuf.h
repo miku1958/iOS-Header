@@ -8,28 +8,12 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSData;
-
 @interface _MRGetStateMessageProtobuf : PBCodable <NSCopying>
 {
-    NSData *_nowPlayingApplicationInfoDigest;
-    NSData *_nowPlayingInfoDigest;
-    NSData *_playbackQueueDigest;
-    NSData *_supportedCommandsDigest;
 }
-
-@property (readonly, nonatomic) BOOL hasNowPlayingApplicationInfoDigest;
-@property (readonly, nonatomic) BOOL hasNowPlayingInfoDigest;
-@property (readonly, nonatomic) BOOL hasPlaybackQueueDigest;
-@property (readonly, nonatomic) BOOL hasSupportedCommandsDigest;
-@property (strong, nonatomic) NSData *nowPlayingApplicationInfoDigest; // @synthesize nowPlayingApplicationInfoDigest=_nowPlayingApplicationInfoDigest;
-@property (strong, nonatomic) NSData *nowPlayingInfoDigest; // @synthesize nowPlayingInfoDigest=_nowPlayingInfoDigest;
-@property (strong, nonatomic) NSData *playbackQueueDigest; // @synthesize playbackQueueDigest=_playbackQueueDigest;
-@property (strong, nonatomic) NSData *supportedCommandsDigest; // @synthesize supportedCommandsDigest=_supportedCommandsDigest;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

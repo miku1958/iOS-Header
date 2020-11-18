@@ -8,7 +8,7 @@
 
 #import <UIKit/NSCoding-Protocol.h>
 
-@class NSArray, UIColor, UIImage, UIImageView, UIView;
+@class NSArray, UIColor, UIImage, UIImageView, UIView, _UIFeedbackEdgeBehavior, _UIFeedbackModulationBehavior;
 
 @interface UISlider : UIControl <NSCoding>
 {
@@ -44,6 +44,8 @@
     BOOL _thumbIsArtworkBased;
     BOOL _maxColorIsValid;
     BOOL _animatingWithDynamics;
+    _UIFeedbackEdgeBehavior *_edgeFeedbackBehavior;
+    _UIFeedbackModulationBehavior *_modulationFeedbackBehavior;
     UIImageView *_innerThumbView;
 }
 
@@ -51,12 +53,14 @@
 @property (readonly, nonatomic) UIImage *currentMaximumTrackImage;
 @property (readonly, nonatomic) UIImage *currentMinimumTrackImage;
 @property (readonly, nonatomic) UIImage *currentThumbImage;
+@property (strong, nonatomic, getter=_edgeFeedbackBehavior, setter=_setEdgeFeedbackBehavior:) _UIFeedbackEdgeBehavior *edgeFeedbackBehavior;
 @property (strong, nonatomic) UIColor *maximumTrackTintColor; // @synthesize maximumTrackTintColor=_maxTintColor;
 @property (nonatomic) float maximumValue; // @dynamic maximumValue;
 @property (strong, nonatomic) UIImage *maximumValueImage;
 @property (strong, nonatomic) UIColor *minimumTrackTintColor; // @synthesize minimumTrackTintColor=_minTintColor;
 @property (nonatomic) float minimumValue; // @dynamic minimumValue;
 @property (strong, nonatomic) UIImage *minimumValueImage;
+@property (strong, nonatomic, getter=_modulationFeedbackBehavior, setter=_setModulationFeedbackBehavior:) _UIFeedbackModulationBehavior *modulationFeedbackBehavior;
 @property (strong, nonatomic) UIColor *thumbTintColor; // @synthesize thumbTintColor=_thumbTintColor;
 @property (nonatomic) float value; // @dynamic value;
 
@@ -84,7 +88,6 @@
 - (id)_minimumTrackImageForState:(unsigned long long)arg1;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)_rebuildControlThumb:(BOOL)arg1 track:(BOOL)arg2;
-- (id)_scriptingInfo;
 - (void)_sendDelayedActions;
 - (void)_setContent:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_setMaximumTrackImage:(id)arg1 forStates:(unsigned long long)arg2;
@@ -97,6 +100,7 @@
 - (void)_setUseLookNeue:(BOOL)arg1;
 - (void)_setValue:(float)arg1 andSendAction:(BOOL)arg2;
 - (void)_setValue:(float)arg1 minValue:(float)arg2 maxValue:(float)arg3 andSendAction:(BOOL)arg4;
+- (void)_setupFeedback;
 - (void)_sliderAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)_sliderAnimationWillStart:(id)arg1 context:(id)arg2;
 - (struct UIEdgeInsets)_thumbHitEdgeInsets;
@@ -127,7 +131,6 @@
 - (struct CGRect)maximumValueImageRectForBounds:(struct CGRect)arg1;
 - (id)minimumTrackImageForState:(unsigned long long)arg1;
 - (struct CGRect)minimumValueImageRectForBounds:(struct CGRect)arg1;
-- (id)scriptingInfoWithChildren;
 - (void)setAlpha:(double)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setEnabled:(BOOL)arg1;

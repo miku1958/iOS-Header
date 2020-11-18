@@ -13,8 +13,9 @@
     UITableViewCell *_tableViewCell;
 }
 
-@property (nonatomic) UITableViewCell *tableViewCell; // @synthesize tableViewCell=_tableViewCell;
+@property (weak, nonatomic) UITableViewCell *tableViewCell; // @synthesize tableViewCell=_tableViewCell;
 
+- (void).cxx_destruct;
 
 @end
 

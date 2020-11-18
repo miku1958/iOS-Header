@@ -20,6 +20,7 @@
 @property (copy, nonatomic) CDUnknownBlockType eventHandler; // @synthesize eventHandler=_eventHandler;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (id)init;

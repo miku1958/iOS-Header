@@ -6,7 +6,10 @@
 
 #import <AVFoundation/NSObject-Protocol.h>
 
+@class NSArray, NSDictionary;
+
 @protocol AVOutputSettingsAssistantVideoSettingsAdjuster <NSObject>
 - (long long)averageBitRateForSourceDimensions:(struct CGSize)arg1 andTargetFrameRate:(float)arg2;
+- (NSDictionary *)colorSpaceFromSourceFormatDescriptions:(NSArray *)arg1 andRendererColorSpace:(NSDictionary *)arg2;
 @end
 

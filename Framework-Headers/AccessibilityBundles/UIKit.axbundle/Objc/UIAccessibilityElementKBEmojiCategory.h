@@ -17,9 +17,9 @@
 @property (nonatomic) unsigned long long categoryIndex; // @synthesize categoryIndex=_categoryIndex;
 @property (strong, nonatomic) id categoryView; // @synthesize categoryView=_categoryView;
 
+- (void).cxx_destruct;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
-- (void)dealloc;
 
 @end
 

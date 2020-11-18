@@ -10,27 +10,32 @@
 
 @interface GEORPClientCapabilities : PBCodable <NSCopying>
 {
+    int _transitMarketSupport;
+    BOOL _hasConstrainedProblemStatusSize;
     BOOL _hasFeatureHandle;
     BOOL _hasNoOptInRequest;
     BOOL _hasSupportForIdsBasedNotifications;
-    BOOL _hasUnconstrainedProblemStatusSize;
     struct {
+        unsigned int transitMarketSupport:1;
+        unsigned int hasConstrainedProblemStatusSize:1;
         unsigned int hasFeatureHandle:1;
         unsigned int hasNoOptInRequest:1;
         unsigned int hasSupportForIdsBasedNotifications:1;
-        unsigned int hasUnconstrainedProblemStatusSize:1;
     } _has;
 }
 
+@property (nonatomic) BOOL hasConstrainedProblemStatusSize; // @synthesize hasConstrainedProblemStatusSize=_hasConstrainedProblemStatusSize;
 @property (nonatomic) BOOL hasFeatureHandle; // @synthesize hasFeatureHandle=_hasFeatureHandle;
+@property (nonatomic) BOOL hasHasConstrainedProblemStatusSize;
 @property (nonatomic) BOOL hasHasFeatureHandle;
 @property (nonatomic) BOOL hasHasNoOptInRequest;
 @property (nonatomic) BOOL hasHasSupportForIdsBasedNotifications;
-@property (nonatomic) BOOL hasHasUnconstrainedProblemStatusSize;
 @property (nonatomic) BOOL hasNoOptInRequest; // @synthesize hasNoOptInRequest=_hasNoOptInRequest;
 @property (nonatomic) BOOL hasSupportForIdsBasedNotifications; // @synthesize hasSupportForIdsBasedNotifications=_hasSupportForIdsBasedNotifications;
-@property (nonatomic) BOOL hasUnconstrainedProblemStatusSize; // @synthesize hasUnconstrainedProblemStatusSize=_hasUnconstrainedProblemStatusSize;
+@property (nonatomic) BOOL hasTransitMarketSupport;
+@property (nonatomic) int transitMarketSupport; // @synthesize transitMarketSupport=_transitMarketSupport;
 
+- (int)StringAsTransitMarketSupport:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -39,6 +44,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)transitMarketSupportAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

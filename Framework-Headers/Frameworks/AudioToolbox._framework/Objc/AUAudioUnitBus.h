@@ -10,6 +10,7 @@
 
 @interface AUAudioUnitBus : NSObject
 {
+    BOOL _removingObserverWithContext;
     AVAudioFormat *_format;
     NSArray *_supportedChannelCounts;
     unsigned int _maximumChannelCount;
@@ -39,6 +40,7 @@
 - (void)dealloc;
 - (id)initWithFormat:(id)arg1 error:(id *)arg2;
 - (unsigned int)maximumChannelCount;
+- (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2 context:(void *)arg3;
 - (void)setBusType:(long long)arg1;
 - (BOOL)setFormat:(id)arg1 error:(id *)arg2;

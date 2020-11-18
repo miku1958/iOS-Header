@@ -30,7 +30,7 @@
 + (id)daemonListenerWithExportedObject:(id)arg1;
 - (void).cxx_destruct;
 - (void)addRequiredEntitlement:(id)arg1;
-- (id)initWithName:(id)arg1 listener:(id)arg2 protocol:(id)arg3 exportedObj:(id)arg4;
+- (id)initWithName:(id)arg1 listener:(id)arg2 protocol:(id)arg3 exportedObj:(id)arg4 isExtension:(BOOL)arg5;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)resume;
 

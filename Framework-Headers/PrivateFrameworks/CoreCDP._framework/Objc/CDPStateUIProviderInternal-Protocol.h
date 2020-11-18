@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CDPContext, NSArray, NSNumber;
+@class CDPContext, NSArray, NSError, NSNumber;
 @protocol CDPLocalDeviceSecretHandlerProtocol, CDPRemoteDeviceSecretValidatorProtocol;
 
 @protocol CDPStateUIProviderInternal
@@ -14,7 +14,10 @@
 - (void)cdpContext:(CDPContext *)arg1 promptForInteractiveAuthenticationWithCompletion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)cdpContext:(CDPContext *)arg1 promptForLocalSecretWithHandler:(id<CDPLocalDeviceSecretHandlerProtocol>)arg2;
 - (void)cdpContext:(CDPContext *)arg1 promptForRemoteSecretWithDevices:(NSArray *)arg2 offeringRemoteApproval:(BOOL)arg3 validator:(id<CDPRemoteDeviceSecretValidatorProtocol>)arg4;
+- (void)cdpContext:(CDPContext *)arg1 promptToEnableStingrayCompletion:(void (^)(BOOL, NSError *))arg2;
 - (void)cdpContext:(CDPContext *)arg1 promptToInformUserOfAccountLockOutWithCompletion:(void (^)(void))arg2;
 - (void)cdpContext:(CDPContext *)arg1 promptToInformUserOfAccountUnlockWithCompletion:(void (^)(void))arg2;
+- (void)cdpContext:(CDPContext *)arg1 showError:(NSError *)arg2 withCompletion:(void (^)(long long))arg3;
+- (void)cdpContext:(CDPContext *)arg1 showError:(NSError *)arg2 withDefaultIndex:(long long)arg3 withCompletion:(void (^)(long long))arg4;
 @end
 

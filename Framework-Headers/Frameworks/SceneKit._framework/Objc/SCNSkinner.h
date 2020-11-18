@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
 
@@ -13,6 +13,9 @@
 @interface SCNSkinner : NSObject <NSSecureCoding>
 {
     struct __C3DSkinner *_skinner;
+    SCNNode *_skeleton;
+    SCNGeometry *_baseGeometry;
+    BOOL _bonesAndIndicesCompression;
 }
 
 @property (strong, nonatomic) SCNGeometry *baseGeometry;
@@ -23,16 +26,22 @@
 @property (readonly, nonatomic) NSArray *bones;
 @property (strong, nonatomic) SCNNode *skeleton;
 
++ (struct __C3DSkinner *)_createSkinnerWithCompressedData:(id)arg1 bonesCount:(unsigned long long)arg2 vertexCount:(unsigned long long)arg3;
++ (struct __C3DSkinner *)_createSkinnerWithVertexCount:(long long)arg1 bones:(id)arg2 boneWeights:(id)arg3 boneIndices:(id)arg4;
++ (id)_skinnerWithBaseGeometry:(id)arg1 skinnableGeometry:(id)arg2 bones:(id)arg3 boneInverseBindTransforms:(id)arg4 bindMatrix:(struct SCNMatrix4)arg5;
 + (struct __C3DSkinner *)createSkinnerWithBaseGeometry:(id)arg1 bones:(id)arg2 boneWeights:(id)arg3 boneIndices:(id)arg4;
 + (id)skinnerWithBaseGeometry:(id)arg1 bones:(id)arg2 boneInverseBindTransforms:(id)arg3 boneWeights:(id)arg4 boneIndices:(id)arg5;
 + (id)skinnerWithSkinnerRef:(struct __C3DSkinner *)arg1;
 + (BOOL)supportsSecureCoding;
-- (void *)__CFObject;
+- (const void *)__CFObject;
+- (BOOL)_bonesAndIndicesCompression;
+- (void)_setBaseGeometry:(id)arg1;
+- (void)_setSkeleton:(id)arg1;
+- (void)_syncObjCModel;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalize;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSkinnerRef:(struct __C3DSkinner *)arg1;
 - (id)joints;
@@ -40,7 +49,10 @@
 - (struct __C3DScene *)sceneRef;
 - (void)setBoneInverseBindTransforms:(id)arg1;
 - (void)setBones:(id)arg1;
+- (void)setWantsCPUSkinning:(BOOL)arg1;
+- (void)set_bonesAndIndicesCompression:(BOOL)arg1;
 - (struct __C3DSkinner *)skinnerRef;
+- (BOOL)wantsCPUSkinning;
 
 @end
 

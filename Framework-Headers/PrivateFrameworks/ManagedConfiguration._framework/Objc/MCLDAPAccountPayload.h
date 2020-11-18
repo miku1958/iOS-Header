@@ -6,7 +6,7 @@
 
 #import <ManagedConfiguration/MCPayload.h>
 
-@class NSArray, NSNumber, NSString;
+@class NSArray, NSDictionary, NSNumber, NSString;
 
 @interface MCLDAPAccountPayload : MCPayload
 {
@@ -17,11 +17,13 @@
     BOOL _useSSL;
     NSArray *_searchSettings;
     NSString *_accountPersistentUUID;
+    NSDictionary *_communicationServiceRules;
     NSNumber *_useSSLNum;
 }
 
 @property (readonly, strong, nonatomic) NSString *accountDescription; // @synthesize accountDescription=_accountDescription;
 @property (copy, nonatomic) NSString *accountPersistentUUID; // @synthesize accountPersistentUUID=_accountPersistentUUID;
+@property (readonly, nonatomic) NSDictionary *communicationServiceRules; // @synthesize communicationServiceRules=_communicationServiceRules;
 @property (readonly, strong, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
 @property (strong, nonatomic) NSString *password; // @synthesize password=_password;
 @property (readonly, strong, nonatomic) NSArray *searchSettings; // @synthesize searchSettings=_searchSettings;
@@ -37,6 +39,7 @@
 - (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)payloadDescriptionKeyValueSections;
+- (id)restrictions;
 - (id)stubDictionary;
 - (id)subtitle1Description;
 - (id)subtitle1Label;

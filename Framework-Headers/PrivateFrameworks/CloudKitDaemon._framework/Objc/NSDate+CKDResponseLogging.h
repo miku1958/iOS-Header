@@ -17,6 +17,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)CKSharedCalendar;
 - (void)_CKLogToFileHandle:(id)arg1 atDepth:(int)arg2;
 @end
 

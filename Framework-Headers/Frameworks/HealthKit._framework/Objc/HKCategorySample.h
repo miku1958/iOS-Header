@@ -16,7 +16,6 @@
 @property (readonly) HKCategoryType *categoryType;
 @property (readonly) long long value;
 
-+ (id)_categorySampleWithUUID:(id)arg1 metadata:(id)arg2 sourceBundleIdentifier:(id)arg3 creationDate:(double)arg4 categoryType:(id)arg5 startDate:(double)arg6 endDate:(double)arg7 value:(long long)arg8;
 + (BOOL)_isConcreteObjectClass;
 + (id)categorySampleWithType:(id)arg1 value:(long long)arg2 startDate:(id)arg3 endDate:(id)arg4;
 + (id)categorySampleWithType:(id)arg1 value:(long long)arg2 startDate:(id)arg3 endDate:(id)arg4 device:(id)arg5 metadata:(id)arg6;
@@ -26,6 +25,7 @@
 - (id)_validateConfiguration;
 - (id)_valueDescription;
 - (void)encodeWithCoder:(id)arg1;
+- (long long)hk_integerValue;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 

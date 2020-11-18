@@ -6,16 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@interface FIUIWorkoutSplit : NSObject
+#import <FitnessUI/NSCoding-Protocol.h>
+
+@interface FIUIWorkoutSplit : NSObject <NSCoding>
 {
-    double _distance;
+    double _distanceInMeters;
     double _duration;
 }
 
-@property (nonatomic) double distance; // @synthesize distance=_distance;
+@property (nonatomic) double distanceInMeters; // @synthesize distanceInMeters=_distanceInMeters;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
 
++ (id)longLengthFormatter;
++ (id)shortLengthFormatter;
+- (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithDistance:(double)arg1 duration:(double)arg2;
+- (id)paceValueForActivityType:(unsigned long long)arg1;
+- (id)titleValueForUnit:(id)arg1 lapIndex:(long long)arg2 shortFormat:(BOOL)arg3;
 
 @end
 

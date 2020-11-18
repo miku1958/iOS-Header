@@ -17,6 +17,7 @@
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 - (void)setState:(long long)arg1 animated:(BOOL)arg2;
 

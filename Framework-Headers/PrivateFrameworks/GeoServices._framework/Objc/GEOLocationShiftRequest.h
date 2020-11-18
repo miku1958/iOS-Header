@@ -10,10 +10,10 @@
 
 @interface GEOLocationShiftRequest : PBRequest <NSCopying>
 {
-    CDStruct_bddcf505 _pixel;
+    struct GEOPixelPoint _pixel;
 }
 
-@property (nonatomic) CDStruct_bddcf505 pixel; // @synthesize pixel=_pixel;
+@property (nonatomic) struct GEOPixelPoint pixel; // @synthesize pixel=_pixel;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

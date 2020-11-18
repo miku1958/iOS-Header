@@ -44,7 +44,7 @@
 @property (strong, nonatomic) AVAudioEnvironmentNode *avAudioEnvironmentNode; // @synthesize avAudioEnvironmentNode=_avAudioEnvironmentNode;
 @property (strong, nonatomic) UIColor *backgroundColor;
 @property (weak, nonatomic) SKCameraNode *camera; // @synthesize camera=_camera;
-@property (nonatomic) id<SKSceneDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<SKSceneDelegate> delegate; // @synthesize delegate=_delegate;
 @property (weak, nonatomic) SKNode *listener;
 @property (readonly, nonatomic) SKPhysicsWorld *physicsWorld; // @synthesize physicsWorld=_physicsWorld;
 @property (nonatomic) long long scaleMode;
@@ -62,6 +62,7 @@
 - (void)_didMoveToView:(id)arg1;
 - (BOOL)_hasConstraints;
 - (struct SKCNode *)_makeBackingNode;
+- (id)_parentFocusEnvironment;
 - (void)_registerConstraintsForNode:(id)arg1;
 - (void)_removeConstraintsForNode:(id)arg1;
 - (void)_setNeedsRender;
@@ -89,6 +90,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSize:(struct CGSize)arg1;
 - (struct CGPoint)position;
+- (void)sceneDidLoad;
 - (void)setPaused:(BOOL)arg1;
 - (void)setPosition:(struct CGPoint)arg1;
 - (void)setScale:(double)arg1;

@@ -14,9 +14,15 @@ __attribute__((visibility("hidden")))
 @interface CKDPZoneRetrieveRequest : PBRequest <NSCopying>
 {
     CKDPRecordZoneIdentifier *_zoneIdentifier;
+    BOOL _onlyFetchPCSInfo;
+    struct {
+        unsigned int onlyFetchPCSInfo:1;
+    } _has;
 }
 
+@property (nonatomic) BOOL hasOnlyFetchPCSInfo;
 @property (readonly, nonatomic) BOOL hasZoneIdentifier;
+@property (nonatomic) BOOL onlyFetchPCSInfo; // @synthesize onlyFetchPCSInfo=_onlyFetchPCSInfo;
 @property (strong, nonatomic) CKDPRecordZoneIdentifier *zoneIdentifier; // @synthesize zoneIdentifier=_zoneIdentifier;
 
 + (id)options;

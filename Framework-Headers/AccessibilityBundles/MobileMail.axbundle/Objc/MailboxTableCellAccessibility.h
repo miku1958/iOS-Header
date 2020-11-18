@@ -17,6 +17,7 @@
 - (int)_accessibilityScannerActivateBehavior;
 - (void)_setUnreadCount:(unsigned long long)arg1;
 - (id)accessibilityLabel;
+- (BOOL)accessibilityPerformEscape;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (void)setDetailsDisclosureButton:(id)arg1;

@@ -4,26 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBKeyView.h>
+#import <UIKit/UIKeyboardEmojiKeyView.h>
 
 #import <UIKit/UICollectionViewDataSource-Protocol.h>
 #import <UIKit/UICollectionViewDelegate-Protocol.h>
-#import <UIKit/UIKeyboardEmojiCategoryControl-Protocol.h>
-#import <UIKit/UIKeyboardEmojiInput-Protocol.h>
 
 @class NSIndexPath, NSString, UICollectionViewFlowLayout, UIKeyboardEmojiCategory, UIKeyboardEmojiCollectionView, UIKeyboardEmojiGraphicsTraits, UIResponder;
 @protocol UIKBEmojiHitTestResponder;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardEmojiCollectionInputView : UIKBKeyView <UICollectionViewDataSource, UICollectionViewDelegate, UIKeyboardEmojiInput, UIKeyboardEmojiCategoryControl>
+@interface UIKeyboardEmojiCollectionInputView : UIKeyboardEmojiKeyView <UICollectionViewDataSource, UICollectionViewDelegate>
 {
     UIKeyboardEmojiCollectionView *_collectionView;
     UICollectionViewFlowLayout *_flowLayout;
     UIKeyboardEmojiCategory *_category;
-    long long _currentSection;
     NSIndexPath *_tappedSkinToneEmoji;
     UIKeyboardEmojiGraphicsTraits *_emojiGraphicsTraits;
     BOOL _isDraggingInputView;
+    unsigned long long _currentSection;
     CDUnknownBlockType _completionBlock;
     UIResponder<UIKBEmojiHitTestResponder> *_hitTestResponder;
 }
@@ -51,12 +49,12 @@ __attribute__((visibility("hidden")))
 - (long long)didInputSubTree:(id)arg1;
 - (void)didMoveToWindow;
 - (void)dimKeys:(id)arg1;
-- (id)emojiBaseUnicodeString:(id)arg1;
+- (id)emojiBaseFirstCharacterString:(id)arg1;
+- (id)emojiBaseString:(id)arg1;
+- (BOOL)genderEmojiBaseStringNeedVariantSelector:(id)arg1;
 - (long long)indexForPrettyCategoryDisplay:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
-- (void)reloadForCategory:(long long)arg1;
-- (long long)reloadSectionForOffsetPercentage:(double)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
@@ -67,6 +65,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)skinToneWasUsedForEmoji:(id)arg1;
 - (double)snappedXOffsetForOffset:(double)arg1;
 - (id)subTreeHitTest:(struct CGPoint)arg1;
+- (void)updateToCategory:(long long)arg1;
+- (long long)updateToCategoryWithOffsetPercentage:(double)arg1;
 - (void)willDisplayModalActionView:(id)arg1 withSubTreeKeyView:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

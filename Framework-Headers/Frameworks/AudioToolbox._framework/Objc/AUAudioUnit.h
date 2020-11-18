@@ -14,12 +14,13 @@
     NSString *_componentName;
     unsigned int _componentVersion;
     struct UIViewController *_cachedViewController;
+    unsigned int _maximumFramesToRender;
     BOOL _renderResourcesAllocated;
     BOOL _allParameterValues;
     BOOL _shouldBypassEffect;
     BOOL _canProcessInPlace;
     BOOL _renderingOffline;
-    unsigned int _maximumFramesToRender;
+    BOOL _supportsMPE;
     long long _virtualMIDICableCount;
     NSArray *_factoryPresets;
     AUAudioUnitPreset *_currentPreset;
@@ -29,6 +30,7 @@
     CDUnknownBlockType _musicalContextBlock;
     CDUnknownBlockType _transportStateBlock;
     NSString *_contextName;
+    NSArray *_channelMap;
     struct AudioComponentDescription _componentDescription;
     struct RealtimeState _realtimeState;
 }
@@ -37,6 +39,7 @@
 @property (readonly, copy, nonatomic) NSString *audioUnitName;
 @property (readonly, nonatomic) BOOL canProcessInPlace; // @synthesize canProcessInPlace=_canProcessInPlace;
 @property (readonly, copy, nonatomic) NSArray *channelCapabilities;
+@property (copy, nonatomic) NSArray *channelMap; // @synthesize channelMap=_channelMap;
 @property (readonly, nonatomic) struct OpaqueAudioComponent *component;
 @property (readonly, nonatomic) struct AudioComponentDescription componentDescription; // @synthesize componentDescription=_componentDescription;
 @property (readonly, copy, nonatomic) NSString *componentName;
@@ -49,7 +52,7 @@
 @property (readonly, nonatomic) AUAudioUnitBusArray *inputBusses;
 @property (readonly, nonatomic) double latency; // @synthesize latency=_latency;
 @property (readonly, copy, nonatomic) NSString *manufacturerName;
-@property (nonatomic) unsigned int maximumFramesToRender; // @synthesize maximumFramesToRender=_maximumFramesToRender;
+@property (nonatomic) unsigned int maximumFramesToRender;
 @property (readonly, nonatomic, getter=isMusicDeviceOrEffect) BOOL musicDeviceOrEffect;
 @property (copy, nonatomic) CDUnknownBlockType musicalContextBlock; // @synthesize musicalContextBlock=_musicalContextBlock;
 @property (readonly, nonatomic) AUAudioUnitBusArray *outputBusses;
@@ -62,6 +65,7 @@
 @property (readonly, nonatomic) CDUnknownBlockType scheduleMIDIEventBlock;
 @property (readonly, nonatomic) CDUnknownBlockType scheduleParameterBlock;
 @property (nonatomic) BOOL shouldBypassEffect; // @synthesize shouldBypassEffect=_shouldBypassEffect;
+@property (readonly, nonatomic) BOOL supportsMPE; // @synthesize supportsMPE=_supportsMPE;
 @property (readonly, nonatomic) double tailTime; // @synthesize tailTime=_tailTime;
 @property (copy, nonatomic) CDUnknownBlockType transportStateBlock; // @synthesize transportStateBlock=_transportStateBlock;
 @property (readonly, nonatomic) long long virtualMIDICableCount; // @synthesize virtualMIDICableCount=_virtualMIDICableCount;
@@ -89,8 +93,10 @@
 - (void)reset;
 - (void)setCachedViewController:(struct UIViewController *)arg1;
 - (void)setRenderResourcesAllocated:(BOOL)arg1;
+- (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (BOOL)shouldChangeToFormat:(id)arg1 forBus:(id)arg2;
 - (long long)tokenByAddingRenderObserver:(CDUnknownBlockType)arg1;
+- (id)valueForUndefinedKey:(id)arg1;
 
 @end
 

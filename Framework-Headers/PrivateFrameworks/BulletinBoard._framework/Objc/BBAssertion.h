@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class BBZeroingWeakReference, NSString;
+@class NSString;
+@protocol BBAssertionDelegate;
 
 @interface BBAssertion : NSObject
 {
-    BBZeroingWeakReference *_delegate;
     NSString *_identifier;
     unsigned long long _transactionID;
+    id<BBAssertionDelegate> _delegate;
 }
 
+@property (weak, nonatomic) id<BBAssertionDelegate> delegate; // @synthesize delegate=_delegate;
+
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)identifier;
 - (void)increaseOrIgnoreTransactionID:(unsigned long long)arg1;

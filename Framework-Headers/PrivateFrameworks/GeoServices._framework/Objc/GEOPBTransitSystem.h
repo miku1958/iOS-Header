@@ -15,24 +15,20 @@
 {
     unsigned long long _muid;
     GEOPBTransitArtwork *_artwork;
-    unsigned int _brandIndex;
     NSString *_nameDisplayString;
     GEOStyleAttributes *_styleAttributes;
     unsigned int _systemIndex;
     NSString *_website;
     struct {
         unsigned int muid:1;
-        unsigned int brandIndex:1;
         unsigned int systemIndex:1;
     } _has;
 }
 
 @property (strong, nonatomic) GEOPBTransitArtwork *artwork; // @synthesize artwork=_artwork;
-@property (nonatomic) unsigned int brandIndex; // @synthesize brandIndex=_brandIndex;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasArtwork;
-@property (nonatomic) BOOL hasBrandIndex;
 @property (nonatomic) BOOL hasMuid;
 @property (nonatomic) BOOL hasMuid;
 @property (readonly, nonatomic) BOOL hasNameDisplayString;

@@ -9,5 +9,8 @@
 @interface ACAccount (IC)
 - (BOOL)ic_hasICloudEmailAddress;
 - (BOOL)ic_isManagedAppleID;
+- (BOOL)ic_isNotesMigrated;
+- (BOOL)ic_isPrimaryAppleAccount;
+- (BOOL)ic_supportsHTMLNotes;
 @end
 

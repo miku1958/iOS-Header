@@ -6,24 +6,27 @@
 
 #import <Foundation/NSObject.h>
 
-#import <UserNotificationServices/UNSNotificationSchedulerConnectionObserver-Protocol.h>
+#import <UserNotificationServices/UNUserNotificationCenterObserver-Protocol.h>
 
-@class NSString;
+@class NSString, UNUserNotificationCenter;
 @protocol UNSNotificationSchedulerDelegate;
 
-@interface UNSNotificationScheduler : NSObject <UNSNotificationSchedulerConnectionObserver>
+@interface UNSNotificationScheduler : NSObject <UNUserNotificationCenterObserver>
 {
     NSString *_bundleIdentifier;
     id<UNSNotificationSchedulerDelegate> _delegate;
+    UNUserNotificationCenter *_userNotificationCenter;
 }
 
-@property (copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<UNSNotificationSchedulerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<UNSNotificationSchedulerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) UNUserNotificationCenter *userNotificationCenter; // @synthesize userNotificationCenter=_userNotificationCenter;
 
+- (void).cxx_destruct;
 - (void)_addScheduledLocalNotifications:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_cancelScheduledLocalNotifications:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)addScheduledLocalNotifications:(id)arg1;
@@ -32,17 +35,15 @@
 - (void)cancelScheduledLocalNotifications:(id)arg1;
 - (void)cancelScheduledLocalNotifications:(id)arg1 waitUntilDone:(BOOL)arg2;
 - (void)dealloc;
-- (void)didChangeScheduledLocalNotifications:(id)arg1 forBundleIdentifier:(id)arg2;
-- (void)didFireLocalNotifications:(id)arg1 forBundleIdentifier:(id)arg2;
 - (id)init;
 - (id)initWithBundleIdentifier:(id)arg1;
-- (id)scheduleForFetchRequest:(id)arg1;
-- (void)scheduleForFetchRequest:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (id)scheduledLocalNotifications;
 - (void)scheduledLocalNotificationsWithResult:(CDUnknownBlockType)arg1;
 - (void)setScheduledLocalNotifications:(id)arg1;
 - (void)snoozeScheduledLocalNotifications:(id)arg1;
 - (void)snoozeScheduledLocalNotifications:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)userNotificationCenter:(id)arg1 didChangePendingNotificationRequests:(id)arg2;
+- (void)userNotificationCenter:(id)arg1 didDeliverNotifications:(id)arg2;
 
 @end
 

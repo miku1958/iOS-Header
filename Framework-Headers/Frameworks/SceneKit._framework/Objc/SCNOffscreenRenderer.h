@@ -15,17 +15,7 @@
 @property (readonly, nonatomic) unsigned int textureID;
 
 + (id)offscreenRendererWithContext:(id)arg1 size:(struct CGSize)arg2;
-- (void)_bindFramebuffer:(BOOL)arg1;
-- (void)_createFramebufferIfNeeded;
-- (void)_deleteFramebuffer;
-- (id)_initOffscreenRendererWithOptions:(id)arg1 isPrivateRenderer:(BOOL)arg2 privateRendererOwner:(id)arg3 clearsOnDraw:(BOOL)arg4 size:(struct CGSize)arg5 context:(void *)arg6 renderingAPI:(unsigned long long)arg7;
-- (void)_render;
-- (void)_resolveAndDiscard;
-- (void)_unbindFramebuffer;
-- (struct CGImage *)copySnapshotWithSize:(struct CGSize)arg1;
-- (struct CGImage *)createCGImageSnapshot:(double)arg1;
 - (id)snapshot;
-- (id)snapshotAtTime:(double)arg1;
 
 @end
 

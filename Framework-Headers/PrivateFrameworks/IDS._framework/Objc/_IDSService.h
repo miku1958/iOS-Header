@@ -39,6 +39,7 @@
 @property (readonly, copy, nonatomic) NSArray *devices;
 @property (readonly) unsigned long long hash;
 @property (readonly, strong, nonatomic) IDSAccount *iCloudAccount;
+@property (readonly, copy, nonatomic) NSSet *internalAccounts;
 @property (nonatomic) BOOL manuallyAckMessages; // @synthesize manuallyAckMessages=_manuallyAckMessages;
 @property (nonatomic, getter=isPretendingToBeFull) BOOL pretendingToBeFull;
 @property (readonly, copy, nonatomic) NSString *serviceDomain;
@@ -46,11 +47,13 @@
 
 - (void)OTRTestCallback:(id)arg1 time:(double)arg2 error:(id)arg3;
 - (CDUnknownBlockType)_acknowledgementBlockWithDelegateIdentifier:(id)arg1;
+- (void)_callDelegatesForDevicesChangedWithService:(id)arg1;
 - (void)_callDelegatesRespondingToSelector:(SEL)arg1 withPreCallbacksBlock:(CDUnknownBlockType)arg2 callbackBlock:(CDUnknownBlockType)arg3 postCallbacksBlock:(CDUnknownBlockType)arg4;
 - (void)_callDelegatesRespondingToSelector:(SEL)arg1 withPreCallbacksBlock:(CDUnknownBlockType)arg2 callbackBlock:(CDUnknownBlockType)arg3 postCallbacksBlock:(CDUnknownBlockType)arg4 group:(id)arg5;
 - (void)_callDelegatesWithBlock:(CDUnknownBlockType)arg1;
 - (void)_callDelegatesWithBlock:(CDUnknownBlockType)arg1 group:(id)arg2;
 - (void)_callIsActiveChanged;
+- (id)_filteredAccountsFrom:(id)arg1;
 - (void)_handlePretendingToBeFullWithIdentifier:(id *)arg1;
 - (BOOL)_isDroppingMessages;
 - (void)_logConnectionMap;
@@ -86,6 +89,10 @@
 - (void)connection:(id)arg1 messageIdentifier:(id)arg2 alternateCallbackID:(id)arg3 updatedWithResponseCode:(long long)arg4 error:(id)arg5 lastCall:(BOOL)arg6;
 - (void)connection:(id)arg1 nearbyDevicesChanged:(id)arg2;
 - (void)daemonConnected;
+- (id)datagramChannelForSessionDestination:(id)arg1 error:(id *)arg2;
+- (id)datagramChannelForSocketDescriptor:(int)arg1 error:(id *)arg2;
+- (id)datagramConnectionForSessionDestination:(id)arg1 error:(id *)arg2;
+- (id)datagramConnectionForSocketDescriptor:(int)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)deviceForFromID:(id)arg1;
 - (id)deviceForUniqueID:(id)arg1;
@@ -108,6 +115,9 @@
 - (void)setPreferInfraWiFi:(BOOL)arg1;
 - (void)setProtobufAction:(SEL)arg1 forProtobufType:(unsigned short)arg2 isResponse:(BOOL)arg3;
 - (void)startOTRTest:(long long)arg1;
+- (id)streamConnectionForSessionDestination:(id)arg1 error:(id *)arg2;
+- (id)streamConnectionForSocketDescriptor:(int)arg1 error:(id *)arg2;
+- (void)testCloudQRConnection;
 - (BOOL)updateSubServices:(id)arg1 forDevice:(id)arg2;
 - (id)uriForFromID:(id)arg1;
 

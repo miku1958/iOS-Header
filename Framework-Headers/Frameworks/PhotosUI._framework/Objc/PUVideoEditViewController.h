@@ -8,18 +8,17 @@
 
 #import <PhotosUI/PUEditPluginSessionDelegate-Protocol.h>
 #import <PhotosUI/PUOneUpAssetTransitionViewController-Protocol.h>
-#import <PhotosUI/PUPhotoLibraryUIChangeObserver-Protocol.h>
 #import <PhotosUI/PUVideoEditScrubberControllerDelegate-Protocol.h>
 #import <PhotosUI/PUVideoPlayerViewDelegate-Protocol.h>
 #import <PhotosUI/PUViewControllerSpecChangeObserver-Protocol.h>
 #import <PhotosUI/PUViewModelChangeObserver-Protocol.h>
+#import <PhotosUI/PXPhotoLibraryUIChangeObserver-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class AVAsset, AVPlayer, AVPlayerItem, NSArray, NSString, PHAsset, PUAudioSessionCategoryToken, PUPhotoEditToolbar, PUProgressIndicatorView, PUResourceDownloadRequest, PUVideoEditMaker, PUVideoEditModel, PUVideoEditPluginDataSource, PUVideoEditPluginSession, PUVideoEditScrubberController, PUVideoEditScrubberImageSource, PUVideoEditViewControllerSpec, PUVideoPlayerView, UIAlertController, UIButton, UIView;
-@protocol PUVideoEditViewControllerDelegate;
+@class AVAsset, AVPlayer, AVPlayerItem, NSArray, NSString, PUEditableMediaProvider, PUMediaDestination, PUPhotoEditToolbar, PUProgressIndicatorView, PUResourceDownloadRequest, PUVideoEditMaker, PUVideoEditModel, PUVideoEditPluginDataSource, PUVideoEditPluginSession, PUVideoEditScrubberController, PUVideoEditScrubberImageSource, PUVideoEditViewControllerSpec, PUVideoPlayerView, UIAlertController, UIButton, UIView;
+@protocol PUEditableAsset, PUVideoEditViewControllerPresentationDelegate, PUVideoEditViewControllerSessionDelegate;
 
-__attribute__((visibility("hidden")))
-@interface PUVideoEditViewController : PUEditViewController <PUEditPluginSessionDelegate, PUVideoPlayerViewDelegate, PUPhotoLibraryUIChangeObserver, UIPopoverPresentationControllerDelegate, PUVideoEditScrubberControllerDelegate, PUViewControllerSpecChangeObserver, PUViewModelChangeObserver, PUOneUpAssetTransitionViewController>
+@interface PUVideoEditViewController : PUEditViewController <PUEditPluginSessionDelegate, PUVideoPlayerViewDelegate, PXPhotoLibraryUIChangeObserver, UIPopoverPresentationControllerDelegate, PUVideoEditScrubberControllerDelegate, PUViewControllerSpecChangeObserver, PUViewModelChangeObserver, PUOneUpAssetTransitionViewController>
 {
     PUVideoEditPluginSession *_pluginSession;
     PUVideoEditPluginDataSource *_pluginDataSource;
@@ -55,20 +54,21 @@ __attribute__((visibility("hidden")))
     BOOL __isAwaitingVideoPlayerUpdate;
     BOOL __isSeeking;
     float __videoExportProgress;
-    id<PUVideoEditViewControllerDelegate> _delegate;
-    PHAsset *__videoAsset;
+    id<PUVideoEditViewControllerPresentationDelegate> _presentationDelegate;
+    id<PUVideoEditViewControllerSessionDelegate> _sessionDelegate;
+    id<PUEditableAsset> __videoAsset;
+    PUEditableMediaProvider *__videoMediaProvider;
+    PUMediaDestination *__videoMediaDestination;
     PUResourceDownloadRequest *__videoDownloadRequest;
     PUVideoEditMaker *__videoExporter;
     AVAsset *__avAsset;
     AVPlayerItem *__avPlayerItem;
     AVPlayer *__avPlayer;
-    PUAudioSessionCategoryToken *__audioCategoryToken;
     unsigned long long __loadingState;
     struct CGSize __layoutReferenceSize;
     CDStruct_1b6d18a9 __startingTime;
 }
 
-@property (strong, nonatomic, setter=_setAudioCategoryToken:) PUAudioSessionCategoryToken *_audioCategoryToken; // @synthesize _audioCategoryToken=__audioCategoryToken;
 @property (strong, nonatomic, setter=_setAVAsset:) AVAsset *_avAsset; // @synthesize _avAsset=__avAsset;
 @property (strong, nonatomic, setter=_setAVPlayer:) AVPlayer *_avPlayer; // @synthesize _avPlayer=__avPlayer;
 @property (strong, nonatomic, setter=_setAVPlayerItem:) AVPlayerItem *_avPlayerItem; // @synthesize _avPlayerItem=__avPlayerItem;
@@ -78,18 +78,20 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setLayoutReferenceSize:) struct CGSize _layoutReferenceSize; // @synthesize _layoutReferenceSize=__layoutReferenceSize;
 @property (nonatomic, setter=_setLoadingState:) unsigned long long _loadingState; // @synthesize _loadingState=__loadingState;
 @property (nonatomic, setter=_setStartingTime:) CDStruct_1b6d18a9 _startingTime; // @synthesize _startingTime=__startingTime;
-@property (readonly, nonatomic) PHAsset *_videoAsset; // @synthesize _videoAsset=__videoAsset;
+@property (readonly, nonatomic) id<PUEditableAsset> _videoAsset; // @synthesize _videoAsset=__videoAsset;
 @property (strong, nonatomic, setter=_setVideoDownloadRequest:) PUResourceDownloadRequest *_videoDownloadRequest; // @synthesize _videoDownloadRequest=__videoDownloadRequest;
 @property (nonatomic, setter=_setVideoExportProgress:) float _videoExportProgress; // @synthesize _videoExportProgress=__videoExportProgress;
 @property (strong, nonatomic, setter=_setVideoExporter:) PUVideoEditMaker *_videoExporter; // @synthesize _videoExporter=__videoExporter;
+@property (readonly, nonatomic) PUMediaDestination *_videoMediaDestination; // @synthesize _videoMediaDestination=__videoMediaDestination;
+@property (readonly, nonatomic) PUEditableMediaProvider *_videoMediaProvider; // @synthesize _videoMediaProvider=__videoMediaProvider;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<PUVideoEditViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<PUVideoEditViewControllerPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
+@property (weak, nonatomic) id<PUVideoEditViewControllerSessionDelegate> sessionDelegate; // @synthesize sessionDelegate=_sessionDelegate;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_configureAudioSession:(id)arg1;
 - (void)_createNewPlayerItem;
 - (void)_createPluginSession;
 - (void)_didFinishDownloadingVideoWithSuccess:(BOOL)arg1 canceled:(BOOL)arg2 error:(id)arg3;
@@ -142,7 +144,7 @@ __attribute__((visibility("hidden")))
 - (void)editPluginSessionAvailabilityDidChange:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)initWithVideoAsset:(id)arg1;
+- (id)initWithVideoAsset:(id)arg1 mediaProvider:(id)arg2 mediaDestination:(id)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)oneUpAssetTransition:(id)arg1 animateTransitionWithContext:(id)arg2 duration:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)oneUpAssetTransition:(id)arg1 requestTransitionContextWithCompletion:(CDUnknownBlockType)arg2;
@@ -151,7 +153,7 @@ __attribute__((visibility("hidden")))
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (BOOL)prefersStatusBarHidden;
-- (void)prepareForPhotoLibraryChange:(id)arg1;
+- (id)prepareForPhotoLibraryChange:(id)arg1;
 - (void)prepareForPopoverPresentation:(id)arg1;
 - (BOOL)pu_wantsNavigationBarVisible;
 - (BOOL)pu_wantsTabBarVisible;
@@ -169,7 +171,6 @@ __attribute__((visibility("hidden")))
 - (void)updateViewConstraints;
 - (void)videoPlayerView:(id)arg1 isReadyForDisplayDidChange:(BOOL)arg2;
 - (void)viewControllerSpec:(id)arg1 didChange:(id)arg2;
-- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 - (void)viewWillAppear:(BOOL)arg1;

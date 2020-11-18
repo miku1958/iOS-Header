@@ -39,9 +39,11 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_cancelTimeout;
+- (double)_intervalForPlatform;
 - (void)_invokeCallback;
 - (void)_scheduleTest;
 - (void)_scheduleTimeout;
+- (double)_timeoutIntervalForPlatform;
 - (void)dealloc;
 - (id)init;
 - (void)resume;

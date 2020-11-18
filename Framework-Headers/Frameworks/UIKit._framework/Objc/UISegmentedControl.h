@@ -57,6 +57,13 @@
 + (double)_lineWidthForTraitCollection:(id)arg1;
 + (id)_modernBackgroundSelected:(BOOL)arg1 highlighted:(BOOL)arg2 traitCollection:(id)arg3;
 + (id)_modernDividerImageForTraitCollection:(id)arg1;
++ (id)_tvDefaultTextColorDisabledSelected;
++ (id)_tvDefaultTextColorDisabledUserInterfaceStyleDark;
++ (id)_tvDefaultTextColorDisabledUserInterfaceStyleLight;
++ (id)_tvDefaultTextColorFocused;
++ (id)_tvDefaultTextColorNormalUserInterfaceStyleDark;
++ (id)_tvDefaultTextColorNormalUserInterfaceStyleLight;
++ (id)_tvDefaultTextColorSelected;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (double)defaultHeight;
 + (double)defaultHeightForStyle:(long long)arg1;
@@ -76,6 +83,7 @@
 - (id)_createAndAddSegmentAtIndex:(int)arg1 position:(unsigned int)arg2 withInfo:(id)arg3;
 - (id)_createSegmentAtIndex:(int)arg1 position:(unsigned int)arg2 withInfo:(id)arg3;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
+- (void)_emitValueChanged;
 - (id)_firstEnabledSegment;
 - (BOOL)_hasEnabledSegment;
 - (void)_insertSegment:(int)arg1 withInfo:(id)arg2 animated:(BOOL)arg3;
@@ -114,6 +122,8 @@
 - (BOOL)_shouldSelectSegmentAtIndex:(long long)arg1;
 - (void)_tapSegmentAtPoint:(struct CGPoint)arg1;
 - (id)_tintColorArchivingKey;
+- (id)_uiktest_labelsWithState:(unsigned long long)arg1;
+- (id)_uiktest_segmentAtIndex:(unsigned long long)arg1;
 - (void)_updateDividerImageForSegmentAtIndex:(unsigned long long)arg1;
 - (void)_updateOptionsBackground;
 - (void)_updateTitleTextAttributes;
@@ -158,7 +168,6 @@
 - (void)removeAllSegments;
 - (void)removeSegment:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)removeSegmentAtIndex:(unsigned long long)arg1 animated:(BOOL)arg2;
-- (id)scriptingInfoWithChildren;
 - (long long)segmentControlStyle;
 - (void)selectSegment:(int)arg1;
 - (long long)selectedSegment;

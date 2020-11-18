@@ -37,6 +37,7 @@
 - (id)initFromLegacyDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMatchDomains:(id)arg1 andAction:(long long)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

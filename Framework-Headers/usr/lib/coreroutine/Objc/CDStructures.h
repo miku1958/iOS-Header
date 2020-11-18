@@ -4,13 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#pragma mark Blocks
+#pragma mark Function Pointers and Blocks
+
+typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
 
-struct RTStateModelOneVisit {
+struct CLLocationCoordinate2D {
+    double _field1;
+    double _field2;
+};
+
+struct NSMapTable {
     Class _field1;
 };
 
@@ -21,7 +28,8 @@ typedef struct {
 } CDStruct_6ad76789;
 
 typedef struct {
-    double _field1;
-    double _field2;
-} CDStruct_c3b9c2ee;
+    long long _field1;
+    long long _field2;
+    long long _field3;
+} CDStruct_2ec95fd7;
 

@@ -10,31 +10,26 @@
 
 @interface CLBeaconRegion : CLRegion
 {
-    NSUUID *_proximityUUID;
-    NSNumber *_major;
-    NSNumber *_minor;
 }
 
-@property (readonly, nonatomic) NSNumber *major; // @synthesize major=_major;
-@property (readonly, nonatomic) NSNumber *minor; // @synthesize minor=_minor;
+@property (readonly, copy, nonatomic) NSNumber *major;
+@property (readonly, copy, nonatomic) NSNumber *minor;
 @property (nonatomic) BOOL notifyEntryStateOnDisplay;
-@property (readonly, nonatomic) NSUUID *proximityUUID; // @synthesize proximityUUID=_proximityUUID;
+@property (readonly, copy, nonatomic) NSUUID *proximityUUID;
 
 + (id)any;
 + (BOOL)supportsSecureCoding;
 - (BOOL)_measuredPowerForDevice;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
-- (id)initWithClientRegion:(CDStruct_3afce72c)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
 - (id)initWithProximityUUID:(id)arg1 identifier:(id)arg2;
 - (id)initWithProximityUUID:(id)arg1 major:(unsigned short)arg2 identifier:(id)arg3;
 - (id)initWithProximityUUID:(id)arg1 major:(unsigned short)arg2 minor:(unsigned short)arg3 identifier:(id)arg4;
 - (id)peripheralDataWithMeasuredPower:(id)arg1;
+- (void)setGutsWithProximityUUID:(id)arg1 major:(id)arg2 minor:(id)arg3 notifyOnDisplay:(BOOL)arg4;
 
 @end
 

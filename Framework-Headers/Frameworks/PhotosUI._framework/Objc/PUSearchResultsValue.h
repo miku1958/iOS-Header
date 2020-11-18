@@ -8,7 +8,7 @@
 
 #import <PhotosUI/PUSearchResult-Protocol.h>
 
-@class NSArray, NSAttributedString, NSString, PSIGroupResult;
+@class NSArray, NSAttributedString, NSMutableDictionary, NSString, PSIGroupResult;
 @protocol OS_dispatch_queue, PUSearchResultsValueDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,14 +19,20 @@ __attribute__((visibility("hidden")))
     NSAttributedString *_attributedDisplayTitle;
     NSString *_displaySubtitle;
     NSArray *_uuids;
+    NSArray *_additionalUUIDs;
     id _albumUUID;
+    id _memoryUUID;
     unsigned long long _approximateCount;
     id<PUSearchResultsValueDelegate> _delegate;
+    NSString *_selectedDisplayTitle;
     PSIGroupResult *_groupResult;
+    NSMutableDictionary *_uuidToAssetMap;
 }
 
-@property (strong) id albumUUID; // @synthesize albumUUID=_albumUUID;
-@property unsigned long long approximateCount; // @synthesize approximateCount=_approximateCount;
+@property (strong, setter=_setAdditionalUUIDs:) NSArray *additionalUUIDs; // @synthesize additionalUUIDs=_additionalUUIDs;
+@property (strong, setter=_setAlbumUUID:) id albumUUID; // @synthesize albumUUID=_albumUUID;
+@property (setter=_setApproximateCount:) unsigned long long approximateCount; // @synthesize approximateCount=_approximateCount;
+@property (readonly, copy) NSArray *assets;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUSearchResultsValueDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -34,21 +40,29 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *displayTitle;
 @property (strong, setter=_setGroupResult:) PSIGroupResult *groupResult; // @synthesize groupResult=_groupResult;
 @property (readonly) unsigned long long hash;
+@property (strong, setter=_setMemoryUUID:) id memoryUUID; // @synthesize memoryUUID=_memoryUUID;
 @property (readonly) double score;
+@property (readonly) unsigned long long searchCategories;
 @property (readonly, copy) NSString *searchString;
+@property (readonly, nonatomic) NSArray *searchTokens;
+@property (strong, setter=_setSelectedDisplayTitle:) NSString *selectedDisplayTitle; // @synthesize selectedDisplayTitle=_selectedDisplayTitle;
 @property (readonly) Class superclass;
-@property (strong) NSArray *uuids; // @synthesize uuids=_uuids;
+@property (readonly) NSMutableDictionary *uuidToAssetMap; // @synthesize uuidToAssetMap=_uuidToAssetMap;
+@property (strong, setter=_setUUIDs:) NSArray *uuids; // @synthesize uuids=_uuids;
 
 - (void).cxx_destruct;
 - (void)_computeScoreWithMaxGroupedResultsCount:(unsigned long long)arg1;
-- (void)_setAlbumUUID:(id)arg1;
-- (void)_setApproximateCount:(unsigned long long)arg1;
-- (void)_setUUIDs:(id)arg1;
+- (void)_setAsset:(id)arg1 forUUID:(id)arg2;
+- (id)assetLocalIdentifiersForPreview;
 - (long long)compare:(id)arg1;
-- (id)displayTitleWithDefaultAttributes:(id)arg1 highlightedAttributes:(id)arg2;
+- (id)displayTitleWithDefaultAttributes:(id)arg1 highlightedAttributes:(id)arg2 selectedDisplayTitle:(id *)arg3;
+- (void)fetchAdditionalUUIDs:(CDUnknownBlockType)arg1;
+- (void)fetchAllUUIDs:(CDUnknownBlockType)arg1;
 - (void)fetchRemainingUUIDs:(CDUnknownBlockType)arg1;
+- (BOOL)hasAdditionalUUIDs;
 - (id)init;
 - (BOOL)isFinished;
+- (void)performAggdSelectionLog;
 
 @end
 

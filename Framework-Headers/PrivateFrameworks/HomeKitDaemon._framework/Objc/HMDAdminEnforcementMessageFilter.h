@@ -6,28 +6,39 @@
 
 #import <HomeKitDaemon/HMDMessageFilter.h>
 
-@class NSMutableDictionary, NSString;
+@class HMDHomeManager, NSMutableDictionary, NSString;
 
 @interface HMDAdminEnforcementMessageFilter : HMDMessageFilter
 {
+    HMDHomeManager *_homeManager;
     NSString *_localAdminName;
+    NSMutableDictionary *_ownersOfHomes;
     NSMutableDictionary *_adminsOfHomes;
     NSMutableDictionary *_objectsContainedInHomes;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *adminsOfHomes; // @synthesize adminsOfHomes=_adminsOfHomes;
+@property (weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property (strong, nonatomic) NSString *localAdminName; // @synthesize localAdminName=_localAdminName;
 @property (strong, nonatomic) NSMutableDictionary *objectsContainedInHomes; // @synthesize objectsContainedInHomes=_objectsContainedInHomes;
+@property (strong, nonatomic) NSMutableDictionary *ownersOfHomes; // @synthesize ownersOfHomes=_ownersOfHomes;
 
-+ (BOOL)isBlackListedMessageForWatch:(id)arg1;
++ (BOOL)_isBlacklistedMessageForSharedAdmin:(id)arg1;
++ (BOOL)_isWhitelistedMessageForSharedAdmin:(id)arg1;
++ (BOOL)isBlackListedMessage:(id)arg1;
 + (BOOL)isWhitelistedMessage:(id)arg1;
 - (void).cxx_destruct;
 - (id)_localAdministratorName;
 - (BOOL)acceptMessage:(id)arg1 target:(id)arg2 errorReason:(id *)arg3;
-- (void)addHomeWithUUID:(id)arg1 administratorName:(id)arg2;
+- (void)addAdministratorName:(id)arg1 forHomeWithUUID:(id)arg2;
 - (void)addObjectWithUUID:(id)arg1 containedInHome:(id)arg2;
+- (void)addOwnerName:(id)arg1 forHomeWithUUID:(id)arg2;
+- (id)homedIdentifierForObjectWithIdentifier:(id)arg1;
 - (id)initWithName:(id)arg1;
+- (BOOL)isHomeUUIDRegistered:(id)arg1;
 - (void)localAdministratorName;
+- (void)removeAdministratorName:(id)arg1 forHomeWithUUID:(id)arg2;
+- (void)removeOwnerName:(id)arg1 forHomeWithUUID:(id)arg2;
 - (void)resetConfiguration;
 
 @end

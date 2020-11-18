@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_cacheRowIdsOfEntriesBeforeTimeStamp:(double)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (long long)_numberOfEntries;
 - (void)_openDB;
+- (void)_openDBIfNotAlreadyOpen;
 - (void)dealloc;
 
 @end

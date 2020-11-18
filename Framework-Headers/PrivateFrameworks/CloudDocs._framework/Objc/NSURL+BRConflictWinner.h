@@ -6,12 +6,13 @@
 
 #import <Foundation/NSURL.h>
 
-@class NSString;
+@class NSPersonNameComponents, NSString;
 
 @interface NSURL (BRConflictWinner)
 
 @property (readonly, nonatomic) NSString *br_lastEditorDeviceName;
 @property (readonly, nonatomic) NSString *br_lastEditorName;
+@property (readonly, nonatomic) NSPersonNameComponents *br_lastEditorNameComponents;
 
 - (id)br_addFakeConflictLoserFromItemAtURL:(id)arg1 lastEditorDeviceName:(id)arg2 error:(id *)arg3;
 - (id)br_addFakeConflictLoserFromItemAtURL:(id)arg1 lastEditorDeviceName:(id)arg2 lastEditorUserName:(id)arg3 error:(id *)arg4;

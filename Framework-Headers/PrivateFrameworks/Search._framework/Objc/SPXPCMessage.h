@@ -7,31 +7,31 @@
 #import <objc/NSObject.h>
 
 @class NSDictionary, NSString, SPXPCConnection;
-@protocol OS_xpc_object;
+@protocol OS_os_transaction, OS_xpc_object;
 
 @interface SPXPCMessage : NSObject
 {
     SPXPCConnection *_receivingConnection;
-    NSString *_name;
-    NSDictionary *_info;
-    unsigned long long _shmemPtr;
-    unsigned long long _shmemLen;
     NSObject<OS_xpc_object> *_x_reply_connection;
     NSObject<OS_xpc_object> *_x_message;
+    NSObject<OS_xpc_object> *_x_rootObject;
     NSObject<OS_xpc_object> *_x_reply;
+    NSObject<OS_os_transaction> *_replyTransaction;
+    NSString *_name;
+    NSDictionary *_info;
 }
 
 @property (copy, nonatomic) NSDictionary *info; // @synthesize info=_info;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
-@property (nonatomic) unsigned long long sharedMemoryLength; // @synthesize sharedMemoryLength=_shmemLen;
-@property (nonatomic) unsigned long long sharedMemoryRegion; // @synthesize sharedMemoryRegion=_shmemPtr;
 
 - (void).cxx_destruct;
 - (id)_createXPCMessage;
 - (id)_initWithXPCMessage:(id)arg1 onConnection:(id)arg2;
 - (id)initWithName:(id)arg1;
 - (BOOL)needsReply;
+- (id)rootObjectOfClasses:(id)arg1;
 - (void)sendReply:(id)arg1;
+- (void)setRootObject:(id)arg1;
 
 @end
 

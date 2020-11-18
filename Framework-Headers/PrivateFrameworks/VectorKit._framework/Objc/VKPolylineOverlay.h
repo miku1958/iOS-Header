@@ -9,7 +9,7 @@
 #import <VectorKit/GEOComposedRouteObserver-Protocol.h>
 #import <VectorKit/VKOverlay-Protocol.h>
 
-@class GEOComposedRoute, GEOMapRegion, NSString, VKRouteLine, VKTrafficSegmentsAlongRoute;
+@class GEOComposedRoute, GEOMapRegion, NSString, VKRouteLine;
 @protocol VKPolylineOverlayRouteRibbonObserver;
 
 @interface VKPolylineOverlay : NSObject <VKOverlay, GEOComposedRouteObserver>
@@ -21,7 +21,7 @@
     VKRouteLine *_routeRibbon;
     id<VKPolylineOverlayRouteRibbonObserver> _routeRibbonObserver;
     double _trafficTimeStamp;
-    VKTrafficSegmentsAlongRoute *_trafficSegments;
+    struct TrafficSegmentsAlongRoute *_trafficSegments;
 }
 
 @property (readonly, nonatomic) GEOMapRegion *boundingMapRegion;
@@ -35,12 +35,12 @@
 @property (nonatomic) VKRouteLine *routeRibbon; // @synthesize routeRibbon=_routeRibbon;
 @property (nonatomic) id<VKPolylineOverlayRouteRibbonObserver> routeRibbonObserver; // @synthesize routeRibbonObserver=_routeRibbonObserver;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) VKTrafficSegmentsAlongRoute *trafficSegments; // @synthesize trafficSegments=_trafficSegments;
 @property (readonly, nonatomic) double trafficTimeStamp; // @synthesize trafficTimeStamp=_trafficTimeStamp;
 
 - (void)_setNeedsLayout;
 - (void)_updateTraffic;
 - (void)addObserver:(id)arg1;
+- (void)clearSnappedPathsForPainter:(id)arg1;
 - (void)composedRoute:(id)arg1 changedSelectedRideInClusteredLeg:(id)arg2 fromIndex:(unsigned long long)arg3 toIndex:(unsigned long long)arg4;
 - (void)composedRoute:(id)arg1 selectedSections:(id)arg2 deselectedSections:(id)arg3;
 - (void)composedRouteUpdatedSnappedPaths:(id)arg1;
@@ -50,8 +50,7 @@
 - (id)initWithComposedRoute:(id)arg1;
 - (BOOL)isSnappingForSceneTiles;
 - (void)removeObserver:(id)arg1;
-- (struct _NSRange)sectionRangeForBounds:(CDStruct_d2b197d1)arg1;
-- (void)updateLabelExternalObjectsInRenderRegion:(id)arg1;
+- (struct _NSRange)sectionRangeForBounds:(Box_3d7e3c2c)arg1;
 
 @end
 

@@ -6,26 +6,29 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKit/HMMessageReceiver-Protocol.h>
+#import <HomeKit/HMFMessageReceiver-Protocol.h>
+#import <HomeKit/HMMutableApplicationData-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMDelegateCaller, HMHome, HMMessageDispatcher, HMThreadSafeMutableArrayCollection, NSArray, NSString, NSUUID;
+@class HMApplicationData, HMDelegateCaller, HMFMessageDispatcher, HMHome, HMThreadSafeMutableArrayCollection, NSArray, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMServiceGroup : NSObject <HMMessageReceiver, NSSecureCoding, HMObjectMerge>
+@interface HMServiceGroup : NSObject <HMFMessageReceiver, NSSecureCoding, HMObjectMerge, HMMutableApplicationData>
 {
     NSUUID *_uniqueIdentifier;
     NSUUID *_uuid;
     NSString *_name;
     HMHome *_home;
-    HMThreadSafeMutableArrayCollection *_currentServices;
-    HMMessageDispatcher *_msgDispatcher;
+    HMApplicationData *_applicationData;
+    HMFMessageDispatcher *_msgDispatcher;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     HMDelegateCaller *_delegateCaller;
+    HMThreadSafeMutableArrayCollection *_currentServices;
 }
 
+@property (readonly, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (strong, nonatomic) HMThreadSafeMutableArrayCollection *currentServices; // @synthesize currentServices=_currentServices;
 @property (readonly, copy) NSString *debugDescription;
@@ -35,7 +38,7 @@
 @property (weak, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, copy, nonatomic) NSArray *services;
@@ -65,7 +68,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 uuid:(id)arg2;
 - (void)removeService:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setApplicationData:(id)arg1;
 - (void)setName:(id)arg1;
+- (void)updateApplicationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

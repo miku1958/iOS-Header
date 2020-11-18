@@ -8,7 +8,7 @@
 
 #import <DataDetectorsUI/DDRemoteActionHostViewControllerDelegate-Protocol.h>
 
-@class DDRemoteAction, DDRemoteActionHostViewController, NSDate, NSExtension, NSMutableArray, NSString, UINavigationController, UIView;
+@class DDRemoteAction, DDRemoteActionHostViewController, NSDate, NSExtension, NSLayoutConstraint, NSMutableArray, NSString, UINavigationController, UIView;
 @protocol DDRemoteActionViewServiceProtocol, NSCopying;
 
 __attribute__((visibility("hidden")))
@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
     UIView *_loadingView;
     UIView *_errorView;
     UIView *_titleBar;
+    NSLayoutConstraint *_titleBarBottomConstraint;
+    NSLayoutConstraint *_navControllerTopConstraint;
     UIView *_hitView;
     UINavigationController *_navigationController;
     NSDate *_loadingDate;
@@ -56,7 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)loadRemoteAction:(id)arg1;
 - (void)loadTitleBarIfNeeded;
 - (void)presentRemoteViewController;
-- (id)previewMenuItems;
+- (id)previewActionItems;
 - (void)removeLoadingViewToShowView:(id)arg1;
 - (void)showErrorView;
 - (void)showLoadingView;

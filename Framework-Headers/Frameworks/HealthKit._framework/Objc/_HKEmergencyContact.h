@@ -22,13 +22,13 @@
     NSString *_relationship;
 }
 
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) NSString *nameContactIdentifier; // @synthesize nameContactIdentifier=_nameContactIdentifier;
-@property (strong, nonatomic) NSNumber *nameRecordID; // @synthesize nameRecordID=_nameRecordID;
-@property (strong, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
-@property (strong, nonatomic) NSString *phoneNumberContactIdentifier; // @synthesize phoneNumberContactIdentifier=_phoneNumberContactIdentifier;
-@property (strong, nonatomic) NSNumber *phoneNumberPropertyID; // @synthesize phoneNumberPropertyID=_phoneNumberPropertyID;
-@property (strong, nonatomic) NSString *relationship; // @synthesize relationship=_relationship;
+@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (copy, nonatomic) NSString *nameContactIdentifier; // @synthesize nameContactIdentifier=_nameContactIdentifier;
+@property (copy, nonatomic) NSNumber *nameRecordID; // @synthesize nameRecordID=_nameRecordID;
+@property (copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
+@property (copy, nonatomic) NSString *phoneNumberContactIdentifier; // @synthesize phoneNumberContactIdentifier=_phoneNumberContactIdentifier;
+@property (copy, nonatomic) NSNumber *phoneNumberPropertyID; // @synthesize phoneNumberPropertyID=_phoneNumberPropertyID;
+@property (copy, nonatomic) NSString *relationship; // @synthesize relationship=_relationship;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

@@ -13,26 +13,26 @@
     UIImageView *_glyphView;
     UILabel *_monogramLabel;
     long long _state;
-    BOOL _cacheIcon;
+    id _touchIconRequestToken;
     WebBookmark *_bookmark;
 }
 
 @property (strong, nonatomic) WebBookmark *bookmark; // @synthesize bookmark=_bookmark;
 
-+ (void)clearAllCachedIcons;
-+ (void)initialize;
 - (void).cxx_destruct;
+- (void)_cancelTouchIconRequest;
 - (void)_clearGlyph;
 - (long long)_inferredIconSize;
 - (void)_setGlyph:(id)arg1 withBackgroundColor:(id)arg2;
 - (void)_setMonogramWithString:(id)arg1 backgroundColor:(id)arg2;
+- (void)_setSiteIcon:(id)arg1;
 - (void)_setState:(long long)arg1;
 - (id)_tintedFolderImage;
 - (void)_updateMonogramLabelSizeAndFont;
-- (void)clearCachedIcon;
+- (void)_updateSiteIconViewWithTouchIconResponse:(id)arg1;
 - (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)setBookmark:(id)arg1 cacheIcon:(BOOL)arg2;
 - (void)updateBookmarkData;
 
 @end

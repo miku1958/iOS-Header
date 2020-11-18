@@ -9,10 +9,12 @@
 @interface WBFeatureManager : NSObject
 {
     BOOL _offlineReadingListAvailable;
+    BOOL _favoritesFolderSelectionShouldSync;
     long long _accessLevel;
 }
 
 @property (readonly, nonatomic) long long accessLevel; // @synthesize accessLevel=_accessLevel;
+@property (readonly, nonatomic) BOOL favoritesFolderSelectionShouldSync; // @synthesize favoritesFolderSelectionShouldSync=_favoritesFolderSelectionShouldSync;
 @property (readonly, nonatomic, getter=isOfflineReadingListAvailable) BOOL offlineReadingListAvailable; // @synthesize offlineReadingListAvailable=_offlineReadingListAvailable;
 
 + (id)sharedFeatureManager;

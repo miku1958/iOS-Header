@@ -8,14 +8,17 @@
 
 #import <AVConference/GKNATObserverDelegate-Protocol.h>
 #import <AVConference/VCAudioIOClient-Protocol.h>
+#import <AVConference/VCAudioPowerLevelMonitorDelegate-Protocol.h>
 #import <AVConference/VCCallSessionDelegate-Protocol.h>
+#import <AVConference/VCVideoCaptureClient-Protocol.h>
 
-@class FFTMeter, GKNATObserver, NSArray, NSDictionary, NSMutableDictionary, NSString, VCAudioManager, VCCallSession, VCVideoRule, VideoConferenceManager;
-@protocol OS_dispatch_queue, VideoConferenceChannelQualityDelegate, VideoConferenceDelegate, VideoConferenceRealTimeChannel, VideoConferenceSpeakingDelegate;
+@class FFTMeter, GKNATObserver, NSArray, NSDictionary, NSMutableDictionary, NSString, VCAudioManager, VCAudioPowerLevelMonitor, VCCallSession, VCVideoRule, VideoConferenceManager;
+@protocol OS_dispatch_queue, VCCaptionsSourceDelegate, VideoConferenceChannelQualityDelegate, VideoConferenceDelegate, VideoConferenceSpeakingDelegate;
 
-@interface VideoConference : NSObject <VCCallSessionDelegate, GKNATObserverDelegate, VCAudioIOClient>
+@interface VideoConference : NSObject <VCCallSessionDelegate, VCVideoCaptureClient, GKNATObserverDelegate, VCAudioIOClient, VCAudioPowerLevelMonitorDelegate>
 {
     NSObject<VideoConferenceDelegate> *delegate;
+    id<VCCaptionsSourceDelegate> _captionsDelegate;
     VideoConferenceManager *manager;
     VCAudioManager *audioManager;
     struct _opaque_pthread_rwlock_t stateLock;
@@ -30,7 +33,6 @@
     float outputMeterLevel;
     float inputMeterLevel;
     BOOL microphoneMuted;
-    NSObject<VideoConferenceRealTimeChannel> *rtChannel;
     NSObject<OS_dispatch_queue> *audioManagerQueue;
     double dAudioHostTime;
     struct _opaque_pthread_mutex_t xRemoteLayer;
@@ -71,10 +73,12 @@
     struct _opaque_pthread_mutex_t natMutex;
     unsigned int lastSentAudioSampleTime;
     double lastReceivedAudioTimestamp;
+    VCAudioPowerLevelMonitor *_remoteAudioPowerLevelMonitor;
     int audioTimeStampDelta;
     GKNATObserver *natObserver;
     unsigned int mostRecentStartedCall;
     unsigned int lastActiveCall;
+    BOOL _isWarmedUp;
     BOOL bweOperatingModeInitialized;
     BOOL useNewBWEMode;
     BOOL useActiveProbingSenderLog;
@@ -84,6 +88,7 @@
     BOOL shouldResumeVideo;
     unsigned int timeStampUpdateCounter;
     NSObject<OS_dispatch_queue> *delegateNotificationQueue;
+    unsigned int _transportType;
     int conferenceOperatingMode;
     int _deviceRole;
     BOOL isValid;
@@ -123,23 +128,26 @@
 @property (nonatomic) unsigned int preferredCodec; // @synthesize preferredCodec;
 @property NSObject<VideoConferenceChannelQualityDelegate> *qualityDelegate;
 @property (nonatomic) BOOL requiresWifi; // @synthesize requiresWifi;
-@property (setter=setRTChannel:) NSObject<VideoConferenceRealTimeChannel> *rtChannel; // @synthesize rtChannel;
 @property (nonatomic) BOOL shouldPrioritizeParticipantIDForSIPInvite; // @synthesize shouldPrioritizeParticipantIDForSIPInvite;
 @property BOOL shouldTimeoutPackets; // @synthesize shouldTimeoutPackets;
 @property NSObject<VideoConferenceSpeakingDelegate> *speakingDelegate; // @synthesize speakingDelegate;
 @property (readonly) Class superclass;
 @property unsigned int talkingPeersLimit; // @synthesize talkingPeersLimit;
+@property (nonatomic) unsigned int transportType; // @synthesize transportType=_transportType;
 @property int upstreamBandwidth; // @synthesize upstreamBandwidth;
 @property (nonatomic) BOOL useCompressedConnectionData; // @synthesize useCompressedConnectionData;
 @property (nonatomic) BOOL useViceroyBlobFormat; // @synthesize useViceroyBlobFormat;
 
 - (void)NATTypeDictionaryUpdated:(id)arg1;
 - (void)avConferencePreviewError:(id)arg1;
+- (void)avConferenceScreenCaptureError:(id)arg1;
 - (void)calculateMixingArrays:(unsigned int *)arg1 talkingMask:(unsigned int)arg2;
 - (unsigned int)calculateTalkingMaskAtTimeStamp:(unsigned int)arg1 samples:(char *)arg2 numBytes:(int)arg3 numSamples:(int)arg4;
 - (unsigned int)callIDForOpenSessionWithParticipantID:(id)arg1;
 - (id)callMetadataForCallID:(unsigned int)arg1;
 - (BOOL)canProcessAudio;
+- (void)cancelCallID:(unsigned int)arg1;
+- (void)cancelCallID:(unsigned int)arg1 error:(id)arg2;
 - (int)captureAsFocus:(char *)arg1 numBytes:(int)arg2 numSamples:(int)arg3 timeStamp:(unsigned int)arg4 timeStampDelta:(int)arg5 averagePower:(unsigned char)arg6;
 - (int)captureAsFocusClient:(char *)arg1 numBytes:(int)arg2 numSamples:(int)arg3 timeStamp:(unsigned int)arg4 averagePower:(unsigned char)arg5;
 - (int)captureMeshMode:(char *)arg1 numBytes:(int)arg2 numSamples:(int)arg3 timeStamp:(unsigned int)arg4 bufferedSamples:(int)arg5 hostTime:(double)arg6;
@@ -148,22 +156,20 @@
 - (void)cleanupQueues;
 - (void)cleanupSession:(id)arg1 didRemoteCancel:(BOOL)arg2;
 - (void)cleanupSession:(id)arg1 withDelay:(unsigned long long)arg2;
-- (void)closeConnectionForSession:(id)arg1 withCallID:(unsigned int)arg2;
+- (id)clientCaptureRule;
+- (BOOL)conferenceMatchesSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
 - (int)conferenceOperatingMode;
 - (void)connectionBlobForParticipantID:(id)arg1 callID:(unsigned int)arg2 block:(CDUnknownBlockType)arg3 queue:(id)arg4 caller:(id)arg5;
 - (id)connectionBlobForParticipantID:(id)arg1 callID:(unsigned int *)arg2 error:(id *)arg3;
-- (unsigned int)connectionResultCallbackForCallID:(unsigned int)arg1 result:(struct tagCONNRESULT *)arg2 didReceiveICEPacket:(BOOL)arg3 didUseRelay:(BOOL)arg4 secretKey:(struct __CFData *)arg5 skeResult:(int)arg6;
 - (void)dealloc;
 - (void)defaultCleanupSession:(id)arg1;
 - (void)didChangeLocalVariablesForSession:(id)arg1;
 - (BOOL)didDetectBandwidth:(BOOL)arg1 upstreamBandwidth:(int)arg2 downstreamBandwidth:(int)arg3;
+- (void)didReceiveCaptions:(id)arg1 remoteClient:(unsigned int)arg2;
 - (void)forceNoICE:(BOOL)arg1;
 - (BOOL)getIsAudioPaused:(BOOL *)arg1 callID:(unsigned int)arg2 error:(id *)arg3;
 - (BOOL)getIsVideoPaused:(BOOL *)arg1 callID:(unsigned int)arg2 error:(id *)arg3;
-- (void)getNSError:(id *)arg1 code:(long long)arg2 detailedCode:(long long)arg3 filePath:(id)arg4 description:(id)arg5 reason:(id)arg6;
-- (void)getNSError:(id *)arg1 code:(long long)arg2 detailedCode:(long long)arg3 returnCode:(long long)arg4 filePath:(id)arg5 description:(id)arg6 reason:(id)arg7;
 - (void)handleCellTechChange:(int)arg1 cellularMaxPktLen:(unsigned short)arg2;
-- (void)handlePrimaryConnChange:(struct tagCONNRESULT *)arg1 oldResult:(struct tagCONNRESULT *)arg2;
 - (BOOL)hasSessionWaitingForSIPInvite;
 - (id)init;
 - (unsigned int)initializeNewCallWithDeviceRole:(int)arg1;
@@ -176,7 +182,6 @@
 - (id)loopbackSessionWaitingForSIPInvite;
 - (void)markUnfinishedSessions;
 - (BOOL)matchesCallID:(unsigned int)arg1;
-- (BOOL)matchesIncomingConnectionResult:(struct tagCONNRESULT *)arg1;
 - (BOOL)matchesOpenSessionForParticipantID:(id)arg1;
 - (BOOL)matchesParticipantID:(id)arg1;
 - (int)natType;
@@ -184,7 +189,7 @@
 - (double)networkQualityForCallID:(unsigned int)arg1;
 - (id)newSessionWithDeviceRole:(int)arg1;
 - (void)notifyDelegateOfLocalVariablesChange;
-- (BOOL)onCaptureFrame:(struct __CVBuffer *)arg1 frameTime:(CDStruct_198678f7)arg2 droppedFrames:(int)arg3 cameraStatusBits:(unsigned char)arg4;
+- (BOOL)onCaptureFrame:(struct __CVBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 droppedFrames:(int)arg3 cameraStatusBits:(unsigned char)arg4;
 - (BOOL)onCaptureSound:(char *)arg1 numBytes:(int)arg2 numSamples:(int)arg3 timeStamp:(unsigned int)arg4 timeStampDelta:(int)arg5 bufferedSamples:(int)arg6 hostTime:(double)arg7 averagePower:(float)arg8 voiceActivity:(unsigned int)arg9;
 - (BOOL)onPlaySound:(char *)arg1 numBytes:(int)arg2 numSamples:(int)arg3 timeStamp:(unsigned int)arg4 averagePower:(float)arg5;
 - (id)openSessionForParticipant:(id)arg1;
@@ -199,7 +204,6 @@
 - (int)pullDecodedAsFocusClient:(char *)arg1 timestamp:(unsigned int)arg2 numBytes:(int)arg3 numSamples:(int)arg4;
 - (int)pullDecodedMeshMode:(char *)arg1 timestamp:(unsigned int)arg2 numBytes:(int)arg3 numSamples:(int)arg4;
 - (void)rdlock;
-- (void)receivedRealTimeData:(id)arg1 fromParticipantID:(id)arg2;
 - (BOOL)recvSamplesForSession:(id)arg1 samples:(char *)arg2 numBytes:(int)arg3 numSamples:(int)arg4 storeTimestamp:(unsigned int)arg5;
 - (void)remoteAudioDidPause:(BOOL)arg1 callID:(unsigned int)arg2;
 - (double)remoteBitrateForCallID:(unsigned int)arg1;
@@ -213,21 +217,23 @@
 - (void)sendData:(id)arg1 toCallID:(unsigned int)arg2 encrypted:(BOOL)arg3;
 - (void)session:(id)arg1 cancelRelayRequest:(id)arg2;
 - (void)session:(id)arg1 changeVideoRulesToCaptureRule:(id)arg2 encodeRule:(id)arg3 featuresListString:(id)arg4;
+- (void)session:(id)arg1 cleanUpWithDelay:(long long)arg2 error:(id)arg3;
+- (void)session:(id)arg1 connectionDidChangeWithLocalInterfaceType:(id)arg2 remoteInterfaceType:(id)arg3 callID:(unsigned int)arg4;
 - (void)session:(id)arg1 didChangeRemoteScreenAttributes:(id)arg2;
 - (void)session:(id)arg1 didChangeVideoRule:(id)arg2;
 - (void)session:(id)arg1 didPauseAudio:(BOOL)arg2 error:(id)arg3;
+- (void)session:(id)arg1 didPauseVideo:(BOOL)arg2 error:(id)arg3;
 - (void)session:(id)arg1 didReceiveARPLData:(id)arg2 fromCallID:(unsigned int)arg3;
-- (void)session:(id)arg1 didReceiveData:(id)arg2 withCallID:(unsigned int)arg3;
-- (void)session:(id)arg1 didStart:(BOOL)arg2 connectionType:(unsigned int)arg3 localUseCell:(unsigned int)arg4 remoteUseCell:(unsigned int)arg5 error:(id)arg6;
+- (void)session:(id)arg1 didReceiveData:(id)arg2 messageType:(unsigned int)arg3 withCallID:(unsigned int)arg4;
+- (void)session:(id)arg1 didStart:(BOOL)arg2 connectionType:(unsigned int)arg3 localInterfaceType:(id)arg4 remoteInterfaceType:(id)arg5 error:(id)arg6;
 - (BOOL)session:(id)arg1 didStopVideoIO:(BOOL)arg2 error:(id *)arg3;
-- (void)session:(id)arg1 didStopWithDelay:(long long)arg2 error:(id)arg3;
 - (void)session:(id)arg1 didStopWithError:(id)arg2;
-- (void)session:(id)arg1 inititiateRelayRequest:(id)arg2;
+- (void)session:(id)arg1 initiateRelayRequest:(id)arg2;
 - (void)session:(id)arg1 localAudioEnabled:(BOOL)arg2 withCallID:(unsigned int)arg3 error:(id)arg4;
 - (void)session:(id)arg1 localIPChange:(id)arg2 withCallID:(unsigned int)arg3;
 - (void)session:(id)arg1 packMeters:(char *)arg2 withLength:(char *)arg3;
 - (void)session:(id)arg1 receivedNoPacketsForSeconds:(double)arg2;
-- (BOOL)session:(id)arg1 receivedRemoteFrame:(struct __CVBuffer *)arg2 atTime:(CDStruct_198678f7)arg3 withScreenAttributes:(id)arg4 videoAttributes:(id)arg5 isFirstFrame:(BOOL)arg6 isVideoPaused:(BOOL)arg7;
+- (BOOL)session:(id)arg1 receivedRemoteFrame:(struct __CVBuffer *)arg2 atTime:(CDStruct_1b6d18a9)arg3 withScreenAttributes:(id)arg4 videoAttributes:(id)arg5 isFirstFrame:(BOOL)arg6 isVideoPaused:(BOOL)arg7;
 - (void)session:(id)arg1 remoteAudioEnabled:(BOOL)arg2 withCallID:(unsigned int)arg3;
 - (void)session:(id)arg1 remoteCallingModeChanged:(unsigned int)arg2 withCallID:(unsigned int)arg3;
 - (void)session:(id)arg1 remoteMediaStalled:(BOOL)arg2;
@@ -235,11 +241,12 @@
 - (BOOL)session:(id)arg1 startVideoIO:(id *)arg2 captureRule:(id)arg3 isUnpausing:(BOOL)arg4;
 - (BOOL)session:(id)arg1 startVideoReceive:(id *)arg2;
 - (BOOL)session:(id)arg1 startVideoSend:(id *)arg2 captureRule:(id)arg3 isUnpausing:(BOOL)arg4;
+- (BOOL)session:(id)arg1 stopVideoReceive:(id *)arg2 isPausing:(BOOL)arg3;
 - (void)session:(id)arg1 withCallID:(unsigned int)arg2 networkHint:(BOOL)arg3;
 - (void)session:(id)arg1 withCallID:(unsigned int)arg2 videoIsDegraded:(BOOL)arg3 isRemote:(BOOL)arg4;
-- (id)sessionForIncomingConnectionResult:(struct tagCONNRESULT *)arg1;
 - (id)sessionForIncomingParticipantID:(id)arg1;
 - (id)sessionForParticipantID:(id)arg1;
+- (id)sessionForSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
 - (BOOL)setActive:(BOOL)arg1;
 - (void)setBWEOptions:(BOOL)arg1 UseNewBWEMode:(BOOL)arg2 FakeLargeFrameMode:(BOOL)arg3 ProbingSenderLog:(BOOL)arg4;
 - (void)setCallReport:(unsigned int)arg1 withReport:(id)arg2;
@@ -257,19 +264,19 @@
 - (unsigned int)setRemoteVideoDestination:(void *)arg1 facing:(BOOL)arg2;
 - (void)setSendAudio:(BOOL)arg1 forCallID:(unsigned int)arg2;
 - (void)setSessionID:(id)arg1 callID:(unsigned int)arg2;
+- (void)setupNATObserver;
 - (BOOL)shouldReinitializeCallWithDuration:(double)arg1 forCallID:(unsigned int)arg2;
 - (BOOL)shouldSendAudioForCallID:(unsigned int)arg1;
 - (void)shouldSendBlackFrame:(BOOL)arg1 callID:(id)arg2;
 - (int)sipCallbackNotification:(int)arg1 callID:(unsigned int)arg2 msgIn:(const char *)arg3 msgOut:(char *)arg4 optional:(void *)arg5 confIndex:(int *)arg6;
-- (BOOL)startConnectionWithParticipantID:(id)arg1 callID:(unsigned int)arg2 oldCallID:(unsigned int)arg3 usingInviteData:(id)arg4 isCaller:(BOOL)arg5 relayResponseDict:(id)arg6 didOriginateRelayRequest:(BOOL)arg7 capabilities:(id)arg8 idsSocket:(int)arg9 error:(id *)arg10;
-- (BOOL)startConnectionWithParticipantID:(id)arg1 callID:(unsigned int)arg2 usingInviteData:(id)arg3 isCaller:(BOOL)arg4 capabilities:(id)arg5 idsSocket:(int)arg6 error:(id *)arg7;
-- (BOOL)startConnectionWithParticipantID:(id)arg1 callID:(unsigned int)arg2 usingInviteData:(id)arg3 isCaller:(BOOL)arg4 relayResponseDict:(id)arg5 didOriginateRelayRequest:(BOOL)arg6 capabilities:(id)arg7 idsSocket:(int)arg8 error:(id *)arg9;
+- (BOOL)startConnectionWithParticipantID:(id)arg1 callID:(unsigned int)arg2 oldCallID:(unsigned int)arg3 usingInviteData:(id)arg4 isCaller:(BOOL)arg5 relayResponseDict:(id)arg6 didOriginateRelayRequest:(BOOL)arg7 capabilities:(id)arg8 idsSocket:(int)arg9 destination:(id)arg10 error:(id *)arg11;
+- (BOOL)startConnectionWithParticipantID:(id)arg1 callID:(unsigned int)arg2 usingInviteData:(id)arg3 isCaller:(BOOL)arg4 capabilities:(id)arg5 idsSocket:(int)arg6 destination:(id)arg7 error:(id *)arg8;
+- (BOOL)startConnectionWithParticipantID:(id)arg1 callID:(unsigned int)arg2 usingInviteData:(id)arg3 isCaller:(BOOL)arg4 relayResponseDict:(id)arg5 didOriginateRelayRequest:(BOOL)arg6 capabilities:(id)arg7 idsSocket:(int)arg8 destination:(id)arg9 error:(id *)arg10;
 - (int)stateForCallID:(unsigned int)arg1;
 - (id)statsForCallID:(unsigned int)arg1;
 - (void)stopAllCalls:(id)arg1;
 - (void)stopCallID:(unsigned int)arg1;
 - (void)stopCallID:(unsigned int)arg1 didRemoteCancel:(BOOL)arg2 error:(id)arg3;
-- (BOOL)stopVideoReceive:(id *)arg1;
 - (BOOL)stopVideoSend:(BOOL)arg1 error:(id *)arg2;
 - (void)threadSafeCleanupSession:(id)arg1;
 - (void)triggerInterfaceChange;
@@ -281,7 +288,8 @@
 - (BOOL)updateSpeaking:(unsigned int)arg1 timeStamp:(unsigned int)arg2;
 - (void)updatedConnectedPeers:(id)arg1;
 - (void)updatedMutedPeers:(id)arg1 forParticipantID:(id)arg2;
-- (void)warmupForCall:(int)arg1 deviceRole:(int)arg2;
+- (void)vcAudioPowerLevelMonitor:(id)arg1 isAudioBelowThreshold:(BOOL)arg2;
+- (void)warmupForCall;
 - (void)wrlock;
 
 @end

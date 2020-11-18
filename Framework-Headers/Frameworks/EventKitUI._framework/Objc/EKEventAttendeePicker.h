@@ -6,18 +6,15 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <EventKitUI/ABPeoplePickerNavigationControllerDelegate-Protocol.h>
-#import <EventKitUI/ABPersonViewControllerDelegate-Protocol.h>
-#import <EventKitUI/ABUnknownPersonViewControllerDelegate-Protocol.h>
 #import <EventKitUI/MFAutocompleteResultsTableViewControllerDelegate-Protocol.h>
 #import <EventKitUI/MFComposeRecipientTextViewDelegate-Protocol.h>
 #import <EventKitUI/MFContactsSearchConsumer-Protocol.h>
 
-@class CNAutocompleteFetchContext, EKEvent, MFAutocompleteResultsTableViewController, MFComposeRecipientTextView, MFContactsSearchManager, MFSearchShadowView, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSNumber, NSOperationQueue, NSString, UIKeyboard, UIScrollView, UITableView;
+@class CNAutocompleteFetchContext, CNContactStore, EKEvent, MFAutocompleteResultsTableViewController, MFComposeRecipientTextView, MFContactsSearchManager, MFSearchShadowView, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSNumber, NSOperationQueue, NSString, UIKeyboard, UIScrollView, UITableView;
 @protocol EKEventAttendeePickerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface EKEventAttendeePicker : UIViewController <MFContactsSearchConsumer, MFComposeRecipientTextViewDelegate, MFAutocompleteResultsTableViewControllerDelegate, ABPeoplePickerNavigationControllerDelegate, ABPersonViewControllerDelegate, ABUnknownPersonViewControllerDelegate>
+@interface EKEventAttendeePicker : UIViewController <MFContactsSearchConsumer, MFComposeRecipientTextViewDelegate, MFAutocompleteResultsTableViewControllerDelegate>
 {
     NSArray *_recipients;
     MFComposeRecipientTextView *_composeRecipientView;
@@ -41,6 +38,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_searchResults;
     MFAutocompleteResultsTableViewController *_autocompleteTableViewController;
     CNAutocompleteFetchContext *_fetchContext;
+    CNContactStore *_store;
     NSString *_searchAccountID;
     id<EKEventAttendeePickerDelegate> _emailValidationDelegate;
 }
@@ -59,11 +57,10 @@ __attribute__((visibility("hidden")))
 + (id)_addressForRecipient:(id)arg1;
 + (BOOL)_participantHasResponded:(id)arg1;
 - (void).cxx_destruct;
-- (Class)_ABPeoplePickerNavigationControllerClass;
-- (Class)_ABPersonViewControllerClass;
 - (Class)_CNAutocompleteFetchContextClass;
+- (Class)_CNContactPickerViewController;
 - (Class)_CNContactStoreClass;
-- (Class)_CNContactViewControllerClass;
+- (Class)_CNContactViewController;
 - (void)_adjustLayoutOfSubviews;
 - (void)_copyRecipientsFromComposeView;
 - (void)_hideSearchResultsViewAndCancelOutstandingSearches:(BOOL)arg1;
@@ -77,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (void)_setRecipientsOnComposeView;
 - (id)_shadowView;
 - (void)_showSearchResultsView;
+- (void)_updateFetchContextChosenAddresses;
 - (BOOL)_zeroKeyworkSearchEnabled;
 - (void)autocompleteResultsController:(id)arg1 didRequestInfoAboutRecipient:(id)arg2;
 - (void)autocompleteResultsController:(id)arg1 didSelectRecipient:(id)arg2 atIndex:(unsigned long long)arg3;
@@ -93,24 +91,22 @@ __attribute__((visibility("hidden")))
 - (void)composeRecipientViewRequestAddRecipient:(id)arg1;
 - (void)consumeAutocompleteSearchResults:(id)arg1 taskID:(id)arg2;
 - (void)consumeCorecipientSearchResults:(id)arg1 taskID:(id)arg2;
+- (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
+- (void)contactPicker:(id)arg1 didSelectContactProperty:(id)arg2;
+- (void)contactPickerDidCancel:(id)arg1;
 - (void)dealloc;
+- (id)emailAddressKey;
 - (void)endedNetworkActivity;
 - (void)finishedSearchingForAutocompleteResults;
 - (void)finishedSearchingForCorecipients;
 - (void)finishedTaskWithID:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 event:(id)arg2 overriddenEventStartDate:(id)arg3 overriddenEventEndDate:(id)arg4;
 - (void)loadView;
-- (void)peoplePickerNavigationController:(id)arg1 didSelectPerson:(void *)arg2;
-- (void)peoplePickerNavigationController:(id)arg1 didSelectPerson:(void *)arg2 property:(int)arg3 identifier:(int)arg4;
-- (void)peoplePickerNavigationControllerDidCancel:(id)arg1;
 - (id)peoplePickerPrompt;
-- (BOOL)personViewController:(id)arg1 shouldPerformDefaultActionForPerson:(void *)arg2 property:(int)arg3 identifier:(int)arg4;
 - (unsigned long long)presentationOptionsForRecipient:(id)arg1;
 - (BOOL)recipientViewShouldIgnoreFirstResponderChanges:(id)arg1;
 - (void)searchForCorecipients;
 - (void)searchWithText:(id)arg1;
-- (void)unknownPersonViewController:(id)arg1 didResolveToPerson:(void *)arg2;
-- (BOOL)unknownPersonViewController:(id)arg1 shouldPerformDefaultActionForPerson:(void *)arg2 property:(int)arg3 identifier:(int)arg4;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

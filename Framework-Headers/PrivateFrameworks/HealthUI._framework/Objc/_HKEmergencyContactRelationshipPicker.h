@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <HealthUI/HKTableViewController.h>
 
 @class NSArray;
 @protocol _HKEmergencyContactRelationshipPickerDelegate;
 
-@interface _HKEmergencyContactRelationshipPicker : UITableViewController
+@interface _HKEmergencyContactRelationshipPicker : HKTableViewController
 {
     NSArray *_tokens;
     NSArray *_labels;

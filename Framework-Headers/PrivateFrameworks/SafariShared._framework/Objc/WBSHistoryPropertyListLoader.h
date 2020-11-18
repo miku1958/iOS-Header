@@ -15,7 +15,6 @@
 {
     NSURL *_url;
     unsigned long long _itemCountLimit;
-    double _ageLimit;
     Class _historyItemClass;
     NSObject<OS_dispatch_queue> *_loadingQueue;
     BOOL _loadInProgress;

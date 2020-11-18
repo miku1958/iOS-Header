@@ -6,11 +6,12 @@
 
 #import <CompanionSync/SYSession.h>
 
-@class SYChangeMessage;
+@class NSObject, SYChangeMessage;
+@protocol OS_os_activity;
 
 @interface SYIncomingTransactionSession : SYSession
 {
-    unsigned long long _activity;
+    NSObject<OS_os_activity> *_sessionActivity;
     SYChangeMessage *_message;
     CDUnknownBlockType _completion;
     BOOL canRestart;
@@ -24,7 +25,7 @@
 - (void)_sendComplete;
 - (BOOL)canRestart;
 - (BOOL)canRollback;
-- (void)cancel;
+- (void)cancelWithError:(id)arg1;
 - (void)didCompleteSession;
 - (id)initWithService:(id)arg1 transaction:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)isResetSync;

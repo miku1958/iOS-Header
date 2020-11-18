@@ -6,18 +6,19 @@
 
 #import <UIKit/_UIBackdropView.h>
 
-@class NSMutableArray, UIKeyboardBackdropCornerView;
+@class NSMutableArray, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface UIKBBackdropView : _UIBackdropView
 {
     BOOL _primaryBackdrop;
     NSMutableArray *_secondaryBackdrops;
-    UIKeyboardBackdropCornerView *_backdropCornerView;
     BOOL _hasUpdatedFrame;
+    UIImage *_imageForCorners;
 }
 
 @property (readonly, nonatomic) BOOL _hasUpdatedFrame; // @synthesize _hasUpdatedFrame;
+@property (strong, nonatomic) UIImage *imageForCorners; // @synthesize imageForCorners=_imageForCorners;
 
 + (void)_registerSecondaryBackdropView:(id)arg1;
 + (void)_unregisterSecondaryBackdropView:(id)arg1;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 + (void)overlayRelevantSettings:(id)arg1 ontoSettings:(id)arg2;
 + (id)triggerNotificationNames;
 + (id)unconditionalTriggerNotificationNames;
+- (id)_generateCornerContentsImage:(int)arg1;
 - (void)_setRenderConfig:(id)arg1;
 - (void)applySettings:(id)arg1;
 - (void)dealloc;

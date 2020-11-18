@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString;
+@class GEOLogMessageCacheManager, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface GEOLogMessageInstrumentation : NSObject
@@ -18,10 +18,14 @@
     BOOL _exitWhenAllInstrumentationLogsFlushed;
     unsigned long long _logMessageNothingToFlushCounter;
     NSString *_msgCountUserDefaultsKey;
+    GEOLogMessageCacheManager *_cacheManager;
 }
+
+@property (readonly, nonatomic) GEOLogMessageCacheManager *cacheManager; // @synthesize cacheManager=_cacheManager;
 
 + (id)createDefaultInstrumentation;
 + (id)defaultInstrumentation;
++ (void)disableDefaultInstrumentation;
 - (void)_registerEventName:(id)arg1;
 - (void)captureLogMessage:(id)arg1 forEventName:(id)arg2 fromLogFrameworkAdaptor:(BOOL)arg3;
 - (void)captureLogMessageCollectionRequest:(id)arg1 forEventName:(id)arg2 fromLogFrameworkAdaptor:(BOOL)arg3;

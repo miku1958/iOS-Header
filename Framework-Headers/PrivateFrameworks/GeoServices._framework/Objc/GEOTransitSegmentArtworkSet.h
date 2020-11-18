@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) unsigned long long artworkIndexsCount;
 @property (strong, nonatomic) NSMutableArray *clusters; // @synthesize clusters=_clusters;
 
++ (Class)clusterType;
 - (void)addArtworkIndex:(unsigned int)arg1;
 - (void)addCluster:(id)arg1;
 - (unsigned int)artworkIndexAtIndex:(unsigned long long)arg1;

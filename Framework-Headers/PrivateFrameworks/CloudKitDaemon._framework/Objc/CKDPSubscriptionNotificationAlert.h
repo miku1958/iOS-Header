@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *soundName; // @synthesize soundName=_soundName;
 @property (strong, nonatomic) NSString *text; // @synthesize text=_text;
 
++ (Class)localizedArgumentsType;
 - (void).cxx_destruct;
 - (void)addLocalizedArguments:(id)arg1;
 - (void)clearLocalizedArguments;

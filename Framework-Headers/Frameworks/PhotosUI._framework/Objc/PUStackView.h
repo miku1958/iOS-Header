@@ -15,12 +15,16 @@
     BOOL _imageHidden[9];
     BOOL _needsDynamicLayout;
     BOOL _combinesPhotoDecorations;
+    BOOL _hasRoundedCorners;
+    BOOL _empty;
+    BOOL _highlighted;
     unsigned long long _style;
     PUPhotoDecoration *_photoDecoration;
     UIColor *_gridBackgroundColor;
-    double _gridBackgroundCornerRadius;
     double _gridMargin;
     double _gridItemSpacing;
+    double _posterSquareCornerRadius;
+    double _posterSubitemCornerRadius;
     long long _numberOfVisibleItems;
     UIImage *_emptyPlaceholderImage;
     long long __numberOfViews;
@@ -28,6 +32,7 @@
     NSPointerArray *__imageSizes;
     NSArray *__photoDecorationVariants;
     UIView *__backgroundView;
+    UIColor *_cornersBackgroundColor;
     struct CGSize _stackSize;
     struct UIOffset _stackOffset;
     struct UIOffset _stackPerspectiveOffset;
@@ -41,13 +46,18 @@
 @property (copy, nonatomic, setter=_setPhotoDecorationVariants:) NSArray *_photoDecorationVariants; // @synthesize _photoDecorationVariants=__photoDecorationVariants;
 @property (readonly, nonatomic) NSArray *_photoViews; // @synthesize _photoViews=__photoViews;
 @property (nonatomic) BOOL combinesPhotoDecorations; // @synthesize combinesPhotoDecorations=_combinesPhotoDecorations;
+@property (strong, nonatomic) UIColor *cornersBackgroundColor; // @synthesize cornersBackgroundColor=_cornersBackgroundColor;
+@property (nonatomic, getter=isEmpty) BOOL empty; // @synthesize empty=_empty;
 @property (strong, nonatomic) UIImage *emptyPlaceholderImage; // @synthesize emptyPlaceholderImage=_emptyPlaceholderImage;
 @property (strong, nonatomic) UIColor *gridBackgroundColor; // @synthesize gridBackgroundColor=_gridBackgroundColor;
-@property (nonatomic) double gridBackgroundCornerRadius; // @synthesize gridBackgroundCornerRadius=_gridBackgroundCornerRadius;
 @property (nonatomic) double gridItemSpacing; // @synthesize gridItemSpacing=_gridItemSpacing;
 @property (nonatomic) double gridMargin; // @synthesize gridMargin=_gridMargin;
+@property (nonatomic) BOOL hasRoundedCorners; // @synthesize hasRoundedCorners=_hasRoundedCorners;
+@property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (nonatomic) long long numberOfVisibleItems; // @synthesize numberOfVisibleItems=_numberOfVisibleItems;
 @property (strong, nonatomic) PUPhotoDecoration *photoDecoration; // @synthesize photoDecoration=_photoDecoration;
+@property (nonatomic) double posterSquareCornerRadius; // @synthesize posterSquareCornerRadius=_posterSquareCornerRadius;
+@property (nonatomic) double posterSubitemCornerRadius; // @synthesize posterSubitemCornerRadius=_posterSubitemCornerRadius;
 @property (readonly, nonatomic) NSArray *stackItemViews;
 @property (nonatomic) struct UIOffset stackOffset; // @synthesize stackOffset=_stackOffset;
 @property (nonatomic) struct CGPoint stackPerspectiveFactor; // @synthesize stackPerspectiveFactor=_stackPerspectiveFactor;
@@ -67,6 +77,7 @@
 - (void)_setNeedsDynamicLayout;
 - (void)_updateBackgroundView;
 - (void)_updateDynamicLayout;
+- (void)_updateHighlight;
 - (void)_updateNumberOfViews;
 - (void)_updatePhotoViews;
 - (void)_updateSubviewsOrdering;
@@ -78,11 +89,18 @@
 - (id)newLayoutAttributesForVisbleItemsRelativeToView:(id)arg1 maxCount:(long long)arg2;
 - (void)prepareForReuse;
 - (void)setAlpha:(double)arg1 forItemAtIndex:(long long)arg2;
-- (void)setBadgeType:(long long)arg1 forItemAtIndex:(long long)arg2;
-- (void)setBadgeType:(long long)arg1 videoDuration:(double)arg2 forItemAtIndex:(long long)arg3;
+- (void)setBadgeTypes:(unsigned long long)arg1 forItemAtIndex:(long long)arg2;
+- (void)setBadgeTypes:(unsigned long long)arg1 videoDuration:(double)arg2 forItemAtIndex:(long long)arg3;
+- (void)setBadgeTypes:(unsigned long long)arg1 videoDuration:(double)arg2 style:(long long)arg3 forItemAtIndex:(long long)arg4;
+- (void)setCollectionTileLayoutTemplate:(id)arg1 forItemAtIndex:(long long)arg2;
+- (void)setFeatureSpec:(id)arg1 forItemAtIndex:(long long)arg2;
+- (void)setHasRoundedCorners:(BOOL)arg1 withCornersBackgroundColor:(id)arg2;
 - (void)setImage:(id)arg1 forItemAtIndex:(long long)arg2;
 - (void)setImageHidden:(BOOL)arg1 forItemAtIndex:(long long)arg2;
 - (void)setImageSize:(struct CGSize)arg1 forItemAtIndex:(long long)arg2;
+- (void)setSubtitle:(id)arg1 forItemAtIndex:(long long)arg2;
+- (void)setTitle:(id)arg1 forItemAtIndex:(long long)arg2;
+- (void)setTitleFontName:(id)arg1 forItemAtIndex:(long long)arg2;
 - (BOOL)wouldCoverAllItemsInStackView:(id)arg1;
 
 @end

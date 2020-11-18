@@ -9,7 +9,7 @@
 #import <Pegasus/PGPictureInPictureRemoteObjectInterface-Protocol.h>
 #import <Pegasus/PGPictureInPictureViewControllerDelegate-Protocol.h>
 
-@class BKSProcessAssertion, NSString, NSXPCConnection, PGPictureInPictureApplication, PGPictureInPictureViewController;
+@class BKSProcessAssertion, NSArray, NSString, NSXPCConnection, PGPictureInPictureApplication, PGPictureInPictureViewController, PGPlaybackProgress;
 @protocol OS_dispatch_queue, PGPictureInPictureRemoteObjectDelegate;
 
 @interface PGPictureInPictureRemoteObject : NSObject <PGPictureInPictureRemoteObjectInterface, PGPictureInPictureViewControllerDelegate>
@@ -20,12 +20,14 @@
     long long _currentState;
     BKSProcessAssertion *_processAssertion;
     PGPictureInPictureViewController *_pictureInPictureViewController;
-    unsigned int _isPictureInPicturePossible:1;
+    BOOL _isPictureInPicturePossible;
     long long _pictureInPictureInterruptionCounter;
-    unsigned int _pictureInPictureShouldStartWhenEnteringBackground:1;
-    unsigned int _shouldShowAlternateActionButtonImage:1;
-    unsigned int _shouldShowLoadingIndicator:1;
-    unsigned int _isStartingStoppingOrCancellingPictureInPicture:1;
+    BOOL _pictureInPictureShouldStartWhenEnteringBackground;
+    BOOL _shouldShowAlternateActionButtonImage;
+    BOOL _shouldShowLoadingIndicator;
+    PGPlaybackProgress *_playbackProgress;
+    NSArray *_loadedTimeRanges;
+    BOOL _isStartingStoppingOrCancellingPictureInPicture;
     id<PGPictureInPictureRemoteObjectDelegate> _delegate;
     struct {
         unsigned int pictureInPictureRemoteObject_shouldAcceptSetupRequest:1;
@@ -63,7 +65,6 @@
 - (void)invalidate;
 - (void)pictureInPictureInterruptionBegan;
 - (void)pictureInPictureInterruptionEnded;
-- (void)pictureInPictureViewController:(id)arg1 controlsVisibilityChanged:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)pictureInPictureViewController:(id)arg1 updateHostedWindowSize:(struct CGSize)arg2 animationType:(long long)arg3 initialSpringVelocity:(double)arg4;
 - (void)pictureInPictureViewControllerActionButtonTapped:(id)arg1;
 - (void)pictureInPictureViewControllerCancelButtonTapped:(id)arg1;
@@ -72,7 +73,9 @@
 - (void)pictureInPictureViewControllerStopButtonTapped:(id)arg1;
 - (void)resume;
 - (oneway void)rotateContentContainer:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (oneway void)setLoadedTimeRanges:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)setPictureInPictureShouldStartWhenEnteringBackground:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (oneway void)setPlaybackProgress:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)setShouldShowAlternateActionButtonImage:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)setShouldShowLoadingIndicator:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)setupAnimated:(BOOL)arg1 withHostedWindowHostingHandle:(id)arg2 preferredContentSize:(struct CGSize)arg3 initialLayerFrame:(struct CGRect)arg4 completionHandler:(CDUnknownBlockType)arg5;

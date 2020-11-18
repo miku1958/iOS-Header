@@ -6,11 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSMutableArray, UIKBRenderConfig;
+@class NSArray, NSMutableArray, UIKBRenderConfig, UIKBRenderingContext;
 
 @interface UIKBRenderFactory : NSObject
 {
-    UIKBRenderConfig *_renderConfig;
+    UIKBRenderingContext *_renderingContext;
     NSMutableArray *_segmentTraits;
     BOOL _suppressSegmentTraits;
     double _rivenSizeFactor;
@@ -25,22 +25,25 @@
 @property (readonly, nonatomic) BOOL boldTextEnabled; // @synthesize boldTextEnabled=_boldTextEnabled;
 @property (nonatomic) BOOL lightweightFactory; // @synthesize lightweightFactory=_lightweightFactory;
 @property (nonatomic) BOOL preferStringKeycapOverImage; // @synthesize preferStringKeycapOverImage=_preferStringKeycapOverImage;
-@property (strong, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
+@property (readonly, getter=renderConfig) UIKBRenderConfig *renderConfig;
+@property (strong, nonatomic) UIKBRenderingContext *renderingContext; // @synthesize renderingContext=_renderingContext;
 @property (nonatomic) double rivenSizeFactor; // @synthesize rivenSizeFactor=_rivenSizeFactor;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 @property (readonly, nonatomic) NSArray *segmentTraits; // @synthesize segmentTraits=_segmentTraits;
 
++ (id)_characterSetForGlyphSelectors;
 + (BOOL)_enabled;
 + (long long)_graphicsQuality;
-+ (id)cacheKeyForString:(id)arg1 withRenderFlags:(long long)arg2 renderConfig:(id)arg3;
++ (id)cacheKeyForString:(id)arg1 withRenderFlags:(long long)arg2 renderingContext:(id)arg3;
++ (BOOL)couldUseGlyphSelectorForDisplayString:(id)arg1;
 + (Class)factoryClassForVisualStyle:(CDStruct_961fb75c)arg1;
-+ (id)factoryForVisualStyle:(CDStruct_961fb75c)arg1 renderConfig:(id)arg2;
-+ (id)factoryForVisualStyle:(CDStruct_961fb75c)arg1 renderConfig:(id)arg2 skipLayoutSegments:(BOOL)arg3;
-+ (id)lightweightFactoryForVisualStyle:(CDStruct_961fb75c)arg1 renderConfig:(id)arg2;
++ (id)factoryForVisualStyle:(CDStruct_961fb75c)arg1 renderingContext:(id)arg2;
++ (id)factoryForVisualStyle:(CDStruct_961fb75c)arg1 renderingContext:(id)arg2 skipLayoutSegments:(BOOL)arg3;
++ (id)lightweightFactoryForVisualStyle:(CDStruct_961fb75c)arg1 renderingContext:(id)arg2;
 + (id)segmentedControlColor:(BOOL)arg1;
 - (double)RivenFactor:(double)arg1;
 - (id)_controlKeyBackgroundColorName;
-- (void)_customizeTraits:(id)arg1 forPopupForKey:(id)arg2 withRenderConfig:(id)arg3 keycapsFontName:(id)arg4;
+- (void)_customizeTraits:(id)arg1 forPopupForKey:(id)arg2 withRenderingContext:(id)arg3 keycapsFontName:(id)arg4;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (void)addLayoutSegment:(id)arg1;
 - (void)applyBoldTextForContent:(id)arg1 withKey:(id)arg2;
@@ -65,9 +68,10 @@
 - (id)extraPasscodePaddleTraits;
 - (id)globalEmojiKeyImageName;
 - (id)globalKeyImageName;
+- (long long)glyphSelectorForDisplayString:(id)arg1;
 - (id)handwritingMoreKeyImageName;
 - (id)hashStringElement;
-- (id)initWithRenderConfig:(id)arg1 skipLayoutSegments:(BOOL)arg2;
+- (id)initWithRenderingContext:(id)arg1 skipLayoutSegments:(BOOL)arg2;
 - (double)keyCornerRadius;
 - (id)keyImageNameWithSkinnyVariation:(id)arg1;
 - (BOOL)keyIsRightToLeftSensitive:(id)arg1;
@@ -76,7 +80,9 @@
 - (id)lightKeycapsFontName;
 - (id)lightPadKeycapsFontName;
 - (id)lightTextFontName;
+- (id)lowQualityLayeredBackgroundColorName;
 - (void)lowQualityTraits:(id)arg1;
+- (id)messagesWriteboardKeyImageName;
 - (void)modifyKeyTraitsForPasscode:(id)arg1 forKey:(id)arg2 onKeyplane:(id)arg3;
 - (void)modifyTraitsForDetachedInputSwitcher:(id)arg1 withKey:(id)arg2;
 - (void)modifyTraitsForDividerVariant:(id)arg1 withKey:(id)arg2;

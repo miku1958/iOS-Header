@@ -19,7 +19,7 @@
     SKUIScrollingTabBarBackgroundView *_backgroundView;
 }
 
-@property (nonatomic, getter=isAttached) BOOL attached; // @synthesize attached=_attached;
+@property (nonatomic, getter=isAttached, setter=_setAttached:) BOOL attached; // @synthesize attached=_attached;
 @property (readonly, nonatomic, getter=_backgroundView) SKUIScrollingTabBarBackgroundView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (weak, nonatomic, getter=_delegate, setter=_setDelegate:) id<SKUIScrollingTabBarPaletteDelegate> delegate; // @synthesize delegate=_delegate;
@@ -27,7 +27,6 @@
 @property (nonatomic) BOOL tabBarBackgroundExtendsBehindPalette; // @synthesize tabBarBackgroundExtendsBehindPalette=_tabBarBackgroundExtendsBehindPalette;
 
 - (void).cxx_destruct;
-- (void)_setAttached:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;

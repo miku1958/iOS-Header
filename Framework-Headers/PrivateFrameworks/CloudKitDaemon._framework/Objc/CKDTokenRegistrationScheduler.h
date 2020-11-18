@@ -13,6 +13,7 @@
 
 @interface CKDTokenRegistrationScheduler : NSObject <CKDSystemAvailabilityWatcher>
 {
+    BOOL _schedulerIsAvailable;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_callbackBlocks;
     NSMutableDictionary *_callbackTimers;
@@ -26,6 +27,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSMutableSet *requests; // @synthesize requests=_requests;
+@property (nonatomic) BOOL schedulerIsAvailable; // @synthesize schedulerIsAvailable=_schedulerIsAvailable;
 @property (readonly) Class superclass;
 
 + (id)sharedScheduler;

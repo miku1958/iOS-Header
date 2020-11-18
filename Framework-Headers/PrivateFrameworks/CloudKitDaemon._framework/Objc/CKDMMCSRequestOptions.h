@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDMMCSRequestOptions : NSObject
@@ -19,8 +19,10 @@ __attribute__((visibility("hidden")))
     NSString *_containerID;
     NSArray *_zoneNames;
     long long _qualityOfService;
+    NSDictionary *_MMCSRequestOptions;
 }
 
+@property (strong, nonatomic) NSDictionary *MMCSRequestOptions; // @synthesize MMCSRequestOptions=_MMCSRequestOptions;
 @property (nonatomic) BOOL allowsCellularAccess; // @synthesize allowsCellularAccess=_allowsCellularAccess;
 @property (nonatomic) BOOL allowsPowerNapScheduling; // @synthesize allowsPowerNapScheduling=_allowsPowerNapScheduling;
 @property (strong, nonatomic) NSString *applicationBundleID; // @synthesize applicationBundleID=_applicationBundleID;

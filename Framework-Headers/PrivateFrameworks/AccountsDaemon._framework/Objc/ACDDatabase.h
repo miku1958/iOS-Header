@@ -17,6 +17,7 @@
     id _contextDidSaveNotificationObserver;
 }
 
+@property (nonatomic) long long keychainVersion;
 @property (readonly, nonatomic) NSManagedObjectContext *managedObjectContext; // @dynamic managedObjectContext;
 @property (readonly, nonatomic) NSString *path; // @synthesize path=_path;
 @property (nonatomic) long long version; // @dynamic version;

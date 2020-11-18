@@ -13,9 +13,11 @@
 @interface PBBProtoHandleActivationData : PBCodable <NSCopying>
 {
     NSData *_activationData;
+    NSData *_responseHeaders;
 }
 
 @property (strong, nonatomic) NSData *activationData; // @synthesize activationData=_activationData;
+@property (strong, nonatomic) NSData *responseHeaders; // @synthesize responseHeaders=_responseHeaders;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

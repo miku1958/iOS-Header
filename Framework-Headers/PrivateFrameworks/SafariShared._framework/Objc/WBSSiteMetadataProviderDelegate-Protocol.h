@@ -6,15 +6,15 @@
 
 #import <SafariShared/NSObject-Protocol.h>
 
-@class WBSSiteMetadataProvider, WBSSiteMetadataRequest, WBSSiteMetadataResponse;
-@protocol NSFastEnumeration;
+@class WBSSiteMetadataRequest, WBSSiteMetadataResponse, WKWebView, WKWebViewConfiguration;
+@protocol NSFastEnumeration, WBSSiteMetadataProvider;
 
 @protocol WBSSiteMetadataProviderDelegate <NSObject>
-- (void)siteMetadataProvider:(WBSSiteMetadataProvider *)arg1 cancelRequestsWithTokens:(id<NSFastEnumeration>)arg2;
-- (void)siteMetadataProvider:(WBSSiteMetadataProvider *)arg1 didFinishRequestWithoutReceivingNewData:(WBSSiteMetadataRequest *)arg2;
-- (void)siteMetadataProvider:(WBSSiteMetadataProvider *)arg1 didReceiveResponse:(WBSSiteMetadataResponse *)arg2 forRequest:(WBSSiteMetadataRequest *)arg3;
-- (void)siteMetadataProvider:(WBSSiteMetadataProvider *)arg1 didReceiveUpdateForRequest:(WBSSiteMetadataRequest *)arg2;
-- (id)siteMetadataProvider:(WBSSiteMetadataProvider *)arg1 registerOneTimeRequest:(WBSSiteMetadataRequest *)arg2 priority:(long long)arg3 responseHandler:(void (^)(WBSSiteMetadataResponse *))arg4;
-- (id)siteMetadataProvider:(WBSSiteMetadataProvider *)arg1 registerRequest:(WBSSiteMetadataRequest *)arg2 priority:(long long)arg3 responseHandler:(void (^)(WBSSiteMetadataResponse *))arg4;
+- (void)siteMetadataProvider:(id<WBSSiteMetadataProvider>)arg1 cancelRequestsWithTokens:(id<NSFastEnumeration>)arg2;
+- (void)siteMetadataProvider:(id<WBSSiteMetadataProvider>)arg1 didFinishUsingWebView:(WKWebView *)arg2;
+- (void)siteMetadataProvider:(id<WBSSiteMetadataProvider>)arg1 didReceiveResponse:(WBSSiteMetadataResponse *)arg2 ofType:(long long)arg3 didReceiveNewData:(BOOL)arg4 forRequest:(WBSSiteMetadataRequest *)arg5;
+- (id)siteMetadataProvider:(id<WBSSiteMetadataProvider>)arg1 registerOneTimeRequest:(WBSSiteMetadataRequest *)arg2 priority:(long long)arg3 responseHandler:(void (^)(WBSSiteMetadataResponse *))arg4;
+- (id)siteMetadataProvider:(id<WBSSiteMetadataProvider>)arg1 registerRequest:(WBSSiteMetadataRequest *)arg2 priority:(long long)arg3 responseHandler:(void (^)(WBSSiteMetadataResponse *))arg4;
+- (WKWebView *)siteMetadataProvider:(id<WBSSiteMetadataProvider>)arg1 webViewOfSize:(struct CGSize)arg2 withConfiguration:(WKWebViewConfiguration *)arg3;
 @end
 

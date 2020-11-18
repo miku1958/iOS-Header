@@ -28,9 +28,12 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (struct __CFArray *)cn_copyPeopleInAddressBook:(void *)arg1 withSortOrder:(unsigned int)arg2 matchInfos:(id *)arg3 options:(unsigned long long)arg4 error:(struct __CFError **)arg5;
 - (BOOL)cn_supportsNativeSorting;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 URL:(id)arg2 emailAddress:(id)arg3 customDescription:(id)arg4;
 
 @end

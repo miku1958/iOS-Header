@@ -13,6 +13,7 @@
     NSString *_playerID;
     NSString *_alias;
     NSDictionary *_photos;
+    NSString *_messagesID;
     unsigned short _numberOfFriends;
     unsigned short _numberOfGames;
     unsigned short _numberOfFriendsInCommon;
@@ -53,6 +54,7 @@
 @property (strong, nonatomic) NSString *lastName; // @dynamic lastName;
 @property (strong, nonatomic) NSDate *lastPlayedDate; // @dynamic lastPlayedDate;
 @property (strong, nonatomic) GKGameInternal *lastPlayedGame; // @dynamic lastPlayedGame;
+@property (strong, nonatomic) NSString *messagesID; // @synthesize messagesID=_messagesID;
 @property (nonatomic) unsigned int numberOfAchievementPoints; // @synthesize numberOfAchievementPoints=_numberOfAchievementPoints;
 @property (nonatomic) unsigned int numberOfAchievements; // @synthesize numberOfAchievements=_numberOfAchievements;
 @property (nonatomic) unsigned short numberOfChallenges; // @dynamic numberOfChallenges;

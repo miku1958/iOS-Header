@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <iAd/ADAdSpaceRemoteViewControllerDelegate-Protocol.h>
 #import <iAd/ADAdSpace_RPC-Protocol.h>
+#import <iAd/ADPrivacyViewControllerInternalDelegate-Protocol.h>
+#import <iAd/ADWebViewActionViewControllerDelegate-Protocol.h>
 #import <iAd/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class ADAdActionPublicAttributes, ADAdImpressionPublicAttributes, ADAdSpaceConfiguration, ADAdSpaceRemoteViewController, NSDictionary, NSSet, NSString, NSURL, _ADRemoteViewController, _UIAsyncInvocation;
+@class ADAdActionPublicAttributes, ADAdImpressionPublicAttributes, ADAdSpaceConfiguration, ADAdSpaceRemoteViewController, ADPrivacyViewController, ADWebViewActionViewController, NSDictionary, NSSet, NSString, NSURL, UIImageView, _ADRemoteViewController, _UIAsyncInvocation;
 @protocol ADAdRecipient, ADSAdSpace_RPC><NSObject;
 
-@interface ADAdSpace : NSObject <UIViewControllerTransitioningDelegate, ADAdSpace_RPC, ADAdSpaceRemoteViewControllerDelegate>
+@interface ADAdSpace : NSObject <UIViewControllerTransitioningDelegate, ADAdSpace_RPC, ADAdSpaceRemoteViewControllerDelegate, ADPrivacyViewControllerInternalDelegate, ADWebViewActionViewControllerDelegate>
 {
     id<ADAdRecipient> _recipient;
     BOOL _isModalInterstitial;
@@ -24,6 +26,7 @@
     BOOL _actionViewControllerWantsDismissal;
     BOOL _requiresFastVisibiltyTestOnly;
     BOOL _fastVisibilityContextIsFeed;
+    BOOL _gettingSnapshot;
     NSString *_identifier;
     NSURL *_serverURL;
     NSString *_advertisingSection;
@@ -37,7 +40,13 @@
     _UIAsyncInvocation *_remoteViewControllerRequestCancelationInvocation;
     _ADRemoteViewController *_remoteViewController;
     _ADRemoteViewController *_portraitOnlyViewController;
+    ADWebViewActionViewController *_webViewActionViewController;
     NSDictionary *_adToLoad;
+    UIImageView *_imageView;
+    long long _lastSnapshottingOrientation;
+    ADPrivacyViewController *_privacyViewController;
+    struct CGRect _placeholderImageRect;
+    struct CGRect _nativeAdFrame;
 }
 
 @property (nonatomic) BOOL actionViewControllerReadyForPresentation; // @synthesize actionViewControllerReadyForPresentation=_actionViewControllerReadyForPresentation;
@@ -54,11 +63,17 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL fastVisibilityContextIsFeed; // @synthesize fastVisibilityContextIsFeed=_fastVisibilityContextIsFeed;
+@property (nonatomic) BOOL gettingSnapshot; // @synthesize gettingSnapshot=_gettingSnapshot;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) BOOL isModalInterstitial; // @synthesize isModalInterstitial=_isModalInterstitial;
 @property (nonatomic) double lastSlowCheck; // @synthesize lastSlowCheck=_lastSlowCheck;
+@property (nonatomic) long long lastSnapshottingOrientation; // @synthesize lastSnapshottingOrientation=_lastSnapshottingOrientation;
+@property (nonatomic) struct CGRect nativeAdFrame; // @synthesize nativeAdFrame=_nativeAdFrame;
+@property (nonatomic) struct CGRect placeholderImageRect; // @synthesize placeholderImageRect=_placeholderImageRect;
 @property (strong, nonatomic) _ADRemoteViewController *portraitOnlyViewController; // @synthesize portraitOnlyViewController=_portraitOnlyViewController;
+@property (strong, nonatomic) ADPrivacyViewController *privacyViewController; // @synthesize privacyViewController=_privacyViewController;
 @property (readonly, nonatomic) id<ADAdRecipient> recipient;
 @property (strong, nonatomic) _ADRemoteViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
 @property (strong, nonatomic) _UIAsyncInvocation *remoteViewControllerRequestCancelationInvocation; // @synthesize remoteViewControllerRequestCancelationInvocation=_remoteViewControllerRequestCancelationInvocation;
@@ -70,15 +85,19 @@
 @property (readonly) Class superclass;
 @property (nonatomic) long long visibility; // @synthesize visibility=_visibility;
 @property (nonatomic) BOOL visibilityCheckScheduled; // @synthesize visibilityCheckScheduled=_visibilityCheckScheduled;
+@property (strong, nonatomic) ADWebViewActionViewController *webViewActionViewController; // @synthesize webViewActionViewController=_webViewActionViewController;
 
 + (long long)_modalTansitionStyleForTransitionType:(int)arg1;
 - (void)_clientApplicationDidBecomeActive;
 - (void)_clientApplicationDidEnterBackground;
 - (void)_closeConnectionIfNecessary;
 - (void)_considerPresentingActionViewController;
+- (void)_considerPresentingWebViewActionViewController;
 - (BOOL)_contextForFeldsparClientIsFeed:(id)arg1;
+- (void)_presentPrivacyViewController;
 - (void)_remote_actionViewControllerReadyForPresentation;
 - (void)_remote_adImpressionDidLoadWithPublicAttributes:(id)arg1;
+- (void)_remote_changeBannerViewState:(int)arg1;
 - (void)_remote_close;
 - (void)_remote_creativeDidFailWithError:(id)arg1;
 - (void)_remote_creativeWillLoad;
@@ -88,12 +107,20 @@
 - (void)_remote_openURL:(id)arg1;
 - (void)_remote_pauseBannerMedia;
 - (void)_remote_requestPortraitOnlyViewController;
+- (void)_remote_requestPresentationForMRAIDOpenEvent;
 - (void)_remote_requestViewControllerWithClassName:(id)arg1 forAdSpaceControllerWithIdentifier:(id)arg2;
 - (void)_remote_resumeBannerMedia;
 - (void)_remote_setRequiresFastVisibilityTestOnly:(BOOL)arg1;
 - (void)_remote_updateViewControllerSupportedOrientations:(unsigned long long)arg1;
 - (void)_requestServiceAdSpace;
+- (void)_resetWebActionViewController;
 - (void)_updateAllProperties;
+- (void)adPrivacyViewController:(id)arg1 didFailWithError:(id)arg2;
+- (void)adPrivacyViewControllerDidAppear:(id)arg1;
+- (void)adPrivacyViewControllerDidDismiss:(id)arg1;
+- (void)adPrivacyViewControllerDidLinkOut:(id)arg1;
+- (void)adPrivacyViewControllerDidLoad:(id)arg1;
+- (void)adPrivacyViewControllerDidRenderTransparency:(id)arg1;
 - (void)adSpaceRemoteViewControllerDidTerminateWithError:(id)arg1;
 - (void)cancelBannerViewAction;
 - (void)close;
@@ -101,13 +128,21 @@
 - (void)determineActionForTapAtLocation:(struct CGPoint)arg1 inFrame:(struct CGRect)arg2 completeHandler:(CDUnknownBlockType)arg3;
 - (void)executeBannerViewActionFrom:(struct CGRect)arg1 withTapLocation:(struct CGPoint)arg2;
 - (id)initForRecipient:(id)arg1;
+- (void)installCreativeView;
+- (void)installImageView;
 - (void)interstitialWasRemovedFromSuperview;
 - (void)loadAd:(id)arg1;
 - (void)refuseBannerViewAction;
 - (BOOL)remoteViewControllerShouldAnimate:(id)arg1;
+- (void)reportNativeClickEvent;
+- (void)safariViewControllerDidFinish:(id)arg1;
 - (void)setAdSpaceType:(int)arg1;
+- (void)showAdTransparency;
+- (void)showPlaceholderImage:(BOOL)arg1;
+- (void)updateCreativeSnapshotImageWithDebugHighlight:(BOOL)arg1 frame:(struct CGRect)arg2;
 - (void)updateVisibility;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
+- (void)webViewActionViewControllerHomeButtonWasTapped:(id)arg1;
 
 @end
 

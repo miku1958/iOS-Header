@@ -8,11 +8,12 @@
 
 #import <MIME/MFDiagnosticsGenerator-Protocol.h>
 
-@class MFWeakSet, NSString;
+@class MFWeakSet, NSLock, NSString;
 
 @interface MFDiagnostics : NSObject <MFDiagnosticsGenerator>
 {
     MFWeakSet *_diagnosticsGenerators;
+    NSLock *_diagnosticLock;
 }
 
 @property (readonly, copy) NSString *debugDescription;

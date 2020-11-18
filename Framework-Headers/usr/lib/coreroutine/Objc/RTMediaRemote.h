@@ -4,14 +4,77 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <coreroutine/RTNotifier.h>
 
-__attribute__((visibility("hidden")))
-@interface RTMediaRemote : NSObject
+@class NSDate, NSMutableSet, NSSet, NSString, RTDataProviderNowPlaying, RTDefaultsManager, RTInvocationDispatcher, RTPurgeManager;
+
+@interface RTMediaRemote : RTNotifier
 {
+    BOOL _ready;
+    unsigned int _lastNowPlayingState;
+    RTDefaultsManager *_defaultsManager;
+    RTDataProviderNowPlaying *_nowPlayingDataProvider;
+    RTPurgeManager *_purgeManager;
+    NSDate *_dateOfLastNowPlayingTransition;
+    NSString *_lastNowPlayingBundleId;
+    double _minimumNowPlayingDurationTimeInterval;
+    NSSet *_blacklistedBundleIds;
+    NSSet *_whitelistedBundleIds;
+    NSMutableSet *_bundleIdsSupportingMediaRemote;
+    NSMutableSet *_bundleIdsSupportingPriming;
+    NSMutableSet *_bundleIdsNotSupportingPriming;
+    RTInvocationDispatcher *_dispatcher;
 }
 
-+ (BOOL)supportPrimingForBundleId:(id)arg1;
+@property (copy, nonatomic) NSSet *blacklistedBundleIds; // @synthesize blacklistedBundleIds=_blacklistedBundleIds;
+@property (strong, nonatomic) NSMutableSet *bundleIdsNotSupportingPriming; // @synthesize bundleIdsNotSupportingPriming=_bundleIdsNotSupportingPriming;
+@property (strong, nonatomic) NSMutableSet *bundleIdsSupportingMediaRemote; // @synthesize bundleIdsSupportingMediaRemote=_bundleIdsSupportingMediaRemote;
+@property (strong, nonatomic) NSMutableSet *bundleIdsSupportingPriming; // @synthesize bundleIdsSupportingPriming=_bundleIdsSupportingPriming;
+@property (strong, nonatomic) NSDate *dateOfLastNowPlayingTransition; // @synthesize dateOfLastNowPlayingTransition=_dateOfLastNowPlayingTransition;
+@property (strong, nonatomic) RTDefaultsManager *defaultsManager; // @synthesize defaultsManager=_defaultsManager;
+@property (strong, nonatomic) RTInvocationDispatcher *dispatcher; // @synthesize dispatcher=_dispatcher;
+@property (copy, nonatomic) NSString *lastNowPlayingBundleId; // @synthesize lastNowPlayingBundleId=_lastNowPlayingBundleId;
+@property (nonatomic) unsigned int lastNowPlayingState; // @synthesize lastNowPlayingState=_lastNowPlayingState;
+@property (nonatomic) double minimumNowPlayingDurationTimeInterval; // @synthesize minimumNowPlayingDurationTimeInterval=_minimumNowPlayingDurationTimeInterval;
+@property (strong, nonatomic) RTDataProviderNowPlaying *nowPlayingDataProvider; // @synthesize nowPlayingDataProvider=_nowPlayingDataProvider;
+@property (strong, nonatomic) RTPurgeManager *purgeManager; // @synthesize purgeManager=_purgeManager;
+@property (nonatomic) BOOL ready; // @synthesize ready=_ready;
+@property (copy, nonatomic) NSSet *whitelistedBundleIds; // @synthesize whitelistedBundleIds=_whitelistedBundleIds;
+
++ (id)defaultApplicationWhitelist;
++ (id)sharedInstance;
+- (void).cxx_destruct;
+- (void)__handleNowPlayingApplication:(id)arg1 didChangeState:(unsigned int)arg2;
+- (void)_addBundleIdentifier:(id)arg1 supportsPriming:(BOOL)arg2;
+- (void)_bundleIdentifiersKnownToNotSupportPriming:(CDUnknownBlockType)arg1;
+- (void)_bundleIdentifiersKnownToSupportPriming:(CDUnknownBlockType)arg1;
+- (void)_fetchBundleIdentifiersSupportingMediaRemoteCapability:(CDUnknownBlockType)arg1;
+- (void)_handleNowPlayingApplicationIsPlayingDidChange;
+- (void)_onDefaultsUpdate:(id)arg1;
+- (void)_onPurgeNotification:(id)arg1;
+- (void)_primingSupportedForBundleIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_registerForMediaRemoteNotifications;
+- (void)_registerForNotifications;
+- (void)_setup;
+- (void)_unregisterForMediaRemoteNotifications;
+- (void)_unregisterForNotifications;
+- (void)_updateBundleIdsSupportingMediaRemoteCapability:(CDUnknownBlockType)arg1;
+- (void)bundleIdentifiersKnownToNotSupportPriming:(CDUnknownBlockType)arg1;
+- (void)bundleIdentifiersKnownToSupportPriming:(CDUnknownBlockType)arg1;
+- (void)fetchBundleIdentifiersSupportingMediaRemoteCapability:(CDUnknownBlockType)arg1;
+- (void)fetchNowPlayingApplicationBundleIdentifier:(CDUnknownBlockType)arg1;
+- (void)fetchNowPlayingApplicationPlaybackState:(CDUnknownBlockType)arg1;
+- (void)handleNowPlayingApplicationIsPlayingDidChange;
+- (id)init;
+- (id)initWithName:(id)arg1;
+- (id)initWithName:(id)arg1 defaultsManager:(id)arg2 nowPlayingDataProvider:(id)arg3 purgeManager:(id)arg4;
+- (void)internalAddObserver:(id)arg1 name:(id)arg2;
+- (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
+- (void)onDefaultsUpdate:(id)arg1;
+- (void)onPurgeNotification:(id)arg1;
+- (void)primingSupportedForBundleIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)shutdown;
+- (void)updateValueForKey:(id)arg1 expectedClass:(Class)arg2 handler:(CDUnknownBlockType)arg3;
 
 @end
 

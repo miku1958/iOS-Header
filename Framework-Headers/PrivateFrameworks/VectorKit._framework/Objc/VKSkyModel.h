@@ -14,24 +14,35 @@
 __attribute__((visibility("hidden")))
 @interface VKSkyModel : VKModelObject <VKMapLayer, VKStyleManagerObserver>
 {
-    VKMapModel *_mapModel;
     float _skyStartOffset;
     Matrix_5173352a _fillColor;
     Matrix_5173352a _horizonColor;
-    struct shared_ptr<ggl::ConstantDataTyped<ggl::Sky::Style>> _constantData;
-    struct shared_ptr<ggl::Sky::Shader::Setup> _shaderSetup;
-    struct shared_ptr<ggl::Sky::SkyMesh> _mesh;
-    struct shared_ptr<ggl::IndexDataTyped<unsigned short>> _indexData;
-    struct shared_ptr<ggl::RenderState> _gglRenderState;
-    struct RenderItem *_renderItem;
+    struct shared_ptr<ggl::ConstantDataTyped<ggl::Sky::Style>> _skyConstantData;
+    struct shared_ptr<ggl::Sky::SkyPipelineSetup> _skyPipelineSetup;
+    struct shared_ptr<ggl::Sky::SkyPipelineState> _skyPipelineState;
+    struct shared_ptr<ggl::Sky::SkyMesh> _skyMesh;
+    struct shared_ptr<ggl::IndexDataTyped<unsigned short>> _skyIndexData;
+    struct shared_ptr<ggl::RenderState> _skyRenderState;
+    struct RenderItem *_skyRenderItem;
+    shared_ptr_696716c4 _fogViewConstantData;
+    shared_ptr_c062e934 _fogConstantData;
+    struct shared_ptr<ggl::Fog::FogPipelineState> _fogPipelineState;
+    struct FogInfo _fogInfo;
+    struct shared_ptr<ggl::PolygonBase::MeshMesh> _fogMesh;
+    struct unique_ptr<ggl::Fog::FogPipelineSetup, std::__1::default_delete<ggl::Fog::FogPipelineSetup>> _fogPipelineSetup;
+    struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _fogRenderState;
+    struct unique_ptr<ggl::RenderItem, std::__1::default_delete<ggl::RenderItem>> _fogRenderItem;
     BOOL _needsNewStyle;
+    BOOL _fogEnabled;
+    VKMapModel *_mapModel;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL fogEnabled; // @synthesize fogEnabled=_fogEnabled;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) VKMapModel *mapModel; // @synthesize mapModel=_mapModel;
-@property (readonly, nonatomic) shared_ptr_f06afc6c styleManager;
+@property (readonly, nonatomic) shared_ptr_a3c46825 styleManager;
 @property (readonly) Class superclass;
 
 + (BOOL)reloadOnStylesheetChange;
@@ -39,9 +50,11 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)dealloc;
 - (Matrix_5173352a)fillColor;
-- (void)gglLayoutScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
+- (void)generateFogForScene:(id)arg1 context:(struct LayoutContext *)arg2 commandBuffer:(struct CommandBuffer *)arg3;
+- (void)generateSkyForScene:(id)arg1 context:(struct LayoutContext *)arg2 commandBuffer:(struct CommandBuffer *)arg3;
+- (void)gglLayoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
 - (Matrix_5173352a)horizonColor;
-- (id)init;
+- (id)initWithTarget:(id)arg1 sharedResources:(id)arg2;
 - (unsigned long long)mapLayerPosition;
 - (void)setFillColor:(Matrix_5173352a)arg1;
 - (void)setHorizonColor:(Matrix_5173352a)arg1;

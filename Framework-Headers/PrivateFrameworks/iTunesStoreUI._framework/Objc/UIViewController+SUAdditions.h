@@ -10,9 +10,9 @@
 
 @interface UIViewController (SUAdditions)
 
-@property (readonly, nonatomic, getter=isLoaded) BOOL loaded;
-@property (readonly, nonatomic, getter=isLoading) BOOL loading;
 @property (readonly, nonatomic) BOOL shouldInvalidateForMemoryPurge;
+@property (readonly, nonatomic, getter=isSkLoaded) BOOL skLoaded;
+@property (readonly, nonatomic, getter=isSkLoading) BOOL skLoading;
 @property (readonly, nonatomic) SUViewControllerFactory *viewControllerFactory;
 
 - (id)_sectionForViewController:(id)arg1;

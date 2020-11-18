@@ -10,12 +10,12 @@
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
-@class HDActivityCacheDataSource, HDSourceEntity, HKActivityCache, HKQuantitySample, HKQuantityType, NSCalendar, NSDate, NSHashTable, NSSet, NSString, NSTimeZone, _HKDelayedOperation, _HKTimePeriod;
-@protocol HDHealthDaemon, OS_dispatch_queue;
+@class HDActivityCacheDataSource, HDProfile, HDSourceEntity, HKActivityCache, HKQuantitySample, HKQuantityType, NSCalendar, NSDate, NSHashTable, NSSet, NSString, NSTimeZone, _HKDelayedOperation, _HKTimePeriod;
+@protocol OS_dispatch_queue;
 
 @interface HDActivityCacheManager : NSObject <HDHealthDaemonReadyObserver, HDDataObserver, HDDatabaseProtectedDataObserver>
 {
-    id<HDHealthDaemon> _healthDaemon;
+    HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_observerQueue;
     long long _todayActivityCacheIndex;
@@ -27,6 +27,7 @@
     HKActivityCache *_existingYesterdayActivityCache;
     HKActivityCache *_existingTodayActivityCache;
     HDSourceEntity *_localDeviceSourceEntity;
+    HKQuantityType *_pushCountType;
     HDActivityCacheDataSource *_dataSource;
     HKQuantityType *_calorieGoalType;
     NSSet *_allQuantityTypes;
@@ -37,6 +38,7 @@
     _HKDelayedOperation *_rebuildCachesOperation;
     NSHashTable *_observers;
     BOOL _hasSubscribedToSignificantTimeChangeNotifications;
+    long long _wheelchairUse;
     NSDate *_dateOverride;
     NSTimeZone *_timeZoneOverride;
 }
@@ -75,7 +77,7 @@
 - (void)_queue_resetDataSource;
 - (void)_queue_resetEverything;
 - (void)_queue_resetExistingActivityCaches;
-- (id)_queue_saveCacheWithDateRange:(id)arg1 calorieGoal:(id)arg2 cacheIndex:(long long)arg3 previousCache:(id)arg4 statisticsBuilder:(id)arg5;
+- (id)_queue_saveCacheWithDateRange:(id)arg1 calorieGoal:(id)arg2 cacheIndex:(long long)arg3 previousCache:(id)arg4 statisticsBuilder:(id)arg5 wheelchairUse:(long long)arg6;
 - (void)_queue_saveCaches;
 - (BOOL)_queue_saveTodayCache;
 - (BOOL)_queue_saveYesterdayCache;
@@ -85,12 +87,14 @@
 - (void)_queue_updateDailyGoalsWithGoalSample:(id)arg1;
 - (void)_queue_updateDailyGoalsWithSamples:(id)arg1;
 - (void)_queue_updateDateRangesWithExistingActivityCaches;
+- (void)_queue_updateWheelchairUse;
 - (void)_significantTimeChangeOccurred:(id)arg1;
+- (void)_userCharacteristicsDidChangeNotification:(id)arg1;
 - (void)addActivityCacheObserver:(id)arg1;
 - (void)daemonReady:(id)arg1;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)dealloc;
-- (id)initWithHealthDaemon:(id)arg1;
+- (id)initWithProfile:(id)arg1;
 - (void)removeActivityCacheObserver:(id)arg1;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;

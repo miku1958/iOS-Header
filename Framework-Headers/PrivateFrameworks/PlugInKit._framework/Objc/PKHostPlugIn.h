@@ -14,6 +14,7 @@
 
 @interface PKHostPlugIn : PKPlugInCore <PKPlugInPrivate, NSXPCConnectionDelegate>
 {
+    BOOL _terminating;
     unsigned int _useCount;
     NSUserDefaults *_defaults;
     CDUnknownBlockType _notificationBlock;
@@ -52,6 +53,7 @@
 @property (readonly) NSUUID *effectiveUUID;
 @property (strong) NSBundle *embeddedBundle; // @synthesize embeddedBundle=_embeddedBundle;
 @property (strong) id embeddedPrincipal; // @synthesize embeddedPrincipal=_embeddedPrincipal;
+@property (readonly) NSDictionary *entitlements;
 @property (strong) NSDictionary *extensionState;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSString *identifier;
@@ -74,6 +76,7 @@
 @property (readonly) Class superclass;
 @property (strong) id<PKPlugIn> supersededBy; // @synthesize supersededBy=_supersededBy;
 @property (strong) NSUUID *supersedingUUID; // @synthesize supersedingUUID=_supersedingUUID;
+@property BOOL terminating; // @synthesize terminating=_terminating;
 @property (readonly) NSDate *timestamp;
 @property (readonly) NSURL *url;
 @property unsigned int useCount; // @synthesize useCount=_useCount;

@@ -18,6 +18,8 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSXPCConnection *_connection;
     BOOL _shouldCheckinAfterInvalidationHandler;
+    int _daemonDidLaunchNotifyToken;
+    BOOL _resignedActive;
     id<PSYSyncSessionObserverDelegate> _delegate;
 }
 
@@ -31,16 +33,21 @@
 - (void).cxx_destruct;
 - (void)_checkin:(BOOL)arg1;
 - (void)_connectionInvalidated;
+- (void)_disconnectFromPairedSync;
 - (void)_handleDaemonStarted;
 - (void)_queue_invalidateSyncSession:(id)arg1;
 - (void)_queue_loadConnectionIfNeeded;
+- (void)_reconnectToPairedSync;
 - (void)dealloc;
+- (void)didBecomeActive:(id)arg1;
 - (id)init;
 - (oneway void)invalidateSyncSession:(id)arg1;
 - (id)providerWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)setCurrentSyncSession:(id)arg1;
 - (void)startObservingSyncSessionsWithCompletion:(CDUnknownBlockType)arg1;
 - (oneway void)syncSessionWillStart:(id)arg1;
 - (oneway void)updateSyncSession:(id)arg1;
+- (void)willResignActive:(id)arg1;
 
 @end
 

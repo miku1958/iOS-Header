@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)countForObject:(id)arg1;
 - (void)dealloc;
 - (void)enumerateObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)finalize;
 - (void)getObjects:(id *)arg1 range:(struct _NSRange)arg2;
 - (unsigned long long)indexOfObject:(id)arg1;
 - (void)insertObject:(id)arg1 atIndex:(unsigned long long)arg2;

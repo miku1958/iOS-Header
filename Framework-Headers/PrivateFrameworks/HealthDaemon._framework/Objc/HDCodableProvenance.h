@@ -15,20 +15,26 @@
     NSData *_deviceUUID;
     NSString *_originBuild;
     NSString *_originDevice;
+    NSString *_originProductType;
     NSData *_sourceUUID;
     NSString *_sourceVersion;
+    NSString *_timeZoneName;
 }
 
 @property (strong, nonatomic) NSData *deviceUUID; // @synthesize deviceUUID=_deviceUUID;
 @property (readonly, nonatomic) BOOL hasDeviceUUID;
 @property (readonly, nonatomic) BOOL hasOriginBuild;
 @property (readonly, nonatomic) BOOL hasOriginDevice;
+@property (readonly, nonatomic) BOOL hasOriginProductType;
 @property (readonly, nonatomic) BOOL hasSourceUUID;
 @property (readonly, nonatomic) BOOL hasSourceVersion;
+@property (readonly, nonatomic) BOOL hasTimeZoneName;
 @property (strong, nonatomic) NSString *originBuild; // @synthesize originBuild=_originBuild;
 @property (strong, nonatomic) NSString *originDevice; // @synthesize originDevice=_originDevice;
+@property (strong, nonatomic) NSString *originProductType; // @synthesize originProductType=_originProductType;
 @property (strong, nonatomic) NSData *sourceUUID; // @synthesize sourceUUID=_sourceUUID;
 @property (strong, nonatomic) NSString *sourceVersion; // @synthesize sourceVersion=_sourceVersion;
+@property (strong, nonatomic) NSString *timeZoneName; // @synthesize timeZoneName=_timeZoneName;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

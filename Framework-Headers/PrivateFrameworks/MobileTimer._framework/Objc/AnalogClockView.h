@@ -49,6 +49,7 @@
 + (id)cacheVersionedPath;
 + (Class)classForStyle:(int)arg1;
 + (id)clockFaceForDaytime:(BOOL)arg1;
++ (id)clockFaceForDaytime:(BOOL)arg1 ignoreCache:(BOOL)arg2;
 + (id)clockHand:(int)arg1 daytime:(BOOL)arg2;
 + (struct CGSize)clockSize;
 + (id)dayTimeFaceColor;
@@ -66,6 +67,7 @@
 + (double)hourHandWidth;
 + (id)imageCacheNameForType:(int)arg1 daytime:(BOOL)arg2;
 + (id)imageForType:(int)arg1 dayTime:(BOOL)arg2 generation:(CDUnknownBlockType)arg3;
++ (id)imageForType:(int)arg1 dayTime:(BOOL)arg2 generation:(CDUnknownBlockType)arg3 ignoreCache:(BOOL)arg4;
 + (id)imageInBundleForName:(id)arg1;
 + (void)initialize;
 + (struct UIEdgeInsets)insetsForStyle:(int)arg1;
@@ -112,6 +114,7 @@
 + (void)updateTimeForAllTicking;
 - (void).cxx_destruct;
 - (double)coarseUpdateInterval;
+- (void)handleLocaleChange;
 - (id)init;
 - (struct CGSize)intrinsicContentSize;
 - (void)setFrame:(struct CGRect)arg1;

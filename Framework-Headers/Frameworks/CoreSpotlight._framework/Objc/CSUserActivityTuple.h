@@ -19,10 +19,10 @@
 
 @property (strong) CSUserAction *action; // @synthesize action=_action;
 @property (strong) CSSearchableItem *item; // @synthesize item=_item;
-@property (readonly) NSString *protectionClass; // @synthesize protectionClass=_protectionClass;
+@property (strong) NSString *protectionClass; // @synthesize protectionClass=_protectionClass;
 
 - (void).cxx_destruct;
-- (id)initWithAction:(id)arg1 item:(id)arg2 protectionClass:(id)arg3;
+- (id)initWithAction:(id)arg1 item:(id)arg2;
 - (id)searchableItem;
 
 @end

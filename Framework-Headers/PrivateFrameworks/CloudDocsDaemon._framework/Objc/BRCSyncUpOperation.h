@@ -8,7 +8,7 @@
 
 #import <CloudDocsDaemon/BRCOperationSubclass-Protocol.h>
 
-@class BRCServerZone, NSMutableArray, NSMutableDictionary, NSString;
+@class BRCLocalItem, BRCServerZone, NSMutableArray, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BRCSyncUpOperation : _BRCOperation <BRCOperationSubclass>
@@ -16,10 +16,15 @@ __attribute__((visibility("hidden")))
     unsigned long long _requestID;
     float _cost;
     NSMutableArray *_recordsToSave;
+    NSMutableArray *_packagesInFlight;
+    NSMutableArray *_createdAppLibraryNames;
     NSMutableArray *_deletedRecordIDs;
-    NSMutableArray *_deletedShareIDs;
-    NSMutableArray *_recordsNeedingSharingInfo;
+    NSMutableArray *_iworkUnsharedShareIDs;
+    NSMutableDictionary *_iworkRenamedShareIDsToNames;
+    NSMutableArray *_recordsNeedingNewSharingProtectionInfo;
+    NSMutableArray *_recordsNeedingUpdatedSharingProtectionInfo;
     NSMutableDictionary *_recordIDsToDeleteToEtags;
+    BRCLocalItem *_itemNeedingPCSChaining;
     NSMutableDictionary *_conflictLosersToResolveByRecordID;
     NSString *_stageID;
     CDUnknownBlockType _syncUpCompletionBlock;
@@ -28,13 +33,18 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSMutableDictionary *conflictLosersToResolveByRecordID; // @synthesize conflictLosersToResolveByRecordID=_conflictLosersToResolveByRecordID;
 @property (readonly, nonatomic) float cost; // @synthesize cost=_cost;
+@property (readonly, nonatomic) NSMutableArray *createdAppLibraryNames; // @synthesize createdAppLibraryNames=_createdAppLibraryNames;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSMutableArray *deletedRecordIDs; // @synthesize deletedRecordIDs=_deletedRecordIDs;
-@property (strong, nonatomic) NSMutableArray *deletedShareIDs; // @synthesize deletedShareIDs=_deletedShareIDs;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) BRCLocalItem *itemNeedingPCSChaining; // @synthesize itemNeedingPCSChaining=_itemNeedingPCSChaining;
+@property (strong, nonatomic) NSMutableDictionary *iworkRenamedShareIDsToNames; // @synthesize iworkRenamedShareIDsToNames=_iworkRenamedShareIDsToNames;
+@property (strong, nonatomic) NSMutableArray *iworkUnsharedShareIDs; // @synthesize iworkUnsharedShareIDs=_iworkUnsharedShareIDs;
+@property (strong, nonatomic) NSMutableArray *packagesInFlight; // @synthesize packagesInFlight=_packagesInFlight;
 @property (strong, nonatomic) NSMutableDictionary *recordIDsToDeleteToEtags; // @synthesize recordIDsToDeleteToEtags=_recordIDsToDeleteToEtags;
-@property (strong, nonatomic) NSMutableArray *recordsNeedingSharingInfo; // @synthesize recordsNeedingSharingInfo=_recordsNeedingSharingInfo;
+@property (strong, nonatomic) NSMutableArray *recordsNeedingNewSharingProtectionInfo; // @synthesize recordsNeedingNewSharingProtectionInfo=_recordsNeedingNewSharingProtectionInfo;
+@property (strong, nonatomic) NSMutableArray *recordsNeedingUpdatedSharingProtectionInfo; // @synthesize recordsNeedingUpdatedSharingProtectionInfo=_recordsNeedingUpdatedSharingProtectionInfo;
 @property (strong, nonatomic) NSMutableArray *recordsToSave; // @synthesize recordsToSave=_recordsToSave;
 @property (strong, nonatomic) BRCServerZone *serverZone; // @synthesize serverZone=_serverZone;
 @property (strong, nonatomic) NSString *stageID; // @synthesize stageID=_stageID;
@@ -43,14 +53,20 @@ __attribute__((visibility("hidden")))
 
 + (id)syncUpOperationForZone:(id)arg1 maxCost:(float)arg2 retryAfter:(unsigned long long *)arg3;
 - (void).cxx_destruct;
-- (void)_scheduleModifyRecordsOperation;
+- (void)_performModifyRecordsOrPCSChainOperationWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)_performPCSChainOperationIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_performShareUpdateAndModifyRecordsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_performUpdateSharingProtectionDataIfNecessary:(CDUnknownBlockType)arg1;
+- (void)_scheduleShareUpdateAndModifyRecordsAndZoneCreationOperation;
+- (void)_setSharingFieldsOnContentRecord:(id)arg1 withProtectionData:(id)arg2 baseToken:(id)arg3 routingKey:(id)arg4;
+- (id)createActivity;
+- (void)dealloc;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)initWithZone:(id)arg1;
 - (void)main;
-- (void)performAfterUnsharingIfNeeded:(CDUnknownBlockType)arg1;
+- (void)performShareUpdate:(CDUnknownBlockType)arg1;
 - (BOOL)prepareWithMaxCost:(float)arg1 retryAfter:(unsigned long long *)arg2;
 - (BOOL)shouldRetryForError:(id)arg1;
-- (unsigned long long)startActivity;
 
 @end
 

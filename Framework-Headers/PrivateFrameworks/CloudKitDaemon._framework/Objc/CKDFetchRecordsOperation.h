@@ -6,17 +6,20 @@
 
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
-@class CKDRecordCache, NSArray, NSDictionary, NSMapTable, NSMutableDictionary, NSObject, NSSet;
+@class CKDDecryptRecordsOperation, CKDRecordCache, NSArray, NSDictionary, NSMapTable, NSMutableDictionary, NSObject, NSSet;
 @protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchRecordsOperation : CKDDatabaseOperation
 {
+    CKDDecryptRecordsOperation *_decryptOperation;
     BOOL _useCachedEtags;
     BOOL _forcePCSDecrypt;
     BOOL _shouldFetchAssetContent;
+    BOOL _shouldFetchAssetContentInMemory;
     NSArray *_fullRecordsToFetch;
     CDUnknownBlockType _recordFetchProgressBlock;
+    CDUnknownBlockType _recordFetchCommandBlock;
     CDUnknownBlockType _recordFetchCompletionBlock;
     NSArray *_recordIDsToFetch;
     NSMutableDictionary *_cachedRecords;
@@ -46,6 +49,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *fetchRecordsGroup; // @synthesize fetchRecordsGroup=_fetchRecordsGroup;
 @property (nonatomic) BOOL forcePCSDecrypt; // @synthesize forcePCSDecrypt=_forcePCSDecrypt;
 @property (strong, nonatomic) NSArray *fullRecordsToFetch; // @synthesize fullRecordsToFetch=_fullRecordsToFetch;
+@property (readonly, nonatomic) BOOL hasRecordDecryptOperation;
+@property (readonly, nonatomic) CKDDecryptRecordsOperation *recordDecryptOperation;
+@property (copy, nonatomic) CDUnknownBlockType recordFetchCommandBlock; // @synthesize recordFetchCommandBlock=_recordFetchCommandBlock;
 @property (copy, nonatomic) CDUnknownBlockType recordFetchCompletionBlock; // @synthesize recordFetchCompletionBlock=_recordFetchCompletionBlock;
 @property (copy, nonatomic) CDUnknownBlockType recordFetchProgressBlock; // @synthesize recordFetchProgressBlock=_recordFetchProgressBlock;
 @property (strong, nonatomic) NSDictionary *recordIDsToETags; // @synthesize recordIDsToETags=_recordIDsToETags;
@@ -53,6 +59,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSDictionary *recordIDsToVersionETags; // @synthesize recordIDsToVersionETags=_recordIDsToVersionETags;
 @property (nonatomic) unsigned long long requestedTTL; // @synthesize requestedTTL=_requestedTTL;
 @property (nonatomic) BOOL shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
+@property (nonatomic) BOOL shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;
 @property (strong, nonatomic) NSDictionary *signaturesOfAssetsByRecordIDAndKey; // @synthesize signaturesOfAssetsByRecordIDAndKey=_signaturesOfAssetsByRecordIDAndKey;
 @property (nonatomic) BOOL useCachedEtags; // @synthesize useCachedEtags=_useCachedEtags;
 @property (strong, nonatomic) NSDictionary *webSharingIdentityDataByRecordID; // @synthesize webSharingIdentityDataByRecordID=_webSharingIdentityDataByRecordID;
@@ -64,11 +71,12 @@ __attribute__((visibility("hidden")))
 - (void)_didDownloadAssetsWithError:(id)arg1;
 - (void)_downloadAssets;
 - (void)_fetchRecords;
+- (void)_findCurrentUserParticipantOnShare:(id)arg1 identityDelegate:(id)arg2;
 - (void)_finishAllDownloadTasksWithError:(id)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleRecordFetch:(id)arg1 recordID:(id)arg2 etagMatched:(BOOL)arg3 responseCode:(id)arg4;
 - (BOOL)_prepareAsset:(id)arg1 record:(id)arg2 recordKey:(id)arg3 signature:(id)arg4;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
 - (id)errorForRecordID:(id)arg1;
 - (void)finishWithError:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;

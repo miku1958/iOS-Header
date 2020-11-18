@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSMutableArray, NSTimer, WorldClockPreferences;
+@class NSArray, NSDate, NSMutableArray, WorldClockPreferences;
 
 @interface WorldClockManager : NSObject
 {
     BOOL _dirty;
     NSMutableArray *_cities;
-    NSTimer *_weatherUpdateTimer;
     WorldClockPreferences *_defaults;
     NSDate *lastModified;
 }
@@ -38,9 +37,6 @@
 - (void)removeCity:(id)arg1;
 - (void)removeCityAtIndex:(unsigned long long)arg1;
 - (void)saveCities;
-- (void)updateWeatherDataForCities:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)updateWeatherDataWithCompletion:(CDUnknownBlockType)arg1;
-- (id)weatherReachabilityURL;
 - (id)worldClockCityFromPersistenceArray:(id)arg1;
 - (id)worldClockCityFromPersistenceDictionary:(id)arg1;
 - (id)worldClockCityFromPersistenceRepresentation:(id)arg1;

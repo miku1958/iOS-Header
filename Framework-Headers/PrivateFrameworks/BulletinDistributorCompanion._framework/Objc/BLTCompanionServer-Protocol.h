@@ -11,8 +11,8 @@
 @protocol BLTCompanionServer <NSObject>
 - (void)handleAction:(BLTActionInfo *)arg1;
 - (void)handleDidPlayLightsAndSirens:(BOOL)arg1 forBulletin:(NSString *)arg2 inPhoneSection:(NSString *)arg3 transmissionDate:(NSDate *)arg4 receptionDate:(NSDate *)arg5;
-- (void)handlePairedDeviceIdentifier:(NSString *)arg1 carry:(BOOL)arg2;
 - (void)removeBulletinWithPublisherBulletinID:(NSString *)arg1 recordID:(NSString *)arg2 sectionID:(NSString *)arg3;
 - (BOOL)shouldSuppressLightsAndSirensNow;
+- (void)willSendLightsAndSirensWithPublisherBulletinID:(NSString *)arg1 recordID:(NSString *)arg2 inPhoneSection:(NSString *)arg3 completion:(void (^)(BOOL))arg4;
 @end
 

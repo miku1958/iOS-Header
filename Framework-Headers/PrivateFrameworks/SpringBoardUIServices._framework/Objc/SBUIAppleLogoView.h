@@ -12,13 +12,19 @@
 {
     UIView *_layerView;
     PUIProgressWindow *_progressWindow;
+    float _progress;
 }
+
+@property (nonatomic) float progress; // @synthesize progress=_progress;
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 appearance:(long long)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 appearance:(long long)arg2 progressBarVisible:(BOOL)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 inverted:(BOOL)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 inverted:(BOOL)arg2 progressBarVisible:(BOOL)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 progressBarVisible:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 useWhiteLogo:(BOOL)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 useWhiteLogo:(BOOL)arg2 progressBarVisible:(BOOL)arg3;
 - (void)layoutSubviews;
 
 @end

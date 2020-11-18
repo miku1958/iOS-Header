@@ -6,7 +6,7 @@
 
 #import <UIKit/NSObject-Protocol.h>
 
-@class NSURL, QLPreviewController, UIImage;
+@class NSURL, QLPreviewController, UIImage, UIView;
 @protocol QLPreviewItem;
 
 @protocol QLPreviewControllerDelegate <NSObject>
@@ -15,6 +15,7 @@
 - (struct CGRect)previewController:(QLPreviewController *)arg1 frameForPreviewItem:(id<QLPreviewItem>)arg2 inSourceView:(id *)arg3;
 - (BOOL)previewController:(QLPreviewController *)arg1 shouldOpenURL:(NSURL *)arg2 forPreviewItem:(id<QLPreviewItem>)arg3;
 - (UIImage *)previewController:(QLPreviewController *)arg1 transitionImageForPreviewItem:(id<QLPreviewItem>)arg2 contentRect:(struct CGRect *)arg3;
+- (UIView *)previewController:(QLPreviewController *)arg1 transitionViewForPreviewItem:(id<QLPreviewItem>)arg2;
 - (void)previewControllerDidDismiss:(QLPreviewController *)arg1;
 - (void)previewControllerWillDismiss:(QLPreviewController *)arg1;
 @end

@@ -12,7 +12,7 @@
 
 @interface SFUGZipFileOutputStream : NSObject <SFUOutputStream>
 {
-    void *_file;
+    struct gzFile_s *_file;
     long long _offset;
     NSString *_path;
 }

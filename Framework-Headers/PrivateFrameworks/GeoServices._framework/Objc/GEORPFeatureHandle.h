@@ -10,7 +10,7 @@
 
 @interface GEORPFeatureHandle : PBCodable <NSCopying>
 {
-    CDStruct_1ef3fb1f *_styleAttributes;
+    struct GEORPFeatureHandleStyleAttribute *_styleAttributes;
     unsigned long long _styleAttributesCount;
     unsigned long long _styleAttributesSpace;
     unsigned int _featureIndex;
@@ -44,11 +44,13 @@
 @property (nonatomic) BOOL hasType;
 @property (nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) int style; // @synthesize style=_style;
-@property (readonly, nonatomic) CDStruct_1ef3fb1f *styleAttributes;
+@property (readonly, nonatomic) struct GEORPFeatureHandleStyleAttribute *styleAttributes;
 @property (readonly, nonatomic) unsigned long long styleAttributesCount;
 @property (nonatomic) int type; // @synthesize type=_type;
 
-- (void)addStyleAttribute:(CDStruct_1ef3fb1f)arg1;
+- (int)StringAsStyle:(id)arg1;
+- (int)StringAsType:(id)arg1;
+- (void)addStyleAttribute:(struct GEORPFeatureHandleStyleAttribute)arg1;
 - (void)clearStyleAttributes;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -59,8 +61,10 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (void)setStyleAttributes:(CDStruct_1ef3fb1f *)arg1 count:(unsigned long long)arg2;
-- (CDStruct_1ef3fb1f)styleAttributeAtIndex:(unsigned long long)arg1;
+- (void)setStyleAttributes:(struct GEORPFeatureHandleStyleAttribute *)arg1 count:(unsigned long long)arg2;
+- (id)styleAsString:(int)arg1;
+- (struct GEORPFeatureHandleStyleAttribute)styleAttributeAtIndex:(unsigned long long)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

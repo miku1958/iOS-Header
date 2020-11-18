@@ -6,16 +6,18 @@
 
 #import <TSReading/TSDContainerRep.h>
 
+#import <TSReading/CAAnimationDelegate-Protocol.h>
 #import <TSReading/TSDDecorator-Protocol.h>
+#import <TSReading/TSDTilingLayerDelegate-Protocol.h>
 #import <TSReading/TSKHighlightArrayControllerProtocol-Protocol.h>
 #import <TSReading/TSKPulseAnimationControllerProtocol-Protocol.h>
 #import <TSReading/TSWPHyperlinkHostRepProtocol-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSArray, NSString, TSKHighlightArrayController, TSKPulseAnimationController, TSWPEditingController, TSWPLayout, TSWPSearchReference, TSWPSelection, TSWPStorage, TSWPStorageSpellChecker;
+@class CALayer, CAShapeLayer, NSArray, NSString, TSDTilingLayer, TSKHighlightArrayController, TSKPulseAnimationController, TSWPEditingController, TSWPLayout, TSWPSearchReference, TSWPSelection, TSWPStorage, TSWPStorageSpellChecker;
 
-@interface TSWPRep : TSDContainerRep <TSKHighlightArrayControllerProtocol, TSKPulseAnimationControllerProtocol, TSWPHyperlinkHostRepProtocol, TSDDecorator>
+@interface TSWPRep : TSDContainerRep <TSDTilingLayerDelegate, CAAnimationDelegate, TSKHighlightArrayControllerProtocol, TSKPulseAnimationControllerProtocol, TSWPHyperlinkHostRepProtocol, TSDDecorator>
 {
-    CALayer *_textLayers[2];
+    TSDTilingLayer *_textLayers[2];
     CALayer *_caretLayer;
     CAShapeLayer *_selectionLineLayers[2];
     CAShapeLayer *_selectionHighlightLayer;
@@ -52,6 +54,7 @@
     CALayer *_dragAndDropCaretLayer;
     TSWPSelection *_dropSelection;
     BOOL _findIsShowing;
+    BOOL _shouldHideSelectionControls;
     TSWPSearchReference *_activeSearchReference;
     NSArray *_searchReferences;
 }
@@ -67,6 +70,7 @@
 @property (readonly, nonatomic) TSWPLayout *layout; // @dynamic layout;
 @property (strong, nonatomic) NSArray *searchReferences; // @synthesize searchReferences=_searchReferences;
 @property (readonly, nonatomic) TSWPSelection *selection;
+@property (nonatomic) BOOL shouldHideSelectionControls; // @synthesize shouldHideSelectionControls=_shouldHideSelectionControls;
 @property (readonly, nonatomic) TSWPStorage *storage;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isSelectionHighlightSuppressed) BOOL suppressSelectionHighlight; // @synthesize suppressSelectionHighlight=_suppressSelectionHighlight;
@@ -272,6 +276,7 @@
 - (int)tilingMode;
 - (void)updateFromLayout;
 - (void)updatePositionsOfKnobs:(id)arg1;
+- (BOOL)useDynamicTiling;
 - (void)verticalTextPropertyChanged;
 - (void)viewDidAppear;
 - (void)viewScaleDidChange;

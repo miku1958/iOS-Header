@@ -16,6 +16,7 @@
 {
     NSDictionary *_URLsByIdentifier;
     NSDictionary *_environments;
+    NSDictionary *_configurations;
     NSDate *_lastFetchedDate;
     AKURLSession *_URLSession;
     NSObject<OS_dispatch_queue> *_bagFetchQueue;
@@ -28,16 +29,21 @@
 @property (readonly, nonatomic) NSURL *basicAuthURL;
 @property (readonly, nonatomic) NSURL *changePasswordURL;
 @property (readonly, nonatomic) NSURL *checkInURL;
+@property (readonly, nonatomic) NSURL *circleURL;
 @property (readonly, nonatomic) NSURL *configurationInfoURL;
 @property (readonly, nonatomic) NSURL *createAppleIDURL;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSURL *endProvisioningURL;
+@property (readonly, nonatomic) NSURL *escapeHatchURL;
+@property (readonly, nonatomic) NSURL *fetchEmailsURL;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSURL *iForgotContinuationURL;
 @property (readonly, nonatomic) NSURL *iForgotURL;
 @property (readonly, nonatomic) NSURL *notificationAckURL;
+@property (readonly, nonatomic) NSURL *renewRecoveryTokenURL;
 @property (readonly, nonatomic) NSURL *startProvisioningURL;
+@property (readonly, nonatomic) NSURL *stingrayDisableURL;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSURL *syncAnisetteURL;
 @property (readonly, nonatomic) NSURL *tokenUpgradeURL;
@@ -45,7 +51,9 @@
 @property (readonly, nonatomic) NSURL *upgradeEligibilityCheckURL;
 @property (readonly, nonatomic) NSURL *upgradeUIURL;
 @property (readonly, nonatomic) NSURL *validateCodeURL;
+@property (readonly, nonatomic) NSURL *validateVettingTokenURL;
 
++ (id)_newBagURLRequest;
 + (id)keyForEscapeHatchURL;
 + (BOOL)looksLikeiForgotURLKey:(id)arg1;
 + (id)sharedBag;
@@ -53,9 +61,11 @@
 - (void)_handleURLBagResponseWithData:(id)arg1 error:(id)arg2;
 - (void)_requestNewURLBagIfNecessary;
 - (id)_urlAtKey:(id)arg1;
-- (id)escapeHatchURL;
+- (id)configurationAtKey:(id)arg1;
 - (id)init;
 - (void)refresh;
+- (BOOL)requestNewURLBagIfNecessaryWithError:(id *)arg1;
+- (id)urlAtKey:(id)arg1;
 
 @end
 

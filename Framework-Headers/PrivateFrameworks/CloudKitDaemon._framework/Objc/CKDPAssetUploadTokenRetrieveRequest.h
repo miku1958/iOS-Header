@@ -26,7 +26,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKDPRecordType *type; // @synthesize type=_type;
 @property (strong, nonatomic) NSMutableArray *uploads; // @synthesize uploads=_uploads;
 
++ (Class)assetsType;
 + (id)options;
++ (Class)uploadsType;
 - (void).cxx_destruct;
 - (void)addAssets:(id)arg1;
 - (void)addUploads:(id)arg1;

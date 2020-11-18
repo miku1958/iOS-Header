@@ -6,16 +6,18 @@
 
 #import <iCalendar/ICSProperty.h>
 
-@class ICSDateValue, NSString;
+@class ICSAlternateTimeProposal, ICSDateValue, NSString;
 
 @interface ICSUserAddress : ICSProperty
 {
 }
 
+@property (nonatomic) ICSAlternateTimeProposal *alternateTimeProposal;
 @property (strong, nonatomic) NSString *cn;
 @property (nonatomic) int cutype;
 @property (strong, nonatomic) NSString *dir;
 @property (strong, nonatomic) NSString *email;
+@property (strong, nonatomic) NSString *likenessDataString;
 @property (nonatomic) int partstat;
 @property (strong, nonatomic) ICSDateValue *partstatModified;
 @property (nonatomic) int role;
@@ -23,6 +25,7 @@
 @property (nonatomic) int scheduleagent;
 @property (nonatomic) int scheduleforcesend;
 @property (nonatomic) int schedulestatus;
+@property (strong, nonatomic) NSString *x_apple_inviterName;
 @property (nonatomic) BOOL x_apple_self_invited;
 
 + (id)ICSStringFromCalendarUser:(int)arg1;

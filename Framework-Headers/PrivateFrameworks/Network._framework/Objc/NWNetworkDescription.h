@@ -15,7 +15,6 @@
     NSSet *_dnsSearchDomainOptions;
     NSSet *_dnsServerAddressOptions;
     long long _roamingPreference;
-    long long _powerAttachedPreference;
     NSURL *_probeURL;
     long long _state;
 }
@@ -23,8 +22,7 @@
 @property (copy) NSSet *dnsSearchDomainOptions; // @synthesize dnsSearchDomainOptions=_dnsSearchDomainOptions;
 @property (copy) NSSet *dnsServerAddressOptions; // @synthesize dnsServerAddressOptions=_dnsServerAddressOptions;
 @property (copy) NSSet *interfaceTypeOptions; // @synthesize interfaceTypeOptions=_interfaceTypeOptions;
-@property long long powerAttachedPreference; // @synthesize powerAttachedPreference=_powerAttachedPreference;
-@property (readonly, copy) NSString *privateDescription;
+@property (readonly, nonatomic) NSString *privateDescription;
 @property (copy) NSURL *probeURL; // @synthesize probeURL=_probeURL;
 @property long long roamingPreference; // @synthesize roamingPreference=_roamingPreference;
 @property (copy) NSSet *ssidOptions; // @synthesize ssidOptions=_ssidOptions;
@@ -33,10 +31,8 @@
 + (long long)getNewStateFromPathMatch:(BOOL)arg1 oldState:(long long)arg2 probeExists:(BOOL)arg3;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)copyXPCDictionary;
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
-- (id)initWithXPCDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)matchesPath:(id)arg1;
 - (void)updateStateWithPath:(id)arg1;

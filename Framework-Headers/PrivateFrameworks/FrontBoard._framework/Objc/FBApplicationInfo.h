@@ -8,7 +8,7 @@
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 
-@class FBApplicationDefaults, FBMutableApplicationDefaults, NSArray, NSDictionary, NSNumber, NSObject, NSSet, NSString, NSURL;
+@class FBApplicationDefaults, FBMutableApplicationDefaults, FBProfileManager, NSArray, NSDictionary, NSNumber, NSObject, NSSet, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface FBApplicationInfo : FBBundleInfo <BSDescriptionProviding>
@@ -24,11 +24,8 @@
     NSDictionary *_entitlements;
     BOOL _provisioningProfileValidated;
     BOOL _isManaged;
-    BOOL _hasUniversalProvisioningProfile;
-    BOOL _hasFreeDeveloperProvisioningProfile;
     NSString *_sdkVersion;
     NSArray *_customMachServices;
-    NSArray *_provisioningProfiles;
     unsigned long long _type;
     NSArray *_requiredCapabilities;
     NSArray *_tags;
@@ -36,7 +33,6 @@
     BOOL _enabled;
     BOOL _newsstand;
     BOOL _restricted;
-    NSString *_applicationIdentifierEntitlement;
     BOOL _beta;
     FBMutableApplicationDefaults *_defaults;
     NSSet *_backgroundModes;
@@ -50,10 +46,10 @@
     NSString *_fallbackFolderName;
     BOOL _installing;
     BOOL _uninstalling;
+    FBProfileManager *_profileManager;
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
-@property (readonly, copy, nonatomic) NSString *applicationIdentifierEntitlement; // @synthesize applicationIdentifierEntitlement=_applicationIdentifierEntitlement;
 @property (readonly, nonatomic, getter=isBeta) BOOL beta; // @synthesize beta=_beta;
 @property (readonly, strong, nonatomic) NSURL *bundleContainerURL; // @synthesize bundleContainerURL=_bundleContainerURL;
 @property (readonly, strong, nonatomic) NSArray *customMachServices; // @synthesize customMachServices=_customMachServices;
@@ -71,13 +67,15 @@
 @property (readonly, strong, nonatomic) NSArray *externalAccessoryProtocols; // @synthesize externalAccessoryProtocols=_externalAccessoryProtocols;
 @property (readonly, strong, nonatomic) NSString *fallbackFolderName; // @synthesize fallbackFolderName=_fallbackFolderName;
 @property (readonly, strong, nonatomic) NSArray *folderNames; // @synthesize folderNames=_folderNames;
-@property (readonly, nonatomic, getter=hasFreeDeveloperProvisioningProfile) BOOL freeDeveloperProvisioningProfile; // @synthesize freeDeveloperProvisioningProfile=_hasFreeDeveloperProvisioningProfile;
+@property (readonly, nonatomic, getter=hasFreeDeveloperProvisioningProfile) BOOL freeDeveloperProvisioningProfile; // @dynamic freeDeveloperProvisioningProfile;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=_isInstalling, setter=_setInstalling:) BOOL installing; // @synthesize installing=_installing;
+@property (readonly, strong, nonatomic) NSNumber *itemID;
 @property (readonly, nonatomic) double lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property (readonly, nonatomic) float minimumBrightnessLevel; // @synthesize minimumBrightnessLevel=_minimumBrightnessLevel;
 @property (readonly, nonatomic, getter=isNewsstand) BOOL newsstand; // @synthesize newsstand=_newsstand;
 @property (readonly, copy, nonatomic) NSString *preferenceDomain; // @synthesize preferenceDomain=_preferenceDomain;
+@property (nonatomic, getter=_profileManager, setter=_setProfileManager:) FBProfileManager *profileManager; // @synthesize profileManager=_profileManager;
 @property (readonly, nonatomic, getter=isProvisioningProfileValidated) BOOL provisioningProfileValidated; // @synthesize provisioningProfileValidated=_provisioningProfileValidated;
 @property (readonly, strong, nonatomic) NSNumber *purchaserDSID;
 @property (readonly, nonatomic) long long ratingRank; // @synthesize ratingRank=_ratingRank;
@@ -93,27 +91,22 @@
 @property (readonly, strong, nonatomic) NSArray *tags; // @synthesize tags=_tags;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (nonatomic, getter=_isUninstalling, setter=_setUninstalling:) BOOL uninstalling; // @synthesize uninstalling=_uninstalling;
-@property (readonly, nonatomic, getter=hasUniversalProvisioningProfile) BOOL universalProvisioningProfile; // @synthesize universalProvisioningProfile=_hasUniversalProvisioningProfile;
+@property (readonly, nonatomic, getter=hasUniversalProvisioningProfile) BOOL universalProvisioningProfile; // @dynamic universalProvisioningProfile;
 
-+ (id)_ratingQueue;
-- (void)_acceptApplicationSignatureIdentity;
+- (id)_applicationTrustData;
 - (unsigned long long)_applicationType:(id)arg1;
 - (void)_buildDefaultsFromInfoPlist:(id)arg1;
 - (void)_cacheFolderNamesForSystemApp:(id)arg1;
-- (void)_computeRatingRank;
 - (unsigned long long)_computeSupportedInterfaceOrientations:(id)arg1;
 - (id)_configureEnvironment:(id)arg1;
 - (id)_copyiTunesMetadata;
-- (id)_expirationDateForProvisioningProfile;
 - (id)_initWithApplicationProxy:(id)arg1;
 - (double)_lastModifiedDateForPath:(id)arg1;
 - (id)_localizedGenreFromDictionary:(id)arg1;
 - (id)_localizedGenreNameForID:(long long)arg1;
+- (long long)_mapSignatureStateFromTrustState:(unsigned long long)arg1;
 - (void)_parse:(id)arg1 fromBundle:(id)arg2;
 - (id)_preferenceDomain;
-- (BOOL)_signatureNeedsExplicitUserTrust;
-- (void)_updateWithManagedApplicationStatus:(BOOL)arg1;
-- (void)_updateWithProvisioningProfiles:(id)arg1;
 - (void)acceptApplicationSignatureIdentity;
 - (BOOL)builtOnOrAfterSDKVersion:(id)arg1;
 - (void)dealloc;

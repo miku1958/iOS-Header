@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
     LSObserverTimer *didUninstallTimer;
     NSObject<OS_dispatch_queue> *_installControlsQueue;
     NSObject<OS_dispatch_queue> *_observersQueue;
-    NSObject<OS_dispatch_queue> *_databaseQueue;
     BOOL _usingNetwork;
 }
 
@@ -36,13 +35,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)beginListening;
 - (void)addObserver:(id)arg1 withUUID:(id)arg2;
 - (void)beginObservingConnection;
 - (void)createInstallProgressForApplication:(id)arg1 withPhase:(unsigned long long)arg2 andPublishingString:(id)arg3;
 - (void)dealloc;
 - (void)endObservingConnection;
 - (void)handleCancelInstallationForApp:(id)arg1;
-- (id)initWithQueue:(id)arg1;
+- (id)init;
 - (void)installationEndedForApplication:(id)arg1;
 - (void)installationFailedForApplication:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
@@ -57,10 +57,10 @@ __attribute__((visibility("hidden")))
 - (void)sendFailedNotificationForApp:(id)arg1 isUninstall:(BOOL)arg2;
 - (void)sendIconUpdatedNotificationForApp:(id)arg1;
 - (void)sendInstalledNotificationForApp:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)sendInstalledNotificationForApps:(id)arg1;
+- (void)sendInstalledNotificationForApps:(id)arg1 Plugins:(id)arg2;
 - (void)sendNetworkUsageChangedNotification;
 - (void)sendUninstalledNotificationForApp:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)sendUninstalledNotificationForApps:(id)arg1;
+- (void)sendUninstalledNotificationForApps:(id)arg1 Plugins:(id)arg2;
 - (void)sendWillUninstallNotificationForApps:(id)arg1 Plugins:(id)arg2 isUpdate:(BOOL)arg3;
 
 @end

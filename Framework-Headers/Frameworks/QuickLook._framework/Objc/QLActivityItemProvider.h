@@ -4,35 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <QuickLook/UIActivityItemSource-Protocol.h>
 
-@class NSString, QLPrintPageRenderer;
-@protocol QLPreviewItem;
+@class NSString, QLItem, QLPreviewPrinter;
 
 __attribute__((visibility("hidden")))
 @interface QLActivityItemProvider : NSObject <UIActivityItemSource>
 {
-    id<QLPreviewItem> _activityPreviewItem;
-    QLPrintPageRenderer *_printPageRenderer;
+    QLPreviewPrinter *_printer;
+    QLItem *_activityPreviewItem;
 }
 
+@property (strong) QLItem *activityPreviewItem; // @synthesize activityPreviewItem=_activityPreviewItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong) QLPreviewPrinter *printer; // @synthesize printer=_printer;
 @property (readonly) Class superclass;
 
-- (BOOL)_canPrint;
+- (void).cxx_destruct;
 - (id)_pdfPreviewDataAtURL:(id)arg1;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 subjectForActivityType:(id)arg2;
 - (id)activityViewControllerPlaceholderItem:(id)arg1;
 - (id)activityViewControllerPlaceholderItems:(id)arg1;
-- (void)dealloc;
+- (id)itemURL;
 - (id)printInfo;
-- (void)setPreviewItem:(id)arg1;
-- (void)setPrintPageRenderer:(id)arg1;
 
 @end
 

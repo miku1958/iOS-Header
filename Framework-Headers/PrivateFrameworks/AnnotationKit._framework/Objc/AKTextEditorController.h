@@ -14,12 +14,15 @@
 
 @interface AKTextEditorController : NSObject <NSTextStorageDelegate, UITextViewDelegate>
 {
+    BOOL _isInEndEditing;
+    BOOL _isInAdjustAnnotationFrameToFitText;
     UITextView *_textView;
     AKAnnotation<AKTextAnnotationProtocol> *_annotation;
     AKController *_controller;
     AKPageController *_pageController;
     NSTextStorage *_textStorage;
     double _renderingTextStorageScaleFactor;
+    double _handleCompensatingScaleFactor;
     NSUndoManager *_textViewUndoManager;
     struct CGPoint _startingContentInset;
 }
@@ -28,8 +31,11 @@
 @property (weak) AKController *controller; // @synthesize controller=_controller;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property double handleCompensatingScaleFactor; // @synthesize handleCompensatingScaleFactor=_handleCompensatingScaleFactor;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isEditing;
+@property BOOL isInAdjustAnnotationFrameToFitText; // @synthesize isInAdjustAnnotationFrameToFitText=_isInAdjustAnnotationFrameToFitText;
+@property BOOL isInEndEditing; // @synthesize isInEndEditing=_isInEndEditing;
 @property (weak) AKPageController *pageController; // @synthesize pageController=_pageController;
 @property double renderingTextStorageScaleFactor; // @synthesize renderingTextStorageScaleFactor=_renderingTextStorageScaleFactor;
 @property struct CGPoint startingContentInset; // @synthesize startingContentInset=_startingContentInset;
@@ -48,6 +54,7 @@
 - (void)_endEditing;
 - (void)_keyboardDidShow:(id)arg1;
 - (void)_keyboardWillHide:(id)arg1;
+- (id)_newScaledPaths:(id)arg1 withScaleFactor:(double)arg2 aboutCenter:(struct CGPoint)arg3;
 - (void)_performBlockOnMainThread:(CDUnknownBlockType)arg1;
 - (void)_registerForKeyboardNotifications;
 - (void)_returnScrollViewAfterShownKeyboard;

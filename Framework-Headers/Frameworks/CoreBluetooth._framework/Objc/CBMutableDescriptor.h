@@ -15,7 +15,7 @@
 
 @property (strong) NSNumber *ID; // @synthesize ID=_ID;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithCharacteristic:(id)arg1 dictionary:(id)arg2;
 - (id)initWithType:(id)arg1 value:(id)arg2;

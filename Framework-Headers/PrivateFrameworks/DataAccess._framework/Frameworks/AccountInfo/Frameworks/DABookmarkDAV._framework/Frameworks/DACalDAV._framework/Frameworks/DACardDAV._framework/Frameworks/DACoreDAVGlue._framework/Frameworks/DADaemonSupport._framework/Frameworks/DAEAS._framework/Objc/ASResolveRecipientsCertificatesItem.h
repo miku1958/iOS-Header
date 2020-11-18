@@ -18,7 +18,7 @@
 
 @property (strong, nonatomic) NSNumber *certCount; // @synthesize certCount=_certCount;
 @property (readonly, nonatomic) NSArray *certificates;
-@property (strong, nonatomic) NSNumber *easStatus; // @synthesize easStatus=_easStatus;
+@property (strong, nonatomic, setter=setEASStatus:) NSNumber *easStatus; // @synthesize easStatus=_easStatus;
 @property (strong, nonatomic) NSMutableArray *mCertificates; // @synthesize mCertificates=_mCertificates;
 @property (strong, nonatomic) NSNumber *recipientCount; // @synthesize recipientCount=_recipientCount;
 
@@ -31,7 +31,6 @@
 - (void).cxx_destruct;
 - (void)addCertificateString:(id)arg1;
 - (id)description;
-- (void)setEASStatus:(id)arg1;
 
 @end
 

@@ -7,15 +7,17 @@
 #import <CoreHAP/HAPAccessoryServerBTLE.h>
 
 #import <CoreHAP/CBPeripheralDelegate-Protocol.h>
+#import <CoreHAP/HAPSecuritySessionDelegate-Protocol.h>
 
-@class CBCharacteristic, CBService, NSData, NSMapTable, NSMutableArray, NSMutableData, NSObject, NSString;
+@class CBCharacteristic, CBService, HAPSecuritySession, NSMapTable, NSMutableArray, NSObject, NSString;
 @protocol OS_dispatch_source;
 
-@interface _HAPAccessoryServerBTLE100 : HAPAccessoryServerBTLE <CBPeripheralDelegate>
+@interface _HAPAccessoryServerBTLE100 : HAPAccessoryServerBTLE <HAPSecuritySessionDelegate, CBPeripheralDelegate>
 {
     struct PairingSessionPrivate *_pairingSession;
     BOOL _startPairingRequested;
     BOOL _pairingFeaturesRead;
+    BOOL _securitySessionOpening;
     BOOL _disconnecting;
     BOOL _unpairedIdentifyRequested;
     BOOL _removeOnDisconnect;
@@ -45,11 +47,9 @@
     NSString *_controllerUsername;
     CDUnknownBlockType _pairVerifyCompletionBlock;
     unsigned long long _pairingFeatureFlags;
-    NSData *_sessionReadKey;
-    NSMutableData *_readNonce;
-    NSData *_sessionWriteKey;
-    NSMutableData *_writeNonce;
+    HAPSecuritySession *_securitySession;
     NSObject<OS_dispatch_source> *_connectionLifetimeTimer;
+    double _idleConnectionTimeoutInSec;
     CDUnknownBlockType _unpairedIdentifyCompletionBlock;
 }
 
@@ -71,6 +71,7 @@
 @property (strong, nonatomic) NSMapTable *hapCharacteristicWriteCompletionQueues; // @synthesize hapCharacteristicWriteCompletionQueues=_hapCharacteristicWriteCompletionQueues;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CBCharacteristic *identifyCharacteristic; // @synthesize identifyCharacteristic=_identifyCharacteristic;
+@property (nonatomic) double idleConnectionTimeoutInSec; // @synthesize idleConnectionTimeoutInSec=_idleConnectionTimeoutInSec;
 @property (strong, nonatomic) CBCharacteristic *manufacturerCharacteristic; // @synthesize manufacturerCharacteristic=_manufacturerCharacteristic;
 @property (nonatomic) unsigned long long metadataDiscoveryRequestCount; // @synthesize metadataDiscoveryRequestCount=_metadataDiscoveryRequestCount;
 @property (nonatomic) unsigned long long metadataValueReadCount; // @synthesize metadataValueReadCount=_metadataValueReadCount;
@@ -83,17 +84,15 @@
 @property (nonatomic) BOOL pairingFeaturesRead; // @synthesize pairingFeaturesRead=_pairingFeaturesRead;
 @property (strong, nonatomic) CBService *pairingService; // @synthesize pairingService=_pairingService;
 @property (strong, nonatomic) CBCharacteristic *pairingsCharacteristic; // @synthesize pairingsCharacteristic=_pairingsCharacteristic;
-@property (strong, nonatomic) NSMutableData *readNonce; // @synthesize readNonce=_readNonce;
 @property (nonatomic) BOOL removeOnDisconnect; // @synthesize removeOnDisconnect=_removeOnDisconnect;
+@property (strong, nonatomic) HAPSecuritySession *securitySession; // @synthesize securitySession=_securitySession;
+@property (nonatomic, getter=isSecuritySessionOpening) BOOL securitySessionOpening; // @synthesize securitySessionOpening=_securitySessionOpening;
 @property (strong, nonatomic) CBCharacteristic *serialNumberCharacteristic; // @synthesize serialNumberCharacteristic=_serialNumberCharacteristic;
-@property (strong, nonatomic) NSData *sessionReadKey; // @synthesize sessionReadKey=_sessionReadKey;
-@property (strong, nonatomic) NSData *sessionWriteKey; // @synthesize sessionWriteKey=_sessionWriteKey;
 @property (nonatomic) BOOL startPairingRequested; // @synthesize startPairingRequested=_startPairingRequested;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType unpairedIdentifyCompletionBlock; // @synthesize unpairedIdentifyCompletionBlock=_unpairedIdentifyCompletionBlock;
 @property (nonatomic) BOOL unpairedIdentifyRequested; // @synthesize unpairedIdentifyRequested=_unpairedIdentifyRequested;
-@property (strong, nonatomic) NSMutableData *writeNonce; // @synthesize writeNonce=_writeNonce;
 
 + (id)_convertFromBTLEToHAPUUID:(id)arg1;
 + (id)deserializeCharacteristicReadData:(id)arg1 characteristicFormat:(unsigned long long)arg2 supportsAdditonalAuthentication:(BOOL)arg3 error:(id *)arg4;
@@ -129,15 +128,14 @@
 - (void)_handleHAPServiceDiscoveryCompletionForService:(id)arg1 withInstanceId:(id)arg2;
 - (void)_handleHAPWriteConfirmationForCharacteristic:(id)arg1 error:(id)arg2;
 - (int)_handlePairSetupExchangeWithData:(id)arg1;
-- (int)_handlePairVerifyExchangeWithData:(id)arg1;
 - (void)_handlePairingStateMachine;
 - (void)_handlePairingsReadForCharacteristic:(id)arg1 readError:(id)arg2 removing:(BOOL)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_handlePairingsWriteForCharacteristic:(id)arg1 writeError:(id)arg2 removing:(BOOL)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_handleReadDescriptorValues;
+- (void)_handleReceivedSecuritySessionSetupExchangeData:(id)arg1;
 - (void)_handleSuccessfulBTLEConnection;
 - (void)_handleUpdatedValueForBTLECharacteristic:(id)arg1 error:(id)arg2;
 - (id)_hapCharacteristicForBTLECharacteristic:(id)arg1;
-- (BOOL)_isSessionEstablished;
 - (id)_nextInstanceID;
 - (void)_notifyDelegateOfReceivedEncryptedAuthenticatedData:(id)arg1 forCharacteristic:(id)arg2;
 - (void)_notifyDelegateOfReceivedPlaintextData:(id)arg1 forCharacteristic:(id)arg2;
@@ -147,11 +145,11 @@
 - (int)_pairSetupStart;
 - (int)_pairSetupTryPassword:(id)arg1;
 - (id)_pairVerifyHAPCharacteristic;
-- (int)_pairVerifyStart;
 - (BOOL)_parseBTLECharacteristicDescriptor:(id)arg1 existingDescriptors:(id)arg2 characteristics:(id)arg3;
 - (id)_parseBTLEService:(id)arg1 withInstanceId:(id)arg2;
 - (void)_readCharacteristicValues:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_readValueForCharacteristic:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2 queue:(id)arg3;
+- (void)_reallyEstablishSecureSession;
 - (void)_removePairingWithIdentifier:(id)arg1 publicKey:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_resetState;
 - (void)_setupBTLEConnectionToPeripheral;
@@ -164,11 +162,12 @@
 - (void)dealloc;
 - (void)discoverAccessories;
 - (void)enableEvents:(BOOL)arg1 forCharacteristics:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3 queue:(id)arg4;
+- (id)getLocalPairingIdentityAndAllowCreation:(BOOL)arg1 error:(id *)arg2;
 - (void)handleConnectionWithError:(id)arg1;
 - (void)handleDisconnectionWithError:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)hapBLEProtocolVersion;
 - (void)identifyWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 category:(id)arg6 browser:(id)arg7 keyStore:(id)arg8;
+- (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 category:(id)arg6 connectionIdleTime:(unsigned char)arg7 browser:(id)arg8 keyStore:(id)arg9;
 - (void)listPairingsWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)peripheral:(id)arg1 didDiscoverCharacteristicsForService:(id)arg2 error:(id)arg3;
 - (void)peripheral:(id)arg1 didDiscoverDescriptorsForCharacteristic:(id)arg2 error:(id)arg3;
@@ -182,9 +181,16 @@
 - (void)readValueForCharacteristic:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)removePairingForCurrentControllerOnQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)removePairingWithIdentifier:(id)arg1 publicKey:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)securitySession:(id)arg1 didCloseWithError:(id)arg2;
+- (id)securitySession:(id)arg1 didReceiveLocalPairingIdentityRequestWithError:(id *)arg2;
+- (id)securitySession:(id)arg1 didReceiveRequestForPeerPairingIdentityWithIdentifier:(id)arg2 error:(id *)arg3;
+- (void)securitySession:(id)arg1 didReceiveSetupExchangeData:(id)arg2;
+- (void)securitySessionDidOpen:(id)arg1;
+- (void)securitySessionIsOpening:(id)arg1;
 - (void)startPairing;
 - (BOOL)stopPairingWithError:(id *)arg1;
 - (BOOL)tryPairingPassword:(id)arg1 error:(id *)arg2;
+- (void)updateConnectionIdleTime:(unsigned char)arg1;
 - (void)writeCharacteristicValues:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)writeValue:(id)arg1 forCharacteristic:(id)arg2 authorizationData:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 

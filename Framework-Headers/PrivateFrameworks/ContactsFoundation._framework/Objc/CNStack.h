@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray;
 
@@ -19,6 +19,8 @@
 - (void)dealloc;
 - (id)init;
 - (id)pop;
+- (void)popAllWithHandler:(CDUnknownBlockType)arg1;
+- (void)popWithHandler:(CDUnknownBlockType)arg1;
 - (void)push:(id)arg1;
 
 @end

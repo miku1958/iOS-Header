@@ -14,19 +14,15 @@
 {
     NSXPCConnection *_connection;
     CDUnknownBlockType _completionHandler;
-    CDUnknownBlockType _dictionaryCompletionHandler;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
-@property (copy, nonatomic) CDUnknownBlockType dictionaryCompletionHandler; // @synthesize dictionaryCompletionHandler=_dictionaryCompletionHandler;
 
 + (id)sharedController;
 - (void).cxx_destruct;
 - (void)chooseUserWithIdentifier:(id)arg1 inClassWithID:(id)arg2 password:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
-- (void)fetchClassRosterWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)lastLoginForAppleID:(id)arg1;
 - (void)loginAppleID:(id)arg1 password:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (id)proxy;
 - (id)recentUsers;

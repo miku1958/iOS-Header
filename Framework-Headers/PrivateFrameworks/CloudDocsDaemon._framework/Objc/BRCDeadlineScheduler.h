@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <CloudDocsDaemon/BRCLifeCycle-Protocol.h>
+#import <CloudDocsDaemon/BRCSuspendable-Protocol.h>
 
 @class BRCMinHeap, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface BRCDeadlineScheduler : NSObject <BRCLifeCycle>
+@interface BRCDeadlineScheduler : NSObject <BRCLifeCycle, BRCSuspendable>
 {
     NSObject<OS_dispatch_queue> *_queue;
     BRCMinHeap *_minHeap;
@@ -31,12 +32,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL isCancelled; // @synthesize isCancelled=_isCancelled;
+@property (readonly, nonatomic) BOOL isCancelled; // @synthesize isCancelled=_isCancelled;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_addToken:(id)arg1 deadline:(long long)arg2;
+- (void)_addSource:(id)arg1 deadline:(long long)arg2;
 - (void)_close;
 - (BOOL)_isSleepingRequiredForDeadline:(long long)arg1 now:(long long)arg2;
 - (void)_schedule;
@@ -44,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)close;
 - (void)dealloc;
 - (id)initWithName:(id)arg1;
+- (id)initWithName:(id)arg1 targetQueue:(id)arg2;
 - (void)resume;
 - (void)signal;
 - (void)suspend;

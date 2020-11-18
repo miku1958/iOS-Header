@@ -24,10 +24,12 @@
 + (id)accountProxyWithAccount:(id)arg1;
 - (void).cxx_destruct;
 - (id)accountName;
+- (BOOL)canBeSharedViaICloud;
 - (long long)compare:(id)arg1;
 - (id)initWithAccount:(id)arg1;
 - (BOOL)isDeleted;
 - (BOOL)isLeaf;
+- (id)noteContainerAccount;
 - (BOOL)noteIsVisible:(id)arg1;
 - (id)noteVisibilityTestingForSearchingAccount;
 - (id)predicateForSearchableAttachments;

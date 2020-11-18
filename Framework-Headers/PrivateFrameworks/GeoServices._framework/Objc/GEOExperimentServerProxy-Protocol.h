@@ -6,14 +6,16 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOABExperimentResponse, NSString;
+@class GEOABAssignmentResponse, NSDictionary, NSString;
 @protocol GEOExperimentServerProxyDelegate;
 
 @protocol GEOExperimentServerProxy <NSObject>
 
-@property (nonatomic) id<GEOExperimentServerProxyDelegate> delegate;
-@property (readonly, nonatomic) GEOABExperimentResponse *experimentsInfo;
+@property (weak, nonatomic) id<GEOExperimentServerProxyDelegate> delegate;
+@property (readonly, nonatomic) GEOABAssignmentResponse *experimentsInfo;
 
+- (void)_debug_fetchAllAvailableExperiments:(void (^)(GEOABAssignmentResponse *, NSError *))arg1;
+- (void)_debug_setActiveExperimentBranchDictionaryRepresentation:(NSDictionary *)arg1;
 - (void)_debug_setQuerySubstring:(NSString *)arg1 forExperimentType:(long long)arg2 dispatcherRequestType:(int)arg3;
 - (void)forceUpdate;
 - (id)initWithDelegate:(id<GEOExperimentServerProxyDelegate>)arg1;

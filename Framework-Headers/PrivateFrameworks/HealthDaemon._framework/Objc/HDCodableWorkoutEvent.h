@@ -12,16 +12,20 @@
 {
     double _date;
     long long _type;
+    long long _wStepStyle;
     struct {
         unsigned int date:1;
         unsigned int type:1;
+        unsigned int wStepStyle:1;
     } _has;
 }
 
 @property (nonatomic) double date; // @synthesize date=_date;
 @property (nonatomic) BOOL hasDate;
 @property (nonatomic) BOOL hasType;
+@property (nonatomic) BOOL hasWStepStyle;
 @property (nonatomic) long long type; // @synthesize type=_type;
+@property (nonatomic) long long wStepStyle; // @synthesize wStepStyle=_wStepStyle;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

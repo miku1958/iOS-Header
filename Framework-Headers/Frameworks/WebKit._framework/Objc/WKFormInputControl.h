@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<id<WKFormControl>> _control;
 }
 
-+ (id)createPeripheralWithView:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)assistantView;

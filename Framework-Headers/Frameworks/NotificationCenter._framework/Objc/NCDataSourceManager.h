@@ -8,13 +8,12 @@
 
 #import <NotificationCenter/_NCParentDataSourceManager-Protocol.h>
 
-@class NCSnippetDataSourceManager, NCWidgetDataSourceManager, NSMutableDictionary, NSString;
+@class NCWidgetDataSourceManager, NSMutableDictionary, NSString;
 
 @interface NCDataSourceManager : NSObject <_NCParentDataSourceManager>
 {
-    NSMutableDictionary *_identifiersToSnippetChangeHandlers;
+    BOOL _didBegin;
     NSMutableDictionary *_identifiersToWidgetChangeHandlers;
-    NCSnippetDataSourceManager *_snippetDataSourceManager;
     NCWidgetDataSourceManager *_widgetDataSourceManager;
 }
 
@@ -25,13 +24,13 @@
 
 + (id)__sharedInstance;
 + (void)requestSharedDataSourceManager:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 - (void)_begin:(CDUnknownBlockType)arg1;
 - (void)_start:(CDUnknownBlockType)arg1;
 - (void)_stop:(CDUnknownBlockType)arg1;
-- (void)addSnippetDataSourceChangeHandler:(CDUnknownBlockType)arg1 forIdentifier:(id)arg2;
 - (void)addWidgetDataSourceChangeHandler:(CDUnknownBlockType)arg1 forIdentifier:(id)arg2;
+- (void)availableWidgetsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)childDataSourceManagerDataSourcesDidChange:(id)arg1;
-- (void)dealloc;
 - (void)removeChangeHandlersWithIdentifier:(id)arg1;
 
 @end

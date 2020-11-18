@@ -18,9 +18,11 @@ __attribute__((visibility("hidden")))
     NSURL *_publicShareServiceURL;
     NSURL *_publicDeviceServiceURL;
     NSString *_containerScopedUserID;
+    long long _environment;
 }
 
 @property (copy, nonatomic) NSString *containerScopedUserID; // @synthesize containerScopedUserID=_containerScopedUserID;
+@property (nonatomic) long long environment; // @synthesize environment=_environment;
 @property (copy, nonatomic) NSURL *publicCloudDBURL; // @synthesize publicCloudDBURL=_publicCloudDBURL;
 @property (copy, nonatomic) NSURL *publicDeviceServiceURL; // @synthesize publicDeviceServiceURL=_publicDeviceServiceURL;
 @property (copy, nonatomic) NSURL *publicShareServiceURL; // @synthesize publicShareServiceURL=_publicShareServiceURL;
@@ -32,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

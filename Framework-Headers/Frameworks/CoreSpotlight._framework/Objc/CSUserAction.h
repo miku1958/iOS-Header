@@ -9,7 +9,7 @@
 #import <CoreSpotlight/CSCoderEncoder-Protocol.h>
 #import <CoreSpotlight/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSSet, NSString;
+@class NSDictionary, NSSet, NSString, NSUUID;
 
 @interface CSUserAction : NSObject <CSCoderEncoder, NSSecureCoding>
 {
@@ -18,12 +18,14 @@
     NSDictionary *_userInfo;
     NSSet *_keywords;
     unsigned long long _eligibility;
+    NSUUID *_uaIdentifier;
 }
 
 @property (copy) NSString *contentAction; // @synthesize contentAction=_contentAction;
 @property unsigned long long eligibility; // @synthesize eligibility=_eligibility;
 @property (copy) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property (strong) NSSet *keywords; // @synthesize keywords=_keywords;
+@property (strong, nonatomic) NSUUID *uaIdentifier; // @synthesize uaIdentifier=_uaIdentifier;
 @property (strong) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
 + (id)actionFromUserActivity:(id)arg1 searchableItem:(id)arg2;

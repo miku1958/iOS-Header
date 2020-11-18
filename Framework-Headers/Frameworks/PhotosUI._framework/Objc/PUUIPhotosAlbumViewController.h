@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_handleImagePickerCancel:(id)arg1;
 - (void)_handleImagePickerMultipleSelectionDone:(id)arg1;
+- (BOOL)allowsPeeking;
 - (BOOL)canBeginStackCollapseTransition;
 - (BOOL)canNavigateToPhotoInteractively:(BOOL)arg1;
 - (id)filterPredicateForAlbum:(struct NSObject *)arg1;
@@ -35,8 +36,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithSpec:(id)arg1;
 - (void)loadView;
 - (BOOL)pu_wantsNavigationBarVisible;
-- (void)setAlbum:(id)arg1 existingFetchResults:(id)arg2;
+- (void)setAlbum:(id)arg1 existingFetchResult:(id)arg2;
 - (BOOL)shouldShowMenu;
+- (BOOL)shouldShowSectionHeaders;
 - (void)viewDidLoad;
 
 @end

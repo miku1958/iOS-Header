@@ -8,6 +8,13 @@
 
 @interface ISPlayerSettings : ISSettings
 {
+    BOOL _playIsSticky;
+    BOOL _playDuringHint;
+    BOOL _showStateOverlay;
+    BOOL _useASTCCompression;
+    BOOL _predrawCrossfadeFrames;
+    BOOL _allowHintBeforeReadyToPlay;
+    BOOL _prerollBeforePlaying;
     BOOL _useDedicatedQueues;
     BOOL _allowFrameBlending;
     BOOL _allowVideoPreRoll;
@@ -16,13 +23,13 @@
     BOOL _shouldPauseOnSettle;
     BOOL _variableIntro;
     BOOL _assumeCroppedVideo;
+    long long _maxCrossfadeItemLoadAttempts;
     double _forceTouchTimeoutInterval;
     double _forceTouchTimeoutMinimumProgress;
     double _forceScrubMinimumPressure;
     double _forceScrubMaximumPressure;
     double _forceScrubRewindFactor;
     double _forceScrubMinRateChange;
-    double _forceScrubSettleRateAddition;
     double _forceScrubMinimumRate;
     double _forceScrubMaximumInteractiveRate;
     double _audioRampDuration;
@@ -34,6 +41,7 @@
 
 @property (nonatomic) BOOL allowCrossfadeContent; // @synthesize allowCrossfadeContent=_allowCrossfadeContent;
 @property (nonatomic) BOOL allowFrameBlending; // @synthesize allowFrameBlending=_allowFrameBlending;
+@property (nonatomic) BOOL allowHintBeforeReadyToPlay; // @synthesize allowHintBeforeReadyToPlay=_allowHintBeforeReadyToPlay;
 @property (nonatomic) BOOL allowPlayerReuse; // @synthesize allowPlayerReuse=_allowPlayerReuse;
 @property (nonatomic) BOOL allowVideoPreRoll; // @synthesize allowVideoPreRoll=_allowVideoPreRoll;
 @property (nonatomic) BOOL assumeCroppedVideo; // @synthesize assumeCroppedVideo=_assumeCroppedVideo;
@@ -46,12 +54,18 @@
 @property (nonatomic) double forceScrubMinimumPressure; // @synthesize forceScrubMinimumPressure=_forceScrubMinimumPressure;
 @property (nonatomic) double forceScrubMinimumRate; // @synthesize forceScrubMinimumRate=_forceScrubMinimumRate;
 @property (nonatomic) double forceScrubRewindFactor; // @synthesize forceScrubRewindFactor=_forceScrubRewindFactor;
-@property (nonatomic) double forceScrubSettleRateAddition; // @synthesize forceScrubSettleRateAddition=_forceScrubSettleRateAddition;
 @property (nonatomic) double forceTouchTimeoutInterval; // @synthesize forceTouchTimeoutInterval=_forceTouchTimeoutInterval;
 @property (nonatomic) double forceTouchTimeoutMinimumProgress; // @synthesize forceTouchTimeoutMinimumProgress=_forceTouchTimeoutMinimumProgress;
+@property (nonatomic) long long maxCrossfadeItemLoadAttempts; // @synthesize maxCrossfadeItemLoadAttempts=_maxCrossfadeItemLoadAttempts;
 @property (nonatomic) double maxPreCrossfadeDuration; // @synthesize maxPreCrossfadeDuration=_maxPreCrossfadeDuration;
 @property (nonatomic) double nonForcePreCrossfadeDuration; // @synthesize nonForcePreCrossfadeDuration=_nonForcePreCrossfadeDuration;
+@property (nonatomic) BOOL playDuringHint; // @synthesize playDuringHint=_playDuringHint;
+@property (nonatomic) BOOL playIsSticky; // @synthesize playIsSticky=_playIsSticky;
+@property (nonatomic) BOOL predrawCrossfadeFrames; // @synthesize predrawCrossfadeFrames=_predrawCrossfadeFrames;
+@property (nonatomic) BOOL prerollBeforePlaying; // @synthesize prerollBeforePlaying=_prerollBeforePlaying;
 @property (nonatomic) BOOL shouldPauseOnSettle; // @synthesize shouldPauseOnSettle=_shouldPauseOnSettle;
+@property (nonatomic) BOOL showStateOverlay; // @synthesize showStateOverlay=_showStateOverlay;
+@property (nonatomic) BOOL useASTCCompression; // @synthesize useASTCCompression=_useASTCCompression;
 @property (nonatomic) BOOL useDedicatedQueues; // @synthesize useDedicatedQueues=_useDedicatedQueues;
 @property (nonatomic) BOOL variableIntro; // @synthesize variableIntro=_variableIntro;
 

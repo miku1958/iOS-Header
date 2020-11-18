@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)diagnosticsProviderForVisualSection:(long long)arg1;
 - (void)didFinishZoomLevelTransition;
 - (id)displayTitle;
+- (void)getPhotosDataSource:(id *)arg1 displayTitleInfo:(id *)arg2 forDetailsForVisualSection:(long long)arg3;
 - (void)headerView:(id)arg1 actionButtonPressed:(id)arg2;
 - (id)newCollectionViewLayout;
 - (void)prepareForTransitionFromZoomLevelInfo:(id)arg1 animated:(BOOL)arg2 interactive:(BOOL)arg3;

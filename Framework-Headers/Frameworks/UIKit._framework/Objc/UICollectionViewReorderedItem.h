@@ -14,10 +14,16 @@ __attribute__((visibility("hidden")))
     UICollectionViewCell *_cell;
     NSIndexPath *_originalIndexPath;
     NSIndexPath *_targetIndexPath;
+    BOOL _pinned;
+    CDUnknownBlockType _pinningTest;
+    struct CGPoint _pinnedPreviousContentOffset;
 }
 
 @property (readonly, nonatomic) UICollectionViewCell *cell; // @synthesize cell=_cell;
 @property (strong, nonatomic) NSIndexPath *originalIndexPath; // @synthesize originalIndexPath=_originalIndexPath;
+@property (nonatomic) BOOL pinned; // @synthesize pinned=_pinned;
+@property (nonatomic) struct CGPoint pinnedPreviousContentOffset; // @synthesize pinnedPreviousContentOffset=_pinnedPreviousContentOffset;
+@property (copy, nonatomic) CDUnknownBlockType pinningTest; // @synthesize pinningTest=_pinningTest;
 @property (strong, nonatomic) NSIndexPath *targetIndexPath; // @synthesize targetIndexPath=_targetIndexPath;
 
 - (void).cxx_destruct;

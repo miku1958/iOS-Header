@@ -26,7 +26,7 @@
 @property (readonly, nonatomic) UIView *_backgroundView; // @synthesize _backgroundView=__backgroundView;
 @property (readonly, nonatomic) UIImageView *_badgeImageView; // @synthesize _badgeImageView=__badgeImageView;
 @property (strong, nonatomic, setter=_setButton:) UIButton *_button; // @synthesize _button=__button;
-@property (readonly, nonatomic) UIImageView *_photoIrisBadgeImageView;
+@property (readonly, nonatomic) UIImageView *_photoIrisBadgeImageView; // @synthesize _photoIrisBadgeImageView=__photoIrisBadgeImageView;
 @property (readonly, nonatomic) UILabel *_textLabel; // @synthesize _textLabel=__textLabel;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic, setter=setIrisBadgeHidden:) BOOL isIrisBadgeHidden; // @synthesize isIrisBadgeHidden=_isIrisBadgeHidden;
@@ -35,13 +35,11 @@
 @property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
 @property (nonatomic) long long style; // @synthesize style=_style;
 
-- (void)_addButton;
 - (void)_commonPLPhotoTileBadgeViewInitialization:(long long)arg1;
-- (void)_createPhotoIrisBadgeViewIfNeeded;
-- (void)_toggleOption:(id)arg1;
 - (void)_updateBadgeImage;
 - (void)_updateBadgeText;
 - (void)_updatePhotoIrisBadgeAppearanceAnimated:(BOOL)arg1;
+- (void)_updateSubviewsForStyle;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

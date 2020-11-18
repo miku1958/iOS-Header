@@ -15,11 +15,12 @@
     id<NCBannerAccessoryHostViewControllerDelegate> _delegate;
 }
 
-@property (nonatomic) id<NCBannerAccessoryHostViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<NCBannerAccessoryHostViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 
 + (id)exportedInterface;
 + (void)requestBannerAccessoryViewControllerWithName:(id)arg1 bundleIdentifier:(id)arg2 context:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (id)serviceViewControllerInterface;
+- (void).cxx_destruct;
 - (void)_becomeSticky;
 - (void)_dismiss;
 - (void)_setSticky:(BOOL)arg1;

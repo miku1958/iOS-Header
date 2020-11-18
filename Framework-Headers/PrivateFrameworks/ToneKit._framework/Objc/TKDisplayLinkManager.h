@@ -4,46 +4,41 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class CADisplayLink, NSMutableSet;
+@class CADisplayLink, NSMutableDictionary;
 
 @interface TKDisplayLinkManager : NSObject
 {
-    BOOL _hasUpdatedTargetActions;
-    BOOL _handlingDisplayRefresh;
-    CADisplayLink *_storedDisplayLink;
-    NSMutableSet *_activeTargetActions;
-    NSMutableSet *_updatedTargetActions;
+    CADisplayLink *_displayLink;
+    NSMutableDictionary *_activeObservers;
+    NSMutableDictionary *_updatedObservers;
+    BOOL _hasUpdatedObservers;
+    BOOL _isHandlingDisplayRefresh;
     unsigned long long _warmUpModeRequirementsCount;
 }
 
-@property (strong, nonatomic, setter=_setActiveTargetActions:) NSMutableSet *_activeTargetActions; // @synthesize _activeTargetActions;
-@property (strong, nonatomic, setter=_setDisplayLink:) CADisplayLink *_displayLink;
-@property (nonatomic, getter=_isHandlingDisplayRefresh, setter=_setHandlingDisplayRefresh:) BOOL _handlingDisplayRefresh; // @synthesize _handlingDisplayRefresh;
-@property (nonatomic, setter=_setHasUpdatedTargetActions:) BOOL _hasUpdatedTargetActions; // @synthesize _hasUpdatedTargetActions;
-@property (strong, nonatomic, setter=_setStoredDisplayLink:) CADisplayLink *_storedDisplayLink; // @synthesize _storedDisplayLink;
-@property (strong, nonatomic, setter=_setUpdatedTargetActions:) NSMutableSet *_updatedTargetActions; // @synthesize _updatedTargetActions;
-@property (readonly, nonatomic, getter=_isWarmUpModeEnabled) BOOL _warmUpModeEnabled;
-@property (nonatomic, setter=_setWarmUpModeRequirementsCount:) unsigned long long _warmUpModeRequirementsCount; // @synthesize _warmUpModeRequirementsCount;
 @property (readonly, nonatomic) double duration;
-@property (readonly, nonatomic) unsigned long long frameInterval;
 @property (readonly, nonatomic, getter=isPaused) BOOL paused;
 @property (readonly, nonatomic) double timestamp;
 
 + (void)_releaseCurrentDisplayLinkManager;
 + (id)currentDisplayLinkManager;
-- (void)_didAddFirstTargetAction;
-- (void)_didRemoveLastTargetAction;
+- (void).cxx_destruct;
+- (void)_didAddFirstObserver;
+- (void)_didRemoveLastObserver;
 - (void)_displayDidRefresh:(id)arg1;
-- (id)_prepareUpdatedTargetActionsForModification;
-- (void)addTarget:(id)arg1 selector:(SEL)arg2;
-- (void)addTarget:(id)arg1 selector:(SEL)arg2 frameInterval:(unsigned long long)arg3;
+- (id)_displayLink;
+- (BOOL)_isWarmUpModeEnabled;
+- (id)_prepareUpdatedObserversForModification;
+- (void)_setDisplayLink:(id)arg1;
+- (id)addObserverForFrameInterval:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)addObserverWithHandler:(CDUnknownBlockType)arg1;
 - (void)beginRequiringWarmUpMode;
 - (void)dealloc;
 - (void)endRequiringWarmUpMode;
 - (id)init;
-- (void)removeTarget:(id)arg1 selector:(SEL)arg2;
+- (void)removeObserverWithToken:(id)arg1;
 
 @end
 

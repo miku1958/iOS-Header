@@ -17,7 +17,6 @@
     long long _highlightKey;
     id<TPDialerKeypadDelegate> _delegate;
     BOOL _playsSounds;
-    BOOL _supportsHardPause;
     double _topHeight;
     double _midHeight;
     double _bottomHeight;
@@ -35,7 +34,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property BOOL supportsHardPause; // @synthesize supportsHardPause=_supportsHardPause;
 
 + (void)_delayedDeactivate;
 + (BOOL)launchFieldTestIfNeeded:(id)arg1;
@@ -76,7 +74,6 @@
 - (void)performTapActionEndForHighlightedKey;
 - (BOOL)pointMostlyInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)removeFromSuperview;
-- (id)scriptingInfoWithChildren;
 - (void)setButton:(id)arg1 forKeyAtIndex:(unsigned long long)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)setHighlighted:(BOOL)arg1;

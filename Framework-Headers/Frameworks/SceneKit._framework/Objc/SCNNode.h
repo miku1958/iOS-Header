@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
@@ -33,11 +33,13 @@
     unsigned int _transformUpToDate:1;
     unsigned int _hasPivot:1;
     unsigned int _usesEuler:1;
+    unsigned int _movability:1;
     unsigned int _hidden:1;
     unsigned int _castsShadow:1;
     unsigned int _ignoreAnimationWhenCopying_tmp:1;
     unsigned int _hasComponentBitmask:10;
     struct SCNMatrix4 _transform;
+    unsigned int _authoringEnvironmentNode:1;
     struct SCNVector3 _position;
     struct SCNVector4 _rotation;
     struct SCNVector3 _scale;
@@ -70,6 +72,7 @@
 @property (nonatomic, getter=isHidden) BOOL hidden;
 @property (strong, nonatomic) SCNLight *light;
 @property (strong, nonatomic) SCNMorpher *morpher;
+@property (nonatomic) long long movabilityHint;
 @property (copy, nonatomic) NSString *name;
 @property (nonatomic) double opacity;
 @property (nonatomic) struct SCNVector4 orientation;
@@ -99,16 +102,17 @@
 + (id)nodeWithGeometry:(id)arg1;
 + (id)nodeWithMDLAsset:(id)arg1;
 + (id)nodeWithMDLObject:(id)arg1;
++ (id)nodeWithMDLObject:(id)arg1 masterObjects:(id)arg2;
 + (id)nodeWithNodeRef:(struct __C3DNode *)arg1;
 + (BOOL)resolveInstanceMethod:(SEL)arg1;
 + (BOOL)supportsSecureCoding;
-- (void *)__CFObject;
+- (const void *)__CFObject;
 - (id)__camera;
 - (id)__geometry;
 - (void)__insertObject:(id)arg1 inChildNodesAtIndex:(unsigned long long)arg2;
 - (id)__light;
 - (id)__morpher;
-- (void)__removeAnimation:(id)arg1 forKey:(id)arg2;
+- (BOOL)__removeAnimation:(id)arg1 forKey:(id)arg2;
 - (void)__removeObjectFromChildNodesAtIndex:(unsigned long long)arg1;
 - (id)__skinner;
 - (void)_actionsTimeJump:(double)arg1;
@@ -144,6 +148,7 @@
 - (void)_setPosition:(struct SCNVector3)arg1;
 - (void)_setQuaternion:(struct SCNVector4)arg1;
 - (void)_setScale:(struct SCNVector3)arg1;
+- (id)_subdividedCopyWithSubdivisionLevel:(long long)arg1;
 - (void)_syncEntityObjCModel;
 - (void)_syncObjCAnimations;
 - (void)_syncObjCModel;
@@ -161,6 +166,10 @@
 - (struct __C3DAnimationManager *)animationManager;
 - (id)attributeForKey:(id)arg1;
 - (id)audioPlayers;
+- (id)authoringEnvironmentCompanionNode;
+- (BOOL)authoringEnvironmentNode;
+- (id)authoringEnvironmentPresentationNode;
+- (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
 - (BOOL)canAddChildNode:(id)arg1;
 - (id)childNodeWithName:(id)arg1;
 - (id)childNodeWithName:(id)arg1 recursively:(BOOL)arg2;
@@ -184,6 +193,8 @@
 - (void)dump;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateChildNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateHierarchyUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)flattenedClone;
 - (id)flattenedCopy;
 - (id)getBoundingBox;
@@ -209,7 +220,6 @@
 - (BOOL)isPausedOrPausedByInheritance;
 - (BOOL)isPresentationInstance;
 - (id)jsChildNodesWithAttribute:(id)arg1;
-- (id)lightProbes;
 - (id)mutableChildNodes;
 - (struct __C3DNode *)nodeRef;
 - (id)objectInAudioPlayersAtIndex:(unsigned long long)arg1;
@@ -249,14 +259,18 @@
 - (id)scene;
 - (struct __C3DScene *)sceneRef;
 - (void)setAttribute:(id)arg1 forKey:(id)arg2;
+- (void)setAuthoringEnvironmentCompanionNode:(id)arg1;
+- (void)setAuthoringEnvironmentNode:(BOOL)arg1;
+- (void)setAuthoringEnvironmentPresentationNode:(id)arg1;
 - (void)setBoundingBoxMin:(struct SCNVector3 *)arg1 max:(struct SCNVector3 *)arg2;
 - (void)setGizmo:(BOOL)arg1;
 - (void)setIdentifier:(id)arg1;
-- (void)setLightProbes:(id)arg1;
 - (void)setQuaternion:(struct SCNVector4)arg1;
+- (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
 - (void)setValue:(id)arg1 forKeyPath:(id)arg2;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (void)setWorldTransform:(struct SCNMatrix4)arg1;
+- (void)unbindAnimatablePath:(id)arg1;
 - (id)valueForKeyPath:(id)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
 

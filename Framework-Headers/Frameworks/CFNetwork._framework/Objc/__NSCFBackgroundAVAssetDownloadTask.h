@@ -6,7 +6,7 @@
 
 #import <CFNetwork/__NSCFBackgroundSessionTask.h>
 
-@class AVURLAsset, NSArray, NSDictionary, NSURL;
+@class AVURLAsset, NSArray, NSData, NSDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface __NSCFBackgroundAVAssetDownloadTask : __NSCFBackgroundSessionTask
@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
     NSURL *_URL;
     NSURL *_destinationURL;
     NSURL *_temporaryDestinationURL;
+    NSString *_assetTitle;
+    NSData *_assetArtworkData;
     AVURLAsset *_URLAsset;
     NSDictionary *_options;
     NSArray *_loadedTimeRanges;
@@ -24,18 +26,21 @@ __attribute__((visibility("hidden")))
 @property unsigned long long AVAssetDownloadToken; // @synthesize AVAssetDownloadToken=_AVAssetDownloadToken;
 @property (copy) NSURL *URL; // @synthesize URL=_URL;
 @property (strong) AVURLAsset *URLAsset; // @synthesize URLAsset=_URLAsset;
+@property (copy) NSData *assetArtworkData; // @synthesize assetArtworkData=_assetArtworkData;
+@property (copy) NSString *assetTitle; // @synthesize assetTitle=_assetTitle;
 @property (copy) NSURL *destinationURL; // @synthesize destinationURL=_destinationURL;
 @property (copy) NSArray *loadedTimeRanges; // @synthesize loadedTimeRanges=_loadedTimeRanges;
 @property (copy) NSDictionary *options; // @synthesize options=_options;
 @property (copy) NSURL *temporaryDestinationURL; // @synthesize temporaryDestinationURL=_temporaryDestinationURL;
 
+- (void)_onqueue_didFinishDownloadingToURL:(id)arg1;
 - (void)_onqueue_didFinishWithError:(id)arg1;
 - (void)_onqueue_didLoadTimeRange:(id)arg1 totalTimeRangesLoaded:(id)arg2 timeRangeExpectedToLoad:(id)arg3;
 - (void)_onqueue_didReceiveProgressUpdateWithTotalBytesWritten:(long long)arg1 totalBytesExpectedToWrite:(long long)arg2;
 - (void)_onqueue_didResolveMediaSelectionPropertyList:(id)arg1;
 - (id)currentRequest;
 - (void)dealloc;
-- (id)initWithSession:(id)arg1 remoteSession:(id)arg2 URLAsset:(id)arg3 URL:(id)arg4 destinationURL:(id)arg5 temporaryDestinationURL:(id)arg6 ident:(unsigned long long)arg7;
+- (id)initWithSession:(id)arg1 remoteSession:(id)arg2 URLAsset:(id)arg3 URL:(id)arg4 destinationURL:(id)arg5 temporaryDestinationURL:(id)arg6 assetTitle:(id)arg7 assetArtworkData:(id)arg8 ident:(unsigned long long)arg9;
 - (id)initWithTaskInfo:(id)arg1 session:(id)arg2 remoteSession:(id)arg3 ident:(unsigned long long)arg4;
 - (BOOL)isKindOfClass:(Class)arg1;
 - (id)originalRequest;

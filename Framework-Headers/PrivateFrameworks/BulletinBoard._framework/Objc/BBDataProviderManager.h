@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/BBDataProviderStoreDelegate-Protocol.h>
 
@@ -27,6 +27,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_configureDataProvider:(id)arg1 performMigration:(BOOL)arg2;
 - (id)_configureSectionInfo:(id)arg1 forDataProvider:(id)arg2;
 - (id)_queue_dataProviderForUniversalSectionID:(id)arg1;

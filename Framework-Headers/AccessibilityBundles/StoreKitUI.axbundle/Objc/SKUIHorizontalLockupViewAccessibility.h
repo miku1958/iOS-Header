@@ -18,7 +18,7 @@
 - (id)_accessibilityFindToggleButton;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilitySupplementaryFooterViews;
-- (id)_accessibilitySupplementaryFooterViewsIncludePlayButton:(BOOL)arg1;
+- (id)_accessibilitySupplementaryFooterViewsIncludePlayButton:(BOOL)arg1 includeStyledImageButton:(BOOL)arg2;
 - (id)_accessibilitySupplementaryHeaderViews;
 - (id)_accessibilityUserTestingChildren;
 - (id)_axFindMediaPostedInConnectTab;
@@ -35,6 +35,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
+- (BOOL)isAdvertisementView:(id)arg1;
 
 @end
 

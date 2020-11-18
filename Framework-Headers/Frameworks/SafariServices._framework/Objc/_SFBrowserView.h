@@ -11,6 +11,7 @@
 @interface _SFBrowserView : UIView
 {
     BOOL _shouldUseScrollToTopView;
+    BOOL _hasReceivedTouchEvents;
     UIView *_contentContainerView;
     _SFBrowserToolbar *_toolbar;
     _SFNavigationBar *_navigationBar;
@@ -29,8 +30,10 @@
 @property (strong, nonatomic) _SFCrashBanner *crashBanner; // @synthesize crashBanner=_crashBanner;
 @property (nonatomic) double crashBannerOffset; // @synthesize crashBannerOffset=_crashBannerOffset;
 @property (readonly, weak, nonatomic) WKWebView *currentWebView; // @synthesize currentWebView=_currentWebView;
+@property (readonly, nonatomic) BOOL hasReceivedTouchEvents; // @synthesize hasReceivedTouchEvents=_hasReceivedTouchEvents;
 @property (strong, nonatomic) _SFNavigationBar *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property (nonatomic) unsigned long long navigationBarBehavior; // @synthesize navigationBarBehavior=_navigationBarBehavior;
+@property (readonly, nonatomic) double navigationBarOffset;
 @property (strong, nonatomic) _SFLinkPreviewHeader *previewHeader; // @synthesize previewHeader=_previewHeader;
 @property (readonly, nonatomic) UIView *scrollToTopView; // @synthesize scrollToTopView=_scrollToTopView;
 @property (nonatomic) BOOL shouldUseScrollToTopView; // @synthesize shouldUseScrollToTopView=_shouldUseScrollToTopView;
@@ -39,9 +42,12 @@
 
 - (void).cxx_destruct;
 - (void)addWebView:(id)arg1;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)updateNavigationBarTintColor:(id)arg1;
 - (void)updatePreviewHeader;
+- (void)updateToolbarTintColor:(id)arg1;
 
 @end
 

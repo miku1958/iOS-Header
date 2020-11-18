@@ -6,13 +6,10 @@
 
 #import <Foundation/NSFormatter.h>
 
-#import <Foundation/NSObservable-Protocol.h>
-#import <Foundation/NSObserver-Protocol.h>
-
 @class NSArray, NSCalendar, NSDate, NSLocale, NSMutableDictionary, NSObject, NSString, NSTimeZone;
 @protocol OS_dispatch_semaphore;
 
-@interface NSDateFormatter : NSFormatter <NSObservable, NSObserver>
+@interface NSDateFormatter : NSFormatter
 {
     NSMutableDictionary *_attributes;
     struct __CFDateFormatter *_formatter;
@@ -26,16 +23,13 @@
 @property (copy) NSCalendar *calendar;
 @property (copy) NSString *dateFormat;
 @property unsigned long long dateStyle;
-@property (readonly, copy) NSString *debugDescription;
 @property (copy) NSDate *defaultDate;
-@property (readonly, copy) NSString *description;
 @property BOOL doesRelativeDateFormatting;
 @property (copy) NSArray *eraSymbols;
 @property unsigned long long formatterBehavior;
 @property long long formattingContext;
 @property BOOL generatesCalendarDates;
 @property (copy) NSDate *gregorianStartDate;
-@property (readonly) unsigned long long hash;
 @property (getter=isLenient) BOOL lenient;
 @property (copy) NSLocale *locale;
 @property (copy) NSArray *longEraSymbols;
@@ -50,7 +44,6 @@
 @property (copy) NSArray *standaloneMonthSymbols;
 @property (copy) NSArray *standaloneQuarterSymbols;
 @property (copy) NSArray *standaloneWeekdaySymbols;
-@property (readonly) Class superclass;
 @property unsigned long long timeStyle;
 @property (copy) NSTimeZone *timeZone;
 @property (copy) NSDate *twoDigitStartDate;
@@ -89,12 +82,10 @@
 - (id)dateFromString:(id)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalize;
 - (BOOL)getObjectValue:(out id *)arg1 forString:(id)arg2 errorDescription:(out id *)arg3;
 - (BOOL)getObjectValue:(out id *)arg1 forString:(id)arg2 range:(inout struct _NSRange *)arg3 error:(out id *)arg4;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (void)receiveObservedValue:(id)arg1;
 - (void)setLocalizedDateFormatFromTemplate:(id)arg1;
 - (id)stringForObjectValue:(id)arg1;
 - (id)stringFromDate:(id)arg1;

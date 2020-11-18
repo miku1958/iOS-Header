@@ -16,9 +16,12 @@ __attribute__((visibility("hidden")))
     BOOL _autoCropEnabled;
     BOOL _simulateDownload;
     BOOL _simulateDownloadFailure;
+    BOOL _previewOriginalAllowsLongPress;
+    BOOL _previewOriginalTimesOut;
     double _cropSideMargins;
     double _cropWheelSize;
     double _cropRecomposeDelay;
+    double _previewOriginalDuration;
 }
 
 @property (nonatomic) BOOL allowAnyPlugin; // @synthesize allowAnyPlugin=_allowAnyPlugin;
@@ -27,6 +30,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double cropRecomposeDelay; // @synthesize cropRecomposeDelay=_cropRecomposeDelay;
 @property (nonatomic) double cropSideMargins; // @synthesize cropSideMargins=_cropSideMargins;
 @property (nonatomic) double cropWheelSize; // @synthesize cropWheelSize=_cropWheelSize;
+@property (nonatomic) BOOL previewOriginalAllowsLongPress; // @synthesize previewOriginalAllowsLongPress=_previewOriginalAllowsLongPress;
+@property (nonatomic) double previewOriginalDuration; // @synthesize previewOriginalDuration=_previewOriginalDuration;
+@property (nonatomic) BOOL previewOriginalTimesOut; // @synthesize previewOriginalTimesOut=_previewOriginalTimesOut;
 @property (nonatomic) BOOL showLevelIndicator; // @synthesize showLevelIndicator=_showLevelIndicator;
 @property (nonatomic) BOOL showResetToolButton; // @synthesize showResetToolButton=_showResetToolButton;
 @property (nonatomic) BOOL simulateDownload; // @synthesize simulateDownload=_simulateDownload;

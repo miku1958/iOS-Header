@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityOverridesInstructionsHint;
+- (BOOL)_accessibilitySupportsHandwriting;
 - (id)accessibilityHint;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;

@@ -28,9 +28,10 @@ __attribute__((visibility("hidden")))
     } _delegateFlags;
     BOOL _showsSlomoRegionEditor;
     double _videoDuration;
-    UIView *_scrubberView;
     PUVideoEditScrubberImageSource *_thumbnailSource;
     id<PUVideoEditScrubberControllerDelegate> _delegate;
+    double _edgeInset;
+    UIView *_scrubberView;
     UIMovieScrubber *__movieScrubber;
     PLSlalomRegionEditor *__slomoRegionEditor;
     struct CGSize _videoSize;
@@ -42,9 +43,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUVideoEditScrubberControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) double edgeInset; // @synthesize edgeInset=_edgeInset;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isEditing;
-@property (strong, nonatomic) UIView *scrubberView; // @synthesize scrubberView=_scrubberView;
+@property (strong, nonatomic, setter=_setScrubberView:) UIView *scrubberView; // @synthesize scrubberView=_scrubberView;
 @property (nonatomic) BOOL showsSlomoRegionEditor; // @synthesize showsSlomoRegionEditor=_showsSlomoRegionEditor;
 @property (nonatomic) double slomoEndTime;
 @property (nonatomic) double slomoMaxTime;
@@ -55,14 +57,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) PUVideoEditScrubberImageSource *thumbnailSource; // @synthesize thumbnailSource=_thumbnailSource;
 @property (nonatomic) double trimEndTime;
 @property (nonatomic) double trimStartTime;
-@property (nonatomic) double videoDuration; // @synthesize videoDuration=_videoDuration;
-@property (nonatomic) struct CGSize videoSize; // @synthesize videoSize=_videoSize;
+@property (nonatomic, setter=_setVideoDuration:) double videoDuration; // @synthesize videoDuration=_videoDuration;
+@property (nonatomic, setter=_setVideoSize:) struct CGSize videoSize; // @synthesize videoSize=_videoSize;
 
 - (void).cxx_destruct;
 - (void)_createView;
-- (void)_setScrubberView:(id)arg1;
-- (void)_setVideoDuration:(double)arg1;
-- (void)_setVideoSize:(struct CGSize)arg1;
 - (void)_updateSlomoRegionEditor;
 - (id)init;
 - (id)initWithVideoDuration:(double)arg1 andSize:(struct CGSize)arg2;

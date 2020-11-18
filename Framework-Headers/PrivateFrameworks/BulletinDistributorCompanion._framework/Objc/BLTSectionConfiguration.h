@@ -4,23 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <BulletinDistributorCompanion/BLTSectionConfigurationInternal.h>
 
-@class NSDictionary;
+#import <BulletinDistributorCompanion/BLTWatchKitAppListDelegate-Protocol.h>
 
-@interface BLTSectionConfiguration : NSObject
+@class BLTWatchKitAppList, NSCondition, NSString;
+@protocol BLTSectionConfigurationDelegate;
+
+@interface BLTSectionConfiguration : BLTSectionConfigurationInternal <BLTWatchKitAppListDelegate>
 {
-    NSDictionary *_configurations;
+    BLTWatchKitAppList *_watchKitAppList;
+    NSCondition *_watchKitAppListLoadedCondition;
+    BOOL _watchKitAppListLoaded;
+    id<BLTSectionConfigurationDelegate> _delegate;
 }
 
-+ (id)sharedSectionConfiguration;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<BLTSectionConfigurationDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 - (void).cxx_destruct;
-- (id)_loadConfigurations;
-- (BOOL)hasSectionIDOptedOutOfAttachmentCoordination:(id)arg1;
-- (BOOL)hasSectionIDOptedOutOfCoordination:(id)arg1;
-- (BOOL)hasSectionIDOptedOutOfCoordination:(id)arg1 subtype:(long long)arg2 considerSubtype:(BOOL)arg3;
-- (id)init;
+- (void)_waitForWatchKitAppListLoaded;
+- (id)initWithWatchKitAppList:(id)arg1;
 - (BOOL)shouldSectionIDSettingsAlwaysSync:(id)arg1;
+- (void)watchKitAppList:(id)arg1 added:(id)arg2 removed:(id)arg3;
 
 @end
 

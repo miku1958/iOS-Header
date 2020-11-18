@@ -10,51 +10,16 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct CLConnection;
-
-struct CLConnectionClient {
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field1;
-    id _field2;
-    id _field3;
-    id _field4;
-    struct CLConnection *_field5;
-    struct CLNameValuePair _field6;
-    struct CLNameValuePair _field7;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field8;
-    CDUnknownBlockType _field9;
-    CDUnknownBlockType _field10;
-    id _field11;
-    CDUnknownBlockType _field12;
-    CDUnknownBlockType _field13;
+struct CLAssertionInternal {
+    id _field1;
+    struct CLConnectionClient *_field2;
 };
 
-struct CLNameValuePair {
-    CDUnknownFunctionPointerType *_field1;
-    struct __CFDictionary *_field2;
-};
+struct CLConnectionClient;
 
-struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
-    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
-        struct __rep {
-            union {
-                struct __long {
-                    unsigned long long _field1;
-                    unsigned long long _field2;
-                    char *_field3;
-                } _field1;
-                struct __short {
-                    union {
-                        unsigned char _field1;
-                        char _field2;
-                    } _field1;
-                    char _field2[23];
-                } _field2;
-                struct __raw {
-                    unsigned long long _field1[3];
-                } _field3;
-            } _field1;
-        } _field1;
-    } _field1;
+struct CLLocationCoordinate2D {
+    double latitude;
+    double longitude;
 };
 
 struct ostream;

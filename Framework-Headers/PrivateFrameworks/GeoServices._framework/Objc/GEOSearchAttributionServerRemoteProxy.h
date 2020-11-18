@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (id)_attributionManifest;
+- (void)_loadAttributionInfoForIdentifier:(id)arg1 version:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)init;
 - (void)loadAttributionInfoForIdentifier:(id)arg1 version:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4;

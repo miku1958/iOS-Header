@@ -4,10 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString;
-
 @protocol CHLoggerProtocol
-- (void)logWithLevel:(unsigned int)arg1 withFormat:(NSString *)arg2;
-- (BOOL)shouldLogForLevel:(unsigned int)arg1;
+- (struct os_log_s *)logHandle;
 @end
 

@@ -26,11 +26,13 @@
     NSString *_interfaceName;
     NWAddressEndpoint *_startAddress;
     NWAddressEndpoint *_endAddress;
+    NSString *_customEntitlement;
 }
 
 @property (copy) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property (copy) NSUUID *applicationUUID; // @synthesize applicationUUID=_applicationUUID;
 @property long long conditionType; // @synthesize conditionType=_conditionType;
+@property (strong) NSString *customEntitlement; // @synthesize customEntitlement=_customEntitlement;
 @property (copy) NSString *domain; // @synthesize domain=_domain;
 @property (strong) NWAddressEndpoint *endAddress; // @synthesize endAddress=_endAddress;
 @property (copy) NSString *interfaceName; // @synthesize interfaceName=_interfaceName;
@@ -45,6 +47,7 @@
 
 + (id)accountIdentifier:(id)arg1;
 + (id)allInterfaces;
++ (id)customEntitlement:(id)arg1;
 + (id)domain:(id)arg1;
 + (id)effectiveApplication:(id)arg1;
 + (id)effectivePID:(int)arg1;

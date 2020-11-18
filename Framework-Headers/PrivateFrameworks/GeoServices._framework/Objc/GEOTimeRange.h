@@ -32,7 +32,7 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
-- (id)initWithPlaceDataTimeRange:(CDStruct_43c37391 *)arg1;
+- (id)initWithPlaceDataTimeRange:(struct GEOPDLocalTimeRange *)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

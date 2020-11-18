@@ -10,9 +10,20 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct AudioBuffer {
+    unsigned int _field1;
+    unsigned int _field2;
+    void *_field3;
+};
+
+struct AudioBufferList {
+    unsigned int _field1;
+    struct AudioBuffer _field2[1];
+};
+
 struct CGPoint {
-    double _field1;
-    double _field2;
+    double x;
+    double y;
 };
 
 struct CGRect {

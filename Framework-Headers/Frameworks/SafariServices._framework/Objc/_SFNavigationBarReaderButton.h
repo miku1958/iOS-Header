@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setGlyphTintColor:(id)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1;
 

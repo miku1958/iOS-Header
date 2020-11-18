@@ -6,22 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSInvocation, NSUUID;
+#import <coreroutine/NSCopying-Protocol.h>
+
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface RTInvocationRecord : NSObject
+@interface RTInvocationRecord : NSObject <NSCopying>
 {
-    NSUUID *_identifier;
-    NSInvocation *_invocation;
+    CDUnknownBlockType _block;
     CDUnknownBlockType _failureBlock;
+    NSString *_invocationDescription;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
 @property (copy, nonatomic) CDUnknownBlockType failureBlock; // @synthesize failureBlock=_failureBlock;
-@property (strong, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) NSInvocation *invocation; // @synthesize invocation=_invocation;
+@property (copy, nonatomic) NSString *invocationDescription; // @synthesize invocationDescription=_invocationDescription;
 
 - (void).cxx_destruct;
-- (id)initWithInvocation:(id)arg1 failureBlock:(CDUnknownBlockType)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithBlock:(CDUnknownBlockType)arg1 failureBlock:(CDUnknownBlockType)arg2 description:(id)arg3;
+- (void)invoke;
+- (void)invokeFailure;
 
 @end
 

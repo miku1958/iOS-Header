@@ -14,6 +14,7 @@
 {
     NSXPCConnection *_connection;
     BOOL _hasConfiguredRemoteAccountStore;
+    BOOL _xpcConnectionHasBeenInvalidated;
     BOOL _notificationsEnabled;
     NSString *_spoofedBundleID;
 }
@@ -22,7 +23,9 @@
 @property (copy, nonatomic) NSString *spoofedBundleID; // @synthesize spoofedBundleID=_spoofedBundleID;
 
 - (void).cxx_destruct;
+- (void)_configureConnection;
 - (void)_configureRemoteAccountStoreIfNecessary;
+- (id)_connection;
 - (void)connect;
 - (void)disconnect;
 - (id)initWithXPCConnection:(id)arg1;

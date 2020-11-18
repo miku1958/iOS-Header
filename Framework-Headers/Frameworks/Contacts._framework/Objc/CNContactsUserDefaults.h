@@ -21,8 +21,10 @@
 
 + (void)flushSharedInstance;
 + (id)sharedDefaults;
-+ (Class)userDefaultsClass;
+- (id)filteredGroupAndContainerIDs;
+- (id)init;
 - (long long)newContactDisplayNameOrder;
+- (void)setFilteredGroupAndContainerIDs:(id)arg1;
 
 @end
 

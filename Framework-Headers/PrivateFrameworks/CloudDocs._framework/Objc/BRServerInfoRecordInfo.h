@@ -42,9 +42,9 @@
 @property (strong, nonatomic) NSString *zoneName; // @synthesize zoneName=_zoneName;
 @property (strong, nonatomic) NSData *zoneProtectionInfo; // @synthesize zoneProtectionInfo=_zoneProtectionInfo;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

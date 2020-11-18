@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <coreroutine/RTEvent.h>
+#import <coreroutine/RTEventDevice.h>
 
-#import <coreroutine/NSSecureCoding-Protocol.h>
-
-@interface RTEventDeviceFirstWakeup : RTEvent <NSSecureCoding>
+@interface RTEventDeviceFirstWakeup : RTEventDevice
 {
     long long _wakeupState;
 }
@@ -16,10 +14,9 @@
 @property (readonly, nonatomic) long long wakeupState; // @synthesize wakeupState=_wakeupState;
 
 + (BOOL)supportsSecureCoding;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDeviceWakeupState:(long long)arg1 source:(long long)arg2 startDate:(id)arg3 endDate:(id)arg4 locationIdentifier:(id)arg5;
+- (id)initWithDeviceWakeupState:(long long)arg1 source:(long long)arg2 startDate:(id)arg3 endDate:(id)arg4;
 
 @end
 

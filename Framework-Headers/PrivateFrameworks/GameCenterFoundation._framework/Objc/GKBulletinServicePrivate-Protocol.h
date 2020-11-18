@@ -12,6 +12,7 @@
 - (oneway void)clearBulletinsForReceivedChallenges:(NSArray *)arg1;
 - (oneway void)clearBulletinsForTurnBasedTurn:(NSString *)arg1 exchangeID:(NSString *)arg2;
 - (oneway void)fetchBadgeCountsForBundleID:(NSString *)arg1 handler:(void (^)(NSDictionary *, NSError *))arg2;
+- (oneway void)fetchMessageImageForBundleID:(NSString *)arg1 handler:(void (^)(NSData *))arg2;
 - (oneway void)markAllBadgesAsViewedForType:(unsigned long long)arg1;
 @end
 

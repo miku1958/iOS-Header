@@ -6,14 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVAudioSessionMediaPlayerOnly, AVOutputContext, AVPixelBufferAttributeMediator, AVPlayerItem, AVPropertyStorage, AVWeakReference, NSArray, NSDictionary, NSError, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
-@protocol AVCallbackCancellation, OS_dispatch_queue;
+@class AVAudioSession, AVAudioSessionMediaPlayerOnly, AVOutputContext, AVPixelBufferAttributeMediator, AVPlayerItem, AVPropertyStorage, AVWeakReference, NSArray, NSDictionary, NSError, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+@protocol AVCallbackCancellation><AVKVOIntrospection, OS_dispatch_queue;
 
 @interface AVPlayerInternal : NSObject
 {
     AVWeakReference *weakReference;
-    id<AVCallbackCancellation> currentItemSuppressesVideoLayersCallbackInvoker;
-    id<AVCallbackCancellation> currentItemPreferredPixelBufferAttributesCallbackInvoker;
     AVPropertyStorage *propertyStorage;
     AVPixelBufferAttributeMediator *pixelBufferAttributeMediator;
     NSObject<OS_dispatch_queue> *stateDispatchQueue;
@@ -24,14 +22,18 @@
     struct OpaqueCMTimebase *proxyTimebase;
     BOOL logPerformanceData;
     AVAudioSessionMediaPlayerOnly *audioSessionMediaPlayerOnly;
+    void *IAPDCallbackToken;
     struct OpaqueFigSimpleMutex *prerollIDMutex;
+    NSObject<OS_dispatch_queue> *configurationQueue;
     AVPlayerItem *currentItem;
     AVPlayerItem *lastItem;
     NSMutableSet *items;
     NSArray *queueModifications;
     BOOL iapdExtendedModeIsActive;
     NSMutableDictionary *pendingFigPlayerProperties;
+    AVAudioSession *audioSession;
     AVOutputContext *outputContext;
+    BOOL IOwnTheFigPlayer;
     struct __CFDictionary *videoLayers;
     NSMutableArray *subtitleLayers;
     NSMutableArray *closedCaptionLayers;
@@ -39,6 +41,8 @@
     int nextPrerollIDToGenerate;
     int pendingPrerollID;
     CDUnknownBlockType prerollCompletionHandler;
+    id<AVCallbackCancellation><AVKVOIntrospection> currentItemSuppressesVideoLayersCallbackInvoker;
+    id<AVCallbackCancellation><AVKVOIntrospection> currentItemPreferredPixelBufferAttributesCallbackInvoker;
     struct OpaqueFigPlayer *figPlayer;
     long long status;
     NSError *error;
@@ -56,10 +60,12 @@
     BOOL autoSwitchStreamVariants;
     BOOL preparesItemsForPlaybackAsynchronously;
     BOOL allowsOutOfBandTextTrackRendering;
-    struct CGSize cachedDisplaySize;
     BOOL shouldReduceResourceUsage;
     NSString *multichannelAudioStrategy;
+    BOOL automaticallyWaitsToMinimizeStalling;
+    BOOL usesLegacyAutomaticWaitingBehavior;
     NSArray *displaysUsedForPlayback;
+    NSString *ancillaryPerformanceInformationForDisplay;
 }
 
 @end

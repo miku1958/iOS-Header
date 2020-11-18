@@ -6,8 +6,8 @@
 
 #import <Foundation/NSOperation.h>
 
-@class GSAddition, NSData, NSDictionary, NSError, NSURL, QLThumbnailAddition;
-@protocol QLThumbnailGenerationRequest><NSXPCProxyCreating;
+@class GSAddition, NSData, NSDictionary, NSError, NSObject, NSURL, QLThumbnailAddition;
+@protocol OS_os_activity, QLThumbnailGenerationRequest><NSXPCProxyCreating;
 
 @interface QLThumbnailStoreRetrievalOperation : NSOperation
 {
@@ -17,14 +17,15 @@
     BOOL _executing;
     BOOL _allowsThumbnailGeneration;
     BOOL _generateThumbnailsAtBackgroundPriority;
-    unsigned long long _activity;
-    unsigned long long _generationActivity;
+    BOOL _thumbnailWasJustAutomaticallyGenerated;
+    NSObject<OS_os_activity> *_retrievalActivity;
+    NSObject<OS_os_activity> *_generationActivity;
     QLThumbnailAddition *_addition;
     id<QLThumbnailGenerationRequest><NSXPCProxyCreating> _thumbnailRequest;
     NSURL *_destinationURL;
-    BOOL _thumbnailWasJustAutomaticallyGenerated;
 }
 
+@property (readonly) QLThumbnailAddition *addition; // @synthesize addition=_addition;
 @property BOOL allowsThumbnailGeneration; // @synthesize allowsThumbnailGeneration=_allowsThumbnailGeneration;
 @property (strong) NSError *error; // @synthesize error=_error;
 @property (nonatomic, getter=isExecuting) BOOL executing; // @synthesize executing=_executing;

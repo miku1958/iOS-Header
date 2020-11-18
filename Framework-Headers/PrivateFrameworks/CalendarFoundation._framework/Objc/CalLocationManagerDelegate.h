@@ -29,6 +29,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)cancel;
 - (void)dealloc;
 - (void)didFinishLocationLookupWithLocation:(id)arg1 error:(id)arg2;
 - (id)initWithQueue:(id)arg1;

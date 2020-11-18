@@ -8,7 +8,7 @@
 
 #import <CloudDocsDaemon/BRCOperationSubclass-Protocol.h>
 
-@class BRCItemID, BRCServerZone, CKShare, NSString;
+@class BRCItemID, BRCServerZone, CKRecord, CKShare, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BRCSharingModifyShareOperation : _BRCFrameworkOperation <BRCOperationSubclass>
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     BRCServerZone *_serverZone;
     CKShare *_share;
     BRCItemID *_itemID;
+    CKRecord *_sharingIdentityPreparedRecord;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,14 +25,18 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_modifyShareAccessIfNecessaryGrantingAccess:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_performAfterCopyingPublicSharingKeyWithRecordID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_performAfterFetchingSharingIdentityOnItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_performAfterFetchingiWorkRoutingTokenIfNecessary:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_performAfterFetchingiWorkSharingIdentityOnItem:(id)arg1 wantRoutingKey:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_performAfterGettingPublicSharingKeyForRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_performAfterPreparingSharingIdentityIfNecessaryWhenWantRoutingKey:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateDBAndSyncDownIfNeededWithShare:(id)arg1;
-- (void)_updateDocumentWithShareID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)createActivity;
 - (id)initWithName:(id)arg1 zone:(id)arg2 share:(id)arg3;
 - (void)main;
-- (void)performAfterFetchingBaseTokenIfNecessary:(CDUnknownBlockType)arg1;
+- (void)performAfterPreparingSharingIdentityIfNecessary:(CDUnknownBlockType)arg1;
 - (BOOL)shouldRetryForError:(id)arg1;
-- (unsigned long long)startActivity;
 
 @end
 

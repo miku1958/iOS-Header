@@ -64,6 +64,7 @@
 - (void)setClientContext:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

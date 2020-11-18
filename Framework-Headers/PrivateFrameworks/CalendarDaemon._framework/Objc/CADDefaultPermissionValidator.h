@@ -23,11 +23,14 @@ __attribute__((visibility("hidden")))
 @property (strong) ClientConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly) BOOL hasContactsUIEntitlement;
 @property (readonly) unsigned long long hash;
+@property (readonly) BOOL internalAccessLevelGranted;
 @property (readonly) Class superclass;
+@property (readonly) BOOL testingAccessLevelGranted;
 
 - (void).cxx_destruct;
-- (id)init;
+- (BOOL)_valueForBooleanEntitlement:(id)arg1 defaultValue:(BOOL)arg2;
 - (id)initWithClientConnection:(id)arg1;
 
 @end

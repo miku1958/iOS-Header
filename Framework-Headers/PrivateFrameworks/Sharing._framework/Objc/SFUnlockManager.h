@@ -15,8 +15,8 @@
 }
 
 + (id)sharedUnlockManager;
+- (void).cxx_destruct;
 - (void)cancelStateRequestTimer;
-- (void)dealloc;
 - (void)disableUnlockWithDevice:(id)arg1;
 - (void)enableUnlockWithDevice:(id)arg1 fromKey:(BOOL)arg2 withPasscode:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)establishStashBagWithCompletionHandler:(CDUnknownBlockType)arg1;

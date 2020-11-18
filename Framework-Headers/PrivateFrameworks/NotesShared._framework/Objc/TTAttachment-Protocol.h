@@ -5,10 +5,11 @@
 //
 
 #import <NotesShared/NSObject-Protocol.h>
+#import <NotesShared/TTModelAttributeComparable-Protocol.h>
 
 @class NSString;
 
-@protocol TTAttachment <NSObject>
+@protocol TTAttachment <TTModelAttributeComparable, NSObject>
 - (NSString *)attachmentIdentifier;
 - (NSString *)attachmentUTI;
 @end

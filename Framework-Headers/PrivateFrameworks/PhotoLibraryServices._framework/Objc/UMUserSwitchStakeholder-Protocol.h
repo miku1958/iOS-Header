@@ -6,12 +6,7 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class NSError;
-
 @protocol UMUserSwitchStakeholder <NSObject>
 - (void)willSwitchUser;
-
-@optional
-- (void)registrationFailedWithError:(NSError *)arg1;
 @end
 

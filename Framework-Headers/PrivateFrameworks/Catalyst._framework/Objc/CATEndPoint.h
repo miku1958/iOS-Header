@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class CATAddress, NSData;
 
@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) unsigned int port; // @synthesize port=_port;
 
 - (void).cxx_destruct;
+- (id)description;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithAddress:(id)arg1 port:(unsigned int)arg2;

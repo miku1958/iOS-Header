@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class EKObjectRelation, EKPersistentObject, NSMutableDictionary, NSMutableSet, NSString;
+@class EKEventStore, EKObjectRelation, EKPersistentObject, NSMutableDictionary, NSMutableSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface EKObject : NSObject
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSMutableDictionary *cachedProperties; // @synthesize cachedProperties=_cachedProperties;
 @property (strong, nonatomic) NSMutableDictionary *dirtyProperties; // @synthesize dirtyProperties=_dirtyProperties;
+@property (strong, nonatomic) EKEventStore *eventStore;
 @property (nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property (readonly, nonatomic) BOOL hasChanges;
 @property (readonly, nonatomic, getter=isNew) BOOL new;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableDictionary *relations; // @synthesize relations=_relations;
 @property (strong, nonatomic) NSMutableSet *weakRelations; // @synthesize weakRelations=_weakRelations;
 
+- (void).cxx_destruct;
 - (void)addWeakRelation:(id)arg1;
 - (BOOL)boolPropertyForKey:(id)arg1 withPersistentFallback:(CDUnknownBlockType)arg2;
 - (void)cachePropertyValue:(id)arg1 forKey:(id)arg2;
@@ -41,7 +43,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)deletePersistentObject;
 - (void)didCommit;
-- (id)eventStore;
 - (BOOL)existsInStore;
 - (void)faultPropertiesWithNames:(id)arg1;
 - (id)initWithPersistentObject:(id)arg1;
@@ -64,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)rollback;
 - (void)setPropertyValue:(id)arg1 forKey:(id)arg2;
 - (void)updatePersistentObject;
+- (void)updatePersistentObjectSkippingProperties:(id)arg1;
 - (void)updatePersistentValueForKeyIfNeeded:(id)arg1;
 - (BOOL)validate:(id *)arg1;
 

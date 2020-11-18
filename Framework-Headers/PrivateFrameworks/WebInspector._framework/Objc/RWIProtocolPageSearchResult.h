@@ -14,6 +14,7 @@
 
 @property (copy, nonatomic) NSString *frameId;
 @property (nonatomic) double matchesCount;
+@property (copy, nonatomic) NSString *requestId;
 @property (copy, nonatomic) NSString *url;
 
 - (id)initWithUrl:(id)arg1 frameId:(id)arg2 matchesCount:(double)arg3;

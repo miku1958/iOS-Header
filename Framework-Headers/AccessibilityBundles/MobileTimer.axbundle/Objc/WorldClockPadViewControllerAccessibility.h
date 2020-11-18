@@ -13,10 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
-- (void)dismissFullScreenClock;
 - (void)loadView;
-- (void)presentFullScreenClockForIndexPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateClocksForOrientation:(long long)arg1;
 
 @end

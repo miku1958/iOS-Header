@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSMutableArray *containerPrivacySettings; // @synthesize containerPrivacySettings=_containerPrivacySettings;
 
++ (Class)containerPrivacySettingsType;
 - (void).cxx_destruct;
 - (void)addContainerPrivacySettings:(id)arg1;
 - (void)clearContainerPrivacySettings;

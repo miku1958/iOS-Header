@@ -6,20 +6,19 @@
 
 #import <SpringBoardFoundation/SBAbstractSpringBoardDefaultDomain.h>
 
-@class NSString, NSURL;
+@class NSDictionary, NSString;
 
 @interface SBBootDefaults : SBAbstractSpringBoardDefaultDomain
 {
 }
 
+@property (nonatomic) NSDictionary *bootTransitionContext; // @dynamic bootTransitionContext;
+@property (nonatomic) BOOL comingFromUserPowerDown; // @dynamic comingFromUserPowerDown;
 @property (readonly, nonatomic) BOOL dontLockAfterCrash; // @dynamic dontLockAfterCrash;
+@property (nonatomic) BOOL hasCompletedSynchronizingCloudCriticalData; // @dynamic hasCompletedSynchronizingCloudCriticalData;
+@property (strong, nonatomic) NSString *lastRestoreIdentifier; // @dynamic lastRestoreIdentifier;
 @property (strong, nonatomic) NSString *lastSystemBuildVersion; // @dynamic lastSystemBuildVersion;
 @property (readonly, nonatomic) BOOL recordBootTimeTillDidFinishLaunching; // @dynamic recordBootTimeTillDidFinishLaunching;
-@property (strong, nonatomic) NSString *relaunchReason; // @dynamic relaunchReason;
-@property (nonatomic, getter=isRestartForLauguageChanged) BOOL restartForLanguageChanged; // @dynamic restartForLanguageChanged;
-@property (nonatomic, getter=isRestartForLanguageSetup) BOOL restartForLanguageSetup; // @dynamic restartForLanguageSetup;
-@property (nonatomic, getter=isRestartForLanguageWhileLocked) BOOL restartForLanguageWhileLocked; // @dynamic restartForLanguageWhileLocked;
-@property (strong, nonatomic) NSURL *urlToRelaunchToAfterBoot; // @dynamic urlToRelaunchToAfterBoot;
 
 - (void)_bindAndRegisterDefaults;
 

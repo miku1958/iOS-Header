@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMapTable *uploadTasksByPackages; // @synthesize uploadTasksByPackages=_uploadTasksByPackages;
 
 - (void).cxx_destruct;
+- (id)CKStatusReportLogGroups;
 - (void)_closeAllPackages;
 - (void)_closePackage:(id)arg1;
 - (void)_collectMetricsFromCompletedItemGroup:(id)arg1;

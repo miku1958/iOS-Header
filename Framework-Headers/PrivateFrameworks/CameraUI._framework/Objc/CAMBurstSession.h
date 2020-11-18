@@ -17,14 +17,12 @@
 }
 
 @property (readonly, nonatomic) CIBurstImageSet *_burstImageSet; // @synthesize _burstImageSet=__burstImageSet;
-@property (nonatomic) unsigned long long count; // @synthesize count=_count;
-@property (nonatomic) unsigned long long estimatedCount; // @synthesize estimatedCount=_estimatedCount;
+@property (nonatomic, setter=_setCount:) unsigned long long count; // @synthesize count=_count;
+@property (nonatomic, setter=_setEstimatedCount:) unsigned long long estimatedCount; // @synthesize estimatedCount=_estimatedCount;
 @property (nonatomic, getter=_isFinalized, setter=_setFinalized:) BOOL finalized; // @synthesize finalized=_finalized;
 @property (readonly, copy, nonatomic) NSString *identifier;
 
 - (void).cxx_destruct;
-- (void)_setCount:(unsigned long long)arg1;
-- (void)_setEstimatedCount:(unsigned long long)arg1;
 - (void)addStillImageCaptureResult:(id)arg1;
 - (void)addStillImageLocalPersistenceResult:(id)arg1 withFaces:(id)arg2;
 - (id)description;

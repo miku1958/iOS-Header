@@ -51,7 +51,7 @@
 - (id)initWithDBManager:(id)arg1;
 - (void)mergeCallDBPropChangesFromRemoteAppSave;
 - (void)mergeCallRecordChangesFromRemoteAppSave;
-- (BOOL)moveCallRecordsFromDatabaseAtURL:(id)arg1 withVersion:(long long)arg2;
+- (BOOL)moveCallRecordsFromDatabaseAtURL:(id)arg1;
 - (BOOL)performSaveWithBackgroundTaskAssertion:(id)arg1 error:(id *)arg2;
 - (void)postTimersChangedNotification;
 - (void)registerForNotifications:(id)arg1;
@@ -59,6 +59,8 @@
 - (void)resetTimers;
 - (BOOL)save:(id *)arg1;
 - (BOOL)saveTimers:(CDUnknownBlockType)arg1;
+- (void)setHandleTypeIn:(id)arg1 using:(id)arg2 havingVersion:(long long)arg3;
+- (void)setServiceProviderIn:(id)arg1 using:(id)arg2 havingVersion:(long long)arg3;
 - (id)timerIncoming;
 - (id)timerLastReset;
 - (id)timerLifetime;

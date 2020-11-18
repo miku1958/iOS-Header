@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CloudDocsDaemon/BRCDumper.h>
 
-@interface BRCTermDumper : NSObject
+@interface BRCTermDumper : BRCDumper
 {
     int _fd;
     unsigned long long _termWidth;
@@ -16,19 +16,19 @@
     int _curBg;
     BOOL _isatty;
     BOOL _useColor;
+    BOOL _supportsEscapeSequences;
 }
 
 @property (readonly, nonatomic) BOOL isatty; // @synthesize isatty=_isatty;
+@property (readonly, nonatomic) BOOL supportsEscapeSequences; // @synthesize supportsEscapeSequences=_supportsEscapeSequences;
 @property (readonly, nonatomic) BOOL useColor; // @synthesize useColor=_useColor;
 
 + (void)execPagerOnFileFd:(int)arg1;
 + (void)setupPagerForFd:(int)arg1;
 - (void)_putsAndCrop:(const char *)arg1 len:(unsigned long long)arg2;
 - (unsigned long long)_startInCString:(char [256])arg1 fgColor:(int)arg2 bgColor:(int)arg3 attr:(int)arg4;
-- (void)changeAttributes:(int)arg1;
-- (void)changeBgColor:(int)arg1;
-- (void)changeFgColor:(int)arg1;
 - (void)cursorDown:(unsigned int)arg1;
+- (void)cursorGotoLineStart;
 - (void)cursorLeft:(unsigned int)arg1;
 - (void)cursorRestore;
 - (void)cursorRight:(unsigned int)arg1;
@@ -41,14 +41,11 @@
 - (void)eraseScreenUp;
 - (void)eraseStartOfLine;
 - (id)initWithFd:(int)arg1 forceColor:(BOOL)arg2;
+- (void)put:(id)arg1;
 - (void)puts:(const char *)arg1;
 - (void)puts:(const char *)arg1 len:(unsigned long long)arg2;
+- (unsigned long long)remainingSpace;
 - (void)reset;
-- (void)startAttributes:(int)arg1;
-- (void)startBgColor:(int)arg1;
-- (void)startBgColor:(int)arg1 attr:(int)arg2;
-- (void)startFgColor:(int)arg1;
-- (void)startFgColor:(int)arg1 attr:(int)arg2;
 - (void)startFgColor:(int)arg1 bgColor:(int)arg2 attr:(int)arg3;
 - (void)startNewLine;
 - (void)startPager;

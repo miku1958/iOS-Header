@@ -9,13 +9,16 @@
 @protocol CPLDaemonLibraryManagerMinimalProtocol
 - (void)addInfoToLog:(NSString *)arg1;
 - (void)beginDownloadForResource:(CPLResource *)arg1 clientBundleID:(NSString *)arg2 highPriority:(BOOL)arg3 proposedTaskIdentifier:(NSString *)arg4 reply:(void (^)(NSString *))arg5;
+- (void)beginInMemoryDownloadOfResource:(CPLResource *)arg1 reply:(void (^)(NSString *))arg2;
 - (void)cancelTaskWithIdentifier:(NSString *)arg1;
+- (void)checkHasBackgroundDownloadOperationsWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;
 - (void)closeLibraryWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)cloudCacheGetDescriptionForRecordWithIdentifier:(NSString *)arg1 related:(BOOL)arg2 completionHandler:(void (^)(id, id, NSError *))arg3;
 - (void)compactFileCacheWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)deactivateLibraryWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)disableMingling;
 - (void)disableSynchronizationWithReason:(NSString *)arg1;
-- (void)downloadOriginalsOfType:(NSString *)arg1 localIdentifiers:(NSArray *)arg2 destinationURL:(NSURL *)arg3 progressIdentifier:(NSString *)arg4 completionHandler:(void (^)(NSError *, NSArray *))arg5;
+- (void)enableMingling;
 - (void)enableSynchronizationWithReason:(NSString *)arg1;
 - (void)getCloudCacheForRecordWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(CPLRecordChange *, NSError *))arg2;
 - (void)getListOfComponentsWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
@@ -23,11 +26,13 @@
 - (void)getResourcesForItemWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *, NSArray *))arg2;
 - (void)getStatusArrayForComponents:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)getStatusForComponents:(NSArray *)arg1 completionHandler:(void (^)(NSString *, NSError *))arg2;
+- (void)noteClientIsBeginningSignificantWork;
+- (void)noteClientIsEndingSignificantWork;
 - (void)noteClientIsInBackground;
 - (void)noteClientIsInForeground;
 - (void)openLibraryWithClientLibraryBaseURL:(NSURL *)arg1 cloudLibraryStateStorageURL:(NSURL *)arg2 cloudLibraryResourceStorageURL:(NSURL *)arg3 libraryIdentifier:(NSString *)arg4 completionHandler:(void (^)(NSError *, NSDictionary *, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, NSString *, NSString *, NSURL *))arg5;
 - (void)publishResource:(CPLResource *)arg1 completionHandler:(void (^)(NSURL *, NSDate *, NSError *))arg2;
-- (void)removeLibraryWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 completionHandler:(void (^)(BOOL, unsigned long long, NSError *))arg3;
 - (void)resetCacheWithOption:(unsigned long long)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)resetStatus;
 - (void)setDiagnosticsEnabled:(BOOL)arg1;

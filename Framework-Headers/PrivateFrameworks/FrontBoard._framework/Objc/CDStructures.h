@@ -45,15 +45,13 @@ struct FBSceneLayer {
     Class _field1;
 };
 
+struct NSMutableDictionary {
+    Class _field1;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
     unsigned int _field1[8];
 } CDStruct_6ad76789;
-
-typedef struct {
-    long long _field1;
-    id _field2;
-    id _field3;
-} CDStruct_1b4a36b4;
 

@@ -13,6 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axLoadCellAccessibility:(id)arg1 atIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 
 @end

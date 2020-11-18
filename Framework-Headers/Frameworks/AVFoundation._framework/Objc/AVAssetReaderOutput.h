@@ -20,6 +20,7 @@
 @property (readonly, nonatomic, getter=_trimsSampleDurations) BOOL trimsSampleDurations;
 @property (readonly, nonatomic, getter=_weakReferenceToAssetReader) AVWeakReference *weakReferenceToAssetReader;
 
++ (id)_figAssetReaderVideoScalingPropertiesFromVideoSettings:(id)arg1 withFormatDescription:(id)arg2;
 + (void)initialize;
 - (id)_asset;
 - (void)_attachToWeakReferenceToAssetReader:(id)arg1;

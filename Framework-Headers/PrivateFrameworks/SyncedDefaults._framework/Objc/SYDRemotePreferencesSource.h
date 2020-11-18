@@ -38,6 +38,7 @@
 + (void)migrateSyncedDefaultsForBundleIdentifier:(id)arg1;
 + (void)noteAccountChanges:(id)arg1;
 + (void)resetAllApplicationsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 - (void)_cachePlistFromDisk;
 - (void)_createMemoryWarningSource;
 - (void)_didReceiveMemoryWarning;
@@ -54,7 +55,6 @@
 - (struct __CFArray *)copyKeyList;
 - (void)dealloc;
 - (void)discardExternalChangesForChangeCount:(long long)arg1;
-- (void)finalize;
 - (long long)generationCount;
 - (void *)getValueForKey:(struct __CFString *)arg1;
 - (unsigned char)hasExternalChanges;

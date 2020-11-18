@@ -6,45 +6,47 @@
 
 #import <SpringBoardFoundation/SBFWallpaperView.h>
 
-@class SBFColorBoxes, UIImage;
+@class NSString, SBFColorBoxes, UIImage;
 
 @interface SBFStaticWallpaperView : SBFWallpaperView
 {
     UIImage *_image;
     UIImage *_displayedImage;
-    UIImage *_displayedSurfaceImage;
-    BOOL _sampleAndDisplayedImageAreSame;
     double _overallContrast;
     SBFColorBoxes *_colorBoxes;
+    NSString *_cacheGroup;
 }
 
 @property (strong, nonatomic) SBFColorBoxes *colorBoxes;
+@property (strong, nonatomic, getter=_displayedImage, setter=_setDisplayedImage:) UIImage *displayedImage; // @synthesize displayedImage=_displayedImage;
 
 + (BOOL)_allowsParallax;
 + (BOOL)_allowsRasterization;
++ (BOOL)_canCacheImages;
++ (BOOL)_canDownscaleSampleImage;
++ (id)_imageByApplyingLegibilityDarkeningToImage:(id)arg1;
 - (void).cxx_destruct;
 - (id)_averageColorInContentViewRect:(struct CGRect)arg1 smudgeRadius:(double)arg2;
 - (id)_blurredImage;
-- (void)_cacheImagesIfNeeded;
 - (id)_computeAverageColor;
 - (id)_createColorBoxes;
-- (id)_displayedImage;
-- (id)_displayedImageKey;
-- (id)_displayedSurfaceImage;
-- (id)_displayedSurfaceImageKey;
-- (id)_imageForBackdropParameters:(CDStruct_595f0d30)arg1 includeTint:(BOOL)arg2;
+- (void)_disableLegibilityDarkening;
+- (void)_enableLegibilityDarkening;
+- (id)_fallbackImageWithSize:(struct CGSize)arg1;
+- (void)_handleVariantChange;
+- (id)_imageByApplyingLegibilityDarkeningToImage:(id)arg1;
+- (id)_imageByDarkeningHighlightsInImage:(id)arg1;
+- (id)_imageForBackdropParameters:(CDStruct_83077358)arg1 includeTint:(BOOL)arg2;
 - (struct CGSize)_imageSize;
-- (id)_mappedImageKeyForParameters:(CDStruct_595f0d30)arg1 includingTint:(BOOL)arg2;
+- (id)_mappedImageKeyForParameters:(CDStruct_83077358)arg1 includingTint:(BOOL)arg2 andLegibilityDarkening:(BOOL)arg3;
 - (id)_repeatingGradientImageWithSize:(struct CGSize)arg1 scale:(double)arg2;
 - (void)_resetColorBoxes;
-- (id)_sampleImageKey;
-- (void)_setDisplayedImage:(id)arg1;
 - (void)_setImage:(id)arg1;
 - (void)_setSampleImage:(id)arg1;
 - (void)_setupContentView;
-- (void)_setupSampleImage:(id)arg1 treated:(BOOL)arg2;
-- (void)_setupWallpaperImage:(id)arg1 treated:(BOOL)arg2 forceNoTreatment:(BOOL)arg3;
-- (id)_untintedImageForBackdropParameters:(CDStruct_595f0d30)arg1;
+- (void)_setupWallpaperImage:(id)arg1 options:(unsigned long long)arg2;
+- (BOOL)_shouldApplyLegibilityDarkeningForVariant:(long long)arg1;
+- (void)_toggleLegibilityDarkeningIfNecessary;
 - (id)_variantCacheIdentifier;
 - (id)_wallpaperImageForAnalysis;
 - (float)_zoomScale;
@@ -52,8 +54,9 @@
 - (double)contrastInRect:(struct CGRect)arg1 contrastWithinBoxes:(double *)arg2 contrastBetweenBoxes:(double *)arg3;
 - (BOOL)contrastRequiresTreatments;
 - (double)cropZoomScale;
+- (BOOL)hasContentOutsideVisibleBounds;
+- (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 cacheGroup:(id)arg3 variant:(long long)arg4 options:(unsigned long long)arg5;
 - (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 variant:(long long)arg3;
-- (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 variant:(long long)arg3 options:(unsigned long long)arg4;
 - (BOOL)isDisplayingWallpaperWithConfiguration:(id)arg1 forVariant:(long long)arg2;
 - (void)setContentView:(id)arg1;
 - (void)setContentsRect:(struct CGRect)arg1;
@@ -61,6 +64,7 @@
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (id)snapshotImage;
 - (id)wallpaperImage;
+- (long long)wallpaperType;
 
 @end
 

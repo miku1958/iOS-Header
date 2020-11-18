@@ -6,14 +6,19 @@
 
 #import <Foundation/NSEnumerator.h>
 
+@class NSObject;
+@protocol OS_dispatch_queue;
+
 @interface MSASModelEnumerator : NSEnumerator
 {
     struct sqlite3 *_db;
     struct sqlite3_stmt *_stmt;
     CDUnknownBlockType _stepBlock;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (nonatomic) struct sqlite3 *db; // @synthesize db=_db;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (copy, nonatomic) CDUnknownBlockType stepBlock; // @synthesize stepBlock=_stepBlock;
 @property (nonatomic) struct sqlite3_stmt *stmt; // @synthesize stmt=_stmt;
 

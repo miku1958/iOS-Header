@@ -7,13 +7,12 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (LSAdditions)
-- (id)betaStoreURL;
+- (id)LS_nooverride:(id)arg1;
+- (BOOL)LS_pathHasCaseInsensitivePrefix:(id)arg1;
 - (BOOL)conformsToOverridePatternWithKey:(id)arg1;
-- (id)facebookURL;
 - (id)fmfURL;
 - (id)fmipURL;
-- (id)gamecenterURL;
-- (id)iCloudFamilyURL;
+- (id)iCloudEmailPrefsURL;
 - (id)iCloudSharingURL;
 - (id)iCloudSharingURL_noFragment;
 - (id)iTunesStoreURL;
@@ -21,9 +20,8 @@
 - (id)iWorkDocumentName;
 - (BOOL)isiWorkURL;
 - (id)keynoteLiveURL;
+- (id)keynoteLiveURL_noFragment;
 - (id)mapsURL;
 - (id)photosURL;
-- (id)twitterURL;
-- (id)youTubeURL;
 @end
 

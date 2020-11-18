@@ -7,12 +7,13 @@
 #import <Foundation/NSObject.h>
 
 @class NSXPCConnection;
-@protocol QLThumbnailsInterface;
+@protocol QLThumbnailAdditionIndexInterface, QLThumbnailsInterface;
 
 @interface QLThumbnailServiceProxy : NSObject
 {
     NSXPCConnection *_connection;
     NSObject<QLThumbnailsInterface> *_proxy;
+    NSObject<QLThumbnailAdditionIndexInterface> *_indexProxy;
 }
 
 + (id)interface;
@@ -21,6 +22,7 @@
 - (void)dealloc;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)init;
+- (void)touchOrAddThumbnailAddition:(id)arg1 forURL:(id)arg2;
 
 @end
 

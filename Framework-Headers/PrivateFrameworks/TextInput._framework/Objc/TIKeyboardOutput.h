@@ -12,6 +12,7 @@
 
 @interface TIKeyboardOutput : NSObject <NSSecureCoding>
 {
+    BOOL _shouldSendCurrentLocation;
     TIKeyboardCandidate *_acceptedCandidate;
     NSString *_textToCommit;
     unsigned long long _deletionCount;
@@ -29,6 +30,7 @@
 @property (copy, nonatomic) NSString *insertionText; // @synthesize insertionText=_insertionText;
 @property (copy, nonatomic) NSString *insertionTextAfterSelection; // @synthesize insertionTextAfterSelection=_insertionTextAfterSelection;
 @property (strong, nonatomic) TIKeyboardCandidate *shortcutConversion; // @synthesize shortcutConversion=_shortcutConversion;
+@property (nonatomic) BOOL shouldSendCurrentLocation; // @synthesize shouldSendCurrentLocation=_shouldSendCurrentLocation;
 @property (copy, nonatomic) NSString *textToCommit; // @synthesize textToCommit=_textToCommit;
 
 + (BOOL)supportsSecureCoding;

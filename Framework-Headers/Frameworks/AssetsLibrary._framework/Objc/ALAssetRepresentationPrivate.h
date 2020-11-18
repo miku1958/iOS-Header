@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AssetsLibrary/ALAssetsLibraryAsset-Protocol.h>
 
@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 + (int)_fileDescriptorForPersistentURL:(id)arg1;
 + (void)_setupFileDescriptorQueue;
 + (int)_updateFileDescriptor:(int)arg1 forPersistentURL:(id)arg2;
+- (void).cxx_destruct;
 - (BOOL)_isImage;
 - (BOOL)_isVideo;
 - (void)_performBlockAndWait:(CDUnknownBlockType)arg1;

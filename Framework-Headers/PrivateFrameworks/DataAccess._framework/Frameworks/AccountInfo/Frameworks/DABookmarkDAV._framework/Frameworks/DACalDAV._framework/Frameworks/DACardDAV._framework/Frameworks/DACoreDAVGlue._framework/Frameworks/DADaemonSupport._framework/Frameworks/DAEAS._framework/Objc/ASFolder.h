@@ -18,8 +18,8 @@
     NSString *_serverID;
     NSString *_parentID;
     NSString *_displayName;
-    long long _dataclass;
     long long _changeType;
+    long long _dataclass;
 }
 
 @property (nonatomic) long long changeType; // @synthesize changeType=_changeType;

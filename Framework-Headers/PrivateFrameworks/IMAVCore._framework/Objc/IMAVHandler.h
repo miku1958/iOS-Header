@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSMutableArray;
 
@@ -17,10 +17,8 @@
 + (void)ensureHandlerSetup;
 + (void)initialize;
 - (void)_enqueueIMAVChatForNetworkActivation:(id)arg1;
-- (void)_handleFilteredIncomingAVChatForNotification:(id)arg1;
 - (void)_handleIncomingAVChatForNotification:(id)arg1;
-- (void)_handleIncomingWithAccount:(id)arg1 fromHandle:(id)arg2 conference:(id)arg3 properites:(id)arg4 allowCall:(BOOL)arg5;
-- (void)_notifyOfFilteredIncomingInvitationFor:(id)arg1 notifyInvitationListeners:(BOOL)arg2;
+- (void)_handleIncomingWithAccount:(id)arg1 fromHandle:(id)arg2 conference:(id)arg3 properites:(id)arg4;
 - (void)_notifyOfIncomingInvitationFor:(id)arg1 notifyInvitationListeners:(BOOL)arg2;
 - (void)account:(id)arg1 avAction:(unsigned int)arg2 withArguments:(id)arg3 toAVChat:(id)arg4 isVideo:(BOOL)arg5;
 - (void)account:(id)arg1 conference:(id)arg2 changedToNewConferenceID:(id)arg3;

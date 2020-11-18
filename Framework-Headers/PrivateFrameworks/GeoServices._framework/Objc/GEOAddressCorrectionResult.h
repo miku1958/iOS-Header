@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) BOOL hasAddressID;
 @property (strong, nonatomic) NSMutableArray *significantLocations; // @synthesize significantLocations=_significantLocations;
 
++ (Class)significantLocationType;
 - (void)addSignificantLocation:(id)arg1;
 - (void)clearSignificantLocations;
 - (void)copyTo:(id)arg1;

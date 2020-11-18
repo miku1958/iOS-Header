@@ -32,6 +32,7 @@
 @property (nonatomic) double score; // @synthesize score=_score;
 
 + (id)ratingForPlaceData:(id)arg1 type:(int)arg2;
+- (int)StringAsRatingType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -39,6 +40,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)ratingTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

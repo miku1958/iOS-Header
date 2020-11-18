@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateGestureRecognizers;
 - (void)_updateGestureRecognizersIfNeeded;
 - (void)addIrisGestureRecognizer:(id)arg1;
+- (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;

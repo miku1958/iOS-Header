@@ -18,6 +18,7 @@
     BOOL _flaggedIsSet;
     BOOL _verbIsSet;
     BOOL _isDraft;
+    BOOL _hasAttachments;
     int _importance;
     int _bodySize;
     int _lastVerb;
@@ -40,6 +41,7 @@
     NSString *_longID;
     NSString *_sender;
     NSArray *_bcc;
+    NSString *_preview;
     ASMeetingRequest *_meetingRequest;
 }
 
@@ -58,6 +60,7 @@
 @property (nonatomic) BOOL flaggedIsSet; // @synthesize flaggedIsSet=_flaggedIsSet;
 @property (strong, nonatomic) NSString *folderId; // @synthesize folderId=_folderId;
 @property (copy, nonatomic) NSArray *from; // @synthesize from=_from;
+@property (nonatomic) BOOL hasAttachments; // @synthesize hasAttachments=_hasAttachments;
 @property (nonatomic) int importance; // @synthesize importance=_importance;
 @property (nonatomic) BOOL isDraft; // @synthesize isDraft=_isDraft;
 @property (nonatomic) int lastVerb; // @synthesize lastVerb=_lastVerb;
@@ -68,6 +71,7 @@
 @property (readonly, nonatomic) NSString *meetingRequestUUID;
 @property (strong, nonatomic) NSString *messageClass; // @synthesize messageClass=_messageClass;
 @property (strong, nonatomic) NSString *mimeData; // @synthesize mimeData=_mimeData;
+@property (strong, nonatomic) NSString *preview; // @synthesize preview=_preview;
 @property (nonatomic) BOOL read; // @synthesize read=_read;
 @property (nonatomic) BOOL readIsSet; // @synthesize readIsSet=_readIsSet;
 @property (copy, nonatomic) NSArray *replyTo; // @synthesize replyTo=_replyTo;

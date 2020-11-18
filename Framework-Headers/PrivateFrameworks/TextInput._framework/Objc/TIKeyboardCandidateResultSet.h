@@ -25,6 +25,7 @@
     unsigned long long _generatedCandidateCount;
     unsigned long long _batchCandidateLocation;
     unsigned long long _selectedHiddenCandidateIndex;
+    NSArray *_proactiveTriggers;
     TIKeyboardIntermediateText *_uncommittedText;
     TIKeyboardCandidate *_acceptedCandidate;
 }
@@ -38,10 +39,12 @@
 @property (nonatomic) unsigned long long generatedCandidateCount; // @synthesize generatedCandidateCount=_generatedCandidateCount;
 @property (readonly, nonatomic) BOOL hasCandidates;
 @property (readonly, nonatomic) BOOL hasMetadata;
+@property (readonly, nonatomic) BOOL hasOnlyProactiveCandidates;
 @property (strong, nonatomic) NSDictionary *indexTitles; // @synthesize indexTitles=_indexTitles;
 @property (nonatomic) unsigned long long initialSelectedIndex; // @synthesize initialSelectedIndex=_initialSelectedIndex;
 @property (strong, nonatomic) NSArray *initiallyHiddenCandidates; // @synthesize initiallyHiddenCandidates=_initiallyHiddenCandidates;
 @property (readonly, nonatomic) BOOL isDummySet;
+@property (readonly, nonatomic) NSArray *proactiveTriggers; // @synthesize proactiveTriggers=_proactiveTriggers;
 @property (nonatomic) unsigned long long selectedHiddenCandidateIndex; // @synthesize selectedHiddenCandidateIndex=_selectedHiddenCandidateIndex;
 @property (strong, nonatomic) NSDictionary *showExtensionCandidates; // @synthesize showExtensionCandidates=_showExtensionCandidates;
 @property (strong, nonatomic) NSDictionary *sortMethodGroups; // @synthesize sortMethodGroups=_sortMethodGroups;
@@ -51,11 +54,13 @@
 + (id)dummySet;
 + (id)setWithCandidates:(id)arg1;
 + (id)setWithCandidates:(id)arg1 initialSelectedIndex:(unsigned long long)arg2 defaultCandidate:(id)arg3 sortMethods:(id)arg4 sortMethodGroups:(id)arg5 indexTitles:(id)arg6 showExtensionCandidates:(id)arg7 initiallyHiddenCandidates:(id)arg8 selectedHiddenCandidateIndex:(unsigned long long)arg9;
++ (id)setWithCandidates:(id)arg1 initialSelectedIndex:(unsigned long long)arg2 defaultCandidate:(id)arg3 sortMethods:(id)arg4 sortMethodGroups:(id)arg5 indexTitles:(id)arg6 showExtensionCandidates:(id)arg7 initiallyHiddenCandidates:(id)arg8 selectedHiddenCandidateIndex:(unsigned long long)arg9 proactiveTriggers:(id)arg10;
++ (id)setWithCandidates:(id)arg1 proactiveTriggers:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithCandidates:(id)arg1 initialSelectedIndex:(unsigned long long)arg2 defaultCandidate:(id)arg3 sortMethods:(id)arg4 sortMethodGroups:(id)arg5 indexTitles:(id)arg6 showExtensionCandidates:(id)arg7 initiallyHiddenCandidates:(id)arg8 selectedHiddenCandidateIndex:(unsigned long long)arg9;
+- (id)initWithCandidates:(id)arg1 initialSelectedIndex:(unsigned long long)arg2 defaultCandidate:(id)arg3 sortMethods:(id)arg4 sortMethodGroups:(id)arg5 indexTitles:(id)arg6 showExtensionCandidates:(id)arg7 initiallyHiddenCandidates:(id)arg8 selectedHiddenCandidateIndex:(unsigned long long)arg9 proactiveTriggers:(id)arg10;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isSubsetOf:(id)arg1;

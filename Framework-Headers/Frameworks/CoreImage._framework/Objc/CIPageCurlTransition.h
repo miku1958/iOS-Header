@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)customAttributes;
+- (id)_CIPageCurlTransNoEmap;
 - (id)_CIPageCurlTransition;
 - (id)outputImage;
 

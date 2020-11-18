@@ -27,6 +27,7 @@
 
 + (id)metrics;
 + (id)metricsWithDictionary:(id)arg1 context:(id)arg2;
+- (id)_descriptionHint;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

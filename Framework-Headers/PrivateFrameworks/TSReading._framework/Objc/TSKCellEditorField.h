@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSString *text;
 @property (strong, nonatomic) UITextView *textView; // @synthesize textView=mTextView;
 
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (id)p_symbolContainerBackgroundColor;

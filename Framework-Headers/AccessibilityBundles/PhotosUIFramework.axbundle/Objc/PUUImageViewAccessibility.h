@@ -14,7 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityElementStoredUserLabel;
-- (id)_accessibilityObscuredScreenAllowedViews;
 - (id)_accessibilityPhotoDescription;
 - (BOOL)_accessibilitySavePhotoLabel:(id)arg1;
 - (BOOL)_accessibilityZoomAtPoint:(struct CGPoint)arg1 zoomIn:(BOOL)arg2;

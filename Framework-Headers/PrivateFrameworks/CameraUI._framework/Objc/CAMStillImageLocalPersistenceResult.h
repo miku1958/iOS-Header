@@ -6,18 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class CAMStillImageCaptureResult, NSDate, NSError, NSString, NSURL;
+@class CAMStillImageCaptureResult, NSDate, NSDictionary, NSError, NSString, NSURL;
 
 @interface CAMStillImageLocalPersistenceResult : NSObject
 {
     CAMStillImageCaptureResult *_captureResult;
     NSURL *_localDestinationURL;
+    NSURL *_linkedDestinationURL;
     NSString *_localDiagnosticsPath;
     NSString *_localFilteredPreviewPath;
     NSString *_localPersistenceUUID;
     NSDate *_creationDate;
     NSString *_uniformTypeIdentifier;
     long long _imageOrientation;
+    NSDictionary *_metadata;
     NSError *_error;
 }
 
@@ -25,15 +27,17 @@
 @property (readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) long long imageOrientation; // @synthesize imageOrientation=_imageOrientation;
+@property (readonly, copy, nonatomic) NSURL *linkedDestinationURL; // @synthesize linkedDestinationURL=_linkedDestinationURL;
 @property (readonly, copy, nonatomic) NSURL *localDestinationURL; // @synthesize localDestinationURL=_localDestinationURL;
 @property (readonly, copy, nonatomic) NSString *localDiagnosticsPath; // @synthesize localDiagnosticsPath=_localDiagnosticsPath;
 @property (readonly, copy, nonatomic) NSString *localFilteredPreviewPath; // @synthesize localFilteredPreviewPath=_localFilteredPreviewPath;
 @property (readonly, copy, nonatomic) NSString *localPersistenceUUID; // @synthesize localPersistenceUUID=_localPersistenceUUID;
+@property (readonly, copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property (readonly, copy, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithCaptureResult:(id)arg1 atURL:(id)arg2 diagnosticsPath:(id)arg3 filteredPreviewPath:(id)arg4 withUUID:(id)arg5 creationDate:(id)arg6 uniformTypeIdentifier:(id)arg7 orientation:(long long)arg8 error:(id)arg9;
+- (id)initWithCaptureResult:(id)arg1 atURL:(id)arg2 linkedURL:(id)arg3 diagnosticsPath:(id)arg4 filteredPreviewPath:(id)arg5 withUUID:(id)arg6 creationDate:(id)arg7 uniformTypeIdentifier:(id)arg8 orientation:(long long)arg9 metadata:(id)arg10 error:(id)arg11;
 
 @end
 

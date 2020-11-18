@@ -45,6 +45,7 @@
 - (void)_internalDidSwitchActivePairedDevice:(id)arg1 forService:(id)arg2;
 - (void)_internalSwitchActivePairedDevice:(id)arg1 forAccount:(id)arg2;
 - (void)_noteDisconnected;
+- (void)_performSyncBlock:(CDUnknownBlockType)arg1;
 - (void)_removeAccountOnIvarQueue:(id)arg1;
 - (id)_uniqueIDForDevice:(id)arg1;
 - (void)account:(id)arg1 accountInfoChanged:(id)arg2;

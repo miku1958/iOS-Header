@@ -10,6 +10,7 @@
 
 @protocol _UIAlertControllerTextFieldViewControllerContaining <NSObject>
 - (void)_returnKeyPressedInLastTextField;
+- (BOOL)_shouldSupportReturnKeyPresses;
 - (UIView *)_textFieldContainingViewWithTextField:(UITextField *)arg1;
 @end
 

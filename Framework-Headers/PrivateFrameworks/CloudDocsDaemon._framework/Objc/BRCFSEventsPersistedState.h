@@ -4,16 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CloudDocsDaemon/BRCPersistedState.h>
 
-#import <CloudDocsDaemon/NSSecureCoding-Protocol.h>
+#import <CloudDocsDaemon/NSCopying-Protocol.h>
 
-@class BRCAccountSession, NSUUID;
+@class NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface BRCFSEventsPersistedState : NSObject <NSSecureCoding>
+@interface BRCFSEventsPersistedState : BRCPersistedState <NSCopying>
 {
-    BRCAccountSession *_session;
     NSUUID *_streamUUID;
     unsigned long long _latestEventID;
     unsigned long long _rootID;
@@ -23,12 +22,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long rootID; // @synthesize rootID=_rootID;
 @property (strong, nonatomic) NSUUID *streamUUID; // @synthesize streamUUID=_streamUUID;
 
-+ (id)loadFromClientStateInSession:(id)arg1;
++ (id)loadFromClientStateInSession:(id)arg1 options:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithLatestEventID:(unsigned long long)arg1 streamUUID:(id)arg2 rootID:(unsigned long long)arg3;
 
 @end
 

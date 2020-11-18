@@ -8,29 +8,30 @@
 
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSString, SASyncAppMetaData;
 
 @interface AFSyncInfo : NSObject <NSSecureCoding>
 {
+    BOOL _targetIsLocal;
     NSString *_anchor;
     NSString *_validity;
     long long _count;
     NSString *_key;
-    NSString *_applicationBundleIdentifier;
-    NSString *_intentSlotName;
+    SASyncAppMetaData *_appMetadata;
 }
 
 @property (copy, nonatomic) NSString *anchor; // @synthesize anchor=_anchor;
-@property (copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
+@property (copy, nonatomic) SASyncAppMetaData *appMetadata; // @synthesize appMetadata=_appMetadata;
 @property (nonatomic) long long count; // @synthesize count=_count;
-@property (copy, nonatomic) NSString *intentSlotName; // @synthesize intentSlotName=_intentSlotName;
 @property (copy, nonatomic) NSString *key; // @synthesize key=_key;
+@property (nonatomic) BOOL targetIsLocal; // @synthesize targetIsLocal=_targetIsLocal;
 @property (copy, nonatomic) NSString *validity; // @synthesize validity=_validity;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithAnchor:(id)arg1 forcingReset:(BOOL)arg2;
 - (id)initWithCoder:(id)arg1;
 
 @end

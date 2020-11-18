@@ -6,26 +6,25 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSString;
+@class GEOResource, NSArray, NSData, NSString;
 
 @interface GEOResourceInfo : NSObject
 {
-    NSString *_name;
-    long long _type;
-    NSString *_checksum;
+    GEOResource *_resource;
     NSArray *_equivalentResources;
     BOOL _allowResumingPartialDownload;
 }
 
 @property (nonatomic, getter=_allowResumingPartialDownload, setter=_setAllowResumingPartialDownload:) BOOL allowResumingPartialDownload; // @synthesize allowResumingPartialDownload=_allowResumingPartialDownload;
-@property (readonly, nonatomic) NSString *checksum; // @synthesize checksum=_checksum;
+@property (readonly, nonatomic) NSData *checksum;
 @property (copy, nonatomic) NSArray *equivalentResources; // @synthesize equivalentResources=_equivalentResources;
-@property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, nonatomic) long long type; // @synthesize type=_type;
+@property (readonly, nonatomic) NSString *name;
+@property (readonly, nonatomic) GEOResource *resource; // @synthesize resource=_resource;
+@property (readonly, nonatomic) int type;
 
 - (void)dealloc;
 - (id)description;
-- (id)initWithName:(id)arg1 type:(long long)arg2 checksum:(id)arg3;
+- (id)initWithResource:(id)arg1;
 
 @end
 

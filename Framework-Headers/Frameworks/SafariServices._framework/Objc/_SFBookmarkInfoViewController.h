@@ -49,7 +49,6 @@
 - (void)_didBeginEditingTextField:(id)arg1;
 - (void)_didChangeEditingTextField:(id)arg1;
 - (void)_editField:(unsigned long long)arg1;
-- (void)_reloadData;
 - (void)_reloadFolderInfoForced:(BOOL)arg1;
 - (void)_removeActionsForTextFields;
 - (void)_returnWasPressedInTextField:(id)arg1;
@@ -74,6 +73,7 @@
 - (BOOL)isEditingField;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)reloadData;
 - (void)saveChanges;
 - (void)setParent:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

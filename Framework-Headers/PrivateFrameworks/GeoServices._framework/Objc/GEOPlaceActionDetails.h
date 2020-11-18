@@ -18,9 +18,11 @@
     double _searchResponseRelativeTimestamp;
     unsigned long long _targetID;
     NSString *_actionUrl;
+    NSString *_destinationApp;
     int _localSearchProviderID;
     NSString *_photoId;
     int _resultIndex;
+    NSString *_richProviderId;
     GEOTransitPlaceCard *_transitPlaceCard;
     struct {
         unsigned int animationID:1;
@@ -36,13 +38,16 @@
 @property (strong, nonatomic) NSString *actionUrl; // @synthesize actionUrl=_actionUrl;
 @property (nonatomic) unsigned long long animationID; // @synthesize animationID=_animationID;
 @property (nonatomic) unsigned long long businessID; // @synthesize businessID=_businessID;
+@property (strong, nonatomic) NSString *destinationApp; // @synthesize destinationApp=_destinationApp;
 @property (readonly, nonatomic) BOOL hasActionUrl;
 @property (nonatomic) BOOL hasAnimationID;
 @property (nonatomic) BOOL hasBusinessID;
+@property (readonly, nonatomic) BOOL hasDestinationApp;
 @property (nonatomic) BOOL hasLocalSearchProviderID;
 @property (readonly, nonatomic) BOOL hasPhotoId;
 @property (nonatomic) BOOL hasPlaceID;
 @property (nonatomic) BOOL hasResultIndex;
+@property (readonly, nonatomic) BOOL hasRichProviderId;
 @property (nonatomic) BOOL hasSearchResponseRelativeTimestamp;
 @property (nonatomic) BOOL hasTargetID;
 @property (readonly, nonatomic) BOOL hasTransitPlaceCard;
@@ -50,6 +55,7 @@
 @property (strong, nonatomic) NSString *photoId; // @synthesize photoId=_photoId;
 @property (nonatomic) long long placeID; // @synthesize placeID=_placeID;
 @property (nonatomic) int resultIndex; // @synthesize resultIndex=_resultIndex;
+@property (strong, nonatomic) NSString *richProviderId; // @synthesize richProviderId=_richProviderId;
 @property (nonatomic) double searchResponseRelativeTimestamp; // @synthesize searchResponseRelativeTimestamp=_searchResponseRelativeTimestamp;
 @property (nonatomic) unsigned long long targetID; // @synthesize targetID=_targetID;
 @property (strong, nonatomic) GEOTransitPlaceCard *transitPlaceCard; // @synthesize transitPlaceCard=_transitPlaceCard;

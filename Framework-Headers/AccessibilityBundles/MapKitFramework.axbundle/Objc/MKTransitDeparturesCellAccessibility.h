@@ -13,12 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (double)_accessibilityDelayBeforeUpdatingOnActivation;
 - (BOOL)_accessibilityIsInActivate;
 - (void)_accessibilitySetIsInActivate:(BOOL)arg1;
-- (BOOL)_accessibilitySupportsActivateAction;
 - (BOOL)_axIsCountdownCell;
-- (BOOL)accessibilityActivate;
 - (id)tableTextAccessibleLabel:(id)arg1;
 
 @end

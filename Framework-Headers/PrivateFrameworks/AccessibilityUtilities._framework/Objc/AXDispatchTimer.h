@@ -21,6 +21,7 @@
     NSObject<OS_dispatch_source> *_dispatchTimer;
     CDUnknownBlockType _processBlock;
     CDUnknownBlockType _cancelBlock;
+    NSString *_label;
 }
 
 @property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
@@ -32,6 +33,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *dispatchTimer; // @synthesize dispatchTimer=_dispatchTimer;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSString *label; // @synthesize label=_label;
 @property (nonatomic, getter=isPending) BOOL pending; // @synthesize pending=_pending;
 @property (copy, nonatomic) CDUnknownBlockType processBlock; // @synthesize processBlock=_processBlock;
 @property (readonly) Class superclass;

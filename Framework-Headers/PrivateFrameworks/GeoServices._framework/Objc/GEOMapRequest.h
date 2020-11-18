@@ -12,12 +12,15 @@
 {
     GEOMapRequestManager *_requestManager;
     CDUnknownBlockType _completionHandler;
+    CDUnknownBlockType _cancellationHandler;
     BOOL _isFinished;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType cancellationHandler; // @synthesize cancellationHandler=_cancellationHandler;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (readonly, nonatomic) BOOL isFinished; // @synthesize isFinished=_isFinished;
 
+- (void)_finishAndCallHandler:(CDUnknownBlockType)arg1;
 - (void)cancel;
 - (void)complete;
 - (void)dealloc;

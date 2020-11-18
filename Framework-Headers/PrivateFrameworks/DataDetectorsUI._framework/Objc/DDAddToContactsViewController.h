@@ -28,7 +28,7 @@
 + (id)_exportedInterface;
 + (id)_remoteViewControllerInterface;
 + (id)alternateNameForContact:(id)arg1;
-- (void)_augmentRecord:(void *)arg1 withResultsFromAction:(id)arg2;
+- (void)_augmentContact:(id)arg1 withResultsFromAction:(id)arg2;
 - (void)adaptForPresentationInPopover:(BOOL)arg1;
 - (void)cancelPressed:(id)arg1;
 - (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
@@ -36,6 +36,7 @@
 - (void)doneWithAddingContact;
 - (void)prepareForAction:(id)arg1;
 - (void)setCancelButtonVisible:(BOOL)arg1;
+- (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

@@ -8,18 +8,14 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAdditionalEnabledMarkets, GEOAddress, GEOBusinessOptions, GEOClientCapabilities, GEOIndexQueryNode, GEOLatLng, GEOLocation, GEOMapRegion, GEOSuggestionsOptions, NSData, NSMutableArray, NSString;
+@class GEOAdditionalEnabledMarkets, GEOAddress, GEOBusinessOptions, GEOClientCapabilities, GEOIndexQueryNode, GEOLatLng, GEOLocation, GEOMapRegion, GEOSearchSubstring, GEOSuggestionsOptions, NSData, NSMutableArray, NSString;
 
 @interface GEOPlaceSearchRequest : PBRequest <NSCopying>
 {
-    CDStruct_612aec5b _sessionGUID;
+    struct GEOSessionID _sessionGUID;
     CDStruct_95bda58d _additionalPlaceTypes;
     CDStruct_62a50c50 _businessIDs;
     CDStruct_95bda58d _optionalSuppressionReasons;
-    CDStruct_0756942c _searchContextSubstring;
-    CDStruct_0756942c *_searchSubstrings;
-    unsigned long long _searchSubstringsCount;
-    unsigned long long _searchSubstringsSpace;
     long long _geoId;
     unsigned long long _intersectingGeoId;
     double _timeSinceMapEnteredForeground;
@@ -32,6 +28,7 @@
     GEOClientCapabilities *_clientCapabilities;
     NSString *_deviceCountryCode;
     GEOLatLng *_deviceLocation;
+    NSString *_deviceLocationCountryCode;
     NSString *_deviceTimeZone;
     NSMutableArray *_filterByBusinessCategorys;
     GEOIndexQueryNode *_indexFilter;
@@ -50,13 +47,16 @@
     GEOAddress *_preserveFields;
     NSString *_search;
     NSString *_searchContext;
+    GEOSearchSubstring *_searchContextSubstring;
     GEOLatLng *_searchLocation;
     int _searchSource;
+    NSMutableArray *_searchSubstrings;
     int _sequenceNumber;
     NSMutableArray *_serviceTags;
     GEOSuggestionsOptions *_suggestionsOptions;
     NSString *_suggestionsPrefix;
     int _transportTypeForTravelTimes;
+    NSString *_viewportCenterCountryCode;
     NSData *_zilchPoints;
     BOOL _excludeAddressInResults;
     BOOL _includeBusinessCategories;
@@ -68,7 +68,6 @@
     BOOL _includeNameForForwardGeocodingResults;
     BOOL _includePhonetics;
     BOOL _includeQuads;
-    BOOL _includeRevgeoRequestTemplate;
     BOOL _includeRoadAccessPoints;
     BOOL _includeSpokenNames;
     BOOL _includeStatusCodeInfo;
@@ -85,7 +84,6 @@
     BOOL _suppressResultsRequiringAttribution;
     struct {
         unsigned int sessionGUID:1;
-        unsigned int searchContextSubstring:1;
         unsigned int geoId:1;
         unsigned int intersectingGeoId:1;
         unsigned int timeSinceMapEnteredForeground:1;
@@ -111,7 +109,6 @@
         unsigned int includeNameForForwardGeocodingResults:1;
         unsigned int includePhonetics:1;
         unsigned int includeQuads:1;
-        unsigned int includeRevgeoRequestTemplate:1;
         unsigned int includeRoadAccessPoints:1;
         unsigned int includeSpokenNames:1;
         unsigned int includeStatusCodeInfo:1;
@@ -140,6 +137,7 @@
 @property (strong, nonatomic) GEOClientCapabilities *clientCapabilities; // @synthesize clientCapabilities=_clientCapabilities;
 @property (strong, nonatomic) NSString *deviceCountryCode; // @synthesize deviceCountryCode=_deviceCountryCode;
 @property (strong, nonatomic) GEOLatLng *deviceLocation; // @synthesize deviceLocation=_deviceLocation;
+@property (strong, nonatomic) NSString *deviceLocationCountryCode; // @synthesize deviceLocationCountryCode=_deviceLocationCountryCode;
 @property (strong, nonatomic) NSString *deviceTimeZone; // @synthesize deviceTimeZone=_deviceTimeZone;
 @property (nonatomic) BOOL excludeAddressInResults; // @synthesize excludeAddressInResults=_excludeAddressInResults;
 @property (strong, nonatomic) NSMutableArray *filterByBusinessCategorys; // @synthesize filterByBusinessCategorys=_filterByBusinessCategorys;
@@ -151,6 +149,7 @@
 @property (readonly, nonatomic) BOOL hasClientCapabilities;
 @property (readonly, nonatomic) BOOL hasDeviceCountryCode;
 @property (readonly, nonatomic) BOOL hasDeviceLocation;
+@property (readonly, nonatomic) BOOL hasDeviceLocationCountryCode;
 @property (readonly, nonatomic) BOOL hasDeviceTimeZone;
 @property (nonatomic) BOOL hasExcludeAddressInResults;
 @property (nonatomic) BOOL hasGeoId;
@@ -163,7 +162,6 @@
 @property (nonatomic) BOOL hasIncludeNameForForwardGeocodingResults;
 @property (nonatomic) BOOL hasIncludePhonetics;
 @property (nonatomic) BOOL hasIncludeQuads;
-@property (nonatomic) BOOL hasIncludeRevgeoRequestTemplate;
 @property (nonatomic) BOOL hasIncludeRoadAccessPoints;
 @property (nonatomic) BOOL hasIncludeSpokenNames;
 @property (nonatomic) BOOL hasIncludeStatusCodeInfo;
@@ -192,7 +190,7 @@
 @property (readonly, nonatomic) BOOL hasPreserveFields;
 @property (readonly, nonatomic) BOOL hasSearch;
 @property (readonly, nonatomic) BOOL hasSearchContext;
-@property (nonatomic) BOOL hasSearchContextSubstring;
+@property (readonly, nonatomic) BOOL hasSearchContextSubstring;
 @property (readonly, nonatomic) BOOL hasSearchLocation;
 @property (nonatomic) BOOL hasSearchSource;
 @property (nonatomic) BOOL hasSequenceNumber;
@@ -205,6 +203,7 @@
 @property (nonatomic) BOOL hasTimeSinceMapViewportChanged;
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) BOOL hasTransportTypeForTravelTimes;
+@property (readonly, nonatomic) BOOL hasViewportCenterCountryCode;
 @property (readonly, nonatomic) BOOL hasZilchPoints;
 @property (nonatomic) BOOL includeBusinessCategories; // @synthesize includeBusinessCategories=_includeBusinessCategories;
 @property (nonatomic) BOOL includeBusinessRating; // @synthesize includeBusinessRating=_includeBusinessRating;
@@ -215,7 +214,6 @@
 @property (nonatomic) BOOL includeNameForForwardGeocodingResults; // @synthesize includeNameForForwardGeocodingResults=_includeNameForForwardGeocodingResults;
 @property (nonatomic) BOOL includePhonetics; // @synthesize includePhonetics=_includePhonetics;
 @property (nonatomic) BOOL includeQuads; // @synthesize includeQuads=_includeQuads;
-@property (nonatomic) BOOL includeRevgeoRequestTemplate; // @synthesize includeRevgeoRequestTemplate=_includeRevgeoRequestTemplate;
 @property (nonatomic) BOOL includeRoadAccessPoints; // @synthesize includeRoadAccessPoints=_includeRoadAccessPoints;
 @property (nonatomic) BOOL includeSpokenNames; // @synthesize includeSpokenNames=_includeSpokenNames;
 @property (nonatomic) BOOL includeStatusCodeInfo; // @synthesize includeStatusCodeInfo=_includeStatusCodeInfo;
@@ -247,14 +245,13 @@
 @property (strong, nonatomic) GEOAddress *preserveFields; // @synthesize preserveFields=_preserveFields;
 @property (strong, nonatomic) NSString *search; // @synthesize search=_search;
 @property (strong, nonatomic) NSString *searchContext; // @synthesize searchContext=_searchContext;
-@property (nonatomic) CDStruct_0756942c searchContextSubstring; // @synthesize searchContextSubstring=_searchContextSubstring;
+@property (strong, nonatomic) GEOSearchSubstring *searchContextSubstring; // @synthesize searchContextSubstring=_searchContextSubstring;
 @property (strong, nonatomic) GEOLatLng *searchLocation; // @synthesize searchLocation=_searchLocation;
 @property (nonatomic) int searchSource; // @synthesize searchSource=_searchSource;
-@property (readonly, nonatomic) CDStruct_0756942c *searchSubstrings;
-@property (readonly, nonatomic) unsigned long long searchSubstringsCount;
+@property (strong, nonatomic) NSMutableArray *searchSubstrings; // @synthesize searchSubstrings=_searchSubstrings;
 @property (nonatomic) int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property (strong, nonatomic) NSMutableArray *serviceTags; // @synthesize serviceTags=_serviceTags;
-@property (nonatomic) CDStruct_612aec5b sessionGUID; // @synthesize sessionGUID=_sessionGUID;
+@property (nonatomic) struct GEOSessionID sessionGUID; // @synthesize sessionGUID=_sessionGUID;
 @property (nonatomic) BOOL structuredSearch; // @synthesize structuredSearch=_structuredSearch;
 @property (strong, nonatomic) GEOSuggestionsOptions *suggestionsOptions; // @synthesize suggestionsOptions=_suggestionsOptions;
 @property (strong, nonatomic) NSString *suggestionsPrefix; // @synthesize suggestionsPrefix=_suggestionsPrefix;
@@ -263,17 +260,32 @@
 @property (nonatomic) double timeSinceMapViewportChanged; // @synthesize timeSinceMapViewportChanged=_timeSinceMapViewportChanged;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) int transportTypeForTravelTimes; // @synthesize transportTypeForTravelTimes=_transportTypeForTravelTimes;
+@property (strong, nonatomic) NSString *viewportCenterCountryCode; // @synthesize viewportCenterCountryCode=_viewportCenterCountryCode;
 @property (strong, nonatomic) NSData *zilchPoints; // @synthesize zilchPoints=_zilchPoints;
 
++ (Class)filterByBusinessCategoryType;
++ (Class)limitToCountryCodeIso2Type;
++ (Class)searchSubstringType;
++ (Class)serviceTagType;
+- (int)StringAsAdditionalPlaceTypes:(id)arg1;
+- (int)StringAsBusinessSortOrder:(id)arg1;
+- (int)StringAsKnownAccuracy:(id)arg1;
+- (int)StringAsMapMode:(id)arg1;
+- (int)StringAsOptionalSuppressionReasons:(id)arg1;
+- (int)StringAsPlaceTypeLimit:(id)arg1;
+- (int)StringAsSearchSource:(id)arg1;
+- (int)StringAsTransportTypeForTravelTimes:(id)arg1;
 - (void)addAdditionalPlaceType:(int)arg1;
 - (void)addBusinessID:(unsigned long long)arg1;
 - (void)addFilterByBusinessCategory:(id)arg1;
 - (void)addLimitToCountryCodeIso2:(id)arg1;
 - (void)addOptionalSuppressionReason:(int)arg1;
-- (void)addSearchSubstring:(CDStruct_0756942c)arg1;
+- (void)addSearchSubstring:(id)arg1;
 - (void)addServiceTag:(id)arg1;
 - (int)additionalPlaceTypeAtIndex:(unsigned long long)arg1;
+- (id)additionalPlaceTypesAsString:(int)arg1;
 - (unsigned long long)businessIDAtIndex:(unsigned long long)arg1;
+- (id)businessSortOrderAsString:(int)arg1;
 - (void)clearAdditionalPlaceTypes;
 - (void)clearBusinessIDs;
 - (void)clearFilterByBusinessCategorys;
@@ -291,20 +303,26 @@
 - (unsigned long long)hash;
 - (id)initWithTraits:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)knownAccuracyAsString:(int)arg1;
 - (id)limitToCountryCodeIso2AtIndex:(unsigned long long)arg1;
 - (unsigned long long)limitToCountryCodeIso2sCount;
+- (id)mapModeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (int)optionalSuppressionReasonAtIndex:(unsigned long long)arg1;
+- (id)optionalSuppressionReasonsAsString:(int)arg1;
+- (id)placeTypeLimitAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (unsigned int)requestTypeCode;
 - (Class)responseClass;
-- (CDStruct_0756942c)searchSubstringAtIndex:(unsigned long long)arg1;
+- (id)searchSourceAsString:(int)arg1;
+- (id)searchSubstringAtIndex:(unsigned long long)arg1;
+- (unsigned long long)searchSubstringsCount;
 - (id)serviceTagAtIndex:(unsigned long long)arg1;
 - (unsigned long long)serviceTagsCount;
 - (void)setAdditionalPlaceTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setBusinessIDs:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (void)setOptionalSuppressionReasons:(int *)arg1 count:(unsigned long long)arg2;
-- (void)setSearchSubstrings:(CDStruct_0756942c *)arg1 count:(unsigned long long)arg2;
+- (id)transportTypeForTravelTimesAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

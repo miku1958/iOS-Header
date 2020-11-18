@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
     id<PUDisplayAsset> _asset;
     PUMediaProvider *_mediaProvider;
     UIColor *_placeholderColor;
-    UIImage *_image;
     UIImageView *__imageView;
     NSData *__fullsizeJPEGData;
     long long __fullsizeImageOrientation;
@@ -34,6 +33,7 @@ __attribute__((visibility("hidden")))
     long long __assetLoadingStage;
     NSDate *__assetLoadingStartDate;
     PUImageRequester *__imageRequester;
+    UIImage *_image;
     struct CGSize __targetSize;
     struct CGSize __fullsizeImageUntransformedSize;
     struct CGSize __fullsizeImageSize;

@@ -6,12 +6,18 @@
 
 #import <WebKit/NSObject-Protocol.h>
 
-@class NSObject, NSString;
-@protocol NSSecureCoding;
+@class NSArray, NSObject, NSString, UIView;
+@protocol NSSecureCoding, _WKFocusedElementInfo;
 
 @protocol _WKFormInputSession <NSObject>
 
 @property (copy, nonatomic) NSString *accessoryViewCustomButtonTitle;
+@property (nonatomic) BOOL accessoryViewShouldNotShow;
+@property (strong, nonatomic) UIView *customInputView;
+@property (readonly, nonatomic) id<_WKFocusedElementInfo> focusedElementInfo;
+@property (nonatomic) BOOL forceSecureTextEntry;
+@property (copy, nonatomic) NSArray *suggestions;
+@property (copy, nonatomic) NSString *textContentType;
 @property (readonly, nonatomic) NSObject<NSSecureCoding> *userObject;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 

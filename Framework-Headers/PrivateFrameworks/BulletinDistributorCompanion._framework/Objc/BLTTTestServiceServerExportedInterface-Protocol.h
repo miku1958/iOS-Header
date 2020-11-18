@@ -16,9 +16,10 @@
 - (void)getStandaloneTestModeEnabledWithCompletion:(void (^)(BOOL))arg1;
 - (void)originalSettingsWithCompletion:(void (^)(NSArray *))arg1;
 - (void)overriddenSettingsWithCompletion:(void (^)(NSArray *))arg1;
-- (void)sendAllSectionInfoWithCompletion:(void (^)(void))arg1;
+- (void)sendAllSectionInfoWithSpool:(BOOL)arg1 completion:(void (^)(void))arg2;
 - (void)sendSectionInfoWithSectionID:(NSString *)arg1 completion:(void (^)(void))arg2;
 - (void)settingOverridesWithCompletion:(void (^)(NSArray *))arg1;
-- (void)willAlertForSectionID:(NSString *)arg1 subtype:(long long)arg2 considerSubtype:(BOOL)arg3 completion:(void (^)(BOOL))arg4;
+- (void)spoolSectionInfoWithCompletion:(void (^)(void))arg1;
+- (void)willAlertForSectionID:(NSString *)arg1 subtype:(long long)arg2 completion:(void (^)(BOOL))arg3;
 @end
 

@@ -6,75 +6,69 @@
 
 #import <objc/NSObject.h>
 
-#import <Message/QLPreviewItem-Protocol.h>
+#import <Message/MFCancelable-Protocol.h>
 
-@class MFAttachmentManager, MFAttachmentPlaceholder, MFMailDropMetadata, MFMimePart, NSMutableDictionary, NSProgress, NSString, NSURL;
+@class MFAttachmentManager, MFAttachmentPlaceholder, MFMailDropMetadata, MFMimePart, NSProgress, NSString, NSURL;
 @protocol MFDataConsumer;
 
-@interface MFAttachment : NSObject <QLPreviewItem>
+@interface MFAttachment : NSObject <MFCancelable>
 {
-    NSMutableDictionary *_metadata;
     MFAttachmentManager *_attachmentManager;
     BOOL _isDataAvailableLocally;
     MFAttachmentPlaceholder *_placeholder;
     NSProgress *_downloadProgress;
-    BOOL _isUserFacing;
+    BOOL _isAutoArchive;
+    BOOL _wantsCompletionBlockOffMainThread;
     NSURL *_url;
     MFMimePart *_part;
     NSString *_disposition;
-    unsigned long long _progressInterval;
-    double _progressTimeInterval;
     CDUnknownBlockType _fetchCompletionBlock;
-    CDUnknownBlockType _fetchProgressBlock;
     id<MFDataConsumer> _customConsumer;
     unsigned long long _lastProgressBytes;
     double _lastProgressTime;
 }
 
 @property (nonatomic) MFAttachmentManager *attachmentManager; // @synthesize attachmentManager=_attachmentManager;
-@property (readonly) NSString *contentID;
+@property (copy) NSString *contentID;
 @property (strong, nonatomic) id<MFDataConsumer> customConsumer; // @synthesize customConsumer=_customConsumer;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) unsigned long long decodedFileSize;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *disposition; // @synthesize disposition=_disposition;
-@property (readonly, nonatomic) NSProgress *downloadProgress;
+@property (strong, nonatomic) NSProgress *downloadProgress; // @synthesize downloadProgress=_downloadProgress;
 @property (nonatomic) unsigned long long encodedFileSize;
 @property (copy, nonatomic) CDUnknownBlockType fetchCompletionBlock; // @synthesize fetchCompletionBlock=_fetchCompletionBlock;
-@property (copy) CDUnknownBlockType fetchProgressBlock; // @synthesize fetchProgressBlock=_fetchProgressBlock;
 @property (copy, nonatomic) NSString *fileName; // @dynamic fileName;
 @property (readonly) NSString *fileUTType;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSString *inferredMimeType;
-@property (readonly) BOOL isAutoArchive;
+@property (readonly) BOOL isAutoArchive; // @synthesize isAutoArchive=_isAutoArchive;
 @property (readonly) BOOL isContainedInCompose;
 @property (readonly) BOOL isContainedInRFC822;
 @property (readonly) BOOL isDataAvailableLocally;
 @property BOOL isPlaceholder; // @dynamic isPlaceholder;
-@property (nonatomic) BOOL isUserFacing; // @synthesize isUserFacing=_isUserFacing;
 @property (nonatomic) unsigned long long lastProgressBytes; // @synthesize lastProgressBytes=_lastProgressBytes;
 @property (nonatomic) double lastProgressTime; // @synthesize lastProgressTime=_lastProgressTime;
 @property (strong, nonatomic) MFMailDropMetadata *mailDropMetadata; // @dynamic mailDropMetadata;
 @property (copy, nonatomic) NSString *mimeType; // @dynamic mimeType;
-@property (copy, nonatomic) NSString *originalCID;
 @property (strong, nonatomic) MFMimePart *part; // @synthesize part=_part;
 @property (readonly) NSString *path; // @dynamic path;
 @property (strong, nonatomic) MFAttachmentPlaceholder *placeholder; // @synthesize placeholder=_placeholder;
-@property (readonly, nonatomic) NSString *previewItemTitle;
-@property (readonly, nonatomic) NSURL *previewItemURL;
-@property (nonatomic) unsigned long long progressInterval; // @synthesize progressInterval=_progressInterval;
-@property (nonatomic) double progressTimeInterval; // @synthesize progressTimeInterval=_progressTimeInterval;
 @property (copy, nonatomic) NSString *remoteImageFileName;
 @property (readonly) BOOL shouldAutoDownload;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSURL *url; // @synthesize url=_url;
+@property (nonatomic) BOOL wantsCompletionBlockOffMainThread; // @synthesize wantsCompletionBlockOffMainThread=_wantsCompletionBlockOffMainThread;
 
 - (id)_dataProvider;
+- (id)_fileUTTypeForFileName:(id)arg1;
+- (id)attachmentContentTypeForFileName:(id)arg1;
 - (void)cancel;
 - (BOOL)conformsToType:(id)arg1;
 - (BOOL)contentTypeConformsToEvent;
 - (BOOL)contentTypeConformsToEventICS;
 - (BOOL)contentTypeConformsToEventVCS;
+- (BOOL)contentTypeConformsToIWork;
 - (BOOL)contentTypeConformsToMarkup;
 - (BOOL)contentTypeConformsToPassbook;
 - (BOOL)contentTypeConformsToProvisionment;
@@ -85,12 +79,11 @@
 - (id)fetchDataSynchronously:(id *)arg1;
 - (id)fetchDataSynchronously:(id *)arg1 stripPrivateMetadata:(BOOL)arg2;
 - (id)fetchDataToURL:(id *)arg1;
-- (void)fetchDataWithCompletion:(CDUnknownBlockType)arg1;
-- (void)fetchDataWithCompletion:(CDUnknownBlockType)arg1 stripPrivateMetadata:(BOOL)arg2;
 - (id)fetchLocalData;
 - (id)fetchLocalData:(id *)arg1 stripPrivateMetadata:(BOOL)arg2;
 - (id)fetchPlaceholderData;
 - (id)fileAttributes;
+- (id)fileNameByStrippingZipIfNeeded:(BOOL)arg1;
 - (id)fileURL;
 - (id)filterData:(id)arg1;
 - (id)filterICSData:(id)arg1;
@@ -104,11 +97,12 @@
 - (BOOL)isMailDropPhotoArchive;
 - (id)metadataValueForKey:(id)arg1;
 - (id)readFromDisk;
-- (void)setContentID:(id)arg1;
+- (void)resetProgress;
 - (void)setMetadataValue:(id)arg1 forKey:(id)arg2;
 - (unsigned long long)sizeOnDisk;
 - (id)textEncodingGuessWithData:(id)arg1;
 - (id)textEncodingNameForData:(id)arg1 mimeType:(id)arg2;
+- (void)updateProgressWithCurrentBytes:(unsigned long long)arg1;
 - (void)writeToDiskWithData:(id)arg1;
 
 @end

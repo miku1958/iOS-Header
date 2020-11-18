@@ -6,8 +6,6 @@
 
 #import <PhotosUI/PUSettings.h>
 
-@class PUIrisAnalysisSettings;
-
 @interface PUIrisSettings : PUSettings
 {
     BOOL _showStatusBorder;
@@ -24,13 +22,11 @@
     float _playbackPostDuration;
     float _transitionBlurRadius;
     float _transitionScale;
-    PUIrisAnalysisSettings *_analysisSettings;
     double _transitionDuration;
     double _playbackTransitionCrossfadeDelay;
     double _settleTransitionDuration;
 }
 
-@property (strong, nonatomic) PUIrisAnalysisSettings *analysisSettings; // @synthesize analysisSettings=_analysisSettings;
 @property (nonatomic, getter=isAudioEnabled) BOOL audioEnabled; // @synthesize audioEnabled=_audioEnabled;
 @property (nonatomic) float playbackPostDuration; // @synthesize playbackPostDuration=_playbackPostDuration;
 @property (nonatomic) float playbackPreDuration; // @synthesize playbackPreDuration=_playbackPreDuration;
@@ -52,7 +48,6 @@
 + (id)_photosPlayerRootSettings;
 + (id)settingsControllerModule;
 + (id)sharedInstance;
-- (void).cxx_destruct;
 - (void)performPostSaveActions;
 - (void)restoreDefaultValues;
 - (void)setDefaultValues;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import "UIAlertViewDelegate-Protocol.h"
 
@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSData *screenshotData; // @synthesize screenshotData=_screenshotData;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_cleanup;
 - (void)alertViewCancel:(id)arg1;
 - (void)dealloc;

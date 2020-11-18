@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSMutableArray *attributions; // @synthesize attributions=_attributions;
 @property (strong, nonatomic) NSMutableArray *icons; // @synthesize icons=_icons;
 
++ (Class)attributionType;
++ (Class)iconType;
 - (void)addAttribution:(id)arg1;
 - (void)addIcon:(id)arg1;
 - (id)attributionAtIndex:(unsigned long long)arg1;

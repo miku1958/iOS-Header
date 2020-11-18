@@ -6,9 +6,11 @@
 
 #import <GameplayKit/GKAgent.h>
 
+#import <GameplayKit/NSCoding-Protocol.h>
+
 @class MISSING_TYPE;
 
-@interface GKAgent2D : GKAgent
+@interface GKAgent2D : GKAgent <NSCoding>
 {
 }
 
@@ -18,21 +20,11 @@
 
 - (void)applyBrakingForce:(float)arg1 deltaTime:(double)arg2;
 - (void)applySteeringForce:(double)arg1 deltaTime: /* Error: Ran out of types for this method. */;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (struct float2)position_;
 - (void)setPosition_:(struct float2)arg1;
-- (MISSING_TYPE *)steerForAlignment:(id)arg1 maxDistance:(float)arg2 maxAngle:(float)arg3;
-- (MISSING_TYPE *)steerForCohesion:(id)arg1 maxDistance:(float)arg2 maxAngle:(float)arg3;
-- (MISSING_TYPE *)steerForFlee: /* Error: Ran out of types for this method. */;
-- (MISSING_TYPE *)steerForIntercept:(id)arg1 maxPredictionTime:(double)arg2;
-- (MISSING_TYPE *)steerForSeek: /* Error: Ran out of types for this method. */;
-- (MISSING_TYPE *)steerForSeparation:(id)arg1 maxDistance:(float)arg2 maxAngle:(float)arg3;
-- (MISSING_TYPE *)steerForTargetSpeed:(float)arg1;
-- (MISSING_TYPE *)steerForWander:(double)arg1 speed:(float)arg2;
-- (MISSING_TYPE *)steerToAvoidAgents:(id)arg1 timeBeforeCollisionToAvoid:(double)arg2;
-- (MISSING_TYPE *)steerToAvoidObstacles:(id)arg1 timeBeforeCollisionToAvoid:(double)arg2;
-- (MISSING_TYPE *)steerToFollowPath:(id)arg1 maxPredictionTime:(double)arg2 forward:(BOOL)arg3;
-- (MISSING_TYPE *)steerToStayOnPath:(id)arg1 maxPredictionTime:(double)arg2;
 - (void)updateWithDeltaTime:(double)arg1;
 - (struct float2)velocity_;
 

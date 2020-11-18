@@ -15,13 +15,15 @@ __attribute__((visibility("hidden")))
     NSAttributedString *_attributedStringValue;
     FULabel *_realAssociatedScalingLabel;
     BOOL _uppercase;
+    BOOL _useCurrentLocale;
     CDUnknownBlockType _onTap;
     FULabel *_associatedScalingLabel;
 }
 
 @property (weak, nonatomic) FULabel *associatedScalingLabel; // @synthesize associatedScalingLabel=_associatedScalingLabel;
 @property (copy) CDUnknownBlockType onTap; // @synthesize onTap=_onTap;
-@property (nonatomic) BOOL uppercase; // @synthesize uppercase=_uppercase;
+@property (readonly, nonatomic) BOOL uppercase; // @synthesize uppercase=_uppercase;
+@property (readonly) BOOL useCurrentLocale; // @synthesize useCurrentLocale=_useCurrentLocale;
 
 - (void).cxx_destruct;
 - (id)_associatedScalingLabel;
@@ -31,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)setAssociatedLabel:(id)arg1;
 - (void)setAttributedText:(id)arg1;
 - (void)setText:(id)arg1;
+- (void)setUppercase:(BOOL)arg1 usingCurrentLocale:(BOOL)arg2;
 
 @end
 

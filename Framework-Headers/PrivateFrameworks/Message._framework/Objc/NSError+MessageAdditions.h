@@ -7,6 +7,7 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (MessageAdditions)
+- (BOOL)mf_isSMIMEError;
 - (BOOL)mf_isUserCancelledError;
 - (id)mf_moreInfo;
 - (id)mf_shortDescription;

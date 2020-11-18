@@ -28,17 +28,15 @@
 @property (readonly, nonatomic) NSMutableSet *_nodesWithLocation; // @synthesize _nodesWithLocation=__nodesWithLocation;
 @property (strong, nonatomic, setter=_setSplitTags:) NSCountedSet *_splitTags; // @synthesize _splitTags=__splitTags;
 @property (readonly, nonatomic) CLLocation *approximateLocation; // @synthesize approximateLocation=__approximateLocation;
-@property (strong, nonatomic) NSDate *endingDate; // @synthesize endingDate=__endingDate;
+@property (strong, nonatomic, setter=_setEndingDate:) NSDate *endingDate; // @synthesize endingDate=__endingDate;
 @property (nonatomic) short generationType; // @synthesize generationType=_generationType;
 @property (readonly, copy, nonatomic) NSArray *nodes;
 @property (readonly, nonatomic) NSObject<NSCopying> *objectID; // @synthesize objectID=__objectID;
-@property (strong, nonatomic) NSDate *startingDate; // @synthesize startingDate=__startingDate;
+@property (strong, nonatomic, setter=_setStartingDate:) NSDate *startingDate; // @synthesize startingDate=__startingDate;
 @property (strong, nonatomic) NSString *title; // @synthesize title=__title;
 
 + (double)nameOccurrenceCutoff;
 - (void)_correctStartAndEndDates;
-- (void)_setEndingDate:(id)arg1;
-- (void)_setStartingDate:(id)arg1;
 - (void)addNode:(id)arg1;
 - (void)addNodes:(id)arg1;
 - (void)addNodesFromCluster:(id)arg1;

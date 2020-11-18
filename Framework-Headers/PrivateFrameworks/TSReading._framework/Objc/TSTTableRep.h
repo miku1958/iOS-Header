@@ -6,12 +6,13 @@
 
 #import <TSReading/TSWPTextHostRep.h>
 
+#import <TSReading/TSDTilingLayerDelegate-Protocol.h>
 #import <TSReading/UITextFieldDelegate-Protocol.h>
 
 @class CALayer, CAShapeLayer, NSMutableArray, NSSet, NSString, TSDCanvasView, TSDEditorController, TSDKnobTracker, TSDTilingLayer, TSTAnimation, TSTCellRegion, TSTEditingState, TSTLayout, TSTMasterLayout, TSTSearchReference, TSTSelectionDragController, TSTTableCellTextEditingRep, TSTTableInfo, TSTTableModel, TSTTableReferences, TSTTableSelection, TSWPHyperlinkField, TSWPStorage, TSWPTextEditing;
 @protocol TSTCanvasReferenceController, TSTTableAnimationController, TSTTableChromeProvider, TSTTableKnobTrackerVisitorProtocol, TSTTableRepDelegate;
 
-@interface TSTTableRep : TSWPTextHostRep <UITextFieldDelegate>
+@interface TSTTableRep : TSWPTextHostRep <TSDTilingLayerDelegate, UITextFieldDelegate>
 {
     struct CGRect mCanvasVisibleRect;
     struct CGRect mSearchSelectionBounds;

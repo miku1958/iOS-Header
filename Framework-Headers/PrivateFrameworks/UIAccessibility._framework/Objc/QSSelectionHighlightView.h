@@ -10,12 +10,16 @@
 
 @interface QSSelectionHighlightView : UIView
 {
+    BOOL _sentenceHighlight;
     NSArray *_highlightSelectionRects;
     UIColor *_selectionColor;
+    UIColor *_underlineColor;
 }
 
 @property (strong, nonatomic) NSArray *highlightSelectionRects; // @synthesize highlightSelectionRects=_highlightSelectionRects;
 @property (strong, nonatomic) UIColor *selectionColor; // @synthesize selectionColor=_selectionColor;
+@property (nonatomic) BOOL sentenceHighlight; // @synthesize sentenceHighlight=_sentenceHighlight;
+@property (strong, nonatomic) UIColor *underlineColor; // @synthesize underlineColor=_underlineColor;
 
 - (void)dealloc;
 - (void)drawRect:(struct CGRect)arg1;

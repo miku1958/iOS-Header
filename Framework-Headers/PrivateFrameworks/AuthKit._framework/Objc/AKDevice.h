@@ -9,7 +9,7 @@
 #import <AuthKit/NSCopying-Protocol.h>
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
-@class NSData, NSLocale, NSLock, NSString;
+@class NSData, NSLocale, NSLock, NSNumber, NSString;
 
 @interface AKDevice : NSObject <NSSecureCoding, NSCopying>
 {
@@ -19,18 +19,35 @@
     NSString *_uniqueDeviceIdentifier;
     NSString *_color;
     NSString *_enclosureColor;
+    NSNumber *_coverGlassColor;
+    NSNumber *_housingColor;
+    NSNumber *_backingColor;
     NSLocale *_locale;
+    NSString *_MLBSerialNumber;
+    NSString *_ROMAddress;
+    NSString *_modelNumber;
+    unsigned long long _linkType;
 }
 
+@property (copy) NSString *MLBSerialNumber; // @synthesize MLBSerialNumber=_MLBSerialNumber;
+@property (copy) NSString *ROMAddress; // @synthesize ROMAddress=_ROMAddress;
+@property (copy) NSNumber *backingColor; // @synthesize backingColor=_backingColor;
 @property (copy) NSString *color; // @synthesize color=_color;
+@property (copy) NSNumber *coverGlassColor; // @synthesize coverGlassColor=_coverGlassColor;
 @property (copy) NSString *enclosureColor; // @synthesize enclosureColor=_enclosureColor;
 @property BOOL hasBeenUnlockedSinceLastCheckIn;
+@property (copy) NSNumber *housingColor; // @synthesize housingColor=_housingColor;
 @property (readonly) NSString *integratedCircuitCardIdentifier;
 @property (readonly) NSString *internationalMobileEquipmentIdentity;
+@property (readonly) BOOL isAppleIDLoginEnabled;
+@property (readonly) BOOL isInCircle;
 @property (readonly) BOOL isInternalBuild;
 @property (readonly) BOOL isProtectedWithPasscode;
+@property (readonly) BOOL isUnlocked;
+@property (setter=setLinkType:) unsigned long long linkType; // @synthesize linkType=_linkType;
 @property (copy) NSLocale *locale; // @synthesize locale=_locale;
 @property (readonly) NSString *mobileEquipmentIdentifier;
+@property (copy) NSString *modelNumber; // @synthesize modelNumber=_modelNumber;
 @property (readonly) NSString *phoneNumber;
 @property (readonly) NSString *serialNumber;
 @property (readonly) NSData *serializedData;
@@ -41,11 +58,18 @@
 + (id)_buildNumber;
 + (id)_generateServerFriendlyDescription;
 + (id)_hardwareModel;
++ (id)_lookUpCurrentBackingColor;
 + (id)_lookUpCurrentColor;
++ (id)_lookUpCurrentCoverGlassColor;
 + (id)_lookUpCurrentEnclosureColor;
++ (id)_lookUpCurrentHousingColor;
 + (id)_lookUpCurrentUniqueDeviceID;
++ (id)_lookupMLBSerialNumber;
++ (id)_lookupModelNumber;
++ (id)_lookupROMAddress;
 + (id)_osName;
 + (id)_osVersion;
++ (id)activeIDSPeerDevice;
 + (id)currentDevice;
 + (id)deviceSpecificLocalizedStringWithKey:(id)arg1;
 + (id)deviceWithSerializedData:(id)arg1;

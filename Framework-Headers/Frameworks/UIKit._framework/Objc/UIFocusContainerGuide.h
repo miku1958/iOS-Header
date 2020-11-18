@@ -6,27 +6,14 @@
 
 #import <UIKit/UIFocusGuide.h>
 
-@class NSMapTable;
-
 @interface UIFocusContainerGuide : UIFocusGuide
 {
-    BOOL _shouldPreferNearestSubview;
-    BOOL _automaticallyDisableWhenContainingFocus;
-    NSMapTable *_preferredFocusedViewMapTable;
 }
 
-@property (nonatomic) BOOL automaticallyDisableWhenContainingFocus; // @synthesize automaticallyDisableWhenContainingFocus=_automaticallyDisableWhenContainingFocus;
-@property (strong, nonatomic) NSMapTable *preferredFocusedViewMapTable; // @synthesize preferredFocusedViewMapTable=_preferredFocusedViewMapTable;
-@property (nonatomic) BOOL shouldPreferNearestSubview; // @synthesize shouldPreferNearestSubview=_shouldPreferNearestSubview;
-
-- (void).cxx_destruct;
-- (void)_didUpdateFocusToPreferredFocusedViewForHeading:(unsigned long long)arg1;
 - (BOOL)_focusRegionIsEligibleForFocus;
-- (void)encodeWithCoder:(id)arg1;
+- (void)_searchForFocusRegionsInContext:(id)arg1;
+- (BOOL)_shouldSearchForFocusRegionsInContext:(id)arg1;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
-- (id)preferredFocusedViewForHeading:(unsigned long long)arg1;
-- (void)setPreferredFocusedView:(id)arg1 forHeading:(unsigned long long)arg2;
 
 @end
 

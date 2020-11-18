@@ -10,9 +10,33 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CGSize {
+    double _field1;
+    double _field2;
+};
+
+struct IMAssociatedMessageGeometryDescriptor {
+    unsigned long long layoutIntent;
+    unsigned long long associatedLayoutIntent;
+    float parentPreviewWidth;
+    float xScalar;
+    float yScalar;
+    float scale;
+    float rotation;
+};
+
+struct NSString {
+    Class _field1;
+};
+
 struct _FZChatRoomValidity {
     int _field1;
     unsigned short _field2;
+};
+
+struct _NSRange {
+    unsigned long long location;
+    unsigned long long length;
 };
 
 #pragma mark Typedef'd Structures

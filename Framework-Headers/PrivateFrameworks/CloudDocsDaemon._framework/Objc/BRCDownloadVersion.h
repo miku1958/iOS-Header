@@ -6,13 +6,14 @@
 
 #import <CloudDocsDaemon/BRCDownload.h>
 
-@class BRCProgress, CKRecord, CKRecordID, GSPermanentStorage, NSError;
+@class BRCClientZone, BRCProgress, CKRecord, CKRecordID, GSPermanentStorage, NSError;
 
 __attribute__((visibility("hidden")))
 @interface BRCDownloadVersion : BRCDownload
 {
     CKRecordID *_secondaryRecordID;
     CKRecord *_secondaryRecord;
+    BRCClientZone *_clientZone;
     BOOL _sharedZone;
     BOOL _isLoser;
     GSPermanentStorage *_storage;

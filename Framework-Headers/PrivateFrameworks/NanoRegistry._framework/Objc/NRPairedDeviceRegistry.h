@@ -16,7 +16,6 @@
 
 @interface NRPairedDeviceRegistry : NSObject <NSXPCConnectionDelegate, NRFrameworkDeviceDelegate, NRMutableStateParentDelegate, NRPairedDeviceRegistryXPCFrameworkDelegate>
 {
-    BOOL _shouldRestartDaemon;
     BOOL _xpcConnectionInvalidated;
     BOOL _hasSomeEntitlements;
     BOOL _hasSecurePropertyEntitlement;
@@ -36,7 +35,6 @@
     NSMutableDictionary *_mutableDeviceDictionary;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_internalQueue;
-    NSObject<OS_dispatch_queue> *_shouldRestartDaemonQueue;
     NSMutableArray *_finishedPairingSemaphores;
     long long _pairingCompatibilityVersion;
     long long _maxPairingCompatibilityVersion;
@@ -81,8 +79,6 @@
 @property (nonatomic) BOOL secureDataIsAvailable; // @synthesize secureDataIsAvailable=_secureDataIsAvailable;
 @property (nonatomic) int securePropertiesUnlockedNotifyToken; // @synthesize securePropertiesUnlockedNotifyToken=_securePropertiesUnlockedNotifyToken;
 @property (strong, nonatomic) NSMutableArray *securePropertiesUpdateBlocks; // @synthesize securePropertiesUpdateBlocks=_securePropertiesUpdateBlocks;
-@property (nonatomic) BOOL shouldRestartDaemon; // @synthesize shouldRestartDaemon=_shouldRestartDaemon;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *shouldRestartDaemonQueue; // @synthesize shouldRestartDaemonQueue=_shouldRestartDaemonQueue;
 @property (readonly, nonatomic) unsigned long long status;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableArray *waitForDeviceCollectionBlocks; // @synthesize waitForDeviceCollectionBlocks=_waitForDeviceCollectionBlocks;
@@ -118,9 +114,8 @@
 - (id)_getSecureProperties:(id)arg1;
 - (void)_getSwitchEventsFromIndex:(unsigned int)arg1 toIndex:(unsigned int)arg2 inlineCallback:(CDUnknownBlockType)arg3;
 - (void)_invalidateActiveDeviceAssertionWithIdentifier:(id)arg1;
-- (BOOL)_migrate;
 - (void)_pairingStorePathPairingID:(CDUnknownBlockType)arg1;
-- (void)_pingActiveGizmoWithPriority:(long long)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)_pingActiveGizmoWithPriority:(long long)arg1 withMessageSize:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (id)_privateDaemonConnection;
 - (id)_privateDaemonProxyWithErrorString:(id)arg1;
 - (void)_qsRecoveryMigrationWithPairedBTDeviceID:(id)arg1;
@@ -141,12 +136,14 @@
 - (void)blockUntilDeviceCollectionIsInitialized;
 - (void)checkStatusAndCompatibilityState;
 - (void)child:(id)arg1 didApplyDiff:(id)arg2;
-- (void)companionOOBDiscoverAndPairWithName:(id)arg1 withOutOfBandPairingKey:(id)arg2 operationHasBegun:(CDUnknownBlockType)arg3;
-- (void)companionPasscodePairWithDevice:(id)arg1 operationHasBegun:(CDUnknownBlockType)arg2;
+- (void)companionOOBDiscoverAndPairWithName:(id)arg1 withOutOfBandPairingKey:(id)arg2 withOptions:(id)arg3 operationHasBegun:(CDUnknownBlockType)arg4;
+- (void)companionPasscodePairWithDevice:(id)arg1 withOptions:(id)arg2 operationHasBegun:(CDUnknownBlockType)arg3;
 - (unsigned short)compatibilityState;
+- (id)createDevicesFromMutableDevices:(id)arg1 andPropertyStore:(id)arg2;
 - (void)createDevicesFromMutableDevicesAndPropertyStore:(id)arg1;
 - (void)dealloc;
 - (id)deviceForBTDeviceID:(id)arg1;
+- (id)deviceForBluetoothID:(id)arg1;
 - (id)deviceForIDSDevice:(id)arg1;
 - (id)deviceForNRDevice:(id)arg1 fromIDSDevices:(id)arg2;
 - (id)deviceForPairingID:(id)arg1;
@@ -171,10 +168,8 @@
 - (void)initializeWithShouldMakeEmptyDeviceCollection:(BOOL)arg1;
 - (BOOL)isDaemonIdle;
 - (BOOL)isPaired;
-- (unsigned int)majorVersion;
 - (long long)maxPairedDeviceCount;
 - (long long)minQuickSwitchCompatibilityVersion;
-- (unsigned int)minorVersion;
 - (void)notifyActivationCompleted:(id)arg1 withSuccess:(BOOL)arg2;
 - (void)notifyPairingShouldContinue;
 - (void)notifyPasscode:(id)arg1 forDevice:(id)arg2;
@@ -201,7 +196,7 @@
 - (void)sendDevicesUpdatedNotification;
 - (void)sendStatusChangeNotification;
 - (id)serverRequestReporterWithType:(id)arg1;
-- (void)setActivePairedDevice:(id)arg1 operationHasBegun:(CDUnknownBlockType)arg2;
+- (void)setActivePairedDevice:(id)arg1 isMagicSwitch:(BOOL)arg2 operationHasCompleted:(CDUnknownBlockType)arg3;
 - (void)setActivePairedDevice:(id)arg1 operationHasCompleted:(CDUnknownBlockType)arg2;
 - (void)setActivePairedDevice:(id)arg1 withActiveDeviceAssertionHandler:(CDUnknownBlockType)arg2;
 - (void)setupDeviceCollectionObserver;
@@ -212,10 +207,12 @@
 - (void)syncDevicesWithDevice:(id)arg1;
 - (void)transitionToCompatibilityState:(long long)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)unpairWithDevice:(id)arg1 shouldObliterate:(BOOL)arg2 operationHasBegun:(CDUnknownBlockType)arg3;
+- (void)unpairWithDevice:(id)arg1 withOptions:(id)arg2 operationHasBegun:(CDUnknownBlockType)arg3;
 - (void)unpairWithSimulator:(id)arg1 withQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)updateDeviceCollectionWithQueue:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)updateSecurePropertiesWithQueue:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)userIsCheckingForUpdate;
+- (id)waitForActivePairedDevice;
 - (void)waitForPairingStorePathPairingID:(CDUnknownBlockType)arg1;
 - (void)xpcDeviceID:(id)arg1 needsPasscode:(id)arg2;
 - (void)xpcHasNewOOBKey:(id)arg1;

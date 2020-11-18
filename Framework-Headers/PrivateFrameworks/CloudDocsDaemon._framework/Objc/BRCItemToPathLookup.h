@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BRCLocalItem, BRCRelativePath, BRCServerItem, BRCServerZone, NSURL;
+@class BRCAppLibrary, BRCLocalItem, BRCRelativePath, BRCServerItem, BRCServerZone, NSURL;
 
 @interface BRCItemToPathLookup : NSObject
 {
@@ -33,6 +33,7 @@
 @property (readonly, nonatomic) BRCRelativePath *byFileSystemID;
 @property (readonly, nonatomic) BRCRelativePath *byPath;
 @property (readonly, nonatomic) NSURL *coordinatedReadURL;
+@property (readonly, nonatomic) BRCAppLibrary *coordinatedURLAppLibrary;
 @property (readonly, nonatomic) NSURL *coordinatedWriteURL;
 @property (readonly, nonatomic) BOOL fileSystemIDMayStillExist;
 @property (readonly, nonatomic) BRCRelativePath *parentPath;

@@ -32,9 +32,11 @@
 + (id)telephonyURLWithDestinationID:(id)arg1 addressBookUID:(int)arg2;
 + (id)telephonyURLWithDestinationID:(id)arg1 addressBookUID:(int)arg2 forceAssist:(BOOL)arg3 suppressAssist:(BOOL)arg4 wasAssisted:(BOOL)arg5;
 + (id)telephonyURLWithDestinationID:(id)arg1 promptUser:(BOOL)arg2;
+- (id)_destinationIDConvertingNumbersToLatin:(BOOL)arg1;
+- (BOOL)_dialAssistBooleanQueryParameterValueForKey:(id)arg1;
+- (BOOL)_hasScheme:(id)arg1;
 - (id)_mobilePhonePathParameters;
 - (id)_mobilePhoneQueryParameters;
-- (id)_phoneNumberConvertNumbersToLatin:(BOOL)arg1;
 - (id)formattedPhoneNumber;
 - (BOOL)hasTelephonyScheme;
 - (BOOL)isTelephonyPromptURL;

@@ -17,7 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)allSelectedAnnotations;
-- (id)archivablePageModelControllers;
+- (id)archivedPageModelControllers;
 - (void)deleteAllSelectedAnnotations;
 - (void)deselectAllAnnotations;
 - (id)init;
@@ -25,7 +25,7 @@
 - (void)insertPageModelControllers:(id)arg1 atIndexes:(id)arg2;
 - (id)pageModelControllerForAnnotation:(id)arg1;
 - (id)pageModelControllerForPage:(unsigned long long)arg1;
-- (void)populateFromArchivablePageModelControllers:(id)arg1;
+- (void)populateFromArchivedPageModelControllers:(id)arg1;
 - (void)removeObjectFromPageModelControllersAtIndex:(unsigned long long)arg1;
 - (void)removePageModelControllersAtIndexes:(id)arg1;
 - (void)replaceObjectInPageModelControllersAtIndex:(unsigned long long)arg1 withObject:(id)arg2;

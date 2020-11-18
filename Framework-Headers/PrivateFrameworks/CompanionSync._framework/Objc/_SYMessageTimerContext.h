@@ -8,6 +8,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _SYMessageTimerContext : NSObject
 {
     unsigned long long _seqno;

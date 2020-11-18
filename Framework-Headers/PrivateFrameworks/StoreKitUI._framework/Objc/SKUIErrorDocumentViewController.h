@@ -14,11 +14,13 @@
 {
     SKUIClientContext *_clientContext;
     unsigned long long _contentUnavailableStyle;
+    CDUnknownBlockType _retryActionBlock;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) CDUnknownBlockType retryActionBlock; // @synthesize retryActionBlock=_retryActionBlock;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

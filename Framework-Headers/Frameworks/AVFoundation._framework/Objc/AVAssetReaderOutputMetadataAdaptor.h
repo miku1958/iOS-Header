@@ -6,9 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
+#import <AVFoundation/AVAssetReaderOutputAdaptor-Protocol.h>
+
 @class AVAssetReaderOutputMetadataAdaptorInternal, AVAssetReaderTrackOutput;
 
-@interface AVAssetReaderOutputMetadataAdaptor : NSObject
+@interface AVAssetReaderOutputMetadataAdaptor : NSObject <AVAssetReaderOutputAdaptor>
 {
     AVAssetReaderOutputMetadataAdaptorInternal *_internal;
 }
@@ -16,6 +18,7 @@
 @property (readonly, nonatomic) AVAssetReaderTrackOutput *assetReaderTrackOutput;
 
 + (id)assetReaderOutputMetadataAdaptorWithAssetReaderTrackOutput:(id)arg1;
+- (int)addExtractionForOutput:(id)arg1 figAssetReader:(struct OpaqueFigAssetReader *)arg2 options:(id)arg3 withOutputExtactionID:(int *)arg4;
 - (void)dealloc;
 - (void)finalize;
 - (id)init;

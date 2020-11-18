@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)iPadFudgeLayout;
 - (struct CGPoint)internationalKeyOffset;
 - (id)lightKeycapsFontName;
+- (id)messagesWriteboardKeyImageName;
 - (double)moreKeyFontSize;
 - (struct CGPoint)moreKeyOffset;
 - (id)returnKeyImageName;

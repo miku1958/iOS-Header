@@ -8,7 +8,7 @@
 
 #import <AnnotationKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class AKPanGestureRecognizer, NSString, UILongPressGestureRecognizer, UIRotationGestureRecognizer, UITapGestureRecognizer;
+@class AKPanGestureRecognizer, AKRotationGestureRecognizer, NSString, UILongPressGestureRecognizer, UITapGestureRecognizer;
 
 @interface AKMainEventHandler_iOS : AKMainEventHandler <UIGestureRecognizerDelegate>
 {
@@ -16,7 +16,7 @@
     UITapGestureRecognizer *_doubleTapRecognizer;
     UILongPressGestureRecognizer *_pressRecognizer;
     AKPanGestureRecognizer *_panRecognizer;
-    UIRotationGestureRecognizer *_rotationRecognizer;
+    AKRotationGestureRecognizer *_rotationRecognizer;
     double _lastRotationAngleInRotationGesture;
 }
 
@@ -27,12 +27,13 @@
 @property double lastRotationAngleInRotationGesture; // @synthesize lastRotationAngleInRotationGesture=_lastRotationAngleInRotationGesture;
 @property (strong) AKPanGestureRecognizer *panRecognizer; // @synthesize panRecognizer=_panRecognizer;
 @property (strong) UILongPressGestureRecognizer *pressRecognizer; // @synthesize pressRecognizer=_pressRecognizer;
-@property (strong) UIRotationGestureRecognizer *rotationRecognizer; // @synthesize rotationRecognizer=_rotationRecognizer;
+@property (strong) AKRotationGestureRecognizer *rotationRecognizer; // @synthesize rotationRecognizer=_rotationRecognizer;
 @property (readonly) Class superclass;
 @property (strong) UITapGestureRecognizer *tapRecognizer; // @synthesize tapRecognizer=_tapRecognizer;
 
 - (void).cxx_destruct;
 - (BOOL)_hitTestAnnotationsIncludingPOI:(BOOL)arg1 atPointInWindow:(struct CGPoint)arg2 outAnnotation:(id *)arg3;
+- (void)_penDrawingQuiesced;
 - (void)applyToAllSelectedAnnotationsRotateEvent:(id)arg1 orRecognizer:(id)arg2;
 - (void)forwardRecognizerToMainHandleEvent:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;

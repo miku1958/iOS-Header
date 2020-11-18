@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BatteryCenter/NSCoding-Protocol.h>
 #import <BatteryCenter/NSCopying-Protocol.h>
@@ -22,6 +22,7 @@
     BOOL _lowBattery;
     BOOL _internal;
     BOOL _powerSource;
+    BOOL _approximatesPercentCharge;
     BOOL _fake;
     long long _vendor;
     long long _powerSourceState;
@@ -33,11 +34,12 @@
     long long _transportType;
 }
 
+@property (nonatomic) BOOL approximatesPercentCharge; // @synthesize approximatesPercentCharge=_approximatesPercentCharge;
 @property (copy, nonatomic) NSString *baseIdentifier; // @synthesize baseIdentifier=_baseIdentifier;
 @property (nonatomic, getter=isCharging) BOOL charging; // @synthesize charging=_charging;
 @property (nonatomic, getter=isConnected) BOOL connected; // @synthesize connected=_connected;
 @property (nonatomic, getter=isFake) BOOL fake; // @synthesize fake=_fake;
-@property (readonly, strong, nonatomic) UIImage *glyph;
+@property (readonly, nonatomic) UIImage *glyph;
 @property (copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic, getter=isInternal) BOOL internal; // @synthesize internal=_internal;
@@ -53,9 +55,9 @@
 @property (readonly, nonatomic) long long vendor; // @synthesize vendor=_vendor;
 
 + (id)batteryDeviceWithIdentifier:(id)arg1 vendor:(long long)arg2 productIdentifier:(long long)arg3 baseIdentifier:(id)arg4 parts:(unsigned long long)arg5 matchIdentifier:(id)arg6;
+- (void).cxx_destruct;
 - (id)_lazyGlyphs;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)glyphForPartKey:(id)arg1;

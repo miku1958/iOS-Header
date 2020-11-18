@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <GameKitServices/VideoConferenceDelegate-Protocol.h>
-#import <GameKitServices/VideoConferenceRealTimeChannel-Protocol.h>
 
 @class GKVoiceChatDictionary, GKVoiceChatService, NSLock, NSRecursiveLock, VideoConference;
 @protocol GKVoiceChatClient;
 
-@interface GKVoiceChatServicePrivate : NSObject <VideoConferenceDelegate, VideoConferenceRealTimeChannel>
+@interface GKVoiceChatServicePrivate : NSObject <VideoConferenceDelegate>
 {
     id<GKVoiceChatClient> client;
     BOOL outputMeteringEnabled;
@@ -28,7 +27,6 @@
     GKVoiceChatService *wrapperService;
     BOOL forceNoICE;
     VideoConference *conf;
-    BOOL clientHasRTChannel;
     int chatMode;
     BOOL focus;
 }
@@ -59,8 +57,8 @@
 - (void)dealloc;
 - (void)denyCallID:(unsigned int)arg1;
 - (void)forceNoICE:(BOOL)arg1;
-- (void)getNSError:(id *)arg1 code:(long long)arg2 description:(id)arg3 hResult:(int)arg4;
-- (void)getNSError:(id *)arg1 code:(long long)arg2 description:(id)arg3 reason:(id)arg4;
+- (BOOL)getNSError:(id *)arg1 code:(long long)arg2 description:(id)arg3 hResult:(int)arg4;
+- (BOOL)getNSError:(id *)arg1 code:(long long)arg2 description:(id)arg3 reason:(id)arg4;
 - (void)informClientOfInviteFromParticipant:(id)arg1;
 - (void)informClientVoiceChatDidNotStart:(id)arg1;
 - (void)informClientVoiceChatDidNotStartMainSelector:(id)arg1;
@@ -71,7 +69,6 @@
 - (BOOL)inviteIsValid:(id)arg1;
 - (id)localDisplayNameForCallID:(unsigned int)arg1;
 - (void)receivedData:(id)arg1 fromParticipantID:(id)arg2;
-- (void)receivedRealTimeData:(id)arg1 fromParticipantID:(id)arg2;
 - (id)remoteDisplayNameForCallID:(unsigned int)arg1;
 - (void)resetState;
 - (int)startICEConnectionCheck:(id)arg1 isCaller:(BOOL)arg2;
@@ -79,7 +76,6 @@
 - (BOOL)startVoiceChatWithParticipantID:(id)arg1 error:(id *)arg2;
 - (void)stopVoiceChatProc:(id)arg1;
 - (void)stopVoiceChatWithParticipantID:(id)arg1;
-- (void)vcArg:(id)arg1 sendRealTimeData:(id)arg2 toParticipantID:(id)arg3;
 - (void)videoConference:(id)arg1 didStartSession:(BOOL)arg2 withCallID:(unsigned int)arg3 error:(id)arg4;
 - (void)videoConference:(id)arg1 didStopWithCallID:(unsigned int)arg2 error:(id)arg3;
 

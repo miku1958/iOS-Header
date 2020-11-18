@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <BulletinDistributorCompanion/NSCoding-Protocol.h>
+#import <BulletinDistributorCompanion/NSSecureCoding-Protocol.h>
 
 @class NSData;
 
-@interface BLTMessageDigest : NSObject <NSCoding>
+@interface BLTMessageDigest : NSObject <NSSecureCoding>
 {
     NSData *_messageDigest;
 }
 
 @property (strong, nonatomic) NSData *messageDigest; // @synthesize messageDigest=_messageDigest;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

@@ -14,7 +14,6 @@
     unsigned int _runningLongPressCommand;
     BOOL _playing;
     BOOL _nowPlayingAppIsRunning;
-    BOOL _likeBanCyclesThroughPossibleStates;
     BOOL _advertisement;
     BOOL _alwaysLive;
     BOOL _sharingEnabled;
@@ -25,8 +24,8 @@
     double _displayedSkipForwardInterval;
     long long _likeControlPresentationStyle;
     long long _likedState;
-    unsigned long long _repeatType;
-    unsigned long long _shuffleType;
+    long long _repeatType;
+    long long _shuffleType;
     NSArray *_allowedTransportControlTypes;
     unsigned long long _transportControlsCount;
     MPUTransportControlsView *_transportControlsView;
@@ -38,16 +37,16 @@
 @property (weak, nonatomic) id<MPUTransportControlMediaRemoteControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) double displayedSkipBackwardInterval; // @synthesize displayedSkipBackwardInterval=_displayedSkipBackwardInterval;
 @property (readonly, nonatomic) double displayedSkipForwardInterval; // @synthesize displayedSkipForwardInterval=_displayedSkipForwardInterval;
-@property (nonatomic) BOOL likeBanCyclesThroughPossibleStates; // @synthesize likeBanCyclesThroughPossibleStates=_likeBanCyclesThroughPossibleStates;
 @property (readonly, nonatomic) long long likeControlPresentationStyle; // @synthesize likeControlPresentationStyle=_likeControlPresentationStyle;
 @property (readonly, nonatomic) long long likedState; // @synthesize likedState=_likedState;
 @property (nonatomic) BOOL nowPlayingAppIsRunning; // @synthesize nowPlayingAppIsRunning=_nowPlayingAppIsRunning;
 @property (copy, nonatomic) NSDictionary *nowPlayingInfo; // @synthesize nowPlayingInfo=_nowPlayingInfo;
 @property (nonatomic, getter=isPlaying) BOOL playing; // @synthesize playing=_playing;
-@property (readonly, nonatomic) unsigned long long repeatType; // @synthesize repeatType=_repeatType;
+@property (readonly, nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
 @property (readonly, nonatomic, getter=isSharingEnabled) BOOL sharingEnabled; // @synthesize sharingEnabled=_sharingEnabled;
-@property (readonly, nonatomic) unsigned long long shuffleType; // @synthesize shuffleType=_shuffleType;
+@property (readonly, nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
 @property (copy, nonatomic) NSArray *supportedCommands; // @synthesize supportedCommands=_supportedCommands;
+@property (readonly, nonatomic) BOOL supportsStopButNotPause;
 @property (nonatomic) unsigned long long transportControlsCount; // @synthesize transportControlsCount=_transportControlsCount;
 @property (readonly, nonatomic) MPUTransportControlsView *transportControlsView; // @synthesize transportControlsView=_transportControlsView;
 

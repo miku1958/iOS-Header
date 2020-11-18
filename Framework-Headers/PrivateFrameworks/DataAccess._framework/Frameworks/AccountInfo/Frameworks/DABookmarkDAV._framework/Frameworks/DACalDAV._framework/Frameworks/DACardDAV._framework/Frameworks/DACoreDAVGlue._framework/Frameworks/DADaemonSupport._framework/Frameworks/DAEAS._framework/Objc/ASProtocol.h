@@ -58,11 +58,14 @@
 - (int)supportsConversations;
 - (int)supportsDraftFolderSync;
 - (int)supportsEmailFlagging;
+- (BOOL)supportsForwarderTracking;
 - (BOOL)supportsFreeBusyLookup;
 - (BOOL)supportsGALPhotos;
 - (BOOL)supportsItemOperationsCommand;
+- (BOOL)supportsMailboxEnhancedSearch;
 - (int)supportsMailboxSearch;
 - (BOOL)supportsNoteSyncing;
+- (BOOL)supportsProposeNewTime;
 - (BOOL)supportsSettingsCommand;
 - (BOOL)syncSnoozeEvents;
 - (BOOL)useBooleanFolderItemsSyncDeletesAsMoves;

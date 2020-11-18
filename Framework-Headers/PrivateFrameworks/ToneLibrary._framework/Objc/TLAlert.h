@@ -4,54 +4,46 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray, NSString, NSTimer;
+@class NSString, TLAlertConfiguration;
 
 @interface TLAlert : NSObject
 {
-    BOOL _shouldOverrideMasterSwitches;
-    BOOL _repeatedlyPlaying;
-    int _type;
-    NSString *_accountIdentifier;
+    long long _instanceIndex;
+    TLAlertConfiguration *_configuration;
+    long long _type;
     NSString *_toneIdentifier;
     NSString *_vibrationIdentifier;
-    long long _instanceIndex;
-    NSArray *_alertCompletions;
-    NSTimer *_completionFallbackTimer;
 }
 
-@property (copy, nonatomic, setter=_setAlertCompletions:) NSArray *_alertCompletions; // @synthesize _alertCompletions;
-@property (strong, nonatomic, setter=_setCompletionFallbackTimer:) NSTimer *_completionFallbackTimer; // @synthesize _completionFallbackTimer;
-@property (nonatomic, setter=_setInstanceIndex:) long long _instanceIndex; // @synthesize _instanceIndex;
-@property (nonatomic, getter=_isRepeatedlyPlaying, setter=_setRepeatedlyPlaying:) BOOL _repeatedlyPlaying; // @synthesize _repeatedlyPlaying;
-@property (nonatomic, setter=_setShouldOverrideMasterSwitches:) BOOL _shouldOverrideMasterSwitches; // @synthesize _shouldOverrideMasterSwitches;
-@property (copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
-@property (copy, nonatomic) NSString *toneIdentifier; // @synthesize toneIdentifier=_toneIdentifier;
-@property (nonatomic) int type; // @synthesize type=_type;
-@property (copy, nonatomic) NSString *vibrationIdentifier; // @synthesize vibrationIdentifier=_vibrationIdentifier;
+@property (readonly, nonatomic) TLAlertConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (readonly, nonatomic) NSString *toneIdentifier; // @synthesize toneIdentifier=_toneIdentifier;
+@property (readonly, nonatomic) long long type; // @synthesize type=_type;
+@property (readonly, nonatomic) NSString *vibrationIdentifier; // @synthesize vibrationIdentifier=_vibrationIdentifier;
 
-+ (void)_playToneAndVibrationForType:(int)arg1 toneIdentifier:(id)arg2 vibrationIdentifier:(id)arg3 shouldOverrideMasterSwitches:(BOOL)arg4;
++ (void)_playToneAndVibrationForType:(long long)arg1 toneIdentifier:(id)arg2 vibrationIdentifier:(id)arg3 shouldOverrideMasterSwitches:(BOOL)arg4;
++ (void)_queueAudioEventBlockIfNecessary:(CDUnknownBlockType)arg1;
 + (void)_setWatchPrefersSalientToneAndVibration:(BOOL)arg1;
++ (BOOL)_stopAllAlerts;
 + (BOOL)_watchPrefersSalientToneAndVibration;
-+ (void)playToneAndVibrationForType:(int)arg1;
-+ (void)playToneAndVibrationForType:(int)arg1 accountIdentifier:(id)arg2;
-+ (void)playToneAndVibrationForType:(int)arg1 toneIdentifier:(id)arg2 vibrationIdentifier:(id)arg3;
-- (id)_initWithType:(int)arg1 toneIdentifier:(id)arg2 vibrationIdentifier:(id)arg3 shouldOverrideMasterSwitches:(BOOL)arg4;
-- (void)_setAccountIdentifier:(id)arg1;
-- (void)_setToneIdentifier:(id)arg1;
-- (void)_setType:(int)arg1;
-- (void)_setVibrationIdentifier:(id)arg1;
-- (void)dealloc;
++ (id)alertWithConfiguration:(id)arg1;
++ (void)playToneAndVibrationForType:(long long)arg1;
+- (void).cxx_destruct;
+- (id)_descriptionForDebugging:(BOOL)arg1;
+- (id)_initWithConfiguration:(id)arg1 toneIdentifier:(id)arg2 vibrationIdentifier:(id)arg3;
+- (void)_updateAudioVolumeDynamicallyToValue:(float)arg1;
+- (id)debugDescription;
 - (id)description;
-- (id)initWithType:(int)arg1;
-- (id)initWithType:(int)arg1 accountIdentifier:(id)arg2;
-- (id)initWithType:(int)arg1 toneIdentifier:(id)arg2 vibrationIdentifier:(id)arg3;
+- (id)initWithType:(long long)arg1;
+- (id)initWithType:(long long)arg1 accountIdentifier:(id)arg2;
+- (id)initWithType:(long long)arg1 toneIdentifier:(id)arg2 vibrationIdentifier:(id)arg3;
+- (void)playWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)playWithCompletionHandler:(CDUnknownBlockType)arg1 targetQueue:(id)arg2;
 - (void)startPlayingRepeatedly;
 - (void)stop;
 - (void)stopPlayingRepeatedlyWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2 targetQueue:(id)arg3;
-- (void)stopWithFadeOutDuration:(double)arg1;
+- (void)stopWithOptions:(CDStruct_2418a849)arg1;
 
 @end
 

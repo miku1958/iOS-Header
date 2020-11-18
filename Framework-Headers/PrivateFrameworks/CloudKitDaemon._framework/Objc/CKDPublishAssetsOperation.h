@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)_fetchPCSForRecords;
 - (void)_fetchRecords;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
 - (void)cancel;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;

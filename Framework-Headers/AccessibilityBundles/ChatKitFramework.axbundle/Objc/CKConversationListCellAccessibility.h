@@ -14,7 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_setupAvatarViewIfNeeded;
 - (BOOL)isAccessibilityElement;
 - (void)updateContentsForConversation:(id)arg1;
 

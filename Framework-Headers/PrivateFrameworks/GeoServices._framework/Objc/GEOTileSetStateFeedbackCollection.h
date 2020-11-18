@@ -10,7 +10,7 @@
 
 @interface GEOTileSetStateFeedbackCollection : PBCodable <NSCopying>
 {
-    CDStruct_612aec5b _sessionID;
+    struct GEOSessionID _sessionID;
     double _durationInOldState;
     double _newCoverage;
     double _oldCoverage;
@@ -35,10 +35,11 @@
 @property (nonatomic) BOOL hasTileSetStateType;
 @property (nonatomic) double newCoverage; // @synthesize newCoverage=_newCoverage;
 @property (nonatomic) double oldCoverage; // @synthesize oldCoverage=_oldCoverage;
-@property (nonatomic) CDStruct_612aec5b sessionID; // @synthesize sessionID=_sessionID;
+@property (nonatomic) struct GEOSessionID sessionID; // @synthesize sessionID=_sessionID;
 @property (nonatomic) double sessionRelativeTimestamp; // @synthesize sessionRelativeTimestamp=_sessionRelativeTimestamp;
 @property (nonatomic) int tileSetStateType; // @synthesize tileSetStateType=_tileSetStateType;
 
+- (int)StringAsTileSetStateType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -47,6 +48,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)tileSetStateTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

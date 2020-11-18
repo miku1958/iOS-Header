@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     UIKBRenderTraits *_highlightedVariantTraits;
     long long _blendForm;
     NSArray *_renderFlags;
+    long long _renderFlagsForAboveEffects;
     NSString *_hashString;
 }
 
@@ -47,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIKBGradient *layeredForegroundGradient; // @synthesize layeredForegroundGradient=_layeredForegroundGradient;
 @property (readonly, nonatomic) NSArray *renderEffects; // @synthesize renderEffects=_renderEffects;
 @property (strong, nonatomic) NSArray *renderFlags; // @synthesize renderFlags=_renderFlags;
+@property (nonatomic) long long renderFlagsForAboveEffects; // @synthesize renderFlagsForAboveEffects=_renderFlagsForAboveEffects;
 @property (nonatomic) BOOL renderSecondarySymbolsSeparately; // @synthesize renderSecondarySymbolsSeparately=_renderSecondarySymbolsSeparately;
 @property (strong, nonatomic) NSArray *secondarySymbolStyles; // @synthesize secondarySymbolStyles=_secondarySymbolStyles;
 @property (strong, nonatomic) UIKBTextStyle *symbolStyle; // @synthesize symbolStyle=_symbolStyle;

@@ -14,9 +14,10 @@
 @interface HKExtendedHealthStore : NSObject <HKExtendedClientInterface>
 {
     CDUnknownBlockType _achievementsAddedHandler;
-    NSObject<OS_dispatch_queue> *_clientQueue;
+    CDUnknownBlockType _unviewedAchievementDefinitionsChangedHandler;
     NSXPCConnection *_connection;
     _HKExtendedHealthStoreProxy *_connectionProxy;
+    NSObject<OS_dispatch_queue> *_clientQueue;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType achievementsAddedHandler;
@@ -27,27 +28,34 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) CDUnknownBlockType unviewedAchievementDefinitionsChangedHandler;
 
 - (void).cxx_destruct;
-- (void)achievementsWereAdded;
 - (void)addAchievement:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)clientInterface;
+- (void)clientRemote_achievementDefinitionUnviewedCountChanged;
+- (void)clientRemote_achievementsWereAdded;
 - (void)connectionInterrupted;
 - (void)daemonDidStart;
 - (void)dealloc;
 - (void)deleteAchievementWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deleteAllAchievementsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchAchievementAssetsServerURLWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchAchievementsWithCompletedDateBetweenStart:(id)arg1 end:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchAchievementsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchHiddenUnearnedAchievementDefinitionIdentifiersAmongIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchNumberOfUnviewedAchievementsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)fetchUnalertedAchievementsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchUnviewedAchievementDefinitionIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)markAchievementAsViewed:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)markAchievementDefinitionIdentifierAlertViewed:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)markAchievementsAlerted:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)runAchievementsFixupAsDryRun:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)serverInterface;
+- (void)setAchievementAssetsServerURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setCurrentActivityCacheOverrideDate:(id)arg1 timeZone:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)updateAllAchievementAssetsWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

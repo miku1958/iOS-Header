@@ -12,14 +12,15 @@
 #import <StoreKitUI/SKUINavigationBarControllerDelegate-Protocol.h>
 #import <StoreKitUI/SKUINavigationBarDisplayConfiguring-Protocol.h>
 #import <StoreKitUI/SKUINavigationPaletteProvider-Protocol.h>
+#import <StoreKitUI/SKUIResourceLoaderDelegate-Protocol.h>
 #import <StoreKitUI/SKUIScrollingTabAppearanceStatusObserver-Protocol.h>
 #import <StoreKitUI/SKUIScrollingTabNestedPagedScrolling-Protocol.h>
 #import <StoreKitUI/SKUIToolbarControllerDelegate-Protocol.h>
 #import <StoreKitUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class IKAppDocument, NSArray, NSDictionary, NSNumber, NSSet, NSString, NSValue, SKUIMediaQueryEvaluator, SKUINavigationBarController, SKUIToolbarController, SSVLoadURLOperation, UIScrollView, UIView, UIViewController;
+@class IKAppDocument, NSArray, NSDictionary, NSNumber, NSSet, NSString, NSValue, SKUIMediaQueryEvaluator, SKUIMetricsDOMChangeQueue, SKUIMetricsPageRenderEvent, SKUINavigationBarController, SKUIToolbarController, SSVLoadURLOperation, UIScrollView, UIView, UIViewController;
 
-@interface SKUIDocumentContainerViewController : SKUIViewController <IKAppDocumentDelegate, SKUIMediaQueryDelegate, SKUIModalSourceViewProvider, SKUINavigationBarControllerDelegate, SKUINavigationBarDisplayConfiguring, SKUINavigationPaletteProvider, SKUIToolbarControllerDelegate, UIViewControllerTransitioningDelegate, SKUIScrollingTabAppearanceStatusObserver, SKUIScrollingTabNestedPagedScrolling>
+@interface SKUIDocumentContainerViewController : SKUIViewController <IKAppDocumentDelegate, SKUIMediaQueryDelegate, SKUIModalSourceViewProvider, SKUINavigationBarControllerDelegate, SKUINavigationBarDisplayConfiguring, SKUINavigationPaletteProvider, SKUIToolbarControllerDelegate, UIViewControllerTransitioningDelegate, SKUIResourceLoaderDelegate, SKUIScrollingTabAppearanceStatusObserver, SKUIScrollingTabNestedPagedScrolling>
 {
     UIViewController *_beforeErrorChildViewController;
     UIViewController *_childViewController;
@@ -43,12 +44,17 @@
     unsigned long long _templateViewElementType;
     struct CGSize _viewSize;
     NSString *_urlString;
+    CDUnknownBlockType _pendingSizeTransitionCompletion;
+    SKUIMetricsPageRenderEvent *_pageRenderEvent;
+    SKUIMetricsDOMChangeQueue *_domChangeTimingQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) SKUIMetricsDOMChangeQueue *domChangeTimingQueue; // @synthesize domChangeTimingQueue=_domChangeTimingQueue;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIView *navigationPaletteView;
+@property (strong, nonatomic) SKUIMetricsPageRenderEvent *pageRenderEvent; // @synthesize pageRenderEvent=_pageRenderEvent;
 @property (readonly, nonatomic) UIScrollView *scrollingTabNestedPagingScrollView;
 @property (readonly) Class superclass;
 
@@ -58,19 +64,22 @@
 - (void)_enqueueLoadURLOperation;
 - (void)_finishLegacyProtocolOperationForResponse:(id)arg1 dataProvider:(id)arg2 dictionary:(id)arg3;
 - (void)_finishLoadOperationWithResponse:(id)arg1 error:(id)arg2;
-- (void)_forceOrientationBackToSupportedOrientation;
 - (BOOL)_isFullScreen;
 - (BOOL)_makeSearchBarFirstResponderOnLoad;
-- (id)_millisecondsFromTimeInterval:(double)arg1;
 - (id)_navigationBarViewElement;
 - (void)_networkTypeChangeNotification:(id)arg1;
 - (id)_newViewControllerWithTemplateElement:(id)arg1 options:(id)arg2 clientContext:(id)arg3;
+- (void)_onReportDOMChange:(id)arg1;
+- (void)_onReportDocumentReady:(id)arg1;
+- (void)_onReportPlatformJsonTimes:(id)arg1;
+- (void)_onReportRequestTimes:(id)arg1;
 - (void)_redirectToURL:(id)arg1;
 - (void)_reloadDefaultBarButtonItems;
-- (void)_reloadForNetworkTypeChange;
 - (void)_reloadNavigationBarController;
+- (void)_reloadNavigationBarControllerIfNeeded;
 - (void)_reloadNavigationItemContents;
 - (void)_reloadNavigationPalette;
+- (void)_reloadPageData;
 - (void)_reloadToolbar;
 - (BOOL)_selectSearchBarContentOnBecomingFirstResponder;
 - (void)_sendOnViewAttributesChangeWithAttributes:(id)arg1 viewWillAppear:(BOOL)arg2;
@@ -83,6 +92,7 @@
 - (id)_sidepackViewControllerWithOptions:(id)arg1 clientContext:(id)arg2;
 - (void)_skui_applicationDidEnterBackground:(id)arg1;
 - (void)_skui_applicationWillEnterForeground:(id)arg1;
+- (void)_submitPageRenderIfPossible;
 - (id)_toolbarViewElement;
 - (id)additionalLeftBarButtonItemForNavigationBarController:(id)arg1;
 - (id)additionalRightBarButtonItemForNavigationBarController:(id)arg1;
@@ -95,6 +105,7 @@
 - (void)dealloc;
 - (BOOL)document:(id)arg1 evaluateStyleMediaQuery:(id)arg2;
 - (void)document:(id)arg1 runTestWithName:(id)arg2 options:(id)arg3;
+- (void)documentDidSendMessage:(id)arg1;
 - (void)documentDidUpdate:(id)arg1;
 - (void)documentNeedsUpdate:(id)arg1;
 - (void)documentScrollToTop:(id)arg1;
@@ -107,10 +118,13 @@
 - (long long)navigationBarTintAdjustmentMode;
 - (id)navigationBarTintColor;
 - (id)navigationBarTitleTextTintColor;
+- (CDUnknownBlockType)pendingSizeTransitionCompletion;
 - (BOOL)prefersNavigationBarBackgroundViewHidden;
 - (BOOL)prefersNavigationBarHidden;
 - (id)previewMenuItems;
 - (void)reloadData;
+- (void)resourceLoader:(id)arg1 didLoadAllForReason:(long long)arg2;
+- (void)resourceLoaderDidBeginLoading:(id)arg1;
 - (void)scrollingTabAppearanceStatusWasUpdated:(CDStruct_19149c72)arg1;
 - (id)scrollingTabViewControllerInNestedPagingScrollViewAtPageIndex:(unsigned long long)arg1;
 - (void)setPreferredContentSize:(struct CGSize)arg1;

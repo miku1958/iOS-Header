@@ -7,11 +7,10 @@
 #import <objc/NSObject.h>
 
 #import <iTunesStoreUI/ISSingleton-Protocol.h>
-#import <iTunesStoreUI/SUDialogDelegate-Protocol.h>
 
 @class NSMutableArray, NSString;
 
-@interface SUDialogManager : NSObject <ISSingleton, SUDialogDelegate>
+@interface SUDialogManager : NSObject <ISSingleton>
 {
     NSMutableArray *_dialogs;
 }
@@ -26,11 +25,9 @@
 + (void)setSharedInstance:(id)arg1;
 + (id)sharedInstance;
 - (void)_finishDialog:(id)arg1 withButtonIndex:(long long)arg2;
-- (BOOL)_haveEquivalentDialog:(id)arg1;
+- (BOOL)_isDisplayingEquivalentDialog:(id)arg1;
 - (void)_performDefaultActionForDialog:(id)arg1 buttonIndex:(long long)arg2;
 - (void)dealloc;
-- (void)dialog:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
-- (void)dialogDidCancel:(id)arg1;
 - (BOOL)presentDialog:(id)arg1;
 - (BOOL)presentDialog:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (BOOL)presentDialogForError:(id)arg1;

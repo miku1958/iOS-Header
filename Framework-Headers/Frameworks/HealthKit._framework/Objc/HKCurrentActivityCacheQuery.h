@@ -6,24 +6,26 @@
 
 #import <HealthKit/HKQuery.h>
 
-@class HKActivityCache;
+@class NSDateComponents;
 
 @interface HKCurrentActivityCacheQuery : HKQuery
 {
+    NSDateComponents *_statisticsIntervalComponents;
     CDUnknownBlockType _updateHandler;
-    HKActivityCache *_lastActivityCache;
 }
 
-@property (strong, nonatomic) HKActivityCache *lastActivityCache; // @synthesize lastActivityCache=_lastActivityCache;
 @property (copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
 
++ (Class)_queryServerDataObjectClass;
 - (void).cxx_destruct;
 - (void)_queue_cleanupAfterDeactivation;
+- (void)_queue_configureQueryServerDataObject:(id)arg1;
+- (void)_queue_deliverError:(id)arg1;
 - (CDUnknownBlockType)_queue_errorHandler;
 - (BOOL)_queue_shouldStayAliveAfterInitialResults;
 - (void)_queue_validate;
-- (void)deliverSample:(id)arg1 forQuery:(id)arg2;
-- (id)initWithUpdateHandler:(CDUnknownBlockType)arg1;
+- (void)deliverCurrentActivityCache:(id)arg1 moveStatistics:(id)arg2 exerciseStatistics:(id)arg3 standHoursInfo:(id)arg4 queryUUID:(id)arg5;
+- (id)initWithUpdateHandler:(CDUnknownBlockType)arg1 statisticsIntervalComponents:(id)arg2;
 
 @end
 

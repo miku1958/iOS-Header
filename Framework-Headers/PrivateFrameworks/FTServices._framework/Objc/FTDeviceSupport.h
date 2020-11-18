@@ -18,6 +18,7 @@
     BOOL _supportsSMS;
     BOOL _supportsMMS;
     BOOL _mmsConfigured;
+    BOOL _supportsApplePay;
     BOOL _supportsHandoff;
     BOOL _supportsTethering;
     BOOL _supportsFT;
@@ -30,11 +31,13 @@
     BOOL _commCenterDead;
     BOOL _simBecameNotReady;
     BOOL _simInserted;
+    BOOL _wantsForcedCelluarQueries;
     int _carrierBundleSupported;
     int _iMessageAllowedToken;
     BOOL _faceTimeBlocked;
     BOOL _iMessageBlocked;
     BOOL _accountModificationRestricted;
+    BOOL _supportsRegistrationControl;
     long long _performanceClass;
 }
 
@@ -63,6 +66,7 @@
 @property (readonly, nonatomic) BOOL iMessageSupported;
 @property (readonly, nonatomic) BOOL identityServicesSupported;
 @property (readonly, nonatomic) BOOL isC2KEquipment;
+@property (readonly, nonatomic) BOOL isInMultiUserMode;
 @property (readonly, nonatomic) BOOL isTelephonyDevice;
 @property (readonly, nonatomic) BOOL madridAvailable;
 @property (readonly, nonatomic) BOOL madridBlocked;
@@ -77,6 +81,7 @@
 @property (readonly, nonatomic) NSString *productVersion;
 @property (readonly, nonatomic) BOOL registrationSupported;
 @property (readonly, nonatomic) BOOL supportsAppleIDIdentification;
+@property (readonly, nonatomic) BOOL supportsApplePay; // @synthesize supportsApplePay=_supportsApplePay;
 @property (readonly, nonatomic) BOOL supportsBackFacingCamera; // @synthesize supportsBackFacingCamera=_supportsBackCamera;
 @property (readonly, nonatomic) BOOL supportsCellularData; // @synthesize supportsCellularData=_supportsCellularData;
 @property (readonly, nonatomic) BOOL supportsFrontFacingCamera; // @synthesize supportsFrontFacingCamera=_supportsFrontCamera;
@@ -84,6 +89,7 @@
 @property (readonly, nonatomic) BOOL supportsMMS; // @synthesize supportsMMS=_supportsMMS;
 @property (readonly, nonatomic) BOOL supportsNonWiFiCalling;
 @property (readonly, nonatomic) BOOL supportsNonWiFiFaceTime; // @synthesize supportsNonWiFiFaceTime=_supportsNonWiFiFaceTime;
+@property (readonly, nonatomic) BOOL supportsRegistrationControl; // @synthesize supportsRegistrationControl=_supportsRegistrationControl;
 @property (readonly, nonatomic) BOOL supportsSMS; // @synthesize supportsSMS=_supportsSMS;
 @property (readonly, nonatomic) BOOL supportsSMSIdentification;
 @property (readonly, nonatomic) BOOL supportsSimultaneousVoiceAndDataRightNow;
@@ -94,6 +100,7 @@
 @property (readonly, nonatomic) NSDictionary *telephonyCapabilities;
 @property (readonly, nonatomic) NSString *userAgentString;
 @property (readonly, nonatomic) BOOL wantsBreakBeforeMake;
+@property (readonly, nonatomic) BOOL wantsForcedCelluarQueries; // @synthesize wantsForcedCelluarQueries=_wantsForcedCelluarQueries;
 
 + (id)sharedInstance;
 - (void)_carrierChanged;
@@ -119,6 +126,8 @@
 - (void)carrierSettingsChanged:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (BOOL)nonWifiAvailableForBundleId:(id)arg1;
+- (BOOL)wifiAllowedForBundleId:(id)arg1;
 
 @end
 

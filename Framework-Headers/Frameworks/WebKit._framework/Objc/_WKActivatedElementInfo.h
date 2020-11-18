@@ -13,12 +13,14 @@
     struct RetainPtr<NSURL> _URL;
     struct RetainPtr<NSString> _title;
     struct CGPoint _interactionLocation;
+    struct RetainPtr<NSString> _ID;
     struct RefPtr<WebKit::ShareableBitmap> _image;
     struct RetainPtr<UIImage> _uiImage;
     long long _type;
     struct CGRect _boundingRect;
 }
 
+@property (readonly, nonatomic) NSString *ID;
 @property (readonly, nonatomic) NSURL *URL;
 @property (readonly, nonatomic) struct CGPoint _interactionLocation;
 @property (readonly, nonatomic) struct CGRect boundingRect; // @synthesize boundingRect=_boundingRect;
@@ -28,7 +30,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)_initWithType:(long long)arg1 URL:(id)arg2 location:(struct CGPoint)arg3 title:(id)arg4 rect:(struct CGRect)arg5 image:(struct ShareableBitmap *)arg6;
+- (id)_initWithType:(long long)arg1 URL:(id)arg2 location:(struct CGPoint)arg3 title:(id)arg4 ID:(id)arg5 rect:(struct CGRect)arg6 image:(struct ShareableBitmap *)arg7;
 
 @end
 

@@ -15,7 +15,7 @@
 
 @property (readonly, nonatomic) CBUUID *UUID; // @synthesize UUID=_UUID;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithUUID:(id)arg1;
 
 @end

@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
     id element;
 }
 
-+ (id)__new:(id)arg1;
++ (id)__new:(id)arg1:(BOOL)arg2;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (void)enumerateObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)finalize;
 - (void)getObjects:(id *)arg1 count:(unsigned long long)arg2;
 - (id)member:(id)arg1;
 - (id)objectEnumerator;

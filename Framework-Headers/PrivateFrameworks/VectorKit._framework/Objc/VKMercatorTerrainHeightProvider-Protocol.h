@@ -7,6 +7,6 @@
 #import <VectorKit/NSObject-Protocol.h>
 
 @protocol VKMercatorTerrainHeightProvider <NSObject>
-- (double)heightAtPoint:(struct VKPoint)arg1;
+- (double)heightAtPoint:(Matrix_6e1d3589)arg1;
 @end
 

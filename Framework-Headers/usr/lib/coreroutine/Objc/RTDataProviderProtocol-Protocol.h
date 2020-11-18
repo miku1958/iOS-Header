@@ -6,16 +6,16 @@
 
 #import <coreroutine/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSString;
 
 @protocol RTDataProviderProtocol <NSObject>
 + (NSString *)providerName;
 - (void)populateDataProviderWithHandler:(void (^)(NSArray *, NSError *))arg1;
-- (NSArray *)supportedEventClasses;
-- (BOOL)supportsEventClass:(Class)arg1;
 
 @optional
-- (void)purgeCache;
+- (void)purge;
+- (void)purgeWithHandler:(void (^)(NSError *))arg1;
 - (void)refresh;
+- (void)refreshWithHandler:(void (^)(NSError *))arg1;
 @end
 

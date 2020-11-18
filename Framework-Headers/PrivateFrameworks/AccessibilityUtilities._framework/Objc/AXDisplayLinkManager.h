@@ -21,7 +21,6 @@
 @property (strong, nonatomic) NSMutableSet *activeTargetActions; // @synthesize activeTargetActions=_activeTargetActions;
 @property (strong, nonatomic) CADisplayLink *displayLink;
 @property (readonly, nonatomic) double duration;
-@property (readonly, nonatomic) unsigned long long frameInterval;
 @property (nonatomic, getter=isHandlingDisplayRefresh) BOOL handlingDisplayRefresh; // @synthesize handlingDisplayRefresh=_handlingDisplayRefresh;
 @property (nonatomic) BOOL hasUpdatedTargetActions; // @synthesize hasUpdatedTargetActions=_hasUpdatedTargetActions;
 @property (readonly, nonatomic, getter=isPaused) BOOL paused;
@@ -38,7 +37,6 @@
 - (void)_displayDidRefresh:(id)arg1;
 - (id)_prepareUpdatedTargetActionsForModification;
 - (void)addTarget:(id)arg1 selector:(SEL)arg2;
-- (void)addTarget:(id)arg1 selector:(SEL)arg2 frameInterval:(unsigned long long)arg3;
 - (void)beginRequiringWarmUpMode;
 - (void)dealloc;
 - (void)endRequiringWarmUpMode;

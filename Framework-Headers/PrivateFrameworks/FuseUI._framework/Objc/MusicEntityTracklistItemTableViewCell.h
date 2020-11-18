@@ -8,13 +8,11 @@
 
 #import <FuseUI/MusicEntityContentDescriptorViewConfiguring-Protocol.h>
 #import <FuseUI/MusicEntityTracklistItemViewDelegate-Protocol.h>
-#import <FuseUI/MusicEntityViewDownloadInformationObserving-Protocol.h>
-#import <FuseUI/MusicEntityViewPlaybackStatusObserving-Protocol.h>
 
 @class MusicEntityTracklistItemView, MusicEntityViewContentDescriptor, NSString;
 @protocol MusicEntityValueProviding;
 
-@interface MusicEntityTracklistItemTableViewCell : UITableViewCell <MusicEntityTracklistItemViewDelegate, MusicEntityContentDescriptorViewConfiguring, MusicEntityViewDownloadInformationObserving, MusicEntityViewPlaybackStatusObserving>
+@interface MusicEntityTracklistItemTableViewCell : UITableViewCell <MusicEntityTracklistItemViewDelegate, MusicEntityContentDescriptorViewConfiguring>
 {
     MusicEntityTracklistItemView *_tracklistItemView;
     BOOL _entityDisabled;
@@ -37,9 +35,7 @@
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (void)setBackgroundColor:(id)arg1;
-- (void)setDownloadInformation:(struct MusicEntityDownloadInformation)arg1;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setPlaybackStatus:(id)arg1;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)tracklistItemView:(id)arg1 didSelectPlayButtonAction:(unsigned long long)arg2;
 - (void)tracklistItemViewDidSelectContextualActionsButton:(id)arg1;

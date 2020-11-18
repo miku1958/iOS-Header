@@ -10,7 +10,7 @@
 #import <Contacts/NSMutableCopying-Protocol.h>
 #import <Contacts/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSDate, NSString;
 
 @interface CNGroup : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
@@ -18,10 +18,14 @@
     int _iOSLegacyIdentifier;
     NSString *_name;
     CNGroup *_snapshot;
+    NSDate *_creationDate;
+    NSDate *_modificationDate;
 }
 
+@property (readonly, copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, nonatomic) int iOSLegacyIdentifier; // @synthesize iOSLegacyIdentifier=_iOSLegacyIdentifier;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, copy, nonatomic) CNGroup *snapshot;
 
@@ -32,6 +36,7 @@
 + (id)predicateForGroupWithNameMatching:(id)arg1;
 + (id)predicateForGroupsInContainerWithIdentifier:(id)arg1;
 + (id)predicateForGroupsWithIdentifiers:(id)arg1;
++ (id)predicateForGroupsWithNameMatching:(id)arg1;
 + (id)predicateForSubgroupsInGroupWithIdentifier:(id)arg1;
 + (id)predicateForiOSLegacyIdentifier:(int)arg1;
 + (BOOL)supportsSecureCoding;
@@ -44,6 +49,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithGroup:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 name:(id)arg2;
+- (id)initWithIdentifier:(id)arg1 name:(id)arg2 creationDate:(id)arg3 modificationDate:(id)arg4;
 - (id)initWithName:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

@@ -25,7 +25,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int status; // @synthesize status=_status;
 @property (strong, nonatomic) NSData *syncContinuationToken; // @synthesize syncContinuationToken=_syncContinuationToken;
 
++ (Class)changedZonesType;
 - (void).cxx_destruct;
+- (int)StringAsStatus:(id)arg1;
 - (void)addChangedZones:(id)arg1;
 - (id)changedZonesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)changedZonesCount;
@@ -38,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)statusAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

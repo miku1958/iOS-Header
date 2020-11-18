@@ -18,6 +18,8 @@
     CUIImage *_edgeMetricsMask;
     CUIImage *_textMetricsMask;
     CUIImage *_baselineMetricsMask;
+    CUIImage *_auxiliary1MetricsMask;
+    CUIImage *_auxiliary2MetricsMask;
     BOOL _didCheckForMetricsMasks;
 }
 
@@ -30,6 +32,8 @@
 - (void)addDrawingLayerIndex:(id)arg1 themeLayer:(id)arg2 toIndices:(id)arg3 layers:(id)arg4 lowestIndex:(long long *)arg5;
 - (void)appendToLog:(id)arg1;
 - (id)associatedFileURLWithDocument:(id)arg1;
+- (id)auxiliary1MetricsMaskWithDocument:(id)arg1;
+- (id)auxiliary2MetricsMaskWithDocument:(id)arg1;
 - (id)baseKeySpec;
 - (id)baselineMetricsMaskWithDocument:(id)arg1;
 - (id)columnCount;

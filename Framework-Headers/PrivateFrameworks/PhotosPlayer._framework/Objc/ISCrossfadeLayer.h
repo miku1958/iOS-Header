@@ -6,12 +6,15 @@
 
 #import <QuartzCore/CALayer.h>
 
-@class ISCrossfadeItem, ISPlaybackSpec;
+#import <PhotosPlayer/CALayerDelegate-Protocol.h>
 
-@interface ISCrossfadeLayer : CALayer
+@class ISCrossfadeItem, ISLayerPlayer, ISPlaybackSpec, NSString;
+
+@interface ISCrossfadeLayer : CALayer <CALayerDelegate>
 {
     ISCrossfadeItem *_crossfadeItem;
     ISPlaybackSpec *_playbackSpec;
+    ISLayerPlayer *_player;
     CALayer *__contentLayer;
     CALayer *__heroLayer;
 }
@@ -19,7 +22,12 @@
 @property (readonly, nonatomic) CALayer *_contentLayer; // @synthesize _contentLayer=__contentLayer;
 @property (strong, nonatomic, setter=_setHeroLayer:) CALayer *_heroLayer; // @synthesize _heroLayer=__heroLayer;
 @property (strong, nonatomic) ISCrossfadeItem *crossfadeItem; // @synthesize crossfadeItem=_crossfadeItem;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) ISPlaybackSpec *playbackSpec; // @synthesize playbackSpec=_playbackSpec;
+@property (strong, nonatomic) ISLayerPlayer *player; // @synthesize player=_player;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_updateContents;
@@ -30,6 +38,7 @@
 - (void)layoutSublayersOfLayer:(id)arg1;
 - (void)pause;
 - (void)playFromBeginning;
+- (void)setContentsGravity:(id)arg1;
 
 @end
 

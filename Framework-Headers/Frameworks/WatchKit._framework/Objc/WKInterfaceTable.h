@@ -26,6 +26,7 @@
 - (void)_getRowControllers:(id)arg1 rowControllerProperties:(id)arg2 forRowTypes:(id)arg3;
 - (void)_setupWithDescription:(id)arg1 forController:(id)arg2;
 - (void)insertRowsAtIndexes:(id)arg1 withRowType:(id)arg2;
+- (void)performSegueForRow:(long long)arg1;
 - (void)removeRowsAtIndexes:(id)arg1;
 - (void)resequenceRowControllerPropertyIndexes;
 - (id)rowControllerAtIndex:(long long)arg1;

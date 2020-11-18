@@ -10,6 +10,7 @@
 
 @interface WBSTemplateIconMonogramConfiguration : NSObject
 {
+    BOOL _skipMonogramGeneration;
     double _fontSize;
     long long _fontWeight;
     double _baselineOffset;
@@ -24,6 +25,7 @@
 @property (nonatomic) double fontSize; // @synthesize fontSize=_fontSize;
 @property (nonatomic) long long fontWeight; // @synthesize fontWeight=_fontWeight;
 @property (nonatomic) struct CGSize iconSize; // @synthesize iconSize=_iconSize;
+@property (nonatomic) BOOL skipMonogramGeneration; // @synthesize skipMonogramGeneration=_skipMonogramGeneration;
 
 + (id)configurationWithBackgroundColor:(id)arg1;
 + (id)configurationWithIconSize:(struct CGSize)arg1 fontSize:(double)arg2 fontWeight:(long long)arg3 baselineOffset:(double)arg4 backgroundColor:(id)arg5 cornerRadius:(double)arg6;

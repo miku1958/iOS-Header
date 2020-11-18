@@ -15,12 +15,12 @@
     NSDate *_timestamp;
     id _context;
     NSError *_error;
-    CDStruct_2c43369c _coordinate;
+    struct CLLocationCoordinate2D _coordinate;
 }
 
 @property (nonatomic) double accuracy; // @synthesize accuracy=_accuracy;
 @property (readonly, nonatomic) id context; // @synthesize context=_context;
-@property (nonatomic) CDStruct_2c43369c coordinate; // @synthesize coordinate=_coordinate;
+@property (nonatomic) struct CLLocationCoordinate2D coordinate; // @synthesize coordinate=_coordinate;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (nonatomic) BOOL shifted; // @synthesize shifted=_shifted;
 @property (readonly, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
@@ -28,7 +28,7 @@
 - (void).cxx_destruct;
 - (id)description;
 - (id)init;
-- (id)initWithCoordinate:(CDStruct_2c43369c)arg1 accuracy:(double)arg2 timestamp:(id)arg3 context:(id)arg4;
+- (id)initWithCoordinate:(struct CLLocationCoordinate2D)arg1 accuracy:(double)arg2 timestamp:(id)arg3 context:(id)arg4;
 
 @end
 

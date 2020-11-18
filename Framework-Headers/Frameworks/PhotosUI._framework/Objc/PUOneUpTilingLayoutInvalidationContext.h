@@ -10,16 +10,19 @@
 {
     BOOL _invalidatedContentGuideInsets;
     BOOL _invalidatedCommentsTile;
+    BOOL _invalidatedAccessoryTile;
+    BOOL _invalidatedContentOffset;
     BOOL _invalidatedVideoPlaceholderTile;
+    unsigned long long _options;
 }
 
-@property (nonatomic) BOOL invalidatedCommentsTile; // @synthesize invalidatedCommentsTile=_invalidatedCommentsTile;
-@property (nonatomic) BOOL invalidatedContentGuideInsets; // @synthesize invalidatedContentGuideInsets=_invalidatedContentGuideInsets;
-@property (nonatomic) BOOL invalidatedVideoPlaceholderTile; // @synthesize invalidatedVideoPlaceholderTile=_invalidatedVideoPlaceholderTile;
+@property (nonatomic, setter=_setInvalidatedAccessoryTile:) BOOL invalidatedAccessoryTile; // @synthesize invalidatedAccessoryTile=_invalidatedAccessoryTile;
+@property (readonly, nonatomic) BOOL invalidatedCommentsTile; // @synthesize invalidatedCommentsTile=_invalidatedCommentsTile;
+@property (nonatomic, setter=_setInvalidatedContentGuideInsets:) BOOL invalidatedContentGuideInsets; // @synthesize invalidatedContentGuideInsets=_invalidatedContentGuideInsets;
+@property (nonatomic, setter=_setInvalidatedContentOffset:) BOOL invalidatedContentOffset; // @synthesize invalidatedContentOffset=_invalidatedContentOffset;
+@property (nonatomic, setter=_setInvalidatedVideoPlaceholderTile:) BOOL invalidatedVideoPlaceholderTile; // @synthesize invalidatedVideoPlaceholderTile=_invalidatedVideoPlaceholderTile;
+@property (nonatomic, setter=_setOptions:) unsigned long long options; // @synthesize options=_options;
 
-- (void)_setInvalidatedCommentsTile:(BOOL)arg1;
-- (void)_setInvalidatedContentGuideInsets:(BOOL)arg1;
-- (void)_setInvalidatedVideoPlaceholderTile:(BOOL)arg1;
 
 @end
 

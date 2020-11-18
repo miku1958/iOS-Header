@@ -29,11 +29,11 @@
     BOOL interrupted;
     BOOL usesApplicationAudioSession;
     BOOL automaticallyConfiguresApplicationAudioSession;
+    BOOL automaticallyConfiguresCaptureDeviceForWideColor;
     AVRunLoopCondition *runLoopCondition;
     BOOL waitingForFigCaptureSessionToStart;
     BOOL waitingForFigCaptureSessionToStop;
     BOOL waitingForFigCaptureSessionConfigurationToBecomeLive;
-    BOOL waitingForFigCaptureSessionToStopDueToEmptyConfig;
     struct OpaqueCMClock *masterClock;
     BOOL notifiesOnMainThread;
     BOOL adjustingVideoDeviceHDREnabled;

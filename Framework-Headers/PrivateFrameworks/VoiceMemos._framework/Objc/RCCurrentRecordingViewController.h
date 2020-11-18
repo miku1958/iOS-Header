@@ -18,6 +18,7 @@
     BOOL _isDisplayingLockscreenInterface;
     UIColor *_presentationBackgroundColor;
     UIColor *_waveformForegroundColor;
+    UIColor *_waveformBackgroundColor;
     RCCurrentRecordingRemoteViewController *_remoteViewController;
     id<RCCurrentRecordingViewControllerDelegate> _delegate;
     RCAVState *_AVState;
@@ -43,7 +44,7 @@
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)insertRemoteViewController:(id)arg1;
 - (void)loadCaptureStateWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (void)presentLockscreenInterfaceWithBackgroundColor:(id)arg1 waveformForegroundColor:(id)arg2;
+- (void)presentLockscreenInterfaceWithBackgroundColor:(id)arg1 waveformForegroundColor:(id)arg2 waveformBackgroundColor:(id)arg3;
 - (void)setScreenUpdatesDisabled:(BOOL)arg1;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (BOOL)shouldAutomaticallyForwardRotationMethods;

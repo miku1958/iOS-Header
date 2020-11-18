@@ -10,6 +10,6 @@
 @protocol MKAnnotation><NSCopying;
 
 @protocol PUMapAnnotationQuadtreeDataSource <NSObject>
-- (id<MKAnnotation><NSCopying>)mapAnnotationQuadtree:(PUMapAnnotationQuadtree *)arg1 aggregateAnnotationForAnnotations:(NSArray *)arg2 averageCoordinate:(CDStruct_c3b9c2ee)arg3;
+- (id<MKAnnotation><NSCopying>)mapAnnotationQuadtree:(PUMapAnnotationQuadtree *)arg1 aggregateAnnotationForAnnotations:(NSArray *)arg2 averageCoordinate:(struct CLLocationCoordinate2D)arg3;
 @end
 

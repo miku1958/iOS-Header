@@ -35,7 +35,6 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateMatchesInString:(id)arg1 options:(unsigned long long)arg2 range:(struct _NSRange)arg3 usingBlock:(CDUnknownBlockType)arg4;
-- (void)finalize;
 - (id)firstMatchInString:(id)arg1 options:(unsigned long long)arg2 range:(struct _NSRange)arg3;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

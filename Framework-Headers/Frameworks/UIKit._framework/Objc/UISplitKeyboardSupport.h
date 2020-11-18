@@ -18,9 +18,9 @@ __attribute__((visibility("hidden")))
     BOOL _isTranslating;
     BOOL _isSplitting;
     BOOL _splitLockState;
-    double _targetTranslation;
-    double _initialTranslation;
-    double _translationVelocity;
+    struct CGPoint _targetTranslation;
+    struct CGPoint _initialTranslation;
+    struct CGPoint _translationVelocity;
     CADisplayLink *_displayLink;
     double _lastBounceTime;
     double _lastTranslationNotificationTime;
@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)_connectController:(id)arg1;
 - (void)_disconnectingController:(id)arg1;
 - (void)_updateBounceAnimation:(id)arg1;
+- (void)_updatedController;
 - (void)bounceAnimationDidFinish;
 - (BOOL)completedPlacementFrom:(id)arg1 to:(id)arg2 forController:(id)arg3;
 - (void)dealloc;
@@ -55,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)translateToPlacement:(id)arg1 quietly:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)undock;
 - (void)updateProgress:(double)arg1 startHeight:(double)arg2 endHeight:(double)arg3;
+- (void)updatedControllerApplicator:(id)arg1;
 
 @end
 

@@ -11,8 +11,8 @@
 @interface HLPHelpBookController : HLPRemoteDataController
 {
     BOOL _hasSectionIcon;
+    long long _contentFormatVersion;
     NSMutableDictionary *_helpItemMap;
-    NSString *_contentFormatVersion;
     NSString *_contentVersion;
     NSString *_copyrightText;
     NSString *_welcomeTopicIdentifier;
@@ -22,7 +22,7 @@
     HLPURLImageCacheController *_imageCacheController;
 }
 
-@property (strong, nonatomic) NSString *contentFormatVersion; // @synthesize contentFormatVersion=_contentFormatVersion;
+@property (nonatomic) long long contentFormatVersion; // @synthesize contentFormatVersion=_contentFormatVersion;
 @property (strong, nonatomic) NSString *contentVersion; // @synthesize contentVersion=_contentVersion;
 @property (strong, nonatomic) NSString *copyrightText; // @synthesize copyrightText=_copyrightText;
 @property (strong, nonatomic) NSString *copyrightTopicIdentifier; // @synthesize copyrightTopicIdentifier=_copyrightTopicIdentifier;

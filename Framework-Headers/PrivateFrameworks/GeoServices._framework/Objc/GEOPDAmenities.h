@@ -10,17 +10,17 @@
 
 @interface GEOPDAmenities : PBCodable <NSCopying>
 {
-    CDStruct_2961ad32 *_amenitys;
+    struct GEOPDAmenityValue *_amenitys;
     unsigned long long _amenitysCount;
     unsigned long long _amenitysSpace;
 }
 
-@property (readonly, nonatomic) CDStruct_2961ad32 *amenitys;
+@property (readonly, nonatomic) struct GEOPDAmenityValue *amenitys;
 @property (readonly, nonatomic) unsigned long long amenitysCount;
 
 + (id)amentiesForPlaceData:(id)arg1;
-- (void)addAmenity:(CDStruct_2961ad32)arg1;
-- (CDStruct_2961ad32)amenityAtIndex:(unsigned long long)arg1;
+- (void)addAmenity:(struct GEOPDAmenityValue)arg1;
+- (struct GEOPDAmenityValue)amenityAtIndex:(unsigned long long)arg1;
 - (void)clearAmenitys;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -32,7 +32,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (void)setAmenitys:(CDStruct_2961ad32 *)arg1 count:(unsigned long long)arg2;
+- (void)setAmenitys:(struct GEOPDAmenityValue *)arg1 count:(unsigned long long)arg2;
 - (BOOL)valueForAmenityType:(int)arg1;
 - (void)writeTo:(id)arg1;
 

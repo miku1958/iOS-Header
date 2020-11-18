@@ -9,7 +9,7 @@
 #import <UIKit/NSCoding-Protocol.h>
 #import <UIKit/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface UIPrintInfo : NSObject <NSCopying, NSCoding>
 {
@@ -22,12 +22,15 @@
     BOOL _scaleUp;
     BOOL _staple;
     BOOL _punch;
-    NSString *_pdfPassword;
+    BOOL _imagePDFAnnotations;
     NSString *_jobAccountID;
+    NSString *_pdfPassword;
 }
 
 @property (nonatomic) long long copies; // @synthesize copies=_copies;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (nonatomic) long long duplex; // @synthesize duplex=_duplex;
+@property (nonatomic) BOOL imagePDFAnnotations; // @synthesize imagePDFAnnotations=_imagePDFAnnotations;
 @property (strong, nonatomic) NSString *jobAccountID; // @synthesize jobAccountID=_jobAccountID;
 @property (copy, nonatomic) NSString *jobName; // @synthesize jobName=_jobName;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
@@ -45,7 +48,6 @@
 - (id)_initWithDictionary:(id)arg1;
 - (void)_updateWithPrinter:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

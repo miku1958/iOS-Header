@@ -4,26 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <BulletinDistributorCompanion/BLTBulletinSendQueuePassthrough.h>
 
-@protocol BLTBulletinSendQueueDelegate;
+@class BLTBulletinSendQueueAttachmentSender, BLTSendQueueSerializer, NSDate, NSMutableArray, NSNumber, NSObject, PBCodable, PCPersistentTimer;
+@protocol OS_dispatch_queue;
 
-@interface BLTBulletinSendQueue : NSObject
+@interface BLTBulletinSendQueue : BLTBulletinSendQueuePassthrough
 {
-    id<BLTBulletinSendQueueDelegate> _delegate;
+    NSObject<OS_dispatch_queue> *_queue;
+    NSMutableArray *_completionHandlers;
+    NSMutableArray *_queuedBlockHandlers;
+    NSNumber *_timeout;
+    PCPersistentTimer *_timeoutTimer;
+    NSDate *_lastItemDate;
+    PBCodable *_firstRequest;
+    unsigned short _firstRequestType;
+    NSDate *_lastQueueSendDate;
+    BLTBulletinSendQueueAttachmentSender *_attachmentSender;
+    BLTSendQueueSerializer *_queueSerializer;
 }
 
-@property (weak, nonatomic) id<BLTBulletinSendQueueDelegate> delegate; // @synthesize delegate=_delegate;
-
-+ (id)bulletinSendQueue;
 - (void).cxx_destruct;
+- (void)_queue_performSend;
+- (void)_queue_queuePending;
+- (void)_queue_startTimerWithFireDate:(id)arg1;
+- (void)_sendRequest:(id)arg1 type:(unsigned short)arg2 withTimeout:(id)arg3 isTrafficRestricted:(BOOL)arg4 attachmentURL:(id)arg5 attachmentKey:(id)arg6 didSend:(CDUnknownBlockType)arg7 didQueue:(CDUnknownBlockType)arg8;
 - (void)handleFileURL:(id)arg1;
+- (id)init;
 - (void)queuePending;
 - (void)sendNow;
-- (void)sendRequest:(id)arg1 type:(unsigned short)arg2 didSend:(CDUnknownBlockType)arg3;
-- (void)sendRequest:(id)arg1 type:(unsigned short)arg2 didSend:(CDUnknownBlockType)arg3 didQueue:(CDUnknownBlockType)arg4;
-- (void)sendRequest:(id)arg1 type:(unsigned short)arg2 withTimeout:(id)arg3 isTrafficRestricted:(BOOL)arg4 didSend:(CDUnknownBlockType)arg5;
-- (void)sendRequest:(id)arg1 type:(unsigned short)arg2 withTimeout:(id)arg3 isTrafficRestricted:(BOOL)arg4 didSend:(CDUnknownBlockType)arg5 didQueue:(CDUnknownBlockType)arg6;
 
 @end
 

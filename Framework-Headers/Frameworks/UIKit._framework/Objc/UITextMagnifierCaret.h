@@ -9,6 +9,8 @@
 __attribute__((visibility("hidden")))
 @interface UITextMagnifierCaret : UITextMagnifier
 {
+    BOOL _isAnimating;
+    long long _delayedAnimationType;
     double _yOffset;
     struct CGPoint _offset;
 }

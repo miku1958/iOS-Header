@@ -13,10 +13,10 @@
     BOOL _shouldLayoutForCommitPhase;
     UIView *_contentView;
     double _cornerRadius;
-    _UIPreviewPresentationEffectView *_platterView;
+    _UIPreviewPresentationEffectView *_platterClippingView;
     UIView *_platterShadowView;
-    _UIPreviewPresentationEffectView *_platterEffectView;
     UIView *_contentTransformView;
+    _UIPreviewPresentationEffectView *_platterView;
     struct CGSize _preferredContentSize;
 }
 
@@ -24,7 +24,7 @@
 @property (strong, nonatomic) UIView *contentTransformView; // @synthesize contentTransformView=_contentTransformView;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
-@property (strong, nonatomic) _UIPreviewPresentationEffectView *platterEffectView; // @synthesize platterEffectView=_platterEffectView;
+@property (strong, nonatomic) _UIPreviewPresentationEffectView *platterClippingView; // @synthesize platterClippingView=_platterClippingView;
 @property (strong, nonatomic) UIView *platterShadowView; // @synthesize platterShadowView=_platterShadowView;
 @property (strong, nonatomic) _UIPreviewPresentationEffectView *platterView; // @synthesize platterView=_platterView;
 @property (nonatomic) struct CGSize preferredContentSize; // @synthesize preferredContentSize=_preferredContentSize;

@@ -15,6 +15,7 @@
 }
 
 @property (strong, nonatomic) SALocation *address;
+@property (copy, nonatomic) NSArray *attributions;
 @property (copy, nonatomic) NSURL *businessUrl;
 @property (copy, nonatomic) NSArray *categories;
 @property (copy, nonatomic) NSArray *commands;

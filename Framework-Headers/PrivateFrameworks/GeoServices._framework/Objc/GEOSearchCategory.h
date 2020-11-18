@@ -37,6 +37,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStorage:(id)arg1;
 - (void)sendFeedback;
+- (id)serverMetadata;
 
 @end
 

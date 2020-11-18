@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)init;
 - (void)pause;
-- (void)play;
+- (BOOL)play;
 - (void)purgeCompletedBuffers;
 - (void)queueBuffer:(id)arg1;
 - (void)stop;

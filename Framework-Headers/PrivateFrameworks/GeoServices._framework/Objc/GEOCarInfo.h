@@ -12,7 +12,7 @@
 
 @interface GEOCarInfo : PBCodable <NSCopying>
 {
-    CDStruct_af817366 _screenResolution;
+    struct GEOScreenResolution _screenResolution;
     int _deviceConnection;
     int _interactionModel;
     NSString *_manufacturer;
@@ -33,16 +33,20 @@
 @property (nonatomic) int interactionModel; // @synthesize interactionModel=_interactionModel;
 @property (strong, nonatomic) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
 @property (strong, nonatomic) NSString *model; // @synthesize model=_model;
-@property (nonatomic) CDStruct_af817366 screenResolution; // @synthesize screenResolution=_screenResolution;
+@property (nonatomic) struct GEOScreenResolution screenResolution; // @synthesize screenResolution=_screenResolution;
 
 + (id)carInfoWithTraits:(id)arg1;
+- (int)StringAsDeviceConnection:(id)arg1;
+- (int)StringAsInteractionModel:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)deviceConnectionAsString:(int)arg1;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (id)initWithTraits:(id)arg1;
+- (id)interactionModelAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

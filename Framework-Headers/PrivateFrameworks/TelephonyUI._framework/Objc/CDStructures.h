@@ -32,3 +32,18 @@ struct UIEdgeInsets {
     double right;
 };
 
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    struct CGRect rect;
+    double cornerRadius;
+} CDStruct_bad6cd8d;
+
+typedef struct {
+    struct CGSize size;
+    CDStruct_bad6cd8d outerPath;
+    CDStruct_bad6cd8d innerPath;
+    BOOL isCircle;
+    BOOL drawsOutsideOuterPath;
+} CDStruct_f15746dd;
+

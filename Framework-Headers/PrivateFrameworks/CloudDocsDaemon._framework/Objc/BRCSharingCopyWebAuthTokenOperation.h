@@ -23,10 +23,10 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)createActivity;
 - (id)initWithSyncContext:(id)arg1 ckContainerID:(id)arg2;
 - (void)main;
 - (BOOL)shouldRetryForError:(id)arg1;
-- (unsigned long long)startActivity;
 
 @end
 

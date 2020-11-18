@@ -13,6 +13,7 @@
 - (BOOL)editItemViewControllerShouldShowDetachAlert;
 
 @optional
+- (BOOL)editItemIsExternallyOrganized;
 - (BOOL)editItemViewControllerSave:(EKEditItemViewController *)arg1;
 - (void)editItemViewControllerWantsKeyboardPinned:(BOOL)arg1;
 @end

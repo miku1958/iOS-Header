@@ -7,6 +7,8 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (Utilities)
++ (void)ic_animateWithDuration:(double)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)ic_performWithoutAnimation:(CDUnknownBlockType)arg1;
+- (double)ic_backingScaleFactor;
 @end
 

@@ -28,7 +28,6 @@
 - (void)dealloc;
 - (id)debugDescription;
 - (id)description;
-- (void)finalize;
 - (id)init;
 - (id)initWithImage:(id)arg1;
 - (id)initWithImage:(id)arg1 keysAndValues:(id)arg2;

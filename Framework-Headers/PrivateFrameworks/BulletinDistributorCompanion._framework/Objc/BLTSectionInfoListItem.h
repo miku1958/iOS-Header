@@ -16,10 +16,10 @@
     NSString *_displayName;
 }
 
-@property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property (strong, nonatomic) NSDictionary *overrides; // @synthesize overrides=_overrides;
-@property (strong, nonatomic) BBSectionInfo *sectionInfo; // @synthesize sectionInfo=_sectionInfo;
-@property (copy, nonatomic) NSString *universalSectionID; // @synthesize universalSectionID=_universalSectionID;
+@property (copy) NSString *displayName; // @synthesize displayName=_displayName;
+@property (strong) NSDictionary *overrides; // @synthesize overrides=_overrides;
+@property (strong) BBSectionInfo *sectionInfo; // @synthesize sectionInfo=_sectionInfo;
+@property (copy) NSString *universalSectionID; // @synthesize universalSectionID=_universalSectionID;
 
 - (void).cxx_destruct;
 

@@ -6,9 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
+#import <Contacts/NSSecureCoding-Protocol.h>
+
 @class NSAttributedString, NSDictionary, NSNumber;
 
-@interface CNContactMatchInfo : NSObject
+@interface CNContactMatchInfo : NSObject <NSSecureCoding>
 {
     BOOL _matchedNameProperty;
     NSNumber *_relevanceScore;
@@ -21,7 +23,11 @@
 @property (copy, nonatomic) NSDictionary *matchedProperties; // @synthesize matchedProperties=_matchedProperties;
 @property (copy, nonatomic) NSNumber *relevanceScore; // @synthesize relevanceScore=_relevanceScore;
 
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)init;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

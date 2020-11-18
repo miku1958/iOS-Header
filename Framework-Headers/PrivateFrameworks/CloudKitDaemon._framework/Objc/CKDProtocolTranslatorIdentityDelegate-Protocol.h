@@ -6,11 +6,11 @@
 
 #import <CloudKitDaemon/NSObject-Protocol.h>
 
-@class NSData;
+@class NSArray;
 
 @protocol CKDProtocolTranslatorIdentityDelegate <NSObject>
 
-@property (readonly, nonatomic) NSData *userIdentityFingerprint;
+@property (readonly, nonatomic) NSArray *sharingIdentityFingerprints;
 
 @end
 

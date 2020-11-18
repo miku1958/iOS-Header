@@ -8,22 +8,18 @@
 
 #import <CloudDocsDaemon/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSData, NSPersonNameComponents;
 
 @interface BRFieldUserIdentity : PBCodable <NSCopying>
 {
-    NSString *_displayName;
-    NSString *_firstName;
-    NSString *_lastName;
+    NSData *_serializedNameComponents;
 }
 
-@property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property (strong, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
-@property (readonly, nonatomic) BOOL hasDisplayName;
-@property (readonly, nonatomic) BOOL hasFirstName;
-@property (readonly, nonatomic) BOOL hasLastName;
-@property (strong, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
+@property (readonly, nonatomic) BOOL hasSerializedNameComponents;
+@property (strong, nonatomic) NSPersonNameComponents *nameComponents;
+@property (strong, nonatomic) NSData *serializedNameComponents; // @synthesize serializedNameComponents=_serializedNameComponents;
 
++ (id)unknownPersonNameComponents;
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -33,8 +29,8 @@
 - (id)initWithCKUserIdentity:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)nameComponentsAcceptUnknownUser:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)userFormattedName;
 - (void)writeTo:(id)arg1;
 
 @end

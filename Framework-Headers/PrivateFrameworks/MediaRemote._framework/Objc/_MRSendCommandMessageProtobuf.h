@@ -24,6 +24,8 @@
 @property (readonly, nonatomic) BOOL hasOptions;
 @property (strong, nonatomic) _MRCommandOptionsProtobuf *options; // @synthesize options=_options;
 
+- (int)StringAsCommand:(id)arg1;
+- (id)commandAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

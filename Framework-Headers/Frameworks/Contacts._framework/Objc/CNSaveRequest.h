@@ -7,30 +7,34 @@
 #import <Foundation/NSObject.h>
 
 #import <Contacts/CNObjectValidation-Protocol.h>
+#import <Contacts/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
 
-@interface CNSaveRequest : NSObject <CNObjectValidation>
+@interface CNSaveRequest : NSObject <CNObjectValidation, NSSecureCoding>
 {
     NSMutableDictionary *_addedContactsByIdentifier;
-    NSMutableDictionary *_updatedContactsByIdentifier;
+    NSMutableArray *_updatedContacts;
     NSMutableDictionary *_deletedContactsByIdentifier;
     NSString *_meCardIdentifier;
     NSMutableDictionary *_addedGroupsByIdentifier;
-    NSMutableDictionary *_updatedGroupsByIdentifier;
+    NSMutableArray *_updatedGroups;
     NSMutableDictionary *_deletedGroupsByIdentifier;
     NSMutableDictionary *_addedMembersByGroupIdentifier;
     NSMutableDictionary *_removedMembersByGroupIdentifier;
     NSMutableDictionary *_addedSubgroupsByGroupIdentifier;
     NSMutableDictionary *_removedSubgroupsByGroupIdentifier;
     NSMutableDictionary *_addedContainersByIdentifier;
-    NSMutableDictionary *_updatedContainersByIdentifier;
+    NSMutableArray *_updatedContainers;
     NSMutableDictionary *_deletedContainersByIdentifier;
     NSMutableDictionary *_movedContainersByIdentifier;
     NSMutableDictionary *_addedAccountContainersByIdentifier;
     NSMutableArray *_contactChangeRequests;
     NSMutableArray *_addedAccounts;
+    NSMutableDictionary *_parentRecordsByIdentifier;
     BOOL _unsafeApplyChangesOnly;
+    NSString *_saveRequestIdentifier;
+    NSString *_clientIdentifier;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *addedAccountContainersByParentContainerIdentifier;
@@ -46,9 +50,11 @@
 @property (readonly, copy, nonatomic) NSArray *allContainers;
 @property (readonly, copy, nonatomic) NSArray *allGroupIdentifiers;
 @property (readonly, copy, nonatomic) NSArray *allGroups;
+@property (copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (readonly, copy, nonatomic) NSArray *contactChangeRequests;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy, nonatomic) NSArray *deletedContacts;
+@property (readonly, copy, nonatomic) NSDictionary *deletedContactsByIdentifier; // @synthesize deletedContactsByIdentifier=_deletedContactsByIdentifier;
 @property (readonly, copy, nonatomic) NSArray *deletedContainers;
 @property (readonly, copy, nonatomic) NSArray *deletedGroups;
 @property (readonly, copy) NSString *description;
@@ -57,6 +63,7 @@
 @property (readonly, copy, nonatomic) NSDictionary *movedContainersByParentContainerIdentifier;
 @property (readonly, copy, nonatomic) NSDictionary *removedMembersByGroupIdentifier;
 @property (readonly, copy, nonatomic) NSDictionary *removedSubgroupsByGroupIdentifier;
+@property (readonly, copy, nonatomic) NSString *saveRequestIdentifier; // @synthesize saveRequestIdentifier=_saveRequestIdentifier;
 @property (readonly, copy, nonatomic) NSString *storeIdentifier;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL unsafeApplyChangesOnly; // @synthesize unsafeApplyChangesOnly=_unsafeApplyChangesOnly;
@@ -64,6 +71,7 @@
 @property (readonly, copy, nonatomic) NSArray *updatedContainers;
 @property (readonly, copy, nonatomic) NSArray *updatedGroups;
 
++ (BOOL)supportsSecureCoding;
 - (id)_dictionaryOfArraysFromDictionaryOfDictionaries:(id)arg1;
 - (void)_insertContact:(id)arg1 intoDictionary:(id)arg2 complementDictionary:(id)arg3;
 - (void)addAccount:(id)arg1;
@@ -80,19 +88,23 @@
 - (void)deleteContact:(id)arg1;
 - (void)deleteContainer:(id)arg1;
 - (void)deleteGroup:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)flattenedDictionaryForDictionaryOfTuples:(id)arg1;
 - (id)groupWithAddedMemberForGroupIdentifier:(id)arg1;
 - (id)groupWithAddedSubgroupForGroupIdentifier:(id)arg1;
 - (id)groupWithRemovedMemberForGroupIdentifier:(id)arg1;
 - (id)groupWithRemovedSubgroupForGroupIdentifier:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isValid:(id *)arg1;
 - (void)linkContact:(id)arg1 toContact:(id)arg2;
 - (void)moveContainer:(id)arg1 toContainerWithIdentifier:(id)arg2;
 - (void)preferLinkedContactForImage:(id)arg1 inUnifiedContact:(id)arg2;
 - (void)preferLinkedContactForName:(id)arg1 inUnifiedContact:(id)arg2;
+- (void)queueUpdatedObject:(id)arg1 intoArray:(id)arg2;
 - (void)removeMember:(id)arg1 fromGroup:(id)arg2;
 - (void)removeSubgroup:(id)arg1 fromGroup:(id)arg2;
+- (void)setLinkIdentifier:(id)arg1 forContact:(id)arg2;
 - (void)setMeCardIdentifier:(id)arg1;
 - (void)unlinkContact:(id)arg1;
 - (void)updateContact:(id)arg1;

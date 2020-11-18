@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapRegion;
+@class GEOMapRegion, PBUnknownFields;
 
 @interface GEOPDViewportInfo : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     GEOMapRegion *_mapRegion;
     int _mapType;
     unsigned int _timeSinceMapViewportChanged;
@@ -27,8 +28,10 @@
 @property (strong, nonatomic) GEOMapRegion *mapRegion; // @synthesize mapRegion=_mapRegion;
 @property (nonatomic) int mapType; // @synthesize mapType=_mapType;
 @property (nonatomic) unsigned int timeSinceMapViewportChanged; // @synthesize timeSinceMapViewportChanged=_timeSinceMapViewportChanged;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)viewportInfoForTraits:(id)arg1;
+- (int)StringAsMapType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -37,6 +40,7 @@
 - (unsigned long long)hash;
 - (id)initWithTraits:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)mapTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

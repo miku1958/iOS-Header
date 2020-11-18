@@ -41,7 +41,6 @@ __attribute__((visibility("hidden")))
 - (id)configuration;
 - (void)createArticleFinder;
 - (void)deactivateReaderNow:(unsigned long long)arg1;
-- (void)dealloc;
 - (void)decreaseReaderTextSize;
 - (void)didCollectReaderContentForMail:(id)arg1;
 - (void)didCollectReadingListItemInfo:(id)arg1 bookmarkID:(id)arg2;
@@ -51,9 +50,9 @@ __attribute__((visibility("hidden")))
 - (void)didPrepareReaderContentForPrinting:(id)arg1;
 - (void)didSetReaderConfiguration:(id)arg1;
 - (id)fontManager;
-- (BOOL)hasMultiplePages;
 - (void)increaseReaderTextSize;
 - (id)initWithWebView:(id)arg1;
+- (void)invalidate;
 - (BOOL)isLoadingNextPage;
 - (void)loadNewArticle;
 - (id)readerControllerProxy;

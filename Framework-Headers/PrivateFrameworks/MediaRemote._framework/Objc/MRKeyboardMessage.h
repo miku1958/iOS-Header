@@ -6,7 +6,7 @@
 
 #import <MediaRemote/MRProtocolMessage.h>
 
-@class MRTextEditingAttributes, NSString;
+@class MRTextEditingAttributes, NSData;
 
 @interface MRKeyboardMessage : MRProtocolMessage
 {
@@ -14,11 +14,13 @@
 }
 
 @property (readonly, nonatomic) MRTextEditingAttributes *attributes;
+@property (readonly, nonatomic) NSData *encryptedTextCyphertext;
 @property (readonly, nonatomic) unsigned long long state;
-@property (readonly, nonatomic) NSString *text;
 
++ (id)encryptedMessageWithState:(unsigned long long)arg1 text:(id)arg2 attributes:(id)arg3 usingCryptoSession:(id)arg4;
 - (void)dealloc;
-- (id)initWithState:(unsigned long long)arg1 text:(id)arg2 attributes:(id)arg3;
+- (id)decryptedTextUsingCryptoSession:(id)arg1;
+- (id)initWithState:(unsigned long long)arg1 encryptedTextCyphertext:(id)arg2 attributes:(id)arg3;
 - (unsigned long long)type;
 
 @end

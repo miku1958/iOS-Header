@@ -6,21 +6,25 @@
 
 #import <CoreSuggestionsInternals/SGRe2.h>
 
+@class NSData;
+
 @interface SGRe2Basic : SGRe2
 {
-    char *_patternString;
+    NSData *_patternData;
     struct RE2 *_pattern;
     BOOL _isTrivial;
-    long long _isTrivialOnceToken;
 }
 
-- (BOOL)_enumerateMatchesInUtf8:(const char *)arg1 fromString:(id)arg2 ngroups:(unsigned long long)arg3 block:(CDUnknownBlockType)arg4;
+- (void).cxx_destruct;
+- (int)_enumerateMatchesInUtf8:(const char *)arg1 fromString:(id)arg2 ngroups:(unsigned long long)arg3 block:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)description;
 - (void)enumerateMatchesInUtf8:(const char *)arg1 fromString:(id)arg2 ngroups:(unsigned long long)arg3 block:(CDUnknownBlockType)arg4;
-- (BOOL)existsInUtf8:(const char *)arg1;
+- (id)existsInUtf8:(const char *)arg1;
+- (id)hashId;
 - (id)initWithRegexp:(id)arg1;
-- (BOOL)matchesUtf8:(const char *)arg1;
+- (id)initWithRegexpData:(id)arg1;
+- (id)matchesUtf8:(const char *)arg1;
 
 @end
 

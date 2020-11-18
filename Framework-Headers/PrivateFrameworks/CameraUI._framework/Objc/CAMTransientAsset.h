@@ -8,7 +8,7 @@
 
 #import <CameraUI/PUTransientDisplayAsset-Protocol.h>
 
-@class NSDate, NSString, NSURL, UIImage;
+@class CLLocation, NSDate, NSString, NSURL, UIImage;
 
 @interface CAMTransientAsset : NSObject <PUTransientDisplayAsset>
 {
@@ -46,6 +46,7 @@
 @property (readonly, nonatomic) BOOL isPhotoIrisPlaceholder; // @synthesize isPhotoIrisPlaceholder=_isPhotoIrisPlaceholder;
 @property (readonly, nonatomic) BOOL isTemporaryPlaceholder;
 @property (readonly, nonatomic) NSString *localizedGeoDescription;
+@property (readonly, nonatomic) CLLocation *location;
 @property (readonly, nonatomic) unsigned long long mediaType; // @synthesize mediaType=_mediaType;
 @property (readonly, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (readonly, nonatomic) unsigned long long numberOfRepresentedAssets; // @synthesize numberOfRepresentedAssets=_numberOfRepresentedAssets;

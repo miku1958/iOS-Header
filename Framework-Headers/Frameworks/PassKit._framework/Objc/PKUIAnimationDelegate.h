@@ -4,17 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@interface PKUIAnimationDelegate : NSObject
+#import <PassKitCore/CAAnimationDelegate-Protocol.h>
+
+@class NSString;
+
+@interface PKUIAnimationDelegate : NSObject <CAAnimationDelegate>
 {
     CDUnknownBlockType _didStartHandler;
     CDUnknownBlockType _completionHandler;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType didStartHandler; // @synthesize didStartHandler=_didStartHandler;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)animationDidStart:(id)arg1;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)dealloc;

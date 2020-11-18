@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
     UIWebPaginationInfo *_paginationInfo;
 }
 
+- (void).cxx_destruct;
 - (id)_paginationInfo;
-- (void)dealloc;
 - (long long)numberOfPages;
-- (id)pdfDataForPageAtIndex:(long long)arg1 printingDone:(BOOL *)arg2;
+- (id)pdfDataForPageAtIndex:(long long)arg1;
 
 @end
 

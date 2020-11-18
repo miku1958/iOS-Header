@@ -6,10 +6,12 @@
 
 #import <UIKit/UIButton.h>
 
-@class CADisplayLink, CALayer, NSMutableArray, NSTimer, UIImageView;
+#import <UIKit/CAAnimationDelegate-Protocol.h>
+
+@class CADisplayLink, CALayer, NSMutableArray, NSString, NSTimer, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface UIDictationMeterView : UIButton
+@interface UIDictationMeterView : UIButton <CAAnimationDelegate>
 {
     UIImageView *_background;
     UIImageView *_overlay;
@@ -26,6 +28,11 @@ __attribute__((visibility("hidden")))
     float _releaseLevel;
     int _cachedViewMode;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (float)_adjustedDuration:(float)arg1;
 - (double)_animationInterval;

@@ -25,6 +25,8 @@
 @property (nonatomic) double searchThreshold; // @synthesize searchThreshold=_searchThreshold;
 @property (strong, nonatomic) NSMutableArray *waypoints; // @synthesize waypoints=_waypoints;
 
++ (Class)locationType;
++ (Class)waypointType;
 - (void)addLocation:(id)arg1;
 - (void)addWaypoint:(id)arg1;
 - (void)clearLocations;

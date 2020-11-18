@@ -6,7 +6,7 @@
 
 #import <CloudDocsDaemon/BRCServerZone.h>
 
-@class BRCSharedLocalContainer, NSString;
+@class BRCSharedClientZone, NSString;
 
 @interface BRCSharedServerZone : BRCServerZone
 {
@@ -14,9 +14,9 @@
     NSString *_mangledID;
 }
 
-@property (readonly, nonatomic) BRCSharedLocalContainer *container;
-@property (readonly, nonatomic) BOOL isPrivateContainer;
-@property (readonly, nonatomic) BOOL isSharedContainer;
+@property (readonly, nonatomic) BRCSharedClientZone *clientZone;
+@property (readonly, nonatomic) BOOL isPrivateZone;
+@property (readonly, nonatomic) BOOL isSharedZone;
 @property (readonly, nonatomic) NSString *mangledID; // @synthesize mangledID=_mangledID;
 
 - (void).cxx_destruct;

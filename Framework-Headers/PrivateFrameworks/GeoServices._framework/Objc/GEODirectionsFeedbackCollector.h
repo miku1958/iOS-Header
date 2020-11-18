@@ -22,12 +22,14 @@
 @property (strong, nonatomic) NSMutableSet *routeIDs; // @synthesize routeIDs=_routeIDs;
 
 - (void)_updateFeedbackSessionWithResponseID:(id)arg1;
+- (void)addAlightNotificationFeedback:(id)arg1;
 - (void)addRouteID:(id)arg1 routeIndex:(unsigned int)arg2 stepID:(unsigned int)arg3 completeStep:(BOOL)arg4;
 - (void)addTrafficRerouteFeedback:(id)arg1;
 - (void)dealloc;
+- (id)description;
 - (void)endFeedbackSession;
 - (void)reset;
-- (void)setAudioFeedback:(CDStruct_f580248a *)arg1;
+- (void)setAudioFeedback:(struct GEONavigationAudioFeedback *)arg1;
 - (void)setFinalLocation:(id)arg1 asArrival:(BOOL)arg2;
 - (void)setupFeedbackSessionWithResponseID:(id)arg1;
 - (void)startFeedbackSession;

@@ -6,13 +6,14 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <VoiceMemos/CAAnimationDelegate-Protocol.h>
 #import <VoiceMemos/GLKViewDelegate-Protocol.h>
 #import <VoiceMemos/RCWaveformDataSourceObserver-Protocol.h>
 
 @class CADisplayLink, CALayer, EAGLContext, NSString, NSTimer, RCUIConfiguration, RCWaveformDataSource, UIView;
 @protocol RCGLWaveformRendererDelegate;
 
-@interface RCGLWaveformRenderer : UIViewController <GLKViewDelegate, RCWaveformDataSourceObserver>
+@interface RCGLWaveformRenderer : UIViewController <GLKViewDelegate, RCWaveformDataSourceObserver, CAAnimationDelegate>
 {
     EAGLContext *_eaglContext;
     CADisplayLink *_displayLink;

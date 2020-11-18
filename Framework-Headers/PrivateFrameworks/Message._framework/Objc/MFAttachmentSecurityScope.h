@@ -22,8 +22,8 @@
 + (id)securityScopedURL:(id)arg1;
 + (id)securityScopedURL:(id)arg1 withToken:(id)arg2;
 - (void)_attachSecurityScope;
-- (id)_createTemporaryReadURL:(id)arg1;
 - (void)_removeTemporaryReadURL;
+- (id)_temporaryReadURL:(id)arg1 error:(id *)arg2;
 - (id)data;
 - (void)dealloc;
 - (id)initWithSecurityScopedURL:(id)arg1 withToken:(id)arg2;

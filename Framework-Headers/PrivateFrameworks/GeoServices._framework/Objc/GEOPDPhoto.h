@@ -20,9 +20,10 @@
 @property (strong, nonatomic) NSString *photoId; // @synthesize photoId=_photoId;
 @property (strong, nonatomic) NSMutableArray *photoVersions; // @synthesize photoVersions=_photoVersions;
 
++ (Class)photoVersionType;
 + (id)photosForPlaceData:(id)arg1;
-- (id)_bestURL;
 - (void)addPhotoVersion:(id)arg1;
+- (id)bestURL;
 - (void)clearPhotoVersions;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

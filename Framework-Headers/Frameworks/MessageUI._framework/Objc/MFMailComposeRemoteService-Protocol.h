@@ -8,7 +8,6 @@
 
 @protocol MFMailComposeRemoteService
 - (void)addAttachmentWithData:(NSData *)arg1 mimeType:(NSString *)arg2 fileName:(NSString *)arg3;
-- (void)addAttachmentWithFileURL:(NSURL *)arg1 mimeType:(NSString *)arg2;
 - (void)addAttachmentWithPlaceholderData:(NSData *)arg1;
 - (void)autosaveWithReply:(void (^)(NSString *))arg1;
 - (void)commitCompositionValuesWithReply:(void (^)(void))arg1;

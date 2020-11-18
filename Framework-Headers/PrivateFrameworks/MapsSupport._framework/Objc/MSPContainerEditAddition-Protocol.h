@@ -6,12 +6,14 @@
 
 #import <MapsSupport/MSPContainerEdit-Protocol.h>
 
-@class NSArray, NSIndexSet;
+@class NSArray, NSIndexSet, NSUUID;
+@protocol MSPImmutableObject;
 
 @protocol MSPContainerEditAddition <MSPContainerEdit>
 
 @property (readonly, nonatomic) NSArray *addedImmutableObjects;
 @property (readonly, nonatomic) NSIndexSet *indexesOfAddedObjects;
 
+- (NSUUID *)identifierForObjectAtopAddedImmutableObject:(id<MSPImmutableObject>)arg1;
 @end
 

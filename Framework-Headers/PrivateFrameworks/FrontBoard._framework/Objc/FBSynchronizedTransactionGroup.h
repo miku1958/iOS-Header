@@ -27,11 +27,13 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (nonatomic) id<FBSynchronizedTransactionDelegate> synchronizationDelegate; // @synthesize synchronizationDelegate=_synchronizationDelegate;
+@property (weak, nonatomic) id<FBSynchronizedTransactionDelegate> synchronizationDelegate; // @synthesize synchronizationDelegate=_synchronizationDelegate;
 
+- (void).cxx_destruct;
 - (BOOL)_canBeInterrupted;
 - (void)_checkPreconditionsAndCommitIfReady;
 - (void)_childTransactionDidComplete:(id)arg1;
+- (void)_didComplete;
 - (void)_performSynchronizedCommit:(id)arg1;
 - (void)_performSynchronizedCommitIfReady;
 - (BOOL)_shouldFailForChildTransaction:(id)arg1;

@@ -11,8 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface PUEditPlugin : NSObject
 {
-    NSExtension *_extension;
     _PUEditPluginApplicationExtensionActivity *__applicationExtensionActivity;
+    NSExtension *_extension;
 }
 
 @property (readonly, nonatomic) _PUEditPluginApplicationExtensionActivity *_applicationExtensionActivity; // @synthesize _applicationExtensionActivity=__applicationExtensionActivity;

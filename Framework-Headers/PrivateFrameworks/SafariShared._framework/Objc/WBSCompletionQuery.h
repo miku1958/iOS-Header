@@ -13,6 +13,10 @@
     NSString *_normalizedQueryStringForParsec;
     BOOL _forLastSearch;
     NSString *_queryString;
+    NSString *_parsecCompletionString;
+    NSString *_rewrittenQueryStringFromParsec;
+    long long _queryID;
+    unsigned long long _triggerEvent;
     NSString *_parsecFeedbackQueryIdentifier;
     NSURLRequest *_parsecSearchRequest;
     time_point_e708cccf _timestamp;
@@ -25,14 +29,19 @@
 @property (nonatomic, getter=isForLastSearch) BOOL forLastSearch; // @synthesize forLastSearch=_forLastSearch;
 @property (nonatomic) unsigned long long indexInFeedbackArray; // @synthesize indexInFeedbackArray=_indexInFeedbackArray;
 @property (readonly, nonatomic) NSString *normalizedQueryStringForParsec;
+@property (copy, nonatomic) NSString *parsecCompletionString; // @synthesize parsecCompletionString=_parsecCompletionString;
 @property (copy, nonatomic) NSString *parsecFeedbackQueryIdentifier; // @synthesize parsecFeedbackQueryIdentifier=_parsecFeedbackQueryIdentifier;
 @property (nonatomic) duration_6174cf92 parsecLatency; // @synthesize parsecLatency=_parsecLatency;
 @property (copy, nonatomic) NSURLRequest *parsecSearchRequest; // @synthesize parsecSearchRequest=_parsecSearchRequest;
+@property (nonatomic) long long queryID; // @synthesize queryID=_queryID;
 @property (readonly, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
+@property (copy, nonatomic) NSString *rewrittenQueryStringFromParsec; // @synthesize rewrittenQueryStringFromParsec=_rewrittenQueryStringFromParsec;
 @property (copy, nonatomic) NSString *searchSuggestionProviderIdentifier; // @synthesize searchSuggestionProviderIdentifier=_searchSuggestionProviderIdentifier;
 @property (nonatomic) duration_6174cf92 searchSuggestionProviderLatency; // @synthesize searchSuggestionProviderLatency=_searchSuggestionProviderLatency;
 @property (readonly, nonatomic) time_point_e708cccf timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) unsigned long long triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 
++ (void)initialize;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)description;

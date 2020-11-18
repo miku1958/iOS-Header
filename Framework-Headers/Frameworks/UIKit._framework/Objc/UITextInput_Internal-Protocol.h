@@ -15,6 +15,7 @@
 - (unsigned int)_characterAfterCaretSelection;
 - (unsigned int)_characterBeforeCaretSelection;
 - (unsigned int)_characterInRelationToCaretSelection:(int)arg1;
+- (unsigned int)_characterInRelationToPosition:(UITextPosition *)arg1 amount:(int)arg2;
 - (unsigned int)_characterInRelationToRangedSelection:(int)arg1;
 - (UITextPosition *)_clampedpositionFromPosition:(UITextPosition *)arg1 offset:(int)arg2;
 - (void)_deleteBackwardAndNotify:(BOOL)arg1;
@@ -65,6 +66,7 @@
 - (void)_scrollRectToVisible:(struct CGRect)arg1 animated:(BOOL)arg2;
 - (void)_selectAll;
 - (struct _NSRange)_selectedNSRange;
+- (struct _NSRange)_selectedRangeWithinMarkedText;
 - (long long)_selectionAffinity;
 - (BOOL)_selectionAtDocumentEnd;
 - (BOOL)_selectionAtDocumentStart;

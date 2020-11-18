@@ -57,11 +57,11 @@
 - (Class)itemClass;
 - (unsigned long long)itemCount;
 - (unsigned long long)itemCountForShuffleController:(id)arg1;
-- (unsigned long long)itemTypeForIndex:(unsigned long long)arg1;
+- (long long)itemTypeForIndex:(unsigned long long)arg1;
 - (id)mediaItemAtIndex:(unsigned long long)arg1;
 - (BOOL)playerPreparesItemsForPlaybackAsynchronously;
-- (unsigned long long)realRepeatType;
-- (unsigned long long)realShuffleType;
+- (long long)realRepeatType;
+- (long long)realShuffleType;
 - (void)reloadWithPlaybackContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (unsigned long long)shuffleController:(id)arg1 countOfItemIdentifier:(id)arg2 withMaximumCount:(unsigned long long)arg3;
 - (id)shuffleController:(id)arg1 identifierForItemAtIndex:(unsigned long long)arg2;

@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 + (id)customAttributes;
 - (id)_kernel;
 - (id)outputImage;
-- (void)setDefaults;
 
 @end
 

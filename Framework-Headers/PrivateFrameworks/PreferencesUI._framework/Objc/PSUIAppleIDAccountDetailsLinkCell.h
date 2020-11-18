@@ -11,6 +11,7 @@
 }
 
 + (long long)cellStyle;
++ (id)reuseIdentifierForClassAndType:(long long)arg1;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
 
 @end

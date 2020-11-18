@@ -11,7 +11,6 @@
 }
 
 - (BOOL)canDisplaySlideshowButton;
-- (id)photoBrowserSpec;
 
 @end
 

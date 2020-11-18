@@ -36,6 +36,7 @@
 @property BOOL searchLocations; // @synthesize searchLocations=_searchLocations;
 @property BOOL searchParticipants; // @synthesize searchParticipants=_searchParticipants;
 
+- (void).cxx_destruct;
 - (void)_addMatchedEventIds:(struct __CFArray *)arg1;
 - (void)_addMatchedLocationIds:(struct __CFArray *)arg1;
 - (void)_addMatchedParticipantIds:(struct __CFArray *)arg1;

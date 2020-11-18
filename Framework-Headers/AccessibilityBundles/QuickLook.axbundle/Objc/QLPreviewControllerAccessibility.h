@@ -13,8 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_hideOverlayAdjustingStatusBar:(BOOL)arg1 duration:(double)arg2;
-- (void)_updateNavigationBarAnimated:(BOOL)arg1;
+- (void)_setFullScreen:(BOOL)arg1 animated:(BOOL)arg2 force:(BOOL)arg3;
+- (void)updateOverlayAnimated:(BOOL)arg1 animatedButtons:(BOOL)arg2 forceRefresh:(BOOL)arg3 withTraitCollection:(id)arg4;
 
 @end
 

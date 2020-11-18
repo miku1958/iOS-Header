@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSArray, NSIndexSet, NSMutableArray, NSMutableIndexSet, NSMutableSet, NSPredicate, NSSet, NSString, NSTimer, NSValueTransformer;
 @protocol CATCollectionControllerDelegate;

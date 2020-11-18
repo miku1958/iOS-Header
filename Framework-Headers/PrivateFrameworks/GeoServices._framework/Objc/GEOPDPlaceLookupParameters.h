@@ -8,8 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class PBUnknownFields;
+
 @interface GEOPDPlaceLookupParameters : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     CDStruct_62a50c50 _muids;
     int _resultProviderId;
     CDStruct_08086d5c _has;
@@ -19,6 +22,7 @@
 @property (readonly, nonatomic) unsigned long long *muids;
 @property (readonly, nonatomic) unsigned long long muidsCount;
 @property (nonatomic) int resultProviderId; // @synthesize resultProviderId=_resultProviderId;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 - (void)addMuid:(unsigned long long)arg1;
 - (void)clearMuids;

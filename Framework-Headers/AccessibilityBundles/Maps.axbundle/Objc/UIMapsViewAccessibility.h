@@ -12,9 +12,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityObscuredScreenAllowedViews;
 - (id)accessibilityLabel;
-- (BOOL)accessibilityViewIsModal;
 - (BOOL)isAccessibilityElement;
 
 @end

@@ -37,6 +37,7 @@
 
 + (id)loggerForObject:(id)arg1;
 - (void).cxx_destruct;
+- (id)CKStatusReportArray;
 - (void)addChildLogger:(id)arg1;
 - (void)addCustomLogOfType:(id)arg1 message:(id)arg2 from:(double)arg3 to:(double)arg4;
 - (void)addLog:(id)arg1 forType:(id)arg2;
@@ -58,7 +59,6 @@
 - (void)relateAsChildToParent:(id)arg1 message:(id)arg2;
 - (void)removeChildLogger:(id)arg1;
 - (void)setObservedObject:(id)arg1;
-- (id)statusReport;
 - (void)togglePauseLoggingSessionOfType:(id)arg1 message:(id)arg2;
 - (void)treeTraversalWithBlock:(CDUnknownBlockType)arg1;
 

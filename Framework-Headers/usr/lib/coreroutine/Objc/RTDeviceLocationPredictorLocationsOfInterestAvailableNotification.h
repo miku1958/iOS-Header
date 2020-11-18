@@ -6,12 +6,9 @@
 
 #import <coreroutine/RTNotification.h>
 
-__attribute__((visibility("hidden")))
 @interface RTDeviceLocationPredictorLocationsOfInterestAvailableNotification : RTNotification
 {
 }
-
-+ (id)notificationName;
 
 @end
 

@@ -14,10 +14,13 @@ __attribute__((visibility("hidden")))
 @interface CKDPShareTokenSaveResponse : PBCodable <NSCopying>
 {
     NSString *_routingKey;
+    NSString *_shareEtag;
 }
 
 @property (readonly, nonatomic) BOOL hasRoutingKey;
+@property (readonly, nonatomic) BOOL hasShareEtag;
 @property (strong, nonatomic) NSString *routingKey; // @synthesize routingKey=_routingKey;
+@property (strong, nonatomic) NSString *shareEtag; // @synthesize shareEtag=_shareEtag;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

@@ -9,7 +9,7 @@
 #import <PhotosUI/PUSearchResultsValueDelegate-Protocol.h>
 
 @class NSArray, NSSet, NSString, PLPhotoLibrary, PLSearchIndexDateFormatter, PSIDatabase, PSIQuery;
-@protocol OS_dispatch_queue, PUSearchResultsDelegate;
+@protocol OS_dispatch_queue, PUSearchResultsDataSourceChangeObserver;
 
 __attribute__((visibility("hidden")))
 @interface PUSearchResultsDataSource : NSObject <PUSearchResultsValueDelegate>
@@ -20,25 +20,29 @@ __attribute__((visibility("hidden")))
     PSIQuery *_query;
     BOOL _ignorePastResults;
     PLPhotoLibrary *_photoLibrary;
-    NSSet *_albumUUIDs;
+    NSSet *_cachedAllAlbumUUIDs;
+    NSSet *_cachedAllMemoryUUIDs;
     NSArray *_results;
     unsigned long long _maxGroupedResultsCount;
     NSArray *_uncommittedResults;
     unsigned long long _uncommittedMaxGroupedResultsCount;
     PLSearchIndexDateFormatter *_dateFormatter;
+    unsigned long long _assetFetchIndex;
+    _Atomic BOOL _didMerge;
+    id<PUSearchResultsDataSourceChangeObserver> _changeObserver;
     PSIDatabase *_searchIndex;
-    id<PUSearchResultsDelegate> _delegate;
 }
 
+@property (weak, nonatomic) id<PUSearchResultsDataSourceChangeObserver> changeObserver; // @synthesize changeObserver=_changeObserver;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<PUSearchResultsDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PSIDatabase *searchIndex; // @synthesize searchIndex=_searchIndex;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_fetchAlbumsWithUUIDs:(id)arg1;
+- (void)_asyncFetchAssetsWithQueryTag:(unsigned long long)arg1;
+- (id)_fetchObjectsWithEntityName:(id)arg1 uuids:(id)arg2;
 - (void)_inqBackgroundProcessSearchResults:(id)arg1 withTag:(unsigned long long)arg2 searchString:(id)arg3;
 - (void)_inqCancel;
 - (BOOL)_shouldCancel:(unsigned long long)arg1;

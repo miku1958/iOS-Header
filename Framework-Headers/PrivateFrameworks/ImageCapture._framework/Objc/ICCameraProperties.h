@@ -23,8 +23,8 @@
     NSMutableArray *_mediaFiles;
     NSMutableArray *_notifyArray;
     NSMutableArray *_toBeNotifiedAddedItems;
-    int _contentsLock;
-    int _mediaFilesLock;
+    struct os_unfair_lock_s _contentsLock;
+    struct os_unfair_lock_s _mediaFilesLock;
     double _timeOffset;
     unsigned long long _estimatedNumberOfDownloadableItems;
     unsigned long long _numberOfDownloadableItems;
@@ -36,38 +36,47 @@
     NSObject<OS_dispatch_queue> *_generalQ;
     NSObject<OS_dispatch_semaphore> *_deviceQSemaphore;
     BOOL _accessRestrictedAppleDevice;
+    BOOL _applePTPCapable;
+    NSMutableArray *_requestedFiles;
 }
 
 @property BOOL accessRestrictedAppleDevice; // @synthesize accessRestrictedAppleDevice=_accessRestrictedAppleDevice;
 @property BOOL allowsSyncingClock; // @synthesize allowsSyncingClock=_allowsSyncingClock;
+@property BOOL applePTPCapable; // @synthesize applePTPCapable=_applePTPCapable;
 @property unsigned long long batteryLevel; // @synthesize batteryLevel=_batteryLevel;
 @property BOOL batteryLevelAvailable; // @synthesize batteryLevelAvailable=_batteryLevelAvailable;
 @property BOOL beingEjected; // @synthesize beingEjected=_beingEjected;
 @property unsigned long long contentCatalogPercentCompleted; // @synthesize contentCatalogPercentCompleted=_contentCatalogPercentCompleted;
 @property BOOL contentReceived; // @synthesize contentReceived=_contentReceived;
 @property (strong) NSMutableArray *contents; // @synthesize contents=_contents;
-@property int contentsLock; // @synthesize contentsLock=_contentsLock;
-@property NSObject<OS_dispatch_semaphore> *deviceQSemaphore; // @synthesize deviceQSemaphore=_deviceQSemaphore;
+@property struct os_unfair_lock_s contentsLock; // @synthesize contentsLock=_contentsLock;
+@property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *deviceQSemaphore; // @synthesize deviceQSemaphore=_deviceQSemaphore;
 @property double downloadCancelTimestamp; // @synthesize downloadCancelTimestamp=_downloadCancelTimestamp;
-@property NSObject<OS_dispatch_queue> *downloadQ; // @synthesize downloadQ=_downloadQ;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *downloadQ; // @synthesize downloadQ=_downloadQ;
 @property BOOL ejectable; // @synthesize ejectable=_ejectable;
 @property unsigned long long estimatedNumberOfDownloadableItems; // @synthesize estimatedNumberOfDownloadableItems=_estimatedNumberOfDownloadableItems;
-@property NSObject<OS_dispatch_queue> *generalQ; // @synthesize generalQ=_generalQ;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *generalQ; // @synthesize generalQ=_generalQ;
 @property BOOL locked; // @synthesize locked=_locked;
 @property (strong) NSMutableArray *mediaFiles; // @synthesize mediaFiles=_mediaFiles;
-@property int mediaFilesLock; // @synthesize mediaFilesLock=_mediaFilesLock;
-@property NSObject<OS_dispatch_queue> *metadataFetchQ; // @synthesize metadataFetchQ=_metadataFetchQ;
+@property struct os_unfair_lock_s mediaFilesLock; // @synthesize mediaFilesLock=_mediaFilesLock;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *metadataFetchQ; // @synthesize metadataFetchQ=_metadataFetchQ;
 @property (strong) NSMutableArray *notifyArray; // @synthesize notifyArray=_notifyArray;
 @property unsigned long long numberOfDownloadableItems; // @synthesize numberOfDownloadableItems=_numberOfDownloadableItems;
-@property NSObject<OS_dispatch_queue> *thumbnailFetchQ; // @synthesize thumbnailFetchQ=_thumbnailFetchQ;
+@property (strong) NSMutableArray *requestedFiles; // @synthesize requestedFiles=_requestedFiles;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *thumbnailFetchQ; // @synthesize thumbnailFetchQ=_thumbnailFetchQ;
 @property double timeOffset; // @synthesize timeOffset=_timeOffset;
 @property (strong) NSMutableArray *toBeNotifiedAddedItems; // @synthesize toBeNotifiedAddedItems=_toBeNotifiedAddedItems;
 @property (strong) NSString *volumePath; // @synthesize volumePath=_volumePath;
 
+- (void)addToNotifyArray:(id)arg1;
+- (void)clearNotifyArray;
 - (void)dealloc;
 - (void)finalize;
+- (id)getNotifyArray;
+- (id)init;
 - (void)lockContents;
 - (void)lockMediaFiles;
+- (void)setupMediaProps;
 - (void)unlockContents;
 - (void)unlockMediaFiles;
 

@@ -9,6 +9,6 @@
 @class AFSiriRequest, NSError;
 
 @protocol AFSiriRequestFailureHandling <NSObject>
-- (void)handleFailureOfRequest:(AFSiriRequest *)arg1 error:(NSError *)arg2;
+- (void)handleFailureOfRequest:(AFSiriRequest *)arg1 error:(NSError *)arg2 atTime:(unsigned long long)arg3;
 @end
 

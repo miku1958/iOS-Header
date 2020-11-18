@@ -25,6 +25,8 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)_buttonSize;
 - (BOOL)_shouldLayoutImageOnRight;
 - (double)addContentOverlap:(double)arg1;
+- (double)extraLeftPadding;
+- (double)extraRightPadding;
 - (long long)labelLineBreakMode;
 - (BOOL)layoutImageOnTrailingEdge;
 - (double)resetContentOverlap;

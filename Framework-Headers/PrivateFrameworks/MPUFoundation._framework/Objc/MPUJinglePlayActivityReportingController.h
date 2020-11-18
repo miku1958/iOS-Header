@@ -4,41 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MPUFoundation/MPUReportingController.h>
+#import <MediaPlaybackCore/MPCJinglePlayActivityReportingController.h>
 
-@class NSObject, NSString, SSVPlayActivityController;
-@protocol OS_dispatch_queue;
-
-@interface MPUJinglePlayActivityReportingController : MPUReportingController
+@interface MPUJinglePlayActivityReportingController : MPCJinglePlayActivityReportingController
 {
-    NSObject<OS_dispatch_queue> *_accessSerialQueue;
-    double _nonCatalogAggregatePlayDuration;
-    double _nonCatalogAggregateStartTime;
-    NSString *_nonCatalogDeviceName;
-    BOOL _nonCatalogOffline;
-    BOOL _nonCatalogSBEnabled;
-    unsigned long long _nonCatalogSourceType;
-    unsigned long long _nonCatalogStoreAccountID;
-    NSString *_nonCatalogStoreFrontID;
-    BOOL _shouldReportAggregateTimePlayActivityEvents;
-    BOOL _shouldReportPlayActivityEvents;
-    SSVPlayActivityController *_playActivityController;
 }
-
-@property (readonly, nonatomic) SSVPlayActivityController *playActivityController; // @synthesize playActivityController=_playActivityController;
-@property (nonatomic) BOOL shouldReportAggregateTimePlayActivityEvents; // @synthesize shouldReportAggregateTimePlayActivityEvents=_shouldReportAggregateTimePlayActivityEvents;
-@property (nonatomic) BOOL shouldReportPlayActivityEvents; // @synthesize shouldReportPlayActivityEvents=_shouldReportPlayActivityEvents;
-
-- (void).cxx_destruct;
-- (void)_applicationWillTerminateNotification:(id)arg1;
-- (id)_captureNonCatalogAggregatePlayActivityEventWithNonCatalogAggregateEndTime:(double)arg1;
-- (void)_clearNonCatalogAggregatePlayActivityEventData;
-- (void)_recordReportingEvents:(id)arg1;
-- (void)acquirePendingPlayActivityEventsForStoreAccountID:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)completePendingPlayActivityEvents:(id)arg1 forSessionToken:(unsigned long long)arg2 withResult:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)dealloc;
-- (id)init;
-- (id)initWithWritingStyle:(unsigned long long)arg1;
 
 @end
 

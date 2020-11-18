@@ -29,7 +29,7 @@
 @property (readonly, nonatomic) NSMutableDictionary *sectionFooters; // @synthesize sectionFooters=_sectionFooters;
 @property (readonly, nonatomic) NSMutableDictionary *sectionHeaders; // @synthesize sectionHeaders=_sectionHeaders;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSNumber *inputAcuteAngle; // @synthesize inputAcuteAngle;
 
 + (id)customAttributes;
-- (float)_roiArea;
+- (double)_roiArea;
 - (struct vec2)_roiCenter;
 - (struct CGRect)_roiRect;
 - (id)_singlePixelImage;

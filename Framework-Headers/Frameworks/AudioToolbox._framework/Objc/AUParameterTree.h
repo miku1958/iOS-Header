@@ -9,7 +9,7 @@
 #import <AudioToolbox/NSSecureCoding-Protocol.h>
 
 @class AUAudioUnit_XH, NSObject;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, _AURemoteParameterSynchronization;
 
 @interface AUParameterTree : AUParameterGroup <NSSecureCoding>
 {
@@ -22,6 +22,7 @@
     AUAudioUnit_XH *__auXH;
     struct AURemoteParameterObserver *_remoteObserverToken;
     struct AURemoteParameterObserver *_remoteRecorderToken;
+    id<_AURemoteParameterSynchronization> _remoteParameterSynchronizer;
     vector_2580a1ea _addrToParamIndex;
 }
 
@@ -33,6 +34,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *observationQueue; // @synthesize observationQueue=_observationQueue;
 @property (nonatomic) struct AUObserverController *observerController; // @synthesize observerController=_observerController;
 @property (nonatomic) struct AURemoteParameterObserver *remoteObserverToken; // @synthesize remoteObserverToken=_remoteObserverToken;
+@property (nonatomic) id<_AURemoteParameterSynchronization> remoteParameterSynchronizer; // @synthesize remoteParameterSynchronizer=_remoteParameterSynchronizer;
 @property (nonatomic) struct AURemoteParameterObserver *remoteRecorderToken; // @synthesize remoteRecorderToken=_remoteRecorderToken;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *valueAccessQueue; // @synthesize valueAccessQueue=_valueAccessQueue;
 
@@ -50,10 +52,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithChildren:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)parameterChanged:(unsigned long long)arg1 value:(float)arg2;
 - (id)parameterWithAddress:(unsigned long long)arg1;
 - (id)parameterWithID:(unsigned int)arg1 scope:(unsigned int)arg2 element:(unsigned int)arg3;
-- (void)recordParameterEvents:(id)arg1;
+- (void)remoteSyncParameter:(unsigned long long)arg1 value:(float)arg2 extOriginator:(unsigned long long)arg3 hostTime:(unsigned long long)arg4 eventType:(unsigned int)arg5;
 
 @end
 

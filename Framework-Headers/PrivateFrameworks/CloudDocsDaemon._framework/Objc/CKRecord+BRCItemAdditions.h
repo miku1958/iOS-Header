@@ -18,10 +18,13 @@
 @property (readonly) Class superclass;
 
 + (id)desiredKeysWithMask:(unsigned short)arg1;
-+ (id)documentContentsRecordForItemID:(id)arg1 zoneID:(id)arg2;
++ (id)rootAppLibraryRecordForAppLibraryID:(id)arg1 zoneID:(id)arg2;
 + (id)rootDirectoryRecordForZoneID:(id)arg1;
+- (BOOL)brc_currentUserOwnsLastEditorDevice;
 - (BOOL)brc_isInterestingRecordForSyncDown;
+- (id)brc_lastEditorDeviceName;
 - (id)brc_oplockMergeEtag;
+- (BOOL)brc_safeToGetURL;
 - (id)brc_updateDroppedReason;
 - (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
 @end

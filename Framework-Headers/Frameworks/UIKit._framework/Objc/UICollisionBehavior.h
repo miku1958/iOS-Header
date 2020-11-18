@@ -36,14 +36,17 @@
 
 + (BOOL)_isPrimitiveBehavior;
 - (void).cxx_destruct;
-- (void)_addItem:(id)arg1;
+- (void)_addCollisionItem:(id)arg1;
 - (void)_applySettings;
 - (void)_associate;
 - (void)_didBeginContact:(id)arg1;
 - (void)_didEndContact:(id)arg1;
 - (void)_dissociate;
 - (void)_reevaluate:(unsigned long long)arg1;
-- (void)_removeExplicitBoundaries;
+- (void)_registerBodyForIdentifier:(id)arg1 path:(id)arg2;
+- (void)_registerBoundaryForIdentifier:(id)arg1 path:(id)arg2;
+- (void)_removeExplicitBoundaryBodies;
+- (void)_removeExplicitBoundaryPaths;
 - (void)_removeImplicitBoundaries;
 - (void)_setCollisions:(BOOL)arg1 forBody:(id)arg2 isEdge:(BOOL)arg3;
 - (void)_setTranslatesReferenceItemBounds:(BOOL)arg1 intoBoundaryWithInsets:(struct UIEdgeInsets)arg2;

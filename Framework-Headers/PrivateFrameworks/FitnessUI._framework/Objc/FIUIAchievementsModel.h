@@ -6,22 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class HKExtendedHealthStore, NSArray;
-@protocol FIUIAchievementsModelDelegate, OS_dispatch_queue;
+@class HKExtendedHealthStore;
+@protocol FIUIAchievementsModelDelegate;
 
 @interface FIUIAchievementsModel : NSObject
 {
     HKExtendedHealthStore *_extendedHealthStore;
-    NSObject<OS_dispatch_queue> *_achievementsLock;
-    BOOL _loadingAchievements;
-    NSArray *_achievements;
     id<FIUIAchievementsModelDelegate> _delegate;
 }
 
 @property (weak, nonatomic) id<FIUIAchievementsModelDelegate> delegate; // @synthesize delegate=_delegate;
 
++ (long long)compareAchievement:(id)arg1 toAchievement:(id)arg2;
 - (void).cxx_destruct;
-- (id)achievements;
 - (void)fetchAchievementsOnDay:(id)arg1 inCalendar:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 

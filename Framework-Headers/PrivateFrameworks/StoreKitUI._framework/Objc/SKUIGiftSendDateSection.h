@@ -24,11 +24,13 @@
 @property (nonatomic) long long sendDateStyle; // @synthesize sendDateStyle=_sendDateStyle;
 
 - (void).cxx_destruct;
+- (void)_createFormattedDateString:(BOOL)arg1;
 - (id)_headerView;
 - (id)headerViewForTableView:(id)arg1;
 - (double)heightForCellInTableView:(id)arg1 indexPath:(id)arg2;
 - (long long)numberOfRowsInSection;
 - (id)tableViewCellForTableView:(id)arg1 indexPath:(id)arg2;
+- (void)updateCell:(id)arg1 forTransitionToSize:(struct CGSize)arg2;
 
 @end
 

@@ -8,45 +8,47 @@
 
 #import <NotesShared/ICNoteContainer-Protocol.h>
 
-@class ICAccountUtilities, ICNote, ICNotesCrossProcessChangeCoordinator, ICSelectorDelayer, NSManagedObjectContext, NSManagedObjectModel, NSMutableSet, NSNumber, NSPersistentStoreCoordinator, NSString, NSTimer;
-@protocol ICNoteContextDelegate;
+@class ICAccountUtilities, ICNote, ICNotesCrossProcessChangeCoordinator, ICSelectorDelayer, NSError, NSManagedObjectContext, NSMutableSet, NSNumber, NSPersistentStoreCoordinator, NSString, NSTimer;
+@protocol OS_dispatch_queue;
 
 @interface ICNoteContext : NSObject <ICNoteContainer>
 {
     NSManagedObjectContext *_managedObjectContext;
     BOOL _delaySaving;
+    BOOL _databaseOpenFailedDueToLowDiskSpace;
     BOOL _didResumeIndexing;
     BOOL _saving;
-    id<ICNoteContextDelegate> _delegate;
     ICNotesCrossProcessChangeCoordinator *_crossProcessChangeCoordinator;
     ICNote *_currentNote;
+    NSError *_databaseOpenError;
     ICSelectorDelayer *_resumeIndexingDelayer;
     NSTimer *_updateAttachmentLocationsTimer;
     NSMutableSet *_attachmentIdentifersAlreadyCheckedForUpdate;
     unsigned long long _contextOptions;
-    NSManagedObjectModel *_managedObjectModel;
     NSPersistentStoreCoordinator *_persistentStoreCoordinator;
     NSManagedObjectContext *_nextIdContext;
     NSNumber *_nextId;
     ICAccountUtilities *_accountUtilities;
     NSTimer *_trashDeletionTimer;
     unsigned long long _changeTrackingDisableLevel;
+    NSObject<OS_dispatch_queue> *_backgroundTaskQueue;
 }
 
 @property (strong, nonatomic) ICAccountUtilities *accountUtilities; // @synthesize accountUtilities=_accountUtilities;
 @property (strong, nonatomic) NSMutableSet *attachmentIdentifersAlreadyCheckedForUpdate; // @synthesize attachmentIdentifersAlreadyCheckedForUpdate=_attachmentIdentifersAlreadyCheckedForUpdate;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *backgroundTaskQueue; // @synthesize backgroundTaskQueue=_backgroundTaskQueue;
 @property (nonatomic) unsigned long long changeTrackingDisableLevel; // @synthesize changeTrackingDisableLevel=_changeTrackingDisableLevel;
 @property (nonatomic) unsigned long long contextOptions; // @synthesize contextOptions=_contextOptions;
 @property (strong, nonatomic) ICNotesCrossProcessChangeCoordinator *crossProcessChangeCoordinator; // @synthesize crossProcessChangeCoordinator=_crossProcessChangeCoordinator;
 @property (strong, nonatomic) ICNote *currentNote; // @synthesize currentNote=_currentNote;
+@property (strong, nonatomic) NSError *databaseOpenError; // @synthesize databaseOpenError=_databaseOpenError;
+@property (nonatomic) BOOL databaseOpenFailedDueToLowDiskSpace; // @synthesize databaseOpenFailedDueToLowDiskSpace=_databaseOpenFailedDueToLowDiskSpace;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL delaySaving; // @synthesize delaySaving=_delaySaving;
-@property (strong) id<ICNoteContextDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didResumeIndexing; // @synthesize didResumeIndexing=_didResumeIndexing;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) NSManagedObjectModel *managedObjectModel; // @synthesize managedObjectModel=_managedObjectModel;
 @property (strong, nonatomic) NSNumber *nextId; // @synthesize nextId=_nextId;
 @property (strong, nonatomic) NSManagedObjectContext *nextIdContext; // @synthesize nextIdContext=_nextIdContext;
 @property (strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator; // @synthesize persistentStoreCoordinator=_persistentStoreCoordinator;
@@ -57,13 +59,13 @@
 @property (strong, nonatomic) NSTimer *updateAttachmentLocationsTimer; // @synthesize updateAttachmentLocationsTimer=_updateAttachmentLocationsTimer;
 
 + (id)applicationDocumentsURL;
-+ (void)clearSharedContext;
 + (void)crashThisApp;
-+ (id)entity:(id)arg1 withUUIDCreatingIfNecessary:(id)arg2 context:(id)arg3;
 + (id)filenameFromFileWrapper:(id)arg1;
-+ (BOOL)handleSaveError:(id)arg1 inContext:(id)arg2;
++ (BOOL)isActive;
 + (BOOL)legacyNotesDisabled;
++ (id)managedObjectModel;
 + (id)persistentStoreURL;
++ (id)persistentStoreWriteAheadLogURL;
 + (id)searchIndexerDataSource;
 + (void)setLegacyNotesDisabled:(BOOL)arg1;
 + (id)sharedContext;
@@ -75,22 +77,20 @@
 - (id)accountName;
 - (void)accountsDidChange:(id)arg1;
 - (id)addEmptyNote;
-- (id)addInviteWithUUID:(id)arg1 andTitle:(id)arg2 fromPerson:(id)arg3;
 - (id)addLocalAccount;
 - (void)addOrDeleteLocalAccountIfNecessary;
 - (void)addPersistentStoreIfNeeded;
 - (id)allICloudACAccounts;
-- (id)appURLForFolderList;
-- (id)appURLForNote:(id)arg1;
 - (void)applicationWillTerminate;
+- (BOOL)canBeSharedViaICloud;
 - (BOOL)canTrackChangesForSync;
 - (void)cloudContextFetchRecordChangeOperationDidFinish:(id)arg1;
-- (id)cloudSyncingObjectsMatchingPredicate:(id)arg1;
 - (id)coordinatorOptions;
 - (void)createPersistentStore;
 - (void)dealloc;
 - (void)deleteEverything;
 - (void)deleteNote:(id)arg1;
+- (void)destroyPersistentStore;
 - (BOOL)didMigrateLocalAccount;
 - (void)disableChangeTracking;
 - (void)enableChangeTracking;
@@ -104,7 +104,6 @@
 - (id)initWithOptions:(unsigned long long)arg1;
 - (BOOL)isChangeTrackingDisabled;
 - (BOOL)isDeleted;
-- (BOOL)isShowFolderListURL:(id)arg1;
 - (BOOL)isSingleRunningNotesApp;
 - (id)legacyNoteIntegerIdToNoteIdentifierDictionary;
 - (void)managedObjectContextDidSave:(id)arg1;
@@ -116,25 +115,24 @@
 - (id)newWorkerManagedObjectContext;
 - (id)nextIndex;
 - (id)noteChangeWithType:(short)arg1 folder:(id)arg2;
+- (id)noteContainerAccount;
 - (BOOL)noteIsVisible:(id)arg1;
 - (id)noteVisibilityTestingForSearchingAccount;
 - (void)postMoveUpdateChangeCountForNote:(id)arg1;
 - (id)predicateForAttachmentsInAccount:(id)arg1;
-- (id)predicateForCloudSyncingObjectsMarkedForDeletion;
-- (id)predicateForNoteMentionedInURL:(id)arg1;
 - (id)predicateForRegularFoldersAndAccounts;
 - (id)predicateForSearchableAttachments;
 - (id)predicateForSearchableNotes;
 - (id)predicateForVisibleNotes;
 - (id)primaryICloudACAccount;
-- (void)purgeDeletedObjects;
+- (void)purgeDeletedObjectsInManagedObjectContext:(id)arg1;
 - (void)purgeEverything;
+- (BOOL)recoverFromSaveError;
 - (void)refreshAll;
-- (void)refreshForCrossProcessNotifications;
 - (BOOL)save;
 - (BOOL)save:(id *)arg1;
+- (void)saveAndClearDecryptedDataIfNecessary;
 - (BOOL)saveImmediately;
-- (void)sendDeltasForNote:(id)arg1;
 - (void)setNoteContent:(id)arg1 forNote:(id)arg2 isPlainText:(BOOL)arg3;
 - (void)setupCrossProcessChangeCoordinator;
 - (void)setupSyncChangeTracking;

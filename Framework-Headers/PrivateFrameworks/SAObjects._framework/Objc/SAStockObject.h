@@ -21,6 +21,8 @@
 @property (copy, nonatomic) NSNumber *dividendYield;
 @property (copy, nonatomic) NSNumber *earningsPerShare;
 @property (copy, nonatomic) NSString *exchange;
+@property (copy, nonatomic) NSNumber *fiftyTwoWeekHigh;
+@property (copy, nonatomic) NSNumber *fiftyTwoWeekLow;
 @property (copy, nonatomic) NSNumber *high;
 @property (copy, nonatomic) NSString *link;
 @property (copy, nonatomic) NSNumber *low;

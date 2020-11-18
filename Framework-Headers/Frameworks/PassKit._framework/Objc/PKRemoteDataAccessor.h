@@ -14,13 +14,13 @@
     NSString *_objectUniqueID;
 }
 
-@property (readonly, strong, nonatomic) PKPassLibrary *library; // @synthesize library=_library;
-@property (readonly, strong, nonatomic) NSString *objectUniqueID; // @synthesize objectUniqueID=_objectUniqueID;
+@property (readonly, nonatomic) PKPassLibrary *library; // @synthesize library=_library;
+@property (readonly, nonatomic) NSString *objectUniqueID; // @synthesize objectUniqueID=_objectUniqueID;
 
+- (void).cxx_destruct;
 - (id)archiveData;
 - (void)contentWithCompletion:(CDUnknownBlockType)arg1;
 - (id)dataForBundleResourceNamed:(id)arg1 withExtension:(id)arg2;
-- (void)dealloc;
 - (id)displayProfileOfType:(long long)arg1;
 - (void)imageSetForType:(long long)arg1 screenScale:(double)arg2 suffix:(id)arg3 displayProfile:(id)arg4 preheat:(BOOL)arg5 withCompletion:(CDUnknownBlockType)arg6;
 - (id)initWithLibrary:(id)arg1 objectUniqueID:(id)arg2;

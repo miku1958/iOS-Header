@@ -13,8 +13,8 @@
 + (BOOL)addCodableObject:(id)arg1 toCollection:(id)arg2;
 + (id)columnsDefinition;
 + (id)databaseTable;
-+ (id)entityEncoderForHealthDaemon:(id)arg1 database:(id)arg2 purpose:(long long)arg3 authorizationFilter:(CDUnknownBlockType)arg4;
-+ (BOOL)enumerateDeletedSamplesWithType:(id)arg1 healthDaemon:(id)arg2 sourceIdentifier:(id)arg3 limit:(unsigned long long)arg4 anchor:(long long)arg5 error:(id *)arg6 handler:(CDUnknownBlockType)arg7;
++ (id)entityEncoderForProfile:(id)arg1 database:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
++ (BOOL)enumerateDeletedSamplesWithType:(id)arg1 profile:(id)arg2 sourceIdentifier:(id)arg3 limit:(unsigned long long)arg4 anchor:(long long)arg5 error:(id *)arg6 handler:(CDUnknownBlockType)arg7;
 + (BOOL)enumerateEntitiesForSyncWithProperties:(id)arg1 predicate:(id)arg2 excludedSyncStore:(id)arg3 syncAnchorRange:(struct HDSyncAnchorRange)arg4 limit:(unsigned long long)arg5 lastSyncAnchor:(long long *)arg6 healthDatabase:(id)arg7 error:(id *)arg8 block:(CDUnknownBlockType)arg9;
 + (id)insertDeletedObject:(id)arg1 dataType:(id)arg2 provenanceIdentifier:(id)arg3 deletionDate:(id)arg4 inDatabase:(id)arg5 error:(id *)arg6;
 + (id)insertDeletedObjectForObject:(id)arg1 provenanceIdentifier:(id)arg2 deletionDate:(id)arg3 inDatabase:(id)arg4 error:(id *)arg5;

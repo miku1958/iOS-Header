@@ -14,11 +14,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilitySpeakThisViewController;
-- (id)_popViewControllerWithTransition:(int)arg1 allowPoppingLast:(BOOL)arg2;
 - (BOOL)accessibilityPerformEscape;
-- (void)navigationBar:(id)arg1 buttonClicked:(int)arg2;
 - (void)navigationTransitionView:(id)arg1 didEndTransition:(long long)arg2 fromView:(id)arg3 toView:(id)arg4;
-- (void)pushViewController:(id)arg1 transition:(int)arg2 forceImmediate:(BOOL)arg3;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 

@@ -6,16 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class BRCAccountSession, NSError, NSOutputStream, NSString, NSURL, PBMessageStreamWriter;
+@class BRCClientZone, NSError, NSOutputStream, NSString, NSURL, PBMessageStreamWriter;
 
 @interface BRCPackageManifestWriter : NSObject
 {
-    BRCAccountSession *_session;
+    BRCClientZone *_clientZone;
     NSString *_stageID;
     PBMessageStreamWriter *_writer;
     NSOutputStream *_stream;
     NSURL *_url;
-    BOOL _sharedZone;
     NSError *_error;
 }
 
@@ -33,8 +32,8 @@
 - (BOOL)addItem:(id)arg1;
 - (BOOL)addLocalItem:(id)arg1;
 - (BOOL)done;
-- (id)initWithSession:(id)arg1 stageID:(id)arg2 url:(id)arg3 sharedZone:(BOOL)arg4;
-- (BOOL)stagePackageWithReader:(id)arg1 package:(id)arg2 stageItemURL:(id)arg3 livefd:(int)arg4;
+- (id)initWithZone:(id)arg1 stageID:(id)arg2 url:(id)arg3;
+- (BOOL)stagePackageWithReader:(id)arg1 package:(id)arg2 xattrsPackage:(id)arg3 stageItemURL:(id)arg4 livefd:(int)arg5 recordName:(id)arg6;
 
 @end
 

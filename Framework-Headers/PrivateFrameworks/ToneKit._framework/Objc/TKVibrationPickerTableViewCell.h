@@ -13,17 +13,15 @@
 
 @interface TKVibrationPickerTableViewCell : TKPickerTableViewCell <UITextFieldDelegate>
 {
+    UITextField *_removableTextField;
     BOOL _editable;
     id<TKVibrationPickerTableViewCellDelegate> _delegate;
     UIColor *_regularTextColor;
-    UITextField *_removableTextField;
 }
 
-@property (readonly, nonatomic, getter=_isDisplayingRemovableTextField) BOOL _displayingRemovableTextField;
-@property (strong, nonatomic, setter=_setRemovableTextField:) UITextField *_removableTextField; // @synthesize _removableTextField;
 @property (nonatomic, getter=isChecked) BOOL checked;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<TKVibrationPickerTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<TKVibrationPickerTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEditable) BOOL editable; // @synthesize editable=_editable;
 @property (readonly) unsigned long long hash;
@@ -34,9 +32,10 @@
 @property (strong, nonatomic) UIFont *regularTextFont;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
+- (BOOL)_isDisplayingRemovableTextField;
 - (void)_layoutRemovableTextField;
 - (void)_makeRemovableTextFieldEditable:(BOOL)arg1;
-- (void)dealloc;
 - (void)didTransitionToState:(unsigned long long)arg1;
 - (id)initWithReuseIdentifier:(id)arg1;
 - (void)layoutSubviews;

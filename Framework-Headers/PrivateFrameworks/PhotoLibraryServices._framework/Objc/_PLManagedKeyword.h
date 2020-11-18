@@ -13,7 +13,6 @@
 }
 
 @property (strong, nonatomic) NSString *title; // @dynamic title;
-@property (strong, nonatomic) NSString *uuid; // @dynamic uuid;
 
 + (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;

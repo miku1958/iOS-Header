@@ -48,7 +48,7 @@
 - (id)cellForIndexPath:(id)arg1;
 - (struct CGSize)cellSizeForIndexPath:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
-- (void)collectionView:(id)arg1 didConfirmButtonElement:(id)arg2 forItemAtIndexPath:(id)arg3;
+- (void)collectionView:(id)arg1 didConfirmButtonElement:(id)arg2 withClickInfo:(id)arg3 forItemAtIndexPath:(id)arg4;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 layout:(id)arg2 willApplyLayoutAttributes:(id)arg3;

@@ -6,7 +6,6 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <PhotosUI/PLModalDimmingContained-Protocol.h>
 #import <PhotosUI/UITableViewDataSource-Protocol.h>
 #import <PhotosUI/UITableViewDelegate-Protocol.h>
 #import <PhotosUI/UITextViewDelegate-Protocol.h>
@@ -15,7 +14,7 @@
 @protocol PUCloudSharedPostCommentViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PUCloudSharedPostCommentViewController : UIViewController <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, PLModalDimmingContained>
+@interface PUCloudSharedPostCommentViewController : UIViewController <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     UIView *_backgroundView;
     NSArray *_dialogConstraints;
@@ -70,8 +69,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
 - (id)navigationItem;
-- (struct CGPoint)preferredOffsetInParentViewController;
-- (struct CGSize)preferredSizeInParentViewController;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

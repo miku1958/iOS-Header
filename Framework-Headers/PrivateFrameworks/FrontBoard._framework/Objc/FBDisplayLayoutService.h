@@ -31,6 +31,7 @@
 - (void)flushLayoutForDisplayType:(unsigned long long)arg1;
 - (id)init;
 - (BOOL)isTransitioningForDisplayType:(unsigned long long)arg1;
+- (id)layoutForDisplayType:(unsigned long long)arg1;
 - (void)publishDisplayLayout:(id)arg1;
 - (void)removeLayoutElementAssertion:(id)arg1;
 - (id)server:(id)arg1 displayLayoutForDisplayType:(unsigned long long)arg2;

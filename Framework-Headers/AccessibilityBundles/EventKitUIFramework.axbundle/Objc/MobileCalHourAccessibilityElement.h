@@ -14,14 +14,14 @@
     UIView *_dayGridView;
 }
 
-@property (nonatomic) UIView *dayGridView; // @synthesize dayGridView=_dayGridView;
+@property (weak, nonatomic) UIView *dayGridView; // @synthesize dayGridView=_dayGridView;
 @property (strong, nonatomic) NSDate *hourDate; // @synthesize hourDate;
 
+- (void).cxx_destruct;
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (struct CGRect)accessibilityFrame;
 - (struct CGRect)accessibilityFrameForScrolling;
 - (id)accessibilityLabel;
-- (void)dealloc;
 - (BOOL)isAccessibilityElement;
 
 @end

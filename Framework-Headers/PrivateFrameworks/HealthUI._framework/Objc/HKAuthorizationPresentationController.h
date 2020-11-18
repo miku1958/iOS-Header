@@ -34,10 +34,13 @@
 - (void)_didFinishDismissing;
 - (void)_dismissViewControllerAnimated:(BOOL)arg1;
 - (void)_presentRemoteViewController:(id)arg1;
+- (void)_presentWithPromptSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_presentWithRequestRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_requestAndConfigureHostViewController:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)healthPrivacyHostViewController:(id)arg1 didFinishWithError:(id)arg2;
 - (void)presentWithRequestRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)presentWithSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

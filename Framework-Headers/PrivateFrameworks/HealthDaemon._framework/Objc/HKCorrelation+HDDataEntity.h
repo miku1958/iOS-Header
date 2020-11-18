@@ -8,7 +8,7 @@
 
 @interface HKCorrelation (HDDataEntity)
 - (void)hd_cleanupBeforeJournalInsertion;
-- (BOOL)hd_insertRelatedDataWithHealthDaemon:(id)arg1 database:(id)arg2 entityPersistentID:(id)arg3 error:(id *)arg4;
+- (BOOL)hd_insertRelatedDataWithProfile:(id)arg1 database:(id)arg2 entityPersistentID:(id)arg3 error:(id *)arg4;
 - (id)hd_relatedJournalEntries;
 @end
 

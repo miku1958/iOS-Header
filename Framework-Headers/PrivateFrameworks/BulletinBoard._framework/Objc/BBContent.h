@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/NSCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
@@ -24,11 +24,13 @@
 
 + (id)contentWithTitle:(id)arg1 subtitle:(id)arg2 message:(id)arg3;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToContent:(id)arg1;
 
 @end

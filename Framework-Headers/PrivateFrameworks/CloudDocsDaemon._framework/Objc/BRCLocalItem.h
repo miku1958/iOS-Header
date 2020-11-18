@@ -9,20 +9,21 @@
 #import <CloudDocsDaemon/BRCItem-Protocol.h>
 #import <CloudDocsDaemon/BRCSyncThrottleItemProtocol-Protocol.h>
 
-@class BRCAccountSession, BRCAliasItem, BRCDirectoryItem, BRCDocumentItem, BRCItemID, BRCLocalContainer, BRCLocalStatInfo, BRCServerZone, CKRecord, CKRecordID, NSError, NSMutableSet, NSNumber, NSString;
+@class BRCAccountSession, BRCAliasItem, BRCAppLibrary, BRCClientZone, BRCDirectoryItem, BRCDocumentItem, BRCFSRootItem, BRCFinderBookmarkItem, BRCItemID, BRCLocalStatInfo, BRCPQLConnection, BRCServerZone, BRCSharedDocumentItem, BRCSymlinkItem, CKRecord, CKRecordID, NSError, NSMutableSet, NSNumber, NSString;
 
 @interface BRCLocalItem : NSObject <BRCSyncThrottleItemProtocol, BRCItem>
 {
     BRCAccountSession *_session;
     BRCServerZone *_serverZone;
-    BRCLocalContainer *_container;
+    BRCClientZone *_clientZone;
+    BRCPQLConnection *_db;
+    BRCAppLibrary *_appLibrary;
     BRCItemID *_itemID;
     NSNumber *_ownerKey;
     BRCLocalStatInfo *_st;
     unsigned int _syncUpState;
     BRCLocalItem *_orig;
     unsigned long long _localDiffs;
-    unsigned char _itemScope;
     NSNumber *_inFlightDiffs;
     NSNumber *_minimumSupportedOSRowID;
     unsigned long long _dbRowID;
@@ -39,25 +40,39 @@
     NSString *_path;
 }
 
-@property (readonly, nonatomic) BRCAliasItem *asAlias;
+@property (strong, nonatomic) BRCAppLibrary *appLibrary; // @synthesize appLibrary=_appLibrary;
+@property (readonly, nonatomic) NSString *appLibraryID;
+@property (readonly, nonatomic) BRCAliasItem *asBRAlias;
 @property (readonly, nonatomic) BRCDirectoryItem *asDirectory;
 @property (readonly, nonatomic) BRCDocumentItem *asDocument;
+@property (readonly, nonatomic) BRCFSRootItem *asFSRoot;
+@property (readonly, nonatomic) BRCFinderBookmarkItem *asFinderBookmark;
+@property (readonly, nonatomic) BRCSharedDocumentItem *asSharedDocument;
+@property (readonly, nonatomic) BRCSymlinkItem *asSymlink;
 @property (readonly, nonatomic) CKRecord *baseStructureRecord;
-@property (readonly, nonatomic) BRCLocalContainer *container; // @synthesize container=_container;
+@property (readonly, nonatomic) NSString *bookmarkData;
+@property (readonly, nonatomic) BRCClientZone *clientZone; // @synthesize clientZone=_clientZone;
 @property (readonly, nonatomic) unsigned long long dbRowID; // @synthesize dbRowID=_dbRowID;
 @property (readonly, nonatomic) NSString *digestDescription;
 @property (readonly, nonatomic) NSString *extension;
+@property (readonly, nonatomic) NSNumber *fileID;
+@property (readonly, nonatomic) BOOL hasShareIDAndIsOwnedByMe;
 @property (readonly, nonatomic) NSNumber *inFlightDiffs; // @synthesize inFlightDiffs=_inFlightDiffs;
-@property (readonly, nonatomic) BOOL isAlias;
 @property (readonly, nonatomic) BOOL isAlmostDead;
+@property (readonly, nonatomic) BOOL isBRAlias;
 @property (readonly, nonatomic) BOOL isDead;
-@property (readonly, nonatomic) BOOL isDeadInServerTruth;
+@property (readonly, nonatomic) BOOL isDeadOrMissingInServerTruth;
 @property (readonly, nonatomic) BOOL isDirectory;
 @property (readonly, nonatomic) BOOL isDocument;
+@property (readonly, nonatomic) BOOL isFSRoot;
 @property (readonly, nonatomic) BOOL isFault;
+@property (readonly, nonatomic) BOOL isFinderBookmark;
 @property (readonly, nonatomic) BOOL isFromInitialScan;
 @property (readonly, nonatomic) BOOL isIdleOrRejected;
+@property (readonly, nonatomic) BOOL isInDataScope;
+@property (readonly, nonatomic) BOOL isInDocumentOrTrashScope;
 @property (readonly, nonatomic) BOOL isInDocumentScope;
+@property (readonly, nonatomic) BOOL isInTrashScope;
 @property (readonly, nonatomic) BOOL isKnownByServer;
 @property (readonly, nonatomic) BOOL isKnownByServerOrInFlight;
 @property (readonly, nonatomic) BOOL isLive;
@@ -67,8 +82,10 @@
 @property (readonly, nonatomic) BOOL isReadAndUploaded;
 @property (readonly, nonatomic) BOOL isRejected;
 @property (readonly, nonatomic) BOOL isReserved;
+@property (readonly, nonatomic) BOOL isShareAcceptationFault;
 @property (readonly, nonatomic) BOOL isSharedByMe;
-@property (readonly, nonatomic) BOOL isSharedByMeWithAShareID;
+@property (readonly, nonatomic) BOOL isSymLink;
+@property (readonly, nonatomic) BOOL isZoneRoot;
 @property (readonly, nonatomic) BRCItemID *itemID; // @synthesize itemID=_itemID;
 @property (readonly, nonatomic) unsigned long long localDiffs; // @synthesize localDiffs=_localDiffs;
 @property (readonly, nonatomic) NSString *logicalName;
@@ -86,7 +103,7 @@
 @property (readonly, nonatomic) BRCItemID *serverPathMatchItemID;
 @property (readonly, nonatomic) BRCServerZone *serverZone; // @synthesize serverZone=_serverZone;
 @property (readonly, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
-@property (readonly, nonatomic) NSMutableSet *setOfContainersIDsWithReverseAliases;
+@property (readonly, nonatomic) NSMutableSet *setOfAppLibraryIDsWithReverseAliases;
 @property (nonatomic) unsigned long long sharingOptions; // @synthesize sharingOptions=_sharingOptions;
 @property (readonly, nonatomic) BRCLocalStatInfo *st; // @synthesize st=_st;
 @property (readonly, nonatomic) CKRecordID *structureRecordID;
@@ -94,11 +111,16 @@
 @property (readonly, nonatomic) unsigned int syncUpState; // @synthesize syncUpState=_syncUpState;
 @property (readonly, nonatomic) unsigned int uploadStatus;
 
++ (id)_bookmarkDataWithItemResolutionString:(id)arg1 serverZone:(id)arg2 salted:(BOOL)arg3;
++ (id)bookmarkDataWithItemResolutionString:(id)arg1 serverZone:(id)arg2;
 + (id)newItemWithPath:(id)arg1 parentID:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)_deleteFromDB:(id)arg1 diffs:(unsigned long long)arg2 keepAliases:(BOOL)arg3;
-- (id)_initFromPQLResultSet:(id)arg1 container:(id)arg2 error:(id *)arg3;
+- (void)_ascendItemHierarchyWithBlock:(CDUnknownBlockType)arg1;
+- (BOOL)_checkZoneUpdateFromFSAtPath:(id)arg1 parentID:(id)arg2;
+- (BOOL)_contentXattrsHaveChangedAtRelativeAPath:(id)arg1;
+- (BOOL)_deleteFromDB:(id)arg1 keepAliases:(BOOL)arg2;
+- (id)_initFromPQLResultSet:(id)arg1 session:(id)arg2 db:(id)arg3 error:(id *)arg4;
 - (id)_initWithLocalItem:(id)arg1;
 - (id)_initWithRelativePath:(id)arg1 parentID:(id)arg2;
 - (id)_initWithServerItem:(id)arg1 dbRowID:(unsigned long long)arg2;
@@ -107,12 +129,17 @@
 - (BOOL)_isInterestingUpdateForNotifsWithDiffs:(unsigned long long)arg1;
 - (void)_markLostWhenReplacedByItem:(id)arg1 backoffMode:(unsigned char)arg2;
 - (void)_markNeedsSyncingUp;
+- (id)_parentItem;
+- (void)_refreshAppLibraryFromParent;
 - (void)_sendNotificationIfNeededWithDiffs:(unsigned long long)arg1 regather:(BOOL)arg2;
 - (void)_serializeStructuralPluginHints:(id)arg1;
 - (id)_setOfParentIDs;
+- (void)_updateAppLibraryFromFSAtPath:(id)arg1;
+- (void)_updateAppLibraryPristineStates;
 - (BOOL)_updateInDB:(id)arg1 diffs:(unsigned long long)arg2;
 - (void)applyMetadataOnFileID:(unsigned long long)arg1 liveFD:(unsigned long long)arg2;
 - (void)beginBounceAndSaveToDBWithName:(id)arg1;
+- (void)beginBounceWithName:(id)arg1;
 - (BOOL)changedAtRelativePath:(id)arg1 scanPackage:(BOOL)arg2;
 - (BOOL)checkIsInDocumentsScopeWithParent:(id)arg1;
 - (void)clearFromStage;
@@ -124,33 +151,38 @@
 - (unsigned long long)diffAgainstOriginalItem;
 - (unsigned long long)diffAgainstServerItem:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (BOOL)evictWithGroup:(id)arg1 error:(id *)arg2;
+- (BOOL)evictInTask:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (float)fakeSync;
+- (id)fetchParentFileIDs;
+- (BOOL)fixupItemAfterCrossZoneMovedCreationWithLookup:(id)arg1;
 - (void)fixupStagedItemAtStartup;
 - (void)handleUnknownItemError;
 - (void)inheritOSUpgradeNeededFromItem:(id)arg1;
-- (id)initFromPQLResultSet:(id)arg1 container:(id)arg2 error:(id *)arg3;
 - (id)initFromPQLResultSet:(id)arg1 error:(id *)arg2;
+- (id)initFromPQLResultSet:(id)arg1 session:(id)arg2 db:(id)arg3 error:(id *)arg4;
 - (id)initWithCoder:(id)arg1;
+- (id)itemResolutionString;
 - (void)learnItemID:(id)arg1 ownerKey:(id)arg2 path:(id)arg3 markLost:(BOOL)arg4;
 - (BOOL)learnStagedInfoFromDownloadStageID:(id)arg1 error:(id *)arg2;
 - (void)markBounceFailed;
 - (void)markBounceFinished;
+- (void)markCrossZoneMovedToUncreatedZone:(id)arg1;
 - (void)markDead;
 - (void)markForceNeedsSyncUp;
 - (void)markForceNotify;
 - (void)markFound;
+- (void)markItemForgottenByServer;
 - (void)markLatestRequestAcknowledged;
 - (void)markLatestSyncRequestFailed;
 - (void)markLatestSyncRequestRejected;
-- (void)markLiveFromStage;
+- (void)markLiveFromStageWithAppLibrary:(id)arg1;
 - (void)markLostClearGenerationID:(BOOL)arg1 backoffMode:(unsigned char)arg2;
 - (void)markLostWhenReplacedByItem:(id)arg1;
 - (void)markLostWithoutBackoff;
+- (void)markMetadataLive;
 - (void)markNeedsDeleteForRescheduleOfItem:(id)arg1;
 - (void)markNeedsOSUpgradeToSyncUpWithName:(id)arg1;
-- (void)markNeedsReading;
-- (void)markNeedsUploadOrSyncingUpWithAliasTarget:(id)arg1;
+- (void)markNeedsUploadOrSyncingUp;
 - (void)markRemovedFromFilesystemForServerEdit:(BOOL)arg1;
 - (void)markRenamedUsingServerItem:(id)arg1 toRelpath:(id)arg2;
 - (void)markReserved;
@@ -158,14 +190,16 @@
 - (void)markStagedWithFileID:(unsigned long long)arg1 generationID:(unsigned int)arg2 documentID:(unsigned int)arg3;
 - (void)moveAsideLocally;
 - (id)osNameNeededToSyncUp;
-- (id)parentItem;
+- (id)parentItemInZone;
+- (id)parentItemOnFS;
+- (void)prepareAppLibraryRootSyncUpWithOperation:(id)arg1;
 - (float)prepareDeletionSyncUpWithOperation:(id)arg1 defaults:(id)arg2;
 - (float)prepareEditSyncUpWithOperation:(id)arg1 defaults:(id)arg2;
 - (void)prepareForSyncUp;
 - (BOOL)saveToDB;
 - (BOOL)saveToDBForServerEdit:(BOOL)arg1 keepAliases:(BOOL)arg2;
-- (void)startDownloadWithOptions:(unsigned long long)arg1 group:(id)arg2;
-- (id)structureRecordBeingDeadInServerTruth:(BOOL)arg1 stageID:(id)arg2;
+- (BOOL)startDownloadInTask:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
+- (id)structureRecordBeingDeadInServerTruth:(BOOL)arg1 stageID:(id)arg2 pcsChained:(BOOL)arg3;
 - (void)triggerNotificationIfNeeded;
 - (void)updateFromFSAtPath:(id)arg1;
 - (BOOL)updateFromFSAtPath:(id)arg1 parentID:(id)arg2;
@@ -173,7 +207,7 @@
 - (BOOL)updateLocationAndMetaFromFSAtPath:(id)arg1 parentID:(id)arg2;
 - (void)updateStatMetadataFromServerItem:(id)arg1;
 - (void)updateStructuralCKInfoFromServerItem:(id)arg1;
-- (BOOL)updateXattrInfoFromPathPath:(id)arg1 error:(id *)arg2;
+- (BOOL)updateXattrInfoFromPath:(id)arg1 error:(id *)arg2;
 - (BOOL)validateLoggingToFile:(struct __sFILE *)arg1;
 
 @end

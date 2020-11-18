@@ -20,6 +20,7 @@
     BOOL _batchedTransactionDequeueIsScheduled;
     NSURL *_resetEventsURL;
     NSMutableArray *_resetEvents;
+    BOOL _supportedFeatureVersionIsMostRecent;
     CPLPlatformObject *_platformObject;
     CPLEngineLibrary *_engineLibrary;
     CPLEngineChangePipe *_pushQueue;
@@ -61,6 +62,7 @@
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) NSArray *storages;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportedFeatureVersionIsMostRecent; // @synthesize supportedFeatureVersionIsMostRecent=_supportedFeatureVersionIsMostRecent;
 @property (readonly, nonatomic) CPLEngineTransientRepository *transientPullRepository; // @synthesize transientPullRepository=_transientPullRepository;
 @property (readonly, nonatomic) CPLEngineResourceUploadQueue *uploadQueue; // @synthesize uploadQueue=_uploadQueue;
 

@@ -21,10 +21,12 @@
     ML3DatabaseConnectionPool *_owningPool;
     NSMutableArray *_registeredFunctions;
     NSMutableArray *_registeredModules;
+    const void *_iTunesExtensions;
     int _profilingLevel;
     NSString *_lastTracedStatement;
     int _willDeleteDatabaseNotifyToken;
     BOOL _isHandlingIOError;
+    BOOL _alreadyAttemptedCorruptionRecovery;
     BOOL _isReadOnly;
     BOOL _automaticCheckpointingEnabled;
     BOOL _logQueryPlans;
@@ -34,7 +36,6 @@
     unsigned long long _protectionLevel;
     NSUUID *_currentTransactionID;
     NSUUID *_uniqueIdentifier;
-    const void *_iTunesExtensions;
     unsigned long long _checkpointStatementThreshold;
 }
 
@@ -43,7 +44,6 @@
 @property (weak, nonatomic) id<ML3DatabaseConnectionDelegate> connectionDelegate; // @synthesize connectionDelegate=_connectionDelegate;
 @property (readonly, nonatomic) NSUUID *currentTransactionID; // @synthesize currentTransactionID=_currentTransactionID;
 @property (readonly, nonatomic) NSString *databasePath; // @synthesize databasePath=_databasePath;
-@property (nonatomic) const void *iTunesExtensions; // @synthesize iTunesExtensions=_iTunesExtensions;
 @property (readonly, nonatomic) BOOL isInTransaction;
 @property (readonly, nonatomic) BOOL isOpen;
 @property (nonatomic, setter=setReadOnly:) BOOL isReadOnly; // @synthesize isReadOnly=_isReadOnly;
@@ -55,6 +55,7 @@
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
 - (void).cxx_destruct;
+- (BOOL)_alreadyAttemptedCorruptionRecovery;
 - (BOOL)_alterTableNamed:(id)arg1 withNewColumnDefinitions:(id)arg2 newColumnNames:(id)arg3 oldColumnNames:(id)arg4;
 - (BOOL)_closeAndFlushTransactionState:(BOOL)arg1;
 - (void)_createDatabaseDirectoryIfNonexistent;
@@ -83,11 +84,13 @@
 - (void)_logCurrentError;
 - (void)_logCurrentErrorWhilePerformingStatementOperation:(id)arg1 statement:(id)arg2;
 - (void)_logCurrentErrorWhilePerformingStatementOperation:(id)arg1 statementSQL:(id)arg2;
+- (void)_logDatabaseFileDebugInformation;
 - (BOOL)_openWithFlags:(int)arg1;
 - (id)_owningPool;
 - (id)_prepareStatement:(id)arg1 error:(id *)arg2;
 - (id)_registeredModuleNamed:(id)arg1;
 - (void)_resetUnfinalizedStatements;
+- (void)_setAlreadyAttemptedCorruptionRecovery:(BOOL)arg1;
 - (void)_setOwningPool:(id)arg1;
 - (void)_setTransactionLevel:(unsigned long long)arg1;
 - (id)_shortDescription;

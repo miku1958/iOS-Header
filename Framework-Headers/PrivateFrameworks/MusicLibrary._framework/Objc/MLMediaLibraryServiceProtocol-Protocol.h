@@ -9,6 +9,7 @@
 @class ML3DatabaseImport, NSArray, NSDictionary, NSString, NSUUID;
 
 @protocol MLMediaLibraryServiceProtocol <NSObject>
+- (void)attemptDatabaseFileRecoveryAtPath:(NSString *)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)beginTransactionForDatabaseAtPath:(NSString *)arg1 withPriorityLevel:(unsigned long long)arg2 options:(unsigned long long)arg3 completionHandler:(void (^)(NSUUID *, NSError *))arg4;
 - (void)cancelImportOperation:(unsigned long long)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)endTransaction:(NSUUID *)arg1 shouldCommit:(BOOL)arg2 withCompletionHandler:(void (^)(BOOL, NSError *))arg3;

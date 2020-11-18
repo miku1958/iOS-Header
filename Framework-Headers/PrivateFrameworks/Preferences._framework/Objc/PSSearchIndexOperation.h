@@ -21,6 +21,10 @@
 + (id)_bundleForSearchEntry:(id)arg1 thirdPartyApp:(BOOL *)arg2;
 + (id)_loadSearchEntriesFromPlistForEntry:(id)arg1 bundle:(id)arg2;
 + (id)_loadThirdPartySearchEntriesForEntry:(id)arg1 bundle:(id)arg2;
++ (id)possibleBundleRoots;
++ (void)setPossibleBundleRoots:(id)arg1;
++ (void)setTopLevelManifestBundlePath:(id)arg1;
++ (id)topLevelManifestBundlePath;
 - (void).cxx_destruct;
 - (void)_cancel;
 - (void)_finishedIndexingWithEntries:(id)arg1 cancelled:(BOOL)arg2;

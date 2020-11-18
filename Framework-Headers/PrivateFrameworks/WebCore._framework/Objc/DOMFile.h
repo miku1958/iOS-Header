@@ -14,7 +14,7 @@
 
 @property (readonly, copy) NSString *name;
 
-- (double)lastModifiedDate;
+- (long long)lastModified;
 
 @end
 

@@ -9,14 +9,12 @@
 #import <CFNetwork/NSURLSessionTaskSubclass-Protocol.h>
 
 @class NSError, NSString;
-@protocol NDBackgroundSessionProtocol;
 
 __attribute__((visibility("hidden")))
 @interface __NSCFBackgroundSessionTask : __NSCFURLSessionTask <NSURLSessionTaskSubclass>
 {
     BOOL _sentCancel;
     BOOL _sentDidFinish;
-    id<NDBackgroundSessionProtocol> _remoteSession;
     unsigned long long _ident;
     NSError *_immediateError;
 }
@@ -26,7 +24,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long ident; // @synthesize ident=_ident;
 @property (strong) NSError *immediateError; // @synthesize immediateError=_immediateError;
-@property (strong) id<NDBackgroundSessionProtocol> remoteSession; // @synthesize remoteSession=_remoteSession;
 @property (readonly) Class superclass;
 
 - (void)_onSessionQueue_disavow;
@@ -37,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)_onqueue_cancel;
 - (void)_onqueue_connectionWaitingWithError:(id)arg1;
 - (void)_onqueue_connectionWaitingWithReason:(long long)arg1;
+- (void)_onqueue_didFinishCollectingMetrics:(id)arg1;
 - (void)_onqueue_didFinishWithError:(id)arg1;
 - (void)_onqueue_didReceiveChallenge:(id)arg1 request:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_onqueue_didReceiveResponse:(id)arg1;

@@ -15,7 +15,7 @@
 @property (nonatomic) unsigned int SSRC; // @synthesize SSRC=_SSRC;
 @property (nonatomic) unsigned char packetType; // @synthesize packetType=_packetType;
 
-+ (id)createWithRTCPPacket:(struct tagRTCPPACKET *)arg1;
++ (id)newPacketWithRTCPPacket:(struct tagRTCPPACKET *)arg1;
 - (id)description;
 - (id)initWithRTCPPacket:(struct tagRTCPPACKET *)arg1;
 

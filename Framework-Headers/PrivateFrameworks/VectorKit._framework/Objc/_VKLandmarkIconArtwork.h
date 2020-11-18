@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (id)_newImage;
 - (void)dealloc;
 - (id)initWithMask:(struct CGImage *)arg1 outlineMask:(struct CGImage *)arg2 style:(struct VKIconStyleInfo *)arg3 contentScale:(double)arg4;
-- (struct CGSize)size;
 
 @end
 

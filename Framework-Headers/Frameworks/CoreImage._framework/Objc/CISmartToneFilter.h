@@ -6,7 +6,7 @@
 
 #import <CoreImage/CIFilter.h>
 
-@class CIContext, CIImage, NSNumber;
+@class CIContext, CIImage, NSData, NSNumber;
 
 __attribute__((visibility("hidden")))
 @interface CISmartToneFilter : CIFilter
@@ -18,9 +18,13 @@ __attribute__((visibility("hidden")))
     NSNumber *inputShadows;
     NSNumber *inputHighlights;
     NSNumber *inputBlack;
+    NSNumber *inputRawHighlights;
+    NSNumber *inputLocalLight;
+    NSData *_inputLightMap;
     NSNumber *inputUseCube;
     id inputUseCubeColorSpace;
     CIImage *_cubeImage;
+    NSData *_cubeData;
     CIContext *_cubeContext;
 }
 
@@ -30,6 +34,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSNumber *inputExposure; // @synthesize inputExposure;
 @property (strong, nonatomic) NSNumber *inputHighlights; // @synthesize inputHighlights;
 @property (strong, nonatomic) CIImage *inputImage; // @synthesize inputImage;
+@property (strong, nonatomic) NSData *inputLightMap; // @synthesize inputLightMap=_inputLightMap;
+@property (strong, nonatomic) NSNumber *inputLocalLight; // @synthesize inputLocalLight;
+@property (strong, nonatomic) NSNumber *inputRawHighlights; // @synthesize inputRawHighlights;
 @property (strong, nonatomic) NSNumber *inputShadows; // @synthesize inputShadows;
 @property (strong, nonatomic) NSNumber *inputUseCube; // @synthesize inputUseCube;
 @property (strong, nonatomic) id inputUseCubeColorSpace; // @synthesize inputUseCubeColorSpace;
@@ -40,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (id)_kernelBpos;
 - (id)_kernelC;
 - (id)_kernelH;
+- (id)_kernelRH;
 - (void)dealloc;
 - (id)outputImage;
 - (void)setValue:(id)arg1 forKey:(id)arg2;

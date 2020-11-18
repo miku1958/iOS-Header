@@ -12,14 +12,20 @@
 
 @interface NPKProtoSignDataResponse : PBCodable <NSCopying>
 {
+    NSData *_certsBytes;
+    NSData *_signatureInfoBytes;
     NSData *_signedData;
     BOOL _pending;
     CDStruct_eab6c78c _has;
 }
 
+@property (strong, nonatomic) NSData *certsBytes; // @synthesize certsBytes=_certsBytes;
+@property (readonly, nonatomic) BOOL hasCertsBytes;
 @property (nonatomic) BOOL hasPending;
+@property (readonly, nonatomic) BOOL hasSignatureInfoBytes;
 @property (readonly, nonatomic) BOOL hasSignedData;
 @property (nonatomic) BOOL pending; // @synthesize pending=_pending;
+@property (strong, nonatomic) NSData *signatureInfoBytes; // @synthesize signatureInfoBytes=_signatureInfoBytes;
 @property (strong, nonatomic) NSData *signedData; // @synthesize signedData=_signedData;
 
 - (void).cxx_destruct;

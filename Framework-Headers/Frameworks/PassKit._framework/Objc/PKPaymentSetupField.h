@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSString;
 @protocol NSObject><NSCopying;
@@ -12,15 +12,16 @@
 @interface PKPaymentSetupField : NSObject
 {
     id<NSObject><NSCopying> _currentValue;
+    BOOL _optional;
     BOOL _currentValueFromCameraCapture;
     BOOL _requiresSecureSubmission;
     NSString *_identifier;
     NSString *_localizedDisplayName;
-    NSString *_localizedPlaceholder;
     NSString *_displayFormat;
     NSString *_defaultValue;
     NSString *_submissionKey;
     NSString *_submissionDestination;
+    NSString *_localizedPlaceholder;
     NSDictionary *_rawConfigurationDictionary;
 }
 
@@ -34,6 +35,7 @@
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *localizedDisplayName; // @synthesize localizedDisplayName=_localizedDisplayName;
 @property (copy, nonatomic) NSString *localizedPlaceholder; // @synthesize localizedPlaceholder=_localizedPlaceholder;
+@property (nonatomic, getter=isOptional) BOOL optional; // @synthesize optional=_optional;
 @property (readonly, copy, nonatomic) NSDictionary *rawConfigurationDictionary; // @synthesize rawConfigurationDictionary=_rawConfigurationDictionary;
 @property (nonatomic) BOOL requiresSecureSubmission; // @synthesize requiresSecureSubmission=_requiresSecureSubmission;
 @property (copy, nonatomic) NSString *submissionDestination; // @synthesize submissionDestination=_submissionDestination;
@@ -45,9 +47,9 @@
 + (id)paymentSetupFieldWithIdentifier:(id)arg1 configuration:(id)arg2;
 + (id)paymentSetupFieldWithIdentifier:(id)arg1 type:(unsigned long long)arg2;
 + (id)sampleCustomPaymentSetupFields;
+- (void).cxx_destruct;
 - (void)_setLocalizedDisplayName:(id)arg1;
 - (id)dateFieldObject;
-- (void)dealloc;
 - (id)displayString;
 - (id)init;
 - (id)initWithIdentifier:(id)arg1;

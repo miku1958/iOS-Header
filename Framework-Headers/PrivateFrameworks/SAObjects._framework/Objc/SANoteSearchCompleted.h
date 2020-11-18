@@ -12,7 +12,6 @@
 
 @interface SANoteSearchCompleted : SABaseCommand <SAServerBoundCommand>
 {
-    NSArray *_results;
 }
 
 @property (copy, nonatomic) NSString *aceId; // @dynamic aceId;
@@ -21,7 +20,6 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *notes;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
-@property (copy, nonatomic) NSArray *results; // @synthesize results=_results;
 @property (readonly) Class superclass;
 
 + (id)searchCompleted;

@@ -15,12 +15,16 @@
     NSObject<OS_xpc_object> *_connection;
     unsigned long long _recommendedLinkType;
     unsigned long long _activeLinkType;
+    unsigned long long _activeRecommendationType;
     BOOL _registered;
     BOOL _subscribed;
     unsigned long long _reportInterval;
     BOOL _shouldSendReport;
     IDSWRMMetricContainer *_metrics;
     unsigned short _connectCount;
+    unsigned long long _nearbyOverWiFi;
+    BOOL _isPaired;
+    int _isPairedNotifyToken;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     CDUnknownBlockType _delegateBlock;
 }
@@ -55,12 +59,13 @@
 - (void)_updateLocalMetric:(id)arg1;
 - (void)dealloc;
 - (void)handleActiveLinkChange:(unsigned long long)arg1;
+- (void)handleNetworkStateChangeUpdate:(BOOL)arg1 nearby:(BOOL)arg2;
 - (id)init;
 - (BOOL)isBTRecommended;
 - (BOOL)isWiFiRecommended;
 - (unsigned long long)recommendedLinkType;
 - (void)submitMetric:(id)arg1;
-- (void)subscribeForRecommendation:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)subscribeForRecommendation:(id)arg1 recommendationType:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;
 - (void)unsubscribeForRecommendation;
 
 @end

@@ -13,6 +13,7 @@
     BOOL _emojiCandidate;
     BOOL _extensionCandidate;
     BOOL _isForShortcutConversion;
+    BOOL _isAutocorrection;
     NSString *_candidate;
     NSString *_input;
     NSNumber *_mecabraCandidatePointerValue;
@@ -31,18 +32,20 @@
 - (unsigned long long)deleteCount;
 - (void)encodeWithCandidateResultSetCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 mecabraCandidatePointerValue:(id)arg3 isExtension:(BOOL)arg4 isEmoji:(BOOL)arg5 isShortcut:(BOOL)arg6;
-- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 mecabraCandidatePointerValue:(id)arg3 isExtension:(BOOL)arg4 isEmoji:(BOOL)arg5 isShortcut:(BOOL)arg6 deleteCount:(unsigned long long)arg7;
-- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 mecabraCandidatePointerValue:(id)arg3 isExtension:(BOOL)arg4 isEmoji:(BOOL)arg5 isShortcut:(BOOL)arg6 deleteCount:(unsigned long long)arg7 cursorMovement:(long long)arg8;
+- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 mecabraCandidatePointerValue:(id)arg3 isExtension:(BOOL)arg4 isEmoji:(BOOL)arg5 isShortcut:(BOOL)arg6 isAutocorrection:(BOOL)arg7;
+- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 mecabraCandidatePointerValue:(id)arg3 isExtension:(BOOL)arg4 isEmoji:(BOOL)arg5 isShortcut:(BOOL)arg6 isAutocorrection:(BOOL)arg7 deleteCount:(unsigned long long)arg8;
+- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 mecabraCandidatePointerValue:(id)arg3 isExtension:(BOOL)arg4 isEmoji:(BOOL)arg5 isShortcut:(BOOL)arg6 isAutocorrection:(BOOL)arg7 deleteCount:(unsigned long long)arg8 cursorMovement:(long long)arg9;
 - (id)initWithCandidateResultSetCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSurface:(id)arg1 input:(id)arg2 mecabraCandidatePointerValue:(id)arg3;
 - (id)initWithSurface:(id)arg1 input:(id)arg2 mecabraCandidatePointerValue:(id)arg3 isExtension:(BOOL)arg4;
 - (id)input;
+- (BOOL)isAutocorrection;
 - (BOOL)isEmojiCandidate;
 - (BOOL)isExtensionCandidate;
 - (BOOL)isForShortcutConversion;
 - (BOOL)isFullwidthCandidate;
+- (id)label;
 
 @end
 

@@ -18,12 +18,12 @@
     MSCLComposePostViewController *_composePostViewController;
     MSCLConfiguration *_configuration;
     id<MSCLComposePostDelegate> _delegate;
-    MSCLStoreItem *_item;
     MSCLLoadConfigurationOperation *_loadConfigurationOperation;
     id<SKUIModalDocumentController> _modalDocumentController;
     UINavigationController *_navigationController;
     NSMutableArray *_pendingAttachments;
     UIBarButtonItem *_shareButtonItem;
+    MSCLStoreItem *_item;
 }
 
 @property (readonly, copy, nonatomic) MSCLConfiguration *configuration; // @synthesize configuration=_configuration;
@@ -31,6 +31,7 @@
 @property (weak, nonatomic) id<MSCLComposePostDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) MSCLStoreItem *item; // @synthesize item=_item;
 @property (weak, nonatomic) id<SKUIModalDocumentController> modalDocumentController; // @synthesize modalDocumentController=_modalDocumentController;
 @property (readonly, nonatomic) BOOL needsNavigationDocument;
 @property (readonly) Class superclass;
@@ -49,7 +50,6 @@
 - (void)composePostViewController:(id)arg1 contentDidChange:(BOOL)arg2;
 - (void)dealloc;
 - (id)initWithConfiguration:(id)arg1;
-- (id)initWithDocument:(id)arg1 options:(id)arg2;
 - (id)initWithItem:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;

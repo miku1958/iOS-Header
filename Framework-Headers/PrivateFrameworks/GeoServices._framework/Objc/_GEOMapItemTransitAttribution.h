@@ -6,12 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-#import <GeoServices/GEOMapItemTransitAttribution-Protocol.h>
+#import <GeoServices/GEOTransitAttribution-Protocol.h>
 
 @class GEOPDTransitAttribution, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOMapItemTransitAttribution : NSObject <GEOMapItemTransitAttribution>
+@interface _GEOMapItemTransitAttribution : NSObject <GEOTransitAttribution>
 {
     GEOPDTransitAttribution *_transitAttribution;
 }

@@ -39,6 +39,7 @@
 @property (nonatomic) struct AUObserverList *observerList; // @synthesize observerList=_observerList;
 @property (nonatomic) AUParameterGroup *parentNode; // @synthesize parentNode=_parentNode;
 
+- (void *)_addRecObserver:(CDUnknownBlockType)arg1 autoObserver:(CDUnknownBlockType)arg2;
 - (void)_deserialize:(struct CADeserializer *)arg1;
 - (void)_observersChanged:(BOOL)arg1 deltaCount:(int)arg2;
 - (id)_rootParent;
@@ -51,6 +52,7 @@
 - (id)initWithID:(id)arg1 name:(id)arg2;
 - (BOOL)isGroup;
 - (void)removeParameterObserver:(void *)arg1;
+- (void *)tokenByAddingParameterAutomationObserver:(CDUnknownBlockType)arg1;
 - (void *)tokenByAddingParameterObserver:(CDUnknownBlockType)arg1;
 - (void *)tokenByAddingParameterRecordingObserver:(CDUnknownBlockType)arg1;
 

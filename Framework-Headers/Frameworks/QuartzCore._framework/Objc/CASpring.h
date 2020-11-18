@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <QuartzCore/NSCoding-Protocol.h>
 #import <QuartzCore/NSCopying-Protocol.h>
 #import <QuartzCore/NSMutableCopying-Protocol.h>
 
 @class CALayer, CAValueFunction, NSString;
+@protocol CASpringDelegate;
 
 @interface CASpring : NSObject <NSCopying, NSMutableCopying, NSCoding>
 {
@@ -25,13 +26,12 @@
     double _restLength;
     BOOL _enabled;
     id _delegate;
-    void *_priv;
 }
 
 @property struct CGPoint attachmentPointA;
 @property struct CGPoint attachmentPointB;
 @property double damping;
-@property (weak) id delegate;
+@property (weak) id<CASpringDelegate> delegate;
 @property (getter=isEnabled) BOOL enabled;
 @property (strong) CAValueFunction *function;
 @property (strong) CALayer *layerA;

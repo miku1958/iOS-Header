@@ -11,17 +11,18 @@
 __attribute__((visibility("hidden")))
 @interface PUEditPluginManager : NSObject
 {
-    long long _mediaType;
+    unsigned long long _mediaType;
     NSArray *__plugins;
 }
 
 @property (copy, nonatomic, setter=_setPlugins:) NSArray *_plugins; // @synthesize _plugins=__plugins;
-@property (readonly) long long mediaType; // @synthesize mediaType=_mediaType;
+@property (readonly) unsigned long long mediaType; // @synthesize mediaType=_mediaType;
 
-+ (id)sharedManagerForMediaType:(long long)arg1;
++ (id)sharedManagerForMediaType:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (id)_allowedPluginTypes;
 - (void)_discoveredAvailableExtensions:(id)arg1;
-- (id)_initWithMediaType:(long long)arg1;
+- (id)_initWithMediaType:(unsigned long long)arg1;
 - (BOOL)hasPlugins;
 - (id)pluginActivities;
 - (void)rediscoverAvailablePlugins;

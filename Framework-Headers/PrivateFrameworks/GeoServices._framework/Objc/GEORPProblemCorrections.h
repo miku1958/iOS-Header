@@ -19,11 +19,11 @@
     GEORPMapLocation *_correctedMapLocation;
     GEORPCorrectedSearch *_correctedSearch;
     GEORPDirectionsProblem *_directionsProblem;
-    int _locationIsMissingType;
     NSMutableArray *_photoWithMetadatas;
     GEORPPlaceProblem *_placeProblem;
+    BOOL _delayed;
     struct {
-        unsigned int locationIsMissingType:1;
+        unsigned int delayed:1;
     } _has;
 }
 
@@ -33,19 +33,21 @@
 @property (strong, nonatomic) GEORPCorrectedLabel *correctedLabel; // @synthesize correctedLabel=_correctedLabel;
 @property (strong, nonatomic) GEORPMapLocation *correctedMapLocation; // @synthesize correctedMapLocation=_correctedMapLocation;
 @property (strong, nonatomic) GEORPCorrectedSearch *correctedSearch; // @synthesize correctedSearch=_correctedSearch;
+@property (nonatomic) BOOL delayed; // @synthesize delayed=_delayed;
 @property (strong, nonatomic) GEORPDirectionsProblem *directionsProblem; // @synthesize directionsProblem=_directionsProblem;
 @property (readonly, nonatomic) BOOL hasComments;
 @property (readonly, nonatomic) BOOL hasCorrectedCoordinate;
 @property (readonly, nonatomic) BOOL hasCorrectedLabel;
 @property (readonly, nonatomic) BOOL hasCorrectedMapLocation;
 @property (readonly, nonatomic) BOOL hasCorrectedSearch;
+@property (nonatomic) BOOL hasDelayed;
 @property (readonly, nonatomic) BOOL hasDirectionsProblem;
-@property (nonatomic) BOOL hasLocationIsMissingType;
 @property (readonly, nonatomic) BOOL hasPlaceProblem;
-@property (nonatomic) int locationIsMissingType; // @synthesize locationIsMissingType=_locationIsMissingType;
 @property (strong, nonatomic) NSMutableArray *photoWithMetadatas; // @synthesize photoWithMetadatas=_photoWithMetadatas;
 @property (strong, nonatomic) GEORPPlaceProblem *placeProblem; // @synthesize placeProblem=_placeProblem;
 
++ (Class)correctedFieldType;
++ (Class)photoWithMetadataType;
 - (void)addCorrectedField:(id)arg1;
 - (void)addPhotoWithMetadata:(id)arg1;
 - (void)clearCorrectedFields;

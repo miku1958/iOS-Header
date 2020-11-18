@@ -8,12 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEOPDRating, NSString;
+@class GEOPDRating, NSString;
 
 @interface GEOPDResultSnippet : PBCodable <NSCopying>
 {
     NSString *_category;
-    GEOLatLng *_center;
     unsigned int _distanceDisplayThreshold;
     NSString *_locationString;
     NSString *_name;
@@ -24,10 +23,8 @@
 }
 
 @property (strong, nonatomic) NSString *category; // @synthesize category=_category;
-@property (strong, nonatomic) GEOLatLng *center; // @synthesize center=_center;
 @property (nonatomic) unsigned int distanceDisplayThreshold; // @synthesize distanceDisplayThreshold=_distanceDisplayThreshold;
 @property (readonly, nonatomic) BOOL hasCategory;
-@property (readonly, nonatomic) BOOL hasCenter;
 @property (nonatomic) BOOL hasDistanceDisplayThreshold;
 @property (readonly, nonatomic) BOOL hasLocationString;
 @property (readonly, nonatomic) BOOL hasName;

@@ -4,18 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
-
-@class PKWeakReference;
+#import <objc/NSObject.h>
 
 @interface PKXPCForwarder : NSObject
 {
-    PKWeakReference *_target;
+    id _target;
     Class _targetClass;
 }
 
+- (void).cxx_destruct;
 - (void)clearTarget;
-- (void)dealloc;
 - (void)forwardInvocation:(id)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)init;

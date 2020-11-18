@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     _HKFactorization *_baseUnits;
     _HKDimension *_dimension;
-    int _dimensionLock;
+    struct os_unfair_lock_s _dimensionLock;
 }
 
 + (BOOL)supportsSecureCoding;

@@ -19,8 +19,7 @@
 - (id)_accessibilityUserTestingChildren;
 - (BOOL)accessibilityActivate;
 - (struct CGPoint)accessibilityActivationPoint;
-- (id)accessibilityCustomRotorItemsAtIndex:(long long)arg1;
-- (id)accessibilityCustomRotorTitles;
+- (id)accessibilityCustomRotors;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;
 - (void)updateCheckmarkImage;

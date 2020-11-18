@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <IMFoundation/IMItem.h>
+#import <IMSharedUtilities/IMItem.h>
 
 @interface IMItem (IMChat_Internal)
 + (Class)contextClass;

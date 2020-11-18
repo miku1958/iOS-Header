@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -20,18 +20,19 @@
     NSString *_relevantText;
 }
 
-@property (readonly, nonatomic) CDStruct_c3b9c2ee coordinate;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) NSString *relevantText; // @synthesize relevantText=_relevantText;
+@property (readonly, nonatomic) struct CLLocationCoordinate2D coordinate;
+@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (copy, nonatomic) NSString *relevantText; // @synthesize relevantText=_relevantText;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)CLLocation;
 - (double)altitude;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasAltitude;
 - (BOOL)hasEqualCoordinatesToLocation:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (double)latitude;

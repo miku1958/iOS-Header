@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface RWIProtocolConsoleDomainEventDispatcher : NSObject
 {
     struct AugmentableInspectorController *_controller;
 }
 
+- (void)heapSnapshotWithTimestamp:(double)arg1 snapshotData:(id)arg2 title:(id *)arg3;
 - (id)initWithController:(struct AugmentableInspectorController *)arg1;
 - (void)messageAddedWithMessage:(id)arg1;
 - (void)messageRepeatCountUpdatedWithCount:(int)arg1;

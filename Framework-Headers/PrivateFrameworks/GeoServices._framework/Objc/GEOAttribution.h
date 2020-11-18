@@ -8,23 +8,31 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface GEOAttribution : PBCodable <NSCopying>
 {
+    struct GEOTileSetRegion *_regions;
+    unsigned long long _regionsCount;
+    unsigned long long _regionsSpace;
     NSString *_badge;
     NSString *_badgeChecksum;
+    unsigned int _dataSet;
     NSString *_logo;
     NSString *_logoChecksum;
     NSString *_name;
+    NSMutableArray *_resources;
     NSString *_url;
+    CDStruct_2fe9a6d4 _has;
 }
 
 @property (strong, nonatomic) NSString *badge; // @synthesize badge=_badge;
 @property (strong, nonatomic) NSString *badgeChecksum; // @synthesize badgeChecksum=_badgeChecksum;
+@property (nonatomic) unsigned int dataSet; // @synthesize dataSet=_dataSet;
 @property (readonly, nonatomic) BOOL hasBadge;
 @property (readonly, nonatomic) BOOL hasBadgeChecksum;
+@property (nonatomic) BOOL hasDataSet;
 @property (readonly, nonatomic) BOOL hasLogo;
 @property (readonly, nonatomic) BOOL hasLogoChecksum;
 @property (readonly, nonatomic) BOOL hasName;
@@ -32,8 +40,16 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *logo; // @synthesize logo=_logo;
 @property (strong, nonatomic) NSString *logoChecksum; // @synthesize logoChecksum=_logoChecksum;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) struct GEOTileSetRegion *regions;
+@property (readonly, nonatomic) unsigned long long regionsCount;
+@property (strong, nonatomic) NSMutableArray *resources; // @synthesize resources=_resources;
 @property (strong, nonatomic) NSString *url; // @synthesize url=_url;
 
++ (Class)resourceType;
+- (void)addRegion:(struct GEOTileSetRegion)arg1;
+- (void)addResource:(id)arg1;
+- (void)clearRegions;
+- (void)clearResources;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -43,6 +59,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (struct GEOTileSetRegion)regionAtIndex:(unsigned long long)arg1;
+- (id)resourceAtIndex:(unsigned long long)arg1;
+- (unsigned long long)resourcesCount;
+- (void)setRegions:(struct GEOTileSetRegion *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

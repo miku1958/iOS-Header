@@ -28,11 +28,14 @@
 
 + (id)addPassButtonWithStyle:(long long)arg1;
 + (Class)layerClass;
+- (void).cxx_destruct;
 - (void)_adjustVisibleLabel;
 - (void)_applyStyle;
 - (void)_createHighlightFilterIfNecessary;
+- (void)_sharedInit;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithAddPassButtonStyle:(long long)arg1;
 - (id)initWithCoder:(id)arg1;

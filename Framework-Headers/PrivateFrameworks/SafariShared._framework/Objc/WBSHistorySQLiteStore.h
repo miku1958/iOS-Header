@@ -109,13 +109,14 @@
 - (int)_migrateToSchemaVersion_6;
 - (int)_migrateToSchemaVersion_7;
 - (int)_migrateToSchemaVersion_8;
+- (int)_migrateToSchemaVersion_9;
 - (void)_openDatabase:(id)arg1 andCheckIntegrity:(BOOL)arg2;
 - (void)_performMaintenance:(CDUnknownBlockType)arg1;
 - (void)_processPendingDeletes;
 - (void)_processPendingVisitDeletes;
 - (void)_processPendingWrites;
 - (void)_pruneTombstonesOnDatabaseQueueWithEndDatePriorToDate:(id)arg1;
-- (void)_recomputeDerivedVisitCounts;
+- (void)_recomputeDerivedVisitCountScores;
 - (void)_releaseDatabaseCoordinationLock;
 - (void)_removeVisitsProvidedByBlockInvokedOnDatabaseQueue:(CDUnknownBlockType)arg1 addingTombstone:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_saltOnDatabaseQueue;

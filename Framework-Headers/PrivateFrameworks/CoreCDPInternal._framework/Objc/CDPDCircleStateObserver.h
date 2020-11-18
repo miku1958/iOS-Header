@@ -6,21 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class CDPContext;
-@protocol OS_dispatch_queue;
+@protocol CDPDCircleProxy, OS_dispatch_queue;
 
 @interface CDPDCircleStateObserver : NSObject
 {
-    CDPContext *_context;
     int _circleChangeToken;
     BOOL _isObserving;
     NSObject<OS_dispatch_queue> *_eventQueue;
+    id<CDPDCircleProxy> _circleProxy;
 }
 
 - (void).cxx_destruct;
 - (const char *)_notificationName;
 - (void)dealloc;
-- (id)initWithContext:(id)arg1;
+- (id)initWithProxy:(id)arg1;
 - (void)observeChangeToState:(int)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)observeCircleStateWithChangeHandler:(CDUnknownBlockType)arg1;
 - (void)stopObservingCircleStatusChange;

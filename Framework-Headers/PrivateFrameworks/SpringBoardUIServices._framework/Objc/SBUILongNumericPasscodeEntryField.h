@@ -33,7 +33,7 @@
 - (void)_getPasscodeFieldSize:(struct CGSize *)arg1 okButtonSize:(struct CGSize *)arg2;
 - (void)_handleKeyUIEvent:(id)arg1;
 - (void)_okButtonHit;
-- (void)_resetForFailedPasscode:(BOOL)arg1 playUnlockFailedSound:(BOOL)arg2;
+- (void)_resetForFailedPasscode:(BOOL)arg1;
 - (struct CGSize)_viewSize;
 - (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;

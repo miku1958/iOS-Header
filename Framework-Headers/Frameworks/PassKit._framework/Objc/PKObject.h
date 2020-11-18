@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSString, NSURL, PKContent, PKDataAccessor, PKDisplayProfile, PKImageSet;
+@class NSData, NSLock, NSString, NSURL, PKContent, PKDataAccessor, PKDisplayProfile, PKImageSet;
 
 @interface PKObject : NSObject <NSCopying, NSSecureCoding>
 {
     PKImageSet *_imageSets[6];
+    NSLock *_imageSetLock;
     BOOL _initializedViaInitWithCoder;
+    PKContent *_content;
     NSString *_uniqueID;
     NSData *_manifestHash;
     PKDataAccessor *_dataAccessor;
@@ -25,21 +27,17 @@
     NSString *_authenticationToken;
     unsigned long long _settings;
     long long _shareCount;
-    PKContent *_content;
 }
 
-@property (readonly, strong, nonatomic) NSData *archiveData;
 @property (copy, nonatomic) NSString *authenticationToken; // @synthesize authenticationToken=_authenticationToken;
 @property (strong, nonatomic) PKContent *content; // @synthesize content=_content;
 @property (strong, nonatomic) PKDataAccessor *dataAccessor; // @synthesize dataAccessor=_dataAccessor;
 @property (strong, nonatomic) PKDisplayProfile *displayProfile; // @synthesize displayProfile=_displayProfile;
 @property (readonly, nonatomic) BOOL initializedViaInitWithCoder; // @synthesize initializedViaInitWithCoder=_initializedViaInitWithCoder;
 @property (copy, nonatomic) NSData *manifestHash; // @synthesize manifestHash=_manifestHash;
-@property (readonly, strong, nonatomic) NSDate *modificationDate;
 @property (nonatomic) double preferredImageScale; // @synthesize preferredImageScale=_preferredImageScale;
 @property (strong, nonatomic) NSString *preferredImageSuffix; // @synthesize preferredImageSuffix=_preferredImageSuffix;
 @property (readonly, nonatomic) BOOL remoteAssetsDownloaded;
-@property (readonly, strong, nonatomic) NSData *serializedFileWrapper;
 @property (nonatomic) unsigned long long settings; // @synthesize settings=_settings;
 @property (nonatomic) long long shareCount; // @synthesize shareCount=_shareCount;
 @property (copy, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
@@ -48,6 +46,8 @@
 + (unsigned long long)defaultSettings;
 + (BOOL)isValidObjectWithFileURL:(id)arg1 warnings:(id *)arg2 orError:(id *)arg3;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (id)archiveData;
 - (id)contentLoadedIfNeeded;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dataForBundleResourceNamed:(id)arg1 withExtension:(id)arg2;
@@ -55,7 +55,6 @@
 - (void)downloadRemoteAssetsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)flushFormattedFieldValues;
-- (void)flushImageSetOfType:(long long)arg1;
 - (void)flushLoadedContent;
 - (void)flushLoadedImageSets;
 - (id)imageSetLoadedIfNeeded:(long long)arg1;
@@ -74,13 +73,15 @@
 - (void)loadImageSetAsync:(long long)arg1 preheat:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)loadImageSetSync:(long long)arg1 preheat:(BOOL)arg2;
 - (id)localizedString:(id)arg1;
+- (id)modificationDate;
 - (void)noteShared;
 - (void)reloadDisplayProfileOfType:(long long)arg1;
 - (void)requestUpdateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)revocationStatusWithCompletion:(CDUnknownBlockType)arg1;
+- (id)serializedFileWrapper;
 - (void)setMissingImageSetsFromObject:(id)arg1;
 - (void)setSettingsWithoutUpdatingDataAccessor:(unsigned long long)arg1;
-- (void)updateImageSetCachesAtURL:(id)arg1;
+- (void)updateImageSetForURL:(id)arg1 withCacheURL:(id)arg2;
 
 @end
 

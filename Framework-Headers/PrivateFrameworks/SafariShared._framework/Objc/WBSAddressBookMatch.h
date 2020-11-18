@@ -6,7 +6,7 @@
 
 #import <SafariShared/WBSFormAutoFillItem.h>
 
-@class NSDate, NSString;
+@class NSDate, NSDictionary, NSString;
 
 @interface WBSAddressBookMatch : WBSFormAutoFillItem
 {
@@ -15,15 +15,19 @@
     NSString *_key;
     NSString *_identifier;
     NSString *_label;
+    NSString *_uniqueID;
 }
 
 @property (copy, nonatomic) NSDate *dateValue;
+@property (readonly, copy, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSString *key; // @synthesize key=_key;
 @property (readonly, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) NSString *property; // @synthesize property=_property;
 @property (copy, nonatomic) NSString *stringValue;
+@property (readonly, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
 
++ (id)addressBookMatchWithDictionaryRepresentation:(id)arg1;
 - (void).cxx_destruct;
 - (void)_setValue:(id)arg1;
 - (id)completion;
@@ -31,6 +35,7 @@
 - (unsigned long long)hash;
 - (id)initWithValue:(id)arg1 property:(id)arg2 key:(id)arg3 identifier:(id)arg4;
 - (id)initWithValue:(id)arg1 property:(id)arg2 key:(id)arg3 identifier:(id)arg4 label:(id)arg5;
+- (id)initWithValue:(id)arg1 property:(id)arg2 key:(id)arg3 identifier:(id)arg4 label:(id)arg5 uniqueID:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
 
 @end

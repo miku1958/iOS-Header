@@ -6,20 +6,23 @@
 
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
-@class CKDProtocolTranslator, CKDRecordCache, NSArray, NSData, NSDictionary, NSMutableDictionary;
+@class CKDDecryptRecordsOperation, CKDProtocolTranslator, CKDRecordCache, NSArray, NSData, NSDictionary, NSMutableDictionary, NSObject;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CKDModifyRecordsOperation : CKDDatabaseOperation
 {
     CKDProtocolTranslator *_translator;
+    CKDDecryptRecordsOperation *_decryptOperation;
     BOOL _retryPCSFailures;
     BOOL _canSetPreviousProtectionEtag;
+    BOOL _trustProtectionData;
     BOOL _retriedRecords;
     BOOL _shouldOnlySaveAssetContent;
-    BOOL _haveOutstandingMetadatas;
+    BOOL _haveOutstandingHandlers;
     BOOL _atomic;
     BOOL _shouldReportRecordsInFlight;
-    int _numPCSRetries;
+    int _saveAttempts;
     CDUnknownBlockType _saveProgressBlock;
     CDUnknownBlockType _saveCompletionBlock;
     CDUnknownBlockType _deleteCompletionBlock;
@@ -29,12 +32,13 @@ __attribute__((visibility("hidden")))
     NSArray *_recordIDsToDelete;
     NSDictionary *_recordIDsToDeleteToEtags;
     NSDictionary *_conflictLosersToResolveByRecordID;
-    NSDictionary *_metadatasByRecordID;
-    NSMutableDictionary *_modifyMetadatasByZoneID;
+    NSDictionary *_handlersByRecordID;
+    NSDictionary *_parentsByRecordID;
+    NSMutableDictionary *_modifyHandlersByZoneID;
     long long _savePolicy;
     NSData *_clientChangeTokenData;
-    NSMutableDictionary *_recordsByServerID;
     CKDRecordCache *_cache;
+    NSObject<OS_dispatch_queue> *_modifyRecordsQueue;
 }
 
 @property (nonatomic) BOOL atomic; // @synthesize atomic=_atomic;
@@ -43,64 +47,67 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSData *clientChangeTokenData; // @synthesize clientChangeTokenData=_clientChangeTokenData;
 @property (strong, nonatomic) NSDictionary *conflictLosersToResolveByRecordID; // @synthesize conflictLosersToResolveByRecordID=_conflictLosersToResolveByRecordID;
 @property (copy, nonatomic) CDUnknownBlockType deleteCompletionBlock; // @synthesize deleteCompletionBlock=_deleteCompletionBlock;
-@property (nonatomic) BOOL haveOutstandingMetadatas; // @synthesize haveOutstandingMetadatas=_haveOutstandingMetadatas;
-@property (strong, nonatomic) NSDictionary *metadatasByRecordID; // @synthesize metadatasByRecordID=_metadatasByRecordID;
-@property (strong, nonatomic) NSMutableDictionary *modifyMetadatasByZoneID; // @synthesize modifyMetadatasByZoneID=_modifyMetadatasByZoneID;
-@property (nonatomic) int numPCSRetries; // @synthesize numPCSRetries=_numPCSRetries;
+@property (strong, nonatomic) NSDictionary *handlersByRecordID; // @synthesize handlersByRecordID=_handlersByRecordID;
+@property (readonly, nonatomic) BOOL hasDecryptOperation;
+@property (nonatomic) BOOL haveOutstandingHandlers; // @synthesize haveOutstandingHandlers=_haveOutstandingHandlers;
+@property (strong, nonatomic) NSMutableDictionary *modifyHandlersByZoneID; // @synthesize modifyHandlersByZoneID=_modifyHandlersByZoneID;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *modifyRecordsQueue; // @synthesize modifyRecordsQueue=_modifyRecordsQueue;
+@property (strong, nonatomic) NSDictionary *parentsByRecordID; // @synthesize parentsByRecordID=_parentsByRecordID;
+@property (readonly, nonatomic) CKDDecryptRecordsOperation *recordDecryptOperation;
 @property (strong, nonatomic) NSArray *recordIDsToDelete; // @synthesize recordIDsToDelete=_recordIDsToDelete;
 @property (strong, nonatomic) NSDictionary *recordIDsToDeleteToEtags; // @synthesize recordIDsToDeleteToEtags=_recordIDsToDeleteToEtags;
-@property (strong, nonatomic) NSMutableDictionary *recordsByServerID; // @synthesize recordsByServerID=_recordsByServerID;
 @property (copy, nonatomic) CDUnknownBlockType recordsInFlightBlock; // @synthesize recordsInFlightBlock=_recordsInFlightBlock;
 @property (strong, nonatomic) NSArray *recordsToSave; // @synthesize recordsToSave=_recordsToSave;
 @property (nonatomic) BOOL retriedRecords; // @synthesize retriedRecords=_retriedRecords;
 @property (nonatomic) BOOL retryPCSFailures; // @synthesize retryPCSFailures=_retryPCSFailures;
+@property (nonatomic) int saveAttempts; // @synthesize saveAttempts=_saveAttempts;
 @property (copy, nonatomic) CDUnknownBlockType saveCompletionBlock; // @synthesize saveCompletionBlock=_saveCompletionBlock;
 @property (nonatomic) long long savePolicy; // @synthesize savePolicy=_savePolicy;
 @property (copy, nonatomic) CDUnknownBlockType saveProgressBlock; // @synthesize saveProgressBlock=_saveProgressBlock;
 @property (nonatomic) BOOL shouldOnlySaveAssetContent; // @synthesize shouldOnlySaveAssetContent=_shouldOnlySaveAssetContent;
 @property (nonatomic) BOOL shouldReportRecordsInFlight; // @synthesize shouldReportRecordsInFlight=_shouldReportRecordsInFlight;
 @property (readonly, nonatomic) CKDProtocolTranslator *translator;
+@property (nonatomic) BOOL trustProtectionData; // @synthesize trustProtectionData=_trustProtectionData;
 @property (copy, nonatomic) CDUnknownBlockType uploadCompletionBlock; // @synthesize uploadCompletionBlock=_uploadCompletionBlock;
 
++ (BOOL)_claimPackagesInRecord:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
-- (void)_addShareToPCSData:(id)arg1 forMetadata:(id)arg2 withError:(id)arg3;
-- (BOOL)_canSetPreviousProtectionEtag;
-- (void)_clearProtectionDataForRecord:(id)arg1;
+- (void)_applySideEffects;
 - (void)_clearProtectionDataIfNotEntitled;
-- (void)_continueCreateAndSavePCSForMetadata:(id)arg1 zonePCS:(id)arg2 sharePCS:(id)arg3;
+- (id)_containerIDsNotToTopoSort;
 - (void)_continueRecordsModify;
-- (void)_createAndSavePCSForMetadata:(id)arg1;
-- (id)_createModifyRequestWithRecordsToSave:(id)arg1 recordsToDelete:(id)arg2 recordsToDeleteToEtags:(id)arg3 metadatasByRecordID:(id)arg4;
-- (void)_fetchExistingPCSForProvidedPCSData:(id)arg1 metadata:(id)arg2;
-- (void)_fetchPCSDataForMetadata:(id)arg1;
+- (id)_createModifyRequestWithRecordsToSave:(id)arg1 recordsToDelete:(id)arg2 recordsToDeleteToEtags:(id)arg3 handlersByRecordID:(id)arg4;
+- (void)_determineEnvironment;
+- (void)_enumerateHandlersInState:(unsigned long long)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)_fetchContainerScopedUserID;
 - (void)_fetchRecordPCSData;
+- (void)_fetchSharePCSData;
+- (void)_fetchShareParticipants;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleDecryptionFailure:(id)arg1 forRecordID:(id)arg2;
-- (void)_handlePCSData:(id)arg1 forMetadata:(id)arg2 withError:(id)arg3;
-- (void)_handleRecordDeleted:(id)arg1 metadata:(id)arg2 responseCode:(id)arg3;
-- (void)_handleRecordSaved:(id)arg1 metadata:(id)arg2 etag:(id)arg3 dateStatistics:(id)arg4 responseCode:(id)arg5 keysAssociatedWithETag:(id)arg6 recordForOplockFailure:(id)arg7 serverRecord:(id)arg8;
-- (void)_loadPCSDataForMetadata:(id)arg1;
-- (void)_markRecordMetadatasAsUploaded;
-- (void)_performCallbacksForAtomicZoneMetadatas:(id)arg1;
-- (void)_performCallbacksForNonAtomicZoneMetadatas:(id)arg1;
-- (void)_performMetadataCallbacks;
-- (BOOL)_prepareAsset:(id)arg1 recordKey:(id)arg2 record:(id)arg3 error:(id *)arg4;
+- (void)_handleRecordDeleted:(id)arg1 handler:(id)arg2 responseCode:(id)arg3;
+- (void)_handleRecordSaved:(id)arg1 handler:(id)arg2 etag:(id)arg3 dateStatistics:(id)arg4 responseCode:(id)arg5 keysAssociatedWithETag:(id)arg6 recordForOplockFailure:(id)arg7 serverRecord:(id)arg8;
+- (BOOL)_hasHandlerInState:(unsigned long long)arg1;
+- (void)_markRecordHandlersAsUploaded;
+- (void)_performCallbacksForAtomicZoneHandlers:(id)arg1;
+- (void)_performCallbacksForNonAtomicZoneHandlers:(id)arg1;
+- (void)_performHandlerCallbacks;
 - (id)_prepareAssetsForUpload;
+- (void)_prepareParentPCS;
 - (BOOL)_prepareRecordsForSave;
 - (void)_reportRecordsInFlight;
+- (BOOL)_shouldToposortInContainerID:(id)arg1;
 - (BOOL)_topoSortRecords;
-- (void)_unwrapRecordPCSForShare:(id)arg1;
-- (void)_unwrapRecordPCSForZone:(id)arg1;
+- (id)_topoSortRecordsForHandlers:(id)arg1;
 - (void)_uploadAssets;
 - (void)_verifyRecordEncryption;
-- (id)_wrapAssetKey:(id)arg1 forRecord:(id)arg2 withError:(id *)arg3;
-- (BOOL)_wrapEncryptedData:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2 forField:(id)arg3;
-- (BOOL)_wrapEncryptedDataOnRecord:(id)arg1;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
+- (void)finishWithError:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
 - (BOOL)makeStateTransition;
 - (id)nameForState:(unsigned long long)arg1;
+- (void)saveCallbackWithMetadata:(id)arg1 error:(id)arg2;
 
 @end
 

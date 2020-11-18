@@ -8,11 +8,13 @@
 
 #import <HealthDaemon/HDCurrentActivitySummaryHelperObserver-Protocol.h>
 
-@class HDCurrentActivitySummaryHelper, NSString;
+@class HDCurrentActivitySummaryHelper, HKActivitySummary, NSDictionary, NSString;
 
 @interface HDCurrentActivitySummaryQueryServer : HDQueryServer <HDCurrentActivitySummaryHelperObserver>
 {
     HDCurrentActivitySummaryHelper *_currentSummaryHelper;
+    HKActivitySummary *_lastActivitySummary;
+    NSDictionary *_collectionIntervals;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,12 +24,14 @@
 
 - (void).cxx_destruct;
 - (void)_queue_start;
+- (void)_queue_startDataCollection;
 - (void)_queue_stop;
+- (void)_queue_stopDataCollection;
 - (BOOL)_shouldExecuteWhenProtectedDataIsUnavailable;
 - (BOOL)_shouldListenForUpdates;
 - (void)currentActivitySummaryHelper:(id)arg1 didUpdateTodayActivitySummary:(id)arg2 changedFields:(unsigned long long)arg3;
 - (void)currentActivitySummaryHelper:(id)arg1 didUpdateYesterdayActivitySummary:(id)arg2 changedFields:(unsigned long long)arg3;
-- (id)initWithQueryUUID:(id)arg1 dataObject:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 healthDaemon:(id)arg6;
+- (id)initWithQueryUUID:(id)arg1 dataObject:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 profile:(id)arg6;
 
 @end
 

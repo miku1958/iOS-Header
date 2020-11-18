@@ -6,37 +6,38 @@
 
 #import <Foundation/NSObject.h>
 
-#import <Celestial/NSCoding-Protocol.h>
 #import <Celestial/NSCopying-Protocol.h>
+#import <Celestial/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString;
 
-@interface FigCaptureStillImageSettings : NSObject <NSCoding, NSCopying>
+@interface FigCaptureStillImageSettings : NSObject <NSSecureCoding, NSCopying>
 {
     long long _settingsID;
     int _payloadType;
+    int _settingsProvider;
     unsigned int _outputFormat;
+    unsigned int _rawOutputFormat;
     unsigned int _outputWidth;
     unsigned int _outputHeight;
     BOOL _squareCropEnabled;
     BOOL _outputMirroring;
     int _outputOrientation;
-    BOOL _thumbnailEnabled;
-    unsigned int _thumbnailFormat;
-    unsigned int _thumbnailWidth;
-    unsigned int _thumbnailHeight;
-    BOOL _thumbnailMirroring;
-    int _thumbnailOrientation;
+    BOOL _previewEnabled;
+    unsigned int _previewFormat;
+    unsigned int _previewWidth;
+    unsigned int _previewHeight;
+    BOOL _previewMirroring;
+    int _previewOrientation;
     BOOL _noiseReductionEnabled;
     float _scaleFactor;
     unsigned int _shutterSound;
     int _flashMode;
+    int _wideColorMode;
     int _HDRMode;
-    BOOL _providesEV0Image;
+    BOOL _providesOriginalImage;
     int _SISMode;
-    NSString *_colorPrimaries;
-    NSString *_transferFunction;
-    NSString *_yCbCrMatrix;
+    int _bravoImageFusionMode;
     NSDictionary *_vtCompressionProperties;
     int _bracketType;
     unsigned int _bracketImageCount;
@@ -46,6 +47,8 @@
     float *_exposureTargetBiases;
     long long _stillImageRequestTime;
     long long _stillImageCaptureStartTime;
+    double _stillImageCaptureAbsoluteStartTime;
+    NSString *_imageGroupIdentifier;
 }
 
 @property (nonatomic) int HDRMode; // @synthesize HDRMode=_HDRMode;
@@ -53,10 +56,11 @@
 @property (nonatomic) int SISMode; // @synthesize SISMode=_SISMode;
 @property (readonly, nonatomic) unsigned int bracketImageCount; // @synthesize bracketImageCount=_bracketImageCount;
 @property (readonly, nonatomic) int bracketType; // @synthesize bracketType=_bracketType;
-@property (copy, nonatomic) NSString *colorPrimaries; // @synthesize colorPrimaries=_colorPrimaries;
+@property (nonatomic) int bravoImageFusionMode; // @synthesize bravoImageFusionMode=_bravoImageFusionMode;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 *exposureDurations; // @synthesize exposureDurations=_exposureDurations;
 @property (readonly, nonatomic) float *exposureTargetBiases; // @synthesize exposureTargetBiases=_exposureTargetBiases;
 @property (nonatomic) int flashMode; // @synthesize flashMode=_flashMode;
+@property (readonly, nonatomic) NSString *imageGroupIdentifier;
 @property (nonatomic) BOOL lensStabilizationDuringBracketEnabled; // @synthesize lensStabilizationDuringBracketEnabled=_lensStabilizationDuringBracketEnabled;
 @property (nonatomic) BOOL noiseReductionEnabled; // @synthesize noiseReductionEnabled=_noiseReductionEnabled;
 @property (nonatomic) unsigned int outputFormat; // @synthesize outputFormat=_outputFormat;
@@ -66,29 +70,33 @@
 @property (readonly, nonatomic) NSDictionary *outputPixelBufferAttributes;
 @property (nonatomic) unsigned int outputWidth; // @synthesize outputWidth=_outputWidth;
 @property (nonatomic) int payloadType; // @synthesize payloadType=_payloadType;
-@property (nonatomic) BOOL providesEV0Image; // @synthesize providesEV0Image=_providesEV0Image;
+@property (nonatomic) BOOL previewEnabled; // @synthesize previewEnabled=_previewEnabled;
+@property (nonatomic) unsigned int previewFormat; // @synthesize previewFormat=_previewFormat;
+@property (nonatomic) unsigned int previewHeight; // @synthesize previewHeight=_previewHeight;
+@property (nonatomic) BOOL previewMirroring; // @synthesize previewMirroring=_previewMirroring;
+@property (nonatomic) int previewOrientation; // @synthesize previewOrientation=_previewOrientation;
+@property (readonly, nonatomic) NSDictionary *previewPixelBufferAttributes;
+@property (nonatomic) unsigned int previewWidth; // @synthesize previewWidth=_previewWidth;
+@property (nonatomic) BOOL providesOriginalImage; // @synthesize providesOriginalImage=_providesOriginalImage;
+@property (nonatomic) unsigned int rawOutputFormat; // @synthesize rawOutputFormat=_rawOutputFormat;
 @property (nonatomic) float scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 @property (nonatomic) long long settingsID; // @synthesize settingsID=_settingsID;
+@property (nonatomic) int settingsProvider; // @synthesize settingsProvider=_settingsProvider;
 @property (nonatomic) unsigned int shutterSound; // @synthesize shutterSound=_shutterSound;
 @property (nonatomic) BOOL squareCropEnabled; // @synthesize squareCropEnabled=_squareCropEnabled;
+@property (nonatomic) double stillImageCaptureAbsoluteStartTime; // @synthesize stillImageCaptureAbsoluteStartTime=_stillImageCaptureAbsoluteStartTime;
 @property (nonatomic) long long stillImageCaptureStartTime; // @synthesize stillImageCaptureStartTime=_stillImageCaptureStartTime;
 @property (nonatomic) long long stillImageRequestTime; // @synthesize stillImageRequestTime=_stillImageRequestTime;
-@property (nonatomic) BOOL thumbnailEnabled; // @synthesize thumbnailEnabled=_thumbnailEnabled;
-@property (nonatomic) unsigned int thumbnailFormat; // @synthesize thumbnailFormat=_thumbnailFormat;
-@property (nonatomic) unsigned int thumbnailHeight; // @synthesize thumbnailHeight=_thumbnailHeight;
-@property (nonatomic) BOOL thumbnailMirroring; // @synthesize thumbnailMirroring=_thumbnailMirroring;
-@property (nonatomic) int thumbnailOrientation; // @synthesize thumbnailOrientation=_thumbnailOrientation;
-@property (readonly, nonatomic) NSDictionary *thumbnailPixelBufferAttributes;
-@property (nonatomic) unsigned int thumbnailWidth; // @synthesize thumbnailWidth=_thumbnailWidth;
-@property (copy, nonatomic) NSString *transferFunction; // @synthesize transferFunction=_transferFunction;
 @property (copy, nonatomic) NSDictionary *vtCompressionProperties; // @synthesize vtCompressionProperties=_vtCompressionProperties;
-@property (copy, nonatomic) NSString *yCbCrMatrix; // @synthesize yCbCrMatrix=_yCbCrMatrix;
+@property (nonatomic) int wideColorMode; // @synthesize wideColorMode=_wideColorMode;
 
++ (BOOL)supportsSecureCoding;
 - (void)_teardownBracketStorage;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)figCaptureIrisPreparedSettingsRepresentation;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)setBracketType:(int)arg1 imageCount:(unsigned int)arg2;

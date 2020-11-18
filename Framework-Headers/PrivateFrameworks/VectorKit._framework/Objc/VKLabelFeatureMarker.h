@@ -9,15 +9,18 @@
 __attribute__((visibility("hidden")))
 @interface VKLabelFeatureMarker : VKFeatureMarker
 {
-    shared_ptr_ec4684b3 _labelFeature;
-    shared_ptr_dd1f7020 _labelManager;
+    shared_ptr_27db7edb _actualLabelFeatureMarker;
 }
 
 @property (nonatomic) int viewProximity;
 
++ (id)markerWithLabelFeatureMarker:(const shared_ptr_27db7edb *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithFeature:(CDStruct_58d0ca89 *)arg1 labelFeature:(shared_ptr_ec4684b3)arg2 manager:(shared_ptr_dd1f7020)arg3;
+- (float)closestApproach;
+- (struct CGVector)direction;
+- (id)initWithFeatureMarkerPtr:(const shared_ptr_430519ce *)arg1;
+- (id)initWithLabelFeatureMarkerPtr:(const shared_ptr_27db7edb *)arg1;
 
 @end
 

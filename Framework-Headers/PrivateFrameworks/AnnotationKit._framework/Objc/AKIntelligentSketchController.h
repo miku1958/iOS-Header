@@ -13,29 +13,37 @@
 @interface AKIntelligentSketchController : NSObject <AKSmoothPathViewDelegate>
 {
     BOOL _preferDoodle;
+    BOOL _coalescesDoodles;
     BOOL _shapeDetectionEnabled;
     BOOL _selectNewlyCreatedAnnotations;
     BOOL _pressureSensitiveDoodleMode;
     BOOL _ignoreAnnotationAndSelectionKVO;
     BOOL _isShowingOverlay;
-    AKSmoothPathView *_intelligentSketchOverlayView;
     AKPageModelController *_modelControllerToObserveForAnnotationsAndSelections;
     double _veryHighConfidenceLevel;
     AKController *_controller;
+    AKSmoothPathView *_intelligentSketchOverlayView;
     CHDrawing *_lastDrawing;
     CHRecognizer *_shapeRecognizer;
+    CDUnknownBlockType _performRecognitionBlock;
     AKAnnotation *_candidateAnnotation;
     CHDrawing *_candidateDrawing;
     NSMutableArray *_candidateAKTags;
-    NSMutableDictionary *_candidateAKTagsToCHElementMap;
+    NSMutableDictionary *_candidateAKTagsToAnnotationInfoMap;
+    AKAnnotation *_coalescedAnnotation;
+    NSMutableArray *_recentDoodlesAnnotations;
+    NSMutableArray *_recentDoodlePaths;
     AKCandidatePickerView_iOS *_candidatePickerView;
+    struct CGRect _recentDrawingBoundsInInputView;
 }
 
 @property (strong) NSMutableArray *candidateAKTags; // @synthesize candidateAKTags=_candidateAKTags;
-@property (strong) NSMutableDictionary *candidateAKTagsToCHElementMap; // @synthesize candidateAKTagsToCHElementMap=_candidateAKTagsToCHElementMap;
+@property (strong) NSMutableDictionary *candidateAKTagsToAnnotationInfoMap; // @synthesize candidateAKTagsToAnnotationInfoMap=_candidateAKTagsToAnnotationInfoMap;
 @property (weak) AKAnnotation *candidateAnnotation; // @synthesize candidateAnnotation=_candidateAnnotation;
 @property (strong) CHDrawing *candidateDrawing; // @synthesize candidateDrawing=_candidateDrawing;
 @property (strong, nonatomic) AKCandidatePickerView_iOS *candidatePickerView; // @synthesize candidatePickerView=_candidatePickerView;
+@property (strong) AKAnnotation *coalescedAnnotation; // @synthesize coalescedAnnotation=_coalescedAnnotation;
+@property (nonatomic) BOOL coalescesDoodles; // @synthesize coalescesDoodles=_coalescesDoodles;
 @property (weak) AKController *controller; // @synthesize controller=_controller;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -45,8 +53,12 @@
 @property BOOL isShowingOverlay; // @synthesize isShowingOverlay=_isShowingOverlay;
 @property (strong) CHDrawing *lastDrawing; // @synthesize lastDrawing=_lastDrawing;
 @property (strong, nonatomic) AKPageModelController *modelControllerToObserveForAnnotationsAndSelections; // @synthesize modelControllerToObserveForAnnotationsAndSelections=_modelControllerToObserveForAnnotationsAndSelections;
+@property (copy, nonatomic) CDUnknownBlockType performRecognitionBlock; // @synthesize performRecognitionBlock=_performRecognitionBlock;
 @property (nonatomic) BOOL preferDoodle; // @synthesize preferDoodle=_preferDoodle;
 @property BOOL pressureSensitiveDoodleMode; // @synthesize pressureSensitiveDoodleMode=_pressureSensitiveDoodleMode;
+@property (strong) NSMutableArray *recentDoodlePaths; // @synthesize recentDoodlePaths=_recentDoodlePaths;
+@property (strong) NSMutableArray *recentDoodlesAnnotations; // @synthesize recentDoodlesAnnotations=_recentDoodlesAnnotations;
+@property struct CGRect recentDrawingBoundsInInputView; // @synthesize recentDrawingBoundsInInputView=_recentDrawingBoundsInInputView;
 @property (nonatomic) BOOL selectNewlyCreatedAnnotations; // @synthesize selectNewlyCreatedAnnotations=_selectNewlyCreatedAnnotations;
 @property (nonatomic, getter=shapeDetectionEnabled) BOOL shapeDetectionEnabled; // @synthesize shapeDetectionEnabled=_shapeDetectionEnabled;
 @property (strong, nonatomic) CHRecognizer *shapeRecognizer; // @synthesize shapeRecognizer=_shapeRecognizer;
@@ -54,21 +66,27 @@
 @property double veryHighConfidenceLevel; // @synthesize veryHighConfidenceLevel=_veryHighConfidenceLevel;
 
 - (void).cxx_destruct;
+- (void)_addAnnotationImmediatelyFor:(struct CGPath *)arg1 withDrawingCenter:(struct CGPoint)arg2 drawingBoundsInView:(struct CGRect)arg3 pathIsPrestroked:(BOOL)arg4 isSingelDot:(BOOL)arg5 fromInputView:(id)arg6;
+- (void)_beginOrExtendCoalescingTimer;
+- (void)_clearCoalescingState;
 - (void)_clearPreviousCandidateAnnotation;
+- (void)_coalesceDrawingsCancelled;
+- (void)_coalesceRecentDrawings;
 - (id)_convertDrawingBoundsInInputView:(struct CGRect)arg1 outBoundsInPageModel:(struct CGRect *)arg2;
-- (id)_convertRichBrushStrokesInInputView:(id)arg1 toPage:(id)arg2;
 - (id)_createAnnotationWithRecognizerResult:(id)arg1 forDrawingBoundsInInputView:(struct CGRect)arg2 shouldGoToPageController:(id *)arg3;
-- (id)_createCHDrawingFromRichBrushStrokes:(id)arg1;
-- (id)_createDoodleShapeResultFromCGPath:(struct CGPath *)arg1 withDrawingCenter:(struct CGPoint)arg2;
-- (id)_createDoodleShapeResultFromRichBrushStrokePoints:(id)arg1 withDrawingCenter:(struct CGPoint)arg2;
+- (id)_createDoodleShapeResultFromCGPath:(struct CGPath *)arg1 withDrawingCenter:(struct CGPoint)arg2 pathIsPrestroked:(BOOL)arg3;
 - (id)_createFlippedCHDrawingFromCHDrawing:(id)arg1 withDrawingCenter:(struct CGPoint)arg2;
+- (BOOL)_drawingIsValidForRecognition:(id)arg1 withPath:(struct CGPath *)arg2;
+- (void)_executeRecognition;
 - (struct CGRect)_frameForOurOverlayInHostingView:(id)arg1;
-- (void)_inputView:(id)arg1 didCollectRichBrushStrokePoints:(id)arg2 orPath:(struct CGPath *)arg3;
+- (void)_inputView:(id)arg1 didCollectPath:(struct CGPath *)arg2 isPrestroked:(BOOL)arg3;
 - (BOOL)_isResultVeryHighConfidence:(id)arg1;
 - (void)_logAllResults:(id)arg1;
-- (void)_logCollectedBrushStrokes:(id)arg1 andPath:(struct CGPath *)arg2;
+- (void)_performRecognitionForDrawing:(id)arg1 withPath:(struct CGPath *)arg2 boundsInInputView:(struct CGRect)arg3 center:(struct CGPoint)arg4 isPrestroked:(BOOL)arg5;
 - (void)_pickCandidateResult:(id)arg1;
 - (void)_presentCandidatePickerBarWithCandidates:(id)arg1 ofDrawing:(id)arg2;
+- (void)_removeAnnotations:(id)arg1 mostLikelyFromPageController:(id)arg2;
+- (void)_scheduleDelayedRecognitionForDrawing:(id)arg1 withPath:(struct CGPath *)arg2 boundsInView:(struct CGRect)arg3 center:(struct CGPoint)arg4 isPrestroked:(BOOL)arg5;
 - (BOOL)_shouldSelectCandidate:(id)arg1;
 - (void)_showCandidatePickerWithTypes:(id)arg1 forDrawingInInputView:(id)arg2 shouldSurfaceDoodle:(BOOL)arg3;
 - (void)_teardownCandidatePicker;
@@ -82,7 +100,7 @@
 - (void)handleTapAction:(id)arg1;
 - (id)initWithController:(id)arg1;
 - (void)inputView:(id)arg1 didCollectPath:(struct CGPath *)arg2;
-- (void)inputView:(id)arg1 didCollectRichBrushStrokePoints:(id)arg2;
+- (void)inputView:(id)arg1 didCollectPrestrokedPath:(struct CGPath *)arg2;
 - (void)inputViewWillStartDrawing:(id)arg1;
 - (BOOL)isShowingCandidatePicker;
 - (void)logLastDrawingToDisk;

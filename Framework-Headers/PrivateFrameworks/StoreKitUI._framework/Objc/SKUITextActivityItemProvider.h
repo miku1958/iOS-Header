@@ -4,18 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIActivityItemProvider.h>
+#import <StoreKitUI/SKUIDeferredActivityItemProvider.h>
 
-@class SKUIClientContext, SKUIProductPageItem;
-
-@interface SKUITextActivityItemProvider : UIActivityItemProvider
+@interface SKUITextActivityItemProvider : SKUIDeferredActivityItemProvider
 {
-    SKUIProductPageItem *_item;
-    SKUIClientContext *_clientContext;
 }
 
-- (void).cxx_destruct;
-- (id)initWithProductPageItem:(id)arg1 clientContext:(id)arg2;
++ (id)placeholderItem;
 - (id)item;
 
 @end

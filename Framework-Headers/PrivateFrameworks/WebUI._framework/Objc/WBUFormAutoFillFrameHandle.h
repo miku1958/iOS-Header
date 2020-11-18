@@ -10,12 +10,12 @@
 #import <WebUI/NSSecureCoding-Protocol.h>
 #import <WebUI/WBUFormAutoFillFrameHandle-Protocol.h>
 
-@class NSArray, NSString, NSURL, _WKFrameHandle;
+@class NSString, NSURL, _WKFrameHandle;
 
 @interface WBUFormAutoFillFrameHandle : NSObject <NSCopying, NSSecureCoding, WBUFormAutoFillFrameHandle>
 {
     NSURL *_URL;
-    NSArray *_certificateChain;
+    struct __SecTrust *_serverTrust;
     _WKFrameHandle *_frameHandle;
 }
 
@@ -25,14 +25,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSURL *webui_URL;
-@property (readonly, nonatomic) NSArray *webui_certificateChain;
+@property (readonly, nonatomic) struct __SecTrust *webui_serverTrust;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithFrameHandle:(id)arg1 URL:(id)arg2 certificateChain:(id)arg3;
+- (id)initWithFrameHandle:(id)arg1 URL:(id)arg2 serverTrust:(struct __SecTrust *)arg3;
 - (id)initWithWebProcessPlugInFrame:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

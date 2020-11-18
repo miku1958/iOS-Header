@@ -27,7 +27,7 @@
 - (void)_handleRequestTimeout:(id)arg1;
 - (id)existingPairedVideoForUUID:(id)arg1;
 - (id)init;
-- (id)insertPairedVideoWithConvertible:(id)arg1;
+- (id)insertPairedVideoWithConvertible:(id)arg1 filterType:(long long)arg2;
 - (void)removePairedVideoForUUID:(id)arg1;
 - (void)requestPairedVideoURLForUUID:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 

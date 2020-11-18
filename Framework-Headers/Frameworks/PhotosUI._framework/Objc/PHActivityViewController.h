@@ -22,7 +22,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_updateActivityItems:(id)arg1 animated:(BOOL)arg2;
+- (void)_updateActivityItems:(id)arg1;
 - (id)activityItemsForActivity:(id)arg1;
 - (id)activityViewControllerForActivity:(id)arg1;
 - (id)initWithActivityItems:(id)arg1 applicationActivities:(id)arg2;

@@ -11,7 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface MTLBufferArgument : MTLArgumentInternal
 {
-    unsigned short _dataType;
+    unsigned int _dataType:15;
+    unsigned int _vertexDescriptorBuffer:1;
     unsigned short _alignment;
     unsigned int _dataSize;
     MTLStructTypeInternal *_structType;
@@ -23,9 +24,10 @@ __attribute__((visibility("hidden")))
 - (id)bufferStructType;
 - (void)dealloc;
 - (id)describe;
-- (id)description;
 - (id)initWithName:(id)arg1 type:(unsigned long long)arg2 access:(unsigned long long)arg3 isActive:(BOOL)arg4 locationIndex:(unsigned long long)arg5 arraySize:(unsigned long long)arg6 dataType:(unsigned long long)arg7 dataSize:(unsigned long long)arg8 alignment:(unsigned long long)arg9;
+- (BOOL)isVertexDescriptorBuffer;
 - (void)setStructType:(id)arg1;
+- (void)setVertexDescriptorBuffer:(BOOL)arg1;
 
 @end
 

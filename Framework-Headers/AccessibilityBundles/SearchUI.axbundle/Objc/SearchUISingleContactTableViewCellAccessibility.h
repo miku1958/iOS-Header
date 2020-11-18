@@ -13,13 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityLoadAccessibilityInformation;
 - (id)_axActionButton;
 - (void)_axPerformCustomAction:(id)arg1;
-- (void)_axUpdateSubviewVisibility;
 - (id)accessibilityCustomActions;
 - (id)accessibilityLabel;
-- (id)initWithResult:(id)arg1 style:(long long)arg2;
 - (void)updateThumbnailViewForResult:(id)arg1;
 
 @end

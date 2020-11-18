@@ -6,7 +6,6 @@
 
 #import <Foundation/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface MRProtocolMessageLogger : NSObject
 {
     int _token;

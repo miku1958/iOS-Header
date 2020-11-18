@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <QuartzCore/CAAction-Protocol.h>
 #import <QuartzCore/CAMediaTiming-Protocol.h>
@@ -14,6 +14,7 @@
 #import <QuartzCore/NSMutableCopying-Protocol.h>
 
 @class CAMediaTimingFunction, CAStateControllerTransition, NSString;
+@protocol CAAnimationDelegate;
 
 @interface CAAnimation : NSObject <NSMutableCopying, CAPropertyInfo, NSCoding, NSCopying, CAMediaTiming, CAAction>
 {
@@ -25,11 +26,12 @@
 @property BOOL autoreverses;
 @property double beginTime;
 @property (copy) NSString *beginTimeMode;
-@property (strong) id delegate;
+@property (strong) id<CAAnimationDelegate> delegate;
 @property double duration;
 @property (getter=isEnabled) BOOL enabled;
 @property (copy) NSString *fillMode;
 @property double frameInterval;
+@property long long preferredFramesPerSecond;
 @property (getter=isRemovedOnCompletion) BOOL removedOnCompletion;
 @property float repeatCount;
 @property double repeatDuration;

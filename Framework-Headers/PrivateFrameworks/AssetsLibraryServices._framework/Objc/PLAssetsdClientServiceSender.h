@@ -22,7 +22,7 @@
 @property (readonly) Class superclass;
 
 - (void)dealloc;
-- (void)downloadStatusForIdentifier:(id)arg1 progress:(double)arg2 completed:(BOOL)arg3 error:(id)arg4;
+- (void)downloadStatusForIdentifier:(id)arg1 progress:(double)arg2 completed:(BOOL)arg3 data:(id)arg4 error:(id)arg5;
 - (id)initWithConnection:(id)arg1;
 
 @end

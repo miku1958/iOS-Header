@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
 
@@ -16,9 +16,8 @@
     NSData *_data;
     NSString *_semantic;
     long long _vectorCount;
-    BOOL _floatComponents;
-    long long _componentsPerVector;
-    long long _bytesPerComponent;
+    short _componentType;
+    unsigned short _componentCount;
     long long _dataOffset;
     long long _dataStride;
     unsigned char _mkSemantic;
@@ -33,20 +32,25 @@
 @property (readonly, nonatomic) NSString *semantic;
 @property (readonly, nonatomic) long long vectorCount;
 
++ (id)_geometrySourceWithData:(id)arg1 semantic:(id)arg2 vectorCount:(long long)arg3 componentType:(short)arg4 componentCount:(unsigned long long)arg5 dataOffset:(long long)arg6 dataStride:(long long)arg7;
++ (id)dataByConvertingDoublesToFloats:(const double *)arg1 count:(long long)arg2;
 + (id)dataWithPointArray:(const struct CGPoint *)arg1 count:(long long)arg2 bytesPerComponent:(long long *)arg3;
 + (id)dataWithVector3Array:(const struct SCNVector3 *)arg1 count:(long long)arg2 bytesPerComponent:(long long *)arg3;
 + (id)geometrySourceWithData:(id)arg1 semantic:(id)arg2 vectorCount:(long long)arg3 floatComponents:(BOOL)arg4 componentsPerVector:(long long)arg5 bytesPerComponent:(long long)arg6 dataOffset:(long long)arg7 dataStride:(long long)arg8;
++ (id)geometrySourceWithMDLVertexAttribute:(id)arg1 mesh:(id)arg2;
++ (id)geometrySourceWithMeshSourceRef:(struct __C3DMeshSource *)arg1;
 + (id)geometrySourceWithNormals:(const struct SCNVector3 *)arg1 count:(long long)arg2;
 + (id)geometrySourceWithTextureCoordinates:(const struct CGPoint *)arg1 count:(long long)arg2;
 + (id)geometrySourceWithVertices:(const struct SCNVector3 *)arg1 count:(long long)arg2;
 + (BOOL)supportsSecureCoding;
 - (void)_clearC3DCache;
-- (short)baseTypeForDataFormat;
+- (short)_componentType;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithData:(id)arg1 semantic:(id)arg2 vectorCount:(long long)arg3 componentType:(short)arg4 componentCount:(unsigned long long)arg5 dataOffset:(long long)arg6 dataStride:(long long)arg7;
 - (id)initWithData:(id)arg1 semantic:(id)arg2 vectorCount:(long long)arg3 floatComponents:(BOOL)arg4 componentsPerVector:(long long)arg5 bytesPerComponent:(long long)arg6 dataOffset:(long long)arg7 dataStride:(long long)arg8;
 - (id)initWithMeshSource:(struct __C3DMeshSource *)arg1;
 - (struct __C3DMeshSource *)meshSource;

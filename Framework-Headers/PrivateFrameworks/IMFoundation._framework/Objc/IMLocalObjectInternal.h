@@ -27,6 +27,7 @@
     BOOL _pendingComponentQueueProcessing;
     BOOL _busyForwarding;
     BOOL _offMainThread;
+    BOOL _forceSecureCoding;
 }
 
 - (void)dealloc;

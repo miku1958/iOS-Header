@@ -10,7 +10,6 @@
 
 @interface _SFNavigationBarItem : NSObject
 {
-    _SFNavigationBar *_navigationBar;
     BOOL _showsLockIcon;
     BOOL _showsSearchIndicator;
     BOOL _showsStopReloadButtons;
@@ -25,10 +24,12 @@
     unsigned long long _startIndexOfTextInExpandedText;
     NSString *_customPlaceholderText;
     _SFFluidProgressView *_progressView;
+    _SFNavigationBar *_navigationBar;
 }
 
 @property (copy, nonatomic) NSString *customPlaceholderText; // @synthesize customPlaceholderText=_customPlaceholderText;
 @property (nonatomic) BOOL lockIconHasEVCertificateTint; // @synthesize lockIconHasEVCertificateTint=_lockIconHasEVCertificateTint;
+@property (weak, nonatomic, setter=_setNavigationBar:) _SFNavigationBar *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property (nonatomic) BOOL overrideBarStyleForSecurityWarning; // @synthesize overrideBarStyleForSecurityWarning=_overrideBarStyleForSecurityWarning;
 @property (strong, nonatomic) _SFFluidProgressView *progressView; // @synthesize progressView=_progressView;
 @property (nonatomic) BOOL readerButtonSelected; // @synthesize readerButtonSelected=_readerButtonSelected;
@@ -43,7 +44,6 @@
 @property (readonly, nonatomic) NSString *textWhenExpanded; // @synthesize textWhenExpanded=_textWhenExpanded;
 
 - (void).cxx_destruct;
-- (void)_setNavigationBar:(id)arg1;
 - (id)init;
 - (void)setText:(id)arg1 textWhenExpanded:(id)arg2 startIndex:(unsigned long long)arg3;
 

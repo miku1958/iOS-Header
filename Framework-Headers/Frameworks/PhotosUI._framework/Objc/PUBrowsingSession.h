@@ -10,7 +10,7 @@
 #import <PhotosUI/PUAssetsDataSourceManagerDelegate-Protocol.h>
 #import <PhotosUI/PULoadingStatusManagerDelegate-Protocol.h>
 
-@class NSString, PUAssetActionManager, PUAssetsDataSourceManager, PUAudioSessionCategoryToken, PUBrowsingViewModel, PUContentTileProvider, PULoadingStatusManager, PUMediaProvider, PUTileAnimator;
+@class NSString, PUAssetActionManager, PUAssetsDataSourceManager, PUBrowsingViewModel, PUContentTileProvider, PULoadingStatusManager, PUMediaProvider, PUTileAnimator, PXPhotosDetailsContext;
 
 @interface PUBrowsingSession : NSObject <PUAssetsDataSourceManagerDelegate, PUAssetActionManagerDelegate, PULoadingStatusManagerDelegate>
 {
@@ -20,12 +20,11 @@
     PUAssetActionManager *_actionManager;
     PUBrowsingViewModel *_viewModel;
     PUContentTileProvider *_contentTileProvider;
-    PUTileAnimator *_tileAnimator;
     PULoadingStatusManager *_loadingStatusManager;
-    PUAudioSessionCategoryToken *__audioSessionCategoryToken;
+    PXPhotosDetailsContext *_photosDetailsContext;
+    PUTileAnimator *_tileAnimator;
 }
 
-@property (strong, nonatomic, setter=_setAudioSessionCategoryToken:) PUAudioSessionCategoryToken *_audioSessionCategoryToken; // @synthesize _audioSessionCategoryToken=__audioSessionCategoryToken;
 @property (readonly, nonatomic) PUAssetActionManager *actionManager; // @synthesize actionManager=_actionManager;
 @property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
 @property (strong, nonatomic) PUContentTileProvider *contentTileProvider; // @synthesize contentTileProvider=_contentTileProvider;
@@ -35,19 +34,19 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PULoadingStatusManager *loadingStatusManager; // @synthesize loadingStatusManager=_loadingStatusManager;
 @property (strong, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
+@property (readonly, nonatomic) PXPhotosDetailsContext *photosDetailsContext; // @synthesize photosDetailsContext=_photosDetailsContext;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PUTileAnimator *tileAnimator; // @synthesize tileAnimator=_tileAnimator;
 @property (strong, nonatomic) PUBrowsingViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
 - (void).cxx_destruct;
-- (void)_configureAudioSession:(id)arg1;
 - (id)assetActionManagerCurrentAssetsDataSource:(id)arg1;
 - (void)assetsDataSourceManager:(id)arg1 didChangeAssetsDataSource:(id)arg2;
 - (id)assetsDataSourceManagerInterestingAssetReferences:(id)arg1;
 - (void)configureTilingView:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)initWithDataSourceManager:(id)arg1 actionManager:(id)arg2 mediaProvider:(id)arg3;
+- (id)initWithDataSourceManager:(id)arg1 actionManager:(id)arg2 mediaProvider:(id)arg3 photosDetailsContext:(id)arg4;
 - (void)loadingStatusManager:(id)arg1 didUpdateLoadingStatus:(id)arg2 forItem:(id)arg3;
 
 @end

@@ -20,6 +20,7 @@
     NSArray *_routeDetailsOptionsArtwork;
     NSArray *_actionSheetOptionsArtwork;
     NSArray *_transitLineOptions;
+    NSArray *_alightNotifications;
 }
 
 @property (readonly, nonatomic) GEOComposedTransitTripRouteStep *alightStep; // @synthesize alightStep=_alightStep;
@@ -30,6 +31,7 @@
 @property (readonly, nonatomic) NSTimeZone *departureTimeZone;
 @property (readonly, nonatomic) NSArray *departureTimes;
 @property (readonly, nonatomic) NSDate *lastStepArrivalDate;
+@property (readonly, nonatomic) BOOL notifyBeforeAlightStep;
 @property (readonly, nonatomic) unsigned long long rideOptionsCount;
 @property (readonly, nonatomic) NSArray *routeLineArtwork;
 @property (nonatomic) unsigned long long selectedRideOptionIndex; // @synthesize selectedRideOptionIndex=_selectedRideOptionIndex;

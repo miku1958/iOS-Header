@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSMapTable, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
@@ -19,17 +19,19 @@
     NSMapTable *_handlersByIdentifier;
     BOOL _chargeChangeHandlingDisabled;
     NSObject<OS_dispatch_queue> *_queue;
+    unsigned long long _numFakeDevices;
 }
 
-@property (readonly, nonatomic) NSArray *connectedDevices;
+@property (readonly, weak, nonatomic) NSArray *connectedDevices;
 @property (readonly, nonatomic) NSString *connectedDevicesDidChangeNotificationName;
-@property (readonly, nonatomic) NSArray *connectedDevicesIncludingMissingParts;
+@property (readonly, weak, nonatomic) NSArray *connectedDevicesIncludingMissingParts;
 
 + (id)_glyphForFirstPartyBatteryDeviceWithBaseIdentifier:(id)arg1 parts:(unsigned long long)arg2;
 + (id)_glyphsForBatteryDevice:(id)arg1;
 + (id)_glyphsForFirstPartyBatteryDevice:(id)arg1;
 + (id)_internalBatteryDeviceGlyph;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)_baseIdentifierFromPowerSourceDescription:(id)arg1;
 - (id)_deviceByCoalescingDevice:(id)arg1;
 - (int)_displayChargePercentForCurrentCapacity:(id)arg1 andMaxCapacity:(id)arg2 updateZeroValue:(BOOL)arg3;
@@ -37,16 +39,23 @@
 - (id)_displayNameForBaseIdentifier:(id)arg1 andParts:(unsigned long long)arg2 fromPowerSourceDescription:(id)arg3;
 - (id)_fakeDeviceA111PowerSourceDescription;
 - (id)_fakeDeviceB222PowerSourceDescription;
+- (id)_fakeDeviceB235PowerSourceDescription;
 - (id)_fakeDeviceB244PowerSourceDescription;
+- (id)_fakeDeviceB352PowerSourceDescription;
 - (id)_fakeDeviceBeatsHeadphones1PowerSourceDescription;
 - (id)_fakeDeviceBeatsHeadphones2PowerSourceDescription;
 - (id)_fakeDeviceInternalBatteryDescription;
+- (id)_fakeDeviceLeftB188PowerSourceDescription;
+- (id)_fakeDeviceLeftB282PowerSourceDescription;
 - (id)_fakeDeviceLeftHearingAidPowerSourceDescription;
 - (id)_fakeDevicePowerSourceDescriptions;
+- (id)_fakeDeviceRightB188PowerSourceDescription;
+- (id)_fakeDeviceRightB312PowerSourceDescription;
 - (id)_fakeDeviceRightHearingAidPowerSourceDescription;
 - (id)_groupNameForBaseIdentifier:(id)arg1 fromPowerSourceDescription:(id)arg2;
 - (void)_handlePSChange;
 - (id)_identifierFromPowerSourceDescription:(id)arg1;
+- (void)_incrementNumberOfConnectedDevices:(BOOL)arg1;
 - (void)_incrementPercentChargeForConnectedDevices:(BOOL)arg1;
 - (BOOL)_isDevicePartOfPairWithBaseIdentifier:(id)arg1 matchIdentifier:(id)arg2 andPart:(unsigned long long)arg3;
 - (struct CGSize)_largestBatteryDeviceGlyphSize;

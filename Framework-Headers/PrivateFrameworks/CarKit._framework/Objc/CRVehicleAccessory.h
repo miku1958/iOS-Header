@@ -36,8 +36,9 @@
 - (void)beginWiredBluetoothPairing:(CDUnknownBlockType)arg1;
 - (id)description;
 - (id)displayName;
-- (BOOL)isConnectedWirelessly;
+- (BOOL)isBluetoothConnected;
 - (void)requestWiFiCredentials;
+- (void)sendDeviceTransportIdentifiers;
 
 @end
 

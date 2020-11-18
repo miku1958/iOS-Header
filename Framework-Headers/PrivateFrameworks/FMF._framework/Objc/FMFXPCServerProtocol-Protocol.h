@@ -15,6 +15,8 @@
 - (oneway void)canGetLocationForHandle:(FMFHandle *)arg1 groupId:(NSString *)arg2 callerId:(FMFHandle *)arg3 completion:(void (^)(BOOL, NSString *, NSError *))arg4;
 - (oneway void)canOfferToHandles:(NSSet *)arg1 completion:(void (^)(NSSet *, NSError *))arg2;
 - (oneway void)canShareLocationWithHandle:(FMFHandle *)arg1 groupId:(NSString *)arg2 callerId:(FMFHandle *)arg3 completion:(void (^)(BOOL, NSString *, NSError *))arg4;
+- (oneway void)contactForPayload:(NSString *)arg1 completion:(void (^)(CNContact *, NSError *))arg2;
+- (oneway void)dataForPayload:(NSString *)arg1 completion:(void (^)(FMFHandle *, CNContact *, CLLocation *, NSError *))arg2;
 - (oneway void)declineFriendshipRequest:(FMFFriendshipRequest *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)deviceSharingLocation:(void (^)(FMFDevice *, NSError *))arg1;
 - (oneway void)extendFriendshipOfferToHandle:(FMFHandle *)arg1 groupId:(NSString *)arg2 callerId:(FMFHandle *)arg3 endDate:(NSDate *)arg4 completion:(void (^)(NSString *, NSError *))arg5;
@@ -35,6 +37,7 @@
 - (oneway void)getPendingFriendshipRequestsWithCompletion:(void (^)(NSSet *, NSSet *, NSError *))arg1;
 - (oneway void)getPendingMappingPacketsForHandle:(FMFHandle *)arg1 groupId:(NSString *)arg2 completion:(void (^)(NSArray *, NSArray *, NSError *))arg3;
 - (oneway void)getPrettyNameForHandle:(FMFHandle *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
+- (oneway void)handleAndLocationForPayload:(NSString *)arg1 completion:(void (^)(FMFHandle *, CLLocation *, NSError *))arg2;
 - (oneway void)importMappingPacket:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (oneway void)invalidateMappingPackets:(NSSet *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)isMyLocationEnabled:(void (^)(BOOL, NSError *))arg1;

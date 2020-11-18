@@ -6,36 +6,49 @@
 
 #import <UserManagement/UMMutableUser.h>
 
+#import <LoginKit/NSCopying-Protocol.h>
 #import <LoginKit/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSMutableDictionary, NSString, NSURL;
 
-@interface LKUser : UMMutableUser <NSSecureCoding>
+@interface LKUser : UMMutableUser <NSSecureCoding, NSCopying>
 {
+    NSString *mPhoneticName;
+    BOOL mAttemptedPhoneticTranscription;
     NSDate *_lastOnlineAuth;
     NSString *_passwordType;
     NSURL *_mediumImageURL;
     NSURL *_largeImageURL;
+    NSURL *_localMediumImageURL;
+    NSURL *_localLargeImageURL;
     NSString *_identifier;
     NSMutableDictionary *_namingSimilarityInfoByClassID;
+    long long _retryCount;
 }
 
 @property (strong) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong) NSURL *largeImageURL; // @synthesize largeImageURL=_largeImageURL;
 @property (strong) NSDate *lastOnlineAuth; // @synthesize lastOnlineAuth=_lastOnlineAuth;
+@property (strong, nonatomic) NSURL *localLargeImageURL; // @synthesize localLargeImageURL=_localLargeImageURL;
+@property (strong, nonatomic) NSURL *localMediumImageURL; // @synthesize localMediumImageURL=_localMediumImageURL;
 @property (strong) NSURL *mediumImageURL; // @synthesize mediumImageURL=_mediumImageURL;
 @property (strong) NSMutableDictionary *namingSimilarityInfoByClassID; // @synthesize namingSimilarityInfoByClassID=_namingSimilarityInfoByClassID;
 @property (strong) NSString *passwordType; // @synthesize passwordType=_passwordType;
+@property (strong, nonatomic) NSString *phoneticName;
+@property (nonatomic) long long retryCount; // @synthesize retryCount=_retryCount;
 
++ (void)setAutogeneratesPhoneticNameWithLocale:(id)arg1;
 + (BOOL)supportsSecureCoding;
 + (id)userFromDictionary:(id)arg1;
 + (id)userFromUMUser:(id)arg1;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToLKUser:(id)arg1;
+- (void)setDiffUMUserPropertiesFromUMUser:(id)arg1;
 
 @end
 

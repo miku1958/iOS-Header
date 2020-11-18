@@ -11,7 +11,7 @@
 #import <SafariServices/_SFNavigationBarURLButtonDelegate-Protocol.h>
 #import <SafariServices/_UIBasicAnimationFactory-Protocol.h>
 
-@class NSAttributedString, NSString, NSTimer, SFCrossfadingImageView, UIButton, UIImageView, UILabel, UILongPressGestureRecognizer, UITextField, _SFDimmingButton, _SFFluidProgressView, _SFNavigationBarBackdrop, _SFNavigationBarItem, _SFNavigationBarLabelsContainer, _SFNavigationBarReaderButton, _SFNavigationBarURLButton, _SFToolbar, _UIBackdropViewSettings;
+@class NSArray, NSAttributedString, NSString, NSTimer, SFCrossfadingImageView, SFCrossfadingLabel, UIButton, UIColor, UIImageView, UILabel, UILongPressGestureRecognizer, UITextField, _SFDimmingButton, _SFFluidProgressView, _SFNavigationBarBackdrop, _SFNavigationBarItem, _SFNavigationBarLabelsContainer, _SFNavigationBarReaderButton, _SFNavigationBarURLButton, _SFToolbar, _UIBackdropViewSettings;
 @protocol _SFNavigationBarDelegate;
 
 @interface _SFNavigationBar : UIView <_UIBasicAnimationFactory, _SFFluidProgressViewDelegate, _SFNavigationBarURLButtonDelegate, UIGestureRecognizerDelegate>
@@ -20,7 +20,7 @@
     UIView *_controlsContainer;
     _SFNavigationBarLabelsContainer *_labelsContainer;
     UIView *_labelScalingContainer;
-    UILabel *_URLLabel;
+    SFCrossfadingLabel *_URLLabel;
     UILabel *_expandedURLLabel;
     UILabel *_readerAvailabilityLabel;
     double _URLWidth;
@@ -36,10 +36,7 @@
     UIButton *_fakeClearButton;
     SFCrossfadingImageView *_searchIndicator;
     SFCrossfadingImageView *_lockView;
-    SFCrossfadingImageView *_activeURLLabelAccessory;
-    double _activeURLLabelAccessorySpacing;
-    double _activeURLLabelAccessorySquishedSpacing;
-    double _activeURLLabelAccessoryVerticalOffset;
+    NSArray *_URLAccessoryItems;
     _SFNavigationBarURLButton *_URLOutline;
     _SFFluidProgressView *_progressView;
     _SFNavigationBarBackdrop *_backdrop;
@@ -72,15 +69,19 @@
     _SFToolbar *_toolbar;
     _UIBackdropViewSettings *_customBackdropSettings;
     UITextField *_textField;
+    NSString *_backdropGroupName;
     id<_SFNavigationBarDelegate> _delegate;
     double _contentUnderStatusBarHeight;
     double _maximumHeight;
     double _minimumBackdropHeight;
     UIView *_inputAccessoryView;
+    UIColor *_preferredBarTintColor;
+    UIColor *_preferredControlsTintColor;
 }
 
 @property (readonly, nonatomic) struct CGRect URLOutlineFrameInNavigationBarSpace;
 @property (nonatomic, getter=isBackdropGroupDisabled) BOOL backdropGroupDisabled; // @synthesize backdropGroupDisabled=_backdropGroupDisabled;
+@property (copy, nonatomic) NSString *backdropGroupName; // @synthesize backdropGroupName=_backdropGroupName;
 @property (nonatomic) double contentUnderStatusBarHeight; // @synthesize contentUnderStatusBarHeight=_contentUnderStatusBarHeight;
 @property (readonly, nonatomic, getter=_controlsAlpha) double controlsAlpha;
 @property (nonatomic, getter=areControlsHidden) BOOL controlsHidden; // @synthesize controlsHidden=_controlsHidden;
@@ -92,9 +93,12 @@
 @property (nonatomic) BOOL hasToolbar;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *inputAccessoryView; // @synthesize inputAccessoryView=_inputAccessoryView;
+@property (readonly, nonatomic) BOOL isShowingPreferredControlsTintColor;
 @property (strong, nonatomic) _SFNavigationBarItem *item; // @synthesize item=_item;
 @property (nonatomic) double maximumHeight; // @synthesize maximumHeight=_maximumHeight;
 @property (nonatomic) double minimumBackdropHeight; // @synthesize minimumBackdropHeight=_minimumBackdropHeight;
+@property (strong, nonatomic) UIColor *preferredBarTintColor; // @synthesize preferredBarTintColor=_preferredBarTintColor;
+@property (strong, nonatomic) UIColor *preferredControlsTintColor; // @synthesize preferredControlsTintColor=_preferredControlsTintColor;
 @property (readonly, nonatomic) UIButton *readerAppearanceButton;
 @property (readonly, nonatomic) UIButton *reloadButton; // @synthesize reloadButton=_reloadButton;
 @property (readonly) Class superclass;
@@ -136,25 +140,28 @@
 - (void)_hideReaderAvailabilityLabelSoon;
 - (id)_hitTestCandidateViews;
 - (long long)_inferredNavigationBarRightButtonType;
+- (id)_legibilityColorForBarTintColor:(id)arg1;
 - (id)_lockImageUsingMiniatureVersion:(BOOL)arg1;
-- (id)_lockImageWithTint:(id)arg1 usingMiniatureVersion:(BOOL)arg2;
 - (double)_minimumXForLabelOfWidth:(double)arg1 centeredInOutlineOfWidth:(double)arg2 leftAlignedToMinimumX:(double)arg3 maximumX:(double)arg4;
 - (id)_navigationBarRightButtonWithType:(long long)arg1;
 - (id)_newNavigationButtonWithImage:(id)arg1 insets:(struct UIEdgeInsets)arg2 action:(SEL)arg3;
 - (id)_placeholderColor;
 - (id)_placeholderText;
+- (BOOL)_preferredTintColorIsSimilarToEVCertLockAndTextColor;
 - (void)_readerAppearanceButtonPressed;
 - (void)_readerButtonTapped:(id)arg1;
 - (void)_reloadButtonLongPressed:(id)arg1;
 - (void)_reloadButtonPressed;
+- (BOOL)_shouldShowPreferredBarTintColor;
 - (double)_squishTransformFactor;
 - (void)_stopButtonPressed;
 - (double)_textFieldTopMargin;
 - (id)_timingFunctionForAnimation;
+- (id)_tintForLockImage:(BOOL)arg1;
 - (void)_transitionFromView:(id)arg1 toView:(id)arg2 animated:(BOOL)arg3;
-- (id)_untintedLockImageUsingMiniatureVersion:(BOOL)arg1;
 - (void)_updateActiveURLLabelAccessory;
 - (void)_updateBackdropFrame;
+- (void)_updateBackdropGroupName;
 - (void)_updateBackdropStyle;
 - (void)_updateControlTints;
 - (void)_updateFakeViews;
@@ -201,6 +208,7 @@
 - (void)setExpanded:(BOOL)arg1 textFieldSelectionRange:(struct _NSRange)arg2;
 - (void)setTextFieldPlaceHolderColor:(id)arg1;
 - (void)squishExternalView:(id)arg1 withUntransformedFrame:(struct CGRect)arg2 minimumScale:(double)arg3;
+- (void)tintColorDidChange;
 - (id)toolbarPlacedOnTop;
 - (void)updateToobarTintColor;
 

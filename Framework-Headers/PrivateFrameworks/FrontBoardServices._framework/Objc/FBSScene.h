@@ -11,7 +11,6 @@
 
 @interface FBSScene : NSObject
 {
-    NSArray *_layers;
 }
 
 @property (readonly, strong, nonatomic) FBSSceneClientSettings *clientSettings;
@@ -20,10 +19,13 @@
 @property (readonly, nonatomic) CADisplay *display;
 @property (readonly, strong, nonatomic) FBSDisplay *fbsDisplay;
 @property (readonly, copy, nonatomic) NSString *identifier;
-@property (readonly, strong, nonatomic) NSArray *layers; // @synthesize layers=_layers;
+@property (readonly, strong, nonatomic) NSArray *layers;
 @property (readonly, strong, nonatomic) FBSSceneSettings *settings;
 
+- (void)_didCreateWithTransitionContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)_hasAgent;
 - (id)_init;
+- (void)_willDestroyWithTransitionContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)attachContext:(id)arg1;
 - (void)attachLayer:(id)arg1;
 - (void)attachSceneContext:(id)arg1;

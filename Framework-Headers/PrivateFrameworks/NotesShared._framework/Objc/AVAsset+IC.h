@@ -7,6 +7,7 @@
 #import <AVFoundation/AVAsset.h>
 
 @interface AVAsset (IC)
+- (struct CGImageSource *)newPreviewImageSource;
 - (struct UIImage *)previewImage;
 @end
 

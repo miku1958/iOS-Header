@@ -6,9 +6,11 @@
 
 #import <SpriteKit/SKNode.h>
 
-@class SKLightNode, SKShader, SKTexture, UIColor;
+#import <SpriteKit/SKWarpable-Protocol.h>
 
-@interface SKSpriteNode : SKNode
+@class MISSING_TYPE, NSString, SKLightNode, SKShader, SKTexture, SKWarpGeometry, UIColor;
+
+@interface SKSpriteNode : SKNode <SKWarpable>
 {
     struct SKCSpriteNode *_skcSpriteNode;
     SKLightNode *_light;
@@ -20,6 +22,9 @@
 @property (nonatomic) struct CGRect centerRect;
 @property (strong, nonatomic) UIColor *color;
 @property (nonatomic) double colorBlendFactor;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned int lightingBitMask;
 @property (strong, nonatomic) SKTexture *normalTexture;
 @property (nonatomic) struct CGSize repeatTextureSize;
@@ -28,7 +33,10 @@
 @property (nonatomic) unsigned int shadowedBitMask;
 @property (nonatomic) BOOL shouldRepeatTexture; // @synthesize shouldRepeatTexture=_shouldRepeatTexture;
 @property (nonatomic) struct CGSize size;
+@property (nonatomic) long long subdivisionLevels;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) SKTexture *texture;
+@property (strong, nonatomic) SKWarpGeometry *warpGeometry;
 
 + (id)spriteNodeWithColor:(id)arg1 size:(struct CGSize)arg2;
 + (id)spriteNodeWithImageNamed:(id)arg1;
@@ -39,9 +47,9 @@
 - (void).cxx_destruct;
 - (void)_didMakeBackingNode;
 - (struct SKCNode *)_makeBackingNode;
+- (BOOL)_pathFromTextureToPoints:(MISSING_TYPE ***)arg1 outSize:(unsigned long long *)arg2 accuracy:(float)arg3;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
@@ -51,6 +59,7 @@
 - (id)initWithTexture:(id)arg1 color:(id)arg2 size:(struct CGSize)arg3;
 - (BOOL)isEqualToNode:(id)arg1;
 - (BOOL)repeatTexture;
+- (void)scaleToSize:(struct CGSize)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setRepeatTexture:(BOOL)arg1;
 

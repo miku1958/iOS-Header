@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (id)_identifiersPassingReasonsTest:(CDUnknownBlockType)arg1;
 - (void)addIdentifiers:(id)arg1 withReasons:(id)arg2;
 - (void)dealloc;
-- (void)getPurgingReasons:(id *)arg1 excluding:(id *)arg2;
 - (id)init;
 - (void)removeAllIdentifiers;
 - (void)removeIdentifier:(id)arg1;

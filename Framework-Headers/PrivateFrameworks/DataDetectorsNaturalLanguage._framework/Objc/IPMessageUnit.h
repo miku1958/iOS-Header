@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class IPMessage, NSArray, NSMutableArray, NSString;
+@class IPMessage, NSArray, NSIndexSet, NSMutableArray, NSString;
 
 @interface IPMessageUnit : NSObject
 {
     NSMutableArray *_followups;
     NSArray *_flatMessageThread;
     NSArray *_features;
+    NSIndexSet *_rejectionRanges;
+    NSString *_bestLanguage;
+    NSString *_lowercaseText;
     NSString *_text;
     IPMessageUnit *_previous;
     IPMessage *_originalMessage;
@@ -22,13 +25,17 @@
 @property (readonly) NSArray *features; // @synthesize features=_features;
 @property (readonly) NSArray *followups;
 @property (readonly) long long indexInOriginalMessage; // @synthesize indexInOriginalMessage=_indexInOriginalMessage;
+@property (readonly, copy) NSString *lowercaseText;
 @property (readonly, weak) IPMessage *originalMessage; // @synthesize originalMessage=_originalMessage;
 @property (readonly, weak) IPMessageUnit *previous; // @synthesize previous=_previous;
-@property (readonly) NSString *text; // @synthesize text=_text;
+@property (readonly, copy) NSString *text; // @synthesize text=_text;
 
 - (void).cxx_destruct;
 - (void)addFollowup:(id)arg1;
+- (id)bestLanguageID;
 - (id)initWithText:(id)arg1 originalMessage:(id)arg2 index:(long long)arg3;
+- (id)rejectionRanges;
+- (void)setFeatures:(id)arg1;
 
 @end
 

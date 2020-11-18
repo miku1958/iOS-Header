@@ -6,42 +6,23 @@
 
 #import <Foundation/NSObject.h>
 
-#import <VisualVoicemail/VMClientXPCProtocol-Protocol.h>
+@class VMVoicemailManager;
 
-@class NSString, NSXPCConnection;
-@protocol OS_dispatch_queue;
-
-@interface VMServiceClient : NSObject <VMClientXPCProtocol>
+@interface VMServiceClient : NSObject
 {
-    int _token;
-    long long _behaviorFlags;
-    NSXPCConnection *_clientConnection;
-    NSObject<OS_dispatch_queue> *_queue;
+    VMVoicemailManager *_voicemailManager;
 }
 
-@property long long behaviorFlags; // @synthesize behaviorFlags=_behaviorFlags;
-@property (strong, nonatomic) NSXPCConnection *clientConnection; // @synthesize clientConnection=_clientConnection;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (readonly) Class superclass;
-@property (nonatomic) int token; // @synthesize token=_token;
+@property (strong, nonatomic) VMVoicemailManager *voicemailManager; // @synthesize voicemailManager=_voicemailManager;
 
 + (id)sharedClient;
 - (void).cxx_destruct;
-- (void)_handleApplicationResumed:(id)arg1;
-- (void)_handleApplicationSuspended:(id)arg1;
-- (void)_handleXPCConnectionEstablished:(id)arg1;
-- (void)_handleXPCDisconnectNotification:(id)arg1;
 - (void)addObserver:(id)arg1 selector:(SEL)arg2 name:(id)arg3 object:(id)arg4;
-- (void)callAsynchronousMethod:(id)arg1 onObjectType:(id)arg2 withIdentifier:(id)arg3 andArguments:(id)arg4 reply:(CDUnknownBlockType)arg5;
-- (void)callAsynchronousMethod:(id)arg1 onObjectType:(id)arg2 withIdentifier:(id)arg3 andArguments:(id)arg4 reply:(CDUnknownBlockType)arg5 errorHandler:(CDUnknownBlockType)arg6;
-- (id)callSynchronousMethod:(id)arg1 onObjectType:(id)arg2 withIdentifier:(id)arg3 withArguments:(id)arg4;
 - (void)dealloc;
-- (void)handleMessage:(id)arg1;
+- (void)handleOnlineStatusChangedNotification:(id)arg1;
+- (void)handleSubscriptionStatusChangedNotification:(id)arg1;
+- (void)handleVoicemailsChangedNotification:(id)arg1;
 - (id)init;
-- (id)proxyObjectFromProxyDictionary:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)removeObserver:(id)arg1 name:(id)arg2 object:(id)arg3;
 - (id)sharedAccount;

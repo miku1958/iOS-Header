@@ -26,6 +26,7 @@
 - (void)_prepareGridForBounds:(struct CGRect)arg1;
 - (void)_prepareTilesForVisibleBounds:(struct CGRect)arg1 inBounds:(struct CGRect)arg2;
 - (id)_preparedTileForFrame:(struct CGRect)arg1;
+- (void)_setUsesTiledLayers:(BOOL)arg1 onlyHiding:(BOOL)arg2;
 - (void)dealloc;
 - (void)drawDirtyLayer:(id)arg1 intoContext:(struct CGContext *)arg2;
 - (id)init;
@@ -33,6 +34,7 @@
 - (void)renderInContext:(struct CGContext *)arg1;
 - (void)resumeTiling;
 - (void)setBounds:(struct CGRect)arg1;
+- (void)setContentsFormat:(id)arg1;
 - (void)setDrawsAsynchronously:(BOOL)arg1;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;
 - (void)suspendTiling;

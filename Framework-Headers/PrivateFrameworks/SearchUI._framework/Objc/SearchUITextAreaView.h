@@ -4,50 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <SearchUI/NUIContainerStackView.h>
 
-@class NSArray, NSLayoutConstraint, NSString, UIImageView, UILabel;
+#import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
 
-@interface SearchUITextAreaView : UIView
+@class NSMutableArray, NSString, SearchUITitleContainerView, UILabel;
+
+@interface SearchUITextAreaView : NUIContainerStackView <NUIContainerStackViewDelegate>
 {
-    UIView *_secondToLastView;
-    UIView *_lastView;
-    NSString *_reuseID;
-    UILabel *_titleLabel;
-    UILabel *_secondaryTitleLabel;
-    UIImageView *_secondaryImageView;
-    NSArray *_richTextFields;
+    unsigned long long _style;
+    SearchUITitleContainerView *_titleContainer;
+    NSMutableArray *_richTextFields;
     UILabel *_footnoteLabel;
-    UIImageView *_embeddedThumbnailView;
-    NSLayoutConstraint *_embeddedThumbnailAspectConstraint;
-    NSLayoutConstraint *_titleHeightConstraint;
 }
 
-@property (strong) NSLayoutConstraint *embeddedThumbnailAspectConstraint; // @synthesize embeddedThumbnailAspectConstraint=_embeddedThumbnailAspectConstraint;
-@property (strong) UIImageView *embeddedThumbnailView; // @synthesize embeddedThumbnailView=_embeddedThumbnailView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong) UILabel *footnoteLabel; // @synthesize footnoteLabel=_footnoteLabel;
-@property (strong) UIView *lastView; // @synthesize lastView=_lastView;
-@property (strong) NSString *reuseID; // @synthesize reuseID=_reuseID;
-@property (strong) NSArray *richTextFields; // @synthesize richTextFields=_richTextFields;
-@property (strong) UIView *secondToLastView; // @synthesize secondToLastView=_secondToLastView;
-@property (strong) UIImageView *secondaryImageView; // @synthesize secondaryImageView=_secondaryImageView;
-@property (strong) UILabel *secondaryTitleLabel; // @synthesize secondaryTitleLabel=_secondaryTitleLabel;
-@property (strong) NSLayoutConstraint *titleHeightConstraint; // @synthesize titleHeightConstraint=_titleHeightConstraint;
-@property (strong) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (readonly) unsigned long long hash;
+@property (strong) NSMutableArray *richTextFields; // @synthesize richTextFields=_richTextFields;
+@property unsigned long long style; // @synthesize style=_style;
+@property (readonly) Class superclass;
+@property (strong) SearchUITitleContainerView *titleContainer; // @synthesize titleContainer=_titleContainer;
 
-+ (id)_reuseIDForResult:(id)arg1 textAreaData:(id)arg2 formatter:(id)arg3;
-+ (id)reuseIDForData:(id)arg1 formatter:(id)arg2;
-+ (id)reuseIDForResult:(id)arg1 formatter:(id)arg2;
-+ (double)uiLabelTwoRowHeightForFont:(id)arg1;
++ (id)footNoteLabelFont;
 - (void).cxx_destruct;
-- (id)initWithResult:(id)arg1 style:(unsigned long long)arg2 formatter:(id)arg3;
-- (id)initWithTextAreaData:(id)arg1 style:(unsigned long long)arg2 formatter:(id)arg3;
-- (void)updateTextWidths;
-- (BOOL)updateWithResult:(id)arg1 formatter:(id)arg2;
-- (BOOL)updateWithTextAreaData:(id)arg1 formatter:(id)arg2;
-- (id)viewForFirstBaselineLayout;
-- (id)viewForLastBaselineLayout;
-- (id)viewForSecondToLastBaselineLayout;
+- (struct CGRect)containerStackView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
+- (struct UIEdgeInsets)containerStackView:(id)arg1 minimumSpacingAdjecentToArrangedSubview:(id)arg2;
+- (id)initWithStyle:(unsigned long long)arg1;
+- (BOOL)noFootNote;
+- (BOOL)noRichTextFields;
+- (void)updateWithResult:(id)arg1;
 
 @end
 

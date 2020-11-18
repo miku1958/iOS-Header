@@ -6,19 +6,19 @@
 
 #import <UIKit/UIView.h>
 
-@class CMKBottomBar, PLCropOverlayPreviewBottomBar, PLCropOverlayWallpaperBottomBar;
+@class PLCropOverlayPreviewBottomBar, PLCropOverlayWallpaperBottomBar;
 
 @interface PLCropOverlayBottomBar : UIView
 {
     BOOL _playingVideo;
     BOOL _inPopover;
     long long _style;
-    CMKBottomBar *_cameraBottomBar;
+    UIView *_cameraBottomBar;
     PLCropOverlayPreviewBottomBar *_previewBottomBar;
     PLCropOverlayWallpaperBottomBar *_wallpaperBottomBar;
 }
 
-@property (strong, nonatomic) CMKBottomBar *cameraBottomBar; // @synthesize cameraBottomBar=_cameraBottomBar;
+@property (strong, nonatomic) UIView *cameraBottomBar; // @synthesize cameraBottomBar=_cameraBottomBar;
 @property (nonatomic, getter=isInPopover) BOOL inPopover; // @synthesize inPopover=_inPopover;
 @property (nonatomic, getter=isPlayingVideo) BOOL playingVideo; // @synthesize playingVideo=_playingVideo;
 @property (strong, nonatomic) PLCropOverlayPreviewBottomBar *previewBottomBar; // @synthesize previewBottomBar=_previewBottomBar;

@@ -7,6 +7,7 @@
 #import <NanoAppRegistry/NSObject-Protocol.h>
 
 @protocol NARWorkspaceService <NSObject>
+- (oneway void)getWorkspaceInfoIncludingHiddenApps:(BOOL)arg1 completion:(void (^)(NARWorkspaceInfo *))arg2;
 - (oneway void)getWorkspaceInfoWithCompletion:(void (^)(NARWorkspaceInfo *))arg1;
 @end
 

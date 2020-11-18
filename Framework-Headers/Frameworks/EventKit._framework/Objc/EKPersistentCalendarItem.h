@@ -77,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (void)addRecurrenceRule:(id)arg1;
 - (int)attendeeCount;
 - (void)deleteSelfAndDetached;
+- (id)exportToICS;
 - (id)externalModificationTag;
 - (BOOL)hasAttachments;
 - (id)init;

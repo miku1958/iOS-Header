@@ -7,13 +7,11 @@
 #import <FuseUI/MusicEntityAbstractLockupView.h>
 
 #import <FuseUI/MusicEntityContentDescriptorViewConfiguring-Protocol.h>
-#import <FuseUI/MusicEntityViewDownloadInformationObserving-Protocol.h>
-#import <FuseUI/RUTrackDownloadViewDelegate-Protocol.h>
 
-@class MPUHalfTintedTransportButton, MusicEntityViewContentDescriptor, NSString, RUTrackDownloadView, UIButton, UIImageView;
+@class MPUHalfTintedTransportButton, MusicEntityViewContentDescriptor, NSString, UIButton, UIImageView;
 @protocol MusicEntityHorizontalLockupViewDelegate, MusicEntityValueProviding;
 
-@interface MusicEntityHorizontalLockupView : MusicEntityAbstractLockupView <RUTrackDownloadViewDelegate, MusicEntityContentDescriptorViewConfiguring, MusicEntityViewDownloadInformationObserving>
+@interface MusicEntityHorizontalLockupView : MusicEntityAbstractLockupView <MusicEntityContentDescriptorViewConfiguring>
 {
     MPUHalfTintedTransportButton *_addButton;
     UIImageView *_availableOfflineBadgeImageView;
@@ -21,7 +19,6 @@
     UIImageView *_explicitBadgeImageView;
     BOOL _isAvailableOffline;
     BOOL _isContainedWithinSplitViewPrimary;
-    RUTrackDownloadView *_buyButton;
     struct {
         unsigned int didSelectAddButton:1;
         unsigned int didSelectContextualActionsButton:1;
@@ -32,7 +29,6 @@
     id<MusicEntityHorizontalLockupViewDelegate> _delegate;
     UIButton *_contextualActionsButton;
     double _textContentLeadingInset;
-    struct MusicEntityDownloadInformation _downloadInformation;
 }
 
 @property (readonly, nonatomic) struct CGSize artworkSize;
@@ -41,7 +37,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MusicEntityHorizontalLockupViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) struct MusicEntityDownloadInformation downloadInformation; // @synthesize downloadInformation=_downloadInformation;
 @property (strong, nonatomic) id<MusicEntityValueProviding> entityValueProvider;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
@@ -59,15 +54,11 @@
 - (void)_addButtonTouchUpInside:(id)arg1;
 - (void)_contentDescriptorDidChange:(id)arg1;
 - (void)_contextualActionsButtonTapped:(id)arg1;
-- (void)_entityDisabledDidChange;
-- (void)_handleArtworkViewTapped;
-- (void)_handlePlayButtonTappedWithAction:(unsigned long long)arg1;
 - (BOOL)_shouldLayoutAsEditing;
 - (BOOL)_shouldShowPlayButton;
 - (void)dealloc;
 - (void)layoutSubviews;
 - (void)music_inheritedLayoutInsetsDidChange;
-- (void)trackDownloadViewWillTransition:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

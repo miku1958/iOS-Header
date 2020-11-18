@@ -57,6 +57,7 @@
 - (id)attribute:(id)arg1 atIndex:(unsigned long long)arg2 effectiveRange:(struct _NSRange *)arg3;
 - (id)attribute:(id)arg1 atIndex:(unsigned long long)arg2 longestEffectiveRange:(struct _NSRange *)arg3 inRange:(struct _NSRange)arg4;
 - (id)attributesAtIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
+- (void)dealloc;
 - (struct CGPoint)defaultTextContainerOriginForRect:(struct CGRect)arg1;
 - (void)drawTextContainer:(id)arg1 range:(struct _NSRange)arg2 withRect:(struct CGRect)arg3 graphicsContext:(struct CGContext *)arg4 baselineMode:(BOOL)arg5 scrollable:(BOOL)arg6 padding:(double)arg7;
 - (void)drawTextContainer:(id)arg1 withRect:(struct CGRect)arg2 graphicsContext:(struct CGContext *)arg3 baselineMode:(BOOL)arg4 scrollable:(BOOL)arg5 padding:(double)arg6;

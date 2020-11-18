@@ -14,13 +14,18 @@
 @property (readonly, nonatomic) GEOActiveTileGroup *activeTileGroup;
 @property (nonatomic) id<GEOResourceManifestServerProxyDelegate> delegate;
 
+- (void)activateResourceScale:(int)arg1;
+- (void)activateResourceScenario:(int)arg1;
 - (NSString *)authToken;
 - (void)closeConnection;
 - (GEOResourceManifestConfiguration *)configuration;
+- (void)deactivateResourceScale:(int)arg1;
+- (void)deactivateResourceScenario:(int)arg1;
 - (void)forceUpdate:(void (^)(NSError *))arg1;
 - (void)getResourceManifestWithHandler:(void (^)(GEOResourceManifestDownload *, NSError *))arg1;
 - (id)initWithDelegate:(id<GEOResourceManifestServerProxyDelegate>)arg1 configuration:(GEOResourceManifestConfiguration *)arg2;
 - (void)openConnection;
+- (void)performOpportunisticResourceLoading;
 - (oneway void)resetActiveTileGroup;
 - (NSObject<OS_dispatch_queue> *)serverQueue;
 - (oneway void)setActiveTileGroupIdentifier:(NSNumber *)arg1;

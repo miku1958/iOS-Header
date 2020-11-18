@@ -10,10 +10,10 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (CDStruct_31142d93)groundPointFromScreenPoint:(struct CGPoint)arg1;
-- (void)zoomToLevel:(double)arg1 withPoint:(CDStruct_31142d93)arg2;
+- (void)zoomToLevel:(double)arg1 withPoint:(Matrix_e4837a69)arg2;
 
 @end
 

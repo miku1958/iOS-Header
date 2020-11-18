@@ -29,7 +29,10 @@
 @property (nonatomic) BOOL sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
 @property (readonly) Class superclass;
 
++ (id)_attachmentDownloadErrorLocalizedString;
 + (BOOL)_attachmentIsViewable:(id)arg1;
++ (id)_cannotOpenAttachmentLocalizedString;
++ (id)_okLocalizedString;
 + (id)cellControllersForAttachments:(id)arg1 givenExistingControllers:(id)arg2;
 - (void).cxx_destruct;
 - (void)_clearDownloadID;

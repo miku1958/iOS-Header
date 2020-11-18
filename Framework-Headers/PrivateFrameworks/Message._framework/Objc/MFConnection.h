@@ -6,12 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSMutableString, NSString, _MFSocket;
+#import <Message/MFDiagnosticsGenerator-Protocol.h>
+
+@class MFConnectionSettings, NSArray, NSString, _MFSocket;
 @protocol MFSASLSecurityLayer;
 
-@interface MFConnection : NSObject
+@interface MFConnection : NSObject <MFDiagnosticsGenerator>
 {
     id<MFSASLSecurityLayer> _securityLayer;
+    MFConnectionSettings *_connectionSettings;
     _MFSocket *_socket;
     double _lastUsedTime;
     char *_buffer;
@@ -22,10 +25,7 @@
     struct z_stream_s *_deflater;
     struct z_stream_s *_inflater;
     char *_zbuffer;
-    NSData *_logData;
-    unsigned int _dontLogReads;
     unsigned int _readBytesNotLogged;
-    NSMutableString *_readBytesToLog;
     unsigned int _isFetching:1;
     unsigned int _allowFallbacks:1;
     unsigned int _compressionEnabled:1;
@@ -33,13 +33,17 @@
 
 @property (readonly, nonatomic) NSArray *authenticationMechanisms;
 @property (readonly, nonatomic) NSArray *capabilities;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasBytesAvailable;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isCellularConnection;
 @property (nonatomic) BOOL isFetching;
 @property (readonly, nonatomic) BOOL isValid;
 @property (readonly, nonatomic) double lastUsedTime;
 @property (readonly, nonatomic) BOOL loginDisabled;
 @property (readonly, nonatomic) NSString *securityProtocol;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL usesOpportunisticSockets;
 
 + (void)flushLog;
@@ -47,30 +51,31 @@
 + (id)logActivityOnHosts;
 + (id)logActivityOnPorts;
 + (BOOL)logAllSocketActivity;
-+ (void)logBytes:(const char *)arg1 length:(int)arg2;
 + (id)logClasses;
++ (void)logConnection:(id)arg1 type:(long long)arg2 data:(id)arg3;
 + (void)readLoggingDefaults;
 + (void)setLogActivityOnHosts:(id)arg1;
 + (void)setLogActivityOnPorts:(id)arg1;
 + (void)setLogAllSocketActivity:(BOOL)arg1;
 + (void)setLogClasses:(id)arg1;
 + (BOOL)shouldTryFallbacksAfterError:(id)arg1;
-- (void)_setupNetworkLogging;
 - (void)_setupSocketWithSettings:(id)arg1;
 - (BOOL)authenticateUsingAccount:(id)arg1;
 - (BOOL)authenticateUsingAccount:(id)arg1 authenticator:(id)arg2;
 - (BOOL)connectUsingAccount:(id)arg1;
 - (BOOL)connectUsingFallbacksForAccount:(id)arg1;
 - (BOOL)connectUsingSettings:(id)arg1;
+- (id)connectionSettings;
+- (id)copyDiagnosticInformation;
 - (void)dealloc;
-- (id)description;
 - (void)disconnect;
-- (void)enableReadLogging:(BOOL)arg1;
 - (void)enableThroughputMonitoring:(BOOL)arg1;
+- (id)init;
 - (void)logReadChars:(const char *)arg1 length:(unsigned long long)arg2;
 - (BOOL)readBytesIntoData:(id)arg1 desiredLength:(unsigned long long)arg2;
 - (BOOL)readLineIntoData:(id)arg1;
 - (void)setAllowsFallbacks:(BOOL)arg1;
+- (void)setConnectionSettings:(id)arg1;
 - (void)setDesiredReadBufferLength:(unsigned long long)arg1;
 - (BOOL)startCompression;
 - (BOOL)startTLSForAccount:(id)arg1;

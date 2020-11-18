@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_moveItemAtURL:(id)arg1 toURL:(id)arg2 failIfSrcMissing:(BOOL)arg3 error:(id *)arg4;
 - (id)_realPathForURL:(id)arg1 allowNonExistentPathComponents:(BOOL)arg2;
 - (id)_realPathWhatExistsInPath:(id)arg1;
+- (BOOL)_removeACLAtPath:(const char *)arg1 isDir:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)_traverseDirectory:(id)arg1 error:(id *)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (BOOL)_validateSymlink:(id)arg1 withStartingDepth:(unsigned int)arg2 andEndingDepth:(unsigned int *)arg3;
 - (BOOL)bundleAtURLIsPlaceholder:(id)arg1;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)installTypeForBundle:(id)arg1 error:(id *)arg2;
 - (BOOL)itemDoesNotExistAtURL:(id)arg1;
 - (BOOL)itemExistsAtURL:(id)arg1;
+- (BOOL)itemExistsAtURL:(id)arg1 error:(id *)arg2;
 - (BOOL)markBundleAsPlaceholder:(id)arg1 withError:(id *)arg2;
 - (BOOL)moveItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (BOOL)moveItemIfExistsAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
@@ -38,7 +40,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)removeItemAtURL:(id)arg1 error:(id *)arg2;
 - (BOOL)setDataProtectionClassOfItemAtURL:(id)arg1 toClass:(int)arg2 ifPredicate:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (BOOL)setInstallType:(id)arg1 onBundle:(id)arg2 error:(id *)arg3;
-- (BOOL)standardizeOwnershipAtURL:(id)arg1 toUID:(unsigned int)arg2 GID:(unsigned int)arg3 validateSymlinks:(BOOL)arg4 error:(id *)arg5;
+- (BOOL)setUniqueInstallID:(id)arg1 onBundle:(id)arg2 error:(id *)arg3;
+- (BOOL)standardizeOwnershipAtURL:(id)arg1 toUID:(unsigned int)arg2 GID:(unsigned int)arg3 validateSymlinks:(BOOL)arg4 removeACLs:(BOOL)arg5 error:(id *)arg6;
+- (id)uniqueInstallIDForBundle:(id)arg1 error:(id *)arg2;
 - (id)urlsForItemsInDirectoryAtURL:(id)arg1 ignoringSymlinks:(BOOL)arg2 error:(id *)arg3;
 
 @end

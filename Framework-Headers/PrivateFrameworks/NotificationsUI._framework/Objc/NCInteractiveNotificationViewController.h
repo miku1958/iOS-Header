@@ -23,6 +23,7 @@
 
 + (id)_exportedInterface;
 + (id)_remoteViewControllerInterface;
+- (void).cxx_destruct;
 - (void)_didChangeRevealPercent:(double)arg1;
 - (void)_getActionContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_getActionTitlesWithCompletion:(CDUnknownBlockType)arg1;
@@ -39,7 +40,6 @@
 - (id)actionContext;
 - (id)actionTitles;
 - (double)bottomOverhangHeight;
-- (void)dealloc;
 - (void)didChangeRevealPercent:(double)arg1;
 - (void)dismissWithContext:(id)arg1;
 - (void)handleActionAtIndex:(unsigned long long)arg1;

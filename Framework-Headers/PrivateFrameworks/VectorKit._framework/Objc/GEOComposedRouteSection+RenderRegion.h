@@ -9,6 +9,5 @@
 @interface GEOComposedRouteSection (RenderRegion)
 - (id)pathsForRenderRegion:(id)arg1 inOverlay:(id)arg2;
 - (id)pathsForRenderRegion:(id)arg1 inOverlay:(id)arg2 shouldSnapToTransit:(BOOL)arg3 verifySnapping:(BOOL)arg4;
-- (void)updateLabelExternalObjectsInRenderRegion:(id)arg1 previousSection:(id)arg2 nextSection:(id)arg3 labelExternalObjectsModerator:(struct LabelExternalObjectsModerator *)arg4 nodeIDToStyleAttributeMap:(unordered_map_4f9963f1 *)arg5;
 @end
 

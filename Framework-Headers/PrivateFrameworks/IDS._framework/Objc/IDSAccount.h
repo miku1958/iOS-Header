@@ -22,6 +22,7 @@
 @property (readonly, strong, nonatomic) NSArray *devices;
 @property (readonly, strong, nonatomic) NSString *displayName;
 @property (readonly, nonatomic) BOOL isActive;
+@property (readonly, nonatomic) BOOL isUserDisabled;
 @property (strong, nonatomic) NSString *loginID;
 @property (readonly, strong, nonatomic) NSArray *nearbyDevices;
 @property (readonly, nonatomic) NSDate *nextRegistrationDate;

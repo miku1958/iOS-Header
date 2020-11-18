@@ -55,6 +55,9 @@
 @property BOOL _forcesNewConnections; // @dynamic _forcesNewConnections;
 @property BOOL _infersDiscretionaryFromOriginatingClient; // @dynamic _infersDiscretionaryFromOriginatingClient;
 @property (copy) NSString *_ledBellyServiceIdentifier; // @dynamic _ledBellyServiceIdentifier;
+@property double _longLivedConnectionCacheCellPurgeTimeout; // @dynamic _longLivedConnectionCacheCellPurgeTimeout;
+@property double _longLivedConnectionCachePurgeTimeout; // @dynamic _longLivedConnectionCachePurgeTimeout;
+@property BOOL _onBehalfOfPairedDevice; // @dynamic _onBehalfOfPairedDevice;
 @property (copy) NSDictionary *_overriddenDelegateOptions; // @dynamic _overriddenDelegateOptions;
 @property BOOL _overridesBackgroundSessionAutoRedirect; // @dynamic _overridesBackgroundSessionAutoRedirect;
 @property BOOL _performsEVCertCheck; // @dynamic _performsEVCertCheck;

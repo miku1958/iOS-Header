@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class SGRealtimeEvent, SGRecordId;
+@class NSDate, NSString, SGRealtimeEvent, SGRecordId;
 
 @protocol _SGSuggestionsServiceEventsConfirmRejectProtocol
 - (BOOL)confirmEvent:(SGRealtimeEvent *)arg1 error:(id *)arg2;
@@ -15,5 +15,7 @@
 - (void)rejectEvent:(SGRealtimeEvent *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (BOOL)rejectEventByRecordId:(SGRecordId *)arg1 error:(id *)arg2;
 - (void)rejectEventByRecordId:(SGRecordId *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (void)waitForEventWithIdentifier:(NSString *)arg1 toAppearInEventStoreWithCompletion:(void (^)(BOOL, NSError *))arg2;
+- (void)waitForEventWithIdentifier:(NSString *)arg1 toAppearInEventStoreWithLastModificationDate:(NSDate *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 @end
 

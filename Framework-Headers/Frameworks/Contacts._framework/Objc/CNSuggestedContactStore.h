@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithSuggestionsService:(id)arg1;
 - (id)originForSuggestion:(id)arg1 error:(id *)arg2;
+- (id)requestAccessForEntityType:(long long)arg1;
 - (id)unifiedContactsMatchingPredicate:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
 
 @end

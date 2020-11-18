@@ -19,6 +19,7 @@
     NSString *_modelClass;
     unsigned long long _platform;
     NSString *_recordID;
+    NSString *_machineID;
     NSDate *_recordDate;
     BOOL _hasRandomSecret;
     BOOL _hasNumericSecret;
@@ -27,17 +28,24 @@
     unsigned long long _remainingAttempts;
     NSString *_deviceColor;
     NSString *_enclosureColor;
+    NSString *_serialNumber;
+    BOOL _isCurrentDevice;
     NSString *_localizedDescription;
+    unsigned long long _recoveryStatus;
+    NSNumber *_coolOffPeriod;
 }
 
+@property (strong, nonatomic) NSNumber *coolOffPeriod; // @synthesize coolOffPeriod=_coolOffPeriod;
 @property (copy, nonatomic) NSString *deviceColor; // @synthesize deviceColor=_deviceColor;
 @property (copy, nonatomic) NSString *enclosureColor; // @synthesize enclosureColor=_enclosureColor;
 @property (nonatomic) BOOL hasNumericSecret; // @synthesize hasNumericSecret=_hasNumericSecret;
 @property (nonatomic) BOOL hasRandomSecret; // @synthesize hasRandomSecret=_hasRandomSecret;
+@property (nonatomic) BOOL isCurrentDevice; // @synthesize isCurrentDevice=_isCurrentDevice;
 @property (nonatomic) BOOL isUsingMultipleiCSC; // @synthesize isUsingMultipleiCSC=_isUsingMultipleiCSC;
 @property (readonly, nonatomic) unsigned long long localSecretType;
 @property (copy, nonatomic) NSString *localizedDescription; // @synthesize localizedDescription=_localizedDescription;
 @property (copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
+@property (copy, nonatomic) NSString *machineID; // @synthesize machineID=_machineID;
 @property (copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property (copy, nonatomic) NSString *modelClass; // @synthesize modelClass=_modelClass;
 @property (copy, nonatomic) NSString *modelVersion; // @synthesize modelVersion=_modelVersion;
@@ -45,7 +53,9 @@
 @property (nonatomic) unsigned long long platform; // @synthesize platform=_platform;
 @property (copy, nonatomic) NSDate *recordDate; // @synthesize recordDate=_recordDate;
 @property (copy, nonatomic) NSString *recordID; // @synthesize recordID=_recordID;
+@property (nonatomic) unsigned long long recoveryStatus; // @synthesize recoveryStatus=_recoveryStatus;
 @property (nonatomic) unsigned long long remainingAttempts; // @synthesize remainingAttempts=_remainingAttempts;
+@property (copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

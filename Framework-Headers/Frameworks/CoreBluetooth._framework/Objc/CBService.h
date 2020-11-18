@@ -25,7 +25,7 @@
 @property (readonly, nonatomic) CBPeripheral *peripheral; // @synthesize peripheral=_peripheral;
 @property (readonly, nonatomic) NSNumber *startHandle; // @synthesize startHandle=_startHandle;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)handleCharacteristicsDiscovered:(id)arg1;
 - (id)handleIncludedServicesDiscovered:(id)arg1;

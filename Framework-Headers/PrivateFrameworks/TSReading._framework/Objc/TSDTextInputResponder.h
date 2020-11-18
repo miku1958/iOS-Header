@@ -6,12 +6,13 @@
 
 #import <UIKit/UIResponder.h>
 
+#import <TSReading/UIResponderStandardEditActions-Protocol.h>
 #import <TSReading/UITextInput-Protocol.h>
 
 @class NSDictionary, NSObject, NSString, TSDTextInputTokenizer, TSDTextPosition, UITextPosition, UITextRange, UIView;
 @protocol TSDTextInput, UITextInputDelegate, UITextInputTokenizer;
 
-@interface TSDTextInputResponder : UIResponder <UITextInput>
+@interface TSDTextInputResponder : UIResponder <UITextInput, UIResponderStandardEditActions>
 {
     NSObject<TSDTextInput> *_editor;
     TSDTextInputTokenizer *_tokenizer;
@@ -42,8 +43,10 @@
 @property (strong, nonatomic) id<TSDTextInput> editor; // @synthesize editor=_editor;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
 @property (readonly, nonatomic) UITextPosition *endOfDocument;
+@property (readonly, nonatomic) BOOL hasText;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<UITextInputDelegate> inputDelegate; // @synthesize inputDelegate=_inputDelegate;
+@property (readonly, nonatomic) id insertDictationResultPlaceholder;
 @property (nonatomic) long long keyboardAppearance;
 @property (nonatomic) long long keyboardType;
 @property (readonly, nonatomic) UITextRange *markedTextRange;
@@ -57,6 +60,7 @@
 @property (nonatomic) long long selectionAffinity;
 @property (nonatomic) long long spellCheckingType;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *textContentType;
 @property (readonly, nonatomic) UIView *textInputView;
 @property (readonly, nonatomic) id<UITextInputTokenizer> tokenizer;
 
@@ -95,7 +99,6 @@
 - (struct CGRect)firstRectForRange:(id)arg1;
 - (void)forceDelayedResponderChange;
 - (void)forwardInvocation:(id)arg1;
-- (BOOL)hasText;
 - (id)initWithNextResponder:(id)arg1;
 - (id)inputAccessoryView;
 - (id)inputView;

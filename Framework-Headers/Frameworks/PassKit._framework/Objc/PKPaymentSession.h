@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_queue;
 
@@ -17,7 +17,7 @@
 
 + (id)startContactlessInterfaceSessionWithCompletion:(CDUnknownBlockType)arg1;
 + (id)startInAppSessionWithCompletion:(CDUnknownBlockType)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)invalidateSession;
 - (void)invalidateSessionWithCompletion:(CDUnknownBlockType)arg1;
 

@@ -41,13 +41,14 @@
     NSString *_playlistTrackID;
     BOOL _audioPlaylistEnabled;
     double _audioVolume;
+    BOOL _audioPlaylistLoops;
     BOOL _isReady;
     NSMutableArray *_readyNotificationBlocks;
     NSRecursiveLock *_readyRecursiveLock;
 }
 
 @property (readonly) OFUIView *actionView;
-@property (nonatomic) OKAudioPlaylist *audioPlaylist; // @synthesize audioPlaylist=_audioPlaylist;
+@property (strong, nonatomic) OKAudioPlaylist *audioPlaylist; // @synthesize audioPlaylist=_audioPlaylist;
 @property (nonatomic) BOOL audioPlaylistEnabled; // @synthesize audioPlaylistEnabled=_audioPlaylistEnabled;
 @property (strong, nonatomic) OKPageViewController *currentPageViewController; // @synthesize currentPageViewController=_currentPageViewController;
 @property (readonly, copy) NSString *debugDescription;
@@ -74,8 +75,8 @@
 - (void)applyLayoutSettings;
 - (void)applySettings;
 - (void)applySettingsIfNeeded;
-- (void)audioFinishedPlayingWithURL:(id)arg1;
-- (void)audioStartedPlayingWithURL:(id)arg1;
+- (void)audioFinishedPlayingWithAVAsset:(id)arg1;
+- (void)audioStartedPlayingWithAVAsset:(id)arg1;
 - (void)becomeReady;
 - (void)beginDuckingToLevel:(double)arg1 fadeDuration:(double)arg2;
 - (void)beginFadingWithDuration:(double)arg1;
@@ -140,6 +141,7 @@
 - (void)setSettingAudioPlaylistLoops:(BOOL)arg1;
 - (void)setSettingAudioRequiredDuckLevel:(float)arg1;
 - (void)setSettingAudioVolume:(float)arg1;
+- (void)setSettingBackgroundColor:(id)arg1;
 - (void)setSettingCanPerformActionScript:(id)arg1;
 - (void)setSettingDidAppearActionScript:(id)arg1;
 - (void)setSettingDidDisappearActionScript:(id)arg1;
@@ -150,6 +152,7 @@
 - (void)setSettingWillDisappearActionScript:(id)arg1;
 - (void)setUserSettingObject:(id)arg1 forKey:(id)arg2;
 - (float)settingAudioVolume;
+- (id)settingBackgroundColor;
 - (struct CGRect)settingFrame;
 - (id)settingObjectForKey:(id)arg1;
 - (BOOL)supportsReadiness;

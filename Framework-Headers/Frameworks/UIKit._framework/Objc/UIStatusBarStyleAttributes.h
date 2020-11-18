@@ -6,21 +6,27 @@
 
 #import <Foundation/NSObject.h>
 
+#import <UIKit/NSCopying-Protocol.h>
+
 @class UIStatusBarForegroundStyleAttributes, UIStatusBarStyleRequest;
 
 __attribute__((visibility("hidden")))
-@interface UIStatusBarStyleAttributes : NSObject
+@interface UIStatusBarStyleAttributes : NSObject <NSCopying>
 {
     UIStatusBarStyleRequest *_request;
     UIStatusBarForegroundStyleAttributes *_foregroundStyle;
+    BOOL _pulsingAnimationEnabled;
 }
+
+@property (nonatomic) double foregroundAlpha; // @dynamic foregroundAlpha;
+@property (nonatomic, getter=isPulsingAnimationEnabled) BOOL pulsingAnimationEnabled; // @synthesize pulsingAnimationEnabled=_pulsingAnimationEnabled;
 
 - (void).cxx_destruct;
 - (BOOL)areTopCornersRounded;
 - (id)backgroundColorWithTintColor:(id)arg1;
 - (id)backgroundImageName;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (int)cornerStyle;
-- (double)foregroundAlpha;
 - (id)foregroundStyle;
 - (double)glowAnimationDuration;
 - (double)heightForMetrics:(long long)arg1;
@@ -29,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithRequest:(id)arg1;
 - (BOOL)isDoubleHeight;
+- (BOOL)isLockScreen;
 - (BOOL)isTranslucent;
 - (BOOL)isTransparent;
 - (long long)legibilityStyle;

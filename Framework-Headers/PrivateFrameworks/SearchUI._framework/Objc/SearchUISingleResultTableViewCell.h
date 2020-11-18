@@ -6,60 +6,53 @@
 
 #import <SearchUI/SearchUITableViewCell.h>
 
-@class NSArray, NSLayoutConstraint, SearchUITextAreaView, UIImageView, UIView;
-@protocol SearchUIResultPrivate;
+#import <SearchUI/CNAvatarViewDelegate-Protocol.h>
+#import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
 
-@interface SearchUISingleResultTableViewCell : SearchUITableViewCell
+@class CNAvatarView, NSMutableDictionary, NSString, NUIContainerStackView, SFSearchResult, SearchUIAccessoryViewController, SearchUIForceTouchGestureRecognizer, SearchUITextAreaView, SearchUIThumbnailView;
+
+@interface SearchUISingleResultTableViewCell : SearchUITableViewCell <NUIContainerStackViewDelegate, CNAvatarViewDelegate>
 {
-    id<SearchUIResultPrivate> _result;
-    UIView *_container;
-    NSLayoutConstraint *_containerLeadingInset;
-    NSLayoutConstraint *_containerTrailingInset;
-    NSLayoutConstraint *_centerAuxiliaryViewConstraint;
-    UIView *_thumbnailView;
-    UIView *_thumbnailContainer;
-    NSArray *_thumbnailViewMaxSizeConstraints;
-    NSLayoutConstraint *_thumbnailViewAspectConstraint;
+    SFSearchResult *_result;
+    NUIContainerStackView *_container;
+    SearchUIThumbnailView *_thumbnailView;
     SearchUITextAreaView *_textAreaView;
-    UIView *_textContainer;
-    NSLayoutConstraint *_textAreaPinLeadingConstraint;
-    NSLayoutConstraint *_textAreaPinTrailingConstraint;
-    UIView *_accessoryContainer;
-    UIView *_actionButton;
-    UIImageView *_accessoryThumbnailView;
-    unsigned long long _style;
+    NSMutableDictionary *_accessoryViewControllers;
+    SearchUIAccessoryViewController *_accessoryViewControllerForResult;
+    CNAvatarView *_contactView;
+    SearchUIForceTouchGestureRecognizer *_forceTouchRecognizer;
 }
 
-@property (strong) UIView *accessoryContainer; // @synthesize accessoryContainer=_accessoryContainer;
-@property (strong) UIImageView *accessoryThumbnailView; // @synthesize accessoryThumbnailView=_accessoryThumbnailView;
-@property (strong) UIView *actionButton; // @synthesize actionButton=_actionButton;
-@property (strong) NSLayoutConstraint *centerAuxiliaryViewConstraint; // @synthesize centerAuxiliaryViewConstraint=_centerAuxiliaryViewConstraint;
-@property (strong) UIView *container; // @synthesize container=_container;
-@property (strong) NSLayoutConstraint *containerLeadingInset; // @synthesize containerLeadingInset=_containerLeadingInset;
-@property (strong) NSLayoutConstraint *containerTrailingInset; // @synthesize containerTrailingInset=_containerTrailingInset;
-@property (strong) id<SearchUIResultPrivate> result; // @synthesize result=_result;
-@property unsigned long long style; // @synthesize style=_style;
-@property (strong) NSLayoutConstraint *textAreaPinLeadingConstraint; // @synthesize textAreaPinLeadingConstraint=_textAreaPinLeadingConstraint;
-@property (strong) NSLayoutConstraint *textAreaPinTrailingConstraint; // @synthesize textAreaPinTrailingConstraint=_textAreaPinTrailingConstraint;
+@property (strong) SearchUIAccessoryViewController *accessoryViewControllerForResult; // @synthesize accessoryViewControllerForResult=_accessoryViewControllerForResult;
+@property (strong) NSMutableDictionary *accessoryViewControllers; // @synthesize accessoryViewControllers=_accessoryViewControllers;
+@property (strong) CNAvatarView *contactView; // @synthesize contactView=_contactView;
+@property (strong) NUIContainerStackView *container; // @synthesize container=_container;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong) SearchUIForceTouchGestureRecognizer *forceTouchRecognizer; // @synthesize forceTouchRecognizer=_forceTouchRecognizer;
+@property (readonly) unsigned long long hash;
+@property (strong) SFSearchResult *result; // @synthesize result=_result;
+@property (readonly) Class superclass;
 @property (strong) SearchUITextAreaView *textAreaView; // @synthesize textAreaView=_textAreaView;
-@property (strong) UIView *textContainer; // @synthesize textContainer=_textContainer;
-@property (strong) UIView *thumbnailContainer; // @synthesize thumbnailContainer=_thumbnailContainer;
-@property (strong) UIView *thumbnailView; // @synthesize thumbnailView=_thumbnailView;
-@property (strong) NSLayoutConstraint *thumbnailViewAspectConstraint; // @synthesize thumbnailViewAspectConstraint=_thumbnailViewAspectConstraint;
-@property (strong) NSArray *thumbnailViewMaxSizeConstraints; // @synthesize thumbnailViewMaxSizeConstraints=_thumbnailViewMaxSizeConstraints;
+@property (strong) SearchUIThumbnailView *thumbnailView; // @synthesize thumbnailView=_thumbnailView;
 
-+ (id)reuseCharacteristicsIDForResult:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearPurgeableMemory;
-- (void)defaultAction;
-- (id)initWithResult:(id)arg1 style:(unsigned long long)arg2;
+- (BOOL)arrangedViewMustCenter:(id)arg1;
+- (struct UIEdgeInsets)computeLayoutMargins;
+- (id)contactInlineActionViewController;
+- (struct CGRect)containerStackView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
+- (struct UIEdgeInsets)containerStackView:(id)arg1 minimumSpacingAdjecentToArrangedSubview:(id)arg2;
+- (struct CGSize)containerStackView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
+- (id)initWithResult:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
-- (struct CGSize)maxThumbnailSize;
+- (id)presentingViewControllerForAvatarView:(id)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)stackViewDidInvalidateIntrinsicContentSize:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)updateThumbnailViewForResult:(id)arg1;
+- (void)updateForceTouchRecognizerWithResult:(id)arg1;
+- (void)updateThumbnailWithResult:(id)arg1;
 - (void)updateWithResult:(id)arg1;
-- (id)viewForActionButton:(id)arg1 style:(unsigned long long)arg2 result:(id)arg3;
-- (id)viewForThumbnail;
 
 @end
 

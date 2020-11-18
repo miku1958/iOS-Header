@@ -30,7 +30,7 @@
 - (void)didLock;
 - (void)endInterruption;
 - (id)init;
-- (void)playSound:(int)arg1;
+- (void)playSystemSound:(int)arg1;
 - (void)setCanChangeRingtoneWithButtons:(id)arg1 specifier:(id)arg2;
 - (void)setPlayKeyboardSound:(id)arg1 specifier:(id)arg2;
 - (void)setPlayLockSound:(id)arg1 specifier:(id)arg2;

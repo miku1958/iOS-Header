@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIViewServiceInterface : NSObject <NSXPCConnectionDelegate>
 {
-    int _terminationStateLock;
+    struct os_unfair_lock_s _terminationStateLock;
     NSError *_terminationError;
     CDUnknownBlockType _terminationHandler;
     BOOL _isTerminated;

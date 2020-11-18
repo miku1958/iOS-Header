@@ -6,17 +6,20 @@
 
 #import <Metal/MTLDevice-Protocol.h>
 
-@class MTLComputePipelineDescriptor, NSArray, NSString;
-@protocol MTLComputePipelineState;
+@class MTLCommandQueueDescriptor, MTLComputePipelineDescriptor, MTLTextureDescriptor, NSArray, NSObject, NSString;
+@protocol MTLCommandQueue, MTLComputePipelineState, MTLFunction, MTLTexture, MTLTextureLayout, OS_dispatch_data;
 
 @protocol MTLDeviceSPI <MTLDevice>
 
+@property (readonly) unsigned long long dedicatedMemorySize;
+@property (readonly) unsigned long long deviceLinearReadOnlyTextureAlignmentBytes;
+@property (readonly) unsigned long long deviceLinearTextureAlignmentBytes;
 @property (readonly) unsigned long long doubleFPConfig;
 @property (readonly) unsigned long long featureProfile;
 @property (readonly) unsigned long long halfFPConfig;
 @property (readonly) unsigned long long iosurfaceReadOnlyTextureAlignmentBytes;
 @property (readonly) unsigned long long iosurfaceTextureAlignmentBytes;
-@property (readonly) const CDStruct_1f7139fa *limits;
+@property (readonly) const CDStruct_75a535a2 *limits;
 @property (readonly) unsigned long long linearTextureAlignmentBytes;
 @property (readonly) unsigned long long maxBufferLength;
 @property (readonly) unsigned long long maxColorAttachments;
@@ -26,12 +29,15 @@
 @property (readonly) unsigned long long maxComputeSamplers;
 @property (readonly) unsigned long long maxComputeTextures;
 @property (readonly) unsigned long long maxComputeThreadgroupMemory;
+@property (readonly) unsigned long long maxComputeThreadgroupMemoryAlignmentBytes;
 @property (readonly) unsigned long long maxFragmentBuffers;
 @property (readonly) unsigned long long maxFragmentInlineDataSize;
 @property (readonly) unsigned long long maxFragmentSamplers;
 @property (readonly) unsigned long long maxFragmentTextures;
 @property (readonly) unsigned long long maxFramebufferStorageBits;
+@property (readonly) unsigned long long maxFunctionConstantIndices;
 @property (readonly) unsigned long long maxInterpolants;
+@property (readonly) unsigned long long maxInterpolatedComponents;
 @property (readonly) float maxLineWidth;
 @property (readonly) float maxPointSize;
 @property (readonly) unsigned long long maxTextureDepth3D;
@@ -53,21 +59,30 @@
 @property (readonly) unsigned long long minBufferNoCopyAlignmentBytes;
 @property (readonly) unsigned long long minConstantBufferAlignmentBytes;
 @property BOOL shaderDebugInfoCaching;
+@property (readonly) unsigned long long sharedMemorySize;
 @property (readonly) unsigned long long singleFPConfig;
 
 + (void)registerDevices;
 - (void)compilerPropagatesThreadPriority:(BOOL)arg1;
+- (BOOL)deviceOrFeatureProfileSupportsFeatureSet:(unsigned long long)arg1;
+- (BOOL)deviceSupportsFeatureSet:(unsigned long long)arg1;
 - (CDStruct_c0454aff)libraryCacheStats;
+- (id<MTLCommandQueue>)newCommandQueueWithDescriptor:(MTLCommandQueueDescriptor *)arg1;
 - (CDStruct_c0454aff)pipelineCacheStats;
 - (BOOL)supportsSampleCount:(unsigned long long)arg1;
 - (void)unloadShaderCaches;
 
 @optional
 - (NSString *)familyName;
+- (void *)getShaderCacheKeys;
 - (BOOL)mapShaderSampleBufferWithBuffer:(CDStruct_32a7f38a *)arg1 capacity:(unsigned long long)arg2 size:(unsigned long long)arg3;
 - (void)newComputePipelineStateWithDescriptor:(MTLComputePipelineDescriptor *)arg1 completionHandler:(void (^)(id<MTLComputePipelineState>, NSError *))arg2;
 - (id<MTLComputePipelineState>)newComputePipelineStateWithDescriptor:(MTLComputePipelineDescriptor *)arg1 error:(id *)arg2;
 - (id<MTLComputePipelineState>)newComputePipelineStateWithImageFilterFunctionsSPI:(NSArray *)arg1 imageFilterFunctionInfo:(const CDStruct_dbc1e4aa *)arg2 error:(id *)arg3;
+- (id<MTLFunction>)newFunctionWithGLIR:(void *)arg1 functionType:(unsigned long long)arg2;
+- (id<MTLFunction>)newFunctionWithGLIR:(void *)arg1 inputsDescription:(NSObject<OS_dispatch_data> *)arg2 functionType:(unsigned long long)arg3;
+- (id<MTLTextureLayout>)newTextureLayoutWithDescriptor:(MTLTextureDescriptor *)arg1 isHeapOrBufferBacked:(BOOL)arg2;
+- (id<MTLTexture>)newTextureWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 descriptor:(MTLTextureDescriptor *)arg3 deallocator:(void (^)(void *, unsigned long long))arg4;
 - (NSString *)productName;
 - (void)unmapShaderSampleBuffer;
 - (NSString *)vendorName;

@@ -18,6 +18,7 @@
     BOOL _supportsTimeRangeFilterOnInbox;
     BOOL _supportsAutoSchedule;
     BOOL _supportsPrivateComments;
+    BOOL _supportsLikenessPropagation;
     BOOL _supportsSharing;
     BOOL _supportsSharingNoScheduling;
     BOOL _supportsCalendarProxy;
@@ -53,6 +54,7 @@
 @property (nonatomic) BOOL supportsChecksumming; // @synthesize supportsChecksumming=_supportsChecksumming;
 @property (nonatomic) BOOL supportsExtendedCalendarQuery; // @synthesize supportsExtendedCalendarQuery=_supportsExtendedCalendarQuery;
 @property (nonatomic) BOOL supportsInboxAvailability; // @synthesize supportsInboxAvailability=_supportsInboxAvailability;
+@property (nonatomic) BOOL supportsLikenessPropagation; // @synthesize supportsLikenessPropagation=_supportsLikenessPropagation;
 @property (nonatomic) BOOL supportsManagedAttachments; // @synthesize supportsManagedAttachments=_supportsManagedAttachments;
 @property (nonatomic) BOOL supportsPrincipalPropertySearch; // @synthesize supportsPrincipalPropertySearch=_supportsPrincipalPropertySearch;
 @property (nonatomic) BOOL supportsPrivateComments; // @synthesize supportsPrivateComments=_supportsPrivateComments;

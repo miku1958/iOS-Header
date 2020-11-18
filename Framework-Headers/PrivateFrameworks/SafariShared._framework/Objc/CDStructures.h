@@ -229,6 +229,12 @@ typedef struct Vector<double, 0, WTF::CrashOnOverflow, 16> {
     unsigned int m_size;
 } Vector_23cb8338;
 
+typedef struct Vector<int, 0, WTF::CrashOnOverflow, 16> {
+    int *m_buffer;
+    unsigned int m_capacity;
+    unsigned int m_size;
+} Vector_3b5d2a9f;
+
 typedef struct duration<long long, std::__1::ratio<1, 1000>> {
     long long __rep_;
 } duration_6174cf92;

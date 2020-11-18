@@ -36,7 +36,6 @@
 
 - (id)_createSceneClientWithIdentity:(id)arg1;
 - (void)_invalidateSceneClientWithIdentity:(id)arg1;
-- (id)_newWorkspaceServer;
 - (id)_queue;
 - (void)_queue_enumerateScenes:(CDUnknownBlockType)arg1;
 - (void)_queue_fireInvalidationAction;
@@ -45,6 +44,7 @@
 - (void)_queue_willInvalidateAllScenes;
 - (Class)_sceneClassForIdentity:(id)arg1;
 - (id)_server;
+- (Class)_serverClass;
 - (void)beginTransaction;
 - (void)dealloc;
 - (void)endTransaction;
@@ -52,6 +52,7 @@
 - (id)registerHost:(id)arg1;
 - (void)registerInvalidationAction:(id)arg1;
 - (void)sendActions:(id)arg1;
+- (void)server:(id)arg1 handleConnectEvent:(id)arg2;
 - (void)server:(id)arg1 handleCreateSceneRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)server:(id)arg1 handleDestroySceneRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)unregisterHost:(id)arg1;

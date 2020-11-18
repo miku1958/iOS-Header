@@ -26,7 +26,7 @@
 #import <PhotosUI/UIViewControllerPreviewingDelegate_Private-Protocol.h>
 #import <PhotosUI/_UISettingsKeyObserver-Protocol.h>
 
-@class NSDictionary, NSIndexPath, NSMutableArray, NSMutableSet, NSString, PHCachingImageManager, PLCloudSharedAlbum, PLCloudSharedComment, PLDateRangeFormatter, PLManagedAlbumList, PLManagedAsset, PUAlbumStreamActivity, PUFeedAssetContainerList, PUFeedSectionInfosManager, PUFeedViewControllerRestorableState, PUFeedViewControllerSpec, PUOneUpPresentationHelper, PUPhotoBrowserOneUpPresentationAdaptor, PUPhotoPinchGestureRecognizer, PUPhotosPickerViewController, PUScrollViewSpeedometer, UIBarButtonItem, UICollectionView, UITapGestureRecognizer, _UIContentUnavailableView;
+@class NSDictionary, NSIndexPath, NSMutableArray, NSMutableSet, NSString, PHCachingImageManager, PLCloudSharedAlbum, PLCloudSharedComment, PLManagedAlbumList, PLManagedAsset, PUAlbumStreamActivity, PUFeedAssetContainerList, PUFeedSectionInfosManager, PUFeedViewControllerRestorableState, PUFeedViewControllerSpec, PUOneUpPresentationHelper, PUPhotoBrowserOneUpPresentationAdaptor, PUPhotoPinchGestureRecognizer, PUPhotosPickerViewController, PUScrollViewSpeedometer, PXFeedDateFormatter, UIBarButtonItem, UICollectionView, UITapGestureRecognizer, _UIContentUnavailableView;
 @protocol UIViewControllerPreviewing;
 
 @interface PUFeedViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIPopoverPresentationControllerDelegate, PUFeedCollectionViewLayoutDelegate, PUFeedSectionInfosManagerDelegate, PUPhotoBrowserZoomTransitionDelegate, PUFeedImageCellDelegate, PUFeedPlayerCellDelegate, PUFeedTextCellDelegate, PUFeedInvitationCellDelegate, UIGestureRecognizerDelegate, PUAlbumStreamActivityDelegate, _UISettingsKeyObserver, PUScrollViewSpeedometerDelegate, PUOneUpPresentationHelperDelegate, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, PLCloudFeedNavigating, PLNavigableCloudFeedViewController>
@@ -49,7 +49,7 @@
     PHCachingImageManager *__cachingImageManager;
     NSMutableArray *__lastPreheatIndexPathList;
     NSMutableArray *__lastPreheatIndexPathInfoList;
-    PLDateRangeFormatter *__dateRangeFormatter;
+    PXFeedDateFormatter *__dateFormatter;
     PUScrollViewSpeedometer *__collectionViewSpeedometer;
     long long __sizeTransitionState;
     PUFeedViewControllerRestorableState *__rotationLastRestorableState;
@@ -99,7 +99,7 @@
 @property (strong, nonatomic, setter=_setCollectionViewSpeedometer:) PUScrollViewSpeedometer *_collectionViewSpeedometer; // @synthesize _collectionViewSpeedometer=__collectionViewSpeedometer;
 @property (strong, nonatomic, setter=_setCurrentCollectionView:) UICollectionView *_currentCollectionView; // @synthesize _currentCollectionView=__currentCollectionView;
 @property (nonatomic, setter=_setCurrentCollectionViewType:) long long _currentCollectionViewType; // @synthesize _currentCollectionViewType=__currentCollectionViewType;
-@property (readonly, nonatomic) PLDateRangeFormatter *_dateRangeFormatter; // @synthesize _dateRangeFormatter=__dateRangeFormatter;
+@property (readonly, nonatomic) PXFeedDateFormatter *_dateFormatter; // @synthesize _dateFormatter=__dateFormatter;
 @property (strong, nonatomic, setter=_setEmptyPlaceholderView:) _UIContentUnavailableView *_emptyPlaceholderView; // @synthesize _emptyPlaceholderView=__emptyPlaceholderView;
 @property (readonly, nonatomic) PUFeedSectionInfosManager *_feedSectionInfosManager; // @synthesize _feedSectionInfosManager=__feedSectionInfosManager;
 @property (nonatomic, getter=_isFlowDirectionReversed, setter=_setFlowDirectionReversed:) BOOL _flowDirectionReversed; // @synthesize _flowDirectionReversed=__flowDirectionReversed;
@@ -182,7 +182,7 @@
 - (id)_createOneUpPhotosDataSource;
 - (id)_currentRestorableState;
 - (id)_dateForSectionWithInfo:(id)arg1;
-- (void)_dateRangeFormatterChanged:(id)arg1;
+- (void)_dateFormatterChanged:(id)arg1;
 - (long long)_defaultMaximumScrollRegimeForQualityImageFormats;
 - (void)_didTapCommentButtonInFeedCell:(id)arg1;
 - (void)_didTapSectionFooterFeedCell:(id)arg1;
@@ -194,7 +194,6 @@
 - (void)_enumerateCenterAssetsInRestorableState:(id)arg1 inCollectionView:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)_expandWindowOfLoadedSectionInfos;
 - (void)_getDescriptionPhrase:(out id *)arg1 streamAffordanceLabel:(out id *)arg2 actionText:(out id *)arg3 buttonType:(long long *)arg4 forSections:(id)arg5 inCollectionView:(id)arg6;
-- (void)_getPhotoBrowserController:(out id *)arg1 transition:(out id *)arg2 withOptions:(long long)arg3;
 - (id)_groupIDForSectionWithInfo:(id)arg1;
 - (void)_handlePinch:(id)arg1;
 - (void)_handlePlaceholderAction;
@@ -323,7 +322,6 @@
 - (id)oneUpPresentationHelperScrollView:(id)arg1;
 - (BOOL)oneUpPresentationHelperShouldLeaveContentOnSecondScreen:(id)arg1;
 - (id)oneUpPresentationHelperViewController:(id)arg1;
-- (void)performCommitTransitionForPreviewViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (id)ppt_currentCollectionView;
 - (long long)preferredStatusBarUpdateAnimation;

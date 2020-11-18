@@ -10,8 +10,10 @@
 
 @interface NSObject (FMCoreAdditions)
 
+@property (readonly, strong, nonatomic) NSString *fm_logID;
 @property (readonly, strong, nonatomic) NSString *logID;
 
+- (id)fm_nullToNil;
 - (id)nullToNil;
 @end
 

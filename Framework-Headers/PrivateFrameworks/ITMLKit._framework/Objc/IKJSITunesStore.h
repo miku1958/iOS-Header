@@ -16,7 +16,7 @@
     NSNumber *_lastAccountDSID;
     NSDictionary *_lastKnownStatusDictionary;
     SSMetricsController *_metricsController;
-    int _bagOperationLock;
+    struct os_unfair_lock_s _bagOperationLock;
     NSString *_storeFrontSuffix;
     id _ssAccountStoreChangedToken;
     id _isURLBagDidLoadToken;

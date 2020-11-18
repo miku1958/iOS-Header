@@ -22,6 +22,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_cancelLocalizedString;
++ (id)_detachAllLocalizedString;
++ (id)_detachFutureLocalizedString;
 + (id)newAlertControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)presentDeleteAlertWithOptions:(unsigned long long)arg1 viewController:(id)arg2 stringForDeleteButton:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 + (id)presentDeleteAlertWithOptions:(unsigned long long)arg1 viewController:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;

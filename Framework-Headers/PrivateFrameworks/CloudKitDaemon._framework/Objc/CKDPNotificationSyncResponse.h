@@ -10,7 +10,6 @@
 
 @class NSData, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPNotificationSyncResponse : PBCodable <NSCopying>
 {
     NSData *_changeID;
@@ -27,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL moreAvailable; // @synthesize moreAvailable=_moreAvailable;
 @property (strong, nonatomic) NSMutableArray *pushMessages; // @synthesize pushMessages=_pushMessages;
 
++ (Class)pushMessageType;
 - (void).cxx_destruct;
 - (void)addPushMessage:(id)arg1;
 - (void)clearPushMessages;

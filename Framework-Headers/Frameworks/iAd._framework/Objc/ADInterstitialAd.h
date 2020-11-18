@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <iAd/ADAdRecipient-Protocol.h>
 
@@ -18,14 +18,16 @@
     UIViewController *_internalPresentingViewController;
     BOOL _loaded;
     BOOL _actionInProgress;
+    BOOL _dimmingEnabled;
     BOOL _canLoadMoreThanOnce;
     BOOL _hasLoadedFirstAd;
-    BOOL _dimmingEnabled;
     int _creativeType;
+    int _state;
     long long _options;
+    ADInterstitialAdPresentationViewController *_presentationViewController;
+    CDUnknownBlockType _stateChangedBlock;
     ADInterstitialView *_interstitialView;
     ADAdSpace *_adSpace;
-    ADInterstitialAdPresentationViewController *_presentationViewController;
 }
 
 @property (nonatomic, getter=isActionInProgress) BOOL actionInProgress; // @synthesize actionInProgress=_actionInProgress;
@@ -47,13 +49,17 @@
 @property (readonly, nonatomic) long long options; // @synthesize options=_options;
 @property (strong, nonatomic) ADInterstitialAdPresentationViewController *presentationViewController; // @synthesize presentationViewController=_presentationViewController;
 @property (readonly, nonatomic) UIViewController *presentingViewController;
+@property (nonatomic) int state; // @synthesize state=_state;
+@property (copy, nonatomic) CDUnknownBlockType stateChangedBlock; // @synthesize stateChangedBlock=_stateChangedBlock;
 @property (readonly) Class superclass;
 
 - (BOOL)_considerClosingAdSpace;
 - (void)_dismissModalInterstitial;
+- (void)_notifyDelegateOfBannerLoad;
 - (void)_presentFromViewController:(id)arg1;
 - (void)bannerTappedAtPoint:(struct CGPoint)arg1;
 - (void)cancelAction;
+- (void)changeBannerViewState:(int)arg1;
 - (int)clickAction;
 - (id)context;
 - (void)dealloc;
@@ -63,6 +69,7 @@
 - (void)pauseBannerMedia;
 - (void)presentFromViewController:(id)arg1;
 - (BOOL)presentInView:(id)arg1;
+- (void)privacyButtonWasTapped;
 - (void)resumeBannerMedia;
 - (void)serverBannerViewDidFailToReceiveAdWithError:(id)arg1;
 - (void)serverBannerViewDidLoad;

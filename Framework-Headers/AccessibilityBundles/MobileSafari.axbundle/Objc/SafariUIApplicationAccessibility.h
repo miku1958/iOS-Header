@@ -14,6 +14,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityActiveURL;
+- (BOOL)_accessibilityAlternateActionForURL:(id)arg1;
+- (BOOL)_accessibilityCanDisplayMultipleControllers;
 - (BOOL)_accessibilityLoadURL:(id)arg1;
 - (id)_accessibilityRetrieveWebViewForSearchResults;
 - (BOOL)_accessibilityWebViewIsLoading;

@@ -85,8 +85,10 @@
 - (void)beginDownloadForResource:(id)arg1 clientBundleID:(id)arg2 highPriority:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)beginDownloadForResource:(id)arg1 clientBundleID:(id)arg2 highPriority:(BOOL)arg3 proposedTaskIdentifier:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)beginDownloadForResource:(id)arg1 highPriority:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)beginInMemoryDownloadOfResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)beginPullChangeSessionWithKnownLibraryVersion:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)beginPushChangeSessionWithKnownLibraryVersion:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)checkHasBackgroundDownloadOperationsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)closeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)cloudCacheGetDescriptionForRecordWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cloudCacheGetDescriptionForRecordWithIdentifier:(id)arg1 related:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -94,6 +96,7 @@
 - (id)currentSession;
 - (void)deactivateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (void)deleteResources:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteResourcesIfSafe:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)disableMingling;
 - (void)disableSynchronizationWithReason:(id)arg1;
@@ -110,11 +113,14 @@
 - (void)getStatusForComponents:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initForManagement;
 - (id)initWithClientLibraryBaseURL:(id)arg1 cloudLibraryStateStorageURL:(id)arg2 cloudLibraryResourceStorageURL:(id)arg3 libraryIdentifier:(id)arg4;
+- (void)noteClientIsBeginningSignificantWork;
+- (void)noteClientIsEndingSignificantWork;
 - (void)noteClientIsInBackground;
 - (void)noteClientIsInForeground;
 - (void)noteClientReceivedNotificationOfServerChanges;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)publishResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)removeCloudLibraryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)resetCacheWithOption:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resetStatus;

@@ -6,47 +6,51 @@
 
 #import <objc/NSObject.h>
 
+@class _CFXPreferences;
+
 __attribute__((visibility("hidden")))
 @interface CFPrefsSource : NSObject
 {
+    _CFXPreferences *_containingPreferences;
     struct __CFDictionary *_dict;
     struct __CFArray *_observers;
-    unsigned int _generationCount:63;
-    unsigned int _isSearchList:1;
-    CDUnion_694411ff *shmemEntry;
+    _Atomic long long _generationCount;
+    _Atomic union *shmemEntry;
     struct _opaque_pthread_mutex_t *_lock;
-    CDUnion_694411ff lastKnownShmemState;
+    CDUnion_f9025cb3 lastKnownShmemState;
+    BOOL _isSearchList;
 }
 
-+ (void)withNamedVolatileSourceForIdentifier:(struct __CFString *)arg1 perform:(CDUnknownBlockType)arg2;
-+ (void)withSourceForIdentifier:(struct __CFString *)arg1 user:(struct __CFString *)arg2 byHost:(BOOL)arg3 container:(struct __CFString *)arg4 cloud:(BOOL)arg5 perform:(CDUnknownBlockType)arg6;
 - (void)_notifyObserversOfChangeFromValuesForKeys:(id)arg1 toValuesForKeys:(id)arg2;
 - (void)addPreferencesObserver:(id)arg1;
+- (void)alreadylocked_addPreferencesObserver:(id)arg1;
 - (void)alreadylocked_clearCache;
 - (struct __CFDictionary *)alreadylocked_copyDictionary;
 - (struct __CFArray *)alreadylocked_copyKeyList;
 - (void *)alreadylocked_copyValueForKey:(struct __CFString *)arg1;
 - (long long)alreadylocked_generationCount;
+- (void)alreadylocked_removePreferencesObserver:(id)arg1;
 - (BOOL)alreadylocked_requestNewData;
 - (void)alreadylocked_setValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3;
 - (void)alreadylocked_updateObservingRemoteChanges;
 - (struct __CFString *)container;
 - (struct __CFDictionary *)copyDictionary;
 - (struct __CFArray *)copyKeyList;
+- (struct __CFString *)copyOSLogDescription;
 - (void *)copyValueForKey:(struct __CFString *)arg1;
-- (id)createRequestNewContentMessageForDaemon:(BOOL)arg1;
+- (id)createRequestNewContentMessageForDaemon:(int)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)didChangeValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3;
 - (struct __CFString *)domainIdentifier;
-- (void)finalize;
 - (void)fullCloudSynchronizeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (long long)generationCount;
 - (void)handleReply:(id)arg1 toRequestNewDataMessage:(id)arg2 onConnection:(id)arg3 retryCount:(int)arg4 error:(BOOL *)arg5;
-- (id)init;
+- (id)initWithContainingPreferences:(id)arg1;
 - (BOOL)isByHost;
 - (BOOL)isVolatile;
 - (void)lock;
+- (void)lockObservers;
 - (BOOL)managed;
 - (void)mergeIntoDictionary:(struct __CFDictionary *)arg1;
 - (void)removeAllValues;
@@ -60,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)setValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 removeValuesForKeys:(const struct __CFString **)arg4 count:(long long)arg5;
 - (BOOL)synchronize;
 - (void)unlock;
+- (void)unlockObservers;
 - (struct __CFString *)userIdentifier;
 - (void)willChangeValuesForKeys:(const struct __CFString **)arg1 count:(long long)arg2;
 

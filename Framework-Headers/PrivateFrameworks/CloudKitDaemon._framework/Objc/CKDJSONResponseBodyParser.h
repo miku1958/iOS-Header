@@ -4,36 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
-
-#import <CloudKitDaemon/CKDResponseBodyParser-Protocol.h>
-
-@class NSError, NSMutableData, NSString;
-@protocol OS_dispatch_queue;
+#import <CloudKitDaemon/CKDResponseBodyParser.h>
 
 __attribute__((visibility("hidden")))
-@interface CKDJSONResponseBodyParser : NSObject <CKDResponseBodyParser>
+@interface CKDJSONResponseBodyParser : CKDResponseBodyParser
 {
-    CDUnknownBlockType _objectParsedBlock;
-    CDUnknownBlockType _logParsedObjectBlock;
-    NSError *_parserError;
-    NSObject<OS_dispatch_queue> *_parseQueue;
-    NSMutableData *_parserData;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (copy, nonatomic) CDUnknownBlockType logParsedObjectBlock; // @synthesize logParsedObjectBlock=_logParsedObjectBlock;
-@property (copy, nonatomic) CDUnknownBlockType objectParsedBlock; // @synthesize objectParsedBlock=_objectParsedBlock;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *parseQueue; // @synthesize parseQueue=_parseQueue;
-@property (strong, nonatomic) NSMutableData *parserData; // @synthesize parserData=_parserData;
-@property (strong, nonatomic) NSError *parserError; // @synthesize parserError=_parserError;
-@property (readonly) Class superclass;
-
-- (void).cxx_destruct;
 - (void)finishWithCompletion:(CDUnknownBlockType)arg1;
-- (id)init;
 - (void)processData:(id)arg1;
 
 @end

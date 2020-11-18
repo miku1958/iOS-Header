@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, WKActionSheetAssistant;
+@class NSString;
 
 @interface _WKElementAction : NSObject
 {
     struct RetainPtr<NSString> _title;
     CDUnknownBlockType _actionHandler;
     CDUnknownBlockType _dismissalHandler;
-    WKActionSheetAssistant *_defaultActionSheetAssistant;
+    struct WeakObjCPtr<WKActionSheetAssistant> _defaultActionSheetAssistant;
     long long _type;
 }
 

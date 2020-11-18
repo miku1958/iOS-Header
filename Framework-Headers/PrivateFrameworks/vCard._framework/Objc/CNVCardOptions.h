@@ -38,6 +38,7 @@
 @property BOOL usePhotoReferencesIfAvailable; // @synthesize usePhotoReferencesIfAvailable=_usePhotoReferencesIfAvailable;
 
 + (id)optionsFromPreferences;
+- (void).cxx_destruct;
 
 @end
 

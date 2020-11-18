@@ -13,15 +13,13 @@
 {
     NSString *_description;
     NEHelper *_helper;
-    BOOL _hasVPNAPIEntitlement;
     BOOL _hasReadPermission;
     BOOL _isVPNPublicAPI;
+    BOOL _isVPNPrivateAPI;
     BOOL _isNEHelper;
+    BOOL _hasVPNAPIEntitlement;
     int _changedNotifyToken;
     NSString *_pluginType;
-    NSUUID *_userUUID;
-    NSString *_configFile;
-    id<NEConfigurationManagerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_queue;
     NSDictionary *_currentIndex;
     NSObject<OS_dispatch_queue> *_changedQueue;
@@ -31,6 +29,10 @@
     NSKeyedUnarchiver *_decoder;
     long long _generation;
     NSData *_SCPreferencesSignature;
+    NSUUID *_userUUID;
+    NSString *_configFile;
+    id<NEConfigurationManagerDelegate> _delegate;
+    long long _configurationChangeSource;
 }
 
 @property (strong) NSData *SCPreferencesSignature; // @synthesize SCPreferencesSignature=_SCPreferencesSignature;
@@ -38,6 +40,7 @@
 @property int changedNotifyToken; // @synthesize changedNotifyToken=_changedNotifyToken;
 @property (strong) NSObject<OS_dispatch_queue> *changedQueue; // @synthesize changedQueue=_changedQueue;
 @property (copy, nonatomic) NSString *configFile; // @synthesize configFile=_configFile;
+@property long long configurationChangeSource; // @synthesize configurationChangeSource=_configurationChangeSource;
 @property (strong) NSDictionary *currentIndex; // @synthesize currentIndex=_currentIndex;
 @property (strong) NSKeyedUnarchiver *decoder; // @synthesize decoder=_decoder;
 @property (strong) id<NEConfigurationManagerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -47,6 +50,7 @@
 @property (readonly) NEHelper *helper;
 @property (copy) CDUnknownBlockType incomingMessageHandler;
 @property BOOL isNEHelper; // @synthesize isNEHelper=_isNEHelper;
+@property BOOL isVPNPrivateAPI; // @synthesize isVPNPrivateAPI=_isVPNPrivateAPI;
 @property BOOL isVPNPublicAPI; // @synthesize isVPNPublicAPI=_isVPNPublicAPI;
 @property (strong) NSMutableDictionary *loadedConfigurations; // @synthesize loadedConfigurations=_loadedConfigurations;
 @property (strong) NSMutableDictionary *loadedIndex; // @synthesize loadedIndex=_loadedIndex;
@@ -76,7 +80,7 @@
 - (void)fetchUpgradeInfoForPluginType:(id)arg1 completionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)filterIndexWithFilter:(id)arg1;
 - (void)getCurrentIndexWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)handleApplicationsRemoved:(id)arg1 pluginTypesRemoved:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)handleApplicationsRemoved:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)handleFileRemovedWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handlePluginTypesRemoved:(id)arg1 configuration:(id)arg2 vpn:(id)arg3 updateSCPreferences:(struct __SCPreferences *)arg4;
 - (id)init;
@@ -100,8 +104,8 @@
 - (id)removeConfigurationFromDisk:(id)arg1 updateSCPreferences:(struct __SCPreferences *)arg2;
 - (BOOL)resetKeychainItemsAfterProtocolChange:(id)arg1 newConfiguration:(id)arg2;
 - (void)saveConfiguration:(id)arg1 withCompletionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)saveConfigurationToDisk:(id)arg1 currentSignature:(id)arg2 userUUID:(id)arg3 completionQueue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)saveConfigurationToDisk:(id)arg1 updateSCPreferences:(struct __SCPreferences *)arg2 currentSignature:(id)arg3 userUUID:(id)arg4 notifyNow:(BOOL)arg5;
+- (void)saveConfigurationToDisk:(id)arg1 currentSignature:(id)arg2 userUUID:(id)arg3 isUpgrade:(BOOL)arg4 completionQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (id)saveConfigurationToDisk:(id)arg1 updateSCPreferences:(struct __SCPreferences *)arg2 currentSignature:(id)arg3 userUUID:(id)arg4 notifyNow:(BOOL)arg5 isUpgrade:(BOOL)arg6;
 - (void)sendRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (void)setChangedQueue:(id)arg1 andHandler:(CDUnknownBlockType)arg2;
 - (void)syncWithSystemConfigurationWithAppNameCallback:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;

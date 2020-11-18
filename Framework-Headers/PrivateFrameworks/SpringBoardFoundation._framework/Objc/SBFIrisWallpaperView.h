@@ -49,14 +49,15 @@
 - (void)_setupContentView;
 - (BOOL)_setupContentViewForMode:(long long)arg1;
 - (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 cacheGroup:(id)arg3 wallpaperVideoURL:(id)arg4 stillTimeInVideo:(double)arg5 staticImageOptions:(unsigned long long)arg6 variant:(long long)arg7 prewireMemory:(BOOL)arg8 useRewindPlaybackStyle:(BOOL)arg9;
 - (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 variant:(long long)arg3;
-- (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 wallpaperVideoURL:(id)arg3 stillTimeInVideo:(double)arg4 treatWallpaper:(BOOL)arg5 variant:(long long)arg6 prewireMemory:(BOOL)arg7 useRewindPlaybackStyle:(BOOL)arg8;
 - (id)irisGestureRecognizer;
 - (void)playerViewGestureRecognizerDidChange:(id)arg1;
 - (void)playerViewIsInteractingDidChange:(id)arg1;
 - (void)playerViewPlaybackStateDidChange:(id)arg1;
 - (void)switchToIrisMode:(long long)arg1;
 - (id)videoPlayerForPlayerView:(id)arg1;
+- (long long)wallpaperType;
 
 @end
 

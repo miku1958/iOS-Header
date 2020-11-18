@@ -13,26 +13,26 @@
 
 @interface SKUIItemListTableViewController : UITableViewController <SKUIItemCollectionDelegate>
 {
-    SKUIClientContext *_clientContext;
-    id<SKUIItemListTableDelegate> _delegate;
     BOOL _delegateWantsCanRemove;
     BOOL _delegateWantsDidRemove;
     BOOL _delegateWantsWillDisplay;
     BOOL _didLoadMore;
     NSMutableIndexSet *_hiddenIconIndexSet;
-    struct CGSize _imageBoundingSize;
     SKUIItemArtworkContext *_artworkContext;
     SKUIItemCollectionController *_itemCollectionController;
-    SKUIItemList *_itemList;
     SSVLoadURLOperation *_loadMoreOperation;
+    BOOL _requestedLoadMore;
     BOOL _loadsMoreItems;
+    BOOL _suspended;
+    id<SKUIItemListTableDelegate> _delegate;
+    SKUIClientContext *_clientContext;
+    SKUIItemList *_itemList;
     NSOperationQueue *_operationQueue;
     double _rowHeight;
     long long _selectionStyle;
     long long _separatorStyle;
-    BOOL _suspended;
     SKUIUber *_uber;
-    BOOL _requestedLoadMore;
+    struct CGSize _imageBoundingSize;
 }
 
 @property (strong, nonatomic) SKUIItemArtworkContext *artworkContext; // @synthesize artworkContext=_artworkContext;
@@ -58,8 +58,6 @@
 - (void).cxx_destruct;
 - (void)_finishLoadMoreOperationWithItems:(id)arg1 error:(id)arg2;
 - (id)_itemCollectionController;
-- (id)_itemListCellForTableView:(id)arg1 indexPath:(id)arg2;
-- (id)_loadMoreCellForTableView:(id)arg1 indexPath:(id)arg2;
 - (void)_loadRemainingItemsWithPriority:(long long)arg1;
 - (void)addItems:(id)arg1;
 - (void)dealloc;
@@ -79,7 +77,6 @@
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)setItemArtworkContext:(id)arg1;
 - (void)setItemCellClass:(Class)arg1;
-- (BOOL)shouldCacheAheadWhenIdleForItemCollectionController:(id)arg1;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
@@ -91,6 +88,7 @@
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)unhideIcons;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (struct _NSRange)visibleItemRangeForItemCollectionController:(id)arg1;
 
 @end

@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) NSString *deviceName;
 
 + (struct OpaqueFigEndpointPicker *)copySystemVideoPicker;
++ (id)iTunesAudioContext;
 + (id)outputContext;
 + (BOOL)outputContextExistsWithRemoteOutputDevice;
 + (void)resetOutputDeviceForAllOutputContexts;
@@ -30,6 +31,7 @@
 - (void)_removeFigEndpointPickerNotifications;
 - (id)_weakReference;
 - (int)applicationProcessID;
+- (id)associatedAudioDeviceID;
 - (id)contextUUID;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

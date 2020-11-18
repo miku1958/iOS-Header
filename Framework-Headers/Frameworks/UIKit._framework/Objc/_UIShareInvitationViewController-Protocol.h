@@ -6,18 +6,25 @@
 
 #import <UIKit/NSObject-Protocol.h>
 
-@class NSString, UIColor, UIImage, _UIDocumentPickerNSURLWrapper;
+@class CKContainerID, CKShare, NSArray, NSData, NSString, UIColor, UIImage, UITraitCollection, _UIDocumentPickerNSURLWrapper;
 
 @protocol _UIShareInvitationViewController <NSObject>
-- (void)_prepareForDisplayWithCompletion:(void (^)(void))arg1;
+- (void)_prepareForDisplayWithCompletion:(void (^)(struct CGSize))arg1;
 - (void)_setAppName:(NSString *)arg1;
 - (void)_setAuxiliaryActionTitle:(NSString *)arg1;
+- (void)_setAvailablePermissions:(unsigned long long)arg1;
+- (void)_setCloudKitShare:(CKShare *)arg1 containerID:(CKContainerID *)arg2;
+- (void)_setCloudKitThumbnail:(NSData *)arg1 title:(NSString *)arg2 type:(NSString *)arg3;
 - (void)_setCollaborationUIEnabled:(BOOL)arg1;
 - (void)_setHeaderActionTitle:(NSString *)arg1;
 - (void)_setHeaderSubtitle:(NSString *)arg1;
 - (void)_setInitialHeaderSubtitle:(NSString *)arg1;
+- (void)_setLegacyAppearance:(BOOL)arg1;
 - (void)_setMailSubject:(NSString *)arg1 template:(NSString *)arg2;
 - (void)_setMessageTemplate:(NSString *)arg1;
+- (void)_setOverrideTraitCollection:(UITraitCollection *)arg1;
+- (void)_setParticipantDetails:(NSArray *)arg1;
+- (void)_setShowAddPeople:(BOOL)arg1;
 - (void)_setThumbnail:(UIImage *)arg1;
 - (void)_setTintColor:(UIColor *)arg1;
 - (void)_setURLWrapper:(_UIDocumentPickerNSURLWrapper *)arg1;

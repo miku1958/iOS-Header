@@ -10,8 +10,98 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct SGMBannerDisplayApp_ {
+    unsigned long long _field1;
+};
+
+struct SGMBannerExtractionType_ {
+    unsigned long long _field1;
+};
+
+struct SGMContactDetailType_ {
+    unsigned long long _field1;
+};
+
+struct SGMContactDetailUsedApp_ {
+    unsigned long long _field1;
+};
+
+struct SGMDetailExtractionType_ {
+    unsigned long long _field1;
+};
+
+struct SGMEventCategory_ {
+    unsigned long long _field1;
+};
+
+struct SGMEventDateAdj_ {
+    unsigned long long _field1;
+};
+
+struct SGMEventDurationAdj_ {
+    unsigned long long _field1;
+};
+
+struct SGMEventExtractionType_ {
+    unsigned long long _field1;
+};
+
+struct SGMEventState_ {
+    unsigned long long _field1;
+};
+
+struct SGMEventStringAdj_ {
+    unsigned long long _field1;
+};
+
+struct SGMInteractionIgnoredReason_ {
+    unsigned long long _field1;
+};
+
+struct SGMNLEventExtraction_ {
+    unsigned long long _field1;
+};
+
+struct SGMNLEventLinkInteractionResult_ {
+    unsigned long long _field1;
+};
+
+struct SGMSINameClassification_ {
+    unsigned long long _field1;
+};
+
+struct SGMSIPatternType_ {
+    unsigned long long _field1;
+};
+
+struct SGMTypeSafeBool_ {
+    unsigned long long _field1;
+};
+
+struct SGUnixTimestamp_ {
+    double secondsFromUnixEpoch;
+};
+
 struct _NSRange {
     unsigned long long location;
     unsigned long long length;
 };
+
+struct _opaque_pthread_mutex_t {
+    long long __sig;
+    char __opaque[56];
+};
+
+struct atomic_flag {
+    _Atomic BOOL _Value;
+};
+
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
 

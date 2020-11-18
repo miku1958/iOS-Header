@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @property (copy) CDUnknownBlockType dismissHandler; // @synthesize dismissHandler=_dismissHandler;
 
 + (id)controllerWithDismissHandler:(CDUnknownBlockType)arg1;
+- (void)dealloc;
 - (void)dismiss;
 - (id)initWithHandler:(CDUnknownBlockType)arg1;
 

@@ -10,6 +10,10 @@
 
 @property (readonly, nonatomic) float averageFPS;
 @property (readonly, nonatomic) double contentScale;
+@property (readonly, nonatomic) struct Device *device;
+@property (readonly, nonatomic) const struct RenderTargetFormat *format;
+@property (readonly, nonatomic) BOOL multiSample;
+@property (readonly, nonatomic) BOOL shouldRasterize;
 @property (readonly, nonatomic) struct CGSize size;
 @property (readonly, nonatomic) struct CGSize sizeInPixels;
 

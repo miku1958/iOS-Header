@@ -22,6 +22,7 @@
 @property (strong, nonatomic) UITableViewCell *tableViewCell; // @synthesize tableViewCell=_tableViewCell;
 @property (nonatomic) BOOL usingRealTableViewCell; // @synthesize usingRealTableViewCell=_usingRealTableViewCell;
 
+- (void).cxx_destruct;
 - (id)_accessibilityAbsoluteValue;
 - (double)_accessibilityAllowedGeometryOverlap;
 - (BOOL)_accessibilityBackingElementIsValid;
@@ -30,10 +31,10 @@
 - (struct CGRect)_accessibilityChargedLineBoundsForRange:(struct _NSRange)arg1;
 - (long long)_accessibilityCompareElement:(id)arg1 toElement:(id)arg2;
 - (void)_accessibilityCopy;
-- (id)_accessibilityCustomActions;
 - (void)_accessibilityCut;
 - (id)_accessibilityDataDetectorScheme:(struct CGPoint)arg1;
 - (id)_accessibilityEquivalenceTag;
+- (BOOL)_accessibilityHasNativeFocus;
 - (BOOL)_accessibilityHasTextOperations;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct _NSRange)_accessibilityIndexPathAsRange;
@@ -55,6 +56,7 @@
 - (void)_accessibilitySelectAll;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (id)_accessibilitySemanticContextForElement:(id)arg1;
+- (BOOL)_accessibilitySetNativeFocus;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (id)_accessibilitySpeakThisString;
 - (BOOL)_accessibilitySupportsActivateAction;
@@ -67,11 +69,12 @@
 - (BOOL)_accessibilityUserTestingIsDestructiveButton;
 - (BOOL)_accessibilityUserTestingIsPreferredButton;
 - (id)_accessibilityUserTestingVisibleAncestor;
+- (BOOL)_accessibilityViewHierarchyHasNativeFocus;
 - (BOOL)_allowCustomActionHintSpeakOverride;
+- (id)_privateAccessibilityCustomActions;
 - (BOOL)accessibilityActivate;
 - (struct CGPoint)accessibilityActivationPoint;
-- (id)accessibilityCustomRotorItemsAtIndex:(long long)arg1;
-- (id)accessibilityCustomRotorTitles;
+- (id)accessibilityCustomActions;
 - (void)accessibilityDecrement;
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)accessibilityElementCount;

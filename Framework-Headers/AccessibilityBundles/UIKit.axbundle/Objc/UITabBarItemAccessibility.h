@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_createViewForTabBar:(id)arg1 showingBadge:(BOOL)arg2 withTint:(BOOL)arg3;
+- (id)_createViewForTabBar:(id)arg1 asProxyView:(BOOL)arg2;
 - (id)selectedImage;
 - (void)setAccessibilityHint:(id)arg1;
 - (void)setAccessibilityLabel:(id)arg1;

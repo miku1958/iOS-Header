@@ -7,6 +7,7 @@
 #import <MapsSupport/NSObject-Protocol.h>
 
 @protocol MSPTransferableToImmutable <NSObject>
-- (id)transferToImmutableWithError:(out id *)arg1;
+- (id)copyIfValidWithError:(out id *)arg1;
+- (id)transferToImmutableIfValidWithError:(out id *)arg1;
 @end
 

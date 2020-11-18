@@ -9,7 +9,7 @@
 #import <MessageUI/MFModernAddressAtomDelegate-Protocol.h>
 #import <MessageUI/MFPassthroughViewProvider-Protocol.h>
 
-@class NSDictionary, NSMutableArray, NSString, UIColor, UILabel;
+@class NSArray, NSDictionary, NSMutableArray, NSString, UIColor, UILabel;
 @protocol MFModernLabelledAtomListDelegate;
 
 @interface MFModernLabelledAtomList : UIView <MFPassthroughViewProvider, MFModernAddressAtomDelegate>
@@ -17,19 +17,19 @@
     UILabel *_label;
     void *_addressBook;
     id<MFModernLabelledAtomListDelegate> _delegate;
+    NSArray *_addresses;
     NSMutableArray *_addressAtoms;
     NSString *_title;
     UIColor *_labelTextColor;
     NSDictionary *_recipients;
-    double _firstLineWidth;
-    BOOL _usePadDisplayStyle;
     BOOL _labelVisible;
     unsigned int _needsReflow:1;
-    unsigned int _isChangingFrame:1;
-    UIView *_baselineView;
+    double _previousWidth;
+    UILabel *_lastBaselineDeceptionLabel;
     BOOL _primary;
     unsigned long long _numberOfRows;
     double _lineSpacing;
+    NSArray *_viewsToDodge;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -40,26 +40,30 @@
 @property (nonatomic, getter=isLabelVisible) BOOL labelVisible;
 @property (nonatomic) double lineSpacing; // @synthesize lineSpacing=_lineSpacing;
 @property (readonly, nonatomic) unsigned long long numberOfRows; // @synthesize numberOfRows=_numberOfRows;
-@property (nonatomic) BOOL primary; // @synthesize primary=_primary;
+@property (nonatomic, getter=isPrimary) BOOL primary; // @synthesize primary=_primary;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL usePadDisplayStyle; // @synthesize usePadDisplayStyle=_usePadDisplayStyle;
+@property (strong, nonatomic) NSArray *viewsToDodge; // @synthesize viewsToDodge=_viewsToDodge;
 
 + (double)atomLineHeight;
 + (id)defaultLabelFont;
 + (id)defaultLabelTextColor;
 + (id)primaryLabelFont;
 + (double)spaceBetweenColonAndFirstAtomNaturalEdge;
+- (struct CGRect)_frameForAtomAtIndex:(unsigned long long)arg1 withStartingPoint:(struct CGPoint)arg2 row:(inout unsigned long long *)arg3;
 - (void)_reflow;
+- (void)_reflowIfNeeded;
+- (double)_remainingSpaceForRowAtPoint:(struct CGPoint)arg1;
 - (void)_setNeedsReflow;
 - (void)addressAtom:(id)arg1 displayStringDidChange:(id)arg2;
 - (id)addressAtoms;
 - (void)addressBookDidChange:(id)arg1;
 - (id)atomDisplayStrings;
 - (struct CGPoint)baselinePointForRow:(unsigned long long)arg1;
-- (void)crossFadeLabelVisibility:(BOOL)arg1 atomSeparatorStyle:(int)arg2 animationDuration:(double)arg3;
+- (void)crossFadeLabelVisibility:(BOOL)arg1 atomSeparatorStyle:(int)arg2 withAnimationCoordinator:(id)arg3;
 - (void)dealloc;
 - (void)enumerateAddressAtomsUsingBlock:(CDUnknownBlockType)arg1;
-- (id)initWithLabel:(id)arg1 title:(id)arg2 totalWidth:(double)arg3 firstLineWidth:(double)arg4 addresses:(id)arg5 arePhoneNumbers:(id)arg6 atomPresentationOptions:(unsigned long long)arg7 addressBook:(void *)arg8 completionBlock:(CDUnknownBlockType)arg9;
+- (id)initWithLabel:(id)arg1 title:(id)arg2 addressBook:(void *)arg3;
+- (struct CGSize)intrinsicContentSize;
 - (struct CGRect)labelFrame;
 - (id)labelText;
 - (void)layoutSubviews;
@@ -68,14 +72,16 @@
 - (void)setAddressAtomScale:(double)arg1;
 - (void)setAddressAtomSeparatorStyle:(int)arg1;
 - (void)setAddressAtomTarget:(id)arg1 action:(SEL)arg2;
+- (void)setAddressAtomsArePrimary:(BOOL)arg1;
+- (void)setAddresses:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)setAtomAlpha:(double)arg1;
 - (void)setDelegate:(id)arg1;
-- (void)setFirstLineWidth:(double)arg1;
-- (void)setFirstLineWidth:(double)arg1 reflow:(BOOL)arg2;
-- (void)setFrame:(struct CGRect)arg1;
 - (void)setOpaque:(BOOL)arg1;
+- (void)setOverrideFont:(id)arg1;
 - (id)title;
 - (void)updateAtomsForVIP;
+- (id)viewForFirstBaselineLayout;
+- (id)viewForLastBaselineLayout;
 
 @end
 

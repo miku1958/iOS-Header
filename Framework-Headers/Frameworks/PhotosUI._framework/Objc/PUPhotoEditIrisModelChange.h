@@ -11,9 +11,8 @@
     BOOL _videoEnabledDidChange;
 }
 
-@property (nonatomic) BOOL videoEnabledDidChange; // @synthesize videoEnabledDidChange=_videoEnabledDidChange;
+@property (nonatomic, setter=_setVideoEnabledDidChange:) BOOL videoEnabledDidChange; // @synthesize videoEnabledDidChange=_videoEnabledDidChange;
 
-- (void)_setVideoEnabledDidChange:(BOOL)arg1;
 - (BOOL)hasChanges;
 
 @end

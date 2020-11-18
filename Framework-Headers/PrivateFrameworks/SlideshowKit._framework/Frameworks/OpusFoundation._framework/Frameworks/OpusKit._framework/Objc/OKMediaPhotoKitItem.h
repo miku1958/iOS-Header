@@ -19,6 +19,7 @@
 + (id)scheme;
 + (id)urlForMediaObject:(id)arg1;
 + (id)urlForPHAsset:(id)arg1;
+- (struct CGRect)_faceAreaRect;
 - (void)_resolveAssetIfNeeded;
 - (id)avAssetWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)createMetadataWithCompletionHandler:(CDUnknownBlockType)arg1;

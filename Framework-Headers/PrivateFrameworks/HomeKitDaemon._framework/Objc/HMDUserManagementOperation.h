@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HAPTimerDelegate-Protocol.h>
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HAPTimer, HMDAccessory, HMDUser, HMDUserManagementOperationManager, NSArray, NSDate, NSMutableArray, NSString, NSUUID;
+@class HMDAccessory, HMDAccessoryInvitation, HMDUser, HMDUserManagementOperationManager, HMFTimer, NSArray, NSDate, NSDictionary, NSMutableArray, NSString, NSUUID;
 @protocol HMDUserManagementOperationDelegate, OS_dispatch_queue;
 
-@interface HMDUserManagementOperation : NSObject <HAPTimerDelegate, NSSecureCoding>
+@interface HMDUserManagementOperation : NSObject <HMFTimerDelegate, NSSecureCoding>
 {
     NSMutableArray *_dependencies;
     BOOL _executing;
     BOOL _backingOff;
+    BOOL _lastOperationFailed;
     unsigned long long _state;
     HMDUserManagementOperationManager *_operationManager;
     id<HMDUserManagementOperationDelegate> _delegate;
@@ -27,15 +28,17 @@
     NSDate *_expirationDate;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
-    HAPTimer *_expirationTimer;
+    HMFTimer *_expirationTimer;
     double _backoffInterval;
-    HAPTimer *_backoffTimer;
+    HMFTimer *_backoffTimer;
 }
 
 @property (strong, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
+@property (readonly, nonatomic) HMDAccessoryInvitation *accessoryInvitation;
+@property (readonly, nonatomic) NSDictionary *accessoryInvitationInformation;
 @property (nonatomic, getter=isBackingOff) BOOL backingOff; // @synthesize backingOff=_backingOff;
 @property (readonly, nonatomic) double backoffInterval; // @synthesize backoffInterval=_backoffInterval;
-@property (strong, nonatomic) HAPTimer *backoffTimer; // @synthesize backoffTimer=_backoffTimer;
+@property (strong, nonatomic) HMFTimer *backoffTimer; // @synthesize backoffTimer=_backoffTimer;
 @property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
@@ -44,11 +47,12 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isExecuting) BOOL executing; // @synthesize executing=_executing;
 @property (readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
-@property (readonly, nonatomic) HAPTimer *expirationTimer; // @synthesize expirationTimer=_expirationTimer;
+@property (readonly, nonatomic) HMFTimer *expirationTimer; // @synthesize expirationTimer=_expirationTimer;
 @property (readonly, nonatomic, getter=isExpired) BOOL expired;
 @property (readonly, nonatomic, getter=isFinished) BOOL finished;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) BOOL lastOperationFailed; // @synthesize lastOperationFailed=_lastOperationFailed;
 @property (strong, nonatomic) HMDUserManagementOperationManager *operationManager; // @synthesize operationManager=_operationManager;
 @property (readonly, nonatomic) unsigned long long operationType; // @synthesize operationType=_operationType;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
@@ -61,6 +65,7 @@
 + (id)removeUserManagementOperationForUser:(id)arg1 accessory:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (long long)_accessoryInvitationState;
 - (void)_addPairingToAccessory:(id)arg1 identifier:(id)arg2 publicKey:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_endBackoffTimer;
 - (BOOL)_isFinished;

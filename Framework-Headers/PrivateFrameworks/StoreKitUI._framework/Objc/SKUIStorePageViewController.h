@@ -38,9 +38,9 @@
 @property (weak, nonatomic) id<SKUIStorePageDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic, getter=isLoading) BOOL loading;
 @property (strong, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property (strong, nonatomic) UIRefreshControl *refreshControl; // @synthesize refreshControl=_refreshControl;
+@property (readonly, nonatomic, getter=isSkLoading) BOOL skLoading;
 @property (copy, nonatomic) SKUIStorePage *storePage; // @synthesize storePage=_storePage;
 @property (readonly) Class superclass;
 

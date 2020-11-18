@@ -4,29 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <HealthUI/HKTableViewController.h>
 
 #import <HealthUI/HKSwitchTableViewCellDelegate-Protocol.h>
 
-@class HKDataUnitController, HKHealthStore, NSMutableArray, NSString, NSUUID;
+@class HKDataUnitController, HKHealthStore, NSMutableArray, NSUUID;
 
-@interface _HKIngestSettingsViewController : UITableViewController <HKSwitchTableViewCellDelegate>
+@interface _HKIngestSettingsViewController : HKTableViewController <HKSwitchTableViewCellDelegate>
 {
     HKDataUnitController *_dataUnitController;
     NSMutableArray *_dataTypeNames;
     BOOL _deviceEnabled;
     BOOL _deviceFound;
-    NSString *_cellTitle;
     NSUUID *_deviceIdentifier;
     HKHealthStore *_healthStore;
 }
 
-@property (copy, nonatomic) NSString *cellTitle; // @synthesize cellTitle=_cellTitle;
 @property (strong, nonatomic) NSUUID *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 @property (strong, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 
 - (void).cxx_destruct;
 - (id)_initWithHealthStore:(id)arg1 dataUnitController:(id)arg2;
+- (void)fetchEnabledStatusForPeripheral;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)reloadData:(id)arg1;
 - (void)switchCellValueChanged:(id)arg1 value:(BOOL)arg2;

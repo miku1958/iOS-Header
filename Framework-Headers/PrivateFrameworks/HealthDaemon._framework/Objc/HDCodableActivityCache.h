@@ -6,11 +6,12 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
+#import <HealthDaemon/HDDecoding-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class HDCodableSample;
+@class HDCodableSample, NSString;
 
-@interface HDCodableActivityCache : PBCodable <NSCopying>
+@interface HDCodableActivityCache : PBCodable <HDDecoding, NSCopying>
 {
     long long _activeEnergyBurnedAnchor;
     double _activeHours;
@@ -19,14 +20,21 @@
     long long _briskMinutesAnchor;
     long long _cacheIndex;
     long long _calorieGoalAnchor;
+    double _deepBreathingDuration;
+    long long _deepBreathingSessionAnchor;
     double _energyBurned;
     double _energyBurnedGoal;
     long long _energyBurnedGoalAnchor;
     double _energyBurnedGoalDate;
+    long long _flightsClimbed;
+    long long _flightsClimbedAnchor;
+    long long _pushCount;
+    long long _pushCountAnchor;
     long long _stepCount;
     long long _stepCountAnchor;
     double _walkingAndRunningDistance;
     long long _walkingAndRunningDistanceAnchor;
+    long long _wheelchairUse;
     long long _workoutAnchor;
     HDCodableSample *_sample;
     struct {
@@ -37,14 +45,21 @@
         unsigned int briskMinutesAnchor:1;
         unsigned int cacheIndex:1;
         unsigned int calorieGoalAnchor:1;
+        unsigned int deepBreathingDuration:1;
+        unsigned int deepBreathingSessionAnchor:1;
         unsigned int energyBurned:1;
         unsigned int energyBurnedGoal:1;
         unsigned int energyBurnedGoalAnchor:1;
         unsigned int energyBurnedGoalDate:1;
+        unsigned int flightsClimbed:1;
+        unsigned int flightsClimbedAnchor:1;
+        unsigned int pushCount:1;
+        unsigned int pushCountAnchor:1;
         unsigned int stepCount:1;
         unsigned int stepCountAnchor:1;
         unsigned int walkingAndRunningDistance:1;
         unsigned int walkingAndRunningDistanceAnchor:1;
+        unsigned int wheelchairUse:1;
         unsigned int workoutAnchor:1;
     } _has;
 }
@@ -56,10 +71,16 @@
 @property (nonatomic) long long briskMinutesAnchor; // @synthesize briskMinutesAnchor=_briskMinutesAnchor;
 @property (nonatomic) long long cacheIndex; // @synthesize cacheIndex=_cacheIndex;
 @property (nonatomic) long long calorieGoalAnchor; // @synthesize calorieGoalAnchor=_calorieGoalAnchor;
+@property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) double deepBreathingDuration; // @synthesize deepBreathingDuration=_deepBreathingDuration;
+@property (nonatomic) long long deepBreathingSessionAnchor; // @synthesize deepBreathingSessionAnchor=_deepBreathingSessionAnchor;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) double energyBurned; // @synthesize energyBurned=_energyBurned;
 @property (nonatomic) double energyBurnedGoal; // @synthesize energyBurnedGoal=_energyBurnedGoal;
 @property (nonatomic) long long energyBurnedGoalAnchor; // @synthesize energyBurnedGoalAnchor=_energyBurnedGoalAnchor;
 @property (nonatomic) double energyBurnedGoalDate; // @synthesize energyBurnedGoalDate=_energyBurnedGoalDate;
+@property (nonatomic) long long flightsClimbed; // @synthesize flightsClimbed=_flightsClimbed;
+@property (nonatomic) long long flightsClimbedAnchor; // @synthesize flightsClimbedAnchor=_flightsClimbedAnchor;
 @property (nonatomic) BOOL hasActiveEnergyBurnedAnchor;
 @property (nonatomic) BOOL hasActiveHours;
 @property (nonatomic) BOOL hasActiveHoursAnchor;
@@ -67,32 +88,43 @@
 @property (nonatomic) BOOL hasBriskMinutesAnchor;
 @property (nonatomic) BOOL hasCacheIndex;
 @property (nonatomic) BOOL hasCalorieGoalAnchor;
+@property (nonatomic) BOOL hasDeepBreathingDuration;
+@property (nonatomic) BOOL hasDeepBreathingSessionAnchor;
 @property (nonatomic) BOOL hasEnergyBurned;
 @property (nonatomic) BOOL hasEnergyBurnedGoal;
 @property (nonatomic) BOOL hasEnergyBurnedGoalAnchor;
 @property (nonatomic) BOOL hasEnergyBurnedGoalDate;
+@property (nonatomic) BOOL hasFlightsClimbed;
+@property (nonatomic) BOOL hasFlightsClimbedAnchor;
+@property (nonatomic) BOOL hasPushCount;
+@property (nonatomic) BOOL hasPushCountAnchor;
 @property (readonly, nonatomic) BOOL hasSample;
 @property (nonatomic) BOOL hasStepCount;
 @property (nonatomic) BOOL hasStepCountAnchor;
 @property (nonatomic) BOOL hasWalkingAndRunningDistance;
 @property (nonatomic) BOOL hasWalkingAndRunningDistanceAnchor;
+@property (nonatomic) BOOL hasWheelchairUse;
 @property (nonatomic) BOOL hasWorkoutAnchor;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) long long pushCount; // @synthesize pushCount=_pushCount;
+@property (nonatomic) long long pushCountAnchor; // @synthesize pushCountAnchor=_pushCountAnchor;
 @property (strong, nonatomic) HDCodableSample *sample; // @synthesize sample=_sample;
 @property (nonatomic) long long stepCount; // @synthesize stepCount=_stepCount;
 @property (nonatomic) long long stepCountAnchor; // @synthesize stepCountAnchor=_stepCountAnchor;
+@property (readonly) Class superclass;
 @property (nonatomic) double walkingAndRunningDistance; // @synthesize walkingAndRunningDistance=_walkingAndRunningDistance;
 @property (nonatomic) long long walkingAndRunningDistanceAnchor; // @synthesize walkingAndRunningDistanceAnchor=_walkingAndRunningDistanceAnchor;
+@property (nonatomic) long long wheelchairUse; // @synthesize wheelchairUse=_wheelchairUse;
 @property (nonatomic) long long workoutAnchor; // @synthesize workoutAnchor=_workoutAnchor;
 
 - (void).cxx_destruct;
+- (BOOL)applyToObject:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)decodedEnergyBurnedGoalQuantity;
 - (id)decodedEnergyBurnedQuantity;
 - (id)decodedWalkingAndRunningDistanceQuantity;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

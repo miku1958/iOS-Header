@@ -14,8 +14,6 @@
 - (long long)indexForHighlightedKey;
 - (void)setDelegate:(id<TPDialerKeypadDelegate>)arg1;
 - (void)setPlaysSounds:(BOOL)arg1;
-- (void)setSupportsHardPause:(BOOL)arg1;
-- (BOOL)supportsHardPause;
 
 @optional
 - (void)performTapActionCancelForHighlightedKey;

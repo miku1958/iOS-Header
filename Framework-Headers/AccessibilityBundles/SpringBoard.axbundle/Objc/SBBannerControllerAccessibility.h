@@ -10,6 +10,7 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_presentBannerForContext:(id)arg1 reason:(long long)arg2;

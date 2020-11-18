@@ -39,6 +39,7 @@
     unsigned long long maxBracketedCaptureCount;
     BOOL lensStabilizationDuringBracketedCaptureSupported;
     BOOL lensStabilizationDuringBracketedCaptureEnabled;
+    BOOL bravoImageFusionSupported;
 }
 
 - (void)dealloc;

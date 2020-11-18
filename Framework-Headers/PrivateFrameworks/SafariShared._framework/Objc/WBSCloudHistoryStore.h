@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <SafariShared/WBSCloudHistoryDataStore-Protocol.h>
+
 @class CKDatabase, CKRecordZone, CKRecordZoneID, WBSCloudHistoryConfiguration;
 @protocol OS_dispatch_queue;
 
-@interface WBSCloudHistoryStore : NSObject
+@interface WBSCloudHistoryStore : NSObject <WBSCloudHistoryDataStore>
 {
     NSObject<OS_dispatch_queue> *_databaseQueue;
     CKDatabase *_database;
@@ -22,8 +24,6 @@
 - (void)_appendRecord:(id)arg1 toResult:(id)arg2;
 - (void)_batchSaveRecords:(id)arg1 useLongLivedOperation:(BOOL)arg2 longLivedOperationPersistenceCompletion:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_configureFetchChangesOperation:(id)arg1;
-- (id)_debugAllRecordsDescription;
-- (id)_debugDescriptionForRecord:(id)arg1;
 - (id)_dictionaryForRecordData:(id)arg1;
 - (void)_fetchRecordsWithServerChangeToken:(id)arg1 numberOfFetchRecordsOperationsPerformedSoFar:(unsigned long long)arg2 result:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_prepareRecordZoneWithCompletion:(CDUnknownBlockType)arg1;

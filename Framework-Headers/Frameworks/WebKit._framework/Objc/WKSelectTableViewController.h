@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
+@property (readonly, nonatomic) BOOL hasText;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long keyboardAppearance;
 @property (nonatomic) long long keyboardType;
@@ -37,11 +38,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
 @property (nonatomic) long long spellCheckingType;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *textContentType;
 
 - (void)deleteBackward;
 - (struct OptionItem *)findItemAt:(id)arg1;
 - (long long)findItemIndexAt:(id)arg1;
-- (BOOL)hasText;
 - (id)initWithView:(id)arg1 hasGroups:(BOOL)arg2;
 - (void)insertText:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;

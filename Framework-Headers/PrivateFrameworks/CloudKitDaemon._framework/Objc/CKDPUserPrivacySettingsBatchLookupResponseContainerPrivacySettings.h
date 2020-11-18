@@ -30,10 +30,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasUserPrivacySettings;
 @property (strong, nonatomic) CKDPUserPrivacySettings *userPrivacySettings; // @synthesize userPrivacySettings=_userPrivacySettings;
 
++ (Class)applicationBundleType;
 - (void).cxx_destruct;
+- (int)StringAsApplicationContainerEnvironment:(id)arg1;
 - (void)addApplicationBundle:(id)arg1;
 - (id)applicationBundleAtIndex:(unsigned long long)arg1;
 - (unsigned long long)applicationBundlesCount;
+- (id)applicationContainerEnvironmentAsString:(int)arg1;
 - (void)clearApplicationBundles;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

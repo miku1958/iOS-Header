@@ -16,14 +16,13 @@
 }
 
 @property (readonly, nonatomic) NSArray *assetIDs;
-@property (nonatomic) BOOL encounteredErrors; // @synthesize encounteredErrors=_encounteredErrors;
+@property (nonatomic, setter=_setEncounteredErrors:) BOOL encounteredErrors; // @synthesize encounteredErrors=_encounteredErrors;
 
 - (void)_setCoordinate:(CDStruct_c3b9c2ee)arg1 ForAssetID:(id)arg2;
-- (void)_setEncounteredErrors:(BOOL)arg1;
 - (void)dealloc;
 - (BOOL)hasShiftedLocationForAssetID:(id)arg1;
 - (id)initWithAssetIDs:(id)arg1;
-- (CDStruct_c3b9c2ee)shiftedLocationForAssetID:(id)arg1;
+- (struct CLLocationCoordinate2D)shiftedLocationForAssetID:(id)arg1;
 
 @end
 

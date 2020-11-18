@@ -20,15 +20,20 @@
 @property (copy, nonatomic) NSString *detail; // @synthesize detail=_detail;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 
++ (id)shippingMethodWithProtobuf:(id)arg1;
 + (BOOL)supportsSecureCoding;
++ (long long)version;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
+- (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)formattedString;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDictionary:(id)arg1 error:(id *)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToShippingMethod:(id)arg1;
+- (id)protobuf;
 
 @end
 

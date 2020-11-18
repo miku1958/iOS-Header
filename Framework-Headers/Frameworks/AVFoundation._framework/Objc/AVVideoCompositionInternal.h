@@ -14,8 +14,12 @@
     NSString *builtInCompositorName;
     Class customCompositorClass;
     CDStruct_1b6d18a9 frameDuration;
+    int sourceTrackIDForFrameTiming;
     struct CGSize renderSize;
     float renderScale;
+    NSString *colorPrimaries;
+    NSString *colorYCbCrMatrix;
+    NSString *colorTransferFunction;
     NSArray *instructions;
     BOOL auxiliaryTrackLayerSetLast;
     AVVideoCompositionCoreAnimationTool *animationTool;

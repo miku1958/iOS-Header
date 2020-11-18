@@ -10,13 +10,20 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct AKQuadrilateral {
+    struct CGPoint _field1;
+    struct CGPoint _field2;
+    struct CGPoint _field3;
+    struct CGPoint _field4;
+};
+
 struct CGAffineTransform {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
+    double a;
+    double b;
+    double c;
+    double d;
+    double tx;
+    double ty;
 };
 
 struct CGPoint {
@@ -80,6 +87,50 @@ struct _xmlDoc {
 struct _xmlDtd;
 
 struct _xmlNode;
+
+struct potrace_bitmap_s {
+    int _field1;
+    int _field2;
+    int _field3;
+    unsigned long long *_field4;
+};
+
+struct potrace_curve_s {
+    int _field1;
+    int *_field2;
+    struct potrace_dpoint_s (*_field3)[3];
+};
+
+struct potrace_dpoint_s;
+
+struct potrace_param_s {
+    int _field1;
+    int _field2;
+    double _field3;
+    int _field4;
+    double _field5;
+    struct potrace_progress_s _field6;
+};
+
+struct potrace_path_s {
+    int _field1;
+    int _field2;
+    struct potrace_curve_s _field3;
+    struct potrace_path_s *_field4;
+    struct potrace_path_s *_field5;
+    struct potrace_path_s *_field6;
+    struct potrace_privpath_s *_field7;
+};
+
+struct potrace_privpath_s;
+
+struct potrace_progress_s {
+    CDUnknownFunctionPointerType _field1;
+    void *_field2;
+    double _field3;
+    double _field4;
+    double _field5;
+};
 
 struct vImage_Buffer {
     void *_field1;

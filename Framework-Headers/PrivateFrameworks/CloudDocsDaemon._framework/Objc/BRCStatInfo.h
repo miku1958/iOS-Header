@@ -22,11 +22,13 @@
     NSString *_filenameOrAliasTarget;
     BOOL _hiddenExt;
     NSData *_xattrSignature;
-    NSData *_finderTags;
     NSData *_lazyXattr;
+    NSData *_finderTags;
+    NSString *_trashPutBackPath;
+    BRCItemID *_trashPutBackParentID;
 }
 
-@property (readonly, nonatomic) BRCItemID *_aliasTargetItemID;
+@property (readonly, nonatomic) NSString *_aliasTargetContainerIDAndOwner;
 @property (readonly, nonatomic) NSString *_aliasTargetMangledID;
 @property (nonatomic) long long birthtime; // @synthesize birthtime=_birthtime;
 @property (strong, nonatomic) BRFieldCKInfo *ckInfo; // @synthesize ckInfo=_ckInfo;
@@ -38,12 +40,17 @@
 @property (nonatomic) BOOL mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) BRCItemID *parentID; // @synthesize parentID=_parentID;
 @property (nonatomic) BOOL state; // @synthesize state=_state;
+@property (strong, nonatomic) BRCItemID *trashPutBackParentID; // @synthesize trashPutBackParentID=_trashPutBackParentID;
+@property (strong, nonatomic) NSString *trashPutBackPath; // @synthesize trashPutBackPath=_trashPutBackPath;
 @property (nonatomic) BOOL type; // @synthesize type=_type;
 @property (strong, nonatomic) NSData *xattrSignature; // @synthesize xattrSignature=_xattrSignature;
 
++ (id)_aliasTargetContainerIDAndOwnerForItemType:(BOOL)arg1 aliasTarget:(id)arg2;
++ (id)_aliasTargetMangledIDForAliasTarget:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_aliasTargetContainerIDAndOwner;
+- (id)_aliasTargetItemID;
+- (id)_aliasTargetShareItemIDWithLibraryRowID:(id)arg1;
 - (void)_updateAliasTarget:(id)arg1;
 - (BOOL)check:(id)arg1 logToFile:(struct __sFILE *)arg2;
 - (BOOL)checkStateWithItemID:(id)arg1 logToFile:(struct __sFILE *)arg2;

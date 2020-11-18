@@ -28,6 +28,9 @@
     NSObject<OS_dispatch_queue> *_finishedRequestQ;
 }
 
+@property (readonly, nonatomic) BOOL supportsWideColorSourceFrames;
+
++ (BOOL)_colorPropertiesAreSetInVideoComposition:(id)arg1;
 + (id)sessionWithVideoComposition:(id)arg1 recyclingSession:(id)arg2;
 - (void)_cleanupFigCallbacks;
 - (int)_compositionFrame:(struct OpaqueFigVideoCompositorFrame *)arg1 atTime:(CDStruct_1b6d18a9)arg2 requiresRenderUsingSources:(id)arg3 withInstruction:(void *)arg4;

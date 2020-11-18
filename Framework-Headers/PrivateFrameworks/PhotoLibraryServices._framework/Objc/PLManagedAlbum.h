@@ -6,11 +6,12 @@
 
 #import <PhotoLibraryServices/_PLManagedAlbum.h>
 
+#import <PhotoLibraryServices/PLSearchableAssetCollection-Protocol.h>
 #import <PhotoLibraryServices/PLUserEditableAlbumProtocol-Protocol.h>
 
 @class NSArray, NSDate, NSDictionary, NSMutableOrderedSet, NSNumber, NSOrderedSet, NSSet, NSString, NSURL, PLManagedAsset, UIImage;
 
-@interface PLManagedAlbum : _PLManagedAlbum <PLUserEditableAlbumProtocol>
+@interface PLManagedAlbum : _PLManagedAlbum <PLSearchableAssetCollection, PLUserEditableAlbumProtocol>
 {
     BOOL _resolvingConflicts;
     BOOL _albumShouldBeAutomaticallyDeleted;
@@ -27,10 +28,13 @@
 @property (readonly, nonatomic) BOOL canShowAvalancheStacks;
 @property (readonly, nonatomic) BOOL canShowComments;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, strong, nonatomic) NSDate *endDate;
 @property (readonly, strong, nonatomic) NSURL *groupURL;
 @property (nonatomic) BOOL hasUnseenContentBoolValue;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *importSessionID;
 @property (readonly, nonatomic) BOOL isCameraAlbum;
@@ -68,6 +72,7 @@
 @property (readonly, copy, nonatomic) CDUnknownBlockType sortingComparator;
 @property (readonly, strong, nonatomic) NSDate *startDate;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) PLManagedAsset *tertiaryKeyAsset;
 @property (readonly, strong, nonatomic) NSString *title;
 @property (readonly, strong, nonatomic) NSMutableOrderedSet *userEditableAssets;
@@ -83,6 +88,7 @@
 + (id)keyPathsForValuesAffectingPhotosCount;
 + (id)keyPathsForValuesAffectingVideosCount;
 + (id)pathToAssetAlbumOrderStructure;
++ (id)searchIndexAllowedPredicate;
 - (unsigned long long)_albumStandInCount;
 - (id)_assetOrderByAssetUUID;
 - (id)_expectedKeyAssets:(id)arg1;
@@ -92,6 +98,7 @@
 - (BOOL)_shouldCopyAssetToCameraRollBeforeAdding:(id)arg1;
 - (void)_updateKeyAssetsIfNeeded:(id)arg1;
 - (void)addAssetUsingiTunesAlbumOrder:(id)arg1;
+- (id)assetUUIDsForPreviewWithCount:(unsigned long long)arg1;
 - (BOOL)canPerformEditOperation:(unsigned long long)arg1;
 - (id)childKeyForOrdering;
 - (unsigned long long)countOfInternalUserEditableAssets;
@@ -115,6 +122,7 @@
 - (void)removeInternalUserEditableAssetsAtIndexes:(id)arg1;
 - (void)removePersistedFileSystemData;
 - (void)replaceAssetsAtIndexes:(id)arg1 withAssets:(id)arg2;
+- (unsigned long long)searchIndexCategory;
 - (id)searchIndexContents;
 - (void)sortAssetsUsingiTunesAlbumOrder;
 - (BOOL)supportsAssetOrderKeys;

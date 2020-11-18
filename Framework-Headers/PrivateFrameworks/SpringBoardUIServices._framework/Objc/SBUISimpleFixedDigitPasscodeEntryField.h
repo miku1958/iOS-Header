@@ -26,7 +26,7 @@
 - (struct CGRect)_entryFieldBoundsWithXOffset:(double)arg1;
 - (struct UIEdgeInsets)_entryFieldPaddingOutsideRing;
 - (BOOL)_hasAnyCharacters;
-- (void)_resetForFailedPasscode:(BOOL)arg1 playUnlockFailedSound:(BOOL)arg2;
+- (void)_resetForFailedPasscode:(BOOL)arg1;
 - (void)_setLuminosityBoost:(double)arg1;
 - (struct CGSize)_viewSize;
 - (id)initWithDefaultSizeAndLightStyle:(BOOL)arg1;

@@ -14,13 +14,13 @@
 @interface IKDOMNode : IKJSObject <IKJSDOMNode, IKJSDOMEventTarget>
 {
     struct _xmlNode *_nodePtr;
-    long long _ITMLID;
-    JSManagedValue *_managedSelf;
     JSManagedValue *_managedOwnerDocument;
     JSManagedValue *_managedParent;
     JSManagedValue *_managedChildNodeList;
     NSMutableDictionary *_eventListenersMap;
     NSHashTable *_domObservers;
+    long long _ITMLID;
+    JSManagedValue *_managedSelf;
 }
 
 @property (nonatomic) long long ITMLID; // @synthesize ITMLID=_ITMLID;
@@ -62,6 +62,7 @@
 - (id)childNodesAsArray;
 - (id)children;
 - (id)cloneNode:(BOOL)arg1;
+- (BOOL)contains:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (BOOL)dispatchEvent:(id)arg1;

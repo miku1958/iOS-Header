@@ -10,8 +10,8 @@
 #import <CloudDocsDaemon/BRCReachabilityDelegate-Protocol.h>
 #import <CloudDocsDaemon/NSXPCListenerDelegate-Protocol.h>
 
-@class BRCAccountHandler, BRCAccountSession, BRCCloudFileProvider, BRCVersionsFileProvider, NSDate, NSError, NSString, NSXPCListener, NSXPCListenerEndpoint;
-@protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source;
+@class BRCAccountHandler, BRCAccountSession, BRCVersionsFileProvider, NSArray, NSDate, NSError, NSMutableDictionary, NSOperationQueue, NSString, NSXPCListener, NSXPCListenerEndpoint;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface BRCDaemon : NSObject <BRCReachabilityDelegate, NSXPCListenerDelegate, BRCAccountHandlerDelegate>
 {
@@ -24,19 +24,23 @@
     BOOL _resumed;
     BOOL _hasNotEnoughDiskSpaceToBeFunctional;
     BRCAccountSession *_session;
-    BRCCloudFileProvider *_fileProvider;
-    BRCVersionsFileProvider *_versionsProvider;
     BRCAccountHandler *_accountHandler;
-    NSObject<OS_dispatch_group> *_xpcListenerBlockerUntilReady;
-    NSObject<OS_dispatch_group> *_xpcTokenListenerBlockerUntilReady;
+    NSObject<OS_dispatch_queue> *_xpcListenersReadyQueue;
+    NSObject<OS_dispatch_queue> *_accountReadyQueue;
+    NSObject<OS_dispatch_queue> *_accountResumedQueue;
+    NSObject<OS_dispatch_queue> *_startupQueue;
     int _serverAvailabilityNotifyToken;
     NSObject<OS_dispatch_queue> *_accountLoaderQueue;
+    NSArray *_fileProviders;
+    NSMutableDictionary *_dirPaths;
+    BRCVersionsFileProvider *_versionsProvider;
+    NSMutableDictionary *_shareAcceptOperationsByURL;
+    NSOperationQueue *_shareAcceptQueue;
     BOOL _disableAccountChangesHandling;
     BOOL _disableAppsChangesHandling;
     NSString *_logsDirPath;
     NSString *_appSupportDirPath;
     NSString *_cacheDirPath;
-    NSString *_rootDirPath;
     Class _containerClass;
     NSError *_loggedOutError;
     NSString *_ubiquityTokenSalt;
@@ -52,14 +56,13 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disableAccountChangesHandling; // @synthesize disableAccountChangesHandling=_disableAccountChangesHandling;
 @property (nonatomic) BOOL disableAppsChangesHandling; // @synthesize disableAppsChangesHandling=_disableAppsChangesHandling;
+@property (nonatomic) BOOL doesNotHaveEnoughDiskSpaceToBeFunctional; // @synthesize doesNotHaveEnoughDiskSpaceToBeFunctional=_hasNotEnoughDiskSpaceToBeFunctional;
 @property (readonly, nonatomic) NSXPCListenerEndpoint *endpoint;
-@property (readonly, nonatomic) BRCCloudFileProvider *fileProvider; // @synthesize fileProvider=_fileProvider;
 @property (nonatomic) unsigned long long forceIsGreedyState; // @synthesize forceIsGreedyState=_forceIsGreedyState;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isInSyncBubble;
 @property (strong, nonatomic) NSError *loggedOutError; // @synthesize loggedOutError=_loggedOutError;
 @property (strong, nonatomic) NSString *logsDirPath; // @synthesize logsDirPath=_logsDirPath;
-@property (strong, nonatomic) NSString *rootDirPath; // @synthesize rootDirPath=_rootDirPath;
 @property (strong, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
 @property (readonly, nonatomic) NSDate *startupDate; // @synthesize startupDate=_startupDate;
 @property (readonly) Class superclass;
@@ -68,26 +71,43 @@
 
 + (id)daemon;
 - (void).cxx_destruct;
+- (void)_finishStartup;
 - (BOOL)_haveRequiredKernelFeatures;
 - (void)_initSignals;
 - (void)_loadAccountIfNeeded;
+- (void)_resumeAccount;
+- (void)_setupCacheDelete;
 - (BOOL)_shouldCacheDeleteForVolume:(id)arg1;
+- (void)_startXPCListeners;
+- (void)_startupAndLoadAccount;
 - (void)accountHandler:(id)arg1 didChangeSessionTo:(id)arg2;
 - (void)accountHandler:(id)arg1 willChangeSessionFrom:(id)arg2;
+- (BOOL)checkEnoughDiskSpaceToBeFunctional;
+- (id)dirPathForSyncedFolderType:(unsigned long long)arg1;
+- (void)dumpToContext:(id)arg1;
 - (void)exitWithCode:(int)arg1;
+- (id)fileProviderForSyncedFolderType:(unsigned long long)arg1;
+- (id)fileProviderForURL:(id)arg1;
 - (void)handleExitSignal:(int)arg1;
-- (BOOL)hasEnoughDiskSpaceToBeFunctional;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)loadAccount;
 - (void)localeDidChange;
 - (void)networkReachabilityChanged:(BOOL)arg1;
-- (void)resume;
+- (void)networkReachabilityFlagsChanged:(unsigned int)arg1;
+- (id)registerShareAcceptOperation:(id)arg1 forURL:(id)arg2;
+- (void)restart;
+- (void)resumeFileProviderForSyncedFolderType:(unsigned long long)arg1;
+- (void)resumeIPCAcceptation;
 - (BOOL)selfCheck:(struct __sFILE *)arg1;
-- (void)setUp;
+- (void)setDirPath:(id)arg1 forSyncedFolderType:(unsigned long long)arg2;
 - (void)setUpAnonymousListener;
 - (void)setUpSandbox;
+- (void)start;
+- (void)suspendFileProviderForSyncedFolderType:(unsigned long long)arg1;
+- (void)suspendIPCAcceptation;
 - (void)waitForConfiguration;
+- (void)waitOnAccountResumedQueue;
 
 @end
 

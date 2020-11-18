@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
 
@@ -44,7 +44,7 @@
 - (void)_addFieldToWorld:(id)arg1;
 - (struct c3dAether *)_aetherHandle;
 - (void)_allowGhostObjects;
-- (void)_createDynamicWorld;
+- (void)_createDynamicWorldIfNeeded;
 - (void)_customDecodingOfSCNPhysicsWorld:(id)arg1;
 - (void)_customEncodingOfSCNPhysicsWorld:(id)arg1;
 - (struct btVehicleRaycaster *)_defaultVehicleRayCaster;
@@ -69,7 +69,6 @@
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateBodiesUsingBlock:(CDUnknownBlockType)arg1;
-- (struct btDynamicsWorld *)handle;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithScene:(id)arg1;
 - (id)rayTestWithSegmentFromPoint:(struct SCNVector3)arg1 toPoint:(struct SCNVector3)arg2 options:(id)arg3;

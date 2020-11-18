@@ -4,16 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <Catalyst/NSSecureCoding-Protocol.h>
 
 @interface CATTaskRequest : NSObject <NSSecureCoding>
 {
+    BOOL _handlesNotifications;
 }
+
+@property (nonatomic) BOOL handlesNotifications; // @synthesize handlesNotifications=_handlesNotifications;
 
 + (BOOL)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;
++ (id)whitelistedNotificationNames;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

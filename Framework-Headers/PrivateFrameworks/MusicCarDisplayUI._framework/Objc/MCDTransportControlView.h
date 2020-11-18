@@ -15,21 +15,26 @@
     UIButton *_leftButton;
     UIButton *_playPauseButton;
     UIButton *_fastForwardButton;
+    UIImage *_playImage;
     UIImage *_pauseImage;
+    UIImage *_defaultLeftButtonImage;
+    UIImage *_defaultFastForwardButtonImage;
 }
 
-@property (readonly, nonatomic) UIImage *defaultFastForwardButtonImage;
-@property (readonly, nonatomic) UIImage *defaultLeftButtonImage;
+@property (strong, nonatomic) UIImage *defaultFastForwardButtonImage; // @synthesize defaultFastForwardButtonImage=_defaultFastForwardButtonImage;
+@property (strong, nonatomic) UIImage *defaultLeftButtonImage; // @synthesize defaultLeftButtonImage=_defaultLeftButtonImage;
 @property (readonly, nonatomic) UIButton *fastForwardButton; // @synthesize fastForwardButton=_fastForwardButton;
 @property (readonly, nonatomic) UIButton *leftButton; // @synthesize leftButton=_leftButton;
 @property (nonatomic) int mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) UIImage *pauseImage; // @synthesize pauseImage=_pauseImage;
+@property (strong, nonatomic) UIImage *playImage; // @synthesize playImage=_playImage;
 @property (readonly, nonatomic) UIButton *playPauseButton; // @synthesize playPauseButton=_playPauseButton;
 @property (nonatomic) BOOL progressActive; // @synthesize progressActive=_progressActive;
 
 - (void).cxx_destruct;
 - (void)_addConstraints;
 - (void)_createSubviews;
+- (id)_defaultImageForIdentifier:(id)arg1;
 - (void)_updateProgressActive;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;

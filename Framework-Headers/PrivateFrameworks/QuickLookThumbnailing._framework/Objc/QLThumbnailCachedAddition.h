@@ -8,6 +8,7 @@
 
 @class GSAddition;
 
+__attribute__((visibility("hidden")))
 @interface QLThumbnailCachedAddition : NSObject
 {
     GSAddition *_addition;

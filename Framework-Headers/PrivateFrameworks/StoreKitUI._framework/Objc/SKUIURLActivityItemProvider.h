@@ -4,20 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIActivityItemProvider.h>
+#import <StoreKitUI/SKUIDeferredActivityItemProvider.h>
 
-@class SKUIClientContext, SKUIProductPageItem;
-
-@interface SKUIURLActivityItemProvider : UIActivityItemProvider
+@interface SKUIURLActivityItemProvider : SKUIDeferredActivityItemProvider
 {
-    SKUIProductPageItem *_item;
-    SKUIClientContext *_clientContext;
 }
 
-- (void).cxx_destruct;
++ (id)placeholderItem;
 - (id)activityViewController:(id)arg1 subjectForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 thumbnailImageForActivityType:(id)arg2 suggestedSize:(struct CGSize)arg3;
-- (id)initWithProductPageItem:(id)arg1 clientContext:(id)arg2;
 - (id)item;
 
 @end

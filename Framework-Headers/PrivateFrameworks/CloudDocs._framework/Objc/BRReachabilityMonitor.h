@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSHashTable;
 @protocol OS_dispatch_queue;
@@ -13,13 +13,17 @@
 {
     NSHashTable *_reachabilityObservers;
     struct __SCNetworkReachability *_reachabilityRef;
+    unsigned int _reachabilityFlags;
     BOOL _isNetworkReachable;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (nonatomic) BOOL isNetworkReachable; // @synthesize isNetworkReachable=_isNetworkReachable;
+@property (nonatomic) unsigned int reachabilityFlags; // @synthesize reachabilityFlags=_reachabilityFlags;
 
++ (BOOL)isNetworkReachableForFlags:(unsigned int)arg1;
 + (id)sharedReachabilityMonitor;
+- (void).cxx_destruct;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)init;

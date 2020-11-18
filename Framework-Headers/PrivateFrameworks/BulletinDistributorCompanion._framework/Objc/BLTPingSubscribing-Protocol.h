@@ -6,14 +6,16 @@
 
 #import <BulletinDistributorCompanion/NSObject-Protocol.h>
 
-@class BBBulletin, NSSet, NSString;
+@class BBBulletin, NSArray, NSSet, NSString;
 
 @protocol BLTPingSubscribing <NSObject>
 - (void)pingSubscriberDidLoad;
 - (void)pingWithBulletin:(BBBulletin *)arg1;
+- (void)pingWithBulletin:(BBBulletin *)arg1 ack:(void (^)(void))arg2;
 - (void)pingWithRecordID:(NSString *)arg1 forSectionID:(NSString *)arg2;
+- (void)pingWithRecordID:(NSString *)arg1 forSectionID:(NSString *)arg2 ack:(void (^)(void))arg3;
 - (NSSet *)sectionIDs;
 - (NSSet *)sectionIDsForBulletins;
-- (NSSet *)sectionIDsForPings;
+- (NSArray *)subscriptionInfos;
 @end
 

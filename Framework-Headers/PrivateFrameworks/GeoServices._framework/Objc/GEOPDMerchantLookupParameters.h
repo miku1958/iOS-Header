@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLocation, NSString;
+@class GEOLocation, NSString, PBUnknownFields;
 
 @interface GEOPDMerchantLookupParameters : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     double _transactionLocationAge;
     double _transactionTimestamp;
     NSString *_merchantCode;
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) GEOLocation *transactionLocation; // @synthesize transactionLocation=_transactionLocation;
 @property (nonatomic) double transactionLocationAge; // @synthesize transactionLocationAge=_transactionLocationAge;
 @property (nonatomic) double transactionTimestamp; // @synthesize transactionTimestamp=_transactionTimestamp;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -11,12 +11,12 @@ __attribute__((visibility("hidden")))
 {
     double whiteComponent;
     double alphaComponent;
-    struct CGColor *cachedColor;
-    long long cachedColorOnceToken;
+    struct CGColor *_cachedColor;
 }
 
 - (struct CGColor *)CGColor;
 - (struct CGColor *)_createCGColorWithAlpha:(double)arg1;
+- (BOOL)_isDeepColor;
 - (double)alphaComponent;
 - (id)colorSpaceName;
 - (id)colorWithAlphaComponent:(double)arg1;

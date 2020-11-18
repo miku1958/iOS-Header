@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class MPAVController, MPMediaPlaylist, MusicLocalPlaybackEventDataSource, NSOperationQueue;
+@class MPAVController, MPMediaItemCollection, MPMediaPlaylist, MusicLocalPlaybackEventDataSource, NSOperationQueue;
 
 @interface MusicPlaybackObserver : NSObject
 {
     NSOperationQueue *_addOperationQueue;
     MusicLocalPlaybackEventDataSource *_localPlaybackEventDataSource;
     MPMediaPlaylist *_lastIncrementedPlaylist;
+    MPMediaItemCollection *_lastIncrementedAlbum;
     MPAVController *_player;
 }
 

@@ -14,7 +14,6 @@
 {
     NSMutableArray *_accessPoints;
     NSMutableArray *_artworks;
-    NSMutableArray *_brands;
     NSMutableArray *_halls;
     NSMutableArray *_lines;
     NSMutableArray *_stations;
@@ -29,7 +28,6 @@
 
 @property (strong, nonatomic) NSMutableArray *accessPoints; // @synthesize accessPoints=_accessPoints;
 @property (strong, nonatomic) NSMutableArray *artworks; // @synthesize artworks=_artworks;
-@property (strong, nonatomic) NSMutableArray *brands; // @synthesize brands=_brands;
 @property (strong, nonatomic) NSMutableArray *halls; // @synthesize halls=_halls;
 @property (strong, nonatomic) NSMutableArray *lines; // @synthesize lines=_lines;
 @property (strong, nonatomic) NSMutableArray *stations; // @synthesize stations=_stations;
@@ -41,11 +39,22 @@
 @property (strong, nonatomic) NSMutableArray *walkings; // @synthesize walkings=_walkings;
 @property (strong, nonatomic) NSMutableArray *zilchPoints; // @synthesize zilchPoints=_zilchPoints;
 
++ (Class)accessPointType;
++ (Class)artworkType;
++ (Class)hallType;
++ (Class)lineType;
++ (Class)stationType;
++ (Class)stepType;
++ (Class)stopType;
++ (Class)systemType;
++ (Class)transitIncidentMessageType;
++ (Class)transitIncidentType;
++ (Class)walkingType;
++ (Class)zilchPointsType;
 - (id)accessPointAtIndex:(unsigned long long)arg1;
 - (unsigned long long)accessPointsCount;
 - (void)addAccessPoint:(id)arg1;
 - (void)addArtwork:(id)arg1;
-- (void)addBrand:(id)arg1;
 - (void)addHall:(id)arg1;
 - (void)addLine:(id)arg1;
 - (void)addStation:(id)arg1;
@@ -59,11 +68,8 @@
 - (id)artworkAtIndex:(unsigned long long)arg1;
 - (id)artworkFromIndices:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (unsigned long long)artworksCount;
-- (id)brandAtIndex:(unsigned long long)arg1;
-- (unsigned long long)brandsCount;
 - (void)clearAccessPoints;
 - (void)clearArtworks;
-- (void)clearBrands;
 - (void)clearHalls;
 - (void)clearLines;
 - (void)clearStations;

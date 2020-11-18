@@ -13,7 +13,6 @@
 @class NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKDURLSessionPool : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegatePrivate, NSURLSessionDataDelegate>
 {
     NSMutableDictionary *_delegateByTaskDescription;
@@ -23,7 +22,6 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_sessionConfigurationReferenceByIdentifier;
     NSObject<OS_dispatch_queue> *_queue;
     int _backgroundSessionConnectionPoolLimit;
-    int _networkdNotifyToken;
 }
 
 @property (readonly, nonatomic) int backgroundSessionConnectionPoolLimit;
@@ -52,7 +50,6 @@ __attribute__((visibility("hidden")))
 - (void)checkinSessionConfiguration:(id)arg1 withName:(id)arg2;
 - (id)checkoutSessionConfigurationWithName:(id)arg1;
 - (id)dataTaskWithTaskDescription:(id)arg1 configuration:(id)arg2 configurationName:(id)arg3 request:(id)arg4 delegate:(id)arg5;
-- (void)dealloc;
 - (id)init;
 - (void)invalidateDataTask:(id)arg1;
 - (void)setSessionConfiguration:(id)arg1 forName:(id)arg2;

@@ -6,18 +6,14 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSNumber;
-
 __attribute__((visibility("hidden")))
 @interface AutoCropper : NSObject
 {
-    NSNumber *bufferZone;
     BOOL shouldFavorBottom;
     BOOL shouldFavorTop;
     struct CGSize originalImageSize;
 }
 
-@property (strong, nonatomic) NSNumber *bufferZone; // @synthesize bufferZone;
 @property (nonatomic) struct CGSize originalImageSize; // @synthesize originalImageSize;
 @property (nonatomic) BOOL shouldFavorBottom; // @synthesize shouldFavorBottom;
 @property (nonatomic) BOOL shouldFavorTop; // @synthesize shouldFavorTop;

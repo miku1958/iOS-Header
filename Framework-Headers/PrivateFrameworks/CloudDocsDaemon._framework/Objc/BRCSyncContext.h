@@ -6,15 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class BRCAccountSession, BRCThrottleBase, BRCTransferStream, BRCUserDefaults, CKContainer, NSString;
+@class BRCAccountSession, BRCThrottleBase, BRCTransferStream, BRCUserDefaults, CKContainer, CKContainerID, NSDate, NSMutableSet, NSString;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface BRCSyncContext : NSObject
 {
     CKContainer *_ckContainer;
     NSString *_contextIdentifier;
+    NSString *_sourceAppIdentifier;
     BOOL _isShared;
     BOOL _isCancelled;
+    int _notifyTokenForFramework;
+    NSMutableSet *_foregroundClients;
+    NSString *_lastForegroundClientDescription;
+    NSDate *_dateWhenLastForegroundClientLeft;
+    NSObject<OS_dispatch_source> *_timerForGraceForegroundPeriod;
+    NSObject<OS_dispatch_source> *_timerForForcedForegroundPeriod;
+    NSObject<OS_dispatch_queue> *_foregroundStateQueue;
+    unsigned long long _foregroundState;
     BRCAccountSession *_session;
     BRCThrottleBase *_readerThrottle;
     BRCThrottleBase *_applyThrottle;
@@ -26,6 +36,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) BRCThrottleBase *applyThrottle; // @synthesize applyThrottle=_applyThrottle;
 @property (readonly, nonatomic) CKContainer *ckContainer;
+@property (readonly, nonatomic) CKContainerID *ckContainerID;
 @property (readonly, nonatomic) NSString *contextIdentifier; // @synthesize contextIdentifier=_contextIdentifier;
 @property (readonly, nonatomic) BRCUserDefaults *defaults;
 @property (readonly, nonatomic) BRCTransferStream *downloadStream; // @synthesize downloadStream=_downloadStream;
@@ -36,18 +47,30 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BRCTransferStream *uploadStream; // @synthesize uploadStream=_uploadStream;
 @property (readonly, nonatomic) BRCThrottleBase *uploadThrottle; // @synthesize uploadThrottle=_uploadThrottle;
 
-+ (id)contextIdentifierForZone:(id)arg1;
++ (id)_contextIdentifierForAppLibrary:(id)arg1;
++ (id)_contextIdentifierForZone:(id)arg1 metadata:(BOOL)arg2;
++ (id)_sourceAppIdentifierForZone:(id)arg1;
 - (void).cxx_destruct;
+- (void)_armForegroundGraceTimerForClientDescription:(id)arg1;
 - (id)_database;
+- (void)_notifyContainerBeingNowForeground;
+- (void)_notifyFrameworkContainersMonitorWithState:(BOOL)arg1;
+- (void)addForegroundClient:(id)arg1;
 - (void)addOperation:(id)arg1;
 - (void)addOperation:(id)arg1 allowsCellularAccess:(id)arg2;
 - (BOOL)allowsCellularAccess;
 - (void)cancel;
 - (void)close;
+- (void)dealloc;
 - (id)description;
-- (id)initWithSession:(id)arg1 contextIdentifier:(id)arg2 isShared:(BOOL)arg3;
-- (id)initWithZone:(id)arg1;
+- (void)didReceiveHandoffRequest;
+- (void)dumpToContext:(id)arg1;
+- (void)forceContainerForegroundForDuration:(double)arg1;
+- (id)foregroundClients;
+- (id)initWithSession:(id)arg1 contextIdentifier:(id)arg2 sourceAppIdentifier:(id)arg3 isShared:(BOOL)arg4;
+- (BOOL)isForeground;
 - (void)notifyDuetFromAccessByBundleID:(id)arg1;
+- (void)removeForegroundClient:(id)arg1;
 - (void)resume;
 - (void)setupIfNeeded;
 - (void)waitForAllOperations;

@@ -13,9 +13,9 @@
     NSData *_nonceData;
 }
 
-@property (strong, nonatomic) NSData *nonceData; // @synthesize nonceData=_nonceData;
+@property (copy, nonatomic) NSData *nonceData; // @synthesize nonceData=_nonceData;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithData:(id)arg1;
 
 @end

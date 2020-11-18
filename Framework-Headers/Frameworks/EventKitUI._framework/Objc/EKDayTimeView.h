@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <EventKitUI/EKUIVisualEffectView.h>
 
 #import <EventKitUI/EKCurrentTimeMarkerViewUpdating-Protocol.h>
 
-@class EKCurrentTimeMarkerView, NSMutableArray, NSString, UIColor;
+@class EKCurrentTimeMarkerView, NSMutableArray, NSString, UIColor, UIView;
 @protocol EKDayTimeViewDelegate;
 
-@interface EKDayTimeView : UIView <EKCurrentTimeMarkerViewUpdating>
+@interface EKDayTimeView : EKUIVisualEffectView <EKCurrentTimeMarkerViewUpdating>
 {
     NSMutableArray *_contentViews;
     unsigned int _leftBorder:1;
@@ -54,21 +54,25 @@
 @property (nonatomic) BOOL usesLightText; // @synthesize usesLightText=_usesLightText;
 
 + (id)_boldFontForOrientation:(long long)arg1;
-+ (void)_calculateWidthForOrientation:(long long)arg1;
++ (void)_calculateWidthForOrientation:(long long)arg1 excludeCurrentTime:(BOOL)arg2;
 + (double)_dynamicFontSizeForOrientation:(long long)arg1;
-+ (double)_hourWidthForOrientation:(long long)arg1;
 + (void)_invalidateCachedValues;
 + (void)_invalidateWidth;
++ (id)_noonLocalizedString;
++ (double)_noonLocalizedWidthForOrientation:(long long)arg1;
 + (id)_normalFontForOrientation:(long long)arg1;
 + (void)_registerForInvalidation;
++ (double)_timeTextWidthForOrientation:(long long)arg1;
 + (id)allDayLabelBoldFont;
 + (id)allDayLabelFont;
 + (double)defaultHeightForOrientation:(long long)arg1;
 + (double)defaultHeightForOrientation:(long long)arg1 withHourScale:(double)arg2;
 + (double)defaultHourScale;
 + (double)designatorSizeForOrientation:(long long)arg1;
++ (double)heightOfHourTextForHour:(long long)arg1 orientation:(long long)arg2;
 + (double)hourHeightForOrientation:(long long)arg1;
 + (double)hourSizeForOrientation:(long long)arg1;
++ (double)hourWidthForOrientation:(long long)arg1;
 + (void)setVerticalPadding:(double)arg1;
 + (double)timeInsetForOrientation:(long long)arg1;
 + (double)timeVerticalInsetForOrientation:(long long)arg1;
@@ -92,7 +96,9 @@
 - (void)setNeedsDisplay;
 - (void)setOpaque:(BOOL)arg1;
 - (void)setOrientation:(long long)arg1;
+- (void)setSemanticContentAttribute:(long long)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)subTintColorUpdatedToColor:(id)arg1;
 - (void)tintColorDidChange;
 - (double)topPadding;
 - (void)updateMarkerPosition;

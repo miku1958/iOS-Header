@@ -11,7 +11,7 @@
 
 @interface CMDeviceOrientationManagerInternal : NSObject
 {
-    int fSampleLock;
+    struct os_unfair_lock_s fSampleLock;
     struct Dispatcher *fDeviceOrientationDispatcher;
     CDUnknownBlockType fDeviceOrientationHandler;
     NSOperationQueue *fDeviceOrientationQueue;

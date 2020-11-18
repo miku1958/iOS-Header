@@ -9,8 +9,7 @@
 @class NSDictionary;
 
 @protocol CBXpcConnectionDelegate <NSObject>
-- (void)xpcConnectionDidFinalize;
-- (void)xpcConnectionDidReceiveMsg:(unsigned short)arg1 args:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *))arg3;
+- (void)xpcConnectionDidReceiveMsg:(unsigned short)arg1 args:(NSDictionary *)arg2;
 - (void)xpcConnectionDidReset;
 - (void)xpcConnectionIsInvalid;
 @end

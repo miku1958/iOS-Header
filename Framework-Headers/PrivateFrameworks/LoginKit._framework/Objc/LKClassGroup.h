@@ -24,6 +24,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithClassGroupDictionary:(id)arg1 classesDictionaryByClassID:(id)arg2;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToLKClassGroup:(id)arg1;
 
 @end
 

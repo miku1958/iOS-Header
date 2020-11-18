@@ -17,6 +17,7 @@
 + (id)_phoneInvitationFailureFile;
 + (id)_processPhoneFailuresQueue;
 + (BOOL)_recentlyRequestedDownloadAsset:(id)arg1 cloudPlaceholderKind:(short)arg2;
++ (void)_resetServerSideConfigurationDictionary;
 + (long long)_serverLimitValueForKey:(id)arg1 withDefaultResult:(long long)arg2;
 + (id)_transactionWithName:(const char *)arg1;
 + (void)acceptPendingInvitationForAlbum:(id)arg1 completion:(CDUnknownBlockType)arg2;

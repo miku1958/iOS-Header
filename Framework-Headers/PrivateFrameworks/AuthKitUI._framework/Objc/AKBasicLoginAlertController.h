@@ -54,7 +54,6 @@
 - (void).cxx_destruct;
 - (id)_interpolatedReasonString;
 - (void)_jiggleTheAlert;
-- (void)_setAlertViewsEnabled:(BOOL)arg1;
 - (void)_setupAuthenticateAndCancelButtons;
 - (void)_setupViewControllerForAlertStyle;
 - (void)_setupViewControllerForDefaultStyle;
@@ -63,12 +62,13 @@
 - (void)_setupViewControllerForSecondFactorEntryStyle;
 - (void)_setupViewControllerForUserOrCreateAppleIDStyle;
 - (void)_syncUsernameAndPasswordPropertiesWithTextFieldContent;
-- (void)_unhighlightAndWorkAroundUIAlertControllerBugs;
 - (id)_wrappedCancelAction;
+- (void)clearSecondFactorEntry;
 - (void)dealloc;
 - (BOOL)disablesAutomaticKeyboardDismissal;
 - (id)initWithAlertStyle:(long long)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)setPasscodeFieldDisabled:(BOOL)arg1;
 - (void)startAnimating;
 - (void)stopAnimating;
 - (BOOL)textFieldShouldReturn:(id)arg1;

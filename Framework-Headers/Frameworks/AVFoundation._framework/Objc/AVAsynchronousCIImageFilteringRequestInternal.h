@@ -16,14 +16,12 @@
     CDUnknownBlockType _completionHandler;
     CIImage *_sourceCIImage;
     struct __CVBuffer *_sourcePBuf;
-    struct CGColorSpace *_dstColorSpace;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType cancellationTest; // @synthesize cancellationTest=_cancellationTest;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (strong, nonatomic) AVAsynchronousVideoCompositionRequest *compositingRequest; // @synthesize compositingRequest=_compositingRequest;
 @property (copy, nonatomic) CDUnknownBlockType defaultCIContextProvider; // @synthesize defaultCIContextProvider=_defaultCIContextProvider;
-@property (strong, nonatomic) struct CGColorSpace *dstColorSpace; // @synthesize dstColorSpace=_dstColorSpace;
 @property (strong, nonatomic) CIImage *sourceCIImage; // @synthesize sourceCIImage=_sourceCIImage;
 @property (strong, nonatomic) struct __CVBuffer *sourcePBuf; // @synthesize sourcePBuf=_sourcePBuf;
 

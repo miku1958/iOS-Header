@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class VCVideoStreamReceiver;
+@class NSDictionary, VCVideoStreamReceiver, VideoAttributes;
 
 @protocol VCVideoStreamReceiverDelegate
-- (BOOL)vcVideoStreamReceiver:(VCVideoStreamReceiver *)arg1 didReceiveRemoteFrame:(struct __CVBuffer *)arg2 atTime:(CDStruct_198678f7)arg3;
+- (BOOL)vcVideoStreamReceiver:(VCVideoStreamReceiver *)arg1 didReceiveRemoteFrame:(struct __CVBuffer *)arg2 atTime:(CDStruct_1b6d18a9)arg3 newVideoAttributes:(VideoAttributes *)arg4 isFirstFrame:(BOOL)arg5;
+- (void)vcVideoStreamReceiver:(VCVideoStreamReceiver *)arg1 downlinkQualityDidChange:(NSDictionary *)arg2;
+- (unsigned int)vcVideoStreamReceiver:(VCVideoStreamReceiver *)arg1 receivedTMMBR:(unsigned int)arg2;
+- (void)vcVideoStreamReceiverRequestKeyFrame:(VCVideoStreamReceiver *)arg1;
 @end
 

@@ -39,6 +39,7 @@
     NSString *_subject;
     NSDate *_startTime;
     NSArray *_from;
+    NSNumber *_disallowNewTimeProposal;
     NSDate *_tombstoneEndTime;
     ASEventUID *_eventUID;
     NSArray *_attendees;
@@ -50,6 +51,8 @@
     NSDate *_appointmentReplyTime;
     NSArray *_attachments;
     NSString *_responseComment;
+    NSDate *_proposedStartTime;
+    NSDate *_proposedEndTime;
 }
 
 @property (readonly, nonatomic) int CalCalendarItemStatus;
@@ -70,6 +73,7 @@
 @property (strong, nonatomic) NSDate *dTStamp; // @synthesize dTStamp=_dTStamp;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSNumber *disallowNewTimeProposal; // @synthesize disallowNewTimeProposal=_disallowNewTimeProposal;
 @property (nonatomic) BOOL doNotSendBody; // @synthesize doNotSendBody=_doNotSendBody;
 @property (readonly, nonatomic) NSCalendarDate *endDateForCalFramework;
 @property (strong, nonatomic) NSDate *endTime; // @synthesize endTime=_endTime;
@@ -89,6 +93,8 @@
 @property (strong, nonatomic) NSNumber *meetingStatus; // @synthesize meetingStatus=_meetingStatus;
 @property (strong, nonatomic) NSString *organizerEmail; // @synthesize organizerEmail=_organizerEmail;
 @property (strong, nonatomic) NSString *organizerName; // @synthesize organizerName=_organizerName;
+@property (strong, nonatomic) NSDate *proposedEndTime; // @synthesize proposedEndTime=_proposedEndTime;
+@property (strong, nonatomic) NSDate *proposedStartTime; // @synthesize proposedStartTime=_proposedStartTime;
 @property (strong, nonatomic) ASRecurrence *recurrence; // @synthesize recurrence=_recurrence;
 @property (strong, nonatomic) NSNumber *reminderMinsBefore; // @synthesize reminderMinsBefore=_reminderMinsBefore;
 @property (strong, nonatomic) NSString *responseComment; // @synthesize responseComment=_responseComment;

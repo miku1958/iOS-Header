@@ -41,6 +41,7 @@
 @property (copy, nonatomic) NSArray *setPositions; // @synthesize setPositions=_setPositions;
 @property (copy, nonatomic) NSArray *weeksOfTheYear; // @synthesize weeksOfTheYear=_weeksOfTheYear;
 
+- (void).cxx_destruct;
 - (double)_convertAbsoluteTime:(double)arg1 fromTimeZone:(id)arg2 toTimeZone:(id)arg3;
 - (id)_copyDailyOccurrencesWithInitialDate:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 count:(unsigned long long)arg4;
 - (id)_copyMonthlyOccurrencesWithInitialDate:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 count:(unsigned long long)arg4;
@@ -57,7 +58,6 @@
 - (id)copyOccurrenceDatesBetweenStartDate:(CDStruct_79f9e052)arg1 endDate:(CDStruct_79f9e052)arg2 timeZone:(id)arg3 limit:(long long)arg4;
 - (id)copyOccurrenceDatesWithCalEvent:(void *)arg1 startDate:(CDStruct_79f9e052)arg2 endDate:(CDStruct_79f9e052)arg3 timeZone:(id)arg4 limit:(long long)arg5 locked:(BOOL)arg6;
 - (id)copyOccurrenceDatesWithInitialDate:(id)arg1 calRecurrences:(id)arg2 rangeStart:(id)arg3 rangeEnd:(id)arg4 timeZone:(id)arg5;
-- (void)dealloc;
 - (id)init;
 
 @end

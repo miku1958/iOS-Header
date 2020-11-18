@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSURLConnectionDataDelegate-Protocol.h>
 
@@ -25,7 +25,7 @@
 @property (readonly, nonatomic) PKPass *pass; // @synthesize pass=_pass;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)downloadMerchantPayloadWithCompletion:(CDUnknownBlockType)arg1;
 - (void)downloadPassWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithValueAddedServiceTransaction:(id)arg1;

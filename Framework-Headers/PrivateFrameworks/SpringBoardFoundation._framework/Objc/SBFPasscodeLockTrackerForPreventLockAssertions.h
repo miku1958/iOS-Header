@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SpringBoardFoundation/SBFPasscodeLockAssertionTracker.h>
+#import <SpringBoardFoundation/SBFAuthenticationAssertionTracker.h>
 
-@interface SBFPasscodeLockTrackerForPreventLockAssertions : SBFPasscodeLockAssertionTracker
+@interface SBFPasscodeLockTrackerForPreventLockAssertions : SBFAuthenticationAssertionTracker
 {
 }
 

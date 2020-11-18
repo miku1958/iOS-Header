@@ -21,7 +21,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) id<_UINonEditableTextSelectionForceGestureDelegate> forceGestureDelegate; // @synthesize forceGestureDelegate;
-@property (nonatomic) _UIKeyboardTextSelectionGestureController *gestureController; // @synthesize gestureController=_gestureController;
+@property (strong, nonatomic) _UIKeyboardTextSelectionGestureController *gestureController; // @synthesize gestureController=_gestureController;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIKeyboardTaskQueue *taskQueue;

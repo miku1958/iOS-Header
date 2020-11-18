@@ -23,19 +23,23 @@
     int _previousBannerChange;
     unsigned int _showAtDistance;
     GEOFormattedString *_spokenPrompt;
+    BOOL _disableFasterRerouteByDefault;
     struct {
         unsigned int hideAtDistance:1;
         unsigned int incidentDistance:1;
         unsigned int incidentIndex:1;
         unsigned int previousBannerChange:1;
         unsigned int showAtDistance:1;
+        unsigned int disableFasterRerouteByDefault:1;
     } _has;
 }
 
 @property (strong, nonatomic) GEOFormattedString *bannerLargeText; // @synthesize bannerLargeText=_bannerLargeText;
 @property (strong, nonatomic) GEOFormattedString *bannerSmallText; // @synthesize bannerSmallText=_bannerSmallText;
+@property (nonatomic) BOOL disableFasterRerouteByDefault; // @synthesize disableFasterRerouteByDefault=_disableFasterRerouteByDefault;
 @property (readonly, nonatomic) BOOL hasBannerLargeText;
 @property (readonly, nonatomic) BOOL hasBannerSmallText;
+@property (nonatomic) BOOL hasDisableFasterRerouteByDefault;
 @property (nonatomic) BOOL hasHideAtDistance;
 @property (nonatomic) BOOL hasIncidentDistance;
 @property (nonatomic) BOOL hasIncidentIndex;
@@ -52,6 +56,10 @@
 @property (nonatomic) unsigned int showAtDistance; // @synthesize showAtDistance=_showAtDistance;
 @property (strong, nonatomic) GEOFormattedString *spokenPrompt; // @synthesize spokenPrompt=_spokenPrompt;
 
++ (Class)localizedIncidentBannerType;
++ (Class)localizedIncidentSpokenTextType;
++ (Class)localizedIncidentSubBannerType;
+- (int)StringAsPreviousBannerChange:(id)arg1;
 - (void)addLocalizedIncidentBanner:(id)arg1;
 - (void)addLocalizedIncidentSpokenText:(id)arg1;
 - (void)addLocalizedIncidentSubBanner:(id)arg1;
@@ -72,6 +80,7 @@
 - (id)localizedIncidentSubBannerAtIndex:(unsigned long long)arg1;
 - (unsigned long long)localizedIncidentSubBannersCount;
 - (void)mergeFrom:(id)arg1;
+- (id)previousBannerChangeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

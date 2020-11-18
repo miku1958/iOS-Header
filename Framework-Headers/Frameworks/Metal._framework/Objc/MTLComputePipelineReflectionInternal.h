@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithSerializedData:(id)arg1 device:(id)arg2 options:(unsigned long long)arg3 flags:(CDStruct_596dc0d1)arg4;
 - (id)performanceStatistics;
 - (void)setPerformanceStatistics:(id)arg1;
+- (CDStruct_596dc0d1)usageFlags;
 
 @end
 

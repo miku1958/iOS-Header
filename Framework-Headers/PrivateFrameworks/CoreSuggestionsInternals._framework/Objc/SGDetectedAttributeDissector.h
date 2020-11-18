@@ -8,10 +8,17 @@
 
 @interface SGDetectedAttributeDissector : SGPipelineDissector
 {
+    unsigned long long _selfIdentificationMessageCount;
 }
 
+@property (nonatomic) unsigned long long selfIdentificationMessageCount; // @synthesize selfIdentificationMessageCount=_selfIdentificationMessageCount;
+
++ (void)clearConversationCache;
++ (id)currentPatterns;
 + (void)initialize;
 + (BOOL)isAddressContext:(id)arg1;
++ (BOOL)isMaybeNameContext:(id)arg1;
++ (BOOL)isNameRequest:(id)arg1;
 + (BOOL)isPhoneContext:(id)arg1;
 - (id)_extractEmailishTokenFromMailHeader:(id)arg1;
 - (id)_makeAlnum:(id)arg1;
@@ -20,12 +27,15 @@
 - (id)detailTypeFromPrefix:(id)arg1 detectedLabelPointer:(struct _NSRange *)arg2;
 - (id)detectionFromBodyDDMatch:(id)arg1 onEntity:(id)arg2;
 - (id)detectionFromSignatureDDMatch:(id)arg1 onEntity:(id)arg2 detectedLabelRange:(struct _NSRange *)arg3 lastClaimedLabelRange:(struct _NSRange)arg4;
-- (void)dissectInternal:(id)arg1;
+- (void)dissectInternal:(id)arg1 inContext:(id)arg2;
 - (id)filterDangerousSigAddressDetections:(id)arg1 onEntity:(id)arg2;
-- (id)filterDangerousSigDetections:(id)arg1 onEntity:(id)arg2;
-- (id)filterDangerousSigEmailDetections:(id)arg1 onEntity:(id)arg2;
+- (id)filterDangerousSigDetections:(id)arg1 onEntity:(id)arg2 inContext:(id)arg3;
+- (id)filterDangerousSigEmailDetections:(id)arg1 onEntity:(id)arg2 inContext:(id)arg3;
 - (id)filterDangerousSigPhoneDetections:(id)arg1 onEntity:(id)arg2;
 - (id)getLineContaining:(struct _NSRange)arg1 inText:(id)arg2;
+- (void)handleTextMessageSelfIdentification:(id)arg1;
+- (id)init;
+- (id)processTextMessageConversation:(id)arg1 messageIndex:(unsigned long long)arg2;
 
 @end
 

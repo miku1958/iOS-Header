@@ -17,6 +17,7 @@
     AXElementGroup *_parentGroup;
     AXElement *_cachedRemoteParent;
     AXElement *_cachedRemoteParentForContextID;
+    struct CGPath *_cachedPath;
     struct CGRect _cachedFrame;
     struct CGRect _cachedVisibleFrame;
 }
@@ -28,6 +29,7 @@
 @property (strong, nonatomic) AXElement *autoscrollTarget;
 @property (readonly, nonatomic) NSString *bundleId;
 @property (nonatomic) struct CGRect cachedFrame; // @synthesize cachedFrame=_cachedFrame;
+@property (strong, nonatomic) struct CGPath *cachedPath; // @synthesize cachedPath=_cachedPath;
 @property (strong, nonatomic) AXElement *cachedRemoteParent; // @synthesize cachedRemoteParent=_cachedRemoteParent;
 @property (strong, nonatomic) AXElement *cachedRemoteParentForContextID; // @synthesize cachedRemoteParentForContextID=_cachedRemoteParentForContextID;
 @property (nonatomic) struct CGRect cachedVisibleFrame; // @synthesize cachedVisibleFrame=_cachedVisibleFrame;
@@ -47,6 +49,7 @@
 @property (readonly, nonatomic) AXElement *firstElementInApplication;
 @property (readonly, nonatomic) AXElement *firstElementInApplicationForFocus;
 @property (readonly, nonatomic) AXElement *firstResponder;
+@property (readonly, nonatomic) struct CGRect focusableFrameForZoom;
 @property (readonly, nonatomic) struct CGRect frame;
 @property (readonly, nonatomic) BOOL hasTextEntry;
 @property (readonly, nonatomic) BOOL hasVariantKeys;
@@ -63,6 +66,7 @@
 @property (readonly, nonatomic) BOOL isScannerElement;
 @property (readonly, nonatomic) BOOL isScreenLocked;
 @property (readonly, nonatomic) BOOL isSpringBoard;
+@property (readonly, nonatomic) BOOL isSystemApplication;
 @property (readonly, nonatomic) BOOL isSystemWideElement;
 @property (readonly, nonatomic) BOOL isTouchContainer;
 @property (readonly, nonatomic) BOOL isValid;
@@ -80,6 +84,7 @@
 @property (readonly, nonatomic) AXElement *remoteParent;
 @property (readonly, nonatomic) BOOL representsScannerGroup; // @synthesize representsScannerGroup=_representsScannerGroup;
 @property (readonly, nonatomic) int scannerActivateBehavior;
+@property (readonly, nonatomic) int scanningBehaviorTraits;
 @property (nonatomic) struct _NSRange selectedTextRange;
 @property (readonly, nonatomic) NSDictionary *semanticContext;
 @property (readonly, nonatomic) NSArray *siriContentElementsWithSemanticContext;
@@ -107,7 +112,9 @@
 + (id)elementWithUIElement:(id)arg1;
 + (id)elementsWithUIElements:(id)arg1;
 + (id)primaryApp;
++ (void)registerNotifications:(id)arg1 withIdentifier:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 + (id)systemWideElement;
++ (void)unregisterNotifications:(id)arg1;
 - (id)_axElementsForAXUIElements:(id)arg1;
 - (id)_elementForAttribute:(int)arg1 shouldUpdateCache:(BOOL)arg2 shouldFetchAttributes:(BOOL)arg3;
 - (BOOL)_performActivate;
@@ -120,6 +127,9 @@
 - (BOOL)canPerformSecondaryActivate;
 - (BOOL)canPerformTrackingDetail;
 - (BOOL)canScrollInAtLeastOneDirection;
+- (void)clearCachedFrame:(BOOL)arg1 cachedVisibleFrame:(BOOL)arg2;
+- (id)containerTypes;
+- (struct CGPath *)convertPath:(struct CGPath *)arg1 fromContextId:(unsigned int)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromContextId:(unsigned int)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromContextId:(unsigned int)arg2;
@@ -147,8 +157,6 @@
 - (id)keyboardContainer;
 - (BOOL)longPress;
 - (id)nextElementsWithCount:(unsigned long long)arg1;
-- (id)opaqueElementInDirection:(int)arg1 startElement:(id)arg2 searchTraits:(unsigned long long)arg3;
-- (id)opaqueParent;
 - (void)pauseAutoscrolling;
 - (BOOL)performAction:(int)arg1;
 - (BOOL)performAction:(int)arg1 withValue:(id)arg2;
@@ -173,6 +181,7 @@
 - (BOOL)pressTVStopButton;
 - (BOOL)pressTVUpButton;
 - (id)previousElementsWithCount:(unsigned long long)arg1;
+- (id)remoteApplication;
 - (struct __AXUIElement *)scrollAncestorForScrollAction:(int)arg1;
 - (void)scrollToBottom;
 - (void)scrollToTop;
@@ -180,8 +189,17 @@
 - (void)sendUserEventOccurred;
 - (BOOL)setNativeFocus;
 - (BOOL)supportsAction:(int)arg1;
+- (BOOL)systemPressTVDownButton;
+- (BOOL)systemPressTVHomeButton;
+- (BOOL)systemPressTVLeftButton;
+- (BOOL)systemPressTVMenuButton;
 - (BOOL)systemPressTVPlayPauseButton;
+- (BOOL)systemPressTVRightButton;
 - (BOOL)systemPressTVSelectButton;
+- (BOOL)systemPressTVSiriButton;
+- (BOOL)systemPressTVUpButton;
+- (void)updateCache:(int)arg1;
+- (BOOL)viewHierarchyHasNativeFocus;
 - (BOOL)zoomIn;
 - (BOOL)zoomOut;
 

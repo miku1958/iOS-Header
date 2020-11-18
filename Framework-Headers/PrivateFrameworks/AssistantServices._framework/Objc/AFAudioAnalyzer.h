@@ -52,6 +52,7 @@
 @property (readonly) unsigned long long hash;
 @property double interspeechWaitTime; // @synthesize interspeechWaitTime=_interspeechWaitTime;
 @property (readonly, nonatomic) double lastEndOfVoiceActivityTime;
+@property (readonly, nonatomic) double lastStartOfVoiceActivityTime;
 @property (nonatomic) double minimumDurationForEndpointer; // @synthesize minimumDurationForEndpointer=_minimumDurationForEndpointer;
 @property double startWaitTime; // @synthesize startWaitTime=_startWaitTime;
 @property (nonatomic) long long style; // @synthesize style=_style;

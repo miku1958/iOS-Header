@@ -24,6 +24,7 @@
 
 - (IKDOMNode *)appendChild:(IKDOMNode *)arg1;
 - (IKDOMNode *)cloneNode:(BOOL)arg1;
+- (BOOL)contains:(IKDOMNode *)arg1;
 - (IKJSObject *)getFeature:(NSString *)arg1:(NSString *)arg2;
 - (BOOL)hasChildNodes;
 - (IKDOMNode *)insertBefore:(IKDOMNode *)arg1:(IKDOMNode *)arg2;

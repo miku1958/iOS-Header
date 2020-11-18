@@ -14,9 +14,11 @@
 @interface HMDApplicationVendorIDStore : NSObject <NSSecureCoding>
 {
     NSMutableDictionary *_applicationVendorIdMapping;
+    NSMutableDictionary *_applicationMachUUIDMapping;
     NSObject<OS_dispatch_queue> *_clientQueue;
 }
 
+@property (readonly, nonatomic) NSMutableDictionary *applicationMachUUIDMapping; // @synthesize applicationMachUUIDMapping=_applicationMachUUIDMapping;
 @property (readonly, nonatomic) NSMutableDictionary *applicationVendorIdMapping; // @synthesize applicationVendorIdMapping=_applicationVendorIdMapping;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 
@@ -25,6 +27,7 @@
 - (void).cxx_destruct;
 - (BOOL)_addVendorID:(id)arg1 forApplication:(id)arg2 companionAppBundleId:(id)arg3 spiClient:(BOOL)arg4;
 - (void)_extractVendorIDForApplication:(id)arg1;
+- (id)_machUUIDsForApplication:(id)arg1;
 - (void)_save;
 - (void)_setAndSaveVendorID:(id)arg1 applicationBundleId:(id)arg2 companionAppBundleId:(id)arg3 spiClient:(BOOL)arg4;
 - (id)_vendorIDForApplication:(id)arg1;
@@ -35,6 +38,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)machUUIDsForApplication:(id)arg1;
 - (void)removeVendorIDForApplicationBundleId:(id)arg1;
 - (id)vendorIDForApplication:(id)arg1;
 

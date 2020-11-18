@@ -6,11 +6,11 @@
 
 #import <FrontBoard/FBUISceneClientProxy-Protocol.h>
 
-@class FBUISceneParameters;
+@class FBSSceneParameters;
 @protocol FBUISceneClientDelegate, FBUISceneHostProxy;
 
 @protocol FBUISceneClient <FBUISceneClientProxy>
 - (void)registerWithDelegate:(id<FBUISceneClientDelegate>)arg1;
-- (void)sceneHost:(id<FBUISceneHostProxy>)arg1 registerWithInitialParameters:(FBUISceneParameters *)arg2;
+- (void)sceneHost:(id<FBUISceneHostProxy>)arg1 registerWithInitialParameters:(FBSSceneParameters *)arg2;
 @end
 

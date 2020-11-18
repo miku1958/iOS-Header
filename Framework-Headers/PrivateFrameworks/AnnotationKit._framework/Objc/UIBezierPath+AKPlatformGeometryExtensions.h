@@ -7,6 +7,7 @@
 #import <UIKit/UIBezierPath.h>
 
 @interface UIBezierPath (AKPlatformGeometryExtensions)
+- (void)akAppendPath:(id)arg1;
 - (struct CGPath *)newCGPathForPlatformBezierPath;
 @end
 

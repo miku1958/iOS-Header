@@ -13,6 +13,7 @@
     NSArray *_policies;
     NSNumber *_status;
     BOOL _remoteWipe;
+    BOOL _accountOnlyRemoteWipe;
     NSString *_policyType;
 }
 
@@ -22,9 +23,11 @@
 + (BOOL)parsingLeafNode;
 + (BOOL)parsingWithSubItems;
 - (void).cxx_destruct;
+- (void)_setAccountOnlyRemoteWipe:(id)arg1;
 - (void)_setPolicies:(id)arg1;
 - (void)_setRemoteWipe:(id)arg1;
 - (void)_setStatus:(id)arg1;
+- (BOOL)accountOnlyRemoteWipe;
 - (id)asParseRules;
 - (id)description;
 - (id)init;

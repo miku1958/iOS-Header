@@ -6,130 +6,57 @@
 
 #import <objc/NSObject.h>
 
-#import <UserManagement/NSXPCListenerDelegate-Protocol.h>
+#import <UserManagement/UMUserManagement-Protocol.h>
+#import <UserManagement/UMUserSwitchManagement-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSMutableArray, NSString, NSXPCConnection, NSXPCListener, UMUser;
-@protocol OS_dispatch_queue, UMUserListUpdateObserver;
+@class NSArray, NSString, UMUser;
+@protocol UMUserListUpdateObserver;
 
-@interface UMUserManager : NSObject <NSXPCListenerDelegate>
+@interface UMUserManager : NSObject <UMUserManagement, UMUserSwitchManagement>
 {
-    BOOL _isMultiUser;
-    BOOL _isMultiUserHasBeenFetched;
-    BOOL _inSyncBubble;
-    BOOL _inSyncBubbleHasBeenFetched;
-    unsigned long long _maxNumberOfUsers;
-    BOOL _maxNumberOfUsersHasBeenFetched;
-    int _foregroundUID;
-    BOOL _foregroundUIDHasBeenFetched;
-    UMUser *_currentUser;
     NSArray *_allUsers;
-    NSDictionary *_deviceAttributes;
-    NSObject<OS_dispatch_queue> *_dispatchQueue;
-    BOOL _didRegisterStakeholder;
-    BOOL _didBroadcastWillSwitchToUser;
-    BOOL _didSendTasks;
-    unsigned int _interruptionRetryCount;
+    BOOL _switchIsOccurring;
     id<UMUserListUpdateObserver> _userListUpdateObserver;
-    id _stakeholder;
-    unsigned long long _stakeholderType;
-    NSString *_machServiceName;
-    unsigned long long _unregistrationStatus;
-    NSString *_unregistrationReason;
-    NSDictionary *_personaSpec;
-    NSData *_passcodeData;
-    NSData *_contextData;
-    CDUnknownBlockType _switchCompletionHandler;
-    CDUnknownBlockType _uploadContentCompletionHandler;
-    NSMutableArray *_switchBlockingTasks;
-    NSMutableArray *_syncTasks;
-    CDUnknownBlockType _bubblePopHandler;
-    NSXPCConnection *_xpcConnection;
-    NSXPCListener *_xpcListener;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType bubblePopHandler; // @synthesize bubblePopHandler=_bubblePopHandler;
-@property (strong, nonatomic) NSData *contextData; // @synthesize contextData=_contextData;
 @property (readonly, copy, nonatomic) UMUser *currentUser;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL didBroadcastWillSwitchToUser; // @synthesize didBroadcastWillSwitchToUser=_didBroadcastWillSwitchToUser;
-@property (nonatomic) BOOL didRegisterStakeholder; // @synthesize didRegisterStakeholder=_didRegisterStakeholder;
-@property (nonatomic) BOOL didSendTasks; // @synthesize didSendTasks=_didSendTasks;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) unsigned int interruptionRetryCount; // @synthesize interruptionRetryCount=_interruptionRetryCount;
 @property (readonly, nonatomic) BOOL isMultiUser;
-@property (strong, nonatomic) NSString *machServiceName; // @synthesize machServiceName=_machServiceName;
 @property (readonly, nonatomic) unsigned long long maxNumberOfUsers;
-@property (strong, nonatomic) NSData *passcodeData; // @synthesize passcodeData=_passcodeData;
-@property (strong, nonatomic) NSDictionary *personaSpec; // @synthesize personaSpec=_personaSpec;
-@property (weak, nonatomic) id stakeholder; // @synthesize stakeholder=_stakeholder;
-@property (nonatomic) unsigned long long stakeholderType; // @synthesize stakeholderType=_stakeholderType;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSMutableArray *switchBlockingTasks; // @synthesize switchBlockingTasks=_switchBlockingTasks;
-@property (copy, nonatomic) CDUnknownBlockType switchCompletionHandler; // @synthesize switchCompletionHandler=_switchCompletionHandler;
-@property (strong, nonatomic) NSMutableArray *syncTasks; // @synthesize syncTasks=_syncTasks;
-@property (strong, nonatomic) NSString *unregistrationReason; // @synthesize unregistrationReason=_unregistrationReason;
-@property (nonatomic) unsigned long long unregistrationStatus; // @synthesize unregistrationStatus=_unregistrationStatus;
-@property (copy, nonatomic) CDUnknownBlockType uploadContentCompletionHandler; // @synthesize uploadContentCompletionHandler=_uploadContentCompletionHandler;
+@property (nonatomic) BOOL switchIsOccurring; // @synthesize switchIsOccurring=_switchIsOccurring;
 @property (weak, nonatomic) id<UMUserListUpdateObserver> userListUpdateObserver; // @synthesize userListUpdateObserver=_userListUpdateObserver;
-@property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
-@property (strong, nonatomic) NSXPCListener *xpcListener; // @synthesize xpcListener=_xpcListener;
 
 + (id)sharedManager;
 - (void).cxx_destruct;
-- (void)_addTask:(id)arg1;
-- (void)_broadcastReadyToSwitchToUser:(id)arg1;
-- (void)_broadcastWillSwitchToUser:(id)arg1;
-- (int)_foregroundUID;
-- (BOOL)_inSyncBubble;
-- (int)_pid;
-- (void)_raiseExceptionIfOperationNotPermittedError:(id)arg1;
-- (void)_raiseExceptionIfWeDoNotHaveAStakeholder;
-- (void)_raiseExceptionIfWeDoNotHaveASyncStakeholder;
-- (void)_raiseExceptionIfWeHaveAStakeholder;
-- (void)_raiseExceptionOnMainThread:(id)arg1;
-- (void)_registerStakeholder:(id)arg1;
-- (void)_removeTask:(id)arg1;
-- (void)_resendXPCMessages;
-- (void)_sendTasks;
-- (void)_sendXPCMessageToServerOfType:(unsigned long long)arg1;
-- (void)_sendXPCMessageToServerOfType:(unsigned long long)arg1 backingObject:(id)arg2;
-- (id)_server;
-- (void)_setUpUMServerXPCConnection:(id)arg1;
-- (void)_setUpXPCConnectionToUMServer;
-- (void)_tearDownConnectionToUMServer;
+- (void)_allUsersDidChange;
 - (id)_userWithUID:(unsigned int)arg1;
-- (void)addUserSwitchBlockingTask:(id)arg1;
-- (void)addUserSyncTask:(id)arg1;
 - (id)allUsers;
-- (void)bubbleDidPop;
+- (BOOL)canAccessUserProperties;
 - (void)createUser:(id)arg1 passcodeData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)currentUserSwitchContext;
 - (void)currentUserSwitchContextHasBeenUsed;
 - (void)deleteUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)disableUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
-- (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)loadUser:(id)arg1 passcodeData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)logIfMultiUser:(id)arg1;
-- (void)readyToSwitchToUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)registerCriticalUserSwitchStakeHolder:(id)arg1;
 - (void)registerUserListUpdateObserver:(id)arg1;
 - (void)registerUserSwitchStakeHolder:(id)arg1;
+- (void)registerUserSwitchStakeHolder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)registerUserSyncStakeholder:(id)arg1 withMachServiceName:(id)arg2;
-- (void)removeUserSwitchBlockingTask:(id)arg1;
-- (void)removeUserSyncTask:(id)arg1;
+- (void)resumeQuotas;
 - (void)resumeSync;
+- (void)suspendQuotasWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)switchToLoginUserWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)switchToLoginUserWithError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)switchToUser:(id)arg1 passcodeData:(id)arg2 context:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (BOOL)syncPropertiesForUser:(id)arg1;
 - (void)terminateSyncWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)unregisterStakeHolder:(id)arg1 status:(unsigned long long)arg2 reason:(id)arg3;
-- (void)uploadContentWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)userExists:(id)arg1;
 - (void)userListDidUpdate;
-- (void)userSwitchTaskListDidUpdate;
-- (void)willSwitchToUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

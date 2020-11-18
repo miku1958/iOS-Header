@@ -23,6 +23,7 @@
     BOOL _willPresentAlertView;
     CDUnknownBlockType _clickedBlock;
     CDUnknownBlockType _dismissedBlock;
+    id<TSKUIAlertProtocol> _retainedDelegate;
 }
 
 @property (nonatomic) long long cancelButtonIndex;
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) id context; // @synthesize context=_context;
 @property (nonatomic) id<TSKUIAlertProtocol> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL inBackground; // @synthesize inBackground=_inBackground;
+@property (strong, nonatomic) id<TSKUIAlertProtocol> retainedDelegate; // @synthesize retainedDelegate=_retainedDelegate;
 
 - (long long)addButtonWithTitle:(id)arg1;
 - (void)applicationDidEnterBackground:(id)arg1;

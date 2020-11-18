@@ -12,7 +12,7 @@
 #import <ITMLKit/IKStyleableElement-Protocol.h>
 #import <ITMLKit/JSExport-Protocol.h>
 
-@class IKDOMHTMLCollection, IKViewElementStyleComposer, NSMutableDictionary, NSString;
+@class IKDOMHTMLCollection, IKDOMNamedNodeMap, IKViewElementStyleComposer, NSMutableDictionary, NSString;
 @protocol IKStyleableElement;
 
 @interface IKDOMElement : IKDOMNode <IKJDOMParsingElement, IKStyleableElement, IKJSDOMElement, JSExport, IKJSDOMParentNode>
@@ -22,6 +22,7 @@
     id<IKStyleableElement> parentStyleableElement;
 }
 
+@property (readonly, copy, nonatomic) IKDOMNamedNodeMap *attributes;
 @property (readonly, nonatomic) unsigned long long childElementCount;
 @property (readonly, nonatomic) IKDOMHTMLCollection *children;
 @property (readonly, copy, nonatomic) NSString *elementName;
@@ -34,13 +35,14 @@
 @property (readonly, strong, nonatomic) NSString *tagName;
 
 - (void).cxx_destruct;
-- (id)attributes;
+- (id)_attributes;
 - (id)childElementByTagName:(id)arg1;
 - (id)childElements;
 - (id)childElementsByTagName:(id)arg1;
 - (id)getAttribute:(id)arg1;
 - (id)getElementsByTagName:(id)arg1;
 - (BOOL)hasAttribute:(id)arg1;
+- (BOOL)hasAttributes;
 - (void)insertAdjacentHTML:(id)arg1:(id)arg2;
 - (id)nodeName;
 - (long long)nodeType;

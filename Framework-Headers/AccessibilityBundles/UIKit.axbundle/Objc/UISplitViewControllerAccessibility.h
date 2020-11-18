@@ -15,11 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilitySpeakThisViewController;
-- (void)_axApplyDisplayModeLabel;
 - (void)_axModalizeViewControllerViews;
-- (void)_loadNewSubviews:(id)arg1;
-- (void)_updateDisplayModeButtonItem;
-- (id)displayModeButtonItem;
 - (void)setViewControllers:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 

@@ -16,7 +16,9 @@
 @property (readonly, nonatomic) UIViewController *presentingViewController;
 
 - (void)bannerTappedAtPoint:(struct CGPoint)arg1;
+- (void)changeBannerViewState:(int)arg1;
 - (void)pauseBannerMedia;
+- (void)privacyButtonWasTapped;
 - (void)resumeBannerMedia;
 - (void)serverBannerViewDidFailToReceiveAdWithError:(NSError *)arg1;
 - (void)serverBannerViewDidLoad;

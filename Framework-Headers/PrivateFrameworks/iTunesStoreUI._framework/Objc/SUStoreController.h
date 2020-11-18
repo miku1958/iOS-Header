@@ -94,7 +94,7 @@
 - (id)init;
 - (BOOL)isComposingEmail;
 - (BOOL)libraryContainsItemIdentifier:(unsigned long long)arg1;
-- (void)mailComposeController:(id)arg1 didFinishWithResult:(int)arg2 error:(id)arg3;
+- (void)mailComposeController:(id)arg1 didFinishWithResult:(long long)arg2 error:(id)arg3;
 - (BOOL)matchesClientApplication:(id)arg1;
 - (id)newScriptInterface;
 - (id)overlayBackgroundViewController;

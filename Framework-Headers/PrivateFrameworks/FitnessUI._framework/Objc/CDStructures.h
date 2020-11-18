@@ -59,16 +59,24 @@ struct __UniformBindings {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    float _field1;
-    float _field2;
-    float _field3;
-    float _field4;
-} CDStruct_818bb265;
+    unsigned long long section;
+    unsigned long long item;
+} CDStruct_f943eba4;
 
 typedef struct {
-    float _field1;
-    float _field2;
-} CDStruct_b2fbf00d;
+    double _field1;
+    double _field2;
+} CDStruct_c3b9c2ee;
+
+typedef struct {
+    CDStruct_f943eba4 first;
+    CDStruct_f943eba4 last;
+} CDStruct_c4ec18df;
+
+typedef struct {
+    CDStruct_c3b9c2ee _field1;
+    CDStruct_c3b9c2ee _field2;
+} CDStruct_90e2a262;
 
 #pragma mark Named Unions
 
@@ -94,12 +102,6 @@ union _GLKMatrix4 {
     float m[16];
 };
 
-union _GLKVector2 {
-    CDStruct_b2fbf00d _field1;
-    CDStruct_b2fbf00d _field2;
-    float _field3[2];
-};
-
 union _GLKVector3 {
     struct {
         float x;
@@ -117,12 +119,5 @@ union _GLKVector3 {
         float p;
     } ;
     float v[3];
-};
-
-union _GLKVector4 {
-    CDStruct_818bb265 _field1;
-    CDStruct_818bb265 _field2;
-    CDStruct_818bb265 _field3;
-    float _field4[4];
 };
 

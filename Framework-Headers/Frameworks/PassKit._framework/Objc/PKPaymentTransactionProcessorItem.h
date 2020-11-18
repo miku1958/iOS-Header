@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, PKPaymentApplication, PKPaymentTransaction;
 
@@ -19,7 +19,7 @@
 @property (strong, nonatomic) PKPaymentApplication *paymentApplication; // @synthesize paymentApplication=_paymentApplication;
 @property (strong, nonatomic) PKPaymentTransaction *paymentTransaction; // @synthesize paymentTransaction=_paymentTransaction;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

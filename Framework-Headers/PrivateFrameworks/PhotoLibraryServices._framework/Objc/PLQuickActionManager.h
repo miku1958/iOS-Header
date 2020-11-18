@@ -8,13 +8,13 @@
 
 #import <PhotoLibraryServices/PLCameraPreviewWellImageChangeObserver-Protocol.h>
 
-@class NSData, SBSApplicationService;
+@class NSData, SBSApplicationShortcutService;
 
 @interface PLQuickActionManager : NSObject <PLCameraPreviewWellImageChangeObserver>
 {
     BOOL __mostRecentPhotoIsInvalid;
     NSData *__cachedMostRecentPhotoData;
-    SBSApplicationService *__appShortcutService;
+    SBSApplicationShortcutService *__appShortcutService;
     Class __SBSApplicationShortcutServiceClass;
     Class __SBSApplicationShortcutItemClass;
     Class __SBSApplicationShortcutCustomImageIconClass;
@@ -23,7 +23,7 @@
 @property (strong, nonatomic, setter=_setSBSApplicationShortcutCustomImageIconClass:) Class _SBSApplicationShortcutCustomImageIconClass; // @synthesize _SBSApplicationShortcutCustomImageIconClass=__SBSApplicationShortcutCustomImageIconClass;
 @property (strong, nonatomic, setter=_setSBSApplicationShortcutItemClass:) Class _SBSApplicationShortcutItemClass; // @synthesize _SBSApplicationShortcutItemClass=__SBSApplicationShortcutItemClass;
 @property (strong, nonatomic, setter=_setSBSApplicationShortcutServiceClass:) Class _SBSApplicationShortcutServiceClass; // @synthesize _SBSApplicationShortcutServiceClass=__SBSApplicationShortcutServiceClass;
-@property (strong, nonatomic, setter=_setAppShortcutService:) SBSApplicationService *_appShortcutService; // @synthesize _appShortcutService=__appShortcutService;
+@property (strong, nonatomic, setter=_setAppShortcutService:) SBSApplicationShortcutService *_appShortcutService; // @synthesize _appShortcutService=__appShortcutService;
 @property (strong, nonatomic, setter=_setCachedMostRecentPhotoData:) NSData *_cachedMostRecentPhotoData; // @synthesize _cachedMostRecentPhotoData=__cachedMostRecentPhotoData;
 @property (nonatomic, setter=_setMostRecentPhotoIsInvalid:) BOOL _mostRecentPhotoIsInvalid; // @synthesize _mostRecentPhotoIsInvalid=__mostRecentPhotoIsInvalid;
 

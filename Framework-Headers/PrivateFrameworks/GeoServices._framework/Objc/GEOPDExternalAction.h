@@ -23,8 +23,11 @@
 @property (strong, nonatomic) NSMutableArray *externalActionDetails; // @synthesize externalActionDetails=_externalActionDetails;
 @property (nonatomic) BOOL hasComponentType;
 
++ (Class)externalActionDetailType;
+- (int)StringAsComponentType:(id)arg1;
 - (void)addExternalActionDetail:(id)arg1;
 - (void)clearExternalActionDetails;
+- (id)componentTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

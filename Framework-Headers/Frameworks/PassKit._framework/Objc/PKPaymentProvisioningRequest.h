@@ -11,16 +11,22 @@
 @interface PKPaymentProvisioningRequest : PKPaymentOverlayableRequest
 {
     PKPaymentEligibilityResponse *_eligibilityResponse;
+    NSString *_cardholderName;
     NSString *_cardSecurityCode;
     NSData *_activationData;
+    NSData *_deviceScore;
+    NSString *_nonce;
 }
 
 @property (copy, nonatomic) NSData *activationData; // @synthesize activationData=_activationData;
 @property (copy, nonatomic) NSString *cardSecurityCode; // @synthesize cardSecurityCode=_cardSecurityCode;
+@property (copy, nonatomic) NSString *cardholderName; // @synthesize cardholderName=_cardholderName;
+@property (copy, nonatomic) NSData *deviceScore; // @synthesize deviceScore=_deviceScore;
 @property (strong, nonatomic) PKPaymentEligibilityResponse *eligibilityResponse; // @synthesize eligibilityResponse=_eligibilityResponse;
+@property (copy, nonatomic) NSString *nonce; // @synthesize nonce=_nonce;
 
-- (id)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 account:(id)arg3 certChain:(id)arg4 devSigned:(BOOL)arg5 deviceData:(id)arg6;
-- (void)dealloc;
+- (void).cxx_destruct;
+- (void)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 account:(id)arg3 certChain:(id)arg4 devSigned:(BOOL)arg5 deviceData:(id)arg6 webService:(id)arg7 completion:(CDUnknownBlockType)arg8;
 - (id)initWithEligibilityResponse:(id)arg1;
 
 @end

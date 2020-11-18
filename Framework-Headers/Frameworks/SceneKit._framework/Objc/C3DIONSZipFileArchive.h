@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSArray, NSData, NSDictionary, NSMutableDictionary, NSString;
 
@@ -36,7 +36,6 @@ __attribute__((visibility("hidden")))
 - (id)contentsForEntryName:(id)arg1;
 - (void)dealloc;
 - (id)entryNames;
-- (void)finalize;
 - (id)initWithData:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (id)initWithEntryNames:(id)arg1 contents:(id)arg2 properties:(id)arg3 options:(unsigned long long)arg4;
 - (id)initWithEntryNames:(id)arg1 dataProvider:(id)arg2 options:(unsigned long long)arg3;

@@ -8,12 +8,15 @@
 
 #import <EventKit/EKIdentityProtocol-Protocol.h>
 
-@class NSString, NSURL;
+@class NSDate, NSString, NSURL;
 
 @interface EKCalendarEventInvitationNotificationAttendee : NSObject <EKIdentityProtocol>
 {
     BOOL _statusChanged;
     BOOL _commentChanged;
+    BOOL _proposedStartDateChanged;
+    BOOL _proposedStartDateDeclined;
+    BOOL _isCurrentUser;
     NSString *_name;
     NSString *_firstName;
     NSString *_lastName;
@@ -21,6 +24,7 @@
     NSURL *_url;
     long long _participantStatus;
     NSString *_comment;
+    NSDate *_proposedStartDate;
 }
 
 @property (readonly, nonatomic) NSString *comment; // @synthesize comment=_comment;
@@ -30,15 +34,19 @@
 @property (readonly, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
 @property (readonly, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isCurrentUser; // @synthesize isCurrentUser=_isCurrentUser;
 @property (readonly, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) long long participantStatus; // @synthesize participantStatus=_participantStatus;
+@property (readonly, nonatomic) NSDate *proposedStartDate; // @synthesize proposedStartDate=_proposedStartDate;
+@property (readonly, nonatomic) BOOL proposedStartDateChanged; // @synthesize proposedStartDateChanged=_proposedStartDateChanged;
+@property (readonly, nonatomic) BOOL proposedStartDateDeclined; // @synthesize proposedStartDateDeclined=_proposedStartDateDeclined;
 @property (readonly, nonatomic) BOOL statusChanged; // @synthesize statusChanged=_statusChanged;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 
-- (void)dealloc;
-- (id)initWithAttendee:(id)arg1;
+- (void).cxx_destruct;
+- (id)initWithParticipant:(id)arg1;
 
 @end
 

@@ -11,10 +11,10 @@
 @interface SKUIViewReuseView : UIView
 {
     SKUIViewReusePool *_viewReusePool;
-    NSArray *_views;
+    NSArray *_allExistingViews;
 }
 
-@property (readonly, nonatomic) NSArray *allExistingViews; // @synthesize allExistingViews=_views;
+@property (readonly, nonatomic) NSArray *allExistingViews; // @synthesize allExistingViews=_allExistingViews;
 
 - (void).cxx_destruct;
 - (void)dealloc;

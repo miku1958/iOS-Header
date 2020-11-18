@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (const void *)bytes;
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithSharedBufferDataBuffer:(struct DataBuffer *)arg1;
 - (unsigned long long)length;
 

@@ -43,6 +43,7 @@
 - (id)_initWithView:(id)arg1 targetState:(long long)arg2 minimumRequiredState:(long long)arg3 useLinearClassifier:(BOOL)arg4;
 - (void)_installProgressObserver;
 - (BOOL)didEnd;
+- (BOOL)enteredMinimumState;
 - (id)initWithGestureRecognizer:(id)arg1;
 - (id)initWithGestureRecognizer:(id)arg1 minimumRequiredState:(long long)arg2;
 - (id)initWithView:(id)arg1 targetState:(long long)arg2;

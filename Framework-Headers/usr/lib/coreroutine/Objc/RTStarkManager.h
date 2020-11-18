@@ -6,18 +6,18 @@
 
 #import <coreroutine/RTNotifier.h>
 
-@class RTTransaction;
+@class RTKeepAliveTransaction;
 
 __attribute__((visibility("hidden")))
 @interface RTStarkManager : RTNotifier
 {
     BOOL _trustedConnectionEstablished;
     long long _connectionState;
-    RTTransaction *_dirty;
+    RTKeepAliveTransaction *_dirty;
 }
 
 @property (nonatomic) long long connectionState; // @synthesize connectionState=_connectionState;
-@property (strong, nonatomic) RTTransaction *dirty; // @synthesize dirty=_dirty;
+@property (strong, nonatomic) RTKeepAliveTransaction *dirty; // @synthesize dirty=_dirty;
 @property (nonatomic) BOOL trustedConnectionEstablished; // @synthesize trustedConnectionEstablished=_trustedConnectionEstablished;
 
 + (id)sharedInstance;

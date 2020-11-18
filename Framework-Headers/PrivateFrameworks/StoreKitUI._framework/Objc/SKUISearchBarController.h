@@ -24,6 +24,7 @@
     SKUISearchBarViewElement *_viewElement;
 }
 
+@property (readonly, nonatomic) BOOL canBecomeActive;
 @property (strong, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -44,6 +45,7 @@
 - (id)_newSearchFieldController;
 - (void)_removeCancelTouchGestureRecognizer;
 - (id)_searchFieldController;
+- (void)becomeActive;
 - (void)dealloc;
 - (id)initWithSearchBarViewElement:(id)arg1;
 - (void)reloadAfterDocumentUpdate;
@@ -54,7 +56,6 @@
 - (void)searchBarTextDidEndEditing:(id)arg1;
 - (void)searchFieldController:(id)arg1 requestSearch:(id)arg2;
 - (void)searchFieldController:(id)arg1 searchBarDidChangeText:(id)arg2;
-- (BOOL)searchFieldControllerShouldBeginEditing:(id)arg1;
 
 @end
 

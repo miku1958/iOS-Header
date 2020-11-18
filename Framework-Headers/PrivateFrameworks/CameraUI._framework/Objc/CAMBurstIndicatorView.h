@@ -10,6 +10,7 @@
 
 @interface CAMBurstIndicatorView : UIView
 {
+    long long _layoutStyle;
     UIView *__backgroundView;
     UILabel *__countLabel;
     long long __numberOfPhotos;
@@ -18,15 +19,18 @@
 @property (readonly, nonatomic) UIView *_backgroundView; // @synthesize _backgroundView=__backgroundView;
 @property (readonly, nonatomic) UILabel *_countLabel; // @synthesize _countLabel=__countLabel;
 @property (readonly, nonatomic) long long _numberOfPhotos; // @synthesize _numberOfPhotos=__numberOfPhotos;
+@property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 
 - (void).cxx_destruct;
-- (void)_commonCAMAvalancheIndicatorViewInitialization;
+- (void)_commonCAMAvalancheIndicatorViewInitializationWithLayoutStyle:(long long)arg1;
 - (void)_performCaptureAnimation;
 - (void)_updateCountLabelWithNumberOfPhotos;
+- (void)_updateForLayoutStyle;
 - (void)finishIncrementingWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)incrementWithCaptureAnimation:(BOOL)arg1;
+- (long long)incrementWithCaptureAnimation:(BOOL)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithLayoutStyle:(long long)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)reset;

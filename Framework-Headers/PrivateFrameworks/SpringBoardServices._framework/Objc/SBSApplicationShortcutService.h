@@ -4,23 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <SpringBoardServices/SBSAbstractApplicationService.h>
 
-@class SBSApplicationService;
-
-@interface SBSApplicationShortcutService : NSObject
+@interface SBSApplicationShortcutService : SBSAbstractApplicationService
 {
-    SBSApplicationService *_service;
 }
 
-- (void).cxx_destruct;
-- (void)dealloc;
+- (void)fetchApplicationShortcutItemsOfTypes:(unsigned long long)arg1 forBundleIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchDynamicApplicationShortcutItemsForBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchDynamicApplicationShortcutItemsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)init;
-- (void)invalidate;
 - (void)updateDynamicApplicationShortcutItems:(id)arg1;
 - (void)updateDynamicApplicationShortcutItems:(id)arg1 bundleIdentifier:(id)arg2;
+- (void)updateDynamicApplicationShortcutItems:(id)arg1 forBundleIdentifier:(id)arg2;
 
 @end
 

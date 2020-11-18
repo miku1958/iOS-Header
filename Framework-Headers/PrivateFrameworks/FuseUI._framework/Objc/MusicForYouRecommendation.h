@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MediaPlayerUI/MPUModelObject.h>
+#import <MediaPlayer/MPModelObject.h>
 
-@interface MusicForYouRecommendation : MPUModelObject
+@interface MusicForYouRecommendation : MPModelObject
 {
     BOOL _hasAdditionalRecommendations;
 }
 
 @property (nonatomic) BOOL hasAdditionalRecommendations; // @synthesize hasAdditionalRecommendations=_hasAdditionalRecommendations;
 
++ (id)__MusicForYouRecommendationPropertyHasAdditionalRecommendations__PROPERTY;
 + (id)__hasAdditionalRecommendations__KEY;
-- (id)descriptionWithType:(unsigned long long)arg1;
+- (id)descriptionWithType:(long long)arg1;
 
 @end
 

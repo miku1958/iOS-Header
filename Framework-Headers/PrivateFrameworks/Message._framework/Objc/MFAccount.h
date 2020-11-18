@@ -11,7 +11,7 @@
 @interface MFAccount : NSObject
 {
     ACAccount *_persistentAccount;
-    int _persistentAccountLock;
+    struct os_unfair_lock_s _persistentAccountLock;
     NSMutableDictionary *_unsavedAccountProperties;
     NSString *_sourceApplicationBundleIdentifier;
 }
@@ -99,6 +99,7 @@
 - (BOOL)enableAccount;
 - (id)enabledDataclasses;
 - (BOOL)fetchTokensIfNecessary:(id *)arg1;
+- (unsigned long long)hash;
 - (id)inaccessiblePasswordErrorWithTitle:(id)arg1;
 - (id)init;
 - (id)initWithPersistentAccount:(id)arg1;
@@ -106,7 +107,9 @@
 - (id)insecureConnectionSettings;
 - (BOOL)isActive;
 - (BOOL)isEnabledForDataclass:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isManaged;
+- (BOOL)isSyncingNotes;
 - (id)loginDisabledErrorWithTitle:(id)arg1;
 - (id)missingPasswordErrorWithTitle:(id)arg1;
 - (id)nameForMailboxUid:(id)arg1;

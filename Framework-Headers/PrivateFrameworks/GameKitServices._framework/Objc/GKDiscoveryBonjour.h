@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
@@ -30,7 +30,7 @@
 @property (copy, nonatomic) CDUnknownBlockType connectionCallback; // @synthesize connectionCallback=_connectionCallback;
 @property (strong, nonatomic) NSMutableArray *launchdSources; // @synthesize launchdSources=_launchdSources;
 @property (strong, nonatomic) NSMutableDictionary *resolveContainers; // @synthesize resolveContainers=_resolveContainers;
-@property (nonatomic) NSObject<OS_dispatch_queue> *resolveContainersSyncQueue; // @synthesize resolveContainersSyncQueue=_resolveContainersSyncQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *resolveContainersSyncQueue; // @synthesize resolveContainersSyncQueue=_resolveContainersSyncQueue;
 @property (copy, nonatomic) NSString *serviceDomain; // @synthesize serviceDomain=_serviceDomain;
 @property (copy, nonatomic) CDUnknownBlockType serviceNameCollisionCallback; // @synthesize serviceNameCollisionCallback=_serviceNameCollisionCallback;
 @property (copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     id _textEffectsOperatorProxy;
     BOOL _hasIntrinsicContentSize;
     struct CGSize _intrinsicContentSize;
+    struct CGRect _formerTextEffectsContentFrame;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -35,9 +36,11 @@ __attribute__((visibility("hidden")))
 - (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
 - (long long)_interfaceOrientationForScene:(id)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
+- (BOOL)_needsTextEffectsUpdateToFrame:(struct CGRect)arg1;
 - (void)_scrollToTopFromTouchAtScreenLocation:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)_updateSceneGeometries:(id)arg1 forOrientation:(long long)arg2;
 - (void)_updateTextEffectsGeometries:(struct CGRect)arg1;
+- (void)_updateTextEffectsGeometriesImmediately;
 - (BOOL)canBecomeFocused;
 - (void)dealloc;
 - (BOOL)isScrollEnabled;

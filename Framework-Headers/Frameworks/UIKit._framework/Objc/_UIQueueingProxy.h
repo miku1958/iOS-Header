@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIQueueingProxy : _UITargetedProxy
 {
-    int _lock;
+    struct os_unfair_lock_s _lock;
     unsigned long long _suspensionCount;
     NSMutableArray *_queuedInvocations;
     CDUnknownBlockType _shouldSuspendInvocationBlock;

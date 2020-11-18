@@ -41,7 +41,7 @@
 + (id)velocityFieldWithVector:(struct CGVector)arg1;
 + (id)vortexField;
 - (void).cxx_destruct;
-- (void)_addItem:(id)arg1;
+- (void)_addFieldItem:(id)arg1;
 - (void)_associate;
 - (void)_changedParameter;
 - (void)_dissociate;

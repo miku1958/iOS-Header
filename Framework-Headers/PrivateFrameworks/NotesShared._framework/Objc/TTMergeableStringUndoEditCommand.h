@@ -23,8 +23,8 @@
 @property (readonly, nonatomic) vector_252d7b3a *insertStrings; // @synthesize insertStrings=_insertStrings;
 @property (readonly) Class superclass;
 
+- (BOOL)addToGroup:(id)arg1;
 - (void)applyToString:(id)arg1;
-- (BOOL)coalesceWith:(id)arg1 inString:(id)arg2;
 - (void)dealloc;
 - (BOOL)hasTopoIDsThatCanChange;
 - (id)init;

@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (int)pixelFormat;
 - (id)sliceInformation;
 - (struct CGImage *)unslicedImage;
+- (struct CGSize)unslicedSize;
 
 @end
 

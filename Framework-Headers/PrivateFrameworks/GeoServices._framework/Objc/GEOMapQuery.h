@@ -12,7 +12,7 @@
 
 @interface GEOMapQuery : PBCodable <NSCopying>
 {
-    CDStruct_612aec5b _sessionID;
+    struct GEOSessionID _sessionID;
     int _clientImgFmt;
     int _clientImgMaxHeight;
     int _clientImgMaxWidth;
@@ -71,12 +71,15 @@
 @property (strong, nonatomic) GEOPlaceSearchRequest *placeSearchRequest; // @synthesize placeSearchRequest=_placeSearchRequest;
 @property (strong, nonatomic) NSString *query; // @synthesize query=_query;
 @property (nonatomic) int requestType; // @synthesize requestType=_requestType;
-@property (nonatomic) CDStruct_612aec5b sessionID; // @synthesize sessionID=_sessionID;
+@property (nonatomic) struct GEOSessionID sessionID; // @synthesize sessionID=_sessionID;
 @property (nonatomic) int tilesizeX; // @synthesize tilesizeX=_tilesizeX;
 @property (nonatomic) int tilesizeY; // @synthesize tilesizeY=_tilesizeY;
 @property (strong, nonatomic) GEOLocation *userLocation; // @synthesize userLocation=_userLocation;
 @property (nonatomic) int zoomlevel; // @synthesize zoomlevel=_zoomlevel;
 
+- (int)StringAsClientImgFmt:(id)arg1;
+- (int)StringAsRequestType:(id)arg1;
+- (id)clientImgFmtAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -86,6 +89,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)requestTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

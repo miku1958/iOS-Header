@@ -68,6 +68,7 @@
 - (void)_evict;
 - (unsigned long long)_freeableDiskSpace;
 - (void)_localeChanged:(id)arg1;
+- (void)_openDBAndPurgeContents;
 - (void)_openDBForceRecreate:(BOOL)arg1;
 - (void)_openIfNecessary;
 - (void)_performWrites:(BOOL)arg1;
@@ -79,6 +80,7 @@
 - (BOOL)_tileSetExpires:(unsigned int)arg1;
 - (void)_updateEdition:(unsigned int)arg1 forTileset:(unsigned int)arg2 provider:(unsigned int)arg3 invalidateOnly:(BOOL)arg4;
 - (void)_updateSize;
+- (void)_updateVersionTableWithCountryAndRegion;
 - (void)_writeEntry:(id)arg1;
 - (void)_writeVersionForCountry:(id)arg1 region:(id)arg2;
 - (void)addData:(id)arg1 forKey:(struct _GEOTileKey *)arg2 edition:(unsigned int)arg3 set:(unsigned int)arg4 provider:(unsigned int)arg5 etag:(id)arg6;

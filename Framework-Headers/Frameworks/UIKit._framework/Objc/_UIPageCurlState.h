@@ -6,10 +6,12 @@
 
 #import <UIKit/_UITransitionState.h>
 
-@class UIView, _UIPageCurl;
+#import <UIKit/CAAnimationDelegate-Protocol.h>
+
+@class NSString, UIView, _UIPageCurl;
 
 __attribute__((visibility("hidden")))
-@interface _UIPageCurlState : _UITransitionState
+@interface _UIPageCurlState : _UITransitionState <CAAnimationDelegate>
 {
     _UIPageCurl *_pageCurl;
     long long _curlType;
@@ -30,12 +32,16 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UIView *backView; // @synthesize backView=_backView;
 @property (readonly, nonatomic) long long curlState; // @synthesize curlState=_curlState;
 @property (readonly, nonatomic) long long curlType; // @synthesize curlType=_curlType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) UIView *frontPageView;
 @property (readonly, nonatomic) UIView *frontView; // @synthesize frontView=_frontView;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct CGPoint initialLocation; // @synthesize initialLocation=_initialLocation;
 @property (readonly, nonatomic) _UIPageCurl *pageCurl; // @synthesize pageCurl=_pageCurl;
 @property (readonly, nonatomic, getter=hasPendingAnimations) BOOL pendingAnimations;
 @property (readonly, nonatomic) struct CGPoint referenceLocation; // @synthesize referenceLocation=_referenceLocation;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (long long)_effectiveTransitionDirection;

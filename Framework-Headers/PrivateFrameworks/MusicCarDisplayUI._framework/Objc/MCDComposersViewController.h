@@ -15,6 +15,7 @@
 + (id)persistentIDProperty;
 - (void)_limitedUIDidChange;
 - (void)defaultsDidChange;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 
 @end
 

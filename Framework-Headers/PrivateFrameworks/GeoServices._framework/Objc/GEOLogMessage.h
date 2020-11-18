@@ -8,50 +8,36 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAppConfig, GEOAppState, GEODebugLogMessage, GEODeviceConfig, GEODeviceState, GEOPerformanceLogMessage, GEOUsageLogMessage, NSString;
+@class NSMutableArray;
 
 @interface GEOLogMessage : PBCodable <NSCopying>
 {
-    GEOAppConfig *_appConfig;
-    GEOAppState *_appState;
-    GEODebugLogMessage *_debugLogMessage;
-    GEODeviceConfig *_deviceConfig;
-    GEODeviceState *_deviceState;
-    NSString *_logFacility;
-    NSString *_logMessageString;
     int _logMessageSubType;
     int _logMessageType;
-    GEOPerformanceLogMessage *_perfLogMessage;
-    GEOUsageLogMessage *_usageLogMessage;
+    NSMutableArray *_logMsgEvents;
     struct {
         unsigned int logMessageSubType:1;
         unsigned int logMessageType:1;
     } _has;
 }
 
-@property (strong, nonatomic) GEOAppConfig *appConfig; // @synthesize appConfig=_appConfig;
-@property (strong, nonatomic) GEOAppState *appState; // @synthesize appState=_appState;
-@property (strong, nonatomic) GEODebugLogMessage *debugLogMessage; // @synthesize debugLogMessage=_debugLogMessage;
-@property (strong, nonatomic) GEODeviceConfig *deviceConfig; // @synthesize deviceConfig=_deviceConfig;
-@property (strong, nonatomic) GEODeviceState *deviceState; // @synthesize deviceState=_deviceState;
-@property (readonly, nonatomic) BOOL hasAppConfig;
-@property (readonly, nonatomic) BOOL hasAppState;
-@property (readonly, nonatomic) BOOL hasDebugLogMessage;
-@property (readonly, nonatomic) BOOL hasDeviceConfig;
-@property (readonly, nonatomic) BOOL hasDeviceState;
-@property (readonly, nonatomic) BOOL hasLogFacility;
-@property (readonly, nonatomic) BOOL hasLogMessageString;
 @property (nonatomic) BOOL hasLogMessageSubType;
 @property (nonatomic) BOOL hasLogMessageType;
-@property (readonly, nonatomic) BOOL hasPerfLogMessage;
-@property (readonly, nonatomic) BOOL hasUsageLogMessage;
-@property (strong, nonatomic) NSString *logFacility; // @synthesize logFacility=_logFacility;
-@property (strong, nonatomic) NSString *logMessageString; // @synthesize logMessageString=_logMessageString;
 @property (nonatomic) int logMessageSubType; // @synthesize logMessageSubType=_logMessageSubType;
 @property (nonatomic) int logMessageType; // @synthesize logMessageType=_logMessageType;
-@property (strong, nonatomic) GEOPerformanceLogMessage *perfLogMessage; // @synthesize perfLogMessage=_perfLogMessage;
-@property (strong, nonatomic) GEOUsageLogMessage *usageLogMessage; // @synthesize usageLogMessage=_usageLogMessage;
+@property (strong, nonatomic) NSMutableArray *logMsgEvents; // @synthesize logMsgEvents=_logMsgEvents;
 
++ (id)acceptedLogMsgEvents;
++ (id)acceptedLogMsgEventsForLogMessageType:(int)arg1;
++ (void)initializeAcceptedLogMsgEventTypes;
++ (BOOL)logMessageType:(int)arg1 acceptsLogMsgEventType:(int)arg2;
++ (id)logMessagesForEvent:(id)arg1;
++ (Class)logMsgEventType;
+- (int)StringAsLogMessageSubType:(id)arg1;
+- (int)StringAsLogMessageType:(id)arg1;
+- (BOOL)acceptsLogMsgEventType:(int)arg1;
+- (void)addLogMsgEvent:(id)arg1;
+- (void)clearLogMsgEvents;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -61,6 +47,10 @@
 - (unsigned int)groupSequenceNumber;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)logMessageSubTypeAsString:(int)arg1;
+- (id)logMessageTypeAsString:(int)arg1;
+- (id)logMsgEventAtIndex:(unsigned long long)arg1;
+- (unsigned long long)logMsgEventsCount;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

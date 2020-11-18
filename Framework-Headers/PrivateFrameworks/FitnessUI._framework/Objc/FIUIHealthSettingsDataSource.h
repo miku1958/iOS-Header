@@ -8,7 +8,7 @@
 
 #import <FitnessUI/UITableViewDataSource-Protocol.h>
 
-@class FIUIActivitySettingsController, FIUIHealthSettingsBirthDatePickerController, FIUIHealthSettingsHeightPickerController, FIUIHealthSettingsSexPickerController, FIUIHealthSettingsTableViewCell, FIUIHealthSettingsWeightPickerController, NSString;
+@class FIUIActivitySettingsController, FIUIHealthSettingsBirthDatePickerController, FIUIHealthSettingsHeightPickerController, FIUIHealthSettingsSexPickerController, FIUIHealthSettingsTableViewCell, FIUIHealthSettingsWeightPickerController, FIUIHealthSettingsWheelchairUsePickerController, NSString;
 
 @interface FIUIHealthSettingsDataSource : NSObject <UITableViewDataSource>
 {
@@ -16,12 +16,15 @@
     FIUIHealthSettingsTableViewCell *_biologicalSexCell;
     FIUIHealthSettingsTableViewCell *_heightCell;
     FIUIHealthSettingsTableViewCell *_weightCell;
+    FIUIHealthSettingsTableViewCell *_wheelchairUseCell;
     FIUIActivitySettingsController *_preEditSettingsController;
+    BOOL _showWheelchair;
     FIUIActivitySettingsController *_settingsController;
     FIUIHealthSettingsBirthDatePickerController *_birthDatePickerController;
     FIUIHealthSettingsHeightPickerController *_heightPickerController;
     FIUIHealthSettingsWeightPickerController *_weightPickerController;
     FIUIHealthSettingsSexPickerController *_sexPickerController;
+    FIUIHealthSettingsWheelchairUsePickerController *_wheelchairUsePickerController;
 }
 
 @property (strong, nonatomic) FIUIHealthSettingsBirthDatePickerController *birthDatePickerController; // @synthesize birthDatePickerController=_birthDatePickerController;
@@ -34,6 +37,7 @@
 @property (strong, nonatomic) FIUIHealthSettingsSexPickerController *sexPickerController; // @synthesize sexPickerController=_sexPickerController;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) FIUIHealthSettingsWeightPickerController *weightPickerController; // @synthesize weightPickerController=_weightPickerController;
+@property (strong, nonatomic) FIUIHealthSettingsWheelchairUsePickerController *wheelchairUsePickerController; // @synthesize wheelchairUsePickerController=_wheelchairUsePickerController;
 
 - (void).cxx_destruct;
 - (void)_updateBiologicalSexCell;
@@ -41,17 +45,19 @@
 - (void)_updateCells;
 - (void)_updateHeightCell;
 - (void)_updateWeightCell;
+- (void)_updateWheelchairUseCell;
 - (id)biologicalSexCell;
 - (id)birthDateCell;
 - (void)cellDidBecomeFirstResponder:(id)arg1;
 - (void)cellDidResignFirstResponder:(id)arg1;
 - (void)endEditingAndDiscardChanges:(BOOL)arg1;
 - (id)heightCell;
-- (id)initWithActivitySettingsController:(id)arg1;
+- (id)initWithActivitySettingsController:(id)arg1 showWheelchair:(BOOL)arg2;
 - (void)startEditing;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)weightCell;
+- (id)wheelchairUseCell;
 
 @end
 

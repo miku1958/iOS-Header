@@ -11,8 +11,7 @@
 @protocol TUCallServicesDaemonDelegate <TUCallServicesProtocol>
 - (void)dialWithRequest:(TUDialRequest *)arg1;
 - (void)dialWithRequest:(TUDialRequest *)arg1 reply:(void (^)(TUCall *, NSArray *))arg2;
-- (void)launchForNewCallWithReply:(void (^)(void))arg1;
-- (void)pullThumperCallFromClientUsingInfo:(NSDictionary *)arg1 reply:(void (^)(TUCall *, NSArray *))arg2;
-- (void)requestInitialState:(void (^)(NSArray *, TUCallModelState *))arg1;
+- (void)pullCallFromClientUsingHandoffActivityUserInfo:(NSDictionary *)arg1 reply:(void (^)(TUCall *, NSArray *))arg2;
+- (void)requestInitialState:(void (^)(NSArray *))arg1;
 @end
 

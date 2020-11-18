@@ -15,6 +15,7 @@
     NSString *_stringValue;
 }
 
+@property (nonatomic, getter=isBodyTextInteractive) BOOL bodyTextInteractive;
 @property (strong, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
 @property (strong, nonatomic) NSString *title;
 

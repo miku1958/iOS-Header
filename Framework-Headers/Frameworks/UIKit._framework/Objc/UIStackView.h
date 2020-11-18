@@ -36,8 +36,10 @@
 - (BOOL)_hasLayoutArrangements;
 - (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 - (id)_mutableLayoutArrangements;
+- (double)_proportionalFillLengthForOrderedArrangement:(id)arg1 relevantParentAxis:(long long)arg2;
 - (BOOL)_recordBaselineLoweringInfo;
 - (BOOL)_shouldRequestTallestBaselineViewForFirst:(BOOL)arg1;
+- (struct CGSize)_systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3 hasIntentionallyCollapsedHeight:(BOOL *)arg4;
 - (void)_vendedBaselineViewDidMoveForFirst:(BOOL)arg1;
 - (void)_vendedBaselineViewParametersDidChange;
 - (void)addArrangedSubview:(id)arg1;
@@ -51,6 +53,7 @@
 - (void)setArrangedSubviews:(id)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setOpaque:(BOOL)arg1;
+- (void)setTranslatesAutoresizingMaskIntoConstraints:(BOOL)arg1;
 - (void)updateConstraints;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;

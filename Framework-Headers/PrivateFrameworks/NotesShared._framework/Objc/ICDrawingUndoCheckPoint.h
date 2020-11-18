@@ -30,7 +30,7 @@
 - (void)dealloc;
 - (BOOL)ensureCacheDirectoryExists;
 - (void)flushFromMemoryIfPossible;
-- (id)initWithImage:(struct CGImage *)arg1 renderedCommands:(id)arg2;
+- (id)initWithImage:(struct CGImage *)arg1 andMask:(struct CGImage *)arg2 renderedCommands:(id)arg3;
 - (BOOL)isInMemory;
 - (void)reloadImage;
 - (struct CGImage *)retainedImage;

@@ -8,10 +8,10 @@
 
 @protocol GEOComposedRouteTransitSection <NSObject>
 
-@property (readonly, nonatomic) CDStruct_6ccc2c1e fromNodeID;
+@property (readonly, nonatomic) CDStruct_79c5c966 fromNodeID;
 @property (readonly, nonatomic) BOOL isTransfer;
 @property (readonly, nonatomic) unsigned long long lineID;
-@property (readonly, nonatomic) CDStruct_6ccc2c1e toNodeID;
+@property (readonly, nonatomic) CDStruct_79c5c966 toNodeID;
 @property (readonly, nonatomic) int toNodeSignificance;
 
 @end

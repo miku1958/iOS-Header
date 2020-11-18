@@ -12,19 +12,22 @@
 @interface _MTLDevice : NSObject
 {
     long long limits_init;
-    CDStruct_1f7139fa *_limits;
+    CDStruct_75a535a2 *_limits;
     MTLCompiler *_compiler;
     NSObject<OS_dispatch_queue> *_serialQueue;
     MTLIOMemoryInfo *_memoryInfo;
     unsigned long long _globalTraceObjectID;
     int _commandQueueCount;
+    struct MTLLibraryBuilder *_libraryBuilder;
 }
 
 @property (readonly) MTLCompiler *compiler; // @synthesize compiler=_compiler;
+@property (readonly) unsigned long long deviceLinearReadOnlyTextureAlignmentBytes;
+@property (readonly) unsigned long long deviceLinearTextureAlignmentBytes;
 @property (readonly) unsigned long long globalTraceObjectID; // @synthesize globalTraceObjectID=_globalTraceObjectID;
 @property (readonly) unsigned long long iosurfaceReadOnlyTextureAlignmentBytes;
 @property (readonly) unsigned long long iosurfaceTextureAlignmentBytes;
-@property (readonly) const CDStruct_1f7139fa *limits;
+@property (readonly) const CDStruct_75a535a2 *limits;
 @property (readonly) unsigned long long linearTextureAlignmentBytes;
 @property (readonly) unsigned long long maxBufferLength;
 @property (readonly) unsigned long long maxColorAttachments;
@@ -34,12 +37,15 @@
 @property (readonly) unsigned long long maxComputeSamplers;
 @property (readonly) unsigned long long maxComputeTextures;
 @property (readonly) unsigned long long maxComputeThreadgroupMemory;
+@property (readonly) unsigned long long maxComputeThreadgroupMemoryAlignmentBytes;
 @property (readonly) unsigned long long maxFragmentBuffers;
 @property (readonly) unsigned long long maxFragmentInlineDataSize;
 @property (readonly) unsigned long long maxFragmentSamplers;
 @property (readonly) unsigned long long maxFragmentTextures;
 @property (readonly) unsigned long long maxFramebufferStorageBits;
+@property (readonly) unsigned long long maxFunctionConstantIndices;
 @property (readonly) unsigned long long maxInterpolants;
+@property (readonly) unsigned long long maxInterpolatedComponents;
 @property (readonly) float maxLineWidth;
 @property (readonly) float maxPointSize;
 @property (readonly) unsigned long long maxTextureDepth3D;
@@ -70,7 +76,10 @@
 - (void *)computeFunctionKeyWithComputePipelineDescriptor:(id)arg1 keySize:(unsigned long long *)arg2;
 - (void *)computeFunctionKeyWithComputePipelineDescriptor:(id)arg1 options:(unsigned long long)arg2 keySize:(unsigned long long *)arg3;
 - (struct NSObject *)computeVariantWithCompilerOutput:(id)arg1;
+- (void)dealloc;
 - (id)description;
+- (BOOL)deviceOrFeatureProfileSupportsFeatureSet:(unsigned long long)arg1;
+- (BOOL)deviceSupportsFeatureSet:(unsigned long long)arg1;
 - (id)familyName;
 - (void *)fragmentFunctionKeyWithRenderPipelineDescriptor:(id)arg1 fragmentKeySize:(unsigned long long *)arg2 previousStateVariant:(id)arg3;
 - (void *)fragmentFunctionKeyWithRenderPipelineDescriptor:(id)arg1 options:(unsigned long long)arg2 previousStateVariant:(id)arg3 fragmentKeySize:(unsigned long long *)arg4;
@@ -78,9 +87,13 @@
 - (void)freeComputeFunctionKey:(void *)arg1 keySize:(unsigned long long)arg2;
 - (void)freeFragmentFunctionKey:(void *)arg1 fragmentKeySize:(unsigned long long)arg2;
 - (void)freeVertexFunctionKey:(void *)arg1 vertexKeySize:(unsigned long long)arg2;
+- (void *)getShaderCacheKeys;
 - (id)init;
 - (void)initLimits;
 - (CDStruct_c0454aff)libraryCacheStats;
+- (id)newCommandQueue;
+- (id)newCommandQueueWithDescriptor:(id)arg1;
+- (id)newCommandQueueWithMaxCommandBufferCount:(unsigned long long)arg1;
 - (void)newComputePipelineStateWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)newComputePipelineStateWithDescriptor:(id)arg1 error:(id *)arg2;
 - (void)newComputePipelineStateWithDescriptor:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -92,6 +105,10 @@
 - (id)newComputePipelineStateWithImageFilterFunctionsSPI:(id)arg1 imageFilterFunctionInfo:(const CDStruct_dbc1e4aa *)arg2 error:(id *)arg3;
 - (id)newComputePipelineWithDescriptor:(id)arg1 variant:(struct NSObject *)arg2;
 - (id)newDefaultLibrary;
+- (id)newDefaultLibraryWithBundle:(id)arg1 error:(id *)arg2;
+- (id)newFunctionWithGLIR:(void *)arg1 functionType:(unsigned long long)arg2;
+- (id)newFunctionWithGLIR:(void *)arg1 inputsDescription:(id)arg2 functionType:(unsigned long long)arg3;
+- (id)newLibraryWithCIFilters:(id)arg1 imageFilterFunctionInfo:(const CDStruct_dbc1e4aa *)arg2 error:(id *)arg3;
 - (id)newLibraryWithData:(id)arg1 error:(id *)arg2;
 - (id)newLibraryWithFile:(id)arg1 error:(id *)arg2;
 - (void)newLibraryWithSource:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -103,14 +120,15 @@
 - (id)newRenderPipelineWithDescriptor:(id)arg1 vertexVariant:(id)arg2 fragmentVariant:(id)arg3;
 - (CDStruct_c0454aff)pipelineCacheStats;
 - (CDStruct_596dc0d1)pipelineFlagsWithComputeVariant:(struct NSObject *)arg1;
-- (CDStruct_672a0776)pipelineFlagsWithVertexVariant:(id)arg1 fragmentVariant:(id)arg2;
+- (CDStruct_fc7baa39)pipelineFlagsWithVertexVariant:(id)arg1 fragmentVariant:(id)arg2;
 - (id)pipelinePerformanceStatisticsWithComputeVariant:(struct NSObject *)arg1;
 - (id)pipelinePerformanceStatisticsWithVertexVariant:(id)arg1 fragmentVariant:(id)arg2;
 - (id)productName;
+- (void)registerCompiler:(id)arg1;
+- (void)releaseCacheEntry:(struct MTLLibraryContainer *)arg1;
 - (BOOL)supportsFeatureSet:(unsigned long long)arg1;
 - (BOOL)supportsTextureSampleCount:(unsigned long long)arg1;
 - (void)unloadShaderCaches;
-- (void)validateComputeFunction:(id)arg1;
 - (id)vendorName;
 - (void *)vertexFunctionKeyWithRenderPipelineDescriptor:(id)arg1 options:(unsigned long long)arg2 nextStageVariant:(id)arg3 vertexKeySize:(unsigned long long *)arg4;
 - (void *)vertexFunctionKeyWithRenderPipelineDescriptor:(id)arg1 vertexKeySize:(unsigned long long *)arg2 nextStageVariant:(id)arg3;

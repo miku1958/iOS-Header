@@ -9,10 +9,14 @@
 #import <CacheDelete/CacheDeleteServiceProtocol-Protocol.h>
 #import <CacheDelete/NSXPCListenerDelegate-Protocol.h>
 
-@class NSString, NSXPCListenerEndpoint;
+@class CacheDeleteServiceInfo, NSObject, NSString, NSXPCListenerEndpoint;
+@protocol OS_dispatch_queue;
 
 @interface CacheDeleteServiceListener : CacheDeleteListener <NSXPCListenerDelegate, CacheDeleteServiceProtocol>
 {
+    BOOL _legacyCallbacks;
+    BOOL _anonymous;
+    CacheDeleteServiceInfo *_serviceInfo;
     NSXPCListenerEndpoint *_endpoint;
     CDUnknownBlockType _purgeable;
     CDUnknownBlockType _purge;
@@ -20,22 +24,28 @@
     CDUnknownBlockType _cancel;
     CDUnknownBlockType _notify;
     CDUnknownBlockType _callback;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
+@property (readonly) BOOL anonymous; // @synthesize anonymous=_anonymous;
 @property (copy, nonatomic) CDUnknownBlockType callback; // @synthesize callback=_callback;
 @property (copy, nonatomic) CDUnknownBlockType cancel; // @synthesize cancel=_cancel;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) NSXPCListenerEndpoint *endpoint; // @synthesize endpoint=_endpoint;
 @property (readonly) unsigned long long hash;
+@property (readonly) BOOL legacyCallbacks; // @synthesize legacyCallbacks=_legacyCallbacks;
 @property (copy, nonatomic) CDUnknownBlockType notify; // @synthesize notify=_notify;
 @property (copy, nonatomic) CDUnknownBlockType periodic; // @synthesize periodic=_periodic;
 @property (copy, nonatomic) CDUnknownBlockType purge; // @synthesize purge=_purge;
 @property (copy, nonatomic) CDUnknownBlockType purgeable; // @synthesize purgeable=_purgeable;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (readonly, nonatomic) CacheDeleteServiceInfo *serviceInfo; // @synthesize serviceInfo=_serviceInfo;
 @property (readonly) Class superclass;
 
++ (id)cacheDeleteServiceListener:(id)arg1 options:(id)arg2;
 - (void).cxx_destruct;
-- (id)initWithName:(id)arg1 anonymous:(BOOL)arg2;
+- (id)initWithName:(id)arg1 options:(id)arg2;
 - (void)serviceCallback:(id)arg1 replyBlock:(CDUnknownBlockType)arg2;
 - (void)serviceCancelPurge:(CDUnknownBlockType)arg1;
 - (void)serviceNotify:(id)arg1 replyBlock:(CDUnknownBlockType)arg2;

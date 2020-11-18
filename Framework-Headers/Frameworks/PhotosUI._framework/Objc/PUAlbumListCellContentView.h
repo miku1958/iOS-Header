@@ -8,7 +8,7 @@
 
 #import <PhotosUI/UITextFieldDelegate-Protocol.h>
 
-@class NSString, PUStackView, UIButton, UIImageView, UILabel, UITextField;
+@class NSString, PUStackView, PXUIButton, UIFont, UILabel, UITextField;
 @protocol PUAlbumListCellDelegate;
 
 @interface PUAlbumListCellContentView : UIView <UITextFieldDelegate>
@@ -16,8 +16,8 @@
     BOOL _combinesPhotoDecorations;
     BOOL _editing;
     BOOL _enabled;
-    BOOL _pinned;
     BOOL _showsDeleteButtonWhenEditing;
+    BOOL _highlighted;
     BOOL __showsTitleAndSubtitle;
     id<PUAlbumListCellDelegate> _delegate;
     PUStackView *_stackView;
@@ -27,21 +27,17 @@
     double _xInset;
     long long _layout;
     unsigned long long _editCapabilities;
-    long long _badgeType;
+    UIFont *_titleFont;
+    UIFont *_subtitleFont;
     UITextField *__titleTextField;
     UILabel *__subtitleLabel;
-    UIButton *__deleteButton;
-    UIButton *__pinButton;
-    UIImageView *__badgeImageView;
+    PXUIButton *__deleteButton;
 }
 
-@property (strong, nonatomic, setter=_setBadgeImageView:) UIImageView *_badgeImageView; // @synthesize _badgeImageView=__badgeImageView;
-@property (strong, nonatomic, setter=_setDeleteButton:) UIButton *_deleteButton; // @synthesize _deleteButton=__deleteButton;
-@property (strong, nonatomic, setter=_setPinButton:) UIButton *_pinButton; // @synthesize _pinButton=__pinButton;
+@property (strong, nonatomic, setter=_setDeleteButton:) PXUIButton *_deleteButton; // @synthesize _deleteButton=__deleteButton;
 @property (nonatomic, setter=_setShowsTitleAndSubtitle:) BOOL _showsTitleAndSubtitle; // @synthesize _showsTitleAndSubtitle=__showsTitleAndSubtitle;
 @property (strong, nonatomic, setter=_setSubtitleLabel:) UILabel *_subtitleLabel; // @synthesize _subtitleLabel=__subtitleLabel;
 @property (strong, nonatomic, setter=_setTitleTextField:) UITextField *_titleTextField; // @synthesize _titleTextField=__titleTextField;
-@property (nonatomic) long long badgeType; // @synthesize badgeType=_badgeType;
 @property (nonatomic) BOOL combinesPhotoDecorations; // @synthesize combinesPhotoDecorations=_combinesPhotoDecorations;
 @property (strong, nonatomic) UIView *customImageView; // @synthesize customImageView=_customImageView;
 @property (readonly, copy) NSString *debugDescription;
@@ -51,31 +47,23 @@
 @property (nonatomic, getter=isEditing) BOOL editing; // @synthesize editing=_editing;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (nonatomic) long long layout; // @synthesize layout=_layout;
-@property (nonatomic, getter=isPinned) BOOL pinned; // @synthesize pinned=_pinned;
 @property (nonatomic) BOOL showsDeleteButtonWhenEditing; // @synthesize showsDeleteButtonWhenEditing=_showsDeleteButtonWhenEditing;
-@property (strong, nonatomic) PUStackView *stackView; // @synthesize stackView=_stackView;
+@property (strong, nonatomic, setter=_setStackView:) PUStackView *stackView; // @synthesize stackView=_stackView;
 @property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property (strong, nonatomic) UIFont *subtitleFont; // @synthesize subtitleFont=_subtitleFont;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (strong, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
 @property (nonatomic) double xInset; // @synthesize xInset=_xInset;
 
-+ (void)_updateLabelGlobalCachedSizes;
-+ (void)initialize;
 - (void).cxx_destruct;
 - (void)_deleteAction:(id)arg1;
 - (struct CGPoint)_deleteButtonCenter;
-- (void)_pinAction:(id)arg1;
-- (struct CGPoint)_pinButtonOriginForBounds:(struct CGRect)arg1 pinButtonSize:(struct CGSize)arg2 titleTextFieldFrame:(struct CGRect)arg3 subtitleLabelFrame:(struct CGRect)arg4;
-- (void)_preferredContentSizeChanged:(id)arg1;
-- (void)_setStackView:(id)arg1;
-- (BOOL)_showsPinButton;
 - (double)_titleFieldAlpha;
-- (long long)_titleTextFieldAlignmentForLayout:(long long)arg1;
 - (long long)_titleTextFieldClearButtonModeForLayout:(long long)arg1;
-- (void)_updateBadgeAnimated:(BOOL)arg1;
 - (void)_updateDeleteButtonAnimated:(BOOL)arg1;
-- (void)_updatePinButtonAnimated:(BOOL)arg1;
 - (void)_updateStackViewAnimated:(BOOL)arg1;
 - (void)_updateSubtitleLabelAnimated:(BOOL)arg1;
 - (void)_updateSubtitleLabelStyle;
@@ -83,7 +71,6 @@
 - (void)_updateTitleFieldAnimated:(BOOL)arg1;
 - (void)_updateTitleTextFieldsStyle;
 - (void)cancelPerformRetitleAction;
-- (void)dealloc;
 - (void)handleTransitionFade:(BOOL)arg1 animate:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/NSCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
@@ -30,6 +30,7 @@
     BOOL _suppressFromSettings;
     BOOL _displaysCriticalBulletins;
     BOOL _hideWeeApp;
+    NSString *_appName;
     long long _subsectionPriority;
     unsigned long long _suppressedSettings;
     unsigned long long _version;
@@ -37,7 +38,9 @@
 
 @property (nonatomic) unsigned long long alertType;
 @property (nonatomic) BOOL allowsNotifications;
+@property (copy, nonatomic) NSString *appName; // @synthesize appName=_appName;
 @property (nonatomic) unsigned long long bulletinCount;
+@property (nonatomic) long long carPlaySetting;
 @property (copy, nonatomic) NSArray *dataProviderIDs; // @synthesize dataProviderIDs=_dataProviderIDs;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (nonatomic) BOOL displaysCriticalBulletins; // @synthesize displaysCriticalBulletins=_displaysCriticalBulletins;
@@ -49,7 +52,7 @@
 @property (readonly, copy, nonatomic) NSData *iconData;
 @property (copy, nonatomic) BBSectionInfoSettings *managedSectionInfoSettings;
 @property (nonatomic) unsigned long long notificationCenterLimit;
-@property (nonatomic) BBSectionInfo *parentSection; // @synthesize parentSection=_parentSection;
+@property (weak, nonatomic) BBSectionInfo *parentSection; // @synthesize parentSection=_parentSection;
 @property (copy, nonatomic) NSString *pathToWeeAppPluginBundle; // @synthesize pathToWeeAppPluginBundle=_pathToWeeAppPluginBundle;
 @property (nonatomic) unsigned long long pushSettings;
 @property (readonly, nonatomic) BBSectionInfoSettings *readableSettings;
@@ -73,23 +76,28 @@
 + (id)defaultSectionInfoForSection:(id)arg1;
 + (id)defaultSectionInfoForType:(long long)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)_addSubsection:(id)arg1;
 - (void)_associateDataProviderSectionInfo:(id)arg1;
 - (void)_configureWithDefaultsForSectionType:(long long)arg1;
 - (void)_dissociateDataProviderSectionInfo:(id)arg1;
 - (void)_replaceSubsection:(id)arg1;
 - (id)_subsectionForID:(id)arg1;
+- (id)awakeAfterUsingCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
+- (long long)disabledSettingForSetting:(long long)arg1;
 - (id)effectiveSectionInfo;
 - (id)effectiveSectionInfoWithFactoryInfo:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDefaultsForSectionType:(long long)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)queryAndUseManagedSettings;
 - (BOOL)queryAndUseManagedSettingsForSectionID:(id)arg1;
+- (id)replacementObjectForCoder:(id)arg1;
 - (void)updateWithDefaultFilters:(id)arg1;
 - (void)updateWithDefaultSectionInfo:(id)arg1;
 

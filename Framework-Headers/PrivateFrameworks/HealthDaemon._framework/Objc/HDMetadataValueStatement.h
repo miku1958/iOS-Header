@@ -10,7 +10,7 @@
 {
 }
 
-- (BOOL)enumerateResultsForObjectID:(long long)arg1 withError:(id *)arg2 block:(CDUnknownBlockType)arg3;
+- (BOOL)enumerateResultsForObjectID:(long long)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (id)initWithDatabase:(id)arg1;
 
 @end

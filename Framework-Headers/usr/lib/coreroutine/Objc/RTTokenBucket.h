@@ -6,40 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate;
-
 @interface RTTokenBucket : NSObject
 {
-    double _interArrivalTime;
     double _fillRate;
     double _capacity;
     double _operationCost;
-    NSDate *_lastBucketFill;
     double _tokenBucket;
-    NSDate *_lastArrivalTime;
+    double _lastArrivalTime;
     double _totalInterArrivalTime;
     double _wastedTokens;
     double _totalTokensGenerated;
     double _totalTokensConsumed;
     unsigned long long _totalOperations;
     unsigned long long _operationsAllowed;
+    double _interArrivalTime;
+    double _lastBucketFill;
 }
 
-@property (nonatomic) double capacity; // @synthesize capacity=_capacity;
-@property (nonatomic) double fillRate; // @synthesize fillRate=_fillRate;
 @property (nonatomic) double interArrivalTime; // @synthesize interArrivalTime=_interArrivalTime;
-@property (strong, nonatomic) NSDate *lastArrivalTime; // @synthesize lastArrivalTime=_lastArrivalTime;
-@property (strong, nonatomic) NSDate *lastBucketFill; // @synthesize lastBucketFill=_lastBucketFill;
-@property (nonatomic) double operationCost; // @synthesize operationCost=_operationCost;
-@property (nonatomic) unsigned long long operationsAllowed; // @synthesize operationsAllowed=_operationsAllowed;
-@property (nonatomic) double tokenBucket; // @synthesize tokenBucket=_tokenBucket;
-@property (nonatomic) double totalInterArrivalTime; // @synthesize totalInterArrivalTime=_totalInterArrivalTime;
-@property (nonatomic) unsigned long long totalOperations; // @synthesize totalOperations=_totalOperations;
-@property (nonatomic) double totalTokensConsumed; // @synthesize totalTokensConsumed=_totalTokensConsumed;
-@property (nonatomic) double totalTokensGenerated; // @synthesize totalTokensGenerated=_totalTokensGenerated;
-@property (nonatomic) double wastedTokens; // @synthesize wastedTokens=_wastedTokens;
+@property (nonatomic) double lastBucketFill; // @synthesize lastBucketFill=_lastBucketFill;
 
-- (void).cxx_destruct;
 - (BOOL)_consumeTokens:(unsigned long long)arg1;
 - (void)_replenishTokens;
 - (unsigned long long)countOfOperationsAllowed;

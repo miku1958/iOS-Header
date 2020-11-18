@@ -6,11 +6,12 @@
 
 #import <SceneKit/JSExport-Protocol.h>
 
-@class CAAnimation, NSArray, NSDictionary, NSString, SCNAction, SCNCamera, SCNGeometry, SCNLight, SCNMorpher, SCNNode, SCNParticleSystem, SCNPhysicsBody, SCNPhysicsField, SCNSkinner;
+@class CAAnimation, MDLObject, NSArray, NSDictionary, NSString, SCNAction, SCNAudioPlayer, SCNCamera, SCNGeometry, SCNLight, SCNMorpher, SCNNode, SCNParticleSystem, SCNPhysicsBody, SCNPhysicsField, SCNSkinner;
 @protocol SCNNodeRendererDelegate;
 
 @protocol SCNNodeJSExport <JSExport>
 
+@property (readonly, nonatomic) NSArray *audioPlayers;
 @property (strong, nonatomic) SCNCamera *camera;
 @property (nonatomic) BOOL castsShadow;
 @property (nonatomic) unsigned long long categoryBitMask;
@@ -22,6 +23,7 @@
 @property (nonatomic, getter=isHidden) BOOL hidden;
 @property (strong, nonatomic) SCNLight *light;
 @property (strong, nonatomic) SCNMorpher *morpher;
+@property (nonatomic) long long movabilityHint;
 @property (copy, nonatomic) NSString *name;
 @property (nonatomic) double opacity;
 @property (nonatomic) struct SCNVector4 orientation;
@@ -43,8 +45,10 @@
 
 + (id)node;
 + (SCNNode *)nodeWithGeometry:(SCNGeometry *)arg1;
++ (id)nodeWithMDLObject:(MDLObject *)arg1;
 - (SCNAction *)actionForKey:(NSString *)arg1;
 - (void)addAnimation:(CAAnimation *)arg1 forKey:(NSString *)arg2;
+- (void)addAudioPlayer:(SCNAudioPlayer *)arg1;
 - (void)addChildNode:(SCNNode *)arg1;
 - (void)addParticleSystem:(SCNParticleSystem *)arg1;
 - (CAAnimation *)animationForKey:(NSString *)arg1;
@@ -59,7 +63,8 @@
 - (struct SCNMatrix4)convertTransform:(struct SCNMatrix4)arg1 toNode:(SCNNode *)arg2;
 - (id)copy;
 - (void)enumerateChildNodesUsingBlock:(void (^)(SCNNode *, BOOL *))arg1;
-- (SCNNode *)flattenedClone;
+- (void)enumerateHierarchyUsingBlock:(void (^)(SCNNode *, BOOL *))arg1;
+- (id)flattenedClone;
 - (id)getBoundingBox;
 - (id)getBoundingSphere;
 - (BOOL)hasActions;
@@ -69,8 +74,10 @@
 - (void)removeActionForKey:(NSString *)arg1;
 - (void)removeAllActions;
 - (void)removeAllAnimations;
+- (void)removeAllAudioPlayers;
 - (void)removeAllParticleSystems;
 - (void)removeAnimationForKey:(NSString *)arg1;
+- (void)removeAudioPlayer:(SCNAudioPlayer *)arg1;
 - (void)removeFromParentNode;
 - (void)removeParticleSystem:(SCNParticleSystem *)arg1;
 - (void)replaceChildNode:(SCNNode *)arg1 with:(SCNNode *)arg2;

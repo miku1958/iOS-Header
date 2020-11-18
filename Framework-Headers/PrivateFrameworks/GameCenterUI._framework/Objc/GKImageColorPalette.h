@@ -28,6 +28,7 @@
 - (BOOL)analyzeImage:(struct CGImage *)arg1;
 - (void)clearMainHistograms;
 - (void)clearSaturationAndBrightnessHistograms;
+- (void)dealloc;
 - (void)findBrightColors;
 - (void)generateHSVMapWithContext:(struct CGContext *)arg1;
 - (id)initWithImage:(id)arg1;

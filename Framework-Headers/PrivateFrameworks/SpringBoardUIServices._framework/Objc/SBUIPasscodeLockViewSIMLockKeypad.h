@@ -27,7 +27,6 @@
 - (double)_expectedDistanceBetweenTitleAndSubtitleBaselines;
 - (double)_expectedYOffsetBetweenTitleAndSubtitleViews;
 - (void)_layoutStatusView;
-- (BOOL)_needsToHideTextFieldForStatus;
 - (void)_setHasInput:(BOOL)arg1;
 - (void)_setText:(id)arg1 onLabel:(id)arg2;
 - (void)_shakeStatus;
@@ -39,7 +38,6 @@
 - (void)forceShowStatus:(BOOL)arg1;
 - (id)initWithLightStyle:(BOOL)arg1;
 - (void)layoutSubviews;
-- (void)resetForFailedPasscode;
 - (void)setBackgroundAlpha:(double)arg1;
 - (void)setCustomBackgroundColor:(id)arg1;
 

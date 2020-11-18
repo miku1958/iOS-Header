@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     void *_addressBook;
     ACAccountStore *_accountStore;
     NSMutableDictionary *_accountIdentifiersToIsFacebook;
-    NSString *_birthdaySummaryFormatWithName;
     NSString *_birthdaySummary;
     long long _defaultAlarmOffset;
 }

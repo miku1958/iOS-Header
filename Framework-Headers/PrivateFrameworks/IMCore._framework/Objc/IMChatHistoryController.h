@@ -16,6 +16,7 @@
 @property (strong) NSMutableDictionary *_runningQueries; // @synthesize _runningQueries;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)databaseFull;
 - (void)databaseNoLongerFull;
 - (void)dealloc;

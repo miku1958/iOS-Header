@@ -6,30 +6,38 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <MusicCarDisplayUI/MCDErrorViewDelegate-Protocol.h>
 #import <MusicCarDisplayUI/MCDPCContainerDelegate-Protocol.h>
 #import <MusicCarDisplayUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <MusicCarDisplayUI/UITableViewDataSource-Protocol.h>
 #import <MusicCarDisplayUI/UITableViewDelegate-Protocol.h>
 
-@class AVExternalDevice, MCDPCContainer, NSIndexPath, NSObject, NSString, UIActivityIndicatorView, UITableView, UIView, _MCDBrowsableContentTableViewPreloader, _UIFilteredDataSource;
+@class AVExternalDevice, MCDErrorLoadingView, MCDLoadingContentView, MCDNowPlayingButton, MCDPCContainer, MPWeakTimer, NSIndexPath, NSObject, NSString, UIActivityIndicatorView, UITableView, UIView, _MCDBrowsableContentTableViewPreloader, _UIFilteredDataSource;
 @protocol OS_dispatch_queue;
 
-@interface MCDBrowsableContentTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, MCDPCContainerDelegate>
+@interface MCDBrowsableContentTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, MCDPCContainerDelegate, MCDErrorViewDelegate>
 {
     UITableView *_tableView;
-    UIView *_nowPlayingButton;
+    MCDNowPlayingButton *_nowPlayingButton;
     MCDPCContainer *_container;
     long long _count;
     NSIndexPath *_selectedNextIndexPath;
     UIActivityIndicatorView *_activityIndicator;
     _UIFilteredDataSource *_dataSource;
-    BOOL _shouldReloadOnAppear;
     NSIndexPath *_reselectIndexPath;
+    MPWeakTimer *_loadingTimer;
+    MPWeakTimer *_delayTimer;
+    MCDLoadingContentView *_loadingContentView;
+    MCDErrorLoadingView *_failedLoadView;
+    UIView *_MCD_tableView;
     NSObject<OS_dispatch_queue> *_serialQueue;
     _MCDBrowsableContentTableViewPreloader *_selectionPreloader;
     AVExternalDevice *_externalDevice;
     BOOL _limited;
     BOOL _hasCarScreen;
+    BOOL _hasNoBrowsableContent;
+    BOOL _didPushToNowPlayingAtLaunch;
+    BOOL _hasTabbedBrowsing;
     BOOL _visible;
     NSIndexPath *_selectedIndexPath;
 }
@@ -50,13 +58,17 @@
 - (void)_limitedUIChanged:(id)arg1;
 - (void)_nowPlayingButtonTapped:(id)arg1;
 - (void)_nowPlayingDidChange:(id)arg1;
+- (void)_showLoadingScreen;
+- (void)_showTimeoutScreen;
 - (void)_updateNowPlayingButtonVisibility;
 - (void)container:(id)arg1 didInvalidateIndicies:(id)arg2;
 - (void)containerDidChangeCount:(id)arg1;
 - (void)containerDidInvalidateRootItem:(id)arg1;
 - (id)contentScrollView;
 - (void)dealloc;
+- (void)errorViewDidTapButton:(id)arg1;
 - (id)initWithContainer:(id)arg1;
+- (id)initWithContainer:(id)arg1 tabbedBrowsing:(BOOL)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)preferredFocusedItem;
 - (void)reloadTable;
@@ -69,6 +81,7 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

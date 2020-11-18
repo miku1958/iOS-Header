@@ -11,6 +11,7 @@
 @interface IDSInternalQueueController : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
+    void *_contextKey;
 }
 
 + (id)sharedInstance;
@@ -18,6 +19,7 @@
 - (void)assertQueueIsNotCurrent;
 - (void)dealloc;
 - (id)init;
+- (id)initWithName:(char *)arg1 contextKey:(void *)arg2;
 - (BOOL)isQueueCurrent;
 - (void)performBlock:(CDUnknownBlockType)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1 waitUntilDone:(BOOL)arg2;

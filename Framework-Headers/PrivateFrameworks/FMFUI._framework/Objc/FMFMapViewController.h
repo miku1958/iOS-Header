@@ -129,6 +129,7 @@
 - (id)initWithDelegate:(id)arg1 handles:(id)arg2;
 - (void)initializeDefaults;
 - (BOOL)isCompact;
+- (BOOL)isLocationAlreadyOnMap:(id)arg1;
 - (void)loadCachedLocationsForHandles;
 - (void)loadDelegate;
 - (void)loadView;

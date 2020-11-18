@@ -10,7 +10,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface OS_dispatch_data : NSObject <OS_dispatch_data>
 {
 }
@@ -23,14 +22,16 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
+- (void)_activate;
 - (BOOL)_bytesAreVM;
 - (void *)_getContext;
 - (BOOL)_isCompact;
+- (void)_resume;
 - (void)_setContext:(void *)arg1;
 - (void)_setFinalizer:(CDUnknownFunctionPointerType)arg1;
 - (void)_setTargetQueue:(id)arg1;
+- (void)_suspend;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)initWithBytes:(void *)arg1 length:(unsigned long long)arg2 copy:(BOOL)arg3 freeWhenDone:(BOOL)arg4 bytesAreVM:(BOOL)arg5;
 

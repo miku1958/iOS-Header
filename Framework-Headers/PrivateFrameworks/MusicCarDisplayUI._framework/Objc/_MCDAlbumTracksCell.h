@@ -6,17 +6,23 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSString, UILabel;
+@class NSString, UIImageView, UILabel;
 
 @interface _MCDAlbumTracksCell : UITableViewCell
 {
     UILabel *_titleLabel;
     UILabel *_trackNumberLabel;
     UILabel *_durationLabel;
+    UIImageView *_explicitImageView;
+    UIImageView *_currentlyPlayingImageView;
+    BOOL _explicitContent;
+    BOOL _currentlyPlaying;
     double _maximumDurationWidth;
 }
 
+@property (nonatomic) BOOL currentlyPlaying; // @synthesize currentlyPlaying=_currentlyPlaying;
 @property (copy, nonatomic) NSString *durationText;
+@property (nonatomic) BOOL explicitContent; // @synthesize explicitContent=_explicitContent;
 @property (nonatomic) double maximumDurationWidth; // @synthesize maximumDurationWidth=_maximumDurationWidth;
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *trackNumberText;

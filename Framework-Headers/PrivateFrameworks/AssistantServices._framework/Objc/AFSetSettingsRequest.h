@@ -14,13 +14,11 @@
     BOOL _applyChanges;
 }
 
-@property (nonatomic) BOOL applyChanges; // @synthesize applyChanges=_applyChanges;
-@property (copy, nonatomic) NSArray *settings; // @synthesize settings=_settings;
+@property (nonatomic, setter=_setApplyChanges:) BOOL applyChanges; // @synthesize applyChanges=_applyChanges;
+@property (copy, nonatomic, setter=_setSettings:) NSArray *settings; // @synthesize settings=_settings;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_setApplyChanges:(BOOL)arg1;
-- (void)_setSettings:(id)arg1;
 - (id)createResponse;
 - (id)createResponseWithSettingChanges:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

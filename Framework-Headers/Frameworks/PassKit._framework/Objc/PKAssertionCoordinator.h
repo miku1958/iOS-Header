@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/PKXPCServiceDelegate-Protocol.h>
 
@@ -22,6 +22,7 @@
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)_existingRemoteObjectProxy;
 - (id)_remoteObjectProxy;
 - (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;

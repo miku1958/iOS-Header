@@ -14,14 +14,18 @@
     NSSet *_prefetchedKeys;
     NSMutableDictionary *_prefetchedKeysPendingChangesByBundleID;
     NSObject<OS_dispatch_queue> *_queue;
+    BOOL _interestedInAllChanges;
+    BOOL _observingChanges;
     id<FBApplicationDataStoreRepositoryServerClientDelegate> _delegate;
 }
 
 @property (nonatomic) id<FBApplicationDataStoreRepositoryServerClientDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) BOOL interestedInAllChanges; // @synthesize interestedInAllChanges=_interestedInAllChanges;
 
 - (BOOL)_checkPendingChangeForKey:(id)arg1 application:(id)arg2;
 - (void)_repositoryInvalidated:(id)arg1;
 - (void)_sendValueChangedForObject:(id)arg1 key:(id)arg2 bundleID:(id)arg3;
+- (void)_updateObservers;
 - (void)_valueChanged:(id)arg1;
 - (void)clearPendingChangeForKey:(id)arg1 application:(id)arg2;
 - (void)dealloc;

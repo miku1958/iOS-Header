@@ -27,6 +27,7 @@
 @property (copy, nonatomic) NSData *placeData;
 @property (copy, nonatomic) NSData *placeData2;
 @property (copy, nonatomic) NSNumber *placeId;
+@property (copy, nonatomic) NSData *resultDetourInfoData;
 @property (copy, nonatomic) NSString *spokenAddress;
 @property (copy, nonatomic) NSString *spokenName;
 

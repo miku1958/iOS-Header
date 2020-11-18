@@ -13,14 +13,20 @@
 @interface MSPDroppedPin : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    double _timestamp;
     GEOLatLng *_latLng;
     GEOMapRegion *_mapRegion;
+    struct {
+        unsigned int timestamp:1;
+    } _has;
 }
 
 @property (readonly, nonatomic) BOOL hasLatLng;
 @property (readonly, nonatomic) BOOL hasMapRegion;
+@property (nonatomic) BOOL hasTimestamp;
 @property (strong, nonatomic) GEOLatLng *latLng; // @synthesize latLng=_latLng;
 @property (strong, nonatomic) GEOMapRegion *mapRegion; // @synthesize mapRegion=_mapRegion;
+@property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 - (void).cxx_destruct;

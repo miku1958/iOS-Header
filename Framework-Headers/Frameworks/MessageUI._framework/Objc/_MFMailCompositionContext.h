@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class MFAttachmentCompositionContext, MFComposeBodyField, MFMailMessage, MFMessageViewingContext, NSArray, NSMutableArray, NSString;
+@class MFAttachmentCompositionContext, MFComposeBodyField, MFMailMessage, MFMessageLoadingContext, NSArray, NSMutableArray, NSString;
 
 @interface _MFMailCompositionContext : NSObject
 {
@@ -21,7 +21,7 @@
     MFMailMessage *_originalMessage;
     NSString *_attachmentToMarkupContentID;
     id _originalContent;
-    MFMessageViewingContext *_loadingContext;
+    MFMessageLoadingContext *_loadingContext;
     BOOL _loadRest;
     BOOL _includeAttachments;
     BOOL _showKeyboardImmediately;
@@ -48,7 +48,7 @@
 @property (readonly, nonatomic) NSString *contextID;
 @property (nonatomic) BOOL includeAttachments; // @synthesize includeAttachments=_includeAttachments;
 @property (nonatomic) BOOL loadRest; // @synthesize loadRest=_loadRest;
-@property (strong, nonatomic) MFMessageViewingContext *loadingContext; // @synthesize loadingContext=_loadingContext;
+@property (strong, nonatomic) MFMessageLoadingContext *loadingContext; // @synthesize loadingContext=_loadingContext;
 @property (strong, nonatomic) id originalContent; // @synthesize originalContent=_originalContent;
 @property (readonly, nonatomic) MFMailMessage *originalMessage; // @synthesize originalMessage=_originalMessage;
 @property (copy, nonatomic) NSString *originatingBundleID; // @synthesize originatingBundleID=_originatingBundleID;

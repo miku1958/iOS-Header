@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) NSString *mediaType;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 minExposureDuration;
 @property (readonly, nonatomic) float minISO;
+@property (readonly, nonatomic) NSArray *supportedColorSpaces;
 @property (readonly, nonatomic, getter=isVideoBinned) BOOL videoBinned;
 @property (readonly, nonatomic) float videoFieldOfView;
 @property (readonly, nonatomic, getter=isVideoHDRSupported) BOOL videoHDRSupported;
@@ -44,9 +45,11 @@
 - (BOOL)isExperimental;
 - (BOOL)isHighResPhotoFormat;
 - (BOOL)isIrisSupported;
+- (BOOL)isIrisVideoStabilizationSupported;
 - (BOOL)isPhotoFormat;
 - (BOOL)isSISSupported;
 - (BOOL)isVideoStabilizationModeSupported:(long long)arg1;
+- (BOOL)isWideColorSupported;
 - (CDStruct_1b6d18a9)lowestSupportedVideoFrameDuration;
 - (BOOL)needsPhotoPreviewDPCC;
 - (BOOL)prefersVideoHDREnabledForSessionPreset:(id)arg1;
@@ -54,6 +57,7 @@
 - (int)rawBitDepth;
 - (CDStruct_79c71658)sensorDimensions;
 - (int)supportedFormatsArrayIndex;
+- (unsigned int)supportedRawPixelFormat;
 - (int)supportedStabilizationMethod;
 - (BOOL)supportsDynamicCrop;
 - (BOOL)supportsHighProfileH264;

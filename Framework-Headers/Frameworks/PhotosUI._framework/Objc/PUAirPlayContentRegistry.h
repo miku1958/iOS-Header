@@ -19,12 +19,11 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic, setter=_setCachedCurrentContent:) UIViewController *_cachedCurrentContent; // @synthesize _cachedCurrentContent=__cachedCurrentContent;
 @property (strong, nonatomic, setter=_setContentProviders:) NSPointerArray *_contentProviders; // @synthesize _contentProviders=__contentProviders;
-@property (strong, nonatomic) id<PHAirPlayControllerContentProvider> currentContentProvider; // @synthesize currentContentProvider=_currentContentProvider;
+@property (nonatomic, setter=_setCurrentContentProvider:) id<PHAirPlayControllerContentProvider> currentContentProvider; // @synthesize currentContentProvider=_currentContentProvider;
 
 - (void).cxx_destruct;
 - (unsigned long long)_indexOfContentProvider:(id)arg1;
 - (void)_invalidateCurrentContent;
-- (void)_setCurrentContentProvider:(id)arg1;
 - (void)_updateCurrentContentProvider;
 - (void)addContentProvider:(id)arg1;
 - (void)clearContent;

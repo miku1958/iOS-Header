@@ -35,9 +35,9 @@
 
 + (id)defaultPropertiesToLoad;
 + (id)relations;
+- (void).cxx_destruct;
 - (id)_helper;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (int)entityType;
 - (CDStruct_6e43267c)gregorianUnits;

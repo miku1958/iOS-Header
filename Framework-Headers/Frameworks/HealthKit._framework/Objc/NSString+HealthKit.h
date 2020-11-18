@@ -9,5 +9,6 @@
 @interface NSString (HealthKit)
 - (id)hk_copyNonEmptyString;
 - (BOOL)hk_isBase64;
+- (id)hk_stripLeadingTrailingWhitespace;
 @end
 

@@ -10,11 +10,12 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityShouldHitTestLayers;
 - (void)_setUpEffectLayers;
-- (id)accessibilityContainerElements;
+- (id)accessibilityElements;
 - (id)accessibilityLabel;
 - (void)dealloc;
 - (BOOL)isAccessibilityElement;

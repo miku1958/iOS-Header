@@ -19,6 +19,7 @@
 - (unsigned int)_characterAfterCaretSelection;
 - (unsigned int)_characterBeforeCaretSelection;
 - (unsigned int)_characterInRelationToCaretSelection:(int)arg1;
+- (unsigned int)_characterInRelationToPosition:(id)arg1 amount:(int)arg2;
 - (unsigned int)_characterInRelationToRangedSelection:(int)arg1;
 - (id)_clampedpositionFromPosition:(id)arg1 offset:(int)arg2;
 - (void)_deleteBackwardAndNotify:(BOOL)arg1;
@@ -72,6 +73,7 @@
 - (void)_selectAll;
 - (id)_selectableText;
 - (struct _NSRange)_selectedNSRange;
+- (struct _NSRange)_selectedRangeWithinMarkedText;
 - (long long)_selectionAffinity;
 - (BOOL)_selectionAtDocumentEnd;
 - (BOOL)_selectionAtDocumentStart;
@@ -89,5 +91,6 @@
 - (void)_updateSelectionWithTextRange:(id)arg1 withAffinityDownstream:(BOOL)arg2;
 - (BOOL)_usesAsynchronousProtocol;
 - (id)_wordContainingCaretSelection;
+- (id)textInputSuggestionDelegate;
 @end
 

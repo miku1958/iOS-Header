@@ -29,7 +29,6 @@
 
 + (double)defaultMinimumFontSize;
 - (void).cxx_destruct;
-- (id)_automationID;
 - (void)_drawTextInRect:(struct CGRect)arg1 verticallyOffset:(BOOL)arg2;
 - (void)_finishedScrolling;
 - (void)_scheduleStartScrolling;

@@ -6,18 +6,19 @@
 
 #import <UIKit/UIView.h>
 
-#import <UIKit/UIAlertControllerBackgroundView-Protocol.h>
+#import <UIKit/UIInterfaceActionVisualBackgroundDisplaying-Protocol.h>
+#import <UIKit/UIInterfaceActionVisualGroupBackgroundDisplaying-Protocol.h>
 
-@class NSString;
+@class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIBlendingHighlightView : UIView <UIAlertControllerBackgroundView>
+@interface _UIBlendingHighlightView : UIView <UIInterfaceActionVisualBackgroundDisplaying, UIInterfaceActionVisualGroupBackgroundDisplaying>
 {
-    UIView *_colorBurnView;
-    UIView *_plusDView;
+    NSMutableArray *_blendingViews;
+    double _cornerRadius;
 }
 
-@property double cornerRadius;
+@property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -26,10 +27,11 @@ __attribute__((visibility("hidden")))
 + (id)_blendingPressedView;
 + (id)_blendingSeparatorView;
 - (void).cxx_destruct;
-- (id)initWithFrame:(struct CGRect)arg1 colorBurnColor:(id)arg2 plusDColor:(id)arg3;
+- (id)initWithCompositingBurnColor:(id)arg1 plusDColor:(id)arg2;
+- (id)initWithTopLevelFilters:(id)arg1 compositingColors:(id)arg2 compositingFilterModes:(id)arg3;
 - (void)layoutSubviews;
-- (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setPressed:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setHighlighted:(BOOL)arg1;
+- (void)setPressed:(BOOL)arg1;
 
 @end
 

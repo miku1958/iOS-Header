@@ -54,7 +54,6 @@
 - (BOOL)prepareToFinishWritingReturningError:(id *)arg1;
 - (void)requestMediaDataWhenReadyOnQueue:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (long long)status;
-- (int)trackID;
 - (id)transitionToAndReturnTerminalHelperWithTerminalStatus:(long long)arg1;
 
 @end

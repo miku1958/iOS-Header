@@ -10,6 +10,7 @@
 
 @protocol BBSettingsGatewayClientInterface <NSObject>
 - (void)activeBehaviorOverrideTypesChanged:(unsigned long long)arg1 source:(unsigned long long)arg2;
+- (void)activeBehaviorOverrideTypesChanged:(unsigned long long)arg1 source:(unsigned long long)arg2 activeQuietModeAssertionCount:(unsigned long long)arg3;
 - (void)behaviorOverrideStatusChanged:(long long)arg1 source:(unsigned long long)arg2;
 - (void)behaviorOverridesChanged:(NSArray *)arg1 source:(unsigned long long)arg2;
 - (void)behaviorOverridesEffectiveWhileUnlockedChanged:(BOOL)arg1 source:(unsigned long long)arg2;

@@ -21,8 +21,7 @@
 - (void)dealloc;
 - (void)encodeObject:(id)arg1 forKey:(id)arg2;
 - (void)finishEncoding;
-- (id)initForWritingWithMutableData:(id)arg1 remoteDeviceIsOnSameAccount:(BOOL)arg2;
-- (id)initForWritingWithMutableData:(id)arg1 remoteDeviceIsOnSameAccount:(BOOL)arg2 remoteGateway:(BOOL)arg3;
+- (id)initForWritingWithMutableData:(id)arg1 remoteDeviceIsOnSameAccount:(BOOL)arg2 remoteGateway:(BOOL)arg3 remoteUserIsAdministrator:(BOOL)arg4;
 
 @end
 

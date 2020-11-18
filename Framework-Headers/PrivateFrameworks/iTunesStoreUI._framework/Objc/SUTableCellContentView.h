@@ -40,7 +40,6 @@
 - (void)_reloadSubviewAlphasAnimated:(BOOL)arg1;
 - (void)_reloadSubviewsForConfiguration;
 - (void)_removeSubviewsForConfiguration;
-- (id)_scriptingInfo;
 - (void)_startUsingSubviewLayout;
 - (void)_stopUsingSubviewLayout;
 - (void)_updateDisabledStyleForSubviews;

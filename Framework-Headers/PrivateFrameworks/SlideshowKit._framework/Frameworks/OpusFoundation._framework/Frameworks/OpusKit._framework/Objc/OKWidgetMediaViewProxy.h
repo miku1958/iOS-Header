@@ -8,12 +8,13 @@
 
 #import <OpusKit/OKVideoControllerDelegate-Protocol.h>
 #import <OpusKit/OKViewControllerAudioSupport-Protocol.h>
+#import <OpusKit/OKWidgetEditable-Protocol.h>
 #import <OpusKit/OKWidgetMediaViewProxyExports-Protocol.h>
 #import <OpusKit/UIGestureRecognizerDelegate-Protocol.h>
 
 @class AVAsset, NSString, NSURL, OFUIButton, OFUIView, OKAudioDucker, OKVideoPlayerController, OKWidgetMediaVideoPlayerView, UIImageView;
 
-@interface OKWidgetMediaViewProxy : OKWidgetView <OKViewControllerAudioSupport, OKVideoControllerDelegate, OKWidgetMediaViewProxyExports, UIGestureRecognizerDelegate>
+@interface OKWidgetMediaViewProxy : OKWidgetView <OKViewControllerAudioSupport, OKVideoControllerDelegate, OKWidgetEditable, OKWidgetMediaViewProxyExports, UIGestureRecognizerDelegate>
 {
     OFUIButton *_videoPlayButton;
     UIImageView *_thumbnailView;
@@ -40,6 +41,7 @@
     struct CGPoint _originalOffsetWhilePanning;
     double _scale;
     BOOL _editable;
+    BOOL _isEditingPanning;
     BOOL _shouldFitRegionOfInterest;
     BOOL _needsReloadThumbnail;
     OFUIView *_faceRect;
@@ -79,6 +81,7 @@
 - (void)dealloc;
 - (void)drawRegionOfInterestContainerBounds;
 - (double)duration;
+- (BOOL)endAllEditing:(BOOL)arg1;
 - (void)endDucking;
 - (void)hideThumbnailAndPlayVideo;
 - (id)initWithWidget:(id)arg1;
@@ -138,6 +141,7 @@
 - (void)videoPlayerController:(id)arg1 bufferingStateDidChange:(unsigned long long)arg2;
 - (void)videoPlayerController:(id)arg1 didFailToPlayItem:(id)arg2;
 - (void)videoPlayerController:(id)arg1 didFinishPlayingItem:(id)arg2;
+- (void)videoPlayerController:(id)arg1 didStartPlayingItem:(id)arg2;
 
 @end
 

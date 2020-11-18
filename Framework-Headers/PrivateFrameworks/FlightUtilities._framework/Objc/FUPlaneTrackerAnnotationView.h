@@ -15,17 +15,17 @@ __attribute__((visibility("hidden")))
 {
     BOOL _showsPlane;
     NSMutableArray *_viewAddedBlock;
-    CDStruct_2c43369c _coordinate;
+    struct CLLocationCoordinate2D _coordinate;
 }
 
-@property (nonatomic) CDStruct_2c43369c coordinate; // @synthesize coordinate=_coordinate;
-@property (readonly) CDStruct_2c43369c currentLocation;
+@property (nonatomic) struct CLLocationCoordinate2D coordinate; // @synthesize coordinate=_coordinate;
+@property (readonly) struct CLLocationCoordinate2D currentLocation;
 @property (nonatomic) double currentProgress;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) CDStruct_2c43369c endLocation;
+@property (nonatomic) struct CLLocationCoordinate2D endLocation;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) CDStruct_2c43369c startLocation;
+@property (nonatomic) struct CLLocationCoordinate2D startLocation;
 @property (readonly, copy, nonatomic) NSString *subtitle;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *title;

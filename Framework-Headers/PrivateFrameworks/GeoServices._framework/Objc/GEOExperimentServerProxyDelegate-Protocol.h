@@ -6,10 +6,10 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOABExperimentResponse;
+@class GEOABAssignmentResponse;
 @protocol GEOExperimentServerProxy;
 
 @protocol GEOExperimentServerProxyDelegate <NSObject>
-- (void)serverProxy:(id<GEOExperimentServerProxy>)arg1 didChangeExperimentsInfo:(GEOABExperimentResponse *)arg2;
+- (void)serverProxy:(id<GEOExperimentServerProxy>)arg1 didChangeExperimentsInfo:(GEOABAssignmentResponse *)arg2;
 @end
 

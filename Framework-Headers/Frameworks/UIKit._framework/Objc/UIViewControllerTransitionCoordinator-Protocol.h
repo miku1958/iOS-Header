@@ -11,6 +11,7 @@
 @protocol UIViewControllerTransitionCoordinator <UIViewControllerTransitionCoordinatorContext>
 - (BOOL)animateAlongsideTransition:(void (^)(id<UIViewControllerTransitionCoordinatorContext>))arg1 completion:(void (^)(id<UIViewControllerTransitionCoordinatorContext>))arg2;
 - (BOOL)animateAlongsideTransitionInView:(UIView *)arg1 animation:(void (^)(id<UIViewControllerTransitionCoordinatorContext>))arg2 completion:(void (^)(id<UIViewControllerTransitionCoordinatorContext>))arg3;
+- (void)notifyWhenInteractionChangesUsingBlock:(void (^)(id<UIViewControllerTransitionCoordinatorContext>))arg1;
 - (void)notifyWhenInteractionEndsUsingBlock:(void (^)(id<UIViewControllerTransitionCoordinatorContext>))arg1;
 @end
 

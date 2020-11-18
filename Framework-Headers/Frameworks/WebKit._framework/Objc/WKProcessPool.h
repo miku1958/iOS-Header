@@ -6,19 +6,23 @@
 
 #import <objc/NSObject.h>
 
+#import <WebKit/NSCoding-Protocol.h>
 #import <WebKit/WKObject-Protocol.h>
 
 @class NSString, WKGeolocationProviderIOS, _WKProcessPoolConfiguration;
-@protocol _WKDownloadDelegate;
+@protocol _WKAutomationDelegate, _WKDownloadDelegate;
 
-@interface WKProcessPool : NSObject <WKObject>
+@interface WKProcessPool : NSObject <WKObject, NSCoding>
 {
     struct ObjectStorage<WebKit::WebProcessPool> _processPool;
+    struct WeakObjCPtr<id<_WKAutomationDelegate>> _automationDelegate;
     struct WeakObjCPtr<id<_WKDownloadDelegate>> _downloadDelegate;
+    struct RetainPtr<_WKAutomationSession> _automationSession;
     struct RetainPtr<WKGeolocationProviderIOS> _geolocationProvider;
 }
 
 @property (readonly) struct Object *_apiObject;
+@property (weak, nonatomic, setter=_setAutomationDelegate:) id<_WKAutomationDelegate> _automationDelegate;
 @property (readonly, nonatomic) _WKProcessPoolConfiguration *_configuration;
 @property (weak, nonatomic, setter=_setDownloadDelegate:) id<_WKDownloadDelegate> _downloadDelegate;
 @property (readonly) WKGeolocationProviderIOS *_geolocationProvider;
@@ -27,18 +31,26 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_sharedProcessPool;
 + (id)_websiteDataURLForContainerWithURL:(id)arg1;
 + (id)_websiteDataURLForContainerWithURL:(id)arg1 bundleIdentifierIfNotInContainer:(id)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_automationCapabilitiesDidChange;
 - (id)_initWithConfiguration:(id)arg1;
 - (id)_objectForBundleParameter:(id)arg1;
 - (void)_setAllowsSpecificHTTPSCertificate:(id)arg1 forHost:(id)arg2;
+- (void)_setAutomationSession:(id)arg1;
 - (void)_setCanHandleHTTPSServerTrustEvaluation:(BOOL)arg1;
 - (void)_setCookieAcceptPolicy:(unsigned long long)arg1;
 - (void)_setObject:(id)arg1 forBundleParameter:(id)arg2;
+- (void)_setObjectsForBundleParametersWithDictionary:(id)arg1;
+- (void)_terminateDatabaseProcess;
+- (void)_warmInitialProcess;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

@@ -14,10 +14,11 @@
 
 @interface TKVibrationRecorderContentViewController : UIViewController <TKVibrationRecorderViewDelegate, UITextFieldDelegate>
 {
-    BOOL _waitingForEndOfCurrentVibrationComponent;
     int _mode;
-    id<TKVibrationRecorderViewControllerDelegate> _delegate;
-    TKVibrationRecorderViewController *_parentVibrationRecorderViewController;
+    TKVibrationRecorderView *_vibrationRecorderView;
+    TLVibrationPattern *_recordedVibrationPattern;
+    double _currentVibrationComponentDidStartTimeStamp;
+    BOOL _isWaitingForEndOfCurrentVibrationComponent;
     UIBarButtonItem *_cancelButton;
     UIBarButtonItem *_saveButton;
     UIAlertController *_vibrationNameAlertController;
@@ -25,32 +26,18 @@
     UITextField *_vibrationNameAlertTextField;
     TKVibratorController *_vibratorController;
     NSDictionary *_indefiniteVibrationPattern;
-    TKVibrationRecorderView *_vibrationRecorderView;
-    TLVibrationPattern *_recordedVibrationPattern;
-    double _currentVibrationComponentDidStartTimeStamp;
-    double _currentVibrationProgressDidStartTimestamp;
+    id<TKVibrationRecorderViewControllerDelegate> _delegate;
+    TKVibrationRecorderViewController *_parentVibrationRecorderViewController;
 }
 
-@property (strong, nonatomic, setter=_setCancelButton:) UIBarButtonItem *_cancelButton; // @synthesize _cancelButton;
-@property (nonatomic, setter=_setCurrentVibrationComponentDidStartTimeStamp:) double _currentVibrationComponentDidStartTimeStamp; // @synthesize _currentVibrationComponentDidStartTimeStamp;
-@property (nonatomic, setter=_setCurrentVibrationProgressDidStartTimestamp:) double _currentVibrationProgressDidStartTimestamp; // @synthesize _currentVibrationProgressDidStartTimestamp;
-@property (strong, nonatomic, setter=_setIndefiniteVibrationPattern:) NSDictionary *_indefiniteVibrationPattern; // @synthesize _indefiniteVibrationPattern;
-@property (nonatomic, setter=_setMode:) int _mode; // @synthesize _mode;
-@property (strong, nonatomic, setter=_setRecordedVibrationPattern:) TLVibrationPattern *_recordedVibrationPattern; // @synthesize _recordedVibrationPattern;
-@property (strong, nonatomic, setter=_setSaveButton:) UIBarButtonItem *_saveButton; // @synthesize _saveButton;
-@property (strong, nonatomic, setter=_setVibrationNameAlertController:) UIAlertController *_vibrationNameAlertController; // @synthesize _vibrationNameAlertController;
-@property (strong, nonatomic, setter=_setVibrationNameAlertSaveAction:) UIAlertAction *_vibrationNameAlertSaveAction; // @synthesize _vibrationNameAlertSaveAction;
-@property (strong, nonatomic, setter=_setVibrationNameAlertTextField:) UITextField *_vibrationNameAlertTextField; // @synthesize _vibrationNameAlertTextField;
-@property (strong, nonatomic, setter=_setVibrationRecorderView:) TKVibrationRecorderView *_vibrationRecorderView; // @synthesize _vibrationRecorderView;
-@property (strong, nonatomic, setter=_setVibratorController:) TKVibratorController *_vibratorController; // @synthesize _vibratorController;
-@property (nonatomic, getter=_isWaitingForEndOfCurrentVibrationComponent, setter=_setWaitingForEndOfCurrentVibrationComponent:) BOOL _waitingForEndOfCurrentVibrationComponent; // @synthesize _waitingForEndOfCurrentVibrationComponent;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<TKVibrationRecorderViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<TKVibrationRecorderViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) TKVibrationRecorderViewController *parentVibrationRecorderViewController; // @synthesize parentVibrationRecorderViewController=_parentVibrationRecorderViewController;
+@property (weak, nonatomic) TKVibrationRecorderViewController *parentVibrationRecorderViewController; // @synthesize parentVibrationRecorderViewController=_parentVibrationRecorderViewController;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_accessibilityDidEnterRecordingMode;
 - (void)_accessibilityDidEnterReplayMode;
 - (void)_accessibilityDidExitRecordingMode;
@@ -61,6 +48,7 @@
 - (void)_cleanUpVibrationNameAlertController;
 - (void)_eraseCurrentVibrationComponentDidStartTimeStamp;
 - (void)_finishedWithRecorder;
+- (id)_indefiniteVibrationPattern;
 - (void)_saveButtonInAlertTapped:(id)arg1;
 - (void)_saveButtonTapped:(id)arg1;
 - (void)_startVibratingWithVibrationPattern:(id)arg1;

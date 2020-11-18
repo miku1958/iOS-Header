@@ -33,10 +33,6 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-struct _TidyDoc {
-    int _field1;
-};
-
 struct __va_list_tag {
     unsigned int _field1;
     unsigned int _field2;

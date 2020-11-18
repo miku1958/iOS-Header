@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <AccessibilityUtilities/AXEventRepresentationDescription-Protocol.h>
 #import <AccessibilityUtilities/NSCopying-Protocol.h>
 #import <AccessibilityUtilities/NSSecureCoding-Protocol.h>
 
-@interface AXEventGameControllerInfoRepresentation : NSObject <NSSecureCoding, NSCopying>
+@class NSString;
+
+@interface AXEventGameControllerInfoRepresentation : NSObject <AXEventRepresentationDescription, NSSecureCoding, NSCopying>
 {
     double _directionPadUp;
     double _directionPadDown;
@@ -29,6 +32,8 @@
     double _rightJoystickY;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) double directionPadDown; // @synthesize directionPadDown=_directionPadDown;
 @property (nonatomic) double directionPadLeft; // @synthesize directionPadLeft=_directionPadLeft;
 @property (nonatomic) double directionPadRight; // @synthesize directionPadRight=_directionPadRight;
@@ -37,6 +42,7 @@
 @property (nonatomic) double faceButtonB; // @synthesize faceButtonB=_faceButtonB;
 @property (nonatomic) double faceButtonX; // @synthesize faceButtonX=_faceButtonX;
 @property (nonatomic) double faceButtonY; // @synthesize faceButtonY=_faceButtonY;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL leftJoystickActive;
 @property (nonatomic) double leftJoystickX; // @synthesize leftJoystickX=_leftJoystickX;
 @property (nonatomic) double leftJoystickY; // @synthesize leftJoystickY=_leftJoystickY;
@@ -47,9 +53,10 @@
 @property (nonatomic) double shoulderButtonL2; // @synthesize shoulderButtonL2=_shoulderButtonL2;
 @property (nonatomic) double shoulderButtonR1; // @synthesize shoulderButtonR1=_shoulderButtonR1;
 @property (nonatomic) double shoulderButtonR2; // @synthesize shoulderButtonR2=_shoulderButtonR2;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
-- (id)_tabularDescription;
+- (id)accessibilityEventRepresentationTabularDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

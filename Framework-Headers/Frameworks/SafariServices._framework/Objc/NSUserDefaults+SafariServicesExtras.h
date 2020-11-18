@@ -7,7 +7,12 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (SafariServicesExtras)
++ (id)_sf_safariDefaults;
 - (id)_sf_dateForKey:(id)arg1;
+- (BOOL)_sf_javaScriptCanOpenWindowsAutomatically;
+- (BOOL)_sf_javaScriptEnabled;
+- (void)_sf_registerSafariDefaults;
 - (id)_sf_stringForKey:(id)arg1 defaultValue:(id)arg2;
+- (BOOL)_sf_warnAboutFraudulentWebsites;
 @end
 

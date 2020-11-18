@@ -16,10 +16,10 @@
     unsigned long long _format;
 }
 
-@property (nonatomic) void *dataStart; // @synthesize dataStart=_dataStart;
-@property (nonatomic) unsigned long long format; // @synthesize format=_format;
-@property (strong, nonatomic) MDLMeshBufferMap *map; // @synthesize map=_map;
-@property (nonatomic) unsigned long long stride; // @synthesize stride=_stride;
+@property (nonatomic) void *dataStart;
+@property (nonatomic) unsigned long long format;
+@property (strong, nonatomic) MDLMeshBufferMap *map;
+@property (nonatomic) unsigned long long stride;
 
 - (void).cxx_destruct;
 - (id)init;

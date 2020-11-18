@@ -15,53 +15,42 @@
 #import <ToneKit/TKVibrationPickerViewControllerDelegate-Protocol.h>
 #import <ToneKit/TKVibrationPickerViewControllerDismissalDelegate-Protocol.h>
 
-@class MPMediaPickerController, MPMusicPlayerController, NSMutableArray, NSNumber, NSString, TKToneClassicsTableViewController, TKTonePickerController, TKTonePickerTableViewCellLayoutManager, TKVibrationPickerViewController, UIBarButtonItem, UIImage, UIView;
+@class MPMediaPickerController, MPMusicPlayerController, NSMutableArray, NSMutableDictionary, NSNumber, NSString, TKToneClassicsTableViewController, TKTonePickerController, TKTonePickerTableViewCellLayoutManager, TKVibrationPickerViewController, UIBarButtonItem, UIImage;
 @protocol TKTonePickerStyleProvider, TKTonePickerViewControllerDelegate;
 
 @interface TKTonePickerViewController : UITableViewController <TKTonePickerControllerDelegate, TKTonePickerControllerDelegateInternal, TKTonePickerTableViewControllerHelper, TKTonePickerTableViewLayoutMarginsObserver, TKTonePickerTableViewSeparatorObserver, TKVibrationPickerViewControllerDelegate, TKVibrationPickerViewControllerDismissalDelegate, MPMediaPickerControllerDelegate>
 {
-    BOOL _showsStoreButtonInNavigationBar;
-    BOOL _needsScrollPositionReset;
-    BOOL _showsMedia;
-    id<TKTonePickerViewControllerDelegate> _delegate;
     TKTonePickerController *_tonePickerController;
     UIImage *_checkmarkImage;
-    TKTonePickerTableViewCellLayoutManager *_tableViewCellLayoutManager;
-    TKToneClassicsTableViewController *_toneClassicsTableViewController;
+    TKTonePickerTableViewCellLayoutManager *_tableViewCellLayoutManagerForIndentedRows;
+    TKTonePickerTableViewCellLayoutManager *_tableViewCellLayoutManagerForUnindentedRows;
+    BOOL _showsToneStoreWasSetExplicitly;
+    BOOL _needsScrollPositionReset;
     UIBarButtonItem *_storeBarButtonItem;
-    TKVibrationPickerViewController *_vibrationPickerViewController;
-    id<TKTonePickerStyleProvider> _styleProvider;
-    UIView *_defaultSectionHeaderView;
-    UIView *_mediaSectionHeaderView;
-    NSMutableArray *_regularToneSectionHeaderViews;
-    NSMutableArray *_mediaItems;
+    NSMutableDictionary *_toneSectionHeaderViews;
     MPMediaPickerController *_mediaPickerController;
-    MPMusicPlayerController *_storedMusicPlayer;
+    NSMutableArray *_mediaItems;
+    MPMusicPlayerController *_musicPlayer;
+    TKToneClassicsTableViewController *_toneClassicsTableViewController;
+    TKVibrationPickerViewController *_vibrationPickerViewController;
+    BOOL _isHandlingSwitchControlValueChanged;
+    NSMutableArray *_switchControlsBeingObserved;
+    BOOL _showsStoreButtonInNavigationBar;
+    BOOL _showsToneStore;
+    BOOL _showsIgnoreMute;
+    BOOL _showsMedia;
+    id<TKTonePickerViewControllerDelegate> _delegate;
+    id<TKTonePickerStyleProvider> _styleProvider;
 }
 
-@property (strong, nonatomic, setter=_setCheckmarkImage:) UIImage *_checkmarkImage; // @synthesize _checkmarkImage;
-@property (strong, nonatomic, setter=_setDefaultSectionHeaderView:) UIView *_defaultSectionHeaderView; // @synthesize _defaultSectionHeaderView;
-@property (strong, nonatomic, setter=_setMediaItems:) NSMutableArray *_mediaItems; // @synthesize _mediaItems;
-@property (strong, nonatomic, setter=_setMediaPickerController:) MPMediaPickerController *_mediaPickerController; // @synthesize _mediaPickerController;
-@property (strong, nonatomic, setter=_setMediaSectionHeaderView:) UIView *_mediaSectionHeaderView; // @synthesize _mediaSectionHeaderView;
-@property (readonly, nonatomic) MPMusicPlayerController *_musicPlayer;
-@property (nonatomic, setter=_setNeedsScrollPositionReset:) BOOL _needsScrollPositionReset; // @synthesize _needsScrollPositionReset;
-@property (strong, nonatomic, setter=_setRegularToneSectionHeaderViews:) NSMutableArray *_regularToneSectionHeaderViews; // @synthesize _regularToneSectionHeaderViews;
-@property (nonatomic, setter=_setShowsStoreButtonInNavigationBar:) BOOL _showsStoreButtonInNavigationBar; // @synthesize _showsStoreButtonInNavigationBar;
-@property (strong, nonatomic, setter=_setStoreBarButtonItem:) UIBarButtonItem *_storeBarButtonItem; // @synthesize _storeBarButtonItem;
-@property (strong, nonatomic, setter=_setStoredMusicPlayer:) MPMusicPlayerController *_storedMusicPlayer; // @synthesize _storedMusicPlayer;
-@property (strong, nonatomic, setter=_setStyleProvider:) id<TKTonePickerStyleProvider> _styleProvider; // @synthesize _styleProvider;
-@property (strong, nonatomic, setter=_setTableViewCellLayoutManager:) TKTonePickerTableViewCellLayoutManager *_tableViewCellLayoutManager; // @synthesize _tableViewCellLayoutManager;
-@property (strong, nonatomic, setter=_setToneClassicsTableViewController:) TKToneClassicsTableViewController *_toneClassicsTableViewController; // @synthesize _toneClassicsTableViewController;
-@property (strong, nonatomic, setter=_setTonePickerController:) TKTonePickerController *_tonePickerController; // @synthesize _tonePickerController;
-@property (strong, nonatomic, setter=_setVibrationPickerViewController:) TKVibrationPickerViewController *_vibrationPickerViewController; // @synthesize _vibrationPickerViewController;
 @property (copy, nonatomic) NSString *accountIdentifier;
-@property (readonly, nonatomic) int alertType;
+@property (readonly, nonatomic) long long alertType;
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) NSString *defaultToneIdentifier;
-@property (nonatomic) id<TKTonePickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<TKTonePickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL ignoreMute;
 @property (nonatomic, getter=isMediaAtTop) BOOL mediaAtTop;
 @property (nonatomic, getter=isNoneAtTop) BOOL noneAtTop;
 @property (copy, nonatomic) NSString *noneString;
@@ -69,35 +58,43 @@
 @property (copy, nonatomic) NSString *selectedToneIdentifier;
 @property (copy, nonatomic) NSString *selectedVibrationIdentifier;
 @property (nonatomic) BOOL showsDefault;
+@property (nonatomic) BOOL showsIgnoreMute; // @synthesize showsIgnoreMute=_showsIgnoreMute;
 @property (nonatomic) BOOL showsMedia; // @synthesize showsMedia=_showsMedia;
 @property (nonatomic) BOOL showsNone;
 @property (nonatomic) BOOL showsNothingSelected;
-@property (nonatomic) BOOL showsStoreButtonInNavigationBar;
+@property (nonatomic) BOOL showsStoreButtonInNavigationBar; // @synthesize showsStoreButtonInNavigationBar=_showsStoreButtonInNavigationBar;
+@property (nonatomic) BOOL showsToneStore; // @synthesize showsToneStore=_showsToneStore;
 @property (nonatomic) BOOL showsVibrations;
-@property (strong, nonatomic) id<TKTonePickerStyleProvider> styleProvider;
+@property (strong, nonatomic) id<TKTonePickerStyleProvider> styleProvider; // @synthesize styleProvider=_styleProvider;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *topic;
 
+- (void).cxx_destruct;
 - (unsigned long long)_addMediaIdentifierToList:(id)arg1;
 - (void)_configureNavigationBarIfNeeded;
 - (void)_configureTextColorOfLabelInCell:(id)arg1 checked:(BOOL)arg2;
+- (id)_customHeaderViewForHeaderInSection:(long long)arg1;
 - (void)_didSelectMediaItemWithIdentifier:(id)arg1;
 - (void)_didSelectToneWithIdentifier:(id)arg1;
-- (void)_getTitle:(id *)arg1 customHeaderView:(id *)arg2 forHeaderInSection:(long long)arg3;
 - (void)_goToStore;
 - (void)_handleMediaLibraryDidChangeNotification;
+- (void)_handleSwitchControlValueChanged:(id)arg1;
 - (id)_mediaItemForIdentifier:(id)arg1;
 - (double)_minimumTextIndentationForTableView:(id)arg1 withCheckmarkImage:(id)arg2;
+- (id)_musicPlayer;
 - (id)_pickerRowItemForIndexPath:(id)arg1;
 - (void)_playMediaItemWithIdentifier:(id)arg1;
 - (void)_reloadData;
 - (void)_resetScrollingPosition;
+- (BOOL)_shouldShowCheckmarkOnTrailingEdge;
+- (void)_stopMediaItemPlaybackWithFadeOutDuration:(double)arg1;
 - (void)_togglePlayMediaItemWithIdentifier:(id)arg1;
 - (void)_updateMinimumTextIndentation;
 - (void)_updateStyleOfTableView:(id)arg1 forStyleProvider:(id)arg2;
 - (void)addMediaItems:(id)arg1;
 - (void)applicationWillSuspend;
 - (void)dealloc;
-- (id)initWithAlertType:(int)arg1;
+- (id)initWithAlertType:(long long)arg1;
 - (id)initWithStyle:(long long)arg1;
 - (void)layoutMarginsDidChangeInTonePickerTableView:(id)arg1;
 - (void)loadView;
@@ -117,6 +114,8 @@
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 updateCell:(id)arg2 withSeparatorForPickerRowItem:(id)arg3;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
@@ -125,6 +124,7 @@
 - (void)tonePickerController:(id)arg1 didSelectMediaItemAtIndex:(unsigned long long)arg2 selectionDidChange:(BOOL)arg3;
 - (void)tonePickerController:(id)arg1 didUpdateCheckedStatus:(BOOL)arg2 ofTonePickerItem:(id)arg3;
 - (void)tonePickerController:(id)arg1 didUpdateDetailText:(id)arg2 ofTonePickerItem:(id)arg3;
+- (void)tonePickerController:(id)arg1 didUpdateIgnoreMute:(BOOL)arg2 forTonePickerItem:(id)arg3 atIndexPath:(id)arg4;
 - (id)tonePickerController:(id)arg1 identifierOfMediaItemAtIndex:(unsigned long long)arg2;
 - (unsigned long long)tonePickerController:(id)arg1 indexOfMediaItemWithIdentifier:(id)arg2;
 - (void)tonePickerController:(id)arg1 requestsPresentingAlertWithTitle:(id)arg2 message:(id)arg3;
@@ -132,6 +132,7 @@
 - (void)tonePickerController:(id)arg1 selectedMediaItemWithIdentifier:(id)arg2;
 - (void)tonePickerController:(id)arg1 selectedToneWithIdentifier:(id)arg2;
 - (id)tonePickerController:(id)arg1 titleOfMediaItemAtIndex:(unsigned long long)arg2;
+- (void)tonePickerController:(id)arg1 willBeginPlaybackOfToneWithIdentifier:(id)arg2;
 - (void)tonePickerControllerDidReloadTones:(id)arg1;
 - (void)tonePickerControllerDidStopPlaying:(id)arg1 withFadeOutDuration:(double)arg2;
 - (void)tonePickerControllerRequestsMediaItemsRefresh:(id)arg1;
@@ -141,7 +142,7 @@
 - (BOOL)tonePickerControllerShouldShowMedia:(id)arg1;
 - (void)tonePickerTableViewControllerWillBeDeallocated:(id)arg1;
 - (void)tonePickerTableViewWillDisappear:(BOOL)arg1;
-- (void)updateCell:(id)arg1 withCheckedStatus:(BOOL)arg2;
+- (void)updateCell:(id)arg1 withCheckedStatus:(BOOL)arg2 forPickerRowItem:(id)arg3;
 - (void)updateCell:(id)arg1 withDetailText:(id)arg2;
 - (void)updateDividerContentColorToMatchSeparatorColorInTableView:(id)arg1;
 - (void)vibrationPickerViewController:(id)arg1 selectedVibrationWithIdentifier:(id)arg2;

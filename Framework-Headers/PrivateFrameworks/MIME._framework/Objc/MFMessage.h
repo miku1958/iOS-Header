@@ -26,6 +26,7 @@
     NSString *_contentType;
     long long _messageIDHeaderHash;
     long long _conversationID;
+    long long _listIDHash;
     NSString *_summary;
     NSString *_externalID;
     MFMimePart *_parentPart;
@@ -90,6 +91,7 @@
 - (id)init;
 - (BOOL)isLibraryMessage;
 - (BOOL)isMessageContentsLocallyAvailable;
+- (long long)listIDHash;
 - (void)loadCachedHeaderValuesFromHeaders:(id)arg1;
 - (id)messageBody;
 - (id)messageBodyIfAvailable;
@@ -126,6 +128,7 @@
 - (void)setDateSentTimeIntervalSince1970:(double)arg1;
 - (void)setExternalID:(id)arg1;
 - (void)setGenerationNumber:(unsigned long long)arg1;
+- (void)setListIDHash:(long long)arg1;
 - (void)setMessageData:(id)arg1 isPartial:(BOOL)arg2;
 - (void)setMessageIDHash:(long long)arg1;
 - (void)setMessageIDHeader:(id)arg1;

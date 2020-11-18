@@ -4,27 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CloudDocsDaemon/BRCNotificationGatherer.h>
+#import <objc/NSObject.h>
 
-@class BRCItemID, NSMutableArray, NSString;
+@class BRCAccountSession, BRCItemID, BRCNotificationPipe, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface BRCDataOrDocsScopeGatherer : BRCNotificationGatherer
+@interface BRCDataOrDocsScopeGatherer : NSObject
 {
-    NSMutableArray *_gatheringContainers;
+    BRCNotificationPipe *_pipe;
+    CDUnknownBlockType _gatherReply;
+    NSMutableArray *_gatheringAppLibraries;
     unsigned long long _gatheringRankCur;
     unsigned long long _gatheringRankMax;
     NSString *_gatheringNamePrefix;
+    BRCAccountSession *_session;
     BRCItemID *_gatheredChildrenItemID;
 }
 
 @property (strong, nonatomic) BRCItemID *gatheredChildrenItemID; // @synthesize gatheredChildrenItemID=_gatheredChildrenItemID;
 
 - (void).cxx_destruct;
-- (id)_gatheringDescendantOfContainerWithID:(id)arg1;
-- (id)_gatheringNotDescendantOfContainerWithID:(id)arg1;
-- (BOOL)continueGatheringWithBatchSize:(long long)arg1;
-- (id)initWithNotificationPipe:(id)arg1 containers:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)done;
+- (void)gatherWithBatchSize:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)initWithNotificationPipe:(id)arg1 appLibraries:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)invalidate;
 
 @end
 

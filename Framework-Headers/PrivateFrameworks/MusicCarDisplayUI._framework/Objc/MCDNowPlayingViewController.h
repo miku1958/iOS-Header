@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class MCDPlayModeControlView, MCDProgressView, MCDTitleView, MCDTransportControlView, UIColor, UIImageView, UILabel, UITapGestureRecognizer;
+@class MCDPlayModeControlView, MCDProgressView, MCDTitleView, MCDTransportControlView, NSString, UIColor, UIFocusContainerGuide, UIImageView, UILabel, UILongPressGestureRecognizer, UINavigationBar, UITapGestureRecognizer;
 @protocol MCDNowPlayingViewControllerDataSource, MCDNowPlayingViewControllerDelegate;
 
 @interface MCDNowPlayingViewController : UIViewController
@@ -15,54 +15,85 @@
     long long _heldAction;
     UIViewController *_transportViewController;
     UIViewController *_playModeViewController;
+    UINavigationBar *_navigationBar;
     UILabel *_albumArtistLabel;
     BOOL _highTouchMode;
     UIColor *_navbarColor;
     BOOL _navbarHidesShadow;
+    BOOL _titleUpdated;
     MCDTransportControlView *_transportControlView;
     MCDPlayModeControlView *_playModeControlView;
+    MCDTitleView *_titleView;
     id<MCDNowPlayingViewControllerDelegate> _delegate;
     id<MCDNowPlayingViewControllerDataSource> _dataSource;
-    MCDTitleView *_titleView;
     MCDProgressView *_progressView;
     UIImageView *_artworkView;
     UITapGestureRecognizer *_knobPressRecognizer;
     UITapGestureRecognizer *_backPressRecognizer;
+    UITapGestureRecognizer *_leftNudgePressRecognizer;
+    UITapGestureRecognizer *_rightNudgePressRecognizer;
+    UILongPressGestureRecognizer *_leftNudgeLongPressRecognizer;
+    UILongPressGestureRecognizer *_rightNudgeLongPressRecognizer;
+    UILongPressGestureRecognizer *_leftButtonLongPressRecognizer;
+    UILongPressGestureRecognizer *_fastForwardButtonLongPressRecognizer;
+    UIFocusContainerGuide *_controlsFocusContainerGuide;
+    NSString *_previousTransportButtonImageIdentifier;
+    NSString *_forwardTransportButtonImageIdentifier;
 }
 
 @property (readonly, nonatomic) UIImageView *artworkView; // @synthesize artworkView=_artworkView;
 @property (readonly, nonatomic) UITapGestureRecognizer *backPressRecognizer; // @synthesize backPressRecognizer=_backPressRecognizer;
+@property (strong, nonatomic) UIFocusContainerGuide *controlsFocusContainerGuide; // @synthesize controlsFocusContainerGuide=_controlsFocusContainerGuide;
 @property (weak, nonatomic) id<MCDNowPlayingViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (weak, nonatomic) id<MCDNowPlayingViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) UILongPressGestureRecognizer *fastForwardButtonLongPressRecognizer; // @synthesize fastForwardButtonLongPressRecognizer=_fastForwardButtonLongPressRecognizer;
+@property (strong, nonatomic) NSString *forwardTransportButtonImageIdentifier; // @synthesize forwardTransportButtonImageIdentifier=_forwardTransportButtonImageIdentifier;
 @property (readonly, nonatomic) UITapGestureRecognizer *knobPressRecognizer; // @synthesize knobPressRecognizer=_knobPressRecognizer;
+@property (strong, nonatomic) UILongPressGestureRecognizer *leftButtonLongPressRecognizer; // @synthesize leftButtonLongPressRecognizer=_leftButtonLongPressRecognizer;
+@property (strong, nonatomic) UILongPressGestureRecognizer *leftNudgeLongPressRecognizer; // @synthesize leftNudgeLongPressRecognizer=_leftNudgeLongPressRecognizer;
+@property (strong, nonatomic) UITapGestureRecognizer *leftNudgePressRecognizer; // @synthesize leftNudgePressRecognizer=_leftNudgePressRecognizer;
 @property (readonly, nonatomic) MCDPlayModeControlView *playModeControlView; // @synthesize playModeControlView=_playModeControlView;
+@property (strong, nonatomic) NSString *previousTransportButtonImageIdentifier; // @synthesize previousTransportButtonImageIdentifier=_previousTransportButtonImageIdentifier;
 @property (readonly, nonatomic) MCDProgressView *progressView; // @synthesize progressView=_progressView;
+@property (strong, nonatomic) UILongPressGestureRecognizer *rightNudgeLongPressRecognizer; // @synthesize rightNudgeLongPressRecognizer=_rightNudgeLongPressRecognizer;
+@property (strong, nonatomic) UITapGestureRecognizer *rightNudgePressRecognizer; // @synthesize rightNudgePressRecognizer=_rightNudgePressRecognizer;
+@property (nonatomic) BOOL titleUpdated; // @synthesize titleUpdated=_titleUpdated;
 @property (readonly, nonatomic) MCDTitleView *titleView; // @synthesize titleView=_titleView;
 @property (readonly, nonatomic) MCDTransportControlView *transportControlView; // @synthesize transportControlView=_transportControlView;
 
 - (void).cxx_destruct;
+- (void)_addToLibraryButtonTouchUp:(id)arg1;
 - (void)_didUpdateSupportedCommandsNotification:(id)arg1;
+- (void)_fastForwardButtonLongPress:(id)arg1;
 - (void)_fastForwardButtonTouchDown:(id)arg1;
 - (void)_fastForwardButtonTouchUp:(id)arg1;
 - (void)_initializeTransportControls;
+- (void)_itemChanged:(id)arg1;
+- (void)_leftButtonLongPress:(id)arg1;
 - (void)_leftButtonTouchDown:(id)arg1;
 - (void)_leftButtonTouchUp:(id)arg1;
-- (void)_likeButtonTouchUp:(id)arg1;
+- (void)_leftNudgePress:(id)arg1;
+- (void)_moreButtonTouchUp:(id)arg1;
 - (void)_playPauseButtonTouchUp:(id)arg1;
 - (void)_repeatButtonTouchUp:(id)arg1;
 - (void)_respondToHeldAction;
+- (void)_rightNudgePress:(id)arg1;
 - (void)_sendAction:(long long)arg1 withState:(long long)arg2;
 - (void)_sendHeldAction;
 - (void)_shuffleButtonTouchUp:(id)arg1;
 - (void)_updatePlayModesState;
-- (void)_updateRepeatStateWithType:(unsigned long long)arg1;
-- (void)_updateShuffleStateWithType:(unsigned long long)arg1;
+- (void)_updateRepeatStateWithType:(long long)arg1;
+- (void)_updateShuffleStateWithType:(long long)arg1;
 - (void)_updateTransportControl:(id)arg1 withDefaultImage:(id)arg2 actionType:(long long)arg3;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
+- (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)pressesChanged:(id)arg1 withEvent:(id)arg2;
+- (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)reloadData;
-- (void)updatePlayControls;
+- (void)updatePlayControlsWithElapsedTime:(double)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

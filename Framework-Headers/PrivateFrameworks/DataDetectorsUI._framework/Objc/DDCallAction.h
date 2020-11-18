@@ -12,14 +12,18 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)isAvailable;
-- (id)_UIDsAndLabelsMatchingPhoneNumber:(id)arg1 inAddressBook:(void *)arg2;
-- (id)_nameForPerson:(void *)arg1;
-- (BOOL)_retrieveNameForDestinationNumber:(id *)arg1 label:(id *)arg2;
+- (long long)TTYType;
 - (double)_systemFontSize;
 - (BOOL)_titleFitsInActionSheet:(id)arg1;
+- (id)callProvider;
+- (BOOL)canBePerformedByOpeningURL;
+- (id)contactAndLabelForPhoneNumber:(id *)arg1;
+- (id)contactsMatchingPhoneNumber:(id)arg1 inContactStore:(id)arg2;
 - (int)interactionType;
+- (id)labelToUseForPhoneNumber:(id)arg1 ofContact:(id)arg2;
+- (id)localizedCallStringForName:(id)arg1 usingCallRelay:(BOOL)arg2;
 - (id)localizedName;
-- (void)perform;
+- (void)performFromView:(id)arg1;
 
 @end
 

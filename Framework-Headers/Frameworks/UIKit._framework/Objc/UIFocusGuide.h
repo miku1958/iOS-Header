@@ -6,17 +6,19 @@
 
 #import <UIKit/UILayoutGuide.h>
 
-#import <UIKit/_UIFocusRegion-Protocol.h>
+#import <UIKit/_UIFocusGuideRegionDelegate-Protocol.h>
+#import <UIKit/_UIFocusRegionContainer-Protocol.h>
+#import <UIKit/_UILegacyFocusRegion-Protocol.h>
 
-@class NSString, UIView;
+@class NSArray, NSString, UIView;
 
-@interface UIFocusGuide : UILayoutGuide <_UIFocusRegion>
+@interface UIFocusGuide : UILayoutGuide <_UILegacyFocusRegion, _UIFocusRegionContainer, _UIFocusGuideRegionDelegate>
 {
-    BOOL _didSetPreferredFocusedView;
+    BOOL _didSetPreferredFocusedEnvironments;
     BOOL _enabled;
-    BOOL _automaticallyDisableWhenIntersectingFocus;
     BOOL _automaticallyPreferOwningView;
-    UIView *_preferredFocusedView;
+    BOOL _automaticallyDisableWhenIntersectingFocus;
+    NSArray *_preferredFocusEnvironments;
 }
 
 @property (nonatomic, getter=_automaticallyDisableWhenIntersectingFocus, setter=_setAutomaticallyDisableWhenIntersectingFocus:) BOOL automaticallyDisableWhenIntersectingFocus; // @synthesize automaticallyDisableWhenIntersectingFocus=_automaticallyDisableWhenIntersectingFocus;
@@ -25,13 +27,15 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) UIView *preferredFocusedView; // @synthesize preferredFocusedView=_preferredFocusedView;
+@property (copy, nonatomic) NSArray *preferredFocusEnvironments; // @synthesize preferredFocusEnvironments=_preferredFocusEnvironments;
+@property (weak, nonatomic) UIView *preferredFocusedView;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_childFocusRegions;
 - (id)_childFocusRegionsInRect:(struct CGRect)arg1;
 - (void)_didUpdateFocusToPreferredFocusedView;
+- (id)_encodablePreferredFocusEnvironments;
 - (id)_focusDebugOverlayParentView;
 - (BOOL)_focusRegionCanBecomeFocused;
 - (struct CGRect)_focusRegionFrame;
@@ -42,7 +46,11 @@
 - (id)_fulfillPromisedFocusRegion;
 - (BOOL)_isPromiseFocusRegion;
 - (BOOL)_isTransparentFocusRegion;
+- (void)_searchForFocusRegionsInContext:(id)arg1;
+- (BOOL)_shouldSearchForFocusRegionsInContext:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)focusGuideRegion:(id)arg1 preferredFocusEnvironmentsForMovement:(id)arg2;
+- (void)focusGuideRegion:(id)arg1 willParticipateAsDestinationRegionInFocusUpdate:(id)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 

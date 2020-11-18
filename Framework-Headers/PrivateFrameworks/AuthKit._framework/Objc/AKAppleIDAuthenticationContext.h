@@ -7,13 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <AuthKit/AKAppleIDAuthenticationLimitedUIProvider-Protocol.h>
+#import <AuthKit/CDPAuthProvider-Protocol.h>
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
-@class AKAnisetteData, AKDevice, NSArray, NSDictionary, NSNumber, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@class AKAnisetteData, AKDevice, CDPRecoveryController, NSArray, NSDictionary, NSNumber, NSSet, NSString, NSUUID;
+@protocol AKAnisetteServiceProtocol, CDPStateUIProvider, OS_dispatch_queue;
 
-@interface AKAppleIDAuthenticationContext : NSObject <AKAppleIDAuthenticationLimitedUIProvider, NSSecureCoding>
+@interface AKAppleIDAuthenticationContext : NSObject <AKAppleIDAuthenticationLimitedUIProvider, CDPAuthProvider, NSSecureCoding>
 {
+    id<CDPStateUIProvider> _cdpUiProvider;
     NSString *_generatedCode;
     NSNumber *_latitude;
     NSNumber *_longitude;
@@ -23,6 +25,10 @@
     struct __CFUserNotification *_activeSecondFactoryEntryPrompt;
     CDUnknownBlockType _secondFactoryEntryCompletion;
     NSObject<OS_dispatch_queue> *_secondFactorQueue;
+    CDPRecoveryController *_recoveryController;
+    AKDevice *_proxiedDevice;
+    AKDevice *_companionDevice;
+    NSDictionary *_recoveryInfo;
     BOOL _isProxyingForApp;
     BOOL _isPasswordEditable;
     BOOL _isUsernameEditable;
@@ -39,6 +45,10 @@
     BOOL _shouldForceInteractiveAuth;
     BOOL _shouldRequestShortLivedToken;
     BOOL _shouldRequestConfigurationInfo;
+    BOOL _supportsPiggybacking;
+    BOOL _anticipateEscrowAttempt;
+    BOOL _isFirstTimeLogin;
+    BOOL _shouldSkipSettingsLaunchAlert;
     NSString *_proxiedAppBundleID;
     NSUUID *_identifier;
     NSString *_passwordPromptTitle;
@@ -57,12 +67,17 @@
     NSString *_altDSID;
     NSDictionary *_httpHeadersForRemoteUI;
     id _clientInfo;
+    NSString *_title;
+    NSString *_helpAnchor;
+    NSString *_helpBook;
+    id<AKAnisetteServiceProtocol> _anisetteDataProvider;
+    NSNumber *_isAppleIDLoginEnabled;
+    NSNumber *_hasEmptyPassword;
+    NSSet *_desiredInternalTokens;
+    AKAnisetteData *_proxiedDeviceAnisetteData;
+    AKAnisetteData *_companionDeviceAnisetteData;
     NSString *_displayString;
     NSString *_displayTitle;
-    AKAnisetteData *_proxiedDeviceAnisetteData;
-    AKDevice *_proxiedDevice;
-    AKAnisetteData *_companionDeviceAnisetteData;
-    AKDevice *_companionDevice;
 }
 
 @property (copy, nonatomic) NSString *DSID; // @synthesize DSID=_DSID;
@@ -78,21 +93,30 @@
 @property (copy, nonatomic, setter=_setProxiedAppName:) NSString *_proxiedAppName; // @synthesize _proxiedAppName;
 @property (copy, nonatomic, setter=_setShortLivedToken:) NSString *_shortLivedToken; // @synthesize _shortLivedToken;
 @property (copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
+@property (copy, nonatomic) id<AKAnisetteServiceProtocol> anisetteDataProvider; // @synthesize anisetteDataProvider=_anisetteDataProvider;
+@property (nonatomic) BOOL anticipateEscrowAttempt; // @synthesize anticipateEscrowAttempt=_anticipateEscrowAttempt;
+@property (strong, nonatomic) id<CDPStateUIProvider> cdpUiProvider; // @synthesize cdpUiProvider=_cdpUiProvider;
 @property (strong, nonatomic) id clientInfo; // @synthesize clientInfo=_clientInfo;
-@property (copy, nonatomic) AKDevice *companionDevice; // @synthesize companionDevice=_companionDevice;
-@property (copy, nonatomic) AKAnisetteData *companionDeviceAnisetteData; // @synthesize companionDeviceAnisetteData=_companionDeviceAnisetteData;
+@property (copy, nonatomic) AKDevice *companionDevice;
+@property (strong, nonatomic) AKAnisetteData *companionDeviceAnisetteData; // @synthesize companionDeviceAnisetteData=_companionDeviceAnisetteData;
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) NSString *defaultButtonString; // @synthesize defaultButtonString=_defaultButtonString;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSSet *desiredInternalTokens; // @synthesize desiredInternalTokens=_desiredInternalTokens;
 @property (copy, nonatomic) NSString *deviceClass;
 @property (copy, nonatomic) NSString *deviceColor;
 @property (copy, nonatomic) NSString *deviceEnclosureColor;
 @property (copy, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
 @property (copy, nonatomic) NSString *displayTitle; // @synthesize displayTitle=_displayTitle;
 @property (copy, nonatomic) NSString *generatedCode;
+@property (copy, nonatomic, setter=setHasEmptyPassword:) NSNumber *hasEmptyPassword; // @synthesize hasEmptyPassword=_hasEmptyPassword;
 @property (readonly) unsigned long long hash;
+@property (copy) NSString *helpAnchor; // @synthesize helpAnchor=_helpAnchor;
+@property (copy) NSString *helpBook; // @synthesize helpBook=_helpBook;
 @property (copy, nonatomic) NSDictionary *httpHeadersForRemoteUI; // @synthesize httpHeadersForRemoteUI=_httpHeadersForRemoteUI;
+@property (copy, nonatomic, setter=setAppleIDLoginEnabled:) NSNumber *isAppleIDLoginEnabled; // @synthesize isAppleIDLoginEnabled=_isAppleIDLoginEnabled;
 @property (nonatomic) BOOL isEphemeral; // @synthesize isEphemeral=_isEphemeral;
+@property (nonatomic, setter=setFirstTimeLogin:) BOOL isFirstTimeLogin; // @synthesize isFirstTimeLogin=_isFirstTimeLogin;
 @property (nonatomic, setter=setTriggeredByNotification:) BOOL isTriggeredByNotification; // @synthesize isTriggeredByNotification=_isTriggeredByNotification;
 @property (nonatomic) BOOL isUsernameEditable; // @synthesize isUsernameEditable=_isUsernameEditable;
 @property (copy, nonatomic) NSNumber *latitude;
@@ -101,10 +125,8 @@
 @property (nonatomic) BOOL needsCredentialRecovery; // @synthesize needsCredentialRecovery=_needsCredentialRecovery;
 @property (nonatomic) BOOL needsNewAppleID; // @synthesize needsNewAppleID=_needsNewAppleID;
 @property (nonatomic) BOOL needsPasswordChange; // @synthesize needsPasswordChange=_needsPasswordChange;
-@property (copy, nonatomic) AKDevice *proxiedDevice; // @synthesize proxiedDevice=_proxiedDevice;
+@property (copy, nonatomic) AKDevice *proxiedDevice;
 @property (strong, nonatomic) AKAnisetteData *proxiedDeviceAnisetteData; // @synthesize proxiedDeviceAnisetteData=_proxiedDeviceAnisetteData;
-@property (copy, nonatomic) NSString *proxiedDeviceClientInfo;
-@property (copy, nonatomic) NSString *proxiedDeviceUDID;
 @property (copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (copy, nonatomic) NSString *serviceIdentifier;
 @property (copy, nonatomic) NSArray *serviceIdentifiers; // @synthesize serviceIdentifiers=_serviceIdentifiers;
@@ -116,25 +138,32 @@
 @property (nonatomic) BOOL shouldPromptForPasswordOnly; // @synthesize shouldPromptForPasswordOnly=_shouldPromptForPasswordOnly;
 @property (nonatomic) BOOL shouldRequestConfigurationInfo; // @synthesize shouldRequestConfigurationInfo=_shouldRequestConfigurationInfo;
 @property (nonatomic) BOOL shouldRequestShortLivedToken; // @synthesize shouldRequestShortLivedToken=_shouldRequestShortLivedToken;
+@property (nonatomic) BOOL shouldSkipSettingsLaunchAlert; // @synthesize shouldSkipSettingsLaunchAlert=_shouldSkipSettingsLaunchAlert;
 @property (nonatomic) BOOL shouldUpdatePersistentServiceTokens; // @synthesize shouldUpdatePersistentServiceTokens=_shouldUpdatePersistentServiceTokens;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSString *username; // @synthesize username=_username;
+@property (nonatomic) BOOL supportsPiggybacking; // @synthesize supportsPiggybacking=_supportsPiggybacking;
+@property (strong) NSString *title; // @synthesize title=_title;
+@property (copy) NSString *username; // @synthesize username=_username;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_handleSecondFactorCodeEntry;
 - (id)_initWithIdentifier:(id)arg1;
+- (id)_mapICSCRecoveryResultsToAuthKit:(id)arg1;
 - (id)_sanitizedCopy;
 - (id)_secondFactorQueue;
 - (void)_startListeningForSecondFactorCodeEntryNotification;
 - (void)_stopListeningForSecondFactorCodeEntryNotification;
 - (void)_updateWithValuesFromContext:(id)arg1;
+- (void)cdpContext:(id)arg1 performSilentRecoveryTokenRenewal:(CDUnknownBlockType)arg2;
 - (void)dismissBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
+- (void)dismissICSCRecoveryUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dismissSecondFactorUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)presentBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
+- (void)presentICSCRecoveryUIWithInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentSecondFactorAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentSecondFactorUIWithCompletion:(CDUnknownBlockType)arg1;

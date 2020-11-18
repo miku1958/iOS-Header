@@ -16,6 +16,7 @@
     long long _storeId;
     MIPArtist *_artist;
     NSString *_artworkId;
+    NSString *_cloudId;
     NSString *_name;
     int _numDiscs;
     int _numTracks;
@@ -34,9 +35,11 @@
 
 @property (strong, nonatomic) MIPArtist *artist; // @synthesize artist=_artist;
 @property (strong, nonatomic) NSString *artworkId; // @synthesize artworkId=_artworkId;
+@property (strong, nonatomic) NSString *cloudId; // @synthesize cloudId=_cloudId;
 @property (nonatomic) BOOL compilation; // @synthesize compilation=_compilation;
 @property (readonly, nonatomic) BOOL hasArtist;
 @property (readonly, nonatomic) BOOL hasArtworkId;
+@property (readonly, nonatomic) BOOL hasCloudId;
 @property (nonatomic) BOOL hasCompilation;
 @property (readonly, nonatomic) BOOL hasName;
 @property (nonatomic) BOOL hasNumDiscs;

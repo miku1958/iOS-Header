@@ -25,6 +25,7 @@
 + (Class)layoutAttributesClass;
 + (double)snapToBoundariesDecelerationRate;
 - (void).cxx_destruct;
+- (BOOL)_shouldScrollToContentBeginningInRightToLeft;
 - (struct CGSize)collectionViewContentSize;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;

@@ -6,18 +6,19 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <FlightUtilities/FUFlightViewDelegate-Protocol.h>
 #import <FlightUtilities/MKMapViewDelegate-Protocol.h>
 
-@class FUFlight, FUFlightView, NSDate, NSMapTable, NSNumber, NSString;
+@class FUFlightView, NSArray, NSDate, NSNumber, NSString;
 
-@interface FUFlightViewController : UIViewController <MKMapViewDelegate>
+@interface FUFlightViewController : UIViewController <MKMapViewDelegate, FUFlightViewDelegate>
 {
-    NSMapTable *_disabledConstraints;
     BOOL _loadingFlight;
     NSDate *_startLoadingDate;
     BOOL _highlightCurrentFlightLeg;
-    FUFlight *_flight;
+    BOOL _showInfoPanel;
     FUFlightView *_flightView;
+    NSArray *_flights;
     NSNumber *_flightCode;
     NSString *_airlineCode;
 }
@@ -25,45 +26,32 @@
 @property (strong) NSString *airlineCode; // @synthesize airlineCode=_airlineCode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) FUFlight *flight; // @synthesize flight=_flight;
 @property (strong) NSNumber *flightCode; // @synthesize flightCode=_flightCode;
-@property (weak) FUFlightView *flightView; // @synthesize flightView=_flightView;
+@property (strong, nonatomic) FUFlightView *flightView; // @synthesize flightView=_flightView;
+@property (strong, nonatomic) NSArray *flights; // @synthesize flights=_flights;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL highlightCurrentFlightLeg; // @synthesize highlightCurrentFlightLeg=_highlightCurrentFlightLeg;
+@property (nonatomic) BOOL showInfoPanel; // @synthesize showInfoPanel=_showInfoPanel;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)addFittingView:(id)arg1;
-- (BOOL)arrivingEarly;
-- (BOOL)arrivingLate;
 - (void)commonInit;
-- (long long)delayInMinutesForFlightStep:(id)arg1;
-- (BOOL)departingEarly;
-- (BOOL)departingLate;
-- (id)displayStringForDate:(id)arg1 locale:(id)arg2 late:(BOOL)arg3 timeZone:(id)arg4;
 - (void)fadeLayer:(id)arg1 visible:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)flightView:(id)arg1 willShowingFlightWithIndex:(unsigned long long)arg2;
 - (void)hideView:(id)arg1;
 - (id)init;
-- (id)initWithFlight:(id)arg1;
 - (id)initWithFlightCode:(unsigned long long)arg1 airlineCode:(id)arg2;
+- (id)initWithFlights:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (BOOL)knownStatus;
 - (void)loadFlightWithFlightCode:(id)arg1 airlineCode:(id)arg2 date:(id)arg3;
 - (struct CGSize)preferredContentSize;
 - (void)showErrorView;
 - (void)showFlightView;
 - (void)showLoadingView;
 - (void)showView:(id)arg1;
-- (void)updateAirlineInformation;
-- (void)updateDelayInfo;
-- (void)updateFlightDates;
-- (void)updateFlightStatus;
-- (void)updateFlightTerminalInfo;
-- (void)updateLocationInfo;
-- (void)updateTimeLabel:(id)arg1 withString:(id)arg2;
-- (void)viewDidDisappear;
 - (void)viewDidLoad;
-- (void)viewWillAppear;
+- (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

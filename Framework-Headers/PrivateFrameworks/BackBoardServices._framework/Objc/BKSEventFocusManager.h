@@ -6,37 +6,54 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSMutableSet, NSString;
-@protocol BKSEventFocusIPCInterface;
+#import <BackBoardServices/BKSEventFocusManagerClientInterface-Protocol.h>
 
-@interface BKSEventFocusManager : NSObject
+@class NSHashTable, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSXPCConnection;
+@protocol BKSEventFocusIPCInterface, OS_dispatch_queue;
+
+@interface BKSEventFocusManager : NSObject <BKSEventFocusManagerClientInterface>
 {
     id<BKSEventFocusIPCInterface> _ipcInterface;
+    NSObject<OS_dispatch_queue> *_focusClientQueue;
+    NSObject<OS_dispatch_queue> *_calloutQueue;
     BOOL _needsFlush;
     BOOL _systemAppControlsFocusOnMainDisplay;
     int _pid;
-    NSString *_clientIdentifier;
     NSMutableSet *_currentState;
     NSMutableDictionary *_pendingStatesByPriority;
+    NSXPCConnection *_connection;
+    NSHashTable *_focusChangeObservers;
+    NSSet *_cachedFocusedDeferralProperties;
+    NSString *_clientIdentifier;
 }
 
+@property (strong, nonatomic) NSSet *cachedFocusedDeferralProperties; // @synthesize cachedFocusedDeferralProperties=_cachedFocusedDeferralProperties;
 @property (copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, strong, nonatomic) NSMutableSet *currentState; // @synthesize currentState=_currentState;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSHashTable *focusChangeObservers; // @synthesize focusChangeObservers=_focusChangeObservers;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL needsFlush; // @synthesize needsFlush=_needsFlush;
 @property (readonly, strong, nonatomic) NSMutableDictionary *pendingStatesByPriority; // @synthesize pendingStatesByPriority=_pendingStatesByPriority;
 @property (nonatomic) int pid; // @synthesize pid=_pid;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL systemAppControlsFocusOnMainDisplay; // @synthesize systemAppControlsFocusOnMainDisplay=_systemAppControlsFocusOnMainDisplay;
 
 + (id)sharedInstance;
+- (void)_connectToEventFocusService;
 - (void)_pruneSet:(id)arg1 ofDeferralsPassingTest:(CDUnknownBlockType)arg2;
+- (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (void)deferEventsForClientWithProperties:(id)arg1 toClientWithProperties:(id)arg2;
 - (void)deferEventsForClientWithProperties:(id)arg1 toClientWithProperties:(id)arg2 withPriority:(int)arg3;
-- (id)description;
 - (void)flush;
+- (void)focusedDeferralPropertiesUpdatedWithProperties:(id)arg1;
 - (id)init;
 - (id)initWithIPCInterface:(id)arg1;
 - (void)reallyFlushWithSet:(id)arg1;
+- (void)removeObserver:(id)arg1;
 - (void)setForegroundApplicationOnMainDisplay:(id)arg1 pid:(int)arg2;
 
 @end

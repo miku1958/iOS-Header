@@ -6,12 +6,13 @@
 
 #import <BulletinDistributorCompanion/NSObject-Protocol.h>
 
-@class BLTObjectCache, NSObject, NSString;
+@class BLTObjectCache, NSString;
+@protocol NSSecureCoding;
 
 @protocol BLTObjectCacheDelegate <NSObject>
 - (void)objectCache:(BLTObjectCache *)arg1 keysWithBlock:(void (^)(NSSet *))arg2;
-- (void)objectCache:(BLTObjectCache *)arg1 objectForKey:(NSString *)arg2 withBlock:(void (^)(NSObject *))arg3;
+- (void)objectCache:(BLTObjectCache *)arg1 objectForKey:(NSString *)arg2 withBlock:(void (^)(id<NSSecureCoding>))arg3;
 - (void)objectCache:(BLTObjectCache *)arg1 removeObjectForKey:(NSString *)arg2 withBlock:(void (^)(NSError *))arg3;
-- (void)objectCache:(BLTObjectCache *)arg1 storeObject:(NSObject *)arg2 withKey:(NSString *)arg3 withBlock:(void (^)(NSError *))arg4;
+- (void)objectCache:(BLTObjectCache *)arg1 storeObject:(id<NSSecureCoding>)arg2 withKey:(NSString *)arg3 withBlock:(void (^)(NSError *))arg4;
 @end
 

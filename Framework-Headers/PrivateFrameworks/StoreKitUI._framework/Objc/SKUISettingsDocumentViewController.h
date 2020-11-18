@@ -87,6 +87,7 @@
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 

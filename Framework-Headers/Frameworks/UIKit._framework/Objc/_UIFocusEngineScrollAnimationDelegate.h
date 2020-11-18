@@ -6,13 +6,21 @@
 
 #import <Foundation/NSObject.h>
 
+#import <UIKit/CAAnimationDelegate-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface _UIFocusEngineScrollAnimationDelegate : NSObject
+@interface _UIFocusEngineScrollAnimationDelegate : NSObject <CAAnimationDelegate>
 {
     CDUnknownBlockType _completionHandler;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;

@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSArray *nextPredictedLocationsOfInterest; // @synthesize nextPredictedLocationsOfInterest=_nextPredictedLocationsOfInterest;
 
-+ (id)notificationName;
 - (void).cxx_destruct;
 - (id)initWithNextPredictedLocationsOfInterest:(id)arg1;
 

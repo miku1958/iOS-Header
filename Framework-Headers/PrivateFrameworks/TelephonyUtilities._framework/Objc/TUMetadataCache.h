@@ -19,12 +19,14 @@
 @property (strong, nonatomic) NSArray *providers; // @synthesize providers=_providers;
 
 - (void).cxx_destruct;
+- (void)_updateCacheWithDestinationIDs:(id)arg1 onlyEmptyProviders:(BOOL)arg2;
 - (id)description;
 - (id)init;
 - (id)initWithDataProviders:(id)arg1;
 - (BOOL)isEmpty;
 - (id)metadataForDestinationID:(id)arg1;
 - (void)removeDestinationIDFromCache:(id)arg1;
+- (void)updateCacheForEmptyDataProvidersWithDestinationIDs:(id)arg1;
 - (void)updateCacheWithDestinationIDs:(id)arg1;
 
 @end

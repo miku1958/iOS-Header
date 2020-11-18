@@ -21,6 +21,7 @@
 }
 
 @property (readonly, weak, nonatomic) ICAttachment *attachment; // @synthesize attachment=_attachment;
+@property (readonly, nonatomic) BOOL canMarkup;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL generateAsynchronousPreviews;
@@ -37,20 +38,20 @@
 @property BOOL previewGenerationOperationCancelled; // @synthesize previewGenerationOperationCancelled=_previewGenerationOperationCancelled;
 @property (readonly, nonatomic) NSString *previewItemTitle;
 @property (readonly, nonatomic) NSURL *previewItemURL;
+@property (readonly, nonatomic) BOOL requiresNetworkToGeneratePreview;
 @property (readonly, copy) NSArray *searchStrings;
 @property (readonly, nonatomic) BOOL showThumbnailInNoteList;
 @property (readonly) Class superclass;
 
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
 + (struct UIImage *)fileIconForURL:(id)arg1 withPreferredSize:(struct CGSize)arg2;
-+ (void)populateLocationSearchStrings:(id)arg1 forLatitude:(double)arg2 longitude:(double)arg3;
-+ (BOOL)populateLocationSearchStringsIfPossible:(id)arg1 forAttachment:(id)arg2 getLatitude:(id *)arg3 longitude:(id *)arg4;
++ (void)populateLocationSearchStringsIfPossible:(id)arg1 forAttachment:(id)arg2;
 - (void).cxx_destruct;
 - (id)activityItems;
 - (id)attachmentModelType;
 - (void)didCancelPreviewGeneratorOperation;
 - (struct UIImage *)fileIconWithPreferredSize:(struct CGSize)arg1;
-- (void)generatePreviews;
+- (void)generatePreviewsInOperation:(id)arg1;
 - (id)generateSearchIndexStringsOperation;
 - (id)initWithAttachment:(id)arg1;
 - (void)invalidateSearchStrings;

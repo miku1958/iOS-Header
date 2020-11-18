@@ -9,7 +9,7 @@
 @interface UIBarButtonItem (MFUtilities)
 - (void)mf_setImageOffset:(struct CGPoint)arg1;
 - (void)mf_setImageVerticalOffset:(double)arg1;
-- (void)mf_setMiniImageOffset:(struct CGPoint)arg1;
-- (void)mf_setMiniImageVerticalOffset:(double)arg1;
+- (void)mf_setLandscapeImagePhoneOffset:(struct CGPoint)arg1;
+- (void)mf_setLandscapeImagePhoneVerticalOffset:(double)arg1;
 @end
 

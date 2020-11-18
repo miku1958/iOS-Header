@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIActivityPlaceholderItemProxy : NSProxy <NSCopying>
 {
-    id _placeholderItem;
+    id _uikit_placeholderItem;
 }
 
 - (void).cxx_destruct;

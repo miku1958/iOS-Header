@@ -6,39 +6,36 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVConferenceXPCClient, CALayer, NSDictionary, NSString, NSTimer;
+@class AVConferenceXPCClient, CALayer, NSDictionary, NSMutableDictionary, NSTimer;
 @protocol AVConferenceDelegate;
 
 @interface AVConference : NSObject
 {
-    id weakAVConference;
     AVConferenceXPCClient *connection;
     id opaqueConf;
     BOOL useServer;
-    NSObject<AVConferenceDelegate> *delegate;
+    NSObject<AVConferenceDelegate> *_delegate;
     NSDictionary *serverBag;
     CALayer *remoteLayerFront;
     CALayer *remoteLayerBack;
     CALayer *remoteSubLayerFront;
     CALayer *remoteSubLayerBack;
-    NSString *_connectionTypeString;
     BOOL _isUsingFrontCamera;
-    int _localCellTech;
-    BOOL shouldDisplayVideoInfoLayer_;
+    BOOL _microphoneMuted;
+    NSMutableDictionary *_stateCacheForCallID;
     BOOL shouldDisplayNetworkQualityGraph_;
     NSTimer *networkQualityUpdateTimer_;
     CALayer *networkQualityGraphLayer_;
 }
 
-@property (strong) NSString *connectionTypeString; // @synthesize connectionTypeString=_connectionTypeString;
-@property NSObject<AVConferenceDelegate> *delegate; // @synthesize delegate;
+@property (nonatomic) NSObject<AVConferenceDelegate> *delegate;
 @property (getter=isSpeakerPhoneEnabled) BOOL enableSpeakerPhone;
 @property (nonatomic, getter=isInputFrequencyMeteringEnabled) BOOL inputFrequencyMeteringEnabled;
 @property (readonly) float inputMeterLevel;
 @property (nonatomic, getter=isInputMeteringEnabled) BOOL inputMeteringEnabled;
 @property (readonly) int localFrameHeight;
 @property (readonly) int localFrameWidth;
-@property (nonatomic, getter=isMicrophoneMuted) BOOL microphoneMuted;
+@property (nonatomic, getter=isMicrophoneMuted) BOOL microphoneMuted; // @synthesize microphoneMuted=_microphoneMuted;
 @property (readonly) unsigned int natType;
 @property (strong) CALayer *networkQualityGraphLayer; // @synthesize networkQualityGraphLayer=networkQualityGraphLayer_;
 @property (strong) NSTimer *networkQualityUpdateTimer; // @synthesize networkQualityUpdateTimer=networkQualityUpdateTimer_;
@@ -47,7 +44,7 @@
 @property (nonatomic, getter=isOutputMeteringEnabled) BOOL outputMeteringEnabled;
 @property (nonatomic) BOOL requiresWifi;
 @property BOOL shouldDisplayNetworkQualityGraph; // @synthesize shouldDisplayNetworkQualityGraph=shouldDisplayNetworkQualityGraph_;
-@property BOOL shouldDisplayVideoInfoLayer; // @synthesize shouldDisplayVideoInfoLayer=shouldDisplayVideoInfoLayer_;
+@property (readonly) NSMutableDictionary *stateCacheForCallID; // @synthesize stateCacheForCallID=_stateCacheForCallID;
 @property (getter=isUsingViceroyBlobFormat) BOOL useViceroyBlobFormat;
 
 + (short)addressPointerFromBlob:(id)arg1;
@@ -62,25 +59,24 @@
 + (void)stopAudioSession;
 - (void)addGKSCallEvent:(id)arg1 sessionID:(id)arg2;
 - (id)callMetadataForCallID:(long long)arg1;
+- (void)cancelCallID:(long long)arg1;
+- (id)capabilitiesForCallID:(long long)arg1;
 - (void)cleanupSubLayerFront;
-- (id)connectionTypeToString:(int)arg1;
 - (id)convertBlobtoNewBlob:(id)arg1;
 - (id)convertBlobtoOldBlob:(id)arg1;
 - (id)currentAudioInputDevice;
 - (id)currentAudioOutputDevice;
 - (void)dealloc;
 - (void)deregisterBlocksForVCNotifications;
-- (void)displayConnectionUIWithLocalCell:(id)arg1 remoteCell:(id)arg2;
 - (unsigned int)doBlockingConnectionCheck;
-- (void)drawTextInLayer:(id)arg1 context:(id)arg2;
 - (BOOL)getIsAudioPaused:(BOOL *)arg1 callID:(long long)arg2 error:(id *)arg3;
 - (BOOL)getIsVideoPaused:(BOOL *)arg1 callID:(long long)arg2 error:(id *)arg3;
 - (void)handleGKSConnectivitySettingsUpdate:(id)arg1;
 - (id)init;
 - (id)initWithClientUUID:(id)arg1;
+- (id)initWithClientUUID:(id)arg1 transportType:(unsigned int)arg2;
 - (long long)initializeNewCall;
 - (long long)initializeNewCallWithDeviceRole:(int)arg1;
-- (void)insertFrontInfoSubLayerInLayer:(id)arg1;
 - (void)insertSubLayerFrontInLayer:(id)arg1 videoSlot:(id)arg2;
 - (void)inviteDictionaryForCallID:(long long)arg1 remoteInviteDictionary:(id)arg2 nonCellularCandidateTimeout:(double)arg3 block:(CDUnknownBlockType)arg4 queue:(id)arg5;
 - (long long)lastActiveCallID;
@@ -96,7 +92,6 @@
 - (void)processRelayRequestResponse:(long long)arg1 responseDict:(id)arg2 didOriginateRequest:(BOOL)arg3;
 - (void)processRelayUpdate:(long long)arg1 updateDict:(id)arg2 didOriginateRequest:(BOOL)arg3;
 - (void)processRemoteIPChange:(id)arg1 callID:(long long)arg2;
-- (void)receivedRealTimeData:(id)arg1 fromParticipantID:(id)arg2;
 - (void)registerBlocksForVCNotifications;
 - (double)remoteBitrateForCallID:(long long)arg1;
 - (void)remoteCancelledCallID:(long long)arg1;
@@ -106,7 +101,6 @@
 - (double)remotePacketLossRateForCallID:(long long)arg1;
 - (void *)remoteVideoBackLayer;
 - (void *)remoteVideoLayer;
-- (void)resetConnectionUIWithLocalCell:(id)arg1;
 - (double)roundTripTimeForCallID:(long long)arg1;
 - (void)sendARPLData:(id)arg1 toCallID:(long long)arg2;
 - (void)sendData:(id)arg1 forCallID:(long long)arg2 encrypted:(BOOL)arg3;
@@ -132,7 +126,9 @@
 - (void)setSessionID:(id)arg1 callID:(long long)arg2;
 - (void)setSetSessionID:(id)arg1 forCallID:(long long)arg2;
 - (void)shouldSendBlackFrames:(BOOL)arg1 callID:(long long)arg2;
+- (BOOL)startConnectionWithCallID:(long long)arg1 inviteData:(id)arg2 isCaller:(BOOL)arg3 capabilities:(id)arg4 destination:(id)arg5 error:(id *)arg6;
 - (BOOL)startConnectionWithCallID:(long long)arg1 oldCallID:(long long)arg2 usingInviteData:(id)arg3 isCaller:(BOOL)arg4 relayResponseDict:(id)arg5 didOriginateRelayRequest:(BOOL)arg6 capabilities:(id)arg7 error:(id *)arg8;
+- (BOOL)startConnectionWithCallID:(long long)arg1 oldCallID:(long long)arg2 usingInviteData:(id)arg3 isCaller:(BOOL)arg4 relayResponseDict:(id)arg5 didOriginateRelayRequest:(BOOL)arg6 capabilities:(id)arg7 idsSocket:(int)arg8 destination:(id)arg9 error:(id *)arg10;
 - (BOOL)startConnectionWithCallID:(long long)arg1 oldCallID:(long long)arg2 usingInviteData:(id)arg3 isCaller:(BOOL)arg4 relayResponseDict:(id)arg5 didOriginateRelayRequest:(BOOL)arg6 capabilities:(id)arg7 idsSocket:(int)arg8 error:(id *)arg9;
 - (BOOL)startConnectionWithCallID:(long long)arg1 usingInviteData:(id)arg2 isCaller:(BOOL)arg3 relayResponseDict:(id)arg4 didOriginateRelayRequest:(BOOL)arg5 capabilities:(id)arg6 error:(id *)arg7;
 - (BOOL)startConnectionWithCallID:(long long)arg1 usingInviteData:(id)arg2 isCaller:(BOOL)arg3 relayResponseDict:(id)arg4 didOriginateRelayRequest:(BOOL)arg5 capabilities:(id)arg6 idsSocket:(int)arg7 error:(id *)arg8;
@@ -142,7 +138,6 @@
 - (void)stopListeningForNotifications;
 - (void)stopNetworkQualityUpdateTimer;
 - (void)updateCapabilities:(id)arg1 forCallID:(long long)arg2;
-- (void)updateConnectionUIWithLocalCell:(id)arg1 remoteCell:(id)arg2;
 - (void)updateGKSConnectivitySettings;
 - (BOOL)updateNetworkQualityGraph;
 - (void)videoConference:(id)arg1 cancelRelayRequest:(unsigned int)arg2 requestDict:(id)arg3;
@@ -158,6 +153,7 @@
 - (void)videoConference:(id)arg1 didStopWithCallID:(unsigned int)arg2 error:(id)arg3;
 - (void)videoConference:(id)arg1 didStopWithCallID:(unsigned int)arg2 error:(id)arg3 callMetadata:(id)arg4;
 - (void)videoConference:(id)arg1 inititiateRelayRequest:(unsigned int)arg2 requestDict:(id)arg3;
+- (void)videoConference:(id)arg1 isRemoteAudioBelowThreshold:(BOOL)arg2;
 - (void)videoConference:(id)arg1 localAudioEnabled:(BOOL)arg2 forCallID:(unsigned int)arg3 error:(id)arg4;
 - (void)videoConference:(id)arg1 localIPChange:(id)arg2 withCallID:(unsigned int)arg3;
 - (void)videoConference:(id)arg1 reinitializeCallForCallID:(unsigned int)arg2;
@@ -173,7 +169,9 @@
 - (void)videoConference:(id)arg1 updateOutputMeterLevel:(float)arg2;
 - (void)videoConference:(id)arg1 videoQualityNotificationForCallID:(unsigned int)arg2 isDegraded:(BOOL)arg3 isRemote:(BOOL)arg4;
 - (void)videoConference:(id)arg1 withCallID:(long long)arg2 didPauseAudio:(BOOL)arg3 error:(id)arg4;
+- (void)videoConference:(id)arg1 withCallID:(long long)arg2 didPauseVideo:(BOOL)arg3 error:(id)arg4;
 - (void)videoConference:(id)arg1 withCallID:(unsigned int)arg2 networkHint:(BOOL)arg3;
+- (long long)videoStreamTokenForCallID:(long long)arg1;
 - (void)warmupForCall;
 
 @end

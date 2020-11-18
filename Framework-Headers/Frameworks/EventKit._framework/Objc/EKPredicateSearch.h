@@ -29,10 +29,10 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (id)searchWithEntityClass:(Class)arg1 predicate:(id)arg2 store:(id)arg3;
+- (void).cxx_destruct;
 - (void)_startActualWithCompletion:(CDUnknownBlockType)arg1;
-- (unsigned long long)_startOSActivity;
+- (id)_startOSActivity;
 - (void)cancel;
-- (void)dealloc;
 - (void)disconnect;
 - (id)initWithEntityClass:(Class)arg1 predicate:(id)arg2 store:(id)arg3;
 - (id)startWithCompletion:(CDUnknownBlockType)arg1;

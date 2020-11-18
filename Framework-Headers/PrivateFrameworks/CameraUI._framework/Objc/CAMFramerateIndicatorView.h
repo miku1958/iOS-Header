@@ -10,26 +10,29 @@
 
 @interface CAMFramerateIndicatorView : UIView
 {
+    long long _layoutStyle;
     long long _style;
     UIImageView *__borderImageView;
-    UILabel *__topLabel;
-    UILabel *__bottomLabel;
+    UILabel *__label;
 }
 
 @property (readonly, nonatomic) UIImageView *_borderImageView; // @synthesize _borderImageView=__borderImageView;
-@property (readonly, nonatomic) UILabel *_bottomLabel; // @synthesize _bottomLabel=__bottomLabel;
-@property (readonly, nonatomic) UILabel *_topLabel; // @synthesize _topLabel=__topLabel;
+@property (readonly, nonatomic) UILabel *_label; // @synthesize _label=__label;
+@property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property (nonatomic) long long style; // @synthesize style=_style;
 
 - (void).cxx_destruct;
-- (void)_commonCAMFramerateIndicatorViewInitialization;
+- (void)_commonCAMFramerateIndicatorViewInitializationWithLayoutStyle:(long long)arg1;
 - (long long)_framesPerSecond;
-- (id)_labelText;
-- (void)_updateLabels;
+- (void)_updateAppearance;
+- (void)_updateForAppearanceChange;
+- (struct UIEdgeInsets)alignmentRectInsets;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithLayoutStyle:(long long)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

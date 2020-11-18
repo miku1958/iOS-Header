@@ -12,25 +12,23 @@
 
 @interface TKTonePickerSectionItem : TKPickerSectionItem <TKPickerContainerItem>
 {
-    TKTonePickerController *_parentTonePickerController;
-    long long _numberOfChildren;
     unsigned long long _sectionHeader;
     unsigned long long _regularToneSectionIndex;
+    TKTonePickerController *__parentTonePickerController;
+    long long _numberOfChildren;
 }
 
-@property (nonatomic, setter=_setParentTonePickerController:) TKTonePickerController *_parentTonePickerController; // @synthesize _parentTonePickerController;
+@property (weak, nonatomic, setter=_setParentTonePickerController:) TKTonePickerController *_parentTonePickerController; // @synthesize _parentTonePickerController=__parentTonePickerController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) long long numberOfChildren; // @synthesize numberOfChildren=_numberOfChildren;
-@property (nonatomic) unsigned long long regularToneSectionIndex; // @synthesize regularToneSectionIndex=_regularToneSectionIndex;
-@property (nonatomic) unsigned long long sectionHeader; // @synthesize sectionHeader=_sectionHeader;
+@property (nonatomic, setter=_setNumberOfChildren:) long long numberOfChildren; // @synthesize numberOfChildren=_numberOfChildren;
+@property (nonatomic, setter=_setRegularToneSectionIndex:) unsigned long long regularToneSectionIndex; // @synthesize regularToneSectionIndex=_regularToneSectionIndex;
+@property (nonatomic, setter=_setSectionHeader:) unsigned long long sectionHeader; // @synthesize sectionHeader=_sectionHeader;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_appendDescriptionOfAttributesToString:(id)arg1;
-- (void)_setNumberOfChildren:(long long)arg1;
-- (void)_setRegularToneSectionIndex:(unsigned long long)arg1;
-- (void)_setSectionHeader:(unsigned long long)arg1;
 - (id)childItemAtIndex:(long long)arg1;
 
 @end

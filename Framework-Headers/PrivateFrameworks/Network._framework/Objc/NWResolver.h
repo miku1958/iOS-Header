@@ -25,9 +25,9 @@
 @property (readonly) NSObject<OS_nw_resolver> *internalResolver; // @synthesize internalResolver=_internalResolver;
 @property long long internalStatus; // @synthesize internalStatus=_internalStatus;
 @property (readonly) NWParameters *parameters; // @synthesize parameters=_parameters;
-@property (readonly) NSArray *resolvedEndpointArray;
-@property (readonly) NSSet *resolvedEndpoints;
-@property (readonly) long long status;
+@property (readonly, nonatomic) NSArray *resolvedEndpointArray;
+@property (readonly, nonatomic) NSSet *resolvedEndpoints;
+@property (readonly, nonatomic) long long status;
 
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 - (void).cxx_destruct;

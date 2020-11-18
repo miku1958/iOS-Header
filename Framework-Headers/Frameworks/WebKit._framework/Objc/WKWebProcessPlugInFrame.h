@@ -17,10 +17,12 @@
 
 @property (readonly, nonatomic) NSURL *URL;
 @property (readonly) struct Object *_apiObject;
+@property (readonly, nonatomic) NSArray *appleTouchIconURLs;
 @property (readonly, nonatomic) NSArray *childFrames;
 @property (readonly, nonatomic) BOOL containsAnyFormElements;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSArray *faviconURLs;
 @property (readonly, nonatomic) _WKFrameHandle *handle;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
@@ -31,6 +33,7 @@
 - (BOOL)_hasCustomContentProvider;
 - (id)_parentFrame;
 - (id)_provisionalURL;
+- (struct __SecTrust *)_serverTrust;
 - (void)dealloc;
 - (id)hitTest:(struct CGPoint)arg1;
 - (id)jsContextForWorld:(id)arg1;

@@ -13,13 +13,19 @@
 {
 }
 
++ (id)compoundFilterWithFilter:(id)arg1 otherFilter:(id)arg2;
++ (id)falseFilter;
 + (BOOL)filter:(id)arg1 acceptsDataObject:(id)arg2;
 + (id)filterByCombiningFilters:(id)arg1 compoundType:(unsigned long long)arg2;
 + (id)filterForKeyPath:(id)arg1 predicateOperatorType:(unsigned long long)arg2 value:(id)arg3 dataTypes:(id)arg4;
 + (BOOL)supportsSecureCoding;
++ (id)trueFilter;
+- (id)_copyWithZone:(struct _NSZone *)arg1 subfilters:(id)arg2;
+- (id)_subfilters;
 - (BOOL)acceptsDataObject:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)filterByApplyingTransformation:(CDUnknownBlockType)arg1;
 - (id)initWithCoder:(id)arg1;
 
 @end

@@ -15,8 +15,9 @@
 }
 
 @property (nonatomic) unsigned long long component; // @synthesize component=_component;
-@property (nonatomic) UIPickerView *picker; // @synthesize picker=_picker;
+@property (weak, nonatomic) UIPickerView *picker; // @synthesize picker=_picker;
 
+- (void).cxx_destruct;
 - (unsigned long long)_accessibilityDatePickerComponentType;
 - (id)_accessibilityDateTimePickerValues;
 - (long long)_accessibilityIndexForPickerString:(id)arg1;
@@ -26,6 +27,7 @@
 - (id)_accessibilityScrollStatus;
 - (id)_accessibilityUserTestingChildren;
 - (id)_accessibilityViewForComponent;
+- (BOOL)_isRowDisabledInWebKit:(long long)arg1;
 - (void)accessibilityDecrement;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityHint;

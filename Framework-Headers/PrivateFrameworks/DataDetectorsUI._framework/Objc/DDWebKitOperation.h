@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateGenerationNumber;
 - (void)cleanup;
 - (BOOL)containerIsReady;
+- (void)dealloc;
 - (void)dispatchContainerModificationBlock:(CDUnknownBlockType)arg1;
 - (BOOL)doURLificationOnDocument;
 - (BOOL)needsToStartOver;

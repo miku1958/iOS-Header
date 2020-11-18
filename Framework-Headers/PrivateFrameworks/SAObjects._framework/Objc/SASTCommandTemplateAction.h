@@ -8,7 +8,7 @@
 
 #import <SAObjects/SASTTemplateAction-Protocol.h>
 
-@class NSArray, NSNumber, NSString;
+@class NSArray, NSString;
 
 @interface SASTCommandTemplateAction : AceObject <SASTTemplateAction>
 {
@@ -16,7 +16,6 @@
 
 @property (copy, nonatomic) NSArray *commands;
 @property (readonly, copy) NSString *debugDescription;
-@property (copy, nonatomic) NSNumber *delayInMilliSeconds;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;

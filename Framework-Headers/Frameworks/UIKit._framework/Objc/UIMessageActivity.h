@@ -18,6 +18,7 @@
 @property (nonatomic) BOOL sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
 
 + (long long)activityCategory;
++ (id)applicationBundleID;
 - (void).cxx_destruct;
 - (id)_activityImage;
 - (id)_activitySettingsImage;
@@ -27,7 +28,7 @@
 - (id)activityViewController;
 - (BOOL)canPerformWithActivityItems:(id)arg1;
 - (void)dealloc;
-- (void)messageComposeViewController:(id)arg1 didFinishWithResult:(int)arg2;
+- (void)messageComposeViewController:(id)arg1 didFinishWithResult:(long long)arg2;
 - (void)prepareWithActivityItems:(id)arg1;
 
 @end

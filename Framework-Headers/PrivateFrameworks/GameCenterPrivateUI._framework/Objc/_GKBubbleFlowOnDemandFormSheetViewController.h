@@ -21,6 +21,7 @@
 - (void)_ensureWeHaveAPresentedModalSetupRootViewControllerToPresent:(id)arg1 andThen:(CDUnknownBlockType)arg2 animated:(BOOL)arg3;
 - (BOOL)_obscuringContentUnderneath;
 - (void)clearInterstitialViewAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)dealloc;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)isCoveringContentUnderneath;
 - (void)popAllModalViewControllersAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;

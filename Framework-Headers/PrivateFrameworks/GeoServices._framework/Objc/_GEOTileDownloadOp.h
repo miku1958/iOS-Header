@@ -6,19 +6,20 @@
 
 #import <Foundation/NSObject.h>
 
-#import <GeoServices/NSURLConnectionDelegate-Protocol.h>
+#import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
 
-@class GEOSimpleTileRequester, NSData, NSMutableData, NSString, NSURL, NSURLConnection;
+@class GEOSimpleTileRequester, NSData, NSMutableData, NSOperationQueue, NSString, NSURL, NSURLSession, NSURLSessionTask;
 
 __attribute__((visibility("hidden")))
-@interface _GEOTileDownloadOp : NSObject <NSURLConnectionDelegate>
+@interface _GEOTileDownloadOp : NSObject <NSURLSessionDataDelegate>
 {
     NSURL *_url;
     BOOL _requireWiFi;
     NSMutableData *_data;
     NSString *_cachedEtag;
     NSData *_cachedData;
-    NSURLConnection *_conn;
+    NSURLSession *_session;
+    NSURLSessionTask *_task;
     NSString *_responseEtag;
     unsigned int _priority;
     struct _GEOTileKey _key;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
     _GEOTileDownloadOp *_localizationTile;
     unsigned long long _contentLength;
     GEOSimpleTileRequester *_delegate;
+    NSOperationQueue *_delegateQueue;
     BOOL _gotData;
     int _attempts;
     double _startTime;
@@ -44,11 +46,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _GEOTileDownloadOp *baseTile; // @synthesize baseTile=_baseTile;
 @property (strong, nonatomic) NSData *cachedData; // @synthesize cachedData=_cachedData;
 @property (strong, nonatomic) NSString *cachedEtag; // @synthesize cachedEtag=_cachedEtag;
-@property (strong, nonatomic) NSURLConnection *conn; // @synthesize conn=_conn;
 @property (readonly, nonatomic) unsigned long long contentLength; // @synthesize contentLength=_contentLength;
 @property (strong, nonatomic) NSMutableData *data; // @synthesize data=_data;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) GEOSimpleTileRequester *delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) GEOSimpleTileRequester *delegate;
+@property (strong, nonatomic) NSOperationQueue *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long eTagType; // @synthesize eTagType=_eTagType;
 @property (strong, nonatomic) NSString *editionHeader; // @synthesize editionHeader=_editionHeader;
@@ -59,19 +61,20 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int priority; // @synthesize priority=_priority;
 @property (nonatomic) BOOL requireWiFi; // @synthesize requireWiFi=_requireWiFi;
 @property (strong, nonatomic) NSString *responseEtag; // @synthesize responseEtag=_responseEtag;
+@property (strong, nonatomic) NSURLSession *session; // @synthesize session=_session;
 @property (readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSURLSessionTask *task; // @synthesize task=_task;
 @property unsigned int tileEdition; // @synthesize tileEdition=_tileEdition;
 @property (nonatomic) double timeout; // @synthesize timeout=_timeout;
 @property (strong, nonatomic) NSURL *url; // @synthesize url=_url;
 @property (nonatomic) BOOL useCookies; // @synthesize useCookies=_useCookies;
 @property (strong, nonatomic) NSString *userAgent; // @synthesize userAgent=_userAgent;
 
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)cancel;
-- (void)connection:(id)arg1 didFailWithError:(id)arg2;
-- (void)connection:(id)arg1 didReceiveData:(id)arg2;
-- (void)connection:(id)arg1 didReceiveResponse:(id)arg2;
-- (void)connectionDidFinishLoading:(id)arg1;
 - (void)dealloc;
 - (double)elapsed;
 - (void)start;

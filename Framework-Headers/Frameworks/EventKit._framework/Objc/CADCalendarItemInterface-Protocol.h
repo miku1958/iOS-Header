@@ -7,8 +7,14 @@
 @class NSPredicate, NSString;
 
 @protocol CADCalendarItemInterface
+- (void)CADDatabaseAddContactWithIdentifier:(NSString *)arg1 forCalendarItem:(CDStruct_f683c4ba)arg2 withReply:(void (^)(int))arg3;
 - (void)CADDatabaseCancelFetchRequestWithIdentifier:(unsigned int)arg1;
+- (void)CADDatabaseCountEntitiesOfType:(int)arg1 withContactIdentifier:(NSString *)arg2 withReply:(void (^)(int, int))arg3;
+- (void)CADDatabaseExportCalendarItemAsICS:(CDStruct_f683c4ba)arg1 reply:(void (^)(int, NSData *))arg2;
 - (void)CADDatabaseFetchCalendarItemsWithPredicate:(NSPredicate *)arg1 entityType:(int)arg2 fetchIdentifier:(int)arg3 reply:(void (^)(int, NSArray *))arg4;
+- (void)CADDatabaseFetchEntitiesOfType:(int)arg1 withContactIdentifier:(NSString *)arg2 withReply:(void (^)(NSArray *, int))arg3;
 - (void)CADDatabaseGetCalendarItemWithUUID:(NSString *)arg1 reply:(void (^)(int, struct))arg2;
+- (void)CADDatabaseGetContactIdentifierForCalendarItem:(CDStruct_f683c4ba)arg1 reply:(void (^)(int, NSArray *))arg2;
+- (void)CADDatabaseRemoveContactIdentifier:(NSString *)arg1 forCalendarItem:(CDStruct_f683c4ba)arg2 withReply:(void (^)(int))arg3;
 @end
 

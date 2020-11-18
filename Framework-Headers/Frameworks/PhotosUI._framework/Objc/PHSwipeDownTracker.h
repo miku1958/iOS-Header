@@ -29,22 +29,16 @@
 
 @property (strong, nonatomic, setter=_setHorizontalTranslationValueFilter:) PUInitialHysteresisValueFilter *_horizontalTranslationValueFilter; // @synthesize _horizontalTranslationValueFilter=__horizontalTranslationValueFilter;
 @property (strong, nonatomic, setter=_setVerticalDirectionValueFilter:) PUChangeDirectionValueFilter *_verticalDirectionValueFilter; // @synthesize _verticalDirectionValueFilter=__verticalDirectionValueFilter;
-@property (nonatomic) double dismissalProgress; // @synthesize dismissalProgress=_dismissalProgress;
+@property (nonatomic, setter=_setDismissalProgress:) double dismissalProgress; // @synthesize dismissalProgress=_dismissalProgress;
 @property (readonly, nonatomic) double finalAnimationDuration; // @synthesize finalAnimationDuration=_finalAnimationDuration;
 @property (readonly, nonatomic) double finalAnimationSpringDamping; // @synthesize finalAnimationSpringDamping=_finalAnimationSpringDamping;
-@property (nonatomic) BOOL shouldFinishDismissal; // @synthesize shouldFinishDismissal=_shouldFinishDismissal;
-@property (nonatomic) struct CGRect trackedBounds; // @synthesize trackedBounds=_trackedBounds;
-@property (nonatomic) struct CGPoint trackedCenter; // @synthesize trackedCenter=_trackedCenter;
-@property (nonatomic) struct CGAffineTransform trackedTransform; // @synthesize trackedTransform=_trackedTransform;
-@property (nonatomic) struct PHDisplayVelocity trackedVelocity; // @synthesize trackedVelocity=_trackedVelocity;
+@property (nonatomic, setter=_setShouldFinishDismissal:) BOOL shouldFinishDismissal; // @synthesize shouldFinishDismissal=_shouldFinishDismissal;
+@property (nonatomic, setter=_setTrackedBounds:) struct CGRect trackedBounds; // @synthesize trackedBounds=_trackedBounds;
+@property (nonatomic, setter=_setTrackedCenter:) struct CGPoint trackedCenter; // @synthesize trackedCenter=_trackedCenter;
+@property (nonatomic, setter=_setTrackedTransform:) struct CGAffineTransform trackedTransform; // @synthesize trackedTransform=_trackedTransform;
+@property (nonatomic, setter=_setTrackedVelocity:) struct PHDisplayVelocity trackedVelocity; // @synthesize trackedVelocity=_trackedVelocity;
 
 - (void).cxx_destruct;
-- (void)_setDismissalProgress:(double)arg1;
-- (void)_setShouldFinishDismissal:(BOOL)arg1;
-- (void)_setTrackedBounds:(struct CGRect)arg1;
-- (void)_setTrackedCenter:(struct CGPoint)arg1;
-- (void)_setTrackedTransform:(struct CGAffineTransform)arg1;
-- (void)_setTrackedVelocity:(struct PHDisplayVelocity)arg1;
 - (id)init;
 - (void)startTrackingCenter:(struct CGPoint)arg1 bounds:(struct CGRect)arg2 transform:(struct CGAffineTransform)arg3 withInitialGestureLocation:(struct CGPoint)arg4;
 - (void)trackGestureTranslation:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;

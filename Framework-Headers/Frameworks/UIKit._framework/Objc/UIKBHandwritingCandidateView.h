@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *candidates;
 @property (strong, nonatomic) UIKBCandidateCollectionView *candidatesCollectionView; // @synthesize candidatesCollectionView=_candidatesCollectionView;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<UIKeyboardCandidateListDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<UIKeyboardCandidateListDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long dummyCellCount; // @synthesize dummyCellCount=_dummyCellCount;
 @property (nonatomic) double dummyCellWidth; // @synthesize dummyCellWidth=_dummyCellWidth;
@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) CDStruct_961fb75c visualStyling; // @synthesize visualStyling=_visualStyling;
 
 + (Class)cellClass;
+- (void).cxx_destruct;
 - (id)_inheritedRenderConfig;
 - (void)_setRenderConfig:(id)arg1;
 - (void)calculateDummyCellAttributes;
@@ -62,11 +63,12 @@ __attribute__((visibility("hidden")))
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 - (BOOL)isExtendedList;
-- (BOOL)isHiddenCandidatesList;
 - (void)jumpToCompositions;
 - (id)keyboardBehaviors;
+- (unsigned long long)maxNumberOfProactiveCells;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)reloadDataByAppendingAtEnd:(BOOL)arg1;
+- (id)secureCandidateRenderTraits;
 - (void)selectAndScrollToCandidateAtIndexPath:(id)arg1 animated:(BOOL)arg2;
 - (unsigned long long)selectedSortIndex;
 - (void)setCandidates:(id)arg1 inlineText:(id)arg2 inlineRect:(struct CGRect)arg3 maxX:(double)arg4 layout:(BOOL)arg5;
@@ -80,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (void)showPreviousCandidate;
 - (void)showPreviousPage;
 - (void)showPreviousRow;
+- (double)singleCellWidthForProactiveCellCount:(unsigned long long)arg1;
 - (id)statisticsIdentifier;
 - (void)updateForKeyplane:(id)arg1 key:(id)arg2;
 - (void)updateLeftBorderForKeyplane:(id)arg1;

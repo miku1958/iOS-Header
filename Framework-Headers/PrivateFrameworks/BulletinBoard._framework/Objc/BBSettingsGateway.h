@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/BBSettingsGatewayClientInterface-Protocol.h>
 
@@ -15,6 +15,7 @@
 {
     CDUnknownBlockType _overrideStatusChangeHandler;
     CDUnknownBlockType _activeOverrideTypesChangedHandler;
+    CDUnknownBlockType _activeOverrideTypesChangedActiveQuietModeAssertionCountHandler;
     CDUnknownBlockType _overrideStateChangeHandler;
     CDUnknownBlockType _overridesChangedHandler;
     CDUnknownBlockType _overridesEffectiveWhileUnlockedChangedHandler;
@@ -32,7 +33,9 @@
 + (id)clientInterface;
 + (void)initialize;
 + (id)serverInterface;
+- (void).cxx_destruct;
 - (void)activeBehaviorOverrideTypesChanged:(unsigned long long)arg1 source:(unsigned long long)arg2;
+- (void)activeBehaviorOverrideTypesChanged:(unsigned long long)arg1 source:(unsigned long long)arg2 activeQuietModeAssertionCount:(unsigned long long)arg3;
 - (void)behaviorOverrideStatusChanged:(long long)arg1 source:(unsigned long long)arg2;
 - (void)behaviorOverridesChanged:(id)arg1 source:(unsigned long long)arg2;
 - (void)behaviorOverridesEffectiveWhileUnlockedChanged:(BOOL)arg1 source:(unsigned long long)arg2;
@@ -53,7 +56,9 @@
 - (void)invalidate;
 - (void)privilegedSenderAddressBookGroupRecordIDChanged:(int)arg1 name:(id)arg2 source:(unsigned long long)arg3;
 - (void)privilegedSenderTypesChanged:(unsigned long long)arg1 source:(unsigned long long)arg2;
+- (void)requestQuietModeOverrideAssertionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setActiveBehaviorOverrideTypesChangeHandler:(CDUnknownBlockType)arg1;
+- (void)setActiveBehaviorOverrideTypesWithSourceChangeActiveQuietModeAssertionCountHandler:(CDUnknownBlockType)arg1;
 - (void)setActiveBehaviorOverrideTypesWithSourceChangeHandler:(CDUnknownBlockType)arg1;
 - (void)setBehaviorOverrideStateChangeHandler:(CDUnknownBlockType)arg1;
 - (void)setBehaviorOverrideStatus:(long long)arg1;

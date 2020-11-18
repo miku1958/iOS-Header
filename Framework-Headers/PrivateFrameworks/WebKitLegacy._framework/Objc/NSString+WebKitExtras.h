@@ -9,6 +9,7 @@
 @interface NSString (WebKitExtras)
 + (id)_web_stringWithData:(id)arg1 textEncodingName:(id)arg2;
 + (id)_webkit_localCacheDirectoryWithBundleIdentifier:(id)arg1;
++ (id)_webkit_localStorageDirectoryWithBundleIdentifier:(id)arg1;
 - (id)_web_stringByAbbreviatingWithTildeInPath;
 - (id)_web_stringByStrippingReturnCharacters;
 - (id)_webkit_filenameByFixingIllegalCharacters;

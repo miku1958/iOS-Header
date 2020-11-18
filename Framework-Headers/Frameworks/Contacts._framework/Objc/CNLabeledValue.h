@@ -34,6 +34,7 @@
 @property (copy, nonatomic) NSString *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
 @property (copy, nonatomic) NSDictionary *storeInfo; // @synthesize storeInfo=_storeInfo;
 @property (readonly, nonatomic, getter=isSuggested) BOOL suggested;
+@property (readonly, nonatomic) NSString *suggestionFoundInBundleId;
 @property (readonly, nonatomic) SGRecordId *suggestionRecordId;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) id<NSCopying><NSSecureCoding> value;

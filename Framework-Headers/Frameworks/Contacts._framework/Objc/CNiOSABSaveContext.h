@@ -6,23 +6,21 @@
 
 #import <Foundation/NSObject.h>
 
-@class CNSaveRequest, NSData, NSMutableDictionary;
+@class CNMutableSaveResponse, CNSaveRequest, NSMapTable, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface CNiOSABSaveContext : NSObject
 {
-    BOOL _hasPendingImageData;
-    BOOL _hasPendingCropRect;
     void *_addressBook;
+    CNMutableSaveResponse *_saveResponse;
+    NSMapTable *_contactIndicesByInstance;
+    NSMapTable *_groupIndicesByInstance;
+    NSMapTable *_containerIndicesByInstance;
     NSMutableDictionary *_abPersonsByIdentifier;
     NSMutableDictionary *_abGroupsByIdentifier;
     NSMutableDictionary *_abSourcesByIdentifier;
     NSMutableDictionary *_abAccountsByIdentifier;
     CNSaveRequest *_saveRequest;
-    NSData *_pendingImageData;
-    NSData *_pendingThumbnailImageData;
-    NSData *_pendingFullscreenImageData;
-    struct CGRect _pendingCropRect;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *abAccountsByIdentifier; // @synthesize abAccountsByIdentifier=_abAccountsByIdentifier;
@@ -30,15 +28,15 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableDictionary *abPersonsByIdentifier; // @synthesize abPersonsByIdentifier=_abPersonsByIdentifier;
 @property (strong, nonatomic) NSMutableDictionary *abSourcesByIdentifier; // @synthesize abSourcesByIdentifier=_abSourcesByIdentifier;
 @property (readonly, nonatomic) void *addressBook;
-@property (nonatomic) struct CGRect pendingCropRect; // @synthesize pendingCropRect=_pendingCropRect;
-@property (copy, nonatomic) NSData *pendingFullscreenImageData; // @synthesize pendingFullscreenImageData=_pendingFullscreenImageData;
-@property (copy, nonatomic) NSData *pendingImageData; // @synthesize pendingImageData=_pendingImageData;
-@property (copy, nonatomic) NSData *pendingThumbnailImageData; // @synthesize pendingThumbnailImageData=_pendingThumbnailImageData;
 @property (readonly, nonatomic) CNSaveRequest *saveRequest; // @synthesize saveRequest=_saveRequest;
+@property (readonly, nonatomic) CNMutableSaveResponse *saveResponse; // @synthesize saveResponse=_saveResponse;
 
+- (void)_populateSaveRequestIndexTables;
 - (void)dealloc;
-- (BOOL)flushPendingImageChangesToPerson:(void *)arg1 error:(id *)arg2;
-- (id)initWithSaveRequest:(id)arg1 addressBook:(void *)arg2;
+- (id)indexPathForContactInstance:(id)arg1;
+- (id)indexPathForContainerInstance:(id)arg1;
+- (id)indexPathForGroupInstance:(id)arg1;
+- (id)initWithSaveRequest:(id)arg1 response:(id)arg2 addressBook:(void *)arg3;
 
 @end
 

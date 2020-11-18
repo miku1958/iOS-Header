@@ -17,10 +17,12 @@
     AXReplayableGesture *_longPressGesture;
     NSUUID *_switchUUID;
     long long _switchOriginalAction;
+    struct CGPoint _holdPoint;
 }
 
 @property (copy, nonatomic) NSString *action; // @synthesize action=_action;
 @property (strong, nonatomic) AXReplayableGesture *gesture; // @synthesize gesture=_gesture;
+@property (nonatomic) struct CGPoint holdPoint; // @synthesize holdPoint=_holdPoint;
 @property (copy, nonatomic) NSString *longPressAction; // @synthesize longPressAction=_longPressAction;
 @property (strong, nonatomic) AXReplayableGesture *longPressGesture; // @synthesize longPressGesture=_longPressGesture;
 @property (nonatomic, getter=isOptional) BOOL optional; // @synthesize optional=_optional;
@@ -31,6 +33,7 @@
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)init;
 
 @end
 

@@ -48,18 +48,21 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIKBHandwritingStrokeView *strokeView; // @synthesize strokeView=_strokeView;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)addInkPoint:(struct CGPoint)arg1 value:(double)arg2;
 - (BOOL)cancelTouchTracking;
 - (void)clearAndNotify:(BOOL)arg1;
 - (void)clearTouches;
 - (void)dealloc;
 - (void)deleteStrokesAtIndexes:(id)arg1;
+- (BOOL)endStrokeWithTouches:(id)arg1 event:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 - (void)log;
 - (unsigned long long)numberOfStrokes;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)send;
 - (void)setRenderConfig:(id)arg1;
+- (BOOL)shouldAllowSelectionGestures:(BOOL)arg1;
 - (BOOL)shouldCache;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;

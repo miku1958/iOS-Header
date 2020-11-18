@@ -18,9 +18,10 @@
 
 @property (strong, nonatomic) NSMutableArray *children; // @synthesize children=_children;
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
-@property (nonatomic) UIView *dayGrid; // @synthesize dayGrid=_dayGrid;
+@property (weak, nonatomic) UIView *dayGrid; // @synthesize dayGrid=_dayGrid;
 @property (nonatomic) long long indexInArray; // @synthesize indexInArray=_indexInArray;
 
+- (void).cxx_destruct;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityParentForFindingScrollParent;
 - (id)accessibilityContainerElements;

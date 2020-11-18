@@ -18,6 +18,7 @@
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)accessibilityElementCount;
 - (struct CGRect)accessibilityFrame;
+- (id)accessibilityLabel;
 - (long long)indexOfAccessibilityElement:(id)arg1;
 
 @end

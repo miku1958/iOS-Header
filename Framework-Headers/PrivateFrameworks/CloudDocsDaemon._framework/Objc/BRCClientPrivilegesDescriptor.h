@@ -13,28 +13,32 @@ __attribute__((visibility("hidden")))
 {
     NSString *_debugIdentifier;
     BOOL _cloudEnabledStatusWithoutLogOutStatus;
+    BOOL _canGetApplicationInfo;
     BOOL _isNonAppSandboxed;
     BOOL _isAllowedToAccessAnyCloudService;
     BOOL _isProxyEntitled;
+    BOOL _isSharingProxyEntitled;
     BOOL _isSharingPrivateInterfaceEntitled;
     BOOL _isAutomationEntitled;
     BOOL _hasAuditToken;
     NSString *_applicationIdentifier;
-    NSSet *_containerIDs;
-    NSString *_defaultContainerID;
+    NSSet *_appLibraryIDs;
+    NSString *_defaultAppLibraryID;
     CDStruct_4c969caf _auditToken;
 }
 
+@property (readonly, nonatomic) NSSet *appLibraryIDs; // @synthesize appLibraryIDs=_appLibraryIDs;
 @property (readonly, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property (readonly, nonatomic) CDStruct_4c969caf auditToken; // @synthesize auditToken=_auditToken;
-@property (readonly, nonatomic) NSSet *containerIDs; // @synthesize containerIDs=_containerIDs;
-@property (readonly, nonatomic) NSString *defaultContainerID; // @synthesize defaultContainerID=_defaultContainerID;
+@property (readonly, nonatomic) BOOL canFetchUserQuota;
+@property (readonly, nonatomic) NSString *defaultAppLibraryID; // @synthesize defaultAppLibraryID=_defaultAppLibraryID;
 @property (readonly, nonatomic) BOOL hasAuditToken; // @synthesize hasAuditToken=_hasAuditToken;
 @property (readonly, nonatomic) BOOL isAllowedToAccessAnyCloudService; // @synthesize isAllowedToAccessAnyCloudService=_isAllowedToAccessAnyCloudService;
 @property (readonly, nonatomic) BOOL isAutomationEntitled; // @synthesize isAutomationEntitled=_isAutomationEntitled;
 @property (readonly, nonatomic) BOOL isNonAppSandboxed; // @synthesize isNonAppSandboxed=_isNonAppSandboxed;
 @property (readonly, nonatomic) BOOL isProxyEntitled; // @synthesize isProxyEntitled=_isProxyEntitled;
 @property (readonly, nonatomic) BOOL isSharingPrivateInterfaceEntitled; // @synthesize isSharingPrivateInterfaceEntitled=_isSharingPrivateInterfaceEntitled;
+@property (readonly, nonatomic) BOOL isSharingProxyEntitled; // @synthesize isSharingProxyEntitled=_isSharingProxyEntitled;
 
 + (BOOL)_isNonSandboxedForAuditToken:(CDStruct_4c969caf)arg1;
 - (void).cxx_destruct;
@@ -44,9 +48,10 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (BOOL)hasPid;
 - (id)initWithAuditToken:(CDStruct_4c969caf)arg1;
-- (id)initWithNonSandboxedAppWithContainerIDs:(id)arg1 bundleID:(id)arg2 auditToken:(CDStruct_4c969caf)arg3;
+- (id)initWithNonSandboxedAppWithAppLibraryIDs:(id)arg1 bundleID:(id)arg2 auditToken:(CDStruct_4c969caf)arg3;
 - (id)initWithPid:(int)arg1;
 - (int)pid;
+- (void)updateCloudEnabledStatus;
 
 @end
 

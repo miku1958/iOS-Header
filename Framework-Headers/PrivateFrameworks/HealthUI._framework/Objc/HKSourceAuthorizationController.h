@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HKHealthStore, HKSource, NSArray, NSMutableSet, NSSet;
+@class HKHealthStore, HKSource, NSArray, NSDictionary, NSMutableSet, NSSet;
 
 @interface HKSourceAuthorizationController : NSObject
 {
@@ -18,11 +18,13 @@
     NSMutableSet *_typesEnabledForReading;
     NSSet *_requestedTypesForSharing;
     NSSet *_requestedTypesForReading;
+    NSDictionary *_requestedDocumentAuths;
 }
 
 @property (readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property (strong, nonatomic) NSArray *orderedTypesForReading; // @synthesize orderedTypesForReading=_orderedTypesForReading;
 @property (strong, nonatomic) NSArray *orderedTypesForSharing; // @synthesize orderedTypesForSharing=_orderedTypesForSharing;
+@property (strong, nonatomic) NSDictionary *requestedDocumentAuths; // @synthesize requestedDocumentAuths=_requestedDocumentAuths;
 @property (strong, nonatomic) NSSet *requestedTypesForReading; // @synthesize requestedTypesForReading=_requestedTypesForReading;
 @property (strong, nonatomic) NSSet *requestedTypesForSharing; // @synthesize requestedTypesForSharing=_requestedTypesForSharing;
 @property (readonly, nonatomic) HKSource *source; // @synthesize source=_source;
@@ -32,16 +34,21 @@
 - (void).cxx_destruct;
 - (long long)_authorizationStatusWithType:(id)arg1;
 - (id)_enabledTypesInSection:(long long)arg1;
-- (void)_reload;
+- (void)_reloadDocumentAuthorizationRecords;
+- (void)_reloadTypeAuthorizationRecords;
 - (void)_setAuthorizationStatuses:(id)arg1;
 - (void)_updateAuthorizationStatusWithTypes:(id)arg1;
 - (BOOL)allTypesEnabled;
 - (BOOL)anyTypeEnabled;
 - (void)commitAuthorizationStatuses;
+- (void)commitObjectAuthorizationStatuses:(id)arg1;
 - (unsigned long long)countOfTypesInSection:(long long)arg1;
 - (id)initWithHealthStore:(id)arg1 source:(id)arg2 typesForSharing:(id)arg3 typesForReading:(id)arg4;
+- (BOOL)isRequestingDocumentAuthorization;
 - (BOOL)isTypeEnabled:(id)arg1 inSection:(long long)arg2;
+- (id)objectAuthorizationStatusesForDocuments;
 - (void)reload;
+- (void)resetObjectAuthorizationStatuses;
 - (void)setEnabled:(BOOL)arg1 forAllTypesInSection:(long long)arg2 commit:(BOOL)arg3;
 - (void)setEnabled:(BOOL)arg1 forType:(id)arg2 inSection:(long long)arg3 commit:(BOOL)arg4;
 - (id)typesInSection:(long long)arg1;

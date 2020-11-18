@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSCalendar, NSMutableArray, NSMutableDictionary, NSSet, NSString, PLFetchingAlbum, PLGenericAlbum, PLInFlightAssetsAlbum, PLManagedAlbum, PLManagedAlbumList, PLManagedFolder, PLManagedObjectContext;
+@class NSArray, NSCalendar, NSMutableArray, NSMutableDictionary, NSSet, NSString, PLFetchingAlbum, PLGenericAlbum, PLManagedAlbum, PLManagedAlbumList, PLManagedFolder, PLManagedObjectContext;
 @protocol PLAlbumProtocol;
 
 @interface PLPhotoLibrary : NSObject
@@ -33,7 +33,6 @@
     PLManagedAlbum *_cameraRollAlbum;
     PLFetchingAlbum *_userLibraryAlbum;
     PLFetchingAlbum *_cameraSessionAlbum;
-    PLInFlightAssetsAlbum *_inFlightAssetsAlbum;
     PLManagedAlbumList *_rootAlbumList;
     PLManagedFolder *_rootFolder;
     NSString *_cachedName;
@@ -46,16 +45,14 @@
 @property (readonly, copy, nonatomic) NSObject<PLAlbumProtocol> *favoritesAlbum;
 @property (readonly, copy, nonatomic) NSArray *imagePickerAlbums;
 @property (readonly, copy, nonatomic) NSArray *importAlbums;
-@property (readonly, strong, nonatomic) NSObject<PLAlbumProtocol> *inFlightAssetsAlbum;
 @property (strong, nonatomic) PLManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext;
 @property (readonly, copy, nonatomic) NSArray *photoStreamAlbums;
 @property (readonly, copy, nonatomic) NSArray *photoStreamAlbumsForPreferences;
 @property (readonly, copy, nonatomic) NSArray *placeAlbums;
 @property (readonly, strong, nonatomic) PLManagedAlbumList *rootAlbumList;
 @property (readonly, strong, nonatomic) PLManagedFolder *rootFolder;
-@property (readonly, strong, nonatomic) NSObject<PLAlbumProtocol> *savedPhotosAlbum;
 @property (readonly, copy, nonatomic) NSArray *userAlbums;
-@property (readonly, strong, nonatomic) NSObject<PLAlbumProtocol> *userLibraryAlbum;
+@property (readonly, strong, nonatomic) PLFetchingAlbum *userLibraryAlbum;
 @property (readonly, copy, nonatomic) NSArray *wallpaperAlbums;
 
 + (unsigned long long)CloudPhotoLibrarySize;
@@ -71,6 +68,7 @@
 + (void)_inq_createPhotoStreamAlbumStreamID:(id)arg1 inLibrary:(id)arg2;
 + (id)_operationQueueForPriority:(long long)arg1;
 + (id)_statusDescriptionForQueue:(id)arg1;
++ (void)_updateAssetCountKeyPath:(id)arg1 withPendingCountKeyPath:(id)arg2 inContext:(id)arg3;
 + (BOOL)areOpportunisticTasksDisabled;
 + (id)assetsDataDirectory;
 + (BOOL)canSaveVideoToCameraRoll:(id)arg1;
@@ -83,7 +81,9 @@
 + (BOOL)createSqliteErrorIndicatorFile;
 + (id)dcimDirectory;
 + (id)dcimDirectoryURL;
++ (unsigned long long)defaultUnverifiedFaceCountThreshold;
 + (void)delayedRefreshCachedCountsInAlbumIDs:(id)arg1;
++ (id)deletedMemoryUUIDsFilePath;
 + (id)disableICloudPhotosFilePath;
 + (void)disableOpportunisticTasks:(BOOL)arg1;
 + (id)dupeAnalysisNeededFilePath;
@@ -154,10 +154,11 @@
 + (BOOL)processWithID:(int)arg1 canWriteSandboxForPath:(id)arg2;
 + (id)queueStatusDescription;
 + (void)recoverFromCrashIfNeeded;
++ (void)refreshCachedCountsOnAllAssetContainersInContext:(id)arg1;
 + (void)refreshCachedCountsOnAssetsContainerClass:(Class)arg1 inContext:(id)arg2 withPredicate:(id)arg3;
 + (void)repairSingletonObjects;
 + (void)resetSyncedAssetsDCIMDirectory;
-+ (struct NSObject *)savedPhotosAlbum;
++ (void)scheduleUserInitiatedAnalysisForAssets:(id)arg1;
 + (void)setApplicationIsWildcat:(BOOL)arg1;
 + (void)setCameraRollCountedInQuota:(BOOL)arg1;
 + (void)setCloudAlbumSharingEnabled:(BOOL)arg1;
@@ -176,6 +177,7 @@
 + (void)setSqliteErrorAndExitIfNecessary;
 + (void)setStreamsLibraryUpdatingExpired:(BOOL)arg1;
 + (void)setTakingPhotoIsBusy:(BOOL)arg1;
++ (void)setUnverifiedFaceCountThreshold:(unsigned long long)arg1;
 + (void)setVideoCaptureIsBusy:(BOOL)arg1;
 + (id)sharedPhotoLibrary;
 + (unsigned long long)sharedStreamsSize;
@@ -186,9 +188,12 @@
 + (id)syncedAlbumSubtitleStringFormat;
 + (id)takingPhotoIndicatorFilePath;
 + (id)takingVideoIndicatorFilePath;
++ (unsigned long long)unverifiedFaceCountThreshold;
 + (void)updateAlbumKeyAssetsInContext:(id)arg1 withPredicate:(id)arg2;
++ (void)updateAssetPlayShareViewCountsInContext:(id)arg1;
 + (void)updateICloudPhotosMarkerForEnable:(BOOL)arg1;
 + (id)videosPath;
+- (void).cxx_destruct;
 - (id)_allAssetsForDeletion:(id)arg1;
 - (void)_batchDeleteAssets:(id)arg1 inManagedObjectContext:(id)arg2 withReason:(id)arg3;
 - (void)_calculatePendingItemCountsAfterOTARestoreWithMangedObjectContext:(id)arg1;
@@ -215,8 +220,8 @@
 - (void)_withDispatchGroup:(id)arg1 synchronously:(BOOL)arg2 priority:(long long)arg3 name:(id)arg4 shouldSave:(BOOL)arg5 performTransaction:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)addCompletionHandlerToCurrentTransaction:(CDUnknownBlockType)arg1;
 - (id)addDCIMEntryAtFileURL:(id)arg1 toEvent:(struct NSObject *)arg2 sidecarFileInfo:(id)arg3 progress:(id)arg4 importSessionIdentifier:(id)arg5 isImported:(BOOL)arg6 previewImage:(id)arg7 thumbnailImage:(id)arg8 savedAssetType:(short)arg9 replacementUUID:(id)arg10 publicGlobalUUID:(id)arg11 extendedInfo:(id)arg12 thumbnailsData:(struct __CFDictionary *)arg13 withUUID:(id)arg14 ignoreEmbeddedMetadata:(BOOL)arg15 isPlaceholder:(BOOL)arg16;
-- (void)addInflightAsset:(id)arg1;
 - (void)addSidecarFileInfo:(id)arg1 toAsset:(id)arg2 atIndex:(unsigned long long)arg3;
+- (BOOL)addSidecarFileToAsset:(id)arg1 atIndex:(unsigned long long)arg2 sidecarURL:(id)arg3 withFilename:(id)arg4 originalFilename:(id)arg5 compressedSize:(id)arg6 captureDate:(id)arg7 modificationDate:(id)arg8 uniformTypeIdentifier:(id)arg9;
 - (void)addToKnownPhotoStreamAlbums:(id)arg1;
 - (struct NSObject *)albumFromGroupURL:(id)arg1;
 - (id)albumListForAlbumOfKind:(int)arg1;
@@ -271,7 +276,6 @@
 - (struct NSObject *)iPadAllPhotosAlbumIfExists;
 - (id)iTunesSyncedContentInfo;
 - (id)imageForFormat:(int)arg1 forAsset:(id)arg2;
-- (struct NSObject *)inFlightAssetsAlbumIfAvailable;
 - (id)incompleteRestoreProcesses;
 - (id)init;
 - (id)initWithName:(const char *)arg1;
@@ -279,7 +283,6 @@
 - (BOOL)isAudioFileExtension:(id)arg1;
 - (BOOL)isImageFileExtension:(id)arg1;
 - (BOOL)isNonRawImageFileExtension:(id)arg1;
-- (BOOL)isPhotoInSavedPhotosAlbum:(id)arg1;
 - (BOOL)isRawImageFileExtension:(id)arg1;
 - (BOOL)isReadyForCloudPhotoLibrary;
 - (BOOL)isTransient;
@@ -293,13 +296,13 @@
 - (id)managedObjectWithObjectID:(id)arg1;
 - (id)masterFilenameFromSidecarFileInfo:(id)arg1;
 - (id)masterURLFromSidecarURLs:(id)arg1;
+- (id)memoryWithUuid:(id)arg1;
 - (void)modifyDCIMEntryForPhoto:(id)arg1;
 - (id)name;
 - (BOOL)needsMigration;
 - (id)newImageForPhoto:(id)arg1 format:(int)arg2;
 - (id)newImageForPhoto:(id)arg1 format:(int)arg2 allowPlaceholder:(BOOL)arg3 outImageProperties:(const struct __CFDictionary **)arg4 outDeliveredPlaceholder:(BOOL *)arg5;
 - (unsigned long long)numberOfCPLSupportedAssetsOfKind:(short)arg1 includingTrashedSinceDate:(id)arg2;
-- (unsigned long long)numberOfPushedAssets;
 - (unsigned long long)numberOfUnpushedAssetsOfKind:(short)arg1;
 - (id)objectWithObjectID:(id)arg1;
 - (struct NSObject *)otaRestoreProgressAlbum;
@@ -322,7 +325,6 @@
 - (void)processSyncSaveJob:(id)arg1 albumMap:(id)arg2;
 - (void)recreateAlbumsFromMetadata;
 - (void)removeFromKnownPhotoStreamAlbums:(id)arg1;
-- (void)removeInflightAssets:(id)arg1;
 - (void)resetCachedImportAlbumsIfNeededForAlbum:(id)arg1;
 - (void)setGlobalValue:(id)arg1 forKey:(id)arg2;
 - (void)setLastImportSessionUUID:(id)arg1;

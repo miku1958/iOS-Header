@@ -16,7 +16,7 @@
 @property (nonatomic) long long transportButtonImageViewContentMode;
 
 + (UIControl<MPUTransportButton> *)transportButton;
-- (void)applyTransportButtonLayoutAttributes:(CDStruct_fa8656bd)arg1;
+- (void)applyTransportButtonLayoutAttributes:(CDStruct_62e32a95)arg1;
 - (void)prepareForReuse;
 - (BOOL)wantsCustomHighlightAppearance;
 @end

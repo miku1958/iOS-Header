@@ -18,14 +18,20 @@
 @property (strong, nonatomic) id<CDPDProtectedCloudStorageProxy> pcsProxy; // @synthesize pcsProxy=_pcsProxy;
 
 - (void).cxx_destruct;
-- (void)_checkiCDPStatusWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_checkiCDPStatusNetwork:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)_contextSetupDictionary;
 - (void)_disableCDPWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_enableCDPWithCompletion:(CDUnknownBlockType)arg1;
-- (void)checkiCDPStatusWithCompletion:(CDUnknownBlockType)arg1;
+- (struct _PCSIdentitySetData *)_getOrSetupIdentitySetRef:(id *)arg1;
+- (void)_reauthenticateAndCheckiCDPStatusWithNetwork:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)checkiCDPStatusNetwork:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)disableCDPWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enableCDPWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getStringrayStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithContext:(id)arg1;
+- (BOOL)isStingrayDisabledUnauthenticatedNetworked:(BOOL)arg1 error:(id *)arg2;
+- (void)setStingrayState:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

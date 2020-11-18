@@ -29,19 +29,19 @@
     NSString *_homeSharingGroupID;
 }
 
-@property unsigned int basePlaylistContainerID; // @synthesize basePlaylistContainerID=_basePlaylistContainerID;
+@property (nonatomic) unsigned int basePlaylistContainerID; // @synthesize basePlaylistContainerID=_basePlaylistContainerID;
 @property (readonly, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 @property (nonatomic) long long connectionState; // @synthesize connectionState=_connectionState;
 @property (readonly, nonatomic) long long connectionType; // @synthesize connectionType=_connectionType;
-@property unsigned int controlKey; // @synthesize controlKey=_controlKey;
-@property unsigned int controlPort; // @synthesize controlPort=_controlPort;
-@property unsigned int databaseID; // @synthesize databaseID=_databaseID;
-@property unsigned int databaseRevision; // @synthesize databaseRevision=_databaseRevision;
+@property (nonatomic) unsigned int controlKey; // @synthesize controlKey=_controlKey;
+@property (nonatomic) unsigned int controlPort; // @synthesize controlPort=_controlPort;
+@property (nonatomic) unsigned int databaseID; // @synthesize databaseID=_databaseID;
+@property (nonatomic) unsigned int databaseRevision; // @synthesize databaseRevision=_databaseRevision;
 @property (strong) HSFairPlayInfo *fairPlayInfo; // @synthesize fairPlayInfo=_fairPlayInfo;
 @property (copy) NSString *homeSharingGroupID; // @synthesize homeSharingGroupID=_homeSharingGroupID;
-@property unsigned int interfaceID; // @synthesize interfaceID=_interfaceID;
+@property (nonatomic) unsigned int interfaceID; // @synthesize interfaceID=_interfaceID;
 @property (nonatomic) unsigned int promptID; // @synthesize promptID=_promptID;
-@property unsigned int sessionID; // @synthesize sessionID=_sessionID;
+@property (nonatomic) unsigned int sessionID; // @synthesize sessionID=_sessionID;
 
 - (void).cxx_destruct;
 - (void)_continueFPSetupNegotiationWithData:(id)arg1 internalConnectionCompletionHandler:(CDUnknownBlockType)arg2;

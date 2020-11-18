@@ -9,13 +9,12 @@
 #import <CoreSpotlight/NSCopying-Protocol.h>
 #import <CoreSpotlight/NSSecureCoding-Protocol.h>
 
-@class CSDecoder, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSNumber, NSString;
+@class CSDecoder, NSArray, NSData, NSDate, NSDictionary, NSMutableDictionary, NSNumber, NSString;
 
 @interface CSSearchableItemAttributeSet : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _hasCodedCustomAttributes;
     NSDictionary *_attributes;
-    NSString *_contentType;
     NSMutableDictionary *_mutableAttributes;
     NSMutableDictionary *_customAttributes;
     long long _searchableItemFlags;
@@ -26,6 +25,7 @@
     CDStruct_b7fac349 _contentObj;
 }
 
+@property (readonly) NSData *HTMLContentDataNoCopy;
 @property (copy) NSString *accountType;
 @property (copy) NSString *adamID;
 @property (copy) NSString *albumPersistentID;
@@ -36,11 +36,10 @@
 @property (readonly, nonatomic) CDStruct_b7fac349 codedCustomAttributes; // @synthesize codedCustomAttributes=_codedCustomAttributes;
 @property (readonly, nonatomic) CSDecoder *contentDecoder; // @synthesize contentDecoder=_contentDecoder;
 @property (readonly, nonatomic) CDStruct_b7fac349 contentObj; // @synthesize contentObj=_contentObj;
-@property (readonly) NSString *contentType; // @synthesize contentType=_contentType;
+@property (readonly) NSString *contentSnippet;
 @property (readonly) NSMutableDictionary *customAttributes; // @synthesize customAttributes=_customAttributes;
 @property (readonly, nonatomic) CSDecoder *decoder; // @synthesize decoder=_decoder;
 @property (strong) NSNumber *documentIdentifier;
-@property (copy) NSString *domainIdentifier;
 @property (strong, getter=isExistingThread) NSNumber *existingThread;
 @property (strong) NSDate *expirationDate;
 @property (strong) NSNumber *extendedContentRating;
@@ -50,23 +49,26 @@
 @property (copy) NSArray *mailAttachmentKinds;
 @property (copy) NSArray *mailAttachmentNames;
 @property (copy) NSArray *mailAttachmentTypes;
-@property (copy) NSDate *mailDateLastViewed;
-@property (copy) NSDate *mailDateReceived;
-@property (copy) NSNumber *mailFlagColor;
-@property (copy) NSNumber *mailFlagged;
+@property (copy) NSString *mailCategory;
+@property (strong) NSDate *mailDateLastViewed;
+@property (strong) NSDate *mailDateReceived;
+@property (strong) NSNumber *mailFlagColor;
+@property (strong) NSNumber *mailFlagged;
 @property (copy) NSArray *mailGMailLabels;
 @property (copy) NSString *mailMessageID;
-@property (copy) NSNumber *mailPriority;
-@property (copy) NSNumber *mailRead;
-@property (copy) NSNumber *mailRepliedTo;
+@property (strong) NSNumber *mailPriority;
+@property (strong) NSNumber *mailRead;
+@property (strong) NSNumber *mailRepliedTo;
 @property (readonly) NSMutableDictionary *mutableAttributes; // @synthesize mutableAttributes=_mutableAttributes;
 @property (strong) NSNumber *parentFileIdentifier;
 @property (strong, getter=isPartiallyDownloaded) NSNumber *partiallyDownloaded;
 @property (copy) NSString *protectionClass;
 @property (readonly) NSArray *queryResultMatchedFields;
 @property (copy) NSString *queryResultRelevance;
+@property (copy) NSString *relatedAppBundleIdentifier;
 @property long long searchableItemFlags; // @synthesize searchableItemFlags=_searchableItemFlags;
 @property (copy) NSString *subtitle;
+@property (readonly) NSString *textContentNoCopy;
 @property (copy) NSString *textSelected;
 @property (copy) NSString *uniqueIdentifier;
 @property (copy) NSString *userActivityType;
@@ -96,9 +98,14 @@
 - (id)ISOSpeed;
 - (id)URL;
 - (id)_getNonNullValueForKey:(id)arg1;
-- (void)_setOrRemoveValue:(id)arg1 forKey:(id)arg2;
-- (void)_setOrRemoveValue:(id)arg1 forKey:(id)arg2 copy:(BOOL)arg3;
-- (void)_stripContentURLAndEncodeWithCoder:(id)arg1;
+- (void)_setArrayValue:(id)arg1 withItemClass:(Class)arg2 forKey:(id)arg3;
+- (void)_setDataValue:(id)arg1 forKey:(id)arg2;
+- (void)_setDateValue:(id)arg1 forKey:(id)arg2;
+- (void)_setNumberValue:(id)arg1 forKey:(id)arg2;
+- (void)_setStringValue:(id)arg1 forKey:(id)arg2;
+- (void)_setURLValue:(id)arg1 forKey:(id)arg2;
+- (void)_setValue:(id)arg1 withClass:(Class)arg2 forKey:(id)arg3;
+- (void)_setValue:(id)arg1 withClass:(Class)arg2 forKey:(id)arg3 copy:(BOOL)arg4;
 - (void)_updateDocumentInfoForContentURL:(id)arg1;
 - (id)accountHandles;
 - (id)accountIdentifier;
@@ -119,6 +126,9 @@
 - (id)appleLoopsRootKey;
 - (id)applicationCategories;
 - (id)artist;
+- (id)attachmentNames;
+- (id)attachmentPaths;
+- (id)attachmentTypes;
 - (id)attributeDictionary;
 - (id)attributeForKey:(id)arg1;
 - (id)audiences;
@@ -133,6 +143,7 @@
 - (id)authors;
 - (id)bitsPerSample;
 - (id)bundleIdentifier;
+- (id)calendarHolidayIdentifier;
 - (id)cameraOwner;
 - (id)city;
 - (id)codecs;
@@ -150,6 +161,7 @@
 - (id)contentModificationDate;
 - (id)contentRating;
 - (id)contentSources;
+- (id)contentType;
 - (id)contentTypeTree;
 - (id)contentURL;
 - (id)contributors;
@@ -164,6 +176,7 @@
 - (id)description;
 - (id)director;
 - (id)displayName;
+- (id)domainIdentifier;
 - (id)downloadedDate;
 - (id)dueDate;
 - (id)duration;
@@ -186,6 +199,7 @@
 - (id)finderComment;
 - (id)focalLength;
 - (id)fontNames;
+- (id)fullyFormattedAddress;
 - (id)genre;
 - (id)hasAlphaChannel;
 - (unsigned long long)hash;
@@ -196,8 +210,8 @@
 - (id)importantDates;
 - (id)information;
 - (id)init;
+- (id)initWithAttributeSet:(id)arg1;
 - (id)initWithAttributes:(id)arg1;
-- (id)initWithAttributesSet:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDecoder:(id)arg1 obj:(CDStruct_b7fac349)arg2;
 - (id)initWithItemContentType:(id)arg1;
@@ -248,6 +262,7 @@
 - (id)pixelHeight;
 - (id)pixelWidth;
 - (id)playCount;
+- (id)postalCode;
 - (id)primaryRecipients;
 - (id)producer;
 - (id)profileName;
@@ -285,6 +300,9 @@
 - (void)setApplicationCategories:(id)arg1;
 - (void)setApplicationManaged:(id)arg1;
 - (void)setArtist:(id)arg1;
+- (void)setAttachmentNames:(id)arg1;
+- (void)setAttachmentPaths:(id)arg1;
+- (void)setAttachmentTypes:(id)arg1;
 - (void)setAttribute:(id)arg1 forKey:(id)arg2;
 - (void)setAudiences:(id)arg1;
 - (void)setAudioBitRate:(id)arg1;
@@ -298,6 +316,7 @@
 - (void)setAuthors:(id)arg1;
 - (void)setBitsPerSample:(id)arg1;
 - (void)setBundleIdentifier:(id)arg1;
+- (void)setCalendarHolidayIdentifier:(id)arg1;
 - (void)setCameraOwner:(id)arg1;
 - (void)setCity:(id)arg1;
 - (void)setCodecs:(id)arg1;
@@ -327,6 +346,7 @@
 - (void)setDeliveryType:(id)arg1;
 - (void)setDirector:(id)arg1;
 - (void)setDisplayName:(id)arg1;
+- (void)setDomainIdentifier:(id)arg1;
 - (void)setDownloadedDate:(id)arg1;
 - (void)setDueDate:(id)arg1;
 - (void)setDuration:(id)arg1;
@@ -350,6 +370,7 @@
 - (void)setFocalLength35mm:(id)arg1;
 - (void)setFocalLength:(id)arg1;
 - (void)setFontNames:(id)arg1;
+- (void)setFullyFormattedAddress:(id)arg1;
 - (void)setGPSAreaInformation:(id)arg1;
 - (void)setGPSDOP:(id)arg1;
 - (void)setGPSDateStamp:(id)arg1;
@@ -412,6 +433,7 @@
 - (void)setPixelHeight:(id)arg1;
 - (void)setPixelWidth:(id)arg1;
 - (void)setPlayCount:(id)arg1;
+- (void)setPostalCode:(id)arg1;
 - (void)setPrimaryRecipients:(id)arg1;
 - (void)setProducer:(id)arg1;
 - (void)setProfileName:(id)arg1;
@@ -435,6 +457,7 @@
 - (void)setStartDate:(id)arg1;
 - (void)setStateOrProvince:(id)arg1;
 - (void)setStreamable:(id)arg1;
+- (void)setSubThoroughfare:(id)arg1;
 - (void)setSubject:(id)arg1;
 - (void)setSupportFileType:(id)arg1;
 - (void)setSupportsNavigation:(id)arg1;
@@ -442,6 +465,7 @@
 - (void)setTempo:(id)arg1;
 - (void)setTextContent:(id)arg1;
 - (void)setTheme:(id)arg1;
+- (void)setThoroughfare:(id)arg1;
 - (void)setThumbnailData:(id)arg1;
 - (void)setThumbnailURL:(id)arg1;
 - (void)setTimeSignature:(id)arg1;
@@ -450,12 +474,15 @@
 - (void)setTotalBitRate:(id)arg1;
 - (void)setURL:(id)arg1;
 - (void)setValue:(id)arg1 forCustomKey:(id)arg2;
+- (void)setVendorName:(id)arg1;
 - (void)setVersion:(id)arg1;
 - (void)setVideoBitRate:(id)arg1;
+- (void)setWeakRelatedUniqueIdentifier:(id)arg1;
 - (void)setWhiteBalance:(id)arg1;
 - (id)speed;
 - (id)startDate;
 - (id)stateOrProvince;
+- (id)subThoroughfare;
 - (id)subject;
 - (id)supportFileType;
 - (id)supportsNavigation;
@@ -463,6 +490,7 @@
 - (id)tempo;
 - (id)textContent;
 - (id)theme;
+- (id)thoroughfare;
 - (id)thumbnailData;
 - (id)thumbnailURL;
 - (id)timeSignature;
@@ -470,8 +498,10 @@
 - (id)title;
 - (id)totalBitRate;
 - (id)valueForCustomKey:(id)arg1;
+- (id)vendorName;
 - (id)version;
 - (id)videoBitRate;
+- (id)weakRelatedUniqueIdentifier;
 - (id)whiteBalance;
 
 @end

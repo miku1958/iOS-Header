@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double videoStartTime; // @synthesize videoStartTime=_videoStartTime;
 
 - (void).cxx_destruct;
+- (BOOL)_isTimeRange:(CDStruct_e83c9415)arg1 equivalentToTimeRange:(CDStruct_e83c9415)arg2 epsilon:(double)arg3;
 - (id)init;
 - (id)initWithVideoAsset:(id)arg1;
 - (id)newViewModelChange;

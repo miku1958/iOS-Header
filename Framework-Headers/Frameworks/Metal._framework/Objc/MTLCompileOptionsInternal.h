@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     NSDictionary *_preprocessorMacros;
     BOOL _fastMathEnabled;
+    BOOL _glBufferBindPoints;
     BOOL _debuggingEnabled;
     unsigned long long _languageVersion;
 }
@@ -22,11 +23,15 @@ __attribute__((visibility("hidden")))
 - (BOOL)debuggingEnabled;
 - (id)description;
 - (BOOL)fastMathEnabled;
+- (BOOL)glBufferBindPoints;
+- (unsigned long long)hash;
 - (id)init;
+- (BOOL)isEqual:(id)arg1;
 - (unsigned long long)languageVersion;
 - (id)preprocessorMacros;
 - (void)setDebuggingEnabled:(BOOL)arg1;
 - (void)setFastMathEnabled:(BOOL)arg1;
+- (void)setGlBufferBindPoints:(BOOL)arg1;
 - (void)setLanguageVersion:(unsigned long long)arg1;
 - (void)setPreprocessorMacros:(id)arg1;
 

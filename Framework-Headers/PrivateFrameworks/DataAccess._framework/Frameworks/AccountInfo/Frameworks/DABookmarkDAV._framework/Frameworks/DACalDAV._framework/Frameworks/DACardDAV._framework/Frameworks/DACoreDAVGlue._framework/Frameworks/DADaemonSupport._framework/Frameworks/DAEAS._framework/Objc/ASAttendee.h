@@ -8,7 +8,7 @@
 
 #import <DAEAS/ASParsingAcceptingTopLevelLeaves-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class NSDate, NSMutableDictionary, NSString;
 
 @interface ASAttendee : ASItem <ASParsingAcceptingTopLevelLeaves>
 {
@@ -17,13 +17,19 @@
     int _localId;
     NSString *_name;
     NSString *_email;
+    NSDate *_proposedStartTime;
+    NSDate *_proposedEndTime;
+    NSString *_invitedBy;
     NSMutableDictionary *_placeHolder;
 }
 
 @property (strong, nonatomic) NSString *email; // @synthesize email=_email;
+@property (strong, nonatomic) NSString *invitedBy; // @synthesize invitedBy=_invitedBy;
 @property (nonatomic) int localId; // @synthesize localId=_localId;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSMutableDictionary *placeHolder; // @synthesize placeHolder=_placeHolder;
+@property (strong, nonatomic) NSDate *proposedEndTime; // @synthesize proposedEndTime=_proposedEndTime;
+@property (strong, nonatomic) NSDate *proposedStartTime; // @synthesize proposedStartTime=_proposedStartTime;
 @property (nonatomic) int role; // @synthesize role=_role;
 @property (nonatomic) int status; // @synthesize status=_status;
 
@@ -44,7 +50,7 @@
 - (id)init;
 - (id)initWithCalAttendee:(void *)arg1 parentEvent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
-- (void)saveToCalendarWithParentASEvent:(id)arg1 existingRecord:(void *)arg2 shouldMergeProperties:(BOOL)arg3 outMergeDidChooseLocalProperties:(BOOL *)arg4;
+- (void)saveToCalendarWithParentASEvent:(id)arg1 existingRecord:(void *)arg2 isDefaultCalendar:(BOOL)arg3 shouldMergeProperties:(BOOL)arg4 outMergeDidChooseLocalProperties:(BOOL *)arg5;
 - (void)setObject:(id)arg1 forDCCPT:(int)arg2;
 
 @end

@@ -32,8 +32,9 @@
 + (id)attributionForPlaceDataEncyclopedia:(id)arg1;
 + (id)attributionForPlaceDataEntity:(id)arg1;
 + (id)attributionForPlaceDataPhotos:(id)arg1;
++ (id)attributionForPlaceDataRestaurantReservationLink:(id)arg1;
 + (id)attributionForPlaceDataReview:(id)arg1;
-- (id)_attributionKey;
++ (Class)attributionUrlType;
 - (BOOL)_isYelp;
 - (void)addAttributionUrl:(id)arg1;
 - (id)attributionUrlAtIndex:(unsigned long long)arg1;

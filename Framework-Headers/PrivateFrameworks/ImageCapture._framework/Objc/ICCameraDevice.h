@@ -15,6 +15,7 @@
 
 @property (getter=isAccessRestrictedAppleDevice) BOOL accessRestrictedAppleDevice;
 @property BOOL allowsSyncingClock;
+@property (getter=isApplePTPCapable) BOOL applePTPCapable;
 @property (readonly) unsigned long long batteryLevel;
 @property (readonly) BOOL batteryLevelAvailable;
 @property BOOL beingEjected;
@@ -34,6 +35,7 @@
 - (void)addObjectToNotifyArray:(id)arg1;
 - (void)addToMetadataFetchQ:(id)arg1;
 - (void)addToThumbnailFetchQ:(id)arg1;
+- (BOOL)applePTPCapable;
 - (void)cancelDownload;
 - (void)clearNotifyArray;
 - (void)dealloc;
@@ -59,8 +61,16 @@
 - (void)requestDeleteFiles:(id)arg1;
 - (void)requestDownloadFile:(id)arg1 options:(id)arg2 downloadDelegate:(id)arg3 didDownloadSelector:(SEL)arg4 contextInfo:(void *)arg5;
 - (void)requestEject;
+- (void)requestMaxMetadata;
+- (void)requestMaxMetadataAndThumbnail;
+- (void)requestMaxThumbnails;
+- (void)requestMetadataOfFiles:(id)arg1;
 - (void)requestOpenSession;
 - (void)requestSyncClock;
+- (void)requestThumbOfFiles:(id)arg1 withPreferredResolution:(unsigned long long)arg2;
+- (void)requestThumbWithMetadataOfFiles:(id)arg1 withPreferredResolution:(unsigned long long)arg2;
+- (id)requestedFiles;
+- (void)updateFiles:(id)arg1 withThumbnails:(BOOL)arg2 withMetadata:(BOOL)arg3;
 
 @end
 

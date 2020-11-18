@@ -6,13 +6,9 @@
 
 #import <SafariShared/WBSWebProcessPlugIn.h>
 
-@class NSString;
-
 @interface WBUWebProcessPlugIn : WBSWebProcessPlugIn
 {
 }
-
-@property (readonly, nonatomic) NSString *overrideUserAgentStringForSwitchBoard;
 
 - (void)didCreatePageController:(id)arg1 forBrowserContextController:(id)arg2;
 - (void)willDestroyPageController:(id)arg1 forBrowserContextController:(id)arg2;

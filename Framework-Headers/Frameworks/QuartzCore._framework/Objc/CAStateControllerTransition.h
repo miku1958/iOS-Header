@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <QuartzCore/CAAnimationDelegate-Protocol.h>
 
 @class CALayer, CAStateController, CAStateTransition, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CAStateControllerTransition : NSObject
+@interface CAStateControllerTransition : NSObject <CAAnimationDelegate>
 {
     CAStateController *_controller;
     CALayer *_layer;
@@ -22,9 +24,13 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) double beginTime; // @synthesize beginTime=_beginTime;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CALayer *layer; // @synthesize layer=_layer;
 @property (readonly, nonatomic) float speed; // @synthesize speed=_speed;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) CAStateTransition *transition; // @synthesize transition=_transition;
 
 - (void)addAnimation:(id)arg1;

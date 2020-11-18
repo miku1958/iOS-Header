@@ -23,6 +23,8 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSData *encryptedData; // @synthesize encryptedData=_encryptedData;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL needsDecryption;
+@property (readonly, nonatomic) BOOL needsEncryption;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;

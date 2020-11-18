@@ -44,7 +44,11 @@
 @property (nonatomic) int placeTypeHint; // @synthesize placeTypeHint=_placeTypeHint;
 @property (nonatomic) unsigned long long resultProviderId; // @synthesize resultProviderId=_resultProviderId;
 
++ (Class)formattedAddressLineHintType;
+- (int)StringAsAddressGeocodeAccuracyHint:(id)arg1;
+- (int)StringAsPlaceTypeHint:(id)arg1;
 - (void)addFormattedAddressLineHint:(id)arg1;
+- (id)addressGeocodeAccuracyHintAsString:(int)arg1;
 - (void)clearFormattedAddressLineHints;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -56,6 +60,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)placeTypeHintAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -8,7 +8,7 @@
 
 #import <NotesShared/ICCloudObject-Protocol.h>
 
-@class NSData, NSSet, NSString;
+@class ICAttachment, NSData, NSString;
 
 @interface ICMedia : ICCloudSyncingObject <ICCloudObject>
 {
@@ -16,69 +16,79 @@
 
 @property (strong, nonatomic) NSData *assetCryptoInitializationVector; // @dynamic assetCryptoInitializationVector;
 @property (strong, nonatomic) NSData *assetCryptoTag; // @dynamic assetCryptoTag;
+@property (strong, nonatomic) ICAttachment *attachment; // @dynamic attachment;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSString *filename; // @dynamic filename;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSSet *mediaAttachments; // @dynamic mediaAttachments;
 @property (readonly) Class superclass;
 
-+ (id)allCloudObjects;
++ (id)allCloudObjectsInContext:(id)arg1;
 + (id)allMediaInContext:(id)arg1;
 + (id)containerDirectoryURLForMediaWithIdentifier:(id)arg1;
 + (void)deleteMedia:(id)arg1;
-+ (id)existingCloudObjectForRecordID:(id)arg1;
++ (id)existingCloudObjectForRecordID:(id)arg1 context:(id)arg2;
++ (id)exportableContainerDirectoryURLForMediaWithIdentifier:(id)arg1;
++ (id)exportableMediaDirectoryURL;
++ (id)exportableMediaURLForMediaWithIdentifier:(id)arg1 filename:(id)arg2;
++ (id)keyPathsForValuesAffectingParentCloudObject;
 + (id)mediaDirectoryURL;
 + (id)mediaFileWritingQueue;
++ (id)mediaIdentifiersForAccount:(id)arg1;
 + (id)mediaURLForMediaWithIdentifier:(id)arg1 filename:(id)arg2;
 + (id)mediaWithIdentifier:(id)arg1 context:(id)arg2;
-+ (id)newCloudObjectForRecord:(id)arg1;
-+ (id)newFetchRequestForMediaInContext:(id)arg1;
++ (id)newCloudObjectForRecord:(id)arg1 context:(id)arg2;
 + (id)newMediaWithAttachment:(id)arg1 context:(id)arg2;
-+ (id)newMediaWithAttachment:(id)arg1 forData:(id)arg2 filename:(id)arg3 forceWriteInBackground:(BOOL)arg4 context:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;
++ (id)newMediaWithAttachment:(id)arg1 forData:(id)arg2 filename:(id)arg3 forceAsynchronous:(BOOL)arg4 forceSynchronous:(BOOL)arg5 context:(id)arg6 completionBlock:(CDUnknownBlockType)arg7;
 + (id)newMediaWithAttachment:(id)arg1 forFileWrapper:(id)arg2 context:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 + (id)newMediaWithAttachment:(id)arg1 forURL:(id)arg2 context:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 + (id)newMediaWithAttachment:(id)arg1 forURL:(id)arg2 context:(id)arg3 waitUntilDone:(BOOL)arg4 completionBlock:(CDUnknownBlockType)arg5;
 + (id)newMediaWithIdentifier:(id)arg1 context:(id)arg2;
-+ (void)purgeAllMedia;
 + (void)purgeAllMediaFiles;
 + (void)purgeAllMediaInContext:(id)arg1;
 + (void)purgeMedia:(id)arg1;
-+ (id)visibleMediaInContext:(id)arg1;
-- (id)anyNote;
++ (void)purgeMediaFilesForIdentifiers:(id)arg1;
 - (id)containerDirectoryURL;
 - (id)data;
+- (id)dataWithoutImageMarkupMetadata:(BOOL)arg1;
 - (id)decryptedData;
+- (void)deleteExportableMedia;
 - (void)deleteFromLocalDatabase;
 - (id)encryptedMediaURL;
+- (id)exportableContainerDirectoryURL;
+- (id)exportableMediaURL;
+- (id)exportableMediaURLWithUpdatedFileIfNecessary;
 - (BOOL)hasAllMandatoryFields;
 - (BOOL)hasFile;
+- (id)ic_loggingValues;
 - (BOOL)isArchivedDirectory;
 - (BOOL)isInICloudAccount;
 - (BOOL)isValid;
-- (id)loggingDescriptionValues;
+- (BOOL)makeSureExportableMediaDirectoryExists:(id *)arg1;
 - (BOOL)makeSureMediaDirectoryExists:(id *)arg1;
 - (id)mediaArchiveURL;
 - (id)mediaTarArchiveURL;
 - (id)mediaURL;
 - (void)mergeDataFromRecord:(id)arg1;
-- (BOOL)needsToBeDeletedFromCloud;
+- (id)newlyCreatedRecord;
 - (id)objectsToBeDeletedBeforeThisObject;
+- (id)parentCloudObject;
 - (id)parentEncryptableObject;
 - (void)prepareForDeletion;
-- (id)recordName;
 - (id)recordType;
-- (id)recordZoneID;
+- (id)recordZoneName;
 - (void)resetUniqueIdentifier;
 - (void)saveAndClearDecryptedData;
+- (BOOL)shouldFallBackToCheckAllCryptoKeys;
 - (BOOL)supportsDeletionByTTL;
-- (id)threadUnsafeNewlyCreatedRecord;
-- (void)updateChangeCountForAllAttachments;
-- (void)writeData:(id)arg1 forceWriteInBackground:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)writeDataFromAsset:(id)arg1 isArchivedDirectory:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)writeDataFromFileAtURL:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (void)writeDataFromFileAtURL:(id)arg1 waitUntilDone:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)writeDataFromFileWrapper:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)updateFlagToExcludeFromBackup;
+- (void)updateFlagToExcludeFromBackupTouchFileIfNecessary:(BOOL)arg1;
+- (void)writeData:(id)arg1 forceAsynchronous:(BOOL)arg2 forceSynchronous:(BOOL)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)writeDataFromAsset:(id)arg1 isArchivedDirectory:(BOOL)arg2;
+- (void)writeDataFromFileURL:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)writeDataFromFileURL:(id)arg1 waitUntilDone:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)writeDataFromFileWrapper:(id)arg1 waitUntilDone:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)writeDataFromItemProvider:(id)arg1 checkForMarkupData:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)writeDataWithFileSize:(unsigned long long)arg1 writeBlock:(CDUnknownBlockType)arg2 completionBlock:(CDUnknownBlockType)arg3;
 
 @end

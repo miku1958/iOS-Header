@@ -10,27 +10,33 @@
 {
 }
 
++ (struct CGRect)absoluteFrameForView:(id)arg1;
 + (id)addAspectRatioConstraintForImageView:(id)arg1;
 + (id)buttonColorForStyle:(unsigned long long)arg1;
 + (id)captionFont;
-+ (id)chevronImage;
-+ (id)contactForResult:(id)arg1 withKeys:(id)arg2;
-+ (void)cropImageViewToCircle:(id)arg1;
 + (BOOL)deviceSupportsRotation;
++ (void)dispatchMainIfNecessary:(CDUnknownBlockType)arg1;
 + (id)hyphenatableStringForString:(id)arg1;
 + (id)imageWithColor:(id)arg1 size:(struct CGSize)arg2;
 + (id)imageWithColor:(id)arg1 size:(struct CGSize)arg2 cornersToRound:(unsigned long long)arg3 cornerRadius:(double)arg4;
 + (void)initialize;
 + (BOOL)isPortrait;
 + (BOOL)isWideScreen;
++ (struct CGSize)maxThumbnailSize;
 + (double)onePixelForCurrentScreenResolution;
-+ (void)roundImageViewCorners:(id)arg1 withRadius:(double)arg2;
++ (id)openOptions;
++ (void)openPunchout:(id)arg1;
++ (void)openUserActivity:(id)arg1 applicationBundleIdentifier:(id)arg2;
++ (void)performAnimatableChanges:(CDUnknownBlockType)arg1;
++ (void)performAnimatableChanges:(CDUnknownBlockType)arg1 animated:(BOOL)arg2;
++ (void)performAnimatableChanges:(CDUnknownBlockType)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)performOpenTask:(CDUnknownBlockType)arg1;
 + (double)separatorHeight;
-+ (id)sharedContactStore;
 + (id)shortFootnoteFont;
 + (id)shortSubheadFont;
 + (double)standardTableCellContentInset;
 + (id)textColorForStyle:(unsigned long long)arg1;
++ (id)vibrantButtonColorForStyle:(unsigned long long)arg1;
 
 @end
 

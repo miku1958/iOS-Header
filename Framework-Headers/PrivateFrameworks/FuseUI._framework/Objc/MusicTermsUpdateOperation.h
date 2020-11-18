@@ -19,15 +19,15 @@
 }
 
 @property (readonly, nonatomic) unsigned long long acceptedStoreTermsVersion; // @synthesize acceptedStoreTermsVersion=_acceptedStoreTermsVersion;
-@property (readonly, copy, nonatomic) NSError *error;
 @property (readonly, nonatomic) BOOL hasAcceptedLatestTerms;
 @property (readonly, nonatomic) unsigned long long latestStoreTermsVersion; // @synthesize latestStoreTermsVersion=_latestStoreTermsVersion;
 @property (readonly, copy, nonatomic) NSString *termsContentText;
 @property (readonly, copy, nonatomic) NSString *termsContext; // @synthesize termsContext=_termsContext;
 
 - (void).cxx_destruct;
-- (void)_authenticateReturningError:(id *)arg1;
-- (void)_runRequestWithTermsCheckURL:(id)arg1 allowingAuthentication:(BOOL)arg2 returningError:(id *)arg3 termsContentText:(id *)arg4 hasAcceptedLatestTerms:(BOOL *)arg5 latestStoreTermsVersion:(unsigned long long *)arg6;
+- (BOOL)_authenticateReturningError:(id *)arg1;
+- (BOOL)_runRequestWithTermsCheckURL:(id)arg1 allowingAuthentication:(BOOL)arg2 returningError:(id *)arg3 termsContentText:(id *)arg4 hasAcceptedLatestTerms:(BOOL *)arg5 latestStoreTermsVersion:(unsigned long long *)arg6;
+- (id)error;
 - (id)initWithAcceptedStoreTermsVersion:(unsigned long long)arg1 termsContext:(id)arg2;
 - (void)main;
 

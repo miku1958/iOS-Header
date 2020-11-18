@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSString;
+@class NSMutableArray, NSString;
 
 @interface BFFLocaleDataSource : NSObject
 {
-    NSArray *_canonicalLocales;
     NSString *_language;
     NSMutableArray *_suggestedCountries;
     NSMutableArray *_moreCountries;

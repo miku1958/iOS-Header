@@ -16,12 +16,12 @@
     NSDictionary *_configuration;
 }
 
-@property (readonly, nonatomic) NSDictionary *configuration; // @synthesize configuration=_configuration;
-@property (readonly, nonatomic) NSData *data; // @synthesize data=_data;
-@property (readonly, nonatomic) NSData *signature; // @synthesize signature=_signature;
-@property (readonly, nonatomic) NSString *version; // @synthesize version=_version;
+@property (readonly, copy, nonatomic) NSDictionary *configuration; // @synthesize configuration=_configuration;
+@property (readonly, copy, nonatomic) NSData *data; // @synthesize data=_data;
+@property (readonly, copy, nonatomic) NSData *signature; // @synthesize signature=_signature;
+@property (readonly, copy, nonatomic) NSString *version; // @synthesize version=_version;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithData:(id)arg1;
 
 @end

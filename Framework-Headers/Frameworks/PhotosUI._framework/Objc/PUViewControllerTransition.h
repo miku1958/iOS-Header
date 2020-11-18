@@ -25,7 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, getter=isInteractive) BOOL interactive; // @synthesize interactive=_interactive;
+@property (nonatomic, getter=isInteractive, setter=_setInteractive:) BOOL interactive; // @synthesize interactive=_interactive;
 @property (nonatomic, setter=_setInteractiveProgress:) double interactiveProgress; // @synthesize interactiveProgress=_interactiveProgress;
 @property (nonatomic) BOOL startedInteractively; // @synthesize startedInteractively=_startedInteractively;
 @property (readonly) Class superclass;
@@ -33,7 +33,6 @@
 + (id)interactionControllerForAnimationController:(id)arg1;
 - (void).cxx_destruct;
 - (id)_newInteractiveTransition;
-- (void)_setInteractive:(BOOL)arg1;
 - (void)animateTransition:(id)arg1;
 - (void)animationEnded:(BOOL)arg1;
 - (void)cancelInteractiveTransition;

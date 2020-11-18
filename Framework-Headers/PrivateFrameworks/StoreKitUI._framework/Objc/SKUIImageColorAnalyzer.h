@@ -10,9 +10,9 @@
 {
 }
 
++ (id)_colorFromITColor:(struct ITColor)arg1;
++ (struct CGContext *)_createContextForImage:(id)arg1;
 + (id)analyzeImage:(id)arg1;
-+ (id)colorFromITColor:(struct ITColor)arg1;
-+ (struct CGContext *)createContextForImage:(id)arg1;
 
 @end
 

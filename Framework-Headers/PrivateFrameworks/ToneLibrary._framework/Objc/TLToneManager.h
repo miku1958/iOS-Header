@@ -4,60 +4,56 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NPSDomainAccessor, NSDictionary, NSMutableDictionary, NSString, TLAccessQueue;
 
 @interface TLToneManager : NSObject
 {
-    BOOL _shouldUseServiceToAccessTonePreferences;
-    BOOL _shouldIgnoreNextToneDidChangeNotification;
+    TLAccessQueue *_accessQueue;
     NSMutableDictionary *_iTunesTonesByIdentifier;
     NSMutableDictionary *_iTunesToneIdentifiersByPID;
     NSMutableDictionary *_alertTonesByIdentifier;
     NSDictionary *_toneIdentifierAliasMap;
-    NSDictionary *_previewBehaviorsByDefaultIdentifier;
-    NSDictionary *_cachedTonePreferences;
+    BOOL _cachedWatchPrefersSalientNotifications;
+    BOOL _hasValidCachedWatchPrefersSalientNotifications;
+    BOOL _shouldSkipNextWatchPrefersSalientNotificationsDidChangeNotification;
     NPSDomainAccessor *_transientNanoPreferencesDomainAccessor;
-    TLAccessQueue *_accessQueue;
+    BOOL _shouldUseServiceToAccessTonePreferences;
+    NSDictionary *_cachedTonePreferences;
+    BOOL _shouldIgnoreNextToneDidChangeNotification;
 }
 
-@property (strong, setter=_setAccessQueue:) TLAccessQueue *_accessQueue; // @synthesize _accessQueue;
-@property (strong, nonatomic, setter=_setAlertTonesByIdentifier:) NSMutableDictionary *_alertTonesByIdentifier; // @synthesize _alertTonesByIdentifier;
-@property (strong, nonatomic, setter=_setCachedTonePreferences:) NSDictionary *_cachedTonePreferences; // @synthesize _cachedTonePreferences;
 @property (readonly, nonatomic) NSString *_deviceITunesRingtoneDirectory;
 @property (readonly, nonatomic) NSString *_deviceITunesRingtoneInformationPlist;
 @property (readonly, nonatomic) NSString *_iTunesRingtoneDirectory;
 @property (readonly, nonatomic) NSString *_iTunesRingtoneInformationPlist;
-@property (strong, nonatomic, setter=_setITunesToneIdentifiersByPID:) NSMutableDictionary *_iTunesToneIdentifiersByPID; // @synthesize _iTunesToneIdentifiersByPID;
-@property (strong, nonatomic, setter=_setITunesTonesByIdentifier:) NSMutableDictionary *_iTunesTonesByIdentifier; // @synthesize _iTunesTonesByIdentifier;
-@property (strong, nonatomic, setter=_setPreviewBehaviorsByDefaultIdentifier:) NSDictionary *_previewBehaviorsByDefaultIdentifier; // @synthesize _previewBehaviorsByDefaultIdentifier;
 @property (readonly, nonatomic) NSString *_rootDirectory;
-@property (nonatomic, setter=_setShouldIgnoreNextToneDidChangeNotification:) BOOL _shouldIgnoreNextToneDidChangeNotification; // @synthesize _shouldIgnoreNextToneDidChangeNotification;
-@property (nonatomic, setter=_setShouldUseServiceToAccessTonePreferences:) BOOL _shouldUseServiceToAccessTonePreferences; // @synthesize _shouldUseServiceToAccessTonePreferences;
 @property (readonly, nonatomic) NSString *_systemRingtoneDirectory;
-@property (strong, nonatomic, setter=_setToneIdentifierAliasMap:) NSDictionary *_toneIdentifierAliasMap; // @synthesize _toneIdentifierAliasMap;
-@property (strong, nonatomic, setter=_setTransientNanoPreferencesDomainAccessor:) NPSDomainAccessor *_transientNanoPreferencesDomainAccessor; // @synthesize _transientNanoPreferencesDomainAccessor;
 
++ (BOOL)_checkForFileExistenceAtPath:(id)arg1 allowingTCCPreflight:(BOOL)arg2;
 + (struct __CFString *)_copySharedResourcesPreferencesDomainForDomain:(struct __CFString *)arg1;
-+ (id)_defaultToneIdentifierForAlertType:(int)arg1 accountIdentifier:(id)arg2;
++ (id)_defaultToneIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
 + (BOOL)_migrateLegacyToneSettings;
-+ (id)_systemWideTonePreferenceKeyForAlertType:(int)arg1;
++ (id)_systemWideTonePreferenceKeyForAlertType:(long long)arg1;
 + (id)sharedToneManager;
+- (void).cxx_destruct;
 - (BOOL)_addToneEntries:(id)arg1 toManifestAtPath:(id)arg2 mediaDirectory:(id)arg3 shouldSkipReload:(BOOL)arg4;
 - (BOOL)_addToneToManifestAtPath:(id)arg1 metadata:(id)arg2 fileName:(id)arg3 mediaDirectory:(id)arg4;
+- (id)_alarmWakeUpRingtoneDirectory;
 - (id)_aliasForToneIdentifier:(id)arg1;
 - (id)_allSyncedTones;
 - (id)_baseDirectoryForAlertToneSoundFiles;
 - (id)_copyITunesRingtonesFromManifestPath:(id)arg1 mediaDirectoryPath:(id)arg2;
-- (id)_currentToneIdentifierForAlertType:(int)arg1 accountIdentifier:(id)arg2;
-- (int)_currentToneWatchAlertPolicyForAlertType:(int)arg1;
-- (int)_currentToneWatchAlertPolicyForAlertType:(int)arg1 accountIdentifier:(id)arg2;
-- (int)_currentToneWatchAlertPolicyForAlertType:(int)arg1 accountIdentifier:(id)arg2 didFindPersistedWatchAlertPolicy:(BOOL *)arg3;
-- (id)_currentToneWatchAlertPolicyPreferenceKeyForAlertType:(int)arg1 accountIdentifier:(id)arg2;
+- (id)_currentToneIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
+- (long long)_currentToneWatchAlertPolicyForAlertType:(long long)arg1;
+- (long long)_currentToneWatchAlertPolicyForAlertType:(long long)arg1 accountIdentifier:(id)arg2;
+- (long long)_currentToneWatchAlertPolicyForAlertType:(long long)arg1 topic:(id)arg2;
+- (long long)_currentToneWatchAlertPolicyForAlertType:(long long)arg1 topic:(id)arg2 didFindPersistedWatchAlertPolicy:(BOOL *)arg3;
+- (id)_currentToneWatchAlertPolicyPreferenceKeyForAlertType:(long long)arg1 topic:(id)arg2;
 - (id)_defaultRingtoneName;
 - (id)_defaultRingtonePath;
-- (id)_defaultToneIdentifierForAlertType:(int)arg1 accountIdentifier:(id)arg2;
+- (id)_defaultToneIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
 - (void)_didSetTonePreferenceSuccessfullyWithKey:(id)arg1 inDomain:(id)arg2 usingPreferencesOfKind:(unsigned long long)arg3;
 - (BOOL)_ensureDirectoryExistsAtPath:(id)arg1;
 - (long long)_evaluateOrphanEntriesCleanupStatusForcingReevaluationIfPreviouslyDone:(BOOL)arg1 returningFilePathsForFoundOrphans:(id *)arg2 wasAffectedByAccidentalToneDeletion:(BOOL *)arg3;
@@ -66,6 +62,7 @@
 - (BOOL)_filePathHasSupportedExtensionForRingtone:(id)arg1;
 - (void)_handleDeviceRingtonesChangedNotification;
 - (void)_handleTonePreferencesChangedNotificationForPreferencesKinds:(unsigned long long)arg1;
+- (void)_handleWatchPrefersSalientNotificationDidChange;
 - (id)_iTunesToneForPID:(id)arg1;
 - (id)_iTunesToneWithIdentifier:(id)arg1;
 - (BOOL)_insertPurchasedToneMetadata:(id)arg1 fileName:(id)arg2;
@@ -74,14 +71,12 @@
 - (unsigned long long)_installedTonesSize;
 - (void)_loadAlertToneInfo;
 - (void)_loadITunesRingtoneInfoPlistAtPath:(id)arg1;
-- (void)_loadPreviewBehaviorsByDefaultIdentifier;
 - (void)_loadToneIdentifierAliasMap;
 - (id)_localizedNameOfToneWithIdentifier:(id)arg1;
 - (int)_lockManifestAtPath:(id)arg1;
 - (id)_nameForToneIdentifier:(id)arg1 isValid:(BOOL *)arg2;
 - (id)_newServiceConnection;
 - (void)_performBlockInAccessQueue:(CDUnknownBlockType)arg1;
-- (unsigned int)_previewBehaviorForDefaultIdentifier:(id)arg1;
 - (id)_previewSoundForToneIdentifier:(id)arg1;
 - (void)_registerDidRequestResetSyncPostAccidentalToneDeletion;
 - (void)_reloadITunesRingtonesAfterExternalChange;
@@ -91,17 +86,21 @@
 - (BOOL)_removeSyncedToneByPID:(id)arg1;
 - (BOOL)_removeToneFromManifestAtPath:(id)arg1 fileName:(id)arg2;
 - (BOOL)_removeTonesFromManifestAtPath:(id)arg1 fileNames:(id)arg2 shouldSkipReload:(BOOL)arg3 alreadyLockedManifest:(BOOL)arg4 removedEntries:(id *)arg5;
-- (void)_setCurrentToneWatchAlertPolicy:(int)arg1 forAlertType:(int)arg2;
-- (void)_setCurrentToneWatchAlertPolicy:(int)arg1 forAlertType:(int)arg2 accountIdentifier:(id)arg3;
-- (BOOL)_setToneIdentifierUsingService:(id)arg1 keyedByAccountIdentifier:(id)arg2 forPreferenceKey:(id)arg3;
+- (void)_setCurrentToneWatchAlertPolicy:(long long)arg1 forAlertType:(long long)arg2;
+- (void)_setCurrentToneWatchAlertPolicy:(long long)arg1 forAlertType:(long long)arg2 accountIdentifier:(id)arg3;
+- (void)_setCurrentToneWatchAlertPolicy:(long long)arg1 forAlertType:(long long)arg2 topic:(id)arg3;
+- (BOOL)_setToneIdentifierUsingService:(id)arg1 keyedByTopic:(id)arg2 forPreferenceKey:(id)arg3;
 - (void)_setWatchPrefersSalientNotifications:(BOOL)arg1;
-- (id)_systemModernSoundDirectory;
+- (id)_soundForToneIdentifier:(id)arg1;
+- (id)_systemEmbeddedModernSoundDirectory;
+- (id)_systemEmbeddedSoundDirectory;
 - (id)_systemNewSoundDirectory;
 - (id)_systemSoundDirectory;
 - (id)_toneIdentifierForFileAtPath:(id)arg1;
 - (id)_toneIdentifierForFileAtPath:(id)arg1 isValid:(BOOL *)arg2;
-- (BOOL)_toneIsSettableForAlertType:(int)arg1;
+- (BOOL)_toneIsSettableForAlertType:(long long)arg1;
 - (id)_tonePreferencesFromService;
+- (BOOL)_toneWithIdentifierIsAlarmWakeUp:(id)arg1;
 - (BOOL)_toneWithIdentifierIsDefaultRingtone:(id)arg1;
 - (BOOL)_toneWithIdentifierIsITunesRingtone:(id)arg1;
 - (BOOL)_toneWithIdentifierIsNonDefaultSystemRingtone:(id)arg1;
@@ -110,14 +109,15 @@
 - (BOOL)_transferPurchasedToITunes:(id)arg1;
 - (BOOL)_wasAffectedByAccidentalToneDeletion;
 - (BOOL)_watchPrefersSalientNotifications;
-- (id)currentToneIdentifierForAlertType:(int)arg1;
-- (id)currentToneIdentifierForAlertType:(int)arg1 accountIdentifier:(id)arg2;
-- (id)currentToneNameForAlertType:(int)arg1;
-- (unsigned int)currentToneSoundIDForAlertType:(int)arg1;
-- (unsigned int)currentToneSoundIDForAlertType:(int)arg1 accountIdentifier:(id)arg2;
+- (id)currentToneIdentifierForAlertType:(long long)arg1;
+- (id)currentToneIdentifierForAlertType:(long long)arg1 accountIdentifier:(id)arg2;
+- (id)currentToneIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
+- (id)currentToneNameForAlertType:(long long)arg1;
+- (unsigned int)currentToneSoundIDForAlertType:(long long)arg1;
+- (unsigned int)currentToneSoundIDForAlertType:(long long)arg1 topic:(id)arg2;
 - (void)dealloc;
 - (id)defaultRingtoneIdentifier;
-- (id)defaultToneIdentifierForAlertType:(int)arg1;
+- (id)defaultToneIdentifierForAlertType:(long long)arg1;
 - (id)filePathForToneIdentifier:(id)arg1;
 - (void)importTone:(id)arg1 metadata:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)init;
@@ -125,9 +125,9 @@
 - (id)nameForToneIdentifier:(id)arg1;
 - (id)newAVItemForToneIdentifier:(id)arg1;
 - (void)removeImportedToneWithIdentifier:(id)arg1;
-- (void)setCurrentToneIdentifier:(id)arg1 forAlertType:(int)arg2;
-- (void)setCurrentToneIdentifier:(id)arg1 forAlertType:(int)arg2 accountIdentifier:(id)arg3;
-- (unsigned int)soundIDForToneIdentifier:(id)arg1;
+- (void)setCurrentToneIdentifier:(id)arg1 forAlertType:(long long)arg2;
+- (void)setCurrentToneIdentifier:(id)arg1 forAlertType:(long long)arg2 accountIdentifier:(id)arg3;
+- (void)setCurrentToneIdentifier:(id)arg1 forAlertType:(long long)arg2 topic:(id)arg3;
 - (BOOL)toneWithIdentifierIsValid:(id)arg1;
 
 @end

@@ -13,19 +13,23 @@
 __attribute__((visibility("hidden")))
 @interface GGLImageCanvas : NSObject <MDRenderTarget>
 {
+    struct RenderTargetFormat _resolvedRenderTargetFormat;
     struct CGSize _size;
     double _contentScale;
+    struct Device {
+        int;
+        shared_ptr_807ec9ac;
+        struct unique_ptr<md::SharedDeviceResources, std::__1::default_delete<md::SharedDeviceResources>>;
+    } *_device;
     BOOL _canMakeImage;
     BOOL _recreateRenderTarget;
     BOOL _allowAlpha;
-    struct unique_ptr<ggl::RenderBuffer, std::__1::default_delete<ggl::RenderBuffer>> _colorBuffer;
-    struct unique_ptr<ggl::RenderBuffer, std::__1::default_delete<ggl::RenderBuffer>> _depthStencilBuffer;
+    struct RenderTargetFormat _format;
     struct unique_ptr<ggl::RenderTarget, std::__1::default_delete<ggl::RenderTarget>> _renderTarget;
+    struct unique_ptr<ggl::Texture, std::__1::default_delete<ggl::Texture>> _colorBuffer;
+    struct unique_ptr<ggl::RenderBuffer, std::__1::default_delete<ggl::RenderBuffer>> _depthStencilBuffer;
     BOOL _useMultisampling;
-    struct unique_ptr<ggl::RenderBuffer, std::__1::default_delete<ggl::RenderBuffer>> _msaaColorBuffer;
-    struct unique_ptr<ggl::RenderBuffer, std::__1::default_delete<ggl::RenderBuffer>> _msaaDepthStencilBuffer;
-    struct unique_ptr<ggl::RenderTargetOperation, std::__1::default_delete<ggl::RenderTargetOperation>> _msaaBlitOperation;
-    struct unique_ptr<ggl::RenderTarget, std::__1::default_delete<ggl::RenderTarget>> _msaaRenderTarget;
+    struct unique_ptr<ggl::Texture, std::__1::default_delete<ggl::Texture>> _msaaResolveBuffer;
 }
 
 @property (nonatomic) BOOL allowAlpha; // @synthesize allowAlpha=_allowAlpha;
@@ -33,25 +37,27 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double contentScale; // @synthesize contentScale=_contentScale;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) struct Device *device;
 @property (readonly, nonatomic) struct RenderTarget *finalRenderTarget;
+@property (readonly, nonatomic) const struct RenderTargetFormat *format;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) struct RenderTargetOperation *msaaBlitOperation;
-@property (readonly, nonatomic) struct RenderTarget *msaaRenderTarget;
+@property (readonly, nonatomic) struct Texture2D *imageTexture;
+@property (readonly, nonatomic) BOOL multiSample; // @synthesize multiSample=_useMultisampling;
 @property (readonly, nonatomic) struct RenderTarget *renderTarget;
+@property (readonly, nonatomic) struct RenderTargetFormat resolvedRenderTargetFormat; // @synthesize resolvedRenderTargetFormat=_resolvedRenderTargetFormat;
+@property (readonly, nonatomic) BOOL shouldRasterize;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (readonly, nonatomic) struct CGSize sizeInPixels;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL useMultisampling; // @synthesize useMultisampling=_useMultisampling;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_createMSAARenderTarget;
 - (void)_createRenderTarget;
-- (void)_destroyMSAARenderTarget;
 - (void)_destroyRenderTarget;
 - (shared_ptr_edb96180)bitmapDataWithRenderer:(struct Renderer *)arg1;
 - (void)didDrawView;
-- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 useMultisampling:(BOOL)arg3;
+- (struct Texture *)finalSurface;
+- (id)initWithSize:(struct CGSize)arg1 device:(struct Device *)arg2 scale:(double)arg3 useMultisampling:(BOOL)arg4;
 - (struct CGImage *)newImageWithRenderer:(struct Renderer *)arg1;
 - (void)willDrawView;
 

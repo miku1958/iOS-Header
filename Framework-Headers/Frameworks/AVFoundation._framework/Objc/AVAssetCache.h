@@ -6,24 +6,22 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVAssetCacheInternal, NSURL;
-
 @interface AVAssetCache : NSObject
 {
-    AVAssetCacheInternal *_priv;
 }
 
-@property (readonly, copy, nonatomic) NSURL *URL;
-@property (readonly, nonatomic) long long currentSize;
-@property (nonatomic) long long maxEntrySize;
-@property (nonatomic) long long maxSize;
+@property (readonly, nonatomic, getter=isPlayableOffline) BOOL playableOffline;
 
 + (id)assetCacheWithURL:(id)arg1;
+- (id)URL;
+- (id)_init;
 - (id)allKeys;
-- (void)dealloc;
-- (void)finalize;
+- (long long)currentSize;
 - (id)initWithURL:(id)arg1;
 - (id)lastModifiedDateOfEntryForKey:(id)arg1;
+- (long long)maxEntrySize;
+- (long long)maxSize;
+- (id)mediaSelectionOptionsInMediaSelectionGroup:(id)arg1;
 - (void)removeEntryForKey:(id)arg1;
 - (long long)sizeOfEntryForKey:(id)arg1;
 

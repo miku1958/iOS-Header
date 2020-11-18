@@ -6,22 +6,32 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOMapRegion, GEOMapServiceTraits, GEORPCorrectedSearch, GEORPPlaceInfo, NSDictionary, NSString;
+@class GEOMapRegion, GEOMapServiceTraits, GEORPCorrectedSearch, GEORPPlaceInfo, GEORelatedSearchSuggestion, NSArray, NSDictionary, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
 @protocol GEOMapServiceTicket <NSObject>
 
 @property (readonly, nonatomic, getter=isChainResultSet) BOOL chainResultSet;
+@property (readonly, nonatomic) GEORelatedSearchSuggestion *defaultRelatedSuggestion;
+@property (readonly, nonatomic) NSArray *relatedSearchSuggestions;
 @property (readonly, nonatomic) NSDictionary *responseUserInfo;
 @property (readonly, nonatomic) GEOMapRegion *resultBoundingRegion;
+@property (readonly, nonatomic) NSString *resultDisplayHeader;
 @property (readonly, nonatomic) NSString *resultSectionHeader;
+@property (readonly, nonatomic) int searchResultType;
+@property (readonly, nonatomic) BOOL shouldEnableRedoSearch;
 @property (readonly, nonatomic) GEOMapServiceTraits *traits;
 
 - (void)applyToCorrectedSearch:(GEORPCorrectedSearch *)arg1;
 - (void)applyToPlaceInfo:(GEORPPlaceInfo *)arg1;
 - (void)cancel;
 - (void)submitWithHandler:(void (^)(NSArray *, NSError *))arg1 networkActivity:(void (^)(BOOL))arg2;
+- (void)submitWithHandler:(void (^)(NSArray *, NSError *))arg1 networkActivity:(void (^)(BOOL))arg2 queue:(NSObject<OS_dispatch_queue> *)arg3;
 - (void)submitWithHandler:(void (^)(NSArray *, NSError *))arg1 timeout:(long long)arg2 networkActivity:(void (^)(BOOL))arg3;
+- (void)submitWithHandler:(void (^)(NSArray *, NSError *))arg1 timeout:(long long)arg2 networkActivity:(void (^)(BOOL))arg3 queue:(NSObject<OS_dispatch_queue> *)arg4;
 - (void)submitWithRefinedHandler:(void (^)(NSArray *, NSArray *, NSError *))arg1 networkActivity:(void (^)(BOOL))arg2;
+- (void)submitWithRefinedHandler:(void (^)(NSArray *, NSArray *, NSError *))arg1 networkActivity:(void (^)(BOOL))arg2 queue:(NSObject<OS_dispatch_queue> *)arg3;
 - (void)submitWithRefinedHandler:(void (^)(NSArray *, NSArray *, NSError *))arg1 timeout:(long long)arg2 networkActivity:(void (^)(BOOL))arg3;
+- (void)submitWithRefinedHandler:(void (^)(NSArray *, NSArray *, NSError *))arg1 timeout:(long long)arg2 networkActivity:(void (^)(BOOL))arg3 queue:(NSObject<OS_dispatch_queue> *)arg4;
 @end
 

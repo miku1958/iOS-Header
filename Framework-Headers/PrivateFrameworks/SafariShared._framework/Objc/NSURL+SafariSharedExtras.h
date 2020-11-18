@@ -15,12 +15,14 @@
 - (id)_safari_URLByReplacingComponent:(long long)arg1 includingSeparators:(BOOL)arg2 withString:(id)arg3;
 - (id)_safari_URLByReplacingComponent:(long long)arg1 withString:(id)arg2;
 - (id)safari_URLByDeletingPort;
+- (id)safari_URLByDeletingScheme;
 - (id)safari_URLByReplacingHostWithString:(id)arg1;
 - (id)safari_URLByReplacingQueryWithString:(id)arg1;
 - (id)safari_URLByReplacingSchemeWithString:(id)arg1;
 - (id)safari_canonicalURL;
 - (id)safari_displayNameWithTitle:(id)arg1;
 - (BOOL)safari_hasCharactersBeyondPath;
+- (BOOL)safari_hasSameOriginAsURL:(id)arg1;
 - (BOOL)safari_hasScheme:(id)arg1;
 - (BOOL)safari_isDataURL;
 - (BOOL)safari_isHTTPFamilyURL;

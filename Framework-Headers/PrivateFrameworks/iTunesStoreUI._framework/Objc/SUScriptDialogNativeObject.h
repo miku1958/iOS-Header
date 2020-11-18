@@ -6,26 +6,13 @@
 
 #import <iTunesStoreUI/SUScriptNativeObject.h>
 
-#import <iTunesStoreUI/UIActionSheetDelegate-Protocol.h>
-#import <iTunesStoreUI/UIAlertViewDelegate-Protocol.h>
-
-@class NSString;
-
-@interface SUScriptDialogNativeObject : SUScriptNativeObject <UIActionSheetDelegate, UIAlertViewDelegate>
+@interface SUScriptDialogNativeObject : SUScriptNativeObject
 {
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
-- (void)_addScriptButton:(id)arg1 toAlert:(id)arg2 atIndex:(long long)arg3;
-- (id)_newActionSheetForDialog:(id)arg1;
+- (id)_makeAlertControllerForDialog:(id)arg1 style:(long long)arg2;
+- (void)_showSheetInView:(id)arg1 fromViewController:(id)arg2;
 - (void)_tearDownForDismissWithButtonIndex:(long long)arg1;
-- (void)actionSheet:(id)arg1 clickedButtonAtIndex:(long long)arg2;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
-- (void)destroyNativeObject;
 - (void)dismiss;
 - (void)show;
 - (void)showFromRect:(struct CGRect)arg1 inView:(id)arg2;

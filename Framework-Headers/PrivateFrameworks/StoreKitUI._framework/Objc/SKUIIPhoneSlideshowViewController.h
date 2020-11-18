@@ -9,7 +9,7 @@
 #import <StoreKitUI/UICollectionViewDataSource-Protocol.h>
 #import <StoreKitUI/UICollectionViewDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString, SKUIClientContext, SKUIGiftThemeCollectionView, SKUIScreenshotDataConsumer, UIPageControl;
+@class NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString, SKUIClientContext, SKUIGiftThemeCollectionView, UIPageControl;
 @protocol SKUISlideshowViewControllerDataSource, SKUISlideshowViewControllerDelegate;
 
 @interface SKUIIPhoneSlideshowViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
@@ -23,11 +23,7 @@
     NSOperationQueue *_placeholderQueue;
     NSMutableArray *_images;
     NSMutableDictionary *_placeholderImages;
-    SKUIScreenshotDataConsumer *_screenshotConsumer;
     long long _indexToScrollToOnLoadView;
-    BOOL _respondsToCount;
-    BOOL _respondsToURL;
-    BOOL _respondsToImage;
 }
 
 @property (strong, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;
@@ -46,7 +42,6 @@
 - (void)_reloadPageControl;
 - (void)_reloadSize;
 - (void)_setImage:(id)arg1 atIndex:(long long)arg2;
-- (void)_setLowResImage:(id)arg1 atIndex:(long long)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)dealloc;

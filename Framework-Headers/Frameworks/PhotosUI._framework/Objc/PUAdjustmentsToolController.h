@@ -72,9 +72,11 @@ __attribute__((visibility("hidden")))
 - (id)adjustmentsModeBar:(id)arg1 levelSliderForMode:(id)arg2;
 - (void)adjustmentsModeBarDidChangeModeListExpandedState:(id)arg1;
 - (void)adjustmentsModeBarDidChangeSelectedMode:(id)arg1;
+- (void)basePhotoInvalidated;
 - (BOOL)canResetToDefaultValue;
 - (void)didBecomeActiveTool;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (BOOL)installLivePhotoPlaybackGestureRecognizer:(id)arg1;
 - (BOOL)installTogglePreviewGestureRecognizer:(id)arg1;
 - (void)loadView;
 - (id)localizedName;

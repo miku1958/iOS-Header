@@ -16,8 +16,6 @@ __attribute__((visibility("hidden")))
 
 - (id)initWithTouchEvent:(struct _MRHIDTouchEvent)arg1 virtualDeviceID:(unsigned long long)arg2;
 - (unsigned long long)priority;
-- (BOOL)requiresAuthentication;
-- (double)timestamp;
 - (unsigned long long)type;
 
 @end

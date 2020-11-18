@@ -72,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)showSelectionCommands;
 - (void)tap:(id)arg1;
 - (void)updateSelectionRects:(BOOL)arg1;
+- (void)willBeginGesture;
 - (void)willRotate:(id)arg1;
 - (void)willStartScrollingOrZoomingPage;
 - (void)willStartScrollingOverflow;

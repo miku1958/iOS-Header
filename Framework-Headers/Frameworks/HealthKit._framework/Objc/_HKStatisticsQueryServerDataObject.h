@@ -6,17 +6,22 @@
 
 #import <HealthKit/_HKQueryServerDataObject.h>
 
+@class NSDateInterval;
+
 __attribute__((visibility("hidden")))
 @interface _HKStatisticsQueryServerDataObject : _HKQueryServerDataObject
 {
     unsigned long long _options;
     unsigned long long _mergeStrategy;
+    NSDateInterval *_dateInterval;
 }
 
+@property (strong, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
 @property (nonatomic) unsigned long long mergeStrategy; // @synthesize mergeStrategy=_mergeStrategy;
 @property (nonatomic) unsigned long long options; // @synthesize options=_options;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

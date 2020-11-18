@@ -7,7 +7,9 @@
 #import <Foundation/NSSet.h>
 
 @interface NSSet (Functional)
+- (BOOL)mf_any:(CDUnknownBlockType)arg1;
 - (id)mf_anyPassingTest:(CDUnknownBlockType)arg1;
+- (unsigned long long)mf_countObjectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)mf_filter:(CDUnknownBlockType)arg1;
 - (id)mf_flatMap:(CDUnknownBlockType)arg1;
 - (id)mf_flatten;

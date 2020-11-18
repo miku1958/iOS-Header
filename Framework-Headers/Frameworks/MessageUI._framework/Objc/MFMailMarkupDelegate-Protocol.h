@@ -15,7 +15,6 @@
 - (void)handleMarkupError:(NSError *)arg1 attachment:(MFAttachment *)arg2;
 - (void)handleMarkupURL:(NSURL *)arg1 attachment:(MFAttachment *)arg2 completion:(void (^)(MFAttachment *))arg3;
 - (struct CGRect)markupAttachmentBoundsForAttachment:(MFAttachment *)arg1;
-- (struct CGRect)markupAttachmentMaskForAttachment:(MFAttachment *)arg1;
 - (MFAttachment *)markupReplacementAttachment;
 - (void)presentMarkupViewController:(UIViewController *)arg1;
 @end

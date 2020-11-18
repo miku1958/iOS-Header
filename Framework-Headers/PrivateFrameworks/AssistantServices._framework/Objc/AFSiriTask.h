@@ -11,7 +11,7 @@
 
 @class AFSiriRequest, NSString, NSXPCListenerEndpoint;
 
-@interface AFSiriTask : NSObject <BSXPCCoding, NSSecureCoding>
+@interface AFSiriTask : NSObject <NSSecureCoding, BSXPCCoding>
 {
     AFSiriRequest *_request;
     NSXPCListenerEndpoint *_remoteResponseListenerEndpoint;

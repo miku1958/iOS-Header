@@ -10,12 +10,12 @@
 
 @protocol MKAnnotation <NSObject>
 
-@property (readonly, nonatomic) CDStruct_2c43369c coordinate;
+@property (readonly, nonatomic) struct CLLocationCoordinate2D coordinate;
 @property (readonly, copy, nonatomic) NSString *subtitle;
 @property (readonly, copy, nonatomic) NSString *title;
 
 
 @optional
-- (void)setCoordinate:(CDStruct_2c43369c)arg1;
+- (void)setCoordinate:(struct CLLocationCoordinate2D)arg1;
 @end
 

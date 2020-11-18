@@ -12,7 +12,7 @@
 
 @interface GEOStateTimingFeedbackCollection : PBCodable <NSCopying>
 {
-    CDStruct_612aec5b _sessionID;
+    struct GEOSessionID _sessionID;
     double _durationInOldState;
     double _sessionRelativeTimestamp;
     NSMutableArray *_stateTransitions;
@@ -27,10 +27,11 @@
 @property (nonatomic) BOOL hasDurationInOldState;
 @property (nonatomic) BOOL hasSessionID;
 @property (nonatomic) BOOL hasSessionRelativeTimestamp;
-@property (nonatomic) CDStruct_612aec5b sessionID; // @synthesize sessionID=_sessionID;
+@property (nonatomic) struct GEOSessionID sessionID; // @synthesize sessionID=_sessionID;
 @property (nonatomic) double sessionRelativeTimestamp; // @synthesize sessionRelativeTimestamp=_sessionRelativeTimestamp;
 @property (strong, nonatomic) NSMutableArray *stateTransitions; // @synthesize stateTransitions=_stateTransitions;
 
++ (Class)stateTransitionType;
 - (void)addStateTransition:(id)arg1;
 - (void)clearStateTransitions;
 - (void)copyTo:(id)arg1;

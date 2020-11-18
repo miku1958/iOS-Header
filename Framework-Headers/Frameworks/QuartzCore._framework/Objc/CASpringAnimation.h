@@ -15,6 +15,7 @@
 @property double mass;
 @property (readonly) double settlingDuration;
 @property double stiffness;
+@property double velocity;
 
 + (id)defaultValueForKey:(id)arg1;
 - (struct Animation *)_copyRenderAnimationForLayer:(id)arg1;
@@ -23,8 +24,6 @@
 - (float)_solveForInput:(float)arg1;
 - (double)_timeFunction:(double)arg1;
 - (double)durationForEpsilon:(double)arg1;
-- (void)setVelocity:(double)arg1;
-- (double)velocity;
 
 @end
 

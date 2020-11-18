@@ -4,11 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UINavigationController.h>
+#import <UIKit/UIViewController.h>
 
-@interface AKTVSignInViewController : UINavigationController
+@class NSString;
+
+@interface AKTVSignInViewController : UIViewController
 {
+    NSString *_currentTitle;
+    NSString *_currentSubtitle;
 }
+
+- (void).cxx_destruct;
 
 @end
 

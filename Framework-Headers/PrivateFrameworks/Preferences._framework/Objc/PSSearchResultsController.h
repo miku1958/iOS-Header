@@ -43,6 +43,7 @@
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)tableViewDidFinishReload:(id)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end
 

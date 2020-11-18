@@ -10,6 +10,7 @@
 - (void)createAdditionInStorage:(long long)arg1 stagedFileDescriptor:(NSFileHandle *)arg2 creationInfo:(NSDictionary *)arg3 completionHandler:(void (^)(NSDictionary *, NSData *, NSData *, NSError *))arg4;
 - (void)getAdditionInStorage:(long long)arg1 andNameSpace:(NSString *)arg2 named:(NSString *)arg3 completionHandler:(void (^)(NSDictionary *, NSData *, NSData *, NSError *))arg4;
 - (void)getAdditionsInStorage:(long long)arg1 andNameSpace:(NSString *)arg2 named:(NSArray *)arg3 completionHandler:(void (^)(NSArray *, NSData *, NSData *, NSError *))arg4;
+- (void)getDocumentIDForFileHandle:(NSFileHandle *)arg1 reply:(void (^)(unsigned long long, int))arg2;
 - (void)getFileIdForDocumentId:(unsigned long long)arg1 onDevice:(int)arg2 reply:(void (^)(unsigned long long, int))arg3;
 - (void)isPermanentStorageSupportedForHandle:(NSFileHandle *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (void)listAdditionsOfStorage:(long long)arg1 nameSpace:(NSString *)arg2 withOptions:(unsigned long long)arg3 withoutOptions:(unsigned long long)arg4 andEnumerationState:(id)arg5 completionHandler:(void (^)(NSArray *, NSData *, NSData *, id, NSError *))arg6;

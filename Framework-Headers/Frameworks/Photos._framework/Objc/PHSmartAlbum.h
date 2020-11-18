@@ -10,6 +10,7 @@
 {
 }
 
++ (id)fetchType;
 + (id)managedEntityName;
 - (BOOL)collectionHasFixedOrder;
 

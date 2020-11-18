@@ -10,7 +10,7 @@
 - (void)applicationShouldFocusWithBundle:(NSString *)arg1 onCompletion:(void (^)(BOOL))arg2;
 - (void)notifyHostedPIDsOfSuppression:(BOOL)arg1;
 - (void)retrieveDebugInformation:(void (^)(NSString *))arg1;
-- (void)setDebugLevel:(long long)arg1;
+- (void)retrieveMoreDebugInformationWithCompletion:(void (^)(NSArray *))arg1;
 - (void)setWindowContextID:(unsigned int)arg1 sceneIdentifier:(NSString *)arg2 forKeyboard:(BOOL)arg3 withLevel:(double)arg4;
 - (void)setWindowHostingPID:(int)arg1 active:(BOOL)arg2;
 - (void)signalKeyboardChangeComplete;

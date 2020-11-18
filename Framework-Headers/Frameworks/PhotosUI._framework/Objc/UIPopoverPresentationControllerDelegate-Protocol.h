@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
+#import <PhotosUICore/UIAdaptivePresentationControllerDelegate-Protocol.h>
 
 @class UIPopoverPresentationController;
 

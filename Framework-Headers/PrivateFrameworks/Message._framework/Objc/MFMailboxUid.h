@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <Message/MFMailboxPredictionMailbox-Protocol.h>
 #import <Message/NSCopying-Protocol.h>
 
-@class MFMessageCriterion, MFWeakReferenceHolder, MailAccount, NSArray, NSMutableArray, NSMutableDictionary, NSNumber, NSString;
+@class MFInvocationQueue, MFMessageCriterion, MFWeakReferenceHolder, MailAccount, NSArray, NSMutableArray, NSMutableDictionary, NSNumber, NSString;
 
-@interface MFMailboxUid : NSObject <NSCopying>
+@interface MFMailboxUid : NSObject <MFMailboxPredictionMailbox, NSCopying>
 {
     NSString *uniqueId;
     unsigned int _mailboxID;
@@ -30,15 +31,20 @@
     NSString *_permanentTag;
 }
 
+@property (readonly, nonatomic) MFInvocationQueue *attachmentDownloadQueue;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSArray *extraAttributes; // @synthesize extraAttributes=_extraAttributes;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *permanentTag; // @synthesize permanentTag=_permanentTag;
 @property (readonly, nonatomic) unsigned long long suggestionsLostMessageSearchResultCount;
 @property (readonly, nonatomic) double suggestionsLostMessageSearchTimestamp;
+@property (readonly) Class superclass;
 
 + (BOOL)isDraftsMailboxType:(int)arg1;
 + (BOOL)isOutgoingMailboxType:(int)arg1;
 + (BOOL)isSentMailboxType:(int)arg1;
-+ (BOOL)isSpecialMailboxUidType:(int)arg1;
++ (BOOL)isStandardizedMailboxUidType:(int)arg1;
 + (id)specialNameForType:(int)arg1;
 - (id)URL;
 - (id)URLString;
@@ -48,6 +54,7 @@
 - (id)_loadUserInfo;
 - (id)_mutableChildren;
 - (id)account;
+- (id)accountDisplayName;
 - (id)accountRelativePath;
 - (void)addToPostOrderTraversal:(id)arg1;
 - (BOOL)alwaysWriteFullMessageFile;
@@ -67,7 +74,6 @@
 - (id)depthFirstEnumerator;
 - (id)descendantWithExtraAttribute:(id)arg1;
 - (id)descendantWithPermanentTag:(id)arg1;
-- (id)description;
 - (id)displayName;
 - (id)displayNameUsingSpecialNames;
 - (void)flushCriteria;
@@ -83,9 +89,12 @@
 - (void)invalidate;
 - (BOOL)isContainer;
 - (BOOL)isDescendantOfMailbox:(id)arg1;
+- (BOOL)isNotesMailboxUid;
 - (BOOL)isOutgoingMailboxUid;
 - (BOOL)isSelectable;
+- (BOOL)isSentMailboxUid;
 - (BOOL)isSpecialMailboxUid;
+- (BOOL)isStandardizedMailboxUid;
 - (BOOL)isStore;
 - (BOOL)isValid;
 - (BOOL)isVisible;
@@ -102,6 +111,7 @@
 - (id)parent;
 - (id)pathRelativeToMailbox:(id)arg1;
 - (id)pathRelativeToMailboxForDisplay:(id)arg1;
+- (id)persistentID;
 - (id)realFullPath;
 - (void)removeChild:(id)arg1;
 - (id)representedAccount;
@@ -116,7 +126,6 @@
 - (void)setParent:(id)arg1;
 - (void)setRepresentedAccount:(id)arg1;
 - (void)setType:(int)arg1;
-- (BOOL)setUnreadCount:(unsigned long long)arg1;
 - (void)setUserInfoBool:(BOOL)arg1 forKey:(id)arg2;
 - (void)setUserInfoObject:(id)arg1 forKey:(id)arg2;
 - (void)setUserInfoWithDictionary:(id)arg1;

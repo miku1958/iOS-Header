@@ -6,19 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSString, WKCrownSequencer;
 
 @interface WKInterfaceController : NSObject
 {
+    WKCrownSequencer *_crownSequencer;
     NSArray *_topLevelObjects;
     NSArray *_properties;
     NSString *_viewControllerID;
+    NSMutableDictionary *_gestureRecognizers;
+    NSMutableArray *_uninstalledGestureIDs;
+    NSMutableArray *_pendingGestureInstallationFinishedBlocks;
     struct CGRect _contentFrame;
 }
 
 @property (nonatomic) struct CGRect contentFrame; // @synthesize contentFrame=_contentFrame;
+@property (readonly, nonatomic) WKCrownSequencer *crownSequencer; // @synthesize crownSequencer=_crownSequencer;
+@property (strong, nonatomic) NSMutableDictionary *gestureRecognizers; // @synthesize gestureRecognizers=_gestureRecognizers;
+@property (strong, nonatomic) NSMutableArray *pendingGestureInstallationFinishedBlocks; // @synthesize pendingGestureInstallationFinishedBlocks=_pendingGestureInstallationFinishedBlocks;
 @property (copy, nonatomic) NSArray *properties; // @synthesize properties=_properties;
 @property (strong, nonatomic) NSArray *topLevelObjects; // @synthesize topLevelObjects=_topLevelObjects;
+@property (strong, nonatomic) NSMutableArray *uninstalledGestureIDs; // @synthesize uninstalledGestureIDs=_uninstalledGestureIDs;
 @property (strong, nonatomic) NSString *viewControllerID; // @synthesize viewControllerID=_viewControllerID;
 
 + (void)_insertPageControllersAtIndexes:(id)arg1 withNames:(id)arg2 contexts:(id)arg3;
@@ -29,6 +37,7 @@
 + (struct CGRect)screenBounds;
 + (double)screenScale;
 - (void).cxx_destruct;
+- (void)_handleActionWithIdentifier:(id)arg1 forNotification:(id)arg2 remoteNotification:(id)arg3 localNotification:(id)arg4;
 - (void)addMenuItemWithImage:(id)arg1 title:(id)arg2 action:(SEL)arg3;
 - (void)addMenuItemWithImageNamed:(id)arg1 title:(id)arg2 action:(SEL)arg3;
 - (void)addMenuItemWithItemIcon:(long long)arg1 title:(id)arg2 action:(SEL)arg3;
@@ -50,6 +59,7 @@
 - (void)dismissTextInputController;
 - (void)endGlanceUpdates;
 - (void)handleActionWithIdentifier:(id)arg1 forLocalNotification:(id)arg2;
+- (void)handleActionWithIdentifier:(id)arg1 forNotification:(id)arg2;
 - (void)handleActionWithIdentifier:(id)arg1 forRemoteNotification:(id)arg2;
 - (void)handleUserActivity:(id)arg1;
 - (id)init;

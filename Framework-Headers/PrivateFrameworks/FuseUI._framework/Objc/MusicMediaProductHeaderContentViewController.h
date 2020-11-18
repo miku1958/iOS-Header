@@ -7,21 +7,19 @@
 #import <UIKit/UIViewController.h>
 
 #import <FuseUI/MusicClientContextConsuming-Protocol.h>
-#import <FuseUI/MusicEntityPlaybackStatusControllerObserving-Protocol.h>
 #import <FuseUI/MusicEntityProductHeaderLockupViewDelegate-Protocol.h>
 #import <FuseUI/MusicMediaDetailHeaderContentViewController-Protocol.h>
 
-@class MPAVController, MusicClientContext, MusicContextualLibraryUpdateAlertAction, MusicEntityPlaybackStatusController, MusicEntityProductHeaderLockupView, MusicEntityValueContext, MusicEntityViewProductHeaderLockupContentDescriptor, MusicHairlineView, MusicMediaDetailTintInformation, NSArray, NSString, SKUIClientContext, UIButton, UIImage;
+@class MPAVController, MusicClientContext, MusicContextualLibraryUpdateAlertAction, MusicEntityProductHeaderLockupView, MusicEntityValueContext, MusicEntityViewProductHeaderLockupContentDescriptor, MusicHairlineView, MusicMediaDetailTintInformation, NSArray, NSString, SKUIClientContext, UIButton, UIImage;
 @protocol MusicEntityProviding, MusicMediaProductHeaderContentViewControllerDelegate;
 
-@interface MusicMediaProductHeaderContentViewController : UIViewController <MusicEntityPlaybackStatusControllerObserving, MusicEntityProductHeaderLockupViewDelegate, MusicMediaDetailHeaderContentViewController, MusicClientContextConsuming>
+@interface MusicMediaProductHeaderContentViewController : UIViewController <MusicEntityProductHeaderLockupViewDelegate, MusicMediaDetailHeaderContentViewController, MusicClientContextConsuming>
 {
     MusicContextualLibraryUpdateAlertAction *_addRemoveLibraryAlertAction;
     NSArray *_addRemoveNotificationObservers;
     MusicHairlineView *_hairlineView;
     MusicContextualLibraryUpdateAlertAction *_keepLocalAlertAction;
     BOOL _needToMakeTitleFirstResponder;
-    MusicEntityPlaybackStatusController *_playbackStatusController;
     MPAVController *_player;
     MusicEntityProductHeaderLockupView *_productHeaderLockupView;
     MusicEntityViewProductHeaderLockupContentDescriptor *_productHeaderLockupContentDecriptor;
@@ -40,7 +38,6 @@
     NSString *_lockupArtworkProperty;
     MusicMediaDetailTintInformation *_mediaDetailTintInformation;
     long long _presentationSource;
-    struct MusicEntityDownloadInformation _downloadInformation;
 }
 
 @property (readonly, nonatomic) MusicEntityValueContext *_containerEntityValueContext; // @synthesize _containerEntityValueContext;
@@ -51,7 +48,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MusicMediaProductHeaderContentViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) struct MusicEntityDownloadInformation downloadInformation; // @synthesize downloadInformation=_downloadInformation;
 @property (readonly, copy, nonatomic) NSString *editableText;
 @property (strong, nonatomic) UIImage *editedContentArtworkImage; // @synthesize editedContentArtworkImage=_editedContentArtworkImage;
 @property (nonatomic, getter=isHairlineVisible) BOOL hairlineVisible; // @synthesize hairlineVisible=_hairlineVisible;
@@ -80,20 +76,17 @@
 - (id)_productHeaderLockupContentDescriptor;
 - (void)_reloadAddRemoveLibraryAndKeepLocalActions;
 - (void)_reloadContainerEntityValueContextProperties;
-- (void)_reloadDownloadProgressButtonState;
 - (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1;
 - (void)_updateContentTaste;
 - (void)_updateHairline;
 - (void)_updateHairlineLayoutInsets;
 - (void)_updateNavigationTitle;
-- (void)_updatePlaybackStatusForLockupView;
 - (void)_updatePreferredContentSize;
 - (void)_updateProductHeaderLockupProperties;
 - (void)dealloc;
 - (id)initWithContainerEntityProvider:(id)arg1 presentationSource:(long long)arg2;
 - (void)makeEditableTitleBecomeFirstResponder;
 - (void)music_viewInheritedLayoutInsetsDidChange;
-- (void)playbackStatusControllerPlaybackStatusDidChange:(id)arg1;
 - (void)productHeaderLockupView:(id)arg1 didSelectCameraButton:(id)arg2;
 - (void)productHeaderLockupView:(id)arg1 didSelectPlayButtonAction:(unsigned long long)arg2;
 - (void)productHeaderLockupViewDidSelectContextualActionsButton:(id)arg1;

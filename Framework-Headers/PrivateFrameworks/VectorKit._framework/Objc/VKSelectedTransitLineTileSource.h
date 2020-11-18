@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldUseDecodedTile:(id)arg1 extraInfo:(id)arg2;
 - (BOOL)canFetchTileForKey:(const struct VKTileKey *)arg1;
 - (void)dealloc;
-- (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3 labelExternalObjectsModerator:(struct LabelExternalObjectsModerator *)arg4;
+- (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3 sharedResources:(id)arg4 labelExternalObjectsModerator:(struct LabelExternalObjectsModerator *)arg5 transitLineSharedResources:(const shared_ptr_f4e206f4 *)arg6;
 - (unsigned long long)mapLayerForZoomLevelRange;
 - (void)performDownload:(const struct _GEOTileKey *)arg1;
 - (void)tileRequester:(id)arg1 receivedData:(id)arg2 tileEdition:(unsigned int)arg3 tileSet:(unsigned int)arg4 etag:(id)arg5 forKey:(struct _GEOTileKey)arg6 userInfo:(id)arg7;

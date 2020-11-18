@@ -28,9 +28,11 @@
 
 + (void)_getTokenRanges:(struct _NSRange [8])arg1 fromCompressedRanges:(unsigned long long [2])arg2;
 + (void)getCompressedRanges:(unsigned long long [2])arg1 fromTokenRanges:(CDStruct_627e0f85 *)arg2 count:(long long)arg3;
+- (id)_tokenRangesDescription;
 - (long long)compareToGroup:(id)arg1;
 - (void)dealloc;
 - (id)description;
+- (unsigned long long)groupIdForAssetLookup;
 - (unsigned long long)hash;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;

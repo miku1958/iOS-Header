@@ -20,7 +20,7 @@
 - (void)_stopWatchdogCheckins;
 - (void)dealloc;
 - (id)init;
-- (id)newAccelDataByID:(unsigned long long)arg1;
+- (id)newAccelDataByID:(unsigned long long)arg1 metaID:(unsigned long long)arg2;
 - (id)newAccelMetaByID:(unsigned long long)arg1;
 - (id)newAccelMetaFrom:(double)arg1 to:(double)arg2;
 - (id)newAccelMetaSinceID:(unsigned long long)arg1;

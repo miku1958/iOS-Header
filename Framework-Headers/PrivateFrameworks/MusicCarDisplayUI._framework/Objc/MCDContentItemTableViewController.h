@@ -14,12 +14,12 @@
 {
     BOOL _rankedList;
     BOOL _shouldQueueDataSource;
-    NSIndexPath *_selectedIndexPath;
-    NSArray *_dataSource;
     UINavigationController *_nowPlayingNavigationController;
     UIActivityIndicatorView *_activityIndicator;
     MCDNewPlaylistsTableViewController *_viewController;
     NSArray *_queuedDataSource;
+    NSIndexPath *_selectedIndexPath;
+    NSArray *_dataSource;
 }
 
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
@@ -36,9 +36,10 @@
 @property (strong, nonatomic) MCDNewPlaylistsTableViewController *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;
-- (void)_addTrackNumberAndArtworkToCell:(id)arg1 artworkCatalog:(id)arg2 trackNumber:(unsigned long long)arg3;
+- (void)_addTrackNumberAndArtworkToCell:(id)arg1 artworkCatalog:(id)arg2 trackNumber:(unsigned long long)arg3 currentlyPlaying:(BOOL)arg4;
 - (void)_animateActivityIndicatorForCell:(id)arg1 shouldBegin:(BOOL)arg2;
 - (void)_initiatePlaybackWithError:(id)arg1 forCell:(id)arg2;
+- (void)_itemDidChange;
 - (void)_limitedUIDidChange;
 - (id)_normalizedStringStoreIDForContentItem:(id)arg1;
 - (void)_removeTrackNumberAndArtworkFromCell:(id)arg1;

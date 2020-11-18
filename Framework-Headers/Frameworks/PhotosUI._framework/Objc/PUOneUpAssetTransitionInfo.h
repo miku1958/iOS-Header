@@ -15,14 +15,12 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _seekTime;
 }
 
-@property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
-@property (nonatomic) CDStruct_1b6d18a9 seekTime; // @synthesize seekTime=_seekTime;
+@property (strong, nonatomic, setter=_setImage:) UIImage *image; // @synthesize image=_image;
+@property (nonatomic, setter=_setSeekTime:) CDStruct_1b6d18a9 seekTime; // @synthesize seekTime=_seekTime;
 
 + (id)oneUpAssetTransitionInfoWithImage:(id)arg1;
 + (id)oneUpAssetTransitionInfoWithImage:(id)arg1 andSeekTime:(CDStruct_1b6d18a9)arg2;
 - (void).cxx_destruct;
-- (void)_setImage:(id)arg1;
-- (void)_setSeekTime:(CDStruct_1b6d18a9)arg1;
 - (id)init;
 
 @end

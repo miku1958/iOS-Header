@@ -15,6 +15,7 @@
 @property (nonatomic) struct CGSize imageDimensions;
 @property (strong, nonatomic) NSString *meetingStorePersistentID;
 
++ (id)attachmentElementHTMLStringWithAttributes:(id)arg1;
 - (id)_contentTypeByStrippingZipIfNeeded:(BOOL)arg1;
 - (unsigned long long)_imageScale;
 - (id)_imageScalingKeyForImageScale:(unsigned long long)arg1;
@@ -44,7 +45,7 @@
 - (BOOL)isRestrictedMIMEType;
 - (struct CGSize)markupSizeForImageScale:(unsigned long long)arg1;
 - (id)markupStringForCompositionWithPrependedBlankLine:(BOOL)arg1 imageScale:(unsigned long long)arg2;
-- (id)markupStringForDisplayWithData:(id)arg1 displayStyle:(int)arg2 printableWidth:(double)arg3 useEdgeToEdgeFormattingIfApplicable:(BOOL)arg4;
+- (id)markupStringForDisplayWithData:(id)arg1 displayStyle:(int)arg2 printableWidth:(double)arg3 allowAttachmentElement:(BOOL)arg4;
 - (BOOL)needsColorspaceConversion;
 - (unsigned long long)scaledFileSize;
 - (unsigned long long)scaledFileSizeForScale:(unsigned long long)arg1;

@@ -15,9 +15,11 @@
 __attribute__((visibility("hidden")))
 @interface SFContinuityScanManager : NSObject <SFCompanionXPCManagerObserver, SFContinuityScannerClient>
 {
+    BOOL _xpcSetupInProgress;
     id<SFContinuityScannerProtocol><NSXPCProxyCreating> _connectionProxy;
     NSMutableSet *_foundDevices;
     NSHashTable *_observers;
+    unsigned long long _scanTypes;
 }
 
 @property (strong) id<SFContinuityScannerProtocol><NSXPCProxyCreating> connectionProxy; // @synthesize connectionProxy=_connectionProxy;
@@ -26,20 +28,24 @@ __attribute__((visibility("hidden")))
 @property (strong) NSMutableSet *foundDevices; // @synthesize foundDevices=_foundDevices;
 @property (readonly) unsigned long long hash;
 @property (strong) NSHashTable *observers; // @synthesize observers=_observers;
+@property unsigned long long scanTypes; // @synthesize scanTypes=_scanTypes;
 @property (readonly) Class superclass;
+@property BOOL xpcSetupInProgress; // @synthesize xpcSetupInProgress=_xpcSetupInProgress;
 
 + (id)sharedManager;
-- (void)activityPayloadFromDeviceUniqueID:(id)arg1 forAdvertisementPayload:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
+- (void)activityPayloadFromDeviceUniqueID:(id)arg1 forAdvertisementPayload:(id)arg2 command:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)addObserver:(id)arg1;
-- (void)dealloc;
 - (void)foundDeviceWithDevice:(id)arg1;
 - (id)init;
 - (void)lostDeviceWithDevice:(id)arg1;
+- (void)pairedDevicesChanged:(id)arg1;
 - (void)receivedAdvertisement:(id)arg1;
 - (void)removeObserver:(id)arg1;
-- (void)setForceScanningEnabled:(BOOL)arg1;
-- (void)setupXPCConnection;
+- (void)scanForTypes:(unsigned long long)arg1;
+- (void)setupProxyIfNeeded;
 - (void)xpcManagerConnectionInterrupted;
+- (void)xpcManagerDidResumeConnection:(id)arg1;
 
 @end
 

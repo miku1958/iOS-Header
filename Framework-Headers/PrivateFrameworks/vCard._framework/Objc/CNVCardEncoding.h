@@ -26,6 +26,7 @@
 + (id)preferredEncodingInUserDefaults;
 + (id)standardEncodings;
 + (id)utf8Encoding;
+- (void).cxx_destruct;
 - (id)initWithName:(id)arg1 stringEncoding:(unsigned long long)arg2;
 
 @end

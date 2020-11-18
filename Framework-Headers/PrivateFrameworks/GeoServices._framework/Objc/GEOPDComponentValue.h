@@ -8,12 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAddress, GEOPDAmenities, GEOPDBounds, GEOPDBusinessClaim, GEOPDCaptionedPhoto, GEOPDETA, GEOPDEntity, GEOPDExternalAction, GEOPDFactoid, GEOPDFlyover, GEOPDHours, GEOPDPhoto, GEOPDPlaceInfo, GEOPDRating, GEOPDRawAttribute, GEOPDResultSnippet, GEOPDReview, GEOPDRoadAccessInfo, GEOPDTextBlock, GEOPDTransitAttribution, GEOPDTransitIncident, GEOPDTransitInfo, GEOPDTransitInfoSnippet, GEOPDTransitSchedule, GEOStyleAttributes;
+@class GEOPDAddress, GEOPDAddressObject, GEOPDAmenities, GEOPDBounds, GEOPDBusinessClaim, GEOPDCaptionedPhoto, GEOPDETA, GEOPDEntity, GEOPDExternalAction, GEOPDFactoid, GEOPDFlyover, GEOPDHours, GEOPDPhoto, GEOPDPlaceInfo, GEOPDPlacecardURL, GEOPDRating, GEOPDRawAttribute, GEOPDRestaurantReservationLink, GEOPDResultSnippet, GEOPDReview, GEOPDRoadAccessInfo, GEOPDSimpleRestaurantMenuText, GEOPDSpatialLookupResult, GEOPDTextBlock, GEOPDTip, GEOPDTransitAttribution, GEOPDTransitIncident, GEOPDTransitInfo, GEOPDTransitInfoSnippet, GEOPDTransitSchedule, GEOStyleAttributes;
 
 @interface GEOPDComponentValue : PBCodable <NSCopying>
 {
     GEOPDRoadAccessInfo *_accessInfo;
     GEOPDAddress *_address;
+    GEOPDAddressObject *_addressObject;
     GEOPDAmenities *_amenities;
     GEOPDBounds *_bounds;
     GEOPDBusinessClaim *_businessClaim;
@@ -26,12 +27,17 @@
     GEOPDHours *_hours;
     GEOPDPhoto *_photo;
     GEOPDPlaceInfo *_placeInfo;
+    GEOPDPlacecardURL *_placecardUrl;
     GEOPDRating *_rating;
     GEOPDRawAttribute *_rawAttribute;
+    GEOPDRestaurantReservationLink *_restaurantReservationLink;
     GEOPDResultSnippet *_resultSnippet;
     GEOPDReview *_review;
+    GEOPDSimpleRestaurantMenuText *_simpleRestaurantMenuText;
+    GEOPDSpatialLookupResult *_spatialLookupResult;
     GEOStyleAttributes *_styleAttributes;
     GEOPDTextBlock *_textBlock;
+    GEOPDTip *_tip;
     GEOPDTransitAttribution *_transitAttribution;
     GEOPDTransitIncident *_transitIncident;
     GEOPDTransitInfo *_transitInfo;
@@ -41,6 +47,7 @@
 
 @property (strong, nonatomic) GEOPDRoadAccessInfo *accessInfo; // @synthesize accessInfo=_accessInfo;
 @property (strong, nonatomic) GEOPDAddress *address; // @synthesize address=_address;
+@property (strong, nonatomic) GEOPDAddressObject *addressObject; // @synthesize addressObject=_addressObject;
 @property (strong, nonatomic) GEOPDAmenities *amenities; // @synthesize amenities=_amenities;
 @property (strong, nonatomic) GEOPDBounds *bounds; // @synthesize bounds=_bounds;
 @property (strong, nonatomic) GEOPDBusinessClaim *businessClaim; // @synthesize businessClaim=_businessClaim;
@@ -52,6 +59,7 @@
 @property (strong, nonatomic) GEOPDFlyover *flyover; // @synthesize flyover=_flyover;
 @property (readonly, nonatomic) BOOL hasAccessInfo;
 @property (readonly, nonatomic) BOOL hasAddress;
+@property (readonly, nonatomic) BOOL hasAddressObject;
 @property (readonly, nonatomic) BOOL hasAmenities;
 @property (readonly, nonatomic) BOOL hasBounds;
 @property (readonly, nonatomic) BOOL hasBusinessClaim;
@@ -64,12 +72,17 @@
 @property (readonly, nonatomic) BOOL hasHours;
 @property (readonly, nonatomic) BOOL hasPhoto;
 @property (readonly, nonatomic) BOOL hasPlaceInfo;
+@property (readonly, nonatomic) BOOL hasPlacecardUrl;
 @property (readonly, nonatomic) BOOL hasRating;
 @property (readonly, nonatomic) BOOL hasRawAttribute;
+@property (readonly, nonatomic) BOOL hasRestaurantReservationLink;
 @property (readonly, nonatomic) BOOL hasResultSnippet;
 @property (readonly, nonatomic) BOOL hasReview;
+@property (readonly, nonatomic) BOOL hasSimpleRestaurantMenuText;
+@property (readonly, nonatomic) BOOL hasSpatialLookupResult;
 @property (readonly, nonatomic) BOOL hasStyleAttributes;
 @property (readonly, nonatomic) BOOL hasTextBlock;
+@property (readonly, nonatomic) BOOL hasTip;
 @property (readonly, nonatomic) BOOL hasTransitAttribution;
 @property (readonly, nonatomic) BOOL hasTransitIncident;
 @property (readonly, nonatomic) BOOL hasTransitInfo;
@@ -78,12 +91,17 @@
 @property (strong, nonatomic) GEOPDHours *hours; // @synthesize hours=_hours;
 @property (strong, nonatomic) GEOPDPhoto *photo; // @synthesize photo=_photo;
 @property (strong, nonatomic) GEOPDPlaceInfo *placeInfo; // @synthesize placeInfo=_placeInfo;
+@property (strong, nonatomic) GEOPDPlacecardURL *placecardUrl; // @synthesize placecardUrl=_placecardUrl;
 @property (strong, nonatomic) GEOPDRating *rating; // @synthesize rating=_rating;
 @property (strong, nonatomic) GEOPDRawAttribute *rawAttribute; // @synthesize rawAttribute=_rawAttribute;
+@property (strong, nonatomic) GEOPDRestaurantReservationLink *restaurantReservationLink; // @synthesize restaurantReservationLink=_restaurantReservationLink;
 @property (strong, nonatomic) GEOPDResultSnippet *resultSnippet; // @synthesize resultSnippet=_resultSnippet;
 @property (strong, nonatomic) GEOPDReview *review; // @synthesize review=_review;
+@property (strong, nonatomic) GEOPDSimpleRestaurantMenuText *simpleRestaurantMenuText; // @synthesize simpleRestaurantMenuText=_simpleRestaurantMenuText;
+@property (strong, nonatomic) GEOPDSpatialLookupResult *spatialLookupResult; // @synthesize spatialLookupResult=_spatialLookupResult;
 @property (strong, nonatomic) GEOStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
 @property (strong, nonatomic) GEOPDTextBlock *textBlock; // @synthesize textBlock=_textBlock;
+@property (strong, nonatomic) GEOPDTip *tip; // @synthesize tip=_tip;
 @property (strong, nonatomic) GEOPDTransitAttribution *transitAttribution; // @synthesize transitAttribution=_transitAttribution;
 @property (strong, nonatomic) GEOPDTransitIncident *transitIncident; // @synthesize transitIncident=_transitIncident;
 @property (strong, nonatomic) GEOPDTransitInfo *transitInfo; // @synthesize transitInfo=_transitInfo;

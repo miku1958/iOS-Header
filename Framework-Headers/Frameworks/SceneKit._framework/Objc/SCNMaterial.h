@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
@@ -26,6 +26,8 @@
     SCNMaterialProperty *_normal;
     SCNMaterialProperty *_ambientOcclusion;
     SCNMaterialProperty *_selfIllumination;
+    SCNMaterialProperty *_metalness;
+    SCNMaterialProperty *_roughness;
     SCNOrderedDictionary *_animations;
     NSString *_name;
     NSMutableDictionary *_valuesForUndefinedKeys;
@@ -33,6 +35,7 @@
     float _transparency;
     float _indexOfRefraction;
     float _fresnelExponent;
+    float _selfIlluminationOcclusion;
     long long _transparencyMode;
     NSString *_lightingModelName;
     long long _cullMode;
@@ -63,12 +66,14 @@
 @property (copy, nonatomic) NSString *lightingModelName;
 @property (nonatomic, getter=isLitPerPixel) BOOL litPerPixel;
 @property (nonatomic) BOOL locksAmbientWithDiffuse;
+@property (readonly, nonatomic) SCNMaterialProperty *metalness;
 @property (readonly, nonatomic) SCNMaterialProperty *multiply;
 @property (copy, nonatomic) NSString *name;
 @property (readonly, nonatomic) SCNMaterialProperty *normal;
 @property (strong, nonatomic) SCNProgram *program;
 @property (nonatomic) BOOL readsFromDepthBuffer;
 @property (readonly, nonatomic) SCNMaterialProperty *reflective;
+@property (readonly, nonatomic) SCNMaterialProperty *roughness;
 @property (readonly, nonatomic) SCNMaterialProperty *selfIllumination;
 @property (copy, nonatomic) NSDictionary *shaderModifiers;
 @property (nonatomic) double shininess;
@@ -88,8 +93,8 @@
 + (id)materialWithMaterialRef:(struct __C3DMaterial *)arg1;
 + (BOOL)resolveInstanceMethod:(SEL)arg1;
 + (BOOL)supportsSecureCoding;
-- (void *)__CFObject;
-- (void)__removeAnimation:(id)arg1 forKey:(id)arg2;
+- (const void *)__CFObject;
+- (BOOL)__removeAnimation:(id)arg1 forKey:(id)arg2;
 - (void)_customDecodingOfSCNMaterial:(id)arg1;
 - (void)_customEncodingOfSCNMaterial:(id)arg1;
 - (id)_integrateModelKitComputedMaps:(id)arg1 withGeometry:(id)arg2 node:(id)arg3 texturePathProvider:(CDUnknownBlockType)arg4 vertexAttributeNamed:(id)arg5 materialPropertyNamed:(id)arg6 filePath:(id)arg7;
@@ -107,6 +112,7 @@
 - (id)animationForKey:(id)arg1;
 - (struct __C3DAnimationManager *)animationManager;
 - (BOOL)avoidsOverLighting;
+- (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
 - (id)color;
 - (struct __C3DEffectCommonProfile *)commonProfile;
 - (id)content;
@@ -142,6 +148,7 @@
 - (void)resumeAnimationForKey:(id)arg1;
 - (id)scene;
 - (struct __C3DScene *)sceneRef;
+- (double)selfIlluminationOcclusion;
 - (void)setAvoidsOverLighting:(BOOL)arg1;
 - (void)setColor:(id)arg1;
 - (void)setContent:(id)arg1;
@@ -149,7 +156,10 @@
 - (void)setFillMode:(long long)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setIndexOfRefraction:(double)arg1;
+- (void)setSelfIlluminationOcclusion:(double)arg1;
+- (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
+- (void)unbindAnimatablePath:(id)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
 
 @end

@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 {
     BOOL _isSetup;
     BOOL _renewing;
-    BOOL _didCheckGoldenTicket;
     CKDClientContext *_context;
     NSError *_lastSetupError;
     NSObject<OS_dispatch_queue> *_opQueue;
@@ -24,9 +23,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, weak, nonatomic) CKDClientContext *context; // @synthesize context=_context;
-@property (nonatomic) BOOL didCheckGoldenTicket; // @synthesize didCheckGoldenTicket=_didCheckGoldenTicket;
 @property (strong, nonatomic) NSData *goldenTicket; // @synthesize goldenTicket=_goldenTicket;
-@property (nonatomic) BOOL isSetup; // @synthesize isSetup=_isSetup;
+@property BOOL isSetup; // @synthesize isSetup=_isSetup;
 @property (strong, nonatomic) NSError *lastSetupError; // @synthesize lastSetupError=_lastSetupError;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *opQueue; // @synthesize opQueue=_opQueue;
 @property (strong, nonatomic) NSOperationQueue *renewQueue; // @synthesize renewQueue=_renewQueue;
@@ -39,13 +37,14 @@ __attribute__((visibility("hidden")))
 - (void)_teardown;
 - (void)_teardownLocked;
 - (void)dealloc;
-- (void)exchangeData:(id)arg1 serverVersion:(int)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)exchangeData:(id)arg1 serverVersion:(int)arg2 qualityOfService:(long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (id)init;
 - (id)initWithContext:(id)arg1;
 - (void)processSignedData:(id)arg1 signature:(id)arg2 forRequest:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)renewMescalSessionForRequest:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
 - (void)resetMescalSession;
 - (void)signData:(id)arg1 forRequest:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (id)signatureHeadersForRequest:(id)arg1;
 
 @end
 

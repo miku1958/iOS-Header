@@ -6,7 +6,6 @@
 
 #import <coreroutine/RTNotification.h>
 
-__attribute__((visibility("hidden")))
 @interface RTReachabilityMonitorNotificationReachabilityChanged : RTNotification
 {
     long long _reachability;
@@ -14,7 +13,6 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) long long reachability; // @synthesize reachability=_reachability;
 
-+ (id)notificationName;
 - (id)initWithReachability:(long long)arg1;
 
 @end

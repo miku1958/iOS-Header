@@ -16,14 +16,21 @@
 {
     BOOL _loading;
     BOOL _shouldApplyGameCenterTheme;
-    BOOL _isServerAuthenticated;
     BOOL _previousUseCustomBackButtonActionValue;
     BOOL _loadingInitialUI;
     BOOL _complete;
+    BOOL _isServerAuthenticated;
     int _layoutStyle;
     UINavigationController *_navigationControllerWeak;
     CDUnknownBlockType _completionHandler;
     NSError *_error;
+    NSMutableArray *_objectModels;
+    NSArray *_staticViewControllers;
+    RUILoader *_loader;
+    GKRemoteUIController *_presentedRemoteUIController;
+    NSURL *_url;
+    CDUnknownBlockType _loadHandler;
+    NSDictionary *_authInfo;
     NSString *_authToken;
     NSData *_pushToken;
     NSString *_appleID;
@@ -32,13 +39,6 @@
     NSString *_lastName;
     NSString *_alias;
     GKLocalPlayer *_playerForRemoteUI;
-    NSMutableArray *_objectModels;
-    NSArray *_staticViewControllers;
-    RUILoader *_loader;
-    GKRemoteUIController *_presentedRemoteUIController;
-    NSURL *_url;
-    CDUnknownBlockType _loadHandler;
-    NSDictionary *_authInfo;
 }
 
 @property (strong, nonatomic) NSString *alias; // @synthesize alias=_alias;
@@ -93,7 +93,7 @@
 - (void)loadURL:(id)arg1 postBody:(id)arg2;
 - (void)loadURL:(id)arg1 postData:(id)arg2;
 - (void)loader:(id)arg1 didFailWithError:(id)arg2;
-- (void)loader:(id)arg1 receivedObjectModel:(id)arg2 actionSignal:(int)arg3;
+- (void)loader:(id)arg1 receivedObjectModel:(id)arg2 actionSignal:(unsigned long long)arg3;
 - (void)objectModel:(id)arg1 configureTableRow:(id)arg2 page:(id)arg3;
 - (void)objectModel:(id)arg1 configureTableSection:(id)arg2 page:(id)arg3;
 - (void)objectModel:(id)arg1 configureTableView:(id)arg2 page:(id)arg3;
@@ -108,7 +108,7 @@
 - (void)objectModelDidChange:(id)arg1;
 - (void)objectModelPressedBack:(id)arg1;
 - (id)parentViewControllerForObjectModel:(id)arg1;
-- (void)performAction:(int)arg1 withObjectModel:(id)arg2;
+- (void)performAction:(unsigned long long)arg1 withObjectModel:(id)arg2;
 - (void)popObjectModelAnimated:(BOOL)arg1;
 - (id)postBodyForInitialLoad;
 - (id)postbackDataForDictionary:(id)arg1;

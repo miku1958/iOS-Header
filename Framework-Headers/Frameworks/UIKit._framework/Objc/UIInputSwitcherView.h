@@ -12,14 +12,19 @@ __attribute__((visibility("hidden")))
 @interface UIInputSwitcherView : UIKeyboardMenuView
 {
     unsigned long long m_currentInputModeIndex;
-    BOOL m_keyboardSettingsFromSwitcher;
+    BOOL m_fileReportFromSwitcher;
     NSMutableArray *m_inputModes;
     UISwitch *m_predictiveSwitch;
     UISwitch *m_assistantSwitch;
+    UISwitch *m_floatingSwitch;
+    NSMutableArray *m_switches;
+    long long m_numberOfInputModes;
+    BOOL _messagesWriteboardFromSwitcher;
 }
 
+@property (nonatomic) BOOL fileReportFromSwitcher; // @synthesize fileReportFromSwitcher=m_fileReportFromSwitcher;
 @property (strong, nonatomic) NSArray *inputModes; // @synthesize inputModes=m_inputModes;
-@property (nonatomic) BOOL keyboardSettingsFromSwitcher; // @synthesize keyboardSettingsFromSwitcher=m_keyboardSettingsFromSwitcher;
+@property (nonatomic) BOOL messagesWriteboardFromSwitcher; // @synthesize messagesWriteboardFromSwitcher=_messagesWriteboardFromSwitcher;
 
 + (id)activeInstance;
 + (id)sharedInstance;
@@ -28,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (unsigned long long)defaultSelectedIndex;
 - (void)didSelectItemAtIndex:(unsigned long long)arg1;
+- (id)floatingSwitch;
 - (id)fontForItemAtIndex:(unsigned long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)localizedTitleForItemAtIndex:(unsigned long long)arg1;
@@ -46,8 +52,10 @@ __attribute__((visibility("hidden")))
 - (id)subtitleFontForItemAtIndex:(unsigned long long)arg1;
 - (id)subtitleForItemAtIndex:(unsigned long long)arg1;
 - (void)switchAction;
+- (id)switches;
 - (id)titleForItemAtIndex:(unsigned long long)arg1;
 - (void)toggleKeyboardAssistantPreference;
+- (void)toggleKeyboardFloatingPreference;
 - (void)toggleKeyboardPredictionPreference;
 
 @end

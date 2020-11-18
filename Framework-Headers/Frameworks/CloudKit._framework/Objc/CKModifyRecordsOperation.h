@@ -6,13 +6,13 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary;
+@class NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet;
 
 @interface CKModifyRecordsOperation : CKDatabaseOperation
 {
     BOOL _atomic;
-    BOOL _shouldOnlySaveAssetContent;
     BOOL _shouldReportRecordsInFlight;
+    BOOL _shouldOnlySaveAssetContent;
     NSArray *_recordsToSave;
     NSArray *_recordIDsToDelete;
     long long _savePolicy;
@@ -20,14 +20,15 @@
     CDUnknownBlockType _perRecordProgressBlock;
     CDUnknownBlockType _perRecordCompletionBlock;
     CDUnknownBlockType _modifyRecordsCompletionBlock;
-    NSDictionary *_recordIDsToDeleteToEtags;
-    NSDictionary *_conflictLosersToResolveByRecordID;
-    CDUnknownBlockType _recordsInFlightBlock;
     NSMutableArray *_savedRecords;
     NSMutableArray *_deletedRecordIDs;
     NSMutableDictionary *_recordsByRecordIDs;
     NSMutableDictionary *_recordErrors;
     NSMutableDictionary *_assetsByRecordIDAndRecordKey;
+    NSMutableSet *_packagesToDestroy;
+    NSDictionary *_recordIDsToDeleteToEtags;
+    NSDictionary *_conflictLosersToResolveByRecordID;
+    CDUnknownBlockType _recordsInFlightBlock;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *assetsByRecordIDAndRecordKey; // @synthesize assetsByRecordIDAndRecordKey=_assetsByRecordIDAndRecordKey;
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) NSDictionary *conflictLosersToResolveByRecordID; // @synthesize conflictLosersToResolveByRecordID=_conflictLosersToResolveByRecordID;
 @property (strong, nonatomic) NSMutableArray *deletedRecordIDs; // @synthesize deletedRecordIDs=_deletedRecordIDs;
 @property (copy, nonatomic) CDUnknownBlockType modifyRecordsCompletionBlock; // @synthesize modifyRecordsCompletionBlock=_modifyRecordsCompletionBlock;
+@property (strong, nonatomic) NSMutableSet *packagesToDestroy; // @synthesize packagesToDestroy=_packagesToDestroy;
 @property (copy, nonatomic) CDUnknownBlockType perRecordCompletionBlock; // @synthesize perRecordCompletionBlock=_perRecordCompletionBlock;
 @property (copy, nonatomic) CDUnknownBlockType perRecordProgressBlock; // @synthesize perRecordProgressBlock=_perRecordProgressBlock;
 @property (strong, nonatomic) NSMutableDictionary *recordErrors; // @synthesize recordErrors=_recordErrors;
@@ -54,7 +56,10 @@
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleProgressCallback:(id)arg1;
 - (void)_trackAssetsToUpload;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
+- (BOOL)claimPackagesInRecord:(id)arg1 error:(id *)arg2;
+- (void)destroyPackages:(id)arg1;
+- (void)destroyPackagesInRecords:(id)arg1;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
 - (BOOL)hasCKOperationCallbacksSet;

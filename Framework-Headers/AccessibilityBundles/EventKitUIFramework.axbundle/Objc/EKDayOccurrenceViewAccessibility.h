@@ -12,17 +12,18 @@
 {
 }
 
-@property (nonatomic, getter=_axRealFrameInSuperview, setter=_axSetRealFrameInSuperview:) NSValue *axRealFrameInSuperview;
+@property (weak, nonatomic, getter=_axRealFrameInSuperview, setter=_axSetRealFrameInSuperview:) NSValue *axRealFrameInSuperview;
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_accessibilityIsInNotificationCenter;
+- (BOOL)_accessibilityIsInWidget;
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (id)_accessibilitySupplementaryFooterViews;
 - (id)_accessibilitySupplementaryHeaderViews;
 - (id)_axDraggingView;
 - (BOOL)_axIsInPreview;
+- (id)_axWidgetContainerView;
 - (id)accessibilityCustomRotorItemsAtIndex:(long long)arg1;
 - (id)accessibilityCustomRotorTitles;
 - (struct CGRect)accessibilityFrameForScrolling;

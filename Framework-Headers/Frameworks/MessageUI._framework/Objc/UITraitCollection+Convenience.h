@@ -7,6 +7,7 @@
 #import <UIKit/UITraitCollection.h>
 
 @interface UITraitCollection (Convenience)
+- (BOOL)mf_hasCompactDimension;
 - (BOOL)mf_supportsPopoverPresentation;
 @end
 

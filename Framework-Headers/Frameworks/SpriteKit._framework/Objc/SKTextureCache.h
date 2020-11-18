@@ -16,24 +16,19 @@ __attribute__((visibility("hidden")))
     BOOL hasAlpha;
     BOOL isPOT;
     char *pixelData;
-    unsigned int *alphaMap;
-    struct CGSize alphaMapSize;
     int state;
-    int lock;
+    struct _opaque_pthread_mutex_t lock;
     shared_ptr_bb77cfd9 _backingTexture;
     unsigned int _textureFormat;
-    struct CGImage *collisionMask;
     int wrapMode;
 }
 
-@property (nonatomic) unsigned int *alphaMap; // @synthesize alphaMap;
-@property (nonatomic) struct CGSize alphaMapSize; // @synthesize alphaMapSize;
 @property (nonatomic) shared_ptr_bb77cfd9 backingTexture; // @synthesize backingTexture=_backingTexture;
 @property (nonatomic) long long filteringMode; // @synthesize filteringMode;
 @property (nonatomic) BOOL hasAlpha; // @synthesize hasAlpha;
 @property (nonatomic) BOOL isLoaded; // @synthesize isLoaded;
 @property (nonatomic) BOOL isPOT; // @synthesize isPOT;
-@property (readonly, nonatomic, getter=getLock) int *lock;
+@property (readonly, nonatomic, getter=getLock) struct _opaque_pthread_mutex_t *lock;
 @property (nonatomic) char *pixelData; // @synthesize pixelData;
 @property (nonatomic) struct CGSize pixelSize; // @synthesize pixelSize;
 @property (nonatomic) struct CGSize size; // @synthesize size;

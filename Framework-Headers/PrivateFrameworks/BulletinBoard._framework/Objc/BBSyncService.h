@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/IDSServiceDelegate-Protocol.h>
 
@@ -27,11 +27,12 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<BBSyncServiceDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<BBSyncServiceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_addDeferredDismissalForBulletin:(id)arg1 feeds:(unsigned long long)arg2;
 - (void)_clearDeferredTimer;
 - (void)_deferredTimerFired:(id)arg1;

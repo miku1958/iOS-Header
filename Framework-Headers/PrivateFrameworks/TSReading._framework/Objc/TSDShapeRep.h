@@ -6,9 +6,12 @@
 
 #import <TSReading/TSDStyledRep.h>
 
+#import <TSReading/CALayerDelegate-Protocol.h>
 #import <TSReading/TSDMagicMoveMatching-Protocol.h>
 
-@interface TSDShapeRep : TSDStyledRep <TSDMagicMoveMatching>
+@class NSString;
+
+@interface TSDShapeRep : TSDStyledRep <CALayerDelegate, TSDMagicMoveMatching>
 {
     struct CGRect mFrameInUnscaledCanvasRelativeToSuper;
     BOOL mFrameInUnscaledCanvasIsValid;
@@ -17,7 +20,11 @@
     BOOL mShadowOnChildrenDisabled;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL shadowOnChildrenDisabled; // @synthesize shadowOnChildrenDisabled=mShadowOnChildrenDisabled;
+@property (readonly) Class superclass;
 
 + (double)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2;
 - (void)addBitmapsToRenderingQualityInfo:(id)arg1 inContext:(struct CGContext *)arg2;

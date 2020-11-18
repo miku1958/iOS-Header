@@ -17,11 +17,10 @@
 
 + (id)stringFromStarkState:(long long)arg1;
 + (BOOL)supportsSecureCoding;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDeviceStarkState:(long long)arg1 source:(long long)arg2 startDate:(id)arg3 endDate:(id)arg4 locationIdentifier:(id)arg5;
+- (id)initWithDeviceStarkState:(long long)arg1 source:(long long)arg2 startDate:(id)arg3 endDate:(id)arg4;
 
 @end
 

@@ -14,6 +14,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilitySupportsActivateAction;
+- (id)_axDigitalTouchDescription;
+- (BOOL)_axIsDigitalTouch;
 - (BOOL)_axIsLocating;
 - (BOOL)_axIsLocation;
 - (BOOL)_axIsPhoto;
@@ -22,7 +24,6 @@
 - (BOOL)accessibilityActivate;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
-- (BOOL)isAccessibilityElement;
 
 @end
 

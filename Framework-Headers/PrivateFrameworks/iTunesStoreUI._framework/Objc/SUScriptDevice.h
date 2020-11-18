@@ -6,7 +6,7 @@
 
 #import <iTunesStoreUI/SUScriptObject.h>
 
-@class NSArray, NSMutableArray, NSNumber, NSString, SUScriptColor;
+@class NSArray, NSMutableArray, NSNumber, NSString, SUScriptColor, SUScriptDictionary;
 
 @interface SUScriptDevice : SUScriptObject
 {
@@ -35,6 +35,7 @@
 @property (readonly) NSString *capabilityNameWiFi;
 @property (readonly) unsigned int deviceTypeIdentifier;
 @property (readonly) NSNumber *diskSpaceAvailable;
+@property (readonly) SUScriptDictionary *diskUsageDictionary;
 @property (readonly) long long freeSpaceEffortLevelAutomaticOnly;
 @property (readonly) long long freeSpaceEffortLevelDoNothing;
 @property (readonly) long long freeSpaceEffortLevelManualSpaceManagement;
@@ -124,6 +125,7 @@
 - (id)restrictionLevelForType:(id)arg1;
 - (id)scriptAttributeKeys;
 - (void)setAutomaticDownloadKinds:(id)arg1 withCompletionHandler:(id)arg2;
+- (void)setDiskUsageDictionary:(id)arg1;
 - (id)valueForRestriction:(id)arg1;
 
 @end

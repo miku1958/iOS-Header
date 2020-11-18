@@ -8,27 +8,82 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
 @interface _MRContentItemMetadataProtobuf : PBCodable <NSCopying>
 {
     double _duration;
-    NSString *_album;
-    NSString *_artist;
+    double _releaseDate;
+    NSString *_albumArtistName;
+    NSString *_albumName;
+    NSData *_artworkData;
+    NSString *_directorName;
+    int _episodeNumber;
+    NSString *_localizedContentRating;
+    int _playCount;
+    float _playbackProgress;
+    int _playlistType;
+    int _radioStationType;
+    int _seasonNumber;
+    NSString *_subtitle;
     NSString *_title;
+    NSString *_trackArtistName;
+    BOOL _isContainer;
+    BOOL _isExplicitItem;
+    BOOL _isPlayable;
     struct {
         unsigned int duration:1;
+        unsigned int releaseDate:1;
+        unsigned int episodeNumber:1;
+        unsigned int playCount:1;
+        unsigned int playbackProgress:1;
+        unsigned int playlistType:1;
+        unsigned int radioStationType:1;
+        unsigned int seasonNumber:1;
+        unsigned int isContainer:1;
+        unsigned int isExplicitItem:1;
+        unsigned int isPlayable:1;
     } _has;
 }
 
-@property (strong, nonatomic) NSString *album; // @synthesize album=_album;
-@property (strong, nonatomic) NSString *artist; // @synthesize artist=_artist;
+@property (strong, nonatomic) NSString *albumArtistName; // @synthesize albumArtistName=_albumArtistName;
+@property (strong, nonatomic) NSString *albumName; // @synthesize albumName=_albumName;
+@property (strong, nonatomic) NSData *artworkData; // @synthesize artworkData=_artworkData;
+@property (strong, nonatomic) NSString *directorName; // @synthesize directorName=_directorName;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
-@property (readonly, nonatomic) BOOL hasAlbum;
-@property (readonly, nonatomic) BOOL hasArtist;
+@property (nonatomic) int episodeNumber; // @synthesize episodeNumber=_episodeNumber;
+@property (readonly, nonatomic) BOOL hasAlbumArtistName;
+@property (readonly, nonatomic) BOOL hasAlbumName;
+@property (readonly, nonatomic) BOOL hasArtworkData;
+@property (readonly, nonatomic) BOOL hasDirectorName;
 @property (nonatomic) BOOL hasDuration;
+@property (nonatomic) BOOL hasEpisodeNumber;
+@property (nonatomic) BOOL hasIsContainer;
+@property (nonatomic) BOOL hasIsExplicitItem;
+@property (nonatomic) BOOL hasIsPlayable;
+@property (readonly, nonatomic) BOOL hasLocalizedContentRating;
+@property (nonatomic) BOOL hasPlayCount;
+@property (nonatomic) BOOL hasPlaybackProgress;
+@property (nonatomic) BOOL hasPlaylistType;
+@property (nonatomic) BOOL hasRadioStationType;
+@property (nonatomic) BOOL hasReleaseDate;
+@property (nonatomic) BOOL hasSeasonNumber;
+@property (readonly, nonatomic) BOOL hasSubtitle;
 @property (readonly, nonatomic) BOOL hasTitle;
+@property (readonly, nonatomic) BOOL hasTrackArtistName;
+@property (nonatomic) BOOL isContainer; // @synthesize isContainer=_isContainer;
+@property (nonatomic) BOOL isExplicitItem; // @synthesize isExplicitItem=_isExplicitItem;
+@property (nonatomic) BOOL isPlayable; // @synthesize isPlayable=_isPlayable;
+@property (strong, nonatomic) NSString *localizedContentRating; // @synthesize localizedContentRating=_localizedContentRating;
+@property (nonatomic) int playCount; // @synthesize playCount=_playCount;
+@property (nonatomic) float playbackProgress; // @synthesize playbackProgress=_playbackProgress;
+@property (nonatomic) int playlistType; // @synthesize playlistType=_playlistType;
+@property (nonatomic) int radioStationType; // @synthesize radioStationType=_radioStationType;
+@property (nonatomic) double releaseDate; // @synthesize releaseDate=_releaseDate;
+@property (nonatomic) int seasonNumber; // @synthesize seasonNumber=_seasonNumber;
+@property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (strong, nonatomic) NSString *trackArtistName; // @synthesize trackArtistName=_trackArtistName;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

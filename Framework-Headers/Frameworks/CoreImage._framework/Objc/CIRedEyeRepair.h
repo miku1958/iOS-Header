@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
     int lastClickBitmapMaxY;
     CDStruct_c3faddef lastClickYBitmaps[3];
     CDStruct_c3faddef lastClickCbCrBitmaps[3];
-    CDStruct_5973fb4f lastClickIRects[3];
+    CDStruct_5973fb4f lastClickBitmapRects[3];
     CDStruct_c3faddef lastSearchYBitmap;
     CDStruct_c3faddef lastSearchCbCrBitmap;
     int lastSearchBitmapMinX;

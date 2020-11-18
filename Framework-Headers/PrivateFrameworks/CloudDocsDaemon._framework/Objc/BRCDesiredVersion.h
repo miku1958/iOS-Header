@@ -6,18 +6,19 @@
 
 #import <CloudDocsDaemon/BRCVersion.h>
 
-#import <CloudDocsDaemon/PQLBindable-Protocol.h>
+#import <CloudDocsDaemon/PQLValuable-Protocol.h>
 
 @class NSError, NSString;
 
 __attribute__((visibility("hidden")))
-@interface BRCDesiredVersion : BRCVersion <PQLBindable>
+@interface BRCDesiredVersion : BRCVersion <PQLValuable>
 {
     union {
         unsigned int value;
         struct {
             unsigned int isFault:1;
             unsigned int startDownload:1;
+            unsigned int wantsThumbnail:1;
             unsigned int userInitiated:1;
         } ;
     } _flags;
@@ -35,7 +36,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL userInitiated;
 @property (readonly, nonatomic) BOOL wantsContent;
+@property (readonly, nonatomic) BOOL wantsThumbnail;
 
++ (id)newFromSqliteValue:(struct Mem *)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

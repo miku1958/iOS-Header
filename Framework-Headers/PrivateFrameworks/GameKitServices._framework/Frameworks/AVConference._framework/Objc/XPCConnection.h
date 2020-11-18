@@ -12,7 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface XPCConnection : NSObject
 {
-    NSObject<OS_xpc_object> *connection;
+    NSObject<OS_xpc_object> *_connection;
     int _pid;
     id context;
     NSData *tokenData;
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     BOOL _isPersistent;
 }
 
-@property NSObject<OS_xpc_object> *connection; // @synthesize connection;
+@property (strong, nonatomic) NSObject<OS_xpc_object> *connection;
 @property (strong, nonatomic) id context; // @synthesize context;
 @property (getter=isPersistent) BOOL persistent;
 @property int pid;

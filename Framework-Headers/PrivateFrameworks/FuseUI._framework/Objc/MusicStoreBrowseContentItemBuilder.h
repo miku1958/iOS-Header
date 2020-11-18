@@ -4,29 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FuseUI/MusicStoreModelObjectBuilder.h>
+#import <MediaPlayer/MPStoreModelObjectBuilder.h>
 
-@class MusicStoreModelAlbumBuilder, MusicStoreModelCuratorBuilder, MusicStoreModelMusicVideoBuilder, MusicStoreModelPlaylistBuilder, MusicStoreModelRadioStationBuilder, MusicStoreModelSongBuilder;
+@class MPStoreModelAlbumBuilder, MPStoreModelArtistBuilder, MPStoreModelCuratorBuilder, MPStoreModelPlaylistBuilder, MPStoreModelRadioStationBuilder, MPStoreModelSongBuilder;
 
-@interface MusicStoreBrowseContentItemBuilder : MusicStoreModelObjectBuilder
+@interface MusicStoreBrowseContentItemBuilder : MPStoreModelObjectBuilder
 {
     struct {
         unsigned int initialized:1;
         unsigned int itemType:1;
         unsigned int detailedItemType:1;
+        unsigned int artist:1;
         unsigned int album:1;
         unsigned int curator:1;
-        unsigned int musicVideo:1;
         unsigned int playlist:1;
         unsigned int radioStation:1;
         unsigned int song:1;
+        unsigned int aucType:1;
     } _requestedBrowseContentItemProperties;
-    MusicStoreModelAlbumBuilder *_albumBuilder;
-    MusicStoreModelCuratorBuilder *_curatorBuilder;
-    MusicStoreModelMusicVideoBuilder *_musicVideoBuilder;
-    MusicStoreModelRadioStationBuilder *_radioStationBuilder;
-    MusicStoreModelPlaylistBuilder *_playlistBuilder;
-    MusicStoreModelSongBuilder *_songBuilder;
+    MPStoreModelAlbumBuilder *_albumBuilder;
+    MPStoreModelArtistBuilder *_artistBuilder;
+    MPStoreModelCuratorBuilder *_curatorBuilder;
+    MPStoreModelRadioStationBuilder *_radioStationBuilder;
+    MPStoreModelPlaylistBuilder *_playlistBuilder;
+    MPStoreModelSongBuilder *_songBuilder;
     BOOL _allowsRadioStations;
     BOOL _allowsVideoContent;
 }
@@ -39,6 +40,7 @@
 - (long long)contentItemTypeForRawResponseKindIdentifierValue:(long long)arg1;
 - (long long)contentItemTypeForRawResponseKindIdentifiers:(id)arg1;
 - (long long)contentItemTypeForStoreItemMetadata:(id)arg1;
+- (id)initWithRequestedPropertySet:(id)arg1;
 - (id)modelObjectWithStoreItemMetadata:(id)arg1;
 
 @end

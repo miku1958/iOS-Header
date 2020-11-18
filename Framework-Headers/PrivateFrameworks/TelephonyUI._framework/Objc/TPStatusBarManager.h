@@ -6,37 +6,23 @@
 
 #import <Foundation/NSObject.h>
 
-#import <TelephonyUI/TUStatusBarManagerDelegate-Protocol.h>
+@class NSString, NSTimer;
 
-@class NSString, TUStatusBarManager;
-
-@interface TPStatusBarManager : NSObject <TUStatusBarManagerDelegate>
+@interface TPStatusBarManager : NSObject
 {
-    BOOL _styleOverridesEnabled;
-    int _previousStyleOverrides;
-    TUStatusBarManager *_statusBarManager;
-    long long _previousStyle;
+    NSString *_currentAbbreviatedStatusBarString;
+    NSTimer *_callDurationTimer;
 }
 
-@property (readonly, strong, nonatomic) NSString *currentAbbreviatedStatusBarString;
-@property (readonly, strong, nonatomic) NSString *currentStatusBarString;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (nonatomic) long long previousStyle; // @synthesize previousStyle=_previousStyle;
-@property (nonatomic) int previousStyleOverrides; // @synthesize previousStyleOverrides=_previousStyleOverrides;
-@property (strong, nonatomic) TUStatusBarManager *statusBarManager; // @synthesize statusBarManager=_statusBarManager;
-@property (nonatomic) BOOL styleOverridesEnabled; // @synthesize styleOverridesEnabled=_styleOverridesEnabled;
-@property (readonly) Class superclass;
+@property (strong, nonatomic) NSTimer *callDurationTimer; // @synthesize callDurationTimer=_callDurationTimer;
+@property (copy, nonatomic) NSString *currentAbbreviatedStatusBarString; // @synthesize currentAbbreviatedStatusBarString=_currentAbbreviatedStatusBarString;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)clearStatusBarInCallStateForStatusBarManager:(id)arg1;
-- (int)currentStatusBarStyleOverridesForStatusBarManager:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (void)statusBarManager:(id)arg1 setDoubleHeightStatusString:(id)arg2 forStyle:(long long)arg3;
-- (void)statusBarManager:(id)arg1 setStyleOverrides:(int)arg2;
+- (void)updateCurrentAbbreviatedStatusBarString;
+- (void)updateCurrentAbbreviatedStatusBarStringAndSendNotification;
 
 @end
 

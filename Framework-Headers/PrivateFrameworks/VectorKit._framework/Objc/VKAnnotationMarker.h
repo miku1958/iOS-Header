@@ -6,86 +6,33 @@
 
 #import <VectorKit/VKAnnotationMarkerLayer.h>
 
-#import <VectorKit/VKAnchorDelegate-Protocol.h>
 #import <VectorKit/VKTrackableAnnotationPresentation-Protocol.h>
 
-@class NSString, VKAnchor, VKTimedAnimation;
-@protocol VKAnnotation, VKAnnotationMarkerDelegate;
+@class NSString;
+@protocol VKAnnotation;
 
-@interface VKAnnotationMarker : VKAnnotationMarkerLayer <VKAnchorDelegate, VKTrackableAnnotationPresentation>
+@interface VKAnnotationMarker : VKAnnotationMarkerLayer <VKTrackableAnnotationPresentation>
 {
     id<VKAnnotation> _annotation;
-    NSString *_reuseIdentifier;
-    struct VKPoint _projectedPoint;
-    struct VKPoint _projectedGroundPoint;
-    BOOL _selected;
-    BOOL _canShowCallout;
-    long long _dragState;
-    BOOL _draggable;
     BOOL _tracking;
     BOOL _animatingToCoordinate;
-    VKTimedAnimation *_coordinateAnimation;
-    BOOL _followsTerrain;
     CDStruct_2c43369c _presentationCoordinate;
-    struct CGPoint _presentationPoint;
-    BOOL _useScreenSpacePoint;
-    float _dropFraction;
-    VKAnchor *_anchor;
-    CDStruct_e123902a _styleTransitionState;
-    id<VKAnnotationMarkerDelegate> _delegate;
-    BOOL _hidden;
-    struct CGPoint _calloutOffset;
+    CDStruct_6bdb9208 _styleTransitionState;
 }
 
 @property (nonatomic) BOOL animatingToCoordinate; // @synthesize animatingToCoordinate=_animatingToCoordinate;
 @property (strong, nonatomic) id<VKAnnotation> annotation; // @synthesize annotation=_annotation;
-@property (nonatomic) struct CGPoint calloutOffset; // @synthesize calloutOffset=_calloutOffset;
-@property (readonly, nonatomic) BOOL canAnimateIn;
-@property (nonatomic) BOOL canShowCallout; // @synthesize canShowCallout=_canShowCallout;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<VKAnnotationMarkerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) long long dragState; // @synthesize dragState=_dragState;
-@property (nonatomic, getter=isDraggable) BOOL draggable; // @synthesize draggable=_draggable;
-@property (nonatomic) float dropFraction; // @synthesize dropFraction=_dropFraction;
-@property (nonatomic) BOOL followsTerrain; // @synthesize followsTerrain=_followsTerrain;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL hidden; // @synthesize hidden=_hidden;
 @property (nonatomic) CDStruct_c3b9c2ee presentationCoordinate;
-@property (nonatomic) struct CGPoint presentationPoint;
-@property (nonatomic) struct VKPoint projectedGroundPoint; // @synthesize projectedGroundPoint=_projectedGroundPoint;
-@property (nonatomic) struct VKPoint projectedPoint; // @synthesize projectedPoint=_projectedPoint;
-@property (readonly, nonatomic) NSString *reuseIdentifier; // @synthesize reuseIdentifier=_reuseIdentifier;
-@property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
-@property (nonatomic) CDStruct_e123902a styleTransitionState; // @synthesize styleTransitionState=_styleTransitionState;
+@property (nonatomic) CDStruct_6bdb9208 styleTransitionState; // @synthesize styleTransitionState=_styleTransitionState;
 @property (readonly) Class superclass;
-@property (readonly, copy, nonatomic) NSString *title;
 @property (nonatomic, getter=isTracking) BOOL tracking;
-@property (nonatomic) BOOL useScreenSpacePoint; // @synthesize useScreenSpacePoint=_useScreenSpacePoint;
 
-+ (unsigned long long)_selectedZIndex;
-+ (unsigned long long)_zIndex;
-+ (id)keyPathsForValuesAffectingSubtitle;
-+ (id)keyPathsForValuesAffectingTitle;
-- (id).cxx_construct;
-- (id)anchorWithContext:(id)arg1;
-- (void)anchorWorldPointDidChange:(void *)arg1;
-- (void)animateFromCoordinate:(CDStruct_c3b9c2ee)arg1 duration:(double)arg2;
-- (double)animateInWithCanvasSize:(struct CGSize)arg1 delay:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (struct CGPoint)calloutAnchorPointWithCanvasSize:(struct CGSize)arg1 canvasScale:(double)arg2 snapToPixels:(BOOL)arg3;
 - (void)dealloc;
-- (id)debugAnchorPointString;
-- (struct CGRect)frameWithCanvasSize:(struct CGSize)arg1;
 - (id)init;
-- (id)initWithAnnotation:(id)arg1 reuseIdentifier:(id)arg2;
-- (BOOL)isPersistent;
-- (struct VKPoint)pointInWorldWithContext:(id)arg1;
-- (struct CGPoint)pointToDropAtForPoint:(struct CGPoint)arg1;
-- (void)prepareForReuse;
-- (struct CGPoint)screenPointToScrollRelativeToWithCanvasSize:(struct CGSize)arg1 canvasScale:(double)arg2;
-- (void)setDragState:(long long)arg1 animated:(BOOL)arg2;
-- (struct CGRect)significantFrameWithCanvasSize:(struct CGSize)arg1;
-- (id)subtitle;
+- (id)initWithAnnotation:(id)arg1;
 
 @end
 

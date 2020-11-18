@@ -6,7 +6,7 @@
 
 #import <Metal/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class MTLFunctionConstantValues, NSArray, NSString;
 @protocol MTLDevice, MTLFunction;
 
 @protocol MTLLibrary <NSObject>
@@ -16,5 +16,7 @@
 @property (copy) NSString *label;
 
 - (id<MTLFunction>)newFunctionWithName:(NSString *)arg1;
+- (void)newFunctionWithName:(NSString *)arg1 constantValues:(MTLFunctionConstantValues *)arg2 completionHandler:(void (^)(id<MTLFunction>, NSError *))arg3;
+- (id<MTLFunction>)newFunctionWithName:(NSString *)arg1 constantValues:(MTLFunctionConstantValues *)arg2 error:(id *)arg3;
 @end
 

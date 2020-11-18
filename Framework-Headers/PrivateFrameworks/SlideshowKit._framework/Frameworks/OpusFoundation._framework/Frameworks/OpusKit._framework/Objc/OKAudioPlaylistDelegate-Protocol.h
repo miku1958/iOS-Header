@@ -6,10 +6,10 @@
 
 #import <OpusKit/NSObject-Protocol.h>
 
-@class NSURL;
+@class AVAsset;
 
 @protocol OKAudioPlaylistDelegate <NSObject>
-- (void)audioFinishedPlayingWithURL:(NSURL *)arg1;
-- (void)audioStartedPlayingWithURL:(NSURL *)arg1;
+- (void)audioFinishedPlayingWithAVAsset:(AVAsset *)arg1;
+- (void)audioStartedPlayingWithAVAsset:(AVAsset *)arg1;
 @end
 

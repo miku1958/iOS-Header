@@ -20,8 +20,10 @@ __attribute__((visibility("hidden")))
     NSMutableArray *connectedBTPeripherals;
     NSMutableArray *connectedAMSPeripherals;
     NSTimer *refreshTimer;
+    NSTimer *connectionTimer;
     id<BTLEConnectionTable> controller;
     long long centralState;
+    BOOL isAdvertising;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -39,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)centralManager:(id)arg1 didRetrievePeripherals:(id)arg2;
 - (void)centralManagerDidUpdateState:(id)arg1;
 - (void)checkAlreadyConnectedPeripherals;
+- (void)connectionTimerFired:(id)arg1;
 - (void)createPeripheralList;
 - (void)dealloc;
 - (id)initWithUIController:(id)arg1;
@@ -55,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)startTimer;
 - (void)stopScan;
 - (void)timerFired:(id)arg1;
+- (void)updateAdvertisingState:(id)arg1;
 
 @end
 

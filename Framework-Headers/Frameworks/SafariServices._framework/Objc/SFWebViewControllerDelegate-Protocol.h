@@ -9,6 +9,7 @@
 @class NSArray, NSError, NSURL, NSURLAuthenticationChallenge, SFWebViewController, UIViewController, WKNavigation, WKNavigationAction, WKWebView, WKWebViewConfiguration, _WKActivatedElementInfo;
 
 @protocol SFWebViewControllerDelegate <NSObject>
+- (UIViewController *)presentingViewControllerForWebViewController:(SFWebViewController *)arg1;
 - (void)webViewController:(SFWebViewController *)arg1 commitPreviewedViewController:(UIViewController *)arg2;
 - (WKWebView *)webViewController:(SFWebViewController *)arg1 createWebViewWithConfiguration:(WKWebViewConfiguration *)arg2 forNavigationAction:(WKNavigationAction *)arg3;
 - (void)webViewController:(SFWebViewController *)arg1 decidePolicyForNavigationAction:(WKNavigationAction *)arg2 decisionHandler:(void (^)(long long))arg3;
@@ -29,5 +30,6 @@
 - (void)webViewControllerWebProcessDidBecomeResponsive:(SFWebViewController *)arg1;
 - (void)webViewControllerWebProcessDidBecomeUnresponsive:(SFWebViewController *)arg1;
 - (void)webViewControllerWebProcessDidCrash:(SFWebViewController *)arg1;
+- (void)webViewControllerWillPresentJavaScriptDialog:(SFWebViewController *)arg1;
 @end
 

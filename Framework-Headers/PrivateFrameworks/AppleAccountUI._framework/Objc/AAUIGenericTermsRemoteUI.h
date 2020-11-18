@@ -45,7 +45,7 @@
 - (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (id)initWithAccount:(id)arg1 inStore:(id)arg2;
 - (void)loader:(id)arg1 didFailWithError:(id)arg2;
-- (void)loader:(id)arg1 receivedObjectModel:(id)arg2 actionSignal:(int)arg3;
+- (void)loader:(id)arg1 receivedObjectModel:(id)arg2 actionSignal:(unsigned long long)arg3;
 - (void)objectModel:(id)arg1 pressedButton:(id)arg2 attributes:(id)arg3;
 - (void)objectModel:(id)arg1 pressedLink:(id)arg2 httpMethod:(id)arg3;
 - (void)objectModelPressedBack:(id)arg1;

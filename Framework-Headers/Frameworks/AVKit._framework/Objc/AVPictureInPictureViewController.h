@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
 {
     id<AVPictureInPictureViewControllerDelegate> _delegate;
     struct {
-        unsigned int pictureInPictureViewControllerViewDidAppear:1;
-        unsigned int pictureInPictureViewControllerViewWillDisappear:1;
+        BOOL pictureInPictureViewControllerViewDidAppear;
+        BOOL pictureInPictureViewControllerViewWillDisappear;
     } _delegateRespondsTo;
     AVPlayerController *_playerController;
 }

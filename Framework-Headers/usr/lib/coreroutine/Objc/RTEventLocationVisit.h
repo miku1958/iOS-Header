@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <coreroutine/RTEventContext.h>
+#import <coreroutine/RTEvent.h>
 
 #import <coreroutine/NSSecureCoding-Protocol.h>
 
 @class RTLocationOfInterest;
 
-@interface RTEventLocationVisit : RTEventContext <NSSecureCoding>
+@interface RTEventLocationVisit : RTEvent <NSSecureCoding>
 {
     RTLocationOfInterest *_locationOfInterest;
 }
@@ -19,7 +19,6 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

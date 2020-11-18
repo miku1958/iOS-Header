@@ -18,15 +18,15 @@ __attribute__((visibility("hidden")))
     NSString *_label;
     NSString *_abDatabaseUUID;
     NSString *_propertyKey;
-    NSString *_identifier;
+    NSString *_labeledValueIdentifier;
     CNFavoritesEntry *_originalEntry;
 }
 
 @property (copy, nonatomic) NSString *abDatabaseUUID; // @synthesize abDatabaseUUID=_abDatabaseUUID;
 @property (nonatomic) int abIdentifier; // @synthesize abIdentifier=_abIdentifier;
 @property (nonatomic) int abUid; // @synthesize abUid=_abUid;
-@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property (copy, nonatomic) NSString *labeledValueIdentifier; // @synthesize labeledValueIdentifier=_labeledValueIdentifier;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) CNFavoritesEntry *originalEntry; // @synthesize originalEntry=_originalEntry;
 @property (copy, nonatomic) NSString *propertyKey; // @synthesize propertyKey=_propertyKey;

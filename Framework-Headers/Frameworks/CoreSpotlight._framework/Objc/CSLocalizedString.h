@@ -12,8 +12,8 @@
 
 @interface CSLocalizedString : NSString <CSCoderEncoder>
 {
-    NSDictionary *_localizedStrings;
     NSString *_defaultString;
+    NSDictionary *_localizedStrings;
 }
 
 @property (readonly, nonatomic) NSString *defaultString; // @synthesize defaultString=_defaultString;

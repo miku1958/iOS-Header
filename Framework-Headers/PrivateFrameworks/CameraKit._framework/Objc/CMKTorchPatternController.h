@@ -12,10 +12,10 @@
 {
     BOOL __performing;
     double _stepInterval;
-    AVCaptureDevice *_captureDevice;
     CMKTorchPattern *__currentPattern;
     double __startTime;
     CADisplayLink *__displayLink;
+    AVCaptureDevice *_captureDevice;
 }
 
 @property (readonly, nonatomic) CMKTorchPattern *_currentPattern; // @synthesize _currentPattern=__currentPattern;

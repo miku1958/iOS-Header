@@ -23,6 +23,7 @@
 
 - (void).cxx_destruct;
 - (id)description;
+- (BOOL)isMatchStringInsideQuotationMarks;
 - (id)matchString;
 
 @end

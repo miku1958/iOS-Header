@@ -12,7 +12,6 @@
 
 @property (nonatomic) BOOL allowReachability; // @dynamic allowReachability;
 @property (readonly, nonatomic) BOOL reallyDisableReachability; // @dynamic reallyDisableReachability;
-@property (readonly, nonatomic, getter=isTTYEnabled) BOOL ttyEnabled; // @dynamic ttyEnabled;
 
 - (void)_bindAndRegisterDefaults;
 

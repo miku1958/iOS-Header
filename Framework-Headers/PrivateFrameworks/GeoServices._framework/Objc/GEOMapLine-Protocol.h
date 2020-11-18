@@ -12,5 +12,6 @@
 @property (readonly, nonatomic) CDStruct_c3b9c2ee *coordinates;
 @property (readonly, nonatomic) double length;
 
+- (double)distanceFromCoordinate:(CDStruct_c3b9c2ee)arg1 outSegmentCoordinate:(struct PolylineCoordinate *)arg2;
 @end
 

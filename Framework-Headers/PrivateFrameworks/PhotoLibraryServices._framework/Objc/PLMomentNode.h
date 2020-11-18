@@ -24,7 +24,7 @@
 
 @property (strong, nonatomic) NSNumber *cacheInsertionIndex; // @synthesize cacheInsertionIndex=_cacheInsertionIndex;
 @property (nonatomic) PLMomentCluster *cluster; // @synthesize cluster=__cluster;
-@property (readonly, nonatomic) CDStruct_c3b9c2ee coordinate;
+@property (readonly, nonatomic) struct CLLocationCoordinate2D coordinate;
 @property (readonly, strong, nonatomic) NSDate *creationDate; // @synthesize creationDate=__creationDate;
 @property (readonly, nonatomic) CLLocation *location; // @synthesize location=__location;
 @property (nonatomic, getter=isMarked) BOOL marked; // @synthesize marked=_marked;

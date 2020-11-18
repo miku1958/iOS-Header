@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSSet, NSString, SSNetworkConstraints, SSURLBagContext;
+@class ISURLBagBackend, NSArray, NSDictionary, NSSet, NSString, SSNetworkConstraints, SSURLBagContext;
 
 @interface ISURLBag : NSObject
 {
     SSURLBagContext *_context;
     SSNetworkConstraints *_defaultConstraints;
-    NSDictionary *_dictionary;
+    ISURLBagBackend *_bagBackend;
+    NSString *_bagBackendKey;
     NSArray *_guidPatterns;
     NSSet *_guidSchemes;
     NSDictionary *_headerPatterns;
@@ -32,6 +33,7 @@
 
 + (BOOL)_allowUnsignedBags;
 + (void)_loadItemKindURLBagKeyMap;
++ (id)_sharedBagBackend;
 + (id)copyExtraHeadersForURL:(id)arg1 inBagContext:(id)arg2;
 + (id)networkConstraintsForDownloadKind:(id)arg1 inBagContext:(id)arg2;
 + (BOOL)shouldSendGUIDForURL:(id)arg1 inBagContext:(id)arg2;
@@ -40,17 +42,17 @@
 + (id)urlForKey:(id)arg1 inBagContext:(id)arg2;
 + (BOOL)urlIsTrusted:(id)arg1 inBagContext:(id)arg2;
 + (id)valueForKey:(id)arg1 inBagContext:(id)arg2;
+- (void).cxx_destruct;
 - (id)URLForURL:(id)arg1 clientIdentifier:(id)arg2;
-- (id)_copyGUIDPatternsFromDictionary:(id)arg1;
-- (id)_copyGUIDSchemesFromDictionary:(id)arg1;
-- (id)_copyHeaderPatternsFromDictionary:(id)arg1;
+- (id)_copyGUIDPatternsFromBagBackend;
+- (id)_copyGUIDSchemesFromBagBackend;
+- (id)_copyHeaderPatternsFromBagBackend;
 - (id)_networkConstraintsCachePath;
 - (void)_preprocessURLResolutionCacheDictionary:(id)arg1;
-- (void)_setDictionary:(id)arg1;
+- (void)_setBagBackendWithDictionary:(id)arg1;
 - (void)_writeNetworkConstraintsCacheFile;
 - (void)_writeURLResolutionCacheFile;
 - (id)copyExtraHeadersForURL:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)initWithContentsOfFile:(id)arg1;
 - (id)initWithRawDictionary:(id)arg1;

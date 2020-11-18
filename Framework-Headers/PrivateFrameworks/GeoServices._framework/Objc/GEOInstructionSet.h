@@ -8,13 +8,16 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOFormattedString, GEOGenericInstruction, GEOTransitListInstruction, GEOTransitSignInstruction;
+@class GEODrivingWalkingInstruction, GEODrivingWalkingSpokenInstruction, GEOFormattedString, GEOGenericInstruction, GEOTransitListInstruction, GEOTransitSignInstruction;
 @protocol GEOServerFormattedString;
 
 @interface GEOInstructionSet : PBCodable <NSCopying>
 {
     GEOFormattedString *_countStopsText;
     GEOFormattedString *_departureBar;
+    GEODrivingWalkingInstruction *_drivingWalkingListInstruction;
+    GEODrivingWalkingInstruction *_drivingWalkingSignInstruction;
+    GEODrivingWalkingSpokenInstruction *_drivingWalkingSpokenInstruction;
     GEOGenericInstruction *_genericInstruction;
     GEOTransitListInstruction *_transitListInstruction;
     GEOTransitSignInstruction *_transitSignInstruction;
@@ -24,9 +27,15 @@
 @property (strong, nonatomic) GEOFormattedString *countStopsText; // @synthesize countStopsText=_countStopsText;
 @property (strong, nonatomic) GEOFormattedString *departureBar; // @synthesize departureBar=_departureBar;
 @property (readonly, nonatomic) id<GEOServerFormattedString> departureBarFormattedString;
+@property (strong, nonatomic) GEODrivingWalkingInstruction *drivingWalkingListInstruction; // @synthesize drivingWalkingListInstruction=_drivingWalkingListInstruction;
+@property (strong, nonatomic) GEODrivingWalkingInstruction *drivingWalkingSignInstruction; // @synthesize drivingWalkingSignInstruction=_drivingWalkingSignInstruction;
+@property (strong, nonatomic) GEODrivingWalkingSpokenInstruction *drivingWalkingSpokenInstruction; // @synthesize drivingWalkingSpokenInstruction=_drivingWalkingSpokenInstruction;
 @property (strong, nonatomic) GEOGenericInstruction *genericInstruction; // @synthesize genericInstruction=_genericInstruction;
 @property (readonly, nonatomic) BOOL hasCountStopsText;
 @property (readonly, nonatomic) BOOL hasDepartureBar;
+@property (readonly, nonatomic) BOOL hasDrivingWalkingListInstruction;
+@property (readonly, nonatomic) BOOL hasDrivingWalkingSignInstruction;
+@property (readonly, nonatomic) BOOL hasDrivingWalkingSpokenInstruction;
 @property (readonly, nonatomic) BOOL hasGenericInstruction;
 @property (readonly, nonatomic) BOOL hasTransitListInstruction;
 @property (readonly, nonatomic) BOOL hasTransitSignInstruction;

@@ -23,11 +23,16 @@
 
 - (void).cxx_destruct;
 - (void)_commonCAMTimerButtonInitialization;
+- (id)_currentGlyphImage;
+- (void)_updateCurrentGlyphImage;
 - (id)headerView;
-- (id)hiddenIndexesWhileCollapsed;
-- (id)initWithExpansionOrientation:(long long)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithLayoutStyle:(long long)arg1;
 - (long long)numberOfMenuItems;
+- (double)padHeaderViewContentInsetLeft;
+- (void)reloadData;
 - (void)setDuration:(long long)arg1 animated:(BOOL)arg2;
+- (id)shownIndexesWhileCollapsed;
 - (id)titleForMenuItemAtIndex:(long long)arg1;
 
 @end

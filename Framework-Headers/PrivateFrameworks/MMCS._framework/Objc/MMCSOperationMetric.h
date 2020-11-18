@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 @property double queueing; // @synthesize queueing=_queueing;
 @property (strong, nonatomic) NSMutableArray *ranges; // @synthesize ranges=_ranges;
 @property (readonly) NSArray *rangesCopy;
-@property (strong) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

@@ -7,16 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <SafariServices/RequestDesktopSiteUIProcessListener-Protocol.h>
+#import <SafariServices/SFContentBlockerManagerObserver-Protocol.h>
 
 @class NSMutableSet, NSString, WBUInjectedJavaScriptController, WKWebView, _WKRemoteObjectInterface;
 @protocol RequestDesktopSiteWebProcessPlugInListener;
 
-@interface _SFReloadOptionsController : NSObject <RequestDesktopSiteUIProcessListener>
+@interface _SFReloadOptionsController : NSObject <RequestDesktopSiteUIProcessListener, SFContentBlockerManagerObserver>
 {
     _WKRemoteObjectInterface *_requestDesktopSiteUIProcessPlugInListenerInterface;
     id<RequestDesktopSiteWebProcessPlugInListener> _requestDesktopSiteWebProcessPlugInListener;
     NSMutableSet *_domainsNeedingDesktopUserAgent;
-    id _contentBlockersContext;
     WKWebView *_webView;
     BOOL _hasEnabledContentBlockers;
     WBUInjectedJavaScriptController *_activityJSController;
@@ -32,6 +32,7 @@
 
 - (void).cxx_destruct;
 - (void)_checkForContentBlockers;
+- (void)contentBlockerManagerExtensionListDidChange:(id)arg1;
 - (void)dealloc;
 - (void)didMarkURLAsNeedingDesktopUserAgent:(id)arg1;
 - (id)init;

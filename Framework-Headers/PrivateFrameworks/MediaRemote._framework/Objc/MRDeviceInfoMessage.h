@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) MRDeviceInfo *deviceInfo;
 
 - (void)dealloc;
+- (unsigned long long)encryptionType;
 - (id)initWithDeviceInfo:(id)arg1;
 - (unsigned long long)type;
 

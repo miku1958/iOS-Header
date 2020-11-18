@@ -6,13 +6,9 @@
 
 #import <SAObjects/SACFAbstractClientCommandCompleted.h>
 
-@class NSString;
-
 @interface SACFProviderCompleted : SACFAbstractClientCommandCompleted
 {
 }
-
-@property (copy, nonatomic) NSString *results;
 
 + (id)providerCompleted;
 + (id)providerCompletedWithDictionary:(id)arg1 context:(id)arg2;

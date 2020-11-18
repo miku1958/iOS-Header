@@ -6,7 +6,7 @@
 
 #import <SceneKit/JSExport-Protocol.h>
 
-@class CAAnimation, NSArray, NSString, SCNGeometry, SCNGeometryElement, SCNGeometrySource, SCNMaterial, SCNMutableGeometry;
+@class CAAnimation, MDLMesh, NSArray, NSString, SCNGeometryElement, SCNGeometrySource, SCNMaterial;
 
 @protocol SCNGeometryJSExport <JSExport>
 
@@ -14,12 +14,15 @@
 @property (strong, nonatomic) SCNGeometrySource *edgeCreasesSource;
 @property (strong, nonatomic) SCNMaterial *firstMaterial;
 @property (readonly, nonatomic) long long geometryElementCount;
+@property (readonly, nonatomic) NSArray *geometryElements;
+@property (readonly, nonatomic) NSArray *geometrySources;
 @property (copy, nonatomic) NSArray *levelsOfDetail;
 @property (copy, nonatomic) NSArray *materials;
 @property (copy, nonatomic) NSString *name;
 @property (nonatomic) unsigned long long subdivisionLevel;
 
 + (id)geometry;
++ (id)geometryWithMDLMesh:(MDLMesh *)arg1;
 + (id)geometryWithSources:(NSArray *)arg1 elements:(NSArray *)arg2;
 - (void)addAnimation:(CAAnimation *)arg1 forKey:(NSString *)arg2;
 - (CAAnimation *)animationForKey:(NSString *)arg1;
@@ -30,9 +33,7 @@
 - (id)getBoundingBox;
 - (id)getBoundingSphere;
 - (void)insertMaterial:(SCNMaterial *)arg1 atIndex:(unsigned long long)arg2;
-- (SCNGeometry *)interleavedCopy;
 - (SCNMaterial *)materialWithName:(NSString *)arg1;
-- (SCNMutableGeometry *)mutableCopy;
 - (void)pauseAnimationForKey:(NSString *)arg1;
 - (void)removeAllAnimations;
 - (void)removeAnimationForKey:(NSString *)arg1;

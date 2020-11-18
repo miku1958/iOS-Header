@@ -32,12 +32,13 @@
 @property (readonly) unsigned long long hash;
 @property (copy) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong) id<SFCompanionServiceManagerProtocol> managerProxy; // @synthesize managerProxy=_managerProxy;
-@property NSObject<OS_dispatch_semaphore> *managerSemaphore; // @synthesize managerSemaphore=_managerSemaphore;
+@property (strong) NSObject<OS_dispatch_semaphore> *managerSemaphore; // @synthesize managerSemaphore=_managerSemaphore;
 @property (strong) NSMutableDictionary *services; // @synthesize services=_services;
 @property (strong) NSMutableDictionary *streamHandlers; // @synthesize streamHandlers=_streamHandlers;
 @property (readonly) Class superclass;
 
 + (id)serviceManager;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)disableStreamSupportForIdentifier:(id)arg1;
 - (void)getStreamsForData:(id)arg1 withStreamHandler:(CDUnknownBlockType)arg2;

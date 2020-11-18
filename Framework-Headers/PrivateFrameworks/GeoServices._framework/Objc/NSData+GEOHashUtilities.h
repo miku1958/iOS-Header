@@ -7,7 +7,10 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (GEOHashUtilities)
++ (id)_geo_dataForHexString:(id)arg1;
 - (id)_geo_MD5Hash;
+- (id)_geo_SHA1Hash;
+- (id)_geo_hexString;
 - (id)_geo_uppercaseMD5HashString;
 @end
 

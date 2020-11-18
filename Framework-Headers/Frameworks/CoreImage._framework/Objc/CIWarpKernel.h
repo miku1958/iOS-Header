@@ -14,7 +14,6 @@
 - (id)_initWithDict:(id)arg1;
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 arguments:(id)arg3;
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 arguments:(id)arg3 options:(id)arg4;
-- (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 cpuCallback:(CDUnknownBlockType)arg3 colorManagement:(BOOL)arg4 andArguments:(id)arg5;
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 inputImage:(id)arg3 arguments:(id)arg4;
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 inputImage:(id)arg3 arguments:(id)arg4 options:(id)arg5;
 - (struct CGRect)autogenerateROI:(struct WarpKernel *)arg1 args:(struct SerialObjectPtrArray *)arg2 arguments:(id)arg3 extent:(struct CGRect)arg4;

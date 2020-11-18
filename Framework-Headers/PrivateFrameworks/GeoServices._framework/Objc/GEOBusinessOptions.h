@@ -33,6 +33,8 @@
 @property (nonatomic) int maxBusinessResults; // @synthesize maxBusinessResults=_maxBusinessResults;
 @property (strong, nonatomic) NSMutableArray *photoOptions; // @synthesize photoOptions=_photoOptions;
 
++ (Class)attributeKeyType;
++ (Class)photoOptionsType;
 - (void)addAttributeKey:(id)arg1;
 - (void)addPhotoOptions:(id)arg1;
 - (id)attributeKeyAtIndex:(unsigned long long)arg1;

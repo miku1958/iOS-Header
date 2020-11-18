@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUAlbumListViewControllerPhoneSpec.h>
+#import <PhotosUI/PUAlbumListViewControllerCommonImagePickerSpec.h>
 
-@interface PUAlbumListViewControllerPadImagePickerSpec : PUAlbumListViewControllerPhoneSpec
+@interface PUAlbumListViewControllerPadImagePickerSpec : PUAlbumListViewControllerCommonImagePickerSpec
 {
 }
 
+- (id)albumViewControllerSpec;
 - (id)gridViewControllerSpec;
 
 @end

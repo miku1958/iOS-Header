@@ -10,6 +10,7 @@
 
 @class CKDPIdentifier, CKDPLocale, NSData, NSString;
 
+__attribute__((visibility("hidden")))
 @interface CKDPRequestOperationHeader : PBCodable <NSCopying>
 {
     unsigned long long _applicationConfigVersion;
@@ -102,15 +103,23 @@
 @property (strong, nonatomic) NSString *userToken; // @synthesize userToken=_userToken;
 
 - (void).cxx_destruct;
-- (id)_prettyDictionaryRepresentation;
+- (int)StringAsApplicationContainerEnvironment:(id)arg1;
+- (int)StringAsIsolationLevel:(id)arg1;
+- (int)StringAsTargetDatabase:(id)arg1;
+- (id)_applicationContainerEnvironmentCKLogValue;
+- (id)_isolationLevelCKLogValue;
+- (id)_targetDatabaseCKLogValue;
+- (id)applicationContainerEnvironmentAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)isolationLevelAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)targetDatabaseAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

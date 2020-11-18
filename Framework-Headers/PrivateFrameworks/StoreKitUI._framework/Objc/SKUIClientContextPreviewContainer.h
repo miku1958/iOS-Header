@@ -8,12 +8,12 @@
 
 #import <StoreKitUI/SKUIClientContextPreviewContainer-Protocol.h>
 
-@class SKUIClientContext, UIViewController;
+@class SKUIClientContext, SKUIPreviewContainerViewController;
 
 @interface SKUIClientContextPreviewContainer : IKJSObject <SKUIClientContextPreviewContainer>
 {
     SKUIClientContext *_clientContext;
-    UIViewController *_previewContainerViewController;
+    SKUIPreviewContainerViewController *_previewContainerViewController;
 }
 
 - (void).cxx_destruct;

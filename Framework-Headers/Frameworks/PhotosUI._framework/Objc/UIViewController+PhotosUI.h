@@ -16,10 +16,8 @@
 + (void)_pu_ensureLocalAssets:(id)arg1 forReason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)pu_copyAssets:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)pu_currentViewControllerStack;
-+ (BOOL)pu_isSkiingBlackSlope;
 - (void)_pu_animateBottomBarTransition:(id)arg1 withContext:(id)arg2;
 - (void)_pu_performBarsVisibilityUpdatesWithAnimationSettings:(struct PUBarAnimationSettings)arg1 isStatusBarHidden:(BOOL)arg2;
-- (void)_pu_performBottomBarsMorphAnimations;
 - (void)_pu_setNavigationBarVisible:(BOOL)arg1 withAnimationSettings:(struct PUBarAnimationSettings)arg2;
 - (void)_pu_setPreferredStatusBarUpdateAnimation:(long long)arg1;
 - (void)_pu_setTabBarVisible:(BOOL)arg1 withAnimationSettings:(struct PUBarAnimationSettings)arg2;
@@ -27,8 +25,9 @@
 - (void)_pu_updateStatusBarVisibilityWithAnimationSettings:(struct PUBarAnimationSettings)arg1;
 - (void)pu_copyAssets:(id)arg1;
 - (void)pu_ensureLocalAssetsForCloudPhotoSharing:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (BOOL)pu_isViewVisible;
+- (BOOL)pu_isForceTouchEnabled;
 - (void)pu_performBarsVisibilityUpdatesWithAnimationSettings:(struct PUBarAnimationSettings)arg1;
+- (void)pu_performBottomBarsMorphAnimations;
 - (void)pu_setupInitialBarsVisibilityOnViewWillAppearAnimated:(BOOL)arg1;
 @end
 

@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityEntryFieldIsFirstResponder;
 - (BOOL)_accessibilityHandwritingActivateKeyboardReturnKey;
 - (BOOL)_accessibilityHandwritingAttributeAcceptsRawInput;
 - (int)_accessibilityHandwritingAttributeAllowedCharacterSets;
@@ -24,8 +25,8 @@
 - (void)_accessibilityReplaceCharactersAtCursor:(unsigned long long)arg1 withString:(id)arg2;
 - (BOOL)_accessibilitySupportsHandwriting;
 - (void)_resetForFailedPasscode:(BOOL)arg1;
+- (void)_updateStatusTextForBioEvent:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (BOOL)becomeFirstResponder;
-- (void)updateStatusTextForBioEvent:(unsigned long long)arg1 animated:(BOOL)arg2;
 
 @end
 

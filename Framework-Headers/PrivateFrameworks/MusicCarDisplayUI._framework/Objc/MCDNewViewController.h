@@ -6,12 +6,12 @@
 
 #import <MusicCarDisplayUI/MCD_OLD_TableViewController.h>
 
-#import <MusicCarDisplayUI/MCDTimeoutViewDelegate-Protocol.h>
+#import <MusicCarDisplayUI/MCDErrorViewDelegate-Protocol.h>
 #import <MusicCarDisplayUI/UITableViewDelegate-Protocol.h>
 
-@class MCDContentItemTableViewController, MusicStoreBrowseResponse, NSIndexPath, NSString, NSTimer, UIActivityIndicatorView, UIView;
+@class MCDContentItemTableViewController, MPWeakTimer, MusicStoreBrowseResponse, NSIndexPath, NSString, UIActivityIndicatorView, UIView;
 
-@interface MCDNewViewController : MCD_OLD_TableViewController <UITableViewDelegate, MCDTimeoutViewDelegate>
+@interface MCDNewViewController : MCD_OLD_TableViewController <UITableViewDelegate, MCDErrorViewDelegate>
 {
     BOOL _contentLoaded;
     UIView *_MCD_tableView;
@@ -21,7 +21,7 @@
     MusicStoreBrowseResponse *_contentResponse;
     NSIndexPath *_selectedIndexPath;
     MCDContentItemTableViewController *_viewController;
-    NSTimer *_loadingTimer;
+    MPWeakTimer *_loadingTimer;
 }
 
 @property (strong, nonatomic) UIView *MCD_tableView; // @synthesize MCD_tableView=_MCD_tableView;
@@ -31,7 +31,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSTimer *loadingTimer; // @synthesize loadingTimer=_loadingTimer;
+@property (strong, nonatomic) MPWeakTimer *loadingTimer; // @synthesize loadingTimer=_loadingTimer;
 @property (nonatomic) long long modelRevisionID; // @synthesize modelRevisionID=_modelRevisionID;
 @property (strong, nonatomic) UIView *placeholderView; // @synthesize placeholderView=_placeholderView;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath; // @synthesize selectedIndexPath=_selectedIndexPath;
@@ -39,20 +39,20 @@
 @property (strong, nonatomic) MCDContentItemTableViewController *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;
-- (BOOL)_isNetworkTypeAllowed:(long long)arg1;
 - (void)_limitedUIDidChange;
 - (void)_loadContent;
 - (void)_networkTypeDidChangeNotification:(id)arg1;
 - (void)_setCurrentTableView;
 - (void)_showLoadingScreen;
 - (void)_updateViewForNetworkType:(long long)arg1;
+- (void)errorViewDidTapButton:(id)arg1;
 - (id)initWithPlayer:(id)arg1 serviceProvider:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (void)timeoutViewDidPressRetryButton:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

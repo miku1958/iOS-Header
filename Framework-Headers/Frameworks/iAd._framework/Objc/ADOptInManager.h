@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <iAd/ADAdSheetConnectionDelegate-Protocol.h>
 #import <iAd/ADAdSheetProxyDelegate-Protocol.h>
@@ -28,6 +28,7 @@
 - (void)configureConnection:(id)arg1;
 - (void)getiAdIDsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleAccountChange;
+- (void)handlePushNotification:(id)arg1;
 - (id)init;
 - (void)refreshOptInStatus;
 - (void)refreshOptInStatusRefreshingWeakToken:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

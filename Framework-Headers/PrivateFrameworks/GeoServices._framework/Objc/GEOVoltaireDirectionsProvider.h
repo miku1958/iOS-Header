@@ -6,12 +6,12 @@
 
 #import <GeoServices/GEODirectionsProvider.h>
 
-#import <GeoServices/PBRequesterDelegate-Protocol.h>
+#import <GeoServices/GEOPBSessionRequesterDelegate-Protocol.h>
 
 @class GEORequester, NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEOVoltaireDirectionsProvider : GEODirectionsProvider <PBRequesterDelegate>
+@interface GEOVoltaireDirectionsProvider : GEODirectionsProvider <GEOPBSessionRequesterDelegate>
 {
     GEORequester *_requester;
     BOOL _cancelled;

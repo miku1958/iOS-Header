@@ -9,7 +9,7 @@
 #import <MediaRemote/MSVMessageParserDelegate-Protocol.h>
 #import <MediaRemote/NSStreamDelegate-Protocol.h>
 
-@class MRTelevisionMessageQueue, MSVMessageParser, NSInputStream, NSOutputStream, NSRunLoop, NSString;
+@class MRCryptoPairingSession, MRTelevisionMessageQueue, MSVMessageParser, NSInputStream, NSOutputStream, NSRunLoop, NSString;
 @protocol MRTelevisionClientConnectionDelegate;
 
 @interface MRTelevisionClientConnection : NSObject <NSStreamDelegate, MSVMessageParserDelegate>
@@ -17,6 +17,10 @@
     MSVMessageParser *_parser;
     NSRunLoop *_runLoop;
     MRTelevisionMessageQueue *_messageQueue;
+    unsigned long long _firstClientNanoseconds;
+    unsigned long long _firstDeviceTicks;
+    BOOL _disconnected;
+    BOOL _useSSL;
     BOOL _registeredToNowPlayingUpdates;
     BOOL _registeredToNowPlayingArtworkUpdates;
     BOOL _registeredVolumeControlAvailabilityUpdates;
@@ -25,10 +29,10 @@
     NSInputStream *_inputStream;
     NSOutputStream *_outputStream;
     id<MRTelevisionClientConnectionDelegate> _delegate;
-    NSString *_authToken;
+    MRCryptoPairingSession *_cryptoSession;
 }
 
-@property (copy, nonatomic) NSString *authToken; // @synthesize authToken=_authToken;
+@property (strong, nonatomic) MRCryptoPairingSession *cryptoSession; // @synthesize cryptoSession=_cryptoSession;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<MRTelevisionClientConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -41,10 +45,15 @@
 @property (nonatomic) BOOL registeredVolumeControlAvailabilityUpdates; // @synthesize registeredVolumeControlAvailabilityUpdates=_registeredVolumeControlAvailabilityUpdates;
 @property (readonly, nonatomic) BOOL streamsAreValid;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL useSSL; // @synthesize useSSL=_useSSL;
 @property (nonatomic) unsigned int voiceRecordingState; // @synthesize voiceRecordingState=_voiceRecordingState;
 
+- (void)_adjustTimestamp:(id)arg1;
+- (void)_disconnectClient;
 - (void)_flush;
 - (void)_openStream:(id)arg1;
+- (void)_preProcessMessage:(id)arg1 data:(id)arg2;
+- (void)_setQOSPropertiesOnStream:(id)arg1;
 - (void)dealloc;
 - (id)initWithInputStream:(id)arg1 outputStream:(id)arg2 runLoop:(id)arg3;
 - (void)parser:(id)arg1 didParseMessage:(id)arg2;

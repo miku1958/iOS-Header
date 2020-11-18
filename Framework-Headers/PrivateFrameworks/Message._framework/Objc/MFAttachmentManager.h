@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class MFInvocationQueue, NSLock, NSMutableDictionary;
+@class NSLock, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface MFAttachmentManager : NSObject
 {
     NSObject<OS_dispatch_queue> *_arrayAccessQueue;
-    MFInvocationQueue *_attachmentInvocationQueue;
     NSMutableDictionary *_providers;
     NSMutableDictionary *_attachments;
     NSMutableDictionary *_metadata;
@@ -23,24 +22,21 @@
 + (id)allManagers;
 + (id)defaultManager;
 + (id)supportedDocumentUTIs;
-- (void)_callProgressBlockForAttachmentURL:(id)arg1 withBytes:(unsigned long long)arg2 expectedSize:(unsigned long long)arg3;
 - (id)_contentIDForAttachment:(id)arg1;
 - (id)_dataProviderForAttachmentURL:(id)arg1 error:(id *)arg2;
 - (void)_fetchCompletedForAttachment:(id)arg1 error:(id)arg2;
-- (id)_fetchDataForAttachment:(id)arg1 withProvider:(id)arg2;
-- (void)_fetchInvocationCallUsingBlock:(CDUnknownBlockType)arg1;
+- (id)_fetchDataForAttachment:(id)arg1 withProvider:(id)arg2 syncLock:(id *)arg3;
 - (id)_filePathForAttachment:(id)arg1;
-- (BOOL)_setupAttachment:(id)arg1 error:(id *)arg2;
 - (BOOL)_setupAttachment:(id)arg1 withMimeBody:(id)arg2 error:(id *)arg3;
 - (void)addProvider:(id)arg1 forBaseURL:(id)arg2;
 - (id)attachmentForCID:(id)arg1;
 - (id)attachmentForContentID:(id)arg1;
+- (id)attachmentForContentID:(id)arg1 preferredSchemes:(id)arg2;
 - (id)attachmentForData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3 contentID:(id)arg4 context:(id)arg5;
 - (id)attachmentForTextAttachment:(id)arg1 error:(id *)arg2;
 - (id)attachmentForURL:(id)arg1 error:(id *)arg2;
 - (id)attachmentForURL:(id)arg1 withMimeBody:(id)arg2 error:(id *)arg3;
 - (id)attachmentsForContext:(id)arg1;
-- (id)attachmentsForTextAttachments:(id)arg1 error:(id *)arg2;
 - (id)attachmentsForURLs:(id)arg1 error:(id *)arg2;
 - (void)cancelFetchForAttachment:(id)arg1;
 - (void)clearMetadataForAttachment:(id)arg1;

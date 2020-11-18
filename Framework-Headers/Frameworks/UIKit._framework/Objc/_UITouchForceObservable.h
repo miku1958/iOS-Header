@@ -8,7 +8,7 @@
 
 #import <UIKit/NSObserver-Protocol.h>
 
-@class NSObservation, NSString, UIView, _UITouchesObservingGestureRecognizer;
+@class CADisplayLink, NSObservation, NSSet, NSString, UIView, _UITouchesObservingGestureRecognizer;
 
 @interface _UITouchForceObservable : NSObservationSource <NSObserver>
 {
@@ -16,7 +16,8 @@
     long long _observerCount;
     _UITouchesObservingGestureRecognizer *_gestureRecognizer;
     NSObservation *_touchesObservation;
-    BOOL _haveSeenAnyTouches;
+    CADisplayLink *_continuousEvaluationDisplayLink;
+    NSSet *_currentTouches;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,11 +26,14 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_cancelContinuousEvaluation;
 - (void)_didEndHavingAnyObservers;
 - (double)_maximumPossibleForceForTouches:(id)arg1;
 - (BOOL)_shouldFilterDueToSystemGesturesForTouches:(id)arg1;
 - (double)_timestampForTouches:(id)arg1;
+- (id)_touchForceMessageForTouches:(id)arg1;
 - (double)_unclampedTouchForceForTouches:(id)arg1;
+- (void)_updateForContinuousEvaluation:(id)arg1;
 - (void)_willBeginHavingAnyObservers;
 - (id)addObserver:(id)arg1;
 - (void)dealloc;

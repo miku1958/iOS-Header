@@ -4,50 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKit/UIDocumentSharingController.h>
 
-@class NSString, UIImage, _UIResilientRemoteViewContainerViewController, _UIShareInvitationRemoteViewController;
-@protocol _UISharingViewControllerDelegate;
-
-@interface _UISharingViewController : UIViewController
+@interface _UISharingViewController : UIDocumentSharingController
 {
-    BOOL _collaborationUIEnabled;
-    id<_UISharingViewControllerDelegate> __privateDelegate;
-    UIImage *_thumbnail;
-    NSString *_auxiliaryActionTitle;
-    NSString *_mailTemplate;
-    NSString *_messageTemplate;
-    NSString *_mailSubject;
-    NSString *_initialHeaderSubtitle;
-    NSString *_headerSubtitle;
-    NSString *_headerActionTitle;
-    NSString *_appName;
-    _UIResilientRemoteViewContainerViewController *_childViewController;
 }
 
-@property (weak, nonatomic, getter=_privateDelegate, setter=_setPrivateDelegate:) id<_UISharingViewControllerDelegate> _privateDelegate; // @synthesize _privateDelegate=__privateDelegate;
-@property (copy, nonatomic, getter=_appName, setter=_setAppName:) NSString *appName; // @synthesize appName=_appName;
-@property (copy, nonatomic, getter=_auxiliaryActionTitle, setter=_setAuxiliaryActionTitle:) NSString *auxiliaryActionTitle; // @synthesize auxiliaryActionTitle=_auxiliaryActionTitle;
-@property (strong, nonatomic, getter=_childViewController, setter=_setChildViewController:) _UIResilientRemoteViewContainerViewController *childViewController; // @synthesize childViewController=_childViewController;
-@property (nonatomic, getter=_collaborationUIEnabled, setter=_setCollaborationUIEnabled:) BOOL collaborationUIEnabled; // @synthesize collaborationUIEnabled=_collaborationUIEnabled;
-@property (weak, nonatomic) id<_UISharingViewControllerDelegate> delegate;
-@property (copy, nonatomic, getter=_headerActionTitle, setter=_setHeaderActionTitle:) NSString *headerActionTitle; // @synthesize headerActionTitle=_headerActionTitle;
-@property (copy, nonatomic, getter=_headerSubtitle, setter=_setHeaderSubtitle:) NSString *headerSubtitle; // @synthesize headerSubtitle=_headerSubtitle;
-@property (copy, nonatomic, getter=_initialHeaderSubtitle, setter=_setInitialHeaderSubtitle:) NSString *initialHeaderSubtitle; // @synthesize initialHeaderSubtitle=_initialHeaderSubtitle;
-@property (copy, nonatomic, getter=_mailSubject, setter=_setMailSubject:) NSString *mailSubject; // @synthesize mailSubject=_mailSubject;
-@property (copy, nonatomic, getter=_mailTemplate, setter=_setMailTemplate:) NSString *mailTemplate; // @synthesize mailTemplate=_mailTemplate;
-@property (copy, nonatomic, getter=_messageTemplate, setter=_setMessageTemplate:) NSString *messageTemplate; // @synthesize messageTemplate=_messageTemplate;
-@property (readonly, nonatomic, getter=_remoteViewController) _UIShareInvitationRemoteViewController *remoteViewController;
-@property (copy, nonatomic, getter=_thumbnail, setter=_setThumbnail:) UIImage *thumbnail; // @synthesize thumbnail=_thumbnail;
-
-- (void).cxx_destruct;
-- (void)_performAuxiliaryActionWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_performHeaderActionWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_setMailSubject:(id)arg1 template:(id)arg2;
-- (void)_shareDidChange;
-- (void)_shareWasMadePrivate;
-- (void)dealloc;
+- (id)delegate;
 - (id)initWithURL:(id)arg1;
+- (void)setDelegate:(id)arg1;
 
 @end
 

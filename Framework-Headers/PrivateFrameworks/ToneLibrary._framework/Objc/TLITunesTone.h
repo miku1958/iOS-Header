@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSNumber, NSString;
 
@@ -23,30 +23,19 @@
     NSDictionary *_playbackProperties;
 }
 
-@property (copy, nonatomic) NSString *artworkFile; // @synthesize artworkFile=_artworkFile;
-@property (nonatomic) unsigned long long duration; // @synthesize duration=_duration;
-@property (copy, nonatomic) NSString *filePath; // @synthesize filePath=_filePath;
-@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (copy, nonatomic) NSNumber *pid; // @synthesize pid=_pid;
-@property (copy, nonatomic) NSDictionary *playbackProperties; // @synthesize playbackProperties=_playbackProperties;
-@property (nonatomic, getter=isPrivate) BOOL private; // @synthesize private=_private;
-@property (nonatomic, getter=isProtected) BOOL protected; // @synthesize protected=_protected;
-@property (nonatomic, getter=isPurchased) BOOL purchased; // @synthesize purchased=_purchased;
-@property (nonatomic, getter=isRingtone) BOOL ringtone; // @synthesize ringtone=_ringtone;
+@property (readonly, nonatomic) NSString *artworkFile; // @synthesize artworkFile=_artworkFile;
+@property (readonly, nonatomic) unsigned long long duration; // @synthesize duration=_duration;
+@property (readonly, nonatomic) NSString *filePath; // @synthesize filePath=_filePath;
+@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) NSNumber *pid; // @synthesize pid=_pid;
+@property (readonly, nonatomic) NSDictionary *playbackProperties; // @synthesize playbackProperties=_playbackProperties;
+@property (readonly, nonatomic, getter=isPrivate) BOOL private; // @synthesize private=_private;
+@property (readonly, nonatomic, getter=isProtected) BOOL protected; // @synthesize protected=_protected;
+@property (readonly, nonatomic, getter=isPurchased) BOOL purchased; // @synthesize purchased=_purchased;
+@property (readonly, nonatomic, getter=isRingtone) BOOL ringtone; // @synthesize ringtone=_ringtone;
 
-- (void)_setArtworkFile:(id)arg1;
-- (void)_setDuration:(unsigned long long)arg1;
-- (void)_setFilePath:(id)arg1;
-- (void)_setIdentifier:(id)arg1;
-- (void)_setName:(id)arg1;
-- (void)_setPid:(id)arg1;
-- (void)_setPlaybackProperties:(id)arg1;
-- (void)_setPrivate:(BOOL)arg1;
-- (void)_setProtected:(BOOL)arg1;
-- (void)_setPurchased:(BOOL)arg1;
-- (void)_setRingtone:(BOOL)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithPropertyListRepresentation:(id)arg1 filePath:(id)arg2;
 
 @end

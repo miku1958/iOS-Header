@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDictionary, NSString;
+@class CSSearchQueryContext, NSString;
 @protocol MDSearchQueryResultProcessor;
 
 @protocol MDSearchQueryService
 - (void)cancelWithCompletionHandler:(void (^)(void))arg1;
-- (void)startQueryForQueryString:(NSString *)arg1 options:(NSDictionary *)arg2 resultProcessor:(id<MDSearchQueryResultProcessor>)arg3 limitToBundleID:(NSString *)arg4 completionHandler:(void (^)(NSError *))arg5;
+- (void)startQuery:(NSString *)arg1 withQueryContext:(CSSearchQueryContext *)arg2 resultProcessor:(id<MDSearchQueryResultProcessor>)arg3 completionHandler:(void (^)(void))arg4;
 @end
 

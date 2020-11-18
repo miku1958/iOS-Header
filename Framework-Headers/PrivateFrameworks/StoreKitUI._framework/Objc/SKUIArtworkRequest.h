@@ -27,6 +27,7 @@
 - (void).cxx_destruct;
 - (BOOL)cachesInMemory;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)finishWithResource:(id)arg1;
 - (id)newLoadOperation;
 

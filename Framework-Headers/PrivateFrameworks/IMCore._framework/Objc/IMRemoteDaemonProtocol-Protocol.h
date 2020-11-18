@@ -19,6 +19,7 @@
 - (void)autoLoginActiveAccountsIfNecessary;
 - (void)autoReconnectAccount:(NSString *)arg1;
 - (void)cancelVCRequestWithPerson:(NSString *)arg1 properties:(NSDictionary *)arg2 conference:(NSString *)arg3 account:(NSString *)arg4;
+- (void)cancelVCRequestWithPerson:(NSString *)arg1 properties:(NSDictionary *)arg2 conference:(NSString *)arg3 reason:(NSNumber *)arg4 account:(NSString *)arg5;
 - (void)changeGroup:(NSString *)arg1 changes:(NSDictionary *)arg2 account:(NSString *)arg3;
 - (void)changeGroups:(NSDictionary *)arg1 account:(NSString *)arg2;
 - (void)changeMyStatus:(NSDictionary *)arg1 forAccount:(NSString *)arg2;
@@ -28,9 +29,12 @@
 - (void)cleanupAttachments;
 - (void)clearHistoryForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 beforeGUID:(NSString *)arg4 afterGUID:(NSString *)arg5 chatID:(NSString *)arg6 queryID:(NSString *)arg7;
 - (void)deactivateAccounts:(NSArray *)arg1;
+- (void)debugUpdateGroupParticipantversion:(unsigned long long)arg1 chatIdentifier:(NSString *)arg2;
 - (void)declineInvitationToChatID:(NSString *)arg1 identifier:(NSString *)arg2 style:(unsigned char)arg3 account:(NSString *)arg4;
 - (void)deleteFileTransferWithGUID:(NSString *)arg1;
 - (void)deleteMessageWithGUIDs:(NSArray *)arg1 queryID:(NSString *)arg2;
+- (void)downloadStickerPackWithGUID:(NSString *)arg1 isIncomingMessage:(BOOL)arg2 ignoreCache:(BOOL)arg3;
+- (void)downloadStickerWithGUID:(NSString *)arg1;
 - (void)enrollDeviceForSMSRelay:(NSString *)arg1 account:(NSString *)arg2;
 - (void)enrollSelfDeviceForSMSRelay:(NSString *)arg1;
 - (void)fileTransfer:(NSString *)arg1 acceptedWithPath:(NSString *)arg2 autoRename:(BOOL)arg3 overwrite:(BOOL)arg4;
@@ -54,8 +58,10 @@
 - (void)loginAllAccounts;
 - (void)logoutAccount:(NSString *)arg1;
 - (void)logoutAllAccounts;
-- (void)markAsSpamForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3;
+- (void)markAsSpamForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 chatID:(NSString *)arg4 queryID:(NSString *)arg5 autoReport:(BOOL)arg6;
+- (BOOL)markAttachment:(NSString *)arg1 sender:(NSString *)arg2 recipients:(NSArray *)arg3 isIncoming:(BOOL)arg4;
 - (void)markHasHadSuccessfulQueryForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3;
+- (void)markPlayedExpressiveSendForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 message:(IMMessageItem *)arg4;
 - (void)markPlayedForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 message:(IMMessageItem *)arg4;
 - (void)markPlayedForMessageGUID:(NSString *)arg1;
 - (void)markReadForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 messages:(NSArray *)arg4 clientUnreadCount:(unsigned long long)arg5;
@@ -84,6 +90,7 @@
 - (void)respondToVCInvitationWithPerson:(NSString *)arg1 properties:(NSDictionary *)arg2 conference:(NSString *)arg3 account:(NSString *)arg4;
 - (void)resumeBuddyUpdatesAccount:(NSString *)arg1;
 - (void)sendAVMessageToPerson:(NSString *)arg1 sessionID:(unsigned int)arg2 type:(unsigned int)arg3 userInfo:(NSDictionary *)arg4 conference:(NSString *)arg5 account:(NSString *)arg6;
+- (void)sendBalloonPayload:(NSData *)arg1 attachments:(NSArray *)arg2 withMessageGUID:(NSString *)arg3 bundleID:(NSString *)arg4;
 - (void)sendCommand:(NSNumber *)arg1 withProperties:(NSDictionary *)arg2 toPerson:(NSString *)arg3 account:(NSString *)arg4;
 - (void)sendCommand:(NSNumber *)arg1 withProperties:(NSDictionary *)arg2 toPerson:(NSString *)arg3 account:(NSString *)arg4 toChatID:(NSString *)arg5 identifier:(NSString *)arg6 style:(unsigned char)arg7;
 - (void)sendCounterProposalToPerson:(NSString *)arg1 properties:(NSDictionary *)arg2 conference:(NSString *)arg3 account:(NSString *)arg4;
@@ -108,11 +115,12 @@
 - (void)startWatchingBuddy:(NSString *)arg1 account:(NSString *)arg2;
 - (void)stopWatchingBuddy:(NSString *)arg1 account:(NSString *)arg2;
 - (void)storeItem:(IMItem *)arg1 inChatGUID:(NSString *)arg2;
-- (void)terminate;
+- (void)terminateForcingIfNeeded:(BOOL)arg1;
 - (void)unEnrollDeviceForSMSRelay:(NSString *)arg1 account:(NSString *)arg2;
 - (void)unregisterAccount:(NSString *)arg1;
 - (void)unvalidateAliases:(NSArray *)arg1 account:(NSString *)arg2;
 - (void)updateAuthorizationCredentials:(NSString *)arg1 token:(NSString *)arg2 account:(NSString *)arg3;
+- (void)updateBalloonPayload:(NSData *)arg1 attachments:(NSArray *)arg2 forMessageGUID:(NSString *)arg3;
 - (void)updateMessage:(IMMessageItem *)arg1;
 - (void)updateUnformattedID:(NSString *)arg1 forBuddyID:(NSString *)arg2 onService:(NSString *)arg3;
 - (void)validateAliases:(NSArray *)arg1 account:(NSString *)arg2;

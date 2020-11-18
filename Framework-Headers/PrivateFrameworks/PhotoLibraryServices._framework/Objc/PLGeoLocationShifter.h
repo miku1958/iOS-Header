@@ -24,7 +24,7 @@
 @property (nonatomic) id<PLGeoLocationShifterDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL hasWork;
 
-+ (BOOL)isLocationShiftRequiredForCoordinate:(CDStruct_c3b9c2ee)arg1;
++ (BOOL)isLocationShiftRequiredForCoordinate:(struct CLLocationCoordinate2D)arg1;
 + (unsigned int)locationShiftFunctionVersion;
 - (void)_beginBatch:(id)arg1;
 - (void)_completeBatchIfReady;

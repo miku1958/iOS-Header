@@ -9,6 +9,8 @@
 @class CUCaptureController;
 
 @protocol CAMZoomDelegate <NSObject>
+- (void)captureController:(CUCaptureController *)arg1 didChangeRampingVideoZoom:(BOOL)arg2;
+- (void)captureController:(CUCaptureController *)arg1 didOutputMinAvailableVideoZoomFactor:(double)arg2;
 - (void)captureController:(CUCaptureController *)arg1 didOutputVideoZoomFactor:(double)arg2;
 @end
 

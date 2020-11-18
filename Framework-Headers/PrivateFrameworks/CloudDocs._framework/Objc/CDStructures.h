@@ -17,8 +17,6 @@ struct BRXPCSyncProxy {
     id _field2;
     id _field3;
     id _field4;
-    id _field5;
-    int _field6;
 };
 
 struct CGSize {

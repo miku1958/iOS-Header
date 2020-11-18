@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _isPlayerLoadingAllowedDidChange;
     BOOL _avPlayerDidChange;
     BOOL _playerItemDidChange;
+    BOOL _errorDidChange;
     BOOL _isAtBeginningDidChange;
     BOOL _isAtEndDidChange;
     BOOL _isStalledDidChange;
@@ -23,31 +24,20 @@ __attribute__((visibility("hidden")))
     BOOL _isPlayableDidChange;
 }
 
-@property (nonatomic) BOOL avPlayerDidChange; // @synthesize avPlayerDidChange=_avPlayerDidChange;
-@property (nonatomic) BOOL desiredPlayStateDidChange; // @synthesize desiredPlayStateDidChange=_desiredPlayStateDidChange;
-@property (nonatomic) BOOL isActivatedDidChange; // @synthesize isActivatedDidChange=_isActivatedDidChange;
-@property (nonatomic) BOOL isAtBeginningDidChange; // @synthesize isAtBeginningDidChange=_isAtBeginningDidChange;
-@property (nonatomic) BOOL isAtEndDidChange; // @synthesize isAtEndDidChange=_isAtEndDidChange;
-@property (nonatomic) BOOL isPlayableDidChange; // @synthesize isPlayableDidChange=_isPlayableDidChange;
-@property (nonatomic) BOOL isPlayerLoadingAllowedDidChange; // @synthesize isPlayerLoadingAllowedDidChange=_isPlayerLoadingAllowedDidChange;
-@property (nonatomic) BOOL isPlayingAllowedDidChange; // @synthesize isPlayingAllowedDidChange=_isPlayingAllowedDidChange;
-@property (nonatomic) BOOL isStalledDidChange; // @synthesize isStalledDidChange=_isStalledDidChange;
-@property (nonatomic) BOOL playStateDidChange; // @synthesize playStateDidChange=_playStateDidChange;
-@property (nonatomic) BOOL playerItemDidChange; // @synthesize playerItemDidChange=_playerItemDidChange;
-@property (nonatomic) BOOL shouldRespectMuteSwitchDidChange; // @synthesize shouldRespectMuteSwitchDidChange=_shouldRespectMuteSwitchDidChange;
+@property (nonatomic, setter=_setAVPlayerDidChange:) BOOL avPlayerDidChange; // @synthesize avPlayerDidChange=_avPlayerDidChange;
+@property (nonatomic, setter=_setDesiredPlayStateDidChange:) BOOL desiredPlayStateDidChange; // @synthesize desiredPlayStateDidChange=_desiredPlayStateDidChange;
+@property (nonatomic, setter=_setErrorDidChange:) BOOL errorDidChange; // @synthesize errorDidChange=_errorDidChange;
+@property (nonatomic, setter=_setActivatedDidChange:) BOOL isActivatedDidChange; // @synthesize isActivatedDidChange=_isActivatedDidChange;
+@property (nonatomic, setter=_setAtBeginningDidChange:) BOOL isAtBeginningDidChange; // @synthesize isAtBeginningDidChange=_isAtBeginningDidChange;
+@property (nonatomic, setter=_setAtEndDidChange:) BOOL isAtEndDidChange; // @synthesize isAtEndDidChange=_isAtEndDidChange;
+@property (nonatomic, setter=_setPlayableDidChange:) BOOL isPlayableDidChange; // @synthesize isPlayableDidChange=_isPlayableDidChange;
+@property (nonatomic, setter=_setPlayerLoadingAllowedDidChange:) BOOL isPlayerLoadingAllowedDidChange; // @synthesize isPlayerLoadingAllowedDidChange=_isPlayerLoadingAllowedDidChange;
+@property (nonatomic, setter=_setPlayingAllowedDidChange:) BOOL isPlayingAllowedDidChange; // @synthesize isPlayingAllowedDidChange=_isPlayingAllowedDidChange;
+@property (nonatomic, setter=_setStalledDidChange:) BOOL isStalledDidChange; // @synthesize isStalledDidChange=_isStalledDidChange;
+@property (nonatomic, setter=_setPlayStateDidChange:) BOOL playStateDidChange; // @synthesize playStateDidChange=_playStateDidChange;
+@property (nonatomic, setter=_setPlayerItemDidChange:) BOOL playerItemDidChange; // @synthesize playerItemDidChange=_playerItemDidChange;
+@property (nonatomic, setter=_setShouldRespectMuteSwitchDidChange:) BOOL shouldRespectMuteSwitchDidChange; // @synthesize shouldRespectMuteSwitchDidChange=_shouldRespectMuteSwitchDidChange;
 
-- (void)_setAVPlayerDidChange:(BOOL)arg1;
-- (void)_setActivatedDidChange:(BOOL)arg1;
-- (void)_setAtBeginningDidChange:(BOOL)arg1;
-- (void)_setAtEndDidChange:(BOOL)arg1;
-- (void)_setDesiredPlayStateDidChange:(BOOL)arg1;
-- (void)_setPlayStateDidChange:(BOOL)arg1;
-- (void)_setPlayableDidChange:(BOOL)arg1;
-- (void)_setPlayerItemDidChange:(BOOL)arg1;
-- (void)_setPlayerLoadingAllowedDidChange:(BOOL)arg1;
-- (void)_setPlayingAllowedDidChange:(BOOL)arg1;
-- (void)_setShouldRespectMuteSwitchDidChange:(BOOL)arg1;
-- (void)_setStalledDidChange:(BOOL)arg1;
 - (BOOL)hasChanges;
 
 @end

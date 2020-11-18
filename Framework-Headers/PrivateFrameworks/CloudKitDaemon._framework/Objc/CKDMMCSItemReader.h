@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKitDaemon/CKDMMCSItemReaderProtocol-Protocol.h>
+#import <CloudKitDaemon/CKDMMCSItemReaderWriterProtocol-Protocol.h>
 
 @class CKDMMCSItem, CKDMMCSItemGroupContext, NSFileHandle, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKDMMCSItemReader : NSObject <CKDMMCSItemReaderProtocol>
+@interface CKDMMCSItemReader : NSObject <CKDMMCSItemReaderWriterProtocol>
 {
     CKDMMCSItemGroupContext *_MMCSRequest;
     CKDMMCSItem *_MMCSItem;
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithMMCSItem:(id)arg1 MMCSRequest:(id)arg2;
 - (BOOL)openWithError:(id *)arg1;
 - (BOOL)readBytesAtOffset:(unsigned long long)arg1 bytes:(char *)arg2 length:(unsigned long long)arg3 bytesRead:(unsigned long long *)arg4 error:(id *)arg5;
+- (BOOL)writeBytesAtOffset:(unsigned long long)arg1 bytes:(char *)arg2 length:(unsigned long long)arg3 bytesWritten:(unsigned long long *)arg4 error:(id *)arg5;
 
 @end
 

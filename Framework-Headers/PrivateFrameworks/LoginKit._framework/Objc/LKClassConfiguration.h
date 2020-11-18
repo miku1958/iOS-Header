@@ -18,14 +18,15 @@
     NSArray *_students;
     NSData *_payloadCertificatePersistentID;
     NSArray *_classGroups;
+    NSArray *_instructors;
     NSMutableDictionary *_classesByClassID;
-    NSMutableDictionary *_studentsByStudentIdentifier;
-    NSMutableDictionary *_studentsByStudentUsername;
+    NSMutableDictionary *_usersWithAppleIDByIdentifier;
+    NSMutableDictionary *_usersByUsername;
     NSMutableDictionary *_classesByClassGroupName;
     NSDictionary *_classRosterInformationDictionary;
 }
 
-@property (strong) NSArray *classGroups; // @synthesize classGroups=_classGroups;
+@property (strong, nonatomic) NSArray *classGroups; // @synthesize classGroups=_classGroups;
 @property (strong) NSDictionary *classRosterInformationDictionary; // @synthesize classRosterInformationDictionary=_classRosterInformationDictionary;
 @property (readonly, copy, nonatomic) NSArray *classes; // @synthesize classes=_classes;
 @property (strong) NSMutableDictionary *classesByClassGroupName; // @synthesize classesByClassGroupName=_classesByClassGroupName;
@@ -33,12 +34,13 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSArray *instructors; // @synthesize instructors=_instructors;
 @property (readonly, nonatomic) NSData *payloadCertificatePersistentID; // @synthesize payloadCertificatePersistentID=_payloadCertificatePersistentID;
 @property (readonly, copy, nonatomic) NSString *schoolName; // @synthesize schoolName=_schoolName;
-@property (readonly, copy, nonatomic) NSArray *students; // @synthesize students=_students;
-@property (strong) NSMutableDictionary *studentsByStudentIdentifier; // @synthesize studentsByStudentIdentifier=_studentsByStudentIdentifier;
-@property (strong) NSMutableDictionary *studentsByStudentUsername; // @synthesize studentsByStudentUsername=_studentsByStudentUsername;
+@property (copy, nonatomic) NSArray *students; // @synthesize students=_students;
 @property (readonly) Class superclass;
+@property (strong) NSMutableDictionary *usersByUsername; // @synthesize usersByUsername=_usersByUsername;
+@property (strong) NSMutableDictionary *usersWithAppleIDByIdentifier; // @synthesize usersWithAppleIDByIdentifier=_usersWithAppleIDByIdentifier;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

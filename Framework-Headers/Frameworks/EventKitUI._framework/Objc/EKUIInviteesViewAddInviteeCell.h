@@ -6,19 +6,15 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSArray, NSLayoutConstraint, NSString, UILabel;
+@class NSArray, NSString, UILabel;
 
 @interface EKUIInviteesViewAddInviteeCell : UITableViewCell
 {
-    double _leftInset;
     UILabel *_simpleTextLabel;
     NSArray *_persistentConstraints;
-    NSLayoutConstraint *_leftInsetConstraint;
     NSString *_simpleText;
 }
 
-@property (nonatomic) double leftInset; // @synthesize leftInset=_leftInset;
-@property (strong, nonatomic) NSLayoutConstraint *leftInsetConstraint; // @synthesize leftInsetConstraint=_leftInsetConstraint;
 @property (strong, nonatomic) NSArray *persistentConstraints; // @synthesize persistentConstraints=_persistentConstraints;
 @property (strong, nonatomic) NSString *simpleText; // @synthesize simpleText=_simpleText;
 @property (strong, nonatomic) UILabel *simpleTextLabel; // @synthesize simpleTextLabel=_simpleTextLabel;

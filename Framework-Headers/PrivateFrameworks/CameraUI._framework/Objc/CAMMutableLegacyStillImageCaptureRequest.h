@@ -17,7 +17,6 @@
 {
 }
 
-@property (copy, nonatomic) NSString *HDREV0PersistenceUUID; // @dynamic HDREV0PersistenceUUID;
 @property (nonatomic) unsigned int assertionIdentifier;
 @property (copy, nonatomic) NSString *burstIdentifier; // @dynamic burstIdentifier;
 @property (nonatomic) long long captureDevice; // @dynamic captureDevice;
@@ -34,6 +33,7 @@
 @property (copy, nonatomic) NSURL *localDestinationURL;
 @property (strong, nonatomic) CLLocation *location;
 @property (nonatomic) unsigned long long maximumBurstLength; // @dynamic maximumBurstLength;
+@property (copy, nonatomic) NSString *originalPersistenceUUID; // @dynamic originalPersistenceUUID;
 @property (nonatomic) long long persistenceOptions;
 @property (copy, nonatomic) NSString *persistenceUUID;
 @property (nonatomic) long long physicalButtonType; // @dynamic physicalButtonType;
@@ -41,6 +41,7 @@
 @property (nonatomic) BOOL shouldExtractDiagnosticsFromMetadata;
 @property (nonatomic) BOOL shouldPersistDiagnosticsToSidecar;
 @property (readonly) Class superclass;
+@property (nonatomic) long long temporaryPersistenceOptions;
 @property (nonatomic, getter=isTransient) BOOL transient; // @dynamic transient;
 @property (nonatomic) BOOL usesStillImageStabilization; // @dynamic usesStillImageStabilization;
 @property (nonatomic) BOOL wantsAudioForCapture; // @dynamic wantsAudioForCapture;
@@ -48,7 +49,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (void)setCapturedFromPhotoBooth:(BOOL)arg1;
-- (void)setParameter:(id)arg1 forKey:(id)arg2;
 
 @end
 

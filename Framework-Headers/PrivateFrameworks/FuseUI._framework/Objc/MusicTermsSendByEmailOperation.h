@@ -15,9 +15,9 @@
 }
 
 @property (readonly, copy) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
-@property (readonly) NSError *error;
 
 - (void).cxx_destruct;
+- (id)error;
 - (id)initWithEmailAddress:(id)arg1;
 - (void)main;
 

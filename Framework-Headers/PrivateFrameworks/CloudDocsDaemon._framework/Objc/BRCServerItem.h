@@ -8,15 +8,15 @@
 
 #import <CloudDocsDaemon/BRCItem-Protocol.h>
 
-@class BRCAccountSession, BRCItemID, BRCLocalContainer, BRCServerZone, BRCStatInfo, BRCVersion, NSNumber, NSString;
+@class BRCAccountSession, BRCClientZone, BRCItemID, BRCServerZone, BRCStatInfo, BRCVersion, NSNumber, NSString;
 
 @interface BRCServerItem : NSObject <BRCItem>
 {
     BRCAccountSession *_session;
     BRCServerZone *_zone;
-    BRCLocalContainer *_container;
     unsigned long long _sharingOptions;
     BOOL _needsInsert;
+    NSString *_symlinkTarget;
     NSNumber *_ownerKey;
     BRCItemID *_itemID;
     NSString *_originalName;
@@ -24,15 +24,20 @@
     BRCStatInfo *_st;
     BRCVersion *_latestVersion;
     BRCServerZone *_serverZone;
+    BRCClientZone *_clientZone;
 }
 
-@property (readonly, nonatomic) BRCLocalContainer *container; // @synthesize container=_container;
-@property (readonly, nonatomic) BOOL isAlias;
+@property (readonly, nonatomic) BRCClientZone *clientZone; // @synthesize clientZone=_clientZone;
+@property (readonly, nonatomic) BOOL isBRAlias;
 @property (readonly, nonatomic) BOOL isDead;
 @property (readonly, nonatomic) BOOL isDirectory;
 @property (readonly, nonatomic) BOOL isDocument;
+@property (readonly, nonatomic) BOOL isFSRoot;
+@property (readonly, nonatomic) BOOL isFinderBookmark;
 @property (readonly, nonatomic) BOOL isLive;
 @property (readonly, nonatomic) BOOL isPackage;
+@property (readonly, nonatomic) BOOL isSymLink;
+@property (readonly, nonatomic) BOOL isZoneRoot;
 @property (readonly, nonatomic) BRCItemID *itemID; // @synthesize itemID=_itemID;
 @property (readonly, nonatomic) BRCVersion *latestVersion; // @synthesize latestVersion=_latestVersion;
 @property (readonly, nonatomic) NSString *originalName; // @synthesize originalName=_originalName;
@@ -42,15 +47,19 @@
 @property (readonly, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
 @property (nonatomic) unsigned long long sharingOptions; // @synthesize sharingOptions=_sharingOptions;
 @property (readonly, nonatomic) BRCStatInfo *st; // @synthesize st=_st;
+@property (readonly, nonatomic) NSString *symlinkTarget; // @synthesize symlinkTarget=_symlinkTarget;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (unsigned int)_t_pcsChainState;
+- (id)appLibraryForRootItem;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)descriptionWithContext:(id)arg1;
 - (unsigned long long)diffAgainstServerItem:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initFromPQLResultSet:(id)arg1 serverZone:(id)arg2 error:(id *)arg3;
+- (id)initFromPQLResultSet:(id)arg1 session:(id)arg2 error:(id *)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithServerItem:(id)arg1;
 - (id)newLocalItemWithServerZone:(id)arg1 dbRowID:(unsigned long long)arg2;

@@ -24,10 +24,10 @@
 
 @property (nonatomic) struct CGRect bounds; // @dynamic bounds;
 @property (strong) UIView *contentView;
-@property (copy, nonatomic) NSData *contents; // @synthesize contents=_data;
+@property (copy, nonatomic) NSData *contents; // @dynamic contents;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) NSString *fileType; // @synthesize fileType=_uti;
+@property (copy, nonatomic) NSString *fileType; // @dynamic fileType;
 @property (strong, nonatomic) NSFileWrapper *fileWrapper;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImage *image; // @dynamic image;

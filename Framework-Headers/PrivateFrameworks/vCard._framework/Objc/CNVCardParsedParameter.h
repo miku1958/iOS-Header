@@ -18,7 +18,7 @@
 @property (readonly, copy) NSArray *values; // @synthesize values=_values;
 
 + (id)parameterWithName:(id)arg1 values:(id)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithName:(id)arg1 values:(id)arg2;
 

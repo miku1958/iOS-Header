@@ -55,6 +55,7 @@
     unsigned long long _tcpECNIntSynAckLost;
     unsigned long long _tcpECNIntSynLost;
     unsigned long long _tcpECNIntTotalConnections;
+    unsigned long long _tcpUnsentDataAtSleepCnt;
     struct {
         unsigned int interfaceType:1;
         unsigned int ipProtocol:1;
@@ -101,6 +102,7 @@
         unsigned int tcpECNIntSynAckLost:1;
         unsigned int tcpECNIntSynLost:1;
         unsigned int tcpECNIntTotalConnections:1;
+        unsigned int tcpUnsentDataAtSleepCnt:1;
     } _has;
 }
 
@@ -149,6 +151,7 @@
 @property (nonatomic) BOOL hasTcpECNIntSynAckLost;
 @property (nonatomic) BOOL hasTcpECNIntSynLost;
 @property (nonatomic) BOOL hasTcpECNIntTotalConnections;
+@property (nonatomic) BOOL hasTcpUnsentDataAtSleepCnt;
 @property (nonatomic) unsigned long long interfaceType; // @synthesize interfaceType=_interfaceType;
 @property (nonatomic) unsigned long long ipProtocol; // @synthesize ipProtocol=_ipProtocol;
 @property (nonatomic) unsigned long long tcpECNIntClientSetup; // @synthesize tcpECNIntClientSetup=_tcpECNIntClientSetup;
@@ -194,6 +197,7 @@
 @property (nonatomic) unsigned long long tcpECNIntSynAckLost; // @synthesize tcpECNIntSynAckLost=_tcpECNIntSynAckLost;
 @property (nonatomic) unsigned long long tcpECNIntSynLost; // @synthesize tcpECNIntSynLost=_tcpECNIntSynLost;
 @property (nonatomic) unsigned long long tcpECNIntTotalConnections; // @synthesize tcpECNIntTotalConnections=_tcpECNIntTotalConnections;
+@property (nonatomic) unsigned long long tcpUnsentDataAtSleepCnt; // @synthesize tcpUnsentDataAtSleepCnt=_tcpUnsentDataAtSleepCnt;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

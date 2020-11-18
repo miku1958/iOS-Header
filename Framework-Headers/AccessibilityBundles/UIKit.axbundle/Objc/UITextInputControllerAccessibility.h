@@ -14,6 +14,13 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_sendDelegateChangeNotificationsForText:(BOOL)arg1 selection:(BOOL)arg2;
+- (void)copy:(id)arg1;
+- (void)cut:(id)arg1;
+- (void)paste:(id)arg1;
+- (void)selectAll:(id)arg1;
+- (void)toggleBoldface:(id)arg1;
+- (void)toggleItalics:(id)arg1;
+- (void)toggleUnderline:(id)arg1;
 
 @end
 

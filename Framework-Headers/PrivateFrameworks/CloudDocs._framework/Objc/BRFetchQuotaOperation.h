@@ -13,7 +13,7 @@
 
 @property (copy) CDUnknownBlockType fetchQuotaCompletionBlock; // @synthesize fetchQuotaCompletionBlock=_fetchQuotaCompletionBlock;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (void)main;
 

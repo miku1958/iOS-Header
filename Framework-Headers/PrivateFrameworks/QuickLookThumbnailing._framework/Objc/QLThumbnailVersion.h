@@ -10,6 +10,7 @@
 
 @class NSDate, NSString;
 
+__attribute__((visibility("hidden")))
 @interface QLThumbnailVersion : NSObject <NSSecureCoding>
 {
     NSDate *_modificationDate;

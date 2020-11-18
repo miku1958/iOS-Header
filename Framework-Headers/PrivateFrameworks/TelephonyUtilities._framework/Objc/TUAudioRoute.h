@@ -18,6 +18,7 @@
 @property (readonly, nonatomic, getter=isBluetooth) BOOL bluetooth;
 @property (readonly, nonatomic) long long bluetoothEndpointType;
 @property (readonly, nonatomic, getter=isCarAudio) BOOL carAudio;
+@property (readonly, nonatomic, getter=isCurrentlyPicked) BOOL currentlyPicked;
 @property (readonly, nonatomic) NSArray *identifiersOfOtherConnectedDevices;
 @property (readonly, nonatomic, getter=isPreferred) BOOL preferred;
 @property (strong, nonatomic) TUAudioRoutePreferredRouteOptions *preferredRouteOptions; // @synthesize preferredRouteOptions=_preferredRouteOptions;

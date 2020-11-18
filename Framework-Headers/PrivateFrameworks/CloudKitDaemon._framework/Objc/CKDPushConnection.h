@@ -26,7 +26,7 @@
 }
 
 @property (strong, nonatomic) APSConnection *apsConnection; // @synthesize apsConnection=_apsConnection;
-@property (strong, nonatomic) NSString *apsEnvironmentString; // @synthesize apsEnvironmentString=_apsEnvironmentString;
+@property (strong, nonatomic, setter=setAPSEnvironmentString:) NSString *apsEnvironmentString; // @synthesize apsEnvironmentString=_apsEnvironmentString;
 @property (strong, nonatomic) NSMapTable *callbacks; // @synthesize callbacks=_callbacks;
 @property (nonatomic) BOOL darkWakeEnabled; // @synthesize darkWakeEnabled=_darkWakeEnabled;
 @property (readonly, copy) NSString *debugDescription;
@@ -53,7 +53,6 @@
 - (id)initWithEnvironment:(id)arg1 darkWakeEnabled:(BOOL)arg2;
 - (void)requestTokenForAppContainerTuple:(id)arg1 useAPSPublicToken:(BOOL)arg2;
 - (void)revokeTokenForAppContainerTuple:(id)arg1;
-- (void)setAPSEnvironmentString:(id)arg1;
 
 @end
 

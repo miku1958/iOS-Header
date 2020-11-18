@@ -20,13 +20,10 @@
     UIBarButtonItem *_rightBarButtonItem;
     NSMutableArray *_storeItemIDs;
     BOOL _allowsMultipleSelection;
-    BOOL _hidesRightBarButtonItem;
     BOOL _includeStoreItemsInSearch;
     BOOL _allowsCollectionsInSelectedEntities;
-    BOOL _invokedForPlaylistEditing;
     BOOL _showsOnlyStoreItems;
     MusicClientContext *_clientContext;
-    NSString *_collectionName;
     id<MusicMediaPickerDelegate> _mediaPickerDelegate;
     NSString *_prompt;
     long long _state;
@@ -36,13 +33,10 @@
 @property (nonatomic) BOOL allowsCollectionsInSelectedEntities; // @synthesize allowsCollectionsInSelectedEntities=_allowsCollectionsInSelectedEntities;
 @property (nonatomic) BOOL allowsMultipleSelection; // @synthesize allowsMultipleSelection=_allowsMultipleSelection;
 @property (strong, nonatomic) SKUIClientContext *clientContext;
-@property (copy, nonatomic) NSString *collectionName; // @synthesize collectionName=_collectionName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL hidesRightBarButtonItem; // @synthesize hidesRightBarButtonItem=_hidesRightBarButtonItem;
 @property (nonatomic) BOOL includeStoreItemsInSearch; // @synthesize includeStoreItemsInSearch=_includeStoreItemsInSearch;
-@property (nonatomic, getter=isInvokedForPlaylistEditing) BOOL invokedForPlaylistEditing; // @synthesize invokedForPlaylistEditing=_invokedForPlaylistEditing;
 @property (weak, nonatomic) id<MusicMediaPickerDelegate> mediaPickerDelegate; // @synthesize mediaPickerDelegate=_mediaPickerDelegate;
 @property (readonly, nonatomic) NSArray *pickedEntities; // @synthesize pickedEntities=_pickedEntities;
 @property (copy, nonatomic) NSString *prompt; // @synthesize prompt=_prompt;

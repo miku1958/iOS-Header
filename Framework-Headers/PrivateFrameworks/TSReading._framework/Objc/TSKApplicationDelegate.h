@@ -39,6 +39,7 @@
 - (id)appChartPropertyOverrides;
 - (struct CGRect)applicationToolbarFrame;
 - (id)createCompatibilityDelegate;
+- (void)dealloc;
 - (id)defaultHyperlinkURL;
 - (id)init;
 - (id)invalidURLSchemes;

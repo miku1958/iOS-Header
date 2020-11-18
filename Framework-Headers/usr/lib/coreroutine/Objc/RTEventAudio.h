@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <coreroutine/RTEventContext.h>
+#import <coreroutine/RTEvent.h>
 
 #import <coreroutine/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface RTEventAudio : RTEventContext <NSSecureCoding>
+@interface RTEventAudio : RTEvent <NSSecureCoding>
 {
     NSString *_deviceIdentifier;
     NSString *_deviceName;
@@ -26,11 +26,10 @@
 + (id)stringFromAudioState:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDeviceIdentifier:(id)arg1 deviceName:(id)arg2 audioState:(long long)arg3 audioSource:(long long)arg4 source:(long long)arg5 startDate:(id)arg6 endDate:(id)arg7 locationIdentifier:(id)arg8;
+- (id)initWithDeviceIdentifier:(id)arg1 deviceName:(id)arg2 audioState:(long long)arg3 audioSource:(long long)arg4 source:(long long)arg5 startDate:(id)arg6 endDate:(id)arg7;
 
 @end
 

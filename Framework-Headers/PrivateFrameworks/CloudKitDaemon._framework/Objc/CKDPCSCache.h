@@ -6,30 +6,58 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class CKDClientContext, CKDPCSFetchAggregator, CKDPCSMemoryCache, CKDPCSSQLCache, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CKDPCSCache : NSObject
 {
-    CDUnknownBlockType _fetchPCSItemForCacheBlock;
-    NSMutableDictionary *_itemIDToPCSCacheItem;
-    NSObject<OS_dispatch_queue> *_itemPCSFetchQueue;
+    CKDPCSSQLCache *_sqlCache;
+    CKDPCSMemoryCache *_recordMemoryCache;
+    CKDPCSMemoryCache *_zoneMemoryCache;
+    CKDPCSMemoryCache *_shareMemoryCache;
+    CKDClientContext *_context;
+    CKDPCSFetchAggregator *_fetchAggregator;
+    NSMutableDictionary *_outstandingFetches;
+    NSObject<OS_dispatch_queue> *_fetchQueue;
+    NSObject<OS_dispatch_queue> *_callbackQueue;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType fetchPCSItemForCacheBlock; // @synthesize fetchPCSItemForCacheBlock=_fetchPCSItemForCacheBlock;
-@property (strong, nonatomic) NSMutableDictionary *itemIDToPCSCacheItem; // @synthesize itemIDToPCSCacheItem=_itemIDToPCSCacheItem;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *itemPCSFetchQueue; // @synthesize itemPCSFetchQueue=_itemPCSFetchQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
+@property (weak, nonatomic) CKDClientContext *context; // @synthesize context=_context;
+@property (strong, nonatomic) CKDPCSFetchAggregator *fetchAggregator; // @synthesize fetchAggregator=_fetchAggregator;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *fetchQueue; // @synthesize fetchQueue=_fetchQueue;
+@property (strong, nonatomic) NSMutableDictionary *outstandingFetches; // @synthesize outstandingFetches=_outstandingFetches;
+@property (readonly, nonatomic) CKDPCSMemoryCache *recordMemoryCache; // @synthesize recordMemoryCache=_recordMemoryCache;
+@property (readonly, nonatomic) CKDPCSMemoryCache *shareMemoryCache; // @synthesize shareMemoryCache=_shareMemoryCache;
+@property (readonly, nonatomic) CKDPCSSQLCache *sqlCache; // @synthesize sqlCache=_sqlCache;
+@property (readonly, nonatomic) CKDPCSMemoryCache *zoneMemoryCache; // @synthesize zoneMemoryCache=_zoneMemoryCache;
 
 - (void).cxx_destruct;
-- (void)_initCache;
-- (void)_lockedSetPCSData:(id)arg1 forItemWithID:(id)arg2;
-- (void)clearCache;
-- (void)fetchPCSForItemWithID:(id)arg1 operation:(id)arg2 options:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
-- (id)init;
-- (void)pcsDataFetched:(id)arg1 forItemWithID:(id)arg2 error:(id)arg3;
-- (void)setPCSData:(id)arg1 forItemWithID:(id)arg2;
-- (void)setPCSData:(id)arg1 forItemsPassingTest:(CDUnknownBlockType)arg2;
+- (id)CKStatusReportArray;
+- (void)_lockedAddOutstandingFetch:(id)arg1 forItemIDString:(id)arg2 databaseScope:(long long)arg3;
+- (void)_lockedCreatePCSCacheFetchOfItem:(id)arg1 pcsData:(id)arg2 forOperation:(id)arg3 options:(unsigned long long)arg4 fetchCreator:(CDUnknownBlockType)arg5 withCompletionHandler:(CDUnknownBlockType)arg6;
+- (void)_lockedFetchPCSForItem:(id)arg1 memoryCache:(id)arg2 forOperation:(id)arg3 options:(unsigned long long)arg4 fetchCreator:(CDUnknownBlockType)arg5 withCompletionHandler:(CDUnknownBlockType)arg6;
+- (id)_lockedGetOutstandingFetchForOperation:(id)arg1 options:(unsigned long long)arg2 itemIDString:(id)arg3;
+- (void)_lockedHandleMemoryFetchOfItem:(id)arg1 pcsData:(id)arg2 forOperation:(id)arg3 options:(unsigned long long)arg4 fetchCreator:(CDUnknownBlockType)arg5 withCompletionHandler:(CDUnknownBlockType)arg6;
+- (void)_lockedRemoveOutstandingFetch:(id)arg1 forItemIDString:(id)arg2 databaseScope:(long long)arg3;
+- (void)_updateMemoryCacheWithPCSData:(id)arg1 forItemWithID:(id)arg2 inMemoryCache:(id)arg3 databaseScope:(long long)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
+- (void)clearPCSCaches;
+- (void)clearPCSMemoryCaches;
+- (void)dealloc;
+- (void)fetchPCSForRecordWithID:(id)arg1 forOperation:(id)arg2 options:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
+- (void)fetchPCSForShareWithID:(id)arg1 forOperation:(id)arg2 options:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
+- (void)fetchPCSForZoneWithID:(id)arg1 forOperation:(id)arg2 options:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
+- (BOOL)hasStatusToReport;
+- (id)initWithClientContext:(id)arg1;
+- (void)removePCSDataForItemsInShareWithID:(id)arg1;
+- (void)removePCSDataForItemsInZoneWithID:(id)arg1;
+- (void)setPCSData:(id)arg1 forFetchedRecordID:(id)arg2 withScope:(long long)arg3 fetchError:(id)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
+- (void)setPCSData:(id)arg1 forFetchedShareID:(id)arg2 withScope:(long long)arg3 fetchError:(id)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
+- (void)setPCSData:(id)arg1 forFetchedZoneID:(id)arg2 withScope:(long long)arg3 fetchError:(id)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
+- (void)updateMemoryCacheWithRecordPCSData:(id)arg1 forRecordWithID:(id)arg2 databaseScope:(long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
+- (void)updateMemoryCacheWithSharePCSData:(id)arg1 forShareWithID:(id)arg2 databaseScope:(long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
+- (void)updateMemoryCacheWithZonePCSData:(id)arg1 forZoneWithID:(id)arg2 databaseScope:(long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

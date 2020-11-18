@@ -39,7 +39,6 @@ __attribute__((visibility("hidden")))
 + (void)initialize;
 - (void)clear;
 - (void)dealloc;
-- (void)finalize;
 
 @end
 

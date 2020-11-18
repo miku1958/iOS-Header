@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) RTMotionActivity *dominantActivity; // @synthesize dominantActivity=_dominantActivity;
 
-+ (id)notificationName;
 - (void).cxx_destruct;
 - (id)initWithDominantActivity:(id)arg1;
 

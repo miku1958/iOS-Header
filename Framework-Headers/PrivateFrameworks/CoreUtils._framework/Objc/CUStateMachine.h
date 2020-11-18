@@ -23,6 +23,7 @@
 @property (strong, nonatomic) CUState *initialState; // @synthesize initialState=_initialState;
 @property (strong, nonatomic) NSArray *states; // @synthesize states=_states;
 
+- (void).cxx_destruct;
 - (void)_firstTimeInit;
 - (void)dealloc;
 - (void)dispatchEvent:(id)arg1;

@@ -28,7 +28,9 @@
 
 - (void).cxx_destruct;
 - (double)footerHeightForWidth:(double)arg1 inTableView:(id)arg2;
+- (double)footerHeightForWidth:(double)arg1 inView:(id)arg2;
 - (id)initWithAttributes:(id)arg1;
+- (void)layoutSubviews;
 - (void)setText:(id)arg1 attributes:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)webContainerView:(id)arg1 didClickLinkWithURL:(id)arg2;

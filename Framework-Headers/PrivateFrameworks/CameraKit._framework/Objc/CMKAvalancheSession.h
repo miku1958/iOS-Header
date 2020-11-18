@@ -33,8 +33,8 @@
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (nonatomic) id<CMKAvalancheSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) unsigned long long numberOfPhotos; // @synthesize numberOfPhotos=_numberOfPhotos;
-@property (strong, nonatomic) CMKInflightAsset *possibleAvalancheAsset; // @synthesize possibleAvalancheAsset=_possibleAvalancheAsset;
-@property (nonatomic) long long state; // @synthesize state=_state;
+@property (strong, nonatomic, setter=_setPossibleAvalancheAsset:) CMKInflightAsset *possibleAvalancheAsset; // @synthesize possibleAvalancheAsset=_possibleAvalancheAsset;
+@property (nonatomic, setter=_setState:) long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
@@ -42,8 +42,6 @@
 - (void)_didTransitionToState:(long long)arg1;
 - (BOOL)_ensureValidStateChange:(long long)arg1;
 - (void)_expirationTimerFired;
-- (void)_setPossibleAvalancheAsset:(id)arg1;
-- (void)_setState:(long long)arg1;
 - (void)_setupExpirationTimer;
 - (void)_teardownExpirationTimer;
 - (void)_transitionToState:(long long)arg1;

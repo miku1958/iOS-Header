@@ -11,11 +11,13 @@
 @interface GEONavigationGuidanceState : PBCodable <NSCopying>
 {
     int _guidanceLevel;
+    int _guidanceLevelIgnoringTimeCriterion;
     int _navigationState;
     int _trackedTransportType;
     BOOL _shouldSuppressCellularDataAlerts;
     struct {
         unsigned int guidanceLevel:1;
+        unsigned int guidanceLevelIgnoringTimeCriterion:1;
         unsigned int navigationState:1;
         unsigned int trackedTransportType:1;
         unsigned int shouldSuppressCellularDataAlerts:1;
@@ -23,7 +25,9 @@
 }
 
 @property (nonatomic) int guidanceLevel; // @synthesize guidanceLevel=_guidanceLevel;
+@property (nonatomic) int guidanceLevelIgnoringTimeCriterion; // @synthesize guidanceLevelIgnoringTimeCriterion=_guidanceLevelIgnoringTimeCriterion;
 @property (nonatomic) BOOL hasGuidanceLevel;
+@property (nonatomic) BOOL hasGuidanceLevelIgnoringTimeCriterion;
 @property (nonatomic) BOOL hasNavigationState;
 @property (nonatomic) BOOL hasShouldSuppressCellularDataAlerts;
 @property (nonatomic) BOOL hasTrackedTransportType;
@@ -36,16 +40,24 @@
 + (BOOL)_currentTimeInsideTrackingRegionForRoute:(id)arg1 location:(id)arg2;
 + (int)routeGuidanceLevelForLocation:(id)arg1 route:(id)arg2 withCurrentGuidanceLevel:(int)arg3;
 + (int)routeGuidanceLevelForLocation:(id)arg1 route:(id)arg2 withCurrentGuidanceLevel:(int)arg3 ignoreTimeCriterion:(BOOL)arg4;
+- (int)StringAsGuidanceLevel:(id)arg1;
+- (int)StringAsGuidanceLevelIgnoringTimeCriterion:(id)arg1;
+- (int)StringAsNavigationState:(id)arg1;
+- (int)StringAsTrackedTransportType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)guidanceLevelAsString:(int)arg1;
+- (id)guidanceLevelIgnoringTimeCriterionAsString:(int)arg1;
 - (unsigned long long)hash;
 - (id)initWithGuidanceLevel:(int)arg1;
 - (id)initWithTransportType:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)navigationStateAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)trackedTransportTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

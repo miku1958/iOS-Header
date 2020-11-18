@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *passRelevancyTuples; // @synthesize passRelevancyTuples=_passRelevancyTuples;
 
++ (Class)passRelevancyTuplesType;
 - (void).cxx_destruct;
 - (void)addPassRelevancyTuples:(id)arg1;
 - (void)clearPassRelevancyTuples;

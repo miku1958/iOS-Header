@@ -9,7 +9,7 @@
 @interface MFAddressBookManager : NSObject
 {
     void *_addressBook;
-    int _lock;
+    struct os_unfair_lock_s _lock;
     struct __CFDictionary *_clients;
 }
 

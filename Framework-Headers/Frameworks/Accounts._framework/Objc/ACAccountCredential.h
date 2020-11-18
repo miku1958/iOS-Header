@@ -38,6 +38,7 @@
 @property (copy, nonatomic) NSString *token;
 @property (copy, nonatomic) NSDate *tokenExpiryDate;
 
++ (id)allSupportedKeys;
 + (id)credentialPolicyForAccountType:(id)arg1 key:(id)arg2 clientID:(id)arg3;
 + (id)credentialWithOAuthToken:(id)arg1 tokenSecret:(id)arg2;
 + (id)credentialWithPassword:(id)arg1;

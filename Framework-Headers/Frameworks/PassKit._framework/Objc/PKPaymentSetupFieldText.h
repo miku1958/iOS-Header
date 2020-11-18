@@ -27,7 +27,7 @@
 @property (nonatomic, getter=isSecureText) BOOL secureText; // @synthesize secureText=_secureText;
 @property (nonatomic, getter=isSecureVisibleText) BOOL secureVisibleText; // @synthesize secureVisibleText=_secureVisibleText;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)displayFormatPaddingCharacters;
 - (id)displayFormatPaddingPrefix;
 - (id)displayString;

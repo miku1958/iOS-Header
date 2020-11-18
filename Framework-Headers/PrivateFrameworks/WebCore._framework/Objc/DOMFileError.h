@@ -13,7 +13,6 @@
 @property (readonly) unsigned short code;
 
 - (void)dealloc;
-- (void)finalize;
 
 @end
 

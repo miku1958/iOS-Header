@@ -9,10 +9,10 @@
 @class NSDate;
 
 @protocol _HKActiveWorkoutServer <NSObject>
-- (void)activateWorkoutWithCompletion:(void (^)(BOOL, NSError *))arg1;
-- (void)deactivateServer;
-- (void)endWorkoutWithEndDate:(NSDate *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
-- (void)pauseWorkoutWithDate:(NSDate *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
-- (void)resumeWorkoutWithDate:(NSDate *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)remote_activateWorkoutWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)remote_endWorkoutWithEndDate:(NSDate *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)remote_nukeWorkoutWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)remote_pauseWorkoutWithDate:(NSDate *)arg1 userInitiated:(BOOL)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)remote_resumeWorkoutWithDate:(NSDate *)arg1 userInitiated:(BOOL)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 @end
 

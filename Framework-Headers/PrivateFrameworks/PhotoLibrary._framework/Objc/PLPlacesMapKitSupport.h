@@ -13,6 +13,7 @@
     Class _mapViewClass;
     Class _polylineClass;
     Class _polylineViewClass;
+    Class _polylineRendererClass;
     CDStruct_02837cd9 _mapRectWorld;
     CDStruct_02837cd9 _mapRectNull;
     CDUnknownFunctionPointerType _mkMapRectMakeWithRadialDistance;
@@ -29,13 +30,13 @@
 
 + (id)sharedInstance;
 - (Class)annotationViewClass;
-- (CDStruct_c3b9c2ee)coordinateForMapPoint:(CDStruct_c3b9c2ee)arg1;
-- (CDStruct_02837cd9)coordinateRegionForMapRect:(CDStruct_02837cd9)arg1;
+- (struct CLLocationCoordinate2D)coordinateForMapPoint:(CDStruct_c3b9c2ee)arg1;
+- (CDStruct_2b0c6e0b)coordinateRegionForMapRect:(CDStruct_02837cd9)arg1;
 - (id)init;
-- (CDStruct_c3b9c2ee)mapPointForCoordinate:(CDStruct_c3b9c2ee)arg1;
+- (CDStruct_c3b9c2ee)mapPointForCoordinate:(struct CLLocationCoordinate2D)arg1;
 - (double)mapPointsPerMeterAtLatitude:(double)arg1;
-- (CDStruct_02837cd9)mapRectAtCoordinate:(CDStruct_c3b9c2ee)arg1 radialDistance:(double)arg2;
-- (CDStruct_02837cd9)mapRectForCoordinateRegion:(CDStruct_02837cd9)arg1;
+- (CDStruct_02837cd9)mapRectAtCoordinate:(struct CLLocationCoordinate2D)arg1 radialDistance:(double)arg2;
+- (CDStruct_02837cd9)mapRectForCoordinateRegion:(CDStruct_2b0c6e0b)arg1;
 - (BOOL)mapRectIntersectsRect:(CDStruct_02837cd9)arg1 rect:(CDStruct_02837cd9)arg2;
 - (BOOL)mapRectIntersectsWrappingMeridian:(CDStruct_02837cd9)arg1 rect:(CDStruct_02837cd9)arg2;
 - (CDStruct_02837cd9)mapRectNull;
@@ -45,6 +46,7 @@
 - (double)metersPerMapPointAtLatitude:(double)arg1;
 - (Class)pinAnnotationViewClass;
 - (Class)polylineClass;
+- (Class)polylineRendererClass;
 - (Class)polylineViewClass;
 
 @end

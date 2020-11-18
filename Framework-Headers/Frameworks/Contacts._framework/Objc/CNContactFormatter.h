@@ -33,6 +33,7 @@
 + (long long)nameOrderForContact:(id)arg1;
 + (id)stringFromContact:(id)arg1 style:(long long)arg2;
 + (BOOL)styleSupportsFallBackToFullNameStyle:(long long)arg1;
+- (id)abbreviatedNameForContact:(id)arg1 attributes:(id)arg2;
 - (void)appendValue:(id)arg1 derivedFromPropertyName:(id)arg2 toString:(id)arg3 delimiter:(id)arg4 attributes:(id)arg5;
 - (void)appendValueForProperties:(id)arg1 fromContact:(id)arg2 toString:(id)arg3 delimiter:(id)arg4 attributes:(id)arg5 fallback:(BOOL)arg6;
 - (id)attributedStringForObjectValue:(id)arg1 withDefaultAttributes:(id)arg2;

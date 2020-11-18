@@ -21,9 +21,9 @@ __attribute__((visibility("hidden")))
     PUTilingView *_tilingView;
     id<PUInteractiveTileTrackerDelegate> _delegate;
     double _progress;
-    PUTileController *_trackedTileController;
     long long __state;
     PUTileHider *__tileHider;
+    PUTileController *_trackedTileController;
     struct PUDisplayVelocity _currentVelocity;
 }
 

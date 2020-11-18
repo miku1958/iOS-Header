@@ -6,19 +6,15 @@
 
 #import <QuartzCore/CALayer.h>
 
-@protocol PLTileProcessor;
-
 @interface PLTiledLayer : CALayer
 {
     struct CGSize _jpegImageSize;
 }
 
 @property (readonly, nonatomic) struct CGSize jpegImageSize; // @synthesize jpegImageSize=_jpegImageSize;
-@property (weak, nonatomic) id<PLTileProcessor> tileProcessor;
 
 - (void)flushCache;
-- (id)initWithJPEGData:(id)arg1 placeholderImage:(struct CGImage *)arg2;
-- (void)setTileProcessingEnabled:(BOOL)arg1 withProcessingID:(unsigned long long)arg2 placeholderImage:(struct CGImage *)arg3;
+- (id)initWithJPEGData:(id)arg1 placeholderImage:(struct CGImage *)arg2 screenSize:(struct CGSize)arg3;
 - (void)setVisibleRectangle:(struct CGRect)arg1 zoomScale:(double)arg2;
 
 @end

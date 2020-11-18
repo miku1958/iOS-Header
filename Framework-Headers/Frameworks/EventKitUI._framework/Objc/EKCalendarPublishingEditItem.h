@@ -37,8 +37,8 @@
 - (double)footerHeightForSection;
 - (id)footerViewForSection;
 - (void)layoutForWidth:(double)arg1;
-- (void)mailComposeController:(id)arg1 didFinishWithResult:(int)arg2 error:(id)arg3;
-- (void)messageComposeViewController:(id)arg1 didFinishWithResult:(int)arg2;
+- (void)mailComposeController:(id)arg1 didFinishWithResult:(long long)arg2 error:(id)arg3;
+- (void)messageComposeViewController:(id)arg1 didFinishWithResult:(long long)arg2;
 - (unsigned long long)numberOfSubitems;
 - (id)pubishURL;
 - (void)reset;

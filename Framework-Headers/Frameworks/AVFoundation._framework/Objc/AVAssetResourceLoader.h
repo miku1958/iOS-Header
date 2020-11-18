@@ -32,6 +32,7 @@
 - (void)_performDelegateSelector:(SEL)arg1 withObject:(id)arg2 representingNewRequest:(BOOL)arg3 key:(id)arg4 fallbackHandler:(CDUnknownBlockType)arg5;
 - (void)_poseAuthenticationChallengeWithKey:(id)arg1 data:(id)arg2 requestDictionary:(id)arg3 fallbackHandler:(CDUnknownBlockType)arg4;
 - (void)_rejectChallenge:(id)arg1 withError:(id)arg2;
+- (id)asset;
 - (void)cacheContentInformation:(id)arg1 forURL:(id)arg2;
 - (id)cachedContentInformationForURL:(id)arg1;
 - (void)cancelAuthenticationChallenge:(id)arg1;
@@ -40,7 +41,7 @@
 - (void)dealloc;
 - (void)finalize;
 - (id)init;
-- (id)initWithURLRequestHelper:(id)arg1;
+- (id)initWithURLRequestHelper:(id)arg1 asset:(id)arg2;
 - (void)performDefaultHandlingForAuthenticationChallenge:(id)arg1;
 - (void)rejectProtectionSpaceAndContinueWithChallenge:(id)arg1;
 - (void)setDelegate:(id)arg1;

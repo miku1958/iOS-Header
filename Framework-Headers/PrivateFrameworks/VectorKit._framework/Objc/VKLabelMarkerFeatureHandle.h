@@ -6,24 +6,17 @@
 
 #import <Foundation/NSObject.h>
 
-@class GEOFeatureStyleAttributes;
-
 @interface VKLabelMarkerFeatureHandle : NSObject
 {
-    int _featureType;
-    long long _featureIndex;
-    int _tileX;
-    int _tileY;
-    int _tileZ;
-    int _tileStyle;
-    unsigned int _tileVersion;
-    GEOFeatureStyleAttributes *_styleAttributes;
+    struct LabelMarkerFeatureHandle _actualHandle;
 }
 
+- (id).cxx_construct;
+- (const struct LabelMarkerFeatureHandle *)actualHandle;
 - (void)dealloc;
 - (long long)featureIndex;
 - (int)featureType;
-- (id)initWithFeature:(CDStruct_58d0ca89 *)arg1 featureType:(int)arg2;
+- (id)initWithLabelMarkerHandle:(const struct LabelMarkerFeatureHandle *)arg1;
 - (id)styleAttributes;
 - (int)tileStyle;
 - (unsigned int)tileVersion;

@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
 @property (readonly, nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
 
++ (id)allowedKeys;
 + (id)stringFromBluetoothDeviceType:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

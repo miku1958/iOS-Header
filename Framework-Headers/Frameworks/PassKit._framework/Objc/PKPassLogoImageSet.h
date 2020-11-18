@@ -12,6 +12,7 @@
 {
     PKImage *_logoImage;
     PKImage *_backgroundImage;
+    PKImage *_thumbnailImage;
     PKImage *_stripImage;
     PKImage *_footerImage;
     PKImage *_bankLogoImage;
@@ -30,11 +31,12 @@
 @property (strong, nonatomic) PKImage *logoImage; // @synthesize logoImage=_logoImage;
 @property (strong, nonatomic) PKImage *networkLogoImage; // @synthesize networkLogoImage=_networkLogoImage;
 @property (strong, nonatomic) PKImage *stripImage; // @synthesize stripImage=_stripImage;
+@property (strong, nonatomic) PKImage *thumbnailImage; // @synthesize thumbnailImage=_thumbnailImage;
 
 + (long long)imageSetType;
 + (BOOL)shouldCache;
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

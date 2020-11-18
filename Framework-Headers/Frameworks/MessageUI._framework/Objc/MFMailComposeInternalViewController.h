@@ -20,7 +20,7 @@
     NSMutableDictionary *_compositionValues;
     NSMutableArray *_attachments;
     NSString *_placeholderSubject;
-    int _composeResult;
+    long long _composeResult;
     NSError *_composeResultError;
     double _presentationDelayBeganTimestamp;
     unsigned int _hasDelayedPresentation:1;
@@ -56,7 +56,8 @@
 - (id)addAttachmentFileURL:(id)arg1 mimeType:(id)arg2;
 - (BOOL)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers;
 - (void)autosaveWithHandler:(CDUnknownBlockType)arg1;
-- (void)compositionFinishedWithResult:(int)arg1 error:(id)arg2;
+- (void)compositionFinishedWithResult:(long long)arg1 error:(id)arg2;
+- (void)compositionRequestsSendWithBody:(id)arg1 recipients:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)compositionViewServiceTerminatedWithError:(id)arg1;
 - (void)dealloc;
 - (void)finalizeCompositionValues;

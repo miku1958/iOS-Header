@@ -12,11 +12,11 @@
 @interface CNAutocompleteStore : NSObject
 {
     double _fetchCoalescingInterval;
-    id<CNAutocompleteProbeProvider> _probeProvider;
-    id<CNScheduler> _scheduler;
     CNAutocompleteStoreQueryHelper *_queryHelper;
     CNCancelationToken *_currentFetchToken;
     CNAutocompleteUserSession *_userSession;
+    id<CNAutocompleteProbeProvider> _probeProvider;
+    id<CNScheduler> _scheduler;
 }
 
 @property (weak, nonatomic) CNCancelationToken *currentFetchToken; // @synthesize currentFetchToken=_currentFetchToken;

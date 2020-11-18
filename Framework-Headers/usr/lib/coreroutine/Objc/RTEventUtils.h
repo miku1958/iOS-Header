@@ -23,7 +23,9 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (BOOL)addEventWithTitle:(id)arg1 locationDescription:(id)arg2 location:(id)arg3 startDate:(id)arg4 andEndDate:(id)arg5;
+- (BOOL)addEventWithTitle:(id)arg1 locationDescription:(id)arg2 location:(id)arg3 startDate:(id)arg4 endDate:(id)arg5 commit:(BOOL)arg6;
 - (BOOL)addEventWithTitle:(id)arg1 locationDescription:(id)arg2 startDate:(id)arg3 andEndDate:(id)arg4;
+- (BOOL)commit;
 - (id)getEventsBetweenStartDate:(id)arg1 andEndDate:(id)arg2;
 - (id)init;
 - (BOOL)removeEventsWithTitle:(id)arg1 locationDescription:(id)arg2 startDate:(id)arg3 andEndDate:(id)arg4;

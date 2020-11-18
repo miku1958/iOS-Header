@@ -12,14 +12,18 @@
     struct SKCCropNode *_skcCropNode;
 }
 
+@property (nonatomic) BOOL invertMask;
 @property (strong, nonatomic) SKNode *maskNode;
+@property (nonatomic) BOOL prefersAlphaMask;
 
 - (void).cxx_destruct;
 - (void)_didMakeBackingNode;
 - (struct SKCNode *)_makeBackingNode;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqualToNode:(id)arg1;
+- (void)useAlphaMask:(BOOL)arg1;
 
 @end
 

@@ -12,8 +12,10 @@
 @interface HKSwitchTableViewCell : UITableViewCell
 {
     UILabel *_displayLabel;
+    UILabel *_countLabel;
     UIImageView *_iconImageView;
     UISwitch *_switch;
+    BOOL _shouldHideSwitch;
     BOOL _enabled;
     BOOL _centersIcon;
     id<HKSwitchTableViewCellDelegate> _delegate;
@@ -25,6 +27,7 @@
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) struct CGSize iconSize;
 @property (nonatomic, getter=isOn) BOOL on;
+@property (nonatomic) BOOL shouldHideSwitch; // @synthesize shouldHideSwitch=_shouldHideSwitch;
 
 - (void).cxx_destruct;
 - (void)_contextSizeCategoryChanged;
@@ -33,6 +36,7 @@
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
+- (void)setCountText:(id)arg1;
 - (void)setDisplayText:(id)arg1;
 - (void)setIconImage:(id)arg1;
 - (void)switchValueChanged:(id)arg1;

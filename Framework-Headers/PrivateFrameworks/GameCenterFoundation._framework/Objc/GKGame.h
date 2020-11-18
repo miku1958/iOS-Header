@@ -23,18 +23,15 @@
 @property (readonly, nonatomic) NSString *cacheKey;
 @property (readonly, nonatomic) NSString *defaultCategory; // @dynamic defaultCategory;
 @property (readonly, nonatomic, getter=isDownloading) BOOL downloading;
-@property (strong, nonatomic) NSString *engineID; // @dynamic engineID;
-@property (nonatomic) long long environment; // @synthesize environment=_environment;
+@property long long environment; // @synthesize environment=_environment;
 @property (readonly, nonatomic) NSNumber *externalVersion; // @dynamic externalVersion;
 @property (readonly, nonatomic) NSDictionary *gameDescriptor;
 @property (readonly, nonatomic) struct GKGameInfo gameInfo;
 @property (readonly, nonatomic, getter=isInstalled) BOOL installedGame;
 @property (strong) GKGameInternal *internal; // @synthesize internal=_internal;
-@property (readonly, nonatomic) BOOL isGameRecommendation; // @dynamic isGameRecommendation;
 @property (readonly, nonatomic) NSString *name; // @dynamic name;
 @property (nonatomic) unsigned char platform; // @dynamic platform;
 @property (nonatomic, getter=isPrerendered) BOOL prerendered; // @dynamic prerendered;
-@property (strong, nonatomic) NSString *reason; // @dynamic reason;
 @property (strong, nonatomic) GKStoreItemInternal *storeItem; // @dynamic storeItem;
 @property (readonly, nonatomic) BOOL supportsMultiplayer; // @dynamic supportsMultiplayer;
 @property (readonly, nonatomic) BOOL supportsTurnBasedMultiplayer; // @dynamic supportsTurnBasedMultiplayer;
@@ -47,8 +44,6 @@
 + (BOOL)isPreferences;
 + (void)loadGamesWithBundleIDs:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (void)loadTopGamesWithCompletionHandler:(CDUnknownBlockType)arg1;
-+ (void)markGameRecommendationsDisplayed:(id)arg1 complete:(CDUnknownBlockType)arg2;
-+ (void)markGameRecommendationsViewed:(id)arg1 complete:(CDUnknownBlockType)arg2;
 + (void)setCurrentGameFromInternal:(id)arg1 serverEnvironment:(long long)arg2;
 + (BOOL)supportsSecureCoding;
 + (void)updateGames:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

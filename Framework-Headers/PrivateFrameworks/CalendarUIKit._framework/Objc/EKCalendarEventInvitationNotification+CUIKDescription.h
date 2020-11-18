@@ -7,16 +7,16 @@
 #import <EventKit/EKCalendarEventInvitationNotification.h>
 
 @interface EKCalendarEventInvitationNotification (CUIKDescription)
+- (id)_allDescriptionStringsRankedByImportance:(BOOL)arg1 options:(unsigned long long)arg2;
 - (id)_attachmentString;
-- (id)_attendeeString;
-- (id)_dateString;
-- (id)_errorString;
-- (id)_locationString;
-- (id)_organizerString;
-- (void)_populateStringsForInvitation:(id)arg1 options:(unsigned long long)arg2;
-- (void)_populateStringsForReply:(id)arg1 options:(unsigned long long)arg2;
-- (id)messageStringForDescriptionWithOptions:(unsigned long long)arg1;
-- (id)messageStringsForDescriptionWithOptions:(unsigned long long)arg1;
+- (id)_attendeeReplyStringWithOptions:(unsigned long long)arg1;
+- (id)_attendeeString:(unsigned long long)arg1;
+- (id)_dateString:(unsigned long long)arg1;
+- (id)_errorString:(unsigned long long)arg1;
+- (id)_locationString:(unsigned long long)arg1;
+- (id)_organizerString:(unsigned long long)arg1;
+- (id)allDescriptionStringsWithOptions:(unsigned long long)arg1;
+- (id)importantDescriptionStringWithOptions:(unsigned long long)arg1;
 - (BOOL)supportsDisplay;
 @end
 

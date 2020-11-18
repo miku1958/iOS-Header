@@ -6,17 +6,11 @@
 
 #import <PhotosUI/PUSessionInfo.h>
 
-@class NSString;
-
 __attribute__((visibility("hidden")))
 @interface PUPhotosPickerSessionInfo : PUSessionInfo
 {
-    NSString *__targetAlbumName;
 }
 
-@property (copy, nonatomic, setter=_setTargetAlbumName:) NSString *_targetAlbumName; // @synthesize _targetAlbumName=__targetAlbumName;
-
-- (void).cxx_destruct;
 - (id)_initWithTargetAlbum:(struct NSObject *)arg1 orTargetAlbumName:(id)arg2 isLocal:(BOOL)arg3;
 - (id)initWithTargetAlbum:(struct NSObject *)arg1;
 - (id)initWithTargetAlbumName:(id)arg1 isLocal:(BOOL)arg2;

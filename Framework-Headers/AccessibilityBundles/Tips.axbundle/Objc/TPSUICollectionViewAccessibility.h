@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityFirstVisibleItem;
 - (id)_accessibilityScrollStatus;
+- (BOOL)_axIsTipsCollectionView;
 - (BOOL)accessibilityCollectionViewBehavesLikeUIViewAccessibility;
 
 @end

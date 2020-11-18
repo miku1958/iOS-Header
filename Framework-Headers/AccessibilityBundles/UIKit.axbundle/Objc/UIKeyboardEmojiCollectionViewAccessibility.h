@@ -13,13 +13,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityFirstOpaqueElement;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (id)_accessibilityLocalizedVisibleSectionNames;
 - (double)_accessibilityMaxFuzzyHitTestDistance;
 - (BOOL)_accessibilityOpaqueElementScrollsContentIntoView;
 - (id)_accessibilityScrollStatus;
 - (id)_accessibilitySortedElementsWithin;
-- (void)scrollToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2 animated:(BOOL)arg3;
 
 @end
 

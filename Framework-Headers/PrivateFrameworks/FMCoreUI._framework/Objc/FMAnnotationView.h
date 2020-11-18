@@ -43,6 +43,7 @@
 + (void)setImagePadding:(double)arg1;
 + (void)setLargeAnnotationBorderVisible:(BOOL)arg1;
 + (void)setShouldMaskLayer:(BOOL)arg1;
++ (void)setThickAnnotationBorder:(BOOL)arg1;
 - (void).cxx_destruct;
 - (void)_selectionWasUpdated:(BOOL)arg1;
 - (void)_setupSpringActions;
@@ -50,7 +51,9 @@
 - (void)_updateAnnotationStyle;
 - (void)animateDelayedAnimation;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)initWithAnnotation:(id)arg1 reuseIdentifier:(id)arg2;
 - (id)initWithAnnotation:(id)arg1 reuseIdentifier:(id)arg2 tintColor:(id)arg3;
+- (id)initWithCoder:(id)arg1;
 - (void)prepareForReuse;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2 delay:(double)arg3;

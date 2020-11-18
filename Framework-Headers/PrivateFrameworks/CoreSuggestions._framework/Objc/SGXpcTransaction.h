@@ -8,8 +8,7 @@
 
 @interface SGXpcTransaction : NSObject
 {
-    BOOL _done;
-    int _doneLock;
+    struct atomic_flag _done;
 }
 
 - (void)dealloc;

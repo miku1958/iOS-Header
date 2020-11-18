@@ -6,13 +6,12 @@
 
 #import <PhotoLibrary/PLUIImageViewController.h>
 
-#import <PhotosUI/ISPlayerViewDelegate-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class ISPlayerView, NSString, NSURL, PHAsset, PUBrowsingIrisPlayer;
+@class NSString, NSURL, PHAsset, PHLivePhotoView, PUBrowsingIrisPlayer;
 
 __attribute__((visibility("hidden")))
-@interface PUUIImageViewController : PLUIImageViewController <ISPlayerViewDelegate, UIGestureRecognizerDelegate>
+@interface PUUIImageViewController : PLUIImageViewController <UIGestureRecognizerDelegate>
 {
     BOOL _isIris;
     BOOL _wantsLivePhotoResult;
@@ -20,7 +19,7 @@ __attribute__((visibility("hidden")))
     PHAsset *_asset;
     int __imageManagerVideoRequestID;
     PUBrowsingIrisPlayer *__irisPlayer;
-    ISPlayerView *__irisPlayerView;
+    PHLivePhotoView *__livePhotoView;
     NSString *__videoAssetURL;
     NSURL *__assetURL;
 }
@@ -28,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setAssetURL:) NSURL *_assetURL; // @synthesize _assetURL=__assetURL;
 @property (setter=_setImageManagerVideoRequestID:) int _imageManagerVideoRequestID; // @synthesize _imageManagerVideoRequestID=__imageManagerVideoRequestID;
 @property (strong, nonatomic) PUBrowsingIrisPlayer *_irisPlayer; // @synthesize _irisPlayer=__irisPlayer;
-@property (strong, nonatomic, setter=_setIrisPlayerView:) ISPlayerView *_irisPlayerView; // @synthesize _irisPlayerView=__irisPlayerView;
+@property (strong, nonatomic, setter=_setLivePhotoView:) PHLivePhotoView *_livePhotoView; // @synthesize _livePhotoView=__livePhotoView;
 @property (strong, nonatomic, setter=_setVideoAssetURL:) NSString *_videoAssetURL; // @synthesize _videoAssetURL=__videoAssetURL;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -38,7 +37,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_fetchLivePhotoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_fetchVideoWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_loadIrisPlayerItem:(id)arg1;
+- (void)_handleLivePhotoRequestResult:(id)arg1 info:(id)arg2;
+- (void)_loadLivePhoto;
 - (void)cropOverlayWasOKed:(id)arg1;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithPhoto:(id)arg1 imagePickerProperties:(id)arg2 expectsLivePhoto:(BOOL)arg3;

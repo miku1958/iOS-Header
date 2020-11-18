@@ -18,5 +18,6 @@
 - (PUTileTransitionCoordinator *)tilingView:(PUTilingView *)arg1 tileTransitionCoordinatorForReattachedTileControllers:(id<NSFastEnumeration>)arg2 context:(PUTileReattachmentContext *)arg3;
 - (PUTileTransitionCoordinator *)tilingView:(PUTilingView *)arg1 tileTransitionCoordinatorForTransitionFromLayout:(PUTilingLayout *)arg2 toLayout:(PUTilingLayout *)arg3 withContext:(PUTilingLayoutTransitionContext *)arg4;
 - (PUTileTransitionCoordinator *)tilingView:(PUTilingView *)arg1 tileTransitionCoordinatorForUpdateWithItems:(NSArray *)arg2;
+- (BOOL)tilingViewCanBypass20069585Check:(PUTilingView *)arg1;
 @end
 

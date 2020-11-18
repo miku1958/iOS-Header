@@ -37,7 +37,7 @@
 - (void)_deleteLastCharacter;
 - (void)_handleKeyUIEvent:(id)arg1 source:(int)arg2;
 - (BOOL)_hasAnyCharacters;
-- (void)_resetForFailedPasscode:(BOOL)arg1 playUnlockFailedSound:(BOOL)arg2;
+- (void)_resetForFailedPasscode:(BOOL)arg1;
 - (void)_setLuminosityBoost:(double)arg1;
 - (struct CGSize)_viewSize;
 - (void)appendString:(id)arg1;
@@ -49,7 +49,6 @@
 - (void)notePasscodeFieldDidAcceptEntry;
 - (void)notePasscodeFieldTextDidChange;
 - (void)reset;
-- (void)resetForFailedPasscode;
 - (BOOL)resignFirstResponder;
 - (void)setBackgroundAlpha:(double)arg1;
 - (BOOL)shouldInsertPasscodeText:(id)arg1;

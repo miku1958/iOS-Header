@@ -8,6 +8,8 @@
 
 @interface CLLocation (RTExtensions)
 - (id)coordinateToString;
+- (id)initWithRTLocation:(id)arg1;
+- (id)initWithRTLocationOfInterest:(id)arg1;
 - (id)toString;
 @end
 

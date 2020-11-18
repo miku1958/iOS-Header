@@ -12,11 +12,11 @@
 {
     BOOL _isScheduled;
     NSArray *_bbSections;
+    BBSettingsGateway *_settingsGateway;
     NSString *_allowedGroupName;
     unsigned long long _privilegedSenderType;
     NSDateComponents *_dndFromComponents;
     NSDateComponents *_dndToComponents;
-    BBSettingsGateway *_settingsGateway;
 }
 
 @property (readonly, nonatomic) NSString *allowedGroupName; // @synthesize allowedGroupName=_allowedGroupName;

@@ -4,24 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSNumber, NSString;
 
 @interface PKPaymentDeviceConfigurationData : NSObject <NSSecureCoding>
 {
     BOOL _devSigned;
+    NSNumber *_primaryJSBLSequenceCounter;
     NSString *_secureElementIdentifier;
 }
 
 @property (nonatomic) BOOL devSigned; // @synthesize devSigned=_devSigned;
+@property (copy, nonatomic) NSNumber *primaryJSBLSequenceCounter; // @synthesize primaryJSBLSequenceCounter=_primaryJSBLSequenceCounter;
 @property (copy, nonatomic) NSString *secureElementIdentifier; // @synthesize secureElementIdentifier=_secureElementIdentifier;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

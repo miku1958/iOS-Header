@@ -26,12 +26,14 @@
 - (id)copyAppRuleBySigningIdentifier:(id)arg1;
 - (id)copyAppRuleIDs;
 - (id)copyLegacyDictionary;
+- (id)copyUniqueSigningIdentifiers;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initFromLegacyDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)installSigningIdentifiersWithFlowDivertControlSocket:(int)arg1;
 - (BOOL)removeAppRuleByID:(id)arg1;
 
 @end

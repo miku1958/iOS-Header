@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
 #import <SceneKit/SCNAnimatable-Protocol.h>
 #import <SceneKit/SCNTechniqueSupport-Protocol.h>
 
-@class MDLLightProbe, NSArray, NSString, SCNMaterialProperty, SCNOrderedDictionary, SCNTechnique;
+@class NSArray, NSData, NSString, NSURL, SCNMaterialProperty, SCNOrderedDictionary, SCNTechnique;
+@protocol MTLTexture;
 
 @interface SCNLight : NSObject <SCNAnimatable, SCNTechniqueSupport, NSCopying, NSSecureCoding>
 {
@@ -30,6 +31,8 @@
     id _color;
     id _shadowColor;
     float _shadowRadius;
+    double _intensity;
+    double _temperature;
     double _orthographicScale;
     unsigned long long _shadowSampleCount;
     struct CGSize _shadowMapSize;
@@ -44,10 +47,14 @@
     float _spotOuterAngle;
     float _spotFalloffExponent;
     SCNMaterialProperty *_gobo;
+    SCNMaterialProperty *_ies;
+    NSURL *_IESProfileURL;
     SCNTechnique *_technique;
-    MDLLightProbe *_mkLightProbe;
+    NSData *_sphericalHarmonics;
+    id<MTLTexture> _probeTexture;
 }
 
+@property (strong, nonatomic) NSURL *IESProfileURL;
 @property (readonly) NSArray *animationKeys;
 @property (nonatomic) double attenuationEndDistance;
 @property (nonatomic) double attenuationFalloffExponent;
@@ -59,6 +66,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) SCNMaterialProperty *gobo;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double intensity;
 @property (copy, nonatomic) NSString *name;
 @property (nonatomic) double orthographicScale;
 @property (nonatomic) double shadowBias;
@@ -71,6 +79,7 @@
 @property (nonatomic) double spotOuterAngle;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) SCNTechnique *technique;
+@property (nonatomic) double temperature;
 @property (copy, nonatomic) NSString *type;
 @property (nonatomic) double zFar;
 @property (nonatomic) double zNear;
@@ -80,12 +89,14 @@
 + (id)lightWithMDLLight:(id)arg1;
 + (id)lightWithMDLLightProbe:(id)arg1;
 + (BOOL)supportsSecureCoding;
-- (void *)__CFObject;
-- (void)__removeAnimation:(id)arg1 forKey:(id)arg2;
+- (const void *)__CFObject;
+- (BOOL)__removeAnimation:(id)arg1 forKey:(id)arg2;
 - (void)_customDecodingOfSCNLight:(id)arg1;
 - (void)_customEncodingOfSCNLight:(id)arg1;
 - (void)_didDecodeSCNLight:(id)arg1;
 - (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2;
+- (id)_probeTexture;
+- (id)_sphericalHarmonics;
 - (void)_syncEntityObjCModel;
 - (void)_syncObjCAnimations;
 - (void)_syncObjCModel;
@@ -94,6 +105,7 @@
 - (id)animationForKey:(id)arg1;
 - (struct __C3DAnimationManager *)animationManager;
 - (id)attributeForKey:(id)arg1;
+- (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
 - (id)copy;
 - (struct __C3DAnimationChannel *)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
 - (struct __C3DAnimationChannel *)copyAnimationChannelForKeyPath:(id)arg1 property:(id)arg2;
@@ -109,7 +121,6 @@
 - (BOOL)isBaked;
 - (BOOL)isPausedOrPausedByInheritance;
 - (struct __C3DLight *)lightRef;
-- (id)mkLightProbe;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pauseAnimationForKey:(id)arg1;
 - (id)presentationInstance;
@@ -123,15 +134,18 @@
 - (void)setAttribute:(id)arg1 forKey:(id)arg2;
 - (void)setBaked:(BOOL)arg1;
 - (void)setIdentifier:(id)arg1;
-- (void)setMkLightProbe:(id)arg1;
 - (void)setShouldBakeDirectLighting:(BOOL)arg1;
 - (void)setShouldBakeIndirectLighting:(BOOL)arg1;
+- (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
 - (void)setSpotFalloffExponent:(double)arg1;
 - (void)setUsesDeferredShadows:(BOOL)arg1;
 - (void)setUsesModulatedMode:(BOOL)arg1;
+- (void)set_probeTexture:(id)arg1;
+- (void)set_sphericalHarmonics:(id)arg1;
 - (BOOL)shouldBakeDirectLighting;
 - (BOOL)shouldBakeIndirectLighting;
 - (double)spotFalloffExponent;
+- (void)unbindAnimatablePath:(id)arg1;
 - (BOOL)usesDeferredShadows;
 - (BOOL)usesModulatedMode;
 

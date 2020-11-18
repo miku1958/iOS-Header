@@ -15,16 +15,20 @@
     BOOL _isInstalled;
     BOOL _isBuiltInVoice;
     NSString *_name;
+    NSString *_identifier;
     NSArray *_languages;
     long long _gender;
     long long _footprint;
     NSNumber *_contentVersion;
     NSString *_masteredVersion;
+    NSString *_compatibilityVersion;
 }
 
+@property (readonly, nonatomic) NSString *compatibilityVersion; // @synthesize compatibilityVersion=_compatibilityVersion;
 @property (readonly, nonatomic) NSNumber *contentVersion; // @synthesize contentVersion=_contentVersion;
 @property (readonly, nonatomic) long long footprint; // @synthesize footprint=_footprint;
 @property (readonly, nonatomic) long long gender; // @synthesize gender=_gender;
+@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isBuiltInVoice; // @synthesize isBuiltInVoice=_isBuiltInVoice;
 @property (readonly, nonatomic) BOOL isInstalled; // @synthesize isInstalled=_isInstalled;
 @property (readonly, nonatomic) NSArray *languages; // @synthesize languages=_languages;
@@ -38,7 +42,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionaryRepresentation:(id)arg1;
-- (id)initWithName:(id)arg1 languages:(id)arg2 gender:(long long)arg3 footprint:(long long)arg4 isInstalled:(BOOL)arg5 isBuiltIn:(BOOL)arg6;
+- (id)initWithName:(id)arg1 languages:(id)arg2 gender:(long long)arg3 footprint:(long long)arg4 isInstalled:(BOOL)arg5 isBuiltIn:(BOOL)arg6 masteredVersion:(id)arg7 compatibilityVersion:(id)arg8;
 
 @end
 

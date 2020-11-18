@@ -14,11 +14,11 @@
     struct __CFData *_cfData;
     int _unpackAlignment;
     BOOL _requestIssuedForAlphaPremultiplication;
-    BOOL _requestIssuedForMipmapGeneration;
     BOOL _requestIssuedToReorientToGL;
     BOOL _requestIssuedToInterpretGrayAsAlpha;
     BOOL _requestIssuedForSRGB;
     unsigned int _primarySurfaceLength;
+    BOOL _requestIssuedForMipmapGeneration;
     BOOL _hasPremultipliedAlpha;
     BOOL _isPowerOfTwo;
     BOOL _isCubeMap;
@@ -72,6 +72,7 @@
 @property (nonatomic) unsigned int numMipMapLevels; // @synthesize numMipMapLevels=_numMipMapLevels;
 @property (nonatomic) unsigned int orientation; // @synthesize orientation=_orientation;
 @property (nonatomic) BOOL reOrient; // @synthesize reOrient=_reOrient;
+@property (readonly) BOOL requestIssuedForMipmapGeneration; // @synthesize requestIssuedForMipmapGeneration=_requestIssuedForMipmapGeneration;
 @property (nonatomic) unsigned int rowBytes; // @synthesize rowBytes=_rowBytes;
 @property (nonatomic) int texelFormat; // @synthesize texelFormat=_texelFormat;
 @property (nonatomic) unsigned int textureTarget; // @synthesize textureTarget=_textureTarget;

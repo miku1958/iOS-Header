@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long discoverable; // @synthesize discoverable=_discoverable;
 
 - (void)_handleRetrievedPrivacySettings:(id)arg1;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
 

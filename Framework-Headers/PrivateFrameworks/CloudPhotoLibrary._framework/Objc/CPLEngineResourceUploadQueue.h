@@ -12,7 +12,6 @@
 
 @interface CPLEngineResourceUploadQueue : CPLEngineStorage <CPLAbstractObject>
 {
-    BOOL _immediateUploads[19];
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,13 +21,11 @@
 @property (readonly) Class superclass;
 
 - (BOOL)_markResourcesAsStaleForItemWithIdentifier:(id)arg1 withResources:(id)arg2 includePending:(BOOL)arg3 error:(id *)arg4;
-- (id)_uploadTaskForResource:(id)arg1 foreground:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)availabilityOfResource:(id)arg1;
 - (unsigned long long)countOfOriginalImages;
 - (unsigned long long)countOfOriginalOthers;
 - (unsigned long long)countOfOriginalVideos;
 - (unsigned long long)countOfQueuedUploadTasks;
-- (id)dequeueBackgroundUploadTaskForResourceType:(unsigned long long)arg1 foreground:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)discardResourceForUpload:(id)arg1 error:(id *)arg2;
 - (BOOL)enqueueResourceForBackgroundUpload:(id)arg1 error:(id *)arg2;
 - (BOOL)enqueueResourcesForUploadForBatch:(id)arg1 error:(id *)arg2;
@@ -41,7 +38,6 @@
 - (BOOL)reenqueueResource:(id)arg1 uploadURL:(id)arg2 failedToUploadWithUploadError:(id)arg3 error:(id *)arg4;
 - (BOOL)resetDequeuedBackgroundUploadTasksWithError:(id *)arg1;
 - (BOOL)resetWithError:(id *)arg1;
-- (BOOL)shouldUploadResourceWithMetadata:(id)arg1;
 
 @end
 

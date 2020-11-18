@@ -6,28 +6,26 @@
 
 #import <CoreCDPUI/CDPPassphraseEntryViewController.h>
 
-#import <CoreCDPUI/CDPRemoteSecretEntryPaneDelegate-Protocol.h>
 #import <CoreCDPUI/DevicePINControllerDelegate-Protocol.h>
 
-@class CDPDevice, CDPRemoteDeviceSecretValidator, NSNumber, NSString;
+@class CDPDevice, CDPRemoteDeviceSecretValidator, CDPRemoteValidationEscapeOffer, NSNumber, NSString;
 @protocol CDPRemoteSecretEntryDelegate;
 
-@interface CDPRemoteSecretEntryViewController : CDPPassphraseEntryViewController <DevicePINControllerDelegate, CDPRemoteSecretEntryPaneDelegate>
+@interface CDPRemoteSecretEntryViewController : CDPPassphraseEntryViewController <DevicePINControllerDelegate>
 {
     BOOL _hasNumericSecret;
     NSNumber *_numericSecretLength;
-    CDPDevice *_device;
+    CDPDevice *_remoteRecoveryDevice;
     long long _remainingAttempts;
     CDPRemoteDeviceSecretValidator *_validator;
-    unsigned long long _escapeOffer;
     id<CDPRemoteSecretEntryDelegate> _delegate;
     unsigned long long _validationState;
-    BOOL _cancelValidationOnBack;
+    CDPRemoteValidationEscapeOffer *_escapeOffer;
 }
 
-@property (nonatomic) BOOL cancelValidationOnBack; // @synthesize cancelValidationOnBack=_cancelValidationOnBack;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) CDPRemoteValidationEscapeOffer *escapeOffer; // @synthesize escapeOffer=_escapeOffer;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) CDPRemoteDeviceSecretValidator *validator; // @synthesize validator=_validator;
@@ -38,20 +36,18 @@
 - (void)didEnterValidRemoteSecret:(id)arg1;
 - (void)disableUserInteractionAndStartSpinner;
 - (void)enableUserInteractionAndStopSpinner;
-- (id)initWithDevice:(id)arg1 validator:(id)arg2 escapeOffer:(unsigned long long)arg3 delegate:(id)arg4;
-- (id)initWithIsNumeric:(BOOL)arg1 numericLength:(id)arg2 validator:(id)arg3 escapeOffer:(unsigned long long)arg4 delegate:(id)arg5;
+- (id)initWithDevice:(id)arg1 validator:(id)arg2 delegate:(id)arg3;
+- (id)initWithIsNumeric:(BOOL)arg1 numericLength:(id)arg2 validator:(id)arg3 delegate:(id)arg4;
 - (id)initWithValidator:(id)arg1;
 - (id)pinInstructionsPrompt;
 - (BOOL)pinIsAcceptable:(id)arg1 outError:(id *)arg2;
-- (void)remoteSecretPane:(id)arg1 escapeHatchTappedWithOffer:(unsigned long long)arg2 device:(id)arg3;
 - (void)setPane:(id)arg1;
-- (void)showIncorrectRemoteSecretAlertWithIsLocalSecret:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)showIncorrectRemoteSecretAlertForPasscode:(id)arg1 withRecoveryError:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)simplePIN;
 - (id)title;
 - (BOOL)useProgressiveDelays;
 - (BOOL)validatePIN:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
-- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

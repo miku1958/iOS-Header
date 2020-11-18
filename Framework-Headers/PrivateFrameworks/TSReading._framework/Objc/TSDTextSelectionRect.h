@@ -22,6 +22,7 @@
 
 - (BOOL)containsEnd;
 - (BOOL)containsStart;
+- (void)dealloc;
 - (id)initWithRect:(struct CGRect)arg1 direction:(long long)arg2 range:(id)arg3 containsStart:(BOOL)arg4 containsEnd:(BOOL)arg5 isVertical:(BOOL)arg6;
 - (BOOL)isVertical;
 - (struct CGRect)rect;

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     BOOL _invalidated;
     NSHashTable *_reachabilityObservers;
     BRReachabilityMonitor *_reachabilityMonitor;
+    unsigned int _reachabilityFlags;
     BOOL _isNetworkReachable;
     NSObject<OS_dispatch_source> *_isNetworkReachableTimer;
     NSHashTable *_powerObservers;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL isNetworkReachable;
 @property (readonly) BOOL isPowerOK;
+@property (readonly) unsigned int reachabilityFlags;
 @property (readonly) Class superclass;
 
 + (id)manager;
@@ -67,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)_setNetworkReachableWithCoalescing:(BOOL)arg1;
 - (void)_setPowerLevel:(BOOL)arg1;
 - (void)_setPowerLevelWithCoalescing:(BOOL)arg1;
+- (void)_setReachabilityFlags:(unsigned int)arg1;
 - (void)addAppListObserver:(id)arg1;
 - (void)addLowDiskObserver:(id)arg1 forDevice:(int)arg2;
 - (void)addLowMemoryObserver:(id)arg1;
@@ -77,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (BOOL)hasEnoughSpaceForDevice:(int)arg1;
 - (id)init;
+- (void)reachabilityMonitor:(id)arg1 didChangeReachabilityFlagsTo:(unsigned int)arg2;
 - (void)reachabilityMonitor:(id)arg1 didChangeReachabilityStatusTo:(BOOL)arg2;
 - (void)removeAppListObserver:(id)arg1;
 - (void)removeLowDiskObserver:(id)arg1 forDevice:(int)arg2;

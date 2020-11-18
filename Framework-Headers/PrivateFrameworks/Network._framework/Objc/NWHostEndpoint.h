@@ -12,9 +12,10 @@
 {
 }
 
-@property (readonly) NSString *hostname;
-@property (readonly) NSString *port;
+@property (readonly, nonatomic) NSString *hostname;
+@property (readonly, nonatomic) NSString *port;
 
++ (unsigned int)endpointType;
 + (id)endpointWithHostname:(id)arg1 port:(id)arg2;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
 

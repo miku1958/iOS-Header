@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSMutableArray, NSMutableDictionary;
 @protocol SCNRenderContext;
@@ -28,12 +28,13 @@ __attribute__((visibility("hidden")))
 - (void)finalizeFrame;
 - (id)initWithRenderContext:(id)arg1;
 - (void)purge;
+- (void)purgeRenderTargetsMatchingFrameBuffer;
 - (void)releaseRenderTarget:(id)arg1;
-- (void)releaseRenderTargetNamed:(id)arg1 passIdentifier:(long long)arg2;
-- (void)releaseTextureWithName:(id)arg1 passIdentifier:(long long)arg2 retainCount:(long long)arg3;
-- (id)renderTargetWithDescription:(CDStruct_2e3d5ba3)arg1 size:(id)arg2 name:(long long)arg3 passIdentifier:(long long)arg4 useCount: /* Error: Ran out of types for this method. */;
-- (id)renderTargetWithName:(id)arg1 passIdentifier:(long long)arg2;
-- (void)retainTextureWithName:(id)arg1 passIdentifier:(long long)arg2 retainCount:(long long)arg3;
+- (void)releaseRenderTargetNamed:(id)arg1;
+- (void)releaseTextureWithName:(id)arg1 retainCount:(long long)arg2;
+- (id)renderTargetWithDescription:(CDStruct_fd8065c6)arg1 size:(id)arg2 name:(long long)arg3 useCount: /* Error: Ran out of types for this method. */;
+- (id)renderTargetWithName:(id)arg1;
+- (void)retainTextureWithName:(id)arg1 retainCount:(long long)arg2;
 - (void)viewportDidResize;
 
 @end

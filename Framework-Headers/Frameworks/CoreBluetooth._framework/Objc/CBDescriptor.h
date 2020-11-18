@@ -21,7 +21,7 @@
 @property (readonly, nonatomic) CBPeripheral *peripheral; // @synthesize peripheral=_peripheral;
 @property (strong) id value; // @synthesize value=_value;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)handleValueUpdated:(id)arg1;
 - (id)handleValueWritten:(id)arg1;

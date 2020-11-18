@@ -6,7 +6,6 @@
 
 #import <coreroutine/RTNotification.h>
 
-__attribute__((visibility("hidden")))
 @interface RTAuthorizationManagerNotificationRoutineEnabled : RTNotification
 {
     BOOL _enabled;
@@ -14,7 +13,6 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 
-+ (id)notificationName;
 - (id)initWithEnabled:(BOOL)arg1;
 
 @end

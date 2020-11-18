@@ -6,11 +6,13 @@
 
 #import <AccountNotification/NSObject-Protocol.h>
 
-@class ANAccountNotification, NSString;
+@class ANAccountNotification, ANSectionSubtypeDescriptor, NSString;
 
 @protocol ANDaemonProtocol <NSObject>
 - (void)addNotification:(ANAccountNotification *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
+- (void)addSectionSubtypeDescriptor:(ANSectionSubtypeDescriptor *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
 - (void)removeNotificationWithID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)removeNotificationsWithEventID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)removeSectionSubtypeWithDescriptor:(ANSectionSubtypeDescriptor *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
 @end
 

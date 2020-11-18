@@ -33,6 +33,7 @@
 - (void)layoutSubviews;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setPerspectiveTargetView:(id)arg1;
+- (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setVanishingPoint:(struct CGPoint)arg1;
 - (void)updateForChangedDistanceFromVanishingPoint;
 

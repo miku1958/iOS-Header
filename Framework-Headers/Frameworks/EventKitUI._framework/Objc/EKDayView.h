@@ -11,7 +11,7 @@
 #import <EventKitUI/EKDayViewContentDelegate-Protocol.h>
 #import <EventKitUI/UIScrollViewDelegate-Protocol.h>
 
-@class EKDayAllDayView, EKDayTimeView, EKDayViewContent, EKDayViewSpringLoadedScrollAnimation, EKEvent, NSArray, NSCalendar, NSDate, NSDateComponents, NSString, NSTimer, UIColor, UIImageView, UIPinchGestureRecognizer, UIScrollView, UITapGestureRecognizer;
+@class EKDayAllDayView, EKDayTimeView, EKDayViewContent, EKEvent, NSArray, NSCalendar, NSDate, NSDateComponents, NSString, NSTimer, UIColor, UIImageView, UIPinchGestureRecognizer, UIScrollView, UITapGestureRecognizer, UIVisualEffect;
 @protocol EKDayViewDataSource, EKDayViewDelegate;
 
 @interface EKDayView : UIView <UIScrollViewDelegate, EKDayAllDayViewDelegate, EKDayViewContentDelegate, EKDayTimeViewDelegate>
@@ -34,7 +34,6 @@
     EKDayAllDayView *_allDayView;
     EKDayViewContent *_dayContent;
     EKDayTimeView *_timeView;
-    EKDayViewSpringLoadedScrollAnimation *_scrollAnimation;
     UIScrollView *_scroller;
     NSTimer *_timeMarkerTimer;
     struct CGPoint _lastPinchDistance;
@@ -47,6 +46,7 @@
     BOOL _isNowVisible;
     BOOL _scrollEventsInToViewIgnoresVisibility;
     BOOL _shouldEverShowTimeIndicators;
+    BOOL _sizeTimeViewUsingOnlyHourText;
     BOOL _usesVibrantGridDrawing;
     BOOL _allowPinchingHourHeights;
     int _outlineStyle;
@@ -54,6 +54,7 @@
     id<EKDayViewDataSource> _dataSource;
     NSDateComponents *_displayDate;
     NSCalendar *_calendar;
+    double _additionalLeftPadding;
     double _verticalContentInset;
     double _todayScrollSecondBuffer;
     double _scrollAnimationDurationOverride;
@@ -62,8 +63,10 @@
     double _bottomContentInset;
 }
 
+@property (nonatomic) double additionalLeftPadding; // @synthesize additionalLeftPadding=_additionalLeftPadding;
 @property (nonatomic) BOOL alignsMidnightToTop; // @synthesize alignsMidnightToTop=_alignsMidnightToTop;
 @property (readonly, nonatomic) EKDayAllDayView *allDayView;
+@property (readonly, nonatomic) NSArray *allOccurrenceViews;
 @property (nonatomic) BOOL allowPinchingHourHeights; // @synthesize allowPinchingHourHeights=_allowPinchingHourHeights;
 @property (nonatomic) BOOL allowsOccurrenceSelection; // @synthesize allowsOccurrenceSelection=_allowsOccurrenceSelection;
 @property (nonatomic) BOOL allowsScrolling;
@@ -82,6 +85,7 @@
 @property (nonatomic) BOOL eventsFillGrid;
 @property (nonatomic) int firstVisibleSecond;
 @property (strong, nonatomic) UIColor *gridLineColor;
+@property (strong, nonatomic) UIVisualEffect *gridVisualEffect;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double hourScale; // @synthesize hourScale=_hourScale;
 @property (nonatomic) struct _NSRange hoursToRender;
@@ -104,8 +108,11 @@
 @property (nonatomic) BOOL showsTimeLabel;
 @property (nonatomic) BOOL showsTimeLine;
 @property (nonatomic) BOOL showsTimeMarker;
+@property (nonatomic) BOOL sizeTimeViewUsingOnlyHourText; // @synthesize sizeTimeViewUsingOnlyHourText=_sizeTimeViewUsingOnlyHourText;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) EKDayTimeView *timeView;
 @property (strong, nonatomic) UIColor *timeViewTextColor;
+@property (strong, nonatomic) UIVisualEffect *timeViewVisualEffect;
 @property (nonatomic) double todayScrollSecondBuffer; // @synthesize todayScrollSecondBuffer=_todayScrollSecondBuffer;
 @property (nonatomic) double topContentInset; // @synthesize topContentInset=_topContentInset;
 @property (nonatomic) BOOL usesVibrantGridDrawing; // @synthesize usesVibrantGridDrawing=_usesVibrantGridDrawing;
@@ -120,7 +127,6 @@
 - (void)_dayViewPinched:(id)arg1;
 - (void)_disposeAllDayView;
 - (void)_doubleTap:(id)arg1;
-- (void)_finishedScrollToSecond;
 - (id)_generateVerticalGridExtensionImage;
 - (void)_invalidateMarkerTimer;
 - (BOOL)_isTimeMarkerFullyUnobstructed;
@@ -152,7 +158,6 @@
 - (double)dateAtPoint:(struct CGPoint)arg1 isAllDay:(BOOL *)arg2 requireAllDayRegionInsistence:(BOOL)arg3;
 - (void)dayAllDayView:(id)arg1 occurrenceViewClicked:(id)arg2;
 - (void)dayContentView:(id)arg1 atPoint:(struct CGPoint)arg2;
-- (void)dayOccurrenceViewClicked:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)dayViewContent:(id)arg1 didCreateOccurrenceViews:(id)arg2;
 - (void)dayViewContent:(id)arg1 didSelectEvent:(id)arg2;
 - (void)dayViewContent:(id)arg1 didTapInEmptySpaceOnDay:(double)arg2;

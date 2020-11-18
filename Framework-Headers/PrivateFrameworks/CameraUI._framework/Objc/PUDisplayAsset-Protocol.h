@@ -7,7 +7,7 @@
 #import <CameraUI/NSCopying-Protocol.h>
 #import <CameraUI/NSObject-Protocol.h>
 
-@class NSDate, NSString;
+@class CLLocation, NSDate, NSString;
 @protocol PUDisplayAsset;
 
 @protocol PUDisplayAsset <NSObject, NSCopying>
@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) BOOL isPhotoIrisPlaceholder;
 @property (readonly, nonatomic) BOOL isTemporaryPlaceholder;
 @property (readonly, nonatomic) NSString *localizedGeoDescription;
+@property (readonly, nonatomic) CLLocation *location;
 @property (readonly, nonatomic) unsigned long long mediaType;
 @property (readonly, nonatomic) NSDate *modificationDate;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 photoIrisStillDisplayTime;

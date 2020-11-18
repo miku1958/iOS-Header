@@ -18,11 +18,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *data;
 @property (readonly, nonatomic) NSArray *dataIdentifiers;
 
+- (void).cxx_destruct;
 - (void)addObserver:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dataSource:(id)arg1 removeDatumWithIdentifier:(id)arg2 observerUpdateBlock:(CDUnknownBlockType)arg3;
 - (void)dataSource:(id)arg1 replaceWithDatum:(id)arg2 observerUpdateBlock:(CDUnknownBlockType)arg3;
 - (id)datumWithIdentifier:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (void)removeObserver:(id)arg1 completion:(CDUnknownBlockType)arg2;
 

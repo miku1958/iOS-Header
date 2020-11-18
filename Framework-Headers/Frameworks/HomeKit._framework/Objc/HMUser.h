@@ -9,25 +9,28 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMDelegateCaller, HMHome, HMHomeAccessControl, NSString, NSUUID;
+@class HMDelegateCaller, HMHome, HMHomeAccessControl, HMThreadSafeMutableArrayCollection, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMUser : NSObject <NSSecureCoding, HMObjectMerge>
 {
+    HMThreadSafeMutableArrayCollection *_pendingAccessoryInvitations;
+    BOOL _currentUser;
     BOOL _administrator;
     NSUUID *_uniqueIdentifier;
     NSString *_name;
     HMHomeAccessControl *_homeAccessControl;
     NSString *_userID;
     HMHome *_home;
-    NSUUID *_uuid;
-    HMDelegateCaller *_delegateCaller;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
+    NSUUID *_uuid;
+    HMDelegateCaller *_delegateCaller;
 }
 
 @property (nonatomic) BOOL administrator; // @synthesize administrator=_administrator;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property (nonatomic, getter=isCurrentUser) BOOL currentUser; // @synthesize currentUser=_currentUser;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
 @property (readonly, copy) NSString *description;
@@ -44,6 +47,8 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_configure:(id)arg1 clientQueue:(id)arg2 delegateCaller:(id)arg3;
+- (id)_filterAccessoryInvitationsFromOutgoingInvitation:(id)arg1;
+- (BOOL)_mergeWithNewAccessoryInvitations:(id)arg1 operations:(id)arg2;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_unconfigure;
 - (void)encodeWithCoder:(id)arg1;
@@ -51,6 +56,10 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUserID:(id)arg1 name:(id)arg2 uuid:(id)arg3 home:(id)arg4;
 - (id)initWithUserID:(id)arg1 name:(id)arg2 uuid:(id)arg3 home:(id)arg4 isAdministrator:(BOOL)arg5;
+- (BOOL)mergePendingAccessoryInvitationsWithOutgoingInvitation:(id)arg1 operations:(id)arg2;
+- (id)pendingAccessoryInvitations;
+- (void)setPendingAccessoryInvitationsWithOutgoingInvitation:(id)arg1;
+- (void)updateHomeAccessControl:(BOOL)arg1 remoteAccess:(BOOL)arg2;
 
 @end
 

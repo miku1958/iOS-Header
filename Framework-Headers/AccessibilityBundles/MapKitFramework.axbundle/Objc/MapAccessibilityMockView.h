@@ -15,12 +15,12 @@
 
 @property (strong, nonatomic) UIView *view; // @synthesize view=_view;
 
+- (void).cxx_destruct;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
-- (void)dealloc;
 
 @end
 

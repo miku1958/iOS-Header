@@ -30,14 +30,14 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithDiskCacheFilepath:(id)arg1;
-- (void)invalidateCacheForLocationCoordinate:(CDStruct_c3b9c2ee)arg1;
+- (void)invalidateCacheForLocationCoordinate:(struct CLLocationCoordinate2D)arg1;
 - (void)invalidateDiskCaches;
 - (void)invalidateMemoryCaches;
-- (id)placemarksForLocationCoordinate:(CDStruct_c3b9c2ee)arg1;
-- (id)placemarksForLocationCoordinate:(CDStruct_c3b9c2ee)arg1 andAccuracy:(double)arg2;
-- (id)placemarksForLocationCoordinate:(CDStruct_c3b9c2ee)arg1 andAccuracy:(double)arg2 closestResultDistance:(double *)arg3 numberOfResults:(unsigned long long *)arg4;
+- (id)placemarksForLocationCoordinate:(struct CLLocationCoordinate2D)arg1;
+- (id)placemarksForLocationCoordinate:(struct CLLocationCoordinate2D)arg1 andAccuracy:(double)arg2;
+- (id)placemarksForLocationCoordinate:(struct CLLocationCoordinate2D)arg1 andAccuracy:(double)arg2 closestResultDistance:(double *)arg3 numberOfResults:(unsigned long long *)arg4;
 - (BOOL)save;
-- (void)setPlacemarks:(id)arg1 forLocationCoordinate:(CDStruct_c3b9c2ee)arg2;
+- (void)setPlacemarks:(id)arg1 forLocationCoordinate:(struct CLLocationCoordinate2D)arg2;
 
 @end
 

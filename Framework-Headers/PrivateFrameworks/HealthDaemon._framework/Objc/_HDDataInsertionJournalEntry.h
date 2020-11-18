@@ -17,8 +17,7 @@
 @property (readonly, nonatomic) HKObject *dataObject; // @synthesize dataObject=_dataObject;
 @property (readonly, nonatomic) HDDataOriginProvenance *provenance; // @synthesize provenance=_provenance;
 
-+ (void)applyEntries:(id)arg1 withDaemon:(id)arg2;
-+ (long long)behavior;
++ (void)applyEntries:(id)arg1 withProfile:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;

@@ -47,9 +47,14 @@
 @property (nonatomic) unsigned int numberOfReroutes; // @synthesize numberOfReroutes=_numberOfReroutes;
 @property (nonatomic) int uiNotification; // @synthesize uiNotification=_uiNotification;
 
+- (int)StringAsArrival:(id)arg1;
+- (int)StringAsDeparture:(id)arg1;
+- (int)StringAsUiNotification:(id)arg1;
+- (id)arrivalAsString:(int)arg1;
 - (int)bucketValueForTimeDelta:(double)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)departureAsString:(int)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
@@ -57,6 +62,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)uiNotificationAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

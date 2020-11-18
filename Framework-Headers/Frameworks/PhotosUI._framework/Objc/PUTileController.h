@@ -12,12 +12,12 @@
 {
     BOOL _active;
     BOOL _detached;
-    BOOL _wantsVisibleRectChanges;
     BOOL _reusable;
+    BOOL _wantsVisibleRectChanges;
     NSString *_reuseIdentifier;
+    long long _animationCount;
     PUTilingView *_tilingView;
     PUTileLayoutInfo *_layoutInfo;
-    long long _animationCount;
 }
 
 @property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;

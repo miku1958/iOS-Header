@@ -6,7 +6,7 @@
 
 #import <CoreBluetooth/CBPeer.h>
 
-@class CBCentralManager, NSArray, NSMutableArray, NSMutableDictionary, NSNumber, NSString;
+@class CBCentralManager, NSArray, NSMutableDictionary, NSNumber, NSString;
 @protocol CBPeripheralDelegate;
 
 @interface CBPeripheral : CBPeer
@@ -28,22 +28,23 @@
         unsigned int didWriteDescriptorValue:1;
         unsigned int didReceiveTimeSync:1;
     } _delegateFlags;
-    NSMutableArray *_services;
     NSMutableDictionary *_attributes;
     BOOL _isConnectedToSystem;
     id<CBPeripheralDelegate> _delegate;
     NSString *_name;
     NSNumber *_RSSI;
     long long _state;
+    NSArray *_services;
 }
 
 @property (strong) NSNumber *RSSI; // @synthesize RSSI=_RSSI;
-@property (nonatomic) id<CBPeripheralDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<CBPeripheralDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL isConnectedToSystem; // @synthesize isConnectedToSystem=_isConnectedToSystem;
 @property (strong) NSString *name; // @synthesize name=_name;
 @property (strong) NSArray *services; // @synthesize services=_services;
 @property long long state; // @synthesize state=_state;
 
+- (void).cxx_destruct;
 - (id)attributeForHandle:(id)arg1;
 - (void)dealloc;
 - (id)description;

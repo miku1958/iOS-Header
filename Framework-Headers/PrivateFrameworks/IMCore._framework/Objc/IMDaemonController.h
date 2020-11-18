@@ -38,6 +38,7 @@
     unsigned int _gMyFZListenerCapabilities;
     unsigned int _cachedCapabilities;
     unsigned int _lastUpdatedCapabilities;
+    BOOL _requestingConnection;
 }
 
 @property (setter=_setAutoReconnect:) BOOL _autoReconnect; // @synthesize _autoReconnect;
@@ -48,16 +49,18 @@
 @property (strong, setter=_setServicesToAllow:) NSArray *_servicesToAllow; // @synthesize _servicesToAllow;
 @property (strong, setter=_setServicesToDeny:) NSArray *_servicesToDeny; // @synthesize _servicesToDeny;
 @property (readonly, nonatomic) unsigned int capabilities;
-@property (nonatomic) id delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL isConnected;
 @property (readonly, nonatomic) BOOL isConnecting;
 @property (readonly, nonatomic) IMDaemonListener *listener; // @synthesize listener=_daemonListener;
+@property (readonly, nonatomic, getter=isRequestingConnection) BOOL requestingConnection; // @synthesize requestingConnection=_requestingConnection;
 
 + (BOOL)_applicationWillTerminate;
 + (void)_blockUntilSendQueueIsEmpty;
 + (void)_setApplicationWillTerminate;
 + (id)sharedController;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (BOOL)__isLocalObjectValidOnQueue:(id)arg1;
 - (BOOL)__isRemoteObjectValidOnQueue:(id)arg1;
 - (BOOL)_acquiringDaemonConnection;
@@ -87,6 +90,7 @@
 - (void)forwardInvocation:(id)arg1;
 - (BOOL)hasListenerForID:(id)arg1;
 - (id)init;
+- (void)killDaemon;
 - (void)listener:(id)arg1 setListenerCapabilities:(unsigned int)arg2;
 - (void)listener:(id)arg1 setValue:(id)arg2 ofPersistentProperty:(id)arg3;
 - (void)listener:(id)arg1 setValue:(id)arg2 ofProperty:(id)arg3;

@@ -6,26 +6,37 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreCDP/NSCopying-Protocol.h>
 #import <CoreCDP/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSNumber, NSString;
+@protocol CDPAuthProviderInternal;
 
-@interface CDPContext : NSObject <NSSecureCoding>
+@interface CDPContext : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _isHSA2Account;
     BOOL _didUseSMSVerification;
     BOOL __useSecureBackupCachedPassphrase;
     BOOL __alwaysCreateEscrowRecord;
+    BOOL __guestMode;
+    BOOL __idmsRecovery;
     NSDictionary *_authenticationResults;
     NSString *_appleID;
     NSString *_password;
     NSString *_passwordEquivToken;
     NSNumber *_dsid;
+    long long _type;
     NSString *_cachedLocalSecret;
     unsigned long long _cachedLocalSecretType;
+    id<CDPAuthProviderInternal> __authProvider;
+    NSString *__recoveryToken;
 }
 
 @property (nonatomic) BOOL _alwaysCreateEscrowRecord; // @synthesize _alwaysCreateEscrowRecord=__alwaysCreateEscrowRecord;
+@property (strong, nonatomic) id<CDPAuthProviderInternal> _authProvider; // @synthesize _authProvider=__authProvider;
+@property (nonatomic) BOOL _guestMode; // @synthesize _guestMode=__guestMode;
+@property (nonatomic) BOOL _idmsRecovery; // @synthesize _idmsRecovery=__idmsRecovery;
+@property (copy, nonatomic) NSString *_recoveryToken; // @synthesize _recoveryToken=__recoveryToken;
 @property (nonatomic) BOOL _useSecureBackupCachedPassphrase; // @synthesize _useSecureBackupCachedPassphrase=__useSecureBackupCachedPassphrase;
 @property (copy, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
 @property (copy, nonatomic) NSDictionary *authenticationResults; // @synthesize authenticationResults=_authenticationResults;
@@ -36,12 +47,15 @@
 @property (nonatomic) BOOL isHSA2Account; // @synthesize isHSA2Account=_isHSA2Account;
 @property (copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property (copy, nonatomic) NSString *passwordEquivToken; // @synthesize passwordEquivToken=_passwordEquivToken;
+@property (nonatomic) long long type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAuthenticationResults:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)purgeResumeData;
 - (void)updateWithAuthenticationResults:(id)arg1;
 
 @end

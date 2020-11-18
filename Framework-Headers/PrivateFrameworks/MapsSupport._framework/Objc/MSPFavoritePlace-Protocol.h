@@ -7,11 +7,11 @@
 #import <MapsSupport/MSPFavorite-Protocol.h>
 
 @class NSString;
-@protocol GEOMapItemPrivate;
+@protocol GEOMapItem;
 
 @protocol MSPFavoritePlace <MSPFavorite>
-- (CDStruct_c3b9c2ee)coordinateOfDroppedPin;
-- (id<GEOMapItemPrivate>)geoMapItem;
+- (struct CLLocationCoordinate2D)coordinateOfDroppedPin;
+- (id<GEOMapItem>)geoMapItem;
 - (NSString *)title;
 @end
 

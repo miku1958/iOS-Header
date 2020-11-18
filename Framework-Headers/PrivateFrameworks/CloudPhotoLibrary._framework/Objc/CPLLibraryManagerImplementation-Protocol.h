@@ -6,22 +6,28 @@
 
 #import <CloudPhotoLibrary/CPLPlatformImplementation-Protocol.h>
 
-@class CPLResource, NSArray, NSString, NSURL;
+@class CPLResource, NSArray, NSString;
 
 @protocol CPLLibraryManagerImplementation <CPLPlatformImplementation>
 - (void)beginDownloadForResource:(CPLResource *)arg1 clientBundleID:(NSString *)arg2 highPriority:(BOOL)arg3 proposedTaskIdentifier:(NSString *)arg4 completionHandler:(void (^)(CPLResourceTransferTask *))arg5;
+- (void)beginInMemoryDownloadOfResource:(CPLResource *)arg1 completionHandler:(void (^)(CPLResourceTransferTask *))arg2;
+- (void)checkHasBackgroundDownloadOperationsWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;
 - (void)closeWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)deactivateWithCompletionHandler:(void (^)(NSError *))arg1;
 - (BOOL)diagnosticsEnabled;
+- (void)disableMingling;
 - (void)disableSynchronizationWithReason:(NSString *)arg1;
+- (void)enableMingling;
 - (void)enableSynchronizationWithReason:(NSString *)arg1;
 - (void)getMappedIdentifiersForIdentifiers:(NSArray *)arg1 inAreLocalIdentifiers:(BOOL)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)noteClientIsBeginningSignificantWork;
+- (void)noteClientIsEndingSignificantWork;
 - (void)noteClientIsInBackground;
 - (void)noteClientIsInForeground;
 - (void)noteClientReceivedNotificationOfServerChanges;
 - (void)openWithCompletionHandler:(void (^)(NSError *, NSString *, NSString *, NSURL *))arg1;
 - (void)publishResource:(CPLResource *)arg1 completionHandler:(void (^)(NSURL *, NSDate *, NSError *))arg2;
-- (void)removeCloudLibraryWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 completionHandler:(void (^)(BOOL, unsigned long long, NSError *))arg3;
 - (void)resetStatus;
 - (void)setDiagnosticsEnabled:(BOOL)arg1;
 - (void)startSyncSession;
@@ -31,8 +37,7 @@
 - (void)barrier;
 - (void)cloudCacheGetDescriptionForRecordWithIdentifier:(NSString *)arg1 related:(BOOL)arg2 completionHandler:(void (^)(id, id, NSError *))arg3;
 - (void)compactFileCacheWithCompletionHandler:(void (^)(NSError *))arg1;
-- (void)deleteResourcesIfSafe:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSArray *))arg2;
-- (void)downloadOriginalsOfType:(NSString *)arg1 localIdentifiers:(NSArray *)arg2 destinationURL:(NSURL *)arg3 progressIdentifier:(NSString *)arg4 completionHandler:(void (^)(NSError *, NSArray *))arg5;
+- (void)deleteResources:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSDictionary *))arg2;
 - (void)getCloudCacheForRecordWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(CPLRecordChange *, NSError *))arg2;
 - (void)getListOfComponentsWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)getResourcesForItemWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *, NSArray *))arg2;

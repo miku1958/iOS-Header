@@ -30,7 +30,9 @@
 - (void)_myPeriodicTask:(unsigned short)arg1 type:(unsigned short)arg2;
 - (void)dealloc;
 - (void)fetchReportingStatesWithUserInfo:(id)arg1 fetchComplete:(CDUnknownBlockType)arg2;
+- (void)finishSession;
 - (BOOL)flushMessages;
+- (void)flushMessagesWithCompletion:(CDUnknownBlockType)arg1;
 - (int)getUploadflag;
 - (id)initWithSessionInfo:(id)arg1 userInfo:(id)arg2 frameworksToCheck:(id)arg3;
 - (id)initWithSessionInfo:(id)arg1 userInfo:(id)arg2 frameworksToCheck:(id)arg3 aggregationBlock:(CDUnknownBlockType)arg4;

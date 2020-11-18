@@ -4,18 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SafariServices/NSObject-Protocol.h>
+#import <SafariServices/_WKInputDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSObject, NSString, WKWebView;
-@protocol NSSecureCoding, _WKFormInputSession;
-
-@protocol _WKFormDelegate <NSObject>
-
-@optional
-- (void)_webView:(WKWebView *)arg1 accessoryViewCustomButtonTappedInFormInputSession:(id<_WKFormInputSession>)arg2;
-- (void)_webView:(WKWebView *)arg1 didStartInputSession:(id<_WKFormInputSession>)arg2;
-- (BOOL)_webView:(WKWebView *)arg1 hasSuggestionsForCurrentStringInInputSession:(id<_WKFormInputSession>)arg2;
-- (NSArray *)_webView:(WKWebView *)arg1 suggestionsForString:(NSString *)arg2 inInputSession:(id<_WKFormInputSession>)arg3;
-- (void)_webView:(WKWebView *)arg1 willSubmitFormValues:(NSDictionary *)arg2 userObject:(NSObject<NSSecureCoding> *)arg3 submissionHandler:(void (^)(void))arg4;
+@protocol _WKFormDelegate <_WKInputDelegate>
 @end
 

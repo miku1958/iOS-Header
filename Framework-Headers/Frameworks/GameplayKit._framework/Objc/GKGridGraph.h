@@ -20,9 +20,14 @@
 @property (readonly, nonatomic) unsigned long long gridWidth;
 
 + (id)graphFromGridStartingAt:(int)arg1 width:(int)arg2 height:(BOOL)arg3 diagonalsAllowed: /* Error: Ran out of types for this method. */;
++ (id)graphFromGridStartingAt:(int)arg1 width:(int)arg2 height:(BOOL)arg3 diagonalsAllowed:(Class)arg4 nodeClass: /* Error: Ran out of types for this method. */;
 - (struct GKCGridGraph *)cGridGraph;
+- (Class)classForGenericArgumentAtIndex:(unsigned long long)arg1;
 - (void)connectNodeToAdjacentNodes:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initFromGridStartingAt:(int)arg1 width:(int)arg2 height:(BOOL)arg3 diagonalsAllowed: /* Error: Ran out of types for this method. */;
+- (id)initFromGridStartingAt:(int)arg1 width:(int)arg2 height:(BOOL)arg3 diagonalsAllowed:(Class)arg4 nodeClass: /* Error: Ran out of types for this method. */;
+- (id)initWithCoder:(id)arg1;
 - (struct GKCGraph *)makeCGraph;
 - (id)nodeAtGridPosition: /* Error: Ran out of types for this method. */;
 - (id)nodeAtGridPositionNoNilCheck: /* Error: Ran out of types for this method. */;

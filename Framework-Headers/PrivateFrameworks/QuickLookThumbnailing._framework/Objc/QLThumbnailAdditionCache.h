@@ -8,6 +8,7 @@
 
 @class NSCache;
 
+__attribute__((visibility("hidden")))
 @interface QLThumbnailAdditionCache : NSObject
 {
     NSCache *_additionsCache;

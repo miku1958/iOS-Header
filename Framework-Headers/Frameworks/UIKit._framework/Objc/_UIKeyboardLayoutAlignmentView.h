@@ -6,12 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class NSLayoutConstraint, NSNotification;
+@class NSLayoutConstraint;
 
 __attribute__((visibility("hidden")))
 @interface _UIKeyboardLayoutAlignmentView : UIView
 {
-    NSNotification *_keyboardChangeNotificationForUpdateConstraints;
     struct CGRect lastKnownKeyboardRect;
     NSLayoutConstraint *bottomConstraint;
     NSLayoutConstraint *widthConstraint;
@@ -30,11 +29,11 @@ __attribute__((visibility("hidden")))
 - (void)_removeConstraints;
 - (void)_startObservingKeyboardNotificationsForScreen:(id)arg1;
 - (void)_stopObservingKeyboardNotifications;
+- (void)_updateConstraintsForKeyboardNotification:(id)arg1;
 - (void)_updateConstraintsToMatchKeyboardFrame:(struct CGRect)arg1;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)updateConstraints;
 - (void)willMoveToWindow:(id)arg1;
 
 @end

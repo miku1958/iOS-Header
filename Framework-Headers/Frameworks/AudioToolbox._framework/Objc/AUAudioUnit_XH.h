@@ -18,11 +18,12 @@ __attribute__((visibility("hidden")))
     int _remotePID;
     BOOL _canRender;
     BOOL _canProcess;
+    BOOL _removingObserverWithContext;
     AUAudioUnitBusArray_XH *_inputBusses;
     AUAudioUnitBusArray_XH *_outputBusses;
     struct unique_ptr<AUProcAndUserData, std::__1::default_delete<AUProcAndUserData>> _elementCountListenerToken;
     struct unique_ptr<AUSyncCaller, std::__1::default_delete<AUSyncCaller>> _syncCaller;
-    NSObject<OS_dispatch_queue> *_propListenerQueue;
+    struct recursive_mutex _propListenerMutex;
     struct vector<AUAudioUnit_XH_PropListener, std::__1::allocator<AUAudioUnit_XH_PropListener>> _propListeners;
     struct IPCAURenderingClient _renderClient;
     AUParameterTree *_cachedParameterTree;
@@ -44,7 +45,6 @@ __attribute__((visibility("hidden")))
 - (void)_setValue:(id)arg1 forKey:(id)arg2;
 - (void)_setValue:(id)arg1 forProperty:(id)arg2;
 - (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
-- (struct AURemoteParameterObserver *)addRemoteParameterObserver:(BOOL)arg1;
 - (BOOL)allocateRenderResourcesAndReturnError:(id *)arg1;
 - (void)dealloc;
 - (void)deallocateRenderResources;
@@ -53,14 +53,17 @@ __attribute__((visibility("hidden")))
 - (id)inputBusses;
 - (void)internalInitWithExtension:(id)arg1 componentDescription:(struct AudioComponentDescription)arg2 instance:(struct OpaqueAudioComponentInstance *)arg3 completion:(CDUnknownBlockType)arg4;
 - (CDUnknownBlockType)internalRenderBlock;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)outputBusses;
 - (id)parameterTree;
 - (id)parametersForOverviewWithCount:(long long)arg1;
 - (void)propertiesChanged:(id)arg1;
+- (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2 context:(void *)arg3;
-- (void)removeRemoteParameterObserver:(struct AURemoteParameterObserver *)arg1;
 - (void)requestViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)reset;
+- (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
+- (id)valueForUndefinedKey:(id)arg1;
 
 @end
 

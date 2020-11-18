@@ -18,11 +18,13 @@
 @property (strong, nonatomic) UICollectionViewCell *cell; // @synthesize cell=_cell;
 @property (strong, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
 
+- (void).cxx_destruct;
 - (BOOL)_accessibilityBackingElementIsValid;
 - (BOOL)_accessibilityCanBecomeNativeFocused;
 - (void)_accessibilityCopy;
 - (void)_accessibilityCut;
 - (id)_accessibilityDataDetectorScheme:(struct CGPoint)arg1;
+- (BOOL)_accessibilityHasNativeFocus;
 - (BOOL)_accessibilityHasTextOperations;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityIsAwayAlertElement;
@@ -36,6 +38,7 @@
 - (void)_accessibilitySelectAll;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (id)_accessibilitySemanticContextForElement:(id)arg1;
+- (BOOL)_accessibilitySetNativeFocus;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (BOOL)_accessibilityShouldAttemptScrollToFrameOnParentView;
 - (BOOL)_accessibilitySupportsActivateAction;
@@ -47,6 +50,7 @@
 - (BOOL)_accessibilityUserTestingIsDestructiveButton;
 - (BOOL)_accessibilityUserTestingIsPreferredButton;
 - (id)_accessibilityUserTestingVisibleAncestor;
+- (BOOL)_accessibilityViewHierarchyHasNativeFocus;
 - (BOOL)accessibilityActivate;
 - (struct CGPoint)accessibilityActivationPoint;
 - (void)accessibilityDecrement;

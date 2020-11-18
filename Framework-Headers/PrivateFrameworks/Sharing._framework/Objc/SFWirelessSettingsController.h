@@ -29,10 +29,10 @@
 @property (readonly, getter=isWirelessAccessPointEnabled) BOOL wirelessAccessPointEnabled;
 @property (readonly, getter=isWirelessCarPlayEnabled) BOOL wirelessCarPlayEnabled;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)handleOperationCallback:(struct __SFOperation *)arg1 event:(long long)arg2 withResults:(id)arg3;
 - (id)init;
-- (void)repairAppleID;
 
 @end
 

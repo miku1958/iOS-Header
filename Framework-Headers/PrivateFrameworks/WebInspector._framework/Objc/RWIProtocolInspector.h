@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class RWIProtocolConfiguration;
 
@@ -20,7 +20,9 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)initWithController:(struct AugmentableInspectorController *)arg1;
+- (void)inspectorControllerDestroyed;
 
 @end
 

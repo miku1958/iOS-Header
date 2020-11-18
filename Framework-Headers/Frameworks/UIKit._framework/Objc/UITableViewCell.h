@@ -11,12 +11,12 @@
 #import <UIKit/UIScrollViewDelegate-Protocol.h>
 #import <UIKit/_UILayoutEngineSuspending-Protocol.h>
 
-@class NSIndexPath, NSString, NSTimer, UIColor, UIControl, UIFocusGuide, UIImage, UIImageView, UILabel, UILongPressGestureRecognizer, UIStoryboardPreviewingSegueTemplateStorage, UITableView, UITableViewCellDeleteConfirmationView, UITapGestureRecognizer, UITextField, UIVisualEffect, _UIFloatingContentView, _UITableViewCellOldEditingData, _UITableViewCellSeparatorView;
-@protocol UITableViewConstants;
+@class NSIndexPath, NSString, NSTimer, UIColor, UIControl, UIFocusGuide, UIImage, UIImageView, UILabel, UILongPressGestureRecognizer, UIStoryboardPreviewingSegueTemplateStorage, UITableViewCellDeleteConfirmationView, UITapGestureRecognizer, UITextField, UIVisualEffect, _UIFloatingContentView, _UITableViewCellOldEditingData, _UITableViewCellSeparatorView;
+@protocol UITableConstants, UITable_UITableViewCellDelegate;
 
 @interface UITableViewCell : UIView <UIScrollViewDelegate, _UILayoutEngineSuspending, NSCoding, UIGestureRecognizerDelegate>
 {
-    UITableView *_tableView;
+    id<UITable_UITableViewCellDelegate> _tableView;
     id _layoutManager;
     id _target;
     SEL _editAction;
@@ -83,7 +83,7 @@
     double _defaultMarginWidth;
     UIFocusGuide *_editControlFocusGuide;
     UIFocusGuide *_reorderControlFocusGuide;
-    id<UITableViewConstants> _constants;
+    id<UITableConstants> _constants;
     struct {
         unsigned int showingDeleteConfirmation:1;
         unsigned int separatorStyle:3;
@@ -120,7 +120,6 @@
         unsigned int needsSetup:1;
         unsigned int dontDrawTopShadow:1;
         unsigned int usingMultiselectbackgroundView:1;
-        unsigned int layoutLoopCounter:2;
         unsigned int isCarPlayCell:1;
         unsigned int deleteAnimationInProgress:1;
         unsigned int deleteCancelationAnimationInProgress:1;
@@ -140,6 +139,7 @@
         unsigned int doesNotOverrideDidUpdateFocus:1;
         unsigned int hasEditingFocusGuides:1;
         unsigned int focusStyle:3;
+        unsigned int accessoryViewsHidden:1;
     } _tableCellFlags;
     BOOL _isLayoutEngineSuspended;
 }
@@ -183,13 +183,16 @@
 - (SEL)_accessoryAction;
 - (id)_accessoryTintColor;
 - (id)_accessoryView:(BOOL)arg1;
+- (BOOL)_accessoryViewsHidden;
 - (void)_actionButtonPushed:(id)arg1;
+- (id)_addSeparatorWithFrame:(struct CGRect)arg1;
 - (void)_addSubview:(id)arg1 positioned:(long long)arg2 relativeTo:(id)arg3;
 - (BOOL)_allowsReorderingWhenNotEditing;
 - (void)_animateFloatingSeparatorForInsertion:(BOOL)arg1 withRowAnimation:(long long)arg2;
 - (void)_animateInnerShadowForInsertion:(BOOL)arg1 withRowAnimation:(long long)arg2;
 - (BOOL)_backgroundColorSet;
 - (struct UIEdgeInsets)_backgroundInset;
+- (struct UIEdgeInsets)_backgroundSeparatorInset;
 - (id)_backgroundView:(BOOL)arg1;
 - (id)_badge;
 - (id)_badge:(BOOL)arg1;
@@ -240,9 +243,13 @@
 - (void)_ensureFocusedFloatingContentView;
 - (void)_finishTransitioningToReorderingAppearance:(BOOL)arg1;
 - (void)_finishedFadingGrabber:(id)arg1 finished:(BOOL)arg2;
+- (id)_forSpringBoardDefaultSelectedBackgroundView;
+- (void)_forSpringBoardSetDefaultSelectedBackgroundView:(id)arg1;
+- (BOOL)_forwardsSystemLayoutFittingSizeToContentView:(id)arg1;
 - (BOOL)_gestureRecognizerShouldBegin:(id)arg1;
-- (void)_grabberBeganReorder:(id)arg1;
+- (void)_grabberBeganReorder:(id)arg1 touch:(id)arg2;
 - (void)_grabberDragged:(id)arg1 yDelta:(float)arg2;
+- (void)_grabberDragged:(id)arg1 yDelta:(float)arg2 touch:(id)arg3;
 - (void)_grabberReleased:(id)arg1;
 - (void)_handleSwipeDeleteCancelation:(id)arg1;
 - (BOOL)_hasAccessoryView;
@@ -250,6 +257,7 @@
 - (struct CGSize)_imageInsetSize;
 - (id)_imageView;
 - (id)_imageView:(BOOL)arg1;
+- (double)_imageViewTrailingX;
 - (double)_indexBarWidth;
 - (id)_indexPath;
 - (BOOL)_insetsBackground;
@@ -280,6 +288,7 @@
 - (id)_preferredConfigurationForFocusAnimation:(long long)arg1 inContext:(id)arg2;
 - (void)_prepareToEnterReuseQueue;
 - (id)_previewingSegueTemplateStorageForLocation:(struct CGPoint)arg1 inView:(id)arg2;
+- (struct UIEdgeInsets)_rawSeparatorInset;
 - (void)_releaseDetailTextLabel;
 - (void)_releaseRemoveControl;
 - (void)_releaseReorderingControl;
@@ -295,7 +304,6 @@
 - (void)_resetSelectionTimer;
 - (double)_rightMarginWidth;
 - (void)_saveOpaqueViewState:(id)arg1;
-- (id)_scriptingInfo;
 - (double)_sectionBorderWidth;
 - (id)_selectedBackgroundView:(BOOL)arg1;
 - (long long)_separatorBackdropOverlayBlendMode;
@@ -304,8 +312,10 @@
 - (struct CGRect)_separatorFrame;
 - (double)_separatorHeight;
 - (BOOL)_separatorHidden;
+- (id)_separatorView:(BOOL)arg1;
 - (void)_setAccessoryAction:(SEL)arg1;
 - (void)_setAccessoryTintColor:(id)arg1;
+- (void)_setAccessoryViewsHidden:(BOOL)arg1;
 - (void)_setAllowsReorderingWhenNotEditing:(BOOL)arg1;
 - (void)_setAnimating:(BOOL)arg1;
 - (void)_setAnimating:(BOOL)arg1 clippingAdjacentCells:(BOOL)arg2;
@@ -321,6 +331,7 @@
 - (void)_setDrawsTopSeparator:(BOOL)arg1;
 - (void)_setDrawsTopSeparatorDuringReordering:(BOOL)arg1;
 - (void)_setDrawsTopShadow:(BOOL)arg1;
+- (void)_setEditing:(BOOL)arg1 animated:(BOOL)arg2 cellOrAncestorViewForAnimatedLayout:(id)arg3;
 - (void)_setEditingStyle:(long long)arg1;
 - (void)_setFont:(id)arg1 layout:(BOOL)arg2;
 - (void)_setFrame:(struct CGRect)arg1 skipLayout:(BOOL)arg2;
@@ -388,6 +399,8 @@
 - (void)_updateAndCacheBackgroundColorForHighlightIgnoringSelection:(BOOL)arg1;
 - (void)_updateCellMaskViewsForView:(id)arg1 backdropView:(id)arg2;
 - (void)_updateContentClip;
+- (void)_updateDefaultAccessoryViewForFocus:(BOOL)arg1;
+- (void)_updateDefaultLabelsForFocus:(BOOL)arg1;
 - (void)_updateFloatingContentControlStateAnimated:(BOOL)arg1;
 - (void)_updateFloatingContentControlStateInContext:(id)arg1 withAnimationCoordinator:(id)arg2 animated:(BOOL)arg3;
 - (void)_updateFullWidthSwipeDeletionView;
@@ -396,6 +409,7 @@
 - (void)_updateHighlightColorsForView:(id)arg1 highlighted:(BOOL)arg2;
 - (void)_updateSeparatorContent;
 - (void)_updateSeparatorContent:(BOOL)arg1;
+- (void)_updateSeparatorInset;
 - (void)_updateSwipeWithDistancePulled:(double)arg1;
 - (void)_updateTopShadowView:(BOOL)arg1;
 - (void)_updateViewsForDeleteButton;
@@ -512,6 +526,7 @@
 - (void)setSeparatorStyle:(long long)arg1;
 - (void)setShowingDeleteConfirmation:(BOOL)arg1;
 - (void)setTableBackgroundColor:(id)arg1;
+- (void)setTableSpecificElementsHidden:(BOOL)arg1;
 - (void)setTableViewStyle:(long long)arg1;
 - (void)setTarget:(id)arg1;
 - (void)setText:(id)arg1;
@@ -525,6 +540,7 @@
 - (long long)style;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (id)tableBackgroundColor;
+- (BOOL)tableSpecificElementsHidden;
 - (long long)tableViewStyle;
 - (id)target;
 - (id)text;
@@ -538,6 +554,7 @@
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (BOOL)wasSwiped;
 - (void)willMoveToSuperview:(id)arg1;
 - (void)willTransitionToState:(unsigned long long)arg1;

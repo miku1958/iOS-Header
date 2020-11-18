@@ -10,13 +10,14 @@
 #import <SafariServices/SFInteractiveDismissControllerDelegate-Protocol.h>
 #import <SafariServices/_SFQueueingBrowserServiceViewControllerProxyDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, NSURL, SFBrowserRemoteViewController, SFInteractiveDismissController, _SFQueueingBrowserServiceViewControllerProxy, _UIAsyncInvocation, _WKActivatedElementInfo;
+@class NSArray, NSMutableDictionary, NSString, NSURL, SFBrowserRemoteViewController, SFInteractiveDismissController, UIColor, _SFQueueingBrowserServiceViewControllerProxy, _UIAsyncInvocation, _WKActivatedElementInfo;
 @protocol SFSafariViewControllerDelegate;
 
 @interface SFSafariViewController : UIViewController <SFBrowserRemoveViewControllerDelegate, SFInteractiveDismissControllerDelegate, _SFQueueingBrowserServiceViewControllerProxyDelegate>
 {
     SFBrowserRemoteViewController *_remoteViewController;
     _UIAsyncInvocation *_cancelViewServiceRequest;
+    BOOL _hasBeenDisplayedAtLeastOnce;
     long long _preferredStatusBarStyle;
     BOOL _showingLinkPreview;
     NSArray *_previewActions;
@@ -26,6 +27,8 @@
     BOOL _swipeGestureEnabled;
     SFInteractiveDismissController *_interactiveDismissController;
     id<SFSafariViewControllerDelegate> _delegate;
+    UIColor *_preferredBarTintColor;
+    UIColor *_preferredControlTintColor;
     _SFQueueingBrowserServiceViewControllerProxy *_serviceProxy;
     NSURL *_initialURL;
 }
@@ -38,11 +41,14 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSURL *initialURL; // @synthesize initialURL=_initialURL;
+@property (strong, nonatomic) UIColor *preferredBarTintColor; // @synthesize preferredBarTintColor=_preferredBarTintColor;
+@property (strong, nonatomic) UIColor *preferredControlTintColor; // @synthesize preferredControlTintColor=_preferredControlTintColor;
 @property (readonly, nonatomic) _SFQueueingBrowserServiceViewControllerProxy *serviceProxy; // @synthesize serviceProxy=_serviceProxy;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_addRemoteView;
+- (id)_childViewControllerForWhitePointAdaptivityStyle;
 - (void)_connectToService;
 - (void)_forwardNotificationToViewService:(id)arg1;
 - (void)_removeRemoteView;
@@ -60,6 +66,7 @@
 - (void)remoteViewController:(id)arg1 didFinishInitialLoad:(BOOL)arg2;
 - (void)remoteViewController:(id)arg1 executeCustomActivityProxyID:(id)arg2;
 - (void)remoteViewController:(id)arg1 fetchHostAppCustomActivitiesForURL:(id)arg2 title:(id)arg3;
+- (void)remoteViewController:(id)arg1 hostApplicationOpenURL:(id)arg2;
 - (void)remoteViewController:(id)arg1 setSwipeGestureEnabled:(BOOL)arg2;
 - (void)remoteViewController:(id)arg1 viewServiceDidTerminateWithError:(id)arg2;
 - (void)remoteViewController:(id)arg1 willUpdateStatusBarStyle:(long long)arg2;

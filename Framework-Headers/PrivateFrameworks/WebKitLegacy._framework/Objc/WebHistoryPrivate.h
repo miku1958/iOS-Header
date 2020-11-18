@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)containsURL:(id)arg1;
 - (id)data;
 - (void)dealloc;
-- (void)finalize;
 - (BOOL)findKey:(long long *)arg1 forDay:(double)arg2;
 - (int)historyAgeInDaysLimit;
 - (int)historyItemLimit;

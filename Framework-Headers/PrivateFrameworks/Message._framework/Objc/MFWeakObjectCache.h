@@ -18,8 +18,10 @@
 - (void)dealloc;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 - (id)objectForKey:(id)arg1;
+- (id)objectForKey:(id)arg1 shouldGenerate:(BOOL)arg2 wasCached:(BOOL *)arg3;
 - (id)objectForKey:(id)arg1 wasCached:(BOOL *)arg2;
 - (void)removeObjectForKey:(id)arg1;
+- (id)weakObjectCacheRefForKey:(id)arg1;
 
 @end
 

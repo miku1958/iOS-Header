@@ -21,26 +21,7 @@ struct CGSize {
     double height;
 };
 
-struct concomp {
-    int _field1;
-    int _field2;
-    int _field3;
-    int _field4;
-    int _field5;
-    int _field6;
-    int _field7;
-    struct {
-        CDStruct_d65e47c4 _field1;
-        CDStruct_d65e47c4 _field2;
-    } _field8;
-    unsigned short _field9;
-    unsigned short _field10;
-    unsigned char _field11;
-    unsigned char _field12;
-    unsigned char _field13;
-    int _field14[2];
-    char _field15[6];
-};
+struct concomp;
 
 struct lineseg;
 
@@ -56,11 +37,6 @@ struct vImage_Buffer {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned short _field1;
-    unsigned short _field2;
-} CDStruct_d65e47c4;
-
-typedef struct {
     int minScale;
     int maxScale;
 } CDStruct_74dcf1ab;
@@ -74,21 +50,30 @@ typedef struct {
     int _field6;
     int _field7;
     int _field8;
-    struct vImage_Buffer _field9;
-    struct vImage_Buffer _field10;
-    struct lineseg *_field11;
-    int _field12;
-    int _field13;
+    unsigned int _field9;
+    char _field10[128];
+    struct vImage_Buffer _field11;
+    struct vImage_Buffer _field12;
+    struct lineseg *_field13;
     int _field14;
-    struct concomp *_field15;
+    int _field15;
     int _field16;
-    int _field17;
+    struct concomp *_field17;
     int _field18;
     int _field19;
-    struct sequence *_field20;
+    int _field20;
     int _field21;
-    int _field22;
+    struct sequence *_field22;
     int _field23;
     int _field24;
-} CDStruct_a2151f1f;
+    int _field25;
+    int _field26;
+} CDStruct_6a58b7ce;
+
+#pragma mark Typedef'd Unions
+
+typedef union {
+    int seqInd;
+    int ccInd;
+} CDUnion_a5814135;
 

@@ -10,6 +10,7 @@
 
 @class NSDictionary, NSString, SYSession, SYStore;
 
+__attribute__((visibility("hidden")))
 @interface SYStoreSessionOwner : NSObject <SYSessionDelegate>
 {
     NSDictionary *_context;

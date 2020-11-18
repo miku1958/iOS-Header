@@ -36,6 +36,11 @@ struct CGSize {
     double height;
 };
 
+struct CLLocationCoordinate2D {
+    double _field1;
+    double _field2;
+};
+
 struct NSObject {
     Class _field1;
 };
@@ -69,16 +74,6 @@ struct lruEntry {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    BOOL _field1;
-    BOOL _field2;
-    BOOL _field3;
-    BOOL _field4;
-    BOOL _field5;
-    double _field6;
-    int _field7;
-} CDStruct_e950349b;
-
-typedef struct {
     long long version;
     void *info;
     CDUnknownFunctionPointerType retain;
@@ -96,6 +91,14 @@ typedef struct {
         double height;
     } size;
 } CDStruct_02837cd9;
+
+typedef struct {
+    struct CLLocationCoordinate2D _field1;
+    struct {
+        double _field1;
+        double _field2;
+    } _field2;
+} CDStruct_2b0c6e0b;
 
 // Ambiguous groups
 typedef struct {

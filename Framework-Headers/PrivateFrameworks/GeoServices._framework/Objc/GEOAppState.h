@@ -14,12 +14,18 @@
 {
     double _zoomLevel;
     GEOMapRegion *_mapRegion;
-    CDStruct_8adc1701 _has;
+    BOOL _transitNotAvailableAdvisoryShowing;
+    struct {
+        unsigned int zoomLevel:1;
+        unsigned int transitNotAvailableAdvisoryShowing:1;
+    } _has;
 }
 
 @property (readonly, nonatomic) BOOL hasMapRegion;
+@property (nonatomic) BOOL hasTransitNotAvailableAdvisoryShowing;
 @property (nonatomic) BOOL hasZoomLevel;
 @property (strong, nonatomic) GEOMapRegion *mapRegion; // @synthesize mapRegion=_mapRegion;
+@property (nonatomic) BOOL transitNotAvailableAdvisoryShowing; // @synthesize transitNotAvailableAdvisoryShowing=_transitNotAvailableAdvisoryShowing;
 @property (nonatomic) double zoomLevel; // @synthesize zoomLevel=_zoomLevel;
 
 - (void)copyTo:(id)arg1;

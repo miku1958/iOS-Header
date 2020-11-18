@@ -16,11 +16,11 @@ __attribute__((visibility("hidden")))
     unsigned long long _hash;
     PUMapItem *_mapItem;
     unsigned long long _relativeOrder;
-    CDStruct_2c43369c _originalCoordinate;
-    CDStruct_2c43369c _coordinate;
+    struct CLLocationCoordinate2D _originalCoordinate;
+    struct CLLocationCoordinate2D _coordinate;
 }
 
-@property (readonly, nonatomic) CDStruct_c3b9c2ee coordinate;
+@property (readonly, nonatomic) struct CLLocationCoordinate2D coordinate;
 @property (readonly, nonatomic) unsigned long long count;
 @property (readonly, strong, nonatomic) NSDate *dateCreated;
 @property (readonly, copy) NSString *debugDescription;
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, strong, nonatomic) NSObject *itemId;
 @property (strong, nonatomic) PUMapItem *mapItem;
 @property (readonly, nonatomic) NSArray *mapItems;
-@property (readonly, nonatomic) CDStruct_c3b9c2ee originalCoordinate; // @synthesize originalCoordinate=_originalCoordinate;
+@property (readonly, nonatomic) struct CLLocationCoordinate2D originalCoordinate; // @synthesize originalCoordinate=_originalCoordinate;
 @property (nonatomic) unsigned long long relativeOrder; // @synthesize relativeOrder=_relativeOrder;
 @property (readonly, strong, nonatomic) NSMutableSet *subAnnotations;
 @property (readonly, copy, nonatomic) NSString *subtitle;
@@ -46,11 +46,11 @@ __attribute__((visibility("hidden")))
 - (long long)compare:(id)arg1;
 - (BOOL)containsAnnotation:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithCoordinate:(CDStruct_c3b9c2ee)arg1;
+- (id)initWithCoordinate:(struct CLLocationCoordinate2D)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)newestMaxMapItems:(unsigned long long)arg1;
 - (void)resetCoordinateToOriginal;
-- (void)setCoordinate:(CDStruct_c3b9c2ee)arg1;
+- (void)setCoordinate:(struct CLLocationCoordinate2D)arg1;
 
 @end
 

@@ -12,18 +12,16 @@ __attribute__((visibility("hidden")))
 @interface VKRoadLabelPickingResult : NSObject
 {
     VKLabelFeatureMarker *_labelFeatureMarker;
-    float _closestApproach;
-    struct CGVector _direction;
 }
 
-@property (readonly, nonatomic) float closestApproach; // @synthesize closestApproach=_closestApproach;
-@property (readonly, nonatomic) struct CGVector direction; // @synthesize direction=_direction;
+@property (readonly, nonatomic) float closestApproach;
+@property (readonly, nonatomic) struct CGVector direction;
 @property (readonly, nonatomic) VKLabelFeatureMarker *labelFeatureMarker; // @synthesize labelFeatureMarker=_labelFeatureMarker;
 @property (readonly, nonatomic) NSString *name;
 
 - (void)dealloc;
 - (id)description;
-- (id)initWithFeature:(id)arg1 closestApproach:(float)arg2 direction:(struct CGVector)arg3;
+- (id)initWithLabelFeatureMarkerPtr:(const shared_ptr_27db7edb *)arg1;
 
 @end
 

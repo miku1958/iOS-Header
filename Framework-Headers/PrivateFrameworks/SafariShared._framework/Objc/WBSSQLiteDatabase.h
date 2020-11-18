@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 + (id)_errorWithErrorCode:(int)arg1;
++ (void)setUpLogCollection;
 + (id)writeAheadLogSharedMemoryURLForDatabaseURL:(id)arg1;
 + (id)writeAheadLogURLForDatabaseURL:(id)arg1;
 - (void).cxx_destruct;

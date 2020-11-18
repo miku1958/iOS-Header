@@ -8,10 +8,11 @@
 
 #import <Photos/PHUpdateChangeRequest-Protocol.h>
 
-@class CLLocation, NSDate, NSIndexSet, NSManagedObjectID, NSString, NSURL, PHChangeRequestHelper, PHContentEditingOutput, PHObjectPlaceholder;
+@class CLLocation, NSData, NSDate, NSIndexSet, NSManagedObjectID, NSMutableDictionary, NSSet, NSString, NSURL, PHAsset, PHChangeRequestHelper, PHContentEditingOutput, PHObjectPlaceholder, PHRelationshipChangeRequestHelper;
 
 @interface PHAssetChangeRequest : NSObject <PHUpdateChangeRequest>
 {
+    PHAsset *_originalAsset;
     NSURL *_editorBundleURL;
     CLLocation *_updatedLocation;
     NSString *_assetDescription;
@@ -19,6 +20,18 @@
     BOOL _clientEntitled;
     BOOL _didSetVisibilityState;
     NSString *_clientName;
+    NSString *_clientBundleID;
+    BOOL _didSetSceneClassifications;
+    NSSet *_sceneClassifications;
+    short _sceneAnalysisVersion;
+    NSDate *_sceneAnalysisTimestamp;
+    NSData *_distanceIdentity;
+    NSMutableDictionary *_analysisStatesByWorkerType;
+    BOOL _allowUnsafeSetProcessed;
+    BOOL _incrementPlayCount;
+    BOOL _incrementShareCount;
+    NSDate *_lastSharedDate;
+    BOOL _incrementViewCount;
     BOOL _didChangeAdjustments;
     BOOL _duplicateAllowsPrivateMetadata;
     unsigned short _photoIrisVisibilityState;
@@ -28,6 +41,7 @@
     NSIndexSet *_supportedEditOperations;
     NSURL *_videoURLForUpdate;
     NSString *_pairingIdentifier;
+    PHRelationshipChangeRequestHelper *_facesHelper;
     CDStruct_1b6d18a9 _videoDuration;
     CDStruct_1b6d18a9 _imageDisplayTime;
 }
@@ -38,11 +52,15 @@
 @property (readonly, nonatomic) int clientProcessID; // @synthesize clientProcessID=_clientProcessID;
 @property (strong, nonatomic) PHContentEditingOutput *contentEditingOutput; // @synthesize contentEditingOutput=_contentEditingOutput;
 @property (strong, nonatomic) NSDate *creationDate;
+@property (nonatomic) double curationScore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL didChangeAdjustments; // @synthesize didChangeAdjustments=_didChangeAdjustments;
 @property (readonly, nonatomic) BOOL duplicateAllowsPrivateMetadata; // @synthesize duplicateAllowsPrivateMetadata=_duplicateAllowsPrivateMetadata;
 @property (readonly, copy, nonatomic) NSString *editorBundleID; // @synthesize editorBundleID=_editorBundleID;
+@property (strong, nonatomic) id faceAdjustmentVersion;
+@property (nonatomic) long long faceDetectionState;
+@property (readonly, nonatomic) PHRelationshipChangeRequestHelper *facesHelper; // @synthesize facesHelper=_facesHelper;
 @property (nonatomic, getter=isFavorite) BOOL favorite;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PHChangeRequestHelper *helper; // @synthesize helper=_helper;
@@ -71,21 +89,34 @@
 + (id)creationRequestForAssetFromVideoComplementBundle:(id)arg1;
 + (void)deleteAssets:(id)arg1;
 - (void).cxx_destruct;
+- (id)_mutableObjectIDsAndUUIDs;
+- (void)_prepareAssetIDsIfNeeded;
+- (void)_prepareWithFetchResult:(id)arg1;
+- (void)_setOriginalAsset:(id)arg1;
 - (BOOL)_validateImageURLForAssetMutation:(id)arg1 error:(id *)arg2;
+- (void)addFaces:(id)arg1;
 - (BOOL)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
 - (BOOL)applyMutationsToManagedObject:(id)arg1 error:(id *)arg2;
 - (void)didMutate;
 - (void)encodeToXPCDict:(id)arg1;
+- (void)incrementPlayCount;
+- (void)incrementShareCount;
+- (void)incrementViewCount;
 - (id)init;
 - (id)initWithHelper:(id)arg1;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
-- (id)initWithXPCDict:(id)arg1 clientEntitled:(BOOL)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
+- (id)initWithXPCDict:(id)arg1 clientEntitlements:(id)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
 - (BOOL)isHiding;
 - (BOOL)isRevertingContentToOriginal;
 - (void)markDidChangeAdjustments;
 - (id)mutations;
+- (void)removeFaces:(id)arg1;
 - (void)revertAssetContentToOriginal;
-- (void)setAdjustmentData:(id)arg1 withRenderedJPEGData:(id)arg2 orRenderedContentURL:(id)arg3 penultimateRenderedJPEGData:(id)arg4 isSubstandardRender:(BOOL)arg5 fullSizeRenderSize:(struct CGSize)arg6;
+- (void)setAdjustmentData:(id)arg1 withRenderedJPEGData:(id)arg2 orRenderedContentURL:(id)arg3 penultimateRenderedJPEGData:(id)arg4 isSubstandardRender:(BOOL)arg5 fullSizeRenderSize:(struct CGSize)arg6 renderedVideoComplementURL:(id)arg7 penultimateRenderedVideoComplementURL:(id)arg8;
+- (void)setAnalysisState:(int)arg1 lastIgnoredDate:(id)arg2 ignoreUntilDate:(id)arg3 forWorkerType:(short)arg4;
+- (void)setAnalysisState:(int)arg1 lastIgnoredDate:(id)arg2 ignoreUntilDate:(id)arg3 forWorkerType:(short)arg4 allowUnsafeSetProcessed:(BOOL)arg5;
+- (void)setSceneClassifications:(id)arg1 algorithmVersion:(long long)arg2 adjustmentVersion:(id)arg3;
+- (void)setSceneClassifications:(id)arg1 algorithmVersion:(long long)arg2 distanceIdentity:(id)arg3 adjustmentVersion:(id)arg4;
 - (BOOL)validateAdjustmentDataForAssetMutation:(id)arg1 error:(id *)arg2;
 - (BOOL)validateAssetDescription:(id)arg1 error:(id *)arg2;
 - (BOOL)validateContentEditingOutput:(id)arg1 error:(id *)arg2;

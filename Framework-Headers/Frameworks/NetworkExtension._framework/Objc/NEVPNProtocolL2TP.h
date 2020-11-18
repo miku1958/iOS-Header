@@ -14,8 +14,8 @@
     long long _machineAuthenticationMethod;
     NEKeychainItem *_sharedSecretKeychainItem;
     NSString *_localIdentifier;
-    NSData *_machineIdentityDataInternal;
     NEIdentityKeychainItem *_machineIdentity;
+    NSData *_machineIdentityDataInternal;
 }
 
 @property (copy) NSString *localIdentifier; // @synthesize localIdentifier=_localIdentifier;
@@ -38,6 +38,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)migratePasswordsFromPreferences:(struct __SCPreferences *)arg1;
+- (BOOL)needToUpdateKeychain;
 - (void)removeKeychainItemsInDomain:(long long)arg1 keepIdentity:(BOOL)arg2;
 - (void)setIPSecSettingsFromLegacyDictionary:(id)arg1;
 - (BOOL)setServiceProtocolsInService:(struct __SCNetworkService *)arg1;

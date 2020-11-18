@@ -6,18 +6,22 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSPointerArray;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface _GEOSimpleTileRequesterScheduler : NSObject
 {
-    NSMutableArray *_requesters;
+    NSPointerArray *_requesters;
     NSMutableArray *_inProgress;
+    NSObject<OS_dispatch_queue> *_isolation;
 }
 
 + (id)sharedScheduler;
+- (id)_highestPriorityRequester;
 - (void)addTileRequester:(id)arg1;
 - (void)dealloc;
+- (id)init;
 - (void)operationDidStop:(id)arg1;
 - (void)removeTileRequester:(id)arg1;
 - (void)sendNextRequestIfNecessary;

@@ -14,12 +14,14 @@ __attribute__((visibility("hidden")))
     UILabel *titleLabel;
     UILabel *locationsLabel;
     UILabel *dateLabel;
-    UIImageView *locationsIconView;
+    UIImageView *disclosureIconView;
+    UILabel *separatorLabel;
 }
 
 @property (strong, nonatomic) UILabel *dateLabel; // @synthesize dateLabel;
-@property (strong, nonatomic) UIImageView *locationsIconView; // @synthesize locationsIconView;
+@property (strong, nonatomic) UIImageView *disclosureIconView; // @synthesize disclosureIconView;
 @property (strong, nonatomic) UILabel *locationsLabel; // @synthesize locationsLabel;
+@property (strong, nonatomic) UILabel *separatorLabel; // @synthesize separatorLabel;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel;
 
 - (void).cxx_destruct;

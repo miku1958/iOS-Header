@@ -9,13 +9,15 @@
 #import <EventKit/EKIdentityProtocol-Protocol.h>
 #import <EventKit/NSCopying-Protocol.h>
 
-@class EKCalendar, NSString;
+@class EKCalendar, NSPredicate, NSString;
 
 @interface EKSharee : EKObject <NSCopying, EKIdentityProtocol>
 {
 }
 
 @property (readonly, nonatomic) NSString *UUID;
+@property (copy, nonatomic) NSString *address;
+@property (readonly, nonatomic) NSPredicate *contactPredicate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *emailAddress;
@@ -31,6 +33,8 @@
 
 + (id)shareeWithEmailAddress:(id)arg1 name:(id)arg2;
 + (id)shareeWithName:(id)arg1 emailAddress:(id)arg2 externalID:(id)arg3;
++ (unsigned long long)statusEnumFromString:(id)arg1;
++ (id)statusStringFromEnum:(unsigned long long)arg1;
 - (void *)ABRecordWithAddressBook:(void *)arg1;
 - (id)_persistentSharee;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -35,6 +35,7 @@
     SUPreviewOverlayViewController *_previewOverlay;
     NSDictionary *_productParameters;
     SUPurchaseManager *_purchaseManager;
+    BOOL _preview;
     BOOL _showsStoreButton;
     BOOL _showsRightBarButton;
     NSString *_rightBarButtonTitle;
@@ -54,6 +55,7 @@
 @property (weak, nonatomic) id<SKProductPageViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isPreview) BOOL preview; // @synthesize preview=_preview;
 @property (nonatomic) long long productPageStyle; // @synthesize productPageStyle=_style;
 @property (copy, nonatomic) NSString *promptString; // @synthesize promptString=_promptString;
 @property (copy, nonatomic) NSString *rightBarButtonTitle; // @synthesize rightBarButtonTitle=_rightBarButtonTitle;

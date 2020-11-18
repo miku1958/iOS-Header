@@ -13,10 +13,6 @@
 
 @property (nonatomic) unsigned long long contentSize; // @synthesize contentSize=_contentSize;
 
-+ (id)taskFromDictionaryRepresentation:(id)arg1;
-- (void)begin;
-- (id)dictionaryRepresentation;
-- (void)end;
 
 @end
 

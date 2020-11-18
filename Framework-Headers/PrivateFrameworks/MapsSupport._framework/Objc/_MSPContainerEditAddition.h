@@ -8,11 +8,12 @@
 
 #import <MapsSupport/MSPContainerEditAddition-Protocol.h>
 
-@class NSArray, NSIndexSet, NSString;
+@class NSArray, NSIndexSet, NSMapTable, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _MSPContainerEditAddition : _MSPContainerEdit <MSPContainerEditAddition>
 {
+    NSMapTable *_identifiersAtopByIdentifier;
     NSArray *_objects;
     NSArray *_addedImmutableObjects;
     NSIndexSet *_indexesOfAddedObjects;
@@ -27,7 +28,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithObjects:(id)arg1 indexes:(id)arg2;
+- (id)identifierForObjectAtopAddedImmutableObject:(id)arg1;
+- (id)initWithObjects:(id)arg1 indexes:(id)arg2 identifiersAtop:(id)arg3;
 - (void)useImmutableObjectsFromMap:(id)arg1 intermediateMutableObjectTransferBlock:(CDUnknownBlockType)arg2;
 
 @end

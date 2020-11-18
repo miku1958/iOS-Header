@@ -11,17 +11,17 @@
 @interface GEOTFPredictedSpeed : PBCodable <NSCopying>
 {
     unsigned int _deltaMinutesInFuture;
-    float _deltaSpeed;
+    unsigned int _speed;
     struct {
         unsigned int deltaMinutesInFuture:1;
-        unsigned int deltaSpeed:1;
+        unsigned int speed:1;
     } _has;
 }
 
 @property (nonatomic) unsigned int deltaMinutesInFuture; // @synthesize deltaMinutesInFuture=_deltaMinutesInFuture;
-@property (nonatomic) float deltaSpeed; // @synthesize deltaSpeed=_deltaSpeed;
 @property (nonatomic) BOOL hasDeltaMinutesInFuture;
-@property (nonatomic) BOOL hasDeltaSpeed;
+@property (nonatomic) BOOL hasSpeed;
+@property (nonatomic) unsigned int speed; // @synthesize speed=_speed;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

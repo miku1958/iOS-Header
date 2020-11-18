@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVAudioDevice, NSDictionary, NSMutableArray, VCAudioRelay;
+@class AVAudioDevice, NSDictionary, NSMutableArray;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -36,7 +36,8 @@ __attribute__((visibility("hidden")))
     int inferredOperatingMode;
     int inferredDeviceRole;
     BOOL inferredUseSpeakerMode;
-    VCAudioRelay *_audioRelay;
+    id _weakAudioRelay;
+    id _weakSafeViewAudioRelay;
     double preferredHWSampleRate;
     double preferredBlockSize;
     unsigned int currentVPOperatingMode;
@@ -44,6 +45,7 @@ __attribute__((visibility("hidden")))
     int currentSampleRate;
     int currentMinSamplesPerFrame;
     BOOL currentReceiverStatus;
+    BOOL isUsingBBIO;
     int requestedVPOperatingMode;
     double requestedVPSampleRate;
     struct AudioEventQueue_t *eventQ;
@@ -51,7 +53,6 @@ __attribute__((visibility("hidden")))
     NSMutableArray *micClientList;
 }
 
-@property (readonly) VCAudioRelay *audioRelay;
 @property (nonatomic) int clientPID; // @synthesize clientPID;
 @property (getter=isSpeakerPhoneEnabled) BOOL enableSpeakerPhone;
 @property (readonly, nonatomic) int inferredOperatingMode; // @synthesize inferredOperatingMode;
@@ -67,12 +68,16 @@ __attribute__((visibility("hidden")))
 - (void)AUIOSetup:(struct VoiceIOFarEndVersionInfo *)arg1 minSamplesPerFrame:(int)arg2 allowAudioRecording:(BOOL)arg3 ignoreRefCount:(BOOL)arg4 operatingMode:(int)arg5 deviceRole:(int)arg6 remoteCodecType:(unsigned int)arg7 remoteCodecSampleRate:(double)arg8 completionHandler:(CDUnknownBlockType)arg9;
 - (void)AUIOTeardown:(BOOL)arg1;
 - (void)addAudioIOClient:(id)arg1;
-- (void)cleanupAUIOSetupWithResult:(int)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)audioRelayWithDeviceRole:(int)arg1;
+- (void)cleanupAUIOSetupWithResult:(int)arg1 completionHandler:(CDUnknownBlockType)arg2 ignoreRefCount:(BOOL)arg3;
+- (void)clearTargetIODevices;
 - (id)currentInputDevice;
 - (id)currentOutputDevice;
+- (void)dealloc;
 - (void)enableMetering:(BOOL)arg1 isInputMeter:(BOOL)arg2;
 - (BOOL)forceBufferFrames:(int *)arg1;
 - (BOOL)forceSampleRate:(double *)arg1;
+- (void)getPreferredHWSampleRate:(double *)arg1 blockSize:(double *)arg2;
 - (void)getVpioFormat:(struct AudioStreamBasicDescription *)arg1;
 - (id)init;
 - (void)internalSetRemoteBasebandCodecType:(id)arg1 sampleRate:(id)arg2;
@@ -82,7 +87,8 @@ __attribute__((visibility("hidden")))
 - (void)processEventQueue;
 - (BOOL)projectionModeEnabledState;
 - (void)removeAudioIOClient:(id)arg1;
-- (BOOL)resetAudioSessionProperties;
+- (void)resetAudioSessionOutputPortOverride;
+- (int)resetAudioSessionProperties;
 - (void)setAudioSessionMode:(id)arg1;
 - (void)setAudioSessionParameters:(id)arg1;
 - (void)setAudioSessionProperties;
@@ -104,7 +110,7 @@ __attribute__((visibility("hidden")))
 - (void)stopAudioIOWithDeviceRole:(int)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)stopAudioManagerClient:(id)arg1;
 - (void)stopAudioSession;
-- (void)stopRelayIOWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)stopRelayIOWithDeviceRole:(int)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)tearDownAudioIO:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)tearDownAudioSessionForced:(BOOL)arg1;
 - (unsigned int)vpOperationModeForConferenceOperatingMode:(int)arg1 deviceRole:(int)arg2;

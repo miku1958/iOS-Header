@@ -6,7 +6,7 @@
 
 #import <PhotoLibrary/NSObject-Protocol.h>
 
-@class PLCommentsViewController, PLPhotoTileViewController, UIView;
+@class PLPhotoTileViewController, UIView;
 @protocol UILayoutSupport;
 
 @protocol PLPhotoTileViewControllerDelegate <NSObject>
@@ -23,9 +23,6 @@
 
 @optional
 - (BOOL)isPhotoTileParentPageControllerAnimating:(PLPhotoTileViewController *)arg1;
-- (void)photoTileViewController:(PLPhotoTileViewController *)arg1 commentsControllerWillBeginScrolling:(PLCommentsViewController *)arg2;
-- (void)photoTileViewController:(PLPhotoTileViewController *)arg1 didExitEditModeInCommentsController:(PLCommentsViewController *)arg2;
-- (void)photoTileViewController:(PLPhotoTileViewController *)arg1 willEnterEditModeInCommentsController:(PLCommentsViewController *)arg2;
 - (BOOL)photoTileViewControllerAllowsEditing:(PLPhotoTileViewController *)arg1;
 - (BOOL)photoTileViewControllerCanShowCenterOverlay:(PLPhotoTileViewController *)arg1;
 - (UIView *)photoTileViewControllerCustomCenterOverlay:(PLPhotoTileViewController *)arg1;

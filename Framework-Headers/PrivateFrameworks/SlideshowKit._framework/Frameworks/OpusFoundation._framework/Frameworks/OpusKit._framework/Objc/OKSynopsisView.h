@@ -6,6 +6,7 @@
 
 #import <OpusFoundation/OFUIView.h>
 
+#import <OpusKit/CAAnimationDelegate-Protocol.h>
 #import <OpusKit/OKWidgetViewDelegate-Protocol.h>
 #import <OpusKit/UICollectionViewDataSource-Protocol.h>
 #import <OpusKit/UICollectionViewDelegate-Protocol.h>
@@ -14,7 +15,7 @@
 @class NSArray, NSString, OFNSOperationQueue, OKDimmerView, OKPresentationViewControllerProxy, OKSynopsisGestureRecognizer, OKSynopsisInterpreter, UICollectionView;
 @protocol OKSynopsisViewDelegate;
 
-@interface OKSynopsisView : OFUIView <UIGestureRecognizerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, OKWidgetViewDelegate>
+@interface OKSynopsisView : OFUIView <UIGestureRecognizerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, CAAnimationDelegate, OKWidgetViewDelegate>
 {
     OKSynopsisGestureRecognizer *_synopsisGestureRecognizer;
     NSArray *_widgetMediaItems;

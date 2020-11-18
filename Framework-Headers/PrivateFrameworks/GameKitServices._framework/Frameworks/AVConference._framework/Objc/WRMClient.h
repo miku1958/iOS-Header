@@ -22,13 +22,20 @@ __attribute__((visibility("hidden")))
 - (void)dumpReport:(id)arg1;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
+- (void)processNotificationList:(id)arg1;
 - (void)releaseServiceConnection;
-- (void)reportMetrics:(const CDStruct_449de213 *)arg1;
-- (void)sendProcessInfo;
+- (void)reportMetricsFaceTimeCalling:(const CDStruct_0db8e210 *)arg1;
+- (void)reportMetricsWifiCalling:(const CDStruct_0db8e210 *)arg1;
+- (void)requestNotificationFaceTimeCalling;
+- (void)sendProcessInfoWithProcessID:(unsigned long long)arg1;
 - (void)sendReport:(id)arg1;
-- (void)setConfiguration:(id)arg1;
+- (void)sendStatusUpdateFaceTimeCalling:(const CDStruct_8aeecdac *)arg1;
+- (void)sendStatusUpdateInfoFaceTimeCalling:(id)arg1;
+- (void)sendSubscriptionInfoFaceTimeCalling;
+- (void)sendUnsubscriptionInfoFaceTimeCalling;
+- (void)setConfiguration:(CDStruct_69d7cc99 *)arg1;
 - (BOOL)setupServiceConnection;
-- (void)startWRMClient;
+- (void)startWRMClientWithMode:(int)arg1;
 - (void)stopWRMClient;
 
 @end

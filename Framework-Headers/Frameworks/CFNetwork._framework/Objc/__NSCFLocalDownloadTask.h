@@ -43,6 +43,10 @@ __attribute__((visibility("hidden")))
 @property (copy) CDUnknownBlockType resumeCallback; // @synthesize resumeCallback=_resumeCallback;
 @property (readonly) Class superclass;
 
++ (id)_expandResumeData:(id)arg1;
++ (id)_requestFromResumeDataDictionary:(id)arg1;
++ (id)_requestFromResumeDataDictionary:(id)arg1 key:(id)arg2;
+- (struct __CFDictionary *)_copySocketStreamProperties;
 - (void)_onqueue_cancelByProducingResumeData:(CDUnknownBlockType)arg1;
 - (void)_onqueue_completeInitialization;
 - (void)_onqueue_didReceiveResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;

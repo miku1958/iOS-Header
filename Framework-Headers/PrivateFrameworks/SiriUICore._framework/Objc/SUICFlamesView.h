@@ -80,6 +80,7 @@
 - (BOOL)_initGLAndSetupDisplayLink:(BOOL)arg1;
 - (unsigned int)_numVerticesPerCircle;
 - (MISSING_TYPE *)_predeterminedVertexPositionForAuraWithPolarVertex: /* Error: Ran out of types for this method. */;
+- (void)_prewarmShaders;
 - (void)_reduceMotionStatusChanged:(id)arg1;
 - (BOOL)_resizeFromLayer:(id)arg1;
 - (void)_setValuesForFidelity:(int)arg1;

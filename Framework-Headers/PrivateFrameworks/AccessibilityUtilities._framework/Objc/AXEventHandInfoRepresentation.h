@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <AccessibilityUtilities/AXEventRepresentationDescription-Protocol.h>
 #import <AccessibilityUtilities/NSCopying-Protocol.h>
 #import <AccessibilityUtilities/NSSecureCoding-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
-@interface AXEventHandInfoRepresentation : NSObject <NSSecureCoding, NSCopying>
+@interface AXEventHandInfoRepresentation : NSObject <AXEventRepresentationDescription, NSSecureCoding, NSCopying>
 {
     unsigned char _systemGesturePossible;
     unsigned char _swipe;
@@ -26,25 +27,28 @@
 }
 
 @property (nonatomic) unsigned short currentFingerCount; // @synthesize currentFingerCount=_currentFingerCount;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned int eventType; // @synthesize eventType=_eventType;
 @property (nonatomic) unsigned int handEventMask; // @synthesize handEventMask=_handEventMask;
 @property (nonatomic) unsigned int handIdentity; // @synthesize handIdentity=_handIdentity;
 @property (nonatomic) unsigned int handIndex; // @synthesize handIndex=_handIndex;
 @property (nonatomic) struct CGPoint handPosition; // @synthesize handPosition=_handPosition;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned short initialFingerCount; // @synthesize initialFingerCount=_initialFingerCount;
+@property (readonly, nonatomic) unsigned long long length;
 @property (strong, nonatomic) NSArray *paths; // @synthesize paths=_paths;
+@property (readonly) Class superclass;
 @property (nonatomic) unsigned char swipe; // @synthesize swipe=_swipe;
 @property (nonatomic) unsigned char systemGesturePossible; // @synthesize systemGesturePossible=_systemGesturePossible;
 
 + (id)representationWithHandInfo:(CDStruct_f2c5c900 *)arg1;
 + (BOOL)supportsSecureCoding;
-- (id)_tabularDescription;
+- (id)accessibilityEventRepresentationTabularDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (unsigned long long)length;
 - (void)writeToHandInfo:(CDStruct_f2c5c900 *)arg1;
 
 @end

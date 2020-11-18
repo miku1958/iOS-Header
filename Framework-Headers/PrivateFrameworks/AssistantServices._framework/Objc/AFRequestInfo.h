@@ -19,15 +19,33 @@
     NSString *_handoffURLString;
     NSString *_correctedSpeech;
     NSDictionary *_correctedSpeechContext;
+    NSNumber *_combinedRank;
+    NSNumber *_combinedScore;
+    NSString *_interactionId;
+    NSNumber *_onDeviceUtterancesPresent;
+    NSNumber *_originalRank;
+    NSNumber *_originalScore;
+    NSString *_previousUtterance;
+    NSString *_sessionId;
+    NSString *_utteranceSource;
 }
 
+@property (copy, nonatomic) NSNumber *combinedRank; // @synthesize combinedRank=_combinedRank;
+@property (copy, nonatomic) NSNumber *combinedScore; // @synthesize combinedScore=_combinedScore;
 @property (copy, nonatomic) NSString *correctedSpeech; // @synthesize correctedSpeech=_correctedSpeech;
 @property (copy, nonatomic) NSDictionary *correctedSpeechContext; // @synthesize correctedSpeechContext=_correctedSpeechContext;
 @property (copy, nonatomic) NSString *directAction; // @synthesize directAction=_directAction;
 @property (copy, nonatomic) NSData *handoffRequestData; // @synthesize handoffRequestData=_handoffRequestData;
 @property (copy, nonatomic) NSString *handoffURLString; // @synthesize handoffURLString=_handoffURLString;
+@property (copy, nonatomic) NSString *interactionId; // @synthesize interactionId=_interactionId;
 @property (copy, nonatomic) NSNumber *notifyState; // @synthesize notifyState=_notifyState;
+@property (copy, nonatomic) NSNumber *onDeviceUtterancesPresent; // @synthesize onDeviceUtterancesPresent=_onDeviceUtterancesPresent;
+@property (copy, nonatomic) NSNumber *originalRank; // @synthesize originalRank=_originalRank;
+@property (copy, nonatomic) NSNumber *originalScore; // @synthesize originalScore=_originalScore;
+@property (copy, nonatomic) NSString *previousUtterance; // @synthesize previousUtterance=_previousUtterance;
+@property (copy, nonatomic) NSString *sessionId; // @synthesize sessionId=_sessionId;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
+@property (copy, nonatomic) NSString *utteranceSource; // @synthesize utteranceSource=_utteranceSource;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

@@ -12,8 +12,6 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)disconnectCallAndActivateHeld;
-- (void)disconnectIncomingCall;
 - (void)updateSpringBoard;
 
 @end

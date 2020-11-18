@@ -21,14 +21,14 @@
 
 @property (weak) id delegate; // @synthesize delegate=_delegate;
 @property (strong) NWEndpoint *endpoint; // @synthesize endpoint=_endpoint;
-@property (strong) NSError *error; // @synthesize error=_error;
+@property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong) NSObject<OS_nw_udp_listener> *internalListener; // @synthesize internalListener=_internalListener;
-@property (strong) NWEndpoint *localEndpoint; // @synthesize localEndpoint=_localEndpoint;
+@property (strong, nonatomic) NWEndpoint *localEndpoint; // @synthesize localEndpoint=_localEndpoint;
 @property (strong) NWParameters *parameters; // @synthesize parameters=_parameters;
 
 - (void).cxx_destruct;
+- (void)handleConnectedSocket:(int)arg1;
 - (void)handleError:(int)arg1;
-- (void)handleNewSession:(id)arg1;
 - (id)initWithParameters:(id)arg1 delegate:(id)arg2;
 
 @end

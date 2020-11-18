@@ -15,11 +15,9 @@
 {
     struct _opaque_pthread_mutex_t _lock;
     NSMutableDictionary *_pingHandlers;
-    NSMutableDictionary *_bulletinHandlers;
     id<BLTPingService> _service;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *bulletinHandlers; // @synthesize bulletinHandlers=_bulletinHandlers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -28,6 +26,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_subscribeToSectionID:(id)arg1 withPingHandler:(id)arg2 withAck:(BOOL)arg3 forFullBulletins:(BOOL)arg4;
 - (void)dealloc;
 - (void)getWillNanoPresentNotificationForSectionID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getWillNanoPresentNotificationForSectionID:(id)arg1 subsectionIDs:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -35,14 +34,18 @@
 - (id)initWithService:(id)arg1;
 - (void)pingSubscriberDidLoad;
 - (void)pingWithBulletin:(id)arg1;
+- (void)pingWithBulletin:(id)arg1 ack:(CDUnknownBlockType)arg2;
 - (void)pingWithRecordID:(id)arg1 forSectionID:(id)arg2;
+- (void)pingWithRecordID:(id)arg1 forSectionID:(id)arg2 ack:(CDUnknownBlockType)arg3;
 - (id)sectionIDs;
 - (id)sectionIDsForBulletins;
-- (id)sectionIDsForPings;
 - (void)sendBulletinSummary:(id)arg1 forBulletin:(id)arg2 destinations:(unsigned long long)arg3;
+- (void)subscribeToSectionID:(id)arg1 withBulletinAckHandler:(CDUnknownBlockType)arg2;
 - (void)subscribeToSectionID:(id)arg1 withBulletinHandler:(CDUnknownBlockType)arg2;
+- (void)subscribeToSectionID:(id)arg1 withPingAckHandler:(CDUnknownBlockType)arg2;
 - (void)subscribeToSectionID:(id)arg1 withPingHandler:(CDUnknownBlockType)arg2;
 - (void)subscribeWithMachServiceName:(id)arg1;
+- (id)subscriptionInfos;
 - (void)unsubscribeFromSectionID:(id)arg1;
 
 @end

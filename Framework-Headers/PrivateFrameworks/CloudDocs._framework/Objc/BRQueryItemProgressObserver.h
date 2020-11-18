@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class BRQueryItem, NSProgress;
 @protocol OS_dispatch_queue;
@@ -24,8 +24,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BRQueryItem *item; // @synthesize item=_item;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 
+- (void).cxx_destruct;
+- (void)_stopObserving;
 - (void)_subscribe;
-- (void)_unsubscribe;
 - (void)dealloc;
 - (id)description;
 - (id)initWithItem:(id)arg1;

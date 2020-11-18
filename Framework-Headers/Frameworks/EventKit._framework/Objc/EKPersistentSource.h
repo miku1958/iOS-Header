@@ -13,7 +13,7 @@
     CDBSourceConstraints *_constraints;
 }
 
-@property (nonatomic) NSString *UUID;
+@property (strong, nonatomic) NSString *UUID;
 @property (readonly, nonatomic) CDBSourceConstraints *constraints; // @synthesize constraints=_constraints;
 @property (copy, nonatomic) NSNumber *defaultAlarmOffset;
 @property (nonatomic, getter=isEnabled) BOOL enabled;
@@ -29,7 +29,7 @@
 + (int)_ekPrivacyLevelToCalEventPrivacyLevel:(long long)arg1;
 + (id)defaultPropertiesToLoad;
 + (id)relations;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (int)entityType;
 - (id)init;

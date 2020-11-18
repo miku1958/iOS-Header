@@ -13,12 +13,16 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axDirectTouchTimer;
+- (void)_axStopDirectTouch;
+- (void)_setAXDirectTouchTimer:(id)arg1;
+- (BOOL)accessibilityActivate;
 - (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
-- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 
 @end
 

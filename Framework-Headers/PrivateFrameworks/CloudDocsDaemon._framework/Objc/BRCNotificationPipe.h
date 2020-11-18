@@ -8,64 +8,78 @@
 
 #import <CloudDocsDaemon/BRItemNotificationSending-Protocol.h>
 
-@class BRCItemID, BRCNotificationGatherer, BRCNotificationManager, BRCRelativePath, BRCXPCClient, BRNotificationQueue, NSMutableSet, NSNumber, NSSet, NSString;
-@protocol BRItemNotificationReceiving, OS_dispatch_queue;
+@class BRCDataOrDocsScopeGatherer, BRCItemID, BRCNotificationManager, BRCXPCClient, BRFileObjectID, BRNotificationQueue, NSMutableDictionary, NSMutableSet, NSSet, NSString;
+@protocol BRCNotificationPipeDelegate, BRItemNotificationReceiving, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface BRCNotificationPipe : NSObject <BRItemNotificationSending>
 {
-    BRCNotificationManager *_manager;
+    id<BRItemNotificationReceiving> _receiver;
+    BRNotificationQueue *_notifs;
+    CDUnknownBlockType _boostReply;
+    BRCXPCClient *_client;
+    BRCItemID *_oldWatchedAncestorItemID;
+    BRCItemID *_watchedAncestorItemID;
+    BRFileObjectID *_watchedAncestorFileObjectID;
+    NSString *_watchedAncestorFilenameToItem;
+    BRCDataOrDocsScopeGatherer *_gatherer;
+    BOOL _hasUpdatesInFlight;
+    BOOL _volumeIsCaseSensitive;
+    NSMutableDictionary *_pendingProgressUpdatesByID;
+    BOOL _hasProgressUpdatesInFlight;
+    unsigned short _watchItemOptions;
     int _watchKind;
     NSString *_watchNamePrefix;
     NSString *_watchForBundleID;
-    NSMutableSet *_externalContainers;
-    NSSet *_watchedContainers;
-    NSSet *_watchedContainerIDs;
-    unsigned long long _watchedContainersFlags;
-    id<BRItemNotificationReceiving> _receiver;
-    BRNotificationQueue *_notifs;
+    NSMutableSet *_externalAppLibraries;
+    NSSet *_watchedAppLibraries;
+    NSSet *_watchedAppLibraryIDs;
+    unsigned long long _watchedAppLibrariesFlags;
+    BRCNotificationManager *_manager;
     NSObject<OS_dispatch_queue> *_queue;
-    BRCRelativePath *_root;
-    CDUnknownBlockType _boostReply;
-    BRCXPCClient *_client;
-    unsigned short _watchItemOptions;
-    BRCItemID *_oldWatchedAncestorItemID;
-    BRCItemID *_watchedAncestorItemID;
-    NSNumber *_watchedAncestorFileObjectID;
-    NSString *_watchedAncestorFilenameToItem;
-    BRCNotificationGatherer *_gatherer;
-    BOOL _hasUpdatesInFlight;
-    BOOL _volumeIsCaseSensitive;
+    id<BRCNotificationPipeDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<BRCNotificationPipeDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BRCNotificationManager *manager; // @synthesize manager=_manager;
+@property (strong) BRCItemID *oldWatchedAncestorItemID; // @synthesize oldWatchedAncestorItemID=_oldWatchedAncestorItemID;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
+@property (strong) BRFileObjectID *watchedAncestorFileObjectID; // @synthesize watchedAncestorFileObjectID=_watchedAncestorFileObjectID;
+@property (strong) NSString *watchedAncestorFilenameToItem; // @synthesize watchedAncestorFilenameToItem=_watchedAncestorFilenameToItem;
+@property (strong) BRCItemID *watchedAncestorItemID; // @synthesize watchedAncestorItemID=_watchedAncestorItemID;
 
 - (void).cxx_destruct;
+- (void)__flush;
 - (void)_addIntraContainerUpdatesFromInterContainerUpdate:(id)arg1 toArray:(id)arg2;
-- (void)_flush;
-- (id)_initWithRoot:(id)arg1 manager:(id)arg2;
+- (void)_flushProgressUpdates;
+- (void)_gatherIfNeededAndFlushAsync;
+- (id)_initWithManager:(id)arg1;
 - (int)_isInterestingUpdate:(id)arg1;
+- (void)_processProgressUpdates:(id)arg1;
 - (void)_stopWatchingItems;
 - (void)addDequeueCallback:(CDUnknownBlockType)arg1;
 - (void)addNotification:(id)arg1 asDead:(BOOL)arg2;
 - (void)boostPriority:(CDUnknownBlockType)arg1;
 - (void)close;
 - (void)dealloc;
-- (id)initWithReceiver:(id)arg1 root:(id)arg2 manager:(id)arg3;
-- (id)initWithXPCReceiver:(id)arg1 client:(id)arg2 root:(id)arg3 manager:(id)arg4;
+- (id)initWithReceiver:(id)arg1 manager:(id)arg2;
+- (id)initWithXPCReceiver:(id)arg1 client:(id)arg2 manager:(id)arg3;
 - (oneway void)invalidate;
-- (void)invalidateReceiverIfWatchingContainerID:(id)arg1;
+- (void)invalidateIfWatchingAppLibraryIDs:(id)arg1;
+- (void)invalidateReceiverIfWatchingAppLibraryIDs:(id)arg1;
+- (void)processProgressUpdates:(id)arg1;
 - (void)processUpdates:(id)arg1;
-- (void)watchItemAtURL:(id)arg1 container:(id)arg2 lookup:(id)arg3 options:(unsigned short)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)watchItemAtURL:(id)arg1 lookup:(id)arg2 options:(unsigned short)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)watchItemAtURL:(id)arg1 options:(unsigned short)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)watchItemInProcessAtURL:(id)arg1 options:(unsigned short)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)watchItemsNamesPrefixedBy:(id)arg1 inScopes:(unsigned short)arg2 containerIDs:(id)arg3 gatheringDone:(CDUnknownBlockType)arg4;
-- (void)watchScopes:(unsigned short)arg1 containerIDs:(id)arg2 gatheringDone:(CDUnknownBlockType)arg3;
+- (void)watchItemsNamesPrefixedBy:(id)arg1 inScopes:(unsigned short)arg2 appLibraryIDs:(id)arg3 gatheringDone:(CDUnknownBlockType)arg4;
+- (void)watchScopes:(unsigned short)arg1 appLibraryIDs:(id)arg2 gatheringDone:(CDUnknownBlockType)arg3;
 - (void)watchScopes:(unsigned short)arg1 gatheringDone:(CDUnknownBlockType)arg2;
-- (void)watchScopes:(unsigned short)arg1 trustedContainerIDs:(id)arg2 gatheringDone:(CDUnknownBlockType)arg3;
+- (void)watchScopes:(unsigned short)arg1 trustedAppLibraryIDs:(id)arg2 gatheringDone:(CDUnknownBlockType)arg3;
 
 @end
 

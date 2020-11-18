@@ -17,8 +17,7 @@
 @property (readonly, nonatomic) HKObject *dataObject; // @synthesize dataObject=_dataObject;
 @property (readonly, nonatomic) BOOL restrictSource; // @synthesize restrictSource=_restrictSource;
 
-+ (void)applyEntries:(id)arg1 withDaemon:(id)arg2;
-+ (long long)behavior;
++ (void)applyEntries:(id)arg1 withProfile:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

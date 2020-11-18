@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+#import <CompanionSync/NSFilePresenter-Protocol.h>
+
+@class NSOperationQueue, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
-@interface SYStatisticStore : NSObject
+@interface SYStatisticStore : NSObject <NSFilePresenter>
 {
     NSString *_path;
     struct sqlite3 *_db;
@@ -28,24 +30,42 @@
     struct sqlite3_stmt *_updateFileOutgoing;
     long long _lastIncomingRowID;
     NSObject<OS_dispatch_queue> *_operations_queue;
+    NSOperationQueue *_presenterOperationQueue;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, strong) NSOperationQueue *presentedItemOperationQueue;
+@property (readonly, copy) NSURL *presentedItemURL;
+@property (readonly, copy) NSURL *primaryPresentedItemURL;
+@property (readonly) Class superclass;
 
 + (id)sharedInstance;
 + (id)unpackMessageData:(id)arg1;
 - (void).cxx_destruct;
+- (id)_LOCKED_allServiceNames;
+- (BOOL)_LOCKED_pruneFileTransferLogForServices:(id)arg1;
+- (BOOL)_LOCKED_pruneMessageLogForServices:(id)arg1;
+- (int)_closeDB;
 - (void)_ensureCorrectFileOwnership:(id)arg1;
 - (double)_getMachTimestamp;
 - (int)_getSchemaVersion;
+- (void)_initializeFilePresentation;
 - (id)_keySetForMessageLogTable;
+- (void)_letGoForUnitTests:(id)arg1;
 - (void)_onQueueAsync:(CDUnknownBlockType)arg1;
 - (void)_onQueueSync:(CDUnknownBlockType)arg1;
 - (void)_openDB;
 - (BOOL)_openDBFile:(BOOL)arg1;
 - (id)_openDBIfNecessary;
+- (void)_pruneOldData;
 - (BOOL)_tableEmpty:(id)arg1;
 - (id)_unpackMessageData:(id)arg1;
+- (id)_unpackMetadata:(id)arg1;
 - (void)_unpackPBRequest:(id)arg1 forMessageID:(unsigned short)arg2 intoDictionary:(id)arg3;
 - (void)_unpackPBResponse:(id)arg1 forMessageID:(unsigned short)arg2 intoDictionary:(id)arg3;
+- (void)accommodatePresentedItemDeletionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)assignIdentifier:(id)arg1 toOutgoingMessage:(id)arg2;
 - (void)confirmDeliveryOfOutgoingFileTransfer:(id)arg1;
 - (void)confirmDeliveryOfOutgoingMessage:(id)arg1;
@@ -55,6 +75,7 @@
 - (id)initWithPath:(id)arg1;
 - (void)markLastIncomingMessageComplete;
 - (id)operationQ;
+- (void)presentedItemDidMoveToURL:(id)arg1;
 - (void)recordIncomingFileTransferAtURL:(id)arg1 metadata:(id)arg2 identifier:(id)arg3 forService:(id)arg4;
 - (void)recordIncomingMessage:(id)arg1 forService:(id)arg2;
 - (void)recordOutgoingFileTransferAtURL:(id)arg1 metadata:(id)arg2 identifier:(id)arg3 error:(id)arg4 forService:(id)arg5;

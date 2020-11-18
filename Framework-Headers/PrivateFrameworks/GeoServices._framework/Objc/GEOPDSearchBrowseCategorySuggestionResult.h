@@ -8,15 +8,18 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEOPDSearchBrowseCategorySuggestionResult : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_categorys;
 }
 
 @property (strong, nonatomic) NSMutableArray *categorys; // @synthesize categorys=_categorys;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)categoryType;
 - (void)addCategory:(id)arg1;
 - (id)categoryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)categorysCount;

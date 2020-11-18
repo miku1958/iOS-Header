@@ -11,8 +11,10 @@
 }
 
 @property (readonly, nonatomic) BOOL disableHomeButton; // @dynamic disableHomeButton;
+@property (readonly, nonatomic) BOOL disableHomeButtonDoublePress; // @dynamic disableHomeButtonDoublePress;
 @property (readonly, nonatomic) BOOL disableProximitySensor; // @dynamic disableProximitySensor;
 @property (nonatomic) BOOL hasSeenACaseLatchCoverOnce; // @dynamic hasSeenACaseLatchCoverOnce;
+@property (nonatomic) long long homeButtonHapticType; // @dynamic homeButtonHapticType;
 @property (readonly, nonatomic) BOOL useHardwareSwitchAsOrientationLock; // @dynamic useHardwareSwitchAsOrientationLock;
 
 - (void)_bindAndRegisterDefaults;

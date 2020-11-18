@@ -8,7 +8,6 @@
 
 @class UIColor, _UIBackdropViewSettings;
 
-__attribute__((visibility("hidden")))
 @interface _UICustomBlurEffect : UIBlurEffect
 {
     _UIBackdropViewSettings *_blurEffect;

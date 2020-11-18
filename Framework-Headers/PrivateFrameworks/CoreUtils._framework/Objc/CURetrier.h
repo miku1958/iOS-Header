@@ -16,6 +16,7 @@
     CDUnknownBlockType _action;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     double _interval;
+    double _leeway;
     CDUnknownBlockType _invalidationHandler;
 }
 
@@ -23,8 +24,9 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (nonatomic) double interval; // @synthesize interval=_interval;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
+@property (nonatomic) double leeway; // @synthesize leeway=_leeway;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)failed;
 - (void)failedDirect;
 - (id)init;

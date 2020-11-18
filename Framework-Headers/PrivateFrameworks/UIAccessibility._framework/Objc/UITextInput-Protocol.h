@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) UITextPosition *beginningOfDocument;
 @property (readonly, nonatomic) UITextPosition *endOfDocument;
 @property (weak, nonatomic) id<UITextInputDelegate> inputDelegate;
+@property (readonly, nonatomic) id insertDictationResultPlaceholder;
 @property (readonly, nonatomic) UITextRange *markedTextRange;
 @property (copy, nonatomic) NSDictionary *markedTextStyle;
 @property (copy) UITextRange *selectedTextRange;
@@ -49,7 +50,6 @@
 - (void)endFloatingCursor;
 - (struct CGRect)frameForDictationResultPlaceholder:(id)arg1;
 - (void)insertDictationResult:(NSArray *)arg1;
-- (id)insertDictationResultPlaceholder;
 - (UITextPosition *)positionWithinRange:(UITextRange *)arg1 atCharacterOffset:(long long)arg2;
 - (void)removeDictationResultPlaceholder:(id)arg1 willInsertResult:(BOOL)arg2;
 - (BOOL)shouldChangeTextInRange:(UITextRange *)arg1 replacementText:(NSString *)arg2;

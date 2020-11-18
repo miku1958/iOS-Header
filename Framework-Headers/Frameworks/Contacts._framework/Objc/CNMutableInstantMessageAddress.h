@@ -6,13 +6,15 @@
 
 #import <Contacts/CNInstantMessageAddress.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface CNMutableInstantMessageAddress : CNInstantMessageAddress
 {
 }
 
+@property (copy, nonatomic) NSArray *bundleIdentifiers; // @dynamic bundleIdentifiers;
 @property (copy, nonatomic) NSString *service; // @dynamic service;
+@property (copy, nonatomic) NSString *teamIdentifier; // @dynamic teamIdentifier;
 @property (copy, nonatomic) NSString *username; // @dynamic username;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

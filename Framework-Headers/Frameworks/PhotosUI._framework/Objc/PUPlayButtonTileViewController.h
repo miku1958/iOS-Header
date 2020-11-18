@@ -10,7 +10,7 @@
 #import <PhotosUI/PUBrowsingVideoPlayerChangeObserver-Protocol.h>
 
 @class NSString, PUAssetViewModel, PUBrowsingVideoPlayer, UIView;
-@protocol PLVideoOverlayButton, PUPlayButtonTileViewControllerDelegate;
+@protocol PUPlayButtonTileViewControllerDelegate, PXVideoOverlayButton;
 
 __attribute__((visibility("hidden")))
 @interface PUPlayButtonTileViewController : PUTileViewController <PUBrowsingVideoPlayerChangeObserver, PUAssetViewModelChangeObserver>
@@ -23,11 +23,11 @@ __attribute__((visibility("hidden")))
     id<PUPlayButtonTileViewControllerDelegate> _delegate;
     PUAssetViewModel *_assetViewModel;
     PUBrowsingVideoPlayer *__browsingVideoPlayer;
-    UIView<PLVideoOverlayButton> *__playButton;
+    UIView<PXVideoOverlayButton> *__playButton;
 }
 
 @property (strong, nonatomic, setter=_setBrowsingVideoPlayer:) PUBrowsingVideoPlayer *_browsingVideoPlayer; // @synthesize _browsingVideoPlayer=__browsingVideoPlayer;
-@property (strong, nonatomic, setter=_setPlayButton:) UIView<PLVideoOverlayButton> *_playButton; // @synthesize _playButton=__playButton;
+@property (strong, nonatomic, setter=_setPlayButton:) UIView<PXVideoOverlayButton> *_playButton; // @synthesize _playButton=__playButton;
 @property (nonatomic, setter=_setShouldShowPlayButton:) BOOL _shouldShowPlayButton; // @synthesize _shouldShowPlayButton=__shouldShowPlayButton;
 @property (strong, nonatomic) PUAssetViewModel *assetViewModel; // @synthesize assetViewModel=_assetViewModel;
 @property (readonly, copy) NSString *debugDescription;

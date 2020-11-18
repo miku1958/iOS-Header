@@ -11,11 +11,12 @@
 @interface TIPreferencesController : NSObject
 {
     NSTimer *_synchronizePreferencesTimer;
-    BOOL dontSynchronizePreferences;
+    double _lastSynchronizePreferencesTime[5];
     BOOL isInternalInstall;
+    BOOL _inhibitGlobalNotification;
 }
 
-@property (nonatomic) BOOL dontSynchronizePreferences; // @synthesize dontSynchronizePreferences;
+@property (nonatomic) BOOL inhibitGlobalNotification; // @synthesize inhibitGlobalNotification=_inhibitGlobalNotification;
 @property (nonatomic) BOOL isInternalInstall; // @synthesize isInternalInstall;
 
 + (id)sharedPreferencesController;
@@ -31,7 +32,6 @@
 - (void)managedKeyboardSettingDidChange:(id)arg1;
 - (CDStruct_982099be *)preferences;
 - (void)preferencesChangedCallback:(id)arg1;
-- (void)releaseDontSynchronizePreferences;
 - (void)setAutocorrectionEnabled:(BOOL)arg1;
 - (void)setCheckSpellingEnabled:(BOOL)arg1;
 - (void)setPredictionEnabled:(BOOL)arg1;

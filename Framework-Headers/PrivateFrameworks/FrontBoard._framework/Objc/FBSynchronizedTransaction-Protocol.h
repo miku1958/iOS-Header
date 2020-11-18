@@ -10,7 +10,7 @@
 
 @protocol FBSynchronizedTransaction <NSObject>
 
-@property (nonatomic) id<FBSynchronizedTransactionDelegate> synchronizationDelegate;
+@property (weak, nonatomic) id<FBSynchronizedTransactionDelegate> synchronizationDelegate;
 
 - (BOOL)isReadyForSynchronizedCommit;
 - (void)performSynchronizedCommit;

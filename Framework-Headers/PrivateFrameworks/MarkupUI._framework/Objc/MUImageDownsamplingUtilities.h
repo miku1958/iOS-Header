@@ -10,12 +10,13 @@
 {
 }
 
-+ (id)_downsampleSourceContentToDisk:(id)arg1 contentUTI:(id)arg2;
++ (id)_flattenEXIFOrientation:(BOOL)arg1 withDownsampling:(BOOL)arg2 sourceContent:(id)arg3 withUTI:(id)arg4;
++ (BOOL)_flattenEXIFOrientationOfImage:(id)arg1 toDestination:(id)arg2;
 + (double)_maxDimensionOfSize:(struct CGSize)arg1 fittingToArea:(double)arg2;
 + (struct CGImageSource *)_newImageSourceWithSourceContent:(id)arg1;
 + (id)_preferredFileDisplayNameForSourceContent:(id)arg1;
 + (id)_preferredFileExtensionForContentType:(id)arg1;
-+ (BOOL)_shouldDownsampleSourceContent:(id)arg1;
++ (void)_shouldFlattenEXIFOrientation:(BOOL *)arg1 andDownsample:(BOOL *)arg2 sourceContent:(id)arg3;
 + (struct CGSize)_sizeFittingArea:(double)arg1 withSize:(struct CGSize)arg2;
 + (id)_sourceContentType:(id)arg1;
 + (id)_uniqueTemporaryDirectory;

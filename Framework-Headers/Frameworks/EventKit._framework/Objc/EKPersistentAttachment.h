@@ -17,6 +17,7 @@
 @property (copy, nonatomic) NSURL *URL;
 @property (readonly, nonatomic) NSString *UUID;
 @property (copy, nonatomic) NSDictionary *XProperties;
+@property (copy, nonatomic) NSString *externalId;
 @property (copy, nonatomic) NSString *fileFormat;
 @property (copy, nonatomic) NSString *fileName;
 @property (copy, nonatomic) NSNumber *fileSize;

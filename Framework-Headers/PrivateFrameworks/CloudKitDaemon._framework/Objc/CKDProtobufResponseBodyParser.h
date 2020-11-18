@@ -4,47 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CloudKitDaemon/CKDResponseBodyParser.h>
 
-#import <CloudKitDaemon/CKDResponseBodyParser-Protocol.h>
+@class NSMutableData;
 
-@class NSData, NSError, NSMutableData, NSString;
-@protocol OS_dispatch_queue;
-
-@interface CKDProtobufResponseBodyParser : NSObject <CKDResponseBodyParser>
+@interface CKDProtobufResponseBodyParser : CKDResponseBodyParser
 {
     BOOL _isParsing;
     Class _messageClass;
-    CDUnknownBlockType _objectParsedBlock;
-    CDUnknownBlockType _logParsedObjectBlock;
-    NSError *_parserError;
-    NSObject<OS_dispatch_queue> *_parseQueue;
-    NSData *_parserData;
     NSMutableData *_tailParserData;
     unsigned long long _curObjectLength;
     struct CC_SHA256state_st _mescalSignature;
 }
 
 @property (nonatomic) unsigned long long curObjectLength; // @synthesize curObjectLength=_curObjectLength;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isParsing; // @synthesize isParsing=_isParsing;
-@property (copy, nonatomic) CDUnknownBlockType logParsedObjectBlock; // @synthesize logParsedObjectBlock=_logParsedObjectBlock;
 @property (nonatomic) struct CC_SHA256state_st mescalSignature; // @synthesize mescalSignature=_mescalSignature;
 @property (nonatomic) Class messageClass; // @synthesize messageClass=_messageClass;
-@property (copy, nonatomic) CDUnknownBlockType objectParsedBlock; // @synthesize objectParsedBlock=_objectParsedBlock;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *parseQueue; // @synthesize parseQueue=_parseQueue;
-@property (strong, nonatomic) NSData *parserData; // @synthesize parserData=_parserData;
-@property (strong, nonatomic) NSError *parserError; // @synthesize parserError=_parserError;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableData *tailParserData; // @synthesize tailParserData=_tailParserData;
 
 - (void).cxx_destruct;
 - (BOOL)_parseObjectFromData:(id)arg1 rawData:(id)arg2;
 - (BOOL)_parseObjects:(BOOL)arg1;
 - (void)finishWithCompletion:(CDUnknownBlockType)arg1;
-- (id)init;
+- (id)initWithRequest:(id)arg1;
 - (void)processData:(id)arg1;
 
 @end

@@ -18,7 +18,6 @@
     NSMutableArray *_alertInvocationQueue;
     UITableView *_tableView;
     id _delegate;
-    BOOL _isDismissed;
 }
 
 @property (readonly, copy) NSString *debugDescription;

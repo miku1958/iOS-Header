@@ -13,6 +13,7 @@
 @interface NoteAccountObject : NoteCollectionObject <ICLegacyAccount>
 {
     NSDictionary *_constraints;
+    NSNumber *_preventMovingNotesToOtherAccounts;
 }
 
 @property (strong, nonatomic) NSString *accountIdentifier; // @dynamic accountIdentifier;
@@ -26,6 +27,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *name; // @dynamic name;
 @property (strong, nonatomic) NSString *pathToConstraintsPlist;
+@property (readonly, nonatomic) BOOL preventMovingNotesToOtherAccounts;
 @property (strong, nonatomic) NSSet *stores; // @dynamic stores;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSNumber *type; // @dynamic type;

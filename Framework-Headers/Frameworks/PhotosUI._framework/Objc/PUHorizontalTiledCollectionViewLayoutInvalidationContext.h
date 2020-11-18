@@ -12,9 +12,8 @@ __attribute__((visibility("hidden")))
     BOOL _invalidateCachedLayout;
 }
 
-@property (nonatomic) BOOL invalidateCachedLayout; // @synthesize invalidateCachedLayout=_invalidateCachedLayout;
+@property (nonatomic, setter=_setInvalidateCachedLayout:) BOOL invalidateCachedLayout; // @synthesize invalidateCachedLayout=_invalidateCachedLayout;
 
-- (void)_setInvalidateCachedLayout:(BOOL)arg1;
 
 @end
 

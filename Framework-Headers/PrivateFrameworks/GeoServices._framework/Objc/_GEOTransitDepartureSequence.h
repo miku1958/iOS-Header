@@ -17,12 +17,14 @@ __attribute__((visibility("hidden")))
     GEOPDDepartureSequence *_sequence;
     id<GEOTransitLine> _line;
     NSSet *_nextStopIDs;
+    long long _displayStyle;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) NSArray *departures;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *direction;
+@property (readonly, nonatomic) long long displayStyle;
 @property (readonly, nonatomic) NSArray *frequencies;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *headsign;
@@ -43,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (double)frequencyForSortingAtDate:(id)arg1;
 - (id)frequencyToDescribeAtDate:(id)arg1;
 - (BOOL)hasFrequencyAtDate:(id)arg1;
-- (id)initWithSequence:(id)arg1 line:(id)arg2;
+- (id)initWithSequence:(id)arg1 line:(id)arg2 pbLine:(id)arg3;
 - (BOOL)isDepartureDateInactive:(id)arg1 withReferenceDate:(id)arg2;
 - (BOOL)isValidForDate:(id)arg1 inTimeZone:(id)arg2;
 - (unsigned long long)numberOfDeparturesAfterDate:(id)arg1;

@@ -17,7 +17,7 @@
 @property (copy) CDUnknownBlockType shareCopyCompletionBlock; // @synthesize shareCopyCompletionBlock=_shareCopyCompletionBlock;
 @property (strong, nonatomic) NSURL *url; // @synthesize url=_url;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)initWithURL:(id)arg1;
 - (void)main;

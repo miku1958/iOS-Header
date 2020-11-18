@@ -28,7 +28,7 @@
 - (void)exitMarkupWithReplacementAttachment:(id)arg1 targetRect:(struct CGRect)arg2;
 - (void)handleReturnedMarkupItems:(id)arg1 forAttachment:(id)arg2;
 - (id)initWithMarkupDelegate:(id)arg1;
-- (void)markupAttachment:(id)arg1;
+- (void)markupAttachment:(id)arg1 fromRect:(struct CGRect)arg2 maskRect:(struct CGRect)arg3;
 
 @end
 

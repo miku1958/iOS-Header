@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
 #import <SceneKit/SCNAnimatable-Protocol.h>
 #import <SceneKit/SCNTechniqueSupport-Protocol.h>
 
-@class NSArray, NSString, SCNOrderedDictionary, SCNTechnique;
+@class NSArray, NSString, SCNMaterialProperty, SCNOrderedDictionary, SCNTechnique;
 
 @interface SCNCamera : NSObject <SCNAnimatable, SCNTechniqueSupport, NSCopying, NSSecureCoding>
 {
@@ -34,23 +34,71 @@
     unsigned long long _categoryBitMask;
     struct SCNMatrix4 _projectionTransform;
     SCNTechnique *_technique;
+    SCNMaterialProperty *_colorGrading;
+    BOOL _wantsHDR;
+    float _whitePoint;
+    float _averageGray;
+    float _exposureOffset;
+    float _minimumExposure;
+    float _maximumExposure;
+    BOOL _wantsExposureAdaptation;
+    float _exposureAdaptationDuration;
+    float _exposureAdaptationBrighteningSpeedFactor;
+    float _exposureAdaptationDarkeningSpeedFactor;
+    float _bloomIntensity;
+    float _bloomThreshold;
+    float _bloomBlurRadius;
+    float _motionBlurIntensity;
+    float _vignettingPower;
+    float _vignettingIntensity;
+    float _colorFringeStrength;
+    float _colorFringeIntensity;
+    float _saturation;
+    float _contrast;
+    struct {
+        float amount;
+        float radius;
+        float strength;
+        float falloff;
+    } _screenSpaceAmbientOcclusion;
 }
 
 @property (readonly) NSArray *animationKeys;
 @property (nonatomic) double aperture;
 @property (nonatomic) BOOL automaticallyAdjustsZRange;
+@property (nonatomic) double averageGray;
+@property (nonatomic) double bloomBlurRadius;
+@property (nonatomic) double bloomIntensity;
+@property (nonatomic) double bloomThreshold;
 @property (nonatomic) unsigned long long categoryBitMask;
+@property (nonatomic) double colorFringeIntensity;
+@property (nonatomic) double colorFringeStrength;
+@property (readonly, nonatomic) SCNMaterialProperty *colorGrading;
+@property (nonatomic) double contrast;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) double exposureAdaptationBrighteningSpeedFactor;
+@property (nonatomic) double exposureAdaptationDarkeningSpeedFactor;
+@property (nonatomic) double exposureOffset;
 @property (nonatomic) double focalBlurRadius;
 @property (nonatomic) double focalDistance;
 @property (nonatomic) double focalSize;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double maximumExposure;
+@property (nonatomic) double minimumExposure;
+@property (nonatomic) double motionBlurIntensity;
 @property (copy, nonatomic) NSString *name;
 @property (nonatomic) double orthographicScale;
+@property (nonatomic) struct SCNMatrix4 projectionTransform;
+@property (nonatomic) double saturation;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) SCNTechnique *technique;
 @property (nonatomic) BOOL usesOrthographicProjection;
+@property (nonatomic) double vignettingIntensity;
+@property (nonatomic) double vignettingPower;
+@property (nonatomic) BOOL wantsExposureAdaptation;
+@property (nonatomic) BOOL wantsHDR;
+@property (nonatomic) double whitePoint;
 @property (nonatomic) double xFov;
 @property (nonatomic) double yFov;
 @property (nonatomic) double zFar;
@@ -60,8 +108,8 @@
 + (id)cameraWithCameraRef:(struct __C3DCamera *)arg1;
 + (id)cameraWithMDLCamera:(id)arg1;
 + (BOOL)supportsSecureCoding;
-- (void *)__CFObject;
-- (void)__removeAnimation:(id)arg1 forKey:(id)arg2;
+- (const void *)__CFObject;
+- (BOOL)__removeAnimation:(id)arg1 forKey:(id)arg2;
 - (void)_customEncodingOfSCNCamera:(id)arg1;
 - (void)_didDecodeSCNCamera:(id)arg1;
 - (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2;
@@ -73,6 +121,7 @@
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
 - (id)animationForKey:(id)arg1;
 - (struct __C3DAnimationManager *)animationManager;
+- (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
 - (struct __C3DCamera *)cameraRef;
 - (id)copy;
 - (struct __C3DAnimationChannel *)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
@@ -81,6 +130,7 @@
 - (id)debugQuickLookData;
 - (id)debugQuickLookObject;
 - (void)encodeWithCoder:(id)arg1;
+- (double)exposureAdaptationDuration;
 - (BOOL)hasCustomProjectionTransform;
 - (id)identifier;
 - (id)init;
@@ -92,17 +142,26 @@
 - (void)pauseAnimationForKey:(id)arg1;
 - (id)presentationCamera;
 - (id)presentationInstance;
-- (struct SCNMatrix4)projectionTransform;
 - (void)removeAllAnimations;
 - (void)removeAnimationForKey:(id)arg1;
 - (void)removeAnimationForKey:(id)arg1 fadeOutDuration:(double)arg2;
 - (void)resumeAnimationForKey:(id)arg1;
 - (id)scene;
 - (struct __C3DScene *)sceneRef;
+- (double)screenSpaceAmbientOcclusionAmount;
+- (double)screenSpaceAmbientOcclusionFalloff;
+- (double)screenSpaceAmbientOcclusionRadius;
+- (double)screenSpaceAmbientOcclusionStrength;
+- (void)setExposureAdaptationDuration:(double)arg1;
 - (void)setIdentifier:(id)arg1;
-- (void)setProjectionTransform:(struct SCNMatrix4)arg1;
+- (void)setScreenSpaceAmbientOcclusionAmount:(double)arg1;
+- (void)setScreenSpaceAmbientOcclusionFalloff:(double)arg1;
+- (void)setScreenSpaceAmbientOcclusionRadius:(double)arg1;
+- (void)setScreenSpaceAmbientOcclusionStrength:(double)arg1;
+- (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
 - (void)setXMag:(double)arg1;
 - (void)setYMag:(double)arg1;
+- (void)unbindAnimatablePath:(id)arg1;
 - (double)xMag;
 - (double)yMag;
 

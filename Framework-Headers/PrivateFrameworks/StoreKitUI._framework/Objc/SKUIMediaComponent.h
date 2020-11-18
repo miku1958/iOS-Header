@@ -8,7 +8,8 @@
 
 #import <StoreKitUI/SSMetricsEventFieldProvider-Protocol.h>
 
-@class NSString, SKUIArtworkList, SKUILink;
+@class NSString, SKUILink;
+@protocol SKUIArtworkProviding;
 
 @interface SKUIMediaComponent : SKUIPageComponent <SSMetricsEventFieldProvider>
 {
@@ -20,10 +21,10 @@
     long long _mediaIdentifier;
     long long _mediaType;
     NSString *_mediaURLString;
-    SKUIArtworkList *_thumbnailArtworkList;
     NSString *_title;
     float _titleFontSize;
     long long _titleFontWeight;
+    id<SKUIArtworkProviding> _thumbnailArtworkProvider;
 }
 
 @property (readonly, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
@@ -38,7 +39,7 @@
 @property (readonly, nonatomic) long long mediaType; // @synthesize mediaType=_mediaType;
 @property (readonly, nonatomic) NSString *mediaURLString; // @synthesize mediaURLString=_mediaURLString;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) SKUIArtworkList *thumbnailArtworkList; // @synthesize thumbnailArtworkList=_thumbnailArtworkList;
+@property (readonly, nonatomic) id<SKUIArtworkProviding> thumbnailArtworkProvider; // @synthesize thumbnailArtworkProvider=_thumbnailArtworkProvider;
 @property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property (readonly, nonatomic) float titleFontSize; // @synthesize titleFontSize=_titleFontSize;
 @property (readonly, nonatomic) long long titleFontWeight; // @synthesize titleFontWeight=_titleFontWeight;
@@ -48,8 +49,8 @@
 - (id)bestThumbnailForWidth:(double)arg1;
 - (long long)componentType;
 - (id)initWithArtwork:(id)arg1;
-- (id)initWithArtworkList:(id)arg1;
-- (id)initWithArtworkList:(id)arg1 appearance:(long long)arg2;
+- (id)initWithArtworkProvider:(id)arg1;
+- (id)initWithArtworkProvider:(id)arg1 appearance:(long long)arg2;
 - (id)initWithCustomPageContext:(id)arg1;
 - (id)initWithFeaturedContentContext:(id)arg1 kind:(long long)arg2;
 - (id)metricsElementName;

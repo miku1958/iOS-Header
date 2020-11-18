@@ -8,7 +8,7 @@
 
 #import <extension/_NSExtensionContextHosting-Protocol.h>
 
-@class BKSProcessAssertion, NSArray, NSBundle, NSDictionary, NSMutableDictionary, NSString, NSUUID;
+@class BKSProcessAssertion, NSArray, NSBundle, NSDictionary, NSMutableDictionary, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue, PKPlugIn;
 
 @interface NSExtension : NSObject <_NSExtensionContextHosting>
@@ -22,6 +22,7 @@
     CDUnknownBlockType _requestCompletionBlock;
     CDUnknownBlockType _requestCancellationBlock;
     CDUnknownBlockType _requestInterruptionBlock;
+    id __stashedPlugInConnection;
     id<PKPlugIn> __plugIn;
     NSBundle *__extensionBundle;
     CDUnknownBlockType __requestPostCompletionBlock;
@@ -29,12 +30,14 @@
     NSMutableDictionary *__extensionExpirationIdentifiers;
     NSMutableDictionary *__extensionServiceConnections;
     NSMutableDictionary *__extensionContexts;
+    NSSet *__allowedErrorClasses;
     BKSProcessAssertion *__extensionProcessAssertion;
     long long __assertionRefCount;
     NSUUID *_connectionUUID;
     NSObject<OS_dispatch_queue> *__safePluginQueue;
 }
 
+@property (copy, nonatomic, setter=_setAllowedErrorClasses:) NSSet *_allowedErrorClasses; // @synthesize _allowedErrorClasses=__allowedErrorClasses;
 @property (nonatomic, setter=_setAssertionRefCount:) long long _assertionRefCount; // @synthesize _assertionRefCount=__assertionRefCount;
 @property (strong, nonatomic, setter=_setExtensionBundle:) NSBundle *_extensionBundle; // @synthesize _extensionBundle=__extensionBundle;
 @property (strong, nonatomic, setter=_setExtensionContexts:) NSMutableDictionary *_extensionContexts; // @synthesize _extensionContexts=__extensionContexts;
@@ -47,6 +50,7 @@
 @property (copy, nonatomic) CDUnknownBlockType _requestPostCompletionBlock; // @synthesize _requestPostCompletionBlock=__requestPostCompletionBlock;
 @property (copy, nonatomic) CDUnknownBlockType _requestPostCompletionBlockWithItems; // @synthesize _requestPostCompletionBlockWithItems=__requestPostCompletionBlockWithItems;
 @property (nonatomic) NSObject<OS_dispatch_queue> *_safePluginQueue; // @synthesize _safePluginQueue=__safePluginQueue;
+@property (strong) id _stashedPlugInConnection; // @synthesize _stashedPlugInConnection=__stashedPlugInConnection;
 @property (copy, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
 @property (copy, nonatomic) NSUUID *connectionUUID; // @synthesize connectionUUID=_connectionUUID;
 @property (readonly, copy) NSString *debugDescription;
@@ -99,6 +103,7 @@
 - (void)_resetExtensionState;
 - (void)_safelyBeginUsing:(CDUnknownBlockType)arg1;
 - (void)_safelyEndUsing:(CDUnknownBlockType)arg1;
+- (void)_safelyEndUsingWithProcessAssertion:(id)arg1 continuation:(CDUnknownBlockType)arg2;
 - (BOOL)_wantsProcessPerRequest;
 - (BOOL)attemptOptIn:(id *)arg1;
 - (BOOL)attemptOptOut:(id *)arg1;

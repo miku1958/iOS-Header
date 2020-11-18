@@ -8,6 +8,7 @@
 
 @interface NSArray (AXExtensions)
 + (id)axArrayByIgnoringNilElementsWithCount:(unsigned long long)arg1;
++ (id)axArrayWithPossiblyNilArrays:(unsigned long long)arg1;
 - (id)axFilterObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)axIsEqualToOrderedArray:(id)arg1 withPredicate:(CDUnknownBlockType)arg2;
 - (id)axMapObjectsUsingBlock:(CDUnknownBlockType)arg1;

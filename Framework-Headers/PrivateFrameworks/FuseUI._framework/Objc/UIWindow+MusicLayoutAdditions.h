@@ -8,5 +8,7 @@
 
 @interface UIWindow (MusicLayoutAdditions)
 + (void)music_setWantsDefaultLayoutInsets;
++ (void)music_setWantsLayoutInsetsUsingBlock:(CDUnknownBlockType)arg1;
++ (void)music_setWantsMusicLayoutInsets;
 @end
 

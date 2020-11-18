@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CNScheduler : NSObject
 {
@@ -13,8 +13,9 @@
 + (id)globalAsyncScheduler;
 + (id)immediateScheduler;
 + (id)mainThreadScheduler;
-+ (id)operationQueueSchedulerWithMaxConcurrentOperationCount:(unsigned long long)arg1;
++ (id)operationQueueSchedulerWithMaxConcurrentOperationCount:(long long)arg1;
 + (id)serialDispatchQueueSchedulerWithName:(id)arg1;
++ (id)synchronousSerialDispatchQueueWithName:(id)arg1;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSString, NSURLRequest, NSURLResponse, QLPreviewParts;
 
@@ -35,6 +35,7 @@
 + (BOOL)isSafeRequest:(id)arg1;
 + (BOOL)isSafeURL:(id)arg1;
 + (BOOL)isSpreadSheetDocumentType:(id)arg1;
+- (void).cxx_destruct;
 - (void)_register;
 - (void)appendData:(id)arg1;
 - (void)appendDataArray:(id)arg1;

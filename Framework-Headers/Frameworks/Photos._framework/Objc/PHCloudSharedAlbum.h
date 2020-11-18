@@ -27,6 +27,7 @@
 @property (readonly, strong, nonatomic) NSString *cloudOwnerLastName; // @synthesize cloudOwnerLastName=_cloudOwnerLastName;
 @property (readonly, nonatomic, getter=isOwned) BOOL owned; // @synthesize owned=_owned;
 
++ (id)fetchType;
 + (id)identifierCode;
 + (id)managedEntityName;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;

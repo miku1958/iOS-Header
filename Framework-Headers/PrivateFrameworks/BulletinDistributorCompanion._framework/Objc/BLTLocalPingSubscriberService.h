@@ -26,11 +26,10 @@
 
 - (void).cxx_destruct;
 - (void)getWillNanoPresentNotificationForSectionID:(id)arg1 subsectionIDs:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)pingWithBulletin:(id)arg1;
-- (void)pingWithRecordID:(id)arg1 forSectionID:(id)arg2;
+- (void)pingWithBulletin:(id)arg1 ack:(CDUnknownBlockType)arg2;
+- (void)pingWithRecordID:(id)arg1 forSectionID:(id)arg2 ack:(CDUnknownBlockType)arg3;
 - (void)sendBulletinSummary:(id)arg1;
-- (void)subscribeToSectionID:(id)arg1;
-- (void)subscribeToSectionID:(id)arg1 forFullBulletins:(BOOL)arg2;
+- (void)subscribeToSectionID:(id)arg1 forFullBulletins:(BOOL)arg2 withAck:(BOOL)arg3;
 - (void)subscribeWithMachServiceName:(id)arg1;
 - (void)unsubscribeFromSectionID:(id)arg1;
 

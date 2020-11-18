@@ -17,15 +17,11 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) BOOL chromeVisibilityChanged; // @synthesize chromeVisibilityChanged=_chromeVisibilityChanged;
-@property (nonatomic) BOOL shouldObserveAirplayRouteChanged; // @synthesize shouldObserveAirplayRouteChanged=_shouldObserveAirplayRouteChanged;
-@property (nonatomic) BOOL shouldShowAirplayButtonChanged; // @synthesize shouldShowAirplayButtonChanged=_shouldShowAirplayButtonChanged;
-@property (nonatomic) BOOL shouldShowChromeBarsChanged; // @synthesize shouldShowChromeBarsChanged=_shouldShowChromeBarsChanged;
-@property (nonatomic) BOOL shouldShowPlaceholderChanged; // @synthesize shouldShowPlaceholderChanged=_shouldShowPlaceholderChanged;
+@property (nonatomic, setter=_setShouldObserveAirplayRouteChanged:) BOOL shouldObserveAirplayRouteChanged; // @synthesize shouldObserveAirplayRouteChanged=_shouldObserveAirplayRouteChanged;
+@property (nonatomic, setter=_setShouldShowAirplayButtonChanged:) BOOL shouldShowAirplayButtonChanged; // @synthesize shouldShowAirplayButtonChanged=_shouldShowAirplayButtonChanged;
+@property (nonatomic, setter=_setShouldShowChromeBarsChanged:) BOOL shouldShowChromeBarsChanged; // @synthesize shouldShowChromeBarsChanged=_shouldShowChromeBarsChanged;
+@property (nonatomic, setter=_setShouldShowPlaceholderChanged:) BOOL shouldShowPlaceholderChanged; // @synthesize shouldShowPlaceholderChanged=_shouldShowPlaceholderChanged;
 
-- (void)_setShouldObserveAirplayRouteChanged:(BOOL)arg1;
-- (void)_setShouldShowAirplayButtonChanged:(BOOL)arg1;
-- (void)_setShouldShowChromeBarsChanged:(BOOL)arg1;
-- (void)_setShouldShowPlaceholderChanged:(BOOL)arg1;
 - (BOOL)changed;
 
 @end

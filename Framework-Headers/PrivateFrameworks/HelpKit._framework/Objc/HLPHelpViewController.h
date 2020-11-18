@@ -6,23 +6,28 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <HelpKit/HLPHelpLoadingViewDelegate-Protocol.h>
 #import <HelpKit/HLPHelpTableOfContentViewControllerDelegate-Protocol.h>
 #import <HelpKit/HLPHelpTopicViewControllerDelegate-Protocol.h>
 #import <HelpKit/HLPReachabilityManagerDelegate-Protocol.h>
 
-@class HLPHelpBookController, HLPHelpLoadingView, HLPHelpLocaleController, HLPHelpTableOfContentViewController, HLPHelpTopicViewController, HLPHelpUsageController, HLPReachabilityManager, NSMutableDictionary, NSString, NSURL;
+@class HLPHelpBookController, HLPHelpLoadingView, HLPHelpLocaleController, HLPHelpTableOfContentViewController, HLPHelpTopicViewController, HLPHelpUsageController, HLPReachabilityManager, NSArray, NSMutableDictionary, NSString, NSURL, UIBarButtonItem;
 @protocol HLPHelpViewControllerDelegate;
 
-@interface HLPHelpViewController : UIViewController <HLPHelpTableOfContentViewControllerDelegate, HLPHelpTopicViewControllerDelegate, HLPReachabilityManagerDelegate>
+@interface HLPHelpViewController : UIViewController <HLPHelpTableOfContentViewControllerDelegate, HLPHelpTopicViewControllerDelegate, HLPReachabilityManagerDelegate, HLPHelpLoadingViewDelegate>
 {
+    NSString *_helpBookBasePath;
+    NSString *_helpbookVersion;
     NSURL *_helpBookURL;
     NSMutableDictionary *_localHelpBookNameIDMap;
+    UIBarButtonItem *_doneBarButtonItem;
     HLPHelpUsageController *_usageController;
     HLPHelpLocaleController *_localeListController;
     HLPHelpBookController *_helpBookController;
     HLPHelpTopicViewController *_topicViewController;
     BOOL _hideDoneButton;
     BOOL _displayHelpTopicsOnly;
+    BOOL _showTopicNameAsTitle;
     BOOL _showTopicViewOnLoad;
     id<HLPHelpViewControllerDelegate> _delegate;
     NSString *_identifier;
@@ -30,6 +35,7 @@
     NSString *_subpath;
     NSURL *_localHelpBookFileURL;
     NSString *_selectedHelpTopicID;
+    NSArray *_preferredLanguagesOverride;
     NSString *_selectedHelpTopicName;
     HLPReachabilityManager *_reachabilityManager;
     HLPHelpLoadingView *_loadingView;
@@ -45,9 +51,11 @@
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) HLPHelpLoadingView *loadingView; // @synthesize loadingView=_loadingView;
 @property (copy, nonatomic) NSURL *localHelpBookFileURL; // @synthesize localHelpBookFileURL=_localHelpBookFileURL;
+@property (copy, nonatomic) NSArray *preferredLanguagesOverride; // @synthesize preferredLanguagesOverride=_preferredLanguagesOverride;
 @property (strong, nonatomic) HLPReachabilityManager *reachabilityManager; // @synthesize reachabilityManager=_reachabilityManager;
 @property (copy, nonatomic) NSString *selectedHelpTopicID; // @synthesize selectedHelpTopicID=_selectedHelpTopicID;
 @property (copy, nonatomic) NSString *selectedHelpTopicName; // @synthesize selectedHelpTopicName=_selectedHelpTopicName;
+@property (nonatomic) BOOL showTopicNameAsTitle; // @synthesize showTopicNameAsTitle=_showTopicNameAsTitle;
 @property (nonatomic) BOOL showTopicViewOnLoad; // @synthesize showTopicViewOnLoad=_showTopicViewOnLoad;
 @property (copy, nonatomic) NSString *subpath; // @synthesize subpath=_subpath;
 @property (readonly) Class superclass;
@@ -66,17 +74,22 @@
 - (void)helpTopicViewController:(id)arg1 failToLoadWithError:(id)arg2;
 - (void)helpTopicViewController:(id)arg1 selectedHelpTopicItem:(id)arg2;
 - (void)helpTopicViewControllerDoneButtonTapped:(id)arg1;
+- (void)helpTopicViewControllerShowHelpBookInfo:(id)arg1;
 - (void)helpTopicViewControllerTableOfContentButtonTapped:(id)arg1;
 - (id)init;
 - (void)loadHelpBook;
 - (void)popWelcomeTopicView;
 - (void)reachabilityManagerConnectionStatusChanged:(id)arg1 connected:(BOOL)arg2;
 - (void)setupTableContentViewController;
-- (void)showHelpTopicItem:(id)arg1 animate:(BOOL)arg2;
+- (void)showHelpBookInfo:(id)arg1;
+- (void)showHelpTopicItem:(id)arg1 anchor:(id)arg2 animate:(BOOL)arg3;
 - (void)showMessageForError:(id)arg1;
+- (void)showTopicView;
 - (void)tableOfContentViewController:(id)arg1 showHelpTopicItem:(id)arg2;
+- (void)tableOfContentViewControllerShowHelpBookInfo:(id)arg1;
 - (id)topicIDForTopicName:(id)arg1 locale:(id)arg2;
 - (void)updateDoneButton;
+- (void)updateTOCButton;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

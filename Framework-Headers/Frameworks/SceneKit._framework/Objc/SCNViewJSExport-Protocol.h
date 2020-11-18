@@ -18,6 +18,7 @@
 @property (nonatomic) BOOL loops;
 @property (nonatomic, getter=isPlaying) BOOL playing;
 @property (strong, nonatomic) SCNNode *pointOfView;
+@property (nonatomic) long long preferredFramesPerSecond;
 @property (strong, nonatomic) SCNScene *scene;
 @property (nonatomic) BOOL showsStatistics;
 

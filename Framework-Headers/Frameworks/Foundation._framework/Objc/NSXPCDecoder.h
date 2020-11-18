@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)_validateAllowedClass:(Class)arg1 forKey:(id)arg2 allowingInvocations:(BOOL)arg3;
 - (id)allowedClasses;
 - (BOOL)allowsKeyedCoding;
+- (id)connection;
 - (BOOL)containsValueForKey:(id)arg1;
 - (void)dealloc;
 - (id)debugDescription;
@@ -58,7 +59,6 @@ __attribute__((visibility("hidden")))
 - (void)decodeValueOfObjCType:(const char *)arg1 at:(void *)arg2;
 - (id)decodeXPCObjectForKey:(id)arg1;
 - (id)decodeXPCObjectOfType:(struct _xpc_type_s *)arg1 forKey:(id)arg2;
-- (void)finalize;
 
 @end
 

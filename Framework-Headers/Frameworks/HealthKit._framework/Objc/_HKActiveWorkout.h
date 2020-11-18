@@ -8,8 +8,8 @@
 
 #import <HealthKit/_HKActiveWorkoutClient-Protocol.h>
 
-@class NSData, NSDate, NSDictionary, NSMutableData, NSMutableDictionary, NSObject, NSString;
-@protocol NSXPCProxyCreating, OS_dispatch_queue, _HKActiveWorkoutDelegate, _HKActiveWorkoutLifecycleDelegate;
+@class HKQuantity, NSData, NSDate, NSDictionary, NSMutableData, NSMutableDictionary, NSObject, NSString, _HKLocationSeriesStore;
+@protocol NSXPCProxyCreating, OS_dispatch_queue, _HKActiveWorkoutDelegate, _HKActiveWorkoutLifecycleDelegate, _HKActiveWorkoutResumeDelegate;
 
 @interface _HKActiveWorkout : HKWorkout <_HKActiveWorkoutClient>
 {
@@ -19,11 +19,15 @@
     NSObject<OS_dispatch_queue> *_clientQueue;
     long long _workoutState;
     long long _serverState;
+    HKQuantity *_lapLength;
+    long long _swimmingLocation;
     NSDate *_lastObservedDate;
     NSMutableDictionary *_resumeDataByType;
     id<NSXPCProxyCreating> _serverProxy;
     NSMutableData *_associatedObjectUUIDData;
+    _HKLocationSeriesStore *_locationStore;
     BOOL _shouldUseDeviceData;
+    id<_HKActiveWorkoutResumeDelegate> _resumeDelegate;
 }
 
 @property (readonly, getter=_associatedObjectUUIDData) NSData *associatedObjectUUIDData;
@@ -31,64 +35,90 @@
 @property (weak) id<_HKActiveWorkoutDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HKQuantity *lapLength;
 @property (weak, getter=_lifecycleDelegate, setter=_setLifecycleDelegate:) id<_HKActiveWorkoutLifecycleDelegate> lifecycleDelegate;
 @property (readonly) NSDictionary *resumeDataByType; // @synthesize resumeDataByType=_resumeDataByType;
+@property (weak, nonatomic, getter=_resumeDelegate, setter=_setResumeDelegate:) id<_HKActiveWorkoutResumeDelegate> resumeDelegate; // @synthesize resumeDelegate=_resumeDelegate;
 @property (readonly) long long serverState;
 @property (readonly, getter=_shouldUseDeviceData) BOOL shouldUseDeviceData; // @synthesize shouldUseDeviceData=_shouldUseDeviceData;
 @property (readonly) Class superclass;
+@property (nonatomic) long long swimmingLocation;
 @property (readonly) long long workoutState;
 
 + (id)_clientInterface;
++ (id)_sanitizeWorkoutEvents:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 + (id)_serverInterface;
 + (id)_workoutWithActivityType:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3 workoutEvents:(id)arg4 duration:(double)arg5 totalActiveEnergyBurned:(id)arg6 totalBasalEnergyBurned:(id)arg7 totalDistance:(id)arg8 goalType:(unsigned long long)arg9 goal:(id)arg10 shouldUseDeviceData:(BOOL)arg11 metadata:(id)arg12;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_addSamples:(id)arg1;
-- (void)_attachServerWithClientQueue:(id)arg1 lifecycleDelegate:(id)arg2 connection:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_addSegmentMarkerAtDate:(id)arg1;
+- (void)_attachServerWithClientQueue:(id)arg1 lifecycleDelegate:(id)arg2 healthStore:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_connectionDidEncounterError:(id)arg1;
-- (void)_handleWorkoutPausedWithDate:(id)arg1;
+- (double)_durationWithEndDate:(id)arg1;
+- (void)_handleWorkoutPausedWithDate:(id)arg1 userInitiated:(BOOL)arg2;
 - (id)_inactiveCopy;
+- (id)_inactiveCopyWithEndDate:(id)arg1;
 - (id)_init;
-- (BOOL)_objectCanBeSaved:(id *)arg1;
+- (void)_nukeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_prepareForSaving;
+- (void)_propertyQueue_addActiveEnergyBurned:(id)arg1;
+- (id)_propertyQueue_addAssociatedObjectUUIDs:(id)arg1;
+- (void)_propertyQueue_addBasalEnergyBurned:(id)arg1;
+- (void)_propertyQueue_addDistance:(id)arg1;
+- (void)_propertyQueue_addSwimmingStrokeCount:(id)arg1;
+- (void)_propertyQueue_alertDelegateDidEncounterError:(id)arg1;
+- (void)_propertyQueue_alertDelegateDidReceiveWorkoutEvent:(id)arg1;
+- (void)_propertyQueue_alertDelegateDidUpdateState:(long long)arg1 date:(id)arg2;
+- (void)_propertyQueue_alertDelegateWorkoutDidUpdateTotalActiveEnergyBurned;
+- (void)_propertyQueue_alertDelegateWorkoutDidUpdateTotalBasalEnergyBurned;
+- (void)_propertyQueue_alertDelegateWorkoutDidUpdateTotalDistance;
+- (void)_propertyQueue_alertDelegateWorkoutDidUpdateTotalSwimmingStrokeCount;
+- (void)_propertyQueue_deactivate;
+- (id)_propertyQueue_endDate;
+- (BOOL)_propertyQueue_serverAttached;
 - (id)_propertyQueue_serverConfiguration;
-- (void)_queue_addActiveEnergyBurned:(id)arg1;
-- (void)_queue_addAssociatedObjectUUIDs:(id)arg1;
-- (void)_queue_addBasalEnergyBurned:(id)arg1;
-- (void)_queue_addDistance:(id)arg1;
-- (void)_queue_alertDelegateDidEncounterError:(id)arg1;
-- (void)_queue_alertDelegateDidUpdateState:(long long)arg1 date:(id)arg2;
-- (void)_queue_alertDelegateWorkoutDidUpdateTotalActiveEnergyBurned;
-- (void)_queue_alertDelegateWorkoutDidUpdateTotalBasalEnergyBurned;
-- (void)_queue_alertDelegateWorkoutDidUpdateTotalDistance;
-- (void)_queue_deactivate;
-- (id)_queue_endDate;
-- (BOOL)_queue_serverAttached;
-- (void)_queue_setEndDate:(id)arg1;
-- (void)_queue_transitionToServerState:(long long)arg1;
-- (void)_queue_updateTotalsWithQuantity:(id)arg1 quantityType:(id)arg2;
+- (void)_propertyQueue_setEndDate:(id)arg1;
+- (void)_propertyQueue_transitionToServerState:(long long)arg1;
+- (void)_propertyQueue_updateTotalsWithQuantity:(id)arg1 quantityType:(id)arg2;
+- (void)_restoreActiveEnergyBurned:(id)arg1;
+- (void)_restoreBasalEnergyBurned:(id)arg1;
+- (void)_restoreDistance:(id)arg1;
+- (void)_restoreEvents:(id)arg1;
+- (void)_restoreLocationSeriesSample:(id)arg1;
+- (void)_restoreResumeData:(id)arg1;
+- (void)_restoreSampleUUIDs:(id)arg1;
+- (void)_restoreState:(long long)arg1;
+- (void)_restoreSwimmingStrokeCount:(id)arg1;
+- (id)_resumeDataByQuantityType;
 - (BOOL)_serverAttached;
 - (id)_serverProxy;
 - (void)_setEndDate:(id)arg1;
 - (void)_setServerProxy:(id)arg1;
 - (void)_setTotalDistance:(id)arg1;
 - (void)_setTotalEnergyBurned:(id)arg1;
+- (BOOL)_validateForSavingWithClientEntitlements:(id)arg1 error:(id *)arg2;
 - (id)_workoutServerWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)activateWorkoutWithCompletion:(CDUnknownBlockType)arg1;
+- (void)clientRemote_receivedWorkoutEvent:(id)arg1;
+- (void)clientRemote_serverFailedWithError:(id)arg1;
+- (void)clientRemote_serverPausedWithDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)clientRemote_serverStoppedWithDate:(id)arg1;
+- (void)clientRemote_updateElevationChange:(id)arg1;
+- (void)clientRemote_updateLocationSeriesSample:(id)arg1;
+- (void)clientRemote_updateTotalsWithQuantities:(id)arg1 resumeData:(id)arg2 UUIDs:(id)arg3;
 - (double)duration;
 - (void)encodeWithCoder:(id)arg1;
 - (id)endDate;
 - (void)endWorkoutWithDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)endWorkoutWithDate:(id)arg1 metadata:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithCoder:(id)arg1;
+- (id)locationSeriesSamples;
 - (id)metadata;
-- (void)pauseWorkoutWithDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)resumeWorkoutFromDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)serverFailedWithError:(id)arg1;
-- (void)serverPausedWithDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)serverStoppedWithDate:(id)arg1;
+- (void)pauseWorkoutWithDate:(id)arg1 userInitiated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)resumeWorkoutFromDate:(id)arg1 userInitiated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)totalDistance;
 - (id)totalEnergyBurned;
-- (void)updateTotalsWithQuantities:(id)arg1 resumeData:(id)arg2 UUIDs:(id)arg3;
 
 @end
 

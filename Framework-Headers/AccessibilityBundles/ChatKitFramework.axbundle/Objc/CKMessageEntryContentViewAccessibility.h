@@ -13,9 +13,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityClearPlugin;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityUsesScrollParentForOrdering;
-- (id)initWithFrame:(struct CGRect)arg1 shouldShowSubject:(BOOL)arg2 shouldShowCharacterCount:(BOOL)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 shouldShowSubject:(BOOL)arg2;
+- (void)setPluginEntryViewController:(id)arg1;
 
 @end
 

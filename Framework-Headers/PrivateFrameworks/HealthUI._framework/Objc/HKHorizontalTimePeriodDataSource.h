@@ -21,7 +21,7 @@
 
 - (void).cxx_destruct;
 - (void)_handleSamples:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_organizeSamplesByValueAndTimePeriod:(id)arg1;
+- (id)_organizeSamplesByValueAndDateInterval:(id)arg1;
 - (id)queriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end

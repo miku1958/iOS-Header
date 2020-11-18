@@ -21,6 +21,8 @@
 @property (strong, nonatomic) NSMutableArray *problemStatus; // @synthesize problemStatus=_problemStatus;
 @property (nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
 
++ (Class)problemStatusType;
+- (int)StringAsStatusCode:(id)arg1;
 - (void)addProblemStatus:(id)arg1;
 - (void)clearProblemStatus;
 - (void)copyTo:(id)arg1;
@@ -34,6 +36,7 @@
 - (id)problemStatusAtIndex:(unsigned long long)arg1;
 - (unsigned long long)problemStatusCount;
 - (BOOL)readFrom:(id)arg1;
+- (id)statusCodeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

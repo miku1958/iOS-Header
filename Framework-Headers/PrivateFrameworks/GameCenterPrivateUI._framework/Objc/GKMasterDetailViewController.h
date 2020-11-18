@@ -6,10 +6,12 @@
 
 #import <UIKit/UISplitViewController.h>
 
-@class GKMasterDetailNavigationController, NSMutableArray, UIColor, UIView, UIViewController;
+#import <GameCenterPrivateUI/CAAnimationDelegate-Protocol.h>
+
+@class GKMasterDetailNavigationController, NSMutableArray, NSString, UIColor, UIView, UIViewController;
 @protocol GKMasterDetailViewControllerDelegate;
 
-@interface GKMasterDetailViewController : UISplitViewController
+@interface GKMasterDetailViewController : UISplitViewController <CAAnimationDelegate>
 {
     id<GKMasterDetailViewControllerDelegate> _masterDetailDelegate;
     BOOL _shouldCollapseToDetail;
@@ -26,6 +28,9 @@
 
 @property (strong, nonatomic) NSMutableArray *controllersDelayingPresentation; // @synthesize controllersDelayingPresentation=_controllersDelayingPresentation;
 @property (nonatomic, getter=isCovered) BOOL covered; // @synthesize covered=_covered;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) id<GKMasterDetailViewControllerDelegate> masterDetailDelegate;
 @property (strong, nonatomic) GKMasterDetailNavigationController *masterNavigationController; // @synthesize masterNavigationController=_masterNavigationController;
 @property (copy, nonatomic) CDUnknownBlockType presentationDelayHandler; // @synthesize presentationDelayHandler=_presentationDelayHandler;
@@ -36,6 +41,7 @@
 @property (strong, nonatomic) UIView *separatorLineView; // @synthesize separatorLineView=_separatorLineView;
 @property (strong, nonatomic) UIView *separatorWrapperView; // @synthesize separatorWrapperView=_separatorWrapperView;
 @property (nonatomic) BOOL shouldCollapseToDetail; // @synthesize shouldCollapseToDetail=_shouldCollapseToDetail;
+@property (readonly) Class superclass;
 @property (readonly, strong, nonatomic) UIViewController *topDetailViewController;
 @property (readonly, strong, nonatomic) UIViewController *topMasterViewController;
 

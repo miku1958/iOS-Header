@@ -9,14 +9,14 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKQuantity, NSArray, NSData, NSDate, NSNumber, NSString;
+@class HKQuantity, NSArray, NSData, NSDate, NSDateComponents, NSNumber, NSString;
 
 @interface _HKMedicalIDData : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _isDisabled;
     NSData *_pictureData;
     NSString *_name;
-    NSDate *_birthdate;
+    NSDate *_gmtBirthdate;
     HKQuantity *_height;
     HKQuantity *_weight;
     long long _bloodType;
@@ -27,27 +27,31 @@
     NSString *_allergyInfo;
     NSString *_medicationInfo;
     NSDate *_dateSaved;
+    NSDate *_birthdate;
     long long _schemaVersion;
 }
 
-@property (strong, nonatomic) NSString *allergyInfo; // @synthesize allergyInfo=_allergyInfo;
+@property (copy, nonatomic) NSString *allergyInfo; // @synthesize allergyInfo=_allergyInfo;
 @property (strong, nonatomic) NSDate *birthdate; // @synthesize birthdate=_birthdate;
 @property (nonatomic) long long bloodType; // @synthesize bloodType=_bloodType;
 @property (strong, nonatomic) NSDate *dateSaved; // @synthesize dateSaved=_dateSaved;
-@property (strong, nonatomic) NSArray *emergencyContacts; // @synthesize emergencyContacts=_emergencyContacts;
+@property (copy, nonatomic) NSArray *emergencyContacts; // @synthesize emergencyContacts=_emergencyContacts;
+@property (strong, nonatomic) NSDate *gmtBirthdate; // @synthesize gmtBirthdate=_gmtBirthdate;
+@property (copy, nonatomic) NSDateComponents *gregorianBirthday;
 @property (strong, nonatomic) HKQuantity *height; // @synthesize height=_height;
 @property (nonatomic) BOOL isDisabled; // @synthesize isDisabled=_isDisabled;
 @property (strong, nonatomic) NSNumber *isOrganDonor; // @synthesize isOrganDonor=_isOrganDonor;
-@property (strong, nonatomic) NSString *medicalConditions; // @synthesize medicalConditions=_medicalConditions;
-@property (strong, nonatomic) NSString *medicalNotes; // @synthesize medicalNotes=_medicalNotes;
-@property (strong, nonatomic) NSString *medicationInfo; // @synthesize medicationInfo=_medicationInfo;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) NSData *pictureData; // @synthesize pictureData=_pictureData;
+@property (copy, nonatomic) NSString *medicalConditions; // @synthesize medicalConditions=_medicalConditions;
+@property (copy, nonatomic) NSString *medicalNotes; // @synthesize medicalNotes=_medicalNotes;
+@property (copy, nonatomic) NSString *medicationInfo; // @synthesize medicationInfo=_medicationInfo;
+@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (copy, nonatomic) NSData *pictureData; // @synthesize pictureData=_pictureData;
 @property (nonatomic) long long schemaVersion; // @synthesize schemaVersion=_schemaVersion;
 @property (strong, nonatomic) HKQuantity *weight; // @synthesize weight=_weight;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_gregorianUtcCalendar;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasAnyData;

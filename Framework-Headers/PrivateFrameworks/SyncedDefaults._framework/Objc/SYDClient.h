@@ -19,14 +19,13 @@ __attribute__((visibility("hidden")))
     BOOL _additionalSource;
 }
 
+- (void).cxx_destruct;
 - (void)_createConnectionIfNecessary;
 - (id)_newMessageWithName:(id)arg1 userInfo:(id)arg2;
 - (void)_resetConnection;
 - (void)_sendMessage:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 - (void)_sendMessageNoReply:(id)arg1;
 - (id)_sendMessageWithReplySync:(id)arg1;
-- (void)dealloc;
-- (void)finalize;
 - (id)initWithQueue:(id)arg1 bundleIdentifier:(struct __CFString *)arg2 storeIdentifier:(struct __CFString *)arg3;
 - (id)initWithQueue:(id)arg1 bundleIdentifier:(struct __CFString *)arg2 storeIdentifier:(struct __CFString *)arg3 additionalSource:(BOOL)arg4;
 - (void)sendMessageWithName:(id)arg1;

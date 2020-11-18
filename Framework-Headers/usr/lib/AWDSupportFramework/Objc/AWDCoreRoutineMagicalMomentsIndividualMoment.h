@@ -8,23 +8,33 @@
 
 #import <AWDSupportFramework/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface AWDCoreRoutineMagicalMomentsIndividualMoment : PBCodable <NSCopying>
 {
     unsigned long long _timestamp;
+    int _expertType;
     int _modelType;
+    NSString *_suggestionId;
     struct {
         unsigned int timestamp:1;
+        unsigned int expertType:1;
         unsigned int modelType:1;
     } _has;
 }
 
+@property (nonatomic) int expertType; // @synthesize expertType=_expertType;
+@property (nonatomic) BOOL hasExpertType;
 @property (nonatomic) BOOL hasModelType;
+@property (readonly, nonatomic) BOOL hasSuggestionId;
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) int modelType; // @synthesize modelType=_modelType;
+@property (strong, nonatomic) NSString *suggestionId; // @synthesize suggestionId=_suggestionId;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

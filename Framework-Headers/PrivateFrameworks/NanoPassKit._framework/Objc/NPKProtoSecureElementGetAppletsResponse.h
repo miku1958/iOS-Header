@@ -29,6 +29,8 @@
 @property (readonly, nonatomic) unsigned long long lifecycleStatesCount;
 @property (nonatomic) BOOL pending; // @synthesize pending=_pending;
 
++ (Class)appletsBytesType;
++ (Class)cardAIDsType;
 - (void).cxx_destruct;
 - (unsigned int)activationStatesAtIndex:(unsigned long long)arg1;
 - (void)addActivationStates:(unsigned int)arg1;

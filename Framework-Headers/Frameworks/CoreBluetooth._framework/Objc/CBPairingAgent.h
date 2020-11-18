@@ -10,14 +10,17 @@
 
 @interface CBPairingAgent : NSObject
 {
-    id<CBPairingAgentParentDelegate> _parentManager;
     BOOL _useOOBMode;
     id<CBPairingAgentDelegate> _delegate;
+    id<CBPairingAgentParentDelegate> _parentManager;
 }
 
-@property (nonatomic) id<CBPairingAgentDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<CBPairingAgentDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<CBPairingAgentParentDelegate> parentManager; // @synthesize parentManager=_parentManager;
 @property (nonatomic) BOOL useOOBMode; // @synthesize useOOBMode=_useOOBMode;
 
+- (void).cxx_destruct;
+- (void)dealloc;
 - (void)handlePairingCompleted:(id)arg1;
 - (void)handlePairingMessage:(unsigned short)arg1 args:(id)arg2;
 - (void)handlePairingRequested:(id)arg1;
@@ -25,12 +28,12 @@
 - (id)initWithParentManager:(id)arg1;
 - (BOOL)isPeerCloudPaired:(id)arg1;
 - (BOOL)isPeerPaired:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pairPeer:(id)arg1;
 - (void)respondToPairingRequest:(id)arg1 type:(long long)arg2 accept:(BOOL)arg3 data:(id)arg4;
 - (id)retrieveOOBDataForPeer:(id)arg1;
 - (id)retrievePairedPeers;
 - (void)setOOBPairingEnabled:(BOOL)arg1 forPeer:(id)arg2;
-- (void)setOrphan;
 - (void)unpairPeer:(id)arg1;
 - (void)updateRegistration;
 

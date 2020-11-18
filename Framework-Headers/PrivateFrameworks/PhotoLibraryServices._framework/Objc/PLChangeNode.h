@@ -29,6 +29,7 @@
 - (void)_processCloudFeedUpdateDataFromChangeHubEvent:(id)arg1 transaction:(id)arg2;
 - (void)_processDelayedAlbumCountUpdates:(id)arg1 transaction:(id)arg2;
 - (void)_processDelayedAlbumCountUpdatesFromChangeHubEvent:(id)arg1 transaction:(id)arg2;
+- (void)_processDelayedAssetsForAnalysis:(id)arg1 transaction:(id)arg2;
 - (void)_processDelayedAssetsForFileSystemPersistencyFromChangeHubEvent:(id)arg1 transaction:(id)arg2;
 - (void)_processDelayedDupeAnalysisFromChangeHubEvent:(id)arg1 transaction:(id)arg2;
 - (void)_processDelayedSearchIndexUpdates:(id)arg1 transaction:(id)arg2;

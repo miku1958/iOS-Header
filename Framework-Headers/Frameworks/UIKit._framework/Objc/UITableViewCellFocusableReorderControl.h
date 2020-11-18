@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_panRecognizer:(id)arg1;
 - (BOOL)_shouldHandlePressEvent:(id)arg1;
 - (void)_upArrowButton:(id)arg1;
+- (void)_updateFloatingViewForCurrentTraits;
 - (void)_updateFocusedFloatingContentView:(BOOL)arg1;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
@@ -46,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (BOOL)shouldUpdateFocusInContext:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (BOOL)wantsMaskingWhileAnimatingDisabled;
 
 @end

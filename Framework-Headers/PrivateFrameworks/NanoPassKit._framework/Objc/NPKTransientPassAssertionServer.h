@@ -10,10 +10,11 @@
 #import <NanoPassKit/NSXPCListenerDelegate-Protocol.h>
 
 @class BKSApplicationStateMonitor, NSMutableArray, NSMutableSet, NSString, NSXPCListener;
-@protocol OS_dispatch_queue;
+@protocol NPKTransientPassAssertionServerDelegate, OS_dispatch_queue;
 
 @interface NPKTransientPassAssertionServer : NSObject <NSXPCListenerDelegate, NPKTransientPassAssertionConnectionDelegate>
 {
+    id<NPKTransientPassAssertionServerDelegate> _delegate;
     NSXPCListener *_xpcListener;
     NSMutableSet *_connections;
     NSObject<OS_dispatch_queue> *_queue;
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) BKSApplicationStateMonitor *appStateMonitor; // @synthesize appStateMonitor=_appStateMonitor;
 @property (strong, nonatomic) NSMutableSet *connections; // @synthesize connections=_connections;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<NPKTransientPassAssertionServerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
@@ -32,7 +34,11 @@
 @property (strong, nonatomic) NSXPCListener *xpcListener; // @synthesize xpcListener=_xpcListener;
 
 - (void).cxx_destruct;
+- (id)_bundleIDForXPCConnection:(id)arg1;
 - (void)_handleAppStateChangeWithStateDictionary:(id)arg1;
+- (void)_notifyDelegateOfTransientPassChangeToUniqueID:(id)arg1;
+- (id)_queue_transientPassUniqueID;
+- (void)_updateAppStateMonitor;
 - (void)connection:(id)arg1 hasNewTransientPassRequest:(id)arg2;
 - (void)connectionDied:(id)arg1;
 - (void)handleNewConnection:(id)arg1;

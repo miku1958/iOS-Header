@@ -9,22 +9,28 @@
 #import <NanoPassKit/PDXPCServiceExportedInterface-Protocol.h>
 
 @class NPKPassLibraryFilter, NSString, NSXPCConnection;
-@protocol OS_dispatch_queue;
+@protocol NPDPassLibraryDelegate, OS_dispatch_queue;
 
 @interface NPDPassLibrary : NSObject <PDXPCServiceExportedInterface>
 {
     BOOL _serviceActive;
+    int _remoteProcessIdentifier;
     NSXPCConnection *_connection;
     NPKPassLibraryFilter *_filter;
+    NSString *_remoteProcessApplicationIdentifier;
+    id<NPDPassLibraryDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<NPDPassLibraryDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (strong) NPKPassLibraryFilter *filter; // @synthesize filter=_filter;
+@property (strong, nonatomic) NPKPassLibraryFilter *filter; // @synthesize filter=_filter;
 @property (readonly) unsigned long long hash;
 @property (strong) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (readonly, nonatomic) NSString *remoteProcessApplicationIdentifier; // @synthesize remoteProcessApplicationIdentifier=_remoteProcessApplicationIdentifier;
+@property (readonly) int remoteProcessIdentifier; // @synthesize remoteProcessIdentifier=_remoteProcessIdentifier;
 @property BOOL serviceActive; // @synthesize serviceActive=_serviceActive;
 @property (readonly) Class superclass;
 

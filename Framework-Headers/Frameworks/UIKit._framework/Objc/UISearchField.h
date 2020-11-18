@@ -13,7 +13,6 @@
 + (double)defaultHeight;
 - (struct CGRect)_availableTextRectExcludingButtonsForBounds:(struct CGRect)arg1;
 - (id)_placeholderColor;
-- (id)_scriptingInfo;
 - (BOOL)_shouldSendContentChangedNotificationsIfOnlyMarkedTextChanged;
 - (struct CGRect)iconRect;
 - (id)initWithFrame:(struct CGRect)arg1;

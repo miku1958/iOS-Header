@@ -21,8 +21,11 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)close;
+- (long long)completedUnitCount;
+- (id)etag;
 - (id)initWithSyncContext:(id)arg1 kind:(int)arg2 now:(long long)arg3 retryQueueKick:(long long *)arg4;
-- (id)nextItemAndStageID:(id *)arg1 etag:(id *)arg2;
+- (id)nextDocumentItem;
+- (id)stageID;
 
 @end
 

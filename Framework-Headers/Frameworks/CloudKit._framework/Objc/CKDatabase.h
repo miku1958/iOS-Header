@@ -10,48 +10,45 @@
 
 @interface CKDatabase : NSObject
 {
-    int _statusReportToken;
     CKContainer *_container;
     long long _scope;
     NSOperationQueue *_operationQueue;
 }
 
 @property (weak, nonatomic) CKContainer *container; // @synthesize container=_container;
+@property (readonly, nonatomic) long long databaseScope;
 @property (readonly, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property (nonatomic) long long scope; // @synthesize scope=_scope;
-@property (nonatomic) int statusReportToken; // @synthesize statusReportToken=_statusReportToken;
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
+- (id)CKStatusReportArray;
 - (id)_initWithContainer:(id)arg1 scope:(long long)arg2;
 - (void)_scheduleOperation:(id)arg1;
-- (void)acceptShareWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addOperation:(id)arg1;
 - (void)clearAssetCache;
 - (void)clearAuthTokensForRecordWithID:(id)arg1;
+- (void)clearCacheEntriesForRecord:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)clearCacheEntriesForZone:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)clearCachesWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)clearRecordCache;
 - (id)daemonWithErrorHandler:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (void)deleteRecordWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteRecordZoneWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)deleteShareWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteSubscriptionWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)description;
 - (void)fetchAllRecordZonesWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)fetchAllSharesWithRecordZoneID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchAllSubscriptionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchRecordWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchRecordZoneWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchShareWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchSubscriptionWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getPCSDiagnosticsForZonesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)performQuery:(id)arg1 inZoneWithID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)saveRecord:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)saveRecordZone:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)saveShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)saveSubscription:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)statusReport;
+- (void)showAssetCache;
 
 @end
 

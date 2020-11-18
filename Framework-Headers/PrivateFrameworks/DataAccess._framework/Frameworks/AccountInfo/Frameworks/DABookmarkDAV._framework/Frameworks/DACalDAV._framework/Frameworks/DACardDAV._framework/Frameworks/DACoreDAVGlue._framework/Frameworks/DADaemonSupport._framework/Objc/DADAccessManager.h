@@ -22,6 +22,7 @@
 - (void).cxx_destruct;
 - (id)_init;
 - (void)_setupServerConnection;
+- (void)addPersistentClientWithAccountID:(id)arg1 clientID:(id)arg2 watchedIDs:(id)arg3;
 - (void)dealloc;
 - (id)init;
 - (void)removeClient:(id)arg1;

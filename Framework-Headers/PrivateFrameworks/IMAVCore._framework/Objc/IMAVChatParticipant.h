@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class IMAVChat, IMHandle, NSArray, NSData, NSDictionary, NSMutableArray, NSString, NSTimer;
 
@@ -26,6 +26,7 @@
     int _chatError;
     unsigned int _screenOrientation;
     NSArray *_additionalPeers;
+    NSArray *_excludingPushTokens;
     NSString *_vcPartyID;
     IMHandle *_imHandle;
     IMHandle *_inviter;
@@ -57,10 +58,11 @@
 @property (nonatomic, setter=_setRemotePortraitOrientation:) struct CGSize _remotePortraitOrientation; // @synthesize _remotePortraitOrientation;
 @property (nonatomic, setter=_setScreenOrientation:) unsigned int _screenOrientation; // @synthesize _screenOrientation;
 @property (strong, nonatomic) NSArray *additionalPeers; // @synthesize additionalPeers=_additionalPeers;
-@property (nonatomic) IMAVChat *avChat; // @synthesize avChat=_avChat;
+@property (nonatomic, setter=setAVChat:) IMAVChat *avChat; // @synthesize avChat=_avChat;
 @property (setter=_setCameraOrientation:) unsigned int cameraOrientation; // @synthesize cameraOrientation=_cameraOrientation;
 @property (setter=_setCameraType:) unsigned int cameraType; // @synthesize cameraType=_cameraType;
-@property (nonatomic) int error; // @synthesize error=_chatError;
+@property (nonatomic, setter=_setChatError:) int error; // @synthesize error=_chatError;
+@property (strong, nonatomic) NSArray *excludingPushTokens; // @synthesize excludingPushTokens=_excludingPushTokens;
 @property (readonly, nonatomic) BOOL hasConnectingSessions;
 @property (nonatomic) BOOL hasReinitiateCapability; // @synthesize hasReinitiateCapability=_hasReinitiateCapability;
 @property (readonly, nonatomic) BOOL hasUnfinishedSessions;
@@ -95,6 +97,7 @@
 - (id)_callInfoWithState:(long long)arg1;
 - (id)_callInfosWaitingForAcceptAction;
 - (id)_callInfosWaitingForResponse;
+- (void)_cancelInvitationWithReason:(id)arg1;
 - (void)_cleanupOrphanedCallInfos;
 - (void)_connectTimeout:(id)arg1;
 - (BOOL)_generateCallInfo:(id)arg1;
@@ -110,7 +113,6 @@
 - (void)_reInitiateWithCallInfo:(id)arg1;
 - (void)_registerCallInfo:(id)arg1;
 - (void)_sendResponse:(unsigned int)arg1 callInfo:(id)arg2;
-- (void)_setChatError:(int)arg1;
 - (void)_setState:(unsigned int)arg1 withReason:(unsigned int)arg2 andError:(int)arg3;
 - (void)_switchToUseNewIMHandle:(id)arg1;
 - (void)_updateProperties:(id)arg1;
@@ -118,6 +120,7 @@
 - (long long)bestCallID;
 - (id)callInfoBeingHandedOff;
 - (void)cancelInvitation;
+- (void)cancelInvitationWithResponse:(unsigned int)arg1;
 - (struct CGRect)contentRectForCameraOrientation:(unsigned int)arg1 cameraType:(unsigned int)arg2;
 - (void)dealloc;
 - (id)description;
@@ -132,7 +135,6 @@
 - (void)sendAVMessage:(unsigned int)arg1 userInfo:(id)arg2;
 - (void)sendInvitation;
 - (void)sendResponse:(unsigned int)arg1;
-- (void)setAVChat:(id)arg1;
 - (void)setStateToEndedWithReason:(unsigned int)arg1 andError:(int)arg2;
 - (void)setWaitingToConnect:(BOOL)arg1;
 

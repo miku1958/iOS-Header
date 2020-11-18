@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
@@ -13,14 +13,19 @@
 @interface BBActionResponse : NSObject <NSSecureCoding>
 {
     long long _actionType;
+    unsigned long long _actionActivationMode;
+    long long _actionBehavior;
     NSString *_actionID;
     NSString *_bulletinRecordID;
     NSString *_bulletinPublisherID;
     NSDictionary *_bulletinContext;
     NSString *_bulletinButtonID;
     NSDictionary *_context;
+    NSString *_originID;
 }
 
+@property (nonatomic) unsigned long long actionActivationMode; // @synthesize actionActivationMode=_actionActivationMode;
+@property (nonatomic) long long actionBehavior; // @synthesize actionBehavior=_actionBehavior;
 @property (copy, nonatomic) NSString *actionID; // @synthesize actionID=_actionID;
 @property (nonatomic) long long actionType; // @synthesize actionType=_actionType;
 @property (copy, nonatomic) NSString *bulletinButtonID; // @synthesize bulletinButtonID=_bulletinButtonID;
@@ -28,10 +33,11 @@
 @property (copy, nonatomic) NSString *bulletinPublisherID; // @synthesize bulletinPublisherID=_bulletinPublisherID;
 @property (copy, nonatomic) NSString *bulletinRecordID; // @synthesize bulletinRecordID=_bulletinRecordID;
 @property (copy, nonatomic) NSDictionary *context; // @synthesize context=_context;
+@property (copy, nonatomic) NSString *originID; // @synthesize originID=_originID;
 
 + (id)actionResponseForResponse:(id)arg1 bulletinRequest:(id)arg2;
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

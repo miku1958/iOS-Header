@@ -6,13 +6,21 @@
 
 #import <SAObjects/SABaseClientBoundCommand.h>
 
-@class NSArray;
+#import <SAObjects/SAServerBoundCommand-Protocol.h>
 
-@interface SASyncGetAnchorsResponse : SABaseClientBoundCommand
+@class NSArray, NSString;
+
+@interface SASyncGetAnchorsResponse : SABaseClientBoundCommand <SAServerBoundCommand>
 {
 }
 
+@property (copy, nonatomic) NSString *aceId; // @dynamic aceId;
 @property (copy, nonatomic) NSArray *anchors;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *refId; // @dynamic refId;
+@property (readonly) Class superclass;
 
 + (id)getAnchorsResponse;
 + (id)getAnchorsResponseWithDictionary:(id)arg1 context:(id)arg2;

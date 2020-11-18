@@ -24,6 +24,9 @@
 @property (strong, nonatomic) NSString *searchDisplayName; // @synthesize searchDisplayName=_searchDisplayName;
 @property (strong, nonatomic) NSMutableArray *systemNames; // @synthesize systemNames=_systemNames;
 
++ (Class)artworkType;
++ (Class)labelType;
++ (Class)systemNameType;
 + (id)transitInfoSnippetForPlaceData:(id)arg1;
 - (void)addArtwork:(id)arg1;
 - (void)addLabel:(id)arg1;

@@ -8,13 +8,12 @@
 
 #import <PhotoLibraryServices/PLManagedObjectContextPTPNotificationDelegate-Protocol.h>
 
-@class NSArray, NSFileManager, NSMutableSet, NSSet, NSString, PLManagedObjectContext, PLPhotoLibrary;
+@class NSFileManager, NSMutableSet, NSSet, NSString, PLManagedObjectContext, PLPhotoLibrary;
 @protocol OS_dispatch_queue, PhotoLibraryPTPDelegate;
 
 @interface PLPTPdAssetManager : NSObject <PLManagedObjectContextPTPNotificationDelegate>
 {
     NSObject<PhotoLibraryPTPDelegate> *_delegate;
-    NSArray *_albumObjectIDs;
     NSString *_firstDCIMFolderServiced;
     NSSet *_availableAssetIDs;
     PLPhotoLibrary *_photoLibrary;
@@ -22,30 +21,30 @@
     NSMutableSet *_ptpDeletedAssets;
     NSObject<OS_dispatch_queue> *availableAssetsQueue;
     NSFileManager *fileManager;
+    PLManagedObjectContext *_managedObjectContext;
 }
 
-@property (readonly, strong, nonatomic) NSArray *albumObjectIDs;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) NSObject<PhotoLibraryPTPDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSFileManager *fileManager; // @synthesize fileManager;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong) PLManagedObjectContext *managedObjectContext;
+@property (readonly, strong) PLManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
 @property (readonly, strong, nonatomic) PLPhotoLibrary *photoLibrary;
 @property (readonly) Class superclass;
 
 - (id)_allAssetObjectIDs;
-- (id)_fetchObjectIDsForAssetsExposedToPTPFromObjectIDs:(id)arg1;
-- (BOOL)_isPTPAlbum:(id)arg1;
 - (void)_performBlockAndWait:(CDUnknownBlockType)arg1;
 - (void)_performTransactionAndWait:(CDUnknownBlockType)arg1;
 - (id)_ptpInformationForAllAssets;
+- (struct CGSize)_validateSize:(struct CGSize)arg1;
 - (id)albumHandles;
 - (id)assetsInAssociation:(struct NSObject *)arg1;
 - (id)associationsInAlbum:(struct NSObject *)arg1;
 - (void)dealloc;
 - (void)deleteAsset:(struct NSObject *)arg1;
 - (void)enumeratePTPInformationForFilesInDirectory:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)fetchObjectIDsForAssetsExposedToPTPFromObjectIDs:(id)arg1;
 - (void)handlePhotoLibraryAvailableNotification;
 - (id)infoForAlbum:(struct NSObject *)arg1;
 - (id)infoForAsset:(struct NSObject *)arg1;
@@ -54,10 +53,12 @@
 - (void)managedObjectContext:(id)arg1 libraryChangedWithInsertedAssetIDs:(id)arg2 deletedAssetIDs:(id)arg3 changedAssetIDs:(id)arg4;
 - (BOOL)ptpCanDeleteFiles;
 - (BOOL)ptpDeletePhotoWithKey:(struct NSObject *)arg1 andExtension:(id)arg2;
+- (id)ptpExifDataForPhotoWithKey:(struct NSObject *)arg1;
 - (id)ptpInformationForFilesInDirectory:(id)arg1;
 - (id)ptpInformationForPhotoWithObjectID:(id)arg1;
 - (id)ptpInformationForPhotosWithPrimaryKeys:(id)arg1;
 - (id)ptpThumbnailForPhotoWithKey:(struct NSObject *)arg1;
+- (id)ptpThumbnailForPhotoWithKey:(struct NSObject *)arg1 size:(struct CGSize)arg2;
 - (void)setPtpDelegate:(id)arg1;
 
 @end

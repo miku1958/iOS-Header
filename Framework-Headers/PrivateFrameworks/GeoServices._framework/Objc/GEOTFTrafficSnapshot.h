@@ -12,21 +12,27 @@
 
 @interface GEOTFTrafficSnapshot : PBCodable <NSCopying>
 {
+    unsigned long long _feedPublishTime;
     long long _feedUpdateTime;
+    NSMutableArray *_compactSpeeds;
     NSString *_feedId;
     NSMutableArray *_incidents;
     NSMutableArray *_regions;
     NSMutableArray *_speeds;
     unsigned int _trafficVersion;
     struct {
+        unsigned int feedPublishTime:1;
         unsigned int feedUpdateTime:1;
         unsigned int trafficVersion:1;
     } _has;
 }
 
+@property (strong, nonatomic) NSMutableArray *compactSpeeds; // @synthesize compactSpeeds=_compactSpeeds;
 @property (strong, nonatomic) NSString *feedId; // @synthesize feedId=_feedId;
+@property (nonatomic) unsigned long long feedPublishTime; // @synthesize feedPublishTime=_feedPublishTime;
 @property (nonatomic) long long feedUpdateTime; // @synthesize feedUpdateTime=_feedUpdateTime;
 @property (readonly, nonatomic) BOOL hasFeedId;
+@property (nonatomic) BOOL hasFeedPublishTime;
 @property (nonatomic) BOOL hasFeedUpdateTime;
 @property (nonatomic) BOOL hasTrafficVersion;
 @property (strong, nonatomic) NSMutableArray *incidents; // @synthesize incidents=_incidents;
@@ -34,12 +40,20 @@
 @property (strong, nonatomic) NSMutableArray *speeds; // @synthesize speeds=_speeds;
 @property (nonatomic) unsigned int trafficVersion; // @synthesize trafficVersion=_trafficVersion;
 
++ (Class)compactSpeedsType;
++ (Class)incidentsType;
++ (Class)regionType;
++ (Class)speedsType;
+- (void)addCompactSpeeds:(id)arg1;
 - (void)addIncidents:(id)arg1;
 - (void)addRegion:(id)arg1;
 - (void)addSpeeds:(id)arg1;
+- (void)clearCompactSpeeds;
 - (void)clearIncidents;
 - (void)clearRegions;
 - (void)clearSpeeds;
+- (id)compactSpeedsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)compactSpeedsCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

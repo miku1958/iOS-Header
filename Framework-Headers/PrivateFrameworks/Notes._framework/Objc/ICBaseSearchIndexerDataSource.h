@@ -8,7 +8,7 @@
 
 #import <Notes/ICSearchIndexerDataSource-Protocol.h>
 
-@class NSHashTable, NSMutableDictionary, NSMutableSet, NSString;
+@class NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface ICBaseSearchIndexerDataSource : NSObject <ICSearchIndexerDataSource>
@@ -19,12 +19,11 @@
     NSObject<OS_dispatch_queue> *_processingQueue;
     NSMutableSet *_objectIDsToProcess;
     NSMutableSet *_objectIDsBeingProcessed;
+    NSMutableSet *_objectIDsToIgnore;
     NSMutableDictionary *_objectIDsByIdentifier;
     NSMutableDictionary *_identifiersByObjectID;
-    NSHashTable *_contextsToObserve;
 }
 
-@property (strong, nonatomic) NSHashTable *contextsToObserve; // @synthesize contextsToObserve=_contextsToObserve;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -32,6 +31,7 @@
 @property BOOL needsReindexing; // @synthesize needsReindexing=_needsReindexing;
 @property (strong, nonatomic) NSMutableSet *objectIDsBeingProcessed; // @synthesize objectIDsBeingProcessed=_objectIDsBeingProcessed;
 @property (strong, nonatomic) NSMutableDictionary *objectIDsByIdentifier; // @synthesize objectIDsByIdentifier=_objectIDsByIdentifier;
+@property (strong, nonatomic) NSMutableSet *objectIDsToIgnore; // @synthesize objectIDsToIgnore=_objectIDsToIgnore;
 @property (strong, nonatomic) NSMutableSet *objectIDsToProcess; // @synthesize objectIDsToProcess=_objectIDsToProcess;
 @property (nonatomic, getter=isObservingChanges) BOOL observingChanges; // @synthesize observingChanges=_observingChanges;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
@@ -39,18 +39,19 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)addContextToObserve:(id)arg1;
 - (id)allSearchableItems;
 - (void)contextWillSave:(id)arg1;
 - (id)dataSourceIdentifier;
 - (id)init;
+- (void)loadObjectIDsToIgnore;
 - (void)loadState;
 - (id)objectForSearchableItem:(id)arg1 context:(id)arg2;
 - (id)objectForSearchableItemIdentifier:(id)arg1 context:(id)arg2;
 - (id)objectIDsFromSearchableItems:(id)arg1;
+- (id)objectIDsToIgnoreDefaultsKey;
 - (id)persistentStoreCoordinator;
-- (void)removeContextToObserve:(id)arg1;
 - (void)resetContextObservers;
+- (void)saveObjectIDsToIgnore;
 - (void)saveState;
 - (void)searchIndexerDidFinishDeletingSearchableItemsWithIdentifiers:(id)arg1 error:(id)arg2;
 - (void)searchIndexerDidFinishIndexingItems:(id)arg1 error:(id)arg2;

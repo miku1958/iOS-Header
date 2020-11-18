@@ -8,14 +8,14 @@
 
 #import <CloudDocsDaemon/BRCLifeCycle-Protocol.h>
 
-@class BRCAccountSession, BRCDeadlineToken, NSString, PQLNameInjection;
+@class BRCAccountSession, BRCDeadlineSource, NSString, PQLNameInjection;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface BRCFSSchedulerBase : NSObject <BRCLifeCycle>
 {
     BRCAccountSession *_session;
-    BRCDeadlineToken *_schedulerToken;
+    BRCDeadlineSource *_schedulerSource;
     NSObject<OS_dispatch_queue> *_schedulerQueue;
     NSString *_name;
     PQLNameInjection *_tableName;
@@ -32,19 +32,16 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasWork; // @synthesize hasWork=_hasWork;
 @property (strong) NSObject<OS_dispatch_group> *hasWorkGroup; // @synthesize hasWorkGroup=_hasWorkGroup;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL isCancelled; // @synthesize isCancelled=_isCancelled;
+@property (readonly, nonatomic) BOOL isCancelled; // @synthesize isCancelled=_isCancelled;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (BOOL)_canRetryThrottleID:(long long)arg1 zone:(id)arg2;
 - (void)_close;
 - (void)_computeStamps:(struct throttle_stamps *)arg1 throttleID:(long long)arg2 zone:(id)arg3 throttle:(id)arg4 hasBeenTried:(BOOL)arg5;
-- (void)_deleteThrottleID:(long long)arg1 zone:(id)arg2;
+- (void)_deleteThrottleID:(long long)arg1;
 - (void)_describe:(id)arg1 zone:(id)arg2 now:(long long)arg3 context:(id)arg4;
 - (id)_initWithSession:(id)arg1 name:(id)arg2 tableName:(id)arg3;
-- (void)_schedule;
-- (void)_scheduleDone:(long long)arg1 nextWork:(long long)arg2;
-- (void)_signalForNextWork:(long long)arg1;
 - (long long)_updateStamps:(struct throttle_stamps *)arg1 throttle:(id)arg2 now:(long long)arg3;
 - (void)cancel;
 - (void)close;
@@ -52,8 +49,14 @@ __attribute__((visibility("hidden")))
 - (void)deleteThrottlesForZone:(id)arg1;
 - (id)descriptionForThrottleID:(long long)arg1 zone:(id)arg2 now:(long long)arg3 context:(id)arg4;
 - (id)descriptionForZone:(id)arg1 now:(long long)arg2 context:(id)arg3;
+- (BOOL)isZoneIdle:(id)arg1;
+- (void)moveAppLibraryTransfers:(id)arg1 toAppLibrary:(id)arg2;
 - (void)resetBackoffForThrottleID:(long long)arg1 zone:(id)arg2;
 - (void)resume;
+- (void)schedule;
+- (void)scheduleDidFinishWithTimestamp:(long long)arg1 nextScheduleTimestamp:(long long)arg2;
+- (void)signal;
+- (void)signalWithDeadline:(long long)arg1;
 - (void)suspend;
 - (void)updateThrottleID:(long long)arg1 zone:(id)arg2 state:(int)arg3;
 

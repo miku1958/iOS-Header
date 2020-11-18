@@ -13,15 +13,16 @@
 @interface BPSNotificationAppController : PSListController <BPSInternalGlanceObserverDelegate>
 {
     BOOL _mirrorSettings;
-    NSMutableArray *_notificationSpecifiers;
-    NSMutableDictionary *_sectionInfo;
-    unsigned long long _settingsMode;
     NSString *_bundleIdentifier;
     BBSectionInfo *_bbSectionInfo;
     NSMutableArray *_notificationApplicationSpecifiers;
     NGSGlance *_glance;
     BPSInternalGlanceManager *_manager;
+    BPSInternalGlanceManager *_oldManager;
     NPSDomainAccessor *_bbAppsSettings;
+    NSMutableArray *_notificationSpecifiers;
+    NSMutableDictionary *_sectionInfo;
+    unsigned long long _settingsMode;
 }
 
 @property (strong, nonatomic) NPSDomainAccessor *bbAppsSettings; // @synthesize bbAppsSettings=_bbAppsSettings;
@@ -35,6 +36,7 @@
 @property (readonly, nonatomic) BOOL mirrorSettings; // @synthesize mirrorSettings=_mirrorSettings;
 @property (strong, nonatomic) NSMutableArray *notificationApplicationSpecifiers; // @synthesize notificationApplicationSpecifiers=_notificationApplicationSpecifiers;
 @property (readonly, nonatomic) NSMutableArray *notificationSpecifiers; // @synthesize notificationSpecifiers=_notificationSpecifiers;
+@property (strong, nonatomic) BPSInternalGlanceManager *oldManager; // @synthesize oldManager=_oldManager;
 @property (readonly, nonatomic) PSSpecifier *previewSwitchSpecifier;
 @property (readonly, nonatomic) NSMutableDictionary *sectionInfo; // @synthesize sectionInfo=_sectionInfo;
 @property (nonatomic) unsigned long long settingsMode; // @synthesize settingsMode=_settingsMode;
@@ -44,7 +46,7 @@
 
 - (void).cxx_destruct;
 - (void)_showSettingsNotifications;
-- (int)alertType;
+- (long long)alertType;
 - (id)applicationBundleIdentifier;
 - (id)applicationGroupSpecifiers;
 - (id)bulletinBoardSettings;
@@ -84,6 +86,7 @@
 - (void)updateSubsections;
 - (id)vibrationValue:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
+- (BOOL)wantsGlanceRowIfApplicable;
 - (BOOL)wantsPreviewChoice;
 - (void)writeSectionState;
 

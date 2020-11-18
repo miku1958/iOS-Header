@@ -29,6 +29,7 @@ struct _img {
     unsigned long long _field4;
     unsigned long long _field5;
     unsigned char _field6;
+    unsigned char _field7[4];
 };
 
 struct _opaque_pthread_mutex_t {

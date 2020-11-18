@@ -23,6 +23,7 @@
     double _exposureLevelOffset;
     double _shadowsLevelOffset;
     double _blackPointLevelOffset;
+    double _localLightLevelOffset;
     double _highlightsLevelOffset;
     BOOL _smartColorEnabled;
     double _autoSmartColorLevel;
@@ -94,6 +95,7 @@
 @property (readonly, nonatomic) double highlightsLevelOffset; // @synthesize highlightsLevelOffset=_highlightsLevelOffset;
 @property (readonly, copy, nonatomic) NSArray *legacyAutoEnhanceFilters; // @synthesize legacyAutoEnhanceFilters=_legacyAutoEnhanceFilters;
 @property (readonly, nonatomic) BOOL legacyAutoEnhanceIsOn; // @synthesize legacyAutoEnhanceIsOn=_legacyAutoEnhanceIsOn;
+@property (readonly, nonatomic) double localLightLevelOffset; // @synthesize localLightLevelOffset=_localLightLevelOffset;
 @property (readonly, nonatomic) struct CGRect normalizedCropRect; // @synthesize normalizedCropRect=_normalizedCropRect;
 @property (readonly, copy, nonatomic) NSArray *redEyeCorrections; // @synthesize redEyeCorrections=_redEyeCorrections;
 @property (readonly, nonatomic) double shadowsLevelOffset; // @synthesize shadowsLevelOffset=_shadowsLevelOffset;
@@ -135,6 +137,7 @@
 + (double)referenceContrastLevelOfType:(long long)arg1;
 + (double)referenceExposureLevelOfType:(long long)arg1;
 + (double)referenceHighlightsLevelOfType:(long long)arg1;
++ (double)referenceLocalLightLevelOfType:(long long)arg1;
 + (double)referenceShadowsLevelOfType:(long long)arg1;
 + (double)referenceSmartBWLevelOfType:(long long)arg1;
 + (double)referenceSmartColorLevelOfType:(long long)arg1;

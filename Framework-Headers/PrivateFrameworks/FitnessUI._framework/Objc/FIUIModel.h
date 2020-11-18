@@ -8,71 +8,67 @@
 
 #import <FitnessUI/FIUIAchievementsModelDelegate-Protocol.h>
 
-@class FIUIAchievementsModel, FIUIWeeklyGoalModel, HKActivitySummary, HKHealthStore, NSHashTable, NSMutableDictionary, NSPredicate, NSString, _HKCurrentActivitySummaryQuery;
+@class FIUIAchievementsModel, FIUIWeeklyGoalModel, HKActivityCache, HKActivitySummary, HKCurrentActivityCacheQuery, HKHealthStore, NSArray, NSDictionary, NSHashTable, NSMutableDictionary, NSPredicate, NSString, _HKCurrentActivitySummaryQuery;
 @protocol OS_dispatch_queue;
 
 @interface FIUIModel : NSObject <FIUIAchievementsModelDelegate>
 {
-    HKHealthStore *_healthStore;
     FIUIWeeklyGoalModel *_weeklyGoalModel;
     FIUIAchievementsModel *_achievementsModel;
     NSHashTable *_observers;
     NSMutableDictionary *_currentActivitySummaryQueryClients;
+    NSMutableDictionary *_currentActivityCacheQueryClients;
     _HKCurrentActivitySummaryQuery *_queue_currentActivitySummaryQuery;
+    HKCurrentActivityCacheQuery *_queue_currentActivityCacheQuery;
     long long _queue_activitySummaryQueryRetries;
+    long long _queue_activityCacheQueryRetries;
     HKActivitySummary *_queue_currentActivitySummaryForClients;
-    NSObject<OS_dispatch_queue> *_activitySummaryQueryClientQueue;
+    HKActivityCache *_queue_currentActivityCacheForClients;
+    NSObject<OS_dispatch_queue> *_activityQueryClientQueue;
+    NSArray *_queue_currentMoveResults;
+    NSArray *_queue_currentExerciseResults;
+    NSArray *_queue_currentStandResults;
     NSPredicate *_sourcesPredicate;
     NSObject<OS_dispatch_queue> *_sourcesQueue;
+    HKHealthStore *_healthStore;
+    NSDictionary *_currentActivitySummaryQueryCollectionIntervalOverrides;
 }
 
 @property (readonly, nonatomic) FIUIAchievementsModel *achievementsModel;
-@property (readonly, nonatomic) double arcPercentPerHour;
+@property (strong, nonatomic) NSDictionary *currentActivitySummaryQueryCollectionIntervalOverrides; // @synthesize currentActivitySummaryQueryCollectionIntervalOverrides=_currentActivitySummaryQueryCollectionIntervalOverrides;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property (readonly, nonatomic) NSPredicate *sourcesPredicate;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) FIUIWeeklyGoalModel *weeklyGoalModel;
 
 + (id)_dailyTotalsQueryFromDate:(id)arg1 toDate:(id)arg2 dataType:(id)arg3 predicate:(id)arg4 sendUpdates:(BOOL)arg5 handler:(CDUnknownBlockType)arg6;
-+ (void)_fakeActiveAndGoalHoursDataWithCompletion:(CDUnknownBlockType)arg1;
-+ (id)_fakeCollectionForDataTypeIdentifier:(id)arg1 unit:(id)arg2;
-+ (id)_statisticsCollectionQueryFromDate:(id)arg1 toDate:(id)arg2 intervalSize:(id)arg3 dataType:(id)arg4 predicate:(id)arg5 sendUpdates:(BOOL)arg6 seperateBySource:(BOOL)arg7 handler:(CDUnknownBlockType)arg8;
-+ (id)_unitForDataType:(id)arg1;
-+ (id)activeAndIdleAndGoalHoursSampleQueryForDate:(id)arg1 predicate:(id)arg2 needsHourlyChartInfo:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
-+ (id)activeAndIdleAndGoalHoursSampleQueryFromDate:(id)arg1 toDate:(id)arg2 predicate:(id)arg3 needsHourlyChartInfo:(BOOL)arg4 withCompletion:(CDUnknownBlockType)arg5;
-+ (id)activeAndIdleHoursObserverQueryForDate:(id)arg1 predicate:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-+ (id)activeAndIdleHoursObserverQueryFromDate:(id)arg1 toDate:(id)arg2 predicate:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
-+ (id)activeEnergyQuantityType;
-+ (id)activeHourCategoryType;
-+ (id)activityChartQueryForStartDate:(id)arg1 endDate:(id)arg2 intervalSize:(id)arg3 quantityType:(id)arg4 handler:(CDUnknownBlockType)arg5;
-+ (id)briskActivityQuantityType;
-+ (id)briskActivityUnit;
-+ (id)calorieUnit;
++ (id)activityChartQueryForStartDate:(id)arg1 endDate:(id)arg2 moveintervalSize:(id)arg3 exerciseIntervalSize:(id)arg4 handler:(CDUnknownBlockType)arg5;
 + (id)dailyTotalQueryForDate:(id)arg1 dataType:(id)arg2 predicate:(id)arg3 sendUpdates:(BOOL)arg4 handler:(CDUnknownBlockType)arg5;
-+ (id)dailyTotalsQueryFromDate:(id)arg1 toDate:(id)arg2 dataType:(id)arg3 predicate:(id)arg4 sendUpdates:(BOOL)arg5 handler:(CDUnknownBlockType)arg6;
-+ (id)distanceQuantityType;
-+ (id)distanceUnit;
-+ (id)statisticsCollectionQueryForDate:(id)arg1 intervalSize:(id)arg2 dataType:(id)arg3 predicate:(id)arg4 sendUpdates:(BOOL)arg5 seperateBySource:(BOOL)arg6 handler:(CDUnknownBlockType)arg7;
-+ (id)statisticsCollectionQueryFromDate:(id)arg1 toDate:(id)arg2 intervalSize:(id)arg3 dataType:(id)arg4 predicate:(id)arg5 sendUpdates:(BOOL)arg6 seperateBySource:(BOOL)arg7 handler:(CDUnknownBlockType)arg8;
-+ (id)stepQuantityType;
-+ (id)stepUnit;
++ (BOOL)isWheelchairUser;
 - (void).cxx_destruct;
+- (id)_createCurrentActivityCacheQuery;
 - (id)_createCurrentActivitySummaryQuery;
 - (void)_printStatisticsCollection:(id)arg1;
 - (void)_printUpdatedStatistics:(id)arg1;
+- (void)_queue_restartCurrentActivityCacheQueryAfterError;
 - (void)_queue_restartCurrentActivitySummaryQueryAfterError;
 - (void)_sendMessageToObservers:(SEL)arg1 withObject:(id)arg2;
 - (void)_sendMessageToObservers:(SEL)arg1 withObject:(id)arg2 withObject:(id)arg3;
 - (void)_setKnownSources:(id)arg1;
 - (void)achievementsDidChangeInModel:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (void)basalEnergyBurnTotalForDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)basalMetabolicRateForDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)executeQuery:(id)arg1;
 - (id)init;
 - (id)initWithHealthStore:(id)arg1;
 - (void)removeObserver:(id)arg1;
+- (id)startCurrentActivityCacheWithChartsQueryWithHandler:(CDUnknownBlockType)arg1;
 - (id)startCurrentActivitySummaryQueryWithHandler:(CDUnknownBlockType)arg1;
+- (void)stopCurrentActivityCacheWithGraphsQueryForClientToken:(id)arg1;
 - (void)stopCurrentActivitySummaryQueryForClientToken:(id)arg1;
 - (void)stopQuery:(id)arg1;
 - (void)weeklySummaryInfoForDate:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

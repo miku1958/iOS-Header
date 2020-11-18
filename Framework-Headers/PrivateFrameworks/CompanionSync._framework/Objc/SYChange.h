@@ -39,6 +39,7 @@
 + (id)changeWithChangeObject:(id)arg1 serializer:(id)arg2 encodeUsingVersion:(long long)arg3;
 + (id)changeWithObject:(id)arg1 updateType:(int)arg2 store:(id)arg3;
 - (void).cxx_destruct;
+- (int)StringAsType:(id)arg1;
 - (id)changeObjectWithSerializer:(id)arg1;
 - (id)changeObjectWithSerializer:(id)arg1 encodedByVersion:(long long)arg2;
 - (void)copyTo:(id)arg1;
@@ -48,6 +49,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)objectForStore:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

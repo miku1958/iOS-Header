@@ -9,5 +9,7 @@
 @interface NSObject (CKPropertiesDescription)
 - (id)CKDescription;
 - (id)CKPropertiesDescription;
+- (id)CKPropertiesDescriptionWithProperties:(id)arg1;
+- (id)CKPropertiesToDescribe:(BOOL)arg1;
 @end
 

@@ -28,6 +28,7 @@
 - (void)endInteraction:(BOOL)arg1;
 - (void)endInteraction:(BOOL)arg1 finalVelocity:(double)arg2;
 - (id)init;
+- (long long)numberOfObservers;
 - (void)removeProgressObserver:(id)arg1;
 - (void)setPercentComplete:(double)arg1;
 

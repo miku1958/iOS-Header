@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CBClient;
 
@@ -15,6 +15,7 @@
 }
 
 + (id)sharedManager;
+- (void).cxx_destruct;
 - (BOOL)adaptationEnabled;
 - (BOOL)blueLightStatusEnabled;
 - (BOOL)brightnessFiltersEnabled;

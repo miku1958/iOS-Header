@@ -7,6 +7,6 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (SBFEXIFConveniences)
-- (int)sbf_EXIFOrientation;
+- (long long)sbf_EXIFOrientation;
 @end
 

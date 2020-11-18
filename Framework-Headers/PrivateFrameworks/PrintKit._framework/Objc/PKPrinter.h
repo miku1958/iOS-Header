@@ -6,9 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSString, NSURL, PKPaperList;
+#import <PrintKit/NSSecureCoding-Protocol.h>
 
-@interface PKPrinter : NSObject
+@class NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSString, NSURL, NSUUID, PKPaperList;
+
+@interface PKPrinter : NSObject <NSSecureCoding>
 {
     long long type;
     long long accessState;
@@ -83,6 +85,7 @@
     int maxDocumentPasswordLength;
     int preferred_landscape;
     int printerStateReasons;
+    int recentRssiValues[5];
     BOOL isLocal;
     BOOL hasIdentifyPrinterOp;
     BOOL connectionShouldNotBeTrusted;
@@ -90,13 +93,20 @@
     long long identifyActionsSupported;
     NSString *name;
     long long kind;
+    NSUUID *btleUUID;
+    long long btleMeasuredPower;
+    long long proximity;
     long long _jobAccountIDSupport;
     PKPaperList *_paperList;
+    NSArray *_trays;
+    NSArray *_jpegFeaturesSupported;
 }
 
 @property (strong) NSDictionary *TXTRecord; // @dynamic TXTRecord;
 @property long long accessState; // @dynamic accessState;
 @property (readonly) long long accessState; // @synthesize accessState;
+@property long long btleMeasuredPower; // @synthesize btleMeasuredPower;
+@property (strong) NSUUID *btleUUID; // @synthesize btleUUID;
 @property (readonly) BOOL hasIdentifyPrinterOp; // @synthesize hasIdentifyPrinterOp;
 @property (readonly) BOOL hasPrintInfoSupported; // @dynamic hasPrintInfoSupported;
 @property (strong) NSString *hostname; // @dynamic hostname;
@@ -107,28 +117,35 @@
 @property BOOL isLocal; // @synthesize isLocal;
 @property long long jobAccountIDSupport; // @synthesize jobAccountIDSupport=_jobAccountIDSupport;
 @property (readonly) long long jobTypesSupported;
+@property (strong) NSArray *jpegFeaturesSupported; // @synthesize jpegFeaturesSupported=_jpegFeaturesSupported;
 @property (readonly) long long kind; // @synthesize kind;
+@property (readonly) NSArray *localizedNamesOfEmptyTrays; // @dynamic localizedNamesOfEmptyTrays;
 @property (strong) NSString *name; // @synthesize name;
 @property (readonly) BOOL needsSetup;
 @property (strong) PKPaperList *paperList; // @synthesize paperList=_paperList;
 @property (strong) NSNumber *port; // @dynamic port;
 @property (readonly) NSDictionary *printInfoSupported;
 @property (readonly) NSURL *printerURL;
+@property long long proximity; // @synthesize proximity;
 @property (readonly, strong) NSString *scheme;
 @property (readonly) BOOL setupSupportsPasswordScope;
+@property (strong) NSArray *trays; // @synthesize trays=_trays;
 @property (readonly) long long type; // @synthesize type;
 @property (readonly) NSString *uuid; // @dynamic uuid;
 
 + (struct _ipp_s *)getAttributes:(const char **)arg1 count:(int)arg2 fromURI:(id)arg3;
 + (id)hardcodedURIs;
++ (void)listenForPrinterNotifications;
 + (id)nameForHardcodedURI:(id)arg1;
 + (BOOL)printerLookupWithName:(id)arg1 andTimeout:(double)arg2;
 + (id)printerWithName:(id)arg1;
 + (id)printerWithName:(id)arg1 discoveryTimeout:(double)arg2;
 + (id)requiredPDL;
++ (BOOL)supportsSecureCoding;
 + (BOOL)urfIsOptional;
 - (id)TXTRecordWithTimeout:(int)arg1;
 - (long long)abortJob;
+- (void)addRSSIValue:(id)arg1;
 - (void)aggdAppsAndPrinters;
 - (id)availableRollPapersPreferBorderless:(BOOL)arg1;
 - (void)cancelUnlock;
@@ -138,6 +155,7 @@
 - (id)description;
 - (id)displayName;
 - (void)doMedia2:(struct _ipp_s *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (long long)feedOrientation:(id)arg1;
 - (long long)finalizeJob:(int)arg1;
 - (long long)finishJob;
@@ -147,9 +165,11 @@
 - (void)getSupplyLevels:(CDUnknownBlockType)arg1;
 - (void)handlePrinterStateReasonsFromResponse:(struct _ipp_s *)arg1;
 - (void)identifySelf;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 TXT:(id)arg2;
 - (id)initWithName:(id)arg1 TXTRecord:(id)arg2;
 - (BOOL)isBonjour;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isPaperReady:(id)arg1;
 - (BOOL)knowsReadyPaperList;
 - (id)localName;
@@ -164,6 +184,7 @@
 - (long long)printURL:(id)arg1 ofType:(id)arg2 printSettings:(id)arg3;
 - (id)privateObjectForKey:(id)arg1;
 - (void)reconfirmWithForce:(BOOL)arg1;
+- (void)removeCredentialsFromKeychain;
 - (BOOL)resolve;
 - (BOOL)resolveIfNeeded;
 - (BOOL)resolveWithTimeout:(int)arg1;

@@ -52,11 +52,10 @@
 @property (strong, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
 @property (nonatomic) int type; // @synthesize type=_type;
 
++ (Class)listValueType;
 - (void).cxx_destruct;
+- (int)StringAsType:(id)arg1;
 - (void)_CKLogToFileHandle:(id)arg1 atDepth:(int)arg2;
-- (id)_descriptionForType:(int)arg1;
-- (id)_prettyDictionaryRepresentation;
-- (id)_prettyRepresentationFromObject:(id)arg1;
 - (void)addListValue:(id)arg1;
 - (void)clearListValues;
 - (void)copyTo:(id)arg1;
@@ -69,6 +68,7 @@
 - (unsigned long long)listValuesCount;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

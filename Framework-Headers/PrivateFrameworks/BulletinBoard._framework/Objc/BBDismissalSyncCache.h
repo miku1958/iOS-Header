@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDate, NSMutableDictionary;
 
@@ -17,10 +17,10 @@
 @property (strong, nonatomic) NSMutableDictionary *cache; // @synthesize cache=_cache;
 @property (strong, nonatomic) NSDate *timeToCheck; // @synthesize timeToCheck=_timeToCheck;
 
+- (void).cxx_destruct;
 - (void)_checkCache;
 - (BOOL)_isTimeToCheck;
 - (void)cacheDismissalDictionaries:(id)arg1 dismissalIDs:(id)arg2 inSection:(id)arg3 forFeeds:(unsigned long long)arg4;
-- (void)dealloc;
 - (id)description;
 - (id)findBulletinMatch:(id)arg1;
 - (id)init;

@@ -6,12 +6,21 @@
 
 #import <objc/NSObject.h>
 
+#import <WebKit/CAAnimationDelegate-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface WKAnimationDelegate : NSObject
+@interface WKAnimationDelegate : NSObject <CAAnimationDelegate>
 {
     unsigned long long _layerID;
     struct RemoteLayerTreeHost *_layerTreeHost;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void)animationDidStart:(id)arg1;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;

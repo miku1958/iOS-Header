@@ -12,11 +12,11 @@ __attribute__((visibility("hidden")))
 @interface UISearchDisplayControllerContainerView : UIView
 {
     BOOL _collapsedTopView;
+    NSLayoutConstraint *_topViewHeightConstraint;
+    NSLayoutConstraint *_topViewAttributeTopConstraint;
     UIView *_topView;
     UIView *_bottomView;
     UIView *_behindView;
-    NSLayoutConstraint *_topViewHeightConstraint;
-    NSLayoutConstraint *_topViewAttributeTopConstraint;
 }
 
 @property (readonly, nonatomic) UIView *behindView; // @synthesize behindView=_behindView;
@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 topViewHeight:(double)arg2;
 - (void)setBottomViewUserInteractionEnabled:(BOOL)arg1;
-- (void)setFrame:(struct CGRect)arg1;
 - (void)updateTopAttributeConstant:(double)arg1;
 - (void)updateTopViewHeight:(double)arg1;
 - (void)updateTopViewHeight:(double)arg1 animateUpdate:(BOOL)arg2;

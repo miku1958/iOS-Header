@@ -21,7 +21,7 @@
 
 - (void)_threadedMain;
 - (void)dealloc;
-- (id)initWithIdentifier:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 qosClass:(unsigned short)arg2;
 - (BOOL)isCurrentThreadOtherwiseAssert:(BOOL)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1 afterDelay:(double)arg2;

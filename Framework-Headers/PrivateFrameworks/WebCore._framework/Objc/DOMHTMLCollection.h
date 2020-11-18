@@ -13,7 +13,6 @@
 @property (readonly) unsigned int length;
 
 - (void)dealloc;
-- (void)finalize;
 - (id)item:(unsigned int)arg1;
 - (id)namedItem:(id)arg1;
 - (id)tags:(id)arg1;

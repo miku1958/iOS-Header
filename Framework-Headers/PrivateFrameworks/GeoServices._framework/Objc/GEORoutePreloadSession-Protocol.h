@@ -15,6 +15,7 @@
 @property (nonatomic) unsigned long long networkQuality;
 @property (readonly, nonatomic) GEOComposedRoute *route;
 
+- (void)addTileSetStyle:(int)arg1 betweenZoom:(unsigned int)arg2 andZoom:(unsigned int)arg3;
 - (void)beginLoading;
 - (BOOL)fullDebuggingEnabled;
 - (void)getPreloadSetCoordinates:(CDStruct_c3b9c2ee *)arg1 maxLength:(unsigned long long)arg2 actualLength:(unsigned long long *)arg3;

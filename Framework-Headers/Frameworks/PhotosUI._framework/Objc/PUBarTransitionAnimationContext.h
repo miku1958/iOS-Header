@@ -22,11 +22,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIView *customAnimationContainerView; // @synthesize customAnimationContainerView=_customAnimationContainerView;
 @property (nonatomic) double heightWhenHidden; // @synthesize heightWhenHidden=_heightWhenHidden;
 @property (nonatomic) double heightWhenVisible; // @synthesize heightWhenVisible=_heightWhenVisible;
-@property (nonatomic) BOOL isAppearing; // @synthesize isAppearing=_isAppearing;
+@property (nonatomic, setter=setAppearing:) BOOL isAppearing; // @synthesize isAppearing=_isAppearing;
 @property (strong, nonatomic) id<UIViewControllerTransitionCoordinator> transitionCoordinator; // @synthesize transitionCoordinator=_transitionCoordinator;
 
 - (void).cxx_destruct;
-- (void)setAppearing:(BOOL)arg1;
 
 @end
 

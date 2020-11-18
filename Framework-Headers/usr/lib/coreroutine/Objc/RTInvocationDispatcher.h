@@ -22,14 +22,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL valid; // @synthesize valid=_valid;
 
 - (void).cxx_destruct;
-- (id)addPendingInvocation:(id)arg1 failureBlock:(CDUnknownBlockType)arg2;
+- (void)_enqueueBlock:(CDUnknownBlockType)arg1 failureBlock:(CDUnknownBlockType)arg2 description:(id)arg3;
 - (unsigned long long)countOfPendingInvocations;
 - (BOOL)dispatchPendingInvocations;
-- (id)init;
+- (void)enqueueBlock:(CDUnknownBlockType)arg1 description:(id)arg2;
+- (void)enqueueBlock:(CDUnknownBlockType)arg1 failureBlock:(CDUnknownBlockType)arg2 description:(id)arg3;
 - (id)initWithQueue:(id)arg1;
 - (BOOL)invocationsPending;
 - (void)removeAllPendingInvocations;
-- (void)removePendingInvocation:(id)arg1;
 - (void)shutdown;
 
 @end

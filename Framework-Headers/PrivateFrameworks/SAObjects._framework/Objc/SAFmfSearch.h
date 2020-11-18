@@ -4,22 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SAObjects/SABaseClientBoundCommand.h>
+#import <SAObjects/SADomainCommand.h>
 
-@class NSArray, NSString, NSURL, SALocation;
+@class NSArray, NSString, SALocation;
 
-@interface SAFmfSearch : SABaseClientBoundCommand
+@interface SAFmfSearch : SADomainCommand
 {
-    NSURL *_targetAppId;
-    NSArray *_emailAddresses;
 }
 
 @property (strong, nonatomic) SALocation *currentLocation;
-@property (copy, nonatomic) NSArray *emailAddresses; // @synthesize emailAddresses=_emailAddresses;
 @property (copy, nonatomic) NSArray *friends;
 @property (copy, nonatomic) NSString *proximity;
 @property (strong, nonatomic) SALocation *requestedLocation;
-@property (copy, nonatomic) NSURL *targetAppId; // @synthesize targetAppId=_targetAppId;
 
 + (id)search;
 + (id)searchWithDictionary:(id)arg1 context:(id)arg2;

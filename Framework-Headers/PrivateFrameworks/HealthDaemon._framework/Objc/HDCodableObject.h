@@ -6,11 +6,12 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
+#import <HealthDaemon/HDDecoding-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
 @class HDCodableMetadataDictionary, NSData, NSString;
 
-@interface HDCodableObject : PBCodable <NSCopying>
+@interface HDCodableObject : PBCodable <HDDecoding, NSCopying>
 {
     double _creationDate;
     HDCodableMetadataDictionary *_metadataDictionary;
@@ -20,23 +21,24 @@
 }
 
 @property (nonatomic) double creationDate; // @synthesize creationDate=_creationDate;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasCreationDate;
 @property (readonly, nonatomic) BOOL hasMetadataDictionary;
 @property (readonly, nonatomic) BOOL hasSourceBundleIdentifier;
 @property (readonly, nonatomic) BOOL hasUuid;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HDCodableMetadataDictionary *metadataDictionary; // @synthesize metadataDictionary=_metadataDictionary;
 @property (strong, nonatomic) NSString *sourceBundleIdentifier; // @synthesize sourceBundleIdentifier=_sourceBundleIdentifier;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) NSData *uuid; // @synthesize uuid=_uuid;
 
 - (void).cxx_destruct;
+- (BOOL)applyToObject:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (double)decodedCreationDate;
 - (id)decodedMetadata;
-- (id)decodedUUID;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

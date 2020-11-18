@@ -10,20 +10,17 @@
 {
     id _target;
     SEL _actionSelector;
-    unsigned long long _frameInterval;
     unsigned long long _displayDidRefreshCount;
 }
 
 @property (nonatomic) SEL actionSelector; // @synthesize actionSelector=_actionSelector;
 @property (nonatomic) unsigned long long displayDidRefreshCount; // @synthesize displayDidRefreshCount=_displayDidRefreshCount;
-@property (nonatomic) unsigned long long frameInterval; // @synthesize frameInterval=_frameInterval;
 @property (strong, nonatomic) id target; // @synthesize target=_target;
 
 - (void)dealloc;
 - (void)displayDidRefresh:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithTarget:(id)arg1 actionSelector:(SEL)arg2;
-- (id)initWithTarget:(id)arg1 actionSelector:(SEL)arg2 frameInterval:(unsigned long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

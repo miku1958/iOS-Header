@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -28,6 +28,7 @@
 + (void)acquireAssertionOfType:(unsigned long long)arg1 withReason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (BOOL)assertionExistsOfType:(unsigned long long)arg1;
 + (void)preheatConnection;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (id)initWithType:(unsigned long long)arg1 identifier:(id)arg2 reason:(id)arg3;

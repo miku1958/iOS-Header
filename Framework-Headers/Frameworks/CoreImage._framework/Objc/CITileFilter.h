@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSNumber *inputWidth; // @synthesize inputWidth;
 
 + (id)customAttributes;
+- (id)_croppedCenterPixelImage;
 - (id)_kernel;
 - (id)_kernel_name;
 - (id)_kernel_source;

@@ -8,7 +8,7 @@
 
 #import <Weather/CLLocationManagerDelegate-Protocol.h>
 
-@class CLLocationManager, NSDate, NSString, NSTimer;
+@class CLLocationManager, NSDate, NSString, NSTimer, WeatherPreferences;
 @protocol CLLocationManagerDelegate;
 
 @interface WeatherLocationManager : NSObject <CLLocationManagerDelegate>
@@ -18,16 +18,18 @@
     BOOL _isInternalBuild;
     int _authorizationStatus;
     float _lastLocationAccuracy;
+    NSString *_effectiveBundleIdentifier;
     id<CLLocationManagerDelegate> _delegate;
     CLLocationManager *_locationManager;
     unsigned long long _updateInterval;
     double _oldestAllowedUpdateTime;
     NSTimer *_delayedUpdateTimer;
     NSTimer *_accuracyFallbackTimer;
+    WeatherPreferences *_preferences;
     NSDate *_lastLocationTimeStamp;
     double _lastLocationUpdateTime;
     double _nextPlannedUpdate;
-    CDStruct_2c43369c _lastLocationCoord;
+    struct CLLocationCoordinate2D _lastLocationCoord;
 }
 
 @property (strong, nonatomic) NSTimer *accuracyFallbackTimer; // @synthesize accuracyFallbackTimer=_accuracyFallbackTimer;
@@ -36,10 +38,12 @@
 @property (strong, nonatomic) NSTimer *delayedUpdateTimer; // @synthesize delayedUpdateTimer=_delayedUpdateTimer;
 @property (weak, nonatomic) id<CLLocationManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) double distanceFilter;
+@property (readonly, copy, nonatomic) NSString *effectiveBundleIdentifier; // @synthesize effectiveBundleIdentifier=_effectiveBundleIdentifier;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isInternalBuild; // @synthesize isInternalBuild=_isInternalBuild;
 @property (nonatomic) float lastLocationAccuracy; // @synthesize lastLocationAccuracy=_lastLocationAccuracy;
-@property (nonatomic) CDStruct_2c43369c lastLocationCoord; // @synthesize lastLocationCoord=_lastLocationCoord;
+@property (nonatomic) struct CLLocationCoordinate2D lastLocationCoord; // @synthesize lastLocationCoord=_lastLocationCoord;
 @property (copy, nonatomic) NSDate *lastLocationTimeStamp; // @synthesize lastLocationTimeStamp=_lastLocationTimeStamp;
 @property (nonatomic) double lastLocationUpdateTime; // @synthesize lastLocationUpdateTime=_lastLocationUpdateTime;
 @property (strong, nonatomic) CLLocationManager *locationManager; // @synthesize locationManager=_locationManager;
@@ -47,10 +51,12 @@
 @property (nonatomic) BOOL locationUpdatesEnabled; // @synthesize locationUpdatesEnabled=_locationUpdatesEnabled;
 @property (nonatomic) double nextPlannedUpdate; // @synthesize nextPlannedUpdate=_nextPlannedUpdate;
 @property (nonatomic) double oldestAllowedUpdateTime; // @synthesize oldestAllowedUpdateTime=_oldestAllowedUpdateTime;
+@property (strong, nonatomic) WeatherPreferences *preferences; // @synthesize preferences=_preferences;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long updateInterval; // @synthesize updateInterval=_updateInterval;
 
 + (void)clearSharedLocationManager;
++ (int)locationManagerAuthorizationWithEffectiveBundleId:(id)arg1;
 + (id)sharedWeatherLocationManager;
 - (void).cxx_destruct;
 - (void)accuracyFallbackTimerDidFire:(id)arg1;
@@ -64,10 +70,13 @@
 - (int)forceLoadingAuthorizationStatus;
 - (void)forceLocationUpdate;
 - (id)init;
+- (id)initWithPreferences:(id)arg1;
+- (id)initWithPreferences:(id)arg1 effectiveBundleIdentifier:(id)arg2;
 - (BOOL)isLocalStaleOrOutOfDate;
 - (BOOL)localWeatherAuthorized;
 - (id)location;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
+- (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)monitorLocationAuthorization;
 - (void)scheduleDelayedUpdate:(double)arg1;

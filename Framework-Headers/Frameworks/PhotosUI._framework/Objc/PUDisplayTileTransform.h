@@ -25,18 +25,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setDisplaySize:) struct CGSize _displaySize; // @synthesize _displaySize=__displaySize;
 @property (nonatomic, setter=_setInitialScale:) double _initialScale; // @synthesize _initialScale=__initialScale;
 @property (nonatomic, setter=_setInitialSize:) struct CGSize _initialSize; // @synthesize _initialSize=__initialSize;
-@property (nonatomic) struct CGAffineTransform affineTransform; // @synthesize affineTransform=_affineTransform;
-@property (nonatomic) BOOL hasUserInput; // @synthesize hasUserInput=_hasUserInput;
+@property (nonatomic, setter=_setAffineTransform:) struct CGAffineTransform affineTransform; // @synthesize affineTransform=_affineTransform;
+@property (nonatomic, setter=_setHasUserInput:) BOOL hasUserInput; // @synthesize hasUserInput=_hasUserInput;
 @property (readonly, nonatomic) PUModelTileTransform *modelTileTransform;
-@property (nonatomic) struct CGSize transformPadding; // @synthesize transformPadding=_transformPadding;
-@property (copy, nonatomic) NSString *userInputOriginIdentifier; // @synthesize userInputOriginIdentifier=_userInputOriginIdentifier;
+@property (nonatomic, setter=_setTransformPadding:) struct CGSize transformPadding; // @synthesize transformPadding=_transformPadding;
+@property (copy, nonatomic, setter=_setUserInputOriginIdentifier:) NSString *userInputOriginIdentifier; // @synthesize userInputOriginIdentifier=_userInputOriginIdentifier;
 
 + (id)displayTileTransformWithModelTileTransform:(id)arg1 initialScale:(double)arg2 initialSize:(struct CGSize)arg3 displaySize:(struct CGSize)arg4 secondaryDisplayTileTransform:(id)arg5;
 - (void).cxx_destruct;
-- (void)_setAffineTransform:(struct CGAffineTransform)arg1;
-- (void)_setHasUserInput:(BOOL)arg1;
-- (void)_setTransformPadding:(struct CGSize)arg1;
-- (void)_setUserInputOriginIdentifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)init;

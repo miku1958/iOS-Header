@@ -6,58 +6,39 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosPlayer/UIScrollViewDelegate-Protocol.h>
+@class ISVisibilityOffsetHelper, NSDate, NSHashTable, UIScrollView;
 
-@class ISVisibilityOffsetHelper, NSDate, NSHashTable, NSString, UIScrollView;
-
-@interface ISScrollViewVitalityController : NSObject <UIScrollViewDelegate>
+@interface ISScrollViewVitalityController : NSObject
 {
     BOOL __isPerformingChanges;
-    BOOL __isScrolling;
-    BOOL __isDecelerating;
-    BOOL __hasTargetContentOffset;
+    BOOL _scrolling;
+    BOOL _decelerating;
+    BOOL _hasTargetContentOffset;
     UIScrollView *__scrollView;
     NSHashTable *__playerViews;
-    ISVisibilityOffsetHelper *__visibilityOffsetHelper;
-    NSDate *__estimatedScrollEndDate;
-    struct CGPoint __targetContentOffset;
+    NSDate *_estimatedScrollEndDate;
+    ISVisibilityOffsetHelper *_visibilityOffsetHelper;
+    struct CGPoint _targetContentOffset;
 }
 
-@property (strong, nonatomic, setter=_setEstimatedScrollEndDate:) NSDate *_estimatedScrollEndDate; // @synthesize _estimatedScrollEndDate=__estimatedScrollEndDate;
-@property (nonatomic, setter=_setHasTargetContentOffset:) BOOL _hasTargetContentOffset; // @synthesize _hasTargetContentOffset=__hasTargetContentOffset;
-@property (nonatomic, setter=_setDecelerating:) BOOL _isDecelerating; // @synthesize _isDecelerating=__isDecelerating;
 @property (nonatomic, setter=_setPerformingChanges:) BOOL _isPerformingChanges; // @synthesize _isPerformingChanges=__isPerformingChanges;
-@property (nonatomic, setter=_setScrolling:) BOOL _isScrolling; // @synthesize _isScrolling=__isScrolling;
 @property (readonly, nonatomic) NSHashTable *_playerViews; // @synthesize _playerViews=__playerViews;
 @property (weak, nonatomic, setter=_setScrollView:) UIScrollView *_scrollView; // @synthesize _scrollView=__scrollView;
-@property (nonatomic, setter=_setTargetContentOffset:) struct CGPoint _targetContentOffset; // @synthesize _targetContentOffset=__targetContentOffset;
-@property (readonly, nonatomic) ISVisibilityOffsetHelper *_visibilityOffsetHelper; // @synthesize _visibilityOffsetHelper=__visibilityOffsetHelper;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (nonatomic, getter=isDecelerating) BOOL decelerating; // @synthesize decelerating=_decelerating;
+@property (strong, nonatomic) NSDate *estimatedScrollEndDate; // @synthesize estimatedScrollEndDate=_estimatedScrollEndDate;
+@property (nonatomic) BOOL hasTargetContentOffset; // @synthesize hasTargetContentOffset=_hasTargetContentOffset;
+@property (nonatomic, getter=isScrolling) BOOL scrolling; // @synthesize scrolling=_scrolling;
+@property (nonatomic) struct CGPoint targetContentOffset; // @synthesize targetContentOffset=_targetContentOffset;
+@property (readonly, nonatomic) ISVisibilityOffsetHelper *visibilityOffsetHelper; // @synthesize visibilityOffsetHelper=_visibilityOffsetHelper;
 
 - (void).cxx_destruct;
-- (void)_performChanges:(CDUnknownBlockType)arg1;
-- (void)_updatePlayerViewsVitalityFilters;
+- (id)_newVitalityFilter;
+- (void)_updateVitalityFilters;
 - (void)addPlayerView:(id)arg1;
-- (void)dealloc;
 - (void)didLayoutPlayerViews;
 - (id)init;
+- (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)removePlayerView:(id)arg1;
-- (void)scrollViewDidEndDecelerating:(id)arg1;
-- (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
-- (void)scrollViewDidEndScrollingAnimation:(id)arg1;
-- (void)scrollViewDidEndZooming:(id)arg1 withView:(id)arg2 atScale:(double)arg3;
-- (void)scrollViewDidScroll:(id)arg1;
-- (void)scrollViewDidScrollToTop:(id)arg1;
-- (void)scrollViewDidZoom:(id)arg1;
-- (BOOL)scrollViewShouldScrollToTop:(id)arg1;
-- (void)scrollViewVitalityHintsDidChange;
-- (void)scrollViewWillBeginDecelerating:(id)arg1;
-- (void)scrollViewWillBeginDragging:(id)arg1;
-- (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
-- (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 
 @end
 

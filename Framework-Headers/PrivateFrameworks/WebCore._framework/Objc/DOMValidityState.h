@@ -22,7 +22,6 @@
 @property (readonly) BOOL valueMissing;
 
 - (void)dealloc;
-- (void)finalize;
 
 @end
 

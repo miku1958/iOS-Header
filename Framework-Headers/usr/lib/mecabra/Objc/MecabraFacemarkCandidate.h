@@ -14,13 +14,16 @@
     NSString *_category;
 }
 
-@property (readonly) NSString *category; // @synthesize category=_category;
-@property (readonly) NSString *string; // @synthesize string=_string;
+@property (readonly, nonatomic) NSString *category; // @synthesize category=_category;
+@property (readonly, nonatomic) NSString *string; // @synthesize string=_string;
 
++ (id)candidateWithString:(id)arg1 category:(id)arg2;
++ (id)copyFacemarkCandidatesForLanguage:(int)arg1;
 + (id)copyFacemarkCandidatesForLocale:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)initWithString:(id)arg1 category:(id)arg2;
+- (id)surface;
 
 @end
 

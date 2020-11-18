@@ -8,16 +8,18 @@
 
 #import <GeoServices/GEOPlaceDataProxy-Protocol.h>
 
-@class GEOPhoneNumberMUIDMapper, GEOPlaceDataCacheRegister, NSLock, NSMapTable, NSMutableOrderedSet, NSMutableSet, NSString;
+@class GEOPhoneNumberMUIDMapper, GEOPlaceDataCacheRegister, NSMapTable, NSMutableArray, NSMutableOrderedSet, NSMutableSet, NSString;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface GEOPlaceDataLocalProxy : NSObject <GEOPlaceDataProxy>
 {
+    NSObject<OS_dispatch_queue> *_accessSerialQueue;
     NSMapTable *_pendingRequests;
-    NSLock *_pendingRequestsLock;
     GEOPlaceDataCacheRegister *_cacheRegister;
     GEOPhoneNumberMUIDMapper *_phoneNumberMapper;
     NSMutableSet *_requestsInProgress;
+    NSMutableArray *_requestHandlersPending;
     NSMutableOrderedSet *_placeHashes;
 }
 

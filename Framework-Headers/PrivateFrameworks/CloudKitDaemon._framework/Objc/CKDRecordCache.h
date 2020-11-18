@@ -6,9 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@class CKDClientContext, CKSQLite, CKSQLitePool;
+@class CKDClientContext, CKSQLite, CKSQLitePool, NSDate;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface CKDRecordCache : NSObject
 {
     CKSQLite *_db;
@@ -16,17 +17,23 @@
     CKDClientContext *_context;
     long long _scope;
     NSObject<OS_dispatch_queue> *_queue;
+    NSDate *_lastExpiryAttempt;
 }
 
 @property (strong, nonatomic) CKDClientContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) CKSQLite *db; // @synthesize db=_db;
 @property (strong, nonatomic) CKSQLitePool *dbPool; // @synthesize dbPool=_dbPool;
+@property (strong, nonatomic) NSDate *lastExpiryAttempt; // @synthesize lastExpiryAttempt=_lastExpiryAttempt;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (nonatomic) long long scope; // @synthesize scope=_scope;
 
++ (id)_expiryDateFormatter;
 - (void).cxx_destruct;
+- (void)_attemptRecordExpiryIfNeeded;
 - (BOOL)_cachedRecordHasValidAssets:(id)arg1 forRequiredKeys:(id)arg2;
 - (BOOL)_cachedRecordKnownUserKeyData:(id)arg1 satisfiesRequiredKeys:(id)arg2;
+- (id)_dsid;
+- (unsigned long long)_lockedSizeOfAllRecordsInDb;
 - (id)_recordWithID:(id)arg1 requiredKeys:(id)arg2;
 - (id)_trimRecord:(id)arg1 toRequiredKeys:(id)arg2;
 - (void)addRecord:(id)arg1 knownUserKeys:(id)arg2;

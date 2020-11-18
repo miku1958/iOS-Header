@@ -17,6 +17,7 @@
 
 + (id)weakProxyForObject:(id)arg1;
 - (Class)class;
+- (BOOL)conformsToProtocol:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)descriptionWithLocale:(id)arg1;
@@ -27,7 +28,6 @@
 - (id)initWithObject:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isProxy;
-- (struct objc_method_description *)methodDescriptionForSelector:(SEL)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (id)self;

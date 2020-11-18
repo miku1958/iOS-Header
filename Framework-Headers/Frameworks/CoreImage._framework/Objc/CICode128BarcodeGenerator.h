@@ -12,8 +12,10 @@ __attribute__((visibility("hidden")))
 @interface CICode128BarcodeGenerator : CICodeGenerator
 {
     NSNumber *inputQuietSpace;
+    NSNumber *inputBarcodeHeight;
 }
 
+@property (copy, nonatomic) NSNumber *inputBarcodeHeight; // @synthesize inputBarcodeHeight;
 @property (copy, nonatomic) NSNumber *inputQuietSpace; // @synthesize inputQuietSpace;
 
 + (id)customAttributes;

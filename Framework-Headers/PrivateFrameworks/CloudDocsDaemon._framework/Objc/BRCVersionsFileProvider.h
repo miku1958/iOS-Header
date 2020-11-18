@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)_physicalURLForURL:(id)arg1;
 - (void)_provideItemAtURL:(id)arg1 toReaderWithID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dumpToContext:(id)arg1;
-- (id)initWithURL:(id)arg1;
+- (id)initWithVolume:(id)arg1;
 
 @end
 

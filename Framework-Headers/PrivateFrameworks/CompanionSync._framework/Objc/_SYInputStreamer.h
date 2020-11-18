@@ -11,6 +11,7 @@
 @class NSMutableArray, NSString, SYCompressedFileInputStream;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
+__attribute__((visibility("hidden")))
 @interface _SYInputStreamer : NSObject <NSStreamDelegate>
 {
     SYCompressedFileInputStream *_stream;

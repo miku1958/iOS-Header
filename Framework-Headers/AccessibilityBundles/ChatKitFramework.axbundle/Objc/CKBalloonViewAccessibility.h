@@ -13,15 +13,20 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axAcknowledgmentDescription;
 - (id)_axBuddyNameForBalloon;
 - (id)_axChatItemForBalloon;
+- (BOOL)_axIsBalloonOfType:(id)arg1;
 - (BOOL)_axIsImessage;
 - (BOOL)_axIsMessageFromMe;
 - (BOOL)_axIsTextMessage;
 - (id)_axMessageForBalloon;
+- (id)_axMessageSender;
 - (id)_axMessageTime;
+- (id)_axStickerDescription;
 - (id)accessibilityCustomActions;
 - (BOOL)accessibilityPerformCustomAction:(long long)arg1;
+- (BOOL)isAccessibilityElement;
 
 @end
 

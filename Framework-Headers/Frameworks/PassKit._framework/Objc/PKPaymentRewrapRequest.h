@@ -4,26 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitCore/PKPaymentWebServiceRequest.h>
+#import <PassKitCore/PKPaymentRewrapRequestBase.h>
 
-@class NSData, NSString, PKPaymentPass;
+@class NSString;
 
-@interface PKPaymentRewrapRequest : PKPaymentWebServiceRequest
+@interface PKPaymentRewrapRequest : PKPaymentRewrapRequestBase
 {
-    PKPaymentPass *_pass;
     NSString *_merchantIdentifier;
-    NSData *_paymentData;
-    NSData *_applicationData;
 }
 
-@property (copy, nonatomic) NSData *applicationData; // @synthesize applicationData=_applicationData;
 @property (copy, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;
-@property (strong, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
-@property (copy, nonatomic) NSData *paymentData; // @synthesize paymentData=_paymentData;
 
-- (id)_urlRequestWithServiceURL:(id)arg1 deviceData:(id)arg2 account:(id)arg3;
-- (void)dealloc;
-- (id)initWithPaymentData:(id)arg1 paymentPass:(id)arg2 merchantIdentifier:(id)arg3;
+- (void).cxx_destruct;
+- (id)bodyDictionaryWithDeviceData:(id)arg1;
+- (id)endpointName;
+- (id)initWithWrappedPayment:(id)arg1 paymentPass:(id)arg2 merchantIdentifier:(id)arg3;
 
 @end
 

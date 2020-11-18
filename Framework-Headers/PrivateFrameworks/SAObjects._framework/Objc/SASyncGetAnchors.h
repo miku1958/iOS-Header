@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SAObjects/SABaseCommand.h>
+#import <SAObjects/SABaseClientBoundCommand.h>
 
 #import <SAObjects/SAServerBoundCommand-Protocol.h>
 
 @class NSArray, NSDictionary, NSString;
 
-@interface SASyncGetAnchors : SABaseCommand <SAServerBoundCommand>
+@interface SASyncGetAnchors : SABaseClientBoundCommand <SAServerBoundCommand>
 {
 }
 
 @property (copy, nonatomic) NSString *aceId; // @dynamic aceId;
+@property (copy, nonatomic) NSArray *appMetaDataList;
 @property (copy, nonatomic) NSDictionary *customVocabSources;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -23,11 +24,13 @@
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
 @property (copy, nonatomic) NSArray *sources;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSArray *watchAppMetaDataList;
 
 + (id)getAnchors;
 + (id)getAnchorsWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (BOOL)requiresResponse;
 
 @end
 

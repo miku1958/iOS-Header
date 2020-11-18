@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
@@ -18,12 +18,15 @@
 {
     struct __C3DGeometry *_geometry;
     unsigned int _isPresentationInstance:1;
+    NSMutableArray *_sources;
+    NSMutableArray *_elements;
     NSMutableArray *_materials;
     SCNOrderedDictionary *_animations;
     NSArray *_levelsOfDetail;
     unsigned long long _subdivisionLevel;
     SCNGeometrySource *_edgeCreasesSource;
     SCNGeometryElement *_edgeCreasesElement;
+    CDStruct_4c02ed10 _subdivisionSettings;
     SCNShadableHelper *_shadableHelper;
     struct SCNVector3 *_fixedBoundingBoxExtrema;
     NSString *_name;
@@ -57,6 +60,7 @@
 + (id)geometryWithGeometryRef:(struct __C3DGeometry *)arg1;
 + (id)geometryWithMDLMesh:(id)arg1;
 + (id)geometryWithSources:(id)arg1 elements:(id)arg2;
++ (id)morpherWithMDLMesh:(id)arg1;
 + (id)planeWithWidth:(double)arg1 height:(double)arg2 options:(id)arg3;
 + (id)pyramidWithWidth:(double)arg1 height:(double)arg2 length:(double)arg3 options:(id)arg4;
 + (BOOL)resolveInstanceMethod:(SEL)arg1;
@@ -64,19 +68,28 @@
 + (BOOL)supportsSecureCoding;
 + (id)torusWithRingRadius:(double)arg1 pipeRadius:(double)arg2 options:(id)arg3;
 + (id)tubeWithInnerRadius:(double)arg1 outerRadius:(double)arg2 height:(double)arg3 options:(id)arg4;
-- (void *)__CFObject;
+- (const void *)__CFObject;
 - (struct __C3DGeometry *)__createCFObject;
-- (void)__removeAnimation:(id)arg1 forKey:(id)arg2;
+- (BOOL)__removeAnimation:(id)arg1 forKey:(id)arg2;
 - (void)_customDecodingOfSCNGeometry:(id)arg1;
 - (void)_customEncodingOfSCNGeometry:(id)arg1;
+- (void)_discardOriginalTopology;
 - (void)_expand;
 - (id)_firstMaterial;
+- (id)_geometryByAddingSourcesOfSkinner:(id)arg1;
+- (id)_geometryByRemovingSkinnerSources;
+- (id)_geometryByUnifyingNormalsWithCreaseThreshold:(double)arg1;
+- (id)_geometryByWeldingVerticesWithThreshold:(double)arg1 normalThreshold:(double)arg2;
 - (id)_materialWithName:(id)arg1;
 - (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2;
+- (void)_releaseCachedSourcesAndElements;
 - (void)_setAttributes:(id)arg1;
 - (void)_setGeometryRef:(struct __C3DGeometry *)arg1;
+- (void)_setupGeometryElements;
+- (void)_setupGeometrySources;
 - (void)_setupObjCModelFrom:(id)arg1;
 - (void)_setupShadableHelperIfNeeded;
+- (CDStruct_4c02ed10)_subdivisionSettings;
 - (void)_syncEntityObjCModel;
 - (void)_syncObjCAnimations;
 - (void)_syncObjCModel;
@@ -85,6 +98,7 @@
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
 - (id)animationForKey:(id)arg1;
 - (struct __C3DAnimationManager *)animationManager;
+- (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
 - (id)copy;
 - (struct __C3DAnimationChannel *)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -146,8 +160,11 @@
 - (void)setIdentifier:(id)arg1;
 - (void)setMaterial:(id)arg1;
 - (void)setPrimitiveType:(long long)arg1;
+- (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (void)setValueForKey:(id)arg1 optionKey:(id)arg2 options:(id)arg3;
+- (void)set_subdivisionSettings:(CDStruct_4c02ed10)arg1;
+- (void)unbindAnimatablePath:(id)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
 
 @end

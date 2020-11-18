@@ -20,7 +20,7 @@
 @property (strong, nonatomic) NSDictionary *remoteAssetsByTaskIdentifier; // @synthesize remoteAssetsByTaskIdentifier=_remoteAssetsByTaskIdentifier;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

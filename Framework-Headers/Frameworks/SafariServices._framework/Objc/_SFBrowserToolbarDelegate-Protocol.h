@@ -9,7 +9,6 @@
 @class _SFBrowserToolbar;
 
 @protocol _SFBrowserToolbarDelegate <NSObject>
-- (void)browserToolbarAddBookmark:(_SFBrowserToolbar *)arg1;
 - (void)browserToolbarGoBack:(_SFBrowserToolbar *)arg1;
 - (void)browserToolbarGoForward:(_SFBrowserToolbar *)arg1;
 - (void)browserToolbarOpenInSafari:(_SFBrowserToolbar *)arg1;

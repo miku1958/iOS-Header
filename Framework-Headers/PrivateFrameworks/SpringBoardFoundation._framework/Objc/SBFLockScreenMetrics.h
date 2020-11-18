@@ -16,6 +16,7 @@
 + (double)dateBaselineOffsetFromTime;
 + (double)dateLabelFontSize;
 + (double)dateViewBaselineY;
++ (double)dateViewSideMargin;
 + (struct UIEdgeInsets)deviceInformationInsets;
 + (double)deviceInformationLabelFontLeading;
 + (double)deviceInformationLabelFontSize;

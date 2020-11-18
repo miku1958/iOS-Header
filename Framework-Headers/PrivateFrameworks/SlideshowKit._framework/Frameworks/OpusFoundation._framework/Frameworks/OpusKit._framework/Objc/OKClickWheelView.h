@@ -6,13 +6,14 @@
 
 #import <OpusFoundation/OFUIView.h>
 
+#import <OpusKit/CAAnimationDelegate-Protocol.h>
 #import <OpusKit/OKAudioPlaylistDelegate-Protocol.h>
 #import <OpusKit/UIGestureRecognizerDelegate-Protocol.h>
 
 @class CAShapeLayer, NSOperationQueue, NSString, OFUIButton, OKAudioPlaylist, OKCircleGestureRecognizer, OKPresentationViewAllGestureRecognizer, UIGestureRecognizer, UIImageView, UILabel;
 @protocol OKClickWheelViewDelegate;
 
-@interface OKClickWheelView : OFUIView <UIGestureRecognizerDelegate, OKAudioPlaylistDelegate>
+@interface OKClickWheelView : OFUIView <UIGestureRecognizerDelegate, OKAudioPlaylistDelegate, CAAnimationDelegate>
 {
     OFUIView *_containerView;
     OFUIButton *_playButton;
@@ -56,8 +57,8 @@
 - (void)activateProgress:(id)arg1;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (id)animationForKeyPath:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3 duration:(double)arg4 timmingFunctionName:(id)arg5 delegate:(id)arg6;
-- (void)audioFinishedPlayingWithURL:(id)arg1;
-- (void)audioStartedPlayingWithURL:(id)arg1;
+- (void)audioFinishedPlayingWithAVAsset:(id)arg1;
+- (void)audioStartedPlayingWithAVAsset:(id)arg1;
 - (void)buttonPressed:(id)arg1;
 - (void)closeButtonPressed:(id)arg1;
 - (void)dealloc;

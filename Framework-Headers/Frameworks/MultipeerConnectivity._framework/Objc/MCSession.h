@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class MCPeerID, NSArray, NSMutableDictionary;
+@class MCPeerID, NSArray, NSMutableDictionary, NSString;
 @protocol MCSessionDelegate, MCSessionPrivateDelegate, OS_dispatch_queue;
 
 @interface MCSession : NSObject
 {
     id<MCSessionDelegate> _delegate;
     id<MCSessionPrivateDelegate> _privateDelegate;
+    BOOL _AWDLDisabled;
     unsigned int _gckPID;
     MCPeerID *_myPeerID;
     NSArray *_securityIdentity;
@@ -24,8 +25,13 @@
     NSMutableDictionary *_peerStates;
     NSMutableDictionary *_connectionPendingPeerEvents;
     NSObject<OS_dispatch_queue> *_callbackQueue;
+    unsigned long long _stateHandle;
+    NSString *_sessionID;
+    unsigned long long _maxPeers;
 }
 
+@property (nonatomic, getter=isAWDLDisabled) BOOL AWDLDisabled;
+@property (nonatomic, getter=isAWDLDisabled) BOOL AWDLDisabled; // @synthesize AWDLDisabled=_AWDLDisabled;
 @property (nonatomic) struct OpaqueAGPSession *agpSession; // @synthesize agpSession=_agpSession;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property (readonly, nonatomic) NSArray *connectedPeers;
@@ -34,12 +40,15 @@
 @property (readonly, nonatomic) long long encryptionPreference; // @synthesize encryptionPreference=_encryptionPreference;
 @property (nonatomic) unsigned int gckPID; // @synthesize gckPID=_gckPID;
 @property (nonatomic) struct OpaqueGCKSession *gckSession; // @synthesize gckSession=_gckSession;
+@property (nonatomic) unsigned long long maxPeers; // @synthesize maxPeers=_maxPeers;
 @property (readonly, nonatomic) MCPeerID *myPeerID; // @synthesize myPeerID=_myPeerID;
 @property (strong, nonatomic) NSMutableDictionary *peerIDMap; // @synthesize peerIDMap=_peerIDMap;
 @property (strong, nonatomic) NSMutableDictionary *peerStates; // @synthesize peerStates=_peerStates;
 @property (nonatomic) id<MCSessionPrivateDelegate> privateDelegate; // @dynamic privateDelegate;
 @property (nonatomic) id<MCSessionPrivateDelegate> privateDelegate;
 @property (readonly, nonatomic) NSArray *securityIdentity; // @synthesize securityIdentity=_securityIdentity;
+@property (strong, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
+@property (nonatomic) unsigned long long stateHandle; // @synthesize stateHandle=_stateHandle;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *syncQueue; // @synthesize syncQueue=_syncQueue;
 
 + (id)stringForMCSessionSendDataMode:(long long)arg1;
@@ -47,7 +56,9 @@
 - (void)cancelConnectPeer:(id)arg1;
 - (void)cancelIncomingStream:(id)arg1 fromPeer:(id)arg2;
 - (void)cancelOutgoingStream:(id)arg1 toPeer:(id)arg2;
+- (void)closeDirectConnectionsWithPeer:(id)arg1;
 - (void)connectPeer:(id)arg1 withNearbyConnectionData:(id)arg2;
+- (long long)connectedInterfacesForPeer:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)disconnect;
@@ -55,10 +66,13 @@
 - (id)initWithPeer:(id)arg1;
 - (id)initWithPeer:(id)arg1 securityIdentity:(id)arg2 encryptionPreference:(long long)arg3;
 - (BOOL)isEncryptionPreferenceCompatible:(long long)arg1;
+- (void)logSessionInfo;
 - (void)nearbyConnectionDataForPeer:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)peerDidDeclineInvitation:(id)arg1;
 - (BOOL)sendData:(id)arg1 toPeers:(id)arg2 withMode:(long long)arg3 error:(id *)arg4;
 - (id)sendResourceAtURL:(id)arg1 withName:(id)arg2 toPeer:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
+- (void)setHeartbeatTimeout:(unsigned long long)arg1;
+- (void)setICETimeoutForced:(BOOL)arg1;
 - (void)startConnectionWithIndirectPID:(unsigned int)arg1;
 - (id)startStreamWithName:(id)arg1 toPeer:(id)arg2 error:(id *)arg3;
 - (id)stringForEncryptionPreference:(long long)arg1;
@@ -68,9 +82,13 @@
 - (void)syncCloseOutgoingStream:(id)arg1 forPeer:(id)arg2 state:(id)arg3 error:(id)arg4 removeObserver:(BOOL)arg5;
 - (void)syncCloseStreamsForPeer:(id)arg1;
 - (void)syncConnectPeer:(id)arg1 withConnectionData:(id)arg2;
+- (unsigned long long)syncConnectedPeersCount;
+- (id)syncDetailedDescription;
 - (void)syncGetConnectionDataForPeerState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)syncHandleNetworkEvent:(CDStruct_68f9d01f *)arg1 pid:(unsigned int)arg2 freeEventWhenDone:(BOOL *)arg3;
 - (void)syncHandleXDataDataPacket:(char *)arg1 packetSize:(int)arg2 forPeer:(id)arg3 state:(id)arg4;
+- (void)syncLogConnectedPeers;
+- (void)syncLogMaxConnectedPeers;
 - (void)syncPeer:(id)arg1 changeStateTo:(long long)arg2 shouldForceCallback:(BOOL)arg3;
 - (void)syncSendData:(id)arg1 toPeers:(id)arg2 withDataMode:(long long)arg3;
 - (void)syncSendXDataConnectionBlobPushToPID:(unsigned int)arg1 connectionBlob:(id)arg2;
@@ -79,6 +97,7 @@
 - (void)syncSendXDataStreamCloseFromSenderToPID:(unsigned int)arg1 streamID:(unsigned int)arg2 closeReason:(unsigned short)arg3;
 - (void)syncSendXDataStreamOpenResponseToPID:(unsigned int)arg1 withRequestID:(unsigned int)arg2 streamID:(unsigned int)arg3;
 - (void)syncStartStreamWithName:(id)arg1 toPeer:(id)arg2 mcFD:(int)arg3 isResource:(BOOL)arg4;
+- (struct os_state_data_s *)syncStateCapture;
 
 @end
 

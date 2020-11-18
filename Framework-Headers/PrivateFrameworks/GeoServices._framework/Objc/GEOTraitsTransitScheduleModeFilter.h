@@ -12,17 +12,13 @@
 
 @interface GEOTraitsTransitScheduleModeFilter : PBCodable <NSCopying>
 {
-    double _additionalTimeLimit;
     unsigned int _numAdditionalDepartures;
     GEOTraitsTransitScheduleTimeRange *_timeRange;
     struct {
-        unsigned int additionalTimeLimit:1;
         unsigned int numAdditionalDepartures:1;
     } _has;
 }
 
-@property (nonatomic) double additionalTimeLimit; // @synthesize additionalTimeLimit=_additionalTimeLimit;
-@property (nonatomic) BOOL hasAdditionalTimeLimit;
 @property (nonatomic) BOOL hasNumAdditionalDepartures;
 @property (readonly, nonatomic) BOOL hasTimeRange;
 @property (nonatomic) unsigned int numAdditionalDepartures; // @synthesize numAdditionalDepartures=_numAdditionalDepartures;

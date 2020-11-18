@@ -14,18 +14,21 @@
 
 @property (strong, nonatomic) NSString *address; // @dynamic address;
 @property (strong, nonatomic) NSNumber *answered; // @dynamic answered;
+@property (strong, nonatomic) NSNumber *call_category; // @dynamic call_category;
 @property (strong, nonatomic) NSNumber *calltype; // @dynamic calltype;
 @property (strong, nonatomic) NSDate *date; // @dynamic date;
 @property (strong, nonatomic) NSString *device_id; // @dynamic device_id;
 @property (strong, nonatomic) NSNumber *disconnected_cause; // @dynamic disconnected_cause;
 @property (strong, nonatomic) NSNumber *duration; // @dynamic duration;
 @property (strong, nonatomic) NSNumber *face_time_data; // @dynamic face_time_data;
+@property (strong, nonatomic) NSNumber *handle_type; // @dynamic handle_type;
 @property (strong, nonatomic) NSString *iso_country_code; // @dynamic iso_country_code;
 @property (strong, nonatomic) NSString *location; // @dynamic location;
 @property (strong, nonatomic) NSString *name; // @dynamic name;
 @property (strong, nonatomic) NSNumber *number_availability; // @dynamic number_availability;
 @property (strong, nonatomic) NSNumber *originated; // @dynamic originated;
 @property (strong, nonatomic) NSNumber *read; // @dynamic read;
+@property (strong, nonatomic) NSString *service_provider; // @dynamic service_provider;
 @property (strong, nonatomic) NSString *unique_id; // @dynamic unique_id;
 
 @end

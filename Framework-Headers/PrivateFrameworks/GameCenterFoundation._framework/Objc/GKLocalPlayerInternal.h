@@ -35,6 +35,7 @@
 - (BOOL)isPhotoPending;
 - (BOOL)isPurpleBuddyAccount;
 - (BOOL)isUnderage;
+- (id)minimalInternal;
 - (unsigned short)numberOfChallenges;
 - (unsigned short)numberOfRequests;
 - (unsigned short)numberOfTurns;

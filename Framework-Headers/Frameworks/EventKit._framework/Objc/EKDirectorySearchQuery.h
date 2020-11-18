@@ -25,6 +25,7 @@
 @property (nonatomic) unsigned long long resultLimit; // @synthesize resultLimit=_resultLimit;
 @property (strong, nonatomic) NSSet *terms; // @synthesize terms=_terms;
 
+- (void).cxx_destruct;
 
 @end
 

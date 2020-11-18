@@ -6,12 +6,9 @@
 
 #import <Celestial/FigCaptureRecordingSettings.h>
 
-#import <Celestial/NSCoding-Protocol.h>
-#import <Celestial/NSCopying-Protocol.h>
-
 @class NSArray, NSDictionary;
 
-@interface FigCaptureAudioFileRecordingSettings : FigCaptureRecordingSettings <NSCoding, NSCopying>
+@interface FigCaptureAudioFileRecordingSettings : FigCaptureRecordingSettings
 {
     NSDictionary *_audioSettings;
     NSArray *_metadata;
@@ -20,6 +17,7 @@
 @property (copy, nonatomic) NSDictionary *audioSettings; // @synthesize audioSettings=_audioSettings;
 @property (copy, nonatomic) NSArray *metadata; // @synthesize metadata=_metadata;
 
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

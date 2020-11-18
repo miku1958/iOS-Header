@@ -28,6 +28,7 @@
 @property (strong, nonatomic) NSString *problemId; // @synthesize problemId=_problemId;
 @property (nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
 
+- (int)StringAsStatusCode:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -37,6 +38,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)statusCodeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

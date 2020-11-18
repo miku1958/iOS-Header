@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)initTempFileWithDirectory:(id)arg1;
 - (id)initWithExistingFile:(id)arg1 expectedSize:(long long)arg2;
 - (id)initWithExistingUnopenableFile:(id)arg1 fileProvider:(id)arg2;
+- (id)initWithFullPath:(id)arg1;
 - (id)ioChannel;
 - (void)truncate;
 - (void)writeBytes:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;

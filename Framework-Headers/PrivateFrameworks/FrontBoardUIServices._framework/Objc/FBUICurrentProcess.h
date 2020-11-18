@@ -10,12 +10,8 @@
 {
 }
 
-- (id)bundleIdentifier;
-- (BOOL)isApplicationProcess;
-- (BOOL)isExtensionProcess;
 - (BOOL)isRunning;
 - (BOOL)isSystemApplicationProcess;
-- (int)pid;
 
 @end
 

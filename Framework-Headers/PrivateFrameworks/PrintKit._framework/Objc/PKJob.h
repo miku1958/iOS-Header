@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSData, NSDate, NSString, PKPrintSettings;
+@class NSData, NSDate, NSString, NSURL, PKPrintSettings;
 
 @interface PKJob : NSObject
 {
@@ -24,8 +24,13 @@
     NSDate *timeAtCreation;
     NSDate *timeAtProcessing;
     NSData *thumbnailImage;
+    NSURL *_printerURI;
+    NSString *_PIN;
 }
 
+@property (strong, nonatomic) NSString *PIN; // @synthesize PIN=_PIN;
+@property (readonly, nonatomic) NSString *localizedJobOptions;
+@property (readonly, nonatomic) NSString *localizedStatusString;
 @property (nonatomic) long long mediaProgress; // @synthesize mediaProgress;
 @property (nonatomic) long long mediaSheets; // @synthesize mediaSheets;
 @property (nonatomic) long long mediaSheetsCompleted; // @synthesize mediaSheetsCompleted;
@@ -33,6 +38,7 @@
 @property (strong, nonatomic) NSString *printerDisplayName; // @synthesize printerDisplayName;
 @property (nonatomic) long long printerKind; // @synthesize printerKind;
 @property (strong, nonatomic) NSString *printerLocation; // @synthesize printerLocation;
+@property (strong, nonatomic) NSURL *printerURI; // @synthesize printerURI=_printerURI;
 @property (nonatomic) long long remoteJobId; // @synthesize remoteJobId;
 @property (strong, nonatomic) PKPrintSettings *settings; // @synthesize settings;
 @property (nonatomic) long long state; // @synthesize state;

@@ -11,12 +11,12 @@
 @interface IMSPIMessage : NSObject
 {
     NSString *_guid;
-    NSArray *_chatGUIDs;
+    NSArray *_chatGuids;
     NSString *_text;
     NSAttributedString *_attributedText;
     NSString *_subject;
+    NSString *_effect;
     NSArray *_recipients;
-    NSURL *_url;
     NSDate *_date;
     NSDate *_dateRead;
     NSDate *_lastReadDate;
@@ -25,17 +25,16 @@
     BOOL _isOutgoing;
     BOOL _isRead;
     BOOL _isAudioMessage;
-    NSArray *_chatGuids;
     NSString *_groupID;
     NSString *_displayName;
 }
 
 @property (strong) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
-@property (strong) NSArray *chatGUIDs; // @synthesize chatGUIDs=_chatGUIDs;
-@property (readonly, strong) NSArray *chatGuids; // @synthesize chatGuids=_chatGuids;
+@property (strong) NSArray *chatGuids; // @synthesize chatGuids=_chatGuids;
 @property (strong) NSDate *date; // @synthesize date=_date;
 @property (strong) NSDate *dateRead; // @synthesize dateRead=_dateRead;
 @property (strong) NSString *displayName; // @synthesize displayName=_displayName;
+@property (strong) NSString *effect; // @synthesize effect=_effect;
 @property (strong) NSString *groupID; // @synthesize groupID=_groupID;
 @property (strong) NSString *guid; // @synthesize guid=_guid;
 @property BOOL isAudioMessage; // @synthesize isAudioMessage=_isAudioMessage;
@@ -47,8 +46,9 @@
 @property (strong) IMSPIHandle *sender; // @synthesize sender=_sender;
 @property (strong) NSString *subject; // @synthesize subject=_subject;
 @property (strong) NSString *text; // @synthesize text=_text;
-@property (strong) NSURL *url; // @synthesize url=_url;
+@property (readonly) NSURL *url;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 

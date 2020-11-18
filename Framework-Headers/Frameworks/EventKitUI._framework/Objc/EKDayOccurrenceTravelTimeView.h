@@ -6,15 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, UIColor, UIImageView, UILabel;
+@class NSArray, NSLayoutConstraint, NSString, UIColor, UIImageView, UILabel;
 @protocol EKDayOccurrenceTravelTimeViewMetricsDelegate;
 
 @interface EKDayOccurrenceTravelTimeView : UIView
 {
-    UIImageView *_travelTimeIcon;
-    UILabel *_travelTimeLabel;
-    UIView *_horizontalLineView;
     BOOL _selected;
+    BOOL _animatingAlpha;
     int _occurrenceBackgroundStyle;
     id<EKDayOccurrenceTravelTimeViewMetricsDelegate> _delegate;
     NSString *_location;
@@ -23,17 +21,34 @@
     long long _routingMode;
     double _travelTime;
     double _hairlineYPosition;
+    UIImageView *_travelTimeIcon;
+    UILabel *_travelTimeLabel;
+    UIView *_horizontalLineView;
+    NSLayoutConstraint *_iconWidth;
+    NSLayoutConstraint *_iconHeight;
+    NSLayoutConstraint *_leadingHorizontalPad;
+    NSLayoutConstraint *_trailingHorizontalPad;
+    NSArray *_constraints;
 }
 
+@property BOOL animatingAlpha; // @synthesize animatingAlpha=_animatingAlpha;
+@property (strong) NSArray *constraints; // @synthesize constraints=_constraints;
 @property (weak, nonatomic) id<EKDayOccurrenceTravelTimeViewMetricsDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UIColor *elementColor; // @synthesize elementColor=_elementColor;
 @property (nonatomic) double hairlineYPosition; // @synthesize hairlineYPosition=_hairlineYPosition;
+@property (strong) UIView *horizontalLineView; // @synthesize horizontalLineView=_horizontalLineView;
+@property (strong) NSLayoutConstraint *iconHeight; // @synthesize iconHeight=_iconHeight;
+@property (strong) NSLayoutConstraint *iconWidth; // @synthesize iconWidth=_iconWidth;
+@property (strong) NSLayoutConstraint *leadingHorizontalPad; // @synthesize leadingHorizontalPad=_leadingHorizontalPad;
 @property (strong, nonatomic) UIColor *lineColor; // @synthesize lineColor=_lineColor;
 @property (copy, nonatomic) NSString *location; // @synthesize location=_location;
 @property (nonatomic) int occurrenceBackgroundStyle; // @synthesize occurrenceBackgroundStyle=_occurrenceBackgroundStyle;
 @property (nonatomic) long long routingMode; // @synthesize routingMode=_routingMode;
 @property (nonatomic) BOOL selected; // @synthesize selected=_selected;
+@property (strong) NSLayoutConstraint *trailingHorizontalPad; // @synthesize trailingHorizontalPad=_trailingHorizontalPad;
 @property (nonatomic) double travelTime; // @synthesize travelTime=_travelTime;
+@property (strong) UIImageView *travelTimeIcon; // @synthesize travelTimeIcon=_travelTimeIcon;
+@property (strong) UILabel *travelTimeLabel; // @synthesize travelTimeLabel=_travelTimeLabel;
 
 - (void).cxx_destruct;
 - (double)_iconScale;
@@ -41,7 +56,8 @@
 - (void)_setupStringContent;
 - (id)_textFont;
 - (id)_travelTimeIconForTravelModeWithColor:(id)arg1;
-- (void)_updateColors;
+- (void)_updateStringsColorsAndConstraintConstants;
+- (double)alphaForElements;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithReusableTravelTimeView:(id)arg1;
 - (void)layoutSubviews;

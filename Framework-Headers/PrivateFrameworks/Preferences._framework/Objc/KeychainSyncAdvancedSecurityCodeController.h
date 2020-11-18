@@ -8,13 +8,12 @@
 
 #import <Preferences/UIAlertViewDelegate-Protocol.h>
 
-@class NSString, UIAlertView, UIFont;
+@class NSString, UIFont;
 
 @interface KeychainSyncAdvancedSecurityCodeController : PSKeychainSyncViewController <UIAlertViewDelegate>
 {
     double _cellTextWidth;
     UIFont *_cellFont;
-    UIAlertView *_disableRecoveryConfirmationAlert;
     BOOL _showsDisableRecoveryOption;
 }
 
@@ -26,7 +25,6 @@
 
 - (void).cxx_destruct;
 - (void)_finishedWithSpecifier:(id)arg1;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (void)nextPressed;
 - (id)specifiers;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

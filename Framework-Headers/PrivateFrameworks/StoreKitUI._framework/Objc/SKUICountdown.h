@@ -6,7 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString, NSURL, SKUIArtworkList, UIColor;
+@class NSDate, NSString, NSURL, UIColor;
+@protocol SKUIArtworkProviding;
 
 @interface SKUICountdown : NSObject
 {
@@ -24,14 +25,14 @@
     UIColor *_fontColor;
     UIColor *_flapTopColor;
     UIColor *_flapBottomColor;
-    SKUIArtworkList *_artworkList;
-    SKUIArtworkList *_endArtworkList;
+    id<SKUIArtworkProviding> _artworkProvider;
+    id<SKUIArtworkProviding> _endArtworkProvider;
 }
 
 @property (copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
-@property (strong, nonatomic) SKUIArtworkList *artworkList; // @synthesize artworkList=_artworkList;
+@property (strong, nonatomic) id<SKUIArtworkProviding> artworkProvider; // @synthesize artworkProvider=_artworkProvider;
 @property (nonatomic) unsigned long long dateFormat; // @synthesize dateFormat=_dateFormat;
-@property (strong, nonatomic) SKUIArtworkList *endArtworkList; // @synthesize endArtworkList=_endArtworkList;
+@property (strong, nonatomic) id<SKUIArtworkProviding> endArtworkProvider; // @synthesize endArtworkProvider=_endArtworkProvider;
 @property (copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property (nonatomic) long long finalValue; // @synthesize finalValue=_finalValue;
 @property (copy, nonatomic) UIColor *flapBottomColor; // @synthesize flapBottomColor=_flapBottomColor;

@@ -14,7 +14,8 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) long long databaseScope; // @synthesize databaseScope=_databaseScope;
 
-- (unsigned long long)activityStart;
+- (id)CKStatusReportProperties;
+- (id)activityCreate;
 - (void)configureRequest:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (id)newChildOperationInfoOfClass:(Class)arg1;

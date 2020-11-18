@@ -28,6 +28,7 @@
 - (void)dealloc;
 - (id)exportedClassNames;
 - (unsigned long long)family;
+- (id)guidelinesFromLegacyData:(id)arg1 withMediaURLs:(id)arg2 andMediaLookupDelegate:(id)arg3;
 - (BOOL)hasExportedClass:(Class)arg1;
 - (BOOL)hasLoadedClass:(Class)arg1;
 - (id)init;

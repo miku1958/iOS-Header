@@ -7,6 +7,7 @@
 #import <UIKit/UIView.h>
 
 @class UIActivityIndicatorView, UIImageView, UILabel;
+@protocol HLPHelpLoadingViewDelegate;
 
 @interface HLPHelpLoadingView : UIView
 {
@@ -14,9 +15,11 @@
     UILabel *_errorTitleLabel;
     UILabel *_errorMessageLabel;
     UIActivityIndicatorView *_activityIndicatorView;
+    id<HLPHelpLoadingViewDelegate> _delegate;
 }
 
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorView; // @synthesize activityIndicatorView=_activityIndicatorView;
+@property (weak, nonatomic) id<HLPHelpLoadingViewDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
 - (id)init;
@@ -24,6 +27,7 @@
 - (void)showActivityIndicator:(BOOL)arg1;
 - (void)showDefaultErrorMessage;
 - (void)showErrorWithTitle:(id)arg1 message:(id)arg2;
+- (void)showHelpBookInfo;
 - (void)showNoConnectionErrorMessage;
 
 @end

@@ -13,6 +13,7 @@
     long long _activityType;
     long long _locationType;
     long long _goalType;
+    long long _userMode;
     HKQuantity *_goal;
     BOOL _isOpenGoal;
     BOOL _skipActivitySetup;
@@ -20,7 +21,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_initWithType:(long long)arg1 location:(long long)arg2 goal:(id)arg3 goalType:(long long)arg4 isOpenGoal:(BOOL)arg5 skipActivitySetup:(BOOL)arg6;
+- (id)_initWithType:(long long)arg1 location:(long long)arg2 goal:(id)arg3 goalType:(long long)arg4 userMode:(long long)arg5 isOpenGoal:(BOOL)arg6 skipActivitySetup:(BOOL)arg7;
 - (long long)activityType;
 - (id)createResponse;
 - (void)encodeWithCoder:(id)arg1;
@@ -29,6 +30,7 @@
 - (BOOL)isOpenGoal;
 - (long long)locationType;
 - (BOOL)skipActivitySetup;
+- (long long)userMode;
 - (id)workoutGoal;
 
 @end

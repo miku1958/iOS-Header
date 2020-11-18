@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)backgroundColorWithTintColor:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)foregroundColor;
 - (Class)foregroundStyleClass;
 - (id)initWithRequest:(id)arg1;

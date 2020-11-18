@@ -13,9 +13,11 @@
 - (BOOL)_accessibilityCanBecomeNativeFocused;
 - (id)_accessibilityElementsWithSemanticContext:(id)arg1;
 - (id)_accessibilityExplorerElements;
+- (id)_accessibilityExtendedLabelForFocusParcelWithLabel:(id)arg1;
 - (unsigned long long)_accessibilityFocusParcelChildrenCount:(unsigned long long)arg1;
 - (id)_accessibilityFrameDelegate;
 - (BOOL)_accessibilityHandleMagicTap;
+- (BOOL)_accessibilityHandleMagicTapForPronunciation;
 - (BOOL)_accessibilityHasActionBlockForKey:(unsigned int)arg1;
 - (BOOL)_accessibilityHasNativeFocus;
 - (BOOL)_accessibilityIgnoreDelegate;
@@ -35,19 +37,23 @@
 - (void)_accessibilitySetIgnoreDelegate:(BOOL)arg1;
 - (BOOL)_accessibilitySetNativeFocus;
 - (BOOL)_accessibilityShouldIgnoreSoundForFailedMoveAttempt;
+- (BOOL)_accessibilityShouldSpeakExplorerElementsAfterFocus;
 - (id)_accessibilitySiriContentElementsWithSemanticContext;
 - (id)_accessibilitySiriContentNativeFocusableElements;
 - (BOOL)_accessibilitySpeakThisCanBeHighlighted;
 - (id)_accessibilitySpeakThisElementsAndStrings;
 - (unsigned long long)_accessibilitySpeakThisMaximumNumberOfElements;
+- (id)_accessibilitySpeakThisPreferredHighlightColor;
+- (id)_accessibilitySpeakThisPreferredUnderlineColor;
 - (BOOL)_accessibilitySpeakThisShouldOnlyIncludeVisibleElements;
 - (BOOL)_accessibilitySpeakThisShouldScrollTextRects;
 - (id)_accessibilitySubviews;
 - (id)_accessibilitySupplementaryHeaderViewAtIndexPath:(id)arg1;
-- (id)_accessibilityTextForSubhierarchyIncludingHeaders:(BOOL)arg1 focusableItems:(BOOL)arg2;
+- (id)_accessibilityTextForSubhierarchyIncludingHeaders:(BOOL)arg1 focusableItems:(BOOL)arg2 exclusions:(id)arg3;
 - (id)_accessibilityTextRectsForRange:(id)arg1 singleTextRect:(struct CGRect *)arg2;
 - (id)_accessibilityTextRectsForSpeakThisStringRange:(struct _NSRange)arg1;
+- (BOOL)_accessibilityViewHierarchyHasNativeFocus;
 - (BOOL)_isAccessibilityExplorerElement;
-- (BOOL)accessibilityPerformAction:(int)arg1 withValue:(id)arg2;
+- (BOOL)accessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 @end
 

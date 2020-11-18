@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSMutableArray *transactionPassIDs; // @synthesize transactionPassIDs=_transactionPassIDs;
 @property (strong, nonatomic) NSMutableArray *transactionsBytes; // @synthesize transactionsBytes=_transactionsBytes;
 
++ (Class)transactionPassIDsType;
++ (Class)transactionsBytesType;
 - (void).cxx_destruct;
 - (void)addTransactionPassIDs:(id)arg1;
 - (void)addTransactionsBytes:(id)arg1;

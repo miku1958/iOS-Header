@@ -4,31 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ContactsFoundation/CNObservable.h>
+#import <ContactsFoundation/CNPublishingSubject.h>
 
-#import <ContactsFoundation/CNObserver-Protocol.h>
-
-@class NSMutableArray, NSString;
-
-@interface CNManualObservable : CNObservable <CNObserver>
+@interface CNManualObservable : CNPublishingSubject
 {
-    NSMutableArray *_observers;
 }
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
-- (void)_addObserver:(id)arg1;
-- (id)_allObservers;
-- (void)_removeObserver:(id)arg1;
-- (void)dealloc;
-- (id)init;
-- (void)observerDidComplete;
-- (void)observerDidFailWithError:(id)arg1;
-- (void)observerDidReceiveResult:(id)arg1;
-- (id)subscribe:(id)arg1;
 
 @end
 

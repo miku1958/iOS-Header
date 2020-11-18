@@ -11,7 +11,7 @@
 }
 
 + (BOOL)canOpenApplication:(id)arg1;
-+ (struct SBSProcessAssertion *)createProcessAssertionForPid:(int)arg1;
++ (id)createProcessAssertionForPid:(int)arg1;
 + (void)launchClientWithBundleIdentifier:(id)arg1 restorationIdentifier:(id)arg2 options:(id)arg3 handler:(CDUnknownBlockType)arg4;
 
 @end

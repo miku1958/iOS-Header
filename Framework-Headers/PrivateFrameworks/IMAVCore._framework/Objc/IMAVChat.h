@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <IMAVCore/IMSystemMonitorListener-Protocol.h>
 
@@ -62,12 +62,10 @@
     BOOL _needsAudioRestart;
     BOOL _isVideoInterrupted;
     BOOL _isAudioInterrupted;
-    BOOL _startedAudioSession;
     BOOL _connectionStarted;
-    BOOL _wantsHoldMusic;
-    BOOL _hasAudioInterruption;
     BOOL _relayed;
     BOOL _isCallUpgrade;
+    BOOL _mayRequireBreakBeforeMake;
     BOOL _terminating;
     BOOL _didRemoteMute;
     BOOL _didRemotePause;
@@ -78,12 +76,11 @@
     NSDate *_inviteTimeoutTimerStart;
     NSTimer *_firstFrameTimeoutTimer;
     NSTimer *_connectionTimeoutTimer;
-    NSTimer *_breakBeforeMakeTimeoutTimer;
     struct CGSize _portraitAspectRatios;
     struct CGSize _landscapeAspectRatios;
 }
 
-@property (strong, nonatomic) NSString *GUID; // @synthesize GUID=_GUID;
+@property (strong, nonatomic, setter=_setGUID:) NSString *GUID; // @synthesize GUID=_GUID;
 @property (readonly, nonatomic) BOOL _allParticipantsUsingICE;
 @property (strong, nonatomic, setter=_setBackCameraCaptureTime:) NSNumber *_backCameraCaptureTime; // @synthesize _backCameraCaptureTime;
 @property (readonly, nonatomic) long long _bustedCallID;
@@ -114,16 +111,14 @@
 @property (strong, nonatomic, setter=_setRelayRemotePrimaryIdentifier:) NSData *_relayRemotePrimaryIdentifier; // @synthesize _relayRemotePrimaryIdentifier;
 @property (readonly, nonatomic) NSNumber *_remoteNatType;
 @property (nonatomic, setter=_setRemoteNetworkConnectionType:) unsigned long long _remoteNetworkConnectionType; // @synthesize _remoteNetworkConnectionType;
-@property (nonatomic, setter=_setStartedAudioSession:) BOOL _startedAudioSession; // @synthesize _startedAudioSession;
 @property (readonly, nonatomic) BOOL _usesRelay;
 @property (readonly, strong, nonatomic) IMAccount *account;
 @property (nonatomic, setter=_setAirplaneModeEnabled:) BOOL airplaneModeEnabled; // @synthesize airplaneModeEnabled=_airplaneModeEnabled;
-@property (strong, nonatomic, setter=_setBreakBeforeMakeTimeoutTimer:) NSTimer *breakBeforeMakeTimeoutTimer; // @synthesize breakBeforeMakeTimeoutTimer=_breakBeforeMakeTimeoutTimer;
 @property (nonatomic, getter=isCallUpgrade, setter=_setCallUpgrade:) BOOL callUpgrade; // @synthesize callUpgrade=_callUpgrade;
 @property (strong, nonatomic, setter=_setCallerProperties:) NSDictionary *callerProperties; // @synthesize callerProperties=_callerProperties;
 @property (nonatomic) unsigned int cameraOrientation;
 @property (nonatomic) unsigned int cameraType;
-@property (strong, nonatomic) NSString *conferenceID; // @synthesize conferenceID=_conferenceID;
+@property (strong, nonatomic, setter=_setConferenceID:) NSString *conferenceID; // @synthesize conferenceID=_conferenceID;
 @property (nonatomic) double connectionTimeoutTime;
 @property (strong, nonatomic, setter=_setConnectionTimeoutTimer:) NSTimer *connectionTimeoutTimer; // @synthesize connectionTimeoutTimer=_connectionTimeoutTimer;
 @property (strong, nonatomic, setter=setDataDownloaded:) NSNumber *dataDownloaded; // @synthesize dataDownloaded=_dataDownloaded;
@@ -139,7 +134,6 @@
 @property (readonly, nonatomic) int endedError;
 @property (readonly, nonatomic) unsigned int endedReason;
 @property (strong, nonatomic, setter=_setFirstFrameTimeoutTimer:) NSTimer *firstFrameTimeoutTimer; // @synthesize firstFrameTimeoutTimer=_firstFrameTimeoutTimer;
-@property (nonatomic) BOOL hasAudioInterruption; // @synthesize hasAudioInterruption=_hasAudioInterruption;
 @property (readonly, nonatomic) BOOL hasReceivedFirstFrame;
 @property (readonly, strong, nonatomic) IMHandle *initiatorIMHandle; // @synthesize initiatorIMHandle=_initiator;
 @property (readonly, strong, nonatomic) IMAVChatParticipant *initiatorParticipant; // @dynamic initiatorParticipant;
@@ -160,6 +154,7 @@
 @property (readonly, strong, nonatomic) IMAVChatParticipant *localParticipant; // @synthesize localParticipant=_localParticipant;
 @property (nonatomic) void *localVideoBackLayer;
 @property (nonatomic) void *localVideoLayer;
+@property (nonatomic) BOOL mayRequireBreakBeforeMake; // @synthesize mayRequireBreakBeforeMake=_mayRequireBreakBeforeMake;
 @property (nonatomic, setter=_setMetadataFinalized:) BOOL metadataFinalized; // @synthesize metadataFinalized=_metadataFinalized;
 @property (readonly, strong, nonatomic) IMHandle *otherIMHandle;
 @property (readonly, strong, nonatomic) NSArray *participants; // @synthesize participants=_participants;
@@ -169,7 +164,6 @@
 @property (readonly, nonatomic) unsigned int sessionID; // @synthesize sessionID=_sessionID;
 @property (readonly, nonatomic) unsigned int state; // @synthesize state=_localState;
 @property (nonatomic, getter=isTerminating, setter=_setTerminating:) BOOL terminating; // @synthesize terminating=_terminating;
-@property (nonatomic, setter=_setWantsHoldMusic:) BOOL wantsHoldMusic; // @synthesize wantsHoldMusic=_wantsHoldMusic;
 
 + (id)_acceptedChats;
 + (id)_activeChat;
@@ -214,12 +208,9 @@
 - (void)__sendEndCallMetricToViceroyWithReason:(unsigned int)arg1 andError:(int)arg2;
 - (void)_airplaneModeChanged:(id)arg1;
 - (void)_applicationWillTerminate:(id)arg1;
-- (void)_breakBeforeMakeTimer:(id)arg1;
-- (void)_breakCallsIfNecessary:(BOOL)arg1;
 - (void)_cacheBool:(BOOL)arg1 forKey:(id)arg2;
 - (BOOL)_cachedBoolForKey:(id)arg1;
 - (void)_cancelInvitationWithReason:(unsigned int)arg1 error:(int)arg2;
-- (void)_clearBreakBeforeMakeTimer;
 - (void)_clearCache;
 - (void)_clearConnectionTimeoutTimer;
 - (void)_clearFirstFrameTimeoutTimer;
@@ -262,14 +253,10 @@
 - (void)_saveAudioRestartState;
 - (void)_saveVideoRestartState;
 - (void)_setActiveConference;
-- (void)_setBreakBeforeMakeTimer;
-- (void)_setConferenceID:(id)arg1;
 - (void)_setConnectionTimeoutTimer;
 - (void)_setCreationDate;
 - (void)_setDateConnected;
 - (void)_setFirstFrameTimeoutTimer;
-- (void)_setGUID:(id)arg1;
-- (void)_setHasAudioInterruption:(BOOL)arg1;
 - (void)_setInvitationTimeoutTimer;
 - (void)_setStateDisconnected;
 - (void)_submitCallConnectedLogging;
@@ -281,8 +268,6 @@
 - (void)_updateIMHandleInBuddyList:(id)arg1;
 - (void)_vccInitDidFinish:(id)arg1;
 - (void)acceptInvitation;
-- (void)acceptInvitationWithHoldMusic;
-- (void)acceptInvitationWithSource:(id)arg1;
 - (void)beginChat;
 - (void)cancelInvitation;
 - (void)conferenceAVConferenceCallID:(long long)arg1 didConnect:(BOOL)arg2;
@@ -311,6 +296,7 @@
 - (id)initOutgoingTo:(id)arg1 isVideo:(BOOL)arg2 isRelayed:(BOOL)arg3 GUID:(id)arg4;
 - (void)invite:(id)arg1;
 - (void)invite:(id)arg1 additionalPeers:(id)arg2;
+- (void)invite:(id)arg1 additionalPeers:(id)arg2 excludingPushTokens:(id)arg3;
 - (void)inviteAll;
 - (id)inviteesInfo;
 - (BOOL)isConferenceSilent;
@@ -321,7 +307,6 @@
 - (id)participantMatchingIMHandle:(id)arg1;
 - (id)participantWithAVConferenceCallID:(long long)arg1;
 - (id)participantWithID:(id)arg1;
-- (void)resetWantsHoldMusic;
 - (void)setLocalAspectRatio:(struct CGSize)arg1 cameraOrientation:(unsigned int)arg2 cameraType:(unsigned int)arg3;
 - (void)setMetadataFinalized;
 - (void)setRemoteVideoPresentationSize:(struct CGSize)arg1;

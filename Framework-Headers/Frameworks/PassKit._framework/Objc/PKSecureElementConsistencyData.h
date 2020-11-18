@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSDictionary;
+@class NSArray, NSDictionary;
 
 @interface PKSecureElementConsistencyData : NSObject
 {
@@ -14,19 +14,18 @@
     NSDictionary *_secureElementAppletStateByAID;
     NSDictionary *_passStateByAID;
     NSDictionary *_cleanupActionsByAID;
-    NSDictionary *_secureElementCardStateByAID;
+    NSArray *_registeredRegions;
 }
 
 @property (nonatomic) unsigned long long backoffLevel; // @synthesize backoffLevel=_backoffLevel;
-@property (strong, nonatomic) NSDictionary *cleanupActionsByAID; // @synthesize cleanupActionsByAID=_cleanupActionsByAID;
-@property (readonly, nonatomic) NSDictionary *dictionary;
-@property (strong, nonatomic) NSDictionary *passStateByAID; // @synthesize passStateByAID=_passStateByAID;
-@property (strong, nonatomic) NSDictionary *secureElementAppletStateByAID; // @synthesize secureElementAppletStateByAID=_secureElementAppletStateByAID;
-@property (strong, nonatomic) NSDictionary *secureElementCardStateByAID; // @synthesize secureElementCardStateByAID=_secureElementCardStateByAID;
+@property (copy, nonatomic) NSDictionary *cleanupActionsByAID; // @synthesize cleanupActionsByAID=_cleanupActionsByAID;
+@property (copy, nonatomic) NSDictionary *passStateByAID; // @synthesize passStateByAID=_passStateByAID;
+@property (copy, nonatomic) NSArray *registeredRegions; // @synthesize registeredRegions=_registeredRegions;
+@property (copy, nonatomic) NSDictionary *secureElementAppletStateByAID; // @synthesize secureElementAppletStateByAID=_secureElementAppletStateByAID;
 
-+ (id)consistencyDataWithPaymentApplications:(id)arg1 secureElementApplets:(id)arg2 cleanupActions:(id)arg3;
-+ (id)consistencyDataWithPaymentApplications:(id)arg1 secureElementCards:(id)arg2 cleanupActions:(id)arg3;
-- (void)dealloc;
++ (id)consistencyDataWithPaymentApplications:(id)arg1 secureElementApplets:(id)arg2 cleanupActions:(id)arg3 registeredRegions:(id)arg4;
+- (void).cxx_destruct;
+- (id)dictionaryRepresentation;
 
 @end
 

@@ -15,23 +15,25 @@
     NSNumber *_maxCards;
     NSString *_primaryRegion;
     NSDictionary *_regions;
+    NSString *_environmentName;
     NSURL *_brokerURL;
     NSURL *_trustedServiceManagerURL;
     NSURL *_paymentServicesURL;
     NSArray *_certificates;
 }
 
-@property (strong, nonatomic) NSURL *brokerURL; // @synthesize brokerURL=_brokerURL;
-@property (strong, nonatomic) NSNumber *cardsOnFile; // @synthesize cardsOnFile=_cardsOnFile;
-@property (strong, nonatomic) NSArray *certificates; // @synthesize certificates=_certificates;
-@property (strong, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
-@property (strong, nonatomic) NSNumber *maxCards; // @synthesize maxCards=_maxCards;
-@property (strong, nonatomic) NSURL *paymentServicesURL; // @synthesize paymentServicesURL=_paymentServicesURL;
-@property (readonly, nonatomic) NSString *primaryRegion; // @synthesize primaryRegion=_primaryRegion;
-@property (strong, nonatomic) NSDictionary *regions; // @synthesize regions=_regions;
-@property (strong, nonatomic) NSURL *trustedServiceManagerURL; // @synthesize trustedServiceManagerURL=_trustedServiceManagerURL;
+@property (copy, nonatomic) NSURL *brokerURL; // @synthesize brokerURL=_brokerURL;
+@property (copy, nonatomic) NSNumber *cardsOnFile; // @synthesize cardsOnFile=_cardsOnFile;
+@property (copy, nonatomic) NSArray *certificates; // @synthesize certificates=_certificates;
+@property (copy, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
+@property (copy, nonatomic) NSString *environmentName; // @synthesize environmentName=_environmentName;
+@property (copy, nonatomic) NSNumber *maxCards; // @synthesize maxCards=_maxCards;
+@property (copy, nonatomic) NSURL *paymentServicesURL; // @synthesize paymentServicesURL=_paymentServicesURL;
+@property (readonly, copy, nonatomic) NSString *primaryRegion; // @synthesize primaryRegion=_primaryRegion;
+@property (copy, nonatomic) NSDictionary *regions; // @synthesize regions=_regions;
+@property (copy, nonatomic) NSURL *trustedServiceManagerURL; // @synthesize trustedServiceManagerURL=_trustedServiceManagerURL;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithData:(id)arg1;
 
 @end

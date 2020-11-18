@@ -17,6 +17,7 @@
 @property (nonatomic) long long checked;
 @property (copy, nonatomic) NSArray *childNodeIds;
 @property (copy, nonatomic) NSArray *controlledNodeIds;
+@property (nonatomic) long long current;
 @property (nonatomic) BOOL disabled;
 @property (nonatomic) BOOL exists;
 @property (nonatomic) BOOL expanded;

@@ -4,23 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SAObjects/SABaseClientBoundCommand.h>
+#import <SAObjects/SADomainCommand.h>
 
-@class NSArray, NSString, NSURL;
+@class NSArray;
 
-@interface SAStockAdd : SABaseClientBoundCommand
+@interface SAStockAdd : SADomainCommand
 {
-    NSURL *_targetAppId;
-    NSString *_companyName;
-    NSArray *_stockReferences;
-    NSString *_tickerSymbol;
 }
 
-@property (copy, nonatomic) NSString *companyName; // @synthesize companyName=_companyName;
-@property (copy, nonatomic) NSArray *stockReferences; // @synthesize stockReferences=_stockReferences;
 @property (copy, nonatomic) NSArray *stocks;
-@property (copy, nonatomic) NSURL *targetAppId; // @synthesize targetAppId=_targetAppId;
-@property (copy, nonatomic) NSString *tickerSymbol; // @synthesize tickerSymbol=_tickerSymbol;
 
 + (id)add;
 + (id)addWithDictionary:(id)arg1 context:(id)arg2;

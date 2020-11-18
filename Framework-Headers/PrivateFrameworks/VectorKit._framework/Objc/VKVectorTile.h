@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     double _contentScale;
     float _maximumStyleZ;
     float _textureScale;
-    shared_ptr_f06afc6c _styleManager;
+    shared_ptr_a3c46825 _styleManager;
     VKSharedResources *_sharedResources;
     VKMapTileList *_fragments;
 }
@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) float maximumStyleZ; // @synthesize maximumStyleZ=_maximumStyleZ;
 @property (strong, nonatomic) GEOVectorTile *modelTile; // @synthesize modelTile=_modelTile;
 @property (strong, nonatomic) VKSharedResources *sharedResources; // @synthesize sharedResources=_sharedResources;
-@property (nonatomic) shared_ptr_f06afc6c styleManager; // @synthesize styleManager=_styleManager;
+@property (nonatomic) shared_ptr_a3c46825 styleManager; // @synthesize styleManager=_styleManager;
 @property (nonatomic) float textureScale; // @synthesize textureScale=_textureScale;
 @property (readonly, nonatomic) long long vectorType;
 
@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithKey:(const struct VKTileKey *)arg1;
-- (id)initWithKey:(const struct VKTileKey *)arg1 modelTile:(id)arg2 styleManager:(shared_ptr_f06afc6c)arg3 sharedResources:(id)arg4 contentScale:(double)arg5 device:(struct Device *)arg6;
+- (id)initWithKey:(const struct VKTileKey *)arg1 modelTile:(id)arg2 styleManager:(shared_ptr_a3c46825)arg3 sharedResources:(id)arg4 contentScale:(double)arg5 device:(struct Device *)arg6;
 
 @end
 

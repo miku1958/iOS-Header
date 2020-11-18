@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
     BOOL _presentedForSecondScreen;
     BOOL __needsUpdateLayoutStyle;
     UITraitCollection *_traitCollection;
-    long long _currentLayoutStyle;
-    PUViewControllerSpecChange *_currentChange;
     NSHashTable *__changeObservers;
     long long __changeCount;
+    long long _currentLayoutStyle;
+    PUViewControllerSpecChange *_currentChange;
     struct CGSize _layoutReferenceSize;
     struct CGSize _secondScreenSize;
 }
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isPresentedForSecondScreen) BOOL presentedForSecondScreen; // @synthesize presentedForSecondScreen=_presentedForSecondScreen;
 @property (nonatomic) struct CGSize secondScreenSize; // @synthesize secondScreenSize=_secondScreenSize;
 @property (strong, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
+@property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 - (void).cxx_destruct;
 - (void)_didChange;
@@ -47,7 +48,6 @@ __attribute__((visibility("hidden")))
 - (void)registerChangeObserver:(id)arg1;
 - (void)unregisterChangeObserver:(id)arg1;
 - (void)updateIfNeeded;
-- (BOOL)updateWithTraitCollection:(id)arg1 layoutReferenceSize:(struct CGSize)arg2;
 
 @end
 

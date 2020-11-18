@@ -6,10 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSLayoutManager, NSMutableArray, NSTextContainer, NSTextStorage, UITextView, UIView;
+#import <UIKit/CABehaviorDelegate-Protocol.h>
+
+@class NSArray, NSLayoutManager, NSMutableArray, NSString, NSTextContainer, NSTextStorage, UITextView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _UISiriStreamingManager : NSObject
+@interface _UISiriStreamingManager : NSObject <CABehaviorDelegate>
 {
     UITextView *_textView;
     UIView *_siriItemView;
@@ -25,9 +27,13 @@ __attribute__((visibility("hidden")))
     BOOL _waitingForDynamicsBehaviorToStop;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSLayoutManager *streamingLayoutManager; // @synthesize streamingLayoutManager=_streamingLayoutManager;
 @property (readonly, nonatomic) NSTextContainer *streamingTextContainer; // @synthesize streamingTextContainer=_streamingTextContainer;
 @property (readonly, nonatomic) NSTextStorage *streamingTextStorage; // @synthesize streamingTextStorage=_streamingTextStorage;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSArray *words; // @synthesize words=_words;
 
 - (void).cxx_destruct;

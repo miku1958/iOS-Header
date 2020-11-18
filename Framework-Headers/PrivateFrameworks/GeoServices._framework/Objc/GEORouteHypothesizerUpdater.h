@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequestFeedback, GEODirectionsRouteRequest, GEOLocation, GEOMapRegion, GEORouteAttributes, GEORouteMatch, GEORouteSummaryAttributes, NSDate, NSLock, NSMutableArray;
+@class GEOCommonOptions, GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsRequestFeedback, GEOLocation, GEOMapRegion, GEORouteAttributes, GEORouteMatch, NSDate, NSLock, NSMutableArray;
 @protocol GEORouteHypothesizerUpdaterDelegate;
 
 __attribute__((visibility("hidden")))
@@ -18,9 +18,9 @@ __attribute__((visibility("hidden")))
     GEODirectionsRequestFeedback *_feedback;
     GEOComposedWaypoint *_source;
     GEOComposedWaypoint *_destination;
-    GEODirectionsRouteRequest *_currentRequest;
+    GEODirectionsRequest *_currentRequest;
     GEORouteAttributes *_routeAttributes;
-    GEORouteSummaryAttributes *_routeSummaryAttributes;
+    GEOCommonOptions *_commonOptions;
     GEOLocation *_originLocation;
     GEOLocation *_lastMatchedLocation;
     GEOComposedRoute *_route;

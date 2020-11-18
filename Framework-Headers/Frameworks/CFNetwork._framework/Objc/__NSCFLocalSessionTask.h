@@ -11,7 +11,7 @@
 #import <CFNetwork/NSURLSessionUploadTaskSubclass-Protocol.h>
 #import <CFNetwork/SessionConnectionDelegate-Protocol.h>
 
-@class NSInputStream, NSObject, NSOutputStream, NSString, NSURL, __NSCFURLSessionConnection, __NSURLSessionLocal;
+@class NSInputStream, NSNumber, NSObject, NSOperationQueue, NSOutputStream, NSString, NSURL, __NSCFURLSessionConnection, __NSURLSessionLocal;
 @protocol OS_dispatch_data, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_source> *_resourceTimeout;
     BOOL _didIssueDidFinish;
     BOOL _suspendedForDisposition;
+    NSNumber *_connectedSocket;
     struct HTTPConnectionCacheKey *_connKey;
     double _startTimeoutTime;
     NSObject<OS_dispatch_source> *_startTimeoutTimer;
@@ -37,6 +38,10 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_source> *_willSendRequestTimer;
     NSInputStream *_socketReadStreamForUpgrade;
     NSOutputStream *_socketWriteStreamForUpgrade;
+    NSOperationQueue *_connectionWorkQueue;
+    int _connectionWorkQueueSuspensionCount;
+    BOOL _didCheckMixedReplace;
+    BOOL _isMixedReplace;
 }
 
 @property (copy) CDUnknownBlockType async_initialization; // @synthesize async_initialization=_async_initialization;
@@ -53,6 +58,7 @@ __attribute__((visibility("hidden")))
 @property unsigned long long suspendCount; // @synthesize suspendCount=_suspendCount;
 @property (strong) NSURL *uploadFile; // @synthesize uploadFile=_uploadFile;
 
+- (void)_askForConnectedSocketLater;
 - (void)_finishAllow;
 - (void)_finishBecomeDownload:(id)arg1;
 - (void)_finishBecomeStream:(id)arg1 forConnection:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -66,20 +72,25 @@ __attribute__((visibility("hidden")))
 - (void)_onqueue_completeInitialization;
 - (void)_onqueue_conditionalRequirementsChanged:(BOOL)arg1;
 - (void)_onqueue_connectionWaitingWithReason:(long long)arg1;
+- (void)_onqueue_didFinishCollectingMetrics:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_onqueue_didFinishWithError:(id)arg1;
 - (void)_onqueue_didReceiveChallenge:(id)arg1 request:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_onqueue_didReceiveDispatchData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_onqueue_didReceiveResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_onqueue_didReceiveResponse:(id)arg1 redirectRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_onqueue_didSendBodyBytes:(long long)arg1 totalBytesSent:(long long)arg2 totalBytesExpectedToSend:(long long)arg3;
+- (void)_onqueue_needConnectedSocketToHost:(id)arg1 port:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_onqueue_needNewBodyStream:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_onqueue_resume;
+- (void)_onqueue_resumeWorkQueue;
 - (void)_onqueue_startPayloadTransmissionTimer;
 - (void)_onqueue_startResourceTimer;
 - (void)_onqueue_startStartTimer;
 - (void)_onqueue_startTimer:(id)arg1 withTimeoutInNanos:(long long)arg2 streamErrorCode:(int)arg3;
 - (id)_onqueue_strippedMutableRequest;
+- (void)_onqueue_submitConnectionWork:(CDUnknownBlockType)arg1;
 - (void)_onqueue_suspend;
+- (void)_onqueue_suspendWorkQueue;
 - (void)_onqueue_willCacheResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_onqueue_willSendRequestForEstablishedConnection:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_private_onqueue_becomeStreamTaskWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -92,11 +103,13 @@ __attribute__((visibility("hidden")))
 - (void)connection:(id)arg1 _conditionalRequirementsChanged:(BOOL)arg2;
 - (void)connection:(id)arg1 _willSendRequestForEstablishedConnection:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 challenged:(id)arg2 authCallback:(CDUnknownBlockType)arg3;
+- (void)connection:(id)arg1 didFinishCollectingMetrics:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didFinishLoadingWithError:(id)arg2;
 - (void)connection:(id)arg1 didReceiveConnectionCacheKey:(struct HTTPConnectionCacheKey *)arg2;
 - (void)connection:(id)arg1 didReceiveData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didReceiveResponse:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didReceiveSocketInputStream:(id)arg2 outputStream:(id)arg3;
+- (void)connection:(id)arg1 needConnectedSocketToHost:(id)arg2 port:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)connection:(id)arg1 request:(id)arg2 needsNewBodyStreamCallback:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 sentBodyBytes:(id)arg2 totalBytes:(id)arg3 expectedBytes:(id)arg4;
 - (void)connection:(id)arg1 waitingWithReason:(long long)arg2;

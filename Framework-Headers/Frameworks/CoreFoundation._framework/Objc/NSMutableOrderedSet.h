@@ -67,7 +67,6 @@
 - (void)replaceObjectsInRange:(struct _NSRange)arg1 withObjectsFromOrderedSet:(id)arg2;
 - (void)replaceObjectsInRange:(struct _NSRange)arg1 withObjectsFromOrderedSet:(id)arg2 range:(struct _NSRange)arg3;
 - (void)replaceObjectsInRange:(struct _NSRange)arg1 withObjectsFromSet:(id)arg2;
-- (void)rollObjectsInRange:(struct _NSRange)arg1 by:(long long)arg2;
 - (void)setArray:(id)arg1;
 - (void)setObject:(id)arg1;
 - (void)setObject:(id)arg1 atIndex:(unsigned long long)arg2;

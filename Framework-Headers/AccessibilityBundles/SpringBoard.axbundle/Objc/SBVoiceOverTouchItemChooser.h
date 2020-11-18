@@ -44,6 +44,7 @@
 + (BOOL)isVisible;
 + (void)setCategories:(id)arg1;
 + (void)show:(id)arg1;
+- (void).cxx_destruct;
 - (BOOL)_accessibilityActivateActionChosen:(id)arg1;
 - (void)_dimmingViewPressed;
 - (void)_displayWithList:(id)arg1 fromRotorSwitch:(BOOL)arg2;
@@ -60,7 +61,6 @@
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (unsigned long long)accessibilityTraits;
-- (void)dealloc;
 - (void)hide;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isVisible;

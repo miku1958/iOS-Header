@@ -12,6 +12,14 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 struct Mutex;
 
+struct NSArray {
+    Class _field1;
+};
+
+struct NSDictionary {
+    Class _field1;
+};
+
 struct Options {
     int _field1;
     BOOL _field2;
@@ -32,7 +40,7 @@ struct Prog;
 
 struct RE2 {
     struct Mutex *_field1;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field2;
+    struct StringPiece _field2;
     struct Options _field3;
     struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field4;
     BOOL _field5;
@@ -50,6 +58,11 @@ struct RE2 {
 };
 
 struct Regexp;
+
+struct SGDSuggestManagerCTSCriteriaState {
+    BOOL hasItemsHighPriority;
+    BOOL hasItemsLowPriority;
+};
 
 struct SGHistorySharedData {
     id _field1;
@@ -69,6 +82,19 @@ struct SGMutexSynchronizedObject<SGHistorySharedData> {
 
 struct SGMutexSynchronizedPtr<SGHistorySharedData> {
     struct SGMutexSynchronizedObject<SGHistorySharedData> *_field1;
+};
+
+struct SGTuple3 {
+    Class _field1;
+};
+
+struct SGUnixTimestamp_ {
+    double secondsFromUnixEpoch;
+};
+
+struct StringPiece {
+    char *_field1;
+    int _field2;
 };
 
 struct _NSRange {
@@ -92,6 +118,14 @@ struct _xmlParserInput;
 struct _xmlParserNodeInfo;
 
 struct _xmlValidState;
+
+struct adler32_t {
+    unsigned long long _field1;
+};
+
+struct atomic_flag {
+    _Atomic BOOL _Value;
+};
 
 struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
     struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
@@ -127,6 +161,14 @@ struct map<int, std::__1::basic_string<char>, std::__1::less<int>, std::__1::all
 
 struct map<std::__1::basic_string<char>, int, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, int>>>;
 
+struct vector<bool, std::__1::allocator<bool>> {
+    unsigned long long *__begin_;
+    unsigned long long __size_;
+    struct __compressed_pair<unsigned long, std::__1::allocator<unsigned long>> {
+        unsigned long long __first_;
+    } __cap_alloc_;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -134,6 +176,28 @@ typedef struct {
     unsigned short _field2;
     char _field3[3];
 } CDStruct_e59a5d79;
+
+typedef struct {
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
+
+typedef struct {
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :8;
+    unsigned int :20;
+} CDStruct_a2e78aaa;
+
+typedef struct {
+    int _field1;
+    int _field2;
+    unsigned int _field3;
+} CDStruct_beb4cc23;
 
 typedef struct {
     struct {

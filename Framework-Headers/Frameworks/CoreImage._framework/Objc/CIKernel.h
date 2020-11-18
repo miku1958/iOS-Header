@@ -15,7 +15,6 @@
 
 @property (readonly) NSString *name;
 
-+ (id)_getDictForSourceString:(id)arg1 dimensionality:(int *)arg2;
 + (id)betterString:(id)arg1;
 + (id)colorMatrixBiasKernel;
 + (id)hashForString:(id)arg1;
@@ -23,15 +22,19 @@
 + (id)kernelsWithString:(id)arg1;
 + (id)kernelsWithString:(id)arg1 messageLog:(id)arg2;
 + (id)modifiedKernelStringForFosl:(id)arg1;
-+ (id)removeTableKeyword:(id)arg1;
 - (SEL)ROISelector;
 - (id)_initWithDict:(id)arg1;
-- (id)_initWithFirstKernelFromString:(id)arg1;
+- (id)_initWithFirstKernelFromString:(id)arg1 withCruftCompatibility:(BOOL)arg2;
 - (id)_initWithInternalRepresentation:(void *)arg1;
+- (void *)_internalRepresentation;
+- (BOOL)_isValidOutputPixelFormat:(int)arg1;
+- (int)_outputFormatUsingDictionary:(id)arg1 andKernel:(struct Kernel *)arg2;
+- (int)_outputPixelFormatFromExplicitAttributes:(id)arg1;
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 arguments:(id)arg3;
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 arguments:(id)arg3 options:(id)arg4;
-- (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 cpuCallback:(CDUnknownBlockType)arg3 colorManagement:(BOOL)arg4 andArguments:(id)arg5;
+- (void)dealloc;
 - (id)description;
+- (void)finalize;
 - (id)init;
 - (id)initWithString:(id)arg1;
 - (id)parameters;

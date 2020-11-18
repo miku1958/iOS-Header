@@ -103,7 +103,9 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)selectionBoundingBox;
 - (void)selectionChanged;
 - (void)selectionDidScroll:(id)arg1;
+- (void)selectionDidTranslateForReachability:(id)arg1;
 - (void)selectionWillScroll:(id)arg1;
+- (void)selectionWillTranslateForReachability:(id)arg1;
 - (BOOL)shouldBeVisible;
 - (void)showCalloutBarAfterDelay:(double)arg1;
 - (void)showCaret:(int)arg1;

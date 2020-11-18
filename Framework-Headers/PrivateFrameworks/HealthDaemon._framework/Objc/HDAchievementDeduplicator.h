@@ -10,11 +10,8 @@
 {
 }
 
-+ (unsigned long long)_deduplicationStrategyForAchievementType:(unsigned long long)arg1;
-+ (BOOL)_isDayEqualityRequiredForAchievementType:(unsigned long long)arg1;
-+ (BOOL)_isWeekEqualityRequiredForAchievementType:(unsigned long long)arg1;
-+ (unsigned long long)_pickWinningAchievementWithAdded:(id)arg1 existing:(id)arg2;
-+ (BOOL)_shouldCheckValueEqualityForAchievementType:(unsigned long long)arg1;
++ (unsigned long long)_pickWinningAchievementWithAdded:(id)arg1 existing:(id)arg2 strategy:(unsigned long long)arg3;
++ (id)findAchievementsInSet:(id)arg1 missingFromSet:(id)arg2 inCalendar:(id)arg3;
 + (void)findDuplicatesInAddedAchievements:(id)arg1 existingAchievements:(id)arg2 foundDuplicatesInAdded:(id *)arg3 duplicatesInExisting:(id *)arg4;
 
 @end

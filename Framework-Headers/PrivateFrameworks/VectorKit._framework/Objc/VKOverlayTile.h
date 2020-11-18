@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)setTile:(id)arg1 forOverlay:(id)arg2;
 - (id)tileForOverlay:(id)arg1;
-- (void)updateViewDependentStateWithContext:(id)arg1;
+- (void)updateViewDependentStateWithContext:(struct LayoutContext *)arg1;
 
 @end
 

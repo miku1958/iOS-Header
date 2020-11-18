@@ -13,12 +13,12 @@
 + (void)blockUntilFirstUnlock;
 + (id)currentOsBuild;
 + (BOOL)isClassCLocked;
-+ (BOOL)isConstrainedDevice;
 + (BOOL)isDeviceFormattedForProtection;
 + (BOOL)isUnlocked;
 + (int)lockState;
-+ (void)registerForLockStateChangeNotifications:(CDUnknownBlockType)arg1;
++ (id)registerForLockStateChangeNotifications:(CDUnknownBlockType)arg1;
 + (void)runBlockWhenDeviceIsReadyForSuggestions:(CDUnknownBlockType)arg1;
++ (void)unregisterForLockStateChangeNotifications:(id)arg1;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <mecabra/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface MecabraCandidate : NSObject <NSCopying>
 {
@@ -16,6 +16,8 @@
 }
 
 @property (readonly, nonatomic) NSString *analysisString;
+@property (readonly, nonatomic) NSDictionary *attributes;
+@property (readonly, nonatomic) NSString *category;
 @property (readonly, nonatomic) NSString *convertedAnalysisString;
 @property (readonly, nonatomic) NSString *dictionaryReading;
 @property (readonly, nonatomic) BOOL isAutocorrectedCandidate;
@@ -30,6 +32,7 @@
 @property (readonly, nonatomic) BOOL isUserWordCandidate;
 @property (readonly, nonatomic) struct MecabraCandidateBase *rawCandidate;
 @property (readonly, nonatomic) struct ConversionCandidate *rawConversionCandidate;
+@property (readonly, nonatomic) NSString *string;
 @property (readonly, nonatomic) NSString *surface;
 @property (readonly, nonatomic) int type;
 @property (readonly, nonatomic) unsigned long long wordCount;
@@ -52,6 +55,7 @@
 - (unsigned short)matchedLengthType;
 - (long long)phraseBoundaryAfterWordAtIndex:(long long)arg1;
 - (unsigned short)rcAttrAtIndex:(unsigned long long)arg1;
+- (BOOL)setDisplayString:(struct __CFString *)arg1;
 - (void)setWeight:(unsigned long long)arg1;
 - (id)syllabifiedAnalysisString;
 - (id)syllabifiedConvertedAnalysisString;

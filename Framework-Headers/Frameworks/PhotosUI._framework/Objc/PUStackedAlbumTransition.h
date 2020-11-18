@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _popTransitionInitialVisibleBounds;
     NSSet *_popTransitionInitialVisibleStackedAssetIndexPaths;
     UIView *_animatorView;
+    BOOL _didAnimateRoundedCorners;
     BOOL _isExpanding;
     BOOL _isForStandInAlbum;
     BOOL _forFolder;
@@ -44,7 +45,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UIViewController<PUStackedAlbumControllerTransition> *fromViewController; // @dynamic fromViewController;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGPoint interactionCenter; // @synthesize interactionCenter=_interactionCenter;
-@property (nonatomic) BOOL isExpanding; // @synthesize isExpanding=_isExpanding;
+@property (nonatomic, setter=_setExpanding:) BOOL isExpanding; // @synthesize isExpanding=_isExpanding;
 @property (nonatomic, setter=setForStandInAlbum:) BOOL isForStandInAlbum; // @synthesize isForStandInAlbum=_isForStandInAlbum;
 @property (strong, nonatomic, setter=ph_setPhotoCollection:) PHCollection *ph_photoCollection; // @synthesize ph_photoCollection=_ph_photoCollection;
 @property (strong, nonatomic) id<PLAssetContainer> photoCollection; // @synthesize photoCollection=_photoCollection;
@@ -55,7 +56,6 @@ __attribute__((visibility("hidden")))
 - (id)_newInteractiveTransitionViewAnimatorForLayout:(id)arg1 collectionView:(id)arg2;
 - (id)_newTransitionLayoutWithStackedAlbumLayout:(id)arg1 otherLayout:(id)arg2 forPush:(BOOL)arg3;
 - (id)_popTransitionInitialVisibleStackedAssetIndexPaths:(id)arg1;
-- (void)_setExpanding:(BOOL)arg1;
 - (void)animatePopTransition;
 - (void)animatePushTransition;
 - (void)collectionViewLayout:(id)arg1 willSupplyLayoutAttributes:(id)arg2;

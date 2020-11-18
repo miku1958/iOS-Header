@@ -20,11 +20,11 @@ __attribute__((visibility("hidden")))
     BOOL outputAvailable;
     BOOL online;
     BOOL available;
-    BOOL _changingState;
+    BOOL changingState;
 }
 
 @property (getter=isAvailable) BOOL available;
-@property (getter=isChangingState) BOOL changingState; // @synthesize changingState=_changingState;
+@property (getter=isChangingState) BOOL changingState; // @synthesize changingState;
 @property BOOL inputAvailable;
 @property double lastSeen;
 @property (strong) NSString *name;

@@ -6,17 +6,19 @@
 
 #import <ManagedConfiguration/MCPayload.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface MCGmailAccountPayload : MCPayload
 {
     NSString *_accountDescription;
     NSString *_accountName;
     NSString *_emailAddress;
+    NSDictionary *_communicationServiceRules;
 }
 
 @property (readonly, strong, nonatomic) NSString *accountDescription; // @synthesize accountDescription=_accountDescription;
 @property (readonly, strong, nonatomic) NSString *accountName; // @synthesize accountName=_accountName;
+@property (readonly, nonatomic) NSDictionary *communicationServiceRules; // @synthesize communicationServiceRules=_communicationServiceRules;
 @property (readonly, strong, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
 
 + (id)localizedPluralForm;
@@ -26,6 +28,7 @@
 - (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (BOOL)mustInstallNonInteractively;
+- (id)restrictions;
 - (id)stubDictionary;
 - (id)subtitle1Description;
 - (id)subtitle1Label;

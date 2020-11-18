@@ -12,12 +12,14 @@
 {
     HKGraphSeries *_selectedSeries;
     NSNumber *_selectedPointXValue;
+    NSNumber *_selectedPathIndex;
     HKValueRange *_selectedPointDateRange;
     NSDateComponents *_pointIntervalComponents;
     id _userInfo;
 }
 
 @property (strong, nonatomic) NSDateComponents *pointIntervalComponents; // @synthesize pointIntervalComponents=_pointIntervalComponents;
+@property (strong, nonatomic) NSNumber *selectedPathIndex; // @synthesize selectedPathIndex=_selectedPathIndex;
 @property (strong, nonatomic) HKValueRange *selectedPointDateRange; // @synthesize selectedPointDateRange=_selectedPointDateRange;
 @property (strong, nonatomic) NSNumber *selectedPointXValue; // @synthesize selectedPointXValue=_selectedPointXValue;
 @property (strong, nonatomic) HKGraphSeries *selectedSeries; // @synthesize selectedSeries=_selectedSeries;

@@ -37,6 +37,7 @@
 @property (nonatomic) long long packetCount; // @synthesize packetCount=_packetCount;
 @property (strong, nonatomic) NSMutableArray *packetDescriptions; // @synthesize packetDescriptions=_packetDescriptions;
 
++ (Class)packetDescriptionsType;
 - (void)addPacketDescriptions:(id)arg1;
 - (void)clearPacketDescriptions;
 - (void)copyTo:(id)arg1;

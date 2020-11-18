@@ -25,3 +25,12 @@ struct CGSize {
     double height;
 };
 
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    long long type;
+    unsigned long long unitValue;
+    unsigned long long unitCount;
+    unsigned long long residualValue;
+} CDStruct_9964a7bf;
+

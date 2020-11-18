@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <IMFoundation/IMGroupActionItem.h>
+#import <IMSharedUtilities/IMGroupActionItem.h>
 
 @interface IMGroupActionItem (IMTranscriptChatItemRules)
 - (id)_newChatItems;

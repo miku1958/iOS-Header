@@ -52,7 +52,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)evaluateDualCarriagewayForJunction:(id)arg1 outputJunctionList:(id)arg2;
 - (id)initWithJunctions:(id)arg1;
-- (BOOL)isOnScreenRouteBackwardsAtJunction:(id)arg1 navContext:(struct NavContext *)arg2;
 - (BOOL)isPriorRouteCollinearWithRoad:(id)arg1 distance:(float)arg2;
 - (id)junctionForRoad:(id)arg1 nearJunction:(BOOL)arg2 crossTileEdge:(BOOL)arg3;
 - (id)junctionListForDepth:(unsigned long long)arg1;
@@ -65,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)routeJunctionsHaveChanged;
 - (void)setTiles:(id)arg1;
 - (void)startingLabelLayoutWithContext:(struct NavContext *)arg1 routeUserOffset:(struct PolylineCoordinate)arg2;
+- (Matrix_8746f91e)unitHeading;
 
 @end
 

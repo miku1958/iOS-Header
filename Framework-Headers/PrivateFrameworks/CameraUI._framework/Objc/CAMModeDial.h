@@ -11,8 +11,10 @@
 
 @interface CAMModeDial : UIControl
 {
+    long long _layoutStyle;
     id<CAMModeDialDataSource> _dataSource;
     long long _selectedMode;
+    UIView *__selectedItemBackgroundView;
     NSArray *__modes;
     NSDictionary *__items;
     UIView *__meshTransformView;
@@ -25,35 +27,39 @@
 @property (readonly, nonatomic) CAGradientLayer *_maskLayer; // @synthesize _maskLayer=__maskLayer;
 @property (readonly, nonatomic) UIView *_meshTransformView; // @synthesize _meshTransformView=__meshTransformView;
 @property (strong, nonatomic, setter=_setModes:) NSArray *_modes; // @synthesize _modes=__modes;
+@property (readonly, nonatomic) UIView *_selectedItemBackgroundView; // @synthesize _selectedItemBackgroundView=__selectedItemBackgroundView;
 @property (nonatomic) id<CAMModeDialDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property (nonatomic) long long selectedMode; // @synthesize selectedMode=_selectedMode;
 
-+ (BOOL)wantsVerticalModeDialForTraitCollection:(id)arg1;
++ (BOOL)wantsVerticalModeDialForLayoutStyle:(long long)arg1;
 - (void).cxx_destruct;
 - (double)_centeringNudgeForMode:(long long)arg1;
-- (void)_commonCAMModeDialInitialization;
-- (void)_configureMaskForTraitCollection:(id)arg1;
-- (void)_configureMeshTransformForTraitCollection:(id)arg1;
-- (id)_fontForTraitCollection:(id)arg1;
+- (void)_commonCAMModeDialInitializationWithLayoutStyle:(long long)arg1;
+- (void)_configureMaskForLayoutStyle:(long long)arg1;
+- (void)_configureMeshTransformForLayoutStyle:(long long)arg1;
+- (id)_fontForLayoutStyle:(long long)arg1;
 - (struct CGPoint)_horizontalContainerOriginForMode:(long long)arg1;
 - (id)_horizontalMeshTransform;
 - (struct CGSize)_interpolatedHorizontalMeshTransformSize;
 - (void)_layoutHorizontalModeDial;
 - (void)_layoutVerticalModeDial;
-- (id)_meshTransformForTraitCollection:(id)arg1;
+- (id)_meshTransformForLayoutStyle:(long long)arg1;
 - (id)_selectedItem;
 - (id)_titleForMode:(long long)arg1;
 - (void)_updateContainerOriginFromSelectedMode;
-- (void)_updateItemsForTraitCollection:(id)arg1;
+- (void)_updateForLayoutStyle;
+- (void)_updateItemsForLayoutStyle:(long long)arg1;
+- (void)_updateSelectedItemBackgroundForLayoutStyle:(long long)arg1;
 - (struct CGPoint)_verticalContainerOriginForMode:(long long)arg1;
-- (id)_verticalMeshTransform;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithLayoutStyle:(long long)arg1;
 - (void)layoutSubviews;
 - (void)reloadData;
 - (void)setSelectedMode:(long long)arg1 animated:(BOOL)arg2;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateToContentSize:(id)arg1;
 
 @end

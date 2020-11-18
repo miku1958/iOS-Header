@@ -7,43 +7,38 @@
 #import <objc/NSObject.h>
 
 #import <BulletinDistributorCompanion/BLTSettingSyncing-Protocol.h>
-#import <BulletinDistributorCompanion/MCProfileConnectionObserver-Protocol.h>
 
-@class BBObserver, BBSettingsGateway, BLTSectionConfiguration, BLTSettingSyncServer, NSString;
+@class BBSettingsGateway, BLTDNDSync, BLTSectionConfiguration, BLTSettingSyncServer, BLTWristStateObserver, NSString;
 
-@interface BLTSettingSyncInternal : NSObject <MCProfileConnectionObserver, BLTSettingSyncing>
+@interface BLTSettingSyncInternal : NSObject <BLTSettingSyncing>
 {
-    BLTSectionConfiguration *_sectionConfiguration;
-    BOOL _isWristDetectDisabled;
-    BBObserver *_observer;
+    BLTWristStateObserver *_wristStateObserver;
     BBSettingsGateway *_settingsGateway;
+    BLTDNDSync *_dndSync;
     BLTSettingSyncServer *_connection;
+    BLTSectionConfiguration *_sectionConfiguration;
 }
 
 @property (strong, nonatomic) BLTSettingSyncServer *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) BLTDNDSync *dndSync; // @synthesize dndSync=_dndSync;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isWristDetectDisabled; // @synthesize isWristDetectDisabled=_isWristDetectDisabled;
-@property (strong, nonatomic) BBObserver *observer; // @synthesize observer=_observer;
+@property (readonly, nonatomic) BOOL isWristDetectDisabled;
+@property (readonly, nonatomic) BLTSectionConfiguration *sectionConfiguration; // @synthesize sectionConfiguration=_sectionConfiguration;
 @property (strong, nonatomic) BBSettingsGateway *settingsGateway; // @synthesize settingsGateway=_settingsGateway;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)_isWristDetectionDisabled;
 - (id)_overriddenSectionInfoForSectionID:(id)arg1;
-- (void)_updateWristDetectSetting;
-- (BOOL)_wristDetectionDisabledPreference;
-- (BOOL)_wristDetectionEnabledRestriction;
 - (void)dealloc;
 - (void)disableStandaloneTestMode;
 - (void)enableStandaloneTestModeWithMinimumSendDelay:(unsigned long long)arg1 maximumSendDelay:(unsigned long long)arg2 minimumResponseDelay:(unsigned long long)arg3 maximumResponseDelay:(unsigned long long)arg4;
-- (id)init;
-- (void)profileConnectionDidReceiveRestrictionChangedNotification:(id)arg1 userInfo:(id)arg2;
+- (id)initWithSectionConfiguration:(id)arg1;
+- (void)removeSectionWithSectionID:(id)arg1;
 - (void)setSectionInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setSectionSubtypeParametersIcon:(id)arg1 forSectionID:(id)arg2 forSubtypeID:(long long)arg3;
-- (unsigned long long)willNanoPresentNotificationForSectionID:(id)arg1 subsectionIDs:(id)arg2;
-- (unsigned long long)willNanoPresentNotificationForSectionID:(id)arg1 subsectionIDs:(id)arg2 subtype:(long long)arg3 considerSubtype:(BOOL)arg4;
+- (unsigned long long)willNanoPresentNotificationForSectionID:(id)arg1 subsectionIDs:(id)arg2 subtype:(long long)arg3;
 
 @end
 

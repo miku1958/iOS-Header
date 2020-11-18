@@ -6,35 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSSet, NSString;
-@protocol FMLoggerDelegate, OS_dispatch_queue;
+@class NSString;
+@protocol OS_dispatch_queue;
 
 @interface FMLogger : NSObject
 {
-    BOOL _mirrorToStderr;
     long long _logLevel;
     NSString *_logFacilityPrefix;
-    NSSet *_includedFacilities;
-    NSDictionary *_additionalInfo;
-    id<FMLoggerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_dq;
     struct __asl_object_s *_aslClient;
 }
 
-@property (strong, nonatomic) NSDictionary *additionalInfo; // @synthesize additionalInfo=_additionalInfo;
 @property (nonatomic) struct __asl_object_s *aslClient; // @synthesize aslClient=_aslClient;
-@property (weak, nonatomic) id<FMLoggerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dq; // @synthesize dq=_dq;
 @property (readonly, nonatomic) long long effectiveLogLevel;
-@property (strong, nonatomic) NSSet *excludedFacilities;
-@property (strong, nonatomic) NSSet *includedFacilities; // @synthesize includedFacilities=_includedFacilities;
 @property (strong, nonatomic) NSString *logFacilityPrefix; // @synthesize logFacilityPrefix=_logFacilityPrefix;
 @property (nonatomic) long long logLevel; // @synthesize logLevel=_logLevel;
-@property (nonatomic) BOOL mirrorToStderr; // @synthesize mirrorToStderr=_mirrorToStderr;
 
 + (id)_logFacilityPrefixForImagePath:(id)arg1;
++ (id)defaultLogFacilityPrefix;
 + (id)excludedFacilities;
++ (long long)globalLogLevel;
 + (id)instanceForCurrentBundle;
++ (BOOL)mirrorToStderr;
 + (void)setDefaultLogFacilityPrefix:(id)arg1;
 + (void)setDelegate:(id)arg1;
 + (void)setExcludedFacilities:(id)arg1;
@@ -43,17 +37,23 @@
 + (void)setMirrorToStderr:(BOOL)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_logAtLevel:(unsigned int)arg1 facility:(id)arg2 addFacilityPrefix:(BOOL)arg3 logImmediately:(BOOL)arg4 path:(const char *)arg5 lineNumber:(long long)arg6 function:(const char *)arg7 format:(id)arg8 withParamters:(struct __va_list_tag [1])arg9;
+- (void)_logAtLevel:(unsigned int)arg1 facility:(id)arg2 addFacilityPrefix:(BOOL)arg3 logImmediately:(BOOL)arg4 path:(const char *)arg5 lineNumber:(long long)arg6 function:(const char *)arg7 logString:(id)arg8 format:(id)arg9 withParameters:(struct __va_list_tag [1])arg10;
 - (void)_logAtLevel:(unsigned int)arg1 facility:(id)arg2 path:(const char *)arg3 lineNumber:(long long)arg4 function:(const char *)arg5 format:(id)arg6;
 - (void)_openASLHandle;
 - (void)_processASLMessage:(struct __asl_object_s *)arg1;
 - (void)_processASLMessageNow:(struct __asl_object_s *)arg1;
 - (void)dealloc;
+- (id)excludedFacilities;
 - (id)init;
 - (id)initWithImagePath:(id)arg1;
 - (void)logAtLevel:(unsigned int)arg1 facility:(id)arg2 addFacilityPrefix:(BOOL)arg3 logImmediately:(BOOL)arg4 path:(const char *)arg5 lineNumber:(long long)arg6 function:(const char *)arg7 format:(id)arg8;
 - (void)logAtLevel:(unsigned int)arg1 facility:(id)arg2 logImmediately:(BOOL)arg3 path:(const char *)arg4 lineNumber:(long long)arg5 function:(const char *)arg6 format:(id)arg7;
+- (void)setDelegate:(id)arg1;
+- (void)setExcludedFacilities:(id)arg1;
 - (void)setExcludedFacilitiesFromString:(id)arg1;
+- (void)setMirrorToStderr:(BOOL)arg1;
+- (BOOL)shouldLogAtLevel:(unsigned int)arg1 addFacilityPrefix:(BOOL)arg2 withFacility:(id)arg3;
+- (void)swiftLogAtLevel:(unsigned int)arg1 facility:(id)arg2 addFacilityPrefix:(BOOL)arg3 logImmediately:(BOOL)arg4 path:(id)arg5 lineNumber:(long long)arg6 function:(id)arg7 string:(id)arg8;
 
 @end
 

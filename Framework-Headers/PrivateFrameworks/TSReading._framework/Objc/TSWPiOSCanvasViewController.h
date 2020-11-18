@@ -50,11 +50,13 @@
 - (void)hyperlinkUIWillShow;
 - (BOOL)onlyAllowTextSwipesWhenEditing;
 - (void)p_addSwipeGestureRecognizer:(id)arg1 failRequiredFor:(id)arg2;
+- (void)p_endHardPressGestureRecognizer;
 - (void)p_handleHardPressGestureRecognizer:(id)arg1;
 - (id)p_newSwipeGestureRecognizerWithDirection:(int)arg1 numberOfTouchesRequired:(unsigned int)arg2;
 - (void)removeSwipeGestureRecognizers;
 - (void)setUpGestureDependenciesForNewCopyOfTextGesture:(id)arg1;
 - (void)setUpGestureRecognizers;
+- (BOOL)shouldAllowSelectionGestures:(BOOL)arg1 atPoint:(struct CGPoint)arg2 toBegin:(BOOL)arg3;
 - (BOOL)shouldHideCanvasLayerInMagnifier;
 - (void)startDelayedTapAction:(id)arg1;
 - (void)teardown;

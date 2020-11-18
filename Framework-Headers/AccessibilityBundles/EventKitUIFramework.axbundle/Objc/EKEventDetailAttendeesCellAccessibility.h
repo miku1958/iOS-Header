@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_axStringForArray:(id)arg1;
+- (id)_axStringForParticipants:(id)arg1;
 - (id)accessibilityLabel;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 @protocol OS_dispatch_queue;
@@ -13,7 +13,7 @@
 {
     NSString *_subsystem;
     NSString *_category;
-    struct __asl_object_s *_aslClient;
+    void *_aslClient;
     NSObject<OS_dispatch_queue> *_aslQueue;
 }
 

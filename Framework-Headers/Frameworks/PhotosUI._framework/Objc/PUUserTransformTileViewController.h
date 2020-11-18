@@ -16,6 +16,7 @@
     struct {
         BOOL respondsToDidChangeModelTileTransform;
         BOOL respondsToDidChangeIsUserInteracting;
+        BOOL respondsToShouldReceiveTouchAtLocationFromProvider;
     } _delegateFlags;
     BOOL _userInteractionEnabled;
     id<PUUserTransformTileViewControllerDelegate> _delegate;
@@ -24,12 +25,10 @@
     PUDisplayTileTransform *__displayTileTransform;
     NSString *__identifier;
     struct CGRect __untransformedContentFrame;
-    struct CGRect __passthroughRect;
 }
 
 @property (strong, nonatomic, setter=_setDisplayTileTransform:) PUDisplayTileTransform *_displayTileTransform; // @synthesize _displayTileTransform=__displayTileTransform;
 @property (copy, nonatomic, setter=_setIdentifier:) NSString *_identifier; // @synthesize _identifier=__identifier;
-@property (nonatomic, setter=_setPassthroughRect:) struct CGRect _passthroughRect; // @synthesize _passthroughRect=__passthroughRect;
 @property (nonatomic, setter=_setUntransformedContentFrame:) struct CGRect _untransformedContentFrame; // @synthesize _untransformedContentFrame=__untransformedContentFrame;
 @property (strong, nonatomic) PUAssetReference *assetReference; // @synthesize assetReference=_assetReference;
 @property (readonly, copy) NSString *debugDescription;
@@ -38,10 +37,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (nonatomic, setter=setUserInteractionEnabled:) BOOL userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;
-@property (strong, nonatomic) PUUserTransformView *userTransformView; // @synthesize userTransformView=_userTransformView;
+@property (strong, nonatomic, setter=_setUserTransformView:) PUUserTransformView *userTransformView; // @synthesize userTransformView=_userTransformView;
 
 - (void).cxx_destruct;
-- (void)_setUserTransformView:(id)arg1;
 - (void)_updateUserInteractionEnabled;
 - (void)_updateUserTransformPadding;
 - (void)_updateUserTransformView;

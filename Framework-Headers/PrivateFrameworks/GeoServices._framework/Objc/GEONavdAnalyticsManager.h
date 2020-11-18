@@ -16,6 +16,7 @@
 @property (strong, nonatomic) id<GEONavdAnalyticsReporter> analyticsReporter; // @synthesize analyticsReporter=_analyticsReporter;
 
 + (id)sharedManager;
+- (void)dealloc;
 
 @end
 

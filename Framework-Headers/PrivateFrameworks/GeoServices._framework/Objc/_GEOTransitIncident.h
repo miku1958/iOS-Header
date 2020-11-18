@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *messageForNonRoutable;
 @property (readonly, nonatomic) NSString *messageForRoutePlanning;
 @property (readonly, nonatomic) NSString *messageForRouteStepping;
+@property (readonly, nonatomic) unsigned long long muid;
 @property (readonly, nonatomic) NSDate *startDate;
 @property (readonly, nonatomic) NSString *summary;
 @property (readonly) Class superclass;

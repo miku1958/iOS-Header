@@ -96,7 +96,7 @@
 - (void)_finishedProcessingMomentWithUuid:(id)arg1 withSuccess:(BOOL)arg2;
 - (void)_forwardGeocodeAddressDictionary:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)_forwardGeocodeAddressDictionaryOnGeoThread:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
-- (id)_geoLocationForCoordinate:(CDStruct_c3b9c2ee)arg1 date:(id)arg2;
+- (id)_geoLocationForCoordinate:(struct CLLocationCoordinate2D)arg1 date:(id)arg2;
 - (unsigned long long)_geoOrderInPrioritySet:(id)arg1 atIndex:(unsigned long long)arg2;
 - (unsigned long long)_indexForGeoOrder:(unsigned long long)arg1 inPrioritySet:(id)arg2;
 - (BOOL)_isNetworkReachable;

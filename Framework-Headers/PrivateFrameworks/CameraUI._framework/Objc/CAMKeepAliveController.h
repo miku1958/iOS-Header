@@ -24,6 +24,8 @@
 - (void).cxx_destruct;
 - (void)_handleApplicationDidEnterBackground:(id)arg1;
 - (void)_handleApplicationWillEnterForeground:(id)arg1;
+- (void)_handleHeartbeatConnectionReply:(id)arg1;
+- (void)_handleHeartbeatSourceEvent;
 - (void)_keepAliveQueueCreateConnectionIfNecessary;
 - (void)_keepAliveQueueCreateHeartbeatIfNecessary;
 - (void)_keepAliveQueueTeardownConnection;

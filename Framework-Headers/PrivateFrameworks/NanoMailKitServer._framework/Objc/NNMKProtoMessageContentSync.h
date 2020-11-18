@@ -8,7 +8,7 @@
 
 #import <NanoMailKitServer/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, NSString;
+@class NNMKProtoMessage, NSData, NSMutableArray, NSString;
 
 @interface NNMKProtoMessageContentSync : PBCodable <NSCopying>
 {
@@ -16,6 +16,7 @@
     NSData *_dateSynced;
     unsigned int _fullSyncVersion;
     NSString *_messageId;
+    NNMKProtoMessage *_notificationMessage;
     NSData *_preview;
     NSData *_text;
     BOOL _mainAlternativeValid;
@@ -34,11 +35,13 @@
 @property (nonatomic) BOOL hasFullSyncVersion;
 @property (nonatomic) BOOL hasMainAlternativeValid;
 @property (readonly, nonatomic) BOOL hasMessageId;
+@property (readonly, nonatomic) BOOL hasNotificationMessage;
 @property (nonatomic) BOOL hasPartiallyLoaded;
 @property (readonly, nonatomic) BOOL hasPreview;
 @property (readonly, nonatomic) BOOL hasText;
 @property (nonatomic) BOOL mainAlternativeValid; // @synthesize mainAlternativeValid=_mainAlternativeValid;
 @property (strong, nonatomic) NSString *messageId; // @synthesize messageId=_messageId;
+@property (strong, nonatomic) NNMKProtoMessage *notificationMessage; // @synthesize notificationMessage=_notificationMessage;
 @property (nonatomic) BOOL partiallyLoaded; // @synthesize partiallyLoaded=_partiallyLoaded;
 @property (strong, nonatomic) NSData *preview; // @synthesize preview=_preview;
 @property (strong, nonatomic) NSData *text; // @synthesize text=_text;

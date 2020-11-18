@@ -6,41 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@protocol CMWakeGestureDelegate, OS_dispatch_queue;
+@protocol CMWakeGestureDelegate;
 
 @interface CMWakeGestureManager : NSObject
 {
-    struct Dispatcher *fWakeDispatcher;
-    long long fCurrentState;
-    double fLastNotificationTime;
-    BOOL fEnableAudioAlert;
-    int fNightStandThreshold;
-    NSObject<OS_dispatch_queue> *fPrivateQueue;
-    struct unique_ptr<CMWakeGestureVisitor, std::__1::default_delete<CMWakeGestureVisitor>> fWakeGestureVisitor;
-    int fScreenDimmingNotificationToken;
     id<CMWakeGestureDelegate> _delegate;
-    long long _wrist;
-    long long _crown;
 }
 
-@property (nonatomic) long long crown; // @synthesize crown=_crown;
 @property (nonatomic) id<CMWakeGestureDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) long long wrist; // @synthesize wrist=_wrist;
 
-+ (void)initialize;
 + (BOOL)isWakeGestureAvailable;
 + (id)sharedManager;
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (void)dealloc;
-- (id)init;
-- (void)onWakeUpdated:(const struct CLGestureReport *)arg1;
-- (void)playAlert;
-- (BOOL)setNightStandMode:(BOOL)arg1 withConfiguration:(long long)arg2;
+- (void)logAssert;
 - (BOOL)simulateGestureWithDelay:(double)arg1 Duration:(double)arg2;
 - (void)startWakeGestureUpdates;
 - (void)stopWakeGestureUpdates;
-- (void)updateWristAndCrown;
 
 @end
 

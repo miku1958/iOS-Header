@@ -71,6 +71,7 @@
 - (void)removeObserver:(id)arg1;
 - (void)removeProvisioningProfileWithID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeProvisioningProfileWithID:(id)arg1 fromPairedDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setAllExistingAppsShouldBeInstalled:(BOOL)arg1 forNewDevice:(id)arg2;
 - (void)setAlwaysInstall:(id)arg1;
 - (void)setAlwaysInstall:(id)arg1 forDevice:(id)arg2;
 - (void)updatePreferencesForApplicationWithIdentifier:(id)arg1 preferences:(id)arg2 completion:(CDUnknownBlockType)arg3;

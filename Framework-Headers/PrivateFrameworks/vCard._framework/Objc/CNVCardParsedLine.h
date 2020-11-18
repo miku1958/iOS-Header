@@ -23,7 +23,7 @@
 @property (copy) NSArray *parameters; // @synthesize parameters=_parameters;
 @property (strong) id value; // @synthesize value=_value;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithName:(id)arg1;
 

@@ -14,7 +14,6 @@
 {
     NSString *_label;
     NSString *_machServiceName;
-    NSArray *_dependencies;
     NSString *_priority;
     NSNumber *_timeoutSeconds;
     NSArray *_sessionTypes;
@@ -22,7 +21,6 @@
 }
 
 @property (copy, nonatomic) NSString *backboardPrelaunchBundleIdentifier; // @synthesize backboardPrelaunchBundleIdentifier=_backboardPrelaunchBundleIdentifier;
-@property (copy, nonatomic) NSArray *dependencies; // @synthesize dependencies=_dependencies;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) NSString *machServiceName; // @synthesize machServiceName=_machServiceName;
 @property (copy, nonatomic) NSString *priority; // @synthesize priority=_priority;

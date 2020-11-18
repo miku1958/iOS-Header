@@ -20,12 +20,14 @@
 @property (strong, nonatomic) NSCharacterSet *commonCharacters; // @synthesize commonCharacters=_commonCharacters;
 @property (nonatomic) AXDialectMap *dialectForCurrentLocale;
 @property (nonatomic) AXDialectMap *dialectForSystemLanguage;
+@property (readonly, nonatomic) AXDialectMap *dialectForUserLocale;
 @property (strong, nonatomic) NSArray *langMaps; // @synthesize langMaps=_langMaps;
 @property (readonly, nonatomic) NSString *systemLanguageID;
 @property (copy, nonatomic) NSLocale *userLocale; // @synthesize userLocale=_userLocale;
 
 + (id)commonPunctuationCharacters;
 + (id)dialectForAlternativeVoiceIdentifier:(id)arg1;
++ (id)doNotTranslateWords;
 + (id)nameForAlternativeVoiceIdentifier:(id)arg1;
 + (id)nonlocalizedNameForLanguage:(id)arg1;
 + (id)sharedInstance;

@@ -38,6 +38,10 @@ struct NSString {
     Class _field1;
 };
 
+struct _AXEventDataStorage {
+    long long eventSenderIdentifier;
+};
+
 struct _NSRange {
     unsigned long long location;
     unsigned long long length;
@@ -66,6 +70,11 @@ typedef struct {
 typedef struct {
     unsigned int val[8];
 } CDStruct_4c969caf;
+
+typedef struct {
+    short _field1;
+    int _field2;
+} CDStruct_6d9e24e6;
 
 typedef struct {
     unsigned char _field1;

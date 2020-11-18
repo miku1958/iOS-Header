@@ -9,17 +9,22 @@
 #import <PhotosUI/PUAssetActionPerformerDelegate-Protocol.h>
 #import <PhotosUI/PUBrowsingViewModelChangeObserver-Protocol.h>
 
-@class NSArray, NSString, PUAssetActionPerformer, PUBrowsingSession, UIViewController;
+@class NSArray, NSString, PUAssetActionPerformer, PUBrowsingSession, PXActionManager, UIViewController;
 @protocol PUPreviewActionControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PUPreviewActionController : NSObject <PUBrowsingViewModelChangeObserver, PUAssetActionPerformerDelegate>
 {
+    struct {
+        BOOL didDismissWithIdentifiedAction;
+        BOOL preventRevealInMomentAction;
+    } _delegateRespondsTo;
     BOOL __needsUpdateActions;
-    NSArray *_previewActions;
     PUBrowsingSession *_browsingSession;
     UIViewController *_presentingViewController;
     id<PUPreviewActionControllerDelegate> _delegate;
+    PXActionManager *_photosUICoreActionManager;
+    NSArray *_previewActions;
     PUAssetActionPerformer *__activeActionPerformer;
 }
 
@@ -30,8 +35,9 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<PUPreviewActionControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) PXActionManager *photosUICoreActionManager; // @synthesize photosUICoreActionManager=_photosUICoreActionManager;
 @property (weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
-@property (strong, nonatomic) NSArray *previewActions; // @synthesize previewActions=_previewActions;
+@property (strong, nonatomic, setter=_setPreviewActions:) NSArray *previewActions; // @synthesize previewActions=_previewActions;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -43,8 +49,9 @@ __attribute__((visibility("hidden")))
 - (void)_performCopyAction;
 - (void)_performFavoriteAction:(BOOL)arg1;
 - (void)_performRestoreAction;
+- (void)_performRevealInMomentAction;
+- (void)_performSimpleActionWithType:(unsigned long long)arg1;
 - (void)_performTrashAction;
-- (void)_setPreviewActions:(id)arg1;
 - (void)_updateActionsIfNeeded;
 - (void)_updateIfNeeded;
 - (BOOL)assetActionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

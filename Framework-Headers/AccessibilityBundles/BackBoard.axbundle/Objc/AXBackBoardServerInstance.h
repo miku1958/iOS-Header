@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import "AXBackBoardServerInstance-Protocol.h"
 
@@ -14,21 +14,22 @@
 @interface AXBackBoardServerInstance : NSObject <AXBackBoardServerInstance>
 {
     AXIPCServer *_server;
-    id<AXBackBoardServerInstanceDelegate> _delegate;
     NSMutableArray *_eventListeners;
     NSMutableArray *_zoomListeners;
     struct CGRect _initialZoomFocusRect;
     NSMutableArray *_eventTapClients;
+    id<AXBackBoardServerInstanceDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<AXBackBoardServerInstanceDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<AXBackBoardServerInstanceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (id)backBoardServerInstance;
 + (id)backBoardServerInstanceIfExists;
+- (void).cxx_destruct;
 - (id)_gaxBackboard;
 - (id)_handleAXUIServerPID:(id)arg1;
 - (id)_handleAdaptationEnabled:(id)arg1;
@@ -46,12 +47,15 @@
 - (id)_handleGetZoomInitialFocusRect:(id)arg1;
 - (void)_handleGuidedAccessAutomationCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_handleGuidedAccessIgnoredRegions:(id)arg1;
+- (id)_handleHomeClickSwallowedForGuidedAccess:(id)arg1;
 - (id)_handleInPreBoardMode:(id)arg1;
 - (id)_handleInvertColorsChange:(id)arg1;
 - (id)_handleIsGuidedAccessActive:(id)arg1;
 - (id)_handleIsGuidedAccessInWorkspace:(id)arg1;
 - (id)_handleIsGuidedAccessSelfLockedToRequestingApp:(id)arg1;
+- (id)_handleIsGuidedAccessUnmanagedSelfLocked:(id)arg1;
 - (id)_handleItemChooserVisible:(id)arg1;
+- (id)_handleLoadGAXBundleForUnmanagedASAM:(id)arg1;
 - (id)_handleLockScreenDimTimerEnabled:(id)arg1;
 - (id)_handlePostEvent:(id)arg1;
 - (id)_handleRegisterAccessibilityUIPID:(id)arg1;
@@ -68,8 +72,8 @@
 - (id)_handleSetZoomInitialFocusRect:(id)arg1;
 - (id)_handleSupportsAdaptation:(id)arg1;
 - (id)_handleSupportsBlueLightReduction:(id)arg1;
+- (id)_handleTripleClickHomeButtonFired:(id)arg1;
 - (id)_handleUserEventOccurred:(id)arg1;
-- (id)_handleWakeUpIfNecessary:(id)arg1;
 - (id)_handleZoomAdjustment:(id)arg1;
 - (id)_handleZoomAttributesChanged:(id)arg1;
 - (id)_handleZoomAttributesListenerRegistration:(id)arg1;
@@ -84,6 +88,7 @@
 - (void)dealloc;
 - (void)disableBrightnessFilters;
 - (void)eventListener:(id)arg1;
+- (void)forceLoadGAXBundle;
 - (void)restoreCachedBrightnessFilters;
 - (BOOL)supportsAdaptation;
 - (BOOL)supportsBlueLightReduction;

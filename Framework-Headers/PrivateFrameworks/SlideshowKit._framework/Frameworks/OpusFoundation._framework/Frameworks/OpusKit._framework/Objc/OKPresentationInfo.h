@@ -33,6 +33,7 @@
     NSString *_mainNavigatorName;
     NSString *_mainFeederName;
     UIColor *backgroundColor;
+    BOOL _renderTimeLoggingSupported;
     double _couchPotatoStepDuration;
     UIColor *_backgroundColor;
 }
@@ -53,6 +54,7 @@
 @property (nonatomic) OKPresentation *presentation; // @synthesize presentation=_presentation;
 @property (copy) NSString *producerIdentifier; // @synthesize producerIdentifier=_producerIdentifier;
 @property double producerVersion; // @synthesize producerVersion=_producerVersion;
+@property BOOL renderTimeLoggingSupported; // @synthesize renderTimeLoggingSupported=_renderTimeLoggingSupported;
 @property BOOL requiresProducer; // @synthesize requiresProducer=_requiresProducer;
 @property (copy) NSArray *resolutions; // @synthesize resolutions=_resolutions;
 @property (copy) NSString *trailerNavigatorName; // @synthesize trailerNavigatorName=_trailerNavigatorName;

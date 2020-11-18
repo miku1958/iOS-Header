@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface AXBGuidedAccessManager : NSObject
 {
@@ -15,9 +15,9 @@
 + (BOOL)allowsTripleClickSheet;
 + (BOOL)inGuidedAccess;
 + (void)initializeMonitor;
+- (void).cxx_destruct;
 - (id)_guidedAccessServer;
 - (void)_loadBackboardServerBundle;
-- (void)dealloc;
 - (id)init;
 
 @end

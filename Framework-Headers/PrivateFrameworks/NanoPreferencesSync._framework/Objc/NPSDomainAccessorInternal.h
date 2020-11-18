@@ -77,7 +77,7 @@
 - (id)dictionaryRepresentation;
 - (double)doubleForKey:(id)arg1;
 - (double)doubleForKey:(id)arg1 keyExistsAndHasValidFormat:(BOOL *)arg2;
-- (void)filePresenterBecameNonCurrent:(id)arg1;
+- (void)filePresenterDidBecomeNonCurrent:(id)arg1;
 - (float)floatForKey:(id)arg1;
 - (float)floatForKey:(id)arg1 keyExistsAndHasValidFormat:(BOOL *)arg2;
 - (id)initWithPairingID:(id)arg1 pairingDataStore:(id)arg2 domain:(id)arg3;

@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <CloudKitDaemon/MMCSOperationMetric-Protocol.h>
+#import <CloudKitDaemon/NSCopying-Protocol.h>
 
 @class NSArray, NSDate, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKDOperationMetrics : NSObject <MMCSOperationMetric>
+@interface CKDOperationMetrics : NSObject <MMCSOperationMetric, NSCopying>
 {
     NSDate *_startDate;
     double _duration;
@@ -41,7 +42,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
+- (id)_initWithStartDate:(id)arg1;
 - (void)addRange:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)newRangeWithOperationState:(unsigned long long)arg1 startDate:(id)arg2 duration:(double)arg3;
 

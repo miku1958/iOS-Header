@@ -6,18 +6,16 @@
 
 #import <Foundation/NSFormatter.h>
 
-@class NSDictionary, NSLocale, WeatherPreferences;
+@class NSDictionary, NSLocale;
 
 @interface WeatherWindSpeedFormatter : NSFormatter
 {
-    WeatherPreferences *_preferences;
     NSLocale *_locale;
     NSDictionary *_directionSubstringAttributes;
 }
 
 @property (strong) NSDictionary *directionSubstringAttributes; // @synthesize directionSubstringAttributes=_directionSubstringAttributes;
 @property (strong) NSLocale *locale; // @synthesize locale=_locale;
-@property (strong) WeatherPreferences *preferences; // @synthesize preferences=_preferences;
 
 + (id)convenienceFormatter;
 - (void).cxx_destruct;

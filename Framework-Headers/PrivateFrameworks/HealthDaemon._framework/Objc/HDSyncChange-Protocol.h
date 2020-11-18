@@ -6,15 +6,18 @@
 
 #import <HealthDaemon/HDSyncObjectCollection-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSNumber;
 @protocol HDSyncAnchorMap;
 
 @protocol HDSyncChange <HDSyncObjectCollection>
 
+@property (readonly, nonatomic) BOOL done;
+@property (readonly, nonatomic) NSNumber *sequenceNumber;
 @property (readonly, nonatomic, getter=isSpeculative) BOOL speculative;
 @property (readonly, nonatomic) struct HDSyncAnchorRange syncAnchorRange;
 
 - (id<HDSyncAnchorMap>)requiredAnchorMapWithError:(id *)arg1;
 - (void)setObjects:(NSArray *)arg1 syncAnchorRange:(struct HDSyncAnchorRange)arg2 requiredAnchorMap:(id<HDSyncAnchorMap>)arg3;
+- (void)setSequenceNumber:(long long)arg1 done:(BOOL)arg2;
 @end
 

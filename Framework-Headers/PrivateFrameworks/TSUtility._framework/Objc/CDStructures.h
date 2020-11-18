@@ -129,6 +129,12 @@ struct _xmlDtd;
 
 struct _xmlNode;
 
+struct gzFile_s {
+    unsigned int _field1;
+    char *_field2;
+    long long _field3;
+};
+
 struct in_addr {
     unsigned int _field1;
 };

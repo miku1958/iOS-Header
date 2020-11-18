@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSMutableString, NSSet, NSString;
+@class NSSet, NSString;
+@protocol ICSAppendable;
 
 @protocol ICSWriting
 - (NSString *)ICSStringWithOptions:(unsigned long long)arg1;
-- (void)ICSStringWithOptions:(unsigned long long)arg1 appendingToString:(NSMutableString *)arg2;
+- (void)ICSStringWithOptions:(unsigned long long)arg1 appendingToString:(id<ICSAppendable>)arg2;
 - (NSSet *)parametersToIncludeForChecksumVersion:(int)arg1;
 - (NSSet *)parametersToObscure;
 - (NSSet *)propertiesThatIfPresentExcludeThisComponentFromChecksummingForVersion:(int)arg1;

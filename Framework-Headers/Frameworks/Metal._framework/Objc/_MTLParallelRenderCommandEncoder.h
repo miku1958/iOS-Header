@@ -25,13 +25,8 @@
     unsigned long long _commandBuffersCount;
     id *_commandBuffers;
     BOOL _retainedReferences;
-    unsigned long long _type;
-    unsigned long long _numRequestedCounters;
-    unsigned long long _numThisEncoder;
-    unsigned long long _numCommands;
     BOOL _StatEnabled;
-    unsigned long long _StatOptions;
-    unsigned long long _StatLocations;
+    unsigned long long _numThisEncoder;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -41,6 +36,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy) NSString *label; // @synthesize label=_label;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic, getter=getType) unsigned long long type; // @dynamic type;
 
 - (id)_renderCommandEncoderCommon;
 - (id)commandBuffer;
@@ -52,6 +48,9 @@
 - (void)pushDebugGroup:(id)arg1;
 - (id)renderCommandEncoder;
 - (id)sampledRenderCommandEncoderWithProgramInfoBuffer:(CDStruct_4af8c268 *)arg1 capacity:(unsigned long long)arg2;
+- (void)setColorStoreAction:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
+- (void)setDepthStoreAction:(unsigned long long)arg1;
+- (void)setStencilStoreAction:(unsigned long long)arg1;
 
 @end
 

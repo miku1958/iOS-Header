@@ -29,9 +29,9 @@
 + (void)removePlaceholder:(id)arg1;
 + (void)removePlaceholderForContentID:(id)arg1;
 + (void)removePlaceholderForFileURL:(id)arg1;
-+ (void)serializedPlaceholderForData:(id)arg1 fileName:(id)arg2 mimeType:(id)arg3 contentID:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
-+ (void)serializedPlaceholderForFileName:(id)arg1 fileSize:(long long)arg2 mimeType:(id)arg3 contentID:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
-+ (void)serializedPlaceholderForURL:(id)arg1 mimeType:(id)arg2 contentID:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
++ (id)serializedPlaceholderForData:(id)arg1 fileName:(id)arg2 mimeType:(id)arg3 contentID:(id)arg4;
++ (id)serializedPlaceholderForFileName:(id)arg1 fileSize:(long long)arg2 mimeType:(id)arg3 contentID:(id)arg4;
++ (id)serializedPlaceholderForURL:(id)arg1 mimeType:(id)arg2 contentID:(id)arg3;
 + (BOOL)writeData:(id)arg1 forURL:(id)arg2;
 - (void)_setJSONDictionary:(id)arg1;
 - (id)contentID;

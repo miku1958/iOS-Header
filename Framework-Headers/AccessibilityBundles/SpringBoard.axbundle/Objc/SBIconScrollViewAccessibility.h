@@ -21,6 +21,8 @@
 - (id)_accessibilityScrollStatus:(BOOL)arg1;
 - (id)_accessibilityUpdateCurrentPage:(long long)arg1 post:(BOOL)arg2 direction:(BOOL)arg3;
 - (id)_accessibilityUserTestingChildren;
+- (BOOL)_axIsRootFolder;
+- (BOOL)_axIsShowingToday;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (BOOL)accessibilityScrollToTopSupported;
 - (unsigned long long)accessibilityTraits;

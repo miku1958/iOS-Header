@@ -28,6 +28,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (BOOL)canShowTextServices;
++ (BOOL)shouldPresentAsPopoverForServiceOfType:(long long)arg1 inView:(id)arg2;
++ (id)showServiceForText:(id)arg1 selectedTextRange:(struct _NSRange)arg2 type:(long long)arg3 fromRect:(struct CGRect)arg4 inView:(id)arg5;
 + (id)showServiceForText:(id)arg1 type:(long long)arg2 fromRect:(struct CGRect)arg3 inView:(id)arg4;
 + (id)textServiceSessionForType:(long long)arg1;
 - (void).cxx_destruct;

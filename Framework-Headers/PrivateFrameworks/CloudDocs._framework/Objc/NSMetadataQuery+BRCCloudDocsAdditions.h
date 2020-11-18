@@ -8,6 +8,10 @@
 
 @interface NSMetadataQuery (BRCCloudDocsAdditions)
 - (void)br_setupForMonitoringChildrenOfFolderAtURL:(id)arg1;
+- (void)br_setupForMonitoringChildrenOfFolderAtURL:(id)arg1 searchScopes:(id)arg2;
 - (BOOL)br_setupForMonitoringChildrenOfItemAtURL:(id)arg1;
+- (BOOL)br_setupForMonitoringChildrenOfItemAtURL:(id)arg1 searchScopes:(id)arg2;
+- (BOOL)br_setupForMonitoringItemAtURL:(id)arg1;
+- (BOOL)br_setupForMonitoringItemAtURL:(id)arg1 searchScopes:(id)arg2;
 @end
 

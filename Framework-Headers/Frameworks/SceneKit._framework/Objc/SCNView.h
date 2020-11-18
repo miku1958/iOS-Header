@@ -15,6 +15,7 @@
 @interface SCNView : UIView <SCNSceneRenderer, SCNTechniqueSupport>
 {
     double _currentSystemTime;
+    double _lastUpdate;
     NSString *__ibSceneName;
     unsigned long long __ibPreferredRenderingAPI;
     unsigned int _ibNoMultisampling:1;
@@ -22,12 +23,15 @@
     unsigned int _allowsBrowsing:1;
     unsigned int _isOpaque:1;
     unsigned int _firstDrawDone:1;
+    unsigned int _drawOnMainThreadPending:1;
     unsigned int _appIsDeactivated:1;
     unsigned int _viewIsOffscreen:1;
+    unsigned int _backingSizeDidChange:1;
     id _delegate;
     SCNRenderer *_renderer;
     SCNScene *_scene;
     SCNDisplayLink *__displayLink;
+    long long _preferredFramePerSeconds;
     SCNJitterer *_jitterer;
     NSRecursiveLock *_lock;
     UIColor *_backgroundColor;
@@ -70,14 +74,16 @@
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 + (Class)layerClass;
 + (unsigned long long)renderingAPIForOptions:(id)arg1;
-- (void *)__CFObject;
+- (const void *)__CFObject;
 - (id)_authoringEnvironment;
 - (BOOL)_canJitter;
-- (void)_checkAndUpdateDisplayLinkStateIfNeeded;
+- (BOOL)_checkAndUpdateDisplayLinkStateIfNeeded;
 - (void)_commonInit:(id)arg1;
 - (BOOL)_controlsOwnScaleFactor;
+- (id)_defaultBackgroundColor;
 - (id)_displayLink;
 - (void)_drawAtTime:(double)arg1;
+- (BOOL)_enablesDeferredShading;
 - (void)_enterBackground:(id)arg1;
 - (void)_enterForeground:(id)arg1;
 - (double)_flipY:(double)arg1;
@@ -87,6 +93,8 @@
 - (BOOL)_ibWantsMultisampling;
 - (BOOL)_isEditor;
 - (void)_jitterRedisplay;
+- (double)_runFPSTestWithDuration:(double)arg1;
+- (void)_sceneBackgroundDidChange:(id)arg1;
 - (void)_sceneDidUpdate:(id)arg1;
 - (void)_selectRenderingAPIWithOptions:(id)arg1;
 - (void)_setGestureRecognizers:(id)arg1;
@@ -95,6 +103,8 @@
 - (BOOL)_supportsJitteringSyncRedraw;
 - (void)_systemTimeAnimationStarted:(id)arg1;
 - (void)_updateGestureRecognizers;
+- (void)_updateOpacity;
+- (void)_updateProbes:(id)arg1 withProgress:(id)arg2;
 - (id)backgroundColor;
 - (void)dealloc;
 - (void)didMoveToWindow;
@@ -109,6 +119,7 @@
 - (int)ibPreferredRenderingAPI;
 - (id)ibSceneName;
 - (BOOL)ibWantsMultisampling;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 options:(id)arg2;
@@ -116,6 +127,7 @@
 - (BOOL)isOpaque;
 - (void)lock;
 - (id)nodesInsideFrustumWithPointOfView:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pause:(id)arg1;
 - (void)pauseDisplayLink;
 - (void)play:(id)arg1;
@@ -132,6 +144,7 @@
 - (void)setIbSceneName:(id)arg1;
 - (void)setIbWantsMultisampling:(BOOL)arg1;
 - (void)setPointOfView:(id)arg1 animate:(BOOL)arg2;
+- (void)set_enablesDeferredShading:(BOOL)arg1;
 - (void)set_ibPreferredRenderingAPI:(int)arg1;
 - (void)set_ibSceneName:(id)arg1;
 - (void)set_ibWantsMultisampling:(BOOL)arg1;

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSError, NSRecursiveLock, NSString;
+@class NSArray, NSError, NSRecursiveLock, NSString, VMVoicemailTranscriptionTask;
 
 @interface VVService : NSObject
 {
@@ -35,9 +35,17 @@
         unsigned int capabilitiesLoaded:1;
     } _serviceFlags;
     NSString *_serviceIdentifier;
+    VMVoicemailTranscriptionTask *_transcriptionTask;
+    NSString *_retranscriptionTaskIdentifier;
+    unsigned long long _numFailedAttemptsToSyncOverWifi;
+    struct __CFString *_lastConnectionTypeUsed;
 }
 
+@property (nonatomic) struct __CFString *lastConnectionTypeUsed; // @synthesize lastConnectionTypeUsed=_lastConnectionTypeUsed;
+@property (nonatomic) unsigned long long numFailedAttemptsToSyncOverWifi; // @synthesize numFailedAttemptsToSyncOverWifi=_numFailedAttemptsToSyncOverWifi;
+@property (readonly, copy, nonatomic) NSString *retranscriptionTaskIdentifier; // @synthesize retranscriptionTaskIdentifier=_retranscriptionTaskIdentifier;
 @property (strong, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
+@property (strong, nonatomic) VMVoicemailTranscriptionTask *transcriptionTask; // @synthesize transcriptionTask=_transcriptionTask;
 
 + (struct __CTServerConnection *)CTServerConnection;
 + (void)_acquireAssertionsForInsomniaState:(BOOL)arg1;
@@ -64,10 +72,14 @@
 - (void)_dataRoamingStatusChanged;
 - (void)_deliverFallbackNotification;
 - (void)_enterFallbackMode;
+- (void)_handleDataAvailableNotificationForDictation:(id)arg1;
+- (void)_handleDataAvailableNotificationForMetricCollection:(id)arg1;
 - (void)_handleIndicatorNotification:(struct __CFDictionary *)arg1;
 - (void)_handleSMSCAvailable;
 - (void)_handleSMSReady:(BOOL)arg1;
 - (BOOL)_isOfflineDueToRoamingWithDataStatusDict:(struct __CFDictionary *)arg1;
+- (void)_processTranscriptForRecord:(void *)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_processTranscriptForRecord:(void *)arg1 priority:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_reactToIndicator;
 - (void)_reportReachabilityChange:(id)arg1;
 - (void)_scheduleAutomatedTrashCompaction;
@@ -80,12 +92,14 @@
 - (void)cancelDelayedSynchronize;
 - (void)cancelNotificationFallback;
 - (void)cancelPasswordRequest;
+- (void)cancelRetranscriptionTaskActivity;
 - (long long)capabilities;
 - (id)carrierParameterValueForKey:(id)arg1;
 - (void)changePassword:(id)arg1 fromPassword:(id)arg2;
 - (void)clearActivationError;
 - (void)clearRemoteUIDsForDetachedMessages;
 - (struct __CFString *)connectionServiceType;
+- (struct __CFString *)dataConnectionServiceTypeOverride;
 - (BOOL)dataForRecordPending:(void *)arg1 progressiveLoadInProgress:(BOOL *)arg2;
 - (void)dealloc;
 - (void)displayPasswordRequestIfNecessary;
@@ -103,8 +117,10 @@
 - (BOOL)isOnline;
 - (BOOL)isPasswordReady;
 - (BOOL)isSubscribed;
+- (BOOL)isSyncInProgress;
 - (BOOL)isVVMAvailableOverWiFi;
 - (void)kill;
+- (BOOL)lastUsedConnectionTypeWasCellular;
 - (long long)mailboxGreetingType;
 - (id)mailboxName;
 - (BOOL)mailboxRequiresSetup;
@@ -124,15 +140,23 @@
 - (void)removeAllNonDetachedRecords;
 - (void)removeAllRecords;
 - (void)reportError:(id)arg1;
+- (void)reportFailedToSyncOverWifi;
+- (void)reportSucessfulSync;
+- (void)reportTranscriptionProblemForRecord:(void *)arg1;
+- (void)reportTranscriptionRatedAccurate:(BOOL)arg1 forRecord:(void *)arg2;
 - (void)resetCounts;
 - (void)resetDelayedSynchronizationAttemptCount;
 - (BOOL)respectsMWINotifications;
+- (void)retranscribeAllVoicemails;
 - (void)retrieveDataForRecord:(void *)arg1;
 - (void)retrieveGreeting;
 - (id)retryIntervals;
 - (void)scheduleAutomatedTrashCompaction;
 - (void)scheduleDelayedSynchronize;
-- (void)setGreetingType:(long long)arg1 withData:(id)arg2 duration:(unsigned int)arg3;
+- (void)scheduleImmediateSynchronizeRetryOverCellular;
+- (void)scheduleRetranscriptionTaskActivity;
+- (void)setGreetingType:(long long)arg1 withData:(id)arg2 duration:(unsigned long long)arg3;
+- (void)setLastUsedConnectionType:(struct __CFString *)arg1;
 - (void)setMailboxRequiresSetup:(BOOL)arg1;
 - (void)setMailboxUsage:(int)arg1;
 - (void)setMessageWaiting:(BOOL)arg1;
@@ -143,6 +167,7 @@
 - (void)setTrashedCount:(unsigned int)arg1;
 - (void)setUnreadCount:(unsigned int)arg1;
 - (BOOL)sharedSubscriptionRequiresSetup;
+- (BOOL)shouldImmediatelyRetrySyncOverCellular;
 - (BOOL)shouldScheduleAutoTrashOnMailboxUsageChange;
 - (BOOL)shouldTrashCompactRecord:(void *)arg1;
 - (BOOL)synchronizationPending;

@@ -24,8 +24,12 @@
 - (struct UIEdgeInsets)edgeInsetsForHeaderView:(id)arg1;
 - (struct UIEdgeInsets)edgeInsetsForTable:(id)arg1;
 - (double)headerIconBaselineOffset;
+- (double)headerIconBaselineOffsetForView:(id)arg1;
+- (double)headerSubheaderBaselineSpacingForView:(id)arg1;
+- (double)headerTitleBaselineOffsetForView:(id)arg1 hasIcon:(BOOL)arg2;
 - (double)headerTitleBaselineOffsetHasIcon:(BOOL)arg1;
 - (id)headerTitleFont;
+- (double)horizontalMarginForView:(id)arg1;
 - (double)nonTableHorizontalMargin;
 - (double)singleLineCellHeightForTable:(id)arg1;
 - (id)tableCellFont;

@@ -14,6 +14,8 @@
     BOOL _finalResponse;
     UIImage *_stillImageOriginalImage;
     NSData *_stillImageJPEGData;
+    NSString *_timelapseDestinationPath;
+    NSString *_avalancheUUID;
     struct opaqueCMSampleBuffer *_stillImageOriginalSampleBuffer;
     UIImage *_stillImageUnfilteredPreviewImage;
     UIImage *_stillImageFilteredPreviewImage;
@@ -21,8 +23,6 @@
     CDUnknownBlockType _stillImageRequestEnqueuedBlock;
     CDUnknownBlockType _stillImageCompletionBlock;
     CIFilter *_effectFilter;
-    NSString *_avalancheUUID;
-    NSString *_timelapseDestinationPath;
 }
 
 @property (copy, nonatomic) NSString *avalancheUUID; // @synthesize avalancheUUID=_avalancheUUID;

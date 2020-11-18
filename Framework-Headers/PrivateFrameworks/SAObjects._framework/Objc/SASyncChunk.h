@@ -8,7 +8,7 @@
 
 #import <SAObjects/SAServerBoundCommand-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, SASyncAppMetaData;
 
 @interface SASyncChunk : SABaseCommand <SAServerBoundCommand>
 {
@@ -16,6 +16,7 @@
 
 @property (copy, nonatomic) NSString *aceId; // @dynamic aceId;
 @property (copy, nonatomic) NSString *appBundleId;
+@property (strong, nonatomic) SASyncAppMetaData *appMetaData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

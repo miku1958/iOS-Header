@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 
 + (id)proxyWithTarget:(id)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (void)forwardInvocation:(id)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;

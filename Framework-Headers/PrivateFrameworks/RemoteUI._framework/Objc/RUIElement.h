@@ -6,18 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString, RUIStyle;
+@class NSDictionary, NSMutableDictionary, NSString, RUIStyle;
 
 @interface RUIElement : NSObject
 {
+    NSMutableDictionary *_attributes;
     BOOL _enabled;
     NSString *_identifier;
-    NSDictionary *_attributes;
     RUIStyle *_style;
+    NSString *_body;
     RUIElement *_parent;
 }
 
 @property (copy, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
+@property (copy, nonatomic) NSString *body; // @synthesize body=_body;
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSString *name;
@@ -29,10 +31,12 @@
 - (int)_horizontalAlignmentForString:(id)arg1;
 - (void)configureView:(id)arg1;
 - (void)dealloc;
+- (BOOL)hasImage;
 - (void)imageLoaded:(id)arg1;
 - (id)init;
 - (id)initWithAttributes:(id)arg1 parent:(id)arg2;
 - (BOOL)loadImage;
+- (id)mutableAttributes;
 - (void)populatePostbackDictionary:(id)arg1;
 - (void)setImage:(id)arg1;
 - (void)setImageAlignment:(int)arg1;

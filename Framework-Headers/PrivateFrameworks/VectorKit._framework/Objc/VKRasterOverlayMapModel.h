@@ -16,8 +16,10 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_sortedTiles;
     unsigned long long _level;
     struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _gglRenderState;
+    struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _gglRenderStateDepthTest;
     struct unique_ptr<ggl::Mesh, std::__1::default_delete<ggl::Mesh>> _unitMesh;
     struct unique_ptr<ggl::ClearItem, std::__1::default_delete<ggl::ClearItem>> _clearItem;
+    shared_ptr_8d835d6a _pipelineState;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,8 +30,8 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (void)gglLayoutScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
-- (id)initWithLevel:(unsigned long long)arg1;
+- (void)gglLayoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
+- (id)initWithTarget:(id)arg1 sharedResources:(id)arg2 level:(unsigned long long)arg3;
 - (unsigned long long)mapLayerPosition;
 - (void)reset;
 - (BOOL)shouldLayoutWithoutStyleManager;

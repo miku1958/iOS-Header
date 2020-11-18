@@ -8,11 +8,12 @@
 
 @protocol VKStyleManagerObserver <NSObject>
 
-@property (readonly, nonatomic) shared_ptr_f06afc6c styleManager;
+@property (readonly, nonatomic) shared_ptr_a3c46825 styleManager;
 
 + (BOOL)reloadOnStylesheetChange;
 
 @optional
+- (void)finishStyleBlend;
 - (void)prepareForStylesheetTransitionToMapDisplayStyle:(struct DisplayStyle)arg1 withReadinessBlock:(void (^)(id<VKStyleManagerObserver>))arg2;
 - (void)stylesheetDidChange;
 - (void)stylesheetDidReload;

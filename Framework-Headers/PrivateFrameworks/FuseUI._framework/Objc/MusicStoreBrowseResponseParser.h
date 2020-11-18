@@ -6,39 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class MPUChangeDetails, MPUSectionedCollection, MusicStoreBrowseContentItemBuilder, MusicStoreBrowseSectionBuilder, MusicStoreItemMetadataResponse, NSArray, NSDictionary, NSSet;
+@class MPChangeDetails, MPSectionedCollection, MPStoreItemMetadataResponse, MusicStoreBrowseContentItemBuilder, MusicStoreBrowseSectionBuilder, NSArray, NSDictionary, NSSet;
 
 @interface MusicStoreBrowseResponseParser : NSObject
 {
-    MPUSectionedCollection *_additionalContentIdentifiers;
+    MPSectionedCollection *_additionalContentIdentifiers;
     NSArray *_allAdditionalContentIdentifiersNeedingLookup;
     long long _parseOnceToken;
-    MPUSectionedCollection *_results;
+    MPSectionedCollection *_results;
     NSDictionary *_storePlatformDataResults;
     NSSet *_unavailableContentIdentifiers;
     CDStruct_d2d88407 _options;
     id _rawResponseOutput;
     MusicStoreBrowseResponseParser *_previousParser;
-    MusicStoreItemMetadataResponse *_additionalStoreItemMetadataResponse;
+    MPStoreItemMetadataResponse *_additionalStoreItemMetadataResponse;
     MusicStoreBrowseSectionBuilder *_sectionBuilder;
     MusicStoreBrowseContentItemBuilder *_contentItemBuilder;
-    MPUChangeDetails *_changeDetails;
+    MPChangeDetails *_changeDetails;
 }
 
-@property (readonly, nonatomic) MPUSectionedCollection *additionalContentIdentifiers;
-@property (readonly, nonatomic) MusicStoreItemMetadataResponse *additionalStoreItemMetadataResponse; // @synthesize additionalStoreItemMetadataResponse=_additionalStoreItemMetadataResponse;
+@property (readonly, nonatomic) MPSectionedCollection *additionalContentIdentifiers;
+@property (readonly, nonatomic) MPStoreItemMetadataResponse *additionalStoreItemMetadataResponse; // @synthesize additionalStoreItemMetadataResponse=_additionalStoreItemMetadataResponse;
 @property (readonly, nonatomic) NSArray *allAdditionalContentIdentifiersNeedingLookup;
-@property (readonly, nonatomic) MPUChangeDetails *changeDetails; // @synthesize changeDetails=_changeDetails;
+@property (readonly, nonatomic) MPChangeDetails *changeDetails; // @synthesize changeDetails=_changeDetails;
 @property (readonly, nonatomic) MusicStoreBrowseContentItemBuilder *contentItemBuilder; // @synthesize contentItemBuilder=_contentItemBuilder;
 @property (readonly, nonatomic) CDStruct_d2d88407 options; // @synthesize options=_options;
 @property (readonly, nonatomic) MusicStoreBrowseResponseParser *previousParser; // @synthesize previousParser=_previousParser;
 @property (readonly, nonatomic) id rawResponseOutput; // @synthesize rawResponseOutput=_rawResponseOutput;
-@property (readonly, nonatomic) MPUSectionedCollection *results;
+@property (readonly, nonatomic) MPSectionedCollection *results;
 @property (readonly, nonatomic) MusicStoreBrowseSectionBuilder *sectionBuilder; // @synthesize sectionBuilder=_sectionBuilder;
 
 - (void).cxx_destruct;
 - (void)_parse;
-- (BOOL)_parseFeaturedContentChild:(id)arg1 isMemberOfChartSet:(BOOL)arg2 insertingResultsToSectionedCollection:(id)arg3 atSectionIndex:(unsigned long long)arg4 additionalContentIdentifiers:(id)arg5 allAdditionalContentIdentifiersNeedingLookup:(id)arg6;
+- (BOOL)_parseFeaturedContentChild:(id)arg1 isMemberOfChartSet:(BOOL)arg2 insertingResultsToSectionedCollection:(id)arg3 atSectionIndex:(long long)arg4 additionalContentIdentifiers:(id)arg5 allAdditionalContentIdentifiersNeedingLookup:(id)arg6;
 - (void)_parseFeaturedContentStructureModelChildren:(id)arg1;
 - (void)_parseSingleContentListFromPageDataDictionary:(id)arg1 isMemberOfChartSet:(BOOL)arg2;
 - (void)_parseUsingAdditionalContentIdentifiersFromPreviousParser;

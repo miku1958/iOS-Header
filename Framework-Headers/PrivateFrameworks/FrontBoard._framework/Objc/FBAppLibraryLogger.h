@@ -4,26 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoard/FBFileLogger.h>
+#import <Foundation/NSObject.h>
 
-@class NSObject;
 @protocol OS_os_log;
 
-@interface FBAppLibraryLogger : FBFileLogger
+@interface FBAppLibraryLogger : NSObject
 {
     NSObject<OS_os_log> *_aggregateLog;
 }
 
 + (id)sharedInstance;
-- (void)_setEnabled:(BOOL)arg1;
-- (void)_setLevel:(int)arg1;
-- (void)dealloc;
 - (id)init;
-- (int)level;
 - (void)logToAggregateInstallationLog:(unsigned long long)arg1 step:(unsigned long long)arg2 success:(BOOL)arg3 bundleID:(id)arg4 description:(id)arg5;
-- (int)maxLogSize;
-- (id)name;
-- (BOOL)shouldEnableOnInternalBuilds;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOMapServiceTicket-Protocol.h>
 
-@class GEOMapRegion, GEOMapServiceTraits, NSArray, NSDictionary, NSString;
+@class GEOMapRegion, GEOMapServiceTraits, GEORelatedSearchSuggestion, NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _GEOPhoneNumbersTicket : NSObject <GEOMapServiceTicket>
@@ -22,11 +22,16 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isCanceled) BOOL canceled; // @synthesize canceled=_canceled;
 @property (readonly, nonatomic, getter=isChainResultSet) BOOL chainResultSet;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) GEORelatedSearchSuggestion *defaultRelatedSuggestion;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSArray *relatedSearchSuggestions;
 @property (readonly, nonatomic) NSDictionary *responseUserInfo;
 @property (readonly, nonatomic) GEOMapRegion *resultBoundingRegion;
+@property (readonly, nonatomic) NSString *resultDisplayHeader;
 @property (readonly, nonatomic) NSString *resultSectionHeader;
+@property (readonly, nonatomic) int searchResultType;
+@property (readonly, nonatomic) BOOL shouldEnableRedoSearch;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) GEOMapServiceTraits *traits; // @synthesize traits=_traits;
 
@@ -36,9 +41,13 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithPhoneNumbers:(id)arg1 allowCellularDataForLookup:(BOOL)arg2 traits:(id)arg3;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
+- (void)submitWithHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2 queue:(id)arg3;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 timeout:(long long)arg2 networkActivity:(CDUnknownBlockType)arg3;
+- (void)submitWithHandler:(CDUnknownBlockType)arg1 timeout:(long long)arg2 networkActivity:(CDUnknownBlockType)arg3 queue:(id)arg4;
 - (void)submitWithRefinedHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
+- (void)submitWithRefinedHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2 queue:(id)arg3;
 - (void)submitWithRefinedHandler:(CDUnknownBlockType)arg1 timeout:(long long)arg2 networkActivity:(CDUnknownBlockType)arg3;
+- (void)submitWithRefinedHandler:(CDUnknownBlockType)arg1 timeout:(long long)arg2 networkActivity:(CDUnknownBlockType)arg3 queue:(id)arg4;
 
 @end
 

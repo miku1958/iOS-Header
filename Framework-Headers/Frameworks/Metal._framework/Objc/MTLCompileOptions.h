@@ -16,6 +16,7 @@
 
 @property (nonatomic) BOOL debuggingEnabled; // @dynamic debuggingEnabled;
 @property (nonatomic) BOOL fastMathEnabled; // @dynamic fastMathEnabled;
+@property (nonatomic) BOOL glBufferBindPoints; // @dynamic glBufferBindPoints;
 @property (nonatomic) unsigned long long languageVersion; // @dynamic languageVersion;
 @property (copy, nonatomic) NSDictionary *preprocessorMacros; // @dynamic preprocessorMacros;
 

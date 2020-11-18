@@ -14,14 +14,15 @@
 @interface UIBarButtonItemGroup : NSObject <NSCoding>
 {
     NSMutableArray *_barButtonItems;
-    BOOL _hidden;
     BOOL _locked;
+    BOOL _sendActionsBeforeDismiss;
+    BOOL _hidden;
     float _priority;
     UIBarButtonItem *_representativeItem;
-    double _minimumLeadingSpace;
-    double _minimumTrailingSpace;
     id<_UIBarButtonItemGroupOwner> _owner;
     _UIButtonGroupViewController *_representativeUI;
+    double _minimumLeadingSpace;
+    double _minimumTrailingSpace;
 }
 
 @property (copy, nonatomic) NSArray *barButtonItems;
@@ -35,6 +36,7 @@
 @property (nonatomic, getter=_priority, setter=_setPriority:) float priority; // @synthesize priority=_priority;
 @property (strong, nonatomic) UIBarButtonItem *representativeItem; // @synthesize representativeItem=_representativeItem;
 @property (strong, nonatomic, getter=_representativeUI, setter=_setRepresentativeUI:) _UIButtonGroupViewController *representativeUI; // @synthesize representativeUI=_representativeUI;
+@property (nonatomic, getter=_sendActionsBeforeDismiss, setter=_setSendActionsBeforeDismiss:) BOOL sendActionsBeforeDismiss; // @synthesize sendActionsBeforeDismiss=_sendActionsBeforeDismiss;
 
 - (void).cxx_destruct;
 - (void)_removeBarButtonItem:(id)arg1;

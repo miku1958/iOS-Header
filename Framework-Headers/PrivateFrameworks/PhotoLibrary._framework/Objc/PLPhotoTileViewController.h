@@ -6,15 +6,14 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <PhotoLibrary/PLCommentsViewControllerDelegate-Protocol.h>
 #import <PhotoLibrary/PLPhotoTileCloudPlaceholderViewDelegate-Protocol.h>
 #import <PhotoLibrary/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotoLibrary/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSObject, NSString, PHAsset, PHCachingImageManager, PLCommentsViewController, PLExpandableImageView, PLImageScrollView, PLPhotoTileBadgeView, PLTileContainerView, PLVideoView, UIGestureRecognizer, UIImage, UIImageView, UIView;
+@class NSArray, NSObject, NSString, PHAsset, PHCachingImageManager, PLExpandableImageView, PLImageScrollView, PLPhotoTileBadgeView, PLTileContainerView, PLVideoView, UIGestureRecognizer, UIImage, UIImageView, UIView;
 @protocol OS_dispatch_source, PLPhotoTileViewControllerDelegate, PLTilePlaceholderView;
 
-@interface PLPhotoTileViewController : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate, PLCommentsViewControllerDelegate, PLPhotoTileCloudPlaceholderViewDelegate>
+@interface PLPhotoTileViewController : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate, PLPhotoTileCloudPlaceholderViewDelegate>
 {
     UIImage *_image;
     UIImage *_pendingImage;
@@ -28,7 +27,6 @@
     UIImageView *_reviewCheckmarkImageView;
     UIView<PLTilePlaceholderView> *_placeholderView;
     BOOL _currentTileDownloadFinished;
-    PLCommentsViewController *_commentsViewController;
     UIGestureRecognizer *_singleTapGestureRecognizer;
     UIGestureRecognizer *_doubleTapGestureRecognizer;
     id<PLPhotoTileViewControllerDelegate> _tileDelegate;
@@ -75,28 +73,24 @@
     unsigned int _useZoomScaleForCropRect:1;
     unsigned int _avalancheBadgeShouldBeHidden:1;
     unsigned int _badgeShouldBeVisible:1;
-    unsigned int _commentsTableVisible:1;
     PLTileContainerView *_containerView;
     PHCachingImageManager *__cachingImageManager;
     int _fullSizeImageRequestID;
     NSArray *_customCenterOverlayConstraints;
     BOOL _shouldUpdateBadgeViewOptimalLayout;
     double _badgeViewOptimalLayoutLowestTop;
-    NSString *_draftCommentText;
-    BOOL _wasInCommentEditMode;
     BOOL _isLoadingFullSizeImage;
     BOOL _wantsCompactLayout;
     BOOL _reviewing;
     BOOL _picked;
     BOOL _shouldHideProgressIndicator;
+    BOOL _shouldSupressViewWillTransitionToSize;
     UIView *__customCenterOverlay;
     struct UIEdgeInsets _overlayInsets;
 }
 
 @property (strong, nonatomic, setter=_setCustomCenterOverlay:) UIView *_customCenterOverlay; // @synthesize _customCenterOverlay=__customCenterOverlay;
 @property (nonatomic) BOOL centerContentVertically; // @synthesize centerContentVertically=_centerContentVertically;
-@property (readonly, nonatomic) BOOL commentsTableIsVisible;
-@property (readonly, strong, nonatomic) PLCommentsViewController *commentsViewController; // @synthesize commentsViewController=_commentsViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL force1XCroppedImage; // @synthesize force1XCroppedImage=_force1XCroppedImage;
@@ -107,6 +101,7 @@
 @property (nonatomic) BOOL picked; // @synthesize picked=_picked;
 @property (nonatomic) BOOL reviewing; // @synthesize reviewing=_reviewing;
 @property (nonatomic) BOOL shouldHideProgressIndicator; // @synthesize shouldHideProgressIndicator=_shouldHideProgressIndicator;
+@property (nonatomic) BOOL shouldSupressViewWillTransitionToSize; // @synthesize shouldSupressViewWillTransitionToSize=_shouldSupressViewWillTransitionToSize;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIImage *thumbnailImage;
 @property (nonatomic) struct CGRect tileFrame;
@@ -161,18 +156,13 @@
 - (void)applicationWillResignActive:(id)arg1;
 - (id)cachingImageManager;
 - (void)cancelFullSizeImageRequest;
-- (void)commentsControllerDidDisplayUnreadComment:(id)arg1;
-- (void)commentsControllerDidExitEditMode:(id)arg1;
-- (void)commentsControllerInactiveAreaWasTapped:(id)arg1;
-- (void)commentsControllerWillBeginScrolling:(id)arg1;
-- (void)commentsControllerWillEnterEditMode:(id)arg1;
-- (id)commentsView;
 - (double)currentToDefaultZoomRatio;
 - (double)currentToMinZoomRatio;
 - (void)dealloc;
 - (double)defaultZoomScale;
 - (id)dictionaryWithCroppedImageForRect:(struct CGRect)arg1 minimalCropDimension:(double)arg2 withOptions:(int)arg3;
 - (void)didLoadImage;
+- (void)didMoveToParentViewController:(id)arg1;
 - (void)ensureFullSizeImageLoaded;
 - (id)expandableImageView;
 - (void)forceZoomingGesturesEnabled;
@@ -187,7 +177,6 @@
 - (id)initForPageController;
 - (id)initWithModelPhoto:(id)arg1 image:(id)arg2 frame:(struct CGRect)arg3 isThumbnail:(BOOL)arg4 imageOrientation:(int)arg5 allowZoomToFill:(BOOL)arg6 mode:(int)arg7;
 - (id)initWithModelPhoto:(id)arg1 thumbnailImage:(id)arg2 size:(struct CGSize)arg3;
-- (void)initializeCommentsTable;
 - (void)installVideoOverlay:(id)arg1;
 - (BOOL)isTVOut;
 - (BOOL)isZoomedOut;
@@ -200,11 +189,8 @@
 - (BOOL)photoShouldHaveAvalancheBadge;
 - (BOOL)photoShouldHaveHDRBadge;
 - (void)refreshTileWithFullScreenImage:(id)arg1 modelPhoto:(id)arg2;
-- (void)removeCommentsTable;
 - (void)resetZoom;
-- (void)restoreDraftCommentIfNecessary;
 - (void)retryDownload;
-- (void)saveDraftCommentIfNecessary;
 - (id)scrollView;
 - (struct CGSize)scrollView:(id)arg1 contentSizeForZoomScale:(double)arg2 withProposedSize:(struct CGSize)arg3;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
@@ -218,7 +204,6 @@
 - (void)setBadgeVisible:(BOOL)arg1;
 - (void)setBadgeVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setClientIsWallpaper:(BOOL)arg1;
-- (void)setCommentsTableVisibility:(BOOL)arg1 duration:(double)arg2;
 - (void)setCropOverlayRect:(struct CGRect)arg1 forCropRect:(struct CGRect)arg2;
 - (void)setFullSizeImage:(id)arg1;
 - (void)setGesturesEnabled:(BOOL)arg1;

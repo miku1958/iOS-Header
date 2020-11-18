@@ -24,6 +24,7 @@
 + (id)_transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 + (id)entityKeyForPropertyKey:(id)arg1;
 + (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
++ (id)fetchType;
 + (id)identifierCode;
 + (id)managedEntityName;
 + (BOOL)managedObjectSupportsTrashedState;

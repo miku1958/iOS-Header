@@ -6,16 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSDictionary, NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface ML3ArtworkConfiguration : NSObject
 {
-    NSMutableDictionary *_artworkConfigurationDictionary;
+    NSObject<OS_dispatch_queue> *_accessQueue;
+    NSDictionary *_artworkConfigurationDictionary;
     NSMutableDictionary *_supportedSizesCache;
     double _mainScreenScale;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *artworkConfigurationDictionary; // @synthesize artworkConfigurationDictionary=_artworkConfigurationDictionary;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
+@property (strong, nonatomic) NSDictionary *artworkConfigurationDictionary; // @synthesize artworkConfigurationDictionary=_artworkConfigurationDictionary;
 @property (nonatomic) double mainScreenScale; // @synthesize mainScreenScale=_mainScreenScale;
 @property (strong, nonatomic) NSMutableDictionary *supportedSizesCache; // @synthesize supportedSizesCache=_supportedSizesCache;
 

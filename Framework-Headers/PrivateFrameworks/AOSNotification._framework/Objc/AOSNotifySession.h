@@ -6,36 +6,17 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSXPCConnection;
-@protocol OS_dispatch_queue;
-
 @interface AOSNotifySession : NSObject
 {
-    NSXPCConnection *_xpcConnection;
-    NSObject<OS_dispatch_queue> *_xpcConnectionCreationQueue;
 }
 
-@property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *xpcConnectionCreationQueue; // @synthesize xpcConnectionCreationQueue=_xpcConnectionCreationQueue;
-
++ (void)load;
 + (id)sharedInstance;
-- (void).cxx_destruct;
-- (void)_destroyXPCConnection;
-- (id)currentXPCConnection;
-- (void)dealloc;
-- (void)didChangeFMFAccountInfo:(id)arg1;
-- (id)fmfDeviceId;
 - (id)fmipAccount;
 - (id)fmipDeviceId;
 - (id)iCloudAccount;
 - (id)init;
-- (void)locationAuthorizationForShareMyLocationWithCompletion:(CDUnknownBlockType)arg1;
-- (id)newErrorForCode:(int)arg1 message:(id)arg2;
-- (BOOL)performMigration;
-- (void)retrieveFMFAccountUsingCallback:(CDUnknownBlockType)arg1;
 - (void)startListeningOnTopic:(id)arg1;
-- (id)storeAccount;
-- (void)willDeleteiCloudAccountWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

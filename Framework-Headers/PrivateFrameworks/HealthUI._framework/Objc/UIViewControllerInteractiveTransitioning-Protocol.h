@@ -9,10 +9,13 @@
 @protocol UIViewControllerContextTransitioning;
 
 @protocol UIViewControllerInteractiveTransitioning <NSObject>
+
+@property (readonly, nonatomic) long long completionCurve;
+@property (readonly, nonatomic) double completionSpeed;
+@property (readonly, nonatomic) BOOL wantsInteractiveStart;
+
 - (void)startInteractiveTransition:(id<UIViewControllerContextTransitioning>)arg1;
 
 @optional
-- (long long)completionCurve;
-- (double)completionSpeed;
 @end
 

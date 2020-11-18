@@ -7,19 +7,21 @@
 #import <objc/NSObject.h>
 
 #import <HealthDaemon/HDAchievementEngineDelegate-Protocol.h>
+#import <HealthDaemon/_HKAchievementPredicateWorkoutsEnvironmentDataSource-Protocol.h>
 
-@class HKActivitySummary, NSArray, NSCalendar, NSString;
-@protocol HDHealthDaemon, OS_dispatch_queue;
+@class HDProfile, HDTransientAchievementDataStore, HKActivitySummary, NSCalendar, NSMutableArray, NSString;
+@protocol OS_dispatch_queue;
 
-@interface HDAchievementDoctor : NSObject <HDAchievementEngineDelegate>
+@interface HDAchievementDoctor : NSObject <HDAchievementEngineDelegate, _HKAchievementPredicateWorkoutsEnvironmentDataSource>
 {
-    id<HDHealthDaemon> _healthDaemon;
+    HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
+    HDTransientAchievementDataStore *_dataStore;
     NSCalendar *_calendar;
     HKActivitySummary *_currentActivitySummary;
     HKActivitySummary *_yesterdayActivitySummary;
-    NSArray *_workouts;
-    NSArray *_workoutEndDates;
+    NSMutableArray *_workouts;
+    NSMutableArray *_workoutEndDates;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,9 +29,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_achievementsInSet:(id)arg1 missingFromSet:(id)arg2;
 - (void).cxx_destruct;
 - (id)_achievementsGroupedByActivityCacheIndex:(id)arg1;
+- (void)_addWorkout:(id)arg1;
 - (id)_fetchAchievementsWithError:(id *)arg1;
 - (id)_fetchActivitySummariesOrderedByCacheIndexWithError:(id *)arg1;
 - (id)_fetchWorkoutsSortedByEndDateWithError:(id *)arg1;
@@ -39,6 +41,7 @@
 - (BOOL)_queue_detectMissingAchievements:(id *)arg1 resultingKeyValues:(id *)arg2 error:(id *)arg3;
 - (id)_queue_findExpectedAchievements:(id)arg1 missingFromAchievements:(id)arg2;
 - (BOOL)_queue_saveMissingAchievements:(id)arg1 keyValues:(id)arg2 error:(id *)arg3;
+- (id)_runAchievementEngine:(id)arg1 withPredicateEnvironment:(id)arg2 dataStore:(id)arg3 todayActivitySummary:(id)arg4 yesterdayActivitySummary:(id)arg5 currentDate:(id)arg6 addedWorkouts:(id)arg7;
 - (long long)activitySummaryIndexToday;
 - (double)briskMinutesToday;
 - (double)briskMinutesYesterday;
@@ -48,14 +51,16 @@
 - (id)energyBurnedGoalToday;
 - (id)energyBurnedGoalYesterday;
 - (id)init;
-- (id)initWithHealthDaemon:(id)arg1 targetQueue:(id)arg2;
-- (unsigned long long)numberOfSessionsCompletedAfterDate:(id)arg1 beforeDate:(id)arg2 minimumSessionDuration:(double)arg3;
+- (id)initWithProfile:(id)arg1 targetQueue:(id)arg2;
+- (long long)mostRecentWorkoutAnchor;
 - (void)runAchievementsFixupAsDryRun:(BOOL)arg1 persistingResultingKeyValues:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)sessionsEndingAfterAnchor:(long long)arg1 newAnchor:(long long *)arg2;
 - (unsigned long long)standingHoursToday;
 - (unsigned long long)standingHoursYesterday;
 - (unsigned long long)stepsTakenToday;
 - (unsigned long long)stepsTakenYesterday;
+- (id)workoutsEndingAfterAnchor:(long long)arg1 newAnchor:(long long *)arg2;
+- (id)workoutsInDateRangeStart:(id)arg1 end:(id)arg2;
+- (id)workoutsOfType:(id)arg1;
 
 @end
 

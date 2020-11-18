@@ -20,6 +20,7 @@
     FigCaptureSourceFormat *_requiredFormat;
     float _requiredMaxFrameRate;
     float _requiredMinFrameRate;
+    BOOL _hasSetVideoZoomFactorOnCaptureSource;
     float _videoZoomFactor;
     float _videoZoomRampAcceleration;
     int _imageControlMode;
@@ -27,13 +28,16 @@
     BOOL _applyMaxIntegrationTimeOverrideWhenAvailable;
     NSDictionary *_faceDetectionConfiguration;
     BOOL _sensorHDREnabled;
+    int _colorSpace;
 }
 
 @property (nonatomic) BOOL applyMaxIntegrationTimeOverrideWhenAvailable; // @synthesize applyMaxIntegrationTimeOverrideWhenAvailable=_applyMaxIntegrationTimeOverrideWhenAvailable;
 @property (nonatomic) BOOL automaticallyEnablesLowLightBoostWhenAvailable; // @synthesize automaticallyEnablesLowLightBoostWhenAvailable=_automaticallyEnablesLowLightBoostWhenAvailable;
+@property (nonatomic) int colorSpace; // @synthesize colorSpace=_colorSpace;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSDictionary *faceDetectionConfiguration; // @synthesize faceDetectionConfiguration=_faceDetectionConfiguration;
+@property (nonatomic) BOOL hasSetVideoZoomFactorOnCaptureSource; // @synthesize hasSetVideoZoomFactorOnCaptureSource=_hasSetVideoZoomFactorOnCaptureSource;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int imageControlMode; // @synthesize imageControlMode=_imageControlMode;
 @property (strong, nonatomic) FigCaptureSourceFormat *requiredFormat; // @synthesize requiredFormat=_requiredFormat;

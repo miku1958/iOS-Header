@@ -13,8 +13,6 @@
 @interface IKJSMediaItem : IKJSObject <IKJSMediaItem>
 {
     NSNumber *_resumeTime;
-    double _upNextPresentationStartTime;
-    double _upNextPresentationDuration;
     IKAppMediaItemBridge *_bridge;
 }
 
@@ -31,16 +29,19 @@
 @property (strong, nonatomic) NSString *subtitle;
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *type;
-@property double upNextPresentationDuration; // @synthesize upNextPresentationDuration=_upNextPresentationDuration;
-@property double upNextPresentationStartTime; // @synthesize upNextPresentationStartTime=_upNextPresentationStartTime;
 @property (strong, nonatomic) NSString *url;
 
 - (void).cxx_destruct;
+- (double)contentProposalAutomaticAcceptanceInterval;
+- (double)contentProposalPresentationTime;
+- (void)dealloc;
 - (id)initWithType:(id)arg1:(id)arg2;
 - (void)loadCertificateDataForURI:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
 - (void)loadContentIdentifierDataForURI:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
 - (void)loadKeyDataForURI:(id)arg1 requestData:(id)arg2 withCallback:(CDUnknownBlockType)arg3;
 - (id)ratingBadge;
+- (void)setContentProposalAutomaticAcceptanceInterval:(double)arg1;
+- (void)setContentProposalPresentationTime:(double)arg1;
 - (void)setRatingBadge:(id)arg1;
 
 @end

@@ -6,32 +6,45 @@
 
 #import <objc/NSObject.h>
 
-@class IPPerson, NSArray, NSDate, NSString;
+@class IPPerson, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSString;
 
 @interface IPMessage : NSObject
 {
-    NSArray *_messageUnits;
+    NSMutableArray *_messageUnits;
+    NSMutableDictionary *_keywordsDictionary;
+    NSString *_lowercaseSubject;
     NSString *_identifier;
+    NSString *_threadIdentifier;
     NSString *_subject;
     IPPerson *_sender;
     NSArray *_recipients;
     NSDate *_dateSent;
+    NSString *_type;
     NSString *_htmlContent;
 }
 
 @property (strong) NSDate *dateSent; // @synthesize dateSent=_dateSent;
 @property (strong) NSString *htmlContent; // @synthesize htmlContent=_htmlContent;
 @property (strong) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly) NSString *lowercaseSubject;
 @property (strong, nonatomic) NSArray *messageUnits; // @synthesize messageUnits=_messageUnits;
 @property (strong) NSArray *recipients; // @synthesize recipients=_recipients;
 @property (strong) IPPerson *sender; // @synthesize sender=_sender;
 @property (strong) NSString *subject; // @synthesize subject=_subject;
+@property (strong) NSString *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
+@property (strong) NSString *type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
+- (void)addDetectectedKeyword:(id)arg1 classificationTypeIdentifier:(id)arg2;
+- (void)addMessageUnit:(id)arg1;
+- (id)detectedKeywordsDictionary;
 - (id)firstHeaderValueForKey:(id)arg1 inHeaders:(id)arg2;
 - (id)init;
+- (id)initWithDateSent:(id)arg1;
+- (id)initWithDateSent:(id)arg1 subject:(id)arg2;
 - (id)initWithHTMLContent:(id)arg1 emailHeadersDictionary:(id)arg2 dateSent:(id)arg3;
 - (id)initWithIdentifier:(id)arg1 subject:(id)arg2 sender:(id)arg3 recipients:(id)arg4 dateSent:(id)arg5;
+- (id)initWithIdentifier:(id)arg1 subject:(id)arg2 sender:(id)arg3 recipients:(id)arg4 dateSent:(id)arg5 type:(id)arg6;
 
 @end
 

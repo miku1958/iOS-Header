@@ -7,20 +7,21 @@
 #import <Foundation/NSObject.h>
 
 #import <PreferencesUI/PSSpecifierGroupController-Protocol.h>
+#import <PreferencesUI/PSUIWirelessDataOptionsDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSNumber, NSString, PSExpandableAppListGroupController;
+@class AppWirelessDataUsageManager, NSArray, NSNumber, NSString, PSExpandableAppListGroupController, WirelessDataUsageWorkspace;
 
-@interface PSUIAppCellularUsageGroupController : NSObject <PSSpecifierGroupController>
+@interface PSUIAppCellularUsageGroupController : NSObject <PSSpecifierGroupController, PSUIWirelessDataOptionsDelegate>
 {
     NSArray *_cellularDataSwitches;
-    BOOL _showInternalDetails;
     BOOL _cancelled;
     BOOL _enabled;
+    WirelessDataUsageWorkspace *_workspace;
     NSNumber *_totalBytesUsed;
     NSNumber *_totalRoamingBytesUsed;
     PSExpandableAppListGroupController *_appGroupController;
-    NSDictionary *_systemServiceCategoryNames;
     NSArray *_managedBundleIDs;
+    AppWirelessDataUsageManager *_wirelessManager;
 }
 
 @property (strong, nonatomic) PSExpandableAppListGroupController *appGroupController; // @synthesize appGroupController=_appGroupController;
@@ -31,22 +32,23 @@
 @property (readonly, nonatomic) BOOL hasManagedCellularData;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *managedBundleIDs; // @synthesize managedBundleIDs=_managedBundleIDs;
-@property (nonatomic) BOOL showInternalDetails; // @synthesize showInternalDetails=_showInternalDetails;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSDictionary *systemServiceCategoryNames; // @synthesize systemServiceCategoryNames=_systemServiceCategoryNames;
 @property (strong, nonatomic) NSNumber *totalBytesUsed; // @synthesize totalBytesUsed=_totalBytesUsed;
 @property (strong, nonatomic) NSNumber *totalRoamingBytesUsed; // @synthesize totalRoamingBytesUsed=_totalRoamingBytesUsed;
+@property (strong, nonatomic) AppWirelessDataUsageManager *wirelessManager; // @synthesize wirelessManager=_wirelessManager;
+@property (strong, nonatomic) WirelessDataUsageWorkspace *workspace; // @synthesize workspace=_workspace;
 
++ (id)nameForSpecialCategory:(id)arg1;
 - (void).cxx_destruct;
 - (void)_createAppSpecifiersForVisibleApps:(id)arg1 hiddenApps:(id)arg2 unknownApps:(id)arg3 internalProcesses:(id)arg4 wifiAssist:(id)arg5;
 - (void)_updateTotalBytesUsed:(double)arg1 roamingBytesUsed:(double)arg2;
 - (id)appCellularDataEnabledForSpecifier:(id)arg1;
 - (void)cancel;
 - (id)dataUsageForApplicationSpecifier:(id)arg1;
+- (void)dealloc;
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2;
 - (id)isReliableNetworkFallbackEnabled:(id)arg1;
 - (id)managedCellularDataBundleIdentifiers;
-- (id)nameForSpecialCategory:(id)arg1;
 - (void)setAppCellularDataEnabled:(id)arg1 forSpecifier:(id)arg2;
 - (void)setReliableNetworkFallbackIsEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setSwitchesEnabled:(BOOL)arg1;

@@ -47,6 +47,7 @@
 @property (readonly, nonatomic) unsigned long long topMarginInPoints; // @dynamic topMarginInPoints;
 @property (nonatomic) int width; // @synthesize width;
 
++ (id)defaultGenericPaperForLocale:(id)arg1;
 + (id)documentPapers;
 + (id)generic3_5x5Paper;
 + (id)generic4x6Paper;

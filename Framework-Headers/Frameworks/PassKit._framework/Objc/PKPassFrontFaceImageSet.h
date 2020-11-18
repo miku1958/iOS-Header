@@ -22,10 +22,10 @@
 @property (nonatomic) struct CGRect thumbnailRect; // @synthesize thumbnailRect=_thumbnailRect;
 
 + (id)archiveName;
-+ (long long)currentVersion;
++ (unsigned int)currentVersion;
 + (long long)imageSetType;
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

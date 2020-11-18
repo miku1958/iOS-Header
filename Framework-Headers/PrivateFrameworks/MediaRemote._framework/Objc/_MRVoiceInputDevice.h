@@ -28,6 +28,7 @@
 @property (nonatomic) BOOL hasRecordingState;
 @property (nonatomic) int recordingState; // @synthesize recordingState=_recordingState;
 
+- (int)StringAsRecordingState:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -37,6 +38,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)recordingStateAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

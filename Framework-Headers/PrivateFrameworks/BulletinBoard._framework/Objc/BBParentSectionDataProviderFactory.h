@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/BBSectionIdentity-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
@@ -26,8 +26,8 @@
 
 + (id)factoryFromSectionInfo:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)dataProviders;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSectionInfo:(id)arg1;

@@ -6,25 +6,27 @@
 
 #import <StoreKitUI/SKUIPlayButtonControl.h>
 
-@class NSString;
+@class NSString, SKUIPlayButtonImageCache;
 
 @interface SKUIPlayButton : SKUIPlayButtonControl
 {
     BOOL _showStop;
-    BOOL _useLargeButton;
+    SKUIPlayButtonImageCache *_imageCache;
     BOOL _showOnDemand;
-    BOOL _radio;
     long long _itemIdentifier;
     NSString *_playItemIdentifier;
+    long long _style;
     NSString *_mediaURLString;
 }
 
+@property (readonly, nonatomic) SKUIPlayButtonImageCache *imageCache; // @synthesize imageCache=_imageCache;
 @property (nonatomic) long long itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property (copy, nonatomic) NSString *mediaURLString; // @synthesize mediaURLString=_mediaURLString;
 @property (copy, nonatomic) NSString *playItemIdentifier; // @synthesize playItemIdentifier=_playItemIdentifier;
-@property (nonatomic, getter=isRadio) BOOL radio; // @synthesize radio=_radio;
+@property (nonatomic, getter=isRadio) BOOL radio;
 @property (nonatomic) BOOL showOnDemand; // @synthesize showOnDemand=_showOnDemand;
-@property (nonatomic) BOOL useLargeButton; // @synthesize useLargeButton=_useLargeButton;
+@property (nonatomic) long long style; // @synthesize style=_style;
+@property (nonatomic) BOOL useLargeButton;
 
 + (struct CGSize)sizeThatFitsWidth:(double)arg1 viewElement:(id)arg2 context:(id)arg3;
 - (void).cxx_destruct;
@@ -33,6 +35,7 @@
 - (struct CGSize)buttonSize;
 - (id)cancelImage;
 - (id)defaultBackgroundColor;
+- (id)images;
 - (void)layoutSubviews;
 - (id)outerBorderColor;
 - (id)playImage;

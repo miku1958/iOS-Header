@@ -15,6 +15,7 @@
     NSMutableArray *_clientSuggestedRoutes;
     NSData *_directionsResponseId;
     GEORPUserSearchInput *_endWaypoint;
+    NSMutableArray *_instructionCorrections;
     NSData *_overviewScreenshotImageData;
     unsigned int _problematicLineIndex;
     NSMutableArray *_problematicRouteIndexs;
@@ -35,15 +36,21 @@
 @property (nonatomic) BOOL hasProblematicLineIndex;
 @property (nonatomic) BOOL hasProblematicStepIndex;
 @property (readonly, nonatomic) BOOL hasStartWaypoint;
+@property (strong, nonatomic) NSMutableArray *instructionCorrections; // @synthesize instructionCorrections=_instructionCorrections;
 @property (strong, nonatomic) NSData *overviewScreenshotImageData; // @synthesize overviewScreenshotImageData=_overviewScreenshotImageData;
 @property (nonatomic) unsigned int problematicLineIndex; // @synthesize problematicLineIndex=_problematicLineIndex;
 @property (strong, nonatomic) NSMutableArray *problematicRouteIndexs; // @synthesize problematicRouteIndexs=_problematicRouteIndexs;
 @property (nonatomic) unsigned int problematicStepIndex; // @synthesize problematicStepIndex=_problematicStepIndex;
 @property (strong, nonatomic) GEORPUserSearchInput *startWaypoint; // @synthesize startWaypoint=_startWaypoint;
 
++ (Class)clientSuggestedRouteType;
++ (Class)instructionCorrectionType;
++ (Class)problematicRouteIndexType;
 - (void)addClientSuggestedRoute:(id)arg1;
+- (void)addInstructionCorrection:(id)arg1;
 - (void)addProblematicRouteIndex:(id)arg1;
 - (void)clearClientSuggestedRoutes;
+- (void)clearInstructionCorrections;
 - (void)clearProblematicRouteIndexs;
 - (id)clientSuggestedRouteAtIndex:(unsigned long long)arg1;
 - (unsigned long long)clientSuggestedRoutesCount;
@@ -53,6 +60,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)instructionCorrectionAtIndex:(unsigned long long)arg1;
+- (unsigned long long)instructionCorrectionsCount;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)problematicRouteIndexAtIndex:(unsigned long long)arg1;

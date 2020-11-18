@@ -92,7 +92,6 @@
 + (id)_popupAlertBackground;
 + (BOOL)atLeastOneAlertVisible;
 + (struct CGSize)minimumSize;
-+ (void)noteOrientationChangingTo:(long long)arg1;
 + (id)topMostAlert;
 + (id)visibleAlert;
 - (void).cxx_destruct;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <EasyConfig/NSCopying-Protocol.h>
 
@@ -43,6 +43,7 @@
     NSDictionary *_configResponse;
     BOOL _pausesAfterApply;
     BOOL _supportsHAP;
+    BOOL _supportsHAP2;
     BOOL _supportsMFi;
     BOOL _supportsTLV;
     BOOL _preConfigMetricsSet;
@@ -58,6 +59,21 @@
     double _applyConfigFinishTime;
     double _postConfigCheckStartTime;
     double _postConfigCheckFinishTime;
+    NSDictionary *_deviceInfo;
+    double _promptForSetupCodeTime;
+    unsigned int _enterSetupCodeMs;
+    BOOL _hasPairingDelegate;
+    struct {
+        void *context;
+        CDUnknownFunctionPointerType showSetupCode_f;
+        CDUnknownFunctionPointerType hideSetupCode_f;
+        CDUnknownFunctionPointerType promptForSetupCode_f;
+        CDUnknownFunctionPointerType copyIdentity_f;
+        CDUnknownFunctionPointerType findPeer_f;
+        CDUnknownFunctionPointerType savePeer_f;
+        CDUnknownFunctionPointerType resumeRequest_f;
+        CDUnknownFunctionPointerType resumeResponse_f;
+    } _pairingDelegate;
 }
 
 @property (copy, nonatomic) NSDictionary *configuration; // @synthesize configuration=_configuration;
@@ -68,8 +84,10 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) BOOL pausesAfterApply; // @synthesize pausesAfterApply=_pausesAfterApply;
 
++ (id)deviceWithInfo:(id)arg1;
 + (id)deviceWithScanRecord:(id)arg1;
 + (BOOL)supportedScanRecord:(id)arg1;
+- (void).cxx_destruct;
 - (void)_applyConfigCompletion:(struct HTTPMessagePrivate *)arg1;
 - (int)_applyConfigStart;
 - (int)_configureStart:(id)arg1;
@@ -94,13 +112,14 @@
 - (void)_start;
 - (int)_startBonjourWithTimeout:(int)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_stop:(int)arg1;
-- (int)_timeoutTimerStart:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
+- (int)_timeoutTimerStart:(int)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_trySetupCode:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)init;
 - (BOOL)removed:(id)arg1;
 - (void)resumePostConfig;
+- (void)setPairingDelegate:(const void *)arg1;
 - (void)setPostConfigMetrics:(const CDStruct_6a23f5a0 *)arg1;
 - (void)setPreConfigMetrics:(const CDStruct_56123b44 *)arg1;
 - (void)setPromptForSetupCodeHandler:(CDUnknownBlockType)arg1;

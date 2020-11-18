@@ -21,6 +21,7 @@
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithURL:(id)arg1 extraInfo:(id)arg2;

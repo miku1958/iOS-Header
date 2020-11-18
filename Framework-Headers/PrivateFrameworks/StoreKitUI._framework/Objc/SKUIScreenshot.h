@@ -17,6 +17,7 @@
     long long _uniqueIdentifier;
     NSMutableDictionary *_urls;
     NSMutableDictionary *_sizes;
+    NSString *_urlTemplate;
 }
 
 @property (readonly, nonatomic) NSMutableDictionary *cacheRepresentation;

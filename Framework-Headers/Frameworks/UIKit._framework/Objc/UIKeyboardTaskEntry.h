@@ -8,11 +8,16 @@
 
 #import <UIKit/NSCopying-Protocol.h>
 
+@class NSArray;
+
 __attribute__((visibility("hidden")))
 @interface UIKeyboardTaskEntry : NSObject <NSCopying>
 {
     CDUnknownBlockType __task;
+    NSArray *__creationStack;
 }
+
+@property (readonly, strong, nonatomic) NSArray *originatingStack; // @synthesize originatingStack=__creationStack;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

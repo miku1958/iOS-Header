@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDictionary, NSString, NSURL;
+@class NSArray, NSDictionary, NSString, NSURL;
 
 @protocol SGReverseTemplateJS
-- (void)emailToOutput:(NSDictionary *)arg1 reply:(void (^)(NSArray *, NSArray *))arg2;
+- (void)emailToJsonLd:(NSDictionary *)arg1 reply:(void (^)(NSDictionary *))arg2;
+- (void)emailToOutput:(NSDictionary *)arg1 reply:(void (^)(NSArray *, NSArray *, NSDictionary *))arg2;
+- (void)schemaOrgToOutput:(NSArray *)arg1 reply:(void (^)(NSArray *, NSArray *, NSDictionary *))arg2;
 - (void)setAssetPath:(NSURL *)arg1 locale:(NSString *)arg2;
 - (void)shouldDownloadFull:(NSDictionary *)arg1 reply:(void (^)(BOOL))arg2;
+- (void)textMessageToOutput:(NSDictionary *)arg1 reply:(void (^)(NSArray *, NSArray *, NSDictionary *))arg2;
 @end
 

@@ -17,14 +17,14 @@
 }
 
 @property (readonly, weak, nonatomic) IKAppContext *appContext; // @synthesize appContext=_appContext;
-@property (readonly, nonatomic) id<IKAppPlaylist> appPlaylist; // @synthesize appPlaylist=_appPlaylist;
+@property (readonly, weak, nonatomic) id<IKAppPlaylist> appPlaylist; // @synthesize appPlaylist=_appPlaylist;
 @property (nonatomic) long long endAction;
 @property (readonly, weak, nonatomic) IKJSPlaylist *jsPlaylist; // @synthesize jsPlaylist=_jsPlaylist;
 @property (readonly) unsigned long long length;
 
 - (void).cxx_destruct;
-- (void)dealloc;
-- (id)initWithJSPlaylist:(id)arg1;
+- (void)cleanup;
+- (id)initWithAppContext:(id)arg1 jsPlaylist:(id)arg2;
 - (id)item:(long long)arg1;
 - (id)replaceItemsAt:(long long)arg1 count:(unsigned long long)arg2 with:(id)arg3;
 

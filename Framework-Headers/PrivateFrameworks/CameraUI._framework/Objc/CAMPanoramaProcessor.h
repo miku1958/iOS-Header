@@ -18,15 +18,13 @@
     struct CGSize _previewSize;
 }
 
-@property (nonatomic, getter=isCapturingPanorama) BOOL capturingPanorama; // @synthesize capturingPanorama=_capturingPanorama;
+@property (nonatomic, getter=isCapturingPanorama, setter=_setCapturingPanorama:) BOOL capturingPanorama; // @synthesize capturingPanorama=_capturingPanorama;
 @property (readonly, weak, nonatomic) id<CAMPanoramaProcessorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) long long direction; // @synthesize direction=_direction;
 @property (readonly, nonatomic) struct CGSize previewSize; // @synthesize previewSize=_previewSize;
-@property (strong, nonatomic) CAMPanoramaCaptureRequest *request; // @synthesize request=_request;
+@property (strong, nonatomic, setter=_setRequest:) CAMPanoramaCaptureRequest *request; // @synthesize request=_request;
 
 - (void).cxx_destruct;
-- (void)_setCapturingPanorama:(BOOL)arg1;
-- (void)_setRequest:(id)arg1;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1;
 - (void)invalidate;

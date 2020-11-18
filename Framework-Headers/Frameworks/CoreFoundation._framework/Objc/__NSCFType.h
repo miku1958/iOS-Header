@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_tryRetain;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (oneway void)release;

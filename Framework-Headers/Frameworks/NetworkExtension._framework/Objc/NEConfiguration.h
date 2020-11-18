@@ -64,7 +64,6 @@
 - (BOOL)configureL2TPWithPPPOptions:(id)arg1;
 - (BOOL)configurePPPCommon:(id)arg1;
 - (BOOL)configurePPPWithVPNOptions:(id)arg1 payloadBase:(id)arg2;
-- (BOOL)configurePPTPWithPPPOptions:(id)arg1;
 - (BOOL)configurePluginWithPayload:(id)arg1 pluginType:(id)arg2 payloadType:(id)arg3;
 - (BOOL)configureVpnOnDemand:(id)arg1 vpnType:(id)arg2;
 - (BOOL)configureVpnOnDemandRules:(id)arg1;
@@ -104,6 +103,7 @@
 - (id)initWithVPNPayload:(id)arg1 configurationName:(id)arg2 grade:(long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isSupportedBySC;
+- (BOOL)needToUpdateKeychain;
 - (BOOL)setAppLayerVPNRuleSettings:(id)arg1 withAppIdentifier:(id)arg2;
 - (BOOL)setAppLayerVPNUUID:(id)arg1 andSafariDomains:(id)arg2;
 - (BOOL)setCertificateContentFilter:(id)arg1;

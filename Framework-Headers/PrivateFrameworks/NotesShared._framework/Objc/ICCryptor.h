@@ -10,6 +10,7 @@
 {
 }
 
++ (id)allCachedKeys;
 + (BOOL)authenticateWithPassphrase:(id)arg1 forAccount:(id)arg2;
 + (BOOL)authenticateWithPassphrase:(id)arg1 forNote:(id)arg2;
 + (void)cacheMasterKeyWithPassphrase:(id)arg1;
@@ -50,7 +51,7 @@
 + (double)timeIntervalBeforeClearingCachedKeys;
 + (void)transferSharedPassphraseFromAccount:(id)arg1 toAccount:(id)arg2;
 + (id)unwrappedKeyForObject:(id)arg1;
-+ (BOOL)updateAllNotesWithOldPassphrase:(id)arg1 toSharedPassphrase:(id)arg2 fromAccount:(id)arg3;
++ (BOOL)updateAllNotesWithOldPassphrase:(id)arg1 toSharedPassphrase:(id)arg2 fromAccount:(id)arg3 progress:(id)arg4;
 + (BOOL)userHasPassphraseSetForAccount:(id)arg1;
 + (BOOL)userHasPassphraseSetForNote:(id)arg1;
 + (BOOL)userHasPassphraseSetForObject:(id)arg1;

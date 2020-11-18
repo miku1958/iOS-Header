@@ -80,6 +80,9 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *thoroughfare; // @synthesize thoroughfare=_thoroughfare;
 
++ (Class)areaOfInterestType;
++ (Class)dependentLocalityType;
++ (Class)subPremiseType;
 - (BOOL)_isEquivalentURLRepresentationTo:(id)arg1;
 - (void)addAreaOfInterest:(id)arg1;
 - (void)addDependentLocality:(id)arg1;

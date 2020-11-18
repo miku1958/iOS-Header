@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSMutableArray *zoneSummarys; // @synthesize zoneSummarys=_zoneSummarys;
 
++ (Class)zoneSummaryType;
 - (void).cxx_destruct;
 - (void)addZoneSummary:(id)arg1;
 - (void)clearZoneSummarys;

@@ -45,6 +45,7 @@
 - (void)_rememberUUIDsForBatch:(id)arg1;
 - (unsigned long long)batchSize;
 - (void)cache:(id)arg1 willEvictObject:(id)arg2;
+- (BOOL)containsObject:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
@@ -54,7 +55,6 @@
 - (unsigned long long)indexOfObject:(id)arg1 inRange:(struct _NSRange)arg2;
 - (id)initWithOIDs:(id)arg1 options:(id)arg2 dataSource:(id)arg3;
 - (id)initWithOIDs:(id)arg1 options:(id)arg2 photoLibrary:(id)arg3;
-- (void)min:(id *)arg1 andMax:(id *)arg2 forKeypath:(id)arg3;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (void)prefetchObjectsAtIndexes:(id)arg1;

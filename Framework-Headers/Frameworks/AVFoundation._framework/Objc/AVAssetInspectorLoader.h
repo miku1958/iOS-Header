@@ -40,6 +40,8 @@
 @property (readonly, nonatomic, getter=_weakReference) AVWeakReference *weakReference;
 
 + (void)initialize;
+- (id)_URLSessionDataDelegate;
+- (id)_URLSessionOperationQueue;
 - (id)_createAVErrorForError:(id)arg1 andFigErrorCode:(int)arg2;
 - (void)_ensureAllDependenciesOfKeyAreLoaded:(id)arg1;
 - (void)_setIsAssociatedWithFragmentMinder:(BOOL)arg1;

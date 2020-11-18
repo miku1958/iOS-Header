@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_neverLocalizedString;
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryChanged:(id)arg1;
 - (void)_neverRepeatButtonTapped:(id)arg1;

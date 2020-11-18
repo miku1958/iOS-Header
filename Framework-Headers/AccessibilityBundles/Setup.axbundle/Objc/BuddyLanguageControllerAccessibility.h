@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)selectLanguage:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 
 @end

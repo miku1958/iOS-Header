@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSSet, NSString;
 
 @interface CAWindowServerDisplay : NSObject
 {
     struct CAWindowServerDisplayImpl *_impl;
+    BOOL _mirroringEnabled;
 }
 
 @property (copy) NSString *TVMode;
@@ -32,7 +33,7 @@
 @property float maximumBrightness;
 @property float maximumRefreshRate;
 @property float minimumRefreshRate;
-@property (getter=isMirroringEnabled) BOOL mirroringEnabled;
+@property (getter=isMirroringEnabled) BOOL mirroringEnabled; // @synthesize mirroringEnabled=_mirroringEnabled;
 @property (readonly) NSString *name;
 @property (copy) NSString *orientation;
 @property double overscanAmount;
@@ -41,6 +42,7 @@
 @property (readonly) unsigned int rendererFlags;
 @property double scale;
 @property (getter=isSecure) BOOL secure;
+@property (readonly) BOOL supportsExtendedColors;
 @property long long tag;
 @property (readonly) NSString *uniqueId;
 @property BOOL usesPreferredModeRefreshRate;
@@ -59,6 +61,7 @@
 - (void)invalidate;
 - (void)removeAllClones;
 - (void)removeClone:(id)arg1;
+- (void)setAccessibilityColorMatrix:(float *)arg1 scale:(float)arg2;
 - (void)setColorMatrix:(float *)arg1 scale:(float)arg2 rampDuration:(double)arg3;
 - (unsigned int)taskPortOfContextId:(unsigned int)arg1;
 - (void)update;

@@ -21,7 +21,7 @@
 @property (nonatomic) CDStruct_4c969caf auditToken; // @synthesize auditToken=_auditToken;
 @property (nonatomic) unsigned int clientPort; // @synthesize clientPort=_clientPort;
 @property (nonatomic) int key; // @synthesize key=_key;
-@property (strong, nonatomic) NSDictionary *payload; // @synthesize payload=_payload;
+@property (copy, nonatomic) NSDictionary *payload; // @synthesize payload=_payload;
 @property (readonly, nonatomic) NSString *senderBundleId;
 
 + (id)archivedMessageFromData:(id)arg1;

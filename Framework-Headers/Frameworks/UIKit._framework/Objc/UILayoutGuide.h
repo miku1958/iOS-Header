@@ -10,7 +10,7 @@
 #import <UIKit/NSISVariableDelegate-Protocol.h>
 #import <UIKit/_UILayoutItem-Protocol.h>
 
-@class NSArray, NSISVariable, NSLayoutDimension, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSString, UIView;
+@class NSArray, NSISVariable, NSLayoutDimension, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSMapTable, NSString, UIView;
 
 @interface UILayoutGuide : NSObject <_UILayoutItem, NSISVariableDelegate, NSCoding>
 {
@@ -28,6 +28,7 @@
     NSISVariable *_boundsWidthVariable;
     NSISVariable *_boundsHeightVariable;
     NSArray *_systemConstraints;
+    NSMapTable *_stashedLayoutVariableObservations;
     NSLayoutXAxisAnchor *_leadingAnchor;
     NSLayoutXAxisAnchor *_trailingAnchor;
     NSLayoutXAxisAnchor *_leftAnchor;
@@ -41,12 +42,13 @@
 }
 
 @property (nonatomic, setter=_setAllowOwningViewSetting:) BOOL _allowOwningViewSetting; // @synthesize _allowOwningViewSetting;
-@property (strong, nonatomic, setter=_setBoundsHeightVariable:) NSISVariable *_boundsHeightVariable; // @synthesize _boundsHeightVariable;
-@property (strong, nonatomic, setter=_setBoundsWidthVariable:) NSISVariable *_boundsWidthVariable; // @synthesize _boundsWidthVariable;
+@property (readonly, strong, nonatomic) NSISVariable *_boundsHeightVariable; // @synthesize _boundsHeightVariable;
+@property (readonly, strong, nonatomic) NSISVariable *_boundsWidthVariable; // @synthesize _boundsWidthVariable;
 @property (nonatomic, getter=_isLockedToOwningView, setter=_setLockedToOwningView:) BOOL _lockedToOwningView; // @synthesize _lockedToOwningView=_isLockedToOwningView;
-@property (strong, nonatomic, setter=_setMinXVariable:) NSISVariable *_minXVariable; // @synthesize _minXVariable;
-@property (strong, nonatomic, setter=_setMinYVariable:) NSISVariable *_minYVariable; // @synthesize _minYVariable;
+@property (readonly, strong, nonatomic) NSISVariable *_minXVariable; // @synthesize _minXVariable;
+@property (readonly, strong, nonatomic) NSISVariable *_minYVariable; // @synthesize _minYVariable;
 @property (nonatomic, setter=_setShouldBeArchived:) BOOL _shouldBeArchived; // @synthesize _shouldBeArchived=__shouldBeArchived;
+@property (readonly, strong, nonatomic) NSMapTable *_stashedLayoutVariableObservations; // @synthesize _stashedLayoutVariableObservations;
 @property (strong, nonatomic, setter=_setSystemConstraints:) NSArray *_systemConstraints; // @synthesize _systemConstraints;
 @property (readonly, nonatomic) BOOL _useManualLayoutFrame; // @synthesize _useManualLayoutFrame;
 @property (readonly) NSLayoutYAxisAnchor *bottomAnchor; // @synthesize bottomAnchor=_bottomAnchor;
@@ -54,6 +56,7 @@
 @property (readonly) NSLayoutYAxisAnchor *centerYAnchor; // @synthesize centerYAnchor=_centerYAnchor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasAmbiguousLayout;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSLayoutDimension *heightAnchor; // @synthesize heightAnchor=_heightAnchor;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
@@ -75,6 +78,13 @@
 - (void)_setManualLayoutFrame:(struct CGRect)arg1;
 - (void)_setOwningView:(id)arg1;
 - (void)_snipReferencingConstraints;
+- (id)_uili_existingBaseFrameVariables;
+- (id)_uili_existingLayoutVariables;
+- (id)_uili_observableLayoutEngineForBaseFrameVariables:(BOOL)arg1;
+- (void)_uili_removeLayoutVariableObservationsOnlyToSupportTAMICChange:(BOOL)arg1;
+- (BOOL)_uili_requiresObservationForVariable:(id)arg1;
+- (void)_uili_stashLayoutVariableObservation:(id)arg1 forVariable:(id)arg2;
+- (id)constraintsAffectingLayoutForAxis:(long long)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)forwardInvocation:(id)arg1;
@@ -95,9 +105,12 @@
 - (struct CGSize)nsli_convertSizeToEngineSpace:(struct CGSize)arg1;
 - (id)nsli_description;
 - (BOOL)nsli_descriptionIncludesPointer;
+- (id)nsli_heightVariable;
 - (id)nsli_installedConstraints;
 - (BOOL)nsli_isCollectingConstraintChangesForLaterCoordinatedFlush:(id)arg1;
 - (BOOL)nsli_isFlipped;
+- (BOOL)nsli_isLegalConstraintItem;
+- (BOOL)nsli_isRTL;
 - (id)nsli_layoutEngine;
 - (BOOL)nsli_lowerAttribute:(int)arg1 intoExpression:(id)arg2 withCoefficient:(double)arg3 container:(id)arg4;
 - (BOOL)nsli_lowerAttribute:(int)arg1 intoExpression:(id)arg2 withCoefficient:(double)arg3 forConstraint:(id)arg4;
@@ -107,6 +120,7 @@
 - (BOOL)nsli_removeConstraint:(id)arg1;
 - (BOOL)nsli_resolvedValue:(double *)arg1 forSymbolicConstant:(id)arg2 inConstraint:(id)arg3 error:(id *)arg4;
 - (id)nsli_superitem;
+- (id)nsli_widthVariable;
 
 @end
 

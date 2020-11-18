@@ -19,6 +19,9 @@
     SEL _action;
 }
 
+@property (nonatomic) SEL action; // @synthesize action=_action;
+@property (weak, nonatomic) id target; // @synthesize target=_target;
+
 - (void).cxx_destruct;
 - (void)_playButtonActivate:(id)arg1;
 - (void)_playButtonDeactivate:(id)arg1;

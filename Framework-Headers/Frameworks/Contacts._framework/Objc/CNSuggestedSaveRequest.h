@@ -20,6 +20,7 @@
 @property (readonly, copy, nonatomic) NSSet *rejectedSuggestions;
 
 - (void)confirmSuggestion:(id)arg1;
+- (void)dealloc;
 - (void)rejectSuggestion:(id)arg1;
 - (id)storeIdentifier;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString, NSURL;
+@class NSDate, NSDictionary, NSString, NSURL;
 
 @interface ASAsset : NSObject
 {
@@ -17,6 +17,7 @@
     NSString *_identifier;
     CDUnknownBlockType _progressHandler;
     struct __MobileAsset *_cfAsset;
+    BOOL _userInitiatedDownload;
 }
 
 @property (readonly, nonatomic) NSString *assetType; // @synthesize assetType=_assetType;
@@ -25,10 +26,13 @@
 @property (strong, nonatomic) NSDictionary *downloadOptions; // @synthesize downloadOptions=_downloadOptions;
 @property (readonly, nonatomic) NSDictionary *fullAttributes;
 @property (nonatomic) long long garbageCollectionBehavior;
+@property (readonly, nonatomic) NSDate *installDate;
 @property (readonly, nonatomic) NSURL *localURL;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property (readonly, nonatomic) long long state;
+@property (nonatomic) BOOL userInitiatedDownload; // @synthesize userInitiatedDownload=_userInitiatedDownload;
 
++ (BOOL)nonUserInitiatedDownloadsAllowed;
 - (void)_downloadWithOptions:(id)arg1 shouldFireCallback:(BOOL)arg2;
 - (id)_getLocalAttribute:(id)arg1;
 - (void)adjustDownloadOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -24,11 +24,11 @@
 - (id)_resourceQueue_objectForKey:(id)arg1;
 - (void)_resourceQueue_removeThreadLocalObjectForKey:(id)arg1;
 - (void)_resourceQueue_storeThreadLocalObject:(id)arg1 forKey:(id)arg2;
-- (id)fetchObjectForKey:(id)arg1 database:(id)arg2 faultHandler:(CDUnknownBlockType)arg3;
+- (id)fetchObjectForKey:(id)arg1 database:(id)arg2 error:(id *)arg3 faultHandler:(CDUnknownBlockType)arg4;
 - (id)init;
 - (id)objectForKey:(id)arg1;
-- (void)removeAllObjects;
-- (void)removeObjectForKey:(id)arg1;
+- (void)removeAllObjectsWithDatabase:(id)arg1;
+- (void)removeObjectForKey:(id)arg1 database:(id)arg2;
 
 @end
 

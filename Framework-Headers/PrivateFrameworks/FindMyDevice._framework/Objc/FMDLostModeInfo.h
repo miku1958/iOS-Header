@@ -14,6 +14,7 @@
 {
     BOOL _lostModeEnabled;
     BOOL _disableSlideToUnlock;
+    BOOL _facetimeCapable;
     NSString *_message;
     NSString *_phoneNumber;
     unsigned long long _lostModeType;
@@ -21,6 +22,7 @@
 }
 
 @property (nonatomic) BOOL disableSlideToUnlock; // @synthesize disableSlideToUnlock=_disableSlideToUnlock;
+@property (nonatomic) BOOL facetimeCapable; // @synthesize facetimeCapable=_facetimeCapable;
 @property (strong, nonatomic) NSString *footnoteText; // @synthesize footnoteText=_footnoteText;
 @property (nonatomic) BOOL lostModeEnabled; // @synthesize lostModeEnabled=_lostModeEnabled;
 @property (nonatomic) unsigned long long lostModeType; // @synthesize lostModeType=_lostModeType;

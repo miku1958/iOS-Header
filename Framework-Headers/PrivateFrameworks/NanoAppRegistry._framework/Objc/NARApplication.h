@@ -8,25 +8,30 @@
 
 #import <NanoAppRegistry/NSSecureCoding-Protocol.h>
 
-@class NARGlance, NSArray, NSDictionary, NSString;
+@class NARApplicationState, NARGlance, NSArray, NSDictionary, NSString;
 
 @interface NARApplication : NSObject <NSSecureCoding>
 {
     unsigned long long _sequenceNumber;
     NSString *_launchServicesBundleType;
     NSString *_parentApplicationBundleIdentifier;
+    NSArray *_appTags;
     NARGlance *_glance;
+    NARApplicationState *_appState;
     NSDictionary *_infoPlist;
     NSDictionary *_localizedStrings;
     NSDictionary *_iTunesPlistStrings;
 }
 
+@property (strong, nonatomic) NARApplicationState *appState; // @synthesize appState=_appState;
+@property (strong, nonatomic) NSArray *appTags; // @synthesize appTags=_appTags;
 @property (readonly, nonatomic) NSString *applicationIdentifier;
 @property (readonly, nonatomic) NSString *bundleName;
 @property (readonly, nonatomic) NSString *bundleVersion;
 @property (strong, nonatomic) NARGlance *glance; // @synthesize glance=_glance;
 @property (strong, nonatomic) NSDictionary *iTunesPlistStrings; // @synthesize iTunesPlistStrings=_iTunesPlistStrings;
 @property (strong, nonatomic) NSDictionary *infoPlist; // @synthesize infoPlist=_infoPlist;
+@property (readonly, nonatomic) BOOL isHidden;
 @property (readonly, nonatomic) NSString *itemName;
 @property (copy, nonatomic) NSString *launchServicesBundleType; // @synthesize launchServicesBundleType=_launchServicesBundleType;
 @property (readonly, nonatomic) NSArray *localizations;

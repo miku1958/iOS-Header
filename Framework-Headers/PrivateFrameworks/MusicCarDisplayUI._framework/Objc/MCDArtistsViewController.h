@@ -20,6 +20,7 @@
 - (void)_limitedUIDidChange;
 - (BOOL)shouldShowActionCellConfiguration:(Class)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 
 @end
 

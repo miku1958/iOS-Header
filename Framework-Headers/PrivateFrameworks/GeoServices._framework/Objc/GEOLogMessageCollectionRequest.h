@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *logMessages; // @synthesize logMessages=_logMessages;
 
++ (Class)logMessageType;
 - (void)addLogMessage:(id)arg1;
 - (void)clearLogMessages;
 - (void)copyTo:(id)arg1;

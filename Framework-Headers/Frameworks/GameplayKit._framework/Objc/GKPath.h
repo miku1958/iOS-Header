@@ -11,23 +11,26 @@
 @interface GKPath : NSObject
 {
     struct PolylinePathway _pathway;
-    BOOL _cyclical;
-    float _radius;
 }
 
 @property (nonatomic, getter=isCyclical) BOOL cyclical;
 @property (readonly) unsigned long long numPoints;
 @property (nonatomic) float radius;
 
++ (id)pathWithFloat3Points:(MISSING_TYPE **)arg1 count:(unsigned long long)arg2 radius:(float)arg3 cyclical:(BOOL)arg4;
 + (id)pathWithGraphNodes:(id)arg1 radius:(float)arg2;
 + (id)pathWithPoints:(MISSING_TYPE **)arg1 count:(unsigned long long)arg2 radius:(float)arg3 cyclical:(BOOL)arg4;
 - (id).cxx_construct;
-- (BOOL)cyclical;
-- (id)init;
+- (void).cxx_destruct;
+- (BOOL)_cyclical;
+- (MISSING_TYPE *)float2AtIndex:(unsigned long long)arg1;
+- (MISSING_TYPE *)float3AtIndex:(unsigned long long)arg1;
+- (id)initWithFloat3Points:(MISSING_TYPE **)arg1 count:(unsigned long long)arg2 radius:(float)arg3 cyclical:(BOOL)arg4;
 - (id)initWithGraphNodes:(id)arg1 radius:(float)arg2;
 - (id)initWithPoints:(MISSING_TYPE **)arg1 count:(unsigned long long)arg2 radius:(float)arg3 cyclical:(BOOL)arg4;
 - (struct PolylinePathway *)pathway;
 - (MISSING_TYPE *)pointAtIndex:(unsigned long long)arg1;
+- (void)set_cyclical:(BOOL)arg1;
 
 @end
 

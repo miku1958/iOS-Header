@@ -6,21 +6,35 @@
 
 #import <HealthUI/HKEmergencyCardTableItem.h>
 
-@class NSDateFormatter, UILabel, UITableViewCell;
+#import <HealthUI/HKIDUpdatedAndEditCellDelegate-Protocol.h>
 
-@interface HKEmergencyCardLastUpdatedTableItem : HKEmergencyCardTableItem
+@class HKIDUpdatedAndEditCell, NSDateFormatter, NSString, UILabel;
+@protocol HKEmergencyCardLastUpdatedTableItemDelegate;
+
+@interface HKEmergencyCardLastUpdatedTableItem : HKEmergencyCardTableItem <HKIDUpdatedAndEditCellDelegate>
 {
-    UITableViewCell *_cell;
+    HKIDUpdatedAndEditCell *_cell;
+    BOOL _editable;
     UILabel *_lastUpdatedLabel;
     NSDateFormatter *_dateFormatter;
+    id<HKEmergencyCardLastUpdatedTableItemDelegate> _delegate;
+    unsigned long long _dateType;
 }
+
+@property (nonatomic) unsigned long long dateType; // @synthesize dateType=_dateType;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<HKEmergencyCardLastUpdatedTableItemDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (BOOL)hasPresentableData;
-- (id)initInEditMode:(BOOL)arg1;
+- (id)initInEditMode:(BOOL)arg1 updatedDateType:(unsigned long long)arg2 editable:(BOOL)arg3;
 - (struct UIEdgeInsets)separatorInset;
 - (id)tableView:(id)arg1 cellForRowAtIndex:(long long)arg2;
-- (double)tableView:(id)arg1 heightForRowAtIndex:(long long)arg2;
+- (void)updatedAndEditCellDidTapEditButton:(id)arg1;
+- (id)updatedCell;
 
 @end
 

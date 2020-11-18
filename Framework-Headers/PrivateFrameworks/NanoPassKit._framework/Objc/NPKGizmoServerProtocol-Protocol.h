@@ -6,7 +6,7 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSNumber, NSString;
+@class NSArray, NSData, NSNumber, NSString, PKPaymentWebServiceContext;
 
 @protocol NPKGizmoServerProtocol <NSObject>
 - (void)addPassData:(NSData *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
@@ -18,10 +18,13 @@
 - (void)fetchPreferredPaymentApplicationAIDForPaymentPassWithID:(NSString *)arg1 reply:(void (^)(NSString *))arg2;
 - (void)fetchPrerenderedPassImageWithID:(NSString *)arg1 width:(NSNumber *)arg2 height:(NSNumber *)arg3 compact:(NSNumber *)arg4 reply:(void (^)(NSData *))arg5;
 - (void)fetchRelevantPassTuplesWithReply:(void (^)(NSArray *))arg1;
-- (void)fetchSecureElementIdentifier:(void (^)(NSString *))arg1;
+- (void)fetchSecureElementIdentifiers:(void (^)(NSArray *))arg1;
+- (void)getSharedWebServiceContextWithCompletion:(void (^)(PKPaymentWebServiceContext *))arg1;
 - (void)handleValueAddedServiceTransactions:(NSArray *)arg1 forPassUniqueIDs:(NSArray *)arg2 completion:(void (^)(void))arg3;
 - (void)markAsHavingReceivedLocation;
+- (void)noteWebServiceUpdateNeededWithCompletion:(void (^)(void))arg1;
 - (void)setNeedsRelevancyInformation:(BOOL)arg1;
 - (void)setPreferredPaymentApplicationAID:(NSString *)arg1 forPaymentPassWithID:(NSString *)arg2;
+- (void)setSharedWebServiceContext:(PKPaymentWebServiceContext *)arg1 completion:(void (^)(BOOL))arg2;
 @end
 

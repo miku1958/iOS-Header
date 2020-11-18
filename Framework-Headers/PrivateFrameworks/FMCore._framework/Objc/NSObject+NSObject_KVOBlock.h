@@ -8,11 +8,8 @@
 
 @interface NSObject (NSObject_KVOBlock)
 - (id)addKVOBlockForKeyPath:(id)arg1 options:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
-- (id)addKVOBlockForKeyPath:(id)arg1 options:(unsigned long long)arg2 identifier:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (id)addOneShotKVOBlockForKeyPath:(id)arg1 options:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
-- (id)addOneShotKVOBlockForKeyPath:(id)arg1 options:(unsigned long long)arg2 identifier:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (id)allKVOObservers;
-- (void)removeKVOBlockForKeyPath:(id)arg1 identifier:(id)arg2;
 - (void)removeKVOBlockForToken:(id)arg1;
 @end
 

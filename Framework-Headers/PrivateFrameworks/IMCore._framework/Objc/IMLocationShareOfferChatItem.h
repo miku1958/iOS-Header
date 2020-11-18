@@ -22,15 +22,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isFromMe;
 @property (readonly, nonatomic) long long offerState;
-@property (readonly, strong, nonatomic) IMHandle *sender; // @synthesize sender=_sender;
+@property (readonly, nonatomic) IMHandle *sender; // @synthesize sender=_sender;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic) NSDate *time;
+@property (readonly, nonatomic) NSDate *time;
 
+- (void).cxx_destruct;
 - (id)_initWithItem:(id)arg1 sender:(id)arg2;
 - (BOOL)_isActionableEclipsed;
 - (void)_setActionableEclipsed:(BOOL)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 
 @end
 

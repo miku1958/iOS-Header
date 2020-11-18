@@ -17,6 +17,7 @@
 @property (readonly) NSURL *containingUrl;
 @property (readonly) NSBundle *embeddedBundle;
 @property (readonly) id embeddedPrincipal;
+@property (readonly) NSDictionary *entitlements;
 @property (readonly) NSString *identifier;
 @property (readonly) NSString *localizedContainingName;
 @property (readonly) NSString *localizedName;

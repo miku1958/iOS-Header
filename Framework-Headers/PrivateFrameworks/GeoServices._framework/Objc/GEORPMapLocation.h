@@ -16,7 +16,9 @@
     NSData *_image;
     GEOPDViewportInfo *_viewportInfo;
     float _zoomLevel;
-    CDStruct_8adc1701 _has;
+    struct {
+        unsigned int zoomLevel:1;
+    } _has;
 }
 
 @property (strong, nonatomic) GEOLatLng *coordinate; // @synthesize coordinate=_coordinate;

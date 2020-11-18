@@ -8,7 +8,7 @@
 
 #import <FriendKit/FKFriendGroupDelegate-Protocol.h>
 
-@class FKPerson, NPSManager, NSArray, NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSTimer;
+@class FKDelayedOperation, NPSManager, NSArray, NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSTimer;
 @protocol OS_dispatch_queue;
 
 @interface FKFriendsManager : NSObject <FKFriendGroupDelegate>
@@ -17,43 +17,51 @@
     unsigned long long _maxFriendGroups;
     unsigned long long _maxFriendsPerGroup;
     BOOL _shouldAddEmptyTrailingGroup;
+    struct __CFString *_friendsChangedExternallyNotificationName;
+    struct __CFString *_friendGroupTitleChangedExternallyNotificationName;
+    BOOL _shouldDeduplicateFriendList;
+    BOOL _shouldRemoveDestinationlessFriends;
     NSMutableArray *_friendList;
     NSMutableArray *_friendGroups;
     NPSManager *_npsManager;
-    NSTimer *_saveTimer;
+    NSTimer *_addressBookRefreshTimer;
     NSObject<OS_dispatch_queue> *_saveQueue;
+    NSObject<OS_dispatch_queue> *_changeLogQueue;
     unsigned long long _postCount;
-    NSMutableDictionary *_changeLog;
-    NSHashTable *_ephemeralPersons;
+    NSHashTable *_sourcedPersons;
     NSMapTable *_identifiersToPersonMap;
     BOOL _needsFriendListSync;
     BOOL _needsAddressBookRefresh;
+    BOOL _didCompleteInitialLoading;
     NSMutableSet *_highPriorityDestinations;
     NSArray *_pendingDestinations;
     NSMutableDictionary *_cachedStatuses;
     NSTimer *_idsQueryTimeoutTimer;
-    NSMutableArray *_blockList;
-    unsigned long long _blockListPostCount;
-    BOOL _refreshAgainstAddressBookDisabled;
-    FKPerson *_activeEphemeralPerson;
+    BOOL _refreshAgainstContactsEnabled;
+    BOOL _lastLoadHadChanges;
     NSString *_serviceName;
+    FKDelayedOperation *_saveOperation;
+    NSMutableDictionary *_changeLog;
 }
 
-@property (strong, nonatomic) FKPerson *activeEphemeralPerson; // @synthesize activeEphemeralPerson=_activeEphemeralPerson;
+@property (strong, nonatomic) NSMutableDictionary *changeLog; // @synthesize changeLog=_changeLog;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, getter=isRefreshAgainstAddressBookDisabled) BOOL refreshAgainstAddressBookDisabled; // @synthesize refreshAgainstAddressBookDisabled=_refreshAgainstAddressBookDisabled;
+@property (nonatomic, getter=didLastLoadHaveChanges) BOOL lastLoadHadChanges; // @synthesize lastLoadHadChanges=_lastLoadHadChanges;
+@property (nonatomic, getter=isRefreshAgainstContactsEnabled) BOOL refreshAgainstContactsEnabled; // @synthesize refreshAgainstContactsEnabled=_refreshAgainstContactsEnabled;
+@property (strong, nonatomic) FKDelayedOperation *saveOperation; // @synthesize saveOperation=_saveOperation;
 @property (strong, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property (readonly) Class superclass;
 
-+ (BOOL)_isRetailDemo;
-+ (BOOL)_skipHasGizmoCheck;
 + (id)collapseChangeLogsIntoChangeLog:(id)arg1;
 + (id)managerForDomain:(id)arg1;
 + (void)setEnableEmptyTrailingGroup:(BOOL)arg1 domain:(id)arg2;
++ (void)setFriendGroupTitleChangedExternallyNotificationName:(id)arg1 domain:(id)arg2;
++ (void)setFriendsChangedExternallyNotificationName:(id)arg1 domain:(id)arg2;
 + (void)setGroupSize:(unsigned long long)arg1 domain:(id)arg2;
 + (void)setMaxGroupCount:(unsigned long long)arg1 domain:(id)arg2;
++ (void)setRefreshAgainstContactsOnInitEnabled:(BOOL)arg1 domain:(id)arg2;
 - (void).cxx_destruct;
 - (void)_addCuratedFriends:(id)arg1;
 - (void)_addEmptyGroup;
@@ -61,54 +69,54 @@
 - (void)_addPersonToIdentifiersToPersonMap:(id)arg1;
 - (void)_addressBookChanged:(id)arg1;
 - (BOOL)_addressBookSequenceNumberDidChange;
+- (void)_aggdLogFriendCount;
 - (void)_aggdLogFriendGroupCount;
-- (void)_blockListChangedExternally;
+- (void)_aggdSetValue:(long long)arg1 forScalarKey:(struct __CFString *)arg2;
 - (BOOL)_canAddFriendGroup;
 - (BOOL)_changeLogContainsFriendAdditionsOrUpdates;
+- (unsigned long long)_changeLogCount;
+- (void)_cleanUpFriendListIfNecessary;
 - (long long)_compareStatus:(long long)arg1 toStatus:(long long)arg2;
+- (id)_copyAndResetChangeLog;
 - (void)_createAddressToPersonDictionary;
 - (void)_createEmptyFriendList;
 - (id)_curatedFriendList;
-- (void)_deduplicateFriendList;
+- (void)_deduplicateFriendListIfNecessary;
 - (id)_destinations;
 - (long long)_firstEmptyPosition;
 - (id)_friendAtPosition:(unsigned long long)arg1;
 - (void)_friendsChangedExternally;
 - (void)_groupTitleChangedExternally;
 - (void)_idsQueryTimeoutTimerFired;
+- (void)_incrementExternalChangePostCount;
 - (unsigned long long)_indexForPosition:(unsigned long long)arg1 inGroup:(id)arg2;
 - (int)_lastKnownAddressBookSequenceNumber;
-- (void)_loadBlockList;
 - (void)_loadFriendList;
 - (void)_loadGroupTitles;
+- (struct __CFString *)_notificationForExternalListChange;
 - (unsigned long long)_numberOfFriendsInList:(id)arg1;
 - (void)_personValuesChanged:(id)arg1;
-- (void)_postBlockListChangeNotification;
-- (void)_postChangeNotification;
+- (void)_postChangeNotificationIfNecessary;
 - (void)_postGroupListChangedNotification;
 - (void)_queryDestinations:(id)arg1;
+- (void)_removeDestinationlessFriendsIfNecessary;
+- (void)_removeFriendsAtIndices:(id)arg1;
 - (void)_removeGroupAtIndex:(unsigned long long)arg1;
 - (void)_removePersonFromIdentifiersToPersonMap:(id)arg1;
-- (void)_save:(id)arg1;
-- (void)_saveBlockList;
+- (void)_save;
 - (BOOL)_shouldAddEmptyGroup;
+- (BOOL)_shouldBypassDestinationStatusCheck;
 - (void)_startIDSQueryTimeoutTimer;
 - (void)_stopIDSQueryTimeoutTimer;
-- (void)_storeEphemeralPerson:(id)arg1;
-- (void)_unreadCountChanged:(id)arg1;
+- (void)_storeSourcedPerson:(id)arg1;
 - (void)_updateFriendGroups;
 - (void)_updateFriends:(id)arg1;
 - (void)_updateLastKnownAddressBookSequenceNumber:(int)arg1;
-- (BOOL)_writeBlockListToUserDefaults:(id)arg1;
-- (void)_writeToUserDefaults:(id)arg1 synchronize:(BOOL)arg2;
 - (BOOL)addFriend:(id)arg1;
 - (id)allPeople;
-- (void)blockAddresses:(id)arg1;
-- (id)blockList;
 - (BOOL)canAddFriend;
 - (BOOL)containsFriendWithABRecordGUID:(id)arg1;
 - (void)dealloc;
-- (void)enableSupplementalLoggingWithFacility:(id)arg1 logName:(id)arg2 logDirectory:(id)arg3 defaultsDomain:(id)arg4 logLevelKey:(id)arg5 consoleLogLevelKey:(id)arg6;
 - (void)friendGroup:(id)arg1 didMoveFriends:(id)arg2;
 - (void)friendGroup:(id)arg1 didRemoveFriend:(id)arg2 atPosition:(unsigned long long)arg3;
 - (void)friendGroup:(id)arg1 didSetFriend:(id)arg2 atPosition:(unsigned long long)arg3;
@@ -116,7 +124,6 @@
 - (unsigned long long)groupIndexContainingFriend:(id)arg1;
 - (void)idStatusUpdatedForDestinations:(id)arg1;
 - (id)initWithDomain:(id)arg1;
-- (BOOL)isAddressBlocked:(id)arg1;
 - (BOOL)isPersonFriend:(id)arg1;
 - (void)markFriendListAsNormalized;
 - (id)personLikePerson:(id)arg1;
@@ -124,13 +131,15 @@
 - (id)personWithDestinations:(id)arg1;
 - (unsigned long long)positionOfFriendInGroup:(id)arg1;
 - (void)purgeEmptyFriendGroups;
-- (void)refreshAgainstAddressBook;
+- (id)reachableDestinationsForPerson:(id)arg1;
+- (BOOL)refreshAgainstAddressBook;
 - (void)refreshDestinationStatuses;
+- (void)reloadFriendList;
 - (void)save;
 - (void)saveFriendGroupTitles;
+- (BOOL)shouldAllowAddingContact:(id)arg1 withContactStore:(id)arg2 personValueCache:(id)arg3;
 - (long long)statusForPerson:(id)arg1 requery:(BOOL)arg2;
 - (void)syncFriendGroup:(id)arg1;
-- (void)unblockAddresses:(id)arg1;
 
 @end
 

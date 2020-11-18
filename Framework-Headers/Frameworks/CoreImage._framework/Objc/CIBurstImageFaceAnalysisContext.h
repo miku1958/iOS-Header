@@ -47,9 +47,7 @@ __attribute__((visibility("hidden")))
 - (int)findFacesInImage:(id)arg1 imageStat:(id)arg2;
 - (id)findOverlappingFaceStat:(struct CGRect)arg1 imageStat:(id)arg2;
 - (id)initWithVersion:(id)arg1;
-- (BOOL)isSmallFace:(struct CGRect)arg1;
 - (struct CGRect)padRoiRect:(struct CGRect)arg1 paddingX:(float)arg2 paddingY:(float)arg3;
-- (id)processSmallFaces:(id)arg1 imageStat:(id)arg2 faces:(id)arg3 extractOptions:(id)arg4;
 - (void)setupFaceDetector;
 
 @end

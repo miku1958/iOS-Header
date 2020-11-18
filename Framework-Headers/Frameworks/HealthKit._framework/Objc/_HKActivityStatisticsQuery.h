@@ -6,18 +6,18 @@
 
 #import <HealthKit/HKQuery.h>
 
-@class NSDate, NSDateComponents, NSMutableArray;
+@class NSDate, NSDateComponents;
 
 @interface _HKActivityStatisticsQuery : HKQuery
 {
     BOOL _deliveredInitial;
     NSDate *_startDate;
     NSDate *_endDate;
-    NSDateComponents *_intervalComponents;
-    NSMutableArray *_results;
+    NSDateComponents *_moveIntervalComponents;
+    NSDateComponents *_exerciseIntervalComponents;
     CDUnknownBlockType _updateHandler;
-    double _updateInterval;
     CDUnknownBlockType _initialResultsHandler;
+    double _updateInterval;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType initialResultsHandler; // @synthesize initialResultsHandler=_initialResultsHandler;
@@ -28,14 +28,16 @@
 - (void).cxx_destruct;
 - (void)_queue_cleanupAfterDeactivation;
 - (void)_queue_configureQueryServerDataObject:(id)arg1;
-- (void)_queue_deliverActivityStatisticsObjects:(id)arg1 queryUUID:(id)arg2;
+- (void)_queue_deliverActivityMoveStatistics:(id)arg1 exerciseStatistics:(id)arg2 standHoursInfo:(id)arg3 workoutInfo:(id)arg4 forQuery:(id)arg5;
 - (void)_queue_deliverError:(id)arg1;
 - (CDUnknownBlockType)_queue_errorHandler;
 - (BOOL)_queue_shouldStayAliveAfterInitialResults;
 - (void)_queue_validate;
+- (void)_queue_validateIntervalComponents:(id)arg1;
 - (void)_queue_validateParams;
-- (void)deliverActivityStatisticsObjects:(id)arg1 forQuery:(id)arg2;
-- (id)initWithSampleType:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 intervalComponents:(id)arg4 initialResultsHandler:(CDUnknownBlockType)arg5;
+- (BOOL)_requiresValidSampleType;
+- (void)deliverActivityMoveStatistics:(id)arg1 exerciseStatistics:(id)arg2 standHoursInfo:(id)arg3 workouts:(id)arg4 forQuery:(id)arg5;
+- (id)initWithStartDate:(id)arg1 endDate:(id)arg2 moveIntervalComponents:(id)arg3 exerciseIntervalComponents:(id)arg4 initialResultsHandler:(CDUnknownBlockType)arg5;
 
 @end
 

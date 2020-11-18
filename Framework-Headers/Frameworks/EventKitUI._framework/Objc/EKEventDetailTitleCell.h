@@ -6,13 +6,16 @@
 
 #import <EventKitUI/EKEventDetailCell.h>
 
-@class EKTextViewWithLabelTextMetrics, NSMutableArray, NSObject, UIButton, UIImage, UIImageView, UILabel;
+#import <EventKitUI/EKEventDetailPredictedLocationCellDelegate-Protocol.h>
+
+@class EKEventDetailPredictedLocationCell, EKTextViewWithLabelTextMetrics, NSMutableArray, NSObject, UIButton, UIImage, UIImageView, UILabel;
 @protocol EKEventDetailTitleCellDelegate;
 
-@interface EKEventDetailTitleCell : EKEventDetailCell
+@interface EKEventDetailTitleCell : EKEventDetailCell <EKEventDetailPredictedLocationCellDelegate>
 {
     UILabel *_titleView;
     EKTextViewWithLabelTextMetrics *_locationView;
+    EKEventDetailPredictedLocationCell *_predictedLocationView;
     UIImage *_locationStatusImage;
     UIImageView *_locationStatusView;
     UILabel *_travelTimeView;
@@ -24,17 +27,20 @@
     BOOL _observingLocaleChanges;
     BOOL _hasLocationStatus;
     long long _locationStatus;
+    BOOL _rejectionReasonCell;
+    BOOL _hasMapItemLaunchOptionFromTimeToLeaveNotification;
     NSObject<EKEventDetailTitleCellDelegate> *_delegate;
 }
 
 @property (weak, nonatomic) NSObject<EKEventDetailTitleCellDelegate> *delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) BOOL hasMapItemLaunchOptionFromTimeToLeaveNotification; // @synthesize hasMapItemLaunchOptionFromTimeToLeaveNotification=_hasMapItemLaunchOptionFromTimeToLeaveNotification;
 
 + (void)_geocodeEventIfNeeded:(id)arg1;
 + (void)_invalidateCachedFonts;
 + (id)_largeTitleFont;
 + (id)_locationFont;
 + (id)_locationStringForStructuredLocation:(id)arg1;
-+ (id)_mapsURLForLocationOnEvent:(id)arg1;
++ (id)_mapsURLForLocationOnEvent:(id)arg1 hasMapItemLaunchOptionFromTimeToLeaveNotification:(BOOL)arg2;
 + (void)_registerForInvalidation;
 + (id)_titleFont;
 - (void).cxx_destruct;
@@ -42,7 +48,10 @@
 - (id)_editButton;
 - (id)_locationStatusView;
 - (id)_locationView;
+- (id)_predictedLocationView;
+- (void)_promptForSpanWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)_recurrenceView;
+- (void)_saveEventWithSpan:(long long)arg1;
 - (void)_setDateTimeString:(id)arg1 line:(unsigned long long)arg2;
 - (id)_statusView;
 - (id)_titleView;
@@ -50,6 +59,9 @@
 - (BOOL)_useLargeFonts;
 - (void)dealloc;
 - (void)editButtonTapped;
+- (void)eventDetailPredictedLocationCellAcceptedPrediction:(id)arg1 disambiguatedLocation:(id)arg2;
+- (void)eventDetailPredictedLocationCellRejectedPrediction:(id)arg1;
+- (id)initAsRejectionReasonCellWithEvent:(id)arg1;
 - (id)initWithEvent:(id)arg1 editable:(BOOL)arg2 style:(long long)arg3;
 - (void)layoutForWidth:(double)arg1 position:(int)arg2;
 - (void)setColor:(id)arg1;

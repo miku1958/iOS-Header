@@ -9,8 +9,8 @@
 #import <UIKit/SUICFlamesViewDelegate-Protocol.h>
 
 @class NSString, SUICFlamesView, UIButton, UIDictationMeterView, UIKeyboardDicationBackground;
+@protocol UIDictationViewDisplayDelegate;
 
-__attribute__((visibility("hidden")))
 @interface UIDictationView : UIView <SUICFlamesViewDelegate>
 {
     UIKeyboardDicationBackground *_background;
@@ -22,10 +22,12 @@ __attribute__((visibility("hidden")))
     BOOL _automaticAppearanceWasEnabled;
     SUICFlamesView *_flamesView;
     UIDictationMeterView *_meterView;
+    id<UIDictationViewDisplayDelegate> _displayDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) id<UIDictationViewDisplayDelegate> displayDelegate; // @synthesize displayDelegate=_displayDelegate;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

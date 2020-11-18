@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 
@@ -17,8 +17,8 @@
 @property (readonly, nonatomic) BOOL hasMerchantIdentifiers;
 @property (readonly, nonatomic) BOOL ignoreMerchantIdentifiers; // @synthesize ignoreMerchantIdentifiers=_ignoreMerchantIdentifiers;
 
+- (void).cxx_destruct;
 - (void)_probeEntitlementsWithToken:(CDStruct_6ad76789)arg1;
-- (void)dealloc;
 - (BOOL)hasMerchantIdentifier:(id)arg1;
 - (id)initWithToken:(CDStruct_6ad76789)arg1;
 

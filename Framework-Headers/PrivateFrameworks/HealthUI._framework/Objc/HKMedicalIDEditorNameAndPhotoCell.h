@@ -22,6 +22,7 @@
 
 + (BOOL)showsLabelAndValue;
 - (void).cxx_destruct;
+- (void)_adjustEditPhotoButtonFontSizeIfNecessary;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;

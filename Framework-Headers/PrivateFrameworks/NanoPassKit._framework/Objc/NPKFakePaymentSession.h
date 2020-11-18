@@ -8,13 +8,15 @@
 
 #import <NanoPassKit/PKFieldDetectorObserver-Protocol.h>
 
-@class NSObject, NSString, PKFieldDetector, PKPass;
+@class NSDictionary, NSObject, NSString, PKFieldDetector, PKPass;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface NPKFakePaymentSession : NPKQuickPaymentSession <PKFieldDetectorObserver>
 {
+    BOOL _ourConfirmed;
     BOOL _invalidated;
     PKPass *_ourCurrentPass;
+    NSDictionary *_ourVasPasses;
     NSObject<OS_dispatch_queue> *_ourCallbackQueue;
     NSObject<OS_dispatch_queue> *_ourInternalQueue;
     NSObject<OS_dispatch_source> *_timeoutTimer;
@@ -29,24 +31,31 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL invalidated; // @synthesize invalidated=_invalidated;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *ourCallbackQueue; // @synthesize ourCallbackQueue=_ourCallbackQueue;
+@property (nonatomic) BOOL ourConfirmed; // @synthesize ourConfirmed=_ourConfirmed;
 @property (strong, nonatomic) PKPass *ourCurrentPass; // @synthesize ourCurrentPass=_ourCurrentPass;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *ourInternalQueue; // @synthesize ourInternalQueue=_ourInternalQueue;
+@property (strong, nonatomic) NSDictionary *ourVasPasses; // @synthesize ourVasPasses=_ourVasPasses;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *timeoutTimer; // @synthesize timeoutTimer=_timeoutTimer;
 
 - (void).cxx_destruct;
 - (void)_handleTimeoutTimer;
+- (void)_handleTransactionCompleteDarwinNotification;
 - (void)_scheduleDidActivateEventForPass:(id)arg1;
 - (void)_setTimeoutTimer;
-- (void)confirmSession;
+- (void)confirmOrRenewSession;
 - (id)currentPass;
 - (void)deactivateSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (BOOL)deferAuthorization;
 - (void)fieldDetectorDidEnterField:(id)arg1 withProperties:(id)arg2;
 - (id)initWithQueue:(id)arg1;
 - (void)renewSession;
 - (void)setCurrentPass:(id)arg1;
+- (void)setDeferAuthorization:(BOOL)arg1;
+- (void)setVasPasses:(id)arg1;
 - (BOOL)startSession;
+- (id)vasPasses;
 
 @end
 

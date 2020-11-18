@@ -6,18 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class CAMNebulaDaemonProxyManager, NSMutableDictionary;
+@class CAMNebulaDaemonProxyManager;
 @protocol OS_dispatch_queue;
 
 @interface CAMIrisVideoController : NSObject
 {
     NSObject<OS_dispatch_queue> *__mutexQueue;
     CAMNebulaDaemonProxyManager *__nebulaDaemonProxyManager;
-    NSMutableDictionary *__mutexQueue_pendingJobsByMasterVideoURL;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_mutexQueue; // @synthesize _mutexQueue=__mutexQueue;
-@property (readonly, nonatomic) NSMutableDictionary *_mutexQueue_pendingJobsByMasterVideoURL; // @synthesize _mutexQueue_pendingJobsByMasterVideoURL=__mutexQueue_pendingJobsByMasterVideoURL;
 @property (readonly, nonatomic) CAMNebulaDaemonProxyManager *_nebulaDaemonProxyManager; // @synthesize _nebulaDaemonProxyManager=__nebulaDaemonProxyManager;
 
 - (void).cxx_destruct;

@@ -17,7 +17,9 @@
     NSMutableArray *_discoveringDescriptors;
     NSMutableArray *_readingDescriptors;
     NSMutableArray *_readingSignatureCharacteristics;
+    NSMutableArray *_readingSignatureServices;
     NSMapTable *_characteristicSignatures;
+    NSMapTable *_serviceSignatures;
     long long _retries;
     CDUnknownBlockType _completionHandler;
 }
@@ -32,7 +34,9 @@
 @property (readonly, nonatomic) NSMutableArray *readingCharacteristics; // @synthesize readingCharacteristics=_readingCharacteristics;
 @property (readonly, nonatomic) NSMutableArray *readingDescriptors; // @synthesize readingDescriptors=_readingDescriptors;
 @property (readonly, nonatomic) NSMutableArray *readingSignatureCharacteristics; // @synthesize readingSignatureCharacteristics=_readingSignatureCharacteristics;
+@property (readonly, nonatomic) NSMutableArray *readingSignatureServices; // @synthesize readingSignatureServices=_readingSignatureServices;
 @property (nonatomic) long long retries; // @synthesize retries=_retries;
+@property (readonly, nonatomic) NSMapTable *serviceSignatures; // @synthesize serviceSignatures=_serviceSignatures;
 
 - (void).cxx_destruct;
 - (id)init;

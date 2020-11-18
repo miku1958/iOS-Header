@@ -11,17 +11,20 @@
 
 @interface _UIRemoteViewService : NSObject
 {
+    BOOL _overridesHostAppearance;
     NSExtension *_extension;
     NSUUID *_contextToken;
 }
 
 @property (copy, nonatomic) NSUUID *contextToken; // @synthesize contextToken=_contextToken;
 @property (strong, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
+@property (readonly, nonatomic) BOOL overridesHostAppearance; // @synthesize overridesHostAppearance=_overridesHostAppearance;
 @property (strong, nonatomic) id<PKPlugIn> plugin;
 
 - (void).cxx_destruct;
 - (id)initWithExtension:(id)arg1 andContextToken:(id)arg2;
 - (id)initWithPlugIn:(id)arg1 andContextToken:(id)arg2;
+- (void)updateOverridesHostAppearance;
 
 @end
 

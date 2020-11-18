@@ -28,6 +28,9 @@
 @property (nonatomic) BOOL hasCorrectionStatus;
 @property (strong, nonatomic) NSMutableArray *significantLocations; // @synthesize significantLocations=_significantLocations;
 
++ (Class)addressResultType;
++ (Class)significantLocationType;
+- (int)StringAsCorrectionStatus:(id)arg1;
 - (void)addAddressResult:(id)arg1;
 - (void)addSignificantLocation:(id)arg1;
 - (id)addressResultAtIndex:(unsigned long long)arg1;
@@ -36,6 +39,7 @@
 - (void)clearSignificantLocations;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)correctionStatusAsString:(int)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;

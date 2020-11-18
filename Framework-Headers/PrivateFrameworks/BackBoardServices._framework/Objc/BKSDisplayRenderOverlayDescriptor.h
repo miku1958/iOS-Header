@@ -20,6 +20,7 @@
     BKSDisplayProgressIndicatorProperties *_progressIndicatorProperties;
     long long _interfaceOrientation;
     BOOL _lockBacklight;
+    BOOL _interstitial;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,6 +29,7 @@
 @property (copy, nonatomic) NSString *displayUUID; // @synthesize displayUUID=_displayUUID;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
+@property (nonatomic, getter=isInterstitial, setter=_setInterstitial:) BOOL interstitial; // @synthesize interstitial=_interstitial;
 @property (nonatomic) BOOL lockBacklight; // @synthesize lockBacklight=_lockBacklight;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) BKSDisplayProgressIndicatorProperties *progressIndicatorProperties; // @synthesize progressIndicatorProperties=_progressIndicatorProperties;

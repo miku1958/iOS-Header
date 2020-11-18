@@ -6,62 +6,39 @@
 
 #import <objc/NSObject.h>
 
-#import <coreroutine/NSSecureCoding-Protocol.h>
-
-@class NSMutableArray, RTStateModelOneVisit;
+@class RTDeviceLocationPredictor, RTHintManager, RTLocationAwarenessManager, RTLocationManager, RTMetricManager, RTVisitMonitorState;
 @protocol OS_dispatch_queue, RTVisitMonitorDelegate;
 
-@interface RTVisitMonitor : NSObject <NSSecureCoding>
+@interface RTVisitMonitor : NSObject
 {
-    BOOL _insideAnLoi;
-    BOOL _insideAnLoiButStatTimeNotMet;
-    BOOL _checkedForHintNearEntryLocation;
-    BOOL _entryEdgeDetected;
+    BOOL _monitoringVisitIncidents;
+    BOOL _monitoringLeechedVisitIncidents;
+    BOOL _monitoringLowConfidenceVisitIncidents;
     id<RTVisitMonitorDelegate> _delegate;
-    double _lastProcessedSample_s;
-    double _potentialEntry_s;
-    double _potentialExit_s;
-    double _sumLat_deg;
-    double _sumLon_deg;
-    double _sumLat2_deg;
-    double _sumLon2_deg;
-    double _entrySampleLat_deg;
-    double _entrySampleLon_deg;
-    long long _dataPointCnt;
-    long long _adaptionSampleCnt;
-    double _lastProcessedSampleForAdaption_s;
-    long long _outlierCnt;
-    NSMutableArray *_tempOutliers;
-    long long _visitCallCnt;
+    RTLocationManager *_locationManager;
+    RTDeviceLocationPredictor *_deviceLocationPredictor;
+    RTHintManager *_hintManager;
+    RTMetricManager *_metricManager;
+    RTLocationAwarenessManager *_locationAwarenessManager;
+    RTVisitMonitorState *_state;
     NSObject<OS_dispatch_queue> *_queue;
-    RTStateModelOneVisit *_lastVisit;
-    long long _pendingReprocessRequestCount;
+    unsigned long long _engineDependentCount;
 }
 
-@property (nonatomic) long long adaptionSampleCnt; // @synthesize adaptionSampleCnt=_adaptionSampleCnt;
-@property (nonatomic) BOOL checkedForHintNearEntryLocation; // @synthesize checkedForHintNearEntryLocation=_checkedForHintNearEntryLocation;
-@property (nonatomic) long long dataPointCnt; // @synthesize dataPointCnt=_dataPointCnt;
 @property (weak, nonatomic) id<RTVisitMonitorDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) BOOL entryEdgeDetected; // @synthesize entryEdgeDetected=_entryEdgeDetected;
-@property (nonatomic) double entrySampleLat_deg; // @synthesize entrySampleLat_deg=_entrySampleLat_deg;
-@property (nonatomic) double entrySampleLon_deg; // @synthesize entrySampleLon_deg=_entrySampleLon_deg;
-@property (nonatomic) BOOL insideAnLoi; // @synthesize insideAnLoi=_insideAnLoi;
-@property (nonatomic) BOOL insideAnLoiButStatTimeNotMet; // @synthesize insideAnLoiButStatTimeNotMet=_insideAnLoiButStatTimeNotMet;
-@property (nonatomic) double lastProcessedSampleForAdaption_s; // @synthesize lastProcessedSampleForAdaption_s=_lastProcessedSampleForAdaption_s;
-@property (nonatomic) double lastProcessedSample_s; // @synthesize lastProcessedSample_s=_lastProcessedSample_s;
-@property (strong, nonatomic) RTStateModelOneVisit *lastVisit; // @synthesize lastVisit=_lastVisit;
-@property (nonatomic) long long outlierCnt; // @synthesize outlierCnt=_outlierCnt;
-@property (nonatomic) long long pendingReprocessRequestCount; // @synthesize pendingReprocessRequestCount=_pendingReprocessRequestCount;
-@property (nonatomic) double potentialEntry_s; // @synthesize potentialEntry_s=_potentialEntry_s;
-@property (nonatomic) double potentialExit_s; // @synthesize potentialExit_s=_potentialExit_s;
+@property (weak, nonatomic) RTDeviceLocationPredictor *deviceLocationPredictor; // @synthesize deviceLocationPredictor=_deviceLocationPredictor;
+@property (nonatomic) unsigned long long engineDependentCount; // @synthesize engineDependentCount=_engineDependentCount;
+@property (strong, nonatomic) RTHintManager *hintManager; // @synthesize hintManager=_hintManager;
+@property (strong, nonatomic) RTLocationAwarenessManager *locationAwarenessManager; // @synthesize locationAwarenessManager=_locationAwarenessManager;
+@property (strong, nonatomic) RTLocationManager *locationManager; // @synthesize locationManager=_locationManager;
+@property (strong, nonatomic) RTMetricManager *metricManager; // @synthesize metricManager=_metricManager;
+@property (nonatomic) BOOL monitoringLeechedVisitIncidents; // @synthesize monitoringLeechedVisitIncidents=_monitoringLeechedVisitIncidents;
+@property (nonatomic) BOOL monitoringLowConfidenceVisitIncidents; // @synthesize monitoringLowConfidenceVisitIncidents=_monitoringLowConfidenceVisitIncidents;
+@property (nonatomic) BOOL monitoringVisitIncidents; // @synthesize monitoringVisitIncidents=_monitoringVisitIncidents;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (nonatomic) double sumLat2_deg; // @synthesize sumLat2_deg=_sumLat2_deg;
-@property (nonatomic) double sumLat_deg; // @synthesize sumLat_deg=_sumLat_deg;
-@property (nonatomic) double sumLon2_deg; // @synthesize sumLon2_deg=_sumLon2_deg;
-@property (nonatomic) double sumLon_deg; // @synthesize sumLon_deg=_sumLon_deg;
-@property (strong, nonatomic) NSMutableArray *tempOutliers; // @synthesize tempOutliers=_tempOutliers;
-@property (nonatomic) long long visitCallCnt; // @synthesize visitCallCnt=_visitCallCnt;
+@property (strong, nonatomic) RTVisitMonitorState *state; // @synthesize state=_state;
 
++ (double)LocationHeartbeatWhileAwake;
 + (double)MinStaticIntervalForSLVArrival;
 + (double)MinStaticIntervalForSLVArrivalWithHint;
 + (double)convertLongitudeAtDateLineFromSum:(double)arg1 fromLongitude:(double)arg2;
@@ -69,25 +46,45 @@
 + (double)evalMaxUncFromMotionDevMotionInducedDev:(double)arg1 andMeasInducedDev:(double)arg2;
 + (double)evaluateClustThresFromClustThresSlv:(double)arg1 motionInducedDev:(double)arg2 adaptionBasis:(double)arg3 adaptionSampleCnt:(long long)arg4 adaptionRate:(double)arg5;
 + (double)evaluateMotionInducedDeviationFromDataPtCnt:(long long)arg1 sumLat_deg:(double)arg2 sumLat2_deg:(double)arg3 sumLon_deg:(double)arg4 sumLon2_deg:(double)arg5;
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_showData;
-- (id)checkForOneVisitAtLocation:(id)arg1;
-- (void)checkForOneVisitsAtLocations:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)encodeWithCoder:(id)arg1;
+- (void)_fetchVisitIncidentsFromLocations:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)considerLowConfidenceVisitIncidentEntryAtLocation:(id)arg1;
+- (void)considerLowConfidenceVisitIncidentExitAtLocation:(id)arg1;
+- (void)fetchLastLowConfidenceVisitIncidentWithHandler:(CDUnknownBlockType)arg1;
+- (void)fetchLastVisitIncidentWithHandler:(CDUnknownBlockType)arg1;
+- (void)fetchLowConfidenceVisitMonitorStatusWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchNumberOfSamplesForAdaptationWithHandler:(CDUnknownBlockType)arg1;
+- (void)fetchVisitIncidentsFromLocations:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)fetchVisitMonitorState:(CDUnknownBlockType)arg1;
+- (void)fetchVisitMonitorStatusWithHandler:(CDUnknownBlockType)arg1;
+- (void)handleLeechedVisitIncident:(id)arg1;
+- (void)handleLowConfidenceVisitIncident:(id)arg1;
+- (void)handleVisitIncident:(id)arg1;
+- (void)handleVisitMonitorStateChange;
+- (double)horizontalUncertaintyFromSampleSize:(long long)arg1 sumLat_deg:(double)arg2 sumLat2_deg:(double)arg3 sumLon_deg:(double)arg4 sumLon2_deg:(double)arg5;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
+- (id)initWithLocationManager:(id)arg1 deviceLocationPredictor:(id)arg2 hintManager:(id)arg3 metricManager:(id)arg4;
+- (id)initWithLocationManager:(id)arg1 deviceLocationPredictor:(id)arg2 hintManager:(id)arg3 metricManager:(id)arg4 queue:(id)arg5;
+- (id)initWithLocationManager:(id)arg1 deviceLocationPredictor:(id)arg2 hintManager:(id)arg3 metricManager:(id)arg4 state:(id)arg5 queue:(id)arg6;
+- (id)initWithLocationManager:(id)arg1 deviceLocationPredictor:(id)arg2 hintManager:(id)arg3 metricManager:(id)arg4 state:(id)arg5 queue:(id)arg6 locationAwarenessManager:(id)arg7;
+- (id)initWithQueue:(id)arg1;
+- (id)initWithState:(id)arg1 queue:(id)arg2;
 - (void)logHintSourceUsageWithLocation:(id)arg1;
 - (void)onLeechedLocationsNotification:(id)arg1;
 - (void)processLeechedLocations:(id)arg1;
-- (id)recursiveCheckForOneVisitAtLocation:(id)arg1;
+- (id)recursiveVisitIncidentFromLocation:(id)arg1;
 - (void)resetForCurrentSampleAsHypothesis:(id)arg1;
 - (void)resetWithTempBufferAsHypothesis;
-- (void)showData;
 - (void)shutdown;
-- (void)startMonitoringVisits;
-- (void)stopMonitoringVisits;
+- (void)startEngine;
+- (void)startMonitoringLeechedVisitIncidents;
+- (void)startMonitoringLowConfidenceVisitIncidents;
+- (void)startMonitoringVisitIncidents;
+- (void)stopEngine;
+- (void)stopMonitoringLeechedVisitIncidents;
+- (void)stopMonitoringLowConfidenceVisitIncidents;
+- (void)stopMonitoringVisitIncidents;
+- (id)visitIncidentFromLocation:(id)arg1;
 
 @end
 

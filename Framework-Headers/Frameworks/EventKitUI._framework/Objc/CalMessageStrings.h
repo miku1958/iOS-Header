@@ -6,19 +6,25 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSIndexSet;
+@class EKCalendarEventInvitationNotificationAttendee, NSArray;
 
 @interface CalMessageStrings : NSObject
 {
-    NSArray *_strings;
-    NSIndexSet *_indexSetOfCommentStrings;
+    BOOL _timeProposals;
+    NSArray *_titleStrings;
+    NSArray *_bodyStrings;
+    long long _comments;
+    EKCalendarEventInvitationNotificationAttendee *_importantAttendee;
 }
 
-@property (readonly, nonatomic) NSIndexSet *indexSetOfCommentStrings; // @synthesize indexSetOfCommentStrings=_indexSetOfCommentStrings;
-@property (readonly, nonatomic) NSArray *strings; // @synthesize strings=_strings;
+@property (readonly, nonatomic) NSArray *bodyStrings; // @synthesize bodyStrings=_bodyStrings;
+@property (readonly, nonatomic) long long comments; // @synthesize comments=_comments;
+@property (readonly, nonatomic) EKCalendarEventInvitationNotificationAttendee *importantAttendee; // @synthesize importantAttendee=_importantAttendee;
+@property (readonly, nonatomic) BOOL timeProposals; // @synthesize timeProposals=_timeProposals;
+@property (readonly, nonatomic) NSArray *titleStrings; // @synthesize titleStrings=_titleStrings;
 
 - (void).cxx_destruct;
-- (id)initWithStrings:(id)arg1 indexSetOfCommentStrings:(id)arg2;
+- (id)initWithTitles:(id)arg1 bodyStrings:(id)arg2 comments:(long long)arg3 timeProposals:(BOOL)arg4 importantAttendee:(id)arg5;
 
 @end
 

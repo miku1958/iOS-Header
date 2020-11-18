@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (struct CGRect)_accessibilityDirectInteractionFrame;
 - (BOOL)_accessibilityKeyboardSupportsGestureMode;
 - (id)_accessibilityNativeFocusPreferredElement;
 - (BOOL)_accessibilitySwitchToGestureMode:(BOOL)arg1;
@@ -28,7 +29,7 @@
 - (BOOL)_axShiftLock;
 - (void)_voiceOverStatus:(id)arg1;
 - (struct CGRect)accessibilityFrame;
-- (BOOL)accessibilityPerformAction:(int)arg1 withValue:(id)arg2;
+- (BOOL)accessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (void)activate;
 - (void)deactivate;
 - (void)dealloc;

@@ -18,6 +18,7 @@
 @property (readonly, strong, nonatomic) NSString *enclosureColor;
 @property (readonly, strong, nonatomic) NSArray *identities;
 @property (readonly, nonatomic) BOOL isActive;
+@property (readonly, nonatomic) BOOL isCloudConnected;
 @property (readonly, nonatomic) BOOL isDefaultPairedDevice;
 @property (readonly, nonatomic) BOOL isHSATrusted;
 @property (readonly, nonatomic) BOOL isLocallyPaired;
@@ -37,6 +38,8 @@
 @property (readonly, nonatomic) NSString *productVersion;
 @property (readonly, strong, nonatomic) NSData *pushToken;
 @property (readonly, strong, nonatomic) NSString *service;
+@property (readonly, nonatomic) unsigned long long serviceMinCompatibilityVersion;
+@property (readonly, nonatomic) BOOL supportsApplePay;
 @property (readonly, nonatomic) BOOL supportsHandoff;
 @property (readonly, nonatomic) BOOL supportsMMSRelay;
 @property (readonly, nonatomic) BOOL supportsPhoneCalls;
@@ -50,7 +53,6 @@
 - (id)_initWithDictionary:(id)arg1;
 - (id)_internal;
 - (void)_setAccount:(id)arg1;
-- (void)_updateNSUUID:(id)arg1;
 - (void)cleanupStreamPairWithInputStream:(id)arg1 outputStream:(id)arg2;
 - (void)closeSocket:(int)arg1;
 - (void)closeSocketForDomain:(id)arg1;

@@ -11,6 +11,7 @@
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
++ (id)ratingAsAttributedString:(double)arg1 baseFont:(id)arg2 style:(long long)arg3;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityLabel;

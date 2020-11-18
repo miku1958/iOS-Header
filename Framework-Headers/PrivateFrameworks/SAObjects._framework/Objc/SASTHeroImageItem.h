@@ -8,12 +8,13 @@
 
 #import <SAObjects/SASTTemplateItem-Protocol.h>
 
-@class NSString, SAUINanoImageResource;
+@class NSString, SADecoratedString, SAUINanoImageResource;
 
 @interface SASTHeroImageItem : AceObject <SASTTemplateItem>
 {
 }
 
+@property (strong, nonatomic) SADecoratedString *caption;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

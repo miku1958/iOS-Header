@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)implicateTilesForCoordinate:(CDStruct_c3b9c2ee)arg1 into:(id)arg2 radialDistance:(double)arg3;
+- (void)implicateTilesForCoordinate:(CDStruct_c3b9c2ee)arg1 into:(id)arg2 radialDistance:(double)arg3 tileSetStyles:(id)arg4;
 
 @end
 

@@ -6,23 +6,18 @@
 
 #import <NotesShared/ICAttachmentModel.h>
 
-@class MKMapSnapshotter;
-
 @interface ICAttachmentMapModel : ICAttachmentModel
 {
-    MKMapSnapshotter *_mapSnapshotter;
 }
 
-@property (strong) MKMapSnapshotter *mapSnapshotter; // @synthesize mapSnapshotter=_mapSnapshotter;
-
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
-- (void).cxx_destruct;
 - (BOOL)generateAsynchronousPreviews;
-- (void)generatePreviews;
+- (void)generatePreviewsInOperation:(id)arg1;
 - (CDUnknownBlockType)genericBrickThumbnailCreator;
 - (CDUnknownBlockType)genericListThumbnailCreator;
 - (BOOL)hasPreviews;
 - (BOOL)needToGeneratePreviews;
+- (BOOL)requiresNetworkToGeneratePreview;
 
 @end
 

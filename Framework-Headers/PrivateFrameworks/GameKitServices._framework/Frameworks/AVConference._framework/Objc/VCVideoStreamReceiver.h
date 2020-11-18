@@ -6,16 +6,23 @@
 
 #import <Foundation/NSObject.h>
 
-@protocol OS_dispatch_queue, VCVideoStreamReceiverDelegate;
+#import <AVConference/VCMediaStreamSyncDestination-Protocol.h>
+
+@class NSString, VCMediaStreamStats, VCMediaStreamSynchronizer, VCVideoStreamRateAdaptation, VideoAttributes;
+@protocol OS_dispatch_queue, VCMediaStreamSyncSource, VCVideoStreamReceiverDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCVideoStreamReceiver : NSObject
+@interface VCVideoStreamReceiver : NSObject <VCMediaStreamSyncDestination>
 {
     struct tagHANDLE *_hRTP;
     struct OpaqueVTDecompressionSession *_decompressionSession;
     BOOL _receivedFirstPacket;
+    BOOL _receivedFirstRemoteFrame;
     unsigned short _lastSequenceNumber;
     int _sequenceNumberOutOfOrder;
+    unsigned char _firSequenceNumber;
+    double _lastFIRArrivalTime;
+    VCVideoStreamRateAdaptation *_rateAdaptation;
     unsigned int _mostRecentTimestamp;
     unsigned int _lastVideoTimestamp;
     unsigned int _videoTimestampWrapCount;
@@ -26,24 +33,61 @@ __attribute__((visibility("hidden")))
     BOOL _runNetworkReceiveThread;
     int _sRecvReset;
     struct VideoPacketBuffer_t *_videoPacketBuffer;
+    VideoAttributes *_remoteVideoAttributes;
+    VCMediaStreamSynchronizer *_mediaStreamSynchronizer;
+    id<VCMediaStreamSyncSource> _syncSource;
+    int _remoteVideoOrientation;
+    int _remoteVideoCamera;
+    BOOL _enableCVO;
+    unsigned long long _cvoExtensionID;
+    unsigned long long _lastKeyFrameSampleBufferSize;
+    CDStruct_1b6d18a9 _lastFrameTime;
+    CDStruct_1b6d18a9 _lastDisplayTime;
+    VCMediaStreamStats *_stats;
+    double _reportingIntervalStartTime;
+    double _reportingLastUpdateTime;
+    unsigned int _receivedBytes;
+    double _roundTripTime;
+    unsigned int _videoStallDurationMillis;
+    double _videoStallStartTime;
+    struct opaqueRTCReporting *_reportingAgent;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<VCVideoStreamReceiverDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property int remoteVideoOrientation; // @synthesize remoteVideoOrientation=_remoteVideoOrientation;
+@property double roundTripTime; // @synthesize roundTripTime=_roundTripTime;
+@property (readonly) Class superclass;
+@property (nonatomic) id<VCMediaStreamSyncSource> syncSource; // @synthesize syncSource=_syncSource;
 
+- (void)createDecodeSession:(struct opaqueCMFormatDescription *)arg1;
 - (void)dealloc;
 - (int)decodeBuffer:(char *)arg1 size:(unsigned long long)arg2 timestamp:(unsigned int)arg3 hostTime:(double)arg4;
 - (int)decodeFrame:(struct opaqueCMSampleBuffer *)arg1 showFrame:(BOOL)arg2;
-- (id)initWithRTP:(struct tagHANDLE *)arg1 delegate:(id)arg2;
+- (void)gatherRealtimeStats:(struct __CFDictionary *)arg1;
+- (BOOL)handleRemoteVideoAttributesChange:(struct __CVBuffer *)arg1;
+- (id)initWithRTP:(struct tagHANDLE *)arg1 delegate:(id)arg2 reportingAgent:(struct opaqueRTCReporting *)arg3;
 - (void *)networkReceivePackets;
 - (void)pauseVideo;
+- (int)processVideoRTCP;
 - (int)processVideoRTP;
+- (void)reportingVideoStreamEvent:(unsigned short)arg1;
+- (void)rtcpSendIntervalElapsed;
 - (void)scheduleVideoDecode:(unsigned int *)arg1 schedule_n:(int)arg2;
-- (int)showDecodedFrame:(struct __CVBuffer *)arg1 atTime:(CDStruct_198678f7)arg2;
+- (void)setEnableCVO:(BOOL)arg1 cvoExtensionID:(unsigned long long)arg2;
+- (void)setEnableRateAdaptation:(BOOL)arg1 maxBitrate:(unsigned int)arg2 minBitrate:(unsigned int)arg3 adaptationInterval:(double)arg4;
+- (int)showDecodedFrame:(struct __CVBuffer *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (int)startNetworkReceiveThread;
+- (BOOL)startSynchronization:(id)arg1;
 - (void)startVideo;
 - (int)stopNetworkReceiveThread;
+- (void)stopSynchronization;
 - (void)stopVideo;
+- (void)teardownDecodeSession:(BOOL)arg1;
 - (void)updateSequenceNumber:(unsigned short)arg1;
+- (void)updateVideoStallStatus:(BOOL)arg1;
 
 @end
 

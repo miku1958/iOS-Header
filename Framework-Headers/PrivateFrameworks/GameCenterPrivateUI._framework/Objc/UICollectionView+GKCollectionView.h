@@ -12,6 +12,7 @@
 - (void)_gkPerformWithoutViewReuse:(CDUnknownBlockType)arg1;
 - (void)_gkRegisterCellClass:(Class)arg1;
 - (void)_gkRegisterClass:(Class)arg1 forSupplementaryViewOfKind:(id)arg2;
+- (void)_gkRegisterNib:(id)arg1 forCellClass:(Class)arg2;
 - (id)_gkReuseIdentifierForClass:(Class)arg1;
 @end
 

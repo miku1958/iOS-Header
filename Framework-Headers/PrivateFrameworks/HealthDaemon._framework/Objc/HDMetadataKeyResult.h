@@ -13,9 +13,10 @@
     NSString *_key;
 }
 
-@property (strong, nonatomic) NSString *key; // @synthesize key=_key;
+@property (readonly, nonatomic) NSString *key; // @synthesize key=_key;
 
 - (void).cxx_destruct;
+- (id)initWithKey:(id)arg1;
 
 @end
 

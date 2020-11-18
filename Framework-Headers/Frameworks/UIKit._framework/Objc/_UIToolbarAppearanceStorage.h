@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIImage *topShadowImage; // @synthesize topShadowImage=_topShadowImage;
 
 + (long long)typicalBarPosition;
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

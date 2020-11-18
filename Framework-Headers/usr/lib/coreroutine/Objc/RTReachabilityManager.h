@@ -6,7 +6,6 @@
 
 #import <coreroutine/RTNotifier.h>
 
-__attribute__((visibility("hidden")))
 @interface RTReachabilityManager : RTNotifier
 {
     struct __SCNetworkReachability *_reachabilityRef;

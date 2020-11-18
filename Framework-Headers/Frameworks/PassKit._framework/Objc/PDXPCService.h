@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
@@ -30,9 +30,9 @@
 @property (readonly, nonatomic) int remoteProcessIdentifier; // @synthesize remoteProcessIdentifier=_remoteProcessIdentifier;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)clearConnectionReference;
 - (id)connection;
-- (void)dealloc;
 - (id)init;
 - (id)initWithConnection:(id)arg1;
 - (id)remoteObjectProxy;

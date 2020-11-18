@@ -6,11 +6,20 @@
 
 #import <EventKit/EKCalendarResourceChangeNotification.h>
 
+@class SGEvent;
+
 @interface EKCalendarSuggestionNotification : EKCalendarResourceChangeNotification
 {
+    SGEvent *_suggestedEvent;
 }
 
+@property (readonly, nonatomic) SGEvent *suggestedEvent;
+
++ (id)_queue;
+- (void).cxx_destruct;
+- (Class)_SGSuggestionsServiceClass;
 - (BOOL)hiddenFromNotificationCenter;
+- (void)updateSuggestedEventWithEventStore:(id)arg1;
 
 @end
 

@@ -7,9 +7,11 @@
 #import <CoreSuggestions/_SGDSuggestManagerBaseProtocol-Protocol.h>
 #import <CoreSuggestions/_SGDSuggestManagerEventsConfirmRejectProtocol-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @protocol SGDSuggestManagerEventsProtocol <_SGDSuggestManagerBaseProtocol, _SGDSuggestManagerEventsConfirmRejectProtocol>
+- (void)allEventsLimitedTo:(unsigned long long)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (void)eventFromUniqueId:(NSString *)arg1 completion:(void (^)(SGEvent *, NSError *))arg2;
+- (void)schemaOrgToEvents:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 @end
 

@@ -10,6 +10,8 @@
 {
 }
 
+- (id)_calendar;
+- (id)_locale;
 - (id)initWithIdentifier:(id)arg1 type:(unsigned long long)arg2;
 - (BOOL)isBuiltIn;
 

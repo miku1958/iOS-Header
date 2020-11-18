@@ -34,15 +34,15 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_clearTrafficConditions;
 - (void)_handleVisit:(id)arg1;
-- (void)_onDeviceLocationPredictorNotification:(id)arg1;
 - (void)_onMotionActivityNotification:(id)arg1;
+- (void)_onVisitManagerNotification:(id)arg1;
 - (void)_setup;
 - (void)_showTrafficConditions;
 - (void)_updateTrafficCondtions;
 - (void)dealloc;
 - (id)init;
-- (void)onDeviceLocationPredictorNotification:(id)arg1;
 - (void)onMotionActivityNotification:(id)arg1;
+- (void)onVisitManagerNotification:(id)arg1;
 - (void)setShowTrafficConditionsTimer;
 - (void)submitMetric:(id)arg1;
 - (void)submitMetrics;

@@ -6,9 +6,7 @@
 
 #import <HealthDaemon/HDSQLitePredicate.h>
 
-#import <HealthDaemon/NSCopying-Protocol.h>
-
-@interface HDSQLiteMetadataPredicate : HDSQLitePredicate <NSCopying>
+@interface HDSQLiteMetadataPredicate : HDSQLitePredicate
 {
     HDSQLitePredicate *_keyPredicate;
     HDSQLitePredicate *_valuePredicate;

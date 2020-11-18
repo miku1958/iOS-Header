@@ -8,14 +8,13 @@
 
 #import <TextToSpeech/NSSecureCoding-Protocol.h>
 
-@class NSAttributedString, NSString, NSURL, TTSSpeechChannel;
+@class NSArray, NSAttributedString, NSMutableArray, NSString, NSURL, TTSSpeechChannel;
 @protocol TTSSpeechRequestDelegate;
 
 @interface TTSSpeechRequest : NSObject <NSSecureCoding>
 {
     id<TTSSpeechRequestDelegate> _delegate;
     TTSSpeechChannel *_speechChannel;
-    BOOL _useCustomVoice;
     BOOL _maintainsInput;
     BOOL _audioSessionIDIsValid;
     BOOL _useVoiceBooster;
@@ -25,7 +24,6 @@
     NSString *_text;
     NSAttributedString *_attributedText;
     NSString *_languageCode;
-    long long _footprint;
     long long _gender;
     NSURL *_outputPath;
     double _rate;
@@ -34,28 +32,40 @@
     double _latency;
     double _dispatchTime;
     double _handledTime;
+    NSArray *_channels;
+    void *_clientContext;
+    NSString *_originalString;
+    NSMutableArray *_originalWordRanges;
+    NSMutableArray *_processedWordRanges;
+    NSMutableArray *_replacedWords;
+    long long _wordRangeCallbacksDispatched;
 }
 
 @property (copy, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
 @property (nonatomic) unsigned int audioQueueFlags; // @synthesize audioQueueFlags=_audioQueueFlags;
 @property (nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
 @property (nonatomic) BOOL audioSessionIDIsValid; // @synthesize audioSessionIDIsValid=_audioSessionIDIsValid;
+@property (strong, nonatomic) NSArray *channels; // @synthesize channels=_channels;
+@property (nonatomic) void *clientContext; // @synthesize clientContext=_clientContext;
 @property (nonatomic) double dispatchTime; // @synthesize dispatchTime=_dispatchTime;
-@property (nonatomic) long long footprint; // @synthesize footprint=_footprint;
 @property (nonatomic) long long gender; // @synthesize gender=_gender;
 @property (nonatomic) double handledTime; // @synthesize handledTime=_handledTime;
 @property (copy, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
 @property (nonatomic) double latency; // @synthesize latency=_latency;
 @property (nonatomic) BOOL maintainsInput; // @synthesize maintainsInput=_maintainsInput;
+@property (strong, nonatomic) NSString *originalString; // @synthesize originalString=_originalString;
+@property (strong, nonatomic) NSMutableArray *originalWordRanges; // @synthesize originalWordRanges=_originalWordRanges;
 @property (copy, nonatomic) NSURL *outputPath; // @synthesize outputPath=_outputPath;
 @property (nonatomic) double pitch; // @synthesize pitch=_pitch;
+@property (strong, nonatomic) NSMutableArray *processedWordRanges; // @synthesize processedWordRanges=_processedWordRanges;
 @property (nonatomic) double rate; // @synthesize rate=_rate;
+@property (strong, nonatomic) NSMutableArray *replacedWords; // @synthesize replacedWords=_replacedWords;
 @property (strong, nonatomic) TTSSpeechChannel *speechChannel; // @synthesize speechChannel=_speechChannel;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
-@property (nonatomic) BOOL useCustomVoice; // @synthesize useCustomVoice=_useCustomVoice;
 @property (nonatomic) BOOL useMonarchStyleRate; // @synthesize useMonarchStyleRate=_useMonarchStyleRate;
 @property (nonatomic) BOOL useVoiceBooster; // @synthesize useVoiceBooster=_useVoiceBooster;
 @property (nonatomic) double volume; // @synthesize volume=_volume;
+@property (nonatomic) long long wordRangeCallbacksDispatched; // @synthesize wordRangeCallbacksDispatched=_wordRangeCallbacksDispatched;
 
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;

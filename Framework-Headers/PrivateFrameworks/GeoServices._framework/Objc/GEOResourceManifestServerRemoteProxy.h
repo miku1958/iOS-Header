@@ -38,14 +38,19 @@ __attribute__((visibility("hidden")))
 
 - (void)_handleMessage:(id)arg1 xpcMessage:(id)arg2;
 - (void)_setupConnection;
+- (void)activateResourceScale:(int)arg1;
+- (void)activateResourceScenario:(int)arg1;
 - (id)authToken;
 - (void)closeConnection;
 - (id)configuration;
+- (void)deactivateResourceScale:(int)arg1;
+- (void)deactivateResourceScenario:(int)arg1;
 - (void)dealloc;
 - (void)forceUpdate:(CDUnknownBlockType)arg1;
 - (void)getResourceManifestWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithDelegate:(id)arg1 configuration:(id)arg2;
 - (void)openConnection;
+- (void)performOpportunisticResourceLoading;
 - (oneway void)resetActiveTileGroup;
 - (id)serverQueue;
 - (oneway void)setActiveTileGroupIdentifier:(id)arg1;

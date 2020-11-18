@@ -44,6 +44,8 @@
 @property (nonatomic) unsigned long long maxPlayersHosted;
 @property (nonatomic) unsigned long long maxPlayersP2P;
 @property (nonatomic) unsigned long long maxPlayersTurnBased;
+@property (nonatomic) unsigned long long maxRecentPlayersCount;
+@property (nonatomic) double maxRecentPlayersTime;
 @property (nonatomic) unsigned long long mescalSetupRetries;
 @property (nonatomic) double minimumCacheTTL;
 @property (readonly, nonatomic, getter=isMultiplayerGamingRestricted) BOOL multiplayerGamingRestricted;
@@ -60,7 +62,6 @@
 @property (nonatomic) id<GKPreferencesDelegate> preferencesDelegate;
 @property (nonatomic) long long pushEnvironment;
 @property (nonatomic) BOOL shouldAddPlayerInfoToAddressBook;
-@property (nonatomic) BOOL shouldAllowGameInvites;
 @property (nonatomic) BOOL shouldAllowNearbyMultiplayer;
 @property (nonatomic) BOOL shouldAnnotateImageUsage;
 @property (readonly, nonatomic) BOOL shouldDisallowInvitesFromStrangers;

@@ -20,7 +20,11 @@
 - (id)_accessibilityResponderElement;
 - (id)_accessibilityResponderElementForFocus;
 - (BOOL)_accessibilityServesAsFirstResponder;
+- (void)_axCleanupAfterTermination;
 - (void)_axClearRemoteElements;
+- (void)_axHandleMonitorStateUpdate:(id)arg1;
+- (void)_axMonitorWebContentSuspensions;
+- (void)_didRelaunchProcess;
 - (void)_processDidExit;
 - (void)_setAccessibilityWebProcessToken:(id)arg1;
 - (id)accessibilityContainerElements;

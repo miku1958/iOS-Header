@@ -18,7 +18,7 @@
 + (long long)imageSetType;
 + (BOOL)shouldCache;
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

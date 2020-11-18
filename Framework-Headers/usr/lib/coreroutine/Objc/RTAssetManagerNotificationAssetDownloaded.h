@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSURL *assetURL; // @synthesize assetURL=_assetURL;
 @property (readonly, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
 
-+ (id)notificationName;
 - (void).cxx_destruct;
 - (id)initWithAssetType:(id)arg1 attributes:(id)arg2 assetState:(long long)arg3 assetURL:(id)arg4;
 

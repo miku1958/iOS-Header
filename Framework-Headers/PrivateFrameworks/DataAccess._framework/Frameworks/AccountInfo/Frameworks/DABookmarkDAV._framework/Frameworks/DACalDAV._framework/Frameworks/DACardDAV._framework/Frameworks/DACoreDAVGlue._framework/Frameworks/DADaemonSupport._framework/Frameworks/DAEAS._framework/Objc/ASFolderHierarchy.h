@@ -37,6 +37,9 @@
 - (id)description;
 - (id)folderCache;
 - (id)folderForID:(id)arg1;
+- (id)folderIdsForPersistentPush;
+- (id)folderIdsForPersistentPushForClientID:(id)arg1;
+- (id)folderIdsForPersistentPushForDataclasses:(long long)arg1 clientID:(id)arg2;
 - (id)folderIdsThatExternalClientsCareAbout;
 - (id)folderIdsThatExternalClientsCareAboutForDataclasses:(long long)arg1;
 - (id)folders;
@@ -45,6 +48,7 @@
 - (id)initWithAccount:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setFolderCache:(id)arg1;
+- (void)setFolderIdsForPersistentPush:(id)arg1 clientID:(id)arg2;
 - (void)setFolderIdsThatExternalClientsCareAbout:(id)arg1;
 
 @end

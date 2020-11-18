@@ -14,26 +14,29 @@
 @interface SBUIPasscodeLockNumberPad : UIView <SBNumberPadDelegate>
 {
     SBNumberPadWithDelegate *_numberPad;
-    id<SBUIPasscodeLockNumberPadDelegate> _delegate;
     UIView *_leftPaddingView;
     UIView *_rightPaddingView;
     UIView *_bottomPaddingView;
-    SBUIButton *_emergencyCallButton;
-    SBUIButton *_backspaceButton;
-    SBUIButton *_cancelButton;
-    UIControl<SBUIPasscodeNumberPadButton> *_downButton;
+    UIColor *_customBackgroundColor;
+    BOOL _useLightStyle;
     BOOL _showsBackspaceButton;
     BOOL _showsEmergencyCallButton;
     BOOL _showsCancelButton;
-    UIColor *_customBackgroundColor;
-    BOOL _useLightStyle;
+    id<SBUIPasscodeLockNumberPadDelegate> _delegate;
+    UIControl<SBUIPasscodeNumberPadButton> *_downButton;
+    SBUIButton *_emergencyCallButton;
+    SBUIButton *_backspaceButton;
+    SBUIButton *_cancelButton;
 }
 
+@property (readonly, nonatomic) SBUIButton *backspaceButton; // @synthesize backspaceButton=_backspaceButton;
 @property (readonly, weak, nonatomic) NSArray *buttons;
+@property (readonly, nonatomic) SBUIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SBUIPasscodeLockNumberPadDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIControl<SBUIPasscodeNumberPadButton> *downButton; // @synthesize downButton=_downButton;
+@property (readonly, nonatomic) SBUIButton *emergencyCallButton; // @synthesize emergencyCallButton=_emergencyCallButton;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL showsBackspaceButton; // @synthesize showsBackspaceButton=_showsBackspaceButton;
 @property (nonatomic) BOOL showsCancelButton; // @synthesize showsCancelButton=_showsCancelButton;

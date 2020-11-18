@@ -14,6 +14,7 @@
 + (id)_getListener:(Class)arg1;
 + (id)_getListenerByClassMap;
 + (void)addAddressBookObserver:(CDUnknownBlockType)arg1 forObjectLifetime:(id)arg2;
++ (void)addCalendarObserver:(CDUnknownBlockType)arg1 forObjectLifetime:(id)arg2;
 
 @end
 

@@ -7,6 +7,7 @@
 #import <Foundation/NSObject.h>
 
 @class NSDate, NSDictionary, NSString;
+@protocol OS_dispatch_queue;
 
 @interface IMTimer : NSObject
 {
@@ -15,15 +16,20 @@
     NSDictionary *_userInfo;
     NSString *_name;
     double _timeInterval;
+    NSObject<OS_dispatch_queue> *_queue;
     SEL _selector;
     BOOL _wakeDevice;
+    BOOL _useCurrentRunLoop;
 }
 
 @property (readonly, strong, nonatomic) NSDate *fireDate;
 @property (readonly, strong, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
 
+- (id)_initWithTimeInterval:(double)arg1 name:(id)arg2 shouldWake:(BOOL)arg3 target:(id)arg4 selector:(SEL)arg5 userInfo:(id)arg6 useCurrentRunLoop:(BOOL)arg7 queue:(id)arg8;
+- (void)_reschedulePCPersistentTimer;
 - (void)dealloc;
 - (id)initWithTimeInterval:(double)arg1 name:(id)arg2 shouldWake:(BOOL)arg3 target:(id)arg4 selector:(SEL)arg5 userInfo:(id)arg6;
+- (id)initWithTimeInterval:(double)arg1 name:(id)arg2 shouldWake:(BOOL)arg3 target:(id)arg4 selector:(SEL)arg5 userInfo:(id)arg6 queue:(id)arg7;
 - (id)initWithTimeInterval:(double)arg1 name:(id)arg2 shouldWake:(BOOL)arg3 target:(id)arg4 selector:(SEL)arg5 userInfo:(id)arg6 useCurrentRunLoop:(BOOL)arg7;
 - (void)invalidate;
 - (void)setFireTimeInterval:(double)arg1;

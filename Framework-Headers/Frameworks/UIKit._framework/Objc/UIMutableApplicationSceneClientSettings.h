@@ -12,6 +12,7 @@
 
 @interface UIMutableApplicationSceneClientSettings : FBSMutableSceneClientSettings <UIApplicationSceneClientSettings>
 {
+    BOOL _statusBarForegroundTransparent;
 }
 
 @property (nonatomic) long long backgroundStyle;
@@ -33,10 +34,12 @@
 @property (nonatomic) struct UIEdgeInsets primaryWindowOverlayInsets;
 @property (nonatomic) unsigned long long proximityDetectionModes;
 @property (nonatomic) unsigned int statusBarContextID;
+@property (nonatomic, getter=isStatusBarForegroundTransparent) BOOL statusBarForegroundTransparent; // @synthesize statusBarForegroundTransparent=_statusBarForegroundTransparent;
 @property (nonatomic) BOOL statusBarHidden;
 @property (nonatomic) long long statusBarStyle;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long supportedInterfaceOrientations;
+@property (nonatomic) long long whitePointAdaptivityStyle;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)isUISubclass;

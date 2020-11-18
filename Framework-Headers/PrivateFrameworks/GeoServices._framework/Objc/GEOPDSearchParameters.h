@@ -8,35 +8,48 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAutocompleteEntry, GEOPDViewportInfo, NSData, NSString;
+@class GEOPDAutocompleteEntry, GEOPDSearchLocationParameters, GEOPDSearchStructureIntentRequestType, GEOPDViewportInfo, NSData, NSString, PBUnknownFields;
 
 @interface GEOPDSearchParameters : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     unsigned int _maxResults;
+    GEOPDSearchLocationParameters *_searchLocationParameters;
     NSString *_searchString;
+    GEOPDSearchStructureIntentRequestType *_searchStructureIntentType;
+    int _searchType;
     int _sortOrder;
     GEOPDAutocompleteEntry *_suggestionEntry;
     NSData *_suggestionEntryMetadata;
     NSData *_suggestionMetadata;
     GEOPDViewportInfo *_viewportInfo;
-    CDStruct_6c9bcd7c _has;
+    CDStruct_aa0bba6c _has;
 }
 
 @property (nonatomic) BOOL hasMaxResults;
+@property (readonly, nonatomic) BOOL hasSearchLocationParameters;
 @property (readonly, nonatomic) BOOL hasSearchString;
+@property (readonly, nonatomic) BOOL hasSearchStructureIntentType;
+@property (nonatomic) BOOL hasSearchType;
 @property (nonatomic) BOOL hasSortOrder;
 @property (readonly, nonatomic) BOOL hasSuggestionEntry;
 @property (readonly, nonatomic) BOOL hasSuggestionEntryMetadata;
 @property (readonly, nonatomic) BOOL hasSuggestionMetadata;
 @property (readonly, nonatomic) BOOL hasViewportInfo;
 @property (nonatomic) unsigned int maxResults; // @synthesize maxResults=_maxResults;
+@property (strong, nonatomic) GEOPDSearchLocationParameters *searchLocationParameters; // @synthesize searchLocationParameters=_searchLocationParameters;
 @property (strong, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
+@property (strong, nonatomic) GEOPDSearchStructureIntentRequestType *searchStructureIntentType; // @synthesize searchStructureIntentType=_searchStructureIntentType;
+@property (nonatomic) int searchType; // @synthesize searchType=_searchType;
 @property (nonatomic) int sortOrder; // @synthesize sortOrder=_sortOrder;
 @property (strong, nonatomic) GEOPDAutocompleteEntry *suggestionEntry; // @synthesize suggestionEntry=_suggestionEntry;
 @property (strong, nonatomic) NSData *suggestionEntryMetadata; // @synthesize suggestionEntryMetadata=_suggestionEntryMetadata;
 @property (strong, nonatomic) NSData *suggestionMetadata; // @synthesize suggestionMetadata=_suggestionMetadata;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;
 
+- (int)StringAsSearchType:(id)arg1;
+- (int)StringAsSortOrder:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -47,6 +60,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)searchTypeAsString:(int)arg1;
+- (id)sortOrderAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

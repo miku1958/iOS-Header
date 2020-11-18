@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <AccessibilityUtilities/AXEventRepresentationDescription-Protocol.h>
 #import <AccessibilityUtilities/NSCopying-Protocol.h>
 #import <AccessibilityUtilities/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface AXEventKeyInfoRepresentation : NSObject <NSSecureCoding, NSCopying>
+@interface AXEventKeyInfoRepresentation : NSObject <AXEventRepresentationDescription, NSSecureCoding, NSCopying>
 {
     BOOL _keyDown;
     unsigned short _keyCode;
@@ -22,16 +23,21 @@
     NSString *_shiftModifiedInput;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned short keyCode; // @synthesize keyCode=_keyCode;
 @property (nonatomic) BOOL keyDown; // @synthesize keyDown=_keyDown;
 @property (strong, nonatomic) NSString *modifiedInput; // @synthesize modifiedInput=_modifiedInput;
 @property (nonatomic) unsigned int modifierState; // @synthesize modifierState=_modifierState;
 @property (strong, nonatomic) NSString *shiftModifiedInput; // @synthesize shiftModifiedInput=_shiftModifiedInput;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *unmodifiedInput; // @synthesize unmodifiedInput=_unmodifiedInput;
 @property (nonatomic) unsigned int usagePage; // @synthesize usagePage=_usagePage;
 
 + (BOOL)supportsSecureCoding;
 - (id)_hardwareKeyboardLayout;
+- (id)accessibilityEventRepresentationTabularDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

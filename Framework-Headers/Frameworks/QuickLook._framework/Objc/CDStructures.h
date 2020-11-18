@@ -36,19 +36,43 @@ struct CGSize {
     double height;
 };
 
-struct PHDisplayVelocity {
-    double x;
-    double y;
-    double scale;
-    double rotation;
+struct QLFrameDurationInformation {
+    double _field1;
+    double _field2;
+};
+
+struct UIEdgeInsets {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
 };
 
 struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
+    unsigned long long location;
+    unsigned long long length;
+};
+
+struct _QLDismissGestureTrackingVelocity {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    BOOL _field1;
+    BOOL _field2;
+    BOOL _field3;
+    BOOL _field4;
+    BOOL _field5;
+    BOOL _field6;
+    BOOL _field7;
+    BOOL _field8;
+    BOOL _field9;
+} CDStruct_3ea018b0;
 
 typedef struct {
     long long version;
@@ -59,10 +83,9 @@ typedef struct {
 } CDStruct_b3b3fc87;
 
 typedef struct {
-    long long pid;
-    struct {
-        unsigned int val[8];
-    } audit_token;
-    struct CGRect contentFrame;
-} CDStruct_0109ef53;
+    long long _field1;
+    int _field2;
+    unsigned int _field3;
+    long long _field4;
+} CDStruct_198678f7;
 

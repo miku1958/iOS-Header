@@ -11,12 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface CKDGetRecordZonesURLRequest : CKDURLRequest
 {
+    BOOL _onlyFetchPCSInfo;
     NSArray *_recordZones;
     CDUnknownBlockType _recordZoneFetchedBlock;
     NSArray *_zoneIDs;
     NSMutableDictionary *_zoneIDByRequestID;
 }
 
+@property (nonatomic) BOOL onlyFetchPCSInfo; // @synthesize onlyFetchPCSInfo=_onlyFetchPCSInfo;
 @property (copy, nonatomic) CDUnknownBlockType recordZoneFetchedBlock; // @synthesize recordZoneFetchedBlock=_recordZoneFetchedBlock;
 @property (readonly, nonatomic) NSArray *recordZones; // @synthesize recordZones=_recordZones;
 @property (strong, nonatomic) NSMutableDictionary *zoneIDByRequestID; // @synthesize zoneIDByRequestID=_zoneIDByRequestID;

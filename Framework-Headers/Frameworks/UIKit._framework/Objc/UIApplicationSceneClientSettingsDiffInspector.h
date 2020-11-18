@@ -29,6 +29,7 @@
 - (void)observeStatusBarHiddenWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeStatusBarStyleWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeSupportedInterfaceOrientationsWithBlock:(CDUnknownBlockType)arg1;
+- (void)observeWhitePointAdaptivityStyleWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeWindowOverlayInsetsWithBlock:(CDUnknownBlockType)arg1;
 
 @end

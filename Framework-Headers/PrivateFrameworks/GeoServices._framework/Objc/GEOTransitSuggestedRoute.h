@@ -23,10 +23,14 @@
     NSMutableArray *_sections;
     NSMutableArray *_steps;
     GEOPBTransitRoutingIncidentMessage *_transitIncidentMessage;
+    unsigned int _travelTimeAggressiveEstimate;
+    unsigned int _travelTimeConservativeEstimate;
     struct {
         unsigned int absEndTime:1;
         unsigned int absStartTime:1;
         unsigned int rank:1;
+        unsigned int travelTimeAggressiveEstimate:1;
+        unsigned int travelTimeConservativeEstimate:1;
     } _has;
 }
 
@@ -39,6 +43,8 @@
 @property (nonatomic) BOOL hasRank;
 @property (readonly, nonatomic) BOOL hasRouteHandle;
 @property (readonly, nonatomic) BOOL hasTransitIncidentMessage;
+@property (nonatomic) BOOL hasTravelTimeAggressiveEstimate;
+@property (nonatomic) BOOL hasTravelTimeConservativeEstimate;
 @property (nonatomic) unsigned int rank; // @synthesize rank=_rank;
 @property (readonly, nonatomic) int *routeBadges;
 @property (readonly, nonatomic) unsigned long long routeBadgesCount;
@@ -48,7 +54,14 @@
 @property (strong, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
 @property (strong, nonatomic) NSMutableArray *steps; // @synthesize steps=_steps;
 @property (strong, nonatomic) GEOPBTransitRoutingIncidentMessage *transitIncidentMessage; // @synthesize transitIncidentMessage=_transitIncidentMessage;
+@property (nonatomic) unsigned int travelTimeAggressiveEstimate; // @synthesize travelTimeAggressiveEstimate=_travelTimeAggressiveEstimate;
+@property (nonatomic) unsigned int travelTimeConservativeEstimate; // @synthesize travelTimeConservativeEstimate=_travelTimeConservativeEstimate;
 
++ (Class)routePlanningArtworkType;
++ (Class)sectionOptionType;
++ (Class)sectionType;
++ (Class)stepsType;
+- (int)StringAsRouteBadges:(id)arg1;
 - (void)addRouteBadge:(int)arg1;
 - (void)addRoutePlanningArtwork:(id)arg1;
 - (void)addSection:(id)arg1;
@@ -66,9 +79,11 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isWalkingOnlyRoute;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (int)routeBadgeAtIndex:(unsigned long long)arg1;
+- (id)routeBadgesAsString:(int)arg1;
 - (id)routePlanningArtworkAtIndex:(unsigned long long)arg1;
 - (unsigned long long)routePlanningArtworksCount;
 - (id)sectionAtIndex:(unsigned long long)arg1;

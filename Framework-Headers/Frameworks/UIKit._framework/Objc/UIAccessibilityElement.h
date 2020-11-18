@@ -12,14 +12,14 @@
 
 @interface UIAccessibilityElement : NSObject <UIAccessibilityIdentification>
 {
-    NSString *accessibilityIdentifier;
-    id _accessibilityContainer;
+    struct CGRect _accessibilityFrameInContainerSpace;
 }
 
-@property (nonatomic) id accessibilityContainer; // @synthesize accessibilityContainer=_accessibilityContainer;
+@property (nonatomic) id accessibilityContainer; // @dynamic accessibilityContainer;
 @property (nonatomic) struct CGRect accessibilityFrame;
+@property (nonatomic) struct CGRect accessibilityFrameInContainerSpace; // @synthesize accessibilityFrameInContainerSpace=_accessibilityFrameInContainerSpace;
 @property (strong, nonatomic) NSString *accessibilityHint;
-@property (copy, nonatomic) NSString *accessibilityIdentifier; // @synthesize accessibilityIdentifier;
+@property (copy, nonatomic) NSString *accessibilityIdentifier; // @dynamic accessibilityIdentifier;
 @property (strong, nonatomic) NSString *accessibilityLabel;
 @property (nonatomic) unsigned long long accessibilityTraits;
 @property (strong, nonatomic) NSString *accessibilityValue;

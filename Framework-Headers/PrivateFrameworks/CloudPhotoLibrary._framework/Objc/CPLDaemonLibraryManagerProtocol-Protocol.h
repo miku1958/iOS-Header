@@ -13,7 +13,7 @@
 - (void)beginPullSessionWithKnownLibraryVersion:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)beginPushSessionWithKnownLibraryVersion:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)commitChangeBatch:(CPLChangeBatch *)arg1 withCompletionHandler:(void (^)(NSError *, unsigned long long, NSString *))arg2;
-- (void)deleteResourcesIfSafe:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSArray *))arg2;
+- (void)deleteResources:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSDictionary *))arg2;
 - (void)finalizeSessionWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)getChangeBatchWithCompletionHandler:(void (^)(NSError *, CPLChangeBatch *))arg1;
 @end

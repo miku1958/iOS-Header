@@ -6,25 +6,32 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSSet;
+@class NSNumber, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface LSApplicationRestrictionsManager : NSObject
 {
 }
 
+@property (readonly, getter=isAdTrackingEnabled) BOOL adTrackingEnabled; // @dynamic adTrackingEnabled;
 @property (readonly) NSSet *blacklistedBundleIDs;
-@property (readonly) BOOL isOpenInRestrictionInEffect;
+@property (readonly) NSNumber *maximumRating;
+@property (readonly, getter=isOpenInRestrictionInEffect) BOOL openInRestrictionInEffect;
 @property (readonly) NSSet *removedSystemApplications;
-@property (readonly) BOOL whitelistEnabled;
+@property (readonly) NSSet *restrictedBundleIDs;
+@property (readonly, getter=isWhitelistEnabled) BOOL whitelistEnabled;
 @property (readonly) NSSet *whitelistedBundleIDs;
 
 + (id)activeRestrictionIdentifiers;
 + (id)sharedInstance;
 - (id)allowedOpenInAppBundleIDsAfterApplyingFilterToAppBundleIDs:(id)arg1 originatingAppBundleID:(id)arg2 originatingAccountIsManaged:(BOOL)arg3;
+- (void)beginListeningForChanges;
+- (void)effectiveSettingsChanged;
+- (BOOL)isAppExtensionRestricted:(id)arg1;
 - (BOOL)isApplicationRemoved:(id)arg1;
 - (BOOL)isApplicationRestricted:(id)arg1;
 - (BOOL)isApplicationRestricted:(id)arg1 checkFeatureRestrictions:(BOOL)arg2;
+- (BOOL)isRatingAllowed:(id)arg1;
 - (void)removedSystemAppsChanged;
 - (BOOL)setApplication:(id)arg1 removed:(BOOL)arg2;
 

@@ -22,13 +22,11 @@
     NSMutableDictionary *_metadata;
     NSMutableSet *_metadataChangedKeys;
     MFLock *_metadataLock;
-    CDUnknownBlockType _deallocationHandler;
 }
-
-@property (copy, nonatomic) CDUnknownBlockType deallocationHandler; // @synthesize deallocationHandler=_deallocationHandler;
 
 + (id)messageWithLibraryID:(unsigned int)arg1;
 - (id)_attachmentStorageLocation;
+- (void)_forceLoadOfMessageSummaryFromProtectedStore;
 - (void)_initializeMetadata;
 - (void)_updateUID;
 - (id)account;
@@ -51,6 +49,7 @@
 - (BOOL)isPartial;
 - (id)library;
 - (unsigned int)libraryID;
+- (void)loadCachedHeaderValuesFromHeaders:(id)arg1;
 - (id)mailbox;
 - (unsigned int)mailboxID;
 - (id)mailboxName;
@@ -74,7 +73,6 @@
 - (void)setFlags:(unsigned long long)arg1;
 - (void)setHasTemporaryUid:(BOOL)arg1;
 - (void)setIsPartial:(BOOL)arg1;
-- (void)setLibraryID:(unsigned int)arg1;
 - (void)setMailboxID:(unsigned int)arg1;
 - (void)setMessageData:(id)arg1 isPartial:(BOOL)arg2;
 - (void)setMessageFlags:(unsigned long long)arg1;

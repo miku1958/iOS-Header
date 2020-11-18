@@ -9,7 +9,8 @@
 @protocol ClientSessionInterface
 - (void)fetchDisplayURL:(void (^)(NSString *))arg1;
 - (void)fetchStatesWithUserInfo:(NSDictionary *)arg1 completionHandler:(void (^)(NSArray *))arg2;
-- (void)flushMessagesWithReply:(void (^)(NSString *))arg1;
+- (void)finishSessionWithReply:(void (^)(NSString *))arg1;
+- (void)flushMessagesWithCompletion:(void (^)(NSString *, NSError *))arg1;
 - (void)sendMessageWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(NSDictionary *)arg3 reply:(void (^)(NSString *))arg4;
 - (void)sendMessageWithDictionary:(NSDictionary *)arg1 reply:(void (^)(NSString *))arg2;
 - (void)sendMessageWithSessionInfo:(NSDictionary *)arg1 userInfo:(NSDictionary *)arg2 category:(unsigned short)arg3 type:(unsigned short)arg4 payload:(NSDictionary *)arg5 reply:(void (^)(NSString *))arg6;

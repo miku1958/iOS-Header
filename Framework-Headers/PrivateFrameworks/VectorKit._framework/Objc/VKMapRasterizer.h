@@ -6,7 +6,7 @@
 
 #import <VectorKit/VKModelObject.h>
 
-@class MDTextureCanvas, NSMutableSet, VKCamera, VKLayoutContext, VKMapModel, VKMapRasterizerRoot, VKScene, VKTileProvider;
+@class MDTextureCanvas, NSMutableSet, VKCamera, VKMapModel, VKMapRasterizerRoot, VKScene, VKTileProvider;
 
 __attribute__((visibility("hidden")))
 @interface VKMapRasterizer : VKModelObject
@@ -14,19 +14,24 @@ __attribute__((visibility("hidden")))
     struct VKTileKey _keyToRasterize;
     VKScene *_rasterizeScene;
     NSMutableSet *_rasterizeTilesToRender;
-    VKLayoutContext *_rasterizeLayoutContext;
+    struct LayoutContext *_rasterizeLayoutContext;
     MDTextureCanvas *_rasterizeCanvas;
     VKTileProvider *_tileProvider;
     Matrix_5173352a _backgroundColor;
     unsigned long long _rasterizingScaleFactor;
     VKMapRasterizerRoot *_root;
     VKCamera *_rasterizeCamera;
-    struct unique_ptr<ggl::TextureBuffer, std::__1::default_delete<ggl::TextureBuffer>> _textureBuffer;
+    struct Device {
+        int;
+        shared_ptr_807ec9ac;
+        struct unique_ptr<md::SharedDeviceResources, std::__1::default_delete<md::SharedDeviceResources>>;
+    } *_device;
     struct unique_ptr<ggl::RenderBuffer, std::__1::default_delete<ggl::RenderBuffer>> _depthStencilBuffer;
     struct unique_ptr<ggl::RenderTarget, std::__1::default_delete<ggl::RenderTarget>> _renderToTextureTarget;
     struct unique_ptr<md::RenderQueue, std::__1::default_delete<md::RenderQueue>> _rttQueue;
     struct unique_ptr<ggl::TexturePool, std::__1::default_delete<ggl::TexturePool>> _texturePool;
     shared_ptr_479d1306 _renderTexture;
+    struct RenderTargetFormat _renderTargetFormat;
     unsigned int _canvasPointSize;
     VKMapModel *_mapModel;
 }
@@ -40,12 +45,12 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)addSubmodel:(id)arg1;
-- (void)createRasterizationLayoutContext:(id)arg1 canvasPointSize:(unsigned int)arg2;
+- (void)createRasterizationLayoutContext:(struct LayoutContext *)arg1 canvasPointSize:(unsigned int)arg2;
 - (void)dealloc;
 - (void)flushTextureCache;
-- (void)gglLayoutScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
-- (void)gglLayoutSceneIfNeeded:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3 dispatchQueue:(id)arg4;
-- (id)init;
+- (void)gglLayoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
+- (void)gglLayoutSceneIfNeeded:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3 dispatchQueue:(id)arg4;
+- (id)initWithDevice:(struct Device *)arg1;
 - (BOOL)isBusy;
 - (void)prepRenderTargetWithTexture:(const shared_ptr_479d1306 *)arg1;
 - (void)rasterizeKey:(const struct VKTileKey *)arg1 scene:(id)arg2;

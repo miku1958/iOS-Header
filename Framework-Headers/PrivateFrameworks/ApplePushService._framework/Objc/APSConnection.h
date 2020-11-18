@@ -19,6 +19,7 @@
     unsigned long long _largeMessageSize;
     NSString *_connectionPortName;
     unsigned int _connectionPort;
+    BOOL _portNameIsBundleId;
     NSArray *_enabledTopics;
     NSArray *_ignoredTopics;
     NSArray *_opportunisticTopics;
@@ -50,6 +51,7 @@
 + (void)_setTokenState;
 + (id)connectionsDebuggingState;
 + (struct __SecIdentity *)copyIdentity;
++ (id)geoRegion;
 + (void)invalidateDeviceIdentity;
 + (BOOL)isValidEnvironment:(id)arg1;
 + (double)keepAliveIntervalForEnvironmentName:(id)arg1;
@@ -92,6 +94,7 @@
 - (BOOL)hasIdentity;
 - (id)ignoredTopics;
 - (id)initWithEnvironmentName:(id)arg1;
+- (id)initWithEnvironmentName:(id)arg1 launchBundleIdOnDemand:(id)arg2 queue:(id)arg3;
 - (id)initWithEnvironmentName:(id)arg1 namedDelegatePort:(id)arg2;
 - (id)initWithEnvironmentName:(id)arg1 namedDelegatePort:(id)arg2 queue:(id)arg3;
 - (id)initWithEnvironmentName:(id)arg1 queue:(id)arg2;

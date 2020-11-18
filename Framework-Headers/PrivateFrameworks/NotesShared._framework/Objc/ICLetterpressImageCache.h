@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) NSMutableDictionary *imageCache; // @synthesize imageCache=_imageCache;
 
++ (id)letterpressedImageForImage:(id)arg1 tintColor:(id)arg2 scale:(double)arg3;
 + (id)sharedCache;
 - (void).cxx_destruct;
 - (id)imageNamed:(id)arg1 tintColor:(id)arg2;

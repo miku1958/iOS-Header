@@ -6,19 +6,35 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSCache, NSLock;
+#import <MIME/NSCacheDelegate-Protocol.h>
 
-@interface MFLazyCache : NSObject
+@class MFWeakReferenceHolder, NSCache, NSRecursiveLock, NSString;
+@protocol MFLazyCacheDelegate;
+
+@interface MFLazyCache : NSObject <NSCacheDelegate>
 {
-    NSLock *_lock;
+    NSRecursiveLock *_lock;
     NSCache *_storage;
+    MFWeakReferenceHolder *_delegate;
+    struct {
+        unsigned int delegateRespondsToLazyCacheWillEvictObject:1;
+    } _flags;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (weak) id<MFLazyCacheDelegate> delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 - (void)_exchangeOriginalValue:(id)arg1 forKey:(id)arg2 withValue:(id)arg3;
+- (void)cache:(id)arg1 willEvictObject:(id)arg2;
 - (void)dealloc;
 - (id)init;
 - (void)removeAllObjects;
+- (id)storedValueForKey:(id)arg1;
 - (id)valueForKey:(id)arg1 valueGenerator:(CDUnknownBlockType)arg2;
+- (long long)waiterCountForKey:(id)arg1;
 
 @end
 

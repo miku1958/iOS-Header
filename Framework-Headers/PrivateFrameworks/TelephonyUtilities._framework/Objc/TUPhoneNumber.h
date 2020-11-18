@@ -23,6 +23,7 @@
 @property struct __CFPhoneNumber *phoneNumberRef; // @synthesize phoneNumberRef=_phoneNumberRef;
 @property (readonly) NSString *unformattedInternationalRepresentation; // @dynamic unformattedInternationalRepresentation;
 
++ (BOOL)areDigits:(id)arg1 equalToDigits:(id)arg2 usingCountryCode:(id)arg3;
 + (id)phoneNumberWithCFPhoneNumberRef:(struct __CFPhoneNumber *)arg1;
 + (id)phoneNumberWithDigits:(id)arg1 countryCode:(id)arg2;
 + (BOOL)supportsSecureCoding;

@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *specifier;
 @property (copy, nonatomic) NSArray *weeksOfTheYear;
 
+- (void).cxx_destruct;
 - (void)_appendDaysOfTheWeek:(id)arg1 toSpecifier:(id)arg2;
 - (void)_appendIndexList:(id)arg1 toSpecifier:(id)arg2 propertyKey:(unsigned short)arg3;
 - (void)_clearArrays;
@@ -38,7 +39,6 @@ __attribute__((visibility("hidden")))
 - (id)_parseIndexList:(CDStruct_f9502b4c *)arg1 range:(CDStruct_912cb5d2)arg2;
 - (void)_parseSpecifierIfNeeded;
 - (void)_updateSpecifier;
-- (void)dealloc;
 - (id)initWithSpecifier:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)revert;

@@ -34,10 +34,14 @@
 - (BOOL)_delegateConformsAndRespondsToSelector:(SEL)arg1;
 - (void)_handleAppStateChangedInfo:(id)arg1;
 - (unsigned long long)_translateApplicationState:(unsigned int)arg1;
+- (void)_updateProcessInfo:(id)arg1 info:(id)arg2;
 - (id)activeRequests;
 - (void)addProcess:(id)arg1;
+- (id)applicationInfoForApplication:(id)arg1;
 - (id)applicationInfoForPID:(int)arg1;
+- (id)backgroundToForegroundApps;
 - (void)dealloc;
+- (id)foregroundAppIdentifiers;
 - (BOOL)infoIsForViewService:(id)arg1;
 - (id)init;
 - (id)processInfoForPID:(int)arg1;

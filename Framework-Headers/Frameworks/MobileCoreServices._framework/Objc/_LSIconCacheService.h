@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)beginListening;
 + (id)cacheSalt;
 + (id)sharedInstance;
 - (void)copyIconBitmapCacheConfigurationWithReply:(CDUnknownBlockType)arg1;

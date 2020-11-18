@@ -19,13 +19,20 @@
 @property (copy, nonatomic) NSArray *instructions;
 @property (nonatomic) float renderScale;
 @property (nonatomic) struct CGSize renderSize;
+@property (nonatomic) int sourceTrackIDForFrameTiming;
 
 + (id)videoComposition;
 + (id)videoCompositionWithAsset:(id)arg1 applyingCIFiltersWithHandler:(CDUnknownBlockType)arg2;
 + (id)videoCompositionWithPropertiesOfAsset:(id)arg1;
 + (id)videoCompositionWithPropertiesOfAsset:(id)arg1 videoGravity:(id)arg2;
 - (id)builtInCompositorName;
+- (id)colorPrimaries;
+- (id)colorTransferFunction;
+- (id)colorYCbCrMatrix;
 - (void)setBuiltInCompositorName:(id)arg1;
+- (void)setColorPrimaries:(id)arg1;
+- (void)setColorTransferFunction:(id)arg1;
+- (void)setColorYCbCrMatrix:(id)arg1;
 
 @end
 

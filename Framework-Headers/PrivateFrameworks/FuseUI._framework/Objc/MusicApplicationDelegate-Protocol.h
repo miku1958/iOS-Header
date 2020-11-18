@@ -6,13 +6,12 @@
 
 #import <FuseUI/UIApplicationDelegate-Protocol.h>
 
-@class MusicClientContext, MusicRemoteController, UIAlertController;
+@class MusicClientContext, UIAlertController;
 
 @protocol MusicApplicationDelegate <UIApplicationDelegate>
 
 @property (readonly, nonatomic) MusicClientContext *clientContext;
 @property (readonly, nonatomic) BOOL didFinishLaunching;
-@property (readonly, nonatomic) MusicRemoteController *remoteController;
 
 - (void)presentFailureAlertController:(UIAlertController *)arg1;
 - (void)presentNowPlayingViewControllerAnimated:(BOOL)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AssetsLibrary/ALAssetsLibraryAsset-Protocol.h>
 
@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableDictionary *propertyValues; // @synthesize propertyValues=_propertyValues;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_performBlockAndWait:(CDUnknownBlockType)arg1;
 - (int)albumFilter;
 - (void)dealloc;

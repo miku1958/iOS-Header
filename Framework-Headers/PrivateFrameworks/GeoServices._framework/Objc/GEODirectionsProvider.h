@@ -22,8 +22,8 @@
 - (void)cancelRequest;
 - (void)dealloc;
 - (void)providerDidCancel;
-- (void)providerReceivedError:(id)arg1 problemDetails:(CDStruct_c55e649d *)arg2;
-- (void)providerReceivedErrorCode:(long long)arg1 userInfo:(id)arg2 problemDetails:(CDStruct_c55e649d *)arg3;
+- (void)providerReceivedError:(id)arg1 directionsError:(id)arg2;
+- (void)providerReceivedErrorCode:(long long)arg1 userInfo:(id)arg2 directionsError:(id)arg3;
 - (void)providerReceivedResponse:(id)arg1;
 - (void)requestCompleted;
 - (void)startProviderWithRequest:(id)arg1;

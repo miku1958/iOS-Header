@@ -7,17 +7,18 @@
 #import <objc/NSObject.h>
 
 @class NSArray;
+@protocol CKDZoneGatekeeperWaiter;
 
 __attribute__((visibility("hidden")))
 @interface CKWaiterWrapper : NSObject
 {
-    id _waiter;
+    id<CKDZoneGatekeeperWaiter> _waiter;
     NSArray *_zoneIDs;
     CDUnknownBlockType _completionHandler;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property (strong, nonatomic) id waiter; // @synthesize waiter=_waiter;
+@property (strong, nonatomic) id<CKDZoneGatekeeperWaiter> waiter; // @synthesize waiter=_waiter;
 @property (strong, nonatomic) NSArray *zoneIDs; // @synthesize zoneIDs=_zoneIDs;
 
 - (void).cxx_destruct;

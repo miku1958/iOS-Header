@@ -19,8 +19,8 @@
 @property (readonly, nonatomic) NSString *opaqueKey; // @synthesize opaqueKey=_opaqueKey;
 @property (readonly, nonatomic) NSDate *sentAt; // @synthesize sentAt=_sentAt;
 
-+ (id)parseFromURL:(id)arg1;
 - (void).cxx_destruct;
+- (id)init;
 - (id)initWithMessageId:(id)arg1 sentAt:(id)arg2 opaqueKey:(id)arg3;
 
 @end

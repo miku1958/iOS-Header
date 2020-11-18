@@ -50,10 +50,10 @@
 - (void).cxx_destruct;
 - (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
-- (id)parseDepartmentFromDictionary:(id)arg1 outError:(id *)arg2;
-- (id)parseDeviceGroupFromDictionary:(id)arg1 outError:(id *)arg2;
-- (id)parseGroupFromDictionary:(id)arg1 outError:(id *)arg2;
-- (id)parseUserFromDictionary:(id)arg1 outError:(id *)arg2;
+- (id)parseDepartmentFromDictionary:(id)arg1 isStub:(BOOL)arg2 outError:(id *)arg3;
+- (id)parseDeviceGroupFromDictionary:(id)arg1 isStub:(BOOL)arg2 outError:(id *)arg3;
+- (id)parseGroupFromDictionary:(id)arg1 isStub:(BOOL)arg2 outError:(id *)arg3;
+- (id)parseUserFromDictionary:(id)arg1 isStub:(BOOL)arg2 outError:(id *)arg3;
 - (id)payloadDescriptionKeyValueSections;
 - (id)stubDictionary;
 - (id)title;

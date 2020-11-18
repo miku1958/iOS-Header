@@ -16,22 +16,23 @@
 - (id)_accessibilityAttributedValueForRange:(struct _NSRange *)arg1;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
 - (id)_accessibilityDataDetectorScheme:(struct CGPoint)arg1;
-- (id)_accessibilityLinks;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (void)_accessibilitySetValue:(id)arg1;
 - (id)_accessibilitySupplementaryHeaderViews;
 - (BOOL)_allowCustomActionHintSpeakOverride;
+- (BOOL)accessibilityActivate;
 - (struct CGPoint)accessibilityActivationPoint;
-- (id)accessibilityCustomRotorItemsAtIndex:(long long)arg1;
-- (id)accessibilityCustomRotorTitles;
+- (id)accessibilityCustomRotors;
 - (struct CGRect)accessibilityFrame;
+- (id)accessibilityPlaceholderValue;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
 - (BOOL)keyboardInput:(id)arg1 shouldInsertText:(id)arg2 isMarkedText:(BOOL)arg3;
 - (BOOL)keyboardInput:(id)arg1 shouldReplaceTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
-- (void)selectAll:(id)arg1;
+- (BOOL)resignFirstResponder;
+- (void)setAttributedPlaceholder:(id)arg1;
 - (void)setContentOffset:(struct CGPoint)arg1;
 - (void)setSelectedRange:(struct _NSRange)arg1;
 

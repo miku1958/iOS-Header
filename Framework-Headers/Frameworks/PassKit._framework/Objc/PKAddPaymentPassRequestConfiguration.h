@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKit/NSSecureCoding-Protocol.h>
 
@@ -28,6 +28,7 @@
 @property (copy, nonatomic) NSString *primaryAccountSuffix; // @synthesize primaryAccountSuffix=_primaryAccountSuffix;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

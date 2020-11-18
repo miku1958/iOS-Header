@@ -12,7 +12,7 @@
 
 @interface GEOMapsLaunchFeedbackCollection : PBCodable <NSCopying>
 {
-    CDStruct_612aec5b _sessionId;
+    struct GEOSessionID _sessionId;
     NSString *_sourceAppBundleId;
     NSString *_uriScheme;
     struct {
@@ -23,7 +23,7 @@
 @property (nonatomic) BOOL hasSessionId;
 @property (readonly, nonatomic) BOOL hasSourceAppBundleId;
 @property (readonly, nonatomic) BOOL hasUriScheme;
-@property (nonatomic) CDStruct_612aec5b sessionId; // @synthesize sessionId=_sessionId;
+@property (nonatomic) struct GEOSessionID sessionId; // @synthesize sessionId=_sessionId;
 @property (strong, nonatomic) NSString *sourceAppBundleId; // @synthesize sourceAppBundleId=_sourceAppBundleId;
 @property (strong, nonatomic) NSString *uriScheme; // @synthesize uriScheme=_uriScheme;
 

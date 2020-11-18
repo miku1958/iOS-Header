@@ -31,6 +31,7 @@
 @property (readonly, nonatomic) NSArray *collections; // @synthesize collections=_collections;
 @property (readonly, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property (readonly, nonatomic) unsigned long long estimatedChildCollectionCount; // @synthesize estimatedChildCollectionCount=_estimatedChildCollectionCount;
+@property (readonly, nonatomic) BOOL keyCollectionsAtEnd;
 @property (readonly, nonatomic) NSArray *localizedLocationNames; // @synthesize localizedLocationNames=_localizedLocationNames;
 @property (readonly, nonatomic) PHQuery *query; // @synthesize query=_query;
 @property (readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
@@ -41,11 +42,13 @@
 + (id)fetchCollectionListsContainingCollection:(id)arg1 options:(id)arg2;
 + (id)fetchCollectionListsWithCloudIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchCollectionListsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
++ (id)fetchCollectionListsWithType:(long long)arg1 localIdentifiers:(id)arg2 options:(id)arg3;
 + (id)fetchCollectionListsWithType:(long long)arg1 subtype:(long long)arg2 options:(id)arg3;
 + (id)fetchMomentListsWithSubtype:(long long)arg1 containingMoment:(id)arg2 options:(id)arg3;
 + (id)fetchMomentListsWithSubtype:(long long)arg1 options:(id)arg2;
 + (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
 + (id)fetchRootAlbumCollectionListWithOptions:(id)arg1;
++ (id)fetchType;
 + (id)identifierCode;
 + (id)managedEntityName;
 + (BOOL)managedObjectSupportsTrashedState;
@@ -62,6 +65,7 @@
 - (BOOL)canContainCollections;
 - (BOOL)canPerformEditOperation:(long long)arg1;
 - (Class)changeRequestClass;
+- (unsigned long long)collectionFixedOrderPriority;
 - (BOOL)collectionHasFixedOrder;
 - (id)description;
 - (id)initTransientWithCollections:(id)arg1 orQuery:(id)arg2 title:(id)arg3 identifier:(id)arg4;

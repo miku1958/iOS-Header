@@ -16,8 +16,14 @@ __attribute__((visibility("hidden")))
     NSString *_routingKey;
     CKDPShareIdentifier *_shareId;
     NSData *_shortTokenHash;
+    BOOL _forceFetch;
+    struct {
+        unsigned int forceFetch:1;
+    } _has;
 }
 
+@property (nonatomic) BOOL forceFetch; // @synthesize forceFetch=_forceFetch;
+@property (nonatomic) BOOL hasForceFetch;
 @property (readonly, nonatomic) BOOL hasRoutingKey;
 @property (readonly, nonatomic) BOOL hasShareId;
 @property (readonly, nonatomic) BOOL hasShortTokenHash;
@@ -35,6 +41,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (unsigned int)requestTypeCode;
+- (Class)responseClass;
 - (void)writeTo:(id)arg1;
 
 @end

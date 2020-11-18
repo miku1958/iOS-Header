@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType onViewDidDisappearBlock; // @synthesize onViewDidDisappearBlock=_onViewDidDisappearBlock;
 
 - (void).cxx_destruct;
+- (void)callOnViewDidDisappearBlock;
 - (void)viewDidDisappear:(BOOL)arg1;
 
 @end

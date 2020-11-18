@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebUI/WebUIDelegate.h>
+#import <objc/NSObject.h>
 
 #import <WebApp/UIApplicationDelegate-Protocol.h>
 #import <WebApp/UIWebViewDelegate-Protocol.h>
@@ -13,7 +13,7 @@
 
 @class NSArray, NSDictionary, NSMutableArray, NSMutableSet, NSString, NSTimer, UIView, UIWebClip, UIWebView, UIWindow, WBUSheetController, WebUIAuthenticationManager, WebUIDownloadManager;
 
-@interface WebAppController : WebUIDelegate <WebPolicyDelegate, UIApplicationDelegate, UIWebViewDelegate, UIWebViewPrivateDelegate>
+@interface WebAppController : NSObject <WebPolicyDelegate, UIApplicationDelegate, UIWebViewDelegate, UIWebViewPrivateDelegate>
 {
     UIWindow *_window;
     UIWebView *webView;

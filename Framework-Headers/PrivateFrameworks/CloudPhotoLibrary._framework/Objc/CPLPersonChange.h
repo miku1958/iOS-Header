@@ -11,11 +11,18 @@
 @interface CPLPersonChange : CPLRecordChange
 {
     NSString *_fullName;
+    NSString *_personID;
+    long long _personType;
+    long long _manualSortOrder;
 }
 
 @property (copy, nonatomic) NSString *fullName; // @synthesize fullName=_fullName;
+@property (nonatomic) long long manualSortOrder; // @synthesize manualSortOrder=_manualSortOrder;
+@property (copy, nonatomic) NSString *personID; // @synthesize personID=_personID;
+@property (nonatomic) long long personType; // @synthesize personType=_personType;
 
 - (void).cxx_destruct;
+- (BOOL)supportsDeletion;
 
 @end
 

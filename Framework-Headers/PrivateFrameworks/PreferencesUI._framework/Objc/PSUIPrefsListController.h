@@ -10,7 +10,7 @@
 #import <PreferencesUI/PSSearchControllerDelegate-Protocol.h>
 #import <PreferencesUI/RadiosPreferencesDelegate-Protocol.h>
 
-@class ACAccountStore, EAAccessory, HMHomeManager, NSArray, NSDictionary, NSObject, NSSet, NSString, PSSearchController, PSSpecifier, UIViewController;
+@class ACAccountStore, EAAccessory, NSArray, NSDictionary, NSObject, NSSet, NSString, PSSearchController, PSSpecifier, PSUIHomeKitVisibilityArbitrator, UIViewController, VSAccountStore;
 @protocol OS_dispatch_queue, PSController;
 
 @interface PSUIPrefsListController : PSListController <PSSearchControllerDelegate, RadiosPreferencesDelegate, DevicePINControllerDelegate>
@@ -18,6 +18,7 @@
     BOOL _didFirstLoad;
     EAAccessory *_speakerAccessory;
     PSSpecifier *_eqSpecifier;
+    PSSpecifier *_ethernetSpecifier;
     NSArray *_thirdPartySpecifiers;
     NSDictionary *_movedThirdPartySpecifiers;
     BOOL _initiallyLoadingThirdPartySpecifiers;
@@ -32,9 +33,11 @@
     PSSpecifier *_vimeoSpecifier;
     PSSpecifier *_weiboSpecifier;
     PSSpecifier *_tencentweiboSpecifier;
+    PSSpecifier *_videoSubscriberSpecifier;
     PSSpecifier *_messagesSpecifier;
     PSSpecifier *_faceTimeSpecifier;
     PSSpecifier *_gameCenterSpecifier;
+    PSSpecifier *_siriSpecifier;
     PSSpecifier *_carrierSelectionSpecifier;
     PSSpecifier *_personalHotspotSpecifier;
     PSSpecifier *_homeKitSpecifier;
@@ -46,7 +49,8 @@
     NSDictionary *_iconCache;
     ACAccountStore *_accountStore;
     NSString *_pendingOffsetItemName;
-    HMHomeManager *_homeManager;
+    PSUIHomeKitVisibilityArbitrator *_homeKitVisibilityArbitrator;
+    VSAccountStore *_videoSubscriberAccountStore;
     BOOL _skipSelectingGeneralOnLaunch;
     PSSearchController *_searchController;
     NSString *_searchText;
@@ -72,13 +76,14 @@
 - (void).cxx_destruct;
 - (id)_accountStore;
 - (void)_beginObservingAccountStoreDidChangeNotification;
+- (void)_beginObservingVideoSubscriberAccountStoreDidChangeNotification;
 - (void)_insertOrRemovePaymentSpecifierAsNeededCompletion:(CDUnknownBlockType)arg1;
 - (void)_loadThirdPartySpecifiersIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_loadThirdPartySpecifiersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_localeChanged;
 - (void)_newCarrierNotification;
 - (id)_primarySpecifierOrdering;
-- (void)_reallyLoadThirdPartySpecifiersForProxies:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_reallyLoadThirdPartySpecifiersForApps:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_setAirplaneMode:(BOOL)arg1;
 - (void)_setupiCloudSpecifier:(id)arg1;
 - (void)_setupiCloudSpecifier:(id)arg1 withPrimaryAccount:(id)arg2;
@@ -90,6 +95,8 @@
 - (void)_simStatusChanged:(struct __CFString *)arg1;
 - (id)_specifierDictionaryForBundlePath:(id)arg1 identifier:(id)arg2 internalIcon:(BOOL)arg3 searchPlist:(id)arg4;
 - (id)_specifierDictionaryForDeveloperBundlePath:(id)arg1 identifier:(id)arg2;
+- (void)_videoSubscriberAccountAvailabilityDidChange:(id)arg1;
+- (void)_videoSubscriberAccountStoreDidChange:(id)arg1;
 - (void)airplaneModeChanged;
 - (void)appleAccountsDidChange;
 - (void)bluetoothPowerChanged:(id)arg1;
@@ -119,12 +126,10 @@
 - (void)insertMovedThirdPartySpecifiersAnimated:(BOOL)arg1;
 - (void)insertOrderedSpecifier:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)isBundleIDHiddenDueToRestrictions:(id)arg1;
-- (BOOL)isHomeKitInUse;
 - (BOOL)isSpecifierHiddenDueToRestrictions:(id)arg1;
 - (void)lazyLoadSpecialBundleForSpecifier:(id)arg1;
 - (void)loadPPTTestSpecifiers:(int)arg1;
 - (void)loadThirdPartySpecifierForBundleID:(id)arg1;
-- (void)loadView;
 - (void)networkChanged;
 - (id)passbookSpecifier;
 - (id)phoneStatusForSpecifier:(id)arg1;
@@ -143,8 +148,10 @@
 - (void)setShowsCarrierSettingsMenu:(BOOL)arg1;
 - (void)setSpeakerAccessory:(id)arg1 eqAvailable:(BOOL)arg2;
 - (void)setupAppleAccountCategory:(id)arg1;
+- (void)setupSearchBar;
 - (BOOL)shouldDeferPushForSpecifierID:(id)arg1;
 - (BOOL)shouldReloadSpecifiersOnResume;
+- (BOOL)shouldShowEthernetSpecifier;
 - (void)showPINSheet:(id)arg1;
 - (id)specifierForBundle:(id)arg1;
 - (id)specifiers;
@@ -154,11 +161,13 @@
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (void)updateAccountSpecifiers;
+- (void)updateEthernet;
 - (void)updateHomeKitSpecifier;
 - (void)updateRestrictedSettings;
 - (void)updateShowsCarrierSettingsMenuVisibility;
 - (void)updateWeiboState;
 - (void)updateWifi;
+- (id)videoSubscriberAccountValue:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

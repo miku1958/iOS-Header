@@ -7,13 +7,14 @@
 #import <StoreKitUI/NSObject-Protocol.h>
 
 @class IKAppDocument, NSDictionary, NSString, NSURL;
-@protocol IKAppDataStoring;
+@protocol IKAppDataStoring, IKAppUserDefaultsStoring;
 
 @protocol IKApplication <NSObject>
 - (NSString *)appIdentifier;
 - (NSURL *)appJSURL;
 - (id<IKAppDataStoring>)localStorage;
 - (BOOL)shouldIgnoreJSValidation;
+- (id<IKAppUserDefaultsStoring>)userDefaultsStorage;
 - (NSString *)vendorIdentifier;
 - (id<IKAppDataStoring>)vendorStorage;
 
@@ -21,5 +22,6 @@
 - (IKAppDocument *)activeDocument;
 - (BOOL)appIsTrusted;
 - (NSDictionary *)appLaunchParams;
+- (BOOL)shouldAllowRemoteInspection;
 @end
 

@@ -25,6 +25,7 @@
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_defaultProxyErrorHandlerWithSimpleReplyCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_registerForHistoryNotifications;
+- (void)beginHistoryAccessSession:(CDUnknownBlockType)arg1;
 - (void)beginURLCompletionSession:(CDUnknownBlockType)arg1;
 - (void)clearHistoryVisitsAddedAfterDate:(id)arg1 endDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)clearHistoryWithCompletionHandler:(CDUnknownBlockType)arg1;

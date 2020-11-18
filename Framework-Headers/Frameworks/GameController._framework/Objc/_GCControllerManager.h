@@ -6,15 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, NSThread, NSTimer, NSXPCConnection;
+#import <GameController/GameControllerClientProtocol-Protocol.h>
+
+@class NSMutableArray, NSMutableDictionary, NSString, NSThread, NSTimer, NSXPCConnection;
 @protocol GameControllerDaemon, OS_dispatch_queue;
 
-@interface _GCControllerManager : NSObject
+@interface _GCControllerManager : NSObject <GameControllerClientProtocol>
 {
     NSXPCConnection *_connection;
     id<GameControllerDaemon> _remote;
     struct __IOHIDManager *_hidManager;
     NSMutableDictionary *_controllersByUDID;
+    NSMutableDictionary *_controllersByRegistryID;
     struct IONotificationPort *_usbNotify;
     unsigned int _usbAddedIterator;
     unsigned int _usbRemovedIterator;
@@ -24,6 +27,10 @@
     BOOL _shouldKeepRunning;
     CDUnknownBlockType _requestConnectedHostsCallback;
     NSObject<OS_dispatch_queue> *_controllersQueue;
+    long long _currentMediaRemoteInputMode;
+    struct __IOHIDEventSystemClient *_hidSystemClient;
+    NSObject<OS_dispatch_queue> *_hidSystemClientQueue;
+    BOOL _isAppInBackground;
     NSThread *_hidInputThread;
     struct __CFRunLoop *_hidInputThreadRunLoop;
     struct __CFRunLoopSource *_hidThreadRunLoopSource;
@@ -32,35 +39,53 @@
 
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, strong, nonatomic) NSObject<OS_dispatch_queue> *controllersQueue; // @synthesize controllersQueue=_controllersQueue;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, strong, nonatomic) NSThread *hidInputThread; // @synthesize hidInputThread=_hidInputThread;
 @property (readonly, nonatomic) struct __CFRunLoop *hidInputThreadRunLoop; // @synthesize hidInputThreadRunLoop=_hidInputThreadRunLoop;
 @property (nonatomic) struct __IOHIDManager *hidManager; // @synthesize hidManager=_hidManager;
 @property (readonly, nonatomic) NSMutableArray *hidThreadExecutionBlocks; // @synthesize hidThreadExecutionBlocks=_hidThreadExecutionBlocks;
 @property (readonly, nonatomic) struct __CFRunLoopSource *hidThreadRunLoopSource; // @synthesize hidThreadRunLoopSource=_hidThreadRunLoopSource;
 @property (nonatomic) BOOL idleTimerNeedsReset; // @synthesize idleTimerNeedsReset=_idleTimerNeedsReset;
+@property (readonly, nonatomic) BOOL isAppInBackground; // @synthesize isAppInBackground=_isAppInBackground;
 @property (copy, nonatomic) CDUnknownBlockType logger; // @synthesize logger=_logger;
 @property (strong, nonatomic) id<GameControllerDaemon> remote; // @synthesize remote=_remote;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)CBApplicationDidBecomeActive;
 - (void)CBApplicationWillResignActive;
+- (void)addConnectedDevices;
 - (void)addController:(id)arg1;
+- (void)addControllerWithServiceRef:(struct __IOHIDServiceClient *)arg1;
 - (void)async_HIDBlock:(CDUnknownBlockType)arg1;
-- (void)controllerWithUDID:(unsigned long long)arg1 setArrayValue:(CDStruct_212a8bf9)arg2 forElement:(int)arg3;
+- (void)controller:(id)arg1 setValue:(float)arg2 forElement:(int)arg3;
 - (void)controllerWithUDID:(unsigned long long)arg1 setData:(id)arg2;
+- (void)controllerWithUDID:(unsigned long long)arg1 setValue0:(float)arg2 setValue1:(float)arg3 setValue2:(float)arg4 setValue3:(float)arg5 forElement:(int)arg6;
 - (void)controllerWithUDID:(unsigned long long)arg1 setValue:(float)arg2 forElement:(int)arg3;
 - (id)controllers;
 - (void)dealloc;
+- (id)firstMicroGamepad;
 - (id)init;
 - (BOOL)isExistingController:(id)arg1;
+- (BOOL)isPhysicalB239:(id)arg1;
 - (void)launchHIDInputThread;
+- (void)microControllerWithDigitizerX:(float)arg1 withY:(float)arg2 withTimeStamp:(unsigned long long)arg3 touchDown:(BOOL)arg4;
+- (void)microControllerWithUDID:(unsigned long long)arg1 setDigitizerX:(float)arg2 digitizerY:(float)arg3 withTimeStamp:(unsigned long long)arg4 touchDown:(BOOL)arg5;
 - (void)open;
 - (void)removeController:(id)arg1;
+- (void)removeControllerWithServiceRef:(struct __IOHIDServiceClient *)arg1;
 - (void)replyConnectedHosts:(id)arg1;
 - (void)requestConnectedHostsWithHandler:(CDUnknownBlockType)arg1;
+- (void)startHIDDeviceMonitor;
+- (void)startHIDEventMonitor;
 - (void)startIdleWatchTimer;
+- (void)stopHIDDeviceMonitor;
+- (void)stopHIDEventMonitor;
 - (void)threadHIDInputOffMain:(id)arg1;
 - (void)threadHIDInputOnMain:(id)arg1;
+- (void)updateControllerWithEvent:(struct __IOHIDEvent *)arg1;
 - (void)updateIdleTimer:(id)arg1;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <CFNetwork/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSError, NSHTTPURLResponse, NSString, NSURL, NSURLAuthenticationChallenge, NSURLCredential, NSURLProtectionSpace, NSURLRequest, NSURLResponse, NSValue;
+@class NSArray, NSData, NSDictionary, NSError, NSHTTPURLResponse, NSString, NSURL, NSURLAuthenticationChallenge, NSURLCredential, NSURLProtectionSpace, NSURLRequest, NSURLResponse, NSURLSessionTaskMetrics, NSValue;
 
 @protocol NDBackgroundSessionClient <NSObject>
 - (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didLoadTimeRange:(NSValue *)arg2 totalTimeRangesLoaded:(NSArray *)arg3 timeRangeExpectedToLoad:(NSValue *)arg4;
@@ -21,7 +21,8 @@
 - (void)backgroundSessionDidFinishAppWake:(NSString *)arg1 reply:(void (^)(void))arg2;
 - (void)backgroundSessionDidStartAppWake:(NSString *)arg1 reply:(void (^)(void))arg2;
 - (void)backgroundTask:(unsigned long long)arg1 _willSendRequestForEstablishedConnection:(NSURLRequest *)arg2 reply:(void (^)(NSURLRequest *, NSFileHandle *))arg3;
-- (void)backgroundTask:(unsigned long long)arg1 didCompleteWithError:(NSError *)arg2 timingData:(NSDictionary *)arg3 reply:(void (^)(void))arg4;
+- (void)backgroundTask:(unsigned long long)arg1 didCompleteWithError:(NSError *)arg2 info:(NSDictionary *)arg3 reply:(void (^)(void))arg4;
+- (void)backgroundTask:(unsigned long long)arg1 didFinishCollectingMetrics:(NSURLSessionTaskMetrics *)arg2 reply:(void (^)(void))arg3;
 - (void)backgroundTask:(unsigned long long)arg1 didReceiveChallenge:(NSURLAuthenticationChallenge *)arg2 reply:(void (^)(long long, NSURLCredential *))arg3;
 - (void)backgroundTask:(unsigned long long)arg1 didReceiveResponse:(NSURLResponse *)arg2 timingData:(NSDictionary *)arg3;
 - (void)backgroundTask:(unsigned long long)arg1 didReceiveResponse:(NSURLResponse *)arg2 timingData:(NSDictionary *)arg3 reply:(void (^)(long long))arg4;

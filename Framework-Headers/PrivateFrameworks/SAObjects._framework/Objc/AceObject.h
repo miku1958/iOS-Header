@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SAObjects/AceObject-Protocol.h>
 
@@ -43,7 +43,8 @@
 + (id)newAceObjectWithDictionary:(id)arg1 context:(id)arg2;
 + (id)newAceObjectWithGenericCommand:(id)arg1 context:(id)arg2;
 + (BOOL)supportsSecureCoding;
-- (void)_appendDescriptionOfObject:(id)arg1 toString:(id)arg2 atDepth:(long long)arg3 withPrefixes:(id)arg4;
+- (void)_appendDescriptionOfObject:(id)arg1 toString:(id)arg2 atDepth:(unsigned long long)arg3 withPrefixes:(id)arg4 hint:(id)arg5;
+- (id)_descriptionHint;
 - (void)_deserializeFromPlistData;
 - (id)_dict;
 - (id)_initWithMutableDictionary:(id)arg1;
@@ -56,6 +57,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)encodedClassName;
 - (id)forceEagerDeserialization;
+- (id)fullDescription;
 - (id)groupIdentifier;
 - (BOOL)hasArrayForPropertyForKey:(id)arg1;
 - (id)init;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/APSConnectionDelegate-Protocol.h>
 
@@ -24,6 +24,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_handleTimeout;
 - (void)_invokeCompletionWithPushToken:(id)arg1;
 - (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;

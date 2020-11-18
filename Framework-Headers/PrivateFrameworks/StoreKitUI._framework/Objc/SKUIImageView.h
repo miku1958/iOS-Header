@@ -6,19 +6,28 @@
 
 #import <UIKit/UIImageView.h>
 
-@class UITapGestureRecognizer;
+@class CAShapeLayer, SKUIImagePlaceholder, UIImage, UITapGestureRecognizer;
 
 @interface SKUIImageView : UIImageView
 {
-    struct CGSize _imageSize;
     UITapGestureRecognizer *_tapRecognizer;
+    struct CGSize _lastLayoutSize;
+    SKUIImagePlaceholder *_placeholder;
+    CDUnknownBlockType _cornerPathBlock;
+    struct CGSize _imageSize;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType cornerPathBlock; // @synthesize cornerPathBlock=_cornerPathBlock;
+@property (strong, nonatomic) UIImage *image; // @dynamic image;
 @property (nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
+@property (readonly, nonatomic) CAShapeLayer *layer; // @dynamic layer;
+@property (strong, nonatomic) SKUIImagePlaceholder *placeholder; // @synthesize placeholder=_placeholder;
 @property (readonly, nonatomic) UITapGestureRecognizer *tapRecognizer;
 
++ (Class)layerClass;
 - (void).cxx_destruct;
-- (void)drawDecorationsWithImageRect:(struct CGRect)arg1;
+- (void)layoutSubviews;
+- (void)setContents:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

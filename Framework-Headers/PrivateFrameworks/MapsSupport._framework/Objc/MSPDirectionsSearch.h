@@ -14,9 +14,15 @@
 {
     PBUnknownFields *_unknownFields;
     GEOStorageRouteRequestStorage *_routeRequestStorage;
+    BOOL _navigationInterrupted;
+    struct {
+        unsigned int navigationInterrupted:1;
+    } _has;
 }
 
+@property (nonatomic) BOOL hasNavigationInterrupted;
 @property (readonly, nonatomic) BOOL hasRouteRequestStorage;
+@property (nonatomic) BOOL navigationInterrupted; // @synthesize navigationInterrupted=_navigationInterrupted;
 @property (strong, nonatomic) GEOStorageRouteRequestStorage *routeRequestStorage; // @synthesize routeRequestStorage=_routeRequestStorage;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 

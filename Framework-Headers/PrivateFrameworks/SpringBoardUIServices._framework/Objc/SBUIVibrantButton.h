@@ -18,6 +18,9 @@
     UIImage *_glyphImage;
     NSString *_title;
     double _minimumTitleScaleFactor;
+    long long _numberOfLines;
+    long long _textAlignment;
+    long long _lineBreakMode;
     UIView *_vibrantMaskView;
     UILabel *_vibrantMaskLabel;
     UIImageView *_vibrantMaskGlyphView;
@@ -28,14 +31,20 @@
     SBUILegibilityView *_nonVibrantGlyphLegibilityView;
     SBUILegibilityLabel *_nonVibrantLegibilityLabel;
     BOOL _vibrancyAllowed;
+    double _strength;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIImage *glyphImage; // @synthesize glyphImage=_glyphImage;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property (nonatomic) long long lineBreakMode; // @synthesize lineBreakMode=_lineBreakMode;
 @property (nonatomic) double minimumTitleScaleFactor; // @synthesize minimumTitleScaleFactor=_minimumTitleScaleFactor;
+@property (nonatomic) long long numberOfLines; // @synthesize numberOfLines=_numberOfLines;
+@property (nonatomic) double strength; // @synthesize strength=_strength;
 @property (readonly) Class superclass;
+@property (nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic, getter=isVibrancyAllowed) BOOL vibrancyAllowed; // @synthesize vibrancyAllowed=_vibrancyAllowed;
 @property (strong, nonatomic) _SBFVibrantSettings *vibrantSettings; // @synthesize vibrantSettings=_vibrantSettings;
@@ -61,9 +70,7 @@
 - (void)setBackgroundView:(id)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setLegibilitySettings:(id)arg1 textStrength:(double)arg2;
-- (void)setStrength:(double)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)updateForChangedSettings:(id)arg1;
 
 @end
 

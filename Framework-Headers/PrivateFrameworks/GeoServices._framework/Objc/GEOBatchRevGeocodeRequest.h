@@ -28,10 +28,14 @@
 @property (strong, nonatomic) NSMutableArray *locations; // @synthesize locations=_locations;
 @property (strong, nonatomic) NSMutableArray *serviceTags; // @synthesize serviceTags=_serviceTags;
 
++ (Class)locationType;
++ (Class)serviceTagType;
+- (int)StringAsAdditionalPlaceTypes:(id)arg1;
 - (void)addAdditionalPlaceType:(int)arg1;
 - (void)addLocation:(id)arg1;
 - (void)addServiceTag:(id)arg1;
 - (int)additionalPlaceTypeAtIndex:(unsigned long long)arg1;
+- (id)additionalPlaceTypesAsString:(int)arg1;
 - (void)clearAdditionalPlaceTypes;
 - (void)clearLocations;
 - (void)clearServiceTags;

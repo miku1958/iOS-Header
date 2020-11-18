@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSMutableArray *shares; // @synthesize shares=_shares;
 
++ (Class)shareType;
 - (void).cxx_destruct;
 - (void)addShare:(id)arg1;
 - (void)clearShares;

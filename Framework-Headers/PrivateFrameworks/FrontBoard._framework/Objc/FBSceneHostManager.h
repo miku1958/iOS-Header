@@ -9,7 +9,7 @@
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 #import <FrontBoard/FBSceneLayerHostContainerViewDelegate-Protocol.h>
 
-@class FBOrderedRequesters, FBScene, FBSceneHostWrapperView, FBSceneLayerHostContainerView, FBSceneLayerManager, NSHashTable, NSMutableDictionary, NSString, UIColor;
+@class FBOrderedRequesters, FBScene, FBSceneHostWrapperView, FBSceneLayerHostContainerView, FBSceneLayerManager, NSHashTable, NSMutableDictionary, NSMutableSet, NSString, UIColor;
 @protocol FBSceneHostManagerDelegate;
 
 @interface FBSceneHostManager : NSObject <FBSceneLayerHostContainerViewDelegate, BSDescriptionProviding>
@@ -26,6 +26,7 @@
     BOOL _invalidated;
     FBOrderedRequesters *_hostRequesters;
     NSMutableDictionary *_hostWrapperViewsByRequester;
+    NSMutableSet *_disableHostingAssertions;
     NSHashTable *_observers;
     id<FBSceneHostManagerDelegate> _delegate;
     struct {
@@ -50,16 +51,19 @@
 @property (readonly, nonatomic, getter=isSuspended) BOOL suspended; // @synthesize suspended=_suspended;
 
 - (void)_activateRequester:(id)arg1;
+- (id)_activeHostRequester;
 - (id)_hostViewForRequester:(id)arg1;
 - (id)_hostViewForRequester:(id)arg1 enableAndOrderFront:(BOOL)arg2;
 - (id)_overrideRequesterIfNecessary:(id)arg1;
 - (id)_snapshotContextForFrame:(struct CGRect)arg1 excludedContextIDs:(id)arg2 opaque:(BOOL)arg3 outTransform:(struct CGAffineTransform *)arg4;
 - (id)_snapshotContextForFrame:(struct CGRect)arg1 excludedLayers:(id)arg2 opaque:(BOOL)arg3;
+- (void)_updateActiveHostRequester;
 - (id)_wrapperViewForRequester:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)disableHostingForReason:(id)arg1;
 - (void)disableHostingForRequester:(id)arg1;
 - (void)enableHostingForRequester:(id)arg1 orderFront:(BOOL)arg2;
 - (void)enableHostingForRequester:(id)arg1 priority:(long long)arg2;

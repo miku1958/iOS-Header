@@ -22,7 +22,7 @@
 - (void)executeSync:(CDUnknownBlockType)arg1;
 - (BOOL)executeSyncWithBOOL:(CDUnknownBlockType)arg1;
 - (id)executeSyncWithResult:(CDUnknownBlockType)arg1;
-- (id)initWithName:(id)arg1;
+- (id)initWithName:(const char *)arg1;
 - (id)initWithQueue:(id)arg1;
 
 @end

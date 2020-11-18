@@ -11,5 +11,6 @@
 @protocol PUImageEditPluginSessionDataSource <PUEditPluginSessionDataSource>
 - (void)editPluginSession:(PUEditPluginSession *)arg1 loadDisplaySizeImageWithHandler:(void (^)(UIImage *))arg2;
 - (void)editPluginSession:(PUEditPluginSession *)arg1 loadFullSizeImageWithHandler:(void (^)(NSURL *, long long, NSString *))arg2;
+- (void)editPluginSession:(PUEditPluginSession *)arg1 loadVideoComplementURLWithHandler:(void (^)(NSURL *, struct))arg2;
 @end
 

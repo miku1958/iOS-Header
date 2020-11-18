@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class CALayer, NSDictionary;
+@class CALayer, NSDictionary, NSString;
 
 @interface CAContext : NSObject
 {
@@ -14,6 +14,7 @@
 
 @property BOOL colorMatchUntaggedContent; // @dynamic colorMatchUntaggedContent;
 @property struct CGColorSpace *colorSpace; // @dynamic colorSpace;
+@property (copy) NSString *contentsFormat; // @dynamic contentsFormat;
 @property (readonly) unsigned int contextId; // @dynamic contextId;
 @property (strong) CALayer *layer; // @dynamic layer;
 @property float level; // @dynamic level;
@@ -31,6 +32,7 @@
 + (void)setClientPort:(unsigned int)arg1;
 - (unsigned int)createFencePort;
 - (unsigned int)createImageSlot:(struct CGSize)arg1 hasAlpha:(BOOL)arg2;
+- (unsigned int)createImageSlot:(struct CGSize)arg1 hasAlpha:(BOOL)arg2 extendedColors:(BOOL)arg3;
 - (unsigned int)createSlot;
 - (void)deleteSlot:(unsigned int)arg1;
 - (void)invalidate;

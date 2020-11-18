@@ -15,7 +15,6 @@
 
 @property (nonatomic) BOOL showInviteesAndMoreRegion;
 @property (nonatomic) BOOL showReportAProblemNotificationButton;
-@property (nonatomic) BOOL verifyIntegrityOfAvailabilityTimeSearchTimelines;
 
 + (id)shared;
 - (void).cxx_destruct;

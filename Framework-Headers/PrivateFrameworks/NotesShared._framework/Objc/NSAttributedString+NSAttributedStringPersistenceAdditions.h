@@ -11,7 +11,7 @@
 + (id)TT_attributedStringWithData:(id)arg1 createNewAttachmentsInNote:(id)arg2 error:(id *)arg3;
 - (unsigned long long)TT_approximateAttachmentsSizeIncludingPreviews:(BOOL)arg1;
 - (BOOL)TT_isCopyableSize;
-- (void)TT_saveToArchive:(struct String *)arg1 saveAttachments:(BOOL)arg2;
-- (id)TT_serializeWithAttachments:(BOOL)arg1;
+- (void)TT_saveToArchive:(struct String *)arg1 flags:(unsigned long long)arg2 managedObjectContext:(id)arg3;
+- (id)TT_serializeWithFlags:(unsigned long long)arg1 managedObjectContext:(id)arg2;
 @end
 

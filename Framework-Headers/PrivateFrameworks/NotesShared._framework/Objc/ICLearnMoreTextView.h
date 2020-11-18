@@ -10,25 +10,26 @@
 
 @interface ICLearnMoreTextView : UITextView
 {
+    BOOL _isShowingLearnMore;
     NSString *_helpTopicID;
     NSString *_helpVersion;
-    NSString *_accessibilityHint;
     UITapGestureRecognizer *_tapGestureRecognizer;
     UIViewController *_parentViewController;
 }
 
-@property (strong, nonatomic) NSString *accessibilityHint; // @synthesize accessibilityHint=_accessibilityHint;
 @property (strong, nonatomic) NSString *helpTopicID; // @synthesize helpTopicID=_helpTopicID;
 @property (strong, nonatomic) NSString *helpVersion; // @synthesize helpVersion=_helpVersion;
+@property (nonatomic) BOOL isShowingLearnMore; // @synthesize isShowingLearnMore=_isShowingLearnMore;
 @property (weak, nonatomic) UIViewController *parentViewController; // @synthesize parentViewController=_parentViewController;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 
 - (void).cxx_destruct;
 - (BOOL)_accessibilityHasTextOperations;
 - (BOOL)accessibilityActivate;
-- (id)accessibilityLabel;
+- (id)accessibilityHint;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
+- (void)awakeFromNib;
 - (void)dealloc;
 - (void)didTapLearnMore;
 - (id)letterpressedString:(id)arg1 withColor:(id)arg2 font:(id)arg3;
@@ -38,6 +39,7 @@
 - (void)setText:(id)arg1 font:(id)arg2 color:(id)arg3 lineSpacing:(double)arg4 addLearnMore:(BOOL)arg5;
 - (void)sizeToFitWidthUsingHeightConstraint:(id)arg1;
 - (void)tapGesture:(id)arg1;
+- (void)updateForAccessibilityDarkerSystemColors;
 
 @end
 

@@ -6,35 +6,42 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableArray, NSMutableSet;
+@class NSDictionary, NSMutableArray, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface _HKMobileAssetDownloadManager : NSObject
 {
+    NSString *_mobileAssetTypeName;
     NSMutableArray *_pendingOperations;
-    NSMutableSet *_downloadedLanguages;
+    NSMutableSet *_downloadedPredicateFormats;
     NSObject<OS_dispatch_queue> *_queue;
     _HKMobileAssetDownloadManager *_retainedSelf;
     BOOL _shouldQueryLocalAssetsFirst;
-    CDUnknownBlockType _downloadCompletionHandler;
+    BOOL _shouldAutoDownloadRemoteAssets;
     NSDictionary *_downloadOptions;
+    CDUnknownBlockType _downloadCompletionHandler;
+    CDUnknownBlockType _errorHandler;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType downloadCompletionHandler; // @synthesize downloadCompletionHandler=_downloadCompletionHandler;
 @property (strong, nonatomic) NSDictionary *downloadOptions; // @synthesize downloadOptions=_downloadOptions;
+@property (copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
+@property (nonatomic) BOOL shouldAutoDownloadRemoteAssets; // @synthesize shouldAutoDownloadRemoteAssets=_shouldAutoDownloadRemoteAssets;
 @property (nonatomic) BOOL shouldQueryLocalAssetsFirst; // @synthesize shouldQueryLocalAssetsFirst=_shouldQueryLocalAssetsFirst;
 
 - (void).cxx_destruct;
 - (void)_callDownloadCompletionHandlerWithAssets:(id)arg1;
-- (void)_localeChanged:(id)arg1;
-- (id)_predicateForAppsInHealthAssetForLocale:(id)arg1;
-- (void)_queue_fetchAssetsWithLocalInformation:(BOOL)arg1 shouldRequery:(BOOL)arg2 locale:(id)arg3;
-- (void)_queue_handleAssets:(id)arg1;
+- (void)_callErrorHandlerWithError:(id)arg1;
+- (void)_queue_downloadAssets:(id)arg1 completionOverride:(CDUnknownBlockType)arg2;
+- (void)_queue_fetchAssetsWithLocalInformation:(BOOL)arg1 shouldRequery:(BOOL)arg2 predicate:(id)arg3;
+- (void)_queue_fetchAssetsWithPredicate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
-- (void)downloadAssetsForCurrentLocale;
-- (void)downloadAssetsForLocale:(id)arg1 forceDownload:(BOOL)arg2;
-- (id)init;
-- (void)removeAssets:(id)arg1;
+- (void)downloadAssets:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)downloadAssetsWithPredicate:(id)arg1;
+- (void)downloadAssetsWithPredicate:(id)arg1 forceDownload:(BOOL)arg2;
+- (void)fetchAssetsWithPredicate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)initWithMobileAssetTypeName:(id)arg1;
+- (void)removeAssets:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

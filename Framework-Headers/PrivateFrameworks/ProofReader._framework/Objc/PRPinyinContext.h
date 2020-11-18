@@ -17,6 +17,7 @@
     NSMutableArray *_prefixes;
     NSMutableArray *_guesses;
     NSMutableArray *_completions;
+    NSMutableArray *_corrections;
     char *_buffer;
     char *_altBuffer;
     char *_altBufferScores;
@@ -53,6 +54,7 @@
 - (void)addInputCharacter:(unsigned short)arg1 geometryModel:(void *)arg2 geometryData:(id)arg3;
 - (id)addedModifications;
 - (id)completions;
+- (id)correction;
 - (id)currentModifications;
 - (void)dealloc;
 - (id)description;

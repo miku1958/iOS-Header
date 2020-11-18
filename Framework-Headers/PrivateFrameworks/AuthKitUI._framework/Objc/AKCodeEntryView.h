@@ -14,6 +14,7 @@
 {
     NSMutableString *_stringValue;
     UITapGestureRecognizer *_tapGestureRecognizer;
+    BOOL _passcodeFieldDisabled;
     NSArray *_generatorFields;
     NSArray *_activeConstraints;
 }
@@ -26,6 +27,7 @@
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
 @property (readonly, nonatomic) UILabel *firstGeneratorField;
 @property (strong, nonatomic) NSArray *generatorFields; // @synthesize generatorFields=_generatorFields;
+@property (readonly, nonatomic) BOOL hasText;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long keyboardAppearance;
 @property (nonatomic) long long keyboardType;
@@ -34,6 +36,7 @@
 @property (nonatomic) long long spellCheckingType;
 @property (copy, nonatomic) NSString *stringValue;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *textContentType;
 
 - (void).cxx_destruct;
 - (void)_syncStringValueToLabels;
@@ -43,10 +46,10 @@
 - (void)dealloc;
 - (void)deleteBackward;
 - (void)emitCodeEnteredNotification;
-- (BOOL)hasText;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)insertText:(id)arg1;
 - (void)passcodeFieldTapped:(id)arg1;
+- (void)setPasscodeFieldDisabled:(BOOL)arg1;
 - (void)updateConstraints;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;

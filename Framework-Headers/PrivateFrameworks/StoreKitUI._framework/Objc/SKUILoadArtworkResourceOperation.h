@@ -6,14 +6,18 @@
 
 #import <StoreKitUI/SKUILoadResourceOperation.h>
 
-@class SKUIArtworkRequest;
+@class SKUIArtworkRequest, SSVLoadURLOperation;
 
 @interface SKUILoadArtworkResourceOperation : SKUILoadResourceOperation
 {
+    SSVLoadURLOperation *_underlyingOperation;
 }
 
 @property (readonly, copy) SKUIArtworkRequest *resourceRequest; // @dynamic resourceRequest;
+@property (weak) SSVLoadURLOperation *underlyingOperation; // @synthesize underlyingOperation=_underlyingOperation;
 
+- (void).cxx_destruct;
+- (void)cancel;
 - (id)initWithResourceRequest:(id)arg1;
 - (void)main;
 

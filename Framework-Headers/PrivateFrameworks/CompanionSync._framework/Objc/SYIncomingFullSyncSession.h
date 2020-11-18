@@ -7,16 +7,19 @@
 #import <CompanionSync/SYSession.h>
 
 @class NSObject;
-@protocol OS_dispatch_source;
+@protocol OS_dispatch_source, OS_os_activity;
 
+__attribute__((visibility("hidden")))
 @interface SYIncomingFullSyncSession : SYSession
 {
-    unsigned long long _activity;
+    NSObject<OS_os_activity> *_sessionActivity;
     long long _state;
     NSObject<OS_dispatch_source> *_stateUpdateSource;
     BOOL canRestart;
     BOOL canRollback;
 }
+
+@property (readonly, nonatomic) NSObject<OS_os_activity> *sessionActivity; // @synthesize sessionActivity=_sessionActivity;
 
 - (void).cxx_destruct;
 - (void)_cancelSession;
@@ -32,7 +35,7 @@
 - (void)_setStateQuietly:(long long)arg1;
 - (BOOL)canRestart;
 - (BOOL)canRollback;
-- (void)cancel;
+- (void)cancelWithError:(id)arg1;
 - (id)initWithService:(id)arg1;
 - (BOOL)isResetSync;
 - (BOOL)isSending;

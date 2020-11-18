@@ -14,38 +14,56 @@
 @interface SKUIResourceLoader : NSObject <NSCacheDelegate>
 {
     SKUIClientContext *_clientContext;
-    id<SKUIResourceLoaderDelegate> _delegate;
-    NSOperationQueue *_operationQueue;
     NSMutableDictionary *_operationsByRequestID;
     NSMapTable *_requestsByCacheKey;
     NSCache *_resourcesByRequestID;
+    BOOL _inBackground;
+    long long _requestCountMap[3];
+    NSOperationQueue *_operationQueue;
+    id<SKUIResourceLoaderDelegate> _delegate;
+    NSString *_name;
+    NSOperationQueue *_delegateQueue;
 }
 
 @property (readonly, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SKUIResourceLoaderDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) NSOperationQueue *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isIdle) BOOL idle;
+@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property (nonatomic) long long resourceCacheLimit;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_finishLoadForRequest:(id)arg1 withResource:(id)arg2;
+- (long long)_qualityOfService;
+- (long long)_queuePriorityForLoadReason:(long long)arg1;
+- (void)_reprioritizeOperations;
+- (void)_sendDidBeginLoadingIfNecessary;
 - (void)_sendDidIdleIfNecessary;
+- (void)_sendDidLoadAllForReason:(long long)arg1;
+- (void)_updateLoadReason:(long long)arg1 forOperation:(id)arg2;
 - (void)addResource:(id)arg1 forRequestIdentifier:(unsigned long long)arg2;
 - (void)cache:(id)arg1 willEvictObject:(id)arg2;
 - (id)cachedResourceForRequestIdentifier:(unsigned long long)arg1;
 - (void)cancelAllRequests;
 - (void)cancelRequestWithIdentifier:(unsigned long long)arg1;
+- (void)dealloc;
+- (void)enterBackground;
+- (void)enterForeground;
 - (id)init;
+- (id)initWithClientContext:(id)arg1;
 - (id)initWithOperationQueue:(id)arg1;
 - (id)initWithOperationQueue:(id)arg1 clientContext:(id)arg2;
+- (BOOL)isIdleForReason:(long long)arg1;
 - (BOOL)loadResourceWithRequest:(id)arg1 reason:(long long)arg2;
 - (void)removeAllCachedResources;
 - (id)requestIdentifierForCacheKey:(id)arg1;
 - (void)setReason:(long long)arg1 forRequestWithIdentifier:(unsigned long long)arg2;
+- (BOOL)trySetReason:(long long)arg1 forRequestWithIdentifier:(unsigned long long)arg2;
 
 @end
 

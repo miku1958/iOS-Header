@@ -8,6 +8,8 @@
 
 @interface _HKMedicalIDData (HKMedicalIDAddressBookBridge)
 + (id)contactKeysToLoadForMedicalID;
+- (id)_contactKeysToFetch;
 - (void)loadDataFromCNContact:(id)arg1;
+- (BOOL)updateEmergencyContacts;
 @end
 

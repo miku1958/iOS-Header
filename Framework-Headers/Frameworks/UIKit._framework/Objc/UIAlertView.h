@@ -84,8 +84,6 @@
 - (id)_preparedAlertActionAtIndex:(unsigned long long)arg1;
 - (void)_presentSheetFromView:(id)arg1 above:(BOOL)arg2;
 - (void)_presentSheetStartingFromYCoordinate:(double)arg1;
-- (id)_representedModalItem;
-- (id)_representedModalItemView;
 - (void)_setAccessoryView:(id)arg1;
 - (void)_setAccessoryViewController:(id)arg1;
 - (void)_setDefaultButton:(id)arg1;

@@ -12,55 +12,78 @@
 
 @interface GEOTFRoadSpeed : PBCodable <NSCopying>
 {
+    CDStruct_5df41632 _geoIds;
+    CDStruct_fae3dc92 _latitudeCoordinates;
+    CDStruct_fae3dc92 _longitudeCoordinates;
     long long _geoid;
     int _color;
+    float _confidence;
     unsigned int _decayTimeWindowInMinutes;
     float _endOffset;
+    NSData *_openlr;
     NSMutableArray *_predictedSpeeds;
     unsigned int _speedKph;
     float _startOffset;
     NSData *_zilch;
     BOOL _hidden;
-    struct {
-        unsigned int color:1;
-        unsigned int decayTimeWindowInMinutes:1;
-        unsigned int endOffset:1;
-        unsigned int speedKph:1;
-        unsigned int startOffset:1;
-        unsigned int hidden:1;
-    } _has;
+    CDStruct_c254c6af _has;
 }
 
 @property (nonatomic) int color; // @synthesize color=_color;
+@property (nonatomic) float confidence; // @synthesize confidence=_confidence;
 @property (nonatomic) unsigned int decayTimeWindowInMinutes; // @synthesize decayTimeWindowInMinutes=_decayTimeWindowInMinutes;
 @property (nonatomic) float endOffset; // @synthesize endOffset=_endOffset;
+@property (readonly, nonatomic) long long *geoIds;
+@property (readonly, nonatomic) unsigned long long geoIdsCount;
 @property (nonatomic) long long geoid; // @synthesize geoid=_geoid;
 @property (nonatomic) BOOL hasColor;
+@property (nonatomic) BOOL hasConfidence;
 @property (nonatomic) BOOL hasDecayTimeWindowInMinutes;
 @property (nonatomic) BOOL hasEndOffset;
 @property (nonatomic) BOOL hasHidden;
+@property (readonly, nonatomic) BOOL hasOpenlr;
 @property (nonatomic) BOOL hasSpeedKph;
 @property (nonatomic) BOOL hasStartOffset;
 @property (readonly, nonatomic) BOOL hasZilch;
 @property (nonatomic) BOOL hidden; // @synthesize hidden=_hidden;
+@property (readonly, nonatomic) float *latitudeCoordinates;
+@property (readonly, nonatomic) unsigned long long latitudeCoordinatesCount;
+@property (readonly, nonatomic) float *longitudeCoordinates;
+@property (readonly, nonatomic) unsigned long long longitudeCoordinatesCount;
+@property (strong, nonatomic) NSData *openlr; // @synthesize openlr=_openlr;
 @property (strong, nonatomic) NSMutableArray *predictedSpeeds; // @synthesize predictedSpeeds=_predictedSpeeds;
 @property (nonatomic) unsigned int speedKph; // @synthesize speedKph=_speedKph;
 @property (nonatomic) float startOffset; // @synthesize startOffset=_startOffset;
 @property (strong, nonatomic) NSData *zilch; // @synthesize zilch=_zilch;
 
++ (Class)predictedSpeedType;
+- (int)StringAsColor:(id)arg1;
+- (void)addGeoIds:(long long)arg1;
+- (void)addLatitudeCoordinates:(float)arg1;
+- (void)addLongitudeCoordinates:(float)arg1;
 - (void)addPredictedSpeed:(id)arg1;
+- (void)clearGeoIds;
+- (void)clearLatitudeCoordinates;
+- (void)clearLongitudeCoordinates;
 - (void)clearPredictedSpeeds;
+- (id)colorAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (long long)geoIdsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (float)latitudeCoordinatesAtIndex:(unsigned long long)arg1;
+- (float)longitudeCoordinatesAtIndex:(unsigned long long)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)predictedSpeedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)predictedSpeedsCount;
 - (BOOL)readFrom:(id)arg1;
+- (void)setGeoIds:(long long *)arg1 count:(unsigned long long)arg2;
+- (void)setLatitudeCoordinates:(float *)arg1 count:(unsigned long long)arg2;
+- (void)setLongitudeCoordinates:(float *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

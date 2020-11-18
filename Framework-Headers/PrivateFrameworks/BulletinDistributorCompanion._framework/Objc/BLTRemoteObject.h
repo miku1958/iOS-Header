@@ -15,6 +15,7 @@
 {
     NSMutableDictionary *_idsSendIDToCompletionHandler;
     NSMutableDictionary *_idsSendIDToResponseHandler;
+    NSMutableDictionary *_idsFileIDToResponseHandler;
     NSString *_serviceName;
     BOOL _full;
     double _lastTimeRaisedBadIDSProtobuf;
@@ -26,6 +27,7 @@
     unsigned long long _simConnectionState;
     id _simConnectionStateHandlerToken;
     NSObject<OS_dispatch_queue> *_clientQueue;
+    unsigned long long _lastKnownConnectionStatus;
     id<BLTAbstractIDSService> _service;
     BLTPBProtobufSequenceNumberManager *_sequenceNumberManager;
 }
@@ -35,17 +37,21 @@
 @property (readonly, nonatomic) id<BLTAbstractIDSDevice> defaultPairedDevice;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long lastKnownConnectionStatus; // @synthesize lastKnownConnectionStatus=_lastKnownConnectionStatus;
 @property (readonly, nonatomic) BLTPBProtobufSequenceNumberManager *sequenceNumberManager; // @synthesize sequenceNumberManager=_sequenceNumberManager;
 @property (readonly, nonatomic) id<BLTAbstractIDSService> service; // @synthesize service=_service;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (BOOL)_callSendCompletionHandlerWithSuccess:(BOOL)arg1 identifier:(id)arg2 error:(id)arg3;
+- (void)_deviceConnectionStatusChanged:(id)arg1;
 - (void)_handleDebugException;
 - (void)_handleNewSessionState:(unsigned long long)arg1;
 - (void)_queueHandleIDSProtobuf:(id)arg1;
 - (void)_queuePerformSend:(CDUnknownBlockType)arg1 responseToRequest:(id)arg2 withTimeout:(id)arg3 withDescription:(id)arg4 shortDescription:(id)arg5 onlyOneFor:(id)arg6 didSend:(CDUnknownBlockType)arg7 andResponse:(CDUnknownBlockType)arg8;
 - (void)_queueSendMessage:(id)arg1 type:(unsigned short)arg2 responseToRequest:(id)arg3 withTimeout:(id)arg4 withDescription:(id)arg5 onlyOneFor:(id)arg6 didSend:(CDUnknownBlockType)arg7 andResponse:(CDUnknownBlockType)arg8 didQueue:(CDUnknownBlockType)arg9;
+- (void)_removeAndHandleResponseHandler:(id)arg1;
+- (void)_resetDefaultPairedDevice;
 - (void)_sendAckInitialSequenceNumberForSession:(id)arg1 sessionState:(unsigned long long)arg2;
 - (void)_sendAckInitialSequenceNumberForSession:(id)arg1 withAssert:(BOOL)arg2 sessionState:(unsigned long long *)arg3;
 - (void)_sendAssertForSession;
@@ -53,6 +59,8 @@
 - (BOOL)_sequenceErrorDidHappenAndHandled:(long long)arg1 service:(id)arg2 incomingIdentifier:(id)arg3;
 - (void)_setStandaloneTestModeEnabled:(BOOL)arg1;
 - (void)_storeProtobufAction:(SEL)arg1 messageType:(unsigned short)arg2 messageSendType:(long long)arg3;
+- (unsigned long long)_updateConnectionStatus;
+- (id)_wrapError:(id)arg1 identifier:(id)arg2;
 - (unsigned long long)connectionStatus;
 - (void)dealloc;
 - (void)disableStandaloneTestMode;
@@ -61,12 +69,10 @@
 - (void)handleFileURL:(id)arg1 extraMetadata:(id)arg2;
 - (void)handleIDSProtobuf:(id)arg1;
 - (void)handleIncomingMessage:(id)arg1;
-- (BOOL)hasSentUDID;
 - (id)initWithServiceName:(id)arg1 idsQueueName:(char *)arg2;
 - (id)initWithServiceName:(id)arg1 idsQueueName:(char *)arg2 andClientQueue:(id)arg3;
 - (void)registerProtobufHandlers;
-- (void)saveHasSentUDID;
-- (void)sendFileURL:(id)arg1 withTimeout:(id)arg2 extraMetadata:(id)arg3 didSend:(CDUnknownBlockType)arg4 didQueue:(CDUnknownBlockType)arg5;
+- (void)sendFileURL:(id)arg1 withTimeout:(id)arg2 extraMetadata:(id)arg3 responseHandlers:(id)arg4 didSend:(CDUnknownBlockType)arg5 didQueue:(CDUnknownBlockType)arg6;
 - (void)sendRequest:(id)arg1 type:(unsigned short)arg2;
 - (void)sendRequest:(id)arg1 type:(unsigned short)arg2 didSend:(CDUnknownBlockType)arg3;
 - (void)sendRequest:(id)arg1 type:(unsigned short)arg2 withTimeout:(id)arg3 didSend:(CDUnknownBlockType)arg4;
@@ -77,6 +83,7 @@
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(BOOL)arg4 error:(id)arg5;
 - (void)service:(id)arg1 account:(id)arg2 incomingResourceAtURL:(id)arg3 metadata:(id)arg4 fromID:(id)arg5 context:(id)arg6;
 - (void)service:(id)arg1 devicesChanged:(id)arg2;
+- (void)service:(id)arg1 nearbyDevicesChanged:(id)arg2;
 - (void)setProtobufAction:(SEL)arg1 forIncomingRequestsOfType:(unsigned short)arg2;
 - (void)setProtobufAction:(SEL)arg1 forIncomingResponsesOfType:(unsigned short)arg2;
 

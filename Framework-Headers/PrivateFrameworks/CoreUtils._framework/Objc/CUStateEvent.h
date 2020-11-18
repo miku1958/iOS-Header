@@ -20,6 +20,7 @@
 + (id)enterState;
 + (id)exitState;
 + (id)initialTransition;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (id)init;

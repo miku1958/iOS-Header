@@ -18,7 +18,7 @@
     unsigned long long _maxThreads;
     int _threadPriorityTrigger;
     double _threadRecycleTimeout;
-    struct __CFSet *_lowPriorityThreads;
+    struct __CFDictionary *_lowPriorityThreads;
     BOOL _isForeground;
 }
 

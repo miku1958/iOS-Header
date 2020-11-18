@@ -16,14 +16,14 @@
 + (id)hk_protectedDataInaccessibilityError;
 - (BOOL)hk_isAuthorizationDeniedError;
 - (BOOL)hk_isAuthorizationNotDeterminedError;
+- (BOOL)hk_isCocoaNoSuchFileError;
 - (BOOL)hk_isDatabaseAccessibilityError;
 - (BOOL)hk_isHealthKitError;
 - (BOOL)hk_isInternalFailureError;
 - (BOOL)hk_isInvalidArgumentError;
 - (BOOL)hk_isServiceDeviceNotFoundError;
+- (BOOL)hk_isStreamFailureError;
 - (BOOL)hk_isTimeoutError;
-- (void)hk_logWithDatabaseAccessibilityAtLogLevel:(int)arg1 format:(id)arg2;
-- (void)hk_logWithoutDatabaseAccessibiityErrors:(id)arg1;
 - (id)hk_underlyingErrorWithDomain:(id)arg1;
 @end
 

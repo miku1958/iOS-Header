@@ -17,6 +17,7 @@
     EAGLContext *_lastUsedEAGLContext;
     CIFilter *_effectFilter;
     CIFilter *_smartToneFilter;
+    CIFilter *_localLightFilter;
     CIFilter *_smartColorFilter;
     CIFilter *_smartBWFilter;
     CIFilter *_faceBalanceFilter;
@@ -57,12 +58,17 @@
 @property (readonly, nonatomic) double smartToneBaseContrast;
 @property (readonly, nonatomic) double smartToneBaseExposure;
 @property (readonly, nonatomic) double smartToneBaseHighlights;
+@property (readonly, nonatomic) double smartToneBaseLocalLight;
 @property (readonly, nonatomic) double smartToneBaseShadows;
 
 + (id)_editedImagePropertiesFromOriginalImageProperties:(id)arg1 preserveRegions:(BOOL)arg2;
++ (BOOL)currentDeviceShouldAllowLocalLight;
 + (id)newImageDataFromCGImage:(struct CGImage *)arg1 withCompressionQuality:(double)arg2 metadataSourceImageURL:(id)arg3 preserveRegionsInMetadata:(BOOL)arg4;
 - (id)_editedGeometryImageWithBaseImage:(id)arg1;
 - (id)_editedImage;
+- (void)_handleAssetDidLoadForVideoComposition:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (id)_imageByApplyingEdits:(id)arg1 toImage:(id)arg2 randomSeed:(unsigned long long)arg3 isVideoFrame:(BOOL)arg4;
+- (id)_imageByApplyingEditsToImage:(id)arg1;
 - (void)_invalidateCachedFilters;
 - (BOOL)_isOrientationMirrored;
 - (struct CGImage *)_newCGImageFromEditedCIImage:(id)arg1;
@@ -72,12 +78,14 @@
 - (double)_smartBWBaseValueForKey:(id)arg1 defaultValue:(double)arg2;
 - (id)_smartColorAdjustments;
 - (id)_smartToneAdjustments;
+- (id)_videoEditModel;
 - (void)createEditedImageWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)drawEditedImageInContext:(id)arg1 inRect:(struct CGRect)arg2 viewportWidth:(int)arg3 viewportHeight:(int)arg4;
 - (void)generateEditedImageDataWithCompressionQuality:(double)arg1 metadataSourceImageURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (struct CGImage *)newEditedImage;
+- (void)prepareVideoCompositionForAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

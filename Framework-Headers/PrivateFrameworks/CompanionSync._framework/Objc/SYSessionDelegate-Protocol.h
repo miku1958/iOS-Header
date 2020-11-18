@@ -15,6 +15,7 @@
 - (BOOL)syncSession:(SYSession *)arg1 resetDataStoreWithError:(id *)arg2;
 
 @optional
+- (void)resetDataStoreForSyncSession:(SYSession *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (BOOL)syncSession:(SYSession *)arg1 restartChanges:(id *)arg2;
 - (BOOL)syncSession:(SYSession *)arg1 rollbackChangesWithError:(id *)arg2;
 @end

@@ -18,28 +18,40 @@
     CDUnknownBlockType _routeSummaryUpdatedHandler;
     CDUnknownBlockType _transitSummaryUpdatedHandler;
     CDUnknownBlockType _guidanceStateUpdatedHandler;
+    CDUnknownBlockType _activeRouteDetailsDataUpdatedHandler;
+    CDUnknownBlockType _stepIndexUpdatedHandler;
+    CDUnknownBlockType _selectedRideOptionUpdatedHandler;
     int _navigationStartedToken;
     int _navigationStoppedToken;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType activeRouteDetailsDataUpdatedHandler; // @synthesize activeRouteDetailsDataUpdatedHandler=_activeRouteDetailsDataUpdatedHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType guidanceStateUpdatedHandler; // @synthesize guidanceStateUpdatedHandler=_guidanceStateUpdatedHandler;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType routeSummaryUpdatedHandler; // @synthesize routeSummaryUpdatedHandler=_routeSummaryUpdatedHandler;
+@property (copy, nonatomic) CDUnknownBlockType selectedRideOptionUpdatedHandler; // @synthesize selectedRideOptionUpdatedHandler=_selectedRideOptionUpdatedHandler;
+@property (copy, nonatomic) CDUnknownBlockType stepIndexUpdatedHandler; // @synthesize stepIndexUpdatedHandler=_stepIndexUpdatedHandler;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType transitSummaryUpdatedHandler; // @synthesize transitSummaryUpdatedHandler=_transitSummaryUpdatedHandler;
 
+- (void)_close;
 - (void)_connectToDaemonIfNeeded;
-- (void)close;
+- (void)_open;
 - (void)dealloc;
 - (id)initWithQueue:(id)arg1;
-- (void)open;
+- (void)requestActiveRouteDetailsData;
 - (void)requestGuidanceState;
 - (void)requestRouteSummary;
+- (void)requestSelectedRideOption;
+- (void)requestStepIndex;
 - (void)requestTransitSummary;
+- (void)routeSummaryUpdatedWithActiveRouteDetailsData:(id)arg1;
 - (void)routeSummaryUpdatedWithGuidanceStateData:(id)arg1;
 - (void)routeSummaryUpdatedWithNavigationRouteSummaryData:(id)arg1;
+- (void)routeSummaryUpdatedWithSelectedRideOptionData:(id)arg1;
+- (void)routeSummaryUpdatedWithStepIndexData:(id)arg1;
 - (void)routeSummaryUpdatedWithTransitSummaryData:(id)arg1;
 
 @end

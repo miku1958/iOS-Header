@@ -11,14 +11,16 @@
 @interface CAMTransientPairedVideo : NSObject
 {
     NSURL *_url;
+    long long _filterType;
     CDStruct_1b6d18a9 _stillDisplayTime;
 }
 
+@property (readonly, nonatomic) long long filterType; // @synthesize filterType=_filterType;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 stillDisplayTime; // @synthesize stillDisplayTime=_stillDisplayTime;
 @property (readonly, copy, nonatomic) NSURL *url; // @synthesize url=_url;
 
 - (void).cxx_destruct;
-- (id)initWithURL:(id)arg1 stillDisplayTime:(CDStruct_1b6d18a9)arg2;
+- (id)initWithURL:(id)arg1 stillDisplayTime:(CDStruct_1b6d18a9)arg2 filterType:(long long)arg3;
 
 @end
 

@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class AVAssetExportSession, NSString, NSTimer, PFVideoAdjustments, PHAsset, PUVideoEditMakerOptions, PUVideoEditModel;
+@class AVAssetExportSession, NSString, NSTimer, PFVideoAdjustments, PUMediaDestination, PUVideoEditMakerOptions, PUVideoEditModel;
+@protocol PUEditableAsset;
 
 __attribute__((visibility("hidden")))
 @interface PUVideoEditMaker : NSObject
 {
     BOOL _isExportInProgress;
-    PHAsset *__videoAsset;
+    id<PUEditableAsset> __videoAsset;
+    PUMediaDestination *__videoMediaDestination;
     PUVideoEditModel *__videoEditModel;
     PFVideoAdjustments *__videoAdjustments;
     AVAssetExportSession *__trimExportSession;
@@ -30,8 +32,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setOutputFilePath:) NSString *_outputFilePath; // @synthesize _outputFilePath=__outputFilePath;
 @property (strong, nonatomic, setter=_setTrimExportSession:) AVAssetExportSession *_trimExportSession; // @synthesize _trimExportSession=__trimExportSession;
 @property (strong, nonatomic, setter=_setVideoAdjustments:) PFVideoAdjustments *_videoAdjustments; // @synthesize _videoAdjustments=__videoAdjustments;
-@property (readonly, nonatomic) PHAsset *_videoAsset; // @synthesize _videoAsset=__videoAsset;
+@property (readonly, nonatomic) id<PUEditableAsset> _videoAsset; // @synthesize _videoAsset=__videoAsset;
 @property (readonly, nonatomic) PUVideoEditModel *_videoEditModel; // @synthesize _videoEditModel=__videoEditModel;
+@property (readonly, nonatomic) PUMediaDestination *_videoMediaDestination; // @synthesize _videoMediaDestination=__videoMediaDestination;
 
 + (BOOL)canTrimAssetInPlace:(id)arg1;
 - (void).cxx_destruct;
@@ -45,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateExportProgressTimer;
 - (void)exportVideowithOptions:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
-- (id)initWithAsset:(id)arg1 videoEditModel:(id)arg2;
+- (id)initWithAsset:(id)arg1 mediaDestination:(id)arg2 editModel:(id)arg3;
 
 @end
 

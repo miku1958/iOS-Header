@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray, NSNumber, NSURL;
+@class BRFileObjectID, NSArray, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface BRQueryStitch : NSObject
 {
     NSArray *_contexts;
-    NSNumber *_objid;
+    BRFileObjectID *_objid;
     BOOL _kind;
     NSURL *_fromURL;
     NSURL *_url;
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *contexts; // @synthesize contexts=_contexts;
 @property (strong, nonatomic) NSURL *fromURL; // @synthesize fromURL=_fromURL;
 
+- (void).cxx_destruct;
 - (void)_creationDone;
 - (void)_deletionDone;
 - (void)_enableUpdatesFromIPCAfterStitchingOnAllQueries;

@@ -15,21 +15,21 @@ __attribute__((visibility("hidden")))
     long long _fadeType;
     id _annotationForCountSwap;
     long long _reason;
-    CDStruct_2c43369c _sourceCoordinate;
-    CDStruct_2c43369c _destinationCoordinate;
+    struct CLLocationCoordinate2D _sourceCoordinate;
+    struct CLLocationCoordinate2D _destinationCoordinate;
 }
 
 @property (readonly, strong, nonatomic) id annotation; // @synthesize annotation=_annotation;
 @property (readonly, strong, nonatomic) id annotationForCountSwap; // @synthesize annotationForCountSwap=_annotationForCountSwap;
 @property (readonly, strong, nonatomic) id destinationAnnotation; // @synthesize destinationAnnotation=_destinationAnnotation;
-@property (readonly, nonatomic) CDStruct_c3b9c2ee destinationCoordinate; // @synthesize destinationCoordinate=_destinationCoordinate;
+@property (readonly, nonatomic) struct CLLocationCoordinate2D destinationCoordinate; // @synthesize destinationCoordinate=_destinationCoordinate;
 @property (readonly, nonatomic) long long fadeType; // @synthesize fadeType=_fadeType;
 @property (readonly, nonatomic) long long reason; // @synthesize reason=_reason;
 @property (readonly, nonatomic) BOOL remove; // @synthesize remove=_remove;
-@property (readonly, nonatomic) CDStruct_c3b9c2ee sourceCoordinate; // @synthesize sourceCoordinate=_sourceCoordinate;
+@property (readonly, nonatomic) struct CLLocationCoordinate2D sourceCoordinate; // @synthesize sourceCoordinate=_sourceCoordinate;
 
 - (void).cxx_destruct;
-- (id)initWithAnnotation:(id)arg1 destinationAnnotation:(id)arg2 sourceCoordinate:(CDStruct_c3b9c2ee)arg3 destinationCoordinate:(CDStruct_c3b9c2ee)arg4 fadeType:(long long)arg5 remove:(BOOL)arg6 annotationForCountSwap:(id)arg7 reason:(long long)arg8;
+- (id)initWithAnnotation:(id)arg1 destinationAnnotation:(id)arg2 sourceCoordinate:(struct CLLocationCoordinate2D)arg3 destinationCoordinate:(struct CLLocationCoordinate2D)arg4 fadeType:(long long)arg5 remove:(BOOL)arg6 annotationForCountSwap:(id)arg7 reason:(long long)arg8;
 
 @end
 

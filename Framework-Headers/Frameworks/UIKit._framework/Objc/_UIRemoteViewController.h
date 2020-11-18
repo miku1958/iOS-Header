@@ -7,12 +7,11 @@
 #import <UIKit/UIViewController.h>
 
 #import <UIKit/UIActionSheetDelegate-Protocol.h>
-#import <UIKit/_UIRemoteViewController_TextEffectsOperatorInterface-Protocol.h>
 #import <UIKit/_UIRemoteViewController_ViewControllerOperatorInterface-Protocol.h>
 
 @class BKSTouchDeliveryPolicyAssertion, NSArray, NSError, NSString, UIActionSheet, UIAlertView, UIDimmingView, UIView, _UIAsyncInvocation, _UIRemoteView, _UIRemoteViewService, _UISizeTrackingView, _UITextEffectsRemoteView, _UITextServiceSession, _UIViewServiceInterface;
 
-@interface _UIRemoteViewController : UIViewController <_UIRemoteViewController_ViewControllerOperatorInterface, _UIRemoteViewController_TextEffectsOperatorInterface, UIActionSheetDelegate>
+@interface _UIRemoteViewController : UIViewController <_UIRemoteViewController_ViewControllerOperatorInterface, UIActionSheetDelegate>
 {
     int __automatic_invalidation_retainCount;
     BOOL __automatic_invalidation_invalidated;
@@ -38,14 +37,14 @@
     BOOL _snapshotTextEffectsAfterRotation;
     unsigned int _serviceScreenDisplayID;
     _UIAsyncInvocation *_terminationInvocation;
-    int _terminationErrorLock;
+    struct os_unfair_lock_s _terminationErrorLock;
     NSError *_terminationError;
     UIActionSheet *_hostedActionSheet;
     _UITextServiceSession *_textServiceSession;
     UIDimmingView *_hostedDimmingView;
     UIView *_touchGrabbingView;
     long long _preferredStatusBarStyle;
-    BOOL _prefersStatusBarHidden;
+    long long _prefersStatusBarHidden;
     long long _preferredStatusBarUpdateAnimation;
     BOOL _isFocusDeferred;
     NSString *_deferredDisplayUUID;
@@ -61,12 +60,16 @@
     long long _undoButtonIndex;
     long long _redoButtonIndex;
     long long _proxiedEditAlertToken;
+    long long _preferredAdaptivityStyle;
+    BOOL _isUnderlappingStatusBar;
+    BOOL __shouldUpdateRemoteTextEffectsWindow;
     BOOL _isUpdatingSize;
     BOOL _serviceViewShouldShareTouchesWithHost;
     BKSTouchDeliveryPolicyAssertion *_touchDeliveryPolicyAssertion;
 }
 
 @property (nonatomic, setter=_setIsUpdatingSize:) BOOL _isUpdatingSize; // @synthesize _isUpdatingSize;
+@property (nonatomic, setter=_setShouldUpdateRemoteTextEffectsWindow:) BOOL _shouldUpdateRemoteTextEffectsWindow;
 @property (strong, nonatomic, setter=_setTouchDeliveryPolicyAssertion:) BKSTouchDeliveryPolicyAssertion *_touchDeliveryPolicyAssertion; // @synthesize _touchDeliveryPolicyAssertion;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -94,21 +97,23 @@
 - (void)__dismissActionSheetWithClickedButtonIndex:(long long)arg1 animated:(BOOL)arg2;
 - (void)__dismissTextServiceSessionAnimated:(BOOL)arg1;
 - (long long)__getPreferredInterfaceOrientation;
+- (void)__handleFocusMovementAction:(id)arg1;
 - (BOOL)__interdictServiceViewTouches;
 - (void)__presentActionSheetFromYCoordinate:(double)arg1 withTitle:(id)arg2 buttonTitles:(id)arg3 cancelButtonIndex:(long long)arg4 destructiveButtonIndex:(long long)arg5 style:(long long)arg6;
-- (void)__sendNotificationName:(id)arg1 userInfo:(id)arg2;
 - (void)__setInterdictServiceViewTouches:(BOOL)arg1;
 - (void)__setSupportedInterfaceOrientations:(id)arg1;
 - (void)__setViewServiceIsDisplayingPopover:(BOOL)arg1;
 - (BOOL)__shouldRemoteViewControllerFenceOperations;
 - (void)__showEditAlertViewWithToken:(long long)arg1 canUndo:(BOOL)arg2 canRedo:(BOOL)arg3;
+- (void)__showServiceForText:(id)arg1 selectedTextRangeValue:(id)arg2 type:(long long)arg3 fromRectValue:(id)arg4 replyHandler:(CDUnknownBlockType)arg5;
 - (void)__showServiceForText:(id)arg1 type:(long long)arg2 fromRectValue:(id)arg3 replyHandler:(CDUnknownBlockType)arg4;
 - (void)__trampolineButtonPressData:(id)arg1 canceled:(BOOL)arg2;
 - (void)__updateDeferralPropertiesForScreen:(id)arg1;
 - (void)__viewServiceDidPromoteFirstResponder;
 - (void)__viewServiceDidRegisterScrollToTopView;
 - (void)__viewServiceDidUnregisterScrollToTopView;
-- (void)__viewServiceDidUpdatePreferredStatusBarStyle:(long long)arg1 hidden:(BOOL)arg2 updateAnimation:(long long)arg3;
+- (void)__viewServiceDidUpdatePreferredStatusBarStyle:(long long)arg1 hidden:(long long)arg2 updateAnimation:(long long)arg3;
+- (void)__viewServiceDidUpdatePreferredWhitePointAdaptationStyle:(long long)arg1 animationSettings:(id)arg2;
 - (void)__viewServiceDidUpdateTintColor:(id)arg1 duration:(double)arg2;
 - (void)__viewServiceInstrinsicContentSizeDidChange:(struct CGSize)arg1 fence:(id)arg2;
 - (void)__viewServicePopoverDidChangeContentSize:(struct CGSize)arg1 animated:(BOOL)arg2 fence:(id)arg3 withReplyHandler:(CDUnknownBlockType)arg4;
@@ -125,11 +130,13 @@
 - (void)_applicationWillDeactivate:(id)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (void)_awakeWithConnectionInfo:(id)arg1;
+- (void)_cancelProxiedEditAlertViewAnimated:(BOOL)arg1;
 - (id)_cancelTouchesForCurrentEventInHostedContent;
 - (id)_clientDeferralProperties;
 - (BOOL)_customizesForPresentationInPopover;
 - (void)_didResignContentViewControllerOfPopover:(id)arg1;
 - (void)_didRotateFromInterfaceOrientation:(long long)arg1 forwardToChildControllers:(BOOL)arg2 skipSelf:(BOOL)arg3;
+- (id)_fenceForSynchronizedDrawing;
 - (void)_firstResponderDidChange:(id)arg1;
 - (id)_hostDeferralProperties;
 - (void)_hostDidEnterBackground:(id)arg1;
@@ -138,6 +145,7 @@
 - (id)_initWithViewServiceBundleIdentifier:(id)arg1;
 - (void)_initializeAccessibilityPortInformation;
 - (BOOL)_isDeallocating;
+- (BOOL)_needsUnderflowPropertyUpdate;
 - (void)_prepareTouchDeliveryPolicy;
 - (BOOL)_requiresKeyboardWindowWhenFirstResponder;
 - (void)_restoreTextEffectsRemoteView;
@@ -179,6 +187,7 @@
 - (void)loadView;
 - (long long)preferredStatusBarStyle;
 - (long long)preferredStatusBarUpdateAnimation;
+- (long long)preferredWhitePointAdaptivityStyle;
 - (BOOL)prefersStatusBarHidden;
 - (oneway void)release;
 - (void)restoreStateForSession:(id)arg1 anchor:(id)arg2;
@@ -190,6 +199,7 @@
 - (void)setAllowedNotifications:(id)arg1;
 - (void)setInheritsSecurity:(BOOL)arg1;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
+- (BOOL)shouldPropagateAppearanceCustomizations;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)synchronizeAnimationsInActions:(CDUnknownBlockType)arg1;
 - (id)textEffectsWindowForServiceScreen;

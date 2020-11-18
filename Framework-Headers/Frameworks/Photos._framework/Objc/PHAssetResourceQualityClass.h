@@ -36,6 +36,7 @@
 + (id)assetResourceQualityClasses;
 - (void).cxx_destruct;
 - (long long)_compare:(id)arg1;
+- (id)description;
 - (id)initWithCPLResourceType:(unsigned long long)arg1;
 - (id)initWithThumbnailFormat:(id)arg1;
 

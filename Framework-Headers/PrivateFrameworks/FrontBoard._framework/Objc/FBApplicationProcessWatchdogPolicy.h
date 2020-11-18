@@ -36,7 +36,7 @@
 - (double)_queue_watchdogScalingFactorForAppInfo:(id)arg1 isResume:(BOOL)arg2;
 - (void)dealloc;
 - (id)init;
-- (double)watchdogIntervalForProcess:(id)arg1 eventContext:(CDStruct_1b4a36b4)arg2;
+- (id)watchdogPolicyForProcess:(id)arg1 eventContext:(id)arg2;
 
 @end
 

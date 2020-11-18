@@ -22,11 +22,15 @@
     NSString *_languageCode;
     NSString *_voiceName;
     long long _footprint;
+    long long _voiceType;
     long long _gender;
     NSURL *_outputPath;
     double _rate;
     double _pitch;
     double _volume;
+    NSString *_clientBundleIdentifier;
+    NSURL *_resourceListURL;
+    NSURL *_resourceSearchPathURL;
     CDUnknownBlockType _stopHandler;
     CDUnknownBlockType _pauseHandler;
 }
@@ -35,6 +39,7 @@
 @property (nonatomic) unsigned int audioQueueFlags; // @synthesize audioQueueFlags=_audioQueueFlags;
 @property (nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
 @property (nonatomic) BOOL audioSessionIDIsValid; // @synthesize audioSessionIDIsValid=_audioSessionIDIsValid;
+@property (copy, nonatomic) NSString *clientBundleIdentifier; // @synthesize clientBundleIdentifier=_clientBundleIdentifier;
 @property (nonatomic) long long footprint; // @synthesize footprint=_footprint;
 @property (nonatomic) long long gender; // @synthesize gender=_gender;
 @property (copy, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
@@ -43,10 +48,13 @@
 @property (copy, nonatomic) CDUnknownBlockType pauseHandler; // @synthesize pauseHandler=_pauseHandler;
 @property (nonatomic) double pitch; // @synthesize pitch=_pitch;
 @property (nonatomic) double rate; // @synthesize rate=_rate;
+@property (copy, nonatomic) NSURL *resourceListURL; // @synthesize resourceListURL=_resourceListURL;
+@property (copy, nonatomic) NSURL *resourceSearchPathURL; // @synthesize resourceSearchPathURL=_resourceSearchPathURL;
 @property (copy, nonatomic) CDUnknownBlockType stopHandler; // @synthesize stopHandler=_stopHandler;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property (nonatomic) BOOL useCustomVoice; // @synthesize useCustomVoice=_useCustomVoice;
 @property (copy, nonatomic) NSString *voiceName; // @synthesize voiceName=_voiceName;
+@property (nonatomic) long long voiceType; // @synthesize voiceType=_voiceType;
 @property (nonatomic) double volume; // @synthesize volume=_volume;
 
 + (BOOL)supportsSecureCoding;

@@ -6,31 +6,38 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSSet;
+#import <CoreTelephony/CXCallObserverDelegate-Protocol.h>
 
-@interface CTCallCenter : NSObject
+@class CXCallObserver, NSSet, NSString;
+
+@interface CTCallCenter : NSObject <CXCallObserverDelegate>
 {
-    void *_server;
+    struct queue _queue;
+    struct queue clientQueue;
     NSSet *_currentCalls;
     CDUnknownBlockType _callEventHandler;
-    struct queue _queue;
+    CXCallObserver *_callKitObserver;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType callEventHandler;
+@property CXCallObserver *callKitObserver; // @synthesize callKitObserver=_callKitObserver;
 @property (strong) NSSet *currentCalls; // @dynamic currentCalls;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)broadcastCallStateChangesIfNeededWithFailureLogMessage:(id)arg1;
-- (BOOL)calculateCallStateChanges:(id)arg1;
-- (void)cleanUpServerConnection;
+- (BOOL)calculateCallStateChanges_sync:(id)arg1;
+- (void)callObserver:(id)arg1 callChanged:(id)arg2;
 - (void)dealloc;
-- (id)description;
-- (BOOL)getCurrentCallSetFromServer:(id)arg1;
-- (void)handleNotificationFromConnection:(void *)arg1 ofType:(id)arg2 withInfo:(id)arg3;
+- (BOOL)getCurrentCallSetFromServer_sync:(id)arg1;
+- (void)handleCallStatusChange_sync:(id)arg1;
 - (id)init;
 - (id)initWithQueue:(struct dispatch_queue_s *)arg1;
-- (BOOL)setUpServerConnection;
+- (void)initialize;
 
 @end
 

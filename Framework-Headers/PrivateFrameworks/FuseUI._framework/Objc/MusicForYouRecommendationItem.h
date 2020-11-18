@@ -4,26 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MediaPlayerUI/MPUModelObject.h>
+#import <MediaPlayer/MPModelObject.h>
 
-@class MPUModelAlbum, MPUModelPlaylist;
+@class MPModelAlbum, MPModelPlaylist;
 
-@interface MusicForYouRecommendationItem : MPUModelObject
+@interface MusicForYouRecommendationItem : MPModelObject
 {
     unsigned long long _itemType;
-    MPUModelAlbum *_album;
-    MPUModelPlaylist *_playlist;
+    MPModelAlbum *_album;
+    MPModelPlaylist *_playlist;
 }
 
-@property (strong, nonatomic) MPUModelAlbum *album; // @synthesize album=_album;
+@property (strong, nonatomic) MPModelAlbum *album; // @synthesize album=_album;
 @property (nonatomic) unsigned long long itemType; // @synthesize itemType=_itemType;
-@property (strong, nonatomic) MPUModelPlaylist *playlist; // @synthesize playlist=_playlist;
+@property (strong, nonatomic) MPModelPlaylist *playlist; // @synthesize playlist=_playlist;
 
++ (id)__MusicForYouRecommendationItemPropertyItemType__PROPERTY;
++ (id)__MusicForYouRecommendationItemRelationshipAlbum__PROPERTY;
++ (id)__MusicForYouRecommendationItemRelationshipPlaylist__PROPERTY;
 + (id)__album__KEY;
 + (id)__itemType__KEY;
 + (id)__playlist__KEY;
 - (void).cxx_destruct;
-- (id)descriptionWithType:(unsigned long long)arg1;
+- (id)descriptionWithType:(long long)arg1;
 
 @end
 

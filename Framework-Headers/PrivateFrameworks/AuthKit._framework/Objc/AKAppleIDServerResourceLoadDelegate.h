@@ -16,7 +16,9 @@
     NSString *_identityToken;
     BOOL _shouldSendEphemeralAuthHeader;
     BOOL _shouldSendAbsintheHeader;
-    BOOL _shouldSendPRKRequestHeader;
+    BOOL _isEligibleToDisableStingray;
+    BOOL _shouldSendICSCIntentHeader;
+    BOOL _shouldSendLocalUserHasAppleIDLoginHeader;
     NSString *_serviceToken;
     long long _serviceType;
     NSString *_passwordResetToken;
@@ -27,6 +29,7 @@
 
 @property (copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (copy, nonatomic) NSString *continuationToken; // @synthesize continuationToken=_continuationToken;
+@property (nonatomic) BOOL isEligibleToDisableStingray; // @synthesize isEligibleToDisableStingray=_isEligibleToDisableStingray;
 @property (copy, nonatomic) NSString *passwordResetToken; // @synthesize passwordResetToken=_passwordResetToken;
 @property (strong, nonatomic) AKDevice *proxiedDevice; // @synthesize proxiedDevice=_proxiedDevice;
 @property (strong, nonatomic) AKAnisetteData *proxiedDeviceAnisetteData; // @synthesize proxiedDeviceAnisetteData=_proxiedDeviceAnisetteData;
@@ -34,14 +37,17 @@
 @property (nonatomic) long long serviceType; // @synthesize serviceType=_serviceType;
 @property (nonatomic) BOOL shouldSendAbsintheHeader; // @synthesize shouldSendAbsintheHeader=_shouldSendAbsintheHeader;
 @property (nonatomic) BOOL shouldSendEphemeralAuthHeader; // @synthesize shouldSendEphemeralAuthHeader=_shouldSendEphemeralAuthHeader;
-@property (nonatomic) BOOL shouldSendPRKRequestHeader; // @synthesize shouldSendPRKRequestHeader=_shouldSendPRKRequestHeader;
+@property (nonatomic) BOOL shouldSendICSCIntentHeader; // @synthesize shouldSendICSCIntentHeader=_shouldSendICSCIntentHeader;
+@property (nonatomic) BOOL shouldSendLocalUserHasAppleIDLoginHeader; // @synthesize shouldSendLocalUserHasAppleIDLoginHeader=_shouldSendLocalUserHasAppleIDLoginHeader;
 
++ (id)sharedController;
 + (unsigned long long)signalFromServerResponse:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAltDSID:(id)arg1 identityToken:(id)arg2;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isResponseActionable:(id)arg1;
 - (BOOL)isResponseFinal:(id)arg1;
 - (BOOL)isResponseFinalForHSA2ServerFlow:(id)arg1;
 - (void)signRequest:(id)arg1;

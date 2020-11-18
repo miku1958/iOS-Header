@@ -69,6 +69,7 @@
 @property (nonatomic) BOOL supportsMasterSelectionBehavior; // @synthesize supportsMasterSelectionBehavior=_supportsMasterSelectionBehavior;
 @property (strong, nonatomic) GKSwipeToEditStateMachine *swipeStateMachine; // @synthesize swipeStateMachine=_swipeStateMachine;
 
++ (id)_initializeSafeCategoryFromValidationManager;
 + (BOOL)_shouldForwardViewWillTransitionToSize;
 - (void)_applyUpdates:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_finishUpdates:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

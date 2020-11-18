@@ -15,8 +15,14 @@
     long long _value;
     BOOL _useSimplifiedEffect;
     BOOL _foregroundColorShouldTintEffects;
+    double _brightnessMultiplier;
+    double _effectScale;
+    unsigned long long _colorTemperature;
 }
 
+@property (nonatomic) double brightnessMultiplier; // @synthesize brightnessMultiplier=_brightnessMultiplier;
+@property (nonatomic) unsigned long long colorTemperature; // @synthesize colorTemperature=_colorTemperature;
+@property (nonatomic) double effectScale; // @synthesize effectScale=_effectScale;
 @property (nonatomic) BOOL foregroundColorShouldTintEffects; // @synthesize foregroundColorShouldTintEffects=_foregroundColorShouldTintEffects;
 @property (nonatomic) long long presentationState; // @synthesize presentationState=_presentationState;
 @property (nonatomic) long long state; // @synthesize state=_state;

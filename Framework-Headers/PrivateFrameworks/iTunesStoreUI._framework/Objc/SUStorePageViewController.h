@@ -12,7 +12,7 @@
 #import <iTunesStoreUI/SUPreviewOverlayContainer-Protocol.h>
 #import <iTunesStoreUI/UIPopoverControllerDelegate-Protocol.h>
 
-@class ISURLRequestPerformance, NSString, SSAuthenticationContext, SSMutableURLRequestProperties, SSURLRequestProperties, SUNavigationMenuViewController, SUPageSectionGroup, SUSearchFieldController, SUSegmentedControl, SUStorePageProtocol, UIPopoverController, _UIBackdropView;
+@class ISURLRequestPerformance, NSString, SSAuthenticationContext, SSMutableURLRequestProperties, SSURLRequestProperties, SUNavigationMenuViewController, SUPageSectionGroup, SUSearchFieldController, SUSegmentedControl, SUStorePageProtocol, SUWebScriptReloadContext, UIPopoverController, _UIBackdropView;
 @protocol SUStorePageViewControllerDelegate;
 
 @interface SUStorePageViewController : SUViewController <SKUITabBarItemRootViewController, SUMenuViewControllerDelegate, SUPreviewOverlayContainer, UIPopoverControllerDelegate, ISURLOperationDelegate>
@@ -26,6 +26,7 @@
     CDUnknownBlockType _loadBlock;
     long long _pageType;
     SUViewController *_pendingChildViewController;
+    SUWebScriptReloadContext *_pendingWebScriptReloadContext;
     ISURLRequestPerformance *_performanceMetrics;
     NSString *_scriptUserInfo;
     BOOL _shouldAdjustContentOffsets;
@@ -107,6 +108,7 @@
 - (BOOL)_reloadWithURLRequestProperties:(id)arg1 preserveSectionControl:(BOOL)arg2;
 - (void)_renderStorePage:(id)arg1 withType:(long long)arg2 viewController:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (void)_repositionForChildViewController:(id)arg1;
+- (void)_requestWebScriptReloadWithContext:(id)arg1;
 - (void)_scriptEventNotification:(id)arg1;
 - (void)_sectionControlAction:(id)arg1;
 - (BOOL)_sectionIsNetworkConstrained;
@@ -150,8 +152,8 @@
 - (id)initWithTabBarItem:(id)arg1;
 - (void)invalidate;
 - (void)invalidateForMemoryPurge;
-- (BOOL)isLoaded;
 - (BOOL)isShowingPreviewOverlay;
+- (BOOL)isSkLoaded;
 - (BOOL)loadMoreWithURL:(id)arg1;
 - (void)loadView;
 - (void)menuViewController:(id)arg1 didSelectItemAtIndex:(long long)arg2;
@@ -171,15 +173,16 @@
 - (BOOL)reloadForSectionsWithGroup:(id)arg1;
 - (void)reloadWithStorePage:(id)arg1 ofType:(long long)arg2 forURL:(id)arg3;
 - (BOOL)reloadWithURLRequestProperties:(id)arg1;
+- (void)requestWebScriptReloadWithContext:(id)arg1;
 - (void)resetNavigationItem:(id)arg1;
 - (void)restoreArchivableContext:(id)arg1;
 - (void)setClientContext:(id)arg1;
 - (id)setDisplayedSectionGroup:(id)arg1;
-- (void)setLoading:(BOOL)arg1;
 - (void)setParentViewController:(id)arg1;
 - (void)setScriptProperties:(id)arg1;
 - (void)setSection:(id)arg1;
 - (void)setShouldAdjustContentOffsets:(BOOL)arg1;
+- (void)setSkLoading:(BOOL)arg1;
 - (void)setURLRequest:(id)arg1;
 - (void)setUrlBagKey:(id)arg1;
 - (BOOL)shouldAdjustContentOffsets;

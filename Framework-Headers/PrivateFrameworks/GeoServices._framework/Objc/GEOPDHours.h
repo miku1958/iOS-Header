@@ -11,26 +11,30 @@
 @interface GEOPDHours : PBCodable <NSCopying>
 {
     CDStruct_95bda58d _days;
-    CDStruct_43c37391 *_timeRanges;
+    struct GEOPDLocalTimeRange *_timeRanges;
     unsigned long long _timeRangesCount;
     unsigned long long _timeRangesSpace;
 }
 
 @property (readonly, nonatomic) int *days;
 @property (readonly, nonatomic) unsigned long long daysCount;
-@property (readonly, nonatomic) CDStruct_43c37391 *timeRanges;
+@property (readonly, nonatomic) struct GEOPDLocalTimeRange *timeRanges;
 @property (readonly, nonatomic) unsigned long long timeRangesCount;
 
++ (id)_allHoursForPlaceData:(id)arg1;
++ (id)completeOperatingHoursForPlaceData:(id)arg1 withTimeZone:(id)arg2;
 + (BOOL)currentOperatingHoursAvailableForPlaceData:(id)arg1 withTimeZone:(id)arg2;
 + (id)currentOperatingHoursForPlaceData:(id)arg1 withTimeZone:(id)arg2;
 + (BOOL)operatingHoursAvailableForPlaceData:(id)arg1;
+- (int)StringAsDays:(id)arg1;
 - (void)addDay:(int)arg1;
-- (void)addTimeRange:(CDStruct_43c37391)arg1;
+- (void)addTimeRange:(struct GEOPDLocalTimeRange)arg1;
 - (void)clearDays;
 - (void)clearTimeRanges;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (int)dayAtIndex:(unsigned long long)arg1;
+- (id)daysAsString:(int)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
@@ -39,8 +43,8 @@
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setDays:(int *)arg1 count:(unsigned long long)arg2;
-- (void)setTimeRanges:(CDStruct_43c37391 *)arg1 count:(unsigned long long)arg2;
-- (CDStruct_43c37391)timeRangeAtIndex:(unsigned long long)arg1;
+- (void)setTimeRanges:(struct GEOPDLocalTimeRange *)arg1 count:(unsigned long long)arg2;
+- (struct GEOPDLocalTimeRange)timeRangeAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

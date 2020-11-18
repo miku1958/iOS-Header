@@ -12,6 +12,7 @@
 
 @property (readonly, strong, nonatomic) CADisplay *display;
 @property (readonly, nonatomic) long long interfaceOrientation;
+@property (readonly, nonatomic, getter=isInterstitial) BOOL interstitial;
 @property (readonly, nonatomic) BOOL lockBacklight;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, nonatomic) BKSDisplayProgressIndicatorProperties *progressIndicatorProperties;

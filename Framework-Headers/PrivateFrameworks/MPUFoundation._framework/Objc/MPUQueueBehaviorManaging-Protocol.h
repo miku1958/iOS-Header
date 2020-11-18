@@ -4,13 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MPUFoundation/MPQueueBehaviorManaging-Protocol.h>
+#import <MPUFoundation/MPCQueueBehaviorManaging-Protocol.h>
 
-@class MPAVItem;
-
-@protocol MPUQueueBehaviorManaging <MPQueueBehaviorManaging>
-
-@optional
-- (BOOL)preventsHardQueueModificationsForItem:(MPAVItem *)arg1;
+@protocol MPUQueueBehaviorManaging <MPCQueueBehaviorManaging>
 @end
 

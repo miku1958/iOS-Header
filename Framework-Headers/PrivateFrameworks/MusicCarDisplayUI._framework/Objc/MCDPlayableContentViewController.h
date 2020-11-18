@@ -16,6 +16,7 @@
     MCDPCContainer *_rootContainer;
     NSArray *_stackToRebuild;
     BOOL _hasBrowsableContent;
+    BOOL _hasSectionedContent;
     BOOL _hasLoaded;
     NSString *_bundleID;
 }
@@ -30,8 +31,10 @@
 - (void)_browsableContentEndpointChangedNotification:(id)arg1;
 - (void)_checkAndSetupView;
 - (id)_createRootViewController;
+- (id)_createSectionedRootViewController;
 - (void)_modelDidInvalidate:(id)arg1;
 - (void)_modelWillInvalidate:(id)arg1;
+- (void)_nowPlayingIdentifiersChanged:(id)arg1;
 - (void)_populateStack;
 - (void)_setupView;
 - (void)_updateStackForPlaying:(BOOL)arg1;

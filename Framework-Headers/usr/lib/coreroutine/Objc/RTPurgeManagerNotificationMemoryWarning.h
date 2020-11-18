@@ -6,15 +6,13 @@
 
 #import <coreroutine/RTNotification.h>
 
-__attribute__((visibility("hidden")))
 @interface RTPurgeManagerNotificationMemoryWarning : RTNotification
 {
     long long _pressureState;
 }
 
-@property (readonly, nonatomic) long long pressureState; // @synthesize pressureState=_pressureState;
+@property (nonatomic) long long pressureState; // @synthesize pressureState=_pressureState;
 
-+ (id)notificationName;
 - (id)initWithMemoryPressureState:(long long)arg1;
 
 @end

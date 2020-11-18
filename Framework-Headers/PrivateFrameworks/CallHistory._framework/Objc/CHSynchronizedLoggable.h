@@ -11,7 +11,7 @@
 
 @class CHLogger, CHSynchronizable;
 
-@interface CHSynchronizedLoggable : NSObject <CHLoggerProtocol, CHSynchronizableProtocol>
+@interface CHSynchronizedLoggable : NSObject <CHSynchronizableProtocol, CHLoggerProtocol>
 {
     CHLogger *_logger;
     CHSynchronizable *_synchronizable;
@@ -22,11 +22,10 @@
 - (void)executeSync:(CDUnknownBlockType)arg1;
 - (BOOL)executeSyncWithBOOL:(CDUnknownBlockType)arg1;
 - (id)executeSyncWithResult:(CDUnknownBlockType)arg1;
-- (id)initWithName:(id)arg1;
-- (id)initWithName:(id)arg1 queue:(id)arg2;
-- (void)logWithLevel:(unsigned int)arg1 withFormat:(id)arg2;
+- (id)initWithName:(const char *)arg1;
+- (id)initWithName:(const char *)arg1 queue:(id)arg2;
+- (id)logHandle;
 - (id)queue;
-- (BOOL)shouldLogForLevel:(unsigned int)arg1;
 
 @end
 

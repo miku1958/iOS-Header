@@ -14,12 +14,12 @@
     IMServiceImpl *_service;
 }
 
-@property (readonly, strong, nonatomic) IMHandle *handle; // @synthesize handle=_handle;
-@property (readonly, strong, nonatomic) IMServiceImpl *service; // @synthesize service=_service;
+@property (readonly, nonatomic) IMHandle *handle; // @synthesize handle=_handle;
+@property (readonly, nonatomic) IMServiceImpl *service; // @synthesize service=_service;
 
+- (void).cxx_destruct;
 - (id)_initWithItem:(id)arg1 service:(id)arg2 handle:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 
 @end
 

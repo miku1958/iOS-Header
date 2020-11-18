@@ -204,9 +204,9 @@ struct _NSRange {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    int _field1;
-    int _field2;
-} CDStruct_1ef3fb1f;
+    int width;
+    int height;
+} CDStruct_79c71658;
 
 typedef struct {
     long long value;

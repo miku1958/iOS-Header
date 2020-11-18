@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/NSObject-Protocol.h>
+#import <PhotosUICore/NSObject-Protocol.h>
 
 @class NSString;
 
 @protocol MKAnnotation <NSObject>
 
-@property (readonly, nonatomic) CDStruct_c3b9c2ee coordinate;
+@property (readonly, nonatomic) struct CLLocationCoordinate2D coordinate;
 @property (readonly, copy, nonatomic) NSString *subtitle;
 @property (readonly, copy, nonatomic) NSString *title;
 
 
 @optional
-- (void)setCoordinate:(CDStruct_c3b9c2ee)arg1;
+- (void)setCoordinate:(struct CLLocationCoordinate2D)arg1;
 @end
 

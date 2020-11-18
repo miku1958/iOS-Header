@@ -7,7 +7,6 @@
 #import <Foundation/NSBundle.h>
 
 @interface NSBundle (AVAdditions)
-+ (BOOL)mainBundleIsXcode;
 - (id)URLForMovieResource:(id)arg1;
 - (id)imageForResource:(id)arg1 size:(struct CGSize)arg2;
 @end

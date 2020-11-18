@@ -11,6 +11,7 @@
 
 @interface CKSQLitePool : NSObject
 {
+    BOOL _traced;
     BOOL _drainScheduled;
     CDUnknownBlockType _factory;
     NSObject<OS_dispatch_queue> *_queue;
@@ -21,6 +22,7 @@
 @property (nonatomic) BOOL drainScheduled; // @synthesize drainScheduled=_drainScheduled;
 @property (readonly, nonatomic) CDUnknownBlockType factory; // @synthesize factory=_factory;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (nonatomic) BOOL traced; // @synthesize traced=_traced;
 
 - (void).cxx_destruct;
 - (id)_acquireDatabaseWithError:(id *)arg1;
@@ -29,6 +31,7 @@
 - (id)_openDatabaseWithError:(id *)arg1;
 - (void)_scheduleDrain;
 - (id)acquireDatabase:(BOOL)arg1;
+- (id)acquireDatabaseWithError:(id *)arg1;
 - (void)closeAll;
 - (id)initWithFactory:(CDUnknownBlockType)arg1;
 - (id)initWithFactory:(CDUnknownBlockType)arg1 queueAttr:(id)arg2;

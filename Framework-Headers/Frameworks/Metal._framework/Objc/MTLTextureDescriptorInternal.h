@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (const struct MTLTextureDescriptorPrivate *)descriptorPrivate;
 - (BOOL)framebufferOnly;
+- (unsigned long long)getSwizzle;
 - (unsigned long long)hash;
 - (unsigned long long)height;
 - (id)init;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)setRotation:(unsigned long long)arg1;
 - (void)setSampleCount:(unsigned long long)arg1;
 - (void)setStorageMode:(unsigned long long)arg1;
+- (void)setSwizzle:(unsigned long long)arg1;
 - (void)setSwizzleAlpha:(unsigned long long)arg1;
 - (void)setSwizzleBlue:(unsigned long long)arg1;
 - (void)setSwizzleGreen:(unsigned long long)arg1;

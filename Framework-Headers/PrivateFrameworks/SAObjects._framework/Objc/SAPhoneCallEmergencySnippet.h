@@ -6,11 +6,17 @@
 
 #import <SAObjects/SAPhoneCallSnippet.h>
 
+@class SAUIColor;
+
 @interface SAPhoneCallEmergencySnippet : SAPhoneCallSnippet
 {
 }
 
+@property (strong, nonatomic) SAUIColor *bodyBackgroundColor;
+@property (strong, nonatomic) SAUIColor *bodyTextColor;
 @property (nonatomic) long long countDownSeconds;
+@property (strong, nonatomic) SAUIColor *headerBackgroundColor;
+@property (strong, nonatomic) SAUIColor *headerTextColor;
 
 + (id)callEmergencySnippet;
 + (id)callEmergencySnippetWithDictionary:(id)arg1 context:(id)arg2;

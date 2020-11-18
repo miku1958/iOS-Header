@@ -11,6 +11,7 @@
 @interface IKStyleList : NSObject
 {
     BOOL _requiresMediaQueryEvaluation;
+    BOOL _resolutionDone;
     NSString *_classSelector;
     IKStyleList *_baseStyleList;
     NSArray *_styles;
@@ -20,6 +21,7 @@
 @property (readonly, strong, nonatomic) IKStyleList *baseStyleList; // @synthesize baseStyleList=_baseStyleList;
 @property (readonly, copy, nonatomic) NSString *classSelector; // @synthesize classSelector=_classSelector;
 @property (readonly, nonatomic) BOOL requiresMediaQueryEvaluation; // @synthesize requiresMediaQueryEvaluation=_requiresMediaQueryEvaluation;
+@property (nonatomic, getter=isResolutionDone) BOOL resolutionDone; // @synthesize resolutionDone=_resolutionDone;
 @property (strong, nonatomic) IKViewElementStyle *resolvedStyle; // @synthesize resolvedStyle=_resolvedStyle;
 @property (readonly, copy, nonatomic) NSArray *styles; // @synthesize styles=_styles;
 

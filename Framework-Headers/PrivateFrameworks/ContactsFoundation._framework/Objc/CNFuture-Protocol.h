@@ -6,8 +6,8 @@
 
 #import <ContactsFoundation/NSObject-Protocol.h>
 
-@class NSDate;
-@protocol CNFuture;
+@class CNFuture, NSDate;
+@protocol CNScheduler;
 
 @protocol CNFuture <NSObject>
 
@@ -15,10 +15,12 @@
 @property (readonly, getter=isFinished) BOOL finished;
 
 - (void)addFailureBlock:(void (^)(NSError *))arg1;
+- (void)addFailureBlock:(void (^)(NSError *))arg1 scheduler:(id<CNScheduler>)arg2;
 - (void)addSuccessBlock:(void (^)(id))arg1;
+- (void)addSuccessBlock:(void (^)(id))arg1 scheduler:(id<CNScheduler>)arg2;
 - (BOOL)cancel;
-- (id<CNFuture>)flatMap:(id<CNFuture> (^)(id))arg1;
-- (id<CNFuture>)recover:(id<CNFuture> (^)(NSError *))arg1;
+- (CNFuture *)flatMap:(id<CNFuture> (^)(id))arg1;
+- (CNFuture *)recover:(id<CNFuture> (^)(NSError *))arg1;
 - (id)result:(id *)arg1;
 - (id)resultBeforeDate:(NSDate *)arg1 error:(id *)arg2;
 - (id)resultWithTimeout:(double)arg1 error:(id *)arg2;

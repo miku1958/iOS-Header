@@ -12,11 +12,17 @@ __attribute__((visibility("hidden")))
 @interface UIStatusBarTimeItemView : UIStatusBarItemView
 {
     NSString *_timeString;
+    BOOL _useCustomFadeAnimation;
 }
+
+@property (nonatomic) BOOL useCustomFadeAnimation; // @synthesize useCustomFadeAnimation=_useCustomFadeAnimation;
 
 - (void).cxx_destruct;
 - (id)contentsImage;
+- (double)extraLeftPadding;
 - (double)extraRightPadding;
+- (void)setFrame:(struct CGRect)arg1;
+- (void)setVisible:(BOOL)arg1 frame:(struct CGRect)arg2 duration:(double)arg3;
 - (long long)textStyle;
 - (BOOL)updateForNewData:(id)arg1 actions:(int)arg2;
 

@@ -15,16 +15,26 @@
 
 @property (nonatomic) double availabilityFreshnessWindow;
 @property (nonatomic) BOOL forceDisplayOfNewTravelAdvisoryHypotheses;
+@property (nonatomic) double overriddenTravelAdvisoryHypothesisAggressiveTravelTime;
+@property (nonatomic) double overriddenTravelAdvisoryHypothesisConservativeTravelTime;
 @property (strong, nonatomic) NSString *overriddenTravelAdvisoryHypothesisCurrentTrafficDensity;
 @property (nonatomic) double overriddenTravelAdvisoryHypothesisEstimatedTravelTime;
+@property (strong, nonatomic) NSString *overriddenTravelAdvisoryHypothesisRouteName;
+@property (nonatomic) BOOL overriddenTravelAdvisoryHypothesisSupportsLiveTraffic;
 @property (strong, nonatomic) NSString *overriddenTravelAdvisoryHypothesisTransportType;
 @property (strong, nonatomic) NSString *overriddenTravelAdvisoryHypothesisTravelState;
 @property (nonatomic) BOOL overrideTravelAdvisoryHypothesis;
 @property (nonatomic) BOOL performAgendaEntryEqualityChecksInTravelEngine;
 @property (nonatomic) BOOL preventMarkingTravelAdvisoryEntriesAsDismissed;
 @property (nonatomic) BOOL saveGeocodedLocationsInTravelEngine;
+@property (nonatomic) BOOL shouldBypassTravelEngineThrottle;
+@property (nonatomic) BOOL showDepartureDateForTransitTimeToLeave;
+@property (nonatomic) BOOL showVerboseMessagesForTimeToLeave;
+@property (nonatomic) BOOL useAverageETAForTimeToLeave;
+@property (nonatomic) BOOL verifyIntegrityOfAvailabilityTimeSearchTimelines;
 
 + (id)shared;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

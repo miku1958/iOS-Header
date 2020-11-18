@@ -30,7 +30,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int status; // @synthesize status=_status;
 @property (strong, nonatomic) NSData *syncContinuationToken; // @synthesize syncContinuationToken=_syncContinuationToken;
 
++ (Class)changedRecordType;
++ (Class)changedShareType;
 - (void).cxx_destruct;
+- (int)StringAsStatus:(id)arg1;
 - (void)addChangedRecord:(id)arg1;
 - (void)addChangedShare:(id)arg1;
 - (id)changedRecordAtIndex:(unsigned long long)arg1;
@@ -47,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)statusAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

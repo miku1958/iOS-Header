@@ -8,7 +8,7 @@
 
 #import <CloudDocsDaemon/BRCOperationSubclass-Protocol.h>
 
-@class BRCServerZone, CKShareID, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSObject, NSString;
+@class BRCServerZone, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_group, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -16,12 +16,10 @@ __attribute__((visibility("hidden")))
 {
     BRCServerZone *_serverZone;
     NSMutableDictionary *_recordsByID;
-    CKShareID *_shareIDToFetchOwnerFrom;
     NSMutableArray *_recordsWithXattrsToFetch;
     NSObject<OS_dispatch_group> *_recordsBeingFetchedGroup;
     NSObject<OS_dispatch_group> *_operationGroup;
     NSObject<OS_dispatch_source> *_xattrFetchingSource;
-    NSObject<OS_dispatch_source> *_shareFetchingSource;
     NSError *_error;
     BOOL _isDoneFetchingRecords;
 }
@@ -34,12 +32,10 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_didEncounterError:(id)arg1;
-- (void)_didFetchShares:(id)arg1;
-- (void)_scheduleEditorsNamesFetch;
 - (void)_scheduleXattrFetch;
 - (void)addRecord:(id)arg1;
 - (void)cancel;
+- (id)createActivity;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)initWithServerZone:(id)arg1;
 - (void)main;

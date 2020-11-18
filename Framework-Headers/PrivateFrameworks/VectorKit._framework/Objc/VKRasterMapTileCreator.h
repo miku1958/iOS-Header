@@ -8,12 +8,13 @@
 
 #import <VectorKit/VKImageCanvasDelegate-Protocol.h>
 
-@class VKMapImageCanvas, VKMapModel, VKRasterMapTileRequest;
+@class GGLImageCanvas, VKMapImageCanvas, VKMapModel, VKRasterMapTileRequest;
 @protocol OS_dispatch_queue;
 
 @interface VKRasterMapTileCreator : NSObject <VKImageCanvasDelegate>
 {
     VKMapImageCanvas *_canvas;
+    GGLImageCanvas *_displayTarget;
     VKMapModel *_mapModel;
     struct VKTileKey _superTileKey;
     double _startTimestamp;
@@ -21,13 +22,13 @@
     CDUnknownBlockType _completion;
     VKRasterMapTileRequest *_request;
     NSObject<OS_dispatch_queue> *_homeQueue;
-    struct GLRenderer *_gglRenderer;
+    struct Renderer *_renderer;
 }
 
-+ (shared_ptr_77723e34)device;
 - (void)_lookAtKey:(const struct VKTileKey *)arg1;
 - (void)dealloc;
 - (id)detailedDescription;
+- (id)detailedDescriptionDictionaryRepresentation;
 - (void)imageCanvasDidBecomeFullyDrawn:(id)arg1 hasFailedTiles:(BOOL)arg2;
 - (void)imageCanvasWillBecomeFullyDrawn:(id)arg1;
 - (id)initWithHomeQueue:(id)arg1;

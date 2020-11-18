@@ -12,45 +12,50 @@
 
 @interface LSPlugInKitProxy : LSBundleProxy <NSSecureCoding>
 {
-    NSDictionary *_infoPlist;
-    LSBundleProxy *_parentBundle;
-    unsigned int _parentBundleID;
     BOOL _isOnSystemPartition;
     NSString *_pluginIdentifier;
     NSString *_originalIdentifier;
     NSString *_protocol;
     NSUUID *_pluginUUID;
-    NSDictionary *_pluginKitDictionary;
     NSDate *_registrationDate;
+    LSBundleProxy *_containingBundle;
 }
 
-@property (readonly, nonatomic) LSBundleProxy *containingBundle;
+@property (readonly, nonatomic) LSBundleProxy *containingBundle; // @synthesize containingBundle=_containingBundle;
 @property (readonly, nonatomic) NSDictionary *infoPlist;
 @property (readonly, nonatomic) BOOL isOnSystemPartition; // @synthesize isOnSystemPartition=_isOnSystemPartition;
 @property (readonly, nonatomic) NSString *originalIdentifier; // @synthesize originalIdentifier=_originalIdentifier;
 @property (readonly, nonatomic) NSString *pluginIdentifier; // @synthesize pluginIdentifier=_pluginIdentifier;
-@property (readonly, nonatomic) NSDictionary *pluginKitDictionary; // @synthesize pluginKitDictionary=_pluginKitDictionary;
+@property (readonly, nonatomic) NSDictionary *pluginKitDictionary;
 @property (readonly, nonatomic) NSUUID *pluginUUID; // @synthesize pluginUUID=_pluginUUID;
 @property (readonly, nonatomic) NSString *protocol; // @synthesize protocol=_protocol;
 @property (readonly, nonatomic) NSDate *registrationDate; // @synthesize registrationDate=_registrationDate;
+@property (readonly, nonatomic) NSString *teamID; // @dynamic teamID;
 
++ (id)containingBundleIdentifiersForPlugInBundleIdentifiers:(id)arg1 error:(id *)arg2;
 + (id)plugInKitProxyForPlugin:(unsigned int)arg1;
++ (id)plugInKitProxyForPlugin:(unsigned int)arg1 withContext:(const struct LSContext *)arg2;
 + (id)plugInKitProxyForUUID:(id)arg1 bundleIdentifier:(id)arg2 pluginIdentifier:(id)arg3 effectiveIdentifier:(id)arg4 version:(id)arg5 bundleURL:(id)arg6;
 + (id)pluginKitProxyForIdentifier:(id)arg1;
 + (id)pluginKitProxyForURL:(id)arg1;
 + (id)pluginKitProxyForUUID:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (BOOL)UPPValidated;
 - (id)_initWithPlugin:(unsigned int)arg1;
+- (id)_initWithPlugin:(unsigned int)arg1 andContext:(const struct LSContext *)arg2;
 - (id)_initWithUUID:(id)arg1 bundleIdentifier:(id)arg2 pluginIdentifier:(id)arg3 effectiveIdentifier:(id)arg4 version:(id)arg5 bundleURL:(id)arg6;
-- (id)appStoreReceiptURL;
+- (id)_valueForEqualityTesting;
+- (id)boundIconsDictionary;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)iconDataForVariant:(int)arg1;
 - (id)initWithCoder:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
 - (id)localizedName;
 - (id)localizedShortName;
+- (id)objectForInfoDictionaryKey:(id)arg1 ofClass:(Class)arg2 inScope:(unsigned long long)arg3;
+- (BOOL)pluginCanProvideIcon;
+- (BOOL)profileValidated;
 
 @end
 

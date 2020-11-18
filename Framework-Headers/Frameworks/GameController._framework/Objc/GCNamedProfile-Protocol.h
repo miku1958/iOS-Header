@@ -6,13 +6,12 @@
 
 #import <GameController/NSObject-Protocol.h>
 
-@class GCController, GCControllerElement, GCMotion, NSData, NSString;
+@class GCController, GCControllerElement, GCMotion, NSString;
 
 @protocol GCNamedProfile <NSObject>
 
 @property (readonly) NSString *name;
 
-- (void)handleReport:(unsigned int)arg1 data:(NSData *)arg2;
 - (id)initWithController:(GCController *)arg1;
 - (GCControllerElement *)inputForElement:(struct __IOHIDElement *)arg1;
 - (void)setController:(GCController *)arg1;

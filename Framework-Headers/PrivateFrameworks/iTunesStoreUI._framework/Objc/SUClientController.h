@@ -83,7 +83,7 @@
 - (id)initWithClientInterface:(id)arg1;
 - (BOOL)isComposingEmail;
 - (BOOL)libraryContainsItemIdentifier:(unsigned long long)arg1;
-- (void)mailComposeController:(id)arg1 didFinishWithResult:(int)arg2 error:(id)arg3;
+- (void)mailComposeController:(id)arg1 didFinishWithResult:(long long)arg2 error:(id)arg3;
 - (id)newScriptInterface;
 - (struct __CFArray *)offeredAssetTypes;
 - (BOOL)openClientURL:(id)arg1;

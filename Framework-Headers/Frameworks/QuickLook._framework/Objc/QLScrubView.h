@@ -14,8 +14,6 @@
 __attribute__((visibility("hidden")))
 @interface QLScrubView : UIView <UIGestureRecognizerDelegate>
 {
-    id<QLScrubViewDataSource> _dataSource;
-    id _delegate;
     BOOL _runOnMainThread;
     BOOL _needsThumbLayout;
     double _thumbOrigin;
@@ -29,12 +27,14 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_visibleThumbIndexes;
     QLThumbnailView *_selectedThumbnailView;
     QLPageNumberView *_pageNumberLabel;
+    id<QLScrubViewDataSource> _dataSource;
+    id _delegate;
     double _topOffset;
 }
 
-@property id<QLScrubViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (weak) id<QLScrubViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
-@property id delegate; // @synthesize delegate=_delegate;
+@property (weak) id delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property BOOL runOnMainThread;
@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double topOffset; // @synthesize topOffset=_topOffset;
 
 + (double)defaultWidth;
+- (void).cxx_destruct;
 - (void)_cancelAllOperations;
 - (void)_handleSwipAtLocation:(struct CGPoint)arg1;
 - (void)_hidePageLabel;
@@ -55,9 +56,8 @@ __attribute__((visibility("hidden")))
 - (void)_updateSelectedThumbnailView;
 - (void)dealloc;
 - (void)didReceiveMemoryWarning;
-- (void)drawRect:(struct CGRect)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)init;
 - (void)layoutSubviews;
 - (void)longTapReceived:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

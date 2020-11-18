@@ -13,8 +13,9 @@
     UITextField *_textField;
 }
 
-@property (nonatomic) UITextField *textField; // @synthesize textField=_textField;
+@property (weak, nonatomic) UITextField *textField; // @synthesize textField=_textField;
 
+- (void).cxx_destruct;
 - (void)_accessibilityCopy;
 - (void)_accessibilityCut;
 - (void)_accessibilityDelete;
@@ -28,6 +29,7 @@
 - (void)_accessibilitySelect;
 - (void)_accessibilitySelectAll;
 - (struct _NSRange)_accessibilitySelectedTextRange;
+- (BOOL)_accessibilityServesAsFirstElement;
 - (void)_accessibilitySetIsSpeakThisElement:(BOOL)arg1;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (void)_accessibilitySetValue:(id)arg1;
@@ -35,6 +37,7 @@
 - (id)_accessibilityTextOperations;
 - (id)_accessibilityTextViewTextOperationResponder;
 - (id)_accessibilityUserTestingParent;
+- (BOOL)_accessibilityViewIsVisible;
 - (struct CGPoint)accessibilityActivationPoint;
 - (void)accessibilityElementDidBecomeFocused;
 - (void)accessibilityElementDidLoseFocus;

@@ -10,8 +10,5 @@
 {
 }
 
-- (void)begin;
-- (void)end;
-
 @end
 

@@ -10,6 +10,8 @@
 {
 }
 
++ (void)applyVibrancyToView:(id)arg1 forStyle:(unsigned long long)arg2;
++ (id)backgroundColorForStyle:(unsigned long long)arg1;
 + (id)compositingFilterForStyle:(unsigned long long)arg1;
 + (id)separatorColorForStyle:(unsigned long long)arg1;
 - (id)initWithStyle:(unsigned long long)arg1;

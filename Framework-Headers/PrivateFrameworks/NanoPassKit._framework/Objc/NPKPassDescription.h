@@ -9,7 +9,7 @@
 #import <NanoPassKit/NSCopying-Protocol.h>
 #import <NanoPassKit/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSNumber, NSString, PKColor, PKImage, PKNFCPayload, PKPaymentApplication;
+@class NSData, NSDate, NSNumber, NSSet, NSString, PKColor, PKImage, PKNFCPayload, PKPaymentApplication;
 
 @interface NPKPassDescription : NSObject <NSSecureCoding, NSCopying>
 {
@@ -34,6 +34,7 @@
     PKColor *_backgroundColor;
     PKColor *_foregroundColor;
     PKColor *_labelColor;
+    NSSet *_devicePaymentApplications;
     PKPaymentApplication *_devicePrimaryPaymentApplication;
     PKPaymentApplication *_preferredPaymentApplication;
     long long _effectivePaymentApplicationState;
@@ -47,6 +48,7 @@
 @property (nonatomic, getter=isCobranded) BOOL cobranded; // @synthesize cobranded=_cobranded;
 @property (strong, nonatomic) NSData *completeHash; // @synthesize completeHash=_completeHash;
 @property (nonatomic) BOOL deletePending; // @synthesize deletePending=_deletePending;
+@property (strong, nonatomic) NSSet *devicePaymentApplications; // @synthesize devicePaymentApplications=_devicePaymentApplications;
 @property (strong, nonatomic) PKPaymentApplication *devicePrimaryPaymentApplication; // @synthesize devicePrimaryPaymentApplication=_devicePrimaryPaymentApplication;
 @property (nonatomic) long long effectivePaymentApplicationState; // @synthesize effectivePaymentApplicationState=_effectivePaymentApplicationState;
 @property (strong, nonatomic) PKColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
@@ -82,6 +84,8 @@
 - (id)initWithPass:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)safeUnarchiveObjectOfClass:(Class)arg1 withData:(id)arg2;
+- (BOOL)supportsInAppPaymentOnNetworks:(id)arg1;
+- (BOOL)supportsInAppPaymentOnNetworks:(id)arg1 capabilities:(unsigned long long)arg2;
 
 @end
 

@@ -21,6 +21,8 @@
 @property (nonatomic) BOOL disableContinuity;
 @property (nonatomic) BOOL disableTodayPushes;
 @property (nonatomic) BOOL drawDebugViewColors; // @synthesize drawDebugViewColors=_drawDebugViewColors;
+@property (nonatomic) BOOL enableAvatars;
+@property (nonatomic) BOOL eventAutocompleteEnabled;
 @property (nonatomic) BOOL hideInlineDayViewInEventDetails;
 @property (nonatomic) BOOL immediateAlarmCreation;
 @property (nonatomic) BOOL largeListViewDisclosingEventDetails;
@@ -34,7 +36,6 @@
 @property (nonatomic) BOOL requestSyncOnApplicationLaunch;
 @property (strong, nonatomic) NSString *searchString;
 @property (nonatomic, getter=isShortResumeToTodayTimeout) BOOL shortResumeToTodayTimeout;
-@property (nonatomic) BOOL showDebugGridOverlay;
 @property (nonatomic) BOOL showDetailedListView;
 @property (nonatomic) BOOL showEventsInPhoneMonthView;
 @property (nonatomic) BOOL showExperimentalUI;
@@ -50,9 +51,7 @@
 
 + (id)sharedPreferences;
 - (void).cxx_destruct;
-- (id)deselectedCalendarIDsFromCalendars:(id)arg1;
 - (id)init;
-- (void)setDeselectedCalendarIDs:(id)arg1;
 
 @end
 

@@ -19,37 +19,33 @@
     id<PUTilingCoordinateSystem> _coordinateSystem;
     struct CGPoint _center;
     struct CGSize _size;
+    struct CGRect _contentsRect;
     CDStruct_6c514524 _expandedRectInsets;
     struct CGAffineTransform _transform;
 }
 
-@property (nonatomic) double alpha; // @synthesize alpha=_alpha;
-@property (nonatomic) struct CGPoint center; // @synthesize center=_center;
-@property (strong, nonatomic) id<PUTilingCoordinateSystem> coordinateSystem; // @synthesize coordinateSystem=_coordinateSystem;
+@property (nonatomic, setter=_setAlpha:) double alpha; // @synthesize alpha=_alpha;
+@property (nonatomic, setter=_setCenter:) struct CGPoint center; // @synthesize center=_center;
+@property (readonly, nonatomic) struct CGRect contentsRect; // @synthesize contentsRect=_contentsRect;
+@property (strong, nonatomic, setter=_setCoordinateSystem:) id<PUTilingCoordinateSystem> coordinateSystem; // @synthesize coordinateSystem=_coordinateSystem;
 @property (readonly, nonatomic) NSString *dataSourceIdentifier;
 @property (nonatomic) CDStruct_6c514524 expandedRectInsets; // @synthesize expandedRectInsets=_expandedRectInsets;
 @property (readonly, nonatomic) struct CGRect frame;
 @property (readonly, nonatomic) NSIndexPath *indexPath;
-@property (nonatomic) struct CGSize size; // @synthesize size=_size;
-@property (strong, nonatomic) PUTileIdentifier *tileIdentifier; // @synthesize tileIdentifier=_tileIdentifier;
+@property (nonatomic, setter=_setSize:) struct CGSize size; // @synthesize size=_size;
+@property (strong, nonatomic, setter=_setTileIdentifier:) PUTileIdentifier *tileIdentifier; // @synthesize tileIdentifier=_tileIdentifier;
 @property (readonly, nonatomic) NSString *tileKind;
-@property (nonatomic) struct CGAffineTransform transform; // @synthesize transform=_transform;
-@property (nonatomic) double zPosition; // @synthesize zPosition=_zPosition;
+@property (nonatomic, setter=_setTransform:) struct CGAffineTransform transform; // @synthesize transform=_transform;
+@property (nonatomic, setter=_setZPosition:) double zPosition; // @synthesize zPosition=_zPosition;
 
 - (void).cxx_destruct;
-- (void)_setAlpha:(double)arg1;
-- (void)_setCenter:(struct CGPoint)arg1;
-- (void)_setCoordinateSystem:(id)arg1;
-- (void)_setSize:(struct CGSize)arg1;
-- (void)_setTileIdentifier:(id)arg1;
-- (void)_setTransform:(struct CGAffineTransform)arg1;
-- (void)_setZPosition:(double)arg1;
 - (id)clone;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (struct UIEdgeInsets)cropInsets;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;
+- (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 alpha:(double)arg4 transform:(struct CGAffineTransform)arg5 zPosition:(double)arg6 contentsRect:(struct CGRect)arg7 coordinateSystem:(id)arg8;
 - (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 alpha:(double)arg4 transform:(struct CGAffineTransform)arg5 zPosition:(double)arg6 coordinateSystem:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isGeometryEqualToLayoutInfo:(id)arg1;

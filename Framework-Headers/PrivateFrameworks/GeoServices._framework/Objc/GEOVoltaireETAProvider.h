@@ -6,12 +6,12 @@
 
 #import <GeoServices/GEOETAProvider.h>
 
-#import <GeoServices/PBRequesterDelegate-Protocol.h>
+#import <GeoServices/GEOPBSessionRequesterDelegate-Protocol.h>
 
 @class GEORequester, NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEOVoltaireETAProvider : GEOETAProvider <PBRequesterDelegate>
+@interface GEOVoltaireETAProvider : GEOETAProvider <GEOPBSessionRequesterDelegate>
 {
     GEORequester *_requester;
     CDUnknownBlockType _errorHandler;
@@ -31,8 +31,8 @@ __attribute__((visibility("hidden")))
 - (void)requester:(id)arg1 didFailWithError:(id)arg2;
 - (void)requesterDidCancel:(id)arg1;
 - (void)requesterDidFinish:(id)arg1;
-- (void)requesterWillSendRequestForEstablishedConnection:(id)arg1;
-- (void)startRequest:(id)arg1 connectionProperties:(const CDStruct_96e0509c *)arg2 willSendRequest:(CDUnknownBlockType)arg3 finished:(CDUnknownBlockType)arg4 error:(CDUnknownBlockType)arg5;
+- (void)requesterWillSendRequestForEstablishedConnection:(id)arg1 callback:(CDUnknownBlockType)arg2;
+- (void)startRequest:(id)arg1 connectionProperties:(const CDStruct_e05fddca *)arg2 willSendRequest:(CDUnknownBlockType)arg3 finished:(CDUnknownBlockType)arg4 error:(CDUnknownBlockType)arg5;
 - (void)startRequest:(id)arg1 finished:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
 - (void)startSimpleETARequest:(id)arg1 finished:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
 - (void)updateRequest:(id)arg1 finished:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;

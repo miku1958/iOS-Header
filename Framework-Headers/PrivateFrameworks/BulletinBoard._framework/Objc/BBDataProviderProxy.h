@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/BBRemoteDataProviderClientProxy-Protocol.h>
 
@@ -29,25 +29,26 @@
 @property (strong) BBDataProviderIdentity *identity; // @synthesize identity=_identity;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_makeClientRequest:(CDUnknownBlockType)arg1;
 - (void)_makeServerRequest:(CDUnknownBlockType)arg1;
 - (void)addBulletin:(id)arg1 forDestinations:(unsigned long long)arg2;
 - (void)addBulletin:(id)arg1 interrupt:(BOOL)arg2;
-- (void)attachmentAspectRatioForRecordID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)attachmentPNGDataForRecordID:(id)arg1 sizeConstraints:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)bulletinsWithRequestParameters:(id)arg1 lastCleared:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)clearedInfoForBulletins:(id)arg1 lastClearedInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)clearedInfoForClearingAllBulletinsWithLastClearedInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)clearedInfoForClearingBulletinsFromDate:(id)arg1 toDate:(id)arg2 lastClearedInfo:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dataProviderDidLoad;
 - (void)dealloc;
-- (void)deliverBulletinActionResponse:(id)arg1;
+- (void)deliverBulletinActionResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)deliverMessageWithName:(id)arg1 userInfo:(id)arg2;
+- (void)getAspectRatioForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
+- (void)getDataForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
+- (void)getPNGDataForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(BOOL)arg3 sizeConstraints:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
 - (id)initWithDataProvider:(id)arg1 clientReplyQueue:(id)arg2;
 - (void)invalidateBulletins;
 - (void)modifyBulletin:(id)arg1;
 - (void)noteSectionInfoDidChange:(id)arg1;
-- (void)primaryAttachmentDataForRecordID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)reloadDefaultSectionInfo;
 - (void)reloadSectionParameters;
 - (void)setServerProxy:(id)arg1;

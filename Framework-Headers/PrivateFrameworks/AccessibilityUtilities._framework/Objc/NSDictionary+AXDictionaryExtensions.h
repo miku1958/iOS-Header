@@ -7,6 +7,6 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (AXDictionaryExtensions)
-+ (id)dictionaryWithAXAuditIssue:(long long)arg1 description:(id)arg2 resolution:(id)arg3 element:(id)arg4;
++ (id)dictionaryWithAXAuditIssue:(long long)arg1 element:(id)arg2;
 @end
 

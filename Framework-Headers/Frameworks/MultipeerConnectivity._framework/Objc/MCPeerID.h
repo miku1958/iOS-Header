@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MultipeerConnectivity/NSCopying-Protocol.h>
 #import <MultipeerConnectivity/NSSecureCoding-Protocol.h>
@@ -22,6 +22,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)displayNameAndPID;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)idString;

@@ -11,7 +11,7 @@
 
 @interface _GKStateMachine : NSObject
 {
-    int _lock;
+    struct os_unfair_lock_s _lock;
     NSString *_currentState;
     NSDictionary *_validTransitions;
     id<_GKStateMachineDelegate> _delegate;

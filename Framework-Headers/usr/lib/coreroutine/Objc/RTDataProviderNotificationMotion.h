@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <coreroutine/RTDataProviderNotificationRealtime.h>
+#import <coreroutine/RTDataProviderEventNotificationRealtime.h>
 
-@interface RTDataProviderNotificationMotion : RTDataProviderNotificationRealtime
+@interface RTDataProviderNotificationMotion : RTDataProviderEventNotificationRealtime
 {
 }
-
-+ (id)notificationName;
 
 @end
 

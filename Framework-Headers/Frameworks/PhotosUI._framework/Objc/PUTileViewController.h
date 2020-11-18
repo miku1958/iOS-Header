@@ -11,18 +11,18 @@
 @interface PUTileViewController : PUTileController
 {
     BOOL _contentViewEnabled;
-    BOOL _isReadyForDisplay;
     BOOL __loadingView;
     BOOL __edgeAntialiasingEnabled;
-    NSArray *_gestureRecognizers;
-    UIView *_view;
+    BOOL _isReadyForDisplay;
     UIView *_contentView;
+    UIView *_view;
     UIView *_loadedView;
     UIView *__tintView;
     UIView *__visibleRectView;
     CDUnknownBlockType __onReadyToDisplayBlock;
     NSTimer *__readinessTimer;
     UIView *__maskView;
+    NSArray *_gestureRecognizers;
 }
 
 @property (nonatomic, setter=_setEdgeAntialiasingEnabled:) BOOL _edgeAntialiasingEnabled; // @synthesize _edgeAntialiasingEnabled=__edgeAntialiasingEnabled;
@@ -32,20 +32,17 @@
 @property (strong, nonatomic, setter=_setReadinessTimer:) NSTimer *_readinessTimer; // @synthesize _readinessTimer=__readinessTimer;
 @property (strong, nonatomic, setter=_setTintView:) UIView *_tintView; // @synthesize _tintView=__tintView;
 @property (strong, nonatomic, setter=_setVisibleRectView:) UIView *_visibleRectView; // @synthesize _visibleRectView=__visibleRectView;
-@property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property (strong, nonatomic, setter=_setContentView:) UIView *contentView; // @synthesize contentView=_contentView;
 @property (nonatomic, getter=isContentViewEnabled) BOOL contentViewEnabled; // @synthesize contentViewEnabled=_contentViewEnabled;
-@property (strong, nonatomic) NSArray *gestureRecognizers; // @synthesize gestureRecognizers=_gestureRecognizers;
+@property (strong, nonatomic, setter=_setGestureRecognizers:) NSArray *gestureRecognizers; // @synthesize gestureRecognizers=_gestureRecognizers;
 @property (nonatomic, setter=_setReadyForDisplay:) BOOL isReadyForDisplay; // @synthesize isReadyForDisplay=_isReadyForDisplay;
 @property (readonly, nonatomic) BOOL isViewLoaded;
 @property (strong, nonatomic, setter=_setLoadedView:) UIView *loadedView; // @synthesize loadedView=_loadedView;
-@property (strong, nonatomic) UIView *view; // @synthesize view=_view;
+@property (strong, nonatomic, setter=_setView:) UIView *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;
 - (void)_handleReadinessForced:(BOOL)arg1;
 - (void)_invalidateTintView;
-- (void)_setContentView:(id)arg1;
-- (void)_setGestureRecognizers:(id)arg1;
-- (void)_setView:(id)arg1;
 - (void)_updateTintView;
 - (void)_updateVisibleRectView;
 - (void)addToTilingView:(id)arg1;

@@ -4,36 +4,50 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableDictionary, TLAccessQueue, TLAlert, TLAlertLoopPlayer;
+#import <ToneLibrary/TLAlertPlaybackBackEndController-Protocol.h>
 
-@interface TLAlertController : NSObject
+@class NSMapTable, NSString, TLAlertQueuePlayerController, TLAlertSystemSoundController;
+@protocol OS_dispatch_queue;
+
+@interface TLAlertController : NSObject <TLAlertPlaybackBackEndController>
 {
-    TLAccessQueue *_accessQueue;
-    NSMutableDictionary *_alertsBySoundIDs;
-    TLAlertLoopPlayer *_loopPlayer;
-    TLAlert *_repeatedlyPlayingAlert;
+    NSObject<OS_dispatch_queue> *_accessQueue;
+    NSString *_accessQueueLabel;
+    TLAlertQueuePlayerController *_queuePlayerController;
+    TLAlertSystemSoundController *_systemSoundController;
+    NSMapTable *_alertContexts;
 }
 
-@property (strong, setter=_setAccessQueue:) TLAccessQueue *_accessQueue; // @synthesize _accessQueue;
-@property (strong, nonatomic, setter=_setAlertsBySoundIDs:) NSMutableDictionary *_alertsBySoundIDs; // @synthesize _alertsBySoundIDs;
-@property (strong, nonatomic, setter=_setLoopPlayer:) TLAlertLoopPlayer *_loopPlayer; // @synthesize _loopPlayer;
-@property (strong, nonatomic, setter=_setRepeatedlyPlayingAlert:) TLAlert *_repeatedlyPlayingAlert; // @synthesize _repeatedlyPlayingAlert;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
++ (long long)_playbackBackEndForAlert:(id)arg1;
++ (BOOL)_shouldStopAlertForUserInterruption:(id)arg1;
 + (id)sharedAlertController;
-- (void)_didReachTimeoutForSystemSound:(id)arg1;
-- (BOOL)_playAlert:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 targetQueue:(id)arg3;
-- (void)_removeSoundID:(unsigned int)arg1 shouldStopSound:(BOOL)arg2 fireCompletionHandler:(BOOL)arg3;
-- (unsigned int)_soundIDForAlert:(id)arg1;
-- (void)_startPlayingAlertRepeatedly:(id)arg1;
-- (void)_stopAlert:(id)arg1 withFadeOutDuration:(double)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4 targetQueue:(id)arg5;
-- (BOOL)_stopAllAlerts;
-- (void)_stopRepeatedlyPlayingAlert:(id)arg1 withFadeOutDuration:(double)arg2 options:(unsigned long long)arg3 allowingFallbackLogic:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5 targetQueue:(id)arg6;
-- (void)_systemSoundDidFinishPlaying:(unsigned int)arg1;
+- (void).cxx_destruct;
+- (void)_assertRunningOnAccessQueue;
+- (id)_controllerForPlaybackBackEnd:(long long)arg1;
+- (void)_didCompletePlaybackOfAlert:(id)arg1;
+- (void)_didReachTimeoutForAlert:(id)arg1;
+- (void)_performBlockOnAccessQueue:(CDUnknownBlockType)arg1;
+- (id)_prepareForPlayingAlert:(id)arg1;
+- (id)_queuePlayerController;
+- (BOOL)_stopAllAlertsInCurrentProcess;
+- (void)_stopPlayingAlerts:(id)arg1 withOptions:(CDStruct_2418a849)arg2 playbackCompletionType:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_stopRepeatedlyPlayingAlert:(id)arg1 withOptions:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3 targetQueue:(id)arg4;
+- (id)_systemSoundController;
 - (void)dealloc;
 - (id)init;
+- (void)performBlockOnAudioEventQueue:(CDUnknownBlockType)arg1;
+- (void)playAlert:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)stopAllAlerts;
+- (void)stopPlayingAlerts:(id)arg1 withOptions:(CDStruct_2418a849)arg2 playbackCompletionType:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)stopRepeatedlyPlayingAlert:(id)arg1 withOptions:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3 targetQueue:(id)arg4;
+- (void)updateAudioVolumeDynamicallyForAlert:(id)arg1 toValue:(float)arg2;
 
 @end
 

@@ -23,6 +23,7 @@
 + (id)cachedDateFormatterForDateStyle:(unsigned long long)arg1 timeStyle:(unsigned long long)arg2 calendar:(id)arg3;
 + (id)cachedDateFormatterForFormat:(id)arg1 calendar:(id)arg2;
 + (id)cachedDateFormatterForTemplate:(id)arg1 calendar:(id)arg2;
++ (id)longStringForDate:(id)arg1 inCalendar:(id)arg2;
 + (id)mediumStringForDate:(id)arg1 inCalendar:(id)arg2;
 + (id)monthDayStringForDate:(id)arg1 inCalendar:(id)arg2;
 + (id)monthStringForDate:(id)arg1 inCalendar:(id)arg2;

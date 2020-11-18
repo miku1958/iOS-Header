@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <UserActivity/SFCompanionAdvertiserDelegate-Protocol.h>
 
@@ -13,14 +13,13 @@
 
 @interface UAUserActivity : NSObject <SFCompanionAdvertiserDelegate>
 {
-    UAUserActivityManager *_manager;
     NSMutableDictionary *_userInfo;
     NSMutableDictionary *_frameworkPayload;
     NSString *_title;
     NSURL *_webpageURL;
-    id<UAUserActivityDelegate> _delegate;
     SFCompanionAdvertiser *_advertiser;
     SFCompanionAdvertiser *_resumerAdvertiser;
+    NSMutableSet *_dirtyPayloadIdentifiers;
     double _lastSaveTime;
     BOOL _saveScheduled;
     BOOL _createsNewUUIDIfSaved;
@@ -33,6 +32,8 @@
     BOOL _forceImmediateSendToServer;
     BOOL _encodedContainsUnsynchronizedCloudDocument;
     BOOL _encodedFileProviderURL;
+    BOOL _userActivityWasCreatedSent;
+    BOOL _indexInProcess;
     long long _inWillSaveCallback;
     double _encodedContainsUnsynchronizedCloudDocumentBackoffInterval;
     CSSearchableItemAttributeSet *_contentAttributeSet;
@@ -41,6 +42,8 @@
     NSString *_contentUserAction;
     NSMutableSet *_requiredUserInfoKeys;
     NSString *_teamIdentifier;
+    unsigned long long _os_state_handler;
+    int _forwardToCoreSpotlightIndexerCount;
     BOOL _eligibleForHandoff;
     BOOL _eligibleForSearch;
     BOOL _eligibleForReminders;
@@ -48,12 +51,17 @@
     BOOL _invalidated;
     BOOL _canCreateStreams;
     NSData *_cachedEncodedUserInfo;
+    id<UAUserActivityDelegate> _delegate;
+    UAUserActivityManager *_manager;
     NSString *_typeIdentifier;
     NSString *_dynamicIdentifier;
     NSUUID *_uniqueIdentifier;
     unsigned long long _suggestedActionType;
     NSDictionary *_options;
-    NSData *_streamsData;
+    NSUUID *_originalUniqueIdentifier;
+    NSMutableDictionary *_payloadObjects;
+    NSMutableDictionary *_payloadUpdateBlocks;
+    NSMutableDictionary *_payloadDataCache;
 }
 
 @property (readonly) BOOL activityHasBeenSentToServer; // @synthesize activityHasBeenSentToServer=_activityHasBeenSentToServer;
@@ -65,9 +73,10 @@
 @property BOOL createsNewUUIDIfSaved; // @synthesize createsNewUUIDIfSaved=_createsNewUUIDIfSaved;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong) NSError *decodeUserInfoError; // @synthesize decodeUserInfoError=_decodeUserInfoError;
-@property id<UAUserActivityDelegate> delegate; // @dynamic delegate;
+@property id<UAUserActivityDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property BOOL dirty; // @dynamic dirty;
+@property (strong) NSMutableSet *dirtyPayloadIdentifiers; // @synthesize dirtyPayloadIdentifiers=_dirtyPayloadIdentifiers;
 @property (copy) NSString *dynamicIdentifier; // @synthesize dynamicIdentifier=_dynamicIdentifier;
 @property (getter=isEligibleForHandoff) BOOL eligibleForHandoff; // @dynamic eligibleForHandoff;
 @property (getter=isEligibleForPublicIndexing) BOOL eligibleForPublicIndexing; // @dynamic eligibleForPublicIndexing;
@@ -78,16 +87,22 @@
 @property BOOL encodedFileProviderURL; // @synthesize encodedFileProviderURL=_encodedFileProviderURL;
 @property (copy) NSDate *expirationDate; // @dynamic expirationDate;
 @property BOOL forceImmediateSendToServer; // @synthesize forceImmediateSendToServer=_forceImmediateSendToServer;
+@property (readonly) BOOL forwardToCoreSpotlightIndexer;
 @property (readonly) unsigned long long hash;
 @property (readonly, getter=isInvalidated) BOOL invalidated; // @synthesize invalidated=_invalidated;
 @property (copy) NSSet *keywords; // @dynamic keywords;
-@property (readonly) UAUserActivityManager *manager; // @dynamic manager;
+@property (readonly, weak) UAUserActivityManager *manager; // @synthesize manager=_manager;
 @property BOOL needsSave; // @dynamic needsSave;
 @property (copy) NSDictionary *options; // @synthesize options=_options;
-@property (strong) NSUserActivity *parentUserActivity; // @dynamic parentUserActivity;
+@property (readonly, copy) NSUUID *originalUniqueIdentifier; // @synthesize originalUniqueIdentifier=_originalUniqueIdentifier;
+@property (readonly) unsigned long long os_state_handler; // @synthesize os_state_handler=_os_state_handler;
+@property (weak) NSUserActivity *parentUserActivity;
+@property (strong) NSMutableDictionary *payloadDataCache; // @synthesize payloadDataCache=_payloadDataCache;
+@property (strong) NSMutableDictionary *payloadObjects; // @synthesize payloadObjects=_payloadObjects;
+@property (strong) NSMutableDictionary *payloadUpdateBlocks; // @synthesize payloadUpdateBlocks=_payloadUpdateBlocks;
 @property (copy) NSSet *requiredUserInfoKeys; // @dynamic requiredUserInfoKeys;
 @property BOOL sendToServerPending; // @synthesize sendToServerPending=_sendToServerPending;
-@property (copy) NSData *streamsData; // @synthesize streamsData=_streamsData;
+@property (copy) NSData *streamsData;
 @property (copy) NSString *subtitle; // @dynamic subtitle;
 @property (readonly) unsigned long long suggestedActionType; // @synthesize suggestedActionType=_suggestedActionType;
 @property (readonly) Class superclass;
@@ -95,7 +110,7 @@
 @property (copy) NSString *teamIdentifier; // @synthesize teamIdentifier=_teamIdentifier;
 @property (copy) NSString *title; // @dynamic title;
 @property (copy) NSString *typeIdentifier; // @synthesize typeIdentifier=_typeIdentifier;
-@property (copy) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+@property (readonly, copy) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (copy) NSDictionary *userInfo; // @dynamic userInfo;
 @property (copy) NSURL *webpageURL; // @dynamic webpageURL;
 
@@ -104,21 +119,27 @@
 + (id)_encodeKeyAndValueIntoString:(id)arg1 value:(id)arg2;
 + (id)_encodeToString:(id)arg1;
 + (void)addDynamicUserActivity:(id)arg1 matching:(id)arg2;
++ (void)addUserActivityObserver:(id)arg1;
 + (id)allowedWebpageURLSchemes;
 + (BOOL)checkWebpageURL:(id)arg1 actionType:(unsigned long long)arg2 throwIfFailed:(BOOL)arg3;
 + (id)currentUserActivityUUID;
 + (BOOL)currentUserActivityUUIDWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (BOOL)determineIfUserActivityIsCurrent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)fetchUserActivityWithUUID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)fetchUserActivityWithUUID:(id)arg1 intervalToWaitForDocumentSynchronizationToComplete:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)initialize;
++ (BOOL)isIndexPendingForUUID:(id)arg1;
++ (id)observers;
 + (id)registerForSuggestedActionNudgeOfType:(unsigned long long)arg1 withOptions:(id)arg2 block:(CDUnknownBlockType)arg3;
 + (void)removeDynamicUserActivity:(id)arg1 matching:(id)arg2;
++ (void)removeUserActivityObserver:(id)arg1;
++ (void)setIndexPending:(BOOL)arg1 forUUID:(id)arg2;
 + (BOOL)supportsUserActivityAppLinks;
 + (void)unregisterForSuggestedActionNudgeOfType:(id)arg1;
-+ (id)userActivity;
 + (BOOL)userActivityContinuationSupported;
 + (id)userActivityFromUUID:(id)arg1 timeout:(double)arg2 withError:(id *)arg3;
 + (id)userActivityFromUUID:(id)arg1 withError:(id *)arg2;
+- (void).cxx_destruct;
 - (BOOL)_encodeIntoUserActivityDataWithSave:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_encodeIntoUserActivityStringWithSave:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_resignCurrent;
@@ -140,6 +161,7 @@
 - (id)determineMatchingApplicationBundleIdentfierWithOptions:(id)arg1;
 - (void)didReceiveInputStream:(id)arg1 outputStream:(id)arg2;
 - (void)didSynchronizeUserActivity;
+- (void)displayInDtrace;
 - (id)encodeUserInfo:(id)arg1;
 - (id)encodeUserInfo:(id)arg1 error:(id *)arg2;
 - (void)getContinuationStreamsWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -155,20 +177,34 @@
 - (id)initWithUserActivityStrings:(id)arg1 optionalString:(id)arg2 tertiaryData:(id)arg3 options:(id)arg4;
 - (void)invalidate;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isPayloadDirty:(id)arg1;
+- (id)objectForIdentifier:(id)arg1;
+- (id)payloadForIdentifier:(id)arg1;
+- (id)payloadIdentifiers;
+- (CDUnknownBlockType)payloadUpdateBlockForIdentifier:(id)arg1;
 - (void)pinUserActivityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)prepareUserActivityForLaunchingWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (long long)priority;
 - (void)removeContentAttribute:(id)arg1;
 - (void)resignCurrent;
 - (void)scheduleSendUserActivityInfoToLSUserActivityd;
+- (void)sendToCoreSpotlightIndexer;
+- (void)sendToServer:(BOOL)arg1;
 - (void)sendUserActivityInfoToLSUserActivityd:(BOOL)arg1 onAsyncQueue:(BOOL)arg2;
 - (void)setContentAttributes:(id)arg1;
 - (void)setContentType:(id)arg1;
+- (void)setDirty:(BOOL)arg1 identifier:(id)arg2;
+- (void)setPayload:(id)arg1 object:(id)arg2 identifier:(id)arg3;
+- (void)setPayload:(id)arg1 object:(id)arg2 identifier:(id)arg3 dirty:(BOOL)arg4;
+- (void)setPayloadIdentifier:(id)arg1 object:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (id)stateString;
 - (id)teamID;
 - (void)tellDaemonAboutNewLSUserActivity;
 - (id)unarchiveURL:(id)arg1 error:(id *)arg2;
 - (id)unarchiver:(id)arg1 didDecodeObject:(id)arg2;
+- (void)updateForwardToCoreSpotlightIndexer:(BOOL)arg1;
 - (id)userActivityInfoForSelf;
+- (id)userActivityInfoForSelfWithPayload:(BOOL)arg1;
 - (void)willSynchronizeUserActivityWithHandler:(CDUnknownBlockType)arg1;
 
 @end

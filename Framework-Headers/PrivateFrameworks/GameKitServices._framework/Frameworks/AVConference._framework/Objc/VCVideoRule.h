@@ -6,28 +6,32 @@
 
 #import <Foundation/NSObject.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface VCVideoRule : NSObject
 {
-    int iWidth;
-    int iHeight;
-    float fRate;
-    float fPref;
-    int iPayload;
+    int _width;
+    int _height;
+    float _frameRate;
+    float _priority;
+    int _payload;
 }
 
-@property float fPref; // @synthesize fPref;
-@property float fRate; // @synthesize fRate;
-@property int iHeight; // @synthesize iHeight;
-@property int iPayload; // @synthesize iPayload;
-@property int iWidth; // @synthesize iWidth;
+@property (readonly, nonatomic) NSString *description;
+@property (nonatomic) float fPref; // @synthesize fPref=_priority;
+@property (readonly, nonatomic) float fRate; // @synthesize fRate=_frameRate;
+@property (readonly, nonatomic) int iHeight; // @synthesize iHeight=_height;
+@property (readonly, nonatomic) int iPayload; // @synthesize iPayload=_payload;
+@property (readonly, nonatomic) int iWidth; // @synthesize iWidth=_width;
 
 - (long long)compare:(id)arg1;
 - (long long)compareByPref:(id)arg1;
-- (id)description;
 - (id)initWithFrameWidth:(int)arg1 frameHeight:(int)arg2 frameRate:(float)arg3;
 - (id)initWithFrameWidth:(int)arg1 frameHeight:(int)arg2 frameRate:(float)arg3 payload:(int)arg4;
-- (id)initWithFrameWidth:(int)arg1 frameHeight:(int)arg2 frameRate:(float)arg3 pref:(float)arg4;
+- (id)initWithFrameWidth:(int)arg1 frameHeight:(int)arg2 frameRate:(float)arg3 payload:(int)arg4 priority:(float)arg5;
+- (BOOL)isEqual:(id)arg1;
+- (void)setFrameWidth:(int)arg1 frameHeight:(int)arg2 frameRate:(float)arg3;
 - (void)setToVideoRule:(id)arg1;
 
 @end

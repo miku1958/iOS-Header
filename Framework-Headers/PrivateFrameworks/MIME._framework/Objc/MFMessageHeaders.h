@@ -27,6 +27,7 @@
 + (BOOL)shouldDecodeHeaderForKey:(id)arg1;
 + (id)uniqueHeaderKeyStringForString:(id)arg1;
 - (id)_capitalizedKeyForKey:(id)arg1;
+- (id)_commaSeparatedValuesForKey:(id)arg1 includeAngleBracket:(BOOL)arg2;
 - (unsigned int)_contentTypeEncoding;
 - (id)_copyAddressListForKey:(id)arg1;
 - (id)_copyHeaderValueForKey:(id)arg1;
@@ -60,7 +61,9 @@
 - (id)headersDictionary;
 - (id)headersForKey:(id)arg1;
 - (id)init;
+- (id)initWithASCIIHeaderString:(id)arg1;
 - (id)initWithHeaderData:(id)arg1 encoding:(unsigned int)arg2;
+- (id)listUnsubscribeCommands;
 - (BOOL)messageIsFromEntourage;
 - (id)mutableCopy;
 - (id)references;

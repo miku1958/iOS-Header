@@ -6,9 +6,10 @@
 
 #import <NetworkExtension/NSObject-Protocol.h>
 
-@class NSError;
+@class NSError, NSString;
 
 @protocol NEExtensionProviderHostProtocol <NSObject>
+- (void)displayMessage:(NSString *)arg1 message:(NSString *)arg2 completionHandler:(void (^)(BOOL))arg3;
 - (void)startedWithError:(NSError *)arg1;
 @end
 

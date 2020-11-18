@@ -8,12 +8,13 @@
 
 #import <UIKit/NSLayoutManagerDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, UIFont, UITextView;
+@class NSDictionary, NSMutableDictionary, NSString, UIFont, UITextView;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyCommandDiscoverabilityHUDDescriptionView : UIView <NSLayoutManagerDelegate>
 {
     UITextView *_textView;
+    NSDictionary *_textAttributes;
     NSMutableDictionary *_glyphViews;
     unsigned long long _glyphSize;
     struct CGSize _intrinsicContentSize;

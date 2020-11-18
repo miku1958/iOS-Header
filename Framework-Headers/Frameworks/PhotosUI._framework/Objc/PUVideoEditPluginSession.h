@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)loadItemProviderWithSupportedAdjustmentData:(id)arg1 loadHandler:(CDUnknownBlockType)arg2;
-- (long long)mediaType;
+- (unsigned long long)pluginManagerMediaType;
 - (id)videoDataSource;
 
 @end

@@ -15,22 +15,21 @@
 
 @interface SKUIItemGridViewController : UIViewController <SKUIItemCollectionDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 {
-    SKUIClientContext *_clientContext;
     UICollectionView *_collectionView;
-    id<SKUIItemGridDelegate> _delegate;
     NSMutableIndexSet *_hiddenIconIndexSet;
     SKUIItemCollectionController *_itemCollectionController;
-    NSMutableArray *_items;
-    struct CGSize _imageBoundingSize;
-    NSOperationQueue *_operationQueue;
     UIImage *_placeholderImage;
-    double _rowHeight;
     NSMutableIndexSet *_selectedItemIndexSet;
+    NSMutableArray *_items;
+    double _rowHeight;
+    SKUIClientContext *_clientContext;
+    id<SKUIItemGridDelegate> _delegate;
+    NSOperationQueue *_operationQueue;
     SKUIUber *_uber;
-    SKUIItemArtworkContext *_artworkContext;
+    struct CGSize _imageBoundingSize;
 }
 
-@property (strong, nonatomic) SKUIItemArtworkContext *artworkContext; // @synthesize artworkContext=_artworkContext;
+@property (strong, nonatomic) SKUIItemArtworkContext *artworkContext;
 @property (strong, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;
 @property (nonatomic) struct CGPoint contentOffset;
 @property (readonly, copy) NSString *debugDescription;
@@ -47,13 +46,14 @@
 
 - (void).cxx_destruct;
 - (id)_collectionView;
+- (id)_collectionViewLayout;
 - (id)_itemCollectionController;
-- (long long)_numberOfColumnsForOrientation:(long long)arg1;
 - (void)_reloadLayout;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
+- (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)dealloc;
 - (id)initWithRowHeight:(double)arg1;
 - (id)itemCollectionController:(id)arg1 cellLayoutForItemIndex:(long long)arg2;
@@ -68,10 +68,10 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)setItemCellClass:(Class)arg1;
-- (BOOL)shouldCacheAheadWhenIdleForItemCollectionController:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)unhideIcons;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (struct _NSRange)visibleItemRangeForItemCollectionController:(id)arg1;
 

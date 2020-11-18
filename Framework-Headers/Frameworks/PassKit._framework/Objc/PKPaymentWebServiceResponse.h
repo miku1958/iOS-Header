@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+@class NSData;
 
 @interface PKPaymentWebServiceResponse : NSObject
 {
+    NSData *_rawData;
     id _JSONObject;
 }
 
 @property (readonly, nonatomic) id JSONObject; // @synthesize JSONObject=_JSONObject;
+@property (readonly, nonatomic) NSData *rawData; // @synthesize rawData=_rawData;
 
 + (id)responseWithData:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithData:(id)arg1;
 
 @end

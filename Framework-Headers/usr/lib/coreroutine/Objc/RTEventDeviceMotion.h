@@ -19,11 +19,10 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithMotionActivity:(id)arg1 source:(long long)arg2 locationIdentifier:(id)arg3;
+- (id)initWithMotionActivity:(id)arg1 source:(long long)arg2;
 
 @end
 

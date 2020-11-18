@@ -7,6 +7,7 @@
 #import <QuartzCore/CALayer.h>
 
 @class NSMutableArray;
+@protocol TSDTileGeometryProviding;
 
 @interface TSDTilingLayer : CALayer
 {
@@ -26,12 +27,15 @@
     CALayer *mProviderContentLayer;
     NSMutableArray *mDirtyTiles;
     BOOL mHasEverHadTileLayout;
+    id<TSDTileGeometryProviding> _geometryProvider;
 }
 
 @property (nonatomic) BOOL drawsInBackground;
 @property (nonatomic) BOOL forceTiling;
+@property (strong, nonatomic) id<TSDTileGeometryProviding> geometryProvider; // @synthesize geometryProvider=_geometryProvider;
 @property (nonatomic) int tilingMode; // @synthesize tilingMode=mTilingMode;
 
++ (struct CGSize)defaultTileSize;
 + (struct CGImage *)p_newCheckerboardImage;
 + (struct CGImage *)p_newGeneratedCheckerboardImage;
 - (void)dealloc;
@@ -46,6 +50,9 @@
 - (id)p_nonTileAndContentLayers;
 - (id)p_tileAndContentLayers;
 - (id)p_tileLayers;
+- (unsigned long long)p_tilesHigh;
+- (unsigned long long)p_tilesWide;
+- (void)p_updateTileIndexes:(id)arg1 visibleBounds:(struct CGRect)arg2;
 - (BOOL)p_updateTileSizeWithLayerSize:(struct CGSize)arg1;
 - (void)setContents:(id)arg1;
 - (void)setContentsScale:(double)arg1;

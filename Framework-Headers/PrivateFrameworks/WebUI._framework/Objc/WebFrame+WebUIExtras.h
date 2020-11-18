@@ -8,7 +8,7 @@
 
 #import <WebUI/WBUFormAutoFillFrameHandle-Protocol.h>
 
-@class NSArray, NSString, NSURL;
+@class NSString, NSURL;
 
 @interface WebFrame (WebUIExtras) <WBUFormAutoFillFrameHandle>
 
@@ -17,7 +17,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSURL *webui_URL;
-@property (readonly, nonatomic) NSArray *webui_certificateChain;
+@property (readonly, nonatomic) struct __SecTrust *webui_serverTrust;
 
 @end
 

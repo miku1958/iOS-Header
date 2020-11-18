@@ -40,6 +40,8 @@
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (nonatomic) int urgency; // @synthesize urgency=_urgency;
 
+- (int)StringAsType:(id)arg1;
+- (int)StringAsUrgency:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -50,6 +52,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)typeAsString:(int)arg1;
+- (id)urgencyAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -29,7 +29,6 @@
 - (void).cxx_destruct;
 - (void)_addEmergencyContactToData:(id)arg1;
 - (void)_configureAddContactCellLayoutForRowIndex:(long long)arg1;
-- (id)_contactKeysToFetch;
 - (id)_dequeueAndConfigureContactEditCellForIndex:(long long)arg1 inTableView:(id)arg2;
 - (id)_dequeueAndConfigureContactViewCellForIndex:(long long)arg1;
 - (void)_didSelectContact:(id)arg1 property:(id)arg2;

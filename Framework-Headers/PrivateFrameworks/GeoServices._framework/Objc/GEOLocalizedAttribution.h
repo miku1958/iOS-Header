@@ -25,6 +25,8 @@
 @property (strong, nonatomic) NSMutableArray *logoURLs; // @synthesize logoURLs=_logoURLs;
 @property (strong, nonatomic) NSMutableArray *snippetLogoURLs; // @synthesize snippetLogoURLs=_snippetLogoURLs;
 
++ (Class)logoURLsType;
++ (Class)snippetLogoURLsType;
 - (void)addLogoURLs:(id)arg1;
 - (void)addSnippetLogoURLs:(id)arg1;
 - (id)bestURLForLogos:(id)arg1 scale:(double)arg2;

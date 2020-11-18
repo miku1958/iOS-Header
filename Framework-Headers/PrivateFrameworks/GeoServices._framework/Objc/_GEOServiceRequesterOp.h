@@ -6,12 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-#import <GeoServices/PBRequesterDelegate-Protocol.h>
+#import <GeoServices/GEOPBSessionRequesterDelegate-Protocol.h>
 
-@class GEORequester, NSData, NSNumber, NSString, PBRequest;
+@class GEOMapServiceTraits, GEORequester, NSData, NSNumber, NSString, PBRequest;
 
 __attribute__((visibility("hidden")))
-@interface _GEOServiceRequesterOp : NSObject <PBRequesterDelegate>
+@interface _GEOServiceRequesterOp : NSObject <GEOPBSessionRequesterDelegate>
 {
     PBRequest *_request;
     NSString *_debugRequestName;
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
     int _experimentDispatcherRequestType;
     BOOL _shouldThrottleRequests;
     NSString *_throttleKey;
-    NSString *_requestingAppId;
+    GEOMapServiceTraits *_traits;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)_cleanup;
 - (void)cancel;
 - (void)dealloc;
-- (id)initWithRequest:(id)arg1 auditToken:(id)arg2 urlType:(unsigned long long)arg3 debugRequestName:(id)arg4 serviceType:(id)arg5 experimentType:(long long)arg6 experimentDispatcherRequestType:(int)arg7 timeout:(double)arg8 shouldThrottleRequests:(BOOL)arg9 throttleKey:(id)arg10 requestingAppId:(id)arg11;
+- (id)initWithRequest:(id)arg1 auditToken:(id)arg2 urlType:(unsigned long long)arg3 debugRequestName:(id)arg4 serviceType:(id)arg5 experimentType:(long long)arg6 experimentDispatcherRequestType:(int)arg7 timeout:(double)arg8 shouldThrottleRequests:(BOOL)arg9 throttleKey:(id)arg10 traits:(id)arg11;
 - (void)requester:(id)arg1 didFailWithError:(id)arg2;
 - (void)requesterDidCancel:(id)arg1;
 - (void)requesterDidFinish:(id)arg1;

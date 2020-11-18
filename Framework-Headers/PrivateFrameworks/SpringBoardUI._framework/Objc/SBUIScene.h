@@ -39,6 +39,7 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)detachLayer:(id)arg1;
+- (void)host:(id)arg1 configureWithDefinition:(id)arg2 parameters:(id)arg3;
 - (void)host:(id)arg1 configureWithInitialClientSettings:(id)arg2;
 - (void)host:(id)arg1 didInvalidateWithTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)host:(id)arg1 didReceiveActions:(id)arg2;

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSDictionary, NSMapTable, NSMutableArray, NSMutableSet, NSNotificationCenter, NSNumber, PLManagedObjectContext;
+@class NSDictionary, NSMutableArray, NSMutableSet, NSNotificationCenter, NSNumber, PLManagedObjectContext;
 
 @interface PLChangeNotificationCenter : NSObject
 {
@@ -27,7 +27,6 @@
     struct changeList_s _changedCloudFeedEntries;
     PLManagedObjectContext *_moc;
     NSMutableArray *_enqueuedNotifications;
-    NSMapTable *_changedInflightAssetsAlbumsToSnapshots;
     NSDictionary *_remoteNotificationData;
     BOOL _isOverloaded;
     NSMutableSet *_overloadedObjects;
@@ -63,7 +62,6 @@
 - (id)_orderedRelationshipsOfInterestForObject:(id)arg1;
 - (void)_postEnqueuedNotifications;
 - (void)_registerForCameraPreviewWellChanges;
-- (void)_saveCurrentStateForAlbum:(id)arg1;
 - (void)_sendNotificationsForSplitChanges;
 - (id)_snapshotForObject:(id)arg1;
 - (void)_splitContextDidChangeNotification:(id)arg1;
@@ -87,7 +85,6 @@
 - (id)descriptionOfSplitChanges;
 - (void)enqueueNotification:(id)arg1;
 - (void)enumerateIndexMappingCachesForObject:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
-- (void)inflightAssetsAlbumWillChange:(id)arg1;
 - (id)init;
 - (void)managedObjectContext:(id)arg1 didProcessRemoteContextSave:(id)arg2 usingObjectIDs:(BOOL)arg3;
 - (void)managedObjectContext:(id)arg1 willProcessRemoteContextSave:(id)arg2 usingObjectIDs:(BOOL)arg3 isCoalescedEvent:(BOOL)arg4;

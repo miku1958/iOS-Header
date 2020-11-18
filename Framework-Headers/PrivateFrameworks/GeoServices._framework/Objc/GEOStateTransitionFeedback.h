@@ -27,6 +27,9 @@
 @property (nonatomic) int oldValue; // @synthesize oldValue=_oldValue;
 @property (nonatomic) int stateType; // @synthesize stateType=_stateType;
 
+- (int)StringAsNewValue:(id)arg1;
+- (int)StringAsOldValue:(id)arg1;
+- (int)StringAsStateType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -34,7 +37,10 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)newValueAsString:(int)arg1;
+- (id)oldValueAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)stateTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

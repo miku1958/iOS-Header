@@ -10,7 +10,7 @@
 
 @interface GEOPlaceSearchFeedbackRequest : PBRequest <NSCopying>
 {
-    CDStruct_612aec5b _sessionGUID;
+    struct GEOSessionID _sessionGUID;
     long long _businessID;
     double _timestamp;
     int _feedbackType;
@@ -44,13 +44,15 @@
 @property (nonatomic) int numberOfResults; // @synthesize numberOfResults=_numberOfResults;
 @property (nonatomic) int positionInResults; // @synthesize positionInResults=_positionInResults;
 @property (nonatomic) int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
-@property (nonatomic) CDStruct_612aec5b sessionGUID; // @synthesize sessionGUID=_sessionGUID;
+@property (nonatomic) struct GEOSessionID sessionGUID; // @synthesize sessionGUID=_sessionGUID;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
+- (int)StringAsFeedbackType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)feedbackTypeAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

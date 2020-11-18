@@ -23,7 +23,7 @@
     NEKeychainItem *_oldItem;
 }
 
-@property (readonly) NSString *accessGroup; // @synthesize accessGroup=_accessGroup;
+@property (copy) NSString *accessGroup; // @synthesize accessGroup=_accessGroup;
 @property long long domain; // @synthesize domain=_domain;
 @property (copy) NSString *identifier;
 @property (readonly) BOOL legacy; // @synthesize legacy=_legacy;

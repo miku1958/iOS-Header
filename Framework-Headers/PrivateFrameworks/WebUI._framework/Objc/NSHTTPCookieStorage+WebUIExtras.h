@@ -9,5 +9,6 @@
 @interface NSHTTPCookieStorage (WebUIExtras)
 - (void)webui_applySafariCookieAcceptPolicy;
 - (void)webui_migrateSafariCookieAcceptPolicy;
+- (id)webui_safariCookieAcceptPolicy;
 @end
 

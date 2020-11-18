@@ -6,29 +6,39 @@
 
 #import <StoreKitUI/SKUIViewController.h>
 
+#import <StoreKitUI/ADPrivacyViewControllerDelegate-Protocol.h>
 #import <StoreKitUI/SKUIDocumentViewController-Protocol.h>
 
-@class NSString, SKUITrendingSearchTemplateElement, SKUITrendingSearchView;
+@class NSString, SKUITrendingSearchTemplateElement, SKUITrendingSearchView, UIViewController;
 
-@interface SKUITrendingSearchDocumentViewController : SKUIViewController <SKUIDocumentViewController>
+@interface SKUITrendingSearchDocumentViewController : SKUIViewController <ADPrivacyViewControllerDelegate, SKUIDocumentViewController>
 {
     SKUITrendingSearchView *_resultsView;
     SKUITrendingSearchTemplateElement *_template;
+    UIViewController *_privacyViewController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIViewController *privacyViewController; // @synthesize privacyViewController=_privacyViewController;
+@property (strong, nonatomic) SKUITrendingSearchView *resultsView; // @synthesize resultsView=_resultsView;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) SKUITrendingSearchTemplateElement *template; // @synthesize template=_template;
 
 - (void).cxx_destruct;
 - (void)_reloadResultsView;
-- (void)_resultButtonAction:(id)arg1;
 - (struct UIEdgeInsets)_resultsViewContentInset;
-- (void)_tapAction:(id)arg1;
+- (void)adPrivacyViewController:(id)arg1 didFailWithError:(id)arg2;
+- (void)adPrivacyViewControllerDidDismiss:(id)arg1;
+- (void)adPrivacyViewControllerDidLoad:(id)arg1;
 - (void)documentDidUpdate:(id)arg1;
+- (id)impressionableViewElements;
 - (id)initWithTemplateElement:(id)arg1;
 - (void)loadView;
+- (void)resultsViewTapRecognized:(id)arg1;
+- (void)searchResultButtonTapped:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 
 @end

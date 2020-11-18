@@ -6,46 +6,38 @@
 
 #import <UIKit/UIView.h>
 
-#import <PhotosUI/ISPlayerItemObserver-Protocol.h>
-#import <PhotosUI/ISPlayerViewDelegate-Protocol.h>
-#import <PhotosUI/ISPlayerViewDelegatePrivate-Protocol.h>
-#import <PhotosUI/_UISettingsKeyObserver-Protocol.h>
+#import <PhotosUI/ISChangeObserver-Protocol.h>
 
-@class ISManualPlaybackInput, ISPlayerItem, ISPlayerView, NSString, PHLivePhoto, UIGestureRecognizer;
+@class ISLivePhotoPlayer, ISLivePhotoUIView, ISPlayerItem, NSString, PHLivePhoto, UIGestureRecognizer;
 @protocol PHLivePhotoViewDelegate;
 
-@interface PHLivePhotoView : UIView <ISPlayerViewDelegate, ISPlayerViewDelegatePrivate, ISPlayerItemObserver, _UISettingsKeyObserver>
+@interface PHLivePhotoView : UIView <ISChangeObserver>
 {
     struct {
         BOOL respondsToWillBeginPlaybackWithStyle;
-        BOOL respondsToDidEndPlaybackWithStyle;
+        BOOL respondsToDidEndPlayback;
     } _delegateFlags;
     struct {
         BOOL respondsToDidEndPlayingVitality;
+        BOOL respondsToDidBeginHinting;
     } _delegatePrivateFlags;
+    long long _currentPlaybackStyle;
     BOOL _muted;
-    BOOL _shouldAutomaticallyPrepareForPlayback;
     BOOL __playingVitality;
-    BOOL __didPlayToEnd;
-    BOOL __playbackRequested;
+    BOOL _shouldApplyTargetReadiness;
+    BOOL _showsStatusBorder;
     id<PHLivePhotoViewDelegate> _delegate;
     PHLivePhoto *_livePhoto;
-    UIGestureRecognizer *_playbackGestureRecognizer;
-    UIView *_photoView;
-    ISPlayerView *_playerView;
-    ISManualPlaybackInput *__playbackInput;
-    long long __currentPlaybackStyle;
-    long long __configuredPlaybackStyle;
     ISPlayerItem *__playerItem;
+    long long _targetReadiness;
+    UIView *_photoView;
+    ISLivePhotoUIView *_playerView;
+    ISLivePhotoPlayer *_player;
+    struct CGPoint _scaleAnchorOffset;
 }
 
-@property (nonatomic, setter=_configureForPlaybackStyle:) long long _configuredPlaybackStyle; // @synthesize _configuredPlaybackStyle=__configuredPlaybackStyle;
-@property (nonatomic, setter=_setCurrentPlaybackStyle:) long long _currentPlaybackStyle; // @synthesize _currentPlaybackStyle=__currentPlaybackStyle;
-@property (nonatomic, setter=_setDidPlayToEnd:) BOOL _didPlayToEnd; // @synthesize _didPlayToEnd=__didPlayToEnd;
-@property (readonly, nonatomic) ISManualPlaybackInput *_playbackInput; // @synthesize _playbackInput=__playbackInput;
-@property (nonatomic, setter=_setPlaybackRequested:) BOOL _playbackRequested; // @synthesize _playbackRequested=__playbackRequested;
 @property (strong, nonatomic, setter=_setPlayerItem:) ISPlayerItem *_playerItem; // @synthesize _playerItem=__playerItem;
-@property (nonatomic, getter=_isPlayingVitality, setter=_setPlayingVitality:) BOOL _playingVitality; // @synthesize _playingVitality=__playingVitality;
+@property (nonatomic, setter=_setPlayingVitality:) BOOL _playingVitality; // @synthesize _playingVitality=__playingVitality;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PHLivePhotoViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -53,32 +45,29 @@
 @property (strong, nonatomic) PHLivePhoto *livePhoto; // @synthesize livePhoto=_livePhoto;
 @property (nonatomic, getter=isMuted) BOOL muted; // @synthesize muted=_muted;
 @property (strong, nonatomic) UIView *photoView; // @synthesize photoView=_photoView;
-@property (readonly, nonatomic) UIGestureRecognizer *playbackGestureRecognizer; // @synthesize playbackGestureRecognizer=_playbackGestureRecognizer;
-@property (strong, nonatomic) ISPlayerView *playerView; // @synthesize playerView=_playerView;
-@property (nonatomic) BOOL shouldAutomaticallyPrepareForPlayback; // @synthesize shouldAutomaticallyPrepareForPlayback=_shouldAutomaticallyPrepareForPlayback;
+@property (readonly, nonatomic) UIGestureRecognizer *playbackGestureRecognizer;
+@property (strong, nonatomic) ISLivePhotoPlayer *player; // @synthesize player=_player;
+@property (strong, nonatomic) ISLivePhotoUIView *playerView; // @synthesize playerView=_playerView;
+@property (nonatomic) struct CGPoint scaleAnchorOffset; // @synthesize scaleAnchorOffset=_scaleAnchorOffset;
+@property (nonatomic) BOOL shouldApplyTargetReadiness; // @synthesize shouldApplyTargetReadiness=_shouldApplyTargetReadiness;
+@property (nonatomic) BOOL showsStatusBorder; // @synthesize showsStatusBorder=_showsStatusBorder;
 @property (readonly) Class superclass;
+@property (nonatomic) long long targetReadiness; // @synthesize targetReadiness=_targetReadiness;
 
 + (id)livePhotoBadgeImageWithOptions:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_commonPHLivePhotoViewInitialization;
-- (void)_ensurePlaybackInput;
+- (void)_handlePlayerItemStatusChanged;
+- (void)_playerDidBeginHinting;
 - (void)_updateCurrentPlaybackStyle;
-- (void)_updateMuted;
+- (void)_updatePlayerAudioEnabled;
 - (void)_updatePlayerItemLoadingTarget;
 - (void)_updatePlayingVitality;
 - (void)_updateStatusBorder;
-- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)playerItemStatusDidChange:(id)arg1;
-- (void)playerViewDidPlaybackVideoAssetToEnd:(id)arg1;
-- (void)playerViewIsInteractingDidChange:(id)arg1;
-- (void)playerViewPlaybackStateDidChange:(id)arg1;
-- (void)playerViewPlayerItemDidChange:(id)arg1;
-- (void)playerViewPlayingVitalityChanged:(id)arg1;
-- (void)playerViewWillPlaybackVideoAssetToEnd:(id)arg1;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)setContentMode:(long long)arg1;
-- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)startPlaybackWithStyle:(long long)arg1;
 - (void)stopPlayback;
 

@@ -6,28 +6,29 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class UIImageView, UILabel;
+@class UIImageView, _UIActivityGroupActivityCellTitleLabel;
 
 __attribute__((visibility("hidden")))
 @interface _UIActivityGroupActivityCell : UICollectionViewCell
 {
-    UILabel *_titleLabel;
+    _UIActivityGroupActivityCellTitleLabel *_titleLabel;
     UIImageView *_imageView;
     UIImageView *_highlightedImageView;
 }
 
 @property (strong, nonatomic) UIImageView *highlightedImageView; // @synthesize highlightedImageView=_highlightedImageView;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
-@property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (strong, nonatomic) _UIActivityGroupActivityCellTitleLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
++ (struct CGSize)preferredSizeForTitleLabelText:(id)arg1 screenScale:(double)arg2;
 - (void).cxx_destruct;
-- (void)dealloc;
 - (id)draggingView;
 - (void)initHighlightedImageViewIfNeeded;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)setHighlighted:(BOOL)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateHighlightedImageViewIfNeeded;
 
 @end

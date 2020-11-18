@@ -6,9 +6,8 @@
 
 #import <coreroutine/RTNotifier.h>
 
-@class ASAssetQuery, NSDate, RTInvocationDispatcher;
+@class ASAssetQuery, NSDate, RTInvocationDispatcher, RTMetricManager;
 
-__attribute__((visibility("hidden")))
 @interface RTAssetManager : RTNotifier
 {
     BOOL _ready;
@@ -16,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSDate *_dateOfLastUpdateAttempt;
     NSDate *_dateOfLastSuccessfulUpdate;
     RTInvocationDispatcher *_dispatcher;
+    RTMetricManager *_metricManager;
     ASAssetQuery *_assetQuery;
 }
 
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSDate *dateOfLastSuccessfulUpdate; // @synthesize dateOfLastSuccessfulUpdate=_dateOfLastSuccessfulUpdate;
 @property (strong, nonatomic) NSDate *dateOfLastUpdateAttempt; // @synthesize dateOfLastUpdateAttempt=_dateOfLastUpdateAttempt;
 @property (strong, nonatomic) RTInvocationDispatcher *dispatcher; // @synthesize dispatcher=_dispatcher;
+@property (strong, nonatomic) RTMetricManager *metricManager; // @synthesize metricManager=_metricManager;
 @property (nonatomic) BOOL ready; // @synthesize ready=_ready;
 
 + (id)sharedInstance;
@@ -33,14 +34,19 @@ __attribute__((visibility("hidden")))
 - (void)_installAsset:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_invalidateAssetQuery;
 - (void)_performUpdateOfAssetsWithTypeAssetType:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_registerForMetricSubmission;
 - (void)_registerForNotifications;
 - (void)_setup;
+- (void)_submitAssertVersionMetric;
+- (void)_submitAssertVersionMetricWithHandler:(CDUnknownBlockType)arg1;
 - (void)_unregisterForNotifications;
 - (void)forceUpdateAssetMetadata;
 - (id)init;
+- (id)initWithMetricManager:(id)arg1;
 - (void)onReachabilityChange:(id)arg1;
 - (void)performUpdateOfAssetsWithTypeAssetType:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)shutdown;
+- (void)updateAssetServerURL:(id)arg1 assetType:(id)arg2 handler:(CDUnknownBlockType)arg3;
 
 @end
 

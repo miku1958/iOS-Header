@@ -15,6 +15,7 @@
 @property (nonatomic) double gaussianBlurRadius;
 @property (copy, nonatomic) NSString *groupName;
 @property (nonatomic) double saturationAmount;
+@property (nonatomic) double scale;
 
 + (Class)layerClass;
 - (void)dealloc;

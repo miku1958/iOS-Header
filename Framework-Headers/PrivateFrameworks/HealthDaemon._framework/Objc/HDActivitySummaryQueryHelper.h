@@ -9,12 +9,12 @@
 #import <HealthDaemon/HDDataObserver-Protocol.h>
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 
-@class HDActivitySummaryBuilder, HDSQLitePredicate, NSMutableDictionary, NSString, _HKFilter;
-@protocol HDHealthDaemon, OS_dispatch_queue;
+@class HDActivitySummaryBuilder, HDProfile, HDSQLitePredicate, NSMutableDictionary, NSString, _HKFilter;
+@protocol OS_dispatch_queue;
 
 @interface HDActivitySummaryQueryHelper : NSObject <HDDataObserver, HDDatabaseProtectedDataObserver>
 {
-    id<HDHealthDaemon> _healthDaemon;
+    HDProfile *_profile;
     HDSQLitePredicate *_predicate;
     _HKFilter *_filter;
     HDActivitySummaryBuilder *_activitySummaryBuilder;
@@ -55,7 +55,7 @@
 - (BOOL)_shouldStopProcessing;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)dealloc;
-- (id)initWithHealthDaemon:(id)arg1 filter:(id)arg2 initialResultsHandler:(CDUnknownBlockType)arg3 updateHandler:(CDUnknownBlockType)arg4;
+- (id)initWithProfile:(id)arg1 filter:(id)arg2 initialResultsHandler:(CDUnknownBlockType)arg3 updateHandler:(CDUnknownBlockType)arg4;
 - (void)pause;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)start;

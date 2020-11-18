@@ -12,9 +12,11 @@
 {
 }
 
+@property (nonatomic) BOOL chainResultSet;
 @property (copy, nonatomic) NSArray *items;
 @property (copy, nonatomic) NSArray *providerCommand;
 @property (copy, nonatomic) NSNumber *regionOfInterestRadiusInMiles;
+@property (nonatomic) BOOL searchAlongRoute;
 @property (strong, nonatomic) SALocation *searchRegionCenter;
 @property (copy, nonatomic) NSNumber *userCurrentLocation;
 

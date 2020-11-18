@@ -14,7 +14,5 @@
 - (oneway void)pause;
 - (oneway void)prioritize;
 - (oneway void)resume;
-- (oneway void)startProvidingValuesWithInitialAcceptor:(void (^)(NSProgressValues *))arg1;
-- (oneway void)stopProvidingValues;
 @end
 

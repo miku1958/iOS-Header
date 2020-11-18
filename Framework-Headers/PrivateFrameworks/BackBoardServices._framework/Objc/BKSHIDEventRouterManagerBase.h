@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) NSArray *eventRouters; // @synthesize eventRouters=_eventRouters;
 
+- (void)dealloc;
 - (id)description;
 - (id)init;
 - (long long)routerDestinationForDescriptor:(id)arg1;

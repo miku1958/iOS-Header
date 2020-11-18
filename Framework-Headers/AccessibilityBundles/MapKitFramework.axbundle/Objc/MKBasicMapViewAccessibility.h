@@ -10,11 +10,14 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (id)accessibilityContainerElements;
 - (id)accessibilityCustomRotorItemsAtIndex:(long long)arg1;
 - (id)accessibilityCustomRotorTitles;
+- (id)initWithFrame:(struct CGRect)arg1 andGlobe:(BOOL)arg2 shouldRasterize:(BOOL)arg3;
 
 @end
 

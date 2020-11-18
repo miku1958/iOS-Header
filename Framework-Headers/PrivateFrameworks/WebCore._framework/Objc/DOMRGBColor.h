@@ -19,7 +19,6 @@
 
 - (struct CGColor *)color;
 - (void)dealloc;
-- (void)finalize;
 
 @end
 

@@ -18,14 +18,17 @@
 @property unsigned long long diskCapacity;
 @property unsigned long long memoryCapacity;
 
++ (void)_setVaryHeaderSupport;
 + (void)setSharedURLCache:(id)arg1;
 + (id)sharedURLCache;
-- (struct _CFURLCache *)_CFURLCache;
+- (const struct _CFURLCache *)_CFURLCache;
 - (id)_cacheDirectory;
 - (id)_diskCacheDefaultPath;
+- (id)_initVaryHeaderEnabledWithPath:(id)arg1;
 - (id)_initWithExistingCFURLCache:(struct _CFURLCache *)arg1;
 - (id)_initWithIdentifier:(id)arg1 memoryCapacity:(long long)arg2 diskCapacity:(long long)arg3 private:(BOOL)arg4;
 - (id)_initWithMemoryCapacity:(unsigned long long)arg1 diskCapacity:(unsigned long long)arg2 relativePath:(id)arg3;
+- (BOOL)_isVaryHeaderSupportEnabled;
 - (struct _CFCachedURLResponse *)_nscfBridgeURLCacheCopyResponseForRequest:(struct _CFURLRequest *)arg1;
 - (long long)_nscfBridgeURLCacheCurrentDiskUsage;
 - (long long)_nscfBridgeURLCacheCurrentMemoryUsage;
@@ -36,6 +39,8 @@
 - (void)_nscfBridgeURLCacheSetDiskCapacity:(long long)arg1;
 - (void)_nscfBridgeURLCacheSetMemoryCapacity:(long long)arg1;
 - (void)_nscfBridgeURLCacheStoreCachedResponse:(struct _CFCachedURLResponse *)arg1 forRequest:(struct _CFURLRequest *)arg2;
+- (void)_updateVaryState:(id)arg1 forURL:(id)arg2;
+- (id)_varyStateForURL:(id)arg1;
 - (id)cachedResponseForRequest:(id)arg1;
 - (void)dealloc;
 - (void)flushWithCompletion:(CDUnknownBlockType)arg1;

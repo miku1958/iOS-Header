@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MediaPlayerUI/MPUFormattingUtilities.h>
+#import <objc/NSObject.h>
 
-@interface MusicFormattingUtilities : MPUFormattingUtilities
+@interface MusicFormattingUtilities : NSObject
 {
 }
 

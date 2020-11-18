@@ -6,18 +6,16 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSIndexPath, UICollectionViewUpdateGap;
+@class NSIndexPath;
 
 @interface UICollectionViewUpdateItem : NSObject
 {
     NSIndexPath *_initialIndexPath;
     NSIndexPath *_finalIndexPath;
     long long _updateAction;
-    UICollectionViewUpdateGap *_gap;
 }
 
 @property (readonly, nonatomic, getter=_action) long long action;
-@property (nonatomic, getter=_gap, setter=_setGap:) id gap;
 @property (readonly, nonatomic, getter=_indexPath) NSIndexPath *indexPath;
 @property (readonly, nonatomic) NSIndexPath *indexPathAfterUpdate; // @synthesize indexPathAfterUpdate=_finalIndexPath;
 @property (readonly, nonatomic) NSIndexPath *indexPathBeforeUpdate; // @synthesize indexPathBeforeUpdate=_initialIndexPath;

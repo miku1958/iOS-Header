@@ -7,20 +7,21 @@
 #import <Foundation/NSObject.h>
 
 @class MRNowPlayingArtwork, NSArray, NSDictionary, NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface MRMediaRemoteOriginClient : NSObject
 {
     BOOL _canBeNowPlayingApp;
     BOOL _isOverrideApp;
     int _notifyRestoreClientStateForLaunch;
     int _notifyDidLaunchToken;
-    CDUnknownBlockType _commandHandlerBlock;
     NSMutableDictionary *_commandHandlerBlocks;
     NSArray *_supportedCommands;
+    NSObject<OS_dispatch_queue> *_serialQueue;
     NSDictionary *_nowPlayingInfo;
     MRNowPlayingArtwork *_nowPlayingArtwork;
     struct _MROrigin *_origin;
+    NSMutableDictionary *_transactionCallbacks;
     unsigned int _routeDiscoveryMode;
     CDUnknownBlockType _playbackQueueCallback;
 }
@@ -36,10 +37,13 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSArray *supportedCommands; // @synthesize supportedCommands=_supportedCommands;
 
 - (void)_avSystemControllerServerConnectionDiedNotification:(id)arg1;
+- (void)_registerDefaultCallbacks;
 - (void)addCommandHandlerBlock:(CDUnknownBlockType)arg1 forKey:(id)arg2;
 - (void)dealloc;
 - (id)initWithOrigin:(struct _MROrigin *)arg1;
 - (void)removeCommandHandlerBlockForKey:(id)arg1;
+- (void)setTransactionCallback:(CDUnknownBlockType)arg1 forName:(unsigned long long)arg2;
+- (CDUnknownBlockType)transactionCallbackForName:(unsigned long long)arg1;
 
 @end
 

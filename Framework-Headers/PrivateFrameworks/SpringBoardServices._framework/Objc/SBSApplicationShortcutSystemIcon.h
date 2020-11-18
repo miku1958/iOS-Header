@@ -13,6 +13,7 @@
 
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
+- (id)_initForSubclass;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithType:(long long)arg1;

@@ -8,15 +8,17 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPDAnalyticMetadata : PBCodable <NSCopying>
 {
-    CDStruct_612aec5b _sessionId;
+    PBUnknownFields *_unknownFields;
+    struct GEOSessionID _sessionId;
     NSString *_appIdentifier;
     NSString *_appMajorVersion;
     NSString *_appMinorVersion;
     NSString *_hardwareModel;
+    NSString *_loggedAbExperiment;
     NSString *_osVersion;
     NSString *_productName;
     int _requestSource;
@@ -46,6 +48,7 @@
 @property (nonatomic) BOOL hasIsFromApi;
 @property (nonatomic) BOOL hasIsInternalInstall;
 @property (nonatomic) BOOL hasIsInternalTool;
+@property (readonly, nonatomic) BOOL hasLoggedAbExperiment;
 @property (readonly, nonatomic) BOOL hasOsVersion;
 @property (readonly, nonatomic) BOOL hasProductName;
 @property (nonatomic) BOOL hasRequestSource;
@@ -54,13 +57,17 @@
 @property (nonatomic) BOOL isFromApi; // @synthesize isFromApi=_isFromApi;
 @property (nonatomic) BOOL isInternalInstall; // @synthesize isInternalInstall=_isInternalInstall;
 @property (nonatomic) BOOL isInternalTool; // @synthesize isInternalTool=_isInternalTool;
+@property (strong, nonatomic) NSString *loggedAbExperiment; // @synthesize loggedAbExperiment=_loggedAbExperiment;
 @property (strong, nonatomic) NSString *osVersion; // @synthesize osVersion=_osVersion;
 @property (strong, nonatomic) NSString *productName; // @synthesize productName=_productName;
 @property (nonatomic) int requestSource; // @synthesize requestSource=_requestSource;
 @property (nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property (strong, nonatomic) NSMutableArray *serviceTags; // @synthesize serviceTags=_serviceTags;
-@property (nonatomic) CDStruct_612aec5b sessionId; // @synthesize sessionId=_sessionId;
+@property (nonatomic) struct GEOSessionID sessionId; // @synthesize sessionId=_sessionId;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)serviceTagType;
+- (int)StringAsRequestSource:(id)arg1;
 - (void)addServiceTag:(id)arg1;
 - (void)clearServiceTags;
 - (void)copyTo:(id)arg1;
@@ -73,6 +80,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)requestSourceAsString:(int)arg1;
 - (id)serviceTagAtIndex:(unsigned long long)arg1;
 - (unsigned long long)serviceTagsCount;
 - (void)writeTo:(id)arg1;

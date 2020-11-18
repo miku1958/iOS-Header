@@ -21,6 +21,7 @@
     unsigned long long _transactionCount;
 }
 
+@property (readonly, nonatomic) NSString *databaseName; // @synthesize databaseName=_databaseName;
 @property (readonly, nonatomic) struct sqlite3 *db; // @synthesize db=_db;
 @property (weak, nonatomic) MFSQLiteConnectionPool *pool;
 

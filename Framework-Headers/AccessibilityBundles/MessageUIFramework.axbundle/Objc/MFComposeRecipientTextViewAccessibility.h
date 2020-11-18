@@ -13,7 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (void)_updateInactiveTextView;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

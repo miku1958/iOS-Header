@@ -12,13 +12,15 @@
 {
     CAMCaptureRequest *_request;
     id _result;
+    CDUnknownBlockType _completionHandler;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (readonly, nonatomic) CAMCaptureRequest *request; // @synthesize request=_request;
 @property (readonly, nonatomic) id result; // @synthesize result=_result;
 
 - (void).cxx_destruct;
-- (id)initWithRequest:(id)arg1 result:(id)arg2;
+- (id)initWithRequest:(id)arg1 result:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

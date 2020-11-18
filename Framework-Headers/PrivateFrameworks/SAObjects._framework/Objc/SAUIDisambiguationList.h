@@ -14,6 +14,7 @@
 
 @property (copy, nonatomic) NSString *disambiguationKey;
 @property (strong, nonatomic) SAUIDomainObjectPicker *domainObjectPicker;
+@property (copy, nonatomic) NSArray *fallbackCommands;
 @property (copy, nonatomic) NSArray *items;
 @property (copy, nonatomic) NSString *selectionResponse;
 @property (copy, nonatomic) NSString *speakableDelimiter;

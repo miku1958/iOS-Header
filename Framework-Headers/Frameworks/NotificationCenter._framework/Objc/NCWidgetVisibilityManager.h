@@ -12,7 +12,6 @@
 __attribute__((visibility("hidden")))
 @interface NCWidgetVisibilityManager : NSObject
 {
-    id<NCWidgetVisibilityDelegate> _delegate;
     NSMutableDictionary *_widgetTagsByIdentifier;
     NSMutableDictionary *_extensionHashByIdentifier;
     NSMutableDictionary *_mobileGestaltAnswerByWidgetTag;
@@ -22,11 +21,13 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_mobileGestaltQuestions;
     struct MGNotificationTokenStruct *_mobileGestaltNotificationToken;
     BOOL _delegateRespondsToWidgetVisibilityDidChange;
+    id<NCWidgetVisibilityDelegate> _delegate;
 }
 
-@property (nonatomic) id<NCWidgetVisibilityDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<NCWidgetVisibilityDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic, getter=_mobileGestaltAnswerByWidgetTag) NSMutableDictionary *mobileGestaltAnswerByWidgetTag; // @synthesize mobileGestaltAnswerByWidgetTag=_mobileGestaltAnswerByWidgetTag;
 
+- (void).cxx_destruct;
 - (id)_allWidgetTags;
 - (void)_registerForVisiblityPreferenceChanges;
 - (void)_unregisterForVisiblityPreferenceChanges;

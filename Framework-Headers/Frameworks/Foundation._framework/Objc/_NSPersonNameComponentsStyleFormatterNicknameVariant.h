@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)alterations;
+- (id)abbreviatedKeys;
 - (id)keysOfInterest;
 - (id)orderedTemplate;
 

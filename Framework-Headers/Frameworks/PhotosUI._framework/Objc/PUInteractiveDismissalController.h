@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 @interface PUInteractiveDismissalController : NSObject
 {
     struct {
-        BOOL respondsToCanBeginDismissal;
+        BOOL respondsToCanBeginDismissalAtLocationFromProvider;
         BOOL respondsToTilingView;
         BOOL respondsToDesignatedTileController;
     } _delegateFlags;
@@ -45,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateViewControllerIfNeeded;
 - (void)_updateViewHostingGestureRecognizersIfNeeded;
 - (void)beginDismissal;
-- (BOOL)canBeginDismissal;
+- (BOOL)canBeginDismissalAtLocationFromProvider:(id)arg1;
 - (void)endDismissal:(BOOL)arg1;
 - (void)invalidateDelegateData;
 - (void)updateDismissalWithInteractionProgress:(double)arg1 interactionWillFinish:(BOOL)arg2;

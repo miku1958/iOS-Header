@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPreviewPresentationController.h>
+#import <UIKit/_UIPreviewPresentationController.h>
 
 @protocol PUPhotosPreviewPresentationControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PUPhotosPreviewPresentationController : UIPreviewPresentationController
+@interface PUPhotosPreviewPresentationController : _UIPreviewPresentationController
 {
     id<PUPhotosPreviewPresentationControllerDelegate> _photosPreviewingDelegate;
 }

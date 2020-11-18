@@ -7,11 +7,10 @@
 #import <NotesShared/NSObject-Protocol.h>
 #import <NotesShared/TTMergeableStringIDTracker-Protocol.h>
 
-@class NSObject, TTMergeableString, TTMergeableUndoString;
-@protocol TTMergeableStringUndoCommand;
+@class TTMergeableStringUndoGroup, TTMergeableUndoString;
 
 @protocol TTMergeableStringUndoCommand <NSObject, TTMergeableStringIDTracker>
+- (BOOL)addToGroup:(TTMergeableStringUndoGroup *)arg1;
 - (void)applyToString:(TTMergeableUndoString *)arg1;
-- (BOOL)coalesceWith:(NSObject<TTMergeableStringUndoCommand> *)arg1 inString:(TTMergeableString *)arg2;
 @end
 

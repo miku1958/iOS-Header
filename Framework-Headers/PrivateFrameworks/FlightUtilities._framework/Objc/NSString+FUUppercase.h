@@ -7,6 +7,6 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (FUUppercase)
-- (id)FU_uppercaseString;
+- (id)FU_uppercaseStringUsingCurrentLocale:(BOOL)arg1;
 @end
 

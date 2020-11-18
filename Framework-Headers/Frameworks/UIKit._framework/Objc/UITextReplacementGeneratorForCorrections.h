@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)addSpellingGuessesForString:(id)arg1 ToReplacements:(id)arg2;
 - (id)init;
 - (BOOL)isStringMisspelled:(id)arg1;
+- (BOOL)isStringToReplaceMisspelled;
 - (id)replacements;
 
 @end

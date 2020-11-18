@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/PKPaymentServiceExportedInterface-Protocol.h>
 #import <PassKitCore/PKXPCServiceDelegate-Protocol.h>
@@ -23,11 +23,11 @@
 @property (nonatomic) id<PKPaymentServiceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) PKFieldProperties *paymentDeviceFieldProperties;
+@property (readonly, weak, nonatomic) PKFieldProperties *paymentDeviceFieldProperties;
 @property (strong, nonatomic) PKPaymentWebServiceContext *sharedPaymentWebServiceContext;
 @property (readonly) Class superclass;
 
-+ (BOOL)contactlessInterfaceCanBePresentedFromSource:(long long)arg1;
+- (void).cxx_destruct;
 - (void)_defaultPaymentPassUniqueIdentifier:(CDUnknownBlockType)arg1;
 - (id)_existingRemoteObjectProxy;
 - (void)_messagesAppLaunchTokenForPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -37,13 +37,13 @@
 - (id)_remoteObjectProxyWithFailureHandler:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxyWithSemaphore:(id)arg1;
 - (void)_sharedPaymentWebServiceContextWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)_transactionsAppLaunchTokenForPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)archiveMessageWithIdentifier:(id)arg1;
 - (void)consistencyCheck;
-- (void)contactlessInterfaceDidDismissFromSource:(long long)arg1;
-- (void)contactlessInterfaceDidPresentFromSource:(long long)arg1;
-- (void)dealloc;
 - (id)defaultPaymentApplicationForPassUniqueIdentifier:(id)arg1;
-- (void)deleteMessageWithIdentifier:(id)arg1;
+- (void)deleteAllTransactionsForPaymentPassWithUniqueIdentifier:(id)arg1;
+- (void)deleteMessagesForPaymentPassWithUniqueIdentifier:(id)arg1;
 - (void)didUpdateDefaultPaymentPassWithUniqueIdentifier:(id)arg1;
 - (void)downloadAllPaymentPasses;
 - (id)init;
@@ -62,8 +62,6 @@
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveMessage:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
-- (void)presentContactlessInterfaceForDefaultPassFromSource:(long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)presentContactlessInterfaceForPassWithUniqueIdentifier:(id)arg1 fromSource:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remoteService:(id)arg1 didEstablishConnection:(id)arg2;
 - (void)remoteService:(id)arg1 didInterruptConnection:(id)arg2;
 - (void)scheduleAutomaticPresentationAvailableNotificationForPassWithUniqueIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -73,7 +71,7 @@
 - (void)submitVerificationCode:(id)arg1 verificationData:(id)arg2 forDPANIdentifier:(id)arg3;
 - (void)submitVerificationCode:(id)arg1 verificationData:(id)arg2 forDPANIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)transactionsAppLaunchTokenForPassWithUniqueIdentifier:(id)arg1;
-- (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 includingSources:(unsigned long long)arg2 limit:(long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 limit:(long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)valueAddedServiceTransactionsForPassWithUniqueIdentifier:(id)arg1 limit:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)valueAddedServiceTransactionsForPaymentTransaction:(id)arg1 limit:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 

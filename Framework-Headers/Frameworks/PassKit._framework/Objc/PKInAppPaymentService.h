@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class PKXPCService;
 
@@ -13,12 +13,14 @@
     PKXPCService *_remoteService;
 }
 
+- (void).cxx_destruct;
+- (void)URLRequestForMerchantStatusCheck:(id)arg1 merchantDomain:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_remoteObjectProxy;
 - (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxyWithFailureHandler:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxyWithSemaphore:(id)arg1;
-- (void)dealloc;
 - (id)init;
+- (void)paymentServicesMerchantURL:(CDUnknownBlockType)arg1;
 - (void)presentInAppPaymentInterfaceWithPaymentRequest:(id)arg1 forHostIdentifier:(id)arg2 orientation:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)registerPaymentListenerEndpoint:(id)arg1 forHostIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)retrievePaymentListenerEndpointForHostIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;

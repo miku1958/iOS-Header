@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) CIContext *context; // @synthesize context;
-@property FCRFaceDetector *faceCoreDetector; // @synthesize faceCoreDetector;
+@property (strong) FCRFaceDetector *faceCoreDetector; // @synthesize faceCoreDetector;
 
 - (id)adjustedImageFromImage:(id)arg1 orientation:(int)arg2 inverseCTM:(struct CGAffineTransform *)arg3;
 - (id)createFaceCoreDataFromCIImage:(id)arg1 width:(unsigned long long *)arg2 height:(unsigned long long *)arg3;

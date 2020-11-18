@@ -22,12 +22,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)_asyncPlaceDataRequest:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_asyncPlaceDataRequest:(id)arg1 traits:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (long long)_invalidationDataHasExpired:(id)arg1;
 - (BOOL)_invalidationDataHasExpiredByVersion:(unsigned int)arg1 domains:(id)arg2;
 - (long long)_invalidationStateForTTL:(double)arg1 timestamp:(double)arg2 version:(unsigned int)arg3 versionDomains:(id)arg4;
 - (BOOL)_isKey:(id)arg1 subsetOf:(id)arg2;
-- (id)_syncPlaceDataRequest:(id)arg1;
+- (id)_syncPlaceDataRequest:(id)arg1 traits:(id)arg2;
 - (id)_syncedPlaceRefineMapItem:(id)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 traits:(id)arg3;
 - (id)_syncedRevGeoCoordinate:(CDStruct_c3b9c2ee)arg1 traits:(id)arg2;
 - (void)checkHasExpiredWithInvalidationDatas:(id)arg1 handler:(CDUnknownBlockType)arg2;

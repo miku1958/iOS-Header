@@ -7,67 +7,52 @@
 #import <UIKit/UIControl.h>
 
 #import <UIKit/NSCoding-Protocol.h>
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKit/UISwitchControl-Protocol.h>
+#import <UIKit/UISwitchVisualElementProvider-Protocol.h>
 
-@class NSString, UIColor, UIImage, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIView;
-@protocol _UISwitchInternalViewProtocol;
+@class NSString, UIColor, UIImage, UISwitchVisualElement, _UIFeedbackImpactBehavior;
 
-@interface UISwitch : UIControl <UIGestureRecognizerDelegate, NSCoding>
+@interface UISwitch : UIControl <UISwitchControl, UISwitchVisualElementProvider, NSCoding>
 {
-    UILongPressGestureRecognizer *_pressGesture;
-    UIPanGestureRecognizer *_panGesture;
-    UIView<_UISwitchInternalViewProtocol> *_control;
-    BOOL _onStateChangedByLongPressGestureRecognizer;
-    BOOL _onStateChangedByPanGestureRecognizer;
     BOOL _on;
-    double _enabledAlpha;
+    BOOL _alwaysShowOnOffLabel;
+    UIColor *_onTintColor;
+    UIColor *_tintColor;
+    UIColor *_thumbTintColor;
+    UIImage *_onImage;
+    UIImage *_offImage;
+    UISwitchVisualElement *_visualElement;
 }
 
-@property (nonatomic, getter=_alwaysShowOnOffLabel, setter=_setAlwaysShowsOnOffLabel:) BOOL alwaysShowOnOffLabel;
+@property (nonatomic, getter=_alwaysShowOnOffLabel, setter=_setAlwaysShowsOnOffLabel:) BOOL alwaysShowOnOffLabel; // @synthesize alwaysShowOnOffLabel=_alwaysShowOnOffLabel;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) double enabledAlpha; // @synthesize enabledAlpha=_enabledAlpha;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIImage *offImage;
+@property (strong, nonatomic, getter=_impactFeedbackBehavior, setter=_setImpactFeedbackBehavior:) _UIFeedbackImpactBehavior *impactFeedbackBehavior;
+@property (strong, nonatomic) UIImage *offImage; // @synthesize offImage=_offImage;
 @property (nonatomic, getter=isOn) BOOL on; // @synthesize on=_on;
-@property (strong, nonatomic, getter=_onColor, setter=_setOnColor:) UIColor *onColor;
-@property (strong, nonatomic) UIImage *onImage;
-@property (strong, nonatomic) UIColor *onTintColor;
+@property (strong, nonatomic) UIImage *onImage; // @synthesize onImage=_onImage;
+@property (strong, nonatomic) UIColor *onTintColor; // @synthesize onTintColor=_onTintColor;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UIColor *thumbTintColor;
-@property (strong, nonatomic) UIColor *tintColor;
+@property (strong, nonatomic) UIColor *thumbTintColor; // @synthesize thumbTintColor=_thumbTintColor;
+@property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
+@property (strong, nonatomic) UISwitchVisualElement *visualElement; // @synthesize visualElement=_visualElement;
 
-+ (Class)_internalViewClass;
++ (void)setVisualElementProvider:(id)arg1;
++ (id)visualElementForTraitCollection:(id)arg1;
 - (void).cxx_destruct;
-- (void)_animateToOn:(BOOL)arg1 withDuration:(double)arg2 sendAction:(BOOL)arg3;
-- (void)_commonInitNewLook;
-- (void)_commonInitNewLookNeue1;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedWidth;
 - (unsigned long long)_controlEventsForActionTriggered;
 - (void)_encodeFrameWithCoder:(id)arg1;
-- (BOOL)_gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (void)_handleLongPressNL:(id)arg1;
-- (void)_handlePanNL:(id)arg1;
-- (void)_handleTapNL:(id)arg1;
-- (BOOL)_handleTranslationInPanGestureRecognizer:(id)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
-- (double)_knobBounceDamping;
-- (double)_knobBounceDuration;
-- (double)_knobBounceMass;
-- (double)_knobBounceStiffness;
-- (void)_onAnimationDidStop:(id)arg1 finished:(id)arg2 context:(void *)arg3;
-- (id)_onTintColor;
 - (void)_populateArchivedSubviews:(id)arg1;
-- (id)_scriptingInfo;
-- (void)_setKnobBounceDamping:(double)arg1;
-- (void)_setKnobBounceDuration:(double)arg1;
-- (void)_setKnobBounceMass:(double)arg1;
-- (void)_setKnobBounceStiffness:(double)arg1;
-- (void)_setOnTintColor:(id)arg1;
-- (void)_setPressed:(BOOL)arg1 on:(BOOL)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_refreshVisualElement;
+- (void)_refreshVisualElementForTraitCollection:(id)arg1;
+- (void)_refreshVisualElementForTraitCollection:(id)arg1 populatingAPIProperties:(BOOL)arg2;
 - (BOOL)_shouldAlterCodedFrame;
-- (BOOL)_useOldSize;
+- (BOOL)_shouldShowOnOffLabels;
+- (void)_showingOnOffLabelChanged;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (void)dealloc;
 - (unsigned long long)defaultAccessibilityTraits;
@@ -77,13 +62,16 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isAccessibilityElementByDefault;
 - (BOOL)isElementAccessibilityExposedToInterfaceBuilder;
-- (void)setAlpha:(double)arg1;
-- (void)setAlternateColors:(BOOL)arg1;
+- (BOOL)pointMostlyInside:(struct CGPoint)arg1;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setOn:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setOn:(BOOL)arg1 animated:(BOOL)arg2 notifyingVisualElement:(BOOL)arg3;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)visualElement:(id)arg1 transitionedToOn:(BOOL)arg2;
+- (void)visualElementHadTouchUpInside:(id)arg1;
 
 @end
 

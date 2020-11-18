@@ -27,11 +27,13 @@
 @property (strong, nonatomic) NSMutableArray *spokenNavigationAddress; // @synthesize spokenNavigationAddress=_spokenNavigationAddress;
 @property (strong, nonatomic) NSMutableArray *spokenStructuredAddress; // @synthesize spokenStructuredAddress=_spokenStructuredAddress;
 
-+ (id)addressForPlaceData:(id)arg1;
++ (Class)localizedAddressType;
++ (Class)spokenNavigationAddressType;
++ (Class)spokenStructuredAddressType;
+- (int)StringAsKnownAccuracy:(id)arg1;
 - (void)addLocalizedAddress:(id)arg1;
 - (void)addSpokenNavigationAddress:(id)arg1;
 - (void)addSpokenStructuredAddress:(id)arg1;
-- (id)bestLocalizedAddress;
 - (void)clearLocalizedAddress;
 - (void)clearSpokenNavigationAddress;
 - (void)clearSpokenStructuredAddress;
@@ -42,11 +44,11 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)knownAccuracyAsString:(int)arg1;
 - (id)localizedAddressAtIndex:(unsigned long long)arg1;
 - (unsigned long long)localizedAddressCount;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)spokenAddressForLocale:(id)arg1;
 - (id)spokenNavigationAddressAtIndex:(unsigned long long)arg1;
 - (unsigned long long)spokenNavigationAddressCount;
 - (id)spokenStructuredAddressAtIndex:(unsigned long long)arg1;

@@ -11,7 +11,9 @@
 @interface IKFormatting : NSObject
 {
     NSMutableDictionary *_dateFormatters;
+    struct os_unfair_lock_s _dateFormattersLock;
     NSMutableDictionary *_numberFormatters;
+    struct os_unfair_lock_s _numberFormattersLock;
     NSNumberFormatter *_durationFormatter;
     NSNumberFormatter *_durationPaddedFormatter;
 }

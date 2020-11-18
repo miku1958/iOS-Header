@@ -6,19 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class ML3DatabaseConnection;
+@class ML3DatabaseConnection, NSString;
 
 __attribute__((visibility("hidden")))
 @interface ML3PersistentIDGenerator : NSObject
 {
     ML3DatabaseConnection *_connection;
+    NSString *_tableName;
+    NSString *_validateStartingPersistentIdSQL;
+    NSString *_nextUsedPersistentIdSQL;
     long long _currentPersistentID;
     long long _nextUsedPersistentID;
 }
 
 - (void).cxx_destruct;
 - (void)_calculateNewRun;
-- (id)initWithDatabaseConnection:(id)arg1;
+- (id)initWithDatabaseConnection:(id)arg1 tableName:(id)arg2;
 - (long long)nextPersistentID;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
 
@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSDictionary *shaderModifiers;
 
 + (BOOL)supportsSecureCoding;
-- (void *)__CFObject;
+- (const void *)__CFObject;
 - (BOOL)_bindValueForSymbol:(id)arg1 atLocation:(unsigned int)arg2 programID:(unsigned int)arg3 node:(id)arg4 renderer:(id)arg5;
 - (void)_customDecodingOfSCNShadableHelper:(id)arg1;
 - (void)_customEncodingOfSCNShadableHelper:(id)arg1;

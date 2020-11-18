@@ -10,7 +10,7 @@
 {
 }
 
-+ (id)_allSourcesByIDWithPredicate:(id)arg1 healthDaemon:(id)arg2 error:(id *)arg3;
++ (id)_allSourcesByIDWithPredicate:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)_insertDeletedSourceWithUUID:(id)arg1 modificationDate:(id)arg2 provenance:(long long)arg3 database:(id)arg4 error:(id *)arg5;
 + (id)_insertSourceWithUUID:(id)arg1 bundleIdentifier:(id)arg2 name:(id)arg3 options:(id)arg4 isCurrentDevice:(id)arg5 productType:(id)arg6 deleted:(BOOL)arg7 modificationDate:(id)arg8 provenance:(long long)arg9 database:(id)arg10 error:(id *)arg11;
 + (id)_predicateForAppleWatchSource;
@@ -20,12 +20,12 @@
 + (id)_predicateForSourceWithUUID:(id)arg1;
 + (id)_sourceWithPredicate:(id)arg1 database:(id)arg2 error:(id *)arg3;
 + (id)_sourceWithPredicate:(id)arg1 healthDatabase:(id)arg2 error:(id *)arg3;
-+ (id)allSourcesByIDWithHealthDaemon:(id)arg1 error:(id *)arg2;
-+ (id)allWatchSourcesByIDWithHealthDaemon:(id)arg1 error:(id *)arg2;
++ (id)allSourcesByIDWithProfile:(id)arg1 error:(id *)arg2;
++ (id)allWatchSourcesByIDWithProfile:(id)arg1 error:(id *)arg2;
 + (id)columnsDefinition;
-+ (id)createNonUniqueIndicesForColumns;
 + (id)databaseTable;
-+ (id)entityEncoderForHealthDaemon:(id)arg1 database:(id)arg2 purpose:(long long)arg3 authorizationFilter:(CDUnknownBlockType)arg4;
++ (id)entityEncoderForProfile:(id)arg1 database:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
++ (id)indices;
 + (id)insertCodableSource:(id)arg1 provenance:(long long)arg2 healthDatabase:(id)arg3 error:(id *)arg4;
 + (id)insertSourceWithUUID:(id)arg1 bundleIdentifier:(id)arg2 name:(id)arg3 options:(unsigned long long)arg4 isCurrentDevice:(BOOL)arg5 productType:(id)arg6 modificationDate:(id)arg7 provenance:(long long)arg8 healthDatabase:(id)arg9 error:(id *)arg10;
 + (id)propertyForSyncProvenance;
@@ -42,7 +42,7 @@
 - (BOOL)setName:(id)arg1 healthDatabase:(id)arg2 error:(id *)arg3;
 - (id)sourceBundleIdentifierInHealthDatabase:(id)arg1 error:(id *)arg2;
 - (id)sourceUUIDWithHealthDatabase:(id)arg1 error:(id *)arg2;
-- (id)sourceWithHealthDaemon:(id)arg1 error:(id *)arg2;
+- (id)sourceWithProfile:(id)arg1 error:(id *)arg2;
 
 @end
 

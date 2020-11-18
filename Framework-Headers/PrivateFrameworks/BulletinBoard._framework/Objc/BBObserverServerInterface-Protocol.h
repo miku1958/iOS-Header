@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class BBResponse, BBThumbnailSizeConstraints, NSArray, NSDate, NSSet, NSString;
+@class BBResponse, BBThumbnailSizeConstraints, NSArray, NSDate, NSSet, NSString, NSUUID;
 
 @protocol BBObserverServerInterface
 - (void)clearBulletinIDs:(NSSet *)arg1 inSection:(NSString *)arg2;
@@ -12,12 +12,14 @@
 - (void)clearSection:(NSString *)arg1;
 - (void)finishedWithBulletinID:(NSString *)arg1 transactionID:(unsigned long long)arg2;
 - (void)getActiveAlertBehaviorOverridesWithHandler:(void (^)(NSNumber *, NSError *))arg1;
-- (void)getAttachmentAspectRatioForBulletinID:(NSString *)arg1 withHandler:(void (^)(NSNumber *, NSError *))arg2;
-- (void)getAttachmentPNGDataForBulletinID:(NSString *)arg1 sizeConstraints:(BBThumbnailSizeConstraints *)arg2 withHandler:(void (^)(NSData *, NSError *))arg3;
+- (void)getAspectRatioForAttachmentUUID:(NSUUID *)arg1 bulletinID:(NSString *)arg2 isPrimary:(BOOL)arg3 withHandler:(void (^)(float, NSError *))arg4;
 - (void)getBulletinsForPublisherMatchIDs:(NSArray *)arg1 sectionID:(NSString *)arg2 withHandler:(void (^)(NSArray *, NSError *))arg3;
+- (void)getBulletinsPublishedAfterDate:(NSDate *)arg1 withHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)getBulletinsWithHandler:(void (^)(NSArray *, NSError *))arg1;
-- (void)getPrimaryAttachmentDataForBulletinID:(NSString *)arg1 withHandler:(void (^)(NSData *, NSError *))arg2;
+- (void)getDataForAttachmentUUID:(NSUUID *)arg1 bulletinID:(NSString *)arg2 isPrimary:(BOOL)arg3 withHandler:(void (^)(NSData *, NSError *))arg4;
+- (void)getPNGDataForAttachmentUUID:(NSUUID *)arg1 bulletinID:(NSString *)arg2 isPrimary:(BOOL)arg3 sizeConstraints:(BBThumbnailSizeConstraints *)arg4 withHandler:(void (^)(NSData *, NSError *))arg5;
 - (void)getPrivilegedSenderTypesWithHandler:(void (^)(NSNumber *, NSError *))arg1;
+- (void)getPublisherMatchIDsOfBulletinsPublishedAfterDate:(NSDate *)arg1 withHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)getSectionInfoForActiveSectionsWithHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)getSectionInfoForSectionIDs:(NSSet *)arg1 withHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)getSectionInfoWithHandler:(void (^)(NSArray *, NSError *))arg1;
@@ -25,11 +27,10 @@
 - (void)getSectionParametersForSectionID:(NSString *)arg1 withHandler:(void (^)(BBSectionParameters *, NSError *))arg2;
 - (void)getSortDescriptorsForSectionID:(NSString *)arg1 withHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)getUniversalSectionIDForSectionID:(NSString *)arg1 withHandler:(void (^)(NSString *, NSError *))arg2;
-- (void)handleResponse:(BBResponse *)arg1;
+- (void)handleResponse:(BBResponse *)arg1 withCompletion:(void (^)(BOOL))arg2;
 - (void)removeBulletins:(NSSet *)arg1 inSection:(NSString *)arg2 fromFeeds:(unsigned long long)arg3;
-- (void)requestFutureBulletinsForSectionID:(NSString *)arg1;
+- (void)requestNoticesBulletinsForAllSections;
 - (void)requestNoticesBulletinsForSectionID:(NSString *)arg1;
-- (void)requestTodayBulletinsForSectionID:(NSString *)arg1;
 - (void)setObserverFeed:(unsigned long long)arg1 asLightsAndSirensGateway:(NSString *)arg2 priority:(unsigned long long)arg3;
 - (void)setObserverFeed:(unsigned long long)arg1 attachToLightsAndSirensGateway:(NSString *)arg2;
 @end

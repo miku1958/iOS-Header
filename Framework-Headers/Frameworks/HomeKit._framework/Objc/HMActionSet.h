@@ -6,41 +6,47 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKit/HMMessageReceiver-Protocol.h>
+#import <HomeKit/HMFMessageReceiver-Protocol.h>
+#import <HomeKit/HMMutableApplicationData-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMDelegateCaller, HMHome, HMMessageDispatcher, HMThreadSafeMutableArrayCollection, NSSet, NSString, NSUUID;
+@class HMApplicationData, HMDelegateCaller, HMFMessageDispatcher, HMHome, HMThreadSafeMutableArrayCollection, NSDate, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMActionSet : NSObject <HMMessageReceiver, NSSecureCoding, HMObjectMerge>
+@interface HMActionSet : NSObject <HMFMessageReceiver, NSSecureCoding, HMObjectMerge, HMMutableApplicationData>
 {
-    BOOL _executing;
+    BOOL _executionInProgress;
     NSUUID *_uniqueIdentifier;
     NSString *_name;
     HMHome *_home;
+    HMApplicationData *_applicationData;
+    NSDate *_lastExecutionDate;
     NSString *_actionSetType;
-    NSUUID *_uuid;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     HMDelegateCaller *_delegateCaller;
-    HMMessageDispatcher *_msgDispatcher;
+    HMFMessageDispatcher *_msgDispatcher;
     HMThreadSafeMutableArrayCollection *_currentActions;
+    NSUUID *_uuid;
 }
 
 @property (readonly, copy, nonatomic) NSString *actionSetType; // @synthesize actionSetType=_actionSetType;
 @property (readonly, copy, nonatomic) NSSet *actions;
+@property (readonly, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (strong, nonatomic) HMThreadSafeMutableArrayCollection *currentActions; // @synthesize currentActions=_currentActions;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic, getter=isExecuting) BOOL executing; // @synthesize executing=_executing;
+@property (readonly, nonatomic, getter=isExecuting) BOOL executing;
+@property (nonatomic) BOOL executionInProgress; // @synthesize executionInProgress=_executionInProgress;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMHome *home; // @synthesize home=_home;
+@property (readonly, copy, nonatomic) NSDate *lastExecutionDate; // @synthesize lastExecutionDate=_lastExecutionDate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
@@ -53,7 +59,9 @@
 - (void)_configure:(id)arg1 messageDispatcher:(id)arg2 clientQueue:(id)arg3 delegateCaller:(id)arg4;
 - (void)_handleActionAddedNotification:(id)arg1;
 - (void)_handleActionRemovedNotification:(id)arg1;
+- (void)_handleActionSetExecutedNotification:(id)arg1;
 - (void)_handleActionSetRenamedNotification:(id)arg1;
+- (void)_handleActionSetStartExecutionNotification:(id)arg1;
 - (void)_handleActionUpdatedNotification:(id)arg1;
 - (void)_invalidate;
 - (id)_lookupActionWithInfo:(id)arg1;
@@ -70,6 +78,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 type:(id)arg2 uuid:(id)arg3;
 - (void)removeAction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setApplicationData:(id)arg1;
+- (void)setLastExecutionDate:(id)arg1;
+- (void)updateApplicationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

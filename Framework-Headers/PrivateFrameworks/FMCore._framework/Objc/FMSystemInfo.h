@@ -11,7 +11,6 @@
 }
 
 + (id)sharedInstance;
-- (void)authTokenOfType:(long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)btMacAddress;
 - (id)deviceClass;
 - (id)deviceModelName;

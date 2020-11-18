@@ -8,7 +8,7 @@
 
 #import <CameraUI/CAMExpandableMenuButtonDelegate-Protocol.h>
 
-@class CAMElapsedTimeView, CAMExpandableMenuButton, CAMFlashButton, CAMFlipButton, CAMHDRButton, CAMIrisButton, CAMTimerButton, NSMutableArray;
+@class CAMElapsedTimeView, CAMExpandableMenuButton, CAMFilterButton, CAMFlashButton, CAMFlipButton, CAMFramerateIndicatorView, CAMHDRButton, CAMIrisButton, CAMTimerButton, NSMutableArray;
 @protocol CAMControlVisibilityUpdateDelegate;
 
 @interface CAMTopBar : UIView <CAMExpandableMenuButtonDelegate>
@@ -20,8 +20,10 @@
     CAMElapsedTimeView *_elapsedTimeView;
     CAMHDRButton *_HDRButton;
     CAMFlipButton *_flipButton;
+    CAMFilterButton *_filterButton;
     CAMTimerButton *_timerButton;
     CAMIrisButton *_irisButton;
+    CAMFramerateIndicatorView *_framerateIndicatorView;
     long long _orientation;
     UIView *__backgroundView;
     NSMutableArray *__allowedControls;
@@ -36,9 +38,11 @@
 @property (nonatomic, setter=_setExpandedMenuButtonTappableInsets:) struct UIEdgeInsets _expandedMenuButtonTappableInsets; // @synthesize _expandedMenuButtonTappableInsets=__expandedMenuButtonTappableInsets;
 @property (nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property (strong, nonatomic) CAMElapsedTimeView *elapsedTimeView; // @synthesize elapsedTimeView=_elapsedTimeView;
+@property (strong, nonatomic) CAMFilterButton *filterButton; // @synthesize filterButton=_filterButton;
 @property (strong, nonatomic) CAMFlashButton *flashButton; // @synthesize flashButton=_flashButton;
 @property (strong, nonatomic) CAMFlipButton *flipButton; // @synthesize flipButton=_flipButton;
 @property (readonly, nonatomic, getter=isFloating) BOOL floating;
+@property (strong, nonatomic) CAMFramerateIndicatorView *framerateIndicatorView; // @synthesize framerateIndicatorView=_framerateIndicatorView;
 @property (strong, nonatomic) CAMIrisButton *irisButton; // @synthesize irisButton=_irisButton;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (nonatomic) long long style; // @synthesize style=_style;
@@ -54,6 +58,7 @@
 - (double)_backgroundCornerRadiusForStyle:(long long)arg1;
 - (BOOL)_backgroundMasksToBoundsForStyle:(long long)arg1;
 - (void)_commonCAMTopBarInitialization;
+- (void)_computeHorizontalLayoutForViewsBetweenLeftView:(id)arg1 rightView:(id)arg2 views:(id)arg3 alignmentRects:(id)arg4;
 - (double)_interpolatedFloatingBarHeight;
 - (void)_layoutControls:(id)arg1 apply:(BOOL)arg2 withExpandedMenuButton:(id)arg3 collapsingMenuButton:(id)arg4 collapsingFrame:(struct CGRect *)arg5;
 - (void)_layoutDefaultStyle;
@@ -75,12 +80,14 @@
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setBackgroundStyle:(long long)arg1 animated:(BOOL)arg2;
 - (void)setStyle:(long long)arg1 animated:(BOOL)arg2;
-- (BOOL)shouldHideElapsedTimeViewForMode:(long long)arg1 device:(long long)arg2;
-- (BOOL)shouldHideFlashButtonForMode:(long long)arg1 device:(long long)arg2;
-- (BOOL)shouldHideFlipButtonForMode:(long long)arg1 device:(long long)arg2;
-- (BOOL)shouldHideHDRButtonForMode:(long long)arg1 device:(long long)arg2;
-- (BOOL)shouldHideIrisButtonForMode:(long long)arg1 device:(long long)arg2;
-- (BOOL)shouldHideTimerButtonForMode:(long long)arg1 device:(long long)arg2;
+- (BOOL)shouldHideElapsedTimeViewForGraphConfiguration:(id)arg1;
+- (BOOL)shouldHideFilterButtonForGraphConfiguration:(id)arg1;
+- (BOOL)shouldHideFlashButtonForGraphConfiguration:(id)arg1;
+- (BOOL)shouldHideFlipButtonForGraphConfiguration:(id)arg1;
+- (BOOL)shouldHideFramerateIndicatorForGraphConfiguration:(id)arg1;
+- (BOOL)shouldHideHDRButtonForGraphConfiguration:(id)arg1;
+- (BOOL)shouldHideIrisButtonForGraphConfiguration:(id)arg1;
+- (BOOL)shouldHideTimerButtonForGraphConfiguration:(id)arg1;
 
 @end
 

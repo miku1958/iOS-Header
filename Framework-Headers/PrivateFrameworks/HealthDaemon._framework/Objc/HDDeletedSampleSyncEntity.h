@@ -21,12 +21,11 @@
 
 + (id)_baseDataObjectPredicate;
 + (id)_companionNanoSyncPredicateConjunctionForSession:(id)arg1;
-+ (BOOL)_insertObjectsFromCodableObjectCollection:(id)arg1 syncStore:(id)arg2 healthDaemon:(id)arg3 error:(id *)arg4;
++ (BOOL)_insertObjectsFromCodableObjectCollection:(id)arg1 syncStore:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (Class)healthEntityClass;
 + (int)nanoSyncObjectType;
 + (unsigned long long)supportedNanoSyncDirectionsForProtocolVersion:(int)arg1;
 + (long long)syncEntityType;
-+ (unsigned long long)syncObjectLimitForNanoSyncMessage;
 
 @end
 

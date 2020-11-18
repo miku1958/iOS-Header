@@ -9,27 +9,49 @@
 #import <MobileInstallation/MobileInstallerDelegateProtocol-Protocol.h>
 
 @class NSXPCConnection;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MIInstallerClient : NSObject <MobileInstallerDelegateProtocol>
 {
+    struct _opaque_pthread_mutex_t {
+        long long __sig;
+        char __opaque[56];
+    } _delegatesCompleteCondMutex;
+    struct _opaque_pthread_cond_t {
+        long long __sig;
+        char __opaque[40];
+    } _delegatesCompleteCond;
+    BOOL _delegatesComplete;
     NSXPCConnection *_connection;
+    NSObject<OS_dispatch_queue> *_queue;
     CDUnknownBlockType _progressBlock;
+    CDUnknownBlockType _appDictionaryEnumBlock;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType appDictionaryEnumBlock; // @synthesize appDictionaryEnumBlock=_appDictionaryEnumBlock;
+@property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (nonatomic) BOOL delegatesComplete; // @synthesize delegatesComplete=_delegatesComplete;
 @property (copy, nonatomic) CDUnknownBlockType progressBlock; // @synthesize progressBlock=_progressBlock;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
++ (id)installerWithAppDictionaryEnumerator:(CDUnknownBlockType)arg1;
 + (id)installerWithProgressBlock:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (void)_invalidateObject;
+- (void)_waitForPendingDelegateMessages;
 - (void)checkCapabilities:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)clearUninstalledIdentifiers:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)dealloc;
+- (void)delegateMessageDeliveryComplete;
+- (void)dieForTesting;
+- (void)enumerateAppDictionary:(id)arg1 error:(id)arg2;
+- (void)enumerateInstalledAppsWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchDiskUsageForIdentifiers:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchInstalledAppsWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchInstalledDeveloperAppsWithMountPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
-- (id)initWithProgressBlock:(CDUnknownBlockType)arg1;
-- (void)installPath:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)installURL:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)listSafeHarborsOfType:(long long)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)lookupUninstalledWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)processRestoredContainerWithIdentifier:(id)arg1 ofType:(long long)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;

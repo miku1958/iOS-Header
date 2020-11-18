@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (id)dateByAddingComponents:(id)arg1 toDate:(id)arg2 options:(unsigned long long)arg3;
 - (id)dateFromComponents:(id)arg1;
 - (void)enumerateDatesStartingAfterDate:(id)arg1 matchingComponents:(id)arg2 options:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
-- (void)finalize;
 - (unsigned long long)firstWeekday;
 - (id)gregorianStartDate;
 - (unsigned long long)hash;

@@ -6,33 +6,47 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSUUID;
+@class HMDAccount, HMDApplicationData, NSArray, NSString, NSUUID;
 
 @interface HMDHomeData : NSObject
 {
+    BOOL _accessAllowedWhenLocked;
     NSArray *_homes;
     NSArray *_accessories;
     NSUUID *_primaryHomeUUID;
+    NSUUID *_lastCurrentHomeUUID;
     long long _dataVersion;
     NSUUID *_dataTag;
     NSArray *_uuidsOfRemovedHomes;
     NSArray *_incomingInvitations;
     unsigned long long _assistantGenerationCounter;
+    NSString *_currentDevice;
+    NSArray *_pendingReasonSaved;
     NSArray *_pendingUserManagementOperations;
+    HMDApplicationData *_applicationData;
+    long long _residentEnabledState;
+    HMDAccount *_account;
 }
 
+@property (readonly, nonatomic) BOOL accessAllowedWhenLocked; // @synthesize accessAllowedWhenLocked=_accessAllowedWhenLocked;
 @property (readonly, copy, nonatomic) NSArray *accessories; // @synthesize accessories=_accessories;
+@property (readonly, nonatomic) HMDAccount *account; // @synthesize account=_account;
+@property (readonly, copy, nonatomic) HMDApplicationData *applicationData; // @synthesize applicationData=_applicationData;
 @property (readonly, nonatomic) unsigned long long assistantGenerationCounter; // @synthesize assistantGenerationCounter=_assistantGenerationCounter;
+@property (readonly, copy, nonatomic) NSString *currentDevice; // @synthesize currentDevice=_currentDevice;
 @property (readonly, copy, nonatomic) NSUUID *dataTag; // @synthesize dataTag=_dataTag;
 @property (readonly, nonatomic) long long dataVersion; // @synthesize dataVersion=_dataVersion;
 @property (readonly, copy, nonatomic) NSArray *homes; // @synthesize homes=_homes;
 @property (readonly, copy, nonatomic) NSArray *incomingInvitations; // @synthesize incomingInvitations=_incomingInvitations;
+@property (readonly, copy, nonatomic) NSUUID *lastCurrentHomeUUID; // @synthesize lastCurrentHomeUUID=_lastCurrentHomeUUID;
+@property (readonly, copy, nonatomic) NSArray *pendingReasonSaved; // @synthesize pendingReasonSaved=_pendingReasonSaved;
 @property (readonly, copy, nonatomic) NSArray *pendingUserManagementOperations; // @synthesize pendingUserManagementOperations=_pendingUserManagementOperations;
 @property (readonly, copy, nonatomic) NSUUID *primaryHomeUUID; // @synthesize primaryHomeUUID=_primaryHomeUUID;
+@property (readonly, nonatomic) long long residentEnabledState; // @synthesize residentEnabledState=_residentEnabledState;
 @property (readonly, copy, nonatomic) NSArray *uuidsOfRemovedHomes; // @synthesize uuidsOfRemovedHomes=_uuidsOfRemovedHomes;
 
 - (void).cxx_destruct;
-- (id)initWithHomes:(id)arg1 accessories:(id)arg2 primaryHomeUUID:(id)arg3 dataVersion:(long long)arg4 dataTag:(id)arg5 uuidsOfRemovedHomes:(id)arg6 incomingInvitations:(id)arg7 assistantGenerationCounter:(unsigned long long)arg8 pendingUserManagementOperations:(id)arg9;
+- (id)initWithHomes:(id)arg1 accessories:(id)arg2 primaryHomeUUID:(id)arg3 lastCurrentHomeUUID:(id)arg4 dataVersion:(long long)arg5 dataTag:(id)arg6 uuidsOfRemovedHomes:(id)arg7 incomingInvitations:(id)arg8 assistantGenerationCounter:(unsigned long long)arg9 currentDevice:(id)arg10 pendingReasonSaved:(id)arg11 pendingUserManagementOperations:(id)arg12 applicationData:(id)arg13 residentEnabledState:(long long)arg14 account:(id)arg15 accessAllowedWhenLocked:(BOOL)arg16;
 
 @end
 

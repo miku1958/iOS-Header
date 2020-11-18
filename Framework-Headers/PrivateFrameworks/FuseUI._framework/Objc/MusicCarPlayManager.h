@@ -8,17 +8,19 @@
 
 #import <FuseUI/MCDCarDisplayServiceProvider-Protocol.h>
 
-@class MCDRootController, NSString, RadioRecentStationsController;
+@class MCDRootController, MPCMediaPlayerLegacyPlayer, NSString, RadioRecentStationsController;
 
 @interface MusicCarPlayManager : NSObject <MCDCarDisplayServiceProvider>
 {
     MCDRootController *_carDisplayController;
     RadioRecentStationsController *_recentStationsController;
+    MPCMediaPlayerLegacyPlayer *_legacyPlayer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) MPCMediaPlayerLegacyPlayer *legacyPlayer; // @synthesize legacyPlayer=_legacyPlayer;
 @property (weak, nonatomic) RadioRecentStationsController *recentStationsController; // @synthesize recentStationsController=_recentStationsController;
 @property (readonly) Class superclass;
 
@@ -30,12 +32,10 @@
 - (void)_screenDidDisconnectNotification:(id)arg1;
 - (void)_setupPlaybackForPlayer:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)attachToAvailableScreen;
-- (void)changeRepeatType:(unsigned long long)arg1;
-- (void)changeShuffleType:(unsigned long long)arg1;
+- (void)changeRepeatType:(long long)arg1;
+- (void)changeShuffleType:(long long)arg1;
 - (void)dealloc;
 - (void)detachFromScreen;
-- (id)init;
-- (void)reloadPlayer:(id)arg1 geniusMixPlaylist:(id)arg2 options:(id)arg3;
 - (void)reloadPlayer:(id)arg1 mediaQuery:(id)arg2 options:(id)arg3;
 - (void)reloadPlayer:(id)arg1 radioMetadata:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)reloadPlayer:(id)arg1 radioStation:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;

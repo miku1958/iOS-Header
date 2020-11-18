@@ -20,6 +20,8 @@
 + (id)tokenizePhoneNumber:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)evaluateResult:(id)arg1;
+- (BOOL)evaluateSingleResult:(id)arg1;
+- (BOOL)evaluateTopLevelGroupResult:(id)arg1;
 - (CDUnknownBlockType)filterAdapter;
 - (id)init;
 - (id)initWithSearchString:(id)arg1;

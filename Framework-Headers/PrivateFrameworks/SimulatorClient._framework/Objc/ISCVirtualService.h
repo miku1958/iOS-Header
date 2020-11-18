@@ -4,30 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
+@protocol ISCVirtualServiceProvider;
 
+__attribute__((visibility("hidden")))
 @interface ISCVirtualService : NSObject
 {
-    NSString *_name;
-    struct __IOHIDService *_underlyingService;
+    NSString *_identifier;
+    struct __IOHIDService *_hidService;
+    struct __IOHIDEventSystem *_hidEventSystem;
+    id<ISCVirtualServiceProvider> _hidCallbackDelegate;
 }
 
-@property (copy) NSString *name; // @synthesize name=_name;
-@property struct __IOHIDService *underlyingService; // @synthesize underlyingService=_underlyingService;
+@property (strong, nonatomic) id<ISCVirtualServiceProvider> hidCallbackDelegate; // @synthesize hidCallbackDelegate=_hidCallbackDelegate;
+@property (nonatomic) struct __IOHIDEventSystem *hidEventSystem; // @synthesize hidEventSystem=_hidEventSystem;
+@property (nonatomic) struct __IOHIDService *hidService; // @synthesize hidService=_hidService;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 
-+ (id)upstream;
-- (unsigned char)close;
-- (struct __IOHIDEvent *)copyEvent:(unsigned int)arg1 matching:(struct __IOHIDEvent *)arg2;
-- (void *)copyProperty:(id)arg1;
-- (unsigned char)open;
-- (void)registerWith:(struct __IOHIDEventSystem *)arg1;
-- (void)scheduleWithRunLoop:(struct __CFRunLoop *)arg1 mode:(id)arg2;
-- (int)setElementValue:(unsigned int)arg1 page:(unsigned int)arg2 usage:(unsigned int)arg3;
-- (unsigned char)setEventCallback:(CDUnknownFunctionPointerType)arg1 target:(void *)arg2 refcon:(void *)arg3;
-- (unsigned char)setProperty:(id)arg1 value:(void *)arg2;
-- (void)unscheduleFromRunLoop:(struct __CFRunLoop *)arg1 mode:(id)arg2;
++ (id)serviceWithIdentifier:(id)arg1 eventSystem:(struct __IOHIDEventSystem *)arg2 callbackDelegate:(id)arg3;
++ (id)serviceWithIdentifier:(id)arg1 eventSystem:(struct __IOHIDEventSystem *)arg2 properties:(id)arg3;
+- (void).cxx_destruct;
+- (void)dealloc;
+- (void)dispatchEvent:(struct __IOHIDEvent *)arg1;
+- (id)init;
+- (id)initWithIdentifier:(id)arg1 eventSystem:(struct __IOHIDEventSystem *)arg2 callbackDelegate:(id)arg3;
 
 @end
 

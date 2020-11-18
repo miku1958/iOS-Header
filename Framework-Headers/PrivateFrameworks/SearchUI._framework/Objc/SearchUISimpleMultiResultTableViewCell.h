@@ -25,14 +25,16 @@
 
 + (unsigned long long)numberOfColumnsForCurrentOrientation;
 - (void).cxx_destruct;
-- (id)initWithResults:(id)arg1 style:(unsigned long long)arg2;
+- (id)iconContainers;
+- (id)initWithResults:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
 - (BOOL)isExpandable;
 - (void)layoutSubviews;
 - (unsigned long long)numberOfVisibleColumns;
 - (unsigned long long)numberOfVisibleResults;
-- (BOOL)resultsSupportExpansion;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateExpanded:(BOOL)arg1;
 - (void)updateNumberOfColumns;
+- (void)updateSpacerWidthsForPlatterInsets;
 - (void)updateWithResults:(id)arg1;
 
 @end

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL nowPlayingUpdates;
 @property (readonly, nonatomic) BOOL volumeUpdates;
 
+- (void)dealloc;
 - (id)initWithNowPlayingUpdates:(BOOL)arg1 artworkUpdates:(BOOL)arg2 volumeUpdates:(BOOL)arg3 keyboardUpdates:(BOOL)arg4;
 - (unsigned long long)type;
 

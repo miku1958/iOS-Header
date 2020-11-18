@@ -19,9 +19,11 @@
 @property (strong, nonatomic) CKShare *share; // @synthesize share=_share;
 @property (copy) CDUnknownBlockType shareCopyURLCompletionBlock; // @synthesize shareCopyURLCompletionBlock=_shareCopyURLCompletionBlock;
 
-- (void)dealloc;
++ (id)iWorkShareableExtensions;
+- (void).cxx_destruct;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)initWithShare:(id)arg1 appName:(id)arg2;
+- (id)initWithShare:(id)arg1 documentType:(id)arg2;
 - (void)main;
 
 @end

@@ -22,7 +22,7 @@
 
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (strong, nonatomic) NRDeviceCollectionDiff *diff; // @synthesize diff=_diff;
-@property (strong, nonatomic) NRDeviceCollectionHistory *historyManager; // @synthesize historyManager=_historyManager;
+@property (weak, nonatomic) NRDeviceCollectionHistory *historyManager; // @synthesize historyManager=_historyManager;
 @property (nonatomic) unsigned long long index; // @synthesize index=_index;
 @property (readonly, nonatomic) NRMutableDeviceCollection *state;
 @property (nonatomic) unsigned int switchIndex; // @synthesize switchIndex=_switchIndex;

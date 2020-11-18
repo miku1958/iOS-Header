@@ -13,10 +13,12 @@
 
 @interface MTLRenderPassDescriptor : NSObject <NSCopying>
 {
+    unsigned long long _renderTargetArrayLength;
 }
 
 @property (readonly) MTLRenderPassColorAttachmentDescriptorArray *colorAttachments; // @dynamic colorAttachments;
 @property (copy, nonatomic) MTLRenderPassDepthAttachmentDescriptor *depthAttachment; // @dynamic depthAttachment;
+@property (nonatomic) unsigned long long renderTargetArrayLength; // @synthesize renderTargetArrayLength=_renderTargetArrayLength;
 @property (copy, nonatomic) MTLRenderPassStencilAttachmentDescriptor *stencilAttachment; // @dynamic stencilAttachment;
 @property (strong, nonatomic) id<MTLBuffer> visibilityResultBuffer; // @dynamic visibilityResultBuffer;
 

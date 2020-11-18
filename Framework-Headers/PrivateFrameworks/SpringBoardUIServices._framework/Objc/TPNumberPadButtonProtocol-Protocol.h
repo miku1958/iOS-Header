@@ -11,5 +11,8 @@
 @property unsigned int character;
 
 - (id)initForCharacter:(unsigned int)arg1;
+
+@optional
+- (void)loadImagesForCurrentCharacter;
 @end
 

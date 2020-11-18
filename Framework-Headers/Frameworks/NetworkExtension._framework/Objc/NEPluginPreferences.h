@@ -17,6 +17,9 @@
 @property (readonly) NSString *pluginType; // @synthesize pluginType=_pluginType;
 @property struct __SCPreferences *prefs; // @synthesize prefs=_prefs;
 
++ (id)copyIdentifiersOfInstalledVPNApps;
++ (BOOL)isAppInstalled:(id)arg1;
++ (BOOL)isEnabledForPluginType:(id)arg1 applicationRemoved:(BOOL)arg2;
 + (void)removePreferencesForPluginType:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyAppURL;

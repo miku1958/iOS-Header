@@ -14,9 +14,10 @@
     id<TKTonePickerTableViewSeparatorObserver> _separatorObserver;
 }
 
-@property (nonatomic) id<TKTonePickerTableViewLayoutMarginsObserver> layoutMarginsObserver; // @synthesize layoutMarginsObserver=_layoutMarginsObserver;
-@property (nonatomic) id<TKTonePickerTableViewSeparatorObserver> separatorObserver; // @synthesize separatorObserver=_separatorObserver;
+@property (weak, nonatomic) id<TKTonePickerTableViewLayoutMarginsObserver> layoutMarginsObserver; // @synthesize layoutMarginsObserver=_layoutMarginsObserver;
+@property (weak, nonatomic) id<TKTonePickerTableViewSeparatorObserver> separatorObserver; // @synthesize separatorObserver=_separatorObserver;
 
+- (void).cxx_destruct;
 - (void)_handleSeparatorColorDidChange;
 - (void)layoutMarginsDidChange;
 - (void)layoutSubviews;

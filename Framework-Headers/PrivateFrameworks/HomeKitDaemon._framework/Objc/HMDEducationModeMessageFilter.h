@@ -15,10 +15,10 @@
 @property (nonatomic, getter=isEphemeralMultiUser) BOOL ephemeralMultiUser; // @synthesize ephemeralMultiUser=_ephemeralMultiUser;
 @property (nonatomic, getter=isManagedAppleID) BOOL managedAppleID; // @synthesize managedAppleID=_managedAppleID;
 
-- (void)_handleActiveAccountChanged:(id)arg1;
 - (void)_update;
 - (BOOL)acceptMessage:(id)arg1 target:(id)arg2 errorReason:(id *)arg3;
 - (void)dealloc;
+- (void)handleActiveAccountChanged:(id)arg1;
 - (id)initWithName:(id)arg1;
 
 @end

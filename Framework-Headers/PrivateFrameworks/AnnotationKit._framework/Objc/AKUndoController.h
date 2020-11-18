@@ -40,6 +40,7 @@
 - (void)dealloc;
 - (id)initWithController:(id)arg1;
 - (void)observeUndoManagerCheckpoint:(id)arg1;
+- (void)observeUndoManagerDetectedEdit:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)startObservingPageModelController:(id)arg1;
 - (void)stopObservingPageModelController:(id)arg1;

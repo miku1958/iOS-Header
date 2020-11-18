@@ -6,13 +6,13 @@
 
 #import <WebUI/WBUFormAutoFillWebView.h>
 
-#import <SafariServices/_SFJavaScriptDialogPresenting-Protocol.h>
+#import <SafariServices/_SFDialogPresenting-Protocol.h>
 
-@class NSString, UIView;
+@class NSString, _SFDialogView;
 
-@interface _SFWebView : WBUFormAutoFillWebView <_SFJavaScriptDialogPresenting>
+@interface _SFWebView : WBUFormAutoFillWebView <_SFDialogPresenting>
 {
-    UIView *_dialogView;
+    _SFDialogView *_dialogView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,7 +22,6 @@
 
 - (void).cxx_destruct;
 - (void)_setObscuredInsets:(struct UIEdgeInsets)arg1;
-- (BOOL)canPresentForDialogController:(id)arg1;
 - (void)dismissDialogView:(id)arg1 forDialogController:(id)arg2;
 - (void)layoutSubviews;
 - (void)presentDialogView:(id)arg1 forDialogController:(id)arg2;

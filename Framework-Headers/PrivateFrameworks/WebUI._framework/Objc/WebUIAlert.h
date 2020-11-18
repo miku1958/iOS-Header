@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSString;
+@class NSArray, NSString;
 
 @interface WebUIAlert : NSObject
 {
     int _otherAction;
-    NSMutableArray *_tableItems;
-    long long _indexOfSelectedTableItem;
+    long long _indexOfSelectedIdentity;
     int _type;
     int _defaultAction;
     int _tableAction;
@@ -21,6 +20,8 @@
     NSString *_title;
     NSString *_bodyText;
     id _context;
+    NSArray *_identities;
+    NSArray *_titles;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType actionHandler; // @synthesize actionHandler=_actionHandler;
@@ -29,9 +30,11 @@
 @property (strong, nonatomic) id context; // @synthesize context=_context;
 @property (readonly, nonatomic) int defaultAction; // @synthesize defaultAction=_defaultAction;
 @property (nonatomic) int hideAction; // @synthesize hideAction=_hideAction;
+@property (strong, nonatomic) NSArray *identities; // @synthesize identities=_identities;
+@property (readonly, nonatomic) id selectedIdentity;
 @property (readonly, nonatomic) int tableAction; // @synthesize tableAction=_tableAction;
-@property (readonly, copy, nonatomic) NSArray *tableItems; // @synthesize tableItems=_tableItems;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (readonly, copy, nonatomic) NSArray *titles; // @synthesize titles=_titles;
 @property (readonly, nonatomic) int type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
@@ -41,9 +44,7 @@
 - (id)initWithType:(int)arg1 title:(id)arg2 bodyText:(id)arg3 defaultAction:(int)arg4 otherAction:(int)arg5 tableAction:(int)arg6;
 - (id)initWithType:(int)arg1 title:(id)arg2 defaultAction:(int)arg3 otherAction:(int)arg4;
 - (id)initWithType:(int)arg1 title:(id)arg2 defaultAction:(int)arg3 otherAction:(int)arg4 tableAction:(int)arg5;
-- (id)selectedTableItem;
 - (void)setSelectedTableItemIndex:(long long)arg1;
-- (void)setTableItems:(id)arg1 withTitles:(id)arg2;
 
 @end
 

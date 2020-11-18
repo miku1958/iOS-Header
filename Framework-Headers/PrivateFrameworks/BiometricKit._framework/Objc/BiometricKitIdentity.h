@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BiometricKit/NSCopying-Protocol.h>
 #import <BiometricKit/NSSecureCoding-Protocol.h>
@@ -13,6 +13,7 @@
 
 @interface BiometricKitIdentity : NSObject <NSSecureCoding, NSCopying>
 {
+    unsigned int _userID;
     int _type;
     int _attribute;
     int _entity;
@@ -30,6 +31,7 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (nonatomic) long long updateCount; // @synthesize updateCount=_updateCount;
+@property (nonatomic) unsigned int userID; // @synthesize userID=_userID;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (id)biometricKitIdentity;

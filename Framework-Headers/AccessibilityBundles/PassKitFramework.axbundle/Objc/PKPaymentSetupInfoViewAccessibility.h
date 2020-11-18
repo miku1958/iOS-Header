@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2 heroImageController:(id)arg3;
 
 @end
 

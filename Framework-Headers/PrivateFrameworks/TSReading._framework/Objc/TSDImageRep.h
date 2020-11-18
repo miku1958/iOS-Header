@@ -6,12 +6,13 @@
 
 #import <TSReading/TSDMediaRep.h>
 
+#import <TSReading/CALayerDelegate-Protocol.h>
 #import <TSReading/TSDMagicMoveMatching-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSCache, NSMutableArray, NSObject, NSRecursiveLock, TSDImageRepSizingState, TSDInstantAlphaTracker, TSDLayoutGeometry;
+@class CALayer, CAShapeLayer, NSCache, NSMutableArray, NSObject, NSRecursiveLock, NSString, TSDImageRepSizingState, TSDInstantAlphaTracker, TSDLayoutGeometry;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
-@interface TSDImageRep : TSDMediaRep <TSDMagicMoveMatching>
+@interface TSDImageRep : TSDMediaRep <CALayerDelegate, TSDMagicMoveMatching>
 {
     TSDLayoutGeometry *mLastImageGeometryInRoot;
     TSDLayoutGeometry *mLastMaskGeometryInRoot;
@@ -48,6 +49,11 @@
     NSObject<OS_dispatch_semaphore> *mUpdateFromLayoutBlocksLock;
     unsigned long long mImageSizingDisabledCount;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (double)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2;
 + (struct CGPath *)p_newPathToBakeIntoSizedImageForSize:(struct CGSize)arg1 withImageLayout:(id)arg2 orientation:(long long)arg3;

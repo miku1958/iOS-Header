@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 + (void)hideDimmingViewAnimated:(BOOL)arg1;
 + (BOOL)hideTopMostAlertAnimated:(BOOL)arg1;
 + (void)initialize;
-+ (void)noteOrientationChangingTo:(long long)arg1;
 + (void)noteOrientationChangingTo:(long long)arg1 animated:(BOOL)arg2;
 + (void)removeFromStack:(id)arg1;
 + (void)reorientAlertWindowTo:(long long)arg1 animated:(BOOL)arg2 keyboard:(id)arg3;

@@ -12,7 +12,7 @@
 
 @interface CAMStillImageCaptureResponse : CAMCaptureResponse <CAMTransientAssetConvertible>
 {
-    BOOL _HDREV0;
+    BOOL _originalForHDR;
     BOOL _expectingPairedVideo;
     NSString *_persistenceUUID;
     NSDate *_captureDate;
@@ -22,7 +22,6 @@
     UIImage *_imageWellImage;
 }
 
-@property (readonly, nonatomic, getter=isHDREV0) BOOL HDREV0; // @synthesize HDREV0=_HDREV0;
 @property (readonly, copy, nonatomic) NSString *burstIdentifier; // @synthesize burstIdentifier=_burstIdentifier;
 @property (readonly, nonatomic) unsigned long long burstRepresentedCount; // @synthesize burstRepresentedCount=_burstRepresentedCount;
 @property (readonly, nonatomic) NSDate *captureDate; // @synthesize captureDate=_captureDate;
@@ -39,6 +38,8 @@
 @property (readonly, nonatomic) unsigned long long mediaType;
 @property (readonly, copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property (readonly, nonatomic) unsigned long long numberOfRepresentedAssets;
+@property (readonly, nonatomic, getter=isOriginal) BOOL original;
+@property (readonly, nonatomic, getter=isOriginalForHDR) BOOL originalForHDR; // @synthesize originalForHDR=_originalForHDR;
 @property (readonly, copy, nonatomic) NSURL *persistenceURL;
 @property (readonly, copy, nonatomic) NSString *persistenceUUID; // @synthesize persistenceUUID=_persistenceUUID;
 @property (readonly, nonatomic) UIImage *placeholderImage;
@@ -48,7 +49,7 @@
 @property (readonly, nonatomic) NSString *uuid;
 
 - (void).cxx_destruct;
-- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 captureDate:(id)arg3 metadata:(id)arg4 burstIdentifier:(id)arg5 burstRepresentedCount:(unsigned long long)arg6 imageWellImage:(id)arg7 HDREV0:(BOOL)arg8 expectingPairedVideo:(BOOL)arg9;
+- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 captureDate:(id)arg3 metadata:(id)arg4 burstIdentifier:(id)arg5 burstRepresentedCount:(unsigned long long)arg6 imageWellImage:(id)arg7 originalForHDR:(BOOL)arg8 expectingPairedVideo:(BOOL)arg9;
 
 @end
 

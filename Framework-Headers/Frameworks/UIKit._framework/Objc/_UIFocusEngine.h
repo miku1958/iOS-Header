@@ -7,11 +7,12 @@
 #import <Foundation/NSObject.h>
 
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKit/_UIFocusMapDelegate-Protocol.h>
 
 @class CADisplayLink, NSArray, NSMapTable, NSString, NSTimer, UIMoveEvent, UIScrollView, UITapGestureRecognizer, UIView, UIWindow, _UIFocusEngineJoystickGestureRecognizer, _UIFocusEnginePanGestureRecognizer, _UIFocusPressGestureRecognizer, _UIFocusSoundPool, _UIFocusTouchDebugView;
 @protocol OS_dispatch_queue, _UIFocusScrollAnimator;
 
-@interface _UIFocusEngine : NSObject <UIGestureRecognizerDelegate>
+@interface _UIFocusEngine : NSObject <_UIFocusMapDelegate, UIGestureRecognizerDelegate>
 {
     _UIFocusEnginePanGestureRecognizer *_panGestureRecognizer;
     UITapGestureRecognizer *_tapGestureRecognizer;
@@ -91,10 +92,13 @@
 - (void).cxx_destruct;
 - (void)_addGestureRecognizers;
 - (void)_addVisibleRect:(struct CGRect)arg1 toScrollViewForAnimation:(id)arg2;
+- (BOOL)_allowsFocusMovementAction;
 - (void)_animateOffsetOfScrollView:(id)arg1 toShowFocusedView:(id)arg2;
-- (BOOL)_attemptToMoveFocusAlongHeading:(unsigned long long)arg1 reportedVelocity:(struct CGVector)arg2 startingView:(id)arg3;
-- (id)_bestFocusCandidateForFocusHeading:(unsigned long long)arg1 currentFocusView:(id)arg2 direction:(struct CGVector)arg3;
-- (id)_bestFocusCandidateStartingAtView:(id)arg1 focusHeading:(unsigned long long)arg2;
+- (BOOL)_attemptFocusMovement:(id)arg1 fromItem:(id)arg2;
+- (BOOL)_attemptPanGestureFocusMovement:(id)arg1 fromItem:(id)arg2;
+- (id)_bestCandidateForFocusMovement:(id)arg1 fromItem:(id)arg2;
+- (id)_bestCandidateForLinearFocusMovement:(id)arg1 fromItem:(id)arg2;
+- (id)_bestCandidateForNonLinearFocusMovement:(id)arg1 fromItem:(id)arg2;
 - (id)_cachedSearchResultForHeading:(unsigned long long)arg1;
 - (void)_cancelScrollingForScrollView:(id)arg1;
 - (void)_cleanUpSounds;
@@ -104,12 +108,16 @@
 - (struct CGPoint)_contentOffsetForScrollView:(id)arg1 toFocusView:(id)arg2;
 - (struct CGPoint)_contentOffsetForScrollView:(id)arg1 toFocusView:(id)arg2 targetOffset:(struct CGPoint)arg3 targetBounds:(struct CGRect)arg4;
 - (void)_continueTouchWithMomentum;
-- (double)_effortRequiredToMoveAlongHeading:(unsigned long long)arg1;
+- (double)_effortRequiredForFocusMovement:(id)arg1 fromItem:(id)arg2;
 - (void)_ensureFocusedViewIsOnscreen:(id)arg1;
 - (void)_exitJoystickModeForReal:(id)arg1;
-- (id)_findFocusCandidateByExhaustivelySearchingScrollView:(id)arg1 focusHeading:(unsigned long long)arg2 startingView:(id)arg3;
-- (id)_findFocusCandidateStartingInRegionWithoutLoadingScrollViewContent:(id)arg1 focusHeading:(unsigned long long)arg2 startingView:(id)arg3 minimumSearchArea:(struct CGRect)arg4;
-- (id)_focusedView;
+- (id)_findFocusCandidateByExhaustivelySearchingScrollView:(id)arg1 forFocusMovement:(id)arg2 fromItem:(id)arg3;
+- (id)_findFocusCandidateBySearchingLinearFocusMovementSequencesForMovement:(id)arg1 fromItem:(id)arg2;
+- (id)_findFocusCandidateWithoutLoadingScrollViewContent:(id)arg1 forFocusMovement:(id)arg2 fromItem:(id)arg3 minimumSearchArea:(struct CGRect)arg4;
+- (id)_focusMap:(id)arg1 preferredDefaultFocusItemInEnvironment:(id)arg2;
+- (id)_focusMap:(id)arg1 preferredDestinationItemForFocusMovement:(id)arg2;
+- (id)_focusedItem;
+- (id)_focusedItemInfo;
 - (double)_frictionInterpolationForMomentumSpeed:(double)arg1 totalDistance:(double)arg2 slope:(double)arg3 shortDistance:(double)arg4 longDistance:(double)arg5;
 - (void)_gestureRecognizerFailed:(id)arg1;
 - (void)_handleButtonGesture:(id)arg1;
@@ -123,7 +131,7 @@
 - (double)_horizontalFrictionInterpolationForMomentumSpeed:(double)arg1 totalDistance:(double)arg2;
 - (BOOL)_isContinuingTouchWithMomentum;
 - (BOOL)_isScrollingScrollView:(id)arg1;
-- (BOOL)_joystickAttemptToMoveAlongHeading:(unsigned long long)arg1 withVelocity:(struct CGVector)arg2;
+- (BOOL)_joystickAttemptFocusMovement:(id)arg1 fromItem:(id)arg2;
 - (void)_joystickDisplayLinkHeartbeat:(id)arg1;
 - (void)_joystickGestureBegan:(id)arg1;
 - (void)_joystickGestureEnded:(id)arg1;
@@ -131,33 +139,35 @@
 - (void)_joystickPerformRepeat:(id)arg1;
 - (double)_joystickRepeatDurationForTimeInMovementZone:(double)arg1;
 - (struct CGVector)_joystickVelocityForHeading:(unsigned long long)arg1 timeInMovementZone:(double)arg2;
-- (void)_loadScrollViewContentAlongHeading:(unsigned long long)arg1 fromView:(id)arg2;
+- (void)_loadScrollViewContentForFocusMovement:(id)arg1 fromItem:(id)arg2;
 - (struct CGRect)_minimumSearchAreaForContainerView:(id)arg1;
 - (void)_momentumHeartbeat:(id)arg1;
-- (BOOL)_moveFocusAlongHeading:(unsigned long long)arg1 withVelocity:(struct CGVector)arg2;
-- (id)_noCache_bestFocusCandidateStartingAtView:(id)arg1 focusHeading:(unsigned long long)arg2;
+- (id)_noCache_bestCandidateForNonLinearFocusMovement:(id)arg1 fromItem:(id)arg2;
 - (void)_panGestureEnd:(id)arg1;
 - (id)_panGestureRecognizer;
 - (void)_panGestureStart:(id)arg1;
-- (void)_peekScrollViewStartingAtFocusedView:(id)arg1 progress:(struct CGVector)arg2;
+- (void)_peekScrollViewStartingAtFocusedItem:(id)arg1 progress:(struct CGVector)arg2;
+- (BOOL)_performFocusMovement:(id)arg1;
 - (void)_performScrollingIfNeededForFocusUpdateContext:(id)arg1;
 - (void)_playFocusSound:(long long)arg1 withPan:(double)arg2 volume:(double)arg3;
 - (id)_poolForFocusSound:(long long)arg1;
 - (void)_recordMomentumForPoint:(struct CGPoint)arg1;
 - (void)_removeGestureRecognizers;
 - (void)_removeVisibleRect:(struct CGRect)arg1 fromScrollViewForAnimation:(id)arg2;
-- (void)_resetFocusDirectionRollbackForAllViews;
-- (void)_resetFocusDirectionRollbackForView:(id)arg1;
+- (void)_resetFocusDirectionRollbackForAllItems;
+- (void)_resetFocusDirectionRollbackForItem:(id)arg1;
 - (void)_resetJoystick;
 - (void)_resetMomentum;
+- (void)_resetPanGestureState;
+- (void)_resetProgressAccumulatorForHeading:(unsigned long long)arg1 focusedItem:(id)arg2;
 - (void)_resetScrollViewPeek:(BOOL)arg1;
 - (void)_resetViewSearchCache;
 - (void)_runPerformanceTestWithName:(id)arg1 bySwipingAlongAxis:(int)arg2;
 - (void)_runPerformanceTestWithName:(id)arg1 fakeEvents:(CDStruct_37aeb80e *)arg2 count:(int)arg3;
 - (void)_scrollView:(id)arg1 toOffset:(struct CGPoint)arg2;
-- (id)_scrollViewToPeekStartingAtFocusedView:(id)arg1 focusHeading:(unsigned long long)arg2;
-- (void)_sendDelayedPressEventWithType:(long long)arg1 timestamp:(double)arg2;
+- (id)_scrollViewToPeekFocusMovement:(id)arg1 fromItem:(id)arg2;
 - (void)_sendFocusDirectionNotificationWithDirection:(struct CGPoint)arg1;
+- (BOOL)_sendFocusMovementActionIfPossible:(id)arg1;
 - (void)_sendGestureBeginNotification;
 - (void)_sendGestureEndNotification;
 - (void)_sendMomentumEndNotificationsAndAnimateRollback:(BOOL)arg1;
@@ -170,13 +180,15 @@
 - (BOOL)_shouldPerformFocusUpdateWithCurrentMomentumStatus;
 - (BOOL)_shouldRecordDestinationViewDistanceOffscreen;
 - (id)_soundQueue;
-- (BOOL)_speedBumpsAllowFocusToMoveAlongHeading:(unsigned long long)arg1;
-- (void)_startFocusDirectionRollbackForView:(id)arg1;
+- (BOOL)_speedBumpsAllowFocusMovement:(id)arg1 fromItem:(id)arg2;
+- (void)_startFocusDirectionRollbackForItem:(id)arg1;
 - (void)_stopMomentumAndPerformRollback;
 - (struct CGPoint)_targetContentOffsetForScrollView:(id)arg1;
 - (void)_teardownDebugOverlays;
 - (int)_touchRegionForDigitizerLocation:(struct CGPoint)arg1;
 - (struct CGSize)_touchSensitivityForView:(id)arg1;
+- (BOOL)_uiktest_performFocusMovement:(id)arg1;
+- (BOOL)_uiktest_updateFocusToItem:(id)arg1;
 - (void)_updateDebugOverlayByRemovingTouchIndicators;
 - (void)_updateDebugOverlayWithTouchAtNormalizedPoint:(struct CGPoint)arg1 navigationBoundary:(struct CGRect)arg2;
 - (BOOL)_updateFocusWithContext:(id)arg1;
@@ -184,8 +196,8 @@
 - (void)_updatePanLocation:(struct CGPoint)arg1 reportedVelocity:(struct CGVector)arg2 wantsFocusDirection:(BOOL)arg3;
 - (double)_verticalFrictionInterpolationForMomentumSpeed:(double)arg1 totalDistance:(double)arg2;
 - (struct CGRect)_visibleBoundsForScrollView:(id)arg1;
-- (BOOL)_wouldCrossSpeedBumpWhenMovingAlongHeading:(unsigned long long)arg1;
-- (BOOL)_wouldCrossSpeedBumpWhenMovingAlongHeading:(unsigned long long)arg1 fromView:(id)arg2 toView:(id)arg3;
+- (BOOL)_wouldCrossSpeedBumpDuringFocusMovement:(id)arg1 fromItem:(id)arg2;
+- (BOOL)_wouldCrossSpeedBumpDuringFocusMovement:(id)arg1 fromView:(id)arg2 toView:(id)arg3;
 - (void)dealloc;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)init;

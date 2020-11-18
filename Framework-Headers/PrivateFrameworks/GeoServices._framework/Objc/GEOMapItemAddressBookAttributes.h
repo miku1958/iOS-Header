@@ -12,6 +12,7 @@
 
 @interface GEOMapItemAddressBookAttributes : PBCodable <NSCopying>
 {
+    NSString *_addressIdentifier;
     int _addressType;
     NSString *_name;
     NSString *_spokenName;
@@ -22,7 +23,9 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSString *addressIdentifier; // @synthesize addressIdentifier=_addressIdentifier;
 @property (nonatomic) int addressType; // @synthesize addressType=_addressType;
+@property (readonly, nonatomic) BOOL hasAddressIdentifier;
 @property (nonatomic) BOOL hasAddressType;
 @property (nonatomic) BOOL hasIsMe;
 @property (readonly, nonatomic) BOOL hasName;
@@ -31,6 +34,8 @@
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSString *spokenName; // @synthesize spokenName=_spokenName;
 
+- (int)StringAsAddressType:(id)arg1;
+- (id)addressTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

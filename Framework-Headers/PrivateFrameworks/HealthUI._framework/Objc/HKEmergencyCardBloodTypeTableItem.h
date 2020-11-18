@@ -15,6 +15,7 @@
     HKMedicalIDEditorPickerCell *_editableCell;
     _HKMedicalIDMultilineStringCell *_displayCell;
     _HKCustomInsetCellLayoutManager *_layoutManager;
+    BOOL _isEditing;
 }
 
 - (void).cxx_destruct;

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class UIButton, UIImageView, UILabel, _UIBackdropView;
+@class NSString, UIButton, UIImageView, UILabel, _UIBackdropView;
 
 @interface _SFCrashBanner : UIView
 {
@@ -20,6 +20,7 @@
     UIButton *_closeButton;
 }
 
+@property (copy, nonatomic) NSString *backdropGroupName;
 @property (strong, nonatomic) UIButton *closeButton; // @synthesize closeButton=_closeButton;
 @property (readonly, nonatomic) BOOL usesLightControls; // @synthesize usesLightControls=_usesLightControls;
 

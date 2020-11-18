@@ -6,20 +6,24 @@
 
 #import <HomeKitDaemon/HMDCharacteristicRequest.h>
 
-@class NSData;
+@class NSData, NSUUID;
 
 @interface HMDCharacteristicWriteRequest : HMDCharacteristicRequest
 {
     id _value;
     NSData *_authorizationData;
+    NSUUID *_identifier;
 }
 
 @property (readonly, nonatomic) NSData *authorizationData; // @synthesize authorizationData=_authorizationData;
+@property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) id value; // @synthesize value=_value;
 
 + (id)writeRequestWithCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3;
++ (id)writeRequestWithCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 identifier:(id)arg4;
 - (void).cxx_destruct;
-- (id)initWithCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3;
+- (id)description;
+- (id)initWithCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 identifier:(id)arg4;
 
 @end
 

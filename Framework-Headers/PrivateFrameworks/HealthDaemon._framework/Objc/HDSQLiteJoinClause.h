@@ -10,26 +10,26 @@
 
 @interface HDSQLiteJoinClause : NSObject
 {
-    Class _localEntityClass;
-    Class _targetEntityClass;
     NSString *_joinAsName;
+    NSString *_localTable;
+    Class _targetEntityClass;
     NSString *_localReferenceProperty;
     NSString *_targetKeyProperty;
     long long _joinType;
 }
 
-@property (readonly, copy, nonatomic) NSString *joinAsName; // @synthesize joinAsName=_joinAsName;
+@property (readonly, copy, nonatomic) NSString *joinAsName;
 @property (readonly, nonatomic) long long joinType; // @synthesize joinType=_joinType;
-@property (readonly, nonatomic) Class localEntityClass; // @synthesize localEntityClass=_localEntityClass;
 @property (readonly, copy, nonatomic) NSString *localReferenceProperty; // @synthesize localReferenceProperty=_localReferenceProperty;
+@property (readonly, copy, nonatomic) NSString *localTable; // @synthesize localTable=_localTable;
 @property (readonly, nonatomic) Class targetEntityClass; // @synthesize targetEntityClass=_targetEntityClass;
 @property (readonly, copy, nonatomic) NSString *targetKeyProperty; // @synthesize targetKeyProperty=_targetKeyProperty;
 
-+ (id)innerJoinClauseFromEntity:(Class)arg1 toTargetEntity:(Class)arg2 as:(id)arg3 localReference:(id)arg4 targetKey:(id)arg5;
-+ (id)leftJoinClauseFromEntity:(Class)arg1 toTargetEntity:(Class)arg2 as:(id)arg3 localReference:(id)arg4 targetKey:(id)arg5;
++ (id)innerJoinClauseFromTable:(id)arg1 toTargetEntity:(Class)arg2 as:(id)arg3 localReference:(id)arg4 targetKey:(id)arg5;
++ (id)leftJoinClauseFromTable:(id)arg1 toTargetEntity:(Class)arg2 as:(id)arg3 localReference:(id)arg4 targetKey:(id)arg5;
 - (void).cxx_destruct;
 - (id)SQLJoinClause;
-- (id)_initWithJoinType:(long long)arg1 fromEntity:(Class)arg2 toTargetEntity:(Class)arg3 as:(id)arg4 localReference:(id)arg5 targetKey:(id)arg6;
+- (id)_initWithJoinType:(long long)arg1 fromTable:(id)arg2 toTargetEntity:(Class)arg3 as:(id)arg4 localReference:(id)arg5 targetKey:(id)arg6;
 - (id)description;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

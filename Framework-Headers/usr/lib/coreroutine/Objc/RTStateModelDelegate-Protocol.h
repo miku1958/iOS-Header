@@ -6,12 +6,9 @@
 
 #import <coreroutine/NSObject-Protocol.h>
 
-@class CLVisit, NSError;
-
 @protocol RTStateModelDelegate <NSObject>
 
 @optional
 - (void)onLocationsOfInterestUpdated;
-- (void)onVisit:(CLVisit *)arg1 withError:(NSError *)arg2;
 @end
 

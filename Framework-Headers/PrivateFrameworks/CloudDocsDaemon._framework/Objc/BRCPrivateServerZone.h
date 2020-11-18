@@ -6,7 +6,7 @@
 
 #import <CloudDocsDaemon/BRCServerZone.h>
 
-@class BRCPrivateLocalContainer, BRCZonePurgeOperation, NSError;
+@class BRCPrivateClientZone, BRCZonePurgeOperation, NSError;
 
 @interface BRCPrivateServerZone : BRCServerZone
 {
@@ -14,11 +14,11 @@
     NSError *_deleteAllContentsOperationLastError;
 }
 
-@property (readonly, nonatomic) BRCPrivateLocalContainer *container;
+@property (readonly, nonatomic) BRCPrivateClientZone *clientZone;
 @property (readonly, nonatomic) BRCZonePurgeOperation *deleteAllContentsOperation;
 @property (readonly, nonatomic) NSError *deleteAllContentsOperationLastError;
-@property (readonly, nonatomic) BOOL isPrivateContainer;
-@property (readonly, nonatomic) BOOL isSharedContainer;
+@property (readonly, nonatomic) BOOL isPrivateZone;
+@property (readonly, nonatomic) BOOL isSharedZone;
 
 - (void).cxx_destruct;
 - (void)_checkResultSetIsEmpty:(id)arg1 logToFile:(struct __sFILE *)arg2 reason:(id)arg3 result:(BOOL *)arg4;

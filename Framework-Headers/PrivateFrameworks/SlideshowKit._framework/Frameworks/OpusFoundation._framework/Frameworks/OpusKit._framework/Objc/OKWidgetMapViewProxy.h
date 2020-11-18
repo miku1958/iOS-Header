@@ -15,7 +15,7 @@
 @interface OKWidgetMapViewProxy : OKWidgetView <OKWidgetMapViewProxyExports, UIGestureRecognizerDelegate, MKMapViewDelegate>
 {
     OKMKMapView *_mapView;
-    CDStruct_feeb6407 _region;
+    CDStruct_b7cb895d _region;
     BOOL _zoomToFitAnnotations;
 }
 
@@ -40,9 +40,9 @@
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setSettingAnnotations:(id)arg1;
-- (void)setSettingCenterCoordinate:(CDStruct_c3b9c2ee)arg1;
+- (void)setSettingCenterCoordinate:(struct CLLocationCoordinate2D)arg1;
 - (void)setSettingMapType:(unsigned long long)arg1;
-- (void)setSettingRegion:(CDStruct_feeb6407)arg1;
+- (void)setSettingRegion:(CDStruct_b7cb895d)arg1;
 - (void)setSettingScrollEnabled:(BOOL)arg1;
 - (void)setSettingScrollWheelEnabled:(BOOL)arg1;
 - (void)setSettingShowsBuildings:(BOOL)arg1;
@@ -50,10 +50,10 @@
 - (void)setSettingShowsUserLocation:(BOOL)arg1;
 - (void)setSettingZoomEnabled:(BOOL)arg1;
 - (void)setSettingZoomToFitAnnotations:(BOOL)arg1;
-- (CDStruct_c3b9c2ee)settingCenterCoordinate;
+- (struct CLLocationCoordinate2D)settingCenterCoordinate;
 - (unsigned long long)settingMapType;
 - (id)settingObjectForKey:(id)arg1;
-- (CDStruct_feeb6407)settingRegion;
+- (CDStruct_b7cb895d)settingRegion;
 - (BOOL)settingScrollEnabled;
 - (BOOL)settingScrollWheelEnabled;
 - (BOOL)settingShowsBuildings;

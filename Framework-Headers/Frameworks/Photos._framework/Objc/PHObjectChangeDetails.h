@@ -13,8 +13,10 @@
     PHObject *_objectBeforeChanges;
     PHObject *_objectAfterChanges;
     BOOL _assetContentChanged;
+    BOOL _assetCollectionTitlePropertiesChanged;
 }
 
+@property (readonly, nonatomic) BOOL assetCollectionTitlePropertiesChanged;
 @property (readonly) BOOL assetContentChanged;
 @property (readonly) PHObject *objectAfterChanges;
 @property (readonly) PHObject *objectBeforeChanges;

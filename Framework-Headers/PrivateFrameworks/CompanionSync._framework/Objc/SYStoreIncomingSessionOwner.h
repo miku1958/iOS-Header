@@ -6,6 +6,7 @@
 
 #import <CompanionSync/SYStoreSessionOwner.h>
 
+__attribute__((visibility("hidden")))
 @interface SYStoreIncomingSessionOwner : SYStoreSessionOwner
 {
 }

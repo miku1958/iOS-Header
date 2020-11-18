@@ -12,7 +12,7 @@
 
 @interface GEOSuggestionsFeedbackCollection : PBCodable <NSCopying>
 {
-    CDStruct_612aec5b _sessionID;
+    struct GEOSessionID _sessionID;
     GEOPDAutocompleteEntry *_suggestionEntry;
     int _suggestionEntryIndex;
     NSData *_suggestionEntryMetadata;
@@ -31,7 +31,7 @@
 @property (readonly, nonatomic) BOOL hasSuggestionEntryMetadata;
 @property (readonly, nonatomic) BOOL hasSuggestionMetadata;
 @property (nonatomic) BOOL hasSuggestionsEntryListIndex;
-@property (nonatomic) CDStruct_612aec5b sessionID; // @synthesize sessionID=_sessionID;
+@property (nonatomic) struct GEOSessionID sessionID; // @synthesize sessionID=_sessionID;
 @property (strong, nonatomic) GEOPDAutocompleteEntry *suggestionEntry; // @synthesize suggestionEntry=_suggestionEntry;
 @property (nonatomic) int suggestionEntryIndex; // @synthesize suggestionEntryIndex=_suggestionEntryIndex;
 @property (strong, nonatomic) NSData *suggestionEntryMetadata; // @synthesize suggestionEntryMetadata=_suggestionEntryMetadata;

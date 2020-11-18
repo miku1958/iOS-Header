@@ -31,7 +31,6 @@
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)invalidateFonts;
-- (void)tintColorDidChange;
 - (void)updateTime;
 
 @end

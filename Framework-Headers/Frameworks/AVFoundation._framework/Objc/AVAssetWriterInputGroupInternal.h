@@ -12,6 +12,7 @@
 {
     NSArray *inputs;
     AVAssetWriterInput *defaultInput;
+    NSArray *provisionalInputs;
 }
 
 @end

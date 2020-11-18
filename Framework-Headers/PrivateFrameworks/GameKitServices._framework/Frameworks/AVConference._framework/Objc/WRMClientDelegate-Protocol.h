@@ -6,5 +6,6 @@
 
 @protocol WRMClientDelegate
 - (void)setWRMMetricConfig:(CDStruct_69d7cc99 *)arg1;
+- (void)setWRMNotification:(CDStruct_d2860d30 *)arg1;
 @end
 

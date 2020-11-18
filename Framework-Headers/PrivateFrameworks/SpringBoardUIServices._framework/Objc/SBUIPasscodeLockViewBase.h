@@ -7,95 +7,109 @@
 #import <UIKit/UIView.h>
 
 #import <SpringBoardUIServices/SBFLegibilitySettingsProviderDelegate-Protocol.h>
-#import <SpringBoardUIServices/SBUIBiometricEventObserver-Protocol.h>
+#import <SpringBoardUIServices/SBUIBiometricResourceObserver-Protocol.h>
 #import <SpringBoardUIServices/SBUIPasscodeLockView-Protocol.h>
 #import <SpringBoardUIServices/SBUIPasscodeLockView_Internal-Protocol.h>
 
-@class NSString, NSTimer, SBUIPasscodeEntryField, UIColor, _UILegibilitySettings;
-@protocol SBFLegibilitySettingsProvider, SBUIPasscodeLockViewDelegate;
+@class NSMutableSet, NSString, NSTimer, SBUIPasscodeEntryField, UIColor, _UIFeedbackEventBehavior, _UIFeedbackKeyboardBehavior, _UILegibilitySettings;
+@protocol BSInvalidatable, SBFLegibilitySettingsProvider, SBUIBiometricResource, SBUIPasscodeLockViewDelegate;
 
-@interface SBUIPasscodeLockViewBase : UIView <SBUIBiometricEventObserver, SBFLegibilitySettingsProviderDelegate, SBUIPasscodeLockView_Internal, SBUIPasscodeLockView>
+@interface SBUIPasscodeLockViewBase : UIView <SBUIBiometricResourceObserver, SBFLegibilitySettingsProviderDelegate, SBUIPasscodeLockView_Internal, SBUIPasscodeLockView>
 {
-    int _style;
+    BOOL _needStatusTextUpdate;
     BOOL _playsKeypadSounds;
     BOOL _showsEmergencyCallButton;
     BOOL _showsStatusField;
     BOOL _becameVisible;
     double _backgroundAlpha;
     UIColor *_customBackgroundColor;
-    SBUIPasscodeEntryField *_entryField;
     id<SBFLegibilitySettingsProvider> _backgroundLegibilitySettingsProvider;
-    double _luminanceBoost;
     double _currentBacklightLevel;
     _UILegibilitySettings *_legibilitySettings;
     BOOL _allowsStatusTextUpdatingOnResignFirstResponder;
     BOOL _mesaLockedOut;
-    unsigned long long _biometricMatchMode;
+    BOOL _isBiometricAuthenticationAllowed;
+    unsigned long long _biometricMatchingState;
+    id<BSInvalidatable> _biometricMatchingAssertion;
+    NSMutableSet *_biometricMatchingEnabledOverrideReasons;
     BOOL _deviceHasBeenUnlockedOnceSinceBoot;
-    BOOL _appearingForSmartCoverUnlock;
-    BOOL _enabledMatching;
+    BOOL _pendingBioUnlock;
+    int _currentPendingBioUnlockToken;
     BOOL _screenOn;
     BOOL _shouldResetForFailedPasscodeAttempt;
+    int _style;
     id<SBUIPasscodeLockViewDelegate> _delegate;
-    NSString *_statusText;
-    NSString *_statusSubtitleText;
+    SBUIPasscodeEntryField *_entryField;
+    double _luminanceBoost;
+    unsigned long long _biometricMatchMode;
+    id<SBUIBiometricResource> _biometricResource;
+    _UIFeedbackKeyboardBehavior *_keyboardFeedbackBehavior;
     unsigned long long _statusState;
     NSTimer *_screenBrightnessChangedTimer;
+    _UIFeedbackEventBehavior *_authenticationFeedbackBehavior;
+    NSString *_statusText;
+    NSString *_statusSubtitleText;
 }
 
 @property (strong, nonatomic, getter=_entryField, setter=_setEntryField:) SBUIPasscodeEntryField *_entryField; // @synthesize _entryField;
+@property (strong, nonatomic) _UIFeedbackEventBehavior *authenticationFeedbackBehavior; // @synthesize authenticationFeedbackBehavior=_authenticationFeedbackBehavior;
 @property (nonatomic) double backgroundAlpha; // @synthesize backgroundAlpha=_backgroundAlpha;
 @property (strong, nonatomic) id<SBFLegibilitySettingsProvider> backgroundLegibilitySettingsProvider; // @synthesize backgroundLegibilitySettingsProvider=_backgroundLegibilitySettingsProvider;
+@property (nonatomic, getter=isBiometricAuthenticationAllowed) BOOL biometricAuthenticationAllowed; // @synthesize biometricAuthenticationAllowed=_isBiometricAuthenticationAllowed;
 @property (nonatomic) unsigned long long biometricMatchMode; // @synthesize biometricMatchMode=_biometricMatchMode;
+@property (strong, nonatomic) id<SBUIBiometricResource> biometricResource; // @synthesize biometricResource=_biometricResource;
 @property (strong, nonatomic) UIColor *customBackgroundColor; // @synthesize customBackgroundColor=_customBackgroundColor;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<SBUIPasscodeLockViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<SBUIPasscodeLockViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) _UIFeedbackKeyboardBehavior *keyboardFeedbackBehavior; // @synthesize keyboardFeedbackBehavior=_keyboardFeedbackBehavior;
 @property (nonatomic, getter=_luminosityBoost, setter=_setLuminosityBoost:) double luminosityBoost; // @synthesize luminosityBoost=_luminanceBoost;
 @property (readonly, nonatomic) NSString *passcode; // @dynamic passcode;
 @property (nonatomic) BOOL playsKeypadSounds; // @dynamic playsKeypadSounds;
-@property (strong) NSTimer *screenBrightnessChangedTimer; // @synthesize screenBrightnessChangedTimer=_screenBrightnessChangedTimer;
+@property (strong, nonatomic) NSTimer *screenBrightnessChangedTimer; // @synthesize screenBrightnessChangedTimer=_screenBrightnessChangedTimer;
 @property (nonatomic, getter=isScreenOn) BOOL screenOn; // @synthesize screenOn=_screenOn;
 @property (nonatomic) BOOL shouldResetForFailedPasscodeAttempt; // @synthesize shouldResetForFailedPasscodeAttempt=_shouldResetForFailedPasscodeAttempt;
 @property (nonatomic) BOOL showsEmergencyCallButton; // @synthesize showsEmergencyCallButton=_showsEmergencyCallButton;
 @property (nonatomic) BOOL showsStatusField; // @synthesize showsStatusField=_showsStatusField;
 @property (nonatomic, getter=_statusState, setter=_setStatusState:) unsigned long long statusState; // @synthesize statusState=_statusState;
-@property (readonly, copy, nonatomic, getter=_statusSubtitleText) NSString *statusSubtitleText; // @synthesize statusSubtitleText=_statusSubtitleText;
-@property (readonly, copy, nonatomic, getter=_statusText) NSString *statusText; // @synthesize statusText=_statusText;
+@property (copy, nonatomic, getter=_statusSubtitleText, setter=_setStatusSubtitleText:) NSString *statusSubtitleText; // @synthesize statusSubtitleText=_statusSubtitleText;
+@property (copy, nonatomic, getter=_statusText, setter=_setStatusText:) NSString *statusText; // @synthesize statusText=_statusText;
 @property (nonatomic) int style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_clearBrightnessChangeTimer;
 - (id)_defaultStatusText;
+- (void)_evaluateBiometricMatchingState;
 - (void)_evaluateLuminance;
-- (void)_handleBiometricEvent:(unsigned long long)arg1;
+- (void)_handleBiometricAuthentication;
 - (BOOL)_isBoundsPortraitOriented;
 - (void)_luminanceBoostDidChange;
 - (double)_luminanceBoostFromDisplayBrightness;
 - (double)_luminanceBoostFromLegibility;
-- (void)_noteAppearingForSmartCoverUnlock:(BOOL)arg1;
-- (void)_noteBioMatchingEnabledDidChange;
 - (void)_noteDeviceHasBeenUnlockedOnceSinceBoot:(BOOL)arg1;
 - (void)_noteScreenBrightnessDidChange;
 - (void)_notifyDelegatePasscodeEnteredViaMesa;
 - (long long)_orientation;
+- (void)_overrideBiometricMatchingEnabled:(BOOL)arg1 forReason:(id)arg2;
+- (void)_playAuthenticationFeedbackForSuccess:(BOOL)arg1 jiggleLock:(BOOL)arg2;
 - (void)_resetForFailedMesaAttempt;
 - (void)_resetForFailedPasscode:(BOOL)arg1;
 - (void)_resetStatusText;
 - (void)_screenBrightnessReallyDidChange;
 - (void)_sendDelegateKeypadKeyDown;
 - (void)_sendDelegateKeypadKeyUp;
+- (void)_setBiometricMatchingState:(unsigned long long)arg1;
 - (void)_setLegibilitySettings:(id)arg1;
-- (void)_setStatusSubtitleText:(id)arg1;
-- (void)_setStatusText:(id)arg1;
+- (void)_setStatusState:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (unsigned long long)_statusStateForLockoutState:(unsigned long long)arg1;
-- (void)_updateStatusStateForLockout;
-- (BOOL)_wantsBiometricAuthentication;
+- (void)_updateStatusStateForLockoutIfNecessaryAnimatedly:(BOOL)arg1;
+- (void)_updateStatusTextForBioEvent:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)autofillForSuccessfulMesaAttemptWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)becomeFirstResponder;
-- (void)biometricEventMonitor:(id)arg1 handleBiometricEvent:(unsigned long long)arg2;
+- (void)biometricResource:(id)arg1 matchingEnabledDidChange:(BOOL)arg2;
+- (void)biometricResource:(id)arg1 observeEvent:(unsigned long long)arg2;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canResignFirstResponder;
 - (void)dealloc;
@@ -109,10 +123,9 @@
 - (void)resetForScreenOff;
 - (BOOL)resignFirstResponder;
 - (void)setAllowsStatusTextUpdatingOnResignFirstResponder:(BOOL)arg1;
-- (void)setKeyPressClicksPrewarmed:(BOOL)arg1;
+- (void)setNeedsStatusTextUpdate;
 - (void)updateStatusText:(id)arg1 subtitle:(id)arg2 animated:(BOOL)arg3;
 - (void)updateStatusTextAnimated:(BOOL)arg1;
-- (void)updateStatusTextForBioEvent:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)willMoveToSuperview:(id)arg1;
 - (void)willMoveToWindow:(id)arg1;
 

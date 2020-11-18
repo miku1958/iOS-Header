@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDate, NSDictionary, NSString, NSUUID;
 
@@ -38,7 +38,7 @@
 @property (readonly, copy) NSDate *when; // @dynamic when;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)debugDescription;
 - (id)description;
 - (unsigned long long)hash;

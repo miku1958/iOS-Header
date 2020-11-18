@@ -10,6 +10,7 @@
 
 @interface ACAccount (ManagedConfiguration)
 
+@property (strong, nonatomic) NSString *mcAccountIdentifier;
 @property (strong, nonatomic) NSString *mcPayloadUUID;
 @property (strong, nonatomic) NSString *mcProfileUUID;
 

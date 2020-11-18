@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/BBSectionIdentity-Protocol.h>
 
@@ -23,8 +23,7 @@
 @property (strong) BBDataProviderIdentity *identity;
 @property (readonly) Class superclass;
 
-- (void)attachmentAspectRatioForRecordID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)attachmentPNGDataForRecordID:(id)arg1 sizeConstraints:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
 - (void)bulletinsWithRequestParameters:(id)arg1 lastCleared:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)canClearAllBulletins;
 - (BOOL)canClearBulletinsByDate;
@@ -33,14 +32,16 @@
 - (void)clearedInfoForClearingAllBulletinsWithLastClearedInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)clearedInfoForClearingBulletinsFromDate:(id)arg1 toDate:(id)arg2 lastClearedInfo:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dataProviderDidLoad;
-- (void)dealloc;
 - (id)debugDescriptionWithChildren:(unsigned long long)arg1;
 - (id)defaultSectionInfo;
 - (id)defaultSubsectionInfos;
 - (void)deliverMessageWithName:(id)arg1 userInfo:(id)arg2;
-- (void)deliverResponse:(id)arg1 forBulletinRequest:(id)arg2;
+- (void)deliverResponse:(id)arg1 forBulletinRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)displayNameForFilterID:(id)arg1;
 - (id)displayNameForSubsectionID:(id)arg1;
+- (void)getAspectRatioForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
+- (void)getDataForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
+- (void)getPNGDataForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(BOOL)arg3 sizeConstraints:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
 - (id)init;
 - (BOOL)initialized;
 - (void)invalidate;
@@ -48,7 +49,6 @@
 - (BOOL)migrateSectionInfo:(id)arg1 oldSectionInfo:(id)arg2;
 - (void)noteSectionInfoDidChange:(id)arg1;
 - (id)parentSectionIdentifier;
-- (void)primaryAttachmentDataForRecordID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)reloadIdentityWithCompletion:(CDUnknownBlockType)arg1;
 - (id)sectionDisplayName;
 - (id)sectionIcon;

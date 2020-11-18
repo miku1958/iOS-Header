@@ -28,6 +28,7 @@
 - (void)_effectiveRateChanged;
 - (void)_finishInitialization;
 - (void)_handleTimeDiscontinuity;
+- (void)_reallyInvalidate;
 - (void)_removeTimebaseFromTimerSource;
 - (void)_resetNextFireTime;
 - (void)_startObservingTimebaseNotifications;

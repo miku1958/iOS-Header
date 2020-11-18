@@ -9,12 +9,13 @@
 #import <GeoServices/GEOMapItemPrivate-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAddress, GEOFeatureStyleAttributes, GEOLatLng, GEOMapItemAttribution, GEOMapItemClientAttributes, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapRegion, GEOPDBusinessClaim, GEOPDFlyover, GEOPDPlace, GEOPlace, GEOPlaceResult, NSArray, NSData, NSDate, NSDictionary, NSString, NSTimeZone, NSURL;
-@protocol GEOMapItemTransitAttribution, GEOMapItemTransitInfo;
+@class GEOAddress, GEOFeatureStyleAttributes, GEOLatLng, GEOMapItemClientAttributes, GEOMapItemDetourInfo, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapRegion, GEOPDBusinessClaim, GEOPDFlyover, GEOPDPlace, GEOPDResultDetourInfo, GEOPlace, GEOPlaceResult, GEORestaurantFeaturesLink, NSArray, NSData, NSDate, NSDictionary, NSString, NSTimeZone, NSURL;
+@protocol GEOEncyclopedicInfo, GEOMapItemTransitInfo, GEOTransitAttribution;
 
 @interface GEOMapItemStorage : PBCodable <GEOMapItemPrivate, NSCopying>
 {
     GEOMapItemClientAttributes *_clientAttributes;
+    GEOPDResultDetourInfo *_internalDetourInfo;
     GEOLatLng *_originatingCoordinate;
     GEOPlace *_place;
     GEOPDPlace *_placeData;
@@ -33,6 +34,7 @@
 @property (readonly, nonatomic) CDStruct_c3b9c2ee centerCoordinate;
 @property (readonly, nonatomic, getter=_clientAttributes) GEOMapItemClientAttributes *clientAttributes;
 @property (strong, nonatomic) GEOMapItemClientAttributes *clientAttributes; // @synthesize clientAttributes=_clientAttributes;
+@property (readonly, nonatomic, getter=_completeOperatingHours) NSArray *completeOperatingHours;
 @property (readonly, nonatomic) int contactAddressType;
 @property (readonly, nonatomic) BOOL contactIsMe;
 @property (readonly, nonatomic) NSString *contactName;
@@ -41,15 +43,17 @@
 @property (readonly, nonatomic, getter=_customIconID) unsigned long long customIconID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) GEOMapItemDetourInfo *detourInfo;
 @property (readonly, nonatomic, getter=_disambiguationName) NSString *disambiguationName;
 @property (readonly, nonatomic) GEOMapRegion *displayMapRegion;
 @property (readonly, nonatomic) GEOMapRegion *displayMapRegionOrNil;
 @property (readonly, nonatomic, getter=isDisputed) BOOL disputed;
 @property (readonly, nonatomic) NSData *encodedData;
-@property (readonly, nonatomic, getter=_encyclopedicAttribution) GEOMapItemAttribution *encyclopedicAttribution;
+@property (readonly, nonatomic, getter=_encyclopedicInfo) id<GEOEncyclopedicInfo> encyclopedicInfo;
 @property (readonly, nonatomic) NSDate *eventDate;
 @property (readonly, nonatomic) NSString *eventName;
-@property (readonly, nonatomic, getter=_factoids) NSArray *factoids;
+@property (readonly, nonatomic) NSData *externalTransitStationCode;
+@property (readonly, nonatomic, getter=_featureLink) GEORestaurantFeaturesLink *featureLink;
 @property (readonly, nonatomic, getter=_flyover) GEOPDFlyover *flyover;
 @property (readonly, nonatomic, getter=_flyoverAnnouncementMessage) NSString *flyoverAnnouncementMessage;
 @property (readonly, nonatomic) GEOAddress *geoAddress;
@@ -63,12 +67,15 @@
 @property (readonly, nonatomic, getter=_hasCurrentOperatingHours) BOOL hasCurrentOperatingHours;
 @property (readonly, nonatomic, getter=_hasDelivery) BOOL hasDelivery;
 @property (readonly, nonatomic, getter=_hasDeliveryAmenity) BOOL hasDeliveryAmenity;
+@property (readonly, nonatomic, getter=_hasEncyclopedicInfo) BOOL hasEncyclopedicInfo;
+@property (readonly, nonatomic) BOOL hasExpiredComponents;
+@property (readonly, nonatomic, getter=_hasFeatureLink) BOOL hasFeatureLink;
 @property (readonly, nonatomic, getter=_hasFlyover) BOOL hasFlyover;
 @property (readonly, nonatomic, getter=_hasGoodForKidsAmenity) BOOL hasGoodForKidsAmenity;
+@property (readonly, nonatomic) BOOL hasInternalDetourInfo;
 @property (readonly, nonatomic, getter=_hasMUID) BOOL hasMUID;
 @property (readonly, nonatomic, getter=_hasOperatingHours) BOOL hasOperatingHours;
 @property (readonly, nonatomic) BOOL hasOriginatingCoordinate;
-@property (readonly, nonatomic, getter=_hasPairOfFactoids) BOOL hasPairOfFactoids;
 @property (readonly, nonatomic) BOOL hasPlace;
 @property (readonly, nonatomic) BOOL hasPlaceData;
 @property (readonly, nonatomic) BOOL hasPlaceResult;
@@ -77,10 +84,10 @@
 @property (readonly, nonatomic, getter=_hasResultProviderID) BOOL hasResultProviderID;
 @property (readonly, nonatomic, getter=_hasTakesReservationsAmenity) BOOL hasTakesReservationsAmenity;
 @property (readonly, nonatomic, getter=_hasTelephone) BOOL hasTelephone;
-@property (readonly, nonatomic, getter=_hasTextBlock) BOOL hasTextBlock;
 @property (readonly, nonatomic, getter=_hasTransit) BOOL hasTransit;
 @property (readonly, nonatomic, getter=_hasUserRatingScore) BOOL hasUserRatingScore;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) GEOPDResultDetourInfo *internalDetourInfo; // @synthesize internalDetourInfo=_internalDetourInfo;
 @property (readonly, nonatomic) BOOL isEventAllDay;
 @property (readonly, nonatomic) GEOMapRegion *mapRegion;
 @property (readonly, nonatomic, getter=_muid) unsigned long long muid;
@@ -89,6 +96,7 @@
 @property (readonly, nonatomic, getter=_normalizedUserRatingScore) float normalizedUserRatingScore;
 @property (readonly, nonatomic, getter=_openingHoursOptions) unsigned long long openingHoursOptions;
 @property (readonly, nonatomic, getter=_operatingHours) NSArray *operatingHours;
+@property (readonly, nonatomic, getter=_optsOutOfTelephoneAds) BOOL optsOutOfTelephoneAds;
 @property (strong, nonatomic) GEOLatLng *originatingCoordinate; // @synthesize originatingCoordinate=_originatingCoordinate;
 @property (readonly, nonatomic, getter=_photos) NSArray *photos;
 @property (readonly, nonatomic, getter=_photosAttribution) GEOMapItemPhotosAttribution *photosAttribution;
@@ -111,14 +119,14 @@
 @property (readonly, nonatomic, getter=_reviewsAttribution) GEOMapItemReviewsAttribution *reviewsAttribution;
 @property (readonly, nonatomic, getter=_roadAccessPoints) NSArray *roadAccessPoints;
 @property (readonly, nonatomic, getter=_sampleSizeForUserRatingScore) unsigned int sampleSizeForUserRatingScore;
+@property (readonly, nonatomic) NSArray *spatialMappedCategories;
 @property (readonly, nonatomic, getter=_styleAttributes) GEOFeatureStyleAttributes *styleAttributes;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=_takesReservations) BOOL takesReservations;
 @property (readonly, nonatomic, getter=_telephone) NSString *telephone;
-@property (readonly, nonatomic, getter=_textBlockText) NSString *textBlockText;
-@property (readonly, nonatomic, getter=_textBlockTitle) NSString *textBlockTitle;
 @property (readonly, nonatomic) NSTimeZone *timezone;
-@property (readonly, nonatomic, getter=_transitAttribution) id<GEOMapItemTransitAttribution> transitAttribution;
+@property (readonly, nonatomic, getter=_tips) NSArray *tips;
+@property (readonly, nonatomic, getter=_transitAttribution) id<GEOTransitAttribution> transitAttribution;
 @property (readonly, nonatomic, getter=_transitInfo) id<GEOMapItemTransitInfo> transitInfo;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 @property (readonly, copy, nonatomic, getter=_vendorID) NSString *vendorID;
@@ -127,13 +135,14 @@
 + (id)mapItemStorageForCoordinate:(CDStruct_c3b9c2ee)arg1;
 + (id)mapItemStorageForGEOMapItem:(id)arg1;
 + (id)mapItemStorageForGEOMapItem:(id)arg1 clientAttributes:(id)arg2;
-+ (id)mapItemStorageForGEOMapItemPrivate:(id)arg1;
 + (id)mapItemStorageForPlace:(id)arg1;
 + (id)mapItemStorageForPlace:(id)arg1 clientAttributes:(id)arg2;
 + (id)mapItemStorageForPlaceData:(id)arg1;
++ (id)mapItemStorageForPlaceData:(id)arg1 detourInfo:(id)arg2;
 + (id)mapItemStorageForPlaceResult:(id)arg1;
 + (id)mapItemStorageForSerializedMapItemStorage:(id)arg1;
 + (id)mapItemStorageForSerializedPlaceData:(id)arg1;
++ (id)mapItemStorageForSerializedPlaceData:(id)arg1 serializedDetourInfo:(id)arg2;
 - (id)_arrivalMapRegionForTransportType:(int)arg1;
 - (id)_asPlaceInfo;
 - (id)_geoMapItem;
@@ -146,17 +155,20 @@
 - (id)_spokenAddressForLocale:(id)arg1;
 - (unsigned int)_travelDistanceForTransportType:(int)arg1;
 - (unsigned int)_travelTimeForTransportType:(int)arg1;
+- (id)addressObject;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)dictionaryRepresentation;
 - (id)initWithPlace:(id)arg1 clientAttributes:(id)arg2;
-- (id)initWithPlaceData:(id)arg1 clientAttributes:(id)arg2;
+- (id)initWithPlaceData:(id)arg1 detourInfo:(id)arg2 clientAttributes:(id)arg3;
 - (id)initWithPlaceResult:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToMapItem:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)spokenNameForLocale:(id)arg1;
+- (id)weatherDisplayName;
 - (void)writeTo:(id)arg1;
 
 @end

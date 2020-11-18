@@ -8,15 +8,18 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEOPDMultiLocalizedString : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_localizedStrings;
 }
 
 @property (strong, nonatomic) NSMutableArray *localizedStrings; // @synthesize localizedStrings=_localizedStrings;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)localizedStringType;
 - (void)addLocalizedString:(id)arg1;
 - (id)bestLocalizedName;
 - (void)clearLocalizedStrings;

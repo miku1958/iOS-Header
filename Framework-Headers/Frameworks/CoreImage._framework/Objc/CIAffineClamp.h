@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSValue *inputTransform; // @synthesize inputTransform;
 
 + (id)customAttributes;
-- (id)_kernel;
 - (id)outputImage;
 
 @end

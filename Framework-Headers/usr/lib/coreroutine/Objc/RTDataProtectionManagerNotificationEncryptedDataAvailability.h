@@ -6,15 +6,14 @@
 
 #import <coreroutine/RTNotification.h>
 
-__attribute__((visibility("hidden")))
 @interface RTDataProtectionManagerNotificationEncryptedDataAvailability : RTNotification
 {
     long long _availability;
 }
 
-@property (nonatomic) long long availability; // @synthesize availability=_availability;
+@property (readonly, nonatomic) long long availability; // @synthesize availability=_availability;
 
-+ (id)notificationName;
+- (id)initWithEncryptedDataAvailability:(long long)arg1;
 
 @end
 

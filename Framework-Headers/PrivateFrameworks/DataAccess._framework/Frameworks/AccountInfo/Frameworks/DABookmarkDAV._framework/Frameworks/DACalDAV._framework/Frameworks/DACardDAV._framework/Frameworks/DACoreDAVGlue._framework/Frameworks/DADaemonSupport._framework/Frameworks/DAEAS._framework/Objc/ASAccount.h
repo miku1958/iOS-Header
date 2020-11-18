@@ -75,6 +75,7 @@
 - (void)cancelCalendarDirectorySearchWithID:(id)arg1;
 - (void)cancelTaskWithID:(int)arg1;
 - (void)cleanupAccountFiles;
+- (BOOL)clearFolderIdsForPersistentPushWithClientID:(id)arg1;
 - (id)contactsFolders;
 - (void)dealloc;
 - (id)defaultContactsFolder;
@@ -93,6 +94,9 @@
 - (id)existingTaskManager;
 - (void)fetchAttachmentTask:(id)arg1 completedWithStatus:(long long)arg2 dataWasBase64:(BOOL)arg3 error:(id)arg4;
 - (void)fetchAttachmentTask:(id)arg1 receivedData:(id)arg2 ofContentType:(id)arg3;
+- (id)folderIdsForPersistentPush;
+- (id)folderIdsForPersistentPushForClientID:(id)arg1;
+- (id)folderIdsForPersistentPushForDataclasses:(long long)arg1 clientID:(id)arg2;
 - (id)folderIdsThatExternalClientsCareAbout;
 - (id)folderIdsThatExternalClientsCareAboutForDataclasses:(long long)arg1;
 - (void)folderItemsSyncTask:(id)arg1 completedWithStatus:(long long)arg2 error:(id)arg3 newSyncKey:(id)arg4 added:(id)arg5 removed:(id)arg6 modified:(id)arg7 addedResponse:(id)arg8 modifiedResponse:(id)arg9 removedResponse:(id)arg10 fetchedResponse:(id)arg11;
@@ -126,10 +130,12 @@
 - (void)searchTask:(id)arg1 returnedResults:(id)arg2;
 - (void)searchTask:(id)arg1 returnedTotalCount:(id)arg2;
 - (void)sendMailTask:(id)arg1 completedWithStatus:(long long)arg2 error:(id)arg3;
-- (int)sendMessageWithRFC822Data:(id)arg1 messageID:(id)arg2 outgoingMessageType:(int)arg3 originalMessageFolderID:(id)arg4 originalMessageItemID:(id)arg5 originalMessageLongID:(id)arg6 originalAccountID:(id)arg7 useSmartTasksIfPossible:(BOOL)arg8 consumer:(id)arg9 context:(id)arg10;
+- (int)sendMessageWithRFC822Data:(id)arg1 messageID:(id)arg2 outgoingMessageType:(int)arg3 originalMessageFolderID:(id)arg4 originalMessageItemID:(id)arg5 originalMessageLongID:(id)arg6 originalAccountID:(id)arg7 useSmartTasksIfPossible:(BOOL)arg8 sourceApplicationBundleIdentifier:(id)arg9 consumer:(id)arg10 context:(id)arg11;
+- (int)sendSmartMessageWithRFC822Data:(id)arg1 messageID:(id)arg2 outgoingMessageType:(int)arg3 originalMessageFolderID:(id)arg4 originalMessageItemID:(id)arg5 originalMessageLongID:(id)arg6 originalAccountID:(id)arg7 replaceOriginalMime:(BOOL)arg8 sourceApplicationBundleIdentifier:(id)arg9 consumer:(id)arg10 context:(id)arg11;
 - (id)sentItemsFolder;
 - (void)setEnabled:(BOOL)arg1 forDADataclass:(long long)arg2;
 - (void)setEncryptionIdentityPersistentReference:(id)arg1;
+- (BOOL)setFolderIdsForPersistentPushAdded:(id)arg1 deleted:(id)arg2 clientID:(id)arg3;
 - (BOOL)setFolderIdsThatExternalClientsCareAboutAdded:(id)arg1 deleted:(id)arg2 foldersTag:(id)arg3;
 - (void)setLastKnownProtocolVersion:(id)arg1;
 - (void)setLastKnownProtocolVersion:(id)arg1 save:(BOOL)arg2;
@@ -150,8 +156,10 @@
 - (int)supportsDraftFolderSync;
 - (int)supportsEmailFlagging;
 - (int)supportsMailboxSearch;
+- (int)supportsSmartForwardReply;
 - (BOOL)syncDefaultFoldersOnly;
 - (id)toDosFolders;
+- (BOOL)upgradeAccount;
 - (void)upgradeWithProtocolVersion:(id)arg1;
 - (id)usernameWithoutDomain;
 - (id)visibleFolders;

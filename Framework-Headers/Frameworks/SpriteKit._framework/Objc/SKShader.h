@@ -9,7 +9,7 @@
 #import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSString;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSPointerArray, NSString;
 
 @interface SKShader : NSObject <NSCopying, NSCoding>
 {
@@ -20,15 +20,22 @@
     NSString *_fileName;
     NSString *_compileLog;
     BOOL _programDirty;
+    BOOL _programWithTransformDirty;
+    NSPointerArray *_targetNodes;
+    BOOL _usesTimeUniform;
+    BOOL _usesSpriteSizeUniform;
     shared_ptr_394c00aa _backingProgram;
+    shared_ptr_394c00aa _backingProgramWithTransform;
     map_a51e33c7 _attributeBuffers;
     BOOL _performFullCapture;
 }
 
 @property (readonly) map_a51e33c7 *_attributeBuffers;
 @property (readonly) shared_ptr_394c00aa _backingProgram;
+@property (readonly) shared_ptr_394c00aa _backingProgramWithTransform;
 @property (readonly) shared_ptr_d7c0f433 _commands;
 @property (readonly) NSArray *_textureUniforms;
+@property (copy, nonatomic) NSArray *attributes;
 @property BOOL performFullCapture; // @synthesize performFullCapture=_performFullCapture;
 @property (copy) NSString *source;
 @property (copy) NSArray *uniforms;
@@ -39,23 +46,31 @@
 + (id)shaderWithSource:(id)arg1 uniforms:(id)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_addTargetNode:(id)arg1;
 - (BOOL)_backingProgramIsDirty;
 - (shared_ptr_d7c0f433)_commandsForBatchOffset:(int)arg1 count:(int)arg2;
+- (id)_fullMetalVertexSourceWithImplementation:(BOOL)arg1;
+- (id)_fullVertexSourceWithImplementation:(long long)arg1;
 - (id)_generateMetalSource;
+- (id)_getLegacyUniformData;
 - (id)_getMetalFragmentFunctionName;
 - (id)_getMetalVertexOutDefinition;
 - (id)_getShaderCompilationLog;
+- (shared_ptr_394c00aa)_makeBackingProgramWithImplementation:(long long)arg1;
+- (void)_removeTargetNode:(id)arg1;
+- (void)_setUniformsDirty;
+- (BOOL)_usesTimeUniform;
 - (void)addUniform:(id)arg1;
-- (id)attributes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)fragmentPrelude;
 - (id)fragmentPreludeMetal;
 - (id)fullFragmentSource;
 - (id)fullMetalFragmentSource;
 - (id)fullMetalVertexSource;
+- (id)fullMetalVertexWithTransformSource;
 - (id)fullVertexSource;
+- (id)fullVertexWithTransformSource;
 - (void)generateFragmentAttributeDeclares:(id *)arg1;
 - (void)generateVertexAttributeDeclares:(id *)arg1 statements:(id *)arg2;
 - (id)init;
@@ -64,7 +79,6 @@
 - (id)initWithSource:(id)arg1 uniforms:(id)arg2;
 - (BOOL)isValid;
 - (void)removeUniformNamed:(id)arg1;
-- (void)setAttributes:(id)arg1;
 - (id)uniformNamed:(id)arg1;
 
 @end

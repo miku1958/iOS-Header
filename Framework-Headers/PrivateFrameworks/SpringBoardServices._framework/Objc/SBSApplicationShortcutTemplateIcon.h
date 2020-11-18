@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) NSString *templateImageName; // @synthesize templateImageName=_templateImageName;
 
 - (void).cxx_destruct;
+- (id)_initForSubclass;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithTemplateImageName:(id)arg1;

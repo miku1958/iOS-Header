@@ -32,6 +32,8 @@
 @property (nonatomic) unsigned int resyncID; // @synthesize resyncID=_resyncID;
 @property (strong, nonatomic) NSMutableArray *uniqueIDs; // @synthesize uniqueIDs=_uniqueIDs;
 
++ (Class)manifestHashesType;
++ (Class)uniqueIDsType;
 - (void).cxx_destruct;
 - (void)addManifestHashes:(id)arg1;
 - (void)addUniqueIDs:(id)arg1;

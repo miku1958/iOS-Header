@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) unsigned long long badgeValue; // @synthesize badgeValue=_badgeValue;
 
-- (unsigned long long)activityStart;
+- (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
 

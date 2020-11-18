@@ -22,6 +22,8 @@
 @property (strong, nonatomic) NSMutableArray *suggestionEntryMetadataDisplayeds; // @synthesize suggestionEntryMetadataDisplayeds=_suggestionEntryMetadataDisplayeds;
 @property (strong, nonatomic) NSData *suggestionEntryMetadataTappedOn; // @synthesize suggestionEntryMetadataTappedOn=_suggestionEntryMetadataTappedOn;
 
++ (Class)mapsSearchResultType;
++ (Class)suggestionEntryMetadataDisplayedType;
 - (void)addMapsSearchResult:(id)arg1;
 - (void)addSuggestionEntryMetadataDisplayed:(id)arg1;
 - (void)clearMapsSearchResults;

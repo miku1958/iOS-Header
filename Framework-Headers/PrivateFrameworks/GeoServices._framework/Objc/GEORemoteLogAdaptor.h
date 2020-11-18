@@ -6,12 +6,12 @@
 
 #import <GeoServices/GEOBaseLogAdaptor.h>
 
-#import <GeoServices/PBRequesterDelegate-Protocol.h>
+#import <GeoServices/GEOPBSessionRequesterDelegate-Protocol.h>
 
 @class GEOLogMessageCollectionRequest, GEORequester, NSLock, NSMapTable, NSObject, NSString, NSURL;
 @protocol OS_dispatch_source;
 
-@interface GEORemoteLogAdaptor : GEOBaseLogAdaptor <PBRequesterDelegate>
+@interface GEORemoteLogAdaptor : GEOBaseLogAdaptor <GEOPBSessionRequesterDelegate>
 {
     NSURL *_remoteURL;
     NSObject<OS_dispatch_source> *_sendLogMessageTimer;

@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (strong) QLThumbnailOperation *thumbnailOperation;
 @property struct CGRect unselectedFrame; // @synthesize unselectedFrame=_unselectedFrame;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -22,7 +22,6 @@ struct AUEventSchedule {
     struct AURenderEventAllocator *mAllocator;
     struct TAtomicStack<AURenderEventStruct> mAddedEventStack;
     union AURenderEvent *mScheduleHead;
-    union AURenderEvent *mCurrentSliceScheduleHead;
     AUAudioUnit *mOwningAU;
 };
 
@@ -56,14 +55,34 @@ struct AUObserverController {
     id _field3;
     BOOL _field4;
     struct set<AUObserverController::AddressOriginator, std::__1::less<AUObserverController::AddressOriginator>, std::__1::allocator<AUObserverController::AddressOriginator>> _field5;
-    struct vector<RecordedParameterEvent, std::__1::allocator<RecordedParameterEvent>> _field6;
+    struct vector<ParameterAutomationEvent, std::__1::allocator<ParameterAutomationEvent>> _field6;
 };
 
 struct AUObserverList {
     struct vector<AULocalParameterObserver *, std::__1::allocator<AULocalParameterObserver *>> _field1;
 };
 
+struct AUPBMethods {
+    unsigned int _field1;
+    CDUnknownFunctionPointerType _field2;
+    CDUnknownFunctionPointerType _field3;
+    CDUnknownFunctionPointerType _field4;
+    CDUnknownFunctionPointerType _field5;
+    CDUnknownFunctionPointerType _field6;
+    CDUnknownFunctionPointerType _field7;
+    CDUnknownFunctionPointerType _field8;
+};
+
+struct AUParameterObserverExtendedToken {
+    unsigned long long _field1;
+};
+
 struct AUProcAndUserData;
+
+struct AUProcessingBlock {
+    struct AUPBMethods _field1;
+    void *_field2;
+};
 
 struct AURenderEventAllocator;
 
@@ -122,17 +141,28 @@ struct CAMutex {
     CDUnknownFunctionPointerType *_vptr$CAMutex;
     char *mName;
     struct _opaque_pthread_t *mOwner;
-    struct _opaque_pthread_mutex_t {
-        long long __sig;
-        char __opaque[56];
-    } mMutex;
+    struct _opaque_pthread_mutex_t mMutex;
 };
 
 struct CASerializer {
     struct __CFData *_field1;
 };
 
+struct ClientSyncCaller;
+
 struct Element;
+
+struct HapticSharedMemory {
+    CDUnknownFunctionPointerType *_vptr$SharableMemoryBase;
+    BOOL mIsOwner;
+    BOOL mWasMapped;
+    unsigned long long mSize;
+    void *mBuffer;
+    unsigned int mPort;
+    int mFileDesc;
+    int mSerial;
+    NSObject *mXPCObject;
+};
 
 struct HostCallbackInfo {
     void *hostUserData;
@@ -189,6 +219,8 @@ struct InterAppAudioAppInfo {
     struct __CFURL *_field6;
 };
 
+struct NewServerListener;
+
 struct Node;
 
 struct NodeStack {
@@ -199,6 +231,8 @@ struct ObjCImage;
 
 struct OpaqueAudioComponentInstance;
 
+struct ParameterAutomationEvent;
+
 struct ParameterMap {
     id _field1;
     BOOL _field2;
@@ -206,13 +240,13 @@ struct ParameterMap {
     struct vector<AUv3InstanceBase::ScopeElementIDObj, std::__1::allocator<AUv3InstanceBase::ScopeElementIDObj>> _field4;
 };
 
+struct PropertyListener;
+
 struct RealtimeState {
     struct CAMutex mMutex;
     struct RenderObserverList renderObserverList;
     struct AUEventSchedule eventSchedule;
 };
-
-struct RecordedParameterEvent;
 
 struct RenderObserverList {
     struct TThreadSafeList<RenderObserver> mObservers;
@@ -235,6 +269,8 @@ struct TThreadSafeList<RenderObserver> {
     struct NodeStack mFreeList;
 };
 
+struct TestAUProcessingBlock;
+
 struct UIViewController {
     Class _field1;
 };
@@ -247,13 +283,48 @@ struct __CFData;
 
 struct __CFString;
 
+struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
+    struct __tree_node_base<void *> *__left_;
+};
+
+struct _opaque_pthread_mutex_t {
+    long long __sig;
+    char __opaque[56];
+};
+
+struct map<unsigned int, AUProcessingBlock, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, AUProcessingBlock>>> {
+    struct __tree<std::__1::__value_type<unsigned int, AUProcessingBlock>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, AUProcessingBlock>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, AUProcessingBlock>>> {
+        struct __tree_node<std::__1::__value_type<unsigned int, AUProcessingBlock>, void *> *__begin_node_;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, AUProcessingBlock>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __first_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, AUProcessingBlock>, std::__1::less<unsigned int>, true>> {
+            unsigned long long __first_;
+        } __pair3_;
+    } __tree_;
+};
+
+struct map<unsigned int, RemoteAUHandleInfo, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, RemoteAUHandleInfo>>> {
+    struct __tree<std::__1::__value_type<unsigned int, RemoteAUHandleInfo>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, RemoteAUHandleInfo>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, RemoteAUHandleInfo>>> {
+        struct __tree_node<std::__1::__value_type<unsigned int, RemoteAUHandleInfo>, void *> *__begin_node_;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, RemoteAUHandleInfo>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __first_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, RemoteAUHandleInfo>, std::__1::less<unsigned int>, true>> {
+            unsigned long long __first_;
+        } __pair3_;
+    } __tree_;
+};
+
+struct recursive_mutex {
+    struct _opaque_pthread_mutex_t __m_;
+};
+
 struct set<AUObserverController::AddressOriginator, std::__1::less<AUObserverController::AddressOriginator>, std::__1::allocator<AUObserverController::AddressOriginator>> {
     struct __tree<AUObserverController::AddressOriginator, std::__1::less<AUObserverController::AddressOriginator>, std::__1::allocator<AUObserverController::AddressOriginator>> {
         struct __tree_node<AUObserverController::AddressOriginator, void *> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<AUObserverController::AddressOriginator, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-                struct __tree_node_base<void *> *_field1;
-            } _field1;
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
         struct __compressed_pair<unsigned long, std::__1::less<AUObserverController::AddressOriginator>> {
             unsigned long long _field1;
@@ -287,6 +358,18 @@ struct unique_ptr<AUv3InstanceBase::AllParameterListener, std::__1::default_dele
 
 struct unique_ptr<AUv3InstanceBase::ClientPropertyListener, std::__1::default_delete<AUv3InstanceBase::ClientPropertyListener>>;
 
+struct unique_ptr<CAMutex, std::__1::default_delete<CAMutex>> {
+    struct __compressed_pair<CAMutex *, std::__1::default_delete<CAMutex>> {
+        struct CAMutex *__first_;
+    } __ptr_;
+};
+
+struct unique_ptr<ClientSyncCaller, std::__1::default_delete<ClientSyncCaller>> {
+    struct __compressed_pair<ClientSyncCaller *, std::__1::default_delete<ClientSyncCaller>> {
+        struct ClientSyncCaller *__first_;
+    } __ptr_;
+};
+
 struct unique_ptr<SemaphoreIOMessenger_Receiver, std::__1::default_delete<SemaphoreIOMessenger_Receiver>> {
     struct __compressed_pair<SemaphoreIOMessenger_Receiver *, std::__1::default_delete<SemaphoreIOMessenger_Receiver>> {
         struct SemaphoreIOMessenger_Receiver *_field1;
@@ -296,6 +379,12 @@ struct unique_ptr<SemaphoreIOMessenger_Receiver, std::__1::default_delete<Semaph
 struct unique_ptr<SemaphoreIOMessenger_Sender, std::__1::default_delete<SemaphoreIOMessenger_Sender>> {
     struct __compressed_pair<SemaphoreIOMessenger_Sender *, std::__1::default_delete<SemaphoreIOMessenger_Sender>> {
         struct SemaphoreIOMessenger_Sender *__first_;
+    } __ptr_;
+};
+
+struct unique_ptr<TestAUProcessingBlock, std::__1::default_delete<TestAUProcessingBlock>> {
+    struct __compressed_pair<TestAUProcessingBlock *, std::__1::default_delete<TestAUProcessingBlock>> {
+        struct TestAUProcessingBlock *__first_;
     } __ptr_;
 };
 
@@ -355,12 +444,36 @@ struct vector<IPCAUSharedMemoryBase::Element, std::__1::allocator<IPCAUSharedMem
     } __end_cap_;
 };
 
-struct vector<RecordedParameterEvent, std::__1::allocator<RecordedParameterEvent>> {
-    struct RecordedParameterEvent *_field1;
-    struct RecordedParameterEvent *_field2;
-    struct __compressed_pair<RecordedParameterEvent *, std::__1::allocator<RecordedParameterEvent>> {
-        struct RecordedParameterEvent *_field1;
+struct vector<NSObject<OS_dispatch_semaphore>*, std::__1::allocator<NSObject<OS_dispatch_semaphore>*>> {
+    id *__begin_;
+    id *__end_;
+    struct __compressed_pair<NSObject<OS_dispatch_semaphore>**, std::__1::allocator<NSObject<OS_dispatch_semaphore>*>> {
+        id *__first_;
+    } __end_cap_;
+};
+
+struct vector<NewServerListener, std::__1::allocator<NewServerListener>> {
+    struct NewServerListener *__begin_;
+    struct NewServerListener *__end_;
+    struct __compressed_pair<NewServerListener *, std::__1::allocator<NewServerListener>> {
+        struct NewServerListener *__first_;
+    } __end_cap_;
+};
+
+struct vector<ParameterAutomationEvent, std::__1::allocator<ParameterAutomationEvent>> {
+    struct ParameterAutomationEvent *_field1;
+    struct ParameterAutomationEvent *_field2;
+    struct __compressed_pair<ParameterAutomationEvent *, std::__1::allocator<ParameterAutomationEvent>> {
+        struct ParameterAutomationEvent *_field1;
     } _field3;
+};
+
+struct vector<PropertyListener, std::__1::allocator<PropertyListener>> {
+    struct PropertyListener *__begin_;
+    struct PropertyListener *__end_;
+    struct __compressed_pair<PropertyListener *, std::__1::allocator<PropertyListener>> {
+        struct PropertyListener *__first_;
+    } __end_cap_;
 };
 
 struct vector<std::__1::unique_ptr<AUv3InstanceBase::ClientPropertyListener, std::__1::default_delete<AUv3InstanceBase::ClientPropertyListener>>, std::__1::allocator<std::__1::unique_ptr<AUv3InstanceBase::ClientPropertyListener, std::__1::default_delete<AUv3InstanceBase::ClientPropertyListener>>>> {

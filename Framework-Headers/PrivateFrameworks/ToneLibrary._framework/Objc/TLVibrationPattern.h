@@ -4,21 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+@class NSDictionary, NSMutableArray;
 
 @interface TLVibrationPattern : NSObject
 {
+    NSDictionary *_propertyListRepresentation;
+    NSMutableArray *_complexPatternDescription;
     id _contextObject;
-    double _duration;
-    id _propertyListRepresentation;
-    id _complexPatternDescription;
 }
 
 @property (readonly, nonatomic) id _artificiallyRepeatingPropertyListRepresentation;
-@property (strong, nonatomic, setter=_setComplexPatternDescription:) id _complexPatternDescription; // @synthesize _complexPatternDescription;
-@property (readonly, nonatomic) double _computedDuration;
-@property (nonatomic, setter=_setDuration:) double _duration; // @synthesize _duration;
-@property (strong, nonatomic, setter=_setPropertyListRepresentation:) id _propertyListRepresentation; // @synthesize _propertyListRepresentation;
 @property (strong, nonatomic) id contextObject; // @synthesize contextObject=_contextObject;
 @property (readonly, nonatomic) id propertyListRepresentation;
 
@@ -26,9 +23,10 @@
 + (BOOL)isValidVibrationPatternPropertyListRepresentation:(id)arg1;
 + (id)noneVibrationPattern;
 + (id)simpleVibrationPatternWithVibrationDuration:(double)arg1 pauseDuration:(double)arg2;
+- (void).cxx_destruct;
+- (double)_computedDuration;
 - (id)_initWithPropertyListRepresentation:(id)arg1 skipValidation:(BOOL)arg2;
 - (void)appendVibrationComponentWithDuration:(double)arg1 isPause:(BOOL)arg2;
-- (void)dealloc;
 - (id)init;
 - (id)initWithPropertyListRepresentation:(id)arg1;
 

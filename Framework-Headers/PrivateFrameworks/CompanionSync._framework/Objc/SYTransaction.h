@@ -12,7 +12,7 @@
 
 @interface SYTransaction : NSObject <SYChangeTracking>
 {
-    int _inTransaction;
+    _Atomic BOOL _inTransaction;
     NSDictionary *_contextInfo;
     NSDictionary *_idsOptions;
     CDUnknownBlockType _completion;

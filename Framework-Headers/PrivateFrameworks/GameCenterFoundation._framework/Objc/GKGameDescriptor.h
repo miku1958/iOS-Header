@@ -14,16 +14,19 @@
     NSString *_bundleVersion;
     NSNumber *_adamID;
     NSNumber *_externalVersion;
+    NSString *_shortBundleVersion;
 }
 
 @property (strong, nonatomic) NSNumber *adamID; // @synthesize adamID=_adamID;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property (strong, nonatomic) NSNumber *externalVersion; // @synthesize externalVersion=_externalVersion;
+@property (copy, nonatomic) NSString *shortBundleVersion; // @synthesize shortBundleVersion=_shortBundleVersion;
 
 + (id)gameDescriptorWithBundleID:(id)arg1;
 + (id)gameDescriptorWithBundleID:(id)arg1 adamID:(id)arg2;
 + (id)gameDescriptorWithBundleID:(id)arg1 bundleVersion:(id)arg2 adamID:(id)arg3;
++ (id)gameDescriptorWithBundleID:(id)arg1 bundleVersion:(id)arg2 shortBundleVersion:(id)arg3 adamID:(id)arg4;
 + (id)secureCodedPropertyKeys;
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;

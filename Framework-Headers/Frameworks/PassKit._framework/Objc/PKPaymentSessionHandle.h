@@ -4,12 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+@protocol OS_dispatch_queue;
 
 @interface PKPaymentSessionHandle : NSObject
 {
+    NSObject<OS_dispatch_queue> *_internalSessionSerialQueue;
 }
 
+- (void).cxx_destruct;
 - (void)invalidateSession;
 - (BOOL)isFirstInQueue;
 

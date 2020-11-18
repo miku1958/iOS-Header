@@ -6,12 +6,14 @@
 
 #import <GameplayKit/GKComponent.h>
 
-@class GKBehavior;
+#import <GameplayKit/NSCoding-Protocol.h>
+
+@class GKBehavior, MISSING_TYPE;
 @protocol GKAgentDelegate;
 
-@interface GKAgent : GKComponent
+@interface GKAgent : GKComponent <NSCoding>
 {
-    struct SimpleVehicle _vehicle;
+    struct GKSimpleVehicle _vehicle;
     id<GKAgentDelegate> _delegate;
     GKBehavior *_behavior;
 }
@@ -22,12 +24,28 @@
 @property (nonatomic) float maxAcceleration;
 @property (nonatomic) float maxSpeed;
 @property (nonatomic) float radius;
-@property (readonly, nonatomic) float speed;
+@property (nonatomic) float speed;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
-- (struct SimpleVehicle *)vehicle;
+- (id)initWithCoder:(id)arg1;
+- (MISSING_TYPE *)position3;
+- (MISSING_TYPE *)steerForAlignment:(id)arg1 maxDistance:(float)arg2 maxAngle:(float)arg3;
+- (MISSING_TYPE *)steerForCohesion:(id)arg1 maxDistance:(float)arg2 maxAngle:(float)arg3;
+- (MISSING_TYPE *)steerForFlee: /* Error: Ran out of types for this method. */;
+- (MISSING_TYPE *)steerForIntercept:(id)arg1 maxPredictionTime:(double)arg2;
+- (MISSING_TYPE *)steerForSeek: /* Error: Ran out of types for this method. */;
+- (MISSING_TYPE *)steerForSeparation:(id)arg1 maxDistance:(float)arg2 maxAngle:(float)arg3;
+- (MISSING_TYPE *)steerForTargetSpeed:(float)arg1;
+- (MISSING_TYPE *)steerForWander:(double)arg1 speed:(float)arg2;
+- (MISSING_TYPE *)steerToAvoidAgents:(id)arg1 timeBeforeCollisionToAvoid:(double)arg2;
+- (MISSING_TYPE *)steerToAvoidObstacles:(id)arg1 timeBeforeCollisionToAvoid:(double)arg2;
+- (MISSING_TYPE *)steerToFollowPath:(id)arg1 maxPredictionTime:(double)arg2 forward:(BOOL)arg3;
+- (MISSING_TYPE *)steerToStayOnPath:(id)arg1 maxPredictionTime:(double)arg2;
+- (struct GKSimpleVehicle *)vehicle;
+- (MISSING_TYPE *)velocity3;
 
 @end
 

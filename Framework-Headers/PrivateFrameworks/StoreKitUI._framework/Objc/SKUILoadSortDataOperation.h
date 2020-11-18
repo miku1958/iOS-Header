@@ -6,14 +6,18 @@
 
 #import <StoreKitUI/SKUILoadResourceOperation.h>
 
-@class SKUISortDataRequest;
+@class SKUISortDataRequest, SSVLoadURLOperation;
 
 @interface SKUILoadSortDataOperation : SKUILoadResourceOperation
 {
+    SSVLoadURLOperation *_underlyingOperation;
 }
 
 @property (readonly, copy) SKUISortDataRequest *resourceRequest; // @dynamic resourceRequest;
+@property (weak) SSVLoadURLOperation *underlyingOperation; // @synthesize underlyingOperation=_underlyingOperation;
 
+- (void).cxx_destruct;
+- (void)cancel;
 - (id)initWithResourceRequest:(id)arg1;
 - (void)main;
 

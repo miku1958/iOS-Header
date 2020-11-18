@@ -14,7 +14,7 @@
     BOOL _started;
     BOOL _finished;
     BOOL _throttled;
-    int _requestID;
+    _Atomic unsigned int _requestID;
     unsigned long long _maxRetryCount;
     NSData *_data;
     CDUnknownBlockType _performBlock;
@@ -33,7 +33,7 @@
 @property (strong, nonatomic) NSString *label; // @synthesize label=_label;
 @property (nonatomic) unsigned long long maxRetryCount; // @synthesize maxRetryCount=_maxRetryCount;
 @property (copy, nonatomic) CDUnknownBlockType performBlock; // @synthesize performBlock=_performBlock;
-@property (nonatomic) int requestID; // @synthesize requestID=_requestID;
+@property (nonatomic) _Atomic unsigned int requestID; // @synthesize requestID=_requestID;
 @property (nonatomic) unsigned long long retryCount; // @synthesize retryCount=_retryCount;
 @property (nonatomic) BOOL shouldThrottle; // @synthesize shouldThrottle=_shouldThrottle;
 @property (nonatomic) BOOL started; // @synthesize started=_started;

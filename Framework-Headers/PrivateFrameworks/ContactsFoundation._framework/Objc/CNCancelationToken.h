@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ContactsFoundation/CNCancelable-Protocol.h>
+#import <ContactsFoundation/CNCancelationToken-Protocol.h>
 
 @class NSMutableArray, NSString;
 
-@interface CNCancelationToken : NSObject <CNCancelable>
+@interface CNCancelationToken : NSObject <CNCancelable, CNCancelationToken>
 {
     BOOL _isCanceled;
     NSMutableArray *_cancelationBlocks;
@@ -23,14 +24,15 @@
 
 + (id)tokenWithCancelationBlock:(CDUnknownBlockType)arg1;
 + (id)tokenWrappingCancelable:(id)arg1;
+- (void).cxx_destruct;
 - (void)addCancelable:(id)arg1;
 - (void)addCancelationBlock:(CDUnknownBlockType)arg1;
 - (void)callCancelationBlocks:(id)arg1;
 - (void)cancel;
-- (void)dealloc;
 - (id)init;
 - (BOOL)isCanceled;
 - (id)nts_cancel;
+- (void)performBlock:(CDUnknownBlockType)arg1;
 
 @end
 

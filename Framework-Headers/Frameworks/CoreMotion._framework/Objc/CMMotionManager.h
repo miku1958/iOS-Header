@@ -40,9 +40,9 @@
 - (id)init;
 - (void)startAccelerometerUpdates;
 - (void)startAccelerometerUpdatesToQueue:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)startDeviceMotionLiteDebugUpdatesToQueue:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)startDeviceMotionLiteFusedUpdatesToQueue:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)startDeviceMotionLiteUpdatesUsingConfiguration:(CDStruct_fcaf9308)arg1 toQueue:(id)arg2 withFusedHandler:(CDUnknownBlockType)arg3 debugHandler:(CDUnknownBlockType)arg4;
+- (void)startDeviceMotionLiteDebugUpdatesForDeviceID:(id)arg1 toQueue:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
+- (void)startDeviceMotionLiteFusedUpdatesForDeviceID:(id)arg1 toQueue:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
+- (void)startDeviceMotionLiteUpdatesForDeviceID:(id)arg1 usingConfiguration:(CDStruct_fcaf9308)arg2 toQueue:(id)arg3 withFusedHandler:(CDUnknownBlockType)arg4 debugHandler:(CDUnknownBlockType)arg5;
 - (void)startDeviceMotionUpdates;
 - (void)startDeviceMotionUpdatesToQueue:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)startDeviceMotionUpdatesUsingReferenceFrame:(unsigned long long)arg1;
@@ -52,7 +52,7 @@
 - (void)startMagnetometerUpdates;
 - (void)startMagnetometerUpdatesToQueue:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)stopAccelerometerUpdates;
-- (void)stopDeviceMotionLiteUpdates;
+- (void)stopDeviceMotionLiteUpdatesForDeviceID:(id)arg1;
 - (void)stopDeviceMotionUpdates;
 - (void)stopGyroUpdates;
 - (void)stopMagnetometerUpdates;

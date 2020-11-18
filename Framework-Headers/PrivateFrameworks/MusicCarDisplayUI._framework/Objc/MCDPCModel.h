@@ -45,10 +45,11 @@
 - (void)_registerNotifications;
 - (id)containerForRoot;
 - (void)dealloc;
-- (id)errorWithDescription:(id)arg1 indexPath:(id)arg2;
 - (void)getChildrenAtIndexPath:(id)arg1 inRange:(struct _NSRange)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getChildrenSupportsPlaybackProgressForIndexPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getCountOfChildrenAtIndexPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getItemAtIndexPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getNowPlayingIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getRemoteAppIsPlaying:(CDUnknownBlockType)arg1;
 - (id)imageForIdentifier:(id)arg1;
 - (id)initWithBundleID:(id)arg1;

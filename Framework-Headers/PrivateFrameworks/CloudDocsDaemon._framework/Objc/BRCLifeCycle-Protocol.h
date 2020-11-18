@@ -8,11 +8,10 @@
 
 @protocol BRCLifeCycle <NSObject>
 
-@property (nonatomic) BOOL isCancelled;
+@property (readonly, nonatomic) BOOL isCancelled;
 
 - (void)cancel;
 - (void)close;
 - (void)resume;
-- (void)suspend;
 @end
 

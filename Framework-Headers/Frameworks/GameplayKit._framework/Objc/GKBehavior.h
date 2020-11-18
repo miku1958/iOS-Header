@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <GameplayKit/NSCopying-Protocol.h>
 #import <GameplayKit/NSFastEnumeration-Protocol.h>
 
 @class MISSING_TYPE, NSMutableArray;
 
-@interface GKBehavior : NSObject <NSFastEnumeration>
+@interface GKBehavior : NSObject <NSFastEnumeration, NSCopying>
 {
     NSMutableArray *_goals;
     NSMutableArray *_weights;
@@ -23,8 +24,11 @@
 + (id)behaviorWithGoals:(id)arg1 andWeights:(id)arg2;
 + (id)behaviorWithWeightedGoals:(id)arg1;
 - (void).cxx_destruct;
+- (id)copy;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (MISSING_TYPE *)getTotalForce:(double)arg1 agent:(id)arg2;
+- (id)goals;
 - (id)init;
 - (id)initWithGoal:(id)arg1 weight:(float)arg2;
 - (id)initWithGoals:(id)arg1;
@@ -37,6 +41,7 @@
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (void)setWeight:(float)arg1 forGoal:(id)arg2;
 - (float)weightForGoal:(id)arg1;
+- (id)weights;
 
 @end
 

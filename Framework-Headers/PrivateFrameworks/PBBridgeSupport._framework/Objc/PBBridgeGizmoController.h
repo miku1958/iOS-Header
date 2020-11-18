@@ -64,6 +64,7 @@
 - (void)enableSiriForGizmoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enabledSiri:(id)arg1;
 - (void)endSetupTransaction;
+- (BOOL)getActivationDataAndHeadersForRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)getActivationDataForRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)getSessionDataForRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getSiriStateWithCompletion:(CDUnknownBlockType)arg1;
@@ -76,6 +77,7 @@
 - (void)popToControllerType:(id)arg1;
 - (void)pushControllerType:(id)arg1;
 - (void)refreshTimeoutTimer;
+- (void)remoteRequestToKeepAlive:(id)arg1;
 - (void)retryActivation:(id)arg1;
 - (BOOL)sendCompanionPerformanceResults;
 - (id)serviceIdentifier;

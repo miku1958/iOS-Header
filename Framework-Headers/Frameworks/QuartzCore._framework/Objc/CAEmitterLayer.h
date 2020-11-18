@@ -23,6 +23,7 @@
 @property (copy) NSString *emitterMode;
 @property struct CGPath *emitterPath;
 @property struct CGPoint emitterPosition;
+@property (copy) NSArray *emitterRects;
 @property (copy) NSString *emitterShape;
 @property struct CGSize emitterSize;
 @property double emitterZPosition;
@@ -33,6 +34,7 @@
 @property unsigned int seed;
 @property float spin;
 @property float spinBias;
+@property double updateInterval;
 @property float velocity;
 
 + (BOOL)CA_automaticallyNotifiesObservers:(Class)arg1;

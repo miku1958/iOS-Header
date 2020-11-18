@@ -8,7 +8,7 @@
 
 #import <StoreKitUI/SKUIViewElementView-Protocol.h>
 
-@class NSString, UIActivityIndicatorView, UIImageView;
+@class NSString, SKUIAttributedStringView, UIActivityIndicatorView, UIImageView;
 
 @interface SKUIActivityIndicatorView : SKUIViewReuseView <SKUIViewElementView>
 {
@@ -17,6 +17,7 @@
     struct UIEdgeInsets _contentInset;
     UIImageView *_imageView;
     UIActivityIndicatorView *_indicatorView;
+    SKUIAttributedStringView *_stringView;
     double _period;
 }
 

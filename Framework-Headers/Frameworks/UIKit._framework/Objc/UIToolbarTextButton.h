@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)_UIAppearance_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
-- (id)_scriptingInfo;
 - (void)_setPressed:(BOOL)arg1;
 - (void)_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (struct UIEdgeInsets)alignmentRectInsets;

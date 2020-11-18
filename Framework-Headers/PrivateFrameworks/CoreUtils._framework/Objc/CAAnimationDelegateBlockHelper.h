@@ -6,8 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
+#import <CoreUtils/CAAnimationDelegate-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface CAAnimationDelegateBlockHelper : NSObject
+@interface CAAnimationDelegateBlockHelper : NSObject <CAAnimationDelegate>
 {
     CDUnknownBlockType _animationDidStartBlock;
     CDUnknownBlockType _animationDidStopBlock;
@@ -15,7 +19,12 @@ __attribute__((visibility("hidden")))
 
 @property (copy, nonatomic) CDUnknownBlockType animationDidStartBlock; // @synthesize animationDidStartBlock=_animationDidStartBlock;
 @property (copy, nonatomic) CDUnknownBlockType animationDidStopBlock; // @synthesize animationDidStopBlock=_animationDidStopBlock;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)animationDidStart:(id)arg1;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)dealloc;

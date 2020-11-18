@@ -8,8 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class PBUnknownFields;
+
 @interface GEOPDSearchZeroKeywordEntry : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     CDStruct_9f2792e4 _categoryIndexs;
     unsigned int _dayOfWeek;
     unsigned int _hourOfDay;
@@ -25,6 +28,7 @@
 @property (nonatomic) BOOL hasDayOfWeek;
 @property (nonatomic) BOOL hasHourOfDay;
 @property (nonatomic) unsigned int hourOfDay; // @synthesize hourOfDay=_hourOfDay;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 - (void)addCategoryIndex:(unsigned int)arg1;
 - (unsigned int)categoryIndexAtIndex:(unsigned long long)arg1;

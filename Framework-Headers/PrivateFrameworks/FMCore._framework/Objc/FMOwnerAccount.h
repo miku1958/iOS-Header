@@ -17,14 +17,17 @@
     NSDictionary *_dataclassProperties;
 }
 
-@property (copy, nonatomic) NSDictionary *dataclassProperties; // @synthesize dataclassProperties=_dataclassProperties;
-@property (copy, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
-@property (copy, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
-@property (copy, nonatomic) NSString *personId; // @synthesize personId=_personId;
-@property (copy, nonatomic) NSString *username; // @synthesize username=_username;
+@property (readonly, copy, nonatomic) NSDictionary *dataclassProperties; // @synthesize dataclassProperties=_dataclassProperties;
+@property (readonly, copy, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
+@property (readonly, copy, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
+@property (readonly, copy, nonatomic) NSString *personId; // @synthesize personId=_personId;
+@property (readonly, copy, nonatomic) NSString *username; // @synthesize username=_username;
 
++ (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)description;
+- (id)hostNameOfType:(long long)arg1;
+- (id)tokenOfType:(long long)arg1;
 
 @end
 

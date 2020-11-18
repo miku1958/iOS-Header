@@ -6,24 +6,26 @@
 
 #import <VectorKit/VKTileSource.h>
 
-@class GEOTileKeyMap;
+@class GEOTileKeyMap, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface VKResourcesTileSource : VKTileSource
 {
     GEOTileKeyMap *_keyToKeysMap;
+    NSSet *_scenariosToDownload;
 }
 
 - (BOOL)canFetchTileForKey:(const struct VKTileKey *)arg1;
 - (void)cancelDownload:(const struct _GEOTileKey *)arg1;
 - (void)dealloc;
 - (struct _GEOTileKey)downloadKeyAtX:(unsigned int)arg1 y:(unsigned int)arg2 z:(unsigned int)arg3;
-- (id)initWithResourceManifestConfiguration:(id)arg1 locale:(id)arg2;
+- (id)initWithResourceManifestConfiguration:(id)arg1 locale:(id)arg2 sharedResources:(id)arg3;
 - (unsigned int)maximumDownloadZoomLevel;
 - (BOOL)maximumZoomLevelBoundsCamera;
 - (unsigned int)minimumDownloadZoomLevel;
 - (BOOL)minimumZoomLevelBoundsCamera;
 - (void)performDownload:(const struct _GEOTileKey *)arg1;
+- (void)setTargetDisplay:(unsigned char)arg1;
 - (struct VKTileKey)sourceKeyForRenderKey:(const struct VKTileKey *)arg1;
 - (id)tileForData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3;
 - (id)tileLoader;

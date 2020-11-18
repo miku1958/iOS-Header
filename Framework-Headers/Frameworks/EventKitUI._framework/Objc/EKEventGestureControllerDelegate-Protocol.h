@@ -6,11 +6,12 @@
 
 #import <EventKitUI/NSObject-Protocol.h>
 
-@class EKDayOccurrenceView, EKEvent, EKEventGestureController, UIView;
+@class EKDayOccurrenceView, EKEvent, EKEventGestureController, UIView, UIViewController;
 
 @protocol EKEventGestureControllerDelegate <NSObject>
 - (EKEvent *)createEventForEventGestureController:(EKEventGestureController *)arg1;
 - (EKDayOccurrenceView *)createOccurrenceViewForEventGestureController:(EKEventGestureController *)arg1;
+- (UIViewController *)currentPresentationController;
 - (BOOL)didScrollWhenEventGestureController:(EKEventGestureController *)arg1 scrollTimerFiredToMoveLeft:(BOOL)arg2 right:(BOOL)arg3 vertically:(BOOL)arg4 towardPoint:(struct CGPoint)arg5;
 - (void)eventGestureController:(EKEventGestureController *)arg1 addViewToScroller:(UIView *)arg2 isAllDay:(BOOL)arg3;
 - (void)eventGestureController:(EKEventGestureController *)arg1 adjustDraggingViewForAllDay:(BOOL)arg2;
@@ -37,9 +38,10 @@
 - (double)eventGestureController:(EKEventGestureController *)arg1 convertXForMargin:(double)arg2;
 - (BOOL)eventGestureController:(EKEventGestureController *)arg1 shouldFadeOccurrenceAfterFling:(EKEvent *)arg2;
 - (BOOL)eventGestureControllerShouldAllowLongPress:(EKEventGestureController *)arg1;
+- (BOOL)hasCorrectParentForDraggingView:(UIView *)arg1 isAllDay:(BOOL)arg2;
 - (double)horizontalOffsetForPagingForEventGestureController:(EKEventGestureController *)arg1;
 - (struct CGRect)marginFrameForEventGestureController:(EKEventGestureController *)arg1;
 - (BOOL)moreThanOneDayVisibleForEventGestureController:(EKEventGestureController *)arg1;
-- (double)pageChangeMarginForEventGestureController:(EKEventGestureController *)arg1;
+- (struct UIEdgeInsets)pageChangeMarginsForEventGestureController:(EKEventGestureController *)arg1;
 @end
 

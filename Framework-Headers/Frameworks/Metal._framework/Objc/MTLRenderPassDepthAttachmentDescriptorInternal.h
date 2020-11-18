@@ -41,9 +41,11 @@ __attribute__((visibility("hidden")))
 - (void)setSlice:(unsigned long long)arg1;
 - (void)setStoreAction:(unsigned long long)arg1;
 - (void)setTexture:(id)arg1;
+- (void)setYInvert:(BOOL)arg1;
 - (unsigned long long)slice;
 - (unsigned long long)storeAction;
 - (id)texture;
+- (BOOL)yInvert;
 
 @end
 

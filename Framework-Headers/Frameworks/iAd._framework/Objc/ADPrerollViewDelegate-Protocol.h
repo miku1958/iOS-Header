@@ -12,6 +12,7 @@
 - (void)pauseButtonPressed;
 - (void)playButtonPressed;
 - (BOOL)prerollViewRequestsEmbeddedStatus;
+- (void)privacyButtonPressed;
 - (void)skipButtonPressed;
 @end
 

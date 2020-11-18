@@ -29,9 +29,7 @@
 @property (readonly) MFMimePart *mimePart; // @synthesize mimePart=_htmlPart;
 @property unsigned int preferredEncoding; // @synthesize preferredEncoding=_preferredEncoding;
 
-+ (id)sourceForURL:(id)arg1;
 - (id)_initWithMimePart:(id)arg1 htmlData:(id)arg2;
-- (id)attachmentForCID:(id)arg1;
 - (id)attachmentForURL:(id)arg1;
 - (id)attachmentsInDocument;
 - (void)dealloc;

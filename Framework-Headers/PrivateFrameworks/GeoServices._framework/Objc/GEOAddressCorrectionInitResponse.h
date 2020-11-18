@@ -33,6 +33,8 @@
 @property (nonatomic) unsigned int numberOfVisitsBucketSize; // @synthesize numberOfVisitsBucketSize=_numberOfVisitsBucketSize;
 @property (nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
 
++ (Class)addressType;
+- (int)StringAsStatusCode:(id)arg1;
 - (void)addAddress:(id)arg1;
 - (id)addressAtIndex:(unsigned long long)arg1;
 - (unsigned long long)addressCount;
@@ -46,6 +48,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)statusCodeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

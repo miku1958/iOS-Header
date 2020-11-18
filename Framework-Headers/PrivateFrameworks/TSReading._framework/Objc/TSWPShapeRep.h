@@ -6,13 +6,14 @@
 
 #import <TSReading/TSDShapeRep.h>
 
+#import <TSReading/CALayerDelegate-Protocol.h>
 #import <TSReading/TSDContainerRep-Protocol.h>
 #import <TSReading/TSWPShapeLayoutDelegate-Protocol.h>
 
 @class CALayer, NSObject, NSString, TSWPRep;
 @protocol TSDContainerInfo;
 
-@interface TSWPShapeRep : TSDShapeRep <TSDContainerRep, TSWPShapeLayoutDelegate>
+@interface TSWPShapeRep : TSDShapeRep <CALayerDelegate, TSDContainerRep, TSWPShapeLayoutDelegate>
 {
     BOOL _editingContainedRep;
     CALayer *_overflowGlyphLayer;

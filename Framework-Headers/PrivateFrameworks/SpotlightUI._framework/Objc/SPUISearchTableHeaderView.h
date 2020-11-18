@@ -6,33 +6,37 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-@class NSArray, UIButton, UILabel;
+@class NSLayoutConstraint, SFResultSection, UIButton, UILabel;
 @protocol SPUISearchTableHeaderViewDelegate;
 
 @interface SPUISearchTableHeaderView : UITableViewHeaderFooterView
 {
     id<SPUISearchTableHeaderViewDelegate> _delegate;
+    unsigned long long _sectionHeaderType;
     UILabel *_titleLabel;
     UIButton *_moreButton;
-    unsigned long long _section;
-    NSArray *_moreButtonHiddenConstraints;
-    NSArray *_moreButtonVisibleConstraints;
+    SFResultSection *_section;
+    NSLayoutConstraint *_moreButtonHiddenConstraint;
+    NSLayoutConstraint *_moreButtonVisibleConstraint;
 }
 
-@property (nonatomic) id<SPUISearchTableHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak) id<SPUISearchTableHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UIButton *moreButton; // @synthesize moreButton=_moreButton;
-@property (strong) NSArray *moreButtonHiddenConstraints; // @synthesize moreButtonHiddenConstraints=_moreButtonHiddenConstraints;
-@property (strong) NSArray *moreButtonVisibleConstraints; // @synthesize moreButtonVisibleConstraints=_moreButtonVisibleConstraints;
-@property (nonatomic) unsigned long long section; // @synthesize section=_section;
+@property (strong, nonatomic) NSLayoutConstraint *moreButtonHiddenConstraint; // @synthesize moreButtonHiddenConstraint=_moreButtonHiddenConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *moreButtonVisibleConstraint; // @synthesize moreButtonVisibleConstraint=_moreButtonVisibleConstraint;
+@property (strong, nonatomic) SFResultSection *section; // @synthesize section=_section;
+@property (readonly) unsigned long long sectionHeaderType; // @synthesize sectionHeaderType=_sectionHeaderType;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
 - (id)initWithReuseIdentifier:(id)arg1;
-- (void)layoutSubviews;
 - (void)moreButtonPressed;
+- (id)moreResultsPunchout;
 - (void)setFloating:(BOOL)arg1;
-- (void)setMoreButtonVisible:(BOOL)arg1;
-- (void)updateWithTitle:(id)arg1 section:(unsigned long long)arg2 isExpanded:(BOOL)arg3;
+- (BOOL)supportsShowMoreInApp;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateShowMoreButtonVisibility;
+- (void)updateWithSection:(id)arg1 isExpanded:(BOOL)arg2;
 
 @end
 

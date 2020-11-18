@@ -9,7 +9,7 @@
 @interface UIAlertController (TelephonyUI)
 + (id)enableWiFiCallingAlertController;
 + (id)enableWiFiCallingAlertControllerWithPreferredStyle:(long long)arg1;
-+ (id)networkUnavailableAlertControllerWithCallService:(int)arg1 dialType:(long long)arg2;
-+ (id)networkUnavailableAlertControllerWithCallService:(int)arg1 dialType:(long long)arg2 preferredStyle:(long long)arg3;
++ (id)networkUnavailableAlertControllerWithCallProvider:(id)arg1 dialType:(long long)arg2;
++ (id)networkUnavailableAlertControllerWithCallProvider:(id)arg1 dialType:(long long)arg2 preferredStyle:(long long)arg3;
 @end
 

@@ -22,6 +22,7 @@
 @property (nonatomic) long long capabilities; // @synthesize capabilities=_capabilities;
 @property (readonly, nonatomic) NSString *localizedDisplayName; // @synthesize localizedDisplayName=_localizedDisplayName;
 
++ (id)allowedKeys;
 + (id)capabilitiesToString:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

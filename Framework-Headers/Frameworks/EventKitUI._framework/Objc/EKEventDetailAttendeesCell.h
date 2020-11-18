@@ -6,13 +6,19 @@
 
 #import <EventKitUI/EKEventDetailCell.h>
 
-@class EKEventDetailAttendeesListView;
+@class UIView, UIViewController;
+@protocol EKEventDetailAttendeesList;
 
 __attribute__((visibility("hidden")))
 @interface EKEventDetailAttendeesCell : EKEventDetailCell
 {
-    EKEventDetailAttendeesListView *_attendeesListView;
+    UIView<EKEventDetailAttendeesList> *_attendeesListView;
+    BOOL _useFaces;
+    UIViewController *_viewController;
 }
+
+@property BOOL useFaces; // @synthesize useFaces=_useFaces;
+@property (weak) UIViewController *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;
 - (id)_attendeesListView;

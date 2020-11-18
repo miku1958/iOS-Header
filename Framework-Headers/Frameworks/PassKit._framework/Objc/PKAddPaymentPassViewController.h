@@ -6,12 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
-@class PKAddPaymentPassRequestConfiguration, PKRemoteAddPaymentPassViewController, PKWeakReference, _UIAsyncInvocation;
+@class PKAddPaymentPassRequestConfiguration, PKRemoteAddPaymentPassViewController, _UIAsyncInvocation;
 @protocol PKAddPaymentPassViewControllerDelegate;
 
 @interface PKAddPaymentPassViewController : UIViewController
 {
-    PKWeakReference *_delegate;
+    id<PKAddPaymentPassViewControllerDelegate> _delegate;
     PKAddPaymentPassRequestConfiguration *_configuration;
     _UIAsyncInvocation *_remoteVCRequest;
     PKRemoteAddPaymentPassViewController *_remoteVC;
@@ -21,6 +21,7 @@
 
 + (BOOL)_shouldForwardViewWillTransitionToSize;
 + (BOOL)canAddPaymentPass;
+- (void).cxx_destruct;
 - (void)_setRemoteVC:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)childViewControllerForStatusBarHidden;
 - (id)childViewControllerForStatusBarStyle;

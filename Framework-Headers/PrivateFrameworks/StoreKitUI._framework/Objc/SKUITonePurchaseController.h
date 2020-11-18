@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/ABPeoplePickerNavigationControllerDelegate-Protocol.h>
+#import <StoreKitUI/CNContactPickerDelegate-Protocol.h>
 
-@class ABPeoplePickerNavigationController, NSString, SKUIClientContext, SKUIItem, UIViewController;
+@class CNContactPickerViewController, NSString, SKUIClientContext, SKUIItem, UIViewController;
 
-@interface SKUITonePurchaseController : NSObject <ABPeoplePickerNavigationControllerDelegate>
+@interface SKUITonePurchaseController : NSObject <CNContactPickerDelegate>
 {
     SKUIClientContext *_clientContext;
+    CNContactPickerViewController *_contactPickerController;
     CDUnknownBlockType _completionBlock;
     SKUIItem *_item;
     UIViewController *_parentViewController;
-    ABPeoplePickerNavigationController *_peoplePicker;
 }
 
 @property (strong, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;
@@ -27,16 +27,15 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_dismissPeoplePicker;
-- (void)_finishPeoplePicker:(id)arg1 withPerson:(void *)arg2;
+- (void)_dismissContactPicker;
+- (void)_finishContactPicker:(id)arg1 withContact:(id)arg2;
 - (void)_finishWithTonePurchase:(id)arg1;
 - (void)_presentViewController:(id)arg1;
-- (void)_showPeoplePicker;
+- (void)_showContactPicker;
+- (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
+- (void)contactPickerDidCancel:(id)arg1;
 - (void)dealloc;
 - (id)initWithItem:(id)arg1;
-- (void)peoplePickerNavigationController:(id)arg1 didSelectPerson:(void *)arg2;
-- (void)peoplePickerNavigationController:(id)arg1 didSelectPerson:(void *)arg2 property:(int)arg3 identifier:(int)arg4;
-- (void)peoplePickerNavigationControllerDidCancel:(id)arg1;
 - (void)showPurchaseFlowWithCompletionBlock:(CDUnknownBlockType)arg1;
 
 @end

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKDPLikeInfo *likeInfo; // @synthesize likeInfo=_likeInfo;
 @property (strong, nonatomic) NSMutableArray *likes; // @synthesize likes=_likes;
 
++ (Class)likeType;
 - (void).cxx_destruct;
 - (void)addLike:(id)arg1;
 - (void)clearLikes;

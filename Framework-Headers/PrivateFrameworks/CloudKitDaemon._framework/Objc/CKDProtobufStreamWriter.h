@@ -11,6 +11,7 @@
 @class NSData, NSFileHandle, NSInputStream, NSMutableArray, NSOutputStream, NSString;
 @protocol CKDProtobufMessageSigningDelegate, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface CKDProtobufStreamWriter : NSObject <NSStreamDelegate>
 {
     NSMutableArray *_allObjects;

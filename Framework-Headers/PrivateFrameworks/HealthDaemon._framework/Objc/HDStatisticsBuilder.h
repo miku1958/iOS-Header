@@ -6,47 +6,56 @@
 
 #import <objc/NSObject.h>
 
-@class HDSQLitePredicate, HKQuantityType, NSArray, NSNumber, _HKFilter;
-@protocol HDHealthDaemon;
+@class HDProfile, HDSQLitePredicate, HKQuantityType, NSArray, NSMutableDictionary, NSNumber, _HKFilter, _HKTimePeriod;
 
 @interface HDStatisticsBuilder : NSObject
 {
+    NSMutableDictionary *_sourceIdsBySource;
+    NSMutableDictionary *_sourcesBySourceId;
     HKQuantityType *_quantityType;
     _HKFilter *_filter;
     HDSQLitePredicate *_predicate;
     unsigned long long _statisticsOptions;
     unsigned long long _mergeStrategy;
     NSNumber *_restrictedSourceIdentifier;
-    id<HDHealthDaemon> _healthDaemon;
+    HDProfile *_profile;
     NSArray *_orderedSources;
+    _HKTimePeriod *_timePeriod;
     long long _anchor;
 }
 
 @property (nonatomic) long long anchor; // @synthesize anchor=_anchor;
 @property (readonly, nonatomic) _HKFilter *filter; // @synthesize filter=_filter;
-@property (readonly, nonatomic) id<HDHealthDaemon> healthDaemon; // @synthesize healthDaemon=_healthDaemon;
 @property (readonly, nonatomic) unsigned long long mergeStrategy; // @synthesize mergeStrategy=_mergeStrategy;
 @property (readonly, nonatomic) NSArray *orderedSources; // @synthesize orderedSources=_orderedSources;
 @property (readonly, nonatomic) HDSQLitePredicate *predicate; // @synthesize predicate=_predicate;
+@property (readonly, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (readonly, nonatomic) HKQuantityType *quantityType; // @synthesize quantityType=_quantityType;
 @property (readonly, nonatomic) NSNumber *restrictedSourceIdentifier; // @synthesize restrictedSourceIdentifier=_restrictedSourceIdentifier;
 @property (readonly, nonatomic) unsigned long long statisticsOptions; // @synthesize statisticsOptions=_statisticsOptions;
+@property (strong, nonatomic) _HKTimePeriod *timePeriod; // @synthesize timePeriod=_timePeriod;
 
 + (id)_predicateWithSampleType:(id)arg1 sourceIdentifier:(id)arg2 predicate:(id)arg3;
-+ (id)statisticsBuilderWithQuantityType:(id)arg1 filter:(id)arg2 statisticsOptions:(unsigned long long)arg3 mergeStrategy:(unsigned long long)arg4 restrictedSourceIdentifier:(id)arg5 healthDaemon:(id)arg6;
++ (id)statisticsBuilderWithQuantityType:(id)arg1 filter:(id)arg2 statisticsOptions:(unsigned long long)arg3 mergeStrategy:(unsigned long long)arg4 restrictedSourceIdentifier:(id)arg5 profile:(id)arg6;
 - (void).cxx_destruct;
+- (id)_bundleIdentifierForSourceId:(id)arg1;
+- (id)_collectionCalculatorWithBucketBoundaries:(id)arg1;
 - (void)_enumerateSamplesWithType:(id)arg1 predicate:(id)arg2 database:(id)arg3 handler:(CDUnknownBlockType)arg4;
-- (id)_initialStatisticsForCollection:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 shouldStopProcessing:(CDUnknownBlockType)arg4 error:(id *)arg5;
-- (id)_initialStatisticsForStartDate:(id)arg1 endDate:(id)arg2 shouldStopProcessing:(CDUnknownBlockType)arg3 error:(id *)arg4;
+- (BOOL)_initialStatisticsForCollection:(id)arg1 timePeriod:(id)arg2 database:(id)arg3 shouldStopProcessing:(CDUnknownBlockType)arg4 shouldSuspend:(CDUnknownBlockType)arg5 batchHandler:(CDUnknownBlockType)arg6 error:(id *)arg7;
+- (id)_initialStatisticsForTimePeriod:(id)arg1 database:(id)arg2 shouldStopProcessing:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (void)_setupOrderedSources;
 - (BOOL)_setupStatistics:(id)arg1 withCalculator:(id)arg2;
+- (id)_sourceIdForBundleIdentifier:(id)arg1;
+- (void)_updateSourceCache:(id)arg1 sourceId:(id)arg2;
 - (id)_updateStatisticsCollection:(id)arg1 withSamples:(id)arg2 error:(id *)arg3;
 - (id)buildStatisticsObjectFromCalculator:(id)arg1;
-- (id)collectionCalculatorWithBucketBoundaries:(id)arg1;
-- (id)initWithQuantityType:(id)arg1 filter:(id)arg2 statisticsOptions:(unsigned long long)arg3 mergeStrategy:(unsigned long long)arg4 restrictedSourceIdentifier:(id)arg5 healthDaemon:(id)arg6;
-- (id)initialStatisticsForCollection:(id)arg1 shouldStopProcessing:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (id)collectionCalculatorWithBucketTimePeriods:(id)arg1;
+- (id)initWithProfile:(id)arg1;
+- (id)initWithQuantityType:(id)arg1 filter:(id)arg2 statisticsOptions:(unsigned long long)arg3 mergeStrategy:(unsigned long long)arg4 restrictedSourceIdentifier:(id)arg5 profile:(id)arg6;
+- (BOOL)initialStatisticsForCollection:(id)arg1 shouldStopProcessing:(CDUnknownBlockType)arg2 shouldSuspend:(CDUnknownBlockType)arg3 batchHandler:(CDUnknownBlockType)arg4 error:(id *)arg5;
 - (id)initialStatisticsShouldStopProcessing:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (id)orderedSourceIDsFromSources:(id)arg1 sourceManager:(id)arg2;
+- (id)orderedSourcesFromUnorderedIDs:(id)arg1 error:(id *)arg2;
 - (id)updateStatisticsCollection:(id)arg1 withSamples:(id)arg2 anchor:(id)arg3 restrictedSourceIdentifier:(id)arg4 error:(id *)arg5;
 
 @end

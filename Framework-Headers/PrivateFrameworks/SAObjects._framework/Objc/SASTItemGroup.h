@@ -12,6 +12,7 @@
 {
 }
 
+@property (copy, nonatomic) NSArray *fallbackCommands;
 @property (copy, nonatomic) NSArray *templateItems;
 
 + (id)itemGroup;

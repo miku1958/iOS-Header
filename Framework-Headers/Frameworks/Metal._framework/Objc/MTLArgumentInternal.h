@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (unsigned long long)access;
+- (unsigned long long)arrayLength;
 - (unsigned long long)bufferAlignment;
 - (unsigned long long)bufferDataSize;
 - (unsigned long long)bufferDataType;

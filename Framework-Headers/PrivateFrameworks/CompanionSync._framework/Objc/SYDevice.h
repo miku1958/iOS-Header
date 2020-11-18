@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <CompanionSync/NRDevicePropertyObserver-Protocol.h>
+#import <CompanionSync/SYStateLoggable-Protocol.h>
 
-@class NRDevice, NSString, NSUUID;
+@class NRDevice, NSDate, NSString, NSUUID, PBCodable;
 
-@interface SYDevice : NSObject <NRDevicePropertyObserver>
+@interface SYDevice : NSObject <NRDevicePropertyObserver, SYStateLoggable>
 {
     NRDevice *_nrDevice;
     NSUUID *_pairingID;
@@ -21,13 +22,17 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *deviceClass;
+@property (readonly, nonatomic) long long deviceCode;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSDate *lastActiveDate;
 @property (readonly, nonatomic) NRDevice *nrDevice; // @synthesize nrDevice=_nrDevice;
 @property (readonly, nonatomic, getter=isPaired) BOOL paired;
 @property (readonly, nonatomic) NSUUID *pairingID; // @synthesize pairingID=_pairingID;
 @property (readonly, copy, nonatomic) NSString *pairingStorePath;
 @property (nonatomic) long long state; // @synthesize state=_state;
+@property (readonly, nonatomic) PBCodable *stateForLogging;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsFileTransferMessageSend;
 @property (readonly, nonatomic) NSString *systemBuildVersion;
 @property (readonly, nonatomic) NSString *systemVersion;
 @property (readonly, nonatomic, getter=isTargetable) BOOL targetable;

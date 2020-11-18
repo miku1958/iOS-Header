@@ -12,6 +12,7 @@
 
 @property (readonly, copy, nonatomic) NSString *hk_bundleIdentifier;
 @property (readonly, nonatomic) BOOL hk_isAppExtension;
+@property (readonly, copy, nonatomic) NSString *hk_signingIdentifier;
 
 @end
 

@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 
 - (void)_cancelDispatchSources;
 - (void)_closeOnDealloc;
-- (void)_commonDealloc;
 - (void)_locked_clearHandler:(CDUnknownBlockType *)arg1 forSource:(id *)arg2;
 - (id)_monitor:(int)arg1;
 - (void)acceptConnectionInBackgroundAndNotify;
@@ -43,7 +42,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (int)fileDescriptor;
-- (void)finalize;
 - (id)init;
 - (id)initWithFileDescriptor:(int)arg1;
 - (id)initWithFileDescriptor:(int)arg1 closeOnDealloc:(BOOL)arg2;

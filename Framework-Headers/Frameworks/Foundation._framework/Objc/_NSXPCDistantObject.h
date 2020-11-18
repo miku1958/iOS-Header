@@ -39,7 +39,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)conformsToProtocol:(id)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalize;
 - (void)forwardInvocation:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

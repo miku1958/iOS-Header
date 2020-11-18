@@ -48,6 +48,7 @@
 @property (strong, nonatomic) NSData *reroutedRouteID; // @synthesize reroutedRouteID=_reroutedRouteID;
 @property (nonatomic) unsigned int reroutedRouteTravelTime; // @synthesize reroutedRouteTravelTime=_reroutedRouteTravelTime;
 
++ (Class)oldRouteIncidentsType;
 - (void)addOldRouteIncidents:(id)arg1;
 - (void)clearOldRouteIncidents;
 - (void)copyTo:(id)arg1;

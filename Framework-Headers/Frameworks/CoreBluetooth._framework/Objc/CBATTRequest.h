@@ -25,8 +25,8 @@
 @property (readonly, nonatomic) NSNumber *transactionID; // @synthesize transactionID=_transactionID;
 @property (copy) NSData *value; // @synthesize value=_value;
 
+- (void).cxx_destruct;
 - (void)appendValueData:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)endOffset;
 - (id)initWithCentral:(id)arg1 characteristic:(id)arg2 offset:(unsigned long long)arg3 transactionID:(id)arg4;

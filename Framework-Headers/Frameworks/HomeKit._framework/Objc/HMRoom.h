@@ -6,26 +6,29 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKit/HMMessageReceiver-Protocol.h>
+#import <HomeKit/HMFMessageReceiver-Protocol.h>
+#import <HomeKit/HMMutableApplicationData-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMDelegateCaller, HMHome, HMMessageDispatcher, NSArray, NSString, NSUUID;
+@class HMApplicationData, HMDelegateCaller, HMFMessageDispatcher, HMHome, NSArray, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMRoom : NSObject <NSSecureCoding, HMMessageReceiver, HMObjectMerge>
+@interface HMRoom : NSObject <NSSecureCoding, HMFMessageReceiver, HMObjectMerge, HMMutableApplicationData>
 {
     NSUUID *_uniqueIdentifier;
     NSString *_name;
     NSUUID *_uuid;
     HMHome *_home;
+    HMApplicationData *_applicationData;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     HMDelegateCaller *_delegateCaller;
-    HMMessageDispatcher *_msgDispatcher;
+    HMFMessageDispatcher *_msgDispatcher;
 }
 
 @property (readonly, copy, nonatomic) NSArray *accessories;
+@property (readonly, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
@@ -34,7 +37,7 @@
 @property (weak, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
@@ -56,7 +59,9 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1;
+- (void)setApplicationData:(id)arg1;
 - (void)setName:(id)arg1;
+- (void)updateApplicationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

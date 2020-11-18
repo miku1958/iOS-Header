@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)prepareToFadeInWithTimeAlpha:(double)arg1 dateAlpha:(double)arg2 statusBarAlpha:(double)arg3 lockScreenView:(id)arg4 existingDateView:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)prepareToFadeInForSource:(long long)arg1 timeAlpha:(double)arg2 dateAlpha:(double)arg3 statusBarAlpha:(double)arg4 delegate:(id)arg5 existingDateView:(id)arg6 completion:(CDUnknownBlockType)arg7;
 
 @end
 

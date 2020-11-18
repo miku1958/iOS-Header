@@ -24,12 +24,14 @@
     BOOL _isDefaultAction;
     BOOL _companion;
     id _delegate;
+    int _hostApplication;
     UIViewController *_viewController;
 }
 
 @property (nonatomic) BOOL companion; // @synthesize companion=_companion;
 @property (readonly, nonatomic) DDAction *companionAction;
 @property (weak) NSObject<DDActionDelegate> *delegate; // @synthesize delegate=_delegate;
+@property int hostApplication; // @synthesize hostApplication=_hostApplication;
 @property BOOL isDefaultAction; // @synthesize isDefaultAction=_isDefaultAction;
 @property (strong, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
@@ -41,9 +43,11 @@
 + (BOOL)supportsSecureCoding;
 - (void)_copyURL:(id)arg1;
 - (void)_copyURL:(id)arg1 andString:(id)arg2;
+- (void)_performFromView:(id)arg1 byOpeningURL:(id)arg2;
 - (void)adaptForPresentationInPopover:(BOOL)arg1;
 - (void)addToRecents;
 - (struct __CFArray *)associatedResults;
+- (BOOL)canBePerformedByOpeningURL;
 - (struct __DDResult *)coalescedResult;
 - (id)context;
 - (void)dealloc;
@@ -56,6 +60,7 @@
 - (void)invalidate;
 - (id)localizedName;
 - (void)perform;
+- (void)performFromView:(id)arg1;
 - (void)prepareViewControllerForActionController:(id)arg1;
 - (struct __DDResult *)result;
 - (id)url;

@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CoreSuggestionsInternals/SGMessage.h>
 
-#import <CoreSuggestionsInternals/NSCopying-Protocol.h>
-#import <CoreSuggestionsInternals/NSSecureCoding-Protocol.h>
+@class NSArray, NSNumber, NSString, SGSimpleNamedEmailAddress;
 
-@class NSArray, NSData, NSDate, NSNumber, NSString, SGSimpleNamedEmailAddress;
-
-@interface SGSimpleMailMessage : NSObject <NSSecureCoding, NSCopying>
+@interface SGSimpleMailMessage : SGMessage
 {
     BOOL _isInhuman;
     BOOL _isPartiallyDownloaded;
@@ -21,60 +18,51 @@
     NSArray *_cc;
     NSArray *_bcc;
     NSString *_messageId;
-    NSString *_subject;
-    NSString *_body;
     NSString *_htmlBody;
-    NSData *_htmlData;
-    unsigned long long _htmlDataEncoding;
-    NSDate *_date;
     NSNumber *_received;
     NSArray *_headers;
-    NSArray *_accountHandles;
     SGSimpleNamedEmailAddress *_mailingList;
 }
 
-@property (copy, nonatomic) NSArray *accountHandles; // @synthesize accountHandles=_accountHandles;
 @property (copy, nonatomic) NSArray *bcc; // @synthesize bcc=_bcc;
-@property (copy, nonatomic) NSString *body; // @synthesize body=_body;
+@property (copy, nonatomic) NSString *body; // @dynamic body;
 @property (copy, nonatomic) NSArray *cc; // @synthesize cc=_cc;
-@property (copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (copy, nonatomic) SGSimpleNamedEmailAddress *from; // @synthesize from=_from;
 @property (readonly, nonatomic) NSArray *headers; // @synthesize headers=_headers;
 @property (copy, nonatomic) NSString *htmlBody; // @synthesize htmlBody=_htmlBody;
-@property (readonly, nonatomic) NSData *htmlData; // @synthesize htmlData=_htmlData;
-@property (readonly, nonatomic) unsigned long long htmlDataEncoding; // @synthesize htmlDataEncoding=_htmlDataEncoding;
 @property (nonatomic) BOOL isInhuman; // @synthesize isInhuman=_isInhuman;
 @property (nonatomic) BOOL isPartiallyDownloaded; // @synthesize isPartiallyDownloaded=_isPartiallyDownloaded;
 @property (copy, nonatomic) SGSimpleNamedEmailAddress *mailingList; // @synthesize mailingList=_mailingList;
 @property (copy, nonatomic) NSString *messageId; // @synthesize messageId=_messageId;
 @property (copy, nonatomic) NSNumber *received; // @synthesize received=_received;
 @property (copy, nonatomic) SGSimpleNamedEmailAddress *replyTo; // @synthesize replyTo=_replyTo;
-@property (copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
 @property (copy, nonatomic) NSArray *to; // @synthesize to=_to;
-@property (readonly, nonatomic) NSString *uniqueId;
 
-+ (id)fromDictionary:(id)arg1;
 + (id)fromMFMailMessage:(id)arg1;
 + (BOOL)headersContainInhumanOnes:(id)arg1 keys:(id)arg2;
-+ (id)messageWithSearchableItem:(id)arg1;
 + (id)parseRfc822Headers:(id)arg1 htmlContent:(id)arg2;
 + (id)simpleMailMessageFromHeadersOfMessage:(id)arg1;
 + (id)subjectByCleaningPrefixesInSubject:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)asDictionary;
+- (unsigned long long)contentLength;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)headersDictionary;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithSearchableItem:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToSimpleMailMessage:(id)arg1;
 - (id)rfc822Data;
 - (id)searchableItem;
 - (id)searchableItemWithSource:(id)arg1;
 - (void)setHeaders:(id)arg1;
+- (id)textContent;
+- (id)uniqueIdentifier;
 
 @end
 

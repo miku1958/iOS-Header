@@ -47,6 +47,7 @@
 @property (strong) NSString *uid;
 @property (strong) NSString *unrecognizedComponentName;
 @property (strong) NSURL *url;
+@property (strong) NSString *x_apple_contactIdentifiers;
 @property (strong) NSString *x_apple_dropbox;
 @property (strong) NSString *x_apple_etag;
 @property (strong) NSString *x_apple_ews_changekey;
@@ -54,6 +55,7 @@
 @property BOOL x_apple_ews_needsserverconfirmation;
 @property (strong) NSString *x_apple_ews_permission;
 @property BOOL x_apple_ignore_on_restore;
+@property (strong) NSString *x_apple_relatedExternalID;
 @property (strong) NSString *x_apple_scheduletag;
 @property (strong) NSString *x_apple_serverFilename;
 @property (strong) ICSStructuredLocation *x_apple_structured_location;
@@ -62,6 +64,7 @@
 @property (strong) NSString *x_apple_suggestionInfoOpaqueKey;
 @property ICSDate *x_apple_suggestionInfoTimestamp;
 @property (strong) NSString *x_apple_suggestionInfoUniqueKey;
+@property (strong) NSString *x_apple_universalID;
 @property int x_calendarserver_access;
 
 + (id)inheritanceKeywords;

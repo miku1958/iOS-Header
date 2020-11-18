@@ -12,7 +12,7 @@
 
 @interface GEOPDTransitScheduleFilter : PBCodable <NSCopying>
 {
-    CDStruct_43c37391 _operatingHoursRange;
+    struct GEOPDTimeRange _operatingHoursRange;
     GEOPDDeparturePredicate *_departurePredicateCountdown;
     GEOPDDeparturePredicate *_departurePredicateStamp;
     CDStruct_65124bb5 _has;
@@ -23,7 +23,7 @@
 @property (readonly, nonatomic) BOOL hasDeparturePredicateCountdown;
 @property (readonly, nonatomic) BOOL hasDeparturePredicateStamp;
 @property (nonatomic) BOOL hasOperatingHoursRange;
-@property (nonatomic) CDStruct_43c37391 operatingHoursRange; // @synthesize operatingHoursRange=_operatingHoursRange;
+@property (nonatomic) struct GEOPDTimeRange operatingHoursRange; // @synthesize operatingHoursRange=_operatingHoursRange;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

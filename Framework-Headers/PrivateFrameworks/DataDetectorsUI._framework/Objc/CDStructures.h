@@ -39,8 +39,8 @@ struct __CFRuntimeBase {
 struct __CFString;
 
 struct __DDQueryOffset {
-    long long _field1;
-    long long _field2;
+    unsigned int :32;
+    unsigned int :32;
 };
 
 struct __DDResult {
@@ -58,8 +58,10 @@ struct __DDResult {
     struct __CFString *_field6;
     struct __CFString *_field7;
     void *_field8;
-    void *_field9;
+    struct __CFDictionary *_field9;
     long long _field10;
+    unsigned char _field11;
+    float _field12;
 };
 
 struct __DDScanQuery {

@@ -8,22 +8,30 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray;
+@class GEOETAServiceResponseSummary, NSData, NSMutableArray;
 
 @interface GEOETATrafficUpdateResponse : PBCodable <NSCopying>
 {
+    unsigned long long _debugServerLatencyMs;
+    GEOETAServiceResponseSummary *_etaServiceSummary;
     NSMutableArray *_routes;
     NSData *_sessionState;
     int _status;
-    CDStruct_47fe53f2 _has;
+    CDStruct_00a28cb6 _has;
 }
 
+@property (nonatomic) unsigned long long debugServerLatencyMs;
+@property (strong, nonatomic) GEOETAServiceResponseSummary *etaServiceSummary;
+@property (nonatomic) BOOL hasDebugServerLatencyMs;
+@property (readonly, nonatomic) BOOL hasEtaServiceSummary;
 @property (readonly, nonatomic) BOOL hasSessionState;
 @property (nonatomic) BOOL hasStatus;
 @property (strong, nonatomic) NSMutableArray *routes; // @synthesize routes=_routes;
 @property (strong, nonatomic) NSData *sessionState; // @synthesize sessionState=_sessionState;
 @property (nonatomic) int status; // @synthesize status=_status;
 
++ (Class)routeType;
+- (int)StringAsStatus:(id)arg1;
 - (void)addRoute:(id)arg1;
 - (void)clearRoutes;
 - (void)copyTo:(id)arg1;
@@ -37,6 +45,7 @@
 - (BOOL)readFrom:(id)arg1;
 - (id)routeAtIndex:(unsigned long long)arg1;
 - (unsigned long long)routesCount;
+- (id)statusAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

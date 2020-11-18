@@ -6,14 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary;
+#import <SafariShared/WBSCloudTabDeviceProvider-Protocol.h>
 
-@interface WBSCloudTabStore : NSObject
+@class NSArray, NSMutableArray, NSMutableDictionary, NSString;
+
+@interface WBSCloudTabStore : NSObject <WBSCloudTabDeviceProvider>
 {
     NSMutableArray *_syncedCloudTabDevices;
     NSMutableDictionary *_deviceUUIDsToCloseRequests;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSArray *syncedCloudTabDevices;
 
 - (void).cxx_destruct;

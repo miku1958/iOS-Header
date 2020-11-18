@@ -48,6 +48,8 @@
 - (void)setPlayer:(id)arg1 connected:(BOOL)arg2;
 - (void)setPlayer:(id)arg1 responded:(long long)arg2;
 - (void)setPlayer:(id)arg1 sentData:(id)arg2;
+- (void)setShareInvitees:(id)arg1;
+- (void)shareMatchWithRequest:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)startMatchingWithRequest:(id)arg1;
 
 @end

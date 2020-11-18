@@ -14,6 +14,6 @@
 - (BOOL)cplIsHardLinkNotPossibleError:(id)arg1;
 - (BOOL)cplLinkItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (BOOL)cplLinkOrCopyItemAtURL:(id)arg1 toURL:(id)arg2 shouldCopy:(BOOL)arg3 shouldApplyDataProtection:(BOOL)arg4 error:(id *)arg5;
-- (BOOL)cplMoveItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
+- (BOOL)cplMoveItemAtURL:(id)arg1 toURL:(id)arg2 shouldApplyDataProtection:(BOOL)arg3 error:(id *)arg4;
 @end
 

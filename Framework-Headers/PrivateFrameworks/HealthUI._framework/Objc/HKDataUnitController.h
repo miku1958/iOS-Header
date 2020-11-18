@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary;
+#import <HealthUI/_HKWheelchairUseCharacteristicCacheObserver-Protocol.h>
 
-@interface HKDataUnitController : NSObject
+@class NSArray, NSDictionary, _HKWheelchairUseCharacteristicCache;
+
+@interface HKDataUnitController : NSObject <_HKWheelchairUseCharacteristicCacheObserver>
 {
+    _HKWheelchairUseCharacteristicCache *_wheelchairUseCharacteristicCache;
     NSArray *_dataUnits;
     NSDictionary *_dataUnitsByIdentifier;
     NSDictionary *_dataUnitsByCategoryIdentifier;
@@ -24,6 +27,8 @@
 - (id)dataUnitWithIdentifier:(id)arg1;
 - (id)dataUnitsForCategoryIdentifier:(long long)arg1;
 - (id)init;
+- (void)setWheelchairUseCharacteristicCache:(id)arg1;
+- (void)wheelchairUseCharacteristicCache:(id)arg1 wheelchairUsageDidChange:(BOOL)arg2;
 
 @end
 

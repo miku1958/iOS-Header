@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (oneway void)release;

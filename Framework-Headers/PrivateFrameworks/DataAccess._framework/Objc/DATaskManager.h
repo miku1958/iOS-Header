@@ -48,6 +48,7 @@
 @property (strong, nonatomic) NSTimer *xpcTransactionTimer; // @synthesize xpcTransactionTimer=_xpcTransactionTimer;
 
 - (void).cxx_destruct;
+- (id)OAuth2Token;
 - (void)_cancelTasksWithReason:(int)arg1;
 - (void)_clearUserInitiatedSyncTimer;
 - (void)_endXpcTransaction;

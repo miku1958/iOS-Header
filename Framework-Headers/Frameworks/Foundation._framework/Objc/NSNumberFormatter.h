@@ -6,12 +6,9 @@
 
 #import <Foundation/NSFormatter.h>
 
-#import <Foundation/NSObservable-Protocol.h>
-#import <Foundation/NSObserver-Protocol.h>
-
 @class NSDictionary, NSLocale, NSMutableDictionary, NSNumber, NSRecursiveLock, NSString;
 
-@interface NSNumberFormatter : NSFormatter <NSObservable, NSObserver>
+@interface NSNumberFormatter : NSFormatter
 {
     NSMutableDictionary *_attributes;
     struct __CFNumberFormatter *_formatter;
@@ -29,9 +26,7 @@
 @property (copy) NSString *currencyDecimalSeparator;
 @property (copy) NSString *currencyGroupingSeparator;
 @property (copy) NSString *currencySymbol;
-@property (readonly, copy) NSString *debugDescription;
 @property (copy) NSString *decimalSeparator;
-@property (readonly, copy) NSString *description;
 @property (copy) NSString *exponentSymbol;
 @property unsigned long long formatWidth;
 @property unsigned long long formatterBehavior;
@@ -39,7 +34,6 @@
 @property BOOL generatesDecimalNumbers;
 @property (copy) NSString *groupingSeparator;
 @property unsigned long long groupingSize;
-@property (readonly) unsigned long long hash;
 @property (copy) NSString *internationalCurrencySymbol;
 @property (getter=isLenient) BOOL lenient;
 @property (copy) NSLocale *locale;
@@ -73,7 +67,6 @@
 @property (copy) NSNumber *roundingIncrement;
 @property unsigned long long roundingMode;
 @property unsigned long long secondaryGroupingSize;
-@property (readonly) Class superclass;
 @property (copy) NSDictionary *textAttributesForNegativeInfinity;
 @property (copy) NSDictionary *textAttributesForNegativeValues;
 @property (copy) NSDictionary *textAttributesForNil;
@@ -109,14 +102,12 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalize;
 - (void *)getFormatter;
 - (BOOL)getObjectValue:(out id *)arg1 forString:(id)arg2 errorDescription:(out id *)arg3;
 - (BOOL)getObjectValue:(out id *)arg1 forString:(id)arg2 range:(inout struct _NSRange *)arg3 error:(out id *)arg4;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)numberFromString:(id)arg1;
-- (void)receiveObservedValue:(id)arg1;
 - (void)resetCheckLocaleChange;
 - (void)resetCheckModify;
 - (void)setPropertyBit;

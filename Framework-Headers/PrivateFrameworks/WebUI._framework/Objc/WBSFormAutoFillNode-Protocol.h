@@ -12,5 +12,8 @@
 - (BOOL)isHTMLInputElementUserEdited;
 - (BOOL)isHTMLTextAreaElementUserEdited;
 - (void)setHTMLInputElementAutofilled:(BOOL)arg1;
+
+@optional
+- (void)setHTMLInputElementSpellCheckEnabled:(BOOL)arg1;
 @end
 

@@ -6,30 +6,40 @@
 
 #import <objc/NSObject.h>
 
-@class HMDHomeManager, NSArray, NSString;
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@interface HMDAssistantGather : NSObject
+@class HMDHomeManager, NSArray, NSString, NSUUID;
+@protocol OS_dispatch_queue;
+
+@interface HMDAssistantGather : NSObject <HMFLogging>
 {
     HMDHomeManager *_manager;
+    NSObject<OS_dispatch_queue> *_workQueue;
     NSArray *_currentHomekitObjects;
 }
 
+@property (readonly, nonatomic) NSString *currentHomeName;
+@property (readonly, nonatomic) NSUUID *currentHomeUUID;
 @property (strong, nonatomic) NSArray *currentHomekitObjects; // @synthesize currentHomekitObjects=_currentHomekitObjects;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long homeCount;
 @property (readonly, nonatomic) NSArray *homeKitObjects;
 @property (weak, nonatomic) HMDHomeManager *manager; // @synthesize manager=_manager;
-@property (readonly, nonatomic) NSString *primaryHomeID;
 @property (readonly, nonatomic) NSString *primaryHomeName;
+@property (readonly, nonatomic) NSUUID *primaryHomeUUID;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (id)logCategory;
 - (void).cxx_destruct;
 - (void)_gatherHomeKitObjects;
+- (id)_getCurrentHome;
 - (id)_getPrimaryHome;
-- (void)_setAssistantTeamIdentifier;
-- (void)addToList:(id)arg1 objectReference:(id)arg2 name:(id)arg3 type:(id)arg4 home:(id)arg5 andIdentifer:(id)arg6;
-- (void)addToList:(id)arg1 room:(id)arg2;
-- (void)addToList:(id)arg1 service:(id)arg2;
 - (void)gatherHomeKitObjects;
-- (id)initWithHomeManager:(id)arg1;
+- (void)getSyncEntityObjectsWithValidity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)initWithHomeManager:(id)arg1 queue:(id)arg2;
 
 @end
 

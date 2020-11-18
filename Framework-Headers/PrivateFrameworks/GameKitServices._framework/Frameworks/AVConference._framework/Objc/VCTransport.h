@@ -32,14 +32,15 @@ __attribute__((visibility("hidden")))
 - (int)getRemoteICEVersion:(unsigned int)arg1 remoteICEVersion:(unsigned int *)arg2;
 - (void)iceConnectedForCallID:(unsigned int)arg1 result:(struct tagCONNRESULT *)arg2 didReceivePacket:(int)arg3 useRelay:(int)arg4 secretKey:(struct __CFData *)arg5 skeResult:(int)arg6;
 - (void)iceNewCandidatesForCallID:(unsigned int)arg1 blob:(char *)arg2 size:(int)arg3 newCandidateVersion:(unsigned short)arg4;
+- (void)iceRemoveIPPort:(struct tagIPPORT *)arg1 forCallID:(unsigned int)arg2 isLocalInterface:(BOOL)arg3;
+- (void)iceShouldNominateNewCandidate:(struct tagCANDIDATEPAIR *)arg1 forCallID:(unsigned int)arg2 interfaceMask:(int)arg3 nominated:(int *)arg4 demote:(int *)arg5 connectionPriority:(int *)arg6 replaceOnly:(int *)arg7;
 - (id)init;
 - (BOOL)ipPortStillExists:(struct tagIPPORT *)arg1 requiresWifi:(BOOL)arg2;
-- (int)processRemoteInterfaceChange:(unsigned int)arg1 remoteData:(void *)arg2 remoteLen:(int)arg3;
-- (int)processRemoteInterfaceChangeMessage:(unsigned int)arg1 resultKey:(struct tagCONNRESULT *)arg2 remoteData:(void *)arg3 remoteLen:(int)arg4 remoteCandidateVersion:(unsigned short)arg5;
-- (void)receivedDataPacket:(char *)arg1 length:(int)arg2 forCallID:(unsigned int)arg3 encrypted:(BOOL)arg4;
+- (int)processRemoteInterfaceChangeMessageWithLocalCallID:(unsigned int)arg1 remoteCallID:(unsigned int)arg2 remoteData:(void *)arg3 remoteLen:(int)arg4 remoteCandidateVersion:(unsigned short)arg5;
+- (void)receivedDataPacket:(char *)arg1 length:(int)arg2 forCallID:(unsigned int)arg3 encrypted:(BOOL)arg4 OFTType:(int)arg5;
 - (void)registerDataReceivedHandler:(CDUnknownBlockType)arg1 forCallID:(unsigned int)arg2;
-- (void)registerICEBlockForCallID:(unsigned int)arg1 connectedBlock:(CDUnknownBlockType)arg2 newCandidatesBlock:(CDUnknownBlockType)arg3;
-- (int)sendData:(id)arg1 localIPPort:(struct tagIPPORT *)arg2 destinationIPPort:(struct tagIPPORT *)arg3 remoteCallID:(unsigned int)arg4 encrypted:(BOOL)arg5;
+- (void)registerICEBlockForCallID:(unsigned int)arg1 connectedBlock:(CDUnknownBlockType)arg2 newCandidatesBlock:(CDUnknownBlockType)arg3 newNominationBlock:(CDUnknownBlockType)arg4 removeIPPortBlock:(CDUnknownBlockType)arg5;
+- (int)sendData:(id)arg1 localCallID:(unsigned int)arg2 remoteCallID:(unsigned int)arg3 encrypted:(BOOL)arg4 OFTType:(int)arg5;
 - (int)sendUDPPacketReliableEncrypted:(id)arg1 localIPPort:(struct tagIPPORT *)arg2 destinationIPPort:(struct tagIPPORT *)arg3 oftType:(int)arg4;
 - (void)setARPLHandler:(CDUnknownBlockType)arg1;
 - (int)setForceIPv6ForCallID:(unsigned int)arg1;
@@ -50,7 +51,7 @@ __attribute__((visibility("hidden")))
 - (int)startConnectionCheckForCallID:(unsigned int)arg1 remoteConnectionDataBlob:(id)arg2 relayDictionary:(id)arg3 iceTimeout:(double)arg4 securityIdentity:(struct __SecIdentity *)arg5 skeState:(struct SKEStateOpaque *)arg6 usedRelay:(int *)arg7;
 - (int)stopConnectivityCheckForCallID:(unsigned int)arg1;
 - (int)updateICERoleForCallID:(unsigned int)arg1 role:(int)arg2 remoteCallID:(unsigned int)arg3 sessionID:(struct __CFString *)arg4;
-- (int)updateInterfaceList:(struct tagCONNRESULT *)arg1 shouldFilterCellInterface:(BOOL)arg2 isUpdateNeeded:(int *)arg3;
+- (int)updateInterfaceList:(unsigned int)arg1 shouldFilterCellInterface:(BOOL)arg2 isUpdateNeeded:(int *)arg3;
 - (int)updateQoS:(BOOL)arg1;
 
 @end

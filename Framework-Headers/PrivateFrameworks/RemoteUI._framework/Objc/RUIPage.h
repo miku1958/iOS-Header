@@ -20,9 +20,7 @@
     RUIPasscodeView *_passcodeViewOM;
     RUISpinnerView *_spinnerViewOM;
     NSString *_validationFunction;
-    BOOL _loading;
     NSString *_navTitle;
-    NSString *_loadingTitle;
     BOOL _hidesBackButton;
     UIToolbar *_toolbar;
     UIBarButtonItem *_leftToolbarItem;
@@ -33,10 +31,10 @@
     NSMutableArray *_childPages;
     NSMutableArray *_didAppearCallbacks;
     BOOL _showsTitlesAsHeaderViews;
+    BOOL _loading;
     RUIElement<RUITopLevelPageElement> *_primaryElement;
     RUIStyle *_style;
     NSString *_backButtonTitle;
-    long long _loadingIndicatorStyle;
     RUIBarButtonItem *_rightNavigationBarButtonItem;
     RUIBarButtonItem *_leftNavigationBarButtonItem;
     RUIBarButtonItem *_rightToolbarButtonItem;
@@ -45,7 +43,7 @@
     UIBarButtonItem *_middleToolbarItem;
     RUIObjectModel *_objectModel;
     double _customMargin;
-    struct UIEdgeInsets _titleLabelPadding;
+    NSString *_loadingTitle;
     struct UIEdgeInsets _customEdgeInsets;
 }
 
@@ -67,7 +65,6 @@
 @property (strong, nonatomic) RUIBarButtonItem *leftToolbarButtonItem; // @synthesize leftToolbarButtonItem=_leftToolbarButtonItem;
 @property (strong, nonatomic) UIBarButtonItem *leftToolbarItem; // @synthesize leftToolbarItem=_leftToolbarItem;
 @property (nonatomic, getter=isLoading) BOOL loading; // @synthesize loading=_loading;
-@property (nonatomic) long long loadingIndicatorStyle; // @synthesize loadingIndicatorStyle=_loadingIndicatorStyle;
 @property (copy, nonatomic) NSString *loadingTitle; // @synthesize loadingTitle=_loadingTitle;
 @property (strong, nonatomic) NSDictionary *middleToolbarButton;
 @property (strong, nonatomic) RUIBarButtonItem *middleToolbarButtonItem; // @synthesize middleToolbarButtonItem=_middleToolbarButtonItem;
@@ -89,7 +86,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) RUITableView *tableViewOM;
 @property (readonly, nonatomic) UILabel *titleLabel;
-@property (nonatomic) struct UIEdgeInsets titleLabelPadding; // @synthesize titleLabelPadding=_titleLabelPadding;
+@property (nonatomic) struct UIEdgeInsets titleLabelPadding;
 @property (readonly, nonatomic) UIToolbar *toolbar; // @synthesize toolbar=_toolbar;
 @property (copy, nonatomic) NSString *validationFunction; // @synthesize validationFunction=_validationFunction;
 @property (readonly, nonatomic) RUIWebView *webViewOM;
@@ -112,10 +109,10 @@
 - (void)_updateToolbar;
 - (void)_updateWithCompletedChild:(id)arg1;
 - (void)addDidAppearBlock:(CDUnknownBlockType)arg1;
-- (id)contentScrollView;
 - (void)dealloc;
 - (id)elementsWithName:(id)arg1;
 - (id)flexibleSpace;
+- (BOOL)hasChoiceView;
 - (BOOL)hasPasscodeView;
 - (BOOL)hasSpinnerView;
 - (BOOL)hasTableView;
@@ -124,7 +121,7 @@
 - (void)loadView;
 - (BOOL)needsToShowToolbarInPrefsAppRoot;
 - (void)populatePostbackDictionary:(id)arg1;
-- (id)preferredFocusedView;
+- (id)preferredFocusEnvironments;
 - (void)setButton:(id)arg1 enabled:(BOOL)arg2;
 - (void)setHasToolbar;
 - (void)setLeftNavigationBarButtonItem:(id)arg1 barButtonItem:(id)arg2;
@@ -136,6 +133,7 @@
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end
 

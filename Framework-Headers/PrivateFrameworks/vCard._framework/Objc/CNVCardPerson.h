@@ -25,6 +25,7 @@
     NSString *_pronunciationFirstName;
     NSString *_pronunciationLastName;
     NSString *_organization;
+    NSString *_phoneticOrganization;
     NSString *_department;
     NSString *_jobTitle;
     BOOL _isMe;
@@ -53,6 +54,8 @@
     NSString *_uid;
     NSString *_phonemeData;
     NSArray *_unknownProperties;
+    NSString *_preferredLikenessSource;
+    NSString *_preferredApplePersonaIdentifier;
 }
 
 @property (strong) NSDictionary *activityAlerts; // @synthesize activityAlerts=_activityAlerts;
@@ -90,7 +93,10 @@
 @property (strong) NSString *phoneticFirstName; // @synthesize phoneticFirstName=_phoneticFirstName;
 @property (strong) NSString *phoneticLastName; // @synthesize phoneticLastName=_phoneticLastName;
 @property (strong) NSString *phoneticMiddleName; // @synthesize phoneticMiddleName=_phoneticMiddleName;
+@property (strong) NSString *phoneticOrganization; // @synthesize phoneticOrganization=_phoneticOrganization;
 @property (strong) NSArray *postalAddresses; // @synthesize postalAddresses=_postalAddresses;
+@property (strong) NSString *preferredApplePersonaIdentifier; // @synthesize preferredApplePersonaIdentifier=_preferredApplePersonaIdentifier;
+@property (strong) NSString *preferredLikenessSource; // @synthesize preferredLikenessSource=_preferredLikenessSource;
 @property (strong) NSString *pronunciationFirstName; // @synthesize pronunciationFirstName=_pronunciationFirstName;
 @property (strong) NSString *pronunciationLastName; // @synthesize pronunciationLastName=_pronunciationLastName;
 @property (strong) NSArray *relatedNames; // @synthesize relatedNames=_relatedNames;
@@ -102,6 +108,7 @@
 @property (strong) NSArray *unknownProperties; // @synthesize unknownProperties=_unknownProperties;
 @property (strong) NSArray *urls; // @synthesize urls=_urls;
 
+- (void).cxx_destruct;
 - (id)jpegImageDataOfAllowableKinds:(id)arg1 maximumLength:(unsigned long long)arg2 cropRects:(id *)arg3;
 - (id)largeImageHashOfType:(id)arg1;
 

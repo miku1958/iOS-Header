@@ -6,18 +6,22 @@
 
 #import <CoreThemeDefinition/TDRenditionSpec.h>
 
-@class NSOrderedSet, NSString, TDPNGAsset;
+@class NSOrderedSet, NSString, TDPNGAsset, TDThemeCompressionType;
 
 @interface TDSimpleArtworkRenditionSpec : TDRenditionSpec
 {
     struct CGRect _alignmentRect;
     BOOL _allowsMultiPassEncoding;
+    BOOL _allowsOptimalPacking;
 }
 
 @property (nonatomic) struct CGRect alignmentRect; // @dynamic alignmentRect;
 @property (strong, nonatomic) NSString *alignmentRectString; // @dynamic alignmentRectString;
 @property (nonatomic) BOOL allowsMultiPassEncoding; // @synthesize allowsMultiPassEncoding=_allowsMultiPassEncoding;
+@property (nonatomic) BOOL allowsOptimalPacking; // @synthesize allowsOptimalPacking=_allowsOptimalPacking;
 @property (strong, nonatomic) TDPNGAsset *asset; // @dynamic asset;
+@property (strong, nonatomic) TDThemeCompressionType *compressionType; // @dynamic compressionType;
+@property (nonatomic) BOOL isTintable; // @dynamic isTintable;
 @property (strong, nonatomic) NSString *nonAlphaImageAreaString; // @dynamic nonAlphaImageAreaString;
 @property (strong, nonatomic) NSString *originalImageSizeString; // @dynamic originalImageSizeString;
 @property (nonatomic) struct CGRect primitiveAlignmentRect;
@@ -35,6 +39,7 @@
 - (id)associatedFileModificationDateWithDocument:(id)arg1;
 - (void)awakeFromFetch;
 - (BOOL)canBePackedWithDocument:(id)arg1;
+- (void)copyAttributesInto:(id)arg1;
 - (id)createCSIRepresentationWithCompression:(BOOL)arg1 colorSpaceID:(unsigned long long)arg2 document:(id)arg3;
 - (void)drawPackableRenditionInContext:(struct CGContext *)arg1 withDocument:(id)arg2;
 - (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;

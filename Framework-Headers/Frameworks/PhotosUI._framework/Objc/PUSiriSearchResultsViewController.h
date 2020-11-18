@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUSearchResultsViewController.h>
+#import <PhotosUI/PUSearchGridViewController.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface PUSiriSearchResultsViewController : PUSearchResultsViewController
+@interface PUSiriSearchResultsViewController : PUSearchGridViewController
 {
     NSString *_siriSearchString;
 }

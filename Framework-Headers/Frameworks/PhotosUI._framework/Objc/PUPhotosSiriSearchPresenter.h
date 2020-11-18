@@ -6,20 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUI/PUSearchResultsDelegate-Protocol.h>
+#import <PhotosUI/PUSearchResultsDataSourceChangeObserver-Protocol.h>
 
-@class NSString, PSIDatabase, PUNavigationController, PUPhotosGridViewControllerSpec, PUPingTimer, PUSearchResultDataSource, PUSearchResultsDataSource, PUSearchResultsViewController, UIViewController;
+@class NSString, PSIDatabase, PUNavigationController, PUPhotosGridViewControllerSpec, PUPingTimer, PUSearchGridDataSource, PUSearchGridViewController, PUSearchResultsDataSource, UIViewController;
 @protocol OS_dispatch_semaphore;
 
-@interface PUPhotosSiriSearchPresenter : NSObject <PUSearchResultsDelegate>
+@interface PUPhotosSiriSearchPresenter : NSObject <PUSearchResultsDataSourceChangeObserver>
 {
+    double _searchStartTime;
     BOOL _presenting;
     BOOL _first;
     PUPhotosGridViewControllerSpec *_gridSpec;
     NSString *_utterance;
     UIViewController *_sCurrentVisibleController;
-    PUSearchResultDataSource *_photoCollections;
-    PUSearchResultsViewController *_searchResultsViewController;
+    PUSearchGridDataSource *_photoCollections;
+    PUSearchGridViewController *_searchResultsViewController;
     PUNavigationController *_searchResultsNav;
     NSObject<OS_dispatch_semaphore> *_siriSearchSemaphore;
     NSObject<OS_dispatch_semaphore> *_siriIntentBackgroundProcessingCompleteSemaphore;
@@ -36,11 +37,11 @@
 @property (nonatomic) BOOL first; // @synthesize first=_first;
 @property (strong, nonatomic) PUPhotosGridViewControllerSpec *gridSpec; // @synthesize gridSpec=_gridSpec;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) PUSearchResultDataSource *photoCollections; // @synthesize photoCollections=_photoCollections;
+@property (strong, nonatomic) PUSearchGridDataSource *photoCollections; // @synthesize photoCollections=_photoCollections;
 @property (nonatomic) BOOL presenting; // @synthesize presenting=_presenting;
 @property (strong, nonatomic) UIViewController *sCurrentVisibleController; // @synthesize sCurrentVisibleController=_sCurrentVisibleController;
 @property (strong, nonatomic) PUNavigationController *searchResultsNav; // @synthesize searchResultsNav=_searchResultsNav;
-@property (strong, nonatomic) PUSearchResultsViewController *searchResultsViewController; // @synthesize searchResultsViewController=_searchResultsViewController;
+@property (strong, nonatomic) PUSearchGridViewController *searchResultsViewController; // @synthesize searchResultsViewController=_searchResultsViewController;
 @property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *siriIntentBackgroundProcessingCompleteSemaphore; // @synthesize siriIntentBackgroundProcessingCompleteSemaphore=_siriIntentBackgroundProcessingCompleteSemaphore;
 @property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *siriSearchSemaphore; // @synthesize siriSearchSemaphore=_siriSearchSemaphore;
 @property (readonly) Class superclass;
@@ -54,14 +55,16 @@
 - (void).cxx_destruct;
 - (void)_mergeSearchResults;
 - (void)_pingTimerFire:(id)arg1;
-- (void)_pushMomentsGridForPhotosWithUUIDs:(id)arg1 intent:(id)arg2 title:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_pushGridForPhotosWithUUIDs:(id)arg1 additionalUUIDs:(id)arg2 intent:(id)arg3 title:(id)arg4 searchCategories:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_searchResultsViewControllerDidFinish:(id)arg1;
-- (void)completeSearchQueryAndSearch:(id)arg1 intent:(id)arg2 dataSource:(id)arg3;
+- (void)completeSearchQueryWithUUIDs:(id)arg1 additionalUUIDs:(id)arg2 intent:(id)arg3 dataSource:(id)arg4;
 - (void)completeWithZeroSearchResults:(id)arg1 showUI:(BOOL)arg2;
 - (id)init;
 - (id)predicateForNearByWithLatitude:(double)arg1 longitude:(double)arg2;
 - (void)presentLast;
+- (void)presentRecentSiriSearch;
 - (void)registerForIntents;
+- (void)searchResultsDataSource:(id)arg1 didFetchAssetsForSearchResultsValue:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)searchResultsDataSourceHasPendingChanges:(id)arg1;
 - (void)searchWithSiriInternal:(id)arg1;
 - (void)searchWithSiriPlaceIMP:(id)arg1 dataSource:(id)arg2 searchTerm:(id)arg3 useFuzzyContains:(BOOL)arg4;

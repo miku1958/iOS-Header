@@ -44,6 +44,7 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)textViewDidBeginEditing:(id)arg1;
 - (void)textViewDidChange:(id)arg1;
+- (void)textViewDidChangeSelection:(id)arg1;
 - (void)textViewDidEndEditing:(id)arg1;
 
 @end

@@ -8,15 +8,17 @@
 
 #import <Preferences/RemoteUIControllerDelegate-Protocol.h>
 
-@class NSString, RUIStyle, RemoteUIController, SUDownload, UIViewController;
+@class NSString, RUIStyle, RemoteUIController, SUDescriptor, UINavigationController, UIViewController;
 
 @interface PSSoftwareUpdateTermsManager : NSObject <RemoteUIControllerDelegate>
 {
     RemoteUIController *_termsRemoteUI;
     CDUnknownBlockType _termsCompletion;
+    SUDescriptor *_update;
+    BOOL _overrideNextRUIAction;
+    UINavigationController *_showProgressViewController;
     UIViewController *_hostController;
-    SUDownload *_download;
-    BOOL _forceTermsModal;
+    UIViewController *_presentedViewController;
     RUIStyle *_serverFlowStyle;
 }
 
@@ -34,11 +36,15 @@
 - (void)_loadRemoteUITermsWithCloudAtURL:(id)arg1;
 - (void)_loadTermsFromUpdateAsset;
 - (void)_loadTermsRemoteUIFailureWithError:(id)arg1;
+- (void)_presentModalController:(id)arg1;
 - (void)_termsDisagree;
-- (void)presentTermsIfNecessaryForDownload:(id)arg1 overController:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)cancelLoadingTerms:(id)arg1;
+- (void)presentTermsIfNecessaryForUpdate:(id)arg1 overController:(id)arg2 showLoadSpinner:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)remoteUIController:(id)arg1 didFinishLoadWithError:(id)arg2;
-- (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(int *)arg3;
+- (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
 - (void)remoteUIController:(id)arg1 willPresentObjectModel:(id)arg2 modally:(BOOL)arg3;
+- (void)remoteUIControllerDidDismiss:(id)arg1;
+- (void)showLoadingSpinnerViewController;
 
 @end
 

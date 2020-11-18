@@ -7,13 +7,14 @@
 #import <UIKit/UIView.h>
 
 #import <HealthUI/HKGraphRenderDelegate-Protocol.h>
+#import <HealthUI/HKScrollPerformanceTestable-Protocol.h>
 #import <HealthUI/HKSeriesDelegate-Protocol.h>
 #import <HealthUI/UIScrollViewDelegate-Protocol.h>
 
 @class HKDateAxis, HKGraphViewSelectionStyle, HKPropertyAnimationApplier, HKValueRange, NSArray, NSMutableArray, NSMutableDictionary, NSString, UIColor, UIImage, UIScrollView, _HKGraphViewSelectionContext;
 @protocol HKGraphRenderer, HKGraphViewDelegate;
 
-@interface HKGraphView : UIView <UIScrollViewDelegate, HKGraphRenderDelegate, HKSeriesDelegate>
+@interface HKGraphView : UIView <UIScrollViewDelegate, HKGraphRenderDelegate, HKSeriesDelegate, HKScrollPerformanceTestable>
 {
     NSMutableDictionary *_zoomToSeriesMapping;
     NSMutableArray *_currentSeries;
@@ -141,6 +142,7 @@
 - (void)setRenderView:(id)arg1;
 - (void)setXAxisDateZoom:(long long)arg1 animated:(BOOL)arg2;
 - (BOOL)stillAnimating:(id)arg1;
+- (void)testScrollPerformanceWithTestName:(id)arg1 iterations:(int)arg2 delta:(int)arg3 options:(id)arg4;
 - (id)viewForZoomingInScrollView:(id)arg1;
 
 @end

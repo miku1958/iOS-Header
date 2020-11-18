@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (void)didTransitionFromLayout:(id)arg1 toLayout:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setHighlighted:(BOOL)arg1;
 - (void)willTransitionFromLayout:(id)arg1 toLayout:(id)arg2;
 
 @end

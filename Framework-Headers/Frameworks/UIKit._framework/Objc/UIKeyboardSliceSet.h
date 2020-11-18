@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_controlKeys;
 }
 
-@property NSMutableDictionary *controlKeys; // @synthesize controlKeys=_controlKeys;
+@property (strong) NSMutableDictionary *controlKeys; // @synthesize controlKeys=_controlKeys;
 @property struct CGRect endRect; // @synthesize endRect=_endRect;
 @property double leftWidth; // @synthesize leftWidth=_leftWidth;
 @property double mergePoint; // @synthesize mergePoint=_mergePoint;

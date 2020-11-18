@@ -6,19 +6,19 @@
 
 #import <PhotosUI/PUAssetsDataSourceManager.h>
 
-#import <PhotosUI/PUPhotosDataSourceChangeObserver-Protocol.h>
+#import <PhotosUI/PXPhotosDataSourceChangeObserver-Protocol.h>
 
-@class NSString, PUPhotosDataSource;
+@class NSString, PXPhotosDataSource;
 
-@interface PUPhotoKitDataSourceManager : PUAssetsDataSourceManager <PUPhotosDataSourceChangeObserver>
+@interface PUPhotoKitDataSourceManager : PUAssetsDataSourceManager <PXPhotosDataSourceChangeObserver>
 {
-    PUPhotosDataSource *_photosDataSource;
+    PXPhotosDataSource *_photosDataSource;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) PUPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
+@property (strong, nonatomic) PXPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class GEOLocation, GEOQuickETATransitDeparturesInfo, NSMutableArray;
+@class GEOLocation, GEOQuickETATransitDeparturesInfo, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface GEOQuickETAResponse : NSObject
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     unsigned int _responseETASeconds;
     unsigned int _baselineETASeconds;
     double _distance;
+    NSString *_routeDescription;
     GEOQuickETATransitDeparturesInfo *_transitDeparturesInfo;
     double _distanceToDepartureStop;
     double _walkingDurationToDepartureStop;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double distance; // @synthesize distance=_distance;
 @property (readonly, nonatomic) double distanceToDepartureStop; // @synthesize distanceToDepartureStop=_distanceToDepartureStop;
 @property (readonly, nonatomic) unsigned int responseETASeconds; // @synthesize responseETASeconds=_responseETASeconds;
+@property (readonly, nonatomic) NSString *routeDescription; // @synthesize routeDescription=_routeDescription;
 @property (readonly, nonatomic) NSMutableArray *sortedETAs; // @synthesize sortedETAs=_sortedETAs;
 @property (readonly, nonatomic) GEOLocation *sourceLocation; // @synthesize sourceLocation=_sourceLocation;
 @property (readonly, nonatomic) GEOQuickETATransitDeparturesInfo *transitDeparturesInfo; // @synthesize transitDeparturesInfo=_transitDeparturesInfo;

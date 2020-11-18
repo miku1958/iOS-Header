@@ -45,6 +45,8 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) double actualGap; // @synthesize actualGap=_actualGap;
 @property (readonly, nonatomic) double beginMargin; // @synthesize beginMargin=_beginMargin;
+@property (readonly, nonatomic) struct CGRect effectiveFooterFrameWithSectionMarginsApplied;
+@property (readonly, nonatomic) struct CGRect effectiveHeaderFrameWithSectionMarginsApplied;
 @property (readonly, nonatomic) double endMargin; // @synthesize endMargin=_endMargin;
 @property (nonatomic) BOOL fixedItemSize; // @synthesize fixedItemSize=_fixedItemSize;
 @property (readonly, nonatomic) double footerDimension; // @synthesize footerDimension=_footerDimension;
@@ -76,7 +78,7 @@ __attribute__((visibility("hidden")))
 - (id)addItem;
 - (id)addRowAtEnd:(BOOL)arg1;
 - (void)computeLayout;
-- (void)computeLayoutInRect:(struct CGRect)arg1 forSection:(long long)arg2 invalidating:(BOOL)arg3;
+- (void)computeLayoutInRect:(struct CGRect)arg1 forSection:(long long)arg2 invalidating:(BOOL)arg3 invalidationContext:(id)arg4;
 - (id)copyFromLayoutInfo:(id)arg1;
 - (long long)estimatedIndexOfItemAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)frameForItemAtIndexPath:(id)arg1;
@@ -88,7 +90,7 @@ __attribute__((visibility("hidden")))
 - (void)setEstimatedSize:(struct CGSize)arg1 forSection:(long long)arg2;
 - (void)setFooterDimension:(double)arg1 forSection:(long long)arg2;
 - (void)setHeaderDimension:(double)arg1 forSection:(long long)arg2;
-- (void)setSize:(struct CGSize)arg1 forItemAtIndexPath:(id)arg2;
+- (void)setSize:(struct CGSize)arg1 forItemAtIndexPath:(id)arg2 invalidationContext:(id)arg3;
 - (void)sizeChangedForItem:(id)arg1 atIndexPath:(id)arg2 inRow:(id)arg3;
 - (id)snapshot;
 - (void)updateEstimatedSizeForSection:(long long)arg1;

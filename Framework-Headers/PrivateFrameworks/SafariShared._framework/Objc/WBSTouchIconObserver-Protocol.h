@@ -9,6 +9,6 @@
 @class NSArray, NSURL;
 
 @protocol WBSTouchIconObserver <NSObject>
-- (void)didFetchIconURLs:(NSArray *)arg1 forURL:(NSURL *)arg2;
+- (void)didFetchTouchIconURLs:(NSArray *)arg1 andFaviconURLs:(NSArray *)arg2 forURL:(NSURL *)arg3;
 @end
 

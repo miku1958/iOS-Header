@@ -14,9 +14,10 @@
     UIView *_allDayView;
 }
 
-@property (nonatomic) UIView *allDayView; // @synthesize allDayView=_allDayView;
+@property (weak, nonatomic) UIView *allDayView; // @synthesize allDayView=_allDayView;
 @property (nonatomic) unsigned long long dayIndex; // @synthesize dayIndex=_dayIndex;
 
+- (void).cxx_destruct;
 - (struct CGRect)accessibilityFrame;
 
 @end

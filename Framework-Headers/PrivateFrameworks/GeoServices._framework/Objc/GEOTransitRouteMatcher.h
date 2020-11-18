@@ -26,6 +26,7 @@
 - (double)_scoreModifierForStep:(id)arg1 previousStep:(id)arg2;
 - (BOOL)_shouldConsiderCourseForLocation:(id)arg1;
 - (void)_startRouteMatch;
+- (id)_stepForPointIndex:(unsigned int)arg1 previousStep:(id)arg2;
 - (BOOL)_stepsInSameRange:(id)arg1 nextStep:(id)arg2;
 - (void)dealloc;
 - (id)initWithRoute:(id)arg1 motionContext:(id)arg2;

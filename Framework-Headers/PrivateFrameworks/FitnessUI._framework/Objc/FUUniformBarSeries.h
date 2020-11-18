@@ -14,6 +14,7 @@
     double _barWidth;
     double _barSpacing;
     double _roundedCornerRadius;
+    double _fadeInPercentage;
     struct CGGradient *_barGradient;
     NSArray *_plotPoints;
 }
@@ -21,6 +22,7 @@
 @property (nonatomic) struct CGGradient *barGradient; // @synthesize barGradient=_barGradient;
 @property (nonatomic) double barSpacing; // @synthesize barSpacing=_barSpacing;
 @property (nonatomic) double barWidth; // @synthesize barWidth=_barWidth;
+@property (nonatomic) double fadeInPercentage; // @synthesize fadeInPercentage=_fadeInPercentage;
 @property (nonatomic) NSDate *minDate; // @synthesize minDate=_minDate;
 @property (strong, nonatomic) NSArray *plotPoints; // @synthesize plotPoints=_plotPoints;
 @property (nonatomic) double roundedCornerRadius; // @synthesize roundedCornerRadius=_roundedCornerRadius;

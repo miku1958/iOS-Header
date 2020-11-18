@@ -12,7 +12,7 @@
 - (void)removeAllUserGeneratedVibrationPatternsWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;
 - (void)retrieveCurrentTonePreferencesWithCompletionHandler:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)retrieveUserGeneratedVibrationPatternsWithCompletionHandler:(void (^)(NSDictionary *, NSError *))arg1;
-- (void)setCurrentToneIdentifier:(NSString *)arg1 keyedByAccountIdentifier:(NSString *)arg2 forPreferenceKey:(NSString *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
+- (void)setCurrentToneIdentifier:(NSString *)arg1 keyedByTopic:(NSString *)arg2 forPreferenceKey:(NSString *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)setUserGeneratedVibrationPatterns:(NSDictionary *)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;
 @end
 

@@ -11,7 +11,7 @@
 @interface CATOperation : NSOperation
 {
     NSArray *mCallStackSymbols;
-    int mState;
+    _Atomic int mState;
     NSLock *mLock;
     _CATObserverManager *mObserverManager;
     BOOL _canCancel;
@@ -54,7 +54,9 @@
 - (void)addDependency:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)addTarget:(id)arg1 selector:(SEL)arg2 forOperationEvents:(unsigned long long)arg3;
+- (void)addTarget:(id)arg1 selector:(SEL)arg2 forOperationEvents:(unsigned long long)arg3 delegateQueue:(id)arg4;
 - (void)addTarget:(id)arg1 selector:(SEL)arg2 forOperationEvents:(unsigned long long)arg3 userInfo:(id)arg4;
+- (void)addTarget:(id)arg1 selector:(SEL)arg2 forOperationEvents:(unsigned long long)arg3 userInfo:(id)arg4 delegateQueue:(id)arg5;
 - (void)cancel;
 - (id)description;
 - (void)endOperationSuccessfullyIfNeeded;
@@ -74,6 +76,7 @@
 - (void)start;
 - (id)stateDescription;
 - (void)waitUntilFinished;
+- (BOOL)whenStateIs:(int)arg1 atomicallySwapWith:(int)arg2;
 
 @end
 

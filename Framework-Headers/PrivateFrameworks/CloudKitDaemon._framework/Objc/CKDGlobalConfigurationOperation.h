@@ -9,6 +9,7 @@
 @class CKDServerConfiguration, NSObject;
 @protocol OS_dispatch_group;
 
+__attribute__((visibility("hidden")))
 @interface CKDGlobalConfigurationOperation : CKDOperation
 {
     CKDServerConfiguration *_configuration;
@@ -19,7 +20,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *configurationFetchedGroup; // @synthesize configurationFetchedGroup=_configurationFetchedGroup;
 
 - (void).cxx_destruct;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
 - (void)main;
 - (BOOL)shouldCheckAppVersion;
 

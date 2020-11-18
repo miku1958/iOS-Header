@@ -24,6 +24,7 @@
 @property (nonatomic) unsigned long long muid; // @synthesize muid=_muid;
 @property (strong, nonatomic) NSMutableArray *transitLabels; // @synthesize transitLabels=_transitLabels;
 
++ (Class)transitLabelType;
 - (void)addTransitLabel:(id)arg1;
 - (void)clearTransitLabels;
 - (void)copyTo:(id)arg1;

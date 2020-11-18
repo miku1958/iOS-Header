@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class HDDataProvenanceManager, HDEntityEncoder, HDSQLiteDatabase, NSMutableDictionary;
-@protocol HDHealthDaemon;
+@class HDDataProvenanceManager, HDEntityEncoder, HDProfile, HDSQLiteDatabase, NSMutableDictionary;
 
 @interface HDDataProvenanceCache : NSObject
 {
-    id<HDHealthDaemon> _healthDaemon;
+    HDProfile *_profile;
     HDDataProvenanceManager *_provenanceManager;
     HDSQLiteDatabase *_database;
     HDEntityEncoder *_sourceEncoder;
@@ -21,13 +20,15 @@
     NSMutableDictionary *_sourceByPersistentIDCache;
     NSMutableDictionary *_sourceRevisionsDictionaryBySourceCache;
     NSMutableDictionary *_deviceByPersistentIDCache;
+    NSMutableDictionary *_codableObjectCollectionsByProvenance;
 }
 
+@property (strong, nonatomic) NSMutableDictionary *codableObjectCollectionsByProvenance; // @synthesize codableObjectCollectionsByProvenance=_codableObjectCollectionsByProvenance;
 @property (strong, nonatomic) NSMutableDictionary *codableSourcesByID; // @synthesize codableSourcesByID=_codableSourcesByID;
 @property (strong, nonatomic) HDSQLiteDatabase *database; // @synthesize database=_database;
 @property (strong, nonatomic) NSMutableDictionary *deviceByPersistentIDCache; // @synthesize deviceByPersistentIDCache=_deviceByPersistentIDCache;
 @property (strong, nonatomic) NSMutableDictionary *deviceUUIDBytesByID; // @synthesize deviceUUIDBytesByID=_deviceUUIDBytesByID;
-@property (strong, nonatomic) id<HDHealthDaemon> healthDaemon; // @synthesize healthDaemon=_healthDaemon;
+@property (strong, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSMutableDictionary *provenanceByID; // @synthesize provenanceByID=_provenanceByID;
 @property (strong, nonatomic) HDDataProvenanceManager *provenanceManager; // @synthesize provenanceManager=_provenanceManager;
 @property (strong, nonatomic) NSMutableDictionary *sourceByPersistentIDCache; // @synthesize sourceByPersistentIDCache=_sourceByPersistentIDCache;
@@ -35,13 +36,17 @@
 @property (strong, nonatomic) NSMutableDictionary *sourceRevisionsDictionaryBySourceCache; // @synthesize sourceRevisionsDictionaryBySourceCache=_sourceRevisionsDictionaryBySourceCache;
 
 - (void).cxx_destruct;
-- (id)_sourceForPersistentID:(id)arg1 healthDaemon:(id)arg2 error:(id *)arg3;
+- (id)_sourceForPersistentID:(id)arg1 profile:(id)arg2 error:(id *)arg3;
+- (id)allCodableObjectCollections;
+- (void)clearCodableObjectCollections;
+- (id)codableObjectCollectionForProvenance:(id)arg1;
+- (id)codableProvenanceWithProvenance:(id)arg1;
 - (id)codableSourceWithProvenance:(id)arg1;
-- (id)deviceForPersistentID:(id)arg1 healthDaemon:(id)arg2 error:(id *)arg3;
+- (id)deviceForPersistentID:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 - (id)deviceUUIDBytesWithProvenance:(id)arg1;
-- (id)initWithHealthDaemon:(id)arg1 database:(id)arg2 purpose:(long long)arg3;
+- (id)initWithProfile:(id)arg1 database:(id)arg2 purpose:(long long)arg3;
 - (id)provenanceWithID:(long long)arg1;
-- (id)sourceRevisionForPersistentID:(id)arg1 sourceVersion:(id)arg2 healthDaemon:(id)arg3 error:(id *)arg4;
+- (id)sourceRevisionForPersistentID:(id)arg1 sourceVersion:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 
 @end
 

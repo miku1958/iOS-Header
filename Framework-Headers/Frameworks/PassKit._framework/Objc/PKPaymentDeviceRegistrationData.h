@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -14,28 +14,31 @@
 {
     BOOL _devSigned;
     NSString *_signedAuthToken;
-    NSDictionary *_stateInformation;
+    NSDictionary *_secureElementStateInformation;
     NSString *_secureElementIdentifier;
     NSString *_deviceSerialNumber;
     NSArray *_additionalDeviceSerialNumbers;
     NSString *_companionSerialNumber;
     NSString *_productType;
+    NSArray *_legacyStateInformation;
 }
 
 @property (copy, nonatomic) NSArray *additionalDeviceSerialNumbers; // @synthesize additionalDeviceSerialNumbers=_additionalDeviceSerialNumbers;
 @property (copy, nonatomic) NSString *companionSerialNumber; // @synthesize companionSerialNumber=_companionSerialNumber;
 @property (nonatomic) BOOL devSigned; // @synthesize devSigned=_devSigned;
 @property (copy, nonatomic) NSString *deviceSerialNumber; // @synthesize deviceSerialNumber=_deviceSerialNumber;
+@property (copy, nonatomic) NSArray *legacyStateInformation; // @synthesize legacyStateInformation=_legacyStateInformation;
 @property (copy, nonatomic) NSString *productType; // @synthesize productType=_productType;
 @property (copy, nonatomic) NSString *secureElementIdentifier; // @synthesize secureElementIdentifier=_secureElementIdentifier;
+@property (copy, nonatomic) NSDictionary *secureElementStateInformation; // @synthesize secureElementStateInformation=_secureElementStateInformation;
 @property (copy, nonatomic) NSString *signedAuthToken; // @synthesize signedAuthToken=_signedAuthToken;
-@property (copy, nonatomic) NSDictionary *stateInformation; // @synthesize stateInformation=_stateInformation;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)stateInformation;
 
 @end
 

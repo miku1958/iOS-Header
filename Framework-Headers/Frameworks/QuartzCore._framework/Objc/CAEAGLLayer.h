@@ -29,6 +29,7 @@
 - (void)dealloc;
 - (void)didChangeValueForKey:(id)arg1;
 - (void)discardContents;
+- (BOOL)isDrawableAvailable;
 - (void)layerDidBecomeVisible:(BOOL)arg1;
 - (BOOL)shouldArchiveValueForKey:(id)arg1;
 

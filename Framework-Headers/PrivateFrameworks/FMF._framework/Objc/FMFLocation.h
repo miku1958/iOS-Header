@@ -35,12 +35,12 @@
     double _distance;
     NSString *_distanceDescription;
     NSString *_age;
-    CDStruct_2c43369c _coordinate;
+    struct CLLocationCoordinate2D _coordinate;
 }
 
 @property (nonatomic) double TTL; // @synthesize TTL=_TTL;
 @property (strong, nonatomic) NSString *age; // @synthesize age=_age;
-@property (nonatomic) CDStruct_2c43369c coordinate; // @synthesize coordinate=_coordinate;
+@property (nonatomic) struct CLLocationCoordinate2D coordinate; // @synthesize coordinate=_coordinate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double distance; // @synthesize distance=_distance;

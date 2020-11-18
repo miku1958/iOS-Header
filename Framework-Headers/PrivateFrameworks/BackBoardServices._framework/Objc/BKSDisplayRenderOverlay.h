@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <BackBoardServices/BKSDisplayRenderOverlayDescribing-Protocol.h>
+#import <BackBoardServices/BKSDisplayRenderOverlayDismissAction-Protocol.h>
 #import <BackBoardServices/BSDescriptionProviding-Protocol.h>
 
 @class BKSDisplayProgressIndicatorProperties, BKSDisplayRenderOverlayDescriptor, CADisplay, NSString;
 
-@interface BKSDisplayRenderOverlay : NSObject <BSDescriptionProviding, BKSDisplayRenderOverlayDescribing>
+@interface BKSDisplayRenderOverlay : NSObject <BSDescriptionProviding, BKSDisplayRenderOverlayDescribing, BKSDisplayRenderOverlayDismissAction>
 {
     BKSDisplayRenderOverlayDescriptor *_descriptor;
 }
@@ -22,12 +23,14 @@
 @property (readonly, strong, nonatomic) CADisplay *display;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long interfaceOrientation;
+@property (readonly, nonatomic, getter=isInterstitial) BOOL interstitial;
 @property (readonly, nonatomic) BOOL lockBacklight;
 @property (readonly, copy, nonatomic) NSString *name;
+@property (readonly, nonatomic) BKSDisplayRenderOverlayDescriptor *overlayDescriptor;
 @property (readonly, nonatomic) BKSDisplayProgressIndicatorProperties *progressIndicatorProperties;
 @property (readonly) Class superclass;
 
-+ (void)dismissAllOverlays;
++ (id)dismissActions;
 + (id)existingOverlayForDisplay:(id)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

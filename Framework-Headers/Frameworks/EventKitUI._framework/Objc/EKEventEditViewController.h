@@ -31,17 +31,20 @@
 @property (nonatomic) BOOL scrollToNotes;
 @property (nonatomic) BOOL showAttachments;
 @property (strong, nonatomic) EKEventEditViewController *strongSelf; // @synthesize strongSelf=_strongSelf;
+@property (nonatomic) BOOL timeImplicitlySet;
 @property (nonatomic) int transitionForModalViewPresentation; // @synthesize transitionForModalViewPresentation=_transitionForModalViewPresentation;
 
 + (id)eventEditViewControllerWithEvent:(id)arg1 eventStore:(id)arg2 editViewDelegate:(id)arg3;
 + (void)setDefaultDatesForEvent:(id)arg1;
 - (void).cxx_destruct;
+- (id)_eventEditorForTestingOnly;
 - (void)_storeChanged:(id)arg1;
 - (void)cancelEditing;
 - (void)completeAndSave;
 - (void)dealloc;
 - (void)editor:(id)arg1 didCompleteWithAction:(long long)arg2;
 - (void)editor:(id)arg1 prepareCalendarItemForEdit:(id)arg2;
+- (void)focusAndSelectTitle;
 - (void)handleTapOutside;
 - (BOOL)hasUnsavedChanges;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

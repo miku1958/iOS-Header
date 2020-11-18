@@ -26,12 +26,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *operationID;
 @property (readonly, weak, nonatomic) CKDClientProxy *proxy;
 @property (readonly, nonatomic) CKDOperation *realOperation; // @synthesize realOperation=_realOperation;
-@property (readonly, nonatomic) NSString *sectionID;
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly, nonatomic) NSOperationQueue *targetOperationQueue; // @synthesize targetOperationQueue=_targetOperationQueue;
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
+- (id)_runDurationString;
+- (id)_startDateString;
 - (void)cancel;
 - (id)ckShortDescription;
 - (id)description;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isConcurrent;
 - (void)main;
 - (void)start;
+- (id)statusReportWithIndent:(unsigned long long)arg1;
 
 @end
 

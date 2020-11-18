@@ -18,7 +18,7 @@
     BOOL _extension;
     BOOL _suspended;
     NSString *_facilityID;
-    id<FBSystemServiceFacilityClient> _facilityclient;
+    id<FBSystemServiceFacilityClient> _facilityClient;
     NSString *_bundlePath;
 }
 
@@ -29,7 +29,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isExtension) BOOL extension; // @synthesize extension=_extension;
-@property (strong, nonatomic) id<FBSystemServiceFacilityClient> facilityClient; // @synthesize facilityClient=_facilityclient;
+@property (strong, nonatomic) id<FBSystemServiceFacilityClient> facilityClient; // @synthesize facilityClient=_facilityClient;
 @property (strong, nonatomic) NSString *facilityID; // @synthesize facilityID=_facilityID;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) int pid;

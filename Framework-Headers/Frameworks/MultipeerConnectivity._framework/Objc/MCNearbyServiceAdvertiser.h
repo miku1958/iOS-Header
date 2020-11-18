@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MultipeerConnectivity/NSNetServiceDelegate-Protocol.h>
 
@@ -16,6 +16,7 @@
     id<MCNearbyServiceAdvertiserDelegate> _delegate;
     BOOL _isAdvertising;
     BOOL _wasAdvertising;
+    BOOL _AWDLDisabled;
     MCPeerID *_myPeerID;
     NSDictionary *_discoveryInfo;
     NSString *_serviceType;
@@ -28,6 +29,7 @@
     NSMutableDictionary *_invites;
 }
 
+@property (nonatomic, getter=isAWDLDisabled) BOOL AWDLDisabled; // @synthesize AWDLDisabled=_AWDLDisabled;
 @property (strong, nonatomic) NSData *TXTRecordData; // @synthesize TXTRecordData=_TXTRecordData;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MCNearbyServiceAdvertiserDelegate> delegate;

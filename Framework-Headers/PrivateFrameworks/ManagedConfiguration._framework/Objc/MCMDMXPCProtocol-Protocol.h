@@ -9,6 +9,7 @@
 @class NSDictionary;
 
 @protocol MCMDMXPCProtocol <NSObject>
+- (void)migrateMDMWithContext:(int)arg1 completion:(void (^)(NSError *))arg2;
 - (void)notifyNewConfigurationWithCompletion:(void (^)(NSError *))arg1;
 - (void)processUserRequest:(NSDictionary *)arg1 completionBlock:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)retryNotNowWithCompletion:(void (^)(NSError *))arg1;

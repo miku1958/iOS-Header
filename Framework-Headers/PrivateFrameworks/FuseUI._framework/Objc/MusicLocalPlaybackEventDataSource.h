@@ -6,50 +6,32 @@
 
 #import <objc/NSObject.h>
 
-#import <FuseUI/ADBannerViewDelegate-Protocol.h>
-#import <FuseUI/ADBannerViewDelegatePrivate-Protocol.h>
+@class MPMediaPlaylist, NSMutableArray, NSMutableDictionary, NSMutableSet;
 
-@class ADBannerView, MPMediaPlaylist, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
-@protocol MusicLocalPlaybackEventDelegate;
-
-@interface MusicLocalPlaybackEventDataSource : NSObject <ADBannerViewDelegate, ADBannerViewDelegatePrivate>
+@interface MusicLocalPlaybackEventDataSource : NSObject
 {
     MPMediaPlaylist *_playbackHistoryPlaylist;
     NSMutableArray *_historyMediaItems;
-    unsigned long long _adIndex;
-    ADBannerView *_bannerView;
     NSMutableDictionary *_storeIDsToOffers;
     BOOL _hasNetworkConditionsToFetchOffers;
     BOOL _shouldFetchOffers;
     NSMutableSet *_storeIDsToFetchOffers;
-    id<MusicLocalPlaybackEventDelegate> _delegate;
 }
-
-@property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<MusicLocalPlaybackEventDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_adIdentifierForHistoryItem:(id)arg1;
-- (id)_bannerViewForMediaItem:(id)arg1;
-- (void)_buildAdBannerForMediaItems:(id)arg1;
 - (void)_fetchOffersForStoreIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_mediaItemsForHistoryPlaylist:(id)arg1;
 - (void)_networkTypeDidChangeNotification:(id)arg1;
 - (BOOL)_shouldFetchOfferForItem:(id)arg1;
 - (id)_storeIDForMediaItem:(id)arg1;
 - (void)addPlaybackEventForMediaItem:(id)arg1;
-- (void)bannerView:(id)arg1 didFailToReceiveAdWithError:(id)arg2;
-- (id)bannerViewForMediaItem:(id)arg1;
 - (void)dealloc;
 - (void)fetchStoreOffers;
 - (id)initWithPlaylist:(id)arg1;
 - (id)mediaItemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)playbackEventCount;
 - (id)storeOffersForStoreID:(id)arg1;
-- (id)viewControllerForStoryboardPresentationFromBannerView:(id)arg1;
 
 @end
 

@@ -10,14 +10,18 @@
 
 @interface HKAuthorizationSettingsHeaderView : UIView
 {
+    BOOL _hidesSubtitle;
     NSString *_sourceName;
+    NSString *_subtitleFormat;
     UIImageView *_iconImageView;
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
 }
 
+@property (nonatomic) BOOL hidesSubtitle; // @synthesize hidesSubtitle=_hidesSubtitle;
 @property (strong, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 @property (copy, nonatomic) NSString *sourceName; // @synthesize sourceName=_sourceName;
+@property (copy, nonatomic) NSString *subtitleFormat; // @synthesize subtitleFormat=_subtitleFormat;
 @property (strong, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 

@@ -8,5 +8,6 @@
 
 @interface MDLMesh (SCNModelIO)
 + (id)meshWithSCNGeometry:(id)arg1;
++ (id)meshWithSCNGeometry:(id)arg1 bufferAllocator:(id)arg2;
 @end
 

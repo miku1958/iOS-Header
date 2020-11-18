@@ -91,7 +91,7 @@
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2 style:(unsigned long long)arg3;
 - (void)tintColorDidChange;
-- (id)viewForBaselineLayout;
+- (id)viewForLastBaselineLayout;
 
 @end
 

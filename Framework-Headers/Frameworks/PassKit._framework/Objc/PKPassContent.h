@@ -28,7 +28,7 @@
 @property (nonatomic) long long transitType; // @synthesize transitType=_transitType;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (void)flushFormattedFieldValues;
 - (id)initWithCoder:(id)arg1;

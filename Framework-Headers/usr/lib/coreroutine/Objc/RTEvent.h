@@ -7,31 +7,43 @@
 #import <objc/NSObject.h>
 
 #import <coreroutine/NSSecureCoding-Protocol.h>
+#import <coreroutine/RTTaggableLocation-Protocol.h>
 
-@class NSDate, NSUUID;
+@class NSDate, NSString, NSUUID;
 
-@interface RTEvent : NSObject <NSSecureCoding>
+@interface RTEvent : NSObject <NSSecureCoding, RTTaggableLocation>
 {
     NSDate *_startDate;
     NSDate *_endDate;
     NSUUID *_locationIdentifier;
+    NSUUID *_microLocationIdentifier;
     long long _source;
+    NSUUID *_identifier;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSUUID *locationIdentifier; // @synthesize locationIdentifier=_locationIdentifier;
+@property (strong, nonatomic) NSUUID *microLocationIdentifier; // @synthesize microLocationIdentifier=_microLocationIdentifier;
 @property (nonatomic) long long source; // @synthesize source=_source;
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStartDate:(id)arg1 endDate:(id)arg2;
-- (id)initWithStartDate:(id)arg1 endDate:(id)arg2 source:(long long)arg3 locationIdentifier:(id)arg4;
+- (id)initWithStartDate:(id)arg1 endDate:(id)arg2 source:(long long)arg3;
+- (id)initWithStartDate:(id)arg1 endDate:(id)arg2 source:(long long)arg3 identifier:(id)arg4;
+- (void)tagWithLocationOfInterest:(id)arg1;
+- (void)tagWithMicroLocation:(id)arg1;
+- (BOOL)taggedWithLocationOfInterest;
+- (BOOL)taggedWithMicroLocation;
 
 @end
 

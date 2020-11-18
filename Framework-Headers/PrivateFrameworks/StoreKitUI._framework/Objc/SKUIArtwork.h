@@ -8,7 +8,7 @@
 
 #import <StoreKitUI/SKUICacheCoding-Protocol.h>
 
-@class NSDictionary, NSMutableDictionary, NSString, NSURL;
+@class NSMutableDictionary, NSString, NSURL;
 
 @interface SKUIArtwork : NSObject <SKUICacheCoding>
 {
@@ -19,7 +19,6 @@
 }
 
 @property (readonly, nonatomic) NSURL *URL;
-@property (readonly, nonatomic, getter=_lookupDictionary) NSDictionary *_lookupDictionary;
 @property (readonly, nonatomic) NSMutableDictionary *cacheRepresentation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -30,6 +29,7 @@
 @property (readonly, nonatomic) long long width; // @synthesize width=_width;
 
 - (void).cxx_destruct;
+- (id)_lookupDictionary;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithArtworkDictionary:(id)arg1;
 - (id)initWithCacheRepresentation:(id)arg1;

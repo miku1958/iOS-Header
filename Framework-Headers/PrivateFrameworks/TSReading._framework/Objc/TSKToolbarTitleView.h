@@ -17,6 +17,7 @@
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) UIColor *titleColor; // @synthesize titleColor=_titleColor;
 
+- (void)dealloc;
 
 @end
 

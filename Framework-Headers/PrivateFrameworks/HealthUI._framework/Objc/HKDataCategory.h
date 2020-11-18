@@ -6,37 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSString, UIColor, UIImage;
+@class NSMutableDictionary, NSString, UIColor, UIImage;
 
 @interface HKDataCategory : NSObject
 {
-    NSMutableArray *_dataUnits;
     NSMutableDictionary *_cachedGradients;
     NSMutableDictionary *_cachedRoundedCornerGradients;
     UIColor *_topColor;
     UIColor *_bottomColor;
     long long _categoryID;
+    NSString *_categoryName;
     NSString *_displayName;
     NSString *_listIconName;
     UIImage *_listIcon;
-    UIImage *_dashboardIcon;
+    UIImage *_healthDataIcon;
     UIImage *_shareIcon;
 }
 
 @property (readonly, nonatomic) long long categoryID; // @synthesize categoryID=_categoryID;
-@property (readonly, nonatomic) UIImage *dashboardIcon; // @synthesize dashboardIcon=_dashboardIcon;
-@property (readonly, nonatomic) NSArray *dataUnits;
+@property (readonly, nonatomic) NSString *categoryName; // @synthesize categoryName=_categoryName;
 @property (readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (readonly, nonatomic) UIImage *healthDataIcon; // @synthesize healthDataIcon=_healthDataIcon;
 @property (readonly, nonatomic) BOOL isMeCategory;
+@property (readonly, nonatomic) BOOL isTopLevelCategory;
 @property (readonly, nonatomic) UIImage *listIcon; // @synthesize listIcon=_listIcon;
 @property (readonly, nonatomic) NSString *listIconName; // @synthesize listIconName=_listIconName;
 @property (readonly, nonatomic) UIColor *seriesColor;
 @property (readonly, nonatomic) UIImage *shareIcon; // @synthesize shareIcon=_shareIcon;
 
++ (id)topLevelCategoryIdentifiers;
 - (void).cxx_destruct;
 - (id)_generateGradientOfHeight:(double)arg1;
 - (id)_generateRoundedCornerGradientWithHeight:(double)arg1;
-- (void)addDataUnit:(id)arg1;
 - (id)gradientWithHeight:(double)arg1;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;

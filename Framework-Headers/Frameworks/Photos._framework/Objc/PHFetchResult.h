@@ -8,35 +8,45 @@
 
 #import <Photos/NSCopying-Protocol.h>
 #import <Photos/NSFastEnumeration-Protocol.h>
+#import <Photos/PHObjectIDBackedFetchResult-Protocol.h>
 
-@class NSArray, NSFetchRequest, PHBatchFetchingArray, PHQuery, _PHFetchRequestWrapper;
+@class NSArray, NSFetchRequest, NSNumber, NSSet, NSString, PHBatchFetchingArray, PHQuery, _PHFetchRequestWrapper;
 @protocol OS_dispatch_queue;
 
-@interface PHFetchResult : NSObject <NSCopying, NSFastEnumeration>
+@interface PHFetchResult : NSObject <PHObjectIDBackedFetchResult, NSCopying, NSFastEnumeration>
 {
     PHBatchFetchingArray *_fetchedObjects;
     NSArray *_seedOIDs;
     NSObject<OS_dispatch_queue> *_isolationQueue;
     BOOL _registeredForChangeNotificationDeltas;
+    NSString *_fetchType;
+    NSSet *_fetchPropertySets;
     unsigned long long _photosCount;
     unsigned long long _videosCount;
     unsigned long long _audiosCount;
+    NSNumber *_prefetchCount;
     _PHFetchRequestWrapper *_fetchRequestWrapper;
-    long long _chunkSizeForFetch;
+    BOOL _preventsClearingOIDCache;
     PHQuery *_query;
+    long long _chunkSizeForFetch;
 }
 
 @property long long chunkSizeForFetch; // @synthesize chunkSizeForFetch=_chunkSizeForFetch;
 @property (readonly) unsigned long long count;
+@property (readonly) NSSet *fetchPropertySets; // @synthesize fetchPropertySets=_fetchPropertySets;
 @property (readonly) NSFetchRequest *fetchRequest;
+@property (readonly) NSString *fetchType; // @synthesize fetchType=_fetchType;
 @property (readonly) NSArray *fetchedObjectIDs;
+@property (readonly) NSSet *fetchedObjectIDsSet;
 @property (readonly) NSArray *fetchedObjects;
 @property (readonly, nonatomic) id firstObject;
 @property (readonly, nonatomic) id lastObject;
+@property (nonatomic) BOOL preventsClearingOIDCache; // @synthesize preventsClearingOIDCache=_preventsClearingOIDCache;
 @property (readonly) PHQuery *query; // @synthesize query=_query;
 
 + (id)_batchFetchingArrayForObjectIDs:(id)arg1 fetchResult:(id)arg2;
 + (id)cleanedAndSortedOIDsFrom:(id)arg1 usingFetchOptions:(id)arg2;
++ (id)fetchObjectCount:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)fetchObjectIDs:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)fetchObjectIDsForCombinableFetchResults:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)pl_fetchResultContainingAssetContainer:(id)arg1;
@@ -54,19 +64,21 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (unsigned long long)countOfAssetsWithMediaType:(long long)arg1;
+- (void)dealloc;
 - (id)description;
 - (void)enumerateObjectsAtIndexes:(id)arg1 options:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)fetchResultWithChangeHandlingValue:(id)arg1;
-- (id)fetchedObjectIDsSet;
 - (id)fetchedObjectsUsingManagedObjectContext:(id)arg1;
 - (void)getMediaTypeCounts;
 - (unsigned long long)indexOfObject:(id)arg1;
 - (unsigned long long)indexOfObject:(id)arg1 inRange:(struct _NSRange)arg2;
+- (id)init;
 - (id)initWithQuery:(id)arg1;
 - (id)initWithQuery:(id)arg1 oids:(id)arg2 registerIfNeeded:(BOOL)arg3 usingManagedObjectContext:(id)arg4;
 - (BOOL)isRegisteredForChangeNotificationDeltas;
+- (id)localIdentifiers;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (id)objectIDAtIndex:(unsigned long long)arg1;

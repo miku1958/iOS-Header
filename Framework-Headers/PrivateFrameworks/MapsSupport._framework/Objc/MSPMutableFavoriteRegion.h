@@ -8,7 +8,7 @@
 
 #import <MapsSupport/MSPFavoriteRegion-Protocol.h>
 
-@class GEOMapRegion, NSString;
+@class GEOMapRegion, NSString, NSUUID;
 
 @interface MSPMutableFavoriteRegion : MSPMutableFavorite <MSPFavoriteRegion>
 {
@@ -18,6 +18,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) GEOMapRegion *geoMapRegion;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSUUID *storageIdentifier;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title;
 
@@ -26,7 +27,7 @@
 + (Class)mutableObjectClass;
 + (id)mutableObjectProtocol;
 - (id)initWithBookmarkStorage:(id)arg1;
-- (id)transferToImmutableWithError:(out id *)arg1;
+- (id)transferToImmutableIfValidWithError:(out id *)arg1;
 
 @end
 

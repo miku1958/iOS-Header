@@ -12,7 +12,7 @@
 #import <UIKit/UITextInputTraits_Private-Protocol.h>
 #import <UIKit/_UIBarPositioningInternal-Protocol.h>
 
-@class NSArray, NSIndexSet, NSString, UIBarButtonItem, UIButton, UIColor, UIImage, UIImageView, UILabel, UISearchBarTextField, UISearchController, UITapGestureRecognizer, UITextInputAssistantItem, UITextInputTraits, _UIBackdropView, _UISearchBarNavigationItem, _UISearchBarScopeBarBackground;
+@class NSArray, NSIndexSet, NSString, UIBarButtonItem, UIButton, UIColor, UIImage, UIImageView, UIInputContextHistory, UILabel, UISearchBarTextField, UISearchController, UITapGestureRecognizer, UITextInputAssistantItem, UITextInputTraits, _UIBackdropView, _UISearchBarNavigationItem, _UISearchBarScopeBarBackground;
 @protocol UISearchBarDelegate, UISearchBarDelegate><UISearchBarDelegate_Private;
 
 @interface UISearchBar : UIView <UITextInputTraits_Private, UIStatusBarTinting, _UIBarPositioningInternal, UIBarPositioning, UITextInputTraits>
@@ -83,6 +83,7 @@
 @property (nonatomic, setter=_setSearchController:) UISearchController *_searchController; // @synthesize _searchController=__searchController;
 @property (strong, nonatomic, setter=_setStatusBarTintColor:) UIColor *_statusBarTintColor; // @synthesize _statusBarTintColor;
 @property (nonatomic, setter=_setTransplanting:) BOOL _transplanting; // @synthesize _transplanting=__transplanting;
+@property (nonatomic) BOOL acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
@@ -98,16 +99,22 @@
 @property (nonatomic) BOOL deferBecomingResponder;
 @property (weak, nonatomic) id<UISearchBarDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL disableInputBars;
 @property (nonatomic) BOOL disablePrediction;
 @property (nonatomic) BOOL displaySecureEditsUsingPlainText;
 @property (nonatomic) BOOL displaySecureTextUsingPlainText;
 @property (nonatomic) int emptyContentReturnKeyType;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically; // @dynamic enablesReturnKeyAutomatically;
 @property (nonatomic) BOOL enablesReturnKeyOnNonWhiteSpaceContent;
+@property (nonatomic) BOOL forceDefaultDictationInfo;
+@property (nonatomic) long long forceDictationKeyboardType;
+@property (nonatomic) BOOL forceDisableDictation;
 @property (nonatomic) BOOL forceEnableDictation;
+@property (nonatomic) BOOL hasDefaultContents;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *inputAccessoryView; // @synthesize inputAccessoryView=_inputAccessoryView;
 @property (readonly, nonatomic) UITextInputAssistantItem *inputAssistantItem;
+@property (strong, nonatomic) UIInputContextHistory *inputContextHistory;
 @property (strong, nonatomic) UIColor *insertionPointColor;
 @property (nonatomic) unsigned long long insertionPointWidth;
 @property (nonatomic) BOOL isCarPlayIdiom;
@@ -142,7 +149,9 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressReturnKeyStyling;
 @property (copy, nonatomic) NSString *text;
+@property (copy, nonatomic) NSString *textContentType;
 @property (nonatomic) int textLoupeVisibility;
+@property (nonatomic) long long textScriptType;
 @property (nonatomic) int textSelectionBehavior;
 @property (nonatomic) id textSuggestionDelegate;
 @property (nonatomic) struct __CFCharacterSet *textTrimmingSet;
@@ -250,6 +259,8 @@
 - (BOOL)_shouldUseNavigationBarHeight;
 - (id)_textColor;
 - (BOOL)_textFieldShouldScrollToVisibleWhenBecomingFirstResponder:(id)arg1;
+- (long long)_textInputSource;
+- (id)_uiktest_placeholderLabelColor;
 - (void)_updateBackgroundToBackdropStyle:(long long)arg1;
 - (void)_updateInsetsForTableView:(id)arg1;
 - (void)_updateMagnifyingGlassView;
@@ -321,6 +332,7 @@
 - (void)setScopeBarButtonTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setSearchFieldBackgroundImage:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setSearchFieldLeftViewMode:(long long)arg1;
+- (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setShowsCancelButton:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setUsesEmbeddedAppearance:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

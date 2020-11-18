@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -12,9 +12,10 @@
 
 @interface PKPaymentMessage : NSObject <NSSecureCoding>
 {
-    BOOL _expiresOnNextTransaction;
     BOOL _allowDeepLink;
     BOOL _hasAssociatedPaymentApplication;
+    BOOL _archiveOnNextTransaction;
+    BOOL _archived;
     NSString *_identifier;
     NSString *_serviceIdentifier;
     NSString *_content;
@@ -23,17 +24,19 @@
 }
 
 @property (nonatomic) BOOL allowDeepLink; // @synthesize allowDeepLink=_allowDeepLink;
+@property (nonatomic) BOOL archiveOnNextTransaction; // @synthesize archiveOnNextTransaction=_archiveOnNextTransaction;
+@property (nonatomic, getter=isArchived) BOOL archived; // @synthesize archived=_archived;
 @property (copy, nonatomic) NSString *content; // @synthesize content=_content;
 @property (copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
-@property (nonatomic) BOOL expiresOnNextTransaction; // @synthesize expiresOnNextTransaction=_expiresOnNextTransaction;
 @property (nonatomic) BOOL hasAssociatedPaymentApplication; // @synthesize hasAssociatedPaymentApplication=_hasAssociatedPaymentApplication;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSDate *messageDate; // @synthesize messageDate=_messageDate;
 @property (copy, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
+@property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 + (id)paymentMessageWithDictionary:(id)arg1;
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

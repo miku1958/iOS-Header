@@ -39,9 +39,9 @@
 @property (nonatomic) unsigned long long lastFuturePOISide; // @synthesize lastFuturePOISide=_lastFuturePOISide;
 @property (nonatomic) double lastPOIDistance; // @synthesize lastPOIDistance=_lastPOIDistance;
 
+- (void).cxx_destruct;
 - (id)_stringForSide:(unsigned long long)arg1;
 - (id)_tourStatusAnnouncementWithLength:(unsigned long long)arg1;
-- (void)dealloc;
 - (id)longTourStatusAnnouncement;
 - (id)shortTourStatusAnnouncement;
 - (void)updateTourStatusWithCurrentLocation:(id)arg1 currentPoint:(struct CGPoint)arg2 futureLocation:(id)arg3 futurePoint:(struct CGPoint)arg4 tourPOI:(id)arg5 tourPOISide:(unsigned long long)arg6 isStationary:(BOOL)arg7;

@@ -4,23 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSString;
 
 @interface TLCapabilitiesManager : NSObject
 {
-    BOOL _ringtoneStoreAvailable;
-    BOOL _alertToneStoreAvailable;
+    BOOL _isRingtoneStoreAvailable;
+    BOOL _isAlertToneStoreAvailable;
     NSDictionary *_deviceCodeNameSimplicationMapping;
 }
 
-@property (nonatomic, getter=_isAlertToneStoreAvailable, setter=_setAlertToneStoreAvailable:) BOOL _alertToneStoreAvailable; // @synthesize _alertToneStoreAvailable;
-@property (copy, nonatomic, setter=_setDeviceCodeNameSimplicationMapping:) NSDictionary *_deviceCodeNameSimplicationMapping; // @synthesize _deviceCodeNameSimplicationMapping;
-@property (nonatomic, getter=_isRingtoneStoreAvailable, setter=_setRingtoneStoreAvailable:) BOOL _ringtoneStoreAvailable; // @synthesize _ringtoneStoreAvailable;
 @property (readonly, nonatomic, getter=isAlertToneStoreAvailable) BOOL alertToneStoreAvailable;
 @property (readonly, nonatomic) NSString *deviceCodeName;
-@property (readonly, nonatomic, getter=isFakingSynchronizedVibrationCapability) BOOL fakingSynchronizedVibrationCapability;
 @property (readonly, nonatomic) BOOL hasSynchronizedVibrationsCapability;
 @property (readonly, nonatomic) BOOL hasUserGeneratedVibrationsCapability;
 @property (readonly, nonatomic) BOOL hasVibratorCapability;
@@ -28,9 +24,9 @@
 @property (readonly, nonatomic) NSString *simplifiedDeviceCodeName;
 
 + (id)sharedCapabilitiesManager;
+- (void).cxx_destruct;
 - (void)_checkRingtoneStoreAvailability;
 - (void)_handleStoreAvailableItemKindsChangedNotification:(id)arg1;
-- (BOOL)_hasSynchronizedVibrationsCapability;
 - (BOOL)_hasTelephonyCapability;
 - (void)dealloc;
 - (id)init;

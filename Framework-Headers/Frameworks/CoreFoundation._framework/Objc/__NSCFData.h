@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_tryRetain;
 - (const void *)bytes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)finalize;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)length;

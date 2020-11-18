@@ -17,17 +17,26 @@
 - (BOOL)_accessibilityArchiveAction:(id)arg1;
 - (BOOL)_accessibilityDeleteAction:(id)arg1;
 - (id)_accessibilityEquivalenceTag;
+- (BOOL)_accessibilityIsThreadedChildCell;
+- (id)_accessibilityLabelWithoutAttributes;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityMoreAction:(id)arg1;
 - (void)_accessibilityPerformCellAction:(unsigned long long)arg1;
 - (BOOL)_accessibilityPerformSwipeAccessory;
 - (int)_accessibilityScannerActivateBehavior;
+- (id)_accessibilityScrollStatus;
+- (id)_accessibilitySubviewsForAdding;
 - (BOOL)_accessibilityToggleFlagAction:(id)arg1;
 - (BOOL)_accessibilityToggleReadAction:(id)arg1;
+- (BOOL)_accessibilityToggleThreadAction:(id)arg1;
+- (id)_accessibilityUserTestingChildren;
+- (void)_axProcessMailLabel:(id)arg1 children:(id)arg2;
 - (id)accessibilityCustomActions;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
-- (BOOL)accessibilityPerformEscape;
 - (unsigned long long)accessibilityTraits;
+- (void)layoutMarginsDidChange;
+- (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)staticViewNeedsDisplay;
 

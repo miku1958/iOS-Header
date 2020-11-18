@@ -6,10 +6,13 @@
 
 #import <SpotlightUI/NSObject-Protocol.h>
 
-@class SearchUIFeedbackEvent;
-@protocol SearchUIResult;
+@class SFCardSectionEngagementFeedback, SFResultEngagementFeedback;
 
 @protocol SearchUIFeedbackDelegate <NSObject>
-- (void)feedbackEvent:(SearchUIFeedbackEvent *)arg1 triggeredOnResult:(id<SearchUIResult>)arg2;
+
+@optional
+- (void)didEngageActionItem:(SFResultEngagementFeedback *)arg1 actionPerformed:(BOOL)arg2;
+- (void)didEngageCardSection:(SFCardSectionEngagementFeedback *)arg1;
+- (BOOL)didHandleCardSectionEngagement:(SFCardSectionEngagementFeedback *)arg1;
 @end
 

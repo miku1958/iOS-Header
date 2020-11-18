@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *tags; // @synthesize tags=_tags;
 
++ (Class)tagsType;
 - (void).cxx_destruct;
 - (void)addTags:(id)arg1;
 - (void)clearTags;

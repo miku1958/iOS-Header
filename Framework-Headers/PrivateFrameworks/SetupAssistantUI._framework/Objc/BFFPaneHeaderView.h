@@ -18,6 +18,7 @@
     UIImage *_icon;
     UILabel *_textLabel;
     UILabel *_detailTextLabel;
+    UILabel *_subLabel;
     double _flexibleHeight;
 }
 
@@ -25,12 +26,14 @@
 @property (readonly, nonatomic) UILabel *detailTextLabel; // @synthesize detailTextLabel=_detailTextLabel;
 @property (nonatomic) double flexibleHeight; // @synthesize flexibleHeight=_flexibleHeight;
 @property (strong, nonatomic) UIImage *icon; // @synthesize icon=_icon;
+@property (readonly, nonatomic) UILabel *subLabel; // @synthesize subLabel=_subLabel;
 @property (readonly, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 @property (nonatomic, getter=isTextLabelAlignedByLastBaseline) BOOL textLabelAlignedByLastBaseline; // @synthesize textLabelAlignedByLastBaseline=_textLabelAlignedByLastBaseline;
 
 - (void).cxx_destruct;
-- (double)_detailLabelBaselineOffsetFromTop;
+- (double)_labelsAndLinksBaselineOffsetForView:(id)arg1;
 - (void)_linkButtonPressed;
+- (double)heightForWidth:(double)arg1 inView:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setLinkText:(id)arg1 handler:(CDUnknownBlockType)arg2;

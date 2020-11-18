@@ -8,11 +8,10 @@
 
 #import <PhotoLibrary/UIApplicationDelegate-Protocol.h>
 
-@class BLActivityAlert, NSDictionary, NSString, PLUIController, UIWindow;
+@class BLActivityAlert, NSDictionary, NSString, UIWindow;
 
 @interface PLPhotosApplication : UIApplication <UIApplicationDelegate>
 {
-    PLUIController *_uiController;
     BOOL _receivingRemoteControlEvents;
     UIWindow *_window;
     BOOL _urlNeedsHandling;
@@ -58,7 +57,6 @@
 - (void)applicationDidEnterBackground:(id)arg1;
 - (void)applicationDidFinishLaunching:(id)arg1;
 - (void)applicationWillEnterForeground:(id)arg1;
-- (id)currentUIConfiguration;
 - (void)dealloc;
 - (void)disableNetworkObservation;
 - (void)enableNetworkObservation;

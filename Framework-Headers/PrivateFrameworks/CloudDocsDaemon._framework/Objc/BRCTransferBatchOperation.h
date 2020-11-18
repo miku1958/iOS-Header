@@ -9,7 +9,7 @@
 #import <CloudDocsDaemon/BRCOperationSubclass-Protocol.h>
 
 @class NSMutableDictionary, NSObject, NSString;
-@protocol OS_dispatch_group;
+@protocol OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface BRCTransferBatchOperation : _BRCOperation <BRCOperationSubclass>
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _totalSize;
     unsigned long long _doneSize;
     unsigned long long _itemsCount;
+    NSObject<OS_dispatch_queue> *_queue;
     CDUnknownBlockType _didProgressBlock;
     NSObject<OS_dispatch_group> *_pendingGroup;
 }
@@ -35,24 +36,28 @@ __attribute__((visibility("hidden")))
 @property unsigned long long totalSize; // @synthesize totalSize=_totalSize;
 
 - (void).cxx_destruct;
+- (void)_addTransfer:(id)arg1;
 - (void)_cancelTransferID:(id)arg1;
-- (void)_progressForTransfer:(id)arg1 progress:(double)arg2;
+- (void)_finishedTransfer:(id)arg1 error:(id)arg2;
+- (id)_finishedTransferForRecord:(id)arg1 recordID:(id)arg2 error:(id)arg3;
+- (void)_setProgress:(double)arg1 forTransfer:(id)arg2;
 - (id)actionPrettyName;
 - (void)addAliasItem:(id)arg1 toTransferWithID:(id)arg2;
 - (void)addTransfer:(id)arg1;
 - (void)cancelTransferID:(id)arg1;
+- (id)createActivity;
 - (id)fetchOperationForTransfers:(id)arg1 traceCode:(int)arg2;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
-- (void)finishedTransfer:(id)arg1 error:(id)arg2;
 - (void)finishedTransferForRecord:(id)arg1 recordID:(id)arg2 error:(id)arg3;
 - (id)initWithName:(id)arg1 syncContext:(id)arg2;
 - (id)initWithName:(id)arg1 syncContext:(id)arg2 group:(id)arg3;
 - (void)main;
 - (void)mainWithTransfers:(id)arg1;
-- (void)progressForRecordID:(id)arg1 progress:(double)arg2;
 - (double)progressForTransferID:(id)arg1;
+- (void)sendBatchProgressedCallback;
+- (void)sendTransferCompletionCallBack:(id)arg1 error:(id)arg2;
+- (void)setProgress:(double)arg1 forRecordID:(id)arg2;
 - (BOOL)shouldRetryForError:(id)arg1;
-- (unsigned long long)startActivity;
 - (id)subclassableDescriptionWithContext:(id)arg1;
 - (id)transferredObjectsPrettyName;
 

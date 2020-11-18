@@ -9,6 +9,7 @@
 @class NSArray, NSDictionary;
 
 @protocol BRItemNotificationReceiving <BRCancellable>
+- (void)receiveProgressUpdates:(NSArray *)arg1 reply:(void (^)(void))arg2;
 - (void)receiveUpdates:(NSArray *)arg1 logicalExtensions:(NSDictionary *)arg2 physicalExtensions:(NSDictionary *)arg3 reply:(void (^)(void))arg4;
 @end
 

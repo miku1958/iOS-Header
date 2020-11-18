@@ -6,23 +6,18 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSData, NSDictionary, NSMutableDictionary, NSString, SDPMini;
+@class NSString, SDPMini;
 
 __attribute__((visibility("hidden")))
 @interface VCCallInfo : NSObject
 {
     unsigned int callID;
-    NSData *connectionData;
-    NSData *relayConnectionData;
     NSString *participantID;
-    NSDictionary *relayRequest;
-    NSMutableDictionary *relayRequestResponse;
-    NSDictionary *relayUpdate;
     unsigned int auNumber;
     unsigned int maxBandwidth;
-    unsigned int cellBandwith;
-    int cellTech;
+    unsigned int cellBandwidth;
     BOOL videoIsPaused;
+    BOOL isPreLionOS;
     BOOL isVideoQualityDegraded;
     double lastGoodVideoQualityTime;
     double lastBadVideoQualityTime;
@@ -40,21 +35,23 @@ __attribute__((visibility("hidden")))
     double firstDegradedMeasure;
     double videoDegradedThreshold;
     unsigned char u8Version;
+    NSString *_frameworkVersion;
+    NSString *_osVersion;
+    NSString *_deviceType;
 }
 
+@property (copy, nonatomic) NSString *OSVersion; // @synthesize OSVersion=_osVersion;
 @property (nonatomic) unsigned int auNumber; // @synthesize auNumber;
 @property unsigned int callID; // @synthesize callID;
-@property (nonatomic) unsigned int cellBandwith; // @synthesize cellBandwith;
-@property (nonatomic) int cellTech; // @synthesize cellTech;
-@property (strong) NSData *connectionData; // @synthesize connectionData;
+@property (nonatomic) unsigned int cellBandwidth; // @synthesize cellBandwidth;
+@property (copy, nonatomic) NSString *deviceType; // @synthesize deviceType=_deviceType;
+@property (copy, nonatomic) NSString *frameworkVersion; // @synthesize frameworkVersion=_frameworkVersion;
+@property (readonly, nonatomic) BOOL isHDVideoSupported;
 @property (readonly, nonatomic) BOOL isIOS; // @synthesize isIOS;
+@property (nonatomic) BOOL isPreLionOS; // @synthesize isPreLionOS;
 @property (nonatomic) BOOL isVideoQualityDegraded; // @synthesize isVideoQualityDegraded;
 @property (nonatomic) unsigned int maxBandwidth; // @synthesize maxBandwidth;
 @property (copy, nonatomic) NSString *participantID; // @synthesize participantID;
-@property (strong) NSData *relayConnectionData; // @synthesize relayConnectionData;
-@property (strong) NSDictionary *relayRequest; // @synthesize relayRequest;
-@property (strong) NSMutableDictionary *relayRequestResponse; // @synthesize relayRequestResponse;
-@property (strong) NSDictionary *relayUpdate; // @synthesize relayUpdate;
 @property (readonly, nonatomic) BOOL requiresImplicitFeatureString;
 @property (strong, nonatomic) SDPMini *sdp; // @synthesize sdp;
 @property (strong, nonatomic) NSString *sdpString; // @synthesize sdpString;
@@ -68,6 +65,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL videoIsPaused; // @synthesize videoIsPaused;
 @property (nonatomic) unsigned int visibleRectCropping; // @synthesize visibleRectCropping;
 
++ (unsigned char)getVCCurrentVersion;
 - (struct VoiceIOFarEndVersionInfo)audioVersionInfo:(BOOL)arg1;
 - (void)dealloc;
 - (id)init;

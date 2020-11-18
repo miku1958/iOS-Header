@@ -10,7 +10,7 @@
 
 @interface SYAtomicFIFO : NSObject
 {
-    struct os_lock_handoff_s _lock;
+    struct os_unfair_lock_s _lock;
     NSMutableArray *_store;
 }
 

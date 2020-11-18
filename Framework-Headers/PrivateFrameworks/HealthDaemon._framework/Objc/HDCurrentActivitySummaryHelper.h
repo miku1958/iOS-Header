@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class HDActivitySummaryQueryHelper, HKActivitySummary, NSArray, NSDate, NSHashTable;
-@protocol HDHealthDaemon, OS_dispatch_queue;
+@class HDActivitySummaryQueryHelper, HDProfile, HKActivitySummary, NSArray, NSDate, NSHashTable;
+@protocol OS_dispatch_queue;
 
 @interface HDCurrentActivitySummaryHelper : NSObject
 {
-    id<HDHealthDaemon> _healthDaemon;
+    HDProfile *_profile;
     HDActivitySummaryQueryHelper *_queryHelper;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_observerQueue;
@@ -46,7 +46,7 @@
 - (void)addObserver:(id)arg1;
 - (id)dateOverride;
 - (void)dealloc;
-- (id)initWithHealthDaemon:(id)arg1;
+- (id)initWithProfile:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)setDateOverride:(id)arg1;
 

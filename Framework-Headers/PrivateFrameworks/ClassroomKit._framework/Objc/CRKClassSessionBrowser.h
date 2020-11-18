@@ -45,6 +45,7 @@
 - (id)browserStateDictionary;
 - (void)classSession:(id)arg1 didChangeState:(long long)arg2 previousState:(long long)arg3;
 - (void)classSession:(id)arg1 didConnectWithTransport:(id)arg2;
+- (void)classSession:(id)arg1 willLoseBeaconAfterTimeInterval:(double)arg2;
 - (void)classSessionDidDisconnect:(id)arg1;
 - (void)classSessionDidInvalidate:(id)arg1;
 - (void)classSessionInvalidated:(id)arg1;

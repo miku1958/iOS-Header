@@ -6,10 +6,18 @@
 
 #import <EventKit/EKEvent.h>
 
+@class IPEventClassificationType;
+
 @interface EKEvent (IpsosExtendedStorage)
 
+@property BOOL ipsos_allDayPrefered;
+@property (readonly) double ipsos_duration;
+@property (strong) IPEventClassificationType *ipsos_eventClassificationType;
 @property BOOL ipsos_isDateTimeTenseDependent;
+@property BOOL ipsos_isEndTimeApproximate;
+@property BOOL ipsos_isEventTimeOnlyAndReferrengingToSentDate;
 @property BOOL ipsos_isTimeApproximate;
+@property BOOL ipsos_usesDefaultClassificationTypeStartTime;
 
 - (id)ipsos_betterDescription;
 @end

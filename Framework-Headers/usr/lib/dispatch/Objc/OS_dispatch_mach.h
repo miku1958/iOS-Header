@@ -10,7 +10,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface OS_dispatch_mach : OS_dispatch_object <OS_dispatch_mach>
 {
 }
@@ -21,6 +20,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (void)load;
+- (void)_xref_dispose;
+- (id)init;
 
 @end
 

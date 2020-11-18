@@ -16,10 +16,10 @@
 }
 
 @property (copy, nonatomic) NSString *passTypeIdentifier; // @synthesize passTypeIdentifier=_passTypeIdentifier;
-@property (copy, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
+@property (readonly, copy, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
 @property (copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithPaymentPass:(id)arg1;
 

@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
 @interface __NSArrayI : NSArray
 {
     unsigned long long _used;
-    id list[0];
+    id _list[0];
 }
 
 + (id)__new:(const id *)arg1:(unsigned long long)arg2:(BOOL)arg3;
@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (void)enumerateObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)finalize;
 - (void)getObjects:(id *)arg1 range:(struct _NSRange)arg2;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)objectAtIndex:(unsigned long long)arg1;
 
 @end

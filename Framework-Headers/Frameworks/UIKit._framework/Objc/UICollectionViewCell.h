@@ -35,7 +35,8 @@
 
 @property (nonatomic, getter=_isLayoutEngineSuspended, setter=_setLayoutEngineSuspended:) BOOL _layoutEngineSuspended; // @synthesize _layoutEngineSuspended=_isLayoutEngineSuspended;
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
-@property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property (readonly, nonatomic, getter=_contentViewFrame) struct CGRect contentViewFrame;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=_focusStyle, setter=_setFocusStyle:) long long focusStyle; // @synthesize focusStyle=_focusStyle;
@@ -43,6 +44,7 @@
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
 @property (strong, nonatomic) UIView *selectedBackgroundView; // @synthesize selectedBackgroundView=_selectedBackgroundView;
+@property (readonly, nonatomic, getter=_selectionAnimationDuration) double selectionAnimationDuration;
 @property (readonly) Class superclass;
 
 + (Class)_contentViewClass;
@@ -63,6 +65,7 @@
 - (void)_performAction:(SEL)arg1 sender:(id)arg2;
 - (id)_preferredConfigurationForFocusAnimation:(long long)arg1 inContext:(id)arg2;
 - (id)_selectionSegueTemplate;
+- (void)_setContentView:(id)arg1 addToHierarchy:(BOOL)arg2;
 - (void)_setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setOpaque:(BOOL)arg1 forSubview:(id)arg2;
 - (void)_setSelected:(BOOL)arg1 animated:(BOOL)arg2;
@@ -83,9 +86,12 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (BOOL)isEditing;
 - (void)layoutSubviews;
 - (void)paste:(id)arg1;
 - (void)prepareForReuse;
+- (void)setEditing:(BOOL)arg1;
+- (void)setSemanticContentAttribute:(long long)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 

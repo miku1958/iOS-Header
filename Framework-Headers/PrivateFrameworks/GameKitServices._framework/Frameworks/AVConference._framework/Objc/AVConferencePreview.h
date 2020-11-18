@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVConferenceXPCClient, CALayer, VideoAttributes;
+@class AVConferenceXPCClient, CALayer, NSString, VideoAttributes;
 @protocol AVConferencePreviewClientDelegate, OS_dispatch_queue;
 
 @interface AVConferencePreview : NSObject
@@ -22,6 +22,8 @@
     NSObject<AVConferencePreviewClientDelegate> *delegate;
     NSObject<OS_dispatch_queue> *avConferencePreviewQueue;
     NSObject<OS_dispatch_queue> *avConferencePreviewNotificationQueue;
+    BOOL _isPreviewRunning;
+    NSString *_localCameraUID;
 }
 
 @property (strong, nonatomic) NSObject<AVConferencePreviewClientDelegate> *delegate; // @synthesize delegate;
@@ -37,6 +39,7 @@
 - (void)dealloc;
 - (void)didChangeLocalScreenAttributes:(id)arg1;
 - (void)didChangeLocalVideoAttributes:(id)arg1;
+- (void)didGetSnapshot:(id)arg1;
 - (void)didPausePreview;
 - (void)didReceiveCommError;
 - (void)didReceiveErrorFromCamera:(unsigned int)arg1 error:(id)arg2;
@@ -45,6 +48,7 @@
 - (void)didStopPreview;
 - (void)endPIPToPreviewAnimation;
 - (void)endPreviewToPIPAnimation;
+- (void)getSnapshot;
 - (id)init;
 - (BOOL)isPreviewRunning;
 - (unsigned int)localCamera;

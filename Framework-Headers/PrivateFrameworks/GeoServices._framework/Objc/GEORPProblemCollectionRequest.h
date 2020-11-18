@@ -41,6 +41,7 @@
 @property (strong, nonatomic) NSString *userEmail; // @synthesize userEmail=_userEmail;
 @property (strong, nonatomic) GEOLocation *userLocation; // @synthesize userLocation=_userLocation;
 
++ (Class)requestElementType;
 - (void)addRequestElement:(id)arg1;
 - (void)clearRequestElements;
 - (void)copyTo:(id)arg1;

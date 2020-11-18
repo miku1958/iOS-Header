@@ -7,7 +7,6 @@
 #import <GeoServices/NSObject-Protocol.h>
 
 @class NSSet;
-@protocol GEOTransitDepartureSequence;
 
 @protocol GEOTransitIncidentEntity <NSObject>
 
@@ -15,6 +14,5 @@
 @property (readonly, nonatomic) unsigned long long muid;
 @property (readonly, nonatomic) NSSet *nextStopIDs;
 
-- (BOOL)affectsSequence:(id<GEOTransitDepartureSequence>)arg1;
 @end
 

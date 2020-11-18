@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDHome, HMHomeInvitationData, NSDate, NSUUID;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@class HMDHome, HMFTimer, HMHomeInvitationData, NSDate, NSString, NSUUID;
+@protocol OS_dispatch_queue;
 
-@interface HMDHomeInvitation : NSObject <NSSecureCoding>
+@interface HMDHomeInvitation : NSObject <HMFTimerDelegate, NSSecureCoding>
 {
     long long _invitationState;
     HMDHome *_home;
@@ -19,16 +20,18 @@
     NSObject<OS_dispatch_queue> *_clientQueue;
     CDUnknownBlockType _resolutionHandler;
     CDUnknownBlockType _expirationHandler;
-    NSObject<OS_dispatch_source> *_timer;
-    NSObject<OS_dispatch_queue> *_timerQueue;
+    HMFTimer *_timer;
 }
 
 @property (readonly, nonatomic, getter=isAccepted) BOOL accepted;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic, getter=isDeclined) BOOL declined;
-@property (readonly, copy, nonatomic) NSDate *endDate;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSDate *endDate;
 @property (copy, nonatomic) CDUnknownBlockType expirationHandler; // @synthesize expirationHandler=_expirationHandler;
 @property (readonly, nonatomic, getter=isExpired) BOOL expired;
+@property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (readonly, copy, nonatomic) NSUUID *identifier;
 @property (strong, nonatomic) HMHomeInvitationData *invitationData; // @synthesize invitationData=_invitationData;
@@ -36,19 +39,23 @@
 @property (readonly, nonatomic, getter=isPending) BOOL pending;
 @property (copy, nonatomic) CDUnknownBlockType resolutionHandler; // @synthesize resolutionHandler=_resolutionHandler;
 @property (readonly, copy, nonatomic) NSDate *startDate;
-@property (strong, nonatomic) NSObject<OS_dispatch_source> *timer; // @synthesize timer=_timer;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *timerQueue; // @synthesize timerQueue=_timerQueue;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) HMFTimer *timer; // @synthesize timer=_timer;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_clearTimer;
 - (void)_configureTimer;
+- (void)_resolve:(BOOL)arg1;
+- (void)accept;
+- (void)decline;
+- (id)describeWithFormat;
 - (void)encodeWithCoder:(id)arg1;
-- (void)expireTimer;
+- (void)expire;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 invitationData:(id)arg2;
 - (id)initWithInvitationData:(id)arg1 forHome:(id)arg2;
-- (void)resolveTimer:(BOOL)arg1;
+- (void)timerDidFire:(id)arg1;
 - (void)updateInvitationState:(long long)arg1;
 - (void)updateTimer:(unsigned long long)arg1 clientQueue:(id)arg2;
 

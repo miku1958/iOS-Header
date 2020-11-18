@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOMapServiceTicket-Protocol.h>
 
-@class GEOMapRegion, GEOMapServiceTraits, GEOPDPlaceRequest, GEOPDPlaceResponse, NSDictionary, NSString;
+@class GEOMapRegion, GEOMapServiceTraits, GEOPDPlaceRequest, GEOPDPlaceResponse, GEORelatedSearchSuggestion, NSArray, NSDictionary, NSString;
 @protocol GEOMapItem;
 
 __attribute__((visibility("hidden")))
@@ -19,7 +19,12 @@ __attribute__((visibility("hidden")))
     NSDictionary *_userInfo;
     GEOMapServiceTraits *_traits;
     GEOMapRegion *_resultBoundingRegion;
+    NSArray *_relatedSearchSuggestions;
+    GEORelatedSearchSuggestion *_defaultRelatedSuggestion;
     BOOL _chainResultSet;
+    int _searchResultType;
+    NSString *_resultDisplayHeader;
+    BOOL _shouldEnableRedoSearch;
     id<GEOMapItem> _mapItemToRefine;
     BOOL _canceled;
 }
@@ -27,11 +32,16 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isCanceled) BOOL canceled; // @synthesize canceled=_canceled;
 @property (readonly, nonatomic, getter=isChainResultSet) BOOL chainResultSet; // @synthesize chainResultSet=_chainResultSet;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) GEORelatedSearchSuggestion *defaultRelatedSuggestion; // @synthesize defaultRelatedSuggestion=_defaultRelatedSuggestion;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSArray *relatedSearchSuggestions; // @synthesize relatedSearchSuggestions=_relatedSearchSuggestions;
 @property (readonly, nonatomic) NSDictionary *responseUserInfo;
 @property (readonly, nonatomic) GEOMapRegion *resultBoundingRegion; // @synthesize resultBoundingRegion=_resultBoundingRegion;
+@property (readonly, nonatomic) NSString *resultDisplayHeader; // @synthesize resultDisplayHeader=_resultDisplayHeader;
 @property (readonly, nonatomic) NSString *resultSectionHeader;
+@property (readonly, nonatomic) int searchResultType; // @synthesize searchResultType=_searchResultType;
+@property (readonly, nonatomic) BOOL shouldEnableRedoSearch; // @synthesize shouldEnableRedoSearch=_shouldEnableRedoSearch;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) GEOMapServiceTraits *traits; // @synthesize traits=_traits;
 
@@ -44,9 +54,13 @@ __attribute__((visibility("hidden")))
 - (id)initWithRequest:(id)arg1 traits:(id)arg2;
 - (id)initWithRequest:(id)arg1 traits:(id)arg2 mapItemToRefine:(id)arg3;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
+- (void)submitWithHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2 queue:(id)arg3;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 timeout:(long long)arg2 networkActivity:(CDUnknownBlockType)arg3;
+- (void)submitWithHandler:(CDUnknownBlockType)arg1 timeout:(long long)arg2 networkActivity:(CDUnknownBlockType)arg3 queue:(id)arg4;
 - (void)submitWithRefinedHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
+- (void)submitWithRefinedHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2 queue:(id)arg3;
 - (void)submitWithRefinedHandler:(CDUnknownBlockType)arg1 timeout:(long long)arg2 networkActivity:(CDUnknownBlockType)arg3;
+- (void)submitWithRefinedHandler:(CDUnknownBlockType)arg1 timeout:(long long)arg2 networkActivity:(CDUnknownBlockType)arg3 queue:(id)arg4;
 
 @end
 

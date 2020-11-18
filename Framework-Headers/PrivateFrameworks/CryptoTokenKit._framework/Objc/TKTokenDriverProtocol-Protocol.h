@@ -7,6 +7,6 @@
 @class NSDictionary;
 
 @protocol TKTokenDriverProtocol
-- (void)acquireTokenEndpointWithAttributes:(NSDictionary *)arg1 reply:(void (^)(NSXPCListenerEndpoint *, NSError *))arg2;
+- (void)acquireTokenEndpointWithAttributes:(NSDictionary *)arg1 reply:(void (^)(NSXPCListenerEndpoint *, NSString *, NSError *))arg2;
 @end
 

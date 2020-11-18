@@ -18,7 +18,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSArray *students; // @synthesize students=_students;
+@property (copy, nonatomic) NSArray *students; // @synthesize students=_students;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

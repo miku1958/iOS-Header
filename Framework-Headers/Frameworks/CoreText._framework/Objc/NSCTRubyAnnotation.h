@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 + (Class)classForKeyedUnarchiver;
 - (unsigned long long)_cfTypeID;
 - (BOOL)allowsWeakReference;
-- (void)finalize;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (oneway void)release;

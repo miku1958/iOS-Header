@@ -6,23 +6,31 @@
 
 #import <Catalyst/CATOperation.h>
 
-@class CATTaskRequest;
+@class CATTaskRequest, NSUUID;
+@protocol CATTaskOperationNotificationDelegate;
 
 @interface CATTaskOperation : CATOperation
 {
     CATTaskRequest *_request;
+    id<CATTaskOperationNotificationDelegate> _notificationDelegate;
+    NSUUID *_remoteUUID;
 }
 
+@property (weak, nonatomic) id<CATTaskOperationNotificationDelegate> notificationDelegate; // @synthesize notificationDelegate=_notificationDelegate;
+@property (copy, nonatomic) NSUUID *remoteUUID; // @synthesize remoteUUID=_remoteUUID;
 @property (readonly, nonatomic) CATTaskRequest *request; // @synthesize request=_request;
 
 + (BOOL)isCancelable;
 + (id)new;
 + (BOOL)validateRequest:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
-- (void)cancel;
+- (BOOL)canSendNotificationWithName:(id)arg1 userInfo:(id)arg2;
 - (id)init;
 - (id)initWithRequest:(id)arg1;
 - (void)main;
+- (void)postNotificationWithName:(id)arg1 userInfo:(id)arg2;
+- (void)processMessage:(id)arg1;
+- (void)processNotificationMessage:(id)arg1;
 
 @end
 

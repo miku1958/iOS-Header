@@ -60,6 +60,7 @@
 @property (nonatomic) BOOL x_wr_rsvpneeded; // @dynamic x_wr_rsvpneeded;
 
 + (id)name;
+- (void)fixAttendeeComments;
 - (void)fixComponent;
 - (BOOL)isDefaultAlarmDeleted;
 - (id)propertiesThatIfPresentExcludeThisComponentFromChecksummingForVersion:(int)arg1;

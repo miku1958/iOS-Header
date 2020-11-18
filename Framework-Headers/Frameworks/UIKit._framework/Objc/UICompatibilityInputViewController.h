@@ -8,7 +8,7 @@
 
 #import <UIKit/_UIKBDelegateAwareInputController-Protocol.h>
 
-@class NSString, UIKeyboard, UIKeyboardInputMode, UIView, UIViewController;
+@class NSString, UIKeyboard, UIKeyboardInputMode, UIViewController;
 
 __attribute__((visibility("hidden")))
 @interface UICompatibilityInputViewController : UIInputViewController <_UIKBDelegateAwareInputController>
@@ -20,19 +20,20 @@ __attribute__((visibility("hidden")))
     double _lastSuspendedTime;
     BOOL _shouldRegenerateSizingConstraints;
     BOOL _shouldSuppressRemoteInputController;
+    double _resetInputModeTime;
     UIViewController *_inputController;
-    UIView *_inputControllerSnapshot;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIViewController *inputController; // @synthesize inputController=_inputController;
-@property (strong, nonatomic) UIView *inputControllerSnapshot; // @synthesize inputControllerSnapshot=_inputControllerSnapshot;
 @property (readonly) Class superclass;
 
 + (BOOL)_requiresProxyInterface;
++ (void)applicationDidReceiveMemoryWarning:(id)arg1;
 + (id)deferredInputModeControllerWithKeyboard:(id)arg1;
++ (id)inputSnapshotViewForInputMode:(id)arg1 orientation:(long long)arg2;
 + (id)inputViewControllerWithView:(id)arg1;
 - (id)_compatView;
 - (id)_compatibilityController;
@@ -40,6 +41,8 @@ __attribute__((visibility("hidden")))
 - (id)_keyboard;
 - (id)_keyboardForThisViewController;
 - (id)_systemViewControllerForInputMode:(id)arg1;
+- (void)_tvUpdateAppearanceForUserInterfaceStyle;
+- (void)addSnapshotViewForInputMode:(id)arg1;
 - (void)assertCurrentInputModeIfNecessary;
 - (id)childCompatibilityController;
 - (void)dealloc;
@@ -50,16 +53,18 @@ __attribute__((visibility("hidden")))
 - (void)finishSplitTransition:(BOOL)arg1;
 - (void)generateCompatibleSizeConstraintsIfNecessary;
 - (void)keyboardWillChangeFromDelegate:(id)arg1 toDelegate:(id)arg2;
+- (void)killIncomingExtension;
 - (void)loadView;
 - (id)preferredFocusedItem;
 - (void)rebuildChildConstraints;
 - (void)removeSnapshotView;
+- (void)resetInputMode;
+- (void)resetInputModeInMainThread;
 - (void)setInputMode:(id)arg1;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (BOOL)shouldAutomaticallyForwardRotationMethods;
 - (void)shouldUpdateInputMode:(id)arg1;
-- (void)snapshotCurrentDisplay;
-- (void)switchToCurrentSystemInputMode;
+- (void)takeSnapshotView;
 - (void)tearDownInputController;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;

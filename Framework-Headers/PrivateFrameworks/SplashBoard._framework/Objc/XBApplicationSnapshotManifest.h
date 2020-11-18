@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SplashBoard/BSDescriptionProviding-Protocol.h>
 
@@ -26,7 +26,6 @@
 + (id)debugDescription;
 + (void)deleteAllSystemSnapshots;
 + (void)initialize;
-- (void)archive;
 - (void)beginSnapshotAccessTransaction:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)createSnapshotWithGroupID:(id)arg1;
 - (id)createVariantForSnapshot:(id)arg1 withIdentifier:(id)arg2;
@@ -41,10 +40,10 @@
 - (void)deleteSnapshotsUsingPredicateBuilder:(CDUnknownBlockType)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (void)generateImageForSnapshot:(id)arg1 dataProvider:(id)arg2 writeToFile:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)generateImageForSnapshot:(id)arg1 dataProvider:(id)arg2 writeToFile:(BOOL)arg3 didGenerateImage:(CDUnknownBlockType)arg4 didSaveImage:(CDUnknownBlockType)arg5;
-- (id)initWithApplicationCompatibilityInfo:(id)arg1;
 - (id)initWithApplicationInfo:(id)arg1;
-- (id)initWithBundleIdentifier:(id)arg1;
+- (id)initWithContainerIdentity:(id)arg1 store:(id)arg2;
 - (void)saveSnapshot:(id)arg1 atPath:(id)arg2 withContext:(id)arg3;
 - (id)snapshotsForGroupID:(id)arg1;
 - (id)snapshotsForGroupID:(id)arg1 fetchRequest:(id)arg2;

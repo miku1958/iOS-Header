@@ -12,50 +12,56 @@
 
 @interface HKDataUnit : NSObject <NSCopying>
 {
-    NSDictionary *_unitNameOverrides;
-    NSDictionary *_singularUnitNameOverrides;
+    NSDictionary *_unitNameKeyOverrides;
     NSPredicate *_defaultChartingPredicate;
     NSDictionary *_chartingPredicatesByTimeScope;
     unsigned long long _portraitPresentationOptions;
     NSDictionary *_portraitPresentationOptionOverrides;
+    NSString *_displayNameKey;
+    NSString *_labelDisplayNameKey;
+    NSString *_embeddedDisplayNameKey;
+    NSString *_titleEmbeddedDisplayNameKey;
+    NSString *_keywordsNameKey;
+    NSString *_summaryNameKey;
+    NSString *_summaryPairedWatchNameKey;
+    NSString *_cautionaryTextKey;
+    NSString *_unitChangeCautionaryTextKey;
     BOOL _summaryAttributionHasLink;
     BOOL _showAllDataHierarchically;
     BOOL _shouldDisplayUnitStringOnYAxis;
+    BOOL _disallowsSourceReordering;
     BOOL _shouldUseSingleSecondaryValue;
+    BOOL __wheelchairUser;
     long long _dataUnitIdentifier;
     long long _categoryIdentifier;
-    NSString *_labelDisplayName;
     double _scalarValue;
-    NSString *_displayName;
-    NSString *_embeddedDisplayName;
-    NSString *_titleEmbeddedDisplayName;
     UIImage *_detailImage;
-    NSSet *_keywords;
-    NSString *_summary;
-    NSString *_summaryForPairedWatch;
     NSAttributedString *_attributedSummaryAttribution;
-    NSString *_cautionaryText;
-    NSString *_unitChangeCautionaryText;
     HKDataUnitChartingRules *_chartingRules;
     HKObjectType *_objectType;
 }
 
+@property (getter=_isWheelchairUser, setter=_setWheelchairUser:) BOOL _wheelchairUser; // @synthesize _wheelchairUser=__wheelchairUser;
 @property (readonly, nonatomic) BOOL allowsManualEntry;
+@property (readonly, nonatomic) BOOL anyPortraitChartDefinition;
 @property (readonly, nonatomic) NSAttributedString *attributedSummaryAttribution; // @synthesize attributedSummaryAttribution=_attributedSummaryAttribution;
+@property (readonly, nonatomic) BOOL canBecomeFavorite;
 @property (readonly, nonatomic) long long categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
-@property (readonly, nonatomic) NSString *cautionaryText; // @synthesize cautionaryText=_cautionaryText;
+@property (readonly, nonatomic) NSString *cautionaryText;
 @property (readonly, nonatomic) HKDataUnitChartingRules *chartingRules; // @synthesize chartingRules=_chartingRules;
 @property (readonly, nonatomic) HKDataCategory *dataCategory;
 @property (readonly, nonatomic) UIImage *dataUnitIcon;
 @property (readonly, nonatomic) long long dataUnitIdentifier; // @synthesize dataUnitIdentifier=_dataUnitIdentifier;
 @property (readonly, nonatomic) UIImage *detailImage; // @synthesize detailImage=_detailImage;
-@property (readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property (readonly, nonatomic) NSString *embeddedDisplayName; // @synthesize embeddedDisplayName=_embeddedDisplayName;
+@property (readonly, nonatomic) BOOL disallowsSourceReordering; // @synthesize disallowsSourceReordering=_disallowsSourceReordering;
+@property (readonly, nonatomic) NSString *displayName;
+@property (readonly, nonatomic) NSString *embeddedDisplayName;
 @property (readonly, nonatomic) BOOL hidden;
 @property (readonly, nonatomic) BOOL isActivitySummary;
 @property (readonly, nonatomic) BOOL isCharacteristic;
-@property (readonly, nonatomic) NSSet *keywords; // @synthesize keywords=_keywords;
-@property (readonly, nonatomic) NSString *labelDisplayName; // @synthesize labelDisplayName=_labelDisplayName;
+@property (readonly, nonatomic) BOOL isDocument;
+@property (readonly, nonatomic) NSSet *keywords;
+@property (readonly, nonatomic) NSString *labelDisplayName;
 @property (readonly, nonatomic) UIImage *listIcon;
 @property (readonly, nonatomic) NSString *listIconImageName;
 @property (readonly, nonatomic) HKObjectType *objectType; // @synthesize objectType=_objectType;
@@ -66,22 +72,24 @@
 @property (nonatomic) BOOL shouldDisplayUnitStringOnYAxis; // @synthesize shouldDisplayUnitStringOnYAxis=_shouldDisplayUnitStringOnYAxis;
 @property (readonly, nonatomic) BOOL shouldUseSingleSecondaryValue; // @synthesize shouldUseSingleSecondaryValue=_shouldUseSingleSecondaryValue;
 @property (readonly, nonatomic) BOOL showAllDataHierarchically; // @synthesize showAllDataHierarchically=_showAllDataHierarchically;
-@property (readonly, nonatomic) NSString *summary; // @synthesize summary=_summary;
+@property (readonly, nonatomic) NSString *summary;
 @property (readonly, nonatomic) BOOL summaryAttributionHasLink; // @synthesize summaryAttributionHasLink=_summaryAttributionHasLink;
-@property (readonly, nonatomic) NSString *summaryForPairedWatch; // @synthesize summaryForPairedWatch=_summaryForPairedWatch;
-@property (readonly, nonatomic) NSString *titleEmbeddedDisplayName; // @synthesize titleEmbeddedDisplayName=_titleEmbeddedDisplayName;
-@property (readonly, nonatomic) NSString *unitChangeCautionaryText; // @synthesize unitChangeCautionaryText=_unitChangeCautionaryText;
+@property (readonly, nonatomic) NSString *summaryForPairedWatch;
+@property (readonly, nonatomic) BOOL supportsAssociatedSamples;
+@property (readonly, nonatomic) NSString *titleEmbeddedDisplayName;
+@property (readonly, nonatomic) NSString *unitChangeCautionaryText;
 @property (readonly, nonatomic) UIImage *unitIcon;
 @property (readonly, nonatomic) BOOL unitPreferencesRequireChangeConfirmation;
 
 - (void).cxx_destruct;
 - (void)_applyChartingProperties:(id)arg1;
-- (void)_applyScalarValueWithDictionary:(id)arg1;
-- (void)_applySummaryAndAttributionPropertiesWithDictionary:(id)arg1 displayNameKey:(id)arg2;
+- (void)_applyScalarValue:(id)arg1;
+- (void)_applySummaryAndAttributionPropertiesWithAttributionURLString:(id)arg1 displayNameKey:(id)arg2;
 - (void)_applyTextualPropertiesWithDictionary:(id)arg1 displayNameKey:(id)arg2;
-- (void)_applyUnitNameOverrides:(id)arg1;
 - (BOOL)_isActivitySummary;
 - (BOOL)_isNikeFuel;
+- (id)_localizedStringWithKey:(id)arg1;
+- (id)_rawLocalizedStringForKey:(id)arg1;
 - (id)adjustedValueForClientValue:(id)arg1;
 - (id)adjustedValueForDaemonValue:(id)arg1;
 - (id)chartingPredicateForTimeScope:(long long)arg1;
@@ -93,8 +101,7 @@
 - (id)initFromDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)presentationOptionsForTimeScope:(long long)arg1;
-- (id)singularUnitDisplayNameOverrideForUnit:(id)arg1;
-- (id)unitDisplayNameOverrideForUnit:(id)arg1;
+- (id)unitDisplayNameKeyOverrideForUnit:(id)arg1;
 
 @end
 

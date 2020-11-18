@@ -25,6 +25,7 @@
 + (id)keyPressedActionWithKey:(id)arg1 atTime:(double)arg2 isKeyUp:(BOOL)arg3 withLocation:(struct CGPoint)arg4 context:(id)arg5;
 + (void)setupJavascriptContext:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

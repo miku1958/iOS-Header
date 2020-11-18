@@ -9,7 +9,9 @@
 @interface CLLocationManager (HomeLocation)
 + (BOOL)convertAuthStatusToBool:(int)arg1;
 + (int)convertToHMDLocationAuthorization:(int)arg1;
++ (int)convertToHMDRegionState:(long long)arg1;
 + (id)hmdLocationAuthorizationAsString:(int)arg1;
++ (id)hmdRegionStateAsString:(int)arg1;
 + (id)locationAuthorizationDescription:(int)arg1;
 + (id)referenceFrameDescription:(int)arg1;
 + (id)regionDescription:(id)arg1;

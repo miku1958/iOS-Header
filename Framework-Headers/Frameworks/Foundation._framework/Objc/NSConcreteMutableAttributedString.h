@@ -28,7 +28,6 @@
 - (Class)classForCoder;
 - (void)dealloc;
 - (void)edited:(unsigned long long)arg1 range:(struct _NSRange)arg2 changeInLength:(long long)arg3;
-- (void)finalize;
 - (id)init;
 - (id)initWithAttributedString:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -27,7 +27,6 @@
 - (BOOL)supportsNavigation;
 - (BOOL)supportsNewiOS9Features;
 - (BOOL)supportsRealisticTiles;
-- (BOOL)supportsWatchPairing;
 
 @end
 

@@ -21,13 +21,14 @@
 @property BOOL initialUpload; // @synthesize initialUpload=_initialUpload;
 @property BOOL shouldGenerateDerivatives; // @synthesize shouldGenerateDerivatives=_shouldGenerateDerivatives;
 
+- (void)_addAsset:(id)arg1 toAssetChanges:(id)arg2 isInsert:(BOOL)arg3 seenAssetUuid:(id)arg4;
 - (void)_addLocalResourcesToRecord:(id)arg1;
 - (BOOL)_asset:(id)arg1 isIn:(id)arg2;
 - (void)_cleanUploadedResources:(id)arg1;
-- (void)_fetchChangesFromEvent:(id)arg1 insertedAssets:(id)arg2 updatedAssets:(id)arg3 adjustedAssets:(id)arg4 deletedAssets:(id)arg5 albumInserts:(id)arg6 albumChanges:(id)arg7 albumsToDelete:(id)arg8 updatedRelationship:(id)arg9 sendAssetContainerChange:(BOOL *)arg10;
+- (id)_fetchChangesFromEvent:(id)arg1 shouldTriggerPrefetch:(BOOL *)arg2;
 - (void)_incrementUploadAttemptsAndPushStateForAssets:(id)arg1;
 - (BOOL)_isKnownDeletionForUuid:(id)arg1;
-- (BOOL)_needsMasterChangeForAsset:(id)arg1 master:(id)arg2;
+- (BOOL)_needsToIncludeMaster:(id)arg1 forAsset:(id)arg2;
 - (void)_processAlbumDeletes:(id)arg1 albumInserts:(id)arg2 albumChanges:(id)arg3 withBatchManager:(id)arg4;
 - (void)_processPendingAlbums:(id)arg1 withBatchManager:(id)arg2;
 - (void)_processPendingAssets:(id)arg1 withBatchManager:(id)arg2;
@@ -35,6 +36,8 @@
 - (void)_pushBatches:(id)arg1;
 - (void)_sendAlbums:(id)arg1 toBatchManager:(id)arg2;
 - (void)_sendAssets:(id)arg1 toBatchManager:(id)arg2;
+- (void)_sortData:(id)arg1 isInsert:(BOOL)arg2 forUploadChanges:(id)arg3 shouldTriggerPrefetch:(BOOL *)arg4 inManagedObjectContext:(id)arg5;
+- (void)_sortRelationshipData:(id)arg1 forRelationshipUpdate:(id)arg2 inManagedObjectContext:(id)arg3;
 - (id)_validateAssets:(id)arg1 fromCloudUuidDeleteList:(id)arg2;
 - (void)addBatches:(id)arg1;
 - (void)clearUploadArray;
@@ -42,7 +45,7 @@
 - (id)createUploadBatchesForDeletionFromEvent:(id)arg1;
 - (void)dealloc;
 - (void)handleUploadBatchesForDeletionFromEvent:(id)arg1;
-- (void)handleUploadBatchesFromEvent:(id)arg1 insertedPhotoCount:(unsigned long long *)arg2 insertedVideoCount:(unsigned long long *)arg3 totalSizeOfUnpushedOriginals:(unsigned long long *)arg4;
+- (void)handleUploadBatchesFromEvent:(id)arg1 insertedPhotoCount:(unsigned long long *)arg2 insertedVideoCount:(unsigned long long *)arg3 totalSizeOfUnpushedOriginals:(unsigned long long *)arg4 shouldTriggerPrefetch:(BOOL *)arg5;
 - (BOOL)hasBatchesToUpload;
 - (id)initWithLibrary:(id)arg1;
 - (unsigned long long)numberOfBatchesToUpload;
@@ -51,9 +54,7 @@
 - (void)processGenerateDerivativesCommitError:(id)arg1 inUploadBatch:(id)arg2;
 - (void)recordDeletionOnUuids:(id)arg1;
 - (BOOL)shouldProcessDuringInitialUpload:(id)arg1;
-- (void)sortData:(id)arg1 withMode:(int)arg2 forAssets:(id)arg3 adjustedAssets:(id)arg4 andAlbums:(id)arg5 inManagedObjectContext:(id)arg6;
-- (void)sortRelationshipData:(id)arg1 forRelationshipUpdate:(id)arg2 inManagedObjectContext:(id)arg3;
-- (BOOL)uploadFullPhotoLibraryToCloud;
+- (void)uploadFullPhotoLibraryToCloud;
 
 @end
 

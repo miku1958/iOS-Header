@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotoLibraryServices/NSObject-Protocol.h>
+#import <PhotoLibraryServices/PLMomentRefreshable-Protocol.h>
 
 @class CLLocation, NSArray, NSData, NSDate, NSObject, NSOrderedSet, NSString;
 @protocol NSCopying, PLMomentAssetData, PLMomentListData;
 
-@protocol PLMomentData <NSObject>
+@protocol PLMomentData <PLMomentRefreshable>
 
 @property (strong, nonatomic) CLLocation *approximateLocation;
 @property (strong, nonatomic) NSOrderedSet *assets;

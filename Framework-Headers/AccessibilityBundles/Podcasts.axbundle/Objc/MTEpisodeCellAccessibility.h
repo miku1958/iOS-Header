@@ -13,9 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityCustomActions;
 - (id)_accessibilitySupplementaryFooterViews;
+- (id)_accessibilityUserTestingChildren;
 - (id)_axLockup;
+- (id)_privateAccessibilityCustomActions;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;

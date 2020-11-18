@@ -21,6 +21,8 @@
 - (double)_keyboardHeightOffset;
 - (void)hostKeyboardOffset:(CDUnknownBlockType)arg1;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

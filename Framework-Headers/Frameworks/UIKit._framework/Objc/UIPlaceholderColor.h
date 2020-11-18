@@ -11,13 +11,5 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (BOOL)allowsWeakReference;
-- (id)autorelease;
-- (void)dealloc;
-- (oneway void)release;
-- (id)retain;
-- (unsigned long long)retainCount;
-- (BOOL)retainWeakReference;
-
 @end
 

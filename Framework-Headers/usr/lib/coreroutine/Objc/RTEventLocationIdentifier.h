@@ -10,24 +10,28 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface RTEventLocationIdentifier : NSObject <NSCopying>
 {
     NSString *_name;
+    unsigned long long _source;
+    NSString *_calendarIdentifier;
 }
 
+@property (copy, nonatomic) NSString *calendarIdentifier; // @synthesize calendarIdentifier=_calendarIdentifier;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (nonatomic) unsigned long long source; // @synthesize source=_source;
 
++ (id)characterSetForNormalize;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithEvent:(id)arg1;
-- (id)initWithName:(id)arg1;
+- (id)initWithEvent:(id)arg1 source:(unsigned long long)arg2 useCalendarIdentifier:(BOOL)arg3;
+- (id)initWithName:(id)arg1 source:(unsigned long long)arg2 calendarIdentifier:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isSuitableForFuzzyMatch;
 - (long long)levenshteinDistanceToIdentifier:(id)arg1;
-- (id)toLowerCase;
+- (id)normalize;
 
 @end
 

@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *tileSets; // @synthesize tileSets=_tileSets;
 
++ (Class)tileSetType;
 - (void)addTileSet:(id)arg1;
 - (void)clearTileSets;
 - (void)copyTo:(id)arg1;

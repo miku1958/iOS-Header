@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) NSString *tzid;
 
++ (BOOL)_isTimeZone:(id)arg1 pseudoDSTForDate:(id)arg2;
 + (id)blocksAfterDate:(id)arg1 untilDate:(id)arg2 forTimeZone:(id)arg3;
 + (long long)matchTypeForSubarray:(id)arg1 inTZChangeArray:(id)arg2;
 + (id)name;

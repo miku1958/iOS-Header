@@ -7,6 +7,7 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (PLVideoOverlayButton)
++ (struct CGSize)pl_videoOverlayButtonSize;
 + (id)pl_videoOverlayButtonWithStyle:(long long)arg1;
 @end
 

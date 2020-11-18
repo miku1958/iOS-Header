@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKSQLite, NSString;
+@class CKSQLite, NSMutableArray, NSString;
 
 @interface CKSQLiteStatement : NSObject
 {
@@ -14,12 +14,14 @@
     CKSQLite *_SQLite;
     NSString *_SQL;
     struct sqlite3_stmt *_handle;
+    NSMutableArray *_temporaryBoundObjects;
 }
 
 @property (readonly, nonatomic) NSString *SQL; // @synthesize SQL=_SQL;
 @property (readonly, weak, nonatomic) CKSQLite *SQLite; // @synthesize SQLite=_SQLite;
 @property (readonly, nonatomic) struct sqlite3_stmt *handle; // @synthesize handle=_handle;
 @property (nonatomic, getter=isReset) BOOL reset; // @synthesize reset=_reset;
+@property (strong, nonatomic) NSMutableArray *temporaryBoundObjects; // @synthesize temporaryBoundObjects=_temporaryBoundObjects;
 
 - (void).cxx_destruct;
 - (id)allObjects;
@@ -43,6 +45,8 @@
 - (int)intAtIndex:(unsigned long long)arg1;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (void)reset;
+- (void)resetAfterStepError;
+- (id)retainedTemporaryBoundObject:(id)arg1;
 - (BOOL)step;
 - (id)textAtIndex:(unsigned long long)arg1;
 

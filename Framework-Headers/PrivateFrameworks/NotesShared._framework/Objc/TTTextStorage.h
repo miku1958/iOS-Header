@@ -8,7 +8,7 @@
 
 #import <NotesShared/TTMergeableStringDelegate-Protocol.h>
 
-@class NSArray, NSAttributedString, NSMutableArray, NSMutableAttributedString, NSString, NSUndoManager, TTMergeableAttributedString, TTMergeableStringVersionedDocument;
+@class NSArray, NSAttributedString, NSMutableArray, NSMutableAttributedString, NSString, NSUndoManager, TTMergeableAttributedString, TTMergeableStringUndoGroup, TTMergeableStringVersionedDocument;
 @protocol TTTextStorageStyler;
 
 @interface TTTextStorage : NSTextStorage <TTMergeableStringDelegate>
@@ -30,6 +30,7 @@
     BOOL _isSelectingText;
     BOOL _isDragging;
     BOOL _isResettingBaseWritingDirection;
+    BOOL _isChangingSelectionByGestures;
     BOOL _isEndingEditing;
     BOOL _isFixing;
     BOOL _isApplyingUndoCommand;
@@ -40,7 +41,7 @@
     NSMutableArray *_deletedRanges;
     TTMergeableStringVersionedDocument *_document;
     NSMutableArray *_undoCommands;
-    NSMutableArray *_coalescingUndoCommands;
+    TTMergeableStringUndoGroup *_coalescingUndoGroup;
     unsigned long long _editingCount;
     unsigned long long _ttEditedMask;
     long long _ttChangeInLength;
@@ -50,9 +51,9 @@
 }
 
 @property (readonly, nonatomic) NSAttributedString *_icaxUnfilteredAttributedString;
-@property (strong, nonatomic) NSAttributedString *attributedString; // @synthesize attributedString=_attributedString;
+@property (strong, nonatomic) NSMutableAttributedString *attributedString; // @synthesize attributedString=_attributedString;
 @property (nonatomic) struct _NSRange beforeEndEditedRange; // @synthesize beforeEndEditedRange=_beforeEndEditedRange;
-@property (strong, nonatomic) NSMutableArray *coalescingUndoCommands; // @synthesize coalescingUndoCommands=_coalescingUndoCommands;
+@property (strong, nonatomic) TTMergeableStringUndoGroup *coalescingUndoGroup; // @synthesize coalescingUndoGroup=_coalescingUndoGroup;
 @property (nonatomic) BOOL convertAttributes; // @synthesize convertAttributes=_convertAttributes;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL delayedFixupAfterEditingWantsUndoCommand; // @synthesize delayedFixupAfterEditingWantsUndoCommand=_delayedFixupAfterEditingWantsUndoCommand;
@@ -66,6 +67,7 @@
 @property (nonatomic) BOOL filterSubstringAttributesForPlainText; // @synthesize filterSubstringAttributesForPlainText=_filterSubstringAttributesForPlainText;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isApplyingUndoCommand; // @synthesize isApplyingUndoCommand=_isApplyingUndoCommand;
+@property (nonatomic) BOOL isChangingSelectionByGestures; // @synthesize isChangingSelectionByGestures=_isChangingSelectionByGestures;
 @property (nonatomic) BOOL isDictating; // @synthesize isDictating=_isDictating;
 @property (nonatomic) BOOL isDragging; // @synthesize isDragging=_isDragging;
 @property (readonly, nonatomic) BOOL isEditingTemporaryAttributes;
@@ -89,16 +91,18 @@
 @property (strong, nonatomic) NSUndoManager *undoManager; // @synthesize undoManager=_undoManager;
 @property (nonatomic) BOOL wantsUndoCommands; // @synthesize wantsUndoCommands=_wantsUndoCommands;
 
++ (id)bulletTextAttributesWithTextFont:(struct UIFont *)arg1 paragraphStyle:(id)arg2 letterpress:(BOOL)arg3;
 + (id)filteredAttributedSubstring:(id)arg1 fromRange:(struct _NSRange)arg2 forPlainText:(BOOL)arg3 fixAttachments:(BOOL)arg4;
 + (void)fixAttachmentsForRenderingInAttributedString:(id)arg1;
++ (id)removeDataDetectorLinksForAttributedString:(id)arg1;
 + (id)removeTextAttachmentsForAttributedString:(id)arg1 translateTTFont:(BOOL)arg2;
-+ (id)standardizedAttributedStringWithoutTextAttachmentsForAttributedString:(id)arg1 translateTTFont:(BOOL)arg2;
++ (id)standardizedAttributedStringFromAttributedString:(id)arg1 fixAttachments:(BOOL)arg2 translateTTFont:(BOOL)arg3;
 - (void).cxx_destruct;
 - (BOOL)_shouldSetOriginalFontAttribute;
 - (BOOL)_usesSimpleTextEffects;
 - (void)addAttribute:(id)arg1 value:(id)arg2 range:(struct _NSRange)arg3;
 - (void)addUndoCommand:(id)arg1;
-- (void)applyUndoCommands:(id)arg1;
+- (void)applyUndoGroup:(id)arg1;
 - (id)attributedSubstringFromRange:(struct _NSRange)arg1;
 - (id)attributesAtIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (void)beginEditing;
@@ -118,16 +122,19 @@
 - (void)endEditing;
 - (void)endTemporaryAttributeEditing;
 - (void)endTemporaryAttributes;
+- (void)executeDelayedFixupAfterEditing;
 - (id)filteredAttributedSubstringFromRange:(struct _NSRange)arg1;
 - (void)fixupAfterEditing;
 - (void)fixupAfterEditingDelayedToEndOfRunLoop;
 - (void)forceFixupAfterEditingIfDelayed;
 - (BOOL)ic_containsAttribute:(id)arg1 InRange:(struct _NSRange)arg2;
+- (id)initWithAttributedString:(id)arg1 replicaID:(id)arg2;
 - (id)initWithData:(id)arg1 andReplicaID:(id)arg2;
 - (id)initWithReplicaID:(id)arg1;
+- (BOOL)isDeletingContentAttachmentWithReplacementRange:(struct _NSRange)arg1 replacementLength:(unsigned long long)arg2;
 - (BOOL)isDeletingDictationAttachmentWithReplacementRange:(struct _NSRange)arg1 replacementLength:(unsigned long long)arg2;
 - (BOOL)isEditing;
-- (BOOL)isEditingOrConvertingMarkedText;
+- (BOOL)isEditingOrConvertingMarkedText:(BOOL)arg1;
 - (unsigned long long)mergeWithDocument:(id)arg1;
 - (BOOL)mergeableStringIsEqualAfterSerialization:(id)arg1;
 - (void)preReplaceCharactersInRange:(struct _NSRange)arg1 withStringLength:(unsigned long long)arg2;
@@ -136,14 +143,16 @@
 - (void)replaceCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2;
 - (void)replaceWithDocument:(id)arg1;
 - (void)resetTTEdits;
+- (void)resetUndoManager;
 - (void)restoreSelection:(id)arg1;
 - (void)saveSelectionDuringBlock:(CDUnknownBlockType)arg1;
 - (void)saveSelectionDuringBlock:(CDUnknownBlockType)arg1 affinity:(unsigned long long)arg2;
 - (id)savedSelectionWithSelectionAffinity:(unsigned long long)arg1;
 - (void)setAttributes:(id)arg1 range:(struct _NSRange)arg2;
 - (BOOL)shouldBreakUndoCoalescingWithReplacementRange:(struct _NSRange)arg1 replacementLength:(unsigned long long)arg2;
-- (id)standardizedAttributedStringWithoutTextAttachments;
+- (id)standardizedAttributedStringFixingTextAttachments;
 - (id)string;
+- (BOOL)textViewHasMarkedText:(struct UITextView *)arg1;
 
 @end
 

@@ -11,7 +11,6 @@
 
 @class NSArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CNPropertyDescription : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_key;
@@ -27,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isSingleValue;
 @property (readonly, nonatomic) BOOL isWritable;
 @property (readonly, copy, nonatomic) NSString *key; // @synthesize key=_key;
+@property (readonly, nonatomic) id nilValue;
 @property (readonly, nonatomic) SEL readSelector; // @synthesize readSelector=_readSelector;
 @property (readonly, nonatomic) Class valueClass;
 @property (readonly, copy, nonatomic) CDUnknownBlockType valueForKeyTransform; // @synthesize valueForKeyTransform=_valueForKeyTransform;
@@ -53,7 +53,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isValue:(id)arg1 equivalentToValue:(id)arg2;
 - (BOOL)isValue:(id)arg1 preferredToEquivalentValue:(id)arg2;
 - (BOOL)setABValue:(void *)arg1 onABPerson:(void *)arg2 error:(struct __CFError **)arg3;
-- (BOOL)setCNValue:(id)arg1 onABPerson:(void *)arg2 withSaveContext:(id)arg3 error:(id *)arg4;
+- (BOOL)setCNValue:(id)arg1 onABPerson:(void *)arg2 withDependentPropertiesContext:(id)arg3 error:(id *)arg4;
 - (void)setCNValue:(id)arg1 onContact:(id)arg2;
 - (id)stringForIndexingForContact:(id)arg1;
 - (id)valueWithResetIdentifiers:(id)arg1;

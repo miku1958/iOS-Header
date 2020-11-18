@@ -57,6 +57,7 @@
 - (BOOL)_handleErrorWithMessage:(id)arg1 outError:(id *)arg2;
 - (BOOL)_prepareToSendMessage:(id)arg1 withError:(id *)arg2 prepSuccessHandler:(CDUnknownBlockType)arg3;
 - (void)_registerWithServer;
+- (void)_sendRegistrationMessageWithRetries:(int)arg1;
 - (void)_serverDied;
 - (BOOL)_verifyConnectionWithError:(id *)arg1;
 - (BOOL)connectWithError:(id *)arg1;

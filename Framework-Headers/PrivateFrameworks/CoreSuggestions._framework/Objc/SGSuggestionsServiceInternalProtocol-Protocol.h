@@ -9,14 +9,17 @@
 @class NSArray, NSData, NSDate, NSNumber, NSString;
 
 @protocol SGSuggestionsServiceInternalProtocol <_SGSuggestionsServiceBaseProtocol>
+- (BOOL)addInteractions:(NSArray *)arg1 bundleId:(NSString *)arg2 error:(id *)arg3;
+- (void)addInteractions:(NSArray *)arg1 bundleId:(NSString *)arg2 withCompletion:(void (^)(NSError *))arg3;
 - (BOOL)addSearchableItems:(NSArray *)arg1 error:(id *)arg2;
 - (void)addSearchableItems:(NSArray *)arg1 withCompletion:(void (^)(NSError *))arg2;
-- (NSArray *)allContactsLimitedTo:(unsigned long long)arg1 error:(id *)arg2;
-- (void)allContactsLimitedTo:(unsigned long long)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (BOOL)clearCachesFully:(BOOL)arg1 error:(id *)arg2;
 - (void)clearCachesFully:(BOOL)arg1 withCompletion:(void (^)(NSError *))arg2;
-- (BOOL)drainBothQueuesCompletely:(id *)arg1;
-- (void)drainBothQueuesCompletelyWithCompletion:(void (^)(NSError *))arg1;
+- (BOOL)daemonExit:(id *)arg1;
+- (void)daemonExitWithCompletion:(void (^)(NSError *))arg1;
+- (void)deleteSpotlightReferencesWithBundleIdentifier:(NSString *)arg1 domainIdentifiers:(NSArray *)arg2 completion:(void (^)(NSError *))arg3;
+- (BOOL)drainQueueCompletely:(id *)arg1;
+- (void)drainQueueCompletelyWithCompletion:(void (^)(NSError *))arg1;
 - (NSNumber *)emailAddressIsSignificant:(NSString *)arg1 error:(id *)arg2;
 - (void)emailAddressIsSignificant:(NSString *)arg1 withCompletion:(void (^)(NSNumber *, NSError *))arg2;
 - (NSArray *)predictedCCEmailAddressesWithToAddresses:(NSArray *)arg1 ccAddresses:(NSArray *)arg2 fromAddress:(NSString *)arg3 date:(double)arg4 bounds:(NSArray *)arg5 error:(id *)arg6;
@@ -28,6 +31,8 @@
 - (BOOL)resetConfirmationAndRejectionHistory:(id *)arg1;
 - (void)resetConfirmationAndRejectionHistoryWithCompletion:(void (^)(NSError *))arg1;
 - (BOOL)sendRTCLogs:(id *)arg1;
+- (BOOL)sleep:(id *)arg1;
+- (void)sleepWithCompletion:(void (^)(NSError *))arg1;
 - (NSArray *)suggestEventsInFutureLimitTo:(unsigned long long)arg1 error:(id *)arg2;
 - (NSArray *)suggestEventsInFutureLimitTo:(unsigned long long)arg1 options:(unsigned int)arg2 error:(id *)arg3;
 - (void)suggestEventsInFutureLimitTo:(unsigned long long)arg1 options:(unsigned int)arg2 withCompletion:(void (^)(NSArray *, NSError *))arg3;

@@ -20,6 +20,7 @@
 }
 
 @property (readonly, getter=isDeleted) BOOL deleted; // @synthesize deleted=_deleted;
+@property (readonly) id identifier;
 @property (readonly, copy, nonatomic) NSString *localIdentifier;
 @property (readonly) NSManagedObjectID *objectID; // @synthesize objectID=_objectID;
 @property (readonly) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
@@ -29,23 +30,37 @@
 
 + (id)authorizationAwareFetchResultWithOptions:(id)arg1 fetchBlock:(CDUnknownBlockType)arg2;
 + (id)entityKeyForPropertyKey:(id)arg1;
++ (void)extendPropertiesToFetch:(id)arg1 withProperties:(id)arg2;
++ (void)extendPropertiesToFetch:(id)arg1 withPropertySetClass:(Class)arg2;
 + (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
++ (id)fetchType;
 + (id)identifierCode;
++ (id)identifierCodeFromLocalIdentifier:(id)arg1;
++ (id)identifierPropertiesToFetch;
 + (id)localIdentifierWithUUID:(id)arg1;
 + (id)managedEntityName;
 + (BOOL)managedObjectSupportsBursts;
++ (BOOL)managedObjectSupportsFaceVisibility;
 + (BOOL)managedObjectSupportsHiddenState;
++ (BOOL)managedObjectSupportsMontage;
++ (BOOL)managedObjectSupportsPendingState;
++ (BOOL)managedObjectSupportsPersonFilters;
++ (BOOL)managedObjectSupportsRejectedState;
 + (BOOL)managedObjectSupportsSavedAssetType;
 + (BOOL)managedObjectSupportsTrashedState;
 + (BOOL)managedObjectSupportsVisibilityState;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
++ (unsigned long long)propertyFetchHintsForPropertySets:(id)arg1;
++ (id)propertySetAccessorsByPropertySet;
++ (Class)propertySetClassForPropertySet:(id)arg1;
++ (id)propertySetsForPropertyFetchHints:(unsigned long long)arg1;
 + (id)uuidFromLocalIdentifier:(id)arg1;
 - (void).cxx_destruct;
-- (id)_identifier;
 - (id)_shortObjectIDURI;
 - (Class)changeRequestClass;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (BOOL)hasLoadedPropertySet:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 - (BOOL)isEqual:(id)arg1;

@@ -6,16 +6,19 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudPhotoLibrary/NSCopying-Protocol.h>
 #import <CloudPhotoLibrary/NSFastEnumeration-Protocol.h>
 #import <CloudPhotoLibrary/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary;
 
-@interface CPLChangeBatch : NSObject <NSSecureCoding, NSFastEnumeration>
+@interface CPLChangeBatch : NSObject <NSSecureCoding, NSCopying, NSFastEnumeration>
 {
     NSMutableArray *_records;
     NSMutableDictionary *_additionalRecords;
     NSMutableDictionary *_localResources;
+    BOOL _calculateEstimatedBatchSize;
+    unsigned long long _estimatedBatchSize;
 }
 
 @property (readonly, nonatomic) NSArray *records;
@@ -32,11 +35,13 @@
 - (void)addRecordsFromBatch:(id)arg1;
 - (id)additionalRecordWithIdentifier:(id)arg1;
 - (void)appendLocalResources:(id)arg1 forItemWithCloudIdentifier:(id)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)cplFullDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)estimatedBatchSize;
 - (id)extractDeletesFromBatchDeletedRecordIdentifiers:(id *)arg1 trashedRecordIdentifiers:(id *)arg2;
 - (void)extractInitialDownloadBatch:(id *)arg1 shouldConsiderRecordFilter:(CDUnknownBlockType)arg2;
 - (id)init;
@@ -45,6 +50,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)localResourceOfType:(unsigned long long)arg1 forItemWithCloudIdentifier:(id)arg2;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
+- (void)removeRecordWithIdentifier:(id)arg1;
 - (void)sortBatch;
 - (id)summaryDescription;
 

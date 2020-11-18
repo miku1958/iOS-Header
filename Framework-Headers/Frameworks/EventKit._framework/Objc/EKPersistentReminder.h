@@ -23,9 +23,9 @@
 @property (copy, nonatomic) EKObjectID *parentID; // @synthesize parentID=_parentID;
 
 + (id)generateUniqueIDWithReminder:(id)arg1 calendar:(id)arg2;
+- (void).cxx_destruct;
 - (void)_sendModifiedNote;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (int)entityType;
 - (id)externalURI;

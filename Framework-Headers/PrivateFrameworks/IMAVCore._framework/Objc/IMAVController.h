@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSArray, NSMutableArray;
 @protocol IMAVControllerDelegate;
@@ -42,7 +42,8 @@
 - (BOOL)_shouldRunConferences;
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
 - (void)blockOnPendingVCInvitationsWithCapabilities:(long long)arg1;
-- (void)cancelVCRequestWithBuddy:(id)arg1 vcProps:(id)arg2 forAccount:(id)arg3 conferenceID:(id)arg4;
+- (void)cancelVCRequestWithBuddy:(id)arg1 vcProps:(id)arg2 forAccount:(id)arg3 conferenceID:(id)arg4 reason:(id)arg5;
+- (void)dealloc;
 - (void)declineVCRequestWithBuddy:(id)arg1 response:(unsigned int)arg2 vcProps:(id)arg3 conferenceID:(id)arg4;
 - (void)declineVCRequestWithBuddy:(id)arg1 response:(unsigned int)arg2 vcProps:(id)arg3 forAccount:(id)arg4 conferenceID:(id)arg5;
 - (id)init;

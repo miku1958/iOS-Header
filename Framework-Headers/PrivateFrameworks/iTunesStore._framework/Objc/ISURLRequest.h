@@ -32,9 +32,9 @@
 @property double timeoutInterval;
 
 + (id)requestWithURL:(id)arg1;
+- (void).cxx_destruct;
 - (id)_initCommon;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

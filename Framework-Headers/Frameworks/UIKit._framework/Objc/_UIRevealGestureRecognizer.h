@@ -11,5 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)setDelegate:(id)arg1;
+
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <QuartzCore/NSCoding-Protocol.h>
 #import <QuartzCore/NSCopying-Protocol.h>
@@ -18,7 +18,6 @@
     CALayer *_layer;
     CAValueFunction *_function;
     BOOL _enabled;
-    void *_priv;
 }
 
 @property (getter=isEnabled) BOOL enabled;

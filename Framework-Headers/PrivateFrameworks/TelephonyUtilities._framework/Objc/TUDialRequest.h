@@ -8,75 +8,125 @@
 
 #import <TelephonyUtilities/NSCopying-Protocol.h>
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
+#import <TelephonyUtilities/TUCallRequest-Protocol.h>
+#import <TelephonyUtilities/TUVideoRequest-Protocol.h>
 
-@class NSArray, NSString, NSURL;
+@class CNContactStore, NSArray, NSString, NSURL, NSUserActivity, TUCallProvider, TUCallProviderManager, TUHandle;
 
-@interface TUDialRequest : NSObject <NSSecureCoding, NSCopying>
+@interface TUDialRequest : NSObject <TUCallRequest, TUVideoRequest, NSSecureCoding, NSCopying>
 {
+    BOOL _video;
     BOOL _performDialAssist;
     BOOL _performLocalDialAssist;
     BOOL _dialAssisted;
     BOOL _showUIPrompt;
     BOOL _hostOnCurrentDevice;
     BOOL _endpointOnCurrentDevice;
-    int _service;
     int _callIdentifier;
-    long long _dialType;
-    NSString *_destinationID;
-    NSString *_audioSourceIdentifier;
+    TUCallProviderManager *_providerManager;
     NSString *_uniqueProxyIdentifier;
+    TUCallProvider *_provider;
+    long long _dialType;
+    TUHandle *_handle;
+    NSString *_contactIdentifier;
+    NSString *_audioSourceIdentifier;
+    long long _ttyType;
     long long _originatingUIType;
-    struct CGSize _localLandscapeAspectRatio;
     struct CGSize _localPortraitAspectRatio;
+    struct CGSize _localLandscapeAspectRatio;
 }
 
 @property (readonly, nonatomic) NSURL *URL;
-@property (readonly, copy, nonatomic) NSString *addressBookInternalUUID;
 @property (copy, nonatomic) NSString *audioSourceIdentifier; // @synthesize audioSourceIdentifier=_audioSourceIdentifier;
 @property (nonatomic) int callIdentifier; // @synthesize callIdentifier=_callIdentifier;
-@property (copy, nonatomic) NSString *destinationID; // @synthesize destinationID=_destinationID;
+@property (copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
+@property (readonly, nonatomic) CNContactStore *contactStore;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *destinationID;
 @property (nonatomic, getter=isDialAssisted) BOOL dialAssisted; // @synthesize dialAssisted=_dialAssisted;
 @property (nonatomic) long long dialType; // @synthesize dialType=_dialType;
 @property (nonatomic) BOOL endpointOnCurrentDevice; // @synthesize endpointOnCurrentDevice=_endpointOnCurrentDevice;
+@property (strong, nonatomic) TUHandle *handle; // @synthesize handle=_handle;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hostOnCurrentDevice; // @synthesize hostOnCurrentDevice=_hostOnCurrentDevice;
 @property (nonatomic) struct CGSize localLandscapeAspectRatio; // @synthesize localLandscapeAspectRatio=_localLandscapeAspectRatio;
 @property (nonatomic) struct CGSize localPortraitAspectRatio; // @synthesize localPortraitAspectRatio=_localPortraitAspectRatio;
 @property (nonatomic) long long originatingUIType; // @synthesize originatingUIType=_originatingUIType;
 @property (nonatomic) BOOL performDialAssist; // @synthesize performDialAssist=_performDialAssist;
 @property (nonatomic) BOOL performLocalDialAssist; // @synthesize performLocalDialAssist=_performLocalDialAssist;
-@property (readonly, nonatomic) int service; // @synthesize service=_service;
+@property (strong, nonatomic) TUCallProvider *provider; // @synthesize provider=_provider;
+@property (readonly, nonatomic) TUCallProviderManager *providerManager; // @synthesize providerManager=_providerManager;
+@property (readonly, nonatomic) int service;
 @property (nonatomic) BOOL showUIPrompt; // @synthesize showUIPrompt=_showUIPrompt;
+@property (readonly) Class superclass;
+@property (nonatomic) long long ttyType; // @synthesize ttyType=_ttyType;
 @property (copy, nonatomic) NSString *uniqueProxyIdentifier; // @synthesize uniqueProxyIdentifier=_uniqueProxyIdentifier;
+@property (readonly, nonatomic) BOOL useTTY;
+@property (readonly, nonatomic) NSUserActivity *userActivity;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 @property (readonly, copy, nonatomic) NSArray *validityErrors;
+@property (nonatomic, getter=isVideo) BOOL video; // @synthesize video=_video;
 
++ (CDUnknownBlockType)callIdentifierToContactIdentifierTransformBlock;
++ (CDUnknownBlockType)contactIdentifierToCallIdentifierTransformBlock;
++ (long long)dialRequestTypeForIntentDestinationType:(long long)arg1;
++ (long long)handleTypeForQueryItem:(id)arg1;
++ (long long)intentTTYTypeForTTYType:(long long)arg1;
 + (long long)originatingUITypeForString:(id)arg1;
++ (id)queryItemValueForHandleType:(long long)arg1;
++ (void)setCallIdentifierToContactIdentifierTransformBlock:(CDUnknownBlockType)arg1;
++ (void)setContactIdentifierToCallIdentifierTransformBlock:(CDUnknownBlockType)arg1;
 + (id)stringForDialType:(long long)arg1;
 + (id)stringForOriginatingUIType:(long long)arg1;
++ (id)stringForTTYType:(long long)arg1;
 + (BOOL)supportsSecureCoding;
++ (long long)ttyTypeForIntentTTYType:(long long)arg1;
++ (long long)ttyTypeForString:(id)arg1;
 - (void).cxx_destruct;
 - (id)URLHost;
 - (id)URLQueryItems;
 - (id)URLScheme;
+- (id)_contactFromINPerson:(id)arg1 bestGuessHandle:(id *)arg2;
+- (id)audioSourceIdentifierURLQueryItem;
+- (BOOL)boolValueForQueryItemWithName:(id)arg1 inURLComponents:(id)arg2;
+- (int)callIdentifierFromURLComponents:(id)arg1;
+- (id)callIdentifierQueryItemName;
 - (id)callIdentifierURLQueryItem;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
+- (id)destinationIDFromURL:(id)arg1;
 - (id)dialAssistedURLQueryItem;
+- (id)dialRequestByReplacingProvider:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)forceAssistURLQueryItem;
+- (id)handleForPersonHandle:(id)arg1;
+- (id)handleFromURL:(id)arg1;
+- (id)handleTypeURLQueryItem;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDialIntent:(id)arg1 providerManager:(id)arg2;
+- (id)initWithProvider:(id)arg1;
+- (id)initWithProvider:(id)arg1 providerManager:(id)arg2;
 - (id)initWithService:(int)arg1;
 - (id)initWithURL:(id)arg1;
+- (id)initWithUserActivity:(id)arg1;
+- (id)initWithUserActivity:(id)arg1 providerManager:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToDialRequest:(id)arg1;
 - (id)isVoicemailURLQueryItem;
 - (id)noPromptURLQueryItem;
 - (id)originatingUIURLQueryItem;
+- (id)personHandleForHandle:(id)arg1;
+- (int)serviceFromURLComponents:(id)arg1;
 - (id)suppressAssistURLQueryItem;
+- (id)ttyTypeURLQueryItem;
 - (id)validityErrorForDestinationIDWithVoicemail;
 - (id)validityErrorForEmergencyCall;
 - (id)validityErrorForEndpointNotOnCurrentDeviceForNonRelayableService;
 - (id)validityErrorForNonNormalDialTypeWithoutTelephony;
-- (id)validityErrorForUnknownService;
+- (id)validityErrorForNormalDialTypeWithUnknownDestination;
+- (id)validityErrorForUnspecifiedProvider;
+- (id)validityErrorForVideoUnsupported;
 
 @end
 

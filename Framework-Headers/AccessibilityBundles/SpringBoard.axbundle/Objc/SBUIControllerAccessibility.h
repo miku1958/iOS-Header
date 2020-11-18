@@ -14,7 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityIsAppSwitcherVisible;
-- (BOOL)clickedMenuButton;
 - (void)updateBatteryState:(id)arg1;
 
 @end

@@ -15,7 +15,7 @@
 #import <StoreKitUI/SKUIViewElementView-Protocol.h>
 #import <StoreKitUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSHashTable, NSMapTable, NSMutableArray, NSString, SKUIBadgeViewElement, SKUIGradientView, SKUIHorizontalLockupLayout, SKUILockupViewElement, SKUIPlayButton, SKUIPreviewProgressIndicator, SUPlayerStatus, UITapGestureRecognizer, UIView;
+@class NSHashTable, NSMapTable, NSMutableArray, NSString, SKUIBadgeViewElement, SKUIGradientView, SKUIHorizontalLockupLayout, SKUILockupViewElement, SKUIPlayButton, SKUIPreviewProgressIndicator, SUPlayerStatus, UIColor, UITapGestureRecognizer, UIView;
 
 @interface SKUIHorizontalLockupView : SKUIViewReuseView <SKUIItemOfferButtonDelegate, SKUIOfferViewDelegate, SKUIMediaPlayerObserver, SKUIToggleButtonDelegate, UIGestureRecognizerDelegate, SKUIPerspectiveView, SKUIPreviewContainerView, SKUIViewElementView>
 {
@@ -23,7 +23,7 @@
     SKUIBadgeViewElement *_badge;
     NSMapTable *_buyButtonDescriptorToButton;
     struct UIEdgeInsets _contentInset;
-    NSMapTable *_imageViewToImageResourceCacheKey;
+    NSMapTable *_cacheKeyToImageView;
     SUPlayerStatus *_lastPlayerStatus;
     SKUIHorizontalLockupLayout *_layout;
     SKUILockupViewElement *_lockupElement;
@@ -38,10 +38,12 @@
     BOOL _useClearBackground;
     NSMapTable *_viewElementViews;
     BOOL _updateLayoutOnButtonConfirmation;
+    UIColor *_gradientColor;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIColor *gradientColor; // @synthesize gradientColor=_gradientColor;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *metadataBackgroundView; // @synthesize metadataBackgroundView=_metadataBackgroundView;
 @property (readonly) Class superclass;
@@ -99,6 +101,7 @@
 - (void)setContentInset:(struct UIEdgeInsets)arg1;
 - (BOOL)setImage:(id)arg1 forArtworkRequest:(id)arg2 context:(id)arg3;
 - (void)setPerspectiveTargetView:(id)arg1;
+- (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setVanishingPoint:(struct CGPoint)arg1;
 - (void)showPreviewProgressWithStatus:(id)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

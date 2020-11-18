@@ -6,11 +6,11 @@
 
 #import <GeoServices/GEOTileRequester.h>
 
-#import <GeoServices/NSURLConnectionDelegate-Protocol.h>
+#import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
 
-@class GEOTileKeyMap, NSMutableArray, NSMutableSet, NSString;
+@class GEOTileKeyMap, NSMutableArray, NSMutableSet, NSOperationQueue, NSString;
 
-@interface GEOSimpleTileRequester : GEOTileRequester <NSURLConnectionDelegate>
+@interface GEOSimpleTileRequester : GEOTileRequester <NSURLSessionDataDelegate>
 {
     NSMutableArray *_waiting;
     NSMutableSet *_running;
@@ -18,6 +18,7 @@
     BOOL _cancelled;
     BOOL _subclassImplementsTileEdition;
     NSMutableArray *_errors;
+    NSOperationQueue *_delegateQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,11 +27,16 @@
 @property (readonly) Class superclass;
 
 + (long long)eTagType;
+- (void)_cancel;
+- (void)_cancelKey:(struct _GEOTileKey)arg1;
 - (void)_cleanup;
+- (id)_delegateGCDQueue;
 - (void)_doWorkOrFinish;
 - (id)_nextPendingOperation;
 - (void)_operationFailed:(id)arg1 error:(id)arg2;
 - (void)_operationFinished:(id)arg1;
+- (void)_releaseEverything;
+- (void)_reprioritizeKey:(struct _GEOTileKey)arg1 newPriority:(unsigned int)arg2;
 - (void)_startNextPendingOperation:(id)arg1;
 - (BOOL)_verifyDataIntegrity:(id)arg1 checksumMethod:(int)arg2;
 - (BOOL)allowsCookies;

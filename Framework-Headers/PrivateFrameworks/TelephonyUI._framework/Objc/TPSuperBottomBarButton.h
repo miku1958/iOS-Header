@@ -6,38 +6,12 @@
 
 #import <UIKit/UIButton.h>
 
-@class TPRingView, UIColor, UIView;
-
 @interface TPSuperBottomBarButton : UIButton
 {
-    UIView *_overlayView;
-    TPRingView *_ringView;
-    BOOL _usesSmallerFontSize;
-    long long _orientation;
-    UIColor *_originalBackgroundColor;
-    struct CGSize _buttonSize;
 }
 
-@property (nonatomic) struct CGSize buttonSize; // @synthesize buttonSize=_buttonSize;
-@property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
-@property (strong, nonatomic) UIColor *originalBackgroundColor; // @synthesize originalBackgroundColor=_originalBackgroundColor;
-@property (nonatomic) BOOL usesSmallerFontSize; // @synthesize usesSmallerFontSize=_usesSmallerFontSize;
-
-+ (id)defaultFont;
 + (double)defaultHeight;
 + (double)defaultWidth;
-- (void).cxx_destruct;
-- (void)configureForCancelAction;
-- (struct CGRect)imageRectForContentRect:(struct CGRect)arg1;
-- (id)initWithAction:(int)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithTitle:(id)arg1 icon:(id)arg2 color:(id)arg3;
-- (struct CGSize)intrinsicContentSize;
-- (id)newOverlayView;
-- (void)setEnabled:(BOOL)arg1;
-- (void)setHighlighted:(BOOL)arg1;
-- (void)setSelected:(BOOL)arg1;
-- (struct CGRect)titleRectForContentRect:(struct CGRect)arg1;
 
 @end
 

@@ -11,6 +11,7 @@
 }
 
 + (id)sharedInstance;
+- (void)dealloc;
 - (id)init;
 
 @end

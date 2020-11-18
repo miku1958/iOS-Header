@@ -57,13 +57,13 @@
 - (id)copyScriptViewController;
 - (void)dealloc;
 - (id)init;
-- (BOOL)isLoaded;
+- (BOOL)isSkLoaded;
 - (void)loadView;
 - (id)newRotationController;
 - (void)reloadWithStorePage:(id)arg1 forURL:(id)arg2;
 - (void)removeChildViewController:(id)arg1;
 - (void)restoreArchivableContext:(id)arg1;
-- (void)setLoading:(BOOL)arg1;
+- (void)setSkLoading:(BOOL)arg1;
 - (void)setSplitPositionAndLayoutTypeFromValue:(id)arg1;
 - (void)setSplitTypeString:(id)arg1;
 - (BOOL)shouldExcludeFromNavigationHistory;

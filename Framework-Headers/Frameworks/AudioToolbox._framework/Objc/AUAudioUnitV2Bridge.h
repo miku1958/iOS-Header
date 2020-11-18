@@ -14,6 +14,7 @@
     NSObject<OS_dispatch_queue> *_eventListenerQueue;
     struct AUListenerBase *_eventListener;
     struct AUListenerBase *_parameterListener;
+    BOOL _removingObserverWithContext;
     struct OpaqueAudioComponentInstance *_audioUnit;
     BOOL _audioUnitIsOwned;
     AUV2BridgeBusArray *_inputBusses;
@@ -45,6 +46,7 @@
 - (CDUnknownBlockType)internalRenderBlock;
 - (id)outputBusses;
 - (id)parameterTree;
+- (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2 context:(void *)arg3;
 - (void)reset;
 

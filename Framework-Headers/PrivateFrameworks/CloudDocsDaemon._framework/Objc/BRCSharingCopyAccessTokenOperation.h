@@ -8,27 +8,27 @@
 
 #import <CloudDocsDaemon/BRCOperationSubclass-Protocol.h>
 
-@class CKRecordID, CKShareID, NSString;
+@class CKRecordID, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BRCSharingCopyAccessTokenOperation : _BRCFrameworkOperation <BRCOperationSubclass>
 {
     CKRecordID *_recordID;
-    CKShareID *_shareID;
+    CKRecordID *_shareID;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
-@property (strong, nonatomic) CKShareID *shareID; // @synthesize shareID=_shareID;
+@property (strong, nonatomic) CKRecordID *shareID; // @synthesize shareID=_shareID;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)createActivity;
 - (id)initWithItem:(id)arg1;
 - (void)main;
 - (BOOL)shouldRetryForError:(id)arg1;
-- (unsigned long long)startActivity;
 
 @end
 

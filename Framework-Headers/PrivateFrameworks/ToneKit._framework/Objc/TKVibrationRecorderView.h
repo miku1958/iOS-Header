@@ -9,17 +9,10 @@
 #import <ToneKit/TKVibrationRecorderTouchSurfaceDelegate-Protocol.h>
 
 @class NSLayoutConstraint, NSString, TKVibrationRecorderProgressView, TKVibrationRecorderTouchSurface, UILabel, UIToolbar;
-@protocol TKVibrationRecorderStyleProvider, TKVibrationRecorderViewDelegate, UILayoutSupport;
+@protocol NSCopying, TKVibrationRecorderStyleProvider, TKVibrationRecorderViewDelegate, UILayoutSupport;
 
 @interface TKVibrationRecorderView : UIView <TKVibrationRecorderTouchSurfaceDelegate>
 {
-    BOOL _replayModeEnabled;
-    BOOL _waitingForEndOfCurrentVibrationComponent;
-    BOOL _animatingProgress;
-    int _leftButtonIdentifier;
-    int _rightButtonIdentifier;
-    id<TKVibrationRecorderViewDelegate> _delegate;
-    id<UILayoutSupport> _topLayoutGuide;
     id<TKVibrationRecorderStyleProvider> _styleProvider;
     UILabel *_instructionsLabel;
     UIToolbar *_controlsToolbar;
@@ -28,35 +21,27 @@
     NSLayoutConstraint *_controlsToolbarTopConstraint;
     NSLayoutConstraint *_progressToolbarBottomConstraint;
     NSLayoutConstraint *_touchSurfaceTopConstraint;
+    BOOL _isReplayModeEnabled;
+    int _leftButtonIdentifier;
+    int _rightButtonIdentifier;
     double _vibrationPatternMaximumDuration;
     double _currentVibrationProgressDidStartTimestamp;
     double _currentVibrationComponentDidStartTimestamp;
+    BOOL _isWaitingForEndOfCurrentVibrationComponent;
+    BOOL _isAnimatingProgress;
+    id<NSCopying> _displayLinkManagerObserverToken;
+    id<TKVibrationRecorderViewDelegate> _delegate;
+    id<UILayoutSupport> _topLayoutGuide;
 }
 
-@property (nonatomic, getter=_isAnimatingProgress, setter=_setAnimatingProgress:) BOOL _animatingProgress; // @synthesize _animatingProgress;
-@property (strong, nonatomic, setter=_setControlsToolbar:) UIToolbar *_controlsToolbar; // @synthesize _controlsToolbar;
-@property (strong, nonatomic, setter=_setControlsToolbarTopConstraint:) NSLayoutConstraint *_controlsToolbarTopConstraint; // @synthesize _controlsToolbarTopConstraint;
-@property (nonatomic, setter=_setCurrentVibrationComponentDidStartTimestamp:) double _currentVibrationComponentDidStartTimestamp; // @synthesize _currentVibrationComponentDidStartTimestamp;
-@property (nonatomic, setter=_setCurrentVibrationProgressDidStartTimestamp:) double _currentVibrationProgressDidStartTimestamp; // @synthesize _currentVibrationProgressDidStartTimestamp;
-@property (strong, nonatomic, setter=_setInstructionsLabel:) UILabel *_instructionsLabel; // @synthesize _instructionsLabel;
-@property (nonatomic, setter=_setLeftButtonIdentifier:) int _leftButtonIdentifier; // @synthesize _leftButtonIdentifier;
-@property (strong, nonatomic, setter=_setProgressToolbarBottomConstraint:) NSLayoutConstraint *_progressToolbarBottomConstraint; // @synthesize _progressToolbarBottomConstraint;
-@property (strong, nonatomic, setter=_setProgressView:) TKVibrationRecorderProgressView *_progressView; // @synthesize _progressView;
-@property (nonatomic, getter=_isReplayModeEnabled, setter=_setReplayModeEnabled:) BOOL _replayModeEnabled; // @synthesize _replayModeEnabled;
-@property (nonatomic, setter=_setRightButtonIdentifier:) int _rightButtonIdentifier; // @synthesize _rightButtonIdentifier;
-@property (strong, nonatomic, setter=_setStyleProvider:) id<TKVibrationRecorderStyleProvider> _styleProvider; // @synthesize _styleProvider;
-@property (strong, nonatomic, setter=_setTopLayoutGuide:) id<UILayoutSupport> _topLayoutGuide; // @synthesize _topLayoutGuide;
-@property (strong, nonatomic, setter=_setTouchSurface:) TKVibrationRecorderTouchSurface *_touchSurface; // @synthesize _touchSurface;
-@property (strong, nonatomic, setter=_setTouchSurfaceTopConstraint:) NSLayoutConstraint *_touchSurfaceTopConstraint; // @synthesize _touchSurfaceTopConstraint;
-@property (nonatomic, setter=_setVibrationPatternMaximumDuration:) double _vibrationPatternMaximumDuration; // @synthesize _vibrationPatternMaximumDuration;
-@property (nonatomic, getter=_isWaitingForEndOfCurrentVibrationComponent, setter=_setWaitingForEndOfCurrentVibrationComponent:) BOOL _waitingForEndOfCurrentVibrationComponent; // @synthesize _waitingForEndOfCurrentVibrationComponent;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<TKVibrationRecorderViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<TKVibrationRecorderViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) id<UILayoutSupport> topLayoutGuide;
+@property (strong, nonatomic) id<UILayoutSupport> topLayoutGuide; // @synthesize topLayoutGuide=_topLayoutGuide;
 
+- (void).cxx_destruct;
 - (void)_enterWaitingModeWithAnimation:(BOOL)arg1 enablePlayButton:(BOOL)arg2;
 - (void)_exitWaitingModeWithAnimation:(BOOL)arg1;
 - (void)_handleLeftButtonTapped:(id)arg1;

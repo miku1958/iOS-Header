@@ -10,7 +10,7 @@
 #import <Contacts/NSCopying-Protocol.h>
 #import <Contacts/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface CNSocialProfile : NSObject <CNObjectValidation, NSCopying, NSSecureCoding>
 {
@@ -19,28 +19,36 @@
     NSString *_userIdentifier;
     NSString *_service;
     NSString *_displayname;
+    NSString *_teamIdentifier;
+    NSArray *_bundleIdentifiers;
 }
 
+@property (copy, nonatomic) NSArray *bundleIdentifiers; // @synthesize bundleIdentifiers=_bundleIdentifiers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *displayname; // @synthesize displayname=_displayname;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *service; // @synthesize service=_service;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *teamIdentifier; // @synthesize teamIdentifier=_teamIdentifier;
 @property (copy, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 @property (copy, nonatomic) NSString *userIdentifier; // @synthesize userIdentifier=_userIdentifier;
 @property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 
 + (id)localizedStringForKey:(id)arg1;
 + (id)localizedStringForService:(id)arg1;
++ (id)socialProfileWithDictionaryRepresentation:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUrlString:(id)arg1 username:(id)arg2 userIdentifier:(id)arg3 service:(id)arg4;
 - (id)initWithUrlString:(id)arg1 username:(id)arg2 userIdentifier:(id)arg3 service:(id)arg4 displayname:(id)arg5;
+- (id)initWithUrlString:(id)arg1 username:(id)arg2 userIdentifier:(id)arg3 service:(id)arg4 displayname:(id)arg5 teamIdentifier:(id)arg6 bundleIdentifiers:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqual:(id)arg1 ignoreURLs:(BOOL)arg2;
 - (BOOL)isValid:(id *)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 

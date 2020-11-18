@@ -20,7 +20,6 @@
     BOOL didCleanup;
     BOOL inEditingMode;
     NSTimer *connectionTimer;
-    NSMutableArray *incompleteConnectionList;
     UIBarButtonItem *editButton;
     UIBarButtonItem *cancelButton;
     UIBarButtonItem *forgetButton;
@@ -31,13 +30,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)activateController:(id)arg1;
 - (void)cancelAction:(id)arg1;
 - (void)centralTimerFired:(id)arg1;
 - (void)cleanup;
-- (void)deactivateController:(id)arg1;
 - (void)dealloc;
-- (void)didChangePreferredContentSize:(id)arg1;
 - (void)didReceiveMemoryWarning;
 - (void)editAction:(id)arg1;
 - (void)forgetAction:(id)arg1;
@@ -63,6 +59,7 @@
 - (id)title;
 - (void)updateButtonsToMatchTableState;
 - (void)updatePeripheralTable;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

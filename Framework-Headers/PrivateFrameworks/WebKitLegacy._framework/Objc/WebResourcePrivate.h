@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 
 + (void)initialize;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)initWithCoreResource:(PassRefPtr_43de0ce5)arg1;
 

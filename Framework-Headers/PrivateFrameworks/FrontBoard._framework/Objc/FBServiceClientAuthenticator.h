@@ -23,16 +23,27 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_errorForCode:(long long)arg1 process:(id)arg2 failedEntitlement:(id)arg3;
++ (BOOL)authenticateAuditToken:(id)arg1 forEntitlement:(id)arg2 error:(out id *)arg3;
 + (id)sharedForegroundUIAppClientAuthenticator;
 + (id)sharedSystemClientAuthenticator;
 + (id)sharedUIAppClientAuthenticator;
-- (int)_authenticateAuditToken:(CDStruct_6ad76789 *)arg1 connection:(id)arg2 entitlement:(id)arg3 error:(out id *)arg4 withResult:(CDUnknownBlockType)arg5;
++ (BOOL)validateAuditToken:(id)arg1 error:(out id *)arg2;
 - (int)_authenticateConnection:(id)arg1 forEntitlement:(id)arg2 error:(out id *)arg3 withResult:(CDUnknownBlockType)arg4;
+- (int)_authenticateProcessHandle:(id)arg1 entitlement:(id)arg2 error:(out id *)arg3 withResult:(CDUnknownBlockType)arg4;
+- (BOOL)authenticateAuditToken:(id)arg1;
+- (BOOL)authenticateAuditToken:(id)arg1 error:(out id *)arg2;
 - (int)authenticateAuditToken:(CDStruct_6ad76789 *)arg1 forEntitlement:(id)arg2 withResult:(CDUnknownBlockType)arg3;
 - (int)authenticateAuditToken:(CDStruct_6ad76789 *)arg1 withResult:(CDUnknownBlockType)arg2;
+- (BOOL)authenticateClient:(id)arg1;
+- (BOOL)authenticateClient:(id)arg1 error:(out id *)arg2;
 - (int)authenticateClient:(id)arg1 withResult:(CDUnknownBlockType)arg2;
+- (BOOL)authenticateConnection:(id)arg1;
+- (BOOL)authenticateConnection:(id)arg1 error:(out id *)arg2;
 - (int)authenticateConnection:(id)arg1 forEntitlement:(id)arg2 withResult:(CDUnknownBlockType)arg3;
 - (int)authenticateConnection:(id)arg1 withResult:(CDUnknownBlockType)arg2;
+- (BOOL)authenticateProcess:(id)arg1;
+- (BOOL)authenticateProcess:(id)arg1 error:(out id *)arg2;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
@@ -40,10 +51,6 @@
 - (id)initWithCredentials:(unsigned long long)arg1;
 - (id)initWithEntitlement:(id)arg1;
 - (id)initWithEntitlement:(id)arg1 additionalCredentials:(unsigned long long)arg2;
-- (BOOL)isClientAuthenticated:(id)arg1;
-- (BOOL)isClientAuthenticated:(id)arg1 error:(out id *)arg2;
-- (BOOL)isConnectionAuthenticated:(id)arg1;
-- (BOOL)isConnectionAuthenticated:(id)arg1 error:(out id *)arg2;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

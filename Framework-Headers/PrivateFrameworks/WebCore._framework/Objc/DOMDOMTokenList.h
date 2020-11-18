@@ -6,18 +6,18 @@
 
 #import <WebCore/DOMObject.h>
 
+@class NSString;
+
 @interface DOMDOMTokenList : DOMObject
 {
 }
 
 @property (readonly) unsigned int length;
+@property (copy) NSString *value;
 
-- (void)add:(id)arg1;
 - (BOOL)contains:(id)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (id)item:(unsigned int)arg1;
-- (void)remove:(id)arg1;
 - (BOOL)toggle:(id)arg1 force:(BOOL)arg2;
 
 @end

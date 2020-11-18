@@ -24,8 +24,10 @@ __attribute__((visibility("hidden")))
     struct shared_ptr<ggl::ConstantDataTyped<ggl::GridBase::GridView>> _baseConstantData;
     struct shared_ptr<ggl::ConstantDataTyped<ggl::SimpleGrid::Style>> _simpleConstantData;
     struct shared_ptr<ggl::ConstantDataTyped<ggl::Grid::Style>> _constantData;
-    struct unique_ptr<ggl::Grid::Shader::Setup, std::__1::default_delete<ggl::Grid::Shader::Setup>> _shaderSetup;
-    struct unique_ptr<ggl::SimpleGrid::Shader::Setup, std::__1::default_delete<ggl::SimpleGrid::Shader::Setup>> _simpleShaderSetup;
+    struct shared_ptr<ggl::Grid::GridPipelineState> _pipelineState;
+    struct unique_ptr<ggl::Grid::GridPipelineSetup, std::__1::default_delete<ggl::Grid::GridPipelineSetup>> _pipelineSetup;
+    struct shared_ptr<ggl::SimpleGrid::GridPipelineState> _simplePipelineState;
+    struct unique_ptr<ggl::SimpleGrid::GridPipelineSetup, std::__1::default_delete<ggl::SimpleGrid::GridPipelineSetup>> _simplePipelineSetup;
     struct shared_ptr<ggl::GridBase::GridMesh> _gridMesh;
     struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _gridRenderState;
     struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _simpleGridRenderState;
@@ -41,15 +43,15 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) VKMapModel *mapModel; // @synthesize mapModel=_mapModel;
 @property (nonatomic) unsigned char renderPass; // @synthesize renderPass=_renderPass;
 @property (nonatomic) BOOL simpleGridEnabled; // @synthesize simpleGridEnabled=_simpleGridEnabled;
-@property (readonly, nonatomic) shared_ptr_f06afc6c styleManager;
+@property (readonly, nonatomic) shared_ptr_a3c46825 styleManager;
 @property (readonly) Class superclass;
 
 + (BOOL)reloadOnStylesheetChange;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (void)gglLayoutScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
-- (id)init;
+- (void)gglLayoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
+- (id)initWithTarget:(id)arg1 sharedResources:(id)arg2;
 - (unsigned long long)mapLayerPosition;
 - (void)setNeedsUpdatedGridColor;
 - (BOOL)shouldLayoutWithoutStyleManager;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSData, NSString;
 
@@ -22,6 +22,7 @@
 + (id)any;
 + (id)localWiFi;
 - (void).cxx_destruct;
+- (id)description;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;

@@ -6,9 +6,10 @@
 
 #import <ReplayKit/NSObject-Protocol.h>
 
-@class NSError, NSURL;
+@class NSDictionary, NSError, NSURL;
 
 @protocol RPClientProtocol <NSObject>
 - (oneway void)stopRecordingWithError:(NSError *)arg1 movieURL:(NSURL *)arg2;
+- (oneway void)updateBroadcastServiceInfo:(NSDictionary *)arg1;
 @end
 

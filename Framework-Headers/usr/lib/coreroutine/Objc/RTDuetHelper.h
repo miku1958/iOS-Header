@@ -6,49 +6,49 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, RTTokenBucket;
+#import <coreroutine/RTDiagnostics-Protocol.h>
+
+@class RTLocationTagger, RTMicroLocationCache;
 @protocol OS_dispatch_queue;
 
-@interface RTDuetHelper : NSObject
+@interface RTDuetHelper : NSObject <RTDiagnostics>
 {
-    BOOL _locationTaggingAllowed;
     NSObject<OS_dispatch_queue> *_queue;
-    NSMutableDictionary *_helperRecords;
-    RTTokenBucket *_tokenBucket;
-    double _maximumEventLocationTaggingTimeInterval;
+    long long _streamType;
+    RTLocationTagger *_locationTagger;
+    RTMicroLocationCache *_microLocationCache;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *helperRecords; // @synthesize helperRecords=_helperRecords;
-@property (nonatomic) BOOL locationTaggingAllowed; // @synthesize locationTaggingAllowed=_locationTaggingAllowed;
-@property (nonatomic) double maximumEventLocationTaggingTimeInterval; // @synthesize maximumEventLocationTaggingTimeInterval=_maximumEventLocationTaggingTimeInterval;
+@property (strong, nonatomic) RTLocationTagger *locationTagger; // @synthesize locationTagger=_locationTagger;
+@property (strong, nonatomic) RTMicroLocationCache *microLocationCache; // @synthesize microLocationCache=_microLocationCache;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (strong, nonatomic) RTTokenBucket *tokenBucket; // @synthesize tokenBucket=_tokenBucket;
+@property (readonly, nonatomic) long long streamType; // @synthesize streamType=_streamType;
 
-+ (id)predicateStringForEventNotificationClass:(Class)arg1;
++ (id)diagnosticFiles;
 - (void).cxx_destruct;
-- (void)_performReconnectionWithDelay:(double)arg1 predicateString:(id)arg2 helperRecord:(id)arg3;
-- (id)_processCoreDuetNotification:(id)arg1 predicateString:(id)arg2;
-- (void)_registerForCoreDuetNotificationWithPredicateString:(id)arg1 helperRecord:(id)arg2;
-- (void)_registerForNotifications;
+- (void)_fetchAllEventsForStreamType:(long long)arg1 startDate:(id)arg2 endDate:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (void)_fetchAppLaunchEventsWithStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_fetchAudioEventsWithStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_fetchBluetoothEventsWithStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_fetchDeviceFirstWakeupEventsWithStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_fetchHomeKitAccessoryEventsWithStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_fetchHomeKitRoomViewEventsWithStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_fetchHomeKitSceneEventsWithStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_fetchMicroLocationEventsWithStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_fetchNowPlayingEventsWithStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_fetchStarkEventsWithStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_fetchUserActivityLocationEventsWithStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_processCoreDuetChangeNotificationWithIdentifier:(id)arg1;
+- (void)_purge;
 - (void)_registerWithCoreDuetForRealtimeNotificationsWithNotificationClass:(Class)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)_unregisterForNotifications;
+- (void)_shutdown;
 - (void)_unregisterWithCoreDuetForRealtimeNotificationsWithNotificationClass:(Class)arg1;
-- (void)fetchAllEventsForStreamType:(long long)arg1 startDate:(id)arg2 endDate:(id)arg3 handler:(CDUnknownBlockType)arg4;
-- (void)fetchAppLaunchEventsWithStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)fetchAudioEventsWithStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)fetchBluetoothEventsWithStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)fetchDeviceFirstWakeupEventsWithStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)fetchNowPlayingEventsWithStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)fetchStarkEventsWithStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (id)init;
-- (id)initWithQueue:(id)arg1;
-- (void)onDefaultsUpdate:(id)arg1;
-- (void)onMagicalMomentsLocationUsageUpdate:(id)arg1;
-- (void)processCoreDuetNotification:(id)arg1 predicateString:(id)arg2 helperRecord:(id)arg3;
+- (id)initWithQueue:(id)arg1 duetEventStream:(long long)arg2;
+- (id)initWithQueue:(id)arg1 duetEventStream:(long long)arg2 locationTagger:(id)arg3;
+- (void)purge;
 - (void)shutdown;
 - (void)startMonitoringForEventsWithNotificationClass:(Class)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)stopMonitoringForEventsWithNotificationClass:(Class)arg1;
-- (void)updateDoubleForKey:(id)arg1 handler:(CDUnknownBlockType)arg2;
 
 @end
 

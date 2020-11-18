@@ -15,14 +15,17 @@
     BOOL _reverseLocationDataIsValid;
     short _generationType;
     NSDate *_representativeDate;
+    NSDate *_modificationDate;
 }
 
 @property (readonly, nonatomic) short generationType; // @synthesize generationType=_generationType;
+@property (readonly, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (readonly, nonatomic) NSDate *representativeDate; // @synthesize representativeDate=_representativeDate;
 
 + (id)_transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 + (id)entityKeyForPropertyKey:(id)arg1;
 + (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
++ (id)fetchType;
 + (id)identifierCode;
 + (id)managedEntityName;
 + (BOOL)managedObjectSupportsTrashedState;

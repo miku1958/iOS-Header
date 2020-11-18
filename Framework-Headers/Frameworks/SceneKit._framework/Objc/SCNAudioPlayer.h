@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class AVAudioNode, AVAudioPlayerNode, SCNAudioSource;
 
@@ -32,7 +32,7 @@
 
 + (id)audioPlayerWithAVAudioNode:(id)arg1;
 + (id)audioPlayerWithSource:(id)arg1;
-- (void *)__CFObject;
+- (const void *)__CFObject;
 - (id)audioBufferFormat;
 - (void)dealloc;
 - (id)initWithAVAudioNode:(id)arg1;

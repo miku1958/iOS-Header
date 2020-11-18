@@ -22,10 +22,10 @@ __attribute__((visibility("hidden")))
 }
 
 @property BOOL cloneForSecondDelivery; // @synthesize cloneForSecondDelivery=_cloneForSecondDelivery;
-@property (strong) UIEvent *event; // @synthesize event=_event;
-@property (strong) UITouch *stateWhenDelayed; // @synthesize stateWhenDelayed=_stateWhenDelayed;
-@property (strong) UITouch *stateWhenDelivered; // @synthesize stateWhenDelivered=_stateWhenDelivered;
-@property (strong) UITouch *touch; // @synthesize touch=_touch;
+@property (strong, nonatomic) UIEvent *event; // @synthesize event=_event;
+@property (strong, nonatomic) UITouch *stateWhenDelayed; // @synthesize stateWhenDelayed=_stateWhenDelayed;
+@property (strong, nonatomic) UITouch *stateWhenDelivered; // @synthesize stateWhenDelivered=_stateWhenDelivered;
+@property (strong, nonatomic) UITouch *touch; // @synthesize touch=_touch;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

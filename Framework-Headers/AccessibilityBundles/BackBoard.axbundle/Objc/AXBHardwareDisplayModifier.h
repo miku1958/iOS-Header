@@ -4,17 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface AXBHardwareDisplayModifier : NSObject
 {
 }
 
 + (void)initializeMonitor;
-- (void)_updateBrightnessFilters:(BOOL)arg1;
 - (void)_updateGrayScaleSettings;
-- (void)_updateInvertColorSettings;
-- (void)_updateReduceWhitePointSettings;
 - (void)dealloc;
 - (id)init;
 

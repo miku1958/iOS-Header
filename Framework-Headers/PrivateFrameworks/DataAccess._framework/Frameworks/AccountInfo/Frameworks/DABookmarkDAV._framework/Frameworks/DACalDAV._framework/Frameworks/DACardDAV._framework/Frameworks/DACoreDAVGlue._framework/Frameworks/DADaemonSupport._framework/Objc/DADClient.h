@@ -11,12 +11,15 @@
 
 @interface DADClient : DADisableableObject
 {
+    BOOL _persistent;
     int _numOutstandingAgentDisables;
     int _numOutstandingBlockingClientCalls;
     int _numOutstandingRefreshPriorityClientCalls;
+    NSString *_clientBundleID;
     NSObject<OS_xpc_object> *_conn;
     NSMutableDictionary *_watchedIDs;
     NSMutableDictionary *_busyIDs;
+    NSMutableDictionary *_updatedIDs;
     NSMutableDictionary *_accountTimers;
     NSMutableDictionary *_actionDelegatesById;
     NSString *_clientName;
@@ -25,11 +28,14 @@
 @property (strong, nonatomic) NSMutableDictionary *accountTimers; // @synthesize accountTimers=_accountTimers;
 @property (strong, nonatomic) NSMutableDictionary *actionDelegatesById; // @synthesize actionDelegatesById=_actionDelegatesById;
 @property (strong, nonatomic) NSMutableDictionary *busyIDs; // @synthesize busyIDs=_busyIDs;
+@property (strong, nonatomic) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
 @property (strong, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property (strong, nonatomic) NSObject<OS_xpc_object> *conn; // @synthesize conn=_conn;
 @property (nonatomic) int numOutstandingAgentDisables; // @synthesize numOutstandingAgentDisables=_numOutstandingAgentDisables;
 @property (nonatomic) int numOutstandingBlockingClientCalls; // @synthesize numOutstandingBlockingClientCalls=_numOutstandingBlockingClientCalls;
 @property (nonatomic) int numOutstandingRefreshPriorityClientCalls; // @synthesize numOutstandingRefreshPriorityClientCalls=_numOutstandingRefreshPriorityClientCalls;
+@property (readonly, nonatomic) BOOL persistent; // @synthesize persistent=_persistent;
+@property (strong, nonatomic) NSMutableDictionary *updatedIDs; // @synthesize updatedIDs=_updatedIDs;
 @property (strong, nonatomic) NSMutableDictionary *watchedIDs; // @synthesize watchedIDs=_watchedIDs;
 
 + (id)clientsToInterrogate;
@@ -83,16 +89,21 @@
 - (void)_stopMonitoringFolders:(id)arg1;
 - (void)_suspendMonitoringFolders:(id)arg1;
 - (void)applyClientStatusReportToAggregator:(id)arg1;
+- (void)beginMonitoringPersistentFolders:(id)arg1 forAccount:(id)arg2;
 - (void)dealloc;
 - (void)delegateWithIDIsGoingAway:(id)arg1;
 - (void)disable;
-- (id)initWithConnection:(id)arg1;
+- (id)initWithClientID:(id)arg1;
+- (id)initWithConnection:(id)arg1 clientID:(id)arg2;
 - (void)noteBlockedClientCallChange:(int)arg1;
 - (void)noteRefreshClientCallChange:(int)arg1;
+- (void)persistentClientCleanup;
 - (id)rawConnection;
+- (void)reconnectWithConnection:(id)arg1;
 - (void)registerForInterrogation;
 - (id)timersForAccountWithID:(id)arg1;
 - (void)unregisterForInterrogation;
+- (unsigned long long)watchedFolderCount;
 
 @end
 

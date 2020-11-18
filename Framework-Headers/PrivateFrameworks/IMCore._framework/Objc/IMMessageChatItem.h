@@ -19,10 +19,10 @@
 @property (readonly, nonatomic) BOOL failed;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isFromMe;
-@property (readonly, strong, nonatomic) IMMessage *message;
-@property (readonly, strong, nonatomic) IMHandle *sender;
+@property (readonly, nonatomic) IMMessage *message;
+@property (readonly, nonatomic) IMHandle *sender;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic) NSDate *time;
+@property (readonly, nonatomic) NSDate *time;
 
 
 @end

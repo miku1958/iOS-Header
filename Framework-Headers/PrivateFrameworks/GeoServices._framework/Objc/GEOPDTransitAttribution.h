@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *providerNames; // @synthesize providerNames=_providerNames;
 
++ (Class)providerNameType;
 + (id)transitAttributionForPlaceData:(id)arg1;
 - (void)addProviderName:(id)arg1;
 - (void)clearProviderNames;

@@ -27,9 +27,7 @@
 - (BOOL)_isDeallocating;
 - (BOOL)_tryRetain;
 - (void)addConnection:(id)arg1 toRunLoop:(id)arg2 forMode:(id)arg3;
-- (void)dealloc;
 - (id)delegate;
-- (void)finalize;
 - (void)handlePortMessage:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;

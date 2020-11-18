@@ -10,9 +10,6 @@
 
 @interface VKNavUserLocationAnnotationMarker : VKAnnotationMarker
 {
-    BOOL _shouldBillboard;
-    VKTimedAnimation *_billboardAnimation;
-    float _billboardFactor;
     float _scale;
     BOOL _shouldShowCourse;
     BOOL _puckFlipped;
@@ -23,11 +20,6 @@
     VKTimedAnimation *_puckStyleAnimation;
     int _puckStyle;
     float _greyPuckAlphaScale;
-    struct {
-        CDStruct_aa5aacbc arrowMatrix;
-        CDStruct_aa5aacbc circleMatrix;
-        Matrix_5173352a arrowColor;
-    } _puckState;
     int _style;
     Matrix_5173352a _arrowColor;
     Matrix_5173352a _arrowColorStale;
@@ -36,8 +28,8 @@
     shared_ptr_479d1306 _textureArrow;
     shared_ptr_479d1306 _textureCircle;
     struct shared_ptr<ggl::RenderState> _gglPuckRenderState;
-    struct shared_ptr<ggl::TextureWithBrightness::Shader::Setup> _circleShaderSetup;
-    struct shared_ptr<ggl::TextureAlphaMask::Shader::Setup> _arrowShaderSetup;
+    struct shared_ptr<ggl::TextureWithBrightness::MeshPipelineSetup> _circlePipelineSetup;
+    struct shared_ptr<ggl::TextureAlphaMask::MeshPipelineSetup> _arrowPipelineSetup;
     struct shared_ptr<ggl::RenderItem> _arrowRenderItem;
     struct shared_ptr<ggl::RenderItem> _circleRenderItem;
     BOOL _needsTextureUpdate;
@@ -46,7 +38,6 @@
 @property (nonatomic) CDStruct_818bb265 innerColor;
 @property (nonatomic) double presentationCourse;
 @property (nonatomic) float scale; // @synthesize scale=_scale;
-@property (nonatomic) BOOL shouldBillboard; // @synthesize shouldBillboard=_shouldBillboard;
 @property (nonatomic) BOOL shouldShowCourse; // @synthesize shouldShowCourse=_shouldShowCourse;
 @property (nonatomic, getter=isStale) BOOL stale; // @synthesize stale=_stale;
 @property (nonatomic) int style; // @synthesize style=_style;
@@ -55,13 +46,12 @@
 - (void).cxx_destruct;
 - (void)_updatePuckStyle;
 - (void)_updateTexturesIfNeeded;
-- (void)appendCommandsToBuffer:(struct CommandBuffer *)arg1 inContext:(id)arg2;
+- (void)appendCommandsToBuffer:(struct CommandBuffer *)arg1 inContext:(struct LayoutContext *)arg2;
 - (void)dealloc;
-- (id)initWithAnnotation:(id)arg1 reuseIdentifier:(id)arg2 style:(int)arg3;
-- (void)layoutWithContext:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)initWithAnnotation:(id)arg1 style:(int)arg2;
 - (void)setModel:(id)arg1;
-- (void)updateWithStyleQuery:(const shared_ptr_b80d91ee *)arg1;
+- (void)updateWithStyleQuery:(const shared_ptr_c5d816ee *)arg1 AtZ:(double)arg2;
+- (void)willLayoutWithContext:(struct LayoutContext *)arg1;
 
 @end
 

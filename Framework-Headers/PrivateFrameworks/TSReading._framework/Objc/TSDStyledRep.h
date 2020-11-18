@@ -6,9 +6,11 @@
 
 #import <TSReading/TSDRep.h>
 
-@class CALayer, TSDMutableReflection, TSDReflection, TSDShadow;
+#import <TSReading/TSDTilingLayerDelegate-Protocol.h>
 
-@interface TSDStyledRep : TSDRep
+@class CALayer, NSString, TSDMutableReflection, TSDReflection, TSDShadow;
+
+@interface TSDStyledRep : TSDRep <TSDTilingLayerDelegate>
 {
     CALayer *mShadowLayer;
     CALayer *mReflectionLayer;
@@ -22,11 +24,15 @@
     } mFlags;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double opacity;
 @property (readonly, nonatomic) TSDReflection *reflection;
 @property (readonly, nonatomic) CALayer *reflectionLayer; // @synthesize reflectionLayer=mReflectionLayer;
 @property (readonly, nonatomic) TSDShadow *shadow;
 @property (readonly, nonatomic) CALayer *shadowLayer; // @synthesize shadowLayer=mShadowLayer;
+@property (readonly) Class superclass;
 
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (id)additionalLayersUnderLayer;
@@ -35,7 +41,6 @@
 - (struct CGRect)clipRectWithoutEffects;
 - (void)createReflectionLayer;
 - (void)dealloc;
-- (id)description;
 - (void)didUpdateEffectLayersForLayer:(id)arg1;
 - (void)didUpdateLayer:(id)arg1;
 - (void)disposeReflectionLayer;

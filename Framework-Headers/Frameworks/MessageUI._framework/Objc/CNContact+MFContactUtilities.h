@@ -7,6 +7,6 @@
 #import <Contacts/CNContact.h>
 
 @interface CNContact (MFContactUtilities)
-+ (id)contactWithFirstName:(id)arg1 lastName:(id)arg2 emailAddress:(id)arg3;
++ (id)mf_contactWithPersonNameComponents:(id)arg1 emailAddress:(id)arg2;
 @end
 

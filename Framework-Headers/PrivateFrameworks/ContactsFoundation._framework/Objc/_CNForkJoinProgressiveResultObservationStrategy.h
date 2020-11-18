@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ContactsFoundation/CNForkJoinResultReportingStrategy-Protocol.h>
 
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (void)observableAtIndex:(unsigned long long)arg1 didCompleteForObserver:(id)arg2;
 - (void)receiveResult:(id)arg1 fromObservableAtIndex:(unsigned long long)arg2 observer:(id)arg3;

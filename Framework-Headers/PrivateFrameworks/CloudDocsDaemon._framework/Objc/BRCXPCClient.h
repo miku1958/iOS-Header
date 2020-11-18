@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <CloudDocsDaemon/BRCForegroundClient-Protocol.h>
+#import <CloudDocsDaemon/BRCNotificationPipeDelegate-Protocol.h>
 #import <CloudDocsDaemon/BRCProcessMonitorDelegate-Protocol.h>
 
-@class BRCAccountSession, BRCClientPrivilegesDescriptor, NSCountedSet, NSMutableDictionary, NSOperationQueue, NSSet, NSString, NSXPCConnection, brc_task_tracker;
+@class BRCAccountSession, BRCClientPrivilegesDescriptor, NSCountedSet, NSSet, NSString, NSXPCConnection, brc_task_tracker;
 
 __attribute__((visibility("hidden")))
-@interface BRCXPCClient : NSObject <BRCProcessMonitorDelegate, BRCForegroundClient>
+@interface BRCXPCClient : NSObject <BRCProcessMonitorDelegate, BRCForegroundClient, BRCNotificationPipeDelegate>
 {
     BRCClientPrivilegesDescriptor *_clientPriviledgesDescriptor;
     BRCAccountSession *_session;
@@ -21,21 +22,20 @@ __attribute__((visibility("hidden")))
     unsigned int _invalidated:1;
     int _clientPid;
     CDStruct_4c969caf auditToken;
-    NSCountedSet *_containers;
-    NSOperationQueue *_acceptOperationQueue;
-    NSMutableDictionary *_runningAcceptOperations;
+    NSCountedSet *_appLibraries;
     brc_task_tracker *_tracker;
     BOOL _isUsingUbiquity;
     NSXPCConnection *_connection;
 }
 
 @property (readonly, nonatomic) NSString *bundleID;
+@property (strong, nonatomic) BRCClientPrivilegesDescriptor *clientPriviledgesDescriptor; // @synthesize clientPriviledgesDescriptor=_clientPriviledgesDescriptor;
 @property (readonly, weak, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) NSString *defaultContainerID;
+@property (readonly, nonatomic) NSString *defaultAppLibraryID;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL dieOnInvalidate; // @synthesize dieOnInvalidate=_dieOnInvalidate;
-@property (readonly, nonatomic) NSSet *entitledContainerIDs;
+@property (readonly, nonatomic) NSSet *entitledAppLibraryIDs;
 @property (readonly, nonatomic) BOOL hasPrivateSharingInterfaceEntitlement;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier;
@@ -45,22 +45,27 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_addExternalDocumentReferenceTo:(id)arg1 underParent:(id)arg2 forceReparent:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;
-- (BOOL)_canCreateContainerWithID:(id)arg1 error:(id *)arg2;
-- (id)_disabledBundleIDs;
+- (void)_auditURL:(id)arg1;
+- (id)_auditedURLFromPath:(id)arg1;
+- (BOOL)_canCreateAppLibraryWithID:(id)arg1 error:(id *)arg2;
 - (BOOL)_entitlementBooleanValueForKey:(id)arg1;
 - (id)_entitlementValueForKey:(id)arg1 ofClass:(Class)arg2;
-- (BOOL)_hasAccessToContainerID:(id)arg1 error:(id *)arg2;
+- (BOOL)_hasAccessToAppLibraryID:(id)arg1 error:(id *)arg2;
 - (BOOL)_hasPrivateIPCEntitlementForSelector:(SEL)arg1 error:(id *)arg2;
+- (BOOL)_isAppLibraryProxyEntitled;
+- (BOOL)_isAppLibraryProxyWithError:(id *)arg1;
 - (BOOL)_isAutomationEntitled;
-- (BOOL)_isContainerProxyEntitled;
-- (BOOL)_isContainerProxyWithError:(id *)arg1;
-- (void)_setupContainerID:(id)arg1 andSendReply:(CDUnknownBlockType)arg2;
+- (void)_setupAppLibraryAndZoneWithID:(id)arg1 andSendReply:(CDUnknownBlockType)arg2;
+- (id)_setupPrivateAppLibrary:(id)arg1 error:(id *)arg2;
+- (id)_sharingOperationDocumentFromLookup:(id)arg1 url:(id)arg2 error:(id *)arg3;
 - (void)_startDownloadItemsAtURLs:(id)arg1 pos:(unsigned long long)arg2 options:(unsigned long long)arg3 error:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)_startMonitoringProcessIfNeeded;
+- (void)_startSharingOperationAfterAcceptation:(struct _BRCFrameworkOperation *)arg1 client:(id)arg2 item:(id)arg3;
 - (void)_stopMonitoringProcess;
-- (void)accessLogicalOrPhysicalURL:(id)arg1 needsWrite:(BOOL)arg2 asynchronously:(BOOL)arg3 handler:(CDUnknownBlockType)arg4;
-- (void)addContainer:(id)arg1;
-- (BOOL)canAccessPath:(const char *)arg1 needsWrite:(BOOL)arg2;
+- (void)accessLogicalOrPhysicalURL:(id)arg1 accessKind:(long long)arg2 dbAccessKind:(long long)arg3 asynchronously:(BOOL)arg4 handler:(CDUnknownBlockType)arg5;
+- (void)addAppLibrary:(id)arg1;
+- (BOOL)canAccessLogicalOrPhysicalURL:(id)arg1 accessKind:(long long)arg2;
+- (BOOL)canAccessPath:(const char *)arg1 accessKind:(long long)arg2;
 - (BOOL)canAccessPhysicalURL:(id)arg1;
 - (BOOL)cloudEnabledStatus;
 - (void)dumpToContext:(id)arg1;
@@ -68,11 +73,12 @@ __attribute__((visibility("hidden")))
 - (void)invalidate;
 - (BOOL)isSandboxed;
 - (id)issueContainerExtensionForURL:(id)arg1 error:(id *)arg2;
+- (void)notificationPipe:(id)arg1 didObserveAppLibrary:(id)arg2;
+- (void)notificationPipe:(id)arg1 willObserveAppLibrary:(id)arg2;
 - (void)process:(int)arg1 didBecomeForeground:(BOOL)arg2;
-- (void)removeContainer:(id)arg1;
+- (void)removeAppLibrary:(id)arg1;
 - (void)setPrivilegesDescriptor:(id)arg1;
 - (void)setupNonSandboxedAccessForUbiquityContainers:(id)arg1 forBundleID:(id)arg2;
-- (id)setupPrivateContainer:(id)arg1 root:(id)arg2 error:(id *)arg3;
 - (void)wait;
 
 @end

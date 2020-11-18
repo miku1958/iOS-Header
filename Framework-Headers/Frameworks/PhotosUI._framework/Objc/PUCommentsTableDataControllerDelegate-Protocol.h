@@ -12,6 +12,5 @@
 - (void)commentsTableDataController:(PUCommentsTableDataController *)arg1 didChangeEditing:(BOOL)arg2;
 - (void)commentsTableDataController:(PUCommentsTableDataController *)arg1 presentViewController:(UIViewController *)arg2;
 - (void)commentsTableDataController:(PUCommentsTableDataController *)arg1 tableViewDidScroll:(UITableView *)arg2;
-- (BOOL)commentsTableDataControllerShouldBeginEditing:(PUCommentsTableDataController *)arg1;
 @end
 

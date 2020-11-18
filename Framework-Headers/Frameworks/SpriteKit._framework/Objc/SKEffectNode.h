@@ -6,26 +6,32 @@
 
 #import <SpriteKit/SKNode.h>
 
-@class CIFilter, SKShader;
+#import <SpriteKit/SKWarpable-Protocol.h>
 
-@interface SKEffectNode : SKNode
+@class CIFilter, NSString, SKShader, SKWarpGeometry;
+
+@interface SKEffectNode : SKNode <SKWarpable>
 {
     struct SKCEffectNode *_skcEffectNode;
 }
 
 @property (nonatomic) long long blendMode;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) CIFilter *filter;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SKShader *shader;
 @property (nonatomic) BOOL shouldCenterFilter;
 @property (nonatomic) BOOL shouldEnableEffects;
 @property (nonatomic) BOOL shouldRasterize;
+@property (nonatomic) long long subdivisionLevels;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) SKWarpGeometry *warpGeometry;
 
 - (void)_didMakeBackingNode;
 - (void)_flippedChangedFrom:(BOOL)arg1 to:(BOOL)arg2;
 - (struct SKCNode *)_makeBackingNode;
 - (void)_scaleFactorChangedFrom:(float)arg1 to:(float)arg2;
-- (void)dealloc;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

@@ -24,6 +24,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)_ib_disableServerConnection;
 + (void)setUseLocalProxy:(BOOL)arg1;
 + (id)sharedNetworkDefaults;
 - (BOOL)_needsUpdate;

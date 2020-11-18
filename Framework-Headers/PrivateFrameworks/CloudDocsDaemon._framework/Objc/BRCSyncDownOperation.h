@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 {
     BRCServerZone *_serverZone;
     unsigned long long _editedAndDeletedRecordsCount;
-    BOOL _wantsCrossZoneMove;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,11 +26,11 @@ __attribute__((visibility("hidden")))
 - (void)_performAfterFetchingRecordChanges:(CDUnknownBlockType)arg1;
 - (void)_startCreateZoneAndSubscriptionAndSyncDown;
 - (void)_startSyncDown;
+- (id)createActivity;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)initWithServerZone:(id)arg1;
 - (void)main;
 - (BOOL)shouldRetryForError:(id)arg1;
-- (unsigned long long)startActivity;
 
 @end
 

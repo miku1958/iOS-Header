@@ -4,41 +4,54 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PreferencesUI/PSUIAdvertisingController.h>
+#import <Preferences/PSListController.h>
 
-@class UITableViewCell, UIView;
+#import <PreferencesUI/ADPrivacyViewControllerDelegate-Protocol.h>
 
-@interface PSUIAdSupportController : PSUIAdvertisingController
+@class ADPrivacyViewController, NSString, UITableViewCell, UIView;
+
+@interface PSUIAdSupportController : PSListController <ADPrivacyViewControllerDelegate>
 {
-    BOOL _hasRefreshedStatus;
     BOOL _limitAdTrackingURLIsReachable;
     id _restrictionsChangedObserver;
     id _effectiveSettingsChangedObserver;
     UITableViewCell *_limitAdTrackingCell;
     UIView *_originalAccessoryView;
-    struct __SCNetworkReachability *_reachability;
+    long long _optInStatus;
+    id _reachabilityAsObject;
+    ADPrivacyViewController *_adPrivacyController;
 }
 
+@property (strong, nonatomic) ADPrivacyViewController *adPrivacyController; // @synthesize adPrivacyController=_adPrivacyController;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) id effectiveSettingsChangedObserver; // @synthesize effectiveSettingsChangedObserver=_effectiveSettingsChangedObserver;
-@property (nonatomic) BOOL hasRefreshedStatus; // @synthesize hasRefreshedStatus=_hasRefreshedStatus;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UITableViewCell *limitAdTrackingCell; // @synthesize limitAdTrackingCell=_limitAdTrackingCell;
 @property (nonatomic) BOOL limitAdTrackingURLIsReachable; // @synthesize limitAdTrackingURLIsReachable=_limitAdTrackingURLIsReachable;
+@property (nonatomic) long long optInStatus; // @synthesize optInStatus=_optInStatus;
 @property (strong, nonatomic) UIView *originalAccessoryView; // @synthesize originalAccessoryView=_originalAccessoryView;
-@property (nonatomic) struct __SCNetworkReachability *reachability; // @synthesize reachability=_reachability;
+@property (readonly, nonatomic) struct __SCNetworkReachability *reachability;
+@property (strong, nonatomic) id reachabilityAsObject; // @synthesize reachabilityAsObject=_reachabilityAsObject;
 @property (strong, nonatomic) id restrictionsChangedObserver; // @synthesize restrictionsChangedObserver=_restrictionsChangedObserver;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)adPrivacyViewController:(id)arg1 didFailWithError:(id)arg2;
+- (void)adPrivacyViewControllerDidDismiss:(id)arg1;
+- (void)adPrivacyViewControllerDidLoad:(id)arg1;
 - (BOOL)canChangeLimitAdTracking;
 - (void)dealloc;
 - (id)limitAdTrackingEnabled:(id)arg1;
+- (void)refreshOptInStatus;
+- (void)reloadLimitAdTrackingSpecifier;
 - (void)resetAdID;
 - (void)setLimitAdTrackingEnabled:(id)arg1 specifier:(id)arg2;
 - (id)specifiers;
+- (void)userDidTapAdPreferences:(id)arg1;
 - (void)userDidTapDoneButton:(id)arg1;
 - (void)userDidTapLearnMoreLink:(id)arg1;
 - (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

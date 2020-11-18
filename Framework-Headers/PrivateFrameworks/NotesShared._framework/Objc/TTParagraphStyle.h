@@ -8,24 +8,28 @@
 
 #import <NotesShared/NSCopying-Protocol.h>
 #import <NotesShared/NSMutableCopying-Protocol.h>
+#import <NotesShared/TTModelAttributeComparable-Protocol.h>
 
-@class NSUUID, TTTodo;
+@class NSString, NSUUID, TTTodo;
 
-@interface TTParagraphStyle : NSObject <NSCopying, NSMutableCopying>
+@interface TTParagraphStyle : NSObject <NSCopying, NSMutableCopying, TTModelAttributeComparable>
 {
     BOOL _needsParagraphCleanup;
     BOOL _needsListCleanup;
     unsigned int _style;
     unsigned int _hints;
-    long long _alignment;
     long long _writingDirection;
     unsigned long long _indent;
     unsigned long long _startingItemNumber;
     TTTodo *_todo;
+    long long _alignment;
 }
 
 @property (nonatomic) long long alignment; // @synthesize alignment=_alignment;
 @property (readonly, nonatomic) BOOL canIndent;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned int hints; // @synthesize hints=_hints;
 @property (nonatomic) unsigned long long indent; // @synthesize indent=_indent;
 @property (readonly, nonatomic) BOOL isHeader;
@@ -36,23 +40,26 @@
 @property (readonly, nonatomic) BOOL preferSingleLine;
 @property (nonatomic) unsigned long long startingItemNumber; // @synthesize startingItemNumber=_startingItemNumber;
 @property (nonatomic) unsigned int style; // @synthesize style=_style;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) TTTodo *todo; // @synthesize todo=_todo;
 @property (readonly, nonatomic) NSUUID *trackingUUID;
 @property (readonly, nonatomic) BOOL uniqueToLine;
 @property (readonly, nonatomic) BOOL wantsFollowingNewLine;
 @property (nonatomic) long long writingDirection; // @synthesize writingDirection=_writingDirection;
 
++ (id)defaultParagraphStyle;
 + (int)paragraphStyleAlignmentForTextAlignment:(long long)arg1;
 + (id)paragraphStyleNamed:(unsigned int)arg1;
 + (long long)textAlignmentForParagraphStyleAlignment:(int)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithArchive:(const struct ParagraphStyle *)arg1;
 - (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToModelComparable:(id)arg1;
+- (BOOL)isEqualToModelParagraphStyle:(id)arg1;
+- (BOOL)isEqualToParagraphStyle:(id)arg1;
 - (BOOL)isUnknownStyle;
 - (id)listBulletInAttributedString:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

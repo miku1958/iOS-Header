@@ -13,14 +13,20 @@
     float _reflectivity;
     float _reflectionFalloffStart;
     float _reflectionFalloffEnd;
+    unsigned long long _reflectionCategoryBitMask;
+    double _width;
+    double _length;
     float _reflectionResolutionScaleFactor;
     unsigned long long _reflectionSampleCount;
 }
 
+@property (nonatomic) double length;
+@property (nonatomic) unsigned long long reflectionCategoryBitMask;
 @property (nonatomic) double reflectionFalloffEnd;
 @property (nonatomic) double reflectionFalloffStart;
 @property (nonatomic) double reflectionResolutionScaleFactor;
 @property (nonatomic) double reflectivity;
+@property (nonatomic) double width;
 
 + (id)floor;
 + (BOOL)supportsSecureCoding;
@@ -31,11 +37,13 @@
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (struct __C3DFloor *)floorRef;
+- (double)height;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (double)reflectionFallOffEnd;
 - (double)reflectionFallOffStart;
 - (unsigned long long)reflectionSampleCount;
+- (void)setHeight:(double)arg1;
 - (void)setReflectionFallOffEnd:(double)arg1;
 - (void)setReflectionFallOffStart:(double)arg1;
 - (void)setReflectionSampleCount:(unsigned long long)arg1;

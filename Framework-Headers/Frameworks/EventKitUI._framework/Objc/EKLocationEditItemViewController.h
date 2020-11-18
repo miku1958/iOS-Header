@@ -22,6 +22,7 @@
     EKCalendarItem *_calendarItem;
     struct CGSize _preferredContentSize;
     BOOL _supportsStructuredLocations;
+    BOOL _tableConstraintsInstalled;
     BOOL _needsSave;
     BOOL _onlyDisplayMapLocations;
     EKStructuredLocation *_structuredLocation;
@@ -69,12 +70,15 @@
 - (BOOL)showingCurrentLocationRow;
 - (BOOL)showingTextRow;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 wantsHeaderForSection:(long long)arg2;
 - (id)title;
+- (void)updateViewConstraints;
 - (void)useAsString:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;

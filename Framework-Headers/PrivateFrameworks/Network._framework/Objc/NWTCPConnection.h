@@ -8,44 +8,43 @@
 
 #import <Network/NWPrettyDescription-Protocol.h>
 
-@class NSArray, NSData, NSError, NSString, NWEndpoint, NWParameters, NWPath;
+@class NSArray, NSData, NSDictionary, NSError, NSString, NWEndpoint, NWParameters, NWPath;
 @protocol OS_tcp_connection;
 
 @interface NWTCPConnection : NSObject <NWPrettyDescription>
 {
     BOOL _viable;
     BOOL _hasBetterPath;
-    BOOL _trustInvalidCerts;
     long long _state;
     NWEndpoint *_endpoint;
-    NWParameters *_parameters;
+    NSArray *_certificateChain;
     NSObject<OS_tcp_connection> *_internalConnection;
     id _delegate;
-    NSArray *_certificateChain;
-    struct SSLCertificate *_coreTLSCertificateChain;
-    struct __SecKey *_privateKey;
-    struct _tls_private_key *_coreTLSPrivateKey;
+    NWParameters *_parameters;
 }
 
-@property (readonly) BOOL TFOSucceeded;
+@property (readonly, nonatomic) NSDictionary *TCPInfo;
+@property (readonly, nonatomic) BOOL TFOSucceeded;
 @property (strong) NSArray *certificateChain; // @synthesize certificateChain=_certificateChain;
-@property (readonly) NWPath *connectedPath;
-@property struct SSLCertificate *coreTLSCertificateChain; // @synthesize coreTLSCertificateChain=_coreTLSCertificateChain;
-@property struct _tls_private_key *coreTLSPrivateKey; // @synthesize coreTLSPrivateKey=_coreTLSPrivateKey;
+@property (readonly, nonatomic) NWPath *connectedPath;
 @property (weak) id delegate; // @synthesize delegate=_delegate;
-@property (strong) NWEndpoint *endpoint; // @synthesize endpoint=_endpoint;
-@property (readonly) NSError *error;
-@property BOOL hasBetterPath; // @synthesize hasBetterPath=_hasBetterPath;
+@property (strong, nonatomic) NWEndpoint *endpoint; // @synthesize endpoint=_endpoint;
+@property (readonly, nonatomic) NSError *error;
+@property (nonatomic) BOOL hasBetterPath; // @synthesize hasBetterPath=_hasBetterPath;
 @property (strong) NSObject<OS_tcp_connection> *internalConnection; // @synthesize internalConnection=_internalConnection;
-@property (readonly) NWEndpoint *localAddress;
-@property (readonly) NWParameters *parameters; // @synthesize parameters=_parameters;
-@property (readonly, copy) NSString *privateDescription;
-@property struct __SecKey *privateKey; // @synthesize privateKey=_privateKey;
-@property (readonly) NWEndpoint *remoteAddress;
-@property long long state; // @synthesize state=_state;
-@property BOOL trustInvalidCerts; // @synthesize trustInvalidCerts=_trustInvalidCerts;
-@property (readonly) NSData *txtRecord;
-@property (getter=isViable) BOOL viable; // @synthesize viable=_viable;
+@property (readonly, nonatomic) BOOL isMultipath;
+@property (readonly, nonatomic) NWEndpoint *localAddress;
+@property (readonly, nonatomic) NSData *metadata;
+@property (readonly, nonatomic) unsigned long long multipathConnectedSubflowCount;
+@property (readonly, nonatomic) int multipathPrimarySubflowInterfaceIndex;
+@property (readonly, nonatomic) unsigned long long multipathSubflowCount;
+@property (readonly, nonatomic) NSDictionary *multipathSubflowSwitchCounts;
+@property (readonly, nonatomic) NWParameters *parameters; // @synthesize parameters=_parameters;
+@property (readonly, copy, nonatomic) NSString *privateDescription;
+@property (readonly, nonatomic) NWEndpoint *remoteAddress;
+@property (nonatomic) long long state; // @synthesize state=_state;
+@property (readonly, nonatomic) NSData *txtRecord;
+@property (nonatomic, getter=isViable) BOOL viable; // @synthesize viable=_viable;
 
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)stringFromNWTCPConnectionState:(long long)arg1;
@@ -57,9 +56,9 @@
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
 - (BOOL)fillOutTCPConnectionInfo:(struct tcp_connection_info *)arg1;
-- (void)handleIdentityRequestWithHandshake:(struct _tls_handshake_s *)arg1 resumptionHandler:(CDUnknownBlockType)arg2;
-- (void)handlePeerCertificateTrustEvaluationWithHandshake:(struct _tls_handshake_s *)arg1 resumptionHandler:(CDUnknownBlockType)arg2;
-- (void)handlePrepareTLSHandshake:(struct _tls_handshake_s *)arg1 TLSRecord:(struct _tls_record_s *)arg2;
+- (void)handleIdentityRequestWithContext:(struct nw_tls_context *)arg1 resumptionHandler:(CDUnknownBlockType)arg2;
+- (void)handlePeerCertificateTrustEvaluationWithContext:(struct nw_tls_context *)arg1 resumptionHandler:(CDUnknownBlockType)arg2;
+- (void)handlePrepareTLSContext:(struct nw_tls_context *)arg1;
 - (id)initWithAcceptedInternalConnection:(id)arg1;
 - (id)initWithEndpoint:(id)arg1 parameters:(id)arg2;
 - (id)initWithEndpoint:(id)arg1 parameters:(id)arg2 delegate:(id)arg3;
@@ -68,8 +67,8 @@
 - (void)readMinimumLength:(unsigned long long)arg1 maximumLength:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)readMinimumLength:(unsigned long long)arg1 maximumLength:(unsigned long long)arg2 timeout:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)readToPattern:(id)arg1 maximumLength:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (int)setRequiredPropertiesOnHandshake:(struct _tls_handshake_s *)arg1 fromIdentity:(struct __SecIdentity *)arg2 certificateChain:(id)arg3;
-- (int)setRequiredPropertiesOnHandshake:(struct _tls_handshake_s *)arg1 fromTrust:(struct __SecTrust *)arg2;
+- (int)setRequiredPropertiesOnContext:(struct nw_tls_context *)arg1 fromIdentity:(struct __SecIdentity *)arg2 certificateChain:(id)arg3;
+- (int)setRequiredPropertiesOnContext:(struct nw_tls_context *)arg1 fromTrust:(struct __SecTrust *)arg2;
 - (void)setupEventHandler;
 - (BOOL)startInternal;
 - (void)write:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

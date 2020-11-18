@@ -6,9 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@interface CAMGLLayerDelegate : NSObject
+#import <CameraUI/CALayerDelegate-Protocol.h>
+
+@class NSString;
+
+@interface CAMGLLayerDelegate : NSObject <CALayerDelegate>
 {
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 

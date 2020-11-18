@@ -6,21 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class SYService;
-@protocol OS_dispatch_queue, SYSyncEngineResponder;
+#import <CompanionSync/SYStateLoggable-Protocol.h>
 
-@interface SYSyncEngine : NSObject
+@class NSString, PBCodable, SYService;
+@protocol OS_dispatch_queue, OS_os_activity, SYSyncEngineResponder;
+
+__attribute__((visibility("hidden")))
+@interface SYSyncEngine : NSObject <SYStateLoggable>
 {
     id<SYSyncEngineResponder> _responder;
+    NSObject<OS_os_activity> *_transportActivity;
     SYService *_service;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
+@property (readonly, nonatomic) BOOL buffersHandshake;
 @property (readonly, nonatomic) BOOL buffersSessions;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isInSession;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (weak, nonatomic) id<SYSyncEngineResponder> responder;
 @property (readonly, weak, nonatomic) SYService *service; // @synthesize service=_service;
+@property (readonly, nonatomic) PBCodable *stateForLogging;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSObject<OS_os_activity> *transportActivity; // @synthesize transportActivity=_transportActivity;
 
 - (void).cxx_destruct;
 - (void)beginSession;

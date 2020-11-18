@@ -20,6 +20,7 @@
     unsigned long long _arrowHeadStyle;
     UIFont *_font;
     NSDictionary *_textAttributes;
+    long long _highlightStyle;
     AKController *_controller;
 }
 
@@ -29,30 +30,34 @@
 @property (strong) UIColor *fillColor; // @synthesize fillColor=_fillColor;
 @property (strong) UIFont *font; // @synthesize font=_font;
 @property BOOL hasShadow; // @synthesize hasShadow=_hasShadow;
+@property long long highlightStyle; // @synthesize highlightStyle=_highlightStyle;
 @property (strong, nonatomic) AKPageModelController *modelControllerToObserveForSelections; // @synthesize modelControllerToObserveForSelections;
 @property (strong) UIColor *strokeColor; // @synthesize strokeColor=_strokeColor;
 @property BOOL strokeIsDashed; // @synthesize strokeIsDashed=_strokeIsDashed;
 @property double strokeWidth; // @synthesize strokeWidth=_strokeWidth;
 @property (strong) NSDictionary *textAttributes; // @synthesize textAttributes=_textAttributes;
 
-+ (id)_defaultFont;
-+ (id)_defaultTextAttributes;
++ (id)defaultFont;
++ (id)defaultTextAttributes;
 + (void)initialize;
 - (void).cxx_destruct;
-- (BOOL)_isEnabledForSender:(id)arg1 withSelectedAnnotations:(id)arg2;
+- (BOOL)_isEnabledForSender:(id)arg1 segment:(long long)arg2 withSelectedAnnotations:(id)arg3;
 - (void)_persistCurrentAttributes;
 - (void)_restorePersistedAttributes;
 - (void)_syncAttributesFromSelectedAnnotationsToUI;
-- (void)_syncAttributesFromSenderToSelfAndSelectedAnnotations:(id)arg1;
-- (void)_syncFillColorOnSelectionToUI;
-- (void)_syncStrokeColorOnSelectionToUI;
-- (void)_updateStateOnSender:(id)arg1;
-- (BOOL)_updateStateOnSender:(id)arg1 fromSelectedAnnotations:(id)arg2;
-- (void)_updateStateOnSenderFromSelf:(id)arg1;
+- (void)_syncAttributesFromSenderToSelfAndSelectedAnnotations:(id)arg1 segment:(long long)arg2;
+- (void)_updateStateOnSender:(id)arg1 segment:(long long)arg2;
+- (BOOL)_updateStateOnSender:(id)arg1 segment:(long long)arg2 fromSelectedAnnotations:(id)arg3;
+- (void)_updateStateOnSenderFromSelf:(id)arg1 segment:(long long)arg2;
 - (id)initWithController:(id)arg1;
+- (BOOL)isAttributeSenderEnabled:(id)arg1 segment:(long long)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)performAttributeActionForSender:(id)arg1;
-- (BOOL)validateAttributeSender:(id)arg1;
+- (void)performAttributeActionForSender:(id)arg1 segment:(long long)arg2;
+- (void)restoreStrokeColorToSystemDefault;
+- (BOOL)strokeColorIsEqualTo:(id)arg1;
+- (void)syncFillColorOnSelectionToUI;
+- (void)syncStrokeColorOnSelectionToUI;
+- (void)updateAttributeSenderState:(id)arg1 segment:(long long)arg2 enabled:(BOOL)arg3;
 
 @end
 

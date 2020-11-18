@@ -22,8 +22,8 @@
 
 + (id)recurrenceEndWithEndDate:(id)arg1;
 + (id)recurrenceEndWithOccurrenceCount:(unsigned long long)arg1;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

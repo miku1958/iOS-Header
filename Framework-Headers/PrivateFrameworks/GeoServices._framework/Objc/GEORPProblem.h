@@ -34,6 +34,8 @@
 @property (readonly, nonatomic) int *userPaths;
 @property (readonly, nonatomic) unsigned long long userPathsCount;
 
+- (int)StringAsProblemType:(id)arg1;
+- (int)StringAsUserPaths:(id)arg1;
 - (void)addUserPath:(int)arg1;
 - (void)clearUserPaths;
 - (void)copyTo:(id)arg1;
@@ -44,9 +46,11 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)problemTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setUserPaths:(int *)arg1 count:(unsigned long long)arg2;
 - (int)userPathAtIndex:(unsigned long long)arg1;
+- (id)userPathsAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

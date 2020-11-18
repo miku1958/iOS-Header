@@ -17,6 +17,9 @@
 - (BOOL)_accessibilityProvidesScannerGroupElements;
 - (id)_accessibilityScannerGroupElements;
 - (id)_accessibilityUserTestingChildren;
+- (id)accessibilityCustomActions;
+- (id)accessibilityLabel;
+- (BOOL)isAccessibilityElement;
 
 @end
 

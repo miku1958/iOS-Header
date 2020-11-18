@@ -43,6 +43,7 @@
 - (void)setupDelegateAccountsWithParameters:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)shouldPresentUpgradeFlowWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateAppleIDWithParameters:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)upgradeiCloudTermsIfNecessaryWithCustomHeaders:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)upgradeiCloudTermsIfNecessaryWithHandler:(CDUnknownBlockType)arg1;
 
 @end

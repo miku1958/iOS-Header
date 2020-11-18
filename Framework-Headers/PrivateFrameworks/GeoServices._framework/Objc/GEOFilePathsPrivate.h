@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)pathForSearchPath:(int)arg1 andDomain:(int)arg2;
 + (id)systemContainerCachesPathUsingLibSystem;
 + (id)systemContainerLibraryPathUsingLibSystem;
 + (id)systemContainerPathUsingLibSystem;

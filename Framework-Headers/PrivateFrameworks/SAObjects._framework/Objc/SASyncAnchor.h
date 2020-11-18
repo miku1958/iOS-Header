@@ -8,13 +8,14 @@
 
 #import <SAObjects/SAAceSerializable-Protocol.h>
 
-@class NSString;
+@class NSNumber, NSString, SASyncAppMetaData;
 
 @interface SASyncAnchor : AceObject <SAAceSerializable>
 {
 }
 
 @property (copy, nonatomic) NSString *appBundleId;
+@property (strong, nonatomic) SASyncAppMetaData *appMetaData;
 @property (nonatomic) long long count;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -23,6 +24,8 @@
 @property (copy, nonatomic) NSString *intentSlotName;
 @property (copy, nonatomic) NSString *key;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSNumber *suspendDurationInSeconds;
+@property (copy, nonatomic) NSString *suspendReason;
 @property (copy, nonatomic) NSString *validity;
 
 + (id)anchor;

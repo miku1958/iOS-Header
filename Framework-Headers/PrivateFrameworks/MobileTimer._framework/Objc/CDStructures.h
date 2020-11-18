@@ -41,3 +41,8 @@ struct UIEdgeInsets {
     double _field4;
 };
 
+struct UIOffset {
+    double _field1;
+    double _field2;
+};
+

@@ -16,6 +16,7 @@
 
 - (struct __CFString *)_container;
 - (struct __CFString *)_identifier;
+- (BOOL)_observingCFPreferences;
 - (void)_setContainer:(struct __CFURL *)arg1;
 - (void)_setIdentifier:(struct __CFString *)arg1;
 

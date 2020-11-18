@@ -15,6 +15,7 @@
 - (id)identifier;
 - (id)language;
 - (id)name;
+- (id)nameWithoutQuality;
 - (long long)quality;
 
 @end

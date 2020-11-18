@@ -55,6 +55,7 @@
 - (id)barButtonItemForElementIdentifier:(id)arg1;
 - (void)dealloc;
 - (void)detachFromNavigationItem:(id)arg1;
+- (void)detachNavigationItemControllers;
 - (id)fallbackTitleView;
 - (id)initWithNavigationBarViewElement:(id)arg1;
 - (void)itemOfferButtonWillAnimateTransition:(id)arg1;

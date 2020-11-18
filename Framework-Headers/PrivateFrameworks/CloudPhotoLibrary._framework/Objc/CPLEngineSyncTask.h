@@ -19,18 +19,16 @@
     id<NSCoding> _transportUserIdentifier;
 }
 
-@property (getter=isCancelled) BOOL cancelled; // @synthesize cancelled=_cancelled;
+@property (getter=isCancelled, setter=_setCancelled:) BOOL cancelled; // @synthesize cancelled=_cancelled;
 @property (strong) id<CPLEngineSyncTaskDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
 @property (nonatomic) BOOL foreground; // @synthesize foreground=_foreground;
-@property (getter=isPaused) BOOL paused; // @synthesize paused=_paused;
+@property (getter=isPaused, setter=_setPaused:) BOOL paused; // @synthesize paused=_paused;
 @property (readonly, nonatomic) NSString *taskIdentifier;
 @property (strong, nonatomic) id<NSCoding> transportUserIdentifier; // @synthesize transportUserIdentifier=_transportUserIdentifier;
 
 + (id)taskWithEngineLibrary:(id)arg1;
 - (void).cxx_destruct;
-- (void)_setCancelled:(BOOL)arg1;
-- (void)_setPaused:(BOOL)arg1;
 - (void)cancel;
 - (id)description;
 - (unsigned long long)diskPressureState;

@@ -10,6 +10,7 @@
 - (void)_setUserTrackingMode:(long long)arg1 animated:(BOOL)arg2 fromTrackingButton:(BOOL)arg3;
 - (BOOL)canRotateForHeading;
 - (BOOL)hasUserLocation;
+- (BOOL)isCurrentlyRotated;
 - (long long)userTrackingMode;
 
 @optional

@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
     BOOL _loaded;
     UIPrinterSearchingView *_searchingView;
     BOOL _searchingViewConstraintsSet;
-    BOOL _clearCurrentPrinter;
     BOOL _shouldFilterPrinters;
     double _rowHeight;
     double _maximumPopoverHeight;

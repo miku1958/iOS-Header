@@ -9,7 +9,7 @@
 @class NSData, NSDictionary, NSString, NSURL, NSURLRequest;
 
 @protocol NDBackgroundSessionProtocol <NSObject>
-- (void)avAssetDownloadTaskWithDownloadToken:(unsigned long long)arg1 URL:(NSURL *)arg2 destinationURL:(NSURL *)arg3 temporaryDestinationURL:(NSURL *)arg4 options:(NSDictionary *)arg5 identifier:(unsigned long long)arg6 reply:(void (^)(BOOL))arg7;
+- (void)avAssetDownloadTaskWithDownloadToken:(unsigned long long)arg1 URL:(NSURL *)arg2 destinationURL:(NSURL *)arg3 temporaryDestinationURL:(NSURL *)arg4 assetTitle:(NSString *)arg5 assetArtworkData:(NSData *)arg6 options:(NSDictionary *)arg7 identifier:(unsigned long long)arg8 reply:(void (^)(BOOL))arg9;
 - (void)cancelTaskWithIdentifier:(unsigned long long)arg1;
 - (void)cancelTaskWithIdentifier:(unsigned long long)arg1 byProducingResumeData:(void (^)(NSData *))arg2;
 - (void)dataTaskWithRequest:(NSURLRequest *)arg1 originalRequest:(NSURLRequest *)arg2 identifier:(unsigned long long)arg3 reply:(void (^)(BOOL))arg4;
@@ -22,6 +22,7 @@
 - (void)setDescription:(NSString *)arg1 forTask:(unsigned long long)arg2;
 - (void)setLoadingPoolPriority:(double)arg1 forTaskWithIdentifier:(unsigned long long)arg2;
 - (void)setPriority:(long long)arg1 forTaskWithIdentifier:(unsigned long long)arg2;
+- (void)setPropertyOnStreamWithIdentifier:(unsigned long long)arg1 propDict:(NSDictionary *)arg2 propKey:(NSString *)arg3 withReply:(void (^)(BOOL))arg4;
 - (void)suspendTaskWithIdentifier:(unsigned long long)arg1;
 - (void)uploadTaskWithRequest:(NSURLRequest *)arg1 originalRequest:(NSURLRequest *)arg2 fromFile:(NSURL *)arg3 sandboxExtensionData:(NSData *)arg4 identifier:(unsigned long long)arg5 potentialCredentials:(NSDictionary *)arg6 reply:(void (^)(BOOL))arg7;
 @end

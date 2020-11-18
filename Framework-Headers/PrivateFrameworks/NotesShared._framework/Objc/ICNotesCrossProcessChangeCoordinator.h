@@ -25,14 +25,17 @@
 - (void)contextDidSave:(id)arg1;
 - (id)contextSaveUserInfoKeys;
 - (void)dealloc;
+- (void)handleCrossProcessNotesDidChangeNotificationForceRefreshAllObjects:(BOOL)arg1;
 - (id)initWithSourceCoordinator:(id)arg1 destinationContext:(id)arg2 asApplication:(BOOL)arg3;
 - (void)postAccountDidChangeNotification;
 - (void)postCrossProcessNotificationName:(id)arg1 userInfo:(id)arg2;
 - (void)postNotesDidChangeNotification;
+- (void)postNotesPasswordStatusDidChangeNotification;
 - (void)registerForAccountNotifications;
 - (void)registerForContextDidSaveNotifications;
 - (void)registerForCrossProcessNotificationName:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)registerForNotesRefreshNotifications;
+- (void)registerForPasswordStatusDidChangeNotifications;
 - (BOOL)shouldMergeContextDidSaveChanges:(id)arg1;
 
 @end

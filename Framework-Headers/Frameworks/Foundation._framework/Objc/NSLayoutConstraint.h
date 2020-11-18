@@ -8,13 +8,13 @@
 
 #import <Foundation/NSISConstraint-Protocol.h>
 
-@class NSString;
+@class NSLayoutAnchor, NSSet, NSString, _NSConstraintDescriptionLayoutRelationshipNode;
 
 @interface NSLayoutConstraint : NSObject <NSISConstraint>
 {
     id _container;
-    id _firstItem;
-    id _secondItem;
+    id _firstAnchor;
+    id _secondAnchor;
     double _constant;
     double _loweredConstant;
     id _markerAndPositiveExtraVar;
@@ -24,22 +24,27 @@
     float _priority;
 }
 
+@property (setter=_setAssociatedRelationshipNode:) _NSConstraintDescriptionLayoutRelationshipNode *_associatedRelationshipNode;
+@property (setter=_setContainerDeclaredConstraint:) BOOL _containerDeclaredConstraint;
+@property (readonly, copy) NSSet *_referencedLayoutItems;
 @property (getter=isActive) BOOL active;
 @property double constant;
 @property id container;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property long long firstAttribute;
-@property id firstItem; // @synthesize firstItem=_firstItem;
+@property (copy, setter=_setFirstAnchor:) NSLayoutAnchor *firstAnchor; // @synthesize firstAnchor=_firstAnchor;
+@property (readonly) long long firstAttribute;
+@property (readonly) id firstItem;
 @property (readonly) BOOL hasBeenLowered;
 @property (readonly) unsigned long long hash;
 @property (copy) NSString *identifier;
 @property (nonatomic, getter=_loweredConstantNeedsUpdate, setter=_setLoweredConstantNeedsUpdate:) BOOL loweredConstantNeedsUpdate;
-@property double multiplier;
+@property (setter=_setMultiplier:) double multiplier;
 @property float priority;
-@property long long relation;
-@property long long secondAttribute;
-@property id secondItem; // @synthesize secondItem=_secondItem;
+@property (setter=_setRelation:) long long relation;
+@property (copy, setter=_setSecondAnchor:) NSLayoutAnchor *secondAnchor; // @synthesize secondAnchor=_secondAnchor;
+@property (readonly) long long secondAttribute;
+@property (readonly) id secondItem;
 @property BOOL shouldBeArchived;
 @property (readonly) Class superclass;
 @property (copy) NSString *symbolicConstant;
@@ -49,6 +54,8 @@
 + (id)_findCommonAncestorOfItem:(id)arg1 andItem:(id)arg2;
 + (void)_setLegacyDecodingOnly:(BOOL)arg1;
 + (void)activateConstraints:(id)arg1;
++ (id)constraintWithAnchor:(id)arg1 relatedBy:(long long)arg2 constant:(double)arg3;
++ (id)constraintWithAnchor:(id)arg1 relatedBy:(long long)arg2 toAnchor:(id)arg3 multiplier:(double)arg4 constant:(double)arg5;
 + (id)constraintWithItem:(id)arg1 attribute:(long long)arg2 relatedBy:(long long)arg3 constant:(double)arg4;
 + (id)constraintWithItem:(id)arg1 attribute:(long long)arg2 relatedBy:(long long)arg3 toItem:(id)arg4 attribute:(long long)arg5;
 + (id)constraintWithItem:(id)arg1 attribute:(long long)arg2 relatedBy:(long long)arg3 toItem:(id)arg4 attribute:(long long)arg5 constant:(double)arg6;
@@ -61,13 +68,17 @@
 - (BOOL)_addLoweredExpression:(id)arg1 toEngine:(id)arg2 integralizationAdjustment:(double)arg3 lastLoweredConstantWasRounded:(BOOL)arg4 mutuallyExclusiveConstraints:(id *)arg5;
 - (void)_addToEngine:(id)arg1;
 - (BOOL)_addToEngine:(id)arg1 integralizationAdjustment:(double)arg2 mutuallyExclusiveConstraints:(id *)arg3;
+- (id)_allocationDescription;
 - (double)_allowedMagnitudeForIntegralizationAdjustment;
 - (double)_allowedMagnitudeForIntegralizationAdjustmentOfConstraintWithMarkerScaling:(double *)arg1;
+- (id)_ancestorRelationshipNodes;
 - (void)_clearWeakContainerReference;
 - (id)_constantDescriptionForDTrace;
 - (id)_constraintByReplacingItem:(id)arg1 withItem:(id)arg2;
 - (id)_constraintByReplacingView:(id)arg1 withView:(id)arg2;
 - (int)_constraintType;
+- (id)_constraintValueCopy;
+- (unsigned long long)_constraintValueHashIncludingConstant:(BOOL)arg1 includeOtherMutableProperties:(BOOL)arg2;
 - (void)_containerGeometryDidChange;
 - (id)_deallocSafeDescription;
 - (BOOL)_deferDTraceLogging;
@@ -77,11 +88,11 @@
 - (struct CGSize)_engineToContainerScalingCoefficients;
 - (void)_ensureValueMaintainsArbitraryLimit:(double *)arg1;
 - (BOOL)_existsInEngine:(id)arg1;
-- (BOOL)_existsInFirstItemEngine;
 - (void)_explainUnsatisfaction;
 - (void)_forceSatisfactionMeasuringUnsatisfactionChanges:(id *)arg1 andMutuallyExclusiveConstraints:(id *)arg2;
 - (double)_fudgeIncrement;
 - (id)_identifier;
+- (BOOL)_isEqualToConstraintValue:(id)arg1 includingConstant:(BOOL)arg2 includeOtherMutableProperties:(BOOL)arg3;
 - (BOOL)_isFudgeable;
 - (BOOL)_isIBPrototypingLayoutConstraint;
 - (id)_layoutEngine;
@@ -95,19 +106,17 @@
 - (BOOL)_nsib_isRedundantInEngine:(id)arg1;
 - (int)_primitiveConstraintType;
 - (id)_priorityDescription;
+- (BOOL)_referencesLayoutItem:(id)arg1;
 - (void)_removeFromEngine:(id)arg1;
 - (void)_setActive:(BOOL)arg1 mutuallyExclusiveConstraints:(id *)arg2;
 - (void)_setDeferDTraceLogging:(BOOL)arg1;
-- (void)_setFirstAttribute:(long long)arg1;
-- (void)_setFirstItem:(id)arg1;
+- (void)_setFirstItem:(id)arg1 attribute:(long long)arg2;
 - (void)_setIdentifier:(id)arg1;
 - (void)_setMarkerAndPositiveErrorVar:(id)arg1;
-- (void)_setMultiplier:(double)arg1;
+- (void)_setMutablePropertiesFromConstraint:(id)arg1;
 - (void)_setNegativeExtraVar:(id)arg1;
 - (void)_setPrimitiveConstraintType:(int)arg1;
-- (void)_setRelation:(long long)arg1;
-- (void)_setSecondAttribute:(long long)arg1;
-- (void)_setSecondItem:(id)arg1;
+- (void)_setSecondItem:(id)arg1 attribute:(long long)arg2;
 - (void)_setSymbolicConstant:(id)arg1;
 - (void)_setSymbolicConstant:(id)arg1 constant:(double)arg2;
 - (id)_symbolicConstant;
@@ -130,6 +139,7 @@
 - (double)priorityForVariable:(id)arg1;
 - (void)setAnimations:(id)arg1;
 - (void)setHasBeenLowered:(BOOL)arg1;
+- (id)sourceRelationshipHierarchy;
 
 @end
 

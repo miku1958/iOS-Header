@@ -8,7 +8,7 @@
 
 #import <PhotosUI/PUDisplayAsset-Protocol.h>
 
-@class AVAsset, NSDate, NSString;
+@class AVAsset, CLLocation, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
 @interface PUFilmstripAsset : NSObject <PUDisplayAsset>
@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isPhotoIrisPlaceholder;
 @property (readonly, nonatomic) BOOL isTemporaryPlaceholder;
 @property (readonly, nonatomic) NSString *localizedGeoDescription;
+@property (readonly, nonatomic) CLLocation *location;
 @property (readonly, nonatomic) unsigned long long mediaType;
 @property (readonly, nonatomic) NSDate *modificationDate;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 photoIrisStillDisplayTime;

@@ -12,13 +12,13 @@
 @interface BSBaseXPCClient : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_xpc_object> *_connection;
     BSSignal *_invalidationSignal;
     NSObject<OS_xpc_object> *_serverEndpoint;
     NSString *_serviceName;
-    BOOL _suspended;
     BOOL _clientInvalidated;
     int _notifyToken;
+    NSObject<OS_xpc_object> *_connection;
+    BOOL _suspended;
 }
 
 @property (readonly, nonatomic, getter=isSuspended) BOOL suspended;

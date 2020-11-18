@@ -28,8 +28,8 @@ struct CGSize {
 };
 
 struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 struct __va_list_tag {
@@ -37,6 +37,37 @@ struct __va_list_tag {
     unsigned int _field2;
     void *_field3;
     void *_field4;
+};
+
+struct flock {
+    long long _field1;
+    long long _field2;
+    int _field3;
+    short _field4;
+    short _field5;
+};
+
+struct fsid {
+    int _field1[2];
+};
+
+struct statfs {
+    unsigned int _field1;
+    int _field2;
+    unsigned long long _field3;
+    unsigned long long _field4;
+    unsigned long long _field5;
+    unsigned long long _field6;
+    unsigned long long _field7;
+    struct fsid _field8;
+    unsigned int _field9;
+    unsigned int _field10;
+    unsigned int _field11;
+    unsigned int _field12;
+    char _field13[16];
+    char _field14[1024];
+    char _field15[1024];
+    unsigned int _field16[8];
 };
 
 #pragma mark Typedef'd Structures

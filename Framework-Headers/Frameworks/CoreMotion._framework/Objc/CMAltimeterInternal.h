@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSOperationQueue;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CMAltimeterInternal : NSObject
 {
@@ -20,10 +21,27 @@
     float fBarometricBaseAltitude;
     BOOL fBaselineReceived;
     struct deque<float, std::__1::allocator<float>> fPressureSamples;
+    NSObject<OS_dispatch_queue> *fInternalQueue;
+    NSObject<OS_dispatch_source> *fWatchdogTimer;
+    NSObject<OS_dispatch_queue> *fAppQueue;
+    struct CLConnectionClient *fLocationdConnection;
+    CDUnknownBlockType fHandler;
+    CDUnknownBlockType fSignificantElevationSampleHandler;
+    double fElevationAscendedOffset;
+    double fElevationDescendedOffset;
+    BOOL fStopUpdates;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_querySignificantElevationChangeFromDate:(id)arg1 toDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
+- (void)_startElevationUpdatesWithHandler:(CDUnknownBlockType)arg1;
+- (void)_startSignificantElevationUpdatesWithHandler:(CDUnknownBlockType)arg1;
+- (void)_startWatchdogCheckins;
+- (void)_stopElevationUpdates;
+- (void)_stopSignificantElevationUpdates;
+- (void)_stopWatchdogCheckins;
+- (void)_teardown;
 - (void)dealloc;
 - (id)init;
 

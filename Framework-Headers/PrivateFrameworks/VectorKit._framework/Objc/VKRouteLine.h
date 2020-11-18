@@ -6,19 +6,16 @@
 
 #import <Foundation/NSObject.h>
 
-#import <VectorKit/GEORouteMapMatchingDataSource-Protocol.h>
-
-@class NSSet, NSString, VKPolylineOverlay, VKPolylineOverlayRenderRegion;
+@class NSSet, VKPolylineOverlay, VKPolylineOverlayRenderRegion;
 @protocol VKRouteLineObserverProtocol;
 
 __attribute__((visibility("hidden")))
-@interface VKRouteLine : NSObject <GEORouteMapMatchingDataSource>
+@interface VKRouteLine : NSObject
 {
-    BOOL _curve;
     BOOL _matchToRoads;
     BOOL _hasNewRoadMatches;
-    CDStruct_aca18c62 _bounds;
-    CDStruct_aa5aacbc _inverseMatrix;
+    Box_3d7e3c2c _bounds;
+    Matrix_08d701e4 _inverseMatrix;
     VKPolylineOverlay *_overlay;
     double _boundsUnitsPerMeter;
     double _metersPerPoint;
@@ -26,8 +23,8 @@ __attribute__((visibility("hidden")))
     double _simplificationEpsilonPoints;
     double _viewUnitsPerPoint;
     id<VKRouteLineObserverProtocol> _observer;
-    vector_eb11dace _sections;
-    fast_shared_ptr_502c59d0 _userLocationSection;
+    vector_8449fd58 _sections;
+    struct fast_shared_ptr<md::RouteLineSection> _userLocationSection;
     struct PolylineCoordinate _userLocationIndex;
     Matrix_8746f91e _userLocation;
     double _lastUserLocationMatchTimestamp;
@@ -36,28 +33,21 @@ __attribute__((visibility("hidden")))
     VKPolylineOverlayRenderRegion *_renderRegion;
 }
 
-@property (readonly, nonatomic) CDStruct_d2b197d1 bounds; // @synthesize bounds=_bounds;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) Box_3d7e3c2c bounds; // @synthesize bounds=_bounds;
 @property BOOL hasNewRoadMatches; // @synthesize hasNewRoadMatches=_hasNewRoadMatches;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL needsUpdate;
 @property (nonatomic) id<VKRouteLineObserverProtocol> observer; // @synthesize observer=_observer;
 @property (nonatomic) VKPolylineOverlay *overlay; // @synthesize overlay=_overlay;
-@property (readonly, nonatomic) vector_eb11dace sections; // @synthesize sections=_sections;
+@property (readonly, nonatomic) vector_8449fd58 sections; // @synthesize sections=_sections;
 @property (nonatomic) double simplificationEpsilonPoints; // @synthesize simplificationEpsilonPoints=_simplificationEpsilonPoints;
-@property (readonly) Class superclass;
-@property (readonly, nonatomic) struct PolylineCoordinate *userLocationIndex;
-@property (readonly, nonatomic) fast_shared_ptr_502c59d0 userLocationSection;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_updateBounds:(id)arg1;
 - (void)_updateTilesCovered:(id)arg1;
-- (BOOL)buildRouteLineForPainter:(id)arg1 keysInView:(id)arg2 tiles:(id)arg3 containerModel:(id)arg4 viewUnitsPerPoint:(double)arg5 force:(BOOL)arg6 curve:(BOOL)arg7 selected:(BOOL)arg8;
+- (BOOL)buildRouteLineForPainter:(id)arg1 keysInView:(id)arg2 tiles:(id)arg3 containerModel:(id)arg4 viewUnitsPerPoint:(double)arg5 force:(BOOL)arg6 selected:(BOOL)arg7;
 - (void)createMeshIfNecessary:(long long)arg1;
 - (void)dealloc;
-- (void)forEachMapMatchingSection:(CDUnknownBlockType)arg1;
 - (void)forEachSection:(CDUnknownBlockType)arg1;
 - (void)generateArrowsForManeuverDisplayMode:(int)arg1 routeLineWidth:(double)arg2;
 - (BOOL)isTrafficUpToDate;

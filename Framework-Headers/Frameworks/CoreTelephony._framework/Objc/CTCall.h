@@ -18,6 +18,7 @@
 @property (copy, nonatomic) NSString *callState; // @synthesize callState=_callState;
 
 + (id)callForCTCallRef:(struct __CTCall *)arg1;
++ (id)callForCXCall:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;

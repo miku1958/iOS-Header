@@ -6,17 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class MCDPCContainer, MCDPCItem, NSIndexPath, UIViewController;
+@class MCDPCContainer, MCDPCItem, MPWeakTimer, NSIndexPath, UIViewController;
 
 @interface _MCDBrowsableContentTableViewPreloader : NSObject
 {
     BOOL _cancelled;
+    BOOL _isRootTableView;
+    BOOL _isTabbedBrowsing;
     UIViewController *_sourceViewController;
     MCDPCContainer *_container;
     MCDPCItem *_item;
     long long _index;
     NSIndexPath *_indexPath;
     CDUnknownBlockType _cancelledBlock;
+    MPWeakTimer *_loadingTimer;
 }
 
 @property (nonatomic, getter=isCancelled) BOOL cancelled; // @synthesize cancelled=_cancelled;
@@ -24,7 +27,10 @@
 @property (readonly, nonatomic) MCDPCContainer *container; // @synthesize container=_container;
 @property (readonly, nonatomic) long long index; // @synthesize index=_index;
 @property (readonly, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
+@property (nonatomic) BOOL isRootTableView; // @synthesize isRootTableView=_isRootTableView;
+@property (nonatomic) BOOL isTabbedBrowsing; // @synthesize isTabbedBrowsing=_isTabbedBrowsing;
 @property (readonly, nonatomic) MCDPCItem *item; // @synthesize item=_item;
+@property (strong, nonatomic) MPWeakTimer *loadingTimer; // @synthesize loadingTimer=_loadingTimer;
 @property (readonly, weak, nonatomic) UIViewController *sourceViewController; // @synthesize sourceViewController=_sourceViewController;
 
 - (void).cxx_destruct;
@@ -34,7 +40,7 @@
 - (void)_pushToPlayback:(id)arg1;
 - (void)dealloc;
 - (id)description;
-- (id)initWithContainer:(id)arg1 index:(long long)arg2 sourceViewController:(id)arg3 cancelledBlock:(CDUnknownBlockType)arg4;
+- (id)initWithContainer:(id)arg1 index:(long long)arg2 sourceViewController:(id)arg3 rootTableView:(BOOL)arg4 tabbedBrowsing:(BOOL)arg5 cancelledBlock:(CDUnknownBlockType)arg6;
 - (void)loadAndPush;
 
 @end

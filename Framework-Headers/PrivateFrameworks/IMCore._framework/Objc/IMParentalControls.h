@@ -19,7 +19,7 @@
 
 @property (readonly, nonatomic) BOOL _disableAV; // @synthesize _disableAV;
 @property (readonly, nonatomic) BOOL _forceChatLogging; // @synthesize _forceChatLogging;
-@property (readonly, strong, nonatomic) NSMutableDictionary *_parentalControls; // @synthesize _parentalControls;
+@property (readonly, nonatomic) NSMutableDictionary *_parentalControls; // @synthesize _parentalControls;
 @property (readonly, nonatomic) BOOL active; // @synthesize active=_active;
 @property (readonly, nonatomic) BOOL disableAV;
 @property (readonly, nonatomic) BOOL forceChatLogging;
@@ -27,6 +27,7 @@
 
 + (id)objectForKey:(id)arg1;
 + (id)standardControls;
+- (void).cxx_destruct;
 - (void)_managedPrefsNotification:(id)arg1;
 - (id)_serviceWithName:(id)arg1;
 - (void)_updateParentalSettings;

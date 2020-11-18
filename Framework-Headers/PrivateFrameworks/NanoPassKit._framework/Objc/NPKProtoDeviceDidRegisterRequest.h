@@ -8,19 +8,25 @@
 
 #import <NanoPassKit/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSString;
 
 @interface NPKProtoDeviceDidRegisterRequest : PBRequest <NSCopying>
 {
     NSMutableArray *_brokerRegionPushTopics;
+    NSString *_primaryRegionTopic;
     NSMutableArray *_tsmRegionPushTopics;
     NSMutableArray *_tsmRegionURLs;
 }
 
 @property (strong, nonatomic) NSMutableArray *brokerRegionPushTopics; // @synthesize brokerRegionPushTopics=_brokerRegionPushTopics;
+@property (readonly, nonatomic) BOOL hasPrimaryRegionTopic;
+@property (strong, nonatomic) NSString *primaryRegionTopic; // @synthesize primaryRegionTopic=_primaryRegionTopic;
 @property (strong, nonatomic) NSMutableArray *tsmRegionPushTopics; // @synthesize tsmRegionPushTopics=_tsmRegionPushTopics;
 @property (strong, nonatomic) NSMutableArray *tsmRegionURLs; // @synthesize tsmRegionURLs=_tsmRegionURLs;
 
++ (Class)brokerRegionPushTopicsType;
++ (Class)tsmRegionPushTopicsType;
++ (Class)tsmRegionURLsType;
 - (void).cxx_destruct;
 - (void)addBrokerRegionPushTopics:(id)arg1;
 - (void)addTsmRegionPushTopics:(id)arg1;

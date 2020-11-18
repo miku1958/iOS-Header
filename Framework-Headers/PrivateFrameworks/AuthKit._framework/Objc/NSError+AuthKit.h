@@ -9,5 +9,8 @@
 @interface NSError (AuthKit)
 + (id)ak_errorWithCode:(long long)arg1;
 + (id)ak_wrappedAnisetteError:(int)arg1;
+- (BOOL)ak_isUserCancelError;
+- (BOOL)ak_isUserSkippedError;
+- (BOOL)ak_isUserTryAgainError;
 @end
 

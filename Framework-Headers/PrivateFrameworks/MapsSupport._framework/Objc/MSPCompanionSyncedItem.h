@@ -7,34 +7,52 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <MapsSupport/NSCopying-Protocol.h>
+#import <MapsSupport/SYChange-Protocol.h>
 #import <MapsSupport/SYObject-Protocol.h>
 
 @class MSPBookmarkStorage, MSPHistoryEntryStorage, MSPPinStorage, NSString, PBUnknownFields;
 
-@interface MSPCompanionSyncedItem : PBCodable <SYObject, NSCopying>
+@interface MSPCompanionSyncedItem : PBCodable <SYObject, SYChange, NSCopying>
 {
     PBUnknownFields *_unknownFields;
     MSPBookmarkStorage *_bookmark;
+    int _changeType;
     MSPPinStorage *_pin;
     MSPHistoryEntryStorage *_searchRequest;
     NSString *_syncId;
+    struct {
+        unsigned int changeType:1;
+    } _has;
 }
 
 @property (strong, nonatomic) MSPBookmarkStorage *bookmark; // @synthesize bookmark=_bookmark;
+@property (readonly, nonatomic) long long changeType;
+@property (nonatomic) int changeType; // @synthesize changeType=_changeType;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasBookmark;
+@property (nonatomic) BOOL hasChangeType;
 @property (readonly, nonatomic) BOOL hasPin;
 @property (readonly, nonatomic) BOOL hasSearchRequest;
 @property (readonly, nonatomic) BOOL hasSyncId;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *objectIdentifier;
 @property (strong, nonatomic) MSPPinStorage *pin; // @synthesize pin=_pin;
 @property (strong, nonatomic) MSPHistoryEntryStorage *searchRequest; // @synthesize searchRequest=_searchRequest;
+@property (readonly, nonatomic) NSString *sequencer;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (nonatomic) long long syChangeType;
 @property (strong, nonatomic) NSString *syncId; // @synthesize syncId=_syncId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (id)syncIdWithPrefix:(id)arg1 identifier:(id)arg2;
 - (void).cxx_destruct;
+- (int)StringAsChangeType:(id)arg1;
+- (id)changeTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;

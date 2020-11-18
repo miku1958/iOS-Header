@@ -7,13 +7,12 @@
 #import <CameraKit/CMKCameraViewController.h>
 
 #import <CameraKit/CMKCameraRollObserver-Protocol.h>
-#import <CameraKit/PLPhotoBrowserControllerDelegate-Protocol.h>
 #import <CameraKit/UINavigationControllerDelegate-Protocol.h>
 
 @class CMKKeepDaemonAliveAssertion, NSDictionary, NSString, UIView, UIViewController;
 @protocol NSObject, PLApplicationCameraViewControllerDelegate;
 
-@interface CMKApplicationViewController : CMKCameraViewController <CMKCameraRollObserver, PLPhotoBrowserControllerDelegate, UINavigationControllerDelegate>
+@interface CMKApplicationViewController : CMKCameraViewController <CMKCameraRollObserver, UINavigationControllerDelegate>
 {
     CDUnknownBlockType _previewButtonAction;
     CDUnknownBlockType _doneButtonAction;
@@ -68,7 +67,6 @@
 - (BOOL)_cameraIsRunning;
 - (void)_cameraRollReload:(id)arg1;
 - (void)_createPhysicalCaptureRecognizerIfNecessary;
-- (id)_currentPhotoBrowser;
 - (void)_defaultCameraDevice:(id *)arg1 cameraMode:(id *)arg2;
 - (id)_dictionaryFromPackedArray:(id)arg1;
 - (void)_didPerformPhysicalCapture:(id)arg1;
@@ -108,8 +106,6 @@
 - (void)loadView;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (id)newAlbumNavigationControllerForCameraRoll:(id)arg1;
-- (void)photoBrowserControllerDidEndPaging:(id)arg1;
-- (void)photoBrowserControllerWillBeginPaging:(id)arg1;
 - (void)photoLibraryDidChange:(id)arg1;
 - (void)preferencesDidChange;
 - (BOOL)prefersStatusBarHidden;

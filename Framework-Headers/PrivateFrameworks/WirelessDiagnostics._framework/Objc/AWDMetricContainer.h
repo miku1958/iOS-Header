@@ -17,7 +17,7 @@
 @property (strong, nonatomic) PBCodable *metric; // @synthesize metric=_metric;
 @property (readonly, nonatomic) unsigned int metricId; // @synthesize metricId=_metricId;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithMetricId:(unsigned int)arg1;
 
 @end

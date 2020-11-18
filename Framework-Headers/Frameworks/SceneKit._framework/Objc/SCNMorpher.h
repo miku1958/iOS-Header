@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
 #import <SceneKit/SCNAnimatable-Protocol.h>
@@ -21,6 +21,7 @@
     NSMutableArray *_weights;
     NSString *_name;
     BOOL _shouldMorphNormals;
+    BOOL _useSparseTargets;
 }
 
 @property (readonly) NSArray *animationKeys;
@@ -34,11 +35,12 @@
 + (id)morpher;
 + (id)morpherWithMorphRef:(struct __C3DMorph *)arg1;
 + (BOOL)supportsSecureCoding;
-- (void *)__CFObject;
-- (void)__removeAnimation:(id)arg1 forKey:(id)arg2;
+- (const void *)__CFObject;
+- (BOOL)__removeAnimation:(id)arg1 forKey:(id)arg2;
 - (void)_customDecodingOfSCNMorpher:(id)arg1;
 - (void)_customEncodingOfSCNMorpher:(id)arg1;
 - (void)_didDecodeSCNMorpher:(id)arg1;
+- (BOOL)_isUsingSparseTargets;
 - (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2;
 - (void)_syncEntityObjCModel;
 - (void)_syncObjCAnimations;
@@ -47,6 +49,9 @@
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
 - (id)animationForKey:(id)arg1;
 - (struct __C3DAnimationManager *)animationManager;
+- (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
+- (void)convertToAdditiveWithBaseGeometry:(id)arg1;
+- (void)convertToSparseWithBaseGeometry:(id)arg1;
 - (id)copy;
 - (struct __C3DAnimationChannel *)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -73,9 +78,13 @@
 - (void)setIdentifier:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setShouldMorphNormals:(BOOL)arg1;
+- (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
+- (void)setWantsCPUMorphing:(BOOL)arg1;
 - (void)setWeight:(double)arg1 forTargetAtIndex:(unsigned long long)arg2;
 - (void)setWeights:(id)arg1;
 - (BOOL)shouldMorphNormals;
+- (void)unbindAnimatablePath:(id)arg1;
+- (BOOL)wantsCPUMorphing;
 - (double)weightForTargetAtIndex:(unsigned long long)arg1;
 
 @end

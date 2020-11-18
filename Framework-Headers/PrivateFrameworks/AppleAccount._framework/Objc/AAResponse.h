@@ -20,6 +20,7 @@
 
 @property (readonly, nonatomic) NSData *data; // @synthesize data=_data;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
+@property (readonly, nonatomic) NSHTTPURLResponse *httpResponse; // @synthesize httpResponse=_httpResponse;
 @property (readonly, nonatomic) NSNumber *maxAge; // @synthesize maxAge=_maxAge;
 @property (readonly, nonatomic) NSString *protocolVersion;
 @property (readonly, nonatomic) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;

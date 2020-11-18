@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
@@ -32,6 +32,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (struct CGSize)sizeFromAspectRatio:(double)arg1;
 
 @end
 

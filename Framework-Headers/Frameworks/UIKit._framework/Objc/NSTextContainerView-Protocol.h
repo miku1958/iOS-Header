@@ -12,7 +12,6 @@
 @protocol NSTextContainerView <NSObject, NSTextLayoutOrientationProvider>
 
 @optional
-- (struct CGRect)desiredBoundsForTextContainerSize:(struct CGSize)arg1;
 - (NSDictionary *)linkTextAttributes;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1 avoidAdditionalLayout:(BOOL)arg2;
 - (struct CGRect)textContainerFrameForBounds:(struct CGRect)arg1;

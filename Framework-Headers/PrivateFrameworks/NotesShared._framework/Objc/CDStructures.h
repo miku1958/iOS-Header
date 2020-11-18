@@ -173,6 +173,26 @@ struct ICDrawingEndHookFilter {
     BOOL _field6;
 };
 
+struct ICDrawingEstimatedAltitudeAndAzimuthFilter {
+    CDUnknownFunctionPointerType *_field1;
+    struct ICDrawingInputProvider<ICDrawingInputPoint> *_field2;
+    BOOL _field3;
+    double _field4;
+    long long _field5;
+    long long _field6;
+    long long _field7;
+    double _field8;
+    double _field9;
+    double _field10;
+    double _field11;
+    long long _field12;
+    unsigned int _field13;
+    long long _field14;
+    double _field15;
+    double _field16;
+    id _field17;
+};
+
 struct ICDrawingInputProvider<ICDrawingInputPoint>;
 
 struct ICDrawingInputProvider<ICDrawingOutputPoint> {
@@ -316,6 +336,8 @@ struct PreviewImage {
     BOOL _field6;
     struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field7;
     struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field8;
+    int _field9;
+    int _field10;
 };
 
 struct Rectangle;
@@ -452,11 +474,19 @@ struct UIImage {
     Class _field1;
 };
 
+struct UIImageView {
+    Class _field1;
+};
+
 struct UITextView {
     Class _field1;
 };
 
 struct UIView {
+    Class _field1;
+};
+
+struct UIWindow {
     Class _field1;
 };
 
@@ -667,7 +697,8 @@ typedef struct {
     BOOL _field7;
     long long _field8;
     double _field9;
-} CDStruct_d0a6eba3;
+    BOOL _field10;
+} CDStruct_f17e9403;
 
 typedef struct {
     struct CGPoint point;

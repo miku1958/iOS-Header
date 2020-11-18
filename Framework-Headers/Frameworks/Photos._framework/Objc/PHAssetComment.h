@@ -43,6 +43,7 @@
 @property (readonly, nonatomic) BOOL isLike; // @synthesize isLike=_isLike;
 @property (readonly, nonatomic) BOOL isMyComment; // @synthesize isMyComment=_isMyComment;
 
++ (id)fetchType;
 + (id)managedEntityName;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
 - (void).cxx_destruct;

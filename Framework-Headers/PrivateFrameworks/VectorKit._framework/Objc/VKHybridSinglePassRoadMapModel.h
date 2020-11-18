@@ -11,7 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)gglLayoutScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
+- (void)gglLayoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
+- (BOOL)supportsTrafficCasing;
 
 @end
 

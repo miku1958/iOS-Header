@@ -6,29 +6,32 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMMessageReceiver-Protocol.h>
+#import <HomeKitDaemon/HMFDumpState-Protocol.h>
+#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDHome, HMMessageDispatcher, NSMutableArray, NSString, NSUUID;
+@class HMDApplicationData, HMDHome, HMFMessageDispatcher, NSMutableArray, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDServiceGroup : NSObject <HMMessageReceiver, NSSecureCoding>
+@interface HMDServiceGroup : NSObject <HMFMessageReceiver, HMFDumpState, NSSecureCoding>
 {
     NSString *_name;
     NSUUID *_uuid;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSMutableArray *_services;
     HMDHome *_home;
-    HMMessageDispatcher *_msgDispatcher;
+    HMFMessageDispatcher *_msgDispatcher;
+    HMDApplicationData *_appData;
 }
 
+@property (strong, nonatomic) HMDApplicationData *appData; // @synthesize appData=_appData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSMutableArray *services; // @synthesize services=_services;
 @property (readonly) Class superclass;
@@ -41,10 +44,10 @@
 - (void)_handleRemoveServiceRequest:(id)arg1;
 - (void)_handleRenameRequest:(id)arg1;
 - (void)_registerForMessages;
-- (id)assistantUniqueIdentifier;
+- (id)assistantObject;
 - (void)configure:(id)arg1 queue:(id)arg2;
-- (BOOL)containsAccessoryWithUUID:(id)arg1;
 - (void)dealloc;
+- (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fixupServicesForReplacementAccessory:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -20,7 +20,6 @@
 @property (readonly) Class superclass;
 
 - (void)_dispose;
-- (void)_xref_dispose;
 - (id)init;
 - (id)retain;
 

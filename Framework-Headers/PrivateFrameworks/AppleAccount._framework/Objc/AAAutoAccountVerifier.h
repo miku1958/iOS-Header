@@ -13,11 +13,11 @@
 @interface AAAutoAccountVerifier : NSObject <MSSearchDelegate>
 {
     NSOperationQueue *_requesterQueue;
-    MSSearch *_search;
     ACAccount *_account;
     CDUnknownBlockType _handler;
     int _attempts;
     BOOL _canceled;
+    MSSearch *_search;
 }
 
 @property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;

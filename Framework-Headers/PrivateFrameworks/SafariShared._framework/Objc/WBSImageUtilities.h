@@ -15,6 +15,8 @@
 + (void)decodeImageData:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (id)flatImage:(id)arg1 withColor:(id)arg2;
 + (BOOL)image:(id)arg1 isEqualToImage:(id)arg2;
++ (struct CGSize)imageSizeScalingSize:(struct CGSize)arg1 proportionallyToFitSize:(struct CGSize)arg2;
++ (id)resizedImage:(id)arg1 withSize:(struct CGSize)arg2;
 + (id)squareThumbnailImageFromImage:(id)arg1 thumbnailWidthInPixels:(double)arg2;
 
 @end

@@ -10,16 +10,12 @@
 
 @interface SAClockObject : SADomainObject
 {
-    NSNumber *_latitude;
-    NSNumber *_longitude;
 }
 
 @property (copy, nonatomic) NSNumber *alCityId;
 @property (copy, nonatomic) NSString *cityName;
 @property (copy, nonatomic) NSString *countryCode;
 @property (copy, nonatomic) NSString *countryName;
-@property (copy, nonatomic) NSNumber *latitude; // @synthesize latitude=_latitude;
-@property (copy, nonatomic) NSNumber *longitude; // @synthesize longitude=_longitude;
 @property (copy, nonatomic) NSString *timezoneId;
 @property (copy, nonatomic) NSString *unlocalizedCityName;
 @property (copy, nonatomic) NSString *unlocalizedCountryName;

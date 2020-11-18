@@ -8,7 +8,7 @@
 
 #import <MobileTimer/Clock-Protocol.h>
 
-@class AnalogClockView, DigitalClockLabel, NSArray, NSTimeZone, UILabel;
+@class DigitalClockLabel, NSArray, NSTimeZone, UILabel;
 @protocol WorldClockCellViewDelegate;
 
 @interface WorldClockCellView : UIView <Clock>
@@ -16,49 +16,37 @@
     NSTimeZone *_timeZone;
     long long _nowInMinutes;
     BOOL _editing;
-    BOOL _shouldAddLayoutConstraints;
     BOOL _started;
     id<WorldClockCellViewDelegate> _delegate;
-    long long _style;
-    AnalogClockView *_analogClock;
     DigitalClockLabel *_digitalClock;
     UILabel *_nameLabel;
     UILabel *_combinedLabel;
     NSArray *_currentConstraints;
-    UIView *_combinedLabelContainer;
 }
 
-@property (readonly, nonatomic) AnalogClockView *analogClock; // @synthesize analogClock=_analogClock;
 @property (readonly, nonatomic) UILabel *combinedLabel; // @synthesize combinedLabel=_combinedLabel;
-@property (strong) UIView *combinedLabelContainer; // @synthesize combinedLabelContainer=_combinedLabelContainer;
 @property (strong, nonatomic) NSArray *currentConstraints; // @synthesize currentConstraints=_currentConstraints;
 @property (weak, nonatomic) id<WorldClockCellViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) DigitalClockLabel *digitalClock; // @synthesize digitalClock=_digitalClock;
 @property (readonly, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
 @property (readonly, nonatomic) int runMode;
-@property (nonatomic) BOOL shouldAddLayoutConstraints; // @synthesize shouldAddLayoutConstraints=_shouldAddLayoutConstraints;
 @property (readonly, nonatomic) BOOL started; // @synthesize started=_started;
-@property (nonatomic) long long style; // @synthesize style=_style;
 
-+ (id)combinedStringFromDate:(id)arg1 withTimezoneOffset:(long long)arg2 dayText:(id *)arg3 hourText:(id *)arg4 usesSeparateLines:(BOOL)arg5;
++ (id)dayAndTimeZoneOffsetStringFromDate:(id)arg1 withTimeZoneOffset:(long long)arg2 timeZoneAbbreviation:(id)arg3 spaceBeforeTimeDesignator:(BOOL)arg4;
++ (double)defaultHeight;
 - (void).cxx_destruct;
-- (void)_setStyle:(long long)arg1 animated:(BOOL)arg2 force:(BOOL)arg3;
 - (double)coarseUpdateInterval;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (void)localeChange:(id)arg1;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setStyle:(long long)arg1 animated:(BOOL)arg2;
 - (void)setTimeZone:(id)arg1;
 - (void)significantTimeChange:(id)arg1;
 - (void)start;
 - (void)stop;
-- (id)stringFromDate:(id)arg1 withTimezoneOffset:(long long)arg2;
-- (void)updateConstraints;
 - (double)updateInterval;
 - (void)updateTime;
 - (void)updateTimeContinuously:(long long)arg1;
-- (id)viewsByIdentifier;
 
 @end
 

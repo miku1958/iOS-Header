@@ -11,13 +11,27 @@
 __attribute__((visibility("hidden")))
 @interface _NCWidgetExtensionContext : NSExtensionContext
 {
+    struct CGSize _maxCompactSize;
+    struct CGSize _maxExpandedSize;
+    long long _widgetLargestAvailableDisplayMode;
     _NCWidgetViewController *_hostViewController;
+    long long _activeDisplayMode;
 }
 
-@property (nonatomic) _NCWidgetViewController *hostViewController; // @synthesize hostViewController=_hostViewController;
+@property (nonatomic, getter=_activeDisplayMode, setter=_setActiveDisplayMode:) long long activeDisplayMode; // @synthesize activeDisplayMode=_activeDisplayMode;
+@property (weak, nonatomic, getter=_hostViewController, setter=_setHostViewController:) _NCWidgetViewController *hostViewController; // @synthesize hostViewController=_hostViewController;
 
+- (void).cxx_destruct;
+- (struct CGSize)_maximumSizeForDisplayMode:(long long)arg1;
+- (void)_setMaximumSize:(struct CGSize)arg1 forDisplayMode:(long long)arg2;
+- (id)initWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 contextUUID:(id)arg3;
+- (void)invalidateWidgetDisplayProperties;
 - (void)openURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setWidgetLargestAvailableDisplayMode:(long long)arg1;
+- (long long)widgetActiveDisplayMode;
+- (long long)widgetLargestAvailableDisplayMode;
+- (struct CGSize)widgetMaximumSizeForDisplayMode:(long long)arg1;
 
 @end
 

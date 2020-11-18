@@ -6,7 +6,7 @@
 
 #import <HomeKitDaemon/BBSectionIdentity-Protocol.h>
 
-@class BBActionResponse, BBBulletinRequestParameters, BBSectionInfo, BBSectionParameters, BBThumbnailSizeConstraints, NSArray, NSData, NSDate, NSDictionary, NSSet, NSString;
+@class BBActionResponse, BBBulletinRequestParameters, BBSectionInfo, BBSectionParameters, BBThumbnailSizeConstraints, NSArray, NSData, NSDate, NSDictionary, NSSet, NSString, NSUUID;
 
 @protocol BBDataProvider <BBSectionIdentity>
 - (NSArray *)sortDescriptors;
@@ -25,7 +25,11 @@
 - (NSArray *)defaultSubsectionInfos;
 - (NSString *)displayNameForFilterID:(NSString *)arg1;
 - (NSString *)displayNameForSubsectionID:(NSString *)arg1;
+- (void)getAspectRatioForAttachmentUUID:(NSUUID *)arg1 recordID:(NSString *)arg2 withCompletionHandler:(void (^)(float))arg3;
+- (void)getDataForAttachmentUUID:(NSUUID *)arg1 recordID:(NSString *)arg2 withCompletionHandler:(void (^)(NSData *))arg3;
+- (void)getPNGDataForAttachmentUUID:(NSUUID *)arg1 recordID:(NSString *)arg2 sizeConstraints:(BBThumbnailSizeConstraints *)arg3 withCompletionHandler:(void (^)(NSData *))arg4;
 - (void)handleBulletinActionResponse:(BBActionResponse *)arg1;
+- (void)handleBulletinActionResponse:(BBActionResponse *)arg1 withCompletion:(void (^)(BOOL))arg2;
 - (BOOL)migrateSectionInfo:(BBSectionInfo *)arg1 oldSectionInfo:(BBSectionInfo *)arg2;
 - (void)noteSectionInfoDidChange:(BBSectionInfo *)arg1;
 - (NSData *)primaryAttachmentDataForRecordID:(NSString *)arg1;

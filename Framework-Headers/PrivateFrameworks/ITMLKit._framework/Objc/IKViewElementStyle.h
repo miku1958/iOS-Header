@@ -92,6 +92,7 @@
 - (struct UIEdgeInsets)_edgeInsetsForStyleKey:(id)arg1;
 - (id)_gradientFromString:(id)arg1;
 - (id)_newColorFromString:(id)arg1;
+- (id)debugDescription;
 - (id)description;
 - (id)initWithCSSRule:(id)arg1 filterBlockedStyles:(BOOL)arg2 selStr:(id)arg3;
 - (id)initWithClassSelector:(id)arg1;

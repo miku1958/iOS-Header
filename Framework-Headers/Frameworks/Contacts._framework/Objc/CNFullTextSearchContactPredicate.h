@@ -26,7 +26,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithSearchString:(id)arg1 containerIdentifiers:(id)arg2 groupIdentifiers:(id)arg3;
 - (id)sgContactMatchesWithSortOrder:(long long)arg1 mutableObjects:(BOOL)arg2 service:(id)arg3 error:(id *)arg4;
 

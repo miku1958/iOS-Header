@@ -21,10 +21,13 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
 - (id)label;
+- (id)newSerializedComputeData;
 - (void)reset;
 - (void)setComputeFunction:(id)arg1;
 - (void)setLabel:(id)arg1;
+- (void)setStageInputDescriptor:(id)arg1;
 - (void)setThreadGroupSizeIsMultipleOfThreadExecutionWidth:(BOOL)arg1;
+- (id)stageInputDescriptor;
 - (BOOL)threadGroupSizeIsMultipleOfThreadExecutionWidth;
 - (void)validateWithDevice:(id)arg1;
 

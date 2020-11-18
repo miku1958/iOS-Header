@@ -67,7 +67,6 @@
 - (BOOL)isMainDisplay;
 - (BOOL)isMusicOnlyDisplay;
 - (BOOL)isRestrictedAirPlayDisplay;
-- (BOOL)isWatchOnlyDisplay;
 - (BOOL)isiPodOnlyDisplay;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

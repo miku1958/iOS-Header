@@ -10,6 +10,7 @@
 
 @interface CAMElapsedTimeView : UIView
 {
+    long long _layoutStyle;
     UILabel *__timeLabel;
     UIImageView *__recordingImageView;
     NSTimer *__updateTimer;
@@ -20,20 +21,25 @@
 @property (readonly, nonatomic) NSDate *_startTime; // @synthesize _startTime=__startTime;
 @property (readonly, nonatomic) UILabel *_timeLabel; // @synthesize _timeLabel=__timeLabel;
 @property (readonly, nonatomic) NSTimer *_updateTimer; // @synthesize _updateTimer=__updateTimer;
+@property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 
 - (void).cxx_destruct;
 - (void)_beginRecordingAnimation;
-- (void)_commonCAMElapsedTimeViewInitialization;
+- (void)_commonCAMElapsedTimeViewInitializationWithLayoutStyle:(long long)arg1;
 - (void)_endRecordingAnimation;
 - (void)_setStartTime:(id)arg1;
-- (void)_update:(id)arg1;
+- (void)_updateFont;
+- (void)_updateForTimer:(id)arg1;
+- (void)_updateText;
 - (void)dealloc;
 - (void)endTimer;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithLayoutStyle:(long long)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)resetTimer;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)startTimer;
 - (void)updateToContentSize:(id)arg1;
 

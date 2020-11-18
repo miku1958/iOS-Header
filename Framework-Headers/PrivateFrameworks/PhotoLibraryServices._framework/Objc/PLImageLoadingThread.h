@@ -28,6 +28,7 @@
     PLImageCache *_weak_cache;
 }
 
+- (void).cxx_destruct;
 - (BOOL)_dequeueRequest:(id)arg1;
 - (void)_enqueueRequest:(id)arg1;
 - (id)_imageCache;

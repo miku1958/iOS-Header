@@ -6,30 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class MPUBorderDrawingCache, NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet, NSString, SKUIBadgeTextAttachmentLoader, SKUIClientContext, SKUIItemOfferButton, SKUIResourceLoader, SKUIViewElementTextLayoutCache, UIColor, UIViewController;
+@class MPUBorderDrawingCache, NSCache, NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet, NSString, SKUIBadgeTextAttachmentLoader, SKUIClientContext, SKUIItemOfferButton, SKUIResourceLoader, SKUIViewElementTextLayoutCache, UIColor, UIViewController;
 @protocol SKUIArtworkRequestDelegate;
 
 @interface SKUIViewElementLayoutContext : NSObject
 {
-    double _activePageWidth;
     NSMutableDictionary *_aggregateValues;
-    id<SKUIArtworkRequestDelegate> _artworkRequestDelegate;
     SKUIBadgeTextAttachmentLoader *_badgeImageLoader;
     MPUBorderDrawingCache *_borderDrawingCache;
-    SKUIClientContext *_clientContext;
-    unsigned long long _containerViewElementType;
     NSMapTable *_editorialLayouts;
     NSHashTable *_expandedEditorialLayouts;
     SKUIItemOfferButton *_itemOfferButton;
     NSMutableDictionary *_itemOfferButtonSizes;
-    SKUIViewElementTextLayoutCache *_labelLayoutCache;
     struct UIEdgeInsets _largeScreenElementPadding;
     NSMutableSet *_observedArtworkRequestIDs;
-    UIViewController *_parentViewController;
-    UIColor *_placeholderColor;
-    NSMapTable *_placeholderImages;
     NSMapTable *_blurColors;
+    double _activePageWidth;
+    id<SKUIArtworkRequestDelegate> _artworkRequestDelegate;
+    SKUIClientContext *_clientContext;
+    unsigned long long _containerViewElementType;
+    SKUIViewElementTextLayoutCache *_labelLayoutCache;
+    UIViewController *_parentViewController;
     SKUIResourceLoader *_resourceLoader;
+    UIColor *_placeholderColor;
     UIColor *_tintColor;
     NSString *_backdropGroupName;
     double _displayScale;
@@ -47,6 +46,7 @@
 @property (readonly, nonatomic) struct UIEdgeInsets largeScreenElementPadding; // @synthesize largeScreenElementPadding=_largeScreenElementPadding;
 @property (weak, nonatomic) UIViewController *parentViewController; // @synthesize parentViewController=_parentViewController;
 @property (strong, nonatomic) UIColor *placeholderColor; // @synthesize placeholderColor=_placeholderColor;
+@property (readonly, nonatomic) NSCache *placeholderImageCache;
 @property (strong, nonatomic) SKUIResourceLoader *resourceLoader; // @synthesize resourceLoader=_resourceLoader;
 @property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 
@@ -59,6 +59,7 @@
 - (struct CGSize)_sizeForImageElement:(id)arg1 applyTransform:(BOOL)arg2;
 - (id)aggregateValueForKey:(id)arg1;
 - (id)blurColorForCacheKey:(id)arg1;
+- (id)dataConsumerForImageElement:(id)arg1;
 - (void)dealloc;
 - (double)defaultItemWidthForViewElement:(id)arg1;
 - (id)editorialLayoutForLabelElement:(id)arg1 width:(double)arg2;
@@ -74,9 +75,10 @@
 - (BOOL)loadImageForArtwork:(id)arg1 reason:(long long)arg2;
 - (BOOL)loadImageForBadgeElement:(id)arg1 reason:(long long)arg2;
 - (BOOL)loadImageForImageElement:(id)arg1 reason:(long long)arg2;
+- (BOOL)loadImageForImageElement:(id)arg1 reason:(long long)arg2 dataConsumer:(id)arg3;
 - (BOOL)loadTemplatedImageForBadgeElement:(id)arg1 reason:(long long)arg2;
 - (long long)maxWidthForElement:(id)arg1 withDefaultWidth:(long long)arg2;
-- (id)placeholderImageForImageElement:(id)arg1;
+- (id)placeholderImageForImageElement:(id)arg1 dataConsumer:(id)arg2;
 - (id)placeholderImageForSize:(struct CGSize)arg1;
 - (BOOL)prefetchResourcesForViewElement:(id)arg1 reason:(long long)arg2;
 - (id)requestIdentifierForArtwork:(id)arg1;

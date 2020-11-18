@@ -4,16 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoard/NSObject-Protocol.h>
+#import <FrontBoard/FBSProcess-Protocol.h>
 
-@class NSString;
-
-@protocol FBUIProcess <NSObject>
-- (NSString *)bundleIdentifier;
+@protocol FBUIProcess <FBSProcess>
 - (BOOL)isApplicationProcess;
 - (BOOL)isExtensionProcess;
 - (BOOL)isRunning;
 - (BOOL)isSystemApplicationProcess;
-- (int)pid;
 @end
 

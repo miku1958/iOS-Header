@@ -45,6 +45,7 @@
 @property (readonly, nonatomic) NSSet *syncableDataclasses; // @synthesize syncableDataclasses=_syncableDataclasses;
 @property (nonatomic) int visibility;
 
++ (id)allIdentifiers;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

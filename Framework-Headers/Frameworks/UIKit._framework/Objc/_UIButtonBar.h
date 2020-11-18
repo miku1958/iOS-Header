@@ -11,6 +11,7 @@
 #import <UIKit/_UIBarButtonItemViewOwner-Protocol.h>
 
 @class NSArray, NSLayoutConstraint, NSMapTable, NSMutableArray, NSString, UIBarButtonItem, UILayoutGuide, UIView, _UIButtonBarButtonVisualProvider, _UIButtonBarLayoutMetrics, _UIButtonBarStackView;
+@protocol _UIButtonBarDelegate;
 
 @interface _UIButtonBar : NSObject <_UIBarButtonItemViewOwner, _UIBarButtonItemGroupOwner, NSCoding>
 {
@@ -28,10 +29,11 @@
     NSMutableArray *_layoutGuides;
     NSMutableArray *_layoutActiveConstraints;
     NSMapTable *_senderActionMap;
-    BOOL _compact;
     BOOL _itemsInGroupUseSameSize;
+    BOOL _compact;
     NSArray *_barButtonGroups;
     double _minimumInterItemSpace;
+    id<_UIButtonBarDelegate> _delegate;
     _UIButtonBarButtonVisualProvider *_visualProvider;
     double _minimumInterGroupSpace;
     CDUnknownBlockType _defaultActionFilter;
@@ -41,6 +43,7 @@
 @property (nonatomic, getter=_compact, setter=_setCompact:) BOOL compact; // @synthesize compact=_compact;
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) CDUnknownBlockType defaultActionFilter; // @synthesize defaultActionFilter=_defaultActionFilter;
+@property (weak, nonatomic) id<_UIButtonBarDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=_itemsInGroupUseSameSize, setter=_setItemsInGroupUseSameSize:) BOOL itemsInGroupUseSameSize; // @synthesize itemsInGroupUseSameSize=_itemsInGroupUseSameSize;
@@ -71,6 +74,7 @@
 - (id)_newGroupLayout:(id)arg1;
 - (void)_reloadBarButtonGroups;
 - (void)_setNeedsVisualUpdate;
+- (void)_setNeedsVisualUpdateAndNotify:(BOOL)arg1;
 - (id)_targetActionForBarButtonItem:(id)arg1;
 - (void)_updateForTraitCollectionChange:(id)arg1;
 - (void)_updateToFitInWidth:(double)arg1;

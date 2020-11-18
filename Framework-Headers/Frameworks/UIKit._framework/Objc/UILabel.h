@@ -7,16 +7,18 @@
 #import <UIKit/UIView.h>
 
 #import <UIKit/NSCoding-Protocol.h>
+#import <UIKit/UIContentSizeCategoryAdjusting-Protocol.h>
 #import <UIKit/_UIMultilineTextContentSizing-Protocol.h>
 
-@class NSAttributedString, NSMutableDictionary, NSString, UIColor, UIFont, _UILabelScaledMetrics;
+@class CUICatalog, CUIStyleEffectConfiguration, NSAttributedString, NSMutableDictionary, NSString, UIColor, UIFont, _UILabelScaledMetrics;
 
-@interface UILabel : UIView <_UIMultilineTextContentSizing, NSCoding>
+@interface UILabel : UIView <_UIMultilineTextContentSizing, NSCoding, UIContentSizeCategoryAdjusting>
 {
     struct CGSize _size;
     UIColor *_highlightedColor;
     long long _numberOfLines;
     long long _measuredNumberOfLines;
+    struct CGRect _baselineReferenceBounds;
     double _lastLineBaseline;
     double _previousBaselineOffsetFromBottom;
     double _firstLineBaseline;
@@ -25,10 +27,15 @@
     id _content;
     NSAttributedString *_synthesizedAttributedText;
     NSMutableDictionary *_defaultAttributes;
+    NSMutableDictionary *_fallbackColorsForUserInterfaceStyle;
     double _minimumFontSize;
     long long _lineSpacing;
     id _layout;
     _UILabelScaledMetrics *_scaledMetrics;
+    struct CGSize _cachedIntrinsicContentSize;
+    long long _contentsFormat;
+    CUICatalog *_cuiCatalog;
+    CUIStyleEffectConfiguration *_cuiStyleEffectConfiguration;
     struct {
         unsigned int unused1:3;
         unsigned int highlighted:1;
@@ -44,15 +51,20 @@
         unsigned int drawsLetterpress:1;
         unsigned int unused3:1;
         unsigned int usesExplicitPreferredMaxLayoutWidth:1;
-        unsigned int determiningPreferredMaxLayoutWidth:1;
-        unsigned int inSecondConstraintsPass:1;
         unsigned int drawsDebugBaselines:1;
         unsigned int explicitBaselineOffset:1;
         unsigned int usesSimpleTextEffects:1;
         unsigned int isComplexString:1;
         unsigned int isVariableLengthString:1;
         unsigned int wantsUnderlineForAccessibilityButtonShapesEnabled:1;
+        unsigned int cachedIntrinsicContentSizeIsValid:1;
+        unsigned int overridesDrawRect:1;
+        unsigned int overridesTextAccessors:1;
+        unsigned int disableUpdateTextColorOnTraitCollectionChange:1;
+        unsigned int textAlignmentFollowsWritingDirection:1;
+        unsigned int textAlignmentMirrored:1;
     } _textLabelFlags;
+    BOOL _adjustsFontForContentSizeCategory;
     BOOL __textColorFollowsTintColor;
     double _preferredMaxLayoutWidth;
 }
@@ -68,6 +80,7 @@
 @property (nonatomic, setter=_setTextColorFollowsTintColor:) BOOL _textColorFollowsTintColor; // @synthesize _textColorFollowsTintColor=__textColorFollowsTintColor;
 @property (nonatomic, setter=_setWantsUnderlineForAccessibilityButtonShapesEnabled:) BOOL _wantsUnderlineForAccessibilityButtonShapesEnabled;
 @property (nonatomic, setter=_setWantsUnderlineForAccessibilityButtonShapesEnabled:) BOOL _wantsUnderlineForAccessibilityButtonShapesEnabled; // @dynamic _wantsUnderlineForAccessibilityButtonShapesEnabled;
+@property (nonatomic) BOOL adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
 @property (nonatomic) BOOL adjustsFontSizeToFitWidth;
 @property (nonatomic) BOOL adjustsLetterSpacingToFitWidth;
 @property (nonatomic) BOOL allowsDefaultTighteningForTruncation;
@@ -98,14 +111,17 @@
 + (struct CGRect)_insetRect:(struct CGRect)arg1 forAttributedString:(id)arg2 withDefaultFont:(id)arg3 inView:(id)arg4;
 + (struct UIEdgeInsets)_insetsForAttributedString:(id)arg1 withDefaultFont:(id)arg2 inView:(id)arg3;
 + (struct UIEdgeInsets)_insetsForString:(id)arg1 withFont:(id)arg2 inView:(id)arg3;
++ (BOOL)_isMonochromeDrawingDisabled;
 + (struct CGSize)_legacy_adjustSizeForWebKitConstraining:(struct CGSize)arg1 withFont:(id)arg2;
 + (struct __CFCharacterSet *)_tooBigChars;
 + (id)defaultFont;
 + (Class)layerClass;
 - (void).cxx_destruct;
+- (id)__currentDefaultColor;
 - (void)_accessibilityButtonShapesChangedNotification:(id)arg1;
 - (void)_accessibilityButtonShapesParametersDidChange;
 - (double)_actualScaleFactor;
+- (void)_adjustPreferredFontForCurrentContentSizeCategory;
 - (void)_applicationDidBecomeActiveNotification:(id)arg1;
 - (void)_applicationWillResignActiveNotification:(id)arg1;
 - (id)_associatedScalingLabel;
@@ -115,8 +131,12 @@
 - (void)_commonInit;
 - (id)_compatibilityAttributedString;
 - (struct UIEdgeInsets)_contentInsetsFromFonts;
+- (long long)_contentsFormatForNonDeepDrawing;
 - (void)_coordinateBeginTimeForMarqueeAnimations:(double)arg1;
+- (id)_cuiCatalog;
+- (id)_cuiStyleEffectConfiguration;
 - (id)_defaultAttributes;
+- (long long)_determineContentsFormat;
 - (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(BOOL)arg3;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (id)_disabledFontColor;
@@ -124,11 +144,14 @@
 - (void)_drawTextInRect:(struct CGRect)arg1 baselineCalculationOnly:(BOOL)arg2;
 - (BOOL)_drawsUnderline;
 - (struct CGRect)_ensureBaselineMetricsReturningBounds;
+- (void)_evaluateContentsFormat;
+- (id)_fallbackTextColorForUserInterfaceStyle:(long long)arg1;
 - (double)_firstBaselineOffsetFromTop;
 - (id)_image;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (void)_invalidateAsNeededForNewSize:(struct CGSize)arg1 oldSize:(struct CGSize)arg2 withLinkCheck:(BOOL)arg3;
-- (void)_invalidateDefaultAttributes;
+- (void)_invalidateCachedDefaultAttributes;
+- (void)_invalidateIntrinsicContentSizeNeedingLayout:(BOOL)arg1;
 - (void)_invalidateLayout;
 - (void)_invalidateSynthesizedAttributedTextAndLayout;
 - (void)_invalidateTextSize;
@@ -138,24 +161,30 @@
 - (long long)_measuredNumberOfLines;
 - (double)_minimumFontSize;
 - (BOOL)_needsDoubleUpdateConstraintsPass;
+- (void)_noteInstanceCustomizationForAttributedString:(id)arg1 attributes:(id)arg2;
 - (double)_preferredMaxLayoutWidth;
 - (void)_prepareForFirstIntrinsicContentSizeCalculation;
 - (void)_prepareForSecondIntrinsicContentSizeCalculationWithLayoutEngineBounds:(struct CGRect)arg1;
-- (void)_resetToBeginningOfDoublePass;
 - (void)_resetUsesExplicitPreferredMaxLayoutWidth;
-- (id)_scriptingInfo;
+- (id)_safeContent:(BOOL *)arg1;
 - (void)_setAllowsDefaultTighteningForTruncation:(BOOL)arg1;
 - (void)_setAttributedText:(id)arg1 andTakeOwnership:(BOOL)arg2;
 - (void)_setColor:(id)arg1;
+- (void)_setCuiCatalog:(id)arg1;
+- (void)_setCuiStyleEffectConfiguration:(id)arg1;
 - (void)_setDefaultAttributes:(id)arg1;
+- (void)_setFallbackTextColor:(id)arg1 forUserInterfaceStyle:(long long)arg2;
 - (void)_setFont:(id)arg1;
-- (void)_setInSecondConstraintsPass:(BOOL)arg1;
 - (void)_setLineBreakMode:(long long)arg1;
 - (void)_setMinimumFontSize:(double)arg1;
+- (void)_setNeedsDisplayForInvalidatedContents;
+- (void)_setNeedsUpdateConstraintsNeedingLayout:(BOOL)arg1;
 - (void)_setShadow:(id)arg1;
 - (void)_setShadowUIOffset:(struct UIOffset)arg1;
 - (void)_setText:(id)arg1;
 - (void)_setTextAlignment:(long long)arg1;
+- (void)_setTextAlignmentFollowsWritingDirection:(BOOL)arg1;
+- (void)_setTextAlignmentMirrored:(BOOL)arg1;
 - (void)_setTextColor:(id)arg1;
 - (void)_setUsesSimpleTextEffects:(BOOL)arg1;
 - (void)_setWordRoundingEnabled:(BOOL)arg1;
@@ -168,11 +197,16 @@
 - (void)_startMarqueeIfNecessary;
 - (void)_stopMarqueeWithRedisplay:(BOOL)arg1;
 - (id)_stringDrawingContext;
+- (long long)_stringDrawingOptions;
 - (id)_synthesizedTextAttributes;
+- (BOOL)_textAlignmentFollowsWritingDirection;
+- (BOOL)_textAlignmentMirrored;
 - (struct CGRect)_textRectForBounds:(struct CGRect)arg1 limitedToNumberOfLines:(long long)arg2 includingShadow:(BOOL)arg3;
 - (BOOL)_updateScaledMetricsForRect:(struct CGRect)arg1;
+- (void)_updateTextColorWithFallbackColorIfNeeded;
 - (void)_updateVariableLengthString;
 - (BOOL)_usesSimpleTextEffects;
+- (BOOL)_wantsDeepDrawing;
 - (BOOL)autotrackTextToFit;
 - (BOOL)centersHorizontally;
 - (id)color;
@@ -196,6 +230,7 @@
 - (BOOL)marqueeRunning;
 - (struct CGSize)rawSize;
 - (void)setAutotrackTextToFit:(BOOL)arg1;
+- (void)setBackgroundColor:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setCentersHorizontally:(BOOL)arg1;
 - (void)setColor:(id)arg1;
@@ -216,7 +251,6 @@
 - (struct CGSize)textSizeForWidth:(double)arg1;
 - (void)tintColorDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)updateConstraints;
 
 @end
 

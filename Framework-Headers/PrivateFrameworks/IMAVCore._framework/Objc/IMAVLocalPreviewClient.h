@@ -4,32 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
+#import <IMAVCore/AVConferencePreviewClientDelegate-Protocol.h>
 #import <IMAVCore/IMSystemMonitorListener-Protocol.h>
 
-@class IMAVCamera;
+@class AVConferencePreview, IMAVCamera;
 
-@interface IMAVLocalPreviewClient : NSObject <IMSystemMonitorListener>
+@interface IMAVLocalPreviewClient : NSObject <AVConferencePreviewClientDelegate, IMSystemMonitorListener>
 {
-    BOOL _supportsPreview;
+    BOOL _shouldAlterPreviewState;
     BOOL _wantsPreview;
     BOOL _wantsPausedPreview;
     BOOL _wantsUnpausedPreview;
+    AVConferencePreview *_conferencePreview;
 }
 
 @property (nonatomic) unsigned int cameraOrientation;
 @property (nonatomic) unsigned int cameraType;
+@property (strong, nonatomic) AVConferencePreview *conferencePreview; // @synthesize conferencePreview=_conferencePreview;
 @property (readonly, nonatomic) BOOL isPreviewRunning;
 @property (nonatomic) IMAVCamera *localCamera;
+@property (readonly, nonatomic) struct CGSize localPortraitAspectRatio;
 @property (nonatomic) void *localVideoBackLayer;
 @property (nonatomic) void *localVideoLayer;
-@property (nonatomic) BOOL supportsPreview; // @synthesize supportsPreview=_supportsPreview;
 
 + (id)sharedInstance;
 - (void)_avDaemonConnected;
 - (BOOL)_shouldPreviewBeRunning;
 - (void)_updatePreviewState;
+- (void)avChat:(id)arg1 setLocalPortraitRatio:(struct CGSize)arg2 localLandscapeRatio:(struct CGSize)arg3;
 - (void)beginAnimationToPIP;
 - (void)beginAnimationToPreview;
 - (void)cameraDidBecomeAvailable:(unsigned int)arg1;
@@ -55,6 +59,7 @@
 - (void)systemScreenDidPowerDown;
 - (void)systemScreenDidPowerUp;
 - (void)unpausePreview;
+- (void)updateLocalScreenAtrributes;
 
 @end
 

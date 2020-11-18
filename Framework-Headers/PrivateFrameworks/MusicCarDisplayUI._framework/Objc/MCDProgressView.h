@@ -18,8 +18,10 @@
     NSLayoutConstraint *_leftConstant;
     NSLayoutConstraint *_rightConstant;
     float _progress;
-    BOOL _isLive;
+    BOOL _isLiveStream;
 }
+
+@property (nonatomic) BOOL isLiveStream; // @synthesize isLiveStream=_isLiveStream;
 
 - (void).cxx_destruct;
 - (void)_addConstraints;

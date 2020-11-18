@@ -27,6 +27,7 @@
 @property (nonatomic) unsigned int playbackState; // @synthesize playbackState=_playbackState;
 @property (strong, nonatomic) NSArray *supportedCommands; // @synthesize supportedCommands=_supportedCommands;
 
+- (void)clear;
 - (void)dealloc;
 
 @end

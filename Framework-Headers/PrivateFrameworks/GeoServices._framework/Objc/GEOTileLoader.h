@@ -41,6 +41,7 @@
 - (void)clearAllCaches;
 - (void)closeDatabase;
 - (void)closeForClient:(id)arg1;
+- (id)descriptionDictionaryRepresentation;
 - (void)endPreloadSession;
 - (void)endPreloadSessionForClient:(id)arg1;
 - (void)expireTilesWithPredicate:(CDUnknownBlockType)arg1;

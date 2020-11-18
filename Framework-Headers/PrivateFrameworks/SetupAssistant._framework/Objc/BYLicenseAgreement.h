@@ -10,10 +10,11 @@
 {
 }
 
++ (void)_clearAcceptedLicenseVersion;
 + (BOOL)needsToAcceptNewAgreement;
 + (void)recordUserAcceptedAgreementVersion:(unsigned long long)arg1;
 + (unsigned long long)versionOfAcceptedAgreement;
-+ (unsigned long long)versionOfNewestAgreement;
++ (unsigned long long)versionOfOnDiskAgreement;
 
 @end
 

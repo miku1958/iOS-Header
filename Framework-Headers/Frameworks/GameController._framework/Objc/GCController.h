@@ -6,22 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class GCExtendedGamepad, GCGamepad, GCMotion, NSArray, NSString;
+@class GCExtendedGamepad, GCGamepad, GCMicroGamepad, GCMotion, NSArray, NSString;
 @protocol GCNamedProfile, OS_dispatch_queue;
 
 @interface GCController : NSObject
 {
+    NSString *_physicalDeviceUniqueID;
 }
 
 @property (readonly, nonatomic, getter=isAttachedToDevice) BOOL attachedToDevice;
 @property (copy, nonatomic) CDUnknownBlockType controllerPausedHandler;
-@property (readonly, nonatomic) struct __IOHIDDevice *deviceRef;
-@property (readonly, strong, nonatomic) NSArray *deviceRefs;
 @property (readonly, strong, nonatomic) GCExtendedGamepad *extendedGamepad;
 @property (readonly, strong, nonatomic) GCGamepad *gamepad;
 @property (strong) NSObject<OS_dispatch_queue> *handlerQueue;
-@property (nonatomic) char *hidReportBuffer;
+@property (readonly, strong, nonatomic) NSArray *hidServices;
+@property (readonly, strong, nonatomic) GCMicroGamepad *microGamepad;
 @property (readonly, strong, nonatomic) GCMotion *motion;
+@property (strong, nonatomic) NSString *physicalDeviceUniqueID; // @synthesize physicalDeviceUniqueID=_physicalDeviceUniqueID;
 @property (nonatomic) long long playerIndex;
 @property (strong, nonatomic) id<GCNamedProfile> profile;
 @property (readonly, nonatomic) unsigned int service;
@@ -40,13 +41,17 @@
 + (void)__setLogger__:(CDUnknownBlockType)arg1;
 + (void)_startWirelessControllerDiscoveryWithCompanions:(BOOL)arg1 btClassic:(BOOL)arg2 btle:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)controllers;
++ (void)handleUIEvent:(id)arg1;
 + (void)startWirelessControllerDiscoveryWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (void)stopWirelessControllerDiscovery;
-- (void)addDeviceRefs:(id)arg1;
+- (void).cxx_destruct;
+- (void)addServiceRefs:(id)arg1;
+- (void *)createInputBufferForDevice:(struct __IOHIDDevice *)arg1 withSize:(unsigned long long)arg2;
 - (unsigned long long)deviceHash;
+- (BOOL)hasServiceRef:(struct __IOHIDServiceClient *)arg1;
 - (BOOL)isEqualToController:(id)arg1;
 - (BOOL)isForwarded;
-- (void)removeDeviceRef:(struct __IOHIDDevice *)arg1;
+- (void)removeServiceRef:(struct __IOHIDServiceClient *)arg1;
 - (unsigned int)sampleRate;
 - (BOOL)supportsMotionLite;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSData, NSString;
+@class NSData;
 
 @protocol CADDatabaseInterface
 - (void)CADDatabaseCanModifyCalendarDatabase:(void (^)(int, BOOL))arg1;
@@ -18,12 +18,13 @@
 - (void)CADDatabaseImportICSData:(NSData *)arg1 intoCalendarWithID:(int)arg2 optionsMask:(unsigned long long)arg3 reply:(void (^)(int, NSArray *))arg4;
 - (void)CADDatabaseIsAutomaticLocationGeocodingAllowed:(void (^)(int, BOOL))arg1;
 - (void)CADDatabaseMarkChangedObjectIDsConsumedUpToSequenceNumber:(long long)arg1 reply:(void (^)(int))arg2;
+- (void)CADDatabaseRebuildOccurrenceCacheWithReply:(void (^)(int))arg1;
 - (void)CADDatabaseRegisterForDetailedChangeTracking:(void (^)(int))arg1;
 - (void)CADDatabaseResetWithReply:(void (^)(int))arg1;
 - (void)CADDatabaseRollbackWithReply:(void (^)(int))arg1;
 - (void)CADDatabaseSaveWithReply:(void (^)(int))arg1;
 - (void)CADDatabaseSetAutomaticLocationGeocodingAllowed:(BOOL)arg1 reply:(void (^)(int))arg2;
-- (void)CADDatabaseSetPath:(NSString *)arg1 andInitOptions:(int)arg2 reply:(void (^)(int))arg3;
+- (void)CADDatabaseSetInitializationOptions:(int)arg1 reply:(void (^)(int))arg2;
 - (void)CADDatabaseSetShowsDeclinedEvents:(BOOL)arg1 reply:(void (^)(int))arg2;
 - (void)CADDatabaseSetSourceAccountManagement:(int)arg1 reply:(void (^)(int))arg2;
 @end

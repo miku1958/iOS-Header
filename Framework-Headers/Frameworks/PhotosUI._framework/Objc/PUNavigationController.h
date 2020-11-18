@@ -37,6 +37,7 @@
 - (void).cxx_destruct;
 - (void)_commonPUNavigationControllerInitialization;
 - (id)_extendedToolbar;
+- (BOOL)_navigationControllerShouldUseBuiltinInteractionController:(id)arg1;
 - (void)_setCurrentToolbarViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)_updateBarStyle;
 - (id)initWithNavigationBarClass:(Class)arg1 toolbarClass:(Class)arg2;

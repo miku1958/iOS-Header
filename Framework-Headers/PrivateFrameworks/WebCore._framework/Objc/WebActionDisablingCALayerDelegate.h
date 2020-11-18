@@ -6,9 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@interface WebActionDisablingCALayerDelegate : NSObject
+#import <WebCore/CALayerDelegate-Protocol.h>
+
+@class NSString;
+
+@interface WebActionDisablingCALayerDelegate : NSObject <CALayerDelegate>
 {
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)shared;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;

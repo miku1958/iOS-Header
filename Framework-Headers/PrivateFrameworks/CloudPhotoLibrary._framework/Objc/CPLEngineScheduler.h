@@ -25,25 +25,27 @@
     NSDate *_unavailabilityLimitDate;
     unsigned long long _foregroundCalls;
     NSCountedSet *_disablingReasons;
+    unsigned long long _significantWorkCalls;
     unsigned long long _disablingMinglingCount;
     NSDate *_lastSyncSessionDateCausedByForeground;
-    BOOL _shouldRetryASyncSessionForResourcesUpload;
     BOOL _didStartFirstSync;
     unsigned long long _rejectedRecordsRetries;
     NSSet *_rejectedRecordIdentifiers;
-    BOOL _needsPrepull;
+    BOOL _needsPrePush;
     CPLPlatformObject *_platformObject;
     CPLEngineLibrary *_engineLibrary;
     CDUnknownBlockType _requiredStateObserverBlock;
+    CDUnknownBlockType _shouldBackOffOnErrorBlock;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, weak, nonatomic) CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
 @property (readonly) unsigned long long hash;
-@property (readonly) BOOL needsPrepull;
+@property (readonly) BOOL needsPrePush; // @synthesize needsPrePush=_needsPrePush;
 @property (readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
 @property (copy, nonatomic) CDUnknownBlockType requiredStateObserverBlock; // @synthesize requiredStateObserverBlock=_requiredStateObserverBlock;
+@property (copy, nonatomic) CDUnknownBlockType shouldBackOffOnErrorBlock; // @synthesize shouldBackOffOnErrorBlock=_shouldBackOffOnErrorBlock;
 @property (readonly) Class superclass;
 
 + (id)platformImplementationProtocol;
@@ -77,11 +79,15 @@
 - (void)enableSynchronizationWithReason:(id)arg1;
 - (void)getStatusDictionaryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (BOOL)hasOngoingDownloadOperations;
 - (id)initWithEngineLibrary:(id)arg1;
 - (BOOL)isClientInForeground;
 - (BOOL)isMinglingEnabled;
 - (BOOL)isSynchronizationDisabledWithReasonError:(id *)arg1;
 - (void)kickOffSyncSession;
+- (BOOL)needsPrepush;
+- (void)noteClientIsBeginningSignificantWork;
+- (void)noteClientIsEndingSignificantWork;
 - (void)noteClientIsInBackground;
 - (void)noteClientIsInForeground;
 - (void)noteClientIsInSyncWithClientCache;
@@ -91,7 +97,6 @@
 - (void)notePushQueueIsEmpty;
 - (void)notePushQueueIsFull;
 - (void)noteResourceDownloadQueueIsFull;
-- (void)noteResourceUploadQueueIsFull;
 - (void)noteServerHasChanges;
 - (void)noteServerIsUnavailableWithError:(id)arg1;
 - (void)noteSyncSessionFailedDuringPhase:(unsigned long long)arg1 withError:(id)arg2;

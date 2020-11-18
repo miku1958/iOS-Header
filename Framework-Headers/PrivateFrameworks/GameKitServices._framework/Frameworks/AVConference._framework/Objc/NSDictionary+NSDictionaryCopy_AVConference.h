@@ -7,6 +7,6 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (NSDictionaryCopy_AVConference)
-- (id)deepCopy;
+- (id)copyGKSDeep;
 @end
 

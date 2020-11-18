@@ -12,6 +12,7 @@
 {
 }
 
+@property (copy, nonatomic) NSArray *attachments;
 @property (copy, nonatomic) NSDate *dateSent;
 @property (strong, nonatomic) SAPersonAttribute *fromEmail;
 @property (copy, nonatomic) NSString *message;

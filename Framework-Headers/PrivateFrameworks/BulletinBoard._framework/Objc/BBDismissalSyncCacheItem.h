@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSMutableDictionary;
 
@@ -14,11 +14,11 @@
     NSMutableDictionary *_dismissalIDToFeeds;
 }
 
-@property (readonly, strong, nonatomic) NSMutableArray *dismissalDictionariesAndFeeds; // @synthesize dismissalDictionariesAndFeeds=_dismissalDictionariesAndFeeds;
-@property (readonly, strong, nonatomic) NSMutableDictionary *dismissalIDToFeeds; // @synthesize dismissalIDToFeeds=_dismissalIDToFeeds;
+@property (readonly, nonatomic) NSMutableArray *dismissalDictionariesAndFeeds; // @synthesize dismissalDictionariesAndFeeds=_dismissalDictionariesAndFeeds;
+@property (readonly, nonatomic) NSMutableDictionary *dismissalIDToFeeds; // @synthesize dismissalIDToFeeds=_dismissalIDToFeeds;
 
+- (void).cxx_destruct;
 - (void)cacheDismissalDictionaries:(id)arg1 dismissalIDs:(id)arg2 forFeeds:(unsigned long long)arg3;
-- (void)dealloc;
 - (id)description;
 - (id)findBulletinMatch:(id)arg1;
 - (id)init;

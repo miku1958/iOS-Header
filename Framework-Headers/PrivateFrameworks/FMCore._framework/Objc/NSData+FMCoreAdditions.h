@@ -10,6 +10,7 @@
 
 @interface NSData (FMCoreAdditions)
 
+@property (readonly, copy, nonatomic) NSString *fm_hexString;
 @property (readonly, copy, nonatomic) NSString *hexString;
 
 @end

@@ -6,11 +6,12 @@
 
 #import <Contacts/NSObject-Protocol.h>
 
-@class SGRecordId;
+@class NSString, SGRecordId;
 
 @protocol CNSuggested <NSObject>
 
 @property (readonly, nonatomic, getter=isSuggested) BOOL suggested;
+@property (readonly, nonatomic) NSString *suggestionFoundInBundleId;
 @property (readonly, nonatomic) SGRecordId *suggestionRecordId;
 
 @end

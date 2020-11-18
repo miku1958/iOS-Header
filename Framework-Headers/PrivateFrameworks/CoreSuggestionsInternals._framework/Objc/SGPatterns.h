@@ -30,6 +30,8 @@
 + (id)languagePartOfLanguageCode:(id)arg1;
 + (id)patternsForClass:(Class)arg1;
 + (void)pauseCacheEvictionTemporarily;
++ (void)resetToDefaultPatternsForTesting;
++ (void)setPatternsDictForTesting:(id)arg1;
 + (void)useAllLanguagesAtOnce:(BOOL)arg1;
 - (void).cxx_destruct;
 - (void)_becomeImmuneToDeath;
@@ -37,6 +39,7 @@
 - (void)dealloc;
 - (id)init;
 - (id)rawValueForKey:(id)arg1;
+- (id)rawValueOrDataForKey:(id)arg1;
 - (id)rawValuesForKey:(id)arg1;
 - (id)regex2ForKey:(id)arg1;
 - (void)reset;

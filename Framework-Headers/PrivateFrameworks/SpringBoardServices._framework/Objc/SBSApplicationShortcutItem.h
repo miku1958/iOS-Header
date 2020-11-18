@@ -11,7 +11,7 @@
 
 @class NSData, NSDictionary, NSString, SBSApplicationShortcutIcon;
 
-@interface SBSApplicationShortcutItem : NSObject <NSCopying, BSXPCCoding>
+@interface SBSApplicationShortcutItem : NSObject <BSXPCCoding, NSCopying>
 {
     NSString *_type;
     NSString *_localizedTitle;
@@ -35,8 +35,6 @@
 @property (copy, nonatomic) NSDictionary *userInfo;
 @property (strong, nonatomic) NSData *userInfoData; // @synthesize userInfoData=_userInfoData;
 
-+ (unsigned long long)_activationModeForString:(id)arg1;
-+ (long long)_iconTypeForString:(id)arg1;
 + (id)staticShortcutItemWithDictionary:(id)arg1 localizationHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

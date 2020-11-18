@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *notifications; // @synthesize notifications=_notifications;
 
++ (Class)notificationType;
 - (void)addNotification:(id)arg1;
 - (void)clearNotifications;
 - (void)copyTo:(id)arg1;

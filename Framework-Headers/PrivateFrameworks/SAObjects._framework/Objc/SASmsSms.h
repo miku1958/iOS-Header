@@ -6,16 +6,19 @@
 
 #import <SAObjects/SADomainObject.h>
 
-@class NSArray, NSDate, NSNumber, NSString, NSURL, SAPersonAttribute;
+@class NSArray, NSDate, NSNumber, NSString, NSURL, SAAppInfo, SAPersonAttribute;
 
 @interface SASmsSms : SADomainObject
 {
 }
 
+@property (strong, nonatomic) SAAppInfo *appInfo;
 @property (copy, nonatomic) NSURL *attachment;
+@property (copy, nonatomic) NSArray *attachments;
 @property (copy, nonatomic) NSString *chatIdentifier;
 @property (copy, nonatomic) NSDate *dateLastMessageReadInThread;
 @property (copy, nonatomic) NSDate *dateSent;
+@property (copy, nonatomic) NSString *effect;
 @property (copy, nonatomic) NSString *groupName;
 @property (copy, nonatomic) NSString *groupNameId;
 @property (nonatomic) BOOL hasGroupName;

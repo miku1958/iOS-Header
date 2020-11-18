@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class ADAdSlot, NSArray, NSData, NSDictionary, NSNumber, NSString, NSURL;
+@class ADAdSlot, NSArray, NSData, NSDictionary, NSNumber, NSString;
 
 @protocol ADSSession_RPC
 - (void)_priv_removeRecordForAccountWithIdentifier:(NSNumber *)arg1;
@@ -19,15 +19,25 @@
 - (void)_remote_enablePolicyEngine;
 - (void)_remote_lookupAdConversionDetails:(void (^)(NSDate *, NSDate *))arg1;
 - (void)_remote_optimalTransmissionWindowDidOpen;
+- (void)_remote_refreshTargetingData;
 - (void)_remote_reportClientEvent:(NSData *)arg1;
 - (void)_remote_reportPrerollRequest;
 - (void)_remote_reportStationTileImpression:(NSData *)arg1;
-- (void)_remote_requestAdsForContext:(NSString *)arg1 serverURL:(NSURL *)arg2 creativeTypes:(NSArray *)arg3 completionHandler:(void (^)(NSArray *, NSString *, NSError *))arg4;
 - (void)_remote_requestAdsForSlot:(ADAdSlot *)arg1 completionHandler:(void (^)(NSArray *, NSArray *))arg2;
 - (void)_remote_requestAttributionDetailsWithBlock:(void (^)(NSDictionary *))arg1;
+- (void)_remote_requestSponsoredSearchData:(void (^)(NSString *))arg1;
+- (void)_remote_requestSponsoredSearchDataAndRequestID:(void (^)(NSString *, NSString *))arg1;
+- (void)_remote_requestSponsoredSearchURL:(void (^)(NSString *))arg1;
+- (void)_remote_requestTrendingSearchData:(void (^)(NSString *))arg1;
+- (void)_remote_requestTrendingSearchURL:(void (^)(NSString *))arg1;
+- (void)_remote_requestUserTargetingIdentifier:(void (^)(NSString *))arg1;
 - (void)_remote_setClientLinkedOnVersion:(NSString *)arg1;
 - (void)_remote_setVisuallyEngaged:(BOOL)arg1;
+- (void)_remote_updateDPIDWithAction:(unsigned long long)arg1;
+- (void)_remote_updateFrequencyCapData:(NSString *)arg1 forType:(NSString *)arg2;
+- (void)_remote_updateToroClickData:(NSString *)arg1;
 - (void)_remote_willBeginAdPlaybackForSlot:(NSString *)arg1 visuallyEngaged:(BOOL)arg2 adSpaceType:(int)arg3;
-- (void)_reportAdSpaceStatusEventWithAdOpportunityIdentifier:(NSString *)arg1 adOriginIdentifier:(NSString *)arg2 durationInFeed:(double)arg3 responseTime:(double)arg4 firstMessage:(BOOL)arg5 screenfuls:(long long)arg6 errorCode:(long long)arg7;
+- (void)_reportAdSpaceStatusEventWithAdOpportunityIdentifier:(NSString *)arg1 adOriginIdentifier:(NSString *)arg2 tags:(NSArray *)arg3 durationInFeed:(double)arg4 responseTime:(double)arg5 firstMessage:(BOOL)arg6 screenfuls:(long long)arg7 errorCode:(long long)arg8;
+- (void)_reportSubscriptionEventWithType:(long long)arg1 withQToken:(NSString *)arg2 sourceIdentifier:(NSString *)arg3 eventTime:(double)arg4 info:(NSDictionary *)arg5;
 @end
 

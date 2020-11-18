@@ -9,6 +9,7 @@
 @class CKDGlobalConfigurationOperation, CKDServerConfiguration, NSMutableDictionary, NSOperationQueue;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
+__attribute__((visibility("hidden")))
 @interface CKDServerConfigurationManager : NSObject
 {
     BOOL _usesBackgroundSession;
@@ -40,6 +41,7 @@
 + (void)expireGlobalConfiguration;
 + (id)sharedManagerUsingBackgroundSession:(BOOL)arg1 allowsCellularAccess:(BOOL)arg2;
 - (void).cxx_destruct;
+- (id)CKStatusReportArray;
 - (void)_behaviorOptionsChanged:(id)arg1;
 - (void)_dropAllConfigurations;
 - (void)_expireConfigurationForContext:(id)arg1;
@@ -53,6 +55,7 @@
 - (void)fetchGlobalConfigWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)publicURLForServerType:(long long)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)serverEnvironmentForContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

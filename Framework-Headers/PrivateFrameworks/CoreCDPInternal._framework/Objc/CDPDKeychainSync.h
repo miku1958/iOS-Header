@@ -17,9 +17,14 @@
 + (id)keyChainSync;
 + (id)keyChainSyncWithProxy:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_isThisDeviceInCircle;
+- (void)_preflightCircleStatusWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_processAuthFailure:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)_setKeychainSyncState:(BOOL)arg1;
 - (BOOL)isUserVisibleKeychainSyncEnabled;
 - (void)removeNonViewAwarePeersFromCircleWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setUserVisibleKeychainSyncEnabled:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (BOOL)synchronizeKeychainViewSetWithOtherPeers:(id *)arg1;
 
 @end
 

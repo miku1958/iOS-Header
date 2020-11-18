@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)setRemoteSwipeGestureEnabled:(BOOL)arg1;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 - (void)willDismissServiceViewController;
+- (void)willOpenURLInHostApplication:(id)arg1;
 - (void)willUpdateStatusBarStyle:(id)arg1;
 
 @end

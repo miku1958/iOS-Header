@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CAMPanoramaArrowView, CAMPanoramaLevelView, CAMPanoramaPaintingStatus, CAMPanoramaPreviewView, UILabel;
+@class CAMPanoramaArrowView, CAMPanoramaLabel, CAMPanoramaLevelView, CAMPanoramaPaintingStatus, CAMPanoramaPreviewView, NSString;
 @protocol CAMPanoramaViewDelegate;
 
 @interface CAMPanoramaView : UIView
@@ -17,13 +17,19 @@
     long long _direction;
     id<CAMPanoramaViewDelegate> _delegate;
     CAMPanoramaPreviewView *_previewView;
+    long long _layoutStyle;
     double _currentOrientedAcceleration;
     UIView *__stripBackgroundView;
     UIView *__stripContainerView;
     UIView *__maskingView;
     CAMPanoramaArrowView *__arrowView;
     CAMPanoramaLevelView *__levelView;
-    UILabel *__instructionLabel;
+    CAMPanoramaLabel *__instructionLabel;
+    NSString *__speedString;
+    NSString *__moveUpString;
+    NSString *__moveDownString;
+    NSString *__arrowString;
+    NSString *__instructionString;
     CAMPanoramaPaintingStatus *__currentPaintingStatus;
     double __initialPaintingAcceleration;
     double __currentPaintingAcceleration;
@@ -34,6 +40,7 @@
     struct CGRect __lastLayoutBounds;
 }
 
+@property (readonly, copy, nonatomic) NSString *_arrowString; // @synthesize _arrowString=__arrowString;
 @property (nonatomic, setter=_setArrowUpdateFrame:) unsigned long long _arrowUpdateFrame; // @synthesize _arrowUpdateFrame=__arrowUpdateFrame;
 @property (readonly, nonatomic) CAMPanoramaArrowView *_arrowView; // @synthesize _arrowView=__arrowView;
 @property (nonatomic, setter=_setCurrentAverageSpeed:) double _currentAverageSpeed; // @synthesize _currentAverageSpeed=__currentAverageSpeed;
@@ -43,17 +50,22 @@
 @property (nonatomic, getter=_isCurrentlyShowingMoveInstructions, setter=_setCurrentlyShowingMoveInstructions:) BOOL _currentlyShowingMoveInstructions; // @synthesize _currentlyShowingMoveInstructions=__currentlyShowingMoveInstructions;
 @property (nonatomic, setter=_setInitialArrowCenter:) struct CGPoint _initialArrowCenter; // @synthesize _initialArrowCenter=__initialArrowCenter;
 @property (nonatomic, setter=_setInitialPaintingAcceleration:) double _initialPaintingAcceleration; // @synthesize _initialPaintingAcceleration=__initialPaintingAcceleration;
-@property (readonly, nonatomic) UILabel *_instructionLabel; // @synthesize _instructionLabel=__instructionLabel;
+@property (readonly, nonatomic) CAMPanoramaLabel *_instructionLabel; // @synthesize _instructionLabel=__instructionLabel;
+@property (readonly, copy, nonatomic) NSString *_instructionString; // @synthesize _instructionString=__instructionString;
 @property (nonatomic, setter=_setLastLayoutBounds:) struct CGRect _lastLayoutBounds; // @synthesize _lastLayoutBounds=__lastLayoutBounds;
 @property (readonly, nonatomic) CAMPanoramaLevelView *_levelView; // @synthesize _levelView=__levelView;
 @property (readonly, nonatomic) UIView *_maskingView; // @synthesize _maskingView=__maskingView;
+@property (readonly, copy, nonatomic) NSString *_moveDownString; // @synthesize _moveDownString=__moveDownString;
+@property (readonly, copy, nonatomic) NSString *_moveUpString; // @synthesize _moveUpString=__moveUpString;
 @property (readonly, nonatomic) double *_previousSpeeds; // @synthesize _previousSpeeds=__previousSpeeds;
+@property (readonly, copy, nonatomic) NSString *_speedString; // @synthesize _speedString=__speedString;
 @property (readonly, nonatomic) UIView *_stripBackgroundView; // @synthesize _stripBackgroundView=__stripBackgroundView;
 @property (readonly, nonatomic) UIView *_stripContainerView; // @synthesize _stripContainerView=__stripContainerView;
-@property (nonatomic) double currentOrientedAcceleration; // @synthesize currentOrientedAcceleration=_currentOrientedAcceleration;
+@property (nonatomic, setter=_setCurrentOrientedAcceleration:) double currentOrientedAcceleration; // @synthesize currentOrientedAcceleration=_currentOrientedAcceleration;
 @property (weak, nonatomic) id<CAMPanoramaViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) long long direction; // @synthesize direction=_direction;
-@property (nonatomic, getter=isPainting) BOOL painting; // @synthesize painting=_painting;
+@property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
+@property (nonatomic, getter=isPainting, setter=_setPainting:) BOOL painting; // @synthesize painting=_painting;
 @property (readonly, nonatomic) CAMPanoramaPreviewView *previewView; // @synthesize previewView=_previewView;
 
 + (Class)layerClass;
@@ -63,8 +75,6 @@
 - (void)_hideInstructionLabel;
 - (void)_hideSpeedInstructionsAfterDelay;
 - (void)_resetPaintingUIAnimated:(BOOL)arg1;
-- (void)_setCurrentOrientedAcceleration:(double)arg1;
-- (void)_setPainting:(BOOL)arg1;
 - (void)_showArrowInstructions;
 - (void)_showMoveDownInstructions;
 - (void)_showMoveDownInstructionsAfterDelay;
@@ -76,10 +86,10 @@
 - (void)finishedProcessingPanorama;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithPanoramaPreviewView:(id)arg1;
-- (struct CGSize)intrinsicContentSize;
+- (id)initWithPanoramaPreviewView:(id)arg1 layoutStyle:(long long)arg2;
 - (void)layoutSubviews;
 - (void)setDirection:(long long)arg1 animated:(BOOL)arg2;
+- (void)setTransform:(struct CGAffineTransform)arg1;
 - (void)startPainting;
 - (void)startProcessingPanorama;
 - (void)stopPainting;

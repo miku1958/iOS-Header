@@ -4,33 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CoreSuggestionsInternals/SGMessageKey.h>
 
 #import <CoreSuggestionsInternals/SGEntityKey-Protocol.h>
 
 @class NSString;
 
-@interface SGEmailKey : NSObject <SGEntityKey>
+@interface SGEmailKey : SGMessageKey <SGEntityKey>
 {
-    NSString *_source;
-    NSString *_messageId;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *messageId; // @synthesize messageId=_messageId;
-@property (readonly, nonatomic) NSString *source; // @synthesize source=_source;
+@property (readonly) NSString *messageId; // @dynamic messageId;
 @property (readonly) Class superclass;
 
 + (BOOL)isSupportedEntityType:(long long)arg1;
-- (void).cxx_destruct;
 - (id)initWithMailMessageKey:(id)arg1;
-- (id)initWithSerialized:(id)arg1;
 - (id)initWithSource:(id)arg1 messageId:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToEmailKey:(id)arg1;
-- (id)serialize;
 - (id)toMailMessageKey;
 
 @end

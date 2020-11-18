@@ -4,20 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HomeKitDaemon/HMDRemoteMessageTransport.h>
 
-#import <HomeKitDaemon/HAPTimerDelegate-Protocol.h>
-#import <HomeKitDaemon/HMIDSMessageTransport-Protocol.h>
-#import <HomeKitDaemon/HMMessageTransport-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 
-@class HAPTimer, HMMessageDispatcher, IDSService, NSArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
+@class IDSService, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDIDSMessageTransport : NSObject <IDSServiceDelegate, HAPTimerDelegate, HMMessageTransport, HMIDSMessageTransport>
+@interface HMDIDSMessageTransport : HMDRemoteMessageTransport <IDSServiceDelegate>
 {
-    BOOL _proxy;
-    IDSService *_idsService;
+    IDSService *_service;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSMutableDictionary *_pendingResponses;
     NSMutableDictionary *_receivedResponses;
@@ -25,80 +21,37 @@
     NSMutableDictionary *_destinationAddress;
     NSMutableDictionary *_pendingSentMessages;
     NSMutableDictionary *_pendingResponseTimers;
-    HMMessageDispatcher *_messageDispatcher;
-    NSMutableSet *_peerTransientDeviceAddresses;
-    NSMutableSet *_peerResidentDeviceAddresses;
-    NSMutableSet *_pairedWatchDeviceAddresses;
-    NSMutableSet *_reachableCompanionDeviceAddresses;
-    NSMutableSet *_reachableWatchDeviceAddresses;
-    NSString *_pairedWatchDestination;
-    NSString *_pairedCompanionDestination;
-    HAPTimer *_devicesChangedNotificationDebounceTimer;
 }
 
-@property (readonly, nonatomic, getter=isAccountActive) BOOL accountActive;
+@property (readonly, nonatomic) int awdTransportType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSMutableDictionary *destinationAddress; // @synthesize destinationAddress=_destinationAddress;
-@property (readonly, nonatomic) HAPTimer *devicesChangedNotificationDebounceTimer; // @synthesize devicesChangedNotificationDebounceTimer=_devicesChangedNotificationDebounceTimer;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) IDSService *idsService; // @synthesize idsService=_idsService;
-@property (weak, nonatomic) HMMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
-@property (strong, nonatomic) NSString *pairedCompanionDestination; // @synthesize pairedCompanionDestination=_pairedCompanionDestination;
-@property (readonly, nonatomic) NSSet *pairedWatchAddresses;
-@property (strong, nonatomic) NSString *pairedWatchDestination; // @synthesize pairedWatchDestination=_pairedWatchDestination;
-@property (strong, nonatomic) NSMutableSet *pairedWatchDeviceAddresses; // @synthesize pairedWatchDeviceAddresses=_pairedWatchDeviceAddresses;
-@property (strong, nonatomic) NSMutableSet *peerResidentDeviceAddresses; // @synthesize peerResidentDeviceAddresses=_peerResidentDeviceAddresses;
-@property (strong, nonatomic) NSMutableSet *peerTransientDeviceAddresses; // @synthesize peerTransientDeviceAddresses=_peerTransientDeviceAddresses;
-@property (strong, nonatomic) NSMutableDictionary *pendingResponseTimers; // @synthesize pendingResponseTimers=_pendingResponseTimers;
-@property (strong, nonatomic) NSMutableDictionary *pendingResponses; // @synthesize pendingResponses=_pendingResponses;
-@property (strong, nonatomic) NSMutableDictionary *pendingSentMessages; // @synthesize pendingSentMessages=_pendingSentMessages;
-@property (readonly, nonatomic) BOOL proxy; // @synthesize proxy=_proxy;
-@property (strong, nonatomic) NSMutableSet *reachableCompanionDeviceAddresses; // @synthesize reachableCompanionDeviceAddresses=_reachableCompanionDeviceAddresses;
-@property (readonly, nonatomic) NSArray *reachableCompanionDevices;
-@property (strong, nonatomic) NSMutableSet *reachableWatchDeviceAddresses; // @synthesize reachableWatchDeviceAddresses=_reachableWatchDeviceAddresses;
-@property (readonly, nonatomic) NSArray *reachableWatchDevices;
+@property (readonly, nonatomic) NSMutableDictionary *pendingResponseTimers; // @synthesize pendingResponseTimers=_pendingResponseTimers;
+@property (readonly, nonatomic) NSMutableDictionary *pendingResponses; // @synthesize pendingResponses=_pendingResponses;
+@property (readonly, nonatomic) NSMutableDictionary *pendingSentMessages; // @synthesize pendingSentMessages=_pendingSentMessages;
 @property (readonly, nonatomic) NSMutableDictionary *receivedResponses; // @synthesize receivedResponses=_receivedResponses;
 @property (readonly, nonatomic) NSMutableDictionary *requestedCapabilities; // @synthesize requestedCapabilities=_requestedCapabilities;
+@property (readonly, nonatomic) IDSService *service; // @synthesize service=_service;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
-+ (id)dictionaryForMessageName:(id)arg1 messageIdentifier:(id)arg2 messagePayload:(id)arg3 target:(id)arg4 transactionID:(id)arg5 msgType:(unsigned long long)arg6;
-+ (id)idsMessageTypeDescription:(unsigned long long)arg1;
-+ (void)messageElementsFromDictionary:(id)arg1 messageName:(id *)arg2 messageIdentifier:(id *)arg3 messagePayload:(id *)arg4 target:(id *)arg5 transactionID:(id *)arg6 isRequest:(BOOL *)arg7 isResponse:(BOOL *)arg8 isNotification:(BOOL *)arg9;
++ (unsigned long long)restriction;
 - (void).cxx_destruct;
-- (id)_compatibleDevices:(id)arg1;
-- (void)_handleDevicesChangedNotificationDebounceTimer;
-- (BOOL)_isCompatibleCompanionDevice:(id)arg1;
-- (BOOL)_isCompatibleWatchDevice:(id)arg1;
 - (void)_pendingResponseTimeoutFor:(id)arg1;
 - (void)_removePendingResponseTimerForTransaction:(id)arg1;
 - (void)_removePendingResponseTransaction:(id)arg1;
-- (BOOL)_rerouteDestinationIfCompanion:(id)arg1 newDestination:(id *)arg2 isConnected:(BOOL *)arg3;
-- (BOOL)_rerouteDestinationIfWatch:(id)arg1 isConnected:(BOOL *)arg2;
 - (void)_restartPendingResponseTimerFor:(id)arg1 withReducedFactor:(unsigned long long)arg2;
-- (void)_setDestinationAddress;
 - (void)_startPendingResponseTimer:(id)arg1 responseTimeout:(double)arg2 identifier:(id)arg3;
-- (void)_updateReachableDeviceAddresses:(id)arg1;
-- (void)configure:(id)arg1;
-- (void)handleMessageWithName:(id)arg1 messageIdentifier:(id)arg2 messagePayload:(id)arg3 target:(id)arg4;
-- (void)handleMessageWithName:(id)arg1 messageIdentifier:(id)arg2 messagePayload:(id)arg3 target:(id)arg4 destination:(id)arg5;
-- (void)handleMessageWithName:(id)arg1 messageIdentifier:(id)arg2 messagePayload:(id)arg3 target:(id)arg4 destination:(id)arg5 responseTimeout:(double)arg6 responseHandler:(CDUnknownBlockType)arg7;
-- (void)handleMessageWithName:(id)arg1 messageIdentifier:(id)arg2 messagePayload:(id)arg3 target:(id)arg4 responseHandler:(CDUnknownBlockType)arg5;
-- (id)initWithIDSService:(id)arg1 proxy:(BOOL)arg2;
-- (BOOL)rerouteDestinationIfCompanion:(id)arg1 newDestination:(id *)arg2 isConnected:(BOOL *)arg3;
-- (BOOL)rerouteDestinationIfWatch:(id)arg1 isConnected:(BOOL *)arg2;
-- (id)residentDevices;
-- (id)sendMessage:(id)arg1 destinations:(id)arg2 msgType:(unsigned long long)arg3 error:(id *)arg4;
-- (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(BOOL)arg4 error:(id)arg5;
-- (void)service:(id)arg1 account:(id)arg2 incomingMessage:(id)arg3 fromID:(id)arg4;
-- (void)service:(id)arg1 activeAccountsChanged:(id)arg2;
-- (void)service:(id)arg1 devicesChanged:(id)arg2;
-- (void)service:(id)arg1 nearbyDevicesChanged:(id)arg2;
+- (BOOL)canSendMessage:(id)arg1;
+- (id)initWithAccountRegistry:(id)arg1;
+- (long long)qualityOfService;
+- (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)sendMessage:(id)arg1 destination:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
+- (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(BOOL)arg4 error:(id)arg5 context:(id)arg6;
+- (void)service:(id)arg1 account:(id)arg2 incomingMessage:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)start;
-- (void)timerDidFire:(id)arg1;
-- (id)transientDevices;
-- (void)updatePeerDeviceAddresses:(id)arg1;
 
 @end
 

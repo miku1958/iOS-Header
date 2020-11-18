@@ -10,7 +10,7 @@
 #import <MusicCarDisplayUI/MCDNowPlayingViewControllerDataSource-Protocol.h>
 #import <MusicCarDisplayUI/MCDNowPlayingViewControllerDelegate-Protocol.h>
 
-@class MCDNowPlayingViewController, MPAVController, MPMediaQuery, NSArray, NSString, NSTimer, UIAlertController, UIImage, UILabel;
+@class MCDNowPlayingViewController, MPAVController, MPMediaQuery, MPWeakTimer, NSArray, NSDictionary, NSMutableDictionary, NSString, UIActivityIndicatorView, UIAlertController, UIImage, UILabel;
 @protocol MCDCarDisplayServiceProvider;
 
 @interface MCDMusicNowPlayingViewController : UIViewController <AFContextProvider, MCDNowPlayingViewControllerDataSource, MCDNowPlayingViewControllerDelegate>
@@ -24,13 +24,18 @@
     NSString *_nowPlayingAlbum;
     UIImage *_nowPlayingAlbumArt;
     UILabel *_rightTitleLabel;
+    NSString *_rightTitleText;
+    UIActivityIndicatorView *_activityIndicator;
+    MPWeakTimer *_activityTimer;
     UIAlertController *_actionSheetAlertController;
+    NSDictionary *_supportedCommands;
+    BOOL _observingMediaRemoteCommandChanges;
     BOOL _isLive;
     BOOL _isExplicitTrack;
-    NSTimer *_updateTimer;
     int _viewMode;
     NSArray *_controlPages;
     unsigned long long _currentPageIndex;
+    NSMutableDictionary *_transportControlImages;
 }
 
 @property (strong, nonatomic) NSArray *controlPages; // @synthesize controlPages=_controlPages;
@@ -39,58 +44,74 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSMutableDictionary *transportControlImages; // @synthesize transportControlImages=_transportControlImages;
 @property (nonatomic) int viewMode; // @synthesize viewMode=_viewMode;
 
 - (void).cxx_destruct;
+- (void)_addItemsToLibrary;
+- (void)_addSongToLibrary;
 - (void)_adjustRightTitleLabelToFit;
+- (void)_bufferingStateChanged:(id)arg1;
+- (void)_invalidateActivityTimer;
+- (BOOL)_itemAlreadyAddedToLibrary;
+- (BOOL)_itemCanBeAddedToLibrary;
 - (void)_itemChanged:(id)arg1;
 - (void)_itemIsExplicitDidChangeNotification:(id)arg1;
 - (void)_itemStoreIDDidChangeNotification:(id)arg1;
 - (void)_itemTitlesDidChangeNotification:(id)arg1;
 - (void)_playbackContentsChanged:(id)arg1;
 - (void)_playbackStateChanged:(id)arg1;
-- (void)_playerTick;
+- (void)_presentCreateStationError;
 - (void)_presentNowPlayingInfo;
+- (void)_rateDidChange:(id)arg1;
 - (void)_registerForNotifications;
 - (void)_setNextRepeatState;
+- (void)_setupActivityTimer;
+- (void)_startObservingRemoteCommandChanges;
+- (void)_stopObservingRemoteCommandChanges;
+- (BOOL)_trackBuffering;
 - (void)_unregisterForNotifications;
+- (void)_updateSupportedCommands;
+- (void)_updateSupportedCommandsWithArray:(id)arg1;
 - (id)albumTextForNowPlayingController:(id)arg1;
 - (BOOL)allowContextProvider:(id)arg1;
 - (id)artistTextForNowPlayingController:(id)arg1;
 - (id)backgroundArtForNowPlayingController:(id)arg1;
 - (void)dealloc;
 - (id)getCurrentContext;
-- (id)initWithGeniusMixPlaylist:(id)arg1 player:(id)arg2 serviceProvider:(id)arg3;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithPlayer:(id)arg1 serviceProvider:(id)arg2 startPlay:(BOOL)arg3;
 - (id)initWithQuery:(id)arg1 startingAtIndex:(unsigned long long)arg2 player:(id)arg3 serviceProvider:(id)arg4;
 - (id)initWithQueryToShuffle:(id)arg1 player:(id)arg2 serviceProvider:(id)arg3;
-- (id)initWithRadioStation:(id)arg1 player:(id)arg2 serviceProvider:(id)arg3;
-- (BOOL)likedForNowPlayingViewController:(id)arg1;
 - (id)newPresentationNavigationController;
 - (BOOL)nowPlayingViewController:(id)arg1 buttonShouldBeActive:(long long)arg2;
 - (void)nowPlayingViewController:(id)arg1 didSendAction:(long long)arg2 state:(long long)arg3;
-- (BOOL)nowPlayingViewController:(id)arg1 shouldDisplayButton:(long long)arg2 withImage:(out id *)arg3 tinted:(out BOOL *)arg4;
+- (BOOL)nowPlayingViewController:(id)arg1 shouldDisplayButton:(long long)arg2 withImage:(out id *)arg3 existingIdentifier:(id)arg4 tinted:(out BOOL *)arg5;
 - (BOOL)nowPlayingViewController:(id)arg1 shouldEnableButton:(long long)arg2;
-- (BOOL)nowPlayingViewControllerCanLike:(id)arg1;
+- (void)nowPlayingViewControllerAddToLibrary:(id)arg1;
 - (BOOL)nowPlayingViewControllerCanRepeat:(id)arg1;
+- (BOOL)nowPlayingViewControllerCanShowAddToLibrary:(id)arg1;
+- (BOOL)nowPlayingViewControllerCanShowMore:(id)arg1;
 - (BOOL)nowPlayingViewControllerCanShuffle:(id)arg1;
+- (BOOL)nowPlayingViewControllerIsFuseSubscriber:(id)arg1;
 - (BOOL)nowPlayingViewControllerIsPlaying:(id)arg1;
 - (BOOL)nowPlayingViewControllerIsShowingExplicitTrack:(id)arg1;
-- (void)nowPlayingViewControllerLike:(id)arg1;
-- (BOOL)nowPlayingViewControllerShouldUseWishlist:(id)arg1;
+- (void)nowPlayingViewControllerMore:(id)arg1;
 - (void)nowPlayingViewControllerToggleRepeat:(id)arg1;
 - (void)nowPlayingViewControllerToggleShuffle:(id)arg1;
-- (double)playbackDurationForNowPlayingViewController:(id)arg1 withElapsedTime:(out double *)arg2;
+- (double)playbackDurationForNowPlayingViewController:(id)arg1;
+- (double)playbackElapsedTimeForNowPlayingViewController:(id)arg1;
+- (BOOL)playbackIsLiveStreamForNowPlayingViewController:(id)arg1;
 - (id)preferredFocusedItem;
-- (unsigned long long)repeatTypeForNowPlayingViewController:(id)arg1;
-- (void)setTitle:(id)arg1;
-- (id)shuffleStringForNowPlayingViewController:(id)arg1;
-- (unsigned long long)shuffleTypeForNowPlayingViewController:(id)arg1;
+- (long long)repeatTypeForNowPlayingViewController:(id)arg1;
+- (void)setRightTitle:(id)arg1;
+- (long long)shuffleTypeForNowPlayingViewController:(id)arg1;
 - (id)titleForNowPlayingController:(id)arg1;
 - (void)updateTrackInformation;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 
 @end

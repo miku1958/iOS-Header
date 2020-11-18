@@ -6,31 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class FUAirport, NSDate, NSString, NSTimeZone;
+#import <FlightUtilities/NSSecureCoding-Protocol.h>
 
-__attribute__((visibility("hidden")))
-@interface FUFlightStep : NSObject
+@class FUAirport, FUStepTime, NSNumber, NSString;
+
+@interface FUFlightStep : NSObject <NSSecureCoding>
 {
     FUAirport *_airport;
     NSString *_gate;
     NSString *_terminal;
-    NSDate *_actualTime;
-    NSDate *_scheduledTime;
-    NSTimeZone *_timeZone;
-    long long _timeAccuracy;
+    long long _legStatus;
+    NSNumber *_delayFromSchedule;
+    FUStepTime *_actualTime;
+    FUStepTime *_scheduledTime;
+    FUStepTime *_plannedTime;
+    FUStepTime *_estimatedTime;
 }
 
-@property (strong) NSDate *actualTime; // @synthesize actualTime=_actualTime;
+@property (strong) FUStepTime *actualTime; // @synthesize actualTime=_actualTime;
 @property (strong) FUAirport *airport; // @synthesize airport=_airport;
+@property (strong, nonatomic) NSNumber *delayFromSchedule; // @synthesize delayFromSchedule=_delayFromSchedule;
+@property (strong) FUStepTime *estimatedTime; // @synthesize estimatedTime=_estimatedTime;
 @property (strong) NSString *gate; // @synthesize gate=_gate;
-@property (strong) NSDate *scheduledTime; // @synthesize scheduledTime=_scheduledTime;
+@property long long legStatus; // @synthesize legStatus=_legStatus;
+@property (strong) FUStepTime *plannedTime; // @synthesize plannedTime=_plannedTime;
+@property (strong) FUStepTime *scheduledTime; // @synthesize scheduledTime=_scheduledTime;
+@property (readonly, nonatomic) unsigned long long status;
 @property (strong) NSString *terminal; // @synthesize terminal=_terminal;
-@property long long timeAccuracy; // @synthesize timeAccuracy=_timeAccuracy;
-@property (strong) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
+@property (readonly) FUStepTime *time;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

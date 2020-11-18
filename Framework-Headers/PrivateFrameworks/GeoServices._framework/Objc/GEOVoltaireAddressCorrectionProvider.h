@@ -6,11 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
-#import <GeoServices/PBRequesterDelegate-Protocol.h>
+#import <GeoServices/GEOPBSessionRequesterDelegate-Protocol.h>
 
 @class GEORequester, NSString;
 
-@interface GEOVoltaireAddressCorrectionProvider : NSObject <PBRequesterDelegate>
+@interface GEOVoltaireAddressCorrectionProvider : NSObject <GEOPBSessionRequesterDelegate>
 {
     GEORequester *_requester;
     CDUnknownBlockType _errorHandler;

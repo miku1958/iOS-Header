@@ -13,7 +13,6 @@
 }
 
 @property (readonly, nonatomic) BOOL alwaysBreadcrumb; // @dynamic alwaysBreadcrumb;
-@property (readonly, nonatomic, getter=isLegacyWorkspaceLoggingEnabled) BOOL legacyWorkspaceLoggingEnabled; // @dynamic legacyWorkspaceLoggingEnabled;
 @property (readonly, nonatomic, getter=isMedusaEnabled) BOOL medusaEnabled; // @dynamic medusaEnabled;
 @property (readonly, nonatomic) BOOL neverBreadcrumb; // @dynamic neverBreadcrumb;
 @property (strong, nonatomic) NSDictionary *sideAppState; // @dynamic sideAppState;

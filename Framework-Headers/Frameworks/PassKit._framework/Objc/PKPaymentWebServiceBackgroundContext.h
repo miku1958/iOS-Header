@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -21,10 +21,10 @@
 
 + (id)contextWithArchive:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)addBackgroundDownloadRecord:(id)arg1 forTaskIdentifier:(unsigned long long)arg2;
 - (void)archiveAtPath:(id)arg1;
-- (id)backroundDownloadRecordForTaskIdentifier:(unsigned long long)arg1;
-- (void)dealloc;
+- (id)backgroundDownloadRecordForTaskIdentifier:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

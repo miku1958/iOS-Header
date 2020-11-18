@@ -16,17 +16,19 @@
     NSHashTable *_eventQueueLocks;
     NSMutableArray *_eventQueue;
     BOOL _processingEvents;
-    BSEventQueueEvent *_executingEvent;
-    NSObject<OS_dispatch_queue> *_queue;
     NSString *_name;
+    NSObject<OS_dispatch_queue> *_queue;
+    BSEventQueueEvent *_executingEvent;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=isEmpty) BOOL empty;
 @property (strong, nonatomic) BSEventQueueEvent *executingEvent; // @synthesize executingEvent=_executingEvent;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isLocked) BOOL locked;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, copy, nonatomic) NSArray *pendingEvents;
+@property (readonly, copy, nonatomic) NSArray *pendingEvents; // @synthesize pendingEvents=_eventQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
@@ -55,7 +57,6 @@
 - (BOOL)hasEventWithPrefix:(id)arg1;
 - (id)init;
 - (id)initWithName:(id)arg1 onQueue:(id)arg2;
-- (BOOL)isLocked;
 - (void)relinquishLock:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

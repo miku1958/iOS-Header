@@ -10,8 +10,8 @@
 {
 }
 
++ (BOOL)_shouldRequestModelMigratorCreateDatabaseOnRebuildAndRetry;
 + (BOOL)canMergeRemoteChanges;
-+ (BOOL)useModelMigratorToCreateDatabase;
 
 @end
 

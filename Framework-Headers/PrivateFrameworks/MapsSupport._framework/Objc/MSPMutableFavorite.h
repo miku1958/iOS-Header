@@ -7,12 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <MapsSupport/MSPFavorite-Protocol.h>
+#import <MapsSupport/MSPIdentifiableFavorite-Protocol.h>
 #import <MapsSupport/MSPMutableObject-Protocol.h>
 
 @class MSPBookmarkStorage, NSString, NSUUID;
 
-@interface MSPMutableFavorite : NSObject <MSPFavorite, MSPMutableObject>
+@interface MSPMutableFavorite : NSObject <MSPFavorite, MSPMutableObject, MSPIdentifiableFavorite>
 {
+    BOOL _immutable;
     NSUUID *_storageIdentifier;
     MSPBookmarkStorage *_bookmarkStorage;
 }
@@ -21,23 +23,28 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=_isImmutable) BOOL immutable; // @synthesize immutable=_immutable;
+@property (readonly, nonatomic) NSUUID *storageIdentifier; // @synthesize storageIdentifier=_storageIdentifier;
 @property (readonly) Class superclass;
 
 + (Class)immutableObjectClass;
 + (id)immutableObjectProtocol;
++ (void)initialize;
 + (id)mutableFavoriteForBookmarkStorage:(id)arg1;
 + (Class)mutableObjectClass;
 + (id)mutableObjectProtocol;
 - (void).cxx_destruct;
+- (void)_assertNotImmutable;
+- (void)_markImmutable;
 - (id)abridgedBookmarkStorageForSpotlightStorage;
-- (void)ifMutablePlace:(CDUnknownBlockType)arg1 ifMutableRoute:(CDUnknownBlockType)arg2 ifMutableRegion:(CDUnknownBlockType)arg3;
-- (void)ifPlace:(CDUnknownBlockType)arg1 ifRoute:(CDUnknownBlockType)arg2 ifRegion:(CDUnknownBlockType)arg3;
+- (id)copyIfValidWithError:(out id *)arg1;
+- (void)ifMutablePlace:(CDUnknownBlockType)arg1 ifMutableRoute:(CDUnknownBlockType)arg2 ifMutableRegion:(CDUnknownBlockType)arg3 ifMutableTransitLine:(CDUnknownBlockType)arg4;
+- (void)ifPlace:(CDUnknownBlockType)arg1 ifRoute:(CDUnknownBlockType)arg2 ifRegion:(CDUnknownBlockType)arg3 ifTransitLine:(CDUnknownBlockType)arg4;
 - (id)init;
 - (id)initWithBookmarkStorage:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)persisterOnlyBookmarkStorage;
-- (id)storageIdentifier;
-- (id)transferToImmutableWithError:(out id *)arg1;
+- (id)transferToImmutableIfValidWithError:(out id *)arg1;
 
 @end
 

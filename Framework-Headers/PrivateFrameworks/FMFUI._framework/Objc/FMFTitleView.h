@@ -6,18 +6,20 @@
 
 #import <FMCoreUI/FMTitleView.h>
 
-@class FMFLocation, UILabel;
+@class FMFLocation, NSLayoutConstraint, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface FMFTitleView : FMTitleView
 {
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
+    NSLayoutConstraint *_titleBottomConstraint;
     FMFLocation *_location;
 }
 
 @property (strong, nonatomic) FMFLocation *location; // @synthesize location=_location;
 @property (strong, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
+@property (strong, nonatomic) NSLayoutConstraint *titleBottomConstraint; // @synthesize titleBottomConstraint=_titleBottomConstraint;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;

@@ -26,12 +26,16 @@
 - (void).cxx_destruct;
 - (id)_correctlySizedImageFromImage:(id)arg1;
 - (id)_fallbackProfilePictureForPersonWithFirstName:(id)arg1 lastName:(id)arg2;
+- (void)_familyMember:(id)arg1 rawImageAndCropRect:(CDUnknownBlockType)arg2;
 - (id)_familyMemberPersonPicture:(id)arg1;
+- (void)_fetchAndCacheRawImageAndCropRectWithRequest:(id)arg1 personID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fetchProfilePictureForAccountOwnerFromServer:(id)arg1 serverCacheTag:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fetchProfilePictureForFamilyMemberFromServer:(id)arg1 serverCacheTag:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_fetchProfilePictureSupersetWithRequest:(id)arg1 personID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fetchProfilePictureWithRequest:(id)arg1 personID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_invalidateMonogrammer;
 - (id)_meCardPicture;
+- (void)_meCardRawImageAndCropRect:(CDUnknownBlockType)arg1;
 - (id)_monogramPersonImage:(void *)arg1;
 - (id)_monogrammer;
 - (void *)_onAddressBookQueue_copyPersonWithImageDataMatchingFamilyMember:(id)arg1;
@@ -47,6 +51,8 @@
 - (void)dealloc;
 - (void)fetchProfilePictureForAccountOwner:(CDUnknownBlockType)arg1;
 - (void)fetchProfilePictureForFamilyMember:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchRawImageAndCropRectForAccountOwner:(CDUnknownBlockType)arg1;
+- (void)fetchRawImageAndCropRectForFamilyMember:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithAppleAccount:(id)arg1 grandSlamAccount:(id)arg2 accountStore:(id)arg3;
 - (id)initWithAppleAccount:(id)arg1 store:(id)arg2;

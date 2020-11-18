@@ -17,6 +17,7 @@
     unsigned int _scope;
     NSDate *_scopeModificationDate;
     NSString *_altDSID;
+    NSString *_rawPassword;
 }
 
 @property (strong) NSString *accountName; // @synthesize accountName=_accountName;
@@ -24,7 +25,9 @@
 @property (strong) NSString *authenticationToken; // @synthesize authenticationToken=_authenticationToken;
 @property long long environment; // @synthesize environment=_environment;
 @property (strong) GKPlayerInternal *playerInternal; // @synthesize playerInternal=_playerInternal;
+@property (strong) NSString *rawPassword; // @synthesize rawPassword=_rawPassword;
 @property unsigned int scope; // @synthesize scope=_scope;
+@property (readonly) NSString *scopeAsString;
 @property (strong) NSDate *scopeModificationDate; // @synthesize scopeModificationDate=_scopeModificationDate;
 
 + (id)secureCodedPropertyKeys;

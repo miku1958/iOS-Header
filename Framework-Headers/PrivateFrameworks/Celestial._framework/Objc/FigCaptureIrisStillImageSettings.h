@@ -6,24 +6,22 @@
 
 #import <Celestial/FigCaptureStillImageSettings.h>
 
-#import <Celestial/NSCoding-Protocol.h>
-#import <Celestial/NSCopying-Protocol.h>
-
 @class FigCaptureMovieFileRecordingSettings, NSArray, NSURL;
 
-@interface FigCaptureIrisStillImageSettings : FigCaptureStillImageSettings <NSCoding, NSCopying>
+@interface FigCaptureIrisStillImageSettings : FigCaptureStillImageSettings
 {
     int _movieMode;
     FigCaptureMovieFileRecordingSettings *_movieRecordingSettings;
-    NSURL *_movieURLForEV0Image;
-    NSArray *_movieLevelMetadataForEV0Image;
+    NSURL *_movieURLForOriginalImage;
+    NSArray *_movieLevelMetadataForOriginalImage;
 }
 
-@property (copy, nonatomic) NSArray *movieLevelMetadataForEV0Image; // @synthesize movieLevelMetadataForEV0Image=_movieLevelMetadataForEV0Image;
+@property (copy, nonatomic) NSArray *movieLevelMetadataForOriginalImage; // @synthesize movieLevelMetadataForOriginalImage=_movieLevelMetadataForOriginalImage;
 @property (nonatomic) int movieMode; // @synthesize movieMode=_movieMode;
 @property (copy, nonatomic) FigCaptureMovieFileRecordingSettings *movieRecordingSettings; // @synthesize movieRecordingSettings=_movieRecordingSettings;
-@property (copy, nonatomic) NSURL *movieURLForEV0Image; // @synthesize movieURLForEV0Image=_movieURLForEV0Image;
+@property (copy, nonatomic) NSURL *movieURLForOriginalImage; // @synthesize movieURLForOriginalImage=_movieURLForOriginalImage;
 
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

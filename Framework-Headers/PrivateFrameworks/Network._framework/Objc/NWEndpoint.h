@@ -6,27 +6,41 @@
 
 #import <objc/NSObject.h>
 
+#import <Network/NSCopying-Protocol.h>
+#import <Network/NSSecureCoding-Protocol.h>
 #import <Network/NWPrettyDescription-Protocol.h>
 
 @class NSData, NSString, NWInterface;
 @protocol OS_nw_endpoint;
 
-@interface NWEndpoint : NSObject <NWPrettyDescription>
+@interface NWEndpoint : NSObject <NWPrettyDescription, NSSecureCoding, NSCopying>
 {
     NSObject<OS_nw_endpoint> *_internalEndpoint;
 }
 
-@property (strong) NWInterface *interface;
-@property (strong) NSObject<OS_nw_endpoint> *internalEndpoint; // @synthesize internalEndpoint=_internalEndpoint;
-@property (readonly, copy) NSString *privateDescription;
-@property (strong) NSData *txtRecord;
+@property (strong, nonatomic) NWInterface *interface;
+@property (strong, nonatomic) NSObject<OS_nw_endpoint> *internalEndpoint; // @synthesize internalEndpoint=_internalEndpoint;
+@property (strong, nonatomic) NSString *parentEndpointDomain;
+@property (readonly, copy, nonatomic) NSString *privateDescription;
+@property (strong, nonatomic) NSData *txtRecord;
 
-+ (Class)classForEndpointType:(int)arg1;
++ (Class)copyClassForEndpointType:(int)arg1;
++ (unsigned int)endpointType;
++ (id)endpointWithCEndpoint:(id)arg1;
 + (id)endpointWithInternalEndpoint:(id)arg1;
++ (BOOL)supportsResolverCallback;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyCEndpoint;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
+- (void)encodeWithCoder:(id)arg1;
+- (id)encodedData;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithEncodedData:(id)arg1;
 - (id)initWithEndpoint:(id)arg1;
+- (void)resolveEndpointWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

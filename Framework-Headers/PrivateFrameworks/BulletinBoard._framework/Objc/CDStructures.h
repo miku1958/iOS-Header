@@ -11,8 +11,8 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 #pragma mark Named Structures
 
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
 
 #pragma mark Typedef'd Structures
@@ -27,8 +27,6 @@ typedef struct {
     unsigned int clearedInfoAndBulletinsForClearingAllBulletins:1;
     unsigned int clearedInfoAndBulletinsForClearingBulletinsByDate:1;
     unsigned int clearedInfoForBulletinsDEPRECATED:1;
-    unsigned int attachmentPNGDataForRecordID:1;
-    unsigned int attachmentAspectRatioForRecordID:1;
     unsigned int defaultSectionInfo:1;
     unsigned int defaultSubsectionInfos:1;
     unsigned int displayNameForSubsectionID:1;
@@ -41,9 +39,9 @@ typedef struct {
     unsigned int noteSectionInfoDidChange:1;
     unsigned int syncBulletinDismissal:1;
     unsigned int handleBulletinActionResponse:1;
+    unsigned int handleBulletinActionResponseWithCompletion:1;
     unsigned int universalSectionIdentifier:1;
     unsigned int parentSectionIdentifier:1;
-    unsigned int primaryAttachmentDataForRecordID:1;
     unsigned int displayNameForFilterID:1;
-} CDStruct_1fd009fe;
+} CDStruct_c9fbfe45;
 

@@ -6,10 +6,13 @@
 
 #import <QuartzCore/CALayer.h>
 
+@protocol CALinearMaskLayerDelegate><CALayerDelegate;
+
 @interface CALinearMaskLayer : CALayer
 {
 }
 
+@property (weak) id<CALinearMaskLayerDelegate><CALayerDelegate> delegate; // @dynamic delegate;
 @property struct CGColor *foregroundColor;
 
 + (BOOL)CA_automaticallyNotifiesObservers:(Class)arg1;
@@ -23,6 +26,7 @@
 - (void)didChangeValueForKey:(id)arg1;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (void)drawInLinearMaskContext:(struct CALinearMaskContext *)arg1;
+- (void)setContentsFormat:(id)arg1;
 
 @end
 

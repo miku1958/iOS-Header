@@ -26,12 +26,15 @@
 + (id)itemWithMessage:(id)arg1 bodyData:(id)arg2;
 + (id)transactionAttributeKey;
 - (BOOL)_isMessagePartOfExistingThreadWithHeaders:(id)arg1;
+- (BOOL)_shouldAutoDownloadAttachment:(id)arg1;
 - (long long)compare:(id)arg1;
 - (void)dealloc;
+- (id)fetchIndexableAttachments;
 - (id)init;
 - (id)initWithIdentifier:(id)arg1;
 - (id)initWithMessage:(id)arg1 bodyData:(id)arg2;
 - (id)searchableItemWithClientState:(id)arg1;
+- (BOOL)shouldExcludeFromIndex;
 
 @end
 

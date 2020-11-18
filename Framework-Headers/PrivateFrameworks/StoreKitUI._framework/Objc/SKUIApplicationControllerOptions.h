@@ -11,11 +11,17 @@
 
 @interface SKUIApplicationControllerOptions : NSObject <NSCopying, NSMutableCopying>
 {
-    BOOL _requiresLocalBootstrapScript;
     BOOL _supportsFullApplicationReload;
     long long _tabBarControllerStyle;
+    BOOL _requiresLocalBootstrapScript;
+    BOOL _bootstrapScriptFallbackEnabled;
+    double _bootstrapScriptFallbackMaximumAge;
+    double _bootstrapScriptTimeoutInterval;
 }
 
+@property (readonly, nonatomic, getter=isBootstrapScriptFallbackEnabled) BOOL bootstrapScriptFallbackEnabled;
+@property (readonly, nonatomic) double bootstrapScriptFallbackMaximumAge;
+@property (readonly, nonatomic) double bootstrapScriptTimeoutInterval;
 @property (readonly, nonatomic) BOOL requiresLocalBootstrapScript;
 @property (readonly, nonatomic) BOOL supportsFullApplicationReload;
 @property (readonly, nonatomic) long long tabBarControllerStyle;

@@ -6,24 +6,28 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
+#import <HealthDaemon/HDDecoding-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class HDCodableSample;
+@class HDCodableSample, NSString;
 
-@interface HDCodableCorrelation : PBCodable <NSCopying>
+@interface HDCodableCorrelation : PBCodable <HDDecoding, NSCopying>
 {
     HDCodableSample *_sample;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasSample;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HDCodableSample *sample; // @synthesize sample=_sample;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)applyToObject:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

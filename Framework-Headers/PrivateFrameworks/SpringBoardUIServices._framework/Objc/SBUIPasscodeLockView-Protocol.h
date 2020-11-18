@@ -13,9 +13,10 @@
 
 @property (nonatomic) double backgroundAlpha;
 @property (strong, nonatomic) id<SBFLegibilitySettingsProvider> backgroundLegibilitySettingsProvider;
+@property (nonatomic, getter=isBiometricAuthenticationAllowed) BOOL biometricAuthenticationAllowed;
 @property (nonatomic) unsigned long long biometricMatchMode;
 @property (strong, nonatomic) UIColor *customBackgroundColor;
-@property (nonatomic) id<SBUIPasscodeLockViewDelegate> delegate;
+@property (weak, nonatomic) id<SBUIPasscodeLockViewDelegate> delegate;
 @property (readonly, nonatomic) NSString *passcode;
 @property (nonatomic) BOOL playsKeypadSounds;
 @property (nonatomic, getter=isScreenOn) BOOL screenOn;

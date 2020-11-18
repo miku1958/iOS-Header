@@ -6,7 +6,7 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSString, NSURL, _SFNavigationBar;
+@class NSString, NSURL, _SFNavigationBar, _UIBackdropViewSettings;
 
 @protocol _SFNavigationBarDelegate <NSObject>
 - (void)compressedNavigationBarWasTapped:(_SFNavigationBar *)arg1;
@@ -21,6 +21,7 @@
 - (void)navigationBarURLWasTapped:(_SFNavigationBar *)arg1;
 
 @optional
+- (void)navigationBar:(_SFNavigationBar *)arg1 backDropWillApplySettings:(_UIBackdropViewSettings *)arg2;
 - (void)navigationBar:(_SFNavigationBar *)arg1 didPasteText:(NSString *)arg2;
 - (void)navigationBarDoneButtonWasTapped:(_SFNavigationBar *)arg1;
 @end

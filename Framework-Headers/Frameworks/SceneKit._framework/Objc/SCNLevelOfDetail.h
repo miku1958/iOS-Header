@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
@@ -25,7 +25,7 @@
 + (id)levelOfDetailWithGeometry:(id)arg1 screenSpaceRadius:(double)arg2;
 + (id)levelOfDetailWithGeometry:(id)arg1 worldSpaceDistance:(double)arg2;
 + (BOOL)supportsSecureCoding;
-- (void *)__CFObject;
+- (const void *)__CFObject;
 - (void)_customEncodingOfSCNLevelOfDetail:(id)arg1;
 - (void)_didDecodeSCNLevelOfDetail:(id)arg1;
 - (void)_setupWithGeometry:(id)arg1 thresholdMode:(long long)arg2 value:(double)arg3;

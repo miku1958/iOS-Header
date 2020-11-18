@@ -4,13 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CDPDevice, CDPRemoteSecretEntryViewController;
+@class CDPDevice, CDPRemoteSecretEntryViewController, NSError;
 
 @protocol CDPRemoteSecretEntryDelegate
 - (void)cancelledRemoteSecretEntry:(CDPRemoteSecretEntryViewController *)arg1;
+- (void)dismissRecoveryFlow:(CDPRemoteSecretEntryViewController *)arg1 completion:(void (^)(void))arg2;
 - (void)exceededMaximumAttemptsForRemoteSecretEntry:(CDPRemoteSecretEntryViewController *)arg1;
+- (void)finishValidation:(CDPRemoteSecretEntryViewController *)arg1 withError:(NSError *)arg2;
+- (void)performAccountReset:(CDPRemoteSecretEntryViewController *)arg1;
+- (void)performRemoteApproval:(CDPRemoteSecretEntryViewController *)arg1;
+- (BOOL)performingAccountRecovery;
 - (void)remoteSecretEntry:(CDPRemoteSecretEntryViewController *)arg1 depletedRemainingAttemptsForDevice:(CDPDevice *)arg2;
 - (void)remoteSecretEntry:(CDPRemoteSecretEntryViewController *)arg1 didAcceptValidRemoteSecretForDevice:(CDPDevice *)arg2;
-- (void)remoteSecretEntry:(CDPRemoteSecretEntryViewController *)arg1 escapeHatchTappedWithOffer:(unsigned long long)arg2 device:(CDPDevice *)arg3;
 @end
 

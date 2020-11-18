@@ -12,6 +12,7 @@
 {
     NSDate *_startOfDayMidnight;
     NSDate *_endOfDayMidnight;
+    NSDate *_oneMinuteBeforeEndOfDayMidnight;
     NSDate *_startOfDayNoon;
     NSDate *_endOfDayNoon;
     NSDate *_startOfWeekMidnight;
@@ -24,6 +25,8 @@
     NSDate *_endOfMonthNoon;
     NSDate *_startOfYear;
     NSDate *_endOfYear;
+    NSDate *_startOfYearNoon;
+    NSDate *_endOfYearNoon;
     NSHashTable *_observers;
     NSSet *_weekendDays;
     NSCalendar *_calendar;
@@ -38,6 +41,7 @@
 @property (readonly, nonatomic) NSDate *endOfWeekNoon;
 @property (readonly, nonatomic) NSDate *endOfYearMidnight;
 @property (readonly, nonatomic) NSDate *endOfYearNoon;
+@property (readonly, nonatomic) NSDate *oneMinuteBeforeEndOfDayMidnight;
 @property (readonly, nonatomic) NSDate *startOfDayMidnight;
 @property (readonly, nonatomic) NSDate *startOfDayNoon;
 @property (readonly, nonatomic) NSDate *startOfMonthMidnight;

@@ -6,101 +6,109 @@
 
 #import <objc/NSObject.h>
 
+#import <Network/NSCopying-Protocol.h>
+#import <Network/NSSecureCoding-Protocol.h>
 #import <Network/NWPrettyDescription-Protocol.h>
 
 @class NSData, NSDictionary, NSSet, NSString, NSURL, NSUUID, NWAddressEndpoint, NWInterface;
-@protocol OS_nw_parameters, OS_xpc_object;
+@protocol OS_nw_parameters;
 
-@interface NWParameters : NSObject <NWPrettyDescription>
+@interface NWParameters : NSObject <NWPrettyDescription, NSSecureCoding, NSCopying>
 {
     NSObject<OS_nw_parameters> *_internalParameters;
 }
 
-@property (copy) NSSet *SSLCipherSuites;
-@property (copy) NSData *TLSSessionID;
-@property (copy) NSString *account;
-@property BOOL allowPowerNap;
-@property BOOL connectedByLaunchOnDemand;
-@property BOOL connectedBySocket;
-@property long long dataProtectionClass;
-@property BOOL disableNagleAlgorithm;
-@property unsigned long long duration;
-@property (copy) NSString *effectiveBundleID;
-@property (copy) NSUUID *effectiveProcessUUID;
-@property BOOL enableExtendedBackgroundIdle;
-@property BOOL enableTFO;
-@property BOOL enableTLS;
-@property BOOL forceFallbackEligibility;
-@property BOOL forceFallbackWin;
-@property BOOL indefinite;
+@property (copy, nonatomic) NSSet *SSLCipherSuites;
+@property (copy, nonatomic) NSData *TLSSessionID;
+@property (copy, nonatomic) NSString *account;
+@property (nonatomic) BOOL connectedBySocket;
+@property (nonatomic) BOOL customProtocolsOnly;
+@property (nonatomic) unsigned long long dataMode;
+@property (nonatomic) BOOL disableBlackHoleDetection;
+@property (nonatomic) BOOL disableNagleAlgorithm;
+@property (copy, nonatomic) NSString *effectiveBundleID;
+@property (copy, nonatomic) NSUUID *effectiveProcessUUID;
+@property (nonatomic) BOOL enableExtendedBackgroundIdle;
+@property (nonatomic) BOOL enableHWChecksum;
+@property (nonatomic) BOOL enableSFO;
+@property (nonatomic) BOOL enableTFO;
+@property (nonatomic) BOOL enableTLS;
+@property (nonatomic) BOOL enableTLSSessionTicket;
+@property (nonatomic) BOOL indefinite;
 @property (strong) NSObject<OS_nw_parameters> *internalParameters; // @synthesize internalParameters=_internalParameters;
-@property unsigned short ipProtocol;
-@property (readonly) BOOL isConditionalConnection;
-@property unsigned long long launchOnDemandJob;
-@property (strong) NSString *launchOnDemandLabel;
-@property (strong) NSObject<OS_xpc_object> *ledbellyEndpoints;
-@property long long ledbellyID;
-@property (strong) NWAddressEndpoint *localAddress;
-@property unsigned long long maximumSSLProtocolVersion;
-@property unsigned long long minimumSSLProtocolVersion;
-@property BOOL multipath;
-@property BOOL noProxy;
-@property (getter=isPassive) BOOL passive;
-@property BOOL passiveConditionalConnection;
-@property BOOL persistent;
-@property int pid;
-@property (strong) NSString *poolName;
-@property long long poolPriority;
-@property (readonly, copy) NSString *privateDescription;
-@property (copy) NSUUID *processUUID;
-@property (readonly) BOOL prohibitCellular;
-@property BOOL prohibitExpensivePaths;
-@property BOOL prohibitFallback;
-@property (copy) NSDictionary *proxyConfiguration;
-@property BOOL reduceBuffering;
-@property BOOL requirePower;
-@property unsigned char requiredAddressFamily;
-@property (readonly) NSString *requiredCellularService;
-@property (strong) NWInterface *requiredInterface;
-@property long long requiredInterfaceType;
-@property BOOL resolvePTR;
-@property BOOL reuseLocalAddress;
-@property unsigned long long startTime;
-@property unsigned long long trafficClass;
-@property unsigned int uid;
-@property (copy) NSURL *url;
-@property BOOL useAWDL;
-@property BOOL useDUET;
-@property BOOL useLongOutstandingQueries;
-@property BOOL useP2P;
-@property (readonly, getter=isValid) BOOL valid;
-@property unsigned long long workload;
+@property (nonatomic) unsigned char ipProtocol;
+@property (nonatomic) BOOL keepAlive;
+@property (nonatomic) unsigned long long keepAliveIdleTime;
+@property (nonatomic) unsigned long long keepAliveInterval;
+@property (nonatomic) BOOL keepAliveOffload;
+@property (strong, nonatomic) NWAddressEndpoint *localAddress;
+@property (nonatomic) unsigned long long maximumSSLProtocolVersion;
+@property (nonatomic) NSData *metadata;
+@property (nonatomic) unsigned long long minimumSSLProtocolVersion;
+@property (nonatomic) BOOL multipath;
+@property (nonatomic) BOOL noProxy;
+@property (strong, nonatomic) NSUUID *parentID;
+@property (nonatomic) int pid;
+@property (readonly, copy, nonatomic) NSString *privateDescription;
+@property (copy, nonatomic) NSUUID *processUUID;
+@property (readonly, nonatomic) BOOL prohibitCellular;
+@property (nonatomic) BOOL prohibitExpensivePaths;
+@property (nonatomic) BOOL prohibitFallback;
+@property (copy, nonatomic) NSDictionary *proxyConfiguration;
+@property (nonatomic) BOOL reduceBuffering;
+@property (nonatomic) unsigned char requiredAddressFamily;
+@property (readonly, nonatomic) NSString *requiredCellularService;
+@property (strong, nonatomic) NWInterface *requiredInterface;
+@property (nonatomic) long long requiredInterfaceType;
+@property (nonatomic) BOOL resolvePTR;
+@property (nonatomic) BOOL reuseLocalAddress;
+@property (nonatomic) unsigned long long trafficClass;
+@property (nonatomic) BOOL trustInvalidCertificates;
+@property (nonatomic) unsigned int uid;
+@property (copy, nonatomic) NSURL *url;
+@property (nonatomic) BOOL useAWDL;
+@property (nonatomic) BOOL useLongOutstandingQueries;
+@property (nonatomic) BOOL useP2P;
+@property (readonly, nonatomic, getter=isValid) BOOL valid;
 
++ (id)parametersWithCParameters:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)applicationProtocols;
+- (id)copyCParameters;
 - (BOOL)copyEffectiveAuditToken:(CDStruct_6ad76789 *)arg1;
-- (id)copyStrippedParameters;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
+- (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasDelegatedPIDForOriginatingPID:(int)arg1;
 - (BOOL)hasDelegatedProcessUUID;
+- (BOOL)hasNonEmptyProxyConfiguration;
+- (BOOL)hasPreferredNetworkAgents;
 - (BOOL)hasProhibitedNetworkAgents;
 - (BOOL)hasRequiredNetworkAgents;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithParameters:(id)arg1;
+- (id)internetProtocols;
 - (BOOL)isEqual:(id)arg1;
+- (void)preferNetworkAgentWithDomain:(id)arg1 type:(id)arg2;
+- (void)preferNetworkAgentWithUUID:(id)arg1;
 - (void)prohibitInterface:(id)arg1;
 - (void)prohibitInterfaceSubtype:(long long)arg1;
 - (void)prohibitInterfaceType:(long long)arg1;
 - (void)prohibitNetworkAgentWithUUID:(id)arg1;
 - (void)prohibitNetworkAgentsWithDomain:(id)arg1 type:(id)arg2;
+- (id)protocolsAtLevel:(int)arg1;
 - (void)requireNetworkAgentWithDomain:(id)arg1 type:(id)arg2;
 - (void)requireNetworkAgentWithUUID:(id)arg1;
 - (void)setInitialDataPayload:(id)arg1;
+- (void)setProtocolAtLevel:(unsigned long long)arg1 protocol:(struct nw_protocol_identifier *)arg2;
 - (void)setSourceApplicationWithBundleID:(id)arg1;
 - (void)setSourceApplicationWithToken:(CDStruct_6ad76789)arg1;
 - (int)sslProtocolWithTLSVersion:(unsigned short)arg1;
 - (unsigned short)tlsVersionWithSSLProtocol:(int)arg1;
+- (id)transportProtocols;
 
 @end
 

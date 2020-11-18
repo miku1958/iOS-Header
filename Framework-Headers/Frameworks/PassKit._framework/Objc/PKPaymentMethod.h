@@ -4,31 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
+#import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSString, PKPaymentPass;
+@class NSString, PKPaymentPass, PKRemotePaymentInstrument;
 
-@interface PKPaymentMethod : NSObject <NSSecureCoding>
+@interface PKPaymentMethod : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_displayName;
     NSString *_network;
     unsigned long long _type;
     PKPaymentPass *_paymentPass;
+    PKRemotePaymentInstrument *_remoteInstrument;
 }
 
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic) NSString *network; // @synthesize network=_network;
 @property (copy, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
+@property (strong, nonatomic) PKRemotePaymentInstrument *remoteInstrument; // @synthesize remoteInstrument=_remoteInstrument;
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
 
++ (id)paymentMethodWithProtobuf:(id)arg1;
 + (BOOL)supportsSecureCoding;
++ (long long)version;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
+- (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPaymentPass:(id)arg1 obfuscateNetworks:(BOOL)arg2;
+- (id)initWithRemotePaymentInstrument:(id)arg1;
+- (id)protobuf;
 
 @end
 

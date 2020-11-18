@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (BOOL)isRequestPermitted;
 
 @end

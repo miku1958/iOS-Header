@@ -6,12 +6,12 @@
 
 #import <GeoServices/GEORPProblemProvider.h>
 
-#import <GeoServices/PBRequesterDelegate-Protocol.h>
+#import <GeoServices/GEOPBSessionRequesterDelegate-Protocol.h>
 
 @class GEORequester, NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEORPVoltaireProblemProvider : GEORPProblemProvider <PBRequesterDelegate>
+@interface GEORPVoltaireProblemProvider : GEORPProblemProvider <GEOPBSessionRequesterDelegate>
 {
     GEORequester *_submissionRequester;
     GEORequester *_statusRequester;

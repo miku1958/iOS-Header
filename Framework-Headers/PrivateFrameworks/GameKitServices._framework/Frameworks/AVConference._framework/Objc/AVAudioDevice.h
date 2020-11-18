@@ -16,6 +16,7 @@
     BOOL _inputAvailable;
     BOOL _outputAvailable;
     BOOL _preferredDevice;
+    BOOL _isBluetoothDevice;
     BOOL _isLineIn;
 }
 
@@ -23,6 +24,7 @@
 @property (readonly, nonatomic) NSNumber *deviceID; // @synthesize deviceID=_deviceID;
 @property (readonly, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
 @property (readonly, nonatomic) BOOL inputAvailable; // @synthesize inputAvailable=_inputAvailable;
+@property (readonly, nonatomic) BOOL isBluetoothDevice;
 @property (readonly, nonatomic) BOOL outputAvailable; // @synthesize outputAvailable=_outputAvailable;
 @property (readonly, nonatomic, getter=isPreferredDevice) BOOL preferredDevice; // @synthesize preferredDevice=_preferredDevice;
 
@@ -30,6 +32,7 @@
 - (void)createNameForScope:(unsigned int)arg1;
 - (void)createUID;
 - (void)dealloc;
+- (id)description;
 - (unsigned long long)hash;
 - (id)initWithDeviceID:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

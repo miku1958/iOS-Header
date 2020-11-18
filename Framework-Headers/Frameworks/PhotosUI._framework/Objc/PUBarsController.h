@@ -21,8 +21,8 @@
     BOOL __needsUpdateContentGuideInsets;
     BOOL __isUpdateScheduled;
     id<PUBarsControllerDelegate> _delegate;
-    UIViewController *_viewController;
     long long __updateBarsDisabledCount;
+    UIViewController *_viewController;
     struct UIEdgeInsets _contentGuideInsets;
 }
 

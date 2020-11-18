@@ -6,15 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSMutableSet, NSXPCConnection, PKPaymentWebServiceContext;
-@protocol OS_dispatch_queue;
+#import <NanoPassKit/NPKCompanionClientProtocol-Protocol.h>
 
-@interface NPKCompanionAgentConnection : NSObject
+@class NSMutableDictionary, NSMutableSet, NSString, NSXPCConnection, PKPaymentWebServiceContext;
+@protocol NPKCompanionAgentConnectionDelegate, OS_dispatch_queue;
+
+@interface NPKCompanionAgentConnection : NSObject <NPKCompanionClientProtocol>
 {
     NSXPCConnection *_xpcConnection;
     NSObject<OS_dispatch_queue> *_xpcConnectionQueue;
     NSObject<OS_dispatch_queue> *_cacheQueue;
     BOOL _queueAppropriateFailedActions;
+    id<NPKCompanionAgentConnectionDelegate> _delegate;
     NSMutableSet *_cachedUniqueIDs;
     NSMutableDictionary *_cachedPasses;
     NSMutableDictionary *_connectionAvailableActions;
@@ -25,7 +28,12 @@
 @property (strong) NSMutableSet *cachedUniqueIDs; // @synthesize cachedUniqueIDs=_cachedUniqueIDs;
 @property (strong, nonatomic) NSMutableDictionary *connectionAvailableActions; // @synthesize connectionAvailableActions=_connectionAvailableActions;
 @property (strong, nonatomic) PKPaymentWebServiceContext *connectionUnavailableWebServiceContext; // @synthesize connectionUnavailableWebServiceContext=_connectionUnavailableWebServiceContext;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<NPKCompanionAgentConnectionDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL queueAppropriateFailedActions; // @synthesize queueAppropriateFailedActions=_queueAppropriateFailedActions;
+@property (readonly) Class superclass;
 @property (readonly) NSXPCConnection *xpcConnection;
 
 + (BOOL)isIssuerAppProvisioningSupported;
@@ -34,7 +42,7 @@
 + (id)watchProvisioningURLForPaymentPass:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addPassToCache:(id)arg1;
-- (void)_applyDataAccessorToPass:(id)arg1;
+- (void)_applyPropertiesToPass:(id)arg1;
 - (id)_cachedPassForUniqueID:(id)arg1;
 - (id)_cachedUniqueIDs;
 - (void)_clearCaches;
@@ -55,6 +63,7 @@
 - (void)handlePendingUnpairingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handlePendingiCloudSignoutWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)initiateLostModeExitAuthWithCompletion:(CDUnknownBlockType)arg1;
 - (void)noteProvisioningPreflightCompleteWithSuccess:(BOOL)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)noteWatchOfferShownForPaymentPass:(id)arg1;
 - (void)paymentPassUniqueIDs:(CDUnknownBlockType)arg1;

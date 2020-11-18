@@ -13,7 +13,6 @@
 + (id)newBottomLockBarForDisplay:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)ignore;
 
 @end
 

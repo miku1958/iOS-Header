@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AXElementGroup, AXElementGroupPruner, AXVisualElementGrouper, NSArray, NSMapTable, NSMutableDictionary;
+@class AXElement, AXElementGroup, AXElementGroupPruner, AXVisualElementGrouper, NSArray, NSMapTable, NSMutableDictionary;
 @protocol AXElementFetcherDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface AXElementFetcher : NSObject
@@ -23,8 +23,8 @@
     BOOL _eventManagementEnabled;
     BOOL _shouldIncludeNonScannerElements;
     BOOL _groupingEnabled;
-    BOOL _shouldUsePadInterfaceHeuristics;
     BOOL _didSendFakeScreenChangeOnLastFetch;
+    long long _elementGroupingHeuristics;
     id<AXElementFetcherDelegate> _delegate;
     NSMapTable *_fetchObservers;
     unsigned long long _activeFetchEvents;
@@ -43,6 +43,7 @@
 @property (nonatomic) BOOL didSendFakeScreenChangeOnLastFetch; // @synthesize didSendFakeScreenChangeOnLastFetch=_didSendFakeScreenChangeOnLastFetch;
 @property (strong, nonatomic) NSArray *elementCache; // @synthesize elementCache=_elementCache;
 @property (readonly, nonatomic) AXElementGroupPruner *elementGroupPruner;
+@property (nonatomic) long long elementGroupingHeuristics; // @synthesize elementGroupingHeuristics=_elementGroupingHeuristics;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic, getter=isEventManagementEnabled) BOOL eventManagementEnabled; // @synthesize eventManagementEnabled=_eventManagementEnabled;
 @property (strong, nonatomic) NSMapTable *fetchObservers; // @synthesize fetchObservers=_fetchObservers;
@@ -52,11 +53,11 @@
 @property (readonly, nonatomic) AXElementGroup *keyboardGroup;
 @property (strong, nonatomic) AXElementGroup *keyboardGroupCache; // @synthesize keyboardGroupCache=_keyboardGroupCache;
 @property (readonly, nonatomic) AXElementGroup *lastKeyboardRow;
+@property (readonly, nonatomic) AXElement *nativeFocusElement;
 @property (strong, nonatomic) NSMutableDictionary *postFetchFilters; // @synthesize postFetchFilters=_postFetchFilters;
 @property (readonly, nonatomic) AXElementGroup *rootGroup;
 @property (strong, nonatomic) AXElementGroup *rootGroupCache; // @synthesize rootGroupCache=_rootGroupCache;
 @property (nonatomic) BOOL shouldIncludeNonScannerElements; // @synthesize shouldIncludeNonScannerElements=_shouldIncludeNonScannerElements;
-@property (nonatomic) BOOL shouldUsePadInterfaceHeuristics; // @synthesize shouldUsePadInterfaceHeuristics=_shouldUsePadInterfaceHeuristics;
 @property (strong, nonatomic) AXVisualElementGrouper *visualElementGrouper; // @synthesize visualElementGrouper=_visualElementGrouper;
 @property (readonly, nonatomic) BOOL willFetchElements;
 
@@ -78,9 +79,17 @@
 - (id)_findGroupableMatchingBlock:(CDUnknownBlockType)arg1 inElementGroup:(id)arg2;
 - (id)_findGroupableMatchingGroupable:(id)arg1 inElementGroup:(id)arg2;
 - (id)_groupWithDictionary:(id)arg1 currentPid:(int)arg2;
-- (id)_groupWithItems:(id)arg1 groupTraits:(int)arg2 label:(id)arg3 currentPid:(int)arg4;
+- (id)_groupWithItems:(id)arg1 groupTraits:(int)arg2 scanningBehaviorTraits:(int)arg3 label:(id)arg4 currentPid:(int)arg5;
+- (void)_handleApplicationWasActivated:(id)arg1;
+- (void)_handleMediaDidBegin:(struct __CFData *)arg1;
+- (void)_handleNativeFocusItemDidChange:(struct __CFData *)arg1;
+- (void)_handleUpdateElementVisuals:(struct __CFData *)arg1;
+- (void)_notifyObserversApplicationWasActivated:(id)arg1;
 - (void)_notifyObserversDidFetchElementsForEvent:(unsigned long long)arg1 foundNewElements:(BOOL)arg2;
 - (void)_notifyObserversDidScheduleFetchEvent:(unsigned long long)arg1;
+- (void)_notifyObserversMediaDidBegin:(struct __CFData *)arg1;
+- (void)_notifyObserversNativeFocusElementDidChange:(id)arg1;
+- (void)_notifyObserversUpdateElementVisuals:(id)arg1;
 - (void)_notifyObserversWillFetchElementsForEvent:(unsigned long long)arg1;
 - (long long)_priorityForFetchEvent:(unsigned long long)arg1;
 - (id)_processAppGroup:(id)arg1 keyboardGroup:(id *)arg2;

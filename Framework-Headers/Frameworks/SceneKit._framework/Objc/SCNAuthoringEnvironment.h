@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
-@class MISSING_TYPE, NSArray, NSIndexSet, NSMutableArray, NSMutableOrderedSet, NSOrderedSet, NSSet, SCNManipulator;
+@class MISSING_TYPE, NSArray, NSMutableArray, NSMutableOrderedSet, NSSet, SCNAuthoringEnvironment2, SCNManipulator;
 @protocol SCNAuthoringEnvironmentDelegate, SCNSceneRenderer;
 
 @interface SCNAuthoringEnvironment : NSObject
@@ -29,8 +29,8 @@
     CDStruct_4aabc75a _overlayDynamicTriangleInfo;
     CDStruct_4aabc75a _textInfo;
     CDStruct_4aabc75a _lightProbesInfo;
-    CDStruct_dd363de5 _normalTextInfo;
-    CDStruct_dd363de5 _boldTextInfo;
+    CDStruct_c23cf450 _normalTextInfo;
+    CDStruct_c23cf450 _boldTextInfo;
     struct __C3DRasterizerStates *_depthOnCullOnStates;
     struct __C3DRasterizerStates *_depthOffCullOnStates;
     struct __C3DRasterizerStates *_depthOnCullOffStates;
@@ -45,9 +45,7 @@
     unsigned int _hasLighting:1;
     BOOL _shouldSnapOnGrid;
     BOOL _shouldSnapToAlign;
-    BOOL _isEditingSubComponent;
     BOOL _selectionIsReadonly;
-    Class _componentType;
     long long _editingSpace;
     BOOL _graphicalSelectionEnabled;
     MISSING_TYPE *_selectionP0;
@@ -55,9 +53,7 @@
     BOOL _selecting;
     BOOL _surroundToSelect;
     NSSet *_initialSelection;
-    NSSet *_initialSubSelection;
     NSMutableOrderedSet *_selection;
-    NSMutableOrderedSet *_subSelection;
     NSArray *_selectedNodes;
     float _lastGridDistance;
     double _gridUnit;
@@ -78,23 +74,21 @@
     SCNManipulator *_manipulator;
     struct __C3DFXPass *_pass;
     id _delegate;
+    SCNAuthoringEnvironment2 *_authEnv2;
 }
 
 @property (nonatomic) long long authoringDisplayMask;
-@property (nonatomic) Class componentType;
 @property (weak, nonatomic) id<SCNAuthoringEnvironmentDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) long long editingSpace; // @synthesize editingSpace=_editingSpace;
 @property (nonatomic) BOOL graphicalSelectionEnabled; // @synthesize graphicalSelectionEnabled=_graphicalSelectionEnabled;
 @property (readonly, nonatomic) double gridUnit; // @synthesize gridUnit=_gridUnit;
-@property (readonly, nonatomic) BOOL isEditingSubComponent; // @synthesize isEditingSubComponent=_isEditingSubComponent;
 @property (readonly, nonatomic) SCNManipulator *manipulator;
 @property (readonly) id<SCNSceneRenderer> sceneRenderer;
 @property (readonly, nonatomic) NSArray *selectedNodes;
+@property (readonly, nonatomic) BOOL selecting; // @synthesize selecting=_selecting;
 @property (nonatomic) BOOL selectionIsReadonly;
 @property (nonatomic) BOOL shouldSnapOnGrid; // @synthesize shouldSnapOnGrid=_shouldSnapOnGrid;
 @property (nonatomic) BOOL shouldSnapToAlign; // @synthesize shouldSnapToAlign=_shouldSnapToAlign;
-@property (strong, nonatomic) NSOrderedSet *subSelection;
-@property (readonly, nonatomic) NSIndexSet *subSelectionIndexes;
 @property (nonatomic) BOOL surroundToSelect; // @synthesize surroundToSelect=_surroundToSelect;
 @property (readonly, nonatomic) struct SCNMatrix4 viewMatrix;
 
@@ -103,7 +97,6 @@
 - (id)_initWithEngineContext:(struct __C3DEngineContext *)arg1;
 - (void)_updateManipulatorTargets;
 - (void)beginEditingNode:(id)arg1;
-- (void)beginEditingNodeComponents:(id)arg1;
 - (void)beginEditingNodes:(id)arg1;
 - (void)cancelEdition;
 - (void)dealloc;
@@ -111,8 +104,10 @@
 - (void)drawLineFromPoint:(struct SCNVector3)arg1 toPoint:(struct SCNVector3)arg2 color:(id)arg3;
 - (void)drawString:(id)arg1 atPoint:(struct CGPoint)arg2 color:(id)arg3;
 - (id)init;
+- (BOOL)isEditingSubComponent;
 - (void)saveInitialSelection;
 - (id)selectedItems;
+- (void)update;
 
 @end
 

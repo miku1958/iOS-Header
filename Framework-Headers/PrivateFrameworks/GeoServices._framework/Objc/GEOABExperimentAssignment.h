@@ -8,10 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class GEOABDebugPanelExperimentBranch, NSString, PBUnknownFields;
 
 @interface GEOABExperimentAssignment : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
+    GEOABDebugPanelExperimentBranch *_debugExperimentBranch;
     int _placeRequestType;
     NSString *_querySubstring;
     int _serviceType;
@@ -21,13 +23,18 @@
     } _has;
 }
 
+@property (strong, nonatomic) GEOABDebugPanelExperimentBranch *debugExperimentBranch; // @synthesize debugExperimentBranch=_debugExperimentBranch;
+@property (readonly, nonatomic) BOOL hasDebugExperimentBranch;
 @property (nonatomic) BOOL hasPlaceRequestType;
 @property (readonly, nonatomic) BOOL hasQuerySubstring;
 @property (nonatomic) BOOL hasServiceType;
 @property (nonatomic) int placeRequestType; // @synthesize placeRequestType=_placeRequestType;
 @property (strong, nonatomic) NSString *querySubstring; // @synthesize querySubstring=_querySubstring;
 @property (nonatomic) int serviceType; // @synthesize serviceType=_serviceType;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (int)StringAsPlaceRequestType:(id)arg1;
+- (int)StringAsServiceType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -36,7 +43,9 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)placeRequestTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)serviceTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -22,7 +22,6 @@
 - (BOOL)accessibilityPerformEscape;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)accessisibilityViewIsModal;
-- (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 
 @end
 

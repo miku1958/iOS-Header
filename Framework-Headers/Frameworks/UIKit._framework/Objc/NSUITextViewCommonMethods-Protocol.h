@@ -7,7 +7,7 @@
 #import <UIKit/NSTextContainerView-Protocol.h>
 #import <UIKit/NSTextLayoutOrientationProvider-Protocol.h>
 
-@class NSTextAttachment, NSTextContainer, UIView;
+@class NSTextContainer;
 
 @protocol NSUITextViewCommonMethods <NSTextLayoutOrientationProvider, NSTextContainerView>
 
@@ -24,6 +24,5 @@
 - (struct CGRect)visibleRect;
 
 @optional
-- (void)addTextAttachmentView:(UIView *)arg1 forAttachment:(NSTextAttachment *)arg2;
 @end
 

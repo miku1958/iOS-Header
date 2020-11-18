@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKDPCommentSummary *summary; // @synthesize summary=_summary;
 @property (nonatomic) int totalCount; // @synthesize totalCount=_totalCount;
 
++ (Class)commentsType;
 - (void).cxx_destruct;
 - (void)addComments:(id)arg1;
 - (void)clearComments;

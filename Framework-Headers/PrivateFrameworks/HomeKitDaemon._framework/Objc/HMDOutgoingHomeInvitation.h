@@ -17,6 +17,7 @@
     NSUUID *_messageIdentifier;
 }
 
+@property (readonly, nonatomic) NSArray *accessoryInvitationsInformation;
 @property (readonly, nonatomic, getter=isComplete) BOOL complete;
 @property (strong, nonatomic) NSString *inviteeDestinationAddress; // @synthesize inviteeDestinationAddress=_inviteeDestinationAddress;
 @property (readonly, nonatomic) NSUUID *messageIdentifier; // @synthesize messageIdentifier=_messageIdentifier;
@@ -28,10 +29,12 @@
 - (void).cxx_destruct;
 - (void)cancel;
 - (id)debugDescription;
+- (id)describeWithFormat;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInvitee:(id)arg1 invitationState:(long long)arg2 forHome:(id)arg3 expiryDate:(id)arg4 messageIdentifier:(id)arg5;
+- (void)invitationRemovedDuringMerge;
 - (BOOL)mergeWithInvitation:(id)arg1;
 - (id)shortDescription;
 

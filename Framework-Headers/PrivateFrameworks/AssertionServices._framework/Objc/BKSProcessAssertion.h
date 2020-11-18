@@ -39,16 +39,23 @@
 @property (readonly, nonatomic) BOOL valid;
 
 + (id)NameForReason:(unsigned int)arg1;
+- (BOOL)_acquireAssertionSync;
 - (void)_clientQueue_acquireAssertion;
 - (void)_clientQueue_invalidate:(BOOL)arg1;
 - (void)_clientQueue_notifyAssertionAcquired:(BOOL)arg1;
 - (void)_clientQueue_updateAssertion;
+- (BOOL)acquire;
 - (void)assertionDidInvalidate;
 - (void)dealloc;
 - (id)init;
+- (id)initWithBundleIdentifier:(id)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4;
 - (id)initWithBundleIdentifier:(id)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
+- (id)initWithBundleIdentifier:(id)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 withHandler:(CDUnknownBlockType)arg5 acquire:(BOOL)arg6;
+- (id)initWithPID:(int)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4;
 - (id)initWithPID:(int)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
+- (id)initWithPID:(int)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 withHandler:(CDUnknownBlockType)arg5 acquire:(BOOL)arg6;
 - (void)invalidate;
+- (id)newCreateEvent;
 - (void)setReason:(unsigned int)arg1;
 
 @end

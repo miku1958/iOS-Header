@@ -12,8 +12,8 @@
 
 + (id)sharedInstance;
 - (void)markObliterationStart;
-- (void)obliterateDataPartitionShowingProgress:(BOOL)arg1 skipDataObliteration:(BOOL)arg2 eraseDataPlan:(BOOL)arg3;
-- (void)wipeAndBrickShowingProgress:(BOOL)arg1;
+- (void)obliterateDataPartitionShowingProgress:(BOOL)arg1 skipDataObliteration:(BOOL)arg2 eraseDataPlan:(BOOL)arg3 reason:(id)arg4;
+- (void)wipeAndBrickShowingProgress:(BOOL)arg1 reason:(id)arg2;
 
 @end
 

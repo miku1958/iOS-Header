@@ -6,11 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <RemoteUI/RemoteUITableHeader-Protocol.h>
+#import <RemoteUI/RUIHeader-Protocol.h>
 
 @class NSString, UIImageView, UILabel;
 
-@interface RUIHeaderView : UIView <RemoteUITableHeader>
+@interface RUIHeaderView : UIView <RUIHeader>
 {
     UILabel *_headerLabel;
     UILabel *_detailHeaderLabel;
@@ -19,25 +19,27 @@
     int _imageAlignment;
     BOOL _isFirstSection;
     BOOL _customIconSize;
-    double _headerLabelBottomPadding;
     struct UIEdgeInsets _margins;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) UILabel *detailHeaderLabel;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) UILabel *headerLabel;
-@property (nonatomic) double headerLabelBottomPadding; // @synthesize headerLabelBottomPadding=_headerLabelBottomPadding;
 @property (nonatomic) struct UIEdgeInsets margins; // @synthesize margins=_margins;
-@property (readonly, nonatomic) UILabel *subHeaderLabel;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (struct CGRect)_iconFrame;
-- (double)headerHeightForWidth:(double)arg1 inTableView:(id)arg2;
+- (BOOL)_hasIcon;
+- (double)_headerOffset;
+- (double)_imageTitlePaddingInView:(id)arg1;
+- (double)_titleSubtitlePaddingInView:(id)arg1;
+- (id)detailHeaderLabel;
+- (double)headerHeightForWidth:(double)arg1 inView:(id)arg2;
+- (id)headerLabel;
+- (id)iconImage;
 - (id)initWithAttributes:(id)arg1;
 - (void)layoutSubviews;
+- (void)setDetailHeaderColor:(id)arg1;
 - (void)setDetailText:(id)arg1 attributes:(id)arg2;
 - (void)setHeaderAlignment:(long long)arg1;
 - (void)setHeaderColor:(id)arg1;
@@ -49,7 +51,7 @@
 - (void)setSubHeaderColor:(id)arg1;
 - (void)setSubHeaderText:(id)arg1 attributes:(id)arg2;
 - (void)setText:(id)arg1 attributes:(id)arg2;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (id)subHeaderLabel;
 
 @end
 

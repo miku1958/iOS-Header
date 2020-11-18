@@ -10,19 +10,19 @@
 
 @interface SKUIStyledImageDataConsumer : SKUIImageDataConsumer
 {
+    struct UIEdgeInsets _borderRadii;
+    IKColor *_iKBackgroundColor;
     UIColor *_backgroundColor;
     UIColor *_borderColor;
-    struct UIEdgeInsets _borderRadii;
-    struct UIEdgeInsets _borderWidths;
-    struct UIEdgeInsets _borderMargins;
-    IKColor *_iKBackgroundColor;
-    struct UIEdgeInsets _imagePadding;
-    struct CGSize _imageSize;
+    long long _imageContentMode;
     long long _imageTreatment;
-    struct CGSize _shadowOffset;
     double _shadowRadius;
     UIColor *_shadowColor;
-    long long _imageContentMode;
+    struct CGSize _imageSize;
+    struct CGSize _shadowOffset;
+    struct UIEdgeInsets _borderWidths;
+    struct UIEdgeInsets _borderMargins;
+    struct UIEdgeInsets _imagePadding;
 }
 
 @property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
@@ -43,6 +43,7 @@
 + (id)brickConsumerWithBrickSize:(struct CGSize)arg1;
 + (id)cardIconConsumer;
 + (id)cardProductImageConsumer;
++ (id)categoriesMessagesConsumer;
 + (id)categoryIconConsumer;
 + (id)giftComposeProductImageConsumer;
 + (id)giftResultIconConsumer;
@@ -50,9 +51,11 @@
 + (id)giftThemeIconConsumer;
 + (id)giftThemeProductImageConsumer;
 + (id)gridIconConsumer;
++ (BOOL)isImageCompressionEnabled;
 + (id)listIconConsumer;
 + (id)lockupIconConsumerWithSize:(long long)arg1;
 + (id)lockupProductImageConsumerWithSize:(long long)arg1;
++ (id)manageMessagesConsumer;
 + (id)mixedTopChartsNewsstandConsumer;
 + (id)newsstandRoomNewsstandConsumer;
 + (id)newsstandSwooshNewsstandConsumer;
@@ -78,8 +81,10 @@
 - (BOOL)_backgroundIsOpaque;
 - (id)_defaultPlaceholderColor;
 - (void)_drawBordersWithImageRect:(struct CGRect)arg1 bounds:(struct CGRect)arg2;
+- (id)_imageWithSize:(struct CGSize)arg1 isOpaque:(BOOL)arg2 drawBlock:(CDUnknownBlockType)arg3;
 - (id)_leftToRightGradient:(struct CGRect)arg1 contentRect:(struct CGRect)arg2 drawBlock:(CDUnknownBlockType)arg3;
 - (id)_outputImageWithInputSize:(struct CGSize)arg1 outputSize:(struct CGSize)arg2 drawBlock:(CDUnknownBlockType)arg3;
+- (CDUnknownBlockType)_placeholderCornerPathBlock;
 - (id)_radialBlurImageWithBounds:(struct CGRect)arg1 contentRect:(struct CGRect)arg2 drawBlock:(CDUnknownBlockType)arg3;
 - (id)_roundedBorderWithBounds:(struct CGRect)arg1 contentRect:(struct CGRect)arg2 drawBlock:(CDUnknownBlockType)arg3;
 - (id)_scaledImageWithBounds:(struct CGRect)arg1 contentRect:(struct CGRect)arg2 drawBlock:(CDUnknownBlockType)arg3;
@@ -87,9 +92,11 @@
 - (id)imageForColor:(id)arg1;
 - (id)imageForColor:(id)arg1 size:(struct CGSize)arg2;
 - (id)imageForImage:(id)arg1;
+- (id)imagePlaceholderForColor:(id)arg1;
 - (id)init;
 - (id)initWithSize:(struct CGSize)arg1 treatment:(long long)arg2;
 - (id)initWithViewElement:(id)arg1;
+- (BOOL)isImagePlaceholderAvailable;
 
 @end
 

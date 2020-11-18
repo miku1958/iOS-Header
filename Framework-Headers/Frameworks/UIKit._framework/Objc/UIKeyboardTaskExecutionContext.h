@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
     UIKeyboardTaskExecutionContext *_parentExecutionContext;
     CDUnknownBlockType _continuation;
     id _info;
+    CDUnknownBlockType _pendingCompletionBlock;
     UIKeyboardTaskQueue *_executionQueue;
 }
 
 @property (readonly, nonatomic) UIKeyboardTaskQueue *executionQueue; // @synthesize executionQueue=_executionQueue;
 @property (strong, nonatomic) id info; // @synthesize info=_info;
+@property (copy, nonatomic) CDUnknownBlockType pendingCompletionBlock; // @synthesize pendingCompletionBlock=_pendingCompletionBlock;
 
 - (id)childWithContinuation:(CDUnknownBlockType)arg1;
 - (void)dealloc;

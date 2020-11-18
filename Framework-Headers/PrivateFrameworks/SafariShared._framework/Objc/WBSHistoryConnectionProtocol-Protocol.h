@@ -7,6 +7,7 @@
 @class NSArray, NSDate, NSString, NSURL, NSUUID;
 
 @protocol WBSHistoryConnectionProtocol
+- (void)beginHistoryAccessSession:(void (^)(id<WBSHistoryAccessSessionProtocol>, NSError *))arg1;
 - (void)beginURLCompletionSession:(void (^)(id<WBSURLCompletionSessionProtocol>, NSError *))arg1;
 - (void)clearHistoryVisitsAddedAfterDate:(NSDate *)arg1 endDate:(NSDate *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)clearHistoryWithCompletionHandler:(void (^)(NSError *))arg1;

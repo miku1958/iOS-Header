@@ -6,26 +6,30 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSTimer, UIButton;
+@class NSArray, PGPlaybackProgress, PGPlaybackProgressIndicator, PGTimer, UIButton;
 @protocol PGPictureInPictureControlsViewControllerDelegate;
 
 @interface PGPictureInPictureControlsViewController : UIViewController
 {
-    unsigned int _showsAlternateActionButtonImage:1;
+    BOOL _showsAlternateActionButtonImage;
+    PGPlaybackProgress *_playbackProgress;
+    NSArray *_loadedTimeRanges;
     UIButton *_stopButton;
     UIButton *_actionButton;
     UIButton *_cancelButton;
+    PGPlaybackProgressIndicator *_playbackProgressIndicator;
     long long _controlsSize;
-    unsigned int _buttonsVisibilityNeedsUpdate:1;
-    long long _buttonsVisibilityCounter;
-    NSTimer *_buttonsVisibilityTimer;
-    unsigned int _shouldShowButtonsIfNeeded:1;
-    unsigned int _shouldShowButtonsForUserInteraction:1;
-    unsigned int _shouldShowButtonsAfterUserInteraction:1;
-    unsigned int _showsButtons:1;
+    BOOL _controlsVisibilityNeedsUpdate;
+    long long _controlsVisibilityCounter;
+    PGTimer *_controlsVisibilityTimer;
+    BOOL _shouldShowControlsIfNeeded;
+    BOOL _shouldShowControlsForUserInteraction;
+    BOOL _shouldShowControlsAfterUserInteraction;
+    BOOL _shouldHideControlsTemporarely;
+    BOOL _showsControls;
+    BOOL _preventControlsVisibilityChangeAnimation;
     id<PGPictureInPictureControlsViewControllerDelegate> _delegate;
     struct {
-        unsigned int pictureInPictureControlsViewController_controlsVisibilityChanged_animated:1;
         unsigned int pictureInPictureControlsViewControllerStopButtonTapped:1;
         unsigned int pictureInPictureControlsViewControllerActionButtonTapped:1;
         unsigned int pictureInPictureControlsViewControllerCancelButtonTapped:1;
@@ -37,6 +41,8 @@
 
 @property (readonly, nonatomic) long long controlsStyle; // @synthesize controlsStyle=_controlsStyle;
 @property (weak, nonatomic) id<PGPictureInPictureControlsViewControllerDelegate> delegate;
+@property (strong, nonatomic) NSArray *loadedTimeRanges;
+@property (strong, nonatomic) PGPlaybackProgress *playbackProgress;
 @property (nonatomic) BOOL showsAlternateActionButtonImage;
 
 - (void).cxx_destruct;
@@ -48,26 +54,25 @@
 - (id)_cancelButtonBackgroundImage;
 - (id)_cancelButtonImage;
 - (void)_cancelButtonTapped:(id)arg1;
-- (void)_fireButtonsVisibilityTimer:(id)arg1;
 - (void)_handleDoubleDoubleTapGesture:(id)arg1;
 - (void)_handleDoubleTapGesture:(id)arg1;
 - (void)_handleSingleTapGesture:(id)arg1;
-- (void)_hideButtonsForTouchUp;
-- (void)_hideButtonsIfPossible;
-- (void)_hideButtonsIfPossibleAfterDelayIfPlaying;
-- (void)_hideButtonsIfPossibleUntilFurtherUserInteraction;
+- (void)_hideControlsForTouchUp;
+- (void)_hideControlsIfPossible;
+- (void)_hideControlsIfPossibleAfterDelayIfPlaying;
+- (void)_hideControlsIfPossibleUntilFurtherUserInteraction;
 - (void)_manageControlsSize;
 - (void)_removeControlForUserInteractionObservation:(id)arg1;
-- (void)_setButtonsVisibilityNeedsUpdate;
-- (void)_showButtonsForTouchDown;
-- (void)_showButtonsIfNeeded;
-- (void)_showButtonsIfNeededAndHideIfPossibleAfterDelayIfPlaying;
-- (void)_showButtonsIfNeededAndHideIfPossibleAfterDelayIfPlayingWithDelay:(double)arg1;
+- (void)_setControlsVisibilityNeedsUpdate;
+- (void)_showControlsForTouchDown;
+- (void)_showControlsIfNeeded;
+- (void)_showControlsIfNeededAndHideIfPossibleAfterDelayIfPlaying;
+- (void)_showControlsIfNeededAndHideIfPossibleAfterDelayIfPlayingWithDelay:(double)arg1;
 - (id)_stopButtonBackgroundImage;
 - (id)_stopButtonImage;
 - (void)_stopButtonTapped:(id)arg1;
-- (void)_updateButtonVisibility;
-- (void)_updateButtonsVisibilityIfNeeded;
+- (void)_updateControlsVisibility;
+- (void)_updateControlsVisibilityIfNeeded;
 - (void)_userInteractionObservationControlTouchDown:(id)arg1;
 - (void)_userInteractionObservationControlTouchUp:(id)arg1;
 - (void)dealloc;
@@ -76,8 +81,8 @@
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
 - (void)setHidden:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)startShowingControls;
-- (void)stopShowingControls;
+- (void)startShowingControlsAnimated:(BOOL)arg1;
+- (void)stopShowingControlsAnimated:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 
 @end

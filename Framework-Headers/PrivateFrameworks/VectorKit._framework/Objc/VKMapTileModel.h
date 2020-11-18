@@ -9,7 +9,7 @@
 #import <VectorKit/VKMapLayer-Protocol.h>
 #import <VectorKit/VKStyleManagerObserver-Protocol.h>
 
-@class NSMutableSet, NSSet, NSString, VKMapModel;
+@class NSMutableSet, NSSet, NSString, VKMapModel, VKSharedResources;
 
 __attribute__((visibility("hidden")))
 @interface VKMapTileModel : VKModelObject <VKMapLayer, VKStyleManagerObserver>
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     VKMapModel *_mapModel;
     unsigned char _minimumZ;
     unsigned char _maximumZ;
+    VKSharedResources *_sharedResources;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -31,20 +32,24 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) VKMapModel *mapModel; // @synthesize mapModel=_mapModel;
 @property (readonly, nonatomic) unsigned char maximumZ; // @synthesize maximumZ=_maximumZ;
 @property (readonly, nonatomic) unsigned char minimumZ; // @synthesize minimumZ=_minimumZ;
-@property (readonly, nonatomic) shared_ptr_f06afc6c styleManager;
+@property (readonly, nonatomic) VKSharedResources *sharedResources; // @synthesize sharedResources=_sharedResources;
+@property (readonly, nonatomic) shared_ptr_a3c46825 styleManager;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSSet *tilesInScene; // @synthesize tilesInScene=_tilesInScene;
 @property (readonly, nonatomic) NSSet *tilesInScenePlusExitingTiles; // @synthesize tilesInScenePlusExitingTiles=_tilesInScenePlusExitingTiles;
 
 + (BOOL)reloadOnActiveTileGroupChange;
 + (BOOL)reloadOnStylesheetChange;
+- (id)_visibleExitingTiles:(id)arg1 withContext:(struct LayoutContext *)arg2;
 - (void)activeTileGroupChanged;
+- (void)addTilesInScene:(id)arg1 toSet:(id)arg2 context:(struct LayoutContext *)arg3;
 - (void)clearCollections;
 - (void)createCollections;
 - (void)createCollectionsIfNecessary;
 - (void)dealloc;
 - (void)didMoveToSupermodel;
 - (id)init;
+- (id)initWithTarget:(id)arg1 sharedResources:(id)arg2;
 - (unsigned long long)mapLayerPosition;
 - (BOOL)maximumZoomLevelBoundsCamera;
 - (BOOL)minimumZoomLevelBoundsCamera;
@@ -53,7 +58,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldLayoutWithoutStyleManager;
 - (void)stylesheetDidChange;
 - (void)stylesheetWillChange;
-- (void)updateTilesInScene:(id)arg1 withContext:(id)arg2 categorize:(BOOL)arg3;
+- (void)updateTilesInScene:(id)arg1 withContext:(struct LayoutContext *)arg2 categorize:(BOOL)arg3;
 - (void)willStartDrawingTiles:(id)arg1;
 - (void)willStopDrawingTiles:(id)arg1;
 

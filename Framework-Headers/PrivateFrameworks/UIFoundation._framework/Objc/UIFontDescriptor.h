@@ -9,7 +9,7 @@
 #import <UIFoundation/NSCopying-Protocol.h>
 #import <UIFoundation/NSSecureCoding-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class NSDictionary, NSMutableDictionary, NSString;
 
 @interface UIFontDescriptor : NSObject <NSCopying, NSSecureCoding>
 {
@@ -21,6 +21,7 @@
     id _reserved5;
 }
 
+@property (readonly, nonatomic) NSDictionary *fontAttributes;
 @property (readonly, nonatomic) struct CGAffineTransform matrix;
 @property (readonly, nonatomic) double pointSize;
 @property (readonly, nonatomic) NSString *postscriptName;
@@ -34,6 +35,7 @@
 + (id)fontDescriptorWithName:(id)arg1 size:(double)arg2;
 + (id)preferredFontDescriptorWithTextStyle:(id)arg1;
 + (id)preferredFontDescriptorWithTextStyle:(id)arg1 addingSymbolicTraits:(unsigned int)arg2 options:(unsigned long long)arg3;
++ (id)preferredFontDescriptorWithTextStyle:(id)arg1 compatibleWithTraitCollection:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (id)_attributes;
 - (id)_swapWithFontAttributes:(id)arg1 options:(unsigned long long)arg2;
@@ -43,7 +45,6 @@
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)fontAttributes;
 - (id)fontDescriptorByAddingAttributes:(id)arg1;
 - (id)fontDescriptorWithFace:(id)arg1;
 - (id)fontDescriptorWithFamily:(id)arg1;

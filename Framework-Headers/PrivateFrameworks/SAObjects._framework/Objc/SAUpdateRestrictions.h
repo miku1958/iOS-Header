@@ -6,11 +6,12 @@
 
 #import <SAObjects/SABaseCommand.h>
 
+#import <SAObjects/SAClientStateServerBoundCommand-Protocol.h>
 #import <SAObjects/SAServerBoundCommand-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface SAUpdateRestrictions : SABaseCommand <SAServerBoundCommand>
+@interface SAUpdateRestrictions : SABaseCommand <SAServerBoundCommand, SAClientStateServerBoundCommand>
 {
 }
 

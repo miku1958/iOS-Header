@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDate, NSMutableIndexSet, NSMutableSet, PKAssertion;
 @protocol OS_dispatch_queue;
@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) BOOL isSuppressing;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_acquireSuppressionAssertionIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;

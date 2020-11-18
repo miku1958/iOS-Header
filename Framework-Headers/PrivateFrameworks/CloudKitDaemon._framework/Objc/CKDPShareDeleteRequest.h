@@ -14,15 +14,15 @@ __attribute__((visibility("hidden")))
 @interface CKDPShareDeleteRequest : PBRequest <NSCopying>
 {
     NSString *_etag;
-    CKDPProtectionInfo *_selfAddedPcs;
+    CKDPProtectionInfo *_oBSOLETESelfAddedPcs;
     CKDPShareIdentifier *_shareId;
 }
 
 @property (strong, nonatomic) NSString *etag; // @synthesize etag=_etag;
 @property (readonly, nonatomic) BOOL hasEtag;
-@property (readonly, nonatomic) BOOL hasSelfAddedPcs;
+@property (readonly, nonatomic) BOOL hasOBSOLETESelfAddedPcs;
 @property (readonly, nonatomic) BOOL hasShareId;
-@property (strong, nonatomic) CKDPProtectionInfo *selfAddedPcs; // @synthesize selfAddedPcs=_selfAddedPcs;
+@property (strong, nonatomic) CKDPProtectionInfo *oBSOLETESelfAddedPcs; // @synthesize oBSOLETESelfAddedPcs=_oBSOLETESelfAddedPcs;
 @property (strong, nonatomic) CKDPShareIdentifier *shareId; // @synthesize shareId=_shareId;
 
 + (id)options;

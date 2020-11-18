@@ -21,11 +21,12 @@
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleProgressCallback:(id)arg1;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (Class)operationInfoClass;
 - (void)performCKOperation;
+- (void)setLongLived:(BOOL)arg1;
 
 @end
 

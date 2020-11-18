@@ -6,7 +6,7 @@
 
 #import <iTunesStoreUI/SUScriptObject.h>
 
-@class NSNumber;
+@class NSNumber, NSString;
 
 @interface SUScriptApplication : SUScriptObject
 {
@@ -20,6 +20,7 @@
 @property (readonly) NSNumber *exitStoreReasonOther;
 @property (readonly) NSNumber *exitStoreReasonPurchase;
 @property (strong) id iconBadgeNumber;
+@property (readonly) NSString *identifier;
 @property (readonly, getter=wasLaunchedFromLibrary) id launchedFromLibrary;
 @property (readonly, getter=isRunningInStoreDemoMode) id runningInStoreDemoMode;
 @property (readonly) id screenHeight;
@@ -32,6 +33,7 @@
 @property (readonly) long long statusBarStyleBlackOpaque;
 @property (readonly) long long statusBarStyleBlackTranslucent;
 @property (readonly) long long statusBarStyleDefault;
+@property (readonly) NSString *version;
 
 + (void)initialize;
 + (id)webScriptNameForKeyName:(id)arg1;
@@ -43,8 +45,10 @@
 - (void)returnToLibrary;
 - (id)scriptAttributeKeys;
 - (void)scrollIconToVisible:(id)arg1 shouldSuspend:(BOOL)arg2;
+- (void)setIdentifier:(id)arg1;
 - (void)setStatusBarHidden:(BOOL)arg1 withAnimation:(long long)arg2;
 - (void)setStatusBarStyle:(long long)arg1 animated:(BOOL)arg2;
+- (void)setVersion:(id)arg1;
 - (void)showNewsstand;
 
 @end

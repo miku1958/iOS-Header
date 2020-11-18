@@ -6,20 +6,15 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSString;
-
 __attribute__((visibility("hidden")))
 @interface _VKPOIIconKey : NSObject
 {
     struct VKIconStyleInfo _style;
-    NSString *_name;
-    long long _size;
 }
 
 - (id).cxx_construct;
-- (void)dealloc;
 - (unsigned long long)hash;
-- (id)initWithName:(id)arg1 style:(struct VKIconStyleInfo *)arg2 size:(long long)arg3;
+- (id)initWithStyle:(struct VKIconStyleInfo *)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

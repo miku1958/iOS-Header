@@ -21,6 +21,7 @@
 @property (nonatomic) BOOL iconNeedsProcessing;
 @property (copy, nonatomic) NSString *iconResourceName;
 @property (nonatomic) BOOL isAppIcon;
+@property (nonatomic) BOOL performIntentEnabledAppAuthorizationCheck;
 @property (copy, nonatomic) NSString *tagPhrase;
 
 + (id)guideDomainSnippet;

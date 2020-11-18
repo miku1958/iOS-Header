@@ -37,23 +37,27 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_init;
-- (BOOL)_objectCanBeSaved:(id *)arg1;
 - (void)_setDevice:(id)arg1;
 - (void)_setMetadata:(id)arg1;
 - (void)_setSourceRevision:(id)arg1;
 - (void)_setUUID:(id)arg1;
+- (BOOL)_shouldNotifyOnInsert;
 - (id)_source;
 - (id)_validateConfiguration;
+- (id)_validateConfigurationAllowingPrivateMetadata:(BOOL)arg1;
 - (void)_validateForCreation;
+- (BOOL)_validateForSavingWithClientEntitlements:(id)arg1 error:(id *)arg2;
 - (id)_valueDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (long long)hk_integerValue;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)validateForSaving:(id *)arg1;
+- (BOOL)prepareForDelivery:(id *)arg1;
+- (BOOL)prepareForSaving:(id *)arg1;
 
 @end
 

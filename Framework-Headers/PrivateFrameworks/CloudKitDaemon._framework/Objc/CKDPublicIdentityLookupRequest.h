@@ -4,33 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CloudKitDaemon/CKDCacheBasedRequest.h>
 
-@class NSMutableDictionary, NSMutableSet;
+@class NSArray, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface CKDPublicIdentityLookupRequest : NSObject
+@interface CKDPublicIdentityLookupRequest : CKDCacheBasedRequest
 {
-    BOOL _isCancelled;
-    CDUnknownBlockType _perEmailProgressBlock;
+    CDUnknownBlockType _perLookupInfoProgressBlock;
     CDUnknownBlockType _lookupCompletionBlock;
-    NSMutableSet *_remainingEmailsToFetch;
-    NSMutableDictionary *_emailsToProtectionInfo;
-    NSMutableDictionary *_emailsToUserInfo;
+    NSArray *_originalLookupInfosToFetch;
+    NSMutableArray *_lookupInfosToFetch;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *emailsToProtectionInfo; // @synthesize emailsToProtectionInfo=_emailsToProtectionInfo;
-@property (strong, nonatomic) NSMutableDictionary *emailsToUserInfo; // @synthesize emailsToUserInfo=_emailsToUserInfo;
-@property (nonatomic) BOOL isCancelled; // @synthesize isCancelled=_isCancelled;
 @property (copy, nonatomic) CDUnknownBlockType lookupCompletionBlock; // @synthesize lookupCompletionBlock=_lookupCompletionBlock;
-@property (copy, nonatomic) CDUnknownBlockType perEmailProgressBlock; // @synthesize perEmailProgressBlock=_perEmailProgressBlock;
-@property (strong, nonatomic) NSMutableSet *remainingEmailsToFetch; // @synthesize remainingEmailsToFetch=_remainingEmailsToFetch;
+@property (strong, nonatomic) NSMutableArray *lookupInfosToFetch; // @synthesize lookupInfosToFetch=_lookupInfosToFetch;
+@property (strong, nonatomic) NSArray *originalLookupInfosToFetch; // @synthesize originalLookupInfosToFetch=_originalLookupInfosToFetch;
+@property (copy, nonatomic) CDUnknownBlockType perLookupInfoProgressBlock; // @synthesize perLookupInfoProgressBlock=_perLookupInfoProgressBlock;
 
++ (void)removeCacheForLookupInfos:(id)arg1 inCache:(id)arg2;
 - (void).cxx_destruct;
-- (void)cancel;
+- (id)CKPropertiesDescription;
+- (id)_generateOONPrivateKeyWithError:(id *)arg1;
+- (void)_receivedUserIdentity:(id)arg1 forLookupInfo:(id)arg2 error:(id)arg3;
+- (void)_saveUserIdentity:(id)arg1 forLookupInfo:(id)arg2;
+- (BOOL)_tryComplete;
+- (id)ckShortDescription;
+- (id)description;
 - (void)finishWithError:(id)arg1;
-- (id)initWithEmails:(id)arg1;
-- (void)receivedProtectionInfo:(id)arg1 userInfo:(id)arg2 forEmail:(id)arg3;
+- (id)initWithLookupInfos:(id)arg1;
+- (void)performRequest;
+- (id)spawnURLRequests;
 
 @end
 

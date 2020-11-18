@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VectorKit/VKFeatureMarker.h>
+#import <Foundation/NSObject.h>
 
 @class NSString, VKImageSourceKey;
 
-@interface VKLabelMarkerShield : VKFeatureMarker
+@interface VKLabelMarkerShield : NSObject
 {
     VKImageSourceKey *_imageKey;
 }
@@ -18,7 +18,6 @@
 @property (readonly, nonatomic) NSString *text;
 @property (readonly, nonatomic) long long type;
 
-- (unsigned long long)_unusedMethod;
 - (void)dealloc;
 - (id)initWithImageKey:(id)arg1;
 

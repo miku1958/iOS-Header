@@ -40,9 +40,9 @@
 + (id)iCalendarValueFromDayOfTheWeek:(unsigned long long)arg1;
 + (id)iCalendarValueFromRecurrenceType:(long long)arg1;
 + (id)recurrenceRuleWithType:(long long)arg1 interval:(unsigned long long)arg2 end:(id)arg3;
+- (void).cxx_destruct;
 - (id)_persistentRule;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (id)initRecurrenceWithFrequency:(long long)arg1 interval:(long long)arg2 daysOfTheWeek:(id)arg3 daysOfTheMonth:(id)arg4 monthsOfTheYear:(id)arg5 weeksOfTheYear:(id)arg6 daysOfTheYear:(id)arg7 setPositions:(id)arg8 end:(id)arg9;

@@ -16,12 +16,16 @@
     NSTimer *_sendProgressTimer;
     NSDictionary *_sendingItems;
     float _cachedSendProgress;
+    BOOL _wasShowing;
+    BOOL _startSendProgressImmediately;
 }
 
-@property (nonatomic) id context; // @synthesize context=_context;
-@property (nonatomic) id<IMSendProgressDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id context; // @synthesize context=_context;
+@property (weak, nonatomic) id<IMSendProgressDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) NSDictionary *sendingItems; // @synthesize sendingItems=_sendingItems;
+@property (nonatomic) BOOL startSendProgressImmediately; // @synthesize startSendProgressImmediately=_startSendProgressImmediately;
 
+- (void).cxx_destruct;
 - (BOOL)_hasSendingMessages;
 - (void)_resetSendProgress;
 - (void)_scheduleSendProgressTimerIfNeeded;

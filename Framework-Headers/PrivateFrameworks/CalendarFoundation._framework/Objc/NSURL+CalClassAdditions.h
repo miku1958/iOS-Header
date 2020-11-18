@@ -18,7 +18,6 @@
 - (BOOL)isEqualToURL:(id)arg1;
 - (BOOL)isEqualToURLIgnoringScheme:(id)arg1;
 - (BOOL)isOnRemoteFileSystem;
-- (id)lastPathComponent;
 - (id)pathDecodedAndWithoutTrailingSlashRemoved;
 - (id)pathWithoutTrailingRemovingSlash;
 - (id)queryParameters;

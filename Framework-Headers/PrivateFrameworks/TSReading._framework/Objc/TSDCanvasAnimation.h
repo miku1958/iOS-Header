@@ -6,9 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
+#import <TSReading/CAAnimationDelegate-Protocol.h>
+
 @class CAMediaTimingFunction, NSDate, NSString, TSDInteractiveCanvasController, TSUNoCopyDictionary;
 
-@interface TSDCanvasAnimation : NSObject
+@interface TSDCanvasAnimation : NSObject <CAAnimationDelegate>
 {
     NSString *_animationID;
     void *_context;
@@ -36,15 +38,19 @@
 @property (readonly, nonatomic) NSString *beginTimeMode;
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (readonly, nonatomic) void *context; // @synthesize context=_context;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) double delay; // @synthesize delay=_delay;
 @property (nonatomic) id delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) SEL didStopSelector; // @synthesize didStopSelector=_didStopSelector;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (copy, nonatomic) CDUnknownBlockType filterBlock; // @synthesize filterBlock=_filterBlock;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) TSDInteractiveCanvasController *interactiveCanvasController; // @synthesize interactiveCanvasController=_interactiveCanvasController;
 @property (nonatomic) BOOL repeatAutoreverses; // @synthesize repeatAutoreverses=_repeatAutoreverses;
 @property (nonatomic) float repeatCount; // @synthesize repeatCount=_repeatCount;
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) CAMediaTimingFunction *timingFunction; // @synthesize timingFunction=_timingFunction;
 @property (nonatomic) BOOL useRepFiltering; // @synthesize useRepFiltering=_useRepFiltering;
 @property (nonatomic) SEL willStartSelector; // @synthesize willStartSelector=_willStartSelector;

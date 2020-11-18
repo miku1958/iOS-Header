@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) GKGameRecord *localPlayerGameRecord; // @synthesize localPlayerGameRecord=_localPlayerGameRecord;
 
+- (void)dealloc;
 - (void)didUpdateModel;
 - (id)leaderboardStringWithGameRecord:(id)arg1;
 - (void)prepareForReuse;

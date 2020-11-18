@@ -6,7 +6,7 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class NSString, PKPaymentApplication;
+@class NSString, PKPass, PKPaymentApplication;
 @protocol PKPaymentDataProviderDelegate;
 
 @protocol PKPaymentDataProvider <NSObject>
@@ -14,14 +14,21 @@
 @property (strong, nonatomic) NSString *defaultPaymentPassIdentifier;
 @property (nonatomic) id<PKPaymentDataProviderDelegate> delegate;
 @property (readonly, nonatomic) BOOL isDeviceInRestrictedMode;
+@property (readonly, nonatomic) BOOL isPaymentHandoffDisabled;
 @property (readonly, nonatomic) NSString *secureElementIdentifier;
 @property (readonly, nonatomic) BOOL secureElementIsProductionSigned;
 
 - (PKPaymentApplication *)defaultPaymentApplicationForPassUniqueIdentifier:(NSString *)arg1;
 - (void)setDefaultPaymentApplication:(PKPaymentApplication *)arg1 forPassUniqueIdentifier:(NSString *)arg2 completion:(void (^)(PKPass *))arg3;
+- (void)setPaymentHandoffDisabled:(BOOL)arg1;
 
 @optional
+- (BOOL)supportsInAppPaymentsForPass:(PKPass *)arg1;
+- (BOOL)supportsMessagesForPass:(PKPass *)arg1;
+- (BOOL)supportsNotificationsForPass:(PKPass *)arg1;
+- (BOOL)supportsTransactionsForPass:(PKPass *)arg1;
 - (NSString *)transactionsAppLaunchTokenForPassWithUniqueIdentifier:(NSString *)arg1;
-- (void)transactionsForPaymentPassWithUniqueIdentifier:(NSString *)arg1 includingSources:(unsigned long long)arg2 limit:(long long)arg3 completion:(void (^)(NSSet *))arg4;
+- (void)transactionsForPaymentPassWithUniqueIdentifier:(NSString *)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 limit:(long long)arg4 completion:(void (^)(NSSet *))arg5;
+- (void)transactionsForPaymentPassWithUniqueIdentifier:(NSString *)arg1 withTransactionSource:(unsigned long long)arg2 withNotificationServiceData:(unsigned long long)arg3 limit:(long long)arg4 completion:(void (^)(NSSet *))arg5;
 @end
 

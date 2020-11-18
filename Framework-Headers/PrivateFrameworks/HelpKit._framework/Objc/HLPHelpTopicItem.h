@@ -10,16 +10,22 @@
 
 @interface HLPHelpTopicItem : HLPHelpItem
 {
+    NSString *_anchor;
     NSString *_hrefID;
+    NSString *_glossaryIdentifierString;
     NSArray *_categories;
 }
 
+@property (copy, nonatomic) NSString *anchor; // @synthesize anchor=_anchor;
 @property (copy, nonatomic) NSArray *categories; // @synthesize categories=_categories;
 @property (readonly, nonatomic, getter=isCopyright) BOOL copyright; // @dynamic copyright;
 @property (readonly, nonatomic, getter=isGlossary) BOOL glossary; // @dynamic glossary;
+@property (copy, nonatomic) NSString *glossaryIdentifierString; // @synthesize glossaryIdentifierString=_glossaryIdentifierString;
 @property (copy, nonatomic) NSString *hrefID; // @synthesize hrefID=_hrefID;
+@property (readonly, nonatomic, getter=isPassionPoints) BOOL passionPoints; // @dynamic passionPoints;
 
 - (void).cxx_destruct;
+- (BOOL)categoryContainKey:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (id)initWithDictionary:(id)arg1 helpBookURL:(id)arg2;

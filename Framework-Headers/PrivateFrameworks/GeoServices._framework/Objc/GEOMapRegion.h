@@ -40,6 +40,7 @@
 @property (nonatomic) double westLng; // @synthesize westLng=_westLng;
 
 + (id)_geo_mapRegionForGEOCoordinateRegion:(CDStruct_90e2a262)arg1;
++ (Class)vertexType;
 - (void)addVertex:(id)arg1;
 - (void)clearVertexs;
 - (BOOL)containsCoordinate:(CDStruct_c3b9c2ee)arg1;

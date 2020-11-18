@@ -31,13 +31,14 @@
 - (void)downloadWebIcons:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchMetadataFromURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)generateAsynchronousPreviews;
-- (void)generatePreviews;
+- (void)generatePreviewsInOperation:(id)arg1;
 - (CDUnknownBlockType)genericBrickThumbnailCreator;
 - (CDUnknownBlockType)genericListThumbnailCreator;
 - (BOOL)hasPreviews;
 - (BOOL)needToGeneratePreviews;
 - (id)rootURLFromURL:(id)arg1;
 - (void)saveWebIcons:(id)arg1;
+- (BOOL)showThumbnailInNoteList;
 - (id)standardWebIconsForURL:(id)arg1;
 - (void)userContentController:(id)arg1 didReceiveScriptMessage:(id)arg2;
 - (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;

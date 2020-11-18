@@ -43,6 +43,7 @@
 @property (nonatomic) BOOL useXPC; // @synthesize useXPC=_useXPC;
 @property (nonatomic) BOOL wakeSystem; // @synthesize wakeSystem=_wakeSystem;
 
+- (void).cxx_destruct;
 - (void)_invalidate;
 - (void)_pcTimerFired:(id)arg1;
 - (void)_start;

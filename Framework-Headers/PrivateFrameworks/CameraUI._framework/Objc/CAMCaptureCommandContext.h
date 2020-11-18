@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class AVCaptureDevice, AVCaptureDeviceFormat, AVCaptureDeviceInput, AVCaptureIrisStillImageOutput, AVCaptureMetadataOutput, AVCaptureMovieFileOutput, AVCaptureSession, AVCaptureStillImageOutput, AVCaptureVideoDataOutput, AVCaptureVideoPreviewLayer, CAMCaptureEngine, CAMPanoramaConfiguration, CAMPanoramaOutput, NSString;
-@protocol AVCaptureFileOutputRecordingDelegate, AVCaptureIrisStillImageCaptureDelegate;
+@class AVCaptureDevice, AVCaptureDeviceFormat, AVCaptureDeviceInput, AVCaptureMetadataOutput, AVCaptureMovieFileOutput, AVCapturePhotoOutput, AVCaptureSession, AVCaptureStillImageOutput, AVCaptureVideoDataOutput, AVCaptureVideoPreviewLayer, CAMCaptureEngine, CAMPanoramaConfiguration, CAMPanoramaOutput, NSString;
+@protocol AVCaptureFileOutputRecordingDelegate, AVCapturePhotoCaptureDelegate;
 
 @interface CAMCaptureCommandContext : NSObject
 {
@@ -19,7 +19,7 @@
     AVCaptureDevice *_currentAudioDevice;
     AVCaptureDeviceInput *_currentAudioDeviceInput;
     AVCaptureStillImageOutput *_currentLegacyStillImageOutput;
-    AVCaptureIrisStillImageOutput *_currentStillImageOutput;
+    AVCapturePhotoOutput *_currentStillImageOutput;
     AVCaptureMovieFileOutput *_currentMovieFileOutput;
     CAMPanoramaOutput *_currentPanoramaOutput;
     AVCaptureMetadataOutput *_currentMetadataOutput;
@@ -39,8 +39,8 @@
 @property (readonly, nonatomic) CAMPanoramaConfiguration *currentPanoramaConfiguration;
 @property (strong, nonatomic) CAMPanoramaOutput *currentPanoramaOutput; // @synthesize currentPanoramaOutput=_currentPanoramaOutput;
 @property (readonly, weak, nonatomic) id<AVCaptureFileOutputRecordingDelegate> currentRecordingDelegate;
-@property (readonly, weak, nonatomic) id<AVCaptureIrisStillImageCaptureDelegate> currentStillImageDelegate;
-@property (strong, nonatomic) AVCaptureIrisStillImageOutput *currentStillImageOutput; // @synthesize currentStillImageOutput=_currentStillImageOutput;
+@property (readonly, weak, nonatomic) id<AVCapturePhotoCaptureDelegate> currentStillImageDelegate;
+@property (strong, nonatomic) AVCapturePhotoOutput *currentStillImageOutput; // @synthesize currentStillImageOutput=_currentStillImageOutput;
 @property (strong, nonatomic) AVCaptureDevice *currentVideoDevice; // @synthesize currentVideoDevice=_currentVideoDevice;
 @property (strong, nonatomic) AVCaptureDeviceFormat *currentVideoDeviceFormat; // @synthesize currentVideoDeviceFormat=_currentVideoDeviceFormat;
 @property (strong, nonatomic) AVCaptureDeviceInput *currentVideoDeviceInput; // @synthesize currentVideoDeviceInput=_currentVideoDeviceInput;
@@ -48,6 +48,7 @@
 @property (strong, nonatomic) AVCaptureVideoPreviewLayer *currentVideoPreviewLayer; // @synthesize currentVideoPreviewLayer=_currentVideoPreviewLayer;
 
 - (void).cxx_destruct;
+- (id)_captureEngineDeviceForMode:(long long)arg1 desiredDevice:(long long)arg2 videoConfiguration:(long long)arg3 resolvedDevice:(long long *)arg4;
 - (id)audioDeviceInput;
 - (void)clear;
 - (id)initWithCaptureEngine:(id)arg1;
@@ -60,10 +61,7 @@
 - (void)registerVideoCaptureRequest:(id)arg1;
 - (void)startPanoramaCaptureWithRequest:(id)arg1;
 - (void)stopPanoramaCapture;
-- (id)videoDeviceForDevice:(long long)arg1;
-- (id)videoDeviceFormatForModeWithOptions:(struct CAMCaptureModeWithOptions)arg1 device:(long long)arg2;
-- (id)videoDeviceInputForDevice:(long long)arg1;
-- (id)videoDevicePresetForModeWithOptions:(struct CAMCaptureModeWithOptions)arg1 device:(long long)arg2;
+- (id)videoDeviceForMode:(long long)arg1 desiredDevice:(long long)arg2 videoConfiguration:(long long)arg3 resolvedDevice:(long long *)arg4;
 
 @end
 

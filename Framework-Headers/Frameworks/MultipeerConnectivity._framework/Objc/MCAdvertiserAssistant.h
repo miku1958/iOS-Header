@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MultipeerConnectivity/MCNearbyServiceAdvertiserDelegate-Protocol.h>
 #import <MultipeerConnectivity/UIAlertViewDelegate-Protocol.h>
 
-@class MCNearbyServiceAdvertiser, MCPeerID, MCSession, NSBundle, NSDictionary, NSMutableArray, NSString, UIAlertView;
+@class MCAlertController, MCNearbyServiceAdvertiser, MCPeerID, MCSession, NSBundle, NSDictionary, NSMutableArray, NSString;
 @protocol MCAdvertiserAssistantDelegate;
 
 @interface MCAdvertiserAssistant : NSObject <MCNearbyServiceAdvertiserDelegate, UIAlertViewDelegate>
@@ -26,11 +26,11 @@
     CDUnknownBlockType _invitationHandlerForPresentedAlert;
     NSString *_appName;
     NSBundle *_frameworkBundle;
-    UIAlertView *_alertView;
+    MCAlertController *_alertController;
 }
 
 @property (strong, nonatomic) MCNearbyServiceAdvertiser *advertiser; // @synthesize advertiser=_advertiser;
-@property (strong, nonatomic) UIAlertView *alertView; // @synthesize alertView=_alertView;
+@property (strong, nonatomic) MCAlertController *alertController; // @synthesize alertController=_alertController;
 @property (readonly, copy, nonatomic) NSString *appName; // @synthesize appName=_appName;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MCAdvertiserAssistantDelegate> delegate;
@@ -48,17 +48,15 @@
 @property (nonatomic) BOOL wasAdvertising; // @synthesize wasAdvertising=_wasAdvertising;
 
 - (void)advertiser:(id)arg1 didReceiveInvitationFromPeer:(id)arg2 withContext:(id)arg3 invitationHandler:(CDUnknownBlockType)arg4;
-- (void)alertView:(id)arg1 clickedButtonAtIndex:(long long)arg2;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (void)applicationDidEnterBackgroundNotification:(id)arg1;
 - (void)applicationWillTerminateNotification:(id)arg1;
 - (void)dealloc;
+- (void)handleUserInvitationDecision:(BOOL)arg1;
 - (id)init;
 - (id)initWithServiceType:(id)arg1 discoveryInfo:(id)arg2 session:(id)arg3;
 - (void)presentNextInvitation;
 - (void)start;
 - (void)stop;
-- (void)willPresentAlertView:(id)arg1;
 
 @end
 

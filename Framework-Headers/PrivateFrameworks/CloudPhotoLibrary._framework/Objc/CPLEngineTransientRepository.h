@@ -29,14 +29,16 @@
 + (id)orderedClassesForDelete;
 - (void).cxx_destruct;
 - (BOOL)_appendBatchToStorage:(id)arg1 alreadyMingled:(BOOL)arg2 error:(id *)arg3;
-- (id)_changeWithIdentifier:(id)arg1;
-- (BOOL)_popChangeBatchOfChangedRecords:(id *)arg1 maximumCount:(unsigned long long)arg2 error:(id *)arg3;
+- (BOOL)_popChangeBatchOfChangedRecords:(id *)arg1 maximumCount:(unsigned long long)arg2 stop:(BOOL *)arg3 error:(id *)arg4;
 - (BOOL)_popChangeBatchOfDeletedRecords:(id *)arg1 maximumCount:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)appendBatch:(id)arg1 alreadyMingled:(BOOL)arg2 error:(id *)arg3;
+- (id)changeWithIdentifier:(id)arg1;
 - (unsigned long long)countOfAssetChanges;
 - (unsigned long long)countOfUnmingledRecords;
 - (BOOL)deleteMingledRecordsWithError:(id *)arg1;
+- (BOOL)hasMingledRecords;
 - (BOOL)hasRecordWithIdentifier:(id)arg1;
+- (BOOL)hasUnmingledRecords;
 - (id)initWithEngineStore:(id)arg1 name:(id)arg2;
 - (BOOL)openWithError:(id *)arg1;
 - (BOOL)popChangeBatch:(id *)arg1 error:(id *)arg2;

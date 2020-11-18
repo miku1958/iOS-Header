@@ -16,5 +16,8 @@
 
 - (double)dateForPoint:(struct CGPoint)arg1;
 - (struct CGPoint)pointForDate:(double)arg1;
+
+@optional
+- (BOOL)shouldReverseLayoutDirection;
 @end
 

@@ -13,6 +13,8 @@
     struct OpaqueFigAsset *_figAsset;
     struct OpaqueFigFormatReader *_formatReader;
     long long _formatReaderOnce;
+    long long _checkIsStreamingOnce;
+    BOOL _isStreaming;
     BOOL didCheckForSaveRestriction;
     BOOL hasSaveRestriction;
 }

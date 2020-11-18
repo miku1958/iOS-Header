@@ -6,21 +6,25 @@
 
 #import <Foundation/NSObject.h>
 
-@class GEODirectionsRouteRequest, GEOETARequest, GEOQuickETARequest, NSString;
+@class GEODirectionsRequest, GEOETARequest, GEOQuickETARequest, NSString;
 
 @interface GEOQuickETARequester : NSObject
 {
     GEOQuickETARequest *_request;
     GEOETARequest *_simpleETARequest;
-    GEODirectionsRouteRequest *_directionsETARequest;
+    GEODirectionsRequest *_directionsETARequest;
     NSString *_loggingFacility;
 }
 
 @property (copy, nonatomic) NSString *loggingFacility; // @synthesize loggingFacility=_loggingFacility;
 
++ (BOOL)requestTrafficAndETAFromWaypoint:(id)arg1 toWaypoints:(id)arg2 transportType:(int)arg3 automobileOptions:(id)arg4 handler:(CDUnknownBlockType)arg5;
 - (void)_calculateRoutingETAWithHandler:(CDUnknownBlockType)arg1;
+- (void)_calculateRoutingETAWithSummary:(BOOL)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_calculateSimpleETAFromAPI:(BOOL)arg1 WithHandler:(CDUnknownBlockType)arg2;
+- (void)_calculateSimpleETAFromAPI:(BOOL)arg1 includeSummary:(BOOL)arg2 WithHandler:(CDUnknownBlockType)arg3;
 - (void)calculateETAFromAPI:(BOOL)arg1 WithResponseHandler:(CDUnknownBlockType)arg2;
+- (void)calculateETAFromAPI:(BOOL)arg1 includeSummary:(BOOL)arg2 WithResponseHandler:(CDUnknownBlockType)arg3;
 - (void)calculateETAWithResponseHandler:(CDUnknownBlockType)arg1;
 - (void)cancel;
 - (void)dealloc;

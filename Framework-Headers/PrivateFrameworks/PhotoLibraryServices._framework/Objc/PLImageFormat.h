@@ -46,6 +46,7 @@
 + (id)formatWithID:(int)arg1;
 - (BOOL)_canDegradeToFormat:(id)arg1;
 - (BOOL)_isAcceptableForViewSize:(struct CGSize)arg1 contentMode:(long long)arg2 sourceAspectRatio:(double)arg3 desiredImageSize:(struct CGSize)arg4 demoteFactor:(double)arg5;
+- (struct CGSize)_shortSideFormatScaledSizeForSourceSize:(struct CGSize)arg1 capLength:(BOOL)arg2;
 - (struct CGRect)centeredRectForSourceSize:(struct CGSize)arg1;
 - (long long)compare:(id)arg1;
 - (void)dealloc;

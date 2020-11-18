@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSError, NSURL;
+@protocol CAMLParserDelegate;
 
 @interface CAMLParser : NSObject
 {
@@ -14,7 +15,7 @@
 }
 
 @property (strong) NSURL *baseURL;
-@property (weak) id delegate;
+@property (weak) id<CAMLParserDelegate> delegate;
 @property (readonly) NSError *error;
 @property (readonly) id result;
 

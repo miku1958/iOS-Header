@@ -31,12 +31,14 @@
 - (id)_axMapLabelLayoutTimer;
 - (id)_axMapViewDelegate;
 - (void)_axMapViewDidChangeVisibleRegion;
+- (void)_axMapVisibleRegionDidChange;
 - (id)_axMapsDelegate;
 - (long long)_axOrientationOfElements;
 - (id)_axRouteForAnnotationMarker:(id)arg1;
 - (void)_axSetMapLabelLayoutTimer:(id)arg1;
 - (void)_axSetTrackingMode:(long long)arg1;
 - (BOOL)_axShouldSummarizeVisibleBounds;
+- (void)_axStartListeningForMapVisibleRegionChanged;
 - (void)_axStartListeningForUpdateAccessibilityElementsComplete;
 - (void)_axStartListeningForUserTrackingModeChange;
 - (void)_axStartListeningForVoiceOverTouchEnabled;
@@ -77,7 +79,6 @@
 - (BOOL)accessibilityMapTypeShouldShowTransit;
 - (BOOL)accessibilityMapTypeSupportsAccessibility;
 - (long long)accessibilityOrientation;
-- (id)accessibilityOverviewForAlternateRouteAnnotationMarker:(id)arg1;
 - (BOOL)accessibilityPerformEscape;
 - (struct CGRect)accessibilityPositionFrameForElement:(CDStruct_aca18c62)arg1;
 - (float)accessibilityRealDistanceBetweenPoint:(struct CGPoint)arg1 screenPoint2:(struct CGPoint)arg2;
@@ -94,7 +95,7 @@
 - (float)accessibilityZoomLevel;
 - (void)accessibilityZoomOutAtPoint:(struct CGPoint)arg1;
 - (void)dealloc;
-- (id)initWithGlobe:(BOOL)arg1 shouldRasterize:(BOOL)arg2 inBackground:(BOOL)arg3 manifestConfiguration:(id)arg4;
+- (id)initWithGlobe:(BOOL)arg1 shouldRasterize:(BOOL)arg2 inBackground:(BOOL)arg3 manifestConfiguration:(id)arg4 contentScale:(double)arg5;
 - (BOOL)isAccessibilityElement;
 - (void)map:(id)arg1 didChangeRegionAnimated:(BOOL)arg2;
 - (void)mapDidBecomeFullyDrawn:(id)arg1 hasFailedTiles:(BOOL)arg2;

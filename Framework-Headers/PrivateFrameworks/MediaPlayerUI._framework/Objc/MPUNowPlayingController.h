@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString, UIImage;
+@class MPUNowPlayingMetadata, NSDictionary, NSString, UIImage;
 @protocol MPUNowPlayingDelegate, OS_dispatch_source;
 
 @interface MPUNowPlayingController : NSObject
@@ -28,6 +28,7 @@
     BOOL _currentNowPlayingAppIsRunning;
     BOOL _shouldUpdateNowPlayingArtwork;
     id<MPUNowPlayingDelegate> _delegate;
+    NSString *_currentNowPlayingArtworkDigest;
     double _timeInformationUpdateInterval;
 }
 
@@ -35,7 +36,9 @@
 @property (readonly, nonatomic) double currentElapsed; // @synthesize currentElapsed=_currentElapsed;
 @property (readonly, nonatomic) BOOL currentNowPlayingAppIsRunning; // @synthesize currentNowPlayingAppIsRunning=_currentNowPlayingAppIsRunning;
 @property (readonly, nonatomic) UIImage *currentNowPlayingArtwork;
+@property (readonly, nonatomic) NSString *currentNowPlayingArtworkDigest; // @synthesize currentNowPlayingArtworkDigest=_currentNowPlayingArtworkDigest;
 @property (readonly, nonatomic) NSDictionary *currentNowPlayingInfo;
+@property (readonly, nonatomic) MPUNowPlayingMetadata *currentNowPlayingMetadata;
 @property (weak, nonatomic) id<MPUNowPlayingDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL isPlaying;
 @property (readonly, nonatomic) NSString *nowPlayingAppDisplayID;

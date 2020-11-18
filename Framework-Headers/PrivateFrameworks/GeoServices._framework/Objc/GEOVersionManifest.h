@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSMutableArray *serviceVersions; // @synthesize serviceVersions=_serviceVersions;
 
++ (Class)serviceVersionType;
 - (void)addServiceVersion:(id)arg1;
 - (void)clearServiceVersions;
 - (void)copyTo:(id)arg1;

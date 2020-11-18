@@ -8,7 +8,7 @@
 
 #import <MapsSupport/MSPContainerPersisterDelegate-Protocol.h>
 
-@class MSPContainerPersister, NSArray, NSCountedSet, NSHashTable, NSMutableArray, NSMutableSet, NSString;
+@class MSPContainerPersister, MSPQuerySource, NSArray, NSCountedSet, NSHashTable, NSMutableArray, NSMutableSet, NSString;
 @protocol NSObject><NSCopying, OS_dispatch_queue;
 
 @interface MSPContainer : NSObject <MSPContainerPersisterDelegate>
@@ -26,27 +26,38 @@
     NSMutableArray *_enqueuedCoalescingCompletionBlocks;
     BOOL _hasScheduledDelayedCommitForCoalescedEdits;
     BOOL _preventsAssertionsForDuplicateStorageIdentifiers;
+    BOOL _simulatesClearingDiscardableDataAfterOperations;
 }
 
 @property (readonly, nonatomic) BOOL _preventsAssertionsForDuplicateStorageIdentifiers; // @synthesize _preventsAssertionsForDuplicateStorageIdentifiers;
 @property (readonly, nonatomic, getter=_accessQueue) NSObject<OS_dispatch_queue> *accessQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) MSPQuerySource *entireContentsQuerySource;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) MSPContainerPersister *persister; // @synthesize persister=_persister;
+@property (nonatomic, getter=_simulatesClearingDiscardableDataAfterOperations, setter=_setSimulatesClearingDiscardableDataAfterOperations:) BOOL simulatesClearingDiscardableDataAfterOperations; // @synthesize simulatesClearingDiscardableDataAfterOperations=_simulatesClearingDiscardableDataAfterOperations;
 @property (readonly) Class superclass;
 
++ (void)_disableLogging;
 + (void)_preventAssertionsForDuplicateStorageIdentifiersInContainersCreatedPerfomingBlock:(CDUnknownBlockType)arg1;
++ (void)clearDiscardableDataFromAllContainers;
 - (void).cxx_destruct;
 - (BOOL)_checkAndAddCoalescedEditForContext:(id)arg1 identifiers:(id)arg2 enqueuedBlock:(CDUnknownBlockType)arg3 completionQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_clearObjectCacheIfNeeded;
+- (void)_commitEditWithFinalContents:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_commitPendingCoalescedEditsIfAny;
 - (void)_endCoalescingEditsForContext:(id)arg1;
 - (id)_objectsWithDuplicateStorageIdentifiersFromArray:(id)arg1;
+- (void)_performInitialLoadNotifyingObservers:(BOOL)arg1 kickOffSynchronously:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_processNewEditedContents:(id)arg1;
+- (void)_processNewLoadedContents:(id)arg1;
 - (id)_processedContentsForPersisterContents:(id)arg1;
 - (void)accessContentsUsingConcurrentBlock:(CDUnknownBlockType)arg1;
 - (void)addObserver:(id)arg1;
 - (id)beginCoalescingEditsWithContext:(id)arg1;
 - (void)coalesceEditsForContext:(id)arg1 inBlock:(CDUnknownBlockType)arg2;
+- (void)dealloc;
 - (void)editContentsUsingBarrierBlock:(CDUnknownBlockType)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)editContentsUsingBarrierBlock:(CDUnknownBlockType)arg1 context:(id)arg2 completionQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)editObjectsWithIdentifiers:(id)arg1 usingBarrierBlock:(CDUnknownBlockType)arg2 completionQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;

@@ -14,7 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityRetrieveTableViewCellText;
-- (unsigned long long)accessibilityTraits;
 
 @end
 

@@ -21,11 +21,10 @@
     BOOL _fullBleedCenteredGrowth;
     unsigned long long _maximumParallaxImages;
     double _maximumParallaxDepth;
-    double _maximumOverlayDepth;
+    double _overlayDepth;
     double _zDepth;
     double _rotationAmount;
     double _scaleSizeIncrease;
-    double _scaleSizeIncreaseLowQuality;
     double _pressedScaleAdjustment;
     double _cornerRadius;
     double _specularHighlightHorizontalPositionSensitivity;
@@ -49,7 +48,6 @@
     double _defaultSelectedShadowVerticalOffset;
     UIImage *_placeholderImage;
     double _focusCursorBorderWidth;
-    double _flatShadowScale;
     double _radiosityOffset;
     double _radiosityStrength;
     double _shadowSelectionDuration;
@@ -78,7 +76,6 @@
 @property (nonatomic) double defaultUnfocusedShadowRadius; // @synthesize defaultUnfocusedShadowRadius=_defaultUnfocusedShadowRadius;
 @property (nonatomic) double defaultUnfocusedShadowVerticalOffset; // @synthesize defaultUnfocusedShadowVerticalOffset=_defaultUnfocusedShadowVerticalOffset;
 @property (nonatomic) BOOL flatImageContainsCornerRadius; // @synthesize flatImageContainsCornerRadius=_flatImageContainsCornerRadius;
-@property (nonatomic) double flatShadowScale; // @synthesize flatShadowScale=_flatShadowScale;
 @property (readonly, copy, nonatomic) _UIFocusAnimationConfiguration *focusAnimationConfiguration;
 @property (nonatomic) double focusCursorBorderWidth; // @synthesize focusCursorBorderWidth=_focusCursorBorderWidth;
 @property (nonatomic) BOOL focusCursorEnabled; // @synthesize focusCursorEnabled=_focusCursorEnabled;
@@ -92,10 +89,10 @@
 @property (nonatomic) BOOL hueShift; // @synthesize hueShift=_hueShift;
 @property (nonatomic) double layerSelectionDuration; // @synthesize layerSelectionDuration=_layerSelectionDuration;
 @property (nonatomic) double layerUnselectionDuration; // @synthesize layerUnselectionDuration=_layerUnselectionDuration;
-@property (nonatomic) double maximumOverlayDepth; // @synthesize maximumOverlayDepth=_maximumOverlayDepth;
 @property (nonatomic) double maximumParallaxDepth; // @synthesize maximumParallaxDepth=_maximumParallaxDepth;
 @property (nonatomic) unsigned long long maximumParallaxImages; // @synthesize maximumParallaxImages=_maximumParallaxImages;
 @property (nonatomic) double minimumFocusDuration; // @synthesize minimumFocusDuration=_minimumFocusDuration;
+@property (nonatomic) double overlayDepth; // @synthesize overlayDepth=_overlayDepth;
 @property (strong, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
 @property (nonatomic) double pressedDuration; // @synthesize pressedDuration=_pressedDuration;
 @property (nonatomic) double pressedScaleAdjustment; // @synthesize pressedScaleAdjustment=_pressedScaleAdjustment;
@@ -105,7 +102,6 @@
 @property (nonatomic) double repositionUnselectionDuration; // @synthesize repositionUnselectionDuration=_repositionUnselectionDuration;
 @property (nonatomic) double rotationAmount; // @synthesize rotationAmount=_rotationAmount;
 @property (nonatomic) double scaleSizeIncrease; // @synthesize scaleSizeIncrease=_scaleSizeIncrease;
-@property (nonatomic) double scaleSizeIncreaseLowQuality; // @synthesize scaleSizeIncreaseLowQuality=_scaleSizeIncreaseLowQuality;
 @property (nonatomic) double shadowSelectionDuration; // @synthesize shadowSelectionDuration=_shadowSelectionDuration;
 @property (nonatomic) double shadowUnselectionDuration; // @synthesize shadowUnselectionDuration=_shadowUnselectionDuration;
 @property (nonatomic) double specularHighlightHorizontalPositionSensitivity; // @synthesize specularHighlightHorizontalPositionSensitivity=_specularHighlightHorizontalPositionSensitivity;

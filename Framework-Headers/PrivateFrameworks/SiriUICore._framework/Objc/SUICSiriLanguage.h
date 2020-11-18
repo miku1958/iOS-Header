@@ -20,12 +20,11 @@
 @property (readonly, weak, nonatomic, getter=_delegate) id<SUICSiriLanguageDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic, getter=_setupAssistantHasCompletedInitialRunAvailable) BOOL setupAssistantHasCompletedInitialRunAvailable; // @synthesize setupAssistantHasCompletedInitialRunAvailable=_setupAssistantHasCompletedInitialRunAvailable;
 @property (nonatomic) BOOL setupAssistantHasCompletedInitialRunChecked; // @synthesize setupAssistantHasCompletedInitialRunChecked=_setupAssistantHasCompletedInitialRunChecked;
-@property (copy, nonatomic) NSString *spokenLanguageCode; // @synthesize spokenLanguageCode=_spokenLanguageCode;
+@property (copy, nonatomic, setter=_setSpokenLanguageCode:) NSString *spokenLanguageCode; // @synthesize spokenLanguageCode=_spokenLanguageCode;
 
 - (void).cxx_destruct;
 - (id)_computeSpokenLanguageCode;
 - (void)_currentLocaleDidChange:(id)arg1;
-- (void)_setSpokenLanguageCode:(id)arg1;
 - (void)_spokenLanguageDidChange:(id)arg1;
 - (void)_updateSpokenLanguageCode;
 - (void)dealloc;

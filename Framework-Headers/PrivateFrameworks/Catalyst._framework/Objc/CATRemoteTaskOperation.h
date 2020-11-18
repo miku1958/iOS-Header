@@ -6,19 +6,22 @@
 
 #import <Catalyst/CATTaskOperation.h>
 
-@class CATTaskClient, NSError;
+@class CATTaskClient, NSError, NSNumber;
 
 @interface CATRemoteTaskOperation : CATTaskOperation
 {
     NSError *mClientError;
     CATTaskClient *_client;
+    NSNumber *_remotePhase;
 }
 
 @property (readonly, nonatomic) CATTaskClient *client; // @synthesize client=_client;
+@property (copy, nonatomic) NSNumber *remotePhase; // @synthesize remotePhase=_remotePhase;
 
 + (id)invalidRemoteTaskWithRequest:(id)arg1 error:(id)arg2;
 + (BOOL)isCancelable;
 - (void).cxx_destruct;
+- (BOOL)canSendNotificationWithName:(id)arg1 userInfo:(id)arg2;
 - (void)cancel;
 - (void)cancelOperationIfNeeded;
 - (void)clientFailedWithError:(id)arg1;
@@ -29,6 +32,7 @@
 - (void)main;
 - (void)operationWillFinish;
 - (void)processMessage:(id)arg1;
+- (void)processNotificationMessage:(id)arg1;
 - (void)updateCompletedUnitCount:(long long)arg1 andTotalUnitCount:(long long)arg2;
 - (void)updateProgressWithRemoteProgress:(id)arg1;
 

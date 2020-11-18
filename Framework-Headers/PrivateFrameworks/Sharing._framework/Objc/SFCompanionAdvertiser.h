@@ -21,6 +21,7 @@
 @property (readonly, copy) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property BOOL supportsStreams; // @synthesize supportsStreams=_supportsStreams;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)getContinuationStreamsWithEndpointData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithServiceType:(id)arg1;

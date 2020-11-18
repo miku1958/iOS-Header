@@ -30,7 +30,7 @@
 @property (nonatomic) long long buttonMode; // @synthesize buttonMode=_buttonMode;
 @property (nonatomic, getter=isPulsing) BOOL pulsing; // @synthesize pulsing=_pulsing;
 @property (nonatomic) BOOL showDisabled; // @synthesize showDisabled=_showDisabled;
-@property (nonatomic) struct CMKShutterButtonSpec spec; // @synthesize spec=_spec;
+@property (nonatomic, setter=_setSpec:) struct CMKShutterButtonSpec spec; // @synthesize spec=_spec;
 @property (nonatomic, getter=isSpinning) BOOL spinning; // @synthesize spinning=_spinning;
 
 + (id)shutterButton;
@@ -47,7 +47,6 @@
 - (id)_outerImageForMode:(long long)arg1;
 - (void)_performHighlightAnimation;
 - (void)_performModeSwitchAnimationFromMode:(long long)arg1 toMode:(long long)arg2 animated:(BOOL)arg3;
-- (void)_setSpec:(struct CMKShutterButtonSpec)arg1;
 - (BOOL)_shouldUseImageViewForMode:(long long)arg1;
 - (BOOL)_shouldUseTimelapseOuterViewForMode:(long long)arg1;
 - (struct CGSize)_sizeForMode:(long long)arg1;

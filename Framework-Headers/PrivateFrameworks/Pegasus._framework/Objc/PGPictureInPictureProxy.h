@@ -8,24 +8,28 @@
 
 #import <Pegasus/PGPictureInPictureExportedInterface-Protocol.h>
 
-@class NSString, NSXPCConnection, PGHostedWindow, PGPlaybackProgressIndicator, UIViewController;
+@class NSArray, NSString, NSXPCConnection, PGHostedWindow, PGSetterThrottler, UIViewController;
 @protocol OS_dispatch_queue, PGPictureInPictureProxyDelegate, PGPictureInPictureViewController;
 
 @interface PGPictureInPictureProxy : NSObject <PGPictureInPictureExportedInterface>
 {
     struct CGSize _preferredContentSize;
-    unsigned int _isPictureInPicturePossible:1;
-    unsigned int _isPictureInPictureActive:1;
-    unsigned int _isPictureInPictureSuspended:1;
+    BOOL _isPictureInPicturePossible;
+    BOOL _isPictureInPictureActive;
+    BOOL _isPictureInPictureSuspended;
+    BOOL _pictureInPictureShouldStartWhenEnteringBackground;
+    BOOL _pictureInPictureWasStartedWhenEnteringBackground;
+    double _playbackProgress;
+    double _playbackRate;
+    NSArray *_loadedTimeRanges;
+    PGSetterThrottler *_playbackProgressSetterThrottler;
+    PGSetterThrottler *_loadedTimeRangesSetterThrottler;
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_queue> *_queue;
     PGHostedWindow *_hostedWindow;
     UIViewController *_rootViewController;
-    PGPlaybackProgressIndicator *_playbackProgressIndicator;
-    unsigned int _pictureInPictureShouldStartWhenEnteringBackground:1;
-    unsigned int _pictureInPictureWasStartedWhenEnteringBackground:1;
-    unsigned int _isStartingStoppingOrCancellingPictureInPicture:1;
-    unsigned int _isHostedWindowSizeChangeDuringPinchGesture:1;
+    BOOL _isStartingStoppingOrCancellingPictureInPicture;
+    BOOL _isHostedWindowSizeChangeDuringPinchGesture;
     id<PGPictureInPictureProxyDelegate> _delegate;
     struct {
         unsigned int pictureInPictureProxyViewFrameForTransitionAnimation:1;
@@ -37,13 +41,6 @@
         unsigned int pictureInPictureProxy_didStopPictureInPictureWithAnimationType_reason:1;
         unsigned int pictureInPictureProxyPictureInPictureInterruptionBegan:1;
         unsigned int pictureInPictureProxyPictureInPictureInterruptionEnded:1;
-        unsigned int pictureInPictureProxyWillStartPictureInPicture:1;
-        unsigned int pictureInPictureProxyDidStartPictureInPicture:1;
-        unsigned int pictureInPictureProxyFailedToStartPictureInPicture_withError:1;
-        unsigned int pictureInPictureProxyWillStopPictureInPicture:1;
-        unsigned int pictureInPictureProxyDidStopPictureInPicture:1;
-        unsigned int pictureInPictureProxyWillCancelPictureInPicture:1;
-        unsigned int pictureInPictureProxyDidCancelPictureInPicture:1;
     } _delegateRespondsTo;
     long long _controlsStyle;
     UIViewController<PGPictureInPictureViewController> *_viewController;
@@ -59,12 +56,10 @@
 @property (nonatomic) BOOL pictureInPictureShouldStartWhenEnteringBackground;
 @property (readonly, nonatomic, getter=isPictureInPictureSuspended) BOOL pictureInPictureSuspended;
 @property (readonly, nonatomic) BOOL pictureInPictureWasStartedWhenEnteringBackground;
-@property (nonatomic) BOOL shouldStartPictureInPictureEnteringBackground;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIViewController<PGPictureInPictureViewController> *viewController; // @synthesize viewController=_viewController;
 
 + (void)_updatePictureInPictureActive:(BOOL)arg1;
-+ (void)initialize;
 + (BOOL)isPictureInPictureActive;
 + (BOOL)isPictureInPictureSupported;
 + (id)pictureInPictureProxyWithControlsStyle:(long long)arg1 viewController:(id)arg2;
@@ -73,8 +68,6 @@
 - (void)_stopPictureInPictureAnimated:(BOOL)arg1 activateApplicationIfNeededAndRestoreUserInterface:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (struct CGRect)_viewFrameForTransitionAnimationAssumeApplicationActive:(BOOL)arg1;
 - (oneway void)actionButtonTapped;
-- (void)cancelPictureInPicture;
-- (oneway void)controlsVisibilityChanged:(BOOL)arg1 animated:(BOOL)arg2 synchronizationFence:(id)arg3;
 - (void)dealloc;
 - (oneway void)hostedWindowSizeChangeBegan;
 - (oneway void)hostedWindowSizeChangeEnded;
@@ -91,12 +84,12 @@
 - (oneway void)pictureInPictureStopRequestedAnimated:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)pictureInPictureSuspended;
 - (double)playbackProgress;
+- (double)playbackRate;
 - (void)preferredContentSizeDidChangeForViewController;
 - (void)rotateContentContainer:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)setLoadedTimeRanges:(id)arg1;
-- (void)setPlaybackProgress:(double)arg1;
+- (void)setPlaybackProgress:(double)arg1 playbackRate:(double)arg2;
 - (void)startPictureInPicture;
-- (void)stopPictureInPicture;
 - (void)stopPictureInPictureAndRestoreUserInterface:(BOOL)arg1;
 - (oneway void)updateHostedWindowSize:(struct CGSize)arg1 animationType:(long long)arg2 initialSpringVelocity:(double)arg3 synchronizationFence:(id)arg4;
 - (oneway void)updatePictureInPicturePossible:(BOOL)arg1;

@@ -9,14 +9,14 @@
 #import <BaseBoardUI/BSDebugDescriptionProviding-Protocol.h>
 #import <BaseBoardUI/BSDescriptionProviding-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSString;
+@class BSUIMappedImageCacheOptions, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface BSUIMappedImageCache : NSObject <BSDescriptionProviding, BSDebugDescriptionProviding>
 {
-    NSString *_name;
     NSString *_path;
-    BOOL _shared;
+    NSString *_uniqueIdentifier;
+    BSUIMappedImageCacheOptions *_options;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_queue_keysToImagesOrFutures;
     NSMutableSet *_queue_allKeys;
@@ -27,9 +27,14 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)cacheURLWithName:(id)arg1 forBundleWithIdentifier:(id)arg2 options:(unsigned long long)arg3;
++ (id)cacheURLWithUniqueIdentifier:(id)arg1 options:(id)arg2;
 - (id)_imageForKey:(id)arg1 withCPBitmapReadFlags:(int)arg2 generatingIfNecessaryWithBlock:(CDUnknownBlockType)arg3;
+- (id)_imageForKey:(id)arg1 withCPBitmapReadFlags:(int)arg2 generatingIfNecessaryWithBlock:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_noteExternalChangeForKey:(id)arg1;
+- (void)_setImage:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setImage:(id)arg1 forKey:(id)arg2 withPersistenceOptions:(unsigned long long)arg3 andCPBitmapReadFlags:(int)arg4;
-- (void)_syncWithQueue;
+- (void)_setImage:(id)arg1 forKey:(id)arg2 withPersistenceOptions:(unsigned long long)arg3 andCPBitmapReadFlags:(int)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_warmupImageForKey:(id)arg1;
 - (id)allKeys;
 - (void)dealloc;
@@ -38,13 +43,20 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)imageForKey:(id)arg1;
 - (id)imageForKey:(id)arg1 generatingIfNecessaryWithBlock:(CDUnknownBlockType)arg2;
+- (id)imageForKey:(id)arg1 generatingIfNecessaryWithBlock:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithName:(id)arg1;
 - (id)initWithName:(id)arg1 options:(unsigned long long)arg2;
+- (id)initWithUniqueIdentifier:(id)arg1;
+- (id)initWithUniqueIdentifier:(id)arg1 options:(id)arg2;
+- (void)removeAllImagesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeAllObjects;
 - (void)removeImageForKey:(id)arg1;
+- (void)removeImageForKey:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)setImage:(id)arg1 forKey:(id)arg2;
+- (void)setImage:(id)arg1 forKey:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)setImage:(id)arg1 forKey:(id)arg2 withPersistenceOptions:(unsigned long long)arg3;
+- (void)setImage:(id)arg1 forKey:(id)arg2 withPersistenceOptions:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

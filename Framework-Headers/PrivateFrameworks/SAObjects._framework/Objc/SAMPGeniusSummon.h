@@ -12,6 +12,7 @@
 {
 }
 
+@property (copy, nonatomic) NSString *airplayRouteUID;
 @property (strong, nonatomic) SAMPMediaItem *mediaItem;
 @property (copy, nonatomic) NSNumber *startPlaying;
 @property (copy, nonatomic) NSString *upNextQueueInsertLocation;

@@ -6,14 +6,16 @@
 
 #import <SAObjects/SAUISnippet.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, SAUIAppPunchOut;
 
 @interface SAGuidanceGuideSnippet : SAUISnippet
 {
 }
 
+@property (strong, nonatomic) SAUIAppPunchOut *appStorePunchOut;
 @property (copy, nonatomic) NSArray *domainSnippets;
 @property (copy, nonatomic) NSString *headerText;
+@property (copy, nonatomic) NSArray *intentEnabledAppSnippets;
 
 + (id)guideSnippet;
 + (id)guideSnippetWithDictionary:(id)arg1 context:(id)arg2;

@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
     BOOL _didCompletePreInvocationDelay;
     BOOL _didCompleteInvocationDelay;
-    BOOL _rescheduleAfterNextFire;
     BOOL _disableRepeat;
     BOOL _skipInitialFire;
     double _preInvocationDelay;
@@ -43,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithInvocation:(id)arg1;
 - (id)initWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;
 - (void)invalidate;
-- (void)invoke;
+- (BOOL)invoke;
 - (void)reset;
 - (void)schedule;
 - (void)scheduleWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;

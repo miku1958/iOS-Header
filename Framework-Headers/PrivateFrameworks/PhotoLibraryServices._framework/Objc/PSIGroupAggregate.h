@@ -14,8 +14,12 @@
     NSMutableArray *_rangesMatchingTokens;
     NSMutableArray *_groups;
     NSMutableArray *_assetIdArrays;
+    NSMutableArray *_primaryAssetIdArrays;
+    NSMutableArray *_secondaryAssetIdArrays;
     NSMutableArray *_aggregatedGroupIds;
 }
+
+@property (readonly) NSArray *searchTokens; // @synthesize searchTokens=_searchTokens;
 
 - (struct __CFArray *)_newSortedGroupIds;
 - (BOOL)_prefer:(id)arg1 over:(id)arg2;
@@ -23,10 +27,10 @@
 - (BOOL)_verifySortedGroupIdsUnique;
 - (void)dealloc;
 - (id)initWithSearchTokens:(id)arg1;
-- (id)newGroup;
+- (id)newGroupResult;
 - (void)pop;
 - (void)postProcessGroupResults:(id)arg1;
-- (BOOL)pushGroup:(id)arg1;
+- (BOOL)pushGroup:(id)arg1 secondaryPairedGroup:(id)arg2;
 
 @end
 

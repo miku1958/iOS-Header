@@ -8,15 +8,16 @@
 
 #import <UIKit/NSCoding-Protocol.h>
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKit/UILayoutContainerViewDelegate-Protocol.h>
 #import <UIKit/UITabBarDelegate-Protocol.h>
 
-@class NSArray, NSMapTable, NSMutableArray, NSString, UIFocusContainerGuide, UIGestureRecognizer, UIMoreNavigationController, UINavigationController, UITabBar, UITapGestureRecognizer, UIView;
+@class NSArray, NSMapTable, NSMutableArray, NSString, UIFocusContainerGuide, UIGestureRecognizer, UILayoutContainerView, UIMoreNavigationController, UINavigationController, UITabBar, UITapGestureRecognizer, UIView;
 @protocol UITabBarControllerDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning;
 
-@interface UITabBarController : UIViewController <UIGestureRecognizerDelegate, UITabBarDelegate, NSCoding>
+@interface UITabBarController : UIViewController <UIGestureRecognizerDelegate, UILayoutContainerViewDelegate, UITabBarDelegate, NSCoding>
 {
     UITabBar *_tabBar;
-    UIView *_containerView;
+    UILayoutContainerView *_containerView;
     UIView *_viewControllerTransitionView;
     id _tabBarItemsToViewControllers;
     UIViewController *_selectedViewController;
@@ -33,7 +34,6 @@
     UITapGestureRecognizer *_selectGestureRecognizer;
     UIGestureRecognizer *_touchDetectionGestureRecognizer;
     UIFocusContainerGuide *_contentFocusContainerGuide;
-    NSMapTable *_rememberedFocusedViews;
     struct {
         unsigned int isShowingMoreItem:1;
         unsigned int needsToRebuildItems:1;
@@ -49,10 +49,11 @@
     } _tabBarControllerFlags;
     NSMutableArray *_moreChildViewControllers;
     UIView *_accessoryView;
+    NSMapTable *_rememberedFocusedItemsByViewController;
     id<UITabBarControllerDelegate> _delegate;
+    NSString *__backdropGroupName;
     id<UIViewControllerAnimatedTransitioning> __animator;
     id<UIViewControllerInteractiveTransitioning> __interactor;
-    NSString *__backdropGroupName;
 }
 
 @property (strong, nonatomic, setter=_setAccessoryView:) UIView *_accessoryView; // @synthesize _accessoryView;
@@ -66,6 +67,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableArray *moreChildViewControllers; // @synthesize moreChildViewControllers=_moreChildViewControllers;
 @property (readonly, nonatomic) UINavigationController *moreNavigationController;
+@property (readonly, nonatomic, getter=_rememberedFocusedItemsByViewController) NSMapTable *rememberedFocusedItemsByViewController; // @synthesize rememberedFocusedItemsByViewController=_rememberedFocusedItemsByViewController;
 @property (nonatomic) unsigned long long selectedIndex;
 @property (nonatomic) UIViewController *selectedViewController;
 @property (readonly) Class superclass;
@@ -97,11 +99,12 @@
 - (unsigned long long)_effectiveMaxItems;
 - (long long)_effectiveTabBarPosition;
 - (id)_existingMoreNavigationController;
-- (void)_forgetFocusedViewForViewController:(id)arg1;
+- (void)_forgetFocusedItemForViewController:(id)arg1;
 - (struct CGRect)_frameForViewController:(id)arg1;
 - (struct CGRect)_frameForWrapperViewForViewController:(id)arg1;
 - (BOOL)_gestureRecognizerShouldBegin:(id)arg1;
 - (void)_getRotationContentSettings:(CDStruct_8bdd0ba6 *)arg1;
+- (BOOL)_hasPreferredInterfaceOrientationForPresentation;
 - (void)_hideBarWithTransition:(int)arg1 isExplicit:(BOOL)arg2;
 - (BOOL)_ignoreUnselectedTabsForStateRestoration;
 - (BOOL)_isBarHidden;
@@ -122,9 +125,9 @@
 - (BOOL)_reallyWantsFullScreenLayout;
 - (void)_rebuildTabBarItemsAnimated:(BOOL)arg1;
 - (void)_rebuildTabBarItemsIfNeeded;
-- (id)_recallRememberedFocusedViewForViewController:(id)arg1;
-- (void)_rememberFocusedView:(id)arg1 forViewController:(id)arg2;
-- (void)_rememberPresentingFocusedView:(id)arg1;
+- (id)_recallRememberedFocusedItemForViewController:(id)arg1;
+- (void)_rememberFocusedItem:(id)arg1 forViewController:(id)arg2;
+- (void)_rememberPresentingFocusedItem:(id)arg1;
 - (id)_responderSelectionContainerViewForResponder:(id)arg1;
 - (void)_selectDefaultViewControllerIfNecessaryWithAppearanceTransitions:(BOOL)arg1;
 - (id)_selectedViewControllerInTabBar;
@@ -143,11 +146,12 @@
 - (BOOL)_shouldSynthesizeSupportedOrientations;
 - (BOOL)_shouldUseOnePartRotation;
 - (void)_showBarWithTransition:(int)arg1 isExplicit:(BOOL)arg2;
+- (long long)_subclassPreferredFocusedViewPrioritizationType;
 - (void)_tabBarItemClicked:(id)arg1;
 - (long long)_tabBarPosition;
 - (id)_transitionView;
 - (BOOL)_transitionsChildViewControllers;
-- (void)_updateGestureRecognizersForIdiom:(long long)arg1;
+- (void)_updateGestureRecognizersForTraitCollection:(id)arg1;
 - (void)_updateLayoutForStatusBarAndInterfaceOrientation;
 - (void)_updateLayoutForTraitCollection:(id)arg1;
 - (void)_updateOffscreenStatus:(BOOL)arg1;
@@ -164,6 +168,7 @@
 - (void)beginCustomizingTabBar:(id)arg1;
 - (id)childViewControllerForStatusBarHidden;
 - (id)childViewControllerForStatusBarStyle;
+- (id)childViewControllerForWhitePointAdaptivityStyle;
 - (void)concealTabBarSelection;
 - (void)dealloc;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
@@ -177,6 +182,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
+- (id)preferredFocusEnvironments;
 - (id)preferredFocusedView;
 - (long long)preferredInterfaceOrientationForPresentation;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;

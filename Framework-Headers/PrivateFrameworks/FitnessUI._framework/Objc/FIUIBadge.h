@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FitnessUI/FIUIAnimatableObject.h>
+#import <HealthKitUI/HKAnimatableObject.h>
 
-@interface FIUIBadge : FIUIAnimatableObject
+@interface FIUIBadge : HKAnimatableObject
 {
     double _rotationX;
     double _rotationY;

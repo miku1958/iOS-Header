@@ -12,23 +12,24 @@
 
 @interface TKTonePickerItem : TKPickerSelectableItem <TKPickerContainerItem>
 {
-    TKTonePickerController *_parentTonePickerController;
-    long long _numberOfChildren;
+    BOOL _needsRoomForCheckmark;
     unsigned long long _itemKind;
+    TKTonePickerController *__parentTonePickerController;
+    long long _numberOfChildren;
 }
 
-@property (nonatomic, setter=_setParentTonePickerController:) TKTonePickerController *_parentTonePickerController; // @synthesize _parentTonePickerController;
+@property (weak, nonatomic, setter=_setParentTonePickerController:) TKTonePickerController *_parentTonePickerController; // @synthesize _parentTonePickerController=__parentTonePickerController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) unsigned long long itemKind; // @synthesize itemKind=_itemKind;
-@property (nonatomic) long long numberOfChildren; // @synthesize numberOfChildren=_numberOfChildren;
+@property (nonatomic, setter=_setItemKind:) unsigned long long itemKind; // @synthesize itemKind=_itemKind;
+@property (nonatomic, setter=_setNeedsRoomForCheckmark:) BOOL needsRoomForCheckmark; // @synthesize needsRoomForCheckmark=_needsRoomForCheckmark;
+@property (nonatomic, setter=_setNumberOfChildren:) long long numberOfChildren; // @synthesize numberOfChildren=_numberOfChildren;
 @property (readonly, nonatomic) TKTonePickerSectionItem *parentSectionItem;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_appendDescriptionOfAttributesToString:(id)arg1;
-- (void)_setItemKind:(unsigned long long)arg1;
-- (void)_setNumberOfChildren:(long long)arg1;
 - (id)childItemAtIndex:(long long)arg1;
 
 @end

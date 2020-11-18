@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 + (void)clearMonogramCache;
 + (id)contactImageCache;
 + (id)contactStatusCache;
++ (struct __CFString *)hexStringFromColor:(id)arg1;
 + (id)monogramImageOfDiameter:(double)arg1 forRecordID:(int)arg2 monogramStyle:(long long)arg3 tintColor:(id)arg4 customFont:(id)arg5 isPersonImage:(BOOL *)arg6;
 + (id)monogramImageOfDiameter:(double)arg1 forRecordID:(int)arg2 useTintColor:(id)arg3 useCustomFont:(BOOL)arg4 isPersonImage:(BOOL *)arg5;
 + (id)monogrammerWithDiameter:(double)arg1 style:(long long)arg2 useTintColor:(id)arg3 customFont:(id)arg4;

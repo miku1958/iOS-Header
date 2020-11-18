@@ -10,20 +10,22 @@
 
 @interface _MRRegisterForGameControllerEventsMessageProtobuf : PBCodable <NSCopying>
 {
-    unsigned int _inputModeFlags;
+    int _inputModeFlags;
     struct {
         unsigned int inputModeFlags:1;
     } _has;
 }
 
 @property (nonatomic) BOOL hasInputModeFlags;
-@property (nonatomic) unsigned int inputModeFlags; // @synthesize inputModeFlags=_inputModeFlags;
+@property (nonatomic) int inputModeFlags; // @synthesize inputModeFlags=_inputModeFlags;
 
+- (int)StringAsInputModeFlags:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)inputModeFlagsAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

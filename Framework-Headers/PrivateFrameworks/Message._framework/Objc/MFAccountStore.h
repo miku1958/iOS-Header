@@ -10,7 +10,7 @@
 
 @interface MFAccountStore : NSObject
 {
-    int _accountStoreLock;
+    struct os_unfair_lock_s _accountStoreLock;
     ACAccountStore *_accountStore;
 }
 

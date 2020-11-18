@@ -15,11 +15,13 @@
 }
 
 @property (readonly, nonatomic) unsigned long long compoundType; // @synthesize compoundType=_compoundType;
-@property (readonly, nonatomic) NSArray *subfilters; // @synthesize subfilters=_subfilters;
+@property (readonly, copy, nonatomic) NSArray *subfilters; // @synthesize subfilters=_subfilters;
 
 + (id)filterWithSubfilters:(id)arg1 compoundType:(unsigned long long)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_copyWithZone:(struct _NSZone *)arg1 subfilters:(id)arg2;
+- (id)_subfilters;
 - (BOOL)acceptsDataObject:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

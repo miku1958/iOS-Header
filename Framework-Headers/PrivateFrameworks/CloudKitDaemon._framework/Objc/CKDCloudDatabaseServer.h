@@ -8,16 +8,23 @@
 
 #import <CloudKitDaemon/NSXPCListenerDelegate-Protocol.h>
 
-@class NSMutableArray, NSOperationQueue, NSString, NSXPCListener;
-@protocol OS_dispatch_source;
+@class NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString, NSXPCListener;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CKDCloudDatabaseServer : NSObject <NSXPCListenerDelegate>
 {
+    int _tccToken;
     NSXPCListener *_anonymousListener;
     NSXPCListener *_xpcListener;
     NSMutableArray *_connectedClients;
+    NSMutableDictionary *_recentClientsByProcessName;
     NSObject<OS_dispatch_source> *_sighandlerSource;
     NSOperationQueue *_clientTeardownQueue;
+    unsigned long long _stateHandle;
+    NSObject<OS_dispatch_source> *_statusReportRequestSource;
+    NSObject<OS_dispatch_queue> *_statusReportQueue;
+    NSObject<OS_dispatch_queue> *_statusReportCallbackQueue;
+    NSMutableArray *_statusReportCallbacks;
 }
 
 @property (strong, nonatomic) NSXPCListener *anonymousListener; // @synthesize anonymousListener=_anonymousListener;
@@ -26,18 +33,30 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSMutableDictionary *recentClientsByProcessName; // @synthesize recentClientsByProcessName=_recentClientsByProcessName;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *sighandlerSource; // @synthesize sighandlerSource=_sighandlerSource;
+@property (nonatomic) unsigned long long stateHandle; // @synthesize stateHandle=_stateHandle;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *statusReportCallbackQueue; // @synthesize statusReportCallbackQueue=_statusReportCallbackQueue;
+@property (strong, nonatomic) NSMutableArray *statusReportCallbacks; // @synthesize statusReportCallbacks=_statusReportCallbacks;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *statusReportQueue; // @synthesize statusReportQueue=_statusReportQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_source> *statusReportRequestSource; // @synthesize statusReportRequestSource=_statusReportRequestSource;
 @property (readonly) Class superclass;
+@property (nonatomic) int tccToken; // @synthesize tccToken=_tccToken;
 @property (strong, nonatomic) NSXPCListener *xpcListener; // @synthesize xpcListener=_xpcListener;
 
 + (id)sharedServer;
 - (void).cxx_destruct;
+- (id)CKStatusReportArray;
+- (void)_cleanRecentClients;
+- (void)_dumpStatusReportArrayToOsTrace:(id)arg1;
+- (void)_dumpStatusReportToFileHandle:(id)arg1;
 - (void)dealloc;
+- (void)dumpStatusReportToFileHandle:(id)arg1;
 - (id)init;
 - (void)kickOffPendingLongLivedOperations;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)resume;
-- (void)statusReport;
+- (void)statusReportWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -12,14 +12,18 @@
 {
     double _x;
     double _y;
+    int _finger;
     int _phase;
     struct {
         unsigned int x:1;
         unsigned int y:1;
+        unsigned int finger:1;
         unsigned int phase:1;
     } _has;
 }
 
+@property (nonatomic) int finger; // @synthesize finger=_finger;
+@property (nonatomic) BOOL hasFinger;
 @property (nonatomic) BOOL hasPhase;
 @property (nonatomic) BOOL hasX;
 @property (nonatomic) BOOL hasY;
@@ -27,6 +31,7 @@
 @property (nonatomic) double x; // @synthesize x=_x;
 @property (nonatomic) double y; // @synthesize y=_y;
 
+- (int)StringAsPhase:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -34,6 +39,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)phaseAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

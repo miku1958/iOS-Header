@@ -25,6 +25,11 @@ struct CGSize {
     double height;
 };
 
+struct CLLocationCoordinate2D {
+    double latitude;
+    double longitude;
+};
+
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
@@ -38,11 +43,6 @@ typedef struct {
     unsigned long long *_field3;
     unsigned long long _field4[5];
 } CDStruct_70511ce9;
-
-typedef struct {
-    double _field1;
-    double _field2;
-} CDStruct_c3b9c2ee;
 
 typedef struct {
     long long value;

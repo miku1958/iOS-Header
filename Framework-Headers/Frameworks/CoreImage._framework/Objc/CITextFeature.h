@@ -6,11 +6,12 @@
 
 #import <CoreImage/CIFeature.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 @interface CITextFeature : CIFeature
 {
     NSArray *subFeatures;
+    NSString *messageString;
     struct CGPoint topLeft;
     struct CGPoint topRight;
     struct CGPoint bottomLeft;
@@ -21,12 +22,13 @@
 @property (readonly) struct CGPoint bottomLeft; // @synthesize bottomLeft;
 @property (readonly) struct CGPoint bottomRight; // @synthesize bottomRight;
 @property (readonly) struct CGRect bounds; // @synthesize bounds;
+@property (readonly) NSString *messageString; // @synthesize messageString;
 @property (readonly) NSArray *subFeatures; // @synthesize subFeatures;
 @property (readonly) struct CGPoint topLeft; // @synthesize topLeft;
 @property (readonly) struct CGPoint topRight; // @synthesize topRight;
 
 - (void)dealloc;
-- (id)initWithBounds:(struct CGRect)arg1 topLeft:(struct CGPoint)arg2 topRight:(struct CGPoint)arg3 bottomLeft:(struct CGPoint)arg4 bottomRight:(struct CGPoint)arg5 subFeatures:(id)arg6;
+- (id)initWithBounds:(struct CGRect)arg1 topLeft:(struct CGPoint)arg2 topRight:(struct CGPoint)arg3 bottomLeft:(struct CGPoint)arg4 bottomRight:(struct CGPoint)arg5 subFeatures:(id)arg6 messageString:(id)arg7;
 - (id)type;
 
 @end

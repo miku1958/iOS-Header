@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableURLRequest, NSURLRequest, __NSCFURLSession;
+@class NSMutableArray, NSMutableURLRequest, NSURLRequest, __NSCFURLSession;
 
 __attribute__((visibility("hidden")))
 @interface CONNECTION_SessionTask : NSObject
@@ -23,8 +23,10 @@ __attribute__((visibility("hidden")))
     struct __PerformanceTiming *__performanceTiming;
     BOOL __shouldSkipPreferredClientCertificateLookup;
     struct __CFDictionary *__atsContext;
+    NSMutableArray *_transactionMetrics;
 }
 
+- (const struct __CFDictionary **)_DuetActivityProperties;
 - (unsigned long long)_allowedProtocolTypes;
 - (id)_allowsCellular;
 - (id)_backgroundTaskTimingData;
@@ -38,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)_cfHSTS;
 - (id)_connectionPropertyDuet;
 - (id)_contentDispositionFallbackArray;
-- (id)_cookieAcceptPolicy;
+- (int)_cookieAcceptPolicy;
 - (struct __CFDictionary *)_copyATSState;
 - (struct _CFURLRequest *)_copyCurrentCFURLRequest;
 - (struct _CFHSTSPolicy *)_copyHSTSPolicy;
@@ -48,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (const struct XCredentialStorage *)_createXCredentialStorage;
 - (const struct XURLCache *)_createXURLCache;
 - (struct _CFURLRequest *)_currentCFURLRequest;
+- (struct __CFDictionary *)_dependencyInfo;
 - (id)_disallowCellular;
 - (id)_expectedWorkload;
 - (void)_getAuthenticationHeadersForResponse:(struct _CFURLResponse *)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -55,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)_initializeTimingDataWithSessionConfiguration:(id)arg1;
 - (id)_networkServiceType;
 - (struct __PerformanceTiming *)_performanceTiming;
+- (void)_prepareNewTimingDataContainer;
 - (unsigned char)_preventsIdleSystemSleep;
 - (id)_priorityValue;
 - (void)_processConnectionProperties;
@@ -71,12 +75,15 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldSkipPreferredClientCertificateLookup;
 - (unsigned char)_shouldUsePipelineHeuristics;
 - (struct __CFDictionary *)_sslSettings;
+- (id)_storagePartitionIdentifier;
 - (unsigned char)_strictContentLength;
 - (long long)_suspensionThreshhold;
 - (void)_takePreventIdleSleepAssertionIfAppropriate;
 - (id)_timeWindowDelay;
 - (id)_timeWindowDuration;
 - (double)_timeoutInterval;
+- (id)_trailers;
+- (id)_transactionMetrics;
 - (id)countOfBytesExpectedToReceive;
 - (id)countOfBytesExpectedToSend;
 - (id)countOfBytesReceived;
@@ -91,6 +98,7 @@ __attribute__((visibility("hidden")))
 - (float)priority;
 - (id)session;
 - (void)set_protocolForTask:(id)arg1;
+- (void)set_trailers:(id)arg1;
 - (BOOL)shouldHandleCookiesAndSchemeIsAppropriate;
 - (id)startTime;
 - (id)state;

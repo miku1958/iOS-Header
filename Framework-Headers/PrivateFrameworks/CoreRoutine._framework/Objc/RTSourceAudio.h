@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) long long audioSource; // @synthesize audioSource=_audioSource;
 @property (readonly, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
 
++ (id)allowedKeys;
 + (id)stringFromAudioSource:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
 @interface VKRasterOverlayTile : VKTile
 {
     struct unique_ptr<ggl::RenderItem, std::__1::default_delete<ggl::RenderItem>> _renderItem;
-    struct Setup _shaderSetup;
+    struct unique_ptr<ggl::Textured::Pos2DUVPipelineSetup, std::__1::default_delete<ggl::Textured::Pos2DUVPipelineSetup>> _pipelineSetup;
     struct shared_ptr<md::RasterOverlayData> _overlayData;
 }
 
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (struct CGContext *)drawContext;
 - (id)initWithKey:(const struct VKTileKey *)arg1 size:(unsigned long long)arg2 scale:(float)arg3;
 - (BOOL)isEmpty;
-- (struct RenderItem *)setupRenderItemWithRenderState:(struct RenderState *)arg1 mesh:(struct Mesh *)arg2;
+- (struct RenderItem *)setupRenderItemWithRenderState:(struct RenderState *)arg1 pipelineState:(const shared_ptr_8d835d6a *)arg2 mesh:(struct Mesh *)arg3;
 
 @end
 

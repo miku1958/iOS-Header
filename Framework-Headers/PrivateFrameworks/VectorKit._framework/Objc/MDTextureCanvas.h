@@ -16,20 +16,27 @@ __attribute__((visibility("hidden")))
     struct CGSize _size;
     struct CGSize _sizeInPixels;
     double _contentScale;
+    struct Device *_device;
+    struct RenderTargetFormat _format;
 }
 
 @property (readonly, nonatomic) float averageFPS;
 @property (readonly, nonatomic) double contentScale; // @synthesize contentScale=_contentScale;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) struct Device *device; // @synthesize device=_device;
+@property (readonly, nonatomic) const struct RenderTargetFormat *format;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL multiSample;
+@property (readonly, nonatomic) BOOL shouldRasterize;
 @property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (readonly, nonatomic) struct CGSize sizeInPixels; // @synthesize sizeInPixels=_sizeInPixels;
 @property (readonly) Class superclass;
 
+- (id).cxx_construct;
 - (void)dealloc;
 - (void)didDrawView;
-- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2;
+- (id)initWithDevice:(struct Device *)arg1 size:(struct CGSize)arg2 scale:(double)arg3;
 - (void)willDrawView;
 
 @end

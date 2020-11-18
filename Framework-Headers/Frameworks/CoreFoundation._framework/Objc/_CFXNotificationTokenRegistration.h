@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (void)addToObserver:(id)arg1;
 - (CDUnknownBlockType)copyHandler;
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithToken:(unsigned long long)arg1 options:(unsigned long long)arg2 queue:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)invalidate;
 - (void *)key;

@@ -19,6 +19,7 @@
 - (BOOL)_accessibilityElementVisibilityAffectsLayout;
 - (BOOL)_accessibilityFrameShouldIncludeExtraSpaceBelow;
 - (BOOL)_accessibilityIsNotFirstElement;
+- (id)_accessibilityLabelForInCallService;
 - (int)_accessibilityPreferredScrollAction;
 - (BOOL)_accessibilityRetainsCustomRotorActionSetting;
 - (id)_accessibilityScrollStatus;

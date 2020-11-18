@@ -6,7 +6,7 @@
 
 #import <UIKit/UIControl.h>
 
-@class MPUSpringAnimationFactory, MusicMediaDetailTintInformation, NSString, UILabel, _UIBackdropView;
+@class MusicMediaDetailTintInformation, NSString, UILabel, _UIBackdropView;
 
 @interface MusicProfileFollowButton : UIControl
 {
@@ -14,7 +14,6 @@
     UILabel *_titleLabel;
     BOOL _following;
     double _animationDuration;
-    MPUSpringAnimationFactory *_animationFactory;
     MusicMediaDetailTintInformation *_detailTintInformation;
     NSString *_followingText;
     NSString *_initialText;
@@ -23,7 +22,6 @@
 }
 
 @property (nonatomic) double animationDuration; // @synthesize animationDuration=_animationDuration;
-@property (strong, nonatomic) MPUSpringAnimationFactory *animationFactory; // @synthesize animationFactory=_animationFactory;
 @property (copy, nonatomic) MusicMediaDetailTintInformation *detailTintInformation; // @synthesize detailTintInformation=_detailTintInformation;
 @property (nonatomic) BOOL following; // @synthesize following=_following;
 @property (copy, nonatomic) NSString *followingText; // @synthesize followingText=_followingText;
@@ -31,6 +29,7 @@
 @property (nonatomic) double maximumWidth; // @synthesize maximumWidth=_maximumWidth;
 @property (nonatomic) long long style; // @synthesize style=_style;
 
++ (double)defaultHeight;
 - (void).cxx_destruct;
 - (float)_followingButtonBackdropViewAlphaForState:(BOOL)arg1 withStyle:(long long)arg2;
 - (float)_followingButtonBackdropViewColorTintAlphaForState:(BOOL)arg1 withStyle:(long long)arg2;

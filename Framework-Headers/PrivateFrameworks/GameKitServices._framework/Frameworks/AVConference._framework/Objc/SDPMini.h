@@ -6,25 +6,20 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSDictionary, NSMutableArray, NSMutableDictionary, NSNumber, NSString, VCImageAttributeRules;
+@class NSDictionary, NSMutableArray, NSMutableDictionary, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SDPMini : NSObject
 {
-    NSMutableArray *_videoAttributes;
     NSString *_sdpUsername;
     NSMutableDictionary *_audioParameters;
     NSString *origin;
     NSMutableArray *audioPayloads;
     NSMutableArray *secondaryAudioPayloads;
-    NSMutableArray *videoPayloads;
-    VCImageAttributeRules *imageAttributeRules;
     NSString *sessionIP;
     NSNumber *audioRTPPort;
     NSNumber *audioRTCPPort;
     NSNumber *audioRTPID;
-    NSNumber *videoRTPPort;
-    NSNumber *videoRTCPPort;
     NSNumber *videoRTPID;
     BOOL allowRTCPFB;
     NSNumber *answerBandwidth;
@@ -37,6 +32,7 @@ __attribute__((visibility("hidden")))
     BOOL allowAudioRecording;
     NSString *basebandCodecType;
     NSNumber *basebandCodecSampleRate;
+    NSMutableDictionary *_mediaLines;
 }
 
 @property (strong, nonatomic) NSNumber *aacBlockSize; // @synthesize aacBlockSize;
@@ -51,57 +47,44 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSNumber *audioRTPPort; // @synthesize audioRTPPort;
 @property (strong, nonatomic) NSNumber *audioUnitModel; // @synthesize audioUnitModel;
 @property (strong, nonatomic) NSDictionary *featuresListDict; // @synthesize featuresListDict;
-@property (strong, nonatomic) VCImageAttributeRules *imageAttributeRules; // @synthesize imageAttributeRules;
 @property (strong, nonatomic) NSNumber *maxBandwidth; // @synthesize maxBandwidth;
 @property (strong, nonatomic) NSString *origin; // @synthesize origin;
 @property (readonly, nonatomic) NSMutableArray *secondaryAudioPayloads; // @synthesize secondaryAudioPayloads;
 @property (strong, nonatomic) NSString *sessionIP; // @synthesize sessionIP;
-@property (readonly, nonatomic) NSMutableArray *videoPayloads; // @synthesize videoPayloads;
-@property (strong, nonatomic) NSNumber *videoRTCPPort; // @synthesize videoRTCPPort;
-@property (strong, nonatomic) NSNumber *videoRTPID; // @synthesize videoRTPID;
-@property (strong, nonatomic) NSNumber *videoRTPPort; // @synthesize videoRTPPort;
 
++ (BOOL)setPayload:(int)arg1 mediaLine:(id)arg2;
 - (id)SDPUsername;
-- (void)addVideoImageAttr:(id)arg1 ForPayload:(int)arg2;
+- (void)addMediaLine:(id)arg1 mediaType:(int)arg2;
 - (id)composeAudioFMTPForPayload:(id)arg1;
 - (id)composeAudioString;
 - (id)composeBandwidthString;
 - (id)composeFLSString;
 - (id)composeSessionString;
-- (id)composeVideoString;
 - (void)createVideoImageAttr:(int)arg1 direction:(int)arg2 dimensions:(struct imageTag *)arg3 count:(int)arg4;
 - (void)dealloc;
-- (void)fillImageArray:(id)arg1 imageArray:(struct imageTag *)arg2;
-- (void)fillImageStruct:(id)arg1 imageStruct:(struct imageTag *)arg2;
-- (void)fillImageStructWithDictionary:(id)arg1 forInterface:(int)arg2 imageStruct:(struct imageTag *)arg3;
 - (BOOL)getBasebandCodecType:(id *)arg1 sampleRate:(id *)arg2;
-- (void)getNegotiatedResolutionForPayload:(int)arg1 forInterface:(int)arg2 withRule:(id)arg3 direction:(int)arg4 result:(struct imageTag *)arg5 remoteSupportsHD:(BOOL)arg6;
+- (id)getMediaLineForType:(int)arg1;
+- (void)getNegotiatedResolutionForPayload:(int)arg1 forInterface:(int)arg2 withRule:(id)arg3 direction:(int)arg4 result:(struct imageTag *)arg5 remoteSupportsHD:(BOOL)arg6 screenSharing:(BOOL)arg7;
 - (BOOL)getUseSbr:(BOOL *)arg1 blockSize:(int *)arg2 forAACFormat:(int)arg3;
-- (id)getVideoRecvImages:(id)arg1;
-- (id)getVideoSendImages:(id)arg1;
 - (id)init;
 - (id)initWithString:(id)arg1;
+- (id)mediaTypeToString:(int)arg1;
 - (void)parseAudioFormatAttribute:(id)arg1;
 - (void)parseAudioMediaAttributes:(id)arg1;
 - (void)parseBandwidth:(id)arg1;
 - (id)parseIP:(id)arg1;
-- (void)parseImageAttributeRules:(id)arg1;
-- (void)parseMedia:(id)arg1;
+- (void)parseMediaLine:(id)arg1;
 - (id)parseRTCPPort:(id)arg1;
 - (id)parseRTPID:(id)arg1;
 - (void)parseSDPFromString:(id)arg1;
 - (void)parseSessionAttributes:(id)arg1;
-- (void)parseVideoMediaAttributes:(id)arg1;
 - (int)rulesFramerate:(int)arg1;
-- (void)rulesImageSize:(int)arg1 pWidth:(int *)arg2 pHeight:(int *)arg3;
+- (void)rulesImageSizeForExternalPayload:(int)arg1 pWidth:(int *)arg2 pHeight:(int *)arg3;
 - (void)setBasebandCodecType:(id)arg1 sampleRate:(id)arg2;
 - (void)setUseSbr:(BOOL)arg1 blockSize:(int)arg2 forAACFormat:(int)arg3;
 - (BOOL)setVideoPayloads:(int *)arg1 count:(int)arg2;
 - (void)setVideoRTCPFB:(BOOL)arg1 useNACK:(BOOL)arg2;
-- (BOOL)supportImage:(id)arg1 width:(int)arg2 height:(int)arg3 rate:(int)arg4;
 - (id)toStringWithVideoEnabled:(BOOL)arg1;
-- (BOOL)videoDisplayAttribute:(int *)arg1 withHeight:(int *)arg2;
-- (id)videoImageAttributes:(int)arg1;
 
 @end
 

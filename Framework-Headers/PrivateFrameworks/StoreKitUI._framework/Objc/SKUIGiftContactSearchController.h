@@ -10,15 +10,14 @@
 #import <StoreKitUI/UITableViewDataSource-Protocol.h>
 #import <StoreKitUI/UITableViewDelegate-Protocol.h>
 
-@class MFContactsSearchManager, MFContactsSearchResultsModel, NSArray, NSNumber, NSString, UITableView, UIView;
+@class MFContactsSearchManager, NSArray, NSMutableArray, NSNumber, NSString, UITableView, UIView;
 @protocol SKUIGiftContactSearchDelegate;
 
 @interface SKUIGiftContactSearchController : NSObject <MFContactsSearchConsumer, UITableViewDataSource, UITableViewDelegate>
 {
-    void *_addressBook;
+    NSMutableArray *_autocompleteSearchResults;
     id<SKUIGiftContactSearchDelegate> _delegate;
     NSArray *_results;
-    MFContactsSearchResultsModel *_resultsModel;
     MFContactsSearchManager *_searchManager;
     UIView *_searchResultsView;
     NSNumber *_searchTaskIdentifier;
@@ -37,14 +36,10 @@
 - (void)_finishSearchWithResults:(id)arg1;
 - (void)_setResults:(id)arg1;
 - (id)_tableView;
-- (void)beganNetworkActivity;
 - (BOOL)cancelSearch;
-- (void)consumeSearchResults:(id)arg1 type:(unsigned long long)arg2 taskID:(id)arg3;
+- (void)consumeAutocompleteSearchResults:(id)arg1 taskID:(id)arg2;
 - (void)dealloc;
-- (void)endedNetworkActivity;
-- (void)finishedSearchingForType:(unsigned long long)arg1;
-- (void)finishedTaskWithID:(id)arg1;
-- (id)initWithAddressBook:(void *)arg1;
+- (void)finishedSearchingForAutocompleteResults;
 - (void)resetSearch;
 - (void)searchForText:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

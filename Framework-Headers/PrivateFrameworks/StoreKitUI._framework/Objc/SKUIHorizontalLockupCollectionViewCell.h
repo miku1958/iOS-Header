@@ -64,6 +64,7 @@
 - (BOOL)setImage:(id)arg1 forArtworkRequest:(id)arg2 context:(id)arg3;
 - (void)setPerspectiveTargetView:(id)arg1;
 - (void)setSelected:(BOOL)arg1;
+- (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setVanishingPoint:(struct CGPoint)arg1;
 - (void)updateForChangedDistanceFromVanishingPoint;
 - (BOOL)updateWithItemState:(id)arg1 context:(id)arg2 animated:(BOOL)arg3;

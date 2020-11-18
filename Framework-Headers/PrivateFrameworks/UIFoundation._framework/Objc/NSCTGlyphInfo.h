@@ -20,7 +20,6 @@
 - (unsigned long long)characterCollection;
 - (unsigned long long)characterIdentifier;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalize;
 - (id)glyphName;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

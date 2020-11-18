@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
     UIImageView *_animatedView;
     UIColor *_textColor;
     double _offscreenXLocation;
-    CDUnknownBlockType _animationCompletionHandler;
     UIImage *_capturedGlyphImage;
     struct _NSRange _textRange;
     struct _NSRange _glyphRange;
@@ -26,7 +25,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) UIImageView *animatedView; // @synthesize animatedView=_animatedView;
-@property (copy, nonatomic) CDUnknownBlockType animationCompletionHandler; // @synthesize animationCompletionHandler=_animationCompletionHandler;
 @property (strong, nonatomic) UIImage *capturedGlyphImage; // @synthesize capturedGlyphImage=_capturedGlyphImage;
 @property (nonatomic) struct _NSRange glyphRange; // @synthesize glyphRange=_glyphRange;
 @property (nonatomic) BOOL isABigReplacement; // @synthesize isABigReplacement=_isABigReplacement;
@@ -39,7 +37,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)animateOut;
-- (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)captureGlyphsInRect:(struct CGRect)arg1 containerOrigin:(struct CGPoint)arg2 fromLayoutManager:(id)arg3;
 - (void)dealloc;
 - (id)description;

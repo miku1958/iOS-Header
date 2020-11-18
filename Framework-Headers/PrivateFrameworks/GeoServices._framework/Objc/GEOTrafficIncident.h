@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int vertexCount; // @synthesize vertexCount=_vertexCount;
 @property (nonatomic) int vertexOffset; // @synthesize vertexOffset=_vertexOffset;
 
+- (int)StringAsType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -64,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -10,7 +10,6 @@
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSProgress, NSString, PHAsset;
 
-__attribute__((visibility("hidden")))
 @interface PUResourceDownloadRequest : NSObject <NSProgressReporting>
 {
     NSMutableDictionary *_progressByRequestIdentifier;
@@ -35,7 +34,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) NSProgress *progress; // @synthesize progress=_progress;
 @property (copy, nonatomic) CDUnknownBlockType progressChangeHandler; // @synthesize progressChangeHandler=_progressChangeHandler;
-@property (nonatomic) double progressFraction; // @synthesize progressFraction=_progressFraction;
+@property (nonatomic, setter=_setProgressFraction:) double progressFraction; // @synthesize progressFraction=_progressFraction;
 @property (readonly) long long requestType; // @synthesize requestType=_requestType;
 @property (nonatomic) BOOL shouldTreatLivePhotosAsStills; // @synthesize shouldTreatLivePhotosAsStills=_shouldTreatLivePhotosAsStills;
 @property (readonly) Class superclass;
@@ -48,7 +47,6 @@ __attribute__((visibility("hidden")))
 - (void)_fetchResourcesForSharingAsset:(id)arg1 networkAccessAllowed:(BOOL)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_fetchResourcesWithNetworkAccessAllowed:(BOOL)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_handleCompletionOfAssetResourceDataRequestWithId:(int)arg1 error:(id)arg2;
-- (void)_setProgressFraction:(double)arg1;
 - (void)_simulateFetchResourcesWithDuration:(double)arg1 success:(BOOL)arg2 networkAccessAllowed:(BOOL)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_updateCombinedProgressWithValue:(double)arg1 forRequestIdentifier:(id)arg2 networkAccessAllowed:(BOOL)arg3;
 - (void)cancelDownloadRequest;

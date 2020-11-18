@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVWeakReference, NSArray, NSMutableArray;
+@class AVWeakReference, NSArray, NSMutableArray, NSString;
 
 @interface AVCaptureMovieFileOutputInternal : NSObject
 {
@@ -15,9 +15,12 @@
     NSMutableArray *connectionsThatRecordVideoOrientationAndMirroringChangesAsMetadataTrack;
     CDStruct_1b6d18a9 movieFragmentInterval;
     NSArray *metadata;
+    NSArray *availableVideoCodecs;
+    NSString *videoCodec;
     BOOL sendLastVideoPreviewFrame;
     BOOL recording;
     BOOL paused;
+    NSString *bravoCameraSelectionBehaviorForRecording;
 }
 
 - (void)dealloc;

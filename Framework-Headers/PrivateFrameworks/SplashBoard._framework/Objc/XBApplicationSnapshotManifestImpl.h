@@ -9,60 +9,61 @@
 #import <SplashBoard/BSDescriptionProviding-Protocol.h>
 #import <SplashBoard/NSCoding-Protocol.h>
 
-@class BKSApplicationDataStore, BSTimer, NSFileManager, NSMutableDictionary, NSString, XBApplicationIdentity;
+@class BSAtomicSignal, BSTimer, NSFileManager, NSMutableArray, NSMutableDictionary, NSString, XBSnapshotContainerIdentity, XBSnapshotManifestIdentity;
 
 @interface XBApplicationSnapshotManifestImpl : XBApplicationSnapshotManifest <NSCoding, BSDescriptionProviding>
 {
-    XBApplicationIdentity *_appIdentity;
-    BKSApplicationDataStore *_dataStore;
+    XBSnapshotContainerIdentity *_containerIdentity;
+    XBSnapshotManifestIdentity *_identity;
     NSMutableDictionary *_snapshotGroupsByID;
     NSFileManager *_imageAccessFileManger;
     BSTimer *_reapingTimer;
-    BOOL _invalidated;
-    BOOL _needsArchiving;
+    BSAtomicSignal *_invalidatedSignal;
     unsigned long long _clientCount;
     unsigned long long _pendingOperations;
+    NSMutableArray *_archiveSchedulingQueue_synchronizeCompletions;
+    BOOL _archiveSchedulingQueue_dirty;
+    BOOL _archiveSchedulingQueue_scheduled;
 }
 
-@property (copy) XBApplicationIdentity *appIdentity; // @synthesize appIdentity=_appIdentity;
+@property (readonly, copy, nonatomic) XBSnapshotContainerIdentity *containerIdentity; // @synthesize containerIdentity=_containerIdentity;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property BOOL invalidated; // @synthesize invalidated=_invalidated;
-@property BOOL needsArchiving; // @synthesize needsArchiving=_needsArchiving;
+@property (readonly, copy, nonatomic) XBSnapshotManifestIdentity *identity; // @synthesize identity=_identity;
 @property (readonly) Class superclass;
 
-+ (id)_acquireManifestForApplicationIdentity:(id)arg1 createIfNeeded:(BOOL)arg2;
++ (void)_configureSnapshot:(id)arg1 withCompatibilityInfo:(id)arg2 forLaunchRequest:(id)arg3;
++ (long long)_defaultOutputFormat;
 + (void)_queue_noteManifestInvalidated:(id)arg1;
-+ (id)acquireExistingManifestForBundleID:(id)arg1;
-+ (id)acquireManifestForApplicationCompatibilityInfo:(id)arg1;
-+ (id)acquireManifestForApplicationInfo:(id)arg1;
-+ (id)acquireManifestForBundleID:(id)arg1;
++ (id)_snapshotPredicateForRequest:(id)arg1;
++ (id)acquireManifestForContainerIdentity:(id)arg1 store:(id)arg2 creatingIfNecessary:(BOOL)arg3;
 + (void)relinquishManifest:(id)arg1;
-- (void)_archiveSoon;
+- (id)_allSnapshotGroups;
 - (id)_commonInit;
 - (id)_createSnapshotWithGroupID:(id)arg1 generationContext:(id)arg2;
 - (id)_createSnapshotWithGroupID:(id)arg1 newSnapshotCreator:(CDUnknownBlockType)arg2;
 - (id)_generatableSnapshotForGroupID:(id)arg1 generationContext:(id)arg2;
 - (BOOL)_imageAccessQueue_saveData:(id)arg1 withContentType:(long long)arg2 toPath:(id)arg3;
-- (id)_initWithApplicationIdentity:(id)arg1;
+- (id)_initWithContainerIdentity:(id)arg1;
+- (id)_ktxDataForImage:(id)arg1;
+- (void)_noteDirtied;
 - (void)_queue_accessSnapshotsWithBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_queue_archiveIfNeeded;
 - (void)_queue_checkClientCount;
 - (void)_queue_decrementClientCount;
 - (void)_queue_deletePaths:(id)arg1;
 - (void)_queue_deleteSnapshots:(id)arg1;
+- (void)_queue_doArchiveWithCompletions:(id)arg1;
 - (void)_queue_gatherPaths:(id)arg1 forSnapshot:(id)arg2;
 - (void)_queue_incrementClientCount;
-- (void)_queue_invalidate;
 - (void)_queue_reallyCheckClientCount;
 - (void)_queue_reapExpiredAndInvalidSnapshots;
 - (id)_queue_snapshotGroupForID:(id)arg1 creatingIfNeeded:(BOOL)arg2;
 - (id)_queue_snapshotsForGroupID:(id)arg1 matchingPredicate:(id)arg2;
 - (id)_queue_snapshotsMatchingPredicate:(id)arg1;
-- (BOOL)_validateWithAppIdentity:(id)arg1;
-- (id)allSnapshots;
-- (void)archive;
+- (BOOL)_queue_validateWithContainerIdentity:(id)arg1;
+- (void)_scheduleArchivingIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_synchronizeDataStoreWithCompletion:(CDUnknownBlockType)arg1;
 - (void)beginSnapshotAccessTransaction:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)bundleIdentifier;
 - (id)containerPath;
@@ -80,7 +81,6 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)generateImageForSnapshot:(id)arg1 dataProvider:(id)arg2 writeToFile:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)generateImageForSnapshot:(id)arg1 dataProvider:(id)arg2 writeToFile:(BOOL)arg3 didGenerateImage:(CDUnknownBlockType)arg4 didSaveImage:(CDUnknownBlockType)arg5;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

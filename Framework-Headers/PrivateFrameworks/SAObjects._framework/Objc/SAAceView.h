@@ -15,6 +15,7 @@
 {
 }
 
+@property (nonatomic) BOOL canBeRefreshed;
 @property (strong, nonatomic) id<SAAceSerializable> context;
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) NSNumber *deferredRendering;

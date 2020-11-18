@@ -7,7 +7,7 @@
 #import <UIKit/_UIViewServiceDeputy_UIViewServiceInterface-Protocol.h>
 #import <UIKit/_UIViewServiceUIBehaviorInterface-Protocol.h>
 
-@class BSMachPortSendRight, FBSDisplay, NSArray, NSString, NSUUID, UIColor, UITraitCollection, _UIViewControllerTransitionCoordinatorContextDescription;
+@class BKSAnimationFenceHandle, BSMachPortSendRight, FBSDisplay, NSArray, NSString, NSUUID, UIColor, UITraitCollection, _UIViewControllerTransitionCoordinatorContextDescription;
 
 @protocol _UIViewServiceViewControllerOperator_RemoteViewControllerInterface <_UIViewServiceDeputy_UIViewServiceInterface, _UIViewServiceUIBehaviorInterface>
 - (void)__cancelAlertActionWithToken:(long long)arg1;
@@ -32,7 +32,7 @@
 - (void)__hostViewDidMoveToScreenWithIntegerDisplayID:(unsigned int)arg1 newHostingHandleReplyHandler:(void (^)(_UIHostedWindowHostingHandle *))arg2;
 - (void)__hostViewWillAppear:(BOOL)arg1 inInterfaceOrientation:(long long)arg2 traitCollection:(UITraitCollection *)arg3 statusBarHeight:(double)arg4 underlapsStatusBar:(BOOL)arg5 completionHandler:(void (^)(struct CGSize))arg6;
 - (void)__hostViewWillDisappear:(BOOL)arg1;
-- (void)__hostViewWillTransitionToSize:(struct CGSize)arg1 withContextDescription:(_UIViewControllerTransitionCoordinatorContextDescription *)arg2 statusBarHeight:(double)arg3 underlapsStatusBar:(BOOL)arg4 whenDone:(void (^)(struct CGSize))arg5;
+- (void)__hostViewWillTransitionToSize:(struct CGSize)arg1 withContextDescription:(_UIViewControllerTransitionCoordinatorContextDescription *)arg2 statusBarHeight:(double)arg3 underlapsStatusBar:(BOOL)arg4 whenDone:(void (^)(struct CGSize, double))arg5;
 - (void)__hostWillAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2 skipSelf:(BOOL)arg3;
 - (void)__hostWillEnterForeground;
 - (void)__hostWillRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2 skipSelf:(BOOL)arg3;
@@ -45,6 +45,7 @@
 - (void)__saveStateForSession:(NSString *)arg1 restorationAnchor:(NSString *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)__scrollToTopFromTouchAtViewLocation:(struct CGPoint)arg1 resultHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)__setContentSize:(struct CGSize)arg1;
+- (void)__setContentSize:(struct CGSize)arg1 withFence:(BKSAnimationFenceHandle *)arg2;
 - (void)__setHostTintColor:(UIColor *)arg1 tintAdjustmentMode:(long long)arg2;
 - (void)__setHostTraitCollection:(UITraitCollection *)arg1 deferIfAnimated:(BOOL)arg2;
 - (void)__setHostViewUnderlapsStatusBar:(BOOL)arg1;

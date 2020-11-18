@@ -12,8 +12,10 @@
 + (id<AXSystemAppServer>)server;
 - (long long)activeInterfaceOrientation;
 - (void)activeInterfaceOrientation:(void (^)(long long))arg1;
+- (BOOL)dismissSiri;
 - (BOOL)isAppSwitcherVisible;
 - (BOOL)isControlCenterVisible;
+- (BOOL)isMediaPlaying;
 - (BOOL)isNotificationCenterVisible;
 - (BOOL)isNowPlayingUIVisible;
 - (BOOL)isReceivingAirPlay;
@@ -22,7 +24,10 @@
 - (BOOL)isSiriTalkingOrListening;
 - (BOOL)isSiriVisible;
 - (BOOL)isSoftwareUpdateUIVisible;
+- (BOOL)isStickyNotificationVisible;
+- (BOOL)openSiri;
 - (int)pid;
 - (void)pid:(void (^)(int))arg1;
+- (void)wakeUpDeviceIfNecessary;
 @end
 

@@ -16,7 +16,6 @@
 @property (readonly) unsigned short cssValueType;
 
 - (void)dealloc;
-- (void)finalize;
 
 @end
 

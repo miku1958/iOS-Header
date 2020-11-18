@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
@@ -23,13 +23,17 @@
     NSString *_buttonID;
     NSString *_actionID;
     NSString *_originID;
+    unsigned long long _actionActivationMode;
+    long long _actionBehavior;
     NSDictionary *_context;
 }
 
+@property (nonatomic) unsigned long long actionActivationMode; // @synthesize actionActivationMode=_actionActivationMode;
+@property (nonatomic) long long actionBehavior; // @synthesize actionBehavior=_actionBehavior;
 @property (copy, nonatomic) NSString *actionID; // @synthesize actionID=_actionID;
 @property (nonatomic) long long actionType; // @synthesize actionType=_actionType;
 @property (nonatomic) BOOL activated; // @synthesize activated=_activated;
-@property (strong, nonatomic) NSString *bulletinID; // @synthesize bulletinID=_bulletinID;
+@property (copy, nonatomic) NSString *bulletinID; // @synthesize bulletinID=_bulletinID;
 @property (copy, nonatomic) NSString *buttonID; // @synthesize buttonID=_buttonID;
 @property (copy, nonatomic) NSDictionary *context; // @synthesize context=_context;
 @property (copy, nonatomic) NSArray *lifeAssertions; // @synthesize lifeAssertions=_lifeAssertions;
@@ -38,7 +42,7 @@
 @property (copy, nonatomic) CDUnknownBlockType sendBlock; // @synthesize sendBlock=_sendBlock;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)send;

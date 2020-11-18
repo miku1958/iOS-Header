@@ -19,6 +19,7 @@
 @property (strong, nonatomic) TSWPRep *targetRep; // @synthesize targetRep=_targetRep;
 
 - (void)dealloc;
+- (BOOL)shouldAllowSelectionGestures:(BOOL)arg1 atPoint:(struct CGPoint)arg2 toBegin:(BOOL)arg3;
 
 @end
 

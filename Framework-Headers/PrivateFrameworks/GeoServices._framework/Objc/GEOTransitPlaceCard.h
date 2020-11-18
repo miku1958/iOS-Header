@@ -30,6 +30,7 @@
 @property (strong, nonatomic) GEOTransitDepartureSequenceUsage *transitDepartureSequenceUsage; // @synthesize transitDepartureSequenceUsage=_transitDepartureSequenceUsage;
 @property (strong, nonatomic) NSString *transitSystemName; // @synthesize transitSystemName=_transitSystemName;
 
+- (int)StringAsTransitCategory:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -39,6 +40,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)transitCategoryAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

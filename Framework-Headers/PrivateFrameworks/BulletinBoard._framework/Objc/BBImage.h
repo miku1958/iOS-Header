@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <BulletinBoard/BBUniquableObject-Protocol.h>
 #import <BulletinBoard/NSCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
 @class NSData, NSString;
 
-@interface BBImage : NSObject <BBUniquableObject, NSCopying, NSSecureCoding>
+@interface BBImage : NSObject <NSCopying, NSSecureCoding>
 {
     NSData *_data;
     NSString *_path;
@@ -22,24 +21,22 @@
 
 @property (copy, nonatomic) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;
 @property (copy, nonatomic) NSData *data; // @synthesize data=_data;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *path; // @synthesize path=_path;
-@property (readonly) Class superclass;
 
 + (id)imageWithData:(id)arg1;
 + (id)imageWithName:(id)arg1 inBundle:(id)arg2;
 + (id)imageWithPath:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (id)awakeAfterUsingCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1 path:(id)arg2 name:(id)arg3 bundlePath:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
-- (id)uniqueIdentifier;
+- (id)replacementObjectForCoder:(id)arg1;
 
 @end
 

@@ -6,32 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber;
+#import <WebKit/WKObject-Protocol.h>
 
-@interface WKWindowFeatures : NSObject
+@class NSNumber, NSString;
+
+@interface WKWindowFeatures : NSObject <WKObject>
 {
-    struct RetainPtr<NSNumber> _menuBarVisibility;
-    struct RetainPtr<NSNumber> _statusBarVisibility;
-    struct RetainPtr<NSNumber> _toolbarsVisibility;
-    struct RetainPtr<NSNumber> _allowsResizing;
-    struct RetainPtr<NSNumber> _x;
-    struct RetainPtr<NSNumber> _y;
-    struct RetainPtr<NSNumber> _width;
-    struct RetainPtr<NSNumber> _height;
+    struct ObjectStorage<API::WindowFeatures> _windowFeatures;
 }
 
+@property (readonly) struct Object *_apiObject;
 @property (readonly, nonatomic) NSNumber *allowsResizing;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSNumber *height;
 @property (readonly, nonatomic) NSNumber *menuBarVisibility;
 @property (readonly, nonatomic) NSNumber *statusBarVisibility;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSNumber *toolbarsVisibility;
 @property (readonly, nonatomic) NSNumber *width;
 @property (readonly, nonatomic) NSNumber *x;
 @property (readonly, nonatomic) NSNumber *y;
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (id)_initWithWindowFeatures:(const struct WindowFeatures *)arg1;
+- (void)dealloc;
 
 @end
 

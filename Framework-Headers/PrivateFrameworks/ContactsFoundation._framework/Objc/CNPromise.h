@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ContactsFoundation/CNPromise-Protocol.h>
 
@@ -21,7 +21,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (CDUnknownBlockType)boolErrorCompletionHandlerAdapter;
 - (CDUnknownBlockType)completionHandlerAdapter;
+- (CDUnknownBlockType)completionHandlerAdapterWithDefaultValue:(id)arg1;
 - (void)dealloc;
 - (CDUnknownBlockType)errorOnlyCompletionHandlerAdapter;
 - (BOOL)finishWithError:(id)arg1;

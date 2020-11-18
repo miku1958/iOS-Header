@@ -7,21 +7,20 @@
 #import <objc/NSObject.h>
 
 @class NSString;
+@protocol OS_os_log;
 
 @interface SYTransportLog : NSObject
 {
-    NSString *_rootPath;
+    NSObject<OS_os_log> *_log;
     NSString *_facility;
 }
 
 @property (copy, nonatomic) NSString *facility; // @synthesize facility=_facility;
 
-+ (id)_logPath;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (BOOL)_ensureFolder;
-- (void)_logMessage:(id)arg1 file:(const char *)arg2 line:(int)arg3 function:(const char *)arg4;
-- (id)_setupLog;
+- (void)_createLog;
+- (void)_logOSMessage:(const char *)arg1 args:(struct __va_list_tag [1])arg2 returnAddress:(void *)arg3;
 - (id)init;
 - (void)logMessage:(id)arg1;
 - (void)logMessage:(id)arg1 args:(struct __va_list_tag [1])arg2;

@@ -9,29 +9,32 @@
 #import <CoreLocation/CLLocationManagerRoutineClientInterface-Protocol.h>
 
 @class CLLocationManagerRoutine, NSString, NSXPCConnection;
-@protocol CLLocationManagerDelegate, OS_dispatch_queue;
+@protocol CLLocationManagerRoutineDelegate, OS_dispatch_queue;
 
 @interface _CLLocationManagerRoutineProxy : NSObject <CLLocationManagerRoutineClientInterface>
 {
     NSObject<OS_dispatch_queue> *_queue;
     BOOL _updating;
+    BOOL _updatingPredictedApplications;
     NSXPCConnection *_connection;
-    id<CLLocationManagerDelegate> _delegate;
+    id<CLLocationManagerRoutineDelegate> _delegate;
     CLLocationManagerRoutine *_locationManagerRoutine;
 }
 
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<CLLocationManagerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) id<CLLocationManagerRoutineDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) CLLocationManagerRoutine *locationManagerRoutine; // @synthesize locationManagerRoutine=_locationManagerRoutine;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL updating; // @synthesize updating=_updating;
+@property (nonatomic) BOOL updatingPredictedApplications; // @synthesize updatingPredictedApplications=_updatingPredictedApplications;
 
 - (void)createConnection;
 - (void)dealloc;
 - (void)didUpdateLocations:(id)arg1;
+- (void)didUpdatePredictedApplications:(id)arg1;
 - (id)initWithCLLocationManagerRoutine:(id)arg1;
 
 @end

@@ -25,6 +25,7 @@
     NSString *_lastCharacterBeforeBackspace;
     BOOL _undoInputOnTouchCancellation;
     BOOL _useLightStyle;
+    BOOL _hasPerformedLayoutOnce;
 }
 
 @property (readonly, copy) NSString *debugDescription;

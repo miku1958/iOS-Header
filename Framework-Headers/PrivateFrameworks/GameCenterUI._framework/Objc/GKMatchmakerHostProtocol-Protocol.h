@@ -6,7 +6,7 @@
 
 #import <GameCenterUI/GKServiceViewControllerDelegate-Protocol.h>
 
-@class GKMatchRequestInternal, GKPlayerInternal, NSData, NSError;
+@class GKMatchRequestInternal, GKPlayerInternal, NSArray, NSData, NSError;
 
 @protocol GKMatchmakerHostProtocol <GKServiceViewControllerDelegate>
 - (void)cancelMatching;
@@ -14,6 +14,8 @@
 - (void)finishWithError:(NSError *)arg1;
 - (void)sendData:(NSData *)arg1;
 - (void)setBrowsingForNearbyPlayers:(BOOL)arg1;
+- (void)setShareInvitees:(NSArray *)arg1;
+- (void)shareMatchWithRequest:(GKMatchRequestInternal *)arg1 handler:(void (^)(NSURL *, NSError *))arg2;
 - (void)startMatchingWithRequest:(GKMatchRequestInternal *)arg1;
 @end
 

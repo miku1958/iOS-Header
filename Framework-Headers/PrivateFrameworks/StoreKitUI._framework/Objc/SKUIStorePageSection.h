@@ -58,7 +58,7 @@
 - (id)clickEventWithItem:(id)arg1 elementName:(id)arg2 index:(long long)arg3;
 - (id)clickEventWithLink:(id)arg1 elementName:(id)arg2 index:(long long)arg3;
 - (id)clickEventWithMedia:(id)arg1 elementName:(id)arg2 index:(long long)arg3;
-- (void)collectionViewDidConfirmButtonElement:(id)arg1 forItemAtIndexPath:(id)arg2;
+- (void)collectionViewDidConfirmButtonElement:(id)arg1 withClickInfo:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionViewDidConfirmItemOfferAtIndexPath:(id)arg1;
 - (void)collectionViewDidEndDisplayingCellForItemAtIndexPath:(id)arg1;
 - (void)collectionViewDidLongPressItemAtIndexPath:(id)arg1;

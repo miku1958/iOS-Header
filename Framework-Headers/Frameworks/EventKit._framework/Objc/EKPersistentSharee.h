@@ -15,6 +15,7 @@
 }
 
 @property (readonly, nonatomic) NSString *UUID;
+@property (copy, nonatomic) NSString *address;
 @property (copy, nonatomic) NSString *displayName;
 @property (copy, nonatomic) NSString *emailAddress;
 @property (copy, nonatomic) NSString *externalID;

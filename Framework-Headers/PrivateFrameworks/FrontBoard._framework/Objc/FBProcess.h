@@ -7,18 +7,21 @@
 #import <Foundation/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
+#import <FrontBoard/FBSProcessIdentity-Protocol.h>
+#import <FrontBoard/FBSProcessInternal-Protocol.h>
 #import <FrontBoard/FBUIProcess-Protocol.h>
 
-@class BSProcessDeathWatcher, FBProcessState, FBWorkspace, NSHashTable, NSString;
+@class BSMachPortTaskNameRight, BSProcessDeathWatcher, FBProcessState, FBSProcessHandle, FBWorkspace, NSHashTable, NSString;
 @protocol FBProcessDelegate, OS_dispatch_queue;
 
-@interface FBProcess : NSObject <BSDescriptionProviding, FBUIProcess>
+@interface FBProcess : NSObject <BSDescriptionProviding, FBUIProcess, FBSProcessInternal, FBSProcessIdentity>
 {
     NSObject<OS_dispatch_queue> *_queue;
     FBProcessState *_state;
     NSString *_name;
     NSString *_jobLabel;
     NSString *_bundleIdentifier;
+    FBSProcessHandle *_handle;
     NSObject<OS_dispatch_queue> *_callOutQueue;
     FBWorkspace *_workspace;
     NSHashTable *_observers;
@@ -31,9 +34,10 @@
 
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic, getter=_queue_delegate) id<FBProcessDelegate> delegate;
+@property (nonatomic) id<FBProcessDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isForeground) BOOL foreground;
+@property (readonly, strong, nonatomic) FBSProcessHandle *handle;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *jobLabel;
 @property (readonly, copy, nonatomic) NSString *name;
@@ -47,30 +51,42 @@
 @property (readonly, nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
 @property (readonly, copy, nonatomic) FBProcessState *state;
 @property (readonly) Class superclass;
+@property (readonly, strong, nonatomic) BSMachPortTaskNameRight *taskNameRight;
+@property (readonly, nonatomic) long long type;
 @property (readonly, strong, nonatomic) FBWorkspace *workspace; // @synthesize workspace=_workspace;
 
 - (id)_createWorkspace;
 - (id)_queue;
 - (void)_queue_callExitObservers;
+- (void)_queue_configureWithHandle:(id)arg1;
 - (int)_queue_effectiveVisibilityForVisibility:(int)arg1;
 - (void)_queue_enumerateObserversWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)_queue_isForeground;
-- (id)_queue_newWatchdogForContext:(CDStruct_1b4a36b4)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_queue_newWatchdogForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_processDidExit;
 - (void)_queue_toggleProcessDeathObserver:(BOOL)arg1;
 - (void)_queue_updateStateWithBlock:(CDUnknownBlockType)arg1;
+- (void)_terminateWithRequest:(id)arg1 forWatchdog:(id)arg2;
+- (BOOL)_watchdog:(id)arg1 shouldTerminateWithDeclineReason:(out id *)arg2;
+- (id)_watchdog:(id)arg1 terminationRequestForViolatedProvision:(id)arg2 error:(id)arg3;
+- (void)_watchdogStarted:(id)arg1;
+- (void)_watchdogStopped:(id)arg1;
 - (id)_workspace;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (BOOL)hasEntitlement:(id)arg1;
+- (id)init;
 - (id)initWithBundleID:(id)arg1 pid:(int)arg2 callOutQueue:(id)arg3;
+- (id)initWithProcessHandle:(id)arg1 callOutQueue:(id)arg2;
 - (BOOL)isApplicationProcess;
 - (BOOL)isExtensionProcess;
 - (BOOL)isSystemApplicationProcess;
 - (void)removeObserver:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
+- (id)valueForEntitlement:(id)arg1;
 
 @end
 

@@ -24,12 +24,14 @@ __attribute__((visibility("hidden")))
     int _tryCount;
     int _containerNotReadyTryCount;
     NSDictionary *_context;
+    BOOL _ignoreSignatures;
 }
 
 @property (strong, nonatomic) id container; // @synthesize container=_container;
 @property (strong, nonatomic) NSDictionary *context; // @synthesize context=_context;
 @property (nonatomic) unsigned long long detectionTypes; // @synthesize detectionTypes=_types;
 @property int generationNumber; // @synthesize generationNumber=_generationNumber;
+@property (nonatomic) BOOL ignoreSignatures; // @synthesize ignoreSignatures=_ignoreSignatures;
 @property BOOL isDiscarded; // @synthesize isDiscarded=_isDiscarded;
 @property BOOL needContinuation; // @synthesize needContinuation=_needContinuation;
 @property (strong, nonatomic) NSArray *results; // @synthesize results=_results;
@@ -37,6 +39,7 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)_needsFullScannerForDetectionTypes:(unsigned long long)arg1;
 + (struct __DDScanner *)_sharedScannerForTypes:(unsigned long long)arg1;
++ (CDUnknownBlockType)shouldUrlifyBlockForTypes:(unsigned long long)arg1;
 + (CDUnknownBlockType)urlificationBlockForTypes:(unsigned long long)arg1;
 - (void)_applyContainerRestrictionsToTypes;
 - (BOOL)_containerReadyForDetection;

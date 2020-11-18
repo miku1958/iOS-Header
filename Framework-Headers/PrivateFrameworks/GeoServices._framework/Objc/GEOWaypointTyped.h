@@ -34,6 +34,7 @@
 @property (strong, nonatomic) GEOWaypointPlace *waypointPlace; // @synthesize waypointPlace=_waypointPlace;
 @property (nonatomic) int waypointType; // @synthesize waypointType=_waypointType;
 
+- (int)StringAsWaypointType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -44,6 +45,7 @@
 - (id)locationForWaypoint;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)waypointTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

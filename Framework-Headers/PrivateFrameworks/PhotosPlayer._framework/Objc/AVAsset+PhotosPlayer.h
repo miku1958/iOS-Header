@@ -9,5 +9,6 @@
 @interface AVAsset (PhotosPlayer)
 - (float)is_cropFactor;
 - (id)is_valueForMetadataIdentifier:(id)arg1;
+- (struct CGSize)is_videoSize;
 @end
 

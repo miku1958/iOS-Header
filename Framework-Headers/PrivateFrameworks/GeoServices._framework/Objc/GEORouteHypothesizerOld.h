@@ -59,6 +59,7 @@
 - (void)_updateETAWithRouteMatch:(id)arg1;
 - (void)_updateLocation:(id)arg1 hypothesisHandler:(CDUnknownBlockType)arg2;
 - (void)_updateLocationAndETAUpdateInterval;
+- (void)addRouteAttributes:(id)arg1;
 - (void)dealloc;
 - (void)etaUpdater:(id)arg1 receivedETATrafficUpdateResponse:(id)arg2;
 - (void)etaUpdater:(id)arg1 receivedError:(id)arg2;

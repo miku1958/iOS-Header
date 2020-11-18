@@ -11,7 +11,7 @@
 @protocol RCUIServiceCurrentRecordingViewController <NSObject>
 - (void)dismissLockscreenInterface;
 - (void)loadCaptureStateWithCompletionBlock:(void (^)(RCAVState *))arg1;
-- (void)presentLockscreenInterfaceWithBackgroundColor:(UIColor *)arg1 waveformForegroundColor:(UIColor *)arg2;
+- (void)presentLockscreenInterfaceWithBackgroundColor:(UIColor *)arg1 waveformForegroundColor:(UIColor *)arg2 waveformBackgroundColor:(UIColor *)arg3;
 - (void)setScreenUpdatesDisabled:(BOOL)arg1;
 @end
 

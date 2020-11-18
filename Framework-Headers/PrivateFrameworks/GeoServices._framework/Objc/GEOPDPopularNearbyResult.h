@@ -8,22 +8,24 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBUnknownFields;
 
 @interface GEOPDPopularNearbyResult : PBCodable <NSCopying>
 {
-    CDStruct_b9067c0b *_litePlaceResults;
+    PBUnknownFields *_unknownFields;
+    struct GEOPDLitePlaceResult *_litePlaceResults;
     unsigned long long _litePlaceResultsCount;
     unsigned long long _litePlaceResultsSpace;
     NSString *_sectionHeader;
 }
 
 @property (readonly, nonatomic) BOOL hasSectionHeader;
-@property (readonly, nonatomic) CDStruct_b9067c0b *litePlaceResults;
+@property (readonly, nonatomic) struct GEOPDLitePlaceResult *litePlaceResults;
 @property (readonly, nonatomic) unsigned long long litePlaceResultsCount;
 @property (strong, nonatomic) NSString *sectionHeader; // @synthesize sectionHeader=_sectionHeader;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
-- (void)addLitePlaceResult:(CDStruct_b9067c0b)arg1;
+- (void)addLitePlaceResult:(struct GEOPDLitePlaceResult)arg1;
 - (void)clearLitePlaceResults;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -32,10 +34,10 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (CDStruct_b9067c0b)litePlaceResultAtIndex:(unsigned long long)arg1;
+- (struct GEOPDLitePlaceResult)litePlaceResultAtIndex:(unsigned long long)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (void)setLitePlaceResults:(CDStruct_b9067c0b *)arg1 count:(unsigned long long)arg2;
+- (void)setLitePlaceResults:(struct GEOPDLitePlaceResult *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

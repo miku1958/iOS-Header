@@ -6,75 +6,81 @@
 
 #import <PhotosUI/PUViewModel.h>
 
-#import <PhotosUI/ISPlayerChangeObserver-Protocol.h>
-#import <PhotosUI/PULazyLoaderDelegate-Protocol.h>
+#import <PhotosUI/ISChangeObserver-Protocol.h>
 
-@class NSMutableSet, NSString, PHLivePhoto, PUAudioSessionCategoryToken, PULazyLoader, PUMediaProvider;
+@class ISLivePhotoPlayer, NSMutableSet, NSString, PHLivePhoto, PUMediaProvider;
 @protocol PUDisplayAsset;
 
 __attribute__((visibility("hidden")))
-@interface PUBrowsingIrisPlayer : PUViewModel <PULazyLoaderDelegate, ISPlayerChangeObserver>
+@interface PUBrowsingIrisPlayer : PUViewModel <ISChangeObserver>
 {
-    BOOL _isPlayerLoadingAllowed;
-    BOOL _canPlayVitality;
+    struct {
+        BOOL livePhoto;
+        BOOL playerContent;
+        BOOL playerLoadingTarget;
+    } _isValid;
     BOOL _hasPendingVitalityHint;
+    BOOL _isLivePhotoLoadingAllowed;
+    BOOL _isLivePhotoPlaybackAllowed;
     int __livePhotoRequestID;
     id<PUDisplayAsset> _asset;
     PUMediaProvider *_mediaProvider;
-    PULazyLoader *__playerLoader;
-    NSMutableSet *__playerLoadingDisablingReasons;
+    ISLivePhotoPlayer *_player;
+    long long _loadingTarget;
+    NSMutableSet *__livePhotoLoadingDisablingReasons;
+    NSMutableSet *__livePhotoPlaybackDisablingReasons;
     long long __currentUnloadRequestId;
-    PUAudioSessionCategoryToken *__audioToken;
     PHLivePhoto *__livePhoto;
     long long __livePhotoRequestState;
 }
 
-@property (strong, nonatomic, setter=_setAudioToken:) PUAudioSessionCategoryToken *_audioToken; // @synthesize _audioToken=__audioToken;
 @property (nonatomic, setter=_setCurrentUnloadRequestId:) long long _currentUnloadRequestId; // @synthesize _currentUnloadRequestId=__currentUnloadRequestId;
 @property (strong, nonatomic, setter=_setLivePhoto:) PHLivePhoto *_livePhoto; // @synthesize _livePhoto=__livePhoto;
+@property (strong, nonatomic) NSMutableSet *_livePhotoLoadingDisablingReasons; // @synthesize _livePhotoLoadingDisablingReasons=__livePhotoLoadingDisablingReasons;
+@property (strong, nonatomic) NSMutableSet *_livePhotoPlaybackDisablingReasons; // @synthesize _livePhotoPlaybackDisablingReasons=__livePhotoPlaybackDisablingReasons;
 @property (nonatomic, setter=_setLivePhotoRequestID:) int _livePhotoRequestID; // @synthesize _livePhotoRequestID=__livePhotoRequestID;
 @property (nonatomic, setter=_setLivePhotoRequestState:) long long _livePhotoRequestState; // @synthesize _livePhotoRequestState=__livePhotoRequestState;
-@property (strong, nonatomic, setter=_setPlayerLoader:) PULazyLoader *_playerLoader; // @synthesize _playerLoader=__playerLoader;
-@property (strong, nonatomic, setter=_setPlayerLoadingDisablingReasons:) NSMutableSet *_playerLoadingDisablingReasons; // @synthesize _playerLoadingDisablingReasons=__playerLoadingDisablingReasons;
 @property (strong, nonatomic) id<PUDisplayAsset> asset; // @synthesize asset=_asset;
-@property (nonatomic) BOOL canPlayVitality; // @synthesize canPlayVitality=_canPlayVitality;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasPendingVitalityHint; // @synthesize hasPendingVitalityHint=_hasPendingVitalityHint;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isPlayerLoadingAllowed; // @synthesize isPlayerLoadingAllowed=_isPlayerLoadingAllowed;
+@property (readonly, nonatomic) BOOL isLivePhotoLoadingAllowed; // @synthesize isLivePhotoLoadingAllowed=_isLivePhotoLoadingAllowed;
+@property (readonly, nonatomic) BOOL isLivePhotoPlaybackAllowed; // @synthesize isLivePhotoPlaybackAllowed=_isLivePhotoPlaybackAllowed;
+@property (nonatomic) long long loadingTarget; // @synthesize loadingTarget=_loadingTarget;
 @property (readonly, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
+@property (readonly, nonatomic) ISLivePhotoPlayer *player; // @synthesize player=_player;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_cancelAllRequests;
-- (void)_configureAudioSession:(id)arg1;
 - (long long)_contentMode;
 - (void)_handleLivePhotoResult:(id)arg1 info:(id)arg2 requestID:(int)arg3;
-- (void)_handlePlayerUnloadWithRequestId:(long long)arg1;
-- (void)_installContentInPlayer;
+- (void)_invalidateLivePhoto;
+- (void)_invalidatePlayerContent;
+- (void)_invalidatePlayerItemLoadingTarget;
 - (BOOL)_isContentLoadingRequestInProgress;
-- (void)_loadLivePhoto;
-- (void)_playerDidChange;
-- (void)_setCanPlayVitality:(BOOL)arg1;
-- (void)_setPlayerLoadingAllowed:(BOOL)arg1;
+- (BOOL)_needsUpdate;
+- (void)_setLivePhotoLoadingAllowed:(BOOL)arg1;
+- (void)_setLivePhotoPlaybackAllowed:(BOOL)arg1;
 - (struct CGSize)_targetSize;
-- (void)_updateAudioCategory;
-- (void)_updateCanPlayVitality;
+- (void)_updateIfNeeded;
+- (void)_updateLivePhotoIfNeeded;
+- (void)_updatePlayerContentIfNeeded;
+- (void)_updatePlayerItemLoadingTargetIfNeeded;
 - (id)currentChange;
 - (void)dealloc;
+- (void)didPerformChanges;
 - (void)didPlayVitalityHint;
 - (id)init;
 - (id)initWithAsset:(id)arg1 mediaProvider:(id)arg2;
-- (void)invalidateExistingPlayer;
-- (void)lazyLoadedDidLoadItem:(id)arg1;
 - (id)newViewModelChange;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)playVitalityHint;
-- (void)player:(id)arg1 didChangePlaybackState:(long long)arg2;
-- (void)player:(id)arg1 didChangePlayerStatus:(long long)arg2;
-- (id)playerCreateIfNeeded:(BOOL)arg1;
 - (void)registerChangeObserver:(id)arg1;
-- (void)setPlayerLoadingDisabled:(BOOL)arg1 forReason:(id)arg2;
+- (void)setLivePhotoLoadingDisabled:(BOOL)arg1 forReason:(id)arg2;
+- (void)setLivePhotoPlaybackDisabled:(BOOL)arg1 forReason:(id)arg2;
+- (void)unloadLivePhoto;
 - (void)unregisterChangeObserver:(id)arg1;
 
 @end

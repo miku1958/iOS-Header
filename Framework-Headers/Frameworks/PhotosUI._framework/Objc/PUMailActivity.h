@@ -33,6 +33,8 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) PUActivityItemSourceController *itemSourceController; // @synthesize itemSourceController=_itemSourceController;
 @property (readonly) Class superclass;
 
++ (BOOL)allowedToModifyEmailAccounts;
++ (void)openEmailAccountPrefs;
 - (void).cxx_destruct;
 - (void)_composeMailForVideo:(id)arg1 trimmedFilePath:(id)arg2;
 - (BOOL)_isMailDropEnabled;
@@ -50,7 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)editVideoViewController:(id)arg1 didTrimVideoWithOptions:(id)arg2;
 - (void)editVideoViewControllerDidCancel:(id)arg1;
-- (void)mailComposeController:(id)arg1 didFinishWithResult:(int)arg2 error:(id)arg3;
+- (void)mailComposeController:(id)arg1 didFinishWithResult:(long long)arg2 error:(id)arg3;
 - (id)mailComposeViewController;
 - (void)prepareWithActivityItems:(id)arg1;
 

@@ -31,6 +31,7 @@
 - (void)_accessibilityOpaqueElementScrollCleanup;
 - (BOOL)_accessibilityOpaqueElementScrollsContentIntoView;
 - (id)_accessibilityOpaqueHeaderElementInDirection:(int)arg1 childElement:(id)arg2;
+- (id)_accessibilityReusableViewForOpaqueElement:(id)arg1;
 - (id)_accessibilityScannerGroupElements;
 - (id)_accessibilityScrollStatus;
 - (BOOL)_accessibilityScrollToFrame:(struct CGRect)arg1 forView:(id)arg2;
@@ -60,13 +61,14 @@
 - (id)_axOffScreenOpaqueHeaderElementInDirection:(int)arg1 options:(id)arg2 childElement:(id)arg3;
 - (id)_axOpaqueHeaderElementInDirection:(int)arg1 withinElements:(id)arg2 startIndex:(unsigned long long)arg3;
 - (void)_axPostLayoutChange;
-- (BOOL)_axSearchForSearchResultsView:(id)arg1;
-- (void)_configureCellForDisplay:(id)arg1 forIndexPath:(id)arg2;
+- (id)_axVisibleHeadersAndFootersAfterLastVisibleCellSection:(long long)arg1;
+- (id)_axVisibleHeadersAndFootersPriorToFirstVisibleCellSection:(long long)arg1;
 - (id)_delegateViewForFooterInSection:(long long)arg1;
 - (id)_delegateViewForHeaderInSection:(long long)arg1;
 - (void)_endReorderingForCell:(id)arg1 wasCancelled:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)_handleDeviceOrientationChange:(id)arg1;
 - (void)_reorderPositionChangedForCell:(id)arg1;
+- (void)_reuseTableViewSubview:(id)arg1 viewType:(int)arg2;
 - (void)_setAccessibilitySearchControllerDimmingViewHidden;
 - (void)_setAccessibilitySearchControllerDimmingViewVisible;
 - (void)_setAccessibilitySearchTableViewHidden;
@@ -75,7 +77,6 @@
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)accessibilityElementCount;
 - (id)accessibilityElementForRow:(long long)arg1 andColumn:(long long)arg2;
-- (BOOL)accessibilityElementsHidden;
 - (void)accessibilityFindMockParentForTableViewCell:(id)arg1;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;

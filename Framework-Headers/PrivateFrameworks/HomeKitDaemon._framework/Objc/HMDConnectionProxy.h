@@ -8,8 +8,8 @@
 
 #import <HomeKitDaemon/HMDaemonConnection-Protocol.h>
 
-@class HMDApplicationRegistry, HMDProcessInfo, HMMessageDispatcher, NSDictionary, NSMutableSet, NSSet, NSString, NSXPCConnection;
-@protocol OS_dispatch_group, OS_dispatch_queue;
+@class HMDApplicationRegistry, HMDProcessInfo, HMDXPCRequestTracker, HMFMessageDispatcher, NSDictionary, NSSet, NSString, NSXPCConnection;
+@protocol OS_dispatch_queue;
 
 @interface HMDConnectionProxy : NSObject <HMDaemonConnection>
 {
@@ -17,28 +17,24 @@
     BOOL _entitledForSPIAccess;
     BOOL _entitledForBridgeSPIAccess;
     BOOL _entitledForBackgroundMode;
-    BOOL _ready;
     BOOL _activated;
     NSXPCConnection *_xpcConnection;
     HMDProcessInfo *_processInfo;
     NSString *_clientName;
-    HMMessageDispatcher *_recvDispatcher;
-    NSMutableSet *_pendingRequests;
+    HMFMessageDispatcher *_recvDispatcher;
+    HMDXPCRequestTracker *_requestTracker;
     NSObject<OS_dispatch_queue> *_workQueue;
-    NSObject<OS_dispatch_group> *_activeMessageTracker;
-    unsigned long long _activeMessageCount;
     NSDictionary *_privateAccessEntitlement;
     HMDApplicationRegistry *_appRegistry;
 }
 
 @property (nonatomic) BOOL activated; // @synthesize activated=_activated;
-@property (nonatomic) unsigned long long activeMessageCount; // @synthesize activeMessageCount=_activeMessageCount;
-@property (strong, nonatomic) NSObject<OS_dispatch_group> *activeMessageTracker; // @synthesize activeMessageTracker=_activeMessageTracker;
 @property (readonly, nonatomic) NSSet *activeRequests;
 @property (weak, nonatomic) HMDApplicationRegistry *appRegistry; // @synthesize appRegistry=_appRegistry;
 @property (readonly, nonatomic) NSString *applicationBundleIdentifier;
 @property (readonly, nonatomic, getter=isAuthorizedForHomeDataAccess) BOOL authorizedForHomeDataAccess;
 @property (readonly, nonatomic, getter=isAuthorizedForLocationAccess) BOOL authorizedForLocationAccess;
+@property (readonly, nonatomic, getter=isAuthorizedForMicrophoneAccess) BOOL authorizedForMicrophoneAccess;
 @property (strong, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property (readonly, nonatomic) int clientPid;
 @property (readonly, nonatomic) NSString *companionAppBundleIdentifier;
@@ -51,12 +47,11 @@
 @property (readonly, nonatomic, getter=isEntitledForSPIAccess) BOOL entitledForSPIAccess; // @synthesize entitledForSPIAccess=_entitledForSPIAccess;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *name;
-@property (strong, nonatomic) NSMutableSet *pendingRequests; // @synthesize pendingRequests=_pendingRequests;
 @property (strong, nonatomic) NSDictionary *privateAccessEntitlement; // @synthesize privateAccessEntitlement=_privateAccessEntitlement;
 @property (weak, nonatomic) HMDProcessInfo *processInfo; // @synthesize processInfo=_processInfo;
-@property (nonatomic) BOOL ready; // @synthesize ready=_ready;
-@property (strong, nonatomic) HMMessageDispatcher *recvDispatcher; // @synthesize recvDispatcher=_recvDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *recvDispatcher; // @synthesize recvDispatcher=_recvDispatcher;
 @property (readonly, nonatomic) id remoteProxy;
+@property (readonly, nonatomic) HMDXPCRequestTracker *requestTracker; // @synthesize requestTracker=_requestTracker;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *teamIdentifier;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;

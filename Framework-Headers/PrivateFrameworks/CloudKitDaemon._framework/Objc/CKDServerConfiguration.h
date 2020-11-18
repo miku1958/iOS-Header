@@ -10,6 +10,7 @@
 
 @class NSDate, NSMutableDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface CKDServerConfiguration : NSObject <CKPropertyCoding>
 {
     NSDate *_expiry;

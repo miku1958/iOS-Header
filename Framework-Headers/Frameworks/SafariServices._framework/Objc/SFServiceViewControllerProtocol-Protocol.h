@@ -9,11 +9,14 @@
 @class NSArray, NSString, NSURL, UIColor;
 
 @protocol SFServiceViewControllerProtocol <NSObject>
+- (void)didDetectRemoteViewControllerViewIsHidden;
 - (void)didFetchHostAppCustomActivities:(NSArray *)arg1;
 - (void)loadURL:(NSURL *)arg1;
 - (void)repostNotificationInViewService:(NSString *)arg1;
 - (void)setEntersReaderIfAvailable:(BOOL)arg1;
 - (void)setIsRunningTransitionAnimation:(BOOL)arg1;
+- (void)setPreferredBarTintColor:(UIColor *)arg1;
+- (void)setPreferredControlTintColor:(UIColor *)arg1;
 - (void)setShowingLinkPreview:(BOOL)arg1;
 - (void)setTintColor:(UIColor *)arg1;
 @end

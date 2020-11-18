@@ -6,23 +6,16 @@
 
 #import <EventKit/EKCalendarItem.h>
 
-@class EKAlarm, EKObjectID, NSDate, NSDateComponents, NSURL;
+@class NSDate, NSDateComponents;
 
 @interface EKReminder : EKCalendarItem
 {
-    BOOL hadRecurrences;
+    BOOL _hadRecurrences;
 }
 
-@property (copy, nonatomic) NSURL *action; // @dynamic action;
-@property (readonly, nonatomic) EKAlarm *bestDisplayAlarm;
 @property (nonatomic, getter=isCompleted) BOOL completed;
 @property (copy, nonatomic) NSDate *completionDate;
-@property (nonatomic) unsigned long long displayOrder;
-@property (readonly, nonatomic) NSDate *dueDate;
 @property (copy, nonatomic) NSDateComponents *dueDateComponents;
-@property (copy, nonatomic) NSDate *firstAlertDate;
-@property (nonatomic) BOOL hadRecurrences; // @synthesize hadRecurrences;
-@property (readonly, nonatomic) EKObjectID *parentID;
 @property (nonatomic) unsigned long long priority; // @dynamic priority;
 @property (copy, nonatomic) NSDateComponents *startDateComponents;
 
@@ -30,13 +23,22 @@
 + (id)reminderWithEventStore:(id)arg1;
 - (id)_persistentReminder;
 - (void)_sendModifiedNote;
+- (id)bestDisplayAlarm;
 - (void)clearParentID;
 - (BOOL)commit:(id *)arg1;
-- (void)dealloc;
 - (id)description;
+- (unsigned long long)displayOrder;
+- (id)dueDate;
 - (id)externalURI;
+- (id)firstAlertDate;
+- (BOOL)hadRecurrences;
 - (id)initWithPersistentObject:(id)arg1;
+- (id)parentID;
 - (id)reminderIdentifier;
+- (void)setDisplayOrder:(unsigned long long)arg1;
+- (void)setDueDate:(id)arg1;
+- (void)setFirstAlertDate:(id)arg1;
+- (void)setHadRecurrences:(BOOL)arg1;
 - (void)setTimeZone:(id)arg1;
 - (void)snoozeAlarm:(id)arg1 withTimeIntervalFromNow:(double)arg2;
 - (id)startDateForRecurrence;

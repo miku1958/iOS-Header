@@ -14,6 +14,7 @@
     unsigned int *_props;
     long long *_stringIndexes;
     long long *_absorbedCounts;
+    struct CGPoint *_origins;
 }
 
 - (struct __CTGlyphStorage *)createCopy:(CDStruct_912cb5d2)arg1;

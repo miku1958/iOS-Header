@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSLock, NSXPCConnection, NSXPCInterface;
 
@@ -18,6 +18,8 @@
 
 @property (nonatomic) BOOL shouldLaunchMobileMail; // @synthesize shouldLaunchMobileMail=_shouldLaunchMobileMail;
 
++ (id)remoteProxyForXPCInterface:(id)arg1 connectionErrorHandler:(CDUnknownBlockType)arg2;
++ (id)remoteProxyForXPCInterface:(id)arg1 shouldLaunchMobileMail:(BOOL)arg2 connectionErrorHandler:(CDUnknownBlockType)arg3;
 - (id)connection;
 - (void)dealloc;
 - (id)init;

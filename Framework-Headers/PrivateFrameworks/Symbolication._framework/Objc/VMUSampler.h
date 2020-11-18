@@ -39,12 +39,13 @@
     NSMutableArray *_samples;
     BOOL _stacksFixed;
     id _delegate;
-    double _timeSpentSamplingWithoutCFI;
-    double _timeSpentSamplingWithCFI;
+    double _timeSpentSampling;
     unsigned int _dispatchThreadSoftLimit;
     unsigned int _dispatchThreadSoftLimitCount;
     unsigned int _dispatchThreadHardLimit;
     unsigned int _dispatchThreadHardLimitCount;
+    NSMapTable *_threadPortToNameMap;
+    NSMapTable *_dispatchQueueSerialNumToNameMap;
 }
 
 + (void)initialize;
@@ -61,7 +62,6 @@
 - (id)delegate;
 - (id)dispatchQueueNameForSerialNumber:(unsigned long long)arg1;
 - (id)dispatchQueueNameForSerialNumber:(unsigned long long)arg1 returnedConcurrentFlag:(BOOL *)arg2 returnedThreadId:(unsigned long long *)arg3;
-- (void)finalize;
 - (void)flushData;
 - (void)forceStop;
 - (id)initWithPID:(int)arg1;
@@ -70,13 +70,14 @@
 - (id)initWithPID:(int)arg1 task:(unsigned int)arg2 processName:(id)arg3 is64Bit:(BOOL)arg4 options:(unsigned long long)arg5;
 - (id)initWithTask:(unsigned int)arg1;
 - (id)initWithTask:(unsigned int)arg1 options:(unsigned long long)arg2;
-- (void)initializeSamplingContext:(BOOL)arg1;
+- (void)initializeSamplingContextWithOptions:(int)arg1;
 - (unsigned int)mainThread;
 - (id)outputString;
 - (int)pid;
 - (void)preloadSymbols;
-- (unsigned long long)recordSampleTo:(id)arg1 beginTime:(double)arg2 endTime:(double)arg3 thread:(unsigned int)arg4;
+- (unsigned long long)recordSampleTo:(id)arg1 beginTime:(double)arg2 endTime:(double)arg3 thread:(unsigned int)arg4 recordFramePointers:(BOOL)arg5;
 - (id)sampleAllThreadsOnce;
+- (id)sampleAllThreadsOnceWithFramePointers:(BOOL)arg1;
 - (unsigned int)sampleCount;
 - (void)sampleForDuration:(unsigned int)arg1 interval:(unsigned int)arg2;
 - (unsigned int)sampleLimit;
@@ -87,14 +88,13 @@
 - (void)setRecordThreadStates:(BOOL)arg1;
 - (void)setSampleLimit:(unsigned int)arg1;
 - (void)setSamplingInterval:(double)arg1;
-- (void)setShouldOutputSignature:(BOOL)arg1;
 - (void)setTimeLimit:(double)arg1;
-- (BOOL)shouldOutputSignature;
 - (BOOL)start;
 - (BOOL)stop;
 - (void)stopSampling;
 - (id)stopSamplingAndReturnCallNode;
 - (struct _CSTypeRef)symbolicator;
+- (id)threadDescriptionStringForBacktrace:(id)arg1 returnedAddress:(unsigned long long *)arg2;
 - (id)threadNameForThread:(unsigned int)arg1;
 - (id)threadNameForThread:(unsigned int)arg1 returnedThreadId:(unsigned long long *)arg2 returnedDispatchQueueSerialNum:(unsigned long long *)arg3;
 - (double)timeLimit;

@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 - (void)addChild:(id)arg1;
 - (void)dealloc;
 - (BOOL)enumerate:(CDUnknownBlockType)arg1;
-- (void)finalize;
 - (id)initWithParent:(id)arg1;
 - (id)initWithParent:(id)arg1 childKeyCallbacks:(const CDStruct_90be15af *)arg2;
 - (void)invalidate;

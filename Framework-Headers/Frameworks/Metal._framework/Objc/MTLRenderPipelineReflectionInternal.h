@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface MTLRenderPipelineReflectionInternal : MTLRenderPipelineReflection
 {
-    CDStruct_672a0776 _flags;
+    CDStruct_fc7baa39 _flags;
     NSArray *_vertexBuiltInArguments;
     NSArray *_vertexArguments;
     NSArray *_fragmentArguments;
@@ -21,9 +21,10 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (id)fragmentArguments;
-- (id)initWithVertexData:(id)arg1 fragmentData:(id)arg2 serializedVertexDescriptor:(id)arg3 device:(id)arg4 options:(unsigned long long)arg5 flags:(CDStruct_672a0776)arg6;
+- (id)initWithVertexData:(id)arg1 fragmentData:(id)arg2 serializedVertexDescriptor:(id)arg3 device:(id)arg4 options:(unsigned long long)arg5 flags:(CDStruct_fc7baa39)arg6;
 - (id)performanceStatistics;
 - (void)setPerformanceStatistics:(id)arg1;
+- (CDStruct_fc7baa39)usageFlags;
 - (id)vertexArguments;
 - (id)vertexBuiltInArguments;
 

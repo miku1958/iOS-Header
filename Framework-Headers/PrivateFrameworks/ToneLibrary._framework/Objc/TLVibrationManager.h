@@ -4,35 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NPSDomainAccessor, NSDictionary, NSMutableDictionary, TLAccessQueue;
 
 @interface TLVibrationManager : NSObject
 {
+    TLAccessQueue *_accessQueue;
+    unsigned long long _specialBehaviors;
+    NSMutableDictionary *_cachedSystemVibrationIdentifiers;
+    NSMutableDictionary *_cachedSystemVibrationCompleteSubdirectories;
+    NSDictionary *_cachedUserGeneratedVibrationPatterns;
+    NSDictionary *_synchronizedVibrationPatternFromToneIdentifierMapping;
+    NPSDomainAccessor *_transientNanoPreferencesDomainAccessor;
     BOOL _needsRefresh;
     BOOL _allowsAutoRefresh;
-    unsigned long long _specialBehaviors;
-    NSMutableDictionary *_cachedSystemVibrationCompleteSubdirectories;
-    NSMutableDictionary *_cachedSystemVibrationIdentifiers;
-    NSDictionary *_synchronizedVibrationPatternFromToneIdentifierMapping;
-    NSDictionary *_cachedUserGeneratedVibrationPatterns;
-    NPSDomainAccessor *_transientNanoPreferencesDomainAccessor;
-    TLAccessQueue *_accessQueue;
 }
 
-@property (strong, setter=_setAccessQueue:) TLAccessQueue *_accessQueue; // @synthesize _accessQueue;
-@property (nonatomic, setter=_setAllowsAutoRefresh:) BOOL _allowsAutoRefresh; // @synthesize _allowsAutoRefresh;
-@property (strong, nonatomic, setter=_setCachedSystemVibrationCompleteSubdirectories:) NSMutableDictionary *_cachedSystemVibrationCompleteSubdirectories; // @synthesize _cachedSystemVibrationCompleteSubdirectories;
-@property (strong, nonatomic, setter=_setCachedSystemVibrationIdentifiers:) NSMutableDictionary *_cachedSystemVibrationIdentifiers; // @synthesize _cachedSystemVibrationIdentifiers;
-@property (strong, nonatomic, setter=_setCachedUserGeneratedVibrationPatterns:) NSDictionary *_cachedUserGeneratedVibrationPatterns; // @synthesize _cachedUserGeneratedVibrationPatterns;
-@property (nonatomic, setter=_setSpecialBehaviors:) unsigned long long _specialBehaviors; // @synthesize _specialBehaviors;
-@property (copy, nonatomic, setter=_setSynchronizedVibrationPatternFromToneIdentifierMapping:) NSDictionary *_synchronizedVibrationPatternFromToneIdentifierMapping; // @synthesize _synchronizedVibrationPatternFromToneIdentifierMapping;
-@property (strong, nonatomic, setter=_setTransientNanoPreferencesDomainAccessor:) NPSDomainAccessor *_transientNanoPreferencesDomainAccessor; // @synthesize _transientNanoPreferencesDomainAccessor;
-@property (readonly, nonatomic, getter=_isUnitTestingModeEnabled) BOOL _unitTestingModeEnabled;
-@property (readonly, nonatomic) NSDictionary *_userGeneratedVibrationPatterns;
-@property (nonatomic) BOOL allowsAutoRefresh;
-@property (nonatomic) BOOL needsRefresh; // @synthesize needsRefresh=_needsRefresh;
+@property (nonatomic) BOOL allowsAutoRefresh; // @synthesize allowsAutoRefresh=_allowsAutoRefresh;
+@property (readonly, nonatomic) BOOL needsRefresh; // @synthesize needsRefresh=_needsRefresh;
 @property (readonly, nonatomic) BOOL shouldVibrateForCurrentRingerSwitchState;
 @property (readonly, nonatomic) BOOL shouldVibrateOnRing;
 @property (readonly, nonatomic) BOOL shouldVibrateOnSilent;
@@ -41,21 +31,24 @@
 + (void)_handleVibrateOnRingOrSilentDidChangeNotification;
 + (void)_handleVibrationPreferencesDidChangeNotificationForPreferencesKinds:(unsigned long long)arg1 atInitiativeOfVibrationManager:(id)arg2;
 + (id)sharedVibrationManager;
-- (BOOL)_areSynchronizedVibrationsAllowedForAlertType:(int)arg1;
+- (void).cxx_destruct;
+- (BOOL)_areSynchronizedVibrationsAllowedForAlertType:(long long)arg1;
 - (BOOL)_booleanPreferenceForKey:(struct __CFString *)arg1 defaultValue:(BOOL)arg2;
 - (id)_completeSystemVibrationsSubdirectoryForSubdirectory:(id)arg1;
-- (id)_currentVibrationIdentifierForAlertType:(int)arg1 accountIdentifier:(id)arg2;
-- (id)_currentVibrationIdentifierForAlertType:(int)arg1 accountIdentifier:(id)arg2 correspondingToneIdentifier:(id)arg3;
-- (id)_currentVibrationIdentifierForAlertType:(int)arg1 accountIdentifier:(id)arg2 correspondingToneIdentifier:(id)arg3 allowsNoneDefaultToAnyActualVibrationSubstitution:(BOOL)arg4;
-- (int)_currentVibrationWatchAlertPolicyForAlertType:(int)arg1;
-- (int)_currentVibrationWatchAlertPolicyForAlertType:(int)arg1 accountIdentifier:(id)arg2;
-- (int)_currentVibrationWatchAlertPolicyForAlertType:(int)arg1 accountIdentifier:(id)arg2 didFindPersistedWatchAlertPolicy:(BOOL *)arg3;
-- (id)_currentVibrationWatchAlertPolicyPreferenceKeyForAlertType:(int)arg1 accountIdentifier:(id)arg2;
-- (id)_defaultVibrationIdentifierForAlertType:(int)arg1 accountIdentifier:(id)arg2 correspondingToneIdentifier:(id)arg3;
+- (id)_currentVibrationIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
+- (id)_currentVibrationIdentifierForAlertType:(long long)arg1 topic:(id)arg2 correspondingToneIdentifier:(id)arg3;
+- (id)_currentVibrationIdentifierForAlertType:(long long)arg1 topic:(id)arg2 correspondingToneIdentifier:(id)arg3 allowsNoneDefaultToAnyActualVibrationSubstitution:(BOOL)arg4;
+- (long long)_currentVibrationWatchAlertPolicyForAlertType:(long long)arg1;
+- (long long)_currentVibrationWatchAlertPolicyForAlertType:(long long)arg1 accountIdentifier:(id)arg2;
+- (long long)_currentVibrationWatchAlertPolicyForAlertType:(long long)arg1 topic:(id)arg2;
+- (long long)_currentVibrationWatchAlertPolicyForAlertType:(long long)arg1 topic:(id)arg2 didFindPersistedWatchAlertPolicy:(BOOL *)arg3;
+- (id)_currentVibrationWatchAlertPolicyPreferenceKeyForAlertType:(long long)arg1 topic:(id)arg2;
+- (id)_defaultVibrationIdentifierForAlertType:(long long)arg1 topic:(id)arg2 correspondingToneIdentifier:(id)arg3;
 - (void)_didChangeUserGeneratedVibrationPatterns;
 - (void)_didSetVibrationPreferenceSuccessfullyWithKey:(id)arg1 inDomain:(id)arg2 usingPreferencesOfKind:(unsigned long long)arg3;
 - (void)_handleUserGeneratedVibrationsDidChangeNotification;
 - (id)_initWithSpecialBehaviors:(unsigned long long)arg1;
+- (BOOL)_isUnitTestingModeEnabled;
 - (id)_localizedNameForVibrationWithIdentifier:(id)arg1;
 - (void)_makeSystemVibrationDataMigrationVersionCurrentIfNecessary;
 - (BOOL)_migrateLegacySettings;
@@ -67,29 +60,31 @@
 - (BOOL)_removeAllUserGeneratedVibrationPatternsUsingServiceWithError:(id *)arg1;
 - (BOOL)_removeAllUserGeneratedVibrationsWithError:(id *)arg1;
 - (id)_retrieveUserGeneratedVibrationPatternsUsingService;
-- (id)_sanitizeVibrationIdentifier:(id)arg1 forAlertType:(int)arg2 accountIdentifier:(id)arg3 correspondingToneIdentifier:(id)arg4 didFallbackToCurrentVibrationIdentifier:(BOOL *)arg5;
-- (id)_sanitizeVibrationIdentifier:(id)arg1 forAlertType:(int)arg2 accountIdentifier:(id)arg3 correspondingToneIdentifier:(id)arg4 useDefaultVibrationAsFallback:(BOOL)arg5 allowsNoneDefaultToAnyActualVibrationSubstitution:(BOOL)arg6 didFallback:(BOOL *)arg7;
+- (id)_sanitizeVibrationIdentifier:(id)arg1 forAlertType:(long long)arg2 topic:(id)arg3 correspondingToneIdentifier:(id)arg4 didFallbackToCurrentVibrationIdentifier:(BOOL *)arg5;
+- (id)_sanitizeVibrationIdentifier:(id)arg1 forAlertType:(long long)arg2 topic:(id)arg3 correspondingToneIdentifier:(id)arg4 useDefaultVibrationAsFallback:(BOOL)arg5 allowsNoneDefaultToAnyActualVibrationSubstitution:(BOOL)arg6 didFallback:(BOOL *)arg7;
 - (BOOL)_saveUserGeneratedVibrationPatterns:(id)arg1 error:(id *)arg2;
-- (void)_setCurrentVibrationWatchAlertPolicy:(int)arg1 forAlertType:(int)arg2;
-- (void)_setCurrentVibrationWatchAlertPolicy:(int)arg1 forAlertType:(int)arg2 accountIdentifier:(id)arg3;
-- (void)_setNeedsRefresh:(BOOL)arg1;
+- (void)_setCurrentVibrationWatchAlertPolicy:(long long)arg1 forAlertType:(long long)arg2;
+- (void)_setCurrentVibrationWatchAlertPolicy:(long long)arg1 forAlertType:(long long)arg2 accountIdentifier:(id)arg3;
+- (void)_setCurrentVibrationWatchAlertPolicy:(long long)arg1 forAlertType:(long long)arg2 topic:(id)arg3;
 - (BOOL)_setUserGeneratedVibrationPatternsUsingService:(id)arg1 error:(id *)arg2;
 - (unsigned long long)_storedSystemVibrationDataMigrationVersion;
 - (id)_synchronizedVibrationIdentifierForToneIdentifier:(id)arg1;
 - (id)_systemVibrationIdentifiersForSubdirectory:(id)arg1;
-- (id)_systemWideVibrationPatternPreferenceKeyForAlertType:(int)arg1;
-- (BOOL)_vibrationIsSettableForAlertType:(int)arg1;
+- (id)_systemWideVibrationPatternPreferenceKeyForAlertType:(long long)arg1;
+- (id)_userGeneratedVibrationPatterns;
+- (BOOL)_vibrationIsSettableForAlertType:(long long)arg1;
 - (id)addUserGeneratedVibrationPattern:(id)arg1 name:(id)arg2 error:(id *)arg3;
 - (id)allUserGeneratedVibrationIdentifiers;
 - (id)allUserSelectableSystemVibrationIdentifiers;
-- (id)currentVibrationIdentifierForAlertType:(int)arg1;
-- (id)currentVibrationIdentifierForAlertType:(int)arg1 accountIdentifier:(id)arg2;
-- (id)currentVibrationNameForAlertType:(int)arg1;
-- (id)currentVibrationPatternForAlertType:(int)arg1;
+- (id)currentVibrationIdentifierForAlertType:(long long)arg1;
+- (id)currentVibrationIdentifierForAlertType:(long long)arg1 accountIdentifier:(id)arg2;
+- (id)currentVibrationIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
+- (id)currentVibrationNameForAlertType:(long long)arg1;
+- (id)currentVibrationPatternForAlertType:(long long)arg1;
 - (void)dealloc;
-- (id)defaultVibrationIdentifierForAlertType:(int)arg1;
-- (id)defaultVibrationNameForAlertType:(int)arg1;
-- (id)defaultVibrationPatternForAlertType:(int)arg1;
+- (id)defaultVibrationIdentifierForAlertType:(long long)arg1;
+- (id)defaultVibrationNameForAlertType:(long long)arg1;
+- (id)defaultVibrationPatternForAlertType:(long long)arg1;
 - (BOOL)deleteUserGeneratedVibrationPatternWithIdentifier:(id)arg1 error:(id *)arg2;
 - (id)init;
 - (id)nameOfVibrationWithIdentifier:(id)arg1;
@@ -98,8 +93,9 @@
 - (id)patternForVibrationWithIdentifier:(id)arg1;
 - (id)patternForVibrationWithIdentifier:(id)arg1 repeating:(BOOL)arg2;
 - (BOOL)refresh;
-- (void)setCurrentVibrationIdentifier:(id)arg1 forAlertType:(int)arg2;
-- (void)setCurrentVibrationIdentifier:(id)arg1 forAlertType:(int)arg2 accountIdentifier:(id)arg3;
+- (void)setCurrentVibrationIdentifier:(id)arg1 forAlertType:(long long)arg2;
+- (void)setCurrentVibrationIdentifier:(id)arg1 forAlertType:(long long)arg2 accountIdentifier:(id)arg3;
+- (void)setCurrentVibrationIdentifier:(id)arg1 forAlertType:(long long)arg2 topic:(id)arg3;
 - (BOOL)setName:(id)arg1 forUserGeneratedVibrationWithIdentifier:(id)arg2 error:(id *)arg3;
 - (BOOL)vibrationWithIdentifierIsValid:(id)arg1;
 

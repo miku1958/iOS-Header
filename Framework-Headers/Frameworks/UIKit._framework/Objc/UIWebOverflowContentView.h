@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CALayer *webLayer; // @synthesize webLayer=_webLayer;
 
 - (void)_setCachedSubviews:(id)arg1;
+- (void)dealloc;
 - (void)fixUpViewAfterInsertion;
 - (id)initWithLayer:(id)arg1;
 - (void)replaceLayer:(id)arg1;

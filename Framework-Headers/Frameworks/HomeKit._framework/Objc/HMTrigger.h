@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKit/HMMessageReceiver-Protocol.h>
+#import <HomeKit/HMFMessageReceiver-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMDelegateCaller, HMHome, HMMessageDispatcher, HMThreadSafeMutableArrayCollection, NSArray, NSDate, NSString, NSUUID;
+@class HMDelegateCaller, HMFMessageDispatcher, HMHome, HMThreadSafeMutableArrayCollection, NSArray, NSDate, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMTrigger : NSObject <HMMessageReceiver, NSSecureCoding, HMObjectMerge>
+@interface HMTrigger : NSObject <HMFMessageReceiver, NSSecureCoding, HMObjectMerge>
 {
     BOOL _enabled;
     NSString *_name;
@@ -22,7 +22,7 @@
     NSUUID *_uuid;
     HMHome *_home;
     HMThreadSafeMutableArrayCollection *_currentActionSets;
-    HMMessageDispatcher *_msgDispatcher;
+    HMFMessageDispatcher *_msgDispatcher;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     HMDelegateCaller *_delegateCaller;
@@ -40,7 +40,7 @@
 @property (copy, nonatomic) NSDate *lastFireDate; // @synthesize lastFireDate=_lastFireDate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
@@ -50,6 +50,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_addActionSet:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_addActionSetWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_configure:(id)arg1 uuid:(id)arg2 messageDispatcher:(id)arg3 clientQueue:(id)arg4 delegateCaller:(id)arg5;
 - (void)_enable:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleTriggerActivatedNotification:(id)arg1;
@@ -66,6 +67,7 @@
 - (void)_updateActionSet:(id)arg1 add:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addActionSet:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)addActionSetWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)enable:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)encodeWithCoder:(id)arg1;

@@ -15,12 +15,12 @@
     NSMutableSet *_connections;
     NSMutableDictionary *_handlerMap;
     NSObject<OS_dispatch_queue> *_connectionsQueue;
-    CDUnknownBlockType _disconnectHandler;
-    CDUnknownBlockType _defaultMessageHandler;
     NSObject<OS_dispatch_queue> *_eventQueue;
     NSObject<OS_dispatch_queue> *_timerQueue;
     double _idleTimerInterval;
     BOOL _shutdown;
+    CDUnknownBlockType _disconnectHandler;
+    CDUnknownBlockType _defaultMessageHandler;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType defaultMessageHandler; // @synthesize defaultMessageHandler=_defaultMessageHandler;

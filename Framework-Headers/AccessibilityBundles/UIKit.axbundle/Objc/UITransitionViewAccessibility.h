@@ -14,12 +14,10 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityDimmingView;
-- (id)_accessibilityDimmingViewForAlertController;
-- (id)_accessibilityDimmingViewSubview;
+- (id)_accessibilityHitTestingObscuredScreenAllowedViews;
 - (id)_accessibilityRetrieveDelegate;
 - (void)_didCompleteTransition:(BOOL)arg1;
 - (BOOL)accessibilityPerformEscape;
-- (BOOL)accessibilityViewIsModal;
 
 @end
 

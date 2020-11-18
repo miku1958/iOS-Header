@@ -14,6 +14,7 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityIsTextInput;
 - (id)_accessibilityQuickSpeakContent;
+- (id)_accessibilityQuickSpeakEnclosingSentence:(id *)arg1;
 - (id)_accessibilityTextRectsForRange:(id)arg1 singleTextRect:(struct CGRect *)arg2;
 
 @end

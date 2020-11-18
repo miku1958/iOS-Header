@@ -6,7 +6,8 @@
 
 #import <SceneKit/JSExport-Protocol.h>
 
-@class NSDictionary, SCNNode, SCNScene;
+@class MTLRenderPassDescriptor, SCNNode, SCNScene;
+@protocol MTLCommandBuffer;
 
 @protocol SCNRendererJSExport <JSExport>
 
@@ -19,8 +20,9 @@
 @property (strong, nonatomic) SCNNode *pointOfView;
 @property (strong, nonatomic) SCNScene *scene;
 
-+ (id)rendererWithContext:(void *)arg1 options:(NSDictionary *)arg2;
 - (void)render;
 - (void)renderAtTime:(double)arg1;
+- (void)renderAtTime:(double)arg1 viewport:(struct CGRect)arg2 commandBuffer:(id<MTLCommandBuffer>)arg3 passDescriptor:(MTLRenderPassDescriptor *)arg4;
+- (id)snapshotAtTime:(double)arg1 withSize:(struct CGSize)arg2 antialiasingMode:(unsigned long long)arg3;
 @end
 

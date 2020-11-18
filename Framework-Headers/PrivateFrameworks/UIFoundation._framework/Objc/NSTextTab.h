@@ -12,7 +12,7 @@
 
 @class NSDictionary;
 
-@interface NSTextTab : NSObject <NSSecureCoding, NSCopying, NSCoding>
+@interface NSTextTab : NSObject <NSCopying, NSCoding, NSSecureCoding>
 {
     struct {
         unsigned int alignment:4;

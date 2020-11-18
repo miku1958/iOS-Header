@@ -14,6 +14,7 @@
 
 @property (copy, nonatomic) NSString *contentType;
 @property (strong, nonatomic) SAUIImageResource *image;
+@property (copy, nonatomic) NSString *imagesJsonContentPayload;
 @property (copy, nonatomic) NSString *loadingText;
 @property (copy, nonatomic) NSString *seasonId;
 @property (copy, nonatomic) NSString *showId;

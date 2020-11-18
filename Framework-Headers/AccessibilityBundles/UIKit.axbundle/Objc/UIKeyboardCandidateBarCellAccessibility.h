@@ -14,13 +14,19 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityEquivalenceTag;
+- (BOOL)_accessibilityHasSetSlot;
 - (id)_accessibilityRoleDescription;
+- (unsigned long long)_accessibilitySavedSlotID;
+- (void)_accessibilitySetHasSetSlot:(BOOL)arg1;
+- (void)_accessibilitySetSavedSlotID:(unsigned long long)arg1;
+- (unsigned int)_accessibilitySlotID;
 - (id)_accessibilityVisibleItemInList;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (id)accessibilityLanguage;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
+- (void)setCandidate:(id)arg1;
 
 @end
 

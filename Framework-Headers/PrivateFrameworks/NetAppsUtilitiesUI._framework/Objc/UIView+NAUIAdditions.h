@@ -22,6 +22,7 @@
 - (void)naui_addConstraints:(id)arg1;
 - (BOOL)naui_canAnimate;
 - (BOOL)naui_isProperDescendantOfView:(id)arg1;
+- (void)naui_performAnimateableConstraintChanges:(CDUnknownBlockType)arg1;
 - (void)naui_reloadDynamicFontWithTextStyleDescriptor:(id)arg1;
 - (void)naui_removeConstraint:(id)arg1;
 - (void)naui_removeConstraints:(id)arg1;

@@ -24,5 +24,8 @@
 - (void)selectRow:(NSIndexPath *)arg1;
 - (void)setTableViewCellHook:(UITableViewCell * (^)(unsigned long long))arg1;
 - (NSString *)titleForDeleteConfirmationButtonForRow:(NSIndexPath *)arg1;
+
+@optional
+- (BOOL)hideDivderLineForindexPath:(NSIndexPath *)arg1;
 @end
 

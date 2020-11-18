@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/PKPaymentWebServiceTargetDeviceProtocol-Protocol.h>
 
@@ -23,7 +23,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)phoneTargetDevice;
++ (id)localTargetDevice;
+- (void).cxx_destruct;
 - (id)bridgedClientInfo;
 - (void)dealloc;
 - (id)deviceDescriptionForPaymentWebService:(id)arg1;
@@ -41,18 +42,18 @@
 - (BOOL)paymentWebService:(id)arg1 canProvisionPaymentPassWithPrimaryAccountIdentifier:(id)arg2;
 - (void)paymentWebService:(id)arg1 configurationDataWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 deleteApplicationWithAID:(id)arg2;
-- (void)paymentWebService:(id)arg1 didRegisterWithRegionMap:(id)arg2;
+- (void)paymentWebService:(id)arg1 didRegisterWithRegionMap:(id)arg2 primaryRegionTopic:(id)arg3;
 - (id)paymentWebService:(id)arg1 filterVerificationChannels:(id)arg2;
 - (BOOL)paymentWebService:(id)arg1 hasPassesOfType:(unsigned long long)arg2;
 - (void)paymentWebService:(id)arg1 provisioningDataWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 queueConnectionToTrustedServiceManagerForPushTopic:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 registrationDataWithAuthToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)paymentWebService:(id)arg1 setNewAuthRandomIfNecessary:(CDUnknownBlockType)arg2;
-- (void)paymentWebService:(id)arg1 shouldArchivePaymentWebServiceBackgroundContext:(id)arg2;
-- (void)paymentWebService:(id)arg1 shouldArchivePaymentWebServiceContext:(id)arg2;
-- (void)paymentWebService:(id)arg1 signData:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)paymentWebService:(id)arg1 removePass:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)paymentWebService:(id)arg1 setNewAuthRandomIfNecessaryReturningPairingState:(CDUnknownBlockType)arg2;
+- (void)paymentWebService:(id)arg1 signData:(id)arg2 signatureEntanglementMode:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)paymentWebService:(id)arg1 validateAddPreconditionsWithCompletion:(CDUnknownBlockType)arg2;
 - (void)paymentWebServiceDidUpdateConfiguration:(id)arg1;
+- (id)secureElementIdentifiers;
 - (BOOL)supportsAutomaticPassPresentation;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSMutableArray, UICollectionViewFlowLayout;
+@class NSMutableArray, UICollectionViewFlowLayout;
 
 __attribute__((visibility("hidden")))
 @interface _UIFlowLayoutInfo : NSObject
@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
     struct CGRect _visibleBounds;
     struct CGSize _layoutSize;
     BOOL _isValid;
+    struct CGSize _computedEstimatedSum;
+    long long _computedEstimatedCount;
     BOOL _usesFloatingHeaderFooter;
     BOOL _horizontal;
     BOOL _leftToRight;
@@ -26,11 +28,11 @@ __attribute__((visibility("hidden")))
     struct CGSize _contentSize;
 }
 
+@property (readonly, nonatomic) struct CGSize computedEstimatedSize;
 @property (nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property (nonatomic) double dimension; // @synthesize dimension=_dimension;
 @property (nonatomic) BOOL estimatesSizes; // @synthesize estimatesSizes=_estimatesSizes;
 @property (nonatomic) BOOL horizontal; // @synthesize horizontal=_horizontal;
-@property (readonly, nonatomic) NSArray *invalidatedIndexPaths;
 @property (weak, nonatomic) UICollectionViewFlowLayout *layout; // @synthesize layout=_layout;
 @property (nonatomic) BOOL leftToRight; // @synthesize leftToRight=_leftToRight;
 @property (nonatomic) CDStruct_2f5e8405 rowAlignmentOptions; // @synthesize rowAlignmentOptions=_rowAlignmentOptions;
@@ -44,8 +46,10 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)frameForItemAtIndexPath:(id)arg1;
 - (id)init;
 - (void)invalidate:(BOOL)arg1;
-- (void)setSize:(struct CGSize)arg1 forItemAtIndexPath:(id)arg2;
+- (id)invalidatedIndexPaths;
+- (id)setSize:(struct CGSize)arg1 forItemAtIndexPath:(id)arg2;
 - (id)snapshot;
+- (id)specifiedItemSizes;
 
 @end
 

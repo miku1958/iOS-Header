@@ -6,12 +6,14 @@
 
 #import <Foundation/NSFileReactorProxy.h>
 
-@class NSFileAccessProcessManager, NSFileWatcher, NSMutableArray, NSObject;
+@class NSFileAccessProcessManager, NSFilePresenterXPCMessenger, NSFileWatcher, NSMutableArray, NSObject;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface NSFilePresenterProxy : NSFileReactorProxy
 {
+    id _remotePresenter;
+    NSFilePresenterXPCMessenger *_forwardedMessenger;
     NSObject<OS_dispatch_queue> *_queue;
     NSFileWatcher *_watcher;
     unsigned long long _writingRelinquishmentCount;
@@ -24,21 +26,25 @@ __attribute__((visibility("hidden")))
     BOOL _disconnected;
     BOOL _inSubarbiter;
     BOOL _usesMainThreadDuringRelinquishing;
+    BOOL _didObserveNonCoordinatedChanges;
 }
 
 @property (readonly) BOOL disconnected;
-@property unsigned long long filePresenterResponses; // @synthesize filePresenterResponses=_filePresenterResponses;
+@property (nonatomic) unsigned long long filePresenterResponses; // @synthesize filePresenterResponses=_filePresenterResponses;
 @property BOOL inSubarbiter; // @synthesize inSubarbiter=_inSubarbiter;
 @property BOOL usesMainThreadDuringReliquishing; // @synthesize usesMainThreadDuringReliquishing=_usesMainThreadDuringRelinquishing;
 
 + (id)urlWithItemURL:(id)arg1 subitemPath:(id)arg2;
-- (BOOL)_respondsToMessage:(id)arg1;
+- (id)_clientProxy;
+- (void)_settleNonCoordinatedChanges;
 - (void)accommodateDeletionWithSubitemPath:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)allowedForURL:(id)arg1;
 - (void)dealloc;
 - (void)disconnect;
-- (void)forwardObservationMessageWithKind:(id)arg1 parameters:(id)arg2;
-- (void)forwardRelinquishmentMessageWithKind:(id)arg1 parameters:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
-- (void)forwardUsingMessageSender:(CDUnknownBlockType)arg1;
+- (void)forwardRelinquishmentForWritingClaim:(BOOL)arg1 withID:(id)arg2 purposeID:(id)arg3 subitemURL:(id)arg4 options:(unsigned long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)forwardUsingProxy:(id)arg1;
+- (id)initWithClient:(id)arg1 remotePresenter:(id)arg2 reactorID:(id)arg3;
+- (void)invalidate;
 - (void)localFileWasEvicted;
 - (void)observeChangeAtSubitemPath:(id)arg1;
 - (void)observeDisappearanceAtSubitemPath:(id)arg1;
@@ -52,8 +58,8 @@ __attribute__((visibility("hidden")))
 - (void)relinquishToReadingClaimWithID:(id)arg1 options:(unsigned long long)arg2 purposeID:(id)arg3 resultHandler:(CDUnknownBlockType)arg4;
 - (void)relinquishToWritingClaimWithID:(id)arg1 options:(unsigned long long)arg2 purposeID:(id)arg3 subitemPath:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (void)saveChangesWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)sendMessageKind:(id)arg1 parameters:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (void)setItemLocation:(id)arg1;
+- (BOOL)shouldSendObservationMessageWithPurposeID:(id)arg1;
 - (void)startObservingApplicationStateWithQueue:(id)arg1;
 - (void)startWatchingWithQueue:(id)arg1 lastEventID:(id)arg2 unannouncedMoveHandler:(CDUnknownBlockType)arg3;
 - (void)stopObservingApplicationState;

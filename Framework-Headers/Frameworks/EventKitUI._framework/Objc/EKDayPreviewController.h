@@ -27,9 +27,11 @@
     BOOL _hasOverriddenEventDates;
     NSDate *_overriddenEventStartDate;
     NSDate *_overriddenEventEndDate;
-    BOOL _isInline;
+    long long _overriddenParticipantStatus;
+    BOOL _hasOverriddenStatus;
     BOOL _hidesAllDayEvents;
     BOOL _respectsSelectedCalendarsFilter;
+    unsigned long long _style;
     UIViewController *_hostingViewController;
 }
 
@@ -40,10 +42,12 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hidesAllDayEvents; // @synthesize hidesAllDayEvents=_hidesAllDayEvents;
 @property (weak, nonatomic) UIViewController *hostingViewController; // @synthesize hostingViewController=_hostingViewController;
-@property (nonatomic) BOOL isInline; // @synthesize isInline=_isInline;
+@property (nonatomic) long long overriddenParticipantStatus; // @synthesize overriddenParticipantStatus=_overriddenParticipantStatus;
 @property (nonatomic) BOOL presentModally;
 @property (nonatomic) BOOL respectsSelectedCalendarsFilter; // @synthesize respectsSelectedCalendarsFilter=_respectsSelectedCalendarsFilter;
+@property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL useCustomBackButton;
 
 - (void).cxx_destruct;
 - (id)_anchorEvent;

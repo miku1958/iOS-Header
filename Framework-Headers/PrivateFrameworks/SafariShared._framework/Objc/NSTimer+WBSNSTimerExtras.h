@@ -7,7 +7,7 @@
 #import <Foundation/NSTimer.h>
 
 @interface NSTimer (WBSNSTimerExtras)
-+ (void)_safari_blockTimerDidFire:(id)arg1;
 + (id)safari_scheduledTimerWithTimeInterval:(double)arg1 repeats:(BOOL)arg2 block:(CDUnknownBlockType)arg3;
++ (id)safari_timerWithTimeInterval:(double)arg1 repeats:(BOOL)arg2 block:(CDUnknownBlockType)arg3;
 @end
 

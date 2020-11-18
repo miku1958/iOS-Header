@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _layersSpace;
     CDStruct_f43f0670 _textStroke;
     CDStruct_58ec0031 _fontColor;
+    CDStruct_58ec0031 _nonDigitFontColor;
     CDStruct_fae3dc92 _centerPoints;
     unsigned int _atlasIndex;
     unsigned int _backgroundColor;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
     float _centerOffsetX;
     NSString *_fontName;
     float _fontSize;
+    float _lineSpacing;
     unsigned int _maxDigits;
     unsigned int _minDigits;
     NSString *_nonDigitFontName;
@@ -41,6 +43,7 @@ __attribute__((visibility("hidden")))
         unsigned int textShadow:1;
         unsigned int textStroke:1;
         unsigned int fontColor:1;
+        unsigned int nonDigitFontColor:1;
         unsigned int atlasIndex:1;
         unsigned int backgroundColor:1;
         unsigned int borderColor:1;
@@ -48,6 +51,7 @@ __attribute__((visibility("hidden")))
         unsigned int capWidthRight:1;
         unsigned int centerOffsetX:1;
         unsigned int fontSize:1;
+        unsigned int lineSpacing:1;
         unsigned int maxDigits:1;
         unsigned int minDigits:1;
         unsigned int nonDigitFontSize:1;
@@ -79,8 +83,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasFontColor;
 @property (readonly, nonatomic) BOOL hasFontName;
 @property (nonatomic) BOOL hasFontSize;
+@property (nonatomic) BOOL hasLineSpacing;
 @property (nonatomic) BOOL hasMaxDigits;
 @property (nonatomic) BOOL hasMinDigits;
+@property (nonatomic) BOOL hasNonDigitFontColor;
 @property (readonly, nonatomic) BOOL hasNonDigitFontName;
 @property (nonatomic) BOOL hasNonDigitFontSize;
 @property (nonatomic) BOOL hasPaddingLeft;
@@ -92,8 +98,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasTextStroke;
 @property (readonly, nonatomic) CDStruct_033e8ed6 *layers;
 @property (readonly, nonatomic) unsigned long long layersCount;
+@property (nonatomic) float lineSpacing; // @synthesize lineSpacing=_lineSpacing;
 @property (nonatomic) unsigned int maxDigits; // @synthesize maxDigits=_maxDigits;
 @property (nonatomic) unsigned int minDigits; // @synthesize minDigits=_minDigits;
+@property (nonatomic) CDStruct_58ec0031 nonDigitFontColor; // @synthesize nonDigitFontColor=_nonDigitFontColor;
 @property (strong, nonatomic) NSString *nonDigitFontName; // @synthesize nonDigitFontName=_nonDigitFontName;
 @property (nonatomic) float nonDigitFontSize; // @synthesize nonDigitFontSize=_nonDigitFontSize;
 @property (nonatomic) float paddingLeft; // @synthesize paddingLeft=_paddingLeft;

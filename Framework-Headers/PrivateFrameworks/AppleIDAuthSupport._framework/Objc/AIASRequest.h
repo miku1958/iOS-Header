@@ -7,20 +7,18 @@
 #import <Foundation/NSObject.h>
 
 #import <AppleIDAuthSupport/NSURLSessionDataDelegate-Protocol.h>
-#import <AppleIDAuthSupport/NSURLSessionDelegate-Protocol.h>
 
 @class NSError, NSMutableData, NSMutableURLRequest, NSString, NSURLSession, NSURLSessionDataTask;
 @protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
-@interface AIASRequest : NSObject <NSURLSessionDelegate, NSURLSessionDataDelegate>
+@interface AIASRequest : NSObject <NSURLSessionDataDelegate>
 {
     BOOL _done;
     BOOL _success;
     NSMutableURLRequest *_URLRequest;
     NSMutableData *_data;
     struct __AppleIDAuthSupportData *_context;
-    struct __CFString *_serverOID;
     NSObject<OS_dispatch_semaphore> *_sema;
     NSURLSession *_session;
     NSURLSessionDataTask *_task;
@@ -36,18 +34,14 @@ __attribute__((visibility("hidden")))
 @property (strong) NSError *error; // @synthesize error=_error;
 @property (readonly) unsigned long long hash;
 @property (strong) NSObject<OS_dispatch_semaphore> *sema; // @synthesize sema=_sema;
-@property struct __CFString *serverOID; // @synthesize serverOID=_serverOID;
 @property (strong) NSURLSession *session; // @synthesize session=_session;
 @property BOOL success; // @synthesize success=_success;
 @property (readonly) Class superclass;
 @property (strong) NSURLSessionDataTask *task; // @synthesize task=_task;
 
 - (void).cxx_destruct;
-- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
-- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
-- (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)initWithURL:(id)arg1 data:(struct __CFDictionary *)arg2 clientInfo:(id)arg3 proxiedClientInfo:(id)arg4 companionClientInfo:(id)arg5;
+- (void)resume;
 
 @end
 

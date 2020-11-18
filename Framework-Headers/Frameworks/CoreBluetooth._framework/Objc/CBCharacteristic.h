@@ -33,7 +33,7 @@
 @property (readonly, nonatomic) NSNumber *valueHandle; // @synthesize valueHandle=_valueHandle;
 @property (readonly, nonatomic) unsigned long long valueTimestamp; // @synthesize valueTimestamp=_valueTimestamp;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)handleDescriptorsDiscovered:(id)arg1;
 - (id)handleValueBroadcasted:(id)arg1;

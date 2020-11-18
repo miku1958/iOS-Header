@@ -4,18 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CoreLocation/CLAssertion.h>
 
-@interface CLInUseAssertion : NSObject
+@interface CLInUseAssertion : CLAssertion
 {
-    id _internal;
 }
 
 + (id)newAssertionForBundle:(id)arg1 withReason:(id)arg2;
++ (id)newAssertionForBundleIdentifier:(id)arg1 bundlePath:(id)arg2 reason:(id)arg3;
 + (id)newAssertionForBundleIdentifier:(id)arg1 withReason:(id)arg2;
-- (void)dealloc;
-- (id)initWithInternal:(id)arg1;
-- (void)invalidate;
 
 @end
 

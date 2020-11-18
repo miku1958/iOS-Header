@@ -6,47 +6,38 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSFileHandle, NSMutableArray, NSMutableDictionary;
-@protocol OS_dispatch_queue, PKPrinterBrowserDelegate;
+#import <PrintKit/PKBrowserClientProtocol-Protocol.h>
 
-@interface PKPrinterBrowser : NSObject
+@class NSMutableDictionary, NSString, NSXPCConnection;
+@protocol PKPrinterBrowserDelegate;
+
+@interface PKPrinterBrowser : NSObject <PKBrowserClientProtocol>
 {
-    id<PKPrinterBrowserDelegate> delegate;
-    struct _DNSServiceRef_t *mainBrowserRef;
-    struct _DNSServiceRef_t *ippBrowserRef;
-    struct _DNSServiceRef_t *ippsBrowserRef;
-    struct _DNSServiceRef_t *localippBrowserRef;
-    struct _DNSServiceRef_t *localippsBrowserRef;
-    NSMutableDictionary *printers;
-    NSMutableDictionary *printersByUUID;
-    NSFileHandle *handle;
-    unsigned char originalCellFlag;
-    unsigned char originalWifiFlag;
-    NSMutableArray *pendingList;
-    NSObject<OS_dispatch_queue> *printersQueue;
+    unsigned char _originalCellFlag;
+    unsigned char _originalWifiFlag;
+    BOOL _delegateRespondsToProximityUpdate;
+    id<PKPrinterBrowserDelegate> _delegate;
+    NSXPCConnection *_pkBrowseConnection;
+    NSMutableDictionary *_printers;
+    NSMutableDictionary *_btDevices;
 }
 
-@property (nonatomic) id<PKPrinterBrowserDelegate> delegate; // @synthesize delegate;
-@property (strong, nonatomic) NSFileHandle *handle; // @synthesize handle;
-@property (strong, nonatomic) NSMutableArray *pendingList; // @synthesize pendingList;
-@property (strong, nonatomic) NSMutableDictionary *printers; // @synthesize printers;
-@property (strong, nonatomic) NSMutableDictionary *printersByUUID; // @synthesize printersByUUID;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *printersQueue; // @synthesize printersQueue;
+@property (strong, nonatomic) NSMutableDictionary *btDevices; // @synthesize btDevices=_btDevices;
+@property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) id<PKPrinterBrowserDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSXPCConnection *pkBrowseConnection; // @synthesize pkBrowseConnection=_pkBrowseConnection;
+@property (strong, nonatomic) NSMutableDictionary *printers; // @synthesize printers=_printers;
+@property (readonly) Class superclass;
 
 + (id)browserWithDelegate:(id)arg1;
-- (void)addBlockToPendingList:(CDUnknownBlockType)arg1;
-- (void)addLimboPrinter:(id)arg1 local:(BOOL)arg2;
-- (void)addQueryResult:(id)arg1 toPrinter:(id)arg2;
-- (void)addWithPrinterURI:(id)arg1 andBonjourURI:(id)arg2 andDisplayName:(id)arg3 isMCProfile:(BOOL)arg4;
-- (void)addWithPrinterURI:(id)arg1 andDisplayName:(id)arg2 isMCProfile:(BOOL)arg3;
-- (void)browseCallback:(unsigned int)arg1 interface:(unsigned int)arg2 name:(const char *)arg3 regType:(const char *)arg4 domain:(const char *)arg5;
-- (void)browseLocalCallback:(unsigned int)arg1 interface:(unsigned int)arg2 name:(const char *)arg3 regType:(const char *)arg4 domain:(const char *)arg5;
+- (void)btlePrinterFound:(id)arg1;
+- (void)btleRssiUpdated:(id)arg1 rssi:(id)arg2;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1;
-- (void)queryCallback:(int)arg1 flags:(unsigned int)arg2 fullName:(const char *)arg3 rdlen:(unsigned short)arg4 rdata:(const void *)arg5;
-- (void)queryHardcodedPrinters;
-- (void)reissueTXTQuery:(id)arg1;
-- (void)removePrinter:(id)arg1;
+- (void)printerAdded:(id)arg1 more:(BOOL)arg2;
+- (void)printerRemoved:(id)arg1 more:(BOOL)arg2;
 
 @end
 

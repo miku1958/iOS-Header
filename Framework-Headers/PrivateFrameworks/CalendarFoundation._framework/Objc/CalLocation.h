@@ -38,6 +38,7 @@
 @property int type; // @synthesize type=_type;
 
 + (id)coordinatesFromGeoURLString:(id)arg1;
++ (id)displayStringForAddress:(id)arg1 withoutTitle:(id)arg2;
 + (id)fullDisplayStringWithTitle:(id)arg1 address:(id)arg2;
 + (id)geoURLStringFromCoordinates:(id)arg1;
 + (id)routeTypeStringForCalLocationRoutingMode:(long long)arg1;

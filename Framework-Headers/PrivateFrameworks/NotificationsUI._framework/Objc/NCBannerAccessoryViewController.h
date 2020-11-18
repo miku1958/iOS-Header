@@ -19,10 +19,10 @@
 
 + (id)_exportedInterface;
 + (id)_remoteViewControllerInterface;
+- (void).cxx_destruct;
 - (void)_getPreferredContentSizeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_setContext:(id)arg1;
 - (void)becomeSticky;
-- (void)dealloc;
 - (void)dismiss;
 - (void)setSticky:(BOOL)arg1;
 

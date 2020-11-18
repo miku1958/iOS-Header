@@ -38,7 +38,6 @@
 - (void)_cancel:(id)arg1;
 - (void)_clear:(id)arg1;
 - (void)_done:(id)arg1;
-- (void)_showDebugMenu:(id)arg1;
 - (void)_validateButtons;
 - (void)didReceiveMemoryWarning;
 - (id)initWithController:(id)arg1;

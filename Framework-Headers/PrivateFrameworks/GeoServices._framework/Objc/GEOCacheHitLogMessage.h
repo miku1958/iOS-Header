@@ -31,6 +31,9 @@
 @property (nonatomic) BOOL hasTileSetStyle;
 @property (nonatomic) int tileSetStyle; // @synthesize tileSetStyle=_tileSetStyle;
 
+- (int)StringAsCacheType:(id)arg1;
+- (int)StringAsTileSetStyle:(id)arg1;
+- (id)cacheTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -39,6 +42,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)tileSetStyleAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

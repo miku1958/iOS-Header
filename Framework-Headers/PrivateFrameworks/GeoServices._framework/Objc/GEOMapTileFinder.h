@@ -28,12 +28,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int tileStyle; // @synthesize tileStyle=_tileStyle;
 @property (readonly, nonatomic) unsigned long long zoomLevel; // @synthesize zoomLevel=_zoomLevel;
 
++ (id)buildingsTileFinderForMap:(id)arg1 center:(CDStruct_c3b9c2ee)arg2 radius:(double)arg3;
 + (id)detailedTransitTileFinderForMap:(id)arg1 center:(CDStruct_c3b9c2ee)arg2 radius:(double)arg3;
-+ (unsigned int)maxTransitZoomLevel;
-+ (unsigned int)maxZoomLevel;
 + (id)realisticTileFinderForMap:(id)arg1 center:(CDStruct_c3b9c2ee)arg2 radius:(double)arg3;
-+ (BOOL)supportsRealisticMap;
-+ (BOOL)supportsTransitMap;
 + (id)transitGeometryTileFinderForMap:(id)arg1 center:(CDStruct_c3b9c2ee)arg2 radius:(double)arg3;
 - (struct _GEOTileKey)_adjacentTileKey:(const struct _GEOTileKey *)arg1 dirX:(int)arg2 dirY:(int)arg3;
 - (void)_fetchDataForKeys:(const unordered_set_4cb294f7 *)arg1;

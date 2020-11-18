@@ -13,9 +13,11 @@
 @property (strong, nonatomic) CDPContext *cdpContext;
 
 + (BOOL)canAuthenticate;
+- (BOOL)anyPeerHasEnabledViewsInSet:(NSSet *)arg1 error:(id *)arg2;
 - (int)circleStatus:(id *)arg1;
 - (BOOL)hasNonViewAwarePeers;
 - (id)initWithContext:(CDPContext *)arg1;
+- (BOOL)isLastBackupMakingPeer:(id *)arg1;
 - (unsigned long long)peerCount;
 - (NSDictionary *)peerDeviceNamesByPeerID;
 - (NSString *)peerId;

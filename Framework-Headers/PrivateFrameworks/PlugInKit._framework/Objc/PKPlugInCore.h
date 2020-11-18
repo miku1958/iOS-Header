@@ -11,13 +11,13 @@
 @interface PKPlugInCore : NSObject
 {
     BOOL _onSystemVolume;
-    NSDictionary *_topDictionary;
     NSDictionary *_plugInDictionary;
     NSString *_identifier;
     NSString *_originalIdentifier;
     NSURL *_url;
     NSURL *_containingUrl;
     NSDictionary *_bundleInfoDictionary;
+    NSDictionary *_entitlements;
     unsigned long long _hubProtocolVersion;
     NSString *_localizedName;
     NSString *_localizedShortName;
@@ -35,6 +35,7 @@
 @property (strong) NSData *cdhash; // @synthesize cdhash=_cdhash;
 @property (readonly) NSString *containingPath;
 @property (strong) NSURL *containingUrl; // @synthesize containingUrl=_containingUrl;
+@property (strong) NSDictionary *entitlements; // @synthesize entitlements=_entitlements;
 @property unsigned long long hubProtocolVersion; // @synthesize hubProtocolVersion=_hubProtocolVersion;
 @property (strong) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly) BOOL isAppExtension;
@@ -51,17 +52,18 @@
 @property (strong) NSString *originalIdentifier; // @synthesize originalIdentifier=_originalIdentifier;
 @property (readonly) NSString *path;
 @property (strong) NSDictionary *plugInDictionary; // @synthesize plugInDictionary=_plugInDictionary;
+@property (readonly) NSString *principalSpec;
 @property (readonly) id protocolSpec;
 @property (strong) NSString *requirement; // @synthesize requirement=_requirement;
 @property (readonly) NSString *sdkSpec;
 @property (readonly) NSDate *timestamp;
-@property (strong) NSDictionary *topDictionary; // @synthesize topDictionary=_topDictionary;
 @property (strong) NSURL *url; // @synthesize url=_url;
 @property (strong) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (readonly) NSString *version;
 
 + (id)readSDKDictionary:(id)arg1;
 - (void).cxx_destruct;
+- (id)attribute:(id)arg1;
 - (id)augmentInterface:(id)arg1;
 - (void)canonicalize;
 - (id)diagnose;
@@ -69,6 +71,7 @@
 - (id)embeddedProtocolSpec;
 - (id)export:(id *)arg1;
 - (unsigned long long)hash;
+- (id)infoKey:(id)arg1;
 - (id)init;
 - (id)initWithForm:(id)arg1;
 - (id)initWithName:(id)arg1 url:(id)arg2 bundleInfo:(id)arg3 info:(id)arg4 uuid:(id)arg5;
@@ -76,6 +79,7 @@
 - (id)mergeDictionary:(id)arg1 into:(id)arg2;
 - (id)mergeSharedResources:(id)arg1 into:(id)arg2;
 - (id)normalizeInfoDictionary:(id)arg1;
+- (id)pluginKey:(id)arg1;
 - (void)resolveSDK;
 - (BOOL)sdkOverridesKey:(id)arg1;
 - (void)setAnnotation:(id)arg1 value:(id)arg2;

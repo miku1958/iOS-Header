@@ -8,13 +8,14 @@
 
 #import <EventKitUI/CalendarEventAlarmTableDelegate-Protocol.h>
 
-@class CalendarEventAlarmTable, EKCalendar, EKUIAlarm, NSString;
+@class CalendarEventAlarmTable, EKCalendar, EKUIAlarm, EKUIRecurrenceAlertController, NSString;
 
 __attribute__((visibility("hidden")))
 @interface EKAlarmEditItemViewController : EKEditItemViewController <CalendarEventAlarmTableDelegate>
 {
     CalendarEventAlarmTable *_table;
     BOOL _immediateAlarmCreation;
+    EKUIRecurrenceAlertController *_recurrenceAlertController;
     BOOL _allDay;
     BOOL _shouldAllowAlarmsTriggeringAfterStartDate;
     BOOL _shouldShowLeaveNowOption;

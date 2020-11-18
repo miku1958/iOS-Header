@@ -8,13 +8,12 @@
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class GEOComposedWaypoint, GEOMapServiceTraits, GEORouteHypothesis, GEORouteHypothesisMonitor, NSDate, NSMutableDictionary;
+@class GEOComposedWaypoint, GEOMapServiceTraits, GEORouteHypothesis, GEORouteHypothesisMonitor, NSDate;
 
 @interface GEORouteHypothesisValue : NSObject <NSSecureCoding>
 {
     GEORouteHypothesisMonitor *_monitor;
     GEORouteHypothesis *_currentHypothesis;
-    NSMutableDictionary *_handlers;
     double _updatedTimeStamp;
     BOOL _prediction;
     GEOComposedWaypoint *_origin;
@@ -49,12 +48,8 @@
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (void)enumerateHandlersUsingBlock:(CDUnknownBlockType)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSource:(id)arg1 toDestination:(id)arg2 transportType:(int)arg3 arrivalDate:(id)arg4 expirationDate:(id)arg5 traits:(id)arg6;
-- (void)removeHandlerForClient:(id)arg1;
-- (void)setHandler:(CDUnknownBlockType)arg1 forClient:(id)arg2;
-- (BOOL)shouldBeRemovedFromCache;
 
 @end
 

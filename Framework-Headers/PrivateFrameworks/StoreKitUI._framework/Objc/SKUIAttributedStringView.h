@@ -6,16 +6,18 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSLayoutManager, NSMutableArray, NSTextContainer, NSTextStorage, SKUIAttributedStringLayout, UIColor;
+#import <StoreKitUI/SKUIReusableView-Protocol.h>
+
+@class NSArray, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, SKUIAttributedStringLayout, UIColor;
 @protocol SKUILinkHandler;
 
-@interface SKUIAttributedStringView : UIView
+@interface SKUIAttributedStringView : UIView <SKUIReusableView>
 {
     double _calculatedTopInset;
     long long _firstLineTopInset;
     SKUIAttributedStringLayout *_layout;
     NSLayoutManager *_layoutManager;
-    NSMutableArray *_requiredBadges;
+    NSArray *_requiredBadges;
     long long _stringTreatment;
     BOOL _touchInside;
     struct _NSRange _trackingRange;
@@ -34,12 +36,16 @@
 @property (nonatomic) long long badgePlacement; // @synthesize badgePlacement=_badgePlacement;
 @property (readonly, nonatomic) double baselineOffset;
 @property (nonatomic) BOOL containsLinks; // @synthesize containsLinks=_containsLinks;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double firstBaselineOffset;
 @property (nonatomic) long long firstLineTopInset; // @synthesize firstLineTopInset=_firstLineTopInset;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SKUIAttributedStringLayout *layout; // @synthesize layout=_layout;
 @property (weak, nonatomic) id<SKUILinkHandler> linkDelegate; // @synthesize linkDelegate=_linkDelegate;
 @property (copy, nonatomic) NSArray *requiredBadges; // @synthesize requiredBadges=_requiredBadges;
 @property (nonatomic) long long stringTreatment; // @synthesize stringTreatment=_stringTreatment;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property (nonatomic) BOOL textColorFollowsTintColor; // @synthesize textColorFollowsTintColor=_textColorFollowsTintColor;
 @property (strong, nonatomic) UIColor *treatmentColor; // @synthesize treatmentColor=_treatmentColor;
@@ -52,7 +58,6 @@
 - (void)_setTrackingTouch:(BOOL)arg1;
 - (void)_setupTapLocatorContainer;
 - (BOOL)_touchInsideLinkText:(struct CGPoint)arg1 linkTextRange:(struct _NSRange *)arg2;
-- (id)description;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
@@ -61,6 +66,7 @@
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)viewWasRecycled;
 
 @end
 

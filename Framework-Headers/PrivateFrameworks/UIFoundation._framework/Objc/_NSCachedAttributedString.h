@@ -35,6 +35,7 @@
 - (id)copyCachedInstance;
 - (void)dealloc;
 - (void)finalize;
+- (BOOL)hasColorGlyphsInRange:(struct _NSRange)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithAttributedString:(id)arg1;

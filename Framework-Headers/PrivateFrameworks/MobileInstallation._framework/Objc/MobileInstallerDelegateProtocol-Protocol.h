@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDictionary;
+@class NSDictionary, NSError;
 
 @protocol MobileInstallerDelegateProtocol
+- (void)delegateMessageDeliveryComplete;
+- (void)enumerateAppDictionary:(NSDictionary *)arg1 error:(NSError *)arg2;
 - (void)reportProgress:(NSDictionary *)arg1;
 @end
 

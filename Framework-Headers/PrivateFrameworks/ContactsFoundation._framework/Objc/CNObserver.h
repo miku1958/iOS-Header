@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CNObserver : NSObject
 {
@@ -15,6 +15,7 @@
 + (id)observerWithResultBlock:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 + (id)observerWithWeakTarget:(id)arg1 resultSelector:(SEL)arg2;
 + (void)sendArray:(id)arg1 error:(id)arg2 toObserver:(id)arg3;
++ (void)sendArray:(id)arg1 error:(id)arg2 toObserver:(id)arg3 untilCanceled:(id)arg4;
 + (void)sendObserver:(id)arg1 resultsOfBlock:(CDUnknownBlockType)arg2;
 + (void)sendResult:(id)arg1 error:(id)arg2 toObserver:(id)arg3;
 

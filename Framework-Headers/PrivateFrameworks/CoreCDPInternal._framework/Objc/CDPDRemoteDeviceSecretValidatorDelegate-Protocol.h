@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreCDPInternal/NSObject-Protocol.h>
+#import <CoreCDPInternal/CDPDDeviceSecretValidatorDelegate-Protocol.h>
 
-@class CDPDRemoteDeviceSecretValidator, CDPDevice, NSString;
+@class CDPDRemoteDeviceSecretValidator;
 
-@protocol CDPDRemoteDeviceSecretValidatorDelegate <NSObject>
+@protocol CDPDRemoteDeviceSecretValidatorDelegate <CDPDDeviceSecretValidatorDelegate>
 - (void)cancelRemoteSecretValidatorApplicationToJoinCircle:(CDPDRemoteDeviceSecretValidator *)arg1;
-- (BOOL)remoteSecretValidator:(CDPDRemoteDeviceSecretValidator *)arg1 applyToJoinCircleWithJoinHandler:(void (^)(BOOL, NSError *))arg2;
-- (void)remoteSecretValidator:(CDPDRemoteDeviceSecretValidator *)arg1 recoverSecureBackupWithSecret:(NSString *)arg2 device:(CDPDevice *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
+- (void)remoteSecretValidator:(CDPDRemoteDeviceSecretValidator *)arg1 applyToJoinCircleWithJoinHandler:(void (^)(BOOL, NSError *))arg2;
 @end
 

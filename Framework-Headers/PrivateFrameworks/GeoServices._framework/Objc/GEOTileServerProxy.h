@@ -15,6 +15,7 @@
     NSObject<OS_dispatch_queue> *_delegateQ;
     GEOResourceManifestConfiguration *_manifestConfiguration;
     NSLocale *_locale;
+    int _resourceNotificationToken;
 }
 
 @property (nonatomic) id<GEOTileServerProxyDelegate> delegate; // @synthesize delegate=_delegate;

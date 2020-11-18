@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIViewController *previewViewController; // @synthesize previewViewController=_previewViewController;
 @property BOOL valid; // @synthesize valid=_valid;
 
++ (id)contentWithAttachments:(id)arg1 currentAttachmentIndex:(unsigned long long)arg2;
 + (id)contentWithText:(id)arg1 range:(struct _NSRange)arg2;
 + (id)contentWithURL:(id)arg1 result:(struct __DDResult *)arg2 documentProperties:(id)arg3;
 - (void).cxx_destruct;

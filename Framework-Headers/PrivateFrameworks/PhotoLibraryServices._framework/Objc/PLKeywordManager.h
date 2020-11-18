@@ -6,21 +6,25 @@
 
 #import <Foundation/NSObject.h>
 
-@class PLGatekeeperClient, PLManagedObjectContext, PLPhotoLibrary;
+@class NSMutableDictionary, PLGatekeeperClient, PLManagedObjectContext, PLPhotoLibrary;
 
 @interface PLKeywordManager : NSObject
 {
     PLPhotoLibrary *_photoLibrary;
     PLManagedObjectContext *_libraryContext;
     PLGatekeeperClient *_assetsdClient;
+    NSMutableDictionary *_keywordCache;
 }
 
 + (id)writeQueue;
+- (BOOL)_assetsdSetKeywords:(id)arg1 forAssetUUID:(id)arg2;
+- (id)_keywordObjectsForKeywords:(id)arg1;
 - (id)_keywordsForAsset:(id)arg1;
+- (void)_loadKeywords;
+- (id)allKeywordObjectIDs;
 - (id)allKeywords;
 - (void)dealloc;
 - (id)initWithPhotoLibrary:(id)arg1;
-- (id)keywordObjectsForKeywords:(id)arg1;
 - (id)keywordsForAsset:(id)arg1;
 - (id)keywordsForAssetWithUUID:(id)arg1;
 - (id)keywordsForAssets:(id)arg1;

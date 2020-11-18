@@ -25,6 +25,11 @@ struct CGSize {
     double height;
 };
 
+struct CLLocationCoordinate2D {
+    double _field1;
+    double _field2;
+};
+
 struct UIEdgeInsets {
     double top;
     double left;
@@ -44,10 +49,4 @@ typedef struct {
         double height;
     } size;
 } CDStruct_02837cd9;
-
-// Ambiguous groups
-typedef struct {
-    double _field1;
-    double _field2;
-} CDStruct_c3b9c2ee;
 

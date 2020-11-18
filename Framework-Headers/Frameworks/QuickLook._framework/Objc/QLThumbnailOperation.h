@@ -20,8 +20,7 @@ __attribute__((visibility("hidden")))
 @property long long index; // @synthesize index=_index;
 @property struct CGSize size; // @synthesize size=_size;
 
-- (void)dealloc;
-- (id)init;
+- (void).cxx_destruct;
 
 @end
 

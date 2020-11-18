@@ -43,6 +43,10 @@
 @property (nonatomic) int mapType; // @synthesize mapType=_mapType;
 @property (strong, nonatomic) NSMutableArray *places; // @synthesize places=_places;
 
++ (Class)placeType;
+- (int)StringAsDirectionsType:(id)arg1;
+- (int)StringAsDisplayStyle:(id)arg1;
+- (int)StringAsMapType:(id)arg1;
 - (void)addPlace:(id)arg1;
 - (void)clearPlaces;
 - (void)copyTo:(id)arg1;
@@ -50,8 +54,11 @@
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)directionsTypeAsString:(int)arg1;
+- (id)displayStyleAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)mapTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)placeAtIndex:(unsigned long long)arg1;
 - (unsigned long long)placesCount;

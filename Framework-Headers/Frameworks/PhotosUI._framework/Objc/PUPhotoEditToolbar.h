@@ -20,16 +20,19 @@ __attribute__((visibility("hidden")))
     NSArray *_mainActionButtonConstraints;
     NSArray *_secondaryActionButtonConstraints;
     NSArray *_toolButtonsConstraints;
+    NSArray *_toolButtonLayoutGuides;
     BOOL _useLargeShortSideHeight;
     BOOL _useTranslucentBackground;
     long long _layoutOrientation;
     NSArray *_toolButtons;
+    long long _buttonSpacing;
     UIButton *_mainActionButton;
     UIButton *_secondaryActionButton;
     UIView *_stretchableView;
     double _longSideMargin;
 }
 
+@property (readonly, nonatomic) long long buttonSpacing; // @synthesize buttonSpacing=_buttonSpacing;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -44,9 +47,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL useTranslucentBackground; // @synthesize useTranslucentBackground=_useTranslucentBackground;
 
 - (void).cxx_destruct;
+- (void)_setToolButtons:(id)arg1 buttonSpacing:(long long)arg2 mainActionButton:(id)arg3 secondaryActionButton:(id)arg4 stretchableView:(id)arg5;
 - (double)_shortSideSize;
 - (void)_updateBackgroundAnimated:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setToolButtons:(id)arg1 buttonSpacing:(long long)arg2 mainActionButton:(id)arg3 secondaryActionButton:(id)arg4;
 - (void)setToolButtons:(id)arg1 mainActionButton:(id)arg2 secondaryActionButton:(id)arg3 stretchableView:(id)arg4;
 - (void)setUseTranslucentBackground:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setupWithLayoutOrientation:(long long)arg1;

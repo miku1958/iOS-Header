@@ -12,7 +12,6 @@
 
 @property (readonly, nonatomic) BOOL allowPrototypeSettings; // @dynamic allowPrototypeSettings;
 @property (nonatomic) BOOL prototypeSettingsNeedsMigration; // @dynamic prototypeSettingsNeedsMigration;
-@property (readonly, nonatomic) BOOL shouldVolumeButtonsDisplayBanner; // @dynamic shouldVolumeButtonsDisplayBanner;
 
 - (void)_bindAndRegisterDefaults;
 

@@ -10,14 +10,19 @@
 
 @interface VKFeatureMarker : NSObject
 {
-    CDStruct_58d0ca89 *_feature;
+    shared_ptr_430519ce _actualFeatureMarker;
 }
 
-@property (readonly, nonatomic) unsigned long long featureId;
+@property (readonly) const shared_ptr_430519ce *actualFeatureMarker;
+@property (readonly, nonatomic) unsigned long long featureID;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) GEOFeatureStyleAttributes *styleAttributes;
 
-- (id)initWithFeature:(CDStruct_58d0ca89 *)arg1;
++ (id)markerWithFeatureMarker:(const shared_ptr_430519ce *)arg1;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (void)dealloc;
+- (id)initWithFeatureMarkerPtr:(const shared_ptr_430519ce *)arg1;
 
 @end
 

@@ -27,7 +27,6 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)decodeResponse:(id)arg1 sw:(unsigned short *)arg2 appendTo:(id)arg3 error:(id *)arg4;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

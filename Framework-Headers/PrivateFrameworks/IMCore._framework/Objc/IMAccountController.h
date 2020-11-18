@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary;
+@class NSArray, NSMutableDictionary;
 
 @interface IMAccountController : NSObject
 {
-    NSMutableArray *_accounts;
     NSMutableDictionary *_accountMap;
     BOOL _isReadOnly;
     BOOL _cachesEnabled;
@@ -19,10 +18,10 @@
     NSMutableDictionary *_serviceToAccountsMap;
     NSMutableDictionary *_serviceToConnectedAccountsMap;
     NSMutableDictionary *_serviceToOperationalAccountsMap;
+    NSArray *_accounts;
 }
 
-@property (readonly, nonatomic) NSMutableArray *_accounts;
-@property (readonly, nonatomic) NSArray *accounts; // @synthesize accounts=_accounts;
+@property (copy) NSArray *accounts; // @synthesize accounts=_accounts;
 @property (readonly, nonatomic) NSArray *activeAccounts;
 @property (readonly, nonatomic) id bestAccountForStatus;
 @property (readonly, nonatomic) NSArray *connectedAccounts;
@@ -31,6 +30,7 @@
 
 + (id)bestAccountFromAccounts:(id)arg1;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)__iCloudSystemAccountForService:(id)arg1;
 - (void)_accountRegistrationStatusChanged:(id)arg1;
 - (void)_activeAccountChanged:(id)arg1;

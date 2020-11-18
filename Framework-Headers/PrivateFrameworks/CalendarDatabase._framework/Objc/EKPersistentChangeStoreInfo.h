@@ -19,7 +19,7 @@
 @property (nonatomic) int minConsumedSequenceNumber; // @synthesize minConsumedSequenceNumber=_minConsumedSequenceNumber;
 @property (nonatomic) int secondMinConsumedSequenceNumber; // @synthesize secondMinConsumedSequenceNumber=_secondMinConsumedSequenceNumber;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 
 @end

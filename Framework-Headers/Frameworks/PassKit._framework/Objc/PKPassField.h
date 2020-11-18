@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -19,9 +19,11 @@
     id _unformattedValue;
     NSString *_changeMessage;
     long long _textAlignment;
+    long long _cellStyle;
     unsigned long long _dataDetectorTypes;
 }
 
+@property (nonatomic) long long cellStyle; // @synthesize cellStyle=_cellStyle;
 @property (copy, nonatomic) NSString *changeMessage; // @synthesize changeMessage=_changeMessage;
 @property (nonatomic) unsigned long long dataDetectorTypes; // @synthesize dataDetectorTypes=_dataDetectorTypes;
 @property (copy, nonatomic) NSString *key; // @synthesize key=_key;
@@ -29,10 +31,10 @@
 @property (nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 @property (nonatomic) long long type; // @synthesize type=_type;
 @property (copy, nonatomic) id unformattedValue; // @synthesize unformattedValue=_unformattedValue;
-@property (readonly) NSString *value;
+@property (readonly, weak) NSString *value;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)flushCachedValue;

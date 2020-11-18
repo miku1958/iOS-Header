@@ -10,25 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct CATransform3D {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-    double _field7;
-    double _field8;
-    double _field9;
-    double _field10;
-    double _field11;
-    double _field12;
-    double _field13;
-    double _field14;
-    double _field15;
-    double _field16;
-};
-
 struct CGAffineTransform {
     double a;
     double b;
@@ -53,16 +34,12 @@ struct CGSize {
     double height;
 };
 
-struct CGVector {
-    double _field1;
-    double _field2;
+struct CLLocationCoordinate2D {
+    double latitude;
+    double longitude;
 };
 
-struct NSHashTable {
-    Class _field1;
-};
-
-struct NSMutableDictionary {
+struct NSArray {
     Class _field1;
 };
 
@@ -74,50 +51,117 @@ struct NSString {
     Class _field1;
 };
 
-struct PHDisplayVelocity {
+struct PXDisplayVelocity {
     double x;
     double y;
     double scale;
     double rotation;
 };
 
-struct PUAlbumListCellContentView {
-    Class _field1;
+struct PXFaceTileImageParams {
+    struct CGSize targetSize;
+    unsigned long long cropFactor;
+    BOOL round;
+    BOOL cropBounded;
 };
 
-struct PUBarAnimationSettings {
-    long long _field1;
-    double _field2;
-};
-
-struct PUDisplayVelocity {
-    double x;
-    double y;
-    double scale;
-    double rotation;
-};
-
-struct PUFeedSeparatorMetrics {
-    struct CGSize _field1;
-    struct UIEdgeInsets _field2;
-};
-
-struct PUGridCoordinates {
-    long long row;
-    long long column;
-};
-
-struct PUSimpleIndexPath {
+struct PXMagazineOrigin {
     long long _field1;
     long long _field2;
 };
 
-struct PUTileInfo {
+struct PXMagazineRect {
+    struct PXMagazineOrigin _field1;
+    struct PXMagazineSize _field2;
+};
+
+struct PXMagazineSize {
+    long long _field1;
+    long long _field2;
+};
+
+struct PXMemoryFontsSpecIdentifier {
+    long long _field1;
+    long long _field2;
+    long long _field3;
+    double _field4;
+};
+
+struct PXProtectedTileState {
+    BOOL _field1;
+    struct PXTileIdentifier _field2;
+    struct PXTileIdentifier _field3;
+    struct PXTileIdentifier _field4;
+    unsigned long long _field5;
+    BOOL _field6;
+    struct PXTileGeometry _field7;
+    struct PXTileGeometry _field8;
+    BOOL _field9;
+    BOOL _field10;
+    void *_field11;
+    void *_field12;
+    void *_field13;
+    unsigned long long _field14;
+};
+
+struct PXSimpleIndexPath {
+    unsigned long long dataSourceIdentifier;
+    long long section;
+    long long item;
+    long long subitem;
+};
+
+struct PXTileGeometry {
+    struct CGRect frame;
+    struct CGPoint center;
+    struct CGSize size;
+    struct CGAffineTransform transform;
+    double alpha;
+    double zPosition;
+    BOOL hidden;
+    struct CGSize contentSize;
+    struct CGRect contentsRect;
+    void *coordinateSpaceIdentifier;
+};
+
+struct PXTileIdentifier {
+    unsigned long long length;
+    unsigned long long index[10];
+};
+
+struct PXTileInfo {
     long long index;
     struct CGSize imageSize;
     struct CGSize minimumSize;
     BOOL hasCaption;
     BOOL isBatchStart;
+};
+
+struct PXTileState {
+    BOOL _field1;
+    struct PXTileIdentifier _field2;
+    struct PXTileIdentifier _field3;
+    struct PXTileIdentifier _field4;
+    unsigned long long _field5;
+    BOOL _field6;
+    struct PXTileGeometry _field7;
+    struct PXTileGeometry _field8;
+    BOOL _field9;
+    BOOL _field10;
+    void *_field11;
+    void *_field12;
+    void *_field13;
+    unsigned long long _field14;
+};
+
+struct PXViewSpecDescriptor {
+    long long _field1;
+    unsigned long long _field2;
+    struct CGSize _field3;
+};
+
+struct UIColor {
+    Class _field1;
 };
 
 struct UIEdgeInsets {
@@ -127,9 +171,22 @@ struct UIEdgeInsets {
     double right;
 };
 
+struct UIFont {
+    Class _field1;
+};
+
 struct UIOffset {
-    double horizontal;
-    double vertical;
+    double _field1;
+    double _field2;
+};
+
+struct _LayoutContext {
+    struct UIEdgeInsets contentInsets;
+    struct CGSize itemSize;
+    struct CGSize interitemSpacing;
+    struct CGSize size;
+    unsigned long long numberOfColumns;
+    unsigned long long numberOfRows;
 };
 
 struct _NSRange {
@@ -137,53 +194,77 @@ struct _NSRange {
     unsigned long long length;
 };
 
+struct _PXLRUMemoryCacheList {
+    unsigned long long _field1;
+    struct _PXLRUMemoryCacheListElement *_field2;
+    struct _PXLRUMemoryCacheListElement *_field3;
+};
+
+struct _PXLRUMemoryCacheListElement {
+    id _field1;
+    struct _PXLRUMemoryCacheListElement *_field2;
+    struct _PXLRUMemoryCacheListElement *_field3;
+};
+
+struct _PXLayoutGeometry {
+    long long _field1;
+    struct CGPoint _field2;
+    struct CGSize _field3;
+    struct CGAffineTransform _field4;
+    float _field5;
+    long long _field6;
+};
+
+struct _PXValueAnimationSpec {
+    long long type;
+    double epsilon;
+    double stiffness;
+    double dampingRatio;
+    double initialVelocity;
+};
+
+struct __hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>;
+
+struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>>> {
+    struct __compressed_pair<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>>> {
+        struct __hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *> **__first_;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>> {
+                unsigned long long __first_;
+            } __data_;
+        } __second_;
+    } __ptr_;
+};
+
+struct unordered_map<PXTileIdentifier, unsigned long, std::__1::hash<PXTileIdentifier>, std::__1::equal_to<PXTileIdentifier>, std::__1::allocator<std::__1::pair<const PXTileIdentifier, unsigned long>>> {
+    struct __hash_table<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, std::__1::__unordered_map_hasher<PXTileIdentifier, std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, std::__1::hash<PXTileIdentifier>, true>, std::__1::__unordered_map_equal<PXTileIdentifier, std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, std::__1::equal_to<PXTileIdentifier>, true>, std::__1::allocator<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>>> {
+        struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>>> __bucket_list_;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*> {
+                struct __hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *> *__next_;
+            } __first_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<PXTileIdentifier, std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, std::__1::hash<PXTileIdentifier>, true>> {
+            unsigned long long __first_;
+        } __p2_;
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<PXTileIdentifier, std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, std::__1::equal_to<PXTileIdentifier>, true>> {
+            float __first_;
+        } __p3_;
+    } __table_;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    BOOL _field1;
-    BOOL _field2;
-    BOOL _field3;
-    BOOL _field4;
-    BOOL _field5;
-    double _field6;
-    int _field7;
-} CDStruct_e950349b;
-
-typedef struct {
-    double left;
-    double right;
-    double top;
-    double bottom;
-} CDStruct_6c514524;
-
-typedef struct {
-    long long value;
-    int timescale;
-    unsigned int flags;
-    long long epoch;
-} CDStruct_1b6d18a9;
-
-typedef struct {
-    CDStruct_2c43369c center;
+    struct CLLocationCoordinate2D _field1;
     struct {
-        double latitudeDelta;
-        double longitudeDelta;
-    } span;
-} CDStruct_feeb6407;
-
-typedef struct {
-    CDStruct_1b6d18a9 start;
-    CDStruct_1b6d18a9 duration;
-} CDStruct_e83c9415;
+        double _field1;
+        double _field2;
+    } _field2;
+} CDStruct_26e8d939;
 
 // Ambiguous groups
 typedef struct {
-    double _field1;
-    double _field2;
-} CDStruct_c3b9c2ee;
-
-typedef struct {
-    double latitude;
-    double longitude;
-} CDStruct_2c43369c;
+    BOOL button;
+} CDStruct_6d279c03;
 

@@ -13,12 +13,12 @@
 
 @interface NRDevice : NSObject <NSSecureCoding>
 {
-    NSObject<OS_dispatch_queue> *_nrQueue;
     NSMutableDictionary *_properties;
     NSMutableDictionary *_observers;
     NSPointerArray *_promiscuousObservers;
     NSMutableDictionary *_changeBlocks;
     NSMutableArray *_promiscuousChangeBlocks;
+    NSObject<OS_dispatch_queue> *_nrQueue;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *changeBlocks; // @synthesize changeBlocks=_changeBlocks;

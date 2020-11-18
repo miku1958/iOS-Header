@@ -6,23 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class CNContact, NSMutableArray;
 
 @interface _WBUDynamicMeCard : NSObject
 {
-    void *_me;
     NSMutableArray *_blocksPendingMeCard;
+    CNContact *_me;
+    BOOL _meCardExists;
 }
 
-+ (int)_ABPropertyIDForString:(id)arg1;
-+ (BOOL)isProxyProperty:(id)arg1;
+@property (readonly, nonatomic) BOOL meCardExists; // @synthesize meCardExists=_meCardExists;
+
++ (id)_contactObjectComponentForString:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addressBookChanged:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)me;
 - (void)performWhenReady:(CDUnknownBlockType)arg1;
-- (id)valueForProperty:(id)arg1 isMultiValue:(BOOL *)arg2;
-- (id)valueForProxyProperty:(id)arg1;
+- (id)valueForProperty:(id)arg1 contact:(id)arg2;
 
 @end
 

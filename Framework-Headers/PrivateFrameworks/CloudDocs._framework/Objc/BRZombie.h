@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <Foundation/NSProxy.h>
 
-@interface BRZombie : NSObject
+@interface BRZombie : NSProxy
 {
 }
 
-+ (void)turnInZombieObject:(id)arg1;
++ (void)turnObjectIntoZombie:(id)arg1;
+- (void)dealloc;
 - (void)forwardInvocation:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 

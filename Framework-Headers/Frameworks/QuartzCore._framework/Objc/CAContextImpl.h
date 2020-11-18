@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
 
 - (BOOL)colorMatchUntaggedContent;
 - (struct CGColorSpace *)colorSpace;
+- (id)contentsFormat;
 - (unsigned int)contextId;
 - (unsigned int)createFencePort;
 - (unsigned int)createImageSlot:(struct CGSize)arg1 hasAlpha:(BOOL)arg2;
+- (unsigned int)createImageSlot:(struct CGSize)arg1 hasAlpha:(BOOL)arg2 extendedColors:(BOOL)arg3;
 - (unsigned int)createSlot;
 - (void)dealloc;
 - (void)deleteSlot:(unsigned int)arg1;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (struct Context *)renderContext;
 - (void)setColorMatchUntaggedContent:(BOOL)arg1;
 - (void)setColorSpace:(struct CGColorSpace *)arg1;
+- (void)setContentsFormat:(id)arg1;
 - (void)setFence:(unsigned int)arg1 count:(unsigned int)arg2;
 - (void)setFencePort:(unsigned int)arg1;
 - (void)setFencePort:(unsigned int)arg1 commitHandler:(CDUnknownBlockType)arg2;

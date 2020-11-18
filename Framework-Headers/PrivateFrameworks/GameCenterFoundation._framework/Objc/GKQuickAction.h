@@ -46,7 +46,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithChallenge:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithFriendRequest:(id)arg1;
 - (id)initWithInvite:(id)arg1;
 - (id)initWithMatch:(id)arg1;
 - (id)initWithSBSApplicationShortcutItem:(id)arg1;

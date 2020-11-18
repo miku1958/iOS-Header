@@ -21,7 +21,9 @@
 @property (readonly, nonatomic) NSString *fmipSiriToken;
 @property (readonly, nonatomic) NSString *iCloudAuthToken;
 @property (readonly, nonatomic) BOOL isManagedAppleID;
+@property (readonly, nonatomic) BOOL isSandboxAccount;
 @property (readonly, nonatomic) NSString *lastName;
+@property (readonly, nonatomic) BOOL notesMigrated;
 @property (readonly, nonatomic) NSString *primaryEmail;
 @property (readonly, nonatomic) NSNumber *primaryEmailVerified;
 @property (readonly, nonatomic) NSArray *provisionedDataclasses;

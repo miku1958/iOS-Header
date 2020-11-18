@@ -26,8 +26,8 @@
 @property (readonly) Class superclass;
 
 + (id)searchWithCalendars:(id)arg1 searchTerm:(id)arg2 store:(id)arg3 callback:(CDUnknownBlockType)arg4;
+- (void).cxx_destruct;
 - (void)cancel;
-- (void)dealloc;
 - (void)disconnect;
 - (id)initWithCalendars:(id)arg1 searchTerm:(id)arg2 store:(id)arg3 callback:(CDUnknownBlockType)arg4;
 - (int)performSearchOperation:(unsigned int)arg1 inCalendars:(id)arg2 withEventStore:(id)arg3 andSearchTerm:(id)arg4;

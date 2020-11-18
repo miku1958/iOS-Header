@@ -12,6 +12,7 @@
 @property (readonly, nonatomic) NSString *etag;
 @property (readonly, nonatomic) BRCItemID *itemID;
 @property (readonly, nonatomic) BRCProgress *progress;
+@property (nonatomic) BOOL progressPublished;
 @property (strong, nonatomic) CKRecord *record;
 @property (readonly, nonatomic) CKRecordID *recordID;
 @property (strong, nonatomic) CKRecord *secondaryRecord;

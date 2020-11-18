@@ -58,7 +58,6 @@
 - (BOOL)containsOnlyInlineObjects;
 - (void)dealloc;
 - (BOOL)dispatchEvent:(id)arg1;
-- (void)finalize;
 - (id)findExplodedTextNodeAtPoint:(struct CGPoint)arg1;
 - (void)getPreviewSnapshotImage:(struct CGImage **)arg1 andRects:(id *)arg2;
 - (BOOL)hasAttributes;
@@ -72,6 +71,7 @@
 - (id)insertBefore:(id)arg1:(id)arg2;
 - (id)insertBefore:(id)arg1 refChild:(id)arg2;
 - (void)inspect;
+- (BOOL)isConnected;
 - (BOOL)isDefaultNamespace:(id)arg1;
 - (BOOL)isEqualNode:(id)arg1;
 - (BOOL)isSameNode:(id)arg1;

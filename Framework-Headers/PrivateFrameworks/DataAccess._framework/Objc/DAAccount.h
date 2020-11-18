@@ -24,10 +24,11 @@
     BOOL _isValidating;
     DATrustHandler *_trustHandler;
     NSArray *_appIdsForPasswordPrompt;
+    NSString *_sourceApplicationBundleIdentifier;
+    NSMutableDictionary *_dataclassPropertyURLsByDataclass;
     NSMutableArray *_pendingQueries;
     NSObject<OS_dispatch_queue> *_pendingQueryQueue;
     unsigned long long _lastQueryStartedTime;
-    NSMutableDictionary *_dataclassPropertyURLsByDataclass;
 }
 
 @property (copy, nonatomic) NSString *accountDescription;
@@ -64,6 +65,7 @@
 @property (readonly, nonatomic) BOOL shouldFailAllTasks; // @synthesize shouldFailAllTasks=_shouldFailAllTasks;
 @property (nonatomic) BOOL shouldUseOpportunisticSockets; // @synthesize shouldUseOpportunisticSockets=_shouldUseOpportunisticSockets;
 @property (strong, nonatomic) NSData *signingIdentityPersistentReference;
+@property (copy, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
 @property (strong, nonatomic) DAStatusReport *statusReport; // @synthesize statusReport=_statusReport;
 @property (readonly, nonatomic) DATaskManager *taskManager; // @synthesize taskManager=_taskManager;
 @property (strong, nonatomic) DATrustHandler *trustHandler; // @synthesize trustHandler=_trustHandler;
@@ -215,6 +217,7 @@
 - (id)toDosFolders;
 - (int)toDosNumberOfPastDaysToSync;
 - (id)unactionableICSRepresentationForMetaData:(id)arg1 inFolderWithId:(id)arg2 outSummary:(id *)arg3;
+- (void)updateExistingAccountProperties;
 - (void)updateOofSettingsWithParams:(id)arg1 consumer:(id)arg2;
 - (BOOL)upgradeAccount;
 - (id)urlFromDataclassPropertiesForDataclass:(id)arg1;

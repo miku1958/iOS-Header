@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)attach;
+- (void)close;
 - (void)detach;
 - (id)initWithFrontendClient:(struct WebInspectorFrontendClient *)arg1;
 - (BOOL)isDebuggingEnabled;

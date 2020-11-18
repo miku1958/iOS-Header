@@ -9,7 +9,7 @@
 #import <Message/MFDiagnosticsGenerator-Protocol.h>
 #import <Message/RadiosPreferencesDelegate-Protocol.h>
 
-@class NSLock, NSMutableArray, NSMutableSet, NSString, NSThread, RadiosPreferences;
+@class AWDMailNetworkDiagnosticsReport, NSLock, NSMutableArray, NSMutableSet, NSString, NSThread, RadiosPreferences;
 @protocol OS_dispatch_queue;
 
 @interface MFNetworkController : NSObject <MFDiagnosticsGenerator, RadiosPreferencesDelegate>
@@ -18,12 +18,8 @@
     struct __CFRunLoop *_rl;
     NSThread *_thread;
     NSMutableArray *_observers;
-    struct __SCNetworkReachability *_reachability;
     unsigned int _flags;
-    struct __SCDynamicStore *_store;
-    struct __CFRunLoopSource *_store_source;
     BOOL _dns;
-    struct __CTServerConnection *_telephony;
     NSMutableSet *_calls;
     NSMutableSet *_backgroundWifiClients;
     int _interface;
@@ -37,8 +33,13 @@
     RadiosPreferences *_radiosPreferences;
     NSObject<OS_dispatch_queue> *_prefsQueue;
     int _symptomsToken;
+    struct __SCNetworkReachability *_reachability;
+    struct __SCDynamicStore *_store;
+    struct __CFRunLoopSource *_store_source;
+    struct __CTServerConnection *_telephony;
 }
 
+@property (readonly, nonatomic) AWDMailNetworkDiagnosticsReport *awdNetworkDiagnosticReport;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

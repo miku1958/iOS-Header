@@ -6,7 +6,7 @@
 
 #import <Foundation/NSOperation.h>
 
-@class FMServerInteractionController, NSData, NSDictionary, NSError, NSHTTPURLResponse, NSNumber, NSString, NSURLConnection, NSURLRequest, NSURLSessionDataTask;
+@class FMServerInteractionController, NSData, NSError, NSHTTPURLResponse, NSNumber, NSString, NSURLConnection, NSURLRequest, NSURLSessionDataTask;
 
 @interface FMCommandBase : NSOperation
 {
@@ -26,11 +26,9 @@
     unsigned long long _redirectCount;
     NSString *_originalHostname;
     NSString *_redirectedHostname;
-    NSDictionary *_caseInsensitiveHeaders;
     NSURLConnection *_connection;
 }
 
-@property (strong, nonatomic) NSDictionary *caseInsensitiveHeaders; // @synthesize caseInsensitiveHeaders=_caseInsensitiveHeaders;
 @property (nonatomic) BOOL commandTaskComplete; // @synthesize commandTaskComplete=_commandTaskComplete;
 @property (strong, nonatomic) NSURLConnection *connection; // @synthesize connection=_connection;
 @property (copy) NSError *error; // @synthesize error=_error;

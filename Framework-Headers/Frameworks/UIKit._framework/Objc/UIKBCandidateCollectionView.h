@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (BOOL)_selectAndScrollToItemAtIndexPath:(id)arg1 animated:(BOOL)arg2 scrollPosition:(unsigned long long)arg3;
 - (void)configureAsCandidatesBar;
+- (BOOL)delaysContentTouches;
 
 @end
 

@@ -7,7 +7,7 @@
 #import <WebCore/WAKView.h>
 
 @class DOMCSSStyleDeclaration, DOMDocument, DOMRange, NSData, NSString, NSUndoManager, WAKWindow, WebBackForwardList, WebFrame, WebPreferences, WebScriptObject, WebViewPrivate;
-@protocol WebDownloadDelegate, WebFrameLoadDelegate, WebPolicyDelegate, WebResourceLoadDelegate, WebUIDelegate;
+@protocol WebDownloadDelegate, WebEditingDelegate, WebFrameLoadDelegate, WebPolicyDelegate, WebResourceLoadDelegate, WebUIDelegate;
 
 @interface WebView : WAKView
 {
@@ -28,7 +28,7 @@
 @property (nonatomic) id<WebDownloadDelegate> downloadDelegate;
 @property (nonatomic) BOOL drawsBackground;
 @property (nonatomic, getter=isEditable) BOOL editable;
-@property (strong, nonatomic) id editingDelegate;
+@property (nonatomic) id<WebEditingDelegate> editingDelegate;
 @property (readonly, nonatomic) double estimatedProgress;
 @property (nonatomic) id<WebFrameLoadDelegate> frameLoadDelegate;
 @property (copy, nonatomic) NSString *groupName;
@@ -66,7 +66,6 @@
 + (void)_addUserStyleSheetToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 whitelist:(id)arg5 blacklist:(id)arg6;
 + (void)_addUserStyleSheetToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 whitelist:(id)arg5 blacklist:(id)arg6 injectedFrames:(int)arg7;
 + (BOOL)_allowCookies;
-+ (BOOL)_allowsRoundingHacks;
 + (unsigned long long)_cacheModel;
 + (void)_cacheModelChangedNotification:(id)arg1;
 + (BOOL)_canHandleRequest:(id)arg1;
@@ -108,7 +107,6 @@
 + (BOOL)_representationExistsForURLScheme:(id)arg1;
 + (void)_resetOriginAccessWhitelists;
 + (void)_setAllowCookies:(BOOL)arg1;
-+ (void)_setAllowsRoundingHacks:(BOOL)arg1;
 + (void)_setAlwaysUsesComplexTextCodePath:(BOOL)arg1;
 + (void)_setCacheModel:(unsigned long long)arg1;
 + (void)_setDomainRelaxationForbidden:(BOOL)arg1 forURLScheme:(id)arg2;
@@ -245,6 +243,7 @@
 - (unsigned long long)_pageCount;
 - (double)_pageLength;
 - (BOOL)_paginationBehavesLikeColumns;
+- (BOOL)_paginationLineGridEnabled;
 - (int)_paginationMode;
 - (void)_performResponderOperation:(SEL)arg1 with:(id)arg2;
 - (id)_pluginForExtension:(id)arg1;
@@ -298,6 +297,7 @@
 - (void)_setNotificationProvider:(id)arg1;
 - (void)_setPageLength:(double)arg1;
 - (void)_setPaginationBehavesLikeColumns:(BOOL)arg1;
+- (void)_setPaginationLineGridEnabled:(BOOL)arg1;
 - (void)_setPaginationMode:(int)arg1;
 - (void)_setPostsAcceleratedCompositingNotifications:(BOOL)arg1;
 - (void)_setResourceLoadSchedulerSuspended:(BOOL)arg1;
@@ -354,6 +354,7 @@
 - (BOOL)canResetPageZoom;
 - (BOOL)canZoomPageIn;
 - (BOOL)canZoomPageOut;
+- (id)candidateList;
 - (void)capitalizeWord:(id)arg1;
 - (id)caretChangeListener;
 - (id)caretChangeListeners;
@@ -397,8 +398,8 @@
 - (id)documentViewAtWindowPoint:(struct CGPoint)arg1;
 - (id)editableDOMRangeForPoint:(struct CGPoint)arg1;
 - (id)elementAtPoint:(struct CGPoint)arg1;
-- (void)finalize;
 - (BOOL)findString:(id)arg1 options:(unsigned long long)arg2;
+- (void)forceRequestCandidatesForTesting;
 - (id)fullScreenPlaceholderView;
 - (BOOL)goBack;
 - (void)goBack:(id)arg1;
@@ -512,6 +513,7 @@
 - (void)replaceSelectionWithText:(id)arg1;
 - (void)resetPageZoom:(id)arg1;
 - (void)resetTrackedRepaints;
+- (void)scheduleInRunLoop:(id)arg1 forMode:(id)arg2;
 - (id)scriptDebugDelegate;
 - (void)scrollDOMRangeToVisible:(id)arg1;
 - (void)scrollDOMRangeToVisible:(id)arg1 withInset:(double)arg2;
@@ -556,6 +558,8 @@
 - (void)setValidationMessageTimerMagnification:(int)arg1;
 - (void)setWebMailDelegate:(id)arg1;
 - (BOOL)shouldClose;
+- (BOOL)shouldRequestCandidates;
+- (void)showCandidates:(id)arg1 forString:(id)arg2 inRect:(struct CGRect)arg3 forSelectedRange:(struct _NSRange)arg4 view:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)showGuessPanel:(id)arg1;
 - (void)startSpeaking:(id)arg1;
 - (void)stopLoading:(id)arg1;
@@ -580,13 +584,16 @@
 - (id)typingAttributes;
 - (void)underline:(id)arg1;
 - (void)unmarkAllTextMatches;
+- (void)unscheduleFromRunLoop:(id)arg1 forMode:(id)arg2;
 - (void)unscript:(id)arg1;
 - (void)updateLayoutIgnorePendingStyleSheets;
+- (void)updateWebViewAdditions;
 - (void)uppercaseWord:(id)arg1;
 - (id)userAgentForURL:(id)arg1;
 - (BOOL)usesPageCache;
 - (int)validationMessageTimerMagnification;
 - (void)viewDidMoveToWindow;
+- (void)webViewAdditionsWillDestroyView;
 - (void)yank:(id)arg1;
 - (void)yankAndSelect:(id)arg1;
 - (void)zoomPageIn:(id)arg1;

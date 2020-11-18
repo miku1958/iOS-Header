@@ -13,15 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityProcessSearchResult;
-- (void)_dismissAnimated:(BOOL)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (void)_setShowingKeyboard:(BOOL)arg1;
 - (BOOL)accessibilityPerformEscape;
-- (void)dealloc;
-- (void)didFinishPresenting:(BOOL)arg1;
-- (void)loadView;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (void)viewWillAppear:(BOOL)arg1;
+- (void)activateViewController:(id)arg1 animate:(BOOL)arg2;
+- (void)searchAgentUpdatedResults:(id)arg1;
 
 @end
 

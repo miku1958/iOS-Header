@@ -20,7 +20,7 @@
 + (id)relationToContainerWithIdentifier:(id)arg1;
 + (id)relationWithItemIdentifier:(id)arg1 containerIdentifier:(id)arg2;
 - (void).cxx_destruct;
-- (id)compactedChangeWithRelatedChanges:(id)arg1 isOnlyChange:(BOOL)arg2 usingClientCache:(id)arg3;
+- (id)compactedChangeWithRelatedChanges:(id)arg1 isOnlyChange:(BOOL)arg2 fullRecord:(id)arg3 usingClientCache:(id)arg4;
 - (id)description;
 - (id)identifierForQuarantine;
 - (id)identifiersForMapping;
@@ -28,6 +28,8 @@
 - (id)secondaryIdentifier;
 - (void)setRelatedIdentifier:(id)arg1;
 - (void)setSecondaryIdentifier:(id)arg1;
+- (BOOL)supportsDeletion;
+- (BOOL)supportsDirectDeletion;
 - (id)translateToClientChangeUsingIDMapping:(id)arg1 error:(id *)arg2;
 - (id)translateToCloudChangeUsingIDMapping:(id)arg1 error:(id *)arg2;
 - (BOOL)validateFullRecord;

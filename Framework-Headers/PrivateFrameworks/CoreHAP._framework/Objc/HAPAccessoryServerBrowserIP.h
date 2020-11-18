@@ -6,22 +6,23 @@
 
 #import <CoreHAP/HAPAccessoryServerBrowser.h>
 
-#import <CoreHAP/HAPTimerDelegate-Protocol.h>
+#import <CoreHAP/HMFTimerDelegate-Protocol.h>
 
-@class HAPTimer, NSMutableSet, NSObject, NSString;
+@class HMFTimer, NSArray, NSMutableSet, NSObject, NSString;
 @protocol HAPAccessoryServerBrowserDelegate, OS_dispatch_queue;
 
-@interface HAPAccessoryServerBrowserIP : HAPAccessoryServerBrowser <HAPTimerDelegate>
+@interface HAPAccessoryServerBrowserIP : HAPAccessoryServerBrowser <HMFTimerDelegate>
 {
     struct BonjourBrowser *_bonjourBrowser;
+    NSArray *_scanResults;
     NSMutableSet *_discoveredAccessoryServers;
     id<HAPAccessoryServerBrowserDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSMutableSet *_pendingBonjourEvents;
-    HAPTimer *_bonjourEventTimer;
+    HMFTimer *_bonjourEventTimer;
 }
 
-@property (strong, nonatomic) HAPTimer *bonjourEventTimer; // @synthesize bonjourEventTimer=_bonjourEventTimer;
+@property (strong, nonatomic) HMFTimer *bonjourEventTimer; // @synthesize bonjourEventTimer=_bonjourEventTimer;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HAPAccessoryServerBrowserDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
@@ -29,6 +30,7 @@
 @property (strong, nonatomic) NSMutableSet *discoveredAccessoryServers; // @synthesize discoveredAccessoryServers=_discoveredAccessoryServers;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableSet *pendingBonjourEvents; // @synthesize pendingBonjourEvents=_pendingBonjourEvents;
+@property (copy, nonatomic) NSArray *scanResults; // @synthesize scanResults=_scanResults;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -48,10 +50,15 @@
 - (void)discoverAccessoryServerWithIdentifier:(id)arg1;
 - (id)initWithQueue:(id)arg1;
 - (long long)linkType;
+- (void)mergeScanResults:(id)arg1;
 - (void)processPendingBonjourRemoveEvents:(id)arg1;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)startDiscoveringAccessoryServers;
+- (void)startDiscoveringWACAccessoryServers;
+- (void)startWACScan;
 - (void)stopDiscoveringAccessoryServers;
+- (void)stopDiscoveringWACAccessoryServers;
+- (void)stopWACScan;
 - (void)timerDidFire:(id)arg1;
 
 @end

@@ -10,6 +10,11 @@
 - (id)decodeFromPercentEscape;
 - (id)decodeHexString;
 - (id)encodeToPercentEscape;
+- (id)fm_decodeFromPercentEscape;
+- (id)fm_decodeHexString;
+- (id)fm_encodeToPercentEscape;
+- (BOOL)fm_isNumeric;
+- (id)fm_wifiToWLAN;
 - (BOOL)isNumeric;
 - (id)legacyAllowedCharacterSet;
 - (id)wifiToWLAN;

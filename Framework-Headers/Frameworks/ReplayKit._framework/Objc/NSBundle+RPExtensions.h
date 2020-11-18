@@ -7,8 +7,9 @@
 #import <Foundation/NSBundle.h>
 
 @interface NSBundle (RPExtensions)
-+ (id)_srFrameworkBundle;
-+ (id)_srLocalizedAppNameFromBundleID:(id)arg1;
-+ (id)_srLocalizedStringFromFrameworkBundleWithKey:(id)arg1;
++ (id)_rpFrameworkBundle;
++ (id)_rpLocalizedAppNameFromBundleID:(id)arg1;
++ (id)_rpLocalizedStringFromFrameworkBundleWithKey:(id)arg1 bundleID:(id)arg2;
+- (id)_rpLocalizedAppName;
 @end
 

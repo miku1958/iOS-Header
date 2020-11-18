@@ -33,6 +33,7 @@
 + (id)sharedDelegate;
 - (BOOL)URLIsValidForImportedHyperlink:(id)arg1;
 - (id)applicationTemplateVariantsForLocale:(struct __CFLocale *)arg1;
+- (void)dealloc;
 - (Class)documentRootClass;
 - (id)existingNestedDocumentPathForPath:(id)arg1;
 - (id)init;

@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) NSString *playbackSessionID;
 @property (readonly, nonatomic) NSString *serverAddress;
 
+- (id)_common_init;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)finalize;

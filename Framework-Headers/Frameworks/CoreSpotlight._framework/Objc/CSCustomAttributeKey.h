@@ -33,6 +33,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithKeyName:(id)arg1;
 - (id)initWithKeyName:(id)arg1 searchable:(BOOL)arg2 searchableByDefault:(BOOL)arg3 unique:(BOOL)arg4 multiValued:(BOOL)arg5;

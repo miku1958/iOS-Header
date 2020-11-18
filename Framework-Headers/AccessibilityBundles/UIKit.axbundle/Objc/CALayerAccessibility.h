@@ -18,7 +18,6 @@
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
 - (void)dealloc;
-- (void)setAccessibilityContainer:(id)arg1;
 
 @end
 

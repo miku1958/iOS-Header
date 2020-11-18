@@ -6,8 +6,8 @@
 
 #import <iTunesStore/ISURLOperation.h>
 
-@class NSNumber, SSURLBagContext, SSVFairPlaySAPSession;
-@protocol ISStoreURLOperationDelegate;
+@class ISBiometricAuthenticationContext, NSNumber, SSURLBagContext, SSVFairPlaySAPSession;
+@protocol ISBiometricPurchaseDelegate, ISStoreURLOperationDelegate;
 
 @interface ISStoreURLOperation : ISURLOperation
 {
@@ -24,12 +24,16 @@
     BOOL _urlKnownToBeTrusted;
     BOOL _useUserSpecificURLBag;
     BOOL _needsTermsAndConditionsAcceptance;
+    ISBiometricAuthenticationContext *_biometricAuthenticationContext;
+    id<ISBiometricPurchaseDelegate> _biometricDelegate;
 }
 
 @property (strong) SSVFairPlaySAPSession *SAPSession;
 @property (readonly) SSURLBagContext *URLBagContext;
 @property (nonatomic, getter=isURLBagRequest) BOOL URLBagRequest; // @synthesize URLBagRequest=_isURLBagRequest;
 @property (strong) NSNumber *authenticatedDSID; // @synthesize authenticatedDSID=_authenticatedDSID;
+@property (strong) ISBiometricAuthenticationContext *biometricAuthenticationContext; // @synthesize biometricAuthenticationContext=_biometricAuthenticationContext;
+@property id<ISBiometricPurchaseDelegate> biometricDelegate; // @synthesize biometricDelegate=_biometricDelegate;
 @property BOOL canSendGUIDParameter;
 @property id<ISStoreURLOperationDelegate> delegate; // @dynamic delegate;
 @property (nonatomic) BOOL ignorePreexistingSecureToken;
@@ -42,8 +46,8 @@
 @property BOOL urlKnownToBeTrusted; // @synthesize urlKnownToBeTrusted=_urlKnownToBeTrusted;
 @property BOOL useUserSpecificURLBag; // @synthesize useUserSpecificURLBag=_useUserSpecificURLBag;
 
-+ (void)_addITunesStoreHeadersToRequest:(id)arg1 withURLBag:(id)arg2 account:(id)arg3;
-+ (void)_addITunesStoreHeadersToRequest:(id)arg1 withURLBag:(id)arg2 accountIdentifier:(id)arg3;
++ (void)_addITunesStoreHeadersToRequest:(id)arg1 withURLBag:(id)arg2 account:(id)arg3 clientBundleIdentifier:(id)arg4;
++ (void)_addITunesStoreHeadersToRequest:(id)arg1 withURLBag:(id)arg2 accountIdentifier:(id)arg3 clientBundleIdentifier:(id)arg4;
 + (id)_authKitSession;
 + (id)_restrictionsHeaderValue;
 + (void)addITunesStoreHeadersToRequest:(id)arg1 withAccountIdentifier:(id)arg2;
@@ -51,10 +55,12 @@
 + (id)itemPingOperationWithIdentifier:(unsigned long long)arg1 urlBagKey:(id)arg2;
 + (id)pingOperationWithUrl:(id)arg1;
 + (id)propertyListOperationWithURLBagKey:(id)arg1;
+- (void).cxx_destruct;
 - (id)_account;
 - (void)_addStandardQueryParametersForURL:(id)arg1;
 - (BOOL)_authenticateWithContext:(id)arg1 error:(id *)arg2;
 - (BOOL)_canSendTokenToURL:(id)arg1;
+- (void)_continueTouchIDSession;
 - (id)_copyAuthenticationContext;
 - (id)_copyAuthenticationContextForAttemptNumber:(long long)arg1;
 - (BOOL)_isErrorTokenError:(id)arg1;
@@ -64,10 +70,10 @@
 - (id)_resolvedURLInBagContext:(id)arg1 URLBag:(id *)arg2;
 - (void)_runURLOperation;
 - (void)_setStoreFrontIdentifier:(id)arg1 isTransient:(BOOL)arg2;
+- (BOOL)_shouldRetryForTouchIDChallengeWithError:(id)arg1;
 - (id)_urlBagForContext:(id)arg1;
 - (void)_willSendRequest:(id)arg1;
 - (id)authenticatedAccountDSID;
-- (void)dealloc;
 - (BOOL)handleRedirectFromDataProvider:(id)arg1 error:(id *)arg2;
 - (void)handleResponse:(id)arg1;
 - (id)init;

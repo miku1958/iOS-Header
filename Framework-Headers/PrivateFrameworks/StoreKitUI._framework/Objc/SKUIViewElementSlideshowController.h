@@ -21,8 +21,10 @@
     SKUIIPhoneSlideshowViewController *_phoneViewController;
     long long _selectedIndex;
     NSString *_title;
+    NSMutableArray *_dataConsumers;
 }
 
+@property (strong, nonatomic) NSMutableArray *dataConsumers; // @synthesize dataConsumers=_dataConsumers;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SKUIViewElementSlideshowDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -36,8 +38,9 @@
 - (id)initWithShelf:(id)arg1 selectedLockup:(id)arg2;
 - (long long)numberOfItemsInSlideshowViewController:(id)arg1;
 - (void)presentFromParentViewController:(id)arg1;
-- (id)slideshowViewController:(id)arg1 imageAtIndex:(long long)arg2;
-- (id)slideshowViewController:(id)arg1 imageURLAtIndex:(long long)arg2 size:(struct CGSize *)arg3;
+- (id)slideshowViewController:(id)arg1 dataConsumerAtIndex:(long long)arg2;
+- (id)slideshowViewController:(id)arg1 imageURLAtIndex:(long long)arg2;
+- (id)slideshowViewController:(id)arg1 placeholderImageAtIndex:(long long)arg2;
 - (void)slideshowViewControllerDidFinish:(id)arg1;
 
 @end

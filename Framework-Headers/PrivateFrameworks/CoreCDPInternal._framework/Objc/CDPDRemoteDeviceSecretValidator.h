@@ -4,42 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CoreCDPInternal/CDPDDeviceSecretValidator.h>
 
-#import <CoreCDPInternal/CDPRemoteDeviceSecretValidatorProtocol-Protocol.h>
-
-@class CDPContext, NSMutableDictionary, NSString;
-@protocol CDPDRemoteDeviceSecretValidatorDelegate;
-
-@interface CDPDRemoteDeviceSecretValidator : NSObject <CDPRemoteDeviceSecretValidatorProtocol>
+@interface CDPDRemoteDeviceSecretValidator : CDPDDeviceSecretValidator
 {
-    CDPContext *_context;
-    id<CDPDRemoteDeviceSecretValidatorDelegate> _delegate;
     CDUnknownBlockType _requestToJoinCompletion;
     BOOL _isWaitingForRemoteApproval;
-    BOOL _isAttemptingRecovery;
-    unsigned long long _failedAttempts;
-    NSMutableDictionary *_failedSecrets;
-    BOOL _isUsingMultipleICSC;
-    NSString *_localSecret;
-    unsigned long long _localSecretType;
-    CDUnknownBlockType _validSecretHandler;
 }
 
-@property (nonatomic) BOOL isUsingMultipleICSC; // @synthesize isUsingMultipleICSC=_isUsingMultipleICSC;
-@property (copy, nonatomic) NSString *localSecret; // @synthesize localSecret=_localSecret;
-@property (nonatomic) unsigned long long localSecretType; // @synthesize localSecretType=_localSecretType;
-@property (copy, nonatomic) CDUnknownBlockType validSecretHandler; // @synthesize validSecretHandler=_validSecretHandler;
-
 - (void).cxx_destruct;
-- (BOOL)_isInvalidICSCError:(id)arg1;
+- (id)_decoratedDelegate;
 - (void)approveFromAnotherDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cancelApproveFromAnotherDevice;
-- (void)cancelValidationWithError:(id)arg1;
-- (id)init;
-- (id)initWithContext:(id)arg1 delegate:(id)arg2;
 - (void)resetAccountCDPState;
-- (void)validateSecret:(id)arg1 devices:(id)arg2 type:(unsigned long long)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)setValidSecretHandler:(CDUnknownBlockType)arg1;
+- (void)supportedEscapeOfferMaskCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

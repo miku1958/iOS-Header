@@ -28,9 +28,6 @@
 - (id)bagKey;
 - (void)dealloc;
 - (id)fallbackURL;
-- (void)fetchAvailableExternalServicesWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)fetchFacebookAuthTokenWithHandler:(CDUnknownBlockType)arg1;
-- (void)fetchICloudAuthTokenWithHandler:(CDUnknownBlockType)arg1;
 - (void)fireCompletionHandler;
 - (id)initWithMode:(long long)arg1;
 - (id)initWithMode:(long long)arg1 player:(id)arg2;

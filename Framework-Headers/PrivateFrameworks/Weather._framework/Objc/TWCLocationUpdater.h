@@ -4,35 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Weather/TWCUpdater.h>
+#import <Weather/TWCCityUpdater.h>
 
-@class CLGeocoder, City, _MKLocationShifter;
+@class CLGeocoder, City;
 
-@interface TWCLocationUpdater : TWCUpdater
+@interface TWCLocationUpdater : TWCCityUpdater
 {
-    CLGeocoder *_geocoder;
-    CDUnknownBlockType _localWeatherHandler;
-    _MKLocationShifter *_locationShifter;
     City *_currentCity;
+    CLGeocoder *_reverseGeocoder;
 }
 
 @property (strong, nonatomic) City *currentCity; // @synthesize currentCity=_currentCity;
+@property (strong, nonatomic) CLGeocoder *reverseGeocoder; // @synthesize reverseGeocoder=_reverseGeocoder;
 
-+ (void)clearSharedLocationUpdater;
 + (id)sharedLocationUpdater;
 - (void).cxx_destruct;
-- (void)_failed:(unsigned long long)arg1;
-- (void)_geocodeLocation:(id)arg1;
-- (id)aggregateDictionaryDomain;
-- (void)cancel;
-- (void)dealloc;
-- (void)didProcessJSONObject;
+- (void)_completeReverseGeocodeForLocation:(id)arg1 currentCity:(id)arg2 geocodeError:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_geocodeLocation:(id)arg1 currentCity:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_updateWeatherForLocation:(id)arg1 city:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)enableProgressIndicator:(BOOL)arg1;
-- (void)failCity:(id)arg1;
-- (void)handleCompletionForCity:(id)arg1 withUpdateDetail:(unsigned long long)arg2;
-- (void)handleNilCity;
-- (id)init;
 - (void)parsedResultCity:(id)arg1;
+- (void)updateWeatherForCities:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)updateWeatherForCity:(id)arg1;
 - (void)updateWeatherForLocation:(id)arg1 city:(id)arg2;
 - (void)updateWeatherForLocation:(id)arg1 city:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 

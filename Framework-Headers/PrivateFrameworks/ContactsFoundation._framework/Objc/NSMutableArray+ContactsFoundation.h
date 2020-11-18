@@ -8,9 +8,10 @@
 
 @interface NSMutableArray (ContactsFoundation)
 - (void)_cn_addNonNilObject:(id)arg1;
+- (void)_cn_addNonNilObjectIfNotPresent:(id)arg1;
 - (void)_cn_addObject:(id)arg1 orPlaceholder:(id)arg2;
 - (void)_cn_insertNonNilObject:(id)arg1 atIndex:(unsigned long long)arg2;
-- (id)_cn_popObject;
 - (void)_cn_removeObjectsPassingTest:(CDUnknownBlockType)arg1;
+- (void)_cn_sortUsingAuxiliarySortOrder:(id)arg1 transform:(CDUnknownBlockType)arg2;
 @end
 

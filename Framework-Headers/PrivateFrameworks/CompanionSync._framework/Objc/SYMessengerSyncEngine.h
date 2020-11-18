@@ -9,11 +9,13 @@
 #import <CompanionSync/NMSMessageCenterDelegate-Protocol.h>
 
 @class NMSMessageCenter, NSDictionary, NSObject, NSString, SYDevice;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
+__attribute__((visibility("hidden")))
 @interface SYMessengerSyncEngine : SYSyncEngine <NMSMessageCenterDelegate>
 {
     NMSMessageCenter *_messageCenter;
+    NSObject<OS_dispatch_semaphore> *_lookupLock;
     struct NSMapTable *_requestLookup;
     struct NSMapTable *_callbackLookup;
     SYDevice *_activeDevice;
@@ -57,6 +59,7 @@
 - (void)messageCenter:(id)arg1 failedToSendMessageWithIdentifier:(id)arg2 error:(id)arg3 userInfo:(id)arg4;
 - (id)outputStreamWithMetadata:(id)arg1 priority:(long long)arg2 options:(id)arg3 context:(id)arg4 error:(id *)arg5;
 - (BOOL)resume:(id *)arg1;
+- (id)stateForLogging;
 - (void)suspend;
 
 @end

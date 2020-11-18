@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
-- (void)finalize;
 - (void)getObjects:(id *)arg1 range:(struct _NSRange)arg2;
 - (unsigned long long)hash;
 - (void)insertObject:(id)arg1 atIndex:(unsigned long long)arg2;

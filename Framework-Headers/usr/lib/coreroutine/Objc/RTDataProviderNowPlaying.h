@@ -6,56 +6,26 @@
 
 #import <coreroutine/RTDataProviderDuet.h>
 
-#import <coreroutine/RTDataProviderProtocol-Protocol.h>
+@class RTEventNowPlaying;
 
-@class NSArray, NSDate, NSString, RTDefaultsManager;
-
-@interface RTDataProviderNowPlaying : RTDataProviderDuet <RTDataProviderProtocol>
+@interface RTDataProviderNowPlaying : RTDataProviderDuet
 {
-    BOOL _ready;
-    unsigned int _lastNowPlayingState;
-    NSDate *_dateOfLastNowPlayingTransition;
-    NSString *_lastNowPlayingBundleId;
-    double _minimumNowPlayingDurationTimeInterval;
-    RTDefaultsManager *_defaultsManager;
-    NSArray *_blacklistedBundleIds;
+    RTEventNowPlaying *_lastNowPlayingEvent;
 }
 
-@property (strong, nonatomic) NSArray *blacklistedBundleIds; // @synthesize blacklistedBundleIds=_blacklistedBundleIds;
-@property (strong, nonatomic) NSDate *dateOfLastNowPlayingTransition; // @synthesize dateOfLastNowPlayingTransition=_dateOfLastNowPlayingTransition;
-@property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) RTDefaultsManager *defaultsManager; // @synthesize defaultsManager=_defaultsManager;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSString *lastNowPlayingBundleId; // @synthesize lastNowPlayingBundleId=_lastNowPlayingBundleId;
-@property (nonatomic) unsigned int lastNowPlayingState; // @synthesize lastNowPlayingState=_lastNowPlayingState;
-@property (nonatomic) double minimumNowPlayingDurationTimeInterval; // @synthesize minimumNowPlayingDurationTimeInterval=_minimumNowPlayingDurationTimeInterval;
-@property (nonatomic) BOOL ready; // @synthesize ready=_ready;
-@property (readonly) Class superclass;
+@property (strong, nonatomic) RTEventNowPlaying *lastNowPlayingEvent; // @synthesize lastNowPlayingEvent=_lastNowPlayingEvent;
 
 + (id)providerName;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_handleNowPlayingApplicationIsPlayingDidChange;
-- (void)_registerForMediaRemoteNotifications;
-- (void)_registerForNotifications;
-- (void)_setup;
-- (void)_unregisterForMediaRemoteNotifications;
-- (void)_unregisterForNotifications;
-- (void)_updateMinimumNowPlayingDurationWithHandler:(CDUnknownBlockType)arg1;
-- (void)fetchBundleIdsSupportingNowPlayingCapability:(CDUnknownBlockType)arg1;
-- (void)fetchMediaRemoteNowPlayingApplicationBundleId:(CDUnknownBlockType)arg1;
-- (void)fetchMediaRemoteNowPlayingApplicationPlaybackState:(CDUnknownBlockType)arg1;
-- (void)handleNowPlayingApplicationIsPlayingDidChange;
-- (id)init;
-- (id)initWithDefaultsManager:(id)arg1;
+- (void)_onMediaRemoteNowPlayingUpdate:(id)arg1;
+- (id)initWithName:(id)arg1 purgeManager:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
-- (void)onDefaultsUpdate:(id)arg1;
+- (void)onMediaRemoteNowPlayingUpdate:(id)arg1;
 - (void)populateDataProviderWithHandler:(CDUnknownBlockType)arg1;
-- (void)shutdown;
 - (id)supportedEventClasses;
-- (void)updateBundlesSupportingMediaRemotePopulationWithHandler:(CDUnknownBlockType)arg1;
+- (id)supportedEventStreams;
 
 @end
 

@@ -14,14 +14,17 @@
     NSLock *_lock;
     CDUnknownBlockType _outputBlock;
     SKUIResourceRequest *_request;
+    long long __loadReason;
 }
 
+@property (nonatomic, setter=_setLoadReason:) long long _loadReason; // @synthesize _loadReason=__loadReason;
 @property (strong) SKUIClientContext *clientContext;
 @property (copy) CDUnknownBlockType outputBlock;
 @property (readonly, copy) SKUIResourceRequest *resourceRequest;
 
 - (void).cxx_destruct;
 - (id)_initSKUILoadResourceOperation;
+- (void)cancel;
 - (id)init;
 - (id)initWithResourceRequest:(id)arg1;
 - (void)main;

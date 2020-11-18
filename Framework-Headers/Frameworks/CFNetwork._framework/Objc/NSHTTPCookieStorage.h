@@ -16,6 +16,7 @@
 @property unsigned long long cookieAcceptPolicy;
 @property (readonly, copy) NSArray *cookies;
 
++ (id)_csff:(id)arg1;
 + (id)_groupContainerCookieStorages;
 + (id)_groupContainerStoragesLock;
 + (void)_setSharedHTTPCookieStorage:(id)arg1;
@@ -25,6 +26,9 @@
 - (struct OpaqueCFHTTPCookieStorage *)_CFHTTPCookieStorage;
 - (struct OpaqueCFHTTPCookieStorage *)_cookieStorage;
 - (id)_cookiesForURL:(id)arg1 mainDocumentURL:(id)arg2;
+- (void)_getCookieStoragePartitionsCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_getCookiesForPartition:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_getCookiesForURL:(id)arg1 mainDocumentURL:(id)arg2 partition:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)_initWithCFHTTPCookieStorage:(struct OpaqueCFHTTPCookieStorage *)arg1;
 - (id)_initWithIdentifier:(id)arg1 private:(BOOL)arg2;
 - (void)_saveCookies;

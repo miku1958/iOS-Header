@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSXPCConnection;
 
@@ -16,6 +16,7 @@
 
 + (id)clientInterface;
 + (id)serverInterface;
+- (void).cxx_destruct;
 - (void)_sendState:(unsigned long long)arg1 value:(BOOL)arg2;
 - (void)dealloc;
 - (id)init;

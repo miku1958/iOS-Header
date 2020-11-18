@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (void)_findConnectedEdges:(CDUnknownBlockType)arg1 incoming:(BOOL)arg2;
 - (void)_findConnections:(CDUnknownBlockType)arg1 incoming:(BOOL)arg2;
+- (BOOL)_isRoadEdgeEqual:(const CDStruct_91f75a7f *)arg1 other:(const CDStruct_91f75a7f *)arg2;
 
 @end
 

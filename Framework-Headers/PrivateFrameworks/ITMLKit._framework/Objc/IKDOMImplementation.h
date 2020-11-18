@@ -13,6 +13,9 @@
 {
 }
 
+@property (readonly, getter=asynchronousMode) long long MODE_ASYNCHRONOUS;
+@property (readonly, getter=synchronousMode) long long MODE_SYNCHRONOUS;
+
 - (id)createDocument:(id)arg1:(id)arg2;
 - (id)createLSInput;
 - (id)createLSParser:(long long)arg1:(id)arg2;

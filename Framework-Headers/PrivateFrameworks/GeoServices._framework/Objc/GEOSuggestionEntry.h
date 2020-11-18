@@ -12,7 +12,7 @@
 
 @interface GEOSuggestionEntry : PBCodable <NSCopying>
 {
-    CDStruct_97e972fa *_textHighlights;
+    struct GEOHighlight *_textHighlights;
     unsigned long long _textHighlightsCount;
     unsigned long long _textHighlightsSpace;
     NSString *_calloutTitle;
@@ -36,12 +36,14 @@
 @property (strong, nonatomic) NSMutableArray *namedFeatures; // @synthesize namedFeatures=_namedFeatures;
 @property (strong, nonatomic) NSString *searchQueryDisplayString; // @synthesize searchQueryDisplayString=_searchQueryDisplayString;
 @property (strong, nonatomic) NSData *suggestionEntryMetadata; // @synthesize suggestionEntryMetadata=_suggestionEntryMetadata;
-@property (readonly, nonatomic) CDStruct_97e972fa *textHighlights;
+@property (readonly, nonatomic) struct GEOHighlight *textHighlights;
 @property (readonly, nonatomic) unsigned long long textHighlightsCount;
 
++ (Class)displayLineType;
++ (Class)namedFeatureType;
 - (void)addDisplayLine:(id)arg1;
 - (void)addNamedFeature:(id)arg1;
-- (void)addTextHighlights:(CDStruct_97e972fa)arg1;
+- (void)addTextHighlights:(struct GEOHighlight)arg1;
 - (void)clearDisplayLines;
 - (void)clearNamedFeatures;
 - (void)clearTextHighlights;
@@ -58,8 +60,8 @@
 - (id)namedFeatureAtIndex:(unsigned long long)arg1;
 - (unsigned long long)namedFeaturesCount;
 - (BOOL)readFrom:(id)arg1;
-- (void)setTextHighlights:(CDStruct_97e972fa *)arg1 count:(unsigned long long)arg2;
-- (CDStruct_97e972fa)textHighlightsAtIndex:(unsigned long long)arg1;
+- (void)setTextHighlights:(struct GEOHighlight *)arg1 count:(unsigned long long)arg2;
+- (struct GEOHighlight)textHighlightsAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

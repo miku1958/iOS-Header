@@ -10,18 +10,22 @@
 
 @interface IDSPushHandler : NSObject
 {
+    BOOL _shouldWaitToSetTopics;
 }
 
 @property (readonly, nonatomic) BOOL isConnected;
 @property (readonly, nonatomic) NSData *pushToken;
+@property (nonatomic) BOOL shouldWaitToSetTopics; // @synthesize shouldWaitToSetTopics=_shouldWaitToSetTopics;
 
 + (id)sharedInstance;
++ (id)sharedInstanceWithPortName:(id)arg1;
 - (void)_recalculateTopicsCacheOnIvarQueue;
 - (void)_updateTopicsOnIvarQueue;
 - (void)addListener:(id)arg1 topics:(id)arg2 commands:(id)arg3 queue:(id)arg4;
 - (void)configureAsMacNotificationCenterObserver:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)initWithPort:(id)arg1;
 - (void)removeListener:(id)arg1;
 - (void)setCommands:(id)arg1 forListener:(id)arg2;
 - (void)setTopics:(id)arg1 forListener:(id)arg2;

@@ -14,10 +14,10 @@
 @interface AFUIApplicationSiriTaskDeliverer : NSObject <AFSiriTaskDelivering>
 {
     NSString *_appBundleIdentifier;
+    BKSApplicationStateMonitor *_appStateMonitor;
     BKSProcessAssertion *_bKSAssertionForBgLaunch;
     AFWatchdogTimer *_assertionTimer;
     NSObject<OS_dispatch_group> *_bKSAssertionSetupGroup;
-    BKSApplicationStateMonitor *_appStateMonitor;
     NSObject<OS_dispatch_queue> *_queue;
     AFSiriTaskmaster *_taskmaster;
 }
@@ -34,7 +34,7 @@
 - (void)_invalidateBackboardServices;
 - (void)_processAssertionWasAcquired:(BOOL)arg1;
 - (void)_processAssertionWasInvalidatedForRequest:(id)arg1;
-- (void)_startAppStateLogging;
+- (void)_startAppStateMonitoringForRequest:(id)arg1;
 - (void)dealloc;
 - (void)deliverSiriTask:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithAppBundleIdentifier:(id)arg1;

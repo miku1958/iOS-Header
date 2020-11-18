@@ -6,14 +6,13 @@
 
 #import <FuseUI/NSObject-Protocol.h>
 
-@class MPAVController, MPMediaPlaylist, MPMediaQuery, NSDictionary, RURadioStationPlaybackMetadata, RadioStation;
+@class MPAVController, MPCRadioStationPlaybackMetadata, MPMediaQuery, NSDictionary, RadioStation;
 
 @protocol MCDCarDisplayServiceProvider <NSObject>
-- (void)changeRepeatType:(unsigned long long)arg1;
-- (void)changeShuffleType:(unsigned long long)arg1;
-- (void)reloadPlayer:(MPAVController *)arg1 geniusMixPlaylist:(MPMediaPlaylist *)arg2 options:(NSDictionary *)arg3;
+- (void)changeRepeatType:(long long)arg1;
+- (void)changeShuffleType:(long long)arg1;
 - (void)reloadPlayer:(MPAVController *)arg1 mediaQuery:(MPMediaQuery *)arg2 options:(NSDictionary *)arg3;
-- (void)reloadPlayer:(MPAVController *)arg1 radioMetadata:(RURadioStationPlaybackMetadata *)arg2 options:(NSDictionary *)arg3 completion:(void (^)(NSError *))arg4;
+- (void)reloadPlayer:(MPAVController *)arg1 radioMetadata:(MPCRadioStationPlaybackMetadata *)arg2 options:(NSDictionary *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)reloadPlayer:(MPAVController *)arg1 radioStation:(RadioStation *)arg2 options:(NSDictionary *)arg3 completion:(void (^)(NSError *))arg4;
 @end
 

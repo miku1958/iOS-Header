@@ -12,11 +12,13 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)AddFileToMarco:(id)arg1 logCategory:(int)arg2;
-+ (BOOL)createDirectoy:(id)arg1;
-+ (id)createLogFilename:(int)arg1 logNameType:(int)arg2 prefix:(id)arg3 suffix:(id)arg4 marcoLog:(int)arg5;
++ (BOOL)createDirectory:(id)arg1;
++ (id)getCachesDirectoryPath;
 + (id)getDefaultLogDumpPath;
-+ (id)getHomeDirPath;
-+ (id)openLogDump:(int)arg1 logNameType:(int)arg2 prefix:(id)arg3 suffix:(id)arg4 marcoLog:(int)arg5 fullFilename:(id *)arg6;
++ (id)logFilename:(int)arg1 logNameType:(int)arg2 prefix:(id)arg3 suffix:(id)arg4 marcoLog:(int)arg5;
++ (id)newLogDumpStream:(int)arg1 logNameType:(int)arg2 prefix:(id)arg3 suffix:(id)arg4 marcoLog:(int)arg5 fullFilename:(id *)arg6;
++ (void)removeFilesInDirectory:(id)arg1 olderThan:(id)arg2;
++ (void)removeOldFilesInDefaultLogDumpPath;
 
 @end
 

@@ -22,10 +22,12 @@
     id _delegate;
     BOOL _shouldExportToPhotoDataDirectory;
     CDUnknownBlockType _progressHandler;
+    NSString *_customAccessibilityLabel;
     PFVideoAVObjectBuilder *__videoAVObjectBuilder;
 }
 
 @property (readonly, strong, nonatomic) PFVideoAVObjectBuilder *_videoAVObjectBuilder; // @synthesize _videoAVObjectBuilder=__videoAVObjectBuilder;
+@property (copy, nonatomic) NSString *customAccessibilityLabel; // @synthesize customAccessibilityLabel=_customAccessibilityLabel;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property (nonatomic) BOOL shouldExportToPhotoDataDirectory; // @synthesize shouldExportToPhotoDataDirectory=_shouldExportToPhotoDataDirectory;
 
@@ -37,6 +39,7 @@
 - (void)_didEndRemakingWithTemporaryPath:(id)arg1;
 - (void)_exportCompletedWithSuccess:(BOOL)arg1;
 - (id)_fileFormatForURL:(id)arg1;
+- (id)_metadata;
 - (void)_removeProgressTimer;
 - (void)_resetProgressTimer;
 - (void)_updateProgress;

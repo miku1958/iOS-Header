@@ -11,6 +11,7 @@
 }
 
 + (unsigned long long)_badgeShapeForAchievement:(id)arg1;
++ (unsigned long long)_badgeShapeFromName:(id)arg1;
 + (struct CGSize)_badgeSizeForSharedImageSize:(struct CGSize)arg1 withdefaultBadgeSize:(struct CGSize)arg2 defaultSharedImageSize:(struct CGSize)arg3;
 + (void)_drawDate:(id)arg1 inSharedImageOfSize:(struct CGSize)arg2;
 + (struct CGPoint)_originForBadgeImageOfSize:(struct CGSize)arg1 withinSharedImageOfSize:(struct CGSize)arg2 forAchievement:(id)arg3;

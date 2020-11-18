@@ -6,13 +6,12 @@
 
 #import <FuseUI/MusicEntityVerticalLockupView.h>
 
-@class MusicNowPlayingFloatingButton, UIView;
+@class UIView;
 @protocol MusicEntityEditableVerticalLockupViewDelegate;
 
 @interface MusicEntityEditableVerticalLockupView : MusicEntityVerticalLockupView
 {
     UIView *_artworkEditingOverlayView;
-    MusicNowPlayingFloatingButton *_cameraButton;
     BOOL _editing;
 }
 
@@ -20,10 +19,8 @@
 @property (nonatomic, getter=isEditing) BOOL editing; // @synthesize editing=_editing;
 
 - (void).cxx_destruct;
-- (void)_cameraButtonTapped:(id)arg1;
 - (void)_layoutEditingSubviews;
 - (void)_layoutEditingSubviewsForEditing:(BOOL)arg1 editingViewsAlpha:(double)arg2;
-- (void)dealloc;
 - (void)layoutSubviews;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 

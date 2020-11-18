@@ -21,13 +21,14 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) BOOL representsOnDemandContent;
 
-- (void)_cacheRenditionProperties;
+- (BOOL)_cacheRenditionProperties;
 - (id)_rendition;
 - (id)_renditionForSpecificKey:(id)arg1;
 - (void)dealloc;
 - (unsigned long long)hash;
 - (id)initWithName:(id)arg1 usingRenditionKey:(id)arg2 fromTheme:(unsigned long long)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isTintable;
 - (id)renditionKey;
 - (id)renditionName;
 - (void)setRepresentsOnDemandContent:(BOOL)arg1;

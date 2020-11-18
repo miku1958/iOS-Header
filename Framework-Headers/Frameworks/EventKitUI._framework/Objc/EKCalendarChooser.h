@@ -15,8 +15,8 @@
     BOOL _showsDeclinedEventsSetting;
     BOOL _showDetailAccessories;
     BOOL _showDefaultCalendarExplanatoryText;
-    int _chooserMode;
     CDStruct_a7a51b3b _flags;
+    int _chooserMode;
     long long _style;
     NSMutableSet *_selectedCalendars;
     id<EKCalendarChooserDelegate> _delegate;
@@ -66,6 +66,7 @@
 @property (strong, nonatomic) id<EKStyleProvider> styleProvider; // @synthesize styleProvider=_styleProvider;
 @property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 
++ (id)_subscribedLocalizedString;
 - (void).cxx_destruct;
 - (void)_applySelection;
 - (void)_beginMaximumTimeElapsedTimeout;

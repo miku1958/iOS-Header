@@ -7,8 +7,11 @@
 #import <GeoServices/NSObject-Protocol.h>
 
 @protocol GEONavigationServerRequestStateXPCInterface <NSObject>
+- (void)requestActiveRouteDetailsData;
 - (void)requestGuidanceState;
 - (void)requestRouteSummary;
+- (void)requestSelectedRideOption;
+- (void)requestStepIndex;
 - (void)requestTransitSummary;
 - (void)requestUpdates;
 @end

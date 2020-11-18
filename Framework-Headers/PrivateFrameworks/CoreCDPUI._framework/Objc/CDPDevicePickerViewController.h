@@ -9,7 +9,7 @@
 #import <CoreCDPUI/UITableViewDataSource-Protocol.h>
 #import <CoreCDPUI/UITableViewDelegate-Protocol.h>
 
-@class NSArray, NSString, UIButton;
+@class CDPRemoteValidationEscapeOffer, NSArray, NSString, UIButton;
 @protocol CDPDevicePickerDelegate;
 
 @interface CDPDevicePickerViewController : CDPTableViewController <UITableViewDataSource, UITableViewDelegate>
@@ -17,18 +17,17 @@
     NSArray *_devices;
     id<CDPDevicePickerDelegate> _delegate;
     UIButton *_remoteApprovalButton;
-    BOOL _shouldOfferRemoteApproval;
+    CDPRemoteValidationEscapeOffer *_escapeOffer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *devices; // @synthesize devices=_devices;
+@property (strong, nonatomic) CDPRemoteValidationEscapeOffer *escapeOffer; // @synthesize escapeOffer=_escapeOffer;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL shouldOfferRemoteApproval; // @synthesize shouldOfferRemoteApproval=_shouldOfferRemoteApproval;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)approveFromAnotherDeviceTapped:(id)arg1;
 - (id)initWithDevices:(id)arg1 delegate:(id)arg2;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;

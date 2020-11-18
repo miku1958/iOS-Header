@@ -14,6 +14,7 @@
 @interface CAMPanoramaViewController : UIViewController <CAMPanoramaViewDelegate, CAMPanoramaConfigurationDelegate>
 {
     BOOL _painting;
+    long long _layoutStyle;
     CUCaptureController *__captureController;
     CMMotionManager *__motionManager;
     long long __captureOrientation;
@@ -27,20 +28,20 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, getter=isPainting) BOOL painting; // @synthesize painting=_painting;
+@property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
+@property (nonatomic, getter=isPainting, setter=_setPainting:) BOOL painting; // @synthesize painting=_painting;
 @property (readonly, nonatomic) CAMPanoramaView *panoramaView;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_createMotionManagerIfNecessary;
 - (void)_handleDirectionChange:(id)arg1;
-- (void)_setPainting:(BOOL)arg1;
 - (void)_updateWithAccelerometerData:(id)arg1 captureOrientation:(long long)arg2;
 - (void)dealloc;
 - (void)didChangeToCaptureOrientation:(long long)arg1;
 - (void)didChangeToMode:(long long)arg1 device:(long long)arg2;
 - (void)finishedProcessingPanorama;
-- (id)initWithCaptureController:(id)arg1;
+- (id)initWithCaptureController:(id)arg1 layoutStyle:(long long)arg2;
 - (id)initWithCoder:(id)arg1;
 - (void)loadView;
 - (void)panoramaConfigurationDidChangeWithDirection:(long long)arg1;

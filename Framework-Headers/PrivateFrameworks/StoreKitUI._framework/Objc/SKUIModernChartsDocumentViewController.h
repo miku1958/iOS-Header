@@ -8,10 +8,11 @@
 
 #import <StoreKitUI/SKUIDocumentViewController-Protocol.h>
 #import <StoreKitUI/SKUIModalSourceViewProvider-Protocol.h>
+#import <StoreKitUI/SKUIResourceLoaderDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, SKUIActivityIndicatorView, SKUIChartsTemplateViewElement, SKUILayoutCache, SKUIModernChartsView, SKUIViewElementLayoutContext;
+@class NSMutableArray, NSString, SKUIActivityIndicatorView, SKUIChartsTemplateViewElement, SKUILayoutCache, SKUIModernChartsView, SKUIResourceLoader, SKUIViewElementLayoutContext;
 
-@interface SKUIModernChartsDocumentViewController : SKUIViewController <SKUIDocumentViewController, SKUIModalSourceViewProvider>
+@interface SKUIModernChartsDocumentViewController : SKUIViewController <SKUIResourceLoaderDelegate, SKUIDocumentViewController, SKUIModalSourceViewProvider>
 {
     SKUIActivityIndicatorView *_activityIndicatorView;
     SKUIModernChartsView *_chartsView;
@@ -19,6 +20,7 @@
     SKUILayoutCache *_layoutCache;
     SKUIChartsTemplateViewElement *_templateElement;
     SKUIViewElementLayoutContext *_viewLayoutContext;
+    SKUIResourceLoader *_resourceLoader;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,11 +29,13 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (struct CGRect)_computedFrameForActivityIndicatorView;
 - (struct UIEdgeInsets)_contentInset;
 - (void)_hideActivityIndicator;
 - (id)_layoutCache;
 - (id)_newColumnViewControllersWithReusableViewControllers:(id)arg1;
 - (void)_reloadWithTemplateElement:(id)arg1;
+- (id)_resourceLoader;
 - (void)_showActivityIndicator;
 - (id)_viewLayoutContext;
 - (id)contentScrollView;
@@ -40,6 +44,8 @@
 - (void)getModalSourceViewForElementIdentifier:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)initWithTemplateElement:(id)arg1;
 - (void)loadView;
+- (void)resourceLoader:(id)arg1 didLoadAllForReason:(long long)arg2;
+- (void)resourceLoaderDidBeginLoading:(id)arg1;
 - (void)viewWillLayoutSubviews;
 
 @end

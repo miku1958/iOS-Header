@@ -10,7 +10,6 @@
 
 @class CLLocationManager, NSString;
 
-__attribute__((visibility("hidden")))
 @interface RTAuthorizationManager : RTNotifier <CLLocationManagerDelegate>
 {
     BOOL _supported;
@@ -31,6 +30,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_handleMagicalMomentsLocationAuthChange:(int)arg1;
+- (void)_logRoutineEnabled:(BOOL)arg1;
 - (void)dealloc;
 - (void)fetchBBPluginSupportedWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchMagicalMomentsLocationUsageEnabled:(CDUnknownBlockType)arg1;

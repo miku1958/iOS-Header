@@ -10,6 +10,7 @@
 @class CNContact, NSArray, NSString, SGRecordId;
 
 @protocol SGDSuggestManagerContactsProtocol <_SGDSuggestManagerBaseProtocol, _SGDSuggestManagerContactsConfirmRejectProtocol>
+- (void)allContactsLimitedTo:(unsigned long long)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (void)cnContactMatchesForRecordId:(SGRecordId *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (void)cnContactMatchesForRecordIds:(NSArray *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (void)contactFromRecordId:(SGRecordId *)arg1 withCompletion:(void (^)(SGContact *, NSError *))arg2;

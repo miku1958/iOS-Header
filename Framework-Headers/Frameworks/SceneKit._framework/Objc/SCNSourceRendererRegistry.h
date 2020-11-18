@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface SCNSourceRendererRegistry : NSObject
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedRegistry;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (void)removeSourceRenderersForEngineContext:(struct __C3DEngineContext *)arg1;
 - (void)removeSourceRenderersForSource:(id)arg1;

@@ -9,7 +9,7 @@
 #import <UIFoundation/NSCopying-Protocol.h>
 #import <UIFoundation/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSString, UIFontDescriptor;
 
 @interface UIFont : NSObject <NSSecureCoding, NSCopying>
 {
@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) double capHeight;
 @property (readonly, nonatomic) double descender;
 @property (readonly, nonatomic) NSString *familyName;
+@property (readonly, nonatomic) UIFontDescriptor *fontDescriptor;
 @property (readonly, nonatomic) NSString *fontName;
 @property (readonly, nonatomic) double leading;
 @property (readonly, nonatomic) double lineHeight;
@@ -26,12 +27,14 @@
 @property (readonly, nonatomic) double xHeight;
 
 + (void)_evictAllItemsFromFontAndFontDescriptorCaches;
++ (BOOL)_isSupportedDynamicFontTextStyle:(id)arg1;
 + (id)_lightSystemFontOfSize:(double)arg1;
 + (id)_opticalBoldSystemFontOfSize:(double)arg1;
 + (id)_opticalSystemFontOfSize:(double)arg1;
 + (double)_readableWidth;
 + (id)_sharedFontCache;
 + (id)_sharedZeroPointFont;
++ (id)_supportedDynamicFontStyles;
 + (id)_systemFontsOfSize:(double)arg1 traits:(int)arg2;
 + (id)_thinSystemFontOfSize:(double)arg1;
 + (id)_ultraLightSystemFontOfSize:(double)arg1;
@@ -52,6 +55,7 @@
 + (double)labelFontSize;
 + (id)monospacedDigitSystemFontOfSize:(double)arg1 weight:(double)arg2;
 + (id)preferredFontForTextStyle:(id)arg1;
++ (id)preferredFontForTextStyle:(id)arg1 compatibleWithTraitCollection:(id)arg2;
 + (id)preferredFontForUsage:(id)arg1;
 + (id)preferredFontForUsage:(id)arg1 contentSizeCategoryName:(id)arg2;
 + (double)smallSystemFontSize;
@@ -71,8 +75,11 @@
 - (unsigned int)_defaultGlyphForChar:(unsigned short)arg1;
 - (double)_defaultLineHeightForUILayout;
 - (id)_familyName;
+- (id)_fontAdjustedForContentSizeCategoryCompatibleWithTraitCollection:(id)arg1;
+- (id)_fontAdjustedForCurrentContentSizeCategory;
 - (id)_fontScaledByScaleFactor:(double)arg1;
 - (BOOL)_getLatin1GlyphMapping:(const unsigned short **)arg1 andAdvanceMapping:(const struct CGSize **)arg2;
+- (BOOL)_hasColorGlyphs;
 - (BOOL)_isDefaultFace;
 - (BOOL)_isHiraginoFont;
 - (id)_kernOverride;
@@ -89,7 +96,6 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)familyNameForCSSFontFamilyValue;
-- (id)fontDescriptor;
 - (id)fontWithSize:(double)arg1;
 - (void)getAdvancements:(struct CGSize *)arg1 forCGGlyphs:(const unsigned short *)arg2 count:(unsigned long long)arg3;
 - (void)getBoundingRects:(struct CGRect *)arg1 forCGGlyphs:(const unsigned short *)arg2 count:(unsigned long long)arg3;

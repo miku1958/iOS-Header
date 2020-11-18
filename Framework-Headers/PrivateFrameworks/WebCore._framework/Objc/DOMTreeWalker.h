@@ -20,7 +20,6 @@
 @property (readonly) unsigned int whatToShow;
 
 - (void)dealloc;
-- (void)finalize;
 - (id)firstChild;
 - (id)lastChild;
 - (id)nextNode;

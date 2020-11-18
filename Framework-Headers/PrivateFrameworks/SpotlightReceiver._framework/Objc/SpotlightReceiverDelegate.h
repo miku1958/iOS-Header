@@ -28,14 +28,17 @@
 + (void)initialize;
 + (void)startListening:(id)arg1 withReceiver:(id)arg2;
 - (void).cxx_destruct;
-- (void)deleteFromBundle:(id)arg1 sinceData:(id)arg2 domains:(id)arg3 deletes:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)indexFromBundle:(id)arg1 items:(id)arg2 itemsContent:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)addInteraction:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)addUserActions:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)deleteAllInteractionsWithBundleID:(id)arg1 protectionClass:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)deleteFromBundle:(id)arg1 sinceDate:(id)arg2 domains:(id)arg3 deletes:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)deleteInteractionsWithGroupIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)deleteInteractionsWithIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)fetchSetupInfoWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)indexFromBundle:(id)arg1 protectionClass:(id)arg2 items:(id)arg3 itemsContent:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)initWithReceiver:(id)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (void)purgeFromBundle:(id)arg1 identifiers:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)supportedBundleIDs:(CDUnknownBlockType)arg1;
-- (void)supportedTypes:(CDUnknownBlockType)arg1;
-- (void)userActions:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)purgeFromBundle:(id)arg1 identifiers:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)xpcInterface;
 
 @end

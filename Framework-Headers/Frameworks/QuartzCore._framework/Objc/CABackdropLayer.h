@@ -7,15 +7,17 @@
 #import <QuartzCore/CALayer.h>
 
 @class NSString;
+@protocol CABackdropLayerDelegate><CALayerDelegate;
 
 @interface CABackdropLayer : CALayer
 {
 }
 
 @property struct CGRect backdropRect;
+@property BOOL captureOnly;
+@property (weak) id<CABackdropLayerDelegate><CALayerDelegate> delegate; // @dynamic delegate;
 @property BOOL disablesOccludedBackdropBlurs;
 @property (getter=isEnabled) BOOL enabled;
-@property double extendedRangeClamp;
 @property (copy) NSString *groupName;
 @property double marginWidth;
 @property double scale;

@@ -7,6 +7,7 @@
 #import <Foundation/NSObject.h>
 
 @class GEOCompanionRouteDetails, GEOCompanionRouteStatus, GEOComposedRoute, GEOLocation, GEONavigationRouteSummary, GEONavigationRouteTransitSummary, GEORouteMatch, NSString;
+@protocol GEOServerFormattedStepStringFormatter;
 
 __attribute__((visibility("hidden")))
 @interface GEONavigationDetails : NSObject
@@ -31,12 +32,11 @@ __attribute__((visibility("hidden")))
     GEOCompanionRouteDetails *_companionRoute;
     GEOCompanionRouteStatus *_companionStatus;
     BOOL _guidancePromptsEnabled;
-    CDUnknownBlockType _companionRouteFilterBlock;
+    id<GEOServerFormattedStepStringFormatter> _formatter;
 }
 
 @property (nonatomic) unsigned long long announcementStage; // @synthesize announcementStage=_annoucementStage;
 @property (readonly, nonatomic) GEOCompanionRouteDetails *companionRoute; // @synthesize companionRoute=_companionRoute;
-@property (copy, nonatomic) CDUnknownBlockType companionRouteFilterBlock; // @synthesize companionRouteFilterBlock=_companionRouteFilterBlock;
 @property (readonly, nonatomic) GEOCompanionRouteStatus *companionStatus; // @synthesize companionStatus=_companionStatus;
 @property (readonly, nonatomic) NSString *destinationName; // @synthesize destinationName=_destinationName;
 @property (nonatomic) long long displayStep; // @synthesize displayStep=_displayStep;
@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double distanceToManeuverEnd; // @synthesize distanceToManeuverEnd=_distanceToManeuverEnd;
 @property (nonatomic) double distanceToManeuverStart; // @synthesize distanceToManeuverStart=_distanceToManeuverStart;
 @property (nonatomic) double distanceToRoute; // @synthesize distanceToRoute=_distanceToRoute;
+@property (readonly, nonatomic) id<GEOServerFormattedStepStringFormatter> formatter; // @synthesize formatter=_formatter;
 @property (nonatomic) BOOL guidancePromptsEnabled; // @synthesize guidancePromptsEnabled=_guidancePromptsEnabled;
 @property (strong, nonatomic) GEOLocation *location; // @synthesize location=_location;
 @property (nonatomic) BOOL locationUnreliable; // @synthesize locationUnreliable=_locationUnreliable;
@@ -57,7 +58,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) GEONavigationRouteTransitSummary *transitSummary; // @synthesize transitSummary=_transitSummary;
 
 - (void)dealloc;
-- (id)initWithDestinationName:(id)arg1;
+- (id)initWithDestinationName:(id)arg1 stringFormatter:(id)arg2;
 - (void)setNextAnnouncementStage:(unsigned long long)arg1 andTime:(double)arg2;
 
 @end

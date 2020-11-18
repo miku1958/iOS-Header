@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotoLibraryServices/NSObject-Protocol.h>
+#import <PhotoLibraryServices/PLMomentRefreshable-Protocol.h>
 
 @class NSArray, NSData, NSDate, NSObject, NSOrderedSet, NSString;
 @protocol NSCopying, PLMomentData;
 
-@protocol PLMomentListData <NSObject>
+@protocol PLMomentListData <PLMomentRefreshable>
 
 @property (strong, nonatomic) NSDate *endDate;
 @property (nonatomic) short generationType;

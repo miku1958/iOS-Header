@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <Foundation/NSCoding-Protocol.h>
+
 @protocol NSISVariableDelegate;
 
-@interface NSISVariable : NSObject
+@interface NSISVariable : NSObject <NSCoding>
 {
     id<NSISVariableDelegate> _delegate;
     int _refCount;
@@ -22,12 +24,15 @@
 + (id)variableMarkingConstraint:(id)arg1 valueRestriction:(int)arg2 shouldBeMinimized:(BOOL)arg3;
 + (id)variableWithDelegate:(id)arg1 valueRestriction:(int)arg2 shouldBeMinimized:(BOOL)arg3;
 + (id)variableWithName:(id)arg1 valueRestriction:(int)arg2 shouldBeMinimized:(BOOL)arg3;
++ (id)variableWithName:(id)arg1 valueRestriction:(int)arg2 shouldBeMinimized:(BOOL)arg3 valueIsUserObservable:(BOOL)arg4;
 - (BOOL)_isDeallocating;
 - (BOOL)_tryRetain;
 - (double)allowedMagnitudeForIntegralizationAdjustmentOfMarkedConstraint;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)markedConstraint;
 - (BOOL)markedConstraintIsEligibleForIntegralizationAdjustment;
 - (oneway void)release;

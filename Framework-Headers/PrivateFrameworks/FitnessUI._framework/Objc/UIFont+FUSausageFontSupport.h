@@ -25,5 +25,8 @@
 - (id)fu_fontWithSize:(double)arg1;
 - (id)fu_fontWithSizeFittingString:(id)arg1 withinWidth:(double)arg2;
 - (id)fu_fontWithSizeFittingString:(id)arg1 withinWidth:(double)arg2 accountForGlyphOffset:(BOOL)arg3;
+- (id)fu_monospacedFont;
+- (id)fu_shortSlashFont;
+- (id)fu_smallCapsFont;
 @end
 

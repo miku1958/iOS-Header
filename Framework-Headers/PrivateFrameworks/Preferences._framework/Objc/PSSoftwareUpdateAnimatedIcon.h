@@ -21,8 +21,8 @@
 @property (readonly, nonatomic) UIImageView *outerGearView;
 
 - (void).cxx_destruct;
+- (void)createConstraints;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutSubviews;
 - (void)setAnimating:(BOOL)arg1;
 
 @end

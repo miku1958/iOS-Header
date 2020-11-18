@@ -14,10 +14,12 @@
 @interface HLPHelpTopicHistoryItem : NSObject <NSCopying, NSCoding>
 {
     NSString *_identifier;
+    NSString *_anchor;
     struct CGPoint _contentOffset;
     struct CGSize _contentSize;
 }
 
+@property (strong, nonatomic) NSString *anchor; // @synthesize anchor=_anchor;
 @property (nonatomic) struct CGPoint contentOffset; // @synthesize contentOffset=_contentOffset;
 @property (nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;

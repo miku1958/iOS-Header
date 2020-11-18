@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (BOOL)_canHandleDisplayAsset:(id)arg1;
 + (unsigned long long)commentCountForDisplayAsset:(id)arg1;
 + (BOOL)hasUserLikedDisplayAsset:(id)arg1;
 + (unsigned long long)likeCountForDisplayAsset:(id)arg1;

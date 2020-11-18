@@ -6,12 +6,20 @@
 
 #import <SearchUI/SearchUITableViewCell.h>
 
+@class UILabel;
+
 @interface SearchUICenteredResultTableViewCell : SearchUITableViewCell
 {
+    UILabel *_vibrantTitleLabel;
+    UILabel *_subtitleLabel;
 }
 
-- (id)initWithResult:(id)arg1 style:(unsigned long long)arg2;
-- (BOOL)supportsRecycling;
+@property (strong) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
+@property (strong) UILabel *vibrantTitleLabel; // @synthesize vibrantTitleLabel=_vibrantTitleLabel;
+
+- (void).cxx_destruct;
+- (id)initWithResult:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (void)updateWithResult:(id)arg1;
 
 @end
 

@@ -22,11 +22,13 @@ __attribute__((visibility("hidden")))
     NSData *_displaySizeImageData;
     NSURL *_videoURL;
     NSString *_videoPathSandboxExtensionToken;
+    CDStruct_1b6d18a9 _livePhotoStillDisplayTime;
 }
 
 @property (strong, nonatomic) PHAdjustmentData *adjustmentData; // @synthesize adjustmentData=_adjustmentData;
 @property (strong, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (strong, nonatomic) NSData *displaySizeImageData; // @synthesize displaySizeImageData=_displaySizeImageData;
+@property (nonatomic) CDStruct_1b6d18a9 livePhotoStillDisplayTime; // @synthesize livePhotoStillDisplayTime=_livePhotoStillDisplayTime;
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (nonatomic) unsigned long long mediaSubtypes; // @synthesize mediaSubtypes=_mediaSubtypes;
 @property (nonatomic) long long mediaType; // @synthesize mediaType=_mediaType;

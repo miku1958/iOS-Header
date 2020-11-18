@@ -13,11 +13,15 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_dispatch_queue> *queue;
     CDUnknownBlockType block;
+    int _eventLogLevel;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType block; // @synthesize block;
-@property NSObject<OS_dispatch_queue> *queue; // @synthesize queue;
+@property (nonatomic) int eventLogLevel; // @synthesize eventLogLevel=_eventLogLevel;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue;
 
+- (void)dealloc;
+- (id)init;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableDictionary, NSSet;
+@class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface FontAssetDownloadManager : NSObject
@@ -16,28 +16,28 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType fProgressCallbackBlock;
     NSMutableDictionary *fProgressParams;
     NSMutableDictionary *fDownloadOptions;
-    NSSet *fPreciousFontLanguages;
 }
 
++ (BOOL)activateFontsFromAssetURL:(id)arg1;
 + (id)availableFontAttributesArray;
++ (id)availableMobileAssets:(BOOL)arg1 error:(id *)arg2;
++ (unsigned long long)calculateDownloadSize:(id)arg1;
 + (id)displayNameForCurrentUser:(id)arg1;
 + (id)enabledKeyboardLanguages;
++ (id)extractMatchingAssetsForDescriptor:(struct __CTFontDescriptor *)arg1 from:(id)arg2 withFailInfo:(BOOL *)arg3 andFontFilePaths:(id)arg4;
 + (Class)getASAssetQueryClass;
 + (BOOL)shouldIgnoreFontAsset:(id)arg1;
 + (BOOL)shouldRetryWithServer;
 + (BOOL)shouldTryServer;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)activateFontsFromAssetURL:(id)arg1;
 - (BOOL)assetStalled:(id)arg1;
-- (id)availableMobileAssets:(BOOL)arg1 error:(id *)arg2;
-- (unsigned long long)calculateDownloadSize:(id)arg1;
-- (BOOL)callProgressCallbak:(unsigned int)arg1;
+- (BOOL)callProgressCallback:(unsigned int)arg1;
 - (void)dealloc;
 - (id)doFinalMatching;
+- (BOOL)downloadAllowed;
 - (void)downloadFontAssets;
 - (BOOL)executeDownloadingFontAssets:(id)arg1 forDescriptors:(id)arg2 andFontFilePaths:(id)arg3;
-- (id)extractMatchingAssetsForDescriptor:(struct __CTFontDescriptor *)arg1 from:(id)arg2 withFailInfo:(BOOL *)arg3 andFontFilePaths:(id)arg4;
 - (id)getUnmatchedDescriptors;
 - (id)initWithDescriptors:(struct __CFArray *)arg1 andMandatoryAttributes:(struct __CFSet *)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (id)mobileAssetsForUnmatched:(id)arg1 andFontFilePaths:(id)arg2;

@@ -6,8 +6,8 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class CMCatherineFeeder, HDClient, HDQueryServer, HKSampleType, NSArray, NSDate, NSDictionary, NSString, NSTimeZone, NSUUID, _HKQueryServerDataObject;
-@protocol HDHealthDaemon, HDQueryServerDelegate;
+@class CMCatherineFeeder, HDClient, HDProfile, HDQueryServer, HKSampleType, NSArray, NSDate, NSDictionary, NSString, NSTimeZone, NSUUID, _HKDeepBreathingSessionConfiguration, _HKQueryServerDataObject;
+@protocol HDDeepBreathingSessionServer, HDDeepBreathingSessionServerDelegate, HDHealthDaemon, HDQueryServerDelegate;
 
 @protocol HDHealthPlugin <NSObject>
 - (void)activate;
@@ -18,10 +18,9 @@
 - (void)_setPluginHeartRateEnable:(BOOL)arg1;
 - (BOOL)daemonDidReceiveNotification:(const char *)arg1;
 - (NSArray *)dataCollectors;
-- (void)invalidateActivityAlertSuppressionForIdentifier:(NSString *)arg1;
-- (HDQueryServer *)queryServerForUUID:(NSUUID *)arg1 serverDataObject:(_HKQueryServerDataObject *)arg2 queryClass:(Class)arg3 clientProxy:(id)arg4 client:(HDClient *)arg5 healthDaemon:(id<HDHealthDaemon>)arg6 queryDelegate:(id<HDQueryServerDelegate>)arg7;
+- (id<HDDeepBreathingSessionServer>)deepBreathingServerForClient:(id)arg1 configuration:(_HKDeepBreathingSessionConfiguration *)arg2 healthDaemon:(id<HDHealthDaemon>)arg3 delegate:(id<HDDeepBreathingSessionServerDelegate>)arg4;
+- (HDQueryServer *)queryServerForUUID:(NSUUID *)arg1 serverDataObject:(_HKQueryServerDataObject *)arg2 queryClass:(Class)arg3 clientProxy:(id)arg4 client:(HDClient *)arg5 profile:(HDProfile *)arg6 queryDelegate:(id<HDQueryServerDelegate>)arg7;
 - (void)setCurrentActivityCacheOverrideDate:(NSDate *)arg1 timeZone:(NSTimeZone *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)setDataCollectionOptions:(NSDictionary *)arg1 forKey:(NSString *)arg2 type:(HKSampleType *)arg3 clientUUID:(NSUUID *)arg4;
-- (void)suppressActivityAlertsForIdentifier:(NSString *)arg1 suppressionReason:(long long)arg2 timeoutUntilDate:(NSDate *)arg3;
 @end
 

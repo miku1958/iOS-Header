@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (id)checkSpellingOfString:(id)arg1;
 - (struct CGPoint)contentsPointForWebView:(id)arg1;
 - (void)deleteFromInput;
-- (void)deleteFromInputwithFlags:(unsigned long long)arg1;
+- (void)deleteFromInputWithFlags:(unsigned long long)arg1;
 - (int)deviceOrientation;
 - (struct CGRect)documentVisibleRectForWebView:(id)arg1;
 - (long long)getPasteboardChangeCount;

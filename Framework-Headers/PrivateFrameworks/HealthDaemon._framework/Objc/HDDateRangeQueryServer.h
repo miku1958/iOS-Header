@@ -9,12 +9,11 @@
 #import <HealthDaemon/HDDataObserver-Protocol.h>
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSString;
-@protocol HDHealthDaemon;
+@class HDProfile, NSMutableDictionary, NSMutableSet, NSString;
 
 @interface HDDateRangeQueryServer : HDQueryServer <HDDataObserver, HDDatabaseProtectedDataObserver>
 {
-    id<HDHealthDaemon> _daemon;
+    HDProfile *_profile;
     BOOL _resultsDirty;
     NSMutableDictionary *_timePeriodsBySampleType;
     NSMutableSet *_sampleTypesToReFetch;
@@ -37,9 +36,8 @@
 - (id)_sampleTypeFromNumber:(id)arg1;
 - (BOOL)_shouldListenForUpdates;
 - (BOOL)_shouldObserveAllSampleTypes;
-- (id)_timePeriodsForSampleTypes:(id)arg1 error:(id *)arg2;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
-- (id)initWithQueryUUID:(id)arg1 dataObject:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 healthDaemon:(id)arg6;
+- (id)initWithQueryUUID:(id)arg1 dataObject:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 profile:(id)arg6;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 

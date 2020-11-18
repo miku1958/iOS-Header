@@ -7,10 +7,11 @@
 #import <Foundation/NSObject.h>
 
 #import <BaseBoard/BSXPCCoding-Protocol.h>
+#import <BaseBoard/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSString;
 
-@interface BSAuditHistoryItem : NSObject <BSXPCCoding>
+@interface BSAuditHistoryItem : NSObject <BSXPCCoding, NSSecureCoding>
 {
     NSDate *_date;
     NSString *_description;
@@ -25,9 +26,12 @@
 
 + (id)itemWithString:(id)arg1;
 + (id)itemWithWithFormat:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (id)_timeFormatter;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (id)itemWithString:(id)arg1;
 

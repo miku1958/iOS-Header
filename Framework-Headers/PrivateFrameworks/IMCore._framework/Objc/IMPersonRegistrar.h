@@ -16,8 +16,8 @@
 @property (strong) NSMutableDictionary *_personMap; // @synthesize _personMap;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_dumpAllPersons;
-- (void)dealloc;
 - (id)personForUniqueID:(id)arg1;
 - (void)registerPerson:(id)arg1;
 - (void)unregisterPerson:(id)arg1;

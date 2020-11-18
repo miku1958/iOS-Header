@@ -16,7 +16,6 @@
 @property (strong, nonatomic) NSString *carrierDebuggingAlertVersion; // @dynamic carrierDebuggingAlertVersion;
 @property (nonatomic) long long dataPlanActivationPromptCount; // @dynamic dataPlanActivationPromptCount;
 @property (readonly, nonatomic) NSArray *fakeDuetTriggers; // @dynamic fakeDuetTriggers;
-@property (readonly, nonatomic, getter=isLoggingEnabled) BOOL loggingEnabled; // @dynamic loggingEnabled;
 @property (readonly, nonatomic) BOOL showStackshotUIFeedback; // @dynamic showStackshotUIFeedback;
 
 - (void)_bindAndRegisterDefaults;

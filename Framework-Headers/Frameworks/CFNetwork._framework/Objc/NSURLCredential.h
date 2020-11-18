@@ -22,8 +22,8 @@
 + (id)credentialWithIdentity:(struct __SecIdentity *)arg1 certificates:(id)arg2 persistence:(unsigned long long)arg3;
 + (id)credentialWithUser:(id)arg1 password:(id)arg2 persistence:(unsigned long long)arg3;
 + (BOOL)supportsSecureCoding;
-- (struct _CFURLCredential *)_CFURLCredential;
-- (struct _CFURLCredential *)_cfurlcredential;
+- (const struct _CFURLCredential *)_CFURLCredential;
+- (const struct _CFURLCredential *)_cfurlcredential;
 - (BOOL)_hasSWCACreatorAttribute;
 - (id)_initWithCFURLCredential:(struct _CFURLCredential *)arg1;
 - (void)_removeSWCACreatorAttribute;

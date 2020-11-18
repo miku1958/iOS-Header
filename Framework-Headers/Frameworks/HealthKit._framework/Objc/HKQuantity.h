@@ -22,6 +22,7 @@
 + (id)quantityWithUnit:(id)arg1 doubleValue:(double)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_foundationMeasurement;
 - (id)_initWithUnit:(id)arg1 doubleValue:(double)arg2;
 - (BOOL)_isZero;
 - (id)_quantityByAddingQuantity:(id)arg1;

@@ -7,7 +7,11 @@
 #import <HealthKit/HKHealthStore.h>
 
 @interface HKHealthStore (HKUIAdditions)
++ (id)localizationStringAdditionForWheelchairUser;
++ (id)localizationStringSuffixForWheelchairUser:(BOOL)arg1;
+- (void)_populateDemographicsWrapper:(id)arg1 withFirstName:(id)arg2 lastName:(id)arg3 meContact:(id)arg4;
 - (id)_sortedSources:(id)arg1;
+- (void)hk_fetchExistingDemographicInformationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)hk_sourcesForAuthorizationWithSources:(id)arg1;
 - (id)hk_sourcesForDevicesWithSources:(id)arg1;
 @end

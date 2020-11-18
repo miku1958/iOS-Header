@@ -8,8 +8,8 @@
 
 #import <CompanionSync/IDSServiceDelegate-Protocol.h>
 
-@class IDSService, NMSPersistentDictionary, NMSWindowData, NSDate, NSMutableDictionary, NSString, _NMSDispatchQueue;
-@protocol NMSMessageCenterDelegate, OS_dispatch_queue, OS_dispatch_source;
+@class IDSService, NMSPersistentDictionary, NMSWindowData, NSDate, NSMutableDictionary, NSString, _NMSDispatchQueue, _SYMultiSuspendableQueue;
+@protocol NMSMessageCenterDelegate, OS_dispatch_queue, OS_dispatch_source, OS_os_activity;
 
 @interface NMSMessageCenter : NSObject <IDSServiceDelegate>
 {
@@ -29,10 +29,12 @@
     NSObject<OS_dispatch_source> *_windowTimeout;
     _NMSDispatchQueue *_windowQueue;
     BOOL _checkedForQWS;
-    NSObject<OS_dispatch_queue> *_idsIncomingQueue;
+    _SYMultiSuspendableQueue *_idsIncomingQueue;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
     BOOL _enableTransmissionWindow;
     BOOL _delegateRequiresACKs;
     id<NMSMessageCenterDelegate> _delegate;
+    NSObject<OS_os_activity> *_transportActivity;
     unsigned long long _maxMessagesInFlight;
     unsigned long long _minMessagesInFlight;
     unsigned long long _maxBytesInFlight;
@@ -55,6 +57,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) IDSService *service; // @synthesize service=_service;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSObject<OS_os_activity> *transportActivity; // @synthesize transportActivity=_transportActivity;
 @property (nonatomic) double windowResponseTimeout; // @synthesize windowResponseTimeout=_windowResponseTimeout;
 
 + (BOOL)messageWindowCountEnabled;

@@ -6,14 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class CALayer, UIView;
+#import <AVKit/CALayerDelegate-Protocol.h>
+
+@class CALayer, NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _AVViewSublayerAnimationDelegateProxy : NSObject
+@interface _AVViewSublayerAnimationDelegateProxy : NSObject <CALayerDelegate>
 {
     UIView *_view;
     CALayer *_proxyLayer;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;

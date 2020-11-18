@@ -10,6 +10,8 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct DataStore;
+
 struct HDActivityCacheActiveSource {
     double _field1;
     long long _field2;
@@ -25,6 +27,18 @@ struct HDActivityCacheStatisticsBuilderSample {
 
 struct HDActivityCacheStatisticsBuilderStandHourSample;
 
+struct HDActivityCacheStatisticsBuilderWorkoutSample;
+
+struct HDDemoDataBloodPressure {
+    double _field1;
+    double _field2;
+};
+
+struct HDDemoDataMenstrualFlow {
+    long long _field1;
+    long long _field2;
+};
+
 struct HDSyncAnchorRange {
     long long _field1;
     long long _field2;
@@ -36,22 +50,45 @@ struct _HDActivityCacheActiveSourceCalculatorSourceEvent {
     long long _field3;
 };
 
+struct _HDDeleteObjectDataDefn {
+    BOOL _field1;
+    long long _field2;
+    long long _field3;
+    long long _field4;
+};
+
 struct __hash_node<sqlite3_stmt *, void *>;
 
 struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
     struct __tree_node_base<void *> *__left_;
 };
 
-struct map<_HKDataTypeCode, std::__1::map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>>, std::__1::less<_HKDataTypeCode>, std::__1::allocator<std::__1::pair<const _HKDataTypeCode, std::__1::map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>>>>> {
-    struct __tree<std::__1::__value_type<_HKDataTypeCode, std::__1::map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>>>, std::__1::__map_value_compare<_HKDataTypeCode, std::__1::__value_type<_HKDataTypeCode, std::__1::map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>>>, std::__1::less<_HKDataTypeCode>, true>, std::__1::allocator<std::__1::__value_type<_HKDataTypeCode, std::__1::map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>>>>> {
-        struct __tree_node<std::__1::__value_type<_HKDataTypeCode, std::__1::map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>>>, void *> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<_HKDataTypeCode, std::__1::map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>>>, void *>>> {
+struct linear_congruential_engine<unsigned int, 48271, 0, 2147483647> {
+    unsigned int __x_;
+};
+
+struct map<_HKDataTypeCode, std::__1::map<long long, _HDActivityCacheSourceTotal, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, _HDActivityCacheSourceTotal>>>, std::__1::less<_HKDataTypeCode>, std::__1::allocator<std::__1::pair<const _HKDataTypeCode, std::__1::map<long long, _HDActivityCacheSourceTotal, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, _HDActivityCacheSourceTotal>>>>>> {
+    struct __tree<std::__1::__value_type<_HKDataTypeCode, std::__1::map<long long, _HDActivityCacheSourceTotal, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, _HDActivityCacheSourceTotal>>>>, std::__1::__map_value_compare<_HKDataTypeCode, std::__1::__value_type<_HKDataTypeCode, std::__1::map<long long, _HDActivityCacheSourceTotal, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, _HDActivityCacheSourceTotal>>>>, std::__1::less<_HKDataTypeCode>, true>, std::__1::allocator<std::__1::__value_type<_HKDataTypeCode, std::__1::map<long long, _HDActivityCacheSourceTotal, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, _HDActivityCacheSourceTotal>>>>>> {
+        struct __tree_node<std::__1::__value_type<_HKDataTypeCode, std::__1::map<long long, _HDActivityCacheSourceTotal, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, _HDActivityCacheSourceTotal>>>>, void *> *__begin_node_;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<_HKDataTypeCode, std::__1::map<long long, _HDActivityCacheSourceTotal, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, _HDActivityCacheSourceTotal>>>>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> __first_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<_HKDataTypeCode, std::__1::__value_type<_HKDataTypeCode, std::__1::map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>>>, std::__1::less<_HKDataTypeCode>, true>> {
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<_HKDataTypeCode, std::__1::__value_type<_HKDataTypeCode, std::__1::map<long long, _HDActivityCacheSourceTotal, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, _HDActivityCacheSourceTotal>>>>, std::__1::less<_HKDataTypeCode>, true>> {
             unsigned long long __first_;
         } __pair3_;
     } __tree_;
+};
+
+struct map<long long, _HDActivityCacheSourceTotal, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, _HDActivityCacheSourceTotal>>> {
+    struct __tree<std::__1::__value_type<long long, _HDActivityCacheSourceTotal>, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, _HDActivityCacheSourceTotal>, std::__1::less<long long>, true>, std::__1::allocator<std::__1::__value_type<long long, _HDActivityCacheSourceTotal>>> {
+        struct __tree_node<std::__1::__value_type<long long, _HDActivityCacheSourceTotal>, void *> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<long long, _HDActivityCacheSourceTotal>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, _HDActivityCacheSourceTotal>, std::__1::less<long long>, true>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
 };
 
 struct map<long long, _HDDiscreteStats, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, _HDDiscreteStats>>> {
@@ -78,16 +115,24 @@ struct map<long long, double, std::__1::less<long long>, std::__1::allocator<std
     } __tree_;
 };
 
-struct map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>> {
-    struct __tree<std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>, std::__1::less<long long>, true>, std::__1::allocator<std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>> {
-        struct __tree_node<std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>, void *> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>, std::__1::less<long long>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
+struct normal_distribution<double> {
+    struct param_type __p_;
+    double _V_;
+    BOOL _V_hot_;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
+struct param_type {
+    double __mean_;
+    double __stddev_;
+};
+
+struct shared_ptr<health::DataStore> {
+    struct DataStore *__ptr_;
+    struct __shared_weak_count *__cntrl_;
 };
 
 struct unique_ptr<std::__1::__hash_node<sqlite3_stmt *, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<sqlite3_stmt *, void *>*>>> {
@@ -142,6 +187,14 @@ struct vector<HDActivityCacheStatisticsBuilderStandHourSample, std::__1::allocat
     } __end_cap_;
 };
 
+struct vector<HDActivityCacheStatisticsBuilderWorkoutSample, std::__1::allocator<HDActivityCacheStatisticsBuilderWorkoutSample>> {
+    struct HDActivityCacheStatisticsBuilderWorkoutSample *__begin_;
+    struct HDActivityCacheStatisticsBuilderWorkoutSample *__end_;
+    struct __compressed_pair<HDActivityCacheStatisticsBuilderWorkoutSample *, std::__1::allocator<HDActivityCacheStatisticsBuilderWorkoutSample>> {
+        struct HDActivityCacheStatisticsBuilderWorkoutSample *__first_;
+    } __end_cap_;
+};
+
 struct vector<long long, std::__1::allocator<long long>> {
     long long *_field1;
     long long *_field2;
@@ -153,10 +206,21 @@ struct vector<long long, std::__1::allocator<long long>> {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    unsigned int *list;
+    unsigned long long count;
+    unsigned long long size;
+} CDStruct_9f2792e4;
+
+typedef struct {
     long long *list;
     unsigned long long count;
     unsigned long long size;
 } CDStruct_5df41632;
+
+typedef struct {
+    double _field1;
+    BOOL _field2;
+} CDStruct_fd1107da;
 
 typedef struct {
     double avg;
@@ -175,6 +239,13 @@ typedef struct {
 
 // Ambiguous groups
 typedef struct {
+    unsigned int completedDate:1;
+    unsigned int doubleValue:1;
+    unsigned int intValue:1;
+    unsigned int workActivityType:1;
+} CDStruct_38df8e94;
+
+typedef struct {
     unsigned int creationDate:1;
 } CDStruct_dc48a425;
 
@@ -182,17 +253,30 @@ typedef struct {
     unsigned int requestType:1;
 } CDStruct_7c66fec0;
 
-typedef struct map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>> {
-    struct __tree<std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>, std::__1::less<long long>, true>, std::__1::allocator<std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>> {
-        struct __tree_node<std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>, void *> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>, void *>>> {
+typedef struct {
+    unsigned int timestamp:1;
+} CDStruct_b5306035;
+
+typedef struct {
+    unsigned int value:1;
+} CDStruct_01ef6375;
+
+typedef struct map<long long, _HDActivityCacheSourceTotal, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, _HDActivityCacheSourceTotal>>> {
+    struct __tree<std::__1::__value_type<long long, _HDActivityCacheSourceTotal>, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, _HDActivityCacheSourceTotal>, std::__1::less<long long>, true>, std::__1::allocator<std::__1::__value_type<long long, _HDActivityCacheSourceTotal>>> {
+        struct __tree_node<std::__1::__value_type<long long, _HDActivityCacheSourceTotal>, void *> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<long long, _HDActivityCacheSourceTotal>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>, std::__1::less<long long>, true>> {
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, _HDActivityCacheSourceTotal>, std::__1::less<long long>, true>> {
             unsigned long long _field1;
         } _field3;
     } _field1;
-} map_a99630af;
+} map_a52608a0;
+
+typedef struct shared_ptr<health::DataStore> {
+    struct DataStore *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} shared_ptr_88ae0538;
 
 typedef struct vector<HDActivityCacheActiveSource, std::__1::allocator<HDActivityCacheActiveSource>> {
     struct HDActivityCacheActiveSource *__begin_;
@@ -217,6 +301,14 @@ typedef struct vector<HDActivityCacheStatisticsBuilderStandHourSample, std::__1:
         struct HDActivityCacheStatisticsBuilderStandHourSample *__first_;
     } __end_cap_;
 } vector_81c32433;
+
+typedef struct vector<HDActivityCacheStatisticsBuilderWorkoutSample, std::__1::allocator<HDActivityCacheStatisticsBuilderWorkoutSample>> {
+    struct HDActivityCacheStatisticsBuilderWorkoutSample *__begin_;
+    struct HDActivityCacheStatisticsBuilderWorkoutSample *__end_;
+    struct __compressed_pair<HDActivityCacheStatisticsBuilderWorkoutSample *, std::__1::allocator<HDActivityCacheStatisticsBuilderWorkoutSample>> {
+        struct HDActivityCacheStatisticsBuilderWorkoutSample *__first_;
+    } __end_cap_;
+} vector_53e1d725;
 
 typedef struct vector<long long, std::__1::allocator<long long>> {
     long long *_field1;

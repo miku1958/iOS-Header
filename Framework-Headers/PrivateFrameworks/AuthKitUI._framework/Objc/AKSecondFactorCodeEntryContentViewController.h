@@ -6,11 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <AuthKitUI/AKJiggling-Protocol.h>
+#import <AuthKitUI/AKSecondFactorCodeEntry-Protocol.h>
 
 @class AKAppleIDAuthenticationContext, AKBasicLoginContentViewController, AKCodeEntryView, NSArray, NSString;
 
-@interface AKSecondFactorCodeEntryContentViewController : UIViewController <AKJiggling>
+@interface AKSecondFactorCodeEntryContentViewController : UIViewController <AKSecondFactorCodeEntry>
 {
     AKCodeEntryView *_codeGeneratorView;
     AKBasicLoginContentViewController *_titleHeaderViewController;
@@ -33,9 +33,11 @@
 - (void)_configureCodeGenView;
 - (void)_configureTitleHeaderView;
 - (void)_updateFontContstraints:(id)arg1;
+- (void)clearSecondFactorEntry;
 - (void)dealloc;
 - (void)jiggleAView;
 - (void)loadView;
+- (void)setPasscodeFieldDisabled:(BOOL)arg1;
 - (void)updateViewConstraints;
 - (void)viewDidAppear:(BOOL)arg1;
 

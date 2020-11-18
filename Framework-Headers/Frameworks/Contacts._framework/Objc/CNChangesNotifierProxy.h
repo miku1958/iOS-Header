@@ -14,6 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface CNChangesNotifierProxy : NSObject <CNChangeNotificationReceiver>
 {
+    BOOL forwardsSelfGeneratedDistributedSaveNotifications;
     NSMapTable *_removalBlocks;
     NSMapTable *_notifyingBlocks;
     NSMutableDictionary *_notificationForwardingMapping;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL forwardsSelfGeneratedDistributedSaveNotifications; // @synthesize forwardsSelfGeneratedDistributedSaveNotifications;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSMutableDictionary *notificationForwardingMapping; // @synthesize notificationForwardingMapping=_notificationForwardingMapping;
 @property (strong, nonatomic) NSMutableDictionary *notificationsToBeSentOnceAllowed; // @synthesize notificationsToBeSentOnceAllowed=_notificationsToBeSentOnceAllowed;
@@ -38,10 +40,10 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)forwardNotificationName:(id)arg1 asNotificationName:(id)arg2;
 - (id)init;
-- (void)postNotificationName:(id)arg1 fromSender:(id)arg2;
-- (void)postNotificationName:(id)arg1 fromSender:(id)arg2 userInfo:(id)arg3 shouldForwardExternally:(BOOL)arg4 calledFromNotifierQueue:(BOOL)arg5;
-- (void)receiveNotificationName:(id)arg1 fromSender:(id)arg2 userInfo:(id)arg3;
-- (void)receiveNotificationName:(id)arg1 fromSender:(id)arg2 userInfo:(id)arg3 calledFromNotifierQueue:(BOOL)arg4;
+- (void)postNotificationName:(id)arg1 fromSender:(id)arg2 saveIdentifier:(id)arg3 isFromExternalProcess:(BOOL)arg4;
+- (void)postNotificationName:(id)arg1 fromSender:(id)arg2 saveIdentifier:(id)arg3 userInfo:(id)arg4 shouldForwardExternally:(BOOL)arg5 calledFromNotifierQueue:(BOOL)arg6 isFromExternalProcess:(BOOL)arg7;
+- (void)receiveNotificationName:(id)arg1 fromSender:(id)arg2 saveIdentifier:(id)arg3 userInfo:(id)arg4 calledFromNotifierQueue:(BOOL)arg5 isFromExternalProcess:(BOOL)arg6;
+- (void)receiveNotificationName:(id)arg1 fromSender:(id)arg2 saveIdentifier:(id)arg3 userInfo:(id)arg4 isFromExternalProcess:(BOOL)arg5;
 - (void)removeAllRegisteredNotificationSources;
 - (void)stopSupressionOfNotificationName:(id)arg1;
 - (void)supressNotificationName:(id)arg1;

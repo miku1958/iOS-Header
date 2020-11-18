@@ -6,26 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class BBSettingsGateway, NPSManager;
+@class BBQuietModeOverrideAssertion, BBSettingsGateway, BLTRemoteObject, NPSManager, NSString;
 
 @interface BLTDNDSyncInternal : NSObject
 {
+    NSString *_assertionOnBehalfOfActiveKey;
+    NSString *_assertionActiveKey;
     unsigned long long _bulletinBoardDNDState;
     BOOL _isDNDMirrorEnabled;
     BBSettingsGateway *_settingsGateway;
+    BLTRemoteObject *_connection;
     NPSManager *_npsManager;
+    BBQuietModeOverrideAssertion *_dndAssertionOnBehalfOf;
 }
 
 @property (readonly, nonatomic) unsigned long long bulletinBoardDNDState; // @synthesize bulletinBoardDNDState=_bulletinBoardDNDState;
+@property (strong, nonatomic) BLTRemoteObject *connection; // @synthesize connection=_connection;
+@property (strong, nonatomic) BBQuietModeOverrideAssertion *dndAssertionOnBehalfOf; // @synthesize dndAssertionOnBehalfOf=_dndAssertionOnBehalfOf;
 @property (nonatomic) BOOL isDNDMirrorEnabled; // @synthesize isDNDMirrorEnabled=_isDNDMirrorEnabled;
 @property (strong, nonatomic) NPSManager *npsManager; // @synthesize npsManager=_npsManager;
 @property (strong, nonatomic) BBSettingsGateway *settingsGateway; // @synthesize settingsGateway=_settingsGateway;
 
 - (void).cxx_destruct;
-- (BOOL)_isChangeToDNDSettingObsoleteAtDate:(id)arg1 overrides:(id)arg2;
+- (void)_isChangeToDNDSettingObsoleteAtDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_setAssertionOnBehalfOfActive:(BOOL)arg1;
+- (void)_settingsGatewayReconnected:(id)arg1;
+- (void)_transportConnectionStatusChanged:(id)arg1;
+- (void)_updateOnBehalfOfAssertActiveWithConnectionStatus:(unsigned long long)arg1 updateObserver:(BOOL)arg2;
 - (void)_updateSettingsGatewayTo:(BOOL)arg1 changeDate:(id)arg2;
+- (void)_updateTransportConnectionStatusObserver:(BOOL)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)initWithSettingsGateway:(id)arg1 connection:(id)arg2 assertionActiveKey:(id)arg3 assertionOnBehalfOfActiveKey:(id)arg4;
 - (void)removeDNDHandlers;
 - (void)setBehaviorOverrideStatus:(long long)arg1;
 - (void)setBehaviorOverrideTypes:(unsigned long long)arg1 changedDate:(id)arg2;
@@ -33,7 +45,6 @@
 - (void)setDNDHandlers;
 - (void)setDoNotDisturb:(BOOL)arg1 changeDate:(id)arg2 updateSettingsGateway:(BOOL)arg3;
 - (void)setPrivilegedSenderTypes:(unsigned long long)arg1;
-- (void)synchronizeDNDEnabled:(BOOL)arg1 andChangeDate:(id)arg2;
 - (void)updateDNDMirrorState;
 - (void)updateDNDStateChangedByPreferencesSync:(BOOL)arg1;
 

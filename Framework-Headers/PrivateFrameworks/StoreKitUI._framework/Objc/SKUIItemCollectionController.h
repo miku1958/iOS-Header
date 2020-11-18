@@ -8,33 +8,33 @@
 
 #import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
 #import <StoreKitUI/SKUIItemStateCenterObserver-Protocol.h>
-#import <StoreKitUI/SKUIResourceLoaderDelegate-Protocol.h>
 
 @class NSArray, NSMutableDictionary, NSString, SKUIClientContext, SKUIItemArtworkContext, SKUIResourceLoader, SKUIScreenshotDataConsumer, SKUIStyledImageDataConsumer, UIImage;
 @protocol SKUIItemCollectionDelegate;
 
-@interface SKUIItemCollectionController : NSObject <SKUIArtworkRequestDelegate, SKUIItemStateCenterObserver, SKUIResourceLoaderDelegate>
+@interface SKUIItemCollectionController : NSObject <SKUIArtworkRequestDelegate, SKUIItemStateCenterObserver>
 {
-    SKUIItemArtworkContext *_artworkContext;
+    NSMutableDictionary *_itemIDsToArtworkRequestIDs;
+    UIImage *_placeholderImage;
+    NSMutableDictionary *_itemIDsToScreenshotRequestIDs;
+    BOOL _delegateProvidesScreenshots;
+    UIImage *_landscapeScreenshotPlaceholderImage;
+    UIImage *_portraitScreenshotPlaceholderImage;
+    id<SKUIItemCollectionDelegate> _delegate;
     SKUIResourceLoader *_artworkLoader;
     SKUIClientContext *_clientContext;
-    id<SKUIItemCollectionDelegate> _delegate;
-    BOOL _delegateProvidesScreenshots;
-    NSMutableDictionary *_iconArtworkRequestIDs;
+    SKUIItemArtworkContext *_artworkContext;
     SKUIStyledImageDataConsumer *_iconDataConsumer;
-    NSArray *_items;
     SKUIScreenshotDataConsumer *_landscapeScreenshotDataConsumer;
-    UIImage *_landscapeScreenshotPlaceholderImage;
+    SKUIScreenshotDataConsumer *_portraitScreenshotDataConsumer;
+    NSArray *_items;
     long long _numberOfItemsPerPage;
     double _numberOfPagesToCacheAhead;
-    SKUIScreenshotDataConsumer *_portraitScreenshotDataConsumer;
-    UIImage *_portraitScreenshotPlaceholderImage;
-    UIImage *_placeholderImage;
-    NSMutableDictionary *_screenshotArtworkRequestIDs;
 }
 
 @property (strong, nonatomic) SKUIItemArtworkContext *artworkContext; // @synthesize artworkContext=_artworkContext;
 @property (strong, nonatomic) SKUIResourceLoader *artworkLoader; // @synthesize artworkLoader=_artworkLoader;
+@property (strong, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SKUIItemCollectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -62,11 +62,13 @@
 - (id)_screenshotArtworkRequestWithItem:(id)arg1;
 - (id)_screenshotForItem:(id)arg1;
 - (struct _NSRange)_visibleItemRange;
-- (void)artworkLoaderDidIdle:(id)arg1;
 - (void)artworkRequest:(id)arg1 didLoadImage:(id)arg2;
 - (void)cancelArtworkLoadForItemIndex:(long long)arg1;
 - (void)configureCellLayout:(id)arg1 forIndex:(long long)arg2;
 - (void)dealloc;
+- (void)didEndDisplayingItemAtIndex:(long long)arg1;
+- (void)enterBackground;
+- (void)enterForeground;
 - (id)init;
 - (id)initWithClientContext:(id)arg1;
 - (void)itemStateCenter:(id)arg1 itemStatesChanged:(id)arg2;

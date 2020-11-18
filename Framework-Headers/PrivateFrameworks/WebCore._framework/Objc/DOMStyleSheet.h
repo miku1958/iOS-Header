@@ -21,7 +21,6 @@
 @property (readonly, copy) NSString *type;
 
 - (void)dealloc;
-- (void)finalize;
 
 @end
 

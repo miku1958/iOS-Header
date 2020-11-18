@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <QuickLook/QLRemotePrintPageHelper-Protocol.h>
+#import <QuickLook/QLPrintingProtocol-Protocol.h>
 
 @class NSString, NSURLRequest, QLPreviewConverter, UIWebBrowserView;
 
 __attribute__((visibility("hidden")))
-@interface QLWebViewPrintPageHelper : NSObject <QLRemotePrintPageHelper>
+@interface QLWebViewPrintPageHelper : NSObject <QLPrintingProtocol>
 {
     UIWebBrowserView *_browserView;
     NSURLRequest *_request;
@@ -20,20 +20,18 @@ __attribute__((visibility("hidden")))
     struct CGSize _printableSize;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong) QLPreviewConverter *previewConverter; // @synthesize previewConverter=_previewConverter;
 @property (nonatomic) struct CGSize printableSize; // @synthesize printableSize=_printableSize;
-@property (readonly) Class superclass;
 
 + (BOOL)_isXPathType:(id)arg1;
 + (id)printPageRendererWithBrowserView:(id)arg1 request:(id)arg2 documentType:(id)arg3;
+- (void).cxx_destruct;
 - (void)_waitForPreview;
-- (void)dealloc;
 - (id)initWithWebBrowserView:(id)arg1 request:(id)arg2 documentType:(id)arg3;
 - (long long)numberOfPages;
-- (id)pdfDataForPageAtIndex:(long long)arg1 printingDone:(BOOL *)arg2;
+- (void)numberOfPagesWithSize:(struct CGSize)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)pdfDataForPageAtIndex:(long long)arg1;
+- (void)pdfDataForPageAtIndex:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)prepareForDrawingPages:(struct _NSRange)arg1;
 
 @end

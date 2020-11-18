@@ -6,7 +6,7 @@
 
 #import <UIKit/UISlider.h>
 
-@class UIColor;
+@class UIColor, _UIFeedbackRetargetBehavior;
 
 @interface PSSegmentableSlider : UISlider
 {
@@ -15,14 +15,18 @@
     BOOL _locksToSegment;
     BOOL _snapsToSegment;
     unsigned long long _segmentCount;
+    _UIFeedbackRetargetBehavior *_retargetFeedback;
 }
 
 @property (nonatomic) BOOL locksToSegment; // @synthesize locksToSegment=_locksToSegment;
+@property (strong, nonatomic) _UIFeedbackRetargetBehavior *retargetFeedback; // @synthesize retargetFeedback=_retargetFeedback;
 @property (nonatomic) unsigned long long segmentCount; // @synthesize segmentCount=_segmentCount;
 @property (nonatomic, getter=isSegmented) BOOL segmented; // @synthesize segmented=_segmented;
 @property (nonatomic) BOOL snapsToSegment; // @synthesize snapsToSegment=_snapsToSegment;
 
 - (void).cxx_destruct;
+- (void)controlInteractionBegan:(id)arg1;
+- (void)controlInteractionEnded:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (unsigned long long)numberOfTicks;

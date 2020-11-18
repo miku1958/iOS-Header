@@ -6,33 +6,38 @@
 
 #import <UIKit/UISlider.h>
 
-@class AVLoadedTimeRangesView, AVRateBubbleView, NSArray, NSString, UIImageView;
+@class AVLoadedTimeRangesView, AVRateBubbleView, NSArray, NSString, UIImageView, _UIFeedbackRetargetBehavior;
 
 __attribute__((visibility("hidden")))
 @interface AVScrubber : UISlider
 {
     NSArray *_loadedTimeRanges;
     AVLoadedTimeRangesView *_loadedTimeRangesMaxTrackView;
+    long long _scrubbingSpeed;
     UIImageView *_thumbView;
     double _touchLocationOffsetFromThumbViewCenter;
     double _beginTouchLocationInViewY;
     AVRateBubbleView *_rateBubbleView;
+    _UIFeedbackRetargetBehavior *_feedbackBehavior;
     float _rate;
-    long long _scrubbingSpeed;
+    double _width;
 }
 
 @property (strong, nonatomic) NSArray *loadedTimeRanges;
 @property (readonly, nonatomic) NSString *localizedScrubbingSpeedName;
 @property (readonly, nonatomic, getter=isPreciseScrubbingFeasible) BOOL preciseScrubbingFeasible;
 @property (nonatomic) float rate; // @synthesize rate=_rate;
-@property (nonatomic) long long scrubbingSpeed; // @synthesize scrubbingSpeed=_scrubbingSpeed;
+@property (nonatomic) long long scrubbingSpeed;
+@property (nonatomic) double width; // @synthesize width=_width;
 
 + (id)keyPathsForValuesAffectingLocalizedScrubbingSpeedName;
 + (id)keyPathsForValuesAffectingPreciseScrubbingFeasible;
 - (void).cxx_destruct;
+- (id)_feedbackBehavior;
 - (void)_initSubviews;
 - (void)_layoutSubviewsForBoundsChange:(BOOL)arg1;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (void)cancelTrackingWithEvent:(id)arg1;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (id)createThumbView;
 - (void)dealloc;
@@ -40,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)setBounds:(struct CGRect)arg1;
 
 @end
 

@@ -6,34 +6,66 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, NSString, NSXPCConnection, NSXPCListenerEndpoint;
+#import <CacheDelete/CDService-Protocol.h>
 
-@interface CDService : NSObject
+@class NSSet, NSString;
+@protocol OS_dispatch_queue;
+
+@interface CDService : NSObject <CDService>
 {
     BOOL _doesPeriodic;
     BOOL _doesPurge;
-    BOOL _userAgent;
     BOOL _doNotQuery;
+    BOOL _rootOnly;
     BOOL _multiUserOnly;
     BOOL _noQuota;
-    NSXPCConnection *_xpcConn;
-    NSXPCListenerEndpoint *_endpoint;
+    BOOL __inFlight;
+    BOOL __dead;
     NSString *_ID;
+    NSObject<OS_dispatch_queue> *_serviceQueue;
+    NSObject<OS_dispatch_queue> *_requestQueue;
     NSSet *_desiredNotifications;
+    CDUnknownBlockType _serviceInvalidationHandler;
 }
 
 @property (strong, nonatomic) NSString *ID; // @synthesize ID=_ID;
-@property (strong, nonatomic) NSSet *desiredNotifications; // @synthesize desiredNotifications=_desiredNotifications;
-@property BOOL doNotQuery; // @synthesize doNotQuery=_doNotQuery;
-@property BOOL doesPeriodic; // @synthesize doesPeriodic=_doesPeriodic;
-@property BOOL doesPurge; // @synthesize doesPurge=_doesPurge;
-@property (strong, nonatomic) NSXPCListenerEndpoint *endpoint; // @synthesize endpoint=_endpoint;
-@property BOOL multiUserOnly; // @synthesize multiUserOnly=_multiUserOnly;
-@property BOOL noQuota; // @synthesize noQuota=_noQuota;
-@property BOOL userAgent; // @synthesize userAgent=_userAgent;
-@property (strong, nonatomic) NSXPCConnection *xpcConn; // @synthesize xpcConn=_xpcConn;
+@property (nonatomic) BOOL _dead; // @synthesize _dead=__dead;
+@property (nonatomic) BOOL _inFlight; // @synthesize _inFlight=__inFlight;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) NSSet *desiredNotifications; // @synthesize desiredNotifications=_desiredNotifications;
+@property (nonatomic) BOOL doNotQuery; // @synthesize doNotQuery=_doNotQuery;
+@property (nonatomic) BOOL doesPeriodic; // @synthesize doesPeriodic=_doesPeriodic;
+@property (nonatomic) BOOL doesPurge; // @synthesize doesPurge=_doesPurge;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL inFlight;
+@property (nonatomic) BOOL multiUserOnly; // @synthesize multiUserOnly=_multiUserOnly;
+@property (nonatomic) BOOL noQuota; // @synthesize noQuota=_noQuota;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *requestQueue; // @synthesize requestQueue=_requestQueue;
+@property (nonatomic) BOOL rootOnly; // @synthesize rootOnly=_rootOnly;
+@property (copy, nonatomic) CDUnknownBlockType serviceInvalidationHandler; // @synthesize serviceInvalidationHandler=_serviceInvalidationHandler;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *serviceQueue; // @synthesize serviceQueue=_serviceQueue;
+@property (readonly) Class superclass;
 
++ (id)serviceWithInfo:(id)arg1;
++ (id)serviceWithInfo:(id)arg1 endpoint:(id)arg2;
++ (id)serviceWithInfo:(id)arg1 extension:(id)arg2;
 - (void).cxx_destruct;
+- (void)_serviceCallback:(id)arg1 replyBlock:(CDUnknownBlockType)arg2;
+- (void)_serviceCancelPurge:(CDUnknownBlockType)arg1;
+- (void)_serviceNotify:(id)arg1 replyBlock:(CDUnknownBlockType)arg2;
+- (void)_servicePeriodic:(int)arg1 info:(id)arg2 replyBlock:(CDUnknownBlockType)arg3;
+- (void)_servicePing:(CDUnknownBlockType)arg1;
+- (void)_servicePurge:(int)arg1 info:(id)arg2 replyBlock:(CDUnknownBlockType)arg3;
+- (void)_servicePurgeable:(int)arg1 info:(id)arg2 replyBlock:(CDUnknownBlockType)arg3;
+- (id)initWithInfo:(id)arg1;
+- (void)serviceCallback:(id)arg1 replyBlock:(CDUnknownBlockType)arg2;
+- (void)serviceCancelPurge:(CDUnknownBlockType)arg1;
+- (void)serviceNotify:(id)arg1 replyBlock:(CDUnknownBlockType)arg2;
+- (void)servicePeriodic:(int)arg1 info:(id)arg2 replyBlock:(CDUnknownBlockType)arg3;
+- (void)servicePing:(CDUnknownBlockType)arg1;
+- (void)servicePurge:(int)arg1 info:(id)arg2 replyBlock:(CDUnknownBlockType)arg3;
+- (void)servicePurgeable:(int)arg1 info:(id)arg2 replyBlock:(CDUnknownBlockType)arg3;
 
 @end
 

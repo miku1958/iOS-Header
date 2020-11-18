@@ -12,14 +12,21 @@
 
 @interface NCWidgetController : NSObject <_NCWidgetController_Service_IPC>
 {
+    NCWidgetController *_strongReference;
     NSXPCConnection *_connection;
 }
 
+@property (strong, nonatomic, getter=_connection, setter=_setConnection:) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (strong, nonatomic, getter=_strongReference, setter=_setStrongReference:) NCWidgetController *strongReference; // @synthesize strongReference=_strongReference;
+
++ (id)widgetContentUnavailableViewWithTitle:(id)arg1;
 + (id)widgetController;
+- (void).cxx_destruct;
 - (void)__didReceiveHasContentRequest;
 - (id)_connectionForRequest;
 - (void)_invalidateConnection;
 - (void)dealloc;
+- (void)requestRefreshAfterDate:(id)arg1 forWidgetWithBundleIdentifier:(id)arg2;
 - (void)setHasContent:(BOOL)arg1 forWidgetWithBundleIdentifier:(id)arg2;
 
 @end

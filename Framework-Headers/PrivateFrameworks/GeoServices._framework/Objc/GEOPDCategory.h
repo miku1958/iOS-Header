@@ -26,6 +26,7 @@
 + (id)_allCategoriesForPlaceData:(id)arg1 type:(unsigned int)arg2;
 + (id)categoryNamesForPlaceData:(id)arg1 type:(unsigned int)arg2;
 + (BOOL)hasCategoryNamesForPlaceData:(id)arg1 type:(unsigned int)arg2;
++ (Class)localizedNameType;
 - (void)addLocalizedName:(id)arg1;
 - (void)clearLocalizedNames;
 - (void)copyTo:(id)arg1;

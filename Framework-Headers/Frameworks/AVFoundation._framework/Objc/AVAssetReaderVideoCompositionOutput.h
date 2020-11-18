@@ -23,9 +23,11 @@
 - (id)_asset;
 - (BOOL)_enableTrackExtractionReturningError:(id *)arg1;
 - (id)_errorForOSStatus:(int)arg1;
+- (id)_formatDescriptions;
 - (BOOL)_prepareForReadingReturningError:(id *)arg1;
 - (void)_setVideoComposition:(id)arg1;
 - (void)_setVideoComposition:(id)arg1 customVideoCompositorSession:(id)arg2;
+- (id)_videoCompositionProcessorColorProperties;
 - (BOOL)alwaysCopiesSampleData;
 - (void)dealloc;
 - (id)description;

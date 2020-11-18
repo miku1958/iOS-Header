@@ -11,10 +11,12 @@
 
 @interface TrustCertificateViewController : UINavigationController
 {
+    BOOL _allowCertificateTrust;
     id<TrustCertificateViewControllerDelegate> _trustCertificateDelegate;
     CertificateViewController *_certificateViewController;
 }
 
+@property (nonatomic) BOOL allowCertificateTrust; // @synthesize allowCertificateTrust=_allowCertificateTrust;
 @property (strong, nonatomic) CertificateViewController *certificateViewController; // @synthesize certificateViewController=_certificateViewController;
 @property (weak, nonatomic) id<TrustCertificateViewControllerDelegate> trustCertificateDelegate; // @synthesize trustCertificateDelegate=_trustCertificateDelegate;
 
@@ -25,7 +27,9 @@
 - (void)_setupNavItem;
 - (void)didReceiveMemoryWarning;
 - (id)initWithTrust:(struct __SecTrust *)arg1 action:(int)arg2 delegate:(id)arg3;
+- (id)initWithTrust:(struct __SecTrust *)arg1 action:(int)arg2 delegate:(id)arg3 allowTrust:(BOOL)arg4;
 - (id)initWithTrustCertificateDelegate:(id)arg1;
+- (id)initWithTrustCertificateDelegate:(id)arg1 allowTrust:(BOOL)arg2;
 - (void)setCertificateInfo:(id)arg1 issuer:(id)arg2 purpose:(id)arg3 expiration:(id)arg4 isRoot:(BOOL)arg5 properties:(id)arg6 action:(int)arg7;
 - (void)setShowCertificateButton:(BOOL)arg1 localizedTitle:(id)arg2 localizedDescription:(id)arg3 destructive:(BOOL)arg4 handler:(CDUnknownBlockType)arg5;
 

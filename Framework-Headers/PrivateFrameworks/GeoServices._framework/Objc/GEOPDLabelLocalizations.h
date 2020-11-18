@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *localizedStrings; // @synthesize localizedStrings=_localizedStrings;
 
++ (Class)localizedStringType;
 - (void)addLocalizedString:(id)arg1;
 - (id)bestLocalizedName;
 - (void)clearLocalizedStrings;

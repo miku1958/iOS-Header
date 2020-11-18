@@ -16,6 +16,7 @@
 - (id)_accessibilityScrollStatus;
 - (void)_accessibilitySendScrollStatus;
 - (BOOL)_axScrollPageController:(BOOL)arg1;
+- (void)_pageControlValueChanged:(id)arg1;
 - (BOOL)accessibilityScroll:(long long)arg1;
 
 @end

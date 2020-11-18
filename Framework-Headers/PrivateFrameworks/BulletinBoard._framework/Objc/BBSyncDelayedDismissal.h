@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class BBBulletin;
 
@@ -17,7 +17,7 @@
 @property (strong, nonatomic) BBBulletin *bulletin; // @synthesize bulletin=_bulletin;
 @property (nonatomic) unsigned long long feeds; // @synthesize feeds=_feeds;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

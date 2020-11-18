@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/BBDataProviderConnectionCheckinServer-Protocol.h>
 #import <BulletinBoard/BBDataProviderStore-Protocol.h>
 #import <BulletinBoard/BBRemoteDataProviderStoreDelegate-Protocol.h>
 #import <BulletinBoard/NSXPCListenerDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSXPCListener;
+@class BKSApplicationStateMonitor, NSMutableDictionary, NSString, NSXPCListener;
 @protocol BBDataProviderStoreDelegate, OS_dispatch_queue;
 
 @interface BBRemoteDataProviderConnectionResolver : NSObject <BBDataProviderConnectionCheckinServer, BBRemoteDataProviderStoreDelegate, NSXPCListenerDelegate, BBDataProviderStore>
@@ -25,6 +25,7 @@
     NSMutableDictionary *_xpcConnectionsByService;
     id<BBDataProviderStoreDelegate> _delegate;
     int _listeningToken;
+    BKSApplicationStateMonitor *_appStateMonitor;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -33,6 +34,8 @@
 @property (readonly) Class superclass;
 
 + (id)resolverWithDelegate:(id)arg1;
++ (id)xpcInterface;
+- (void).cxx_destruct;
 - (void)_registerForPublicationNotification;
 - (void)_registerServiceName:(id)arg1 appBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)dataProviderForSectionID:(id)arg1;

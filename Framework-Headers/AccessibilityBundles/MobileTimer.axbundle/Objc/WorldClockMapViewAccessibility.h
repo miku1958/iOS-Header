@@ -15,13 +15,11 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityAnnounceSolarRegionChange:(struct CGPoint)arg1;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityRemoveSolarTerminatorPath;
 - (id)accessibilityElements;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (void)addCity:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isAccessibilityElement;
 - (void)removeCity:(id)arg1;
 

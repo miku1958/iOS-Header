@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSString;
 
@@ -41,8 +41,8 @@
 @property (copy) NSArray *teamIDs; // @synthesize teamIDs=_teamIDs;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)_probeEntitlementsWithConnection:(id)arg1;
-- (void)dealloc;
 - (id)initWithConnection:(id)arg1;
 
 @end

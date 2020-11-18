@@ -7,6 +7,7 @@
 #import <UIKit/UITextView.h>
 
 @interface UITextView (DataDetectorsOperationExtensions)
+- (BOOL)dd_ignoreSignatures;
 - (id)dd_newOperation;
 @end
 

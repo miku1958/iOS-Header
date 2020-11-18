@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKDPIdentifier *user; // @synthesize user=_user;
 
 - (void).cxx_destruct;
+- (int)StringAsState:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -54,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)stateAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

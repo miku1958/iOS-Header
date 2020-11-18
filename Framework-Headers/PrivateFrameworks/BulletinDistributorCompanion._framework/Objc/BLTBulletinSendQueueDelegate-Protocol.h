@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <BulletinDistributorCompanion/NSObject-Protocol.h>
+#import <BulletinDistributorCompanion/BLTSendQueueSerializerDelegate-Protocol.h>
 
-@class IDSProtobuf, NSDictionary, NSNumber, NSURL, PBCodable;
+@class NSNumber, PBCodable;
 
-@protocol BLTBulletinSendQueueDelegate <NSObject>
-- (void)handleIDSProtobuf:(IDSProtobuf *)arg1;
-- (void)sendFileURL:(NSURL *)arg1 withTimeout:(NSNumber *)arg2 extraMetadata:(NSDictionary *)arg3 didSend:(void (^)(BOOL, NSError *))arg4 didQueue:(void (^)(void))arg5;
+@protocol BLTBulletinSendQueueDelegate <BLTSendQueueSerializerDelegate>
 - (void)sendRequest:(PBCodable *)arg1 type:(unsigned short)arg2 withTimeout:(NSNumber *)arg3 didSend:(void (^)(BOOL, NSError *))arg4 didQueue:(void (^)(void))arg5;
 @end
 

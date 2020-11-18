@@ -67,6 +67,8 @@
 + (unsigned long long)priorityForAlbumKind:(int)arg1;
 + (void)pushChangesFromAlbumContainer:(id)arg1 toAlbumContainer:(id)arg2;
 + (void)restoreAlbumListFromPersistedDataAtPath:(id)arg1 library:(id)arg2;
++ (id)scenesAlbumListInManagedObjectContext:(id)arg1;
++ (id)scenesAlbumListInPhotoLibrary:(id)arg1;
 + (id)wallpaperAlbumListInPhotoLibrary:(id)arg1;
 - (id)_albumsCountFetchRequest;
 - (BOOL)albumHasFixedOrder:(struct NSObject *)arg1;

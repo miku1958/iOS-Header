@@ -4,25 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <NotesShared/ICHasDatabaseScope-Protocol.h>
 #import <NotesShared/NSObject-Protocol.h>
 
-@class CKModifyRecordsOperation, CKRecord, CKRecordID, CKRecordZoneID, NSArray, NSError, NSString;
+@class CKModifyRecordsOperation, CKRecord, CKRecordID, NSArray, NSError, NSManagedObjectContext, NSManagedObjectID, NSString;
 
-@protocol ICCloudObject <NSObject>
-+ (NSArray *)allCloudObjects;
-+ (id)existingCloudObjectForRecordID:(CKRecordID *)arg1;
-+ (id)newCloudObjectForRecord:(CKRecord *)arg1;
+@protocol ICCloudObject <NSObject, ICHasDatabaseScope>
++ (NSArray *)allCloudObjectsInContext:(NSManagedObjectContext *)arg1;
++ (id)existingCloudObjectForRecordID:(CKRecordID *)arg1 context:(NSManagedObjectContext *)arg2;
++ (id)newCloudObjectForRecord:(CKRecord *)arg1 context:(NSManagedObjectContext *)arg2;
++ (id)newPlaceholderObjectForRecordID:(CKRecordID *)arg1 context:(NSManagedObjectContext *)arg2;
 - (NSString *)className;
 - (void)deleteFromLocalDatabase;
+- (void)didDeleteUserSpecificRecordID:(CKRecordID *)arg1;
+- (void)didFailToSaveUserSpecificRecord:(CKRecord *)arg1 error:(NSError *)arg2;
+- (void)didFetchUserSpecificRecord:(CKRecord *)arg1;
+- (void)didSaveUserSpecificRecord:(CKRecord *)arg1;
 - (void)fixBrokenReferences;
 - (BOOL)isInICloudAccount;
 - (BOOL)isValidObject;
+- (NSString *)loggingDescription;
 - (void)mergeDataFromRecord:(CKRecord *)arg1;
 - (BOOL)needsToBeDeletedFromCloud;
 - (BOOL)needsToBeFetchedFromCloud;
 - (BOOL)needsToBePushedToCloud;
+- (BOOL)needsToSaveUserSpecificRecord;
 - (CKRecord *)newlyCreatedRecord;
-- (void)objectFailedToBePushedToCloudWithOperation:(CKModifyRecordsOperation *)arg1 error:(NSError *)arg2;
+- (CKRecord *)newlyCreatedUserSpecificRecord;
+- (void)objectFailedToBePushedToCloudWithOperation:(CKModifyRecordsOperation *)arg1 record:(CKRecord *)arg2 error:(NSError *)arg3;
+- (NSManagedObjectID *)objectID;
 - (void)objectWasDeletedFromCloud;
 - (void)objectWasDeletedFromCloudByAnotherDevice;
 - (void)objectWasFetchedButDoesNotExistInCloud;
@@ -32,6 +42,7 @@
 - (NSArray *)objectsToBeDeletedBeforeThisObject;
 - (CKRecordID *)recordID;
 - (NSString *)recordType;
-- (CKRecordZoneID *)recordZoneID;
+- (CKRecordID *)userSpecificRecordID;
+- (BOOL)wantsUserSpecificRecord;
 @end
 

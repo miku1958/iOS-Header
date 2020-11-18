@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
 @property (nonatomic) unsigned int sourceVersion; // @synthesize sourceVersion=_sourceVersion;
 
++ (Class)attributionURLsType;
 - (void)addAttributionURLs:(id)arg1;
 - (id)attributionURLsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)attributionURLsCount;

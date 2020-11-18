@@ -6,7 +6,8 @@
 
 #import <ContactsFoundation/CNObservable.h>
 
-@class NSArray, NSMutableArray;
+@class NSArray, NSMutableArray, NSMutableIndexSet;
+@protocol CNScheduler;
 
 __attribute__((visibility("hidden")))
 @interface _CNCombineLatestObservable : CNObservable
@@ -14,19 +15,25 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_observables;
     NSMutableArray *_results;
     NSMutableArray *_tokens;
-    NSMutableArray *_isSequenceActive;
+    NSMutableIndexSet *_silentObservableIndexes;
+    NSMutableIndexSet *_activeObservableIndexes;
+    id<CNScheduler> _observerScheduler;
 }
 
-@property (readonly, nonatomic) NSMutableArray *isSequenceActive; // @synthesize isSequenceActive=_isSequenceActive;
+@property (readonly, nonatomic) NSMutableIndexSet *activeObservableIndexes; // @synthesize activeObservableIndexes=_activeObservableIndexes;
 @property (readonly, nonatomic) NSArray *observables; // @synthesize observables=_observables;
+@property (readonly, nonatomic) id<CNScheduler> observerScheduler; // @synthesize observerScheduler=_observerScheduler;
 @property (readonly, nonatomic) NSMutableArray *results; // @synthesize results=_results;
+@property (readonly, nonatomic) NSMutableIndexSet *silentObservableIndexes; // @synthesize silentObservableIndexes=_silentObservableIndexes;
 @property (readonly, nonatomic) NSMutableArray *tokens; // @synthesize tokens=_tokens;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithObservables:(id)arg1;
+- (id)initWithObservables:(id)arg1 schedulerProvider:(id)arg2;
 - (void)observableAtIndex:(unsigned long long)arg1 didFailWithError:(id)arg2 forObserver:(id)arg3;
 - (void)observableAtIndex:(unsigned long long)arg1 didReceiveResult:(id)arg2 forObserver:(id)arg3;
 - (void)observableAtIndexDidComplete:(unsigned long long)arg1 forObserver:(id)arg2;
+- (void)performWithResourceLock:(CDUnknownBlockType)arg1;
 - (id)subscribe:(id)arg1;
 
 @end

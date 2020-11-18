@@ -6,10 +6,12 @@
 
 #import <Accounts/ACAccount.h>
 
-@class NSDictionary, NSNumber, NSString, NSURL;
+@class NSArray, NSDictionary, NSNumber, NSString, NSURL;
 
 @interface ACAccount (CalAdditions)
 
+@property BOOL calAttachmentDownloadHasTakenPlace;
+@property (readonly) NSArray *calCalDAVChildAccounts;
 @property (strong) NSString *calCollectionSetName;
 @property (readonly) NSURL *calExchangeWebServicesURL;
 @property (readonly) NSURL *calExternalExchangeWebServicesURL;
@@ -23,6 +25,7 @@
 @property BOOL calIsEnabledForCalendar;
 @property BOOL calIsEnabledForReminders;
 @property (readonly) BOOL calIsExchangeAccount;
+@property (readonly) BOOL calIsGenericCalDAVAccount;
 @property (readonly) BOOL calIsMissingParentAccount;
 @property BOOL calLocalDataMigrationHasTakenPlace;
 @property (copy) NSString *calMainPrincipalUID;
@@ -31,6 +34,7 @@
 @property BOOL calPushDisabled;
 @property long long calRefreshInterval;
 @property (copy) NSString *calRootFolderID;
+@property BOOL calServerSyncHasTakenPlace;
 @property (copy) NSURL *calServerURL;
 @property BOOL calSkipCredentialVerification;
 @property BOOL calUseExternalURL;
@@ -39,19 +43,20 @@
 @property (copy) NSString *calWebServicesRecordGUID;
 
 - (id)_accountPropertiesKeys;
+- (id)_calDAVDataclassProperties;
 - (id)_createExchangeWebServicesURLFromURL:(id)arg1;
 - (BOOL)_dataclassIsEnabled:(id)arg1;
 - (id)_diffAccountPropertiesWithAccount:(id)arg1 firstPropertyOnly:(BOOL)arg2;
 - (id)_diffPropertiesWithAccount:(id)arg1 firstPropertyOnly:(BOOL)arg2;
 - (id)_diffWithAccount:(id)arg1 firstPropertyOnly:(BOOL)arg2;
 - (id)_schemeStringForUseSSL:(BOOL)arg1;
+- (void)_setCalInternalValue:(id)arg1 forAccountPropertyKey:(id)arg2;
 - (void)_setIsEnabled:(BOOL)arg1 forDataclass:(id)arg2;
-- (void)_setValue:(id)arg1 forAccountPropertyKey:(id)arg2;
 - (id)_updateURL:(id)arg1 withHost:(id)arg2 port:(id)arg3 useSSL:(id)arg4;
 - (BOOL)_useSSLForSchemeString:(id)arg1;
 - (void)addPrincipal:(id)arg1 withUID:(id)arg2;
+- (id)calPrincipalURLForMainPrincipal;
 - (id)calPrincipalURLForPrincipalWithUID:(id)arg1;
-- (id)calPrincipalURLForPrincipalWithUID:(id)arg1 serverURL:(id)arg2;
 - (void)createDictionaryForPrincipalWithUID:(id)arg1;
 - (id)diffWithAccount:(id)arg1;
 - (id)firstDifferentPropertyWithAccount:(id)arg1;

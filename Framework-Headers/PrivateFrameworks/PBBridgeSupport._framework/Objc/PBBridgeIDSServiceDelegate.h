@@ -38,6 +38,7 @@
 - (id)customDescriptionOfMessageType:(unsigned short)arg1;
 - (void)endSetupTransaction;
 - (void)reportConnectionForService:(id)arg1 accounts:(id)arg2 devices:(id)arg3;
+- (void)resetTransportReachabilityTimer;
 - (id)sendProtoBuf:(id)arg1 service:(id)arg2 priority:(long long)arg3 responseIdentifier:(id)arg4 expectsResponse:(BOOL)arg5 retryCount:(long long)arg6 retryInterval:(double)arg7;
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(BOOL)arg4 error:(id)arg5;
 - (void)service:(id)arg1 account:(id)arg2 incomingUnhandledProtobuf:(id)arg3 fromID:(id)arg4 context:(id)arg5;

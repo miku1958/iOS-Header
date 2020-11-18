@@ -13,9 +13,11 @@ __attribute__((visibility("hidden")))
 {
     NSArray *_uuids;
     NSString *_displayTitle;
+    NSString *_displaySubtitle;
     NSString *_searchString;
 }
 
+@property (copy, nonatomic) NSString *displaySubtitle; // @synthesize displaySubtitle=_displaySubtitle;
 @property (copy, nonatomic) NSString *displayTitle; // @synthesize displayTitle=_displayTitle;
 @property (copy, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 @property (strong, nonatomic) NSArray *uuids; // @synthesize uuids=_uuids;

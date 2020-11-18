@@ -14,30 +14,36 @@ __attribute__((visibility("hidden")))
 {
     NSLayoutConstraint *_goButtonWidthConstraint;
     struct {
-        unsigned int delegateRespondsToGoButtonTapped:1;
-        unsigned int delegateRespondsToLearnMoreTapped:1;
-    } _delegateFlags;
-    BOOL _goButtonEnabled;
+        BOOL goButtonTapped;
+        BOOL learnMoreTapped;
+        BOOL notNowTapped;
+    } _delegateRespondsTo;
+    BOOL _buttonsEnabled;
     id<PUCloudPhotoWelcomeViewDelegate> _delegate;
     UIImageView *_graphicImageView;
     UILabel *_titleLabel;
     UILabel *_bodyLabel;
     UIButton *_goButton;
     UILabel *_finePrintLabel;
+    UIButton *_learnMoreButton;
+    UIButton *_notNowButton;
 }
 
-@property (strong, nonatomic) UILabel *bodyLabel; // @synthesize bodyLabel=_bodyLabel;
+@property (readonly, nonatomic) UILabel *bodyLabel; // @synthesize bodyLabel=_bodyLabel;
+@property (nonatomic, getter=areButtonsEnabled) BOOL buttonsEnabled; // @synthesize buttonsEnabled=_buttonsEnabled;
 @property (weak, nonatomic) id<PUCloudPhotoWelcomeViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) UILabel *finePrintLabel; // @synthesize finePrintLabel=_finePrintLabel;
-@property (strong, nonatomic) UIButton *goButton; // @synthesize goButton=_goButton;
-@property (nonatomic, getter=goButtonIsEnabled) BOOL goButtonEnabled; // @synthesize goButtonEnabled=_goButtonEnabled;
-@property (strong, nonatomic) UIImageView *graphicImageView; // @synthesize graphicImageView=_graphicImageView;
-@property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (readonly, nonatomic) UILabel *finePrintLabel; // @synthesize finePrintLabel=_finePrintLabel;
+@property (readonly, nonatomic) UIButton *goButton; // @synthesize goButton=_goButton;
+@property (readonly, nonatomic) UIImageView *graphicImageView; // @synthesize graphicImageView=_graphicImageView;
+@property (readonly, nonatomic) UIButton *learnMoreButton; // @synthesize learnMoreButton=_learnMoreButton;
+@property (readonly, nonatomic) UIButton *notNowButton; // @synthesize notNowButton=_notNowButton;
+@property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 + (void)initialize;
 - (void).cxx_destruct;
 - (id)_goButtonBackgroundImageWithColor:(id)arg1;
 - (void)_goButtonTapped:(id)arg1;
+- (void)_handleNotNowTapped:(id)arg1;
 - (void)_learnMoreTapped:(id)arg1;
 - (void)_setupSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;

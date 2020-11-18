@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapRegion, NSMutableArray;
+@class GEOMapRegion, NSMutableArray, PBUnknownFields;
 
 @interface GEOPDLocationDirectedSearchResult : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_disambiguationLabels;
     GEOMapRegion *_displayMapRegion;
 }
@@ -19,7 +20,9 @@
 @property (strong, nonatomic) NSMutableArray *disambiguationLabels; // @synthesize disambiguationLabels=_disambiguationLabels;
 @property (strong, nonatomic) GEOMapRegion *displayMapRegion; // @synthesize displayMapRegion=_displayMapRegion;
 @property (readonly, nonatomic) BOOL hasDisplayMapRegion;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)disambiguationLabelType;
 - (void)addDisambiguationLabel:(id)arg1;
 - (void)clearDisambiguationLabels;
 - (void)copyTo:(id)arg1;

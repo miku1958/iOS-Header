@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKDPAsset *manifest; // @synthesize manifest=_manifest;
 @property (strong, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
 
++ (Class)sectionsType;
 - (void).cxx_destruct;
 - (void)addSections:(id)arg1;
 - (void)clearSections;

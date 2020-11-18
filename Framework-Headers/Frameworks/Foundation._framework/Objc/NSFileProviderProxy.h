@@ -6,18 +6,33 @@
 
 #import <Foundation/NSFileReactorProxy.h>
 
+@class NSFileProviderXPCMessenger, NSString, NSUUID;
+@protocol NSFileProviderXPCInterface><NSXPCProxyCreating;
+
 __attribute__((visibility("hidden")))
 @interface NSFileProviderProxy : NSFileReactorProxy
 {
+    NSString *_secureID;
+    NSUUID *_uniqueID;
+    id<NSFileProviderXPCInterface><NSXPCProxyCreating> _remoteProvider;
+    NSFileProviderXPCMessenger *_forwardedMessenger;
     BOOL _wantsWriteNotifications;
 }
 
+@property (readonly) id<NSFileProviderXPCInterface><NSXPCProxyCreating> remoteProvider; // @synthesize remoteProvider=_remoteProvider;
+@property (readonly) NSString *secureID; // @synthesize secureID=_secureID;
+@property (readonly) NSUUID *uniqueID; // @synthesize uniqueID=_uniqueID;
 @property BOOL wantsWriteNotifications; // @synthesize wantsWriteNotifications=_wantsWriteNotifications;
 
-- (void)forwardUsingMessageSender:(CDUnknownBlockType)arg1;
+- (id)_clientProxy;
+- (BOOL)allowedForURL:(id)arg1;
+- (void)dealloc;
+- (void)forwardUsingProxy:(id)arg1;
+- (id)initWithClient:(id)arg1 remoteProvider:(id)arg2 reactorID:(id)arg3 secureID:(id)arg4 uniqueID:(id)arg5;
+- (void)invalidate;
 - (void)observeEndOfWriteAtLocation:(id)arg1 forAccessClaim:(id)arg2;
 - (void)observePresentationChangeOfKind:(id)arg1 withPresenter:(id)arg2 url:(id)arg3 newURL:(id)arg4;
-- (CDUnknownBlockType)provideItemAtURL:(id)arg1 recursively:(BOOL)arg2 forAccessClaim:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (CDUnknownBlockType)provideItemAtURL:(id)arg1 withOptions:(unsigned long long)arg2 forAccessClaim:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)provideLogicalURLForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)providePhysicalURLForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setItemLocation:(id)arg1;

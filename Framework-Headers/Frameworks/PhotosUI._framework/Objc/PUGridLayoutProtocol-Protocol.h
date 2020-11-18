@@ -21,6 +21,7 @@
 @property (nonatomic) double sectionHeaderHeight;
 @property (nonatomic) BOOL sectionHeadersEnabled;
 @property (nonatomic) double sectionTopPadding;
+@property (nonatomic) BOOL usesAspectItems;
 
 - (NSArray *)assetIndexPathsForElementsInRect:(struct CGRect)arg1;
 - (void)finalizeViewTransitionToSize;

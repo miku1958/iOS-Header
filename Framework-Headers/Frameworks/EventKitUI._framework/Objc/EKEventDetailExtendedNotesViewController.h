@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL editItemShouldBeAskedForInjectableViewController;
 @property (copy, nonatomic) NSString *notes;
 @property (nonatomic) BOOL presentModally;
+@property (nonatomic) BOOL useCustomBackButton;
 
 - (void).cxx_destruct;
 - (id)_textView;

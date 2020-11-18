@@ -6,12 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-#import <Contacts/ABSearchOperationDelegate-Protocol.h>
+#import <Contacts/ABPredicateDelegate-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNiOSABEKParticipantMatchingSearchOperationDelegate : NSObject <ABSearchOperationDelegate>
+@interface CNiOSABEKParticipantMatchingSearchOperationDelegate : NSObject <ABPredicateDelegate>
 {
     CDUnknownBlockType _completionHandler;
 }
@@ -22,9 +22,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)_completeWithRecord:(void *)arg1;
 - (void)dealloc;
-- (void)searchOperation:(id)arg1 didFindMatches:(id)arg2 moreComing:(BOOL)arg3;
+- (BOOL)predicateShouldContinue:(id)arg1;
+- (BOOL)predicateShouldContinue:(id)arg1 afterFindingRecord:(void *)arg2;
 
 @end
 

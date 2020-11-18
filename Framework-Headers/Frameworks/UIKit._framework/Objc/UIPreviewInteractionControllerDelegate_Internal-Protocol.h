@@ -10,10 +10,11 @@
 
 @protocol UIPreviewInteractionControllerDelegate_Internal <UIPreviewInteractionControllerDelegate_Private>
 
-@property (readonly) struct CGRect sourceRect;
+@property (readonly, nonatomic) struct CGRect sourceRect;
 
 
 @optional
 - (void)previewInteractionController:(UIPreviewInteractionController *)arg1 didSelectMenuItem:(UIPreviewMenuItem *)arg2;
+- (BOOL)previewInteractionControllerShouldPerformCompatibilityCommitTransition:(UIPreviewInteractionController *)arg1;
 @end
 

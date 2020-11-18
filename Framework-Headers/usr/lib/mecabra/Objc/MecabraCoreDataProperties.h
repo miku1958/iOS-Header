@@ -11,12 +11,10 @@
 @interface MecabraCoreDataProperties : NSObject
 {
     NSMutableDictionary *_descriptionDictionary;
-    NSString *_identifier;
     NSString *_type;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *descriptionDictionary; // @synthesize descriptionDictionary=_descriptionDictionary;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, strong, nonatomic) NSString *type; // @synthesize type=_type;
 @property (readonly, nonatomic) NSString *ubiquityContainerIdentifier;
 

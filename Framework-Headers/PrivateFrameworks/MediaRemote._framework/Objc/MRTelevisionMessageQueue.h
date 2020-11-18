@@ -13,17 +13,17 @@
 {
     MRPendingMessageQueue *_pendingMessageQueue;
     NSMutableDictionary *_pendingReplyQueue;
+    BOOL _stopped;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
 - (void)_processNextMessages:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (void)enqueueMessage:(id)arg1;
-- (void)enqueueMessage:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)enqueueMessage:(id)arg1 reply:(CDUnknownBlockType)arg2 queue:(id)arg3;
+- (void)enqueueMessage:(id)arg1 reply:(CDUnknownBlockType)arg2 queue:(id)arg3 createDataBlock:(CDUnknownBlockType)arg4;
 - (id)initWithMaxLowPriorityMessagesAllowed:(unsigned long long)arg1;
 - (void)processNextMessages:(CDUnknownBlockType)arg1;
 - (BOOL)reply:(id)arg1;
+- (void)stop;
 
 @end
 

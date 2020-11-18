@@ -29,25 +29,23 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic, setter=_setTransitionLayout:) UICollectionViewTransitionLayout *_transitionLayout; // @synthesize _transitionLayout=__transitionLayout;
 @property (strong, nonatomic) NSIndexPath *anchorItemIndexPath; // @synthesize anchorItemIndexPath=_anchorItemIndexPath;
-@property (nonatomic) struct CGSize currentInteractiveCenterOffset; // @synthesize currentInteractiveCenterOffset=_currentInteractiveCenterOffset;
-@property (nonatomic) double currentInteractiveProgress; // @synthesize currentInteractiveProgress=_currentInteractiveProgress;
+@property (readonly, nonatomic) long long completionCurve;
+@property (readonly, nonatomic) double completionSpeed;
+@property (nonatomic, setter=_setCurrentInteractiveCenterOffset:) struct CGSize currentInteractiveCenterOffset; // @synthesize currentInteractiveCenterOffset=_currentInteractiveCenterOffset;
+@property (nonatomic, setter=_setCurrentInteractiveProgress:) double currentInteractiveProgress; // @synthesize currentInteractiveProgress=_currentInteractiveProgress;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInteractive) BOOL interactive; // @synthesize interactive=_interactive;
-@property (nonatomic) unsigned long long originZoomLevel; // @synthesize originZoomLevel=_originZoomLevel;
+@property (nonatomic, setter=_setOriginZoomLevel:) unsigned long long originZoomLevel; // @synthesize originZoomLevel=_originZoomLevel;
 @property (readonly) Class superclass;
-@property (nonatomic) unsigned long long targetZoomLevel; // @synthesize targetZoomLevel=_targetZoomLevel;
+@property (nonatomic, setter=_setTargetZoomLevel:) unsigned long long targetZoomLevel; // @synthesize targetZoomLevel=_targetZoomLevel;
 @property (strong, nonatomic) id<UIViewControllerContextTransitioning> transitionContext; // @synthesize transitionContext=_transitionContext;
-@property (nonatomic) unsigned long long transitionState; // @synthesize transitionState=_transitionState;
+@property (nonatomic, setter=_setTransitionState:) unsigned long long transitionState; // @synthesize transitionState=_transitionState;
+@property (readonly, nonatomic) BOOL wantsInteractiveStart;
 @property (readonly, weak, nonatomic) PUMomentsZoomLevelManager *zoomLevelManager; // @synthesize zoomLevelManager=_zoomLevelManager;
 
 - (void).cxx_destruct;
-- (void)_setCurrentInteractiveCenterOffset:(struct CGSize)arg1;
-- (void)_setCurrentInteractiveProgress:(double)arg1;
-- (void)_setOriginZoomLevel:(unsigned long long)arg1;
-- (void)_setTargetZoomLevel:(unsigned long long)arg1;
-- (void)_setTransitionState:(unsigned long long)arg1;
 - (void)cancelInteractiveTransitionAnimated;
 - (void)finishInteractiveTransitionAnimated;
 - (id)initWithOriginLevel:(unsigned long long)arg1 targetLevel:(unsigned long long)arg2 zoomLevelManager:(id)arg3 interactive:(BOOL)arg4;

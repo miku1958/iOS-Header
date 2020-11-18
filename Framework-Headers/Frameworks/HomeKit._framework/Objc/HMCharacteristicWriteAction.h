@@ -10,12 +10,11 @@
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
 @class HMCharacteristic, NSString, NSUUID;
-@protocol NSCopying;
 
 @interface HMCharacteristicWriteAction : HMAction <NSSecureCoding, HMObjectMerge>
 {
     HMCharacteristic *_characteristic;
-    id<NSCopying> _targetValue;
+    id _targetValue;
 }
 
 @property (strong, nonatomic) HMCharacteristic *characteristic; // @synthesize characteristic=_characteristic;
@@ -23,7 +22,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) id<NSCopying> targetValue; // @synthesize targetValue=_targetValue;
+@property (copy, nonatomic) id targetValue; // @synthesize targetValue=_targetValue;
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier;
 
 + (id)_actionWithInfo:(id)arg1 home:(id)arg2;

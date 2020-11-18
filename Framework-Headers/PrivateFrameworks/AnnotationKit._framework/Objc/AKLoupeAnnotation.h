@@ -31,6 +31,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)adjustModelToCompensateForOriginalExif;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)displayName;
 - (void)encodeWithCoder:(id)arg1;
 - (void)flattenModelExifOrientation:(long long)arg1 withModelSize:(struct CGSize)arg2;

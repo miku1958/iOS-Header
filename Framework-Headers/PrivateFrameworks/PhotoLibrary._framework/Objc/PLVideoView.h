@@ -26,7 +26,7 @@
     UIImage *_posterFrameImage;
     UIImage *_snapshotImage;
     double _scrubberWidth;
-    unsigned long long _scaleMode;
+    long long _scaleMode;
     UIView *_scrubberBackgroundView;
     UIView *_scrubberTitleView;
     NSTimer *_scrubberUpdateTimer;
@@ -104,13 +104,13 @@
     BOOL _allowSlalomEditor;
     BOOL _prepareMoviePlayerForScrubberAutomatically;
     BOOL _shouldPlayVideoWhenViewAppears;
-    BOOL __slalomRegionEditorCreatedForScrubber;
     BOOL __didInsertMoviePlayerView;
     BOOL __didEditSlalom;
     BOOL __isFetchingVideo;
     BOOL __localVideoUnavailable;
     BOOL __canAttemptFetchingVideoDerivative;
     BOOL __attemptFetchingVideoDerivative;
+    BOOL __slalomRegionEditorCreatedForScrubber;
     PFVideoAVObjectBuilder *__videoAVObjectBuilder;
     long long __expectedNotificationsCount;
     PFVideoAdjustments *__adjustmentsToCommit;

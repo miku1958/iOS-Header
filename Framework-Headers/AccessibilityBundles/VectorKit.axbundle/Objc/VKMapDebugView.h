@@ -30,6 +30,7 @@
 @property (strong, nonatomic) NSMutableArray *roadPoints; // @synthesize roadPoints=_roadPoints;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_addValidPaths:(id)arg1 array:(id)arg2;
 - (void)_orientationDidChange:(id)arg1;
 - (void)addBuildingPaths:(id)arg1;

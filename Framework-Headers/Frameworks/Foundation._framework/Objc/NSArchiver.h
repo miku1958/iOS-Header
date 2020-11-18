@@ -38,7 +38,6 @@
 - (void)encodeRootObject:(id)arg1;
 - (void)encodeValueOfObjCType:(const char *)arg1 at:(const void *)arg2;
 - (void)encodeValuesOfObjCTypes:(const char *)arg1;
-- (void)finalize;
 - (id)initForWritingWithMutableData:(id)arg1;
 - (void)replaceObject:(id)arg1 withObject:(id)arg2;
 - (long long)versionForClassName:(id)arg1;

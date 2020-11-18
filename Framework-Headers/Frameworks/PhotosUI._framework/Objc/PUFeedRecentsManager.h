@@ -26,17 +26,15 @@
 
 @property (copy, nonatomic, setter=_setCachedRecentAssets:) NSOrderedSet *_cachedRecentAssets; // @synthesize _cachedRecentAssets=__cachedRecentAssets;
 @property (copy, nonatomic, setter=_setCachedRecentPHAssets:) NSArray *_cachedRecentPHAssets; // @synthesize _cachedRecentPHAssets=__cachedRecentPHAssets;
-@property (nonatomic) long long count; // @synthesize count=_count;
+@property (nonatomic, setter=_setCount:) long long count; // @synthesize count=_count;
 @property (weak, nonatomic) id<PUFeedRecentsManagerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) PLPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
+@property (strong, nonatomic, setter=_setPhotoLibrary:) PLPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property (readonly, copy, nonatomic) NSOrderedSet *recentAssets;
 @property (readonly, copy, nonatomic) NSArray *recentPHAssets;
 
 - (void).cxx_destruct;
 - (void)_didFinishPostingNotifications:(id)arg1;
 - (void)_invalidateCachedRecentAssets;
-- (void)_setCount:(long long)arg1;
-- (void)_setPhotoLibrary:(id)arg1;
 - (BOOL)_updateCachedRecentAssets;
 - (void)assetsDidChange:(id)arg1;
 - (void)cloudFeedEntriesDidChange:(id)arg1;

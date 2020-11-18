@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)shouldExciseSearchBar:(id)arg1 duringPresentationWithPresenter:(id)arg2;
 - (id)_constraintCopyOfConstraint:(id)arg1 replaceItem:(id)arg2 withItem:(id)arg3;
 - (void)_exciseSearchBarFromCurrentContext;
+- (void)_layoutPresentationWithSize:(struct CGSize)arg1 transitionCoordinator:(id)arg2;
 - (void)_placeSearchBarBackIntoOriginalContext;
 - (id)_presentationControllerForTraitCollection:(id)arg1;
 - (id)_presentedViewControllerForPresentationController:(id)arg1 traitCollection:(id)arg2;
@@ -62,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)_updatePresentingViewControllerContentScrollViewWithOffsets:(struct CGSize)arg1 transitionCoordinator:(id)arg2;
 - (double)_visibleRefreshControlHeightForTableView:(id)arg1;
 - (long long)adaptivePresentationStyle;
+- (void)containerViewWillLayoutSubviews;
 - (void)dealloc;
 - (void)dismissalTransitionDidEnd:(BOOL)arg1;
 - (void)dismissalTransitionWillBegin;

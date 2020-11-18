@@ -28,6 +28,7 @@
 - (id)initWithName:(id)arg1 size:(double)arg2 hints:(unsigned int)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (struct UIFont *)nativeFontForStyle:(unsigned int)arg1;
+- (struct UIFont *)nativeFontForStyle:(unsigned int)arg1 contentSizeCategory:(id)arg2;
 
 @end
 

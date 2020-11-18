@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoardUIServices/FBSSceneSettings.h>
+#import <FrontBoardServices/FBSSceneSettings.h>
 
 @interface FBSSceneSettings (FBUIApplicationSceneSettings)
 
 @property (readonly, nonatomic, getter=isEffectivelyBackgrounded) BOOL effectivelyBackgrounded;
 
+- (id)fb_fallbackSpecification;
 @end
 

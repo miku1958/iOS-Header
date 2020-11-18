@@ -22,6 +22,7 @@
 - (void)videoConference:(VideoConference *)arg1 didStopWithCallID:(unsigned int)arg2 error:(NSError *)arg3;
 - (void)videoConference:(VideoConference *)arg1 didStopWithCallID:(unsigned int)arg2 error:(NSError *)arg3 callMetadata:(NSDictionary *)arg4;
 - (void)videoConference:(VideoConference *)arg1 inititiateRelayRequest:(unsigned int)arg2 requestDict:(NSDictionary *)arg3;
+- (void)videoConference:(VideoConference *)arg1 isRemoteAudioBelowThreshold:(BOOL)arg2;
 - (void)videoConference:(VideoConference *)arg1 localAudioEnabled:(BOOL)arg2 forCallID:(unsigned int)arg3 error:(NSError *)arg4;
 - (void)videoConference:(VideoConference *)arg1 localIPChange:(NSData *)arg2 withCallID:(unsigned int)arg3;
 - (void)videoConference:(VideoConference *)arg1 receivedNoRemotePacketsForTime:(double)arg2 callID:(unsigned int)arg3;
@@ -37,6 +38,7 @@
 - (void)videoConference:(VideoConference *)arg1 updateOutputMeterLevel:(float)arg2;
 - (void)videoConference:(VideoConference *)arg1 videoQualityNotificationForCallID:(unsigned int)arg2 isDegraded:(BOOL)arg3 isRemote:(BOOL)arg4;
 - (void)videoConference:(VideoConference *)arg1 withCallID:(unsigned int)arg2 didPauseAudio:(BOOL)arg3 error:(NSError *)arg4;
+- (void)videoConference:(VideoConference *)arg1 withCallID:(unsigned int)arg2 didPauseVideo:(BOOL)arg3 error:(NSError *)arg4;
 - (void)videoConference:(VideoConference *)arg1 withCallID:(unsigned int)arg2 networkHint:(BOOL)arg3;
 @end
 

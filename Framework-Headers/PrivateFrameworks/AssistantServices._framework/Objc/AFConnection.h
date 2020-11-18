@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSError, NSMutableDictionary, NSString, NSXPCConnection;
-@protocol AFAssistantUIService, AFSpeechDelegate, OS_dispatch_source;
+@protocol AFAssistantUIService, AFSpeechDelegate, OS_dispatch_group, OS_dispatch_source;
 
 @interface AFConnection : NSObject
 {
@@ -29,6 +29,7 @@
     unsigned int _clientStateIsInSync:1;
     unsigned int _voiceOverIsActive:1;
     NSError *_lastRetryError;
+    NSObject<OS_dispatch_group> *_speechCallbackGroup;
     id<AFAssistantUIService> _delegate;
     id<AFSpeechDelegate> _speechDelegate;
 }
@@ -62,19 +63,24 @@
 - (id)_clientServiceWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_connection;
 - (void)_connectionInterrupted;
+- (void)_dispatchCallbackGroupBlock:(CDUnknownBlockType)arg1;
 - (void)_doCommand:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)_extendExistingRequestTimeout;
 - (void)_extendRequestTimeout;
 - (void)_invokeRequestTimeout;
 - (void)_requestDidEnd;
-- (void)_requestWillBeginWithRequestClass:(id)arg1 isSpeechRequest:(BOOL)arg2;
-- (void)_requestWillBeginWithRequestClass:(id)arg1 isSpeechRequest:(BOOL)arg2 isBackgroundRequest:(BOOL)arg3;
+- (void)_requestWillBeginWithRequestClass:(id)arg1 isSpeechRequest:(BOOL)arg2 analyticsEventProvider:(CDUnknownBlockType)arg3;
+- (void)_requestWillBeginWithRequestClass:(id)arg1 isSpeechRequest:(BOOL)arg2 isBackgroundRequest:(BOOL)arg3 analyticsEventProvider:(CDUnknownBlockType)arg4;
 - (void)_scheduleRequestTimeout;
 - (void)_setAudioSessionID:(unsigned int)arg1;
 - (void)_setLevelsWithSharedMem:(id)arg1;
 - (void)_setShouldSpeak:(BOOL)arg1;
+- (void)_startRequestWithInfo:(id)arg1 analyticsEventProvider:(CDUnknownBlockType)arg2;
 - (void)_stopLevelUpdates;
+- (void)_tellDelegateAudioSessionDidBeginInterruption;
+- (void)_tellDelegateAudioSessionDidEndInterruption:(BOOL)arg1;
 - (void)_tellDelegateAudioSessionIDChanged:(unsigned int)arg1;
+- (void)_tellDelegateCacheImage:(id)arg1;
 - (void)_tellDelegateDidDetectMusic;
 - (void)_tellDelegateDidFinishAcousticIDRequestWithSuccess:(BOOL)arg1;
 - (void)_tellDelegateInvalidateCurrentUserActivity;
@@ -84,16 +90,22 @@
 - (void)_tellDelegateSetUserActivityInfo:(id)arg1 webpageURL:(id)arg2;
 - (void)_tellDelegateShouldSpeakChanged:(BOOL)arg1;
 - (void)_tellDelegateWillStartAcousticIDRequest;
+- (void)_tellSpeechDelegateDidRecognizePhrases:(id)arg1 utterances:(id)arg2;
 - (void)_tellSpeechDelegateRecognitionDidFail:(id)arg1;
+- (void)_tellSpeechDelegateRecognitionUpdateWillBeginForTask:(id)arg1;
+- (void)_tellSpeechDelegateRecognizedAdditionalSpeechInterpretation:(id)arg1 refId:(id)arg2;
 - (void)_tellSpeechDelegateRecordingDidBeginOnAVRecordRoute:(id)arg1;
 - (void)_tellSpeechDelegateRecordingDidCancel;
 - (void)_tellSpeechDelegateRecordingDidChangeAVRecordRoute:(id)arg1;
 - (void)_tellSpeechDelegateRecordingDidDetectStartpoint;
 - (void)_tellSpeechDelegateRecordingDidEnd;
 - (void)_tellSpeechDelegateRecordingDidFail:(id)arg1;
+- (void)_tellSpeechDelegateRecordingDidFinishRecognitionUpdateWithError:(id)arg1;
+- (void)_tellSpeechDelegateRecordingDidUpdateRecognitionPhrases:(id)arg1 utterances:(id)arg2 refId:(id)arg3;
 - (void)_tellSpeechDelegateRecordingWillBegin;
 - (void)_tellSpeechDelegateSpeechRecognized:(id)arg1;
 - (void)_tellSpeechDelegateSpeechRecognizedPartialResult:(id)arg1;
+- (void)_tellSpeechDelegateToPerformTwoShotPromptWithType:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)_updateClientState;
 - (void)_updateState;
 - (void)_willCancelRequest;
@@ -101,21 +113,25 @@
 - (void)_willEndSession;
 - (void)_willFailRequestWithError:(id)arg1;
 - (void)_willPresentUsefulUserResultWithType:(long long)arg1;
-- (void)_willStartRequestForSpeech:(BOOL)arg1;
+- (void)_willStartRequestForSpeech:(BOOL)arg1 analyticsEventProvider:(CDUnknownBlockType)arg2;
 - (unsigned int)audioSessionID;
 - (float)averagePower;
+- (void)boostedPreheatWithStyle:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)cancelRequest;
 - (void)cancelSpeech;
+- (void)checkLanguageReady:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)clearContext;
 - (void)dealloc;
 - (void)didDismissUI;
 - (void)endSession;
 - (void)forceAudioSessionActive;
 - (void)forceAudioSessionInactive;
+- (void)getCachedObjectsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getDeferredObjectsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (float)peakPower;
 - (void)preheatWithStyle:(long long)arg1;
+- (void)preheatWithStyle:(long long)arg1 forOptions:(id)arg2;
 - (void)prepareForPhoneCall;
 - (void)recordRequestMetric:(id)arg1 withTimestamp:(double)arg2;
 - (void)recordUIMetrics:(id)arg1;
@@ -135,11 +151,12 @@
 - (void)setVoiceOverIsActive:(BOOL)arg1;
 - (BOOL)shouldSpeak;
 - (void)startAcousticIDRequestWithOptions:(id)arg1;
+- (void)startAudioPlaybackRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startContinuationRequestWithUserInfo:(id)arg1;
 - (void)startDirectActionRequestWithString:(id)arg1;
 - (CDUnknownBlockType)startRecordingAndGetContinueBlockForPendingSpeechRequestWithOptions:(id)arg1;
 - (void)startRecordingForPendingSpeechRequestWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)startRequestWithCorrectedText:(id)arg1 forSpeechIdentifier:(id)arg2;
+- (void)startRequestWithCorrectedText:(id)arg1 forSpeechIdentifier:(id)arg2 userSelectionResults:(id)arg3;
 - (void)startRequestWithInfo:(id)arg1;
 - (void)startRequestWithText:(id)arg1;
 - (void)startSpeechPronunciationRequestWithOptions:(id)arg1 pronunciationContext:(id)arg2;
@@ -147,6 +164,7 @@
 - (void)startSpeechRequestWithSpeechFileAtURL:(id)arg1;
 - (void)startSpeechRequestWithSpeechFileAtURL:(id)arg1 isNarrowBand:(BOOL)arg2;
 - (void)startUIRequest;
+- (void)stopCurrentAudioPlaybackRequest:(BOOL)arg1;
 - (void)stopSpeech;
 - (void)stopSpeechWithOptions:(id)arg1;
 - (void)telephonyRequestCompleted;

@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) BOOL hasLanguageCode;
 @property (strong, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
 
++ (Class)announcementType;
 - (void)addAnnouncement:(id)arg1;
 - (id)announcementAtIndex:(unsigned long long)arg1;
 - (unsigned long long)announcementsCount;

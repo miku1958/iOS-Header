@@ -6,15 +6,13 @@
 
 #import <SAObjects/SADomainObject.h>
 
-@class NSArray, NSString, SADistance, SAMovieV2ShowtimeSnippet;
+@class NSString, SADistance, SAMovieV2ShowtimeSnippet;
 
 @interface SAMovieV2TheaterShowtimeListCell : SADomainObject
 {
-    NSArray *_displayableShowtimes;
 }
 
 @property (nonatomic) BOOL bookable;
-@property (copy, nonatomic) NSArray *displayableShowtimes; // @synthesize displayableShowtimes=_displayableShowtimes;
 @property (strong, nonatomic) SADistance *relativeDistance;
 @property (strong, nonatomic) SAMovieV2ShowtimeSnippet *showtimeSnippet;
 @property (copy, nonatomic) NSString *theaterName;

@@ -29,6 +29,7 @@
 + (void)parseDiff:(id)arg1 forPropertyChange:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_diffsToChangeActiveDeviceToDeviceID:(id)arg1;
 - (id)allPairingIDs;
 - (id)applyDiff:(id)arg1 upOnly:(BOOL)arg2 notifyParent:(BOOL)arg3 unconditional:(BOOL)arg4;
 - (void)child:(id)arg1 didApplyDiff:(id)arg2;

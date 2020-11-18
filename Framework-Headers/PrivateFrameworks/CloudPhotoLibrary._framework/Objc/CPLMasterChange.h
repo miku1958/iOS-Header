@@ -46,6 +46,7 @@
 - (id)propertiesDescription;
 - (id)propertiesForChangeType:(unsigned long long)arg1;
 - (void)setName:(id)arg1;
+- (BOOL)supportsDeletion;
 - (BOOL)supportsResources;
 
 @end

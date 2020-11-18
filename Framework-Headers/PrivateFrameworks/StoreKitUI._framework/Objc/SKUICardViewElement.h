@@ -11,6 +11,7 @@
     BOOL _enabled;
 }
 
+@property (readonly, nonatomic, getter=isAdCard) BOOL adCard;
 @property (readonly, nonatomic) long long cardType;
 
 - (id)applyUpdatesWithElement:(id)arg1;

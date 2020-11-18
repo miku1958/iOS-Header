@@ -9,26 +9,25 @@
 #import <CoreHAP/HAPFragmentationStreamDelegate-Protocol.h>
 #import <CoreHAP/HAPSecuritySessionDelegate-Protocol.h>
 #import <CoreHAP/HAPStreamDelegate-Protocol.h>
-#import <CoreHAP/HAPTimerDelegate-Protocol.h>
+#import <CoreHAP/HMFTimerDelegate-Protocol.h>
 
-@class HAPExponentialBackoffTimer, HAPFragmentationStream, HAPRelayStream, HAPSecuritySession, NSMapTable, NSMutableArray, NSOperationQueue, NSString;
+@class HAPFragmentationStream, HAPRelayStream, HAPSecuritySession, HMFExponentialBackoffTimer, NSMapTable, NSMutableArray, NSOperationQueue, NSString;
 
-@interface HAPAccessoryServerRelay : HAPAccessoryServer <HAPSecuritySessionDelegate, HAPFragmentationStreamDelegate, HAPTimerDelegate, HAPStreamDelegate>
+@interface HAPAccessoryServerRelay : HAPAccessoryServer <HAPSecuritySessionDelegate, HAPFragmentationStreamDelegate, HMFTimerDelegate, HAPStreamDelegate>
 {
-    BOOL _securitySessionOpen;
     BOOL _securitySessionOpening;
     BOOL _discovered;
     BOOL _shouldDiscover;
     unsigned short _nextRequestTransactionIdentifier;
-    HAPRelayStream *_stream;
     NSMutableArray *_pendingRequests;
     NSMapTable *_pendingResponses;
     NSOperationQueue *_requestOperationQueue;
     HAPFragmentationStream *_fragmentationStream;
     HAPSecuritySession *_securitySession;
     NSOperationQueue *_pairVerifyOperationQueue;
-    HAPExponentialBackoffTimer *_reachabilityProbeTimer;
+    HMFExponentialBackoffTimer *_reachabilityProbeTimer;
     unsigned long long _configurationNumber;
+    HAPRelayStream *_stream;
 }
 
 @property (nonatomic) unsigned long long configurationNumber; // @synthesize configurationNumber=_configurationNumber;
@@ -41,10 +40,9 @@
 @property (readonly, nonatomic) NSOperationQueue *pairVerifyOperationQueue; // @synthesize pairVerifyOperationQueue=_pairVerifyOperationQueue;
 @property (readonly, nonatomic) NSMutableArray *pendingRequests; // @synthesize pendingRequests=_pendingRequests;
 @property (readonly, nonatomic) NSMapTable *pendingResponses; // @synthesize pendingResponses=_pendingResponses;
-@property (strong, nonatomic) HAPExponentialBackoffTimer *reachabilityProbeTimer; // @synthesize reachabilityProbeTimer=_reachabilityProbeTimer;
+@property (strong, nonatomic) HMFExponentialBackoffTimer *reachabilityProbeTimer; // @synthesize reachabilityProbeTimer=_reachabilityProbeTimer;
 @property (readonly, nonatomic) NSOperationQueue *requestOperationQueue; // @synthesize requestOperationQueue=_requestOperationQueue;
 @property (strong, nonatomic) HAPSecuritySession *securitySession; // @synthesize securitySession=_securitySession;
-@property (nonatomic, getter=isSecuritySessionOpen) BOOL securitySessionOpen; // @synthesize securitySessionOpen=_securitySessionOpen;
 @property (nonatomic, getter=isSecuritySessionOpening) BOOL securitySessionOpening; // @synthesize securitySessionOpening=_securitySessionOpening;
 @property (nonatomic) BOOL shouldDiscover; // @synthesize shouldDiscover=_shouldDiscover;
 @property (readonly, nonatomic) HAPRelayStream *stream; // @synthesize stream=_stream;

@@ -13,11 +13,11 @@
 
 @property (strong, nonatomic) id userLocationMarker; // @synthesize userLocationMarker=_userLocationMarker;
 
+- (void).cxx_destruct;
 - (id)_accessibilityScrollStatus;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
 - (id)accessibilityPath;
-- (void)dealloc;
 - (id)initWithAccessibilityContainer:(id)arg1 userLocationMarker:(id)arg2;
 - (BOOL)pointInside:(struct CGPoint)arg1;
 

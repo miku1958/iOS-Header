@@ -18,7 +18,7 @@
 @property (readonly) NSString *value; // @synthesize value=_value;
 
 + (id)parameterWithName:(id)arg1 value:(id)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithName:(id)arg1 value:(id)arg2;
 
 @end

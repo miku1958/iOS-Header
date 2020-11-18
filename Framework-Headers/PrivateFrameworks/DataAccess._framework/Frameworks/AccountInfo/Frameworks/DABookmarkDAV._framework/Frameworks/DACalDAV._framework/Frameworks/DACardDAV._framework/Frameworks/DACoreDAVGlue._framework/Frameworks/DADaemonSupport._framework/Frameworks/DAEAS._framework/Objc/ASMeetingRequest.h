@@ -9,7 +9,7 @@
 #import <DAEAS/ASParsingAcceptingTopLevelLeaves-Protocol.h>
 #import <DAEAS/NSCoding-Protocol.h>
 
-@class ASEmailItem, NSDate, NSMutableDictionary, NSNumber, NSString;
+@class ASEmailItem, NSArray, NSDate, NSMutableDictionary, NSNumber, NSString;
 
 @interface ASMeetingRequest : ASEvent <ASParsingAcceptingTopLevelLeaves, NSCoding>
 {
@@ -20,6 +20,8 @@
     NSDate *_recurrenceId;
     NSString *_cachedParentFolderId;
     NSString *_cachedParentServerId;
+    NSString *_sender;
+    NSArray *_forwardees;
     NSMutableDictionary *_placeHolder;
     ASEmailItem *_parentEmailItem;
 }
@@ -27,12 +29,14 @@
 @property (strong, nonatomic) NSString *cachedParentFolderId; // @synthesize cachedParentFolderId=_cachedParentFolderId;
 @property (strong, nonatomic) NSString *cachedParentServerId; // @synthesize cachedParentServerId=_cachedParentServerId;
 @property (strong, nonatomic) NSDate *dateReceived; // @synthesize dateReceived=_dateReceived;
+@property (strong, nonatomic) NSArray *forwardees; // @synthesize forwardees=_forwardees;
 @property (strong, nonatomic) NSNumber *instanceType; // @synthesize instanceType=_instanceType;
 @property (nonatomic) int meetingClassType; // @synthesize meetingClassType=_meetingClassType;
 @property (nonatomic) int meetingMessageType; // @synthesize meetingMessageType=_meetingMessageType;
 @property (weak, nonatomic) ASEmailItem *parentEmailItem; // @synthesize parentEmailItem=_parentEmailItem;
 @property (strong, nonatomic) NSMutableDictionary *placeHolder; // @synthesize placeHolder=_placeHolder;
 @property (strong, nonatomic) NSDate *recurrenceId; // @synthesize recurrenceId=_recurrenceId;
+@property (strong, nonatomic) NSString *sender; // @synthesize sender=_sender;
 
 + (BOOL)acceptsTopLevelLeaves;
 + (id)asParseRules;
@@ -56,6 +60,7 @@
 - (void)postProcessApplicationData;
 - (void)saveEmailServerIdAndUpdateNotificationToRecord:(void *)arg1 account:(id)arg2;
 - (BOOL)saveEmailServerIdToCalendarWithExistingRecord:(void *)arg1 intoCalendar:(void *)arg2 account:(id)arg3;
+- (BOOL)saveForwardeesToCalendarWithExistingRecord:(void *)arg1;
 - (BOOL)saveResponseCommentToCalendarWithExistingRecord:(void *)arg1;
 - (BOOL)saveToCalendarWithExistingRecord:(void *)arg1 intoCalendar:(void *)arg2 shouldMergeProperties:(BOOL)arg3 outMergeDidChooseLocalProperties:(BOOL *)arg4 account:(id)arg5;
 - (void)setDTStamp:(id)arg1;

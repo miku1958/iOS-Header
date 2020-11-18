@@ -11,11 +11,11 @@
 }
 
 + (void)_loadMapKit;
-+ (void)currentLocationWithCompletionBlock:(CDUnknownBlockType)arg1;
++ (id)currentLocationWithCompletionBlock:(CDUnknownBlockType)arg1;
 + (BOOL)isCurrentProcessEntitledToUseLocationServices;
-+ (void)placemarkForAddress:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
-+ (void)placemarkForLocation:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
-+ (void)strictGeocodeString:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
++ (id)placemarkForAddress:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
++ (id)placemarkForLocation:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
++ (id)strictGeocodeString:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 
 @end
 

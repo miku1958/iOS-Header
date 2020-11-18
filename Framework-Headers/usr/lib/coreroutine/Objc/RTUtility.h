@@ -10,7 +10,7 @@
 {
 }
 
-+ (double)betaDistributionCdfAtX:(double)arg1 pamamA:(double)arg2 paramB:(double)arg3;
++ (id)_routineImageNames;
 + (unsigned long long)crcFromData:(id)arg1;
 + (id)executablePathFromPid:(int)arg1;
 + (id)frameworkBundlePath;
@@ -22,13 +22,15 @@
 + (BOOL)isIntegrityOfFileCompromised:(id)arg1 afterSuccessfulOpen:(BOOL)arg2;
 + (id)launchchtlFullPath;
 + (void)loadRoutined;
-+ (id)logDirectoryPath;
 + (id)managedPreferencesPath;
 + (id)mobileCrashReporterPath;
 + (void)mobileOwnFileAtPath:(id)arg1;
 + (int)pidFromAuditToken:(CDStruct_6ad76789)arg1;
 + (id)preferencesPath;
 + (float)randomFloatBetweenLower:(float)arg1 andUpper:(float)arg2;
++ (id)routineClassStrings;
++ (id)routineClasses;
++ (id)routineSubclassesOfClass:(Class)arg1;
 + (id)routinedLaunchdPlist;
 + (id)signingIdentifierFromAuditToken:(CDStruct_6ad76789)arg1;
 + (id)sqlite3FullPath;

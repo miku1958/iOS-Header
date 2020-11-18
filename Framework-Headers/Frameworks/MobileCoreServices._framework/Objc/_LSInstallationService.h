@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property (readonly) Class superclass;
 
++ (void)beginListening;
 - (void)dealloc;
 - (id)initWithQueue:(id)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

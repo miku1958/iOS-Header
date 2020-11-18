@@ -8,7 +8,7 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPRecord, CKDPRecordSaveRequestConflictLoserUpdate, CKDPRecordSaveRequestShareIdUpdate, NSMutableArray, NSString;
+@class CKDPRecord, CKDPRecordSaveRequestConflictLoserUpdate, CKDPRecordSaveRequestShareIdUpdate, CKDPRecordSaveRequestShareSaveInfo, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDPRecordSaveRequest : PBRequest <NSCopying>
@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_conflictLosersToResolves;
     NSString *_etag;
     NSMutableArray *_fieldsToDeleteIfExistOnMerges;
+    CKDPRecordSaveRequestShareSaveInfo *_oBSOLETEShareSaveInfo;
+    NSString *_parentChainProtectionInfoTag;
     CKDPRecord *_record;
     NSString *_recordProtectionInfoTag;
     int _saveSemantics;
@@ -37,6 +39,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasConflictLoserUpdate;
 @property (readonly, nonatomic) BOOL hasEtag;
 @property (nonatomic) BOOL hasMerge;
+@property (readonly, nonatomic) BOOL hasOBSOLETEShareSaveInfo;
+@property (readonly, nonatomic) BOOL hasParentChainProtectionInfoTag;
 @property (readonly, nonatomic) BOOL hasRecord;
 @property (readonly, nonatomic) BOOL hasRecordProtectionInfoTag;
 @property (nonatomic) BOOL hasSaveSemantics;
@@ -44,6 +48,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasShareIDUpdate;
 @property (readonly, nonatomic) BOOL hasZoneProtectionInfoTag;
 @property (nonatomic) BOOL merge; // @synthesize merge=_merge;
+@property (strong, nonatomic) CKDPRecordSaveRequestShareSaveInfo *oBSOLETEShareSaveInfo; // @synthesize oBSOLETEShareSaveInfo=_oBSOLETEShareSaveInfo;
+@property (strong, nonatomic) NSString *parentChainProtectionInfoTag; // @synthesize parentChainProtectionInfoTag=_parentChainProtectionInfoTag;
 @property (strong, nonatomic) CKDPRecord *record; // @synthesize record=_record;
 @property (strong, nonatomic) NSString *recordProtectionInfoTag; // @synthesize recordProtectionInfoTag=_recordProtectionInfoTag;
 @property (nonatomic) int saveSemantics; // @synthesize saveSemantics=_saveSemantics;
@@ -51,8 +57,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKDPRecordSaveRequestShareIdUpdate *shareIDUpdate; // @synthesize shareIDUpdate=_shareIDUpdate;
 @property (strong, nonatomic) NSString *zoneProtectionInfoTag; // @synthesize zoneProtectionInfoTag=_zoneProtectionInfoTag;
 
++ (Class)conflictLosersToResolveType;
++ (Class)fieldsToDeleteIfExistOnMergeType;
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsSaveSemantics:(id)arg1;
 - (void)addConflictLosersToResolve:(id)arg1;
 - (void)addFieldsToDeleteIfExistOnMerge:(id)arg1;
 - (void)clearConflictLosersToResolves;
@@ -71,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)readFrom:(id)arg1;
 - (unsigned int)requestTypeCode;
 - (Class)responseClass;
+- (id)saveSemanticsAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

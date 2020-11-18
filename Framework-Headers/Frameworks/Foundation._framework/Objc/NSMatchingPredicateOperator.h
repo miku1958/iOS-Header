@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 - (void)_clearContext;
 - (BOOL)_shouldEscapeForLike;
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithOperatorType:(unsigned long long)arg1 modifier:(unsigned long long)arg2 variant:(unsigned long long)arg3;
 - (BOOL)performPrimitiveOperationUsingObject:(id)arg1 andObject:(id)arg2;
 - (SEL)selector;

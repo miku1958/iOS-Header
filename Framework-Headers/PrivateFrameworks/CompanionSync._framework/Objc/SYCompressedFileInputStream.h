@@ -17,7 +17,7 @@
 @interface SYCompressedFileInputStream : NSInputStream <_SYStreamRunLoopSourceHandler, NSStreamDelegate, SYStreamEventHandlerBlocks, SYStreamThroughputCounter, SYStreamProgress>
 {
     NSURL *_url;
-    void *_file;
+    struct gzFile_s *_file;
     _SYStreamGuts *_internal;
     CDUnknownBlockType _onOpenComplete;
     CDUnknownBlockType _onBytesAvailable;

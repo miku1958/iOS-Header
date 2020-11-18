@@ -18,7 +18,7 @@
 + (void)setShouldRequestServerLatencyInfo:(BOOL)arg1;
 - (void)addedRoutesToRouteSet:(id)arg1;
 - (void)fetchDirectionsForTicket:(id)arg1 routeSet:(id)arg2 networkActivity:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)handleError:(id)arg1 problemDetail:(CDStruct_c55e649d *)arg2 forTicket:(id)arg3;
+- (void)handleError:(id)arg1 directionsError:(id)arg2 forTicket:(id)arg3;
 - (void)handleResponse:(id)arg1 routeSet:(id)arg2 forTicket:(id)arg3;
 
 @end

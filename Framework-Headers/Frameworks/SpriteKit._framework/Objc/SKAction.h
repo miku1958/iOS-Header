@@ -17,7 +17,7 @@
 @property (nonatomic) double duration;
 @property (nonatomic) BOOL finished;
 @property (nonatomic) double speed;
-@property (nonatomic) CDUnknownBlockType timingFunction;
+@property (copy, nonatomic) CDUnknownBlockType timingFunction;
 @property (nonatomic) long long timingMode;
 
 + (id)actionNamed:(id)arg1;
@@ -29,6 +29,8 @@
 + (id)animateWithNormalTextures:(id)arg1 timePerFrame:(double)arg2 resize:(BOOL)arg3 restore:(BOOL)arg4;
 + (id)animateWithTextures:(id)arg1 timePerFrame:(double)arg2;
 + (id)animateWithTextures:(id)arg1 timePerFrame:(double)arg2 resize:(BOOL)arg3 restore:(BOOL)arg4;
++ (id)animateWithWarps:(id)arg1 times:(id)arg2;
++ (id)animateWithWarps:(id)arg1 times:(id)arg2 restore:(BOOL)arg3;
 + (id)applyAngularImpulse:(double)arg1 duration:(double)arg2;
 + (id)applyForce:(struct CGVector)arg1 atPoint:(struct CGPoint)arg2 duration:(double)arg3;
 + (id)applyForce:(struct CGVector)arg1 duration:(double)arg2;
@@ -100,6 +102,7 @@
 + (id)runBlock:(CDUnknownBlockType)arg1 queue:(id)arg2;
 + (id)scaleBy:(double)arg1 duration:(double)arg2;
 + (id)scaleTo:(double)arg1 duration:(double)arg2;
++ (id)scaleToSize:(struct CGSize)arg1 duration:(double)arg2;
 + (id)scaleXBy:(double)arg1 y:(double)arg2 duration:(double)arg3;
 + (id)scaleXTo:(double)arg1 duration:(double)arg2;
 + (id)scaleXTo:(double)arg1 y:(double)arg2 duration:(double)arg3;
@@ -120,6 +123,7 @@
 + (id)unhide;
 + (id)waitForDuration:(double)arg1;
 + (id)waitForDuration:(double)arg1 withRange:(double)arg2;
++ (id)warpTo:(id)arg1 duration:(double)arg2;
 - (struct SKCAction *)caction;
 - (void)commonInit;
 - (id)copy;

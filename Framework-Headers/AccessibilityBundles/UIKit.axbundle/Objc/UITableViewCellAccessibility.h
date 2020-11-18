@@ -6,13 +6,9 @@
 
 #import <UIKit/__UITableViewCellAccessibility_super.h>
 
-@class NSIndexPath;
-
 @interface UITableViewCellAccessibility : __UITableViewCellAccessibility_super
 {
 }
-
-@property (strong, nonatomic) NSIndexPath *accessibilityFallbackIndexPath;
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
@@ -21,16 +17,16 @@
 - (double)_accessibilityAllowedGeometryOverlapX;
 - (BOOL)_accessibilityAlwaysReturnsChild;
 - (BOOL)_accessibilityAvoidsMockViewContainers;
-- (BOOL)_accessibilityCanEditTableViewCell;
+- (id)_accessibilityCellEditingControl;
 - (id)_accessibilityChildren;
 - (void)_accessibilityClearChildren;
 - (long long)_accessibilityCompareElement:(id)arg1 toElement:(id)arg2;
 - (id)_accessibilityContainerElements;
-- (id)_accessibilityCustomActions;
 - (id)_accessibilityDetailTextLabelIfExists;
 - (id)_accessibilityEditableTextFieldIfExists;
+- (id)_accessibilityEquivalenceTag;
 - (id)_accessibilityFindRemoveConfirmSubview;
-- (id)_accessibilityFindRemoveSwitchSubview;
+- (BOOL)_accessibilityHandleDetailButtonPress:(id)arg1;
 - (void)_accessibilityHandleRemoveConfirm;
 - (void)_accessibilityHandleRemoveSwitch;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -62,9 +58,12 @@
 - (void)_accessibilityReuseChildren:(id)arg1 forMockParent:(id)arg2;
 - (id)_accessibilityScannerGroupElements;
 - (BOOL)_accessibilityScrollToVisibleForNextElementRetrieval:(int)arg1;
+- (BOOL)_accessibilitySetNativeFocus;
 - (BOOL)_accessibilityShouldBeEmptyIfHidden;
 - (BOOL)_accessibilityShouldSortTableViewCellChildren;
 - (id)_accessibilitySubviewsForAdding;
+- (id)_accessibilitySubviewsForAddingWithSort:(BOOL)arg1;
+- (BOOL)_accessibilitySwipeActionsAllowed;
 - (void)_accessibilitySwitchMockView:(id)arg1 toParent:(id)arg2 withPossibleSubviews:(id)arg3;
 - (BOOL)_accessibilityTableViewCellHidesInsertControl;
 - (BOOL)_accessibilityTableViewCellSubclassShouldExist;
@@ -77,10 +76,12 @@
 - (id)_accessibilityUserTestingChildren;
 - (long long)_accessibilityUserTestingChildrenCount;
 - (BOOL)_accessibilityUsesOverrideContainerProtocol;
+- (BOOL)_accessibilityViewHierarchyHasNativeFocus;
 - (BOOL)_axSubviewIgnoredDueToHiddenAncestry:(id)arg1;
 - (void)_beginSwiping;
 - (id)_checkmarkImage:(BOOL)arg1;
 - (void)_didRemoveSubview:(id)arg1;
+- (id)_privateAccessibilityCustomActions;
 - (void)_setAccessibilityMockParent:(id)arg1;
 - (void)_setShowingDeleteConfirmation:(BOOL)arg1;
 - (struct CGPoint)accessibilityActivationPoint;
@@ -89,9 +90,11 @@
 - (BOOL)accessibilityElementIsFocused;
 - (id)accessibilityElements;
 - (id)accessibilityHeaderElements;
+- (BOOL)accessibilityIsFetchingChildren;
 - (id)accessibilityLabel;
 - (struct _NSRange)accessibilityRowRange;
 - (BOOL)accessibilityScrollToVisible;
+- (void)accessibilitySetIsFetchingChildren:(BOOL)arg1;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (void)copy:(id)arg1;

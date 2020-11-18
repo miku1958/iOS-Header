@@ -34,7 +34,6 @@
 + (BOOL)_isOutboundShareActivity:(id)arg1;
 + (id)defaultActivityTypeOrder;
 + (id)photosApplicationActivities;
-+ (void)trackUserActivity:(id)arg1 forAssets:(id)arg2;
 - (void).cxx_destruct;
 - (void)_cancel;
 - (void)_cleanUpActivityState;

@@ -47,6 +47,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isLikePhoneNumber:(id)arg1;
 - (BOOL)isValid:(id *)arg1;
+- (id)lastFourDigits;
 
 @end
 

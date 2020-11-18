@@ -13,6 +13,7 @@
 }
 
 @property (readonly, nonatomic) Class operationClass;
+@property (readonly, nonatomic) long long operationPriority;
 
 + (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;

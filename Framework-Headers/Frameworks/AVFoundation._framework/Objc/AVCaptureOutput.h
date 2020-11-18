@@ -18,7 +18,7 @@
 + (void)initialize;
 - (id)_inputForConnection:(id)arg1;
 - (id)_recommendedAudioOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2 fileType:(id)arg3;
-- (id)_recommendedVideoOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2;
+- (id)_recommendedVideoOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2 videoCodec:(id)arg3;
 - (id)addConnection:(id)arg1 error:(id *)arg2;
 - (BOOL)appliesMirroringWithPhysicalFlipForConnection:(id)arg1;
 - (BOOL)appliesOrientationWithPhysicalRotationForConnection:(id)arg1;
@@ -43,9 +43,10 @@
 - (void)performBlockOnSessionNotifyingThread:(CDUnknownBlockType)arg1;
 - (void)performFigCaptureSessionOperationSafelyUsingBlock:(CDUnknownBlockType)arg1;
 - (id)recommendedOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2 fileType:(id)arg3;
+- (id)recommendedVideoOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2 videoCodec:(id)arg3;
 - (struct CGRect)rectForMetadataOutputRectOfInterest:(struct CGRect)arg1;
 - (void)removeConnection:(id)arg1;
-- (int)requiredOutputFormatForConnection:(id)arg1;
+- (unsigned int)requiredOutputFormatForConnection:(id)arg1;
 - (void)safelyHandleServerConnectionDeathForFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
 - (id)session;
 - (void)setSession:(id)arg1;

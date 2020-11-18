@@ -46,6 +46,7 @@
 - (id)generateHAPMetadataTuplesDictionary:(id)arg1;
 - (id)getDefaultCharacteristicMetadata:(id)arg1;
 - (id)getDefaultCharacteristicProperties:(id)arg1;
+- (id)getDefaultServiceProperties:(id)arg1;
 - (id)initWithDictionary:(id)arg1 error:(id *)arg2;
 - (id)initWithServices:(id)arg1 characteristics:(id)arg2 units:(id)arg3 properties:(id)arg4 addAuthDataTuples:(id)arg5 hapBaseUUIDSuffix:(id)arg6;
 - (BOOL)isMandatoryCharacteristic:(id)arg1 forService:(id)arg2;

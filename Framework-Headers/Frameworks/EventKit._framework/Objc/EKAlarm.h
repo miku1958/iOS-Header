@@ -21,14 +21,13 @@
 
 @property (readonly, nonatomic) NSString *UUID;
 @property (copy, nonatomic) NSDate *absoluteDate;
-@property (copy, nonatomic) NSDate *acknowledgedDate;
 @property (strong, nonatomic) EKCalendarItem *calendarItemOwner; // @dynamic calendarItemOwner;
 @property (strong, nonatomic) EKCalendar *calendarOwner; // @dynamic calendarOwner;
 @property (nonatomic, getter=isDefaultAlarm) BOOL defaultAlarm;
 @property (copy, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
 @property (readonly, nonatomic) NSString *externalID;
 @property (readonly, nonatomic) BOOL isAbsolute;
-@property (readonly, nonatomic) BOOL isSnoozedAlarm;
+@property (nonatomic) BOOL isSnoozed;
 @property (strong, nonatomic) EKObjectToOneRelation *locationRelation; // @synthesize locationRelation=_locationRelation;
 @property (strong, nonatomic) EKAlarm *originalAlarm;
 @property (readonly, nonatomic) EKObject *owner;
@@ -42,6 +41,7 @@
 
 + (int)_currentAuthorizationStatus;
 + (id)alarmWithAbsoluteDate:(id)arg1;
++ (id)alarmWithAlarm:(id)arg1;
 + (id)alarmWithRelativeOffset:(double)arg1;
 + (BOOL)areLocationsAllowed;
 + (BOOL)areLocationsAllowedWithAuthorizationStatus:(int)arg1;
@@ -49,22 +49,31 @@
 + (BOOL)areLocationsCurrentlyEnabled;
 + (double)defaultGeofencedReminderRadius;
 + (long long)maxPublicProximity;
++ (id)noneTriggerDate;
+- (void).cxx_destruct;
 - (id)_locationRelation;
 - (id)_originalAlarmRelation;
 - (id)_snoozedAlarmsRelation;
+- (id)acknowledgedDate;
 - (void)addSnoozedAlarm:(id)arg1;
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (id)initWithAbsoluteDate:(id)arg1;
 - (id)initWithRelativeOffset:(double)arg1;
+- (BOOL)isTimeToLeaveAlarm;
 - (BOOL)isTopographicallyEqualToAlarm:(id)arg1;
+- (BOOL)isVehicleAlarm;
 - (id)lazyLoadRelationForKey:(id)arg1;
 - (id)ownerUUID;
 - (BOOL)rebase;
 - (void)removeSnoozedAlarm:(id)arg1;
+- (void)setAcknowledgedDate:(id)arg1;
+- (void)setIsTimeToLeaveAlarm:(BOOL)arg1;
+- (void)setTriggerIsNotRelativeToTravelTime:(BOOL)arg1;
+- (BOOL)shouldIncludeInNormalAlarms;
+- (BOOL)triggerIsNotRelativeToTravelTime;
 - (BOOL)validate:(id *)arg1;
 
 @end

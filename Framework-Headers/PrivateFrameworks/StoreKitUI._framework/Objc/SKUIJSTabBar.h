@@ -8,18 +8,18 @@
 
 #import <StoreKitUI/SKUIJSTabBar-Protocol.h>
 
-@class NSArray, NSMutableArray, SKUIApplicationController, SKUIJSTabBarItem;
+@class NSArray, SKUIApplicationController, SKUIJSTabBarItem;
 
 @interface SKUIJSTabBar : IKJSObject <SKUIJSTabBar>
 {
     SKUIApplicationController *_applicationController;
-    NSMutableArray *_tabBarItems;
-    SKUIJSTabBarItem *_transientTabBarItem;
+    NSArray *_tabs;
+    SKUIJSTabBarItem *_transientTab;
 }
 
 @property (strong, nonatomic) SKUIJSTabBarItem *selectedTab;
-@property (readonly, nonatomic) NSArray *tabs;
-@property (readonly, nonatomic) SKUIJSTabBarItem *transientTab;
+@property (readonly, nonatomic) NSArray *tabs; // @synthesize tabs=_tabs;
+@property (readonly, nonatomic) SKUIJSTabBarItem *transientTab; // @synthesize transientTab=_transientTab;
 
 - (void).cxx_destruct;
 - (void)_reloadTabBarItemsWithPreludeMainThreadWork:(CDUnknownBlockType)arg1;
@@ -27,6 +27,7 @@
 - (id)initWithAppContext:(id)arg1 controller:(id)arg2;
 - (void)sendOnNeedsContentForTabBarItem:(id)arg1;
 - (void)sendOnUpdate;
+- (void)sendOnUpdateWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

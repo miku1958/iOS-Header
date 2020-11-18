@@ -52,6 +52,7 @@
 - (BOOL)hasData;
 - (id)initWithBucketBoundaries:(id)arg1 orderedSourceIds:(id)arg2 mergeStrategy:(unsigned long long)arg3;
 - (void)resumeWithValue:(double)arg1 sumsBySource:(id)arg2 lastIntervalInfo:(id)arg3 dataCount:(unsigned long long)arg4;
+- (id)sourceIDsForCurrentBucket;
 
 @end
 

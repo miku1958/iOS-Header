@@ -6,9 +6,20 @@
 
 #import <Foundation/NSError.h>
 
-@interface NSError (BaseBoard)
-+ (id)bs_timeoutError;
-- (BOOL)bs_isCancelledError;
-- (BOOL)bs_isTimeoutError;
+#import <BaseBoard/BSDescriptionProviding-Protocol.h>
+
+@class NSString;
+
+@interface NSError (BaseBoard) <BSDescriptionProviding>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
 @end
 

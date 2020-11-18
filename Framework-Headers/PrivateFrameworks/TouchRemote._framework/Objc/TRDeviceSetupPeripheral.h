@@ -25,7 +25,6 @@
 
 - (void).cxx_destruct;
 - (void)_authenticateWithAction:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
-- (BOOL)_canPerformSetupReturningHasWiFiNetwork:(BOOL *)arg1 ssid:(id *)arg2 password:(id *)arg3;
 - (void)_cancelAuthenticationWithReceivedAction:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 - (void)_cancelSetupWithAction:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 - (void)_didDisconnect;

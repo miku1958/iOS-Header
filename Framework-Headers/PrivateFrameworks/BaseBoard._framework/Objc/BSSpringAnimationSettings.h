@@ -31,12 +31,13 @@
 + (BOOL)supportsSecureCoding;
 - (BOOL)_hasCalculatedDuration;
 - (id)_initWithDuration:(double)arg1 delay:(double)arg2 frameInterval:(double)arg3 timingFunction:(id)arg4;
-- (id)_initWithMass:(double)arg1 stiffness:(double)arg2 damping:(double)arg3 epsilon:(double)arg4 initialVelocity:(double)arg5 delay:(double)arg6 frameInterval:(double)arg7 timingFunction:(id)arg8;
+- (id)_initWithMass:(double)arg1 stiffness:(double)arg2 damping:(double)arg3 epsilon:(double)arg4 initialVelocity:(double)arg5 delay:(double)arg6 frameInterval:(double)arg7 timingFunction:(id)arg8 speed:(float)arg9;
 - (void)_setDamping:(double)arg1;
 - (void)_setDuration:(double)arg1;
 - (void)_setEpsilon:(double)arg1;
 - (void)_setInitialVelocity:(double)arg1;
 - (void)_setMass:(double)arg1;
+- (void)_setSpeed:(float)arg1;
 - (void)_setStiffness:(double)arg1;
 - (void)_setTimingFunction:(id)arg1;
 - (id)description;
@@ -44,6 +45,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

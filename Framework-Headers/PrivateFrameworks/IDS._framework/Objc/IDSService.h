@@ -16,10 +16,15 @@
 @property (readonly, strong, nonatomic) _IDSService *_internal;
 @property (readonly, copy, nonatomic) NSSet *accounts;
 @property (readonly, copy, nonatomic) NSArray *devices;
+@property (readonly, copy, nonatomic) NSSet *internalAccounts;
 
 + (BOOL)checkMessageSize:(unsigned long long)arg1 priority:(long long)arg2;
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
 - (BOOL)cancelIdentifier:(id)arg1 error:(id *)arg2;
+- (id)datagramChannelForSessionDestination:(id)arg1 error:(id *)arg2;
+- (id)datagramChannelForSocketDescriptor:(int)arg1 error:(id *)arg2;
+- (id)datagramConnectionForSessionDestination:(id)arg1 error:(id *)arg2;
+- (id)datagramConnectionForSocketDescriptor:(int)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)deviceForFromID:(id)arg1;
 - (id)deviceForUniqueID:(id)arg1;
@@ -54,6 +59,9 @@
 - (void)setProtobufAction:(SEL)arg1 forIncomingRequestsOfType:(unsigned short)arg2;
 - (void)setProtobufAction:(SEL)arg1 forIncomingResponsesOfType:(unsigned short)arg2;
 - (void)startOTRTest:(long long)arg1;
+- (id)streamConnectionForSessionDestination:(id)arg1 error:(id *)arg2;
+- (id)streamConnectionForSocketDescriptor:(int)arg1 error:(id *)arg2;
+- (void)testCloudQRConnection;
 - (void)updateSubServices:(id)arg1;
 - (BOOL)updateSubServices:(id)arg1 forDevice:(id)arg2;
 - (id)uriForFromID:(id)arg1;

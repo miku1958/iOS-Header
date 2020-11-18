@@ -17,9 +17,11 @@
 }
 
 @property (readonly, weak, nonatomic) IKAppContext *appContext; // @synthesize appContext=_appContext;
-@property (readonly, nonatomic) id<IKAppMediaItem> appMediaItem; // @synthesize appMediaItem=_appMediaItem;
+@property (readonly, weak, nonatomic) id<IKAppMediaItem> appMediaItem; // @synthesize appMediaItem=_appMediaItem;
 @property (strong, nonatomic) NSString *artworkImageURL;
 @property (strong, nonatomic) NSArray *chapterGroups;
+@property (nonatomic) double contentProposalAutomaticAcceptanceInterval;
+@property (nonatomic) double contentProposalPresentationTime;
 @property (strong, nonatomic) NSString *contentRatingDomain;
 @property (strong, nonatomic) NSNumber *contentRatingRanking;
 @property (strong, nonatomic) NSString *description;
@@ -35,8 +37,8 @@
 @property (strong, nonatomic) NSString *url;
 
 - (void).cxx_destruct;
-- (void)dealloc;
-- (id)initWithJSMediaItem:(id)arg1;
+- (void)cleanup;
+- (id)initWithAppContext:(id)arg1 jsMediaItem:(id)arg2;
 - (void)loadCertificateDataForURL:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
 - (void)loadContentIdentifierDataForURL:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
 - (void)loadKeyDataForURL:(id)arg1 keyRequestData:(id)arg2 withCallback:(CDUnknownBlockType)arg3;

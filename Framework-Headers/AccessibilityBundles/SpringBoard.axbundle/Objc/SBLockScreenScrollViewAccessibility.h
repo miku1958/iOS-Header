@@ -12,6 +12,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityAllowsSiblingsWhenOvergrown;
 - (BOOL)_accessibilityUsesScrollParentForOrdering;
 
 @end

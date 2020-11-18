@@ -25,11 +25,51 @@ struct CGSize {
     double height;
 };
 
+struct LogCategory {
+    int _field1;
+    int _field2;
+    char *_field3;
+    unsigned int _field4;
+    char *_field5;
+    char *_field6;
+    int _field7;
+    struct LogCategory *_field8;
+    struct LogOutput *_field9;
+    struct LogOutput *_field10;
+    unsigned long long _field11;
+    unsigned long long _field12;
+    unsigned int _field13;
+    unsigned int _field14;
+    char *_field15;
+    struct LogCategoryPrivate *_field16;
+};
+
+struct LogCategoryPrivate;
+
+struct LogOutput;
+
+struct NSMutableArray {
+    Class _field1;
+};
+
+struct NSMutableDictionary {
+    Class _field1;
+};
+
+struct NSMutableSet {
+    Class _field1;
+};
+
 struct UIEdgeInsets {
     double top;
     double left;
     double bottom;
     double right;
+};
+
+struct __sbuf {
+    char *_field1;
+    int _field2;
 };
 
 #pragma mark Typedef'd Structures
@@ -49,4 +89,17 @@ typedef struct {
     unsigned long long *_field3;
     unsigned long long _field4[5];
 } CDStruct_70511ce9;
+
+// Ambiguous groups
+typedef struct {
+    unsigned int timestamp:1;
+    unsigned int count:1;
+    unsigned int errorCode:1;
+    unsigned int found:1;
+} CDStruct_ff718a68;
+
+typedef struct {
+    unsigned int timestamp:1;
+    unsigned int errorCode:1;
+} CDStruct_64772c88;
 

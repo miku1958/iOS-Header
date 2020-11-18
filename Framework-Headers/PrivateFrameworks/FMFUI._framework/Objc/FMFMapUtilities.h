@@ -11,9 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (BOOL)doNotAnimateToNewLocation:(CDStruct_2c43369c)arg1 forMapView:(id)arg2;
-+ (CDStruct_2f492f29)mapRectForCoordinateRegion:(CDStruct_2f492f29)arg1;
-+ (CDStruct_2f492f29)regionForAnnotations:(id)arg1;
++ (BOOL)doNotAnimateToNewLocation:(struct CLLocationCoordinate2D)arg1 forMapView:(id)arg2;
++ (CDStruct_90e2a262)mapRectForCoordinateRegion:(CDStruct_26e8d939)arg1;
++ (CDStruct_26e8d939)regionForAnnotations:(id)arg1;
 
 @end
 

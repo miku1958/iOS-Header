@@ -73,6 +73,7 @@
     BOOL _likedStateChanged;
     BOOL _needsReporting;
     BOOL _rememberBookmark;
+    BOOL _userDisabled;
     struct {
         unsigned int accountId:1;
         unsigned int bookmarkTimeMilliseconds:1;
@@ -116,6 +117,7 @@
         unsigned int likedStateChanged:1;
         unsigned int needsReporting:1;
         unsigned int rememberBookmark:1;
+        unsigned int userDisabled:1;
     } _has;
 }
 
@@ -201,6 +203,7 @@
 @property (nonatomic) BOOL hasSubscriptionStoreItemId;
 @property (readonly, nonatomic) BOOL hasTitle;
 @property (readonly, nonatomic) BOOL hasTvShow;
+@property (nonatomic) BOOL hasUserDisabled;
 @property (nonatomic) BOOL hasYear;
 @property (nonatomic) BOOL hidden; // @synthesize hidden=_hidden;
 @property (nonatomic) BOOL isInUsersLibrary; // @synthesize isInUsersLibrary=_isInUsersLibrary;
@@ -239,9 +242,12 @@
 @property (nonatomic) long long subscriptionStoreItemId; // @synthesize subscriptionStoreItemId=_subscriptionStoreItemId;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) MIPTVShow *tvShow; // @synthesize tvShow=_tvShow;
+@property (nonatomic) BOOL userDisabled; // @synthesize userDisabled=_userDisabled;
 @property (nonatomic) int year; // @synthesize year=_year;
 
++ (Class)libraryIdentifiersType;
 - (void).cxx_destruct;
+- (int)StringAsMediaType:(id)arg1;
 - (void)addLibraryIdentifiers:(id)arg1;
 - (void)clearLibraryIdentifiers;
 - (void)copyTo:(id)arg1;
@@ -252,6 +258,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)libraryIdentifiersAtIndex:(unsigned long long)arg1;
 - (unsigned long long)libraryIdentifiersCount;
+- (id)mediaTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

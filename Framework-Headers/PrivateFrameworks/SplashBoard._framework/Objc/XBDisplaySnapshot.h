@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class FBSDisplay, NSOrderedSet, UIImage;
 
@@ -33,7 +33,7 @@
 - (double)_scale;
 - (struct CGSize)_scaledSnapshotSize;
 - (void)_synchronizedCaptureWithCompletion:(CDUnknownBlockType)arg1;
-- (void)capture;
+- (BOOL)capture;
 - (void)dealloc;
 - (id)initWithDisplay:(id)arg1 layer:(id)arg2;
 - (id)initWithDisplay:(id)arg1 layers:(id)arg2;

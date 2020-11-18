@@ -6,32 +6,24 @@
 
 #import <VectorKit/VKCameraController.h>
 
-#import <VectorKit/VKCameraControllerDelegate-Protocol.h>
+#import <VectorKit/VKAnnotationTrackingCameraController-Protocol.h>
+#import <VectorKit/VKGesturingCameraController-Protocol.h>
 
-@class NSString, VKAnnotationTrackingCameraController, VKTimedAnimation;
+@class NSString, VKAnnotationTrackingCameraController, VKGestureCameraBehavior, VKTimedAnimation;
 @protocol VKTrackableAnnotation;
 
 __attribute__((visibility("hidden")))
-@interface VKScreenCameraController : VKCameraController <VKCameraControllerDelegate>
+@interface VKScreenCameraController : VKCameraController <VKAnnotationTrackingCameraController, VKGesturingCameraController>
 {
     VKTimedAnimation *_zoomAnimation;
     VKTimedAnimation *_pitchAnimation;
     VKTimedAnimation *_rotationAnimation;
     VKTimedAnimation *_regionAnimation;
     VKAnnotationTrackingCameraController *_annotationTrackingCameraController;
-    struct VKEdgeInsets _edgeInsets;
-    double _beganDoublePanPitch;
-    BOOL _isPitchIncreasing;
-    double _lastRotation;
-    BOOL _rotationLowZoomSnappingEnabled;
-    BOOL _shouldRotationRubberband;
-    struct CGPoint _panStartScreenPoint;
-    struct CGPoint _panLastScreenPoint;
+    VKGestureCameraBehavior *_gestureCameraControllerBehavior;
     long long _annotationTrackingZoomStyle;
     long long _annotationTrackingHeadingAnimationDisplayRate;
-    BOOL _staysCenteredDuringPinch;
-    BOOL _staysCenteredDuringRotation;
-    BOOL _isPitchable;
+    BOOL _isPitchIncreasing;
 }
 
 @property (readonly, nonatomic, getter=isAnimatingToTrackAnnotation) BOOL animatingToTrackAnnotation;
@@ -39,36 +31,49 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long annotationTrackingZoomStyle; // @synthesize annotationTrackingZoomStyle=_annotationTrackingZoomStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) struct VKEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL isPitchable; // @synthesize isPitchable=_isPitchable;
-@property (nonatomic) BOOL staysCenteredDuringPinch; // @synthesize staysCenteredDuringPinch=_staysCenteredDuringPinch;
-@property (nonatomic) BOOL staysCenteredDuringRotation; // @synthesize staysCenteredDuringRotation=_staysCenteredDuringRotation;
+@property (readonly, nonatomic) BOOL isAnimatingToTrackAnnotation;
+@property (readonly, nonatomic) BOOL isTrackingHeading;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<VKTrackableAnnotation> trackingAnnotation;
 @property (readonly, nonatomic, getter=isTrackingHeading) BOOL trackingHeading;
 
-- (void)cameraController:(id)arg1 canEnter3DModeDidChange:(BOOL)arg2;
-- (void)cameraController:(id)arg1 canZoomInDidChange:(BOOL)arg2;
-- (void)cameraController:(id)arg1 canZoomOutDidChange:(BOOL)arg2;
-- (void)cameraController:(id)arg1 didBecomePitched:(BOOL)arg2;
-- (void)cameraController:(id)arg1 didChangeRegionAnimated:(BOOL)arg2;
-- (void)cameraController:(id)arg1 flyoverModeDidChange:(int)arg2;
-- (void)cameraController:(id)arg1 flyoverModeWillChange:(int)arg2;
-- (id)cameraController:(id)arg1 presentationForAnnotation:(id)arg2;
-- (void)cameraController:(id)arg1 requestsDisplayRate:(long long)arg2;
-- (void)cameraController:(id)arg1 willChangeRegionAnimated:(BOOL)arg2;
-- (void)cameraControllerDidChangeCameraState:(id)arg1;
-- (void)cameraControllerDidFinishInitialTrackingAnimation:(id)arg1;
+- (BOOL)canEnter3DMode;
+- (void)clampZoomLevelIfNecessary;
 - (void)dealloc;
+- (double)durationToAnimateToMapRegion:(id)arg1;
+- (void)enter3DMode;
+- (void)exit3DMode;
 - (id)init;
 - (BOOL)isAnimating;
-- (double)rubberBandOffsetForOffset:(double)arg1 maxOffset:(double)arg2 minOffset:(double)arg3 range:(double)arg4;
-- (void)runAnimation:(id)arg1;
+- (void)panWithOffset:(struct CGPoint)arg1 relativeToScreenPoint:(struct CGPoint)arg2 animated:(BOOL)arg3 duration:(double)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)setCamera:(id)arg1;
+- (void)setCenterCoordinate3D:(CDStruct_071ac149)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)setEdgeInsets:(struct VKEdgeInsets)arg1;
+- (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3 duration:(double)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)setYaw:(double)arg1 animated:(BOOL)arg2;
+- (BOOL)snapMapIfNecessary:(BOOL)arg1;
+- (void)startPanningAtPoint:(struct CGPoint)arg1 panAtStartPoint:(BOOL)arg2;
+- (void)startPinchingWithFocusPoint:(struct CGPoint)arg1;
+- (void)startPitchingWithFocusPoint:(struct CGPoint)arg1;
+- (void)startRotatingWithFocusPoint:(struct CGPoint)arg1;
 - (void)startTrackingAnnotation:(id)arg1 trackHeading:(BOOL)arg2 animated:(BOOL)arg3;
+- (void)stopAnimations;
+- (void)stopPanningAtPoint:(struct CGPoint)arg1;
+- (void)stopPinchingWithFocusPoint:(struct CGPoint)arg1;
+- (void)stopPitchingWithFocusPoint:(struct CGPoint)arg1;
 - (void)stopRegionAnimation;
+- (void)stopRotatingWithFocusPoint:(struct CGPoint)arg1;
 - (void)stopSnappingAnimations;
 - (void)stopTrackingAnnotation;
+- (long long)tileSize;
+- (void)transferGestureState:(id)arg1;
+- (void)updatePanWithTranslation:(struct CGPoint)arg1;
+- (void)updatePinchWithFocusPoint:(struct CGPoint)arg1 oldFactor:(double)arg2 newFactor:(double)arg3;
+- (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 translation:(double)arg2;
+- (void)updateRotationWithFocusPoint:(struct CGPoint)arg1 newValue:(double)arg2;
+- (void)zoom:(double)arg1 withFocusPoint:(struct CGPoint)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

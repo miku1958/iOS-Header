@@ -12,19 +12,14 @@ __attribute__((visibility("hidden")))
     unsigned long long _used;
     unsigned long long _offset;
     unsigned int _size:60;
-    unsigned int _doHardRetain:1;
-    unsigned int _doWeakAccess:1;
-    unsigned int _hasObjects:1;
-    unsigned int _hasStrongReferences:1;
+    unsigned int _unused:4;
     unsigned long long _mutations;
     id *_list;
 }
 
-+ (id)__new:(const id *)arg1:(unsigned long long)arg2:(BOOL)arg3:(BOOL)arg4:(BOOL)arg5;
++ (id)__new:(const id *)arg1:(unsigned long long)arg2:(BOOL)arg3;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
-- (BOOL)_hasObjects;
-- (BOOL)_hasStrongReferences;
 - (void)_mutate;
 - (void)addObject:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -33,16 +28,20 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)enumerateObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)exchangeObjectAtIndex:(unsigned long long)arg1 withObjectAtIndex:(unsigned long long)arg2;
-- (void)finalize;
 - (void)getObjects:(id *)arg1 range:(struct _NSRange)arg2;
 - (unsigned long long)indexOfObjectIdenticalTo:(id)arg1;
 - (void)insertObject:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)insertObjects:(const id *)arg1 count:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (void)removeAllObjects;
 - (void)removeLastObject;
 - (void)removeObjectAtIndex:(unsigned long long)arg1;
+- (void)removeObjectsInRange:(struct _NSRange)arg1;
 - (void)replaceObjectAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
+- (void)replaceObjectsInRange:(struct _NSRange)arg1 withObjects:(const id *)arg2 count:(unsigned long long)arg3;
 - (void)setObject:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)setObject:(id)arg1 atIndexedSubscript:(unsigned long long)arg2;
 
 @end
 

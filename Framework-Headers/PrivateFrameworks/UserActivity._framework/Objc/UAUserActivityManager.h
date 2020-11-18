@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <UserActivity/UAUserActivityClientResponseProtocol-Protocol.h>
 
-@class NSMapTable, NSString, NSUUID, NSXPCConnection;
+@class NSMapTable, NSMutableSet, NSSet, NSString, NSUUID, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface UAUserActivityManager : NSObject <UAUserActivityClientResponseProtocol>
@@ -19,38 +19,47 @@
     NSMapTable *_userActivitiesByUUID;
     BOOL _supportsActivityContinuation;
     BOOL _activityContinuationIsEnabled;
+    NSMutableSet *_userActivityUUIDsSendToServer;
+    BOOL _registeredForAppResignationMessages;
     BOOL _needToSendInitialMessage;
     NSUUID *_activeUserActivityUUID;
     NSMapTable *_activeUserActivitiesByUUID;
+    unsigned long long _osStateHandle;
 }
 
 @property (strong) NSMapTable *activeUserActivitiesByUUID; // @synthesize activeUserActivitiesByUUID=_activeUserActivitiesByUUID;
 @property (copy) NSUUID *activeUserActivityUUID; // @synthesize activeUserActivityUUID=_activeUserActivityUUID;
 @property (readonly) BOOL activityContinuationIsEnabled;
-@property (readonly, strong) NSXPCConnection *connection;
+@property (readonly) NSXPCConnection *connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property BOOL needToSendInitialMessage; // @synthesize needToSendInitialMessage=_needToSendInitialMessage;
+@property unsigned long long osStateHandle; // @synthesize osStateHandle=_osStateHandle;
+@property BOOL registeredForAppResignationMessages; // @synthesize registeredForAppResignationMessages=_registeredForAppResignationMessages;
 @property (readonly) NSObject<OS_dispatch_queue> *serverQ; // @synthesize serverQ=_serverQ;
 @property (readonly) Class superclass;
 @property (readonly) BOOL supportsActivityContinuation; // @synthesize supportsActivityContinuation=_supportsActivityContinuation;
 @property (strong) NSMapTable *userActivitiesByUUID; // @synthesize userActivitiesByUUID=_userActivitiesByUUID;
+@property (readonly, copy) NSSet *userActivityUUIDsSendToServer;
 
 + (id)_determineMatchingApplicationBundleIdentfierWithOptionsForActivityType:(id)arg1 dynamicType:(id)arg2 kind:(unsigned long long)arg3 teamIdentifier:(id)arg4;
 + (id)defaultManager;
++ (BOOL)dontConnectToServer;
 + (BOOL)shouldSupportActivityContinuation;
 + (BOOL)userActivityContinuationSupported;
-- (id)_findUserActivityForUUID:(id)arg1;
+- (void).cxx_destruct;
 - (id)activeActivitiesByPriority;
 - (id)activities;
 - (void)addDynamicUserActivity:(id)arg1 matching:(id)arg2;
 - (void)addUserActivity:(id)arg1;
 - (void)askClientUserActivityToSave:(id)arg1;
 - (void)askClientUserActivityToSave:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)connectionInterrupted;
 - (id)createByDecodingUserActivity:(id)arg1;
 - (BOOL)currentUserActivityUUIDWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
+- (BOOL)determineIfUserActivityIsCurrent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)didReceiveInputStreamWithUUID:(id)arg1 inputStream:(id)arg2 outputStream:(id)arg3;
 - (id)encodeUserActivity:(id)arg1;
 - (id)fetchUUID:(id)arg1 intervalToWaitForDocumentSynchonization:(double)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
@@ -61,13 +70,17 @@
 - (void)makeInactive:(id)arg1;
 - (void)markUserActivityAsDirty:(id)arg1 forceImmediate:(BOOL)arg2;
 - (void)pinUserActivity:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)registerForApplicationDeactivateIfNecessary;
 - (void)removeDynamicUserActivity:(id)arg1 matching:(id)arg2;
 - (void)removeUserActivity:(id)arg1;
+- (void)sendCurrentActivityToIndexer:(id)arg1;
 - (void)sendInitialMessage:(BOOL)arg1;
+- (void)sendToIndexerIfAppropriate:(id)arg1 force:(BOOL)arg2;
 - (void)sendUserActivityInfoToLSUserActivityd:(id)arg1 makeCurrent:(BOOL)arg2;
 - (void)tellClientDebuggingEnabled:(BOOL)arg1 logFileHandle:(id)arg2;
 - (void)tellClientUserActivityItWasResumed:(id)arg1;
 - (void)tellDaemonAboutNewLSUserActivity:(id)arg1;
+- (id)userActivityForUUID:(id)arg1;
 - (BOOL)userActivityIsActive:(id)arg1;
 
 @end

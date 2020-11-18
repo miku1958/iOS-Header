@@ -6,7 +6,7 @@
 
 #import <QuartzCore/CATextLayer.h>
 
-@class AVPlayer, NSObject;
+@class AVPlayer, NSMutableDictionary, NSObject;
 @protocol OS_dispatch_source;
 
 @interface AVNetworkPlaybackPerfHUDLayer : CATextLayer
@@ -14,22 +14,36 @@
     NSObject<OS_dispatch_source> *_hudTimer;
     AVPlayer *_player;
     BOOL _showHud;
+    int _colorId;
+    double _opacity;
+    int _fontSizeInt;
+    BOOL _updateUISettings;
     int _hudXoffset;
     int _hudYoffset;
     unsigned long long _hudUpdateInterval;
+    BOOL _showCompleteURI;
+    long long _prevVariantIdx;
+    long long _prevStallCount;
+    long long _totalStallCount;
+    NSMutableDictionary *_loadingStatusCache;
 }
 
 + (id)convertBitrate:(double)arg1;
 + (BOOL)runningAnInternalBuild;
 - (void)_hudUpdate;
+- (void)currentItemChanged;
+- (void)currentItemTracksChanged;
 - (void)dealloc;
 - (void)getHudSetting;
+- (id)getTrackFormatDesc:(id)arg1;
 - (BOOL)hudEnabled;
 - (id)init;
+- (void)readHudSettingsAndCallCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setColor:(int)arg1;
 - (void)setPlayer:(id)arg1;
 - (void)startDispatchTimer;
 - (void)updateBounds:(struct CGRect)arg1;
+- (BOOL)valueLoadedForKey:(id)arg1 onObject:(id)arg2;
 
 @end
 

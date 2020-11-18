@@ -6,12 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-#import <Celestial/NSCoding-Protocol.h>
 #import <Celestial/NSCopying-Protocol.h>
+#import <Celestial/NSSecureCoding-Protocol.h>
 
 @class NSString, NSURL;
 
-@interface FigCaptureRecordingSettings : NSObject <NSCoding, NSCopying>
+@interface FigCaptureRecordingSettings : NSObject <NSSecureCoding, NSCopying>
 {
     long long _settingsID;
     NSURL *_outputURL;
@@ -28,6 +28,7 @@
 @property (copy, nonatomic) NSURL *outputURL; // @synthesize outputURL=_outputURL;
 @property (nonatomic) long long settingsID; // @synthesize settingsID=_settingsID;
 
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

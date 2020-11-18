@@ -14,11 +14,23 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (struct CGRect)_axBoundingRectForGlyphRange:(struct _NSRange)arg1;
+- (id)_axCreateEmojiRotor;
+- (id)_axEmojiCandidates;
+- (id)_axEmojiRotor;
+- (void)_axRemoveElementFromAccessibilityElements:(id)arg1;
+- (void)_axReplaceEmojiWithElement:(id)arg1;
+- (void)_axSetEmojiRotor:(id)arg1;
+- (void)_axShowOverlayWithEmojiElement:(id)arg1;
+- (id)accessibilityCustomRotors;
+- (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (id)accessibilityPlaceholderValue;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 - (void)layoutSubviews;
+- (void)startTimer:(id)arg1;
+- (void)stopTimer:(id)arg1;
 - (void)updateTextView;
 
 @end

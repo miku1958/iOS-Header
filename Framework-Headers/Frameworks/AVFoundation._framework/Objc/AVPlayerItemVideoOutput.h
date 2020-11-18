@@ -22,6 +22,7 @@
 - (void)_dispatchOutputMediaDataWillChange;
 - (void)_dispatchOutputSequenceWasFlushed;
 - (id)_pixelBufferAttributes;
+- (void)_respondToPlayerItemFormatDescriptionsChange;
 - (void)_setTagBuffersWithConversionInformation;
 - (void)_setTimebase:(struct OpaqueCMTimebase *)arg1;
 - (void)_startObservingTimebaseNotificationsForTimebase:(struct OpaqueCMTimebase *)arg1;
@@ -32,10 +33,12 @@
 - (void)finalize;
 - (BOOL)hasNewPixelBufferForItemTime:(CDStruct_1b6d18a9)arg1;
 - (id)init;
+- (id)initWithOutputSettings:(id)arg1;
 - (id)initWithPixelBufferAttributes:(id)arg1;
 - (void)requestNotificationOfMediaDataChangeWithAdvanceInterval:(double)arg1;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)setSuppressesPlayerRendering:(BOOL)arg1;
+- (BOOL)setUpWithOutputSettings:(id)arg1 outputSettingsArePixelBufferAttributes:(BOOL)arg2 withExceptionReason:(id *)arg3;
 - (BOOL)suppressesPlayerRendering;
 
 @end

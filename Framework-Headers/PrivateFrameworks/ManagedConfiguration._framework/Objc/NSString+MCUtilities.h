@@ -12,6 +12,7 @@
 - (unsigned int)MCHash;
 - (id)MCHashedFilenameWithExtension:(id)arg1;
 - (id)MCHashedFilenameWithPrefix:(id)arg1 extension:(id)arg2;
+- (id)MCHashedIdentifier;
 - (id)MCOldStyleSafeFilenameHash;
 - (id)MCOldStyleSafeFilenameHashWithExtension:(id)arg1;
 - (id)MCSHA256DigestWithPasscodeSalt;

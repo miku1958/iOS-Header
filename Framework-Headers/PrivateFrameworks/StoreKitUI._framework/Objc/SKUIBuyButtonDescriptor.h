@@ -6,35 +6,40 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-#import <StoreKitUI/NSMutableCopying-Protocol.h>
-
 @class NSString, SKUIStoreIdentifier;
 
-@interface SKUIBuyButtonDescriptor : NSObject <NSCopying, NSMutableCopying>
+@interface SKUIBuyButtonDescriptor : NSObject
 {
-    NSString *_buttonText;
+    BOOL _highlighted;
+    BOOL _showingConfirmation;
+    BOOL _showsUniversal;
+    BOOL _shouldSuppressEnabled;
     long long _buttonType;
+    NSString *_buttonText;
     NSString *_confirmationText;
     unsigned long long _elementType;
-    long long _itemIdentifier;
     SKUIStoreIdentifier *_storeIdentifier;
+    long long _itemIdentifier;
     NSString *_variantIdentifier;
+    long long _progressType;
 }
 
-@property (readonly, copy, nonatomic) NSString *buttonText; // @synthesize buttonText=_buttonText;
-@property (readonly, nonatomic) long long buttonType; // @synthesize buttonType=_buttonType;
-@property (readonly, copy, nonatomic) NSString *confirmationText; // @synthesize confirmationText=_confirmationText;
-@property (readonly, nonatomic) unsigned long long elementType; // @synthesize elementType=_elementType;
-@property (readonly, nonatomic) long long itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
-@property (readonly, nonatomic) SKUIStoreIdentifier *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
-@property (readonly, nonatomic) NSString *variantIdentifier; // @synthesize variantIdentifier=_variantIdentifier;
+@property (copy, nonatomic) NSString *buttonText; // @synthesize buttonText=_buttonText;
+@property (nonatomic) long long buttonType; // @synthesize buttonType=_buttonType;
+@property (copy, nonatomic) NSString *confirmationText; // @synthesize confirmationText=_confirmationText;
+@property (nonatomic) unsigned long long elementType; // @synthesize elementType=_elementType;
+@property (nonatomic) BOOL highlighted; // @synthesize highlighted=_highlighted;
+@property (nonatomic) long long itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
+@property (nonatomic) long long progressType; // @synthesize progressType=_progressType;
+@property (nonatomic) BOOL shouldSuppressEnabled; // @synthesize shouldSuppressEnabled=_shouldSuppressEnabled;
+@property (nonatomic) BOOL showingConfirmation; // @synthesize showingConfirmation=_showingConfirmation;
+@property (nonatomic) BOOL showsUniversal; // @synthesize showsUniversal=_showsUniversal;
+@property (strong, nonatomic) SKUIStoreIdentifier *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
+@property (strong, nonatomic) NSString *variantIdentifier; // @synthesize variantIdentifier=_variantIdentifier;
 
 - (void).cxx_destruct;
 - (BOOL)canPerformLocalActionWithItemState:(id)arg1;
 - (BOOL)canPersonalizeUsingItemState:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end
 

@@ -16,23 +16,29 @@
     CATStateMachine *mFSM;
     CATTransport *mTransport;
     unsigned short _flags;
-    DMFControlSessionIdentifier *_identifier;
     id<CRKClassSessionDelegate> _delegate;
+    DMFControlSessionIdentifier *_identifier;
     id _clientIdentity;
     NSArray *_trustedCertificates;
+    double _lostBeaconTimeout;
+    double _willLoseBeaconWarningTimeout;
+    double _failedConnectionRetryInterval;
 }
 
 @property (readonly, nonatomic) id clientIdentity; // @synthesize clientIdentity=_clientIdentity;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CRKClassSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) double failedConnectionRetryInterval; // @synthesize failedConnectionRetryInterval=_failedConnectionRetryInterval;
 @property (nonatomic) unsigned short flags; // @synthesize flags=_flags;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) DMFControlSessionIdentifier *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) double lostBeaconTimeout; // @synthesize lostBeaconTimeout=_lostBeaconTimeout;
 @property (strong, nonatomic) CATStateMachine *stateMachine; // @synthesize stateMachine=mFSM;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) CATTransport *transport; // @synthesize transport=mTransport;
 @property (readonly, copy, nonatomic) NSArray *trustedCertificates; // @synthesize trustedCertificates=_trustedCertificates;
+@property (nonatomic) double willLoseBeaconWarningTimeout; // @synthesize willLoseBeaconWarningTimeout=_willLoseBeaconWarningTimeout;
 
 - (void).cxx_destruct;
 - (void)cancelConnectionAttempt;
@@ -44,6 +50,7 @@
 - (void)delegateInvalidatedWithState:(id)arg1;
 - (void)delegateNoNetworkWithContext:(id)arg1;
 - (void)delegateOutOfRangeWithContext:(id)arg1;
+- (void)delegateWillLoseBeacon;
 - (void)didConnect;
 - (void)disconnect;
 - (void)failedToConnect;
@@ -54,6 +61,8 @@
 - (void)localWiFiBecameUnavailable;
 - (void)lostBeacon;
 - (void)lostConnection;
+- (void)registerDefaults;
+- (id)studentSocketOptions;
 - (void)transport:(id)arg1 didInterruptWithError:(id)arg2;
 - (void)transportDidConnect:(id)arg1;
 - (void)transportDidInvalidate:(id)arg1;

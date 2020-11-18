@@ -24,7 +24,6 @@
 
 - (void).cxx_destruct;
 - (id)initWithDescription:(id)arg1 andTimeout:(double)arg2;
-- (id)loggingID;
 - (void)signal;
 - (void)wait;
 

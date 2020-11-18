@@ -17,6 +17,7 @@
 @property (nonatomic) BOOL shouldDelayRemotePersistence;
 @property (nonatomic) BOOL shouldExtractDiagnosticsFromMetadata;
 @property (nonatomic) BOOL shouldPersistDiagnosticsToSidecar;
+@property (nonatomic) long long temporaryPersistenceOptions;
 
 @end
 

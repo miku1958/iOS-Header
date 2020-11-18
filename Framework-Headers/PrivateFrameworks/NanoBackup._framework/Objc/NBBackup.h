@@ -8,12 +8,13 @@
 
 #import <NanoBackup/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSNumber, NSString, NSUUID;
+@class NSDate, NSNumber, NSString, NSURL, NSUUID;
 
 @interface NBBackup : NSObject <NSSecureCoding>
 {
     BOOL _locationOptInEnabled;
     BOOL _diagnosticsOptInEnabled;
+    BOOL _hasResolvedActiveWatchFaceFilePath;
     NSUUID *_uuid;
     NSString *_name;
     NSString *_productType;
@@ -27,18 +28,27 @@
     NSNumber *_topEnclosureMaterial;
     NSNumber *_fcmMaterial;
     NSNumber *_bcmWindowMaterial;
+    NSNumber *_coverGlassColor;
+    NSNumber *_housingColor;
+    NSNumber *_backingColor;
     NSString *_watchFace;
     NSString *_watchFaceColor;
     NSDate *_lastModificationDate;
     NSNumber *_sizeInBytes;
+    NSURL *_activeWatchFaceFileURL;
 }
 
+@property (strong, nonatomic) NSURL *activeWatchFaceFileURL; // @synthesize activeWatchFaceFileURL=_activeWatchFaceFileURL;
+@property (strong, nonatomic) NSNumber *backingColor; // @synthesize backingColor=_backingColor;
 @property (strong, nonatomic) NSNumber *bcmWindowMaterial; // @synthesize bcmWindowMaterial=_bcmWindowMaterial;
 @property (strong, nonatomic) NSNumber *bottomEnclosureMaterial; // @synthesize bottomEnclosureMaterial=_bottomEnclosureMaterial;
+@property (strong, nonatomic) NSNumber *coverGlassColor; // @synthesize coverGlassColor=_coverGlassColor;
 @property (strong, nonatomic) NSString *deviceColor; // @synthesize deviceColor=_deviceColor;
 @property (strong, nonatomic) NSString *deviceEnclosureColor; // @synthesize deviceEnclosureColor=_deviceEnclosureColor;
 @property (nonatomic, getter=isDiagnosticsOptInEnabled) BOOL diagnosticsOptInEnabled; // @synthesize diagnosticsOptInEnabled=_diagnosticsOptInEnabled;
 @property (strong, nonatomic) NSNumber *fcmMaterial; // @synthesize fcmMaterial=_fcmMaterial;
+@property (nonatomic) BOOL hasResolvedActiveWatchFaceFilePath; // @synthesize hasResolvedActiveWatchFaceFilePath=_hasResolvedActiveWatchFaceFilePath;
+@property (strong, nonatomic) NSNumber *housingColor; // @synthesize housingColor=_housingColor;
 @property (strong, nonatomic) NSDate *lastModificationDate; // @synthesize lastModificationDate=_lastModificationDate;
 @property (nonatomic, getter=isLocationOptInEnabled) BOOL locationOptInEnabled; // @synthesize locationOptInEnabled=_locationOptInEnabled;
 @property (strong, nonatomic) NSString *marketingVersion; // @synthesize marketingVersion=_marketingVersion;

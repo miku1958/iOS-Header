@@ -23,7 +23,6 @@
 @property (readonly, nonatomic) id mailAccount;
 @property (readonly, nonatomic) BOOL restrictsRepliesAndForwards;
 @property (readonly, nonatomic) BOOL supportsMailDrop;
-@property (readonly, nonatomic) BOOL supportsSoftBankCodePoints;
 @property (readonly, nonatomic) BOOL supportsThreadOperations;
 @property (readonly, nonatomic) NSString *uniqueID;
 @property (readonly, nonatomic) NSString *username;

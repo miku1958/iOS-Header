@@ -47,7 +47,7 @@
 @property (readonly, strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSDate *installDate; // @synthesize installDate=_installDate;
 @property (strong, nonatomic) NSDictionary *installOptions; // @synthesize installOptions=_installOptions;
-@property (readonly, nonatomic) int installType;
+@property (readonly, nonatomic) long long installType;
 @property (readonly, strong, nonatomic) NSArray *installationWarnings;
 @property (readonly, nonatomic) BOOL isInstalledForSystem;
 @property (readonly, nonatomic) BOOL isInstalledForUser;

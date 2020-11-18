@@ -44,6 +44,8 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableArray *zoomNames; // @synthesize zoomNames=_zoomNames;
 
++ (Class)zoomNameType;
+- (int)StringAsStructureType:(id)arg1;
 - (void)addZoomName:(id)arg1;
 - (id)bestName;
 - (void)clearZoomNames;
@@ -54,6 +56,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)structureTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 - (id)zoomNameAtIndex:(unsigned long long)arg1;
 - (unsigned long long)zoomNamesCount;

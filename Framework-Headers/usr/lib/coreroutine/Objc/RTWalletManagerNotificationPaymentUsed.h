@@ -6,24 +6,26 @@
 
 #import <coreroutine/RTNotification.h>
 
-@class CLLocation, NSDate, NSString;
+@class CLLocation, NSDate, NSNumber, NSString;
 
-__attribute__((visibility("hidden")))
 @interface RTWalletManagerNotificationPaymentUsed : RTNotification
 {
-    NSString *_identifier;
+    NSString *_passIdentifier;
+    NSString *_transactionIdentifier;
     NSDate *_date;
     CLLocation *_location;
+    NSNumber *_muid;
+    NSNumber *_provider;
 }
 
 @property (readonly, nonatomic) NSDate *date; // @synthesize date=_date;
-@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) CLLocation *location; // @synthesize location=_location;
+@property (readonly, nonatomic) NSNumber *muid; // @synthesize muid=_muid;
+@property (readonly, copy, nonatomic) NSString *passIdentifier; // @synthesize passIdentifier=_passIdentifier;
+@property (readonly, nonatomic) NSNumber *provider; // @synthesize provider=_provider;
+@property (readonly, copy, nonatomic) NSString *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;
 
-+ (id)notificationName;
 - (void).cxx_destruct;
-- (id)init;
-- (id)initWithIdentifier:(id)arg1 date:(id)arg2 location:(id)arg3;
 
 @end
 

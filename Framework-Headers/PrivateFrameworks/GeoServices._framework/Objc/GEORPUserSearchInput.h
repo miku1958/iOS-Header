@@ -36,6 +36,7 @@
 @property (strong, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 @property (strong, nonatomic) NSString *singleLineAddressString; // @synthesize singleLineAddressString=_singleLineAddressString;
 
+- (int)StringAsOrigin:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -44,6 +45,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)originAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

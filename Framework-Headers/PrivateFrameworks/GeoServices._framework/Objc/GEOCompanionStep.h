@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOCompanionDriveStep, GEOCompanionFerryStep, GEOCompanionWalkStep, NSString;
+@class GEOCompanionDriveStep, GEOCompanionFerryStep, GEOCompanionWalkStep, NSMutableArray, NSString;
 
 @interface GEOCompanionStep : PBCodable <NSCopying>
 {
@@ -16,6 +16,7 @@
     GEOCompanionDriveStep *_driveStep;
     unsigned int _endCoordinateIndex;
     GEOCompanionFerryStep *_ferryStep;
+    NSMutableArray *_instructionWithAlternatives;
     unsigned int _maneuverStartCoordinateIndex;
     NSString *_roadName;
     unsigned int _startCoordinateIndex;
@@ -46,6 +47,7 @@
 @property (nonatomic) BOOL hasStepID;
 @property (nonatomic) BOOL hasTime;
 @property (readonly, nonatomic) BOOL hasWalkStep;
+@property (strong, nonatomic) NSMutableArray *instructionWithAlternatives; // @synthesize instructionWithAlternatives=_instructionWithAlternatives;
 @property (nonatomic) unsigned int maneuverStartCoordinateIndex; // @synthesize maneuverStartCoordinateIndex=_maneuverStartCoordinateIndex;
 @property (strong, nonatomic) NSString *roadName; // @synthesize roadName=_roadName;
 @property (nonatomic) unsigned int startCoordinateIndex; // @synthesize startCoordinateIndex=_startCoordinateIndex;
@@ -53,6 +55,9 @@
 @property (nonatomic) unsigned int time; // @synthesize time=_time;
 @property (strong, nonatomic) GEOCompanionWalkStep *walkStep; // @synthesize walkStep=_walkStep;
 
++ (Class)instructionWithAlternativesType;
+- (void)addInstructionWithAlternatives:(id)arg1;
+- (void)clearInstructionWithAlternatives;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -60,7 +65,9 @@
 - (id)dictionaryRepresentation;
 - (id)geoStep;
 - (unsigned long long)hash;
-- (id)initWithStep:(id)arg1 route:(id)arg2;
+- (id)initWithStep:(id)arg1 route:(id)arg2 stringFormatter:(id)arg3;
+- (id)instructionWithAlternativesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)instructionWithAlternativesCount;
 - (BOOL)isEqual:(id)arg1;
 - (id)maneuverStep;
 - (void)mergeFrom:(id)arg1;

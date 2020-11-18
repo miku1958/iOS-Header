@@ -6,21 +6,22 @@
 
 #import <UIKit/UIView.h>
 
-@class SUClientInterface, SULinkControl, SUSubtitledButton, UIAlertView;
+@class SUClientInterface, SULinkControl, SUSubtitledButton;
+@protocol SUTermsAndConditionsViewDelegate;
 
 @interface SUTermsAndConditionsView : UIView
 {
-    UIAlertView *_accountButtonAlert;
     SUSubtitledButton *_button;
     SUClientInterface *_clientInterface;
+    id<SUTermsAndConditionsViewDelegate> _delegate;
     BOOL _hideAccountButton;
     double _rightMargin;
     long long _style;
     SULinkControl *_termsAndConditionsControl;
-    SUClientInterface *clientInterface;
 }
 
-@property (strong, nonatomic) SUClientInterface *clientInterface; // @synthesize clientInterface;
+@property (strong, nonatomic) SUClientInterface *clientInterface; // @synthesize clientInterface=_clientInterface;
+@property (weak, nonatomic) id<SUTermsAndConditionsViewDelegate> delegate;
 @property (nonatomic) BOOL hideAccountButton; // @synthesize hideAccountButton=_hideAccountButton;
 @property (nonatomic) double rightMargin; // @synthesize rightMargin=_rightMargin;
 @property (nonatomic) long long style; // @synthesize style=_style;
@@ -35,7 +36,6 @@
 - (void)_termsAndConditionsAction:(id)arg1;
 - (id)_termsAndConditionsControl;
 - (void)_updateButton;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

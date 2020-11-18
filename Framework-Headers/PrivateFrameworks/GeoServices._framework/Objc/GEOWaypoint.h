@@ -23,6 +23,7 @@
 @property (strong, nonatomic) GEOLocation *location; // @synthesize location=_location;
 @property (strong, nonatomic) GEOPlaceSearchRequest *placeSearchRequest; // @synthesize placeSearchRequest=_placeSearchRequest;
 
++ (Class)entryPointType;
 - (void)addEntryPoint:(id)arg1;
 - (void)clearEntryPoints;
 - (void)copyTo:(id)arg1;

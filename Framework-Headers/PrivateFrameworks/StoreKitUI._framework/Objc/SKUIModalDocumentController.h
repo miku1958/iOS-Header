@@ -33,6 +33,8 @@
     id<SKUIModalDocumentDataSource> _dataSource;
 }
 
+@property (readonly, nonatomic) UINavigationController *_overlayNavigationController;
+@property (readonly, nonatomic) SKUIOverlayContainerViewController *_overlayViewController;
 @property (strong, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;
 @property (weak, nonatomic) id<SKUIModalDocumentDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
@@ -77,6 +79,7 @@
 - (void)_unloadDocumentForPopoverController:(id)arg1;
 - (void)_unloadDocumentForViewController:(id)arg1;
 - (void)dealloc;
+- (void)ensureOverlayNavigationControllerStackConsistencyForNavigationController:(id)arg1;
 - (void)familySetupViewController:(id)arg1 didCompleteWithSuccess:(BOOL)arg2;
 - (void)giftViewController:(id)arg1 didFinishWithResult:(BOOL)arg2;
 - (id)init;

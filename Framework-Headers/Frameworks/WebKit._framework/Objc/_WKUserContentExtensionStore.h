@@ -23,6 +23,7 @@
 
 + (id)defaultStore;
 + (id)storeWithURL:(id)arg1;
+- (void)_invalidateContentExtensionVersionForIdentifier:(id)arg1;
 - (void)_removeAllContentExtensions;
 - (void)compileContentExtensionForIdentifier:(id)arg1 encodedContentExtension:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;

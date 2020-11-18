@@ -21,7 +21,6 @@
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)accessibilityElementCount;
 - (void)accessibilityReuseChildren:(id)arg1 forMockParent:(id)arg2;
-- (struct _NSRange)accessibilityRowRange;
 - (BOOL)accessibilityScrollToVisible;
 - (unsigned long long)accessibilityTraits;
 - (void)addSubview:(id)arg1;

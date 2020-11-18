@@ -6,20 +6,28 @@
 
 #import <PassKitCore/PKPaymentCredential.h>
 
-@class NSString, NSURL;
+@class NSArray, NSString, NSURL;
 
 @interface PKPaymentRemoteCredential : PKPaymentCredential
 {
     NSString *_identifier;
     long long _status;
     NSURL *_passURL;
+    NSArray *_summaryMetadata;
+    NSArray *_metadata;
+    NSString *_summaryMetadataDescription;
+    NSString *_statusDescription;
 }
 
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSArray *metadata; // @synthesize metadata=_metadata;
 @property (copy, nonatomic) NSURL *passURL; // @synthesize passURL=_passURL;
 @property (nonatomic) long long status; // @synthesize status=_status;
+@property (readonly, copy, nonatomic) NSString *statusDescription; // @synthesize statusDescription=_statusDescription;
+@property (readonly, copy, nonatomic) NSArray *summaryMetadata; // @synthesize summaryMetadata=_summaryMetadata;
+@property (readonly, copy, nonatomic) NSString *summaryMetadataDescription; // @synthesize summaryMetadataDescription=_summaryMetadataDescription;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;
 

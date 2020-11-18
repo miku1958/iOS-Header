@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL shouldBadge; // @synthesize shouldBadge=_shouldBadge;
 @property (nonatomic) BOOL shouldSendContentAvailable; // @synthesize shouldSendContentAvailable=_shouldSendContentAvailable;
 
++ (Class)additionalFieldsType;
 - (void).cxx_destruct;
 - (void)addAdditionalFields:(id)arg1;
 - (id)additionalFieldsAtIndex:(unsigned long long)arg1;

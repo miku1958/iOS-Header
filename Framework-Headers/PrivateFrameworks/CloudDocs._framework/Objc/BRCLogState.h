@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, NSURL;
 @protocol OS_dispatch_source;
@@ -24,13 +24,14 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSURL *directory; // @synthesize directory=_directory;
 
 + (id)defaultLogState;
+- (void).cxx_destruct;
+- (void)_setLevel:(int)arg1;
 - (void)closeLog;
 - (const char *)currentSectionID;
 - (int)indentationLevel;
 - (id)init;
 - (void)logMsg:(int)arg1 facility:(const char *)arg2 func:(const char *)arg3 src:(const char *)arg4 lno:(int)arg5 msg:(const char *)arg6 aslmsg:(struct __asl_object_s *)arg7;
 - (void)openASLStoreIfNeeded;
-- (void)setLevel:(int)arg1;
 - (void)setPath:(const char *)arg1 base:(const char *)arg2;
 
 @end

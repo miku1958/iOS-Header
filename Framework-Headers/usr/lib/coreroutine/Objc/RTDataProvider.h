@@ -8,19 +8,20 @@
 
 #import <coreroutine/RTDataProviderProtocol-Protocol.h>
 
-@class NSError, NSMutableArray, NSString, RTInvocationDispatcher;
+@class NSArray, NSError, NSMutableArray, NSString, RTInvocationDispatcher, RTPurgeManager;
 
-__attribute__((visibility("hidden")))
 @interface RTDataProvider : RTNotifier <RTDataProviderProtocol>
 {
+    NSMutableArray *_cachedData;
+    BOOL _cachedDataNeedsCopyOnWrite;
     BOOL _populating;
+    long long _state;
+    RTPurgeManager *_purgeManager;
     RTInvocationDispatcher *_dispatcher;
-    NSMutableArray *_cachedEvents;
-    unsigned long long _state;
     NSError *_invalidationError;
 }
 
-@property (strong, nonatomic) NSMutableArray *cachedEvents; // @synthesize cachedEvents=_cachedEvents;
+@property (strong, nonatomic) NSArray *cachedData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) RTInvocationDispatcher *dispatcher; // @synthesize dispatcher=_dispatcher;
@@ -28,32 +29,35 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSError *invalidationError; // @synthesize invalidationError=_invalidationError;
 @property (readonly, nonatomic) NSString *name;
 @property (nonatomic) BOOL populating; // @synthesize populating=_populating;
-@property (nonatomic) unsigned long long state; // @synthesize state=_state;
+@property (strong, nonatomic) RTPurgeManager *purgeManager; // @synthesize purgeManager=_purgeManager;
+@property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
 + (id)providerName;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)__fetchEventsBetweenStartDate:(id)arg1 endDate:(id)arg2 filterPredicate:(id)arg3 sortDescriptors:(id)arg4 handler:(CDUnknownBlockType)arg5;
+- (void)__fetchDataWithFilterPredicates:(id)arg1 sortDescriptors:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_didReceiveMemoryWarning:(long long)arg1;
-- (void)_fetchEventsBetweenStartDate:(id)arg1 endDate:(id)arg2 filterPredicate:(id)arg3 sortDescriptors:(id)arg4 handler:(CDUnknownBlockType)arg5;
-- (void)_purgeCache;
+- (void)_fetchDataWithFilterPredicates:(id)arg1 sortDescriptors:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_purge;
+- (void)_refresh;
 - (void)_removeAllEvents;
+- (void)addObjectToCachedData:(id)arg1;
 - (void)addObserverInternal:(id)arg1 notificationName:(id)arg2;
-- (void)fetchAllEventsWithHandler:(CDUnknownBlockType)arg1;
+- (void)fetchAllDataWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchDataProviderStatus:(CDUnknownBlockType)arg1;
-- (void)fetchEventsBetweenStartDate:(id)arg1 endDate:(id)arg2 filterPredicate:(id)arg3 sortDescriptors:(id)arg4 handler:(CDUnknownBlockType)arg5;
-- (void)fetchEventsWithFilterPredicate:(id)arg1 sortDescriptors:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)fetchDataWithFilterPredicates:(id)arg1 sortDescriptors:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithName:(id)arg1;
+- (id)initWithName:(id)arg1 purgeManager:(id)arg2;
 - (void)onMemoryWarningNotification:(id)arg1;
 - (void)populateDataProviderWithHandler:(CDUnknownBlockType)arg1;
-- (void)purgeCache;
+- (void)purge;
+- (void)purgeWithHandler:(CDUnknownBlockType)arg1;
 - (void)refresh;
+- (void)refreshWithHandler:(CDUnknownBlockType)arg1;
 - (void)removeObserverInternal:(id)arg1 notificationName:(id)arg2;
 - (void)shutdown;
-- (id)supportedEventClasses;
-- (BOOL)supportsEventClass:(Class)arg1;
 
 @end
 

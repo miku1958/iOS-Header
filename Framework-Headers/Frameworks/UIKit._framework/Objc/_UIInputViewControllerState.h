@@ -9,15 +9,17 @@
 #import <UIKit/NSCopying-Protocol.h>
 #import <UIKit/NSSecureCoding-Protocol.h>
 
-@class TIDocumentState, TITextInputTraits;
+@class TIDocumentState, TITextInputTraits, UITextInputMode;
 
 __attribute__((visibility("hidden")))
 @interface _UIInputViewControllerState : NSObject <NSCopying, NSSecureCoding>
 {
     TIDocumentState *_documentState;
     TITextInputTraits *_textInputTraits;
+    UITextInputMode *_documentInputMode;
 }
 
+@property (strong, nonatomic) UITextInputMode *documentInputMode; // @synthesize documentInputMode=_documentInputMode;
 @property (strong, nonatomic) TIDocumentState *documentState; // @synthesize documentState=_documentState;
 @property (strong, nonatomic) TITextInputTraits *textInputTraits; // @synthesize textInputTraits=_textInputTraits;
 

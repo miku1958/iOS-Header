@@ -7,31 +7,37 @@
 #import <objc/NSObject.h>
 
 @class LAClient, NSData, NSNumber, NSString;
-@protocol LAPrearmContextXPC;
+@protocol LAPrearmContextXPC, LAUIDelegate;
 
 @interface LAContext : NSObject
 {
     LAClient *_client;
     id<LAPrearmContextXPC> _prearmContext;
+    BOOL _cancelButtonVisible;
+    BOOL _fallbackButtonVisible;
     NSNumber *_maxBiometryFailures;
     NSData *_evaluatedPolicyDomainState;
     NSData *_externalizedContext;
 }
 
-@property (nonatomic, getter=isCancelButtonVisible) BOOL cancelButtonVisible;
+@property (nonatomic, getter=isCancelButtonVisible) BOOL cancelButtonVisible; // @synthesize cancelButtonVisible=_cancelButtonVisible;
 @property (strong, nonatomic) NSData *evaluatedPolicyDomainState; // @synthesize evaluatedPolicyDomainState=_evaluatedPolicyDomainState;
 @property (strong, nonatomic) NSData *externalizedContext; // @synthesize externalizedContext=_externalizedContext;
-@property (nonatomic, getter=isFallbackButtonVisible) BOOL fallbackButtonVisible;
+@property (nonatomic, getter=isFallbackButtonVisible) BOOL fallbackButtonVisible; // @synthesize fallbackButtonVisible=_fallbackButtonVisible;
+@property (copy, nonatomic) NSString *localizedCancelTitle;
 @property (copy, nonatomic) NSString *localizedFallbackTitle;
 @property (strong, nonatomic) NSNumber *maxBiometryFailures; // @synthesize maxBiometryFailures=_maxBiometryFailures;
 @property (nonatomic) double touchIDAuthenticationAllowableReuseDuration;
 @property (strong, nonatomic) NSNumber *touchIDAuthenticationRetryLimit;
+@property (weak, nonatomic) id<LAUIDelegate> uiDelegate;
 
 - (void).cxx_destruct;
+- (id)_hashWithBundleIdentifier:(id)arg1;
 - (id)_publicErrorFromInternalError:(id)arg1;
 - (id)_serverPropertyValueForOption:(long long)arg1;
 - (void)_setServerPropertyForOption:(long long)arg1 value:(id)arg2;
 - (BOOL)canEvaluatePolicy:(long long)arg1 error:(id *)arg2;
+- (void)dealloc;
 - (void)enterPassword:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)evaluateAccessControl:(struct __SecAccessControl *)arg1 operation:(long long)arg2 localizedReason:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)evaluateAccessControl:(struct __SecAccessControl *)arg1 operation:(long long)arg2 options:(id)arg3 reply:(CDUnknownBlockType)arg4;
@@ -40,14 +46,19 @@
 - (void)evaluatePolicy:(long long)arg1 options:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)evaluationMechanismsForPolicy:(long long)arg1 error:(id *)arg2;
 - (void)failProcessedEvent:(long long)arg1 failureError:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithExternalizedContext:(id)arg1;
 - (id)initWithExternalizedContext:(id)arg1 uiDelegate:(id)arg2;
 - (id)initWithUIDelegate:(id)arg1;
 - (void)invalidate;
 - (BOOL)isCredentialSet:(long long)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (void)prearmTouchIDWithReply:(CDUnknownBlockType)arg1;
+- (void)resetWithReply:(CDUnknownBlockType)arg1;
+- (void)setCredential:(id)arg1 forProcessedEvent:(long long)arg2 credentialType:(long long)arg3 reply:(CDUnknownBlockType)arg4;
 - (BOOL)setCredential:(id)arg1 type:(long long)arg2;
+- (BOOL)setCredential:(id)arg1 type:(long long)arg2 error:(id *)arg3;
 
 @end
 

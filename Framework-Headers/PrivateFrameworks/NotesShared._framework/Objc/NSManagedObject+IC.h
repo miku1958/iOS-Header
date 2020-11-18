@@ -8,7 +8,14 @@
 
 @interface NSManagedObject (IC)
 + (id)objectFromObjectID:(id)arg1 context:(id)arg2;
-- (void)obtainPermanentObjectIDIfNecessary;
++ (id)objectIDsFromObjects:(id)arg1;
++ (id)objectsFromObjectIDs:(id)arg1 context:(id)arg2;
++ (id)objectsMatchingPredicate:(id)arg1 context:(id)arg2;
++ (id)objectsMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 context:(id)arg3;
++ (id)permanentObjectIDsFromObjects:(id)arg1;
+- (BOOL)obtainPermanentObjectIDIfNecessary;
+- (id)permanentObjectID;
+- (void)postNotificationOnMainThreadAfterSaveWithName:(id)arg1;
 - (void)postNotificationOnMainThreadWithName:(id)arg1;
 @end
 

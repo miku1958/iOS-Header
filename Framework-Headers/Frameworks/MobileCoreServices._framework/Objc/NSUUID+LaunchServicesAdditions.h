@@ -8,5 +8,6 @@
 
 @interface NSUUID (LaunchServicesAdditions)
 + (id)_LS_UUIDWithData:(id)arg1;
++ (id)_LS_UUIDWithData:(id)arg1 SHA1:(BOOL)arg2;
 @end
 

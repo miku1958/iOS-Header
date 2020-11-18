@@ -15,6 +15,7 @@
 {
     BOOL _hasCustomizableInstanceAppearanceModifications;
     BOOL _shouldArchiveUIAppearanceTags;
+    long long _tag;
 }
 
 @property (nonatomic, setter=_setHasCustomizableInstanceAppearanceModifications:) BOOL _hasCustomizableInstanceAppearanceModifications; // @synthesize _hasCustomizableInstanceAppearanceModifications;
@@ -32,7 +33,7 @@
 @property (readonly, copy, nonatomic) NSString *resolvedTitle;
 @property (readonly, nonatomic) BOOL selected;
 @property (readonly) Class superclass;
-@property (nonatomic) long long tag; // @dynamic tag;
+@property (nonatomic) long long tag; // @synthesize tag=_tag;
 @property (copy, nonatomic) NSString *title; // @dynamic title;
 
 + (id)_appearanceBlindViewClasses;

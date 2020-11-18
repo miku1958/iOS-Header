@@ -9,6 +9,7 @@
 @class BLTPBSectionIcon, BLTPBSectionInfo, NSString;
 
 @protocol BLTSettingSyncing <NSObject>
+- (void)removeSectionWithSectionID:(NSString *)arg1;
 - (void)setSectionInfo:(BLTPBSectionInfo *)arg1 completion:(void (^)(void))arg2;
 - (void)setSectionSubtypeParametersIcon:(BLTPBSectionIcon *)arg1 forSectionID:(NSString *)arg2 forSubtypeID:(long long)arg3;
 @end

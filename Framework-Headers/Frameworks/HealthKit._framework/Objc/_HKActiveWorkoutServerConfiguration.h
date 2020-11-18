@@ -8,7 +8,7 @@
 
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSUUID;
+@class HKQuantity, NSArray, NSDate, NSDictionary, NSUUID;
 
 @interface _HKActiveWorkoutServerConfiguration : NSObject <NSSecureCoding>
 {
@@ -20,13 +20,17 @@
     unsigned long long _workoutActivityType;
     NSDate *_startDate;
     NSUUID *_UUID;
+    HKQuantity *_lapLength;
+    long long _swimmingLocation;
 }
 
 @property (strong, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 @property (nonatomic, getter=isIndoor) BOOL indoor; // @synthesize indoor=_indoor;
+@property (strong, nonatomic) HKQuantity *lapLength; // @synthesize lapLength=_lapLength;
 @property (strong, nonatomic) NSDictionary *resumeDataByType; // @synthesize resumeDataByType=_resumeDataByType;
 @property (nonatomic) BOOL shouldUseDeviceData; // @synthesize shouldUseDeviceData=_shouldUseDeviceData;
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (nonatomic) long long swimmingLocation; // @synthesize swimmingLocation=_swimmingLocation;
 @property (nonatomic) unsigned long long workoutActivityType; // @synthesize workoutActivityType=_workoutActivityType;
 @property (strong, nonatomic) NSArray *workoutEvents; // @synthesize workoutEvents=_workoutEvents;
 @property (nonatomic) long long workoutState; // @synthesize workoutState=_workoutState;

@@ -6,16 +6,18 @@
 
 #import <UIKit/UIGestureRecognizer.h>
 
-@class UIDelayedAction;
+@class UIDelayedAction, UIView;
+@protocol UIScrollViewDelayedTouchesBeganGestureRecognizerClient;
 
-__attribute__((visibility("hidden")))
 @interface UIScrollViewDelayedTouchesBeganGestureRecognizer : UIGestureRecognizer
 {
     UIDelayedAction *_touchDelay;
     struct CGPoint _startSceneReferenceLocation;
+    UIView<UIScrollViewDelayedTouchesBeganGestureRecognizerClient> *_client;
 }
 
 - (void).cxx_destruct;
+- (id)_clientView;
 - (void)_resetGestureRecognizer;
 - (void)clearTimer;
 - (void)dealloc;

@@ -16,22 +16,22 @@ __attribute__((visibility("hidden")))
     CKDMMCSEngineContext *_MMCSEngineContext;
 }
 
-@property (readonly, nonatomic, getter=getMMCSEngine) struct _mmcs_engine *MMCSEngine;
 @property (strong, nonatomic) CKDMMCSEngineContext *MMCSEngineContext; // @synthesize MMCSEngineContext=_MMCSEngineContext;
 @property (strong, nonatomic) CKDAssetCache *assetCache; // @synthesize assetCache=_assetCache;
 @property (readonly, nonatomic, getter=getMaxChunkCountForSection) unsigned int maxChunkCountForSection;
 @property (strong, nonatomic) NSString *path; // @synthesize path=_path;
 
-+ (id)MMCSWrapperForApplicationBundleID:(id)arg1 path:(id)arg2 assetDbPath:(id)arg3 fileDownloadPath:(id)arg4 packageDownloadPath:(id)arg5 packageUploadPath:(id)arg6 isUTAccount:(BOOL)arg7 error:(id *)arg8;
++ (id)MMCSWrapperForApplicationBundleID:(id)arg1 assetDirectoryContext:(id)arg2 isUTAccount:(BOOL)arg3 error:(id *)arg4;
 + (long long)_commonErrorCodeWithMMCSError:(id)arg1;
 + (long long)_errorCodeWithMMCSGetError:(id)arg1;
 + (long long)_errorCodeWithMMCSPutError:(id)arg1;
-+ (id)_errorWithMMCSError:(id)arg1 description:(id)arg2 isGet:(BOOL)arg3;
-+ (id)_errorWithMMCSError:(id)arg1 path:(id)arg2 description:(id)arg3 isGet:(BOOL)arg4;
++ (long long)_errorCodeWithMMCSRegisterError:(id)arg1;
++ (id)_errorWithMMCSError:(id)arg1 description:(id)arg2 operationType:(long long)arg3;
++ (id)_errorWithMMCSError:(id)arg1 path:(id)arg2 description:(id)arg3 operationType:(long long)arg4;
 + (id)_userInfoFromMMCSRetryableError:(id)arg1;
 + (BOOL)isTrackingItemID:(unsigned long long)arg1;
 + (id)protocolVersion;
-+ (void)purgeMMCSDirectoryWithMaxLifetime:(double)arg1 path:(id)arg2 assetsDbPath:(id)arg3;
++ (void)purgeMMCSDirectoryWithPath:(id)arg1;
 + (id)sharedItemIDs;
 + (id)sharedMMCSItemReaders;
 + (id)sharedWrappersByPath;
@@ -41,23 +41,31 @@ __attribute__((visibility("hidden")))
 + (void)stopTrackingMMCSItemReader:(id)arg1;
 + (id)zeroSizeFileSignature;
 - (void).cxx_destruct;
-- (id)_contextToGetItemGroup:(id)arg1 operation:(id)arg2 options:(id)arg3 progress:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)CKStatusReportArray;
+- (id)_contextToGetItemGroup:(id)arg1 operation:(id)arg2 options:(id)arg3 progress:(CDUnknownBlockType)arg4 command:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)_contextToGetSectionItem:(id)arg1 operation:(id)arg2 options:(id)arg3 progress:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_contextToPutItemGroup:(id)arg1 operation:(id)arg2 options:(id)arg3 progress:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_contextToPutSectionItem:(id)arg1 operation:(id)arg2 options:(id)arg3 progress:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)_contextToRegisterItemGroup:(id)arg1 operation:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)_contextToRegisterItemGroup:(id)arg1 operation:(id)arg2 fetchOnly:(BOOL)arg3 options:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (BOOL)_getRegisteredItemsGreaterThan:(unsigned long long)arg1 itemIds:(unsigned long long *)arg2 itemCount:(unsigned long long *)arg3 error:(id *)arg4;
 - (void)_logMMCSOptions:(id)arg1;
 - (id)_referenceIdentifierFromAssetKey:(id)arg1;
+- (void)_unregisterItemIDs:(id)arg1;
 - (void)dealloc;
-- (id)getItemGroupSet:(id)arg1 operation:(id)arg2 options:(id)arg3 progress:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)getItemGroupSet:(id)arg1 operation:(id)arg2 shouldFetchAssetContentInMemory:(BOOL)arg3 options:(id)arg4 progress:(CDUnknownBlockType)arg5 command:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (struct _mmcs_engine *)getMMCSEngine;
 - (id)getSectionItem:(id)arg1 operation:(id)arg2 options:(id)arg3 progress:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)initWithMMCSEngineContext:(id)arg1 path:(id)arg2;
+- (void)performOnRunLoop:(CDUnknownBlockType)arg1;
 - (id)putItemGroupSet:(id)arg1 operation:(id)arg2 options:(id)arg3 progress:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)putSectionItem:(id)arg1 operation:(id)arg2 options:(id)arg3 progress:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)registerItemGroupSet:(id)arg1 operation:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)registerItemGroupSet:(id)arg1 operation:(id)arg2 shouldChunk:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)statusReport;
+- (id)registerItemGroupSet:(id)arg1 operation:(id)arg2 shouldChunk:(BOOL)arg3 fetchOnly:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (BOOL)registeredItemCount:(unsigned long long *)arg1 error:(id *)arg2;
+- (void)showRegisteredItems;
 - (void)unregisterItemIDs:(id)arg1;
+- (void)unregisterItemIDs:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 
 @end
 

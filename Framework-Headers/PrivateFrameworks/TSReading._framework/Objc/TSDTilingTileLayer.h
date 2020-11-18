@@ -24,7 +24,7 @@
 - (void)setNeedsDisplayInRectIgnoringBackground:(struct CGRect)arg1;
 - (void)setNeedsLayoutForTilingLayers;
 - (id)tileContentsLayer;
-- (void)updateFrameWithTileSize:(struct CGSize)arg1 tilesWide:(unsigned long long)arg2 tilesHigh:(unsigned long long)arg3;
+- (void)updateFrameWithTileSize:(struct CGSize)arg1 tilesWide:(unsigned long long)arg2 tilesHigh:(unsigned long long)arg3 geometryProvider:(id)arg4;
 
 @end
 

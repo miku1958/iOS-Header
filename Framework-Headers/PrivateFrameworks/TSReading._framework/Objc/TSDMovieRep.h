@@ -6,11 +6,12 @@
 
 #import <TSReading/TSDMediaRep.h>
 
+#import <TSReading/TSDTilingLayerDelegate-Protocol.h>
 #import <TSReading/TSKAVPlayerControllerDelegate-Protocol.h>
 
 @class AVAsset, AVPlayerLayer, CALayer, NSString, TSDButtonKnob, TSDFrameRep, TSDMovieInfo, TSKAVPlayerController;
 
-@interface TSDMovieRep : TSDMediaRep <TSKAVPlayerControllerDelegate>
+@interface TSDMovieRep : TSDMediaRep <TSKAVPlayerControllerDelegate, TSDTilingLayerDelegate>
 {
     TSKAVPlayerController *mPlayerController;
     BOOL mCurrentlyObservingPlayerLayer;

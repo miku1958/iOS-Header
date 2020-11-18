@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
     VKTileCache *_tilePool;
     VKTileSource *_tilesSources[34];
     VKTileSource *_optionalTileSources[34];
-    shared_ptr_f06afc6c _styleManager;
+    shared_ptr_a3c46825 _styleManager;
     float _loadingProgress;
     BOOL _hasFailedTile;
     BOOL _finishedLoading;
@@ -52,7 +52,7 @@ __attribute__((visibility("hidden")))
     float _lastMidDisplayZoomLevel;
     CDStruct_34734122 _sortPoint;
     double _contentScale;
-    vector_a2f7343e _exclusionAreas;
+    vector_ea81101c _exclusionAreas;
     BOOL _exclusionAreaVisible;
     _VKTileProviderTimerTarget *_evaluationTarget;
     _VKTileProviderTimerTarget *_prefetchTarget;
@@ -79,7 +79,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long neighborMode; // @synthesize neighborMode=_neighborMode;
 @property (readonly, nonatomic) NSSet *neighborTiles; // @synthesize neighborTiles=_neighborTiles;
 @property (nonatomic, getter=isPrefetchEnabled) BOOL prefetchEnabled; // @synthesize prefetchEnabled=_prefetchEnabled;
-@property (nonatomic) shared_ptr_f06afc6c styleManager; // @synthesize styleManager=_styleManager;
+@property (nonatomic) shared_ptr_a3c46825 styleManager; // @synthesize styleManager=_styleManager;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSSet *tilesToRender; // @synthesize tilesToRender=_tilesToRender;
 @property (nonatomic) BOOL useSmallTileCache; // @synthesize useSmallTileCache=_useSmallTileCache;
@@ -90,7 +90,7 @@ __attribute__((visibility("hidden")))
 - (void)_dirtyTile:(id)arg1 source:(id)arg2 layer:(unsigned long long)arg3;
 - (void)_disableTimers;
 - (void)_fetchAvailableTiles:(BOOL)arg1;
-- (void)_fillHoles:(id)arg1 context:(id)arg2;
+- (void)_fillHoles:(id)arg1 context:(struct LayoutContext *)arg2;
 - (void)_prefetchTiles;
 - (void)_resizeCache;
 - (void)_updateTimers:(int)arg1;
@@ -103,7 +103,9 @@ __attribute__((visibility("hidden")))
 - (void)configureTileSelection;
 - (void)dealloc;
 - (void)describeTilesFromList:(id)arg1 output:(id)arg2;
+- (void)describeTilesFromList:(id)arg1 outputtoDict:(id)arg2;
 - (id)detailedDescription;
+- (id)detailedDescriptionDictionaryRepresentation;
 - (void)didStopLoadingTilesWithError:(id)arg1;
 - (void)dirtyTilesFromTileSource:(id)arg1;
 - (BOOL)evaluateNeighborTileForRendering:(id)arg1;
@@ -121,34 +123,33 @@ __attribute__((visibility("hidden")))
 - (void)prepareTileForRendering:(id)arg1;
 - (void)quiesce;
 - (void)rasterizer:(id)arg1 didMakeRasterTile:(id)arg2 forKey:(const struct VKTileKey *)arg3;
-- (void)releaseChildrenFallbackTilesForTile:(id)arg1 context:(id)arg2;
 - (void)releaseFallbackTileForRendering:(id)arg1;
+- (void)releaseFallbackTilesForTile:(id)arg1 context:(struct LayoutContext *)arg2;
 - (void)releaseNeighborTileForRendering:(id)arg1;
-- (BOOL)releaseParentFallbackTileForTile:(id)arg1;
 - (void)releaseTileForRendering:(id)arg1;
 - (void)removeTileSourceForMapLayer:(unsigned long long)arg1;
 - (void)requireRasterization:(id)arg1;
 - (void)retireNeighborTiles:(id)arg1;
 - (void)retireRenderTiles:(id)arg1;
 - (id)selectTiles:(int *)arg1 needRasterization:(BOOL *)arg2;
-- (void)setTileExclusionAreas:(const vector_a2f7343e *)arg1;
+- (void)setTileExclusionAreas:(const vector_ea81101c *)arg1;
 - (void)setTileSource:(id)arg1 forMapLayer:(unsigned long long)arg2 optional:(BOOL)arg3;
-- (id)sourceForLayer:(id)arg1;
+- (id)sourceForLayer:(unsigned long long)arg1;
+- (id)sourceForMapLayer:(id)arg1;
 - (BOOL)tileExclusionAreaVisible;
 - (id)tileForKey:(const struct VKTileKey *)arg1;
 - (BOOL)tileMatters:(id)arg1;
 - (void)tileSource:(id)arg1 didFailToDecodeTileForKey:(const struct VKTileKey *)arg2;
 - (void)tileSource:(id)arg1 didFailToLoadTileForKey:(const struct VKTileKey *)arg2 error:(id)arg3;
 - (void)tileSource:(id)arg1 didFetchTile:(id)arg2 forKey:(const struct VKTileKey *)arg3;
-- (void)tileSource:(id)arg1 dirtyTilesWithinRect:(const CDStruct_d2b197d1 *)arg2 level:(long long)arg3;
+- (void)tileSource:(id)arg1 dirtyTilesWithinRect:(const Box_3d7e3c2c *)arg2 level:(long long)arg3;
 - (void)tileSource:(id)arg1 invalidateKey:(const struct VKTileKey *)arg2;
 - (void)tileSource:(id)arg1 invalidateKeys:(id)arg2;
 - (void)tileSource:(id)arg1 invalidateTilesWithState:(unsigned long long)arg2;
 - (BOOL)tileSource:(id)arg1 keyIsNeeded:(const struct VKTileKey *)arg2;
-- (BOOL)tileSourceMayUseNetwork:(id)arg1;
 - (void)tileSourcesDidChange;
 - (void)timerFired:(id)arg1;
-- (void)updateWithContext:(id)arg1 selectionScale:(float)arg2;
+- (void)updateWithContext:(struct LayoutContext *)arg1 selectionScale:(float)arg2;
 - (void)willStartLoadingTiles;
 
 @end

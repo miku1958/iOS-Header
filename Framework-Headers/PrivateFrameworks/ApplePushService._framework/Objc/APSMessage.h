@@ -14,10 +14,12 @@
 @interface APSMessage : NSObject <NSCoding>
 {
     NSMutableDictionary *_plist;
+    NSMutableDictionary *_properties;
     void *_xpcMessage;
     NSObject<OS_dispatch_queue> *_ivarQueue;
 }
 
+@property (strong, nonatomic) NSString *correlationIdentifier;
 @property (nonatomic) unsigned long long identifier;
 @property (strong, nonatomic) NSString *topic;
 @property (strong, nonatomic) NSDictionary *userInfo;
@@ -30,8 +32,10 @@
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithDictionary:(id)arg1 xpcMessage:(id)arg2;
 - (id)initWithTopic:(id)arg1 userInfo:(id)arg2;
+- (id)instanceObjectForKey:(id)arg1;
 - (id)objectForKey:(id)arg1;
 - (void)setGuid:(id)arg1;
+- (void)setInstanceObject:(id)arg1 forKey:(id)arg2;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 
 @end

@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <iAd/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, NSURL;
+@class NSArray, NSDictionary, NSString, NSURL;
 
 @interface ADAdImpressionPublicAttributes : NSObject <NSSecureCoding>
 {
     BOOL _unbranded;
     BOOL _hasAction;
+    int _contentAdServer;
     NSString *_accessibilityLabel;
     double _skipThreshold;
     double _minimumIntervalBetweenPresentations;
@@ -25,18 +26,23 @@
     NSString *_headlineForLCD;
     NSString *_descriptionForLCD;
     NSArray *_nativeMetadata;
+    NSDictionary *_transparencyDetails;
+    NSDictionary *_nativeMediaCreativeMetadata;
 }
 
 @property (copy, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
 @property (strong, nonatomic) NSURL *audioURL; // @synthesize audioURL=_audioURL;
+@property (nonatomic) int contentAdServer; // @synthesize contentAdServer=_contentAdServer;
 @property (copy, nonatomic) NSString *descriptionForLCD; // @synthesize descriptionForLCD=_descriptionForLCD;
 @property (nonatomic) BOOL hasAction; // @synthesize hasAction=_hasAction;
 @property (copy, nonatomic) NSString *headlineForLCD; // @synthesize headlineForLCD=_headlineForLCD;
 @property (strong, nonatomic) NSURL *logoImageURL; // @synthesize logoImageURL=_logoImageURL;
 @property (nonatomic) double minimumIntervalBetweenPresentations; // @synthesize minimumIntervalBetweenPresentations=_minimumIntervalBetweenPresentations;
+@property (strong, nonatomic) NSDictionary *nativeMediaCreativeMetadata; // @synthesize nativeMediaCreativeMetadata=_nativeMediaCreativeMetadata;
 @property (strong, nonatomic) NSArray *nativeMetadata; // @synthesize nativeMetadata=_nativeMetadata;
 @property (nonatomic) double skipThreshold; // @synthesize skipThreshold=_skipThreshold;
 @property (strong, nonatomic) NSURL *staticImageURL; // @synthesize staticImageURL=_staticImageURL;
+@property (strong, nonatomic) NSDictionary *transparencyDetails; // @synthesize transparencyDetails=_transparencyDetails;
 @property (nonatomic) BOOL unbranded; // @synthesize unbranded=_unbranded;
 @property (copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (strong, nonatomic) NSArray *videoAssets; // @synthesize videoAssets=_videoAssets;

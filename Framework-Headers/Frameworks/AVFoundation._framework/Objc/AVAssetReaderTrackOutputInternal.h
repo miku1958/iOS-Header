@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVAssetTrack, AVOutputSettings, NSString;
+@class AVAssetTrack, AVOutputSettings, AVWeakReference, NSString;
 
 @interface AVAssetReaderTrackOutputInternal : NSObject
 {
@@ -14,7 +14,7 @@
     AVOutputSettings *outputSettings;
     NSString *audioTimePitchAlgorithm;
     BOOL appliesPreferredTrackTransform;
-    BOOL isAttachedToMetadataAdaptor;
+    AVWeakReference *weakReferenceToAttachedAdaptor;
 }
 
 @end

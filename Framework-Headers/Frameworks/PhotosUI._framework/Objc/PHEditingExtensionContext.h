@@ -28,7 +28,6 @@
 - (void)cancelContentEditing;
 - (void)dealloc;
 - (void)finishContentEditing;
-- (id)initWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 contextUUID:(id)arg3;
 - (void)queryHandlingCapabilityForAdjustmentData:(id)arg1 withResponseHandler:(CDUnknownBlockType)arg2;
 - (void)queryShouldShowCancelConfirmationWithResponseHandler:(CDUnknownBlockType)arg1;
 

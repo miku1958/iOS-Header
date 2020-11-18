@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICDrawingCommand;
+@class ICDrawingCommandData;
 @protocol ICDrawingInputControllerDelegate, OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface ICDrawingInputController : NSObject
@@ -15,7 +15,7 @@
     NSObject<OS_dispatch_queue> *_inputQueue;
     NSObject<OS_dispatch_queue> *_outputQueue;
     id<ICDrawingInputControllerDelegate> _delegate;
-    ICDrawingCommand *_currentCommand;
+    ICDrawingCommandData *_currentCommand;
     long long _currentInputType;
     BOOL _ended;
     double _inputScale;
@@ -31,6 +31,7 @@
     double _eraserIndicatorAlpha;
     double _rulerWidth;
     double _strokeMaxForce;
+    double _touchSensitivity;
     struct ICDrawingPixelSmoothingFilter *_pixelSmoothingFilter;
     struct ICDrawingPointReductionFilter *_pointReductionFilter;
     struct ICDrawingStartHookFilter *_startHookFilter;
@@ -42,6 +43,8 @@
     struct ICDrawingAzimuthFilter *_azimuthFilter;
     struct ICDrawingEndCapsFilter *_endCapFilter;
     struct ICDrawingRulerExtremaFilter *_rulerExtremaFilter;
+    struct ICDrawingEstimatedAltitudeAndAzimuthFilter *_estimatedAltitudeAndAzimuthFilter;
+    struct CGPoint _lastPoint;
     struct CGAffineTransform _rulerTransform;
 }
 
@@ -50,11 +53,14 @@
 @property (nonatomic) struct ICDrawingEndCapsFilter *endCapFilter; // @synthesize endCapFilter=_endCapFilter;
 @property (nonatomic) struct ICDrawingEndHookFilter *endHookFilter; // @synthesize endHookFilter=_endHookFilter;
 @property (nonatomic) double eraserIndicatorAlpha; // @synthesize eraserIndicatorAlpha=_eraserIndicatorAlpha;
+@property (nonatomic) struct ICDrawingEstimatedAltitudeAndAzimuthFilter *estimatedAltitudeAndAzimuthFilter; // @synthesize estimatedAltitudeAndAzimuthFilter=_estimatedAltitudeAndAzimuthFilter;
 @property (nonatomic) struct ICDrawingInputProviderInitial *inputProvider; // @synthesize inputProvider=_inputProvider;
 @property (nonatomic) struct ICDrawingInputSmoother *inputSmoother; // @synthesize inputSmoother=_inputSmoother;
 @property (nonatomic) struct ICDrawingInputToOutputFilter *inputToOutputFilter; // @synthesize inputToOutputFilter=_inputToOutputFilter;
 @property BOOL isSnappedToRuler; // @synthesize isSnappedToRuler=_isSnappedToRuler;
 @property (nonatomic) BOOL isSnappedToRulerTopSide; // @synthesize isSnappedToRulerTopSide=_isSnappedToRulerTopSide;
+@property struct CGPoint lastPoint; // @synthesize lastPoint=_lastPoint;
+@property (readonly) BOOL lastPointIsMasked;
 @property (nonatomic) struct ICDrawingPixelSmoothingFilter *pixelSmoothingFilter; // @synthesize pixelSmoothingFilter=_pixelSmoothingFilter;
 @property (nonatomic) struct ICDrawingPointReductionFilter *pointReductionFilter; // @synthesize pointReductionFilter=_pointReductionFilter;
 @property (nonatomic) struct ICDrawingRulerExtremaFilter *rulerExtremaFilter; // @synthesize rulerExtremaFilter=_rulerExtremaFilter;
@@ -62,6 +68,7 @@
 @property (nonatomic) double rulerWidth; // @synthesize rulerWidth=_rulerWidth;
 @property (nonatomic) struct ICDrawingStartHookFilter *startHookFilter; // @synthesize startHookFilter=_startHookFilter;
 @property (nonatomic) double strokeMaxForce; // @synthesize strokeMaxForce=_strokeMaxForce;
+@property (nonatomic) double touchSensitivity; // @synthesize touchSensitivity=_touchSensitivity;
 @property (nonatomic) BOOL useRuler; // @synthesize useRuler=_useRuler;
 @property (nonatomic) struct ICDrawingVelocityCalculationFilter *velocityFilter; // @synthesize velocityFilter=_velocityFilter;
 
@@ -70,36 +77,36 @@
 + (void)setupDefaults;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_drawingAddPoint:(CDStruct_d0a6eba3)arg1;
+- (void)_drawingAddPoint:(CDStruct_f17e9403)arg1;
 - (double)baseRadiusForCommandType:(unsigned int)arg1 inputType:(long long)arg2;
 - (CDStruct_4a3d0796)baseValuesforCommandType:(unsigned int)arg1 inputType:(long long)arg2;
-- (CDStruct_d0a6eba3)calculateVelocityForFirstPoint:(CDStruct_d0a6eba3)arg1;
-- (CDStruct_d0a6eba3)calculateVelocityForNewPoint:(CDStruct_d0a6eba3)arg1 previousPoint:(CDStruct_d0a6eba3)arg2;
+- (CDStruct_f17e9403)calculateVelocityForFirstPoint:(CDStruct_f17e9403)arg1;
+- (CDStruct_f17e9403)calculateVelocityForNewPoint:(CDStruct_f17e9403)arg1 previousPoint:(CDStruct_f17e9403)arg2;
 - (unsigned long long)copyInputUpdatedRangeFromIndex:(unsigned long long)arg1 into:(vector_c0e7c5b2 *)arg2;
 - (void)dealloc;
 - (double)distanceToRulerCenter:(struct CGPoint)arg1;
-- (void)drawingAddPoint:(CDStruct_d0a6eba3)arg1;
+- (void)drawingAddPoint:(CDStruct_f17e9403)arg1;
 - (void)drawingAddPoints:(vector_c0e7c5b2)arg1;
 - (void)drawingBeganWithCommand:(id)arg1 inputType:(long long)arg2 start:(CDUnknownBlockType)arg3;
 - (void)drawingCancelledWithCompletion:(CDUnknownBlockType)arg1;
 - (void)drawingEndedWithPreCompletion:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)drawingUpdateAllPoints;
-- (void)drawingUpdatePoint:(CDStruct_d0a6eba3)arg1;
-- (CDStruct_4a3d0796)eraserOutputPoint:(CDStruct_d0a6eba3)arg1 baseValues:(CDStruct_4a3d0796)arg2;
+- (void)drawingUpdatePoint:(CDStruct_f17e9403)arg1;
+- (CDStruct_4a3d0796)eraserOutputPoint:(CDStruct_f17e9403)arg1 baseValues:(CDStruct_4a3d0796)arg2;
 - (vector_c0e7c5b2 *)getInputUpdatedRangeFromIndex:(inout unsigned long long *)arg1;
 - (struct CGPoint)getRulerSnapLineOriginAndTangent:(struct CGPoint *)arg1 andNormal:(struct CGPoint *)arg2;
 - (vector_82e5b66f *)getUpdatedRangeFromIndex:(inout unsigned long long *)arg1;
-- (void)handleMarkerStartCapPoint:(CDStruct_4a3d0796 *)arg1 forInput:(CDStruct_d0a6eba3 *)arg2;
+- (void)handleMarkerStartCapPoint:(CDStruct_4a3d0796 *)arg1 forInput:(CDStruct_f17e9403 *)arg2;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
-- (CDStruct_4a3d0796)markerOutputPoint:(CDStruct_d0a6eba3)arg1 baseValues:(CDStruct_4a3d0796)arg2;
+- (CDStruct_4a3d0796)markerOutputPoint:(CDStruct_f17e9403)arg1 baseValues:(CDStruct_4a3d0796)arg2;
 - (void)maskToRuler;
-- (CDStruct_4a3d0796)outputCurrentCommandPoint:(CDStruct_d0a6eba3)arg1;
+- (CDStruct_4a3d0796)outputCurrentCommandPoint:(CDStruct_f17e9403)arg1;
 - (ICDrawingInputProvider_d48c6870 *)outputFilter;
-- (CDStruct_4a3d0796)outputPoint:(CDStruct_d0a6eba3)arg1 forCommandType:(unsigned int)arg2 baseValues:(CDStruct_4a3d0796)arg3;
+- (CDStruct_4a3d0796)outputPoint:(CDStruct_f17e9403)arg1 forCommandType:(unsigned int)arg2 baseValues:(CDStruct_4a3d0796)arg3;
 - (CDStruct_30364a2d)parametersforCommandType:(unsigned int)arg1;
-- (CDStruct_4a3d0796)penOutputPoint:(CDStruct_d0a6eba3)arg1 baseValues:(CDStruct_4a3d0796)arg2;
-- (CDStruct_4a3d0796)pencilOutputPoint:(CDStruct_d0a6eba3)arg1 baseValues:(CDStruct_4a3d0796)arg2;
+- (CDStruct_4a3d0796)penOutputPoint:(CDStruct_f17e9403)arg1 baseValues:(CDStruct_4a3d0796)arg2;
+- (CDStruct_4a3d0796)pencilOutputPoint:(CDStruct_f17e9403)arg1 baseValues:(CDStruct_4a3d0796)arg2;
 - (void)removePredictedTouches;
 - (void)reset;
 - (double)rulerOffset;

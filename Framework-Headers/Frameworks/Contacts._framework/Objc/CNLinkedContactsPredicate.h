@@ -24,7 +24,10 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithContact:(id)arg1;
 - (id)initWithContactIdentifier:(id)arg1;
 

@@ -49,6 +49,9 @@ __attribute__((visibility("hidden")))
 - (struct tagCommNATInfo *)callCommNATTestFromIPPort:(struct tagIPPORT *)arg1 ipv6Prefix:(CDStruct_c3d3b44c *)arg2;
 - (int)callHTTPTestFromIPPort:(struct tagIPPORT *)arg1 ipv6Prefix:(CDStruct_c3d3b44c *)arg2 ToServer:(id)arg3 isSSL:(BOOL)arg4;
 - (void)clearRetries;
+- (id)copyNatTypeCache;
+- (id)copyNatTypeCachePlistScheme;
+- (id)copyNatTypeCache_OSXGamedScheme;
 - (int)currentNATType;
 - (void)dealloc;
 - (id)delegate;
@@ -61,9 +64,6 @@ __attribute__((visibility("hidden")))
 - (void)registerForNetworkChanges;
 - (oneway void)release;
 - (void)reportNATType;
-- (id)retrieveNatTypeCache;
-- (id)retrieveNatTypeCache_CachePlistScheme;
-- (id)retrieveNatTypeCache_OSXGamedScheme;
 - (unsigned int)setCommNATFlags:(unsigned int)arg1 forInterface:(id)arg2 isCached:(BOOL)arg3;
 - (void)setDelegate:(id)arg1;
 - (unsigned int)setFlags:(unsigned int)arg1 forInterface:(id)arg2 isCached:(BOOL)arg3 isCachedKey:(id)arg4 mask:(unsigned int)arg5;

@@ -15,6 +15,7 @@
     BOOL _lodAverage;
 }
 
+@property (nonatomic) unsigned long long borderColor; // @dynamic borderColor;
 @property (nonatomic) unsigned long long compareFunction; // @dynamic compareFunction;
 @property (copy, nonatomic) NSString *label; // @dynamic label;
 @property (nonatomic) BOOL lodAverage; // @synthesize lodAverage=_lodAverage;

@@ -39,6 +39,7 @@
 @property (strong, nonatomic) NSString *originalValue; // @synthesize originalValue=_originalValue;
 @property (nonatomic) unsigned long long uid; // @synthesize uid=_uid;
 
++ (Class)featureHandleType;
 - (void)addFeatureHandle:(id)arg1;
 - (void)clearFeatureHandles;
 - (void)copyTo:(id)arg1;

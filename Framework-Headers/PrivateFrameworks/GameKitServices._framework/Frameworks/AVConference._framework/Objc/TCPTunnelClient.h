@@ -60,7 +60,6 @@ __attribute__((visibility("hidden")))
 - (void)destroyDispatchTimer;
 - (void)finalize;
 - (id)initWithRelayRequestDictionary:(id)arg1 withCallID:(unsigned int)arg2 relayType:(unsigned char)arg3 errorCode:(int *)arg4;
-- (BOOL)isNonzeroNAT64Prefix:(CDStruct_c3d3b44c *)arg1;
 - (BOOL)isTunnelSocketClosed;
 - (void)processSocketRead;
 - (void)processSocketReadSSL;

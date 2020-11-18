@@ -28,8 +28,9 @@
 @property (readonly) unsigned long long version;
 
 + (id)_cf2nsCookies:(struct __CFArray *)arg1;
++ (id)_cookieForSetCookieString:(id)arg1 forURL:(id)arg2 partition:(id)arg3;
 + (id)_cookiesWithResponseHeaderFields:(id)arg1 forURL:(id)arg2 singleCookie:(BOOL)arg3;
-+ (struct __CFArray *)_ns2cfCookies:(id)arg1;
++ (const struct __CFArray *)_ns2cfCookies:(id)arg1;
 + (id)_parsedCookiesWithResponseHeaderFields:(id)arg1 forURL:(id)arg2;
 + (id)cookieWithCFHTTPCookie:(struct OpaqueCFHTTPCookie *)arg1;
 + (id)cookieWithProperties:(id)arg1;
@@ -46,13 +47,15 @@
 - (id)Path;
 - (id)Port;
 - (id)Secure;
+- (id)StoragePartition;
 - (id)Value;
 - (id)Version;
-- (struct OpaqueCFHTTPCookie *)_CFHTTPCookie;
-- (struct OpaqueCFHTTPCookie *)_GetInternalCFHTTPCookie;
+- (const struct OpaqueCFHTTPCookie *)_CFHTTPCookie;
+- (const struct OpaqueCFHTTPCookie *)_GetInternalCFHTTPCookie;
 - (long long)_compareForHeaderOrder:(id)arg1;
 - (BOOL)_isExpired;
 - (id)_key;
+- (id)_storagePartition;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

@@ -4,21 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Photos/PHAssetPropertySet.h>
 
-@class NSString, PHAsset;
+@class NSString;
 
-@interface PHAssetDescriptionProperties : NSObject
+@interface PHAssetDescriptionProperties : PHAssetPropertySet
 {
-    PHAsset *_asset;
     NSString *_assetDescription;
 }
 
-@property (readonly, weak, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
 @property (readonly, copy, nonatomic) NSString *assetDescription; // @synthesize assetDescription=_assetDescription;
 
++ (id)propertiesToFetch;
++ (id)propertySetName;
 - (void).cxx_destruct;
-- (id)initWithFetchDictionary:(id)arg1 asset:(id)arg2;
+- (id)initWithFetchDictionary:(id)arg1 asset:(id)arg2 prefetched:(BOOL)arg3;
 
 @end
 

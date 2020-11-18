@@ -23,19 +23,17 @@
     int _deferPropertyChangeNotifications;
     NSObject<OS_voucher> *_initializationVoucher;
     AUParameterTree *_cachedParameterTree;
-    void *_rpcObserverToken;
     AUAudioUnitViewService *_viewService;
 }
 
-@property AUAudioUnitViewService *viewService; // @synthesize viewService=_viewService;
+@property (nonatomic) AUAudioUnitViewService *viewService; // @synthesize viewService=_viewService;
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
 - (id)_fetchAndClearPendingChangedProperties;
 - (id)_getBus:(unsigned int)arg1 scope:(unsigned int)arg2 error:(id *)arg3;
 - (BOOL)_identifyBus:(id)arg1 scope:(unsigned int *)arg2 element:(unsigned int *)arg3;
-- (void)addPropertyObserver:(id)arg1;
-- (void)addRemoteParameterObserver:(BOOL)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)addPropertyObserver:(id)arg1 context:(unsigned long long)arg2;
 - (void)close:(CDUnknownBlockType)arg1;
 - (id)currentParameterTree;
 - (void)dealloc;
@@ -52,16 +50,17 @@
 - (void)parameterStringFromValue:(float)arg1 currentValue:(BOOL)arg2 address:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)parameterValueFromString:(id)arg1 address:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)parametersForOverviewWithCount:(long long)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)removePropertyObserver:(id)arg1;
-- (void)removeRemoteParameterObserver:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)removePropertyObserver:(id)arg1 context:(unsigned long long)arg2;
 - (void)requestViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)reset;
 - (void)setBusCount:(unsigned long long)arg1 scope:(unsigned int)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)setBusFormat:(unsigned int)arg1 scope:(unsigned int)arg2 format:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)setBusName:(unsigned int)arg1 scope:(unsigned int)arg2 name:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)setParameter:(unsigned long long)arg1 value:(float)arg2;
+- (void)setValue:(id)arg1 forKey:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)setValue:(id)arg1 forProperty:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)syncParameter:(unsigned long long)arg1 value:(float)arg2 extOriginator:(unsigned long long)arg3 hostTime:(unsigned long long)arg4 eventType:(unsigned int)arg5;
 - (void)uninitialize:(CDUnknownBlockType)arg1;
+- (void)valueForKey:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)valueForProperty:(id)arg1 reply:(CDUnknownBlockType)arg2;
 
 @end

@@ -18,6 +18,7 @@
         BOOL respondsToTileTransitionCoordinatorForChangeFromFrame;
         BOOL respondsToTileTransitionCoordinatorForReattachedTileControllers;
         BOOL respondsToTileTransitionCoordinatorForLayoutInvalidationContext;
+        BOOL respondsToCanBypass20069585Check;
     } _tileTransitionDelegateFlags;
     struct {
         BOOL respondsToScrollInfoWithLayout;
@@ -47,7 +48,6 @@
     id<PUTilingViewTileUseDelegate> _tileUseDelegate;
     id<PUTilingCoordinateSystem> _contentCoordinateSystem;
     id<PUTilingCoordinateSystem> _fixedCoordinateSystem;
-    CDUnknownBlockType _onNextTileControllersUpdateBlock;
     PUTilingLayout *__pendingLayout;
     PUReuseQueue *__tileControllerReuseQueue;
     PUTileTree *__activeTileControllers;
@@ -61,6 +61,7 @@
     double __pagingSpringPullAdjustment;
     double __pagingFrictionAdjustment;
     NSMutableDictionary *__postLayoutBlocks;
+    CDUnknownBlockType _onNextTileControllersUpdateBlock;
     struct UIEdgeInsets _loadingInsets;
 }
 
@@ -89,7 +90,7 @@
 @property (readonly, nonatomic) id<PUTilingCoordinateSystem> contentCoordinateSystem; // @synthesize contentCoordinateSystem=_contentCoordinateSystem;
 @property (readonly, nonatomic) id<PUTilingCoordinateSystem> fixedCoordinateSystem; // @synthesize fixedCoordinateSystem=_fixedCoordinateSystem;
 @property (readonly, nonatomic) BOOL isAnyTileControllerAnimating;
-@property (strong, nonatomic) PUTilingLayout *layout; // @synthesize layout=_layout;
+@property (strong, nonatomic, setter=_setLayout:) PUTilingLayout *layout; // @synthesize layout=_layout;
 @property (nonatomic) struct UIEdgeInsets loadingInsets; // @synthesize loadingInsets=_loadingInsets;
 @property (copy, nonatomic) CDUnknownBlockType onNextTileControllersUpdateBlock; // @synthesize onNextTileControllersUpdateBlock=_onNextTileControllersUpdateBlock;
 @property (weak, nonatomic) id<PUTilingViewScrollDelegate> scrollDelegate; // @synthesize scrollDelegate=_scrollDelegate;
@@ -117,7 +118,6 @@
 - (void)_invalidateTileControllersWithTileTransitionCoordinator:(id)arg1;
 - (void)_registerDataSource:(id)arg1;
 - (void)_runPostLayoutBlocks;
-- (void)_setLayout:(id)arg1;
 - (void)_setNeedsUpdate;
 - (void)_transferTileControllersToDataSource:(id)arg1 usingDataSourceConverter:(id)arg2;
 - (void)_updateIfNeeded;

@@ -6,15 +6,13 @@
 
 #import <coreroutine/RTNotification.h>
 
-__attribute__((visibility("hidden")))
 @interface RTDataProtectionManagerNotificationUnlockedSinceBoot : RTNotification
 {
     BOOL _unlockedSinceBoot;
 }
 
-@property (nonatomic) BOOL unlockedSinceBoot; // @synthesize unlockedSinceBoot=_unlockedSinceBoot;
+@property (readonly, nonatomic) BOOL unlockedSinceBoot; // @synthesize unlockedSinceBoot=_unlockedSinceBoot;
 
-+ (id)notificationName;
 - (id)initWithUnlockedSinceBoot:(BOOL)arg1;
 
 @end

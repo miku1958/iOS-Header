@@ -6,12 +6,19 @@
 
 #import <MediaToolbox/FigBaseCALayer.h>
 
-@class FigCaptionLayerPrivate;
+#import <MediaToolbox/CALayerDelegate-Protocol.h>
 
-@interface FigCaptionLayer : FigBaseCALayer
+@class FigCaptionLayerPrivate, NSString;
+
+@interface FigCaptionLayer : FigBaseCALayer <CALayerDelegate>
 {
     FigCaptionLayerPrivate *_priv;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void)dealloc;
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import "AXUIClientDelegate-Protocol.h"
 
@@ -25,6 +25,7 @@
 @property (readonly) Class superclass;
 
 + (void)initializeMonitor;
+- (void).cxx_destruct;
 - (void)_notifyServerStickyKeyUpdatedForKeycode:(unsigned short)arg1 usagePage:(unsigned int)arg2 down:(BOOL)arg3 up:(BOOL)arg4 locked:(BOOL)arg5;
 - (void)_notifyServerStickyKeysDisabled;
 - (void)_notifyServerStickyKeysToggledViaShift;

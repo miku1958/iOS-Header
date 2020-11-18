@@ -8,26 +8,29 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSString, _MRAuthenticationRequestMessageProtobuf, _MRAuthenticationResponseMessageProtobuf, _MRClientUpdatesConfigurationProtobuf, _MRDeviceInfoMessageProtobuf, _MRGameControllerMessageProtobuf, _MRGetKeyboardSessionProtobuf, _MRGetStateMessageProtobuf, _MRGetVoiceInputDevicesMessageProtobuf, _MRGetVoiceInputDevicesResponseMessageProtobuf, _MRKeyboardMessageProtobuf, _MRNotificationMessageProtobuf, _MRPlaybackQueueProtobuf, _MRRegisterForGameControllerEventsMessageProtobuf, _MRRegisterGameControllerMessageProtobuf, _MRRegisterGameControllerResponseMessageProtobuf, _MRRegisterHIDDeviceMessageProtobuf, _MRRegisterHIDDeviceResultMessageProtobuf, _MRRegisterVoiceInputDeviceMessageProtobuf, _MRRegisterVoiceInputDeviceResponseMessageProtobuf, _MRSendCommandMessageProtobuf, _MRSendCommandResultMessageProtobuf, _MRSendHIDEventMessageProtobuf, _MRSendHIDReportMessageProtobuf, _MRSendVirtualTouchEventMessageProtobuf, _MRSendVoiceInputMessageProtobuf, _MRSetArtworkMessageProtobuf, _MRSetRecordingStateMessageProtobuf, _MRSetStateMessageProtobuf, _MRTextInputMessageProtobuf, _MRUnregisterGameControllerMessageProtobuf, _MRVolumeControlAvailabilityProtobuf;
+@class NSString, _MRClientUpdatesConfigurationProtobuf, _MRCryptoPairingMessageProtobuf, _MRDeviceInfoMessageProtobuf, _MRGameControllerMessageProtobuf, _MRGameControllerPropertiesMessageProtobuf, _MRGetKeyboardSessionProtobuf, _MRGetPlaybackQueueMessageProtobuf, _MRGetStateMessageProtobuf, _MRGetVoiceInputDevicesMessageProtobuf, _MRGetVoiceInputDevicesResponseMessageProtobuf, _MRKeyboardMessageProtobuf, _MRNotificationMessageProtobuf, _MRPlaybackQueueProtobuf, _MRRegisterForGameControllerEventsMessageProtobuf, _MRRegisterGameControllerMessageProtobuf, _MRRegisterGameControllerResponseMessageProtobuf, _MRRegisterHIDDeviceMessageProtobuf, _MRRegisterHIDDeviceResultMessageProtobuf, _MRRegisterVoiceInputDeviceMessageProtobuf, _MRRegisterVoiceInputDeviceResponseMessageProtobuf, _MRSendButtonEventMessageProtobuf, _MRSendCommandMessageProtobuf, _MRSendCommandResultMessageProtobuf, _MRSendHIDEventMessageProtobuf, _MRSendHIDReportMessageProtobuf, _MRSendVirtualTouchEventMessageProtobuf, _MRSendVoiceInputMessageProtobuf, _MRSetArtworkMessageProtobuf, _MRSetConnectionStateMessageProtobuf, _MRSetHiliteModeMessageProtobuf, _MRSetReadyStateMessageProtobuf, _MRSetRecordingStateMessageProtobuf, _MRSetStateMessageProtobuf, _MRTextInputMessageProtobuf, _MRTransactionMessageProtobuf, _MRUnregisterGameControllerMessageProtobuf, _MRVolumeControlAvailabilityProtobuf, _MRWakeDeviceMessageProtobuf;
 
 @interface _MRMediaRemoteMessageProtobuf : PBCodable <NSCopying>
 {
-    double _timestamp;
-    _MRAuthenticationRequestMessageProtobuf *_authenticationRequestMessage;
-    _MRAuthenticationResponseMessageProtobuf *_authenticationResponseMessage;
+    unsigned long long _timestamp;
     NSString *_authenticationToken;
     _MRClientUpdatesConfigurationProtobuf *_clientUpdatesConfigMessage;
+    _MRSetConnectionStateMessageProtobuf *_connectionState;
     _MRPlaybackQueueProtobuf *_contentItemsChangedNotificationMessage;
+    _MRCryptoPairingMessageProtobuf *_cryptoPairingMessage;
     _MRDeviceInfoMessageProtobuf *_deviceInfoMessage;
     unsigned int _errorCode;
     _MRGameControllerMessageProtobuf *_gameController;
+    _MRGameControllerPropertiesMessageProtobuf *_gameControllerProperties;
     _MRGetKeyboardSessionProtobuf *_getKeyboardMessage;
+    _MRGetPlaybackQueueMessageProtobuf *_getPlaybackQueue;
     _MRGetStateMessageProtobuf *_getStateMessage;
     _MRGetVoiceInputDevicesMessageProtobuf *_getVoiceInputDevicesMessage;
     _MRGetVoiceInputDevicesResponseMessageProtobuf *_getVoiceInputDevicesResponseMessage;
     NSString *_identifier;
     _MRKeyboardMessageProtobuf *_keyboardMessage;
-    _MRNotificationMessageProtobuf *_notificaitonMessage;
+    _MRNotificationMessageProtobuf *_notificationMessage;
+    _MRSetReadyStateMessageProtobuf *_readyStateMessage;
     _MRRegisterForGameControllerEventsMessageProtobuf *_registerForGameControllerEvents;
     _MRRegisterGameControllerMessageProtobuf *_registerGameController;
     _MRRegisterGameControllerResponseMessageProtobuf *_registerGameControllerResponse;
@@ -35,6 +38,7 @@
     _MRRegisterHIDDeviceResultMessageProtobuf *_registerHIDDeviceResultMessage;
     _MRRegisterVoiceInputDeviceMessageProtobuf *_registerVoiceInputDeviceMessage;
     _MRRegisterVoiceInputDeviceResponseMessageProtobuf *_registerVoiceInputDeviceResponseMessage;
+    _MRSendButtonEventMessageProtobuf *_sendButtonEventMessage;
     _MRSendCommandMessageProtobuf *_sendCommandMessage;
     _MRSendCommandResultMessageProtobuf *_sendCommandResultMessage;
     _MRSendHIDEventMessageProtobuf *_sendHIDEventMessage;
@@ -42,12 +46,15 @@
     _MRSendVirtualTouchEventMessageProtobuf *_sendVirtualTouchEventMessage;
     _MRSendVoiceInputMessageProtobuf *_sendVoiceInputMessage;
     _MRSetArtworkMessageProtobuf *_setArtworkMessage;
+    _MRSetHiliteModeMessageProtobuf *_setHiliteModeMessage;
     _MRSetRecordingStateMessageProtobuf *_setRecordingStateMessage;
     _MRSetStateMessageProtobuf *_setStateMessage;
     _MRTextInputMessageProtobuf *_textInputMessage;
+    _MRTransactionMessageProtobuf *_transactionPackets;
     int _type;
     _MRUnregisterGameControllerMessageProtobuf *_unregisterGameController;
     _MRVolumeControlAvailabilityProtobuf *_volumeControlAvailabilityMessage;
+    _MRWakeDeviceMessageProtobuf *_wakeDeviceMessage;
     struct {
         unsigned int timestamp:1;
         unsigned int errorCode:1;
@@ -55,33 +62,38 @@
     } _has;
 }
 
-@property (strong, nonatomic) _MRAuthenticationRequestMessageProtobuf *authenticationRequestMessage; // @synthesize authenticationRequestMessage=_authenticationRequestMessage;
-@property (strong, nonatomic) _MRAuthenticationResponseMessageProtobuf *authenticationResponseMessage; // @synthesize authenticationResponseMessage=_authenticationResponseMessage;
 @property (strong, nonatomic) NSString *authenticationToken; // @synthesize authenticationToken=_authenticationToken;
 @property (strong, nonatomic) _MRClientUpdatesConfigurationProtobuf *clientUpdatesConfigMessage; // @synthesize clientUpdatesConfigMessage=_clientUpdatesConfigMessage;
+@property (strong, nonatomic) _MRSetConnectionStateMessageProtobuf *connectionState; // @synthesize connectionState=_connectionState;
 @property (strong, nonatomic) _MRPlaybackQueueProtobuf *contentItemsChangedNotificationMessage; // @synthesize contentItemsChangedNotificationMessage=_contentItemsChangedNotificationMessage;
+@property (strong, nonatomic) _MRCryptoPairingMessageProtobuf *cryptoPairingMessage; // @synthesize cryptoPairingMessage=_cryptoPairingMessage;
 @property (strong, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfoMessage; // @synthesize deviceInfoMessage=_deviceInfoMessage;
 @property (nonatomic) unsigned int errorCode; // @synthesize errorCode=_errorCode;
 @property (strong, nonatomic) _MRGameControllerMessageProtobuf *gameController; // @synthesize gameController=_gameController;
+@property (strong, nonatomic) _MRGameControllerPropertiesMessageProtobuf *gameControllerProperties; // @synthesize gameControllerProperties=_gameControllerProperties;
 @property (strong, nonatomic) _MRGetKeyboardSessionProtobuf *getKeyboardMessage; // @synthesize getKeyboardMessage=_getKeyboardMessage;
+@property (strong, nonatomic) _MRGetPlaybackQueueMessageProtobuf *getPlaybackQueue; // @synthesize getPlaybackQueue=_getPlaybackQueue;
 @property (strong, nonatomic) _MRGetStateMessageProtobuf *getStateMessage; // @synthesize getStateMessage=_getStateMessage;
 @property (strong, nonatomic) _MRGetVoiceInputDevicesMessageProtobuf *getVoiceInputDevicesMessage; // @synthesize getVoiceInputDevicesMessage=_getVoiceInputDevicesMessage;
 @property (strong, nonatomic) _MRGetVoiceInputDevicesResponseMessageProtobuf *getVoiceInputDevicesResponseMessage; // @synthesize getVoiceInputDevicesResponseMessage=_getVoiceInputDevicesResponseMessage;
-@property (readonly, nonatomic) BOOL hasAuthenticationRequestMessage;
-@property (readonly, nonatomic) BOOL hasAuthenticationResponseMessage;
 @property (readonly, nonatomic) BOOL hasAuthenticationToken;
 @property (readonly, nonatomic) BOOL hasClientUpdatesConfigMessage;
+@property (readonly, nonatomic) BOOL hasConnectionState;
 @property (readonly, nonatomic) BOOL hasContentItemsChangedNotificationMessage;
+@property (readonly, nonatomic) BOOL hasCryptoPairingMessage;
 @property (readonly, nonatomic) BOOL hasDeviceInfoMessage;
 @property (nonatomic) BOOL hasErrorCode;
 @property (readonly, nonatomic) BOOL hasGameController;
+@property (readonly, nonatomic) BOOL hasGameControllerProperties;
 @property (readonly, nonatomic) BOOL hasGetKeyboardMessage;
+@property (readonly, nonatomic) BOOL hasGetPlaybackQueue;
 @property (readonly, nonatomic) BOOL hasGetStateMessage;
 @property (readonly, nonatomic) BOOL hasGetVoiceInputDevicesMessage;
 @property (readonly, nonatomic) BOOL hasGetVoiceInputDevicesResponseMessage;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasKeyboardMessage;
-@property (readonly, nonatomic) BOOL hasNotificaitonMessage;
+@property (readonly, nonatomic) BOOL hasNotificationMessage;
+@property (readonly, nonatomic) BOOL hasReadyStateMessage;
 @property (readonly, nonatomic) BOOL hasRegisterForGameControllerEvents;
 @property (readonly, nonatomic) BOOL hasRegisterGameController;
 @property (readonly, nonatomic) BOOL hasRegisterGameControllerResponse;
@@ -89,6 +101,7 @@
 @property (readonly, nonatomic) BOOL hasRegisterHIDDeviceResultMessage;
 @property (readonly, nonatomic) BOOL hasRegisterVoiceInputDeviceMessage;
 @property (readonly, nonatomic) BOOL hasRegisterVoiceInputDeviceResponseMessage;
+@property (readonly, nonatomic) BOOL hasSendButtonEventMessage;
 @property (readonly, nonatomic) BOOL hasSendCommandMessage;
 @property (readonly, nonatomic) BOOL hasSendCommandResultMessage;
 @property (readonly, nonatomic) BOOL hasSendHIDEventMessage;
@@ -96,16 +109,20 @@
 @property (readonly, nonatomic) BOOL hasSendVirtualTouchEventMessage;
 @property (readonly, nonatomic) BOOL hasSendVoiceInputMessage;
 @property (readonly, nonatomic) BOOL hasSetArtworkMessage;
+@property (readonly, nonatomic) BOOL hasSetHiliteModeMessage;
 @property (readonly, nonatomic) BOOL hasSetRecordingStateMessage;
 @property (readonly, nonatomic) BOOL hasSetStateMessage;
 @property (readonly, nonatomic) BOOL hasTextInputMessage;
 @property (nonatomic) BOOL hasTimestamp;
+@property (readonly, nonatomic) BOOL hasTransactionPackets;
 @property (nonatomic) BOOL hasType;
 @property (readonly, nonatomic) BOOL hasUnregisterGameController;
 @property (readonly, nonatomic) BOOL hasVolumeControlAvailabilityMessage;
+@property (readonly, nonatomic) BOOL hasWakeDeviceMessage;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) _MRKeyboardMessageProtobuf *keyboardMessage; // @synthesize keyboardMessage=_keyboardMessage;
-@property (strong, nonatomic) _MRNotificationMessageProtobuf *notificaitonMessage; // @synthesize notificaitonMessage=_notificaitonMessage;
+@property (strong, nonatomic) _MRNotificationMessageProtobuf *notificationMessage; // @synthesize notificationMessage=_notificationMessage;
+@property (strong, nonatomic) _MRSetReadyStateMessageProtobuf *readyStateMessage; // @synthesize readyStateMessage=_readyStateMessage;
 @property (strong, nonatomic) _MRRegisterForGameControllerEventsMessageProtobuf *registerForGameControllerEvents; // @synthesize registerForGameControllerEvents=_registerForGameControllerEvents;
 @property (strong, nonatomic) _MRRegisterGameControllerMessageProtobuf *registerGameController; // @synthesize registerGameController=_registerGameController;
 @property (strong, nonatomic) _MRRegisterGameControllerResponseMessageProtobuf *registerGameControllerResponse; // @synthesize registerGameControllerResponse=_registerGameControllerResponse;
@@ -113,6 +130,7 @@
 @property (strong, nonatomic) _MRRegisterHIDDeviceResultMessageProtobuf *registerHIDDeviceResultMessage; // @synthesize registerHIDDeviceResultMessage=_registerHIDDeviceResultMessage;
 @property (strong, nonatomic) _MRRegisterVoiceInputDeviceMessageProtobuf *registerVoiceInputDeviceMessage; // @synthesize registerVoiceInputDeviceMessage=_registerVoiceInputDeviceMessage;
 @property (strong, nonatomic) _MRRegisterVoiceInputDeviceResponseMessageProtobuf *registerVoiceInputDeviceResponseMessage; // @synthesize registerVoiceInputDeviceResponseMessage=_registerVoiceInputDeviceResponseMessage;
+@property (strong, nonatomic) _MRSendButtonEventMessageProtobuf *sendButtonEventMessage; // @synthesize sendButtonEventMessage=_sendButtonEventMessage;
 @property (strong, nonatomic) _MRSendCommandMessageProtobuf *sendCommandMessage; // @synthesize sendCommandMessage=_sendCommandMessage;
 @property (strong, nonatomic) _MRSendCommandResultMessageProtobuf *sendCommandResultMessage; // @synthesize sendCommandResultMessage=_sendCommandResultMessage;
 @property (strong, nonatomic) _MRSendHIDEventMessageProtobuf *sendHIDEventMessage; // @synthesize sendHIDEventMessage=_sendHIDEventMessage;
@@ -120,14 +138,18 @@
 @property (strong, nonatomic) _MRSendVirtualTouchEventMessageProtobuf *sendVirtualTouchEventMessage; // @synthesize sendVirtualTouchEventMessage=_sendVirtualTouchEventMessage;
 @property (strong, nonatomic) _MRSendVoiceInputMessageProtobuf *sendVoiceInputMessage; // @synthesize sendVoiceInputMessage=_sendVoiceInputMessage;
 @property (strong, nonatomic) _MRSetArtworkMessageProtobuf *setArtworkMessage; // @synthesize setArtworkMessage=_setArtworkMessage;
+@property (strong, nonatomic) _MRSetHiliteModeMessageProtobuf *setHiliteModeMessage; // @synthesize setHiliteModeMessage=_setHiliteModeMessage;
 @property (strong, nonatomic) _MRSetRecordingStateMessageProtobuf *setRecordingStateMessage; // @synthesize setRecordingStateMessage=_setRecordingStateMessage;
 @property (strong, nonatomic) _MRSetStateMessageProtobuf *setStateMessage; // @synthesize setStateMessage=_setStateMessage;
 @property (strong, nonatomic) _MRTextInputMessageProtobuf *textInputMessage; // @synthesize textInputMessage=_textInputMessage;
-@property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (strong, nonatomic) _MRTransactionMessageProtobuf *transactionPackets; // @synthesize transactionPackets=_transactionPackets;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (strong, nonatomic) _MRUnregisterGameControllerMessageProtobuf *unregisterGameController; // @synthesize unregisterGameController=_unregisterGameController;
 @property (strong, nonatomic) _MRVolumeControlAvailabilityProtobuf *volumeControlAvailabilityMessage; // @synthesize volumeControlAvailabilityMessage=_volumeControlAvailabilityMessage;
+@property (strong, nonatomic) _MRWakeDeviceMessageProtobuf *wakeDeviceMessage; // @synthesize wakeDeviceMessage=_wakeDeviceMessage;
 
+- (int)StringAsType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -137,6 +159,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

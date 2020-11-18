@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CloudDocs/BRNotificationReceiverDelegate-Protocol.h>
 
@@ -44,14 +44,14 @@ __attribute__((visibility("hidden")))
     void *_sort_context;
     struct __CFRunLoop *_runLoop;
     NSOperationQueue *_queryQueue;
-    int _disableCount;
+    _Atomic int _disableCount;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property NSMetadataQuery *query; // @synthesize query=_query;
-@property BRNotificationReceiver *receiver;
+@property (weak) NSMetadataQuery *query; // @synthesize query=_query;
+@property (strong) BRNotificationReceiver *receiver; // @synthesize receiver=_receiver;
 @property (readonly) Class superclass;
 
 + (void)didEndPossibleFileOperation:(id)arg1;
@@ -59,10 +59,11 @@ __attribute__((visibility("hidden")))
 + (id)willBeginPossibleCreationOfItemAtURL:(id)arg1;
 + (id)willBeginPossibleDeletionOfItemAtURL:(id)arg1;
 + (id)willBeginPossibleMoveOfItemAtURL:(id)arg1 toURL:(id)arg2;
+- (void).cxx_destruct;
 - (BOOL)_collectUpdates:(id)arg1;
 - (void)_performBlockAsync:(CDUnknownBlockType)arg1;
-- (void)_postNote:(struct __CFString *)arg1;
-- (void)_postNote:(struct __CFString *)arg1 userInfo:(id)arg2;
+- (void)_postNote:(const struct __CFString *)arg1;
+- (void)_postNote:(const struct __CFString *)arg1 userInfo:(id)arg2;
 - (void)_processChanges:(id)arg1;
 - (void)_processUpdates;
 - (id)_replacementObjectForQueryItem:(id)arg1;
@@ -77,7 +78,6 @@ __attribute__((visibility("hidden")))
 - (void)disableUpdates;
 - (void)enableUpdates;
 - (unsigned char)executeWithOptions:(unsigned long long)arg1;
-- (void)finalize;
 - (long long)indexOfResult:(const void *)arg1;
 - (id)initWithQuery:(id)arg1 values:(id)arg2 sortingAttributes:(id)arg3 items:(id)arg4;
 - (void)notificationReceiverDidReceiveNotifications:(id)arg1;

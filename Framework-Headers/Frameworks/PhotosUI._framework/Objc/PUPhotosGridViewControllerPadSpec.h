@@ -21,7 +21,6 @@
 - (void)configureCollectionViewGridLayout:(id)arg1 forWidth:(double)arg2;
 - (double)globalFooterHeight;
 - (double)maxSearchBarWidth;
-- (id)photoBrowserSpec;
 - (id)photosPickerViewControllerSpec;
 - (double)sectionHeaderHeight;
 - (long long)sectionHeaderStyle;

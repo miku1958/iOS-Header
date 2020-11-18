@@ -6,15 +6,17 @@
 
 #import <coreroutine/RTNotifier.h>
 
-@class NSMutableDictionary, NSObject;
+@class NSMutableDictionary, NSObject, RTAssetManager;
 @protocol OS_dispatch_queue;
 
 @interface RTDefaultsManager : RTNotifier
 {
-    NSMutableDictionary *_remoteDefaultsDictionary;
     NSObject<OS_dispatch_queue> *_serviceQueue;
+    NSMutableDictionary *_remoteDefaultsDictionary;
+    RTAssetManager *_assetsManager;
 }
 
+@property (strong, nonatomic) RTAssetManager *assetsManager; // @synthesize assetsManager=_assetsManager;
 @property (strong, nonatomic) NSMutableDictionary *remoteDefaultsDictionary; // @synthesize remoteDefaultsDictionary=_remoteDefaultsDictionary;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *serviceQueue; // @synthesize serviceQueue=_serviceQueue;
 
@@ -23,15 +25,20 @@
 - (void)_installDefaults:(id)arg1 toDefaultsDictionary:(id)arg2;
 - (void)_loadRemoteDefaults;
 - (id)_objectForKey:(id)arg1;
+- (void)_onAssetDownloadNotification:(id)arg1;
 - (void)_printCurrentEffectiveDefaults;
 - (void)_registerForNotifications;
+- (void)_setObject:(id)arg1 forKey:(id)arg2;
 - (void)_unregisterForNotifications;
-- (void)handleAssetDownloadNotification:(id)arg1;
 - (id)init;
+- (id)initWithName:(id)arg1;
+- (id)initWithName:(id)arg1 assetsManager:(id)arg2;
 - (id)objectForKey:(id)arg1;
+- (id)objectForKey:(id)arg1 domain:(id)arg2;
 - (id)objectsForKeys:(id)arg1;
 - (void)onAssetDownloadNotification:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
+- (void)setObject:(id)arg1 forKey:(id)arg2 domain:(id)arg3;
 - (void)setObjects:(id)arg1 forKeys:(id)arg2;
 - (void)shutdown;
 

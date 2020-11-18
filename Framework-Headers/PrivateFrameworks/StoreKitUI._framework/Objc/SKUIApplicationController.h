@@ -20,7 +20,7 @@
 @class IKAppContext, IKAppDataStorage, NSArray, NSDictionary, NSMutableArray, NSOperationQueue, NSString, NSURL, SKUIAppDeviceConfig, SKUIApplicationControllerOptions, SKUIClientContext, SKUIMetricsController, SKUIModalDocumentController, SKUINavigationDocumentController, SKUIPreviewDocumentController, SKUIScrollingTabBarController, SKUISimpleContainerViewController, SKUITabBarController, SKUIURL, SKUIURLResolver, UITabBarController, UIViewController, _SKUIApplicationShutdownHelper;
 @protocol SKUIApplicationDelegate, SKUIStatusOverlayProvider;
 
-@interface SKUIApplicationController : NSObject <IKAppContextDelegate, IKApplication, SKUIModalDocumentDelegate, SKUIModalSourceViewProvider, SKUINavigationControllerDelegate, SKUINavigationDocumentDelegate, SKUITabBarControllerDelegate, SKUIURLResolverDelegate, UINavigationControllerDelegate, UITabBarControllerDelegate>
+@interface SKUIApplicationController : NSObject <SKUIModalDocumentDelegate, SKUIModalSourceViewProvider, SKUINavigationControllerDelegate, SKUINavigationDocumentDelegate, SKUITabBarControllerDelegate, SKUIURLResolverDelegate, UINavigationControllerDelegate, UITabBarControllerDelegate, IKAppContextDelegate, IKApplication>
 {
     SKUIURL *_activationURL;
     NSURL *_applicationScriptURL;
@@ -84,6 +84,10 @@
 @property (copy, nonatomic) NSArray *tabBarItems; // @synthesize tabBarItems=_tabBarItems;
 
 + (id)applicationOptionsWithLaunchOptions:(id)arg1;
++ (id)configurationPreloader;
++ (void)finishedWithConfigurationPreloader;
++ (void)load;
++ (void)prepareForLaunch;
 - (void).cxx_destruct;
 - (void)URLResolver:(id)arg1 didFinishWithResult:(BOOL)arg2;
 - (BOOL)URLResolver:(id)arg1 shouldPerformDefaultActionForURL:(id)arg2;
@@ -107,6 +111,7 @@
 - (void)_invalidateApplication;
 - (BOOL)_isDisplayingAccountViewController;
 - (BOOL)_isStoreFront:(id)arg1 equalToStoreFront:(id)arg2;
+- (void)_jsLaunchFinishedWithLaunchMetrics:(id)arg1;
 - (id)_launchOptionsWithURL:(id)arg1;
 - (void)_legacyResolveExternalURL:(id)arg1;
 - (void)_loadApplicationFromUpdatableAssetsCache:(id)arg1;
@@ -115,6 +120,7 @@
 - (BOOL)_needsStatusOverlay;
 - (id)_newNavigationControllerWithTabBarItem:(id)arg1;
 - (id)_operationQueue;
+- (id)_overlayNavigationControllerForViewController:(id)arg1;
 - (void)_pageDidDisplayNotification:(id)arg1;
 - (BOOL)_playPreviewForPreviewTemplate:(id)arg1;
 - (void)_previewDocumentIsActiveChangeNotification:(id)arg1;
@@ -148,6 +154,7 @@
 - (Class)_tabBarControllerClass;
 - (void)_tintTabBarWithViewController:(id)arg1;
 - (id)_transientNavigationDocument;
+- (void)_updateOverlayNavigationController:(id)arg1;
 - (BOOL)_usesFloatingStatusOverlayForWidth:(double)arg1;
 - (id)activeDocument;
 - (void)appContext:(id)arg1 didCompletePurchase:(id)arg2;
@@ -157,6 +164,7 @@
 - (void)appContext:(id)arg1 didStopWithOptions:(id)arg2;
 - (void)appContext:(id)arg1 evaluateAppJavaScriptInContext:(id)arg2;
 - (void)appContext:(id)arg1 needsReloadWithUrgency:(unsigned long long)arg2;
+- (void)appContext:(id)arg1 needsReloadWithUrgency:(unsigned long long)arg2 options:(id)arg3;
 - (void)appContext:(id)arg1 setPreviewOverlayDocument:(id)arg2 withOptions:(id)arg3;
 - (void)appContextNeedsRestart:(id)arg1;
 - (id)appIdentifier;
@@ -194,11 +202,15 @@
 - (void)recordMetricsEvent:(id)arg1 flushImmediately:(BOOL)arg2;
 - (void)resumeApplicationWithOptions:(id)arg1;
 - (id)selectTabWithIdentifier:(id)arg1;
+- (void)setClientContext:(id)arg1;
 - (BOOL)shouldIgnoreJSValidation;
+- (void)showErrorViewForLaunchFailure;
 - (void)showErrorViewWithTitle:(id)arg1 message:(id)arg2;
+- (void)showErrorViewWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 buttonAction:(CDUnknownBlockType)arg4;
 - (void)showExternalURL:(id)arg1;
 - (void)showStatusOverlayUsingProvider:(id)arg1 animated:(BOOL)arg2;
 - (void)showTransientViewController:(id)arg1;
+- (struct CGSize)sizeForNavigationDocument:(id)arg1;
 - (void)suspendApplicationWithOptions:(id)arg1;
 - (void)tabBarController:(id)arg1 didEndCustomizingViewControllers:(id)arg2 changed:(BOOL)arg3;
 - (void)tabBarController:(id)arg1 didReselectViewController:(id)arg2;
@@ -209,6 +221,7 @@
 - (void)tabBarController:(id)arg1 willTransitionToSize:(struct CGSize)arg2 withTransitionCoordinator:(id)arg3;
 - (unsigned long long)tabBarControllerSupportedInterfaceOrientations:(id)arg1;
 - (void)updateTabBarWithItems:(id)arg1 animated:(BOOL)arg2;
+- (void)updateTabBarWithItems:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)vendorIdentifier;
 - (id)vendorStorage;
 

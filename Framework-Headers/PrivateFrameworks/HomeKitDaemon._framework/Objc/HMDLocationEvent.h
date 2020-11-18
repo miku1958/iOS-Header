@@ -21,6 +21,7 @@
 + (id)locationEventWithDictionary:(id)arg1 error:(id *)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRegion:(id)arg1;

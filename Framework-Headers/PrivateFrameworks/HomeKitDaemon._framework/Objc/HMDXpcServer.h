@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeKitDaemon/HMMessageDispatcher.h>
+#import <HMFoundation/HMFMessageDispatcher.h>
 
 #import <HomeKitDaemon/HMDApplicationMonitorDelegate-Protocol.h>
-#import <HomeKitDaemon/HMMessageReceiver-Protocol.h>
+#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSXPCListenerDelegate-Protocol.h>
 
-@class HMDApplicationMonitor, HMDApplicationRegistry, HMDBackgroundAppMessageFilter, HMDIDSMessageDispatcher, NSMutableSet, NSObject, NSString, NSUUID, NSXPCListener;
+@class HMDApplicationMonitor, HMDApplicationRegistry, HMDBackgroundAppMessageFilter, HMDCentralMessageDispatcher, HMDLostModeMessageFilter, NSMutableSet, NSObject, NSString, NSUUID, NSXPCListener;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
-@interface HMDXpcServer : HMMessageDispatcher <NSXPCListenerDelegate, HMMessageReceiver, HMDApplicationMonitorDelegate>
+@interface HMDXpcServer : HMFMessageDispatcher <NSXPCListenerDelegate, HMFMessageReceiver, HMDApplicationMonitorDelegate>
 {
     HMDApplicationRegistry *_appRegistry;
     NSObject<OS_dispatch_queue> *_xpcWorkQueue;
@@ -22,9 +22,10 @@
     NSMutableSet *_xpcClients;
     HMDApplicationMonitor *_appMonitor;
     NSObject<OS_dispatch_group> *_activeMessageTracker;
-    HMDIDSMessageDispatcher *_recvDispatcher;
-    HMMessageDispatcher *_notificationRelayDispatcher;
+    HMDCentralMessageDispatcher *_recvDispatcher;
+    HMFMessageDispatcher *_notificationRelayDispatcher;
     HMDBackgroundAppMessageFilter *_backgroundAppMsgFilter;
+    HMDLostModeMessageFilter *_lostModeMessageFilter;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *activeMessageTracker; // @synthesize activeMessageTracker=_activeMessageTracker;
@@ -34,10 +35,11 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HMDLostModeMessageFilter *lostModeMessageFilter; // @synthesize lostModeMessageFilter=_lostModeMessageFilter;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMMessageDispatcher *notificationRelayDispatcher; // @synthesize notificationRelayDispatcher=_notificationRelayDispatcher;
-@property (strong, nonatomic) HMDIDSMessageDispatcher *recvDispatcher; // @synthesize recvDispatcher=_recvDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *notificationRelayDispatcher; // @synthesize notificationRelayDispatcher=_notificationRelayDispatcher;
+@property (strong, nonatomic) HMDCentralMessageDispatcher *recvDispatcher; // @synthesize recvDispatcher=_recvDispatcher;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) NSMutableSet *xpcClients; // @synthesize xpcClients=_xpcClients;
@@ -48,9 +50,10 @@
 - (void)_handleResumeXPCConnectionRequest:(id)arg1;
 - (void)_handleSuspendXPCConnectionRequest:(id)arg1;
 - (void)_registerForMessages;
-- (void)_sendMessage:(id)arg1 target:(id)arg2 andInvokeCompletionHandler:(CDUnknownBlockType)arg3 withDeliveryCompletion:(CDUnknownBlockType)arg4;
+- (void)_sendMessage:(id)arg1 andInvokeCompletionHandler:(CDUnknownBlockType)arg2 withDeliveryCompletion:(CDUnknownBlockType)arg3;
 - (void)applicationMonitorDidChangeActiveHomeKitAppStatus:(BOOL)arg1;
 - (void)applicationMonitorDidChangeAppState:(id)arg1;
+- (void)dealloc;
 - (void)deregisterForMessage:(id)arg1 receiver:(id)arg2;
 - (void)deregisterReceiver:(id)arg1;
 - (void)dispatchMessage:(id)arg1 target:(id)arg2;
@@ -59,10 +62,8 @@
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)registerForMessage:(id)arg1 receiver:(id)arg2 messageHandler:(CDUnknownBlockType)arg3;
 - (void)reset;
-- (void)sendMessage:(id)arg1 target:(id)arg2;
-- (void)sendMessage:(id)arg1 target:(id)arg2 andInvokeCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)sendMessage:(id)arg1 target:(id)arg2 completionQueue:(id)arg3 deliveryCompletionHandler:(CDUnknownBlockType)arg4;
-- (void)sendMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (BOOL)start;
 - (BOOL)stop;
 

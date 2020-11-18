@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/NSCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
@@ -15,19 +15,19 @@
 {
     unsigned long long _publisherDestination;
     long long _maximumCount;
-    NSSet *_enabledSectionIDs;
     NSDate *_sinceDate;
+    NSSet *_enabledSectionIDs;
 }
 
-@property (readonly, nonatomic) NSSet *enabledSectionIDs;
+@property (strong, nonatomic) NSSet *enabledSectionIDs; // @synthesize enabledSectionIDs=_enabledSectionIDs;
 @property (readonly, nonatomic) unsigned long long maximumCount;
 @property (readonly, nonatomic) unsigned long long publisherDestination; // @synthesize publisherDestination=_publisherDestination;
 @property (strong, nonatomic) NSDate *sinceDate; // @synthesize sinceDate=_sinceDate;
 
 + (id)requestParametersForDestination:(unsigned long long)arg1 withSinceDate:(id)arg2 maximumCount:(long long)arg3 enabledSectionIDs:(id)arg4;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

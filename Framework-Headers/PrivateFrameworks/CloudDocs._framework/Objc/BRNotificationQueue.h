@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CloudDocs/NSFastEnumeration-Protocol.h>
 
@@ -20,11 +20,11 @@
 
 @property (readonly, nonatomic) unsigned long long count;
 
+- (void).cxx_destruct;
 - (void)_filterIndex:(id)arg1;
 - (void)addDequeueCallback:(CDUnknownBlockType)arg1;
 - (void)addNotification:(id)arg1 asDead:(BOOL)arg2;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
-- (void)dealloc;
 - (void)dequeue:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (id)description;
 - (id)init;

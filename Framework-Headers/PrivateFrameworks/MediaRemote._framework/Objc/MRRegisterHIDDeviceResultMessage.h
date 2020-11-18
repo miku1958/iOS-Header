@@ -14,7 +14,6 @@
 @property (readonly, nonatomic) unsigned int errorCode;
 
 - (id)initWithErrorCode:(unsigned int)arg1 deviceIdentifier:(unsigned long long)arg2;
-- (double)timestamp;
 - (unsigned long long)type;
 
 @end

@@ -6,40 +6,36 @@
 
 #import <GLKit/GLKView.h>
 
-#import <HealthKitUI/GLKViewDelegate-Protocol.h>
+@class CADisplayLink, UIScreen;
 
-@class CADisplayLink, NSString, UIScreen;
-
-@interface HKGLView : GLKView <GLKViewDelegate>
+@interface HKGLView : GLKView
 {
     UIScreen *_screen;
     CADisplayLink *_displayLink;
-    long long _displayLinkFrameInterval;
     BOOL _displayLinkPaused;
     BOOL _viewIsVisible;
+    BOOL _viewWillMoveToWindow;
     double _lastUpdateTime;
     BOOL _needsRender;
     unsigned int _latestDrawErrror;
     BOOL _synchronizesWithCA;
-    long long _preferredFramesPerSecond;
+    float _preferredFramesPerSecond;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isPaused) BOOL paused;
-@property (nonatomic) long long preferredFramesPerSecond; // @synthesize preferredFramesPerSecond=_preferredFramesPerSecond;
-@property (readonly) Class superclass;
+@property (nonatomic) float preferredFramesPerSecond; // @synthesize preferredFramesPerSecond=_preferredFramesPerSecond;
 @property (nonatomic) BOOL synchronizesWithCA; // @synthesize synchronizesWithCA=_synchronizesWithCA;
 @property (readonly, nonatomic) double timeSinceLastUpdate;
 
++ (void)_clearCachedProgramForVertexShader:(id)arg1 fragmentShader:(id)arg2;
 - (void).cxx_destruct;
+- (void)_commonInit;
 - (void)_createDisplayLinkForScreen:(id)arg1;
 - (void)_displayLinkFired;
 - (void)_invalidateLastUpdateTime;
 - (BOOL)_isLastUpdateTimeValid;
 - (void)_loadVertexShader:(id)arg1 fragmentShader:(id)arg2 inBundle:(id)arg3 forProgram:(unsigned int *)arg4 cache:(BOOL)arg5;
-- (BOOL)_needsDisplayLink;
+- (void)_loadVertexShaderSource:(id)arg1 fragmentShaderSource:(id)arg2 forProgram:(unsigned int *)arg3;
 - (void)_pauseByNotification;
 - (void)_resumeByNotification;
 - (void)_update;
@@ -48,8 +44,9 @@
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (unsigned int)drawInRect:(struct CGRect)arg1;
-- (void)glkView:(id)arg1 drawInRect:(struct CGRect)arg2;
-- (id)init;
+- (void)drawRect:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setNeedsRender;
 - (id)snapshot;

@@ -6,11 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, UIVisualEffectView;
+@class NSArray, UIStackView, UIVisualEffectView;
 
 @interface AKCandidatePickerView_iOS : UIView
 {
-    UIView *_buttonContainer;
+    UIStackView *_buttonContainer;
     UIVisualEffectView *_visualEffectView;
     long long _blurStyle;
     NSArray *_itemTags;
@@ -23,7 +23,7 @@
 @property (nonatomic) SEL action; // @synthesize action=_action;
 @property (strong, nonatomic) NSArray *annotations; // @synthesize annotations=_annotations;
 @property (nonatomic) long long blurStyle; // @synthesize blurStyle=_blurStyle;
-@property (strong, nonatomic) UIView *buttonContainer; // @synthesize buttonContainer=_buttonContainer;
+@property (strong, nonatomic) UIStackView *buttonContainer; // @synthesize buttonContainer=_buttonContainer;
 @property (strong, nonatomic) NSArray *buttons; // @synthesize buttons=_buttons;
 @property (strong, nonatomic) NSArray *itemTags; // @synthesize itemTags=_itemTags;
 @property (weak, nonatomic) id target; // @synthesize target=_target;

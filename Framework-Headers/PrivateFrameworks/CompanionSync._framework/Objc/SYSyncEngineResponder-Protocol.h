@@ -9,6 +9,9 @@
 @class NSData, NSDictionary, NSError, NSString, NSURL, PBCodable, SYMessageHeader;
 
 @protocol SYSyncEngineResponder <NSObject>
+
+@property (readonly, nonatomic) NSDictionary *extraTransportOptions;
+
 - (void)deliveredMessageWithID:(NSString *)arg1 context:(NSDictionary *)arg2;
 - (void)enqueuedMessageWithID:(NSString *)arg1 context:(NSDictionary *)arg2;
 - (void)handleFileTransfer:(NSURL *)arg1 metadata:(NSDictionary *)arg2 completion:(void (^)(BOOL, NSError *))arg3;

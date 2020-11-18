@@ -15,9 +15,10 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)gglLayoutScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
-- (void)gglLayoutSceneIfNeeded:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3 dispatchQueue:(id)arg4;
+- (void)gglLayoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
+- (void)gglLayoutSceneIfNeeded:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3 dispatchQueue:(id)arg4;
 - (void)lockCommandBuffers:(struct RenderQueue *)arg1;
+- (BOOL)supportsTrafficCasing;
 - (void)unLockCommandBuffers:(struct RenderQueue *)arg1;
 
 @end

@@ -8,23 +8,24 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSString, _MRTextEditingAttributesProtobuf;
+@class NSData, _MRTextEditingAttributesProtobuf;
 
 @interface _MRKeyboardMessageProtobuf : PBCodable <NSCopying>
 {
     _MRTextEditingAttributesProtobuf *_attributes;
+    NSData *_encryptedTextCyphertext;
     int _state;
-    NSString *_text;
     CDStruct_5accba53 _has;
 }
 
 @property (strong, nonatomic) _MRTextEditingAttributesProtobuf *attributes; // @synthesize attributes=_attributes;
+@property (strong, nonatomic) NSData *encryptedTextCyphertext; // @synthesize encryptedTextCyphertext=_encryptedTextCyphertext;
 @property (readonly, nonatomic) BOOL hasAttributes;
+@property (readonly, nonatomic) BOOL hasEncryptedTextCyphertext;
 @property (nonatomic) BOOL hasState;
-@property (readonly, nonatomic) BOOL hasText;
 @property (nonatomic) int state; // @synthesize state=_state;
-@property (strong, nonatomic) NSString *text; // @synthesize text=_text;
 
+- (int)StringAsState:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -34,6 +35,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)stateAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

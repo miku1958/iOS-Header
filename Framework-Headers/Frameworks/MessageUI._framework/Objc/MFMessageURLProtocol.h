@@ -6,20 +6,24 @@
 
 #import <Foundation/NSURLProtocol.h>
 
-@class NSMutableArray;
+@class MFAttachment, MFPromise;
 
 @interface MFMessageURLProtocol : NSURLProtocol
 {
-    BOOL _stopped;
-    NSMutableArray *_attachments;
+    MFAttachment *_attachment;
+    MFPromise *_promise;
 }
+
+@property (strong, nonatomic) MFAttachment *attachment; // @synthesize attachment=_attachment;
+@property (strong, nonatomic) MFPromise *promise; // @synthesize promise=_promise;
 
 + (BOOL)canInitWithRequest:(id)arg1;
 + (id)canonicalRequestForRequest:(id)arg1;
 + (void)initialize;
 + (BOOL)requestIsCacheEquivalent:(id)arg1 toRequest:(id)arg2;
-- (void)_downloadedData:(id)arg1 forURL:(id)arg2 mimeType:(id)arg3;
+- (id)_cachedResponseWithData:(id)arg1 mimeType:(id)arg2 error:(id *)arg3;
 - (void)dealloc;
+- (id)initWithRequest:(id)arg1 cachedResponse:(id)arg2 client:(id)arg3;
 - (void)startLoading;
 - (void)stopLoading;
 

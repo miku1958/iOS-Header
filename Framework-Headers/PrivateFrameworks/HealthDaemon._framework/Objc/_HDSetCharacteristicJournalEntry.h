@@ -17,8 +17,7 @@
 @property (readonly, nonatomic) HKCharacteristicType *dataType; // @synthesize dataType=_dataType;
 @property (readonly, nonatomic) id value; // @synthesize value=_value;
 
-+ (void)applyEntries:(id)arg1 withDaemon:(id)arg2;
-+ (long long)behavior;
++ (void)applyEntries:(id)arg1 withProfile:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

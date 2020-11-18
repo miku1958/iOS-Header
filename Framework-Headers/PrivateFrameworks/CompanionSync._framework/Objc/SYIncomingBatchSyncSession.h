@@ -9,13 +9,14 @@
 @class NSMutableArray, NSMutableIndexSet, NSObject;
 @protocol OS_dispatch_source;
 
+__attribute__((visibility("hidden")))
 @interface SYIncomingBatchSyncSession : SYIncomingFullSyncSession
 {
     NSObject<OS_dispatch_source> *_sessionTimer;
     NSMutableIndexSet *_receivedBatchIndices;
     BOOL _hasReceivedEndSync;
     CDUnknownBlockType _completion;
-    struct os_lock_handoff_s _queueLock;
+    struct os_unfair_lock_s _queueLock;
     NSMutableArray *_incomingBatchQueue;
     BOOL canRestart;
     BOOL canRollback;

@@ -15,6 +15,9 @@
     SEL _action;
 }
 
+@property (nonatomic) SEL action; // @synthesize action=_action;
+@property (weak, nonatomic) id target; // @synthesize target=_target;
+
 - (void).cxx_destruct;
 - (id)_createOverlayImageWithBackgroundWhite:(double)arg1 backgroundAlpha:(double)arg2 glyphAlpha:(double)arg3;
 - (void)_handleTap:(id)arg1;

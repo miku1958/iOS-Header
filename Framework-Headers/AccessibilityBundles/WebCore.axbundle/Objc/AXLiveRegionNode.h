@@ -17,12 +17,12 @@
 }
 
 @property (strong, nonatomic) NSString *label; // @synthesize label=_label;
-@property (nonatomic) id object; // @synthesize object=_object;
+@property (weak, nonatomic) id object; // @synthesize object=_object;
 @property (nonatomic) unsigned long long traits; // @synthesize traits=_traits;
 @property (strong, nonatomic) NSString *value; // @synthesize value=_value;
 
 + (id)createNodeFromObject:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (BOOL)isEqual:(id)arg1;
 
 @end

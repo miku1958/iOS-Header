@@ -17,17 +17,17 @@
 - (id)_accessibilityAppSwitcherApps;
 - (int)_accessibilityApplicationOrientation;
 - (BOOL)_accessibilityAssistantIsListening;
-- (void *)_accessibilityCenterPointOfScreen;
+- (id)_accessibilityCenterPointOfScreen;
 - (int)_accessibilityCurrentCallState;
 - (void)_accessibilityDeactivationAnimationWillBegin;
 - (void)_accessibilityHandleOrientationChange;
 - (void)_accessibilityHandleSpeakScreenGesture:(id)arg1;
 - (BOOL)_accessibilityHitTestsStatusBar;
+- (BOOL)_accessibilityIsAppReadyToBeProbed;
 - (BOOL)_accessibilityIsAppSwitcherVisible;
 - (BOOL)_accessibilityIsBatteryLow;
 - (BOOL)_accessibilityIsBuddyRunning;
 - (BOOL)_accessibilityIsQuietModeEnabled;
-- (BOOL)_accessibilityIsSessionLoginSession;
 - (BOOL)_accessibilityIsSystemAppServer;
 - (BOOL)_accessibilityIsSystemLocked;
 - (BOOL)_accessibilityIsSystemSleeping;
@@ -56,13 +56,13 @@
 - (id)accessibilityAttributeValue:(int)arg1;
 - (void)accessibilityDisable;
 - (void)accessibilityInitialize;
-- (BOOL)accessibilityPerformAction:(int)arg1 withValue:(id)arg2;
+- (BOOL)accessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (BOOL)accessibilityStartStopToggle;
 - (void)applicationDidFinishLaunching:(id)arg1;
 - (BOOL)handleDoubleHeightStatusBarTap:(long long)arg1;
-- (void)noteInterfaceOrientationChanged:(long long)arg1 duration:(double)arg2 updateMirroredDisplays:(BOOL)arg3 force:(BOOL)arg4;
-- (void)powerDown;
-- (void)reboot;
+- (void)noteInterfaceOrientationChanged:(long long)arg1 duration:(double)arg2 updateMirroredDisplays:(BOOL)arg3 force:(BOOL)arg4 logMessage:(id)arg5;
+- (void)powerDownRequested:(id)arg1;
+- (void)restartManagerWillReboot:(id)arg1;
 
 @end
 

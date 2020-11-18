@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSXPCConnection, UABestAppSuggestion;
 @protocol UABestAppSuggestionManagerDelegate;
@@ -21,6 +21,7 @@
 @property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (weak) id<UABestAppSuggestionManagerDelegate> delegate; // @dynamic delegate;
 
+- (void).cxx_destruct;
 - (id)bestAppSuggestion;
 - (void)bestAppSuggestionLaunchWasCancelled:(id)arg1;
 - (void)bestAppSuggestionWasLaunched:(id)arg1 withInteractionType:(int)arg2;
@@ -35,6 +36,7 @@
 - (void)notifyBestAppChanged:(id)arg1 type:(unsigned long long)arg2 options:(id)arg3 bundleIdentifier:(id)arg4 activityType:(id)arg5 dynamicIdentifier:(id)arg6 when:(id)arg7 confidence:(double)arg8 deviceName:(id)arg9 deviceIdentifier:(id)arg10 deviceType:(id)arg11;
 - (void)queueFetchOfPayloadForBestAppSuggestion:(id)arg1;
 - (void)removeBestApp:(id)arg1 options:(id)arg2;
+- (void)removeBestAppByUUID:(id)arg1 options:(id)arg2;
 - (void)startListeningForBestAppSuggestions;
 - (void)stopListeningForBestAppSuggestions;
 

@@ -10,7 +10,7 @@
 #import <CoreCDPInternal/CDPDSecureBackupDelegate-Protocol.h>
 
 @class CDPContext, CDPDCircleController, CDPDSecureBackupController;
-@protocol CDPStateUIProviderInternal;
+@protocol CDPLocalSecretFollowUpProvider, CDPStateUIProviderInternal;
 
 @interface CDPDLocalSecretController : NSObject <CDPDSecureBackupDelegate, CDPDCircleDelegate>
 {
@@ -18,27 +18,29 @@
     CDPDCircleController *_circleController;
     CDPDSecureBackupController *_secureBackupController;
     id<CDPStateUIProviderInternal> _uiProvider;
+    id<CDPLocalSecretFollowUpProvider> _followUpProvider;
 }
 
 @property (strong, nonatomic) CDPDCircleController *circleController; // @synthesize circleController=_circleController;
 @property (strong, nonatomic) CDPContext *context; // @synthesize context=_context;
+@property (strong, nonatomic) id<CDPLocalSecretFollowUpProvider> followUpProvider; // @synthesize followUpProvider=_followUpProvider;
 @property (strong, nonatomic) CDPDSecureBackupController *secureBackupController; // @synthesize secureBackupController=_secureBackupController;
 @property (strong, nonatomic) id<CDPStateUIProviderInternal> uiProvider; // @synthesize uiProvider=_uiProvider;
 
 - (void).cxx_destruct;
 - (id)_cdpStateMachine;
-- (void)_deleteFollowUpItemForOfflineLocalSecretChange;
-- (void)_finishOfflineLocalSecretChange:(CDUnknownBlockType)arg1;
+- (void)_collectLocalSecretWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_createContextWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_handleCompletionStatus:(BOOL)arg1;
 - (void)_localSecretChangedTo:(id)arg1 secretType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_postFollowUpItemForOfflineLocalSecretChange;
+- (void)_repairWithStateMachine:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)circleController:(id)arg1 secureBackupRecordsArePresentWithCompletion:(CDUnknownBlockType)arg2;
 - (id)circlePeerIDForSecureBackupController:(id)arg1;
+- (id)contextForController:(id)arg1;
 - (void)dealloc;
 - (void)finishOfflineLocalSecretChangeWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithContext:(id)arg1;
-- (void)joinCircleAfterRecoveryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)localSecretChangedTo:(id)arg1 secretType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)prepareCircleStateForRecoveryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)promotForLocalSecretWithCompletion:(CDUnknownBlockType)arg1;
 - (void)promptForAdoptionOfMultipleICSCWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)synchronizeCircleViewsForSecureBackupController:(id)arg1;

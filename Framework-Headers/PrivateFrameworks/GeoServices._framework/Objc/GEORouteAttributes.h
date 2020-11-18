@@ -8,15 +8,17 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAutomobileOptions, GEOTransitOptions, GEOWalkingOptions, NSString;
+@class GEOAutomobileOptions, GEODestinationInfo, GEOTransitOptions, GEOWalkingOptions, NSString;
 
 @interface GEORouteAttributes : PBCodable <NSCopying>
 {
     CDStruct_95bda58d _additionalTransportTypes;
-    CDStruct_4db06779 _timepoint;
+    struct GEOTimepoint _timepoint;
     CDStruct_95bda58d _uiContexts;
     GEOAutomobileOptions *_automobileOptions;
     int _basicPointsToBeIncluded;
+    GEODestinationInfo *_destinationInfo;
+    int _destinationType;
     int _mainTransportType;
     NSString *_phoneticLocaleIdentifier;
     int _trafficType;
@@ -24,6 +26,7 @@
     unsigned int _walkingLimitMeters;
     GEOWalkingOptions *_walkingOptions;
     BOOL _includeContingencyRoutes;
+    BOOL _includeCrossLanguagePhonetics;
     BOOL _includeHistoricTravelTime;
     BOOL _includeLaneGuidance;
     BOOL _includeManeuverIcons;
@@ -32,13 +35,16 @@
     BOOL _includeTrafficAlongRoute;
     BOOL _includeTrafficIncidents;
     BOOL _includeZilchPoints;
+    BOOL _useMetricThreshold;
     struct {
         unsigned int timepoint:1;
         unsigned int basicPointsToBeIncluded:1;
+        unsigned int destinationType:1;
         unsigned int mainTransportType:1;
         unsigned int trafficType:1;
         unsigned int walkingLimitMeters:1;
         unsigned int includeContingencyRoutes:1;
+        unsigned int includeCrossLanguagePhonetics:1;
         unsigned int includeHistoricTravelTime:1;
         unsigned int includeLaneGuidance:1;
         unsigned int includeManeuverIcons:1;
@@ -47,6 +53,7 @@
         unsigned int includeTrafficAlongRoute:1;
         unsigned int includeTrafficIncidents:1;
         unsigned int includeZilchPoints:1;
+        unsigned int useMetricThreshold:1;
     } _has;
 }
 
@@ -54,9 +61,14 @@
 @property (readonly, nonatomic) unsigned long long additionalTransportTypesCount;
 @property (strong, nonatomic) GEOAutomobileOptions *automobileOptions; // @synthesize automobileOptions=_automobileOptions;
 @property (nonatomic) int basicPointsToBeIncluded; // @synthesize basicPointsToBeIncluded=_basicPointsToBeIncluded;
+@property (strong, nonatomic) GEODestinationInfo *destinationInfo; // @synthesize destinationInfo=_destinationInfo;
+@property (nonatomic) int destinationType; // @synthesize destinationType=_destinationType;
 @property (readonly, nonatomic) BOOL hasAutomobileOptions;
 @property (nonatomic) BOOL hasBasicPointsToBeIncluded;
+@property (readonly, nonatomic) BOOL hasDestinationInfo;
+@property (nonatomic) BOOL hasDestinationType;
 @property (nonatomic) BOOL hasIncludeContingencyRoutes;
+@property (nonatomic) BOOL hasIncludeCrossLanguagePhonetics;
 @property (nonatomic) BOOL hasIncludeHistoricTravelTime;
 @property (nonatomic) BOOL hasIncludeLaneGuidance;
 @property (nonatomic) BOOL hasIncludeManeuverIcons;
@@ -70,9 +82,11 @@
 @property (nonatomic) BOOL hasTimepoint;
 @property (nonatomic) BOOL hasTrafficType;
 @property (readonly, nonatomic) BOOL hasTransitOptions;
+@property (nonatomic) BOOL hasUseMetricThreshold;
 @property (nonatomic) BOOL hasWalkingLimitMeters;
 @property (readonly, nonatomic) BOOL hasWalkingOptions;
 @property (nonatomic) BOOL includeContingencyRoutes; // @synthesize includeContingencyRoutes=_includeContingencyRoutes;
+@property (nonatomic) BOOL includeCrossLanguagePhonetics; // @synthesize includeCrossLanguagePhonetics=_includeCrossLanguagePhonetics;
 @property (nonatomic) BOOL includeHistoricTravelTime; // @synthesize includeHistoricTravelTime=_includeHistoricTravelTime;
 @property (nonatomic) BOOL includeLaneGuidance; // @synthesize includeLaneGuidance=_includeLaneGuidance;
 @property (nonatomic) BOOL includeManeuverIcons; // @synthesize includeManeuverIcons=_includeManeuverIcons;
@@ -83,32 +97,45 @@
 @property (nonatomic) BOOL includeZilchPoints; // @synthesize includeZilchPoints=_includeZilchPoints;
 @property (nonatomic) int mainTransportType; // @synthesize mainTransportType=_mainTransportType;
 @property (strong, nonatomic) NSString *phoneticLocaleIdentifier; // @synthesize phoneticLocaleIdentifier=_phoneticLocaleIdentifier;
-@property (nonatomic) CDStruct_4db06779 timepoint; // @synthesize timepoint=_timepoint;
+@property (nonatomic) struct GEOTimepoint timepoint; // @synthesize timepoint=_timepoint;
 @property (nonatomic) int trafficType; // @synthesize trafficType=_trafficType;
 @property (strong, nonatomic) GEOTransitOptions *transitOptions; // @synthesize transitOptions=_transitOptions;
 @property (readonly, nonatomic) int *uiContexts;
 @property (readonly, nonatomic) unsigned long long uiContextsCount;
+@property (nonatomic) BOOL useMetricThreshold; // @synthesize useMetricThreshold=_useMetricThreshold;
 @property (nonatomic) unsigned int walkingLimitMeters; // @synthesize walkingLimitMeters=_walkingLimitMeters;
 @property (strong, nonatomic) GEOWalkingOptions *walkingOptions; // @synthesize walkingOptions=_walkingOptions;
 
 + (id)defaultRouteAttributes;
+- (int)StringAsAdditionalTransportTypes:(id)arg1;
+- (int)StringAsBasicPointsToBeIncluded:(id)arg1;
+- (int)StringAsDestinationType:(id)arg1;
+- (int)StringAsMainTransportType:(id)arg1;
+- (int)StringAsTrafficType:(id)arg1;
+- (int)StringAsUiContexts:(id)arg1;
 - (void)addAdditionalTransportType:(int)arg1;
 - (void)addUiContext:(int)arg1;
 - (int)additionalTransportTypeAtIndex:(unsigned long long)arg1;
+- (id)additionalTransportTypesAsString:(int)arg1;
+- (id)basicPointsToBeIncludedAsString:(int)arg1;
 - (void)clearAdditionalTransportTypes;
 - (void)clearUiContexts;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)destinationTypeAsString:(int)arg1;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)mainTransportTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setAdditionalTransportTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setUiContexts:(int *)arg1 count:(unsigned long long)arg2;
+- (id)trafficTypeAsString:(int)arg1;
 - (int)uiContextAtIndex:(unsigned long long)arg1;
+- (id)uiContextsAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

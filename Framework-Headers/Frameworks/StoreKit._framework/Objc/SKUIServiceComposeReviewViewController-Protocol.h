@@ -9,6 +9,7 @@
 @class NSNumber, NSURL;
 
 @protocol SKUIServiceComposeReviewViewController <NSObject>
+- (void)clientKeyboardFrameChanged:(struct CGRect)arg1;
 - (void)finishStarRatingPromptWithRating:(NSNumber *)arg1;
 - (void)loadReviewWithURL:(NSURL *)arg1;
 @end

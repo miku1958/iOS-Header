@@ -10,6 +10,7 @@
 
 @protocol SCNPhysicsBodyJSExport <JSExport>
 
+@property (nonatomic, getter=isAffectedByGravity) BOOL affectedByGravity;
 @property (nonatomic) BOOL allowsResting;
 @property (nonatomic) double angularDamping;
 @property (nonatomic) struct SCNVector4 angularVelocity;
@@ -17,14 +18,17 @@
 @property (nonatomic) unsigned long long categoryBitMask;
 @property (nonatomic) double charge;
 @property (nonatomic) unsigned long long collisionBitMask;
+@property (nonatomic) unsigned long long contactTestBitMask;
 @property (nonatomic) double damping;
 @property (nonatomic) double friction;
 @property (readonly, nonatomic) BOOL isResting;
 @property (nonatomic) double mass;
+@property (nonatomic) struct SCNVector3 momentOfInertia;
 @property (strong, nonatomic) SCNPhysicsShape *physicsShape;
 @property (nonatomic) double restitution;
 @property (nonatomic) double rollingFriction;
 @property (nonatomic) long long type;
+@property (nonatomic) BOOL usesDefaultMomentOfInertia;
 @property (nonatomic) struct SCNVector3 velocity;
 @property (nonatomic) struct SCNVector3 velocityFactor;
 

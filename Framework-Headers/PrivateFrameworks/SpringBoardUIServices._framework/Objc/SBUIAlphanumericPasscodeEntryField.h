@@ -20,7 +20,7 @@
 
 - (void).cxx_destruct;
 - (void)_autofillForMesaWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_resetForFailedPasscode:(BOOL)arg1 playUnlockFailedSound:(BOOL)arg2;
+- (void)_resetForFailedPasscode:(BOOL)arg1;
 - (id)initWithDefaultSizeAndLightStyle:(BOOL)arg1;
 - (void)layoutSubviews;
 - (void)notePasscodeFieldTextDidChange;

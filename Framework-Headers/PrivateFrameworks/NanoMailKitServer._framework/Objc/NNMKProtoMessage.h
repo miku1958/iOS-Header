@@ -21,6 +21,8 @@
     NSString *_from;
     NSString *_messageId;
     NSString *_messageIdHeader;
+    NSString *_notificationMessageId;
+    NSString *_remoteId;
     unsigned int _status;
     NSString *_subject;
     NSMutableArray *_tos;
@@ -43,10 +45,14 @@
 @property (readonly, nonatomic) BOOL hasFrom;
 @property (readonly, nonatomic) BOOL hasMessageId;
 @property (readonly, nonatomic) BOOL hasMessageIdHeader;
+@property (readonly, nonatomic) BOOL hasNotificationMessageId;
+@property (readonly, nonatomic) BOOL hasRemoteId;
 @property (nonatomic) BOOL hasStatus;
 @property (readonly, nonatomic) BOOL hasSubject;
 @property (strong, nonatomic) NSString *messageId; // @synthesize messageId=_messageId;
 @property (strong, nonatomic) NSString *messageIdHeader; // @synthesize messageIdHeader=_messageIdHeader;
+@property (strong, nonatomic) NSString *notificationMessageId; // @synthesize notificationMessageId=_notificationMessageId;
+@property (strong, nonatomic) NSString *remoteId; // @synthesize remoteId=_remoteId;
 @property (nonatomic) unsigned int status; // @synthesize status=_status;
 @property (strong, nonatomic) NSString *subject; // @synthesize subject=_subject;
 @property (strong, nonatomic) NSMutableArray *tos; // @synthesize tos=_tos;

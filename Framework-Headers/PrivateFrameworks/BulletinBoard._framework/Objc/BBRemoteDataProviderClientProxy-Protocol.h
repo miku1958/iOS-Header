@@ -6,19 +6,19 @@
 
 #import <BulletinBoard/NSObject-Protocol.h>
 
-@class BBActionResponse, BBBulletinRequestParameters, BBSectionInfo, BBThumbnailSizeConstraints, NSDate, NSDictionary, NSSet, NSString;
+@class BBActionResponse, BBBulletinRequestParameters, BBSectionInfo, BBThumbnailSizeConstraints, NSDate, NSDictionary, NSSet, NSString, NSUUID;
 
 @protocol BBRemoteDataProviderClientProxy <NSObject>
-- (void)attachmentAspectRatioForRecordID:(NSString *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
-- (void)attachmentPNGDataForRecordID:(NSString *)arg1 sizeConstraints:(BBThumbnailSizeConstraints *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
 - (void)bulletinsWithRequestParameters:(BBBulletinRequestParameters *)arg1 lastCleared:(id)arg2 completion:(void (^)(NSSet *, NSError *))arg3;
 - (void)clearedInfoForBulletins:(NSSet *)arg1 lastClearedInfo:(id)arg2 completion:(void (^)(id, NSError *))arg3;
 - (void)clearedInfoForClearingAllBulletinsWithLastClearedInfo:(BBSectionInfo *)arg1 completion:(void (^)(id, NSError *))arg2;
 - (void)clearedInfoForClearingBulletinsFromDate:(NSDate *)arg1 toDate:(NSDate *)arg2 lastClearedInfo:(BBSectionInfo *)arg3 completion:(void (^)(id, NSError *))arg4;
 - (void)dataProviderDidLoad;
-- (void)deliverBulletinActionResponse:(BBActionResponse *)arg1;
+- (void)deliverBulletinActionResponse:(BBActionResponse *)arg1 withCompletion:(void (^)(BOOL))arg2;
 - (void)deliverMessageWithName:(NSString *)arg1 userInfo:(NSDictionary *)arg2;
+- (void)getAspectRatioForAttachmentUUID:(NSUUID *)arg1 recordID:(NSString *)arg2 isPrimary:(BOOL)arg3 withHandler:(void (^)(float, NSError *))arg4;
+- (void)getDataForAttachmentUUID:(NSUUID *)arg1 recordID:(NSString *)arg2 isPrimary:(BOOL)arg3 withHandler:(void (^)(NSData *, NSError *))arg4;
+- (void)getPNGDataForAttachmentUUID:(NSUUID *)arg1 recordID:(NSString *)arg2 isPrimary:(BOOL)arg3 sizeConstraints:(BBThumbnailSizeConstraints *)arg4 withHandler:(void (^)(NSData *, NSError *))arg5;
 - (void)noteSectionInfoDidChange:(BBSectionInfo *)arg1;
-- (void)primaryAttachmentDataForRecordID:(NSString *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
 @end
 

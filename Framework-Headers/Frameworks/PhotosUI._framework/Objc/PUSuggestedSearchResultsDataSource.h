@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 + (void)_clearRecentSearches;
 + (id)_recentSearchObjects;
 + (id)_recentSearches;
-+ (BOOL)saveRecentSearch:(id)arg1 albumUUID:(id)arg2 searchString:(id)arg3 displayTitle:(id)arg4 uuids:(id)arg5;
++ (BOOL)saveRecentSearch:(id)arg1 albumUUID:(id)arg2 memoryUUID:(id)arg3 searchString:(id)arg4 displayTitle:(id)arg5 displaySubtitle:(id)arg6 uuids:(id)arg7;
 - (void).cxx_destruct;
 - (void)_reloadRecentSearches;
 - (void)cancel;
@@ -49,7 +49,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)numberOfSuggestedSearches;
 - (id)recentSearchAtIndex:(unsigned long long)arg1;
 - (id)recentSearches;
-- (void)saveRecentSearch:(id)arg1 albumUUID:(id)arg2 searchString:(id)arg3 displayTitle:(id)arg4 uuids:(id)arg5;
+- (void)saveRecentSearch:(id)arg1 albumUUID:(id)arg2 memoryUUID:(id)arg3 searchString:(id)arg4 displayTitle:(id)arg5 displaySubtitle:(id)arg6 uuids:(id)arg7;
 - (id)suggestedSearchAtIndex:(unsigned long long)arg1;
 - (void)suggestedSearchHasPendingChanges:(id)arg1;
 - (id)suggestedSearchIndex:(id)arg1;

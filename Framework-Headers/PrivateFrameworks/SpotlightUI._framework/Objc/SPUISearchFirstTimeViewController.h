@@ -4,34 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <SearchUI/SearchUIFirstTimeExperienceViewController.h>
 
-#import <SpotlightUI/UITextViewDelegate-Protocol.h>
-
-@class NSString, UIScrollView;
-@protocol SPUISearchFirstTimeViewControllerDelegate;
-
-@interface SPUISearchFirstTimeViewController : UIViewController <UITextViewDelegate>
+@interface SPUISearchFirstTimeViewController : SearchUIFirstTimeExperienceViewController
 {
-    NSString *_fteString;
-    NSString *_learnMoreLinkString;
-    NSString *_continueLinkString;
-    id<SPUISearchFirstTimeViewControllerDelegate> _delegate;
+    BOOL _hasBeenDisplayed;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<SPUISearchFirstTimeViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) UIScrollView *scrollView;
-@property (readonly) Class superclass;
+@property BOOL hasBeenDisplayed; // @synthesize hasBeenDisplayed=_hasBeenDisplayed;
 
-- (void).cxx_destruct;
-- (void)_configureFTEViews;
-- (id)_vibrantTextViewWithText:(id)arg1 linkAttributes:(id)arg2;
-- (void)loadView;
-- (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3;
-- (void)updateWithFTEString:(id)arg1 learnMoreLinkString:(id)arg2 continueLinkString:(id)arg3;
++ (BOOL)needsDisplay;
++ (void)updateViewCountToCount:(long long)arg1;
++ (long long)viewCount;
+- (void)dismissForever;
+- (id)initWithSupportedDomains:(unsigned long long)arg1 explanationText:(id)arg2 learnMoreText:(id)arg3 continueButtonTitle:(id)arg4;
+- (void)updateViewCount;
 
 @end
 

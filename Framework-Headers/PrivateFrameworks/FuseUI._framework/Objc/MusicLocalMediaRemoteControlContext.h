@@ -6,20 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class MPAVItem, MusicAVPlayer;
+@class MPAVController, MPAVItem;
 
 @interface MusicLocalMediaRemoteControlContext : NSObject
 {
-    MusicAVPlayer *_player;
+    MPAVController *_player;
     MPAVItem *_currentlyPlayingItem;
     unsigned long long _itemPersistentID;
 }
 
 @property (readonly, nonatomic) MPAVItem *currentlyPlayingItem; // @synthesize currentlyPlayingItem=_currentlyPlayingItem;
 @property (readonly, nonatomic) unsigned long long itemPersistentID; // @synthesize itemPersistentID=_itemPersistentID;
-@property (readonly, nonatomic) MusicAVPlayer *player; // @synthesize player=_player;
+@property (readonly, nonatomic) MPAVController *player; // @synthesize player=_player;
 
 - (void).cxx_destruct;
+- (id)init;
 - (id)initWithPlayer:(id)arg1 mediaRemoteOptions:(id)arg2;
 
 @end

@@ -4,27 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FuseUI/MusicStoreModelRequest.h>
+#import <MediaPlayer/MPStoreModelRequest.h>
 
 @class MusicStoreCuratorPlaylistsResponse;
 
-@interface MusicStoreCuratorPlaylistsRequest : MusicStoreModelRequest
+@interface MusicStoreCuratorPlaylistsRequest : MPStoreModelRequest
 {
     long long _curatorStoreAdamID;
-    unsigned long long _requestType;
+    MusicStoreCuratorPlaylistsResponse *_previousResponse;
 }
 
-@property long long curatorStoreAdamID;
-@property (strong, nonatomic) MusicStoreCuratorPlaylistsResponse *previousResponse; // @dynamic previousResponse;
-@property (copy, nonatomic) CDUnknownBlockType responseHandler; // @dynamic responseHandler;
+@property (nonatomic) long long curatorStoreAdamID; // @synthesize curatorStoreAdamID=_curatorStoreAdamID;
+@property (strong, nonatomic) MusicStoreCuratorPlaylistsResponse *previousResponse; // @synthesize previousResponse=_previousResponse;
 
 + (id)allSupportedItemProperties;
 + (id)allSupportedSectionProperties;
-- (void)_produceIncrementalResponseWithLoadedItemMetadataResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_produceInitialResponseWithLoadedItemMetadataResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)configurationForLoadingModelDataWithStoreBag:(id)arg1 error:(id *)arg2;
-- (id)init;
-- (void)produceResponseWithLoadedOutput:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)newOperationWithResponseHandler:(CDUnknownBlockType)arg1;
 
 @end
 

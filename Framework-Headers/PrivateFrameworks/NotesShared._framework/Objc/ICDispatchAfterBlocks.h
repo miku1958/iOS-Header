@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (void)cancelAll;
+- (void)dealloc;
 - (void)dispatchAfter:(double)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)initWithIdentifier:(id)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1;

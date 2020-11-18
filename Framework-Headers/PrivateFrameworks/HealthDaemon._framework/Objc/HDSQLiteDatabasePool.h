@@ -41,8 +41,9 @@
 
 - (void).cxx_destruct;
 - (id)_databaseWithType:(long long)arg1 error:(id *)arg2;
+- (void)_didFlushDatabases:(id)arg1;
 - (id)_semaphoreForDatabaseType:(long long)arg1 waitCounter:(int **)arg2;
-- (void)checkInDatabase:(id)arg1 closeImmediately:(BOOL)arg2;
+- (void)checkInDatabase:(id)arg1 flushImmediately:(BOOL)arg2;
 - (void)dealloc;
 - (id)diagnosticDescription;
 - (void)flush;

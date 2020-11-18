@@ -4,29 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFMessageTransport.h>
 
-#import <HomeKit/HMMessageTransport-Protocol.h>
+#import <HomeKit/HMXPCMessageTransport-Protocol.h>
 
-@class HMMessageDispatcher, NSString;
+@class NSString;
 
-@interface HMXpcClientConnectionProxy : NSObject <HMMessageTransport>
+@interface HMXpcClientConnectionProxy : HMFMessageTransport <HMXPCMessageTransport>
 {
-    HMMessageDispatcher *_recvDispatcher;
     CDUnknownBlockType _refreshHandler;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) HMMessageDispatcher *recvDispatcher; // @synthesize recvDispatcher=_recvDispatcher;
 @property (copy, nonatomic) CDUnknownBlockType refreshHandler; // @synthesize refreshHandler=_refreshHandler;
 @property (readonly) Class superclass;
 
++ (id)messageWithName:(id)arg1 identifier:(id)arg2 target:(id)arg3 payload:(id)arg4 responseHandler:(CDUnknownBlockType)arg5;
 - (void).cxx_destruct;
 - (void)handleMessageWithName:(id)arg1 messageIdentifier:(id)arg2 messagePayload:(id)arg3 target:(id)arg4;
 - (void)handleMessageWithName:(id)arg1 messageIdentifier:(id)arg2 messagePayload:(id)arg3 target:(id)arg4 responseHandler:(CDUnknownBlockType)arg5;
-- (id)initWithMessageDispatcher:(id)arg1 refreshHandler:(CDUnknownBlockType)arg2;
+- (id)initWithRefreshHandler:(CDUnknownBlockType)arg1;
+- (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

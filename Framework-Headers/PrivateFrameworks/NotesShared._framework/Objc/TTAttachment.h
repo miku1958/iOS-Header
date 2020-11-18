@@ -23,7 +23,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)isAttachment:(id)arg1 equalToModelComparable:(id)arg2;
 - (void).cxx_destruct;
+- (BOOL)isEqualToModelComparable:(id)arg1;
 
 @end
 

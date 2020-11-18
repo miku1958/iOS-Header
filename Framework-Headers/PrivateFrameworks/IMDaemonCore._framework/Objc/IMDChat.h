@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class IMDAccount, IMDService, IMDServiceSession, IMMessageItem, NSArray, NSDictionary, NSMutableDictionary, NSRecursiveLock, NSString;
 
@@ -38,7 +38,7 @@
 @property (readonly, strong) NSDictionary *chatProperties;
 @property (readonly, strong) NSDictionary *dictionaryRepresentation;
 @property (copy) NSString *displayName;
-@property (copy) NSString *groupID;
+@property (copy, setter=setGroupID:) NSString *groupID;
 @property (copy) NSString *guid;
 @property BOOL hasHadSuccessfulQuery;
 @property (readonly) BOOL isArchived;
@@ -49,16 +49,14 @@
 @property (copy) NSArray *participants;
 @property (strong) NSDictionary *properties;
 @property (copy) NSString *roomName;
-@property long long rowID;
+@property (setter=_setRowID:) long long rowID;
 @property (readonly, strong) IMDService *service;
 @property (copy) NSString *serviceName;
 @property (readonly, strong) IMDServiceSession *serviceSession;
 @property long long state;
 @property unsigned char style;
-@property unsigned long long unreadCount;
+@property (setter=_setUnreadCount:) unsigned long long unreadCount;
 
-- (void)_setRowID:(long long)arg1;
-- (void)_setUnreadCount:(unsigned long long)arg1;
 - (void)_updateCachedParticipants;
 - (void)_updateLastMessage:(id)arg1;
 - (void)addParticipant:(id)arg1;

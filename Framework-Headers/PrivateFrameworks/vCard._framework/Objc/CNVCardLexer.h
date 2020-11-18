@@ -20,6 +20,7 @@
     NSArray *_activeTokenSets;
 }
 
+- (void).cxx_destruct;
 - (void)_applyNextStringInEncoding:(unsigned long long)arg1 quotedPrintable:(BOOL)arg2 stopTokens:(int)arg3 trim:(BOOL)arg4 intoString:(id)arg5;
 - (BOOL)advancePastEOL;
 - (BOOL)advancePastEOLSingle;
@@ -39,7 +40,6 @@
 - (BOOL)atEOF;
 - (unsigned short)charAtPosition:(unsigned long long)arg1 withOffset:(long long)arg2;
 - (unsigned long long)cursor;
-- (void)dealloc;
 - (struct _NSRange)emptyRangeStartingAtCursor;
 - (long long)errorCount;
 - (struct _NSRange)expandRange:(struct _NSRange)arg1 untilNextByteIs:(id)arg2;

@@ -6,18 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, _HKWorkoutSession;
+@class CMWorkout, HDBackgroundWorkoutRunner, HDClient, _HKWorkoutSession;
 @protocol HDServer;
 
 @interface _HDWorkoutData : NSObject
 {
     BOOL _isFirstParty;
     _HKWorkoutSession *_workoutSession;
-    NSString *_clientIdentifier;
+    HDClient *_client;
     id<HDServer> _server;
+    CMWorkout *_cmWorkout;
+    HDBackgroundWorkoutRunner *_backgroundRunner;
 }
 
-@property (strong, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property (strong, nonatomic) HDBackgroundWorkoutRunner *backgroundRunner; // @synthesize backgroundRunner=_backgroundRunner;
+@property (weak, nonatomic) HDClient *client; // @synthesize client=_client;
+@property (strong, nonatomic) CMWorkout *cmWorkout; // @synthesize cmWorkout=_cmWorkout;
 @property (nonatomic) BOOL isFirstParty; // @synthesize isFirstParty=_isFirstParty;
 @property (weak, nonatomic) id<HDServer> server; // @synthesize server=_server;
 @property (strong, nonatomic) _HKWorkoutSession *workoutSession; // @synthesize workoutSession=_workoutSession;
@@ -25,7 +29,8 @@
 - (void).cxx_destruct;
 - (void)deliverChangeToState:(long long)arg1 fromState:(long long)arg2 date:(id)arg3;
 - (void)deliverError:(id)arg1;
-- (id)initWithWorkoutSession:(id)arg1 clientIdentifier:(id)arg2 server:(id)arg3 isFirstParty:(BOOL)arg4;
+- (void)deliverEvent:(id)arg1;
+- (id)initWithWorkoutSession:(id)arg1 client:(id)arg2 server:(id)arg3 isFirstParty:(BOOL)arg4;
 
 @end
 

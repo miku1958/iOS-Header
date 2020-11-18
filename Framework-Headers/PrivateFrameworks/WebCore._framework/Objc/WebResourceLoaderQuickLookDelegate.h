@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <WebCore/NSURLConnectionDelegate-Protocol.h>
+#import <WebCore/WebCoreResourceLoaderDelegate-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebResourceLoaderQuickLookDelegate : NSObject <NSURLConnectionDelegate>
+@interface WebResourceLoaderQuickLookDelegate : NSObject <NSURLConnectionDelegate, WebCoreResourceLoaderDelegate>
 {
     struct RefPtr<WebCore::ResourceLoader> _resourceLoader;
     BOOL _hasSentDidReceiveResponse;
@@ -28,11 +29,11 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_sendDidReceiveResponseIfNecessary;
-- (void)clearHandle;
 - (void)connection:(id)arg1 didFailWithError:(id)arg2;
 - (void)connection:(id)arg1 didReceiveData:(id)arg2 lengthReceived:(long long)arg3;
 - (void)connection:(id)arg1 didReceiveDataArray:(id)arg2;
 - (void)connectionDidFinishLoading:(id)arg1;
+- (void)detachHandle;
 - (id)initWithResourceLoader:(PassRefPtr_f165d04b)arg1;
 
 @end

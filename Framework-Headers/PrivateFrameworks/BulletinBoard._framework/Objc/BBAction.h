@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/NSCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
@@ -61,10 +61,11 @@
 + (id)actionWithLaunchURL:(id)arg1;
 + (id)actionWithLaunchURL:(id)arg1 callblock:(CDUnknownBlockType)arg2;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_nameForActionType:(long long)arg1;
+- (id)awakeAfterUsingCoder:(id)arg1;
 - (id)bundleID;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (BOOL)deliverResponse:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -78,6 +79,7 @@
 - (id)initWithIdentifier:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)partialDescription;
+- (id)replacementObjectForCoder:(id)arg1;
 - (void)setCallblock:(CDUnknownBlockType)arg1;
 - (id)url;
 

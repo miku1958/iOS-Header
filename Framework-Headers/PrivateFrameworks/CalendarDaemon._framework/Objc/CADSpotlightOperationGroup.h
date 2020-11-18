@@ -16,6 +16,10 @@ __attribute__((visibility("hidden")))
 + (BOOL)requiresReminderAccess;
 + (id)whitelistedBundles;
 - (void)CADPushItemsToSpotlight:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)_gatherAllCalendarItemUUIDs;
+- (void)_pushUpdatesForCalendarItemsWithUUIDs:(id)arg1;
+- (void)_pushUpdatesForCalendarItemsWithUUIDs:(id)arg1 inBatchesOf:(unsigned long long)arg2;
+- (void)_resetDatabase;
 - (BOOL)accessGrantedToPerformSelector:(SEL)arg1;
 
 @end

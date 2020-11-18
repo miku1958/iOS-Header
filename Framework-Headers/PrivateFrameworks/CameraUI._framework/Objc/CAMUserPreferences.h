@@ -6,45 +6,48 @@
 
 #import <objc/NSObject.h>
 
-@class CAMCaptureConfiguration, CAMConflictingControlConfiguration;
+@class CAMCaptureConfiguration, CAMConflictingControlConfiguration, NSDate, NSUserDefaults;
 
 @interface CAMUserPreferences : NSObject
 {
     BOOL _didResetTorchMode;
     BOOL _shouldShowGridView;
     BOOL _shouldCaptureHDREV0;
+    BOOL _shouldDisableCameraSwitchingDuringVideoRecording;
     BOOL _lockAsShutterEnabled;
-    BOOL _irisCaptureEnabled;
     BOOL _shouldDelayRemotePersistence;
     CAMCaptureConfiguration *_captureConfiguration;
     CAMConflictingControlConfiguration *_conflictingControlConfiguration;
     long long _videoConfiguration;
     long long _slomoConfiguration;
     long long _previewViewAspectMode;
+    NSDate *_resetTimeoutDate;
     long long _overriddenBackCaptureInterval;
     long long _overriddenFrontCaptureInterval;
+    NSUserDefaults *_underlyingUserDefaults;
 }
 
 @property (strong, nonatomic) CAMCaptureConfiguration *captureConfiguration; // @synthesize captureConfiguration=_captureConfiguration;
 @property (strong, nonatomic) CAMConflictingControlConfiguration *conflictingControlConfiguration; // @synthesize conflictingControlConfiguration=_conflictingControlConfiguration;
-@property (nonatomic) BOOL didResetTorchMode; // @synthesize didResetTorchMode=_didResetTorchMode;
-@property (readonly, nonatomic, getter=isIrisCaptureEnabled) BOOL irisCaptureEnabled; // @synthesize irisCaptureEnabled=_irisCaptureEnabled;
+@property (nonatomic, setter=_setDidResetTorchMode:) BOOL didResetTorchMode; // @synthesize didResetTorchMode=_didResetTorchMode;
 @property (readonly, nonatomic, getter=isLockAsShutterEnabled) BOOL lockAsShutterEnabled; // @synthesize lockAsShutterEnabled=_lockAsShutterEnabled;
 @property (readonly, nonatomic) long long overriddenBackCaptureInterval; // @synthesize overriddenBackCaptureInterval=_overriddenBackCaptureInterval;
 @property (readonly, nonatomic) long long overriddenFrontCaptureInterval; // @synthesize overriddenFrontCaptureInterval=_overriddenFrontCaptureInterval;
 @property (nonatomic) long long previewViewAspectMode; // @synthesize previewViewAspectMode=_previewViewAspectMode;
+@property (strong, nonatomic, setter=_setResetTimeoutDate:) NSDate *resetTimeoutDate; // @synthesize resetTimeoutDate=_resetTimeoutDate;
 @property (readonly, nonatomic) BOOL shouldCaptureHDREV0; // @synthesize shouldCaptureHDREV0=_shouldCaptureHDREV0;
 @property (readonly, nonatomic) BOOL shouldDelayRemotePersistence; // @synthesize shouldDelayRemotePersistence=_shouldDelayRemotePersistence;
+@property (readonly, nonatomic) BOOL shouldDisableCameraSwitchingDuringVideoRecording; // @synthesize shouldDisableCameraSwitchingDuringVideoRecording=_shouldDisableCameraSwitchingDuringVideoRecording;
 @property (readonly, nonatomic) BOOL shouldShowGridView; // @synthesize shouldShowGridView=_shouldShowGridView;
 @property (readonly, nonatomic) long long slomoConfiguration; // @synthesize slomoConfiguration=_slomoConfiguration;
+@property (strong, nonatomic, getter=_underlyingUserDefaults, setter=_setUnderlyingUserDefaults:) NSUserDefaults *underlyingUserDefaults; // @synthesize underlyingUserDefaults=_underlyingUserDefaults;
 @property (readonly, nonatomic) long long videoConfiguration; // @synthesize videoConfiguration=_videoConfiguration;
 
 + (id)_defaultCaptureConfiguration;
 + (id)preferences;
 - (void).cxx_destruct;
-- (void)_setDidResetTorchMode:(BOOL)arg1;
 - (void)readPreferences;
-- (BOOL)readPreferencesWithLaunchOptions:(id)arg1;
+- (BOOL)readPreferencesWithLaunchOptions:(id)arg1 emulationMode:(long long)arg2;
 - (BOOL)shouldResetCaptureConfiguration;
 - (void)writePreferences;
 

@@ -10,12 +10,14 @@
 #import <TextInput/NSSecureCoding-Protocol.h>
 #import <TextInput/TIKeyboardCandidateCoding-Protocol.h>
 
-@class NSString;
+@class NSString, TIProactiveTrigger;
 
 @interface TIKeyboardCandidate : NSObject <NSCopying, NSSecureCoding, TIKeyboardCandidateCoding>
 {
+    unsigned int _slotID;
     NSString *_alternativeText;
     NSString *_annotationText;
+    unsigned long long _indexForMetrics;
 }
 
 @property (copy, nonatomic) NSString *alternativeText; // @synthesize alternativeText=_alternativeText;
@@ -30,11 +32,17 @@
 @property (readonly, nonatomic, getter=isExtensionCandidate) BOOL extensionCandidate;
 @property (readonly, nonatomic, getter=isFullwidthCandidate) BOOL fullwidthCandidate;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long indexForMetrics; // @synthesize indexForMetrics=_indexForMetrics;
 @property (readonly, nonatomic, getter=isInlineCompletionCandidate) BOOL inlineCompletionCandidate;
 @property (readonly, nonatomic) NSString *input;
+@property (readonly, nonatomic) BOOL isAddress;
 @property (readonly, nonatomic) BOOL isAutocorrection;
 @property (readonly, nonatomic) BOOL isForShortcutConversion;
+@property (readonly, nonatomic) BOOL isSendCurrentLocation;
 @property (readonly, nonatomic) NSString *label;
+@property (readonly, strong, nonatomic) TIProactiveTrigger *proactiveTrigger;
+@property (readonly, nonatomic, getter=isSecureContentCandidate) BOOL secureContentCandidate;
+@property (nonatomic) unsigned int slotID; // @synthesize slotID=_slotID;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned int usageTrackingMask;
 @property (readonly, nonatomic) unsigned long long wordOriginFeedbackID;

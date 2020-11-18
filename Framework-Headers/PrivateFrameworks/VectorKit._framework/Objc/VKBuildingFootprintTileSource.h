@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL makeFacades; // @synthesize makeFacades=_makeFacades;
 
-- (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3;
+- (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3 sharedResources:(id)arg4;
 - (unsigned long long)mapLayerForZoomLevelRange;
 - (BOOL)maximumZoomLevelBoundsCamera;
 - (long long)minimumZoomLevel;

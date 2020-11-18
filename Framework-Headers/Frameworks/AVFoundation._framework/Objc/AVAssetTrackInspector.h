@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) long long alternateGroupID;
 @property (readonly, nonatomic) NSArray *availableMetadataFormats;
 @property (readonly, nonatomic) NSArray *commonMetadata;
+@property (readonly, nonatomic) long long defaultAlternateGroupID;
 @property (readonly, nonatomic) struct CGSize dimensions;
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled;
 @property (readonly, nonatomic) float estimatedDataRate;
@@ -46,6 +47,7 @@
 @property (readonly, nonatomic, getter=isPlayable) BOOL playable;
 @property (readonly, nonatomic) struct CGAffineTransform preferredTransform;
 @property (readonly, nonatomic) float preferredVolume;
+@property (readonly, nonatomic) long long provisionalAlternateGroupID;
 @property (readonly, nonatomic) BOOL requiresFrameReordering;
 @property (readonly, copy, nonatomic) NSArray *segments;
 @property (readonly, nonatomic, getter=isSelfContained) BOOL selfContained;

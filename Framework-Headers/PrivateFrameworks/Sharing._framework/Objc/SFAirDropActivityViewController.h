@@ -12,7 +12,7 @@
 #import <Sharing/SFWirelessSettingsControllerDelegate-Protocol.h>
 #import <Sharing/UICollectionViewDataSource-Protocol.h>
 
-@class ALAssetsLibrary, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSOperationQueue, NSString, SFAirDropActiveIconView, SFAirDropBrowser, SFAirDropIconView, SFCollectionViewLayout, SFPersonCollectionViewCell, SFWirelessSettingsController, UICollectionView, UILabel;
+@class NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSOperationQueue, NSString, SFAirDropActiveIconView, SFAirDropBrowser, SFAirDropIconView, SFCollectionViewLayout, SFPersonCollectionViewCell, SFWirelessSettingsController, UIButton, UICollectionView, UIFocusContainerGuide, UILabel, UIVisualEffectView;
 @protocol SFAirDropActivityViewControllerDelegate;
 
 @interface SFAirDropActivityViewController : UIViewController <UICollectionViewDataSource, SFCollectionViewDelegateLayout, SFAirDropBrowserDelegate, SFPersonCollectionViewCellDelegate, SFWirelessSettingsControllerDelegate>
@@ -21,6 +21,7 @@
     NSString *_sessionID;
     long long _sharedItemsRequestID;
     UILabel *_titleLabel;
+    UIButton *_reportBugButton;
     SFAirDropIconView *_airDropIconView;
     NSLayoutConstraint *_airDropIconLeftConstraint;
     UILabel *_noWifiLabel;
@@ -36,6 +37,7 @@
     UICollectionView *_collectionView;
     SFCollectionViewLayout *_collectionViewLayout;
     SFPersonCollectionViewCell *_prototypeActivityCell;
+    NSMutableDictionary *_cachedPreferredItemSizesByString;
     SFAirDropBrowser *_browser;
     id _progressToken;
     NSMutableDictionary *_personToProgress;
@@ -48,8 +50,13 @@
     BOOL _itemsReady;
     NSOperationQueue *_operationQueue;
     NSMutableArray *_objectChanges;
-    ALAssetsLibrary *_assetsLibrary;
     long long _generatedPreviews;
+    UIVisualEffectView *_titleVibrancyView;
+    UIVisualEffectView *_instructionsVibrancyView;
+    UIVisualEffectView *_iconsVibrancyView;
+    UIButton *_doneButton;
+    UIFocusContainerGuide *_fcg;
+    struct __SFOperation *_logger;
     BOOL _sharedItemsAvailable;
     BOOL _otherActivityViewPresented;
     BOOL _darkStyleOnLegacyApp;
@@ -74,10 +81,14 @@
 @property (readonly, nonatomic) struct CGSize suggestedThumbnailSize;
 @property (readonly) Class superclass;
 
++ (BOOL)airDropActivityCanPerformActivityWithItemClasses:(id)arg1;
 + (BOOL)airDropActivityCanPerformActivityWithItems:(id)arg1;
 + (id)classesForItem:(id)arg1;
 + (BOOL)isAirDropAvailable;
 - (void).cxx_destruct;
+- (struct CGSize)_cachedPreferredItemSizeForString:(id)arg1;
+- (void)_createiOSLayoutConstraints;
+- (void)_createtvOSLayoutConstraints;
 - (id)_tempPhotoIrisBundleFromLivePhoto:(id)arg1;
 - (BOOL)addAttributedString:(id)arg1 withAttachmentName:(id)arg2 description:(id)arg3 previewImage:(id)arg4;
 - (BOOL)addData:(id)arg1 ofType:(id)arg2 withAttachmentName:(id)arg3 description:(id)arg4 previewImage:(id)arg5;
@@ -91,17 +102,21 @@
 - (void)browserDidChangePeople:(id)arg1;
 - (void)browserWillChangePeople:(id)arg1;
 - (id)cellForPerson:(id)arg1;
+- (void)cleanupWithSelectedActivityType:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 preferredSizeForItemAtIndexPath:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (BOOL)createURLPayloadForData:(id)arg1 ofType:(id)arg2 withAttachmentName:(id)arg3 description:(id)arg4 previewImage:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)dealloc;
 - (void)didEnterBackground:(id)arg1;
+- (void)doneButtonAction:(id)arg1;
 - (void)enableAirDropRequiredFeatures;
 - (void)generateSpecialPreviewPhotoForRequestID:(long long)arg1;
+- (id)indexPathForPreferredFocusedViewInCollectionView:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)instructionsText;
 - (BOOL)isBluetoothEnabled;
@@ -113,6 +128,7 @@
 - (void)personCollectionViewCellDidFinishTransfer:(id)arg1;
 - (void)personCollectionViewCellDidStartTransfer:(id)arg1;
 - (void)personCollectionViewCellDidTerminateTransfer:(id)arg1;
+- (id)preferredFocusEnvironments;
 - (void)setNeedsRequestingSharedItems;
 - (void)startBrowsing;
 - (void)startTransferForPeople:(id)arg1;

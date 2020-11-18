@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class BBDataProviderConnection, HMDBulletinProvider, HMDFollowUpController, HMDHomeManager, NSArray;
+@class BBDataProviderConnection, HMDBulletinProvider, HMDHomeManager, NSArray, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface HMDBulletinBoard : NSObject <NSSecureCoding>
@@ -18,37 +18,45 @@
     NSObject<OS_dispatch_queue> *_workQueue;
     BBDataProviderConnection *_dataProviderConnection;
     HMDBulletinProvider *_bulletinProvider;
-    HMDFollowUpController *_followUpController;
     HMDHomeManager *_homeManager;
+    NSMutableDictionary *_characteristicTuples;
 }
 
 @property (strong, nonatomic) HMDBulletinProvider *bulletinProvider; // @synthesize bulletinProvider=_bulletinProvider;
 @property (readonly, nonatomic) NSArray *categories; // @synthesize categories=_categories;
+@property (strong, nonatomic) NSMutableDictionary *characteristicTuples; // @synthesize characteristicTuples=_characteristicTuples;
 @property (strong, nonatomic) BBDataProviderConnection *dataProviderConnection; // @synthesize dataProviderConnection=_dataProviderConnection;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
-@property (strong, nonatomic) HMDFollowUpController *followUpController; // @synthesize followUpController=_followUpController;
 @property (weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (void)archive;
++ (id)characteristicTupleKeyFromServiceContextID:(id)arg1 currentType:(id)arg2;
++ (void)initializeMapping;
 + (id)sharedBulletinBoard;
 + (BOOL)supportsSecureCoding;
 + (id)unarchive;
++ (BOOL)valueOfCharacteristic:(id)arg1 equalTo:(id)arg2;
 - (void).cxx_destruct;
-- (void)_insertBulletinWithTitle:(id)arg1 message:(id)arg2 recordID:(id)arg3 context:(struct NSDictionary *)arg4;
+- (BOOL)_hasDuplicateBulletinForCharacteristic:(id)arg1;
+- (void)_insertBulletinWithTitle:(id)arg1 imageURL:(id)arg2 message:(id)arg3 recordID:(id)arg4 bulletinType:(unsigned long long)arg5 actionURL:(id)arg6 bulletinContext:(struct NSDictionary *)arg7 actionContext:(struct NSDictionary *)arg8;
+- (void)_insertImageBulletinsForChangedCharacteristics:(id)arg1 imageURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_lookupBulletinForCharacteristic:(id)arg1;
 - (void)_removeBulletinsUsingPredicate:(id)arg1;
 - (void)_updateBulletin:(id)arg1;
-- (void)clearFollowUpItems;
 - (void)configureHomeManager:(id)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)insertBulletinForIncomingInvitation:(id)arg1;
-- (id)insertBulletinWithTitle:(id)arg1 message:(id)arg2;
-- (void)insertBulletinsForChangedCharacteristics:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)postFollowUpItemForIncomingInvitations;
+- (id)insertBulletinForSecureTriggerExecutionPermission:(id)arg1;
+- (void)insertBulletinsForChangedCharacteristics:(id)arg1 changedByThisDevice:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)insertImageBulletinsForChangedCharacteristics:(id)arg1 imageURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)isSupportedCharacteristicForBulletin:(id)arg1;
+- (BOOL)isTargetCharacteristic:(id)arg1 matchCurrentCharacteristic:(id)arg2;
+- (BOOL)isTargetValueChangedByThisDevice:(id)arg1;
+- (void)refreshHomeBadgeNumber;
 - (void)refreshHomeConfiguration;
 - (void)reloadDefaultSectionInfo;
 - (void)removeAllBulletins;
@@ -56,6 +64,9 @@
 - (void)removeBulletinsForAccessory:(id)arg1;
 - (void)removeBulletinsForHome:(id)arg1;
 - (void)removeBulletinsForService:(id)arg1;
+- (void)removeBulletinsForTrigger:(id)arg1;
+- (id)trimMatchedCharacteristics:(id)arg1;
+- (void)updateCharacteristicTupleFor:(id)arg1 withCurrentType:(id)arg2;
 
 @end
 

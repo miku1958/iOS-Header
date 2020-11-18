@@ -7,6 +7,6 @@
 #import <EventKit/EKEvent.h>
 
 @interface EKEvent (Suggestions)
-- (BOOL)sg_isCuratedEventFromSuggestionNewerThan:(double)arg1;
+- (BOOL)sg_isCuratedEventFromSuggestionNewerThan:(struct SGUnixTimestamp_)arg1;
 @end
 

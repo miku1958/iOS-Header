@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     struct sqlite3_stmt *_stmt;
     PQLStatement *_next;
     NSMutableArray *_aliveBinds;
+    CDUnknownBlockType _profilingHook;
     union {
         unsigned char inlined[8];
         unsigned char *ptr;
@@ -27,7 +28,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (BOOL)_prepare:(const char *)arg1 withDB:(id)arg2;
-- (void)bindArguments:(struct __va_list_tag [1])arg1;
+- (void)bindArguments:(struct __va_list_tag [1])arg1 db:(id)arg2;
 - (void)dealloc;
 - (id)description;
 - (id)initWithFormat:(id)arg1 arguments:(struct __va_list_tag [1])arg2 db:(id)arg3 cache:(struct cache_s *)arg4;

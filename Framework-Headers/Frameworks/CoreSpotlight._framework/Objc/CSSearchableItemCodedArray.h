@@ -6,18 +6,22 @@
 
 #import <Foundation/NSArray.h>
 
-@class CSDecoder;
+@class CSDecoder, NSString;
 
 @interface CSSearchableItemCodedArray : NSArray
 {
     CSDecoder *_items;
     CSDecoder *_itemsContent;
+    NSString *_bundleID;
+    NSString *_protectionClass;
     CDStruct_b7fac349 _obj;
 }
 
+@property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (readonly, nonatomic) CSDecoder *items; // @synthesize items=_items;
 @property (readonly, nonatomic) CSDecoder *itemsContent; // @synthesize itemsContent=_itemsContent;
 @property (readonly, nonatomic) CDStruct_b7fac349 obj; // @synthesize obj=_obj;
+@property (strong, nonatomic) NSString *protectionClass; // @synthesize protectionClass=_protectionClass;
 
 - (void).cxx_destruct;
 - (unsigned long long)count;

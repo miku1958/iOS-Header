@@ -13,11 +13,12 @@
 __attribute__((visibility("hidden")))
 @interface VKRoadMapModel : VKVectorMapModel <VKStyleManagerObserver>
 {
-    struct unique_ptr<vk::RoadManager, std::__1::default_delete<vk::RoadManager>> _roadManager;
-    struct unique_ptr<vk::PatternedManager, std::__1::default_delete<vk::PatternedManager>> _patternedRibbonManager;
     int _sourceTileZtoStencilOffset;
     int _extraStencil;
     struct ClearItem *_clearItem;
+    struct unique_ptr<md::RoadSharedResources, std::__1::default_delete<md::RoadSharedResources>> _roadSharedResources;
+    struct unique_ptr<md::PatternedSharedResources, std::__1::default_delete<md::PatternedSharedResources>> _patternedSharedResources;
+    BOOL _trafficEnabled;
     double _layoutTimestamp;
     unsigned long long _mapLayerPosition;
 }
@@ -27,19 +28,22 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double layoutTimestamp; // @synthesize layoutTimestamp=_layoutTimestamp;
 @property (nonatomic) unsigned long long mapLayerPosition; // @synthesize mapLayerPosition=_mapLayerPosition;
-@property (readonly, nonatomic) shared_ptr_f06afc6c styleManager;
+@property (readonly, nonatomic) shared_ptr_a3c46825 styleManager;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL trafficEnabled; // @synthesize trafficEnabled=_trafficEnabled;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_setupTrafficColorsWithRoadLayoutContext:(struct RoadLayoutContext *)arg1 trafficStyleAttributes:(const struct FeatureAttributeSet *)arg2 styleZ:(float)arg3;
 - (unsigned char)commandBufferId;
 - (void)dealloc;
 - (void)didReceiveMemoryWarning:(BOOL)arg1;
-- (id)featureMarkerInTile:(id)arg1 atPoint:(struct VKPoint *)arg2;
-- (void)gglLayoutScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
-- (id)init;
-- (void)reserveStencilRangeForScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
+- (shared_ptr_430519ce)featureMarkerInTile:(id)arg1 atPoint:(Matrix_6e1d3589 *)arg2;
+- (void)gglLayoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
+- (id)initWithTarget:(id)arg1 sharedResources:(id)arg2;
+- (void)reserveStencilRangeForScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
 - (void)stylesheetDidChange;
+- (BOOL)supportsTrafficCasing;
 
 @end
 

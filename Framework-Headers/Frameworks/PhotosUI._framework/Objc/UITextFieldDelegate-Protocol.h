@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/NSObject-Protocol.h>
+#import <PhotosUICore/NSObject-Protocol.h>
 
 @class NSString, UITextField;
 
@@ -14,6 +14,7 @@
 - (BOOL)textField:(UITextField *)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(NSString *)arg3;
 - (void)textFieldDidBeginEditing:(UITextField *)arg1;
 - (void)textFieldDidEndEditing:(UITextField *)arg1;
+- (void)textFieldDidEndEditing:(UITextField *)arg1 reason:(long long)arg2;
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)arg1;
 - (BOOL)textFieldShouldClear:(UITextField *)arg1;
 - (BOOL)textFieldShouldEndEditing:(UITextField *)arg1;

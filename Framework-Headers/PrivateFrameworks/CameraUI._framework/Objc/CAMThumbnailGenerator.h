@@ -18,8 +18,10 @@
 - (void).cxx_destruct;
 - (void *)_newRotatedSurface:(void *)arg1 withOrientation:(long long)arg2;
 - (void *)_newThumbnailOfFormat:(long long)arg1 inOrientation:(long long)arg2 withPixelFormat:(unsigned int)arg3 usingSurface:(void *)arg4;
+- (void *)_newThumbnailOfSize:(struct CGSize)arg1 inOrientation:(long long)arg2 withPixelFormat:(unsigned int)arg3 usingSurface:(void *)arg4;
 - (void)dealloc;
 - (id)init;
+- (struct CGImage *)newBGRAImageInOrientation:(long long)arg1 usingSurface:(void *)arg2;
 - (struct CGImage *)newBGRAImageOfFormat:(long long)arg1 inOrientation:(long long)arg2 usingSurface:(void *)arg3;
 - (id)newJPEGDataInOrientation:(long long)arg1 usingSurface:(void *)arg2;
 - (id)newJPEGDataOfFormat:(long long)arg1 inOrientation:(long long)arg2 usingSurface:(void *)arg3;

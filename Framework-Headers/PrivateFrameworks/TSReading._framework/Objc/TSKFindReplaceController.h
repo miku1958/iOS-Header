@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSEnumerator, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, TSKSearch;
+@class NSEnumerator, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, TSKSearch;
 @protocol TSKDocumentRootProvider, TSKFindReplaceDelegate, TSKSearchTargetProvider, TSKSearchable;
 
 @interface TSKFindReplaceController : NSObject
@@ -32,7 +32,7 @@
     struct _NSRange _currentRootSearchTargetRange;
 }
 
-@property (strong, nonatomic) NSSet *annotationDisplayStringTypes; // @synthesize annotationDisplayStringTypes=_annotationDisplayStringTypes;
+@property (strong, nonatomic) NSMutableSet *annotationDisplayStringTypes; // @synthesize annotationDisplayStringTypes=_annotationDisplayStringTypes;
 @property (nonatomic) BOOL commentsIncludedInAnnotationSearch; // @synthesize commentsIncludedInAnnotationSearch=_commentsIncludedInAnnotationSearch;
 @property (nonatomic) BOOL countSearchHits; // @synthesize countSearchHits=_countSearchHits;
 @property (nonatomic) struct _NSRange currentRootSearchTargetRange; // @synthesize currentRootSearchTargetRange=_currentRootSearchTargetRange;

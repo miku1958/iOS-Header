@@ -21,9 +21,9 @@
 @property (readonly, nonatomic) unsigned long long sphericalHarmonicsLevel; // @synthesize sphericalHarmonicsLevel=_sphericalHarmonicsLevel;
 
 - (void).cxx_destruct;
-- (id)_computeSceneKitRenderingTexture:(unsigned long long)arg1;
 - (float)computeInnerAngle;
 - (void)computeLumens;
+- (id)computeSceneKitRenderingTexture:(unsigned long long)arg1;
 - (struct CGColor *)evaluatedColorFromSHVector: /* Error: Ran out of types for this method. */;
 - (void)generateCubemapFromLight:(unsigned long long)arg1;
 - (void)generateSphericalHarmonicsFromLight:(unsigned long long)arg1;

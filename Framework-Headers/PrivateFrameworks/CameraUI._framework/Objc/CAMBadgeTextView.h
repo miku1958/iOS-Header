@@ -15,7 +15,7 @@
 - (id)_textAttributes;
 - (struct UIEdgeInsets)_textInsets;
 - (struct CGSize)_textSize;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)intrinsicContentSize;
 
 @end
 

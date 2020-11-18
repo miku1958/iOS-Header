@@ -38,7 +38,7 @@
 - (struct CGSize)outputSizeForSourceFormat:(id)arg1;
 - (id)recommendedVideoSettingsForAssetWriterWithOutputFileType:(id)arg1;
 - (void)removeConnection:(id)arg1;
-- (int)requiredOutputFormatForConnection:(id)arg1;
+- (unsigned int)requiredOutputFormatForConnection:(id)arg1;
 - (void)setSampleBufferDelegate:(id)arg1 queue:(id)arg2;
 - (id)supportedAssetWriterOutputFileTypes;
 - (BOOL)usesPreviewSizedBuffers;

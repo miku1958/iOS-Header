@@ -13,8 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)searchDaemonQueryCompleted:(id)arg1;
-- (void)stuffChanged;
+- (void)settingsChanged;
 
 @end
 

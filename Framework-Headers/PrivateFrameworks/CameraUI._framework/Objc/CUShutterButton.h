@@ -12,14 +12,16 @@
 {
     BOOL _pulsing;
     BOOL _spinning;
+    BOOL _showDisabled;
+    long long _layoutStyle;
     long long _mode;
     CAMShutterButtonRingView *__outerView;
     UIImageView *__outerImageView;
     CAMTimelapseShutterRingView *__timelapseOuterView;
     UIView *__innerView;
     UIActivityIndicatorView *__progressActivityIndicatorView;
-    struct CAMShutterButtonSpec _spec;
     struct UIEdgeInsets _tappableEdgeInsets;
+    struct CAMShutterButtonSpec _spec;
 }
 
 @property (readonly, nonatomic) UIView *_innerView; // @synthesize _innerView=__innerView;
@@ -27,35 +29,38 @@
 @property (readonly, nonatomic) CAMShutterButtonRingView *_outerView; // @synthesize _outerView=__outerView;
 @property (readonly, nonatomic) UIActivityIndicatorView *_progressActivityIndicatorView; // @synthesize _progressActivityIndicatorView=__progressActivityIndicatorView;
 @property (readonly, nonatomic) CAMTimelapseShutterRingView *_timelapseOuterView; // @synthesize _timelapseOuterView=__timelapseOuterView;
+@property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
 @property (nonatomic, getter=isPulsing) BOOL pulsing; // @synthesize pulsing=_pulsing;
+@property (nonatomic) BOOL showDisabled; // @synthesize showDisabled=_showDisabled;
 @property (nonatomic) struct CAMShutterButtonSpec spec; // @synthesize spec=_spec;
 @property (nonatomic, getter=isSpinning) BOOL spinning; // @synthesize spinning=_spinning;
 @property (nonatomic) struct UIEdgeInsets tappableEdgeInsets; // @synthesize tappableEdgeInsets=_tappableEdgeInsets;
 
-+ (id)shutterButton;
-+ (id)shutterButtonWithSpec:(struct CAMShutterButtonSpec)arg1;
-+ (id)smallShutterButton;
-+ (id)tinyShutterButton;
++ (id)shutterButtonWithLayoutStyle:(long long)arg1;
++ (id)shutterButtonWithSpec:(struct CAMShutterButtonSpec)arg1 layoutStyle:(long long)arg2;
++ (id)smallShutterButtonWithLayoutStyle:(long long)arg1;
++ (id)tinyShutterButtonWithLayoutStyle:(long long)arg1;
 - (void).cxx_destruct;
-- (double)_borderWidthForMode:(long long)arg1;
 - (id)_colorForMode:(long long)arg1;
-- (void)_commonCAMShutterButtonInitialization;
+- (void)_commonCAMShutterButtonInitializationWithLayoutStyle:(long long)arg1;
 - (double)_cornerRadiusForMode:(long long)arg1;
 - (double)_innerCircleDiameter;
 - (BOOL)_isStopMode:(long long)arg1;
 - (id)_outerImageForMode:(long long)arg1;
 - (void)_performHighlightAnimation;
 - (void)_performModeSwitchAnimationFromMode:(long long)arg1 toMode:(long long)arg2 animated:(BOOL)arg3;
-- (void)_setSpec:(struct CAMShutterButtonSpec)arg1;
+- (BOOL)_shouldShowContrastBorderForMode:(long long)arg1 layoutStyle:(long long)arg2;
 - (BOOL)_shouldUseImageViewForMode:(long long)arg1;
 - (BOOL)_shouldUseTimelapseOuterViewForMode:(long long)arg1;
 - (struct CGSize)_sizeForMode:(long long)arg1;
+- (struct CAMShutterButtonSpec)_specForLayoutStyle:(long long)arg1;
 - (void)_updateOuterAndInnerLayers;
 - (void)_updateSpinningAnimations;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 layoutStyle:(long long)arg2;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)setHighlighted:(BOOL)arg1;

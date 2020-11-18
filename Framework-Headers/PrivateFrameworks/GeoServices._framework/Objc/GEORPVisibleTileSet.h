@@ -10,7 +10,7 @@
 
 @interface GEORPVisibleTileSet : PBCodable <NSCopying>
 {
-    CDStruct_97e972fa *_tileKeys;
+    struct GEORPVisibleTileKey *_tileKeys;
     unsigned long long _tileKeysCount;
     unsigned long long _tileKeysSpace;
     unsigned int _identifier;
@@ -25,10 +25,11 @@
 @property (nonatomic) BOOL hasStyle;
 @property (nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) int style; // @synthesize style=_style;
-@property (readonly, nonatomic) CDStruct_97e972fa *tileKeys;
+@property (readonly, nonatomic) struct GEORPVisibleTileKey *tileKeys;
 @property (readonly, nonatomic) unsigned long long tileKeysCount;
 
-- (void)addTileKey:(CDStruct_97e972fa)arg1;
+- (int)StringAsStyle:(id)arg1;
+- (void)addTileKey:(struct GEORPVisibleTileKey)arg1;
 - (void)clearTileKeys;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -39,8 +40,9 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (void)setTileKeys:(CDStruct_97e972fa *)arg1 count:(unsigned long long)arg2;
-- (CDStruct_97e972fa)tileKeyAtIndex:(unsigned long long)arg1;
+- (void)setTileKeys:(struct GEORPVisibleTileKey *)arg1 count:(unsigned long long)arg2;
+- (id)styleAsString:(int)arg1;
+- (struct GEORPVisibleTileKey)tileKeyAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

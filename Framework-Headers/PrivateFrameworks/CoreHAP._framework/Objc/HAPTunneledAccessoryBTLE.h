@@ -9,12 +9,12 @@
 #import <CoreHAP/HAPAccessoryServerInternalDelegate-Protocol.h>
 #import <CoreHAP/HAPBTLEControlOutputStreamDelegate-Protocol.h>
 #import <CoreHAP/HAPSecuritySessionDelegate-Protocol.h>
-#import <CoreHAP/HAPTimerDelegate-Protocol.h>
+#import <CoreHAP/HMFTimerDelegate-Protocol.h>
 
-@class HAPCharacteristic, HAPExponentialBackoffTimer, HAPSecuritySession, HAPService, HAPTimer, NSMutableArray, NSNumber, NSObject, NSOperationQueue, NSString;
+@class HAPCharacteristic, HAPSecuritySession, HAPService, HMFExponentialBackoffTimer, HMFTimer, NSMutableArray, NSNumber, NSObject, NSOperationQueue, NSString;
 @protocol HAPKeyStore, OS_dispatch_queue;
 
-@interface HAPTunneledAccessoryBTLE : HAPAccessory <HAPBTLEControlOutputStreamDelegate, HAPSecuritySessionDelegate, HAPTimerDelegate, HAPAccessoryServerInternalDelegate>
+@interface HAPTunneledAccessoryBTLE : HAPAccessory <HAPBTLEControlOutputStreamDelegate, HAPSecuritySessionDelegate, HMFTimerDelegate, HAPAccessoryServerInternalDelegate>
 {
     BOOL _verified;
     BOOL _securitySessionOpen;
@@ -31,17 +31,17 @@
     HAPSecuritySession *_securitySession;
     NSOperationQueue *_pairVerifyOperationQueue;
     NSNumber *_sessionLifetimeTimeout;
-    HAPTimer *_connectionIdleTimer;
+    HMFTimer *_connectionIdleTimer;
     NSOperationQueue *_clientOperationQueue;
     NSMutableArray *_pendingRequests;
     NSOperationQueue *_requestOperationQueue;
     NSMutableArray *_pendingResponses;
-    HAPExponentialBackoffTimer *_verificationBackoffTimer;
+    HMFExponentialBackoffTimer *_verificationBackoffTimer;
 }
 
 @property (weak, nonatomic) HAPCharacteristic *advertisingCharacteristic; // @synthesize advertisingCharacteristic=_advertisingCharacteristic;
 @property (readonly, nonatomic) NSOperationQueue *clientOperationQueue; // @synthesize clientOperationQueue=_clientOperationQueue;
-@property (strong, nonatomic) HAPTimer *connectionIdleTimer; // @synthesize connectionIdleTimer=_connectionIdleTimer;
+@property (strong, nonatomic) HMFTimer *connectionIdleTimer; // @synthesize connectionIdleTimer=_connectionIdleTimer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -61,7 +61,7 @@
 @property (copy, nonatomic) NSNumber *stateNumber; // @synthesize stateNumber=_stateNumber;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) HAPService *tunneledBTLEAccessoryService; // @synthesize tunneledBTLEAccessoryService=_tunneledBTLEAccessoryService;
-@property (strong, nonatomic) HAPExponentialBackoffTimer *verificationBackoffTimer; // @synthesize verificationBackoffTimer=_verificationBackoffTimer;
+@property (strong, nonatomic) HMFExponentialBackoffTimer *verificationBackoffTimer; // @synthesize verificationBackoffTimer=_verificationBackoffTimer;
 @property (nonatomic, getter=isVerified) BOOL verified; // @synthesize verified=_verified;
 @property (nonatomic, getter=isVerifying) BOOL verifying; // @synthesize verifying=_verifying;
 
@@ -102,6 +102,7 @@
 - (void)_tearDownSessionWithError:(id)arg1;
 - (void)_updateOnStateNumberChange;
 - (void)_verifyCharacteristicSignature:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_verifyServiceSignature:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_writeValue:(id)arg1 toCharacteristic:(id)arg2 authorizationData:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)accessoryServer:(id)arg1 didUpdateValueForCharacteristic:(id)arg2;
 - (void)addPairingWithIdentifier:(id)arg1 publicKey:(id)arg2 admin:(BOOL)arg3 completionQueue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;

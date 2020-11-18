@@ -6,11 +6,13 @@
 
 #import <Foundation/NSObject.h>
 
-@class VKCamera;
+#import <VectorKit/VKCameraController-Protocol.h>
+
+@class GEOMapRegion, NSString, VKCamera;
 @protocol MDRenderTarget, VKCameraControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VKCameraController : NSObject
+@interface VKCameraController : NSObject <VKCameraController>
 {
     VKCamera *_camera;
     id<MDRenderTarget> _canvas;
@@ -18,19 +20,80 @@ __attribute__((visibility("hidden")))
     BOOL _gesturing;
     unsigned long long _regionChangeCount;
     BOOL _inProgressRegionChangeIsAnimated;
+    struct VKEdgeInsets _edgeInsets;
+    BOOL _staysCenteredDuringPinch;
+    BOOL _staysCenteredDuringRotation;
+    BOOL _isPitchEnabled;
+    BOOL _isRotateEnabled;
+    BOOL _allowDatelineWraparound;
 }
 
-@property (readonly, nonatomic, getter=isAnimating) BOOL animating;
-@property (strong, nonatomic) VKCamera *camera; // @synthesize camera=_camera;
-@property (nonatomic) id<MDRenderTarget> canvas; // @synthesize canvas=_canvas;
-@property (nonatomic) id<VKCameraControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic, getter=isGesturing) BOOL gesturing; // @synthesize gesturing=_gesturing;
+@property (nonatomic) BOOL allowDatelineWraparound; // @synthesize allowDatelineWraparound=_allowDatelineWraparound;
+@property (readonly, nonatomic) double altitude;
+@property (readonly, nonatomic) BOOL canPitch;
+@property (readonly, nonatomic) BOOL canRotate;
+@property (nonatomic) CDStruct_c3b9c2ee centerCoordinate;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) double distanceFromCenterCoordinate;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) double heading;
+@property (readonly, nonatomic) BOOL isFullyPitched;
+@property (nonatomic) BOOL isPitchEnabled; // @synthesize isPitchEnabled=_isPitchEnabled;
+@property (readonly, nonatomic) BOOL isPitched;
+@property (nonatomic) BOOL isRotateEnabled; // @synthesize isRotateEnabled=_isRotateEnabled;
+@property (readonly, nonatomic) BOOL isRotated;
+@property (readonly, nonatomic) GEOMapRegion *mapRegion;
+@property (readonly, nonatomic) double maxPitch;
+@property (nonatomic) double pitch;
+@property (readonly, nonatomic) double presentationHeading;
+@property (nonatomic) BOOL staysCenteredDuringPinch; // @synthesize staysCenteredDuringPinch=_staysCenteredDuringPinch;
+@property (nonatomic) BOOL staysCenteredDuringRotation; // @synthesize staysCenteredDuringRotation=_staysCenteredDuringRotation;
+@property (readonly) Class superclass;
 
 - (void)beginRegionChange:(BOOL)arg1;
+- (id)camera;
+- (BOOL)canZoomInForTileSize:(long long)arg1;
+- (BOOL)canZoomOutForTileSize:(long long)arg1;
+- (id)canvas;
 - (void)canvasDidLayout;
+- (BOOL)centerCoordinate:(CDStruct_c3b9c2ee *)arg1 andDistanceFromCenter:(double *)arg2 forMapRegion:(id)arg3;
+- (struct CGPoint)centerScreenPoint;
+- (void)checkAndResetRegionChangeCount;
+- (double)currentZoomLevel;
+- (double)currentZoomLevelForTileSize:(long long)arg1;
+- (Matrix_443f5d51)cursorFromScreenPoint:(struct CGPoint)arg1;
 - (void)dealloc;
+- (id)delegate;
 - (id)detailedDescription;
+- (id)detailedDescriptionDictionaryRepresentation;
+- (struct VKEdgeInsets)edgeInsets;
+- (void)edgeInsetsDidEndAnimating;
+- (void)edgeInsetsWillBeginAnimating;
 - (void)endRegionChange;
+- (BOOL)isAnimating;
+- (BOOL)isChangingRegion;
+- (BOOL)isGesturing;
+- (double)maximumZoomLevel;
+- (double)maximumZoomLevelForTileSize:(long long)arg1;
+- (double)minimumZoomLevel;
+- (double)minimumZoomLevelForTileSize:(long long)arg1;
+- (BOOL)restoreViewportFromInfo:(id)arg1;
+- (struct CGPoint)scaledScreenPointForPoint:(struct CGPoint)arg1;
+- (void)setCamera:(id)arg1;
+- (void)setCanvas:(id)arg1;
+- (void)setDelegate:(id)arg1;
+- (void)setEdgeInsets:(struct VKEdgeInsets)arg1;
+- (void)setGesturing:(BOOL)arg1;
+- (void)stylesheetDidChange;
+- (void)stylesheetDidReload;
+- (double)topDownMinimumZoomLevel;
+- (double)topDownMinimumZoomLevelForTileSize:(long long)arg1;
+- (void)updateCameraToPositionOrientationLimits;
+- (void)updateWithTimestamp:(double)arg1;
+- (id)viewportInfo;
+- (BOOL)wantsTimerTick;
+- (double)zoomLevelAdjustmentForTileSize:(long long)arg1;
 
 @end
 

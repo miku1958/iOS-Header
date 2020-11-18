@@ -72,7 +72,7 @@
 - (void)photoStreamComposeServiceDidCancel:(id)arg1;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (BOOL)prepareForDismissingForced:(BOOL)arg1;
-- (void)setAlbum:(struct NSObject *)arg1 existingFetchResults:(id)arg2;
+- (void)setAlbum:(struct NSObject *)arg1 existingFetchResult:(id)arg2;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldShowTabBar;
 - (BOOL)shouldShowToolbar;

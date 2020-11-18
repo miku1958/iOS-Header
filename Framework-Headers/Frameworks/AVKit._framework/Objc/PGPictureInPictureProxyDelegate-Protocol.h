@@ -17,15 +17,8 @@
 - (void)pictureInPictureProxy:(PGPictureInPictureProxy *)arg1 restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:(void (^)(BOOL))arg2;
 - (void)pictureInPictureProxy:(PGPictureInPictureProxy *)arg1 willStartPictureInPictureWithAnimationType:(long long)arg2;
 - (void)pictureInPictureProxy:(PGPictureInPictureProxy *)arg1 willStopPictureInPictureWithAnimationType:(long long)arg2 reason:(long long)arg3;
-- (void)pictureInPictureProxyDidCancelPictureInPicture:(PGPictureInPictureProxy *)arg1;
-- (void)pictureInPictureProxyDidStartPictureInPicture:(PGPictureInPictureProxy *)arg1;
-- (void)pictureInPictureProxyDidStopPictureInPicture:(PGPictureInPictureProxy *)arg1;
-- (void)pictureInPictureProxyFailedToStartPictureInPicture:(PGPictureInPictureProxy *)arg1 withError:(NSError *)arg2;
 - (void)pictureInPictureProxyPictureInPictureInterruptionBegan:(PGPictureInPictureProxy *)arg1;
 - (void)pictureInPictureProxyPictureInPictureInterruptionEnded:(PGPictureInPictureProxy *)arg1;
 - (struct CGRect)pictureInPictureProxyViewFrameForTransitionAnimation:(PGPictureInPictureProxy *)arg1;
-- (void)pictureInPictureProxyWillCancelPictureInPicture:(PGPictureInPictureProxy *)arg1;
-- (void)pictureInPictureProxyWillStartPictureInPicture:(PGPictureInPictureProxy *)arg1;
-- (void)pictureInPictureProxyWillStopPictureInPicture:(PGPictureInPictureProxy *)arg1;
 @end
 

@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
-@protocol HDHealthDaemon;
+@class HDProfile, NSString;
 
 @interface HDKeyValueDomain : NSObject
 {
-    id<HDHealthDaemon> _healthDaemon;
+    HDProfile *_profile;
     Class _entityClass;
     long long _category;
     NSString *_domainName;
@@ -24,7 +23,7 @@
 - (id)allValuesWithError:(id *)arg1;
 - (id)dataForKey:(id)arg1 error:(id *)arg2;
 - (id)dateForKey:(id)arg1 error:(id *)arg2;
-- (id)initWithCategory:(long long)arg1 domainName:(id)arg2 healthDaemon:(id)arg3;
+- (id)initWithCategory:(long long)arg1 domainName:(id)arg2 profile:(id)arg3;
 - (id)modificationDatesForKeys:(id)arg1 error:(id *)arg2;
 - (id)numberForKey:(id)arg1 error:(id *)arg2;
 - (id)quantityForKey:(id)arg1 unit:(id)arg2 error:(id *)arg3;

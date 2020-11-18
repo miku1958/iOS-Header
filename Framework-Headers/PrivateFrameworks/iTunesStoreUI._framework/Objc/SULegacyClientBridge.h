@@ -39,7 +39,7 @@
 - (BOOL)enterAccountFlowWithViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)hidePreviewOverlayAnimated:(BOOL)arg1;
 - (id)initWithClientInterface:(id)arg1;
-- (void)mailComposeController:(id)arg1 didFinishWithResult:(int)arg2 error:(id)arg3;
+- (void)mailComposeController:(id)arg1 didFinishWithResult:(long long)arg2 error:(id)arg3;
 - (BOOL)performActionForDialog:(id)arg1 button:(id)arg2;
 - (BOOL)presentOverlayBackgroundViewController:(id)arg1;
 - (void)scriptOverlayBackgroundDidDismiss:(id)arg1;

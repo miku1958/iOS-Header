@@ -6,51 +6,50 @@
 
 #import <objc/NSObject.h>
 
-@class AWDServerConnection, NSArray, RTInvocationDispatcher;
+@class AWDServerConnection, NSArray, RTInvocationDispatcher, RTManagedConfiguration;
 @protocol OS_dispatch_queue;
 
 @interface RTMetricManager : NSObject
 {
-    BOOL _routineEnabled;
-    BOOL _metricsEnabled;
     BOOL _ready;
+    RTInvocationDispatcher *_dispatcher;
     NSArray *_configuredMetricClasses;
     AWDServerConnection *_awdServerConnection;
-    long long _maximumBundleIdCountForMagicMomentsMetrics;
+    RTManagedConfiguration *_managedConfigurationManager;
     NSObject<OS_dispatch_queue> *_queue;
-    RTInvocationDispatcher *_dispatcher;
 }
 
 @property (strong, nonatomic) AWDServerConnection *awdServerConnection; // @synthesize awdServerConnection=_awdServerConnection;
 @property (strong, nonatomic) NSArray *configuredMetricClasses; // @synthesize configuredMetricClasses=_configuredMetricClasses;
 @property (strong, nonatomic) RTInvocationDispatcher *dispatcher; // @synthesize dispatcher=_dispatcher;
-@property (nonatomic) long long maximumBundleIdCountForMagicMomentsMetrics; // @synthesize maximumBundleIdCountForMagicMomentsMetrics=_maximumBundleIdCountForMagicMomentsMetrics;
-@property (nonatomic) BOOL metricsEnabled; // @synthesize metricsEnabled=_metricsEnabled;
+@property (strong, nonatomic) RTManagedConfiguration *managedConfigurationManager; // @synthesize managedConfigurationManager=_managedConfigurationManager;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (nonatomic) BOOL ready; // @synthesize ready=_ready;
-@property (nonatomic) BOOL routineEnabled; // @synthesize routineEnabled=_routineEnabled;
 
-+ (BOOL)_isDiagnosticsSubmissionAllowed;
-+ (int)eventStoreToAWDMagicalMomentsModelType:(id)arg1;
-+ (int)eventToAWDMagicalMomentsModelType:(id)arg1;
++ (id)addonMetricFromAddon:(id)arg1;
++ (id)addonStringFromType:(int)arg1;
++ (unsigned int)convertLocationOfInterestType:(long long)arg1;
++ (int)doubleToInt:(double)arg1 shifts:(int)arg2;
++ (double)doubleWithSignificantDigits:(double)arg1 digits:(int)arg2;
++ (int)intWithSignificantDigits:(int)arg1 digits:(int)arg2;
 + (id)metricForType:(unsigned long long)arg1;
++ (int)modelTypeFromSupportingEventClass:(Class)arg1;
++ (id)productionMetrics;
++ (int)roundTimeInterval:(double)arg1 byIntervalUnit:(unsigned long long)arg2;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_fetchDiagnosticsEnabled:(CDUnknownBlockType)arg1;
-- (void)_logRoutineAuthorizationChange:(BOOL)arg1;
-- (void)_processManagedConfigurationSettingsChange;
-- (void)_routineAuthorizationDidChange:(id)arg1;
+- (BOOL)_isDiagnosticsSubmissionAllowed;
+- (void)_registerQueriableMetric:(unsigned long long)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)_releaseMetricPlaceholderForMetricId:(unsigned int)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_routineConfiguredForMetric:(id)arg1;
-- (void)_setupWithAWDServerConnection:(id)arg1 configuredClasses:(id)arg2;
+- (void)_setupWithConfiguredClasses:(id)arg1;
 - (void)_submitMetric:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)_updateMaximumMagicalMomentsMetricBundleIdCount;
+- (id)createMetricForType:(unsigned long long)arg1;
 - (void)fetchDiagnosticsEnabled:(CDUnknownBlockType)arg1;
-- (void)fetchMaximumBundleIdCountForRecommendedAppsInstanceMetric:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initWithAWDServerConnection:(id)arg1 configuredClasses:(id)arg2;
-- (void)managedConfigurationSettingsDidChange:(id)arg1;
-- (void)onDefaultsUpdate:(id)arg1;
-- (void)processManagedConfigurationSettingsChange;
+- (id)initWithAWDServerConnection:(id)arg1 configuredClasses:(id)arg2 managedConfigurationManager:(id)arg3;
+- (void)registerQueriableMetric:(unsigned long long)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)shutdown;
 - (void)submitMetric:(id)arg1;
 - (void)submitMetric:(id)arg1 withHandler:(CDUnknownBlockType)arg2;

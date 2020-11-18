@@ -6,20 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMMessageReceiver-Protocol.h>
+#import <HomeKitDaemon/HMFDumpState-Protocol.h>
+#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDHome, HMMessageDispatcher, NSMutableArray, NSString, NSUUID;
+@class HMDHome, HMFMessageDispatcher, NSMutableArray, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDZone : NSObject <HMMessageReceiver, NSSecureCoding>
+@interface HMDZone : NSObject <HMFMessageReceiver, HMFDumpState, NSSecureCoding>
 {
     NSString *_name;
     NSUUID *_uuid;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSMutableArray *_currentRooms;
     HMDHome *_home;
-    HMMessageDispatcher *_msgDispatcher;
+    HMFMessageDispatcher *_msgDispatcher;
 }
 
 @property (strong, nonatomic) NSMutableArray *currentRooms; // @synthesize currentRooms=_currentRooms;
@@ -29,7 +30,7 @@
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
@@ -41,9 +42,10 @@
 - (void)_handleRemoveRoom:(id)arg1;
 - (void)_handleRename:(id)arg1;
 - (void)_registerForMessages;
-- (id)assistantUniqueIdentifier;
+- (id)assistantObject;
 - (void)configure:(id)arg1 queue:(id)arg2;
 - (void)dealloc;
+- (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 uuid:(id)arg2 home:(id)arg3 queue:(id)arg4;

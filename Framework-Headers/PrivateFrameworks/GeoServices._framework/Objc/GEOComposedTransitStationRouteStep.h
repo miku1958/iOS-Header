@@ -6,16 +6,13 @@
 
 #import <GeoServices/GEOComposedTransitRouteStep.h>
 
-@class GEOPBTransitAccessPoint, GEOPBTransitStop, GEOTransitEnterExitInfo, GEOTransitSchedule, GEOTransitTransfer, NSString;
+@class GEOPBTransitAccessPoint, GEOTransitEnterExitInfo, GEOTransitTransfer, NSString;
 
 @interface GEOComposedTransitStationRouteStep : GEOComposedTransitRouteStep
 {
-    GEOPBTransitStop *_originStop;
-    GEOPBTransitStop *_destinationStop;
     unsigned int _expectedTime;
     BOOL _isArrivalUncertain;
     GEOTransitTransfer *_transitTransfer;
-    GEOTransitSchedule *_transitSchedule;
     GEOTransitEnterExitInfo *_enterExitInfo;
     GEOPBTransitAccessPoint *_accessPoint;
 }
@@ -26,14 +23,11 @@
 @property (readonly, nonatomic) unsigned int expectedTime; // @synthesize expectedTime=_expectedTime;
 @property (readonly, nonatomic) BOOL hasDisplayStop;
 @property (readonly, nonatomic) BOOL isArrivalUncertain; // @synthesize isArrivalUncertain=_isArrivalUncertain;
-@property (readonly, nonatomic) GEOTransitSchedule *transitSchedule; // @synthesize transitSchedule=_transitSchedule;
 @property (readonly, nonatomic) GEOTransitTransfer *transitTransfer; // @synthesize transitTransfer=_transitTransfer;
 
 - (void)dealloc;
-- (id)destinationStop;
 - (CDStruct_c3b9c2ee)endGeoCoordinate;
 - (id)initWithComposedRoute:(id)arg1 decoderData:(id)arg2 step:(id)arg3 stepIndex:(unsigned long long)arg4 duration:(unsigned int)arg5 pointRange:(struct _NSRange)arg6;
-- (id)originStop;
 - (CDStruct_c3b9c2ee)startGeoCoordinate;
 
 @end

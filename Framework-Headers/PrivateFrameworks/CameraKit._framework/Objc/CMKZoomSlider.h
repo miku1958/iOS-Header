@@ -27,8 +27,8 @@
 @property (readonly, nonatomic) UIImageView *_thumbImageView; // @synthesize _thumbImageView=__thumbImageView;
 @property (readonly, nonatomic) NSTimer *_visibilityTimer; // @synthesize _visibilityTimer=__visibilityTimer;
 @property (nonatomic) id<CMKZoomSliderDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic, getter=isMaximumAutozooming) BOOL maximumAutozooming; // @synthesize maximumAutozooming=_maximumAutozooming;
-@property (nonatomic, getter=isMinimumAutozooming) BOOL minimumAutozooming; // @synthesize minimumAutozooming=_minimumAutozooming;
+@property (nonatomic, getter=isMaximumAutozooming, setter=_setMaximumAutozooming:) BOOL maximumAutozooming; // @synthesize maximumAutozooming=_maximumAutozooming;
+@property (nonatomic, getter=isMinimumAutozooming, setter=_setMinimumAutozooming:) BOOL minimumAutozooming; // @synthesize minimumAutozooming=_minimumAutozooming;
 
 - (void).cxx_destruct;
 - (void)_beginAutozooming;
@@ -37,8 +37,6 @@
 - (void)_hideZoomSlider:(id)arg1;
 - (BOOL)_isMinimumOrMaximumAutozooming;
 - (void)_postHideZoomSliderAnimation;
-- (void)_setMaximumAutozooming:(BOOL)arg1;
-- (void)_setMinimumAutozooming:(BOOL)arg1;
 - (void)_updateAutozooming;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;

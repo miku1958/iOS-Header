@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSError, NSURL, QLZipArchive;
 
@@ -12,18 +12,18 @@ __attribute__((visibility("hidden")))
 @interface QLZipArchiveEntry : NSObject
 {
     struct archive_entry *_entry;
-    QLZipArchive *_archive;
     NSData *_data;
     NSError *_error;
+    QLZipArchive *_archive;
     NSURL *_url;
 }
 
-@property QLZipArchive *archive; // @synthesize archive=_archive;
-@property NSData *data; // @synthesize data=_data;
+@property (weak) QLZipArchive *archive; // @synthesize archive=_archive;
+@property (strong) NSData *data; // @synthesize data=_data;
 @property struct archive_entry *entry; // @synthesize entry=_entry;
-@property (nonatomic) NSURL *url; // @synthesize url=_url;
+@property (strong, nonatomic) NSURL *url; // @synthesize url=_url;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)readDataWithError:(id *)arg1;
 
 @end

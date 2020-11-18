@@ -11,15 +11,17 @@
 @interface PKPassPreviewImageSet : PKPassImageSet
 {
     PKImage *_iconImage;
+    PKImage *_notificationIconImage;
 }
 
 @property (strong, nonatomic) PKImage *iconImage; // @synthesize iconImage=_iconImage;
+@property (strong, nonatomic) PKImage *notificationIconImage; // @synthesize notificationIconImage=_notificationIconImage;
 
 + (id)archiveName;
-+ (long long)currentVersion;
++ (unsigned int)currentVersion;
 + (long long)imageSetType;
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

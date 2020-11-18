@@ -24,15 +24,16 @@ __attribute__((visibility("hidden")))
     long long _readingLinkResolutionCount;
 }
 
++ (BOOL)supportsSecureCoding;
 - (id)allURLs;
 - (BOOL)blocksClaim:(id)arg1;
 - (void)dealloc;
 - (void)devalueSelf;
+- (void)encodeWithCoder:(id)arg1;
 - (BOOL)evaluateSelfWithRootNode:(id)arg1 checkSubarbitrability:(BOOL)arg2;
-- (void)finalize;
-- (void)forwardUsingMessageSender:(CDUnknownBlockType)arg1 crashHandler:(CDUnknownBlockType)arg2;
+- (void)forwardUsingConnection:(id)arg1 crashHandler:(CDUnknownBlockType)arg2;
 - (void)granted;
-- (id)initWithClient:(id)arg1 messageParameters:(id)arg2 arbiterQueue:(id)arg3 replySender:(CDUnknownBlockType)arg4;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithPurposeID:(id)arg1 intents:(id)arg2 claimer:(CDUnknownBlockType)arg3;
 - (void)invokeClaimer;
 - (BOOL)isBlockedByReadingItemAtLocation:(id)arg1 options:(unsigned long long)arg2;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)itemAtLocation:(id)arg1 wasReplacedByItemAtLocation:(id)arg2;
 - (void)resolveURLsThenMaybeContinueInvokingClaimer:(CDUnknownBlockType)arg1;
 - (BOOL)shouldBeRevokedPriorToInvokingAccessor;
+- (BOOL)shouldCancelInsteadOfWaiting;
 
 @end
 

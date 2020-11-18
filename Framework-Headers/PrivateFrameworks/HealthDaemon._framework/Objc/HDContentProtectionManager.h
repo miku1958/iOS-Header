@@ -14,22 +14,25 @@
 @interface HDContentProtectionManager : NSObject <HDDiagnosticObject>
 {
     int _contentProtectionState;
+    int _shouldIgnoreUnlockedState;
     int _unlockedSinceBoot;
     int _notifyToken;
     NSObject<OS_dispatch_queue> *_observationQueue;
     NSMapTable *_observers;
     double _beganObservingTime;
     double _lastNotificationTime;
+    double _lastRecheckTime;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL shouldIgnoreUnlockedState;
 @property (readonly) Class superclass;
 
 + (BOOL)isProtectedDataAvailableWithState:(long long)arg1;
 - (void).cxx_destruct;
-- (void)_notifyObserversWithContentProtectionState:(long long)arg1;
+- (void)_observationQueue_adjustContentProtectionStateWithBlock:(CDUnknownBlockType)arg1;
 - (void)addContentProtectionObserver:(id)arg1 withQueue:(id)arg2;
 - (void)dealloc;
 - (BOOL)deviceUnlockedSinceBoot;
@@ -38,6 +41,7 @@
 - (id)initWithNotifications:(BOOL)arg1 initialState:(long long)arg2 unlockedSinceBoot:(BOOL)arg3;
 - (BOOL)isProtectedDataAvailable;
 - (long long)observedState;
+- (void)recheckContentProtectionState;
 - (void)removeContentProtectionObserver:(id)arg1;
 - (void)setContentProtectionState:(long long)arg1;
 

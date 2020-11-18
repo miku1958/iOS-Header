@@ -37,7 +37,7 @@
 - (id)init;
 - (id)initForNewObject;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
-- (id)initWithXPCDict:(id)arg1 clientEntitled:(BOOL)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
+- (id)initWithXPCDict:(id)arg1 clientEntitlements:(id)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
 - (BOOL)validateForDeleteManagedObject:(id)arg1 error:(id *)arg2;
 
 @end

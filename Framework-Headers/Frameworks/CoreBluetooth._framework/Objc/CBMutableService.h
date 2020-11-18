@@ -17,6 +17,7 @@
 @property (strong) NSArray *characteristics; // @dynamic characteristics;
 @property (strong) NSArray *includedServices; // @dynamic includedServices;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (void)handlePowerNotOn;

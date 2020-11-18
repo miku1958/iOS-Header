@@ -8,15 +8,18 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEOPDBatchPopularNearbySearchResult : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_popularNearbyResults;
 }
 
 @property (strong, nonatomic) NSMutableArray *popularNearbyResults; // @synthesize popularNearbyResults=_popularNearbyResults;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)popularNearbyResultType;
 - (void)addPopularNearbyResult:(id)arg1;
 - (void)clearPopularNearbyResults;
 - (void)copyTo:(id)arg1;

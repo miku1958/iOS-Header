@@ -6,27 +6,44 @@
 
 #import <CloudKitDaemon/CKDPCSData.h>
 
-@class CKRecordID;
+@class CKDChainPCSData, CKDSharePCSData, CKDZonePCSData, CKEncryptedData, CKRecordID, CKRecordZoneID, NSData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDRecordPCSData : CKDPCSData
 {
     CKRecordID *_recordID;
-    CKDPCSData *_zonePCSData;
-    CKDPCSData *_sharePCSData;
+    NSString *_recordType;
+    CKRecordID *_parentID;
+    CKDRecordPCSData *_parentPCSData;
+    NSData *_chainParentPublicKeyID;
+    CKDZonePCSData *_zonePCSData;
+    CKRecordZoneID *_zoneID;
+    CKDSharePCSData *_sharePCSData;
+    CKRecordID *_shareID;
+    CKDChainPCSData *_chainPCSData;
+    CKEncryptedData *_encryptedPublicSharingKey;
 }
 
+@property (strong, nonatomic) CKDChainPCSData *chainPCSData; // @synthesize chainPCSData=_chainPCSData;
+@property (strong, nonatomic) NSData *chainParentPublicKeyID; // @synthesize chainParentPublicKeyID=_chainParentPublicKeyID;
+@property (strong, nonatomic) CKEncryptedData *encryptedPublicSharingKey; // @synthesize encryptedPublicSharingKey=_encryptedPublicSharingKey;
+@property (strong, nonatomic) CKRecordID *parentID; // @synthesize parentID=_parentID;
+@property (strong, nonatomic) CKDRecordPCSData *parentPCSData; // @synthesize parentPCSData=_parentPCSData;
 @property (strong, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
-@property (strong, nonatomic) CKDPCSData *sharePCSData; // @synthesize sharePCSData=_sharePCSData;
-@property (strong, nonatomic) CKDPCSData *zonePCSData; // @synthesize zonePCSData=_zonePCSData;
+@property (readonly, nonatomic) NSString *recordType; // @synthesize recordType=_recordType;
+@property (strong, nonatomic) CKRecordID *shareID; // @synthesize shareID=_shareID;
+@property (strong, nonatomic) CKDSharePCSData *sharePCSData; // @synthesize sharePCSData=_sharePCSData;
+@property (strong, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
+@property (strong, nonatomic) CKDZonePCSData *zonePCSData; // @synthesize zonePCSData=_zonePCSData;
 
-+ (id)dataWithRecordID:(id)arg1 pcsData:(id)arg2;
++ (id)dataWithRecord:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)decryptPCSDataWithManager:(id)arg1 error:(id *)arg2;
+- (id)CKPropertiesDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRecordID:(id)arg1 pcsData:(id)arg2;
+- (id)initWithPCSData:(id)arg1 recordID:(id)arg2;
+- (id)initWithRecord:(id)arg1;
 - (id)itemID;
 
 @end

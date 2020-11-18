@@ -21,6 +21,10 @@
     BOOL fRequestingLocation;
     struct __CFRunLoopTimer *fLocationRequestTimer;
     double fLocationRequestTimeout;
+    BOOL fRequestingRanging;
+    BOOL fUpdatingRanging;
+    struct __CFRunLoopTimer *fRangingRequestTimer;
+    double fRangingRequestTimeout;
     BOOL fCapabilitiesValid;
     struct {
         double bestAccuracy;
@@ -52,6 +56,7 @@
 - (int)PausesLocationUpdatesAutomatically;
 - (BOOL)allowsBackgroundLocationUpdates;
 - (void)cancelLocationRequest;
+- (void)cancelRangingRequest;
 - (void)dealloc;
 - (id)initWithInfo:(id)arg1 bundleIdentifier:(id)arg2 bundle:(id)arg3;
 - (void)performCourtesyPromptIfNeeded;

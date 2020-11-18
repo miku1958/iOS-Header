@@ -17,8 +17,7 @@
 @property (copy, nonatomic) NSNumber *sourceID; // @synthesize sourceID=_sourceID;
 @property (strong, nonatomic) NSSet *types; // @synthesize types=_types;
 
-+ (void)applyEntries:(id)arg1 withDaemon:(id)arg2;
-+ (long long)behavior;
++ (void)applyEntries:(id)arg1 withProfile:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

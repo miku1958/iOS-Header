@@ -38,6 +38,10 @@
     double _rotation;
     double _tilt;
     double _roll;
+    unsigned long long _lineMUID;
+    NSString *_lineName;
+    long long _favoritesType;
+    BOOL _tester;
 }
 
 @property (readonly) NSString *abAddressID; // @synthesize abAddressID=_abAddressID;
@@ -50,6 +54,9 @@
 @property (readonly) NSString *directionsDestinationAddressString; // @synthesize directionsDestinationAddressString=_directionsDestinationAddressString;
 @property (readonly) NSString *directionsSourceAddressString; // @synthesize directionsSourceAddressString=_directionsSourceAddressString;
 @property (readonly) BOOL exactPositionSpecified; // @synthesize exactPositionSpecified=_exactPositionSpecified;
+@property (readonly) long long favoritesType; // @synthesize favoritesType=_favoritesType;
+@property (readonly) unsigned long long lineMUID; // @synthesize lineMUID=_lineMUID;
+@property (readonly, copy) NSString *lineName; // @synthesize lineName=_lineName;
 @property (readonly) int mapType; // @synthesize mapType=_mapType;
 @property (readonly) double roll; // @synthesize roll=_roll;
 @property (readonly) double rotation; // @synthesize rotation=_rotation;
@@ -59,6 +66,7 @@
 @property (readonly) CDStruct_90e2a262 searchRegion; // @synthesize searchRegion=_searchRegion;
 @property (readonly) unsigned long long searchUID; // @synthesize searchUID=_searchUID;
 @property (readonly) CDStruct_c3b9c2ee span; // @synthesize span=_span;
+@property (readonly) BOOL tester; // @synthesize tester=_tester;
 @property (readonly) double tilt; // @synthesize tilt=_tilt;
 @property (readonly) int trackingMode; // @synthesize trackingMode=_trackingMode;
 @property (readonly) int transportType; // @synthesize transportType=_transportType;

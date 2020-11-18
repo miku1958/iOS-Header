@@ -16,6 +16,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDate *endDate;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *localizedSubtitle;
 @property (readonly, nonatomic) NSString *localizedTitle;
 @property (readonly, nonatomic) NSDate *startDate;
 @property (readonly) Class superclass;

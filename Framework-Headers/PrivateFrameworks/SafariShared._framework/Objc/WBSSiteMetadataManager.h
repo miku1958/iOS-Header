@@ -8,14 +8,18 @@
 
 #import <SafariShared/WBSSiteMetadataProviderDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, NSURL, WKProcessPool;
+@class NSCountedSet, NSMutableArray, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, NSURL, WKProcessPool;
+@protocol OS_dispatch_queue;
 
 @interface WBSSiteMetadataManager : NSObject <WBSSiteMetadataProviderDelegate>
 {
     WKProcessPool *_processPool;
+    NSMutableSet *_usedWebViews;
+    NSMutableSet *_reusableWebViews;
     NSMutableArray *_siteMetadataProviders;
     NSOperationQueue *_operationQueue;
-    NSMutableDictionary *_tokensToSubrequestProviders;
+    NSCountedSet *_activeOperations;
+    NSObject<OS_dispatch_queue> *_internalQueue;
     NSMutableSet *_tokens;
     NSMutableDictionary *_requestsToRequestInfos;
     NSURL *_injectedBundleURL;
@@ -26,32 +30,41 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSURL *injectedBundleURL; // @synthesize injectedBundleURL=_injectedBundleURL;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=isSuspended) BOOL suspended;
 
 - (void).cxx_destruct;
+- (void)_discardWebViewSoon:(id)arg1;
 - (long long)_highestRequestPriorityForRequest:(id)arg1;
+- (void)_internalCancelRequestWithToken:(id)arg1;
+- (void)_internalSetPriority:(long long)arg1 ofRequestWithToken:(id)arg2;
+- (unsigned long long)_numberOfConcurrentRequests;
+- (id)_popReusableWebView;
 - (id)_processPool;
 - (id)_providerForRequest:(id)arg1;
 - (void)_registerToken:(id)arg1 withProvider:(id)arg2;
 - (void)_reprioritizeOperationForRequest:(id)arg1;
-- (void)_reregisterRequest:(id)arg1 priority:(long long)arg2 withProvider:(id)arg3 didReceiveNewData:(BOOL)arg4;
+- (BOOL)_requestIsCancelledForToken:(id)arg1;
 - (void)_scheduleDelayedResponse:(id)arg1 forRequestToken:(id)arg2;
+- (void)_sendRequiresDownloadResponse:(id)arg1 toResponseHandlersForRequest:(id)arg2;
 - (void)_sendResponse:(id)arg1 toResponseHandlersForRequest:(id)arg2 didReceiveNewData:(BOOL)arg3;
 - (void)_setUpOperationForRequest:(id)arg1 withSiteMetadataProvider:(id)arg2;
+- (BOOL)_updateOperationForRequestIfPossible:(id)arg1;
 - (void)cancelRequestWithToken:(id)arg1;
 - (void)cancelRequestsWithTokens:(id)arg1;
 - (id)init;
 - (id)initWithInjectedBundleURL:(id)arg1;
+- (void)preloadRequest:(id)arg1 withPriority:(long long)arg2;
 - (id)registerOneTimeRequest:(id)arg1 priority:(long long)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (id)registerRequest:(id)arg1 priority:(long long)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (void)registerSiteMetadataProvider:(id)arg1;
 - (void)setPriority:(long long)arg1 ofRequestWithToken:(id)arg2;
 - (void)setPriority:(long long)arg1 ofRequestsWithTokens:(id)arg2;
 - (void)siteMetadataProvider:(id)arg1 cancelRequestsWithTokens:(id)arg2;
-- (void)siteMetadataProvider:(id)arg1 didFinishRequestWithoutReceivingNewData:(id)arg2;
-- (void)siteMetadataProvider:(id)arg1 didReceiveResponse:(id)arg2 forRequest:(id)arg3;
-- (void)siteMetadataProvider:(id)arg1 didReceiveUpdateForRequest:(id)arg2;
+- (void)siteMetadataProvider:(id)arg1 didFinishUsingWebView:(id)arg2;
+- (void)siteMetadataProvider:(id)arg1 didReceiveResponse:(id)arg2 ofType:(long long)arg3 didReceiveNewData:(BOOL)arg4 forRequest:(id)arg5;
 - (id)siteMetadataProvider:(id)arg1 registerOneTimeRequest:(id)arg2 priority:(long long)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (id)siteMetadataProvider:(id)arg1 registerRequest:(id)arg2 priority:(long long)arg3 responseHandler:(CDUnknownBlockType)arg4;
+- (id)siteMetadataProvider:(id)arg1 webViewOfSize:(struct CGSize)arg2 withConfiguration:(id)arg3;
 
 @end
 

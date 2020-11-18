@@ -6,31 +6,32 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HAPTimerDelegate-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HAPTimer, HMDIDSMessageDispatcher, NSMapTable, NSMutableArray, NSString, NSUUID;
+@class HMDCentralMessageDispatcher, HMDDevice, HMFTimer, NSMapTable, NSMutableArray, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDResidentCommunicationHandler : NSObject <HAPTimerDelegate>
+@interface HMDResidentCommunicationHandler : NSObject <HMFLogging, HMFTimerDelegate>
 {
-    NSString *_residentPeerAddress;
+    HMDDevice *_device;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSMutableArray *_pendingReadRequests;
     NSMapTable *_dispatchedReadRequests;
-    HAPTimer *_multiReadCoalesceTimer;
+    HMFTimer *_multiReadCoalesceTimer;
     NSUUID *_homeUUID;
-    HMDIDSMessageDispatcher *_idsDispatcher;
+    HMDCentralMessageDispatcher *_remoteDispatcher;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) HMDDevice *device; // @synthesize device=_device;
 @property (readonly, nonatomic) NSMapTable *dispatchedReadRequests; // @synthesize dispatchedReadRequests=_dispatchedReadRequests;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSUUID *homeUUID; // @synthesize homeUUID=_homeUUID;
-@property (readonly, weak, nonatomic) HMDIDSMessageDispatcher *idsDispatcher; // @synthesize idsDispatcher=_idsDispatcher;
-@property (strong, nonatomic) HAPTimer *multiReadCoalesceTimer; // @synthesize multiReadCoalesceTimer=_multiReadCoalesceTimer;
+@property (strong, nonatomic) HMFTimer *multiReadCoalesceTimer; // @synthesize multiReadCoalesceTimer=_multiReadCoalesceTimer;
 @property (readonly, nonatomic) NSMutableArray *pendingReadRequests; // @synthesize pendingReadRequests=_pendingReadRequests;
-@property (readonly, nonatomic) NSString *residentPeerAddress; // @synthesize residentPeerAddress=_residentPeerAddress;
+@property (readonly, weak, nonatomic) HMDCentralMessageDispatcher *remoteDispatcher; // @synthesize remoteDispatcher=_remoteDispatcher;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
@@ -38,12 +39,13 @@
 + (void)_clearAllPendingRequests:(id)arg1 error:(id)arg2;
 + (void)_processResponseForMultireadRequest:(id)arg1 overallError:(id)arg2 response:(id)arg3;
 + (id)createResponseSubset:(id)arg1 overallError:(id)arg2 readRequest:(id)arg3 error:(id *)arg4;
++ (id)logCategory;
 - (void).cxx_destruct;
 - (void)_processResponse:(id)arg1 overallError:(id)arg2 messageIdentifier:(id)arg3;
 - (void)_redispatchMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3;
 - (void)_sendMultipleCharacteristicRead;
 - (void)dealloc;
-- (id)initWithHomeUUID:(id)arg1 residentAddress:(id)arg2 idsDispatcher:(id)arg3;
+- (id)initWithHomeUUID:(id)arg1 device:(id)arg2 remoteDispatcher:(id)arg3;
 - (void)redispatchMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3;
 - (void)timerDidFire:(id)arg1;
 

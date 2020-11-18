@@ -9,6 +9,6 @@
 @class NSString;
 
 @protocol PUTransientImageManager <NSObject>
-- (void)requestPairedVideoURLForUUID:(NSString *)arg1 resultHandler:(void (^)(NSURL *, struct, NSError *))arg2;
+- (void)requestPairedVideoURLForUUID:(NSString *)arg1 resultHandler:(void (^)(NSURL *, NSDictionary *))arg2;
 @end
 

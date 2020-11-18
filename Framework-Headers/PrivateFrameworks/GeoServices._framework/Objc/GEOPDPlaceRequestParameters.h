@@ -8,15 +8,19 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAutocompleteParameters, GEOPDBatchPopularNearbySearchParameters, GEOPDCanonicalLocationSearchParameters, GEOPDCategorySearchParameters, GEOPDGeocodingParameters, GEOPDLocationDirectedSearchParameters, GEOPDMerchantLookupParameters, GEOPDNearbySearchParameters, GEOPDPlaceLookupParameters, GEOPDPlaceRefinementParameters, GEOPDPopularNearbySearchParameters, GEOPDReverseGeocodingParameters, GEOPDSearchBrowseCategorySuggestionParameters, GEOPDSearchFieldPlaceholderParameters, GEOPDSearchParameters, GEOPDSearchZeroKeywordCategorySuggestionParameters, GEOPDSiriSearchParameters, GEOPDVendorSpecificPlaceRefinementParameters;
+@class GEOPDAddressObjectGeocodingParameters, GEOPDAutocompleteParameters, GEOPDBatchPopularNearbySearchParameters, GEOPDCanonicalLocationSearchParameters, GEOPDCategorySearchParameters, GEOPDExternalTransitLookupParameters, GEOPDFeatureIdGeocodingParameters, GEOPDGeocodingParameters, GEOPDLocationDirectedSearchParameters, GEOPDMerchantLookupParameters, GEOPDNearbySearchParameters, GEOPDPlaceLookupParameters, GEOPDPlaceRefinementParameters, GEOPDPopularNearbySearchParameters, GEOPDReverseGeocodingParameters, GEOPDSearchBrowseCategorySuggestionParameters, GEOPDSearchFieldPlaceholderParameters, GEOPDSearchParameters, GEOPDSearchZeroKeywordCategorySuggestionParameters, GEOPDSearchZeroKeywordWithSearchResultsSuggestionParameters, GEOPDSiriSearchParameters, GEOPDVendorSpecificPlaceRefinementParameters, PBUnknownFields;
 
 @interface GEOPDPlaceRequestParameters : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
+    GEOPDAddressObjectGeocodingParameters *_addressObjectGeocodingParameters;
     GEOPDAutocompleteParameters *_autocompleteParameters;
     GEOPDBatchPopularNearbySearchParameters *_batchPopularNearbySearchParameters;
     GEOPDSearchBrowseCategorySuggestionParameters *_browseCategorySuggestionParameters;
     GEOPDCanonicalLocationSearchParameters *_canonicalLocationSearchParameters;
     GEOPDCategorySearchParameters *_categorySearchParameters;
+    GEOPDExternalTransitLookupParameters *_externalTransitLookupParameters;
+    GEOPDFeatureIdGeocodingParameters *_featureIdGeocodingParameters;
     GEOPDGeocodingParameters *_geocodingParameters;
     GEOPDLocationDirectedSearchParameters *_locationDirectedSearchParameters;
     GEOPDMerchantLookupParameters *_merchantLookupParameters;
@@ -28,21 +32,28 @@
     GEOPDSearchFieldPlaceholderParameters *_searchFieldPlaceholderParameters;
     GEOPDSearchParameters *_searchParameters;
     GEOPDSearchZeroKeywordCategorySuggestionParameters *_searchZeroKeywordCategorySuggestionParameters;
+    GEOPDSearchZeroKeywordWithSearchResultsSuggestionParameters *_searchZeroKeywordWithSearchResultsSuggestionParameters;
     GEOPDSiriSearchParameters *_siriSearchParameters;
     GEOPDVendorSpecificPlaceRefinementParameters *_vendorSpecificPlaceRefinementParameters;
 }
 
+@property (strong, nonatomic) GEOPDAddressObjectGeocodingParameters *addressObjectGeocodingParameters; // @synthesize addressObjectGeocodingParameters=_addressObjectGeocodingParameters;
 @property (strong, nonatomic) GEOPDAutocompleteParameters *autocompleteParameters; // @synthesize autocompleteParameters=_autocompleteParameters;
 @property (strong, nonatomic) GEOPDBatchPopularNearbySearchParameters *batchPopularNearbySearchParameters; // @synthesize batchPopularNearbySearchParameters=_batchPopularNearbySearchParameters;
 @property (strong, nonatomic) GEOPDSearchBrowseCategorySuggestionParameters *browseCategorySuggestionParameters; // @synthesize browseCategorySuggestionParameters=_browseCategorySuggestionParameters;
 @property (strong, nonatomic) GEOPDCanonicalLocationSearchParameters *canonicalLocationSearchParameters; // @synthesize canonicalLocationSearchParameters=_canonicalLocationSearchParameters;
 @property (strong, nonatomic) GEOPDCategorySearchParameters *categorySearchParameters; // @synthesize categorySearchParameters=_categorySearchParameters;
+@property (strong, nonatomic) GEOPDExternalTransitLookupParameters *externalTransitLookupParameters; // @synthesize externalTransitLookupParameters=_externalTransitLookupParameters;
+@property (strong, nonatomic) GEOPDFeatureIdGeocodingParameters *featureIdGeocodingParameters; // @synthesize featureIdGeocodingParameters=_featureIdGeocodingParameters;
 @property (strong, nonatomic) GEOPDGeocodingParameters *geocodingParameters; // @synthesize geocodingParameters=_geocodingParameters;
+@property (readonly, nonatomic) BOOL hasAddressObjectGeocodingParameters;
 @property (readonly, nonatomic) BOOL hasAutocompleteParameters;
 @property (readonly, nonatomic) BOOL hasBatchPopularNearbySearchParameters;
 @property (readonly, nonatomic) BOOL hasBrowseCategorySuggestionParameters;
 @property (readonly, nonatomic) BOOL hasCanonicalLocationSearchParameters;
 @property (readonly, nonatomic) BOOL hasCategorySearchParameters;
+@property (readonly, nonatomic) BOOL hasExternalTransitLookupParameters;
+@property (readonly, nonatomic) BOOL hasFeatureIdGeocodingParameters;
 @property (readonly, nonatomic) BOOL hasGeocodingParameters;
 @property (readonly, nonatomic) BOOL hasLocationDirectedSearchParameters;
 @property (readonly, nonatomic) BOOL hasMerchantLookupParameters;
@@ -54,6 +65,7 @@
 @property (readonly, nonatomic) BOOL hasSearchFieldPlaceholderParameters;
 @property (readonly, nonatomic) BOOL hasSearchParameters;
 @property (readonly, nonatomic) BOOL hasSearchZeroKeywordCategorySuggestionParameters;
+@property (readonly, nonatomic) BOOL hasSearchZeroKeywordWithSearchResultsSuggestionParameters;
 @property (readonly, nonatomic) BOOL hasSiriSearchParameters;
 @property (readonly, nonatomic) BOOL hasVendorSpecificPlaceRefinementParameters;
 @property (strong, nonatomic) GEOPDLocationDirectedSearchParameters *locationDirectedSearchParameters; // @synthesize locationDirectedSearchParameters=_locationDirectedSearchParameters;
@@ -66,7 +78,9 @@
 @property (strong, nonatomic) GEOPDSearchFieldPlaceholderParameters *searchFieldPlaceholderParameters; // @synthesize searchFieldPlaceholderParameters=_searchFieldPlaceholderParameters;
 @property (strong, nonatomic) GEOPDSearchParameters *searchParameters; // @synthesize searchParameters=_searchParameters;
 @property (strong, nonatomic) GEOPDSearchZeroKeywordCategorySuggestionParameters *searchZeroKeywordCategorySuggestionParameters; // @synthesize searchZeroKeywordCategorySuggestionParameters=_searchZeroKeywordCategorySuggestionParameters;
+@property (strong, nonatomic) GEOPDSearchZeroKeywordWithSearchResultsSuggestionParameters *searchZeroKeywordWithSearchResultsSuggestionParameters; // @synthesize searchZeroKeywordWithSearchResultsSuggestionParameters=_searchZeroKeywordWithSearchResultsSuggestionParameters;
 @property (strong, nonatomic) GEOPDSiriSearchParameters *siriSearchParameters; // @synthesize siriSearchParameters=_siriSearchParameters;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEOPDVendorSpecificPlaceRefinementParameters *vendorSpecificPlaceRefinementParameters; // @synthesize vendorSpecificPlaceRefinementParameters=_vendorSpecificPlaceRefinementParameters;
 
 - (void)copyTo:(id)arg1;
@@ -77,6 +91,7 @@
 - (unsigned long long)hash;
 - (id)initWithCanonicalLocationSearchQueryString:(id)arg1;
 - (id)initWithExternalBusinessID:(id)arg1 contentProvider:(id)arg2;
+- (id)initWithExternalTransitStationCodes:(id)arg1 sourceID:(id)arg2 transactionDate:(id)arg3 transactionLocation:(id)arg4;
 - (id)initWithForwardGeocodeAddress:(id)arg1 maxResults:(unsigned int)arg2 traits:(id)arg3;
 - (id)initWithForwardGeocodeAddressString:(id)arg1 maxResults:(unsigned int)arg2 traits:(id)arg3;
 - (id)initWithMUIDs:(id)arg1 resultProviderID:(int)arg2;
@@ -85,6 +100,7 @@
 - (id)initWithMerchantCode:(id)arg1 rawMerchantCode:(id)arg2 paymentNetwork:(id)arg3 transactionDate:(id)arg4 transactionLocation:(id)arg5;
 - (id)initWithPlaceRefinementParameters:(id)arg1 traits:(id)arg2;
 - (id)initWithReverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1;
+- (id)initWithReverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 preserveOriginalLocation:(BOOL)arg2;
 - (id)initWithSearchQuery:(id)arg1 entryMetadata:(id)arg2 metadata:(id)arg3 autocompleteEntry:(id)arg4 maxResults:(unsigned int)arg5 traits:(id)arg6;
 - (id)initWithSearchURLQuery:(id)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 maxResults:(unsigned int)arg3 traits:(id)arg4;
 - (id)initWithSearchURLQuery:(id)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 muid:(unsigned long long)arg3 resultProviderId:(int)arg4;

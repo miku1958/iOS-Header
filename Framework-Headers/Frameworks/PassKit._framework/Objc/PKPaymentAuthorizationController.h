@@ -4,57 +4,47 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <PassKit/NSXPCListenerDelegate-Protocol.h>
+#import <PassKit/PKPaymentAuthorizationCoordinatorDelegate-Protocol.h>
+#import <PassKit/PKPaymentAuthorizationCoordinatorPrivateDelegate-Protocol.h>
 
-@class NSString, NSTimer, NSXPCConnection, NSXPCListener, PKInAppPaymentService, PKPaymentAuthorizationControllerExportedObject, PKPaymentRequest;
-@protocol OS_dispatch_queue, PKPaymentAuthorizationControllerDelegate, PKPaymentAuthorizationControllerPrivateDelegate;
+@class NSString, PKPaymentAuthorizationCoordinator;
+@protocol PKPaymentAuthorizationControllerDelegate, PKPaymentAuthorizationControllerPrivateDelegate;
 
-@interface PKPaymentAuthorizationController : NSObject <NSXPCListenerDelegate>
+@interface PKPaymentAuthorizationController : NSObject <PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate>
 {
-    BOOL _didPresent;
-    PKInAppPaymentService *_inAppPaymentService;
-    NSXPCListener *_listener;
-    double _connectionTimeout;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSXPCConnection *_connection;
-    NSTimer *_timer;
-    PKPaymentRequest *_paymentRequest;
-    NSString *_hostIdentifier;
-    PKPaymentAuthorizationControllerExportedObject *_exportedObject;
-    CDUnknownBlockType _presentationCompletionBlock;
+    PKPaymentAuthorizationController *_retainSelf;
+    id<PKPaymentAuthorizationControllerDelegate> _delegate;
+    PKPaymentAuthorizationCoordinator *_paymentCoordinator;
+    id<PKPaymentAuthorizationControllerPrivateDelegate> _privateDelegate;
 }
 
-@property (nonatomic, setter=_setPrivateDelegate:) id<PKPaymentAuthorizationControllerPrivateDelegate> _privateDelegate;
-@property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
-@property (nonatomic) double connectionTimeout; // @synthesize connectionTimeout=_connectionTimeout;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<PKPaymentAuthorizationControllerDelegate> delegate;
+@property (weak, nonatomic) id<PKPaymentAuthorizationControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL didPresent; // @synthesize didPresent=_didPresent;
-@property (strong, nonatomic) PKPaymentAuthorizationControllerExportedObject *exportedObject; // @synthesize exportedObject=_exportedObject;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSString *hostIdentifier; // @synthesize hostIdentifier=_hostIdentifier;
-@property (strong, nonatomic) PKInAppPaymentService *inAppPaymentService; // @synthesize inAppPaymentService=_inAppPaymentService;
-@property (strong, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;
-@property (strong, nonatomic) PKPaymentRequest *paymentRequest; // @synthesize paymentRequest=_paymentRequest;
-@property (copy, nonatomic) CDUnknownBlockType presentationCompletionBlock; // @synthesize presentationCompletionBlock=_presentationCompletionBlock;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (strong, nonatomic) PKPaymentAuthorizationCoordinator *paymentCoordinator; // @synthesize paymentCoordinator=_paymentCoordinator;
+@property (nonatomic) id<PKPaymentAuthorizationControllerPrivateDelegate> privateDelegate; // @synthesize privateDelegate=_privateDelegate;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSTimer *timer; // @synthesize timer=_timer;
 
 + (BOOL)canMakePayments;
 + (BOOL)canMakePaymentsUsingNetworks:(id)arg1;
 + (BOOL)canMakePaymentsUsingNetworks:(id)arg1 capabilities:(unsigned long long)arg2;
-- (void)_invokeCallbackWithSuccess:(BOOL)arg1;
-- (id)_remoteObjectProxy;
-- (void)_viewServiceTimerFired:(id)arg1;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)dismissWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithPaymentRequest:(id)arg1;
-- (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizePayment:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)paymentAuthorizationCoordinator:(id)arg1 didRequestMerchantSession:(CDUnknownBlockType)arg2;
+- (void)paymentAuthorizationCoordinator:(id)arg1 didSelectPaymentMethod:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)paymentAuthorizationCoordinator:(id)arg1 didSelectShippingAddress:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)paymentAuthorizationCoordinator:(id)arg1 didSelectShippingMethod:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)paymentAuthorizationCoordinator:(id)arg1 willFinishWithError:(id)arg2;
+- (void)paymentAuthorizationCoordinatorDidFinish:(id)arg1;
+- (void)paymentAuthorizationCoordinatorWillAuthorizePayment:(id)arg1;
 - (void)presentWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

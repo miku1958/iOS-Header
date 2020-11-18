@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (struct String)bundleVersion;
 - (void)createPropertyListFile;
 - (void)dealloc;
-- (void)finalize;
 - (BOOL)getPluginInfoFromPLists;
 - (id)initWithPath:(id)arg1;
 - (BOOL)isJavaPlugIn;

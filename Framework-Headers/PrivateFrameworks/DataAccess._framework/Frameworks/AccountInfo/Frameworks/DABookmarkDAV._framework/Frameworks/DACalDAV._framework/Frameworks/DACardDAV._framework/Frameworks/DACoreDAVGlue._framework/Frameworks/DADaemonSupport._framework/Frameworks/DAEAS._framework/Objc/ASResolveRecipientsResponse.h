@@ -10,12 +10,12 @@
 
 @interface ASResolveRecipientsResponse : ASItem
 {
-    NSArray *_responses;
     NSNumber *_easStatus;
     NSMutableArray *_mResponses;
+    NSArray *_responses;
 }
 
-@property (strong, nonatomic) NSNumber *easStatus; // @synthesize easStatus=_easStatus;
+@property (strong, nonatomic, setter=setEASStatus:) NSNumber *easStatus; // @synthesize easStatus=_easStatus;
 @property (strong, nonatomic) NSMutableArray *mResponses; // @synthesize mResponses=_mResponses;
 @property (strong, nonatomic) NSArray *responses; // @synthesize responses=_responses;
 
@@ -28,7 +28,6 @@
 - (void).cxx_destruct;
 - (void)addResponse:(id)arg1;
 - (id)description;
-- (void)setEASStatus:(id)arg1;
 
 @end
 

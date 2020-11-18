@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) NSDictionary *requiredPixelBufferAttributesForRenderContext;
 @property (readonly, nonatomic) NSDictionary *sourcePixelBufferAttributes;
+@property (readonly, nonatomic) BOOL supportsWideColorSourceFrames;
 
 - (void)renderContextChanged:(AVVideoCompositionRenderContext *)arg1;
 - (void)startVideoCompositionRequest:(AVAsynchronousVideoCompositionRequest *)arg1;

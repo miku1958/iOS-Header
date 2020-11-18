@@ -23,6 +23,10 @@
     HKQuantity *_activeEnergyBurnedGoal;
     HKQuantity *_appleExerciseTimeGoal;
     HKQuantity *_appleStandHoursGoal;
+    HKQuantity *_deepBreathingDuration;
+    HKQuantity *_pushCount;
+    HKQuantity *_flightsClimbed;
+    long long _wheelchairUse;
     BOOL _dataLoading;
     NSDate *_startDate;
     NSDate *_endDate;
@@ -40,14 +44,20 @@
 @property (strong, nonatomic) HKQuantity *appleStandHoursGoal;
 @property (strong, nonatomic, getter=_creationDate, setter=_setCreationDate:) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (nonatomic, getter=_isDataLoading, setter=_setDataLoading:) BOOL dataLoading; // @synthesize dataLoading=_dataLoading;
+@property (strong, nonatomic, getter=_deepBreathingDuration, setter=_setDeepBreathingDuration:) HKQuantity *deepBreathingDuration;
+@property (readonly, nonatomic, getter=_deepBreathingSessionCount) HKQuantity *deepBreathingSessionCount;
 @property (strong, nonatomic) HKQuantity *distanceWalkingRunning;
 @property (strong, nonatomic, getter=_endDate, setter=_setEndDate:) NSDate *endDate; // @synthesize endDate=_endDate;
 @property (strong, nonatomic, getter=_energyBurnedGoalDate, setter=_setEnergyBurnedGoalDate:) NSDate *energyBurnedGoalDate; // @synthesize energyBurnedGoalDate=_energyBurnedGoalDate;
 @property (readonly, nonatomic, getter=_exerciseTimeCompletionPercentage) double exerciseTimeCompletionPercentage;
+@property (strong, nonatomic, getter=_flightsClimbed, setter=_setFlightsClimbed:) HKQuantity *flightsClimbed;
 @property (copy, nonatomic, getter=_gregorianDateComponents, setter=_setGregorianDateComponents:) NSDateComponents *gregorianDateComponents;
+@property (readonly, nonatomic, getter=_hasMoveGoal) BOOL hasMoveGoal;
+@property (strong, nonatomic, getter=_pushCount, setter=_setPushCount:) HKQuantity *pushCount;
 @property (readonly, nonatomic, getter=_standHoursCompletionPercentage) double standHoursCompletionPercentage;
 @property (strong, nonatomic, getter=_startDate, setter=_setStartDate:) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (strong, nonatomic) HKQuantity *stepCount;
+@property (nonatomic, getter=_wheelchairUse, setter=_setWheelchairUse:) long long wheelchairUse;
 
 + (id)_highestEnergyBurnedActivityCacheAmongCaches:(id)arg1;
 + (id)_mostSignificantCacheAmongCaches:(id)arg1;

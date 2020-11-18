@@ -8,27 +8,37 @@
 
 #import <TelephonyUtilities/TUAudioDeviceControllerActions-Protocol.h>
 
-@class AVAudioClient, AVAudioDevice, NSArray, NSString;
+@class AVAudioClient, AVAudioDevice, NSArray, NSHashTable, NSString;
+@protocol OS_dispatch_queue, TUAudioDeviceControllerActions;
 
 @interface TUAudioDeviceController : NSObject <TUAudioDeviceControllerActions>
 {
     AVAudioClient *_audioClient;
+    NSObject<OS_dispatch_queue> *_serialQueue;
+    NSHashTable *_delegates;
+    id<TUAudioDeviceControllerActions> _actionsDelegate;
 }
 
+@property (weak, nonatomic) id<TUAudioDeviceControllerActions> actionsDelegate; // @synthesize actionsDelegate=_actionsDelegate;
 @property (strong, nonatomic) AVAudioClient *audioClient; // @synthesize audioClient=_audioClient;
 @property (strong, nonatomic) AVAudioDevice *currentInputDevice;
 @property (strong, nonatomic) AVAudioDevice *currentOutputDevice;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) NSHashTable *delegates; // @synthesize delegates=_delegates;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *devices;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *inputDevices;
 @property (readonly, nonatomic) NSArray *outputDevices;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property (readonly) Class superclass;
 
-+ (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)addDelegate:(id)arg1;
+- (void)choosePreferredDeviceIfNecessary;
 - (id)init;
+- (id)initWithActionsDelegate:(id)arg1 serialQueue:(id)arg2;
+- (void)removeDelegate:(id)arg1;
 - (void)setCurrentInputDeviceToDeviceWithUID:(id)arg1;
 - (void)setCurrentOutputDeviceToDeviceWithUID:(id)arg1;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDate, NSString;
 
@@ -16,12 +16,12 @@
     CDUnknownBlockType _timeoutHandler;
 }
 
-@property (strong, nonatomic) NSString *bulletinID; // @synthesize bulletinID=_bulletinID;
-@property (strong, nonatomic) NSString *sectionID; // @synthesize sectionID=_sectionID;
+@property (copy, nonatomic) NSString *bulletinID; // @synthesize bulletinID=_bulletinID;
+@property (copy, nonatomic) NSString *sectionID; // @synthesize sectionID=_sectionID;
 @property (strong, nonatomic) NSDate *timeout; // @synthesize timeout=_timeout;
 @property (copy, nonatomic) CDUnknownBlockType timeoutHandler; // @synthesize timeoutHandler=_timeoutHandler;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

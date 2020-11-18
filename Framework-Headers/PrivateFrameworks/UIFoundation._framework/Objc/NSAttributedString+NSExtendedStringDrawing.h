@@ -13,5 +13,6 @@
 - (struct CGRect)boundingRectWithSize:(struct CGSize)arg1 options:(long long)arg2 context:(id)arg3;
 - (void)drawWithRect:(struct CGRect)arg1 options:(long long)arg2;
 - (void)drawWithRect:(struct CGRect)arg1 options:(long long)arg2 context:(id)arg3;
+- (BOOL)hasColorGlyphsInRange:(struct _NSRange)arg1;
 @end
 

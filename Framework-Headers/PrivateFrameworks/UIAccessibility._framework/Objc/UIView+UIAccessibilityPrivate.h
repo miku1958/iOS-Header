@@ -9,14 +9,10 @@
 @interface UIView (UIAccessibilityPrivate)
 - (BOOL)_accessibilityAllowsSiblingsWhenOvergrown;
 - (struct CGSize)_accessibilityFrameExpansion;
-- (BOOL)_accessibilityObscuresScreen;
 - (BOOL)_accessibilityOverridesInvalidFrames;
 - (void)_accessibilitySetAllowsSiblingsWhenOvergrown:(BOOL)arg1;
 - (void)_accessibilitySetFrameExpansion:(struct CGSize)arg1;
-- (void)_accessibilitySetObscuresScreen:(BOOL)arg1;
-- (void)_accessibilitySetStoredObscuresScreen:(id)arg1;
 - (void)_accessibilitySetViewIsVisible:(BOOL)arg1;
-- (id)_accessibilityStoredObscuresScreen;
 - (id)_accessibilitySubviews;
 - (BOOL)_accessibilityViewIsActive;
 - (BOOL)_accessibilityViewIsVisible;

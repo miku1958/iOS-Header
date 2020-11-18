@@ -34,6 +34,7 @@
 @property (nonatomic) CDStruct_1b6d18a9 preferredMediaChunkDuration;
 @property (nonatomic) long long preferredMediaChunkSize;
 @property (nonatomic) float preferredVolume;
+@property (nonatomic) short provisionalAlternateGroupID;
 @property (readonly, nonatomic, getter=isReadyForMoreMediaData) BOOL readyForMoreMediaData;
 @property (copy, nonatomic) NSURL *sampleReferenceBaseURL;
 @property (readonly, nonatomic) BOOL shouldRespondToInitialPassDescription;

@@ -8,5 +8,7 @@
 
 @protocol HKMedicalIDEditorCellHeightChangeDelegate
 - (void)medicalIDEditorCell:(HKMedicalIDEditorCell *)arg1 didChangeHeight:(double)arg2 keepRectVisible:(struct CGRect)arg3 inView:(UIView *)arg4;
+- (void)medicalIDEditorCellDidBeginEditing:(HKMedicalIDEditorCell *)arg1 keepRectVisible:(struct CGRect)arg2 inView:(UIView *)arg3;
+- (void)medicalIDEditorCellDidChangeSelection:(HKMedicalIDEditorCell *)arg1 keepRectVisible:(struct CGRect)arg2 inView:(UIView *)arg3;
 @end
 

@@ -6,16 +6,19 @@
 
 #import <coreroutine/RTNotification.h>
 
-__attribute__((visibility("hidden")))
+@class NSString;
+
 @interface RTMotionActivityManagerNotificationVehicleConnected : RTNotification
 {
     unsigned long long _vehicleConnectedState;
+    NSString *_deviceId;
 }
 
+@property (readonly, nonatomic) NSString *deviceId; // @synthesize deviceId=_deviceId;
 @property (readonly, nonatomic) unsigned long long vehicleConnectedState; // @synthesize vehicleConnectedState=_vehicleConnectedState;
 
-+ (id)notificationName;
-- (id)initWithVehicleConnectedState:(unsigned long long)arg1;
+- (void).cxx_destruct;
+- (id)initWithVehicleConnectedState:(unsigned long long)arg1 deviceId:(id)arg2;
 
 @end
 

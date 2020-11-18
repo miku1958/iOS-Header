@@ -10,6 +10,7 @@
 - (RenderQueue_e4212455 *)renderQueue;
 
 @optional
+- (void)didPresent;
 - (void)didReadPixels:(shared_ptr_4ce39eb2 *)arg1;
 @end
 

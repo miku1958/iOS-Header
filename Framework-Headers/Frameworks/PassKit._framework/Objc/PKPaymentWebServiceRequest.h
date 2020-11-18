@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol PKPaymentWebServiceTargetDeviceProtocol;
 
@@ -16,11 +16,12 @@
 @property (strong, nonatomic) id<PKPaymentWebServiceTargetDeviceProtocol> targetDevice; // @synthesize targetDevice=_targetDevice;
 
 + (id)_HTTPBodyWithDictionary:(id)arg1;
++ (void)_signRequest:(id)arg1 webService:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)authHeaderWithAccount:(id)arg1;
+- (void).cxx_destruct;
 - (id)_murlRequestWithServiceURL:(id)arg1 endpointComponents:(id)arg2 queryParameters:(id)arg3 account:(id)arg4;
 - (id)_murlRequestWithURL:(id)arg1;
 - (id)_murlRequestWithURL:(id)arg1 account:(id)arg2;
-- (void)dealloc;
 
 @end
 

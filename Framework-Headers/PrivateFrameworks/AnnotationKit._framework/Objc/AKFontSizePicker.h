@@ -14,6 +14,8 @@
 @interface AKFontSizePicker : UIControl <UICollectionViewDataSource, UICollectionViewDelegate>
 {
     double _value;
+    CDUnknownBlockType _willBeginTrackingUpdates;
+    CDUnknownBlockType _didEndTrackingUpdates;
     long long _style;
     UILabel *_label;
     UIStepper *_stepper;
@@ -24,6 +26,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) CDUnknownBlockType didEndTrackingUpdates; // @synthesize didEndTrackingUpdates=_didEndTrackingUpdates;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UILabel *label; // @synthesize label=_label;
 @property (strong, nonatomic) UICollectionView *sizeList; // @synthesize sizeList=_sizeList;
@@ -33,6 +36,7 @@
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (nonatomic) double value; // @synthesize value=_value;
+@property (copy, nonatomic) CDUnknownBlockType willBeginTrackingUpdates; // @synthesize willBeginTrackingUpdates=_willBeginTrackingUpdates;
 
 - (void).cxx_destruct;
 - (void)_decreaseSize:(id)arg1;
@@ -40,6 +44,8 @@
 - (void)_increaseSize:(id)arg1;
 - (struct CGSize)_itemSizeInContainer;
 - (void)_selectSizeInList;
+- (void)_sliderTouchDown:(id)arg1;
+- (void)_sliderTouchUp:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;

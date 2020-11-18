@@ -60,6 +60,7 @@
 - (id)localizedMonthAndYearStringShortened:(BOOL)arg1;
 - (id)localizedMonthShortened:(BOOL)arg1;
 - (id)localizedRelativeDateStringShortened:(BOOL)arg1;
+- (id)localizedRelativeDateStringShortened:(BOOL)arg1 lowercase:(BOOL)arg2;
 - (id)localizedWeekNumber;
 - (id)localizedWeekdayMonthDayStringShortened:(BOOL)arg1;
 - (id)localizedWeekdayMonthDayYearStringShortened:(BOOL)arg1;

@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMMessageReceiver-Protocol.h>
+#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMDHomeManager, HMMessageDispatcher, NSMutableArray, NSString, NSUUID;
+@class HMDHomeManager, HMFMessageDispatcher, NSMutableArray, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDClientConnection : NSObject <HMMessageReceiver>
+@interface HMDClientConnection : NSObject <HMFMessageReceiver>
 {
     NSObject<OS_dispatch_queue> *_workQueue;
-    HMMessageDispatcher *_msgDispatcher;
+    HMFMessageDispatcher *_msgDispatcher;
     HMDHomeManager *_homeManager;
     NSMutableArray *_commandsBeingExecuted;
 }
@@ -26,14 +26,16 @@
 @property (weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 - (void).cxx_destruct;
 - (void)_handleDaemonRequest:(id)arg1;
 - (void)_handleSiriCommand:(id)arg1;
+- (void)_handleSiriSyncDataRequest:(id)arg1;
 - (void)_registerForMessages;
+- (void)dealloc;
 - (id)initWithHomeManager:(id)arg1 queue:(id)arg2 messageDispatcher:(id)arg3;
 
 @end

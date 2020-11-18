@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     UIImage *_placeholderImage;
     unsigned long long _videoViewContentMode;
     id<PUVideoPlayerViewDelegate> _delegate;
+    struct CGRect _placeholderImageContentsRect;
 }
 
 @property (nonatomic) BOOL allowsEdgeAntialiasing; // @synthesize allowsEdgeAntialiasing=_allowsEdgeAntialiasing;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isDisplayingVideo; // @synthesize isDisplayingVideo=_isDisplayingVideo;
 @property (nonatomic) BOOL isReadyForVideoDisplay; // @synthesize isReadyForVideoDisplay=_isReadyForVideoDisplay;
 @property (strong, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
+@property (nonatomic) struct CGRect placeholderImageContentsRect; // @synthesize placeholderImageContentsRect=_placeholderImageContentsRect;
 @property (nonatomic) unsigned long long videoViewContentMode; // @synthesize videoViewContentMode=_videoViewContentMode;
 
 - (void).cxx_destruct;

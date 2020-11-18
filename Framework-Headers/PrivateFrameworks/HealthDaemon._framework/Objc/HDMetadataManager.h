@@ -6,29 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthDaemon/HDHealthMetadataManager-Protocol.h>
+@class HDDatabaseValueCache, HDProfile;
 
-@class HDDatabaseValueCache, NSString;
-
-@interface HDMetadataManager : NSObject <HDHealthMetadataManager>
+@interface HDMetadataManager : NSObject
 {
+    HDProfile *_profile;
     HDDatabaseValueCache *_keyEntityCache;
     HDDatabaseValueCache *_keyCache;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
 - (void).cxx_destruct;
 - (BOOL)_insertValueEntityWithKeyID:(id)arg1 healthEntityID:(id)arg2 value:(id)arg3 database:(id)arg4 error:(id *)arg5;
 - (id)_keyEntityForKey:(id)arg1 createIfNecessary:(BOOL)arg2 database:(id)arg3 error:(id *)arg4;
-- (id)_keyForKeyID:(id)arg1 database:(id)arg2;
-- (id)init;
-- (BOOL)insertMetadata:(id)arg1 forDataEntityWithID:(id)arg2 healthDaemon:(id)arg3 error:(id *)arg4;
-- (id)metadataForDataEntityWithPersistentID:(long long)arg1 healthDatabase:(id)arg2 error:(id *)arg3;
-- (id)metadataForDataEntityWithPersistentID:(long long)arg1 statement:(id)arg2 error:(id *)arg3;
+- (id)_keyForKeyID:(id)arg1 database:(id)arg2 error:(id *)arg3;
+- (id)initWithProfile:(id)arg1;
+- (BOOL)insertMetadata:(id)arg1 forDataEntityWithID:(id)arg2 error:(id *)arg3;
+- (id)metadataForDataEntityWithPersistentID:(long long)arg1 baseMetadata:(id)arg2 keyFilter:(CDUnknownBlockType)arg3 statement:(id)arg4 error:(id *)arg5;
+- (id)metadataForDataEntityWithPersistentID:(long long)arg1 keyFilter:(CDUnknownBlockType)arg2 error:(id *)arg3;
 
 @end
 

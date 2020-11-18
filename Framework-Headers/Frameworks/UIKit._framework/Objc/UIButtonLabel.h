@@ -6,22 +6,25 @@
 
 #import <UIKit/UILabel.h>
 
-@class UIButton;
+@class NSDictionary, UIButton;
 
 __attribute__((visibility("hidden")))
 @interface UIButtonLabel : UILabel
 {
     BOOL _reverseShadow;
     UIButton *_button;
+    NSDictionary *_cachedDefaultAttributes;
 }
 
 + (id)_defaultAttributes;
 - (void).cxx_destruct;
 - (id)_defaultAttributes;
 - (id)_initWithFrame:(struct CGRect)arg1 button:(id)arg2;
+- (void)_invalidateCachedDefaultAttributes;
 - (void)_setMinimumFontSize:(double)arg1;
 - (void)_setWantsAutolayout;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
+- (void)_updateTextColorWithFallbackColorIfNeeded;
 - (struct CGSize)intrinsicContentSize;
 - (void)invalidateIntrinsicContentSize;
 - (void)setAdjustsFontSizeToFitWidth:(BOOL)arg1;
@@ -31,7 +34,9 @@ __attribute__((visibility("hidden")))
 - (void)setReverseShadow:(BOOL)arg1;
 - (void)setShadowOffset:(struct CGSize)arg1;
 - (void)setTextAlignment:(long long)arg1;
+- (void)setTextColor:(id)arg1;
 - (struct CGSize)shadowOffset;
+- (void)tintColorDidChange;
 
 @end
 

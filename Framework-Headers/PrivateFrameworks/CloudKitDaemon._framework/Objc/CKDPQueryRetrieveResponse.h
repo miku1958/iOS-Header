@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasContinuationMarker;
 @property (strong, nonatomic) NSMutableArray *queryResults; // @synthesize queryResults=_queryResults;
 
++ (Class)queryResultsType;
 - (void).cxx_destruct;
 - (void)addQueryResults:(id)arg1;
 - (void)clearQueryResults;

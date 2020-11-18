@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKDPRecordFieldIdentifier *field; // @synthesize field=_field;
 @property (readonly, nonatomic) BOOL hasField;
 
++ (Class)assetsType;
 - (void).cxx_destruct;
 - (void)addAssets:(id)arg1;
 - (id)assetsAtIndex:(unsigned long long)arg1;

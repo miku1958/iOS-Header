@@ -4,17 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
-@class SCNView;
+@class SCNNode, SCNView;
 
 @interface SCNEventHandler : NSObject
 {
     SCNView *_view;
+    BOOL _enableFreeCamera;
+    BOOL _autoSwitchToFreeCamera;
 }
 
+@property BOOL autoSwitchToFreeCamera;
+@property BOOL enableFreeCamera;
+@property (readonly) SCNNode *freeCamera;
 @property (readonly) SCNView *view;
 
+- (void)activateFreeCamera;
 - (void)cameraDidChange;
 - (void)cameraWillChange;
 - (void)dealloc;

@@ -31,7 +31,7 @@
     UICollisionBehavior *_dynamicsPageCollisionBehavior;
     NSMutableDictionary *_dynamicsWidgetCollisionBehaviors;
     NSMutableDictionary *_dynamicsPushBehaviors;
-    OKPageView *pageView;
+    OKPageView *_pageView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -40,7 +40,7 @@
 @property (readonly, nonatomic) BOOL dynamicsEnabled; // @synthesize dynamicsEnabled=_dynamicsEnabled;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGPoint lastParallaxOffset; // @synthesize lastParallaxOffset=_lastParallaxOffset;
-@property (readonly, strong, nonatomic) OKPageView *pageView; // @synthesize pageView;
+@property (readonly, strong, nonatomic) OKPageView *pageView; // @synthesize pageView=_pageView;
 @property (readonly, nonatomic) BOOL parallaxEnabled; // @synthesize parallaxEnabled=_parallaxEnabled;
 @property (nonatomic) double parallaxRatioX; // @synthesize parallaxRatioX=_parallaxRatioX;
 @property (nonatomic) double parallaxRatioY; // @synthesize parallaxRatioY=_parallaxRatioY;

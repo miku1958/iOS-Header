@@ -15,8 +15,8 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSString *_containerPath;
     NSString *_containerID;
-    NSString *_extensionID;
     NSExtension *_extension;
+    NSString *_extensionID;
 }
 
 @property (strong, nonatomic) NSString *containerID; // @synthesize containerID=_containerID;

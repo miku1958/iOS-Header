@@ -8,6 +8,7 @@
 
 @class NSDictionary, NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface _SYDeferredIncomingSession : NSObject
 {
     NSURL *_resourceURL;

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasRequestBody;
 - (id)httpMethod;
 - (long long)partitionType;
+- (void)requestDidParse509CertObject:(id)arg1;
 - (void)requestDidParsePlaintextObject:(id)arg1;
 - (BOOL)requiresDeviceID;
 - (BOOL)requiresSignature;

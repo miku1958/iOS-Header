@@ -16,9 +16,11 @@
 - (void)_accessibilityAVCaptureStarted:(id)arg1;
 - (void)_accessibilityAVCaptureStopped:(id)arg1;
 - (BOOL)_accessibilityActionIsPhysicalButton:(int)arg1 nativeUIKitTypeRef:(long long *)arg2;
+- (id)_accessibilityActiveDictationUIKeyboard;
 - (BOOL)_accessibilityAllowsNotificationsDuringSuspension;
 - (int)_accessibilityApplicationForPosition:(struct CGPoint)arg1;
 - (id)_accessibilityApplicationSemanticContextWithViewController:(id)arg1;
+- (id)_accessibilityAuditIssuesWithOptions:(id)arg1;
 - (BOOL)_accessibilityBeginMonitoringIdleRunLoop;
 - (id)_accessibilityBundleIdentifier;
 - (struct CGRect)_accessibilityConvertSystemBoundedScreenRectToContextSpace:(struct CGRect)arg1;
@@ -36,12 +38,12 @@
 - (id)_accessibilityExplorerElements;
 - (id)_accessibilityFirstElement;
 - (id)_accessibilityFirstElementForFocus;
-- (void)_accessibilityFixPhysicalEvent:(id)arg1;
 - (BOOL)_accessibilityHardwareKeyboardActive;
 - (void)_accessibilityInitialize;
 - (id)_accessibilityIsolatedWindows;
 - (void)_accessibilityKeyboardDidHide:(id)arg1;
 - (void)_accessibilityKeyboardDidShow:(id)arg1;
+- (double)_accessibilityLastDictationMagicTapTime;
 - (id)_accessibilityLastElement;
 - (unsigned int)_accessibilityMachPort;
 - (id)_accessibilityMainWindow;
@@ -51,6 +53,7 @@
 - (long long)_accessibilityOrientationForCompareGeometry;
 - (BOOL)_accessibilityOverrideStartStopExtraExtras;
 - (id)_accessibilityPreviewWindow;
+- (void)_accessibilityRegisterForDictationLifecycleNotifications;
 - (id)_accessibilityResponderElement;
 - (id)_accessibilityResponderElement:(BOOL)arg1;
 - (id)_accessibilityResponderElementForFocus;
@@ -64,14 +67,18 @@
 - (id)_accessibilitySpeakThisViewController;
 - (BOOL)_accessibilityStartStopDictation;
 - (id)_accessibilitySummaryElement;
-- (id)_accessibilityTableViewCellWithRowIndex:(long long)arg1 andColumn:(long long)arg2;
+- (id)_accessibilityTableViewCellWithRowIndex:(long long)arg1 column:(long long)arg2 tableView:(id)arg3;
 - (id)_accessibilityTitleBarElement;
 - (id)_accessibilityTypingCandidates;
 - (id)_accessibilityUIWindowFindWithGlobalPoint:(struct CGPoint)arg1;
 - (id)_accessibilityUserTestingChildren;
 - (id)_accessibilityValidateResponderForFocus:(id)arg1;
+- (id)_accessibilityValidatedResponderForExistingGoodResponder:(id)arg1 forFocus:(BOOL)arg2;
 - (id)_accessibilityWindows;
 - (id)_axAllSubviews;
+- (id)_axAuditCheckDynamicTextSupport:(id)arg1;
+- (id)_axAuditGetFontForElement:(id)arg1;
+- (BOOL)_axAuditSwizzleAwayContentSize:(BOOL)arg1;
 - (id)_axSubviews;
 - (id)_findContainerAccessibleElement:(id)arg1 first:(BOOL)arg2 focus:(BOOL)arg3 allowScrolling:(BOOL)arg4;
 - (void)_finishButtonEvent:(id)arg1;
@@ -82,13 +89,15 @@
 - (void)accessibilityDisable;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
-- (BOOL)accessibilityPerformAction:(int)arg1 withValue:(id)arg2;
+- (BOOL)accessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityStartStopToggle;
+- (BOOL)contextKitSearchEnabled;
 - (void)dealloc;
 - (void)handleKeyHIDEvent:(struct __IOHIDEvent *)arg1;
 - (BOOL)openURL:(id)arg1;
 - (void)sendEvent:(id)arg1;
+- (void)setContextKitSearchEnabled:(BOOL)arg1;
 
 @end
 

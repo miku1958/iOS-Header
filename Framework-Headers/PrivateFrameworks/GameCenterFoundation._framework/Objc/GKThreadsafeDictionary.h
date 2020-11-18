@@ -21,6 +21,7 @@
 - (id)allObjects;
 - (void)dealloc;
 - (id)description;
+- (id)dictionaryCopy;
 - (id)initWithName:(id)arg1;
 - (id)objectForKey:(id)arg1;
 - (id)objectForKey:(id)arg1 objectProducerBlock:(CDUnknownBlockType)arg2;
@@ -29,6 +30,7 @@
 - (void)readFromDictionary:(CDUnknownBlockType)arg1;
 - (void)removeAllObjects;
 - (void)removeObjectForKey:(id)arg1;
+- (void)removeObjectsForKeys:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (void)writeToDictionary:(CDUnknownBlockType)arg1;

@@ -42,6 +42,7 @@
 @property (readonly, copy) NSArray *weekdaySymbols;
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
++ (id)autoupdatingCurrentCalendar;
 + (id)calendarWithIdentifier:(id)arg1;
 + (id)currentCalendar;
 + (void)initialize;

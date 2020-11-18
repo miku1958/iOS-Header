@@ -12,8 +12,8 @@
 {
     BOOL _shouldRunHIDReceiveThreadRunloop;
     BOOL _shouldNotifyUserEventOccurred;
-    BOOL _ignoreAllSystemEvents;
     BOOL _handlingHIDEvents;
+    BOOL _ignoreAllSystemEvents;
     BOOL _handlingSystemEvents;
     int _HIDEventTapPriority;
     int _systemEventTapPriority;

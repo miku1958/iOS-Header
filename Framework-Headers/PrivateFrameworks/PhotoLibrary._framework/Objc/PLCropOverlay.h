@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CMKBottomBar, NSString, PLContactPhotoOverlay, PLCropOverlayBottomBar, PLCropOverlayCropView, PLCropOverlayWallpaperBottomBar, PLProgressHUD, UIButton, UIImageView, UILabel, UIToolbar;
+@class NSString, PLContactPhotoOverlay, PLCropOverlayBottomBar, PLCropOverlayCropView, PLCropOverlayWallpaperBottomBar, PLProgressHUD, UIButton, UIImageView, UILabel, UIToolbar;
 
 @interface PLCropOverlay : UIView
 {
@@ -43,7 +43,7 @@
 
 @property (readonly, nonatomic) PLCropOverlayBottomBar *_bottomBar; // @synthesize _bottomBar=__bottomBar;
 @property (readonly, nonatomic) UIButton *_cameraCancelButton; // @synthesize _cameraCancelButton=__cameraCancelButton;
-@property (strong, nonatomic) CMKBottomBar *cameraBottomBar;
+@property (strong, nonatomic) UIView *cameraBottomBar;
 @property (readonly, nonatomic) PLContactPhotoOverlay *contactPhotoOverlay; // @synthesize contactPhotoOverlay=_contactPhotoOverlay;
 @property (copy, nonatomic) NSString *defaultOKButtonTitle; // @synthesize defaultOKButtonTitle=_defaultOKButtonTitle;
 @property (nonatomic, getter=isDisplayedInPopover) BOOL displayedInPopover; // @synthesize displayedInPopover=_displayedInPopover;
@@ -57,7 +57,6 @@
 - (void)_backgroundSavePhoto:(id)arg1;
 - (void)_createCropView;
 - (void)_fadeOutCompleted:(id)arg1;
-- (id)_irisView;
 - (id)_newOverlayViewWithFrame:(struct CGRect)arg1 lighterEdgeOnTop:(BOOL)arg2;
 - (void)_pauseButtonPressed:(id)arg1;
 - (void)_playButtonPressed:(id)arg1;

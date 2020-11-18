@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 
 + (id)defaultPropertiesToLoad;
 + (id)relations;
+- (void).cxx_destruct;
 - (void)_addDirtyProperty:(id)arg1;
 - (void)_addObjectCore:(id)arg1 toValues:(id)arg2 relation:(id)arg3;
 - (void)_addReference:(id)arg1 forKey:(id)arg2;

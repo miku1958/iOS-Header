@@ -34,6 +34,7 @@
 @property (strong, nonatomic) NSString *ticketId; // @synthesize ticketId=_ticketId;
 @property (nonatomic) int ticketState; // @synthesize ticketState=_ticketState;
 
+- (int)StringAsTicketState:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -43,6 +44,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)ticketStateAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

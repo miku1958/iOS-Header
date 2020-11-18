@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSString;
 
@@ -20,11 +20,18 @@
 + (id)currentCachedLoggedInAccountWithError:(id *)arg1;
 + (id)currentLoggedInAccountWithError:(id *)arg1;
 + (BOOL)refreshCurrentLoggedInAccount;
++ (void)startAccountTokenChangeObserverIfNeeded;
+- (void).cxx_destruct;
+- (BOOL)canLogoutSafely;
 - (id)containerWithPendingChanges;
-- (void)dealloc;
+- (void)evictOldDocumentsWithHandler:(CDUnknownBlockType)arg1;
+- (BOOL)getEvictableSpace:(id *)arg1 error:(id *)arg2;
+- (BOOL)hasOptimizeStorageWithError:(id *)arg1;
+- (BOOL)iCloudDesktopSettingsChangedWithAttributes:(id)arg1 error:(id *)arg2;
 - (id)initWithAccountID:(id)arg1;
 - (BOOL)loginWithError:(id *)arg1;
 - (BOOL)logoutWithError:(id *)arg1;
+- (BOOL)setOptimizeStorageEnabled:(BOOL)arg1 error:(id *)arg2;
 
 @end
 

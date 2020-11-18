@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSATSGlyphStorage, NSATSLineFragment, NSParagraphArbitrator;
+@class NSATSGlyphStorage, NSATSLineFragment;
 
 @interface _NSATSTypesetterGuts : NSObject
 {
@@ -32,7 +32,6 @@
         unsigned int _reserved:30;
     } _paragraphState;
     struct __CTTypesetter *_ctTypesetter;
-    NSParagraphArbitrator *_paragraphArbitrator;
 }
 
 - (void)dealloc;

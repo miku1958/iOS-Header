@@ -13,6 +13,7 @@
     AVCaptureMovieFileOutputInternal *_internal;
 }
 
+@property (readonly, nonatomic) NSArray *availableVideoCodecTypes;
 @property (copy, nonatomic) NSArray *metadata;
 @property (nonatomic) CDStruct_1b6d18a9 movieFragmentInterval;
 
@@ -25,7 +26,10 @@
 - (void)_removeRecordingDelegateWrapper:(id)arg1;
 - (void)_startRecording:(id)arg1;
 - (int)_stopRecording;
+- (void)_updateAvailableVideoCodecTypesForSourceDevice:(id)arg1;
+- (id)addConnection:(id)arg1 error:(id *)arg2;
 - (void)attachSafelyToFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
+- (id)bravoCameraSelectionBehaviorForRecording;
 - (BOOL)canAddConnectionForMediaType:(id)arg1;
 - (id)connectionMediaTypes;
 - (void)dealloc;
@@ -35,6 +39,7 @@
 - (id)init;
 - (BOOL)isRecording;
 - (BOOL)isRecordingPaused;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)outputFileURL;
 - (id)outputSettingsForConnection:(id)arg1;
 - (void)pauseRecording;
@@ -43,6 +48,8 @@
 - (void)resumeRecording;
 - (void)safelyHandleServerConnectionDeathForFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
 - (BOOL)sendsLastVideoPreviewFrame;
+- (void)setBravoCameraSelectionBehaviorForRecording:(id)arg1;
+- (void)setOutputSettings:(id)arg1 forConnection:(id)arg2;
 - (void)setRecordsVideoOrientationAndMirroringChanges:(BOOL)arg1 asMetadataTrackForConnection:(id)arg2;
 - (void)setSendsLastVideoPreviewFrame:(BOOL)arg1;
 - (void)startRecordingToOutputFileURL:(id)arg1 recordingDelegate:(id)arg2;

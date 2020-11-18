@@ -6,11 +6,12 @@
 
 #import <HealthDaemon/HDSQLiteQueryDescriptor.h>
 
-@class HKObjectType, NSArray, NSNumber, _HKFilter;
-@protocol HDHealthDaemon;
+@class HDProfile, HKObjectType, NSArray, NSMutableDictionary, NSNumber, _HKFilter;
 
 @interface HDDataEntityEnumerator : HDSQLiteQueryDescriptor
 {
+    HDProfile *_profile;
+    NSMutableDictionary *_encodingOptions;
     BOOL _useLeftJoin;
     HKObjectType *_objectType;
     _HKFilter *_filter;
@@ -19,18 +20,15 @@
     NSNumber *_anchor;
     NSNumber *_deletedObjectsAnchor;
     NSArray *_sortDescriptors;
-    id<HDHealthDaemon> _healthDaemon;
 }
 
 @property (strong, nonatomic) NSNumber *anchor; // @synthesize anchor=_anchor;
 @property (copy, nonatomic) CDUnknownBlockType authorizationFilter; // @synthesize authorizationFilter=_authorizationFilter;
 @property (strong, nonatomic) NSNumber *deletedObjectsAnchor; // @synthesize deletedObjectsAnchor=_deletedObjectsAnchor;
 @property (strong, nonatomic) _HKFilter *filter; // @synthesize filter=_filter;
-@property (readonly, nonatomic) id<HDHealthDaemon> healthDaemon; // @synthesize healthDaemon=_healthDaemon;
 @property (readonly, nonatomic) HKObjectType *objectType; // @synthesize objectType=_objectType;
-@property (strong, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
+@property (copy, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 @property (strong, nonatomic) NSNumber *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
-@property (nonatomic) BOOL useLeftJoin; // @synthesize useLeftJoin=_useLeftJoin;
 
 - (void).cxx_destruct;
 - (BOOL)_enumerateObjectsOnDatabase:(id)arg1 error:(id *)arg2 handler:(CDUnknownBlockType)arg3;
@@ -38,11 +36,14 @@
 - (BOOL)_prepareDeletedObjectsAndSamplesDescriptor:(id)arg1 error:(id *)arg2;
 - (BOOL)_prepareDescriptor:(id)arg1 error:(id *)arg2;
 - (BOOL)_setColumnNamesAndSortOrderingsOnDescriptor:(id)arg1 error:(id *)arg2;
+- (void)addEncodingOptionsFromDictionary:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)encodingOptionForKey:(id)arg1;
 - (BOOL)enumerateIncludingDeletedObjects:(BOOL)arg1 error:(id *)arg2 handler:(CDUnknownBlockType)arg3;
 - (BOOL)enumerateWithError:(id *)arg1 handler:(CDUnknownBlockType)arg2;
-- (id)initWithEntityClass:(Class)arg1 healthDaemon:(id)arg2;
-- (id)initWithObjectType:(id)arg1 entityClass:(Class)arg2 healthDaemon:(id)arg3;
+- (id)initWithEntityClass:(Class)arg1 profile:(id)arg2;
+- (id)initWithObjectType:(id)arg1 entityClass:(Class)arg2 profile:(id)arg3;
+- (void)setEncodingOption:(id)arg1 forKey:(id)arg2;
 
 @end
 

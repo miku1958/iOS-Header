@@ -6,6 +6,7 @@
 
 #import <UIKit/UIScrollView.h>
 
+#import <UIKit/UIContentSizeCategoryAdjusting-Protocol.h>
 #import <UIKit/UIKeyboardInput-Protocol.h>
 #import <UIKit/UIPreviewItemDelegate-Protocol.h>
 #import <UIKit/UITextAutoscrolling-Protocol.h>
@@ -15,11 +16,12 @@
 #import <UIKit/UITextLinkInteraction-Protocol.h>
 #import <UIKit/_UILayoutBaselineUpdating-Protocol.h>
 #import <UIKit/_UIMultilineTextContentSizing-Protocol.h>
+#import <UIKit/_UITextContainerViewDelegate-Protocol.h>
 
-@class NSAttributedString, NSDictionary, NSIndexSet, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIAutoscroll, UIColor, UIFont, UIImage, UILabel, UITextInputController, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UICharacterStreamingManager, _UISiriStreamingManager, _UITextContainerView, _UITextViewRestorableScrollPosition;
+@class CUICatalog, NSAttributedString, NSDictionary, NSIndexSet, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIAutoscroll, UIColor, UIFont, UIImage, UIInputContextHistory, UILabel, UITextInputController, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UICharacterStreamingManager, _UISiriStreamingManager, _UITextContainerView, _UITextViewRestorableScrollPosition;
 @protocol UITextInputDelegate, UITextInputTokenizer, UITextViewDelegate;
 
-@interface UITextView : UIScrollView <UITextLinkInteraction, UIPreviewItemDelegate, UITextInputControllerDelegate, UITextAutoscrolling, UIKeyboardInput, UITextInputTraits_Private, _UIMultilineTextContentSizing, _UILayoutBaselineUpdating, UITextInput>
+@interface UITextView : UIScrollView <UITextLinkInteraction, UIPreviewItemDelegate, _UITextContainerViewDelegate, UITextInputControllerDelegate, UITextAutoscrolling, UIKeyboardInput, UITextInputTraits_Private, _UIMultilineTextContentSizing, _UILayoutBaselineUpdating, UITextInput, UIContentSizeCategoryAdjusting>
 {
     id _private;
     NSTextStorage *_textStorage;
@@ -40,12 +42,11 @@
         unsigned int editable:1;
         unsigned int reentrancyGuard:1;
         unsigned int usesExplicitPreferredMaxLayoutWidth:1;
-        unsigned int determiningPreferredMaxLayoutWidth:1;
-        unsigned int inSecondConstraintsPass:1;
         unsigned int interactiveSelectionDisabled:1;
         unsigned int selectable:1;
         unsigned int shouldPresentSheetsInAWindowLayeredAboveTheKeyboard:1;
         unsigned int shouldAutoscrollAboveBottom:1;
+        unsigned int disableUpdateTextColorOnTraitCollectionChange:1;
     } _tvFlags;
     long long _contentSizeUpdateSeqNo;
     _UITextViewRestorableScrollPosition *_scrollTarget;
@@ -57,21 +58,30 @@
     double _preferredMaxLayoutWidth;
     UILabel *_placeholderLabel;
     UIView *_inputAccessoryView;
+    NSDictionary *_linkTextAttributes;
     _UISiriStreamingManager *_streamingManager;
     _UICharacterStreamingManager *_characterStreamingManager;
     long long _siriAnimationStyle;
     NSDictionary *_siriParameters;
     double _firstBaselineOffsetFromTop;
     double _lastBaselineOffsetFromBottom;
+    CUICatalog *_cuiCatalog;
+    struct UIEdgeInsets _beforeFreezingTextContainerInset;
+    struct UIEdgeInsets _duringFreezingTextContainerInset;
+    struct CGSize _beforeFreezingFrameSize;
+    BOOL _unfreezingTextContainerSize;
+    BOOL _adjustsFontForContentSizeCategory;
     BOOL _clearsOnInsertion;
     UIView *_inputView;
 }
 
 @property (copy, nonatomic) NSIndexSet *PINEntrySeparatorIndexes;
 @property (nonatomic, setter=_setDrawsDebugBaselines:) BOOL _drawsDebugBaselines;
+@property (nonatomic) BOOL acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
+@property (nonatomic) BOOL adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
 @property (nonatomic) BOOL allowsEditingTextAttributes;
 @property (copy) NSAttributedString *attributedText;
 @property (nonatomic) long long autocapitalizationType; // @dynamic autocapitalizationType;
@@ -87,6 +97,7 @@
 @property (weak, nonatomic) id<UITextViewDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL disableInputBars;
 @property (nonatomic) BOOL disablePrediction;
 @property (nonatomic) BOOL displaySecureEditsUsingPlainText;
 @property (nonatomic) BOOL displaySecureTextUsingPlainText;
@@ -96,12 +107,19 @@
 @property (nonatomic) BOOL enablesReturnKeyOnNonWhiteSpaceContent;
 @property (readonly, nonatomic) UITextPosition *endOfDocument;
 @property (strong, nonatomic) UIFont *font;
+@property (nonatomic) BOOL forceDefaultDictationInfo;
+@property (nonatomic) long long forceDictationKeyboardType;
+@property (nonatomic) BOOL forceDisableDictation;
 @property (nonatomic) BOOL forceEnableDictation;
+@property (nonatomic) BOOL hasDefaultContents;
+@property (readonly, nonatomic) BOOL hasText;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (strong) UIView *inputAccessoryView;
+@property (strong, nonatomic) UIInputContextHistory *inputContextHistory;
 @property (weak, nonatomic) id<UITextInputDelegate> inputDelegate;
 @property (strong) UIView *inputView; // @synthesize inputView=_inputView;
+@property (readonly, nonatomic) id insertDictationResultPlaceholder;
 @property (strong, nonatomic) UIColor *insertionPointColor;
 @property (nonatomic) unsigned long long insertionPointWidth;
 @property (nonatomic) BOOL isCarPlayIdiom;
@@ -135,8 +153,10 @@
 @property (strong, nonatomic) UIColor *textColor;
 @property (readonly, nonatomic) NSTextContainer *textContainer; // @synthesize textContainer=_textContainer;
 @property (nonatomic) struct UIEdgeInsets textContainerInset;
+@property (copy, nonatomic) NSString *textContentType;
 @property (readonly, nonatomic) UIView *textInputView;
 @property (nonatomic) int textLoupeVisibility;
+@property (nonatomic) long long textScriptType;
 @property (nonatomic) int textSelectionBehavior;
 @property (readonly, nonatomic) NSTextStorage *textStorage; // @synthesize textStorage=_textStorage;
 @property (nonatomic) id textSuggestionDelegate;
@@ -151,6 +171,8 @@
 + (id)_sharedHighlightView;
 - (void).cxx_destruct;
 - (void)_addShortcut:(id)arg1;
+- (void)_adjustPreferredFontForCurrentContentSizeCategory;
+- (BOOL)_allowAnimatedUpdateSelectionRectViews;
 - (void)_baselineOffsetDidChange;
 - (double)_baselineOffsetFromBottom;
 - (void)_cancelDataDetectors;
@@ -158,6 +180,8 @@
 - (struct CGSize)_containerSizeForBoundsSize:(struct CGSize)arg1 allowingOverflow:(BOOL)arg2;
 - (id)_containerView;
 - (struct CGPoint)_contentOffsetForScrollToVisible:(struct _NSRange)arg1;
+- (id)_cuiCatalog;
+- (id)_cuiStyleEffectConfiguration;
 - (double)_currentPreferredMaxLayoutWidth;
 - (id)_dataForPreviewItemController:(id)arg1 atPosition:(struct CGPoint)arg2 type:(long long *)arg3;
 - (void)_define:(id)arg1;
@@ -172,6 +196,7 @@
 - (double)_firstBaselineOffsetFromTop;
 - (struct CGPoint)_firstGlyphBaselineLeftPointWithLayoutManager:(id)arg1;
 - (struct CGPoint)_firstGlyphBaselineRightPointWithLayoutManager:(id)arg1;
+- (BOOL)_freezeTextContainerSize;
 - (BOOL)_getCloseQuoteAnchor:(struct CGPoint *)arg1;
 - (BOOL)_getOpenQuoteAnchor:(struct CGPoint *)arg1;
 - (void)_highlightLinkAtPoint:(struct CGPoint)arg1;
@@ -191,7 +216,7 @@
 - (struct CGPoint)_lastGlyphBaselineRightPointWithLayoutManager:(id)arg1;
 - (id)_layoutDebuggingTitle;
 - (void)_layoutPlaceholder;
-- (void)_lookup:(struct CGPoint)arg1;
+- (id)_linkTextAttributesForLink:(id)arg1 forCharacterAtIndex:(unsigned long long)arg2;
 - (BOOL)_mightHaveSelection;
 - (BOOL)_needsDoubleUpdateConstraintsPass;
 - (void)_observedTextViewDidChange:(id)arg1;
@@ -210,7 +235,6 @@
 - (void)_registerUndoOperationForReplacementWithActionName:(id)arg1 replacementText:(id)arg2;
 - (void)_resetDataDetectorsResults;
 - (void)_resetLinkInteraction;
-- (void)_resetToBeginningOfDoublePass;
 - (void)_resetUsesExplicitPreferredMaxLayoutWidth;
 - (id)_restorableScrollPosition;
 - (id)_restorableScrollPositionForStateRestoration;
@@ -227,15 +251,20 @@
 - (void)_scrollViewAnimationEnded:(id)arg1 finished:(BOOL)arg2;
 - (void)_selectionMayChange:(id)arg1;
 - (void)_setContentOffsetWithoutRecordingScrollPosition:(struct CGPoint)arg1;
+- (void)_setCuiCatalog:(id)arg1;
+- (void)_setCuiStyleEffectConfiguration:(id)arg1;
 - (void)_setDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
 - (void)_setFrameOrBounds:(struct CGRect)arg1 fromOldRect:(struct CGRect)arg2 settingAction:(CDUnknownBlockType)arg3;
-- (void)_setInSecondConstraintsPass:(BOOL)arg1;
+- (void)_setFreezeTextContainerSize:(BOOL)arg1;
 - (void)_setInteractiveTextSelectionDisabled:(BOOL)arg1;
 - (void)_setPreferredMaxLayoutWidth:(double)arg1;
+- (void)_setTextColor:(id)arg1;
 - (void)_setWhitelistedTypingAttributes:(id)arg1;
 - (void)_share:(id)arg1;
+- (BOOL)_shouldObscureInput;
 - (BOOL)_shouldScrollEnclosingScrollView;
 - (BOOL)_shouldStartDataDetectors;
+- (BOOL)_shouldSuppressSelectionCommands;
 - (void)_showTextStyleOptions:(id)arg1;
 - (void)_startDataDetectors;
 - (void)_streamingManagerDidCommitFinalResults;
@@ -289,7 +318,6 @@
 - (struct CGRect)firstRectForRange:(id)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (struct CGRect)frameForDictationResultPlaceholder:(id)arg1;
-- (BOOL)hasText;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)increaseSize:(id)arg1;
 - (id)initReadonlyAndUnselectableWithFrame:(struct CGRect)arg1 textContainer:(id)arg2;
@@ -298,12 +326,12 @@
 - (id)initWithFrame:(struct CGRect)arg1 font:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 textContainer:(id)arg2;
 - (void)insertDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
-- (id)insertDictationResultPlaceholder;
 - (void)insertText:(id)arg1;
 - (id)interactionAssistant;
 - (struct CGSize)intrinsicContentSize;
 - (void)invalidateIntrinsicContentSize;
 - (BOOL)isAccessibilityElementByDefault;
+- (BOOL)isEditableForTextContainerView:(id)arg1;
 - (BOOL)isEditing;
 - (BOOL)isElementAccessibilityExposedToInterfaceBuilder;
 - (BOOL)isInteractingWithLink;
@@ -314,6 +342,7 @@
 - (BOOL)keyboardInputShouldDelete:(id)arg1;
 - (void)layoutSubviews;
 - (double)lineHeight;
+- (id)linkTextAttributesForTextContainerView:(id)arg1;
 - (void)makeTextWritingDirectionLeftToRight:(id)arg1;
 - (void)makeTextWritingDirectionRightToLeft:(id)arg1;
 - (unsigned long long)marginTop;
@@ -336,6 +365,7 @@
 - (void)scrollSelectionToVisible:(BOOL)arg1;
 - (void)select:(id)arg1;
 - (void)selectAll:(id)arg1;
+- (struct _NSRange)selectedRangeForTextContainerView:(id)arg1;
 - (id)selectedText;
 - (id)selectionRectsForRange:(id)arg1;
 - (id)selectionView;
@@ -364,6 +394,8 @@
 - (void)startLongInteractionWithLinkAtPoint:(struct CGPoint)arg1;
 - (void)takeTraitsFrom:(id)arg1;
 - (void)tapLinkAtPoint:(struct CGPoint)arg1;
+- (id)textContainerView:(id)arg1 cuiCatalogForTextEffectName:(id)arg2;
+- (id)textContainerView:(id)arg1 linkTextAttributesForLink:(id)arg2 forCharacterAtIndex:(unsigned long long)arg3;
 - (id)textInRange:(id)arg1;
 - (BOOL)textInput:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
 - (void)textInputDidChange:(id)arg1;
@@ -379,10 +411,10 @@
 - (id)undoManager;
 - (void)unmarkText;
 - (void)updateAutoscrollAboveBottom;
-- (void)updateConstraints;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1;
 - (void)updateInteractionWithLinkAtPoint:(struct CGPoint)arg1;
 - (void)updateSelection;
+- (void)updateSelectionForTextContainerView:(id)arg1;
 - (BOOL)usesTiledViews;
 - (void)validateInteractionWithLinkAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)visibleRect;

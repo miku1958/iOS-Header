@@ -26,8 +26,7 @@
 - (id)_authLevelForMask:(unsigned long long)arg1;
 - (struct CGSize)_authLevelLabelSize:(unsigned long long)arg1;
 - (id)iconNameForUsage:(int)arg1;
-- (id)initWithTableCell:(id)arg1;
-- (void)layoutUsageIndicator;
+- (id)initWithTableCell:(id)arg1 withHorizontalOffset:(double)arg2;
 - (struct CGSize)usageIndicatorSize;
 
 @end

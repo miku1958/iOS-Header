@@ -8,26 +8,27 @@
 
 #import <Message/NSURLSessionDelegate-Protocol.h>
 
-@class MFFuture, NSError, NSMutableData, NSString, NSURLResponse;
+@class MFFuture, MFPromise, NSMutableData, NSString, NSURLResponse;
 
 @interface MFMessageURLConnectionDelegate : NSObject <NSURLSessionDelegate>
 {
     NSMutableData *_responseBody;
-    BOOL _done;
-    NSError *_error;
+    MFPromise *_promise;
     NSURLResponse *_response;
-    MFFuture *_future;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) MFFuture *future;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSURLResponse *response; // @synthesize response=_response;
 @property (readonly) Class superclass;
 
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)dealloc;
+- (id)init;
 
 @end
 

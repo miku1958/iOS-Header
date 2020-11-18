@@ -8,7 +8,7 @@
 
 #import <Message/DASearchQueryConsumer-Protocol.h>
 
-@class MFConditionLock, NSArray, NSDate, NSMutableArray;
+@class MFConditionLock, MFMailMessageStoreSearchResult, NSDate;
 
 @interface _MFDAMSSearchResponseConsumer : _MFDAMSBasicConsumer <DASearchQueryConsumer>
 {
@@ -16,11 +16,11 @@
     MFConditionLock *doneCondition;
     double timeReceivedLastResponse;
     unsigned int totalCount;
-    NSMutableArray *matchingRemoteIDs;
+    MFMailMessageStoreSearchResult *searchResult;
 }
 
 @property (strong, nonatomic) NSDate *latestDateToAdd; // @synthesize latestDateToAdd;
-@property (readonly, strong, nonatomic) NSArray *matchingRemoteIDs; // @synthesize matchingRemoteIDs;
+@property (readonly, strong, nonatomic) MFMailMessageStoreSearchResult *searchResult; // @synthesize searchResult;
 
 - (void)dealloc;
 - (BOOL)handleItems:(id)arg1;

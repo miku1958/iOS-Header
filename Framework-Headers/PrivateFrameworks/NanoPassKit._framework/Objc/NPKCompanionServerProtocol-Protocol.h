@@ -10,11 +10,13 @@
 
 @protocol NPKCompanionServerProtocol <NSObject>
 - (void)beginProvisioningFromWatchOfferForPaymentPass:(PKPaymentPass *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
+- (void)connect;
 - (void)defaultCard:(void (^)(NSString *))arg1;
 - (void)defaultPaymentApplicationForPassWithUniqueID:(NSString *)arg1 completion:(void (^)(PKPaymentApplication *))arg2;
 - (void)handlePendingUnpairingWithCompletion:(void (^)(void))arg1;
 - (void)handlePendingiCloudSignoutWithCompletion:(void (^)(void))arg1;
 - (void)initiateConsistencyCheckWithCompletion:(void (^)(void))arg1;
+- (void)initiateLostModeExitAuthWithCompletion:(void (^)(NSError *))arg1;
 - (void)noteProvisioningPreflightCompleteWithSuccess:(BOOL)arg1 error:(NSError *)arg2 completion:(void (^)(void))arg3;
 - (void)noteWatchOfferDisplayedForPaymentPassWithUniqueID:(NSString *)arg1;
 - (void)paymentPassUniqueIDs:(void (^)(NSSet *))arg1;
@@ -22,7 +24,7 @@
 - (void)paymentPassWithUniqueID:(NSString *)arg1 reply:(void (^)(PKPaymentPass *))arg2;
 - (void)paymentPassesWithPrimaryAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)redownloadAllPaymentPassesWithCompletion:(void (^)(void))arg1;
-- (void)removePaymentPassWithUniqueID:(NSString *)arg1 forPairingID:(NSUUID *)arg2 completion:(void (^)(BOOL))arg3;
+- (void)removePaymentPassWithUniqueID:(NSString *)arg1 forPairingID:(NSUUID *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)savePaymentPassAtURL:(NSURL *)arg1 withUniqueID:(NSString *)arg2 forPairingID:(NSUUID *)arg3 completion:(void (^)(BOOL))arg4;
 - (void)setDefaultCard:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 - (void)setDefaultPaymentApplication:(PKPaymentApplication *)arg1 forPassWithUniqueID:(NSString *)arg2 completion:(void (^)(PKPaymentPass *))arg3;

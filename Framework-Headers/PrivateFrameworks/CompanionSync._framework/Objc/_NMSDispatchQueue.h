@@ -11,7 +11,7 @@
 @interface _NMSDispatchQueue : NSObject
 {
     NSObject<OS_dispatch_queue> *_q;
-    int _r;
+    _Atomic BOOL _r;
 }
 
 @property (readonly, nonatomic, getter=isSuspended) BOOL suspended;
@@ -20,9 +20,8 @@
 - (void)async:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)init;
-- (id)initWithName:(id)arg1 attributes:(id)arg2;
+- (id)initWithName:(id)arg1 attributes:(id)arg2 target:(id)arg3;
 - (void)resume;
-- (void)setTarget:(id)arg1;
 - (void)suspend;
 - (void)sync:(CDUnknownBlockType)arg1;
 

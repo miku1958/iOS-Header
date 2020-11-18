@@ -15,6 +15,7 @@
 @property (nonatomic) double imageSize; // @synthesize imageSize=_imageSize;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 
+- (id)description;
 - (id)init;
 - (id)initWithImageSize:(double)arg1 scale:(double)arg2;
 

@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)_accountChangeHandler;
 - (void)_accountDidChange;
 - (void)cancel;
+- (id)createActivity;
 - (void)dealloc;
 - (id)descriptionForCKAccountStatus:(long long)arg1 dumpContext:(id)arg2;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
@@ -36,7 +37,6 @@ __attribute__((visibility("hidden")))
 - (void)main;
 - (BOOL)shouldRetryForError:(id)arg1;
 - (void)start;
-- (unsigned long long)startActivity;
 - (id)subclassableDescriptionWithContext:(id)arg1;
 
 @end

@@ -19,13 +19,16 @@
 @property (nonatomic) int failedPrecondition; // @synthesize failedPrecondition=_failedPrecondition;
 @property (strong, nonatomic) NSMutableArray *passIDs; // @synthesize passIDs=_passIDs;
 
++ (Class)passIDsType;
 - (void).cxx_destruct;
+- (int)StringAsFailedPrecondition:(id)arg1;
 - (void)addPassIDs:(id)arg1;
 - (void)clearPassIDs;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)failedPreconditionAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

@@ -12,7 +12,7 @@
 
 @interface GEOActiveTileSet : PBCodable <NSCopying>
 {
-    CDStruct_d66e66b9 *_availableTiles;
+    struct GEOTileSetRegion *_availableTiles;
     unsigned long long _availableTilesCount;
     unsigned long long _availableTilesSpace;
     NSString *_baseURL;
@@ -34,7 +34,7 @@
     } _has;
 }
 
-@property (readonly, nonatomic) CDStruct_d66e66b9 *availableTiles;
+@property (readonly, nonatomic) struct GEOTileSetRegion *availableTiles;
 @property (readonly, nonatomic) unsigned long long availableTilesCount;
 @property (strong, nonatomic) NSString *baseURL; // @synthesize baseURL=_baseURL;
 @property (nonatomic) int checksumType; // @synthesize checksumType=_checksumType;
@@ -55,14 +55,23 @@
 @property (nonatomic) unsigned int version; // @synthesize version=_version;
 
 + (id)buildDisputedBordersQueryStringForCountry:(id)arg1 region:(id)arg2;
++ (Class)countryRegionWhitelistType;
++ (Class)sentinelTileType;
++ (Class)supportedLanguageType;
+- (int)StringAsChecksumType:(id)arg1;
+- (int)StringAsScale:(id)arg1;
+- (int)StringAsSize:(id)arg1;
+- (int)StringAsStyle:(id)arg1;
+- (int)StringAsUpdateBehavior:(id)arg1;
 - (id)_bestCountryRegionWhitelistMatchForCountry:(id)arg1 region:(id)arg2;
 - (id)_bestLanguageWithOverrideLocale:(id)arg1;
 - (void)_resetBestLanguage;
-- (void)addAvailableTiles:(CDStruct_d66e66b9)arg1;
+- (void)addAvailableTiles:(struct GEOTileSetRegion)arg1;
 - (void)addCountryRegionWhitelist:(id)arg1;
 - (void)addSentinelTile:(id)arg1;
 - (void)addSupportedLanguage:(id)arg1;
-- (CDStruct_d66e66b9)availableTilesAtIndex:(unsigned long long)arg1;
+- (struct GEOTileSetRegion)availableTilesAtIndex:(unsigned long long)arg1;
+- (id)checksumTypeAsString:(int)arg1;
 - (void)clearAvailableTiles;
 - (void)clearCountryRegionWhitelists;
 - (void)clearSentinelTiles;
@@ -87,11 +96,15 @@
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)minimumZoomLevelInRect:(CDStruct_90e2a262)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)scaleAsString:(int)arg1;
 - (id)sentinelTileAtIndex:(unsigned long long)arg1;
 - (unsigned long long)sentinelTilesCount;
-- (void)setAvailableTiles:(CDStruct_d66e66b9 *)arg1 count:(unsigned long long)arg2;
+- (void)setAvailableTiles:(struct GEOTileSetRegion *)arg1 count:(unsigned long long)arg2;
+- (id)sizeAsString:(int)arg1;
+- (id)styleAsString:(int)arg1;
 - (id)supportedLanguageAtIndex:(unsigned long long)arg1;
 - (unsigned long long)supportedLanguagesCount;
+- (id)updateBehaviorAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

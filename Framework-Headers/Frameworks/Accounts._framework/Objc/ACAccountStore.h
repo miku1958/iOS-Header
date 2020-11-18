@@ -38,6 +38,7 @@
 - (void)accountTypeWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)accountWithIdentifier:(id)arg1;
 - (void)accountWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)accountsOnPairedDeviceWithAccountType:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)accountsWithAccountType:(id)arg1;
 - (void)accountsWithAccountType:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)accountsWithAccountTypeIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -91,6 +92,7 @@
 - (id)provisionedDataclassesForAccount:(id)arg1;
 - (void)removeAccount:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)removeAccount:(id)arg1 withDataclassActions:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)removeAccount:(id)arg1 withDeleteSync:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeAccountType:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)removeAccountsFromPairedDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeCredentialItem:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -113,6 +115,7 @@
 - (id)supportedDataclassesForAccountType:(id)arg1;
 - (id)syncableDataclassesForAccountType:(id)arg1;
 - (id)tetheredSyncSourceTypeForDataclass:(id)arg1;
+- (void)triggerKeychainMigrationIfNecessary:(CDUnknownBlockType)arg1;
 - (id)typeIdentifierForDomain:(id)arg1;
 - (int)updateExistenceCacheOfAccountWithTypeIdentifier:(id)arg1;
 - (void)verifyCredentialsForAccount:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;

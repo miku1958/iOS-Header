@@ -17,14 +17,14 @@
     NSObject<OS_xpc_object> *fDataBuffer;
     CLSensorRecorderAccelMeta *fCurrentBlock;
     unsigned long long fCurrentBlockIdentifier;
-    unsigned long long fCurrentBlockDataIdentifier;
+    long long fCurrentBlockDataIdentifier;
     double fCurrentBlockStartTime;
     unsigned long long fCurrentBlockTimestamp;
     char *fDataBufferPtr;
     unsigned long long fDataBufferLength;
     unsigned long long fCurrentIdentifier;
     unsigned long long fStartingIdentifier;
-    unsigned long long fRetrievedDataBufferIdentifier;
+    long long fRetrievedDataBufferIdentifier;
     unsigned long long fBlockOffset;
     struct Unpacker fAccelUnpacker;
     NSMutableArray *fCachedAccel;

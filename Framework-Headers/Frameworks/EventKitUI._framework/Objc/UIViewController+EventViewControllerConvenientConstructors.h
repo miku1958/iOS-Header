@@ -7,7 +7,6 @@
 #import <UIKit/UIViewController.h>
 
 @interface UIViewController (EventViewControllerConvenientConstructors)
-+ (Class)_ABPersonViewControllerClass;
-+ (id)eventDetailViewControllerWithEvent:(id)arg1 delegate:(id)arg2;
++ (id)eventDetailViewControllerWithEvent:(id)arg1 delegate:(id)arg2 context:(struct NSDictionary *)arg3;
 @end
 

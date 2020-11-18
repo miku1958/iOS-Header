@@ -13,13 +13,11 @@
 }
 
 @property (strong, nonatomic) NSString *calendarAlarmPath; // @dynamic calendarAlarmPath;
-@property (nonatomic) BOOL playLockSound; // @dynamic playLockSound;
 @property (readonly, nonatomic) BOOL playSoundOnBasebandReset; // @dynamic playSoundOnBasebandReset;
 @property (readonly, nonatomic) BOOL playSoundOnDeviceWake; // @dynamic playSoundOnDeviceWake;
 @property (nonatomic, getter=isRingerMuted) BOOL ringerMuted; // @dynamic ringerMuted;
 @property (readonly, nonatomic) BOOL vibrateWhenRinging; // @dynamic vibrateWhenRinging;
 @property (readonly, nonatomic) BOOL vibrateWhenSilent; // @dynamic vibrateWhenSilent;
-@property (readonly, nonatomic) long long vibrationPattern; // @dynamic vibrationPattern;
 
 - (void)_bindAndRegisterDefaults;
 

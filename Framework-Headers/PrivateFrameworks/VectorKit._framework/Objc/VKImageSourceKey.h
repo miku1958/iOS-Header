@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface VKImageSourceKey : NSObject
 {
@@ -24,10 +24,12 @@
     BOOL _hasDataValue;
     unsigned int _dataValue;
     struct CGPoint _imageCenter;
+    NSArray *_fallbackImageKeys;
 }
 
 @property (nonatomic) unsigned char dataType; // @synthesize dataType=_dataType;
 @property (nonatomic) unsigned int dataValue; // @synthesize dataValue=_dataValue;
+@property (strong, nonatomic) NSArray *fallbackImageKeys; // @synthesize fallbackImageKeys=_fallbackImageKeys;
 @property (readonly, nonatomic) BOOL hasDataValue; // @synthesize hasDataValue=_hasDataValue;
 @property (readonly, nonatomic) unsigned int iconAttributeKey; // @synthesize iconAttributeKey=_iconAttributeKey;
 @property (readonly, nonatomic) unsigned int iconAttributeValue; // @synthesize iconAttributeValue=_iconAttributeValue;
@@ -47,7 +49,7 @@
 - (id)initWithDataType:(unsigned char)arg1;
 - (id)initWithIconAttributeKey:(unsigned int)arg1 attributeValue:(unsigned int)arg2;
 - (id)initWithIconName:(const char *)arg1;
-- (id)initWithLabelImageKey:(const shared_ptr_292eff10 *)arg1;
+- (id)initWithLabelImageKey:(const shared_ptr_85e81048 *)arg1;
 - (id)initWithShieldName:(const char *)arg1 text:(const char *)arg2 locale:(const char *)arg3 color:(FixedPointVector_f041f768)arg4;
 - (id)initWithShieldText:(const char *)arg1 locale:(const char *)arg2 type:(unsigned int)arg3 color:(FixedPointVector_f041f768)arg4;
 

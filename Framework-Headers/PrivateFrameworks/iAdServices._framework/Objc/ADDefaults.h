@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -20,11 +20,13 @@
 + (id)_defaultValueForKey:(id)arg1 valueClass:(Class)arg2;
 + (void)_setDefaultValue:(id)arg1 forKey:(id)arg2;
 + (void)addFactoryDefaults:(id)arg1;
++ (id)arrayForKey:(id)arg1;
 + (BOOL)boolForKey:(id)arg1;
 + (BOOL)defaultIsSetForKey:(id)arg1;
 + (double)doubleForKey:(id)arg1;
 + (id)factoryDefaults;
 + (long long)integerForKey:(id)arg1;
++ (void)setArray:(id)arg1 forKey:(id)arg2;
 + (void)setBool:(BOOL)arg1 forKey:(id)arg2;
 + (void)setDouble:(double)arg1 forKey:(id)arg2;
 + (void)setInteger:(long long)arg1 forKey:(id)arg2;

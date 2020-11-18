@@ -76,6 +76,7 @@
 @property (nonatomic) unsigned int stepID; // @synthesize stepID=_stepID;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
+- (int)StringAsFeedbackType:(id)arg1;
 - (void)_updateClusteredSectionSelectedRideIndicesFromRoute:(id)arg1;
 - (void)addSelectedRideIndex:(unsigned int)arg1;
 - (void)clearSelectedRideIndexs;
@@ -84,6 +85,7 @@
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)feedbackTypeAsString:(int)arg1;
 - (unsigned long long)hash;
 - (id)initWithRoute:(id)arg1 routeID:(id)arg2;
 - (id)initWithRouteID:(id)arg1;

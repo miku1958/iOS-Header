@@ -8,6 +8,6 @@
 
 @interface HKWorkout (Statistics)
 + (double)fiui_weightedAverageHeartRateWithSamples:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
-- (id)fiui_splitsFromDistanceSamples:(id)arg1 userPreferredUnit:(id)arg2;
+- (id)fiui_splitsFromDistanceSamples:(id)arg1 definedDistanceInMetersForOneSplit:(double)arg2;
 @end
 

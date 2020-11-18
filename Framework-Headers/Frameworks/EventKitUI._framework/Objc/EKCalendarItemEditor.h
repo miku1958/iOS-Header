@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
     double _rightButtonSpace;
     BOOL _scrollToNotes;
     BOOL _canHideDoneAndCancelButtons;
+    BOOL _timeImplicitlySet;
     id<EKCalendarItemEditorDelegate> _editorDelegate;
     EKEventStore *_store;
     EKCalendarItem *_calendarItem;
@@ -61,8 +62,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL showsTimeZone; // @synthesize showsTimeZone=_showsTimeZone;
 @property (strong, nonatomic) EKEventStore *store; // @synthesize store=_store;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL timeImplicitlySet; // @synthesize timeImplicitlySet=_timeImplicitlySet;
 @property (nonatomic) unsigned long long visibleSectionToRestoreOnAppearence; // @synthesize visibleSectionToRestoreOnAppearence=_visibleSectionToRestoreOnAppearence;
 
++ (id)_addLocalizedString;
++ (id)_doneLocalizedString;
 - (void).cxx_destruct;
 - (BOOL)_canDetachSingleOccurrence;
 - (BOOL)_canEnableDoneButton;
@@ -98,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canBecomeFirstResponder;
 - (void)cancel:(id)arg1;
 - (void)cancelEditingWithDelegateNotification:(BOOL)arg1;
+- (id)cellWithReuseIdentifier:(id)arg1 forEditItem:(id)arg2;
 - (void)completeAndSave;
 - (void)completeWithAction:(long long)arg1 animated:(BOOL)arg2;
 - (void)customizeActionSheet:(id)arg1;
@@ -122,9 +127,11 @@ __attribute__((visibility("hidden")))
 - (void)editItemRequiresPopoverSizeUpdate:(id)arg1;
 - (void)editItemTextChanged:(id)arg1;
 - (int)editItemVisibility;
+- (void)editItemVisibilityChanged:(id)arg1;
 - (void)editItemWantsInjectableViewControllerToBeShown:(id)arg1;
 - (unsigned long long)entityType;
 - (long long)firstTableRowForEditItem:(id)arg1;
+- (void)focusAndSelectTitle;
 - (void)handleTapOutside;
 - (BOOL)hasUnsavedChanges;
 - (id)init;
@@ -155,6 +162,7 @@ __attribute__((visibility("hidden")))
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;

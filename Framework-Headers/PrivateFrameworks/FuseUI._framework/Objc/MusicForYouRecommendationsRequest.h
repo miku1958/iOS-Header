@@ -4,24 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FuseUI/MusicStoreModelRequest.h>
+#import <MediaPlayer/MPStoreModelRequest.h>
 
 @class MusicForYouRecommendationsResponse;
 
-@interface MusicForYouRecommendationsRequest : MusicStoreModelRequest
+@interface MusicForYouRecommendationsRequest : MPStoreModelRequest
 {
     unsigned long long _recommendationsRequestType;
+    MusicForYouRecommendationsResponse *_previousResponse;
 }
 
-@property (strong, nonatomic) MusicForYouRecommendationsResponse *previousResponse; // @dynamic previousResponse;
-@property unsigned long long recommendationsRequestType;
-@property (copy, nonatomic) CDUnknownBlockType responseHandler; // @dynamic responseHandler;
+@property (strong, nonatomic) MusicForYouRecommendationsResponse *previousResponse; // @synthesize previousResponse=_previousResponse;
+@property (nonatomic) unsigned long long recommendationsRequestType; // @synthesize recommendationsRequestType=_recommendationsRequestType;
 
 + (id)allSupportedItemProperties;
 + (id)allSupportedSectionProperties;
-- (id)configurationForLoadingModelDataWithStoreBag:(id)arg1 error:(id *)arg2;
-- (id)init;
-- (void)produceResponseWithLoadedOutput:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)newOperationWithResponseHandler:(CDUnknownBlockType)arg1;
 
 @end
 

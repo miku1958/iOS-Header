@@ -12,16 +12,17 @@
 {
     NSMutableArray *_stackOfOccurrences;
     double _topBoundaryTime;
-    double _initialLeftBoundary;
-    double _rightBoundary;
+    double _initialStartBoundary;
+    double _endBoundary;
 }
 
-@property (readonly, nonatomic) double freeSpaceLeftBoundary;
+@property (nonatomic) double endBoundary; // @synthesize endBoundary=_endBoundary;
+@property (readonly, nonatomic) double freeSpaceStartBoundary;
 @property (readonly, nonatomic) double freeSpaceWidth;
-@property (nonatomic) double initialLeftBoundary; // @synthesize initialLeftBoundary=_initialLeftBoundary;
-@property (nonatomic) double rightBoundary; // @synthesize rightBoundary=_rightBoundary;
+@property (nonatomic) double initialStartBoundary; // @synthesize initialStartBoundary=_initialStartBoundary;
 @property (readonly, nonatomic) NSArray *stackedOccurrences;
 @property (nonatomic) double topBoundaryTime; // @synthesize topBoundaryTime=_topBoundaryTime;
+@property (readonly, nonatomic) double totalWidth;
 
 - (void).cxx_destruct;
 - (id)description;

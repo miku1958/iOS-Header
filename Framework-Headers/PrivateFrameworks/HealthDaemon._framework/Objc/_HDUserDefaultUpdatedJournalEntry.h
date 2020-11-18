@@ -15,8 +15,7 @@
 
 @property (readonly, nonatomic) HDUserDefault *userDefault; // @synthesize userDefault=_userDefault;
 
-+ (void)applyEntries:(id)arg1 withDaemon:(id)arg2;
-+ (long long)behavior;
++ (void)applyEntries:(id)arg1 withProfile:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

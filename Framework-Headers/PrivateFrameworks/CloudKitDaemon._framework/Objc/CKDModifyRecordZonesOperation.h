@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleRecordZoneSaved:(id)arg1 responseCode:(id)arg2;
 - (BOOL)_saveZonesToServer;
 - (void)_sendErrorForFailedZones;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
 - (BOOL)makeStateTransition;

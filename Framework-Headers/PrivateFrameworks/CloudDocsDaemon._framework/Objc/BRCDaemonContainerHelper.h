@@ -8,11 +8,13 @@
 
 #import <CloudDocsDaemon/BRContainerHelper-Protocol.h>
 
-@class NSString;
+@class NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BRCDaemonContainerHelper : NSObject <BRContainerHelper>
 {
+    NSSet *_disabledBundleIDs;
+    NSSet *_knownBundleIDs;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,12 +22,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (BOOL)cloudSyncTCCDisabledForContainerMeta:(id)arg1;
-+ (BOOL)cloudSyncTCCDisabledForContainerMeta:(id)arg1 disabledBundleURLs:(id)arg2;
-+ (id)disabledBundleURLs;
+- (void).cxx_destruct;
 - (BOOL)canFetchAllContainersByID;
-- (id)fetchAllContainersByID;
+- (BOOL)cloudSyncTCCDisabledForContainerMeta:(id)arg1;
+- (id)fetchAllContainersByIDWithError:(id *)arg1;
 - (id)fetchContainerForURL:(id)arg1;
+- (id)init;
 
 @end
 

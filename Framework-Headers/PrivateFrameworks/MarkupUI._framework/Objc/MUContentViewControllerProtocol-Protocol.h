@@ -6,31 +6,27 @@
 
 #import <MarkupUI/NSObject-Protocol.h>
 
-@class AKController, CALayer, NSArray, NSData, NSURL, UIView;
+@class NSArray, UIView;
+@protocol UICoordinateSpace;
 
 @protocol MUContentViewControllerProtocol <NSObject>
 
-@property (weak) AKController *annotationController;
+@property (nonatomic) BOOL centersIgnoringContentInsets;
 @property (nonatomic) struct UIEdgeInsets edgeInsets;
-@property (strong) NSArray *sourceContentReplacedAnnotationIndexes;
+@property (nonatomic) BOOL navigationModeHorizontal;
+@property (readonly) unsigned long long pageCount;
+@property (nonatomic) BOOL showsThumbnailView;
+@property (strong) NSArray *sourceContentReplacedAnnotationMaps;
 
+- (struct CGSize)contentSize;
 - (UIView *)contentSnapshot;
-- (void)controllerDidEnterToolMode:(AKController *)arg1;
-- (void)controllerDidExitToolMode:(AKController *)arg1;
-- (BOOL)controllerShouldDetectFormElements:(AKController *)arg1;
-- (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromModelToOverlayWithPageIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
-- (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromOverlayToModelWithPageIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
-- (NSURL *)fileURL;
-- (CALayer *)layerContainingQuickBackgroundForLoupeOnOverlayAtPageIndex:(unsigned long long)arg1 forAnnotationController:(AKController *)arg2;
-- (struct CGRect)maxPageRectWithPageIndex:(unsigned long long)arg1 forAnnotationController:(AKController *)arg2;
-- (double)modelBaseScaleFactorOfPageAtIndex:(unsigned long long)arg1 forAnnotationController:(AKController *)arg2;
-- (NSData *)newContentSnapshotPDFDataIncludingAdornments:(BOOL)arg1 atScale:(double)arg2 inRect:(struct CGRect)arg3 onOverlayAtPageIndex:(unsigned long long)arg4 forAnnotationController:(AKController *)arg5;
-- (void)setFileURL:(NSURL *)arg1;
-- (BOOL)shouldPlaceFormElementAtPoint:(struct CGPoint)arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
-- (BOOL)shouldPlaceProposedFormElementAtRect:(struct CGRect)arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
+- (struct CGSize)idealContentSizeForScreenSize:(struct CGSize)arg1 windowDecorationSize:(struct CGSize)arg2;
+- (void)setup;
+- (void)teardown;
+- (void)uninstallAllAnnotationControllerOverlays;
 - (struct CGRect)visibleContentRect;
+- (struct CGRect)visibleContentRectInCoordinateSpace:(id<UICoordinateSpace>)arg1;
 
 @optional
-- (void)setupForController:(AKController *)arg1;
 @end
 

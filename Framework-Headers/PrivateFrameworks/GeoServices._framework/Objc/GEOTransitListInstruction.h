@@ -8,57 +8,53 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSArray, NSMutableArray;
 
 @interface GEOTransitListInstruction : PBCodable <NSCopying>
 {
     NSMutableArray *_commandFormatteds;
-    NSMutableArray *_commands;
     NSMutableArray *_detailFormatteds;
-    NSMutableArray *_details;
     NSMutableArray *_noticeFormatteds;
-    NSMutableArray *_notices;
+    NSMutableArray *_priceFormatteds;
 }
 
 @property (strong, nonatomic) NSMutableArray *commandFormatteds; // @synthesize commandFormatteds=_commandFormatteds;
-@property (strong, nonatomic) NSMutableArray *commands; // @synthesize commands=_commands;
 @property (strong, nonatomic) NSMutableArray *detailFormatteds; // @synthesize detailFormatteds=_detailFormatteds;
-@property (strong, nonatomic) NSMutableArray *details; // @synthesize details=_details;
 @property (strong, nonatomic) NSMutableArray *noticeFormatteds; // @synthesize noticeFormatteds=_noticeFormatteds;
-@property (strong, nonatomic) NSMutableArray *notices; // @synthesize notices=_notices;
+@property (strong, nonatomic) NSMutableArray *priceFormatteds; // @synthesize priceFormatteds=_priceFormatteds;
+@property (readonly, nonatomic) NSArray *serverFormattedCommands;
+@property (readonly, nonatomic) NSArray *serverFormattedDetails;
+@property (readonly, nonatomic) NSArray *serverFormattedNotices;
+@property (readonly, nonatomic) NSArray *serverFormattedPrices;
 
-- (void)addCommand:(id)arg1;
++ (Class)commandFormattedType;
++ (Class)detailFormattedType;
++ (Class)noticeFormattedType;
++ (Class)priceFormattedType;
 - (void)addCommandFormatted:(id)arg1;
-- (void)addDetail:(id)arg1;
 - (void)addDetailFormatted:(id)arg1;
-- (void)addNotice:(id)arg1;
 - (void)addNoticeFormatted:(id)arg1;
+- (void)addPriceFormatted:(id)arg1;
 - (void)clearCommandFormatteds;
-- (void)clearCommands;
 - (void)clearDetailFormatteds;
-- (void)clearDetails;
 - (void)clearNoticeFormatteds;
-- (void)clearNotices;
-- (id)commandAtIndex:(unsigned long long)arg1;
+- (void)clearPriceFormatteds;
 - (id)commandFormattedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)commandFormattedsCount;
-- (unsigned long long)commandsCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
-- (id)detailAtIndex:(unsigned long long)arg1;
 - (id)detailFormattedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)detailFormattedsCount;
-- (unsigned long long)detailsCount;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
-- (id)noticeAtIndex:(unsigned long long)arg1;
 - (id)noticeFormattedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)noticeFormattedsCount;
-- (unsigned long long)noticesCount;
+- (id)priceFormattedAtIndex:(unsigned long long)arg1;
+- (unsigned long long)priceFormattedsCount;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

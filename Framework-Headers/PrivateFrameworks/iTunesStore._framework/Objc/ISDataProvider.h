@@ -8,7 +8,7 @@
 
 #import <iTunesStore/NSCopying-Protocol.h>
 
-@class ISOperation, NSNumber, NSString, NSURL, SSAuthenticationContext, SSURLBagContext;
+@class ISBiometricAuthenticationContext, ISOperation, NSNumber, NSString, NSURL, SSAuthenticationContext, SSURLBagContext;
 
 @interface ISDataProvider : NSObject <NSCopying>
 {
@@ -20,26 +20,28 @@
     id _output;
     ISOperation *_parentOperation;
     NSURL *_redirectURL;
+    ISBiometricAuthenticationContext *_biometricAuthenticationContext;
     long long _errorHandlerResponseType;
 }
 
 @property (strong) NSNumber *authenticatedAccountDSID; // @synthesize authenticatedAccountDSID=_authenticatedAccountDSID;
 @property (strong) SSAuthenticationContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
 @property (strong) SSURLBagContext *bagContext; // @synthesize bagContext=_bagContext;
+@property (strong) ISBiometricAuthenticationContext *biometricAuthenticationContext; // @synthesize biometricAuthenticationContext=_biometricAuthenticationContext;
 @property long long contentLength; // @synthesize contentLength=_contentLength;
 @property (strong) NSString *contentType; // @synthesize contentType=_contentType;
 @property long long errorHandlerResponseType; // @synthesize errorHandlerResponseType=_errorHandlerResponseType;
 @property (strong) id output; // @synthesize output=_output;
-@property ISOperation *parentOperation; // @synthesize parentOperation=_parentOperation;
+@property (weak) ISOperation *parentOperation; // @synthesize parentOperation=_parentOperation;
 @property (strong) NSURL *redirectURL; // @synthesize redirectURL=_redirectURL;
 
 + (id)provider;
+- (void).cxx_destruct;
 - (BOOL)_runServerAuthenticationOperation:(id)arg1 error:(id *)arg2;
 - (BOOL)canStreamContentLength:(long long)arg1 error:(id *)arg2;
 - (id)closeStream;
 - (void)configureFromProvider:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (BOOL)isStream;
 - (BOOL)isStreamComplete;
 - (void)migrateOutputFromSubProvider:(id)arg1;
@@ -47,6 +49,7 @@
 - (void)resetStream;
 - (BOOL)runAuthorizationDialog:(id)arg1 error:(id *)arg2;
 - (BOOL)runSubOperation:(id)arg1 error:(id *)arg2;
+- (BOOL)runTouchIDAuthorizationDialog:(id)arg1 error:(id *)arg2;
 - (void)setup;
 - (void)streamCancelled;
 - (void)streamDidFailWithError:(id)arg1;

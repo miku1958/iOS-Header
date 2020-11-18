@@ -6,21 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class CPLResource, NSError;
+@class CPLResource, NSData, NSError;
 
 @interface CPLProxyLibraryManagerOutstandingInvocation : NSObject
 {
+    BOOL _inMemoryRequest;
     BOOL _didStart;
     BOOL _didFinish;
     float _progress;
     NSError *_finalError;
     CPLResource *_finalResource;
+    NSData *_finalData;
 }
 
 @property (nonatomic) BOOL didFinish; // @synthesize didFinish=_didFinish;
 @property (nonatomic) BOOL didStart; // @synthesize didStart=_didStart;
+@property (strong, nonatomic) NSData *finalData; // @synthesize finalData=_finalData;
 @property (strong, nonatomic) NSError *finalError; // @synthesize finalError=_finalError;
 @property (strong, nonatomic) CPLResource *finalResource; // @synthesize finalResource=_finalResource;
+@property (nonatomic, getter=isInMemoryRequest) BOOL inMemoryRequest; // @synthesize inMemoryRequest=_inMemoryRequest;
 @property (nonatomic) float progress; // @synthesize progress=_progress;
 
 - (void).cxx_destruct;

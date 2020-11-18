@@ -6,11 +6,11 @@
 
 #import <CloudPhotoLibrary/CPLEngineSyncTask.h>
 
-@protocol CPLEngineTransportGetAssetCountsTask;
+@protocol CPLEngineTransportGetLibraryInfoTask;
 
 @interface CPLGetAssetCountsTask : CPLEngineSyncTask
 {
-    id<CPLEngineTransportGetAssetCountsTask> _transportTask;
+    id<CPLEngineTransportGetLibraryInfoTask> _transportTask;
 }
 
 - (void).cxx_destruct;

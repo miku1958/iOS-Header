@@ -7,8 +7,8 @@
 #import <MapKit/MKMapView.h>
 
 @interface MKMapView (OFMKMapViewExtensions)
-- (CDStruct_90e2a262)regionToFitAnnotations;
-- (CDStruct_90e2a262)regionToFitLocations:(id)arg1;
+- (CDStruct_2b0c6e0b)regionToFitAnnotations;
+- (CDStruct_2b0c6e0b)regionToFitLocations:(id)arg1;
 - (void)zoomToFitAnnotations;
 - (void)zoomToFitLocations:(id)arg1 animated:(BOOL)arg2;
 @end

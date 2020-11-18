@@ -34,7 +34,7 @@
 @property (readonly, nonatomic) GEOTileKeyMap *cachedData; // @synthesize cachedData=_cachedData;
 @property (readonly, nonatomic) GEOTileKeyMap *cachedEtags; // @synthesize cachedEtags=_cachedEtags;
 @property (strong, nonatomic) id context; // @synthesize context=_context;
-@property (strong, nonatomic) id<GEOTileRequesterDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<GEOTileRequesterDelegate> delegate;
 @property (strong, nonatomic) NSString *deviceCountry; // @synthesize deviceCountry=_deviceCountry;
 @property (strong, nonatomic) NSString *deviceRegion; // @synthesize deviceRegion=_deviceRegion;
 @property (readonly, nonatomic) GEOTileKeyList *keyList; // @synthesize keyList=_keyList;

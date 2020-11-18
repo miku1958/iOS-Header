@@ -279,9 +279,10 @@
 @property (nonatomic) AVCaptureOutput *currentOutput; // @synthesize currentOutput=_currentOutput;
 @property (readonly, nonatomic) AVCaptureSession *currentSession; // @synthesize currentSession=_avCaptureSession;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<PLCameraControllerDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disableAllPreviewSuspensionDuringCapture; // @synthesize disableAllPreviewSuspensionDuringCapture=_disableAllPreviewSuspensionDuringCapture;
-@property (strong) CMKEffectsRenderer *effectsRenderer; // @synthesize effectsRenderer=_effectsRenderer;
+@property (strong, setter=_setEffectsRenderer:) CMKEffectsRenderer *effectsRenderer; // @synthesize effectsRenderer=_effectsRenderer;
 @property (nonatomic) struct CGPoint exposurePointOfInterest;
 @property (nonatomic) float exposureTargetBias;
 @property (readonly, nonatomic) float exposureTargetBiasDefault;
@@ -295,14 +296,14 @@
 @property (readonly, nonatomic) BOOL isStillImageStabilizationActive;
 @property (readonly, nonatomic) float panoramaPreviewScale; // @synthesize panoramaPreviewScale=_panoramaPreviewScale;
 @property (readonly, nonatomic) struct CGSize panoramaPreviewSize; // @synthesize panoramaPreviewSize=_panoramaPreviewSize;
-@property (nonatomic) BOOL performingAvalancheCapture; // @synthesize performingAvalancheCapture=_performingAvalancheCapture;
+@property (nonatomic, setter=_setPerformingAvalancheCapture:) BOOL performingAvalancheCapture; // @synthesize performingAvalancheCapture=_performingAvalancheCapture;
 @property (copy, nonatomic) CDUnknownBlockType postSessionSetupBlock; // @synthesize postSessionSetupBlock;
 @property (readonly, nonatomic) AVCaptureVideoPreviewLayer *previewLayer; // @synthesize previewLayer=_previewLayer;
 @property (nonatomic) int previewOrientation;
 @property (nonatomic) BOOL resetExposureWhenSubjectAreaChanged; // @synthesize resetExposureWhenSubjectAreaChanged=_resetExposureWhenSubjectAreaChanged;
 @property (nonatomic) BOOL resetFocusWhenSubjectAreaChanged; // @synthesize resetFocusWhenSubjectAreaChanged=_resetFocusWhenSubjectAreaChanged;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSArray *supportedCameraModes; // @synthesize supportedCameraModes=_supportedCameraModes;
+@property (copy, nonatomic, setter=_setSupportedCameraModes:) NSArray *supportedCameraModes; // @synthesize supportedCameraModes=_supportedCameraModes;
 @property (readonly, nonatomic) BOOL supportsHDR;
 @property (readonly, nonatomic) BOOL supportsHDRSuggestion;
 @property (nonatomic) BOOL use60FPSVideo; // @synthesize use60FPSVideo=_use60FPSVideo;
@@ -440,9 +441,7 @@
 - (void)_sessionStopped:(id)arg1;
 - (void)_setCameraMode:(long long)arg1 cameraDevice:(long long)arg2;
 - (void)_setCameraMode:(long long)arg1 cameraDevice:(long long)arg2 forceConfigure:(BOOL)arg3;
-- (void)_setDefaultPrewarmDate:(id)arg1;
 - (void)_setDelaySuspend:(BOOL)arg1;
-- (void)_setEffectsRenderer:(id)arg1;
 - (void)_setEndianAndCircularTestEnabled:(BOOL)arg1;
 - (void)_setExposureMode:(long long)arg1;
 - (void)_setFaceDetectionEnabled:(BOOL)arg1 forceDisableImageProcessing:(BOOL)arg2 forCaptureDevice:(id)arg3 captureOutput:(id)arg4;
@@ -454,9 +453,7 @@
 - (void)_setOrientation;
 - (void)_setOrientationEventsEnabled:(BOOL)arg1;
 - (void)_setOrientationForConnection:(id)arg1;
-- (void)_setPerformingAvalancheCapture:(BOOL)arg1;
 - (void)_setSubjectAreaChangeMonitoringEnabled:(BOOL)arg1;
-- (void)_setSupportedCameraModes:(id)arg1;
 - (void)_setVideoCapturePath:(id)arg1;
 - (BOOL)_setupCamera;
 - (BOOL)_shouldDisableLocationForTimelapseRecording;
@@ -536,7 +533,6 @@
 - (BOOL)currentlyAllowedToExposeAtPointOfInterestWithMode:(int)arg1;
 - (BOOL)currentlyAllowedToFocusAtPointOfInterestWithMode:(int)arg1;
 - (void)dealloc;
-- (id)delegate;
 - (unsigned long long)effectFilterIndexForMode:(long long)arg1;
 - (id)effectFilterIndices;
 - (int)effectiveExposureMode;
@@ -594,7 +590,6 @@
 - (void)resumePreview;
 - (void)resumeSubjectAreaChangesAfterDelay:(double)arg1;
 - (void)setCameraMode:(long long)arg1 device:(long long)arg2;
-- (void)setDelegate:(id)arg1;
 - (void)setEffectFilterIndex:(unsigned long long)arg1 forMode:(long long)arg2;
 - (void)setEffectFilterIndices:(id)arg1 forceStateChange:(BOOL)arg2;
 - (void)setExposureMode:(int)arg1;

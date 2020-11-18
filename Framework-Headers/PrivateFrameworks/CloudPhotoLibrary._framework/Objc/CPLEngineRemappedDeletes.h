@@ -8,10 +8,11 @@
 
 #import <CloudPhotoLibrary/CPLAbstractObject-Protocol.h>
 
-@class CPLPlatformObject, NSString;
+@class CPLPlatformObject, NSMutableDictionary, NSString;
 
 @interface CPLEngineRemappedDeletes : CPLEngineStorage <CPLAbstractObject>
 {
+    NSMutableDictionary *_perTransactionRemappedIdentifiers;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,9 +21,13 @@
 @property (readonly, nonatomic) CPLPlatformObject *platformObject;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)discardDeleteForRemappedRecordWithIdentifier:(id)arg1;
+- (id)realIdentifierForRemappedIdentifier:(id)arg1;
 - (BOOL)resetWithError:(id *)arg1;
 - (void)scheduleDeleteForRemappedRecordWithIdentifier:(id)arg1 realIdentifier:(id)arg2 asap:(BOOL)arg3;
+- (void)writeTransactionDidFail;
+- (void)writeTransactionDidSucceed;
 
 @end
 

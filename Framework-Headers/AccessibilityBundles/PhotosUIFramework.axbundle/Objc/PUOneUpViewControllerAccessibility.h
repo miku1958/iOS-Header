@@ -13,6 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (BOOL)_axDetailsVisible;
+- (void)_setAXDetailsVisible:(BOOL)arg1;
+- (void)_toggleDetailsVisibility;
 
 @end
 

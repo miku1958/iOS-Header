@@ -20,7 +20,11 @@
 - (void)_cleanupURLConnection;
 - (void)_clearRetryTimer;
 - (void)_dequeueIfNeeded;
+- (id)_indentedRegistrationLogWithLevel:(unsigned int)arg1;
 - (void)_notifyDelegateAboutError:(id)arg1 forMessage:(id)arg2;
+- (void)_printArrayToRegistrationLogs:(id)arg1 identationLevel:(unsigned int)arg2;
+- (void)_printDictionaryToRegistrationLogs:(id)arg1 indentationLevel:(unsigned int)arg2;
+- (void)_printObjectToRegistrationLogs:(id)arg1 key:(id)arg2 identationLevel:(unsigned int)arg3;
 - (id)_processResultData:(id)arg1 forMessage:(id)arg2 error:(id *)arg3;
 - (BOOL)_sendMessageAsynchronously:(id)arg1 error:(id *)arg2;
 - (void)_serverBagLoaded:(id)arg1;
@@ -35,6 +39,7 @@
 - (void)networkStateChanged;
 - (void)queue:(id)arg1 hitTimeoutForMessage:(id)arg2;
 - (BOOL)sendMessage:(id)arg1;
+- (BOOL)sendMessageAtTopOfTheQueue:(id)arg1;
 
 @end
 

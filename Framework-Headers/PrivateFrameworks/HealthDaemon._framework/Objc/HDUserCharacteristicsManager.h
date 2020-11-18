@@ -11,34 +11,37 @@
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
-@class NSDate, NSDictionary, NSString;
-@protocol HDHealthDaemon, OS_dispatch_queue;
+@class HDProfile, NSDate, NSDictionary, NSHashTable, NSString;
+@protocol OS_dispatch_queue;
 
 @interface HDUserCharacteristicsManager : NSObject <HDHealthDaemonReadyObserver, HDDatabaseProtectedDataObserver, HDDataObserver, HDDiagnosticObject>
 {
     BOOL _shouldUpdateQuantityCharacteristics;
-    BOOL _shouldUpdateUserProfile;
     BOOL _needsUpdateAfterUnlock;
-    id<HDHealthDaemon> _healthDaemon;
+    HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_observerQueue;
     NSDate *_userProfileLastUpdated;
     NSDictionary *_lastUserProfile;
+    NSHashTable *_observers;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) id<HDHealthDaemon> healthDaemon; // @synthesize healthDaemon=_healthDaemon;
 @property (copy, nonatomic) NSDictionary *lastUserProfile; // @synthesize lastUserProfile=_lastUserProfile;
 @property (nonatomic) BOOL needsUpdateAfterUnlock; // @synthesize needsUpdateAfterUnlock=_needsUpdateAfterUnlock;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *observerQueue; // @synthesize observerQueue=_observerQueue;
+@property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly, nonatomic) BOOL shouldUpdateQuantityCharacteristics; // @synthesize shouldUpdateQuantityCharacteristics=_shouldUpdateQuantityCharacteristics;
-@property (readonly, nonatomic) BOOL shouldUpdateUserProfile; // @synthesize shouldUpdateUserProfile=_shouldUpdateUserProfile;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSDate *userProfileLastUpdated; // @synthesize userProfileLastUpdated=_userProfileLastUpdated;
 
 - (void).cxx_destruct;
 - (id)_mostRecentSampleOfType:(id)arg1 error:(id *)arg2;
+- (void)_queue_alertObserversDidUpdateUserProfile;
 - (void)_queue_updateQuantityCharacteristics;
 - (void)_queue_updateQuantityCharacteristicsAndUserProfileIfNeeded;
 - (void)_queue_updateUserProfile;
@@ -46,11 +49,13 @@
 - (void)_updateQuantityCharacteristicsAndUserProfile;
 - (id)_userCharacteristicForType:(id)arg1 entity:(id *)arg2 error:(id *)arg3;
 - (void)_userCharacteristicsDidChangeShouldUpdateUserProfile:(BOOL)arg1 shouldSync:(BOOL)arg2;
+- (void)addProfileObserver:(id)arg1;
 - (void)daemonReady:(id)arg1;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)dealloc;
 - (id)diagnosticDescription;
-- (id)initWithHealthDaemon:(id)arg1;
+- (id)initWithProfile:(id)arg1;
+- (void)removeProfileObserver:(id)arg1;
 - (double)restingCaloriesFromTotalCalories:(double)arg1 timeInterval:(double)arg2 authorizedToRead:(BOOL)arg3;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;

@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
     UIViewController *_localViewController;
     NSString *_presentationControllerClassName;
     _UIHostedWindow *_hostedWindow;
-    BOOL _isResigningFirstResponderFromHostNotification;
     BOOL _disableAutomaticKeyboardBehavior;
     UIActionSheet *_hostedActionSheet;
     BOOL _serviceInPopover;
@@ -102,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (void)__saveStateForSession:(id)arg1 restorationAnchor:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)__scrollToTopFromTouchAtViewLocation:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)__setContentSize:(struct CGSize)arg1;
+- (void)__setContentSize:(struct CGSize)arg1 withFence:(id)arg2;
 - (void)__setHostTintColor:(id)arg1 tintAdjustmentMode:(long long)arg2;
 - (void)__setHostTraitCollection:(id)arg1 deferIfAnimated:(BOOL)arg2;
 - (void)__setHostViewUnderlapsStatusBar:(BOOL)arg1;
@@ -132,8 +132,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)_presentActionSheet:(id)arg1 inView:(id)arg2 fromYCoordinate:(double)arg3;
 - (id)_presentationControllerClassName;
 - (id)_queue;
+- (void)_sendFocusMovementAction:(id)arg1;
 - (id)_sessionForStateRestoration:(id)arg1;
 - (BOOL)_shouldForwardLegacyRotationOnly;
+- (id)_showServiceForText:(id)arg1 selectedTextRange:(struct _NSRange)arg2 type:(long long)arg3 fromRect:(struct CGRect)arg4 inView:(id)arg5;
 - (id)_showServiceForText:(id)arg1 type:(long long)arg2 fromRect:(struct CGRect)arg3 inView:(id)arg4;
 - (id)_supportedInterfaceOrientationsForViewController:(id)arg1;
 - (BOOL)_tryRetain;
@@ -153,6 +155,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)childViewControllerForStatusBarHidden;
 - (id)childViewControllerForStatusBarStyle;
+- (id)childViewControllerForWhitePointAdaptivityStyle;
 - (struct CGSize)contentSizeForViewInPopover;
 - (void)dealloc;
 - (void)dismissHostedTextServiceSession:(id)arg1 animated:(BOOL)arg2;
@@ -164,7 +167,7 @@ __attribute__((visibility("hidden")))
 - (void)motionEnded:(long long)arg1 withEvent:(id)arg2;
 - (struct CGSize)preferredContentSize;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
-- (id)preferredFocusedItem;
+- (id)preferredFocusEnvironments;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesChanged:(id)arg1 withEvent:(id)arg2;
@@ -173,12 +176,14 @@ __attribute__((visibility("hidden")))
 - (id)retain;
 - (unsigned long long)retainCount;
 - (void)setNeedsStatusBarAppearanceUpdate;
+- (void)setNeedsWhitePointAdaptivityStyleUpdate;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (BOOL)shouldAutomaticallyForwardRotationMethods;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)systemLayoutFittingSizeDidChangeForChildViewController:(id)arg1;
 - (void)viewDidLoad;
+- (void)window:(id)arg1 statusBarWillChangeFromHeight:(double)arg2 toHeight:(double)arg3;
 
 @end
 

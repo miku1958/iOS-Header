@@ -8,17 +8,17 @@
 
 #import <PassKit/PKRemoteAddPassViewControllerProtocol-Protocol.h>
 
-@class NSString, PKWeakReference;
+@class NSString;
 @protocol PKAddPaymentPassViewControllerDelegate;
 
 @interface PKRemoteAddPaymentPassViewController : _UIRemoteViewController <PKRemoteAddPassViewControllerProtocol>
 {
-    PKWeakReference *_delegate;
     BOOL _finished;
+    id<PKAddPaymentPassViewControllerDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<PKAddPaymentPassViewControllerDelegate> delegate;
+@property (weak, nonatomic) id<PKAddPaymentPassViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
@@ -26,6 +26,7 @@
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
 + (BOOL)shouldPropagateAppearanceCustomizations;
+- (void).cxx_destruct;
 - (id)_addPaymentPassVC;
 - (void)dealloc;
 - (void)didFinishWithPass:(id)arg1 error:(id)arg2;

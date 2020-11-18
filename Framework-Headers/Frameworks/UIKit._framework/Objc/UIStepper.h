@@ -40,6 +40,7 @@
 - (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedWidth;
 - (unsigned long long)_controlEventsForActionTriggered;
+- (void)_emitValueChanged;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)_setBackgroundImage:(id)arg1 forState:(unsigned long long)arg2;

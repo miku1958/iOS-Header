@@ -8,7 +8,6 @@
 
 @interface UIImage (PhotosUI)
 + (id)pu_PhotosUIImageNamed:(id)arg1;
-- (void)pu_drawInRect:(struct CGRect)arg1 withContentMode:(long long)arg2;
 - (id)pu_extractPlayOverlayBackgroundImageFromCenter:(struct CGPoint)arg1 inRect:(struct CGRect)arg2 contentMode:(long long)arg3 asynchronously:(BOOL)arg4 handler:(CDUnknownBlockType)arg5;
 - (id)pu_overlayedImageWithColor:(id)arg1;
 - (id)pu_tintedImageWithColor:(id)arg1;

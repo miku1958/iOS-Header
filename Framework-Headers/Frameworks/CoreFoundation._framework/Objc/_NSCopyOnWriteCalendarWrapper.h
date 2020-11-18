@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (id)dateFromComponents:(id)arg1;
 - (void)dealloc;
 - (void)enumerateDatesStartingAfterDate:(id)arg1 matchingComponents:(id)arg2 options:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
-- (void)finalize;
 - (unsigned long long)firstWeekday;
 - (unsigned long long)hash;
 - (BOOL)isDateInWeekend:(id)arg1;

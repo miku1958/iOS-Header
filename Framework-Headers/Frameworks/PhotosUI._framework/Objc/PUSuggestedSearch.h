@@ -17,29 +17,36 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_queue;
     NSArray *_uuids;
     NSMutableArray *_uncommittedUUIDs;
+    NSArray *_additionalUUIDs;
+    NSMutableArray *_uncommittedAdditionalUUIDs;
     NSString *_displaySubtitle;
     BOOL _hasPendingChanges;
     PSIQuery *_query;
     unsigned long long _taskId;
     NSString *_displayTitle;
-    id _albumUUID;
+    NSString *_albumUUID;
+    NSString *_memoryUUID;
     PUSiriSearch *_siriSearch;
     NSString *_searchString;
+    unsigned long long _searchCategories;
     id<PUSuggestedSearchDelegate> _delegate;
     unsigned long long __approximateCount;
 }
 
 @property (setter=_setApproximateCount:) unsigned long long _approximateCount; // @synthesize _approximateCount=__approximateCount;
-@property (strong) id albumUUID; // @synthesize albumUUID=_albumUUID;
+@property (readonly) NSArray *additionalUUIDs;
+@property (strong, setter=_setAlbumUUID:) NSString *albumUUID; // @synthesize albumUUID=_albumUUID;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUSuggestedSearchDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy) NSString *displaySubtitle; // @synthesize displaySubtitle=_displaySubtitle;
-@property (copy) NSString *displayTitle; // @synthesize displayTitle=_displayTitle;
+@property (copy, setter=_setDisplaySubtitle:) NSString *displaySubtitle; // @synthesize displaySubtitle=_displaySubtitle;
+@property (copy, setter=_setDisplayTitle:) NSString *displayTitle; // @synthesize displayTitle=_displayTitle;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL isEmpty;
-@property (copy) NSString *searchString; // @synthesize searchString=_searchString;
-@property (strong) PUSiriSearch *siriSearch; // @synthesize siriSearch=_siriSearch;
+@property (strong, setter=_setMemoryUUID:) NSString *memoryUUID; // @synthesize memoryUUID=_memoryUUID;
+@property unsigned long long searchCategories; // @synthesize searchCategories=_searchCategories;
+@property (copy, setter=_setSearchString:) NSString *searchString; // @synthesize searchString=_searchString;
+@property (strong, setter=_setSiriSearch:) PUSiriSearch *siriSearch; // @synthesize siriSearch=_siriSearch;
 @property (readonly) Class superclass;
 @property (readonly) NSArray *uuids;
 
@@ -52,17 +59,13 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_inqTaskId;
 - (BOOL)_isTargetGroupResult:(id)arg1;
 - (void)_mergePendingChanges;
-- (void)_setAlbumUUID:(id)arg1;
-- (void)_setDisplayTitle:(id)arg1;
-- (void)_setSearchString:(id)arg1;
-- (void)_setSiriSearch:(id)arg1;
 - (void)cancel;
 - (void)fetchRemainingUUIDs:(CDUnknownBlockType)arg1;
 - (void)fetchRemainingUUIDs:(CDUnknownBlockType)arg1 completionQueue:(id)arg2;
 - (BOOL)hasPendingChanges;
 - (id)init;
 - (id)initWithDisplayTitle:(id)arg1;
-- (id)initWithDisplayTitle:(id)arg1 uuids:(id)arg2;
+- (id)initWithDisplayTitle:(id)arg1 displaySubtitle:(id)arg2 uuids:(id)arg3;
 - (void)restart;
 
 @end

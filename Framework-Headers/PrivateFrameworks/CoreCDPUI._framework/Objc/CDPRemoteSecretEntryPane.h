@@ -6,28 +6,29 @@
 
 #import <CoreCDPUI/CDPPassphraseEntryPane.h>
 
-@class CDPDevice, UIButton;
-@protocol CDPRemoteSecretEntryPaneDelegate;
+@class CDPDevice, CDPRemoteValidationEscapeOffer, UIButton;
 
 @interface CDPRemoteSecretEntryPane : CDPPassphraseEntryPane
 {
     UIButton *_footerButton;
-    id<CDPRemoteSecretEntryPaneDelegate> _paneDelegate;
-    unsigned long long _escapeOffer;
+    BOOL _remoteAccountRecovery;
+    CDPRemoteValidationEscapeOffer *_escapeOffer;
     unsigned long long _remoteSecretType;
     CDPDevice *_device;
 }
 
 @property (strong, nonatomic) CDPDevice *device; // @synthesize device=_device;
-@property (nonatomic) unsigned long long escapeOffer; // @synthesize escapeOffer=_escapeOffer;
-@property (weak, nonatomic) id<CDPRemoteSecretEntryPaneDelegate> paneDelegate; // @synthesize paneDelegate=_paneDelegate;
+@property (strong, nonatomic) CDPRemoteValidationEscapeOffer *escapeOffer; // @synthesize escapeOffer=_escapeOffer;
+@property BOOL remoteAccountRecovery; // @synthesize remoteAccountRecovery=_remoteAccountRecovery;
 @property (nonatomic) unsigned long long remoteSecretType; // @synthesize remoteSecretType=_remoteSecretType;
 
 - (void).cxx_destruct;
 - (id)_headerStringForDevice:(id)arg1 localDeviceClass:(id)arg2;
-- (void)footerTapped:(id)arg1;
+- (void)didFinishResizingHeaderView;
+- (void)didFinishResizingPinView;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutSubviews;
+- (BOOL)isSmallScreen;
+- (BOOL)isVerySmallScreen;
 - (void)setTitle:(id)arg1;
 
 @end

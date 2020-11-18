@@ -14,6 +14,7 @@
     NSMutableDictionary *_classByReuseIdentifier;
     struct UIEdgeInsets _insetsForExpandingButtons;
     BOOL _sortedVisibleControlsWithBlanksNeedsReload;
+    BOOL _sortByGroup;
     NSMutableDictionary *_recycledButtonsByReuseIdentifier;
     NSMapTable *_reuseIdentifierByButton;
     NSMutableArray *_sortedVisibleControlsWithBlanks;
@@ -33,6 +34,7 @@
 @property (nonatomic, getter=_insetsForExpandingButtons, setter=_setInsetsForExpandingButtons:) struct UIEdgeInsets insetsForExpandingButtons;
 @property (weak, nonatomic) id<MPUTransportControlsViewLayoutDelegate> layoutDelegate; // @synthesize layoutDelegate=_layoutDelegate;
 @property (nonatomic) unsigned long long minimumNumberOfTransportButtonsForLayout; // @synthesize minimumNumberOfTransportButtonsForLayout=_minimumNumberOfTransportButtonsForLayout;
+@property (nonatomic) BOOL sortByGroup; // @synthesize sortByGroup=_sortByGroup;
 @property (nonatomic, getter=_usesLegacyLayoutHeuristics, setter=_setUsesLegacyLayoutHeuristics:) BOOL usesLegacyLayoutHeuristics; // @synthesize usesLegacyLayoutHeuristics=_usesLegacyLayoutHeuristics;
 
 + (id)defaultTransportControls;

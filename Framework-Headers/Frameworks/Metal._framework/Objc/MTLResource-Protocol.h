@@ -7,15 +7,18 @@
 #import <Metal/NSObject-Protocol.h>
 
 @class NSString;
-@protocol MTLDevice;
+@protocol MTLDevice, MTLHeap;
 
 @protocol MTLResource <NSObject>
 
 @property (readonly) unsigned long long cpuCacheMode;
 @property (readonly) id<MTLDevice> device;
+@property (readonly) id<MTLHeap> heap;
 @property (copy) NSString *label;
 @property (readonly) unsigned long long storageMode;
 
+- (BOOL)isAliasable;
+- (void)makeAliasable;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
 @end
 

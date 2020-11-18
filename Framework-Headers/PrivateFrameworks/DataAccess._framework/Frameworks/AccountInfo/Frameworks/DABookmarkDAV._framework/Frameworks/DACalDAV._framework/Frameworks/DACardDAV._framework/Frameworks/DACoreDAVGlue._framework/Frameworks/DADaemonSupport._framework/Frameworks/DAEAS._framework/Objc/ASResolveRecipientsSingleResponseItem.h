@@ -15,7 +15,7 @@
     NSMutableArray *_mRecipients;
 }
 
-@property (strong, nonatomic) NSNumber *easStatus; // @synthesize easStatus=_easStatus;
+@property (strong, nonatomic, setter=setEASStatus:) NSNumber *easStatus; // @synthesize easStatus=_easStatus;
 @property (strong, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
 @property (strong, nonatomic) NSMutableArray *mRecipients; // @synthesize mRecipients=_mRecipients;
 @property (readonly, nonatomic) NSArray *recipients;
@@ -29,7 +29,6 @@
 - (void).cxx_destruct;
 - (void)addRecipient:(id)arg1;
 - (id)description;
-- (void)setEASStatus:(id)arg1;
 
 @end
 

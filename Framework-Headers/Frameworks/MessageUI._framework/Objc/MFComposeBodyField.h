@@ -62,6 +62,7 @@
 - (void)_removeInlineAttachment:(id)arg1;
 - (void)_replaceImages;
 - (id)_securityScopeForFileURL:(id)arg1;
+- (id)_selectedAttachmentURLForMarkup;
 - (BOOL)_shouldCreatePlaceholderAttachmentForAttachmentWithSize:(unsigned long long)arg1;
 - (void)_showQuoteLevelOptionsPopover:(id)arg1;
 - (void)_webthread_webView:(id)arg1 tileDidDraw:(id)arg2;

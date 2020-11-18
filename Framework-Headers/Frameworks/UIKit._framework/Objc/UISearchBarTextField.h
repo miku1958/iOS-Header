@@ -19,10 +19,12 @@ __attribute__((visibility("hidden")))
     BOOL _deferringFirstResponder;
     BOOL _animatePlaceholderOnResignFirstResponder;
     BOOL __preventSelectionViewActivation;
+    long long __textInputSource;
 }
 
 @property (nonatomic, setter=_setPreventSelectionViewActivation:) BOOL _preventSelectionViewActivation; // @synthesize _preventSelectionViewActivation=__preventSelectionViewActivation;
 @property (strong, nonatomic, setter=_setSearchTextOffetValue:) NSValue *_searchTextOffsetValue;
+@property (nonatomic) long long _textInputSource; // @synthesize _textInputSource=__textInputSource;
 
 - (void).cxx_destruct;
 - (void)_activateSelectionView;
@@ -58,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)clearButtonRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)editingRectForBounds:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)insertTextSuggestion:(id)arg1;
 - (struct CGRect)leftViewRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)placeholderRectForBounds:(struct CGRect)arg1;
 - (BOOL)resignFirstResponder;

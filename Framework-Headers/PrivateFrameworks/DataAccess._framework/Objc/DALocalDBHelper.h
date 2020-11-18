@@ -39,13 +39,16 @@
 + (id)calTestCalDBDir;
 + (id)sharedInstanceForAccountType:(id)arg1 creatingClass:(Class)arg2;
 - (void).cxx_destruct;
+- (BOOL)_abOpenDBWithClientIdentifier:(id)arg1;
 - (BOOL)_calOpenDBWithClientIdentifier:(id)arg1;
 - (void)_registerForAddressBookYieldNotifications;
 - (void)_registerForCalendarYieldNotifications;
+- (void)abClearSuperfluousChanges;
 - (BOOL)abCloseDBAndSave:(BOOL)arg1;
 - (id)abConstraintPlistPath;
 - (void *)abDBThrowOnNil:(BOOL)arg1;
-- (void)abOpenDB;
+- (void)abOpenDBAsGenericClient;
+- (void)abOpenDBWithClientIdentifier:(id)arg1;
 - (void)abProcessAddedImages;
 - (void)abProcessAddedRecords;
 - (BOOL)abSaveDB;

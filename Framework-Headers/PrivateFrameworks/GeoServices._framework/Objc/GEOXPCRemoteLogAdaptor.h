@@ -6,12 +6,12 @@
 
 #import <GeoServices/GEOBaseLogAdaptor.h>
 
-#import <GeoServices/PBRequesterDelegate-Protocol.h>
+#import <GeoServices/GEOPBSessionRequesterDelegate-Protocol.h>
 
 @class GEOLogMessageCacheManager, GEORequester, NSLock, NSObject, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
-@interface GEOXPCRemoteLogAdaptor : GEOBaseLogAdaptor <PBRequesterDelegate>
+@interface GEOXPCRemoteLogAdaptor : GEOBaseLogAdaptor <GEOPBSessionRequesterDelegate>
 {
     NSURL *_remoteURL;
     NSString *_debugRequestName;
@@ -19,6 +19,7 @@
     NSString *_logMessageCacheFilePath;
     GEOLogMessageCacheManager *_logMessageCacheManager;
     GEORequester *_logMessageCollectionRequester;
+    BOOL _logMessageCollectionRequestPending;
     NSLock *_logMessageCollectionRequesterLock;
     NSObject<OS_dispatch_queue> *_logMessageSendQueue;
     NSString *_adaptorIdentifier;
@@ -45,7 +46,7 @@
 - (void)_queueNextLogMessagesChunkForSending;
 - (void)_registerXPCActivityTimer;
 - (void)_requesterDidCompleteHandler:(id)arg1;
-- (void)_requesterStartSend;
+- (void)_requesterStartSendRequest:(id)arg1;
 - (void)_sendLogMessageRequest:(id)arg1;
 - (void)_sendNextLogMessageChunk;
 - (void)_setupLogMessageCache;

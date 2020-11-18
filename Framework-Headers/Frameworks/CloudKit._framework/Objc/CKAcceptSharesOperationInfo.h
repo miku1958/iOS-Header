@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CloudKit/CKDatabaseOperationInfo.h>
+#import <CloudKit/CKOperationInfo.h>
 
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
 @class NSArray;
 
-@interface CKAcceptSharesOperationInfo : CKDatabaseOperationInfo <NSSecureCoding>
+@interface CKAcceptSharesOperationInfo : CKOperationInfo <NSSecureCoding>
 {
-    NSArray *_shareURLsToAccept;
+    NSArray *_shareMetadatasToAccept;
 }
 
-@property (strong, nonatomic) NSArray *shareURLsToAccept; // @synthesize shareURLsToAccept=_shareURLsToAccept;
+@property (strong, nonatomic) NSArray *shareMetadatasToAccept; // @synthesize shareMetadatasToAccept=_shareMetadatasToAccept;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

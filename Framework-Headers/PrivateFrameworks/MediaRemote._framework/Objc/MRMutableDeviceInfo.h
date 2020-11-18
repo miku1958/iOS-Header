@@ -12,8 +12,13 @@
 {
 }
 
+@property (copy, nonatomic) NSString *applicationBundleIdentifier; // @dynamic applicationBundleIdentifier;
+@property (copy, nonatomic) NSString *applicationBundleVersion; // @dynamic applicationBundleVersion;
 @property (copy, nonatomic) NSString *localizedModelName; // @dynamic localizedModelName;
 @property (copy, nonatomic) NSString *name; // @dynamic name;
+@property (nonatomic, getter=isPairingAllowed) BOOL pairingAllowed; // @dynamic pairingAllowed;
+@property (nonatomic) unsigned long long protocolVersion; // @dynamic protocolVersion;
+@property (copy, nonatomic) NSString *systemBuildVersion; // @dynamic systemBuildVersion;
 @property (copy, nonatomic) NSString *uniqueIdentifier; // @dynamic uniqueIdentifier;
 
 

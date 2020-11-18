@@ -57,6 +57,7 @@
 - (void)_reloadPlaceholderBackgroundView;
 - (void)_reloadUI;
 - (void)_removePlaceholderBackgroundView;
+- (void)_requestWebScriptReloadWithContext:(id)arg1;
 - (void)_sendOrientationWillChangeToInterfaceOrientation:(long long)arg1;
 - (void)_setExistingNavigationItem:(id)arg1;
 - (void)_setLastKnownOrientation:(long long)arg1;

@@ -7,26 +7,33 @@
 #import <objc/NSObject.h>
 
 @class CDPDCircleStateObserver;
-@protocol CDPDCircleDelegate, CDPDCircleProxy, CDPStateUIProviderInternal;
+@protocol CDPDCircleDelegate, CDPDCircleProxy, CDPStateUIProviderInternal, OS_dispatch_queue;
 
 @interface CDPDCircleController : NSObject
 {
     CDPDCircleStateObserver *_circleJoinObserver;
+    NSObject<OS_dispatch_queue> *_requestSynchronizationQueue;
     id<CDPStateUIProviderInternal> _uiProvider;
-    id<CDPDCircleDelegate> _delegate;
+    NSObject<CDPDCircleDelegate> *_delegate;
     id<CDPDCircleProxy> _circleProxy;
 }
 
 @property (strong, nonatomic) id<CDPDCircleProxy> circleProxy; // @synthesize circleProxy=_circleProxy;
-@property (weak, nonatomic) id<CDPDCircleDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) NSObject<CDPDCircleDelegate> *delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) id<CDPStateUIProviderInternal> uiProvider; // @synthesize uiProvider=_uiProvider;
 
 - (void).cxx_destruct;
 - (void)_joinCDPCircleIgnoringBackups:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)_peerCount;
 - (id)_peerDeviceNamesByPeerID;
+- (void)_requestCircleJoinWithObserver:(id)arg1 requestBlock:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_requestToJoinAfterRestoreAndWaitForSuccessWithHandler:(CDUnknownBlockType)arg1;
+- (void)_requestToJoinAndWaitForSuccessWithHandler:(CDUnknownBlockType)arg1;
+- (void)_requestToJoinWithObserver:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_requestToJoinWithRequestBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_resetCicleToResolvePendingAfterRecoveryWithCompletion:(CDUnknownBlockType)arg1;
-- (BOOL)applyToJoinCircleWithJoinHandler:(CDUnknownBlockType)arg1;
+- (void)applyToJoinCircleWithJoinHandler:(CDUnknownBlockType)arg1;
+- (int)authenticatedCircleStatus:(id *)arg1;
 - (void)cancelApplicationToJoinCircle;
 - (int)circleStatus;
 - (void)dealloc;
@@ -35,7 +42,7 @@
 - (void)joinCDPCircleWithCompletion:(CDUnknownBlockType)arg1;
 - (void)joinCircleAfterRecoveryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)peerID;
-- (void)prepareCircleStateForRecoveryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)prepareCircleStateForRecovery;
 - (BOOL)synchronizeCircleViews;
 - (void)useCircleInfoToUpdateNameForDevices:(id)arg1;
 

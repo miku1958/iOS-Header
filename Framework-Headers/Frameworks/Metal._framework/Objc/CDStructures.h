@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class MTLRenderPassColorAttachmentDescriptorArrayInternal, MTLRenderPipelineColorAttachmentDescriptorArrayInternal, MTLResourceList, MTLStencilDescriptorInternal, MTLVertexDescriptorInternal, NSString;
+@class MTLRenderPassColorAttachmentDescriptorArrayInternal, MTLRenderPipelineColorAttachmentDescriptorArrayInternal, MTLResourceList, MTLStencilDescriptorInternal, MTLVertexDescriptorInternal, NSObject, NSString;
 
 #pragma mark Blocks
 
@@ -15,6 +15,18 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 struct Chunk {
     struct VariantEntry _field1[4];
     struct Chunk *_field2;
+};
+
+struct MTLAttributeFlags {
+    union {
+        struct {
+            unsigned int :1;
+            unsigned int :1;
+            unsigned int :1;
+            unsigned int :5;
+        } _field1;
+        unsigned char _field2;
+    } _field1;
 };
 
 struct MTLCompilerCache {
@@ -35,6 +47,7 @@ struct MTLComputePipelineDescriptorPrivate {
     id _field1;
     id _field2;
     BOOL _field3;
+    id _field4;
 };
 
 struct MTLDepthStencilDescriptorPrivate {
@@ -52,6 +65,7 @@ struct MTLDispatch {
 
 struct MTLFunctionData {
     unsigned long long bitCodeOffset;
+    unsigned long long bitCodeFileSize;
     unsigned long long publicArgumentsOffset;
     unsigned long long privateArgumentsOffset;
     unsigned short airMajorVersion;
@@ -59,6 +73,26 @@ struct MTLFunctionData {
     unsigned short languageMajorVersion;
     unsigned short languageMinorVersion;
     CDStruct_41a22ec7 bitcodeHash;
+    unsigned char bitcodeType;
+    unsigned int patchType:2;
+    unsigned int controlPointCount:6;
+    NSObject *functionInputs;
+};
+
+struct MTLLibraryBuilder {
+    id _field1;
+    struct map<MTLLibraryIdentifier, MTLLibraryContainer *, std::__1::less<MTLLibraryIdentifier>, std::__1::allocator<std::__1::pair<const MTLLibraryIdentifier, MTLLibraryContainer *>>> _field2;
+    id _field3;
+};
+
+struct MTLLibraryContainer {
+    int _field1;
+    CDStruct_41a22ec7 _field2;
+    struct MTLLibraryData *_field3;
+    id _field4;
+    id _field5;
+    id _field6;
+    id _field7;
 };
 
 struct MTLLibraryData {
@@ -91,6 +125,7 @@ struct MTLRenderPassAttachmentDescriptorPrivate {
     unsigned long long resolveFilter;
     unsigned long long width;
     unsigned long long height;
+    BOOL yInvert;
 };
 
 struct MTLRenderPassDescriptorPrivate {
@@ -99,7 +134,7 @@ struct MTLRenderPassDescriptorPrivate {
     unsigned long long framebufferWidth;
     unsigned long long framebufferHeight;
     BOOL ditherEnabled;
-    BOOL expandedClipRange;
+    BOOL openGLModeEnabled;
 };
 
 struct MTLRenderPipelineAttachmentDescriptorPrivate {
@@ -108,17 +143,17 @@ struct MTLRenderPipelineAttachmentDescriptorPrivate {
             unsigned int blendingEnabled:1;
             unsigned int rgbBlendOperation:3;
             unsigned int alphaBlendOperation:3;
-            unsigned int sourceRGBBlendFactor:4;
-            unsigned int sourceAlphaBlendFactor:4;
-            unsigned int destinationRGBBlendFactor:4;
-            unsigned int destinationAlphaBlendFactor:4;
+            unsigned int sourceRGBBlendFactor:5;
+            unsigned int sourceAlphaBlendFactor:5;
+            unsigned int destinationRGBBlendFactor:5;
+            unsigned int destinationAlphaBlendFactor:5;
             unsigned int writeMask:4;
-            unsigned int logicOp:4;
             unsigned int logicOpEnabled:1;
-            unsigned int pixelFormat;
+            unsigned int logicOp:4;
+            unsigned int pixelFormat:28;
         } ;
         struct {
-            unsigned long long hash;
+            unsigned long long bits;
         } ;
     } ;
 };
@@ -128,6 +163,13 @@ struct MTLRenderPipelineDescriptorPrivate {
     unsigned long long rtBlendDescHash[8];
     unsigned long long depthAttachmentPixelFormat;
     unsigned long long stencilAttachmentPixelFormat;
+    unsigned long long tessellationPartitionMode;
+    unsigned long long maxTessellationFactor;
+    BOOL tessellationFactorScaleEnabled;
+    unsigned long long tessellationFactorFormat;
+    unsigned long long tessellationControlPointIndexType;
+    unsigned long long tessellationFactorStepFunction;
+    unsigned long long tessellationOutputWindingOrder;
     unsigned long long sampleCount;
     unsigned long long sampleMask;
     CDUnion_e79d86a0 ;
@@ -139,9 +181,18 @@ struct MTLRenderPipelineDescriptorPrivate {
             unsigned int rasterizationEnabled:1;
             unsigned int inputPrimitiveTopology:2;
             unsigned int vertexEnabled:1;
-            unsigned int pad:26;
+            unsigned int depthStencilWriteDisabled:1;
+            unsigned int pad:7;
+            unsigned int pointSmoothEnabled:1;
+            unsigned int clipDistanceEnableMask:8;
+            unsigned int alphaTestFunc:3;
+            unsigned int alphaTestEnabled:1;
+            unsigned int logicOp:4;
+            unsigned int logicOpEnabled:1;
         } ;
     } ;
+    unsigned int vertexDepthCompareClampMask;
+    unsigned int fragmentDepthCompareClampMask;
     NSString *label;
     id vertexFunction;
     id fragmentFunction;
@@ -170,12 +221,6 @@ struct MTLSamplerDescriptorPrivate {
     CDUnion_e79d86a0 _field4;
     unsigned long long _field5;
     id _field6;
-};
-
-struct MTLStatSampleRec {
-    void *_field1;
-    unsigned long long _field2;
-    unsigned long long _field3[0];
 };
 
 struct MTLStencilDescriptorPrivate {
@@ -258,6 +303,20 @@ struct fscache_attributes_s {
 
 struct fscache_s;
 
+struct map<MTLLibraryIdentifier, MTLLibraryContainer *, std::__1::less<MTLLibraryIdentifier>, std::__1::allocator<std::__1::pair<const MTLLibraryIdentifier, MTLLibraryContainer *>>> {
+    struct __tree<std::__1::__value_type<MTLLibraryIdentifier, MTLLibraryContainer *>, std::__1::__map_value_compare<MTLLibraryIdentifier, std::__1::__value_type<MTLLibraryIdentifier, MTLLibraryContainer *>, std::__1::less<MTLLibraryIdentifier>, true>, std::__1::allocator<std::__1::__value_type<MTLLibraryIdentifier, MTLLibraryContainer *>>> {
+        struct __tree_node<std::__1::__value_type<MTLLibraryIdentifier, MTLLibraryContainer *>, void *> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<MTLLibraryIdentifier, MTLLibraryContainer *>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
+                struct __tree_node_base<void *> *_field1;
+            } _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<MTLLibraryIdentifier, std::__1::__value_type<MTLLibraryIdentifier, MTLLibraryContainer *>, std::__1::less<MTLLibraryIdentifier>, true>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
+};
+
 struct resourceListQueue {
     MTLResourceList *tqh_first;
     id *tqh_last;
@@ -302,7 +361,12 @@ typedef struct {
     unsigned int _field34;
     unsigned int _field35;
     unsigned int _field36;
-} CDStruct_1f7139fa;
+    unsigned int _field37;
+    unsigned int _field38;
+    unsigned int _field39;
+    unsigned int _field40;
+    unsigned int _field41;
+} CDStruct_75a535a2;
 
 typedef struct {
     unsigned int _field1;
@@ -322,6 +386,11 @@ typedef struct {
 } CDStruct_14f26992;
 
 typedef struct {
+    unsigned long long _field1;
+    unsigned long long _field2;
+} CDStruct_4bcfbbae;
+
+typedef struct {
     unsigned char key[32];
 } CDStruct_41a22ec7;
 
@@ -332,8 +401,10 @@ typedef struct {
     unsigned int vertexRegisterSpill:1;
     unsigned int fragmentRegisterSpill:1;
     unsigned int fragmentReadsFramebufferValues:1;
-    unsigned int reserved:58;
-} CDStruct_672a0776;
+    unsigned int fragmentPunchThrough:1;
+    unsigned int vertexWritesPointSize:1;
+    unsigned int reserved:56;
+} CDStruct_fc7baa39;
 
 typedef struct {
     unsigned int kernelRegisterSpill:1;

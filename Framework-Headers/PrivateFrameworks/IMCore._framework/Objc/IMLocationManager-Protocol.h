@@ -10,8 +10,8 @@
 
 @protocol IMLocationManager <NSObject>
 
-@property (readonly, strong, nonatomic) NSError *error;
-@property (readonly, strong, nonatomic) CLLocation *location;
+@property (readonly, nonatomic) NSError *error;
+@property (readonly, nonatomic) CLLocation *location;
 @property (readonly, nonatomic) BOOL locationAuthorizationDenied;
 
 - (void)startUpdatingCurrentLocationWithHandler:(void (^)(CLLocation *, NSError *))arg1;

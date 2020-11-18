@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
 
@@ -17,7 +17,9 @@
     double _lastEvalTime;
     SCNPhysicsWorld *_physicsWorld;
     SCNNode *_rootNode;
+    SCNNode *_layerRootNode[4];
     SCNMaterialProperty *_background;
+    SCNMaterialProperty *_environment;
     NSMutableDictionary *_userAttributes;
     double _fogStartDistance;
     double _fogEndDistance;
@@ -33,6 +35,7 @@
 @property (nonatomic) double fogDensityExponent;
 @property (nonatomic) double fogEndDistance;
 @property (nonatomic) double fogStartDistance;
+@property (readonly, nonatomic) SCNMaterialProperty *lightingEnvironment;
 @property (nonatomic, getter=isPaused) BOOL paused;
 @property (readonly, nonatomic) SCNPhysicsWorld *physicsWorld;
 @property (readonly, nonatomic) SCNNode *rootNode;
@@ -54,7 +57,7 @@
 + (id)supportedFileUTIsForExport;
 + (id)supportedFileUTIsForImport;
 + (BOOL)supportsSecureCoding;
-- (void *)__CFObject;
+- (const void *)__CFObject;
 - (void)_customDecodingOfSCNScene:(id)arg1;
 - (void)_customEncodingOfSCNScene:(id)arg1;
 - (void)_didDecodeSCNScene:(id)arg1;
@@ -88,6 +91,7 @@
 - (void)removeAllParticleSystems;
 - (void)removeParticleSystem:(id)arg1;
 - (id)root;
+- (id)rootNodeForLayer:(int)arg1;
 - (id)scene;
 - (struct __C3DScene *)sceneRef;
 - (id)sceneSource;
@@ -98,6 +102,7 @@
 - (void)setPausedForEditing:(BOOL)arg1;
 - (void)setPlaybackSpeed:(float)arg1;
 - (void)setRootNode:(id)arg1;
+- (void)setRootNode:(id)arg1 forLayer:(int)arg2;
 - (void)setSceneSource:(id)arg1;
 - (void)setStartTime:(double)arg1;
 - (void)setUpAxis:(struct SCNVector3)arg1;

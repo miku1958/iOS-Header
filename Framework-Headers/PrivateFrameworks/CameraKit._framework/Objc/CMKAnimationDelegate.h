@@ -6,14 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@interface CMKAnimationDelegate : NSObject
+#import <CameraKit/CAAnimationDelegate-Protocol.h>
+
+@class NSString;
+
+@interface CMKAnimationDelegate : NSObject <CAAnimationDelegate>
 {
     CDUnknownBlockType _completion;
     CDUnknownBlockType _start;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType start; // @synthesize start=_start;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)animationDidStart:(id)arg1;

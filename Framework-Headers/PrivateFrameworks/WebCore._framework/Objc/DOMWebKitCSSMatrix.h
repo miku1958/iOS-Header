@@ -34,7 +34,6 @@
 @property double m44;
 
 - (void)dealloc;
-- (void)finalize;
 - (id)inverse;
 - (id)multiply:(id)arg1;
 - (id)rotate:(double)arg1 rotY:(double)arg2 rotZ:(double)arg3;

@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_xpc_object> *connection;
     NSObject<OS_dispatch_queue> *connectionQueue;
-    id<WCMClientDelegate> wcmClientDelegate;
+    NSObject<WCMClientDelegate> *wcmClientDelegate;
 }
 
 @property (readonly) NSObject<OS_xpc_object> *connection; // @synthesize connection;

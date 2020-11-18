@@ -48,6 +48,7 @@
 - (struct _NSRange)_convertDOMRangeToNSRange:(id)arg1;
 - (id)_convertNSRangeToDOMRange:(struct _NSRange)arg1;
 - (PassRefPtr_d7fc6f43)_convertToDOMRange:(struct _NSRange)arg1;
+- (PassRefPtr_d7fc6f43)_convertToDOMRange:(struct _NSRange)arg1 rangeIsRelativeTo:(unsigned char)arg2;
 - (struct _NSRange)_convertToNSRange:(struct Range *)arg1;
 - (id)_dataSource;
 - (void)_detachScriptDebugger;
@@ -159,7 +160,6 @@
 - (void)expandSelectionToStartOfWordContainingCaretSelection;
 - (void)expandSelectionToWordContainingCaretSelection;
 - (void)extendSelection:(BOOL)arg1;
-- (void)finalize;
 - (id)findFrameNamed:(id)arg1;
 - (struct CGRect)firstRectForDOMRange:(id)arg1;
 - (BOOL)focusedNodeHasContent;
@@ -185,7 +185,6 @@
 - (void)loadHTMLString:(id)arg1 baseURL:(id)arg2;
 - (void)loadRequest:(id)arg1;
 - (id)markedTextDOMRange;
-- (BOOL)mediaDataLoadsAutomatically;
 - (void)moveSelectionToEnd;
 - (void)moveSelectionToPoint:(struct CGPoint)arg1;
 - (void)moveSelectionToStart;
@@ -236,7 +235,6 @@
 - (void)setIsActive:(BOOL)arg1;
 - (void)setMarkedText:(id)arg1 forCandidates:(BOOL)arg2;
 - (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
-- (void)setMediaDataLoadsAutomatically:(BOOL)arg1;
 - (void)setNeedsLayout;
 - (void)setPluginsPaused:(BOOL)arg1;
 - (void)setRangedSelectionBaseToCurrentSelection;

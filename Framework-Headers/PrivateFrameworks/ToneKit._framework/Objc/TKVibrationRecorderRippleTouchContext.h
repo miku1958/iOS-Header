@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface TKVibrationRecorderRippleTouchContext : NSObject
 {
@@ -12,9 +12,7 @@
     struct CGPoint _location;
 }
 
-@property (nonatomic, setter=_setCreationTimestamp:) double _creationTimestamp; // @synthesize _creationTimestamp;
-@property (nonatomic, setter=_setLocation:) struct CGPoint _location; // @synthesize _location;
-@property (readonly, nonatomic) struct CGPoint location;
+@property (readonly, nonatomic) struct CGPoint location; // @synthesize location=_location;
 
 - (void)configureWithTimeIntervalSinceCreation:(double)arg1 location:(struct CGPoint)arg2;
 - (id)init;

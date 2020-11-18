@@ -16,14 +16,10 @@
 @property (readonly, copy) NSString *name;
 @property (readonly) BOOL overset;
 
-- (void)addEventListener:(id)arg1 listener:(id)arg2 useCapture:(BOOL)arg3;
 - (void)dealloc;
-- (BOOL)dispatchEvent:(id)arg1;
-- (void)finalize;
 - (id)getContent;
 - (id)getRegions;
 - (id)getRegionsByContent:(id)arg1;
-- (void)removeEventListener:(id)arg1 listener:(id)arg2 useCapture:(BOOL)arg3;
 
 @end
 

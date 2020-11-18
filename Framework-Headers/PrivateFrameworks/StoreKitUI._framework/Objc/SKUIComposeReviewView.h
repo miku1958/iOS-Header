@@ -18,6 +18,7 @@
     id<SKUIComposeReviewViewDelegate> _delegate;
     SKUIComposeReviewHeaderView *_headerView;
     struct CGRect _keyboardFrame;
+    struct CGRect _remoteKeyboardFrame;
     unsigned int _loading:1;
     SULoadingView *_loadingView;
     SKUIReviewMetadata *_review;
@@ -43,6 +44,7 @@
 - (void)_keyboardVisibilityDidChangeNotification:(id)arg1;
 - (void)_layoutComposeView;
 - (void)_layoutLoadingView;
+- (void)_remoteKeyboardVisibilityDidChangeNotification:(id)arg1;
 - (id)_reviewPlaceholder;
 - (void)_showComposeView;
 - (void)_showLoadingView;

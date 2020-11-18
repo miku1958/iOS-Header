@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDNetworkMonitorDelegate-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/HMFNetMonitorDelegate-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegateHomeKit-Protocol.h>
 #import <HomeKitDaemon/NSURLSessionDelegate-Protocol.h>
 
-@class HMDHome, HMDNetworkMonitor, IDSService, NSHashTable, NSMutableArray, NSString, NSURLSession;
+@class HMDHome, HMFNetMonitor, IDSService, NSHashTable, NSMutableArray, NSString, NSURLSession;
 @protocol OS_dispatch_queue;
 
-@interface HMDRelayManager : NSObject <HMDNetworkMonitorDelegate, IDSServiceDelegateHomeKit, NSURLSessionDelegate>
+@interface HMDRelayManager : NSObject <HMFNetMonitorDelegate, IDSServiceDelegateHomeKit, NSURLSessionDelegate, HMFLogging>
 {
     BOOL _supported;
     BOOL _enabled;
@@ -28,7 +29,7 @@
     NSHashTable *_relayAccessories;
     NSMutableArray *_relayStreams;
     NSURLSession *_urlSession;
-    HMDNetworkMonitor *_networkMonitor;
+    HMFNetMonitor *_networkMonitor;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
@@ -41,7 +42,7 @@
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) IDSService *idsService; // @synthesize idsService=_idsService;
-@property (readonly, nonatomic) HMDNetworkMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
+@property (readonly, nonatomic) HMFNetMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
 @property (nonatomic, getter=isNetworkReachable) BOOL networkReachable; // @synthesize networkReachable=_networkReachable;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic) NSHashTable *relayAccessories; // @synthesize relayAccessories=_relayAccessories;
@@ -50,6 +51,7 @@
 @property (nonatomic, getter=isSupported) BOOL supported; // @synthesize supported=_supported;
 @property (readonly, nonatomic) NSURLSession *urlSession; // @synthesize urlSession=_urlSession;
 
++ (id)logCategory;
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)__resumeAllStreams;
@@ -84,6 +86,7 @@
 - (void)addUserToRelayAccessories:(id)arg1 consentTokens:(id)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)init;
 - (id)initWithHome:(id)arg1;
+- (id)logIdentifier;
 - (void)networkMonitorIsReachable:(id)arg1;
 - (void)networkMonitorIsUnreachable:(id)arg1;
 - (void)removeDelegate:(id)arg1;

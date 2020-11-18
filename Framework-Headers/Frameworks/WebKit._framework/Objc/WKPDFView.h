@@ -11,12 +11,13 @@
 #import <WebKit/UIPDFPageViewDelegate-Protocol.h>
 #import <WebKit/WKActionSheetAssistantDelegate-Protocol.h>
 #import <WebKit/WKWebViewContentProvider-Protocol.h>
+#import <WebKit/_WKWebViewPrintProvider-Protocol.h>
 
 @class NSObject, NSString, UIScrollView, WKWebView;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface WKPDFView : UIView <WKWebViewContentProvider, UIPDFPageViewDelegate, UIPDFAnnotationControllerDelegate, WKActionSheetAssistantDelegate, UIDocumentPasswordViewDelegate>
+@interface WKPDFView : UIView <_WKWebViewPrintProvider, WKWebViewContentProvider, UIPDFPageViewDelegate, UIPDFAnnotationControllerDelegate, WKActionSheetAssistantDelegate, UIDocumentPasswordViewDelegate>
 {
     struct RetainPtr<CGPDFDocument *> _cgPDFDocument;
     struct RetainPtr<UIPDFDocument> _pdfDocument;
@@ -46,21 +47,29 @@ __attribute__((visibility("hidden")))
     unsigned int _nextCachedFindMaximumCount;
     unsigned long long _nextCachedFindOptionsAffectingResults;
     NSObject<OS_dispatch_queue> *_findQueue;
+    struct RetainPtr<UIWKSelectionAssistant> _webSelectionAssistant;
     struct unique_ptr<WebKit::ApplicationStateTracker, std::__1::default_delete<WebKit::ApplicationStateTracker>> _applicationStateTracker;
 }
 
+@property (readonly, nonatomic) struct CGPDFDocument *_wk_printedDocument;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isBackground;
 @property (readonly, nonatomic) struct CGPDFDocument *pdfDocument;
 @property (readonly, nonatomic) NSString *suggestedFilename;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)_URLForLinkAnnotation:(id)arg1;
+- (void)_applicationDidCreateWindowContext;
 - (void)_applicationDidEnterBackground;
+- (void)_applicationDidFinishSnapshottingAfterEnteringBackground;
 - (void)_applicationWillEnterForeground;
 - (void)_clearPages;
 - (void)_computeMatchesForString:(id)arg1 options:(unsigned long long)arg2 maxCount:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -80,9 +89,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)_tryToUnlockWithPassword:(id)arg1;
 - (void)_updatePageNumberIndicator;
 - (void)_updatePasswordEntryField;
+- (unsigned long long)_wk_pageCountForPrintFormatter:(id)arg1;
 - (RetainPtr_f649c0c3)actionSheetAssistant:(id)arg1 decideActionsForElement:(id)arg2 defaultActions:(RetainPtr_f649c0c3)arg3;
 - (void)actionSheetAssistant:(id)arg1 openElementAtLocation:(struct CGPoint)arg2;
 - (void)actionSheetAssistant:(id)arg1 performAction:(int)arg2;
+- (void)actionSheetAssistant:(id)arg1 shareElementWithURL:(id)arg2 rect:(struct CGRect)arg3;
 - (BOOL)actionSheetAssistant:(id)arg1 shouldIncludeAppLinkActionsForElement:(id)arg2;
 - (void)annotation:(id)arg1 isBeingPressedAtPoint:(struct CGPoint)arg2 controller:(id)arg3;
 - (void)annotation:(id)arg1 wasTouchedAtPoint:(struct CGPoint)arg2 controller:(id)arg3;

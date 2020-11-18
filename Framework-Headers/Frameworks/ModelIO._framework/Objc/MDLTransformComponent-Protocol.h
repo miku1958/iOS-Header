@@ -6,13 +6,15 @@
 
 #import <ModelIO/MDLComponent-Protocol.h>
 
-@class MDLObject;
+@class MDLObject, NSArray;
 
 @protocol MDLTransformComponent <MDLComponent>
 
+@property (readonly, copy, nonatomic) NSArray *keyTimes;
 @property (nonatomic) CDStruct_14d5dc5e matrix;
 @property (readonly, nonatomic) double maximumTime;
 @property (readonly, nonatomic) double minimumTime;
+@property (nonatomic) BOOL resetsTransform;
 
 
 @optional

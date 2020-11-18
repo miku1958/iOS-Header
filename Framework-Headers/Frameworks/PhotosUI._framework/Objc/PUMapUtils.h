@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (unsigned long long)hashDouble:(double)arg1;
-+ (CDStruct_feeb6407)mapRectWithDesiredWidthMeters:(double)arg1 centeredAtCoordinate:(CDStruct_c3b9c2ee)arg2;
-+ (CDStruct_feeb6407)mapRectWithMinWidthMeters:(double)arg1 minHeightMeters:(double)arg2 enclosingLocations:(id)arg3;
++ (CDStruct_1f1f9651)mapRectWithDesiredWidthMeters:(double)arg1 centeredAtCoordinate:(struct CLLocationCoordinate2D)arg2;
++ (CDStruct_1f1f9651)mapRectWithMinWidthMeters:(double)arg1 minHeightMeters:(double)arg2 enclosingLocations:(id)arg3;
 + (void)runBlockOnMainThread:(CDUnknownBlockType)arg1;
 
 @end

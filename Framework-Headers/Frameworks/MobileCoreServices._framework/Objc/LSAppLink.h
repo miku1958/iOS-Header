@@ -25,14 +25,14 @@
 + (id)_appLinkWithURL:(id)arg1 applicationProxy:(id)arg2 plugIn:(id)arg3 error:(id *)arg4;
 + (void)_getAppLinkWithURL:(id)arg1 requireEntitlement:(BOOL)arg2 XPCConnection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (long long)_openStrategyForBundleIdentifier:(id)arg1;
-+ (void)_openWithState:(id)arg1 XPCConnection:(id)arg2 machPort:(unsigned int)arg3 completionHandler:(CDUnknownBlockType)arg4;
++ (void)_openWithState:(id)arg1 XPCConnection:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (void)_openWithState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)_setOpenStrategy:(long long)arg1 forBundleIdentifier:(id)arg2 XPCConnection:(id)arg3;
 + (BOOL)_shouldAppLinkOpenWithStrategy:(long long)arg1 XPCConnection:(id)arg2;
 + (void)considerPlugInClassAtIndex:(unsigned long long)arg1 plugInClasses:(id)arg2 URLComponents:(id)arg3 XPCConnection:(id)arg4 previousPlugInError:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 + (id)dispatchQueue;
 + (void)getAppLinkWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)openWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-+ (void)setShouldHandleURL:(id)arg1 fromBrowser:(BOOL)arg2 asAppLink:(BOOL)arg3;
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (id)debugDescription;

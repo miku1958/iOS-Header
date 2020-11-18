@@ -27,11 +27,13 @@
 @property (strong, nonatomic) NSMutableDictionary *uidToEntry; // @synthesize uidToEntry=_uidToEntry;
 
 + (id)favoritesPath;
++ (void)flushSingleton;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_addEntryToMap:(id)arg1;
 - (void)_delayedLookup;
 - (void)_entriesChangedExternally;
+- (id)_entryDictionaries;
 - (void)_entryIdentityChanged:(id)arg1;
 - (BOOL)_isValueForEntry:(id)arg1 equalToValue:(id)arg2;
 - (void)_postChangeNotification;
@@ -44,6 +46,7 @@
 - (BOOL)containsEntryWithType:(long long)arg1 forContact:(id)arg2 propertyKey:(id)arg3 identifier:(id)arg4;
 - (void)dealloc;
 - (id)entriesForContact:(id)arg1;
+- (id)entriesForContact:(id)arg1 propertyKey:(id)arg2 labeledValueIdentifier:(id)arg3 actionType:(id)arg4 bundleIdentifier:(id)arg5;
 - (id)entriesForContacts:(id)arg1;
 - (BOOL)entryIsDuplicateAndThusRemoved:(id)arg1 oldUid:(int)arg2;
 - (id)entryWithIdentifier:(id)arg1 forContact:(id)arg2;
@@ -57,6 +60,7 @@
 - (void)removeEntryAtIndex:(long long)arg1;
 - (void)save;
 - (void)saveImmediately;
+- (id)synchronousRemoteObjectProxyForContactsXPCService;
 
 @end
 

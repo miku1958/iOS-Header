@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *clocks; // @synthesize clocks=_clocks;
 
++ (Class)clocksType;
 + (void)initialize;
 - (void).cxx_destruct;
 - (BOOL)_setTheory_isEqual:(id)arg1;

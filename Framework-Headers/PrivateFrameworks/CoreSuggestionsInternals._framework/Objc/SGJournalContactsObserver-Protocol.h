@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreSuggestionsInternals/NSObject-Protocol.h>
+#import <CoreSuggestionsInternals/SGJournalBaseObserver-Protocol.h>
 
 @class SGStorageContact;
 
-@protocol SGJournalContactsObserver <NSObject>
+@protocol SGJournalContactsObserver <SGJournalBaseObserver>
 - (void)addContact:(SGStorageContact *)arg1;
 - (void)confirmContact:(SGStorageContact *)arg1;
 - (void)rejectContact:(SGStorageContact *)arg1;

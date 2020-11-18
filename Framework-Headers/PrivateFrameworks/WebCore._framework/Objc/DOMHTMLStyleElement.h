@@ -17,6 +17,8 @@
 @property (readonly) DOMStyleSheet *sheet;
 @property (copy) NSString *type;
 
+- (id)nonce;
+- (void)setNonce:(id)arg1;
 
 @end
 

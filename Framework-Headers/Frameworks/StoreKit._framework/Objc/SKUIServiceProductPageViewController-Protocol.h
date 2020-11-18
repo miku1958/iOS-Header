@@ -22,6 +22,7 @@
 - (void)setAskToBuy:(NSNumber *)arg1;
 - (void)setCancelButtonTitle:(NSString *)arg1;
 - (void)setClientIdentifier:(NSString *)arg1;
+- (void)setPreview:(NSNumber *)arg1;
 - (void)setProductPageStyle:(NSNumber *)arg1;
 - (void)setPromptString:(NSString *)arg1;
 - (void)setRightBarButtonTitle:(NSString *)arg1;

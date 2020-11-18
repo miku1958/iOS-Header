@@ -21,6 +21,9 @@ __attribute__((visibility("hidden")))
     BOOL _hasLightweightPCS;
     BOOL _hasTCCAuthorization;
     BOOL _allowsPowerNapScheduling;
+    BOOL _isOOPUI;
+    BOOL _allowsParticipantPII;
+    BOOL _displaysSystemAcceptPrompt;
     NSString *_apsEnvironmentString;
     long long _isApplication;
     NSString *_applicationIdentifier;
@@ -28,6 +31,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) BOOL allowCustomAccounts; // @synthesize allowCustomAccounts=_allowCustomAccounts;
+@property (nonatomic) BOOL allowsParticipantPII; // @synthesize allowsParticipantPII=_allowsParticipantPII;
 @property (nonatomic) BOOL allowsPowerNapScheduling; // @synthesize allowsPowerNapScheduling=_allowsPowerNapScheduling;
 @property (strong, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property (strong, nonatomic) NSString *apsEnvironmentString; // @synthesize apsEnvironmentString=_apsEnvironmentString;
@@ -36,11 +40,13 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL canSetDeviceIdentifier; // @synthesize canSetDeviceIdentifier=_canSetDeviceIdentifier;
 @property (nonatomic) BOOL canSetEnvironment; // @synthesize canSetEnvironment=_canSetEnvironment;
 @property (strong, nonatomic) NSString *clientPrefix; // @synthesize clientPrefix=_clientPrefix;
+@property (nonatomic) BOOL displaysSystemAcceptPrompt; // @synthesize displaysSystemAcceptPrompt=_displaysSystemAcceptPrompt;
 @property (nonatomic) BOOL hasAccessDuringBuddy; // @synthesize hasAccessDuringBuddy=_hasAccessDuringBuddy;
 @property (nonatomic) BOOL hasLightweightPCS; // @synthesize hasLightweightPCS=_hasLightweightPCS;
 @property (nonatomic) BOOL hasTCCAuthorization; // @synthesize hasTCCAuthorization=_hasTCCAuthorization;
 @property (nonatomic) long long isApplication; // @synthesize isApplication=_isApplication;
 @property (nonatomic) BOOL isCKSystemService; // @synthesize isCKSystemService=_isCKSystemService;
+@property (nonatomic) BOOL isOOPUI; // @synthesize isOOPUI=_isOOPUI;
 
 - (void).cxx_destruct;
 - (id)init;

@@ -6,19 +6,13 @@
 
 #import <RemoteUI/RUIElement.h>
 
-@class NSString, NSURL;
-
 @interface RUIFooterElement : RUIElement
 {
-    NSString *_text;
-    NSURL *_linkURL;
 }
 
-@property (copy, nonatomic) NSURL *linkURL; // @synthesize linkURL=_linkURL;
-@property (copy, nonatomic) NSString *text; // @synthesize text=_text;
-
-- (void).cxx_destruct;
 - (void)configureView:(id)arg1;
+- (long long)labelAlignment;
+- (id)linkURL;
 
 @end
 

@@ -10,6 +10,7 @@
 #import <FrontBoard/NSMutableCopying-Protocol.h>
 
 @class NSArray, NSDictionary, NSURL;
+@protocol FBProcessWatchdogProviding;
 
 @interface FBProcessExecutionContext : NSObject <NSCopying, NSMutableCopying>
 {
@@ -22,6 +23,7 @@
     BOOL _checkForLeaks;
     long long _launchIntent;
     unsigned int _launchAssertionFlags;
+    id<FBProcessWatchdogProviding> _watchdogProvider;
     double _watchdogExtension;
     double _watchdogScaleFactor;
 }
@@ -36,6 +38,7 @@
 @property (strong, nonatomic) NSURL *standardOutputURL; // @synthesize standardOutputURL=_standardOutputURL;
 @property (nonatomic) BOOL waitForDebugger; // @synthesize waitForDebugger=_waitForDebugger;
 @property (nonatomic) double watchdogExtension; // @synthesize watchdogExtension=_watchdogExtension;
+@property (strong, nonatomic) id<FBProcessWatchdogProviding> watchdogProvider; // @synthesize watchdogProvider=_watchdogProvider;
 @property (nonatomic) double watchdogScaleFactor; // @synthesize watchdogScaleFactor=_watchdogScaleFactor;
 
 - (id)_initWithExecutionContext:(id)arg1;

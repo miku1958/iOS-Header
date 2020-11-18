@@ -38,6 +38,7 @@
 @property (readonly, nonatomic) double duration;
 @property (strong, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly, copy, nonatomic) NSDictionary *feedbackDictionaryRepresentation;
+@property (readonly, nonatomic) BOOL hasLyrics;
 @property (nonatomic) BOOL inWishList;
 @property (readonly, nonatomic) BOOL isExplicit;
 @property (readonly, nonatomic) BOOL isPreorderAlbum; // @synthesize isPreorderAlbum=_isPreorderAlbum;

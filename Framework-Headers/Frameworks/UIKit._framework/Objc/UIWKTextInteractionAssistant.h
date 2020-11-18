@@ -6,9 +6,11 @@
 
 #import <UIKit/UITextInteractionAssistant.h>
 
+#import <UIKit/UIResponderStandardEditActions-Protocol.h>
+
 @class NSString, UILongPressGestureRecognizer, UITapGestureRecognizer, UITextChecker, _UITextServiceSession;
 
-@interface UIWKTextInteractionAssistant : UITextInteractionAssistant
+@interface UIWKTextInteractionAssistant : UITextInteractionAssistant <UIResponderStandardEditActions>
 {
     long long _selectionOperation;
     _UITextServiceSession *_definitionSession;
@@ -23,8 +25,12 @@
     UILongPressGestureRecognizer *_loupeGesture;
 }
 
-@property (strong, nonatomic) UILongPressGestureRecognizer *loupeGesture; // @synthesize loupeGesture=_loupeGesture;
-@property (readonly, strong, nonatomic) UITapGestureRecognizer *singleTapGesture; // @synthesize singleTapGesture=_singleTapGesture;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) UILongPressGestureRecognizer *loupeGesture; // @synthesize loupeGesture=_loupeGesture;
+@property (readonly, nonatomic) UITapGestureRecognizer *singleTapGesture; // @synthesize singleTapGesture=_singleTapGesture;
+@property (readonly) Class superclass;
 
 - (id)_asText;
 - (BOOL)containerAllowsSelection;
@@ -39,6 +45,7 @@
 - (id)initWithView:(id)arg1;
 - (void)legacyTwoFingerSingleTap:(id)arg1;
 - (void)lookup:(id)arg1 fromRect:(struct CGRect)arg2;
+- (void)lookup:(id)arg1 withRange:(struct _NSRange)arg2 fromRect:(struct CGRect)arg3;
 - (void)loupeGestureWithState:(long long)arg1 atGesturePoint:(CDUnknownBlockType)arg2 shouldCancel:(BOOL *)arg3;
 - (void)oneFingerDoubleTap:(id)arg1;
 - (void)oneFingerTap:(id)arg1;

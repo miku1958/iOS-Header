@@ -13,12 +13,14 @@ __attribute__((visibility("hidden")))
 {
     NSDate *_startDate;
     NSDate *_endDate;
-    NSDateComponents *_intervalComponents;
+    NSDateComponents *_moveIntervalComponents;
+    NSDateComponents *_exerciseIntervalComponents;
     double _updateInterval;
 }
 
 @property (copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
-@property (copy, nonatomic) NSDateComponents *intervalComponents; // @synthesize intervalComponents=_intervalComponents;
+@property (copy, nonatomic) NSDateComponents *exerciseIntervalComponents; // @synthesize exerciseIntervalComponents=_exerciseIntervalComponents;
+@property (copy, nonatomic) NSDateComponents *moveIntervalComponents; // @synthesize moveIntervalComponents=_moveIntervalComponents;
 @property (copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (nonatomic) double updateInterval; // @synthesize updateInterval=_updateInterval;
 

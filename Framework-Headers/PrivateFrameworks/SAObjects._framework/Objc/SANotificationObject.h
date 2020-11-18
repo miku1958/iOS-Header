@@ -16,6 +16,7 @@
 @property (copy, nonatomic) NSDate *date;
 @property (copy, nonatomic) NSNumber *dateIsAllDay;
 @property (copy, nonatomic) NSDate *endDate;
+@property (copy, nonatomic) NSString *notificationId;
 @property (copy, nonatomic) NSDate *recencyDate;
 @property (copy, nonatomic) NSString *timeZoneId;
 @property (copy, nonatomic) NSString *type;

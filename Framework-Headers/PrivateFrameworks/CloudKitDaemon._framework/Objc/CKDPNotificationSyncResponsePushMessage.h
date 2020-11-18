@@ -45,6 +45,7 @@
 @property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
 - (void).cxx_destruct;
+- (int)StringAsSource:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -53,6 +54,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)sourceAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

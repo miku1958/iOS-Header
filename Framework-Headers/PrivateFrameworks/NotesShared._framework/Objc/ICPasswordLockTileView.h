@@ -6,9 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class CALayer, UILabel;
+#import <NotesShared/CAAnimationDelegate-Protocol.h>
 
-@interface ICPasswordLockTileView : UIView
+@class CALayer, NSString, UILabel;
+
+@interface ICPasswordLockTileView : UIView <CAAnimationDelegate>
 {
     BOOL _isLocked;
     CALayer *_lockHandle;
@@ -23,13 +25,17 @@
 
 @property (strong, nonatomic) CALayer *backdropLayer; // @synthesize backdropLayer=_backdropLayer;
 @property (weak, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType fadeInCompletionHandler; // @synthesize fadeInCompletionHandler=_fadeInCompletionHandler;
 @property (copy, nonatomic) CDUnknownBlockType fadeOutCompletionHandler; // @synthesize fadeOutCompletionHandler=_fadeOutCompletionHandler;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isLocked; // @synthesize isLocked=_isLocked;
 @property (weak, nonatomic) UILabel *label; // @synthesize label=_label;
 @property (strong, nonatomic) CALayer *lockBase; // @synthesize lockBase=_lockBase;
 @property (strong, nonatomic) CALayer *lockGroupLayer; // @synthesize lockGroupLayer=_lockGroupLayer;
 @property (strong, nonatomic) CALayer *lockHandle; // @synthesize lockHandle=_lockHandle;
+@property (readonly) Class superclass;
 
 + (id)lockTileView;
 - (void).cxx_destruct;

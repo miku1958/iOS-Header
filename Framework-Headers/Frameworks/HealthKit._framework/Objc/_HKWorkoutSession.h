@@ -8,14 +8,13 @@
 
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSUUID;
+@class HKWorkoutConfiguration, NSDate, NSUUID;
 @protocol OS_dispatch_queue, _HKWorkoutSessionDelegate;
 
 @interface _HKWorkoutSession : NSObject <NSSecureCoding>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    unsigned long long _activityType;
-    long long _locationType;
+    HKWorkoutConfiguration *_workoutConfiguration;
     id<_HKWorkoutSessionDelegate> _delegate;
     long long _state;
     NSDate *_startDate;
@@ -23,22 +22,25 @@
     NSUUID *_UUID;
 }
 
-@property (readonly, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
-@property (readonly, nonatomic) unsigned long long activityType; // @synthesize activityType=_activityType;
+@property (strong, nonatomic, setter=_setUUID:) NSUUID *UUID; // @synthesize UUID=_UUID;
 @property (weak, nonatomic) id<_HKWorkoutSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly) NSDate *endDate; // @synthesize endDate=_endDate;
-@property (readonly, nonatomic) long long locationType; // @synthesize locationType=_locationType;
 @property (readonly) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (nonatomic) long long state; // @synthesize state=_state;
+@property (readonly, copy, nonatomic) HKWorkoutConfiguration *workoutConfiguration; // @synthesize workoutConfiguration=_workoutConfiguration;
 
++ (BOOL)areSwimmingSessionsAvailable;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_validateWorkoutSession;
+- (BOOL)_validateWorkoutConfiguration:(id)arg1 errorOut:(id *)arg2;
+- (id)description;
 - (void)didChangeToState:(long long)arg1 fromState:(long long)arg2 date:(id)arg3;
 - (void)didFailWithError:(id)arg1;
+- (void)didGenerateEvent:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithActivityType:(unsigned long long)arg1 locationType:(long long)arg2;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithConfiguration:(id)arg1 error:(id *)arg2;
 
 @end
 

@@ -4,52 +4,41 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <CoreBluetooth/CBManager.h>
 
-#import <CoreBluetooth/CBXpcConnectionDelegate-Protocol.h>
-
-@class CBXpcConnection, NSHashTable, NSMutableSet, NSSet, NSString;
+@class NSHashTable, NSMutableSet, NSSet;
 @protocol CBScalablePipeManagerDelegate;
 
-@interface CBScalablePipeManager : NSObject <CBXpcConnectionDelegate>
+@interface CBScalablePipeManager : CBManager
 {
-    id<CBScalablePipeManagerDelegate> _delegate;
-    CBXpcConnection *_connection;
     NSMutableSet *_identifiers;
+    id<CBScalablePipeManagerDelegate> _delegate;
     NSHashTable *_pipes;
-    long long _state;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) NSSet *identifiers; // @synthesize identifiers=_identifiers;
-@property (readonly) long long state; // @synthesize state=_state;
-@property (readonly) Class superclass;
+@property (weak, nonatomic) id<CBScalablePipeManagerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, strong, nonatomic) NSSet *identifiers; // @synthesize identifiers=_identifiers;
+@property (readonly, strong, nonatomic) NSHashTable *pipes; // @synthesize pipes=_pipes;
 
+- (void).cxx_destruct;
 - (void)dealloc;
-- (void)handleDataAvailable:(id)arg1 replyBlock:(CDUnknownBlockType)arg2;
 - (void)handleEndpointAdded:(id)arg1;
 - (void)handleEndpointRemoved:(id)arg1;
 - (void)handleHostStateUpdated:(id)arg1;
+- (void)handleMsg:(unsigned short)arg1 args:(id)arg2;
 - (void)handlePipeConnected:(id)arg1;
 - (void)handlePipeDisconnected:(id)arg1;
-- (void)handleStateUpdated:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2;
-- (BOOL)isMsgAllowedWhenOff:(int)arg1;
+- (BOOL)isMsgAllowedWhenOff:(unsigned short)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)orphanPipes;
 - (id)pipeForName:(id)arg1 identifier:(id)arg2;
 - (void)registerEndpoint:(id)arg1 type:(long long)arg2 priority:(long long)arg3;
-- (oneway void)release;
-- (BOOL)sendMsg:(int)arg1 args:(id)arg2;
+- (void)registerEndpoint:(id)arg1 type:(long long)arg2 priority:(long long)arg3 transport:(long long)arg4;
 - (void)setLinkRequirementsForPeer:(id)arg1 packetsPerSecond:(unsigned int)arg2 inputBytesPerSecond:(unsigned int)arg3 outputBytesPerSecond:(unsigned int)arg4;
 - (void)unregisterAllEndpoints;
 - (void)unregisterEndpoint:(id)arg1;
-- (void)xpcConnectionDidFinalize;
-- (void)xpcConnectionDidReceiveMsg:(unsigned short)arg1 args:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)xpcConnectionDidReset;
-- (void)xpcConnectionIsInvalid;
 
 @end
 

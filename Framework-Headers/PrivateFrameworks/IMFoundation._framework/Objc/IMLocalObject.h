@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSString;
+@class NSProtocolChecker, NSString;
 @protocol OS_xpc_object;
 
 @interface IMLocalObject : NSObject
@@ -15,9 +15,11 @@
 }
 
 @property (readonly, nonatomic) NSObject<OS_xpc_object> *connection;
+@property (readonly, nonatomic) BOOL forceSecureCoding;
 @property (readonly, nonatomic) BOOL isValid;
 @property (readonly, nonatomic) NSString *portName;
 @property (strong, nonatomic) NSString *processName;
+@property (readonly, nonatomic) NSProtocolChecker *protocolChecker;
 @property (nonatomic) id target;
 
 + (id)_imLocalObjectQueue;
@@ -46,7 +48,8 @@
 - (id)description;
 - (BOOL)handleInvocation:(id)arg1;
 - (id)initWithTarget:(id)arg1 connection:(id)arg2 protocol:(id)arg3;
-- (id)initWithTarget:(id)arg1 connection:(id)arg2 protocol:(id)arg3 offMainThread:(BOOL)arg4;
+- (id)initWithTarget:(id)arg1 connection:(id)arg2 protocol:(id)arg3 forceSecureCoding:(BOOL)arg4;
+- (id)initWithTarget:(id)arg1 connection:(id)arg2 protocol:(id)arg3 forceSecureCoding:(BOOL)arg4 offMainThread:(BOOL)arg5;
 - (id)initWithTarget:(id)arg1 portName:(id)arg2 protocol:(id)arg3;
 - (id)initWithTarget:(id)arg1 protocol:(id)arg2;
 - (void)invalidate;

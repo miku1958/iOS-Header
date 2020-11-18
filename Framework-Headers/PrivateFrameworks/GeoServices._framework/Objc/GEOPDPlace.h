@@ -14,6 +14,7 @@
 {
     unsigned long long _muid;
     unsigned long long _preferredMuid;
+    unsigned long long _updateVersion;
     NSMutableArray *_components;
     int _referenceFrame;
     int _resultProviderId;
@@ -21,6 +22,7 @@
     struct {
         unsigned int muid:1;
         unsigned int preferredMuid:1;
+        unsigned int updateVersion:1;
         unsigned int referenceFrame:1;
         unsigned int resultProviderId:1;
         unsigned int status:1;
@@ -33,15 +35,20 @@
 @property (nonatomic) BOOL hasReferenceFrame;
 @property (nonatomic) BOOL hasResultProviderId;
 @property (nonatomic) BOOL hasStatus;
+@property (nonatomic) BOOL hasUpdateVersion;
 @property (nonatomic) unsigned long long muid; // @synthesize muid=_muid;
 @property (nonatomic) unsigned long long preferredMuid; // @synthesize preferredMuid=_preferredMuid;
 @property (nonatomic) int referenceFrame;
 @property (nonatomic) int resultProviderId; // @synthesize resultProviderId=_resultProviderId;
 @property (nonatomic) int status; // @synthesize status=_status;
+@property (nonatomic) unsigned long long updateVersion; // @synthesize updateVersion=_updateVersion;
 
 + (id)attributionForPlaceData:(id)arg1 type:(int)arg2;
++ (Class)componentType;
 + (id)failedPlaceData;
 + (id)failedPlaceDataForMuid:(unsigned long long)arg1;
+- (int)StringAsReferenceFrame:(id)arg1;
+- (int)StringAsStatus:(id)arg1;
 - (id)_cleanedPhoneNumberForPhoneNumberRepresentation:(id)arg1;
 - (id)_entityName;
 - (void)_removeETAComponents;
@@ -60,16 +67,20 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)geoMapItem;
+- (id)geoMapItemWithDetourInfo:(id)arg1;
 - (BOOL)hasExpiredComponentsAsOf:(double)arg1;
 - (unsigned long long)hash;
 - (BOOL)isCacheable;
 - (BOOL)isDisputed;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (BOOL)phoneNumberOptsOutOfAds:(id)arg1;
 - (id)phoneNumbers;
 - (BOOL)readFrom:(id)arg1;
+- (id)referenceFrameAsString:(int)arg1;
 - (void)setFirstSeenTimestamp:(double)arg1;
 - (id)spokenNameForLocale:(id)arg1;
+- (id)statusAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

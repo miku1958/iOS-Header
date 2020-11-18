@@ -33,9 +33,9 @@
 + (id)taskmasterForMachServiceWithName:(id)arg1;
 + (id)taskmasterForUIApplicationWithBundleIdentifier:(id)arg1;
 - (void).cxx_destruct;
-- (void)_handleFailureOfRequest:(id)arg1 error:(id)arg2;
+- (void)_handleFailureOfRequest:(id)arg1 error:(id)arg2 atTime:(unsigned long long)arg3;
 - (void)dealloc;
-- (void)handleFailureOfRequest:(id)arg1 error:(id)arg2;
+- (void)handleFailureOfRequest:(id)arg1 error:(id)arg2 atTime:(unsigned long long)arg3;
 - (void)handleSiriRequest:(id)arg1 deliveryHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)handleSiriTaskUsageResult:(id)arg1 fromRequest:(id)arg2;
 - (id)initWithTaskDeliverer:(id)arg1;

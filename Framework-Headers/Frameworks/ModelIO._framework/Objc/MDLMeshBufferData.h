@@ -19,6 +19,7 @@
     unsigned long long _length;
     id<MDLMeshBufferAllocator> _allocator;
     unsigned long long _type;
+    NSString *_name;
 }
 
 @property (readonly, strong, nonatomic) id<MDLMeshBufferAllocator> allocator;
@@ -39,6 +40,8 @@
 - (id)initWithType:(unsigned long long)arg1 data:(id)arg2;
 - (id)initWithType:(unsigned long long)arg1 length:(unsigned long long)arg2;
 - (id)map;
+- (id)name;
+- (void)setName:(id)arg1;
 
 @end
 

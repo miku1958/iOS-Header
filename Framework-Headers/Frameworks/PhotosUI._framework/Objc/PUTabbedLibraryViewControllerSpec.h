@@ -6,24 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class PUAlbumListViewController, PUAlbumListViewControllerSpec, PUFeedViewControllerSpec, PUZoomableGridViewControllerSpec;
-
 @interface PUTabbedLibraryViewControllerSpec : NSObject
 {
-    PUAlbumListViewControllerSpec *_albumListViewControllerSpec;
-    PUAlbumListViewController *_createAlbumListViewController;
-    PUAlbumListViewController *_createSharedAlbumListViewController;
-    PUZoomableGridViewControllerSpec *_zoomableGridViewControllerSpec;
-    PUFeedViewControllerSpec *_feedViewControllerSpec;
 }
 
-@property (readonly, nonatomic) PUAlbumListViewControllerSpec *albumListViewControllerSpec; // @synthesize albumListViewControllerSpec=_albumListViewControllerSpec;
-@property (readonly, nonatomic) PUAlbumListViewController *createAlbumListViewController; // @synthesize createAlbumListViewController=_createAlbumListViewController;
-@property (readonly, nonatomic) PUAlbumListViewController *createSharedAlbumListViewController; // @synthesize createSharedAlbumListViewController=_createSharedAlbumListViewController;
-@property (readonly, nonatomic) PUFeedViewControllerSpec *feedViewControllerSpec; // @synthesize feedViewControllerSpec=_feedViewControllerSpec;
-@property (readonly, nonatomic) PUZoomableGridViewControllerSpec *zoomableGridViewControllerSpec; // @synthesize zoomableGridViewControllerSpec=_zoomableGridViewControllerSpec;
-
-- (void).cxx_destruct;
+- (id)albumListViewControllerSpec;
+- (id)createAlbumListViewController;
+- (id)createMemoriesViewController;
+- (id)createSharedAlbumListViewController;
+- (id)feedViewControllerSpec;
+- (id)zoomableGridViewControllerSpec;
 
 @end
 

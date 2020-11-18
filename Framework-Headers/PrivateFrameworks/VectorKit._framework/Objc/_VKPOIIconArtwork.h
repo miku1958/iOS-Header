@@ -11,14 +11,14 @@ __attribute__((visibility("hidden")))
 {
     struct CGImage *_glyphImage;
     struct VKIconStyleInfo _style;
+    BOOL _hasText;
 }
 
 - (id).cxx_construct;
 - (void)_cleanUpAfterDrawing;
 - (id)_newImage;
 - (void)dealloc;
-- (id)initWithGlyph:(struct CGImage *)arg1 style:(struct VKIconStyleInfo *)arg2 contentScale:(double)arg3;
-- (struct CGSize)size;
+- (id)initWithGlyph:(struct CGImage *)arg1 style:(struct VKIconStyleInfo *)arg2 contentScale:(double)arg3 hasText:(BOOL)arg4;
 
 @end
 

@@ -6,32 +6,41 @@
 
 #import <objc/NSObject.h>
 
+#import <StoreKitUI/SKUISearchControllerDelegate-Protocol.h>
 #import <StoreKitUI/SKUITrendingSearchPageViewDelegate-Protocol.h>
+#import <StoreKitUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <StoreKitUI/UISearchBarDelegate-Protocol.h>
-#import <StoreKitUI/UISearchDisplayDelegate-Protocol.h>
+#import <StoreKitUI/UISearchResultsUpdating-Protocol.h>
 #import <StoreKitUI/UITableViewDataSource-Protocol.h>
 #import <StoreKitUI/UITableViewDelegate-Protocol.h>
 
-@class NSOperationQueue, NSString, SKUIClientContext, SKUICompletionList, SKUISearchBar, SKUISearchDisplayController, SSVLoadURLOperation, UISearchBar, UIViewController;
+@class NSOperationQueue, NSString, SKUIClientContext, SKUICompletionList, SKUISearchController, SSVLoadURLOperation, UISearchBar, UITableViewController, UIViewController;
 @protocol SKUISearchFieldDelegate;
 
-@interface SKUISearchFieldController : NSObject <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, SKUITrendingSearchPageViewDelegate>
+@interface SKUISearchFieldController : NSObject <SKUISearchControllerDelegate, UISearchResultsUpdating, UIPopoverPresentationControllerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, SKUITrendingSearchPageViewDelegate>
 {
-    NSString *_baseHintsURLString;
-    SKUIClientContext *_clientContext;
     SKUICompletionList *_completionList;
-    id<SKUISearchFieldDelegate> _delegate;
     SSVLoadURLOperation *_loadOperation;
-    long long _numberOfSearchResults;
     NSOperationQueue *_operationQueue;
-    SKUISearchBar *_searchBar;
+    UITableViewController *_searchResultsController;
+    SKUISearchController *_searchController;
+    struct {
+        unsigned int searchFieldControllerRequestSearch:1;
+        unsigned int searchFieldControllerSearchBarDidChangeText:1;
+        unsigned int searchFieldControllerShouldBeginEditing:1;
+    } _delegateRespondsTo;
+    UIViewController *_contentsController;
+    SKUIClientContext *_clientContext;
+    id<SKUISearchFieldDelegate> _delegate;
     NSString *_searchBarAccessoryText;
-    SKUISearchDisplayController *_searchDisplayController;
+    NSString *_searchHintsURLString;
     NSString *_trendingSearchURLString;
+    long long _numberOfSearchResults;
 }
 
+@property (readonly, nonatomic) BOOL canBecomeActive;
 @property (strong, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;
-@property (readonly, nonatomic) UIViewController *contentsController;
+@property (readonly, weak, nonatomic) UIViewController *contentsController; // @synthesize contentsController=_contentsController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SKUISearchFieldDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -40,7 +49,7 @@
 @property (nonatomic) long long numberOfSearchResults; // @synthesize numberOfSearchResults=_numberOfSearchResults;
 @property (readonly, nonatomic) UISearchBar *searchBar;
 @property (copy, nonatomic) NSString *searchBarAccessoryText; // @synthesize searchBarAccessoryText=_searchBarAccessoryText;
-@property (copy, nonatomic) NSString *searchHintsURLString; // @synthesize searchHintsURLString=_baseHintsURLString;
+@property (copy, nonatomic) NSString *searchHintsURLString; // @synthesize searchHintsURLString=_searchHintsURLString;
 @property (nonatomic) BOOL showsResultsForEmptyField;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *trendingSearchURLString; // @synthesize trendingSearchURLString=_trendingSearchURLString;
@@ -49,26 +58,31 @@
 - (id)URLForTrendingSearchPageView:(id)arg1;
 - (void)_adjustInsetsForResultsTableView:(id)arg1;
 - (void)_loadResultsForSearchRequest:(id)arg1;
+- (BOOL)_presentsInPopover:(id)arg1;
 - (void)_reloadData;
 - (void)_reloadTrendingVisibility;
-- (Class)_resultsTableViewClass;
 - (void)_setResponse:(id)arg1 error:(id)arg2;
-- (void)dealloc;
+- (void)becomeActive;
 - (id)initWithContentsController:(id)arg1;
+- (id)initWithContentsController:(id)arg1 clientContext:(id)arg2;
+- (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
+- (void)prepareForPopoverPresentation:(id)arg1;
+- (void)presentSearchController:(id)arg1;
 - (void)resignActive:(BOOL)arg1;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (void)searchBarSearchButtonClicked:(id)arg1;
-- (BOOL)searchBarShouldBeginTouches:(id)arg1;
-- (void)searchBarTextDidEndEditing:(id)arg1;
-- (void)searchDisplayController:(id)arg1 didLoadSearchResultsTableView:(id)arg2;
-- (BOOL)searchDisplayController:(id)arg1 shouldReloadTableForSearchString:(id)arg2;
-- (void)searchDisplayController:(id)arg1 willShowSearchResultsTableView:(id)arg2;
-- (void)searchDisplayControllerWillBeginSearch:(id)arg1;
+- (BOOL)searchBarShouldBeginEditing:(id)arg1;
+- (BOOL)searchBarShouldClear:(id)arg1;
+- (id)searchControllerClientContext:(id)arg1;
+- (void)searchControllerWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)setSearchTerm:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)trendingSearchPageView:(id)arg1 didSelectSearch:(id)arg2;
+- (void)updateSearchResultsForSearchController:(id)arg1;
+- (void)willDismissSearchController:(id)arg1;
+- (void)willPresentSearchController:(id)arg1;
 
 @end
 

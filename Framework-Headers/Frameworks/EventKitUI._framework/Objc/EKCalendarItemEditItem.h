@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)forceRefreshLocationItemOnSave;
 - (BOOL)forceRefreshStartAndEndDatesOnSave;
 - (BOOL)forceTableReloadOnSave;
+- (id)headerTitle;
 - (id)injectableViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
 - (BOOL)isInline;
 - (void)notifyDidEndEditing;
@@ -74,7 +75,6 @@ __attribute__((visibility("hidden")))
 - (void)setCalendarItem:(id)arg1 store:(id)arg2;
 - (BOOL)shouldAppearWithVisibility:(int)arg1;
 - (BOOL)shouldPinKeyboard;
-- (id)titleForHeader;
 - (BOOL)usesDetailViewControllerForSubitem:(unsigned long long)arg1;
 - (id)viewForActionSheet;
 

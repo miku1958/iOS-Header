@@ -11,22 +11,24 @@
 __attribute__((visibility("hidden")))
 @interface CKVOBlockHelper : NSObject
 {
-    NSMutableDictionary *blocksForIdentifier;
-    id observedObject;
+    id _observedObject;
+    NSMutableDictionary *_tokensByContext;
+    long long _nextIdentifier;
 }
 
-@property (readonly, nonatomic) NSMutableDictionary *blocksForIdentifier; // @synthesize blocksForIdentifier;
-@property (readonly, weak, nonatomic) id observedObject; // @synthesize observedObject;
+@property (nonatomic) long long nextIdentifier; // @synthesize nextIdentifier=_nextIdentifier;
+@property (readonly, weak, nonatomic) id observedObject; // @synthesize observedObject=_observedObject;
+@property (readonly, nonatomic) NSMutableDictionary *tokensByContext; // @synthesize tokensByContext=_tokensByContext;
 
-+ (id)helperForObject:(id)arg1 create:(BOOL)arg2;
 - (void).cxx_destruct;
-- (id)canonicalKeyForKey:(id)arg1;
+- (id)allKVOObservers;
 - (void)dealloc;
 - (id)debugDescription;
+- (void)dump;
 - (id)initWithObject:(id)arg1;
-- (id)keyForKeyPath:(id)arg1 identifier:(id)arg2;
-- (id)keypathForKey:(id)arg1;
+- (id)insertNewTokenForKeyPath:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)removeHandlerForKey:(id)arg1;
 
 @end
 

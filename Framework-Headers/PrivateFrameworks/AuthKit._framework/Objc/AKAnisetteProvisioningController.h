@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSLock, NSXPCConnection;
+@class AKDevice, NSLock, NSXPCConnection, NSXPCListenerEndpoint;
 @protocol OS_dispatch_queue;
 
 @interface AKAnisetteProvisioningController : NSObject
@@ -14,16 +14,23 @@
     NSXPCConnection *_anisetteServiceConnection;
     NSObject<OS_dispatch_queue> *_replyHandlingQueue;
     NSLock *_connectionLock;
+    NSXPCListenerEndpoint *_daemonXPCEndpoint;
+    AKDevice *_targetDevice;
 }
 
 - (void).cxx_destruct;
 - (id)_anisetteServiceConnection;
+- (id)_initForDevice:(id)arg1 daemonXPCEndpoint:(id)arg2;
 - (void)anisetteDataForURLRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)anisetteDataWithCompletion:(CDUnknownBlockType)arg1;
+- (id)anisetteDataWithError:(id *)arg1;
 - (void)dealloc;
 - (void)eraseWithCompletion:(CDUnknownBlockType)arg1;
+- (id)fetchAnisetteDataAndProvisionIfNecessary:(BOOL)arg1 error:(id *)arg2;
 - (void)fetchAnisetteDataAndProvisionIfNecessary:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)init;
+- (id)initForDevice:(id)arg1;
+- (id)initWithDaemonXPCEndpoint:(id)arg1;
 - (void)legacyAnisetteDataForDSID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)provisionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)syncWithSIMData:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -7,14 +7,16 @@
 #import <StoreKitUI/SKUIViewController.h>
 
 #import <StoreKitUI/SKUIDocumentViewController-Protocol.h>
+#import <StoreKitUI/SKUIResourceLoaderDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, SKUIChartColumnsView, SKUIChartsTemplateViewElement;
+@class NSMutableArray, NSString, SKUIChartColumnsView, SKUIChartsTemplateViewElement, SKUIResourceLoader;
 
-@interface SKUIChartsDocumentViewController : SKUIViewController <SKUIDocumentViewController>
+@interface SKUIChartsDocumentViewController : SKUIViewController <SKUIResourceLoaderDelegate, SKUIDocumentViewController>
 {
     SKUIChartColumnsView *_chartsView;
     NSMutableArray *_columnViewControllers;
     SKUIChartsTemplateViewElement *_templateElement;
+    SKUIResourceLoader *_resourceLoader;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,12 +29,15 @@
 - (struct UIEdgeInsets)_chartInsets;
 - (id)_columnViewControllers;
 - (id)_newColumnViewControllersWithReusableViewControllers:(id)arg1;
+- (id)_resourceLoader;
 - (long long)_visibleColumnCountForWidth:(double)arg1;
 - (id)contentScrollView;
 - (void)documentDidUpdate:(id)arg1;
 - (void)documentMediaQueriesDidUpdate:(id)arg1;
 - (id)initWithTemplateElement:(id)arg1;
 - (void)loadView;
+- (void)resourceLoader:(id)arg1 didLoadAllForReason:(long long)arg2;
+- (void)resourceLoaderDidBeginLoading:(id)arg1;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (void)skui_viewWillAppear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;

@@ -8,7 +8,7 @@
 
 #import <FrontBoardServices/FBSSceneSnapshotRequestDelegate-Protocol.h>
 
-@class FBSSceneSnapshotRequestHandle, NSMutableArray, NSString;
+@class BSSettings, FBSSceneSnapshotRequestHandle, NSMutableArray, NSString;
 
 @interface FBSSceneSnapshotAction : FBSSceneAction <FBSSceneSnapshotRequestDelegate>
 {
@@ -17,8 +17,10 @@
     CDUnknownBlockType _completionHandler;
     FBSSceneSnapshotRequestHandle *_outgoingRequestHandle;
     int _expired;
+    BSSettings *_clientExtendedData;
 }
 
+@property (copy, nonatomic) BSSettings *clientExtendedData; // @synthesize clientExtendedData=_clientExtendedData;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

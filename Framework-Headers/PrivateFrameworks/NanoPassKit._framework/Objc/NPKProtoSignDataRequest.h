@@ -8,24 +8,35 @@
 
 #import <NanoPassKit/NSCopying-Protocol.h>
 
-@class NSData;
+@class NSData, NSString;
 
 @interface NPKProtoSignDataRequest : PBRequest <NSCopying>
 {
+    NSString *_aid;
     NSData *_dataToSign;
     NSData *_digestToSign;
+    int _entanglementMode;
+    struct {
+        unsigned int entanglementMode:1;
+    } _has;
 }
 
+@property (strong, nonatomic) NSString *aid; // @synthesize aid=_aid;
 @property (strong, nonatomic) NSData *dataToSign; // @synthesize dataToSign=_dataToSign;
 @property (strong, nonatomic) NSData *digestToSign; // @synthesize digestToSign=_digestToSign;
+@property (nonatomic) int entanglementMode; // @synthesize entanglementMode=_entanglementMode;
+@property (readonly, nonatomic) BOOL hasAid;
 @property (readonly, nonatomic) BOOL hasDataToSign;
 @property (readonly, nonatomic) BOOL hasDigestToSign;
+@property (nonatomic) BOOL hasEntanglementMode;
 
 - (void).cxx_destruct;
+- (int)StringAsEntanglementMode:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)entanglementModeAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

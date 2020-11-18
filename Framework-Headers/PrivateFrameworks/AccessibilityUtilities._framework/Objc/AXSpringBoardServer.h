@@ -53,14 +53,13 @@
 - (id)applicationWithIdentifier:(id)arg1;
 - (BOOL)areSystemGesturesDisabledByAccessibility;
 - (BOOL)areSystemGesturesDisabledNatively;
-- (void)backboardSnarfedMenuDown;
 - (void)cancelReachabilityDetection;
 - (void)cleanupAlertHandler;
 - (BOOL)clearSideAppState;
 - (void)copyStringToPasteboard:(id)arg1;
 - (void)dealloc;
 - (void)dismissAppSwitcher;
-- (void)dismissSiri;
+- (BOOL)dismissSiri;
 - (id)focusedAppPID;
 - (id)focusedAppProcess;
 - (id)focusedApps;
@@ -74,6 +73,8 @@
 - (BOOL)isAppSwitcherVisible;
 - (BOOL)isControlCenterVisible;
 - (BOOL)isInspectorMinimized;
+- (BOOL)isMagnifierVisible;
+- (void)isMagnifierVisibleWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)isMakingEmergencyCall;
 - (BOOL)isMediaPlaying;
 - (BOOL)isMediaPlayingForApp:(id)arg1;
@@ -95,6 +96,7 @@
 - (BOOL)isSiriVisible;
 - (BOOL)isSoftwareUpdateUIVisible;
 - (BOOL)isSpeakThisTemporarilyDisabled;
+- (BOOL)isStickyNotificationVisible;
 - (BOOL)isSyncingRestoringResettingOrUpdating;
 - (BOOL)isSystemAppFrontmost;
 - (void)isSystemAppFrontmost:(CDUnknownBlockType)arg1;
@@ -102,10 +104,12 @@
 - (BOOL)isSystemAppShowingAnAlert;
 - (BOOL)isSystemSleeping;
 - (BOOL)isVoiceControlRunning;
+- (void)launchMagnifierApp;
+- (BOOL)loadGAXBundleForUnmanagedASAM;
 - (void)openAppSwitcher;
 - (void)openAssistiveTouchCustomGestureCreation;
 - (void)openSCATCustomGestureCreation;
-- (void)openSiri;
+- (BOOL)openSiri;
 - (void)openVoiceControl;
 - (void)pauseMedia;
 - (void)pauseMediaForApp:(id)arg1;
@@ -129,6 +133,7 @@
 - (void)screenLockStatus:(CDUnknownBlockType)arg1;
 - (void)setCancelGestureActivation:(unsigned long long)arg1 cancelEnabled:(BOOL)arg2;
 - (void)setHearingAidControlVisible:(BOOL)arg1;
+- (void)setLockScreenDimTimerEnabled:(BOOL)arg1;
 - (void)setOrientationLocked:(BOOL)arg1;
 - (void)setReachabilityActive:(BOOL)arg1;
 - (void)setShowSpeechPlaybackControls:(BOOL)arg1;
@@ -147,7 +152,9 @@
 - (void)toggleNotificationCenter;
 - (int)topEventPidOverride;
 - (void)unlockDevice;
+- (void)userEventOccurred;
 - (double)volumeLevel;
+- (void)wakeUpDeviceIfNecessary;
 
 @end
 

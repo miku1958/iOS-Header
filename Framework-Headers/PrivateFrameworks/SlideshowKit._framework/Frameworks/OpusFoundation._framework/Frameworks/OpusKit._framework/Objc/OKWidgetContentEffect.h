@@ -6,11 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
+#import <OpusKit/CAAnimationDelegate-Protocol.h>
 #import <OpusKit/OKSettingsSupport-Protocol.h>
 
 @class CAAnimation, NSDictionary, NSString, OFUIView;
 
-@interface OKWidgetContentEffect : NSObject <OKSettingsSupport>
+@interface OKWidgetContentEffect : NSObject <CAAnimationDelegate, OKSettingsSupport>
 {
     NSString *_uuid;
     NSDictionary *_settings;

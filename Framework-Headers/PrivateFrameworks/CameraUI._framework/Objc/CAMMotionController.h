@@ -12,7 +12,6 @@
 
 @interface CAMMotionController : NSObject <BKSAccelerometerDelegate>
 {
-    long long _deviceOrientation;
     long long _dominantPhysicalButton;
     long long __cachedCaptureOrientation;
     BKSAccelerometer *__accelerometer;
@@ -27,16 +26,13 @@
 @property (readonly, nonatomic) long long captureOrientation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) long long deviceOrientation; // @synthesize deviceOrientation=_deviceOrientation;
-@property (nonatomic) long long dominantPhysicalButton; // @synthesize dominantPhysicalButton=_dominantPhysicalButton;
+@property (nonatomic, setter=_setDominantPhysicalButton:) long long dominantPhysicalButton; // @synthesize dominantPhysicalButton=_dominantPhysicalButton;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long interfaceOrientation;
 @property (readonly, nonatomic) long long panoramaCaptureOrientation;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (long long)_applyPanoramaTransformToOrientation:(long long)arg1;
-- (void)_setDeviceOrientation:(long long)arg1;
-- (void)_setDominantPhysicalButton:(long long)arg1;
 - (void)_updatePhysicalButtonObservation;
 - (void)accelerometer:(id)arg1 didAccelerateWithTimeStamp:(double)arg2 x:(float)arg3 y:(float)arg4 z:(float)arg5 eventType:(int)arg6;
 - (void)accelerometer:(id)arg1 didChangeDeviceOrientation:(int)arg2;

@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
 
 - (void)_accessibilityActivate;
 - (struct CGPoint)_accessibilityConvertPointToViewSpace:(struct CGPoint)arg1;
+- (struct WebAccessibilityObjectWrapper *)_accessibilityFieldsetAncestor;
+- (BOOL)_accessibilityHasTouchEventListener;
 - (BOOL)_accessibilityIsLandmarkRole:(int)arg1;
 - (struct WebAccessibilityObjectWrapper *)_accessibilityLandmarkAncestor;
 - (struct WebAccessibilityObjectWrapper *)_accessibilityListAncestor;
@@ -32,12 +34,14 @@ __attribute__((visibility("hidden")))
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (void)_accessibilitySetValue:(id)arg1;
 - (struct WebAccessibilityObjectWrapper *)_accessibilityTableAncestor;
+- (unsigned long long)_accessibilityTextEntryTraits;
 - (unsigned long long)_accessibilityTraitsFromAncestors;
 - (BOOL)_accessibilityValueIsAutofilled;
 - (id)_accessibilityWebDocumentView;
 - (BOOL)_addAccessibilityObject:(struct AccessibilityObject *)arg1 toTextMarkerArray:(id)arg2;
 - (unsigned long long)_axAdjustableTrait;
 - (unsigned long long)_axButtonTrait;
+- (unsigned long long)_axContainedByFieldsetTrait;
 - (unsigned long long)_axContainedByLandmarkTrait;
 - (unsigned long long)_axContainedByListTrait;
 - (unsigned long long)_axContainedByTableTrait;
@@ -49,27 +53,36 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_axNotEnabledTrait;
 - (unsigned long long)_axPopupButtonTrait;
 - (unsigned long long)_axRadioButtonTrait;
+- (unsigned long long)_axSearchFieldTrait;
 - (unsigned long long)_axSecureTextFieldTrait;
 - (unsigned long long)_axSelectedTrait;
 - (unsigned long long)_axStaticTextTrait;
 - (unsigned long long)_axTabButtonTrait;
+- (unsigned long long)_axTextAreaTrait;
 - (unsigned long long)_axTextEntryTrait;
 - (unsigned long long)_axTextOperationsAvailableTrait;
 - (unsigned long long)_axToggleTrait;
+- (unsigned long long)_axUpdatesFrequentlyTrait;
 - (unsigned long long)_axVisitedTrait;
 - (unsigned long long)_axWebContentTrait;
-- (PassRefPtr_d7fc6f43)_convertToDOMRange:(struct _NSRange)arg1;
+- (RefPtr_59db400e)_convertToDOMRange:(struct _NSRange)arg1;
 - (struct _NSRange)_convertToNSRange:(struct Range *)arg1;
 - (BOOL)_prepareAccessibilityCall;
 - (id)_stringForRange:(struct _NSRange)arg1 attributed:(BOOL)arg2;
+- (unsigned long long)accessibilityARIAColumnCount;
+- (unsigned long long)accessibilityARIAColumnIndex;
+- (id)accessibilityARIACurrentStatus;
 - (BOOL)accessibilityARIAIsBusy;
 - (BOOL)accessibilityARIALiveRegionIsAtomic;
 - (id)accessibilityARIALiveRegionStatus;
 - (id)accessibilityARIARelevantStatus;
+- (unsigned long long)accessibilityARIARowCount;
+- (unsigned long long)accessibilityARIARowIndex;
 - (struct CGPoint)accessibilityActivationPoint;
 - (BOOL)accessibilityCanFuzzyHitTest;
 - (BOOL)accessibilityCanSetValue;
 - (struct CGPoint)accessibilityClickPoint;
+- (unsigned long long)accessibilityColumnCount;
 - (struct _NSRange)accessibilityColumnRange;
 - (id)accessibilityContainer;
 - (void)accessibilityDecreaseSelection:(int)arg1;
@@ -90,7 +103,9 @@ __attribute__((visibility("hidden")))
 - (void)accessibilityIncreaseSelection:(int)arg1;
 - (void)accessibilityIncrement;
 - (id)accessibilityInvalidStatus;
+- (BOOL)accessibilityIsAttachmentElement;
 - (BOOL)accessibilityIsComboBox;
+- (BOOL)accessibilityIsDialog;
 - (BOOL)accessibilityIsExpanded;
 - (BOOL)accessibilityIsMathTopObject;
 - (BOOL)accessibilityIsPressed;
@@ -121,6 +136,7 @@ __attribute__((visibility("hidden")))
 - (struct WebAccessibilityObjectWrapper *)accessibilityPostProcessHitTest:(struct CGPoint)arg1;
 - (BOOL)accessibilityRequired;
 - (id)accessibilityRoleDescription;
+- (unsigned long long)accessibilityRowCount;
 - (struct _NSRange)accessibilityRowRange;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (id)accessibilitySpeechHint;
@@ -137,6 +153,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)convertPointToScreenSpace:(struct FloatPoint *)arg1;
 - (struct CGRect)convertRectToScreenSpace:(struct IntRect *)arg1;
 - (void)dealloc;
+- (id)description;
 - (void)detach;
 - (BOOL)determineIsAccessibilityElement;
 - (void)disableAttributeCaching;
@@ -150,8 +167,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)isAccessibilityElement;
 - (BOOL)isAttachment;
 - (BOOL)isSVGGroupElement;
+- (long long)lengthForTextMarkers:(id)arg1;
 - (id)lineEndMarkerForMarker:(id)arg1;
 - (id)lineStartMarkerForMarker:(id)arg1;
+- (id)nextMarkerForCharacterOffset:(struct CharacterOffset *)arg1;
 - (id)nextMarkerForMarker:(id)arg1;
 - (long long)positionForTextMarker:(id)arg1;
 - (void)postChildrenChangedNotification;
@@ -165,9 +184,12 @@ __attribute__((visibility("hidden")))
 - (void)postScrollStatusChangeNotification;
 - (void)postSelectedTextChangeNotification;
 - (void)postValueChangedNotification;
+- (id)previousMarkerForCharacterOffset:(struct CharacterOffset *)arg1;
 - (id)previousMarkerForMarker:(id)arg1;
+- (RefPtr_59db400e)rangeForTextMarkers:(id)arg1;
 - (id)selectedTextMarker;
 - (id)selectionRangeString;
+- (id)startOrEndTextMarkerForTextMarkers:(id)arg1 isStart:(BOOL)arg2;
 - (id)stringForRange:(struct _NSRange)arg1;
 - (id)stringForTextMarkers:(id)arg1;
 - (BOOL)stringValueShouldBeUsedInLabel;
@@ -176,7 +198,9 @@ __attribute__((visibility("hidden")))
 - (id)textMarkerForPoint:(struct CGPoint)arg1;
 - (id)textMarkerForPosition:(long long)arg1;
 - (id)textMarkerRange;
+- (id)textMarkerRangeForMarkers:(id)arg1;
 - (id)textMarkerRangeForSelection;
+- (id)textMarkersForRange:(RefPtr_59db400e)arg1;
 
 @end
 

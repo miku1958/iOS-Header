@@ -8,7 +8,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface RTBluetoothManagerNotificationConnected : RTNotification
 {
     NSString *_deviceName;
@@ -18,7 +17,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *deviceAddress; // @synthesize deviceAddress=_deviceAddress;
 @property (strong, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
 
-+ (id)notificationName;
 - (void).cxx_destruct;
 - (id)initWithDeviceName:(id)arg1 andDeviceAddress:(id)arg2;
 

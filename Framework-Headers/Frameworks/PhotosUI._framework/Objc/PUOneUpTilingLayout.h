@@ -18,21 +18,24 @@
     struct {
         BOOL respondsToAspectRatioForItemAtIndexPath;
         BOOL respondsToBadgeSizeForItemAtIndexPath;
+        BOOL respondsToAssetExplorerReviewScreenBadgeSizeForItemAtIndexPath;
         BOOL respondsToShouldShowPlayButtonForItemAtIndexPath;
         BOOL respondsToShouldShowProgressIndicatorForItemAtIndexPath;
         BOOL respondsToShouldShowBufferingIndicatorForItemAtIndexPath;
         BOOL respondsToShouldShowLoadingIndicatorForItemAtIndexPath;
         BOOL respondsToModelTileTransformForItemAtIndexPath;
-        BOOL respondsToScrollOffsetForItemAtIndexPath;
-        BOOL respondsToCanShowCommentsForItemAtIndexPath;
-        BOOL respondsToShouldShowCommentsForItemAtIndexPath;
+        BOOL respondsToContentOffsetForItemAtIndexPath;
+        BOOL respondsToShouldShowAccessoryForItemAtIndexPath;
+        BOOL respondsToMinimumVisibleContentHeightForItemAtIndexPath;
+        BOOL respondsToMinimumVisibleAccessoryHeightForItemAtIndexPath;
         BOOL respondsToShouldShowVideoPlaceholderForItemAtIndexPath;
         BOOL respondsToDisableInitialZoomToFillForItemAtIndexPath;
     } _delegateFlags;
     NSMutableDictionary *_layoutInfosByIndexPathByTileKind;
     BOOL _useBackgroundTile;
     BOOL _useBadgeTiles;
-    BOOL _useCommentsTiles;
+    BOOL _useAssetExplorerReviewScreenBadgeTiles;
+    BOOL _useAssetExplorerReviewScreenSelectionIndicatorTiles;
     BOOL _useUserTransformTiles;
     BOOL _shouldPinContentToTop;
     id<PUOneUpTilingLayoutDelegate> _delegate;
@@ -42,12 +45,14 @@
     struct CGSize _interpageSpacing;
     struct CGSize _playButtonSize;
     struct CGSize _progressIndicatorSize;
+    struct CGSize _assetExplorerReviewScreenProgressIndicatorSize;
     struct CGSize _bufferingIndicatorSize;
     struct CGSize _loadingIndicatorSize;
     struct CGSize _displaySizeForInsetMatching;
     struct UIEdgeInsets _contentGuideInsets;
 }
 
+@property (nonatomic) struct CGSize assetExplorerReviewScreenProgressIndicatorSize; // @synthesize assetExplorerReviewScreenProgressIndicatorSize=_assetExplorerReviewScreenProgressIndicatorSize;
 @property (nonatomic) struct CGSize bufferingIndicatorSize; // @synthesize bufferingIndicatorSize=_bufferingIndicatorSize;
 @property (nonatomic) struct UIEdgeInsets contentGuideInsets; // @synthesize contentGuideInsets=_contentGuideInsets;
 @property (weak, nonatomic) id<PUOneUpTilingLayoutDelegate> delegate; // @synthesize delegate=_delegate;
@@ -62,21 +67,23 @@
 @property (nonatomic) long long tileInitialContentMode; // @synthesize tileInitialContentMode=_tileInitialContentMode;
 @property (strong, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property (readonly, nonatomic) double transitionProgress; // @synthesize transitionProgress=_transitionProgress;
+@property (nonatomic) BOOL useAssetExplorerReviewScreenBadgeTiles; // @synthesize useAssetExplorerReviewScreenBadgeTiles=_useAssetExplorerReviewScreenBadgeTiles;
+@property (nonatomic) BOOL useAssetExplorerReviewScreenSelectionIndicatorTiles; // @synthesize useAssetExplorerReviewScreenSelectionIndicatorTiles=_useAssetExplorerReviewScreenSelectionIndicatorTiles;
 @property (nonatomic) BOOL useBackgroundTile; // @synthesize useBackgroundTile=_useBackgroundTile;
 @property (nonatomic) BOOL useBadgeTiles; // @synthesize useBadgeTiles=_useBadgeTiles;
-@property (nonatomic) BOOL useCommentsTiles; // @synthesize useCommentsTiles=_useCommentsTiles;
 @property (nonatomic) BOOL useUserTransformTiles; // @synthesize useUserTransformTiles=_useUserTransformTiles;
 
 + (id)centerTileKinds;
 + (void)initialize;
 - (void).cxx_destruct;
-- (BOOL)_areCommentsVisibleForItemAtIndexPath:(id)arg1;
+- (BOOL)_accessoryViewVisibilityForItemAtIndexPath:(id)arg1;
 - (struct CGPoint)_contentOffsetForItemAtIndexPath:(id)arg1;
 - (id)_createLayoutInfoForTileWithIndexPath:(id)arg1 kind:(id)arg2;
-- (id)_displayTileTransformForItemAtIndexPath:(id)arg1;
-- (id)_displayTileTransformForItemAtIndexPath:(id)arg1 pageSize:(struct CGSize)arg2 secondaryDisplayTransform:(id)arg3;
-- (void)_getLayoutRect:(out struct CGRect *)arg1 transform:(out struct CGAffineTransform *)arg2 parallaxOffset:(out struct CGPoint *)arg3 shouldIncludeBottomOffset:(BOOL)arg4 forContentOfItemAtIndexPath:(id)arg5;
+- (id)_displayTileTransformForItemAtIndexPath:(id)arg1 options:(unsigned long long)arg2;
+- (id)_displayTileTransformForItemAtIndexPath:(id)arg1 pageSize:(struct CGSize)arg2 secondaryDisplayTransform:(id)arg3 options:(unsigned long long)arg4;
+- (void)_getLayoutRect:(out struct CGRect *)arg1 transform:(out struct CGAffineTransform *)arg2 parallaxOffset:(out struct CGPoint *)arg3 forContentOfItemAtIndexPath:(id)arg4 options:(unsigned long long)arg5;
 - (id)_indexPathOfItemClosestToAbscissa:(double)arg1;
+- (void)_invalidateContentRelatedTilesWithIndexPath:(id)arg1 inContext:(id)arg2;
 - (BOOL)_isVideoPlacholderVisibleForItemAtIndexPath:(id)arg1;
 - (struct CGSize)_itemSize;
 - (double)_minimumBottomContentInsetsForItemAtIndexPath:(id)arg1;
@@ -87,8 +94,9 @@
 - (void)addLayoutInfosForTilesInRect:(struct CGRect)arg1 section:(long long)arg2 toSet:(id)arg3;
 - (struct CGSize)estimatedSectionSize;
 - (id)init;
+- (void)invalidateAccessoryForItemAtIndexPath:(id)arg1 withOptions:(unsigned long long)arg2;
 - (void)invalidateBadgeSizeForItemAtIndexPath:(id)arg1;
-- (void)invalidateCommentsForItemAtIndexPath:(id)arg1;
+- (void)invalidateContentOffsetForItemAtIndexPath:(id)arg1 withOptions:(unsigned long long)arg2;
 - (void)invalidateLayoutWithContext:(id)arg1;
 - (void)invalidateModelTileTransformForItemAtIndexPath:(id)arg1;
 - (void)invalidateVideoPlaceholderForItemAtIndexPath:(id)arg1;

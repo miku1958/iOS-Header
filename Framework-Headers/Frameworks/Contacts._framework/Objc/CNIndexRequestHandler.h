@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreSpotlight/CSIndexExtensionRequestHandler.h>
+#import <Foundation/NSObject.h>
 
-@class CNContactStore, CSSearchableIndex, NSObject;
+#import <Contacts/CSSearchableIndexDelegate-Protocol.h>
+
+@class CNContactStore, CSSearchableIndex, NSString;
 @protocol OS_dispatch_queue;
 
-@interface CNIndexRequestHandler : CSIndexExtensionRequestHandler
+@interface CNIndexRequestHandler : NSObject <CSSearchableIndexDelegate>
 {
     void *_ab;
     CNContactStore *_store;
@@ -17,7 +19,11 @@
     CSSearchableIndex *_index;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CSSearchableIndex *index; // @synthesize index=_index;
+@property (readonly) Class superclass;
 
 + (id)defaultSearchableItemsDomain;
 + (id)descriptorForRequiredKeysForSearchableItem;
@@ -27,6 +33,7 @@
 - (void).cxx_destruct;
 - (id)contactIdentifierFromPerson:(void *)arg1;
 - (void)dealloc;
+- (void)finishIndexingAllSearchableItemsIfNecessary;
 - (id)init;
 - (id)initWithAddressBook:(void *)arg1;
 - (void)searchableIndex:(id)arg1 reindexAllSearchableItemsWithAcknowledgementHandler:(CDUnknownBlockType)arg2;

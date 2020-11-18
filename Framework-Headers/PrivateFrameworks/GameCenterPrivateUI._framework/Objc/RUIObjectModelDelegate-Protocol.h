@@ -26,6 +26,7 @@
 - (void)objectModel:(RUIObjectModel *)arg1 pressedButton:(NSString *)arg2 attributes:(NSDictionary *)arg3;
 - (void)objectModel:(RUIObjectModel *)arg1 pressedLink:(NSURL *)arg2 httpMethod:(NSString *)arg3;
 - (void)objectModel:(RUIObjectModel *)arg1 pressedLink:(NSURL *)arg2 httpMethod:(NSString *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
+- (BOOL)objectModel:(RUIObjectModel *)arg1 shouldDisplayNamedElement:(RUIElement *)arg2 page:(RUIPage *)arg3;
 - (BOOL)objectModel:(RUIObjectModel *)arg1 shouldShowModalHTMLViewWithURL:(NSURL *)arg2;
 - (UIView *)objectModel:(RUIObjectModel *)arg1 tableFooterViewForAttributes:(NSDictionary *)arg2 page:(RUIPage *)arg3;
 - (UIView *)objectModel:(RUIObjectModel *)arg1 tableHeaderViewForAttributes:(NSDictionary *)arg2 page:(RUIPage *)arg3;

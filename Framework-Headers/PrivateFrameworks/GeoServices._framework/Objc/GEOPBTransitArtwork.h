@@ -49,10 +49,17 @@
 @property (strong, nonatomic) GEOPBTransitIcon *icon; // @synthesize icon=_icon;
 @property (readonly, nonatomic) id<GEOTransitIconDataSource> iconDataSource;
 @property (strong, nonatomic) GEOPBTransitShield *iconFallbackShield; // @synthesize iconFallbackShield=_iconFallbackShield;
+@property (readonly, nonatomic) id<GEOTransitShieldDataSource> iconFallbackShieldDataSource;
 @property (strong, nonatomic) GEOPBTransitShield *shield; // @synthesize shield=_shield;
 @property (readonly, nonatomic) id<GEOTransitShieldDataSource> shieldDataSource;
 @property (readonly) Class superclass;
 
+- (int)StringAsArtworkType:(id)arg1;
+- (int)StringAsArtworkUse:(id)arg1;
+- (int)StringAsBadge:(id)arg1;
+- (id)artworkTypeAsString:(int)arg1;
+- (id)artworkUseAsString:(int)arg1;
+- (id)badgeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

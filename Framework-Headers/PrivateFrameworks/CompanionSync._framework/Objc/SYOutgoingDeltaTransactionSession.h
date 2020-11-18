@@ -7,15 +7,17 @@
 #import <CompanionSync/SYSession.h>
 
 @class NSObject, _SYCountedSemaphore, _SYMessageTimerTable;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_activity;
 
+__attribute__((visibility("hidden")))
 @interface SYOutgoingDeltaTransactionSession : SYSession
 {
     NSObject<OS_dispatch_source> *_stateUpdateSource;
-    unsigned long long _activity;
+    NSObject<OS_os_activity> *_sessionActivity;
     long long _state;
     NSObject<OS_dispatch_queue> *_changeFetcherQueue;
     _SYCountedSemaphore *_changeConcurrencySemaphore;
+    NSObject<OS_os_activity> *_changeWaitActivity;
     _SYMessageTimerTable *_timers;
     BOOL _canRestart;
     BOOL _canRollback;
@@ -37,7 +39,7 @@
 - (void)_waitForMessageWindow;
 - (BOOL)canRestart;
 - (BOOL)canRollback;
-- (void)cancel;
+- (void)cancelWithError:(id)arg1;
 - (id)initWithService:(id)arg1;
 - (BOOL)isResetSync;
 - (BOOL)isSending;

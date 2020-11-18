@@ -9,12 +9,13 @@
 #import <UIKit/UIPreviewItemDelegate-Protocol.h>
 #import <UIKit/UITextInput-Protocol.h>
 #import <UIKit/UITextLinkInteraction-Protocol.h>
+#import <UIKit/WebEditingDelegate-Protocol.h>
 #import <UIKit/WebPolicyDelegate-Protocol.h>
 
 @class NSAttributedString, NSDictionary, NSString, UIColor, UIFont, UITextPosition, UITextRange, UIView;
 @protocol UITextInputDelegate, UITextInputTokenizer, UITextViewDelegate;
 
-@interface _UICompatibilityTextView : UIScrollView <UITextLinkInteraction, WebPolicyDelegate, UIPreviewItemDelegate, UITextInput>
+@interface _UICompatibilityTextView : UIScrollView <UITextLinkInteraction, WebEditingDelegate, WebPolicyDelegate, UIPreviewItemDelegate, UITextInput>
 {
     id _private;
     BOOL m_editing;
@@ -36,10 +37,12 @@
 @property (nonatomic) BOOL enablesReturnKeyAutomatically; // @dynamic enablesReturnKeyAutomatically;
 @property (readonly, nonatomic) UITextPosition *endOfDocument;
 @property (strong, nonatomic) UIFont *font;
+@property (readonly, nonatomic) BOOL hasText;
 @property (readonly) unsigned long long hash;
 @property (strong) UIView *inputAccessoryView;
 @property (weak, nonatomic) id<UITextInputDelegate> inputDelegate;
 @property (strong) UIView *inputView; // @synthesize inputView=m_inputView;
+@property (readonly, nonatomic) id insertDictationResultPlaceholder;
 @property (nonatomic) long long keyboardAppearance; // @dynamic keyboardAppearance;
 @property (nonatomic) long long keyboardType; // @dynamic keyboardType;
 @property (readonly, nonatomic) UITextRange *markedTextRange;
@@ -54,6 +57,7 @@
 @property (copy, nonatomic) NSString *text;
 @property (nonatomic) long long textAlignment;
 @property (strong, nonatomic) UIColor *textColor;
+@property (copy, nonatomic) NSString *textContentType;
 @property (readonly, nonatomic) UIView *textInputView;
 @property (readonly, nonatomic) id<UITextInputTokenizer> tokenizer;
 @property (copy, nonatomic) NSDictionary *typingAttributes;
@@ -66,15 +70,14 @@
 - (void)_addShortcut:(id)arg1;
 - (unsigned long long)_allowedLinkTypes;
 - (BOOL)_alwaysHandleScrollerMouseEvent;
-- (id)_automationValue;
 - (id)_dataForPreviewItemController:(id)arg1 atPosition:(struct CGPoint)arg2 type:(long long *)arg3;
 - (void)_dealloc;
 - (void)_define:(id)arg1;
+- (BOOL)_freezeTextContainerSize;
 - (BOOL)_interactionShouldBeginFromPreviewItemController:(id)arg1 forPosition:(struct CGPoint)arg2;
 - (void)_interactionStartedFromPreviewItemController:(id)arg1;
 - (void)_interactionStoppedFromPreviewItemController:(id)arg1;
 - (id)_keyboardResponder;
-- (void)_lookup:(struct CGPoint)arg1;
 - (BOOL)_ownsInputAccessoryView;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (id)_presentationRectsForPreviewItemController:(id)arg1;
@@ -85,6 +88,7 @@
 - (BOOL)_requiresKeyboardWhenFirstResponder;
 - (BOOL)_restoreFirstResponder;
 - (void)_setDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
+- (void)_setFreezeTextContainerSize:(BOOL)arg1;
 - (void)_share:(id)arg1;
 - (void)_showTextStyleOptions:(id)arg1;
 - (void)_transferAttribute:(id)arg1 fromString:(id)arg2 andSetPropertyWith:(SEL)arg3 usingValueClass:(Class)arg4;
@@ -130,14 +134,12 @@
 - (void)forwardInvocation:(id)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (struct CGRect)frameForDictationResultPlaceholder:(id)arg1;
-- (BOOL)hasText;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 font:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 webView:(id)arg2;
 - (void)insertDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
-- (id)insertDictationResultPlaceholder;
 - (void)insertText:(id)arg1;
 - (id)interactionAssistant;
 - (BOOL)isFirstResponder;

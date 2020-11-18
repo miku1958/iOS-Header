@@ -6,11 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class ML3DatabaseConnection;
+@class ML3DatabaseConnection, NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface ML3AccountCacheDatabase : NSObject
 {
     ML3DatabaseConnection *_databaseConnection;
+    NSObject<OS_dispatch_queue> *_accessQueue;
+    NSMutableDictionary *_appleIdCache;
 }
 
 - (void).cxx_destruct;

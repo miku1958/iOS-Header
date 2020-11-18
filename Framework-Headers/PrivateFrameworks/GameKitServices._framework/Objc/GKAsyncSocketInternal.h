@@ -24,6 +24,8 @@
     NSString *_socketName;
 }
 
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *targetQueue; // @synthesize targetQueue=_targetQueue;
+
 - (void)closeConnectionNow;
 - (CDUnknownBlockType)connectedHandler;
 - (void)dealloc;
@@ -36,10 +38,8 @@
 - (void)setConnectedHandler:(CDUnknownBlockType)arg1;
 - (void)setReceiveDataHandler:(CDUnknownBlockType)arg1;
 - (void)setSocketName:(id)arg1;
-- (void)setTargetQueue:(id)arg1;
 - (BOOL)setupSourcesWithSocket:(int)arg1 receiveEventHandler:(CDUnknownBlockType)arg2 sendEventHandler:(CDUnknownBlockType)arg3;
 - (id)socketName;
-- (id)targetQueue;
 - (void)tcpAttachSocketDescriptor:(int)arg1;
 - (void)tcpConnectSockAddr:(const struct sockaddr *)arg1 port:(unsigned short)arg2;
 

@@ -4,11 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MediaPlayerUI/MPUModelResponse.h>
+#import <MediaPlayer/MPModelResponse.h>
 
-@interface MusicForYouRecommendationsResponse : MPUModelResponse
+@class MPChangeDetails;
+
+@interface MusicForYouRecommendationsResponse : MPModelResponse
 {
+    MPChangeDetails *_changeDetails;
 }
+
+@property (strong, nonatomic) MPChangeDetails *changeDetails; // @synthesize changeDetails=_changeDetails;
+
+- (void).cxx_destruct;
 
 @end
 

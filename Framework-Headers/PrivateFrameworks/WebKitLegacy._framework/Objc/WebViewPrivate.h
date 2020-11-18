@@ -47,7 +47,6 @@ __attribute__((visibility("hidden")))
     struct WebFrameLoadDelegateImplementationCache frameLoadDelegateImplementations;
     struct WebScriptDebugDelegateImplementationCache scriptDebugDelegateImplementations;
     struct WebHistoryDelegateImplementationCache historyDelegateImplementations;
-    void *observationInfo;
     BOOL closed;
     BOOL closing;
     BOOL shouldCloseWithWindow;
@@ -71,7 +70,7 @@ __attribute__((visibility("hidden")))
     struct CGSize fixedLayoutSize;
     BOOL mainViewIsScrollingOrZooming;
     int didDrawTiles;
-    struct Mutex pendingFixedPositionLayoutRectMutex;
+    struct Lock pendingFixedPositionLayoutRectMutex;
     struct CGRect pendingFixedPositionLayoutRect;
     struct HashMap<unsigned long, WTF::RetainPtr<id>, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::RetainPtr<id>>> identifierMap;
     BOOL _keyboardUIModeAccessed;
@@ -100,7 +99,6 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 
 @end

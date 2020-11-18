@@ -6,19 +6,25 @@
 
 #import <HealthKit/HKQuery.h>
 
+@class NSDateInterval;
+
 @interface HKStatisticsQuery : HKQuery
 {
+    unsigned long long _mergeStrategy;
+    NSDateInterval *_dateInterval;
     CDUnknownBlockType _completionHandler;
     unsigned long long _options;
-    unsigned long long _mergeStrategy;
 }
 
 @property (readonly, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (strong, nonatomic, getter=_dateInterval, setter=_setDateInterval:) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
 @property (nonatomic) unsigned long long mergeStrategy; // @synthesize mergeStrategy=_mergeStrategy;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 
 + (Class)_queryServerDataObjectClass;
 - (void).cxx_destruct;
+- (id)_filter;
+- (id)_filterForDateInterval:(id)arg1;
 - (void)_queue_cleanupAfterDeactivation;
 - (void)_queue_configureQueryServerDataObject:(id)arg1;
 - (CDUnknownBlockType)_queue_errorHandler;

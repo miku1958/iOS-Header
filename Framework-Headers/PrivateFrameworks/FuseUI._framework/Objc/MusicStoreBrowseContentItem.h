@@ -4,41 +4,58 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MediaPlayerUI/MPUModelObject.h>
+#import <MediaPlayer/MPModelObject.h>
 
-@class MPUModelAlbum, MPUModelCurator, MPUModelMusicVideo, MPUModelPlaylist, MPUModelRadioStation, MPUModelSong;
+@class MPModelAlbum, MPModelArtist, MPModelCurator, MPModelPlaylist, MPModelRadioStation, MPModelSong, NSString;
 
-@interface MusicStoreBrowseContentItem : MPUModelObject
+@interface MusicStoreBrowseContentItem : MPModelObject
 {
     unsigned long long _itemType;
-    MPUModelAlbum *_album;
-    MPUModelCurator *_curator;
-    MPUModelMusicVideo *_musicVideo;
-    MPUModelPlaylist *_playlist;
-    MPUModelRadioStation *_radioStation;
-    MPUModelSong *_song;
+    MPModelAlbum *_album;
+    MPModelArtist *_artist;
+    MPModelCurator *_curator;
+    MPModelPlaylist *_playlist;
+    MPModelRadioStation *_radioStation;
+    MPModelSong *_song;
+    NSString *_artistUploadedContentType;
     long long _detailedItemType;
 }
 
-@property (strong, nonatomic) MPUModelAlbum *album; // @synthesize album=_album;
-@property (strong, nonatomic) MPUModelCurator *curator; // @synthesize curator=_curator;
+@property (strong, nonatomic) MPModelAlbum *album; // @synthesize album=_album;
+@property (strong, nonatomic) MPModelArtist *artist; // @synthesize artist=_artist;
+@property (copy, nonatomic) NSString *artistUploadedContentType; // @synthesize artistUploadedContentType=_artistUploadedContentType;
+@property (strong, nonatomic) MPModelCurator *curator; // @synthesize curator=_curator;
 @property (nonatomic) long long detailedItemType; // @synthesize detailedItemType=_detailedItemType;
 @property (nonatomic) unsigned long long itemType; // @synthesize itemType=_itemType;
-@property (strong, nonatomic) MPUModelMusicVideo *musicVideo; // @synthesize musicVideo=_musicVideo;
-@property (strong, nonatomic) MPUModelPlaylist *playlist; // @synthesize playlist=_playlist;
-@property (strong, nonatomic) MPUModelRadioStation *radioStation; // @synthesize radioStation=_radioStation;
-@property (strong, nonatomic) MPUModelSong *song; // @synthesize song=_song;
+@property (strong, nonatomic) MPModelPlaylist *playlist; // @synthesize playlist=_playlist;
+@property (strong, nonatomic) MPModelRadioStation *radioStation; // @synthesize radioStation=_radioStation;
+@property (strong, nonatomic) MPModelSong *song; // @synthesize song=_song;
 
++ (id)__MusicStoreBrowseContentItemPropertyArtistUploadedContentType__PROPERTY;
++ (id)__MusicStoreBrowseContentItemPropertyDetailedItemType__PROPERTY;
++ (id)__MusicStoreBrowseContentItemPropertyItemType__PROPERTY;
++ (id)__MusicStoreBrowseContentItemRelationshipAlbum__PROPERTY;
++ (id)__MusicStoreBrowseContentItemRelationshipArtist__PROPERTY;
++ (id)__MusicStoreBrowseContentItemRelationshipCurator__PROPERTY;
++ (id)__MusicStoreBrowseContentItemRelationshipPlaylist__PROPERTY;
++ (id)__MusicStoreBrowseContentItemRelationshipRadioStation__PROPERTY;
++ (id)__MusicStoreBrowseContentItemRelationshipSong__PROPERTY;
 + (id)__album__KEY;
++ (id)__artistUploadedContentType__KEY;
++ (id)__artist__KEY;
 + (id)__curator__KEY;
 + (id)__detailedItemType__KEY;
 + (id)__itemType__KEY;
-+ (id)__musicVideo__KEY;
 + (id)__playlist__KEY;
 + (id)__radioStation__KEY;
 + (id)__song__KEY;
++ (id)requiredStoreLibraryPersonalizationProperties;
 - (void).cxx_destruct;
-- (id)descriptionWithType:(unsigned long long)arg1;
+- (id)descriptionWithType:(long long)arg1;
+- (id)innerObject;
+- (id)objectWithStoreLibraryPersonalizationRelativeModelObject:(id)arg1;
+- (id)personalizationScopedPropertiesForProperties:(id)arg1;
+- (id)relativeModelObjectForStoreLibraryPersonalization;
 
 @end
 

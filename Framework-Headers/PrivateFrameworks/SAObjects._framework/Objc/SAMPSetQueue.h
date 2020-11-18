@@ -6,12 +6,13 @@
 
 #import <SAObjects/SADomainCommand.h>
 
-@class NSArray, NSNumber, SAMPCollection;
+@class NSArray, NSNumber, NSString, SAMPCollection;
 
 @interface SAMPSetQueue : SADomainCommand
 {
 }
 
+@property (copy, nonatomic) NSString *airplayRouteUID;
 @property (copy, nonatomic) NSArray *filters;
 @property (strong, nonatomic) SAMPCollection *mediaItems;
 @property (nonatomic) BOOL shouldOverrideManuallyCuratedUpNext;

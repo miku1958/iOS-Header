@@ -6,64 +6,88 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableDictionary, NSString, VMAccount;
-@protocol OS_dispatch_queue;
+#import <VisualVoicemail/NSSecureCoding-Protocol.h>
 
-@interface VMVoicemail : NSObject
+@class NSData, NSDate, NSString, NSURL, VMVoicemailTranscript;
+
+@interface VMVoicemail : NSObject <NSSecureCoding>
 {
-    VMAccount *_account;
-    long long _identifier;
-    NSMutableDictionary *_cache;
-    NSObject<OS_dispatch_queue> *_cacheQueue;
+    unsigned long long _remoteUID;
+    unsigned long long _identifier;
+    NSDate *_date;
+    NSString *_senderDestinationID;
+    NSString *_callbackDestinationID;
+    double _duration;
+    NSURL *_dataURL;
+    NSURL *_transcriptionURL;
+    unsigned long long _flags;
     struct __CFPhoneNumber *_senderPhoneNumber;
     struct __CFPhoneNumber *_callbackPhoneNumber;
-    id _cachedAddressBookRef;
-    NSString *_cachedDisplayName;
 }
 
-@property (strong, nonatomic) id cachedAddressBookRef; // @synthesize cachedAddressBookRef=_cachedAddressBookRef;
-@property (strong, nonatomic) NSString *cachedDisplayName; // @synthesize cachedDisplayName=_cachedDisplayName;
-@property (readonly) struct __CFPhoneNumber *callbackPhoneNumber; // @dynamic callbackPhoneNumber;
-@property (readonly) struct __CFPhoneNumber *senderPhoneNumber; // @dynamic senderPhoneNumber;
+@property (readonly, nonatomic, getter=isBlocked) BOOL blocked;
+@property (readonly, nonatomic) NSString *callbackDestinationID; // @synthesize callbackDestinationID=_callbackDestinationID;
+@property (readonly, nonatomic) NSString *callbackNumber;
+@property (nonatomic) struct __CFPhoneNumber *callbackPhoneNumber; // @synthesize callbackPhoneNumber=_callbackPhoneNumber;
+@property (readonly, copy, nonatomic) NSData *data;
+@property (readonly, nonatomic, getter=isDataAvailable) BOOL dataAvailable;
+@property (readonly, nonatomic) NSString *dataPath;
+@property (readonly, nonatomic) NSURL *dataURL; // @synthesize dataURL=_dataURL;
+@property (readonly, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (readonly, nonatomic, getter=isDeleted) BOOL deleted;
+@property (readonly, nonatomic, getter=isDetached) BOOL detached;
+@property (readonly, nonatomic, getter=isDownloading) BOOL downloading;
+@property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
+@property (nonatomic) unsigned long long flags;
+@property (nonatomic) unsigned long long flags; // @synthesize flags=_flags;
+@property (readonly, nonatomic) BOOL hasCallbackNumber;
+@property (readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic, getter=isRead) BOOL read;
+@property (readonly, nonatomic) unsigned long long remoteUID; // @synthesize remoteUID=_remoteUID;
+@property (readonly, nonatomic) NSString *sender;
+@property (readonly, nonatomic) NSString *senderDestinationID; // @synthesize senderDestinationID=_senderDestinationID;
+@property (nonatomic) struct __CFPhoneNumber *senderPhoneNumber; // @synthesize senderPhoneNumber=_senderPhoneNumber;
+@property (readonly, nonatomic, getter=isTemporary) BOOL temporary;
+@property (readonly, nonatomic) VMVoicemailTranscript *transcript;
+@property (readonly, nonatomic, getter=isTranscriptionRated) BOOL transcriptionRated;
+@property (readonly, nonatomic) unsigned long long transcriptionState;
+@property (readonly, nonatomic) NSURL *transcriptionURL; // @synthesize transcriptionURL=_transcriptionURL;
+@property (readonly, nonatomic, getter=isTrashed) BOOL trashed;
+@property (readonly, nonatomic, getter=isUnread) BOOL unread;
 
-+ (void)_doVoicemailMapHousekeepingNoLock;
-+ (id)_findPreviouslyCreatedVoicemailWithAccountNoLock:(id)arg1 identifier:(long long)arg2;
-+ (void)_scheduleVoicemailMapHousekeepingNoLock;
-+ (void)forceReloadAllLiveVoicemailsForAccount:(id)arg1;
-+ (void)initialize;
-+ (void)scheduleVoicemailMapHousekeeping;
-+ (id)voicemailWithAccount:(id)arg1 identifier:(long long)arg2 creating:(BOOL)arg3;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_forceUpdateCache;
-- (void)_handleDataAvailable:(id)arg1;
-- (void)_lockedPreemptivelySetFlags:(unsigned int)arg1 clearFlags:(unsigned int)arg2 unlockedBlock:(CDUnknownBlockType *)arg3;
-- (void)_preemptivelySetFlags:(unsigned int)arg1 clearFlags:(unsigned int)arg2;
-- (void)_updateCache;
-- (void *)abRecordUsingAddressBook:(void *)arg1;
-- (void *)abRecordUsingAddressBook:(void *)arg1 withIdentifier:(int *)arg2;
-- (id)callbackNumber;
 - (id)contactUsingContactStore:(id)arg1;
 - (id)contactUsingContactStore:(id)arg1 withKeysToFetch:(id)arg2;
-- (id)dataPath;
-- (id)date;
 - (void)dealloc;
-- (id)description;
-- (id)displayLabelUsingAddressBook:(void *)arg1;
+- (id)debugDescription;
 - (id)displayLabelUsingContactStore:(id)arg1;
-- (id)displayNameUsingAddressBook:(void *)arg1;
 - (id)displayNameUsingContactStore:(id)arg1;
-- (BOOL)doesNotHaveFlags:(unsigned int)arg1;
-- (int)duration;
-- (unsigned int)flags;
-- (BOOL)hasFlags:(unsigned int)arg1;
-- (long long)identifier;
-- (id)imageDataUsingAddressBook:(void *)arg1;
-- (id)initWithAccount:(id)arg1 identifier:(long long)arg2;
+- (BOOL)doesNotHaveFlags:(unsigned long long)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)flagDescription;
+- (BOOL)hasFlags:(unsigned long long)arg1;
+- (BOOL)hasSameFlags:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithData:(id)arg1;
+- (id)initWithData:(id)arg1 audioDataURL:(id)arg2 transcriptURL:(id)arg3;
+- (id)initWithRecord:(void *)arg1;
+- (id)initWithVoicemailMessage:(id)arg1 audioDataURL:(id)arg2 transcriptURL:(id)arg3;
 - (BOOL)isContactSuggested:(id)arg1;
-- (unsigned long long)remoteUID;
-- (id)sender;
-- (void)setFlags:(unsigned int)arg1;
-- (BOOL)willBroadcastNotificationName:(id)arg1 userInfo:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isTranscribing;
+- (BOOL)isTranscriptionAvailable;
+- (void)setBlocked:(BOOL)arg1;
+- (void)setDataAvailable:(BOOL)arg1;
+- (void)setDeleted:(BOOL)arg1;
+- (void)setDetached:(BOOL)arg1;
+- (void)setDownloading:(BOOL)arg1;
+- (void)setRead:(BOOL)arg1;
+- (void)setTemporary:(BOOL)arg1;
+- (void)setTranscriptionAvailable:(BOOL)arg1;
+- (void)setTrashed:(BOOL)arg1;
+- (BOOL)wasTranscriptionAttempted;
 
 @end
 

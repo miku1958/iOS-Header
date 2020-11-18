@@ -18,11 +18,14 @@
 - (id)_accessibilityScrollAncestor;
 - (BOOL)_accessibilityServesAsContainingParentForOrdering;
 - (BOOL)_accessibilitySupportsActivateAction;
+- (BOOL)_accessibilityViewIsVisible;
+- (BOOL)_axIsLastPage;
 - (void)_setNewPage:(long long)arg1;
 - (BOOL)accessibilityActivate;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
 - (id)accessibilityLabel;
+- (BOOL)accessibilityScroll:(long long)arg1;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 

@@ -7,10 +7,11 @@
 #import <Foundation/NSObject.h>
 
 #import <MIME/MFFuture-Protocol.h>
+#import <MIME/MFPromisePrivate-Protocol.h>
 
 @class NSConditionLock, NSError, NSMutableArray, NSString;
 
-@interface MFFuture : NSObject <MFFuture>
+@interface MFFuture : NSObject <MFPromisePrivate, MFFuture>
 {
     NSConditionLock *_stateLock;
     id _result;
@@ -18,31 +19,49 @@
     NSMutableArray *_completionBlocks;
 }
 
+@property (readonly) CDUnknownBlockType boolErrorCompletionHandlerAdapter;
 @property (readonly, getter=isCancelled) BOOL cancelled;
+@property (readonly) CDUnknownBlockType completionHandlerAdapter;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly) CDUnknownBlockType errorOnlyCompletionHandlerAdapter;
 @property (readonly, getter=isFinished) BOOL finished;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)future;
++ (id)_recover:(id)arg1 withBlock:(CDUnknownBlockType)arg2 scheduler:(id)arg3;
++ (id)_then:(id)arg1 withBlock:(CDUnknownBlockType)arg2 scheduler:(id)arg3;
++ (id)chain:(id)arg1;
++ (id)futureWithBlock:(CDUnknownBlockType)arg1;
++ (id)futureWithError:(id)arg1;
++ (id)futureWithResult:(id)arg1;
++ (id)join:(id)arg1;
++ (id)lazyFutureWithBlock:(CDUnknownBlockType)arg1;
++ (id)nullFuture;
++ (id)onScheduler:(id)arg1 futureWithBlock:(CDUnknownBlockType)arg2;
 - (void)_addCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)_finishWithFuture:(id)arg1;
 - (void)_flushCompletionBlocks;
 - (BOOL)_nts_isFinished;
 - (void)addFailureBlock:(CDUnknownBlockType)arg1;
 - (void)addSuccessBlock:(CDUnknownBlockType)arg1;
 - (BOOL)cancel;
-- (CDUnknownBlockType)completionHandlerAdapter;
 - (void)dealloc;
 - (void)didCancel;
-- (CDUnknownBlockType)errorOnlyCompletionHandlerAdapter;
 - (BOOL)finishWithError:(id)arg1;
 - (BOOL)finishWithResult:(id)arg1;
 - (BOOL)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)init;
+- (id)map:(CDUnknownBlockType)arg1;
+- (void)onScheduler:(id)arg1 addFailureBlock:(CDUnknownBlockType)arg2;
+- (void)onScheduler:(id)arg1 addSuccessBlock:(CDUnknownBlockType)arg2;
+- (id)onScheduler:(id)arg1 recover:(CDUnknownBlockType)arg2;
+- (id)onScheduler:(id)arg1 then:(CDUnknownBlockType)arg2;
+- (id)recover:(CDUnknownBlockType)arg1;
 - (id)result:(id *)arg1;
 - (id)resultBeforeDate:(id)arg1 error:(id *)arg2;
 - (id)resultWithTimeout:(double)arg1 error:(id *)arg2;
+- (id)then:(CDUnknownBlockType)arg1;
 
 @end
 

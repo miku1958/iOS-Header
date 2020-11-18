@@ -8,7 +8,7 @@
 
 #import <EventKitUI/EKUIInviteesViewConflictResolutionSection-Protocol.h>
 
-@class EKUIInviteeAlternativeTimeSearcher, NSArray, NSMutableSet, NSString;
+@class EKInviteeAlternativeTimeSearcher, NSArray, NSMutableSet, NSString, NSTimeZone;
 
 @interface EKUIInviteesViewAlternativeTimeSection : NSObject <EKUIInviteesViewConflictResolutionSection>
 {
@@ -17,6 +17,7 @@
     BOOL _initialSearchInProgress;
     BOOL _searchExhausted;
     CDUnknownBlockType _showMoreAlternativeTimesTapped;
+    NSTimeZone *_timeZone;
     NSString *_cachedTimeCellReuseIdentifier;
     NSString *_cachedConflictSearchCellReuseIdentifier;
     unsigned long long _reuseIdentifierVersion;
@@ -27,12 +28,12 @@
     NSArray *_alternativeTimes;
     long long _lastCheckedRow;
     unsigned long long _maximumNumberOfTimeSlotsToShow;
-    EKUIInviteeAlternativeTimeSearcher *_availabilitySearcher;
+    EKInviteeAlternativeTimeSearcher *_availabilitySearcher;
 }
 
 @property (strong, nonatomic) NSArray *alternativeTimes; // @synthesize alternativeTimes=_alternativeTimes;
 @property (nonatomic) BOOL availabilityRequestInProgress; // @synthesize availabilityRequestInProgress=_availabilityRequestInProgress;
-@property (strong, nonatomic) EKUIInviteeAlternativeTimeSearcher *availabilitySearcher; // @synthesize availabilitySearcher=_availabilitySearcher;
+@property (strong, nonatomic) EKInviteeAlternativeTimeSearcher *availabilitySearcher; // @synthesize availabilitySearcher=_availabilitySearcher;
 @property (strong, nonatomic) NSString *cachedConflictSearchCellReuseIdentifier; // @synthesize cachedConflictSearchCellReuseIdentifier=_cachedConflictSearchCellReuseIdentifier;
 @property (strong, nonatomic) NSString *cachedTimeCellReuseIdentifier; // @synthesize cachedTimeCellReuseIdentifier=_cachedTimeCellReuseIdentifier;
 @property (readonly, nonatomic) Class customTimeCellClass;
@@ -54,6 +55,7 @@
 @property (copy, nonatomic) CDUnknownBlockType showPreviewOfEventAtTime; // @synthesize showPreviewOfEventAtTime=_showPreviewOfEventAtTime;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType tableViewCellHook; // @synthesize tableViewCellHook=_tableViewCellHook;
+@property (strong, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 
 - (void).cxx_destruct;
 - (id)_alternativeTimeAtIndex:(long long)arg1;

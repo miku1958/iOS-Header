@@ -21,7 +21,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *metricsElementName;
-@property (nonatomic) long long metricsLocationPosition; // @synthesize metricsLocationPosition=_metricsLocationPosition;
+@property (nonatomic, setter=_setMetricsLocationPosition:) long long metricsLocationPosition; // @synthesize metricsLocationPosition=_metricsLocationPosition;
 @property (readonly, nonatomic, getter=isMissingItemData) BOOL missingItemData;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) SKUIViewElement *viewElement; // @synthesize viewElement=_viewElement;
@@ -30,7 +30,6 @@
 - (void)_enumerateMissingItemIdentifiersFromBricks:(id)arg1 startIndex:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)_enumerateMissingItemIdentifiersFromLinks:(id)arg1 startIndex:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)_enumerateMissingItemIdentifiersFromLockups:(id)arg1 startIndex:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (void)_setMetricsLocationPosition:(long long)arg1;
 - (void)enumerateMissingItemIdentifiersFromIndex:(long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)initWithCustomPageContext:(id)arg1;
 - (id)initWithFeaturedContentContext:(id)arg1 kind:(long long)arg2;

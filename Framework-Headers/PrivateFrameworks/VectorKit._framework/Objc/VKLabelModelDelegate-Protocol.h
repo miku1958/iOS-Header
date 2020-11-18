@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class VKLabelMarker, VKLabelModel, VKMapTile, VKTile;
+@class VKLabelModel, VKMapTile, VKTile;
 
 @protocol VKLabelModelDelegate
 - (VKMapTile *)labelModel:(VKLabelModel *)arg1 mapTileForTile:(VKTile *)arg2 layer:(unsigned long long)arg3;
-- (void)labelModel:(VKLabelModel *)arg1 selectedLabelMarkerWillDisappear:(VKLabelMarker *)arg2;
+- (void)labelModel:(VKLabelModel *)arg1 selectedLabelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
+- (void)labelModel:(VKLabelModel *)arg1 selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)labelModelDidLayoutLabels:(VKLabelModel *)arg1;
 @end
 

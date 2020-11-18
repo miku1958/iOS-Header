@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilitySpeakThisViewController;
+- (id)_accessibilityTitleBarElement;
 - (id)accessibilityLabel;
 
 @end

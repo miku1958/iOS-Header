@@ -7,10 +7,11 @@
 #import <iTunesStoreUI/SUItemTableViewController.h>
 
 #import <iTunesStoreUI/ISURLOperationDelegate-Protocol.h>
+#import <iTunesStoreUI/SUTermsAndConditionsViewDelegate-Protocol.h>
 
 @class NSString, SUStructuredPage, UILabel;
 
-@interface SUStructuredPageViewController : SUItemTableViewController <ISURLOperationDelegate>
+@interface SUStructuredPageViewController : SUItemTableViewController <SUTermsAndConditionsViewDelegate, ISURLOperationDelegate>
 {
     Class _dataSourceClass;
     UILabel *_noItemsLabel;
@@ -46,8 +47,9 @@
 - (void)operation:(id)arg1 finishedWithOutput:(id)arg2;
 - (void)reloadData;
 - (void)reloadWithStorePage:(id)arg1 forURL:(id)arg2;
-- (void)setLoading:(BOOL)arg1;
+- (void)setSkLoading:(BOOL)arg1;
 - (id)storePageProtocol;
+- (id)viewControllerForPresentingAccountAlertControllerFromTermsAndConditionsView:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 

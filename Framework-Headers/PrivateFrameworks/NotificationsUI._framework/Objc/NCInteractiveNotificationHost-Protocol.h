@@ -11,10 +11,10 @@
 
 @protocol NCInteractiveNotificationHost <NSObject>
 
-@property (readonly, strong, nonatomic) NCViewServiceDescriptor *accessoryViewService;
+@property (readonly, nonatomic) NCViewServiceDescriptor *accessoryViewService;
 @property (readonly, nonatomic) double bottomOverhangHeight;
-@property (nonatomic) id<NCInteractiveNotificationHostDelegate> delegate;
-@property (readonly, strong, nonatomic) NCViewServiceDescriptor *inlayViewService;
+@property (weak, nonatomic) id<NCInteractiveNotificationHostDelegate> delegate;
+@property (readonly, nonatomic) NCViewServiceDescriptor *inlayViewService;
 @property (nonatomic) double maximumHeight;
 @property (nonatomic, getter=isModal) BOOL modal;
 @property (readonly, nonatomic) BOOL showsKeyboard;

@@ -22,8 +22,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (void)didReceiveMemoryWarning:(BOOL)arg1;
-- (void)gglLayoutScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3 dispatchQueue:(id)arg4;
-- (id)init;
+- (void)gglLayoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3 dispatchQueue:(id)arg4;
+- (id)initWithTarget:(id)arg1 sharedResources:(id)arg2;
 - (void)runAnimation:(id)arg1;
 - (void)worldDisplayDidChange;
 - (void)worldLayoutDidChange;

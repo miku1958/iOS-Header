@@ -12,18 +12,23 @@
 {
 }
 
+@property (readonly, nonatomic, getter=isCarrierInstall) BOOL carrierInstall; // @dynamic carrierInstall;
+@property (readonly, nonatomic, getter=isDeveloperInstall) BOOL developerInstall; // @dynamic developerInstall;
 @property (readonly, nonatomic) int deviceClass; // @dynamic deviceClass;
 @property (readonly, nonatomic) BOOL hasGasGauge; // @dynamic hasGasGauge;
 @property (readonly, nonatomic) BOOL hasOrbCapability; // @dynamic hasOrbCapability;
+@property (readonly, nonatomic) long long homeButtonType; // @dynamic homeButtonType;
 @property (readonly, nonatomic, getter=isInternalInstall) BOOL internalInstall; // @dynamic internalInstall;
 @property (readonly, copy, nonatomic) NSString *localizedProductName; // @dynamic localizedProductName;
 @property (readonly, nonatomic) double mainScreenOrientation; // @dynamic mainScreenOrientation;
 @property (readonly, nonatomic) int mainScreenPitch; // @dynamic mainScreenPitch;
 @property (readonly, nonatomic) double mainScreenScale; // @dynamic mainScreenScale;
 @property (readonly, nonatomic, getter=isMultiCore) BOOL multiCore; // @dynamic multiCore;
+@property (readonly, copy, nonatomic) NSString *operatingSystemName; // @dynamic operatingSystemName;
 @property (readonly, copy, nonatomic) NSString *productBuildVersion; // @dynamic productBuildVersion;
 @property (readonly, copy, nonatomic) NSString *productClass; // @dynamic productClass;
 @property (readonly, copy, nonatomic) NSString *productHardwareModel; // @dynamic productHardwareModel;
+@property (readonly, copy, nonatomic) NSString *productHardwareModelName; // @dynamic productHardwareModelName;
 @property (readonly, copy, nonatomic) NSString *productType; // @dynamic productType;
 @property (readonly, copy, nonatomic) NSString *productVersion; // @dynamic productVersion;
 @property (readonly, copy, nonatomic) NSString *uniqueDeviceIdentifier; // @dynamic uniqueDeviceIdentifier;

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasUserPrivacySettings;
 @property (strong, nonatomic) CKDPUserPrivacySettings *userPrivacySettings; // @synthesize userPrivacySettings=_userPrivacySettings;
 
++ (Class)applicationBundleType;
 - (void).cxx_destruct;
 - (void)addApplicationBundle:(id)arg1;
 - (id)applicationBundleAtIndex:(unsigned long long)arg1;

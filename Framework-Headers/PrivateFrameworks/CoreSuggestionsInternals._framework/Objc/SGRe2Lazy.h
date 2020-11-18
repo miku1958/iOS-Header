@@ -6,19 +6,21 @@
 
 #import <CoreSuggestionsInternals/SGRe2.h>
 
-@class NSString;
+@class NSData;
 
 @interface SGRe2Lazy : SGRe2
 {
-    NSString *_regexp;
+    NSData *_regexp;
 }
 
 - (void).cxx_destruct;
-- (BOOL)_enumerateMatchesInUtf8:(const char *)arg1 fromString:(id)arg2 ngroups:(unsigned long long)arg3 block:(CDUnknownBlockType)arg4;
+- (int)_enumerateMatchesInUtf8:(const char *)arg1 fromString:(id)arg2 ngroups:(unsigned long long)arg3 block:(CDUnknownBlockType)arg4;
 - (id)description;
-- (BOOL)existsInUtf8:(const char *)arg1;
+- (id)existsInUtf8:(const char *)arg1;
+- (id)hashId;
 - (id)initWithRegexp:(id)arg1;
-- (BOOL)matchesUtf8:(const char *)arg1;
+- (id)initWithRegexpData:(id)arg1;
+- (id)matchesUtf8:(const char *)arg1;
 
 @end
 

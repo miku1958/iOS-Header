@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSMutableArray *objects; // @synthesize objects=_objects;
 @property (strong, nonatomic) NSString *syncID; // @synthesize syncID=_syncID;
 
++ (Class)objectsType;
 - (void).cxx_destruct;
 - (void)addObjects:(id)arg1;
 - (void)clearObjects;

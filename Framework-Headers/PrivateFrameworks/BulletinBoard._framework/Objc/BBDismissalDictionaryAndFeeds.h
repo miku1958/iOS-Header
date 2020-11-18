@@ -17,7 +17,7 @@
 @property (readonly, copy, nonatomic) NSString *dismissalHash; // @synthesize dismissalHash=_dismissalHash;
 @property (readonly, nonatomic) double dismissalTimeInterval; // @synthesize dismissalTimeInterval=_dismissalTimeInterval;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithDismissalDictionary:(id)arg1 andFeeds:(unsigned long long)arg2;
 - (BOOL)matchDismissalDictionary:(id)arg1;

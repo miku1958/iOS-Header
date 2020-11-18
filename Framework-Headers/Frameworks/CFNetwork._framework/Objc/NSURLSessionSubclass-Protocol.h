@@ -9,6 +9,7 @@
 @class AVURLAsset, NSData, NSDictionary, NSString, NSURL, NSURLRequest, NSURLSessionAVAssetDownloadTask, NSURLSessionDataTask, NSURLSessionDownloadTask, NSURLSessionUploadTask;
 
 @protocol NSURLSessionSubclass <NSObject>
+- (NSURLSessionAVAssetDownloadTask *)AVAssetDownloadTaskForURLAsset:(AVURLAsset *)arg1 assetTitle:(NSString *)arg2 assetArtworkData:(NSData *)arg3 options:(NSDictionary *)arg4;
 - (NSURLSessionAVAssetDownloadTask *)AVAssetDownloadTaskForURLAsset:(AVURLAsset *)arg1 destinationURL:(NSURL *)arg2 options:(NSDictionary *)arg3;
 - (NSURLSessionAVAssetDownloadTask *)_AVAssetDownloadTaskForURL:(NSURL *)arg1 destinationURL:(NSURL *)arg2 options:(NSDictionary *)arg3;
 - (void)_onqueue_completeInvalidation:(BOOL)arg1;

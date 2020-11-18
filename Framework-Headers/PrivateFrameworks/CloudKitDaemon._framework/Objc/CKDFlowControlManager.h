@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
+- (id)CKStatusReportArray;
 - (id)_flowControlForOperation:(id)arg1;
 - (id)_flowControlForOperation:(id)arg1 createIfNecessary:(BOOL)arg2;
 - (BOOL)checkFlowControlIsLimited:(id)arg1;
@@ -31,9 +32,9 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)currentBudgetCap:(id)arg1;
 - (double)currentRegeneration:(id)arg1;
 - (id)description;
+- (BOOL)hasStatusToReport;
 - (id)initWithDefaultBudget:(unsigned long long)arg1 maximumThrottleTime:(double)arg2 andDefaultRegeneration:(double)arg3;
 - (double)secondsUntilFlowControlNotLimited:(id)arg1;
-- (id)statusReport;
 - (void)updateFlowControl:(id)arg1 withCost:(unsigned long long)arg2;
 - (void)updateFlowControl:(id)arg1 withRetryAfter:(unsigned long long)arg2;
 - (void)updateFlowControlWithLocalErrorForOperation:(id)arg1;

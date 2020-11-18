@@ -7,6 +7,7 @@
 #import <HealthKit/NSObject-Protocol.h>
 
 @protocol HKExtendedClientInterface <NSObject>
-- (void)achievementsWereAdded;
+- (void)clientRemote_achievementDefinitionUnviewedCountChanged;
+- (void)clientRemote_achievementsWereAdded;
 @end
 

@@ -13,6 +13,7 @@
 + (struct UIColor *)ICGrayTodoButtonHighlightColor;
 + (struct UIColor *)ICLearnMoreButtonPressedColor;
 + (struct UIColor *)ICLearnMoreButtonUnpressedColor;
++ (struct UIColor *)ICListStatusIndicatorColor;
 + (struct UIColor *)ICLockIconColor;
 + (struct UIColor *)ICLockIconColorList;
 + (struct UIColor *)ICRedColor;

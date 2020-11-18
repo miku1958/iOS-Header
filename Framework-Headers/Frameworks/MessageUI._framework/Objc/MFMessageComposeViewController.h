@@ -6,7 +6,7 @@
 
 #import <UIKit/UINavigationController.h>
 
-@class NSArray, NSMutableArray, NSString;
+@class MSMessage, NSArray, NSMutableArray, NSString;
 @protocol MFMessageComposeViewControllerDelegate;
 
 @interface MFMessageComposeViewController : UINavigationController
@@ -15,6 +15,7 @@
     NSArray *_recipients;
     NSString *_body;
     NSString *_subject;
+    MSMessage *_message;
     NSMutableArray *_mutableAttachmentURLs;
     unsigned long long _currentAttachedVideoCount;
     unsigned long long _currentAttachedAudioCount;
@@ -27,6 +28,7 @@
 @property (nonatomic) unsigned long long currentAttachedAudioCount; // @synthesize currentAttachedAudioCount=_currentAttachedAudioCount;
 @property (nonatomic) unsigned long long currentAttachedImageCount; // @synthesize currentAttachedImageCount=_currentAttachedImageCount;
 @property (nonatomic) unsigned long long currentAttachedVideoCount; // @synthesize currentAttachedVideoCount=_currentAttachedVideoCount;
+@property (copy, nonatomic) MSMessage *message; // @synthesize message=_message;
 @property (nonatomic) id<MFMessageComposeViewControllerDelegate> messageComposeDelegate; // @synthesize messageComposeDelegate=_messageComposeDelegate;
 @property (copy, nonatomic) NSMutableArray *mutableAttachmentURLs; // @synthesize mutableAttachmentURLs=_mutableAttachmentURLs;
 @property (copy, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
@@ -59,6 +61,7 @@
 - (BOOL)addAttachmentData:(id)arg1 typeIdentifier:(id)arg2 filename:(id)arg3;
 - (BOOL)addAttachmentData:(id)arg1 withAlternateFilename:(id)arg2;
 - (BOOL)addAttachmentURL:(id)arg1 withAlternateFilename:(id)arg2;
+- (BOOL)addRichLinkData:(id)arg1 withWebpageURL:(id)arg2;
 - (id)attachmentURLs;
 - (BOOL)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers;
 - (BOOL)canAddAttachmentURL:(id)arg1;
@@ -68,6 +71,7 @@
 - (void)setModalPresentationStyle:(long long)arg1;
 - (void)smsComposeControllerCancelled:(id)arg1;
 - (void)smsComposeControllerSendStarted:(id)arg1;
+- (void)smsComposeControllerShouldSendMessageWithText:(id)arg1 toRecipients:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 

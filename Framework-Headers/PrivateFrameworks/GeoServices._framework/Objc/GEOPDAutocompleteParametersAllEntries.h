@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDViewportInfo, NSString;
+@class GEOPDViewportInfo, NSString, PBUnknownFields;
 
 @interface GEOPDAutocompleteParametersAllEntries : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     int _maxResults;
     NSString *_query;
     GEOPDViewportInfo *_viewportInfo;
@@ -26,6 +27,7 @@
 @property (nonatomic) BOOL highlightDiff; // @synthesize highlightDiff=_highlightDiff;
 @property (nonatomic) int maxResults; // @synthesize maxResults=_maxResults;
 @property (strong, nonatomic) NSString *query; // @synthesize query=_query;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;
 
 - (void)copyTo:(id)arg1;

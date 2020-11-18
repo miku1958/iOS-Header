@@ -15,7 +15,6 @@
     NSMapTable *_fencePointerToTraceMap;
     NSMapTable *_fencePointerToTriggerPortMap;
     NSMapTable *_fencePointerToCAPortMap;
-    NSHashTable *_reportableFencePointers;
     NSMapTable *_triggerPortToFencePointersMap;
     NSMapTable *_triggerPortToDeathWatcherMap;
     NSHashTable *_validDeathWatchersTable;

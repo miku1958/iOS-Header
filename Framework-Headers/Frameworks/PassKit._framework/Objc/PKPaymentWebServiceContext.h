@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -33,7 +33,7 @@
     NSString *_lastUpdatedTag;
 }
 
-@property (readonly) NSDictionary *TSMURLStringByPushTopic;
+@property (readonly, weak) NSDictionary *TSMURLStringByPushTopic;
 @property (copy) NSArray *certificates; // @synthesize certificates=_certificates;
 @property (strong) PKPaymentWebServiceConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (copy) NSDate *configurationDate; // @synthesize configurationDate=_configurationDate;
@@ -43,7 +43,7 @@
 @property BOOL ignoreProvisioningEnablementPercentage; // @synthesize ignoreProvisioningEnablementPercentage=_ignoreProvisioningEnablementPercentage;
 @property (copy) NSString *lastUpdatedTag; // @synthesize lastUpdatedTag=_lastUpdatedTag;
 @property BOOL messageServiceDisabled; // @synthesize messageServiceDisabled=_messageServiceDisabled;
-@property (readonly) PKPaymentWebServiceRegion *primaryRegion;
+@property (readonly, weak) PKPaymentWebServiceRegion *primaryRegion;
 @property (copy) NSString *primaryRegionIdentifier; // @synthesize primaryRegionIdentifier=_primaryRegionIdentifier;
 @property (copy) NSString *pushToken; // @synthesize pushToken=_pushToken;
 @property (strong) NSDictionary *regions; // @synthesize regions=_regions;
@@ -57,12 +57,12 @@
 + (void)_migrateFrom0To1:(id)arg1;
 + (id)contextWithArchive:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)TSMPushTopics;
 - (double)_contextProvisioningEnablementValue;
 - (void)addVerificationRequestRecord:(id)arg1 forUniqueID:(id)arg2;
 - (void)archiveAtPath:(id)arg1;
-- (BOOL)contextMeetsProvisioningEnablementPercentageThreshold;
-- (void)dealloc;
+- (BOOL)contextMeetsProvisioningEnablementPercentageThresholdForRegion:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

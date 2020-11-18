@@ -9,8 +9,7 @@
 @interface NSMutableAttributedString (IC)
 - (void)appendAttributedSubstring:(id)arg1 fromRange:(struct _NSRange)arg2;
 - (void)appendString:(id)arg1;
-- (void)enumerateClampedAttribute:(id)arg1 inRange:(struct _NSRange)arg2 options:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
-- (void)enumerateUnclampedAttribute:(id)arg1 inRange:(struct _NSRange)arg2 options:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)replaceCharactersInRange:(struct _NSRange)arg1 withAttributedSubstring:(id)arg2 fromRange:(struct _NSRange)arg3;
+- (void)setParagraphStyleForWritingDirection:(long long)arg1 andAlignment:(BOOL)arg2;
 @end
 

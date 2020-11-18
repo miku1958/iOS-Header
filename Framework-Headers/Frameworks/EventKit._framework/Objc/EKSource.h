@@ -38,16 +38,18 @@
 @property (readonly, nonatomic) NSString *sourceIdentifier;
 @property (readonly, nonatomic) long long sourceType;
 @property (readonly, nonatomic) long long strictestEventPrivateValue;
+@property (readonly, nonatomic) BOOL supportsCalendarCreation;
+@property (readonly, nonatomic) BOOL supportsReminderActions;
 @property (strong, nonatomic) NSDate *timeOfLastExternalIdentificationCache; // @synthesize timeOfLastExternalIdentificationCache=_timeOfLastExternalIdentificationCache;
 @property (copy, nonatomic) NSString *title;
 @property (readonly, nonatomic) BOOL wantsCommentPromptWhenDeclining;
 
 + (id)sourceWithEventStore:(id)arg1;
+- (void).cxx_destruct;
 - (void)_cacheExternalIdentificationIfNeeded;
 - (id)_persistentItem;
 - (id)calendarsForEntityType:(unsigned long long)arg1;
 - (BOOL)commit:(id *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (id)readWriteCalendarsForEntityType:(unsigned long long)arg1;

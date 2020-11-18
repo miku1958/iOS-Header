@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSSet *people; // @synthesize people=_people;
 @property (strong, nonatomic) NSSet *resources; // @synthesize resources=_resources;
 
+- (void).cxx_destruct;
 
 @end
 

@@ -6,18 +6,18 @@
 
 #import <Foundation/NSObject.h>
 
-@class GEODirectionsRequest, GEODirectionsRouteResponse;
+@class GEODirectionsRequest, GEODirectionsResponse;
 @protocol OS_dispatch_queue;
 
 @interface GEORouteGenerator : NSObject
 {
     GEODirectionsRequest *_request;
-    GEODirectionsRouteResponse *_response;
+    GEODirectionsResponse *_response;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (readonly, strong, nonatomic) GEODirectionsRequest *request; // @synthesize request=_request;
-@property (readonly, strong, nonatomic) GEODirectionsRouteResponse *response; // @synthesize response=_response;
+@property (readonly, strong, nonatomic) GEODirectionsResponse *response; // @synthesize response=_response;
 
 + (unsigned long long)routingSharedLibraryCodeVersion;
 + (unsigned long long)routingSubgraphDataVersion;

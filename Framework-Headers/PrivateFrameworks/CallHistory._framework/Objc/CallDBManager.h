@@ -14,10 +14,12 @@
     unsigned char _dataStoreType;
     unsigned char _notifyDataStoreChangeReason;
     DBManager *_dbManager;
+    id _deviceUnlockNotificationRef;
 }
 
 @property unsigned char dataStoreType; // @synthesize dataStoreType=_dataStoreType;
 @property (strong) DBManager *dbManager; // @synthesize dbManager=_dbManager;
+@property (strong) id deviceUnlockNotificationRef; // @synthesize deviceUnlockNotificationRef=_deviceUnlockNotificationRef;
 @property BOOL deviceUnlocked; // @synthesize deviceUnlocked=_deviceUnlocked;
 @property unsigned char notifyDataStoreChangeReason; // @synthesize notifyDataStoreChangeReason=_notifyDataStoreChangeReason;
 
@@ -29,6 +31,7 @@
 - (id)createManagedObjectContext;
 - (void)createPermanent;
 - (void)createTemporary;
+- (void)dealloc;
 - (void)handlePermanentCreated;
 - (void)handleTemporaryCreated;
 - (id)init;

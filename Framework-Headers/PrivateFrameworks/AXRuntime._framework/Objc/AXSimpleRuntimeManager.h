@@ -30,6 +30,7 @@
 @property (nonatomic) BOOL systemWideServer; // @synthesize systemWideServer=_systemWideServer;
 
 + (id)sharedManager;
+- (void)dealloc;
 - (void)start;
 
 @end

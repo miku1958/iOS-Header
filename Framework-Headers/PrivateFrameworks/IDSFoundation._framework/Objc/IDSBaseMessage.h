@@ -15,10 +15,13 @@
     BOOL _forceCellular;
     BOOL _usingOutgoingPush;
     BOOL _wantsResponse;
+    BOOL _wantsMultipleResponses;
     BOOL _wantsBinaryPush;
     BOOL _wantsIntegerUniqueIDs;
     BOOL _highPriority;
     BOOL _hasReceivedPushAck;
+    BOOL _hasAttemptedAPSDelivery;
+    BOOL _alwaysForceCelluar;
     int _timeoutRetries;
     id _context;
     NSDictionary *_clientInfo;
@@ -36,6 +39,11 @@
     NSString *_dataUsageBundleIdentifier;
     NSDictionary *_responseAlert;
     NSNumber *_retryCount;
+    NSString *_subService;
+    NSString *_service;
+    long long _importanceLevel;
+    long long _deliveryMechanism;
+    NSString *_underlyingService;
 }
 
 @property (readonly, copy, nonatomic) NSData *IDCertificate;
@@ -45,6 +53,8 @@
 @property (readonly, strong) NSDictionary *additionalMessageHeaders;
 @property (readonly, strong) NSDictionary *additionalMessageHeadersForOutgoingPush;
 @property (readonly, strong) NSDictionary *additionalQueryStringParameters;
+@property (readonly) BOOL allowDualDelivery;
+@property BOOL alwaysForceCelluar; // @synthesize alwaysForceCelluar=_alwaysForceCelluar;
 @property (readonly) double anisetteHeadersTimeout;
 @property (readonly, strong) NSString *bagKey;
 @property (copy, nonatomic) NSMutableArray *certDataArray;
@@ -56,14 +66,18 @@
 @property (readonly) double customRetryInterval;
 @property (readonly, strong) NSString *dataUsageBundleIdentifier; // @synthesize dataUsageBundleIdentifier=_dataUsageBundleIdentifier;
 @property (copy) CDUnknownBlockType deliveryAcknowledgementBlock; // @synthesize deliveryAcknowledgementBlock=_deliveryAcknowledgementBlock;
+@property long long deliveryMechanism; // @synthesize deliveryMechanism=_deliveryMechanism;
 @property (copy, nonatomic, setter=setDSAuthID:) NSString *dsAuthID; // @synthesize dsAuthID=_dsAuthID;
 @property BOOL forceCellular; // @synthesize forceCellular=_forceCellular;
+@property BOOL hasAttemptedAPSDelivery; // @synthesize hasAttemptedAPSDelivery=_hasAttemptedAPSDelivery;
 @property BOOL hasReceivedPushAck; // @synthesize hasReceivedPushAck=_hasReceivedPushAck;
 @property BOOL highPriority; // @synthesize highPriority=_highPriority;
 @property (readonly, nonatomic) struct __SecKey *identityPrivateKey;
 @property (readonly, nonatomic) struct __SecKey *identityPublicKey;
 @property (readonly) BOOL ignoresNetworkConnectivity;
+@property long long importanceLevel; // @synthesize importanceLevel=_importanceLevel;
 @property (readonly) BOOL isValidMessage;
+@property (readonly) BOOL isWebTunnelMessage;
 @property (readonly) int maxTimeoutRetries;
 @property (readonly, strong) NSDictionary *messageBody;
 @property (readonly, strong) NSDictionary *messageBodyUsingCache;
@@ -79,11 +93,16 @@
 @property (copy) NSDictionary *responseAlertInfo; // @synthesize responseAlertInfo=_responseAlert;
 @property (readonly) long long responseCommand;
 @property (copy, nonatomic) NSNumber *retryCount; // @synthesize retryCount=_retryCount;
+@property (copy, nonatomic) NSNumber *serverTimestamp;
+@property (copy, nonatomic) NSNumber *serverTimestampReceivedDate;
+@property (copy) NSString *service; // @synthesize service=_service;
 @property (copy) NSData *serviceData; // @synthesize serviceData=_serviceData;
+@property (copy) NSString *subService; // @synthesize subService=_subService;
 @property double timeSent; // @synthesize timeSent=_timeSent;
 @property double timeout; // @synthesize timeout=_timeout;
 @property int timeoutRetries; // @synthesize timeoutRetries=_timeoutRetries;
 @property (strong) NSString *topic; // @synthesize topic=_topic;
+@property (copy) NSString *underlyingService; // @synthesize underlyingService=_underlyingService;
 @property unsigned long long uniqueID; // @synthesize uniqueID=_uniqueID;
 @property (readonly, strong) NSString *uniqueIDString;
 @property (readonly, strong) NSString *userAgentHeaderString;
@@ -104,6 +123,7 @@
 @property BOOL wantsIntegerUniqueIDs; // @synthesize wantsIntegerUniqueIDs=_wantsIntegerUniqueIDs;
 @property (readonly) BOOL wantsJSONBody;
 @property (readonly) BOOL wantsManagedRetries;
+@property BOOL wantsMultipleResponses; // @synthesize wantsMultipleResponses=_wantsMultipleResponses;
 @property BOOL wantsResponse; // @synthesize wantsResponse=_wantsResponse;
 @property (readonly) BOOL wantsSignature;
 @property (readonly) BOOL wantsUserAgentInHeaders;
@@ -116,6 +136,7 @@
 - (void)handleResponseHeaders:(id)arg1;
 - (BOOL)hasRequiredKeys:(id *)arg1;
 - (id)init;
+- (void)logFailureInfo;
 
 @end
 

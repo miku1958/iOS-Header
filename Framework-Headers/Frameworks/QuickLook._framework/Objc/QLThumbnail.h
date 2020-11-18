@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSURL;
 
@@ -17,10 +17,12 @@
 
 + (id)defaultDescriptors;
 + (id)sharedQueue;
+- (void).cxx_destruct;
 - (id)imageForUseMode:(unsigned long long)arg1 descriptor:(id)arg2 generateIfNeeded:(BOOL)arg3 contentRect:(struct CGRect *)arg4 error:(id *)arg5;
 - (id)initWithURL:(id)arg1;
 - (BOOL)provideImages:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (id)thumbnailCreationOperationForUseMode:(unsigned long long)arg1 descriptor:(id)arg2;
+- (id)thumbnailCreationOperationForUseMode:(unsigned long long)arg1 descriptor:(id)arg2 generateIfNeeded:(BOOL)arg3;
 
 @end
 

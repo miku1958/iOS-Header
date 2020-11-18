@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL wantsMaskingWhileAnimatingDisabled;
 
 - (void).cxx_destruct;
+- (void)_updateImageView;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;

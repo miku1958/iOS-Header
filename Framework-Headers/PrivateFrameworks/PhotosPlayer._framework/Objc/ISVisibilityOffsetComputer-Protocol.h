@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class UIView;
-
 @protocol ISVisibilityOffsetComputer
-- (void)getVisibility:(BOOL *)arg1 offset:(double *)arg2 targetVisibilityOffset:(double *)arg3 forView:(UIView *)arg4;
+- (void)getVisibility:(BOOL *)arg1 offset:(double *)arg2 targetVisibilityOffset:(double *)arg3 forView:(struct NSObject *)arg4;
 @end
 

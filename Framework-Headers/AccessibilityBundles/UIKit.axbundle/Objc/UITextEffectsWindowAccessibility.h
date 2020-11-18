@@ -13,8 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityCanBeConsideredAsMainWindow;
 - (id)_initWithScreen:(id)arg1 options:(id)arg2;
-- (void)orderFront:(id)arg1;
 
 @end
 

@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)applicationInstallsDidResume:(id)arg1;
 - (void)applicationInstallsDidStart:(id)arg1;
 - (void)applicationInstallsDidUpdateIcon:(id)arg1;
+- (void)applicationStateDidChange:(id)arg1;
 - (void)applicationsDidFailToInstall:(id)arg1;
 - (void)applicationsDidFailToUninstall:(id)arg1;
 - (void)applicationsDidInstall:(id)arg1;

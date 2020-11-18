@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 @interface CKDBackingFakeAccount : CKDBackingAccount
 {
     NSString *_dsid;
+    NSString *_altDsid;
     NSString *_identifier;
     NSString *_primaryEmail;
     NSString *_password;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) NSDictionary *accountBag; // @synthesize accountBag=_accountBag;
+@property (strong, nonatomic) NSString *altDsid; // @synthesize altDsid=_altDsid;
 @property (strong, nonatomic) NSString *dsid; // @synthesize dsid=_dsid;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *fakeAccountInfoQueue; // @synthesize fakeAccountInfoQueue=_fakeAccountInfoQueue;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
@@ -33,13 +35,17 @@ __attribute__((visibility("hidden")))
 - (id)_initFakeAccountWithEmail:(id)arg1 password:(id)arg2;
 - (id)accountPropertiesForDataclass:(id)arg1;
 - (id)ckAccount;
-- (id)cloudKitAuthToken;
+- (id)cloudKitAuthTokenWithError:(id *)arg1;
 - (BOOL)cloudKitIsEnabled;
 - (BOOL)cloudPhotosIsEnabled;
-- (id)iCloudAuthToken;
+- (id)iCloudAuthTokenWithError:(id *)arg1;
 - (BOOL)iCloudDriveAllowsCellularAccess;
+- (BOOL)isDataclassEnabled:(id)arg1;
 - (BOOL)isFakeAccount;
 - (void)renewAuthTokenInStore:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)updateAccountProperiesInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)username;
+- (void)validateVettingToken:(id)arg1 vettingEmail:(id)arg2 vettingPhone:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

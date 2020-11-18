@@ -19,9 +19,9 @@
 @property (strong, nonatomic) PKPaymentCredential *paymentCredential; // @synthesize paymentCredential=_paymentCredential;
 @property (copy, nonatomic) NSString *primaryAccountNumber; // @synthesize primaryAccountNumber=_primaryAccountNumber;
 
+- (void).cxx_destruct;
 - (id)_cardDictionary;
-- (id)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 account:(id)arg3 certChain:(id)arg4 devSigned:(BOOL)arg5;
-- (void)dealloc;
+- (void)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 account:(id)arg3 certChain:(id)arg4 devSigned:(BOOL)arg5 deviceData:(id)arg6 webService:(id)arg7 completion:(CDUnknownBlockType)arg8;
 - (id)initWithCardholderName:(id)arg1 primaryAccountNumber:(id)arg2;
 - (id)initWithPaymentCredential:(id)arg1;
 

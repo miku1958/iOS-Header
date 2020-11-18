@@ -6,56 +6,67 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDHome, NSData, NSMutableArray, NSString, NSUUID;
+@class HAPPairingIdentity, HMDHome, NSMutableArray, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDUser : NSObject <NSSecureCoding>
+@interface HMDUser : NSObject <HMFDumpState, NSSecureCoding>
 {
     NSMutableArray *_relayAccessTokens;
+    BOOL _remoteAccessAllowed;
     BOOL _remoteGateway;
+    unsigned long long _privilege;
     HMDHome *_home;
     NSString *_userID;
     NSString *_relayIdentifier;
-    NSString *_pairingUsername;
-    NSData *_publicKey;
+    HAPPairingIdentity *_pairingIdentity;
     NSUUID *_uuid;
-    unsigned long long _privilege;
     NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
 @property (readonly, nonatomic, getter=isCurrentUser) BOOL currentUser;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *displayName;
 @property (readonly, copy, nonatomic) NSString *encodingRemoteDisplayName;
+@property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
-@property (readonly, copy, nonatomic) NSString *pairingUsername; // @synthesize pairingUsername=_pairingUsername;
+@property (readonly, nonatomic) BOOL isAdministrator;
+@property (readonly, nonatomic) BOOL isOwner;
+@property (strong, nonatomic) HAPPairingIdentity *pairingIdentity; // @synthesize pairingIdentity=_pairingIdentity;
 @property (nonatomic) unsigned long long privilege; // @synthesize privilege=_privilege;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property (readonly, copy, nonatomic) NSData *publicKey; // @synthesize publicKey=_publicKey;
 @property (copy, nonatomic) NSString *relayIdentifier; // @synthesize relayIdentifier=_relayIdentifier;
+@property (nonatomic, getter=isRemoteAccessAllowed) BOOL remoteAccessAllowed; // @synthesize remoteAccessAllowed=_remoteAccessAllowed;
 @property (nonatomic, getter=isRemoteGateway) BOOL remoteGateway; // @synthesize remoteGateway=_remoteGateway;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *userID; // @synthesize userID=_userID;
 @property (copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
-+ (id)currentUserWithPriviledge:(unsigned long long)arg1;
++ (id)currentUserWithPrivilege:(unsigned long long)arg1;
++ (id)destinationWithUserID:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (unsigned long long)_compatiblePrivilege;
 - (void)addRelayAccessToken:(id)arg1;
 - (void)configureWithHome:(id)arg1;
 - (BOOL)containsRelayAccessToken:(id)arg1;
-- (id)debugDescription;
-- (id)description;
+- (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithUserID:(id)arg1 pairingUsername:(id)arg2 publicKey:(id)arg3 privilege:(unsigned long long)arg4;
-- (BOOL)mergeFromUser:(id)arg1;
+- (id)initWithUserID:(id)arg1 pairingIdentity:(id)arg2 privilege:(unsigned long long)arg3;
+- (BOOL)mergeFromUser:(id)arg1 dataVersion:(long long)arg2;
+- (id)pairingUsername;
+- (id)publicKey;
 - (id)relayAccessTokenForAccessory:(id)arg1;
 - (id)relayAccessTokens;
 - (void)removeRelayAccessToken:(id)arg1;
 - (void)removeRelayAccessTokenForAccessory:(id)arg1;
 - (id)residentCopy;
-- (void)updatePairingUsername:(id)arg1 publicKey:(id)arg2;
+- (BOOL)updateAdministrator:(BOOL)arg1;
+- (BOOL)updateRemoteAccessAllowed:(BOOL)arg1;
 - (id)userCopy;
 
 @end

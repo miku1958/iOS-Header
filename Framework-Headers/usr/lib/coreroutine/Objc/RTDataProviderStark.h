@@ -6,26 +6,18 @@
 
 #import <coreroutine/RTDataProviderDuet.h>
 
-#import <coreroutine/RTDataProviderProtocol-Protocol.h>
-
-@class NSString;
-
-@interface RTDataProviderStark : RTDataProviderDuet <RTDataProviderProtocol>
+@interface RTDataProviderStark : RTDataProviderDuet
 {
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
 + (id)providerName;
 + (id)sharedInstance;
-- (id)init;
+- (id)initWithName:(id)arg1 purgeManager:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)populateDataProviderWithHandler:(CDUnknownBlockType)arg1;
 - (id)supportedEventClasses;
+- (id)supportedEventStreams;
 - (BOOL)supportsEventClass:(Class)arg1;
 
 @end

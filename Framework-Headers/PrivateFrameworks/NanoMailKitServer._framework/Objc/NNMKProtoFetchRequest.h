@@ -8,25 +8,35 @@
 
 #import <NanoMailKitServer/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
 @interface NNMKProtoFetchRequest : PBRequest <NSCopying>
 {
     NSString *_conversationId;
+    NSData *_currentDateForRequestingMoreMessages;
+    NSData *_currentMessageIdsAndStatus;
     unsigned int _fullSyncVersion;
-    BOOL _manuallyTriggered;
+    BOOL _wantsBatchedResponse;
+    BOOL _willTrimDatabaseAfterResults;
     struct {
         unsigned int fullSyncVersion:1;
-        unsigned int manuallyTriggered:1;
+        unsigned int wantsBatchedResponse:1;
+        unsigned int willTrimDatabaseAfterResults:1;
     } _has;
 }
 
 @property (strong, nonatomic) NSString *conversationId; // @synthesize conversationId=_conversationId;
+@property (strong, nonatomic) NSData *currentDateForRequestingMoreMessages; // @synthesize currentDateForRequestingMoreMessages=_currentDateForRequestingMoreMessages;
+@property (strong, nonatomic) NSData *currentMessageIdsAndStatus; // @synthesize currentMessageIdsAndStatus=_currentMessageIdsAndStatus;
 @property (nonatomic) unsigned int fullSyncVersion; // @synthesize fullSyncVersion=_fullSyncVersion;
 @property (readonly, nonatomic) BOOL hasConversationId;
+@property (readonly, nonatomic) BOOL hasCurrentDateForRequestingMoreMessages;
+@property (readonly, nonatomic) BOOL hasCurrentMessageIdsAndStatus;
 @property (nonatomic) BOOL hasFullSyncVersion;
-@property (nonatomic) BOOL hasManuallyTriggered;
-@property (nonatomic) BOOL manuallyTriggered; // @synthesize manuallyTriggered=_manuallyTriggered;
+@property (nonatomic) BOOL hasWantsBatchedResponse;
+@property (nonatomic) BOOL hasWillTrimDatabaseAfterResults;
+@property (nonatomic) BOOL wantsBatchedResponse; // @synthesize wantsBatchedResponse=_wantsBatchedResponse;
+@property (nonatomic) BOOL willTrimDatabaseAfterResults; // @synthesize willTrimDatabaseAfterResults=_willTrimDatabaseAfterResults;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

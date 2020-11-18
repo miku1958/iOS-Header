@@ -8,11 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSData;
+@class NSData, NSMutableArray;
 
 @interface GEOStepFeedback : PBCodable <NSCopying>
 {
     double _completionTimeStamp;
+    NSMutableArray *_instructionErrors;
     NSData *_routeID;
     unsigned int _routeIndex;
     unsigned int _stepID;
@@ -32,16 +33,22 @@
 @property (readonly, nonatomic) BOOL hasRouteID;
 @property (nonatomic) BOOL hasRouteIndex;
 @property (nonatomic) BOOL hasStepID;
+@property (strong, nonatomic) NSMutableArray *instructionErrors; // @synthesize instructionErrors=_instructionErrors;
 @property (strong, nonatomic) NSData *routeID; // @synthesize routeID=_routeID;
 @property (nonatomic) unsigned int routeIndex; // @synthesize routeIndex=_routeIndex;
 @property (nonatomic) unsigned int stepID; // @synthesize stepID=_stepID;
 
++ (Class)instructionErrorType;
+- (void)addInstructionError:(id)arg1;
+- (void)clearInstructionErrors;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)instructionErrorAtIndex:(unsigned long long)arg1;
+- (unsigned long long)instructionErrorsCount;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

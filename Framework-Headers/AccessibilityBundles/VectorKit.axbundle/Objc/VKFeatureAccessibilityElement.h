@@ -35,15 +35,16 @@
 @property (nonatomic) int sortKey; // @synthesize sortKey=_sortKey;
 @property (nonatomic) float strokeWidth; // @synthesize strokeWidth=_strokeWidth;
 @property (nonatomic) int style; // @synthesize style=_style;
-@property (readonly, nonatomic) NSString *trueLabel; // @dynamic trueLabel;
+@property (readonly, weak, nonatomic) NSString *trueLabel; // @dynamic trueLabel;
 
+- (void).cxx_destruct;
 - (id)_accessibilityMapDetailedInfoAtPoint:(struct CGPoint)arg1;
 - (int)_accessibilityMapFeatureType;
 - (id)_accessibilityShortAddress:(id)arg1;
 - (id)_accessibilityShortAddress:(id)arg1 alwaysIncludeLocality:(BOOL)arg2;
 - (BOOL)_allowCustomActionHintSpeakOverride;
 - (id)_distanceAwayString;
-- (id)_distanceStringForPoint:(CDStruct_31142d93)arg1;
+- (id)_distanceStringForPoint:(struct VKPoint)arg1;
 - (void)_mergePaths;
 - (void)_updateElementStatus;
 - (void)_updatePath;

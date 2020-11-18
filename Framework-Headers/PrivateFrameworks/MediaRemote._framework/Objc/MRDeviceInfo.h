@@ -15,18 +15,30 @@
     NSString *_uniqueIdentifier;
     NSString *_name;
     NSString *_localizedModelName;
+    NSString *_systemBuildVersion;
+    NSString *_applicationBundleIdentifier;
+    NSString *_applicationBundleVersion;
+    unsigned long long _protocolVersion;
+    BOOL _pairingAllowed;
 }
 
+@property (readonly, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
+@property (readonly, nonatomic) NSString *applicationBundleVersion; // @synthesize applicationBundleVersion=_applicationBundleVersion;
 @property (readonly, nonatomic) NSString *localizedModelName; // @synthesize localizedModelName=_localizedModelName;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic, getter=isPairingAllowed) BOOL pairingAllowed; // @synthesize pairingAllowed=_pairingAllowed;
+@property (readonly, nonatomic) unsigned long long protocolVersion; // @synthesize protocolVersion=_protocolVersion;
+@property (readonly, nonatomic) NSString *systemBuildVersion; // @synthesize systemBuildVersion=_systemBuildVersion;
 @property (readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
++ (id)_persistentDeviceID;
++ (id)_persistentDeviceIDFromFile:(id)arg1;
 + (id)currentDeviceInfo;
++ (double)processorTimeScale;
 - (id)_copyWithZone:(struct _NSZone *)arg1 usingConcreteClass:(Class)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
-- (id)initWithUniqueIdentifier:(id)arg1 name:(id)arg2 localizedModelName:(id)arg3;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end

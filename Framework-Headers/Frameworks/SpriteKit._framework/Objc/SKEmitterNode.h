@@ -19,6 +19,7 @@
     SKKeyframeSequence *_scaleSequence;
     SKKeyframeSequence *_rotationSequence;
     SKKeyframeSequence *_fieldInfluenceSequence;
+    SKKeyframeSequence *_particleSpeedSequence;
     unsigned long long _particleRenderOrder;
 }
 
@@ -75,7 +76,9 @@
 - (void)_didMakeBackingNode;
 - (struct SKCNode *)_makeBackingNode;
 - (unsigned int)activeParticleCount;
+- (void)addSubEmitterNode:(id)arg1;
 - (void)advanceSimulationTime:(double)arg1;
+- (void)copyParticlePropertiesToNode:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (BOOL)densityBased;
@@ -86,9 +89,12 @@
 - (id)fieldInfluenceSequence;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithMinimumParticleCapacity:(unsigned long long)arg1;
+- (id)initWithMinimumParticleCapacity:(unsigned long long)arg1 minimumPositionBufferCapacity:(unsigned long long)arg2;
 - (BOOL)isEqualToNode:(id)arg1;
 - (double)particleDensity;
 - (id)particleRotationSequence;
+- (id)particleSpeedSequence;
 - (id)physicsWorld;
 - (void)resetSimulation;
 - (void)setDensityBased:(BOOL)arg1;
@@ -97,9 +103,13 @@
 - (void)setFieldInfluenceSequence:(id)arg1;
 - (void)setParticleDensity:(double)arg1;
 - (void)setParticleRotationSequence:(id)arg1;
+- (void)setParticleSpeedSequence:(id)arg1;
 - (void)setPhysicsWorld:(id)arg1;
+- (void)setUsesPointSprites:(BOOL)arg1;
 - (void)setWantsNewParticles:(BOOL)arg1;
 - (void)setZPosition:(double)arg1;
+- (id)subEmitterNode;
+- (BOOL)usesPointSprites;
 - (BOOL)wantsNewParticles;
 
 @end

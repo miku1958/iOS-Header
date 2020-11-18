@@ -22,7 +22,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int iOSLegacyIdentifier; // @synthesize iOSLegacyIdentifier=_iOSLegacyIdentifier;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (struct __CFArray *)cn_copyGroupsInAddressBook:(void *)arg1 error:(struct __CFError **)arg2;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithiOSLegacyIdentifier:(int)arg1;
 
 @end

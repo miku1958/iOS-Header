@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+@property (nonatomic) BOOL ignoreMute; // @dynamic ignoreMute;
 @property (copy, nonatomic) NSString *sound; // @dynamic sound;
 @property (copy, nonatomic) NSDictionary *userInfo; // @dynamic userInfo;
 @property (copy, nonatomic) NSString *vibration; // @dynamic vibration;

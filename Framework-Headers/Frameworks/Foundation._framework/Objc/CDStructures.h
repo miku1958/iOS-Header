@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSIndexSet, NSObject, NSWeakCallback;
+@class NSIndexSet, NSObject;
 
 #pragma mark Function Pointers and Blocks
 
@@ -58,7 +58,6 @@ struct NSSlice {
     BOOL pointerPersonality;
     BOOL integerPersonality;
     BOOL simpleReadClear;
-    NSWeakCallback *callback;
     CDUnknownFunctionPointerType sizeFunction;
     CDUnknownFunctionPointerType hashFunction;
     CDUnknownFunctionPointerType isEqualFunction;
@@ -503,6 +502,11 @@ typedef struct {
     double tX;
     double tY;
 } CDStruct_56a8f59f;
+
+typedef struct {
+    long long _field1;
+    id _field2;
+} CDStruct_6db0658e;
 
 typedef struct {
     long long _field1;

@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ContactsFoundation/CNObserver-Protocol.h>
 
-@class CNVirtualScheduler, NSArray, NSMutableArray, NSString;
+@class CNObservableContractEnforcement, CNVirtualScheduler, NSArray, NSMutableArray, NSString;
 
 @interface CNTestableObserver : NSObject <CNObserver>
 {
     CNVirtualScheduler *_scheduler;
     NSMutableArray *_results;
+    CNObservableContractEnforcement *_enforcement;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,7 +25,7 @@
 @property (readonly) Class superclass;
 
 + (id)observerWithScheduler:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithScheduler:(id)arg1;
 - (void)observerDidComplete;
 - (void)observerDidFailWithError:(id)arg1;

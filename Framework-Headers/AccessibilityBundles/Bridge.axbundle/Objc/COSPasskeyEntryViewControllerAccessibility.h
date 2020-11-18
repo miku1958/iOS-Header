@@ -14,7 +14,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)initWithDevice:(id)arg1;
+- (id)init;
+- (void)textDidChange:(id)arg1;
 
 @end
 

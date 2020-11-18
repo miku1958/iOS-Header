@@ -31,6 +31,7 @@
 - (void)_handleXPCMessage:(id)arg1;
 - (void)_sendMessage:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_setEventHandlerOnConnection:(id)arg1;
+- (void)barrier:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)eventQueue;
 - (id)initWithServiceName:(id)arg1 onQueue:(id)arg2;

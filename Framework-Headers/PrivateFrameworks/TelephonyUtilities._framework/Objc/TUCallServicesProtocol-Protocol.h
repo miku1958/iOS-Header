@@ -5,10 +5,9 @@
 //
 
 #import <TelephonyUtilities/TUAudioDeviceControllerActions-Protocol.h>
-#import <TelephonyUtilities/TUCallServicesClientCapabilitiesXPC-Protocol.h>
-#import <TelephonyUtilities/TUCallServicesIDSCallActions-Protocol.h>
+#import <TelephonyUtilities/TUCallServicesClientCapabilitiesActions-Protocol.h>
 #import <TelephonyUtilities/TUCallServicesProxyCallActions-Protocol.h>
 
-@protocol TUCallServicesProtocol <TUCallServicesProxyCallActions, TUCallServicesIDSCallActions, TUAudioDeviceControllerActions, TUCallServicesClientCapabilitiesXPC>
+@protocol TUCallServicesProtocol <TUCallServicesProxyCallActions, TUAudioDeviceControllerActions, TUCallServicesClientCapabilitiesActions>
 @end
 

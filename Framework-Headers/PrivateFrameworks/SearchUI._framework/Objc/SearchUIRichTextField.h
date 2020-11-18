@@ -4,37 +4,42 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <SearchUI/NUIContainerStackView.h>
 
-@class NSArray, SearchUIRichTextData, UILabel;
+#import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
 
-@interface SearchUIRichTextField : UIView
+@class NSString, SFRichText, SearchUIContentAdvisoryView, SearchUIImageView, SearchUIStarView, SearchUIVibrantLabel;
+
+@interface SearchUIRichTextField : NUIContainerStackView <NUIContainerStackViewDelegate>
 {
-    BOOL _hasIcons;
-    SearchUIRichTextData *_richTextData;
-    UILabel *_textLabel;
-    UIView *_contentAdvisoryView;
-    UIView *_starRatingView;
-    NSArray *_orderedLayoutItems;
     unsigned long long _style;
+    SFRichText *_richText;
+    SearchUIVibrantLabel *_textLabel;
+    SearchUIContentAdvisoryView *_contentAdvisoryView;
+    SearchUIStarView *_starRatingView;
+    SearchUIImageView *_iconView;
 }
 
-@property (strong) UIView *contentAdvisoryView; // @synthesize contentAdvisoryView=_contentAdvisoryView;
-@property BOOL hasIcons; // @synthesize hasIcons=_hasIcons;
-@property (strong) NSArray *orderedLayoutItems; // @synthesize orderedLayoutItems=_orderedLayoutItems;
-@property (strong) SearchUIRichTextData *richTextData; // @synthesize richTextData=_richTextData;
-@property (strong) UIView *starRatingView; // @synthesize starRatingView=_starRatingView;
+@property (strong) SearchUIContentAdvisoryView *contentAdvisoryView; // @synthesize contentAdvisoryView=_contentAdvisoryView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong) SearchUIImageView *iconView; // @synthesize iconView=_iconView;
+@property (strong) SFRichText *richText; // @synthesize richText=_richText;
+@property (strong) SearchUIStarView *starRatingView; // @synthesize starRatingView=_starRatingView;
 @property unsigned long long style; // @synthesize style=_style;
-@property (strong) UILabel *textLabel; // @synthesize textLabel=_textLabel;
+@property (readonly) Class superclass;
+@property (strong) SearchUIVibrantLabel *textLabel; // @synthesize textLabel=_textLabel;
 
-+ (BOOL)richTextIsSingleTextField:(id)arg1;
-+ (BOOL)richTextNeedsFancyVibrancy:(id)arg1;
++ (id)font;
 - (void).cxx_destruct;
-- (id)initWithRichText:(id)arg1 font:(id)arg2 style:(unsigned long long)arg3;
-- (void)layoutViewsHorizontally;
-- (void)setPreferredMaxLayoutWidth:(double)arg1;
-- (BOOL)updateWithRichText:(id)arg1;
-- (id)viewForLastBaselineLayout;
+- (struct CGRect)containerStackView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
+- (struct UIEdgeInsets)containerStackView:(id)arg1 minimumSpacingAdjecentToArrangedSubview:(id)arg2;
+- (id)initWithStyle:(unsigned long long)arg1;
+- (void)updateContentRating:(id)arg1;
+- (void)updateIcon:(id)arg1;
+- (void)updateStarViewWithRating:(double)arg1;
+- (void)updateWithRichText:(id)arg1;
 
 @end
 

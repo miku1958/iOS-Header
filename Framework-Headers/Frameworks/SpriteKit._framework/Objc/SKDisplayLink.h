@@ -6,39 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class CADisplayLink, NSTimer;
+@class CADisplay, CADisplayLink, NSTimer;
 
 __attribute__((visibility("hidden")))
 @interface SKDisplayLink : NSObject
 {
     NSTimer *_timer;
+    id _client;
     CADisplayLink *_caDisplayLink;
-    unsigned long long _mode;
+    CADisplay *_display;
     BOOL _paused;
-    long long _frameInterval;
+    BOOL _callbackAlreadyInProgress;
     double _previousFrameTime;
+    float _preferredFramesPerSecond;
     CDUnknownBlockType _block;
     float _averageFrameTime;
     long long _frameCount;
     double _frameCountBeginTime;
 }
 
-@property (nonatomic) long long frameInterval;
-@property (nonatomic) unsigned long long mode;
+@property (strong, nonatomic) CADisplay *display;
 @property (nonatomic, getter=isPaused) BOOL paused;
+@property (nonatomic) long long preferredFramesPerSecond;
 
-+ (id)displayLinkWithBlock:(CDUnknownBlockType)arg1;
++ (id)displayLinkWithDisplay:(id)arg1 handler:(CDUnknownBlockType)arg2 client:(id)arg3;
 - (void).cxx_destruct;
 - (void)_caDisplayLinkCallback;
+- (BOOL)_callbackAlreadyInProgress;
 - (void)_callbackForNextFrame:(double)arg1;
-- (void)_nsTimerCallback;
-- (void)_restart;
+- (void)_setCallbackAlreadyInProgress:(BOOL)arg1;
 - (void)_setup;
-- (void)_start;
 - (void)_teardown;
 - (void)dealloc;
 - (id)init;
-- (id)initWithBlock:(CDUnknownBlockType)arg1;
+- (id)initWithDisplay:(id)arg1 handler:(CDUnknownBlockType)arg2 client:(id)arg3;
+- (void)invalidate;
 
 @end
 

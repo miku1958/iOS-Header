@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSMutableArray *roadAccessPoints; // @synthesize roadAccessPoints=_roadAccessPoints;
 
 + (id)roadAccessInfoForPlaceData:(id)arg1;
++ (Class)roadAccessPointType;
 - (void)addRoadAccessPoint:(id)arg1;
 - (void)clearRoadAccessPoints;
 - (void)copyTo:(id)arg1;

@@ -8,21 +8,25 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPProtectionInfo, CKDPShareIdentifier, NSData, NSString;
+@class CKDPParticipant, CKDPProtectionInfo, CKDPShare, CKDPShareIdentifier, NSData, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDPShareTokenRetrieveResponse : PBCodable <NSCopying>
 {
+    CKDPParticipant *_callingParticipant;
     NSString *_container;
     int _containerEnvironment;
     NSString *_etag;
+    CKDPProtectionInfo *_invitedPcs;
     NSString *_ownerFirstName;
     NSString *_ownerLastName;
     int _participantState;
     int _participantType;
     int _permission;
+    NSMutableArray *_potentialMatchs;
     NSData *_protectedFullToken;
     CKDPProtectionInfo *_selfAddedPcs;
+    CKDPShare *_share;
     CKDPShareIdentifier *_shareId;
     struct {
         unsigned int containerEnvironment:1;
@@ -32,12 +36,15 @@ __attribute__((visibility("hidden")))
     } _has;
 }
 
+@property (strong, nonatomic) CKDPParticipant *callingParticipant; // @synthesize callingParticipant=_callingParticipant;
 @property (strong, nonatomic) NSString *container; // @synthesize container=_container;
 @property (nonatomic) int containerEnvironment; // @synthesize containerEnvironment=_containerEnvironment;
 @property (strong, nonatomic) NSString *etag; // @synthesize etag=_etag;
+@property (readonly, nonatomic) BOOL hasCallingParticipant;
 @property (readonly, nonatomic) BOOL hasContainer;
 @property (nonatomic) BOOL hasContainerEnvironment;
 @property (readonly, nonatomic) BOOL hasEtag;
+@property (readonly, nonatomic) BOOL hasInvitedPcs;
 @property (readonly, nonatomic) BOOL hasOwnerFirstName;
 @property (readonly, nonatomic) BOOL hasOwnerLastName;
 @property (nonatomic) BOOL hasParticipantState;
@@ -45,17 +52,29 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasPermission;
 @property (readonly, nonatomic) BOOL hasProtectedFullToken;
 @property (readonly, nonatomic) BOOL hasSelfAddedPcs;
+@property (readonly, nonatomic) BOOL hasShare;
 @property (readonly, nonatomic) BOOL hasShareId;
+@property (strong, nonatomic) CKDPProtectionInfo *invitedPcs; // @synthesize invitedPcs=_invitedPcs;
 @property (strong, nonatomic) NSString *ownerFirstName; // @synthesize ownerFirstName=_ownerFirstName;
 @property (strong, nonatomic) NSString *ownerLastName; // @synthesize ownerLastName=_ownerLastName;
 @property (nonatomic) int participantState; // @synthesize participantState=_participantState;
 @property (nonatomic) int participantType; // @synthesize participantType=_participantType;
 @property (nonatomic) int permission; // @synthesize permission=_permission;
+@property (strong, nonatomic) NSMutableArray *potentialMatchs; // @synthesize potentialMatchs=_potentialMatchs;
 @property (strong, nonatomic) NSData *protectedFullToken; // @synthesize protectedFullToken=_protectedFullToken;
 @property (strong, nonatomic) CKDPProtectionInfo *selfAddedPcs; // @synthesize selfAddedPcs=_selfAddedPcs;
+@property (strong, nonatomic) CKDPShare *share; // @synthesize share=_share;
 @property (strong, nonatomic) CKDPShareIdentifier *shareId; // @synthesize shareId=_shareId;
 
++ (Class)potentialMatchType;
 - (void).cxx_destruct;
+- (int)StringAsContainerEnvironment:(id)arg1;
+- (int)StringAsParticipantState:(id)arg1;
+- (int)StringAsParticipantType:(id)arg1;
+- (int)StringAsPermission:(id)arg1;
+- (void)addPotentialMatch:(id)arg1;
+- (void)clearPotentialMatchs;
+- (id)containerEnvironmentAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -63,6 +82,11 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)participantStateAsString:(int)arg1;
+- (id)participantTypeAsString:(int)arg1;
+- (id)permissionAsString:(int)arg1;
+- (id)potentialMatchAtIndex:(unsigned long long)arg1;
+- (unsigned long long)potentialMatchsCount;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

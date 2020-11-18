@@ -9,16 +9,16 @@
 #import <GeoServices/GEOMapServiceProblemReportTicket-Protocol.h>
 
 @class GEOMapServiceTraits, GEORPProblem, GEORPProblemRequest, NSData, NSString;
-@protocol GEOMapItemPrivate;
+@protocol GEOMapItem;
 
 __attribute__((visibility("hidden")))
 @interface _GEORPSubmissionTicket : NSObject <GEOMapServiceProblemReportTicket>
 {
     NSData *_resubmissionData;
     GEORPProblem *_problem;
-    id<GEOMapItemPrivate> _place;
-    id<GEOMapItemPrivate> _startPlace;
-    id<GEOMapItemPrivate> _endPlace;
+    id<GEOMapItem> _place;
+    id<GEOMapItem> _startPlace;
+    id<GEOMapItem> _endPlace;
     GEORPProblemRequest *_problemRequest;
     NSData *_pushToken;
     NSString *_emailAddress;

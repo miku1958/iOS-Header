@@ -9,13 +9,13 @@
 #import <FrontBoard/FBSceneClient-Protocol.h>
 #import <FrontBoard/FBUISceneHost-Protocol.h>
 
-@class FBUISceneIdentity, FBUISceneParameters, NSString;
+@class FBSSceneParameters, FBUISceneIdentity, NSString;
 @protocol FBSceneHost, FBUISceneClientProxy;
 
 @interface FBUISceneHostBridge : NSObject <FBUISceneHost, FBSceneClient>
 {
     FBUISceneIdentity *_identity;
-    FBUISceneParameters *_parameters;
+    FBSSceneParameters *_parameters;
     id<FBSceneHost> _legacyHost;
     id<FBUISceneClientProxy> _sceneClient;
     BOOL _invalidated;
@@ -30,10 +30,12 @@
 @property (readonly, copy, nonatomic) NSString *sceneIdentifier;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)didInvalidateSceneClient:(id)arg1;
+- (void)host:(id)arg1 configureWithDefinition:(id)arg2 parameters:(id)arg3;
 - (void)host:(id)arg1 configureWithInitialClientSettings:(id)arg2;
 - (void)host:(id)arg1 didInvalidateWithTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)host:(id)arg1 didReceiveActions:(id)arg2;

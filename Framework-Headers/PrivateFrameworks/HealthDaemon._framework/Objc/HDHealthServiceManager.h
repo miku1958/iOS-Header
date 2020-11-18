@@ -92,7 +92,7 @@
 - (void)performOperation:(id)arg1 onSession:(unsigned long long)arg2 withParameters:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)reportTransitoryData:(id)arg1 fromDevice:(id)arg2 withError:(id)arg3;
 - (id)reviewSavedHealthServiceSessions:(id)arg1 withError:(id *)arg2;
-- (void)sendBluetoothStatusUpdatesForServer:(id)arg1 withHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)sendBluetoothStatusUpdatesForServer:(id)arg1 updateHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)servicesInvalidatedForDevice:(id)arg1 withError:(id)arg2;
 - (BOOL)setHealthUpdatesEnabled:(BOOL)arg1 fromDevice:(id)arg2 database:(id)arg3 error:(id *)arg4;
 - (id)shortDescription;

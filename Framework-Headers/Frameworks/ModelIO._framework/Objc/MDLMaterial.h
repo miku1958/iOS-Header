@@ -18,11 +18,13 @@
     MDLScatteringFunction *_scatteringFunction;
     NSString *_name;
     MDLMaterial *_baseMaterial;
+    unsigned long long _materialFace;
 }
 
 @property (strong, nonatomic) MDLMaterial *baseMaterial; // @synthesize baseMaterial=_baseMaterial;
 @property (readonly, nonatomic) struct BidirectionalScatteringDistributionFunction *bsdf;
 @property (readonly, nonatomic) unsigned long long count;
+@property (nonatomic) unsigned long long materialFace; // @synthesize materialFace=_materialFace;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, strong, nonatomic) MDLScatteringFunction *scatteringFunction;
 

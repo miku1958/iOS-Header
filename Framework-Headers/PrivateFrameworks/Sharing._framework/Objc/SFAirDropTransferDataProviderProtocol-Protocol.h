@@ -6,9 +6,14 @@
 
 #import <Sharing/NSObject-Protocol.h>
 
-@class NSString;
+@class NSNumber, NSString;
 
 @protocol SFAirDropTransferDataProviderProtocol <NSObject>
+- (void)performAppStoreSearchForRecordID:(NSString *)arg1;
+- (void)performSaveToiCloudForRecordID:(NSString *)arg1;
 - (void)transferDataWithRecordID:(NSString *)arg1 completionHandler:(void (^)(SFAirDropTransferData *))arg2;
+- (void)userDidAcceptTransferWithRecordID:(NSString *)arg1;
+- (void)userDidCancelTransferWithRecordID:(NSString *)arg1;
+- (void)userDidSelectAppWithIndex:(NSNumber *)arg1 forRecordID:(NSString *)arg2;
 @end
 

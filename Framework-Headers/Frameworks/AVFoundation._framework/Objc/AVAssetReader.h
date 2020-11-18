@@ -17,6 +17,7 @@
 @property (readonly) NSError *error;
 @property (readonly, nonatomic, getter=_figAssetReader) struct OpaqueFigAssetReader *figAssetReader;
 @property (readonly, nonatomic) NSArray *outputs;
+@property (nonatomic, getter=_readSingleSample, setter=_setReadSingleSample:) BOOL readSingleSample;
 @property (readonly) long long status;
 @property (nonatomic) CDStruct_e83c9415 timeRange;
 
@@ -24,6 +25,7 @@
 + (id)assetReaderWithAsset:(id)arg1 error:(id *)arg2;
 + (void)initialize;
 - (BOOL)_canAddOutput:(id)arg1 exceptionReason:(id *)arg2;
+- (void)_failWithError:(id)arg1;
 - (void)_outputDidFinish:(id)arg1;
 - (void)_tearDownFigAssetReader;
 - (void)_transitionToStatus:(long long)arg1 failureError:(id)arg2;

@@ -28,6 +28,7 @@
 - (struct CGSize)_sizeForViewElement:(id)arg1 width:(double)arg2;
 - (double)bottomPaddingForViewElement:(id)arg1;
 - (void)enumerateViewElementsForWidth:(double)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (BOOL)hasBottomRightElementWithRightAlignment;
 - (id)initWithLockup:(id)arg1 width:(double)arg2 context:(id)arg3;
 - (struct SKUIProductLockupLayoutSizing)layoutWidthsForWidth:(double)arg1;
 - (double)metadataWidthForWidth:(double)arg1;

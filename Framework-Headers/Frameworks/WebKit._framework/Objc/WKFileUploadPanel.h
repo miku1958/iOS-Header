@@ -55,7 +55,6 @@ __attribute__((visibility("hidden")))
 - (void)_processMediaInfoDictionaries:(id)arg1 atIndex:(unsigned long long)arg2 processedResults:(id)arg3 processedImageCount:(unsigned long long)arg4 processedVideoCount:(unsigned long long)arg5 successBlock:(CDUnknownBlockType)arg6 failureBlock:(CDUnknownBlockType)arg7;
 - (void)_processMediaInfoDictionaries:(id)arg1 successBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (void)_showDocumentPickerMenu;
-- (void)_showMediaSourceSelectionSheet;
 - (void)_showPhotoPickerWithSourceType:(long long)arg1;
 - (void)_uploadItemForImage:(id)arg1 withAssetURL:(id)arg2 successBlock:(CDUnknownBlockType)arg3 failureBlock:(CDUnknownBlockType)arg4;
 - (void)_uploadItemForImageData:(id)arg1 imageName:(id)arg2 successBlock:(CDUnknownBlockType)arg3 failureBlock:(CDUnknownBlockType)arg4;
@@ -73,7 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)imagePickerControllerDidCancel:(id)arg1;
 - (id)initWithView:(id)arg1;
 - (void)popoverControllerDidDismissPopover:(id)arg1;
-- (void)presentWithParameters:(struct WebOpenPanelParameters *)arg1 resultListener:(struct WebOpenPanelResultListenerProxy *)arg2;
+- (void)presentWithParameters:(struct OpenPanelParameters *)arg1 resultListener:(struct WebOpenPanelResultListenerProxy *)arg2;
 
 @end
 

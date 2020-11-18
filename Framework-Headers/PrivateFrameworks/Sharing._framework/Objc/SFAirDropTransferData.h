@@ -21,7 +21,9 @@
     BOOL _unknownScheme;
     BOOL _unknownFileType;
     BOOL _undesiredMixOfItems;
+    BOOL _onlyPhotosOrVideos;
     BOOL _autoAccept;
+    BOOL _senderIsMe;
     BOOL _verifiableIdentity;
     NSString *_recordID;
     NSDate *_timeLastUserInteraction;
@@ -29,6 +31,9 @@
     LSAppLink *_appLink;
     long long _transferStateResetCount;
     SFAirDropTransferStateMachine *_transferStateMachine;
+    long long _alertType;
+    NSString *_alertTitle;
+    NSString *_alertMessage;
     NSArray *_possibleApplicationDestinations;
     UIImage *_fileIcon;
     NSString *_bundleID;
@@ -51,6 +56,9 @@
     NSString *_contentType;
 }
 
+@property (copy, nonatomic) NSString *alertMessage; // @synthesize alertMessage=_alertMessage;
+@property (copy, nonatomic) NSString *alertTitle; // @synthesize alertTitle=_alertTitle;
+@property (nonatomic) long long alertType; // @synthesize alertType=_alertType;
 @property (readonly, nonatomic) LSAppLink *appLink; // @synthesize appLink=_appLink;
 @property (nonatomic, getter=shouldAutoAccept) BOOL autoAccept; // @synthesize autoAccept=_autoAccept;
 @property (copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
@@ -59,6 +67,7 @@
 @property (readonly, nonatomic) NSDictionary *contentTypes;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) UIImage *fileIcon; // @synthesize fileIcon=_fileIcon;
+@property (readonly, copy, nonatomic) NSArray *fileNames;
 @property (strong, nonatomic) NSArray *files; // @synthesize files=_files;
 @property (strong, nonatomic) NSNumber *filesCopied; // @synthesize filesCopied=_filesCopied;
 @property (readonly, copy, nonatomic) NSString *firstFileExtension;
@@ -69,6 +78,7 @@
 @property (copy, nonatomic) NSString *itemsDescription; // @synthesize itemsDescription=_itemsDescription;
 @property (strong, nonatomic) NSDictionary *itemsDescriptionAdvanced; // @synthesize itemsDescriptionAdvanced=_itemsDescriptionAdvanced;
 @property (readonly, nonatomic, getter=isNonFileItem) BOOL nonFileItem; // @synthesize nonFileItem=_nonFileItem;
+@property (readonly, nonatomic, getter=isOnlyPhotosOrVideos) BOOL onlyPhotosOrVideos; // @synthesize onlyPhotosOrVideos=_onlyPhotosOrVideos;
 @property (strong, nonatomic) NSArray *possibleApplicationDestinations; // @synthesize possibleApplicationDestinations=_possibleApplicationDestinations;
 @property (readonly, copy, nonatomic) NSString *recordID; // @synthesize recordID=_recordID;
 @property (readonly, copy, nonatomic) NSString *rejectedMessage;
@@ -82,6 +92,7 @@
 @property (copy, nonatomic) NSString *senderEmailHash; // @synthesize senderEmailHash=_senderEmailHash;
 @property (copy, nonatomic) NSString *senderFirstName; // @synthesize senderFirstName=_senderFirstName;
 @property (copy, nonatomic) NSString *senderID; // @synthesize senderID=_senderID;
+@property (nonatomic) BOOL senderIsMe; // @synthesize senderIsMe=_senderIsMe;
 @property (copy, nonatomic) NSString *senderLastName; // @synthesize senderLastName=_senderLastName;
 @property (readonly, copy, nonatomic) NSString *senderName;
 @property (nonatomic) BOOL soundPlayed; // @synthesize soundPlayed=_soundPlayed;
@@ -115,6 +126,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRecordID:(id)arg1;
+- (void)initializeAlertStrings;
 - (id)messageAndAlertTitle:(id *)arg1 buttonTitle:(id *)arg2;
 - (id)messageInProgress:(BOOL)arg1 completed:(BOOL)arg2 alertTitle:(id *)arg3 buttonTitle:(id *)arg4;
 - (id)messageLocalizedKeyWithTypes:(id)arg1 isTrustedPerson:(BOOL)arg2 isInProgress:(BOOL)arg3 isCompleted:(BOOL)arg4;

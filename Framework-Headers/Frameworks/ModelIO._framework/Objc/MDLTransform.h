@@ -7,36 +7,41 @@
 #import <objc/NSObject.h>
 
 #import <ModelIO/MDLTransformComponent-Protocol.h>
+#import <ModelIO/NSCopying-Protocol.h>
 
-@class MISSING_TYPE, NSString;
+@class CAAnimation, MISSING_TYPE, NSArray, NSString;
 
-@interface MDLTransform : NSObject <MDLTransformComponent>
+@interface MDLTransform : NSObject <NSCopying, MDLTransformComponent>
 {
     struct MDLAffineTransform _transform;
-    double _minTime;
-    double _maxTime;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSArray *keyTimes;
 @property (nonatomic) CDStruct_14d5dc5e matrix;
 @property (readonly, nonatomic) double maximumTime;
 @property (readonly, nonatomic) double minimumTime;
+@property (nonatomic) BOOL resetsTransform;
 @property (nonatomic) MISSING_TYPE *rotation;
 @property (nonatomic) MISSING_TYPE *scale;
 @property (nonatomic) MISSING_TYPE *shear;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) CAAnimation *transformAnimation;
 @property (nonatomic) MISSING_TYPE *translation;
 
 + (CDStruct_14d5dc5e)globalTransformWithObject:(id)arg1 atTime:(double)arg2;
 + (CDStruct_14d5dc5e)localTransformWithObject:(id)arg1 atTime:(double)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithIdentity;
 - (id)initWithMatrix:(CDStruct_14d5dc5e)arg1;
+- (id)initWithMatrix:(CDStruct_14d5dc5e)arg1 resetsTransform:(BOOL)arg2;
 - (id)initWithTransformComponent:(id)arg1;
+- (id)initWithTransformComponent:(id)arg1 resetsTransform:(BOOL)arg2;
 - (CDStruct_14d5dc5e)localTransformAtTime:(double)arg1;
 - (MISSING_TYPE *)rotationAtTime:(double)arg1;
 - (CDStruct_14d5dc5e)rotationMatrixAtTime:(double)arg1;

@@ -9,10 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface _PUScrubberContainerView : UIView
 {
+    double __edgeInset;
     UIView *__movieScrubber;
     UIView *__slomoRegionEditor;
 }
 
+@property (nonatomic, setter=_setEdgeInset:) double _edgeInset; // @synthesize _edgeInset=__edgeInset;
 @property (strong, nonatomic, setter=_setMovieScrubber:) UIView *_movieScrubber; // @synthesize _movieScrubber=__movieScrubber;
 @property (strong, nonatomic, setter=_setSlomoRegionEditor:) UIView *_slomoRegionEditor; // @synthesize _slomoRegionEditor=__slomoRegionEditor;
 

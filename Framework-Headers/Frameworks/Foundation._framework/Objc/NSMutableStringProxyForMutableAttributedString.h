@@ -15,7 +15,6 @@
 
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (void)getCharacters:(unsigned short *)arg1 range:(struct _NSRange)arg2;
 - (id)initWithMutableAttributedString:(id)arg1;
 - (unsigned long long)length;

@@ -6,7 +6,6 @@
 
 #import <coreroutine/RTNotification.h>
 
-__attribute__((visibility("hidden")))
 @interface RTBatteryManagerNotificationChargerConnected : RTNotification
 {
     BOOL _connected;
@@ -14,7 +13,6 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) BOOL connected; // @synthesize connected=_connected;
 
-+ (id)notificationName;
 - (id)initWithChargerConnected:(BOOL)arg1;
 
 @end

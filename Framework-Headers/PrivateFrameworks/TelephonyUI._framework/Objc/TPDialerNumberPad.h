@@ -35,8 +35,6 @@
 - (void)buttonUp:(id)arg1;
 - (void)highlightKeyAtIndex:(long long)arg1;
 - (long long)indexForHighlightedKey;
-- (void)setSupportsHardPause:(BOOL)arg1;
-- (BOOL)supportsHardPause;
 
 @end
 

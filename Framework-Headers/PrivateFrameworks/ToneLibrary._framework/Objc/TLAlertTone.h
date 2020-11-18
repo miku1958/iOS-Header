@@ -4,26 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSString, TLSound;
+@class NSURL, TLSystemSound;
 
 @interface TLAlertTone : NSObject
 {
-    NSString *_filePath;
-    TLSound *_actualSound;
-    TLSound *_previewSound;
+    unsigned int _actualSoundID;
+    unsigned int _previewSoundID;
+    TLSystemSound *_actualSound;
+    TLSystemSound *_previewSound;
+    NSURL *_soundFileURL;
+    NSURL *_vibrationPatternFileURL;
 }
 
-@property (strong, nonatomic) TLSound *actualSound; // @synthesize actualSound=_actualSound;
-@property (copy, nonatomic) NSString *filePath; // @synthesize filePath=_filePath;
-@property (strong, nonatomic) TLSound *previewSound; // @synthesize previewSound=_previewSound;
+@property (readonly, nonatomic) TLSystemSound *actualSound;
+@property (readonly, nonatomic) TLSystemSound *previewSound;
+@property (readonly, nonatomic) NSURL *soundFileURL; // @synthesize soundFileURL=_soundFileURL;
+@property (readonly, nonatomic) NSURL *vibrationPatternFileURL; // @synthesize vibrationPatternFileURL=_vibrationPatternFileURL;
 
-- (void)_setActualSound:(id)arg1;
-- (void)_setFilePath:(id)arg1;
-- (void)_setPreviewSound:(id)arg1;
-- (void)dealloc;
-- (id)initWithFilePath:(id)arg1 actualSoundID:(unsigned int)arg2 previewSoundID:(unsigned int)arg3;
+- (void).cxx_destruct;
+- (id)initWithSoundFileURL:(id)arg1 vibrationPatternFileURL:(id)arg2 actualSoundID:(unsigned int)arg3 previewSoundID:(unsigned int)arg4;
 
 @end
 

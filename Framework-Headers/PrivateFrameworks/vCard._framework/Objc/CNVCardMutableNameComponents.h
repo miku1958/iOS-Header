@@ -14,6 +14,7 @@
 
 @property (copy) NSString *companyName; // @dynamic companyName;
 @property (copy) NSString *firstName; // @dynamic firstName;
+@property (copy) NSString *formattedName; // @dynamic formattedName;
 @property BOOL isCompany; // @dynamic isCompany;
 @property (copy) NSString *lastName; // @dynamic lastName;
 @property (copy) NSString *middleName; // @dynamic middleName;

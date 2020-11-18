@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class AAStorableLoginContext, NSArray;
 @protocol AASetupAssistantDelegateService, OS_dispatch_queue;
 
 @interface AALoginPluginManager : NSObject
 {
+    NSArray *_allowedPluginBundleIDs;
     NSArray *_plugins;
     BOOL _shouldStashLoginResponse;
-    BOOL _hasStashedLoginResponse;
+    AAStorableLoginContext *_stashedLoginContext;
     NSObject<OS_dispatch_queue> *_pluginNotificationQueue;
     id<AASetupAssistantDelegateService> _idsPlugin;
     BOOL _shouldSkipiTunesPlugin;
@@ -24,14 +25,17 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_loadPluginsLimitedToBundleIDs:(id)arg1;
-- (BOOL)_notifyServicesOfLoginResponse:(id)arg1 forAppleID:(id)arg2 password:(id)arg3;
-- (void)_stashServiceTokensFromResponse:(id)arg1;
+- (id)_createLoginContextForAppleID:(id)arg1 rawPassword:(id)arg2 loginResponse:(id)arg3;
+- (id)_idsPlugin;
+- (id)_loadPluginsLimitedToBundleIDs:(id)arg1;
+- (BOOL)_notifyServicesOfLoginResponse:(id)arg1 forAppleID:(id)arg2 password:(id)arg3 rawPassword:(id)arg4;
+- (id)_plugins;
 - (id)collectParametersForIdentityEstablishmentRequest;
 - (id)collectParametersForLoginRequest;
 - (id)init;
-- (id)initForPluginBundleIDs:(id)arg1;
 - (void)notifyServicesOfLoginResponse:(id)arg1 forAppleID:(id)arg2 password:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)notifyServicesOfLoginResponse:(id)arg1 forAppleID:(id)arg2 password:(id)arg3 rawPassword:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)restrictToPluginBundleIDs:(id)arg1;
 - (void)unstashLoginResponse;
 
 @end

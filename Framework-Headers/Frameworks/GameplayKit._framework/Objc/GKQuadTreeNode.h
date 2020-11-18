@@ -6,12 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@interface GKQuadTreeNode : NSObject
+@class MISSING_TYPE;
+
+@interface GKQuadtreeNode : NSObject
 {
-    void *_cQuadTreeNode;
+    struct GKCQuadTreeNode<NSObject> *_cQuadTreeNode;
+    struct GKQuad _quad;
 }
 
+@property (readonly, nonatomic) struct GKQuad quad; // @synthesize quad=_quad;
+
 - (void *)cQuadTreeNode;
+- (MISSING_TYPE *)max;
+- (MISSING_TYPE *)min;
 - (void)setCQuadTreeNode:(void *)arg1;
 
 @end

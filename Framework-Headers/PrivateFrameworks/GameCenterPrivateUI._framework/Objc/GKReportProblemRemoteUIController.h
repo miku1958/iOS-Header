@@ -19,6 +19,7 @@
 
 + (id)controllerForProblemPlayer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)bagKey;
+- (void)dealloc;
 - (id)fallbackURL;
 - (id)initWithProblemPlayer:(id)arg1;
 - (id)postBodyForInitialLoad;

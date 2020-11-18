@@ -14,6 +14,7 @@
     double _barWidth;
     double _barSpacing;
     double _roundedCornerRadius;
+    double _fadeInPercentage;
     UIColor *_strokeColor;
     double _strokeWidth;
     UIColor *_backgroundStrokeColor;
@@ -35,6 +36,7 @@
 @property (strong, nonatomic) NSArray *barLabels; // @synthesize barLabels=_barLabels;
 @property (nonatomic) double barSpacing; // @synthesize barSpacing=_barSpacing;
 @property (nonatomic) double barWidth; // @synthesize barWidth=_barWidth;
+@property (nonatomic) double fadeInPercentage; // @synthesize fadeInPercentage=_fadeInPercentage;
 @property (nonatomic) BOOL fadeZeroBars; // @synthesize fadeZeroBars=_fadeZeroBars;
 @property (strong, nonatomic) UIColor *fadedBarColor; // @synthesize fadedBarColor=_fadedBarColor;
 @property (strong, nonatomic) NSArray *labelAttributes; // @synthesize labelAttributes=_labelAttributes;

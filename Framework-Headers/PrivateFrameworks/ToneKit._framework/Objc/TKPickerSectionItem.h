@@ -11,13 +11,14 @@
 @interface TKPickerSectionItem : TKPickerItem
 {
     NSString *_text;
+    NSString *_footerText;
 }
 
-@property (copy, nonatomic) NSString *text; // @synthesize text=_text;
+@property (copy, nonatomic, setter=_setFooterText:) NSString *footerText; // @synthesize footerText=_footerText;
+@property (copy, nonatomic, setter=_setText:) NSString *text; // @synthesize text=_text;
 
+- (void).cxx_destruct;
 - (void)_appendDescriptionOfAttributesToString:(id)arg1;
-- (void)_setText:(id)arg1;
-- (void)dealloc;
 
 @end
 

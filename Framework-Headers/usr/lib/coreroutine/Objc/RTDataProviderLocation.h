@@ -4,34 +4,47 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <coreroutine/RTDataProvider.h>
+#import <coreroutine/RTDataProviderDuet.h>
 
-#import <coreroutine/RTDataProviderProtocol-Protocol.h>
+@class RTDeviceLocationPredictor, RTLocationManager, RTLocationTagger, RTVisitManager;
 
-@class NSString;
-
-@interface RTDataProviderLocation : RTDataProvider <RTDataProviderProtocol>
+@interface RTDataProviderLocation : RTDataProviderDuet
 {
+    RTDeviceLocationPredictor *_deviceLocationPredictor;
+    RTLocationManager *_locationManager;
+    RTLocationTagger *_locationTagger;
+    RTVisitManager *_visitManager;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (strong, nonatomic) RTDeviceLocationPredictor *deviceLocationPredictor; // @synthesize deviceLocationPredictor=_deviceLocationPredictor;
+@property (strong, nonatomic) RTLocationManager *locationManager; // @synthesize locationManager=_locationManager;
+@property (strong, nonatomic) RTLocationTagger *locationTagger; // @synthesize locationTagger=_locationTagger;
+@property (strong, nonatomic) RTVisitManager *visitManager; // @synthesize visitManager=_visitManager;
 
 + (id)providerName;
 + (id)sharedInstance;
-- (void)_processVisit:(id)arg1;
+- (void).cxx_destruct;
+- (void)_fetchLowConfidenceVisitIncident;
+- (void)_processLowConfidenceVisit:(id)arg1;
+- (void)_processMicroLocationUpdate:(id)arg1;
+- (void)_registerForMicroLocationNotifications;
 - (void)_registerForVisitNotifications;
+- (void)_unregisterForMicroLocationNotifications;
 - (void)_unregisterForVisitNotifications;
 - (void)fetchCurrentLocationWithHandler:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)initWithName:(id)arg1;
+- (id)initWithName:(id)arg1 purgeManager:(id)arg2;
+- (id)initWithName:(id)arg1 purgeManager:(id)arg2 locationManager:(id)arg3 deviceLocationPredictor:(id)arg4 locationTagger:(id)arg5 visitManager:(id)arg6;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
-- (void)onVisitNotification:(id)arg1;
+- (void)onLowConfidenceVisitNotification:(id)arg1;
+- (void)onMicroLocationUpdate:(id)arg1;
+- (void)onVisitManagerAvailable:(id)arg1;
 - (void)populateDataProviderWithHandler:(CDUnknownBlockType)arg1;
 - (void)shutdown;
 - (id)supportedEventClasses;
+- (id)supportedEventStreams;
 
 @end
 

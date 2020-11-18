@@ -21,9 +21,9 @@
 }
 
 @property (copy) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
-@property (strong) NSString *displayName; // @synthesize displayName=_displayName;
-@property (strong) NSString *handleIdentifier; // @synthesize handleIdentifier=_handleIdentifier;
-@property (strong) NSArray *handles; // @synthesize handles=_handles;
+@property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (strong, nonatomic) NSString *handleIdentifier; // @synthesize handleIdentifier=_handleIdentifier;
+@property (strong, nonatomic) NSArray *handles; // @synthesize handles=_handles;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

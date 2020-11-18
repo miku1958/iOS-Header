@@ -4,9 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <StoreKitUI/IKJSApplication-Protocol.h>
+#import <StoreKitUI/JSExport-Protocol.h>
 
-@protocol SKUIJSApplication <IKJSApplication>
-- (void)restart;
+@class IKDOMDocument, NSDictionary, NSString;
+
+@protocol SKUIJSApplication <JSExport>
+- (void)launchComplete:(NSDictionary *)arg1;
+- (void)launchFailed;
+- (void)sendDocumentMessage:(IKDOMDocument *)arg1:(NSString *)arg2:(NSDictionary *)arg3;
 @end
 

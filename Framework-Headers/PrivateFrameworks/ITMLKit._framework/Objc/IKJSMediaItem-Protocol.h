@@ -22,8 +22,6 @@
 @property (strong, nonatomic) NSString *subtitle;
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *type;
-@property double upNextPresentationDuration;
-@property double upNextPresentationStartTime;
 @property (strong, nonatomic) NSString *url;
 
 - (id)initWithType:(NSString *)arg1:(NSString *)arg2;

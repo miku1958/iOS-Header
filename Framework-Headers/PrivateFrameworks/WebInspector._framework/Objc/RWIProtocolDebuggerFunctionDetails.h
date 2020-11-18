@@ -13,7 +13,6 @@
 }
 
 @property (copy, nonatomic) NSString *displayName;
-@property (copy, nonatomic) NSString *inferredName;
 @property (strong, nonatomic) RWIProtocolDebuggerLocation *location;
 @property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSArray *scopeChain;

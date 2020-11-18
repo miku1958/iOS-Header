@@ -4,19 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSCache, NSMutableDictionary;
+@class NSCache, NSMapTable, NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface PKAsyncCache : NSObject
 {
     NSCache *_itemByKey;
+    NSMapTable *_weakItemByKey;
+    NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_deliveryBlocksByKey;
 }
 
+- (void).cxx_destruct;
 - (void)_executeRetrievalBlock:(CDUnknownBlockType)arg1 forKey:(id)arg2;
 - (void)_queue_executeDeliveryBlocksForKey:(id)arg1 withItem:(id)arg2;
-- (void)dealloc;
 - (id)init;
 - (id)initWithCache:(id)arg1;
 - (void)retrieveItemForKey:(id)arg1 retrievalBlock:(CDUnknownBlockType)arg2 deliveryBlock:(CDUnknownBlockType)arg3;

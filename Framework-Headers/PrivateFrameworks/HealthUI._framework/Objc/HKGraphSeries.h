@@ -76,6 +76,7 @@
 - (BOOL)isHighlighted;
 - (void)selectPathAtPoint:(CDStruct_767cbfa4)arg1 closestXCoordinate:(id)arg2;
 - (CDStruct_767cbfa4)selectedPointPath;
+- (BOOL)shouldInvertAxis;
 - (double)xAxisDistanceFromPoint:(struct CGPoint)arg1 blockCoordinate:(id)arg2 chartRect:(struct CGRect)arg3;
 - (double)xAxisSelectedCoordinate:(double)arg1 blockCoordinate:(id)arg2 chartRect:(struct CGRect)arg3;
 - (double)yAxisDifferenceToPoint:(struct CGPoint)arg1 blockCoordinate:(id)arg2 chartRect:(struct CGRect)arg3;

@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableSet *loadedItems; // @synthesize loadedItems=_loadedItems;
 @property (strong, nonatomic) NSMutableSet *removedItems; // @synthesize removedItems=_removedItems;
 
+- (void).cxx_destruct;
 - (void)_addRelatedObject:(id)arg1 setInverse:(BOOL)arg2 dirty:(BOOL)arg3;
 - (id)_effectiveItems;
 - (void)_forgetRelatedObject:(id)arg1;

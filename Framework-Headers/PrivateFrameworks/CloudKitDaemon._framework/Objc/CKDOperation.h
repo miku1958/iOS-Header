@@ -11,13 +11,13 @@
 #import <CloudKitDaemon/CKDURLRequestMetricsDelegate-Protocol.h>
 
 @class CKDClientContext, CKDClientProxy, CKDOperationMetrics, CKDURLRequest, CKOperationResult, CKTimeLogger, NSDate, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSObject, NSString;
-@protocol NSObject, OS_dispatch_group, OS_dispatch_queue;
+@protocol NSObject, OS_dispatch_group, OS_dispatch_queue, OS_os_activity;
 
 __attribute__((visibility("hidden")))
 @interface CKDOperation : NSOperation <CKDURLRequestMetricsDelegate, CKDURLRequestAuthRetryDelegate, CKDFlowControllable>
 {
     unsigned long long _state;
-    unsigned long long _activityID;
+    NSObject<OS_os_activity> *_osActivity;
     BOOL _isFinished;
     BOOL _isExecuting;
     BOOL _isProxyOperation;
@@ -36,7 +36,10 @@ __attribute__((visibility("hidden")))
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_sourceApplicationSecondaryIdentifier;
     NSString *_authPromptReason;
+    double _timeoutIntervalForRequest;
+    double _timeoutIntervalForResource;
     NSString *_deviceIdentifier;
+    NSDictionary *_MMCSRequestOptions;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     NSError *_error;
     CKDOperationMetrics *_cloudKitMetrics;
@@ -56,8 +59,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) CKDOperationMetrics *MMCSMetrics; // @synthesize MMCSMetrics=_MMCSMetrics;
+@property (strong, nonatomic) NSDictionary *MMCSRequestOptions; // @synthesize MMCSRequestOptions=_MMCSRequestOptions;
 @property (readonly, nonatomic) unsigned int QOSClass;
-@property unsigned long long activityID; // @synthesize activityID=_activityID;
 @property (strong, nonatomic) NSDictionary *additionalHTTPRequestHeaders; // @synthesize additionalHTTPRequestHeaders=_additionalHTTPRequestHeaders;
 @property (nonatomic) BOOL allowsBackgroundNetworking; // @synthesize allowsBackgroundNetworking=_allowsBackgroundNetworking;
 @property (nonatomic) BOOL allowsCellularAccess; // @synthesize allowsCellularAccess=_allowsCellularAccess;
@@ -91,7 +94,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKDURLRequest *request; // @synthesize request=_request;
 @property (strong, nonatomic) NSMutableArray *requestUUIDs; // @synthesize requestUUIDs=_requestUUIDs;
 @property (strong, nonatomic) NSMutableDictionary *responseHTTPHeadersByRequestUUID; // @synthesize responseHTTPHeadersByRequestUUID=_responseHTTPHeadersByRequestUUID;
-@property (readonly, nonatomic) NSString *sectionID;
 @property (readonly, nonatomic) BOOL shouldCheckAppVersion;
 @property (strong, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
 @property (strong, nonatomic) NSString *sourceApplicationSecondaryIdentifier; // @synthesize sourceApplicationSecondaryIdentifier=_sourceApplicationSecondaryIdentifier;
@@ -100,6 +102,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *stateTransitionGroup; // @synthesize stateTransitionGroup=_stateTransitionGroup;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) CKTimeLogger *timeLogger; // @synthesize timeLogger=_timeLogger;
+@property (nonatomic) double timeoutIntervalForRequest; // @synthesize timeoutIntervalForRequest=_timeoutIntervalForRequest;
+@property (nonatomic) double timeoutIntervalForResource; // @synthesize timeoutIntervalForResource=_timeoutIntervalForResource;
 @property (nonatomic) BOOL useEncryption; // @synthesize useEncryption=_useEncryption;
 @property (readonly, nonatomic) BOOL usesBackgroundSession;
 @property (strong, nonatomic) NSMutableDictionary *w3cNavigationTimingByRequestUUID; // @synthesize w3cNavigationTimingByRequestUUID=_w3cNavigationTimingByRequestUUID;
@@ -107,19 +111,29 @@ __attribute__((visibility("hidden")))
 + (id)_globalOperationCallbackQueueForQOS:(long long)arg1;
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
+- (id)CKStatusReportLogGroups;
+- (id)CKStatusReportProperties;
 - (void)_acquirePowerAssertion;
+- (void)_acquirePowerAssertionsForSelfAndParent;
 - (BOOL)_checkAppVersion;
 - (void)_combineMetricsWithOperation:(id)arg1;
 - (void)_continueOperationStart;
 - (void)_dropPowerAssertion;
+- (void)_dropPowerAssertionsForSelfAndParent;
 - (BOOL)_errorShouldImpactFlowControl:(id)arg1;
 - (void)_finishInternalOnCallbackQueueWithError:(id)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_registerAttemptForOperation;
-- (unsigned long long)activityStart;
+- (id)_runDurationString;
+- (id)_startDateString;
+- (id)activityCreate;
 - (void)addAndRunChildOperation:(id)arg1;
 - (void)cancel;
 - (void)configureRequest:(id)arg1;
+- (id)createConcurrentQueue;
+- (id)createInactiveConcurrentQueue;
+- (id)createInactiveSerialQueue;
+- (id)createSerialQueue;
 - (void)dealloc;
 - (void)fillOutOperationResult:(id)arg1;
 - (void)finishWithError:(id)arg1;
@@ -136,7 +150,9 @@ __attribute__((visibility("hidden")))
 - (void)request:(id)arg1 didFinishWithMetrics:(id)arg2 w3cNavigationTiming:(id)arg3;
 - (void)requestDidBeginWaitingForUserAuth:(id)arg1;
 - (void)requestDidEndWaitingForUserAuth:(id)arg1;
+- (void)setCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)start;
+- (id)statusReportWithIndent:(unsigned long long)arg1;
 
 @end
 

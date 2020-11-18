@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType subscriptionFetchedBlock; // @synthesize subscriptionFetchedBlock=_subscriptionFetchedBlock;
 @property (strong, nonatomic) NSMutableDictionary *subscriptionIDByRequestID; // @synthesize subscriptionIDByRequestID=_subscriptionIDByRequestID;
 @property (strong, nonatomic) NSArray *subscriptionIDs; // @synthesize subscriptionIDs=_subscriptionIDs;
-@property (strong, nonatomic) NSArray *subscriptions; // @synthesize subscriptions=_subscriptions;
+@property (strong, nonatomic) NSMutableArray *subscriptions; // @synthesize subscriptions=_subscriptions;
 
 - (void).cxx_destruct;
 - (id)initWithSubscriptionIDs:(id)arg1;

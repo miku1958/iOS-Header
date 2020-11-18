@@ -15,7 +15,7 @@
 #import <PhotosUI/PUViewControllerSpecChangeObserver-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, OKPresentationViewController, PUPlaceholderView, PUSlideshowSession, PUSlideshowViewControllerSpec, UITapGestureRecognizer;
+@class NSString, OKPresentationViewController, PHPlaceholderView, PUSlideshowSession, PUSlideshowViewControllerSpec, UITapGestureRecognizer;
 @protocol PUSlideshowViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -30,13 +30,13 @@ __attribute__((visibility("hidden")))
     unsigned long long _mode;
     id<PUSlideshowViewControllerDelegate> _delegate;
     PUSlideshowViewController *__secondScreenBrowser;
-    PUPlaceholderView *__slideshowPlaceholderView;
+    PHPlaceholderView *__slideshowPlaceholderView;
     UIViewController *__slideshowSettingsViewController;
 }
 
 @property (nonatomic, setter=_setNeedsUpdateSpec:) BOOL _needsUpdateSpec; // @synthesize _needsUpdateSpec=__needsUpdateSpec;
 @property (strong, nonatomic, setter=_setSecondScreenBrowser:) PUSlideshowViewController *_secondScreenBrowser; // @synthesize _secondScreenBrowser=__secondScreenBrowser;
-@property (strong, nonatomic, setter=_setSlideshowPlaceHolderView:) PUPlaceholderView *_slideshowPlaceholderView; // @synthesize _slideshowPlaceholderView=__slideshowPlaceholderView;
+@property (strong, nonatomic, setter=_setSlideshowPlaceHolderView:) PHPlaceholderView *_slideshowPlaceholderView; // @synthesize _slideshowPlaceholderView=__slideshowPlaceholderView;
 @property (strong, nonatomic, setter=_setSlideshowSettingsViewController:) UIViewController *_slideshowSettingsViewController; // @synthesize _slideshowSettingsViewController=__slideshowSettingsViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUSlideshowViewControllerDelegate> delegate; // @synthesize delegate=_delegate;

@@ -51,12 +51,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double dismissalDuration; // @synthesize dismissalDuration=_dismissalDuration;
-@property (nonatomic) BOOL hasStarted; // @synthesize hasStarted=_hasStarted;
+@property (nonatomic, setter=_setHasStarted:) BOOL hasStarted; // @synthesize hasStarted=_hasStarted;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double presentationDuration; // @synthesize presentationDuration=_presentationDuration;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) PUViewControllerTransition<PUTilingViewControllerTransition><PUInterruptibleViewControllerTransition> *transition; // @synthesize transition=_transition;
-@property (nonatomic, getter=isTransitionPaused) BOOL transitionPaused; // @synthesize transitionPaused=_transitionPaused;
+@property (nonatomic, getter=isTransitionPaused, setter=_setTransitionPaused:) BOOL transitionPaused; // @synthesize transitionPaused=_transitionPaused;
 
 + (void)registerTransitionEndPoint:(id)arg1 forViewController:(id)arg2;
 + (id)transitionEndPointWithViewController:(id)arg1;
@@ -65,8 +65,6 @@ __attribute__((visibility("hidden")))
 - (long long)_barStyleForEndPoint:(id)arg1;
 - (BOOL)_endPointUsesTransientTilingView:(id)arg1;
 - (void)_getTransitionProgress:(double *)arg1 backgroundProgress:(double *)arg2 chromeProgress:(double *)arg3;
-- (void)_setHasStarted:(BOOL)arg1;
-- (void)_setTransitionPaused:(BOOL)arg1;
 - (void)_transferView:(id)arg1 toSuperview:(id)arg2;
 - (void)animateTransitionWithOperation:(long long)arg1 startedInteractively:(BOOL)arg2;
 - (id)init;

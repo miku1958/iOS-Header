@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class UITextInputAssistantItem, UITextInteractionAssistant, UIView;
+@class UITextInteractionAssistant, UIView;
 @protocol UISelectionInteractionAssistant;
 
 @protocol UITextInputAdditions
@@ -19,7 +19,7 @@
 - (UIView *)textInputView;
 
 @optional
-- (UITextInputAssistantItem *)_inputAssistantItem;
+- (BOOL)_allowAnimatedUpdateSelectionRectViews;
 - (UIView *)_textInputViewForAddingGestureRecognizers;
 - (BOOL)_useGesturesForEditableContent;
 - (id<UISelectionInteractionAssistant>)selectionInteractionAssistant;

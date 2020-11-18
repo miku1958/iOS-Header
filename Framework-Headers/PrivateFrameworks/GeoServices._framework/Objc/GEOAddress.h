@@ -31,7 +31,9 @@
 @property (strong, nonatomic) GEOStructuredAddress *structuredAddress; // @synthesize structuredAddress=_structuredAddress;
 @property (readonly) Class superclass;
 
++ (Class)formattedAddressLineType;
 + (id)geoAddressForPlaceData:(id)arg1;
+- (int)StringAsFormattedAddressType:(id)arg1;
 - (BOOL)_isEquivalentURLRepresentationTo:(id)arg1;
 - (void)addFormattedAddressLine:(id)arg1;
 - (id)addressDictionary;
@@ -43,6 +45,7 @@
 - (id)dictionaryRepresentation;
 - (id)formattedAddressLineAtIndex:(unsigned long long)arg1;
 - (unsigned long long)formattedAddressLinesCount;
+- (id)formattedAddressTypeAsString:(int)arg1;
 - (id)initWithAddressDictionary:(id)arg1;
 - (id)initWithUrlRepresentation:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

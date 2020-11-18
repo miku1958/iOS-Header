@@ -19,6 +19,7 @@
     double _delay;
     double _frameInterval;
     CAMediaTimingFunction *_timingFunction;
+    float _speed;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,6 +28,7 @@
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic) double frameInterval;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) float speed;
 @property (readonly) Class superclass;
 @property (readonly, strong, nonatomic) CAMediaTimingFunction *timingFunction;
 
@@ -35,10 +37,11 @@
 + (id)settingsWithDuration:(double)arg1 delay:(double)arg2 timingFunction:(id)arg3;
 + (id)settingsWithDuration:(double)arg1 timingFunction:(id)arg2;
 + (BOOL)supportsSecureCoding;
-- (id)_initWithDuration:(double)arg1 delay:(double)arg2 frameInterval:(double)arg3 timingFunction:(id)arg4;
+- (id)_initWithDuration:(double)arg1 delay:(double)arg2 frameInterval:(double)arg3 timingFunction:(id)arg4 speed:(float)arg5;
 - (void)_setDelay:(double)arg1;
 - (void)_setDuration:(double)arg1;
 - (void)_setFrameInterval:(double)arg1;
+- (void)_setSpeed:(float)arg1;
 - (void)_setTimingFunction:(id)arg1;
 - (void)applyToCAAnimation:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -8,18 +8,18 @@
 
 #import <RemoteUI/RUITableViewRowDelegate-Protocol.h>
 #import <RemoteUI/RUITableViewSectionDelegate-Protocol.h>
+#import <RemoteUI/RUITopLevelPageElement-Protocol.h>
 #import <RemoteUI/RUIWebViewDelegate-Protocol.h>
 #import <RemoteUI/UITableViewDataSource-Protocol.h>
 #import <RemoteUI/UITableViewDelegate-Protocol.h>
 
-@class NSDate, NSDictionary, NSIndexPath, NSMutableArray, NSString, RUIBarButtonItem, RUIHeaderView, RUIObjectModel, RUIPhotoPicker, RUITableViewRow, UIDatePicker, UIPickerView, UITableView, _UIBackdropView;
-@protocol RUITableViewDelegate;
+@class NSDate, NSDictionary, NSIndexPath, NSMutableArray, NSString, RUIBarButtonItem, RUIFooterElement, RUIHeaderElement, RUIObjectModel, RUIPage, RUIPhotoPicker, RUISubHeaderElement, RUITableViewRow, UIDatePicker, UIPickerView, UITableView, UIView, _UIBackdropView;
+@protocol RUIHeader;
 
-@interface RUITableView : RUIElement <UITableViewDataSource, UITableViewDelegate, RUIWebViewDelegate, RUITableViewRowDelegate, RUITableViewSectionDelegate>
+@interface RUITableView : RUIElement <UITableViewDataSource, UITableViewDelegate, RUITableViewRowDelegate, RUITableViewSectionDelegate, RUITopLevelPageElement, RUIWebViewDelegate>
 {
     NSMutableArray *_sections;
     UITableView *_tableView;
-    UIPickerView *_selectPicker;
     BOOL _showSelectPicker;
     UIDatePicker *_datePicker;
     RUIPhotoPicker *_photoPicker;
@@ -35,27 +35,35 @@
     RUIBarButtonItem *_oldLeftBarButtonItemForPicker;
     RUIBarButtonItem *_oldRightBarButtonItemForPicker;
     NSDate *_oldPickerDate;
-    NSString *_headerText;
-    NSDictionary *_headerAttributes;
-    NSString *_subHeaderText;
-    NSDictionary *_subHeaderAttributes;
-    RUIObjectModel<RUITableViewDelegate> *_objectModel;
-    NSDictionary *_footerViewAttributes;
+    UIView<RUIHeader> *_headerView;
+    RUIObjectModel *_objectModel;
+    RUIPage *_page;
+    RUIHeaderElement *_header;
+    RUISubHeaderElement *_subHeader;
+    RUIFooterElement *_footer;
+    NSString *_headerTitle;
+    UIPickerView *_selectPicker;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) RUITableViewRow *defaultFirstResponderRow; // @synthesize defaultFirstResponderRow=_defaultFirstResponderRow;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSDictionary *footerViewAttributes; // @synthesize footerViewAttributes=_footerViewAttributes;
+@property (strong, nonatomic) RUIFooterElement *footer; // @synthesize footer=_footer;
+@property (strong, nonatomic) NSDictionary *footerViewAttributes;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSString *headerTitle;
-@property (readonly, nonatomic) RUIHeaderView *headerView;
+@property (strong, nonatomic) RUIHeaderElement *header; // @synthesize header=_header;
+@property (strong, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
+@property (readonly, nonatomic) UIView<RUIHeader> *headerView;
 @property (readonly, nonatomic) NSDictionary *headerViewAttributes;
-@property (weak, nonatomic) RUIObjectModel<RUITableViewDelegate> *objectModel; // @synthesize objectModel=_objectModel;
+@property (weak, nonatomic) RUIObjectModel *objectModel; // @synthesize objectModel=_objectModel;
+@property (weak, nonatomic) RUIPage *page; // @synthesize page=_page;
 @property (readonly, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
+@property (strong, nonatomic) UIPickerView *selectPicker; // @synthesize selectPicker=_selectPicker;
 @property (readonly, nonatomic, getter=isShowingPicker) BOOL showingPicker;
+@property (strong, nonatomic) RUISubHeaderElement *subHeader; // @synthesize subHeader=_subHeader;
 @property (readonly) Class superclass;
 
++ (void)_enableTestMode;
 - (void).cxx_destruct;
 - (BOOL)_becomeFirstResponderAtIndexPath:(id)arg1;
 - (void)_clearPickers;
@@ -67,9 +75,8 @@
 - (void)_registerForNotifications:(BOOL)arg1;
 - (struct CGRect)_selectPickerFrame;
 - (void)_setBottomInset:(float)arg1;
-- (void)_setHeaderText:(id)arg1 attributes:(id)arg2;
-- (void)_setSubHeaderText:(id)arg1 attributes:(id)arg2;
 - (void)_showDatePickerNavBarButtonsIfNeededForRow:(id)arg1;
+- (struct CGSize)_tableHeaderSizeForHeader:(id)arg1;
 - (void)_textChanged:(id)arg1;
 - (void)activateRowAtIndexPath:(id)arg1 animated:(BOOL)arg2;
 - (void)automaticKeyboardDidHide:(id)arg1;
@@ -84,6 +91,7 @@
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)objectModelRowForIndexPath:(id)arg1;
 - (void)populatePostbackDictionary:(id)arg1;
+- (void)reloadHeadersAndFootersForSection:(id)arg1;
 - (void)row:(id)arg1 activatedElement:(id)arg2;
 - (void)rowDidChange:(id)arg1 action:(int)arg2;
 - (void)rowDidEndEditing:(id)arg1;
@@ -92,6 +100,7 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)section:(id)arg1 activatedElement:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setAttributes:(id)arg1;
+- (void)setHeaderViewAttributes:(id)arg1;
 - (void)setImage:(id)arg1;
 - (void)setImageAlignment:(int)arg1;
 - (void)setImageSize:(struct CGSize)arg1;
@@ -122,6 +131,8 @@
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (id)textFieldRow:(id)arg1 changeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (void)textFieldStartedEditing:(id)arg1;
+- (id)titleLabel;
+- (id)view;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayout;

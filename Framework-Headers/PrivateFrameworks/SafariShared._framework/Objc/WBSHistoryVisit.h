@@ -21,10 +21,13 @@
     long long _origin;
     double _visitTime;
     NSString *_title;
+    unsigned long long _score;
+    unsigned long long _attributes;
     WBSHistoryVisit *_redirectSource;
     WBSHistoryVisit *_redirectDestination;
 }
 
+@property (nonatomic) unsigned long long attributes; // @synthesize attributes=_attributes;
 @property (nonatomic) long long databaseID; // @synthesize databaseID=_databaseID;
 @property (readonly, nonatomic) WBSHistoryVisit *endOfRedirectChain;
 @property (nonatomic) long long generation; // @synthesize generation=_generation;
@@ -37,16 +40,22 @@
 @property (strong, nonatomic) WBSHistoryVisit *redirectSource; // @synthesize redirectSource=_redirectSource;
 @property (readonly, nonatomic) unsigned long long redirectSourceChainLength;
 @property (nonatomic) long long redirectSourceDatabaseID; // @synthesize redirectSourceDatabaseID=_redirectSourceDatabaseID;
+@property (nonatomic) unsigned long long score; // @synthesize score=_score;
 @property (readonly, nonatomic, getter=isSynthesized) BOOL synthesized; // @synthesize synthesized=_synthesized;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (readonly, nonatomic) double visitTime; // @synthesize visitTime=_visitTime;
 
++ (unsigned long long)scoreForWeightedVisitCount:(float)arg1;
 + (id)synthesizedVisitWithHistoryItem:(id)arg1 visitTime:(double)arg2;
++ (float)weightedVisitCountFromScore:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (double)_weight;
+- (BOOL)hasAttributes:(unsigned long long)arg1;
 - (id)initWithHistoryItem:(id)arg1 sqliteRow:(id)arg2;
 - (id)initWithHistoryItem:(id)arg1 sqliteRow:(id)arg2 baseColumnIndex:(unsigned long long)arg3;
 - (id)initWithHistoryItem:(id)arg1 visitTime:(double)arg2;
-- (id)initWithHistoryItem:(id)arg1 visitTime:(double)arg2 loadWasSuccesful:(BOOL)arg3 wasHTTPNonGet:(BOOL)arg4 origin:(long long)arg5;
+- (id)initWithHistoryItem:(id)arg1 visitTime:(double)arg2 loadWasSuccesful:(BOOL)arg3 wasHTTPNonGet:(BOOL)arg4 origin:(long long)arg5 attributes:(unsigned long long)arg6;
+- (void)recomputeScore;
 
 @end
 

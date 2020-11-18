@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <Catalyst/CATOperationObserver-Protocol.h>
 
-@class NSMutableSet, NSString;
+@class CATOperation, NSMutableSet, NSString;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface _CATObserverManager : NSObject <CATOperationObserver>
 {
     NSMutableSet *mObservers;
     int mState;
+    NSObject<OS_dispatch_queue> *mObserverQueue;
+    NSObject<OS_dispatch_source> *mProgressSource;
+    CATOperation *mOperation;
     BOOL mIsObserving;
-    int mWillDelegateProgress;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,7 +27,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)addObserver:(id)arg1 forOperation:(id)arg2;
+- (void)addObserver:(id)arg1;
+- (id)initWithOperation:(id)arg1;
+- (void)notifyObserversOperationDidProgress:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)operationDidFinish:(id)arg1;
 - (void)operationDidProgress:(id)arg1;

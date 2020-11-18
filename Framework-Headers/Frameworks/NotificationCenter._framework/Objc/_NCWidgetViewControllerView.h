@@ -6,12 +6,27 @@
 
 #import <SpringBoardUIServices/SBUISizeObservingView.h>
 
+#import <NotificationCenter/UIScrollViewDelayedTouchesBeganGestureRecognizerClient-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface _NCWidgetViewControllerView : SBUISizeObservingView
+@interface _NCWidgetViewControllerView : SBUISizeObservingView <UIScrollViewDelayedTouchesBeganGestureRecognizerClient>
 {
 }
 
+@property (readonly, nonatomic, getter=_canScrollX) BOOL canScrollX;
+@property (readonly, nonatomic, getter=_canScrollY) BOOL canScrollY;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) BOOL delaysContentTouches;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=_scrollHysteresis) double scrollHysteresis;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic, getter=_touchDelayForScrollDetection) double touchDelayForScrollDetection;
+
 - (void)didMoveToWindow;
+- (BOOL)touchesShouldBegin:(id)arg1 withEvent:(id)arg2 inContentView:(id)arg3;
 
 @end
 

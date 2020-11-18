@@ -27,7 +27,9 @@
 - (void)flushLogs;
 - (id)init;
 - (void)queueLogMessage:(id)arg1;
+- (void)registerLogMsgState:(id)arg1;
 - (void)setupXPCRemoteAdatorsWithOptions:(id)arg1 connectionEstablishedCallback:(CDUnknownBlockType)arg2;
+- (void)unregisterLogMsgStateOfType:(int)arg1;
 
 @end
 

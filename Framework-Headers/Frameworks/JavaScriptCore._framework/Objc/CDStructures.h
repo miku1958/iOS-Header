@@ -10,8 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct Butterfly;
-
 struct CGPoint {
     double _field1;
     double _field2;
@@ -38,8 +36,8 @@ struct CallbackData {
     id _field8;
 };
 
-struct CopyWriteBarrier<JSC::Butterfly> {
-    struct Butterfly *_field1;
+struct CopyBarrier<JSC::Butterfly> {
+    void *_field1;
 };
 
 struct HashMap<WTF::RefPtr<WTF::StringImpl>, std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl>>, WTF::HashTraits<std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>>>;
@@ -56,7 +54,7 @@ struct JSObject {
     unsigned char _field3;
     unsigned char _field4;
     unsigned char _field5;
-    struct CopyWriteBarrier<JSC::Butterfly> _field6;
+    struct CopyBarrier<JSC::Butterfly> _field6;
 };
 
 struct JSValue {

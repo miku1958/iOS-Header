@@ -22,6 +22,7 @@
     NSMutableArray *discardedLabels;
 }
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 

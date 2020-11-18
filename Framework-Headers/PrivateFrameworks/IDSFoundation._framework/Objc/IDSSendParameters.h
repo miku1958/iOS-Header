@@ -18,7 +18,9 @@
 @property (strong, nonatomic) NSData *accessToken;
 @property (strong, nonatomic) NSString *accountUUID;
 @property (nonatomic) BOOL activityContinuation;
+@property (nonatomic) BOOL allowCloudDelivery;
 @property (strong, nonatomic) NSString *alternateCallbackID;
+@property (nonatomic) BOOL alwaysSkipSelf;
 @property (strong, nonatomic) NSArray *bulkedPayload;
 @property (nonatomic) BOOL bypassDuet;
 @property (nonatomic) BOOL bypassSizeCheck;
@@ -50,6 +52,7 @@
 @property (strong, nonatomic) NSString *localDestinationDeviceUUID;
 @property (strong, nonatomic) NSString *mainAccountUUID;
 @property (strong, nonatomic) NSDictionary *message;
+@property (strong, nonatomic) NSNumber *messageType;
 @property (strong, nonatomic) NSData *messageUUID;
 @property (nonatomic) BOOL nonWaking;
 @property (strong, nonatomic) NSString *originalfromID;
@@ -62,6 +65,7 @@
 @property (strong, nonatomic) NSArray *requireLackOfRegistrationProperties;
 @property (strong, nonatomic) NSDictionary *resourceMetadata;
 @property (strong, nonatomic) NSString *resourcePath;
+@property (strong, nonatomic) NSString *sessionID;
 @property (strong, nonatomic) NSString *subService;
 @property (strong, nonatomic) NSString *subServiceAccountUUID;
 @property (nonatomic) double timeout;

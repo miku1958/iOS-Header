@@ -9,7 +9,7 @@
 #import <NetworkExtension/NEPrettyDescription-Protocol.h>
 
 @class NSData, NSMutableDictionary;
-@protocol OS_dispatch_io, OS_dispatch_queue, OS_dispatch_semaphore;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source;
 
 @interface NEPolicySession : NSObject <NEPrettyDescription>
 {
@@ -20,11 +20,11 @@
     NSObject<OS_dispatch_queue> *_ioQueue;
     NSObject<OS_dispatch_semaphore> *_responseSemaphore;
     NSData *_lastReceivedResponse;
-    NSObject<OS_dispatch_io> *_controlIO;
+    NSObject<OS_dispatch_source> *_controlSource;
 }
 
-@property (strong) NSObject<OS_dispatch_io> *controlIO; // @synthesize controlIO=_controlIO;
 @property int controlSocket; // @synthesize controlSocket=_controlSocket;
+@property (strong) NSObject<OS_dispatch_source> *controlSource; // @synthesize controlSource=_controlSource;
 @property long long internalPriority; // @synthesize internalPriority=_internalPriority;
 @property (strong) NSObject<OS_dispatch_queue> *ioQueue; // @synthesize ioQueue=_ioQueue;
 @property (strong) NSData *lastReceivedResponse; // @synthesize lastReceivedResponse=_lastReceivedResponse;
@@ -36,7 +36,10 @@
 + (void)addTLVToMessage:(id)arg1 type:(unsigned char)arg2 length:(unsigned long long)arg3 value:(const void *)arg4;
 + (id)copyTLVForBytes:(const char *)arg1 messageLength:(unsigned long long)arg2 type:(unsigned char)arg3 includeHeaderOffset:(BOOL)arg4 n:(int)arg5;
 + (id)errorFromMessage:(id)arg1;
++ (unsigned char)getTLVtypeForBytes:(const char *)arg1 includeHeaderOffset:(BOOL)arg2 nextTLVOffset:(unsigned int *)arg3;
 + (unsigned int)messageIDForMessage:(id)arg1;
++ (id)parseTLVResponseForDump:(id)arg1;
++ (id)policyDumpFromData:(id)arg1;
 + (unsigned int)policyIDFromMessage:(id)arg1;
 - (void).cxx_destruct;
 - (unsigned long long)addPolicy:(id)arg1;
@@ -46,11 +49,12 @@
 - (void)dealloc;
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
+- (id)dumpKernelPolicies;
 - (int)dupSocket;
 - (id)init;
 - (id)initWithSocket:(int)arg1;
 - (BOOL)lockSessionToCurrentProcess;
-- (id)openControlIO;
+- (id)openControlSource;
 - (id)policyWithID:(unsigned long long)arg1;
 - (id)priorityString;
 - (BOOL)registerServiceUUID:(id)arg1;

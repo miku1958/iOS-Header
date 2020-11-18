@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSMutableArray *uploadTokens; // @synthesize uploadTokens=_uploadTokens;
 
++ (Class)uploadTokensType;
 - (void).cxx_destruct;
 - (void)addUploadTokens:(id)arg1;
 - (void)clearUploadTokens;

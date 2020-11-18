@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     NSData *_writeBuffer;
     BOOL _writeSignaled;
     BOOL _writeEOF;
+    BOOL _deliveredConnectionEstablished;
     CDStruct_59046461 _writeError;
     long long _writeBufferAlreadyWrittenForNextWrite;
     NSMutableArray *_finalizationQueue;
@@ -58,10 +59,11 @@ __attribute__((visibility("hidden")))
     int _networkServiceType;
     NSDictionary *_legacySocketStreamProperties;
     BOOL _betterRouteDiscovered;
-    NSData *_TCPConnectionMetadata;
+    NSData *__TCPConnectionMetadata;
+    BOOL _didIssueCancel;
 }
 
-@property (copy) NSData *_TCPConnectionMetadata; // @synthesize _TCPConnectionMetadata;
+@property (copy) NSData *_TCPConnectionMetadata; // @synthesize _TCPConnectionMetadata=__TCPConnectionMetadata;
 @property (readonly) BOOL _goneSecure; // @synthesize _goneSecure;
 @property long long countOfBytesExpectedToReceive; // @synthesize countOfBytesExpectedToReceive=_countOfBytesExpectedToReceive;
 @property long long countOfBytesExpectedToSend; // @synthesize countOfBytesExpectedToSend=_countOfBytesExpectedToSend;

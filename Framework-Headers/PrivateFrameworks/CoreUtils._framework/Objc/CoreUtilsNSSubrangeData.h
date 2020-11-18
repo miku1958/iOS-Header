@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
     struct _NSRange _range;
 }
 
+- (void).cxx_destruct;
 - (BOOL)_isCompact;
 - (const void *)bytes;
 - (id)copyWithZone:(struct _NSZone *)arg1;

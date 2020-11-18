@@ -38,6 +38,7 @@
 @property (readonly, nonatomic) NSDate *inviteeSubscriptionDate; // @synthesize inviteeSubscriptionDate=_inviteeSubscriptionDate;
 @property (readonly, nonatomic) BOOL isMine; // @synthesize isMine=_isMine;
 
++ (id)fetchType;
 + (id)managedEntityName;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
 - (void).cxx_destruct;

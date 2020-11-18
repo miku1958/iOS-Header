@@ -12,9 +12,11 @@
 {
     BOOL _networkAccessAllowed;
     BOOL _resistentToPrune;
+    BOOL _downloadIsTransient;
     CDUnknownBlockType _progressHandler;
 }
 
+@property (nonatomic) BOOL downloadIsTransient; // @synthesize downloadIsTransient=_downloadIsTransient;
 @property (nonatomic, getter=isNetworkAccessAllowed) BOOL networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property (nonatomic) BOOL resistentToPrune; // @synthesize resistentToPrune=_resistentToPrune;

@@ -11,7 +11,7 @@
 
 @interface CUIRenditionKey : NSObject <NSCopying, NSCoding>
 {
-    struct _renditionkeytoken _stackKey[16];
+    struct _renditionkeytoken _stackKey[17];
     struct _renditionkeytoken *_key;
     unsigned short _highwaterKeyCount;
 }
@@ -34,9 +34,11 @@
 - (const struct _renditionkeytoken *)keyList;
 - (id)nameOfAttributeName:(int)arg1;
 - (void)removeValueForKeyTokenIdentifier:(long long)arg1;
+- (void)setThemeDeploymentTarget:(long long)arg1;
 - (void)setThemeDimension1:(long long)arg1;
 - (void)setThemeDimension2:(long long)arg1;
 - (void)setThemeDirection:(long long)arg1;
+- (void)setThemeDisplayGamut:(long long)arg1;
 - (void)setThemeElement:(long long)arg1;
 - (void)setThemeGraphicsClass:(long long)arg1;
 - (void)setThemeIdentifier:(long long)arg1;
@@ -55,9 +57,11 @@
 - (void)setThemeSubtype:(long long)arg1;
 - (void)setThemeValue:(long long)arg1;
 - (void)setValuesFromKeyList:(const struct _renditionkeytoken *)arg1;
+- (long long)themeDeploymentTarget;
 - (long long)themeDimension1;
 - (long long)themeDimension2;
 - (long long)themeDirection;
+- (long long)themeDisplayGamut;
 - (long long)themeElement;
 - (long long)themeGraphicsClass;
 - (long long)themeIdentifier;

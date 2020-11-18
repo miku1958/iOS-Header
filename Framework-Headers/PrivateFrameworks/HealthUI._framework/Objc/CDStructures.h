@@ -44,6 +44,11 @@ struct HKRange {
     double _field2;
 };
 
+struct IncrementalSearchResultsDefn {
+    unsigned long long _field1;
+    struct _NSRange _field2[64];
+};
+
 struct UIEdgeInsets {
     double top;
     double left;

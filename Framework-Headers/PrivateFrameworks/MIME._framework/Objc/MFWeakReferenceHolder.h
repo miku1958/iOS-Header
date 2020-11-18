@@ -16,7 +16,6 @@
 + (id)weakReferenceWithObject:(id)arg1;
 - (id)_initWithObject:(id)arg1;
 - (void)dealloc;
-- (id)init;
 - (id)reference;
 - (id)retainedReference;
 

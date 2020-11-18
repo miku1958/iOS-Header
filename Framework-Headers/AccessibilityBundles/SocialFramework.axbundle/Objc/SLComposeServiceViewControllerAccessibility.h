@@ -14,7 +14,9 @@
 + (BOOL)accessibilityPerformEscape;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)viewDidAppear:(BOOL)arg1;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (void)_updateContentViewWithCharactersRemaining;
+- (void)loadView;
 - (void)viewDidDisappear:(BOOL)arg1;
 
 @end

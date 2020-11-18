@@ -6,7 +6,6 @@
 
 #import <UIKit/UIApplicationRotationFollowingController.h>
 
-__attribute__((visibility("hidden")))
 @interface UIApplicationRotationFollowingControllerNoTouches : UIApplicationRotationFollowingController
 {
 }

@@ -63,6 +63,16 @@
 @property (nonatomic) unsigned long long uID; // @synthesize uID=_uID;
 @property (strong, nonatomic) NSString *uRL; // @synthesize uRL=_uRL;
 
++ (Class)attributeKeyValueType;
++ (Class)attributionType;
++ (Class)categoryType;
++ (Class)localizedCategoriesType;
++ (Class)openHoursType;
++ (Class)photoType;
++ (Class)placeDataAmendmentType;
++ (Class)ratingType;
++ (Class)sourceType;
++ (Class)starRatingType;
 - (id)_firstPhotoOfSize:(int)arg1;
 - (id)_photosOfSize:(int)arg1;
 - (void)addAttributeKeyValue:(id)arg1;

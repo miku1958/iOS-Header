@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class HDDaemon, HDDatabaseValueCache, NSNumber;
+@class HDDatabaseValueCache, HDProfile, NSNumber;
 @protocol OS_dispatch_queue;
 
 @interface HDDeviceManager : NSObject
 {
-    HDDaemon *_daemon;
+    HDProfile *_profile;
     NSNumber *_deviceForNoneID;
     NSObject<OS_dispatch_queue> *_queue;
     HDDatabaseValueCache *_devicesByPersistentID;
@@ -25,7 +25,6 @@
 - (id)_noneDevice;
 - (id)allDeviceEntitiesWithError:(id *)arg1;
 - (id)currentDeviceEntityWithError:(id *)arg1;
-- (id)dataTypesForDevice:(id)arg1 error:(id *)arg2;
 - (id)deviceEntitiesForDevice:(id)arg1 error:(id *)arg2;
 - (id)deviceEntitiesWithProperty:(id)arg1 matchingValues:(id)arg2 error:(id *)arg3;
 - (id)deviceEntityForDevice:(id)arg1 error:(id *)arg2;
@@ -33,7 +32,7 @@
 - (id)deviceForPersistentID:(id)arg1 error:(id *)arg2;
 - (id)devicesWithProperty:(id)arg1 matchingValues:(id)arg2 error:(id *)arg3;
 - (id)init;
-- (id)initWithDaemon:(id)arg1;
+- (id)initWithProfile:(id)arg1;
 
 @end
 

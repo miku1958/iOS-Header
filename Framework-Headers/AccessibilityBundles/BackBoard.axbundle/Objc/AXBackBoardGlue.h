@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import "AXBackBoardServerInstanceDelegate-Protocol.h"
 
@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)_repeatAggregateStatistics;
 + (int)accessibilityUIPid;
 + (int)assistiveTouchPid;
 + (struct CGPoint)displayConvertFromCAScreen:(struct CGPoint)arg1 withDisplayIntegerId:(unsigned int)arg2;
@@ -26,6 +27,7 @@
 + (id)hidClientConnectionManager;
 + (void)initialize;
 + (BOOL)isDisplayBacklightOff;
++ (void)kickoffAggregateStatistics;
 + (void)processExternalHIDEvent:(struct __IOHIDEvent *)arg1;
 + (void)sendUserEventOccurred;
 + (void)setLockScreenDimTimerEnabled:(BOOL)arg1;
@@ -46,7 +48,6 @@
 - (void)setSiriViewServicePid:(int)arg1;
 - (void)setVoiceOverItemChooserVisible:(BOOL)arg1;
 - (void)userEventOccurred;
-- (void)wakeUpDeviceIfNecessary;
 - (void)zoomListenerRegistered;
 
 @end

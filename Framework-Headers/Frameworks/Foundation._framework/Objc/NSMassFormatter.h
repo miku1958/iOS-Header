@@ -6,24 +6,17 @@
 
 #import <Foundation/NSFormatter.h>
 
-#import <Foundation/NSObservable-Protocol.h>
-#import <Foundation/NSObserver-Protocol.h>
+@class NSNumberFormatter;
 
-@class NSNumberFormatter, NSString;
-
-@interface NSMassFormatter : NSFormatter <NSObservable, NSObserver>
+@interface NSMassFormatter : NSFormatter
 {
     void *_formatter;
     BOOL _isForPersonMassUse;
     void *_reserved[2];
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (getter=isForPersonMassUse) BOOL forPersonMassUse; // @synthesize forPersonMassUse=_isForPersonMassUse;
-@property (readonly) unsigned long long hash;
 @property (copy) NSNumberFormatter *numberFormatter;
-@property (readonly) Class superclass;
 @property long long unitStyle;
 
 - (id)attributedStringForObjectValue:(id)arg1 withDefaultAttributes:(id)arg2;
@@ -33,7 +26,6 @@
 - (BOOL)getObjectValue:(out id *)arg1 forString:(id)arg2 errorDescription:(out id *)arg3;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (void)receiveObservedValue:(id)arg1;
 - (id)stringForObjectValue:(id)arg1;
 - (id)stringFromKilograms:(double)arg1;
 - (id)stringFromValue:(double)arg1 unit:(long long)arg2;

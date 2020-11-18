@@ -21,6 +21,7 @@
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)_updateLocalizedStrings;
+- (void)dealloc;
 - (id)getLocalizedOrCustomString:(id)arg1;
 - (id)getLocalizedString:(id)arg1;
 - (id)init;

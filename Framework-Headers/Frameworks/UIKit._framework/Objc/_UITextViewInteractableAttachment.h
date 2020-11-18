@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)_image;
 - (void)_saveToCameraRoll;
 - (id)actions;
-- (BOOL)allowInteraction;
+- (BOOL)allowInteraction:(long long)arg1;
 - (id)defaultAction;
 - (id)localizedTitle;
 

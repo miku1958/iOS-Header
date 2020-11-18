@@ -15,8 +15,11 @@
 - (BOOL)_accessibilityIsScannerElement;
 - (id)_accessibilityLabel:(BOOL)arg1;
 - (id)_axCleanupNewlines:(id)arg1;
+- (id)_axOriginalLabelText:(BOOL)arg1;
+- (id)accessibilityCustomRotors;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
 
 @end

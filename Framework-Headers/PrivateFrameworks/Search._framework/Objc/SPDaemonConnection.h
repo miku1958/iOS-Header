@@ -14,7 +14,6 @@
     SPXPCConnection *_connection;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_connectionQueue;
-    BOOL _queryHasBeenReissued;
     NSString *_daemonName;
     struct __CFDictionary *_runningQueries;
 }
@@ -22,34 +21,26 @@
 @property (strong, nonatomic) NSString *daemonName; // @synthesize daemonName=_daemonName;
 @property (nonatomic) struct __CFDictionary *runningQueries; // @synthesize runningQueries=_runningQueries;
 
++ (id)sharedBackgroundConnection;
 + (id)sharedConnection;
 - (void).cxx_destruct;
 - (id)_connection;
 - (void)_resetConnection;
-- (void)_sendMessage:(id)arg1 info:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)_sendMessage:(id)arg1 object:(id)arg2 info:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)activate;
 - (void)cancelQuery:(id)arg1;
 - (void)deactivate;
 - (void)dealloc;
-- (void)endRecordUpdatesForApplication:(id)arg1 andCategory:(id)arg2;
-- (void)fetchCardDataForResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithDaemonName:(id)arg1;
 - (void)preheat;
-- (void)registerApplication:(id)arg1 withCategories:(id)arg2;
 - (void)requestParsecParametersWithReply:(CDUnknownBlockType)arg1;
-- (void)requestRecordUpdatesForApplication:(id)arg1 category:(id)arg2 andIDs:(id)arg3;
 - (void)retrieveFirstTimeExperienceTextWithReply:(CDUnknownBlockType)arg1;
-- (void)retrieveImageDataForResult:(id)arg1 searchDomain:(unsigned int)arg2 size:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)retrieveImageDataForResultIdentifierNumber:(long long)arg1 searchDomain:(unsigned int)arg2 size:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)retrieveImageDataWithIdentifier:(id)arg1 searchDomain:(unsigned int)arg2 size:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
-- (BOOL)retrieveUpdateListForDisplayIdentifier:(id)arg1 category:(id)arg2 hasUpdates:(BOOL *)arg3;
-- (void)sendFeedback:(id)arg1;
 - (void)sendMessageForToken:(id)arg1 withResponse:(id)arg2 isStable:(BOOL)arg3;
+- (void)sendSFFeedbackMessage:(SEL)arg1 withFeedback:(id)arg2;
 - (id)startQuery:(id)arg1;
 - (id)startQuery:(id)arg1 withResponse:(id)arg2 isStable:(BOOL)arg3;
 - (id)startQuery:(id)arg1 withResponse:(id)arg2 isStable:(BOOL)arg3 queue:(id)arg4;
-- (void)startRecordUpdatesForApplication:(id)arg1 andCategory:(id)arg2;
 
 @end
 

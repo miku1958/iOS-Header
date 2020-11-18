@@ -6,28 +6,29 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, UILabel;
+@class NSArray, UIStackView;
 
 @interface SKUITrendingSearchView : UIView
 {
-    struct UIEdgeInsets _contentInset;
-    NSArray *_resultButtons;
-    UILabel *_titleLabel;
+    UIView *_trendingTitleView;
+    NSArray *_trendingSearchViews;
+    UIStackView *_trendingSearchesStackView;
+    UIStackView *_titleStackView;
+    NSArray *_verticalMarginRelatedConstraints;
 }
 
-@property (nonatomic) struct UIEdgeInsets contentInset; // @synthesize contentInset=_contentInset;
-@property (copy, nonatomic) NSArray *resultButtons; // @synthesize resultButtons=_resultButtons;
-@property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (weak, nonatomic) UIStackView *titleStackView; // @synthesize titleStackView=_titleStackView;
+@property (copy, nonatomic) NSArray *trendingSearchViews; // @synthesize trendingSearchViews=_trendingSearchViews;
+@property (weak, nonatomic) UIStackView *trendingSearchesStackView; // @synthesize trendingSearchesStackView=_trendingSearchesStackView;
+@property (copy, nonatomic) UIView *trendingTitleView; // @synthesize trendingTitleView=_trendingTitleView;
+@property (strong, nonatomic) NSArray *verticalMarginRelatedConstraints; // @synthesize verticalMarginRelatedConstraints=_verticalMarginRelatedConstraints;
 
-+ (id)defaultButtonFont;
-+ (id)defaultTitleColor;
-+ (id)defaultTitleFont;
-+ (id)resultButtonWithTitle:(id)arg1;
 - (void).cxx_destruct;
-- (double)_contentHeightBySizingToFitWidth:(double)arg1;
-- (void)layoutSubviews;
-- (void)setBackgroundColor:(id)arg1;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)commonInitWithFrame:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutMarginsDidChange;
+- (void)updateConstraints;
 
 @end
 

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SpringBoardUIServices/SBInteractionPassThroughView.h>
+#import <SpringBoardFoundation/SBFTouchPassThroughView.h>
 
 @class SBLockOverlayStylePropertiesFactory, UIButton, UILabel, UIResizableView, _UILegibilitySettings;
 @protocol SBUILockOverlayViewDelegate;
 
-@interface SBUILockOverlayView : SBInteractionPassThroughView
+@interface SBUILockOverlayView : SBFTouchPassThroughView
 {
     id<SBUILockOverlayViewDelegate> _delegate;
     UIResizableView *_textContainerView;

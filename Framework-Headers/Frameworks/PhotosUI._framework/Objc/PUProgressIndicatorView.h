@@ -8,7 +8,6 @@
 
 @class NSArray, NSString, PLRoundProgressView, UIActivityIndicatorView, UILabel, _UIBackdropView;
 
-__attribute__((visibility("hidden")))
 @interface PUProgressIndicatorView : UIView
 {
     UIActivityIndicatorView *_spinnerView;
@@ -44,9 +43,11 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_endShowingProgressIfReady;
+- (void)_handleBeginShowingAnimated:(BOOL)arg1 wasImmediate:(BOOL)arg2;
 - (id)_newBackdropBackgroundView;
 - (void)_updatePieProgress;
 - (void)_updateProgressViewsAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_updateProgressViewsWithAnimation:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateSubviewsOrdering;
 - (void)beginShowingProgressImmediately:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)endShowingProgressImmediately:(BOOL)arg1 animated:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;

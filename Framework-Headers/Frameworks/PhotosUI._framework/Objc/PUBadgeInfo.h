@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property (copy, nonatomic, setter=_setNumberOfPhotosProvider:) CDUnknownBlockType _numberOfPhotosProvider; // @synthesize _numberOfPhotosProvider=__numberOfPhotosProvider;
-@property (nonatomic) long long numberOfPhotos; // @synthesize numberOfPhotos=_numberOfPhotos;
-@property (nonatomic) long long style; // @synthesize style=_style;
+@property (nonatomic, setter=_setNumberOfPhotos:) long long numberOfPhotos; // @synthesize numberOfPhotos=_numberOfPhotos;
+@property (nonatomic, setter=_setStyle:) long long style; // @synthesize style=_style;
 
 + (id)badgeInfoWithBurstStyleNumberOfPhotos:(long long)arg1;
 + (id)badgeInfoWithBurstStyleNumberOfPhotosProvider:(CDUnknownBlockType)arg1;
@@ -26,8 +26,6 @@ __attribute__((visibility("hidden")))
 + (id)badgeInfoWithHDRStyle;
 + (id)badgeInfoWithPhotoIrisStyle;
 - (void).cxx_destruct;
-- (void)_setNumberOfPhotos:(long long)arg1;
-- (void)_setStyle:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

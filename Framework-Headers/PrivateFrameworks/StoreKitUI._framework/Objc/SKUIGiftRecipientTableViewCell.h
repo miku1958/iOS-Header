@@ -6,16 +6,16 @@
 
 #import <UIKit/UITableViewCell.h>
 
-#import <StoreKitUI/ABPeoplePickerNavigationControllerDelegate-Protocol.h>
+#import <StoreKitUI/CNContactPickerDelegate-Protocol.h>
 #import <StoreKitUI/MFComposeRecipientViewDelegate-Protocol.h>
 #import <StoreKitUI/SKUIGiftContactSearchDelegate-Protocol.h>
 
-@class ABPeoplePickerNavigationController, MFComposeRecipientView, NSArray, NSAttributedString, NSString, SKUIGiftContactSearchController, UILabel, UIView;
+@class CNContactPickerViewController, CNContactStore, MFComposeRecipientView, NSArray, NSAttributedString, NSString, SKUIGiftContactSearchController, UILabel, UIView;
 
-@interface SKUIGiftRecipientTableViewCell : UITableViewCell <ABPeoplePickerNavigationControllerDelegate, MFComposeRecipientViewDelegate, SKUIGiftContactSearchDelegate>
+@interface SKUIGiftRecipientTableViewCell : UITableViewCell <CNContactPickerDelegate, MFComposeRecipientViewDelegate, SKUIGiftContactSearchDelegate>
 {
-    void *_addressBook;
-    ABPeoplePickerNavigationController *_peoplePickerController;
+    CNContactStore *_contactStore;
+    CNContactPickerViewController *_contactPickerController;
     UILabel *_placeholderLabel;
     MFComposeRecipientView *_recipientView;
     SKUIGiftContactSearchController *_searchController;
@@ -31,13 +31,12 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void *)_addressBook;
+- (id)_contactStore;
 - (void)_resetSearchController;
 - (void)_sendDidChangeRecipients;
 - (void)_sendDidUpdateSearchController;
-- (void)_sendDismissPeoplePicker;
+- (void)_sendDismissContactPicker;
 - (id)composeRecipientView:(id)arg1 composeRecipientForAddress:(id)arg2;
-- (id)composeRecipientView:(id)arg1 composeRecipientForRecord:(void *)arg2 identifier:(int)arg3;
 - (void)composeRecipientView:(id)arg1 didAddRecipient:(id)arg2;
 - (void)composeRecipientView:(id)arg1 didChangeSize:(struct CGSize)arg2;
 - (void)composeRecipientView:(id)arg1 didFinishEnteringAddress:(id)arg2;
@@ -45,12 +44,11 @@
 - (void)composeRecipientViewDidBecomeFirstResponder:(id)arg1;
 - (void)composeRecipientViewDidFinishPickingRecipient:(id)arg1;
 - (void)composeRecipientViewRequestAddRecipient:(id)arg1;
+- (void)contactPicker:(id)arg1 didSelectContactProperty:(id)arg2;
+- (void)contactPickerDidCancel:(id)arg1;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
-- (BOOL)peoplePickerNavigationController:(id)arg1 shouldContinueAfterSelectingPerson:(void *)arg2;
-- (BOOL)peoplePickerNavigationController:(id)arg1 shouldContinueAfterSelectingPerson:(void *)arg2 property:(int)arg3 identifier:(int)arg4;
-- (void)peoplePickerNavigationControllerDidCancel:(id)arg1;
 - (void)presentPeoplePickerPopover:(id)arg1 animated:(BOOL)arg2;
 - (void)presentSearchResultsPopover:(id)arg1 animated:(BOOL)arg2;
 - (void)recipientViewDidResignFirstResponder:(id)arg1;

@@ -4,30 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CoreCDPUI/CDPUIBaseController.h>
 
 #import <CoreCDPUI/CDPDevicePickerDelegate-Protocol.h>
 #import <CoreCDPUI/CDPRemoteSecretEntryDelegate-Protocol.h>
-#import <CoreCDPUI/CDPStateUIProvider-Protocol.h>
-#import <CoreCDPUI/CDPWaitingApprovalDelegate-Protocol.h>
 #import <CoreCDPUI/KeychainSyncViewControllerDelegate-Protocol.h>
 
-@class CDPDevicePickerViewController, CDPRemoteDeviceSecretValidator, NSArray, NSNumber, NSString, UINavigationController, UIViewController;
+@class CDPContext, CDPDevicePickerViewController, CDPRemoteDeviceSecretValidator, NSArray, NSNumber, NSString, UINavigationController, UIViewController;
 @protocol CDPUIDelegate;
 
-@interface CDPUIController : NSObject <CDPWaitingApprovalDelegate, CDPDevicePickerDelegate, CDPRemoteSecretEntryDelegate, KeychainSyncViewControllerDelegate, CDPStateUIProvider>
+@interface CDPUIController : CDPUIBaseController <KeychainSyncViewControllerDelegate, CDPDevicePickerDelegate, CDPRemoteSecretEntryDelegate>
 {
-    UIViewController *_presentingViewController;
-    UIViewController *_rootViewController;
-    UINavigationController *_navController;
-    CDPDevicePickerViewController *_devicePicker;
-    CDPRemoteDeviceSecretValidator *_remoteSecretValidator;
-    BOOL _isUsingMultipleICSC;
     NSArray *_devices;
-    BOOL _offerRemoteApproval;
+    UINavigationController *_navController;
+    CDPRemoteDeviceSecretValidator *_remoteSecretValidator;
+    CDPDevicePickerViewController *_devicePicker;
+    UIViewController *_rootViewController;
+    BOOL _isUsingMultipleICSC;
     BOOL _isRandomICSC;
     BOOL _isNumericICSC;
     NSNumber *_icscNumericLength;
+    CDPContext *_activeContext;
     BOOL _forceInlinePresentation;
     id<CDPUIDelegate> _delegate;
 }
@@ -40,29 +37,48 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)approveFromAnotherDeviceTappedFromDevicePicker:(id)arg1;
-- (void)cancelSignInFromDevicePicker:(id)arg1;
+- (void)_beginWaitingForApprovalFlow;
+- (void)_dismissPresentedViewControllerCompletion:(CDUnknownBlockType)arg1;
+- (id)_enterSecretLaterEscapeOptionWithSecret:(unsigned long long)arg1;
+- (id)_escapeOfferForDevice:(id)arg1 withMask:(unsigned long long)arg2;
+- (id)_escapeOfferForMultiApprovalWithMask:(unsigned long long)arg1;
+- (id)_escapeOfferForSingleApprovalWithMask:(unsigned long long)arg1;
+- (id)_escapeOfferForgotAllWithMask:(unsigned long long)arg1;
+- (id)_localDeviceClass;
+- (id)_newestDeviceFromDevices:(id)arg1;
+- (void)_presentRemoteApprovalViewControllerWithEscapeOfferMask:(unsigned long long)arg1;
+- (void)_presentRemoteSecretControllerWithNewestDevice:(id)arg1;
+- (void)_presentRootController:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_remoteApprovalEscapeOption;
+- (id)_remoteSecretControllerForDevice:(id)arg1;
+- (id)_remoteSecretControllerForNewestDevice:(id)arg1;
+- (id)_resetAccountDataEscapeOption;
+- (void)_setupDevicePickerController:(CDUnknownBlockType)arg1;
+- (void)_showResetKeychainConfirmationAlertWithViewController:(id)arg1;
+- (id)_singleICSCEscapeOfferWithMask:(unsigned long long)arg1 withController:(id)arg2;
+- (id)_waitingForApprovalEscapeOffer;
+- (void)approveFromAnotherDevice:(BOOL)arg1;
+- (void)cancelRemoteApprovalTapped:(id)arg1;
+- (void)cancelSignInFromDevicePicker;
 - (void)cancelTapped:(id)arg1;
 - (void)cancelTappedFromRootViewController:(id)arg1;
 - (void)cancelledRemoteSecretEntry:(id)arg1;
-- (void)cdpContext:(id)arg1 promptForAccountPasswordWithCompletion:(CDUnknownBlockType)arg2;
 - (void)cdpContext:(id)arg1 promptForAdoptionOfMultipleICSC:(CDUnknownBlockType)arg2;
 - (void)cdpContext:(id)arg1 promptForICSCWithIsNumeric:(BOOL)arg2 numericLength:(id)arg3 isRandom:(BOOL)arg4 validator:(id)arg5;
-- (void)cdpContext:(id)arg1 promptForInteractiveAuthenticationWithCompletion:(CDUnknownBlockType)arg2;
 - (void)cdpContext:(id)arg1 promptForLocalSecretWithHandler:(id)arg2;
 - (void)cdpContext:(id)arg1 promptForRemoteSecretWithDevices:(id)arg2 offeringRemoteApproval:(BOOL)arg3 validator:(id)arg4;
 - (void)cdpContext:(id)arg1 promptToInformUserOfAccountLockOutWithCompletion:(CDUnknownBlockType)arg2;
 - (void)cdpContext:(id)arg1 promptToInformUserOfAccountUnlockWithCompletion:(CDUnknownBlockType)arg2;
 - (void)devicePicker:(id)arg1 didSelectDevice:(id)arg2;
-- (void)dismissPresentedViewControllerCompletion:(CDUnknownBlockType)arg1;
+- (void)dismissRecoveryFlow:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)exceededMaximumAttemptsForRemoteSecretEntry:(id)arg1;
-- (id)initWithPresentingViewControlller:(id)arg1;
+- (void)finishValidation:(id)arg1 withError:(id)arg2;
 - (void)keychainSyncController:(id)arg1 didFinishWithResult:(id)arg2 error:(id)arg3;
-- (void)presentRootController:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)performAccountReset:(id)arg1;
+- (void)performRemoteApproval:(id)arg1;
+- (BOOL)performingAccountRecovery;
 - (void)remoteSecretEntry:(id)arg1 depletedRemainingAttemptsForDevice:(id)arg2;
 - (void)remoteSecretEntry:(id)arg1 didAcceptValidRemoteSecretForDevice:(id)arg2;
-- (void)remoteSecretEntry:(id)arg1 escapeHatchTappedWithOffer:(unsigned long long)arg2 device:(id)arg3;
-- (void)waitingApprovalViewController:(id)arg1 escapeHatchTappedWithOffer:(unsigned long long)arg2;
 
 @end
 

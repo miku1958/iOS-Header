@@ -10,50 +10,93 @@
 #import <ReplayKit/UINavigationControllerDelegate-Protocol.h>
 #import <ReplayKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSString;
+@class NSDate, NSString, RPBroadcastController, RPPipViewController, RPSystemRecordingIndicatorWindow, UIView, UIWindow;
 @protocol RPScreenRecorderDelegate;
 
 @interface RPScreenRecorder : NSObject <RPPreviewViewControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate>
 {
+    BOOL _available;
     BOOL _recording;
     BOOL _microphoneEnabled;
-    BOOL _available;
+    BOOL _cameraEnabled;
+    BOOL _systemRecording;
+    BOOL _hasUserConsentForCamera;
+    BOOL _hasUserConsentForMicrophone;
+    BOOL _paused;
     id<RPScreenRecorderDelegate> _delegate;
+    UIView *_cameraPreviewView;
     unsigned long long _previousAudioSessionOptions;
     NSString *_previousAudioCategory;
+    UIWindow *_windowToRecord;
+    RPPipViewController *_pipViewController;
+    CDUnknownBlockType _saveVideoToCameraRollCompletionBlock;
+    NSDate *_systemRecordingControlCenterStartClipStartTime;
+    NSDate *_systemRecordingControlCenterStartClipEndTime;
+    NSDate *_systemRecordingControlCenterEndClipStartTime;
+    NSDate *_systemRecordingControlCenterEndClipEndTime;
+    RPSystemRecordingIndicatorWindow *_systemRecordingIndicatorWindow;
+    RPBroadcastController *_activeBroadcastController;
 }
 
+@property (strong, nonatomic) RPBroadcastController *activeBroadcastController; // @synthesize activeBroadcastController=_activeBroadcastController;
 @property (nonatomic, getter=isAvailable) BOOL available; // @synthesize available=_available;
+@property (nonatomic, getter=isCameraEnabled) BOOL cameraEnabled; // @synthesize cameraEnabled=_cameraEnabled;
+@property (strong, nonatomic) UIView *cameraPreviewView; // @synthesize cameraPreviewView=_cameraPreviewView;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<RPScreenRecorderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasUserConsentForCamera; // @synthesize hasUserConsentForCamera=_hasUserConsentForCamera;
+@property (nonatomic) BOOL hasUserConsentForMicrophone; // @synthesize hasUserConsentForMicrophone=_hasUserConsentForMicrophone;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isMicrophoneEnabled) BOOL microphoneEnabled; // @synthesize microphoneEnabled=_microphoneEnabled;
+@property (nonatomic, getter=isPaused) BOOL paused; // @synthesize paused=_paused;
+@property (strong, nonatomic) RPPipViewController *pipViewController; // @synthesize pipViewController=_pipViewController;
 @property (strong, nonatomic) NSString *previousAudioCategory; // @synthesize previousAudioCategory=_previousAudioCategory;
 @property (nonatomic) unsigned long long previousAudioSessionOptions; // @synthesize previousAudioSessionOptions=_previousAudioSessionOptions;
 @property (nonatomic, getter=isRecording) BOOL recording; // @synthesize recording=_recording;
+@property (copy, nonatomic) CDUnknownBlockType saveVideoToCameraRollCompletionBlock; // @synthesize saveVideoToCameraRollCompletionBlock=_saveVideoToCameraRollCompletionBlock;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL systemRecording; // @synthesize systemRecording=_systemRecording;
+@property (strong, nonatomic) NSDate *systemRecordingControlCenterEndClipEndTime; // @synthesize systemRecordingControlCenterEndClipEndTime=_systemRecordingControlCenterEndClipEndTime;
+@property (strong, nonatomic) NSDate *systemRecordingControlCenterEndClipStartTime; // @synthesize systemRecordingControlCenterEndClipStartTime=_systemRecordingControlCenterEndClipStartTime;
+@property (strong, nonatomic) NSDate *systemRecordingControlCenterStartClipEndTime; // @synthesize systemRecordingControlCenterStartClipEndTime=_systemRecordingControlCenterStartClipEndTime;
+@property (strong, nonatomic) NSDate *systemRecordingControlCenterStartClipStartTime; // @synthesize systemRecordingControlCenterStartClipStartTime=_systemRecordingControlCenterStartClipStartTime;
+@property (strong, nonatomic) RPSystemRecordingIndicatorWindow *systemRecordingIndicatorWindow; // @synthesize systemRecordingIndicatorWindow=_systemRecordingIndicatorWindow;
+@property (strong, nonatomic) UIWindow *windowToRecord; // @synthesize windowToRecord=_windowToRecord;
 
 + (id)sharedRecorder;
 - (void).cxx_destruct;
+- (BOOL)_isScreenRecordingAllowed;
+- (BOOL)_isScreenRecordingSupportedOnDevice;
+- (void)_startRecordingWithMicrophoneEnabled:(BOOL)arg1 cameraEnabled:(BOOL)arg2 streamingEnabled:(BOOL)arg3 handler:(CDUnknownBlockType)arg4;
 - (id)applicationWindow;
 - (void)clientDidBecomeActive;
 - (void)clientWillResignActive;
 - (void)configureAudioSession;
+- (void)controlCenterDidDismiss;
+- (void)controlCenterWillPresent;
 - (unsigned int)currentWindowLayerContextID;
 - (struct CGSize)currentWindowSize;
 - (void)dealloc;
 - (void)discardRecordingWithHandler:(CDUnknownBlockType)arg1;
-- (BOOL)isScreenRecordingSupportedOnDevice;
 - (void)notifyDelegateOfRecorderAvailability;
+- (void)pauseRecording;
 - (void)restoreAudioSession;
+- (void)resumeRecording;
 - (void)setWindowRotationLocked:(BOOL)arg1;
+- (void)startBroadcastWithHandler:(CDUnknownBlockType)arg1;
+- (void)startRecordingWithHandler:(CDUnknownBlockType)arg1;
+- (void)startRecordingWithMicrophoneEnabled:(BOOL)arg1 cameraEnabled:(BOOL)arg2 streamingEnabled:(BOOL)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)startRecordingWithMicrophoneEnabled:(BOOL)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)stopRecordingWithAdditionalShareFileAttachment:(id)arg1 overrideShareMessage:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)startRecordingWithMicrophoneEnabled:(BOOL)arg1 windowToRecord:(id)arg2 systemRecording:(BOOL)arg3 handler:(CDUnknownBlockType)arg4;
+- (void)stopBroadcastWithHandler:(CDUnknownBlockType)arg1;
+- (void)stopRecordingAndSaveToCameraRoll:(CDUnknownBlockType)arg1;
+- (void)stopRecordingWithAdditionalShareFileAttachment:(id)arg1 overrideShareMessage:(id)arg2 previewViewControllerOverrideTintColor:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)stopRecordingWithError:(id)arg1 movieURL:(id)arg2;
 - (void)stopRecordingWithHandler:(CDUnknownBlockType)arg1;
 - (void)stopRecordingWithVideoURLHandler:(CDUnknownBlockType)arg1;
 - (void)updateRecordingAvailability;
+- (void)video:(id)arg1 didFinishSavingToCameraRollWithError:(id)arg2 contextInfo:(void *)arg3;
 
 @end
 

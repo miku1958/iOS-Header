@@ -19,6 +19,7 @@
 @property (nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSMutableArray *languages; // @synthesize languages=_languages;
 
++ (Class)languageType;
 - (void)addLanguage:(id)arg1;
 - (void)clearLanguages;
 - (void)copyTo:(id)arg1;

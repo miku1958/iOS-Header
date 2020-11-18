@@ -6,14 +6,13 @@
 
 #import <Contacts/CNContact.h>
 
-@class CNActivityAlert, NSArray, NSData, NSDate, NSDateComponents, NSDictionary, NSSet, NSString;
+@class CNActivityAlert, NSArray, NSData, NSDateComponents, NSDictionary, NSSet, NSString;
 
 @interface CNMutableContact : CNContact
 {
     BOOL _hasChanges;
 }
 
-@property (copy, nonatomic) NSString *accountIdentifier; // @dynamic accountIdentifier;
 @property (copy, nonatomic) NSDictionary *activityAlerts; // @dynamic activityAlerts;
 @property (copy, nonatomic) NSSet *availableKeys;
 @property (copy, nonatomic) NSDateComponents *birthday; // @dynamic birthday;
@@ -23,11 +22,9 @@
 @property (copy) NSString *companyName; // @dynamic companyName;
 @property (copy, nonatomic) NSArray *contactRelations; // @dynamic contactRelations;
 @property (nonatomic) long long contactType; // @dynamic contactType;
-@property (copy, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property (nonatomic) struct CGRect cropRect;
 @property (copy, nonatomic) NSArray *dates; // @dynamic dates;
 @property (copy, nonatomic) NSString *departmentName; // @dynamic departmentName;
-@property (nonatomic) long long displayNameOrder;
 @property (copy, nonatomic) NSArray *emailAddresses; // @dynamic emailAddresses;
 @property (copy, nonatomic) NSString *familyName; // @dynamic familyName;
 @property (copy) NSString *firstName; // @dynamic firstName;
@@ -54,39 +51,47 @@
 @property (copy, nonatomic) NSString *organizationName; // @dynamic organizationName;
 @property (copy, nonatomic) NSArray *phoneNumbers; // @dynamic phoneNumbers;
 @property (copy, nonatomic) NSString *phonemeData; // @dynamic phonemeData;
+@property (copy, nonatomic) NSString *phoneticCompanyName; // @dynamic phoneticCompanyName;
 @property (copy, nonatomic) NSString *phoneticFamilyName; // @dynamic phoneticFamilyName;
 @property (copy) NSString *phoneticFirstName; // @dynamic phoneticFirstName;
 @property (copy, nonatomic) NSString *phoneticGivenName; // @dynamic phoneticGivenName;
 @property (copy) NSString *phoneticLastName; // @dynamic phoneticLastName;
 @property (copy, nonatomic) NSString *phoneticMiddleName; // @dynamic phoneticMiddleName;
+@property (copy, nonatomic) NSString *phoneticOrganizationName; // @dynamic phoneticOrganizationName;
 @property (copy, nonatomic) NSArray *postalAddresses; // @dynamic postalAddresses;
+@property (copy, nonatomic) NSString *preferredApplePersonaIdentifier;
 @property (nonatomic, getter=isPreferredForImage) BOOL preferredForImage; // @dynamic preferredForImage;
 @property (nonatomic, getter=isPreferredForName) BOOL preferredForName; // @dynamic preferredForName;
+@property (copy, nonatomic) NSString *preferredLikenessSource;
 @property (copy, nonatomic) NSString *previousFamilyName; // @dynamic previousFamilyName;
 @property (copy, nonatomic) NSString *pronunciationFamilyName; // @dynamic pronunciationFamilyName;
 @property (copy, nonatomic) NSString *pronunciationGivenName; // @dynamic pronunciationGivenName;
 @property (copy) NSArray *relatedNames;
+@property (copy, nonatomic) NSString *searchIndex;
 @property (copy, nonatomic) NSString *sectionForSortingByFamilyName;
 @property (copy, nonatomic) NSString *sectionForSortingByGivenName;
 @property (copy, nonatomic) CNContact *snapshot; // @dynamic snapshot;
 @property (copy, nonatomic) NSArray *socialProfiles; // @dynamic socialProfiles;
-@property (copy, nonatomic) NSString *sortingFamilyName; // @dynamic sortingFamilyName;
-@property (copy, nonatomic) NSString *sortingGivenName; // @dynamic sortingGivenName;
 @property (copy, nonatomic) NSString *storeIdentifier; // @dynamic storeIdentifier;
 @property (copy, nonatomic) NSDictionary *storeInfo; // @dynamic storeInfo;
 @property (copy, nonatomic) CNActivityAlert *textAlert; // @dynamic textAlert;
 @property (copy, nonatomic) NSData *thumbnailImageData;
 @property (copy, nonatomic) NSArray *urlAddresses; // @dynamic urlAddresses;
 
++ (id)imageDataDescriptions;
 + (id)unifyContacts:(id)arg1;
+- (void)adoptValuesFromAndSetSnaphot:(id)arg1;
 - (id)copyWithSelfAsSnapshot;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)freeze;
 - (id)freezeWithSelfAsSnapshot;
 - (id)initWithContact:(id)arg1;
+- (id)modificationDate;
 - (BOOL)preferredForImage;
 - (BOOL)preferredForName;
+- (void)setModificationDate:(id)arg1;
 - (void)setNilValueForKey:(id)arg1;
+- (void)updateImageDataAvailableFromCurrentState;
 
 @end
 

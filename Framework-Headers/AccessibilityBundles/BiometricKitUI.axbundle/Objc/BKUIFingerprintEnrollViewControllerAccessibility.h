@@ -18,7 +18,7 @@
 - (void)_startTutorial:(BOOL)arg1;
 - (void)_stopTutorial;
 - (void)_updatePromptMessage:(id)arg1;
-- (void)viewDidLoad;
+- (void)viewDidAppear:(BOOL)arg1;
 
 @end
 

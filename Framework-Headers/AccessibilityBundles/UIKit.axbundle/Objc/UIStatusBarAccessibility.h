@@ -18,6 +18,7 @@
 - (void)_finishedSettingStyleWithOldHeight:(double)arg1 newHeight:(double)arg2 animation:(int)arg3;
 - (void)_setDoubleHeightStatusString:(id)arg1;
 - (BOOL)_shouldSeekHigherPriorityTouchTarget;
+- (BOOL)accessibilityPerformEscape;
 - (BOOL)shouldGroupAccessibilityChildren;
 
 @end

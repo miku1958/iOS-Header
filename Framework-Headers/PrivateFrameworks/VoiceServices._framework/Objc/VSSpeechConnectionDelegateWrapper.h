@@ -32,6 +32,7 @@
 - (oneway void)speechRequestDidStart;
 - (oneway void)speechRequestDidStopWithSuccess:(BOOL)arg1 phonemesSpoken:(id)arg2 error:(id)arg3;
 - (oneway void)speechRequestMark:(long long)arg1 didStartForRange:(struct _NSRange)arg2;
+- (oneway void)speechRequestSuccessWithInstrumentMetrics:(id)arg1;
 
 @end
 

@@ -28,8 +28,7 @@
 @property (readonly, nonatomic) long long updatePolicy; // @synthesize updatePolicy=_updatePolicy;
 @property (readonly, nonatomic) id<NSSecureCoding> value; // @synthesize value=_value;
 
-+ (void)applyEntries:(id)arg1 withDaemon:(id)arg2;
-+ (long long)behavior;
++ (void)applyEntries:(id)arg1 withProfile:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

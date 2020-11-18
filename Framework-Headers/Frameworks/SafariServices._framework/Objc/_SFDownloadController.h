@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <SafariServices/WBSFluidProgressStateSource-Protocol.h>
 #import <SafariServices/_WKDownloadDelegate-Protocol.h>
 
-@class NSString, NSURL, _WKDownload;
+@class NSString, NSURL, WBSFluidProgressController, WBSFluidProgressState, _WKDownload;
 @protocol _SFDownloadControllerDelegate;
 
-@interface _SFDownloadController : NSObject <_WKDownloadDelegate>
+@interface _SFDownloadController : NSObject <_WKDownloadDelegate, WBSFluidProgressStateSource>
 {
     long long _downloadingFileType;
     _WKDownload *_fileDownload;
@@ -20,13 +21,18 @@
     long long _downloadBytesExpected;
     unsigned long long _downloadBytesLoaded;
     NSURL *_fileDownloadSourceURL;
+    BOOL _downloadHasFailed;
+    WBSFluidProgressState *_fluidProgressState;
+    double _timeLastProgressNotificationWasSent;
     id<_SFDownloadControllerDelegate> _delegate;
+    WBSFluidProgressController *_fluidProgressController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_SFDownloadControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long downloadingFileType; // @synthesize downloadingFileType=_downloadingFileType;
+@property (strong, nonatomic) WBSFluidProgressController *fluidProgressController; // @synthesize fluidProgressController=_fluidProgressController;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
@@ -37,9 +43,17 @@
 - (void)_download:(id)arg1 didFailWithError:(id)arg2;
 - (void)_download:(id)arg1 didReceiveData:(unsigned long long)arg2;
 - (void)_download:(id)arg1 didReceiveResponse:(id)arg2;
+- (void)_downloadDidCancel:(id)arg1;
 - (void)_downloadDidFinish:(id)arg1;
 - (void)_downloadDidStart:(id)arg1;
 - (void)_endDownloadBackgroundTask;
+- (void)cancel;
+- (void)clearFluidProgressState;
+- (BOOL)createFluidProgressState;
+- (double)estimatedProgress;
+- (id)expectedOrCurrentURL;
+- (BOOL)hasFailedURL;
+- (id)progressState;
 
 @end
 

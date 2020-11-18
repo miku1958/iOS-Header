@@ -10,7 +10,7 @@
 {
 }
 
-- (id)initWithResult:(id)arg1 style:(unsigned long long)arg2;
+- (id)initWithResult:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
 - (BOOL)supportsRecycling;
 
 @end

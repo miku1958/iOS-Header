@@ -27,6 +27,7 @@
 - (void)_setTimeout;
 - (void)_timeoutHit;
 - (BOOL)addMessage:(id)arg1;
+- (BOOL)addMessageAtHeadOfQueue:(id)arg1;
 - (void)dealloc;
 - (id)dequeueTopMessage;
 - (id)init;

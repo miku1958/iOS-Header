@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     UIScrollView *_scrollViewForTransition;
     BOOL _scrollViewShowsHorizontalScrollIndicator;
     BOOL _scrollViewTransitionFinishing;
+    BOOL _disableInterfaceAutorotation;
     struct CGPoint _scrollViewTransitionPreviousPoint;
     UIInputViewSetNotificationInfo *_scrollViewNotificationInfo;
 }

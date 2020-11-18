@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVWeakReference;
+@class AVVideoOutputSettings, AVWeakReference;
 @protocol AVPlayerItemOutputPullDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface AVPlayerItemVideoOutputInternal : NSObject
@@ -25,6 +25,7 @@
     CDStruct_1b6d18a9 wakeUpImageTime;
     BOOL suppressesPlayerRendering;
     BOOL shouldTagBuffersWithInfo;
+    AVVideoOutputSettings *videoSettings;
 }
 
 @end

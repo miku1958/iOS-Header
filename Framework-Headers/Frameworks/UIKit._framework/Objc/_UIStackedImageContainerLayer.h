@@ -6,12 +6,15 @@
 
 #import <QuartzCore/CALayer.h>
 
+#import <UIKit/CALayerDelegate-Protocol.h>
+
 @class CATransformLayer, NSArray, NSString, UIView, _UIStackedImageConfiguration, _UIStackedImageLayerDelegate;
 @protocol UINamedLayerStack;
 
-@interface _UIStackedImageContainerLayer : CALayer
+@interface _UIStackedImageContainerLayer : CALayer <CALayerDelegate>
 {
     BOOL _animatingToNormalState;
+    BOOL _animatingStateChange;
     double _selectionStartTime;
     double _selectionDuration;
     long long _selectionStyle;
@@ -31,7 +34,6 @@
     CALayer *_imageLayersContainer;
     NSArray *_imageLayers;
     CALayer *_flatLayer;
-    CALayer *_flatShadowLayer;
     CALayer *_maskLayer;
     CALayer *_radiosityLayer;
     CALayer *_selectedPlaceholderLayer;
@@ -61,18 +63,20 @@
 
 @property (strong, nonatomic) _UIStackedImageConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (nonatomic) unsigned long long controlState; // @synthesize controlState=_controlState;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) struct CGPoint focusDirection; // @synthesize focusDirection=_focusDirection;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<UINamedLayerStack> layerStack; // @synthesize layerStack=_layerStack;
 @property (nonatomic, getter=isPressed) BOOL pressed;
 @property (nonatomic, getter=isSelected) BOOL selected;
+@property (readonly) Class superclass;
 
 + (id)_layerStackObservingKeys;
 + (struct CGSize)_scaledSizeForSize:(struct CGSize)arg1 focusSizeIncrease:(double)arg2 selectionStyle:(long long)arg3;
 - (void).cxx_destruct;
 - (id)_TVTraitCollection;
 - (void)_applyFocusDirectionTransform;
-- (void)_applyFocusDirectionTransformHighQualityGraphicsWithAnimationCoordinator:(id)arg1;
-- (void)_applyFocusDirectionTransformLowQualityGraphicsWithAnimationCoordinator:(id)arg1;
 - (void)_applyFocusDirectionTransformWithAnimationCoordinator:(id)arg1;
 - (struct CGRect)_cursorBounds;
 - (void)_deselect;
@@ -83,6 +87,7 @@
 - (double)_focusedShadowRadius;
 - (double)_getShadowOpacity;
 - (double)_idleModeFocusSizeOffset;
+- (id)_imageLayersContainer;
 - (id)_imageStackContentsGravity;
 - (BOOL)_isFocused;
 - (BOOL)_isFocusedIdle;
@@ -102,6 +107,7 @@
 - (id)_randomImage;
 - (void)_resetAnimatingToNormalState;
 - (struct CATransform3D)_rotationTransformForCurrentFocusDirection;
+- (struct CGSize)_roundedBoundsSize;
 - (struct CATransform3D)_scaleTransformForCurrentState;
 - (struct CGSize)_scaledSizeForCurrentState;
 - (long long)_selectionStyle;
@@ -121,26 +127,26 @@
 - (void)_showImageLayers;
 - (double)_unfocusedShadowRadius;
 - (void)_updateCornerRadiusFromConfig;
-- (void)_updateFocusKeylineStroke:(struct CGPoint)arg1;
+- (void)_updateFocusKeylineStrokeScale;
+- (void)_updateFocusKeylineStrokeTranslation:(struct CGPoint)arg1;
 - (void)_updateFullBleedImageLayers;
 - (void)_updateImageLayerFilterChains;
 - (void)_updateLayerForSelection;
-- (void)_updateLayerForSelectionHighQualityGraphicsWithAnimationCoordinator:(id)arg1;
-- (void)_updateLayerForSelectionLowQualityGraphicsWithAnimationCoordinator:(id)arg1;
 - (void)_updateLayerForSelectionWithAnimationCoordinator:(id)arg1;
 - (void)_updateNormalImageLayers;
 - (void)_updatePerspective;
 - (void)_updateRadiosityFromLayerStack;
 - (void)_updateRotationAndTranslation:(id)arg1;
 - (void)_updateShadowBounds;
-- (void)_updateShadowHighQualityGraphicsWithAnimationCoordinator:(id)arg1;
 - (void)_updateShadowPositionWithOffset:(struct CGPoint)arg1;
+- (void)_updateShadowWithAnimationCoordinator:(id)arg1;
 - (void)_updateSpecularLayerContentsRect;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (void)dealloc;
 - (id)init;
 - (void)layoutSublayers;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)removeAllAnimations;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setControlState:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)setControlState:(unsigned long long)arg1 animated:(BOOL)arg2 focusAnimationCoordinator:(id)arg3;

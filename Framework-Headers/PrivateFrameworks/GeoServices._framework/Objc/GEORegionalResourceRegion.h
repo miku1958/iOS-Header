@@ -12,7 +12,7 @@
 
 @interface GEORegionalResourceRegion : PBCodable <NSCopying>
 {
-    CDStruct_d66e66b9 *_tileRanges;
+    struct GEOTileSetRegion *_tileRanges;
     unsigned long long _tileRangesCount;
     unsigned long long _tileRangesSpace;
     NSMutableArray *_attributions;
@@ -23,13 +23,16 @@
 @property (strong, nonatomic) NSMutableArray *attributions; // @synthesize attributions=_attributions;
 @property (strong, nonatomic) NSMutableArray *iconChecksums; // @synthesize iconChecksums=_iconChecksums;
 @property (strong, nonatomic) NSMutableArray *icons; // @synthesize icons=_icons;
-@property (readonly, nonatomic) CDStruct_d66e66b9 *tileRanges;
+@property (readonly, nonatomic) struct GEOTileSetRegion *tileRanges;
 @property (readonly, nonatomic) unsigned long long tileRangesCount;
 
++ (Class)attributionType;
++ (Class)iconChecksumType;
++ (Class)iconType;
 - (void)addAttribution:(id)arg1;
 - (void)addIcon:(id)arg1;
 - (void)addIconChecksum:(id)arg1;
-- (void)addTileRange:(CDStruct_d66e66b9)arg1;
+- (void)addTileRange:(struct GEOTileSetRegion)arg1;
 - (id)attributionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)attributionsCount;
 - (void)clearAttributions;
@@ -49,8 +52,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (void)setTileRanges:(CDStruct_d66e66b9 *)arg1 count:(unsigned long long)arg2;
-- (CDStruct_d66e66b9)tileRangeAtIndex:(unsigned long long)arg1;
+- (void)setTileRanges:(struct GEOTileSetRegion *)arg1 count:(unsigned long long)arg2;
+- (struct GEOTileSetRegion)tileRangeAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -32,6 +32,7 @@
 - (id)initWithAPI:(unsigned long long)arg1 sharedWithCompute:(BOOL)arg2;
 - (id)initWithAPI:(unsigned long long)arg1 sharegroup:(id)arg2;
 - (BOOL)presentRenderbuffer:(unsigned long long)arg1;
+- (BOOL)presentRenderbuffer:(unsigned long long)arg1 atTime:(double)arg2;
 - (BOOL)renderbufferStorage:(unsigned long long)arg1 fromDrawable:(id)arg2;
 - (BOOL)setBlockFence:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
 - (unsigned long long)setParameter:(unsigned int)arg1 to:(int *)arg2;

@@ -4,23 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableSet, NSUUID, TLAccessQueue;
 
 @interface TKVibratorController : NSObject
 {
     TLAccessQueue *_accessQueue;
-    NSUUID *_activePlayRequestsIdentifier;
+    NSUUID *_activePlayRequestIdentifier;
     NSMutableSet *_pendingStopRequestIdentifiers;
 }
 
-@property (strong, setter=_setAccessQueue:) TLAccessQueue *_accessQueue; // @synthesize _accessQueue;
-@property (strong, nonatomic, setter=_setActivePlayRequestIdentifier:) NSUUID *_activePlayRequestsIdentifier; // @synthesize _activePlayRequestsIdentifier;
-@property (strong, nonatomic, setter=_setPendingStopRequestIdentifiers:) NSMutableSet *_pendingStopRequestIdentifiers; // @synthesize _pendingStopRequestIdentifiers;
-@property (readonly, nonatomic) unsigned int _previewVibrationSystemSoundID;
 @property (readonly, nonatomic) unsigned long long vibratorState;
 
+- (void).cxx_destruct;
+- (unsigned int)_previewVibrationSystemSoundID;
 - (void)_turnOffIfAppropriate;
 - (void)_vibrationDidCompleteWithPlayRequestIdentifier:(id)arg1;
 - (void)dealloc;

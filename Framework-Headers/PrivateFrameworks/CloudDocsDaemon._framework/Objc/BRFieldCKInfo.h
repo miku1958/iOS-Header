@@ -14,6 +14,7 @@
 @interface BRFieldCKInfo : PBCodable <PQLValuable, NSCopying>
 {
     NSString *_etag;
+    NSString *_etagBeforeCrossZoneMove;
     BOOL _knownToServer;
     BOOL _wasCached;
     struct {
@@ -25,7 +26,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSString *etag; // @synthesize etag=_etag;
+@property (strong, nonatomic) NSString *etagBeforeCrossZoneMove; // @synthesize etagBeforeCrossZoneMove=_etagBeforeCrossZoneMove;
 @property (readonly, nonatomic) BOOL hasEtag;
+@property (readonly, nonatomic) BOOL hasEtagBeforeCrossZoneMove;
 @property (nonatomic) BOOL hasKnownToServer;
 @property (nonatomic) BOOL hasWasCached;
 @property (readonly) unsigned long long hash;
@@ -40,6 +43,7 @@
 - (id)dictionaryRepresentation;
 - (id)initWithRecord:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (void)markMovedToCloudDocsZone;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setCKInfoFieldsInRecord:(id)arg1;

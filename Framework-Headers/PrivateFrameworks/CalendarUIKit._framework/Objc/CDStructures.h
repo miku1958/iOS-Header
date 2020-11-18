@@ -25,3 +25,7 @@ struct CGSize {
     double height;
 };
 
+struct NSObject {
+    Class _field1;
+};
+

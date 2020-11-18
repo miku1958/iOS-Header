@@ -20,7 +20,9 @@
     GEOPDAutocompleteEntryHighlightLine *_highlightMain;
     GEOPDAutocompleteEntryQuery *_query;
     int _type;
-    CDStruct_f953fb60 _has;
+    struct {
+        unsigned int type:1;
+    } _has;
 }
 
 @property (strong, nonatomic) GEOPDAutocompleteEntryAddress *address; // @synthesize address=_address;
@@ -39,6 +41,7 @@
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (int)StringAsType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -48,6 +51,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

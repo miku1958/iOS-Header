@@ -11,12 +11,12 @@
 }
 
 - (void)_commonInit;
+- (id)_contentColor;
 - (double)_cornerRadius;
 - (id)_maskImage;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)setFrame:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tintColorDidChange;
 

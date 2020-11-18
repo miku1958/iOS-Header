@@ -11,12 +11,12 @@
 @interface SKUIViewReuseCollectionViewCell : SKUICollectionViewCell
 {
     NSMapTable *_allViewTextProperties;
-    struct UIEdgeInsets _contentInset;
     SKUIViewReusePool *_viewPool;
-    NSArray *_views;
+    NSArray *_allExistingViews;
+    struct UIEdgeInsets _contentInset;
 }
 
-@property (readonly, nonatomic) NSArray *allExistingViews; // @synthesize allExistingViews=_views;
+@property (readonly, nonatomic) NSArray *allExistingViews; // @synthesize allExistingViews=_allExistingViews;
 @property (nonatomic) struct UIEdgeInsets contentInset; // @synthesize contentInset=_contentInset;
 
 - (void).cxx_destruct;

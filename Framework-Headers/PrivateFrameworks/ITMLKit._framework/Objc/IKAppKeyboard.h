@@ -15,11 +15,13 @@
 @interface IKAppKeyboard : NSObject <IKAppKeyboardBridge, IKDOMFeature>
 {
     NSString *_jsText;
+    NSString *_jsSource;
     NSString *_featureName;
     IKAppContext *_appContext;
     id<IKAppKeyboardDelegate> _delegate;
     NSString *_text;
     IKJSKeyboard *_jsKeyboard;
+    NSString *_source;
 }
 
 @property (readonly, weak, nonatomic) IKAppContext *appContext; // @synthesize appContext=_appContext;
@@ -29,7 +31,9 @@
 @property (readonly, copy, nonatomic) NSString *featureName; // @synthesize featureName=_featureName;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic, setter=setJSKeyboard:) IKJSKeyboard *jsKeyboard; // @synthesize jsKeyboard=_jsKeyboard;
+@property (copy, nonatomic, setter=setJSSource:) NSString *jsSource; // @synthesize jsSource=_jsSource;
 @property (copy, nonatomic, setter=setJSText:) NSString *jsText; // @synthesize jsText=_jsText;
+@property (copy, nonatomic, getter=_source, setter=_setSource:) NSString *source; // @synthesize source=_source;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 

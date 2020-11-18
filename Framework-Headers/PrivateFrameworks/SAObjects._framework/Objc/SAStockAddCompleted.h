@@ -8,24 +8,18 @@
 
 #import <SAObjects/SAServerBoundCommand-Protocol.h>
 
-@class NSArray, NSString, NSURL, SAStockObject;
+@class NSArray, NSString;
 
 @interface SAStockAddCompleted : SABaseCommand <SAServerBoundCommand>
 {
-    SAStockObject *_aceStock;
-    NSURL *_identifier;
-    NSArray *_stockReferences;
 }
 
 @property (copy, nonatomic) NSString *aceId; // @dynamic aceId;
-@property (strong, nonatomic) SAStockObject *aceStock; // @synthesize aceStock=_aceStock;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSURL *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
 @property (copy, nonatomic) NSArray *results;
-@property (copy, nonatomic) NSArray *stockReferences; // @synthesize stockReferences=_stockReferences;
 @property (copy, nonatomic) NSArray *stocks;
 @property (readonly) Class superclass;
 

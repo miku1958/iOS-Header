@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 @interface VKLabelNavRoad : NSObject <VKLabelNavFeature>
 {
     VKLabelTile *_tile;
-    CDStruct_d7f4d903 *_data;
+    CDStruct_6ac9d495 *_data;
     unsigned long long _vertexIndexA;
     unsigned long long _vertexIndexB;
     CDStruct_3b01f0aa *_junctionA;
@@ -37,7 +37,9 @@ __attribute__((visibility("hidden")))
     NSString *_shieldGroup;
     VKLabelNavRoadLabel *_roadSign;
     VKLabelNavRoadLabel *_roadShield;
-    BOOL _areNavStylesInitialized;
+    BOOL _isVisibilityCached[2];
+    BOOL _cachedSignVisibility[2];
+    BOOL _cachedShieldVisibility[2];
     BOOL _hasVisibleSigns;
     BOOL _hasVisibleShields;
     BOOL _suppressRoadSignIfShieldPresent;
@@ -59,7 +61,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) VKLabelNavJunction *navJunctionA; // @synthesize navJunctionA=_navJunctionA;
 @property (readonly, nonatomic) int roadClass;
-@property (readonly, nonatomic) long long roadSignAlignment;
+@property (readonly, nonatomic) unsigned char roadSignAlignment;
 @property (nonatomic) float routeCrossProduct; // @synthesize routeCrossProduct=_routeCrossProduct;
 @property (nonatomic) struct PolylineCoordinate routeOffset; // @synthesize routeOffset=_routeOffset;
 @property (readonly, nonatomic) NSString *shieldDisplayGroup;
@@ -69,14 +71,16 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)_findLabelAnchorPoint:(struct VKPoint *)arg1 isShieldLabel:(BOOL)arg2 desiredOffsetDistance:(float)arg3 maxOffsetDistance:(float)arg4 minJunctionDistance:(float)arg5 roadGraph:(id)arg6;
-- (float)_findRoadOffsetForDistanceToRay:(float)arg1 rayStart:(struct VKPoint)arg2 rayVector:(Matrix_8746f91e)arg3 roadGraph:(id)arg4;
-- (id)_newLabelWithNavContext:(struct NavContext *)arg1 isShieldLabel:(BOOL)arg2 worldPoint:(struct VKPoint)arg3 alignment:(long long)arg4;
-- (BOOL)_worldPointForRoadOffset:(float)arg1 worldPoint:(struct VKPoint *)arg2;
+- (BOOL)_findLabelAnchorPoint:(Mercator3_d8bb135c *)arg1 isShieldLabel:(BOOL)arg2 desiredOffsetDistance:(float)arg3 maxOffsetDistance:(float)arg4 minJunctionDistance:(float)arg5 roadGraph:(id)arg6;
+- (float)_findRoadOffsetForDistanceToRay:(float)arg1 rayStart:(Matrix_6e1d3589)arg2 rayVector:(Matrix_8746f91e)arg3 roadGraph:(id)arg4;
+- (id)_newLabelWithNavContext:(struct NavContext *)arg1 isShieldLabel:(BOOL)arg2 worldPoint:(Matrix_6e1d3589)arg3 alignment:(unsigned char)arg4 artworkCache:(struct VKLabelNavArtworkCache *)arg5;
+- (void)_updateWithNavContext:(struct NavContext *)arg1;
+- (void)_updateWithNavContext:(struct NavContext *)arg1 threshold:(double)arg2;
+- (BOOL)_worldPointForRoadOffset:(float)arg1 worldPoint:(Mercator3_d8bb135c *)arg2;
 - (void)_worldRoadPoints:(vector_e20517dc *)arg1;
 - (void)appendSimplifiedWorldRoadPoints:(vector_e20517dc *)arg1;
 - (void)clearRoadSign;
-- (void)createLabelWithNavContext:(struct NavContext *)arg1 isShieldLabel:(BOOL)arg2 desiredOffsetDistance:(float)arg3 maxOffsetDistance:(float)arg4 minJunctionDistance:(float)arg5 minRouteDistance:(float)arg6 roadGraph:(id)arg7;
+- (void)createLabelWithNavContext:(struct NavContext *)arg1 isShieldLabel:(BOOL)arg2 desiredOffsetDistance:(float)arg3 maxOffsetDistance:(float)arg4 minJunctionDistance:(float)arg5 minRouteDistance:(float)arg6 roadGraph:(id)arg7 artworkCache:(struct VKLabelNavArtworkCache *)arg8;
 - (void)dealloc;
 - (id)description;
 - (void)getRoadEdge:(CDStruct_91f75a7f *)arg1;
@@ -85,11 +89,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasVisibleSigns;
 - (id)initWithRoadEdge:(const CDStruct_91f75a7f *)arg1 navJunctionA:(id)arg2 routeOffset:(struct PolylineCoordinate)arg3 tile:(id)arg4;
 - (id)labelWithType:(BOOL)arg1;
+- (void)layoutWithNavContext:(struct NavContext *)arg1;
 - (double)length;
 - (BOOL)matchesRoad:(id)arg1;
 - (BOOL)matchesRoadEdge:(const CDStruct_91f75a7f *)arg1;
 - (void)prepareStyleVarsWithContext:(struct NavContext *)arg1;
-- (void)recreateRoadSignWithAlignment:(long long)arg1 navContext:(struct NavContext *)arg2;
+- (void)recreateRoadSignWithAlignment:(unsigned char)arg1 navContext:(struct NavContext *)arg2 artworkCache:(struct VKLabelNavArtworkCache *)arg3;
 
 @end
 

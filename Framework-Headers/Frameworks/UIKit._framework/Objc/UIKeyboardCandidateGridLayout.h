@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
     BOOL _expanded;
     BOOL _needsPaddingForIndexScrubber;
     BOOL _supportsNumberKeySelection;
+    BOOL _padInlineFloatingCanExpand;
+    BOOL _hasExtensionCandidates;
     BOOL _hasSecondaryCandidates;
     BOOL _needsLayout;
     int _candidatesVisualStyle;
@@ -34,10 +36,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSSet *emphasizedCandidates; // @synthesize emphasizedCandidates=_emphasizedCandidates;
 @property (nonatomic) BOOL expanded; // @synthesize expanded=_expanded;
 @property (readonly, nonatomic) double groupBarWidth;
+@property (nonatomic) BOOL hasExtensionCandidates; // @synthesize hasExtensionCandidates=_hasExtensionCandidates;
 @property (nonatomic) BOOL hasSecondaryCandidates; // @synthesize hasSecondaryCandidates=_hasSecondaryCandidates;
 @property (nonatomic) double headerViewHeight; // @synthesize headerViewHeight=_headerViewHeight;
 @property (nonatomic) BOOL needsLayout; // @synthesize needsLayout=_needsLayout;
 @property (nonatomic) BOOL needsPaddingForIndexScrubber; // @synthesize needsPaddingForIndexScrubber=_needsPaddingForIndexScrubber;
+@property (nonatomic) BOOL padInlineFloatingCanExpand; // @synthesize padInlineFloatingCanExpand=_padInlineFloatingCanExpand;
 @property (readonly, nonatomic) struct CGSize rowSize;
 @property (strong, nonatomic) NSMutableDictionary *supplementaryAttributes; // @synthesize supplementaryAttributes=_supplementaryAttributes;
 @property (nonatomic) BOOL supportsNumberKeySelection; // @synthesize supportsNumberKeySelection=_supportsNumberKeySelection;

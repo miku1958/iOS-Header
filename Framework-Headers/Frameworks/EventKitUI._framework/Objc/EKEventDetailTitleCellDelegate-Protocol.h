@@ -4,8 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class NSDate;
+
 @protocol EKEventDetailTitleCellDelegate
 - (void)editButtonPressed;
+- (void)predictionWasActedOn;
+- (NSDate *)proposedTime;
 - (BOOL)shouldShowEditButtonInline;
 @end
 

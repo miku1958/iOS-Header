@@ -10,6 +10,7 @@
 {
 }
 
++ (id)_sharedPhotoLibrary;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)sharedPhotoLibrary;
 - (void)_assetsdHasNoXPCTransactions:(id)arg1;

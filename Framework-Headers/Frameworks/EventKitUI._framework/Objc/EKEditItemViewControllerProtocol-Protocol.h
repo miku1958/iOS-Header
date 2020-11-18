@@ -11,6 +11,7 @@
 @property (weak, nonatomic) id<EKEditItemViewControllerDelegate> editDelegate;
 @property (nonatomic) BOOL editItemShouldBeAskedForInjectableViewController;
 @property (nonatomic) BOOL presentModally;
+@property (nonatomic) BOOL useCustomBackButton;
 
 
 @optional

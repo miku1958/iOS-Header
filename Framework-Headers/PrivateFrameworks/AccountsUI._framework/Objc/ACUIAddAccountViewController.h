@@ -8,7 +8,7 @@
 
 #import <AccountsUI/ACUISetupViewControllerDelegate-Protocol.h>
 
-@class ACUIAccountViewProvidersManager, NSArray, NSString, PSSpecifier;
+@class ACAccountStore, ACUIAccountViewProvidersManager, NSArray, NSString, PSSpecifier;
 
 @interface ACUIAddAccountViewController : PSListController <ACUISetupViewControllerDelegate>
 {
@@ -17,6 +17,8 @@
     unsigned char _originalWifiFlag;
     unsigned char _originalCellFlag;
     PSSpecifier *_gmailSpecifier;
+    NSString *_filteredDataclass;
+    ACAccountStore *_accountStore;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -40,7 +42,9 @@
 - (id)giantSpecifierWithName:(id)arg1 forAccountTypeID:(id)arg2;
 - (id)init;
 - (void)nonModalDataclassConfigurationControllerDidCompleteWithSuccess:(BOOL)arg1;
+- (void)setSpecifier:(id)arg1;
 - (void)setupViewControllerDidDismiss:(id)arg1;
+- (BOOL)shouldAddSpecifierForAccountTypeID:(id)arg1;
 - (id)specifierForOtherAccounts;
 - (id)specifiers;
 - (void)viewWillAppear:(BOOL)arg1;

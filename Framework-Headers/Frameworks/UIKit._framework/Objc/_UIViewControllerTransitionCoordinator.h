@@ -8,7 +8,7 @@
 
 #import <UIKit/UIViewControllerTransitionCoordinator-Protocol.h>
 
-@class NSMutableArray, NSString, _UIViewControllerTransitionContext;
+@class NSMutableArray, NSString, UIView, _UIViewControllerTransitionContext;
 
 __attribute__((visibility("hidden")))
 @interface _UIViewControllerTransitionCoordinator : NSObject <UIViewControllerTransitionCoordinator>
@@ -25,10 +25,22 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setAlongsideCompletions:) NSMutableArray *_alongsideCompletions; // @synthesize _alongsideCompletions=__alongsideCompletions;
 @property (strong, nonatomic, setter=_setInteractiveChangeHandlers:) NSMutableArray *_interactiveChangeHandlers; // @synthesize _interactiveChangeHandlers=__interactiveChangeHandlers;
 @property (nonatomic, setter=_setMainContext:) _UIViewControllerTransitionContext *_mainContext; // @synthesize _mainContext=__mainContext;
+@property (readonly, nonatomic, getter=isAnimated) BOOL animated;
+@property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
+@property (readonly, nonatomic) long long completionCurve;
+@property (readonly, nonatomic) double completionVelocity;
+@property (readonly, nonatomic) UIView *containerView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL initiallyInteractive;
+@property (readonly, nonatomic, getter=isInteractive) BOOL interactive;
+@property (readonly, nonatomic) BOOL isInterruptible;
+@property (readonly, nonatomic) double percentComplete;
+@property (readonly, nonatomic) long long presentationStyle;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) struct CGAffineTransform targetTransform;
+@property (readonly, nonatomic) double transitionDuration;
 
 - (void).cxx_destruct;
 - (id)_alongsideAnimations:(BOOL)arg1;
@@ -39,22 +51,11 @@ __attribute__((visibility("hidden")))
 - (struct CGAffineTransform)affineTransform;
 - (BOOL)animateAlongsideTransition:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)animateAlongsideTransitionInView:(id)arg1 animation:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
-- (long long)completionCurve;
-- (double)completionVelocity;
-- (id)containerView;
-- (void)handlerToInvokeOnInteractivityChanges:(CDUnknownBlockType)arg1;
 - (id)initWithMainContext:(id)arg1;
-- (BOOL)initiallyInteractive;
-- (BOOL)isAnimated;
-- (BOOL)isCancelled;
 - (BOOL)isCompleting;
-- (BOOL)isInteractive;
 - (BOOL)isRotating;
+- (void)notifyWhenInteractionChangesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)notifyWhenInteractionEndsUsingBlock:(CDUnknownBlockType)arg1;
-- (double)percentComplete;
-- (long long)presentationStyle;
-- (struct CGAffineTransform)targetTransform;
-- (double)transitionDuration;
 - (id)viewControllerForKey:(id)arg1;
 - (id)viewForKey:(id)arg1;
 

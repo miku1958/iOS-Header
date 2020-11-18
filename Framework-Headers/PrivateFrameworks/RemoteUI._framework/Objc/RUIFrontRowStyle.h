@@ -11,10 +11,7 @@
 }
 
 - (void)applyToObjectModel:(id)arg1;
-- (id)backgroundColor;
-- (id)buttonRowTextColor;
-- (id)radioGroupSelectedColor;
-- (id)selectPageDetailTextColor;
+- (id)init;
 
 @end
 

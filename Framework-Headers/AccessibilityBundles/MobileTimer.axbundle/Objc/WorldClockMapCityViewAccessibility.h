@@ -10,12 +10,12 @@
 {
 }
 
++ (void)accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityIsScannerElement;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;
-- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 
 @end
 

@@ -24,6 +24,7 @@
 - (void)_tapRecognized:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)removeADTapGestureRecognizer;
 
 @end
 

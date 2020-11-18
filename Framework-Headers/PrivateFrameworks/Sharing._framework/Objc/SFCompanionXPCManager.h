@@ -12,6 +12,7 @@
 {
     BOOL _invalid;
     BOOL _interrupted;
+    int _listenerResumedToken;
     NSXPCConnection *_connection;
     NSMutableArray *_observers;
 }
@@ -19,6 +20,7 @@
 @property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property BOOL interrupted; // @synthesize interrupted=_interrupted;
 @property (getter=isInvalid) BOOL invalid; // @synthesize invalid=_invalid;
+@property int listenerResumedToken; // @synthesize listenerResumedToken=_listenerResumedToken;
 @property (strong) NSMutableArray *observers; // @synthesize observers=_observers;
 
 + (id)advertiserClientInterface;
@@ -33,8 +35,10 @@
 + (id)sharedManager;
 + (id)unlockInterface;
 + (id)xpcManagerInterface;
+- (void).cxx_destruct;
 - (void)activityAdvertiserProxyForClient:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)airdropTransferDataProviderWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)addAirDropClientToManager:(id)arg1 withFailureHandler:(CDUnknownBlockType)arg2;
+- (void)airdropTransferDataProviderForClient:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)continuityScannerProxyForClient:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)init;
@@ -47,6 +51,8 @@
 - (void)streamsForMessage:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)unlockManagerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)unregisterObserver:(id)arg1;
+- (void)userDidPerformActionWithType:(unsigned long long)arg1 andRecordID:(id)arg2;
+- (void)userDidSelectAppWithIndex:(id)arg1 forRecordID:(id)arg2;
 
 @end
 

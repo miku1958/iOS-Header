@@ -11,15 +11,15 @@
 __attribute__((visibility("hidden")))
 @interface AVEmbeddedPlaybackControlsViewController : AVPlaybackControlsViewController
 {
-    unsigned int _showsLoadingIndicator:1;
-    unsigned int _playing:1;
-    unsigned int _scrubberEnabled:1;
+    BOOL _showsLoadingIndicator;
+    BOOL _playing;
+    BOOL _scrubberEnabled;
     NSArray *_scrubberLoadedTimeRanges;
-    unsigned int _playPauseButtonEnabled:1;
-    unsigned int _showsStreamingControls:1;
-    unsigned int _showsMediaSelectionButton:1;
-    unsigned int _showsPictureInPictureButton:1;
-    unsigned int _pictureInPictureButtonEnabled:1;
+    BOOL _playPauseButtonEnabled;
+    BOOL _showsStreamingControls;
+    BOOL _showsMediaSelectionButton;
+    BOOL _showsPictureInPictureButton;
+    BOOL _pictureInPictureButtonEnabled;
     NSString *_elapsedTimeLabelText;
     float _scrubberMinimumValue;
     float _scrubberValue;
@@ -39,9 +39,12 @@ __attribute__((visibility("hidden")))
     UILabel *_scrubInstructionsSubtitleLabel;
     NSMutableArray *_layoutConstraints;
     NSLayoutConstraint *_controlsContainerViewHeightLayoutConstraint;
-    unsigned int _showsScrubInstructions:1;
-    unsigned int _controlsVisibilityHasBeenManagedBefore:1;
+    BOOL _showsScrubInstructions;
+    BOOL _controlsVisibilityHasBeenManagedBefore;
+    double scrubberWidth;
 }
+
+@property (nonatomic) double scrubberWidth; // @synthesize scrubberWidth;
 
 - (void).cxx_destruct;
 - (void)_hideScrubInstructions;
@@ -58,7 +61,6 @@ __attribute__((visibility("hidden")))
 - (void)loadView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)scrubberLoadedTimeRanges;
-- (double)scrubberWidth;
 - (void)setPictureInPictureButtonEnabled:(BOOL)arg1;
 - (void)setPlayPauseButtonEnabled:(BOOL)arg1;
 - (void)setPlaying:(BOOL)arg1;

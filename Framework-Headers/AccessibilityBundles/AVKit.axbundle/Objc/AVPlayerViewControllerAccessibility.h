@@ -14,7 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_axAnnotateVideoOverlayViews;
 - (void)_axObservePIPStateNotifications;
 - (void)_axPIPStop:(id)arg1;
 - (void)_axSetupVideoLayerView;

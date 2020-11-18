@@ -18,9 +18,11 @@
     MSCLConfiguration *_configuration;
     id<MSCLAttachmentAlertDelegate> _MSCLDelegate;
     MSCLPhotoPickerShelfViewController *_photoPickerViewController;
+    BOOL _allowsCameraAndMicrophonePicker;
 }
 
 @property (weak, nonatomic) id<MSCLAttachmentAlertDelegate> MSCLDelegate; // @synthesize MSCLDelegate=_MSCLDelegate;
+@property (nonatomic) BOOL allowsCameraAndMicrophonePicker; // @synthesize allowsCameraAndMicrophonePicker=_allowsCameraAndMicrophonePicker;
 @property (readonly, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;
 @property (readonly, copy, nonatomic) MSCLConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;

@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalize;
 - (BOOL)getGroup:(unsigned int *)arg1;
 - (BOOL)getGroupUUID:(unsigned char (*)[16])arg1;
 - (BOOL)getMode:(unsigned short *)arg1;

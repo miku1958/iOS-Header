@@ -16,17 +16,12 @@ __attribute__((visibility("hidden")))
     BOOL _musicOnDidChange;
 }
 
-@property (nonatomic) BOOL mediaItemDidChange; // @synthesize mediaItemDidChange=_mediaItemDidChange;
-@property (nonatomic) BOOL musicOnDidChange; // @synthesize musicOnDidChange=_musicOnDidChange;
-@property (nonatomic) BOOL presetDidChange; // @synthesize presetDidChange=_presetDidChange;
-@property (nonatomic) BOOL shouldRepeatDidChange; // @synthesize shouldRepeatDidChange=_shouldRepeatDidChange;
-@property (nonatomic) BOOL stepDurationDidChange; // @synthesize stepDurationDidChange=_stepDurationDidChange;
+@property (nonatomic, setter=_setMediaItemDidChange:) BOOL mediaItemDidChange; // @synthesize mediaItemDidChange=_mediaItemDidChange;
+@property (nonatomic, setter=_setMusicOnDidChange:) BOOL musicOnDidChange; // @synthesize musicOnDidChange=_musicOnDidChange;
+@property (nonatomic, setter=_setPresetDidChange:) BOOL presetDidChange; // @synthesize presetDidChange=_presetDidChange;
+@property (nonatomic, setter=_setRepeatDidChange:) BOOL shouldRepeatDidChange; // @synthesize shouldRepeatDidChange=_shouldRepeatDidChange;
+@property (nonatomic, setter=_setStepDurationDidChange:) BOOL stepDurationDidChange; // @synthesize stepDurationDidChange=_stepDurationDidChange;
 
-- (void)_setMediaItemDidChange:(BOOL)arg1;
-- (void)_setMusicOnDidChange:(BOOL)arg1;
-- (void)_setPresetDidChange:(BOOL)arg1;
-- (void)_setRepeatDidChange:(BOOL)arg1;
-- (void)_setStepDurationDidChange:(BOOL)arg1;
 - (BOOL)hasChanges;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @interface IMAVTelephonyManager : NSObject
 {
@@ -19,7 +19,6 @@
 
 + (id)numberToDialForNumber:(id)arg1 dialAssist:(BOOL *)arg2;
 + (id)sharedInstance;
-- (BOOL)_breakCSCallsIfNecessary;
 - (void)_chatStateChanged:(id)arg1;
 - (void)_cleanupMachInfo;
 - (void)_disconnectCSCallWithID:(id)arg1;
@@ -30,7 +29,6 @@
 - (BOOL)_registerCTRequestService;
 - (BOOL)_setupCTServerConnection;
 - (BOOL)_unregisterCTRequestService;
-- (BOOL)_wantsBreakBeforeMake;
 - (void)dealloc;
 - (id)init;
 - (void)notifyCallConnectedForChat:(id)arg1;

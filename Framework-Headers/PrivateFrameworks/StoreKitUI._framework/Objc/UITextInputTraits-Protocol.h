@@ -6,6 +6,8 @@
 
 #import <StoreKitUI/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol UITextInputTraits <NSObject>
 
 @property (nonatomic) long long autocapitalizationType;
@@ -16,6 +18,7 @@
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
 @property (nonatomic) long long spellCheckingType;
+@property (copy, nonatomic) NSString *textContentType;
 
 
 @optional

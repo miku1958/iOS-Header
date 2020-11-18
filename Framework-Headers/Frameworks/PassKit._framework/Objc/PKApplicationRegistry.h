@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 
-@class NSMutableSet, NSString;
+@class NSMutableSet, NSString, NSURL;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface PKApplicationRegistry : NSObject <LSApplicationWorkspaceObserverProtocol>
 {
     NSMutableSet *_registeredBundleIdentifiers;
-    NSString *_archiveFilePath;
+    NSURL *_archiveFileURL;
     NSObject<OS_dispatch_semaphore> *_archiveSemaphore;
-    NSObject<OS_dispatch_queue> *_registrySerialQueue;
+    NSObject<OS_dispatch_queue> *_applicationRegistryQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,19 +24,14 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)applicationRegistryWithArchiveFilePath:(id)arg1;
-+ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)_requestArchiveToDisk;
 - (void)_validateRegisteredApplications;
 - (BOOL)applicationIsRegisteredWithBundleIdentifier:(id)arg1;
 - (void)applicationsDidUninstall:(id)arg1;
 - (void)dealloc;
-- (void)encodeWithCoder:(id)arg1;
-- (id)init;
-- (id)initWithArchivePath:(id)arg1;
-- (id)initWithCoder:(id)arg1;
+- (id)initWithArchiveFileURL:(id)arg1;
 - (BOOL)registerApplicationWithBundeIdentifier:(id)arg1;
-- (void)setArchiveFilePath:(id)arg1;
 
 @end
 

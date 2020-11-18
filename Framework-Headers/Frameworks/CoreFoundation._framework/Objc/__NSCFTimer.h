@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_cfTypeID;
 - (BOOL)_isDeallocating;
 - (BOOL)_tryRetain;
-- (void)finalize;
 - (void)fire;
 - (id)fireDate;
 - (unsigned long long)hash;

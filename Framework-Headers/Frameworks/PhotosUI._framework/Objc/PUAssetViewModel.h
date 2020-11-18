@@ -24,7 +24,7 @@
     BOOL _forceBadgesVisible;
     BOOL _wantsIrisBadgeVisible;
     BOOL _isFavorite;
-    BOOL _areCommentsVisible;
+    BOOL _accessoryViewVisible;
     BOOL _isInEditMode;
     BOOL __needsUpdateVideoPlayers;
     id<PUDisplayAsset> _asset;
@@ -32,23 +32,27 @@
     double _focusValue;
     PUOperationStatus *_loadingStatus;
     PUBadgeInfo *_badgeInfo;
-    long long _lastCommentsVisibilityChangeReason;
+    long long _lastAccessoryViewVisibilityChangeReason;
+    long long _lastContentOffsetChangeReason;
+    double _contentOffsetOverrideFactor;
+    long long __currentFavoriteOverrideRequest;
     PUMediaProvider *_mediaProvider;
     NSNumber *_isFavoriteOverride;
     PUAssetReference *_assetReference;
     PUAssetSharedViewModel *_assetSharedViewModel;
-    long long __currentFavoriteOverrideRequest;
-    struct CGPoint _commentsOffset;
+    struct CGPoint _preferredContentOffset;
+    struct CGPoint _overridingContentOffset;
 }
 
 @property (nonatomic, setter=_setCurrentFavoriteOverrideRequest:) long long _currentFavoriteOverrideRequest; // @synthesize _currentFavoriteOverrideRequest=__currentFavoriteOverrideRequest;
 @property (nonatomic, setter=_setNeedsUpdateVideoPlayers:) BOOL _needsUpdateVideoPlayers; // @synthesize _needsUpdateVideoPlayers=__needsUpdateVideoPlayers;
-@property (nonatomic) BOOL areCommentsVisible; // @synthesize areCommentsVisible=_areCommentsVisible;
+@property (nonatomic, getter=isAccessoryViewVisible) BOOL accessoryViewVisible; // @synthesize accessoryViewVisible=_accessoryViewVisible;
 @property (strong, nonatomic) id<PUDisplayAsset> asset; // @synthesize asset=_asset;
 @property (strong, nonatomic) PUAssetReference *assetReference; // @synthesize assetReference=_assetReference;
 @property (strong, nonatomic) PUAssetSharedViewModel *assetSharedViewModel; // @synthesize assetSharedViewModel=_assetSharedViewModel;
 @property (copy, nonatomic) PUBadgeInfo *badgeInfo; // @synthesize badgeInfo=_badgeInfo;
-@property (nonatomic) struct CGPoint commentsOffset; // @synthesize commentsOffset=_commentsOffset;
+@property (readonly, nonatomic) struct CGPoint contentOffset;
+@property (nonatomic) double contentOffsetOverrideFactor; // @synthesize contentOffsetOverrideFactor=_contentOffsetOverrideFactor;
 @property (readonly, nonatomic) PUAssetViewModelChange *currentChange;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -56,18 +60,21 @@
 @property (nonatomic) BOOL forceBadgesVisible; // @synthesize forceBadgesVisible=_forceBadgesVisible;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PUBrowsingIrisPlayer *irisPlayer;
-@property (nonatomic) BOOL isFavorite; // @synthesize isFavorite=_isFavorite;
+@property (nonatomic, setter=_setFavorite:) BOOL isFavorite; // @synthesize isFavorite=_isFavorite;
 @property (copy, nonatomic) NSNumber *isFavoriteOverride; // @synthesize isFavoriteOverride=_isFavoriteOverride;
 @property (nonatomic) BOOL isInEditMode; // @synthesize isInEditMode=_isInEditMode;
-@property (nonatomic) BOOL isInFocus; // @synthesize isInFocus=_isInFocus;
+@property (nonatomic, setter=setInFocus:) BOOL isInFocus; // @synthesize isInFocus=_isInFocus;
 @property (nonatomic, setter=setUserTransformingTile:) BOOL isUserTransformingTile; // @synthesize isUserTransformingTile=_isUserTransformingTile;
-@property (nonatomic) long long lastCommentsVisibilityChangeReason; // @synthesize lastCommentsVisibilityChangeReason=_lastCommentsVisibilityChangeReason;
+@property (nonatomic, setter=_setLastAccessoryViewVisibilityChangeReason:) long long lastAccessoryViewVisibilityChangeReason; // @synthesize lastAccessoryViewVisibilityChangeReason=_lastAccessoryViewVisibilityChangeReason;
+@property (nonatomic, setter=_setLastContentOffsetChangeReason:) long long lastContentOffsetChangeReason; // @synthesize lastContentOffsetChangeReason=_lastContentOffsetChangeReason;
 @property (readonly, copy, nonatomic) PUOperationStatus *loadingStatus; // @synthesize loadingStatus=_loadingStatus;
 @property (strong, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (copy, nonatomic) PUModelTileTransform *modelTileTransform; // @synthesize modelTileTransform=_modelTileTransform;
+@property (nonatomic) struct CGPoint overridingContentOffset; // @synthesize overridingContentOffset=_overridingContentOffset;
+@property (nonatomic) struct CGPoint preferredContentOffset; // @synthesize preferredContentOffset=_preferredContentOffset;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PUBrowsingVideoPlayer *videoPlayer;
-@property (nonatomic) BOOL wantsIrisBadgeVisible; // @synthesize wantsIrisBadgeVisible=_wantsIrisBadgeVisible;
+@property (nonatomic, setter=_setWantsIrisBadgeVisible:) BOOL wantsIrisBadgeVisible; // @synthesize wantsIrisBadgeVisible=_wantsIrisBadgeVisible;
 
 - (void).cxx_destruct;
 - (void)_handleAssetSharedViewModel:(id)arg1 didChange:(id)arg2;
@@ -75,10 +82,7 @@
 - (void)_handleBrowsingVideoPlayer:(id)arg1 didChange:(id)arg2;
 - (void)_invalidateVideoPlayers;
 - (void)_pauseAndRewindVideoIfNeeded;
-- (void)_setFavorite:(BOOL)arg1;
-- (void)_setLastCommentsVisibilityChangeReason:(long long)arg1;
 - (void)_setLoadingStatus:(id)arg1;
-- (void)_setWantsIrisBadgeVisible:(BOOL)arg1;
 - (BOOL)_shouldPauseAndRewindVideo;
 - (void)_updateFavoriteState;
 - (void)_updateVideoPlayersIfNeeded;
@@ -90,9 +94,9 @@
 - (void)irisBadgeTileInfo:(id)arg1 didTransitionToAppearanceState:(unsigned long long)arg2;
 - (id)newViewModelChange;
 - (void)registerChangeObserver:(id)arg1;
-- (void)setCommentsVisible:(BOOL)arg1;
-- (void)setCommentsVisible:(BOOL)arg1 changeReason:(long long)arg2;
-- (void)setInFocus:(BOOL)arg1;
+- (void)resetContentOffset;
+- (void)setAccessoryViewVisible:(BOOL)arg1 changeReason:(long long)arg2;
+- (void)setPreferredContentOffset:(struct CGPoint)arg1 changeReason:(long long)arg2;
 - (void)unregisterChangeObserver:(id)arg1;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 

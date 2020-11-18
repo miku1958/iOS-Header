@@ -6,25 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSLock, NSString;
+@class NSDictionary, NSLock, NSString;
 
 @interface ISClient : NSObject
 {
-    NSString *_appleClientApplication;
     NSString *_appleClientVersions;
+    NSString *_appleClientApplication;
     NSString *_identifier;
-    NSLock *_lock;
     NSString *_partnerHeader;
     NSString *_userAgent;
+    NSDictionary *_clientProvidedHeaders;
+    NSLock *_lock;
 }
 
-@property (copy) NSString *appleClientApplication;
-@property (readonly) NSString *appleClientVersions;
-@property (copy) NSString *identifier;
-@property (copy) NSString *partnerHeader;
-@property (copy) NSString *userAgent;
+@property (copy) NSString *appleClientApplication; // @synthesize appleClientApplication=_appleClientApplication;
+@property (readonly) NSString *appleClientVersions; // @synthesize appleClientVersions=_appleClientVersions;
+@property (copy) NSDictionary *clientProvidedHeaders; // @synthesize clientProvidedHeaders=_clientProvidedHeaders;
+@property (copy) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) NSLock *lock; // @synthesize lock=_lock;
+@property (copy) NSString *partnerHeader; // @synthesize partnerHeader=_partnerHeader;
+@property (copy) NSString *userAgent; // @synthesize userAgent=_userAgent;
 
 + (id)currentClient;
+- (void).cxx_destruct;
 - (id)_appleClientVersions;
 - (void)_softwareMapInvalidatedNotification:(id)arg1;
 - (void)dealloc;

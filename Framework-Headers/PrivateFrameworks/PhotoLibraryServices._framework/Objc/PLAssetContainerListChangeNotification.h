@@ -18,7 +18,6 @@
 @property (readonly, strong, nonatomic) id<PLAssetContainerList> assetContainerList;
 
 + (id)notificationWithContainerList:(id)arg1 snapshot:(id)arg2 changedContainers:(id)arg3;
-+ (id)notificationWithSimulatedReloadRequestForContainerList:(id)arg1;
 - (id)_contentRelationshipName;
 - (void)dealloc;
 - (id)description;

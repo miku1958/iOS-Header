@@ -42,6 +42,13 @@ struct __va_list_tag {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    unsigned char _field1;
+    unsigned char _field2;
+    unsigned char _field3;
+    unsigned char _field4;
+} CDStruct_a06f635e;
+
+typedef struct {
     long long _field1;
     long long _field2;
     long long _field3;
@@ -49,5 +56,6 @@ typedef struct {
     double _field5;
     double _field6;
     double _field7;
-} CDStruct_595f0d30;
+    BOOL _field8;
+} CDStruct_83077358;
 

@@ -9,7 +9,7 @@
 #import <CryptoTokenKit/NSXPCListenerDelegate-Protocol.h>
 #import <CryptoTokenKit/TKProtocolSmartCardSlot-Protocol.h>
 
-@class NSHashTable, NSMapTable, NSMutableArray, NSString, NSXPCConnection, NSXPCListener, TKPowerMonitor, TKSmartCardATR, TKSmartCardSessionEngine;
+@class NSArray, NSHashTable, NSMapTable, NSMutableArray, NSString, NSXPCConnection, NSXPCListener, TKPowerMonitor, TKSmartCardATR, TKSmartCardSessionEngine;
 @protocol OS_dispatch_queue, TKSmartCardSlotDelegate;
 
 @interface TKSmartCardSlotEngine : NSObject <TKProtocolSmartCardSlot, NSXPCListenerDelegate>
@@ -17,6 +17,7 @@
     unsigned long long _lastId;
     long long _state;
     long long _powerState;
+    long long _previousState;
     TKSmartCardATR *_atr;
     unsigned long long _protocol;
     BOOL _idlePowerDownPending;
@@ -33,6 +34,7 @@
     BOOL _apduSentSinceLastReset;
     long long _maxInputLength;
     long long _maxOutputLength;
+    NSArray *_forProcesses;
     id<TKSmartCardSlotDelegate> _delegate;
     NSString *_name;
     NSObject<OS_dispatch_queue> *_queue;
@@ -43,6 +45,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<TKSmartCardSlotDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong) NSArray *forProcesses; // @synthesize forProcesses=_forProcesses;
 @property (readonly) unsigned long long hash;
 @property long long maxInputLength; // @synthesize maxInputLength=_maxInputLength;
 @property long long maxOutputLength; // @synthesize maxOutputLength=_maxOutputLength;
@@ -56,12 +59,13 @@
 - (void).cxx_destruct;
 - (id)_findReservation:(id)arg1 connection:(id)arg2;
 - (id)_getReservationId;
+- (void)_setupWithName:(id)arg1 delegate:(id)arg2 firstPass:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)cardPresent:(BOOL)arg1;
 - (void)changeStateTo:(long long)arg1 powerState:(long long)arg2;
 - (void)connectCardSessionWithParameters:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)dictionaryForState:(long long)arg1;
-- (void)getAttrib:(unsigned int)arg1 expectedLength:(unsigned int)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)getAttrib:(unsigned int)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)leaveSession:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

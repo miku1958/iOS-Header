@@ -11,17 +11,18 @@
 @interface GKGridGraphNode : GKGraphNode
 {
     struct GKCGridGraphNode *_cGridGraphNode;
-    MISSING_TYPE *_gridPosition;
 }
 
-@property (nonatomic) MISSING_TYPE *gridPosition; // @synthesize gridPosition=_gridPosition;
+@property (readonly, nonatomic) MISSING_TYPE *gridPosition;
 
 + (id)nodeWithGridPosition: /* Error: Ran out of types for this method. */;
 - (struct GKCGridGraphNode *)cGridGraphNode;
 - (float)costToNode:(id)arg1;
 - (void)deleteCGraphNode;
+- (void)encodeWithCoder:(id)arg1;
 - (float)estimatedCostToNode:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithGridPosition: /* Error: Ran out of types for this method. */;
 - (struct GKCGraphNode *)makeCGraphNode;
 

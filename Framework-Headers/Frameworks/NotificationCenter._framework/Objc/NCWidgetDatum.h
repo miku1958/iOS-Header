@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) NSExtension *representedExtension; // @synthesize representedExtension=_representedExtension;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithExtension:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

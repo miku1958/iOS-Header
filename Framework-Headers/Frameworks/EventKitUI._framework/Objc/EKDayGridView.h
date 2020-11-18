@@ -7,11 +7,12 @@
 #import <UIKit/UIView.h>
 
 #import <EventKitUI/EKCurrentTimeMarkerViewUpdating-Protocol.h>
+#import <EventKitUI/EKUITintColorUpdateDelegate-Protocol.h>
 
-@class EKCurrentTimeMarkerView, NSMutableArray, NSString, UIColor, UIImageView;
+@class EKCurrentTimeMarkerView, EKUIVisualEffectView, NSMutableArray, NSString, UIColor, UIImageView, UIVisualEffect;
 
 __attribute__((visibility("hidden")))
-@interface EKDayGridView : UIView <EKCurrentTimeMarkerViewUpdating>
+@interface EKDayGridView : UIView <EKUITintColorUpdateDelegate, EKCurrentTimeMarkerViewUpdating>
 {
     double _timeInset;
     double _hourHeight;
@@ -30,6 +31,9 @@ __attribute__((visibility("hidden")))
     unsigned long long _daysToDisplay;
     EKCurrentTimeMarkerView *_timeMarker;
     UIImageView *_timeDot;
+    UIView *_highlightedDayBackground;
+    UIView *_fadingHighlightedDayBackground;
+    EKUIVisualEffectView *_gridParentView;
     BOOL _rightBorderInsetsOccurrences;
     BOOL _showsTimeLine;
     BOOL _showsTimeMarker;
@@ -40,6 +44,8 @@ __attribute__((visibility("hidden")))
     double _eventHorizontalInset;
     double _hoursToPadTop;
     double _hoursToPadBottom;
+    long long _highlightedDayIndex;
+    UIVisualEffect *_gridVisualEffect;
     double _gridHeightScale;
 }
 
@@ -49,7 +55,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double eventHorizontalInset; // @synthesize eventHorizontalInset=_eventHorizontalInset;
 @property (nonatomic) double fixedDayWidth;
 @property (nonatomic) double gridHeightScale; // @synthesize gridHeightScale=_gridHeightScale;
+@property (strong, nonatomic) UIVisualEffect *gridVisualEffect; // @synthesize gridVisualEffect=_gridVisualEffect;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) long long highlightedDayIndex; // @synthesize highlightedDayIndex=_highlightedDayIndex;
 @property (readonly, nonatomic) double hourHeight;
 @property (nonatomic) double hoursToPadBottom; // @synthesize hoursToPadBottom=_hoursToPadBottom;
 @property (nonatomic) double hoursToPadTop; // @synthesize hoursToPadTop=_hoursToPadTop;
@@ -74,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (double)_dayWidth;
 - (id)_generateGridImage;
+- (void)_layoutHighlight;
 - (void)_updateTimeMarker;
 - (void)addSubview:(id)arg1;
 - (double)bottomPadding;
@@ -88,6 +97,7 @@ __attribute__((visibility("hidden")))
 - (id)timeDotImage;
 - (void)tintColorDidChange;
 - (void)updateMarkerPosition;
+- (void)viewTintColorDidChangeForView:(id)arg1 toColor:(id)arg2;
 
 @end
 

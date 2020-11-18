@@ -7,15 +7,22 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (CameraKit)
-+ (double)cam_setHiddenAnimationDuration;
++ (void)cam_ceilBounds:(struct CGRect *)arg1 andRoundCenter:(struct CGPoint *)arg2 toViewScale:(id)arg3;
++ (void)cam_convertRect:(struct CGRect)arg1 toCeiledBounds:(struct CGRect *)arg2 andRoundedCenter:(struct CGPoint *)arg3 toViewScale:(id)arg4;
++ (double)cam_setHiddenDefaultAnimationDuration;
 + (struct CGAffineTransform)cam_transformForInterfaceOrientation:(long long)arg1;
 - (void)cam_ensureSubview:(id)arg1;
 - (BOOL)cam_isOnScreen:(id)arg1;
+- (BOOL)cam_isPoint:(struct CGPoint)arg1 withinBoundsWithPadding:(struct UIEdgeInsets)arg2;
+- (BOOL)cam_isPoint:(struct CGPoint)arg1 withinBoundsWithPadding:(struct UIEdgeInsets)arg2 checkVisibility:(BOOL)arg3 recursive:(BOOL)arg4;
+- (void)cam_removeAnimationForKey:(id)arg1 setToCurrentPresentationValue:(BOOL)arg2;
+- (void)cam_removeAnimationsForKeys:(id)arg1 setToCurrentPresentationValues:(BOOL)arg2;
 - (void)cam_rotateWithInterfaceOrientation:(long long)arg1 animated:(BOOL)arg2;
 - (void)cam_setBorder;
 - (void)cam_setBorderColor:(id)arg1;
 - (void)cam_setBorderColor:(id)arg1 width:(double)arg2;
 - (void)cam_setHidden:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)cam_setHidden:(BOOL)arg1 delay:(double)arg2 animated:(BOOL)arg3;
+- (void)cam_setHidden:(BOOL)arg1 animationDuration:(double)arg2;
+- (void)cam_setHidden:(BOOL)arg1 animationDuration:(double)arg2 delay:(double)arg3;
 @end
 

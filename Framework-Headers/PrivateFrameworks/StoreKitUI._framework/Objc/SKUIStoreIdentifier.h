@@ -14,10 +14,10 @@
 {
     NSNumber *_itemIdentifier;
     NSString *_podcastFeedURLIdentifier;
-    long long _identiferType;
+    NSString *_bundleIdentifier;
 }
 
-@property (readonly, nonatomic) long long identiferType; // @synthesize identiferType=_identiferType;
+@property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, nonatomic) NSNumber *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property (strong, nonatomic) NSString *podcastFeedURLIdentifier; // @synthesize podcastFeedURLIdentifier=_podcastFeedURLIdentifier;
 

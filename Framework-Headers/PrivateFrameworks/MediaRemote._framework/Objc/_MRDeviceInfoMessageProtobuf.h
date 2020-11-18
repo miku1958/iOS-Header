@@ -12,16 +12,31 @@
 
 @interface _MRDeviceInfoMessageProtobuf : PBCodable <NSCopying>
 {
+    unsigned long long _protocolVersion;
+    NSString *_applicationBundleIdentifier;
+    NSString *_applicationBundleVersion;
     NSString *_localizedModelName;
     NSString *_name;
+    NSString *_systemBuildVersion;
     NSString *_uniqueIdentifier;
+    struct {
+        unsigned int protocolVersion:1;
+    } _has;
 }
 
+@property (strong, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
+@property (strong, nonatomic) NSString *applicationBundleVersion; // @synthesize applicationBundleVersion=_applicationBundleVersion;
+@property (readonly, nonatomic) BOOL hasApplicationBundleIdentifier;
+@property (readonly, nonatomic) BOOL hasApplicationBundleVersion;
 @property (readonly, nonatomic) BOOL hasLocalizedModelName;
 @property (readonly, nonatomic) BOOL hasName;
+@property (nonatomic) BOOL hasProtocolVersion;
+@property (readonly, nonatomic) BOOL hasSystemBuildVersion;
 @property (readonly, nonatomic) BOOL hasUniqueIdentifier;
 @property (strong, nonatomic) NSString *localizedModelName; // @synthesize localizedModelName=_localizedModelName;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (nonatomic) unsigned long long protocolVersion; // @synthesize protocolVersion=_protocolVersion;
+@property (strong, nonatomic) NSString *systemBuildVersion; // @synthesize systemBuildVersion=_systemBuildVersion;
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
 - (void)copyTo:(id)arg1;

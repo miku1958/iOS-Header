@@ -8,11 +8,12 @@
 
 #import <FuseUI/MPMusicPlayerControllerServerDelegate-Protocol.h>
 
-@class MPAVController, MPMediaItem, MPNowPlayingObserver, MusicAVPlayer, NSString;
+@class MPAVController, MPMediaItem, MPNowPlayingObserver, NSString;
 
 @interface MusicPlayerServerDelegate : NSObject <MPMusicPlayerControllerServerDelegate>
 {
-    MusicAVPlayer *_applicationPlayer;
+    MPAVController *_systemPlayer;
+    MPAVController *_applicationPlayer;
     MPMediaItem *_firstItem;
     MPNowPlayingObserver *_nowPlayingObserver;
     long long _playbackShuffleMode;
@@ -22,11 +23,13 @@
     CDUnknownBlockType _shuffleChangeHandler;
     MPAVController *_shuffleChangeHandlerPlayer;
     long long _shuffleMode;
+    MPAVController *_player;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) MPAVController *player; // @synthesize player=_player;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -36,6 +39,7 @@
 - (void)dealloc;
 - (unsigned long long)indexOfNowPlayingItemForMusicPlayerServer:(id)arg1;
 - (id)init;
+- (id)initWithSystemPlayer:(id)arg1;
 - (BOOL)isNowPlayingItemFromGeniusMixForMusicPlayerServer:(id)arg1;
 - (void)musicPlayerServer:(id)arg1 prepareQueueWithGeniusMixPlaylist:(id)arg2;
 - (void)musicPlayerServer:(id)arg1 prepareQueueWithQuery:(id)arg2;

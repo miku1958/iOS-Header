@@ -54,18 +54,27 @@
     UIPanGestureRecognizer *_dimmingViewGestureRecognizer;
     UIPopoverController *_retainedSelf;
     NSArray *_passthroughViews;
-    CDStruct_4a475a17 _popoverControllerFlags;
+    struct {
+        unsigned int isPresentingModalViewController:1;
+        unsigned int isPresentingActionSheet:1;
+        unsigned int wasIgnoringDimmingViewTouchesBeforeScrolling:1;
+        unsigned int isInTextEffectsWindow:1;
+        unsigned int isEmbeddingInView:1;
+        unsigned int embeddedPresentationBounces:1;
+    } _popoverControllerFlags;
     BOOL _dismissesOnRotation;
     BOOL _showsTargetRect;
     BOOL _showsOrientationMarker;
     BOOL _showsPresentationArea;
     BOOL _retainsSelfWhilePresented;
+    BOOL _allowsPopoverPresentationToAdapt;
     unsigned long long _popoverArrowDirection;
     UIPopoverPresentationController *_presentationController;
     struct UIEdgeInsets _popoverLayoutMargins;
 }
 
 @property (nonatomic, setter=_setIgnoresKeyboardNotifications:) BOOL _ignoresKeyboardNotifications; // @dynamic _ignoresKeyboardNotifications;
+@property (nonatomic, getter=_allowsPopoverPresentationToAdapt, setter=_setAllowsPopoverPresentationToAdapt:) BOOL allowsPopoverPresentationToAdapt; // @synthesize allowsPopoverPresentationToAdapt=_allowsPopoverPresentationToAdapt;
 @property (copy, nonatomic) UIColor *backgroundColor;
 @property (strong, nonatomic) UIViewController *contentViewController;
 @property (readonly, copy) NSString *debugDescription;
@@ -176,6 +185,8 @@
 - (void)_swipe:(id)arg1;
 - (void)_transitionFromViewController:(id)arg1 toViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)_updateDimmingViewTransformForInterfaceOrientationOfHostingWindow:(id)arg1;
+- (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
+- (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)dealloc;
 - (void)dimmingViewWasTapped:(id)arg1;
 - (void)dismissPopoverAnimated:(BOOL)arg1;

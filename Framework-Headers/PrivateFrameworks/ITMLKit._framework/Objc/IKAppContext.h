@@ -8,11 +8,12 @@
 
 #import <ITMLKit/ISURLOperationDelegate-Protocol.h>
 
-@class IKJSFoundation, IKJSInspectorController, JSContext, NSError, NSMutableArray, NSString;
-@protocol IKAppContextDelegate, IKApplication, OS_dispatch_source;
+@class IKJSArrayBufferStore, IKJSFoundation, IKJSInspectorController, JSContext, NSError, NSMutableArray, NSString;
+@protocol IKAppContextDelegate, IKAppScriptFallbackHandler, IKApplication, OS_dispatch_source;
 
 @interface IKAppContext : NSObject <ISURLOperationDelegate>
 {
+    IKJSArrayBufferStore *_arrayBufferStore;
     struct __CFRunLoop *_jsThreadRunLoop;
     struct __CFRunLoopSource *_jsThreadRunLoopSource;
     NSObject<OS_dispatch_source> *_lowMemoryWarningSource;
@@ -24,17 +25,22 @@
     id<IKApplication> _app;
     unsigned long long _mode;
     id<IKAppContextDelegate> _delegate;
+    id<IKAppScriptFallbackHandler> _appScriptFallbackHandler;
+    double _appScriptTimeoutInterval;
     JSContext *_jsContext;
-    NSMutableArray *_postEvaluationBlocks;
-    IKJSFoundation *_jsFoundation;
-    IKJSInspectorController *_webInspectorController;
     NSString *_responseScript;
     NSError *_responseError;
     id _reloadData;
     NSMutableArray *_pendingQueue;
+    NSMutableArray *_postEvaluationBlocks;
+    IKJSFoundation *_jsFoundation;
+    IKJSInspectorController *_webInspectorController;
 }
 
 @property (readonly, weak, nonatomic) id<IKApplication> app; // @synthesize app=_app;
+@property (strong, nonatomic) id<IKAppScriptFallbackHandler> appScriptFallbackHandler; // @synthesize appScriptFallbackHandler=_appScriptFallbackHandler;
+@property (nonatomic) double appScriptTimeoutInterval; // @synthesize appScriptTimeoutInterval=_appScriptTimeoutInterval;
+@property (readonly, nonatomic) IKJSArrayBufferStore *arrayBufferStore;
 @property (nonatomic) BOOL canAccessPendingQueue; // @synthesize canAccessPendingQueue=_canAccessPendingQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak, nonatomic) id<IKAppContextDelegate> delegate; // @synthesize delegate=_delegate;
@@ -66,13 +72,12 @@
 - (void)_evaluate:(CDUnknownBlockType)arg1;
 - (void)_evaluateFoundationWithDeviceConfig:(id)arg1;
 - (void)_invalidateJSThread;
-- (BOOL)_isAppTrusted;
 - (void)_jsThreadMain;
 - (id)_preferredLaunchURL;
 - (void)_sourceCanceledOnRunLoop:(struct __CFRunLoop *)arg1;
 - (void)_sourcePerform;
 - (void)_sourceScheduledOnRunLoop:(struct __CFRunLoop *)arg1;
-- (void)_startWithScript:(id)arg1 scriptUrl:(id)arg2;
+- (void)_startWithScript:(id)arg1 scriptUrl:(id)arg2 wasLoadedFromFallback:(BOOL)arg3;
 - (void)_startWithURL:(id)arg1 urlTrusted:(BOOL)arg2;
 - (void)_stopAndReload:(BOOL)arg1;
 - (void)addPostEvaluateBlock:(CDUnknownBlockType)arg1;

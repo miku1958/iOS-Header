@@ -21,11 +21,14 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (struct NSDictionary *)allInterpretationStringsAndScores;
 - (id)bestInterpretation;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)firstInterpretation;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithInterpretations:(id)arg1 isLowConfidence:(BOOL)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

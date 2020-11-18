@@ -24,12 +24,14 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _invalidateCallback;
     NSString *_appWakeUUID;
     NSURL *_downloadDirectory;
+    NSURL *_assetDownloadDirectory;
     BOOL _isPrivileged;
     BOOL _isInvalid;
     BOOL _companionAvailable;
     unsigned long long _wifiRetainCount;
     NSError *_invalidationError;
     BOOL _tryToReconnect;
+    int _notifyToken;
 }
 
 @property (copy) NSString *appWakeUUID; // @synthesize appWakeUUID=_appWakeUUID;
@@ -39,11 +41,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id)AVAssetDownloadTaskForURLAsset:(id)arg1 assetTitle:(id)arg2 assetArtworkData:(id)arg3 options:(id)arg4;
 - (id)AVAssetDownloadTaskForURLAsset:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;
 - (id)_AVAssetDownloadTaskForURL:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;
 - (id)_downloadTaskForRequest:(id)arg1;
 - (id)_downloadTaskForResumeData:(id)arg1;
-- (id)_onqueue_AVAssetDownloadTaskForURLAsset:(id)arg1 URL:(id)arg2 destinationURL:(id)arg3 options:(id)arg4;
+- (id)_onqueue_AVAssetDownloadTaskForURLAsset:(id)arg1 URL:(id)arg2 destinationURL:(id)arg3 assetTitle:(id)arg4 assetArtworkData:(id)arg5 options:(id)arg6;
 - (void)_onqueue_completeInvalidation:(BOOL)arg1;
 - (id)_onqueue_dataTaskForRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_onqueue_disavowTask:(id)arg1;
@@ -56,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)_onqueue_resetStorageWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_onqueue_retryDataTaskWithIdentifier:(unsigned long long)arg1;
 - (id)_onqueue_uploadTaskForRequest:(id)arg1 uploadFile:(id)arg2 bodyData:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)appWasLaunchedForBackgroundSession:(id)arg1;
 - (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didLoadTimeRange:(id)arg2 totalTimeRangesLoaded:(id)arg3 timeRangeExpectedToLoad:(id)arg4;
 - (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didReceiveDownloadToken:(unsigned long long)arg2;
 - (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didResolveMediaSelectionProperyList:(id)arg2;
@@ -71,7 +75,8 @@ __attribute__((visibility("hidden")))
 - (void)backgroundSessionDidFinishAppWake:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)backgroundSessionDidStartAppWake:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)backgroundTask:(unsigned long long)arg1 _willSendRequestForEstablishedConnection:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)backgroundTask:(unsigned long long)arg1 didCompleteWithError:(id)arg2 timingData:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)backgroundTask:(unsigned long long)arg1 didCompleteWithError:(id)arg2 info:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)backgroundTask:(unsigned long long)arg1 didFinishCollectingMetrics:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)backgroundTask:(unsigned long long)arg1 didReceiveChallenge:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)backgroundTask:(unsigned long long)arg1 didReceiveResponse:(id)arg2 timingData:(id)arg3;
 - (void)backgroundTask:(unsigned long long)arg1 didReceiveResponse:(id)arg2 timingData:(id)arg3 reply:(CDUnknownBlockType)arg4;
@@ -100,6 +105,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)disconnectedErrorWithURL:(id)arg1;
 - (id)downloadTaskForRequest:(id)arg1 downloadFilePath:(id)arg2 resumeData:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)ensureRemoteSession;
 - (void)failDisconnectedTasks;
 - (id)initWithConfiguration:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
 - (void)moveFileForResumeData:(id)arg1 fromDirectory:(id)arg2 toDirectory:(id)arg3;
@@ -111,7 +117,8 @@ __attribute__((visibility("hidden")))
 - (void)recreateExistingTasks:(id)arg1;
 - (id)requestWithCookiesApplied:(id)arg1;
 - (void)sendInvalidationRequest;
-- (void)setCookiesFromResponse:(id)arg1 forOriginalRequest:(id)arg2;
+- (void)setCookiesFromResponse:(id)arg1 forOriginalRequest:(id)arg2 partitionIdentifier:(id)arg3;
+- (void)setPropertyOnStreamWithIdentifier:(unsigned long long)arg1 propDict:(id)arg2 propKey:(id)arg3;
 - (void)setupBackgroundSession;
 - (void)setupXPCConnection;
 - (id)taskForIdentifier:(unsigned long long)arg1;

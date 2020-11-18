@@ -9,7 +9,7 @@
 #import <TextInput/NSCopying-Protocol.h>
 #import <TextInput/NSSecureCoding-Protocol.h>
 
-@class NSString, NSUUID, TIDocumentState, TIKeyboardCandidate, TIKeyboardLayout, TIKeyboardLayoutState, TITextInputTraits;
+@class NSString, NSUUID, TIDocumentState, TIInputContextHistory, TIKeyboardCandidate, TIKeyboardLayout, TIKeyboardLayoutState, TIKeyboardSecureCandidateRenderTraits, TITextInputTraits;
 
 @interface TIKeyboardState : NSObject <NSCopying, NSSecureCoding>
 {
@@ -28,6 +28,8 @@
             unsigned int shortcutConversionEnabled:1;
             unsigned int candidateSelectionPredictionEnabled:1;
             unsigned int autocapitalizationEnabled:1;
+            unsigned int canSendCurrentLocation:1;
+            unsigned int isScreenLocked:1;
         } fields;
     } _mask;
     union {
@@ -42,9 +44,11 @@
     NSString *_clientIdentifier;
     NSString *_inputMode;
     NSString *_recipientIdentifier;
+    TIInputContextHistory *_inputContextHistory;
     TIKeyboardLayout *_keyLayout;
     TIKeyboardLayoutState *_layoutState;
     TIDocumentState *_documentState;
+    TIKeyboardSecureCandidateRenderTraits *_secureCandidateRenderTraits;
     NSString *_inputForMarkedText;
     NSString *_searchStringForMarkedText;
     TIKeyboardCandidate *_currentCandidate;
@@ -57,14 +61,17 @@
 @property (nonatomic) BOOL autocorrectionEnabled;
 @property (nonatomic) BOOL autocorrectionListUIAutoDisplayMode;
 @property (nonatomic) BOOL autocorrectionListUIDisplayed;
+@property (nonatomic) BOOL canSendCurrentLocation;
 @property (nonatomic) BOOL candidateSelectionPredictionEnabled;
 @property (copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (strong, nonatomic) TIKeyboardCandidate *currentCandidate; // @synthesize currentCandidate=_currentCandidate;
 @property (strong, nonatomic) NSUUID *documentIdentifier; // @synthesize documentIdentifier=_documentIdentifier;
 @property (strong, nonatomic) TIDocumentState *documentState; // @synthesize documentState=_documentState;
 @property (nonatomic) BOOL hardwareKeyboardMode;
+@property (strong, nonatomic) TIInputContextHistory *inputContextHistory; // @synthesize inputContextHistory=_inputContextHistory;
 @property (copy, nonatomic) NSString *inputForMarkedText; // @synthesize inputForMarkedText=_inputForMarkedText;
 @property (copy, nonatomic) NSString *inputMode; // @synthesize inputMode=_inputMode;
+@property (nonatomic) BOOL isScreenLocked;
 @property (strong, nonatomic) TIKeyboardLayout *keyLayout; // @synthesize keyLayout=_keyLayout;
 @property (nonatomic) BOOL keyboardEventsLagging;
 @property (nonatomic) unsigned long long keyboardType;
@@ -73,6 +80,7 @@
 @property (copy, nonatomic) NSString *recipientIdentifier; // @synthesize recipientIdentifier=_recipientIdentifier;
 @property (copy, nonatomic) NSString *responseContext; // @synthesize responseContext=_responseContext;
 @property (copy, nonatomic) NSString *searchStringForMarkedText; // @synthesize searchStringForMarkedText=_searchStringForMarkedText;
+@property (copy, nonatomic) TIKeyboardSecureCandidateRenderTraits *secureCandidateRenderTraits; // @synthesize secureCandidateRenderTraits=_secureCandidateRenderTraits;
 @property (nonatomic) BOOL secureTextEntry;
 @property (nonatomic) int shiftState; // @synthesize shiftState=_shiftState;
 @property (nonatomic) BOOL shortcutConversionEnabled;

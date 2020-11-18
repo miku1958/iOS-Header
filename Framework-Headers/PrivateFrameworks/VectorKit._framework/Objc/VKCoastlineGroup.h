@@ -9,20 +9,20 @@
 __attribute__((visibility("hidden")))
 @interface VKCoastlineGroup : NSObject
 {
-    shared_ptr_b80d91ee _styleQuery;
+    shared_ptr_c5d816ee _styleQuery;
     unsigned int _tilePointSize;
-    struct unique_ptr<ggl::MeshVendor<ggl::PolygonMesh::MeshMesh>, std::__1::default_delete<ggl::MeshVendor<ggl::PolygonMesh::MeshMesh>>> _coastlineMeshVendor;
+    struct unique_ptr<ggl::MeshVendor<ggl::PolygonShadowedStroke::ShadowPathMesh>, std::__1::default_delete<ggl::MeshVendor<ggl::PolygonShadowedStroke::ShadowPathMesh>>> _coastlineMeshVendor;
     struct unique_ptr<ggl::MeshVendor<ggl::Glow::MeshMesh>, std::__1::default_delete<ggl::MeshVendor<ggl::Glow::MeshMesh>>> _glowMeshVendor;
 }
 
-@property (readonly, nonatomic) const MeshVendor_82aa5b9e *coastlineMeshVendor;
+@property (readonly, nonatomic) const MeshVendor_303b8b6a *coastlineMeshVendor;
 @property (readonly, nonatomic) const MeshVendor_43d71dca *glowMeshVendor;
-@property (readonly, nonatomic) shared_ptr_b80d91ee styleQuery; // @synthesize styleQuery=_styleQuery;
+@property (readonly, nonatomic) shared_ptr_c5d816ee styleQuery; // @synthesize styleQuery=_styleQuery;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)addCoastlineFeature:(CDStruct_d7f4d903 *)arg1;
-- (id)initWithStyleQuery:(shared_ptr_b80d91ee)arg1 tilePointSize:(unsigned int)arg2;
+- (void)addCoastlineFeature:(CDStruct_6ac9d495 *)arg1;
+- (id)initWithStyleQuery:(shared_ptr_c5d816ee)arg1 tilePointSize:(unsigned int)arg2;
 
 @end
 

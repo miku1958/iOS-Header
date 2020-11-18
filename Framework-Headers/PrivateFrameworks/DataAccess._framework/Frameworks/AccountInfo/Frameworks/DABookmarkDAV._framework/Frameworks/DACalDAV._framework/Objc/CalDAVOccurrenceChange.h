@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) BOOL locationChanged;
 @property (readonly, nonatomic) BOOL participationChanged;
 @property (readonly, nonatomic) BOOL privateCommentChanged;
+@property (readonly, nonatomic) BOOL proposedStartDateChanged;
 @property (readonly, nonatomic) BOOL recurrenceChanged;
 @property (strong, nonatomic) ICSDate *recurrenceID; // @synthesize recurrenceID=_recurrenceID;
 @property (readonly, nonatomic) BOOL startTimeChanged;

@@ -13,14 +13,18 @@
 @interface AWDCoreRoutineMagicalMomentsRecommendedAppsHistogramInstance : PBCodable <NSCopying>
 {
     NSString *_bundleId;
+    int _confidence;
     int _rank;
     struct {
+        unsigned int confidence:1;
         unsigned int rank:1;
     } _has;
 }
 
 @property (strong, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
+@property (nonatomic) int confidence; // @synthesize confidence=_confidence;
 @property (readonly, nonatomic) BOOL hasBundleId;
+@property (nonatomic) BOOL hasConfidence;
 @property (nonatomic) BOOL hasRank;
 @property (nonatomic) int rank; // @synthesize rank=_rank;
 

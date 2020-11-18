@@ -7,21 +7,24 @@
 #import <Preferences/PSListController.h>
 
 #import <PreferencesUI/DevicePINControllerDelegate-Protocol.h>
+#import <PreferencesUI/HMHomeManagerDelegate-Protocol.h>
 
-@class NSString, PSSpecifier;
+@class HMHomeManager, NSString, PSSpecifier;
 
-@interface PSUIPasscodeLockController : PSListController <DevicePINControllerDelegate>
+@interface PSUIPasscodeLockController : PSListController <HMHomeManagerDelegate, DevicePINControllerDelegate>
 {
     int _policyDictatedMaxFailedAttempts;
     PSSpecifier *_voiceDialSpecifier;
     PSSpecifier *_voiceDialGroupSpecifier;
     BOOL _canUnlockWatch;
+    HMHomeManager *_homeManager;
 }
 
 @property (nonatomic) BOOL canUnlockWatch; // @synthesize canUnlockWatch=_canUnlockWatch;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HMHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property (readonly) Class superclass;
 
 + (long long)passcodeGracePeriod;
@@ -44,6 +47,9 @@
 - (id)enabledInLockScreen:(id)arg1;
 - (long long)fingerprintCount;
 - (id)graceValue:(id)arg1;
+- (id)homeControlAccessAllowedWhenLocked:(id)arg1;
+- (void)homeManager:(id)arg1 didUpdateAccessAllowedWhenLocked:(BOOL)arg2;
+- (void)homeManagerDidUpdateHomes:(id)arg1;
 - (id)init;
 - (BOOL)isAssistantRestricted;
 - (BOOL)isPasscodeSet;
@@ -53,6 +59,7 @@
 - (void)setAssistantUnderLockEnabled:(id)arg1 forSpecifier:(id)arg2;
 - (void)setEnabledInLockScreen:(id)arg1 specifier:(id)arg2;
 - (void)setGraceValue:(id)arg1 specifier:(id)arg2;
+- (void)setHomeControlAccessAllowedWhenLocked:(id)arg1 specifier:(id)arg2;
 - (void)setVoiceDial:(id)arg1 specifier:(id)arg2;
 - (void)setWallet:(id)arg1 specifier:(id)arg2;
 - (void)setWipeEnabled:(id)arg1 specifier:(id)arg2;

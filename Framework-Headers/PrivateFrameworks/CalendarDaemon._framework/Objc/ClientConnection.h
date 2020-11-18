@@ -11,8 +11,6 @@
 
 @interface ClientConnection : NSObject
 {
-    int _options;
-    NSString *_path;
     BOOL _allowedEntityTypesValid;
     long long _eventAccess;
     long long _reminderAccess;
@@ -26,16 +24,18 @@
     NSMutableDictionary *_insertedObjects;
     NSMutableSet *_canceledRequests;
     NSObject<OS_dispatch_queue> *_canceledRequestsLock;
-    int _connectionIdentifier;
+    int _databaseInitializationOptions;
     CADOperationProxy *_cadOperationProxy;
     id<ClientConnectionDelegate> _delegate;
     ClientIdentity *_identity;
     NSXPCConnection *_xpcConnection;
+    NSString *_databasePath;
 }
 
 @property (readonly, nonatomic) CADOperationProxy *cadOperationProxy; // @synthesize cadOperationProxy=_cadOperationProxy;
-@property int connectionIdentifier; // @synthesize connectionIdentifier=_connectionIdentifier;
 @property (nonatomic) struct CalDatabase *database; // @synthesize database=_database;
+@property (nonatomic) int databaseInitializationOptions; // @synthesize databaseInitializationOptions=_databaseInitializationOptions;
+@property (copy, nonatomic) NSString *databasePath; // @synthesize databasePath=_databasePath;
 @property (weak, nonatomic) id<ClientConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) ClientIdentity *identity; // @synthesize identity=_identity;
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
@@ -44,6 +44,7 @@
 - (void)_databaseChanged;
 - (void)_loadAccessPermissionsIfNeeded;
 - (id)_restrictedStoreRowIDs;
+- (BOOL)_shouldUseMCToBlacklist;
 - (void)addOperation:(id)arg1;
 - (void)clearCachedAuthorizationStatus;
 - (void)clearInsertedObjects;
@@ -62,7 +63,6 @@
 - (id)restrictedCalendarRowIDs;
 - (id)restrictedCalendarRowIDsWithValidator:(id)arg1;
 - (id)restrictedStoreRowIDs;
-- (void)setDatabasePath:(id)arg1 andInitOptions:(int)arg2;
 - (void)setSourceAccountManagement:(int)arg1;
 
 @end

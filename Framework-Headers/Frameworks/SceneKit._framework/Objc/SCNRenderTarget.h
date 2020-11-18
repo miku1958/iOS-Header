@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
-@class MISSING_TYPE, NSString;
+@class CIImage, MISSING_TYPE, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SCNRenderTarget : NSObject
 {
-    CDStruct_2e3d5ba3 _description;
+    CDStruct_fd8065c6 _description;
     MISSING_TYPE *_size;
+    CIImage *_ciImage;
     id _texture;
     NSString *_name;
     long long _referenceCount;
@@ -21,14 +22,16 @@ __attribute__((visibility("hidden")))
 
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) long long referenceCount; // @synthesize referenceCount=_referenceCount;
+@property (readonly, nonatomic) unsigned char renderBufferFormat;
 @property (strong, nonatomic) id texture; // @synthesize texture=_texture;
 @property (nonatomic) long long timeStamp; // @synthesize timeStamp=_timeStamp;
 @property (readonly, nonatomic) BOOL viewportDependant;
 
+- (id)ciImage;
 - (void)dealloc;
 - (id)description;
-- (id)initWithDescription:(CDStruct_2e3d5ba3 *)arg1 size: /* Error: Ran out of types for this method. */;
-- (BOOL)matchesDescription:(CDStruct_2e3d5ba3 *)arg1 size: /* Error: Ran out of types for this method. */;
+- (id)initWithDescription:(CDStruct_fd8065c6 *)arg1 size: /* Error: Ran out of types for this method. */;
+- (BOOL)matchesDescription:(CDStruct_fd8065c6 *)arg1 size: /* Error: Ran out of types for this method. */;
 
 @end
 

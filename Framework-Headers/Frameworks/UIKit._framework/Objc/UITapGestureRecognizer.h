@@ -43,7 +43,6 @@
 - (void)_setDelaysRecognitionForGreaterTapCounts:(BOOL)arg1;
 - (BOOL)_shouldFailInResponseToPresses:(id)arg1 withEvent:(id)arg2;
 - (BOOL)_shouldReceivePress:(id)arg1;
-- (BOOL)_shouldRequireFailureOfGestureRecognizer:(id)arg1;
 - (double)_touchSloppinessFactor;
 - (double)allowableMovement;
 - (BOOL)canPreventGestureRecognizer:(id)arg1;
@@ -64,6 +63,7 @@
 - (void)setAllowedPressTypes:(id)arg1;
 - (void)setMaximumIntervalBetweenSuccessiveTaps:(double)arg1;
 - (void)setMaximumSingleTapDuration:(double)arg1;
+- (BOOL)shouldRequireFailureOfGestureRecognizer:(id)arg1;
 - (BOOL)tapIsPossibleForTapRecognizer:(id)arg1;
 - (void)tapRecognizerFailedToRecognizeTap:(id)arg1;
 - (void)tapRecognizerRecognizedTap:(id)arg1;

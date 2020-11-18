@@ -8,7 +8,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface RTNavigationManagerRouteSummaryNotification : RTNotification
 {
     double _originLatitude;
@@ -24,7 +23,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double originLatitude; // @synthesize originLatitude=_originLatitude;
 @property (nonatomic) double originLongitude; // @synthesize originLongitude=_originLongitude;
 
-+ (id)notificationName;
 - (void).cxx_destruct;
 - (id)initWithRouteSummary:(id)arg1;
 

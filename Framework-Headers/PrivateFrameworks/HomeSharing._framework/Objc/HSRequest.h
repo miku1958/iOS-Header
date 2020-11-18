@@ -6,29 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDictionary, NSString, NSURL;
+@class NSData, NSDictionary, NSString;
 
 @interface HSRequest : NSObject
 {
     NSDictionary *_arguments;
     BOOL _concurrent;
-    BOOL _excludeSessionIDFromURL;
-    BOOL _shouldPromptForAuthentication;
     BOOL _acceptsGzipEncoding;
     NSString *_action;
     long long _method;
     NSData *_bodyData;
-    NSURL *_responseDataDestinationFileURL;
 }
 
 @property (nonatomic) BOOL acceptsGzipEncoding; // @synthesize acceptsGzipEncoding=_acceptsGzipEncoding;
 @property (readonly, nonatomic) NSString *action; // @synthesize action=_action;
 @property (copy, nonatomic) NSData *bodyData; // @synthesize bodyData=_bodyData;
 @property (readonly, nonatomic, getter=isConcurrent) BOOL concurrent; // @synthesize concurrent=_concurrent;
-@property (nonatomic) BOOL excludeSessionIDFromURL; // @synthesize excludeSessionIDFromURL=_excludeSessionIDFromURL;
 @property (nonatomic) long long method; // @synthesize method=_method;
-@property (copy, nonatomic) NSURL *responseDataDestinationFileURL; // @synthesize responseDataDestinationFileURL=_responseDataDestinationFileURL;
-@property (nonatomic) BOOL shouldPromptForAuthentication; // @synthesize shouldPromptForAuthentication=_shouldPromptForAuthentication;
 @property (readonly, nonatomic) double timeoutInterval;
 
 + (id)request;

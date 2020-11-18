@@ -17,7 +17,6 @@
 @property (readonly, copy) NSString *separator;
 
 - (void)dealloc;
-- (void)finalize;
 
 @end
 

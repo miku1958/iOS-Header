@@ -7,6 +7,7 @@
 #import <Metal/MTLResource-Protocol.h>
 
 @class MTLResourceAllocationInfo;
+@protocol MTLResource;
 
 @protocol MTLResourceSPI <MTLResource>
 
@@ -14,6 +15,11 @@
 @property int responsibleProcess;
 @property (readonly) MTLResourceAllocationInfo *sharedAllocationInfo;
 
+- (BOOL)doesAliasAllResources:(const id *)arg1 count:(unsigned long long)arg2;
+- (BOOL)doesAliasAnyResources:(const id *)arg1 count:(unsigned long long)arg2;
+- (BOOL)doesAliasResource:(id<MTLResource>)arg1;
+- (BOOL)isComplete;
 - (BOOL)isPurgeable;
+- (void)waitUntilComplete;
 @end
 

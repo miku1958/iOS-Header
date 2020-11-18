@@ -16,14 +16,14 @@
     NSURL *_fileURL;
 }
 
-@property (readonly, strong, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
-@property (readonly, strong, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
+@property (readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
 
+- (void).cxx_destruct;
 - (id)archiveData;
 - (id)bundle;
 - (void)contentWithCompletion:(CDUnknownBlockType)arg1;
 - (id)dataForBundleResourceNamed:(id)arg1 withExtension:(id)arg2;
-- (void)dealloc;
 - (void)dictionaryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)displayProfileOfType:(long long)arg1;
 - (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 completion:(CDUnknownBlockType)arg3;

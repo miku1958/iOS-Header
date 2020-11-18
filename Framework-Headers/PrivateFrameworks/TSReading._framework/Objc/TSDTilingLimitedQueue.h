@@ -14,7 +14,7 @@
     NSObject<OS_dispatch_queue> *mTargetQueue;
     unsigned long long mLimit;
     unsigned long long mReaderCount;
-    int mSpinLock;
+    struct os_unfair_lock_s mSpinLock;
 }
 
 - (void)dealloc;

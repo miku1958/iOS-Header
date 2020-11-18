@@ -11,25 +11,20 @@
 @interface WBSParsecSearchResultCache : NSObject
 {
     NSMutableDictionary *_resultSetCache;
-    NSMutableDictionary *_resultCache;
     NSMutableDictionary *_resultSetsByPrefix;
     unsigned long long _cachedQueriesLimit;
-    unsigned long long _cachedResultsLimit;
 }
 
 @property (readonly, nonatomic) NSArray *allCachedQueries;
-@property (readonly, nonatomic) NSArray *allCachedResultIdentifiers;
 
 - (void).cxx_destruct;
 - (BOOL)_resultSet:(id)arg1 isMatchForQuery:(id)arg2;
 - (BOOL)_shouldCacheResultSetForQueryMatching:(id)arg1;
 - (id)bestResultSetForQuery:(id)arg1;
-- (void)cacheResult:(id)arg1;
 - (void)cacheResultSet:(id)arg1;
 - (void)cacheResultSetsFromSearchResponse:(id)arg1;
-- (id)initWithCachedQueriesLimit:(unsigned long long)arg1 cachedResultsLimit:(unsigned long long)arg2;
+- (id)initWithCachedQueriesLimit:(unsigned long long)arg1;
 - (id)resultSetWithQuery:(id)arg1;
-- (id)resultWithIdentifier:(id)arg1;
 
 @end
 

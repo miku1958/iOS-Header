@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapItemStorage, GEOTransitDecoderData, GEOTransitSuggestedRoute, NSData, NSMutableArray, NSString;
+@class GEODirectionsRequest, GEODirectionsResponse, GEOMapItemStorage, GEOTransitDecoderData, GEOTransitSuggestedRoute, NSData, NSMutableArray, NSString;
 
 @interface GEOCompanionRouteDetails : PBCodable <NSCopying>
 {
@@ -24,8 +24,11 @@
     GEOMapItemStorage *_origin;
     unsigned int _originalDuration;
     GEOTransitSuggestedRoute *_originalSuggestedRoute;
+    GEODirectionsRequest *_request;
+    GEODirectionsResponse *_response;
     NSData *_routeID;
     NSMutableArray *_steps;
+    NSString *_trafficDescription;
     int _transportType;
     BOOL _canNavigate;
     BOOL _showTransitSchedules;
@@ -56,14 +59,19 @@
 @property (readonly, nonatomic) BOOL hasOrigin;
 @property (nonatomic) BOOL hasOriginalDuration;
 @property (readonly, nonatomic) BOOL hasOriginalSuggestedRoute;
+@property (readonly, nonatomic) BOOL hasRequest;
+@property (readonly, nonatomic) BOOL hasResponse;
 @property (readonly, nonatomic) BOOL hasRouteID;
 @property (nonatomic) BOOL hasShowTransitSchedules;
+@property (readonly, nonatomic) BOOL hasTrafficDescription;
 @property (nonatomic) BOOL hasTransportType;
 @property (nonatomic) unsigned int historicalDuration; // @synthesize historicalDuration=_historicalDuration;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) GEOMapItemStorage *origin; // @synthesize origin=_origin;
 @property (nonatomic) unsigned int originalDuration; // @synthesize originalDuration=_originalDuration;
 @property (strong, nonatomic) GEOTransitSuggestedRoute *originalSuggestedRoute; // @synthesize originalSuggestedRoute=_originalSuggestedRoute;
+@property (strong, nonatomic) GEODirectionsRequest *request; // @synthesize request=_request;
+@property (strong, nonatomic) GEODirectionsResponse *response; // @synthesize response=_response;
 @property (strong, nonatomic) NSData *routeID; // @synthesize routeID=_routeID;
 @property (nonatomic) BOOL showTransitSchedules; // @synthesize showTransitSchedules=_showTransitSchedules;
 @property (strong, nonatomic) NSMutableArray *steps; // @synthesize steps=_steps;
@@ -71,8 +79,11 @@
 @property (readonly, nonatomic) unsigned long long trafficColorOffsetsCount;
 @property (readonly, nonatomic) unsigned int *trafficColors;
 @property (readonly, nonatomic) unsigned long long trafficColorsCount;
+@property (strong, nonatomic) NSString *trafficDescription; // @synthesize trafficDescription=_trafficDescription;
 @property (nonatomic) int transportType; // @synthesize transportType=_transportType;
 
++ (Class)stepType;
+- (int)StringAsTransportType:(id)arg1;
 - (void)addCoordinates:(double)arg1;
 - (void)addStep:(id)arg1;
 - (void)addTrafficColor:(unsigned int)arg1;
@@ -88,7 +99,7 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
-- (id)initWithRoute:(id)arg1 destinationName:(id)arg2;
+- (id)initWithRoute:(id)arg1 destinationName:(id)arg2 stringFormatter:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isSyntheticRoute;
 - (void)mergeFrom:(id)arg1;
@@ -100,6 +111,7 @@
 - (unsigned long long)stepsCount;
 - (unsigned int)trafficColorAtIndex:(unsigned long long)arg1;
 - (unsigned int)trafficColorOffsetAtIndex:(unsigned long long)arg1;
+- (id)transportTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

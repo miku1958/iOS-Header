@@ -6,31 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
-
 @interface HMDBulletinCategory : NSObject
 {
-    NSArray *_entries;
 }
 
-@property (strong, nonatomic) NSArray *entries; // @synthesize entries=_entries;
-
 + (id)_enumerationValueLocalizationKeys;
++ (id)_localizedStateForValue:(id)arg1 characteristicType:(id)arg2;
++ (id)_presentationTypeForType:(id)arg1;
 + (id)_secureStateMap;
-+ (id)categoryForIdentifier:(id)arg1;
-+ (id)defaultCategories;
-- (void).cxx_destruct;
-- (BOOL)_alarmTriggerChange:(struct NSDictionary *)arg1 previousContext:(struct NSDictionary *)arg2;
-- (BOOL)_isSecureState:(struct NSDictionary *)arg1;
-- (BOOL)_isUnsecureState:(struct NSDictionary *)arg1;
-- (id)_localizedStateForValue:(id)arg1 characteristicType:(id)arg2;
-- (id)_presentationTypeForType:(id)arg1;
-- (id)_presentationValueForValue:(id)arg1 type:(id)arg2;
-- (BOOL)hasCharacteristic:(id)arg1;
-- (id)identifier;
-- (id)localizedName;
-- (id)localizedStateForCharacteristic:(id)arg1;
-- (BOOL)shouldChangeSecureStateForCharacteristic:(id)arg1 previousContext:(struct NSDictionary *)arg2;
++ (id)localizedStateForCharacteristic:(id)arg1;
++ (id)presentationValueForValue:(id)arg1 type:(id)arg2;
 
 @end
 

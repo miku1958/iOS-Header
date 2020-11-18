@@ -35,7 +35,6 @@
 @property (nonatomic) int state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
-+ (void)initialize;
 + (id)timerTargettingMainAccessQueue;
 - (void)_afterDelay:(double)arg1 processBlock:(CDUnknownBlockType)arg2 shouldTreatAsWritingBlock:(BOOL)arg3;
 - (void)_didFinishProcessingBlock;

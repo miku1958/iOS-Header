@@ -13,13 +13,13 @@
 - (void)toolController:(PUPhotoEditToolController *)arg1 updateModelDependentControlsAnimated:(BOOL)arg2;
 - (CIImage *)toolControllerBaseCIImage:(PUPhotoEditToolController *)arg1;
 - (UIImage *)toolControllerBaseImage:(PUPhotoEditToolController *)arg1;
+- (PHLivePhoto *)toolControllerBaseLivePhoto:(PUPhotoEditToolController *)arg1;
 - (void)toolControllerDidChangeIsPerformingLiveInteraction:(PUPhotoEditToolController *)arg1;
 - (void)toolControllerDidChangePreferredAlternateToolbarButton:(PUPhotoEditToolController *)arg1;
 - (void)toolControllerDidChangePreferredRenderMode:(PUPhotoEditToolController *)arg1;
 - (void)toolControllerDidChangeWantsDefaultPreviewView:(PUPhotoEditToolController *)arg1;
 - (void)toolControllerDidFinish:(PUPhotoEditToolController *)arg1;
 - (UIScrollView *)toolControllerImageScrollView:(PUPhotoEditToolController *)arg1;
-- (PHLivePhoto *)toolControllerLivePhoto:(PUPhotoEditToolController *)arg1;
 - (UIView *)toolControllerMainContainerView:(PUPhotoEditToolController *)arg1;
 - (PLPhotoEditRenderer *)toolControllerMainRenderer:(PUPhotoEditToolController *)arg1;
 - (struct CGSize)toolControllerOriginalImageSize:(PUPhotoEditToolController *)arg1;

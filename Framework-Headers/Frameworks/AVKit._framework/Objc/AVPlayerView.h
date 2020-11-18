@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) long long viewWindowState;
 
+- (BOOL)_isEnclosedInNonPagingScrollView;
 - (void)_updateViewWindowState;
 - (void)didMoveToWindow;
 - (void)setFrame:(struct CGRect)arg1;

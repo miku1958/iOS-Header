@@ -30,7 +30,6 @@ __attribute__((visibility("hidden")))
     TIKeyboardCandidateResultSet *_candidateSet;
     NSMutableDictionary *_collectionViewControllers;
     UIKeyboardCandidateGridCollectionViewController *_collectionViewController;
-    unsigned long long _numberOfColumns;
     id<UICollectionViewDelegate> _scrollViewDelegate;
     UIKBBackdropView *_backdropView;
     NSArray *_sortedCandidates;
@@ -51,7 +50,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) UIKeyboardCandidateGridHeader *gridHeader; // @synthesize gridHeader=_gridHeader;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *inlineText; // @synthesize inlineText=_inlineText;
-@property (nonatomic) unsigned long long numberOfColumns; // @synthesize numberOfColumns=_numberOfColumns;
 @property (nonatomic) id<UICollectionViewDelegate> scrollViewDelegate; // @synthesize scrollViewDelegate=_scrollViewDelegate;
 @property (strong, nonatomic) UIKeyboardCandidateRowViewController *secondaryCandidatesViewController; // @synthesize secondaryCandidatesViewController=_secondaryCandidatesViewController;
 @property (nonatomic) BOOL secondaryCandidatesViewIsCurrent; // @synthesize secondaryCandidatesViewIsCurrent=_secondaryCandidatesViewIsCurrent;
@@ -79,7 +77,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasPreviousPage;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isExtendedList;
-- (BOOL)isHiddenCandidatesList;
 - (id)keyboardBehaviors;
 - (void)layout;
 - (void)layoutSubviews;

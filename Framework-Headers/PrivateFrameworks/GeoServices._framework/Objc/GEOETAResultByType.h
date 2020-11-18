@@ -8,12 +8,16 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class NSMutableArray;
+
 @interface GEOETAResultByType : PBCodable <NSCopying>
 {
     double _expectedTimeOfDeparture;
     unsigned int _distance;
     unsigned int _historicTravelTime;
+    unsigned int _staticTravelTime;
     int _status;
+    NSMutableArray *_summaryForPredictedDestinations;
     int _transportType;
     unsigned int _travelTimeAggressiveEstimate;
     unsigned int _travelTimeBestEstimate;
@@ -22,6 +26,7 @@
         unsigned int expectedTimeOfDeparture:1;
         unsigned int distance:1;
         unsigned int historicTravelTime:1;
+        unsigned int staticTravelTime:1;
         unsigned int status:1;
         unsigned int transportType:1;
         unsigned int travelTimeAggressiveEstimate:1;
@@ -35,26 +40,39 @@
 @property (nonatomic) BOOL hasDistance;
 @property (nonatomic) BOOL hasExpectedTimeOfDeparture;
 @property (nonatomic) BOOL hasHistoricTravelTime;
+@property (nonatomic) BOOL hasStaticTravelTime;
 @property (nonatomic) BOOL hasStatus;
 @property (nonatomic) BOOL hasTransportType;
 @property (nonatomic) BOOL hasTravelTimeAggressiveEstimate;
 @property (nonatomic) BOOL hasTravelTimeBestEstimate;
 @property (nonatomic) BOOL hasTravelTimeConservativeEstimate;
 @property (nonatomic) unsigned int historicTravelTime; // @synthesize historicTravelTime=_historicTravelTime;
+@property (nonatomic) unsigned int staticTravelTime; // @synthesize staticTravelTime=_staticTravelTime;
 @property (nonatomic) int status; // @synthesize status=_status;
+@property (strong, nonatomic) NSMutableArray *summaryForPredictedDestinations; // @synthesize summaryForPredictedDestinations=_summaryForPredictedDestinations;
 @property (nonatomic) int transportType; // @synthesize transportType=_transportType;
 @property (nonatomic) unsigned int travelTimeAggressiveEstimate; // @synthesize travelTimeAggressiveEstimate=_travelTimeAggressiveEstimate;
 @property (nonatomic) unsigned int travelTimeBestEstimate; // @synthesize travelTimeBestEstimate=_travelTimeBestEstimate;
 @property (nonatomic) unsigned int travelTimeConservativeEstimate; // @synthesize travelTimeConservativeEstimate=_travelTimeConservativeEstimate;
 
++ (Class)summaryForPredictedDestinationType;
+- (int)StringAsStatus:(id)arg1;
+- (int)StringAsTransportType:(id)arg1;
+- (void)addSummaryForPredictedDestination:(id)arg1;
+- (void)clearSummaryForPredictedDestinations;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)statusAsString:(int)arg1;
+- (id)summaryForPredictedDestinationAtIndex:(unsigned long long)arg1;
+- (unsigned long long)summaryForPredictedDestinationsCount;
+- (id)transportTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -19,7 +19,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)setRepeatType:(unsigned long long)arg1;
+- (void)setRepeatType:(long long)arg1;
 
 @end
 

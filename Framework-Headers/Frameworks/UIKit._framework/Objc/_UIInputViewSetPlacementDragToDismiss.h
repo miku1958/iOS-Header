@@ -18,8 +18,10 @@ __attribute__((visibility("hidden")))
 
 + (id)placementWithOffset:(double)arg1;
 + (BOOL)supportsSecureCoding;
+- (Class)applicatorClassForKeyboard:(BOOL)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isInteractive;
 - (id)verticalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 

@@ -7,12 +7,11 @@
 #import <UIKit/UICollectionReusableView.h>
 
 #import <PhotosUI/ICQBannerViewDelegate-Protocol.h>
-#import <PhotosUI/NSCopying-Protocol.h>
 
 @class NSArray, NSLayoutConstraint, NSString, PLSyncProgressView, PUPhotosGlobalFooterBannerView, UILabel, UIStackView;
 @protocol PUPhotosGlobalFooterViewDelegate;
 
-@interface PUPhotosGlobalFooterView : UICollectionReusableView <ICQBannerViewDelegate, NSCopying>
+@interface PUPhotosGlobalFooterView : UICollectionReusableView <ICQBannerViewDelegate>
 {
     unsigned long long _imageCount;
     unsigned long long _videoCount;
@@ -35,18 +34,21 @@
     } _delegateFlags;
     BOOL _shouldShowCloudBanner;
     BOOL __shouldHighlightSubtitle;
+    BOOL __shouldHideCloudStatus;
     BOOL __wantsCloudBannerWithCurrentOffer;
     long long _style;
     NSString *_subtitle;
     id<PUPhotosGlobalFooterViewDelegate> _delegate;
 }
 
+@property (nonatomic, setter=_setShouldHideCloudStatus:) BOOL _shouldHideCloudStatus; // @synthesize _shouldHideCloudStatus=__shouldHideCloudStatus;
 @property (nonatomic, setter=_setShouldHighlightSubtitle:) BOOL _shouldHighlightSubtitle; // @synthesize _shouldHighlightSubtitle=__shouldHighlightSubtitle;
 @property (nonatomic, setter=_setWantsCloudBannerWithCurrentOffer:) BOOL _wantsCloudBannerWithCurrentOffer; // @synthesize _wantsCloudBannerWithCurrentOffer=__wantsCloudBannerWithCurrentOffer;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUPhotosGlobalFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) double preferredHeight;
 @property (nonatomic) BOOL shouldShowCloudBanner; // @synthesize shouldShowCloudBanner=_shouldShowCloudBanner;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
@@ -61,10 +63,10 @@
 - (void)_updateFonts;
 - (void)_updateSubviews;
 - (void)bannerView:(id)arg1 action:(long long)arg2 parameters:(id)arg3 dismiss:(BOOL)arg4;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)invalidateCloudOffer;
+- (void)layoutSubviews;
 - (void)setImageCount:(unsigned long long)arg1 videoCount:(unsigned long long)arg2 otherCount:(unsigned long long)arg3;
 - (void)setPendingCount:(unsigned long long)arg1 importOperation:(int)arg2;
 - (void)setSubtitle:(id)arg1 shouldHightlight:(BOOL)arg2;

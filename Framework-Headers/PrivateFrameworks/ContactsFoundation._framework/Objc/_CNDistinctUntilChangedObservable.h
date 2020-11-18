@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
     id _lastObservedResult;
 }
 
+- (void).cxx_destruct;
 - (BOOL)_resultIsDistinctFromLastResult:(id)arg1;
-- (void)dealloc;
 - (id)initWithObservable:(id)arg1;
 - (id)subscribe:(id)arg1;
 

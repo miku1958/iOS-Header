@@ -51,8 +51,8 @@ struct NSMethodFrameArgInfo {
 };
 
 struct _CFPrefsShmemEntry {
-    unsigned int generation:31;
-    unsigned int multiprocess:1;
+    _Atomic int owner;
+    _Atomic unsigned int generation;
 };
 
 struct _NSRange {
@@ -81,6 +81,10 @@ struct edge {
 struct os_lock_handoff_s {
     struct _os_lock_type_handoff_s *osl_type;
     unsigned long long _osl_handoff_opaque[1];
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 struct vertex {
@@ -153,6 +157,6 @@ typedef struct {
 
 typedef union {
     struct _CFPrefsShmemEntry entry;
-    int value;
-} CDUnion_694411ff;
+    _Atomic unsigned long long value;
+} CDUnion_f9025cb3;
 

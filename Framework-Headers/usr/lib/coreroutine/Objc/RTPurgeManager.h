@@ -9,7 +9,6 @@
 @class NSObject;
 @protocol OS_dispatch_source;
 
-__attribute__((visibility("hidden")))
 @interface RTPurgeManager : RTNotifier
 {
     NSObject<OS_dispatch_source> *_memoryWarningDispatchSource;
@@ -22,7 +21,6 @@ __attribute__((visibility("hidden")))
 + (double)clearRoutineDelay;
 + (id)earliestRawLocationDate;
 + (double)purgeDelay;
-+ (id)purgeIdentifier;
 + (double)resetLocationsDelay;
 + (id)sharedInstance;
 - (void).cxx_destruct;

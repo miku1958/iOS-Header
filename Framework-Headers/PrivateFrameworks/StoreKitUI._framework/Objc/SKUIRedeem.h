@@ -6,19 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, SKUIArtworkList, UIImage;
+@class NSArray, NSDictionary, NSString, NSURL, UIImage;
+@protocol SKUIArtworkProviding;
 
 @interface SKUIRedeem : NSObject
 {
     BOOL _hideItemView;
     NSArray *_items;
+    NSArray *_downloads;
     NSString *_inAppPurchase;
     NSString *_credit;
     NSString *_balance;
     NSDictionary *_thankYouDictionary;
     NSURL *_redirectURL;
+    NSURL *_customizedThankyouURL;
     UIImage *_headerImage;
-    SKUIArtworkList *_headerArtworkList;
+    id<SKUIArtworkProviding> _headerArtworkProvider;
     NSString *_title;
     NSString *_message;
     NSArray *_links;
@@ -28,7 +31,9 @@
 @property (nonatomic) double ITunesPassLearnMoreAlertInterval; // @synthesize ITunesPassLearnMoreAlertInterval=_ITunesPassLearnMoreAlertInterval;
 @property (copy, nonatomic) NSString *balance; // @synthesize balance=_balance;
 @property (copy, nonatomic) NSString *credit; // @synthesize credit=_credit;
-@property (strong, nonatomic) SKUIArtworkList *headerArtworkList; // @synthesize headerArtworkList=_headerArtworkList;
+@property (strong, nonatomic) NSURL *customizedThankyouURL; // @synthesize customizedThankyouURL=_customizedThankyouURL;
+@property (strong, nonatomic) NSArray *downloads; // @synthesize downloads=_downloads;
+@property (strong, nonatomic) id<SKUIArtworkProviding> headerArtworkProvider; // @synthesize headerArtworkProvider=_headerArtworkProvider;
 @property (strong, nonatomic) UIImage *headerImage; // @synthesize headerImage=_headerImage;
 @property (nonatomic) BOOL hideItemView; // @synthesize hideItemView=_hideItemView;
 @property (strong, nonatomic) NSString *inAppPurchase; // @synthesize inAppPurchase=_inAppPurchase;

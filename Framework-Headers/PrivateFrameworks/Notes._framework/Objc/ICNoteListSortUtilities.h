@@ -20,6 +20,7 @@
 + (id)sortDescriptorsForICSearchResultsForType:(long long)arg1;
 + (id)sortDescriptorsForType:(long long)arg1;
 + (long long)sortTypeForTag:(long long)arg1;
++ (long long)tagForSortType:(long long)arg1;
 
 @end
 

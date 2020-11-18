@@ -14,6 +14,7 @@
 {
     NSData *_data;
     const void *_bytes;
+    unsigned long long _length;
     unsigned long long _offsetInFile;
 }
 

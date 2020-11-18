@@ -6,12 +6,19 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HDDeviceEntity, HKObject, HKObjectType, NSArray;
+@class HDDataCollectionObserverState, HDDeviceEntity, HKObject, HKObjectType, NSArray;
 
 @protocol HDHealthDataCollectionManager <NSObject>
+- (void)addDataCollectionObserver:(id)arg1 type:(HKObjectType *)arg2 collectionInterval:(double)arg3 state:(HDDataCollectionObserverState *)arg4;
+- (void)dataCollectionObserver:(id)arg1 didChangeState:(HDDataCollectionObserverState *)arg2;
+- (double)defaultCollectionIntervalForType:(HKObjectType *)arg1;
+- (void)immediateUpdateForType:(HKObjectType *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)removeDataCollectionObserver:(id)arg1;
+- (void)removeDataCollectionObserver:(id)arg1 type:(HKObjectType *)arg2;
 - (void)sensorDataArrayReceived:(NSArray *)arg1 deviceEntity:(HDDeviceEntity *)arg2 withCompletion:(void (^)(BOOL, NSError *))arg3;
 - (void)sensorDataReceived:(HKObject *)arg1 deviceEntity:(HDDeviceEntity *)arg2;
 - (void)startDataCollectionForType:(HKObjectType *)arg1 observer:(id)arg2 collectionInterval:(double)arg3;
 - (void)stopDataCollectionForType:(HKObjectType *)arg1 observer:(id)arg2;
+- (void)updateCollectionInterval:(double)arg1 type:(HKObjectType *)arg2 observer:(id)arg3;
 @end
 

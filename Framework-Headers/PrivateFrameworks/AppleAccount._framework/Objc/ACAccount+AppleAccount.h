@@ -28,8 +28,10 @@
 @property (readonly, nonatomic) NSString *aa_hsaToken;
 @property (nonatomic, setter=aa_setCloudDocsMigrationComplete:) BOOL aa_isCloudDocsMigrationComplete;
 @property (readonly, nonatomic) BOOL aa_isManagedAppleID;
+@property (readonly, nonatomic) BOOL aa_isNotesMigrated;
 @property (nonatomic, setter=aa_setPrimaryAccount:) BOOL aa_isPrimaryAccount;
 @property (nonatomic, setter=aa_setPrimaryEmailVerified:) BOOL aa_isPrimaryEmailVerified;
+@property (readonly, nonatomic) BOOL aa_isSandboxAccount;
 @property (nonatomic, setter=aa_setSyncedAccount:) BOOL aa_isSyncedAccount;
 @property (nonatomic, setter=aa_setUndergoingRepair:) BOOL aa_isUndergoingRepair;
 @property (nonatomic, setter=aa_setUsesCloudDocs:) BOOL aa_isUsingCloudDocs;
@@ -52,6 +54,7 @@
 + (id)aa_dataclassesBoundToSingleAppleAccount;
 - (id)aa_authTokenWithError:(id *)arg1;
 - (id)aa_hsaTokenWithError:(id *)arg1;
+- (BOOL)aa_isPCSErrorTransient:(struct __CFError *)arg1;
 - (BOOL)aa_needsPCSRepair;
 - (BOOL)aa_needsPCSRepairWithAuthToken:(id)arg1;
 - (void)aa_setHSAToken:(id)arg1;

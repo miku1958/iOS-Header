@@ -59,8 +59,14 @@
 @property (nonatomic) unsigned int version; // @synthesize version=_version;
 @property (strong, nonatomic) NSMutableArray *versionDomains; // @synthesize versionDomains=_versionDomains;
 
++ (Class)valueType;
++ (Class)versionDomainType;
+- (int)StringAsCacheControl:(id)arg1;
+- (int)StringAsStatus:(id)arg1;
+- (int)StringAsType:(id)arg1;
 - (void)addValue:(id)arg1;
 - (void)addVersionDomain:(id)arg1;
+- (id)cacheControlAsString:(int)arg1;
 - (void)clearValues;
 - (void)clearVersionDomains;
 - (void)copyTo:(id)arg1;
@@ -72,6 +78,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)statusAsString:(int)arg1;
+- (id)typeAsString:(int)arg1;
 - (id)valueAtIndex:(unsigned long long)arg1;
 - (unsigned long long)valuesCount;
 - (id)versionDomainAtIndex:(unsigned long long)arg1;

@@ -6,14 +6,17 @@
 
 #import <SpotlightReceiver/NSObject-Protocol.h>
 
-@class NSData, NSDate, NSString;
+@class INInteraction, NSArray, NSData, NSDate, NSString;
 
 @protocol SpotlightReceiverJob <NSObject>
-- (void)deleteFromBundle:(NSString *)arg1 sinceData:(NSDate *)arg2 domains:(NSData *)arg3 deletes:(NSData *)arg4 completion:(void (^)(NSData *))arg5;
-- (void)indexFromBundle:(NSString *)arg1 items:(NSData *)arg2 itemsContent:(NSData *)arg3 completion:(void (^)(NSData *))arg4;
-- (void)purgeFromBundle:(NSString *)arg1 identifiers:(NSData *)arg2 completion:(void (^)(NSData *))arg3;
-- (void)supportedBundleIDs:(void (^)(NSData *))arg1;
-- (void)supportedTypes:(void (^)(NSData *))arg1;
-- (void)userActions:(NSData *)arg1 completion:(void (^)(NSData *))arg2;
+- (void)addInteraction:(INInteraction *)arg1 bundleID:(NSString *)arg2 protectionClass:(NSString *)arg3 completionHandler:(void (^)(void))arg4;
+- (void)addUserActions:(NSData *)arg1 bundleID:(NSString *)arg2 protectionClass:(NSString *)arg3 completionHandler:(void (^)(void))arg4;
+- (void)deleteAllInteractionsWithBundleID:(NSString *)arg1 protectionClass:(NSString *)arg2 completionHandler:(void (^)(void))arg3;
+- (void)deleteFromBundle:(NSString *)arg1 sinceDate:(NSDate *)arg2 domains:(NSData *)arg3 deletes:(NSData *)arg4 completionHandler:(void (^)(void))arg5;
+- (void)deleteInteractionsWithGroupIdentifiers:(NSArray *)arg1 bundleID:(NSString *)arg2 protectionClass:(NSString *)arg3 completionHandler:(void (^)(void))arg4;
+- (void)deleteInteractionsWithIdentifiers:(NSArray *)arg1 bundleID:(NSString *)arg2 protectionClass:(NSString *)arg3 completionHandler:(void (^)(void))arg4;
+- (void)fetchSetupInfoWithCompletionHandler:(void (^)(SpotlightReceiverSetupInfo *))arg1;
+- (void)indexFromBundle:(NSString *)arg1 protectionClass:(NSString *)arg2 items:(NSData *)arg3 itemsContent:(NSData *)arg4 completionHandler:(void (^)(void))arg5;
+- (void)purgeFromBundle:(NSString *)arg1 identifiers:(NSData *)arg2 completionHandler:(void (^)(void))arg3;
 @end
 

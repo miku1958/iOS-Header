@@ -25,13 +25,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setDiscoverySessionIsolationQueue:) NSObject<OS_dispatch_queue> *_discoverySessionIsolationQueue; // @synthesize _discoverySessionIsolationQueue=__discoverySessionIsolationQueue;
 @property (strong, nonatomic, setter=_setRouteObservers:) NSHashTable *_routeObservers; // @synthesize _routeObservers=__routeObservers;
 @property (weak, nonatomic) id<PUAirPlayRouteObserverRegistryDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) unsigned long long routeAvailability; // @synthesize routeAvailability=_routeAvailability;
+@property (nonatomic, setter=_setRouteAvailability:) unsigned long long routeAvailability; // @synthesize routeAvailability=_routeAvailability;
 
 - (void).cxx_destruct;
 - (void)_appEnteredBackground:(id)arg1;
 - (void)_appEnteringForeground:(id)arg1;
 - (void)_availableOutputDevicesDidChange:(id)arg1;
-- (void)_setRouteAvailability:(unsigned long long)arg1;
 - (void)_updateAllObservers;
 - (void)_updateDiscoverySession;
 - (void)_updateObserver:(id)arg1;

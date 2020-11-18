@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MPUPropertySet;
+@class MPPropertySet;
 
 @interface MusicStoreBrowseSectionBuilder : NSObject
 {
@@ -20,11 +20,11 @@
         unsigned int memberOfChartSet:1;
         unsigned int brick:1;
     } _requestedBrowseSectionProperties;
-    MPUPropertySet *_requestedPropertySet;
+    MPPropertySet *_requestedPropertySet;
 }
 
-@property (readonly, nonatomic) MPUPropertySet *requestedPropertySet; // @synthesize requestedPropertySet=_requestedPropertySet;
-@property (readonly, nonatomic) MPUPropertySet *requestedPropertySetExcludingInternalOnlyProperties;
+@property (readonly, nonatomic) MPPropertySet *requestedPropertySet; // @synthesize requestedPropertySet=_requestedPropertySet;
+@property (readonly, nonatomic) MPPropertySet *requestedPropertySetExcludingInternalOnlyProperties;
 
 + (id)allSupportedInternalOnlyProperties;
 + (id)allSupportedPropertiesIncludingInternalOnlyProperties:(BOOL)arg1;

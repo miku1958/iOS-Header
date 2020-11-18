@@ -80,6 +80,7 @@
 - (id)disclaimerAttributedString;
 - (void)doneButtonPressed:(id)arg1;
 - (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)keyboardResizerScrollView;
 - (void)resetTextFields;
 - (void)setUpForChangePassword;
 - (void)setUpForInitialPassword;

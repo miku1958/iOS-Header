@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)originalUncroppedSize;
 - (id)sliceInformation;
 - (struct CGImage *)unslicedImage;
+- (struct CGSize)unslicedSize;
 
 @end
 

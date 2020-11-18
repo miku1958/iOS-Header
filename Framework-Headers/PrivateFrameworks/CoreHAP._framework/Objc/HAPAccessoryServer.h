@@ -15,22 +15,23 @@
     NSString *_identifier;
     BOOL _hasPairings;
     BOOL _reachable;
+    BOOL _securitySessionOpen;
     BOOL _incompatibleUpdate;
     NSNumber *_category;
     HAPAccessory *_primaryAccessory;
     NSArray *_accessories;
     NSArray *_associatedAccessories;
     NSArray *_discoveredAccessories;
-    NSString *_pairSetupPassword;
-    NSString *_homeName;
+    NSHashTable *_internalDelegates;
+    NSObject<OS_dispatch_queue> *_internalDelegateQueue;
     id<HAPAccessoryServerDelegate> _delegate;
     id<HAPAccessoryServerForBridgeDelegate> _bridgeDelegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     id<HAPKeyStore> _keyStore;
-    NSHashTable *_internalDelegates;
-    NSObject<OS_dispatch_queue> *_internalDelegateQueue;
+    NSString *_pairSetupPassword;
+    NSString *_homeName;
 }
 
 @property (copy, nonatomic) NSArray *accessories; // @synthesize accessories=_accessories;
@@ -55,6 +56,7 @@
 @property (strong, nonatomic) HAPAccessory *primaryAccessory; // @synthesize primaryAccessory=_primaryAccessory;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (nonatomic, getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
+@property (getter=isSecuritySessionOpen) BOOL securitySessionOpen; // @synthesize securitySessionOpen=_securitySessionOpen;
 
 + (BOOL)isAccessoryServerWithIdentifierPaired:(id)arg1 keyStore:(id)arg2;
 - (void).cxx_destruct;

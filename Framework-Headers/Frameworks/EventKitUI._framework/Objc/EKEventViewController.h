@@ -9,12 +9,15 @@
 #import <EventKitUI/EKEventTitleDetailItemDelegate-Protocol.h>
 #import <EventKitUI/EKUIEventStatusButtonsViewDelegate-Protocol.h>
 #import <EventKitUI/UIAlertViewDelegate-Protocol.h>
+#import <EventKitUI/UITableViewDataSource-Protocol.h>
+#import <EventKitUI/UITableViewDelegate-Protocol.h>
 
-@class EKEvent, EKEventDetailItem, EKEventEditViewController, EKUIEventStatusButtonsView, EKUIRecurrenceAlertController, NSArray, NSString, SingleToolbarItemContainerView, UIScrollView, UITableView, UIView, _UIAccessDeniedView;
+@class EKEvent, EKEventDetailItem, EKEventEditViewController, EKUIEventStatusButtonsView, EKUIRecurrenceAlertController, NSArray, NSDictionary, NSLayoutConstraint, NSString, SingleToolbarItemContainerView, UIScrollView, UITableView, UIView, _UIAccessDeniedView;
 @protocol EKEventViewDelegate;
 
-@interface EKEventViewController : UIViewController <EKEventTitleDetailItemDelegate, EKUIEventStatusButtonsViewDelegate, UIAlertViewDelegate>
+@interface EKEventViewController : UIViewController <EKEventTitleDetailItemDelegate, EKUIEventStatusButtonsViewDelegate, UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource>
 {
+    NSArray *_items;
     EKEvent *_event;
     BOOL _ignoreDBChanges;
     long long _lastAuthorizationStatus;
@@ -51,9 +54,12 @@
     BOOL _showsDelegateMessage;
     BOOL _dead;
     BOOL _tableIsBeingEdited;
-    NSArray *_items;
     NSArray *_currentSections;
     int _scrollToSection;
+    UIView *_footerView;
+    UITableView *_footerTableView;
+    NSLayoutConstraint *_footerHeightConstraint;
+    NSArray *_footerSections;
     UIView *_blankFooterView;
     BOOL _showingBlankFooterView;
     UIViewController *_confirmationAlertPresentationSourceViewController;
@@ -63,6 +69,7 @@
     int _editorShowTransition;
     int _editorHideTransition;
     id<EKEventViewDelegate> _delegate;
+    struct NSDictionary *_context;
     struct UIEdgeInsets _layoutMargins;
 }
 
@@ -73,6 +80,7 @@
 @property (nonatomic) BOOL allowsSubitems; // @synthesize allowsSubitems=_allowsSubitems;
 @property (nonatomic) BOOL calendarPreviewIsInlineDayView;
 @property (weak, nonatomic) UIViewController *confirmationAlertPresentationSourceViewController;
+@property (strong, nonatomic) NSDictionary *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<EKEventViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -111,10 +119,8 @@
 - (BOOL)_isDisplayingDeletableEvent;
 - (BOOL)_isDisplayingInvitation;
 - (BOOL)_isDisplayingSuggestion;
-- (id)_items;
 - (void)_keyboardWasHidden:(id)arg1;
 - (void)_keyboardWasShown:(id)arg1;
-- (void)_layoutStatusButtonsForInterfaceOrientation:(long long)arg1;
 - (void)_localeChanged;
 - (BOOL)_navigationBarShouldBeHidden;
 - (void)_performDelete:(long long)arg1;
@@ -129,7 +135,7 @@
 - (void)_saveStatus:(long long)arg1;
 - (void)_saveStatus:(long long)arg1 span:(long long)arg2;
 - (unsigned long long)_sectionForDetailItem:(id)arg1;
-- (void)_setNeedsReload;
+- (id)_sectionsForTableView:(id)arg1;
 - (void)_setObservesKeyboardNotifications:(BOOL)arg1;
 - (void)_setUpAttendeesWithAcceptedItem:(id)arg1 declinedItem:(id)arg2 maybeItem:(id)arg3 noReplyItem:(id)arg4;
 - (void)_setUpForEvent;
@@ -175,9 +181,10 @@
 - (void)eventStatusButtonsView:(id)arg1 didSelectAction:(long long)arg2;
 - (double)eventStatusButtonsViewButtonFontSize:(id)arg1;
 - (id)getCurrentContext;
-- (id)initWithEvent:(id)arg1;
+- (id)initWithContext:(struct NSDictionary *)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)invokeAction:(long long)arg1;
+- (id)items;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)openAttendeesDetailItem;
@@ -185,6 +192,7 @@
 - (void)presentEditorAnimated:(BOOL)arg1;
 - (id)previewActionItems;
 - (void)setActiveEventEditor:(id)arg1;
+- (void)setNeedsReload;
 - (void)setTopInset:(double)arg1;
 - (BOOL)shouldShowEditButtonInline;
 - (unsigned long long)supportedInterfaceOrientations;
@@ -202,6 +210,7 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (id)viewTitle;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;

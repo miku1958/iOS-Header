@@ -22,12 +22,13 @@
 
 - (void).cxx_destruct;
 - (void)_enumerateObjectsInArray:(id)arg1 conformingToProtocol:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (id)_internalPluginsPath;
 - (Class)_loadPrincipalClassesConformingToProtocol:(id)arg1 withBundleAtPath:(id)arg2;
 - (id)_loadPrincipalClassesConformingToProtocol:(id)arg1 withBundleDirectoryPath:(id)arg2;
 - (id)_pluginsPath;
 - (id)initWithHealthDaemon:(id)arg1;
 - (void)loadPlugins;
-- (id)queryServerForUUID:(id)arg1 serverDataObject:(id)arg2 queryClass:(Class)arg3 clientProxy:(id)arg4 client:(id)arg5 healthDaemon:(id)arg6 queryDelegate:(id)arg7;
+- (id)queryServerForUUID:(id)arg1 serverDataObject:(id)arg2 queryClass:(Class)arg3 clientProxy:(id)arg4 client:(id)arg5 profile:(id)arg6 queryDelegate:(id)arg7;
 
 @end
 

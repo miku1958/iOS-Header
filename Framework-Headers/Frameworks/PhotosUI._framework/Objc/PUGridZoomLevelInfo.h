@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) PUGridZoomLevelInfo *baseZoomLevelInfo; // @synthesize baseZoomLevelInfo=_baseZoomLevelInfo;
 @property (readonly, nonatomic) PHCachingImageManager *cachingImageManager; // @synthesize cachingImageManager=_cachingImageManager;
 @property (readonly, nonatomic) PUSectionedGridLayout *collectionViewLayout; // @synthesize collectionViewLayout=_collectionViewLayout;
+@property (readonly, nonatomic) unsigned long long dateRangeFormatterPreset;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *displayTitle; // @synthesize displayTitle=_displayTitle;
@@ -69,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (id)diagnosticsProviderForVisualSection:(long long)arg1;
 - (void)didFinishZoomLevelTransition;
 - (void)didTapHeaderView:(id)arg1;
+- (void)getPhotosDataSource:(id *)arg1 displayTitleInfo:(id *)arg2 forDetailsForVisualSection:(long long)arg3;
 - (void)headerView:(id)arg1 actionButtonPressed:(id)arg2;
 - (id)imageDataForAsset:(id)arg1 itemContentScale:(double)arg2 imageWidth:(int *)arg3 imageHeight:(int *)arg4 bytesPerRow:(int *)arg5 dataWidth:(int *)arg6 dataHeight:(int *)arg7 imageDataOffset:(int *)arg8;
 - (long long)imageDeliveryMode;
@@ -77,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (id)newCollectionViewLayout;
 - (void)prepareForTransitionFromZoomLevelInfo:(id)arg1 animated:(BOOL)arg2 interactive:(BOOL)arg3;
 - (void)prepareForTransitionToZoomLevelInfo:(id)arg1 animated:(BOOL)arg2 interactive:(BOOL)arg3;
+- (void)pushPhotosDetailsViewForVisualSection:(long long)arg1 animated:(BOOL)arg2;
 - (void)registerReusableViewClassesForCollectionView:(id)arg1;
 - (void)renderedStrip:(id)arg1 enumerateAssetsForVisualSection:(long long)arg2 inVisualItemRange:(struct _NSRange)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (id)renderedStrip:(id)arg1 imageDataForAsset:(id)arg2 imageWidth:(int *)arg3 imageHeight:(int *)arg4 bytesPerRow:(int *)arg5 dataWidth:(int *)arg6 dataHeight:(int *)arg7 imageDataOffset:(int *)arg8;

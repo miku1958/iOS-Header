@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) long long connectionState; // @synthesize connectionState=_connectionState;
 
-+ (id)notificationName;
 - (id)initWithConnectionState:(long long)arg1;
 
 @end

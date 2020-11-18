@@ -7,6 +7,7 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (HDSQLiteDatabase)
+- (BOOL)hd_isConstraintViolation;
 - (BOOL)hd_isDatabaseCorruptionError;
 - (id)hd_underlyingSQLiteError;
 @end

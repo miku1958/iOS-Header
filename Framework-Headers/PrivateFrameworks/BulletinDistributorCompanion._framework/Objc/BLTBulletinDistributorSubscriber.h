@@ -37,10 +37,9 @@
 - (void)getWillNanoPresentNotificationForSectionID:(id)arg1 subsectionIDs:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithClient:(id)arg1;
-- (void)pingWithBulletin:(id)arg1;
+- (void)pingWithBulletin:(id)arg1 ack:(CDUnknownBlockType)arg2;
 - (void)sendBulletinSummary:(id)arg1;
-- (void)subscribeToSectionID:(id)arg1;
-- (void)subscribeToSectionID:(id)arg1 forFullBulletins:(BOOL)arg2;
+- (void)subscribeToSectionID:(id)arg1 forFullBulletins:(BOOL)arg2 withAck:(BOOL)arg3;
 - (void)subscribeWithMachServiceName:(id)arg1;
 - (void)unsubscribeFromSectionID:(id)arg1;
 

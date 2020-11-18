@@ -34,6 +34,7 @@
 @property (nonatomic) BOOL hasOrigin;
 @property (nonatomic) int origin; // @synthesize origin=_origin;
 
+- (int)StringAsOrigin:(id)arg1;
 - (void)addClusteredRouteRideSelections:(unsigned int)arg1;
 - (void)clearClusteredRouteRideSelections;
 - (unsigned int)clusteredRouteRideSelectionsAtIndex:(unsigned long long)arg1;
@@ -45,6 +46,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)originAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setClusteredRouteRideSelections:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

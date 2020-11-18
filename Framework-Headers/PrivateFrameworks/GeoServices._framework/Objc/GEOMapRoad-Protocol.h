@@ -6,13 +6,29 @@
 
 #import <GeoServices/GEOMapLine-Protocol.h>
 
-@class GEOMapRequest;
+@class GEOMapRequest, NSString;
 
 @protocol GEOMapRoad <GEOMapLine>
 
 @property (readonly, nonatomic) int formOfWay;
+@property (readonly, nonatomic) NSString *internalRoadName;
+@property (readonly, nonatomic) BOOL isBridge;
+@property (readonly, nonatomic) BOOL isRail;
+@property (readonly, nonatomic) BOOL isTunnel;
+@property (readonly, nonatomic) int rampType;
 @property (readonly, nonatomic) int roadClass;
+@property (readonly, nonatomic) unsigned long long roadID;
+@property (readonly, nonatomic) double roadWidth;
+@property (readonly, nonatomic) unsigned long long speedLimit;
+@property (readonly, nonatomic) BOOL speedLimitIsMPH;
+@property (readonly, nonatomic) int travelDirection;
 
 - (GEOMapRequest *)findRoadsFrom:(void (^)(id<GEOMapRoad>))arg1 completionHandler:(void (^)(GEOMapRequest *))arg2;
+- (GEOMapRequest *)findRoadsFromNextIntersection:(void (^)(id<GEOMapRoad>))arg1 completionHandler:(void (^)(GEOMapRequest *))arg2;
+- (GEOMapRequest *)findRoadsFromPreviousIntersection:(void (^)(id<GEOMapRoad>))arg1 completionHandler:(void (^)(GEOMapRequest *))arg2;
+- (GEOMapRequest *)findRoadsToNextIntersection:(void (^)(id<GEOMapRoad>))arg1 completionHandler:(void (^)(GEOMapRequest *))arg2;
+- (GEOMapRequest *)findRoadsToPreviousIntersection:(void (^)(id<GEOMapRoad>))arg1 completionHandler:(void (^)(GEOMapRequest *))arg2;
+- (void)roadEdgesWithHandler:(void (^)(struct *))arg1;
+- (void)roadFeaturesWithHandler:(void (^)(struct *))arg1;
 @end
 

@@ -21,7 +21,6 @@
     MCDRadioViewController *_radioViewController;
     NSArray *_tabIdentifiers;
     long long _fuseSubscriber;
-    BOOL _showRadioTab;
     MPAVController *_player;
     id<MCDCarDisplayServiceProvider> _serviceProvider;
     UITabBarController *_hostTabBarController;
@@ -38,6 +37,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)MCD_popNowPlayingViewControllerAnimated:(BOOL)arg1;
 - (void)MCD_pushNowPlayingViewControllerAnimated:(BOOL)arg1;
 - (void)_accountsDidChangeNotification:(id)arg1;
 - (id)_createViewControllerForIdentifier:(id)arg1;
@@ -47,6 +47,7 @@
 - (BOOL)_limitedUIEnabled;
 - (void)_mediaLibraryDidChange:(id)arg1;
 - (void)_nowPlayingButtonTouchUpInside:(id)arg1;
+- (void)_nowPlayingDidChangeNotification:(id)arg1;
 - (void)_reloadHostTabs;
 - (void)_removeDetailViews;
 - (void)_tabBarDidChangeViewControllers:(id)arg1;

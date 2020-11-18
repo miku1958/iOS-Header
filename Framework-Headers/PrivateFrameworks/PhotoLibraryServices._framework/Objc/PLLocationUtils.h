@@ -10,7 +10,7 @@
 {
 }
 
-+ (BOOL)canUseCoordinate:(CDStruct_c3b9c2ee)arg1;
++ (BOOL)canUseCoordinate:(struct CLLocationCoordinate2D)arg1;
 
 @end
 

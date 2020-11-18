@@ -42,7 +42,7 @@
 - (void)emailButtonClicked;
 - (BOOL)handlesDoneButton;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)mailComposeController:(id)arg1 didFinishWithResult:(int)arg2 error:(id)arg3;
+- (void)mailComposeController:(id)arg1 didFinishWithResult:(long long)arg2 error:(id)arg3;
 - (void)saveLogFile;
 - (void)setPreferenceSpecifier:(id)arg1;
 - (void)startTimer;

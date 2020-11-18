@@ -39,8 +39,13 @@
 + (id)imageForCharacter:(unsigned int)arg1;
 + (id)imageForCharacter:(unsigned int)arg1 highlighted:(BOOL)arg2;
 + (id)imageForCharacter:(unsigned int)arg1 highlighted:(BOOL)arg2 whiteVersion:(BOOL)arg3;
++ (void)loadNumberPadKeyPrototypeView;
++ (id)localizedLettersForCharacter:(unsigned int)arg1;
 + (double)outerCircleDiameter;
 + (struct UIEdgeInsets)paddingOutsideRing;
++ (void)resetLocale;
++ (void)resetLocaleIfNeeded;
++ (id)scriptKey;
 + (double)unhighlightCrossfadeHighlightBeginTime;
 + (double)unhighlightCrossfadeHighlightFadeDuration;
 + (double)unhighlightCrossfadeNormalBeginTime;
@@ -52,6 +57,7 @@
 - (id)defaultColor;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initForCharacter:(unsigned int)arg1;
+- (void)loadImagesForCurrentCharacter;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setUsesColorBurnBlending;
 - (void)setUsesColorDodgeBlending;

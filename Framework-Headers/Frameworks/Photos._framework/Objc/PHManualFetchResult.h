@@ -30,12 +30,13 @@
 - (id)fetchResultWithChangeHandlingValue:(id)arg1;
 - (id)fetchUpdatedObjects;
 - (id)fetchedObjectIDs;
+- (id)fetchedObjectIDsSet;
 - (id)fetchedObjects;
 - (void)getMediaTypeCounts;
 - (unsigned long long)hash;
-- (id)initWithObjects:(id)arg1;
-- (id)initWithObjects:(id)arg1 identifier:(id)arg2 registerIfNeeded:(BOOL)arg3;
-- (id)initWithOids:(id)arg1 identifier:(id)arg2 registerIfNeeded:(BOOL)arg3;
+- (id)initWithObjects:(id)arg1 fetchType:(id)arg2 fetchPropertySets:(id)arg3;
+- (id)initWithObjects:(id)arg1 fetchType:(id)arg2 fetchPropertySets:(id)arg3 identifier:(id)arg4 registerIfNeeded:(BOOL)arg5;
+- (id)initWithOids:(id)arg1 fetchType:(id)arg2 fetchPropertySets:(id)arg3 identifier:(id)arg4 registerIfNeeded:(BOOL)arg5;
 - (BOOL)isEqual:(id)arg1;
 - (id)objectIDAtIndex:(unsigned long long)arg1;
 - (id)photoLibrary;

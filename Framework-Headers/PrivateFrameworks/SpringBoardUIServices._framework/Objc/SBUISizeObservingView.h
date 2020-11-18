@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <SpringBoardFoundation/SBFView.h>
 
 @protocol SBUISizeObservingViewDelegate;
 
-@interface SBUISizeObservingView : UIView
+@interface SBUISizeObservingView : SBFView
 {
     BOOL _delegateInterestedInSizeChanges;
     id<SBUISizeObservingViewDelegate> _delegate;

@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSDate *time; // @synthesize time=_time;
 
 + (BOOL)supportsSecureCoding;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)updateWithCurrentTime:(id)arg1 location:(id)arg2 isMostRecentReroute:(BOOL)arg3 destinationCoordinate:(CDStruct_c3b9c2ee)arg4 numThrottledReroutes:(unsigned long long)arg5;

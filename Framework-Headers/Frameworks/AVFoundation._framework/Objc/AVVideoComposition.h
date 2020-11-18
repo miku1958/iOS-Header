@@ -9,7 +9,7 @@
 #import <AVFoundation/NSCopying-Protocol.h>
 #import <AVFoundation/NSMutableCopying-Protocol.h>
 
-@class AVVideoCompositionCoreAnimationTool, AVVideoCompositionInternal, NSArray;
+@class AVVideoCompositionCoreAnimationTool, AVVideoCompositionInternal, NSArray, NSString;
 
 @interface AVVideoComposition : NSObject <NSCopying, NSMutableCopying>
 {
@@ -17,11 +17,15 @@
 }
 
 @property (readonly, strong, nonatomic) AVVideoCompositionCoreAnimationTool *animationTool;
+@property (readonly, nonatomic) NSString *colorPrimaries;
+@property (readonly, nonatomic) NSString *colorTransferFunction;
+@property (readonly, nonatomic) NSString *colorYCbCrMatrix;
 @property (readonly, nonatomic) Class customVideoCompositorClass;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 frameDuration;
 @property (readonly, copy, nonatomic) NSArray *instructions;
 @property (readonly, nonatomic) float renderScale;
 @property (readonly, nonatomic) struct CGSize renderSize;
+@property (readonly, nonatomic) int sourceTrackIDForFrameTiming;
 
 + (id)_mutableVideoCompositionWithAsset:(id)arg1 applyingCIFiltersWithHandler:(CDUnknownBlockType)arg2;
 + (void)initialize;
@@ -51,11 +55,16 @@
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (void)setAnimationTool:(id)arg1;
 - (void)setBuiltInCompositorName:(id)arg1;
+- (void)setColorPrimaries:(id)arg1;
+- (void)setColorTransferFunction:(id)arg1;
+- (void)setColorYCbCrMatrix:(id)arg1;
 - (void)setCustomVideoCompositorClass:(Class)arg1;
 - (void)setFrameDuration:(CDStruct_1b6d18a9)arg1;
 - (void)setInstructions:(id)arg1;
 - (void)setRenderScale:(float)arg1;
 - (void)setRenderSize:(struct CGSize)arg1;
+- (void)setSourceTrackIDForFrameTiming:(int)arg1;
+- (void)videoCompositionOutputColorPropertiesWithCustomCompositor:(id)arg1 formatDescriptions:(id)arg2 colorPrimaries:(id *)arg3 transferFunction:(id *)arg4 yCbCrMatrix:(id *)arg5;
 
 @end
 

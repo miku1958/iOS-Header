@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HAPBTLEControlOutputStream, HAPBTLETransactionIdentifier, HAPBlockOperation, HAPCharacteristic, HAPTimer, NSData;
+@class HAPBTLEControlOutputStream, HAPBTLETransactionIdentifier, HAPCharacteristic, HMFBlockOperation, HMFTimer, NSData;
 
 @interface HAPBTLERequest : NSObject
 {
@@ -17,9 +17,9 @@
     HAPCharacteristic *_characteristic;
     NSData *_body;
     double _timeoutInterval;
-    HAPBlockOperation *_operation;
+    HMFBlockOperation *_operation;
     HAPBTLEControlOutputStream *_controlOutputStream;
-    HAPTimer *_responseTimer;
+    HMFTimer *_responseTimer;
 }
 
 @property (readonly, copy, nonatomic) NSData *body; // @synthesize body=_body;
@@ -28,8 +28,8 @@
 @property (readonly, nonatomic, getter=isEncrypted) BOOL encrypted; // @synthesize encrypted=_encrypted;
 @property (readonly, nonatomic, getter=isFinished) BOOL finished; // @synthesize finished=_finished;
 @property (readonly, nonatomic) HAPBTLETransactionIdentifier *identifier; // @synthesize identifier=_identifier;
-@property (weak, nonatomic) HAPBlockOperation *operation; // @synthesize operation=_operation;
-@property (strong, nonatomic) HAPTimer *responseTimer; // @synthesize responseTimer=_responseTimer;
+@property (weak, nonatomic) HMFBlockOperation *operation; // @synthesize operation=_operation;
+@property (strong, nonatomic) HMFTimer *responseTimer; // @synthesize responseTimer=_responseTimer;
 @property (readonly, nonatomic) double timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
 @property (readonly, nonatomic) unsigned char type; // @synthesize type=_type;
 

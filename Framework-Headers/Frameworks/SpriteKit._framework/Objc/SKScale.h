@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 
 + (id)scaleBy:(double)arg1 duration:(double)arg2;
 + (id)scaleTo:(double)arg1 duration:(double)arg2;
++ (id)scaleToSize:(struct CGSize)arg1 duration:(double)arg2;
 + (id)scaleXBy:(double)arg1 duration:(double)arg2;
 + (id)scaleXBy:(double)arg1 y:(double)arg2 duration:(double)arg3;
 + (id)scaleXTo:(double)arg1 duration:(double)arg2;

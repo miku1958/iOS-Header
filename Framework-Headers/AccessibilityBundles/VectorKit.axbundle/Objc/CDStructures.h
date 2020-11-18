@@ -21,6 +21,16 @@ struct CGSize {
     double _field2;
 };
 
+struct Matrix<double, 3, 1> {
+    double _field1[3];
+};
+
+struct VKPoint {
+    double x;
+    double y;
+    double z;
+};
+
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
@@ -51,12 +61,6 @@ typedef struct {
     double y0;
     double y1;
 } CDStruct_aca18c62;
-
-typedef struct {
-    double x;
-    double y;
-    double z;
-} CDStruct_31142d93;
 
 typedef struct {
     double latitude;
@@ -95,7 +99,19 @@ typedef struct {
         unsigned short _field2[2];
     } _field11;
     unsigned char _field12;
-    struct _NSRange _field13;
-    BOOL _field14;
-} CDStruct_d7f4d903;
+    BOOL _field13;
+    unsigned char _field14;
+    BOOL _field15;
+    BOOL _field16;
+    unsigned char _field17;
+    BOOL _field18;
+    unsigned char _field19;
+    struct _NSRange _field20;
+    BOOL _field21;
+} CDStruct_6ac9d495;
+
+// Template types
+typedef struct Matrix<double, 3, 1> {
+    double _field1[3];
+} Matrix_e4837a69;
 

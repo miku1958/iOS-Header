@@ -30,6 +30,8 @@
 @property (readonly, nonatomic) double segmentsDownloadedDuration;
 @property (readonly, nonatomic) NSString *serverAddress;
 
+- (double)averageAudioBitrate;
+- (double)averageVideoBitrate;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)finalize;

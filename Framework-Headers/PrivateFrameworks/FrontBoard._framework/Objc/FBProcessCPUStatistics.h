@@ -6,11 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
-@class BSMachPortSendRight;
+@class BSMachPortTaskNameRight;
 
 @interface FBProcessCPUStatistics : NSObject
 {
-    BSMachPortSendRight *_taskNamePort;
+    BSMachPortTaskNameRight *_taskNameRight;
     struct FBProcessTimes _times;
 }
 
@@ -24,7 +24,7 @@
 - (void)_hostwideUserElapsedCPUTime:(double *)arg1 systemElapsedCPUTime:(double *)arg2 idleElapsedCPUTime:(double *)arg3;
 - (void)dealloc;
 - (id)descriptionForCrashReport;
-- (id)initWithTaskNamePort:(id)arg1;
+- (id)initWithTaskNameRight:(id)arg1;
 - (void)update;
 
 @end

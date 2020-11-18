@@ -8,7 +8,7 @@
 
 #import <CoreHAP/NSCopying-Protocol.h>
 
-@class NSNumber;
+@class NSArray, NSNumber;
 
 @interface HAPMetadataConstraints : NSObject <NSCopying>
 {
@@ -17,6 +17,7 @@
     NSNumber *_stepValue;
     NSNumber *_minLength;
     NSNumber *_maxLength;
+    NSArray *_validValues;
 }
 
 @property (strong, nonatomic) NSNumber *maxLength; // @synthesize maxLength=_maxLength;
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) NSNumber *minLength; // @synthesize minLength=_minLength;
 @property (strong, nonatomic) NSNumber *minimumValue; // @synthesize minimumValue=_minimumValue;
 @property (strong, nonatomic) NSNumber *stepValue; // @synthesize stepValue=_stepValue;
+@property (copy, nonatomic) NSArray *validValues; // @synthesize validValues=_validValues;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

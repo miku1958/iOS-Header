@@ -20,6 +20,8 @@
 @property (readonly, nonatomic) unsigned long long daysCount;
 @property (strong, nonatomic) NSMutableArray *timeRanges; // @synthesize timeRanges=_timeRanges;
 
++ (Class)timeRangeType;
+- (int)StringAsDays:(id)arg1;
 - (void)addDay:(int)arg1;
 - (void)addTimeRange:(id)arg1;
 - (void)clearDays;
@@ -27,6 +29,7 @@
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (int)dayAtIndex:(unsigned long long)arg1;
+- (id)daysAsString:(int)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;

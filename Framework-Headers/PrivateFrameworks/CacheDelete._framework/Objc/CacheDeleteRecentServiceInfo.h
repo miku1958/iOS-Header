@@ -4,29 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CacheDelete/CacheDeleteRecent.h>
 
+#import <CacheDelete/NSCopying-Protocol.h>
 #import <CacheDelete/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSNumber;
+@class NSDictionary;
 
-@interface CacheDeleteRecentServiceInfo : NSObject <NSSecureCoding>
+@interface CacheDeleteRecentServiceInfo : CacheDeleteRecent <NSSecureCoding, NSCopying>
 {
-    NSDate *_timestamp;
-    NSNumber *_amount;
+    struct {
+        double timestamp;
+        unsigned long long amount;
+    } urgencies[4];
+    NSDictionary *diagnostics[4];
 }
 
-@property (strong, nonatomic) NSNumber *amount; // @synthesize amount=_amount;
-@property (strong, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
-
-+ (id)cacheDeleteRecentServiceInfo:(id)arg1 timestamp:(id)arg2;
++ (id)cacheDeleteRecentServiceInfo:(id)arg1 atUrgency:(int)arg2 pushed:(BOOL)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)amountAtUrgency:(int)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (id)diagnosticsAtUrgency:(int)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithAmount:(id)arg1 timestamp:(id)arg2;
+- (id)initWithAmount:(id)arg1 atUrgency:(int)arg2 pushed:(BOOL)arg3;
 - (id)initWithCoder:(id)arg1;
-- (BOOL)validateTimeStamp:(double)arg1;
+- (void)log;
+- (int)normalizeUrgency:(int)arg1;
+- (BOOL)updateAmount:(id)arg1 atUrgency:(int)arg2;
+- (void)updateDiagnostics:(id)arg1 atUrgency:(int)arg2;
+- (BOOL)validate:(double)arg1 atUrgency:(int)arg2;
 
 @end
 

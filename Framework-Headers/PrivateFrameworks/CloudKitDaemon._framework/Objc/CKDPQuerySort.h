@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int order; // @synthesize order=_order;
 
 - (void).cxx_destruct;
+- (int)StringAsOrder:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)orderAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

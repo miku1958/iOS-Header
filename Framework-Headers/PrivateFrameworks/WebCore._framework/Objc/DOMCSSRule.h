@@ -18,7 +18,6 @@
 @property (readonly) unsigned short type;
 
 - (void)dealloc;
-- (void)finalize;
 
 @end
 

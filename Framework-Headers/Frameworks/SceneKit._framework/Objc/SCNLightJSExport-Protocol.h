@@ -6,10 +6,11 @@
 
 #import <SceneKit/JSExport-Protocol.h>
 
-@class CAAnimation, NSArray, NSString, SCNLight, SCNMaterialProperty;
+@class CAAnimation, MDLLight, NSArray, NSString, NSURL, SCNLight, SCNMaterialProperty;
 
 @protocol SCNLightJSExport <JSExport>
 
+@property (strong, nonatomic) NSURL *IESProfileURL;
 @property (nonatomic) double attenuationEndDistance;
 @property (nonatomic) double attenuationFalloffExponent;
 @property (nonatomic) double attenuationStartDistance;
@@ -17,6 +18,7 @@
 @property (nonatomic) unsigned long long categoryBitMask;
 @property (strong, nonatomic) id color;
 @property (readonly, nonatomic) SCNMaterialProperty *gobo;
+@property (nonatomic) double intensity;
 @property (copy, nonatomic) NSString *name;
 @property (nonatomic) double orthographicScale;
 @property (readonly, nonatomic) SCNLight *presentationLight;
@@ -28,11 +30,13 @@
 @property (nonatomic) unsigned long long shadowSampleCount;
 @property (nonatomic) double spotInnerAngle;
 @property (nonatomic) double spotOuterAngle;
+@property (nonatomic) double temperature;
 @property (copy, nonatomic) NSString *type;
 @property (nonatomic) double zFar;
 @property (nonatomic) double zNear;
 
 + (id)light;
++ (id)lightWithMDLLight:(MDLLight *)arg1;
 - (void)addAnimation:(CAAnimation *)arg1 forKey:(NSString *)arg2;
 - (CAAnimation *)animationForKey:(NSString *)arg1;
 - (NSArray *)animationKeys;

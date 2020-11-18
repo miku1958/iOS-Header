@@ -20,6 +20,7 @@
 @property (nonatomic) double radius; // @synthesize radius=_radius;
 @property (nonatomic) int status; // @synthesize status=_status;
 
+- (int)StringAsStatus:(id)arg1;
 - (void)addParameters:(double)arg1;
 - (void)clearParameters;
 - (void)copyTo:(id)arg1;
@@ -33,6 +34,7 @@
 - (double)parametersAtIndex:(unsigned long long)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setParameters:(double *)arg1 count:(unsigned long long)arg2;
+- (id)statusAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

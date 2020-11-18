@@ -10,16 +10,20 @@
 
 @class NSArray;
 
-__attribute__((visibility("hidden")))
 @interface _EARSpeechRecognitionResult : NSObject <NSCopying>
 {
-    NSArray *_tokens;
+    vector_ec3bbdac _quasarTokens;
+    vector_ec3bbdac _quasarPreItnTokens;
 }
 
-@property (readonly, copy, nonatomic) NSArray *tokens; // @synthesize tokens=_tokens;
+@property (readonly, copy, nonatomic) NSArray *preITNTokens;
+@property (readonly, nonatomic) vector_ec3bbdac quasarPreItnTokens; // @synthesize quasarPreItnTokens=_quasarPreItnTokens;
+@property (readonly, nonatomic) vector_ec3bbdac quasarTokens; // @synthesize quasarTokens=_quasarTokens;
+@property (readonly, copy, nonatomic) NSArray *tokens;
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)_initWithTokens:(id)arg1;
+- (id)_initWithTokens:(vector_ec3bbdac)arg1 preITNTokens:(vector_ec3bbdac)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

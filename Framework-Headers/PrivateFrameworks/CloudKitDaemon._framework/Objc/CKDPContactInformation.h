@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSString *_emailAddress;
     NSString *_firstName;
     NSString *_lastName;
+    NSString *_phoneNumber;
 }
 
 @property (strong, nonatomic) NSString *containerScopedUserId; // @synthesize containerScopedUserId=_containerScopedUserId;
@@ -26,7 +27,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasEmailAddress;
 @property (readonly, nonatomic) BOOL hasFirstName;
 @property (readonly, nonatomic) BOOL hasLastName;
+@property (readonly, nonatomic) BOOL hasPhoneNumber;
 @property (strong, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
+@property (strong, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

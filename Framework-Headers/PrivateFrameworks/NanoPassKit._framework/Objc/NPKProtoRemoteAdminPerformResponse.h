@@ -12,11 +12,17 @@
 
 @interface NPKProtoRemoteAdminPerformResponse : PBCodable <NSCopying>
 {
+    int _httpStatus;
     NSData *_responseDictionary;
     unsigned int _resultCode;
+    struct {
+        unsigned int httpStatus:1;
+    } _has;
 }
 
+@property (nonatomic) BOOL hasHttpStatus;
 @property (readonly, nonatomic) BOOL hasResponseDictionary;
+@property (nonatomic) int httpStatus; // @synthesize httpStatus=_httpStatus;
 @property (strong, nonatomic) NSData *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
 @property (nonatomic) unsigned int resultCode; // @synthesize resultCode=_resultCode;
 

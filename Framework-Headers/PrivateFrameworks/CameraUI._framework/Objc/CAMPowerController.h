@@ -29,12 +29,12 @@
 - (void)_applicationWillResignActive:(id)arg1;
 - (void)_endBackgroundTaskIfNeeded;
 - (void)_startBackgroundTaskIfNeeded;
-- (void)addAssertionForIndentifier:(unsigned int)arg1 withReason:(unsigned short)arg2;
+- (void)addAssertionForIndentifier:(unsigned int)arg1 withReason:(unsigned int)arg2;
 - (void)dealloc;
 - (id)description;
 - (unsigned int)generateAssertionIdentifier;
 - (id)init;
-- (void)removeAssertionForIdentifier:(unsigned int)arg1 withReason:(unsigned short)arg2;
+- (void)removeAssertionForIdentifier:(unsigned int)arg1 withReason:(unsigned int)arg2;
 
 @end
 

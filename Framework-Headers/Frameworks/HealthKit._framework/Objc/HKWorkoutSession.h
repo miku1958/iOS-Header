@@ -9,7 +9,7 @@
 #import <HealthKit/NSSecureCoding-Protocol.h>
 #import <HealthKit/_HKWorkoutSessionDelegate-Protocol.h>
 
-@class NSDate, NSString, _HKWorkoutSession;
+@class HKWorkoutConfiguration, NSDate, NSString, _HKWorkoutSession;
 @protocol HKWorkoutSessionDelegate, OS_dispatch_queue;
 
 @interface HKWorkoutSession : NSObject <_HKWorkoutSessionDelegate, NSSecureCoding>
@@ -30,16 +30,18 @@
 @property (readonly) NSDate *startDate;
 @property (readonly) long long state;
 @property (readonly) Class superclass;
+@property (readonly, copy) HKWorkoutConfiguration *workoutConfiguration;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_init;
-- (id)_initWithActivityType:(unsigned long long)arg1 locationType:(long long)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithActivityType:(unsigned long long)arg1 locationType:(long long)arg2;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithConfiguration:(id)arg1 error:(id *)arg2;
 - (void)workoutSession:(id)arg1 didChangeToState:(long long)arg2 fromState:(long long)arg3 date:(id)arg4;
 - (void)workoutSession:(id)arg1 didFailWithError:(id)arg2;
+- (void)workoutSession:(id)arg1 didGenerateEvent:(id)arg2;
 
 @end
 

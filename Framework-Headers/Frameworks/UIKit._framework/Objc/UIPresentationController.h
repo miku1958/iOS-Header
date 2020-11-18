@@ -15,7 +15,7 @@
 #import <UIKit/_UIContentContainerInternal-Protocol.h>
 #import <UIKit/_UITraitEnvironmentInternal-Protocol.h>
 
-@class NSString, UIBarButtonItem, UITapGestureRecognizer, UITraitCollection, UIView, UIViewController;
+@class NSArray, NSString, NSUUID, UIBarButtonItem, UITapGestureRecognizer, UITraitCollection, UIView, UIViewController;
 @protocol UIAdaptivePresentationControllerDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning, UIViewControllerTransitionCoordinator, UIViewControllerTransitionCoordinatorContext;
 
 @interface UIPresentationController : NSObject <_UIAppearanceContainer, _UITraitEnvironmentInternal, _UIContentContainerInternal, UIGestureRecognizerDelegate, UIAppearanceContainer, UITraitEnvironment, UIContentContainer, UIFocusEnvironment>
@@ -31,9 +31,10 @@
     UITraitCollection *_lastNotifiedTraitCollection;
     UIView *_snapshotOverlayView;
     UITapGestureRecognizer *_backGestureRecognizer;
+    NSUUID *_currentRunningAnimationsUUID;
+    BOOL _changedPresentingViewControllerDuringAdaptation;
     BOOL _containerIgnoresDirectTouchEvents;
     BOOL _isCurrentStateCancelled;
-    BOOL _changedPresentingViewControllerDuringAdaptation;
     UIView *_sourceView;
     UIBarButtonItem *_barButtonItem;
     UIViewController *_presentingViewController;
@@ -64,26 +65,32 @@
 @property (nonatomic, getter=_preferredContentSize, setter=_setPreferredContentSize:) struct CGSize _preferredContentSize; // @synthesize _preferredContentSize;
 @property (copy, nonatomic) CDUnknownBlockType _toViewForCurrentTransition; // @synthesize _toViewForCurrentTransition=__toViewForCurrentTransition;
 @property (copy, nonatomic) CDUnknownBlockType _transitionViewForCurrentTransition; // @synthesize _transitionViewForCurrentTransition=__transitionViewForCurrentTransition;
+@property (readonly, nonatomic) long long adaptivePresentationStyle;
 @property (strong, nonatomic, getter=_adaptiveTransitionContext, setter=_setAdaptiveTransitionContext:) id<UIViewControllerTransitionCoordinatorContext> adaptiveTransitionContext; // @synthesize adaptiveTransitionContext=_adaptiveTransitionContext;
 @property (strong, nonatomic, getter=_adaptiveTransitionCoordinator, setter=_setAdaptiveTransitionCoordinator:) id<UIViewControllerTransitionCoordinator> adaptiveTransitionCoordinator; // @synthesize adaptiveTransitionCoordinator=_adaptiveTransitionCoordinator;
 @property (strong, nonatomic) UIBarButtonItem *barButtonItem; // @synthesize barButtonItem=_barButtonItem;
 @property (nonatomic, getter=_changedPresentingViewControllerDuringAdaptation, setter=_setChangedPresentingViewControllerDuringAdaptation:) BOOL changedPresentingViewControllerDuringAdaptation; // @synthesize changedPresentingViewControllerDuringAdaptation=_changedPresentingViewControllerDuringAdaptation;
 @property (nonatomic, getter=_containerIgnoresDirectTouchEvents, setter=_setContainerIgnoresDirectTouchEvents:) BOOL containerIgnoresDirectTouchEvents; // @synthesize containerIgnoresDirectTouchEvents=_containerIgnoresDirectTouchEvents;
-@property (strong, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
+@property (strong, nonatomic, setter=_setContainerView:) UIView *containerView; // @synthesize containerView=_containerView;
 @property (strong, nonatomic, getter=_currentInteractionController, setter=_setCurrentInteractionController:) id<UIViewControllerInteractiveTransitioning> currentInteractionController; // @synthesize currentInteractionController=_currentInteractionController;
 @property (strong, nonatomic, getter=_currentTransitionController, setter=_setCurrentTransitionController:) id<UIViewControllerAnimatedTransitioning> currentTransitionController; // @synthesize currentTransitionController=_currentTransitionController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UIAdaptivePresentationControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) struct CGRect frameOfPresentedViewInContainerView;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isCurrentStateCancelled; // @synthesize isCurrentStateCancelled=_isCurrentStateCancelled;
 @property (copy, nonatomic) UITraitCollection *overrideTraitCollection; // @synthesize overrideTraitCollection=_overrideTraitCollection;
 @property (readonly, nonatomic) struct CGSize preferredContentSize;
+@property (readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
 @property (readonly, weak, nonatomic) UIView *preferredFocusedView;
 @property (readonly, nonatomic) long long presentationStyle;
 @property (strong, nonatomic, getter=_presentationView, setter=_setPresentationView:) UIView *presentationView; // @synthesize presentationView=_presentationView;
-@property (strong, nonatomic) UIViewController *presentedViewController; // @synthesize presentedViewController=_presentedViewController;
-@property (strong, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
+@property (readonly, nonatomic) UIView *presentedView;
+@property (strong, nonatomic, setter=_setPresentedViewController:) UIViewController *presentedViewController; // @synthesize presentedViewController=_presentedViewController;
+@property (strong, nonatomic, setter=_setPresentingViewController:) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
+@property (readonly, nonatomic) BOOL shouldPresentInFullscreen;
+@property (readonly, nonatomic) BOOL shouldRemovePresentersView;
 @property (nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
 @property (strong, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property (nonatomic) long long state; // @synthesize state=_state;
@@ -144,19 +151,19 @@
 - (BOOL)_preserveResponderAcrossWindows;
 - (void)_releaseSnapshot;
 - (void)_sendDelegateWillPresentWithAdaptiveStyle:(long long)arg1 transitionCoordinator:(id)arg2;
-- (void)_setContainerView:(id)arg1;
-- (void)_setPresentedViewController:(id)arg1;
-- (void)_setPresentingViewController:(id)arg1;
+- (void)_sendPresentationControllerNotification:(id)arg1;
 - (id)_sharedParent:(id)arg1 willTransitionToTraitCollection:(id)arg2 withTransitionCoordinator:(id)arg3;
 - (BOOL)_shouldAdaptFromTraitCollection:(id)arg1 toTraitCollection:(id)arg2;
-- (BOOL)_shouldChangeStatusBarViewController;
 - (BOOL)_shouldDisableInteractionDuringTransitions;
 - (BOOL)_shouldDisablePresentersAppearanceCallbacks;
 - (BOOL)_shouldGrabPresentersView;
 - (BOOL)_shouldKeepCurrentFirstResponder;
+- (BOOL)_shouldMakePresentedViewControllerFirstResponder;
 - (BOOL)_shouldOccludeDuringPresentation;
+- (BOOL)_shouldPresentedViewControllerControlStatusBarAppearance;
 - (BOOL)_shouldRespectDefinesPresentationContext;
 - (BOOL)_shouldSavePresentedViewControllerForStateRestoration;
+- (long long)_subclassPreferredFocusedViewPrioritizationType;
 - (void)_systemLayoutFittingSizeDidChangeForChildContentContainer:(id)arg1 childViewController:(id)arg2;
 - (id)_traitCollectionForChildEnvironment:(id)arg1;
 - (void)_transitionFromDidEnd;
@@ -172,8 +179,8 @@
 - (id)_viewsParticipatingInNavigationControllerTransition;
 - (void)_willRunTransitionForCurrentStateDeferred:(BOOL)arg1;
 - (void)_window:(id)arg1 willTransitionToTraitCollection:(id)arg2 withTransitionCoordinator:(id)arg3;
-- (long long)adaptivePresentationStyle;
 - (long long)adaptivePresentationStyleForTraitCollection:(id)arg1;
+- (void)completeCurrentTransitionImmediately;
 - (void)containerViewDidLayoutSubviews;
 - (void)containerViewWillLayoutSubviews;
 - (void)dealloc;
@@ -182,19 +189,16 @@
 - (void)dismissalTransitionWillBegin;
 - (BOOL)dismissed;
 - (BOOL)dismissing;
-- (struct CGRect)frameOfPresentedViewInContainerView;
+- (id)init;
 - (id)initWithPresentedViewController:(id)arg1 presentingViewController:(id)arg2;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)presentationTransitionDidEnd:(BOOL)arg1;
 - (void)presentationTransitionWillBegin;
 - (BOOL)presented;
 - (id)presentedContentContainer;
-- (id)presentedView;
 - (BOOL)presenting;
 - (void)runTransitionForCurrentState;
 - (void)setNeedsFocusUpdate;
-- (BOOL)shouldPresentInFullscreen;
-- (BOOL)shouldRemovePresentersView;
 - (BOOL)shouldUpdateFocusInContext:(id)arg1;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (void)systemLayoutFittingSizeDidChangeForChildContentContainer:(id)arg1;

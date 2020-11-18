@@ -6,21 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocation;
+@class CLLocation, NSDate;
 
 @interface RTHint : NSObject
 {
     CLLocation *_location;
     long long _source;
+    NSDate *_date;
 }
 
+@property (readonly, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (nonatomic) long long source; // @synthesize source=_source;
 
 + (id)hintSourceToString:(long long)arg1;
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithLocation:(id)arg1 source:(long long)arg2;
+- (unsigned long long)hash;
+- (id)initWithLocation:(id)arg1 source:(long long)arg2 date:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

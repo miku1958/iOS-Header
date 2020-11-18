@@ -14,8 +14,6 @@
 
 @interface SFRemoteHotspotSession : NSObject <SFRemoteHotspotClient, SFCompanionXPCManagerObserver>
 {
-    unsigned long long _browsingActivity;
-    unsigned long long _enableActivity;
     BOOL _browsing;
     id<SFRemoteHotspotSessionDelegate> _delegate;
     id<SFRemoteHotspotProtocol> _connectionProxy;
@@ -29,6 +27,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)enableHotspotForDevice:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)enableRemoteHotspotForDevice:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)init;

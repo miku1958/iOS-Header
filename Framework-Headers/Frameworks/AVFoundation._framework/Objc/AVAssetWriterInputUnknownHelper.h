@@ -33,6 +33,7 @@
 - (void)setPreferredMediaChunkDuration:(CDStruct_1b6d18a9)arg1;
 - (void)setPreferredMediaChunkSize:(long long)arg1;
 - (void)setPreferredVolume:(float)arg1;
+- (void)setProvisionalAlternateGroupID:(short)arg1;
 - (void)setSampleReferenceBaseURL:(id)arg1;
 - (void)setSourcePixelBufferAttributes:(id)arg1;
 - (void)setTransform:(struct CGAffineTransform)arg1;

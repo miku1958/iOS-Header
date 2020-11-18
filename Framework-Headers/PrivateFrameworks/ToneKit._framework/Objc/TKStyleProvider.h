@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ToneKit/TKVibrationRecorderStyleProvider-Protocol.h>
 
@@ -12,13 +12,11 @@
 
 @interface TKStyleProvider : NSObject <TKVibrationRecorderStyleProvider>
 {
-    UIScreen *_screen;
     NSBundle *_bundle;
     NSMutableDictionary *_cachedStyleProperties;
+    UIScreen *_screen;
 }
 
-@property (strong, nonatomic, setter=_setBundle:) NSBundle *_bundle; // @synthesize _bundle;
-@property (strong, nonatomic, setter=_setCachedStyleProperties:) NSMutableDictionary *_cachedStyleProperties; // @synthesize _cachedStyleProperties;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) double defaultAnimationDuration;
 @property (readonly, copy) NSString *description;
@@ -50,6 +48,8 @@
 @property (readonly, nonatomic) double vibrationRecorderRippleRingLineWidth;
 @property (readonly, nonatomic) UIColor *vibrationRecorderRippleViewBackgroundColor;
 
+- (void).cxx_destruct;
+- (id)_bundle;
 - (id)_cachedImageForPropertyWithSelector:(SEL)arg1 size:(struct CGSize)arg2 opaque:(BOOL)arg3 withDrawingBlock:(CDUnknownBlockType)arg4;
 - (id)_cachedImageWithName:(id)arg1 forPropertyWithSelector:(SEL)arg2;
 - (id)_cachedResizableImageForPropertyWithSelector:(SEL)arg1 capInsets:(struct UIEdgeInsets)arg2 size:(struct CGSize)arg3 opaque:(BOOL)arg4 withDrawingBlock:(CDUnknownBlockType)arg5;

@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
     double smoothingCoefficient;
     struct _psdGradientColor fillColor;
     int blendMode;
-    double singlePixelDistance;
     struct {
         unsigned int colorEdgePixel:2;
         unsigned int opacityEdgePixel:2;
@@ -46,8 +45,6 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (double)fillCoefficient;
 - (struct _psdGradientColor)fillColor;
-- (BOOL)hasDoubleColorStops;
-- (BOOL)hasDoubleOpacityStops;
 - (BOOL)hasEdgePixel;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithColorStops:(id)arg1 colorMidpoints:(id)arg2 opacityStops:(id)arg3 opacityMidpoints:(id)arg4 smoothingCoefficient:(double)arg5 fillCoefficient:(double)arg6;

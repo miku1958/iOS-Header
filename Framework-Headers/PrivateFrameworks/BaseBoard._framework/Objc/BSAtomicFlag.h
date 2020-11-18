@@ -8,7 +8,7 @@
 
 @interface BSAtomicFlag : NSObject
 {
-    int _flag;
+    _Atomic BOOL _flag;
 }
 
 - (id)description;

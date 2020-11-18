@@ -4,28 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <FrontBoardServices/FBSProcess.h>
 
 #import <FrontBoardUIServices/FBUIProcess-Protocol.h>
 
 @class NSString;
 
-@interface FBUIProcess : NSObject <FBUIProcess>
+@interface FBUIProcess : FBSProcess <FBUIProcess>
 {
 }
 
+@property (readonly, copy, nonatomic) NSString *bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) int pid;
 @property (readonly) Class superclass;
 
-+ (id)process;
-- (id)bundleIdentifier;
 - (BOOL)isApplicationProcess;
 - (BOOL)isExtensionProcess;
 - (BOOL)isRunning;
 - (BOOL)isSystemApplicationProcess;
-- (int)pid;
 
 @end
 

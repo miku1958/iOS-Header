@@ -9,8 +9,6 @@
 @interface AVCaptureDevice (CAMCaptureEngine)
 - (id)cameraPanoramaFormatForConfiguration:(id)arg1;
 - (id)cameraStillImageFormat;
-- (long long)cameraVideoConfigurationForDeviceFormat:(id)arg1;
-- (long long)cameraVideoConfigurationForSessionPreset:(id)arg1;
 - (id)cameraVideoFormatForVideoConfiguration:(long long)arg1;
 - (id)cameraVideoPresetForVideoConfiguration:(long long)arg1;
 @end

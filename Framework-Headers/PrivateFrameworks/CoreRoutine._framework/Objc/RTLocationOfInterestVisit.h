@@ -24,6 +24,7 @@
 - (void).cxx_destruct;
 - (BOOL)_enteredAndExitedOnSameDay;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithEntryTime:(id)arg1 exitTime:(id)arg2;

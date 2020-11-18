@@ -16,11 +16,11 @@
     BOOL _isCustom;
     BOOL _wasInitalizedFromDictionaryRepresentation;
     NSString *_languageCode;
-    long long _gender;
     long long _footprint;
     NSString *_name;
     NSNumber *_contentVersion;
     NSString *_masteredVersion;
+    long long _gender;
 }
 
 @property (readonly, nonatomic) NSNumber *contentVersion; // @synthesize contentVersion=_contentVersion;

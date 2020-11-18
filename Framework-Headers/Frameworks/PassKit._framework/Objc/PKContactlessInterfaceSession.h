@@ -6,8 +6,8 @@
 
 #import <PassKitCore/PKPaymentSession.h>
 
-@class NSArray, PKFieldProperties, PKPaymentApplication, PKPaymentPass;
-@protocol PKContactlessInterfaceSessionDelegate;
+@class NSArray, NSObject, PKFieldProperties, PKPaymentApplication, PKPaymentPass;
+@protocol OS_dispatch_queue, PKContactlessInterfaceSessionDelegate;
 
 @interface PKContactlessInterfaceSession : PKPaymentSession
 {
@@ -25,21 +25,22 @@
     unsigned long long _fieldPropertiesLookupTechnology;
     unsigned long long _state;
     id<PKContactlessInterfaceSessionDelegate> _delegate;
-    long long _encryptionScheme;
+    NSObject<OS_dispatch_queue> *_callbackQueue;
 }
 
 @property (readonly, nonatomic) PKPaymentApplication *activatedPaymentApplication;
 @property (readonly, nonatomic) PKPaymentPass *activatedPaymentPass;
 @property (readonly, nonatomic) NSArray *activatedValueAddedServicePasses; // @synthesize activatedValueAddedServicePasses=_activatedValueAddedServicePasses;
-@property (nonatomic) id<PKContactlessInterfaceSessionDelegate> delegate;
+@property (weak, nonatomic) id<PKContactlessInterfaceSessionDelegate> delegate;
 @property (readonly, nonatomic) PKFieldProperties *fieldProperties; // @synthesize fieldProperties=_fieldProperties;
 @property (readonly, nonatomic) unsigned long long state;
 
+- (void).cxx_destruct;
 - (id)_filteredLoyaltyPassesFromVASTransactions:(id)arg1 activatedPasses:(id)arg2;
+- (BOOL)activatePaymentApplication:(id)arg1 forPaymentPass:(id)arg2;
 - (BOOL)activatePaymentApplication:(id)arg1 forPaymentPass:(id)arg2 markAsDefault:(BOOL)arg3;
 - (BOOL)activateValueAddedServicePassWhitelist:(id)arg1 greylist:(id)arg2;
-- (BOOL)authorizeAndStartCardEmulationWithCredential:(id)arg1;
-- (void)dealloc;
+- (BOOL)authorizeAndStartCardEmulationWithCredential:(id)arg1 deferAuthorization:(BOOL)arg2;
 - (BOOL)fieldPresent;
 - (void)setState:(unsigned long long)arg1;
 - (BOOL)stopCardEmulation;

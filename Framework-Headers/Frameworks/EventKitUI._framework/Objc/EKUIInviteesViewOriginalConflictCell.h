@@ -8,7 +8,10 @@
 
 @interface EKUIInviteesViewOriginalConflictCell : EKUIInviteesViewTimeSlotCell
 {
+    BOOL _conflict;
 }
+
+@property BOOL conflict; // @synthesize conflict=_conflict;
 
 - (id)participantsTextColor;
 - (id)timeTextColor;

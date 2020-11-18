@@ -9,6 +9,7 @@
 #import <CloudDocsDaemon/NSURLSessionDownloadDelegate-Protocol.h>
 
 @class NSDictionary, NSMutableDictionary, NSOperationQueue, NSString, NSURL, NSURLSession;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface BRCUserDefaultsManager : NSObject <NSURLSessionDownloadDelegate>
@@ -19,6 +20,8 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _configurationPlistDidUpdateBlock;
     NSOperationQueue *_downloadQueue;
     NSURLSession *_urlSession;
+    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_callbackQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -33,9 +36,12 @@ __attribute__((visibility("hidden")))
 - (void)_loadCachedServerConfigurationDictionaryFromDB:(id)arg1;
 - (void)_loadServerConfigurationDictionary;
 - (void)_parsePlistWithURL:(id)arg1;
-- (void)_prepopulateGlobalContainerUserDefaults;
+- (void)_prepopulateGlobalUserDefaults;
+- (void)_reset;
 - (void)_saveServerConfigurationDictionaryToDB:(id)arg1;
-- (id)defaultsForContainerIdentifier:(id)arg1;
+- (void)_setServerConfigurationURL:(id)arg1 whenLoaded:(CDUnknownBlockType)arg2;
+- (id)defaultsForAppLibraryIdentifier:(id)arg1;
+- (id)defaultsForAppLibraryName:(id)arg1;
 - (id)init;
 - (void)reset;
 - (void)setServerConfigurationURL:(id)arg1 whenLoaded:(CDUnknownBlockType)arg2;

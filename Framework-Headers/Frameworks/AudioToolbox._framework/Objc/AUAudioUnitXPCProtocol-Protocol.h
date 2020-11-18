@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <AudioToolbox/_AURemoteParameterSynchronization-Protocol.h>
+
 @class AUAudioUnitProperty, AVAudioFormat, CAXPCObject, NSData, NSString;
 
-@protocol AUAudioUnitXPCProtocol
-- (void)addPropertyObserver:(AUAudioUnitProperty *)arg1;
-- (void)addRemoteParameterObserver:(BOOL)arg1 reply:(void (^)(unsigned long long))arg2;
+@protocol AUAudioUnitXPCProtocol <_AURemoteParameterSynchronization>
+- (void)addPropertyObserver:(AUAudioUnitProperty *)arg1 context:(unsigned long long)arg2;
 - (void)close:(void (^)(void))arg1;
 - (void)getBusses:(unsigned int)arg1 reply:(void (^)(NSArray *))arg2;
 - (void)getParameter:(unsigned long long)arg1 reply:(void (^)(float))arg2;
@@ -20,14 +21,14 @@
 - (void)parameterStringFromValue:(float)arg1 currentValue:(BOOL)arg2 address:(unsigned long long)arg3 reply:(void (^)(NSString *))arg4;
 - (void)parameterValueFromString:(NSString *)arg1 address:(unsigned long long)arg2 reply:(void (^)(float))arg3;
 - (void)parametersForOverviewWithCount:(long long)arg1 reply:(void (^)(NSArray *))arg2;
-- (void)removePropertyObserver:(AUAudioUnitProperty *)arg1;
-- (void)removeRemoteParameterObserver:(unsigned long long)arg1 reply:(void (^)(void))arg2;
+- (void)removePropertyObserver:(AUAudioUnitProperty *)arg1 context:(unsigned long long)arg2;
 - (void)reset;
 - (void)setBusCount:(unsigned long long)arg1 scope:(unsigned int)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)setBusFormat:(unsigned int)arg1 scope:(unsigned int)arg2 format:(AVAudioFormat *)arg3 reply:(void (^)(NSArray *, NSError *))arg4;
-- (void)setParameter:(unsigned long long)arg1 value:(float)arg2;
+- (void)setValue:(id)arg1 forKey:(NSString *)arg2 reply:(void (^)(NSArray *))arg3;
 - (void)setValue:(id)arg1 forProperty:(AUAudioUnitProperty *)arg2 reply:(void (^)(NSArray *))arg3;
 - (void)uninitialize:(void (^)(void))arg1;
+- (void)valueForKey:(NSString *)arg1 reply:(void (^)(id))arg2;
 - (void)valueForProperty:(AUAudioUnitProperty *)arg1 reply:(void (^)(id))arg2;
 @end
 

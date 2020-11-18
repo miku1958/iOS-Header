@@ -4,41 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUAlbumListViewControllerSpec.h>
+#import <PhotosUI/PUAlbumListViewControllerCommonPhoneSpec.h>
 
-@interface PUAlbumListViewControllerPhoneSpec : PUAlbumListViewControllerSpec
+@interface PUAlbumListViewControllerPhoneSpec : PUAlbumListViewControllerCommonPhoneSpec
 {
 }
 
+- (void)_getStackSize:(struct CGSize *)arg1 edgeInset:(double *)arg2 forLayoutReferenceSize:(struct CGSize)arg3;
 - (id)_nameOfAddSharedAlbumPlaceholderImage;
 - (id)_nameOfEmptyAlbumPlaceholderImage;
 - (id)_nameOfEmptySharedAlbumPlaceholderImage;
 - (id)_nameOfHiddenAlbumPlaceholderImage;
 - (id)_nameOfRecentlyDeletedAlbumPlaceholderImage;
-- (long long)albumDeletionConfirmationStyle;
-- (BOOL)allowsAlbumCountSubtitle;
-- (BOOL)canDisplaySearchActionInNavigationBar;
+- (BOOL)canShowVirtualCollections;
 - (long long)cellContentViewLayout;
-- (struct CGSize)cellSizeForBounds:(struct CGRect)arg1;
+- (struct CGSize)cellSizeForStackSize:(struct CGSize)arg1;
+- (void)configureGridLayout:(id)arg1 forLayoutReferenceSize:(struct CGSize)arg2;
 - (void)configureStackViewWithGridStyle:(id)arg1;
-- (id)emptyStackPhotoDecoration;
-- (id)feedViewControllerSpec;
-- (id)gridViewControllerSpec;
-- (long long)imageContentMode;
+- (id)emptyAlbumPlaceholderImage;
+- (unsigned long long)folderStackViewStyle;
 - (struct CGSize)imageSize;
-- (id)panoramaViewControllerSpec;
-- (struct CGSize)photoSize;
-- (id)photosPickerViewControllerSpec;
+- (struct CGSize)imageSizeForLayoutReferenceSize:(struct CGSize)arg1;
 - (double)sectionFooterHeight;
 - (double)sectionHeaderHeight;
+- (struct UIEdgeInsets)sectionInsetsForLayoutReferenceSize:(struct CGSize)arg1;
+- (BOOL)shouldShowSectionHeaders;
 - (BOOL)shouldUseTableView;
-- (BOOL)showsAlbumBadgeOnCellContentView;
-- (BOOL)showsAlbumBadgeOnStackView;
-- (struct UIOffset)stackOffset;
-- (struct UIEdgeInsets)stackPerspectiveInsets;
-- (struct UIOffset)stackPerspectiveOffset;
-- (id)stackPhotoDecoration;
 - (struct CGSize)stackSize;
+- (struct CGSize)stackSizeForLayoutReferenceSize:(struct CGSize)arg1;
 - (unsigned long long)stackViewStyle;
 
 @end

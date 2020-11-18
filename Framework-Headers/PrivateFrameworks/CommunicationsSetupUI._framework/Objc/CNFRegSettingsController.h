@@ -59,12 +59,12 @@
 - (void)_handleDeactivation:(id)arg1;
 - (void)_handleFaceTimeCTRegistrationStatusChanged;
 - (void)_handleFaceTimeEntitlementStatusChanged;
-- (void)_handleFaceTimeStateChanged;
 - (void)_handleFailedAccountReactivation:(id)arg1 error:(id)arg2;
 - (void)_handleOutgoingRelayCallerIDChanged;
 - (void)_handleRelayCapabilitiesChanged;
 - (void)_handleSuccessfulAccountReactivation:(id)arg1;
 - (void)_handleThumperCapabilitiesChanged;
+- (BOOL)_hasActiveFaceTimeCall;
 - (void)_hideLocaleChooser;
 - (id)_localeChooserForAccount:(id)arg1;
 - (id)_operationalAccounts;
@@ -77,6 +77,7 @@
 - (void)_setupAccountHandlersForDisabling;
 - (void)_setupAccountHandlersForNormalOperation;
 - (void)_setupAllListeners;
+- (BOOL)_shouldDisableAccountConfigurationUI;
 - (BOOL)_shouldShowAliasInfo;
 - (BOOL)_shouldUseDisabledHandlers;
 - (void)_showAccountAlertForAccount:(id)arg1;
@@ -121,11 +122,13 @@
 - (id)getReceiveRelayedCallsEnabledForSpecifier:(id)arg1;
 - (long long)groupIdForSpecifier:(id)arg1;
 - (long long)groupIdForSpecifierId:(id)arg1;
+- (void)handleCallStatusChanged;
 - (long long)indexOfLastSpecifierInGroup:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (BOOL)isShowingAddButton;
 - (BOOL)isShowingBlankAlias;
 - (void)keyboardDismissed:(id)arg1;
+- (id)loadSpecifiersFromPlistName:(id)arg1 target:(id)arg2 bundle:(id)arg3;
 - (id)logName;
 - (id)pendingAddressForSpecifier:(id)arg1;
 - (BOOL)popToFirstRunControllerAnimated:(BOOL)arg1;
@@ -151,6 +154,8 @@
 - (void)setReceiveRelayedCallsEnabled:(id)arg1 specifier:(id)arg2;
 - (BOOL)shouldReloadSpecifiersOnResume;
 - (BOOL)shouldShowBlacklistSettings;
+- (BOOL)shouldShowCallDirectorySettingsBundleSpecifiers;
+- (BOOL)shouldShowICSSettingsBundleSpecifiers;
 - (BOOL)shouldShowReceiveRelayCalls;
 - (BOOL)shouldShowReceiveThumperCalls;
 - (BOOL)shouldShowReplyWithMessage;

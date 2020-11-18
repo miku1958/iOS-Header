@@ -23,6 +23,8 @@
 
 - (void).cxx_destruct;
 - (id)initWithClassArray:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToLKClasses:(id)arg1;
 
 @end
 

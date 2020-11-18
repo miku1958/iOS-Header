@@ -21,12 +21,16 @@
 - (id)_createEditableCell;
 - (id)_displayCell;
 - (BOOL)canEditRowAtIndex:(long long)arg1;
+- (long long)chosenIndexForOrganDonorStatus:(unsigned long long)arg1;
 - (void)commitEditing;
 - (long long)commitEditingStyle:(long long)arg1 forRowAtIndex:(long long)arg2;
 - (void)didCommitEditingStyle:(long long)arg1 forRowAtIndex:(long long)arg2;
+- (id)displayValueForOrganDonorStatus:(unsigned long long)arg1;
 - (long long)editingStyleForRowAtIndex:(long long)arg1;
 - (BOOL)hasPresentableData;
 - (void)medicalIDEditorCellDidChangeValue:(id)arg1;
+- (id)possibleValues;
+- (void)promptOrganDonationRegistrationIfPossibleWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)shouldHighlightRowAtIndex:(long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndex:(long long)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndex:(long long)arg2;

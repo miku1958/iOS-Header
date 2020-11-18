@@ -47,14 +47,14 @@ __attribute__((visibility("hidden")))
 - (void)showCopyCalloutWithAnimation:(BOOL)arg1;
 - (void)showRangeSelection;
 - (void)startSelectionCreationWithPoint:(struct CGPoint)arg1;
-- (void)switchToBlockModeForHandle:(id)arg1 withPoint:(struct CGPoint)arg2;
+- (void)switchToBlockModeForHandle:(id)arg1;
 - (void)switchToTextModeForHandle:(id)arg1;
 - (id)tintView;
 - (void)touchChanged:(id)arg1 forHandle:(id)arg2;
 - (void)touchChanged:(id)arg1 forHandleInText:(id)arg2;
 - (struct CGRect)unobscuredRect;
 - (void)updateFrameAndHandlesWithAnimation:(BOOL)arg1;
-- (void)updateRangedSelectionData;
+- (void)updateRangedSelectionData:(id)arg1;
 - (BOOL)updateRectForCalloutBar:(id)arg1 inWindow:(id)arg2;
 - (void)updateSelectionCreationWithPoint:(struct CGPoint)arg1;
 - (void)updateSelectionRects;

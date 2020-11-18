@@ -18,7 +18,7 @@
 - (NSBundle *)applicationBundle;
 - (NSURL *)baseURLForServerType:(long long)arg1 partitionType:(long long)arg2;
 - (NSString *)bundleID;
-- (NSString *)cloudKitAuthToken;
+- (void)cloudKitAuthTokenWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
 - (CKDServerConfiguration *)config;
 - (CKContainerID *)containerID;
 - (NSString *)containerScopedUserID;
@@ -28,13 +28,14 @@
 - (void)fetchConfigurationUsingBackgroundSession:(BOOL)arg1 allowsCellularAccess:(BOOL)arg2 withCompletionHandler:(void (^)(CKDServerConfiguration *, NSError *))arg3;
 - (void)fetchContainerScopedUserIDUsingBackgroundSession:(BOOL)arg1 allowsCellularAccess:(BOOL)arg2 withCompletionHandler:(void (^)(NSString *, NSError *))arg3;
 - (void)fetchDeviceIDUsingBackgroundSession:(BOOL)arg1 allowsCellularAccess:(BOOL)arg2 withCompletionHandler:(void (^)(NSString *, NSError *))arg3;
+- (void)fetchPrivateURLWithServerType:(long long)arg1 completionHandler:(void (^)(NSURL *, NSError *))arg2;
 - (void)fetchPublicURLUsingBackgroundSession:(BOOL)arg1 allowsCellularAccess:(BOOL)arg2 serverType:(long long)arg3 completionHandler:(void (^)(NSURL *, NSError *))arg4;
 - (NSString *)hardwareID;
-- (NSString *)iCloudAuthToken;
+- (void)iCloudAuthTokenWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
 - (NSString *)languageCode;
 - (CKDMescalSession *)mescalSession;
 - (NSString *)regionCode;
-- (void)renewAuthTokenWithReason:(NSString *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
+- (void)renewAuthTokenWithReason:(NSString *)arg1 failedToken:(NSString *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)renewMescalSessionForRequest:(CKDURLRequest *)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)resetMescalSession;
 - (NSString *)serverPreferredPushEnvironment;

@@ -19,8 +19,8 @@
 - (id)errorResolverForItem:(id)arg1;
 - (Class)itemClass;
 - (id)playbackInfoForIdentifier:(id)arg1;
-- (unsigned long long)realRepeatType;
-- (unsigned long long)realShuffleType;
+- (long long)realRepeatType;
+- (long long)realShuffleType;
 
 @end
 

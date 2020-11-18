@@ -54,6 +54,7 @@
 - (void)reevaluateHardwareKeyboardClient;
 - (void)reevaluateSceneSettings;
 - (void)resume;
+- (void)retrieveDebugInformationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)runOperations:(CDUnknownBlockType)arg1 onHandler:(id)arg2;
 - (void)scheduleWindowTimeout;
 - (void)transition:(id)arg1 eventStage:(unsigned long long)arg2 withInfo:(id)arg3 fromHandler:(id)arg4;

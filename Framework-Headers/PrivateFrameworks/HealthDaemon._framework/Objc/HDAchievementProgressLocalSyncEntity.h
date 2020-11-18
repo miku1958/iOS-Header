@@ -10,12 +10,10 @@
 {
 }
 
-+ (long long)_outgoingCategoryForNanoSyncProtocolVersion:(int)arg1;
++ (id)_mergedValuesForInsertionForPairs:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (long long)category;
 + (int)nanoSyncObjectType;
-+ (long long)outgoingCategoryWithSyncStore:(id)arg1;
-+ (int)outgoingNanoSyncObjectTypeForNanoSyncProtocolVersion:(int)arg1;
-+ (long long)receiveSyncObjects:(id)arg1 syncStore:(id)arg2 healthDaemon:(id)arg3 error:(id *)arg4;
++ (long long)receiveSyncObjects:(id)arg1 syncStore:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (unsigned long long)supportedNanoSyncDirectionsForProtocolVersion:(int)arg1;
 + (id)syncEntityDependencies;
 + (long long)syncEntityType;

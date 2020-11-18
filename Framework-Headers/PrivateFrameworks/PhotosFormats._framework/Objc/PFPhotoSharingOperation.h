@@ -20,13 +20,15 @@
     BOOL _shouldStripMetadata;
     NSURL *_outputDirectoryURL;
     NSString *_generatedFileName;
+    NSString *_customAccessibilityLabel;
     NSURL *_imageURL;
     PFAssetAdjustments *__adjustments;
 }
 
 @property (strong, nonatomic, setter=_setAdjustments:) PFAssetAdjustments *_adjustments; // @synthesize _adjustments=__adjustments;
+@property (copy, nonatomic) NSString *customAccessibilityLabel; // @synthesize customAccessibilityLabel=_customAccessibilityLabel;
 @property (copy, nonatomic) NSString *generatedFileName; // @synthesize generatedFileName=_generatedFileName;
-@property (copy, nonatomic) NSURL *imageURL; // @synthesize imageURL=_imageURL;
+@property (copy, nonatomic, setter=_setImageURL:) NSURL *imageURL; // @synthesize imageURL=_imageURL;
 @property (readonly, nonatomic) NSError *operationError;
 @property (copy, nonatomic) NSURL *outputDirectoryURL; // @synthesize outputDirectoryURL=_outputDirectoryURL;
 @property (readonly, nonatomic) float progress;
@@ -36,7 +38,6 @@
 @property (readonly, nonatomic) BOOL success;
 
 - (void).cxx_destruct;
-- (void)_setImageURL:(id)arg1;
 - (id)initWithImageURL:(id)arg1 adjustmentData:(id)arg2;
 - (void)main;
 

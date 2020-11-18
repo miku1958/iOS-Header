@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, PKPaymentRequest;
 
@@ -19,7 +19,7 @@
 @property (strong, nonatomic) NSData *nonceData; // @synthesize nonceData=_nonceData;
 @property (readonly, nonatomic) PKPaymentRequest *paymentRequest; // @synthesize paymentRequest=_paymentRequest;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithPaymentRequest:(id)arg1;
 
 @end

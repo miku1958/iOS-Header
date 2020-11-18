@@ -15,7 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (unsigned long long)_accessibilityTraitsForElementAtIndex:(unsigned long long)arg1;
 - (id)accessibilityElements;
-- (void)setSelectedIndex:(long long)arg1;
+- (void)setSelectedIndex:(unsigned long long)arg1;
 
 @end
 

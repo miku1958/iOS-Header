@@ -4,33 +4,52 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CacheDelete/CacheDeleteRecent.h>
 
+#import <CacheDelete/NSCopying-Protocol.h>
 #import <CacheDelete/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSMutableDictionary, NSNumber, NSString;
+@class NSDate, NSMutableDictionary, NSNumber, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
-@interface CacheDeleteRecentVolumeInfo : NSObject <NSSecureCoding>
+@interface CacheDeleteRecentVolumeInfo : CacheDeleteRecent <NSSecureCoding, NSCopying>
 {
     NSString *_volume;
     NSDate *_timestamp;
     NSNumber *_freespace;
     NSMutableDictionary *_services;
+    NSObject<OS_dispatch_queue> *_collection_queue;
+    NSMutableDictionary *_diagnostics;
 }
 
-@property (strong, nonatomic) NSNumber *freespace; // @synthesize freespace=_freespace;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *collection_queue; // @synthesize collection_queue=_collection_queue;
+@property (strong, nonatomic) NSMutableDictionary *diagnostics; // @synthesize diagnostics=_diagnostics;
+@property (strong) NSNumber *freespace; // @synthesize freespace=_freespace;
 @property (strong, nonatomic) NSMutableDictionary *services; // @synthesize services=_services;
-@property (strong, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
+@property (strong) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 @property (strong, nonatomic) NSString *volume; // @synthesize volume=_volume;
 
-+ (id)cacheDeleteRecentVolumeInfo:(id)arg1 freespace:(id)arg2 timestamp:(id)arg3 volumeName:(id)arg4;
++ (id)cacheDeleteRecentVolumeInfo:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyInvalidsAtUrgency:(int)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (id)diagnosticsAtUrgency:(int)arg1;
+- (id)diagnosticsForService:(id)arg1 atUrgency:(int)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithServices:(id)arg1 freespace:(id)arg2 timestamp:(id)arg3 volumeName:(id)arg4;
-- (int)validate:(double)arg1 threshold:(id)arg2;
+- (id)initWithServices:(id)arg1 volumeName:(id)arg2;
+- (void)invalidate;
+- (void)log;
+- (id)lookupAmountForService:(id)arg1 atUrgency:(int)arg2;
+- (id)recentInfoAtUrgency:(int)arg1;
+- (void)removeServiceInfo:(id)arg1;
+- (void)updateDiagnostics:(id)arg1 atUrgency:(int)arg2;
+- (void)updateDiagnostics:(id)arg1 forService:(id)arg2 atUrgency:(int)arg3;
+- (BOOL)updateServiceInfoAmount:(id)arg1 forService:(id)arg2 atUrgency:(int)arg3 pushed:(BOOL)arg4;
+- (BOOL)validate:(double)arg1;
+- (BOOL)validateServiceInfo:(id)arg1 atUrgency:(int)arg2;
 
 @end
 

@@ -6,15 +6,18 @@
 
 #import <Foundation/NSObject.h>
 
-@class CBBlueLightClient;
+@class CBAdaptationClient, CBBlueLightClient;
 
 @interface CBClient : NSObject
 {
     CBBlueLightClient *_blueLightClient;
+    CBAdaptationClient *_adaptationClient;
 }
 
+@property (readonly) CBAdaptationClient *adaptationClient; // @synthesize adaptationClient=_adaptationClient;
 @property (readonly) CBBlueLightClient *blueLightClient; // @synthesize blueLightClient=_blueLightClient;
 
++ (BOOL)supportsAdaptation;
 + (BOOL)supportsBlueLightReduction;
 - (id)init;
 

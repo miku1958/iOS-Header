@@ -4,20 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/_UIBackdropView.h>
 
-@class _UIBackdropView;
-
-@interface SPUIReplicatorView : UIView
+@interface SPUIReplicatorView : _UIBackdropView
 {
-    _UIBackdropView *_backdropView;
 }
 
-@property (strong) _UIBackdropView *backdropView; // @synthesize backdropView=_backdropView;
-
-- (void).cxx_destruct;
 - (id)init;
-- (void)updateBackdropView;
 
 @end
 

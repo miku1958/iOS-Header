@@ -6,7 +6,7 @@
 
 #import <ManagedConfiguration/MCEmailAccountPayloadBase.h>
 
-@class NSData, NSNumber, NSString;
+@class NSData, NSDictionary, NSNumber, NSString;
 
 @interface MCEASAccountPayload : MCEmailAccountPayloadBase
 {
@@ -24,6 +24,7 @@
     NSData *_certificatePersistentID;
     BOOL _syncDefaultFoldersOnly;
     NSNumber *_useSSL;
+    NSDictionary *_communicationServiceRules;
     NSNumber *_syncDefaultFoldersOnlyNum;
 }
 
@@ -31,6 +32,7 @@
 @property (copy, nonatomic) NSString *accountPersistentUUID; // @synthesize accountPersistentUUID=_accountPersistentUUID;
 @property (strong, nonatomic) NSData *certificatePersistentID; // @synthesize certificatePersistentID=_certificatePersistentID;
 @property (readonly, strong, nonatomic) NSString *certificateUUID; // @synthesize certificateUUID=_certificateUUID;
+@property (readonly, nonatomic) NSDictionary *communicationServiceRules; // @synthesize communicationServiceRules=_communicationServiceRules;
 @property (copy, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
 @property (readonly, strong, nonatomic) NSData *embeddedCertificate; // @synthesize embeddedCertificate=_embeddedCertificate;
 @property (readonly, strong, nonatomic) NSString *embeddedCertificateName; // @synthesize embeddedCertificateName=_embeddedCertificateName;
@@ -52,6 +54,7 @@
 - (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)payloadDescriptionKeyValueSections;
+- (id)restrictions;
 - (id)stubDictionary;
 - (id)subtitle1Description;
 - (id)subtitle1Label;

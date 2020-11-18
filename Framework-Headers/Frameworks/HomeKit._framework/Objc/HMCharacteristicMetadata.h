@@ -9,7 +9,7 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSString, NSUUID;
+@class NSArray, NSNumber, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMCharacteristicMetadata : NSObject <NSSecureCoding, HMObjectMerge>
@@ -21,6 +21,7 @@
     NSString *_format;
     NSString *_units;
     NSString *_manufacturerDescription;
+    NSArray *_validValues;
     NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
@@ -37,6 +38,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier;
 @property (copy, nonatomic) NSString *units; // @synthesize units=_units;
+@property (copy, nonatomic) NSArray *validValues; // @synthesize validValues=_validValues;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

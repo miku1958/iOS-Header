@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
     NSEnumerator *_enumerator;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithContainerPlist:(id)arg1;
 - (id)nextObject;
 

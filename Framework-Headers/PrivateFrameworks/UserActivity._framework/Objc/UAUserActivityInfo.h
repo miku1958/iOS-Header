@@ -4,76 +4,101 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <UserActivity/NSCopying-Protocol.h>
 #import <UserActivity/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSDictionary, NSError, NSSet, NSString, NSURL, NSUUID;
+@class NSDate, NSDictionary, NSError, NSMutableDictionary, NSSet, NSString, NSURL, NSUUID, SFPeerDevice, _LSUserActivityWasContinuedInfo;
 
 @interface UAUserActivityInfo : NSObject <NSCopying, NSSecureCoding>
 {
+    NSMutableDictionary *_payloads;
     BOOL _eligibleForHandoff;
     BOOL _eligibleForSearch;
-    BOOL _eligibleForPublicIndex;
+    BOOL _eligibleForPublicIndexing;
+    BOOL _eligibleForReminders;
+    BOOL _eligibleToAdvertise;
+    BOOL _eligibleToAlwaysAdvertise;
+    BOOL _dirty;
+    BOOL _payloadAvailable;
+    BOOL _payloadRequested;
     NSUUID *_uuid;
     unsigned long long _type;
-    NSDictionary *_options;
-    unsigned long long _changeCount;
-    NSDate *_activityDate;
     NSString *_title;
-    NSString *_typeIdentifier;
-    NSString *_dynamicIdentifier;
+    NSString *_activityType;
+    NSString *_dynamicActivityType;
     NSString *_teamIdentifier;
     NSURL *_webpageURL;
-    NSData *_streamsData;
-    NSData *_encodedUserInfo;
+    NSDictionary *_options;
     NSError *_encodedUserInfoError;
     NSSet *_requiredUserInfoKeys;
+    NSDate *_when;
     NSDictionary *_encodingOptions;
-    NSData *_contentAttributeSetData;
     NSString *_contentUserAction;
     NSSet *_keywords;
     NSDate *_expirationDate;
     NSError *_error;
+    SFPeerDevice *_peerDevice;
+    NSString *_bundleIdentifier;
+    _LSUserActivityWasContinuedInfo *_wasContinuedInfo;
 }
 
-@property (copy) NSDate *activityDate; // @synthesize activityDate=_activityDate;
-@property unsigned long long changeCount; // @synthesize changeCount=_changeCount;
-@property (copy) NSData *contentAttributeSetData; // @synthesize contentAttributeSetData=_contentAttributeSetData;
+@property (copy) NSString *activityType; // @synthesize activityType=_activityType;
+@property (copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy) NSString *contentUserAction; // @synthesize contentUserAction=_contentUserAction;
-@property (copy) NSString *dynamicIdentifier; // @synthesize dynamicIdentifier=_dynamicIdentifier;
+@property (readonly, getter=isDirty) BOOL dirty; // @synthesize dirty=_dirty;
+@property (copy) NSString *dynamicActivityType; // @synthesize dynamicActivityType=_dynamicActivityType;
 @property BOOL eligibleForHandoff; // @synthesize eligibleForHandoff=_eligibleForHandoff;
-@property BOOL eligibleForPublicIndex; // @synthesize eligibleForPublicIndex=_eligibleForPublicIndex;
+@property BOOL eligibleForPublicIndexing; // @synthesize eligibleForPublicIndexing=_eligibleForPublicIndexing;
+@property BOOL eligibleForReminders; // @synthesize eligibleForReminders=_eligibleForReminders;
 @property BOOL eligibleForSearch; // @synthesize eligibleForSearch=_eligibleForSearch;
-@property (copy) NSData *encodedUserInfo; // @synthesize encodedUserInfo=_encodedUserInfo;
+@property (readonly) BOOL eligibleToAdvertise; // @synthesize eligibleToAdvertise=_eligibleToAdvertise;
+@property (readonly) BOOL eligibleToAlwaysAdvertise; // @synthesize eligibleToAlwaysAdvertise=_eligibleToAlwaysAdvertise;
 @property (copy) NSError *encodedUserInfoError; // @synthesize encodedUserInfoError=_encodedUserInfoError;
 @property (copy) NSDictionary *encodingOptions; // @synthesize encodingOptions=_encodingOptions;
 @property (copy) NSError *error; // @synthesize error=_error;
 @property (copy) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (copy) NSSet *keywords; // @synthesize keywords=_keywords;
 @property (copy) NSDictionary *options; // @synthesize options=_options;
+@property (getter=isPayloadAvailable) BOOL payloadAvailable; // @synthesize payloadAvailable=_payloadAvailable;
+@property (getter=isPayloadRequested) BOOL payloadRequested; // @synthesize payloadRequested=_payloadRequested;
+@property (copy) NSDictionary *payloads;
+@property (strong) SFPeerDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
 @property (copy) NSSet *requiredUserInfoKeys; // @synthesize requiredUserInfoKeys=_requiredUserInfoKeys;
-@property (copy) NSData *streamsData; // @synthesize streamsData=_streamsData;
 @property (copy) NSString *teamIdentifier; // @synthesize teamIdentifier=_teamIdentifier;
 @property (copy) NSString *title; // @synthesize title=_title;
 @property unsigned long long type; // @synthesize type=_type;
-@property (copy) NSString *typeIdentifier; // @synthesize typeIdentifier=_typeIdentifier;
 @property (copy) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property (strong) _LSUserActivityWasContinuedInfo *wasContinuedInfo; // @synthesize wasContinuedInfo=_wasContinuedInfo;
 @property (copy) NSURL *webpageURL; // @synthesize webpageURL=_webpageURL;
+@property (copy) NSDate *when; // @synthesize when=_when;
 
++ (id)encodedInfoToOldEncodedInfo:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)_createUserActivityStrings:(id)arg1 secondaryString:(id)arg2 optionalData:(id)arg3;
+- (id)archiveUserActivityInfo;
+- (void)clearPayload;
+- (id)copyUserActivityInfoWithUUID:(BOOL)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithArchivedUserActivityInfo:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithUUID:(id)arg1 type:(unsigned long long)arg2 options:(id)arg3;
+- (id)initWithUserActivityInfo:(id)arg1;
 - (id)logString;
 - (id)optionalUserActivityData;
+- (id)payloadForIdentifier:(id)arg1;
+- (id)payloadIdentifiers;
+- (BOOL)requestPayloadWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (BOOL)requestPayloadWithCompletionHandlerEvenIfClean:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)secondaryUserActivityString;
+- (BOOL)setPayload:(id)arg1 identifier:(id)arg2;
 - (id)statusString;
 - (id)userActivityString;
+- (BOOL)wasResumedOnAnotherDeviceWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

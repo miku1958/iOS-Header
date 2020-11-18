@@ -12,7 +12,7 @@
 
 @interface GEOMapsUsageFeedbackCollection : PBCodable <NSCopying>
 {
-    CDStruct_612aec5b _sessionID;
+    struct GEOSessionID _sessionID;
     double _sessionRelativeTimestamp;
     double _zoomLevel;
     int _actionType;
@@ -58,7 +58,7 @@
 @property (strong, nonatomic) GEORouteDetails *routeDetails; // @synthesize routeDetails=_routeDetails;
 @property (nonatomic) int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property (strong, nonatomic) GEOMapsServerMetadata *serverMetadata; // @synthesize serverMetadata=_serverMetadata;
-@property (nonatomic) CDStruct_612aec5b sessionID; // @synthesize sessionID=_sessionID;
+@property (nonatomic) struct GEOSessionID sessionID; // @synthesize sessionID=_sessionID;
 @property (nonatomic) double sessionRelativeTimestamp; // @synthesize sessionRelativeTimestamp=_sessionRelativeTimestamp;
 @property (nonatomic) int uiTarget; // @synthesize uiTarget=_uiTarget;
 @property (nonatomic) double zoomLevel; // @synthesize zoomLevel=_zoomLevel;
@@ -67,6 +67,10 @@
 + (id)feedbackCollectionWithTraits:(id)arg1 mapItem:(id)arg2 timestamp:(double)arg3 resultIndex:(int)arg4;
 + (id)feedbackCollectionWithTraits:(id)arg1 placeActionDetails:(id)arg2 routeDetails:(id)arg3;
 + (id)feedbackCollectionWithTraits:(id)arg1 placeActionDetails:(id)arg2 uiTarget:(int)arg3;
+- (int)StringAsActionType:(id)arg1;
+- (int)StringAsLocationBucket:(id)arg1;
+- (int)StringAsUiTarget:(id)arg1;
+- (id)actionTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -79,8 +83,10 @@
 - (id)initWithTraits:(id)arg1 placeActionDetails:(id)arg2 routeDetails:(id)arg3;
 - (id)initWithTraits:(id)arg1 placeActionDetails:(id)arg2 uiTarget:(int)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (id)locationBucketAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)uiTargetAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

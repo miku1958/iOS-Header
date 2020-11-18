@@ -22,6 +22,7 @@
 @property (nonatomic) BOOL placeUpdated; // @dynamic placeUpdated;
 @property (readonly) Class superclass;
 
+- (id)authorsExcludingCurrentUser;
 - (id)targetSearchIndexable;
 
 @end

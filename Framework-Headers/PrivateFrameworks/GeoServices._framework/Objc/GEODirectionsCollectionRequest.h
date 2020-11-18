@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *requestElements; // @synthesize requestElements=_requestElements;
 
++ (Class)requestElementsType;
 - (void)addRequestElements:(id)arg1;
 - (void)clearRequestElements;
 - (void)copyTo:(id)arg1;

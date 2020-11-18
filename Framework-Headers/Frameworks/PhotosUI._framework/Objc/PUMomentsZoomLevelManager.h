@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUI/PUPhotosDataSourceChangeObserver-Protocol.h>
+#import <PhotosUI/PXPhotosDataSourceChangeObserver-Protocol.h>
 
-@class NSMutableArray, NSString, PUCollectionViewIntermediateDataSource, PUPhotosDataSource, PUSessionInfo, PUZoomableGridViewControllerSpec;
+@class NSMutableArray, NSString, PUCollectionViewIntermediateDataSource, PUSessionInfo, PUZoomableGridViewControllerSpec, PXPhotosDataSource;
 
-@interface PUMomentsZoomLevelManager : NSObject <PUPhotosDataSourceChangeObserver>
+@interface PUMomentsZoomLevelManager : NSObject <PXPhotosDataSourceChangeObserver>
 {
     NSMutableArray *_allLevelInfos;
-    PUPhotosDataSource *_momentsDataSource;
+    PXPhotosDataSource *_momentsDataSource;
     BOOL _isInvalidatingLayoutOfZoomLevels;
     PUZoomableGridViewControllerSpec *_zoomableGridSpec;
     PUSessionInfo *_sessionInfo;
@@ -42,7 +42,7 @@
 - (id)momentsDataSource;
 - (id)newViewControllerForZoomLevel:(unsigned long long)arg1;
 - (void)photosDataSource:(id)arg1 didReceivePhotoLibraryChange:(id)arg2;
-- (void)updateZoomableGridSpecForTraitCollection:(id)arg1;
+- (void)updateZoomableGridSpecForTraitCollection:(id)arg1 referenceSize:(struct CGSize)arg2;
 - (BOOL)zoomLevel:(unsigned long long)arg1 isHigherThanZoomLevel:(unsigned long long)arg2;
 - (unsigned long long)zoomLevelAboveZoomLevel:(unsigned long long)arg1;
 - (unsigned long long)zoomLevelBelowZoomLevel:(unsigned long long)arg1;

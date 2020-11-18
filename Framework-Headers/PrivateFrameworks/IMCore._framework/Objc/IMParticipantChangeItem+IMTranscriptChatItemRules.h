@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <IMFoundation/IMParticipantChangeItem.h>
+#import <IMSharedUtilities/IMParticipantChangeItem.h>
 
 @interface IMParticipantChangeItem (IMTranscriptChatItemRules)
 - (id)_newChatItems;

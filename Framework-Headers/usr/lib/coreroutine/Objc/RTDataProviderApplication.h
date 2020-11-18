@@ -6,11 +6,11 @@
 
 #import <coreroutine/RTDataProviderDuet.h>
 
-#import <coreroutine/RTDataProviderProtocol-Protocol.h>
+#import <coreroutine/RTDataProviderEventProtocol-Protocol.h>
 
 @class NSString;
 
-@interface RTDataProviderApplication : RTDataProviderDuet <RTDataProviderProtocol>
+@interface RTDataProviderApplication : RTDataProviderDuet <RTDataProviderEventProtocol>
 {
 }
 
@@ -21,9 +21,10 @@
 
 + (id)providerName;
 + (id)sharedInstance;
-- (id)init;
+- (id)initWithName:(id)arg1 purgeManager:(id)arg2;
 - (void)populateDataProviderWithHandler:(CDUnknownBlockType)arg1;
 - (id)supportedEventClasses;
+- (id)supportedEventStreams;
 
 @end
 

@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSString *syncID; // @synthesize syncID=_syncID;
 @property (nonatomic) unsigned long long version; // @synthesize version=_version;
 
++ (Class)allObjectsType;
 - (void).cxx_destruct;
 - (void)addAllObjects:(id)arg1;
 - (id)allObjectsAtIndex:(unsigned long long)arg1;

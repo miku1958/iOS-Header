@@ -52,7 +52,10 @@
 @property (readonly) NSString *phoneticFirstName;
 @property (readonly) NSString *phoneticLastName;
 @property (readonly) NSString *phoneticMiddleName;
+@property (readonly) NSString *phoneticOrganization;
 @property (readonly) NSArray *postalAddresses;
+@property (readonly) NSString *preferredApplePersonaIdentifier;
+@property (readonly) NSString *preferredLikenessSource;
 @property (readonly) NSString *pronunciationFirstName;
 @property (readonly) NSString *pronunciationLastName;
 @property (readonly) NSArray *relatedNames;
@@ -65,7 +68,7 @@
 @property (readonly) NSArray *urls;
 
 + (id)filteredPersonWithPerson:(id)arg1 blacklistedFields:(id)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)filterItems:(id)arg1 property:(id)arg2;
 - (id)initWithPerson:(id)arg1 blacklistedFields:(id)arg2;
 - (id)jpegImageDataOfAllowableKinds:(id)arg1 maximumLength:(unsigned long long)arg2 cropRects:(id *)arg3;

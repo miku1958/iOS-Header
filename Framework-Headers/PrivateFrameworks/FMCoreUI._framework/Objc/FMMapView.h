@@ -14,7 +14,7 @@
 @class CADisplayLink, FMAnnotationView, FMMapGestureRecognizer, MKMapCamera, MKMapView, MKUserLocation, MKUserLocationView, NSMutableArray, NSString, NSTimer, UIColor, _MKUserTrackingButton;
 @protocol FMAnnotation><MKAnnotation, FMMapViewDelegate, MKAnnotation;
 
-@interface FMMapView : UIView <FMMapGestureRecognizerDelegate, FMMapAnnotationGestureRecognizerDelegate, MKMapViewDelegate, MKUserTrackingView>
+@interface FMMapView : UIView <FMMapGestureRecognizerDelegate, FMMapAnnotationGestureRecognizerDelegate, MKUserTrackingView, MKMapViewDelegate>
 {
     BOOL _isAllAnnotationsShown;
     BOOL _isMapPositioningDisabled;
@@ -123,7 +123,7 @@
 - (void)calloutButtonTapped:(id)arg1;
 - (BOOL)canRotateForHeading;
 - (void)clearUserLocation;
-- (CDStruct_c3b9c2ee)coordinateForAnnotationView:(id)arg1;
+- (struct CLLocationCoordinate2D)coordinateForAnnotationView:(id)arg1;
 - (void)createMKMapView;
 - (void)createUserTrackingButton;
 - (float)dampingForAltitude:(double)arg1 andDistance:(double)arg2;
@@ -136,7 +136,7 @@
 - (void)didMoveToSuperview;
 - (void)didSelectAnnotation:(id)arg1;
 - (void)displayAllAnnotations;
-- (double)distanceBetweenOrigin:(CDStruct_c3b9c2ee)arg1 andDestination:(CDStruct_c3b9c2ee)arg2;
+- (double)distanceBetweenOrigin:(struct CLLocationCoordinate2D)arg1 andDestination:(struct CLLocationCoordinate2D)arg2;
 - (void)doubleSelectAnnotation:(id)arg1;
 - (void)fingerOffAnnotation:(id)arg1;
 - (void)fingerOnAnnotation:(id)arg1;
@@ -147,12 +147,12 @@
 - (void)initialize;
 - (void)invalidateLayoutTimer;
 - (BOOL)isOverlayOnMap:(id)arg1;
-- (BOOL)isValidLocation:(CDStruct_c3b9c2ee)arg1;
+- (BOOL)isValidLocation:(struct CLLocationCoordinate2D)arg1;
 - (void)layoutMapView;
 - (void)layoutSubviews;
 - (void)mapDoubleTapped:(id)arg1;
 - (CDStruct_02837cd9)mapRectForAnnotations:(id)arg1;
-- (CDStruct_02837cd9)mapRectMakeWithRadialDistanceForCoordinate:(CDStruct_c3b9c2ee)arg1 andRadius:(double)arg2;
+- (CDStruct_02837cd9)mapRectMakeWithRadialDistanceForCoordinate:(struct CLLocationCoordinate2D)arg1 andRadius:(double)arg2;
 - (void)mapSwiped:(id)arg1 withPercent:(double)arg2;
 - (void)mapSwipedBegin:(id)arg1;
 - (void)mapSwipedEnd:(id)arg1 withPercent:(double)arg2;
@@ -170,12 +170,12 @@
 - (id)mapView:(id)arg1 rendererForOverlay:(id)arg2;
 - (id)mapView:(id)arg1 viewForAnnotation:(id)arg2;
 - (void)mapViewDidStopLocatingUser:(id)arg1;
-- (void)moveCenterByOffset:(struct CGPoint)arg1 from:(CDStruct_c3b9c2ee)arg2;
+- (void)moveCenterByOffset:(struct CGPoint)arg1 from:(struct CLLocationCoordinate2D)arg2;
 - (id)nearbyAnnotations;
 - (CDStruct_02837cd9)normalizeMapRect:(CDStruct_02837cd9)arg1 toZoomScale:(double)arg2;
 - (void)recenterVisibleAnnotations;
 - (void)refreshCameraPosition;
-- (void)refreshOverlayForAnnotation:(id)arg1 andCoordinate:(CDStruct_c3b9c2ee)arg2;
+- (void)refreshOverlayForAnnotation:(id)arg1 andCoordinate:(struct CLLocationCoordinate2D)arg2;
 - (void)removeAllOverlaysAndCurrentAnnotationOverlay:(id)arg1;
 - (void)removeAnnotation:(id)arg1;
 - (void)removeAnnotations:(id)arg1;
@@ -199,7 +199,7 @@
 - (void)updateCameraPositionForAnnotation:(id)arg1;
 - (void)updateCameraPositionForMapRect:(CDStruct_02837cd9)arg1 withZoom:(BOOL)arg2;
 - (void)updateCameraPositionForNoLocation;
-- (void)updateCameraPositionWithLocation:(CDStruct_c3b9c2ee)arg1 andAltitude:(double)arg2;
+- (void)updateCameraPositionWithLocation:(struct CLLocationCoordinate2D)arg1 andAltitude:(double)arg2;
 - (void)updateCanSelectUserAnnotation;
 - (void)updateOverlayForAnnotation:(id)arg1 withForce:(BOOL)arg2;
 - (void)updatePreviewLocationForAnnotation:(id)arg1;

@@ -29,6 +29,7 @@
 - (id)_schema;
 - (id)bestPreviewRendition;
 - (const CDStruct_26b2aa83 *)cuiPartDefinition;
+- (void)dealloc;
 - (void)didTurnIntoFault;
 - (id)displayName;
 - (long long)elementID;

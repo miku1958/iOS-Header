@@ -4,22 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <StoreKitUI/SKUIImageDataConsumer.h>
+#import <StoreKitUI/SKUIStyledImageDataConsumer.h>
 
-@interface SKUIScreenshotDataConsumer : SKUIImageDataConsumer
+@interface SKUIScreenshotDataConsumer : SKUIStyledImageDataConsumer
 {
     BOOL _forcesPortrait;
-    BOOL _drawsBorder;
-    struct CGSize _screenshotSize;
 }
 
-@property (readonly, nonatomic) struct CGSize constraintSize; // @synthesize constraintSize=_screenshotSize;
-@property (nonatomic) BOOL drawsBorder; // @synthesize drawsBorder=_drawsBorder;
 @property (nonatomic) BOOL forcesPortrait; // @synthesize forcesPortrait=_forcesPortrait;
 
 + (id)consumer;
 + (id)consumerWithScreenshotSize:(struct CGSize)arg1;
-- (id)imageForColor:(id)arg1;
 - (id)imageForColor:(id)arg1 size:(struct CGSize)arg2;
 - (id)imageForImage:(id)arg1;
 

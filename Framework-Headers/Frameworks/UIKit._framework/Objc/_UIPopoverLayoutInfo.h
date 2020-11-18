@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     struct UIEdgeInsets _contentInset;
     double _arrowHeight;
+    double _arrowOffset;
     struct CGSize _preferredContentSize;
     unsigned long long _preferredArrowDirections;
     struct CGRect _containingFrame;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) unsigned long long arrowDirection; // @synthesize arrowDirection=_arrowDirection;
 @property (nonatomic) double arrowHeight; // @synthesize arrowHeight=_arrowHeight;
+@property (nonatomic) double arrowOffset; // @synthesize arrowOffset=_arrowOffset;
 @property (nonatomic) BOOL canOverlapSourceViewRect; // @synthesize canOverlapSourceViewRect=_canOverlapSourceViewRect;
 @property (nonatomic) struct CGRect containingFrame; // @synthesize containingFrame=_containingFrame;
 @property (nonatomic) struct UIEdgeInsets containingFrameInsets; // @synthesize containingFrameInsets=_containingFrameInsets;

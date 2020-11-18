@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (void)CADDatabaseActOnSuggestedEvent:(CDStruct_1ef3fb1f)arg1 action:(int)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseActOnSuggestedEvent:(CDStruct_1ef3fb1f)arg1 action:(int)arg2 validator:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADDatabaseCanModifySuggestedEventCalendar:(CDUnknownBlockType)arg1;
-- (void)CADDatabaseExportEventAsICS:(CDStruct_1ef3fb1f)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetBirthdayContactIdentifierForEvent:(CDStruct_1ef3fb1f)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetCountOfNotifiableEvents:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetCountOfUnacknowledgedEvents:(CDUnknownBlockType)arg1;

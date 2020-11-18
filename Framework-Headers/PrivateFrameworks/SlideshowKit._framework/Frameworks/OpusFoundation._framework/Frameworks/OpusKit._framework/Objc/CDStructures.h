@@ -53,6 +53,11 @@ struct CGSize {
     double height;
 };
 
+struct CLLocationCoordinate2D {
+    double latitude;
+    double longitude;
+};
+
 struct OKEdgeInsets {
     double _field1;
     double _field2;
@@ -66,16 +71,16 @@ struct OKLocationCoordinate2D {
 };
 
 struct SCNVector3 {
-    float x;
-    float y;
-    float z;
+    float _field1;
+    float _field2;
+    float _field3;
 };
 
 struct SCNVector4 {
-    float x;
-    float y;
-    float z;
-    float w;
+    float _field1;
+    float _field2;
+    float _field3;
+    float _field4;
 };
 
 struct UIEdgeInsets {
@@ -93,20 +98,6 @@ struct UIOffset {
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
-};
-
-struct _NavigatorScrollProgressContext {
-    id _field1;
-    id _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    struct SCNVector3 _field6;
-    struct SCNVector4 _field7;
-    double _field8;
-    double _field9;
-    BOOL _field10;
-    BOOL _field11;
 };
 
 struct _OKEventElement {
@@ -145,19 +136,10 @@ typedef struct {
 } CDStruct_6c2cf6ec;
 
 typedef struct {
-    struct {
-        double latitude;
-        double longitude;
-    } center;
+    struct CLLocationCoordinate2D center;
     struct {
         double latitudeDelta;
         double longitudeDelta;
     } span;
-} CDStruct_feeb6407;
-
-// Ambiguous groups
-typedef struct {
-    double _field1;
-    double _field2;
-} CDStruct_c3b9c2ee;
+} CDStruct_b7cb895d;
 

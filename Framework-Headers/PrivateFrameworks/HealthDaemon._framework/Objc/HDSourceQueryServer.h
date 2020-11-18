@@ -26,7 +26,7 @@
 - (void)_queue_start;
 - (BOOL)_shouldListenForUpdates;
 - (void)_sourcesForObjectsOfType:(id)arg1 filter:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)initWithQueryUUID:(id)arg1 dataObject:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 healthDaemon:(id)arg6;
+- (id)initWithQueryUUID:(id)arg1 dataObject:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 profile:(id)arg6;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 
 @end

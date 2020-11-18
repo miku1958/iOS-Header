@@ -28,15 +28,7 @@
 + (id)_accessibilityButtonShapesDisabledBackgroundColorOnDark;
 + (id)_accessibilityButtonShapesNoBlendModeBackgroundColorOnDark;
 + (id)_accessibilityButtonShapesNoBlendModeBackgroundColorOnLight;
-+ (id)_alternateBackgroundColor;
-+ (id)_alternateBackgroundColor2;
-+ (id)_alternateForegroundColor;
-+ (id)_alternateForegroundColor2;
-+ (id)_alternateGrayColorForFontSize:(double)arg1;
 + (id)_alternateSystemInteractionTintColor;
-+ (id)_alternateTextColor;
-+ (id)_alternateTextColor2;
-+ (id)_alternateUISwitchableSelectorPairs;
 + (id)_barHairlineShadowColor;
 + (id)_barStyleBlackHairlineShadowColor;
 + (id)_composedColorFromSourceColor:(id)arg1 destinationColor:(id)arg2 tintColor:(id)arg3 alpha:(double)arg4;
@@ -77,6 +69,7 @@
 + (id)clearColor;
 + (id)colorWithCGColor:(struct CGColor *)arg1;
 + (id)colorWithCIColor:(id)arg1;
++ (id)colorWithDisplayP3Red:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
 + (id)colorWithHue:(double)arg1 saturation:(double)arg2 brightness:(double)arg3 alpha:(double)arg4;
 + (id)colorWithPatternImage:(id)arg1;
 + (id)colorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
@@ -154,12 +147,14 @@
 + (id)viewFlipsideBackgroundColor;
 + (id)whiteColor;
 + (id)yellowColor;
+- (void).cxx_destruct;
 - (id)_colorBlendedWithColor:(id)arg1;
 - (id)_colorBlendedWithColor:(id)arg1 compositingFilter:(id)arg2;
 - (id)_colorBlendedWithColors:(id)arg1;
 - (double)_colorDifferenceFromColor:(id)arg1;
 - (BOOL)_getRed:(double *)arg1 green:(double *)arg2 blue:(double *)arg3 alpha:(double *)arg4;
 - (BOOL)_getWhite:(double *)arg1 alpha:(double *)arg2;
+- (BOOL)_isDeepColor;
 - (BOOL)_isSimilarToColor:(id)arg1 withinPercentage:(double)arg2;
 - (double)_luminance;
 - (double)_luminanceDifferenceFromColor:(id)arg1;
@@ -168,7 +163,6 @@
 - (Class)classForCoder;
 - (id)colorWithAlphaComponent:(double)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)getHue:(double *)arg1 saturation:(double *)arg2 brightness:(double *)arg3 alpha:(double *)arg4;
 - (BOOL)getRed:(double *)arg1 green:(double *)arg2 blue:(double *)arg3 alpha:(double *)arg4;
@@ -177,6 +171,7 @@
 - (id)initWithCGColor:(struct CGColor *)arg1;
 - (id)initWithCIColor:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDisplayP3Red:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
 - (id)initWithHue:(double)arg1 saturation:(double)arg2 brightness:(double)arg3 alpha:(double)arg4;
 - (id)initWithPatternImage:(id)arg1;
 - (id)initWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
@@ -187,6 +182,7 @@
 - (void)setFill;
 - (void)setStroke;
 - (id)styleString;
+- (id)ui_highlightedColor;
 
 @end
 

@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (int)_experimentDispatcherRequestTypeForRequest:(id)arg1;
 + (long long)_experimentType;
++ (unsigned char)_requestCounterInfoTypeForRequest:(id)arg1;
 + (id)_serviceTypeNumber;
 + (BOOL)_shouldThrottleRequests;
 + (unsigned long long)_urlType;

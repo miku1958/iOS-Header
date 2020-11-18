@@ -21,7 +21,6 @@
 
 - (void)dealloc;
 - (id)debugDescription;
-- (id)init;
 - (id)initWithResultCode:(unsigned long long)arg1 failedMessages:(id)arg2 transferedMessage:(id)arg3;
 
 @end

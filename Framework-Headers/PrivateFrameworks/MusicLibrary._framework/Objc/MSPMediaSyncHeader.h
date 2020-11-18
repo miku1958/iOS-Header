@@ -23,6 +23,7 @@
 @property (nonatomic) int syncType; // @synthesize syncType=_syncType;
 @property (nonatomic) int totalPackages; // @synthesize totalPackages=_totalPackages;
 
+- (int)StringAsSyncType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -31,6 +32,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)syncTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

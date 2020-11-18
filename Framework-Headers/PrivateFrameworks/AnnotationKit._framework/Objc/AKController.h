@@ -12,6 +12,9 @@
 @interface AKController : NSObject
 {
     BOOL overlayShouldPixelate;
+    BOOL _isTornDown;
+    BOOL _annotationEditingEnabled;
+    BOOL _pencilAlwaysDraws;
     BOOL _isTestingInstance;
     BOOL _showingMenu;
     id<AKControllerDelegateProtocol> _delegate;
@@ -38,6 +41,7 @@
 }
 
 @property (strong) AKActionController *actionController; // @synthesize actionController=_actionController;
+@property (nonatomic) BOOL annotationEditingEnabled; // @synthesize annotationEditingEnabled=_annotationEditingEnabled;
 @property (strong) AKAttributeController *attributeController; // @synthesize attributeController=_attributeController;
 @property unsigned long long creationCascadingMultiplier; // @synthesize creationCascadingMultiplier=_creationCascadingMultiplier;
 @property unsigned long long currentPageIndex; // @synthesize currentPageIndex=_currentPageIndex;
@@ -45,6 +49,7 @@
 @property (strong) AKFormFeatureDetectorController *formDetectionController; // @synthesize formDetectionController=_formDetectionController;
 @property (strong) AKIntelligentSketchController *intelligentSketchController; // @synthesize intelligentSketchController=_intelligentSketchController;
 @property BOOL isTestingInstance; // @synthesize isTestingInstance=_isTestingInstance;
+@property BOOL isTornDown; // @synthesize isTornDown=_isTornDown;
 @property (weak) AKPageController *lastCreationCascadingPageController; // @synthesize lastCreationCascadingPageController=_lastCreationCascadingPageController;
 @property long long lastPasteboardChangeCount; // @synthesize lastPasteboardChangeCount=_lastPasteboardChangeCount;
 @property (strong) AKMainEventHandler *mainEventHandler; // @synthesize mainEventHandler=_mainEventHandler;
@@ -53,6 +58,7 @@
 @property (strong) NSMutableArray *pageControllers; // @synthesize pageControllers=_pageControllers;
 @property (strong) NSMapTable *pageModelControllersToPageControllers; // @synthesize pageModelControllersToPageControllers=_pageModelControllersToPageControllers;
 @property unsigned long long pasteCascadingMultiplier; // @synthesize pasteCascadingMultiplier=_pasteCascadingMultiplier;
+@property (nonatomic) BOOL pencilAlwaysDraws; // @synthesize pencilAlwaysDraws=_pencilAlwaysDraws;
 @property (strong) AKPeripheralAvailabilityManager_iOS *peripheralAvailabilityManager; // @synthesize peripheralAvailabilityManager=_peripheralAvailabilityManager;
 @property (getter=isShowingMenu) BOOL showingMenu; // @synthesize showingMenu=_showingMenu;
 @property (strong) AKSignatureModelController *signatureModelController; // @synthesize signatureModelController=_signatureModelController;
@@ -84,8 +90,11 @@
 - (id)doubleTapGestureRecognizer;
 - (void)duplicate:(id)arg1;
 - (void)editTextAnnotation:(id)arg1;
+- (void)enclosingScrollViewDidScroll:(id)arg1;
 - (BOOL)handleEvent:(id)arg1;
 - (void)hideSelectionMenu:(id)arg1;
+- (void)highlightableSelectionChanged;
+- (id)imageForToolbarButtonItemOfType:(unsigned long long)arg1;
 - (id)initForTesting;
 - (id)initWithDelegate:(id)arg1;
 - (BOOL)isOverlayViewLoadedAtIndex:(unsigned long long)arg1;

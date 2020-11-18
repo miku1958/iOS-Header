@@ -33,8 +33,8 @@
 - (id)init;
 - (void)loadView;
 - (void)parentViewControllerHierarchyDidChange;
-- (void)setLoading:(BOOL)arg1;
 - (void)setScriptProperties:(id)arg1;
+- (void)setSkLoading:(BOOL)arg1;
 
 @end
 

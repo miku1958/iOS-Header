@@ -7,10 +7,11 @@
 #import <Foundation/NSObject.h>
 
 #import <EventKitUI/CUIKSingleDayTimelineGeometryDelegate-Protocol.h>
+#import <EventKitUI/EKDayOccurrenceViewDelegate-Protocol.h>
 
 @class EKDayViewContent, NSString;
 
-@interface EKDayViewContentGeometryDelegate : NSObject <CUIKSingleDayTimelineGeometryDelegate>
+@interface EKDayViewContentGeometryDelegate : NSObject <CUIKSingleDayTimelineGeometryDelegate, EKDayOccurrenceViewDelegate>
 {
     EKDayViewContent *_dayViewContent;
     struct CGRect _frame;
@@ -31,6 +32,7 @@
 - (void).cxx_destruct;
 - (double)dateForPoint:(struct CGPoint)arg1;
 - (struct CGPoint)pointForDate:(double)arg1;
+- (BOOL)shouldReverseLayoutDirection;
 
 @end
 

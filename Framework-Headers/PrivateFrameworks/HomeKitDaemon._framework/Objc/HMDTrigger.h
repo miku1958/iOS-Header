@@ -6,25 +6,35 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMMessageReceiver-Protocol.h>
+#import <HomeKitDaemon/HMDBulletinIdentifiers-Protocol.h>
+#import <HomeKitDaemon/HMFDumpState-Protocol.h>
+#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDHome, HMMessageDispatcher, NSDate, NSMutableArray, NSString, NSUUID;
+@class HMDDevice, HMDHome, HMDUser, HMFMessageDispatcher, NSDate, NSDictionary, NSMutableArray, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDTrigger : NSObject <HMMessageReceiver, NSSecureCoding>
+@interface HMDTrigger : NSObject <HMDBulletinIdentifiers, HMFMessageReceiver, NSSecureCoding, HMFDumpState>
 {
     BOOL _active;
+    BOOL _activeOnLocalDevice;
     NSString *_name;
     NSUUID *_uuid;
     HMDHome *_home;
+    HMDUser *_owner;
+    HMDDevice *_owningDevice;
     NSMutableArray *_currentActionSets;
     NSObject<OS_dispatch_queue> *_workQueue;
-    HMMessageDispatcher *_msgDispatcher;
+    HMFMessageDispatcher *_msgDispatcher;
     NSDate *_mostRecentFireDate;
 }
 
+@property (readonly, nonatomic) NSDictionary *actionContext;
 @property (nonatomic) BOOL active; // @synthesize active=_active;
+@property (nonatomic, getter=isActiveOnLocalDevice) BOOL activeOnLocalDevice; // @synthesize activeOnLocalDevice=_activeOnLocalDevice;
+@property (readonly, nonatomic) NSDictionary *bulletinContext;
+@property (readonly, copy, nonatomic) NSString *contextID;
+@property (readonly, copy, nonatomic) NSUUID *contextSPIUniqueIdentifier;
 @property (strong, nonatomic) NSMutableArray *currentActionSets; // @synthesize currentActionSets=_currentActionSets;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -33,27 +43,34 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (copy, nonatomic) NSDate *mostRecentFireDate; // @synthesize mostRecentFireDate=_mostRecentFireDate;
-@property (strong, nonatomic) HMMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic, getter=isOwnedByThisDevice) BOOL ownedByThisDevice;
+@property (strong, nonatomic) HMDUser *owner; // @synthesize owner=_owner;
+@property (strong, nonatomic) HMDDevice *owningDevice; // @synthesize owningDevice=_owningDevice;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_executeActionSets;
+- (void)_directlyExecuteActionSetsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_executeActionSetsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_handleActivateTriggerRequest:(id)arg1;
 - (void)_handleRenameRequest:(id)arg1;
 - (void)_handleUpdateActionSetRequest:(id)arg1;
 - (void)_registerForMessages;
-- (id)_updateActionSets:(id)arg1 add:(BOOL)arg2;
+- (id)_updateActionSet:(id)arg1 add:(BOOL)arg2;
+- (id)actionSetWithUUID:(id)arg1;
 - (id)actionSets;
 - (void)activate:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)activateOnLocalDevice;
 - (void)checkForNoActions;
 - (void)configure:(id)arg1 messageDispatcher:(id)arg2 queue:(id)arg3;
-- (BOOL)containsAccessoryWithUUID:(id)arg1;
 - (void)dealloc;
+- (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
+- (void)fixupForReplacementAccessory:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1;
 - (void)invalidate;
@@ -63,6 +80,8 @@
 - (void)sendTriggerFiredNotification:(id)arg1;
 - (BOOL)shouldEncodeLastFireDate:(id)arg1;
 - (void)triggerFired;
+- (unsigned long long)triggerType;
+- (void)userDidConfirmExecute:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

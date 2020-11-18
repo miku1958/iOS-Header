@@ -24,13 +24,12 @@
 @property BOOL isUpdate;
 @property BOOL noIndex;
 @property (copy) NSString *protection;
-@property BOOL representsDeepLink;
 @property (copy) NSString *uniqueIdentifier;
 
 + (id)searchableItemFromUserActivity:(id)arg1 bundleID:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_fixBrokenAuthors:(id)arg1;
+- (void)_fixBrokenAuthorNames:(id)arg1;
 - (BOOL)_hasAttributesOfType:(id)arg1;
 - (BOOL)_isFullyFormed;
 - (void)_populateMissingPeopleWithNames:(id)arg1 emailAddresses:(id)arg2 itemPersons:(id)arg3 personDictionary:(id)arg4 contactProperties:(id)arg5 nameKey:(id)arg6 emailKey:(id)arg7 contactIdentifierKey:(id)arg8 personKey:(id)arg9 attributeSet:(id)arg10;

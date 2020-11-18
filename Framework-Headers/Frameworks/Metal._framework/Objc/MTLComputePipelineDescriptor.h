@@ -8,7 +8,7 @@
 
 #import <Metal/NSCopying-Protocol.h>
 
-@class NSString;
+@class MTLStageInputOutputDescriptor, NSString;
 @protocol MTLFunction;
 
 @interface MTLComputePipelineDescriptor : NSObject <NSCopying>
@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) id<MTLFunction> computeFunction; // @dynamic computeFunction;
 @property (copy, nonatomic) NSString *label; // @dynamic label;
+@property (copy, nonatomic) MTLStageInputOutputDescriptor *stageInputDescriptor; // @dynamic stageInputDescriptor;
 @property (nonatomic) BOOL threadGroupSizeIsMultipleOfThreadExecutionWidth; // @dynamic threadGroupSizeIsMultipleOfThreadExecutionWidth;
 
 + (id)alloc;

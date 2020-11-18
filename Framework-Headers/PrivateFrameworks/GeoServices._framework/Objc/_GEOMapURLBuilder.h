@@ -29,6 +29,8 @@
 + (id)URLForSearch:(id)arg1 at:(CDStruct_c3b9c2ee)arg2 span:(CDStruct_c3b9c2ee)arg3;
 + (id)URLForSearch:(id)arg1 at:(CDStruct_c3b9c2ee)arg2 zoomLevel:(double)arg3;
 + (id)URLForSearch:(id)arg1 near:(CDStruct_c3b9c2ee)arg2;
++ (id)URLForShowFavoritesType:(long long)arg1;
++ (id)URLForTransitLine:(unsigned long long)arg1 withName:(id)arg2 mapRegion:(id)arg3;
 - (void)_removeParametersAllBut:(id)arg1;
 - (id)_stringForCoordinate2DPointer:(CDStruct_c3b9c2ee *)arg1;
 - (id)_stringForCoordinateSpanPointer:(CDStruct_c3b9c2ee *)arg1;
@@ -42,10 +44,13 @@
 - (id)initForExternalBusiness:(id)arg1 id:(id)arg2 ofContentProvider:(id)arg3;
 - (id)initForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3;
 - (id)initForSearch:(id)arg1;
+- (id)initForShowFavoritesType:(long long)arg1;
+- (id)initForTransitLine:(unsigned long long)arg1 withName:(id)arg2 mapRegion:(id)arg3;
 - (void)setBusinessAddress:(id)arg1;
 - (void)setBusinessCoordinate:(CDStruct_c3b9c2ee)arg1;
 - (void)setContentProvider:(id)arg1;
 - (void)setDisplayRegion:(CDStruct_90e2a262)arg1;
+- (void)setMapRegion:(id)arg1;
 - (void)setMapType:(int)arg1;
 - (void)setNear:(CDStruct_c3b9c2ee)arg1;
 - (void)setSearchLocation:(CDStruct_c3b9c2ee)arg1 span:(CDStruct_c3b9c2ee)arg2;

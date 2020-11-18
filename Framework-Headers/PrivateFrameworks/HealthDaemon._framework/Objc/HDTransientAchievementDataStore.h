@@ -13,26 +13,34 @@
     NSMutableArray *_achievements;
     NSMutableSet *_addedAchievements;
     NSMutableSet *_unalertedAchievements;
-    NSMutableDictionary *_dict;
+    NSMutableDictionary *_committedValues;
+    NSMutableDictionary *_uncommittedValues;
     NSMutableArray *_commitExpects;
 }
 
 @property (strong, nonatomic) NSMutableArray *achievements; // @synthesize achievements=_achievements;
 @property (strong, nonatomic) NSMutableSet *addedAchievements; // @synthesize addedAchievements=_addedAchievements;
 @property (strong, nonatomic) NSMutableArray *commitExpects; // @synthesize commitExpects=_commitExpects;
-@property (strong, nonatomic) NSMutableDictionary *dict; // @synthesize dict=_dict;
+@property (strong, nonatomic) NSMutableDictionary *committedValues; // @synthesize committedValues=_committedValues;
 @property (strong, nonatomic) NSMutableSet *unalertedAchievements; // @synthesize unalertedAchievements=_unalertedAchievements;
+@property (strong, nonatomic) NSMutableDictionary *uncommittedValues; // @synthesize uncommittedValues=_uncommittedValues;
 
 - (void).cxx_destruct;
+- (id)_cachedValueForKey:(id)arg1;
+- (id)_valueForKey:(id)arg1;
 - (void)addAchievement:(id)arg1;
 - (id)allAchievements;
+- (id)cachedDateValueForKey:(id)arg1;
+- (id)cachedNumberValueForKey:(id)arg1;
 - (void)clearAddedAchievements;
 - (BOOL)commit:(id *)arg1;
+- (id)committedKeyValues;
 - (unsigned long long)countOfUnalertedAchievements;
 - (id)dateForKey:(id)arg1;
 - (double)doubleForKey:(id)arg1;
+- (id)earnedAchievementDefinitionIdentifiers;
 - (void)expectCommitWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithHealthDaemon:(id)arg1;
+- (id)initWithProfile:(id)arg1;
 - (long long)int64ForKey:(id)arg1;
 - (void)markAchievementAlerted:(id)arg1;
 - (id)modifiedKeyValues;

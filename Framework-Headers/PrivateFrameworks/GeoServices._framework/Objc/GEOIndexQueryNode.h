@@ -25,6 +25,8 @@
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (strong, nonatomic) NSString *value; // @synthesize value=_value;
 
++ (Class)operandsType;
+- (int)StringAsType:(id)arg1;
 - (void)addOperands:(id)arg1;
 - (void)clearOperands;
 - (void)copyTo:(id)arg1;
@@ -38,6 +40,7 @@
 - (id)operandsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)operandsCount;
 - (BOOL)readFrom:(id)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

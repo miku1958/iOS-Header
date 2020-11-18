@@ -25,19 +25,22 @@
 
 - (void).cxx_destruct;
 - (void)_handleDelegateImageRequestResultWithImage:(id)arg1 info:(id)arg2 requestID:(int)arg3;
-- (void)_handleLivePhotoPairedVideoRequestResultURL:(id)arg1 stillDisplayTime:(CDStruct_1b6d18a9)arg2 error:(id)arg3 requestID:(int)arg4;
+- (void)_handleLivePhotoPairedVideoRequestResultURL:(id)arg1 filterName:(id)arg2 stillDisplayTime:(CDStruct_1b6d18a9)arg3 error:(id)arg4 requestID:(int)arg5;
 - (id)_imageForTransientAsset:(id)arg1 targetSize:(struct CGSize)arg2;
 - (id)_livePhotoRequestWithID:(int)arg1;
 - (int)_nextRequestId;
 - (id)_playerItemForVideoURL:(id)arg1;
 - (void)_removeLivePhotoRequestWithID:(int)arg1;
+- (void)_requestAVAssetForVideoURL:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (int)_requestLivePhotoForTransientAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (BOOL)_requestLivePhotoWithSupplementaryImageSourceIfPossibleWithAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (void)_setLivePhotoRequest:(id)arg1 forRequestID:(int)arg2;
 - (void)_updateResultForLivePhotoRequestID:(int)arg1;
+- (id)_videoCompositionForAVAsset:(id)arg1 filterName:(id)arg2;
 - (void)cancelImageRequest:(int)arg1;
 - (id)init;
 - (id)initWithTransientImageManager:(id)arg1 supplementaryLivePhotoImageSource:(CDUnknownBlockType)arg2;
+- (int)requestAVAssetForVideo:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (int)requestImageDataForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (int)requestImageForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (int)requestLivePhotoForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;

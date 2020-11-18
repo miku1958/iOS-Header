@@ -30,10 +30,10 @@
 - (unsigned long long)numberOfPaths;
 - (id)pathAtIndex:(unsigned long long)arg1;
 - (id)query;
-- (unsigned long long)realRepeatType;
+- (long long)realRepeatType;
 - (void)reloadWithPlaybackContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)shuffleItemsWithAnchor:(unsigned long long *)arg1;
-- (unsigned long long)shuffleType;
+- (long long)shuffleType;
 - (BOOL)userCanChangeShuffleAndRepeatType;
 
 @end

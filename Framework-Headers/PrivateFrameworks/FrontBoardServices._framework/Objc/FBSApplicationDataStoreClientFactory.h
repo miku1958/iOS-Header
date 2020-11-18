@@ -6,21 +6,26 @@
 
 #import <Foundation/NSObject.h>
 
-@class FBSApplicationDataStoreRepositoryClient;
-@protocol OS_dispatch_queue;
+@class NSArray;
+@protocol FBSApplicationDataStoreRepositoryClient, OS_dispatch_queue;
 
 @interface FBSApplicationDataStoreClientFactory : NSObject
 {
     unsigned long long _count;
     NSObject<OS_dispatch_queue> *_queue;
-    FBSApplicationDataStoreRepositoryClient *_sharedClient;
+    id<FBSApplicationDataStoreRepositoryClient> _sharedClient;
+    Class _dataStoreClientClass;
+    NSArray *_prefetchedKeys;
 }
+
+@property (strong, nonatomic) NSArray *prefetchedKeys; // @synthesize prefetchedKeys=_prefetchedKeys;
 
 + (id)sharedInstance;
 - (void)checkin;
 - (id)checkout;
 - (void)dealloc;
 - (id)init;
+- (void)registerClientClass:(Class)arg1;
 
 @end
 

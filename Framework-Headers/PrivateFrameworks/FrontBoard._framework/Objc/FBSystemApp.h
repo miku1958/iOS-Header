@@ -36,11 +36,14 @@
 + (BOOL)rendersLocally;
 + (BOOL)shouldCheckInWithBackboard;
 + (BOOL)shouldFixMainThreadPriority;
++ (long long)startupInterfaceOrientation;
++ (BOOL)supportsAsynchronousApplicationLoading;
 + (BOOL)systemApplicationIsAliveForWatchdog:(id)arg1;
 + (BOOL)systemApplicationShouldWaitForDataMigration:(id)arg1;
 - (long long)_interfaceOrientationRotationDirectionFromOrientation:(long long)arg1 toOrientation:(long long)arg2;
 - (id)_newSceneForWindow:(id)arg1 oldDisplay:(id)arg2 newDisplay:(id)arg3;
 - (void)_noteApplicationDidFinishLaunching;
+- (BOOL)_openURL:(id)arg1;
 - (BOOL)_saveSnapshotWithName:(id)arg1;
 - (void)_setDarkBoot:(BOOL)arg1;
 - (void)_updateSceneSettingsForScene:(id)arg1 layer:(id)arg2;
@@ -49,10 +52,12 @@
 - (void)endTransaction;
 - (id)fbsSceneWithIdentifier:(id)arg1;
 - (BOOL)handleDoubleHeightStatusBarTap:(long long)arg1;
+- (void)host:(id)arg1 configureWithDefinition:(id)arg2 parameters:(id)arg3;
 - (void)host:(id)arg1 configureWithInitialClientSettings:(id)arg2;
 - (void)host:(id)arg1 didInvalidateWithTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)host:(id)arg1 didReceiveActions:(id)arg2;
 - (void)host:(id)arg1 didUpdateSettings:(id)arg2 withDiff:(id)arg3 transitionContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)hostProcess;
 - (id)init;
 - (BOOL)isBootingDark;
 - (BOOL)isFrontBoard;
@@ -62,7 +67,6 @@
 - (unsigned long long)lastExitReason;
 - (void)noteActiveInterfaceOrientationDidChangeToOrientation:(long long)arg1 willAnimateWithSettings:(id)arg2 fromOrientation:(long long)arg3;
 - (void)noteActiveInterfaceOrientationWillChangeToOrientation:(long long)arg1;
-- (BOOL)openURL:(id)arg1;
 - (void)registerDelegate:(id)arg1 forSceneID:(id)arg2;
 - (id)registerHost:(id)arg1;
 - (void)registerInvalidationAction:(id)arg1;
@@ -72,6 +76,7 @@
 - (void)scene:(id)arg1 didReceiveActions:(id)arg2;
 - (void)scene:(id)arg1 didUpdateClientSettings:(id)arg2 withDiff:(id)arg3 transitionContext:(id)arg4;
 - (void)scene:(id)arg1 didUpdateLayer:(id)arg2;
+- (void)scene:(id)arg1 sendMessage:(id)arg2 withResponse:(CDUnknownBlockType)arg3;
 - (void)sendActionsToBackboard:(id)arg1;
 - (void)unregisterDelegateForSceneID:(id)arg1;
 - (void)unregisterHost:(id)arg1;

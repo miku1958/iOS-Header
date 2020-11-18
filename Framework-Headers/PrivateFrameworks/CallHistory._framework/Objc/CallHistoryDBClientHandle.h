@@ -50,7 +50,7 @@
 - (id)init;
 - (id)init:(BOOL)arg1;
 - (id)manager;
-- (BOOL)moveCallRecordsFromDatabaseAtURL:(id)arg1 withVersion:(long long)arg2;
+- (BOOL)moveCallRecordsFromDatabaseAtURL:(id)arg1;
 - (void)parseCallStatus_sync:(unsigned int)arg1 isAnswered:(BOOL *)arg2 isOriginated:(BOOL *)arg3;
 - (void)registerForNotifications;
 - (BOOL)resetAllTimers;

@@ -18,11 +18,11 @@
 - (BOOL)_accessibilitySavePhotoLabel:(id)arg1;
 - (int)_accessibilityScannerActivateBehavior;
 - (id)_axMainAssetURL;
+- (id)_axPHAsset;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityURL;
 - (id)accessibilityValue;
-- (id)axManagedAsset;
 - (BOOL)isAccessibilityElement;
 
 @end

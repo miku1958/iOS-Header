@@ -8,10 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDPlaceGlobalResult, NSMutableArray, NSString;
+@class GEOPDPlaceGlobalResult, NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPDPlaceResponse : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
+    unsigned long long _debugLatencyMs;
+    NSString *_debugApiKey;
     NSMutableArray *_displayLanguages;
     NSString *_displayRegion;
     GEOPDPlaceGlobalResult *_globalResult;
@@ -20,14 +23,19 @@
     NSMutableArray *_spokenLanguages;
     int _status;
     struct {
+        unsigned int debugLatencyMs:1;
         unsigned int requestType:1;
         unsigned int status:1;
     } _has;
 }
 
+@property (strong, nonatomic) NSString *debugApiKey; // @synthesize debugApiKey=_debugApiKey;
+@property (nonatomic) unsigned long long debugLatencyMs;
 @property (strong, nonatomic) NSMutableArray *displayLanguages; // @synthesize displayLanguages=_displayLanguages;
 @property (strong, nonatomic) NSString *displayRegion; // @synthesize displayRegion=_displayRegion;
 @property (strong, nonatomic) GEOPDPlaceGlobalResult *globalResult; // @synthesize globalResult=_globalResult;
+@property (readonly, nonatomic) BOOL hasDebugApiKey;
+@property (nonatomic) BOOL hasDebugLatencyMs;
 @property (readonly, nonatomic) BOOL hasDisplayRegion;
 @property (readonly, nonatomic) BOOL hasGlobalResult;
 @property (nonatomic) BOOL hasRequestType;
@@ -36,7 +44,13 @@
 @property (nonatomic) int requestType; // @synthesize requestType=_requestType;
 @property (strong, nonatomic) NSMutableArray *spokenLanguages; // @synthesize spokenLanguages=_spokenLanguages;
 @property (nonatomic) int status; // @synthesize status=_status;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)displayLanguageType;
++ (Class)placeResultType;
++ (Class)spokenLanguageType;
+- (int)StringAsRequestType:(id)arg1;
+- (int)StringAsStatus:(id)arg1;
 - (id)_disambiguationLabels;
 - (void)addDisplayLanguage:(id)arg1;
 - (void)addPlaceResult:(id)arg1;
@@ -58,8 +72,10 @@
 - (id)placeResultAtIndex:(unsigned long long)arg1;
 - (unsigned long long)placeResultsCount;
 - (BOOL)readFrom:(id)arg1;
+- (id)requestTypeAsString:(int)arg1;
 - (id)spokenLanguageAtIndex:(unsigned long long)arg1;
 - (unsigned long long)spokenLanguagesCount;
+- (id)statusAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

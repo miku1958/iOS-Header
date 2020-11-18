@@ -44,7 +44,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
 @property (nonatomic) int type; // @synthesize type=_type;
 
++ (Class)fieldValuesType;
++ (Class)listValuesType;
 - (void).cxx_destruct;
+- (int)StringAsType:(id)arg1;
 - (void)addFieldValues:(id)arg1;
 - (void)addListValues:(id)arg1;
 - (void)clearFieldValues;
@@ -61,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)listValuesCount;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

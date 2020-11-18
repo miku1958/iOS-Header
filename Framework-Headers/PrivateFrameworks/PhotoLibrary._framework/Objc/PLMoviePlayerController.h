@@ -75,7 +75,6 @@
 - (void)_serverConnectionDidDie:(id)arg1;
 - (void)_setBufferingState:(unsigned long long)arg1;
 - (void)_setPlaybackState:(unsigned long long)arg1;
-- (void)_setPlayerAudioSessionActive:(BOOL)arg1;
 - (void)_setPlayerItem:(id)arg1;
 - (void)_setupPlayer;
 - (void)_setupTVOutWindow;
@@ -87,7 +86,6 @@
 - (void)_tearDownPlayer;
 - (void)_tearDownTVOutWindow;
 - (void)_unregisterForNotifications;
-- (void)_updateAudioSession;
 - (void)_updateBackgroundViewInformation;
 - (void)_updateDisableAirPlayMirroringDuringPlayback;
 - (void)_updateFromPendingTime;

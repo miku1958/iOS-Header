@@ -9,7 +9,7 @@
 #import <SoftwareUpdateServices/NSCopying-Protocol.h>
 #import <SoftwareUpdateServices/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString, SUDocumentation;
+@class NSData, NSDictionary, NSString, SUDocumentation;
 
 @interface SUDescriptor : NSObject <NSSecureCoding, NSCopying>
 {
@@ -33,7 +33,10 @@
     BOOL _disableCDLevel4;
     BOOL _disableAppDemotion;
     BOOL _disableIntallTonight;
+    BOOL _rampEnabled;
     NSDictionary *_systemPartitionPadding;
+    NSData *_sepDigest;
+    NSData *_rsepDigest;
     BOOL _downloadableOverCellular;
     BOOL _streamingZipCapable;
 }
@@ -54,7 +57,10 @@
 @property (strong, nonatomic) NSString *productSystemName; // @synthesize productSystemName=_productSystemName;
 @property (strong, nonatomic) NSString *productVersion; // @synthesize productVersion=_productVersion;
 @property (strong, nonatomic) NSString *publisher; // @synthesize publisher=_publisher;
+@property (nonatomic) BOOL rampEnabled; // @synthesize rampEnabled=_rampEnabled;
 @property (strong, nonatomic) NSString *releaseType; // @synthesize releaseType=_releaseType;
+@property (strong, nonatomic, setter=setRSEPDigest:) NSData *rsepDigest; // @synthesize rsepDigest=_rsepDigest;
+@property (strong, nonatomic, setter=setSEPDigest:) NSData *sepDigest; // @synthesize sepDigest=_sepDigest;
 @property (nonatomic, getter=_isStreamingZipCapable, setter=_setStreamingZipCapable:) BOOL streamingZipCapable; // @synthesize streamingZipCapable=_streamingZipCapable;
 @property (strong, nonatomic) NSDictionary *systemPartitionPadding; // @synthesize systemPartitionPadding=_systemPartitionPadding;
 @property (nonatomic, getter=_unarchiveSize, setter=_setUnarchiveSize:) unsigned long long unarchiveSize; // @synthesize unarchiveSize=_unarchiveSize;

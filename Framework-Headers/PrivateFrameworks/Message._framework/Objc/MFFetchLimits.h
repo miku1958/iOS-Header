@@ -17,6 +17,7 @@
 @property (nonatomic) unsigned long long fetchMinBytes; // @synthesize fetchMinBytes=_fetchMinBytes;
 @property (nonatomic) unsigned long long minBytesLeft; // @synthesize minBytesLeft=_minBytesLeft;
 
+- (id)description;
 - (id)init;
 
 @end

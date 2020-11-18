@@ -6,23 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableDictionary;
-@protocol OS_dispatch_source, SFAirDropBrowserDelegate;
+@class NSArray, NSMutableDictionary, NSString;
+@protocol SFAirDropBrowserDelegate;
 
-__attribute__((visibility("hidden")))
 @interface SFAirDropBrowser : NSObject
 {
-    BOOL _didDelay;
     struct __SFBrowser *_browser;
-    NSObject<OS_dispatch_source> *_timer;
-    double _startTime;
     NSMutableDictionary *_nodes;
+    NSString *_sessionID;
     NSArray *_people;
     id<SFAirDropBrowserDelegate> _delegate;
 }
 
 @property (weak) id<SFAirDropBrowserDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSArray *people; // @synthesize people=_people;
+@property (copy, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 
 - (void).cxx_destruct;
 - (void)dealloc;

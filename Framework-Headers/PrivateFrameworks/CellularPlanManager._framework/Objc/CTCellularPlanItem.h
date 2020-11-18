@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <CellularPlanManager/NSCopying-Protocol.h>
 #import <CellularPlanManager/NSSecureCoding-Protocol.h>
@@ -18,9 +18,11 @@
     BOOL _shouldDisplayType;
     BOOL _shouldAutoSelectWhenInRange;
     BOOL _isSimStateValid;
+    BOOL _shouldDisplay;
     BOOL _isSelectable;
     CTCellularPlan *_plan;
     long long _type;
+    long long _lockState;
     NSNumber *_isSelectedOverride;
 }
 
@@ -31,9 +33,11 @@
 @property (readonly, nonatomic) BOOL isSelected;
 @property (strong, nonatomic) NSNumber *isSelectedOverride; // @synthesize isSelectedOverride=_isSelectedOverride;
 @property (nonatomic) BOOL isSimStateValid; // @synthesize isSimStateValid=_isSimStateValid;
+@property (nonatomic) long long lockState; // @synthesize lockState=_lockState;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) CTCellularPlan *plan; // @synthesize plan=_plan;
 @property (nonatomic) BOOL shouldAutoSelectWhenInRange; // @synthesize shouldAutoSelectWhenInRange=_shouldAutoSelectWhenInRange;
+@property (readonly, nonatomic) BOOL shouldDisplay; // @synthesize shouldDisplay=_shouldDisplay;
 @property (nonatomic) BOOL shouldDisplayType; // @synthesize shouldDisplayType=_shouldDisplayType;
 @property (nonatomic) long long type; // @synthesize type=_type;
 

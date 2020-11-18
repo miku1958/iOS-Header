@@ -9,27 +9,29 @@
 #import <GeoServices/GEOExperimentServerProxy-Protocol.h>
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 
-@class GEOABExperimentRequest, GEOABExperimentResponse, NSLock, NSString;
+@class GEOABAssignmentRequest, GEOABAssignmentResponse, NSLock, NSString;
 @protocol GEOExperimentServerProxyDelegate, OS_dispatch_source;
 
 @interface GEOExperimentServerLocalProxy : NSObject <GEOResourceManifestTileGroupObserver, GEOExperimentServerProxy>
 {
     id<GEOExperimentServerProxyDelegate> _delegate;
-    GEOABExperimentResponse *_experimentsInfo;
+    GEOABAssignmentResponse *_experimentsInfo;
     NSLock *_experimentsInfoLock;
     NSObject<OS_dispatch_source> *_updateTimer;
     NSLock *_updateTimerLock;
-    GEOABExperimentRequest *_currentRequest;
+    GEOABAssignmentRequest *_currentRequest;
     NSLock *_currentRequestLock;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<GEOExperimentServerProxyDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<GEOExperimentServerProxyDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) GEOABExperimentResponse *experimentsInfo;
+@property (readonly, nonatomic) GEOABAssignmentResponse *experimentsInfo;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)_debug_fetchAllAvailableExperiments:(CDUnknownBlockType)arg1;
+- (void)_debug_setActiveExperimentBranchDictionaryRepresentation:(id)arg1;
 - (void)_debug_setQuerySubstring:(id)arg1 forExperimentType:(long long)arg2 dispatcherRequestType:(int)arg3;
 - (void)_invalidateTileCache:(BOOL)arg1 placesCache:(BOOL)arg2;
 - (void)_loadExperimentsConfiguration:(CDUnknownBlockType)arg1;

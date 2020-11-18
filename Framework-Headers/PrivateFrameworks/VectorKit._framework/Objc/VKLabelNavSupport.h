@@ -24,16 +24,18 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_pendingTiles;
     NSMutableArray *_junctions;
     VKLabelNavRoadGraph *_roadGraph;
-    vector_4ea116aa _activeSigns;
+    vector_c899b68f _activeSigns;
     NSMutableArray *_fadingLabels;
     NSMutableDictionary *_visibleLabelsByName;
     NSMutableArray *_visibleLabels;
-    unsigned long long _countVisibleRoadSigns;
     unsigned long long _countVisibleOnRouteRoadSigns;
+    unsigned long long _countVisibleOffRouteRoadSigns;
+    unsigned long long _countVisibleRoadSigns;
+    unsigned long long _maxVisibleOnRouteRoadSigns;
+    unsigned long long _maxVisibleOffRouteRoadSigns;
     unsigned long long _maxVisibleRoadSigns;
-    unsigned long long _minVisibleOnRouteRoadSigns;
     unsigned long long _maxOnRoadGraphRoadSigns;
-    unsigned long long _minVisibleRoadSigns;
+    unsigned long long _minVisibleOffRoadGraphRoadSigns;
     unsigned long long _minVisibleProceedToRouteRoadSigns;
     BOOL _preferRightSideLabelPlacement;
     float _minSignOffsetDistance;
@@ -47,13 +49,26 @@ __attribute__((visibility("hidden")))
     BOOL _useRouteSubrange;
     struct PolylineCoordinate _routeSubrangeStart;
     struct PolylineCoordinate _routeSubrangeEnd;
+    struct unique_ptr<VKLabelNavArtworkCache, std::__1::default_delete<VKLabelNavArtworkCache>> _artworkCache;
+    struct shared_ptr<md::NavCurrentRoadSign> _currentRoadSign;
+    BOOL _debugDisableRoadSignLimit;
+    unsigned long long _debugCachedMaxVisibleOffRouteRoadSigns;
+    unsigned long long _debugCachedMaxVisibleOnRouteRoadSigns;
+    BOOL _debugEnableShieldsOnRouteLine;
+    unsigned char _navMapMode;
+    shared_ptr_a3c46825 _styleManager;
 }
 
-@property (readonly, nonatomic) const vector_4ea116aa *activeSigns; // @synthesize activeSigns=_activeSigns;
+@property (readonly, nonatomic) const vector_c899b68f *activeSigns; // @synthesize activeSigns=_activeSigns;
 @property (strong, nonatomic) NSString *currentLocationText; // @synthesize currentLocationText=_currentLocationText;
 @property (strong, nonatomic) NSString *currentRoadName; // @synthesize currentRoadName=_currentRoadName;
+@property (readonly, nonatomic) struct NavCurrentRoadSign *currentRoadSign;
+@property (readonly, nonatomic) float currentRoadSignPixelHeight;
 @property (strong, nonatomic) NSString *currentShieldGroup; // @synthesize currentShieldGroup=_currentShieldGroup;
+@property (nonatomic) BOOL debugDisableRoadSignLimit; // @synthesize debugDisableRoadSignLimit=_debugDisableRoadSignLimit;
+@property (nonatomic) BOOL debugEnableShieldsOnRouteLine; // @synthesize debugEnableShieldsOnRouteLine=_debugEnableShieldsOnRouteLine;
 @property (nonatomic) BOOL drawRoadSigns; // @synthesize drawRoadSigns=_drawRoadSigns;
+@property (nonatomic) unsigned char navMapMode; // @synthesize navMapMode=_navMapMode;
 @property (readonly, nonatomic) BOOL needsLayout; // @synthesize needsLayout=_needsLayout;
 @property (strong, nonatomic) VKPolylineOverlayPainter *route; // @synthesize route=_route;
 @property (nonatomic) struct PolylineCoordinate routeUserOffset; // @synthesize routeUserOffset=_routeUserOffset;
@@ -61,11 +76,12 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)_addJunctionsForTile:(id)arg1;
-- (void)_addLabelsAtJunctions:(id)arg1 withContext:(struct NavContext *)arg2 maxVisibleLabels:(unsigned long long)arg3 minOnRouteVisibleLabels:(unsigned long long)arg4;
-- (void)_addLabelsForJunctions:(id)arg1 withContext:(struct NavContext *)arg2 maxVisibleLabels:(unsigned long long)arg3 minOnRouteVisibleLabels:(unsigned long long)arg4 useAllJunctions:(BOOL)arg5 placeShieldsFrontToBack:(BOOL)arg6;
+- (void)_addLabelsAtJunctions:(id)arg1 withContext:(struct NavContext *)arg2 maxLabelsToAdd:(unsigned long long)arg3;
+- (void)_addLabelsForJunctions:(id)arg1 withContext:(struct NavContext *)arg2 maxLabelsToAdd:(unsigned long long)arg3 useAllJunctions:(BOOL)arg4 placeShieldsFrontToBack:(BOOL)arg5;
 - (BOOL)_collideLabel:(id)arg1 activeLabel:(id)arg2 labelsToRemove:(id)arg3;
 - (void)_createOrUpdateLabelForRoad:(id)arg1 isShield:(BOOL)arg2 navContext:(struct NavContext *)arg3;
 - (BOOL)_findRouteOverlappingJunctionFrom:(long long)arg1 routeJunctions:(vector_682a2c99 *)arg2 lookBackward:(BOOL)arg3 firstOverlap:(long long *)arg4 secondOverlap:(long long *)arg5;
+- (void)_generateCurrentRoadSignWithContext:(struct NavContext *)arg1;
 - (void)_initalizeCurrentRoadInfo;
 - (void)_refreshGuidanceRoadNames;
 - (void)_reloadRouteJunctions;
@@ -85,7 +101,9 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (BOOL)isNavMode;
 - (void)layoutWithNavContext:(struct NavContext *)arg1;
-- (void)setStyleManager:(shared_ptr_f06afc6c)arg1;
+- (unsigned char)orientationForRoadSign:(id)arg1 roadLabel:(id)arg2 navContext:(struct NavContext *)arg3;
+- (void)setStyleManager:(shared_ptr_a3c46825)arg1;
+- (void)stylesheetDidChange;
 
 @end
 

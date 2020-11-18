@@ -12,20 +12,20 @@ __attribute__((visibility("hidden")))
 @interface VKPolylineOverlayRenderRegion : NSObject
 {
     NSSet *_tiles;
-    CDStruct_aca18c62 _visibleRect;
-    vector_6c1b99c0 _rectsForSnapping;
+    Box_3d7e3c2c _visibleRect;
+    vector_b9326b03 _rectsForSnapping;
     struct vector<VKTileKey, std::__1::allocator<VKTileKey>> _snappedTileKeys;
 }
 
 @property (readonly, nonatomic) NSSet *tiles; // @synthesize tiles=_tiles;
-@property (readonly, nonatomic) CDStruct_d2b197d1 visibleRect; // @synthesize visibleRect=_visibleRect;
+@property (readonly, nonatomic) Box_3d7e3c2c visibleRect; // @synthesize visibleRect=_visibleRect;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)initForKeysInView:(id)arg1 tiles:(id)arg2 allowsSnapping:(BOOL)arg3;
 - (BOOL)isEquivalentToNewRegion:(id)arg1;
-- (const vector_6c1b99c0 *)rectsForSnapping;
+- (const vector_b9326b03 *)rectsForSnapping;
 
 @end
 

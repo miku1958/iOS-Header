@@ -6,12 +6,13 @@
 
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
-@class NSArray, NSObject, NSString;
+@class CKDDecryptRecordsOperation, NSArray, NSObject, NSString;
 @protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchRecordVersionsOperation : CKDDatabaseOperation
 {
+    CKDDecryptRecordsOperation *_decryptOperation;
     BOOL _isDeleted;
     BOOL _shouldFetchAssetContent;
     CDUnknownBlockType _recordVersionFetchedBlock;
@@ -25,14 +26,16 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *fetchVersionsGroup; // @synthesize fetchVersionsGroup=_fetchVersionsGroup;
 @property (nonatomic) BOOL isDeleted; // @synthesize isDeleted=_isDeleted;
 @property (strong, nonatomic) NSString *minimumVersionETag; // @synthesize minimumVersionETag=_minimumVersionETag;
+@property (readonly, nonatomic) CKDDecryptRecordsOperation *recordDecryptOperation;
 @property (strong, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
 @property (copy, nonatomic) CDUnknownBlockType recordVersionFetchedBlock; // @synthesize recordVersionFetchedBlock=_recordVersionFetchedBlock;
 @property (nonatomic) BOOL shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
 
 - (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleRecordVersionsFecthedForID:(id)arg1 isDeleted:(BOOL)arg2 versions:(id)arg3 responseCode:(id)arg4;
-- (unsigned long long)activityStart;
+- (void)_handleRecordVersionsFetchedForID:(id)arg1 isDeleted:(BOOL)arg2 versions:(id)arg3 responseCode:(id)arg4;
+- (id)activityCreate;
+- (BOOL)hasDecryptOperation;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
 

@@ -21,6 +21,7 @@
 
 + (id)responseWithURL:(id)arg1 touchIcon:(id)arg2 generated:(BOOL)arg3 extractedBackgroundColor:(id)arg4;
 - (void).cxx_destruct;
+- (id)description;
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 touchIcon:(id)arg2 generated:(BOOL)arg3 extractedBackgroundColor:(id)arg4;
 

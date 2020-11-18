@@ -26,10 +26,11 @@
 - (id)init;
 - (void)originalSettingsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)overriddenSettingsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)sendAllSectionInfoWithCompletion:(CDUnknownBlockType)arg1;
+- (void)sendAllSectionInfoWithSpool:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sendSectionInfoWithSectionID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)settingOverridesWithCompletion:(CDUnknownBlockType)arg1;
-- (void)willAlertForSectionID:(id)arg1 subtype:(long long)arg2 considerSubtype:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)spoolSectionInfoWithCompletion:(CDUnknownBlockType)arg1;
+- (void)willAlertForSectionID:(id)arg1 subtype:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

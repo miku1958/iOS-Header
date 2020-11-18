@@ -28,17 +28,17 @@ __attribute__((visibility("hidden")))
 - (BOOL)_containsFocusableRegionForView:(id)arg1;
 - (struct CGPoint)_focusCandidateSearchOriginForFocusedFrame:(struct CGRect)arg1 heading:(unsigned long long)arg2 minimumSearchArea:(struct CGRect)arg3;
 - (struct CGRect)_focusCandidateSearchRectForFocusedFrame:(struct CGRect)arg1 heading:(unsigned long long)arg2 minimumSearchArea:(struct CGRect)arg3;
-- (id)_nearestFocusCandidateFromFocusedView:(id)arg1 withFocusedRect:(struct CGRect)arg2 usingHeading:(unsigned long long)arg3 includingFocusedView:(BOOL)arg4;
+- (id)_nearestCandidateForFocusMovement:(id)arg1 fromFocusedView:(id)arg2 withFocusedRect:(struct CGRect)arg3 includingFocusedView:(BOOL)arg4;
 - (struct CGRect)_rectThatJustBarelyIntersectsRect:(struct CGRect)arg1 startingRect:(struct CGRect)arg2;
 - (struct CGRect)_viewSearchRectForFocusedFrame:(struct CGRect)arg1 focusCandidateSearchRect:(struct CGRect)arg2 includesFocusedFrame:(BOOL)arg3;
 - (struct CGRect)_viewSearchRectForSnapshotRect:(struct CGRect)arg1;
 - (id)debugQuickLookObject;
 - (id)inferredPreferredFocusedSubviewForView:(id)arg1;
 - (id)initWithRootView:(id)arg1;
-- (id)linearlyOrderedFocusCandidatesFromView:(id)arg1 usingHeading:(unsigned long long)arg2 indexForFocusedView:(unsigned long long *)arg3;
-- (id)linearlyOrderedFocusRegionMapEntriesFromView:(id)arg1 usingHeading:(unsigned long long)arg2;
-- (id)nearestFocusCandidateFromRect:(struct CGRect)arg1 usingHeading:(unsigned long long)arg2;
-- (id)nearestFocusCandidateFromView:(id)arg1 usingHeading:(unsigned long long)arg2;
+- (id)linearlyOrderedCandidatesForFocusMovement:(id)arg1 fromView:(id)arg2 indexForFocusedView:(unsigned long long *)arg3;
+- (id)linearlyOrderedFocusRegionMapEntriesForFocusMovement:(id)arg1 fromView:(id)arg2;
+- (id)nearestCandidateForFocusMovement:(id)arg1 fromView:(id)arg2;
+- (id)nearestCandidateFromRect:(struct CGRect)arg1;
 
 @end
 

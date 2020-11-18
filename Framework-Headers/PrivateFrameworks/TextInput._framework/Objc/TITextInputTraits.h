@@ -22,15 +22,19 @@
             unsigned int keyboardType:4;
             unsigned int keyboardAppearance:2;
             unsigned int returnKeyType:4;
+            unsigned int textScriptType:4;
             unsigned int enablesReturnKeyAutomatically:1;
             unsigned int secureTextEntry:1;
+            unsigned int disablePrediction:1;
         } fields;
     } _mask;
+    NSString *_textContentType;
     NSString *_recentInputIdentifier;
 }
 
 @property (nonatomic) unsigned long long autocapitalizationType;
 @property (nonatomic) unsigned long long autocorrectionType;
+@property (nonatomic) BOOL disablePrediction;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
 @property (nonatomic) unsigned long long keyboardAppearance;
 @property (nonatomic) unsigned long long keyboardType;
@@ -38,9 +42,12 @@
 @property (nonatomic) unsigned long long returnKeyType;
 @property (nonatomic) BOOL secureTextEntry;
 @property (nonatomic) unsigned long long spellCheckingType;
+@property (copy, nonatomic) NSString *textContentType; // @synthesize textContentType=_textContentType;
+@property (nonatomic) unsigned long long textScriptType;
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

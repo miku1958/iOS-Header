@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKit/NSObject-Protocol.h>
+#import <PassKitCore/NSObject-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSError, PKPaymentMerchantSession, PKPaymentRequest;
 
 @protocol PKPaymentAuthorizationServiceProtocol <NSObject>
 - (void)authorizationDidAuthorizePaymentCompleteWithStatus:(long long)arg1;
+- (void)authorizationDidRequestMerchantSessionCompleteWithSession:(PKPaymentMerchantSession *)arg1 error:(NSError *)arg2;
 - (void)authorizationDidSelectPaymentMethodCompleteWithPaymentSummaryItems:(NSArray *)arg1;
 - (void)authorizationDidSelectShippingAddressCompleteWithStatus:(long long)arg1 shippingMethods:(NSArray *)arg2 paymentSummaryItems:(NSArray *)arg3;
 - (void)authorizationDidSelectShippingMethodCompleteWithStatus:(long long)arg1 paymentSummaryItems:(NSArray *)arg2;
@@ -19,5 +20,6 @@
 @optional
 - (void)handleDismissWithCompletion:(void (^)(void))arg1;
 - (void)handleHostApplicationDidCancel;
+- (void)prepareWithPaymentRequest:(PKPaymentRequest *)arg1 completion:(void (^)(NSError *))arg2;
 @end
 

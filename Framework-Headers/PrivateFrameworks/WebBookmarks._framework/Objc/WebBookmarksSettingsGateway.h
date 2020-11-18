@@ -22,6 +22,7 @@
 - (void)getSafariDataUsageByteCountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getSafariWebDataUsageWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)scheduleBookmarksDatabaseMaintenance;
 
 @end
 

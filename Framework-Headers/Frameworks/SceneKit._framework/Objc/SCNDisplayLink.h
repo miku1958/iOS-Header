@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class CADisplayLink;
 @protocol OS_dispatch_queue;
@@ -13,22 +13,23 @@ __attribute__((visibility("hidden")))
 @interface SCNDisplayLink : NSObject
 {
     CADisplayLink *_caDisplayLink;
+    BOOL _supportTargetTimestamp;
     id _owner;
     CDUnknownBlockType _block;
     NSObject<OS_dispatch_queue> *_queue;
     BOOL _paused;
     BOOL _invalidated;
     BOOL _asynchronous;
-    long long _frameInterval;
-    double _lastVideoOutput;
+    double _lastFrameTime;
+    float _preferredFrameRate;
     int _queuedFrameCount;
 }
 
-@property (nonatomic) long long frameInterval;
 @property (nonatomic, getter=isPaused) BOOL paused;
+@property (nonatomic) float preferredFrameRate;
 
 - (void)_caDisplayLinkCallback;
-- (void)_callbackWithTime:(double)arg1 andDeltaTime:(double)arg2;
+- (void)_callbackWithTime:(double)arg1;
 - (BOOL)_isInvalidated;
 - (void)_pause;
 - (void)_resume;
@@ -39,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidate;
 - (int)queuedFrameCount;
 - (void)setNeedsDisplay;
-- (void)setPaused:(BOOL)arg1 nextFrameTimeHint:(double)arg2;
+- (BOOL)setPaused:(BOOL)arg1 nextFrameTimeHint:(double)arg2 lastUpdate:(double)arg3;
 - (void)willDie;
 
 @end

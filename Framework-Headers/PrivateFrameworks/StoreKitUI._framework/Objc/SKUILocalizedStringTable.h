@@ -10,8 +10,8 @@
 
 @interface SKUILocalizedStringTable : NSObject
 {
-    NSBundle *_bundle;
     NSDictionary *_strings;
+    NSBundle *_bundle;
     NSString *_tableName;
 }
 

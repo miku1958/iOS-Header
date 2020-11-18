@@ -6,24 +6,32 @@
 
 #import <Foundation/NSObject.h>
 
+@class NSMutableDictionary;
+
 @interface MMCSController : NSObject
 {
     long long _connectionBehavior;
+    NSMutableDictionary *_transfers;
 }
 
 @property long long connectionBehavior; // @synthesize connectionBehavior=_connectionBehavior;
 @property (readonly) BOOL isActive;
+@property (readonly) NSMutableDictionary *transfers; // @synthesize transfers=_transfers;
 
-- (id)_options;
+- (void)_addPreauthorizationOptions:(id)arg1 forFiles:(id)arg2;
+- (id)_optionsForFiles:(id)arg1;
 - (void)_registerPowerAssertionIfNeeded;
 - (void)_releasePowerAssertion;
 - (void)_releasePowerAssertionAndSimulateCrash;
 - (void)_unregisterPowerAssertion;
 - (void)dealloc;
+- (id)getContentHeadersAsString;
 - (void)getFiles:(id)arg1 requestURL:(id)arg2 requestorID:(id)arg3 authToken:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (id)init;
-- (void)putFiles:(id)arg1 requestURL:(id)arg2 requestorID:(id)arg3 authToken:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
-- (BOOL)registerFiles:(id)arg1;
+- (id)parseContentHeaderAsDictionary:(id)arg1 treatValuesAsArrays:(BOOL)arg2;
+- (void)putFiles:(id)arg1 requestURL:(id)arg2 requestorID:(id)arg3 authToken:(id)arg4 preauthenticate:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6;
+- (void)registerFilesForDownload:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)registerFilesForUpload:(id)arg1 withPreauthentication:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (BOOL)unregisterFiles:(id)arg1;
 
 @end

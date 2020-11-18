@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CNObservedResult : NSObject
 {
@@ -21,7 +21,7 @@
 + (id)completionResultWithTime:(unsigned long long)arg1;
 + (id)failureWithError:(id)arg1 time:(unsigned long long)arg2;
 + (id)resultWithTime:(unsigned long long)arg1 value:(id)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithValue:(id)arg1 time:(unsigned long long)arg2;
 - (BOOL)isEqual:(id)arg1;

@@ -64,20 +64,25 @@ struct Context {
     int _field5;
     BOOL _field6;
     BOOL _field7;
-    struct CGContext *_field8;
-    float _field9;
-    BOOL _field10;
-    struct CGRect _field11;
-    struct CGAffineTransform _field12;
-    int _field13;
-    unsigned long long _field14;
-    unsigned long long _field15;
-    struct map<const CI::Image *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>, std::__1::less<const CI::Image *>, std::__1::allocator<std::__1::pair<const CI::Image *const, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>>> _field16;
-    BOOL _field17;
-    struct TreeCacheElement _field18[1024];
-    unsigned long long _field19;
-    double _field20;
-    double _field21;
+    BOOL _field8;
+    BOOL _field9;
+    struct CGContext *_field10;
+    float _field11;
+    BOOL _field12;
+    struct CGRect _field13;
+    struct CGAffineTransform _field14;
+    int _field15;
+    unsigned long long _field16;
+    unsigned long long _field17;
+    int _field18;
+    BOOL _field19;
+    struct TreeCacheElement _field20[1024];
+    unsigned long long _field21;
+    double _field22;
+    double _field23;
+    BOOL _field24;
+    id _field25;
+    id _field26;
 };
 
 struct FastRegistration_Signatures {
@@ -87,13 +92,6 @@ struct FastRegistration_Signatures {
     float *piCol;
     unsigned long long nPiCol;
     struct Projections_meanStdTable piColTable;
-};
-
-struct GrainParameters {
-    float _field1;
-    float _field2;
-    float _field3;
-    float _field4;
 };
 
 struct GridROI_t {
@@ -122,7 +120,20 @@ struct ISize {
     unsigned long long _field2;
 };
 
-struct Kernel;
+struct Kernel {
+    CDUnknownFunctionPointerType *_field1;
+    struct Atomic _field2;
+    char *_field3;
+    char *_field4;
+    BOOL _field5;
+    struct SerialIntArray *_field6;
+    struct SerialStringArray *_field7;
+    struct __CFString *_field8;
+    BOOL _field9;
+    BOOL _field10;
+    BOOL _field11;
+    int _field12;
+};
 
 struct Projections_meanStdTable {
     float *sumTable;
@@ -163,7 +174,8 @@ struct Texture {
 
 struct TreeCacheElement {
     struct Hash _field1;
-    struct Kernel *_field2;
+    unsigned long long _field2;
+    struct Kernel *_field3;
 };
 
 struct WarpKernel {
@@ -172,12 +184,16 @@ struct WarpKernel {
     char *_field3;
     char *_field4;
     BOOL _field5;
-    BOOL _field6;
-    struct SerialIntArray *_field7;
-    struct SerialStringArray *_field8;
+    struct SerialIntArray *_field6;
+    struct SerialStringArray *_field7;
+    struct __CFString *_field8;
     BOOL _field9;
-    struct __CFString *_field10;
+    BOOL _field10;
+    BOOL _field11;
+    int _field12;
 };
+
+struct __CFString;
 
 struct __SVMParameters {
     struct __SVMScaleOffset {
@@ -206,20 +222,6 @@ struct __va_list_tag {
 
 struct filterShape {
     struct CGRect _field1;
-};
-
-struct map<const CI::Image *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>, std::__1::less<const CI::Image *>, std::__1::allocator<std::__1::pair<const CI::Image *const, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>>> {
-    struct __tree<std::__1::__value_type<const CI::Image *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>, std::__1::__map_value_compare<const CI::Image *, std::__1::__value_type<const CI::Image *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>, std::__1::less<const CI::Image *>, true>, std::__1::allocator<std::__1::__value_type<const CI::Image *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>>> {
-        struct __tree_node<std::__1::__value_type<const CI::Image *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>, void *> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<const CI::Image *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-                struct __tree_node_base<void *> *_field1;
-            } _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<const CI::Image *, std::__1::__value_type<const CI::Image *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>, std::__1::less<const CI::Image *>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
 };
 
 struct vec2 {

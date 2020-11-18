@@ -8,6 +8,7 @@
 
 @class NSMapTable;
 
+__attribute__((visibility("hidden")))
 @interface CKDGetAuthTokensForPutURLRequest : CKDURLRequest
 {
     BOOL _useEncryption;

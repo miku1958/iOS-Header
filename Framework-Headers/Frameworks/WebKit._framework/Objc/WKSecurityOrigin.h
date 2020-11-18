@@ -25,8 +25,6 @@
 @property (readonly) Class superclass;
 
 - (void)dealloc;
-- (void)forwardInvocation:(id)arg1;
-- (id)methodSignatureForSelector:(SEL)arg1;
 
 @end
 

@@ -6,16 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary;
+@class NSDictionary, NSMutableArray;
+@protocol BLTWatchKitAppListDelegate;
 
 @interface BLTWatchKitAppList : NSObject
 {
     NSDictionary *_appsByAppBundleID;
     struct _opaque_pthread_mutex_t _lock;
+    NSMutableArray *_loadingCompletionHandlers;
+    BOOL _loading;
+    BOOL _loaded;
+    id<BLTWatchKitAppListDelegate> _delegate;
 }
+
+@property (weak, nonatomic) id<BLTWatchKitAppListDelegate> delegate; // @synthesize delegate=_delegate;
+@property (getter=isLoaded) BOOL loaded; // @synthesize loaded=_loaded;
 
 - (void).cxx_destruct;
 - (void)_fetchWatchKitInfo;
+- (void)_fetchWatchKitInfoWithForce:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)fetchWatchKitInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;

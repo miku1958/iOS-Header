@@ -6,9 +6,11 @@
 
 #import <GameplayKit/GKObstacle.h>
 
+#import <GameplayKit/NSCoding-Protocol.h>
+
 @class MISSING_TYPE;
 
-@interface GKPolygonObstacle : GKObstacle
+@interface GKPolygonObstacle : GKObstacle <NSCoding>
 {
     struct GKCPolygonObstacle *_cPolygonObstacle;
 }
@@ -18,7 +20,9 @@
 + (id)obstacleWithPoints:(MISSING_TYPE **)arg1 count:(unsigned long long)arg2;
 - (struct GKCPolygonObstacle *)cPolygonObstacle;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithPoints:(MISSING_TYPE **)arg1 count:(unsigned long long)arg2;
 - (struct Obstacle *)obstacle;
 - (void)setCPolygonObstacle:(struct GKCPolygonObstacle *)arg1;

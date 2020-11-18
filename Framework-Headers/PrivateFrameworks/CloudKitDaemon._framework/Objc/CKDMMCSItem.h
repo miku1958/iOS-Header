@@ -6,32 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class CKAsset, CKPackage, CKRecordID, NSData, NSError, NSMutableArray, NSNumber, NSString, NSURL;
+@class CKAsset, CKDMMCSItemCommandWriter, CKPackage, CKRecordID, NSData, NSError, NSMutableArray, NSNumber, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface CKDMMCSItem : NSObject
 {
+    BOOL _inMemoryDownloadLooksOkay;
     BOOL _hasSize;
     BOOL _hasOffset;
     BOOL _finished;
     BOOL _temporary;
     BOOL _shouldReadRawEncryptedData;
+    BOOL _isAlreadyRegistered;
+    BOOL _isReaderReadFrom;
     unsigned int _chunkCount;
     NSURL *_fileURL;
     NSNumber *_deviceID;
     NSNumber *_fileID;
     NSNumber *_generationID;
+    NSNumber *_modTimeInSeconds;
     unsigned long long _itemID;
     double _progress;
     unsigned long long _size;
     unsigned long long _offset;
     unsigned long long _packageIndex;
+    NSString *_putPackageSectionIdentifier;
     CKAsset *_asset;
     CKPackage *_package;
     CKRecordID *_recordID;
     NSString *_recordType;
     NSString *_recordKey;
     NSData *_signature;
+    NSString *_itemTypeHint;
     NSURL *_contentBaseURL;
     NSString *_owner;
     NSString *_requestor;
@@ -43,6 +49,7 @@ __attribute__((visibility("hidden")))
     NSData *_assetKey;
     NSData *_wrappedAssetKey;
     NSData *_referenceSignature;
+    CKDMMCSItemCommandWriter *_writer;
     unsigned long long _uploadTokenExpiration;
     unsigned long long _downloadTokenExpiration;
     NSString *_trackingUUID;
@@ -63,12 +70,18 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSNumber *generationID; // @synthesize generationID=_generationID;
 @property (nonatomic) BOOL hasOffset; // @synthesize hasOffset=_hasOffset;
 @property (nonatomic) BOOL hasSize; // @synthesize hasSize=_hasSize;
+@property (nonatomic) BOOL inMemoryDownloadLooksOkay; // @synthesize inMemoryDownloadLooksOkay=_inMemoryDownloadLooksOkay;
+@property (nonatomic) BOOL isAlreadyRegistered; // @synthesize isAlreadyRegistered=_isAlreadyRegistered;
+@property (nonatomic) BOOL isReaderReadFrom; // @synthesize isReaderReadFrom=_isReaderReadFrom;
 @property (nonatomic) unsigned long long itemID; // @synthesize itemID=_itemID;
+@property (strong, nonatomic) NSString *itemTypeHint; // @synthesize itemTypeHint=_itemTypeHint;
+@property (strong, nonatomic) NSNumber *modTimeInSeconds; // @synthesize modTimeInSeconds=_modTimeInSeconds;
 @property (nonatomic) unsigned long long offset; // @synthesize offset=_offset;
 @property (strong, nonatomic) NSString *owner; // @synthesize owner=_owner;
 @property (strong, nonatomic) CKPackage *package; // @synthesize package=_package;
 @property (nonatomic) unsigned long long packageIndex; // @synthesize packageIndex=_packageIndex;
 @property (nonatomic) double progress; // @synthesize progress=_progress;
+@property (strong, nonatomic) NSString *putPackageSectionIdentifier; // @synthesize putPackageSectionIdentifier=_putPackageSectionIdentifier;
 @property (strong, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
 @property (strong, nonatomic) NSString *recordKey; // @synthesize recordKey=_recordKey;
 @property (strong, nonatomic) NSString *recordType; // @synthesize recordType=_recordType;
@@ -83,6 +96,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *uploadReceipt; // @synthesize uploadReceipt=_uploadReceipt;
 @property (nonatomic) unsigned long long uploadTokenExpiration; // @synthesize uploadTokenExpiration=_uploadTokenExpiration;
 @property (strong, nonatomic) NSData *wrappedAssetKey; // @synthesize wrappedAssetKey=_wrappedAssetKey;
+@property (strong, nonatomic) CKDMMCSItemCommandWriter *writer; // @synthesize writer=_writer;
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;

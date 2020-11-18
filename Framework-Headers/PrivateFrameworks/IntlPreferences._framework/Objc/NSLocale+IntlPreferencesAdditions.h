@@ -6,7 +6,12 @@
 
 #import <Foundation/NSLocale.h>
 
+@class NSString;
+
 @interface NSLocale (IntlPreferencesAdditions)
+
+@property (readonly, nonatomic) NSString *languageIdentifier;
+
 + (id)addLikelySubtagsForLocaleIdentifier:(id)arg1;
 + (id)canonicalLanguageAndScriptCodeIdentifierForIdentifier:(id)arg1;
 + (id)canonicalLocaleIdentifier:(id)arg1 withNewLanguageIdentifier:(id)arg2;
@@ -32,5 +37,6 @@
 + (id)supportedCJLanguageIdentifiers;
 + (void)updateShouldShowPreferredLanguages:(BOOL)arg1;
 + (id)validateLocale:(id)arg1;
+- (id)localeByChangingLanguageTo:(id)arg1;
 @end
 

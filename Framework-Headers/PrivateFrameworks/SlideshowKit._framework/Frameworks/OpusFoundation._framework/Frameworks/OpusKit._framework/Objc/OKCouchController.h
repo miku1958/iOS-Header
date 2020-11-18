@@ -7,7 +7,7 @@
 #import <Foundation/NSObject.h>
 
 @class OKPresentationCouch, OKPresentationCouchStep;
-@protocol OKCouchControllerDelegate;
+@protocol OKCouchControllerDelegate, OS_dispatch_source;
 
 @interface OKCouchController : NSObject
 {
@@ -17,8 +17,8 @@
     double _currentStepStartTime;
     double _readinessWaitStartTime;
     double _progress;
+    NSObject<OS_dispatch_source> *_timer;
     unsigned long long _startValidityBarrier;
-    unsigned long long _executionValidityBarrier;
     long long _stopCounter;
     BOOL _isPlaying;
     BOOL _hasStartedToWait;
@@ -38,6 +38,8 @@
 - (void)_dispatchNextStep;
 - (void)_executeStep:(id)arg1 forTargetPageViewController:(id)arg2;
 - (id)_nextCouchStep:(id)arg1;
+- (void)_setupTimer;
+- (void)_timerEventHandler;
 - (void)allowPlayback;
 - (BOOL)canStartPlayback;
 - (void)dealloc;

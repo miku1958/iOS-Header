@@ -51,6 +51,7 @@
 
 + (BOOL)didChooseToMigrateNote:(id)arg1 context:(struct NoteContext *)arg2;
 + (id)searchIndexableObjectWithIdentifier:(id)arg1 includeDeleted:(BOOL)arg2 inNoteContext:(id)arg3;
+- (id)authorsExcludingCurrentUser;
 - (BOOL)belongsToCollection:(id)arg1;
 - (BOOL)containsAttachments;
 - (id)contentAsPlainTextPreservingNewlines;
@@ -61,6 +62,7 @@
 - (BOOL)ignoreInSearchIndexer;
 - (BOOL)isHiddenFromSearch;
 - (BOOL)isPasswordProtected;
+- (BOOL)isSharedViaICloud;
 - (void)markForDeletion;
 - (id)noteAsPlainTextWithoutTitle;
 - (id)objectIdentifier;
@@ -74,6 +76,7 @@
 - (id)searchableItemAttributeSet;
 - (id)searchableItemIdentifier;
 - (BOOL)shouldUpdateIndexForChangedValues:(id)arg1;
+- (id)trimmedTitle;
 - (long long)visibilityTestingType;
 
 @end

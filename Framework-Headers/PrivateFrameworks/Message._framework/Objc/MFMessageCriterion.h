@@ -10,35 +10,48 @@
 
 @interface MFMessageCriterion : NSObject
 {
-    NSString *_uniqueId;
     NSString *_criterionIdentifier;
-    NSString *_expression;
     int _qualifier;
+    long long _type;
+    NSString *_name;
+    NSString *_uniqueId;
+    NSString *_expression;
     NSArray *_criteria;
     int _dateUnitType;
-    NSString *_name;
     unsigned int _allCriteriaMustBeSatisfied:1;
     unsigned int _dateIsRelative:1;
     unsigned int _includeRelatedMessages:1;
-    int _type;
     NSArray *_requiredHeaders;
+    BOOL _preferFullTextSearch;
     BOOL _useFlaggedForUnreadCount;
     BOOL _expressionIsSanitized;
     NSIndexSet *_libraryIdentifiers;
 }
 
+@property (strong, nonatomic) NSString *criterionIdentifier;
+@property (nonatomic) long long criterionType;
+@property (copy, nonatomic) NSString *expression;
 @property (nonatomic) BOOL expressionIsSanitized; // @synthesize expressionIsSanitized=_expressionIsSanitized;
 @property (nonatomic) BOOL includeRelatedMessages; // @synthesize includeRelatedMessages=_includeRelatedMessages;
 @property (strong, nonatomic) NSIndexSet *libraryIdentifiers; // @synthesize libraryIdentifiers=_libraryIdentifiers;
+@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (nonatomic) BOOL preferFullTextSearch; // @synthesize preferFullTextSearch=_preferFullTextSearch;
+@property (nonatomic) int qualifier; // @synthesize qualifier=_qualifier;
 @property (nonatomic) BOOL useFlaggedForUnreadCount; // @synthesize useFlaggedForUnreadCount=_useFlaggedForUnreadCount;
 
 + (id)VIPSenderMessageCriterion;
++ (id)_daSearchPredicateForCriterion:(id)arg1;
++ (id)_daSimplifiedCompoundPredicateOfType:(unsigned long long)arg1 forSubqueries:(id)arg2;
 + (void)_updateAddressComments:(id)arg1;
 + (id)andCompoundCriterionWithCriteria:(id)arg1;
++ (id)ccMeCriterion;
 + (id)criteriaFromDefaultsArray:(id)arg1;
 + (id)criteriaFromDefaultsArray:(id)arg1 removingRecognizedKeys:(BOOL)arg2;
++ (id)criterionForConversationID:(long long)arg1;
++ (id)criterionForMailbox:(id)arg1;
 + (id)criterionForMailboxURL:(id)arg1;
-+ (int)criterionTypeForString:(id)arg1;
++ (id)criterionForNotDeletedConversationID:(long long)arg1;
++ (long long)criterionTypeForString:(id)arg1;
 + (id)defaultsArrayFromCriteria:(id)arg1;
 + (id)flaggedMessageCriterion;
 + (id)hasAttachmentsCriterion;
@@ -47,9 +60,11 @@
 + (id)messageIsServerSearchResultCriterion:(BOOL)arg1;
 + (id)notCriterionWithCriterion:(id)arg1;
 + (id)orCompoundCriterionWithCriteria:(id)arg1;
-+ (id)stringForCriterionType:(int)arg1;
++ (id)readMessageCriterion;
++ (id)stringForCriterionType:(long long)arg1;
 + (id)threadMuteMessageCriterion;
 + (id)threadNotifyMessageCriterion;
++ (id)toMeCriterion;
 + (id)todayMessageCriterion;
 + (id)unreadMessageCriterion;
 - (id)SQLExpressionWithContext:(CDStruct_f28f5ac0 *)arg1 depth:(unsigned int)arg2;
@@ -59,6 +74,11 @@
 - (id)_collapsedMessageNumberCriterion:(id)arg1 allMustBeSatisfied:(BOOL)arg2 collapsedIndexes:(id *)arg3;
 - (id)_comparisonOperationMatchingValue:(id)arg1;
 - (id)_criterionForSQL;
+- (id)_daAttributesForHeaderCriterion;
+- (id)_daKeysRequiringContainsOperatorType;
+- (id)_daOrPredicateForAttributes:(id)arg1 matchingValue:(id)arg2 qualifier:(int)arg3;
+- (id)_daPredicateForKey:(id)arg1 value:(id)arg2 qualifier:(int)arg3;
+- (id)_daWordPredicateWithAttributes:(id)arg1 matchingValue:(id)arg2 qualifier:(int)arg3;
 - (BOOL)_evaluateAccountCriterion:(id)arg1;
 - (BOOL)_evaluateAddressBookCriterion:(id)arg1;
 - (BOOL)_evaluateAddressHistoryCriterion:(id)arg1;
@@ -87,8 +107,9 @@
 - (id)criteriaSatisfyingPredicate:(CDUnknownFunctionPointerType)arg1;
 - (id)criterionByApplyingTransform:(CDUnknownBlockType)arg1;
 - (id)criterionForSQL;
-- (id)criterionIdentifier;
-- (int)criterionType;
+- (id)daBasicSearchString;
+- (id)daSearchPredicate;
+- (id)dateFromExpression;
 - (BOOL)dateIsRelative;
 - (int)dateUnits;
 - (void)dealloc;
@@ -96,8 +117,6 @@
 - (id)descriptionWithDepth:(unsigned int)arg1;
 - (id)dictionaryRepresentation;
 - (BOOL)doesMessageSatisfyCriterion:(id)arg1;
-- (id)emailAddressesForGroupCriterion;
-- (id)expression;
 - (id)extractedDateCriterion;
 - (id)extractedUnreadCriterion;
 - (id)fixOnce;
@@ -109,21 +128,15 @@
 - (id)initWithCriterion:(id)arg1 expression:(id)arg2;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithDictionary:(id)arg1 andRemoveRecognizedKeysIfMutable:(BOOL)arg2;
-- (id)initWithType:(int)arg1 qualifier:(int)arg2 expression:(id)arg3;
+- (id)initWithType:(long long)arg1 qualifier:(int)arg2 expression:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isFullTextSearchableCriterion;
+- (BOOL)isVIPCriterion;
 - (int)messageRuleQualifierForString:(id)arg1;
-- (id)name;
-- (int)qualifier;
 - (void)setAllCriteriaMustBeSatisfied:(BOOL)arg1;
 - (void)setCriteria:(id)arg1;
-- (void)setCriterionIdentifier:(id)arg1;
-- (void)setCriterionType:(int)arg1;
 - (void)setDateIsRelative:(BOOL)arg1;
 - (void)setDateUnits:(int)arg1;
-- (void)setExpression:(id)arg1;
-- (void)setName:(id)arg1;
-- (void)setQualifier:(int)arg1;
 - (id)simplifiedCriterion;
 - (id)simplifyOnce;
 - (id)spotlightQueryString;

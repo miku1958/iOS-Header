@@ -19,15 +19,14 @@
 @property (readonly, nonatomic) unsigned char attachmentContiguousType;
 @property (readonly, nonatomic, getter=isContiguous) BOOL contiguous;
 @property (readonly, nonatomic) unsigned char contiguousType;
-@property (copy, nonatomic) NSString *guid; // @synthesize guid=_guid;
+@property (copy, nonatomic, setter=_setGUID:) NSString *guid; // @synthesize guid=_guid;
 
+- (void).cxx_destruct;
 - (BOOL)_isContiguousLoaded;
 - (void)_setAttachmentContiguousType:(unsigned char)arg1;
 - (void)_setContiguousLoaded:(BOOL)arg1;
 - (void)_setContiguousType:(unsigned char)arg1;
-- (void)_setGUID:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (BOOL)isAttachmentContiguousWithChatItem:(id)arg1;

@@ -8,14 +8,15 @@
 
 #import <GeoServices/GEODirectionServiceTicket-Protocol.h>
 
-@class GEOComposedRoute, GEODirectionsRouteRequest, NSDictionary, NSString;
+@class GEOComposedRoute, GEODirectionsRequest, NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _GEODirectionsRequestTicket : NSObject <GEODirectionServiceTicket>
 {
-    GEODirectionsRouteRequest *_request;
+    GEODirectionsRequest *_request;
     BOOL _isReroute;
     GEOComposedRoute *_originalRoute;
+    NSArray *_waypoints;
     BOOL _active;
     BOOL _canceled;
     NSDictionary *_userInfo;
@@ -28,9 +29,10 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isReroute; // @synthesize isReroute=_isReroute;
 @property (strong, nonatomic) GEOComposedRoute *originalRoute; // @synthesize originalRoute=_originalRoute;
-@property (readonly, nonatomic) GEODirectionsRouteRequest *request; // @synthesize request=_request;
+@property (readonly, nonatomic) GEODirectionsRequest *request; // @synthesize request=_request;
 @property (readonly, nonatomic) NSDictionary *responseUserInfo;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSArray *waypoints; // @synthesize waypoints=_waypoints;
 
 - (void)cancel;
 - (void)dealloc;

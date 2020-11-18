@@ -28,7 +28,7 @@
 @property (strong, nonatomic) NCViewServiceDescriptor *accessoryViewService; // @synthesize accessoryViewService=_accessoryViewService;
 @property (nonatomic) double bottomOverhangHeight; // @synthesize bottomOverhangHeight=_bottomOverhangHeight;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<NCInteractiveNotificationHostDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<NCInteractiveNotificationHostDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NCViewServiceDescriptor *inlayViewService; // @synthesize inlayViewService=_inlayViewService;
@@ -41,6 +41,7 @@
 + (void)initialize;
 + (void)requestInteractiveNotificationControllerWithName:(id)arg1 bundleIdentifier:(id)arg2 context:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (id)serviceViewControllerInterface;
+- (void).cxx_destruct;
 - (BOOL)__shouldRemoteViewControllerFenceOperations;
 - (void)_dismissWithContext:(id)arg1;
 - (void)_proximityStateChanged:(id)arg1;

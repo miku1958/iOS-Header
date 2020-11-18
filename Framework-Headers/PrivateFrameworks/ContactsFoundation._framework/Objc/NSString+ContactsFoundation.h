@@ -8,16 +8,19 @@
 
 @interface NSString (ContactsFoundation)
 + (BOOL)_cn_isBlank:(id)arg1;
+- (id)_cn_SHA256HashStringWithSalt:(id)arg1;
 - (BOOL)_cn_caseInsensitiveIsEqual:(id)arg1;
 - (BOOL)_cn_containsCharacterInSet:(id)arg1;
 - (BOOL)_cn_containsSubstring:(id)arg1;
 - (BOOL)_cn_containsSubstring:(id)arg1 options:(unsigned long long)arg2;
+- (void)_cn_eachCharacter:(CDUnknownBlockType)arg1;
 - (BOOL)_cn_hasCaseAndDiacriticInsensitivePrefix:(id)arg1;
 - (BOOL)_cn_hasPrefix:(id)arg1;
 - (BOOL)_cn_hasPrefix:(id)arg1 options:(unsigned long long)arg2;
 - (BOOL)_cn_isBlank;
 - (id)_cn_nameComponentTokens;
 - (id)_cn_nameComponentTokensUsingLocale:(id)arg1 inferredNameOrder:(long long *)arg2;
+- (struct _NSRange)_cn_rangeFromIndex:(unsigned long long)arg1;
 - (id)_cn_stringByAddingPercentEscapesIfNecessary;
 - (id)_cn_stringByAddingPercentEscapesToEntireURL;
 - (id)_cn_stringByDeletingCharactersInSet:(id)arg1;

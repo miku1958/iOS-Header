@@ -9,10 +9,10 @@
 @interface CLVisit (RTExtensions)
 - (id)description;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2 horizontalAccuracy:(double)arg3 arrivalDate:(id)arg4;
-- (id)initWithLatitude:(double)arg1 longitude:(double)arg2 horizontalAccuracy:(double)arg3 arrivalDate:(id)arg4 departureDate:(id)arg5;
+- (id)initWithLatitude:(double)arg1 longitude:(double)arg2 horizontalAccuracy:(double)arg3 arrivalDate:(id)arg4 departureDate:(id)arg5 detectionDate:(id)arg6;
 - (id)initWithLocation:(id)arg1 arrivalDate:(id)arg2;
 - (id)initWithLocation:(id)arg1 arrivalDate:(id)arg2 departureDate:(id)arg3;
-- (id)initWithOneVisit:(id)arg1;
+- (id)initWithVisitIncident:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)location;
 @end

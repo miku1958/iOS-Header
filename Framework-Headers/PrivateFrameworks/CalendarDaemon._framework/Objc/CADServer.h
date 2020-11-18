@@ -9,7 +9,7 @@
 #import <CalendarDaemon/ClientConnectionDelegate-Protocol.h>
 #import <CalendarDaemon/NSXPCListenerDelegate-Protocol.h>
 
-@class BirthdayCalendarManager, LocalAttachmentCleanUpSupport, NSArray, NSLock, NSMutableSet, NSString, NSXPCListener;
+@class BirthdayCalendarManager, CDBDataProtectionObserver, LocalAttachmentCleanUpSupport, NSArray, NSLock, NSMutableSet, NSString, NSXPCListener;
 @protocol OS_dispatch_queue, OS_xpc_object;
 
 @interface CADServer : NSObject <NSXPCListenerDelegate, ClientConnectionDelegate>
@@ -27,15 +27,16 @@
     NSArray *_signalSensors;
     BOOL _running;
     NSObject<OS_dispatch_queue> *_serverQueue;
+    NSObject *_bbProvider;
+    CDBDataProtectionObserver *_dataProtectionObserver;
 }
 
+@property (strong, nonatomic) CDBDataProtectionObserver *dataProtectionObserver; // @synthesize dataProtectionObserver=_dataProtectionObserver;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_serverIdentifier;
-+ (id)server;
 - (void).cxx_destruct;
 - (void)_dumpState;
 - (void)_exitWithStatus:(int)arg1;
@@ -51,12 +52,10 @@
 - (BOOL)_trimAndExtendOccurrenceCache;
 - (void)_updateOccurrenceCacheTimeZone;
 - (void)clientConnectionDied:(id)arg1;
-- (id)clientConnectionForIdentifier:(int)arg1;
 - (void)dealloc;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)run;
-- (void)runForTesting;
 - (void)shutDown;
 
 @end

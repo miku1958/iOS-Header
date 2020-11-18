@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/BBDataProviderStore-Protocol.h>
 #import <BulletinBoard/BBLocalDataProviderFactoryStore-Protocol.h>
@@ -31,6 +31,7 @@
 @property (readonly) Class superclass;
 
 + (id)localDataProviderStoreWithDelegate:(id)arg1 dataProviderQueue:(id)arg2;
+- (void).cxx_destruct;
 - (void)_addDataProviderClass:(Class)arg1 performMigration:(BOOL)arg2;
 - (void)_addLocalDataProviderFactoryOfClass:(Class)arg1;
 - (void)_loadDataProviderPluginBundle:(id)arg1 performMigration:(BOOL)arg2;
@@ -41,7 +42,6 @@
 - (void)addParentSectionInfo:(id)arg1 displayName:(id)arg2 icon:(id)arg3 universalSectionID:(id)arg4;
 - (id)dataProviderForSectionID:(id)arg1;
 - (id)dataProviderForUniversalSectionID:(id)arg1;
-- (void)dealloc;
 - (id)debugDescriptionWithChildren:(unsigned long long)arg1;
 - (id)initWithDelegate:(id)arg1 dataProviderQueue:(id)arg2;
 - (void)loadAllDataProvidersAndPerformMigration:(BOOL)arg1;

@@ -11,13 +11,10 @@
 @interface ASMailboxSearchResult : ASEmailItem
 {
     NSMutableArray *_mClasses;
-    NSMutableArray *_mCollectionIDs;
 }
 
 @property (readonly, nonatomic) NSArray *classes;
-@property (readonly, nonatomic) NSArray *collectionIDs;
 @property (strong, nonatomic) NSMutableArray *mClasses; // @synthesize mClasses=_mClasses;
-@property (strong, nonatomic) NSMutableArray *mCollectionIDs; // @synthesize mCollectionIDs=_mCollectionIDs;
 
 + (BOOL)acceptsTopLevelLeaves;
 + (id)asParseRules;
@@ -28,7 +25,6 @@
 - (void).cxx_destruct;
 - (BOOL)_isSearchResult;
 - (void)addClass:(id)arg1;
-- (void)addCollectionID:(id)arg1;
 - (id)description;
 - (id)init;
 

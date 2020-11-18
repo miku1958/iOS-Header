@@ -12,7 +12,7 @@
 
 @interface GEODirectionsFeedbackLogMessage : PBCodable <NSCopying>
 {
-    CDStruct_f580248a _navigationAudioFeedback;
+    struct GEONavigationAudioFeedback _navigationAudioFeedback;
     double _durationOfTrip;
     NSMutableArray *_directionsFeedbacks;
     GEOLocation *_finalLocation;
@@ -28,8 +28,9 @@
 @property (nonatomic) BOOL hasDurationOfTrip;
 @property (readonly, nonatomic) BOOL hasFinalLocation;
 @property (nonatomic) BOOL hasNavigationAudioFeedback;
-@property (nonatomic) CDStruct_f580248a navigationAudioFeedback; // @synthesize navigationAudioFeedback=_navigationAudioFeedback;
+@property (nonatomic) struct GEONavigationAudioFeedback navigationAudioFeedback; // @synthesize navigationAudioFeedback=_navigationAudioFeedback;
 
++ (Class)directionsFeedbackType;
 - (void)addDirectionsFeedback:(id)arg1;
 - (void)clearDirectionsFeedbacks;
 - (void)copyTo:(id)arg1;

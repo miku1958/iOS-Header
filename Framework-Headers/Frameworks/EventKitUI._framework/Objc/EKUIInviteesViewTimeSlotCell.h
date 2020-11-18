@@ -6,11 +6,12 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSArray, NSDate, NSDictionary, NSLayoutConstraint, NSMutableDictionary, UIButton, UIColor, UIImageView, UILabel, UITapGestureRecognizer, UITextView, UIView;
+@class NSArray, NSDate, NSDictionary, NSLayoutConstraint, NSMutableDictionary, NSTimeZone, UIButton, UIColor, UIImageView, UILabel, UITapGestureRecognizer, UITextView, UIView;
 
 @interface EKUIInviteesViewTimeSlotCell : UITableViewCell
 {
     BOOL _checked;
+    BOOL _searchInProgress;
     BOOL _updateFontBasedConstraints;
     BOOL _updateTimeText;
     BOOL _updateParticipantsText;
@@ -18,10 +19,13 @@
     CDUnknownBlockType _showPreviewOfEventAtTime;
     CDUnknownBlockType _showAllConflictedParticipantsTapped;
     NSDictionary *_andMoreStringCache;
+    NSArray *_proposedBy;
     UILabel *_labelForTextSizeTesting;
     UITextView *_textViewForTextSizeTesting;
     UILabel *_topTimeLabel;
     UILabel *_bottomTimeLabel;
+    UILabel *_timeZoneTimeLabel;
+    UILabel *_proposedByLabel;
     UIView *_andMoreDebugOverlay;
     UITextView *_participantsTextView;
     UIImageView *_checkmarkImageView;
@@ -30,12 +34,18 @@
     NSMutableDictionary *_colorToBusyImageAttributedString;
     NSLayoutConstraint *_topTimeLabelToTopContentViewConstraint;
     NSLayoutConstraint *_bottomTimeLabelToTopTimeLabelConstraint;
+    NSLayoutConstraint *_timeZoneTimeLabelToBottomTimeLabelConstraint;
+    NSLayoutConstraint *_proposedTimeLabelToBottomTimeLabelConstraint;
     NSLayoutConstraint *_participantsViewToBottomTimeLabelConstraint;
     NSLayoutConstraint *_participantsViewToContentViewConstraint;
     NSLayoutConstraint *_topTimeLabelHeightConstraint;
     NSLayoutConstraint *_bottomTimeLabelHeightConstraint;
+    NSLayoutConstraint *_timeZoneTimeLabelHeightConstraint;
+    NSLayoutConstraint *_proposedByMinHeightConstraint;
+    NSLayoutConstraint *_proposedByMaxHeightConstraint;
     NSDate *_startDate;
     NSDate *_endDate;
+    NSTimeZone *_timeZone;
     NSArray *_busyParticipants;
     UITapGestureRecognizer *_tappedMoreRecognizer;
     struct CGRect _andMoreBoundingRect;
@@ -58,6 +68,12 @@
 @property (strong, nonatomic) NSLayoutConstraint *participantsViewToBottomTimeLabelConstraint; // @synthesize participantsViewToBottomTimeLabelConstraint=_participantsViewToBottomTimeLabelConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *participantsViewToContentViewConstraint; // @synthesize participantsViewToContentViewConstraint=_participantsViewToContentViewConstraint;
 @property (strong, nonatomic) NSArray *persistentConstraints; // @synthesize persistentConstraints=_persistentConstraints;
+@property (strong, nonatomic) NSArray *proposedBy; // @synthesize proposedBy=_proposedBy;
+@property (strong, nonatomic) UILabel *proposedByLabel; // @synthesize proposedByLabel=_proposedByLabel;
+@property (strong, nonatomic) NSLayoutConstraint *proposedByMaxHeightConstraint; // @synthesize proposedByMaxHeightConstraint=_proposedByMaxHeightConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *proposedByMinHeightConstraint; // @synthesize proposedByMinHeightConstraint=_proposedByMinHeightConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *proposedTimeLabelToBottomTimeLabelConstraint; // @synthesize proposedTimeLabelToBottomTimeLabelConstraint=_proposedTimeLabelToBottomTimeLabelConstraint;
+@property (nonatomic) BOOL searchInProgress; // @synthesize searchInProgress=_searchInProgress;
 @property (copy, nonatomic) CDUnknownBlockType showAllConflictedParticipantsTapped; // @synthesize showAllConflictedParticipantsTapped=_showAllConflictedParticipantsTapped;
 @property (nonatomic) BOOL showAllParticipants; // @synthesize showAllParticipants=_showAllParticipants;
 @property (strong, nonatomic) UIButton *showPreviewButton; // @synthesize showPreviewButton=_showPreviewButton;
@@ -66,6 +82,10 @@
 @property (strong, nonatomic) UITapGestureRecognizer *tappedMoreRecognizer; // @synthesize tappedMoreRecognizer=_tappedMoreRecognizer;
 @property (strong, nonatomic) UITextView *textViewForTextSizeTesting; // @synthesize textViewForTextSizeTesting=_textViewForTextSizeTesting;
 @property (readonly, nonatomic) UIColor *timeTextColor;
+@property (strong, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
+@property (strong, nonatomic) UILabel *timeZoneTimeLabel; // @synthesize timeZoneTimeLabel=_timeZoneTimeLabel;
+@property (strong, nonatomic) NSLayoutConstraint *timeZoneTimeLabelHeightConstraint; // @synthesize timeZoneTimeLabelHeightConstraint=_timeZoneTimeLabelHeightConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *timeZoneTimeLabelToBottomTimeLabelConstraint; // @synthesize timeZoneTimeLabelToBottomTimeLabelConstraint=_timeZoneTimeLabelToBottomTimeLabelConstraint;
 @property (strong, nonatomic) UILabel *topTimeLabel; // @synthesize topTimeLabel=_topTimeLabel;
 @property (strong, nonatomic) NSLayoutConstraint *topTimeLabelHeightConstraint; // @synthesize topTimeLabelHeightConstraint=_topTimeLabelHeightConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *topTimeLabelToTopContentViewConstraint; // @synthesize topTimeLabelToTopContentViewConstraint=_topTimeLabelToTopContentViewConstraint;
@@ -81,6 +101,7 @@
 + (double)_leftBuffer;
 + (id)_nonBreakingSpace;
 + (id)_participantsTextViewFont;
++ (id)_proposedByFont;
 + (id)_replaceSpacesWithNonBreakingSpaces:(id)arg1;
 + (double)_rightBuffer;
 + (void)_setRequiredHuggingAndCompression:(id)arg1;
@@ -96,6 +117,7 @@
 - (void)_resetParticipantsTextIfNeeded;
 - (void)_resetPreferredMaxLayoutWidths;
 - (void)_resetTimeTextIfNeeded;
+- (BOOL)_shouldDisplayTimeZone;
 - (void)_showPreviewButtonTapped:(id)arg1;
 - (id)_textForParticipant:(id)arg1 color:(id)arg2;
 - (BOOL)_textWillFit:(id)arg1;
@@ -104,7 +126,7 @@
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)updateConstraints;
-- (void)updateWithStartDate:(id)arg1 endDate:(id)arg2 busyParticipants:(id)arg3 showAllParticipants:(BOOL)arg4 checked:(BOOL)arg5;
+- (void)updateWithStartDate:(id)arg1 endDate:(id)arg2 timeZone:(id)arg3 busyParticipants:(id)arg4 showAllParticipants:(BOOL)arg5 checked:(BOOL)arg6;
 
 @end
 

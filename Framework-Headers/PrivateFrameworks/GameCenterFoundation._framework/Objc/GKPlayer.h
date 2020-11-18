@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <GameCenterFoundation/GKBasePlayer.h>
 
 #import <GameCenterFoundation/NSCoding-Protocol.h>
 #import <GameCenterFoundation/NSSecureCoding-Protocol.h>
 
 @class GKGame, GKPlayerInternal, NSArray, NSAttributedString, NSDate, NSString;
 
-@interface GKPlayer : NSObject <NSCoding, NSSecureCoding>
+@interface GKPlayer : GKBasePlayer <NSCoding, NSSecureCoding>
 {
     GKPlayerInternal *_internal;
     NSAttributedString *_whenString;
@@ -30,7 +30,6 @@
 @property (readonly, nonatomic) BOOL isAutomatchPlayer; // @dynamic isAutomatchPlayer;
 @property (readonly, nonatomic) BOOL isFamiliarFriend;
 @property (nonatomic) BOOL isFriend; // @dynamic isFriend;
-@property (readonly, nonatomic) BOOL isFriendRecommendation; // @dynamic isFriendRecommendation;
 @property (readonly, nonatomic) BOOL isLocalPlayer; // @dynamic isLocalPlayer;
 @property (readonly, nonatomic) BOOL isUnknownPlayer; // @dynamic isUnknownPlayer;
 @property (readonly, nonatomic) NSString *lastName; // @dynamic lastName;
@@ -63,9 +62,7 @@
 + (BOOL)supportsSecureCoding;
 + (id)unknownPlayer;
 - (void)_postChangeNotification;
-- (void)acceptFriendRequestWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (void)declineFriendRequestWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)description;
 - (id)displayNameWithOptions:(unsigned char)arg1;
 - (id)email;
@@ -73,6 +70,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (unsigned long long)hash;
+- (id)identifierForIDS;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInternalRepresentation:(id)arg1;

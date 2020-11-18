@@ -11,6 +11,8 @@
 - (BOOL)_cn_any:(CDUnknownBlockType)arg1;
 - (id)_cn_distinctObjects;
 - (void)_cn_each:(CDUnknownBlockType)arg1;
+- (void)_cn_each:(CDUnknownBlockType)arg1 untilCancelled:(id)arg2;
+- (void)_cn_each_reverse:(CDUnknownBlockType)arg1;
 - (id)_cn_filter:(CDUnknownBlockType)arg1;
 - (id)_cn_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)_cn_flatMap:(CDUnknownBlockType)arg1;
@@ -19,12 +21,21 @@
 - (id)_cn_indexBy:(CDUnknownBlockType)arg1;
 - (unsigned long long)_cn_indexOfFirstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)_cn_indicesForObjects:(id)arg1;
+- (BOOL)_cn_isIdenticalToArray:(id)arg1;
 - (BOOL)_cn_isNonEmpty;
+- (id)_cn_join:(id)arg1;
+- (id)_cn_joinWithBlock:(CDUnknownBlockType)arg1;
 - (id)_cn_map:(CDUnknownBlockType)arg1;
 - (id)_cn_partition:(CDUnknownBlockType)arg1;
+- (id)_cn_reduce:(CDUnknownBlockType)arg1;
+- (id)_cn_reduce:(CDUnknownBlockType)arg1 initialValue:(id)arg2;
 - (id)_cn_safeSortedArrayUsingComparator:(CDUnknownBlockType)arg1;
+- (id)_cn_skip:(unsigned long long)arg1;
+- (id)_cn_skipLast:(unsigned long long)arg1;
+- (id)_cn_sortedArrayUsingAuxiliarySortOrder:(id)arg1 transform:(CDUnknownBlockType)arg2;
 - (id)_cn_tail;
 - (id)_cn_take:(unsigned long long)arg1;
+- (id)_cn_zip:(id)arg1;
 - (void)_cn_zip:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 @end
 

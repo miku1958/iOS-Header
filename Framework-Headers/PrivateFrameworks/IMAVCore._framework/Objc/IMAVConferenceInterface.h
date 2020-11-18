@@ -35,12 +35,11 @@
 - (int)_deviceRoleForAVChat:(id)arg1;
 - (id)_existingConferenceForAVChat:(id)arg1;
 - (id)_existingConferenceForAVChatGUID:(id)arg1;
-- (id)_getFaceTimeUUID;
+- (id)_faceTimeUUID;
 - (BOOL)_hasAVConferenceObjectsForChatsOtherThan:(id)arg1;
 - (id)_imAVChatParticipantForConference:(id)arg1 callID:(long long)arg2 errorString:(id)arg3;
 - (void)_notifyAboutPotentialCallForChat:(id)arg1;
 - (void)_queueAVConferenceForCleanup:(id)arg1;
-- (void)_setAudioSessionPropertiesForChat:(id)arg1;
 - (BOOL)_submitEndCallMetric:(id)arg1 forCallID:(long long)arg2;
 - (BOOL)_submitLoggingInformation:(id)arg1 forChat:(id)arg2;
 - (int)avChat:(id)arg1 endConferenceForUserID:(id)arg2;
@@ -51,6 +50,7 @@
 - (void)avChat:(id)arg1 setPaused:(BOOL)arg2;
 - (void)avChat:(id)arg1 setSendingAudio:(BOOL)arg2;
 - (void)avChat:(id)arg1 setSendingVideo:(BOOL)arg2;
+- (void)cancelConferenceForAVChat:(id)arg1;
 - (unsigned long long)capabilities;
 - (unsigned long long)capabilitiesOfCPU;
 - (unsigned long long)capabilitiesOfNetwork;
@@ -108,7 +108,7 @@
 - (BOOL)stopPreview;
 - (BOOL)supportsLayers;
 - (BOOL)supportsRelay;
-- (void)updateAVChat:(id)arg1 withCallMetadata:(id)arg2;
+- (void)updateAVChat:(id)arg1 withCallMetadata:(id)arg2 isFinalUpdate:(BOOL)arg3;
 
 @end
 

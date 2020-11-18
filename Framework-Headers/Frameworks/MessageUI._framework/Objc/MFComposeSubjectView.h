@@ -14,7 +14,7 @@
 @interface MFComposeSubjectView : MFComposeHeaderView <NSLayoutManagerDelegate, UITextViewDelegate>
 {
     unsigned int _delegateRespondsToTextChange:1;
-    unsigned int _delegateRespondsToDidRemoveContent:1;
+    unsigned int _delegateRespondsToWillRemoveContent:1;
     unsigned int _notifyButtonSelected:1;
     unsigned int _showNotifyButton:1;
     UITextView *_textView;
@@ -35,6 +35,7 @@
 - (id)delegate;
 - (BOOL)endEditing:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (BOOL)isEndEditingText:(id)arg1;
 - (BOOL)isNotifyButtonSelected;
 - (BOOL)keyboardInput:(id)arg1 shouldInsertText:(id)arg2 isMarkedText:(BOOL)arg3;
 - (void)layoutManager:(id)arg1 didCompleteLayoutForTextContainer:(id)arg2 atEnd:(BOOL)arg3;
@@ -46,6 +47,7 @@
 - (void)setShowNotifyButton:(BOOL)arg1;
 - (void)setText:(id)arg1;
 - (id)text;
+- (BOOL)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
 - (void)textViewDidBeginEditing:(id)arg1;
 - (void)textViewDidChange:(id)arg1;
 - (void)textViewDidEndEditing:(id)arg1;

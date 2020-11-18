@@ -8,14 +8,16 @@
 
 #import <CloudDocsDaemon/BRCTransfer-Protocol.h>
 
-@class BRCItemID, BRCProgress, CKRecord, CKRecordID, NSNumber, NSString;
+@class BRCClientZone, BRCItemID, BRCProgress, CKRecord, CKRecordID, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BRCUpload : NSObject <BRCTransfer>
 {
+    BRCClientZone *_clientZone;
     long long _throttleID;
     unsigned long long _totalSize;
     NSString *_stageID;
+    BOOL _progressPublished;
     BRCItemID *_itemID;
     CKRecord *_record;
     unsigned long long _doneSize;
@@ -26,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *etag;
 @property (readonly, nonatomic) BRCItemID *itemID; // @synthesize itemID=_itemID;
 @property (readonly, nonatomic) BRCProgress *progress; // @synthesize progress=_progress;
+@property (nonatomic) BOOL progressPublished; // @synthesize progressPublished=_progressPublished;
 @property (strong, nonatomic) CKRecord *record; // @synthesize record=_record;
 @property (readonly, nonatomic) CKRecordID *recordID;
 @property (strong, nonatomic) CKRecord *secondaryRecord;

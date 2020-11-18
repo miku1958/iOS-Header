@@ -6,6 +6,8 @@
 
 #import <Foundation/NSObject.h>
 
+@protocol OS_os_log;
+
 @interface SUPreferences : NSObject
 {
     int _logLevel;
@@ -16,17 +18,23 @@
     BOOL _disableAutoDownload;
     BOOL _simulateAutoDownload;
     BOOL _disableAutoSU;
-    struct __asl_object_s *_aslHandle;
+    NSObject<OS_os_log> *_SUOSLogInfo;
+    NSObject<OS_os_log> *_SUOSLogDebug;
     BOOL _scanWeeklyInternally;
+    BOOL _forceFullReplacement;
+    BOOL _disableFullReplacementFallback;
 }
 
+@property (readonly, nonatomic) NSObject<OS_os_log> *SUOSLogDebug; // @synthesize SUOSLogDebug=_SUOSLogDebug;
+@property (readonly, nonatomic) NSObject<OS_os_log> *SUOSLogInfo; // @synthesize SUOSLogInfo=_SUOSLogInfo;
 @property (readonly, nonatomic) BOOL allowSameBuildUpdates; // @synthesize allowSameBuildUpdates=_allowSameBuildUpdates;
-@property (readonly, nonatomic) struct __asl_object_s *aslHandle; // @synthesize aslHandle=_aslHandle;
 @property (readonly, nonatomic, getter=isAutoDownloadDisabled) BOOL disableAutoDownload; // @synthesize disableAutoDownload=_disableAutoDownload;
 @property (readonly, nonatomic, getter=isAutoSUDisabled) BOOL disableAutoSU; // @synthesize disableAutoSU=_disableAutoSU;
 @property (readonly, nonatomic) BOOL disableAvailabilityAlerts; // @synthesize disableAvailabilityAlerts=_disableAvailabilityAlerts;
 @property (readonly, nonatomic) BOOL disableBuildNumberComparison; // @synthesize disableBuildNumberComparison=_disableBuildNumberComparison;
+@property (readonly, nonatomic) BOOL disableFullReplacementFallback; // @synthesize disableFullReplacementFallback=_disableFullReplacementFallback;
 @property (readonly, nonatomic) BOOL disableUserWiFiOnlyPeriod; // @synthesize disableUserWiFiOnlyPeriod=_disableUserWiFiOnlyPeriod;
+@property (readonly, nonatomic) BOOL forceFullReplacement; // @synthesize forceFullReplacement=_forceFullReplacement;
 @property (readonly, nonatomic) int logLevel; // @synthesize logLevel=_logLevel;
 @property (readonly, nonatomic) BOOL scanWeeklyInternally; // @synthesize scanWeeklyInternally=_scanWeeklyInternally;
 @property (readonly, nonatomic) BOOL simulateAutoDownload; // @synthesize simulateAutoDownload=_simulateAutoDownload;

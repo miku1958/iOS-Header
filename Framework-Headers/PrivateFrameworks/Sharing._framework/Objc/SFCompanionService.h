@@ -33,8 +33,8 @@
 + (id)serviceFromAuthorData:(id)arg1;
 + (id)serviceFromDictionary:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

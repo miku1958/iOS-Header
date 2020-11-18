@@ -207,16 +207,17 @@ struct Context {
     id _field8;
     struct Context *_field9;
     struct CGColorSpace *_field10;
-    struct __CFDictionary *_field11;
-    unsigned int _field12;
+    int _field11;
+    struct __CFDictionary *_field12;
     unsigned int _field13;
     unsigned int _field14;
-    struct ObjectCache *_field15;
-    id _field16;
-    unsigned int _field17;
-    float _field18;
-    struct Commit *_field19;
-    struct Generic _field20;
+    unsigned int _field15;
+    struct ObjectCache *_field16;
+    id _field17;
+    unsigned int _field18;
+    float _field19;
+    struct Commit *_field20;
+    struct Generic _field21;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -227,7 +228,7 @@ struct Context {
 struct ContextItem;
 
 struct Data {
-    unsigned int _field1;
+    struct Vec4<float> _field1;
     unsigned char _field2;
     unsigned char _field3;
     unsigned char _field4;
@@ -260,7 +261,7 @@ struct Data {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
-    unsigned int :23;
+    unsigned int :1;
     struct Vec2<double> _field6;
     struct Rect _field7;
 };
@@ -277,25 +278,26 @@ struct Display {
     unsigned int _field7;
     struct __CFString *_field8;
     struct ModeSet _field9;
-    int _field10;
-    int _field11;
-    int _field12;
+    struct Mode _field10;
+    struct Mode _field11;
+    struct Bounds _field12;
     struct Bounds _field13;
-    struct Bounds _field14;
-    unsigned int _field15;
+    struct Vec2<float> _field14;
+    int _field15;
     unsigned int _field16;
-    struct Vec2<float> _field17;
-    int _field18;
-    BOOL _field19;
-    BOOL _field20;
-    BOOL _field21;
-    BOOL _field22;
-    BOOL _field23;
-    unsigned int _field24;
-    int _field25;
-    double _field26;
-    BOOL _field27;
-    BOOL _field28;
+    int _field17;
+    double _field18;
+    double _field19;
+    double _field20;
+    unsigned int _field21;
+    struct DisplayShmemInfo _field22;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
 };
 
 struct DisplayLink;
@@ -306,19 +308,32 @@ struct DisplayLinkItem {
     SEL _field3;
     void *_field4;
     int _field5;
-    struct Mutex _field6;
-    struct Condition _field7;
-    struct _opaque_pthread_t *_field8;
-    id _field9;
-    struct Ref<CA::Display::DisplayLink> _field10;
-    struct List<const __CFString *> *_field11;
-    unsigned long long _field12;
-    unsigned long long _field13;
+    int _field6;
+    int _field7;
+    struct Mutex _field8;
+    struct Condition _field9;
+    struct _opaque_pthread_t *_field10;
+    id _field11;
+    struct Ref<CA::Display::DisplayLink> _field12;
+    struct List<const __CFString *> *_field13;
     unsigned long long _field14;
-    struct Atomic _field15;
+    unsigned long long _field15;
+    unsigned long long _field16;
+    unsigned long long _field17;
+    unsigned long long _field18;
+    struct Atomic _field19;
     unsigned int :1;
     unsigned int :1;
 };
+
+struct DisplayShmemInfo {
+    CDUnknownFunctionPointerType *_field1;
+    struct SpinLock _field2;
+    struct Shmem *_field3;
+    struct DisplayTimings *_field4;
+};
+
+struct DisplayTimings;
 
 struct Ext;
 
@@ -375,9 +390,22 @@ struct List<const void *>;
 
 struct List<void (^)()>;
 
+struct Mode {
+    union {
+        struct {
+            unsigned int width:16;
+            unsigned int height:16;
+            unsigned int refresh_rate:24;
+            unsigned int is_virtual:1;
+            unsigned int pixel_format:2;
+            unsigned int color_range:2;
+        } s;
+        unsigned long long uint64;
+    } u;
+};
+
 struct ModeSet {
-    unsigned int _field1;
-    unsigned int _field2[1];
+    struct vector<CA::WindowServer::Display::Mode, std::__1::allocator<CA::WindowServer::Display::Mode>> _field1;
 };
 
 struct Mutex {
@@ -472,6 +500,8 @@ struct Server {
     struct Renderer *_field18;
     double _field19;
     double _field20;
+    double _field21;
+    struct __CFDictionary *_field22;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -483,6 +513,8 @@ struct Server {
 struct Shape;
 
 struct Shared;
+
+struct Shmem;
 
 struct SpinLock {
     CDStruct_fcaf9308 _field1;
@@ -544,6 +576,13 @@ struct Vec2<double> {
 struct Vec2<float> {
     float _field1;
     float _field2;
+};
+
+struct Vec4<float> {
+    float _field1;
+    float _field2;
+    float _field3;
+    float _field4;
 };
 
 struct Vector;
@@ -672,6 +711,14 @@ struct _NSRange {
 struct __CFDictionary;
 
 struct __CFString;
+
+struct vector<CA::WindowServer::Display::Mode, std::__1::allocator<CA::WindowServer::Display::Mode>> {
+    struct Mode *_field1;
+    struct Mode *_field2;
+    struct __compressed_pair<CA::WindowServer::Display::Mode *, std::__1::allocator<CA::WindowServer::Display::Mode>> {
+        struct Mode *_field1;
+    } _field3;
+};
 
 struct x_list_struct;
 

@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (void)finalize;
 - (void)setWebFrameView:(id)arg1;
 
 @end

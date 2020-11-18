@@ -26,6 +26,10 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
 
 + (id)diffFrom:(id)arg1 to:(id)arg2;
++ (id)diffsToActivate:(BOOL)arg1 withDate:(id)arg2;
++ (id)diffsToClearStatusCodeAndCompatibilityState;
++ (id)diffsToPair:(BOOL)arg1 withDate:(id)arg2;
++ (id)diffsToSetStatusCode:(unsigned long long)arg1 andCompatibilityState:(unsigned short)arg2;
 + (id)enclosedClassTypes;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

@@ -27,12 +27,16 @@
         unsigned int _usesSimpleTextEffects:1;
         unsigned int _reserved:28;
     } _flags;
+    long long _resolvedDirection;
+    long long _resolvedAlignment;
     CUICatalog *_catalog;
     CUIStyleEffectConfiguration *_styleEffects;
 }
 
 @property (strong, nonatomic) CUICatalog *cuiCatalog; // @synthesize cuiCatalog=_catalog;
 @property (strong, nonatomic) CUIStyleEffectConfiguration *cuiStyleEffects; // @synthesize cuiStyleEffects=_styleEffects;
+@property long long resolvedBaseWritingDirection; // @synthesize resolvedBaseWritingDirection=_resolvedDirection;
+@property long long resolvedTextAlignment; // @synthesize resolvedTextAlignment=_resolvedAlignment;
 @property (nonatomic, getter=_usesSimpleTextEffects, setter=_setUsesSimpleTextEffects:) BOOL usesSimpleTextEffects;
 
 + (id)allocWithZone:(struct _NSZone *)arg1;

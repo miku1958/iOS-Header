@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKDMMCS, NSRunLoop, NSString;
+@class CKDMMCS, NSMutableIndexSet, NSRunLoop, NSString;
 @protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
@@ -24,11 +24,13 @@ __attribute__((visibility("hidden")))
     NSRunLoop *_runLoop;
     NSString *_runLoopMode;
     NSString *_protocolVersion;
+    NSMutableIndexSet *_inMemoryItemsIDs;
 }
 
 @property (weak, nonatomic) CKDMMCS *MMCS; // @synthesize MMCS=_MMCS;
 @property (nonatomic) struct _mmcs_engine *MMCSEngine; // @synthesize MMCSEngine=_MMCSEngine;
 @property (strong, nonatomic) NSString *applicationBundleID; // @synthesize applicationBundleID=_applicationBundleID;
+@property (strong, nonatomic) NSMutableIndexSet *inMemoryItemsIDs; // @synthesize inMemoryItemsIDs=_inMemoryItemsIDs;
 @property (nonatomic) unsigned int maxChunkCountForSection; // @synthesize maxChunkCountForSection=_maxChunkCountForSection;
 @property (strong, nonatomic) NSString *path; // @synthesize path=_path;
 @property (strong, nonatomic) NSString *protocolVersion; // @synthesize protocolVersion=_protocolVersion;
@@ -40,7 +42,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL stopMMCSThread; // @synthesize stopMMCSThread=_stopMMCSThread;
 
 + (id)_appID;
-+ (id)setupMMCSEngineWithApplicationBundleID:(id)arg1 path:(id)arg2 error:(id *)arg3;
++ (BOOL)hasCachedCKDMMCSEngineContextForPath:(id)arg1;
++ (id)setupMMCSEngineWithApplicationBundleID:(id)arg1 path:(id)arg2 wasCached:(BOOL *)arg3 error:(id *)arg4;
 + (id)sharedContextsByPath;
 + (id)sharedContextsQueue;
 + (void)tearDownMMCSEngineWithContext:(id)arg1;
@@ -57,7 +60,9 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (long long)incRefCount;
 - (id)initWithApplicationBundleID:(id)arg1 path:(id)arg2;
+- (unsigned long long)nextAvailableItemID;
 - (void)performOnRunLoop:(CDUnknownBlockType)arg1;
+- (void)stopTrackingItemID:(unsigned long long)arg1;
 
 @end
 

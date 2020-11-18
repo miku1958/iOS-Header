@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=_placeDataAutocompleteEntry) GEOPDAutocompleteEntry *placeDataAutocompleteEntry;
 @property (readonly, nonatomic) GEOSearchCategory *searchCategory;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) long long type;
 
 - (id)calloutTitle;
 - (void)dealloc;

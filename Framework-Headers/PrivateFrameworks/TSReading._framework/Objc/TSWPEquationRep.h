@@ -6,14 +6,20 @@
 
 #import <TSReading/TSDRep.h>
 
-@class CALayer;
+#import <TSReading/TSDTilingLayerDelegate-Protocol.h>
 
-@interface TSWPEquationRep : TSDRep
+@class CALayer, NSString;
+
+@interface TSWPEquationRep : TSDRep <TSDTilingLayerDelegate>
 {
     CALayer *_equationLayer;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) CALayer *equationLayer; // @synthesize equationLayer=_equationLayer;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (struct CGRect)clipRect;

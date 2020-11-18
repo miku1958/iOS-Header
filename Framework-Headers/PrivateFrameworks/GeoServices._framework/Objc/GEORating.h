@@ -41,6 +41,7 @@
 @property (nonatomic) double score; // @synthesize score=_score;
 @property (strong, nonatomic) NSString *uRL; // @synthesize uRL=_uRL;
 
++ (Class)reviewType;
 - (void)addReview:(id)arg1;
 - (void)clearReviews;
 - (void)copyTo:(id)arg1;

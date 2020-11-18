@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) UIView *storePageView; // @synthesize storePageView=_storePageView;
 
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 

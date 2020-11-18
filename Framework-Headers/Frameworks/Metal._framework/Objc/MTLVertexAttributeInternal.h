@@ -11,18 +11,20 @@
 __attribute__((visibility("hidden")))
 @interface MTLVertexAttributeInternal : MTLVertexAttribute
 {
+    unsigned char _flags;
     NSString *_name;
     unsigned long long _attributeIndex;
     unsigned long long _attributeType;
-    BOOL _active;
 }
 
 - (unsigned long long)attributeIndex;
 - (unsigned long long)attributeType;
 - (void)dealloc;
 - (id)description;
-- (id)initWithName:(id)arg1 attributeIndex:(unsigned long long)arg2 attributeType:(unsigned long long)arg3 isActive:(BOOL)arg4;
+- (id)initWithName:(id)arg1 attributeIndex:(unsigned long long)arg2 attributeType:(unsigned long long)arg3 flags:(struct MTLAttributeFlags)arg4;
 - (BOOL)isActive;
+- (BOOL)isPatchControlPointData;
+- (BOOL)isPatchData;
 - (id)name;
 - (void)setAttributeType:(unsigned long long)arg1;
 

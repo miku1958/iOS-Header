@@ -19,6 +19,72 @@ struct _NSRange {
     unsigned long long length;
 };
 
+struct _xmlHashTable;
+
+struct _xsltDocument;
+
+struct _xsltStylesheet {
+    struct _xsltStylesheet *_field1;
+    struct _xsltStylesheet *_field2;
+    struct _xsltStylesheet *_field3;
+    struct _xsltDocument *_field4;
+    struct _xmlDoc *_field5;
+    struct _xmlHashTable *_field6;
+    int _field7;
+    struct _xmlHashTable *_field8;
+    struct _xsltStackElem *_field9;
+    struct _xsltTemplate *_field10;
+    void *_field11;
+    void *_field12;
+    void *_field13;
+    void *_field14;
+    void *_field15;
+    void *_field16;
+    void *_field17;
+    void *_field18;
+    void *_field19;
+    struct _xmlHashTable *_field20;
+    struct _xmlHashTable *_field21;
+    struct _xmlHashTable *_field22;
+    void *_field23;
+    void *_field24;
+    char *_field25;
+    char *_field26;
+    char *_field27;
+    char *_field28;
+    int _field29;
+    struct _xsltDecimalFormat *_field30;
+    int _field31;
+    char *_field32;
+    char *_field33;
+    int _field34;
+    char *_field35;
+    struct _xsltElemPreComp *_field36;
+    int _field37;
+    int _field38;
+    char *_field39;
+    char **_field40;
+    int _field41;
+    int _field42;
+    void *_field43;
+    struct _xmlHashTable *_field44;
+    int _field45;
+    struct _xsltDocument *_field46;
+    struct _xmlDict *_field47;
+    void *_field48;
+    char *_field49;
+    int _field50;
+    int _field51;
+    int _field52;
+    struct _xsltStylesheet *_field53;
+    int _field54;
+    struct _xmlHashTable *_field55;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -35,6 +101,14 @@ typedef struct {
     double _field4;
     double _field5;
 } CDStruct_875ffba5;
+
+typedef struct {
+    char *_field1;
+    unsigned long long _field2;
+    char *_field3;
+    unsigned long long _field4;
+    void *_field5;
+} CDStruct_57889bad;
 
 typedef struct {
     long long _field1;

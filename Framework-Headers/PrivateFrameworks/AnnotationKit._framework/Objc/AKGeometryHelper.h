@@ -34,6 +34,7 @@
 + (double)angleOfVector:(struct CGVector)arg1;
 + (BOOL)annotationHasRotation:(id)arg1 outAngle:(double *)arg2;
 + (struct CGRect)boundsOfRotatedRectangle:(struct CGRect)arg1 angle:(double)arg2;
++ (struct CGPoint)centerOfRect:(struct CGRect)arg1;
 + (struct CGAffineTransform)centeredCircleToEllipseTransform:(struct CGRect)arg1;
 + (struct CGPoint)compareVectorDirectionsFirstVector:(struct CGPoint)arg1 secondVector:(struct CGPoint)arg2;
 + (long long)concatExifOrientation:(long long)arg1 withExifOrientation:(long long)arg2;

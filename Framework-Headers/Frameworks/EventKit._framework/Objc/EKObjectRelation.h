@@ -19,13 +19,13 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) NSString *inverseName; // @synthesize inverseName=_inverseName;
-@property (readonly, nonatomic) EKObject *owner; // @synthesize owner=_owner;
+@property (readonly, weak, nonatomic) EKObject *owner; // @synthesize owner=_owner;
 @property (readonly, nonatomic) NSString *relationName; // @synthesize relationName=_relationName;
 
+- (void).cxx_destruct;
 - (void)_addRelatedObject:(id)arg1 setInverse:(BOOL)arg2 dirty:(BOOL)arg3;
 - (void)_removeRelatedObject:(id)arg1 setInverse:(BOOL)arg2 dirty:(BOOL)arg3;
 - (id)committedValue;
-- (void)dealloc;
 - (void)didCommit;
 - (unsigned long long)hash;
 - (id)initWithOwner:(id)arg1 relationName:(id)arg2 inverseRelationName:(id)arg3;

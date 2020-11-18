@@ -14,9 +14,9 @@
     TKVibrationRecorderContentViewController *_vibrationRecorderContentViewController;
 }
 
-@property (strong, nonatomic, setter=_setVibrationRecorderContentViewController:) TKVibrationRecorderContentViewController *_vibrationRecorderContentViewController; // @synthesize _vibrationRecorderContentViewController;
-@property (nonatomic) id<TKVibrationRecorderViewControllerDelegate> vibrationRecorderViewControllerDelegate;
+@property (weak, nonatomic) id<TKVibrationRecorderViewControllerDelegate> vibrationRecorderViewControllerDelegate;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithVibratorController:(id)arg1;
 

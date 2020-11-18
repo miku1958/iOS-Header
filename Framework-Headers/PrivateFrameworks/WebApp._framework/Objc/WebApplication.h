@@ -8,12 +8,12 @@
 
 #import <WebApp/UIApplicationDelegate-Protocol.h>
 
-@class NSString, NSURL, UIWindow;
+@class NSString, NSURL, UIWindow, WebAppController;
 
 @interface WebApplication : UIApplication <UIApplicationDelegate>
 {
     NSURL *_lastActiveWebClipURL;
-    id _webApp;
+    WebAppController *_webApp;
     BOOL _wasSuspendedUnderLock;
 }
 

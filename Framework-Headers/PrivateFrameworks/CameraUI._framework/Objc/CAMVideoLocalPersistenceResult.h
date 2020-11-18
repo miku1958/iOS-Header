@@ -11,6 +11,8 @@
 @interface CAMVideoLocalPersistenceResult : NSObject
 {
     NSURL *_localDestinationURL;
+    NSURL *_filteredLocalDestinationURL;
+    NSURL *_linkedDestinationURL;
     NSString *_localPersistenceUUID;
     NSString *_stillPersistenceUUID;
     NSDate *_creationDate;
@@ -22,6 +24,8 @@
 @property (readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 duration; // @synthesize duration=_duration;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
+@property (readonly, copy, nonatomic) NSURL *filteredLocalDestinationURL; // @synthesize filteredLocalDestinationURL=_filteredLocalDestinationURL;
+@property (readonly, copy, nonatomic) NSURL *linkedDestinationURL; // @synthesize linkedDestinationURL=_linkedDestinationURL;
 @property (readonly, copy, nonatomic) NSURL *localDestinationURL; // @synthesize localDestinationURL=_localDestinationURL;
 @property (readonly, copy, nonatomic) NSString *localPersistenceUUID; // @synthesize localPersistenceUUID=_localPersistenceUUID;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 stillDisplayTime; // @synthesize stillDisplayTime=_stillDisplayTime;
@@ -29,7 +33,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithURL:(id)arg1 UUID:(id)arg2 duration:(CDStruct_1b6d18a9)arg3 stillPersistenceUUID:(id)arg4 stillDisplayTime:(CDStruct_1b6d18a9)arg5 creationDate:(id)arg6 error:(id)arg7;
+- (id)initWithURL:(id)arg1 filteredLocalDestinationURL:(id)arg2 linkedURL:(id)arg3 UUID:(id)arg4 duration:(CDStruct_1b6d18a9)arg5 stillPersistenceUUID:(id)arg6 stillDisplayTime:(CDStruct_1b6d18a9)arg7 creationDate:(id)arg8 error:(id)arg9;
 
 @end
 

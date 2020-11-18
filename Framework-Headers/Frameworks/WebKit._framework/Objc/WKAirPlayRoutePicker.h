@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 {
     struct RetainPtr<MPAVRoutingController> _routingController;
     struct RetainPtr<MPAudioVideoRoutingPopoverController> _popoverController;
-    struct RetainPtr<MPAudioVideoRoutingActionSheet> _actionSheet;
+    struct RetainPtr<MPAVRoutingSheet> _actionSheet;
     WKContentView *_view;
 }
 
@@ -34,8 +34,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithView:(id)arg1;
 - (void)popoverControllerDidDismissPopover:(id)arg1;
 - (void)show:(BOOL)arg1 fromRect:(struct CGRect)arg2;
-- (void)showAirPlayPickerIPad:(unsigned long long)arg1 fromRect:(struct CGRect)arg2;
-- (void)showAirPlayPickerIPhone:(unsigned long long)arg1;
+- (void)showAirPlayPickerIPad:(long long)arg1 fromRect:(struct CGRect)arg2;
+- (void)showAirPlayPickerIPhone:(long long)arg1;
 
 @end
 

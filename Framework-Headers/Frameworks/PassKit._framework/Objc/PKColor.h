@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
@@ -22,7 +22,7 @@
 
 @property (readonly, nonatomic) struct CGColor *CGColor;
 @property (readonly, nonatomic) unsigned long long hash;
-@property (readonly, nonatomic) NSString *string;
+@property (readonly, weak, nonatomic) NSString *string;
 
 + (id)colorFromString:(id)arg1;
 + (id)colorWithH:(double)arg1 S:(double)arg2 B:(double)arg3 A:(double)arg4;

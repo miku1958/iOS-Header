@@ -10,7 +10,6 @@
 
 @interface MDLAreaLight : MDLPhysicallyPlausibleLight
 {
-    struct RTAreaLight *_areaLight;
     float _areaRadius;
     float _aspect;
     MISSING_TYPE *_superEllipticPower;

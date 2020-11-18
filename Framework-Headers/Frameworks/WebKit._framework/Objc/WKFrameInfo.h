@@ -9,7 +9,7 @@
 #import <WebKit/NSCopying-Protocol.h>
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSString, NSURLRequest, WKSecurityOrigin;
+@class NSString, NSURLRequest, WKSecurityOrigin, _WKFrameHandle;
 
 @interface WKFrameInfo : NSObject <WKObject, NSCopying>
 {
@@ -17,6 +17,7 @@
 }
 
 @property (readonly) struct Object *_apiObject;
+@property (readonly, nonatomic) _WKFrameHandle *_handle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

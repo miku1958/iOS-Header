@@ -20,8 +20,14 @@
 + (id)akColorWithSRGBRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
 + (id)akColorWithWhite:(double)arg1 alpha:(double)arg2;
 + (id)akRowSeparatorColor;
++ (id)akSystemBlueColor;
++ (id)akSystemGreenColor;
++ (id)akSystemPinkColor;
++ (id)akSystemPurpleColor;
 + (id)akSystemRedColor;
++ (id)akSystemYellowColor;
 - (double)akAlphaComponent;
+- (id)akBlendedColorWithFraction:(double)arg1 ofColor:(id)arg2;
 - (BOOL)akIsEqualToColor:(id)arg1;
 - (id)colorUsingSRGBColorSpace;
 @end

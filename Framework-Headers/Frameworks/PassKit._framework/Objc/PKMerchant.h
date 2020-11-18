@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic) NSString *industryCategory; // @synthesize industryCategory=_industryCategory;
 @property (nonatomic) long long industryCode; // @synthesize industryCode=_industryCode;
+@property (readonly, nonatomic) BOOL isValid;
 @property (copy, nonatomic) CLLocation *location;
 @property (nonatomic) double locationLatitude; // @synthesize locationLatitude=_locationLatitude;
 @property (nonatomic) double locationLongitude; // @synthesize locationLongitude=_locationLongitude;
@@ -41,8 +42,8 @@
 @property (copy, nonatomic, setter=setURL:) NSURL *url; // @synthesize url=_url;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)_regenerateDisplayName;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

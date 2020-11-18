@@ -22,7 +22,6 @@
 @property (readonly, nonatomic) double nextFireInterval;
 
 - (void).cxx_destruct;
-- (void)dealloc;
 - (void)handleDataObject:(id)arg1;
 - (id)initWithOperationQueue:(id)arg1;
 - (void)scheduleNextFire;

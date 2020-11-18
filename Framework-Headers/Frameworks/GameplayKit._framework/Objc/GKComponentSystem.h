@@ -22,6 +22,7 @@
 - (void).cxx_destruct;
 - (void)addComponent:(id)arg1;
 - (void)addComponentWithEntity:(id)arg1;
+- (Class)classForGenericArgumentAtIndex:(unsigned long long)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)forwardInvocation:(id)arg1;
 - (id)initWithComponentClass:(Class)arg1;

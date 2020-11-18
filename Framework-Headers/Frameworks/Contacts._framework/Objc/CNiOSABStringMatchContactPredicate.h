@@ -28,9 +28,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (struct __CFArray *)cn_copyPeopleInAddressBook:(void *)arg1 withSortOrder:(unsigned int)arg2 matchInfos:(id *)arg3 options:(unsigned long long)arg4 error:(struct __CFError **)arg5;
 - (BOOL)cn_supportsNativeSorting;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithSearchString:(id)arg1 accountIdentifier:(id)arg2 containerIdentifier:(id)arg3 groupIdentifier:(id)arg4;
 
 @end

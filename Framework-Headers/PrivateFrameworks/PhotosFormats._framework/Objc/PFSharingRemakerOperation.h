@@ -22,13 +22,11 @@
 @property (nonatomic, setter=_setInputType:) long long _inputType; // @synthesize _inputType=__inputType;
 @property (copy, nonatomic, setter=_setUUID:) NSString *_uuid; // @synthesize _uuid=__uuid;
 @property (strong, nonatomic, setter=_setVideoOperation:) PFVideoSharingOperation *_videoOperation; // @synthesize _videoOperation=__videoOperation;
-@property (copy, nonatomic) NSURL *imageOutputURL; // @synthesize imageOutputURL=_imageOutputURL;
-@property (copy, nonatomic) NSURL *videoOutputURL; // @synthesize videoOutputURL=_videoOutputURL;
+@property (copy, nonatomic, setter=_setImageOutputURL:) NSURL *imageOutputURL; // @synthesize imageOutputURL=_imageOutputURL;
+@property (copy, nonatomic, setter=_setVideoOutputURL:) NSURL *videoOutputURL; // @synthesize videoOutputURL=_videoOutputURL;
 
 + (id)remakerOperationWithInputType:(long long)arg1 videoURL:(id)arg2 imageURL:(id)arg3 adjustmentData:(id)arg4;
 - (void).cxx_destruct;
-- (void)_setImageOutputURL:(id)arg1;
-- (void)_setVideoOutputURL:(id)arg1;
 - (id)init;
 
 @end

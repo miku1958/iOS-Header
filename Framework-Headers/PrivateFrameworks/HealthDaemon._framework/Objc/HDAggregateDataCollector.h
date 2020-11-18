@@ -21,6 +21,7 @@
 }
 
 @property double maxDatumDuration;
+@property (readonly, nonatomic) BOOL requiresSampleAggregation;
 
 - (void).cxx_destruct;
 - (double)_queue_aggregationInterval;
@@ -39,9 +40,10 @@
 - (void)beginUpdatesFromDatum:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)fetchHistoricalSensorDataSinceDatum:(id)arg1 databaseIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)hkObjectsFromSensorData:(id)arg1 baseSensorDatum:(id)arg2 startDate:(id)arg3 endDate:(id)arg4;
-- (id)initWithHealthDaemon:(id)arg1;
+- (id)initWithPrimaryProfile:(id)arg1;
 - (void)updateHistoricalData;
 - (void)updateHistoricalDataWithCompletion:(CDUnknownBlockType)arg1;
+- (void)willPersistHKObjects:(id)arg1;
 
 @end
 

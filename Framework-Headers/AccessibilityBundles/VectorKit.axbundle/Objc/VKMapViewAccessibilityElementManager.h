@@ -30,19 +30,20 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
-@property (nonatomic) NSObject<OS_dispatch_queue> *properties_queue; // @synthesize properties_queue=_properties_queue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *properties_queue; // @synthesize properties_queue=_properties_queue;
 @property (readonly) Class superclass;
-@property (nonatomic) NSObject<OS_dispatch_queue> *updates_queue; // @synthesize updates_queue=_updates_queue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *updates_queue; // @synthesize updates_queue=_updates_queue;
 @property (nonatomic, getter=isUpdating) BOOL updating; // @synthesize updating=_updating;
 @property (nonatomic) double yaw; // @synthesize yaw=_yaw;
 
+- (void).cxx_destruct;
 - (id)_accessibilityElementsForMapView:(id)arg1 mapViewBounds:(CDStruct_aca18c62)arg2 visibleLabels:(id)arg3 visibleTiles:(id)arg4;
 - (CDStruct_aca18c62)_boundsForMapView:(id)arg1;
 - (CDStruct_2c43369c)_centerForMapView:(id)arg1;
 - (void)_consolidateAccessibilityElements:(id)arg1;
 - (id)_descriptionForRouteTransitNodeLabel:(id)arg1;
 - (id)_descriptionForTransitNodeLabel:(id)arg1;
-- (void)_filterAccessibilityElements:(id)arg1 zoomLevel:(float)arg2;
+- (void)_filterAccessibilityElements:(id)arg1 zoomLevel:(float)arg2 mapView:(id)arg3;
 - (id)_gatherVisibleLabelMarkersForMapView:(id)arg1;
 - (id)_gatherVisibleTilesForMapView:(id)arg1;
 - (BOOL)_isValidBoundsForMapView:(id)arg1 bounds:(CDStruct_aca18c62)arg2;
@@ -56,7 +57,6 @@
 - (id)accessibilityElementsForMapView:(id)arg1;
 - (CDStruct_aca18c62)boundsForMapView:(id)arg1;
 - (CDStruct_2c43369c)centerForMapView:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (long long)orientationForMapView:(id)arg1;
 - (void)updateAccessibilityElementsForMapView:(id)arg1;

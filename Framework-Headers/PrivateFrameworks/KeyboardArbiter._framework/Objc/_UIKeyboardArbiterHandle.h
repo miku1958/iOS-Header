@@ -52,7 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)notifyHostedPIDsOfSuppression:(BOOL)arg1;
 - (void)releaseProcessAssertion;
 - (void)retrieveDebugInformation:(CDUnknownBlockType)arg1;
-- (void)setDebugLevel:(long long)arg1;
+- (void)retrieveMoreDebugInformationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setWindowContextID:(unsigned int)arg1 sceneIdentifier:(id)arg2 forKeyboard:(BOOL)arg3 withLevel:(double)arg4;
 - (void)setWindowHostingPID:(int)arg1 active:(BOOL)arg2;
 - (void)signalKeyboardChangeComplete;

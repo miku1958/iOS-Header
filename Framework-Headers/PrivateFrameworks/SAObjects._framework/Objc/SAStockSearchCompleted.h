@@ -12,7 +12,6 @@
 
 @interface SAStockSearchCompleted : SABaseCommand <SAServerBoundCommand>
 {
-    NSArray *_stockList;
 }
 
 @property (copy, nonatomic) NSString *aceId; // @dynamic aceId;
@@ -20,7 +19,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
-@property (copy, nonatomic) NSArray *stockList; // @synthesize stockList=_stockList;
 @property (copy, nonatomic) NSArray *stockReferences;
 @property (readonly) Class superclass;
 

@@ -15,16 +15,19 @@
     long long _priority;
     CDUnknownBlockType _responseHandler;
     NSTimer *_delayTimer;
+    long long _lastResponseType;
 }
 
 @property (strong, nonatomic) NSTimer *delayTimer; // @synthesize delayTimer=_delayTimer;
 @property (readonly, nonatomic) BOOL isOneTimeRequest; // @synthesize isOneTimeRequest=_isOneTimeRequest;
+@property (nonatomic) long long lastResponseType; // @synthesize lastResponseType=_lastResponseType;
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (readonly, nonatomic) WBSSiteMetadataRequest *request; // @synthesize request=_request;
 @property (readonly, copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 
 - (void).cxx_destruct;
 - (void)dealloc;
+- (void)dispatchResponse:(id)arg1;
 - (id)initWithOneTimeRequest:(id)arg1 priority:(long long)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (id)initWithRequest:(id)arg1 priority:(long long)arg2 responseHandler:(CDUnknownBlockType)arg3;
 

@@ -13,7 +13,7 @@
 
 + (void)initialize;
 + (BOOL)stringHasDatesOrTimes:(id)arg1;
-- (void)dissectInternal:(id)arg1;
+- (void)dissectInternal:(id)arg1 inContext:(id)arg2;
 - (id)init;
 - (id)initWithSigs:(BOOL)arg1;
 

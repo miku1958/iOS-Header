@@ -26,7 +26,6 @@
             unsigned long long aligner;
         } inline_slab;
         unsigned char padding[48];
-        void *_workaround13455311;
     } data;
 }
 
@@ -37,6 +36,7 @@
 @property (readonly) Class superclass;
 
 + (id)acquireFromPoolForUseCase:(long long)arg1;
++ (void)initialize;
 + (id)newExpressionWithCapacity:(unsigned long long)arg1;
 - (void)addExpression:(id)arg1 times:(double)arg2;
 - (void)addExpression:(id)arg1 times:(double)arg2 processVariableNewToReceiver:(CDUnknownBlockType)arg3 processVariableDroppedFromReceiver:(CDUnknownBlockType)arg4;
@@ -54,6 +54,7 @@
 - (id)init;
 - (id)initWithInlineCapacity:(unsigned long long)arg1;
 - (BOOL)isConstant;
+- (BOOL)isEqual:(id)arg1;
 - (void)removeVariable:(id)arg1;
 - (void)replaceVariable:(id)arg1 withExpression:(id)arg2 processVariableNewToReceiver:(CDUnknownBlockType)arg3 processVariableDroppedFromReceiver:(CDUnknownBlockType)arg4;
 - (void)replaceVariable:(id)arg1 withVariable:(id)arg2 coefficient:(double)arg3;

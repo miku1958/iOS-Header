@@ -6,7 +6,7 @@
 
 #import <Preferences/PSListController.h>
 
-@class CHManager, NSArray, PSSpecifier, PSUIAppCellularUsageGroupController, PSUICellularAccountGroupController, PSUICellularAccountListGroupController;
+@class CHManager, NSArray, PSSpecifier, PSUIAppCellularUsageGroupController, PSUICellularAccountGroupController, PSUICellularAccountListGroupController, WirelessDataUsageWorkspace;
 
 @interface PSUISettingsNetworkController : PSListController
 {
@@ -24,12 +24,14 @@
     PSUICellularAccountGroupController *_cellularGroupController;
     PSUIAppCellularUsageGroupController *_appUsageGroupController;
     CHManager *_callHistoryManager;
+    WirelessDataUsageWorkspace *_workspace;
 }
 
 @property (strong, nonatomic) PSUIAppCellularUsageGroupController *appUsageGroupController; // @synthesize appUsageGroupController=_appUsageGroupController;
 @property (strong, nonatomic) CHManager *callHistoryManager; // @synthesize callHistoryManager=_callHistoryManager;
 @property (strong, nonatomic) PSUICellularAccountListGroupController *cellularAccountListGroupController; // @synthesize cellularAccountListGroupController=_cellularAccountListGroupController;
 @property (strong, nonatomic) PSUICellularAccountGroupController *cellularGroupController; // @synthesize cellularGroupController=_cellularGroupController;
+@property (strong, nonatomic) WirelessDataUsageWorkspace *workspace; // @synthesize workspace=_workspace;
 
 + (BOOL)isConnectedOverWiFi;
 - (void).cxx_destruct;
@@ -46,8 +48,6 @@
 - (void)cellularPlanChanged;
 - (void)clearStats:(id)arg1;
 - (void)dataRegistrationChangedWithUserInfo:(id)arg1;
-- (void)dataUsageInfoChanged;
-- (id)dataUsageWorkspaceInfo;
 - (void)dealloc;
 - (void)entitlementStatusChanged;
 - (void)handleCallTimersChanged;
@@ -70,6 +70,7 @@
 - (void)updateAppUsageGroupEnabledState;
 - (void)updatePaneWithCellularDataState:(BOOL)arg1;
 - (void)viewAccountPressed:(id)arg1;
+- (void)wirelessDataUsageChangedNotification;
 
 @end
 

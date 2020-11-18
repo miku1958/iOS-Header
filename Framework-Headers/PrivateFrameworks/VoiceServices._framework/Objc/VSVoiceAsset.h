@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <VoiceServices/VSAssetBase.h>
 
 #import <VoiceServices/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSNumber, NSString;
+@class NSArray, NSString;
 
-@interface VSVoiceAsset : NSObject <NSSecureCoding>
+@interface VSVoiceAsset : VSAssetBase <NSSecureCoding>
 {
     BOOL _isInstalled;
     BOOL _isBuiltInVoice;
@@ -18,28 +18,31 @@
     NSArray *_languages;
     long long _gender;
     long long _footprint;
-    NSNumber *_contentVersion;
-    NSString *_masteredVersion;
+    long long _type;
 }
 
-@property (readonly, nonatomic) NSNumber *contentVersion; // @synthesize contentVersion=_contentVersion;
-@property (readonly, nonatomic) long long footprint; // @synthesize footprint=_footprint;
-@property (readonly, nonatomic) long long gender; // @synthesize gender=_gender;
+@property (nonatomic) long long footprint; // @synthesize footprint=_footprint;
+@property (nonatomic) long long gender; // @synthesize gender=_gender;
 @property (nonatomic) BOOL isBuiltInVoice; // @synthesize isBuiltInVoice=_isBuiltInVoice;
-@property (readonly, nonatomic) BOOL isInstalled; // @synthesize isInstalled=_isInstalled;
-@property (readonly, nonatomic) NSArray *languages; // @synthesize languages=_languages;
-@property (readonly, nonatomic) NSString *masteredVersion; // @synthesize masteredVersion=_masteredVersion;
-@property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property (nonatomic) BOOL isInstalled; // @synthesize isInstalled=_isInstalled;
+@property (copy, nonatomic) NSArray *languages; // @synthesize languages=_languages;
+@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (nonatomic) long long type; // @synthesize type=_type;
 
++ (long long)footprintFromString:(id)arg1;
++ (id)footprintStringFromFootprint:(long long)arg1;
++ (long long)genderFromString:(id)arg1;
++ (id)genderStringFromGender:(long long)arg1;
 + (BOOL)supportsSecureCoding;
++ (long long)typeFromString:(id)arg1;
++ (id)typeStringFromType:(long long)arg1;
 - (void).cxx_destruct;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionaryRepresentation:(id)arg1;
-- (id)initWithName:(id)arg1 languages:(id)arg2 gender:(long long)arg3 footprint:(long long)arg4 contentVersion:(id)arg5 masteredVersion:(id)arg6 isInstalled:(BOOL)arg7;
-- (id)initWithName:(id)arg1 languages:(id)arg2 gender:(long long)arg3 footprint:(long long)arg4 isInstalled:(BOOL)arg5;
+- (id)voiceKey;
 
 @end
 

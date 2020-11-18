@@ -11,6 +11,7 @@
 
 @interface TDCustomAssetImportInfo : NSObject
 {
+    BOOL _optOutOfThinning;
     CUIRenditionKey *_renditionKey;
     NSString *_elementName;
     NSString *_partName;
@@ -31,6 +32,7 @@
 @property (nonatomic) BOOL isTemplate;
 @property (copy, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (nonatomic) BOOL optOutOfThinning; // @synthesize optOutOfThinning=_optOutOfThinning;
 @property (copy, nonatomic) NSString *partName; // @synthesize partName=_partName;
 @property (copy, nonatomic) CUIRenditionKey *renditionKey; // @synthesize renditionKey=_renditionKey;
 @property (nonatomic) long long renditionType; // @synthesize renditionType=_renditionType;

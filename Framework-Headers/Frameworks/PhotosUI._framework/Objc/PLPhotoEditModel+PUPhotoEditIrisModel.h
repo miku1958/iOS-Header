@@ -7,6 +7,6 @@
 #import <PhotoLibraryServices/PLPhotoEditModel.h>
 
 @interface PLPhotoEditModel (PUPhotoEditIrisModel)
-- (BOOL)_pu_hasIrisConflicts;
+- (BOOL)_pu_hasLegacyIrisConflicts;
 @end
 

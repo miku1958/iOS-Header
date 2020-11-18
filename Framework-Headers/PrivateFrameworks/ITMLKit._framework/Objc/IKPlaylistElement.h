@@ -6,16 +6,14 @@
 
 #import <ITMLKit/IKViewElement.h>
 
-@class IKAppDOMPlayer, NSArray;
+@class NSArray;
 
 @interface IKPlaylistElement : IKViewElement
 {
 }
 
 @property (readonly, strong, nonatomic) NSArray *items;
-@property (readonly, strong, nonatomic) IKAppDOMPlayer *player;
 
-+ (id)supportedFeatures;
 
 @end
 

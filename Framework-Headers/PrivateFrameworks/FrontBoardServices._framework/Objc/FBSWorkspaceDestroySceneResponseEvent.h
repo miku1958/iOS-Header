@@ -6,9 +6,13 @@
 
 #import <FrontBoardServices/FBSWorkspaceSceneUpdateResponseEvent.h>
 
+@class FBSWorkspaceDestroySceneResponse;
+
 @interface FBSWorkspaceDestroySceneResponseEvent : FBSWorkspaceSceneUpdateResponseEvent
 {
 }
+
+@property (strong, nonatomic) FBSWorkspaceDestroySceneResponse *response; // @dynamic response;
 
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;

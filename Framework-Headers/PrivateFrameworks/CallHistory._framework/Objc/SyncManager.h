@@ -37,6 +37,9 @@
 - (void)insert:(id)arg1;
 - (void)insertRecordsWithoutTransactions:(id)arg1;
 - (void)insertWithoutTransaction:(id)arg1;
+- (id)predicateForCallKind:(id)arg1;
+- (id)predicateForCallKinds:(id)arg1;
+- (id)predicateForLimits:(id)arg1;
 - (void)resetTimers;
 - (double)timerIncoming;
 - (double)timerLifetime;

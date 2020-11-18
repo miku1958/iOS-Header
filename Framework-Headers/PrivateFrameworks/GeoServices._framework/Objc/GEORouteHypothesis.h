@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class GEOLocation, GEORouteHypothesisIncident, NSDate, NSError;
+@class GEOLocation, GEORouteHypothesisIncident, NSDate, NSError, NSString;
 
 @interface GEORouteHypothesis : NSObject <NSSecureCoding>
 {
@@ -27,6 +27,8 @@
     NSDate *_aggressiveDepartureDate;
     double _conservativeTravelTime;
     double _aggressiveTravelTime;
+    NSString *_routeName;
+    NSString *_trafficDensityDescription;
 }
 
 @property (readonly, strong, nonatomic) NSDate *aggressiveDepartureDate; // @synthesize aggressiveDepartureDate=_aggressiveDepartureDate;
@@ -40,25 +42,30 @@
 @property (readonly, nonatomic) unsigned long long historicTrafficDensity; // @synthesize historicTrafficDensity=_historicTrafficDensity;
 @property (readonly, strong, nonatomic) GEOLocation *lastLocation; // @synthesize lastLocation=_lastLocation;
 @property (readonly, strong, nonatomic) GEORouteHypothesisIncident *mostRelevantIncident; // @synthesize mostRelevantIncident=_mostRelevantIncident;
+@property (readonly, copy, nonatomic) NSString *routeName; // @synthesize routeName=_routeName;
 @property (readonly, strong, nonatomic) NSDate *suggestedDepartureDate; // @synthesize suggestedDepartureDate=_suggestedDepartureDate;
 @property (readonly, nonatomic) BOOL supportsLiveTraffic; // @synthesize supportsLiveTraffic=_supportsLiveTraffic;
+@property (readonly, nonatomic) NSString *trafficDensityDescription;
 @property (readonly, nonatomic) int transportType; // @synthesize transportType=_transportType;
 @property (readonly, nonatomic) long long travelState; // @synthesize travelState=_travelState;
 
 + (id)_routeHypothesisErrorWithUnderlyingError:(id)arg1;
 + (BOOL)supportsSecureCoding;
++ (BOOL)supportsTravelState:(long long)arg1 forTransportType:(int)arg2;
 - (void)_clearHypothesisAndSetErrorWithCode:(long long)arg1;
 - (void)_setError:(id)arg1;
 - (void)_updateCurrentTrafficDensity:(double)arg1 staticTravelTime:(double)arg2;
-- (void)_updateDepartureAndArrivalSuggestions:(id)arg1 arrivalDate:(id)arg2 travelTimeWithTraffic:(double)arg3 conservativeTravelTime:(double)arg4 aggressiveTravelTime:(double)arg5 transportType:(int)arg6;
+- (void)_updateDepartureAndArrivalSuggestionsForArrivalDate:(id)arg1 travelTimeWithTraffic:(double)arg2 conservativeTravelTime:(double)arg3 aggressiveTravelTime:(double)arg4 transportType:(int)arg5;
 - (void)_updateHistoricTrafficDensity:(double)arg1 staticTravelTime:(double)arg2;
+- (void)_updateTrafficDensityDescription:(id)arg1;
 - (void)_updateTrafficIncidents:(id)arg1;
-- (void)_updateTravelState:(id)arg1;
+- (void)_updateTravelStateHasArrived:(BOOL)arg1 isTraveling:(BOOL)arg2 travelScore:(double)arg3;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)setLastLocation:(id)arg1;
+- (void)setRouteName:(id)arg1;
 - (void)setSupportsLiveTraffic:(BOOL)arg1;
 
 @end

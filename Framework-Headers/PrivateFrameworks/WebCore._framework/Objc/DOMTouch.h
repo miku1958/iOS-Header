@@ -22,7 +22,6 @@
 @property (readonly) id<DOMEventTarget> target;
 
 - (void)dealloc;
-- (void)finalize;
 - (double)force;
 
 @end

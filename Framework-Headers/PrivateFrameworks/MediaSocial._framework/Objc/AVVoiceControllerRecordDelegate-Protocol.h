@@ -6,13 +6,14 @@
 
 #import <MediaSocial/NSObject-Protocol.h>
 
-@class AVVCAudioBuffer, AVVoiceController, NSError;
+@class AVVCAudioBuffer, AVVoiceController, NSDictionary, NSError;
 
 @protocol AVVoiceControllerRecordDelegate <NSObject>
 - (void)voiceControllerRecordBufferAvailable:(AVVoiceController *)arg1 buffer:(AVVCAudioBuffer *)arg2;
 
 @optional
 - (void)voiceControllerBeginRecordInterruption:(AVVoiceController *)arg1;
+- (void)voiceControllerBeginRecordInterruption:(AVVoiceController *)arg1 withContext:(NSDictionary *)arg2;
 - (void)voiceControllerDidDetectEndpoint:(AVVoiceController *)arg1 ofType:(int)arg2;
 - (void)voiceControllerDidDetectEndpoint:(AVVoiceController *)arg1 ofType:(int)arg2 atTime:(double)arg3;
 - (void)voiceControllerDidDetectStartpoint:(AVVoiceController *)arg1;

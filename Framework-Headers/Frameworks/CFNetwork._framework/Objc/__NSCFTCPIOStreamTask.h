@@ -17,10 +17,10 @@ __attribute__((visibility("hidden")))
     unsigned char _captureStreamsUponCompletion;
     unsigned char _secure;
     NSError *_cancelError;
-    NSData *_TCPConnectionMetadata;
+    NSData *__TCPConnectionMetadata;
 }
 
-@property (copy) NSData *_TCPConnectionMetadata; // @synthesize _TCPConnectionMetadata;
+@property (copy) NSData *_TCPConnectionMetadata; // @synthesize _TCPConnectionMetadata=__TCPConnectionMetadata;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

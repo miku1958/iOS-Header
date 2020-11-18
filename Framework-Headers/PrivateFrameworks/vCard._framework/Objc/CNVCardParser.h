@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNVCardDateComponentsParser, CNVCardLexer, CNVCardSelectorMap, NSArray, NSData, NSDateComponents, NSMutableArray, NSMutableDictionary, NSMutableString, NSString;
+@class CNVCardDateComponentsParser, CNVCardLexer, CNVCardMutableNameComponents, CNVCardSelectorMap, NSArray, NSData, NSDateComponents, NSMutableArray, NSMutableDictionary, NSMutableString, NSString;
 @protocol CNVCardParsedResultBuilder;
 
 @interface CNVCardParser : NSObject
@@ -20,10 +20,7 @@
     CNVCardSelectorMap *_parameterSelectorMap;
     id<CNVCardParsedResultBuilder> _resultBuilder;
     BOOL _30vCard;
-    NSString *_first;
-    NSString *_last;
-    NSString *_org;
-    NSString *_formattedName;
+    CNVCardMutableNameComponents *_nameComponents;
     NSDateComponents *_bday;
     NSDateComponents *_altBday;
     NSMutableArray *_emails;
@@ -58,11 +55,11 @@
 + (id)newParsingSelectorMap;
 + (id)parseData:(id)arg1 resultFactory:(id)arg2;
 + (BOOL)parseFirstResultInData:(id)arg1 resultBuilder:(id)arg2;
+- (void).cxx_destruct;
 - (BOOL)advancePastSemicolon;
 - (BOOL)atEOF;
 - (void)cleanUpCardState;
 - (long long)currentPosition;
-- (void)dealloc;
 - (id)fallbackLabelForProperty:(id)arg1;
 - (id)firstCustomLabelForProperty:(id)arg1 types:(id)arg2;
 - (id)firstParameterWithName:(id)arg1;
@@ -126,6 +123,8 @@
 - (BOOL)parse_X_AIM;
 - (BOOL)parse_X_AIM_ID;
 - (BOOL)parse_X_ALTBDAY;
+- (BOOL)parse_X_APPLE_LIKENESS_SERVICE_IDENTIFIER;
+- (BOOL)parse_X_APPLE_LIKENESS_SOURCE;
 - (BOOL)parse_X_GOOGLE_ID;
 - (BOOL)parse_X_GOOGLE_TALK;
 - (BOOL)parse_X_GTALK;
@@ -139,6 +138,7 @@
 - (BOOL)parse_X_PHONETIC_FIRST_NAME;
 - (BOOL)parse_X_PHONETIC_LAST_NAME;
 - (BOOL)parse_X_PHONETIC_MIDDLE_NAME;
+- (BOOL)parse_X_PHONETIC_ORG;
 - (BOOL)parse_X_PRONUNCIATION_FIRST_NAME;
 - (BOOL)parse_X_PRONUNCIATION_LAST_NAME;
 - (BOOL)parse_X_QQ;

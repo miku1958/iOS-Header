@@ -18,7 +18,7 @@
     long long _invitationState;
 }
 
-@property (readonly, copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property (readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) long long invitationState; // @synthesize invitationState=_invitationState;
 @property (readonly, copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;

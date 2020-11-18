@@ -11,10 +11,10 @@
 @interface CMKTorchPattern : NSObject
 {
     float _torchLevel;
-    double _startTime;
     long long __type;
     CAAnimationGroup *__animationGroup;
     double __lastUpdateTime;
+    double _startTime;
 }
 
 @property (readonly, nonatomic) CAAnimationGroup *_animationGroup; // @synthesize _animationGroup=__animationGroup;

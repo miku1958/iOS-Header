@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <CameraUI/CAMNebulaDaemonTimelapseProtocol-Protocol.h>
+#import <CameraUI/CAMPersistenceResultDelegate-Protocol.h>
 #import <CameraUI/CAMVideoCaptureRequestDelegate-Protocol.h>
 
 @class BKSApplicationStateMonitor, CAMNebulaKeepAliveController, CAMPersistenceController, CAMTimelapseState, NSMutableArray, NSString;
 @protocol CAMTimelapseMovieWriterProtocol, OS_dispatch_queue;
 
-@interface CAMTimelapseBackendController : NSObject <CAMVideoCaptureRequestDelegate, CAMNebulaDaemonTimelapseProtocol>
+@interface CAMTimelapseBackendController : NSObject <CAMVideoCaptureRequestDelegate, CAMNebulaDaemonTimelapseProtocol, CAMPersistenceResultDelegate>
 {
     BOOL __writingMovie;
     BOOL __capturing;
@@ -73,6 +74,7 @@
 - (void)handleClientDisconnection;
 - (id)init;
 - (id)initWithPersistenceController:(id)arg1 keepAliveController:(id)arg2;
+- (void)persistenceController:(id)arg1 didGenerateVideoLocalPersistenceResult:(id)arg2 forCaptureResult:(id)arg3 fromRequest:(id)arg4;
 - (void)resumeTimelapseWithUUID:(id)arg1;
 - (void)startTimelapseWithUUID:(id)arg1;
 - (void)stopTimelapseWithUUID:(id)arg1;

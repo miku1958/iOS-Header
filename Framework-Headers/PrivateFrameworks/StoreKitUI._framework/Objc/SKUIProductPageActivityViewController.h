@@ -15,9 +15,11 @@
 
 - (void).cxx_destruct;
 - (id)_activityItemsForProductPageItem:(id)arg1 clientContext:(id)arg2;
+- (id)_activityItemsForProductPageItemProvider:(CDUnknownBlockType)arg1 clientContext:(id)arg2;
 - (id)_applicationActivitiesForProductPageItem:(id)arg1 clientContext:(id)arg2;
 - (id)_titleForActivity:(id)arg1;
 - (id)initWithProductPageItem:(id)arg1 clientContext:(id)arg2;
+- (id)initWithProductPageItemProvider:(CDUnknownBlockType)arg1 clientContext:(id)arg2;
 
 @end
 

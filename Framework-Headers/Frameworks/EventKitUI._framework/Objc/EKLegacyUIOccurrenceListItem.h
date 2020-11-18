@@ -29,8 +29,11 @@
     BOOL _isSelected;
 }
 
++ (id)_allDayLocalizedString;
 + (void)_calculateWidths;
++ (id)_cellEndsLocalizedString;
 + (void)_invalidateWidths;
++ (id)_noonLocalizedString;
 + (double)defaultHeight;
 + (double)hourWidth;
 + (double)timeWidthIncludingDots:(BOOL)arg1;

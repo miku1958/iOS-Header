@@ -16,9 +16,13 @@
 @property (weak) AKController *controller; // @synthesize controller=_controller;
 
 - (void).cxx_destruct;
+- (BOOL)_isSenderEnabled:(id)arg1 segment:(long long)arg2;
 - (id)initWithController:(id)arg1;
+- (BOOL)isSenderEnabled:(id)arg1;
 - (void)performActionForSender:(id)arg1;
+- (void)performActionForSender:(id)arg1 segment:(long long)arg2;
 - (BOOL)validateSender:(id)arg1;
+- (BOOL)validateSender:(id)arg1 segment:(long long)arg2;
 
 @end
 

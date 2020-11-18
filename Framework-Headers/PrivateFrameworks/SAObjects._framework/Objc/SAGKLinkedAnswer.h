@@ -8,7 +8,7 @@
 
 #import <SAObjects/SAAceSerializable-Protocol.h>
 
-@class NSString, NSURL, SAUIAppPunchOut;
+@class NSArray, NSString, NSURL, SAUIAppPunchOut;
 
 @interface SAGKLinkedAnswer : AceObject <SAAceSerializable>
 {
@@ -25,6 +25,7 @@
 @property (copy, nonatomic) NSString *query;
 @property (copy, nonatomic) NSURL *searchUri;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSArray *thumbnails;
 
 + (id)linkedAnswer;
 + (id)linkedAnswerWithDictionary:(id)arg1 context:(id)arg2;

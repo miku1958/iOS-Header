@@ -6,8 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, NSURL, NSValue, UIImage;
-@protocol PUDisplayAsset;
+@class NSError, NSString, NSURL, NSValue, PHAsset, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface PUCameraPlaceholderLivePhotoRequest : NSObject
@@ -17,13 +16,15 @@ __attribute__((visibility("hidden")))
     UIImage *_image;
     NSURL *_videoURL;
     NSValue *_stillDisplayTime;
+    NSString *_filterName;
     NSError *_error;
-    id<PUDisplayAsset> _asset;
+    PHAsset *_asset;
     CDUnknownBlockType _resultHandler;
 }
 
-@property (readonly, nonatomic) id<PUDisplayAsset> asset; // @synthesize asset=_asset;
+@property (readonly, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
+@property (copy, nonatomic) NSString *filterName; // @synthesize filterName=_filterName;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (nonatomic) BOOL imageRequestFinished; // @synthesize imageRequestFinished=_imageRequestFinished;
 @property (readonly, copy, nonatomic) CDUnknownBlockType resultHandler; // @synthesize resultHandler=_resultHandler;

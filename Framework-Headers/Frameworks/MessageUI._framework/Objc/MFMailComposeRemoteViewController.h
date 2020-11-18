@@ -21,7 +21,8 @@
 + (id)requestViewControllerWithConnectionHandler:(CDUnknownBlockType)arg1;
 + (id)serviceViewControllerInterface;
 - (void)bodyFinishedDrawing;
-- (void)serviceCompositionFinishedWithResult:(int)arg1 error:(id)arg2;
+- (void)serviceCompositionFinishedWithResult:(long long)arg1 error:(id)arg2;
+- (void)serviceCompositionRequestsSendWithBody:(id)arg1 recipients:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 
 @end

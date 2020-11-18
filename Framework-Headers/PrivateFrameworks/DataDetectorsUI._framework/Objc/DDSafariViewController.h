@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *ddActions; // @synthesize ddActions=_ddActions;
 
 - (void).cxx_destruct;
-- (id)previewMenuItems;
+- (id)previewActionItems;
 
 @end
 

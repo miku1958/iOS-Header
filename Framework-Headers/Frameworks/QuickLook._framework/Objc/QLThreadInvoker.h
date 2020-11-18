@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSError, NSURLConnection;
 
@@ -16,10 +16,10 @@ __attribute__((visibility("hidden")))
     NSError *_error;
 }
 
+- (void).cxx_destruct;
 - (void)connectionDidFailWithError:(id)arg1;
 - (void)connectionDidReceiveData:(id)arg1;
 - (void)connectionDidReceiveDataLengthReceived:(id)arg1;
-- (void)dealloc;
 - (id)initWithConnection:(id)arg1 data:(id)arg2 error:(id)arg3;
 
 @end

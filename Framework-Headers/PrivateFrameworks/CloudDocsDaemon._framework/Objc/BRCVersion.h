@@ -24,7 +24,7 @@
     NSData *_quarantineInfo;
     NSSet *_conflictLoserEtags;
     NSData *_lazyXattr;
-    NSNumber *_lastEditorDeviceOrOwnerKey;
+    NSNumber *_lastEditorDeviceOrUserRowID;
     NSString *_lastEditorDeviceName;
 }
 
@@ -34,7 +34,9 @@
 @property (readonly, nonatomic) BOOL hasThumbnail;
 @property (readonly, nonatomic) BOOL isPackage;
 @property (strong, nonatomic) NSString *lastEditorDeviceName; // @synthesize lastEditorDeviceName=_lastEditorDeviceName;
-@property (strong, nonatomic) NSNumber *lastEditorDeviceOrOwnerKey; // @synthesize lastEditorDeviceOrOwnerKey=_lastEditorDeviceOrOwnerKey;
+@property (strong, nonatomic) NSNumber *lastEditorDeviceOrUserRowID; // @synthesize lastEditorDeviceOrUserRowID=_lastEditorDeviceOrUserRowID;
+@property (strong, nonatomic) NSNumber *lastEditorDeviceRowID;
+@property (strong, nonatomic) NSNumber *lastEditorRowID;
 @property (strong, nonatomic) NSData *lazyXattr; // @synthesize lazyXattr=_lazyXattr;
 @property (nonatomic) long long mtime; // @synthesize mtime=_mtime;
 @property (strong, nonatomic) NSString *originalPOSIXName; // @synthesize originalPOSIXName=_originalPOSIXName;
@@ -46,6 +48,8 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)_hasLastEditorDeviceRowID;
+- (BOOL)_hasLastEditorRowID;
 - (id)additionNameForItemID:(id)arg1 zoneID:(id)arg2;
 - (BOOL)check:(id)arg1 logToFile:(struct __sFILE *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -57,8 +61,11 @@
 - (id)initFromResultSet:(id)arg1 pos:(int)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithVersion:(id)arg1;
-- (id)lastEditorDeviceNameWithDB:(id)arg1;
-- (id)lastEditorNameWithDB:(id)arg1;
+- (BOOL)isSmallAndMostRecentClientsGenerateThumbnails;
+- (id)lastEditorDeviceDisplayNameWithDB:(id)arg1;
+- (id)lastEditorDisplayNameWithDB:(id)arg1;
+- (id)lastEditorUserIdentityWithDB:(id)arg1;
+- (id)uti;
 
 @end
 

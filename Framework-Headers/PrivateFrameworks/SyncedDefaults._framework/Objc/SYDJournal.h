@@ -16,10 +16,10 @@ __attribute__((visibility("hidden")))
     BOOL readonly;
 }
 
+- (void).cxx_destruct;
 - (void)addChange:(int)arg1 forKey:(id)arg2 changeCount:(long long)arg3;
 - (int)changeSinceChangeCount:(long long)arg1 forKey:(id)arg2;
 - (id)changesSinceChangeCount:(long long)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (id)initWithMutableStore:(id)arg1;

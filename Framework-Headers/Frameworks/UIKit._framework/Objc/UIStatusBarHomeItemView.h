@@ -13,7 +13,9 @@ __attribute__((visibility("hidden")))
 
 - (long long)buttonType;
 - (id)contentsImage;
+- (BOOL)extendsHitTestingFrame;
 - (double)extraRightPadding;
+- (id)highlightImage;
 - (BOOL)usesAdvancedActions;
 
 @end

@@ -6,14 +6,11 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSString, PKFieldProperties, PKPaymentMessage, PKPaymentTransaction, PKValueAddedServiceTransaction;
+@class NSString, PKFieldProperties, PKPaymentMessage, PKPaymentTransaction, PKValueAddedServiceTransaction;
 
 @protocol PKPaymentServiceDelegate <NSObject>
 
 @optional
-- (void)contactlessInterfaceDidDismissForPassesWithUniqueIdentifiers:(NSArray *)arg1 fromSource:(long long)arg2;
-- (void)contactlessInterfaceDidDismissFromSource:(long long)arg1;
-- (void)contactlessInterfaceDidPresentFromSource:(long long)arg1;
 - (void)didUpdateDefaultPaymentPassWithUniqueIdentifier:(NSString *)arg1;
 - (void)passWithUniqueIdentifier:(NSString *)arg1 didReceiveValueAddedServiceTransaction:(PKValueAddedServiceTransaction *)arg2;
 - (void)paymentDeviceDidEnterFieldWithProperties:(PKFieldProperties *)arg1;

@@ -9,7 +9,7 @@
 #import <FuseUI/ISURLBagObserver-Protocol.h>
 #import <FuseUI/MCProfileConnectionObserver-Protocol.h>
 
-@class MusicSimpleRadioStationInfo, MusicStoreBag, NSArray, NSDictionary, NSString, RadioAvailabilityController;
+@class MusicStoreBag, NSArray, NSDictionary, NSString, RadioAvailabilityController;
 @protocol OS_dispatch_queue;
 
 @interface MusicUserInterfaceStatusController : NSObject <ISURLBagObserver, MCProfileConnectionObserver>
@@ -19,9 +19,7 @@
     BOOL _canShowRadio;
     BOOL _canShowSubscriptionContent;
     BOOL _hasSuccessfullyLoadedBagOnce;
-    BOOL _hasSuccessfullyLoadedProminentRadioStation;
     unsigned long long _observersCount;
-    MusicSimpleRadioStationInfo *_prominentRadioStationInfo;
     MusicStoreBag *_storeBag;
     NSArray *_supportedTabIdentifiers;
     NSDictionary *_tabConfigurations;
@@ -39,7 +37,6 @@
 @property (readonly, nonatomic, getter=isDisplayingLocalLibrary) BOOL displayingLocalLibrary; // @synthesize displayingLocalLibrary=_displayingLocalLibrary;
 @property (readonly, nonatomic) BOOL hasLoadedStoreBagOnce;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) MusicSimpleRadioStationInfo *prominentRadioStationInfo;
 @property (readonly, nonatomic) RadioAvailabilityController *radioAvailabilityController; // @synthesize radioAvailabilityController=_radioAvailabilityController;
 @property (readonly, nonatomic) NSString *storeFrontID; // @synthesize storeFrontID=_storeFrontID;
 @property (readonly) Class superclass;
@@ -59,11 +56,9 @@
 - (BOOL)_iOSVersions:(id)arg1 traverseCurrentVersionSinceVersion:(id)arg2;
 - (BOOL)_isConnectRestricted;
 - (BOOL)_isMusicSubscriptionServiceRestricted;
-- (void)_setProminentRadioStationInfo:(id)arg1;
 - (void)_updateAllowedUserInterfaceComponents;
 - (void)_updateAllowedUserInterfaceComponentsWithStoreBag:(id)arg1;
 - (void)_updateAllowedUserInterfaceComponentsWithStoreBagDictionary:(id)arg1;
-- (void)_updateProminentRadioStationInfo;
 - (void)bagDidChange:(id)arg1;
 - (void)beginObservingAllowedUserInterfaceComponents;
 - (void)dealloc;

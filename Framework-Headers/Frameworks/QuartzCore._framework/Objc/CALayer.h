@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <QuartzCore/CAMediaTiming-Protocol.h>
 #import <QuartzCore/CAPropertyInfo-Protocol.h>
 #import <QuartzCore/NSCoding-Protocol.h>
 
 @class CAMeshTransform, NSArray, NSDictionary, NSString;
+@protocol CALayerDelegate;
 
 @interface CALayer : NSObject <CAPropertyInfo, NSCoding, CAMediaTiming>
 {
@@ -18,7 +19,6 @@
 }
 
 @property BOOL acceleratesDrawing;
-@property BOOL acceptsLights;
 @property (copy) NSDictionary *actions;
 @property BOOL allowsContentsRectCornerMasking;
 @property BOOL allowsDisplayCompositing;
@@ -26,7 +26,6 @@
 @property BOOL allowsGroupBlending;
 @property BOOL allowsGroupOpacity;
 @property BOOL allowsHitTesting;
-@property double ambientReflectance;
 @property struct CGPoint anchorPoint;
 @property double anchorPointZ;
 @property BOOL autoreverses;
@@ -44,8 +43,11 @@
 @property (strong) id compositingFilter;
 @property (strong) id contents;
 @property struct CGRect contentsCenter;
+@property BOOL contentsContainsSubtitles;
+@property BOOL contentsDither;
 @property (copy) NSString *contentsFormat;
 @property (copy) NSString *contentsGravity;
+@property struct CGColor *contentsMultiplyColor;
 @property BOOL contentsOpaque;
 @property struct CGRect contentsRect;
 @property double contentsScale;
@@ -53,9 +55,9 @@
 @property struct CGAffineTransform contentsTransform;
 @property (strong) id cornerContents;
 @property struct CGRect cornerContentsCenter;
+@property BOOL cornerContentsMasksEdges;
 @property double cornerRadius;
-@property (weak) id delegate;
-@property double diffuseReflectance;
+@property (weak) id<CALayerDelegate> delegate;
 @property (getter=isDoubleSided) BOOL doubleSided;
 @property BOOL drawsAsynchronously;
 @property double duration;
@@ -68,7 +70,6 @@
 @property (getter=isHidden) BOOL hidden;
 @property BOOL hitTestsAsOpaque;
 @property BOOL invertsShadow;
-@property (copy) NSArray *lights;
 @property BOOL literalContentsCenter;
 @property (copy) NSString *magnificationFilter;
 @property (strong) CALayer *mask;
@@ -76,7 +77,6 @@
 @property BOOL masksToBounds;
 @property double mass;
 @property (copy) CAMeshTransform *meshTransform;
-@property double metallicity;
 @property (copy) NSString *minificationFilter;
 @property float minificationFilterBias;
 @property double momentOfInertia;
@@ -98,11 +98,9 @@
 @property const struct CGPath *shadowPath;
 @property BOOL shadowPathIsBounds;
 @property double shadowRadius;
-@property double shininess;
 @property BOOL shouldRasterize;
 @property struct CGSize sizeRequisition;
 @property BOOL sortsSublayers;
-@property double specularReflectance;
 @property float speed;
 @property (copy) NSArray *stateTransitions; // @dynamic stateTransitions;
 @property (copy) NSArray *states; // @dynamic states;
@@ -110,7 +108,6 @@
 @property struct CATransform3D sublayerTransform;
 @property (copy) NSArray *sublayers;
 @property (readonly) CALayer *superlayer;
-@property BOOL swapsMaskAndLayer;
 @property double timeOffset;
 @property struct CATransform3D transform;
 @property double velocityStretch;
@@ -123,6 +120,7 @@
 + (CDUnknownFunctionPointerType)CA_getterForProperty:(const struct _CAPropertyInfo *)arg1;
 + (CDUnknownFunctionPointerType)CA_setterForProperty:(const struct _CAPropertyInfo *)arg1;
 + (BOOL)_hasRenderLayerSubclass;
++ (id)allocWithZone:(struct _NSZone *)arg1;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)defaultActionForKey:(id)arg1;
 + (id)defaultValueForKey:(id)arg1;
@@ -136,6 +134,7 @@
 - (BOOL)_canDisplayConcurrently;
 - (void)_cancelAnimationTimer;
 - (void)_colorSpaceDidChange;
+- (void)_contentsFormatDidChange:(id)arg1;
 - (struct Layer *)_copyRenderLayer:(struct Transaction *)arg1 layerFlags:(unsigned int)arg2 commitFlags:(unsigned int *)arg3;
 - (void)_dealloc;
 - (BOOL)_defersDidBecomeVisiblePostCommit;
@@ -192,7 +191,6 @@
 - (BOOL)ignoresHitTesting;
 - (id)implicitAnimationForKeyPath:(id)arg1;
 - (id)init;
-- (id)initWithBounds:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLayer:(id)arg1;
 - (void)insertState:(id)arg1 atIndex:(unsigned int)arg2;
@@ -209,6 +207,7 @@
 - (void)layoutIfNeeded;
 - (BOOL)layoutIsActive;
 - (void)layoutSublayers;
+- (id)lights;
 - (id)modelLayer;
 - (BOOL)needsDisplay;
 - (BOOL)needsLayout;
@@ -232,6 +231,7 @@
 - (void)setAffineTransform:(struct CGAffineTransform)arg1;
 - (void)setContentsChanged;
 - (void)setFlipped:(BOOL)arg1;
+- (void)setLights:(id)arg1;
 - (void)setNeedsDisplay;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;
 - (void)setNeedsLayout;

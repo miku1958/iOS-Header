@@ -18,9 +18,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)_deleteFromDiskWithKey:(id)arg1;
+- (void)_deleteRowWithRowId:(long long)arg1;
 - (long long)_dumpToDiskWithKey:(id)arg1 value:(id)arg2;
 - (id)_entryWithRowId:(long long)arg1;
 - (void)_enumerateAllEntriesWithHandler:(CDUnknownBlockType)arg1;
+- (void)_enumerateAllForCacheEntriesWithHandler:(CDUnknownBlockType)arg1;
 - (double)_nextTimeStampForRefreshTimer;
 - (long long)_numberOfEntries;
 - (id)_readValueWithKey:(id)arg1;

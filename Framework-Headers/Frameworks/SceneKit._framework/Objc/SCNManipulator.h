@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class MISSING_TYPE, NSMutableIndexSet, NSOrderedSet, SCNAuthoringEnvironment, SCNNode;
 
@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
     unsigned int _originalDataCount;
     union C3DMatrix4x4 _worldInitialMatrix;
     union C3DMatrix4x4 _worldMatrix;
-    unsigned int _snapToAlignCount;
+    long long _snapToAlignCount;
     CDStruct_62d14fc2 *_snapToAlignOnX;
     CDStruct_62d14fc2 *_snapToAlignOnY;
     CDStruct_62d14fc2 *_snapToAlignOnZ;
@@ -72,7 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)_prepareSnapToAlignData:(unsigned short)arg1 minOffset:maxOffset: /* Error: Ran out of types for this method. */;
 - (void)_saveOriginalData;
 - (void)_setAuthoringEnvironment:(id)arg1;
-- (MISSING_TYPE *)_snapPositionToAlign:(struct SCNVector3)arg1 original:(double)arg2 unit:(BOOL)arg3 axisMove:(BOOL *)arg4 rayStart:(int *)arg5 rayDir:didSnap:snapIndexes: /* Error: Ran out of types for this method. */;
+- (MISSING_TYPE *)_snapPositionToAlign:(struct SCNVector3)arg1 original:(double)arg2 unit:(BOOL)arg3 axisMove:(BOOL *)arg4 rayStart:(long long *)arg5 rayDir:didSnap:snapIndexes: /* Error: Ran out of types for this method. */;
 - (void)_updateCloneStateWithEvent:(CDStruct_edec59f9)arg1;
 - (void)addClonesToScene;
 - (void)clearSnapIndexes;

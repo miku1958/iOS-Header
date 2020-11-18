@@ -23,10 +23,12 @@
 - (oneway void)getPlayersToInviteWithHandlerV2:(void (^)(NSArray *, NSError *))arg1;
 - (oneway void)initiateRelayRequest:(NSDictionary *)arg1 handler:(void (^)(NSDictionary *, NSError *))arg2;
 - (oneway void)invitePlayersForMatchRequest:(GKMatchRequestInternal *)arg1 onlineConnectionData:(NSData *)arg2 nearbyConnectionData:(NSData *)arg3 handler:(void (^)(NSDictionary *, NSError *))arg4;
+- (oneway void)loadURLWithData:(NSData *)arg1 player:(GKPlayerInternal *)arg2 matchRequest:(GKMatchRequestInternal *)arg3 handler:(void (^)(NSURL *, NSError *))arg4;
 - (oneway void)nearbyInviteWasCancelled:(NSDictionary *)arg1;
 - (oneway void)presentNearbyInvite:(NSDictionary *)arg1;
 - (oneway void)removePlayersFromGameInviteV2:(NSArray *)arg1 handler:(void (^)(void))arg2;
 - (oneway void)sendReconnectInvitation:(NSString *)arg1 toPlayer:(GKPlayerInternal *)arg2 connectionData:(NSData *)arg3 sessionToken:(NSData *)arg4 pushToken:(NSData *)arg5 handler:(void (^)(NSError *))arg6;
+- (oneway void)setShareInvitees:(NSArray *)arg1;
 - (oneway void)updateCacheWithNearbyProfileDictionary:(NSDictionary *)arg1 handler:(void (^)(GKPlayerInternal *))arg2;
 - (oneway void)updateRelayRequest:(NSDictionary *)arg1 handler:(void (^)(NSDictionary *, NSError *))arg2;
 @end

@@ -15,6 +15,7 @@
 
 @property (readonly, strong, nonatomic) _IDSDeviceConnection *_internal;
 @property (readonly, strong, nonatomic) NSInputStream *inputStream;
+@property (readonly, nonatomic) unsigned long long mtu;
 @property (readonly, strong, nonatomic) NSOutputStream *outputStream;
 @property (readonly, nonatomic) int socket;
 

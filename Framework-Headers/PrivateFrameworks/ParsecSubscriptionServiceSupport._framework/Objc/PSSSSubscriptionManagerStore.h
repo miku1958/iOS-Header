@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSDistributedNotificationCenter, NSMutableDictionary;
 
 @interface PSSSSubscriptionManagerStore : NSObject
 {
     NSMutableDictionary *_store;
+    NSDistributedNotificationCenter *_notificationCenter;
 }
 
+@property (strong, nonatomic) NSDistributedNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property (strong, nonatomic) NSMutableDictionary *store; // @synthesize store=_store;
 
 + (id)_subscriptionStoreDirectoryPath;

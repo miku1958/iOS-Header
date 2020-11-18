@@ -6,18 +6,11 @@
 
 #import <Parsec/PRSQueryTask.h>
 
-@class PRSSearchCompletionResultSet;
-
 @interface PRSDictationQueryTask : PRSQueryTask
 {
-    PRSSearchCompletionResultSet *_results;
 }
 
-@property (strong, nonatomic) PRSSearchCompletionResultSet *results; // @synthesize results=_results;
-
-- (void).cxx_destruct;
 - (id)initWithSession:(id)arg1 handler:(id)arg2 queue:(id)arg3;
-- (id)initWithSession:(id)arg1 handler:(id)arg2 queue:(id)arg3 feedback:(id)arg4 results:(id)arg5;
 - (void)resume;
 
 @end

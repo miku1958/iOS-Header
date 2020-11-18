@@ -8,7 +8,6 @@
 
 @interface GKLocalPlayer (Alerts)
 - (void)_showActionRestrictedAlertWithTitle:(id)arg1 message:(id)arg2;
-- (void)alertAndSendFriendRequest:(id)arg1 destination:(id)arg2;
 - (BOOL)alertUserInStoreDemoModeEnabled;
 - (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (void)showAlertForTag:(unsigned long long)arg1;

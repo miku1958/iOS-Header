@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVOutputDeviceInternal, NSString;
+@class AVOutputDeviceInternal, NSDictionary, NSString;
 
 @interface AVOutputDevice : NSObject
 {
@@ -14,12 +14,18 @@
 }
 
 @property (readonly, nonatomic) NSString *ID;
+@property (readonly, nonatomic) float batteryLevel;
+@property (readonly, nonatomic) long long deviceType;
+@property (readonly, nonatomic) BOOL hasBatteryLevel;
+@property (readonly, nonatomic) NSString *modelID;
+@property (readonly, nonatomic) NSDictionary *modelSpecificInformation;
 @property (readonly, nonatomic) NSString *name;
 
 + (id)sharedLocalDevice;
 - (id)_figEndpointPropertyValueForKey:(struct __CFString *)arg1;
 - (id)_weakReference;
 - (void)dealloc;
+- (id)description;
 - (struct OpaqueFigEndpoint *)figEndpoint;
 - (void)finalize;
 - (double)frecencyScore;

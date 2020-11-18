@@ -6,14 +6,22 @@
 
 #import <MMCSServices/MMCSSimpleFile.h>
 
+@class NSData, NSString;
+
 @interface MMCSPutFile : MMCSSimpleFile
 {
     CDUnknownBlockType _block;
     CDUnknownBlockType _updateBlock;
+    NSString *_protocolVersion;
+    NSData *_authRequestData;
+    CDUnknownBlockType _registrationBlock;
 }
 
+@property (copy) NSData *authRequestData; // @synthesize authRequestData=_authRequestData;
 @property (copy) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_block;
 @property (copy) CDUnknownBlockType progressUpdateBlock; // @synthesize progressUpdateBlock=_updateBlock;
+@property (copy) NSString *protocolVersion; // @synthesize protocolVersion=_protocolVersion;
+@property (copy) CDUnknownBlockType registrationBlock; // @synthesize registrationBlock=_registrationBlock;
 
 - (void)dealloc;
 - (void)setProgress:(double)arg1;

@@ -4,3 +4,185 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#pragma mark Function Pointers and Blocks
+
+typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
+
+typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
+
+#pragma mark Named Structures
+
+struct netcore_stats_data_usage_snapshot {
+    unsigned long long _field1;
+    unsigned long long _field2;
+};
+
+struct netcore_stats_network_event {
+    int _field1;
+    unsigned int _field2;
+};
+
+struct netcore_stats_tcp_cell_fallback_report {
+    BOOL _field1;
+    int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    struct netcore_stats_network_event _field5[20];
+    unsigned int _field6;
+    struct netcore_stats_data_usage_snapshot _field7[20];
+};
+
+struct netcore_stats_tcp_report {
+    BOOL _field1;
+    BOOL _field2;
+    union {
+        struct {
+            int _field1;
+            struct netcore_stats_tcp_statistics_report _field2;
+            struct netcore_stats_tcp_cell_fallback_report _field3;
+            unsigned int _field4;
+            struct netcore_stats_tcp_statistics_report _field5[10];
+        } _field1;
+        struct nw_connection_report_s _field2;
+    } _field3;
+};
+
+struct netcore_stats_tcp_statistics_report {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    BOOL _field4;
+    int _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    unsigned int _field8;
+    unsigned int _field9;
+    int _field10;
+    BOOL _field11;
+    unsigned int _field12;
+    BOOL _field13;
+    BOOL _field14;
+    BOOL _field15;
+    BOOL _field16;
+    BOOL _field17;
+    BOOL _field18;
+    unsigned long long _field19;
+    unsigned long long _field20;
+    unsigned long long _field21;
+    unsigned long long _field22;
+    unsigned long long _field23;
+    unsigned long long _field24;
+    unsigned long long _field25;
+    unsigned long long _field26;
+    unsigned long long _field27;
+    unsigned long long _field28;
+    unsigned int _field29;
+    unsigned int _field30;
+    unsigned int _field31;
+    unsigned int _field32;
+    unsigned int _field33;
+    BOOL _field34;
+    unsigned int _field35;
+    unsigned int _field36;
+    unsigned int _field37;
+    unsigned int _field38;
+};
+
+struct nw_connection_report_s {
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int _field1;
+    unsigned int _field2;
+    int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    unsigned int _field8;
+    unsigned int _field9;
+    unsigned int _field10;
+    unsigned int _field11;
+    unsigned char _field12;
+    unsigned char _field13;
+    unsigned int _field14;
+    int _field15;
+    unsigned int _field16;
+    unsigned int _field17;
+    int _field18;
+};
+
+struct nw_connection_throughput_monitor_s {
+    void *timer;
+    unsigned int minimum;
+    unsigned long long current_bytes;
+    unsigned long long current_time;
+    unsigned long long last_bytes;
+    unsigned long long last_time;
+};
+
+struct nw_connection_timestamp_s {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    struct nw_endpoint_handler_event_s _field3;
+    long long _field4;
+};
+
+struct nw_endpoint_handler_event_s {
+    unsigned int _field1;
+    unsigned int _field2;
+};
+
+struct nw_protocol {
+    struct nw_protocol_identifier *identifier;
+    struct nw_protocol_callbacks *callbacks;
+    struct nw_protocol *output_handler;
+    void *handle;
+    unsigned char flow_id[16];
+    struct nw_protocol *default_input_handler;
+    void *output_handler_context;
+};
+
+struct nw_protocol_callbacks {
+    CDUnknownFunctionPointerType add_input_handler;
+    CDUnknownFunctionPointerType remove_input_handler;
+    CDUnknownFunctionPointerType replace_input_handler;
+    CDUnknownFunctionPointerType connect;
+    CDUnknownFunctionPointerType disconnect;
+    CDUnknownFunctionPointerType connected;
+    CDUnknownFunctionPointerType disconnected;
+    CDUnknownFunctionPointerType error;
+    CDUnknownFunctionPointerType input_available;
+    CDUnknownFunctionPointerType output_available;
+    CDUnknownFunctionPointerType get_input_frames;
+    CDUnknownFunctionPointerType get_output_frames;
+    CDUnknownFunctionPointerType finalize_output_frames;
+    CDUnknownFunctionPointerType get_parameters;
+    CDUnknownFunctionPointerType get_path;
+    CDUnknownFunctionPointerType get_local_endpoint;
+    CDUnknownFunctionPointerType get_remote_endpoint;
+    CDUnknownFunctionPointerType updated_path;
+    CDUnknownFunctionPointerType supports_external_data;
+    CDUnknownFunctionPointerType input_finished;
+};
+
+struct nw_protocol_identifier {
+    char name[32];
+    int level;
+    int mapping;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+

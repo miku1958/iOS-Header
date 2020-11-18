@@ -19,8 +19,8 @@
     NSString *_sourceKey;
     NSString *_content;
     NSString *_title;
-    double _creationTimestamp;
-    double _lastModifiedTimestamp;
+    struct SGUnixTimestamp_ _creationTimestamp;
+    struct SGUnixTimestamp_ _lastModifiedTimestamp;
     SGSimpleTimeRange *_when;
     NSArray *_locations;
     NSSet *_tags;
@@ -28,13 +28,13 @@
 }
 
 @property (readonly, nonatomic) NSString *content; // @synthesize content=_content;
-@property (readonly, nonatomic) double creationTimestamp; // @synthesize creationTimestamp=_creationTimestamp;
+@property (readonly, nonatomic) struct SGUnixTimestamp_ creationTimestamp; // @synthesize creationTimestamp=_creationTimestamp;
 @property (readonly, nonatomic) BOOL curated; // @synthesize curated=_curated;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) SGDuplicateKey *duplicateKey; // @synthesize duplicateKey=_duplicateKey;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) double lastModifiedTimestamp; // @synthesize lastModifiedTimestamp=_lastModifiedTimestamp;
+@property (readonly, nonatomic) struct SGUnixTimestamp_ lastModifiedTimestamp; // @synthesize lastModifiedTimestamp=_lastModifiedTimestamp;
 @property (readonly, nonatomic) NSArray *locations; // @synthesize locations=_locations;
 @property (readonly, nonatomic) NSString *opaqueKey;
 @property (readonly, nonatomic) SGRecordId *recordId; // @synthesize recordId=_recordId;
@@ -49,6 +49,7 @@
 + (id)storageEventFromEntity:(id)arg1;
 - (void).cxx_destruct;
 - (id)convertToEvent:(id)arg1;
+- (id)convertToEventWithOrigin:(id)arg1;
 - (id)extraKeyTag;
 - (id)fieldsToSaveOnConfirmation;
 - (id)geocodeEndDate;
@@ -57,13 +58,14 @@
 - (id)geocodeStartDate;
 - (id)geocodeStartTimeZone;
 - (id)geocodedEventWithStartDate:(id)arg1 startTimeZone:(id)arg2 endDate:(id)arg3 endTimeZone:(id)arg4 locations:(id)arg5;
-- (id)initWithRecordId:(id)arg1 duplicateKey:(id)arg2 sourceKey:(id)arg3 content:(id)arg4 title:(id)arg5 creationTimestamp:(double)arg6 lastModifiedTimestamp:(double)arg7 tags:(id)arg8 when:(id)arg9 locations:(id)arg10 structuredData:(id)arg11 state:(unsigned int)arg12 curated:(BOOL)arg13;
+- (id)initWithRecordId:(id)arg1 duplicateKey:(id)arg2 sourceKey:(id)arg3 content:(id)arg4 title:(id)arg5 creationTimestamp:(struct SGUnixTimestamp_)arg6 lastModifiedTimestamp:(struct SGUnixTimestamp_)arg7 tags:(id)arg8 when:(id)arg9 locations:(id)arg10 structuredData:(id)arg11 state:(unsigned int)arg12 curated:(BOOL)arg13;
 - (BOOL)isAllDay;
 - (BOOL)isCancelled;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToStorageEvent:(id)arg1;
 - (BOOL)isFromDataDetectors;
 - (BOOL)isFromSuggestions;
+- (id)urlFromTags;
 
 @end
 

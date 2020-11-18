@@ -8,24 +8,48 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapRegion, NSMutableArray;
+@class GEOMapRegion, GEOPDRelatedSearchSuggestion, GEOPDSearchClientBehavior, NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPDSearchResult : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
+    GEOPDRelatedSearchSuggestion *_defaultRelatedSearchSuggestion;
     NSMutableArray *_disambiguationLabels;
     GEOMapRegion *_displayMapRegion;
+    NSMutableArray *_relatedSearchSuggestions;
+    NSString *_resultDisplayHeader;
+    GEOPDSearchClientBehavior *_searchClientBehavior;
+    int _searchResultType;
     BOOL _isChainResultSet;
-    CDStruct_5984ff81 _has;
+    struct {
+        unsigned int searchResultType:1;
+        unsigned int isChainResultSet:1;
+    } _has;
 }
 
+@property (strong, nonatomic) GEOPDRelatedSearchSuggestion *defaultRelatedSearchSuggestion; // @synthesize defaultRelatedSearchSuggestion=_defaultRelatedSearchSuggestion;
 @property (strong, nonatomic) NSMutableArray *disambiguationLabels; // @synthesize disambiguationLabels=_disambiguationLabels;
 @property (strong, nonatomic) GEOMapRegion *displayMapRegion; // @synthesize displayMapRegion=_displayMapRegion;
+@property (readonly, nonatomic) BOOL hasDefaultRelatedSearchSuggestion;
 @property (readonly, nonatomic) BOOL hasDisplayMapRegion;
 @property (nonatomic) BOOL hasIsChainResultSet;
+@property (readonly, nonatomic) BOOL hasResultDisplayHeader;
+@property (readonly, nonatomic) BOOL hasSearchClientBehavior;
+@property (nonatomic) BOOL hasSearchResultType;
 @property (nonatomic) BOOL isChainResultSet; // @synthesize isChainResultSet=_isChainResultSet;
+@property (strong, nonatomic) NSMutableArray *relatedSearchSuggestions; // @synthesize relatedSearchSuggestions=_relatedSearchSuggestions;
+@property (strong, nonatomic) NSString *resultDisplayHeader; // @synthesize resultDisplayHeader=_resultDisplayHeader;
+@property (strong, nonatomic) GEOPDSearchClientBehavior *searchClientBehavior; // @synthesize searchClientBehavior=_searchClientBehavior;
+@property (nonatomic) int searchResultType; // @synthesize searchResultType=_searchResultType;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)disambiguationLabelType;
++ (Class)relatedSearchSuggestionType;
+- (int)StringAsSearchResultType:(id)arg1;
 - (void)addDisambiguationLabel:(id)arg1;
+- (void)addRelatedSearchSuggestion:(id)arg1;
 - (void)clearDisambiguationLabels;
+- (void)clearRelatedSearchSuggestions;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -37,6 +61,9 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)relatedSearchSuggestionAtIndex:(unsigned long long)arg1;
+- (unsigned long long)relatedSearchSuggestionsCount;
+- (id)searchResultTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

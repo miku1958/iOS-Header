@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSMutableArray *spans; // @synthesize spans=_spans;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)spanType;
 - (void)addSpan:(id)arg1;
 - (void)clearSpans;
 - (void)copyTo:(id)arg1;

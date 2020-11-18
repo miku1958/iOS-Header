@@ -13,6 +13,7 @@
 
 @property (copy, nonatomic) CDUnknownBlockType calculateFrame; // @synthesize calculateFrame=_calculateFrame;
 
+- (void).cxx_destruct;
 - (struct CGRect)accessibilityFrame;
 - (void)dealloc;
 

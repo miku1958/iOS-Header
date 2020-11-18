@@ -22,8 +22,8 @@
     NSString *_matchDesignatedRequirement;
     NSString *_matchPath;
     NSArray *_matchDomains;
-    NSArray *_matchAccountIdentifiers;
     NSArray *_additionalExecutables;
+    NSArray *_matchAccountIdentifiers;
 }
 
 @property (copy) NSArray *additionalExecutables; // @synthesize additionalExecutables=_additionalExecutables;

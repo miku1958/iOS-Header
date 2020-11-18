@@ -53,7 +53,10 @@ __attribute__((visibility("hidden")))
     NSData *_atsContext;
     double _connectionCachePurgeTimeout;
     double _connectionCacheCellPurgeTimeout;
+    double _longLivedConnectionCachePurgeTimeout;
+    double _longLivedConnectionCacheCellPurgeTimeout;
     BOOL _allowsRetryForBackgroundDataTasks;
+    BOOL _onBehalfOfPairedDevice;
     BOOL _respectsAllowsCellularAccessForDiscretionaryTasks;
     BOOL _overridesBackgroundSessionAutoRedirect;
     BOOL _performsEVCertCheck;
@@ -148,6 +151,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)_infersDiscretionaryFromOriginatingClient;
 - (BOOL)_isProxySession;
 - (id)_ledBellyServiceIdentifier;
+- (double)_longLivedConnectionCacheCellPurgeTimeout;
+- (double)_longLivedConnectionCachePurgeTimeout;
+- (BOOL)_onBehalfOfPairedDevice;
 - (id)_overriddenDelegateOptions;
 - (BOOL)_overridesBackgroundSessionAutoRedirect;
 - (BOOL)_performsEVCertCheck;
@@ -263,6 +269,9 @@ __attribute__((visibility("hidden")))
 - (void)set_forcesNewConnections:(BOOL)arg1;
 - (void)set_infersDiscretionaryFromOriginatingClient:(BOOL)arg1;
 - (void)set_ledBellyServiceIdentifier:(id)arg1;
+- (void)set_longLivedConnectionCacheCellPurgeTimeout:(double)arg1;
+- (void)set_longLivedConnectionCachePurgeTimeout:(double)arg1;
+- (void)set_onBehalfOfPairedDevice:(BOOL)arg1;
 - (void)set_overriddenDelegateOptions:(id)arg1;
 - (void)set_overridesBackgroundSessionAutoRedirect:(BOOL)arg1;
 - (void)set_performsEVCertCheck:(BOOL)arg1;

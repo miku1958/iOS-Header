@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPDIndexQueryNode : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSString *_field;
     NSMutableArray *_operands;
     int _type;
@@ -23,8 +24,11 @@
 @property (readonly, nonatomic) BOOL hasValue;
 @property (strong, nonatomic) NSMutableArray *operands; // @synthesize operands=_operands;
 @property (nonatomic) int type; // @synthesize type=_type;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) NSString *value; // @synthesize value=_value;
 
++ (Class)operandType;
+- (int)StringAsType:(id)arg1;
 - (void)addOperand:(id)arg1;
 - (void)clearOperands;
 - (void)copyTo:(id)arg1;
@@ -38,6 +42,7 @@
 - (id)operandAtIndex:(unsigned long long)arg1;
 - (unsigned long long)operandsCount;
 - (BOOL)readFrom:(id)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

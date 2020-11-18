@@ -75,6 +75,7 @@
 + (id)activeCalloutBar;
 + (void)fadeSharedCalloutBar;
 + (void)hideSharedCalloutBar;
++ (void)performWithoutAffectingSharedCalloutBar:(CDUnknownBlockType)arg1;
 + (id)sharedCalloutBar;
 + (BOOL)sharedCalloutBarIsVisible;
 - (void).cxx_destruct;
@@ -115,6 +116,7 @@
 - (void)setTargetRect:(struct CGRect)arg1 pointBelowControls:(struct CGPoint)arg2 pointAboveControls:(struct CGPoint)arg3;
 - (void)setTargetRect:(struct CGRect)arg1 pointLeftOfControls:(struct CGPoint)arg2 pointRightOfControls:(struct CGPoint)arg3;
 - (void)show;
+- (void)shrinkButtonTextSize:(id)arg1;
 - (double)supressHorizontalXMovementIfNeededForPoint:(struct CGPoint)arg1 proposedX:(double)arg2;
 - (id)targetForAction:(SEL)arg1;
 - (int)textEffectsVisibilityLevel;

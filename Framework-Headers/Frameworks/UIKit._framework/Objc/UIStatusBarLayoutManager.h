@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface UIStatusBarLayoutManager : NSObject
 {
     int _region;
-    UIStatusBarItemView *_itemViews[36];
+    UIStatusBarItemView *_itemViews[41];
     BOOL _persistentAnimationsEnabled;
     BOOL _usesVerticalLayout;
     UIStatusBarForegroundView *_foregroundView;
@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithRegion:(int)arg1 foregroundView:(id)arg2 usesVerticalLayout:(BOOL)arg3;
 - (BOOL)itemIsVisible:(id)arg1;
 - (void)itemView:(id)arg1 sizeChangedBy:(double)arg2;
+- (id)itemViewOfType:(int)arg1;
 - (void)makeVisibleItemsPerformPendedActions;
 - (void)positionInvisibleItems;
 - (BOOL)prepareDoubleHeightItemWithEnabledItems:(BOOL *)arg1;
@@ -55,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (double)removeOverlap:(double)arg1 fromItems:(id)arg2;
 - (void)setVisibilityOfAllItems:(BOOL)arg1;
 - (void)setVisibilityOfItem:(id)arg1 visible:(BOOL)arg2;
+- (void)setVisibilityOfItemType:(int)arg1 visible:(BOOL)arg2;
 - (double)sizeNeededForItem:(id)arg1;
 - (double)sizeNeededForItems:(id)arg1;
 - (BOOL)updateDoubleHeightItem;

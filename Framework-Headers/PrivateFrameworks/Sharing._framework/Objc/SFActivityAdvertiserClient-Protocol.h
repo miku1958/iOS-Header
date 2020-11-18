@@ -6,10 +6,11 @@
 
 #import <Sharing/NSObject-Protocol.h>
 
-@class NSData, NSError, NSUUID, SFPeerDevice;
+@class NSData, NSError, NSSet, NSString, NSUUID, SFPeerDevice;
 
 @protocol SFActivityAdvertiserClient <NSObject>
-- (void)activityPayloadForAdvertisementPayload:(NSData *)arg1 requestedByDevice:(SFPeerDevice *)arg2 withCompletionHandler:(void (^)(NSUUID *, NSData *, NSError *))arg3;
+- (void)activityPayloadForAdvertisementPayload:(NSData *)arg1 command:(NSString *)arg2 requestedByDevice:(SFPeerDevice *)arg3 withCompletionHandler:(void (^)(NSUUID *, NSData *, NSError *))arg4;
 - (void)didSendPayloadForActivityIdentifier:(NSUUID *)arg1 toDevice:(SFPeerDevice *)arg2 error:(NSError *)arg3;
+- (void)pairedDevicesChanged:(NSSet *)arg1;
 @end
 

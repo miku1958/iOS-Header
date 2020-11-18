@@ -10,13 +10,15 @@
 
 @interface _SFNavigationResult : NSObject
 {
+    LSApplicationProxy *_externalApplication;
+    long long _externalApplicationCategory;
     long long _type;
     NSURL *_URL;
-    LSApplicationProxy *_externalApplication;
 }
 
 @property (readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (readonly, nonatomic) LSApplicationProxy *externalApplication; // @synthesize externalApplication=_externalApplication;
+@property (readonly, nonatomic) long long externalApplicationCategory; // @synthesize externalApplicationCategory=_externalApplicationCategory;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (id)resultOfLoadingRequest:(id)arg1 isMainFrame:(BOOL)arg2 disallowRedirectToExternalApps:(BOOL)arg3;

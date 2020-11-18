@@ -10,11 +10,11 @@
 
 @interface NSArray (IMChatItems)
 
-@property (readonly, strong, nonatomic) IMMessageItem *__imLastMessageItem;
-@property (readonly, strong, nonatomic) IMMessage *lastFinishedMessage;
-@property (readonly, strong, nonatomic) IMMessage *lastIncomingFinishedMessage;
-@property (readonly, strong, nonatomic) IMMessage *lastIncomingMessage;
-@property (readonly, strong, nonatomic) IMMessage *lastMessage;
+@property (readonly, nonatomic) IMMessageItem *__imLastMessageItem;
+@property (readonly, nonatomic) IMMessage *lastFinishedMessage;
+@property (readonly, nonatomic) IMMessage *lastIncomingFinishedMessage;
+@property (readonly, nonatomic) IMMessage *lastIncomingMessage;
+@property (readonly, nonatomic) IMMessage *lastMessage;
 
 - (void)__enumerateItemsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)__imItems;

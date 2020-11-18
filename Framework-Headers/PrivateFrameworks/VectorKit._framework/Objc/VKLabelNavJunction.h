@@ -29,14 +29,27 @@ __attribute__((visibility("hidden")))
     BOOL _isOverpass;
     BOOL _isRouteOverpass;
     int _largestRoadClass;
-    CDStruct_d374d81c *_labelFeature;
+    struct {
+        CDStruct_58d0ca89 _field1;
+        CDStruct_b2fbf00d _field2;
+        CDStruct_b2fbf00d _field3;
+        CDStruct_183601bc *_field4;
+        float _field5;
+        unsigned int _field6;
+        unsigned char _field7;
+        BOOL _field8;
+        BOOL _field9;
+    } *_labelFeature;
     NSString *_name;
     VKLabelNavRoadLabel *_junctionSign;
     BOOL _areLabelsDisabled;
     unsigned long long _depthFromRoute;
     double _worldUnitsPerMeter;
     VKLabelNavJunction *_overpassJunction;
-    struct VKPoint _worldCoordinate;
+    BOOL _cachedSignVisibility[2];
+    BOOL _isVisibilityCached[2];
+    BOOL _isVisible;
+    Matrix_6e1d3589 _worldCoordinate;
     double _sortValue;
     BOOL _isRouteRefineJunction;
 }
@@ -63,6 +76,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isRouteRefineJunction; // @synthesize isRouteRefineJunction=_isRouteRefineJunction;
 @property (readonly, nonatomic) BOOL isStartOfRoadName;
 @property (readonly, nonatomic) BOOL isTileEdgeJunction;
+@property (readonly, nonatomic) BOOL isVisible; // @synthesize isVisible=_isVisible;
 @property (readonly, nonatomic) VKLabelNavRoadLabel *junctionSign; // @synthesize junctionSign=_junctionSign;
 @property (readonly, nonatomic) int largestRoadClass;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
@@ -79,10 +93,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double worldUnitsPerMeter; // @synthesize worldUnitsPerMeter=_worldUnitsPerMeter;
 
 - (id).cxx_construct;
-- (struct VKPoint)_anchorCoordinateForSignOrientation:(long long)arg1;
-- (long long)_signOrientationWithDrivingSide:(BOOL)arg1;
+- (Matrix_6e1d3589)_anchorCoordinateForSignOrientation:(unsigned char)arg1;
+- (unsigned char)_signOrientationWithDrivingSide:(BOOL)arg1;
+- (void)_updateWithNavContext:(struct NavContext *)arg1;
+- (void)_updateWithNavContext:(struct NavContext *)arg1 threshold:(double)arg2;
 - (void)addRouteEdge:(const struct VKLabelNavRouteRoadEdge *)arg1 atA:(BOOL)arg2;
-- (void)createLabelWithNavContext:(struct NavContext *)arg1 isDrivingSideRight:(BOOL)arg2;
+- (void)createLabelWithNavContext:(struct NavContext *)arg1 isDrivingSideRight:(BOOL)arg2 artworkCache:(struct VKLabelNavArtworkCache *)arg3;
 - (void)dealloc;
 - (id)description;
 - (void)evaluateCrossStreets;
@@ -90,7 +106,9 @@ __attribute__((visibility("hidden")))
 - (void)findRoads;
 - (id)initWithGEOJunction:(CDStruct_3b01f0aa *)arg1 routeOffset:(struct PolylineCoordinate)arg2 tile:(id)arg3;
 - (id)initWithRoadEdge:(const CDStruct_91f75a7f *)arg1 atA:(BOOL)arg2 routeOffset:(struct PolylineCoordinate)arg3 tile:(id)arg4;
+- (void)layoutWithNavContext:(struct NavContext *)arg1;
 - (BOOL)matchesLocationForJunction:(id)arg1;
+- (void)prepareStyleVarsWithContext:(struct NavContext *)arg1;
 
 @end
 

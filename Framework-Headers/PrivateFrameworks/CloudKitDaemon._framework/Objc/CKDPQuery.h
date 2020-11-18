@@ -32,7 +32,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *sorts; // @synthesize sorts=_sorts;
 @property (strong, nonatomic) NSMutableArray *types; // @synthesize types=_types;
 
++ (Class)filtersType;
++ (Class)sortsType;
++ (Class)typesType;
 - (void).cxx_destruct;
+- (int)StringAsQueryOperator:(id)arg1;
 - (void)addFilters:(id)arg1;
 - (void)addSorts:(id)arg1;
 - (void)addTypes:(id)arg1;
@@ -48,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)queryOperatorAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)sortsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)sortsCount;

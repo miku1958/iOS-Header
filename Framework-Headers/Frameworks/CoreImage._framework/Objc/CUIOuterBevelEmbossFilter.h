@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 @interface CUIOuterBevelEmbossFilter : CIFilter
 {
     CIImage *inputImage;
-    NSNumber *inputRadius;
     NSNumber *inputSize;
     NSNumber *inputSoften;
     NSNumber *inputAngle;
@@ -23,7 +22,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSNumber *inputAngle; // @synthesize inputAngle;
 @property (strong, nonatomic) CIColor *inputHighlightColor; // @synthesize inputHighlightColor;
 @property (strong, nonatomic) CIImage *inputImage; // @synthesize inputImage;
-@property (strong, nonatomic) NSNumber *inputRadius; // @synthesize inputRadius;
 @property (strong, nonatomic) CIColor *inputShadowColor; // @synthesize inputShadowColor;
 @property (strong, nonatomic) NSNumber *inputSize; // @synthesize inputSize;
 @property (strong, nonatomic) NSNumber *inputSoften; // @synthesize inputSoften;

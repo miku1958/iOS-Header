@@ -12,7 +12,6 @@
 {
 }
 
-@property (readonly, nonatomic, getter=isMotionGestureLoggingEnabled) BOOL motionGestureLoggingEnabled; // @dynamic motionGestureLoggingEnabled;
 @property (strong, nonatomic) NSArray *systemGestureLoggingOptions; // @dynamic systemGestureLoggingOptions;
 @property (readonly, nonatomic, getter=isSystemGesturesAllowed) BOOL systemGesturesAllowed; // @dynamic systemGesturesAllowed;
 

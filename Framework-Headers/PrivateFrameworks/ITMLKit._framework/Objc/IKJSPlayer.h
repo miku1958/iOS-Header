@@ -8,7 +8,7 @@
 
 #import <ITMLKit/IKJSPlayer-Protocol.h>
 
-@class IKAppPlayerBridge, IKDOMDocument, IKJSMediaItem, IKJSPlaylist, NSMutableDictionary, NSString;
+@class IKAppPlayerBridge, IKDOMDocument, IKJSMediaItem, IKJSPlaylist, NSDate, NSMutableDictionary, NSNumber, NSString;
 
 @interface IKJSPlayer : IKJSEventListenerObject <IKJSPlayer>
 {
@@ -23,6 +23,10 @@
 
 @property (readonly, nonatomic) IKAppPlayerBridge *bridge; // @synthesize bridge=_bridge;
 @property (readonly, nonatomic) IKJSMediaItem *currentMediaItem;
+@property (readonly, nonatomic) NSDate *currentMediaItemDate;
+@property (readonly, nonatomic) NSNumber *currentMediaItemDuration;
+@property (nonatomic) BOOL interactiveOverlayDismissable;
+@property (strong, nonatomic) IKDOMDocument *interactiveOverlayDocument;
 @property (readonly, nonatomic) IKJSMediaItem *nextMediaItem;
 @property (strong, nonatomic) IKDOMDocument *overlayDocument;
 @property (nonatomic) double playbackRate;
@@ -34,16 +38,24 @@
 - (void)_addManagedReference;
 - (void)_removeManagedReference;
 - (void)addEventListener:(id)arg1:(id)arg2:(id)arg3;
+- (void)changeToMediaAtIndex:(unsigned long long)arg1;
+- (void)currentMediaItemDurationDidChange:(double)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)initWithAppContext:(id)arg1 bridge:(id)arg2;
 - (void)mediaItemDidChange:(long long)arg1;
 - (void)mediaItemWillChange:(long long)arg1;
+- (void)next;
 - (void)pause;
 - (void)play;
+- (void)playbackDidStall:(double)arg1;
+- (void)playbackError:(id)arg1 shouldStopDueToError:(BOOL)arg2;
 - (void)present;
+- (void)previous;
 - (void)removeEventListener:(id)arg1:(id)arg2;
 - (BOOL)requestSeekToTime:(double *)arg1 currentTime:(double)arg2;
 - (void)seekToTime:(double)arg1;
+- (BOOL)shouldChangeToMediaAtIndex:(unsigned long long)arg1;
 - (BOOL)shouldHandleStateEvent:(id)arg1;
 - (long long)state;
 - (void)stateDidChange:(id)arg1;
@@ -52,6 +64,7 @@
 - (void)timeBoundaryDidCross:(double)arg1;
 - (void)timeIntervalElapsed:(double)arg1 time:(double)arg2;
 - (void)timedMetadataDidChange:(id)arg1 value:(id)arg2;
+- (void)transportBarVisibilityDidChange:(BOOL)arg1;
 
 @end
 

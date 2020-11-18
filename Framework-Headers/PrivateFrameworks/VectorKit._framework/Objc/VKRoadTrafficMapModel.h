@@ -14,8 +14,6 @@ __attribute__((visibility("hidden")))
     VKRoadMapModel *_roadModel;
     struct ClearItem _clearItem;
     BOOL _enabled;
-    struct unique_ptr<vk::TrafficManager<ggl::PilledTrafficRibbonDescriptor>, std::__1::default_delete<vk::TrafficManager<ggl::PilledTrafficRibbonDescriptor>>> _pilledTrafficManager;
-    struct unique_ptr<vk::TrafficManager<ggl::SolidTrafficRibbonDescriptor>, std::__1::default_delete<vk::TrafficManager<ggl::SolidTrafficRibbonDescriptor>>> _solidTrafficManager;
     int _sourceTileZtoStencilOffset;
     BOOL _clearFrameBufferAlpha;
 }
@@ -28,8 +26,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)didReceiveMemoryWarning:(BOOL)arg1;
-- (void)gglLayoutScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
-- (id)init;
+- (void)gglLayoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
+- (id)initWithTarget:(id)arg1 sharedResources:(id)arg2;
 - (unsigned long long)mapLayerPosition;
 - (void)stylesheetDidChange;
 - (void)stylesheetDidReload;

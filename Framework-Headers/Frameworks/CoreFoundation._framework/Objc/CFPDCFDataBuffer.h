@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 - (void *)bytes;
 - (struct __CFData *)copyCFData;
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithCFData:(struct __CFData *)arg1;
 - (unsigned long long)length;
 

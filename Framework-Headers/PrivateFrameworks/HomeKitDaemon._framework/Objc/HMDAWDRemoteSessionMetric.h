@@ -4,32 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HomeKitDaemon/HMDLogEvent.h>
 
-@class NSDate;
+#import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
-@interface HMDAWDRemoteSessionMetric : NSObject
+@class NSDate, NSString, NSUUID;
+
+@interface HMDAWDRemoteSessionMetric : HMDLogEvent <HMDAWDLogEvent>
 {
     BOOL _submitted;
-    unsigned long long _role;
+    int _role;
+    int _closeReason;
     NSDate *_creation;
-    double _duration;
-    unsigned long long _closeReason;
+    NSUUID *_sessionID;
 }
 
-@property (nonatomic) unsigned long long closeReason; // @synthesize closeReason=_closeReason;
+@property (readonly, nonatomic) int closeReason; // @synthesize closeReason=_closeReason;
 @property (strong, nonatomic) NSDate *creation; // @synthesize creation=_creation;
-@property (nonatomic) double duration; // @synthesize duration=_duration;
-@property (readonly, nonatomic) unsigned long long role; // @synthesize role=_role;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) int role; // @synthesize role=_role;
+@property (readonly, nonatomic) NSUUID *sessionID; // @synthesize sessionID=_sessionID;
 @property (nonatomic) BOOL submitted; // @synthesize submitted=_submitted;
+@property (readonly) Class superclass;
 
-+ (unsigned long long)closeReasonFromError:(id)arg1;
-+ (unsigned long long)currentDeviceType;
++ (int)closeReasonFromError:(id)arg1;
++ (void)initialize;
++ (id)uuid;
 - (void).cxx_destruct;
-- (void)__submitMetric;
-- (void)closeWithReason:(unsigned long long)arg1;
-- (id)description;
-- (id)initWithRole:(unsigned long long)arg1;
+- (unsigned int)AWDMessageType;
+- (id)initWithClientMode:(BOOL)arg1 sessionID:(id)arg2;
+- (id)metricForAWD;
 - (void)open;
 
 @end

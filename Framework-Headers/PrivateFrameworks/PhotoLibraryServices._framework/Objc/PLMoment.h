@@ -42,6 +42,7 @@
 @property (readonly, copy, nonatomic) NSArray *localizedLocationNames;
 @property (readonly, copy, nonatomic) NSString *localizedTitle;
 @property (strong, nonatomic) PLMomentList *megaMomentList; // @dynamic megaMomentList;
+@property (strong, nonatomic) NSDate *modificationDate; // @dynamic modificationDate;
 @property (strong, nonatomic) PLMomentLibrary *momentLibrary; // @dynamic momentLibrary;
 @property (readonly, nonatomic) unsigned long long photosCount;
 @property (strong, nonatomic) NSDate *representativeDate; // @dynamic representativeDate;

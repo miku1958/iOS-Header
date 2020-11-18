@@ -18,6 +18,7 @@
     NSData *_sessionToken;
     NSString *_rid;
     unsigned int _version;
+    BOOL _preloadedMatch;
     int _playerGroup;
     unsigned int _playerAttributes;
     unsigned char _minPlayers;
@@ -33,6 +34,7 @@
 @property (nonatomic) unsigned char minPlayers; // @synthesize minPlayers=_minPlayers;
 @property (nonatomic) unsigned int playerAttributes; // @synthesize playerAttributes=_playerAttributes;
 @property (nonatomic) int playerGroup; // @synthesize playerGroup=_playerGroup;
+@property (nonatomic, getter=isPreloadedMatch) BOOL preloadedMatch; // @synthesize preloadedMatch=_preloadedMatch;
 @property (strong, nonatomic) NSArray *recipientPlayerIDs; // @synthesize recipientPlayerIDs=_recipientPlayerIDs;
 @property (strong, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property (strong, nonatomic) NSString *rid; // @synthesize rid=_rid;

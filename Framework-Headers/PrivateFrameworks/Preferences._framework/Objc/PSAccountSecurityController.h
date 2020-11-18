@@ -10,7 +10,7 @@
 #import <Preferences/KeychainSyncViewControllerDelegate-Protocol.h>
 #import <Preferences/UIAlertViewDelegate-Protocol.h>
 
-@class KeychainSyncCountryInfo, KeychainSyncDevicePINController, KeychainSyncPhoneSettingsFragment, NSArray, NSString, PSKeychainSyncManager, PSSetupController, PSSpecifier, UIAlertView;
+@class KeychainSyncCountryInfo, KeychainSyncDevicePINController, KeychainSyncPhoneSettingsFragment, NSArray, NSString, PSKeychainSyncManager, PSSetupController, PSSpecifier;
 
 @interface PSAccountSecurityController : PSListController <KeychainSyncViewControllerDelegate, KeychainSyncPhoneSettingsFragmentDelegate, UIAlertViewDelegate>
 {
@@ -23,9 +23,6 @@
     KeychainSyncCountryInfo *_SMSTargetCountryInfo;
     BOOL _secureBackupEnabled;
     PSKeychainSyncManager *_manager;
-    UIAlertView *_invalidPhoneNumberAlert;
-    UIAlertView *_changeDevicePasscodeAlert;
-    UIAlertView *_disableRecoveryConfirmationAlert;
     int _securityCodeType;
     NSString *_securityCode;
 }
@@ -40,7 +37,6 @@
 - (void).cxx_destruct;
 - (void)_setShowsDoneButton:(BOOL)arg1;
 - (void)_showSecurityCodeChangeSheetOnSpecifier:(id)arg1;
-- (void)alertView:(id)arg1 clickedButtonAtIndex:(long long)arg2;
 - (void)cancelPressed;
 - (void)changeSecurityCode:(id)arg1;
 - (void)disableRecovery;

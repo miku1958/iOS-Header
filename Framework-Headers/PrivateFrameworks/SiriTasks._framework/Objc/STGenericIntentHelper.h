@@ -23,7 +23,6 @@
 
 + (id)sharedHelper;
 - (void).cxx_destruct;
-- (id)_intentSlotNameForIntentMap:(id)arg1;
 - (BOOL)doIntent:(id)arg1;
 - (void)finishedLaunching:(BOOL)arg1;
 - (void)forIntent:(id)arg1 registerHandler:(CDUnknownBlockType)arg2;

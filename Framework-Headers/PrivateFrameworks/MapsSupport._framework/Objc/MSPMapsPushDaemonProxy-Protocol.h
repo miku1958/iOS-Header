@@ -4,20 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class GEOAnnouncement, NSString, NSURL;
+#import <MapsSupport/MSPRemoteModelAccess-Protocol.h>
 
-@protocol MSPMapsPushDaemonProxy
+@class GEOAnnouncement, NSData, NSString, NSURL, RTVehicleEvent;
+
+@protocol MSPMapsPushDaemonProxy <MSPRemoteModelAccess>
 - (void)checkin;
 - (void)clearBulletinWithRecordID:(NSString *)arg1;
 - (void)clearCurrentAnnouncement;
+- (void)clearParkedCarBulletin;
 - (void)clearTrafficConditionsBulletin;
+- (void)clearTrafficIncidentBulletinWithAlertID:(NSData *)arg1;
+- (void)clearTrafficIncidentsBulletin;
+- (void)clearTransitAlightAlertBulletin;
 - (void)fetchCurrentAnnouncement:(void (^)(GEOAnnouncement *))arg1;
 - (void)fetchDevicePushToken:(void (^)(NSData *))arg1;
 - (void)fetchProblemStatus;
+- (void)fetchUserRoutingPreferencesWithCompletion:(void (^)(MSPUserRoutingPreferences *, NSError *))arg1;
+- (void)problemStatusResponseWithNotificationID:(NSString *)arg1 completion:(void (^)(GEORPProblemStatusResponse *))arg2;
 - (void)registerForTopic;
+- (void)removeProblemStatusResponseWithNotificationID:(NSString *)arg1;
 - (void)resetShownAnnouncements;
+- (void)setShouldUseDevAPNS:(BOOL)arg1;
+- (void)shouldUseDevAPNS:(void (^)(BOOL))arg1;
+- (void)showParkedCarBulletinForEvent:(RTVehicleEvent *)arg1;
+- (void)showParkedCarBulletinForEvent:(RTVehicleEvent *)arg1 afterDelay:(double)arg2;
+- (void)showParkedCarReplacementBulletinForEvent:(RTVehicleEvent *)arg1 replacingEvent:(RTVehicleEvent *)arg2;
+- (void)showParkedCarReplacementBulletinForEvent:(RTVehicleEvent *)arg1 replacingEvent:(RTVehicleEvent *)arg2 afterDelay:(double)arg3;
 - (void)showTrafficConditionsBulletinWithTitle:(NSString *)arg1 message:(NSString *)arg2 actionURL:(NSURL *)arg3;
+- (void)showTrafficIncidentAlertWithID:(NSData *)arg1 type:(unsigned long long)arg2 title:(NSString *)arg3 description:(NSString *)arg4;
+- (void)showTransitAlightAlertWithTitle:(NSString *)arg1 message:(NSString *)arg2;
 - (void)simulateAnnouncement:(GEOAnnouncement *)arg1;
 - (void)simulateProblemResolution;
+- (oneway void)updateMapsModelBackupAttributesIfNeeded;
 @end
 

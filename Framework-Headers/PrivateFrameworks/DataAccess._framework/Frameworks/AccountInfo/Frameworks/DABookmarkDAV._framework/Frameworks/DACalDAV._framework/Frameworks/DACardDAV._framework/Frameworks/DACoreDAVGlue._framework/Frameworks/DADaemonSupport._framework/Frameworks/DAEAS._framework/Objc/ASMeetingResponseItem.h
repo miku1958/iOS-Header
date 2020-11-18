@@ -10,6 +10,7 @@
 
 @interface ASMeetingResponseItem : NSObject
 {
+    BOOL _responseRequested;
     int _meetingResponse;
     NSString *_deliveryItemFolderId;
     NSString *_deliveryItemServerId;
@@ -18,6 +19,8 @@
     NSString *_calEventServerId;
     long long _status;
     NSString *_comment;
+    NSDate *_proposedStartTime;
+    NSDate *_proposedEndTime;
     id _context;
 }
 
@@ -29,11 +32,14 @@
 @property (strong, nonatomic) ASEventUID *eventUID; // @synthesize eventUID=_eventUID;
 @property (strong, nonatomic) NSDate *instanceDate; // @synthesize instanceDate=_instanceDate;
 @property (nonatomic) int meetingResponse; // @synthesize meetingResponse=_meetingResponse;
+@property (strong, nonatomic) NSDate *proposedEndTime; // @synthesize proposedEndTime=_proposedEndTime;
+@property (strong, nonatomic) NSDate *proposedStartTime; // @synthesize proposedStartTime=_proposedStartTime;
+@property (nonatomic) BOOL responseRequested; // @synthesize responseRequested=_responseRequested;
 @property (nonatomic) long long status; // @synthesize status=_status;
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithDeliveryItemFolderId:(id)arg1 deliveryItemServerId:(id)arg2 instanceDate:(id)arg3 meetingResponse:(int)arg4 eventUID:(id)arg5 responseComment:(id)arg6;
+- (id)initWithDeliveryItemFolderId:(id)arg1 deliveryItemServerId:(id)arg2 instanceDate:(id)arg3 meetingResponse:(int)arg4 eventUID:(id)arg5 responseComment:(id)arg6 responseRequested:(BOOL)arg7 proposedStartTime:(id)arg8 proposedEndTime:(id)arg9;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <CoreThemeDefinition/TDElementAttributes-Protocol.h>
 
-@class TDThemeDirection, TDThemeDrawingLayer, TDThemeElement, TDThemeGraphicsFeatureSetClass, TDThemeIdiom, TDThemePart, TDThemePresentationState, TDThemeSize, TDThemeState, TDThemeUISizeClass, TDThemeValue;
+@class TDThemeDeploymentTarget, TDThemeDirection, TDThemeDisplayGamut, TDThemeDrawingLayer, TDThemeElement, TDThemeGraphicsFeatureSetClass, TDThemeIdiom, TDThemePart, TDThemePresentationState, TDThemeSize, TDThemeState, TDThemeUISizeClass, TDThemeValue;
 
 @interface TDRenditionKeySpec : NSManagedObject <TDElementAttributes>
 {
@@ -18,12 +18,13 @@
     unsigned int _subtype;
     unsigned int _nameIdentifier;
     unsigned int _memoryClass;
-    struct _renditionkeytoken _stackScratchKey[16];
+    struct _renditionkeytoken _stackScratchKey[17];
     struct _renditionkeytoken *_scratchKey;
 }
 
 @property (strong, nonatomic) TDThemeDirection *direction; // @dynamic direction;
 @property (strong, nonatomic) TDThemeElement *element; // @dynamic element;
+@property (strong, nonatomic) TDThemeDisplayGamut *gamut; // @dynamic gamut;
 @property (strong, nonatomic) TDThemeGraphicsFeatureSetClass *graphicsFeatureSetClass; // @dynamic graphicsFeatureSetClass;
 @property (strong, nonatomic) TDThemeIdiom *idiom; // @dynamic idiom;
 @property (strong, nonatomic) TDThemeDrawingLayer *layer; // @dynamic layer;
@@ -35,6 +36,7 @@
 @property (strong, nonatomic) TDThemeUISizeClass *sizeClassHorizontal; // @dynamic sizeClassHorizontal;
 @property (strong, nonatomic) TDThemeUISizeClass *sizeClassVertical; // @dynamic sizeClassVertical;
 @property (strong, nonatomic) TDThemeState *state; // @dynamic state;
+@property (strong, nonatomic) TDThemeDeploymentTarget *target; // @dynamic target;
 @property (strong, nonatomic) TDThemeValue *value; // @dynamic value;
 
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;

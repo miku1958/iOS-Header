@@ -20,7 +20,7 @@
 @property (readonly) id value; // @synthesize value=_value;
 
 + (id)itemWithValue:(id)arg1 label:(id)arg2 identifier:(id)arg3;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithValue:(id)arg1 label:(id)arg2 identifier:(id)arg3;
 

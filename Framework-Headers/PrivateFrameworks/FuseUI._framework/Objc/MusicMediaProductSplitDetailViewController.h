@@ -8,19 +8,17 @@
 
 #import <FuseUI/MusicClientContextConsuming-Protocol.h>
 #import <FuseUI/MusicEntityEditableVerticalLockupViewDelegate-Protocol.h>
-#import <FuseUI/MusicEntityPlaybackStatusControllerObserving-Protocol.h>
 #import <FuseUI/MusicMediaDetailSplitViewController-Protocol.h>
 #import <FuseUI/MusicVerticalScrollingContainerViewControllerDelegate-Protocol.h>
 
-@class MPAVController, MusicClientContext, MusicEntityEditableVerticalLockupView, MusicEntityPlaybackStatusController, MusicEntityValueContext, MusicMediaDetailTintInformation, MusicVerticalScrollingContainerViewController, NSString, UIImage;
+@class MPAVController, MusicClientContext, MusicEntityEditableVerticalLockupView, MusicEntityValueContext, MusicMediaDetailTintInformation, MusicVerticalScrollingContainerViewController, NSString, UIImage;
 @protocol MusicEntityProviding, MusicMediaProductSplitDetailViewControllerDelegate;
 
-@interface MusicMediaProductSplitDetailViewController : UIViewController <MusicEntityPlaybackStatusControllerObserving, MusicEntityEditableVerticalLockupViewDelegate, MusicVerticalScrollingContainerViewControllerDelegate, MusicClientContextConsuming, MusicMediaDetailSplitViewController>
+@interface MusicMediaProductSplitDetailViewController : UIViewController <MusicEntityEditableVerticalLockupViewDelegate, MusicVerticalScrollingContainerViewControllerDelegate, MusicClientContextConsuming, MusicMediaDetailSplitViewController>
 {
     id<MusicEntityProviding> _containerEntityProvider;
     MusicEntityValueContext *_containerEntityValueContext;
     MusicClientContext *_clientContext;
-    MusicEntityPlaybackStatusController *_playbackStatusController;
     MPAVController *_player;
     MusicEntityEditableVerticalLockupView *_verticalLockupView;
     MusicVerticalScrollingContainerViewController *_verticalScrollingContainerViewController;
@@ -59,7 +57,6 @@
 - (void)editableVerticalLockupView:(id)arg1 didSelectCameraButton:(id)arg2;
 - (id)initWithContainerEntityProvider:(id)arg1 clientContext:(id)arg2;
 - (void)music_viewInheritedLayoutInsetsDidChange;
-- (void)playbackStatusControllerPlaybackStatusDidChange:(id)arg1;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)verticalLockupView:(id)arg1 didSelectPlayButtonAction:(unsigned long long)arg2;
 - (void)verticalScrollingContainerViewController:(id)arg1 willEndDraggingWithVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;

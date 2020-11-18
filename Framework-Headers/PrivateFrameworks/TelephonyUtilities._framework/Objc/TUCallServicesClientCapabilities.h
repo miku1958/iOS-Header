@@ -8,15 +8,21 @@
 
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
 
+@protocol TUCallServicesClientCapabilitiesActions;
+
 @interface TUCallServicesClientCapabilities : NSObject <NSSecureCoding>
 {
+    BOOL _wantsCallDisconnectionOnInvalidation;
     BOOL _wantsFrequencyChangeNotifications;
+    id<TUCallServicesClientCapabilitiesActions> _delegate;
 }
 
+@property (weak, nonatomic) id<TUCallServicesClientCapabilitiesActions> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) BOOL wantsCallDisconnectionOnInvalidation; // @synthesize wantsCallDisconnectionOnInvalidation=_wantsCallDisconnectionOnInvalidation;
 @property (nonatomic) BOOL wantsFrequencyChangeNotifications; // @synthesize wantsFrequencyChangeNotifications=_wantsFrequencyChangeNotifications;
 
-+ (id)sharedInstance;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)save;

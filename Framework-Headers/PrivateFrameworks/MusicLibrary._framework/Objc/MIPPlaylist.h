@@ -12,10 +12,17 @@
 
 @interface MIPPlaylist : PBCodable <NSCopying>
 {
+    long long _creationDateTime;
+    long long _lastPlayedDateTime;
+    long long _modificationDateTime;
     long long _storeId;
     NSMutableArray *_childIdentifiers;
     NSString *_cloudGlobalId;
+    NSString *_cloudVersionHash;
     int _distinguishedKind;
+    NSString *_externalVendorDisplayName;
+    NSString *_externalVendorIdentifier;
+    NSString *_externalVendorTag;
     MIPMultiverseIdentifier *_geniusSeedTrackIdentifier;
     NSMutableArray *_items;
     NSString *_name;
@@ -24,16 +31,23 @@
     int _sortType;
     int _type;
     BOOL _cloudIsCuratorPlaylist;
+    BOOL _cloudIsSharingDisabled;
     BOOL _cloudIsSubscribed;
+    BOOL _externalVendorPlaylist;
     BOOL _hidden;
     BOOL _reversedSorting;
     struct {
+        unsigned int creationDateTime:1;
+        unsigned int lastPlayedDateTime:1;
+        unsigned int modificationDateTime:1;
         unsigned int storeId:1;
         unsigned int distinguishedKind:1;
         unsigned int sortType:1;
         unsigned int type:1;
         unsigned int cloudIsCuratorPlaylist:1;
+        unsigned int cloudIsSharingDisabled:1;
         unsigned int cloudIsSubscribed:1;
+        unsigned int externalVendorPlaylist:1;
         unsigned int hidden:1;
         unsigned int reversedSorting:1;
     } _has;
@@ -42,15 +56,31 @@
 @property (strong, nonatomic) NSMutableArray *childIdentifiers; // @synthesize childIdentifiers=_childIdentifiers;
 @property (strong, nonatomic) NSString *cloudGlobalId; // @synthesize cloudGlobalId=_cloudGlobalId;
 @property (nonatomic) BOOL cloudIsCuratorPlaylist; // @synthesize cloudIsCuratorPlaylist=_cloudIsCuratorPlaylist;
+@property (nonatomic) BOOL cloudIsSharingDisabled; // @synthesize cloudIsSharingDisabled=_cloudIsSharingDisabled;
 @property (nonatomic) BOOL cloudIsSubscribed; // @synthesize cloudIsSubscribed=_cloudIsSubscribed;
+@property (strong, nonatomic) NSString *cloudVersionHash; // @synthesize cloudVersionHash=_cloudVersionHash;
+@property (nonatomic) long long creationDateTime; // @synthesize creationDateTime=_creationDateTime;
 @property (nonatomic) int distinguishedKind; // @synthesize distinguishedKind=_distinguishedKind;
+@property (strong, nonatomic) NSString *externalVendorDisplayName; // @synthesize externalVendorDisplayName=_externalVendorDisplayName;
+@property (strong, nonatomic) NSString *externalVendorIdentifier; // @synthesize externalVendorIdentifier=_externalVendorIdentifier;
+@property (nonatomic) BOOL externalVendorPlaylist; // @synthesize externalVendorPlaylist=_externalVendorPlaylist;
+@property (strong, nonatomic) NSString *externalVendorTag; // @synthesize externalVendorTag=_externalVendorTag;
 @property (strong, nonatomic) MIPMultiverseIdentifier *geniusSeedTrackIdentifier; // @synthesize geniusSeedTrackIdentifier=_geniusSeedTrackIdentifier;
 @property (readonly, nonatomic) BOOL hasCloudGlobalId;
 @property (nonatomic) BOOL hasCloudIsCuratorPlaylist;
+@property (nonatomic) BOOL hasCloudIsSharingDisabled;
 @property (nonatomic) BOOL hasCloudIsSubscribed;
+@property (readonly, nonatomic) BOOL hasCloudVersionHash;
+@property (nonatomic) BOOL hasCreationDateTime;
 @property (nonatomic) BOOL hasDistinguishedKind;
+@property (readonly, nonatomic) BOOL hasExternalVendorDisplayName;
+@property (readonly, nonatomic) BOOL hasExternalVendorIdentifier;
+@property (nonatomic) BOOL hasExternalVendorPlaylist;
+@property (readonly, nonatomic) BOOL hasExternalVendorTag;
 @property (readonly, nonatomic) BOOL hasGeniusSeedTrackIdentifier;
 @property (nonatomic) BOOL hasHidden;
+@property (nonatomic) BOOL hasLastPlayedDateTime;
+@property (nonatomic) BOOL hasModificationDateTime;
 @property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasParentIdentifier;
 @property (nonatomic) BOOL hasReversedSorting;
@@ -60,6 +90,8 @@
 @property (nonatomic) BOOL hasType;
 @property (nonatomic) BOOL hidden; // @synthesize hidden=_hidden;
 @property (strong, nonatomic) NSMutableArray *items; // @synthesize items=_items;
+@property (nonatomic) long long lastPlayedDateTime; // @synthesize lastPlayedDateTime=_lastPlayedDateTime;
+@property (nonatomic) long long modificationDateTime; // @synthesize modificationDateTime=_modificationDateTime;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) MIPMultiverseIdentifier *parentIdentifier; // @synthesize parentIdentifier=_parentIdentifier;
 @property (nonatomic) BOOL reversedSorting; // @synthesize reversedSorting=_reversedSorting;
@@ -68,7 +100,11 @@
 @property (nonatomic) long long storeId; // @synthesize storeId=_storeId;
 @property (nonatomic) int type; // @synthesize type=_type;
 
++ (Class)childIdentifiersType;
++ (Class)itemsType;
 - (void).cxx_destruct;
+- (int)StringAsSortType:(id)arg1;
+- (int)StringAsType:(id)arg1;
 - (void)addChildIdentifiers:(id)arg1;
 - (void)addItems:(id)arg1;
 - (id)childIdentifiersAtIndex:(unsigned long long)arg1;
@@ -85,6 +121,8 @@
 - (unsigned long long)itemsCount;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)sortTypeAsString:(int)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

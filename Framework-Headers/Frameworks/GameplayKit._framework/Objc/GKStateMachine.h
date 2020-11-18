@@ -18,6 +18,8 @@
 
 + (id)stateMachineWithStates:(id)arg1;
 - (void).cxx_destruct;
+- (id)_dotStringInstanceData;
+- (id)_instanceData;
 - (BOOL)canEnterState:(Class)arg1;
 - (BOOL)enterState:(Class)arg1;
 - (void)forceEnterState:(Class)arg1;

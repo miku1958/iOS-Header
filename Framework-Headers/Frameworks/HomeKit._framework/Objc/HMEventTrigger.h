@@ -12,6 +12,7 @@
 
 @interface HMEventTrigger : HMTrigger <NSSecureCoding>
 {
+    NSArray *_recurrences;
     NSPredicate *_predicate;
     HMThreadSafeMutableArrayCollection *_currentEvents;
 }
@@ -19,7 +20,9 @@
 @property (strong, nonatomic) HMThreadSafeMutableArrayCollection *currentEvents; // @synthesize currentEvents=_currentEvents;
 @property (readonly, copy, nonatomic) NSArray *events;
 @property (copy, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
+@property (readonly, copy, nonatomic) NSArray *recurrences; // @synthesize recurrences=_recurrences;
 
++ (BOOL)__validateRecurrences:(id)arg1;
 + (id)_predicateForEvaluatingTriggerWithCharacteristic:(id)arg1 value:(id)arg2 valueFormatString:(id)arg3;
 + (id)_rewritePredicateForClient:(id)arg1 home:(id)arg2;
 + (id)_rewritePredicateForDaemon:(id)arg1 characteristicIsInvalid:(BOOL *)arg2;
@@ -37,6 +40,7 @@
 - (void)_addEvent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_configure:(id)arg1 uuid:(id)arg2 messageDispatcher:(id)arg3 clientQueue:(id)arg4 delegateCaller:(id)arg5;
 - (void)_handleEventTriggerConditionNotification:(id)arg1;
+- (void)_handleEventTriggerRecurrencesNotification:(id)arg1;
 - (BOOL)_isPredicateValid;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_registerNotificationHandlers;
@@ -47,18 +51,24 @@
 - (id)_serializeEvent:(id)arg1;
 - (id)_serializeForAdd;
 - (BOOL)_updateCharacterisiticReferenceInNewEvent:(id)arg1;
+- (void)_updateCharacteristicReference;
 - (void)_updatePredicate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_updateRecurrences:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateRegion:(id)arg1 forLocationEvent:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_updateTriggerValue:(id)arg1 forCharacteristicEvent:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addEvent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleEventAddedNotification:(id)arg1;
 - (void)handleEventUpdatedNotification:(id)arg1;
 - (void)handleEventsRemovedNotification:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 events:(id)arg2 predicate:(id)arg3;
+- (id)initWithName:(id)arg1 events:(id)arg2 recurrences:(id)arg3 predicate:(id)arg4;
 - (void)removeEvent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setRecurrences:(id)arg1;
 - (void)updatePredicate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateRecurrences:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

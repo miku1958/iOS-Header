@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AXSimpleRuntimeManager;
 
@@ -21,6 +21,7 @@
 + (void)initializeAccessibilityMonitor;
 + (id)sharedManager;
 + (void)updateAccessibilitySettings;
+- (void).cxx_destruct;
 - (int)_accessibilityApplicationForContextId:(unsigned int)arg1;
 - (id)_accessibilityAssistiveTouchApplication;
 - (struct CGPoint)_accessibilityConvertHostedViewPoint:(struct CGPoint)arg1 fromContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
@@ -55,7 +56,7 @@
 - (struct CGRect)accessibilityConvertHostedViewFrame:(struct CGRect)arg1 fromContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
 - (struct CGRect)accessibilityConvertHostedViewFrame:(struct CGRect)arg1 toContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
 - (struct CGPoint)accessibilityConvertHostedViewPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
-- (BOOL)accessibilityPerformAction:(int)arg1 withValue:(id)arg2;
+- (BOOL)accessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (void)accessibilitySetValue:(id)arg1 forAttribute:(int)arg2;
 - (id)allJobLabels;
 - (void)disableAccessibility;

@@ -15,13 +15,10 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) BOOL changed;
-@property (nonatomic) BOOL fullsizeImageDataDidChange; // @synthesize fullsizeImageDataDidChange=_fullsizeImageDataDidChange;
-@property (nonatomic) BOOL imageDidChange; // @synthesize imageDidChange=_imageDidChange;
-@property (nonatomic) BOOL imageIsFullQualityDidChange; // @synthesize imageIsFullQualityDidChange=_imageIsFullQualityDidChange;
+@property (nonatomic, setter=_setFullsizeImageDataDidChange:) BOOL fullsizeImageDataDidChange; // @synthesize fullsizeImageDataDidChange=_fullsizeImageDataDidChange;
+@property (nonatomic, setter=_setImageDidChange:) BOOL imageDidChange; // @synthesize imageDidChange=_imageDidChange;
+@property (nonatomic, setter=_setImageIsFullQualityDidChange:) BOOL imageIsFullQualityDidChange; // @synthesize imageIsFullQualityDidChange=_imageIsFullQualityDidChange;
 
-- (void)_setFullsizeImageDataDidChange:(BOOL)arg1;
-- (void)_setImageDidChange:(BOOL)arg1;
-- (void)_setImageIsFullQualityDidChange:(BOOL)arg1;
 
 @end
 

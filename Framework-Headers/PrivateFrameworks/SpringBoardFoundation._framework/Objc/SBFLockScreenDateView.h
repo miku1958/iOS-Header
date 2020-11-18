@@ -6,56 +6,64 @@
 
 #import <UIKit/UIView.h>
 
-@class NSDate, NSString, UIColor, UILabel, _UILegibilityLabel, _UILegibilitySettings;
+#import <SpringBoardFoundation/SBFScreenFadeReplicatable-Protocol.h>
 
-@interface SBFLockScreenDateView : UIView
+@class NSDate, NSHashTable, NSString, SBFLockScreenDateSubtitleDateView, SBFLockScreenDateSubtitleView, SBUILegibilityLabel, UIColor, _UILegibilitySettings;
+
+@interface SBFLockScreenDateView : UIView <SBFScreenFadeReplicatable>
 {
-    UILabel *_timeLabel;
-    UILabel *_dateLabel;
-    BOOL _useLegibilityLabels;
-    _UILegibilityLabel *_legibilityTimeLabel;
-    _UILegibilityLabel *_legibilityDateLabel;
+    SBUILegibilityLabel *_timeLabel;
     double _timeAlpha;
-    double _dateAlpha;
-    NSString *_customSubtitleText;
-    UIColor *_customSubtitleColor;
+    double _subtitleAlpha;
+    SBFLockScreenDateSubtitleDateView *_dateSubtitleView;
+    SBFLockScreenDateSubtitleView *_customSubtitleView;
+    BOOL _useDashBoardValues;
+    NSHashTable *_replicatedViews;
     NSDate *_date;
+    UIColor *_overrideTextColor;
     _UILegibilitySettings *_legibilitySettings;
-    double _timeStrength;
-    double _dateStrength;
-    UIColor *_textColor;
-    double _dateAlphaPercentage;
+    double _alignmentPercent;
+    double _timeLegibilityStrength;
+    double _subtitleLegibilityStrength;
 }
 
+@property (nonatomic) double alignmentPercent; // @synthesize alignmentPercent=_alignmentPercent;
+@property (readonly, nonatomic) double contentAlpha;
+@property (strong, nonatomic) SBFLockScreenDateSubtitleView *customSubtitleView; // @synthesize customSubtitleView=_customSubtitleView;
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
-@property (nonatomic) double dateAlphaPercentage; // @synthesize dateAlphaPercentage=_dateAlphaPercentage;
-@property (nonatomic, getter=isDateHidden) BOOL dateHidden;
-@property (nonatomic) double dateStrength; // @synthesize dateStrength=_dateStrength;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
-@property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
-@property (nonatomic) double timeStrength; // @synthesize timeStrength=_timeStrength;
+@property (readonly, nonatomic) double subtitleBaselineOffsetFromOrigin;
+@property (nonatomic, getter=isSubtitleHidden) BOOL subtitleHidden;
+@property (nonatomic) double subtitleLegibilityStrength; // @synthesize subtitleLegibilityStrength=_subtitleLegibilityStrength;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_overrideTextColor;
+@property (readonly, nonatomic) double timeBaselineOffsetFromOrigin;
+@property (nonatomic) double timeLegibilityStrength; // @synthesize timeLegibilityStrength=_timeLegibilityStrength;
 
 + (double)defaultHeight;
 - (void).cxx_destruct;
-- (void)_addLabels;
-- (id)_dateColor;
-- (id)_dateFont;
-- (id)_dateText;
-- (double)_effectiveDateAlpha;
-- (void)_layoutDateLabel;
-- (void)_layoutTimeLabel;
-- (void)_setDateAlpha:(double)arg1;
+- (void)_enumerateReplicateViews:(CDUnknownBlockType)arg1;
+- (void)_layoutDateView;
+- (void)_layoutLegacyDateLabel;
+- (void)_layoutLegacyTimeLabel;
+- (void)_layoutSubtitleViews;
+- (id)_legacyTimeFont;
+- (void)_setSubtitleAlpha:(double)arg1;
+- (struct CGRect)_subtitleViewFrameForView:(id)arg1 alignmentPercent:(double)arg2;
 - (id)_timeFont;
+- (id)_timeLabel;
+- (struct CGRect)_timeLabelFrameForAlignmentPercent:(double)arg1;
 - (void)_updateLabelAlpha;
 - (void)_updateLabels;
-- (void)_updateLegibilityLabelsWithUpdatedDateString:(BOOL)arg1;
-- (void)_useLegibilityLabels:(BOOL)arg1;
-- (double)dateBaselineOffsetFromOrigin;
+- (id)initForDashBoard:(BOOL)arg1 withFrame:(struct CGRect)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)setContentAlpha:(double)arg1 withDateVisible:(BOOL)arg2;
-- (void)setCustomSubtitleText:(id)arg1 withColor:(id)arg2;
-- (double)timeBaselineOffsetFromOrigin;
+- (struct CGRect)presentationExtentForAlignmentPercent:(double)arg1;
+- (id)replicate;
+- (void)setContentAlpha:(double)arg1 withSubtitleVisible:(BOOL)arg2;
 - (void)updateFormat;
 
 @end

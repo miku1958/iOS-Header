@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, NSData;
+#import <AudioToolbox/_AURemoteParameterSynchronization-Protocol.h>
 
-@protocol AUAudioUnitHostProtocol
-- (void)parameterChanged:(unsigned long long)arg1 value:(float)arg2;
+@class NSArray;
+
+@protocol AUAudioUnitHostProtocol <_AURemoteParameterSynchronization>
 - (void)propertiesChanged:(NSArray *)arg1;
-- (void)recordParameterEvents:(NSData *)arg1;
 @end
 

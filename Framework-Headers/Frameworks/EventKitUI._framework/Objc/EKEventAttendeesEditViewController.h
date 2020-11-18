@@ -15,8 +15,10 @@ __attribute__((visibility("hidden")))
     EKEvent *_event;
     BOOL _cancelTapped;
     BOOL _disableShowingButtons;
+    BOOL _appendOnly;
 }
 
+@property (nonatomic) BOOL appendOnly; // @synthesize appendOnly=_appendOnly;
 @property (copy, nonatomic) NSArray *attendees;
 @property (nonatomic) BOOL disableShowingButtons; // @synthesize disableShowingButtons=_disableShowingButtons;
 

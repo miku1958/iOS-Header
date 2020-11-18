@@ -8,7 +8,6 @@
 
 @class GEONavigationListener, GEONavigationRouteSummary;
 
-__attribute__((visibility("hidden")))
 @interface RTNavigationManager : RTNotifier
 {
     BOOL _monitorRouteSummary;

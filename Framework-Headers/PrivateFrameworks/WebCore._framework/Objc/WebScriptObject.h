@@ -33,7 +33,6 @@
 - (id)callWebScriptMethod:(id)arg1 withArguments:(id)arg2;
 - (void)dealloc;
 - (id)evaluateWebScript:(id)arg1;
-- (void)finalize;
 - (BOOL)hasWebScriptKey:(id)arg1;
 - (id)objectAtIndex:(unsigned int)arg1;
 - (oneway void)release;

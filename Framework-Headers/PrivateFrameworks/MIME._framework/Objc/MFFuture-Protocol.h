@@ -7,6 +7,7 @@
 #import <MIME/NSObject-Protocol.h>
 
 @class NSDate;
+@protocol MFFuture, MFScheduler;
 
 @protocol MFFuture <NSObject>
 
@@ -16,8 +17,15 @@
 - (void)addFailureBlock:(void (^)(NSError *))arg1;
 - (void)addSuccessBlock:(void (^)(id))arg1;
 - (BOOL)cancel;
+- (id<MFFuture>)map:(id (^)(id))arg1;
+- (void)onScheduler:(id<MFScheduler>)arg1 addFailureBlock:(void (^)(NSError *))arg2;
+- (void)onScheduler:(id<MFScheduler>)arg1 addSuccessBlock:(void (^)(id))arg2;
+- (id<MFFuture>)onScheduler:(id<MFScheduler>)arg1 recover:(id<MFFuture> (^)(NSError *))arg2;
+- (id<MFFuture>)onScheduler:(id<MFScheduler>)arg1 then:(id<MFFuture> (^)(id))arg2;
+- (id<MFFuture>)recover:(id<MFFuture> (^)(NSError *))arg1;
 - (id)result:(id *)arg1;
 - (id)resultBeforeDate:(NSDate *)arg1 error:(id *)arg2;
 - (id)resultWithTimeout:(double)arg1 error:(id *)arg2;
+- (id<MFFuture>)then:(id<MFFuture> (^)(id))arg1;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray;
 
@@ -14,12 +14,12 @@
 }
 
 + (id)defaultPaymentSetupFields;
-+ (id)fakePaymentSetupFields;
-- (void)dealloc;
++ (id)defaultPaymentSetupProvisioningFields;
++ (id)fakePaymentSetupProvisioningFields;
+- (void).cxx_destruct;
 - (BOOL)hasIncompletePaymentSetupFields;
 - (id)incompletePaymentSetupFields;
 - (id)initWithPaymentSetupFields:(id)arg1;
-- (double)minimumRequiredWidthForFieldIdentifiers:(id)arg1 withFont:(id)arg2;
 - (unsigned long long)numberOfPaymentSetupFields;
 - (id)paymentSetupFieldAtIndex:(unsigned long long)arg1;
 - (id)paymentSetupFieldIdentifiers;

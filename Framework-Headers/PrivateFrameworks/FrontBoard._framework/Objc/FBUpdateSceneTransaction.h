@@ -9,45 +9,41 @@
 #import <FrontBoard/FBSceneManagerObserver-Protocol.h>
 #import <FrontBoard/FBSynchronizedTransaction-Protocol.h>
 
-@class FBProcess, FBSDisplay, FBSSceneClientSettings, FBSSceneSettings, FBSSceneTransitionContext, FBScene, FBSceneManager, FBWaitForSceneDestructionTransaction, NSString;
-@protocol FBSceneClientProvider, FBSynchronizedTransactionDelegate;
+@class FBSDisplay, FBSSceneDefinition, FBSSceneParameters, FBSSceneSettings, FBSSceneSpecification, FBSSceneTransitionContext, FBScene, FBSceneManager, FBWaitForSceneDestructionTransaction, NSString;
+@protocol FBSynchronizedTransactionDelegate;
 
 @interface FBUpdateSceneTransaction : FBTransaction <FBSceneManagerObserver, FBSynchronizedTransaction>
 {
     FBSceneManager *_sceneManager;
     NSString *_sceneID;
-    FBSDisplay *_display;
-    FBSSceneSettings *_newSceneSettings;
+    FBSSceneDefinition *_definition;
+    FBSSceneParameters *_parameters;
     FBSSceneTransitionContext *_transitionContext;
-    FBSSceneClientSettings *_clientSettings;
-    id<FBSceneClientProvider> _clientProvider;
-    FBProcess *_process;
-    CDUnknownBlockType _clientProviderProvider;
-    CDUnknownBlockType _clientSettingsProvider;
-    FBWaitForSceneDestructionTransaction *_destuctionTransaction;
+    FBWaitForSceneDestructionTransaction *_destructionTransaction;
     id<FBSynchronizedTransactionDelegate> _synchronizationDelegate;
     unsigned long long _transactionID;
     BOOL _waitsForSceneCommit;
     BOOL _readyToCommit;
     BOOL _didCommit;
     BOOL _destroyed;
-    id _context;
 }
 
-@property (strong, nonatomic) id context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL destroyed;
-@property (readonly, strong, nonatomic) FBSDisplay *display;
+@property (readonly, nonatomic) BOOL destroyed; // @synthesize destroyed=_destroyed;
+@property (readonly, strong, nonatomic) FBSDisplay *display; // @dynamic display;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) FBSSceneSettings *newSettings;
-@property (readonly, strong, nonatomic) FBScene *scene;
-@property (readonly, strong, nonatomic) NSString *sceneIdentifier;
+@property (readonly, strong, nonatomic) FBSSceneSettings *newSettings; // @dynamic newSettings;
+@property (readonly, strong, nonatomic) FBScene *scene; // @dynamic scene;
+@property (readonly, strong, nonatomic) NSString *sceneIdentifier; // @synthesize sceneIdentifier=_sceneID;
+@property (readonly, strong, nonatomic) FBSSceneSettings *settings; // @dynamic settings;
+@property (readonly, strong, nonatomic) FBSSceneSpecification *specification; // @dynamic specification;
 @property (readonly) Class superclass;
-@property (nonatomic) id<FBSynchronizedTransactionDelegate> synchronizationDelegate; // @synthesize synchronizationDelegate=_synchronizationDelegate;
-@property (readonly, strong, nonatomic) FBSSceneTransitionContext *transitionContext;
-@property (nonatomic) BOOL waitsForSceneCommit;
+@property (weak, nonatomic) id<FBSynchronizedTransactionDelegate> synchronizationDelegate; // @synthesize synchronizationDelegate=_synchronizationDelegate;
+@property (readonly, strong, nonatomic) FBSSceneTransitionContext *transitionContext; // @synthesize transitionContext=_transitionContext;
+@property (nonatomic) BOOL waitsForSceneCommit; // @synthesize waitsForSceneCommit=_waitsForSceneCommit;
 
+- (void).cxx_destruct;
 - (void)_begin;
 - (BOOL)_canBeInterrupted;
 - (void)_childTransactionDidComplete:(id)arg1;
@@ -58,13 +54,14 @@
 - (void)_didComplete;
 - (void)_didInterruptWithReason:(id)arg1;
 - (void)_enumerateUpdateSceneObserversWithBlock:(CDUnknownBlockType)arg1;
-- (id)_initWithSceneIdentifier:(id)arg1 display:(id)arg2 newSettings:(id)arg3 transitionContext:(id)arg4 clientProvider:(id)arg5 initialClientSettings:(id)arg6;
+- (id)_initWithSceneDefinition:(id)arg1 parameters:(id)arg2 transitionContext:(id)arg3;
 - (void)_performCommit;
 - (void)_updateScene;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
+- (id)initWithSceneDefinition:(id)arg1 parameters:(id)arg2 transitionContext:(id)arg3;
 - (id)initWithSceneIdentifier:(id)arg1 process:(id)arg2 display:(id)arg3 newSettings:(id)arg4 transitionContext:(id)arg5 clientProviderProvider:(CDUnknownBlockType)arg6 initialClientSettingsProvider:(CDUnknownBlockType)arg7;
-- (id)initWithSceneToCreate:(id)arg1 display:(id)arg2 newSettings:(id)arg3 transitionContext:(id)arg4 clientProvider:(id)arg5 initialClientSettings:(id)arg6;
+- (id)initWithSceneIdentifier:(id)arg1 process:(id)arg2 parameters:(id)arg3 transitionContext:(id)arg4;
 - (id)initWithSceneToUpdate:(id)arg1 newSettings:(id)arg2 transitionContext:(id)arg3;
 - (BOOL)isReadyForSynchronizedCommit;
 - (void)performSynchronizedCommit;

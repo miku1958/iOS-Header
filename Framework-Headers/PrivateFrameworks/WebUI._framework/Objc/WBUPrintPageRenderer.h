@@ -41,10 +41,8 @@
 
 - (void).cxx_destruct;
 - (void)associateWithPrintController:(id)arg1;
-- (void)drawContentForPageAtIndex:(long long)arg1 inRect:(struct CGRect)arg2;
 - (void)drawFooterForPageAtIndex:(long long)arg1 inRect:(struct CGRect)arg2;
 - (id)init;
-- (long long)numberOfPages;
 - (id)printControllerWithPageTitle:(id)arg1;
 - (id)printInfoWithPageTitle:(id)arg1;
 - (void)printInteractionControllerDidFinishJob:(id)arg1;

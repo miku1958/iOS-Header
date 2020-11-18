@@ -30,7 +30,6 @@
 - (id)allItems;
 - (BOOL)containsURL:(id)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)itemForURL:(id)arg1;
 - (BOOL)loadFromURL:(id)arg1 error:(id *)arg2;

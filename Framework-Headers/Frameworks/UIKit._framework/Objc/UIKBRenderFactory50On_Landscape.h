@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 - (double)deleteKeyFontSize;
 - (double)keyCornerRadius;
 - (double)keyplaneSwitchKeyFontSize;
+- (id)messagesWriteboardKeyImageName;
 - (double)returnKeyFontSize;
 - (double)spaceKeyFontSize;
 

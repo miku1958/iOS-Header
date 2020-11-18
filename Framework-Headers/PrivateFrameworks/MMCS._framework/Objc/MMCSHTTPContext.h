@@ -13,7 +13,7 @@
 #import <MMCS/NSURLSessionTaskDelegate-Protocol.h>
 #import <MMCS/NSURLSessionTaskDelegatePrivate-Protocol.h>
 
-@class NSDictionary, NSInputStream, NSOutputStream, NSString, NSURLSession, NSURLSessionDataTask;
+@class MMCSBoundedQueue, NSDictionary, NSInputStream, NSOutputStream, NSString, NSURLSession, NSURLSessionDataTask;
 
 __attribute__((visibility("hidden")))
 @interface MMCSHTTPContext : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate, NSURLSessionTaskDelegatePrivate, NSURLSessionDataDelegatePrivate, NSStreamDelegate>
@@ -28,9 +28,15 @@ __attribute__((visibility("hidden")))
     NSInputStream *_inputStream;
     NSOutputStream *_outputStream;
     NSURLSessionDataTask *_dataTask;
+    MMCSBoundedQueue *_boundedQueue;
     NSDictionary *_timingData;
+    struct os_activity_s *_activityMarker;
+    struct __CFError *_customCertificatePinningError;
 }
 
+@property (nonatomic) struct os_activity_s *activityMarker; // @synthesize activityMarker=_activityMarker;
+@property (strong, nonatomic) MMCSBoundedQueue *boundedQueue; // @synthesize boundedQueue=_boundedQueue;
+@property (nonatomic) struct __CFError *customCertificatePinningError; // @synthesize customCertificatePinningError=_customCertificatePinningError;
 @property (strong, nonatomic) NSURLSessionDataTask *dataTask; // @synthesize dataTask=_dataTask;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -47,6 +53,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSDictionary *timingData; // @synthesize timingData=_timingData;
 @property (strong, nonatomic) NSURLSession *urlSession; // @synthesize urlSession=_urlSession;
 
++ (unsigned char)handleTrustPolicy:(struct __SecTrust *)arg1 policy:(struct __SecPolicy *)arg2 requestType:(struct __CFString *)arg3 host:(struct __CFString *)arg4 error:(struct __CFError **)arg5;
 + (id)sharedMMCSHTTPSession;
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 _willRetryBackgroundDataTask:(id)arg2 withError:(id)arg3;
@@ -54,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 _willSendRequestForEstablishedConnection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
+- (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didSendBodyData:(long long)arg3 totalBytesSent:(long long)arg4 totalBytesExpectedToSend:(long long)arg5;
 - (void)URLSession:(id)arg1 task:(id)arg2 needNewBodyStream:(CDUnknownBlockType)arg3;
 - (void)cleanupRequest;
@@ -61,7 +69,7 @@ __attribute__((visibility("hidden")))
 - (long long)countOfRequestBodyBytesSent;
 - (BOOL)createNewRequestBodyInputStream;
 - (void)dealloc;
-- (id)initWithContext:(struct mmcs_http_context *)arg1 options:(const struct mmcs_http_context_options *)arg2;
+- (id)initWithContext:(struct mmcs_http_context *)arg1 options:(const struct mmcs_http_context_options *)arg2 activityMarker:(struct os_activity_s *)arg3;
 - (void)invalidate;
 - (void)invalidateStreamPair;
 - (BOOL)requestBodyCanAcceptData;

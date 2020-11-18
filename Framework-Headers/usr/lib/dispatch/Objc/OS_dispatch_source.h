@@ -6,12 +6,25 @@
 
 #import <dispatch/OS_dispatch_object.h>
 
+#import <dispatch/OS_dispatch_object-Protocol.h>
 #import <dispatch/OS_dispatch_source-Protocol.h>
+#import <dispatch/OS_dispatch_source_data_add-Protocol.h>
+#import <dispatch/OS_dispatch_source_data_or-Protocol.h>
+#import <dispatch/OS_dispatch_source_interval-Protocol.h>
+#import <dispatch/OS_dispatch_source_mach_recv-Protocol.h>
+#import <dispatch/OS_dispatch_source_mach_send-Protocol.h>
+#import <dispatch/OS_dispatch_source_memorypressure-Protocol.h>
+#import <dispatch/OS_dispatch_source_proc-Protocol.h>
+#import <dispatch/OS_dispatch_source_read-Protocol.h>
+#import <dispatch/OS_dispatch_source_signal-Protocol.h>
+#import <dispatch/OS_dispatch_source_timer-Protocol.h>
+#import <dispatch/OS_dispatch_source_timer_with_aggregate-Protocol.h>
+#import <dispatch/OS_dispatch_source_vnode-Protocol.h>
+#import <dispatch/OS_dispatch_source_write-Protocol.h>
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface OS_dispatch_source : OS_dispatch_object <OS_dispatch_source>
+@interface OS_dispatch_source : OS_dispatch_object <OS_dispatch_object, OS_dispatch_source_interval, OS_dispatch_source_timer_with_aggregate, OS_dispatch_source_write, OS_dispatch_source_vnode, OS_dispatch_source_timer, OS_dispatch_source_signal, OS_dispatch_source_read, OS_dispatch_source_proc, OS_dispatch_source_memorypressure, OS_dispatch_source_mach_recv, OS_dispatch_source_mach_send, OS_dispatch_source_data_or, OS_dispatch_source_data_add, OS_dispatch_source>
 {
 }
 
@@ -22,6 +35,7 @@ __attribute__((visibility("hidden")))
 
 + (void)load;
 - (void)_xref_dispose;
+- (id)init;
 
 @end
 

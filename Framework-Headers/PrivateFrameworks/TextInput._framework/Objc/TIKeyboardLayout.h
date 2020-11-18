@@ -10,6 +10,7 @@
 
 @interface TIKeyboardLayout : NSObject <NSSecureCoding>
 {
+    BOOL _usesTwoHands;
     unsigned long long _count;
     struct _ShortRect *_frames;
     unsigned long long _framesCapacity;
@@ -17,6 +18,8 @@
     unsigned long long _stringsSize;
     unsigned long long _stringsCapacity;
 }
+
+@property (nonatomic) BOOL usesTwoHands; // @synthesize usesTwoHands=_usesTwoHands;
 
 + (BOOL)supportsSecureCoding;
 - (void)addKeyWithString:(id)arg1 frame:(struct CGRect)arg2;

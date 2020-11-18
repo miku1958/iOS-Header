@@ -10,23 +10,30 @@
 {
 }
 
++ (id)downgradeDatabaseAtLocation:(id)arg1 toVersion:(long long)arg2;
 + (id)getDestinationModel:(long long)arg1;
 + (id)getDestinationModelForVersion:(long long)arg1;
-+ (long long)getNextVersionToMigrateToBaseVersion:(long long)arg1;
++ (long long)getNextVersionToDowngradeTo:(long long)arg1;
++ (long long)getNextVersionToDowngradeTo:(long long)arg1 withSourceVersion:(long long)arg2;
 + (long long)getNextVersionToMigrateToCurrentVersion:(long long)arg1;
 + (id)getObjectIdsForAllRecords:(id)arg1;
 + (id)getObjectIdsForDuplicateRecordsWithUniqueIds:(id)arg1 andHavingObjectIds:(id)arg2;
 + (id)getUniqueIdsForAllRecords:(id)arg1;
-+ (id)migrateDatabaseToBaseVersion:(id)arg1;
 - (BOOL)bootUpDBAtLocation:(id)arg1 isEncrypted:(BOOL)arg2;
 - (BOOL)bootUpDBAtLocationWithRecovery:(id)arg1 isEncrypted:(BOOL)arg2;
+- (BOOL)createCallDBProperties;
+- (id)createMOCForDBAtLocation:(id)arg1 dbVersion:(long long)arg2 isEncrypted:(BOOL)arg3;
 - (void)createPermanent;
 - (void)createTemporary;
 - (id)getUUIDsOfNMostRecentRecords:(unsigned long long)arg1 fromManagedObjectContext:(id)arg2;
 - (BOOL)handleBootUpFailure:(id)arg1;
 - (BOOL)handleDatabaseMigration:(id)arg1 isEncrypted:(BOOL)arg2 isRetry:(BOOL)arg3;
+- (void)modifyCallRecordForDBAtLocation:(id)arg1 dbVersion:(long long)arg2 isEncrypted:(BOOL)arg3 modifyCallRecord:(CDUnknownBlockType)arg4;
 - (void)moveCallsFromTempDatabase;
 - (id)permDBLocation:(unsigned char *)arg1;
+- (void)populateHandleType:(id)arg1 dbVersion:(long long)arg2 isEncrypted:(BOOL)arg3;
+- (void)populateServiceProviderAndCallCategory:(id)arg1 dbVersion:(long long)arg2 isEncrypted:(BOOL)arg3;
+- (void)prepareDatabaseForNextStepInMigration:(id)arg1 dbVersion:(long long)arg2 isEncrypted:(BOOL)arg3;
 - (void)prepareForMigrationDBAtURL:(id)arg1 withModelAtURL:(id)arg2 andIsEncrypted:(BOOL)arg3;
 - (BOOL)removeDuplicatesFromDBAtLocation:(id)arg1 dbVersion:(long long)arg2 isEncrypted:(BOOL)arg3;
 - (id)tempDBLocation:(unsigned char *)arg1;

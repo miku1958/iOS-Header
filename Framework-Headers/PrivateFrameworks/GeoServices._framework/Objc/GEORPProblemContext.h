@@ -8,16 +8,16 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOABExperimentResponse, GEOPDPlace, GEOPlace, GEORPCurrentEnvironmentManifestURLs, GEORPMapLocation, GEORPPlaceInfo, GEORPTransitLineTileInfo, NSMutableArray, NSString;
+@class GEOABAssignmentResponse, GEOPDPlace, GEOPlace, GEORPCurrentEnvironmentManifestURLs, GEORPMapLocation, GEORPPlaceInfo, GEORPTransitLineTileInfo, NSMutableArray, NSString;
 
 @interface GEORPProblemContext : PBCodable <NSCopying>
 {
-    CDStruct_612aec5b _sessionId;
+    struct GEOSessionID _sessionId;
     double _creationDate;
     unsigned long long _originatingAuxiliaryControlIndex;
     NSMutableArray *_autocompleteSuggestionLists;
     NSMutableArray *_auxiliaryControls;
-    GEOABExperimentResponse *_currentAbAssignmentResponse;
+    GEOABAssignmentResponse *_currentAbAssignmentResponse;
     GEORPCurrentEnvironmentManifestURLs *_currentEnvironmentManifestUrls;
     int _deviceGmtOffset;
     NSMutableArray *_directionsRequests;
@@ -45,7 +45,7 @@
 @property (strong, nonatomic) NSMutableArray *autocompleteSuggestionLists; // @synthesize autocompleteSuggestionLists=_autocompleteSuggestionLists;
 @property (strong, nonatomic) NSMutableArray *auxiliaryControls; // @synthesize auxiliaryControls=_auxiliaryControls;
 @property (nonatomic) double creationDate; // @synthesize creationDate=_creationDate;
-@property (strong, nonatomic) GEOABExperimentResponse *currentAbAssignmentResponse; // @synthesize currentAbAssignmentResponse=_currentAbAssignmentResponse;
+@property (strong, nonatomic) GEOABAssignmentResponse *currentAbAssignmentResponse; // @synthesize currentAbAssignmentResponse=_currentAbAssignmentResponse;
 @property (strong, nonatomic) GEORPCurrentEnvironmentManifestURLs *currentEnvironmentManifestUrls; // @synthesize currentEnvironmentManifestUrls=_currentEnvironmentManifestUrls;
 @property (nonatomic) int deviceGmtOffset; // @synthesize deviceGmtOffset=_deviceGmtOffset;
 @property (strong, nonatomic) NSMutableArray *directionsRequests; // @synthesize directionsRequests=_directionsRequests;
@@ -74,11 +74,18 @@
 @property (nonatomic) int pinType; // @synthesize pinType=_pinType;
 @property (strong, nonatomic) GEOPDPlace *place; // @synthesize place=_place;
 @property (strong, nonatomic) GEORPPlaceInfo *placeInfo; // @synthesize placeInfo=_placeInfo;
-@property (nonatomic) CDStruct_612aec5b sessionId; // @synthesize sessionId=_sessionId;
+@property (nonatomic) struct GEOSessionID sessionId; // @synthesize sessionId=_sessionId;
 @property (strong, nonatomic) NSString *tileStateLog; // @synthesize tileStateLog=_tileStateLog;
 @property (strong, nonatomic) GEORPTransitLineTileInfo *transitLineTileInfo; // @synthesize transitLineTileInfo=_transitLineTileInfo;
 @property (strong, nonatomic) NSMutableArray *visibleTileSets; // @synthesize visibleTileSets=_visibleTileSets;
 
++ (Class)autocompleteSuggestionListType;
++ (Class)auxiliaryControlType;
++ (Class)directionsRequestType;
++ (Class)directionsResponseType;
++ (Class)directionsWaypointPlaceInfoType;
++ (Class)visibleTileSetType;
+- (int)StringAsPinType:(id)arg1;
 - (void)addAutocompleteSuggestionList:(id)arg1;
 - (void)addAuxiliaryControl:(id)arg1;
 - (void)addDirectionsRequest:(id)arg1;
@@ -109,6 +116,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)pinTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)visibleTileSetAtIndex:(unsigned long long)arg1;
 - (unsigned long long)visibleTileSetsCount;

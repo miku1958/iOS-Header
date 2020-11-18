@@ -10,12 +10,13 @@
 #import <FrontBoard/FBApplicationProcessObserver-Protocol.h>
 #import <FrontBoard/FBUIProcessManagerInternal-Protocol.h>
 
-@class BKSProcessAssertion, FBApplicationProcess, FBApplicationProcessWatchdogPolicy, NSHashTable, NSMapTable, NSMutableDictionary, NSString;
+@class BKSProcessAssertion, FBApplicationLibrary, FBApplicationProcess, FBApplicationProcessWatchdogPolicy, NSHashTable, NSMapTable, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface FBProcessManager : NSObject <FBApplicationProcessDelegate, FBApplicationProcessObserver, FBUIProcessManagerInternal>
 {
     NSObject<OS_dispatch_queue> *_queue;
+    FBApplicationLibrary *_appLibrary;
     NSObject<OS_dispatch_queue> *_callOutQueue;
     NSHashTable *_observers;
     NSMapTable *_processesByPID;
@@ -45,11 +46,8 @@
 - (void)_queue_evaluateForegroundEventRouting;
 - (void)_queue_notifyObserversUsingBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_removeProcess:(id)arg1 withBundleID:(id)arg2 pid:(int)arg3;
-- (id)_serviceClientAddedWithAuditToken:(CDStruct_6ad76789 *)arg1;
-- (id)_serviceClientAddedWithConnection:(id)arg1;
-- (id)_serviceClientAddedWithPID:(int)arg1 isUIApp:(BOOL)arg2 isExtension:(BOOL)arg3 bundleID:(id)arg4;
+- (id)_serviceClientAddedWithProcessHandle:(id)arg1;
 - (void)_setPreferredForegroundApplicationProcess:(id)arg1;
-- (id)_systemServiceClientAdded:(id)arg1;
 - (void)_updateWorkspaceLockedState;
 - (void)addObserver:(id)arg1;
 - (id)allApplicationProcesses;
@@ -69,7 +67,7 @@
 - (id)processForPID:(int)arg1;
 - (id)processesForBundleIdentifier:(id)arg1;
 - (void)removeObserver:(id)arg1;
-- (double)watchdogIntervalForProcess:(id)arg1 eventContext:(CDStruct_1b4a36b4)arg2;
+- (id)watchdogPolicyForProcess:(id)arg1 eventContext:(id)arg2;
 - (id)workspaceForSceneClientWithIdentity:(id)arg1;
 
 @end

@@ -4,22 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <BulletinBoard/BBUniquableObject-Protocol.h>
 #import <BulletinBoard/NSCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
-@class BBAccessoryIcon, BBAction, BBAttachments, BBColor, BBContent, BBSectionIcon, BBSound, NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSTimeZone;
+@class BBAccessoryIcon, BBAction, BBAttachmentMetadata, BBColor, BBContent, BBSectionIcon, BBSound, NSArray, NSDate, NSDictionary, NSHashTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, NSTimeZone;
 
-@interface BBBulletin : NSObject <BBUniquableObject, NSCopying, NSSecureCoding>
+@interface BBBulletin : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _hasEventDate;
     BOOL _dateIsAllDay;
     BOOL _clearable;
+    BOOL _turnsOnDisplay;
     BOOL _wantsFullscreenPresentation;
+    BOOL _ignoresQuietMode;
     BOOL _expiresOnPublisherDeath;
-    BOOL _showsMessagePreview;
+    BOOL _hasPrivateContent;
     BOOL _usesExternalSync;
     BOOL _loading;
     NSString *_sectionID;
@@ -27,12 +28,17 @@
     NSString *_publisherRecordID;
     NSString *_publisherBulletinID;
     NSString *_dismissalID;
+    NSString *_categoryID;
+    NSString *_threadID;
+    NSArray *_peopleIDs;
     long long _addressBookRecordID;
     long long _sectionSubtype;
+    NSArray *_intentIDs;
     unsigned long long _counter;
     BBContent *_content;
     BBContent *_modalAlertContent;
     BBContent *_starkBannerContent;
+    BBSectionIcon *_icon;
     NSDate *_date;
     NSDate *_endDate;
     NSDate *_recencyDate;
@@ -40,7 +46,8 @@
     NSTimeZone *_timeZone;
     BBAccessoryIcon *_accessoryIconMask;
     BBSound *_sound;
-    BBAttachments *_attachments;
+    BBAttachmentMetadata *_primaryAttachment;
+    NSArray *_additionalAttachments;
     NSString *_unlockActionLabelOverride;
     NSMutableDictionary *_actions;
     NSMutableDictionary *_supplementaryActionsByLayout;
@@ -54,7 +61,7 @@
     NSDate *_publicationDate;
     NSString *_bulletinVersionID;
     NSMutableArray *_lifeAssertions;
-    NSMutableSet *_observers;
+    NSHashTable *_observers;
     NSString *_parentSectionID;
     NSString *_universalSectionID;
     unsigned long long realertCount_deprecated;
@@ -64,6 +71,7 @@
 @property (strong, nonatomic) BBAccessoryIcon *accessoryIconMask; // @synthesize accessoryIconMask=_accessoryIconMask;
 @property (copy, nonatomic) BBAction *acknowledgeAction;
 @property (copy, nonatomic) NSMutableDictionary *actions; // @synthesize actions=_actions;
+@property (copy, nonatomic) NSArray *additionalAttachments; // @synthesize additionalAttachments=_additionalAttachments;
 @property (nonatomic) long long addressBookRecordID; // @synthesize addressBookRecordID=_addressBookRecordID;
 @property (readonly, nonatomic) NSSet *alertSuppressionAppIDs;
 @property (copy, nonatomic) NSSet *alertSuppressionAppIDs_deprecated; // @synthesize alertSuppressionAppIDs_deprecated;
@@ -72,13 +80,13 @@
 @property (readonly, nonatomic) BOOL allowsAutomaticRemovalFromLockScreen;
 @property (copy, nonatomic) BBAction *alternateAction;
 @property (readonly, nonatomic) NSString *alternateActionLabel;
-@property (strong, nonatomic) BBAttachments *attachments; // @synthesize attachments=_attachments;
 @property (readonly, nonatomic) NSString *bannerAccessoryRemoteServiceBundleIdentifier;
 @property (readonly, nonatomic) NSString *bannerAccessoryRemoteViewControllerClassName;
 @property (copy, nonatomic) NSString *bulletinID; // @synthesize bulletinID=_bulletinID;
 @property (copy, nonatomic) NSString *bulletinVersionID; // @synthesize bulletinVersionID=_bulletinVersionID;
 @property (copy, nonatomic) NSArray *buttons; // @synthesize buttons=_buttons;
 @property (readonly, nonatomic) BOOL canBeSilencedByMenuButtonPress;
+@property (copy, nonatomic) NSString *categoryID; // @synthesize categoryID=_categoryID;
 @property (nonatomic) BOOL clearable; // @synthesize clearable=_clearable;
 @property (readonly, nonatomic) BOOL coalescesWhenLocked;
 @property (strong, nonatomic) BBContent *content; // @synthesize content=_content;
@@ -87,9 +95,7 @@
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (nonatomic) long long dateFormatStyle; // @synthesize dateFormatStyle=_dateFormatStyle;
 @property (nonatomic) BOOL dateIsAllDay; // @synthesize dateIsAllDay=_dateIsAllDay;
-@property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) BBAction *defaultAction;
-@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *dismissalID; // @synthesize dismissalID=_dismissalID;
 @property (strong, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property (strong, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
@@ -99,10 +105,12 @@
 @property (readonly, nonatomic) NSString *fullAlternateActionLabel;
 @property (readonly, nonatomic) NSString *fullUnlockActionLabel;
 @property (nonatomic) BOOL hasEventDate; // @synthesize hasEventDate=_hasEventDate;
-@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hasPrivateContent; // @synthesize hasPrivateContent=_hasPrivateContent;
 @property (readonly, nonatomic) long long iPodOutAlertType;
-@property (readonly, nonatomic) BOOL ignoresQuietMode;
+@property (strong, nonatomic) BBSectionIcon *icon; // @synthesize icon=_icon;
+@property (nonatomic) BOOL ignoresQuietMode; // @synthesize ignoresQuietMode=_ignoresQuietMode;
 @property (readonly, nonatomic) BOOL inertWhenLocked;
+@property (copy, nonatomic) NSArray *intentIDs; // @synthesize intentIDs=_intentIDs;
 @property (strong, nonatomic) NSDate *lastInterruptDate; // @synthesize lastInterruptDate=_lastInterruptDate;
 @property (strong, nonatomic) NSMutableArray *lifeAssertions; // @synthesize lifeAssertions=_lifeAssertions;
 @property (nonatomic, getter=isLoading) BOOL loading; // @synthesize loading=_loading;
@@ -110,20 +118,26 @@
 @property (readonly, nonatomic) unsigned long long messageNumberOfLines;
 @property (readonly, nonatomic) NSString *missedBannerDescriptionFormat;
 @property (strong, nonatomic) BBContent *modalAlertContent; // @synthesize modalAlertContent=_modalAlertContent;
-@property (strong, nonatomic) NSMutableSet *observers; // @synthesize observers=_observers;
+@property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (readonly, nonatomic) BOOL orderSectionUsingRecencyDate;
 @property (copy, nonatomic) NSString *parentSectionID; // @synthesize parentSectionID=_parentSectionID;
+@property (copy, nonatomic) NSArray *peopleIDs; // @synthesize peopleIDs=_peopleIDs;
 @property (readonly, nonatomic) BOOL playsSoundForModify;
+@property (readonly, nonatomic) BOOL preemptsPresentedAlert;
 @property (readonly, nonatomic) BOOL preservesUnlockActionCase;
 @property (readonly, nonatomic) BOOL preventLock;
-@property (readonly, nonatomic) long long primaryAttachmentType;
+@property (copy, nonatomic) BBAttachmentMetadata *primaryAttachment; // @synthesize primaryAttachment=_primaryAttachment;
+@property (readonly, nonatomic) BOOL prioritizeAtTopOfLockScreen;
+@property (readonly, nonatomic) unsigned long long privacySettings;
 @property (strong, nonatomic) NSDate *publicationDate; // @synthesize publicationDate=_publicationDate;
 @property (copy, nonatomic) NSString *publisherBulletinID; // @synthesize publisherBulletinID=_publisherBulletinID;
+@property (readonly, copy, nonatomic) NSString *publisherMatchID;
 @property (copy, nonatomic) BBAction *raiseAction;
 @property (readonly, nonatomic) unsigned long long realertCount;
 @property (nonatomic) unsigned long long realertCount_deprecated; // @synthesize realertCount_deprecated;
 @property (strong, nonatomic) NSDate *recencyDate; // @synthesize recencyDate=_recencyDate;
 @property (copy, nonatomic) NSString *recordID; // @synthesize recordID=_publisherRecordID;
+@property (readonly, nonatomic) BOOL revealsAdditionalContentOnPresentation;
 @property (readonly, nonatomic) NSString *secondaryContentRemoteServiceBundleIdentifier;
 @property (readonly, nonatomic) NSString *secondaryContentRemoteViewControllerClassName;
 @property (copy, nonatomic) NSString *section;
@@ -134,7 +148,6 @@
 @property (nonatomic) long long sectionSubtype; // @synthesize sectionSubtype=_sectionSubtype;
 @property (readonly, nonatomic) BOOL showsContactPhoto;
 @property (readonly, nonatomic) BOOL showsDateInFloatingLockScreenAlert;
-@property (nonatomic) BOOL showsMessagePreview; // @synthesize showsMessagePreview=_showsMessagePreview;
 @property (readonly, nonatomic) BOOL showsSubtitle;
 @property (readonly, nonatomic) BOOL showsUnreadIndicatorForNoticesFeed;
 @property (copy, nonatomic) BBAction *snoozeAction;
@@ -143,15 +156,16 @@
 @property (copy, nonatomic) NSSet *subsectionIDs; // @synthesize subsectionIDs=_subsectionIDs;
 @property (copy, nonatomic) NSString *subtitle;
 @property (readonly, nonatomic) unsigned long long subtypePriority;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableDictionary *supplementaryActionsByLayout; // @synthesize supplementaryActionsByLayout=_supplementaryActionsByLayout;
 @property (readonly, nonatomic) BOOL suppressesAlertsWhenAppIsActive;
 @property (readonly, nonatomic) BOOL suppressesMessageForPrivacy;
 @property (readonly, nonatomic) BOOL suppressesTitle;
+@property (copy, nonatomic) NSString *threadID; // @synthesize threadID=_threadID;
 @property (strong, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property (readonly, nonatomic) BBColor *tintColor;
 @property (copy, nonatomic) NSString *title;
 @property (readonly, nonatomic) NSString *topic;
+@property (nonatomic) BOOL turnsOnDisplay; // @synthesize turnsOnDisplay=_turnsOnDisplay;
 @property (copy, nonatomic) NSString *universalSectionID; // @synthesize universalSectionID=_universalSectionID;
 @property (readonly, nonatomic) NSString *unlockActionLabel;
 @property (copy, nonatomic) NSString *unlockActionLabelOverride; // @synthesize unlockActionLabelOverride=_unlockActionLabelOverride;
@@ -160,14 +174,12 @@
 @property (readonly, nonatomic) BOOL visuallyIndicatesWhenDateIsInFuture;
 @property (nonatomic) BOOL wantsFullscreenPresentation; // @synthesize wantsFullscreenPresentation=_wantsFullscreenPresentation;
 
-+ (id)addBulletinToCache:(id)arg1;
 + (id)bulletinReferenceDateFromDate:(id)arg1;
 + (id)bulletinWithBulletin:(id)arg1;
-+ (id)copyCachedBulletinWithBulletinID:(id)arg1;
-+ (void)removeBulletinFromCache:(id)arg1;
 + (BOOL)supportsSecureCoding;
 + (id)validSortDescriptorsFromSortDescriptors:(id)arg1;
 + (void)vetSortDescriptor:(id)arg1;
+- (void).cxx_destruct;
 - (id)_actionKeyForType:(long long)arg1;
 - (id)_actionWithID:(id)arg1 fromActions:(id)arg2;
 - (id)_allActions;
@@ -181,25 +193,23 @@
 - (id)actionWithIdentifier:(id)arg1;
 - (void)addLifeAssertion:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (id)attachmentsCreatingIfNecessary:(BOOL)arg1;
-- (id)composedAttachmentImage;
-- (id)composedAttachmentImageForKey:(id)arg1;
-- (id)composedAttachmentImageForKey:(id)arg1 withObserver:(id)arg2;
-- (struct CGSize)composedAttachmentImageSize;
-- (struct CGSize)composedAttachmentImageSizeForKey:(id)arg1;
-- (struct CGSize)composedAttachmentImageSizeForKey:(id)arg1 withObserver:(id)arg2;
+- (id)awakeAfterUsingCoder:(id)arg1;
 - (struct CGSize)composedAttachmentImageSizeWithObserver:(id)arg1;
 - (id)composedAttachmentImageWithObserver:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)description;
 - (id)dismissAction;
 - (void)encodeWithCoder:(id)arg1;
 - (id)firstValidObserver;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (unsigned long long)numberOfAdditionalAttachments;
 - (unsigned long long)numberOfAdditionalAttachmentsOfType:(long long)arg1;
-- (id)publisherMatchID;
+- (long long)primaryAttachmentType;
+- (id)replacementObjectForCoder:(id)arg1;
 - (id)responseForAcknowledgeAction;
 - (id)responseForAction:(id)arg1;
 - (id)responseForButtonActionAtIndex:(unsigned long long)arg1;
@@ -210,11 +220,14 @@
 - (CDUnknownBlockType)responseSendBlock;
 - (id)safeDescription;
 - (void)setDismissAction:(id)arg1;
+- (void)setShowsMessagePreview:(BOOL)arg1;
+- (void)setSilenceAction:(id)arg1;
 - (id)shortDescription;
+- (BOOL)showsMessagePreview;
+- (id)silenceAction;
 - (id)supplementaryActions;
 - (id)supplementaryActionsForLayout:(long long)arg1;
 - (id)syncHash;
-- (id)uniqueIdentifier;
 
 @end
 

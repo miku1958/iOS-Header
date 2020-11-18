@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) BOOL hasEnvironmentReleaseName;
 @property (strong, nonatomic) NSMutableArray *urls; // @synthesize urls=_urls;
 
++ (Class)urlType;
 - (void)addUrl:(id)arg1;
 - (void)clearUrls;
 - (void)copyTo:(id)arg1;

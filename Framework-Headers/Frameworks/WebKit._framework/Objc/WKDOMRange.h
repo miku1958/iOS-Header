@@ -28,6 +28,7 @@
 - (void)collapse:(BOOL)arg1;
 - (void)dealloc;
 - (id)initWithDocument:(id)arg1;
+- (id)rangeByExpandingToWordBoundaryByCharacters:(unsigned long long)arg1 inDirection:(long long)arg2;
 - (void)selectNode:(id)arg1;
 - (void)selectNodeContents:(id)arg1;
 - (void)setEnd:(id)arg1 offset:(int)arg2;

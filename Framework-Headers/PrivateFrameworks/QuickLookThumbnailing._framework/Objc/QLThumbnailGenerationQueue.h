@@ -16,7 +16,7 @@
 
 + (id)sharedInstance;
 - (void)dealloc;
-- (void)enqueueThumbnailGenerationIfNeededForDocumentAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)enqueueThumbnailGenerationIfNeededForDocumentAtURL:(id)arg1 atBackgroundPriority:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)noteThumbnailGenerationQueuedExternallyForDocumentAtURL:(id)arg1;
 

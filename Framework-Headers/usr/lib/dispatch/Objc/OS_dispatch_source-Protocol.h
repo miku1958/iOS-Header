@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <dispatch/OS_dispatch_object-Protocol.h>
+#import <dispatch/NSObject-Protocol.h>
 
-@protocol OS_dispatch_source <OS_dispatch_object>
+@protocol OS_dispatch_source <NSObject>
 @end
 

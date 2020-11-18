@@ -8,69 +8,63 @@
 
 #import <HealthDaemon/HDHealthDaemon-Protocol.h>
 
-@class HDAppSubscriptionManager, HDAuthorizationManager, HDBackgroundTaskScheduler, HDContentProtectionManager, HDCurrentActivitySummaryHelper, HDDataProvenanceManager, HDDatabasePruningManager, HDDeviceManager, HDHealthServiceManager, HDNanoSyncManager, HDPluginManager, HDProcessStateManager, HDRoutineGateway, HDServiceConnectionManager, HDSourceManager, HDUnitPreferencesManager, HDUserCharacteristicsManager, HDWorkoutManager, NSString, NSURL;
-@protocol HDHealthDataCollectionManager, HDHealthDataManager, HDHealthDatabase, HDHealthMetadataManager, HDSyncEngine, HDViewOnWakeService, OS_dispatch_queue;
+@class HDAchievementAssetManager, HDAppSubscriptionManager, HDAuthorizationManager, HDBackgroundTaskScheduler, HDContentProtectionManager, HDCurrentActivitySummaryHelper, HDDataProvenanceManager, HDDeviceManager, HDFitnessFriendsManager, HDHealthServiceManager, HDMockPrimaryProfile, HDNanoSyncManager, HDPluginManager, HDPrimaryProfile, HDProcessStateManager, HDRoutineGateway, HDServiceConnectionManager, HDUserCharacteristicsManager, NSString, NSURL, _HKBehavior;
+@protocol HDHealthDatabase, HDNanoAlertSuppressionService, HDSyncEngine, HDViewOnWakeService, OS_dispatch_queue;
 
 @interface HDMockDaemon : NSObject <HDHealthDaemon>
 {
+    HDAchievementAssetManager *achievementAssetManager;
     HDAuthorizationManager *authorizationManager;
-    HDDatabasePruningManager *databasePruningManager;
     HDDataProvenanceManager *dataProvenanceManager;
     HDNanoSyncManager *nanoSyncManager;
     HDProcessStateManager *processStateManager;
     HDServiceConnectionManager *serviceConnectionManager;
     HDAppSubscriptionManager *subscriptionManager;
-    HDUnitPreferencesManager *unitPreferencesManager;
     id<HDViewOnWakeService> viewOnWakeService;
-    HDWorkoutManager *workoutManager;
     HDRoutineGateway *routineGateway;
+    HDMockPrimaryProfile *mockPrimaryProfile;
+    HDPrimaryProfile *primaryProfile;
     HDCurrentActivitySummaryHelper *currentActivitySummaryHelper;
-    id<HDHealthDatabase> _healthDatabase;
-    id<HDHealthDataCollectionManager> _healthDataCollectionManager;
-    id<HDHealthDataManager> _healthDataManager;
+    HDFitnessFriendsManager *fitnessFriendsManager;
+    id<HDNanoAlertSuppressionService> alertSuppressionService;
     id<HDSyncEngine> _syncEngine;
-    HDSourceManager *_healthSourceManager;
-    HDDeviceManager *_healthDeviceManager;
-    id<HDHealthMetadataManager> _healthMetadataManager;
     HDHealthServiceManager *_healthServiceManager;
-    HDUserCharacteristicsManager *_userCharacteristicsManager;
     HDContentProtectionManager *_contentProtectionManager;
     HDBackgroundTaskScheduler *_backgroundTaskScheduler;
     HDPluginManager *_pluginManager;
 }
 
+@property (strong, nonatomic) HDAchievementAssetManager *achievementAssetManager; // @synthesize achievementAssetManager;
+@property (strong, nonatomic) id<HDNanoAlertSuppressionService> alertSuppressionService; // @synthesize alertSuppressionService;
 @property (readonly, nonatomic) HDAuthorizationManager *authorizationManager; // @synthesize authorizationManager;
 @property (strong) HDBackgroundTaskScheduler *backgroundTaskScheduler; // @synthesize backgroundTaskScheduler=_backgroundTaskScheduler;
+@property (readonly, nonatomic) _HKBehavior *behavior;
 @property (strong) HDContentProtectionManager *contentProtectionManager; // @synthesize contentProtectionManager=_contentProtectionManager;
 @property (strong, nonatomic) HDCurrentActivitySummaryHelper *currentActivitySummaryHelper; // @synthesize currentActivitySummaryHelper;
 @property (readonly) HDDataProvenanceManager *dataProvenanceManager; // @synthesize dataProvenanceManager;
-@property (readonly, nonatomic) HDDatabasePruningManager *databasePruningManager; // @synthesize databasePruningManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) HDFitnessFriendsManager *fitnessFriendsManager; // @synthesize fitnessFriendsManager;
 @property (readonly) unsigned long long hash;
-@property (strong) id<HDHealthDataCollectionManager> healthDataCollectionManager; // @synthesize healthDataCollectionManager=_healthDataCollectionManager;
-@property (strong) id<HDHealthDataManager> healthDataManager; // @synthesize healthDataManager=_healthDataManager;
-@property (strong) id<HDHealthDatabase> healthDatabase; // @synthesize healthDatabase=_healthDatabase;
-@property (strong) HDDeviceManager *healthDeviceManager; // @synthesize healthDeviceManager=_healthDeviceManager;
-@property (strong) id<HDHealthMetadataManager> healthMetadataManager; // @synthesize healthMetadataManager=_healthMetadataManager;
+@property (readonly) id<HDHealthDatabase> healthDatabase;
+@property (readonly) HDDeviceManager *healthDeviceManager;
 @property (strong) HDHealthServiceManager *healthServiceManager; // @synthesize healthServiceManager=_healthServiceManager;
-@property (strong) HDSourceManager *healthSourceManager; // @synthesize healthSourceManager=_healthSourceManager;
 @property (readonly) NSString *homeDirectoryPath;
 @property (readonly) NSURL *homeDirectoryURL;
 @property (readonly) BOOL isAppleWatch;
 @property (readonly) NSObject<OS_dispatch_queue> *mainQueue;
+@property (readonly, nonatomic) HDMockPrimaryProfile *mockPrimaryProfile; // @synthesize mockPrimaryProfile;
 @property (readonly, nonatomic) HDNanoSyncManager *nanoSyncManager; // @synthesize nanoSyncManager;
 @property (strong) HDPluginManager *pluginManager; // @synthesize pluginManager=_pluginManager;
+@property (readonly, nonatomic) HDPrimaryProfile *primaryProfile; // @synthesize primaryProfile;
 @property (readonly) HDProcessStateManager *processStateManager; // @synthesize processStateManager;
 @property (readonly, nonatomic) HDRoutineGateway *routineGateway; // @synthesize routineGateway;
 @property (readonly, nonatomic) HDServiceConnectionManager *serviceConnectionManager; // @synthesize serviceConnectionManager;
 @property (readonly, nonatomic) HDAppSubscriptionManager *subscriptionManager; // @synthesize subscriptionManager;
 @property (readonly) Class superclass;
 @property (strong) id<HDSyncEngine> syncEngine; // @synthesize syncEngine=_syncEngine;
-@property (readonly, nonatomic) HDUnitPreferencesManager *unitPreferencesManager; // @synthesize unitPreferencesManager;
-@property (strong) HDUserCharacteristicsManager *userCharacteristicsManager; // @synthesize userCharacteristicsManager=_userCharacteristicsManager;
+@property (readonly) HDUserCharacteristicsManager *userCharacteristicsManager;
 @property (strong, nonatomic) id<HDViewOnWakeService> viewOnWakeService; // @synthesize viewOnWakeService;
-@property (strong, nonatomic) HDWorkoutManager *workoutManager; // @synthesize workoutManager;
 
 - (void).cxx_destruct;
 - (void)beginTransaction:(id)arg1;
@@ -78,7 +72,10 @@
 - (void)endTransaction:(id)arg1;
 - (id)firstPartyWorkoutSnapshot;
 - (BOOL)hasAnyActiveWorkouts;
-- (void)invalidateActivityAlertSuppressionForIdentifier:(id)arg1;
+- (id)healthDataCollectionManager;
+- (id)healthDataManager;
+- (id)healthSourceManager;
+- (id)init;
 - (void)pauseAllActiveWorkoutsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performBlockWithPowerAssertionIdentifier:(id)arg1 transactionName:(id)arg2 powerAssertionInterval:(double)arg3 block:(CDUnknownBlockType)arg4;
 - (BOOL)persistAndNotifyDataObject:(id)arg1 device:(id)arg2 error:(id *)arg3;
@@ -87,8 +84,8 @@
 - (void)registerForLaunchNotification:(const char *)arg1;
 - (void)setCurrentActivityCacheOverrideDate:(id)arg1 timeZone:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setDataCollectionOptions:(id)arg1 forKey:(id)arg2 type:(id)arg3 clientUUID:(id)arg4;
-- (void)suppressActivityAlertsForIdentifier:(id)arg1 suppressionReason:(long long)arg2 timeoutUntilDate:(id)arg3;
 - (void)syncImmediatelyWithReason:(id)arg1;
+- (id)temporaryProfile;
 - (void)terminate;
 - (void)unregisterForLaunchNotification:(const char *)arg1;
 

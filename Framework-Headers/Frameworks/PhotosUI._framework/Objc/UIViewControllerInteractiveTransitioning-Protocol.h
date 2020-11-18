@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/NSObject-Protocol.h>
+#import <PhotosUICore/NSObject-Protocol.h>
 
 @protocol UIViewControllerContextTransitioning;
 
 @protocol UIViewControllerInteractiveTransitioning <NSObject>
+
+@property (readonly, nonatomic) long long completionCurve;
+@property (readonly, nonatomic) double completionSpeed;
+@property (readonly, nonatomic) BOOL wantsInteractiveStart;
+
 - (void)startInteractiveTransition:(id<UIViewControllerContextTransitioning>)arg1;
 
 @optional
-- (long long)completionCurve;
-- (double)completionSpeed;
 @end
 

@@ -6,18 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class HAPFragmentationStream, HMMessage, NSString;
+@class HAPFragmentationStream, HMFMessage, NSDate, NSString;
 
 @interface HMDFragmentationStreamTuple : NSObject
 {
     HAPFragmentationStream *_fragmentationStream;
     NSString *_homeUUID;
-    HMMessage *_lastMessage;
+    HMFMessage *_lastMessage;
+    NSDate *_expirationDate;
 }
 
+@property (readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+@property (readonly, nonatomic, getter=isExpired) BOOL expired;
 @property (readonly, nonatomic) HAPFragmentationStream *fragmentationStream; // @synthesize fragmentationStream=_fragmentationStream;
 @property (readonly, nonatomic) NSString *homeUUID; // @synthesize homeUUID=_homeUUID;
-@property (strong, nonatomic) HMMessage *lastMessage; // @synthesize lastMessage=_lastMessage;
+@property (strong, nonatomic) HMFMessage *lastMessage; // @synthesize lastMessage=_lastMessage;
 
 + (id)tupleWithFragmentationStreamForHome:(id)arg1 delegate:(id)arg2;
 - (void).cxx_destruct;

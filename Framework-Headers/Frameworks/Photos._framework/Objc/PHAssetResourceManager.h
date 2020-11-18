@@ -21,10 +21,13 @@
 - (void).cxx_destruct;
 - (void)_streamWriteDataForAssetResource:(id)arg1 toFile:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_synchronized:(CDUnknownBlockType)arg1;
+- (id)assetUUIDsWithNonLocalResourcesForAssetUUIDs:(id)arg1 cplResourceTypes:(id)arg2;
 - (void)cancelDataRequest:(int)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)photoLibrary;
 - (int)requestDataForAssetResource:(id)arg1 options:(id)arg2 dataReceivedHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (int)requestFileURLForAssetResource:(id)arg1 options:(id)arg2 urlReceivedHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)writeDataForAssetResource:(id)arg1 toFile:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end

@@ -17,20 +17,28 @@
     int _replied;
 }
 
+@property (readonly, strong, nonatomic) NSObject<OS_xpc_object> *payload; // @synthesize payload=_message;
+
 + (id)message:(long long)arg1 withPacker:(CDUnknownBlockType)arg2;
 + (id)message:(long long)arg1 withPacker:(CDUnknownBlockType)arg2 replyHandler:(CDUnknownBlockType)arg3 replyQueue:(id)arg4;
 + (const char *)messageTypeKey;
++ (id)messageWithPacker:(CDUnknownBlockType)arg1;
 + (id)messageWithPacker:(CDUnknownBlockType)arg1 replyHandler:(CDUnknownBlockType)arg2 replyQueue:(id)arg3;
++ (id)messageWithPayload:(id)arg1;
 + (void)sendMessage:(long long)arg1 toConnection:(id)arg2 withMessagePacker:(CDUnknownBlockType)arg3;
 + (void)sendMessage:(long long)arg1 toConnection:(id)arg2 withMessagePacker:(CDUnknownBlockType)arg3 replyHandler:(CDUnknownBlockType)arg4 replyQueue:(id)arg5;
 + (void)sendMessageWithPacker:(CDUnknownBlockType)arg1 toConnection:(id)arg2;
 + (void)sendMessageWithPacker:(CDUnknownBlockType)arg1 toConnection:(id)arg2 replyHandler:(CDUnknownBlockType)arg3 replyQueue:(id)arg4;
+- (id)_errorForXPCMessageReply:(id)arg1;
 - (void)dealloc;
+- (id)description;
 - (void)forcefullyInvokeReplyHandler:(id)arg1;
 - (id)initWithMessage:(long long)arg1 packer:(CDUnknownBlockType)arg2 replyHandler:(CDUnknownBlockType)arg3 replyQueue:(id)arg4;
 - (id)initWithMessage:(id)arg1 replyHandler:(CDUnknownBlockType)arg2 replyQueue:(id)arg3;
 - (id)initWithMessagePacker:(CDUnknownBlockType)arg1 replyHandler:(CDUnknownBlockType)arg2 replyQueue:(id)arg3;
-- (void)sendToConnection:(id)arg1;
+- (id)sendSynchronouslyToConnection:(id)arg1 error:(id *)arg2;
+- (BOOL)sendToConnection:(id)arg1;
+- (BOOL)sendToConnection:(id)arg1 replyQueue:(id)arg2 replyHandler:(CDUnknownBlockType)arg3;
 
 @end
 

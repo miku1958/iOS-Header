@@ -20,7 +20,6 @@
 - (id)initInEditMode:(BOOL)arg1;
 - (struct UIEdgeInsets)separatorInset;
 - (id)tableView:(id)arg1 cellForRowAtIndex:(long long)arg2;
-- (double)tableView:(id)arg1 heightForRowAtIndex:(long long)arg2;
 - (id)titleForFooter;
 - (id)titleForHeader;
 

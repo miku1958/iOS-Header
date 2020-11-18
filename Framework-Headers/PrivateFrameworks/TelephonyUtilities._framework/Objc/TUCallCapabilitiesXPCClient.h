@@ -15,10 +15,10 @@
 @interface TUCallCapabilitiesXPCClient : NSObject <TUCallCapabilitiesXPCClient, TUCallCapabilitiesXPCServerActions>
 {
     int _token;
-    TUCallCapabilitiesState *_state;
     NSObject<OS_dispatch_queue> *_queue;
     NSXPCConnection *_xpcConnection;
     id<TUCallCapabilitiesXPCServer> _server;
+    TUCallCapabilitiesState *_state;
     NSObject<OS_dispatch_semaphore> *_stateSemaphore;
 }
 
@@ -39,6 +39,7 @@
 - (void)cancelPinRequestFromPrimaryDevice;
 - (void)capabilityStateUpdated:(id)arg1;
 - (void)dealloc;
+- (void)endEmergencyCallbackMode;
 - (id)init;
 - (id)initWithServer:(id)arg1;
 - (void)invalidateAndRefreshThumperCallingProvisioningURL;
@@ -53,6 +54,7 @@
 - (void)setThumperCallingEnabled:(BOOL)arg1;
 - (void)setVoLTECallingEnabled:(BOOL)arg1;
 - (void)setWiFiCallingEnabled:(BOOL)arg1;
+- (void)setWiFiCallingRoamingEnabled:(BOOL)arg1;
 
 @end
 

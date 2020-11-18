@@ -11,17 +11,15 @@
 @interface SearchUITableLayoutInfo : NSObject
 {
     NSArray *_columnWidths;
-    NSArray *_columnsWithEqualWidths;
     NSArray *_columnSpacing;
-    NSArray *_internalAlignments;
     long long _firstTrailingIndex;
+    NSArray *_columnAlignments;
 }
 
+@property (strong) NSArray *columnAlignments; // @synthesize columnAlignments=_columnAlignments;
 @property (strong) NSArray *columnSpacing; // @synthesize columnSpacing=_columnSpacing;
 @property (strong) NSArray *columnWidths; // @synthesize columnWidths=_columnWidths;
-@property (strong) NSArray *columnsWithEqualWidths; // @synthesize columnsWithEqualWidths=_columnsWithEqualWidths;
 @property long long firstTrailingIndex; // @synthesize firstTrailingIndex=_firstTrailingIndex;
-@property (strong) NSArray *internalAlignments; // @synthesize internalAlignments=_internalAlignments;
 
 - (void).cxx_destruct;
 

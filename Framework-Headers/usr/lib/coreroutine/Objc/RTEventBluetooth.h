@@ -4,30 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <coreroutine/RTEventContext.h>
+#import <coreroutine/RTEvent.h>
 
 #import <coreroutine/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface RTEventBluetooth : RTEventContext <NSSecureCoding>
+@interface RTEventBluetooth : RTEvent <NSSecureCoding>
 {
+    NSString *_deviceIdentifier;
+    NSString *_deviceName;
     long long _bluetoothState;
     long long _deviceType;
-    NSString *_deviceName;
 }
 
 @property (readonly, nonatomic) long long bluetoothState; // @synthesize bluetoothState=_bluetoothState;
+@property (readonly, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 @property (readonly, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
 @property (readonly, nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
 
 + (id)stringFromBluetoothState:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithBluetoothState:(long long)arg1 deviceType:(long long)arg2 deviceName:(id)arg3 hardwareAddress:(id)arg4 source:(long long)arg5 startDate:(id)arg6 endDate:(id)arg7 locationIdentifier:(id)arg8;
+- (id)initWithBluetoothState:(long long)arg1 deviceType:(long long)arg2 deviceName:(id)arg3 hardwareAddress:(id)arg4 source:(long long)arg5 startDate:(id)arg6 endDate:(id)arg7;
 - (id)initWithCoder:(id)arg1;
 
 @end

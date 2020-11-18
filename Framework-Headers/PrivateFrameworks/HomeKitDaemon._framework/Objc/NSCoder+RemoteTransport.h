@@ -10,5 +10,6 @@
 - (BOOL)isRemoteGatewayCoder;
 - (BOOL)isRemoteTransport;
 - (BOOL)isRemoteTransportOnSameAccount;
+- (BOOL)isRemoteUserAdministrator;
 @end
 

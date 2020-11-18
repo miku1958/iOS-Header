@@ -6,13 +6,14 @@
 
 #import <VectorKit/VKTileSetBackedTileSource.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, VKTileKeyList;
 
 __attribute__((visibility("hidden")))
 @interface VKRasterTileSource : VKTileSetBackedTileSource
 {
     NSMutableDictionary *_genericTextureCache;
     struct unordered_map<GEOGenericTileType, std::__1::shared_ptr<ggl::Texture2D>, std::__1::hash<GEOGenericTileType>, std::__1::equal_to<GEOGenericTileType>, std::__1::allocator<std::__1::pair<const GEOGenericTileType, std::__1::shared_ptr<ggl::Texture2D>>>> _gglGenericRasterTextureCache;
+    VKTileKeyList *_recentNoDataSourceKeys;
 }
 
 - (id).cxx_construct;
@@ -21,7 +22,8 @@ __attribute__((visibility("hidden")))
 - (void)clearCaches;
 - (void)dealloc;
 - (void)decodeData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3;
-- (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3;
+- (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3 sharedResources:(id)arg4;
+- (struct VKTileKey)sourceKeyForRenderKey:(const struct VKTileKey *)arg1;
 - (id)tileForData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3;
 
 @end

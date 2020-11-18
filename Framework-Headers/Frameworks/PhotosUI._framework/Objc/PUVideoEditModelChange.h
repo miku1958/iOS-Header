@@ -15,15 +15,11 @@ __attribute__((visibility("hidden")))
     BOOL _videoBuilderChanged;
 }
 
-@property (nonatomic) BOOL videoBuilderChanged; // @synthesize videoBuilderChanged=_videoBuilderChanged;
-@property (nonatomic) BOOL videoDurationChanged; // @synthesize videoDurationChanged=_videoDurationChanged;
-@property (nonatomic) BOOL videoSizeChanged; // @synthesize videoSizeChanged=_videoSizeChanged;
-@property (nonatomic) BOOL videoTrimRegionChanged; // @synthesize videoTrimRegionChanged=_videoTrimRegionChanged;
+@property (nonatomic, setter=_setVideoBuilderChanged:) BOOL videoBuilderChanged; // @synthesize videoBuilderChanged=_videoBuilderChanged;
+@property (nonatomic, setter=_setVideoDurationChanged:) BOOL videoDurationChanged; // @synthesize videoDurationChanged=_videoDurationChanged;
+@property (nonatomic, setter=_setVideoSizeChanged:) BOOL videoSizeChanged; // @synthesize videoSizeChanged=_videoSizeChanged;
+@property (nonatomic, setter=_setVideoTrimRegionChanged:) BOOL videoTrimRegionChanged; // @synthesize videoTrimRegionChanged=_videoTrimRegionChanged;
 
-- (void)_setVideoBuilderChanged:(BOOL)arg1;
-- (void)_setVideoDurationChanged:(BOOL)arg1;
-- (void)_setVideoSizeChanged:(BOOL)arg1;
-- (void)_setVideoTrimRegionChanged:(BOOL)arg1;
 - (BOOL)hasChanges;
 
 @end

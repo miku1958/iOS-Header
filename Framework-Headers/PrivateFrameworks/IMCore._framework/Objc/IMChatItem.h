@@ -8,22 +8,23 @@
 
 #import <IMCore/NSCopying-Protocol.h>
 
-@class IMItem;
+@class IMItem, NSString;
 
 @interface IMChatItem : NSObject <NSCopying>
 {
     IMItem *_item;
 }
 
+@property (readonly, strong, nonatomic) NSString *balloonBundleID;
 @property (readonly, nonatomic) BOOL canDelete;
 
+- (void).cxx_destruct;
 - (id)_initWithItem:(id)arg1;
 - (id)_item;
 - (void)_setTimeAdded:(id)arg1;
 - (id)_timeAdded;
 - (id)_timeStale;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 
 @end

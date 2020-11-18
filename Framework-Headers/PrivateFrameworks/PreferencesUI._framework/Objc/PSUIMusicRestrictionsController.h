@@ -6,16 +6,10 @@
 
 #import <Preferences/PSListController.h>
 
-@class UIAlertView;
-
 @interface PSUIMusicRestrictionsController : PSListController
 {
-    UIAlertView *_iAPAlertView;
 }
 
-- (void).cxx_destruct;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
-- (void)dealloc;
 - (id)explicitEnabled:(id)arg1;
 - (void)setExplicitEnabled:(id)arg1 specifier:(id)arg2;
 - (id)specifiers;

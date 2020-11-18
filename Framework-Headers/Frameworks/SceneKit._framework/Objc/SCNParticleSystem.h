@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
@@ -157,8 +157,8 @@
 + (id)particleSystemNamed:(id)arg1 inDirectory:(id)arg2;
 + (id)particleSystemWithParticleSystemRef:(struct __C3DParticleSystem *)arg1;
 + (BOOL)supportsSecureCoding;
-- (void *)__CFObject;
-- (void)__removeAnimation:(id)arg1 forKey:(id)arg2;
+- (const void *)__CFObject;
+- (BOOL)__removeAnimation:(id)arg1 forKey:(id)arg2;
 - (void)_customDecodingOfSCNParticleSystem:(id)arg1;
 - (void)_customEncodingOfSCNParticleSystem:(id)arg1;
 - (BOOL)_isAReference;
@@ -172,6 +172,7 @@
 - (id)animationForKey:(id)arg1;
 - (struct __C3DAnimationManager *)animationManager;
 - (BOOL)areSoftParticlesEnabled;
+- (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
 - (BOOL)blackPassEnabled;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -215,8 +216,10 @@
 - (void)setRenderingMode:(long long)arg1;
 - (void)setSeed:(long long)arg1;
 - (void)setSoftParticlesEnabled:(BOOL)arg1;
+- (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
 - (BOOL)softParticlesEnabled;
 - (short)typeOfProperty:(id)arg1;
+- (void)unbindAnimatablePath:(id)arg1;
 
 @end
 

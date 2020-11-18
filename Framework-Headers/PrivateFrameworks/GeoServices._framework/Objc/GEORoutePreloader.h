@@ -9,13 +9,13 @@
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 #import <GeoServices/GEORoutePreloadSession-Protocol.h>
 
-@class GEOComposedRoute, NSString;
+@class GEOComposedRoute, NSMutableDictionary, NSString;
 @protocol GEORoutePreloadSessionDelegate;
 
-__attribute__((visibility("hidden")))
 @interface GEORoutePreloader : NSObject <GEOResourceManifestTileGroupObserver, GEORoutePreloadSession>
 {
     GEOComposedRoute *_route;
+    NSMutableDictionary *_tileSetStyles;
     BOOL _loggingEnabled;
     BOOL _minimalDebuggingEnabled;
     BOOL _fullDebuggingEnabled;
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
     double _stepSizeInMeters;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType batteryHandler; // @synthesize batteryHandler=_batteryHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<GEORoutePreloadSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -38,8 +39,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
 @property (readonly) Class superclass;
 
++ (id)preloaderForRoute:(id)arg1;
 - (void)_cancelPreloadTasks;
 - (void)_retryFailuresWithErrorsReset:(BOOL)arg1;
+- (void)addTileSetStyle:(int)arg1 betweenZoom:(unsigned int)arg2 andZoom:(unsigned int)arg3;
 - (void)beginLoading;
 - (void)dealloc;
 - (BOOL)fullDebuggingEnabled;

@@ -6,8 +6,8 @@
 
 #import <CloudPhotoLibrary/CPLEngineSyncTask.h>
 
-@class NSData, NSObject, NSString;
-@protocol CPLEngineTransportDownloadBatchTask, CPLEngineTransportGetAssetCountsTask, CPLEngineTransportQueryTask, CPLPullFromTransportTaskDelegate, OS_dispatch_queue;
+@class CPLFeatureVersionHistory, NSData, NSObject, NSString;
+@protocol CPLEngineTransportDownloadBatchTask, CPLEngineTransportGetLibraryInfoTask, CPLEngineTransportQueryTask, CPLPullFromTransportTaskDelegate, OS_dispatch_queue;
 
 @interface CPLPullFromTransportTask : CPLEngineSyncTask
 {
@@ -15,23 +15,25 @@
     NSData *_initialSyncAnchor;
     id<CPLEngineTransportDownloadBatchTask> _downloadTask;
     id<CPLEngineTransportQueryTask> _queryTask;
-    id<CPLEngineTransportGetAssetCountsTask> _getAssetCountsTask;
+    id<CPLEngineTransportGetLibraryInfoTask> _getLibraryInfoTask;
     NSData *_lastKnownSyncAnchor;
     NSString *_clientCacheIdentifier;
     Class _currentQueryClass;
     BOOL _resetSyncAnchor;
     BOOL _ignoreNewBatches;
     BOOL _gotSomeChanges;
-    BOOL _shouldGetAssetCounts;
-    BOOL _isPostPushPhase;
+    BOOL _useCourtesyMingling;
+    unsigned long long _rewindFeatureVersion;
+    NSData *_rewindSyncAnchor;
+    CPLFeatureVersionHistory *_versionHistory;
+    BOOL _isPrePushPhase;
 }
 
 @property (strong) id<CPLPullFromTransportTaskDelegate> delegate; // @dynamic delegate;
-@property (nonatomic) BOOL isPostPushPhase; // @synthesize isPostPushPhase=_isPostPushPhase;
-@property (nonatomic) BOOL shouldGetAssetCounts; // @synthesize shouldGetAssetCounts=_shouldGetAssetCounts;
+@property (nonatomic, setter=setPrePushPhase:) BOOL isPrePushPhase; // @synthesize isPrePushPhase=_isPrePushPhase;
 
 - (void).cxx_destruct;
-- (void)_checkServerFeatureVersion:(unsigned long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_checkServerFeatureVersion:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_checkStateBeforeContinuingInTransaction:(id)arg1;
 - (void)_extractAndMingleAssetsIfPossibleFromBatch:(id)arg1 inTransaction:(id)arg2;
 - (void)_handleNewBatchFromChanges:(id)arg1 newSyncAnchor:(id)arg2;
@@ -43,6 +45,7 @@
 - (void)_launchNextQueryTask;
 - (void)_launchPullTasksAndDisableQueries:(BOOL)arg1;
 - (void)_launchQueryForClass:(Class)arg1 cursor:(id)arg2;
+- (void)_updateLastFeatureVersionAndRelaunchFetchChangesFromSyncAnchor:(id)arg1;
 - (void)cancel;
 - (id)initWithEngineLibrary:(id)arg1;
 - (void)launch;

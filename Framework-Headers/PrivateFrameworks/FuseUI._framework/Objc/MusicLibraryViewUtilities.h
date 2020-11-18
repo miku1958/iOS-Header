@@ -15,7 +15,6 @@
 + (void)configureHorizontalLockupContentDescriptorWithCommonMetricsForSongCells:(id)arg1;
 + (void)handlePlaybackContext:(id)arg1 inViewController:(id)arg2;
 + (void)handlePlaybackContext:(id)arg1 inViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-+ (void)handleUnplayableEntityValueContext:(id)arg1 withPlayabilityResult:(unsigned long long)arg2 fromViewController:(id)arg3;
 + (BOOL)parentNavigationControllerHasInFlightTransitionFromViewController:(id)arg1;
 + (BOOL)shouldAbortSelectionFromViewController:(id)arg1 withLastSelectionBehavior:(long long)arg2;
 

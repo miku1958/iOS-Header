@@ -20,6 +20,8 @@
     CDStruct_02837cd9 _bounds;
     CDStruct_02837cd9 _overlayBounds;
     unsigned long long _finalStepIndex;
+    double _startDistance;
+    double _lengthScaleFactor;
 }
 
 @property (readonly, nonatomic) CDStruct_90e2a262 bounds; // @synthesize bounds=_bounds;
@@ -28,16 +30,18 @@
 @property (readonly, nonatomic) GEOComposedRouteStep *composedRouteStep; // @synthesize composedRouteStep=_composedRouteStep;
 @property (readonly, nonatomic) unsigned int endPointIndex;
 @property (readonly, nonatomic) unsigned long long finalStepIndex; // @synthesize finalStepIndex=_finalStepIndex;
+@property (nonatomic) double lengthScaleFactor; // @synthesize lengthScaleFactor=_lengthScaleFactor;
 @property (readonly, nonatomic) unsigned int pointCount; // @synthesize pointCount=_pointCount;
 @property (readonly, nonatomic) CDStruct_b2fbf00d *points; // @synthesize points=_points;
+@property (readonly, nonatomic) double startDistance; // @synthesize startDistance=_startDistance;
 @property (readonly, nonatomic) unsigned int startPointIndex; // @synthesize startPointIndex=_startPointIndex;
 @property (readonly, nonatomic) int transportType; // @synthesize transportType=_transportType;
 
 - (void)_initStepForRoute:(id)arg1;
 - (void)dealloc;
 - (id)description;
-- (id)initWithRoute:(id)arg1 startPoint:(unsigned int)arg2 pointCount:(unsigned int)arg3 bounds:(CDStruct_90e2a262)arg4 transportType:(int)arg5 finalStepIndex:(unsigned long long)arg6;
-- (id)initWithRoute:(id)arg1 startPoint:(unsigned int)arg2 pointCount:(unsigned int)arg3 transportType:(int)arg4 finalStepIndex:(unsigned long long)arg5 fallbackStartCoordinate:(CDStruct_c3b9c2ee)arg6 fallbackEndCoordinate:(CDStruct_c3b9c2ee)arg7;
+- (id)initWithRoute:(id)arg1 startPoint:(unsigned int)arg2 pointCount:(unsigned int)arg3 bounds:(CDStruct_90e2a262)arg4 transportType:(int)arg5 finalStepIndex:(unsigned long long)arg6 startDistance:(double)arg7 lengthScaleFactor:(double)arg8;
+- (id)initWithRoute:(id)arg1 startPoint:(unsigned int)arg2 pointCount:(unsigned int)arg3 transportType:(int)arg4 finalStepIndex:(unsigned long long)arg5 fallbackStartCoordinate:(CDStruct_c3b9c2ee)arg6 fallbackEndCoordinate:(CDStruct_c3b9c2ee)arg7 startDistance:(double)arg8 lengthScaleFactor:(double)arg9;
 - (BOOL)isTransfer;
 
 @end

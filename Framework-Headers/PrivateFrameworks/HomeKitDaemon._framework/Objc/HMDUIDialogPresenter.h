@@ -34,6 +34,7 @@
 - (BOOL)_addToPendingContext:(id)arg1;
 - (void)_confirmAddUser:(id)arg1 toHome:(id)arg2 withContext:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_confirmRemoveUser:(id)arg1 fromHome:(id)arg2 withContext:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_displayInternalErrorWithContext:(id)arg1 message:(id)arg2;
 - (void)_displayKeychainSyncForHome:(id)arg1 withContext:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_displayUpgradeNeededWithContext:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_displayiCloudSwitchWithContext:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -43,17 +44,21 @@
 - (BOOL)_presentDialogWithInfo:(id)arg1 options:(unsigned long long)arg2 textField:(id *)arg3 withContext:(id)arg4;
 - (BOOL)_removeCurrentNotification:(struct __CFUserNotification *)arg1 currentSelection:(BOOL)arg2 selectedByPeerDevice:(BOOL *)arg3 andContext:(id)arg4;
 - (void)_requestPairingPasswordForAccessory:(id)arg1 home:(id)arg2 bridge:(id)arg3 withContext:(id)arg4 queue:(id)arg5 numeric:(BOOL)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)_requestUserPermissionForLegacyWACAccessory:(id)arg1 withContext:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_requestUserPermissionForUnauthenticatedAccessory:(id)arg1 withContext:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)confirmAddUser:(id)arg1 toHome:(id)arg2 withContext:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)confirmRemoveUser:(id)arg1 fromHome:(id)arg2 withContext:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)confirmReportAccessory:(id)arg1 context:(id)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)dismissPendingDialogDueToPeerDeviceSelection:(BOOL)arg1 context:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)dismissPendingDialogWithContext:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)displayExecutionErrorOfTrigger:(id)arg1 context:(id)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)displayInternalErrorWithContext:(id)arg1 message:(id)arg2;
 - (void)displayKeychainSyncForHome:(id)arg1 withContext:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)displayUpgradeNeededWithContext:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)displayiCloudSwitchWithContext:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)requestPairingPasswordForAccessory:(id)arg1 home:(id)arg2 bridge:(id)arg3 withContext:(id)arg4 queue:(id)arg5 numeric:(BOOL)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)requestUserPermissionForLegacyWACAccessory:(id)arg1 withContext:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)requestUserPermissionForUnauthenticatedAccessory:(id)arg1 withContext:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end

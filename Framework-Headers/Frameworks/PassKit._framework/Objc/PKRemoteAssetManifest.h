@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSMutableDictionary, NSString, NSURL;
 
@@ -16,10 +16,10 @@
 }
 
 @property (readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
-@property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, weak, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSDictionary *remoteAssets; // @synthesize remoteAssets=_remoteAssets;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)deviceSpecificAsset;
 - (id)deviceSpecificAssetForScreenScale:(double)arg1 suffix:(id)arg2;
 - (id)initWithFileURL:(id)arg1 passURL:(id)arg2 error:(id *)arg3;

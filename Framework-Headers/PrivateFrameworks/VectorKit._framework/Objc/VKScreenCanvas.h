@@ -11,7 +11,7 @@
 #import <VectorKit/VKCameraDelegate-Protocol.h>
 #import <VectorKit/VKWorldDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, VKCamera, VKDispatch, VKLayoutContext, VKScene, VKWorld;
+@class NSMutableArray, NSString, VKCamera, VKCameraController, VKDispatch, VKScene, VKWorld;
 @protocol MDMapControllerDelegate, MDRenderTarget;
 
 __attribute__((visibility("hidden")))
@@ -21,14 +21,13 @@ __attribute__((visibility("hidden")))
     VKWorld *_world;
     VKCamera *_camera;
     VKScene *_scene;
-    VKLayoutContext *_layoutContext;
     id<MDRenderTarget> _displayTarget;
     BOOL _needsLayout;
     unsigned int _wantsLayout;
     unsigned int _needsRepaint;
     BOOL _userIsGesturing;
     BOOL _iconsShouldAlignToPixels;
-    NSMutableArray *_cameraControllers;
+    VKCameraController *_cameraController;
     float _debugFramesPerSecond;
     BOOL _rendersInBackground;
     NSMutableArray *_animations[2];
@@ -40,15 +39,16 @@ __attribute__((visibility("hidden")))
     BOOL _deallocing;
     BOOL _needsInitialization;
     struct unique_ptr<md::RenderQueue, std::__1::default_delete<md::RenderQueue>> _renderQueue;
-    struct MapCamera *_mapCamera;
     struct RenderTree *_mapScene;
+    struct LayoutContext *_layoutContext;
     Matrix_5173352a _bgColor;
     id<MDMapControllerDelegate> _mapDelegate;
+    struct PerspectiveView<double> _view;
 }
 
+@property (nonatomic) unsigned char applicationUILayout;
 @property (readonly, nonatomic) Matrix_5173352a bgColor; // @synthesize bgColor=_bgColor;
 @property (readonly, nonatomic) VKCamera *camera; // @synthesize camera=_camera;
-@property (readonly, nonatomic) NSArray *cameraControllers; // @synthesize cameraControllers=_cameraControllers;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) float debugFramesPerSecond; // @synthesize debugFramesPerSecond=_debugFramesPerSecond;
 @property (readonly, copy) NSString *description;
@@ -69,12 +69,12 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_queueUpdateDisplayLinkStatus;
-- (void)addCameraController:(id)arg1;
 - (void)adoptAnimation:(id)arg1;
 - (void)animateWithTimestamp:(double)arg1;
 - (void)animationDidResume:(id)arg1;
 - (void)animationDidStop:(id)arg1;
-- (id)buildingMarkerAtScreenPoint:(struct CGPoint)arg1;
+- (shared_ptr_430519ce)buildingMarkerAtScreenPoint:(struct CGPoint)arg1;
+- (id)cameraController;
 - (void)cameraController:(id)arg1 canEnter3DModeDidChange:(BOOL)arg2;
 - (void)cameraController:(id)arg1 canZoomInDidChange:(BOOL)arg2;
 - (void)cameraController:(id)arg1 canZoomOutDidChange:(BOOL)arg2;
@@ -87,6 +87,8 @@ __attribute__((visibility("hidden")))
 - (void)cameraController:(id)arg1 willChangeRegionAnimated:(BOOL)arg2;
 - (void)cameraControllerDidChangeCameraState:(id)arg1;
 - (void)cameraControllerDidFinishInitialTrackingAnimation:(id)arg1;
+- (void)cameraControllerRequestsLayout:(id)arg1;
+- (void)cameraControllerRequestsUpdateDisplayLinkStatus:(id)arg1;
 - (void)cameraDidChange:(id)arg1;
 - (BOOL)canRender;
 - (void)clearSceneIsEffectivelyHidden:(BOOL)arg1;
@@ -95,30 +97,34 @@ __attribute__((visibility("hidden")))
 - (void)didEnterBackground;
 - (void)didPresent;
 - (void)didReceiveMemoryWarning:(BOOL)arg1 beAggressive:(BOOL)arg2;
-- (void)edgeInsetsDidEndAnimating;
-- (void)edgeInsetsWillBeginAnimating;
-- (id)featureMarkerAtScreenPoint:(struct CGPoint)arg1;
+- (shared_ptr_430519ce)featureMarkerAtScreenPoint:(struct CGPoint)arg1;
 - (void)forceLayout;
 - (void)gglWillDrawWithTimestamp;
-- (id)initWithTarget:(id)arg1 device:(const shared_ptr_807ec9ac *)arg2 inBackground:(BOOL)arg3;
-- (void)initializeWithRenderer:(struct GLRenderer *)arg1;
+- (id)initWithTarget:(id)arg1 inBackground:(BOOL)arg2;
+- (void)initializeWithRenderer:(struct Renderer *)arg1;
 - (BOOL)isHidden;
 - (void)layoutRenderQueue:(shared_ptr_06328420)arg1;
-- (void)removeCameraController:(id)arg1;
+- (void)puckAnimator:(id)arg1 updatedPosition:(const Mercator3_d8bb135c *)arg2 course:(double)arg3;
 - (void)resetRenderQueue:(shared_ptr_06328420)arg1;
-- (id)roadMarkersForSelectionAtScreenPoint:(struct CGPoint)arg1;
+- (BOOL)restoreViewportFromInfo:(id)arg1;
+- (vector_8bf6b0e5)roadMarkersForSelectionAtScreenPoint:(struct CGPoint)arg1;
 - (void)runAnimation:(id)arg1;
 - (void)runOrAdoptAnimation:(id)arg1 run:(BOOL)arg2;
+- (void)setCameraController:(id)arg1;
 - (void)setContentsScale:(double)arg1;
 - (void)setHidden:(BOOL)arg1;
 - (void)setNeedsDisplay;
 - (void)setNeedsLayout;
-- (shared_ptr_750cb28c)styleForFeature:(id)arg1;
-- (shared_ptr_3fff3c66)stylesheet;
+- (void)stopNonTransferableAnimations;
+- (shared_ptr_144c31f6)styleForFeature:(const shared_ptr_430519ce *)arg1;
+- (shared_ptr_a3c46825)styleManager;
+- (shared_ptr_664b6d77)stylesheet;
 - (void)transferAnimationsTo:(id)arg1;
+- (void)transferStateFromCanvas:(id)arg1;
 - (void)updateCameraForFrameResize;
 - (BOOL)updateDisplayLinkStatus;
 - (void)updateWithTimestamp:(double)arg1;
+- (id)viewportInfo;
 - (BOOL)wantsRender;
 - (BOOL)wantsTimerTick;
 - (void)willEnterForeground;

@@ -14,17 +14,33 @@ __attribute__((visibility("hidden")))
 @interface CKDPShareAcceptRequest : PBRequest <NSCopying>
 {
     NSString *_etag;
-    CKDPProtectionInfo *_publicParticipantPublicKey;
+    NSString *_participantId;
+    CKDPProtectionInfo *_protectionInfo;
+    CKDPProtectionInfo *_publicKey;
+    int _publicKeyVersion;
     CKDPProtectionInfo *_selfAddedPcs;
     CKDPShareIdentifier *_shareId;
+    BOOL _acceptedInProcess;
+    struct {
+        unsigned int publicKeyVersion:1;
+        unsigned int acceptedInProcess:1;
+    } _has;
 }
 
+@property (nonatomic) BOOL acceptedInProcess; // @synthesize acceptedInProcess=_acceptedInProcess;
 @property (strong, nonatomic) NSString *etag; // @synthesize etag=_etag;
+@property (nonatomic) BOOL hasAcceptedInProcess;
 @property (readonly, nonatomic) BOOL hasEtag;
-@property (readonly, nonatomic) BOOL hasPublicParticipantPublicKey;
+@property (readonly, nonatomic) BOOL hasParticipantId;
+@property (readonly, nonatomic) BOOL hasProtectionInfo;
+@property (readonly, nonatomic) BOOL hasPublicKey;
+@property (nonatomic) BOOL hasPublicKeyVersion;
 @property (readonly, nonatomic) BOOL hasSelfAddedPcs;
 @property (readonly, nonatomic) BOOL hasShareId;
-@property (strong, nonatomic) CKDPProtectionInfo *publicParticipantPublicKey; // @synthesize publicParticipantPublicKey=_publicParticipantPublicKey;
+@property (strong, nonatomic) NSString *participantId; // @synthesize participantId=_participantId;
+@property (strong, nonatomic) CKDPProtectionInfo *protectionInfo; // @synthesize protectionInfo=_protectionInfo;
+@property (strong, nonatomic) CKDPProtectionInfo *publicKey; // @synthesize publicKey=_publicKey;
+@property (nonatomic) int publicKeyVersion; // @synthesize publicKeyVersion=_publicKeyVersion;
 @property (strong, nonatomic) CKDPProtectionInfo *selfAddedPcs; // @synthesize selfAddedPcs=_selfAddedPcs;
 @property (strong, nonatomic) CKDPShareIdentifier *shareId; // @synthesize shareId=_shareId;
 
@@ -38,6 +54,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (unsigned int)requestTypeCode;
+- (Class)responseClass;
 - (void)writeTo:(id)arg1;
 
 @end

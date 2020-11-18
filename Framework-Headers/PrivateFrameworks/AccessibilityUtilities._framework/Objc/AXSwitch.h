@@ -23,6 +23,9 @@
     long long _buttonNumber;
     long long _headSwitch;
     NSUUID *_uuid;
+    NSString *_remoteSwitchIdentifier;
+    NSString *_remoteDeviceName;
+    NSString *_remoteDeviceIdentifier;
 }
 
 @property (nonatomic) long long action; // @synthesize action=_action;
@@ -34,6 +37,9 @@
 @property (copy, nonatomic) NSString *manufacturerName; // @synthesize manufacturerName=_manufacturerName;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *productName; // @synthesize productName=_productName;
+@property (copy, nonatomic) NSString *remoteDeviceIdentifier; // @synthesize remoteDeviceIdentifier=_remoteDeviceIdentifier;
+@property (copy, nonatomic) NSString *remoteDeviceName; // @synthesize remoteDeviceName=_remoteDeviceName;
+@property (copy, nonatomic) NSString *remoteSwitchIdentifier; // @synthesize remoteSwitchIdentifier=_remoteSwitchIdentifier;
 @property (strong, nonatomic) NSString *source; // @synthesize source=_source;
 @property (readonly, nonatomic) BOOL supportsLongPress;
 @property (strong, nonatomic) NSString *type; // @synthesize type=_type;

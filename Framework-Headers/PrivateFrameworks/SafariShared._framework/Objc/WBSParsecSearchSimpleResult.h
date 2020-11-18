@@ -6,27 +6,40 @@
 
 #import <SafariShared/WBSParsecSearchResult.h>
 
-@class NSArray, NSNumber, NSString, WBSParsecImageRepresentation;
+#import <SafariShared/WBSParsecSearchMapsResultFeedbackSenderClient-Protocol.h>
+#import <SafariShared/WBSParsecSearchResultPresentedInCard-Protocol.h>
 
-@interface WBSParsecSearchSimpleResult : WBSParsecSearchResult
+@class NSArray, NSNumber, NSString, WBSParsecImageRepresentation, WBSParsecSearchMapsResultFeedbackSender;
+@protocol WBSParsecSearchSession;
+
+@interface WBSParsecSearchSimpleResult : WBSParsecSearchResult <WBSParsecSearchMapsResultFeedbackSenderClient, WBSParsecSearchResultPresentedInCard>
 {
     WBSParsecImageRepresentation *_titleGlyph;
     NSArray *_moreIconRepresentations;
     BOOL _descriptionTextCanWrap;
     BOOL _hasSingleLineDescriptionAndTitle;
+    WBSParsecSearchMapsResultFeedbackSender *_mapsFeedbackSender;
+    id<WBSParsecSearchSession> _parsecSearchSession;
     NSNumber *_titleMaximumNumberOfLines;
     NSString *_descriptionLeadInText;
     NSNumber *_descriptionMaximumNumberOfLines;
     NSString *_footnote;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *descriptionLeadInText; // @synthesize descriptionLeadInText=_descriptionLeadInText;
 @property (readonly, nonatomic) NSNumber *descriptionMaximumNumberOfLines; // @synthesize descriptionMaximumNumberOfLines=_descriptionMaximumNumberOfLines;
 @property (readonly, nonatomic) BOOL descriptionTextCanWrap; // @synthesize descriptionTextCanWrap=_descriptionTextCanWrap;
 @property (readonly, nonatomic) NSString *footnote; // @synthesize footnote=_footnote;
 @property (readonly, nonatomic) BOOL hasMoreIcons;
 @property (readonly, nonatomic) BOOL hasSingleLineDescriptionAndTitle; // @synthesize hasSingleLineDescriptionAndTitle=_hasSingleLineDescriptionAndTitle;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) WBSParsecSearchMapsResultFeedbackSender *mapsFeedbackSender; // @synthesize mapsFeedbackSender=_mapsFeedbackSender;
+@property (strong, nonatomic) id<WBSParsecSearchSession> parsecSearchSession; // @synthesize parsecSearchSession=_parsecSearchSession;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSNumber *titleMaximumNumberOfLines; // @synthesize titleMaximumNumberOfLines=_titleMaximumNumberOfLines;
+@property (readonly, nonatomic) BOOL willPresentResultInCard;
 
 - (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;

@@ -8,16 +8,18 @@
 
 #import <PhotosFormats/NSCopying-Protocol.h>
 
-@class NSURL;
+@class NSString, NSURL;
 
 @interface PFSharingRemakerOptions : NSObject <NSCopying>
 {
     BOOL _shouldStripLocation;
     BOOL _shouldStripAllMetadata;
     BOOL _shouldConvertToSRGB;
+    NSString *_customAccessibilityLabel;
     NSURL *_outputDirectoryURL;
 }
 
+@property (copy, nonatomic) NSString *customAccessibilityLabel; // @synthesize customAccessibilityLabel=_customAccessibilityLabel;
 @property (copy, nonatomic) NSURL *outputDirectoryURL; // @synthesize outputDirectoryURL=_outputDirectoryURL;
 @property (nonatomic) BOOL shouldConvertToSRGB; // @synthesize shouldConvertToSRGB=_shouldConvertToSRGB;
 @property (nonatomic) BOOL shouldStripAllMetadata; // @synthesize shouldStripAllMetadata=_shouldStripAllMetadata;

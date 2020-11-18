@@ -9,10 +9,12 @@
 @protocol MobileInstallerProtocol
 - (void)checkCapabilities:(NSObject *)arg1 withOptions:(NSDictionary *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)clearUninstalledIdentifiers:(NSArray *)arg1 withOptions:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)dieForTesting;
+- (void)enumerateInstalledAppsWithOptions:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)fetchDiskUsageForIdentifiers:(NSArray *)arg1 withOptions:(NSDictionary *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)fetchInstalledAppsWithOptions:(NSDictionary *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)fetchInstalledDeveloperAppsWithMountPath:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
-- (void)installPath:(NSString *)arg1 withOptions:(NSDictionary *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)installURL:(NSURL *)arg1 withOptions:(NSDictionary *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)listSafeHarborsOfType:(long long)arg1 withOptions:(NSDictionary *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)lookupUninstalledWithOptions:(NSDictionary *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)processRestoredContainerWithIdentifier:(NSString *)arg1 ofType:(long long)arg2 options:(NSDictionary *)arg3 completion:(void (^)(NSError *))arg4;

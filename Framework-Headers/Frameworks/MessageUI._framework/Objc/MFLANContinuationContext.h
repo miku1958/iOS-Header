@@ -17,6 +17,7 @@
 @property (copy, nonatomic) NSString *host; // @synthesize host=_host;
 @property (nonatomic) unsigned short port; // @synthesize port=_port;
 
+- (void)dealloc;
 
 @end
 

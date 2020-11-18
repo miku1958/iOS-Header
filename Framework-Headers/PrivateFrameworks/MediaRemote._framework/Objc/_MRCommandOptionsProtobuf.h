@@ -15,6 +15,7 @@
     double _playbackPosition;
     long long _radioStationID;
     unsigned long long _trackID;
+    NSString *_contentItemID;
     NSString *_contextID;
     NSString *_destinationAppDisplayID;
     NSString *_mediaType;
@@ -53,9 +54,11 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSString *contentItemID; // @synthesize contentItemID=_contentItemID;
 @property (strong, nonatomic) NSString *contextID; // @synthesize contextID=_contextID;
 @property (strong, nonatomic) NSString *destinationAppDisplayID; // @synthesize destinationAppDisplayID=_destinationAppDisplayID;
 @property (nonatomic) BOOL externalPlayerCommand; // @synthesize externalPlayerCommand=_externalPlayerCommand;
+@property (readonly, nonatomic) BOOL hasContentItemID;
 @property (readonly, nonatomic) BOOL hasContextID;
 @property (readonly, nonatomic) BOOL hasDestinationAppDisplayID;
 @property (nonatomic) BOOL hasExternalPlayerCommand;
@@ -98,6 +101,8 @@
 @property (strong, nonatomic) NSData *systemAppPlaybackQueueData; // @synthesize systemAppPlaybackQueueData=_systemAppPlaybackQueueData;
 @property (nonatomic) unsigned long long trackID; // @synthesize trackID=_trackID;
 
+- (int)StringAsRepeatMode:(id)arg1;
+- (int)StringAsShuffleMode:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -107,6 +112,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)repeatModeAsString:(int)arg1;
+- (id)shuffleModeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -6,33 +6,29 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableArray, PLCloudPhotoLibraryManager, PLPhotoLibrary;
+@class PLCloudPhotoLibraryManager, PLPhotoLibrary;
 
 @interface PLCloudBatchDownloader : NSObject
 {
     PLPhotoLibrary *_photoLibrary;
     PLCloudPhotoLibraryManager *_manager;
-    NSMutableArray *_photos;
-    NSMutableArray *_videos;
 }
-
-@property (strong, nonatomic) NSMutableArray *photos; // @synthesize photos=_photos;
-@property (strong, nonatomic) NSMutableArray *videos; // @synthesize videos=_videos;
 
 - (id)_debugPrintAlbumOrderForAssets:(id)arg1;
 - (id)_findMaster:(id)arg1 fromAdditionalRecordInBatch:(id)arg2 inLibrary:(id)arg3;
 - (void)_handleAlbumRecords:(id)arg1 inLibrary:(id)arg2;
-- (void)_handleAssetRecords:(id)arg1 inLibrary:(id)arg2 withChangeBatch:(id)arg3;
+- (id)_handleAssetRecords:(id)arg1 inLibrary:(id)arg2 withChangeBatch:(id)arg3;
 - (void)_handleDeleteRecords:(id)arg1 inLibrary:(id)arg2;
 - (void)_handleExpungedRecords:(id)arg1 inLibrary:(id)arg2;
-- (void)_handleMasterRecords:(id)arg1 inLibrary:(id)arg2;
+- (id)_handleMasterRecords:(id)arg1 inLibrary:(id)arg2;
+- (void)_handleMemoryRecords:(id)arg1 inLibrary:(id)arg2;
 - (void)_handlePersonRecords:(id)arg1 inLibrary:(id)arg2;
 - (void)_handleRelationsForAlbumRecords:(id)arg1 inLibrary:(id)arg2;
 - (void)_handleRelationsForAssetRecords:(id)arg1 inLibrary:(id)arg2;
 - (void)_triggerBackgroundDownloadFailureForResources:(id)arg1;
 - (void)dealloc;
 - (id)deletedRecordUuidsFromBatch:(id)arg1;
-- (void)handleIncomingBatch:(id)arg1;
+- (id)handleIncomingBatch:(id)arg1;
 - (id)initWithLibrary:(id)arg1 withManager:(id)arg2;
 
 @end

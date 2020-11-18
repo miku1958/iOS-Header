@@ -19,7 +19,6 @@
 - (id)applyWithExtent:(struct CGRect)arg1 arguments:(id)arg2 options:(id)arg3;
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 arguments:(id)arg3;
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 arguments:(id)arg3 options:(id)arg4;
-- (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 cpuCallback:(CDUnknownBlockType)arg3 colorManagement:(BOOL)arg4 andArguments:(id)arg5;
 
 @end
 

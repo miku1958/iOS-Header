@@ -23,6 +23,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *trafficSegments; // @synthesize trafficSegments=_trafficSegments;
 @property (strong, nonatomic) NSData *vertices; // @synthesize vertices=_vertices;
 
++ (Class)trafficIncidentType;
++ (Class)trafficSegmentType;
 - (void)addTrafficIncident:(id)arg1;
 - (void)addTrafficSegment:(id)arg1;
 - (void)clearTrafficIncidents;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MailServices/NSXPCProxyCreating-Protocol.h>
 
@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface _MSXPCRemoteProxy : NSObject <NSXPCProxyCreating>
 {
-    int _selectorLock;
+    struct os_unfair_lock_s _selectorLock;
     struct __CFDictionary *_knownSelectors;
     MSXPCConnection *_connection;
     NSXPCInterface *_remoteInterface;

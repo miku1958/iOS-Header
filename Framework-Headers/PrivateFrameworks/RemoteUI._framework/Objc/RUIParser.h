@@ -8,7 +8,7 @@
 
 #import <RemoteUI/NSXMLParserDelegate-Protocol.h>
 
-@class NSData, NSDictionary, NSMutableArray, NSMutableString, NSString, NSURL, NSXMLParser, RUIAlertView, RUIObjectModel;
+@class NSData, NSDictionary, NSError, NSMutableArray, NSMutableString, NSString, NSURL, NSXMLParser, RUIActionSignal, RUIAlertView, RUIObjectModel;
 @protocol RUIParserDelegate;
 
 @interface RUIParser : NSObject <NSXMLParserDelegate>
@@ -20,12 +20,13 @@
     RUIObjectModel *_uiObjectModel;
     NSMutableArray *_pages;
     NSMutableArray *_currentPageStack;
-    int _actionSignal;
+    RUIActionSignal *_actionSignal;
     NSURL *_baseURL;
     int _parserState;
     NSMutableArray *_elementStack;
     BOOL _succeeded;
     NSData *_xmlData;
+    NSError *_error;
     id<RUIParserDelegate> _delegate;
 }
 
@@ -33,6 +34,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<RUIParserDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL succeeded; // @synthesize succeeded=_succeeded;
 @property (readonly) Class superclass;
@@ -41,13 +43,7 @@
 + (long long)textAlignmentForString:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addNavigationBarWithAttributes:(id)arg1;
-- (void)_addSectionDetailHeaderText:(id)arg1 withAttributes:(id)arg2;
-- (void)_addSectionFooterText:(id)arg1 withAttributes:(id)arg2 isHTML:(BOOL)arg3;
-- (void)_addSectionHeaderText:(id)arg1 withAttributes:(id)arg2 isHTML:(BOOL)arg3;
-- (void)_addSectionSubHeaderText:(id)arg1 withAttributes:(id)arg2;
 - (void)_addSectionWithAttributes:(id)arg1;
-- (void)_addTableFooterViewWithAttributes:(id)arg1;
-- (void)_convertAttributeMap:(id)arg1 toPropertiesOnElement:(id)arg2;
 - (id)_createAndAddPageWithAttributes:(id)arg1;
 - (id)_createPageWithName:(id)arg1 attributes:(id)arg2;
 - (void)_finalizeElement:(id)arg1;
@@ -56,8 +52,8 @@
 - (id)_lastPageCreateIfNeeded;
 - (id)_lastRow;
 - (void)_logDeprecation:(id)arg1 value:(id)arg2;
-- (void)_newRowWithAttributeDict:(id)arg1;
-- (int)actionSignal;
+- (id)_newRowWithAttributeDict:(id)arg1;
+- (id)actionSignal;
 - (void)dealloc;
 - (id)initWithXML:(id)arg1;
 - (id)initWithXML:(id)arg1 baseURL:(id)arg2 delegate:(id)arg3;

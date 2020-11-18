@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HAPTimerDelegate-Protocol.h>
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HAPTimer, NSHashTable, NSString;
+@class HMFTimer, NSHashTable, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDTimeInformationMonitor : NSObject <HAPTimerDelegate>
+@interface HMDTimeInformationMonitor : NSObject <HMFTimerDelegate>
 {
-    HAPTimer *_expirationTimer;
+    HMFTimer *_expirationTimer;
     NSHashTable *_delegates;
     NSObject<OS_dispatch_queue> *_clientQueue;
 }
@@ -22,7 +22,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSHashTable *delegates; // @synthesize delegates=_delegates;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) HAPTimer *expirationTimer; // @synthesize expirationTimer=_expirationTimer;
+@property (readonly, nonatomic) HMFTimer *expirationTimer; // @synthesize expirationTimer=_expirationTimer;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

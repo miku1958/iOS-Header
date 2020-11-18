@@ -6,30 +6,26 @@
 
 #import <UIKit/UIView.h>
 
-@class AVPlayer, PLAVPlayerView, PLAirPlayBackgroundView, PLVideoOutBackgroundView;
+@class AVPlayer, PLAVPlayerView;
 
 @interface PLMoviePlayerView : UIView
 {
     PLAVPlayerView *_avPlayerView;
-    PLVideoOutBackgroundView *_videoOutView;
-    PLAirPlayBackgroundView *_airPlayView;
     BOOL _destinationPlaceholderHidden;
+    long long _destinationPlaceholderStyle;
 }
 
 @property (nonatomic, getter=isDestinationPlaceholderHidden) BOOL destinationPlaceholderHidden;
-@property (readonly, nonatomic) long long destinationPlaceholderStyle;
+@property (readonly, nonatomic) long long destinationPlaceholderStyle; // @synthesize destinationPlaceholderStyle=_destinationPlaceholderStyle;
 @property (strong, nonatomic) AVPlayer *player;
 @property (readonly, strong, nonatomic) UIView *videoView;
 
-- (void)_clearAirPlayView;
-- (void)_clearVideoView;
 - (void)_installBackgroundView:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)reattachVideoView;
-- (void)setDestinationPlaceholderStyle:(long long)arg1 airPlayDeviceName:(id)arg2;
-- (void)setScaleMode:(unsigned long long)arg1;
-- (void)setScaleMode:(unsigned long long)arg1 duration:(double)arg2;
+- (void)setScaleMode:(long long)arg1;
+- (void)setScaleMode:(long long)arg1 duration:(double)arg2;
 
 @end
 

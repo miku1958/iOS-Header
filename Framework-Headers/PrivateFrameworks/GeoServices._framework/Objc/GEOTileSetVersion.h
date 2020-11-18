@@ -10,10 +10,10 @@
 
 @interface GEOTileSetVersion : PBCodable <NSCopying>
 {
-    CDStruct_d66e66b9 *_availableTiles;
+    struct GEOTileSetRegion *_availableTiles;
     unsigned long long _availableTilesCount;
     unsigned long long _availableTilesSpace;
-    CDStruct_8f5f9923 *_genericTiles;
+    struct GEOGenericTile *_genericTiles;
     unsigned long long _genericTilesCount;
     unsigned long long _genericTilesSpace;
     unsigned int _identifier;
@@ -25,9 +25,9 @@
     } _has;
 }
 
-@property (readonly, nonatomic) CDStruct_d66e66b9 *availableTiles;
+@property (readonly, nonatomic) struct GEOTileSetRegion *availableTiles;
 @property (readonly, nonatomic) unsigned long long availableTilesCount;
-@property (readonly, nonatomic) CDStruct_8f5f9923 *genericTiles;
+@property (readonly, nonatomic) struct GEOGenericTile *genericTiles;
 @property (readonly, nonatomic) unsigned long long genericTilesCount;
 @property (nonatomic) BOOL hasSupportedLanguagesVersion;
 @property (nonatomic) BOOL hasTimeToLiveSeconds;
@@ -35,9 +35,9 @@
 @property (nonatomic) unsigned int supportedLanguagesVersion; // @synthesize supportedLanguagesVersion=_supportedLanguagesVersion;
 @property (nonatomic) unsigned int timeToLiveSeconds; // @synthesize timeToLiveSeconds=_timeToLiveSeconds;
 
-- (void)addAvailableTiles:(CDStruct_d66e66b9)arg1;
-- (void)addGenericTile:(CDStruct_8f5f9923)arg1;
-- (CDStruct_d66e66b9)availableTilesAtIndex:(unsigned long long)arg1;
+- (void)addAvailableTiles:(struct GEOTileSetRegion)arg1;
+- (void)addGenericTile:(struct GEOGenericTile)arg1;
+- (struct GEOTileSetRegion)availableTilesAtIndex:(unsigned long long)arg1;
 - (void)clearAvailableTiles;
 - (void)clearGenericTiles;
 - (void)copyTo:(id)arg1;
@@ -45,13 +45,13 @@
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (CDStruct_8f5f9923)genericTileAtIndex:(unsigned long long)arg1;
+- (struct GEOGenericTile)genericTileAtIndex:(unsigned long long)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (void)setAvailableTiles:(CDStruct_d66e66b9 *)arg1 count:(unsigned long long)arg2;
-- (void)setGenericTiles:(CDStruct_8f5f9923 *)arg1 count:(unsigned long long)arg2;
+- (void)setAvailableTiles:(struct GEOTileSetRegion *)arg1 count:(unsigned long long)arg2;
+- (void)setGenericTiles:(struct GEOGenericTile *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

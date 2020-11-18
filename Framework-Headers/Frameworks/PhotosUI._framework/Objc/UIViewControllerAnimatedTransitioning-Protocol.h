@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/NSObject-Protocol.h>
+#import <PhotosUICore/NSObject-Protocol.h>
 
-@protocol UIViewControllerContextTransitioning;
+@protocol UIViewControllerContextTransitioning, UIViewImplicitlyAnimating;
 
 @protocol UIViewControllerAnimatedTransitioning <NSObject>
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)arg1;
@@ -14,5 +14,6 @@
 
 @optional
 - (void)animationEnded:(BOOL)arg1;
+- (id<UIViewImplicitlyAnimating>)interruptibleAnimatorForTransition:(id<UIViewControllerContextTransitioning>)arg1;
 @end
 

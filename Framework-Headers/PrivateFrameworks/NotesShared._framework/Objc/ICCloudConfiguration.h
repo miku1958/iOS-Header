@@ -30,7 +30,9 @@
 @property (strong, nonatomic) ICCloudThrottlingPolicy *throttlingPolicy; // @synthesize throttlingPolicy=_throttlingPolicy;
 
 + (id)availableConfigurationURLs;
++ (id)cachedConfigurationURL;
 + (id)defaultConfigurationURL;
++ (BOOL)isConfigurationValid:(id)arg1;
 + (void)setDefaultConfigurationURL:(id)arg1;
 + (id)sharedConfiguration;
 - (void).cxx_destruct;

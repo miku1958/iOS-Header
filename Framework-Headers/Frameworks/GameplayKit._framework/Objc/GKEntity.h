@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <GameplayKit/NSCoding-Protocol.h>
 #import <GameplayKit/NSCopying-Protocol.h>
 
 @class NSArray, NSMutableDictionary;
 
-@interface GKEntity : NSObject <NSCopying>
+@interface GKEntity : NSObject <NSCopying, NSCoding>
 {
     NSMutableDictionary *_components;
 }
@@ -21,10 +22,13 @@
 - (void).cxx_destruct;
 - (void)addComponent:(id)arg1;
 - (id)componentForClass:(Class)arg1;
+- (id)componentForKey:(id)arg1;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (void)removeComponent:(id)arg1;
 - (void)removeComponentForClass:(Class)arg1;
 - (void)updateWithDeltaTime:(double)arg1;

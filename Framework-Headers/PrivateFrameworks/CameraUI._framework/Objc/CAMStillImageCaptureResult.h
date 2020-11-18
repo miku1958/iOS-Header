@@ -6,29 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDictionary, NSError;
+@class NSDate, NSDictionary, NSError, NSString;
 
 @interface CAMStillImageCaptureResult : NSObject
 {
     BOOL _expectingPairedVideo;
-    struct opaqueCMSampleBuffer *_stillImageOriginalSampleBuffer;
+    struct opaqueCMSampleBuffer *_stillImageFullsizeSampleBuffer;
     NSDate *_captureDate;
     NSDictionary *_metadata;
     NSError *_error;
 }
 
-@property (readonly, nonatomic, getter=isHDREV0) BOOL HDREV0;
+@property (readonly, nonatomic, getter=isHDRImageWithCorrespondingOriginal) BOOL HDRImageWithCorrespondingOriginal;
 @property (readonly, nonatomic) NSDate *captureDate; // @synthesize captureDate=_captureDate;
 @property (readonly, nonatomic) NSDictionary *compactMetadata;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic, getter=isExpectingPairedVideo) BOOL expectingPairedVideo; // @synthesize expectingPairedVideo=_expectingPairedVideo;
+@property (readonly, copy, nonatomic) NSString *imageGroupIdentifier;
 @property (readonly, copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
-@property (readonly, nonatomic) struct opaqueCMSampleBuffer *stillImageOriginalSampleBuffer; // @synthesize stillImageOriginalSampleBuffer=_stillImageOriginalSampleBuffer;
+@property (readonly, nonatomic, getter=isOriginal) BOOL original;
+@property (readonly, nonatomic, getter=isOriginalForHDR) BOOL originalForHDR;
+@property (readonly, nonatomic, getter=isProcessedImageWithCorrespondingOriginal) BOOL processedImageWithCorrespondingOriginal;
+@property (readonly, nonatomic) struct opaqueCMSampleBuffer *stillImageFullsizeSampleBuffer; // @synthesize stillImageFullsizeSampleBuffer=_stillImageFullsizeSampleBuffer;
 
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
-- (id)initWithSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 error:(id)arg2;
+- (id)initWithFullsizeSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 error:(id)arg2;
 
 @end
 

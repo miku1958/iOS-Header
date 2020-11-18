@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CATransaction : NSObject
 {
@@ -25,7 +25,9 @@
 + (CDUnknownBlockType)completionBlock;
 + (unsigned int)currentState;
 + (BOOL)disableActions;
++ (BOOL)disableRunLoopObserverCommits;
 + (void)flush;
++ (unsigned int)generateSeed;
 + (double)inputTime;
 + (void)lock;
 + (BOOL)lowLatency;
@@ -38,8 +40,10 @@
 + (void)setCommitTime:(double)arg1;
 + (void)setCompletionBlock:(CDUnknownBlockType)arg1;
 + (void)setDisableActions:(BOOL)arg1;
++ (void)setDisableRunLoopObserverCommits:(BOOL)arg1;
 + (void)setInputTime:(double)arg1;
 + (void)setLowLatency:(BOOL)arg1;
++ (void)setPresentationHandler:(CDUnknownBlockType)arg1 queue:(id)arg2;
 + (void)setValue:(id)arg1 forKey:(id)arg2;
 + (void)synchronize;
 + (void)unlock;

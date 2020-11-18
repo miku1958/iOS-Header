@@ -18,7 +18,7 @@
     NSArray *_defaultsToObserve;
     CDUnknownBlockType _fireBlock;
     BOOL _invalidated;
-    int _debounceCounter;
+    _Atomic unsigned int _debounceCounter;
 }
 
 @property (readonly, copy) NSString *debugDescription;

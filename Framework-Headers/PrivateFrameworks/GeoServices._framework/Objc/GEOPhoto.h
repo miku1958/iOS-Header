@@ -24,6 +24,8 @@
 @property (nonatomic) int photoType; // @synthesize photoType=_photoType;
 @property (strong, nonatomic) NSString *uid; // @synthesize uid=_uid;
 
++ (Class)photoInfoType;
+- (int)StringAsPhotoType:(id)arg1;
 - (id)_bestURLForSize:(int)arg1;
 - (id)_photoInfoForSize:(int)arg1 includeSmallerSizes:(BOOL)arg2;
 - (void)addPhotoInfo:(id)arg1;
@@ -39,6 +41,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)photoInfoAtIndex:(unsigned long long)arg1;
 - (unsigned long long)photoInfosCount;
+- (id)photoTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

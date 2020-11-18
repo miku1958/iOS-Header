@@ -10,17 +10,17 @@ __attribute__((visibility("hidden")))
 @interface VKRoadSignArtwork : NSObject
 {
     struct __CTLine *_line;
-    long long _orientation;
-    BOOL _onRoute;
-    float _contentScale;
-    float _scale;
-    struct CGSize _layoutSize;
+    struct RoadSignMetrics _signMetrics;
+    struct RoadSignTextMetrics _textMetrics;
+    struct RoadSignGeneratedMetrics _generatedMetrics;
+    struct RoadSignColoring _signColoring;
 }
 
-- (void)_updateLayoutSize;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)image;
-- (id)initWithString:(id)arg1 orientation:(long long)arg2 contentScale:(double)arg3 scale:(double)arg4 onRoute:(BOOL)arg5;
+- (id)initWithString:(id)arg1 signMetrics:(struct RoadSignMetrics)arg2 textMetrics:(struct RoadSignTextMetrics)arg3 signColoring:(struct RoadSignColoring)arg4;
 - (Box_3fb92e00)localCollisionBounds;
 - (Box_3fb92e00)localRenderBounds;
 - (Matrix_8746f91e)offsetPixelForPixel:(Matrix_8746f91e)arg1;

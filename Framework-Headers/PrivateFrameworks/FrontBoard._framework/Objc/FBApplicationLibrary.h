@@ -8,7 +8,7 @@
 
 #import <FrontBoard/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 
-@class LSApplicationWorkspace, NSHashTable, NSMutableArray, NSMutableDictionary, NSSet, NSString;
+@class LSApplicationWorkspace, NSHashTable, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface FBApplicationLibrary : NSObject <LSApplicationWorkspaceObserverProtocol>
@@ -18,8 +18,6 @@
     NSHashTable *_observerQueue_observers;
     NSObject<OS_dispatch_queue> *_workQueue;
     BOOL _workQueue_usingNetwork;
-    NSMutableDictionary *_workQueue_profilesBySignerIdentity;
-    NSSet *_workQueue_managedApplicationBundleIDs;
     NSMutableDictionary *_workQueue_installedApplicationsByBundleID;
     NSMutableDictionary *_workQueue_placeholdersByBundleID;
     unsigned long long _workQueue_synchronizationActionCount;
@@ -39,13 +37,11 @@
 
 + (void)setBundleExtendedInfoGenerationHandler:(CDUnknownBlockType)arg1;
 + (id)sharedInstance;
+- (void)_anyQueue_generateExtendedInfoForBundleInfo:(id)arg1;
 - (void)_dispatchToObservers:(id)arg1 synchronously:(BOOL)arg2 preBlock:(CDUnknownBlockType)arg3 block:(CDUnknownBlockType)arg4;
 - (id)_initWithAppInfoClass:(Class)arg1;
-- (void)_managedAppsChangedNotification:(id)arg1;
+- (void)_load;
 - (id)_observers;
-- (void)_reload;
-- (void)_reloadManagedApplicationBundleIDs;
-- (void)_reloadProfiles;
 - (void)_sendToObservers:(id)arg1 didAddApplications:(id)arg2;
 - (void)_sendToObservers:(id)arg1 didAddPlaceholders:(id)arg2;
 - (void)_sendToObservers:(id)arg1 didCancelPlaceholders:(id)arg2;
@@ -58,15 +54,12 @@
 - (id)_workQueue_applicationsForProxies:(id)arg1 createIfNecessary:(BOOL)arg2 createReason:(id)arg3 createdPlaceholders:(const id *)arg4 existingApplications:(const id *)arg5 unmappedProxies:(const id *)arg6;
 - (void)_workQueue_decrementSynchronizationActionCount;
 - (void)_workQueue_executeInstallSynchronizationBlocksIfAppropriate;
-- (void)_workQueue_generateExtendedInfoForBundleInfo:(id)arg1;
 - (void)_workQueue_incrementSynchronizationActionCount;
 - (void)_workQueue_notePlaceholdersModifiedSignificantly:(id)arg1;
 - (id)_workQueue_placeholderForProxy:(id)arg1 updateExistingIfNecessary:(BOOL)arg2 createIfNecessary:(BOOL)arg3 createReason:(id)arg4 wasCreated:(BOOL *)arg5;
 - (id)_workQueue_placeholdersForProxies:(id)arg1 updateExistingIfNecessary:(BOOL)arg2 createIfNecessary:(BOOL)arg3 createReason:(id)arg4 createdPlaceholders:(const id *)arg5 existingPlaceholders:(const id *)arg6 unmappedProxies:(const id *)arg7;
 - (void)_workQueue_removeInstalledApplicationFromModelForBundleID:(id)arg1 forInstall:(BOOL)arg2 withReason:(id)arg3;
 - (void)_workQueue_removePlaceholderFromModelForBundleID:(id)arg1 forInstall:(BOOL)arg2 withReason:(id)arg3;
-- (void)_workQueue_updateManagedStatusForAppInfo:(id)arg1;
-- (void)_workQueue_updateProvisioningProfilesForAppInfo:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (id)allInstalledApplications;
 - (id)allPlaceholders;
@@ -93,6 +86,7 @@
 - (id)placeholderWithBundleIdentifier:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)uninstallApplication:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)uninstallApplication:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

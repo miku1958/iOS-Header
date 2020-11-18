@@ -8,7 +8,7 @@
 
 #import <CloudPhotoLibrary/CPLAbstractObject-Protocol.h>
 
-@class CPLConfiguration, CPLEngineScheduler, CPLEngineStore, CPLEngineSyncManager, CPLEngineSystemMonitor, CPLEngineTransport, CPLPlatformObject, CPLStatus, NSArray, NSDate, NSError, NSHashTable, NSString, NSURL;
+@class CPLConfiguration, CPLEngineFeedbackManager, CPLEngineScheduler, CPLEngineStore, CPLEngineSyncManager, CPLEngineSystemMonitor, CPLEngineTransport, CPLPlatformObject, CPLStatus, NSArray, NSDate, NSError, NSHashTable, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface CPLEngineLibrary : NSObject <CPLAbstractObject>
@@ -33,6 +33,7 @@
     CPLEngineSyncManager *_syncManager;
     CPLEngineTransport *_transport;
     CPLEngineSystemMonitor *_systemMonitor;
+    CPLEngineFeedbackManager *_feedback;
     CPLConfiguration *_configuration;
 }
 
@@ -42,7 +43,8 @@
 @property (readonly, nonatomic) CPLConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSDate *exitDeleteTime;
+@property (copy, nonatomic) NSDate *exitDeleteTime;
+@property (readonly, nonatomic) CPLEngineFeedbackManager *feedback; // @synthesize feedback=_feedback;
 @property (nonatomic) BOOL hasChangesToProcess;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL iCloudLibraryExists;
@@ -73,6 +75,7 @@
 - (void)getListOfComponentsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getStatusArrayForComponents:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getStatusForComponents:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)hasAssetCountOnServer;
 - (id)initWithClientLibraryBaseURL:(id)arg1 cloudLibraryStateStorageURL:(id)arg2 cloudLibraryResourceStorageURL:(id)arg3 libraryIdentifier:(id)arg4;
 - (void)notifyAttachedObjectsPullQueueIsFull;
 - (void)notifyAttachedObjectsResourceDidDowloadInBackground:(id)arg1;
@@ -90,6 +93,7 @@
 - (void)startSyncSession;
 - (unsigned long long)totalAssetCountOnServer;
 - (void)updateAssetCountsFromServer:(id)arg1;
+- (void)updateInitialSyncDate:(id)arg1;
 - (void)updateLastSuccessfullSyncDate:(id)arg1;
 
 @end

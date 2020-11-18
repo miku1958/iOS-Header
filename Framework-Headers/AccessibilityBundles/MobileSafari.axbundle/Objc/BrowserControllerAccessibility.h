@@ -11,7 +11,7 @@
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
-+ (id)accessibilityCurrentWebView;
++ (id)accessibilityFocusedBrowserController;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityKeyboardDidHide:(id)arg1;
@@ -20,12 +20,12 @@
 - (void)_axUpdateVisibleContentInsetForScrollView:(id)arg1;
 - (void)_initSubviews;
 - (void)_setContentInsetAdjustments:(struct UIEdgeInsets)arg1 forScrollView:(id)arg2;
+- (id)accessibilityActiveTabDocument;
+- (id)accessibilityCurrentWebView;
 - (BOOL)accessibilityPerformEscape;
 - (void)dealloc;
-- (BOOL)hideBrowserPanelType:(int)arg1;
 - (void)scrollViewDidScrollToTop:(id)arg1;
 - (void)setShowingReader:(BOOL)arg1 animated:(BOOL)arg2;
-- (BOOL)showBrowserPanelType:(int)arg1;
 - (void)sidebarDimmingViewDismiss:(id)arg1;
 - (void)togglePrivateBrowsing;
 

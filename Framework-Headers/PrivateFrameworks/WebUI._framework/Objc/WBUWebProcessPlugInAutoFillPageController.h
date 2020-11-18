@@ -34,6 +34,7 @@
 - (void)addLoadDeferringReasons:(unsigned long long)arg1;
 - (void)annotateForm:(id)arg1 inFrame:(id)arg2 withValues:(id)arg3;
 - (void)autoFillForm:(id)arg1 inFrame:(id)arg2 withGeneratedPassword:(id)arg3;
+- (void)autoFillFormAsynchronouslyInFrame:(id)arg1 withValues:(id)arg2 setAutoFilled:(BOOL)arg3 focusFieldAfterFilling:(BOOL)arg4 fieldToFocus:(id)arg5;
 - (void)autoFillFormAsynchronouslyInFrame:(id)arg1 withValues:(id)arg2 setAutoFilled:(BOOL)arg3 selectFieldAfterFilling:(id)arg4;
 - (void)autoFillFormSynchronouslyInFrame:(id)arg1 withValues:(id)arg2;
 - (void)clearAutoFillMetadata;

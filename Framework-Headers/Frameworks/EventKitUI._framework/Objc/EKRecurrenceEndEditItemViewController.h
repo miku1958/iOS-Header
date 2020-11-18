@@ -33,6 +33,7 @@
 @property (copy, nonatomic) NSDate *repeatEndDate; // @synthesize repeatEndDate=_repeatEndDate;
 @property (readonly) Class superclass;
 
++ (id)_neverLocalizedString;
 - (void).cxx_destruct;
 - (id)_cellForRow:(long long)arg1;
 - (id)_endDateStringForCurrentShorteningStatus;

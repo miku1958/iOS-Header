@@ -10,8 +10,8 @@
 
 @interface NPKPassLibraryFilter : NSObject
 {
-    NSXPCConnection *_connection;
     PKEntitlementWhitelist *_whitelist;
+    NSXPCConnection *_connection;
 }
 
 @property (readonly) BOOL allowsSilentAdd;
@@ -19,8 +19,10 @@
 @property (strong) PKEntitlementWhitelist *whitelist; // @synthesize whitelist=_whitelist;
 
 - (void).cxx_destruct;
-- (BOOL)_entitledForPassTypeID:(id)arg1 teamID:(id)arg2;
+- (BOOL)_entitledForObject:(id)arg1;
+- (BOOL)_entitledForPassTypeID:(id)arg1 teamID:(id)arg2 associatedPassTypeIdentifiers:(id)arg3;
 - (BOOL)allowAccessToPass:(id)arg1;
+- (id)entitlementFilteredPasses:(id)arg1;
 - (id)filterPassIfNeeded:(id)arg1;
 - (id)initWithConnection:(id)arg1;
 

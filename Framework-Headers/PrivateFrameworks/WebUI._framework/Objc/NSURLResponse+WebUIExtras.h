@@ -7,6 +7,6 @@
 #import <CFNetwork/NSURLResponse.h>
 
 @interface NSURLResponse (WebUIExtras)
-- (id)webui_certificateChain;
+- (struct __SecTrust *)webui_serverTrust;
 @end
 

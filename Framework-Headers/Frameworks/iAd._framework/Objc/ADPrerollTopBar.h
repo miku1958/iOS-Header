@@ -17,7 +17,6 @@
     UIStatusBar *_statusBar;
     ADPrerollButton *_doneButton;
     ADProgressView *_progressView;
-    ADPrerollButton *_scaleToFillButton;
 }
 
 @property (weak, nonatomic) id<ADPrerollTopBarDelegate> delegate;
@@ -25,7 +24,6 @@
 @property (nonatomic) BOOL isFullscreen; // @synthesize isFullscreen=_isFullscreen;
 @property (nonatomic) BOOL layoutForExpandedSize; // @synthesize layoutForExpandedSize=_layoutForExpandedSize;
 @property (strong, nonatomic) ADProgressView *progressView; // @synthesize progressView=_progressView;
-@property (strong, nonatomic) ADPrerollButton *scaleToFillButton; // @synthesize scaleToFillButton=_scaleToFillButton;
 @property (strong, nonatomic) UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
 
 - (void)_doneButtonTapped:(id)arg1;

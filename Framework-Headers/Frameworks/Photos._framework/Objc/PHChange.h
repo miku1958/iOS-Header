@@ -26,6 +26,8 @@
     BOOL _unknownMergeEvent;
 }
 
+@property (readonly, nonatomic) BOOL hasIncrementalChanges;
+
 + (id)handlerQueue;
 + (void)pl_simulateChangeWithAssetContainerList:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
@@ -38,14 +40,18 @@
 - (id)changeDetailsForObject:(id)arg1;
 - (id)changedAttributesByOID;
 - (id)changedRelationshipsByOID;
+- (BOOL)containsChangesForEntityClass:(Class)arg1;
+- (BOOL)contentOrThumbnailChangedForAsset:(id)arg1;
 - (BOOL)contentOrThumbnailChangedForPHAssetOID:(id)arg1;
 - (id)deletedObjectIDs;
 - (id)description;
+- (BOOL)hiddenStateChangedForPHAssetOID:(id)arg1;
 - (id)init;
 - (id)initWithChangedIdentifiers:(id)arg1 unknownMergeEvent:(BOOL)arg2;
 - (id)insertedObjectIDs;
 - (void)preloadChangeDetailsForFetchResults:(id)arg1 inManagedObjectContext:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)preloadSimulatedChangeDetailsForManualFetchResults:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (BOOL)trashedStateChangedForPHAssetOID:(id)arg1;
 - (id)updatedObjectIDs;
 
 @end

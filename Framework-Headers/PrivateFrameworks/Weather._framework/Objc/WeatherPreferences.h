@@ -7,67 +7,63 @@
 #import <Foundation/NSObject.h>
 
 #import <Weather/NSURLConnectionDelegate-Protocol.h>
+#import <Weather/WFTemperatureUnitObserver-Protocol.h>
 
-@class NSArray, NSString, WeatherCloudPreferences;
-@protocol OS_dispatch_queue, SynchronizedDefaultsDelegate, WeatherPreferencesPersistence;
+@class City, NSArray, NSString, WeatherCloudPreferences;
+@protocol SynchronizedDefaultsDelegate, WeatherPreferencesPersistence;
 
-@interface WeatherPreferences : NSObject <NSURLConnectionDelegate>
+@interface WeatherPreferences : NSObject <WFTemperatureUnitObserver, NSURLConnectionDelegate>
 {
-    BOOL _isCelsius;
     NSString *_UUID;
     NSString *_serviceHost;
     BOOL _serviceDebugging;
     NSArray *_lastUbiquitousWrittenDefaults;
     id<WeatherPreferencesPersistence> _persistence;
+    NSString *_cacheDirectoryPath;
+    BOOL _logUnitsAndLocale;
     BOOL _userGroupPrefsLockedWhenInit;
     id<SynchronizedDefaultsDelegate> _syncDelegate;
     WeatherCloudPreferences *_cloudPreferences;
-    NSObject<OS_dispatch_queue> *_celsiusQueue;
 }
 
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *celsiusQueue; // @synthesize celsiusQueue=_celsiusQueue;
 @property (strong) WeatherCloudPreferences *cloudPreferences; // @synthesize cloudPreferences=_cloudPreferences;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isLocalWeatherEnabled, setter=setLocalWeatherEnabled:) BOOL isLocalWeatherEnabled;
+@property (readonly, nonatomic) City *localWeatherCity;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<SynchronizedDefaultsDelegate> syncDelegate; // @synthesize syncDelegate=_syncDelegate;
 @property (nonatomic) BOOL userGroupPrefsLockedWhenInit; // @synthesize userGroupPrefsLockedWhenInit=_userGroupPrefsLockedWhenInit;
+@property (readonly) int userTemperatureUnit;
 
 + (id)_getGroupDefaultsFromURLInApp:(id)arg1;
-+ (void)clearSharedPreferences;
++ (BOOL)performUpgradeOfPersistence:(id)arg1 fileManager:(id)arg2 error:(id *)arg3;
 + (id)preferencesWithPersistence:(id)arg1;
++ (id)readInternalDefaultValueForKey:(id)arg1;
 + (id)serviceDebuggingPath;
 + (id)sharedPreferences;
 + (id)userDefaultsPersistence;
 - (void).cxx_destruct;
 - (id)UUID;
 - (id)_cacheDirectoryPath;
-- (BOOL)_checkAndPerformMigrationIfNeeded;
 - (void)_clearCachedObjects;
 - (id)_defaultCities;
 - (BOOL)_defaultsAreValid;
 - (BOOL)_defaultsCurrent;
-- (BOOL)_ensurePrefsLoaded;
 - (void)adjustPrefsForLocalWeatherEnabled:(BOOL)arg1;
 - (BOOL)areCitiesDefault:(id)arg1;
 - (id)citiesByConsolidatingDuplicates:(id)arg1 originalOrder:(id)arg2;
 - (id)citiesByConsolidatingDuplicatesInBucket:(id)arg1;
-- (BOOL)cityDictionaryHasValidCoordinates:(id)arg1;
 - (id)cityFromPreferencesDictionary:(id)arg1;
-- (void)dealloc;
 - (BOOL)ensureValidSelectedCityID;
 - (id)init;
-- (void)initOnPrefLoadWithPersistence:(id)arg1;
 - (id)initWithPersistence:(id)arg1;
 - (BOOL)isCelsius;
-- (BOOL)isLocalWeatherEnabled;
 - (int)loadActiveCity;
 - (int)loadDefaultSelectedCity;
 - (id)loadDefaultSelectedCityID;
 - (id)loadSavedCities;
-- (id)localWeatherCity;
-- (BOOL)performMigration;
 - (id)preferencesDictionaryForCity:(id)arg1;
 - (id)readDefaultValueForKey:(id)arg1;
 - (id)readInternalDefaultValueForKey:(id)arg1;
@@ -86,16 +82,13 @@
 - (void)setDefaultCities:(id)arg1;
 - (void)setDefaultSelectedCity:(unsigned long long)arg1;
 - (void)setDefaultSelectedCityID:(id)arg1;
-- (void)setLocalWeatherEnabled:(BOOL)arg1;
-- (void)setYahooWeatherURLString:(id)arg1;
 - (void)setupUbiquitousStoreIfNeeded;
 - (void)synchronizeStateToDisk;
 - (void)synchronizeStateToDiskDoNotify:(BOOL)arg1;
+- (void)temperatureUnitObserver:(id)arg1 didChangeTemperatureUnitTo:(int)arg2;
 - (id)twcLogoURL;
 - (id)twcLogoURL:(id)arg1;
-- (void)updateUnitsFromNotification;
 - (void)writeDefaultValue:(id)arg1 forKey:(id)arg2;
-- (id)yahooWeatherURLString;
 
 @end
 

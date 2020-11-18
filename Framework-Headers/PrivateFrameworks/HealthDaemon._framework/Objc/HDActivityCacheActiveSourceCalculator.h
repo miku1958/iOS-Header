@@ -8,7 +8,7 @@
 
 @interface HDActivityCacheActiveSourceCalculator : NSObject
 {
-    vector_e4bf223f _workouts;
+    vector_53e1d725 _workouts;
     vector_6dc0ebed _activationLogEntries;
 }
 
@@ -18,7 +18,7 @@
 - (struct _HDActivityCacheActiveSourceCalculatorSourceEvent)_baseSourceEvent;
 - (vector_6dc0ebed)createActiveSourceLog;
 - (void)setActivationLogEntries:(vector_6dc0ebed *)arg1;
-- (void)setWorkouts:(vector_e4bf223f *)arg1;
+- (void)setWorkouts:(vector_53e1d725 *)arg1;
 
 @end
 

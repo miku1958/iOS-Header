@@ -34,6 +34,7 @@
     unsigned int _captivePresentFailedCount;
     unsigned int _exceededMssCount;
     int _interfaceType;
+    int _protocolType;
     unsigned int _restrictedNetworkFailedCount;
     struct {
         unsigned int captivePresentCount:1;
@@ -59,6 +60,7 @@
         unsigned int captivePresentFailedCount:1;
         unsigned int exceededMssCount:1;
         unsigned int interfaceType:1;
+        unsigned int protocolType:1;
         unsigned int restrictedNetworkFailedCount:1;
     } _has;
 }
@@ -77,6 +79,7 @@
 @property (nonatomic) BOOL hasExceededMssCount;
 @property (nonatomic) BOOL hasInterfaceType;
 @property (nonatomic) BOOL hasMptcpSuccessCount;
+@property (nonatomic) BOOL hasProtocolType;
 @property (nonatomic) BOOL hasRestrictedNetworkCount;
 @property (nonatomic) BOOL hasRestrictedNetworkFailedCount;
 @property (nonatomic) BOOL hasResultConnectionResetCount;
@@ -96,6 +99,7 @@
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) int interfaceType; // @synthesize interfaceType=_interfaceType;
 @property (nonatomic) unsigned long long mptcpSuccessCount; // @synthesize mptcpSuccessCount=_mptcpSuccessCount;
+@property (nonatomic) int protocolType; // @synthesize protocolType=_protocolType;
 @property (nonatomic) unsigned long long restrictedNetworkCount; // @synthesize restrictedNetworkCount=_restrictedNetworkCount;
 @property (nonatomic) unsigned int restrictedNetworkFailedCount; // @synthesize restrictedNetworkFailedCount=_restrictedNetworkFailedCount;
 @property (nonatomic) unsigned long long resultConnectionResetCount; // @synthesize resultConnectionResetCount=_resultConnectionResetCount;
@@ -115,6 +119,7 @@
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 
 - (int)StringAsInterfaceType:(id)arg1;
+- (int)StringAsProtocolType:(id)arg1;
 - (void)addConnectionDurationBuckets:(unsigned int)arg1;
 - (void)clearConnectionDurationBuckets;
 - (unsigned int)connectionDurationBucketsAtIndex:(unsigned long long)arg1;
@@ -127,6 +132,7 @@
 - (id)interfaceTypeAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)protocolTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setConnectionDurationBuckets:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

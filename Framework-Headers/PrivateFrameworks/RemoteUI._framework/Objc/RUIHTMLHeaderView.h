@@ -6,29 +6,29 @@
 
 #import <UIKit/UIView.h>
 
+#import <RemoteUI/RUIHeader-Protocol.h>
 #import <RemoteUI/RUIWebContainerViewDelegate-Protocol.h>
-#import <RemoteUI/RemoteUITableHeader-Protocol.h>
 
 @class NSString, NSURL, RUIWebContainerView;
-@protocol RUITableHeaderDelegate;
+@protocol RUIHeaderDelegate;
 
-@interface RUIHTMLHeaderView : UIView <RUIWebContainerViewDelegate, RemoteUITableHeader>
+@interface RUIHTMLHeaderView : UIView <RUIWebContainerViewDelegate, RUIHeader>
 {
     RUIWebContainerView *_webContainerView;
     BOOL _isFirstSection;
-    id<RUITableHeaderDelegate> _delegate;
+    id<RUIHeaderDelegate> _delegate;
     NSURL *_baseURL;
 }
 
 @property (strong, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<RUITableHeaderDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<RUIHeaderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (double)headerHeightForWidth:(double)arg1 inTableView:(id)arg2;
+- (double)headerHeightForWidth:(double)arg1 inView:(id)arg2;
 - (id)initWithAttributes:(id)arg1;
 - (void)layoutSubviews;
 - (void)setSectionIsFirst:(BOOL)arg1;

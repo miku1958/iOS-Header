@@ -30,7 +30,7 @@
     BOOL _hasPendingProcessChange;
 }
 
-@property (readonly, strong, nonatomic) NSMutableDictionary *_contexts; // @synthesize _contexts;
+@property (readonly, nonatomic) NSMutableDictionary *_contexts; // @synthesize _contexts;
 @property (nonatomic, setter=_setHidingDisconnect:) BOOL _hidingDisconnect; // @synthesize _hidingDisconnect;
 @property (readonly, nonatomic) NSArray *allServices;
 @property (readonly, nonatomic) NSArray *handlers; // @synthesize handlers=_handlers;
@@ -45,6 +45,7 @@
 @property (readonly, nonatomic) BOOL shouldHoldChatMessages; // @synthesize shouldHoldChatMessages=_holdingChatMessages;
 @property (readonly, nonatomic) unsigned long long vcCapabilities; // @synthesize vcCapabilities=_vcCapabilities;
 
+- (void).cxx_destruct;
 - (void)_cacheValue:(id)arg1 forPersistentProperty:(id)arg2;
 - (void)_cacheValue:(id)arg1 forProperty:(id)arg2;
 - (void)_deferNotification:(id)arg1;
@@ -67,6 +68,7 @@
 - (void)account:(id)arg1 capabilitiesChanged:(unsigned long long)arg2;
 - (void)account:(id)arg1 chat:(id)arg2 style:(unsigned char)arg3 chatProperties:(id)arg4 invitationReceived:(id)arg5;
 - (void)account:(id)arg1 chat:(id)arg2 style:(unsigned char)arg3 chatProperties:(id)arg4 messageReceived:(id)arg5;
+- (void)account:(id)arg1 chat:(id)arg2 style:(unsigned char)arg3 chatProperties:(id)arg4 messagesReceived:(id)arg5;
 - (void)account:(id)arg1 defaults:(id)arg2 blockList:(id)arg3 allowList:(id)arg4 blockingMode:(unsigned int)arg5 blockIdleStatus:(BOOL)arg6 status:(id)arg7 capabilities:(unsigned long long)arg8 serviceLoginStatus:(unsigned int)arg9 loginStatusMessage:(id)arg10;
 - (void)account:(id)arg1 defaultsChanged:(id)arg2;
 - (void)account:(id)arg1 groupsChanged:(id)arg2 error:(id)arg3;
@@ -82,12 +84,12 @@
 - (void)databaseFull;
 - (void)databaseNoLongerFull;
 - (void)databaseUpdated:(id)arg1;
-- (void)dealloc;
 - (void)defaultsChanged:(id)arg1 forService:(id)arg2;
 - (void)displayPinCodeForAccount:(id)arg1 pinCode:(id)arg2 deviceName:(id)arg3 deviceType:(id)arg4 phoneNumber:(id)arg5;
 - (void)fileTransfer:(id)arg1 createdWithProperties:(id)arg2;
 - (void)fileTransfer:(id)arg1 updatedWithCurrentBytes:(unsigned long long)arg2 totalBytes:(unsigned long long)arg3 averageTransferRate:(unsigned long long)arg4;
 - (void)fileTransfer:(id)arg1 updatedWithProperties:(id)arg2;
+- (void)fileTransfers:(id)arg1 createdWithLocalPaths:(id)arg2;
 - (void)forwardInvocation:(id)arg1;
 - (void)holdChatMessages;
 - (id)init;

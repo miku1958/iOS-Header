@@ -8,6 +8,8 @@
 
 #import <iTunesStore/NSCopying-Protocol.h>
 
+@class ISBiometricAuthenticationContext;
+
 @interface ISProtocolDataProvider : ISDataProvider <NSCopying>
 {
     BOOL _shouldPostFooterSectionChanged;
@@ -15,7 +17,9 @@
     BOOL _shouldProcessAuthenticationDialogs;
     BOOL _shouldProcessDialogs;
     BOOL _shouldProcessProtocol;
+    BOOL _shouldProcessTouchIDDialogs;
     BOOL _shouldTriggerDownloads;
+    ISBiometricAuthenticationContext *_biometricAuthenticationContext;
 }
 
 @property BOOL shouldPostFooterSectionChanged; // @synthesize shouldPostFooterSectionChanged=_shouldPostFooterSectionChanged;
@@ -23,8 +27,10 @@
 @property BOOL shouldProcessAuthenticationDialogs; // @synthesize shouldProcessAuthenticationDialogs=_shouldProcessAuthenticationDialogs;
 @property BOOL shouldProcessDialogs; // @synthesize shouldProcessDialogs=_shouldProcessDialogs;
 @property BOOL shouldProcessProtocol; // @synthesize shouldProcessProtocol=_shouldProcessProtocol;
+@property (readonly) BOOL shouldProcessTouchIDDialogs;
 @property BOOL shouldTriggerDownloads; // @synthesize shouldTriggerDownloads=_shouldTriggerDownloads;
 
+- (void).cxx_destruct;
 - (void)_checkDownloadQueues;
 - (void)_checkInAppPurchaseQueueForAction:(id)arg1;
 - (void)_performActionsForResponse:(id)arg1;

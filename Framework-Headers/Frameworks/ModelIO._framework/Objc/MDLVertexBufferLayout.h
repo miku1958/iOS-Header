@@ -16,7 +16,9 @@
 @property (nonatomic) unsigned long long stride; // @synthesize stride=_stride;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (unsigned long long)hash;
+- (id)initWithStride:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

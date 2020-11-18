@@ -32,17 +32,21 @@
 @property (nonatomic) int width; // @dynamic width;
 
 + (long long)bytesNeededToDownloadOriginalResourcesInLibrary:(id)arg1;
-+ (void)countNonLocalOriginalResourcesInLibrary:(id)arg1 outCount:(unsigned long long *)arg2 photoCount:(unsigned long long *)arg3 videoCount:(unsigned long long *)arg4;
++ (BOOL)countNonLocalOriginalResourcesInLibrary:(id)arg1 outCount:(unsigned long long *)arg2 photoCount:(unsigned long long *)arg3 videoCount:(unsigned long long *)arg4;
++ (BOOL)countOfLocalCloudResourcesOfType:(unsigned long long)arg1 inManagedObjectContext:(id)arg2 localCount:(unsigned long long *)arg3 unavailableCount:(unsigned long long *)arg4 error:(id *)arg5;
 + (id)duplicateCloudResource:(id)arg1 forAsset:(id)arg2 withFilePath:(id)arg3 inManagedObjectContext:(id)arg4;
 + (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)insertIntoPhotoLibrary:(id)arg1 forAsset:(id)arg2 withCPLResource:(id)arg3 adjusted:(BOOL)arg4 withCreationDate:(id)arg5;
++ (id)nonLocalResourcesInManagedObjectContext:(id)arg1 forAssetUUIDs:(id)arg2 cplResourceTypes:(id)arg3;
 + (void)resetCloudResourcesStateForCloudInManagedObjectContext:(id)arg1 hardReset:(BOOL)arg2;
++ (void)resetPrefetchStateForResourcesWithResourceType:(long long)arg1 itemIdentifiers:(id)arg2 inLibrary:(id)arg3;
 + (id)resourceWithFingerprint:(id)arg1 inPhotoLibrary:(id)arg2;
 - (void)_duplicatePropertiesFromCloudResource:(id)arg1 withFilePath:(id)arg2 forAssetUuid:(id)arg3;
 - (void)applyPropertiesFromCloudResource:(id)arg1;
 - (id)cplResourceIncludeFile:(BOOL)arg1;
 - (id)description;
+- (void)prepareForDeletion;
 
 @end
 

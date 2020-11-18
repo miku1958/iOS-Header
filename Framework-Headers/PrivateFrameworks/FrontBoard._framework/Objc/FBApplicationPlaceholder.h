@@ -27,6 +27,7 @@
 @property (readonly, nonatomic, getter=isNewsstand) BOOL newsstand;
 @property (readonly, nonatomic, getter=isPausable) BOOL pausable;
 @property (readonly, nonatomic) double percentComplete;
+@property (readonly, nonatomic, getter=isPrioritizable) BOOL prioritizable;
 @property (strong, nonatomic, getter=_proxy, setter=_setProxy:) LSApplicationProxy *proxy;
 @property (readonly, nonatomic, getter=isRestricted) BOOL restricted;
 
@@ -46,6 +47,7 @@
 - (void)_sendToObserversPausabilityDidChange:(id)arg1;
 - (void)_sendToObserversPercentCompleteDidChange:(id)arg1;
 - (void)_sendToObserversPlaceholderDidChangeSignificantly:(id)arg1;
+- (void)_sendToObserversPrioritizableDidChange:(id)arg1;
 - (void)_setProxy:(id)arg1 force:(BOOL)arg2;
 - (void)addObserver:(id)arg1;
 - (void)cancel;

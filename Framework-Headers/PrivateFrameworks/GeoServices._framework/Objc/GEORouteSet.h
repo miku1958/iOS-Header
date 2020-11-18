@@ -24,6 +24,8 @@
     id<GEOTransitRoutingIncidentMessage> _transitRoutingIncidentMessage;
     BOOL _transitModePreferencesIgnored;
     NSSet *_supportedTransportTypesForSubsequentRequests;
+    BOOL _lazyLoad;
+    long long _selectedRouteIndex;
 }
 
 @property (readonly, nonatomic) BOOL allTransitRoutesBlockedByIncident;
@@ -44,15 +46,19 @@
 - (void)_clearWeakReferences;
 - (id)_pageForRoute:(id)arg1;
 - (void)_prependNewPage:(id)arg1;
+- (void)_updatePage:(id)arg1;
+- (void)addRouteForReroute:(id)arg1 request:(id)arg2 response:(id)arg3;
 - (void)addRoutesForRequest:(id)arg1 response:(id)arg2;
-- (void)addRoutesForReroute:(id)arg1;
 - (id)alternateStartRoutesLookup:(id)arg1;
 - (void)dealloc;
 - (id)directionsResponseID:(id)arg1;
 - (id)displayHints:(id)arg1;
+- (id)fullRouteAtIndex:(unsigned long long)arg1;
+- (unsigned long long)indexOfRouteInLazyRoutes:(id)arg1;
 - (unsigned long long)indexOfSuggestedRoute:(id)arg1;
-- (id)initWithWaypoints:(id)arg1 transport:(int)arg2;
+- (id)initWithWaypoints:(id)arg1 transport:(int)arg2 lazyLoad:(BOOL)arg3 selectedRouteIndex:(long long)arg4;
 - (BOOL)isNavigable:(id)arg1;
+- (id)partialRouteAtIndex:(unsigned long long)arg1;
 - (id)requestForRoute:(id)arg1;
 - (double)requestTime:(id)arg1;
 - (id)responseForRoute:(id)arg1;

@@ -17,7 +17,7 @@
 
 - (id)_groupablesForItems:(id)arg1;
 - (id)init;
-- (id)initWithPadInterfaceHeuristics:(BOOL)arg1;
+- (id)initWithHeuristics:(long long)arg1;
 
 @end
 

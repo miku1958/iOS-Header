@@ -29,9 +29,10 @@
     int _recursionCheck;
     NSMutableSet *_pendingKeyboardGrabs;
     BOOL _takingSnapshot;
+    BOOL _windowEnabled;
+    BOOL _currentKeyboard;
     BOOL _updatingHeight;
     BOOL _handlingRemoteEvent;
-    BOOL _currentKeyboard;
     NSXPCConnection *_connection;
     _UIKeyboardChangedInformation *_currentState;
 }
@@ -47,6 +48,7 @@
 @property (readonly) BOOL handlingRemoteEvent; // @synthesize handlingRemoteEvent=_handlingRemoteEvent;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
+@property (readonly) double iavHeight;
 @property (readonly) double intersectionHeight;
 @property (nonatomic) BOOL isSnapshotting;
 @property (readonly) BOOL keyboardActive;
@@ -89,9 +91,10 @@
 - (void)performOnControllers:(CDUnknownBlockType)arg1;
 - (void)performOnDistributedControllers:(CDUnknownBlockType)arg1;
 - (id)prepareForHostedWindow;
-- (void)prepareToMoveKeyboard:(struct CGRect)arg1 showing:(BOOL)arg2 forScreen:(id)arg3;
+- (void)prepareToMoveKeyboard:(struct CGRect)arg1 withIAV:(struct CGRect)arg2 showing:(BOOL)arg3 forScreen:(id)arg4;
 - (void)queue_applicationLostFocusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)queue_failedConnection:(id)arg1;
+- (void)queue_getDebugInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)queue_keyboardChanged:(id)arg1 onComplete:(CDUnknownBlockType)arg2;
 - (void)queue_keyboardChangedWithCompletion:(CDUnknownBlockType)arg1;
 - (void)queue_keyboardSuppressed:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;

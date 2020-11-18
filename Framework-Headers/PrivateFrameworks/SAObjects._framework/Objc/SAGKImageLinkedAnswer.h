@@ -6,7 +6,7 @@
 
 #import <SAObjects/SAGKLinkedAnswer.h>
 
-@class NSArray, NSNumber, SAUIImageResource;
+@class NSNumber, SAUIImageResource;
 
 @interface SAGKImageLinkedAnswer : SAGKLinkedAnswer
 {
@@ -14,7 +14,6 @@
 
 @property (copy, nonatomic) NSNumber *fileSize;
 @property (strong, nonatomic) SAUIImageResource *imageResource;
-@property (copy, nonatomic) NSArray *thumbnails;
 
 + (id)imageLinkedAnswer;
 + (id)imageLinkedAnswerWithDictionary:(id)arg1 context:(id)arg2;

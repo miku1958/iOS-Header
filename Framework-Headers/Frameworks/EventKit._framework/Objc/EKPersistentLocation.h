@@ -16,6 +16,7 @@
 
 @property (copy, nonatomic) NSString *address;
 @property (copy, nonatomic) NSString *addressBookEntityID;
+@property (copy, nonatomic) NSString *derivedFrom;
 @property (copy, nonatomic) NSNumber *latitude;
 @property (copy, nonatomic) NSNumber *longitude;
 @property (copy, nonatomic) NSData *mapKitHandle;

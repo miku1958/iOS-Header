@@ -61,6 +61,9 @@
 - (BOOL)_addOrModifyEvent:(id)arg1 inICSCalendar:(id)arg2 withContainer:(void *)arg3 shouldMergeProperties:(BOOL)arg4 outMergeDidChooseLocalProperties:(BOOL *)arg5 inMobileCalendar:(id)arg6;
 - (BOOL)_addOrModifyTask:(id)arg1 inICSCalendar:(id)arg2 withContainer:(void *)arg3 shouldMergeProperties:(BOOL)arg4 outMergeDidChooseLocalProperties:(BOOL *)arg5 inMobileCalendar:(id)arg6;
 - (void)_fixUpCalendarForServer:(id)arg1;
+- (id)_getDetachedEventUniqueIdentifiersForCalEvent:(void *)arg1;
+- (void)_removeCalEvent:(void *)arg1 fromUniqueIdentifiersSet:(id)arg2;
+- (void)_removeDetachedEventsWithUniqueIdentifiers:(id)arg1 fromEvent:(void *)arg2 withContainer:(void *)arg3;
 - (void)_setModificationInfoOnItem:(void *)arg1;
 - (void)addChangeOfType:(id)arg1 forChangeRowid:(int)arg2;
 - (void)dealloc;

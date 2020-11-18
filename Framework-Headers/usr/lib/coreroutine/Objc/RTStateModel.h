@@ -7,47 +7,41 @@
 #import <objc/NSObject.h>
 
 #import <coreroutine/NSSecureCoding-Protocol.h>
-#import <coreroutine/RTVisitMonitorDelegate-Protocol.h>
+#import <coreroutine/RTDiagnostics-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, RTStateModelEarliestLatestEl, RTStateModelOneVisit, RTVisitMonitor;
+@class NSArray, NSMutableDictionary, RTStateModelEarliestLatestEl, RTStateModelOneVisit;
 @protocol OS_dispatch_queue, RTStateModelDelegate;
 
-@interface RTStateModel : NSObject <RTVisitMonitorDelegate, NSSecureCoding>
+@interface RTStateModel : NSObject <RTDiagnostics, NSSecureCoding>
 {
     BOOL _processingRawLocations;
     int _archive1Fd;
     int _archive2Fd;
     id<RTStateModelDelegate> _delegate;
-    double _timeIntervalofLastSCI;
     NSArray *_demoLocationsOfInterest;
     NSObject<OS_dispatch_queue> *_queue;
     double _latestIdentification;
-    struct RTStateModelOneVisit *_lastCluster;
+    RTStateModelOneVisit *_lastCluster;
     NSMutableDictionary *_stateModelLut;
     RTStateModelEarliestLatestEl *_earliestLatestStateModelEl;
     long long _version;
     long long _currentStateModelArchive;
-    RTVisitMonitor *_visitMonitor;
+    double _timeIntervalofLastSCI;
 }
 
 @property (nonatomic) int archive1Fd; // @synthesize archive1Fd=_archive1Fd;
 @property (nonatomic) int archive2Fd; // @synthesize archive2Fd=_archive2Fd;
 @property (nonatomic) long long currentStateModelArchive; // @synthesize currentStateModelArchive=_currentStateModelArchive;
-@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<RTStateModelDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSArray *demoLocationsOfInterest; // @synthesize demoLocationsOfInterest=_demoLocationsOfInterest;
-@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) RTStateModelEarliestLatestEl *earliestLatestStateModelEl; // @synthesize earliestLatestStateModelEl=_earliestLatestStateModelEl;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) RTStateModelOneVisit *lastCluster; // @synthesize lastCluster=_lastCluster;
 @property (nonatomic) double latestIdentification; // @synthesize latestIdentification=_latestIdentification;
 @property (nonatomic) BOOL processingRawLocations; // @synthesize processingRawLocations=_processingRawLocations;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSMutableDictionary *stateModelLut; // @synthesize stateModelLut=_stateModelLut;
-@property (readonly) Class superclass;
 @property (nonatomic) double timeIntervalofLastSCI; // @synthesize timeIntervalofLastSCI=_timeIntervalofLastSCI;
 @property (nonatomic) long long version; // @synthesize version=_version;
-@property (strong, nonatomic) RTVisitMonitor *visitMonitor; // @synthesize visitMonitor=_visitMonitor;
 
 + (BOOL)archiveExists;
 + (double)deriveClusterThresholdFromUncClustAplha:(double)arg1 andUncClustBeta:(double)arg2;
@@ -63,6 +57,8 @@
 - (unsigned long long)_consolidateOverlappingLOIs;
 - (id)_getNextPredictedLocationsOfInterestFromLocation:(id)arg1 startDate:(id)arg2 timeInterval:(double)arg3;
 - (id)_getRecursivelyAllLOIsWithinDistance:(double)arg1 ofLocation:(id)arg2 previouslyFoundLocationsOfInterest:(id)arg3;
+- (id)addLocationOfInterestOfType:(long long)arg1 mapItem:(id)arg2 error:(id *)arg3;
+- (id)addOneStateOfType:(long long)arg1 typeSource:(long long)arg2 mapItem:(id)arg3 mapItemSource:(long long)arg4 customLabel:(id)arg5 error:(id *)arg6;
 - (BOOL)anyClusterOfInterestWithinDistance:(double)arg1 ofLocation:(id)arg2 andEnteredEarlierThan:(double)arg3;
 - (void)archive;
 - (double)calculateConfidenceWithNearbyLOIs:(unsigned long long)arg1 impossibleTransitions:(unsigned long long)arg2;
@@ -74,24 +70,28 @@
 - (void)clear;
 - (void)clearArchiveFor:(long long)arg1;
 - (void)consolidateOverlappingLOIs;
-- (id)createLocationOfInterestFromOneState:(id)arg1 shouldGeocode:(BOOL)arg2;
-- (void)createNewState:(id)arg1;
+- (id)createNewOneStateWithDepiction:(id)arg1;
+- (BOOL)disambiguateUsingFavoritePlacesWithError:(id *)arg1;
+- (BOOL)disambiguateUsingHistoryEntriesWithError:(id *)arg1;
+- (BOOL)disambiguateWithError:(id *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (int)fdToArchiveFor:(long long)arg1;
 - (id)findClusterWithLocation:(id)arg1;
-- (BOOL)geocodeAllLocationsOfInterest;
 - (id)getAllLOIsWithinDistance:(double)arg1 ofLocation:(id)arg2;
 - (id)getAllLocationsOfInterest;
-- (CDStruct_c3b9c2ee)getEndingCoordinateWithStartingLocation:(id)arg1 distance:(double)arg2;
+- (struct CLLocationCoordinate2D)getEndingCoordinateWithStartingLocation:(id)arg1 distance:(double)arg2;
 - (id)getLocationOfInterestAtLocation:(id)arg1;
+- (id)getLocationOfInterestWithIdentifier:(id)arg1;
 - (id)getLocationsOfInterestOfType:(long long)arg1;
 - (id)getLocationsOfInterestWithinDistance:(double)arg1 ofLocation:(id)arg2;
+- (id)getLocationsOfInterestWithinStartDate:(id)arg1 endDate:(id)arg2;
 - (double)getLoiConfidenceFromDataPts:(long long)arg1;
 - (double)getMaxDistFromInterval:(double)arg1 withVelocity:(double)arg2;
 - (id)getMostRecentLocationForDate:(id)arg1;
 - (id)getNextPredictedLocationsOfInterestFromLocation:(id)arg1 startDate:(id)arg2 timeInterval:(double)arg3;
 - (double)getNumberOfWeeksInStateModel;
 - (id)getOOStClusterData:(double)arg1 predictionWindow:(double)arg2 numOfWeeks:(int)arg3 refLoc:(id)arg4;
+- (id)getOneStatesOfType:(long long)arg1;
 - (id)getPredictedExitDatesFromLocation:(id)arg1 onDate:(id)arg2;
 - (id)getPredictedLocationsOfInterestBetweenStartDate:(id)arg1 endDate:(id)arg2;
 - (id)getPredictedLocationsOfInterestOnDate:(id)arg1;
@@ -101,6 +101,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithQueue:(id)arg1;
+- (id)initWithQueue:(id)arg1 stateModel:(id)arg2;
 - (void)injectLocationOfInterest:(id)arg1;
 - (void)injectVisit:(id)arg1 locationOfInterest:(id)arg2;
 - (void)logStateModelAvailabilityMetric;
@@ -113,24 +114,33 @@
 - (void)logStateModelLengthMetric;
 - (void)logStateModelVisitCount:(long long)arg1;
 - (void)mergeStateAlpha:(id)arg1 intoBeta:(id)arg2;
-- (void)onVisits:(id)arg1 withError:(id)arg2;
+- (void)onContactStoreDidChange;
+- (void)onContactStoreMeContactDidChange;
 - (int)openFileDescriptorFor:(long long)arg1;
-- (void)processRawLocations:(id)arg1;
-- (void)purge;
+- (BOOL)processMeCardWithError:(id *)arg1;
+- (void)processRawLocations:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)purgeProcessedData;
+- (void)purgeWithReducedNoVisitAge:(BOOL)arg1;
+- (void)refreshMapItems;
 - (void)removeLocationOfInterest:(id)arg1;
 - (void)removeVisit:(id)arg1 locationOfInterest:(id)arg2;
-- (void)sequentialClusterIdentification;
+- (void)reverseGeocodeOneStates;
+- (void)sequentialClusterIdentificationWithHandler:(CDUnknownBlockType)arg1;
 - (void)showData;
 - (void)showRecentActivities:(int)arg1;
-- (void)shutdown;
-- (void)startMonitoringVisits;
-- (void)stopMonitoringVisits;
-- (void)submitClusters:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)submitVisitIncidents:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)unarchive;
 - (id)unarchiveStateModelFor:(long long)arg1;
 - (void)updateDemoLocationsOfInterest;
 - (void)updateInternalState;
+- (void)updateLocationOfInterestWithIdentifier:(id)arg1 customLabel:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)updateLocationOfInterestWithIdentifier:(id)arg1 mapItem:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)updateLocationOfInterestWithIdentifier:(id)arg1 type:(long long)arg2 handler:(CDUnknownBlockType)arg3;
+- (id)updateLocationOfInterestWithIdentifier:(id)arg1 type:(long long)arg2 mapItem:(id)arg3 customLabel:(id)arg4 error:(id *)arg5;
+- (BOOL)updateOneState:(id)arg1 customLabel:(id)arg2 error:(id *)arg3;
+- (BOOL)updateOneState:(id)arg1 mapItem:(id)arg2 mapItemSource:(long long)arg3 error:(id *)arg4;
+- (BOOL)updateOneState:(id)arg1 type:(long long)arg2 typeSource:(long long)arg3 error:(id *)arg4;
+- (BOOL)updateOneState:(id)arg1 type:(long long)arg2 typeSource:(long long)arg3 mapItem:(id)arg4 mapItemSource:(long long)arg5 customLabel:(id)arg6 error:(id *)arg7;
 
 @end
 

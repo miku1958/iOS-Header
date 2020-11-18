@@ -34,9 +34,14 @@
 @property (strong) NSDictionary *travelTimeEstimatedValues; // @synthesize travelTimeEstimatedValues=_travelTimeEstimatedValues;
 @property (strong) NSDictionary *travelTimeLookupErrors; // @synthesize travelTimeLookupErrors=_travelTimeLookupErrors;
 
++ (id)_basedOnLocationLocalizedString;
 - (void).cxx_destruct;
 - (void)_beginOriginLocationEstimationCoreRoutineLookup;
 - (void)_beginOriginLocationEstimationEventKitLookup;
+- (long long)_estimatedTravelTimeRoutingModeAtRowIndex:(unsigned long long)arg1;
+- (id)_estimatedTravelTimeRowErrorAtRowIndex:(unsigned long long)arg1;
+- (BOOL)_estimatedTravelTimeRowHasErrorAtRowIndex:(unsigned long long)arg1;
+- (double)_estimatedTravelTimeValueAtRowIndex:(unsigned long long)arg1;
 - (id)_imageForCellAtIndex:(unsigned long long)arg1;
 - (void)_lookupTimedOut;
 - (void)_originLocationEstimationCompletedCoreRoutineLookup;

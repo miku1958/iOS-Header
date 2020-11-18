@@ -14,11 +14,11 @@
 {
     BOOL _currentComplicationInfo;
     BOOL _transferring;
+    WCUserInfo *_userInfoStorage;
+    NSDate *_creationDate;
     NSError *_transferError;
     NSString *_transferIdentifier;
     NSString *_complicationTransferIdentifier;
-    WCUserInfo *_userInfoStorage;
-    NSDate *_creationDate;
 }
 
 @property (copy) NSString *complicationTransferIdentifier; // @synthesize complicationTransferIdentifier=_complicationTransferIdentifier;

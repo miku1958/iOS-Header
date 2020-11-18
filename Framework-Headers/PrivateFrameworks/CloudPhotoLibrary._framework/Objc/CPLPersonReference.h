@@ -6,26 +6,29 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudPhotoLibrary/CPLReference-Protocol.h>
 #import <CloudPhotoLibrary/NSCopying-Protocol.h>
 #import <CloudPhotoLibrary/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString;
 
-@interface CPLPersonReference : NSObject <NSSecureCoding, NSCopying>
+@interface CPLPersonReference : NSObject <NSSecureCoding, NSCopying, CPLReference>
 {
-    NSString *_personIdentifier;
     NSDictionary *_extraProperties;
+    NSString *_personIdentifier;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSDictionary *extraProperties; // @synthesize extraProperties=_extraProperties;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *personIdentifier; // @synthesize personIdentifier=_personIdentifier;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCPLArchiver:(id)arg1;
 - (id)initWithCoder:(id)arg1;

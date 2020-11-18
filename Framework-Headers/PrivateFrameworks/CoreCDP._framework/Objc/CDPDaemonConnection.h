@@ -19,6 +19,7 @@
 - (id)daemon;
 - (id)daemonWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)synchronousDaemonWithErrorHandler:(CDUnknownBlockType)arg1;
 
 @end
 

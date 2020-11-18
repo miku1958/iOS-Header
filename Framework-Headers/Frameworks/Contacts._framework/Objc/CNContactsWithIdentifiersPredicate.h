@@ -23,8 +23,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSArray *identifiers; // @synthesize identifiers=_identifiers;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (BOOL)cn_supportsNativeSorting;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifiers:(id)arg1;
 - (id)internalIdentifiersForStoreWithIdentifier:(id)arg1;
 - (id)suggestionsWithSortOrder:(long long)arg1 mutableObjects:(BOOL)arg2 service:(id)arg3 error:(id *)arg4;

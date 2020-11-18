@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKBCacheableView-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSTimer, UIKBCacheToken, UIKBKeyView, UIKBKeyViewAnimator, UIKBRenderConfig, UIKBRenderFactory, UIKBTree;
+@class NSMutableDictionary, NSString, NSTimer, UIKBCacheToken, UIKBKeyView, UIKBKeyViewAnimator, UIKBRenderConfig, UIKBRenderFactory, UIKBTree, UIKeyboardEmojiKeyDisplayController;
 
 __attribute__((visibility("hidden")))
 @interface UIKBKeyplaneView : UIKBSplitImageView <UIKBCacheableView>
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     UIKBCacheToken *_cacheToken;
     UIKBCacheToken *_defaultKeyplaneCacheToken;
     UIKBKeyViewAnimator *_keyViewAnimator;
+    UIKeyboardEmojiKeyDisplayController *_emojiKeyManager;
     UIKBKeyView *_candidateGapView;
     NSMutableDictionary *_subviewIndex;
     NSMutableDictionary *_activeViewIndex;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIKBTree *defaultKeyplane; // @synthesize defaultKeyplane=_defaultKeyplane;
 @property (strong, nonatomic) UIKBCacheToken *defaultKeyplaneCacheToken; // @synthesize defaultKeyplaneCacheToken=_defaultKeyplaneCacheToken;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIKeyboardEmojiKeyDisplayController *emojiKeyManager; // @synthesize emojiKeyManager=_emojiKeyManager;
 @property (strong, nonatomic) UIKBRenderFactory *factory; // @synthesize factory=_factory;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL keepNonPersistent;
@@ -73,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isPasscodeStyle;
 - (void)performDelayedDeactivation:(id)arg1;
 - (void)prepareForDisplay;
+- (void)purgeFactory;
 - (void)purgeKeyViews;
 - (void)purgeLayerContents;
 - (void)purgeSubviews;

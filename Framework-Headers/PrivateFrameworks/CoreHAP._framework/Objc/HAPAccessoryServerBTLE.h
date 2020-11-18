@@ -10,6 +10,7 @@
 
 @interface HAPAccessoryServerBTLE : HAPAccessoryServer
 {
+    unsigned char _connectionIdleTime;
     NSNumber *_stateNumber;
     CBPeripheral *_peripheral;
     unsigned long long _hapBLEProtocolVersion;
@@ -18,6 +19,7 @@
 }
 
 @property (readonly, weak, nonatomic) HAPAccessoryServerBrowserBTLE *browser; // @synthesize browser=_browser;
+@property (nonatomic) unsigned char connectionIdleTime; // @synthesize connectionIdleTime=_connectionIdleTime;
 @property (readonly, nonatomic) unsigned long long hapBLEProtocolVersion; // @synthesize hapBLEProtocolVersion=_hapBLEProtocolVersion;
 @property (readonly, nonatomic) CBPeripheral *peripheral; // @synthesize peripheral=_peripheral;
 @property (readonly, nonatomic) unsigned long long resumeSessionID; // @synthesize resumeSessionID=_resumeSessionID;
@@ -27,9 +29,10 @@
 - (void).cxx_destruct;
 - (void)handleConnectionWithError:(id)arg1;
 - (void)handleDisconnectionWithError:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 category:(id)arg6 browser:(id)arg7 keyStore:(id)arg8;
+- (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 category:(id)arg6 connectionIdleTime:(unsigned char)arg7 browser:(id)arg8 keyStore:(id)arg9;
 - (long long)linkType;
 - (void)notifyDelegateUdpatedStateNumber;
+- (void)updateConnectionIdleTime:(unsigned char)arg1;
 - (BOOL)updatePeripheralIdentifier:(id *)arg1;
 - (BOOL)updateResumeSessionID:(unsigned long long)arg1;
 

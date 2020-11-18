@@ -4,18 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CDPContext, NSString;
-@protocol CDPStateUIProviderInternal;
+@class CDPContext, CDPFollowUpContext, NSString;
+@protocol CDPAuthProviderInternal, CDPStateUIProviderInternal;
 
 @protocol CDPDaemonProtocol
+- (void)clearFollowUpWithContext:(CDPFollowUpContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)finishOfflineLocalSecretChangeWithContext:(CDPContext *)arg1 uiProvider:(id<CDPStateUIProviderInternal>)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)getStingrayDisableEligibility:(CDPContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)getStingrayStateForContext:(CDPContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)handleCloudDataProtectionStateWithContext:(CDPContext *)arg1 uiProvider:(id<CDPStateUIProviderInternal>)arg2 completion:(void (^)(BOOL, BOOL, NSError *))arg3;
 - (void)hasLocalSecretWithCompletion:(void (^)(BOOL))arg1;
 - (void)isICDPEnabledForDSID:(NSString *)arg1 checkWithServer:(BOOL)arg2 completion:(void (^)(BOOL))arg3;
 - (void)isUserVisibleKeychainSyncEnabledWithCompletion:(void (^)(BOOL))arg1;
 - (void)localSecretChangedTo:(NSString *)arg1 secretType:(unsigned long long)arg2 context:(CDPContext *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
+- (void)postFollowUpWithContext:(CDPFollowUpContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)preflightStingrayDisableForContext:(CDPContext *)arg1 uiProvider:(id<CDPStateUIProviderInternal>)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)recoverIDMSRecoveryDictionaryWithContext:(CDPContext *)arg1 uiProvider:(id<CDPStateUIProviderInternal>)arg2 authProvider:(id<CDPAuthProviderInternal>)arg3 completion:(void (^)(NSDictionary *, NSError *))arg4;
 - (void)removeNonViewAwarePeersFromCircleWithContext:(CDPContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)repairCloudDataProtectionStateWithContext:(CDPContext *)arg1 uiProvider:(id<CDPStateUIProviderInternal>)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)setStingrayState:(BOOL)arg1 context:(CDPContext *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)setUserVisibleKeychainSyncEnabled:(BOOL)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
+- (void)shouldPerformRepairForContext:(CDPContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 @end
 

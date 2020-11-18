@@ -8,7 +8,10 @@
 
 @interface GKAutomatchPlayerInternal : GKSpecialPlayerInternal
 {
+    long long _automatchPosition;
 }
+
+@property (nonatomic) long long automatchPosition; // @synthesize automatchPosition=_automatchPosition;
 
 - (id)alias;
 - (BOOL)isAutomatchPlayer;

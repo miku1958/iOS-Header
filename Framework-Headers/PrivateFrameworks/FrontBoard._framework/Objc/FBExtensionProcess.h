@@ -6,11 +6,26 @@
 
 #import <FrontBoard/FBProcess.h>
 
+@class FBExtensionInfo, NSString;
+
 @interface FBExtensionProcess : FBProcess
 {
+    BOOL _XPCBundle;
+    int _hostPID;
+    FBExtensionInfo *_extensionInfo;
+    NSString *_hostBundleID;
 }
 
+@property (readonly, nonatomic, getter=isXPCBundle) BOOL XPCBundle; // @synthesize XPCBundle=_XPCBundle;
+@property (readonly, strong, nonatomic) FBExtensionInfo *extensionInfo; // @synthesize extensionInfo=_extensionInfo;
+@property (readonly, copy, nonatomic) NSString *hostBundleID; // @synthesize hostBundleID=_hostBundleID;
+@property (readonly, nonatomic) int hostPID; // @synthesize hostPID=_hostPID;
+@property (readonly, nonatomic) FBProcess *hostProcess; // @dynamic hostProcess;
+
+- (void)dealloc;
+- (id)initWithBundleID:(id)arg1 pid:(int)arg2 callOutQueue:(id)arg3;
 - (BOOL)isExtensionProcess;
+- (id)succinctDescriptionBuilder;
 
 @end
 

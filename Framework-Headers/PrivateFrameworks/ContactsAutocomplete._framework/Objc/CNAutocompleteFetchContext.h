@@ -40,6 +40,7 @@
 - (id)description;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isValid:(id *)arg1;
 
 @end
 

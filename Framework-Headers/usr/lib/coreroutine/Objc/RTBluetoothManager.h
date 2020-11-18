@@ -8,7 +8,6 @@
 
 @class BluetoothManager, NSSet;
 
-__attribute__((visibility("hidden")))
 @interface RTBluetoothManager : RTNotifier
 {
     BOOL _observingConnections;

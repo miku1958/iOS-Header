@@ -6,10 +6,12 @@
 
 #import <CloudKitDaemon/CKDURLRequest.h>
 
-@class CKQuery, CKRecordZoneID, NSArray, NSData, NSMutableArray;
+#import <CloudKitDaemon/CKDURLRequestPipelining-Protocol.h>
+
+@class CKQuery, CKRecordZoneID, NSArray, NSData, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKDQueryURLRequest : CKDURLRequest
+@interface CKDQueryURLRequest : CKDURLRequest <CKDURLRequestPipelining>
 {
     NSMutableArray *_queryResponses;
     BOOL _shouldFetchAssetContent;
@@ -23,6 +25,9 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) NSData *cursor; // @synthesize cursor=_cursor;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property (strong, nonatomic) CKQuery *query; // @synthesize query=_query;
 @property (strong, nonatomic) NSMutableArray *queryResponses; // @synthesize queryResponses=_queryResponses;
@@ -30,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *requestedFields; // @synthesize requestedFields=_requestedFields;
 @property (strong, nonatomic) NSData *resultsCursor; // @synthesize resultsCursor=_resultsCursor;
 @property (nonatomic) BOOL shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
 
 - (void).cxx_destruct;

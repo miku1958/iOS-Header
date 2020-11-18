@@ -6,8 +6,13 @@
 
 #import <CoreLocation/NSObject-Protocol.h>
 
+@class CLLocation;
+
 @protocol CLLocationManagerRoutineServerInterface <NSObject>
+- (void)fetchPredictedApplicationsAtLocation:(CLLocation *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
 - (void)startUpdatingLocation;
+- (void)startUpdatingPredictedApplications;
 - (void)stopUpdatingLocation;
+- (void)stopUpdatingPredictedApplications;
 @end
 

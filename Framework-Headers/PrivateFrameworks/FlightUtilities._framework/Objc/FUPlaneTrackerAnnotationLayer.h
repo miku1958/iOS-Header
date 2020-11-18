@@ -10,22 +10,19 @@ __attribute__((visibility("hidden")))
 @interface FUPlaneTrackerAnnotationLayer : CALayer
 {
     CALayer *_planeImageLayer;
-    CDStruct_2c43369c _startLocation;
-    CDStruct_2c43369c _endLocation;
+    struct CLLocationCoordinate2D _startLocation;
+    struct CLLocationCoordinate2D _endLocation;
 }
 
-@property (readonly) CDStruct_2c43369c currentLocation;
+@property (readonly) struct CLLocationCoordinate2D currentLocation;
 @property (nonatomic) double currentProgress; // @dynamic currentProgress;
-@property (nonatomic) CDStruct_2c43369c endLocation; // @synthesize endLocation=_endLocation;
+@property (nonatomic) struct CLLocationCoordinate2D endLocation; // @synthesize endLocation=_endLocation;
 @property (weak, nonatomic) CALayer *planeImageLayer; // @synthesize planeImageLayer=_planeImageLayer;
-@property (nonatomic) CDStruct_2c43369c startLocation; // @synthesize startLocation=_startLocation;
+@property (nonatomic) struct CLLocationCoordinate2D startLocation; // @synthesize startLocation=_startLocation;
 
-+ (BOOL)needsDisplayForKey:(id)arg1;
 - (void).cxx_destruct;
-- (id)actionForKey:(id)arg1;
-- (double)defaultHeadingForStartPosition:(CDStruct_2c43369c)arg1 endPosition:(CDStruct_2c43369c)arg2 positionPercentage:(double)arg3;
-- (void)display;
-- (CDStruct_2c43369c)geodesicLocationForStartPosition:(CDStruct_2c43369c)arg1 endPosition:(CDStruct_2c43369c)arg2 positionPercentage:(double)arg3;
+- (double)defaultHeadingForStartPosition:(struct CLLocationCoordinate2D)arg1 endPosition:(struct CLLocationCoordinate2D)arg2 positionPercentage:(double)arg3;
+- (struct CLLocationCoordinate2D)geodesicLocationForStartPosition:(struct CLLocationCoordinate2D)arg1 endPosition:(struct CLLocationCoordinate2D)arg2 positionPercentage:(double)arg3;
 - (id)init;
 - (void)setPlaneImage:(id)arg1;
 - (void)updatePlaneStateForProgress:(double)arg1;

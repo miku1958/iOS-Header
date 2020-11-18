@@ -10,6 +10,11 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CLLocationCoordinate2D {
+    double latitude;
+    double longitude;
+};
+
 struct in_addr {
     unsigned int _field1;
 };
@@ -21,11 +26,4 @@ struct sockaddr_in {
     struct in_addr _field4;
     char _field5[8];
 };
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    double latitude;
-    double longitude;
-} CDStruct_2c43369c;
 

@@ -20,12 +20,13 @@
 @property (nonatomic, setter=_setHostTintAdjustmentMode:) long long _hostTintAdjustmentMode; // @synthesize _hostTintAdjustmentMode;
 @property (strong, nonatomic, setter=_setHostTintColor:) UIColor *_hostTintColor; // @synthesize _hostTintColor=__hostTintColor;
 @property (strong, nonatomic, setter=_setHostTraitCollection:) UITraitCollection *_hostTraitCollection; // @synthesize _hostTraitCollection;
-@property (nonatomic, setter=_setWantsTraitPropigation:) BOOL _wantsTraitPropagation; // @synthesize _wantsTraitPropagation;
+@property (nonatomic, setter=_setWantsTraitPropagation:) BOOL _wantsTraitPropagation; // @synthesize _wantsTraitPropagation;
 @property (readonly, nonatomic) _UIHostedWindowHostingHandle *hostingHandle;
 
 - (void).cxx_destruct;
 - (BOOL)__hostViewUnderlapsStatusBar;
 - (void)__setHostViewUnderlapsStatusBar:(BOOL)arg1;
+- (BOOL)_allowsLinkPreviewInteractionInViewServices;
 - (BOOL)_canPromoteFromKeyWindowStack;
 - (void)_configureContextOptions:(id)arg1;
 - (long long)_defaultTintAdjustmentMode;
@@ -37,7 +38,7 @@
 - (long long)_orientationForViewTransform;
 - (BOOL)_presentActionSheet:(id)arg1 inView:(id)arg2 fromYCoordinate:(double)arg3;
 - (void)_registerScrollToTopView:(id)arg1;
-- (BOOL)_shouldPropigateTraitCollectionChanges;
+- (BOOL)_shouldPropagateTraitCollectionChanges;
 - (id)_traitCollectionForSize:(struct CGSize)arg1 screenCollection:(id)arg2 virtualHorizontalSizeClass:(long long)arg3 virtualVerticalSizeClass:(long long)arg4;
 - (void)_unregisterScrollToTopView:(id)arg1;
 - (void)_updateAppTintView;

@@ -8,7 +8,7 @@
 
 @interface GEOComposedRouteSection (VKPolylineOverlay)
 
-@property (readonly, nonatomic) CDStruct_d2b197d1 vkBounds;
+@property (readonly, nonatomic) Box_3d7e3c2c vkBounds;
 
 @end
 

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSMutableArray *conflictLoserEtags; // @synthesize conflictLoserEtags=_conflictLoserEtags;
 
++ (Class)conflictLoserEtagsType;
 - (void).cxx_destruct;
 - (void)addConflictLoserEtags:(id)arg1;
 - (void)clearConflictLoserEtags;

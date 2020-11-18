@@ -40,6 +40,7 @@
 @property (nonatomic) double highlightsLevelOffset; // @dynamic highlightsLevelOffset;
 @property (copy, nonatomic) NSArray *legacyAutoEnhanceFilters; // @dynamic legacyAutoEnhanceFilters;
 @property (nonatomic) BOOL legacyAutoEnhanceIsOn; // @dynamic legacyAutoEnhanceIsOn;
+@property (nonatomic) double localLightLevelOffset; // @dynamic localLightLevelOffset;
 @property (nonatomic) struct CGRect normalizedCropRect; // @dynamic normalizedCropRect;
 @property (copy, nonatomic) NSArray *redEyeCorrections; // @dynamic redEyeCorrections;
 @property (nonatomic) double shadowsLevelOffset; // @dynamic shadowsLevelOffset;

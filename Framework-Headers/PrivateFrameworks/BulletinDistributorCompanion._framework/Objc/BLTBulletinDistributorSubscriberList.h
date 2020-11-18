@@ -29,7 +29,7 @@
 - (void)addSubscriber:(id)arg1;
 - (BOOL)hasSubscribersForSectionID:(id)arg1;
 - (id)init;
-- (void)pingWithBulletin:(id)arg1;
+- (void)pingWithBulletin:(id)arg1 ack:(CDUnknownBlockType)arg2;
 - (void)removeSubscriber:(id)arg1;
 - (id)subscribedSectionIDs;
 - (void)subscriber:(id)arg1 subscribedWithMachServiceName:(id)arg2;

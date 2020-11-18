@@ -19,7 +19,9 @@ __attribute__((visibility("hidden")))
     BOOL _ownsPoints;
     struct PolylineCoordinate _routeStart;
     struct PolylineCoordinate _routeEnd;
-    BOOL _trafficSpeed;
+    double _startDistance;
+    unsigned char _trafficSpeed;
+    double _sectionLengthScaleFactor;
 }
 
 @property (readonly) BOOL hasCompletedMapMatching;
@@ -30,7 +32,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct PolylineCoordinate routeStart; // @synthesize routeStart=_routeStart;
 @property (readonly, nonatomic) GEOComposedRouteSection *section; // @synthesize section=_section;
 @property (readonly, nonatomic) GEOSnappedRoutePath *snappedPath; // @synthesize snappedPath=_snappedPath;
-@property (nonatomic) BOOL trafficSpeed; // @synthesize trafficSpeed=_trafficSpeed;
+@property (nonatomic) double startDistance; // @synthesize startDistance=_startDistance;
+@property (nonatomic) unsigned char trafficSpeed; // @synthesize trafficSpeed=_trafficSpeed;
 
 - (id).cxx_construct;
 - (void)assignPoints:(Matrix_8746f91e *)arg1 count:(unsigned int)arg2;
@@ -40,9 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithOverlay:(id)arg1 section:(id)arg2;
 - (id)initWithOverlay:(id)arg1 section:(id)arg2 routeStartIndex:(unsigned int)arg3 routeEndIndex:(unsigned int)arg4;
 - (id)initWithOverlay:(id)arg1 snappedPath:(id)arg2;
-- (Matrix_8746f91e)interpolateAt:(const struct PolylineCoordinate *)arg1;
-- (struct PolylineCoordinate)pathIndexFromRouteIndex:(struct PolylineCoordinate)arg1;
-- (void)splitTrafficSegmentationAndAddTo:(id)arg1 with:(id)arg2;
+- (void)splitTrafficSegmentationAndAddTo:(id)arg1 with:(struct TrafficSegmentsAlongRoute *)arg2 shouldSnap:(BOOL)arg3;
 
 @end
 

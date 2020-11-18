@@ -6,12 +6,11 @@
 
 #import <EventKit/EKCalendarNotification.h>
 
-@class NSArray, NSDate, NSString;
+@class EKCalendarEventInvitationNotificationAttendee, EKRecurrenceRule, NSArray, NSDate, NSString, NSTimeZone;
 
 @interface EKCalendarEventInvitationNotification : EKCalendarNotification
 {
     BOOL _allDay;
-    BOOL _hasRecurrenceRules;
     BOOL _timeChanged;
     BOOL _dateChanged;
     BOOL _locationChanged;
@@ -21,9 +20,13 @@
     NSDate *_startDateForNextOccurrence;
     NSDate *_endDate;
     NSDate *_participationStatusModifiedDate;
+    NSTimeZone *_timeZone;
     long long _participationStatus;
     long long _status;
+    EKRecurrenceRule *_recurrenceRule;
     NSArray *_attendees;
+    EKCalendarEventInvitationNotificationAttendee *_owner;
+    NSString *_invitedBy;
 }
 
 @property (nonatomic, getter=isAllDay) BOOL allDay; // @synthesize allDay=_allDay;
@@ -31,18 +34,22 @@
 @property (strong, nonatomic) NSArray *attendees; // @synthesize attendees=_attendees;
 @property (nonatomic) BOOL dateChanged; // @synthesize dateChanged=_dateChanged;
 @property (strong, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
-@property (nonatomic) BOOL hasRecurrenceRules; // @synthesize hasRecurrenceRules=_hasRecurrenceRules;
+@property (readonly, nonatomic) NSString *invitedBy; // @synthesize invitedBy=_invitedBy;
 @property (strong, nonatomic) NSString *location; // @synthesize location=_location;
 @property (nonatomic) BOOL locationChanged; // @synthesize locationChanged=_locationChanged;
+@property (strong, nonatomic) EKCalendarEventInvitationNotificationAttendee *owner; // @synthesize owner=_owner;
 @property (nonatomic) long long participationStatus; // @synthesize participationStatus=_participationStatus;
 @property (strong, nonatomic) NSDate *participationStatusModifiedDate; // @synthesize participationStatusModifiedDate=_participationStatusModifiedDate;
+@property (strong, nonatomic) EKRecurrenceRule *recurrenceRule; // @synthesize recurrenceRule=_recurrenceRule;
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (strong, nonatomic) NSDate *startDateForNextOccurrence; // @synthesize startDateForNextOccurrence=_startDateForNextOccurrence;
 @property (nonatomic) long long status; // @synthesize status=_status;
 @property (nonatomic) BOOL timeChanged; // @synthesize timeChanged=_timeChanged;
+@property (strong, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)eventFromEventStore:(id)arg1;
+- (BOOL)hasRecurrenceRules;
 - (id)initWithEvent:(id)arg1;
 
 @end

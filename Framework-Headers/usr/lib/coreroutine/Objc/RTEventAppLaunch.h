@@ -22,10 +22,9 @@
 + (id)stringFromAppLaunchState:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithBundleId:(id)arg1 appLaunchState:(long long)arg2 source:(long long)arg3 startDate:(id)arg4 endDate:(id)arg5 locationIdentifier:(id)arg6;
+- (id)initWithBundleId:(id)arg1 appLaunchState:(long long)arg2 source:(long long)arg3 startDate:(id)arg4 endDate:(id)arg5;
 - (id)initWithCoder:(id)arg1;
 
 @end

@@ -6,15 +6,16 @@
 
 #import <StoreKitUI/SKUIViewReuseCollectionViewCell.h>
 
+#import <StoreKitUI/SKUIAdvertisingSelectable-Protocol.h>
+#import <StoreKitUI/SKUIAdvertisingSelectionForardingTargetAction-Protocol.h>
 #import <StoreKitUI/SKUIPerspectiveView-Protocol.h>
 #import <StoreKitUI/SKUIViewElementView-Protocol.h>
 
-@class NSHashTable, NSMapTable, NSString, SKUIBackgroundImageWrapperForHorizontalLockup, SKUICardLayout, SKUICardViewElement, SKUISizeValue, SKUIViewElement, UIView;
+@class CALayer, NSHashTable, NSMapTable, NSString, SKUIBackgroundImageWrapperForHorizontalLockup, SKUICardLayout, SKUICardViewElement, SKUISizeValue, SKUIViewElement, UIView;
 @protocol SKUIPerspectiveView;
 
-@interface SKUICardViewElementCollectionViewCell : SKUIViewReuseCollectionViewCell <SKUIPerspectiveView, SKUIViewElementView>
+@interface SKUICardViewElementCollectionViewCell : SKUIViewReuseCollectionViewCell <SKUIAdvertisingSelectable, SKUIAdvertisingSelectionForardingTargetAction, SKUIPerspectiveView, SKUIViewElementView>
 {
-    SKUISizeValue *_artworkBoundingSize;
     NSHashTable *_artworkRelatedChildViewElementViews;
     id<SKUIPerspectiveView> _backgroundViewWithParallax;
     SKUIBackgroundImageWrapperForHorizontalLockup *_backgroundWrapper;
@@ -26,12 +27,19 @@
     UIView *_programmedCardBackgroundView;
     SKUIViewElement *_productImageElement;
     NSMapTable *_viewElements;
+    SKUISizeValue *_artworkBoundingSize;
+    UIView *_adCardBackgroundView;
+    CALayer *_compactAdCardHairlineLayer;
 }
 
+@property (strong, nonatomic) UIView *adCardBackgroundView; // @synthesize adCardBackgroundView=_adCardBackgroundView;
 @property (copy, nonatomic) SKUISizeValue *artworkBoundingSize; // @synthesize artworkBoundingSize=_artworkBoundingSize;
+@property (strong, nonatomic) CALayer *compactAdCardHairlineLayer; // @synthesize compactAdCardHairlineLayer=_compactAdCardHairlineLayer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *impressionIdentifier;
+@property (readonly, nonatomic) NSString *lineItem;
 @property (readonly) Class superclass;
 
 + (double)_defaultWidthForLockupWithContext:(id)arg1;
@@ -46,13 +54,17 @@
 - (double)_dividerHeight:(id)arg1;
 - (void)_imageTapAction:(id)arg1;
 - (void)_performDefaultActionForViewElement:(id)arg1;
+- (void)applyLayoutAttributes:(id)arg1;
+- (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)reloadWithViewElement:(id)arg1 width:(double)arg2 context:(id)arg3;
 - (void)setBackgroundColor:(id)arg1;
 - (BOOL)setImage:(id)arg1 forArtworkRequest:(id)arg2 context:(id)arg3;
 - (void)setPerspectiveTargetView:(id)arg1;
+- (void)setSelected:(BOOL)arg1;
 - (void)setVanishingPoint:(struct CGPoint)arg1;
+- (void)skuiadvertising_advertSelectionEventShouldBeForwarded:(id)arg1;
 - (void)updateForChangedDistanceFromVanishingPoint;
 - (BOOL)updateWithItemState:(id)arg1 context:(id)arg2 animated:(BOOL)arg3;
 - (id)viewForElementIdentifier:(id)arg1;

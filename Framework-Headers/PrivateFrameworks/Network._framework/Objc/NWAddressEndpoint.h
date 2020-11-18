@@ -12,12 +12,13 @@
 {
 }
 
-@property (readonly) const struct sockaddr *address;
-@property (readonly) NSData *addressData;
-@property (readonly) unsigned long long addressFamily;
-@property (readonly) NSString *addressString;
-@property (readonly) NSString *addressStringNoPort;
+@property (readonly, nonatomic) const struct sockaddr *address;
+@property (readonly, nonatomic) NSData *addressData;
+@property (readonly, nonatomic) unsigned long long addressFamily;
+@property (readonly, nonatomic) NSString *addressString;
+@property (readonly, nonatomic) NSString *addressStringNoPort;
 
++ (unsigned int)endpointType;
 + (id)endpointWithAddress:(const struct sockaddr *)arg1;
 + (id)endpointWithHostname:(id)arg1 port:(id)arg2;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;

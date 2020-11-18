@@ -6,10 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-@class TSDTileStorage, TSKAccessController;
+#import <TSReading/CALayerDelegate-Protocol.h>
+
+@class NSString, TSDTileStorage, TSKAccessController;
 @protocol NSObject, OS_dispatch_queue;
 
-@interface TSDTileProvider : NSObject
+@interface TSDTileProvider : NSObject <CALayerDelegate>
 {
     id<NSObject> mTarget;
     TSDTileStorage *mTileStorage;
@@ -18,6 +20,10 @@
     CDStruct_2d1207dd mVisibleTileRect;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property CDStruct_2d1207dd visibleTileRect; // @synthesize visibleTileRect=mVisibleTileRect;
 
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;

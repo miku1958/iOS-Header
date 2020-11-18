@@ -40,6 +40,7 @@
 - (BOOL)_isBusy;
 - (BOOL)_layoutLineFragmentStartingWithGlyphAtIndex:(unsigned long long *)arg1 characterIndex:(unsigned long long *)arg2 atPoint:(struct CGPoint *)arg3 renderingContext:(id *)arg4;
 - (CDUnion_09a75e3c *)_lineFragmentRectForProposedRectArgs;
+- (BOOL)_mirrorsTextAlignment;
 - (void)_setBaselineRenderingMode:(BOOL)arg1;
 - (void)_setBusy:(BOOL)arg1;
 - (void)_setForceWordWrapping:(BOOL)arg1;
@@ -66,6 +67,7 @@
 - (void)setLineBreakStrategy:(unsigned long long)arg1;
 - (BOOL)shouldBreakLineByHyphenatingBeforeCharacterAtIndex:(unsigned long long)arg1;
 - (BOOL)shouldBreakLineByWordBeforeCharacterAtIndex:(unsigned long long)arg1;
+- (BOOL)synchronizesAlignmentToDirection;
 
 @end
 

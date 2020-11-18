@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate;
+@class NEVPNManager, NSDate;
 
 @interface NEVPNConnection : NSObject
 {
@@ -14,12 +14,15 @@
     long long _status;
     NSDate *_connectedDate;
     void *_session;
+    NEVPNManager *_weakmanager;
 }
 
 @property (readonly) NSDate *connectedDate; // @synthesize connectedDate=_connectedDate;
+@property (readonly) NEVPNManager *manager;
 @property void *session; // @synthesize session=_session;
 @property (readonly) int sessionType; // @synthesize sessionType=_sessionType;
 @property (readonly) long long status; // @synthesize status=_status;
+@property (weak) NEVPNManager *weakmanager; // @synthesize weakmanager=_weakmanager;
 
 - (void).cxx_destruct;
 - (void)dealloc;

@@ -6,21 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@interface GKQuadTree : NSObject
+@interface GKQuadtree : NSObject
 {
     struct GKCQuadTree<NSObject> *_cQuadTree;
 }
 
-+ (id)quadTreeWithMinPosition:(float)arg1 maxPosition:minCellSize: /* Error: Ran out of types for this method. */;
-- (id)addDataWithPoint:(id)arg1 point: /* Error: Ran out of types for this method. */;
-- (id)addDataWithQuad:(id)arg1 quadOrigin:quadSize: /* Error: Ran out of types for this method. */;
++ (id)quadtreeWithBoundingQuad:(struct GKQuad)arg1 minimumCellSize:(float)arg2;
+- (id)addElement:(id)arg1 withPoint: /* Error: Ran out of types for this method. */;
+- (id)addElement:(id)arg1 withQuad:(struct GKQuad)arg2;
 - (void)dealloc;
+- (id)elementsAtPoint: /* Error: Ran out of types for this method. */;
+- (id)elementsInQuad:(struct GKQuad)arg1;
 - (id)init;
-- (id)initWithMinPosition:(float)arg1 maxPosition:minCellSize: /* Error: Ran out of types for this method. */;
-- (id)queryDataForPoint: /* Error: Ran out of types for this method. */;
-- (id)queryDataForQuad:quadSize: /* Error: Ran out of types for this method. */;
-- (BOOL)removeData:(id)arg1;
-- (BOOL)removeData:(id)arg1 withNode:(id)arg2;
+- (id)initWithBoundingQuad:(struct GKQuad)arg1 minimumCellSize:(float)arg2;
+- (BOOL)removeElement:(id)arg1;
+- (BOOL)removeElement:(id)arg1 withNode:(id)arg2;
 
 @end
 

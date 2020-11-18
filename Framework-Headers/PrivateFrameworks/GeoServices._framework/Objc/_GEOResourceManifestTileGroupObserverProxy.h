@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 - (void)addObserver:(id)arg1;
 - (void)dealloc;

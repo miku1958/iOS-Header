@@ -15,9 +15,11 @@
 + (id)safeCategoryTargetClassName;
 - (double)_accessibilityAllowedGeometryOverlap;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
+- (id)accessibilityCustomActions;
 - (id)accessibilityElements;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
+- (BOOL)isAccessibilityElement;
 - (BOOL)shouldGroupAccessibilityChildren;
 
 @end

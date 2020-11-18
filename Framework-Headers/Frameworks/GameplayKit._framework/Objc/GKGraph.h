@@ -6,14 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray;
+#import <GameplayKit/NSCoding-Protocol.h>
+#import <GameplayKit/NSCopying-Protocol.h>
 
-@interface GKGraph : NSObject
+@class NSArray, NSMutableArray, NSMutableDictionary;
+
+@interface GKGraph : NSObject <NSCopying, NSCoding>
 {
     NSMutableArray *_nodes;
     struct GKCGraph *_cGraph;
+    NSMutableDictionary *__info;
 }
 
+@property (strong, nonatomic) NSMutableDictionary *_info; // @synthesize _info=__info;
 @property (readonly, nonatomic) NSArray *nodes;
 
 + (id)graph;
@@ -22,9 +27,13 @@
 - (void)addNodes:(id)arg1;
 - (struct GKCGraph *)cGraph;
 - (void)connectNodeToLowestCostNode:(id)arg1 bidirectional:(BOOL)arg2;
+- (id)copy;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)findPathFromNode:(id)arg1 toNode:(id)arg2;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithNodes:(id)arg1;
 - (struct GKCGraph *)makeCGraph;
 - (id)nodesMut;

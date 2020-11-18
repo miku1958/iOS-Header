@@ -16,6 +16,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) long long durationMillis;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SACalendar *lastPlayedDate;
 @property (nonatomic) long long playbackPositionMillis;

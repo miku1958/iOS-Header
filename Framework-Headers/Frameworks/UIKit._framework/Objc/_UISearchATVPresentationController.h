@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (long long)adaptivePresentationStyle;
 - (BOOL)animatorShouldLayoutPresentationViews;
 - (id)backgroundObscuringView;
+- (void)containerViewWillLayoutSubviews;
 - (unsigned long long)edgeForHidingNavigationBar;
 - (struct CGRect)finalFrameForContainerView;
 - (BOOL)forceObeyNavigationBarInsets;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldAccountForStatusBar;
 - (void)showBackgroundObscuringView;
 - (double)statusBarAdjustment;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

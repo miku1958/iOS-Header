@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_usesWindowServerHitTesting;
 - (struct CGAffineTransform)_viewTransformForInterfaceOrientation:(long long)arg1;
 - (BOOL)_wantsSceneAssociation;
+- (void)dealloc;
 - (void)invalidate;
 - (void)setWindowLevel:(double)arg1;
 

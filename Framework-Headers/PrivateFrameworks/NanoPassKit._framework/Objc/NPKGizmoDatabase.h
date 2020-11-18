@@ -56,7 +56,8 @@
 - (void).cxx_destruct;
 - (void)_attemptDatabaseOpen;
 - (long long)_databaseVersionExists:(BOOL *)arg1 valid:(BOOL *)arg2;
-- (id)_decodeObjectOfClass:(Class)arg1 fromStatment:(struct sqlite3_stmt *)arg2 column:(int)arg3;
+- (id)_decodeObjectOfClass:(Class)arg1 fromStatement:(struct sqlite3_stmt *)arg2 column:(int)arg3;
+- (id)_decodeObjectOfClasses:(id)arg1 fromStatement:(struct sqlite3_stmt *)arg2 column:(int)arg3;
 - (id)_diffForUniqueIDLocked:(id)arg1;
 - (void)_enumerateAllPassesForMigration:(CDUnknownBlockType)arg1;
 - (BOOL)_executeSQL:(id)arg1;
@@ -84,6 +85,7 @@
 - (BOOL)_updateCompleteHashesDuringMigration:(id)arg1;
 - (void)_updateDatabaseVersionRow:(long long)arg1;
 - (BOOL)_updateDeviceAndPreferredPaymentApplicationsDuringMigration:(id)arg1;
+- (BOOL)_updateDevicePaymentApplicationsDuringMigration:(id)arg1;
 - (BOOL)_updateEffectivePaymentApplicationStateDuringMigration:(id)arg1;
 - (BOOL)_updateEncodedPaymentPassDuringMigration:(id)arg1;
 - (BOOL)_updateHasStoredValueDuringMigration:(id)arg1;
@@ -96,6 +98,8 @@
 - (id)diffForUniqueID:(id)arg1;
 - (void)enumerateAllPassesAndDescriptionsWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateAllPassesWithBlock:(CDUnknownBlockType)arg1;
+- (id)filteredPassesUsingPassDescriptionPredicate:(id)arg1;
+- (BOOL)hasPassesMatchingPassDescriptionPredicate:(id)arg1;
 - (id)init;
 - (id)libraryHashForWatchOSMajorVersion:(unsigned long long)arg1;
 - (id)manifestHashesForWatchOSMajorVersion:(unsigned long long)arg1;

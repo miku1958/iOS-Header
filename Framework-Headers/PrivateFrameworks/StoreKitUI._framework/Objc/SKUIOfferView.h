@@ -9,29 +9,41 @@
 #import <StoreKitUI/SKUIItemOfferButtonDelegate-Protocol.h>
 #import <StoreKitUI/SKUIViewElementView-Protocol.h>
 
-@class NSMapTable, NSMutableArray, NSString;
+@class NSMapTable, NSMutableArray, NSNumber, NSString, UIButton;
 @protocol SKUIOfferViewDelegate;
 
 @interface SKUIOfferView : SKUIViewReuseView <SKUIItemOfferButtonDelegate, SKUIViewElementView>
 {
+    BOOL _showingConfirmation;
+    BOOL _compactModeEnabled;
+    id<SKUIOfferViewDelegate> _delegate;
+    long long _metadataPosition;
     unsigned long long _alignment;
     NSMapTable *_buttonElements;
     NSMapTable *_buyButtonDescriptorToButton;
-    struct UIEdgeInsets _contentInset;
-    id<SKUIOfferViewDelegate> _delegate;
-    BOOL _isShowingConfirmation;
-    long long _metadataPosition;
-    NSMutableArray *_metadataViews;
     NSMapTable *_notices;
+    UIButton *_hlsPlayButton;
+    NSNumber *_hlsID;
+    NSMutableArray *_metadataViews;
     NSMutableArray *_offerButtonViews;
 }
 
+@property (nonatomic) unsigned long long alignment; // @synthesize alignment=_alignment;
+@property (strong, nonatomic) NSMapTable *buttonElements; // @synthesize buttonElements=_buttonElements;
+@property (strong, nonatomic) NSMapTable *buyButtonDescriptorToButton; // @synthesize buyButtonDescriptorToButton=_buyButtonDescriptorToButton;
+@property (nonatomic, getter=isCompactModeEnabled) BOOL compactModeEnabled; // @synthesize compactModeEnabled=_compactModeEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SKUIOfferViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSNumber *hlsID; // @synthesize hlsID=_hlsID;
+@property (strong, nonatomic) UIButton *hlsPlayButton; // @synthesize hlsPlayButton=_hlsPlayButton;
 @property (nonatomic) long long metadataPosition; // @synthesize metadataPosition=_metadataPosition;
-@property (readonly, nonatomic, getter=isShowingConfirmation) BOOL showingConfirmation; // @synthesize showingConfirmation=_isShowingConfirmation;
+@property (strong, nonatomic) NSMutableArray *metadataViews; // @synthesize metadataViews=_metadataViews;
+@property (strong, nonatomic) NSMapTable *notices; // @synthesize notices=_notices;
+@property (strong, nonatomic) NSMutableArray *offerButtonViews; // @synthesize offerButtonViews=_offerButtonViews;
+@property (readonly, nonatomic) NSString *offerViewStateDescription;
+@property (nonatomic, getter=isShowingConfirmation) BOOL showingConfirmation; // @synthesize showingConfirmation=_showingConfirmation;
 @property (readonly) Class superclass;
 
 + (id)_attributedStringForButton:(id)arg1 context:(id)arg2;
@@ -43,10 +55,10 @@
 - (void).cxx_destruct;
 - (void)_buttonAction:(id)arg1;
 - (void)_cancelConfirmationAction:(id)arg1;
-- (void)_positionNoticeForItemOfferButton:(id)arg1;
 - (void)_sendWillAnimate;
 - (BOOL)_shouldHideNoticesWithBuyButtonDescriptor:(id)arg1 context:(id)arg2;
 - (void)_showConfirmationAction:(id)arg1;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)itemOfferButtonDidAnimateTransition:(id)arg1;
 - (void)itemOfferButtonWillAnimateTransition:(id)arg1;

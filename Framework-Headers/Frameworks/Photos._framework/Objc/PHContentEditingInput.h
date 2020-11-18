@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class AVAsset, CLLocation, NSDate, NSString, NSURL, PHAdjustmentData, UIImage;
+@class AVAsset, CLLocation, NSDate, NSMutableArray, NSString, NSURL, PHAdjustmentData, PHLivePhoto, UIImage;
 @protocol OS_dispatch_queue;
 
 @interface PHContentEditingInput : NSObject
 {
-    long long _sandboxExtensionHandle;
     NSObject<OS_dispatch_queue> *_avAssetIsolationQueue;
+    NSMutableArray *_sandboxExtensionHandles;
     int _fullSizeImageOrientation;
     AVAsset *_avAsset;
     long long _mediaType;
@@ -23,22 +23,24 @@
     PHAdjustmentData *_adjustmentData;
     UIImage *_displaySizeImage;
     NSURL *_fullSizeImageURL;
+    PHLivePhoto *_livePhoto;
     long long _baseVersion;
     NSURL *_videoURL;
 }
 
-@property (strong) PHAdjustmentData *adjustmentData; // @synthesize adjustmentData=_adjustmentData;
+@property (strong, nonatomic) PHAdjustmentData *adjustmentData; // @synthesize adjustmentData=_adjustmentData;
 @property (readonly) AVAsset *audiovisualAsset; // @synthesize audiovisualAsset=_avAsset;
 @property (readonly) AVAsset *avAsset;
 @property (nonatomic) long long baseVersion; // @synthesize baseVersion=_baseVersion;
-@property (copy) NSDate *creationDate; // @synthesize creationDate=_creationDate;
-@property (strong) UIImage *displaySizeImage; // @synthesize displaySizeImage=_displaySizeImage;
-@property int fullSizeImageOrientation; // @synthesize fullSizeImageOrientation=_fullSizeImageOrientation;
-@property (copy) NSURL *fullSizeImageURL; // @synthesize fullSizeImageURL=_fullSizeImageURL;
-@property (copy) CLLocation *location; // @synthesize location=_location;
-@property unsigned long long mediaSubtypes; // @synthesize mediaSubtypes=_mediaSubtypes;
-@property long long mediaType; // @synthesize mediaType=_mediaType;
-@property (copy) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
+@property (copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property (strong, nonatomic) UIImage *displaySizeImage; // @synthesize displaySizeImage=_displaySizeImage;
+@property (nonatomic) int fullSizeImageOrientation; // @synthesize fullSizeImageOrientation=_fullSizeImageOrientation;
+@property (copy, nonatomic) NSURL *fullSizeImageURL; // @synthesize fullSizeImageURL=_fullSizeImageURL;
+@property (strong, nonatomic) PHLivePhoto *livePhoto; // @synthesize livePhoto=_livePhoto;
+@property (copy, nonatomic) CLLocation *location; // @synthesize location=_location;
+@property (nonatomic) unsigned long long mediaSubtypes; // @synthesize mediaSubtypes=_mediaSubtypes;
+@property (nonatomic) long long mediaType; // @synthesize mediaType=_mediaType;
+@property (copy, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
 @property (copy, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
 
 - (void).cxx_destruct;

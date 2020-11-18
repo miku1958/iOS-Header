@@ -9,6 +9,6 @@
 @class NSArray, PUMapAnnotationManager;
 
 @protocol PUMapAnnotationManagerDataSource <NSObject>
-- (id)mapAnnotationManager:(PUMapAnnotationManager *)arg1 aggregateAnnotationForAnnotations:(NSArray *)arg2 averageCoordinate:(CDStruct_c3b9c2ee)arg3;
+- (id)mapAnnotationManager:(PUMapAnnotationManager *)arg1 aggregateAnnotationForAnnotations:(NSArray *)arg2 averageCoordinate:(struct CLLocationCoordinate2D)arg3;
 @end
 

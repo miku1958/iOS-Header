@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <MapsSupport/SYStoreDelegate-Protocol.h>
+#import <MapsSupport/SYServiceDelegate-Protocol.h>
+#import <MapsSupport/SYSessionDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, SYStore;
+@class NSMutableArray, NSMutableDictionary, NSString, SYService;
 @protocol OS_dispatch_queue;
 
-@interface MSPSyncManager : NSObject <SYStoreDelegate>
+@interface MSPSyncManager : NSObject <SYServiceDelegate, SYSessionDelegate>
 {
-    SYStore *_store;
-    BOOL _inUpdate;
+    SYService *_service;
     NSObject<OS_dispatch_queue> *_saveQueue;
     NSMutableArray *_bookmarks;
     NSMutableDictionary *_bookmarksMap;
@@ -23,6 +23,8 @@
     NSMutableDictionary *_pinsMap;
     NSMutableArray *_history;
     NSMutableDictionary *_historyMap;
+    BOOL _resetSyncRequested;
+    NSMutableArray *_pendingSyncItems;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -35,21 +37,23 @@
 - (void)_addBookmark:(id)arg1;
 - (void)_addHistoryItem:(id)arg1;
 - (void)_addPin:(id)arg1;
+- (void)_applyAddItem:(id)arg1;
+- (void)_applyDeleteItem:(id)arg1;
+- (void)_applyUpdateItem:(id)arg1;
 - (void)_findDisplayableBookmarks;
 - (void)_notifyObservers;
 - (void)_removeBookmark:(id)arg1;
 - (void)_removeHistoryItem:(id)arg1;
 - (void)_removePin:(id)arg1;
+- (void)_resumeSyncService;
+- (void)_setHasChangesAvailable;
 - (void)_updateBookmark:(id)arg1;
 - (void)_updateFromDisk;
 - (void)_updateHistoryItem:(id)arg1;
 - (void)_updatePin:(id)arg1;
-- (id)_wrapBookmark:(id)arg1;
-- (id)_wrapHistoryItem:(id)arg1;
-- (id)_wrapPin:(id)arg1;
-- (void)addBookmark:(id)arg1 transaction:(id)arg2;
-- (void)addHistoryItem:(id)arg1 transaction:(id)arg2;
-- (void)addPin:(id)arg1 transaction:(id)arg2;
+- (id)_wrapBookmark:(id)arg1 changeType:(long long)arg2;
+- (id)_wrapHistoryItem:(id)arg1 changeType:(long long)arg2;
+- (id)_wrapPin:(id)arg1 changeType:(long long)arg2;
 - (id)bookmarks;
 - (void)completedPreparingSync;
 - (void)completedSync;
@@ -61,27 +65,15 @@
 - (id)readBookmarks;
 - (id)readHistory;
 - (id)readPins;
-- (void)removeBookmark:(id)arg1 transaction:(id)arg2;
-- (void)removeHistoryItem:(id)arg1 transaction:(id)arg2;
-- (void)removePin:(id)arg1 transaction:(id)arg2;
+- (BOOL)service:(id)arg1 startSession:(id)arg2 error:(id *)arg3;
+- (void)serviceDidPairDevice:(id)arg1;
+- (void)setDroppedPin:(id)arg1;
 - (void)setNeedsFullSync;
-- (void)syncStore:(id)arg1 objectAdded:(id)arg2;
-- (void)syncStore:(id)arg1 objectDeleted:(id)arg2;
-- (void)syncStore:(id)arg1 objectUpdated:(id)arg2;
-- (id)syncStoreAllObjects:(id)arg1;
-- (void)syncStoreAllObjectsDeleted:(id)arg1;
-- (void)syncStoreDidCompleteFullSync:(id)arg1;
-- (void)syncStoreDidUpdate:(id)arg1;
-- (void)syncStoreEnqueuedAllFullSyncMessages:(id)arg1 context:(id)arg2;
-- (void)syncStoreWillUpdate:(id)arg1;
-- (void)syncStoreWillUpdate:(id)arg1 objectCount:(unsigned long long)arg2;
-- (void)transaction:(CDUnknownBlockType)arg1;
-- (void)updateBookmark:(id)arg1 transaction:(id)arg2;
-- (void)updateHistoryItem:(id)arg1 transaction:(id)arg2;
-- (void)updatePin:(id)arg1 transaction:(id)arg2;
-- (void)updatedBookmark:(id)arg1;
-- (void)updatedHistoryItem:(id)arg1;
-- (void)updatedPin:(id)arg1;
+- (void)syncSession:(id)arg1 applyChanges:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)syncSession:(id)arg1 didEndWithError:(id)arg2;
+- (long long)syncSession:(id)arg1 enqueueChanges:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (BOOL)syncSession:(id)arg1 resetDataStoreWithError:(id *)arg2;
+- (void)updateHistoryItem:(id)arg1;
 - (void)writeBookmarks:(id)arg1;
 - (void)writeHistory:(id)arg1;
 - (void)writePins:(id)arg1;

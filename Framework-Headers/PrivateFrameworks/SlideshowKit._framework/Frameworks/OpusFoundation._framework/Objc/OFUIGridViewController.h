@@ -18,12 +18,12 @@
     NSOperationQueue *_operationQueue;
     BOOL _hideWhenDeviceRotates;
     BOOL _maintainPercentageScrolledWhenDeviceRotates;
-    OFUIGridView *gridView;
+    OFUIGridView *_gridView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) OFUIGridView *gridView; // @synthesize gridView;
+@property (strong, nonatomic) OFUIGridView *gridView; // @synthesize gridView=_gridView;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideWhenDeviceRotates; // @synthesize hideWhenDeviceRotates=_hideWhenDeviceRotates;
 @property (nonatomic) BOOL maintainPercentageScrolledWhenDeviceRotates; // @synthesize maintainPercentageScrolledWhenDeviceRotates=_maintainPercentageScrolledWhenDeviceRotates;

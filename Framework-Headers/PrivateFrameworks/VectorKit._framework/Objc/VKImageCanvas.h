@@ -4,32 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VectorKit/GGLImageCanvas.h>
+#import <Foundation/NSObject.h>
 
 #import <VectorKit/VKAnimationRunner-Protocol.h>
 #import <VectorKit/VKWorldDelegate-Protocol.h>
 
-@class GEOMapRegion, NSString, VKCamera, VKDispatch, VKLayoutContext, VKTimer, VKWorld;
-@protocol VKImageCanvasDelegate, VKInteractiveCameraController;
+@class GEOMapRegion, GGLImageCanvas, NSString, VKCamera, VKDispatch, VKScreenCameraController, VKTimer, VKWorld;
+@protocol VKImageCanvasDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VKImageCanvas : GGLImageCanvas <VKWorldDelegate, VKAnimationRunner>
+@interface VKImageCanvas : NSObject <VKWorldDelegate, VKAnimationRunner>
 {
     VKWorld *_world;
     VKCamera *_camera;
-    id<VKInteractiveCameraController> _cameraController;
-    VKLayoutContext *_layoutContext;
+    VKScreenCameraController *_cameraController;
     VKDispatch *_dispatch;
     long long _mapType;
+    struct DisplayStyle _mapDisplayStyle;
+    GGLImageCanvas *_displayTarget;
     struct unique_ptr<md::RenderTree, std::__1::default_delete<md::RenderTree>> _mapScene;
-    struct unique_ptr<md::MapCamera, std::__1::default_delete<md::MapCamera>> _mapCamera;
     struct unique_ptr<md::RenderQueue, std::__1::default_delete<md::RenderQueue>> _renderQueue;
+    struct unique_ptr<md::LayoutContext, std::__1::default_delete<md::LayoutContext>> _layoutContext;
     id<VKImageCanvasDelegate> _delegate;
     VKTimer *_layoutTimer;
     BOOL _shouldDrawWhileLoading;
     double _frameTimestamp;
     BOOL _needsLayout;
-    struct unique_ptr<ggl::RenderQueue, std::__1::default_delete<ggl::RenderQueue>> _renderQueueResolve;
 }
 
 @property (readonly, nonatomic) VKCamera *camera; // @synthesize camera=_camera;
@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) VKDispatch *dispatch; // @synthesize dispatch=_dispatch;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) struct DisplayStyle mapDisplayStyle; // @synthesize mapDisplayStyle=_mapDisplayStyle;
 @property (readonly, nonatomic) GEOMapRegion *mapRegion;
 @property (nonatomic) long long mapType; // @synthesize mapType=_mapType;
 @property (readonly, nonatomic) double pitch;
@@ -57,7 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)didLayout;
 - (void)didReceiveMemoryWarning:(BOOL)arg1;
-- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 useMultisampling:(BOOL)arg3 device:(const shared_ptr_807ec9ac *)arg4 homeQueue:(id)arg5;
+- (id)initWithTarget:(id)arg1 device:(struct Device *)arg2 homeQueue:(id)arg3;
 - (void)loadScene;
 - (void)renderSceneWithRenderer:(struct Renderer *)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)runAnimation:(id)arg1;

@@ -6,9 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
+#import <OpusFoundation/CAAnimationDelegate-Protocol.h>
+
 @class CAPropertyAnimation, NSString, NSTimer, OFPropertyAnimationLayer;
 
-@interface OFPropertyAnimation : NSObject
+@interface OFPropertyAnimation : NSObject <CAAnimationDelegate>
 {
     NSString *_animationKey;
     OFPropertyAnimationLayer *_layer;
@@ -17,6 +19,11 @@
     CDUnknownBlockType _progressBlock;
     CDUnknownBlockType _completionBlock;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)animateWithDuration:(double)arg1 rootLayer:(id)arg2 animation:(CDUnknownBlockType)arg3 progress:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 + (id)interpolateValueForKey:(id)arg1 animation:(CDUnknownBlockType)arg2 progress:(double)arg3;

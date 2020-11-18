@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) BOOL nightMode;
 @property (readonly, nonatomic) BOOL nightModeSupported;
+@property (readonly, nonatomic) BOOL ownsScreen;
 @property (readonly, nonatomic) BOOL ownsTurnByTurnNavigation;
 @property (readonly, nonatomic) BOOL recognizingSpeech;
 @property (readonly, nonatomic) BOOL rightHandDrive;
@@ -40,9 +41,9 @@
 
 + (id)currentCarPlayExternalDevice;
 + (id)currentExternalDevice;
-+ (BOOL)setDiagnosticMode:(BOOL)arg1 error:(id *)arg2;
 + (id)sharedLocalDevice;
 - (id)_figEndpointPropertyValueForKey:(struct __CFString *)arg1;
+- (id)_screenInfo;
 - (void)_triggerFakeNotificationNamed:(id)arg1 withPayload:(id)arg2;
 - (id)_weakReference;
 - (id)borrowScreenForClient:(id)arg1 reason:(id)arg2;

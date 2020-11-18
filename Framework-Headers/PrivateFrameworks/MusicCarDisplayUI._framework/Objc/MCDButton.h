@@ -33,6 +33,8 @@
 - (id)colorForTouchFocusLayerSelected;
 - (void)focusedViewDidChange;
 - (void)layoutSubviews;
+- (void)setHidden:(BOOL)arg1;
+- (void)updateButtonOpacityForKnobUnfocused;
 - (void)willMoveToWindow:(id)arg1;
 
 @end

@@ -92,7 +92,6 @@
 - (id)init;
 - (void)renderWithSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 - (void)setFilterType:(long long)arg1 forceStateChange:(BOOL)arg2;
-- (void)setFilterTypeAndWaitForRenderIfChanging:(long long)arg1;
 - (void)setShowGrid:(BOOL)arg1 animated:(BOOL)arg2;
 
 @end

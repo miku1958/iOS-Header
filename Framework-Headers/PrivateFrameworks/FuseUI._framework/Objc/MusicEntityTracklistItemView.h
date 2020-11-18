@@ -8,12 +8,11 @@
 
 #import <FuseUI/MPUTextDrawingCacheInvalidationObserver-Protocol.h>
 #import <FuseUI/MusicEntityContentDescriptorViewConfiguring-Protocol.h>
-#import <FuseUI/MusicEntityViewDownloadInformationObserving-Protocol.h>
 
 @class MPUNowPlayingIndicatorView, MusicDownloadProgressButton, MusicEntityViewContentDescriptor, MusicPopularityIndicatorView, NSMapTable, NSMutableArray, NSString, UIButton, UIImageView;
 @protocol MusicEntityTracklistItemViewDelegate, MusicEntityValueProviding;
 
-@interface MusicEntityTracklistItemView : MusicEntityAbstractLockupView <MPUTextDrawingCacheInvalidationObserver, MusicEntityContentDescriptorViewConfiguring, MusicEntityViewDownloadInformationObserving>
+@interface MusicEntityTracklistItemView : MusicEntityAbstractLockupView <MPUTextDrawingCacheInvalidationObserver, MusicEntityContentDescriptorViewConfiguring>
 {
     UIButton *_contextualActionsButton;
     MusicDownloadProgressButton *_downloadProgressButton;
@@ -33,7 +32,6 @@
     id<MusicEntityTracklistItemViewDelegate> _delegate;
     double _leadingTextColumnWidth;
     double _trailingTextColumnWidth;
-    struct MusicEntityDownloadInformation _downloadInformation;
 }
 
 @property (nonatomic) BOOL alwaysApplyLeadingTextColumnWidth; // @synthesize alwaysApplyLeadingTextColumnWidth=_alwaysApplyLeadingTextColumnWidth;
@@ -42,7 +40,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MusicEntityTracklistItemViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) struct MusicEntityDownloadInformation downloadInformation; // @synthesize downloadInformation=_downloadInformation;
 @property (strong, nonatomic) id<MusicEntityValueProviding> entityValueProvider;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double leadingTextColumnWidth; // @synthesize leadingTextColumnWidth=_leadingTextColumnWidth;
@@ -57,15 +54,11 @@
 - (void)_contentDescriptorDidInvalidateNotification:(id)arg1;
 - (void)_contextualActionsButtonTapped:(id)arg1;
 - (void)_entityDisabledDidChange;
-- (void)_handleArtworkViewTapped;
-- (void)_handlePlayButtonTappedWithAction:(unsigned long long)arg1;
-- (void)_playbackStatusDidChange:(id)arg1;
 - (void)_recycleTextDrawingViewForTextDescriptor:(id)arg1;
 - (void)_recycleTextViewsForTextDescriptors:(id)arg1;
 - (BOOL)_shouldEnableArtworkViewUserInteraction;
 - (BOOL)_shouldLayoutAsEditing;
 - (BOOL)_shouldShowPlayButton;
-- (void)_updatePlaybackIndicator;
 - (id)_viewForTextDescriptor:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -33,7 +33,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong) NSArray *instructors; // @synthesize instructors=_instructors;
 @property (strong) NSString *sortDescriptor; // @synthesize sortDescriptor=_sortDescriptor;
-@property (readonly, copy, nonatomic) NSArray *students; // @synthesize students=_students;
+@property (copy, nonatomic) NSArray *students; // @synthesize students=_students;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
@@ -42,6 +42,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithClassDictionary:(id)arg1 usersByUserIdentifier:(id)arg2;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithStudents:(id)arg1 instructors:(id)arg2 className:(id)arg3 classID:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToLKClass:(id)arg1;
 - (id)sortUsers:(id)arg1;

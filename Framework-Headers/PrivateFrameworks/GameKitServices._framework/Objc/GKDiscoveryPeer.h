@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <GameKitServices/GKSimpleTimerDelegate-Protocol.h>
 
@@ -45,7 +45,7 @@
 @property (copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property (nonatomic) BOOL shouldSignalDiscovery; // @synthesize shouldSignalDiscovery=_shouldSignalDiscovery;
 @property (nonatomic) int state; // @synthesize state=_state;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *syncQueue; // @synthesize syncQueue=_syncQueue;
+@property (readonly, strong, nonatomic) NSObject<OS_dispatch_queue> *syncQueue; // @synthesize syncQueue=_syncQueue;
 @property (strong, nonatomic) GKDiscoveryPeerConnection *trialConnection; // @synthesize trialConnection=_trialConnection;
 
 - (void)cleanUpForBrowse;

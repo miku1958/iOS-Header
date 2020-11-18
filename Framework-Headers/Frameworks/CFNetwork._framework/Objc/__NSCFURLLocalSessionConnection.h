@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
     struct URLConnectionLoader *_loader;
     BOOL _canceled;
     long long _suspended;
-    NSURLResponse *_currentResponse;
     NSObject<OS_dispatch_data> *_pendingData;
     long long _pendingCompletion;
     unsigned long long _didReceiveResponseDisposition;
@@ -35,6 +34,8 @@ __attribute__((visibility("hidden")))
     unsigned long long _maxDataSegmentCoalesceThreshhold;
     unsigned long long _maxDataSegmentCount;
     unsigned int _didReceiveDataCount;
+    BOOL _canSendDidFinishCollectingMetrics;
+    BOOL _sentDidFinishCollectingMetrics;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -54,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)_didReceiveResponse:(id)arg1 sniff:(BOOL)arg2;
 - (void)_didSendBodyData:(struct UploadProgressInfo)arg1;
 - (void)_immediatePostDelegateTick;
+- (void)_needConnectedSocketToHost:(id)arg1 port:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_needNewBodyStream;
 - (void)_redirectRequest:(id)arg1 redirectResponse:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_task_sendFinish;
@@ -71,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithTask:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
 - (void)resume;
 - (void)setBytesPerSecondLimit:(long long)arg1;
+- (void)setIsDownload:(BOOL)arg1;
 - (void)setPoolPriority:(long long)arg1;
 - (void)setPriorityHint:(float)arg1;
 - (void)suspend;

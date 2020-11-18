@@ -8,13 +8,20 @@
 
 #import <CloudDocsDaemon/BRTokenProtocol-Protocol.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface BRCXPCTokenClient : BRCXPCClient <BRTokenProtocol>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 - (void)currentAccountCopyTokenWithBundleID:(id)arg1 version:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (id)description;
+- (void)prepareFileProvidersWithReply:(CDUnknownBlockType)arg1;
 
 @end
 

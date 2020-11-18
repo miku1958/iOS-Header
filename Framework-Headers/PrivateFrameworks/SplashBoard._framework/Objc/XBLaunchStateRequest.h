@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SplashBoard/BSXPCCoding-Protocol.h>
 #import <SplashBoard/NSCopying-Protocol.h>
@@ -13,9 +13,8 @@
 
 @interface XBLaunchStateRequest : NSObject <BSXPCCoding, NSCopying>
 {
-    BOOL _isMainScene;
     FBSDisplay *_display;
-    NSString *_sceneID;
+    NSString *_groupID;
     long long _interfaceOrientation;
     unsigned long long _statusBarState;
     NSString *_urlSchemeName;
@@ -27,13 +26,12 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) FBSDisplay *display; // @synthesize display=_display;
+@property (copy, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
-@property (nonatomic) BOOL isMainScene; // @synthesize isMainScene=_isMainScene;
 @property (copy, nonatomic) NSString *launchInterfaceIdentifier; // @synthesize launchInterfaceIdentifier=_launchInterfaceIdentifier;
 @property (nonatomic) struct CGSize naturalSize; // @synthesize naturalSize=_naturalSize;
 @property (nonatomic) struct CGSize referenceSize; // @synthesize referenceSize=_referenceSize;
-@property (copy, nonatomic) NSString *sceneID; // @synthesize sceneID=_sceneID;
 @property (nonatomic) unsigned long long statusBarState; // @synthesize statusBarState=_statusBarState;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *urlSchemeName; // @synthesize urlSchemeName=_urlSchemeName;

@@ -12,6 +12,7 @@
 @protocol GEOTransitDepartureSequence <NSObject>
 
 @property (readonly, nonatomic) NSString *direction;
+@property (readonly, nonatomic) long long displayStyle;
 @property (readonly, nonatomic) NSString *headsign;
 @property (readonly, nonatomic) BOOL isLowFrequency;
 @property (readonly, nonatomic) id<GEOTransitLine> line;

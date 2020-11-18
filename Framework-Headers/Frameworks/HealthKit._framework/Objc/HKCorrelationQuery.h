@@ -23,6 +23,7 @@
 @property (readonly, copy) NSDictionary *samplePredicates;
 
 + (Class)_queryServerDataObjectClass;
++ (BOOL)shouldApplyPredicateForObjectType:(id)arg1;
 - (void).cxx_destruct;
 - (id)_predicateFilterClasses;
 - (void)_queue_cleanupAfterDeactivation;

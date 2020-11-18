@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
     int _forceCaptureHeight;
     int _forceEncodeWidth;
     int _forceEncodeHeight;
+    int _forceEncodeFramerate;
     int _forceFramerate;
     int _forceBitrate;
     int _forceVideoPayload;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly) BOOL audioRecordingEnabled;
 @property (readonly) int bundleAudio;
+@property (readonly) BOOL canDecodeHD;
 @property (readonly) BOOL cannedReplayEnabled;
 @property (readonly) BOOL disableVAD;
 @property (readonly) int enable2vuyCapture;
@@ -29,19 +31,38 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL enableTxBitstreamDump;
 @property (readonly) int enableTxSourceYuvDump;
 @property (readonly) BOOL enableVPBLogging;
+@property (readonly) int encodingScore;
+@property (readonly) int extraPayloads;
+@property (readonly) int forceAudioBitrate;
+@property (readonly) int forceAudioPacketsPerBundle;
+@property (readonly) float forceAudioPowerThreshold;
+@property (readonly) int forceAudioPowerTimeInterval;
 @property (readonly) int forceBitrate;
 @property (readonly) int forceCaptureHeight;
 @property (readonly) int forceCaptureWidth;
+@property (readonly) int forceEncodeFramerate;
 @property (readonly) int forceEncodeHeight;
 @property (readonly) int forceEncodeWidth;
 @property (readonly) int forceFramerate;
 @property (readonly) BOOL forceHWI;
 @property (readonly) BOOL forceIPv6;
 @property (readonly) int forceRecvVideoPayload;
+@property (readonly) BOOL forceScreenHWI;
 @property (readonly) int forceVideoPayload;
+@property (readonly) int forceVideoStreamFramerate;
+@property (readonly) int forceVideoStreamKeyFrameInterval;
+@property (readonly) int forceVideoStreamResolution;
+@property (readonly) int forceVideoStreamRxMaxBitrate;
+@property (readonly) int forceVideoStreamRxMinBitrate;
+@property (readonly) int forceVideoStreamTxMaxBitrate;
+@property (readonly) int forceVideoStreamTxMinBitrate;
 @property (readonly) int max2GRate;
+@property (readonly) BOOL shouldDisplayVideoInfoLayer;
+@property (readonly) int videoStreamRateControlAlgorithm;
+@property (readonly) BOOL videoStreamRateControlDumpEnabled;
 
 + (id)VideoConferenceDefaultsSingleton;
++ (double)getDoubleValueForKey:(struct __CFString *)arg1 defaultValue:(double)arg2;
 - (id)allocWithZone:(struct _NSZone *)arg1;
 - (id)autorelease;
 - (id)copyWithZone:(struct _NSZone *)arg1;

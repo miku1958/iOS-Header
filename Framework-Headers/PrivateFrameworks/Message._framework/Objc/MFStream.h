@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <Message/NSStreamDelegate-Protocol.h>
+#import <Message/NSURLSessionDelegate-Protocol.h>
 
-@class NSError, NSInputStream, NSMutableDictionary, NSOutputStream, NSString;
+@class NSCondition, NSError, NSInputStream, NSMutableDictionary, NSOutputStream, NSString;
 @protocol OS_dispatch_queue;
 
-@interface MFStream : NSObject <NSStreamDelegate>
+@interface MFStream : NSObject <NSStreamDelegate, NSURLSessionDelegate>
 {
     NSInputStream *_rStream;
     NSOutputStream *_wStream;
@@ -28,6 +29,7 @@
     unsigned long long _bytesRead;
     unsigned long long _bytesWritten;
     BOOL _enableThroughputMonitoring;
+    NSCondition *_condition;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -42,6 +44,7 @@
 + (void)setNetworkThread:(id)arg1;
 - (void)_closeAndReleaseStream:(id)arg1 logMessage:(id)arg2;
 - (id)_copyPropertyForKey:(id)arg1;
+- (void)_createPairWithSocketToHostName:(id)arg1 port:(long long)arg2;
 - (void)_readBytesFromStream;
 - (void)close;
 - (void)dealloc;

@@ -13,7 +13,7 @@
 @interface CATRemoteTransport : CATTransport <CATRemoteConnectionDelegate>
 {
     CATRemoteConnection *mConnection;
-    NSMutableDictionary *mSendOperationsByMessage;
+    NSMutableDictionary *mOperationByUUID;
     BOOL mConnectionHasOpened;
 }
 

@@ -4,32 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
-
-#import <CloudDocsDaemon/NSSecureCoding-Protocol.h>
-
-@class BRCAccountSession, brc_task_tracker;
-@protocol OS_dispatch_queue;
+#import <CloudDocsDaemon/BRCPersistedState.h>
 
 __attribute__((visibility("hidden")))
-@interface BRCStagePersistedState : NSObject <NSSecureCoding>
+@interface BRCStagePersistedState : BRCPersistedState
 {
     long long _latestGCStartTime;
-    BRCAccountSession *_session;
-    brc_task_tracker *_tracker;
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-
-+ (id)loadFromClientStateInSession:(id)arg1 tracker:(id)arg2;
++ (id)loadFromClientStateInSession:(id)arg1 options:(id)arg2;
 + (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (void)setLatestGCStartTime:(long long)arg1;
+- (id)initWithLatestGCStartTime:(long long)arg1;
 - (long long)timeSinceLatestGCStartTime;
 
 @end

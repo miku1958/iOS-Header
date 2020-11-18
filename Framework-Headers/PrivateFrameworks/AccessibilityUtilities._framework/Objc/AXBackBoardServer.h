@@ -42,11 +42,14 @@
 - (void)disableBrightnessFilters;
 - (unsigned long long)guidedAccessAvailability;
 - (id)guidedAccessIgnoredRegions;
+- (void)homeClickSwallowedForGuidedAccess;
 - (id)init;
 - (BOOL)isGuidedAccessActive;
 - (BOOL)isGuidedAccessInWorkspace;
 - (BOOL)isGuidedAccessSelfLockedToApp:(id)arg1;
+- (BOOL)isGuidedAccessUnmanagedSelfLocked;
 - (void)jetsamThirdPartyApps;
+- (BOOL)loadGAXBundleForUnmanagedASAM;
 - (id)performGuidedAccessAutomationCommand:(id)arg1 error:(id *)arg2;
 - (void)postEvent:(id)arg1 afterNamedTap:(id)arg2 includeTaps:(id)arg3;
 - (void)postEvent:(id)arg1 systemEvent:(BOOL)arg2;
@@ -55,7 +58,7 @@
 - (void)registerGestureConflictWithZoom:(id)arg1;
 - (void)registerSiriViewServicePID:(int)arg1;
 - (void)registerZoomAttributesChangeHandler:(CDUnknownBlockType)arg1;
-- (BOOL)requestGuidedAccessSession:(BOOL)arg1 appID:(id)arg2;
+- (void)requestGuidedAccessSession:(BOOL)arg1 appID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)restoreCachedBrightnessFilters;
 - (void)setAccessibilityPreferenceAsMobile:(id)arg1 value:(id)arg2 notification:(id)arg3;
 - (void)setCapsLockLightOn:(BOOL)arg1;
@@ -64,11 +67,12 @@
 - (void)setSwitchControlRendersDeviceUnusable:(BOOL)arg1;
 - (void)setVoiceOverItemChooserVisible:(BOOL)arg1;
 - (void)setZoomInitialFocusRect:(struct CGRect)arg1 fromContext:(unsigned int)arg2;
+- (BOOL)supportsAccessibilityDisplayFilters;
 - (BOOL)supportsAdaptation;
 - (BOOL)supportsBlueLightReduction;
 - (void)toggleGuidedAccess;
+- (BOOL)tripleClickHomeButtonPress;
 - (void)userEventOccurred;
-- (void)wakeUpDeviceIfNecessary;
 - (void)zoomAttributesChanged:(id)arg1;
 - (struct CGRect)zoomInitialFocusRectWithQueryingContext:(unsigned int)arg1;
 

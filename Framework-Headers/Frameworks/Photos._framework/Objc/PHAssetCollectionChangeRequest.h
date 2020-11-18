@@ -9,7 +9,7 @@
 #import <Photos/PHInsertChangeRequest-Protocol.h>
 #import <Photos/PHUpdateChangeRequest-Protocol.h>
 
-@class NSManagedObjectID, NSString, PHAssetCollection, PHChangeRequestHelper, PHCollectionChangeRequestHelper, PHObjectPlaceholder;
+@class NSManagedObjectID, NSString, PHAssetCollection, PHChangeRequestHelper, PHObjectPlaceholder, PHRelationshipChangeRequestHelper;
 
 @interface PHAssetCollectionChangeRequest : NSObject <PHInsertChangeRequest, PHUpdateChangeRequest>
 {
@@ -18,10 +18,10 @@
     NSString *_clientName;
     int _clientProcessID;
     PHChangeRequestHelper *_helper;
-    PHCollectionChangeRequestHelper *_assetsHelper;
+    PHRelationshipChangeRequestHelper *_assetsHelper;
 }
 
-@property (readonly, nonatomic) PHCollectionChangeRequestHelper *assetsHelper; // @synthesize assetsHelper=_assetsHelper;
+@property (readonly, nonatomic) PHRelationshipChangeRequestHelper *assetsHelper; // @synthesize assetsHelper=_assetsHelper;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled; // @synthesize clientEntitled=_clientEntitled;
 @property (readonly, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property (readonly, nonatomic) int clientProcessID; // @synthesize clientProcessID=_clientProcessID;
@@ -60,7 +60,7 @@
 - (void)encodeToXPCDict:(id)arg1;
 - (id)initForNewObject;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
-- (id)initWithXPCDict:(id)arg1 clientEntitled:(BOOL)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
+- (id)initWithXPCDict:(id)arg1 clientEntitlements:(id)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
 - (void)insertAsset:(id)arg1 inAssetsAtIndex:(unsigned long long)arg2;
 - (void)insertAssets:(id)arg1 atIndexes:(id)arg2;
 - (void)moveAssetsAtIndexes:(id)arg1 toIndex:(unsigned long long)arg2;

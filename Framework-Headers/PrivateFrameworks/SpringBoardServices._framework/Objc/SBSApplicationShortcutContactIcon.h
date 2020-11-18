@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
 
 - (void).cxx_destruct;
+- (id)_initForSubclass;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithContactIdentifier:(id)arg1;

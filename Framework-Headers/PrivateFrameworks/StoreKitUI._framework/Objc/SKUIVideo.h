@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSURL, SKUIArtworkList;
+@class NSURL;
+@protocol SKUIArtworkProviding;
 
 @interface SKUIVideo : NSObject
 {
-    SKUIArtworkList *_artworks;
+    id<SKUIArtworkProviding> _artworks;
     NSURL *_url;
 }
 
 @property (readonly, nonatomic) NSURL *URL; // @synthesize URL=_url;
-@property (readonly, nonatomic) SKUIArtworkList *artworks; // @synthesize artworks=_artworks;
+@property (readonly, nonatomic) id<SKUIArtworkProviding> artworks; // @synthesize artworks=_artworks;
 
 - (void).cxx_destruct;
 - (id)initWithVideoDictionary:(id)arg1;

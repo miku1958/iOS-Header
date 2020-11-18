@@ -16,8 +16,10 @@
     NSString *_lastName;
     NSString *_prefix;
     NSString *_suffix;
+    unsigned long long _extractionType;
 }
 
+@property (readonly, nonatomic) unsigned long long extractionType; // @synthesize extractionType=_extractionType;
 @property (readonly, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
 @property (readonly, nonatomic) NSString *fullName; // @synthesize fullName=_fullName;
 @property (readonly, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
@@ -35,6 +37,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFirstName:(id)arg1 middleName:(id)arg2 lastName:(id)arg3 fullName:(id)arg4 prefix:(id)arg5 suffix:(id)arg6 recordId:(id)arg7 origin:(id)arg8;
+- (id)initWithFirstName:(id)arg1 middleName:(id)arg2 lastName:(id)arg3 fullName:(id)arg4 prefix:(id)arg5 suffix:(id)arg6 recordId:(id)arg7 origin:(id)arg8 extractionType:(unsigned long long)arg9;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToName:(id)arg1;
 - (id)name;

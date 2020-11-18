@@ -20,6 +20,10 @@
     NSMutableDictionary *_longFormatters;
 }
 
++ (id)_dateAfterTodayNextWeekFormatStringForDayOfWeek:(long long)arg1 generateLowercaseString:(BOOL)arg2;
++ (id)_dateAfterTodayThisWeekFormatStringForDayOfWeek:(long long)arg1 generateLowercaseString:(BOOL)arg2;
++ (id)_dateBeforeTodayLastWeekFormatStringForDayOfWeek:(long long)arg1 generateLowercaseString:(BOOL)arg2;
++ (id)_dateBeforeTodayThisWeekFormatStringForDayOfWeek:(long long)arg1 generateLowercaseString:(BOOL)arg2;
 + (id)sharedGenerator;
 - (void).cxx_destruct;
 - (id)_customFormatter;
@@ -27,14 +31,10 @@
 - (id)_dateStringForDate:(id)arg1 allDay:(BOOL)arg2 shortFormat:(BOOL)arg3 lowercase:(BOOL)arg4;
 - (void)_invalidateFormatters;
 - (id)_stringForDate:(id)arg1 withLongFormatString:(id)arg2 useAbbreviatedFormats:(BOOL)arg3 lowerCase:(BOOL)arg4;
-- (id)_stringForDateTime:(id)arg1 timeZone:(id)arg2;
-- (id)_stringForTime:(id)arg1;
 - (id)_timeStringForDate:(id)arg1;
 - (id)abbreviatedDayFormatter;
 - (id)dateStringForDate:(id)arg1 allDay:(BOOL)arg2 shortFormat:(BOOL)arg3;
 - (id)dateStringForDate:(id)arg1 allDay:(BOOL)arg2 standalone:(BOOL)arg3 shortFormat:(BOOL)arg4;
-- (id)dateStringForEventInvitation:(id)arg1 timeZone:(id)arg2;
-- (id)dateStringForEventInvitationWithStartDate:(id)arg1 endDate:(id)arg2 timeZone:(id)arg3 allDay:(BOOL)arg4;
 - (id)dayFormatter;
 - (id)dayOfWeekFormatter;
 - (void)dealloc;

@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) BOOL disableAutoDim; // @dynamic disableAutoDim;
 @property (readonly, nonatomic) BOOL dontDimOrLockWhileConnectedToPower; // @dynamic dontDimOrLockWhileConnectedToPower;
 @property (readonly, nonatomic) double minimumLockscreenIdleTime; // @dynamic minimumLockscreenIdleTime;
+@property (readonly, nonatomic) BOOL supportLiftToWake; // @dynamic supportLiftToWake;
 
 - (void)_bindAndRegisterDefaults;
 - (BOOL)disableAutoDimExists;

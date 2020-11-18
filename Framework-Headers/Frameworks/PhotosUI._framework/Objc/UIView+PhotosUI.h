@@ -7,6 +7,9 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (PhotosUI)
+
+@property (readonly, nonatomic) BOOL pu_hasHiddenAncestor;
+
 + (void)_pu_animateWithDuration:(double)arg1 enforced:(BOOL)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)pu_animateWithDuration:(double)arg1 animations:(CDUnknownBlockType)arg2;
 + (void)pu_animateWithDuration:(double)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
@@ -17,6 +20,7 @@
 - (void)pu_addTransform:(struct CGAffineTransform)arg1;
 - (struct CGAffineTransform)pu_convertTransform:(struct CGAffineTransform)arg1 fromView:(id)arg2;
 - (struct CGAffineTransform)pu_convertTransform:(struct CGAffineTransform)arg1 toView:(id)arg2;
+- (void)pu_removeAllGeometryAnimationsRecursively:(BOOL)arg1;
 - (void)pu_setCenterAndBoundsForFrameRect:(struct CGRect)arg1;
 @end
 

@@ -22,7 +22,6 @@
 
 - (void)dealloc;
 - (void)detach;
-- (void)finalize;
 - (id)nextNode;
 - (id)previousNode;
 

@@ -10,16 +10,35 @@
 {
 }
 
++ (id)deviceClass;
++ (BOOL)iPhonePlatform;
 + (BOOL)internalInstall;
 + (BOOL)lowEndHardware;
++ (BOOL)operatingSystemAtLeastVersion:(CDStruct_2ec95fd7)arg1;
++ (BOOL)operatingSystemNoGreaterThanVersion:(CDStruct_2ec95fd7)arg1;
++ (CDStruct_2ec95fd7)operatingSystemVersionFromString:(id)arg1;
++ (BOOL)paired;
 + (id)productType;
 + (id)serialNumber;
++ (BOOL)simulatorPlatform;
 + (BOOL)supportsCoreRoutineCapability;
 + (BOOL)supportsMagicalMomentsCapability;
 + (BOOL)supportsMultiUser;
++ (BOOL)supportsPairedDevice;
++ (BOOL)supportsRoomSensing;
 + (id)systemInfoByName:(id)arg1;
 + (id)systemModel;
 + (id)systemVersion;
++ (BOOL)version:(CDStruct_2ec95fd7)arg1 atLeastVersion:(CDStruct_2ec95fd7)arg2;
++ (BOOL)version:(CDStruct_2ec95fd7)arg1 equalToVersion:(CDStruct_2ec95fd7)arg2;
++ (BOOL)version:(CDStruct_2ec95fd7)arg1 noGreaterThanVersion:(CDStruct_2ec95fd7)arg2;
++ (BOOL)watchPlatform;
+- (BOOL)internalInstall;
+- (BOOL)lowEndHardware;
+- (id)productType;
+- (id)serialNumber;
+- (id)systemModel;
+- (id)systemVersion;
 
 @end
 

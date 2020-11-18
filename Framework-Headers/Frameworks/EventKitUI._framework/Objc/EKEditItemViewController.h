@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL presentModally;
 @property (nonatomic) BOOL showsDoneButton; // @synthesize showsDoneButton=_showsDoneButton;
 @property (nonatomic) unsigned long long subitem; // @synthesize subitem=_subitem;
+@property (nonatomic) BOOL useCustomBackButton;
 
 - (void).cxx_destruct;
 - (void)_saveAndDismissWithForce:(BOOL)arg1;

@@ -20,6 +20,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)factory;
+- (void).cxx_destruct;
 - (id)build;
 - (BOOL)canSetValueForProperty:(id)arg1;
 - (id)init;

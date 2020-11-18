@@ -36,7 +36,7 @@
 + (id)motionActivityConfidenceToString:(unsigned long long)arg1;
 + (id)motionActivityTypeToString:(unsigned long long)arg1;
 + (id)motionActivityVehicleConnectedStateToString:(unsigned long long)arg1;
-+ (void)removeActivites:(id)arg1 stoppedBeforeDate:(id)arg2;
++ (void)removeActivities:(id)arg1 stoppedBeforeDate:(id)arg2;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_bootstrapDominantActivityWithMotionActivites:(id)arg1;
@@ -52,6 +52,7 @@
 - (void)onActivity:(id)arg1;
 - (void)onVehicleConnectedNotification;
 - (void)onVehicleDisconnectedNotification;
+- (void)onVehicleExitNotification;
 
 @end
 

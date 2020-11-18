@@ -10,7 +10,6 @@
 
 @protocol PGPictureInPictureExportedInterface <NSObject>
 - (oneway void)actionButtonTapped;
-- (oneway void)controlsVisibilityChanged:(BOOL)arg1 animated:(BOOL)arg2 synchronizationFence:(BKSAnimationFenceHandle *)arg3;
 - (oneway void)hostedWindowSizeChangeBegan;
 - (oneway void)hostedWindowSizeChangeEnded;
 - (oneway void)pictureInPictureCancelRequestedAnimated:(BOOL)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;

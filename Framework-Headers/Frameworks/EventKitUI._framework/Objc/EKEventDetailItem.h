@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     BOOL _shouldIndent;
     int _cellPosition;
     id<EKEventDetailItemDelegate> _delegate;
+    UIViewController *_viewControllerToPresentFrom;
 }
 
 @property (nonatomic) BOOL allowsEditing; // @synthesize allowsEditing=_allowsEditing;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL shouldIndent; // @synthesize shouldIndent=_shouldIndent;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
+@property (weak, nonatomic) UIViewController *viewControllerToPresentFrom; // @synthesize viewControllerToPresentFrom=_viewControllerToPresentFrom;
 
 - (void).cxx_destruct;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;

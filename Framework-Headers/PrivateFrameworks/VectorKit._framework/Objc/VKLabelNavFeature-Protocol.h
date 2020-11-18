@@ -19,5 +19,6 @@
 @property (readonly, nonatomic) struct PolylineCoordinate routeOffset;
 @property (readonly, nonatomic) NSString *shieldDisplayGroup;
 
+- (void)layoutWithNavContext:(struct NavContext *)arg1;
 @end
 

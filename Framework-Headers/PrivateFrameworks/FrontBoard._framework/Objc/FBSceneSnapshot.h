@@ -23,7 +23,7 @@
 
 - (struct CGAffineTransform)_baseTransformForSnapshotContext:(id)arg1 rootContext:(id)arg2;
 - (id)_collectLayersToSnapshotFromScene:(id)arg1 withSnapshotContext:(id)arg2 rootContext:(id)arg3;
-- (void)capture;
+- (BOOL)capture;
 - (void)dealloc;
 - (id)initWithScene:(id)arg1 snapshotContext:(id)arg2;
 

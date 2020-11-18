@@ -17,9 +17,9 @@
 - (BOOL)_accessibilityOverridesInvisibility;
 - (BOOL)_accessibilityPointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityViewIsVisible;
-- (void)_updateLegibilityLabelsWithUpdatedDateString:(BOOL)arg1;
+- (void)_updateLabels;
+- (id)accessibilityElements;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)setContentAlpha:(double)arg1 withDateVisible:(BOOL)arg2;
 
 @end
 

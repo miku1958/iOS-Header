@@ -9,7 +9,7 @@
 #import <CoreMotion/NSCopying-Protocol.h>
 #import <CoreMotion/NSSecureCoding-Protocol.h>
 
-@class CMAttitude;
+@class CMAttitude, NSString;
 
 @interface CMDeviceMotionLite : NSObject <NSCopying, NSSecureCoding>
 {
@@ -20,11 +20,13 @@
     CDStruct_31142d93 fRawAcceleration;
     CDStruct_31142d93 fRawRotationRate;
     unsigned long long fMachTimestamp;
+    NSString *fPhysicalDeviceUniqueID;
 }
 
 @property (readonly, nonatomic) CMAttitude *attitude; // @synthesize attitude=fAttitude;
 @property (readonly, nonatomic) CDStruct_31142d93 gravity; // @synthesize gravity=fGravity;
 @property (readonly, nonatomic) unsigned long long machTimestamp; // @synthesize machTimestamp=fMachTimestamp;
+@property (readonly, strong, nonatomic) NSString *physicalDeviceUniqueID; // @synthesize physicalDeviceUniqueID=fPhysicalDeviceUniqueID;
 @property (readonly, nonatomic) CDStruct_31142d93 rawAcceleration; // @synthesize rawAcceleration=fRawAcceleration;
 @property (readonly, nonatomic) CDStruct_31142d93 rawRotationRate; // @synthesize rawRotationRate=fRawRotationRate;
 @property (readonly, nonatomic) CDStruct_31142d93 rotationRate; // @synthesize rotationRate=fRotationRate;
@@ -39,7 +41,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDeviceMotionLite:(CDStruct_0b056bf9)arg1;
+- (id)initWithDeviceMotionLite:(CDStruct_0b056bf9)arg1 andDeviceID:(id)arg2;
 
 @end
 

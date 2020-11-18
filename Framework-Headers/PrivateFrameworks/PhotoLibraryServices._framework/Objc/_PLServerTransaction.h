@@ -6,11 +6,13 @@
 
 #import <PhotoLibraryServices/_PLClientTransaction.h>
 
-@class NSCountedSet;
+@class NSCountedSet, NSObject;
+@protocol OS_dispatch_queue;
 
 @interface _PLServerTransaction : _PLClientTransaction
 {
     NSCountedSet *_enqueuedChangeScopes;
+    NSObject<OS_dispatch_queue> *_changeScopeQueue;
 }
 
 - (void)_enqueueChangeScopes:(id)arg1;
@@ -20,6 +22,7 @@
 - (void)completeTransaction;
 - (void)completeTransactionScope:(id)arg1;
 - (void)dealloc;
+- (id)generateChangeScopesDescription;
 - (id)init;
 - (BOOL)isClientTransaction;
 - (void)popChangeScopesBatch;

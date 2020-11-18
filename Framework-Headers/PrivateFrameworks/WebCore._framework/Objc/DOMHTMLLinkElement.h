@@ -26,7 +26,11 @@
 
 - (BOOL)_mediaQueryMatches;
 - (BOOL)_mediaQueryMatchesForOrientation:(int)arg1;
+- (id)as;
+- (id)crossOrigin;
 - (id)relList;
+- (void)setAs:(id)arg1;
+- (void)setCrossOrigin:(id)arg1;
 
 @end
 

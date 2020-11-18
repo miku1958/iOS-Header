@@ -6,17 +6,19 @@
 
 #import <Foundation/NSObject.h>
 
+#import <GeoServices/GEOResourceFiltersManagerDelegate-Protocol.h>
 #import <GeoServices/GEOResourceManifestServerProxy-Protocol.h>
-#import <GeoServices/NSURLConnectionDelegate-Protocol.h>
+#import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
 
-@class GEOActiveTileGroup, GEOResourceLoader, GEOResourceManifestConfiguration, GEOResourceManifestDownload, NSError, NSLock, NSMutableArray, NSMutableData, NSString, NSTimer, NSURLConnection;
+@class GEOActiveTileGroup, GEOResourceFiltersManager, GEOResourceLoader, GEOResourceManifestConfiguration, GEOResourceManifestDownload, NSError, NSLock, NSMutableArray, NSMutableData, NSString, NSTimer, NSURLSession, NSURLSessionTask;
 @protocol GEOResourceManifestServerProxyDelegate;
 
 __attribute__((visibility("hidden")))
-@interface GEOResourceManifestServerLocalProxy : NSObject <NSURLConnectionDelegate, GEOResourceManifestServerProxy>
+@interface GEOResourceManifestServerLocalProxy : NSObject <NSURLSessionDataDelegate, GEOResourceFiltersManagerDelegate, GEOResourceManifestServerProxy>
 {
     id<GEOResourceManifestServerProxyDelegate> _delegate;
-    NSURLConnection *_connection;
+    NSURLSession *_session;
+    NSURLSessionTask *_task;
     NSMutableData *_responseData;
     NSString *_responseETag;
     GEOResourceManifestConfiguration *_configuration;
@@ -38,6 +40,7 @@ __attribute__((visibility("hidden")))
     NSError *_lastResourceManifestLoadError;
     NSMutableArray *_manifestUpdateCompletionHandlers;
     double _lastManifestRequestStartTime;
+    GEOResourceFiltersManager *_filtersManager;
 }
 
 @property (readonly, nonatomic) GEOActiveTileGroup *activeTileGroup;
@@ -47,22 +50,24 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)_activeTileGroupOverridesChanged:(id)arg1;
-- (void)_cancelConnection;
-- (void)_changeActiveTileGroup:(id)arg1 flushTileCache:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_cleanupConnection;
+- (void)_cancelSession;
+- (void)_changeActiveTileGroup:(id)arg1 activeScales:(id)arg2 activeScenarios:(id)arg3 loadedResources:(id)arg4 unloadedConditionalResources:(id)arg5 flushTileCache:(BOOL)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)_cleanupSession;
 - (void)_considerChangingActiveTileGroup;
 - (void)_countryProvidersDidChange:(id)arg1;
 - (void)_forceChangeActiveTileGroup:(id)arg1 flushTileCache:(BOOL)arg2 ignoreIdentifier:(BOOL)arg3;
 - (id)_idealTileGroupToUse;
 - (void)_loadFromDisk;
+- (void)_loadImmediateResources:(id)arg1 conditionalWifiResources:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_manifestURL;
 - (void)_networkDefaultsDidChange:(id)arg1;
 - (void)_notifyManifestUpdateCompletionHandlers:(id)arg1;
-- (void)_purgeOldRegionalResources;
-- (void)_purgeOldResources;
 - (void)_reachabilityChanged:(id)arg1;
-- (id)_resourceInfosForTileGroup:(id)arg1;
+- (id)_resourcesForTileGroup:(id)arg1 fromResourceManifest:(id)arg2 regional:(BOOL)arg3 includeAttribution:(BOOL)arg4 scales:(id)arg5 scenarios:(id)arg6;
 - (void)_scheduleTileGroupUpdateTimerWithTimeInterval:(double)arg1;
 - (void)_scheduleUpdateTimerWithTimeInterval:(double)arg1;
 - (void)_startServer;
@@ -73,19 +78,22 @@ __attribute__((visibility("hidden")))
 - (void)_updateTimerFired:(id)arg1;
 - (BOOL)_writeActiveTileGroupToDisk:(id)arg1 error:(id *)arg2;
 - (BOOL)_writeManifestToDisk:(id)arg1 error:(id *)arg2;
+- (void)activateResourceScale:(int)arg1;
+- (void)activateResourceScenario:(int)arg1;
 - (id)authToken;
 - (void)closeConnection;
 - (id)configuration;
-- (void)connection:(id)arg1 didFailWithError:(id)arg2;
-- (void)connection:(id)arg1 didReceiveData:(id)arg2;
-- (void)connection:(id)arg1 didReceiveResponse:(id)arg2;
-- (void)connectionDidFinishLoading:(id)arg1;
+- (void)deactivateResourceScale:(int)arg1;
+- (void)deactivateResourceScenario:(int)arg1;
 - (void)dealloc;
+- (void)filtersManagerDidChangeActiveFilters:(id)arg1;
 - (void)forceUpdate:(CDUnknownBlockType)arg1;
 - (void)getResourceManifestWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithDelegate:(id)arg1 configuration:(id)arg2;
 - (void)openConnection;
+- (void)performOpportunisticResourceLoading;
 - (oneway void)resetActiveTileGroup;
+- (id)serverOperationQueue;
 - (id)serverQueue;
 - (oneway void)setActiveTileGroupIdentifier:(id)arg1;
 - (void)setManifestToken:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

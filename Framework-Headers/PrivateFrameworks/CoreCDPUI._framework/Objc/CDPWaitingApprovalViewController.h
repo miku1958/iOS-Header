@@ -9,27 +9,24 @@
 #import <CoreCDPUI/UITableViewDataSource-Protocol.h>
 #import <CoreCDPUI/UITableViewDelegate-Protocol.h>
 
-@class NSString, UIActivityIndicatorView, UIButton, UILabel;
-@protocol CDPWaitingApprovalDelegate;
+@class CDPRemoteValidationEscapeOffer, NSString, UIActivityIndicatorView, UIButton, UILabel;
 
 @interface CDPWaitingApprovalViewController : CDPTableViewController <UITableViewDataSource, UITableViewDelegate>
 {
-    id<CDPWaitingApprovalDelegate> _delegate;
     UIActivityIndicatorView *_spinner;
     UILabel *_waitingLabel;
     UIButton *_escapeButton;
-    unsigned long long _escapeOffer;
+    CDPRemoteValidationEscapeOffer *_escapeOffer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) unsigned long long escapeOffer; // @synthesize escapeOffer=_escapeOffer;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)escapeTapped:(id)arg1;
-- (id)initWithDelegate:(id)arg1;
+- (void)escapeOfferSelectedWithOption:(id)arg1;
+- (id)initWithEscapeOffer:(id)arg1;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)remoteApprovalSucceeded;

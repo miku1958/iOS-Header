@@ -8,9 +8,16 @@
 
 @interface SKUISearchBar : UISearchBar
 {
+    double _intrinsicWidth;
 }
 
-- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+@property (nonatomic) double intrinsicWidth; // @synthesize intrinsicWidth=_intrinsicWidth;
+
+- (id)init;
+- (void)setShowsCancelButton:(BOOL)arg1;
+- (void)setShowsCancelButton:(BOOL)arg1 animated:(BOOL)arg2;
+- (BOOL)showsCancelButton;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

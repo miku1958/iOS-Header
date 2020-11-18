@@ -12,20 +12,20 @@
 
 + (BOOL)_enumerateAssociationsWithPredicate:(id)arg1 excludedSyncStore:(id)arg2 syncAnchorRange:(struct HDSyncAnchorRange)arg3 lastSyncAnchor:(long long *)arg4 healthDatabase:(id)arg5 error:(id *)arg6 block:(CDUnknownBlockType)arg7;
 + (id)_insertAssociationEntryWithAssociation:(id)arg1 object:(id)arg2 provenance:(long long)arg3 database:(id)arg4 error:(id *)arg5;
-+ (BOOL)_insertEntriesWithAssociationUUID:(id)arg1 objectUUIDsData:(id)arg2 provenance:(long long)arg3 healthDaemon:(id)arg4 error:(id *)arg5;
++ (BOOL)_insertEntriesWithAssociationUUID:(id)arg1 objectUUIDsData:(id)arg2 provenance:(long long)arg3 profile:(id)arg4 error:(id *)arg5;
 + (id)associationPropertyForEntityClass:(Class)arg1;
 + (id)columnsDefinition;
-+ (BOOL)copyAssociationsFromObject:(id)arg1 toObject:(id)arg2 healthDaemon:(id)arg3 error:(id *)arg4;
-+ (id)createNonUniqueIndicesForColumns;
++ (BOOL)copyAssociationsFromObject:(id)arg1 toObject:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)databaseTable;
 + (id)deleteStatementForAssociationWithDatabase:(id)arg1;
 + (id)deleteStatementForObjectAssociationsWithDatabase:(id)arg1;
++ (id)indices;
 + (BOOL)insertEntriesWithAssociation:(id)arg1 objects:(id)arg2 enforceSameSource:(BOOL)arg3 database:(id)arg4 error:(id *)arg5;
-+ (BOOL)insertEntriesWithAssociation:(id)arg1 objects:(id)arg2 enforceSameSource:(BOOL)arg3 healthDaemon:(id)arg4 error:(id *)arg5;
-+ (BOOL)insertEntriesWithAssociationUUID:(id)arg1 objectUUIDsData:(id)arg2 healthDaemon:(id)arg3 error:(id *)arg4;
++ (BOOL)insertEntriesWithAssociation:(id)arg1 objects:(id)arg2 enforceSameSource:(BOOL)arg3 profile:(id)arg4 error:(id *)arg5;
++ (BOOL)insertEntriesWithAssociationUUID:(id)arg1 objectUUIDsData:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)joinClausesForProperty:(id)arg1;
 + (id)journalEntryForAssociation:(id)arg1 objects:(id)arg2;
-+ (id)objectIDsForAssociationEntityWithPersistentID:(long long)arg1 healthDaemon:(id)arg2 error:(id *)arg3;
++ (id)objectIDsForAssociationEntityWithPersistentID:(long long)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)propertyForSyncProvenance;
 + (long long)protectionClass;
 + (id)tableAliases;

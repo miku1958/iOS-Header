@@ -32,8 +32,8 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)canDrawKey:(const CDStruct_32a7f38a *)arg1;
-- (void)drawKey:(const CDStruct_32a7f38a *)arg1 inContext:(struct CGContext *)arg2;
+- (BOOL)canDrawKey:(const CDStruct_7523a67d *)arg1;
+- (void)drawKey:(const CDStruct_7523a67d *)arg1 inContext:(struct CGContext *)arg2;
 - (weak_ptr_96fca551)flyoverContainer;
 - (id)init;
 - (void)setFlyoverContainer:(weak_ptr_96fca551)arg1;

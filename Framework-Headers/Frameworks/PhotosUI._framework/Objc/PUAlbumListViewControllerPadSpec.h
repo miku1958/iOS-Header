@@ -10,40 +10,48 @@
 {
 }
 
+- (void)_getStackSize:(struct CGSize *)arg1 edgeInset:(double *)arg2 forLayoutReferenceSize:(struct CGSize)arg3;
 - (id)_nameOfAddSharedAlbumPlaceholderImage;
 - (id)_nameOfEmptyAlbumPlaceholderImage;
 - (id)_nameOfEmptySharedAlbumPlaceholderImage;
 - (id)_nameOfHiddenAlbumPlaceholderImage;
 - (id)_nameOfRecentlyDeletedAlbumPlaceholderImage;
 - (long long)albumDeletionConfirmationStyle;
-- (BOOL)allowsAlbumCountSubtitle;
+- (id)albumViewControllerSpec;
 - (BOOL)canDisplaySearchActionInNavigationBar;
+- (BOOL)canShowVirtualCollections;
 - (long long)cellContentViewLayout;
-- (struct CGSize)cellSizeForBounds:(struct CGRect)arg1;
+- (struct CGSize)cellSizeForStackSize:(struct CGSize)arg1;
 - (long long)collageImageContentMode;
 - (struct CGSize)collageImageSize;
 - (double)collageSpacing;
+- (void)configureGridLayout:(id)arg1 forLayoutReferenceSize:(struct CGSize)arg2;
 - (void)configureStackViewWithGridStyle:(id)arg1;
 - (BOOL)displaysSearchInPopover;
+- (id)emptyAlbumPlaceholderImage;
 - (id)emptyStackPhotoDecoration;
 - (id)feedViewControllerSpec;
+- (unsigned long long)folderStackViewStyle;
 - (id)gridViewControllerSpec;
-- (long long)imageContentMode;
 - (struct CGSize)imageSize;
+- (struct CGSize)imageSizeForLayoutReferenceSize:(struct CGSize)arg1;
 - (double)maxSearchBarWidth;
 - (id)panoramaViewControllerSpec;
 - (id)photosPickerViewControllerSpec;
+- (double)posterSquareCornerRadius;
+- (double)posterSubitemCornerRadius;
 - (double)sectionFooterHeight;
 - (double)sectionHeaderHeight;
+- (struct UIEdgeInsets)sectionInsetsForLayoutReferenceSize:(struct CGSize)arg1;
+- (BOOL)shouldShowSectionHeaders;
 - (BOOL)shouldUseCollageForCloudFeedPlaceholder;
-- (BOOL)showsAlbumBadgeOnCellContentView;
-- (BOOL)showsAlbumBadgeOnStackView;
 - (BOOL)showsDeleteButtonOnCellContentView;
 - (struct UIOffset)stackOffset;
 - (struct UIEdgeInsets)stackPerspectiveInsets;
 - (struct UIOffset)stackPerspectiveOffset;
 - (id)stackPhotoDecoration;
 - (struct CGSize)stackSize;
+- (struct CGSize)stackSizeForLayoutReferenceSize:(struct CGSize)arg1;
 - (unsigned long long)stackViewStyle;
 - (BOOL)usesStackTransitionToGrid;
 

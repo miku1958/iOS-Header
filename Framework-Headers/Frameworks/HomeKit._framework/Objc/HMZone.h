@@ -6,24 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKit/HMMessageReceiver-Protocol.h>
+#import <HomeKit/HMFMessageReceiver-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMDelegateCaller, HMHome, HMMessageDispatcher, HMThreadSafeMutableArrayCollection, NSArray, NSString, NSUUID;
+@class HMDelegateCaller, HMFMessageDispatcher, HMHome, HMThreadSafeMutableArrayCollection, NSArray, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMZone : NSObject <HMMessageReceiver, NSSecureCoding, HMObjectMerge>
+@interface HMZone : NSObject <HMFMessageReceiver, NSSecureCoding, HMObjectMerge>
 {
     NSUUID *_uniqueIdentifier;
     NSString *_name;
     HMHome *_home;
     NSUUID *_uuid;
-    HMThreadSafeMutableArrayCollection *_currentRooms;
-    HMMessageDispatcher *_msgDispatcher;
+    HMFMessageDispatcher *_msgDispatcher;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     HMDelegateCaller *_delegateCaller;
+    HMThreadSafeMutableArrayCollection *_currentRooms;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
@@ -35,7 +35,7 @@
 @property (weak, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, copy, nonatomic) NSArray *rooms;

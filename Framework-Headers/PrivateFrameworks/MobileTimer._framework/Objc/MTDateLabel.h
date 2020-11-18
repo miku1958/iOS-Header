@@ -6,47 +6,38 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSDate, NSString, NSTimeZone, UIColor, UIFont, UILabel;
-@protocol MTDateLabelObserver;
+@class NSArray, NSDate, NSTimeZone, UIColor, UIFont, UILabel;
 
 @interface MTDateLabel : UIView
 {
     NSTimeZone *_timeZone;
-    BOOL _hideTimeDesignator;
     BOOL _shouldAddLayoutConstraints;
     NSDate *_date;
     UILabel *_dateLabel;
     UIColor *_textColor;
     UIFont *_font;
     UIFont *_timeDesignatorFont;
-    double _paddingFromTimeToDesignator;
-    id<MTDateLabelObserver> _observer;
     NSArray *_currentConstraints;
-    NSString *_timeDesignatorString;
 }
 
 @property (strong, nonatomic) NSArray *currentConstraints; // @synthesize currentConstraints=_currentConstraints;
 @property (copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (readonly, nonatomic) UILabel *dateLabel; // @synthesize dateLabel=_dateLabel;
 @property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
-@property (readonly, nonatomic) BOOL hasTimeDesignator;
-@property (nonatomic) BOOL hideTimeDesignator; // @synthesize hideTimeDesignator=_hideTimeDesignator;
-@property (weak, nonatomic) id<MTDateLabelObserver> observer; // @synthesize observer=_observer;
-@property (nonatomic) double paddingFromTimeToDesignator; // @synthesize paddingFromTimeToDesignator=_paddingFromTimeToDesignator;
+@property (nonatomic) double lastBaselineFrameOriginY;
 @property (nonatomic) BOOL shouldAddLayoutConstraints; // @synthesize shouldAddLayoutConstraints=_shouldAddLayoutConstraints;
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property (strong, nonatomic) UIFont *timeDesignatorFont; // @synthesize timeDesignatorFont=_timeDesignatorFont;
-@property (copy, nonatomic) NSString *timeDesignatorString; // @synthesize timeDesignatorString=_timeDesignatorString;
 @property (strong, nonatomic) NSTimeZone *timeZone;
 
 - (void).cxx_destruct;
 - (void)_noteLayoutChange;
 - (void)_updateDateString;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (struct CGSize)intrinsicContentSize;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateConstraints;
 - (id)viewForBaselineLayout;
+- (id)viewForFirstBaselineLayout;
+- (id)viewForLastBaselineLayout;
 
 @end
 

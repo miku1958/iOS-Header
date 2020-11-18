@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CAShapeLayer, NSDate, NSTimer, PLProgressArcLayer;
+@class CAShapeLayer, NSDate, NSTimer, OKProgressArcLayer;
 
 @interface OKRoundProgressView : UIView
 {
@@ -19,14 +19,14 @@
     double _realProgress;
     double _increaseRate;
     NSDate *_prevUpdateTime;
-    PLProgressArcLayer *__progressArcLayer;
+    OKProgressArcLayer *__progressArcLayer;
     double __contentsScale;
     double _progress;
     long long _style;
 }
 
 @property (nonatomic, setter=_setContentsScale:) double _contentsScale; // @synthesize _contentsScale=__contentsScale;
-@property (strong, nonatomic, setter=_setProgressArcLayer:) PLProgressArcLayer *_progressArcLayer; // @synthesize _progressArcLayer=__progressArcLayer;
+@property (strong, nonatomic, setter=_setProgressArcLayer:) OKProgressArcLayer *_progressArcLayer; // @synthesize _progressArcLayer=__progressArcLayer;
 @property (nonatomic) double progress; // @synthesize progress=_progress;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
 

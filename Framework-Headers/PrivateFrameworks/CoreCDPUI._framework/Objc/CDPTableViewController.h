@@ -27,8 +27,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *deviceClass;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSString *headerSubTitle; // @synthesize headerSubTitle=_headerSubTitle;
-@property (readonly, copy, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
+@property (copy, nonatomic) NSString *headerSubTitle; // @synthesize headerSubTitle=_headerSubTitle;
+@property (copy, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
 @property (strong, nonatomic) CDPPaneHeaderView *headerView; // @synthesize headerView=_headerView;
 @property (readonly, nonatomic) BOOL isIPad;
 @property (readonly, nonatomic) BOOL isiPhone5OrSmaller;
@@ -45,6 +45,7 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)viewDidLayoutSubviews;
 - (id)viewForHeaderInTableView:(id)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

@@ -48,9 +48,11 @@
 - (BOOL)_hasVibrantText;
 - (double)_labelAlpha;
 - (double)_labelVerticalSpacing;
+- (void)_rebuildConstraints;
 - (id)_titleFont;
 - (void)_updateViewHierarchy;
 - (id)_vibrantBaseColor;
+- (void)cleanupLingeringRotationState;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;

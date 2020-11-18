@@ -15,6 +15,7 @@
 + (id)defaultGlyph;
 + (id)defaultIconKeyColor;
 + (struct CGSize)defaultSize;
++ (struct CGSize)minimumAcceptableSizeForDownloadedIcon;
 + (id)precompositedDefaultIcon;
 + (struct CGSize)sizeForIconSize:(long long)arg1;
 

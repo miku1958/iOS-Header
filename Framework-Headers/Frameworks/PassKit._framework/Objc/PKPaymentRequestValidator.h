@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/PKPaymentValidating-Protocol.h>
 
@@ -22,8 +22,8 @@
 
 + (Class)validatedClass;
 + (id)validatorWithObject:(id)arg1;
+- (void).cxx_destruct;
 - (BOOL)_checkTotal:(id)arg1 error:(id *)arg2;
-- (void)dealloc;
 - (id)initWithPaymentRequest:(id)arg1;
 - (BOOL)isValidWithError:(id *)arg1;
 

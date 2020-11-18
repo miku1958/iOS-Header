@@ -19,6 +19,7 @@
 - (void)acceptCandidate:(id)arg1;
 - (BOOL)acceptWord:(id)arg1 firstDelete:(unsigned long long)arg2 forInput:(id)arg3;
 - (BOOL)autocorrectSpellingEnabled;
+- (BOOL)callShouldReplaceExtendedRange:(long long)arg1 withText:(id)arg2 includeMarkedText:(BOOL)arg3;
 - (void)completeDeleteFromInput;
 - (void)completeHandleKeyEvent:(id)arg1;
 - (void)dismissKeyboard;

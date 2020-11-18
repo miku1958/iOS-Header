@@ -26,18 +26,19 @@
 + (BOOL)isMultiUser;
 + (id)sharedManager;
 - (void).cxx_destruct;
+- (void)_createAppleAccountWithUsername:(id)arg1 password:(id)arg2 rawPassword:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_languageConfigurationDictionary;
-- (void)_silentSignInInFailedWithError:(id)arg1;
+- (void)_runSilentLoginUpgradeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_upgradeShortLivedTokenCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)ingestManagedBuddyData;
 - (id)init;
 - (BOOL)isLoginUser;
 - (BOOL)needsToUpgradeShortLivedToken;
+- (void)postUserSwitchContextHasBeenUsed;
 - (void)recoverEMCSWithCompletion:(CDUnknownBlockType)arg1;
 - (void)runSilentLoginUpgradeIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)switchToLoginWindowDueToError:(id)arg1;
-- (void)tokenUpgradeFinishedWithError:(id)arg1;
 - (void)userSwitchContextHasBeenUsed;
 - (void)writeAccountConfigurationIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 

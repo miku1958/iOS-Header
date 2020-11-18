@@ -14,7 +14,6 @@
     struct UIEdgeInsets _labelPaddingInsets;
 }
 
-@property (strong, nonatomic, setter=_setLabel:) UILabel *_label; // @synthesize _label;
 @property (strong, nonatomic) UIFont *labelFont;
 @property (nonatomic) struct UIEdgeInsets labelPaddingInsets; // @synthesize labelPaddingInsets=_labelPaddingInsets;
 @property (strong, nonatomic) UIColor *labelShadowColor;
@@ -22,7 +21,7 @@
 @property (copy, nonatomic) NSString *labelText;
 @property (strong, nonatomic) UIColor *labelTextColor;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

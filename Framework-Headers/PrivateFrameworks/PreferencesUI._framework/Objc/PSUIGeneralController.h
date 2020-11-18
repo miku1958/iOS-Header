@@ -9,17 +9,13 @@
 #import <PreferencesUI/CRCarPlayPreferencesDelegate-Protocol.h>
 #import <PreferencesUI/DevicePINControllerDelegate-Protocol.h>
 
-@class CRCarPlayPreferences, NSArray, NSDictionary, NSMutableDictionary, NSString, NSTimer, PSSpecifier, PSUITVOutManager;
+@class CRCarPlayPreferences, NSString, NSTimer, PSSpecifier, PSUITVOutManager;
 
 @interface PSUIGeneralController : PSListController <CRCarPlayPreferencesDelegate, DevicePINControllerDelegate>
 {
-    NSArray *_autoLockValues;
-    NSDictionary *_autoLockTitleDictionary;
-    NSMutableDictionary *_localizedAutoLockTitleDictionary;
     NSTimer *_usageTimer;
     PSUITVOutManager *_tvOutManager;
     PSSpecifier *_tvOutSpecifier;
-    PSSpecifier *_siriSpecifier;
     CRCarPlayPreferences *_carPreferences;
 }
 
@@ -32,7 +28,6 @@
 - (void).cxx_destruct;
 - (id)EDGEEnabled:(id)arg1;
 - (BOOL)_hasCarPlayContent;
-- (void)_localizeAutoLockTitles;
 - (void)_setUseSwitchForOrientationLockWithSpecifier:(id)arg1;
 - (void)dealloc;
 - (void)didAcceptEnteredPIN:(id)arg1;
@@ -42,22 +37,14 @@
 - (void)handleTVOutChange;
 - (void)handleURL:(id)arg1;
 - (id)init;
-- (id)lockGroupFooter;
-- (id)locksAndUnlocksWithCase:(id)arg1;
 - (id)parentalControlsEnabled:(id)arg1;
 - (void)profileNotification:(id)arg1;
-- (id)screenLock:(id)arg1;
-- (void)setLocksAndUnlocksWithCase:(id)arg1 specifier:(id)arg2;
-- (void)setScreenLock:(id)arg1 specifier:(id)arg2;
 - (void)setSoundEffects:(id)arg1 specifier:(id)arg2;
 - (BOOL)shouldDeferPushForSpecifierID:(id)arg1;
 - (id)soundEffects:(id)arg1;
 - (id)specifiers;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (void)updateAssistantSpecifiers;
-- (void)updateAutoLockSpecifier;
 - (void)viewDidAppear:(BOOL)arg1;
-- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

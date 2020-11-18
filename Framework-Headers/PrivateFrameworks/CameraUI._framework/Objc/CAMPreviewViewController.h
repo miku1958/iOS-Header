@@ -21,10 +21,12 @@
     BOOL __changingModeOrDevice;
     BOOL __userLockedFocusAndExposure;
     BOOL __updateFaceIndicators;
+    BOOL _showingStandardControls;
     float __cachedExposureTargetBias;
     float __exposureBiasPanStartValue;
     id<CAMPreviewViewControllerDelegate> _delegate;
     CAMEffectsRenderer *_effectsRenderer;
+    long long _layoutStyle;
     CUCaptureController *__captureController;
     CAMTimelapseController *__timelapseController;
     long long __mode;
@@ -80,7 +82,9 @@
 @property (readonly, nonatomic, getter=isExposureLockedByUser) BOOL exposureLockedByUser;
 @property (readonly, nonatomic, getter=isFocusLockedByUser) BOOL focusLockedByUser;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property (readonly, nonatomic) CAMPreviewView *previewView;
+@property (nonatomic, getter=isShowingStandardControls) BOOL showingStandardControls; // @synthesize showingStandardControls=_showingStandardControls;
 @property (readonly) Class superclass;
 
 + (double)hideIndicatorAnimationDuration;
@@ -141,6 +145,7 @@
 - (void)_setFocusIndicatorsHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setUserLockedFocusAndExposure:(BOOL)arg1 shouldAnimate:(BOOL)arg2;
 - (BOOL)_shouldAllowAspectRatioToggleForMode:(long long)arg1;
+- (BOOL)_shouldAllowFaceIndicators;
 - (BOOL)_shouldDisableAspectRatioToggle;
 - (BOOL)_shouldDisableFocusUI;
 - (BOOL)_shouldHideFocusIndicators;
@@ -156,6 +161,7 @@
 - (void)_updateExposureBiasSideAnimated:(BOOL)arg1;
 - (void)_updateExposureBiasViews;
 - (void)_updateExposureBiasViews:(id)arg1;
+- (void)_updateFaceIndicatorsForFaceResults:(id)arg1;
 - (void)_updateFaceIndicatorsWithResults:(id)arg1;
 - (void)_updateGestureRecognizersForOrientation;
 - (void)_updatePreviewViewAspectMode;
@@ -182,6 +188,7 @@
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (void)handleTapAtPoint:(struct CGPoint)arg1;
 - (id)initWithCaptureController:(id)arg1 motionController:(id)arg2 timelapseController:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

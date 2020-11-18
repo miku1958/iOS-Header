@@ -6,7 +6,7 @@
 
 #import <SAObjects/SAUISnippet.h>
 
-@class NSArray, NSString, SAUIAppPunchOut;
+@class NSArray, SAUIAppPunchOut;
 
 @interface SAGKSnippet : SAUISnippet
 {
@@ -14,8 +14,6 @@
 
 @property (strong, nonatomic) SAUIAppPunchOut *appPunchOut;
 @property (copy, nonatomic) NSArray *pods;
-@property (copy, nonatomic) NSString *subtitle;
-@property (copy, nonatomic) NSString *title;
 
 + (id)snippet;
 + (id)snippetWithDictionary:(id)arg1 context:(id)arg2;

@@ -10,11 +10,8 @@
 {
 }
 
-+ (BOOL)allowCallForDestinationID:(id)arg1 service:(int)arg2 isRelay:(BOOL)arg3;
-+ (void)allowCallForDestinationID:(id)arg1 service:(int)arg2 isRelay:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
-+ (int)serviceForServiceIdentifier:(id)arg1;
-+ (struct __CFString *)serviceIdentifierForService:(int)arg1 isRelay:(BOOL)arg2;
-+ (BOOL)serviceIdentifierIsRelay:(id)arg1;
++ (BOOL)allowCallForDestinationID:(id)arg1 providerIdentifier:(id)arg2 isFromBlockList:(BOOL *)arg3;
++ (void)allowCallForDestinationID:(id)arg1 providerIdentifier:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

@@ -6,12 +6,20 @@
 
 #import <objc/NSObject.h>
 
+#import <AnnotationKit/NSCopying-Protocol.h>
 #import <AnnotationKit/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface AKAnnotation : NSObject <NSSecureCoding>
+@interface AKAnnotation : NSObject <NSSecureCoding, NSCopying>
 {
+    CDUnknownBlockType _appearanceOverride;
+    BOOL _shouldUseAppearanceOverride;
+    BOOL _isObservingForAppearance;
+    BOOL _isObservingForIsEdited;
+    BOOL _isReallyObservingForIsEdited;
+    BOOL _editsDisableAppearanceOverride;
+    BOOL _isEdited;
     BOOL _isTranslating;
     BOOL _isDraggingHandle;
     BOOL _isEditingText;
@@ -19,30 +27,55 @@
     BOOL _textIsFixedHeight;
     BOOL _textIsClipped;
     BOOL _shouldUsePlaceholderText;
+    NSString *_UUID;
+    NSString *_customPlaceholderText;
     double _originalModelBaseScaleFactor;
     long long _originalExifOrientation;
+    long long _akSerializationVersion;
+    long long _akSerializationPlatform;
+    AKAnnotation *_parentAnnotation;
+    AKAnnotation *_childAnnotation;
+    struct CGRect _initialDrawingBoundsForAppearanceOverride;
 }
 
+@property (readonly) NSString *UUID; // @synthesize UUID=_UUID;
+@property long long akSerializationPlatform; // @synthesize akSerializationPlatform=_akSerializationPlatform;
+@property long long akSerializationVersion; // @synthesize akSerializationVersion=_akSerializationVersion;
+@property (copy) CDUnknownBlockType appearanceOverride;
+@property (weak) AKAnnotation *childAnnotation; // @synthesize childAnnotation=_childAnnotation;
+@property (copy) NSString *customPlaceholderText; // @synthesize customPlaceholderText=_customPlaceholderText;
 @property (readonly) NSString *displayName;
 @property (readonly) struct CGRect drawingBounds;
+@property BOOL editsDisableAppearanceOverride; // @synthesize editsDisableAppearanceOverride=_editsDisableAppearanceOverride;
 @property (readonly) struct CGRect hitTestBounds;
+@property struct CGRect initialDrawingBoundsForAppearanceOverride; // @synthesize initialDrawingBoundsForAppearanceOverride=_initialDrawingBoundsForAppearanceOverride;
 @property (readonly) struct CGRect integralDrawingBounds;
 @property BOOL isDraggingHandle; // @synthesize isDraggingHandle=_isDraggingHandle;
+@property BOOL isEdited; // @synthesize isEdited=_isEdited;
 @property BOOL isEditingText; // @synthesize isEditingText=_isEditingText;
 @property BOOL isTranslating; // @synthesize isTranslating=_isTranslating;
+@property (readonly) BOOL isUsingAppearanceOverride;
 @property (nonatomic) long long originalExifOrientation; // @synthesize originalExifOrientation=_originalExifOrientation;
 @property (nonatomic) double originalModelBaseScaleFactor; // @synthesize originalModelBaseScaleFactor=_originalModelBaseScaleFactor;
+@property (weak) AKAnnotation *parentAnnotation; // @synthesize parentAnnotation=_parentAnnotation;
+@property BOOL shouldObserveEdits;
+@property BOOL shouldUseAppearanceOverride;
 @property BOOL shouldUsePlaceholderText; // @synthesize shouldUsePlaceholderText=_shouldUsePlaceholderText;
 @property BOOL textIsClipped; // @synthesize textIsClipped=_textIsClipped;
 @property BOOL textIsFixedHeight; // @synthesize textIsFixedHeight=_textIsFixedHeight;
 @property BOOL textIsFixedWidth; // @synthesize textIsFixedWidth=_textIsFixedWidth;
 
++ (id)annotationWithData:(id)arg1;
++ (id)defaultPlaceholderText;
 + (id)displayNameForUndoablePropertyChangeWithKey:(id)arg1;
 + (id)keyPathsForValuesAffectingDrawingBounds;
 + (id)keyPathsForValuesAffectingHitTestBounds;
-+ (id)placeholderText;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)adjustModelToCompensateForOriginalExif;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)dataRepresentation;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)flattenModelExifOrientation:(long long)arg1 withModelSize:(struct CGSize)arg2;
 - (id)init;
@@ -50,6 +83,7 @@
 - (id)keysForValuesToObserveForAdornments;
 - (id)keysForValuesToObserveForRedrawing;
 - (id)keysForValuesToObserveForUndo;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)translateBy:(struct CGPoint)arg1;
 
 @end

@@ -16,6 +16,10 @@ __attribute__((visibility("hidden")))
     unsigned int _maxAllowedBitrate3G;
     unsigned int _maxAllowedBitrateLTE;
     unsigned int _maxAllowedBitrateWifi;
+    unsigned int _maxAllowedScreenShareBitrate2G;
+    unsigned int _maxAllowedScreenShareBitrate3G;
+    unsigned int _maxAllowedScreenShareBitrateLTE;
+    unsigned int _maxAllowedScreenShareBitrateWifi;
     unsigned int _maxAllowedAudioOnlyBitrate2G;
     unsigned int _maxAllowedAudioOnlyBitrate3G;
     unsigned int _maxAllowedAudioOnlyBitrateLTE;
@@ -37,6 +41,8 @@ __attribute__((visibility("hidden")))
 - (unsigned int)maxAllowedBitrateForConnection:(int)arg1 operatingMode:(int)arg2;
 - (id)maxAllowedBitrateRuleForConnection:(int)arg1;
 - (unsigned int)maxAllowedCellularBitrate;
+- (unsigned int)maxAllowedScreenShareBitrateForConnection:(int)arg1;
+- (unsigned int)maxAllowedScreenShareCellularBitrate;
 - (void)readCarrierBundleValues;
 - (void)readHardwareValues;
 - (void)readStoreBagValues;

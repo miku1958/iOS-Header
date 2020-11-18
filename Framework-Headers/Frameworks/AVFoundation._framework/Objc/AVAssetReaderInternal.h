@@ -15,10 +15,12 @@
     AVAsset *asset;
     struct OpaqueFigAssetReader *figAssetReader;
     CDStruct_e83c9415 timeRange;
+    BOOL readSingleSample;
     NSMutableArray *outputs;
     NSMutableSet *outputFinishedCallbackInvokers;
     long long status;
     NSError *error;
+    NSError *errorThatOccurredBeforeStartReading;
     NSObject<OS_dispatch_queue> *statusReadWriteQueue;
 }
 

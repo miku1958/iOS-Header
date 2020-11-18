@@ -14,7 +14,6 @@
 }
 
 + (void)initialize;
-+ (id)playerWithPlayerItem:(id)arg1;
 + (id)queuePlayerWithItems:(id)arg1;
 - (long long)_defaultActionAtItemEnd;
 - (void)advanceToNextItem;

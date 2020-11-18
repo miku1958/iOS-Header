@@ -6,17 +6,20 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary;
+@class NSArray, NSDictionary, NSMutableDictionary, NSMutableSet;
 
 @interface CKFetchRecordsOperation : CKDatabaseOperation
 {
     BOOL _shouldFetchAssetContent;
+    BOOL _shouldFetchAssetContentInMemory;
     BOOL _isFetchCurrentUserOperation;
     NSArray *_recordIDs;
     NSArray *_desiredKeys;
     CDUnknownBlockType _perRecordProgressBlock;
     CDUnknownBlockType _perRecordCompletionBlock;
     CDUnknownBlockType _fetchRecordsCompletionBlock;
+    NSMutableSet *_packagesToDestroy;
+    NSMutableDictionary *_assetInfoByArrayIndexByRecordKeyByRecordID;
     NSMutableDictionary *_signaturesOfAssetsByRecordIDAndKey;
     NSMutableDictionary *_recordIDsToRecords;
     NSMutableDictionary *_recordErrors;
@@ -26,10 +29,12 @@
     NSDictionary *_webSharingIdentityDataByRecordID;
 }
 
+@property (strong, nonatomic) NSMutableDictionary *assetInfoByArrayIndexByRecordKeyByRecordID; // @synthesize assetInfoByArrayIndexByRecordKeyByRecordID=_assetInfoByArrayIndexByRecordKeyByRecordID;
 @property (copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property (copy, nonatomic) NSDictionary *desiredPackageFileIndices; // @synthesize desiredPackageFileIndices=_desiredPackageFileIndices;
 @property (copy, nonatomic) CDUnknownBlockType fetchRecordsCompletionBlock; // @synthesize fetchRecordsCompletionBlock=_fetchRecordsCompletionBlock;
 @property (nonatomic) BOOL isFetchCurrentUserOperation; // @synthesize isFetchCurrentUserOperation=_isFetchCurrentUserOperation;
+@property (strong, nonatomic) NSMutableSet *packagesToDestroy; // @synthesize packagesToDestroy=_packagesToDestroy;
 @property (copy, nonatomic) CDUnknownBlockType perRecordCompletionBlock; // @synthesize perRecordCompletionBlock=_perRecordCompletionBlock;
 @property (copy, nonatomic) CDUnknownBlockType perRecordProgressBlock; // @synthesize perRecordProgressBlock=_perRecordProgressBlock;
 @property (strong, nonatomic) NSMutableDictionary *recordErrors; // @synthesize recordErrors=_recordErrors;
@@ -38,6 +43,7 @@
 @property (strong, nonatomic) NSMutableDictionary *recordIDsToRecords; // @synthesize recordIDsToRecords=_recordIDsToRecords;
 @property (strong, nonatomic) NSDictionary *recordIDsToVersionETags; // @synthesize recordIDsToVersionETags=_recordIDsToVersionETags;
 @property (nonatomic) BOOL shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
+@property (nonatomic) BOOL shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;
 @property (strong, nonatomic) NSMutableDictionary *signaturesOfAssetsByRecordIDAndKey; // @synthesize signaturesOfAssetsByRecordIDAndKey=_signaturesOfAssetsByRecordIDAndKey;
 @property (strong, nonatomic) NSDictionary *webSharingIdentityDataByRecordID; // @synthesize webSharingIdentityDataByRecordID=_webSharingIdentityDataByRecordID;
 
@@ -46,7 +52,9 @@
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleProgressCallback:(id)arg1;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
+- (id)assetInfoForRecordID:(id)arg1 recordKey:(id)arg2 arrayIndex:(id)arg3;
+- (BOOL)claimPackagesInRecord:(id)arg1 error:(id *)arg2;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
 - (BOOL)hasCKOperationCallbacksSet;

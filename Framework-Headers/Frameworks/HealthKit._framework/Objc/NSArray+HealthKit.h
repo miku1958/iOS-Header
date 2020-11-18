@@ -7,6 +7,8 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (HealthKit)
+- (id)hk_averageUsingEvaluationBlock:(CDUnknownBlockType)arg1;
+- (id)hk_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)hk_map:(CDUnknownBlockType)arg1;
 @end
 

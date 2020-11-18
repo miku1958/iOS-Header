@@ -15,8 +15,11 @@
 {
     VSKeepAlive *_keepAlive;
     VSKeepAlive *_inactiveKeepAlive;
+    NSString *_clientBundleIdentifier;
+    NSString *_language;
     long long _footprint;
     BOOL _useCustomVoice;
+    long long _voiceType;
     long long _gender;
     BOOL _useSharedSession;
     BOOL _audioSessionIDIsValid;
@@ -34,6 +37,7 @@
         unsigned int delegateStartWithRequest:1;
         unsigned int delegateFinishWithRequest:1;
         unsigned int delegateFinishWithPhonemesSpokenWithRequest:1;
+        unsigned int delegateSuccessWithInstrumentMetrics:1;
         unsigned int delegatePauseWithRequest:1;
         unsigned int delegateContinueWithRequest:1;
         unsigned int delegateWillSpeakWithRequest:1;
@@ -56,13 +60,14 @@
 + (id)availableLanguageCodes;
 + (id)availableVoices;
 + (id)availableVoicesForLanguageCode:(id)arg1;
-+ (void)downloadVoiceAsset:(id)arg1 progress:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)getAllVoiceAssets:(CDUnknownBlockType)arg1;
 + (void)getAutoDownloadedVoiceAssets:(CDUnknownBlockType)arg1;
 + (void)getLocalVoiceAssets:(CDUnknownBlockType)arg1;
++ (void)getLocalVoiceResources:(CDUnknownBlockType)arg1;
 + (void)getLogToFile:(CDUnknownBlockType)arg1;
 + (void)getVoiceInfoForLanguageCode:(id)arg1 footprint:(long long)arg2 gender:(long long)arg3 custom:(BOOL)arg4 reply:(CDUnknownBlockType)arg5;
-+ (void)initialize;
++ (void)getVoiceInfoForLanguageCode:(id)arg1 footprint:(long long)arg2 gender:(long long)arg3 type:(long long)arg4 reply:(CDUnknownBlockType)arg5;
++ (void)getVoiceResourceForLanguage:(id)arg1 reply:(CDUnknownBlockType)arg2;
 + (BOOL)isSystemSpeaking;
 + (BOOL)playVoicePreviewForLanguageCode:(id)arg1 gender:(long long)arg2;
 + (void)setAutoDownloadedVoiceAssets:(id)arg1;
@@ -74,6 +79,7 @@
 - (BOOL)_startSpeakingString:(id)arg1 orAttributedString:(id)arg2 toURL:(id)arg3 withLanguageCode:(id)arg4 request:(id *)arg5 error:(id *)arg6;
 - (BOOL)_stopSpeakingRequest:(id)arg1 atNextBoundary:(long long)arg2 synchronously:(BOOL)arg3 error:(id *)arg4;
 - (void)connection:(id)arg1 speechRequest:(id)arg2 didStopAtEnd:(BOOL)arg3 phonemesSpoken:(id)arg4 error:(id)arg5;
+- (void)connection:(id)arg1 speechRequest:(id)arg2 successWithInstrumentMetrics:(id)arg3;
 - (void)connection:(id)arg1 speechRequest:(id)arg2 willSpeakMark:(long long)arg3 inRange:(struct _NSRange)arg4;
 - (void)connection:(id)arg1 speechRequestDidContinue:(id)arg2;
 - (void)connection:(id)arg1 speechRequestDidPause:(id)arg2;
@@ -86,17 +92,21 @@
 - (id)init;
 - (id)initForInputFeedback;
 - (BOOL)isSpeaking;
+- (id)language;
 - (float)maximumRate;
 - (float)minimumRate;
 - (BOOL)pauseSpeakingAtNextBoundary:(long long)arg1 error:(id *)arg2;
 - (BOOL)pauseSpeakingAtNextBoundary:(long long)arg1 synchronously:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)pauseSpeakingRequest:(id)arg1 atNextBoundary:(long long)arg2 error:(id *)arg3;
 - (BOOL)pauseSpeakingRequest:(id)arg1 atNextBoundary:(long long)arg2 synchronously:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)prewarmIfNeeded;
 - (void)setFootprint:(long long)arg1;
 - (void)setGender:(long long)arg1;
+- (void)setLanguage:(id)arg1;
 - (void)setMaintainInactivePersistentConnection:(BOOL)arg1;
 - (void)setMaintainPersistentConnection:(BOOL)arg1;
 - (void)setUseCustomVoice:(BOOL)arg1;
+- (void)setVoiceType:(long long)arg1;
 - (id)speechString;
 - (BOOL)startSpeakingAttributedString:(id)arg1 toURL:(id)arg2 withLanguageCode:(id)arg3 error:(id *)arg4;
 - (BOOL)startSpeakingString:(id)arg1 error:(id *)arg2;
@@ -114,6 +124,7 @@
 - (BOOL)useCustomVoice;
 - (void)useSharedAudioSession:(BOOL)arg1;
 - (void)useSpecificAudioSession:(unsigned int)arg1;
+- (long long)voiceType;
 
 @end
 

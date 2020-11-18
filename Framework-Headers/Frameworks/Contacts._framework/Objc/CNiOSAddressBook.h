@@ -23,12 +23,12 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_source> *memoryMonitoringSource; // @synthesize memoryMonitoringSource=_memoryMonitoringSource;
 
 + (void)initialize;
-+ (void *)newAddressBookWithPath:(id)arg1;
++ (void *)newAddressBookWithEnvironment:(id)arg1;
 - (void)dealloc;
 - (void)flushPool;
 - (id)init;
 - (id)initWithAddressBookProvider:(CDUnknownBlockType)arg1;
-- (id)initWithPath:(id)arg1;
+- (id)initWithContactsEnvironment:(id)arg1;
 - (void)performAsynchronousWorkWithInvalidatedAddressBook:(CDUnknownBlockType)arg1;
 - (void)performSynchronousWorkWithInvalidatedAddressBook:(CDUnknownBlockType)arg1;
 - (void *)popAddressBook;

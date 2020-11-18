@@ -10,10 +10,11 @@
 @class NSArray, NSData, NSDate, NSString, SGRecordId;
 
 @protocol SGDSuggestManagerInternalProtocol <_SGDSuggestManagerBaseProtocol, _SGDSuggestManagerInternalHarvestProtocol>
+- (void)addInteractions:(NSArray *)arg1 bundleId:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)addSearchableItems:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)allContactsLimitedTo:(unsigned long long)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (void)clearCachesFully:(BOOL)arg1 withCompletion:(void (^)(NSError *))arg2;
-- (void)drainBothQueuesCompletelyWithCompletion:(void (^)(NSError *))arg1;
+- (void)daemonExitWithCompletion:(void (^)(NSError *))arg1;
+- (void)drainQueueCompletelyWithCompletion:(void (^)(NSError *))arg1;
 - (void)emailAddressIsSignificant:(NSString *)arg1 withCompletion:(void (^)(NSNumber *, NSError *))arg2;
 - (void)eventFromRecordId:(SGRecordId *)arg1 withCompletion:(void (^)(SGEvent *, NSError *))arg2;
 - (void)eventsInFutureLimitTo:(unsigned long long)arg1 options:(unsigned int)arg2 withCompletion:(void (^)(NSArray *, NSError *))arg3;
@@ -24,6 +25,7 @@
 - (void)removeAllStoredPseudoContactsWithCompletion:(void (^)(NSError *))arg1;
 - (void)resetConfirmationAndRejectionHistory:(void (^)(NSError *))arg1;
 - (void)sendRTCLogsWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)sleepWithCompletion:(void (^)(NSError *))arg1;
 - (void)suggestionsFromRFC822Data:(NSData *)arg1 source:(NSString *)arg2 options:(unsigned long long)arg3 withCompletion:(void (^)(NSArray *, NSError *))arg4;
 @end
 

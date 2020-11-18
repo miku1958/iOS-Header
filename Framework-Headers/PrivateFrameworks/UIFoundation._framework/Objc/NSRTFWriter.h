@@ -27,7 +27,12 @@
     id _curUnderlineStyle;
     int _curTraits;
     unsigned int _curEncoding;
-    CDStruct_cfe5321f _rwFlags;
+    struct {
+        unsigned int _forceColorWrite:1;
+        unsigned int _activeFontFeatures:1;
+        unsigned int _preserveNaturalAlignment:1;
+        unsigned int _reserved:29;
+    } _rwFlags;
     double _rightMargin;
     NSDictionary *_docAttrs;
     void *_layoutSections;

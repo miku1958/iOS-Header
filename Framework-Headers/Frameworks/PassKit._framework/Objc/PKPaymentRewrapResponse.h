@@ -4,19 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitCore/PKPaymentWebServiceResponse.h>
+#import <PassKitCore/PKPaymentRewrapResponseBase.h>
 
-@class NSData;
-
-@interface PKPaymentRewrapResponse : PKPaymentWebServiceResponse
+@interface PKPaymentRewrapResponse : PKPaymentRewrapResponseBase
 {
-    NSData *_rewrappedPaymentData;
 }
-
-@property (strong, nonatomic) NSData *rewrappedPaymentData; // @synthesize rewrappedPaymentData=_rewrappedPaymentData;
-
-- (void)dealloc;
-- (id)initWithData:(id)arg1;
 
 @end
 

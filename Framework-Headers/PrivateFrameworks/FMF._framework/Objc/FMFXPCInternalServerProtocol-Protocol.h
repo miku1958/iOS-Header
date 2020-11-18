@@ -12,9 +12,11 @@
 - (oneway void)crashDaemon;
 - (oneway void)dumpStateWithCompletion:(void (^)(NSDictionary *))arg1;
 - (oneway void)exit5XXGracePeriod;
+- (oneway void)getDataForPerformanceRequest:(void (^)(NSData *, NSError *))arg1;
 - (oneway void)iCloudAccountNameWithCompletion:(void (^)(NSString *))arg1;
 - (oneway void)isIn5XXGracePeriodWithCompletion:(void (^)(BOOL))arg1;
 - (oneway void)sendIDSPacket:(NSString *)arg1 toHandle:(FMFHandle *)arg2;
+- (oneway void)sessionHandleReport:(void (^)(NSDictionary *))arg1;
 - (oneway void)setSessionClientBundleId:(NSString *)arg1;
 @end
 

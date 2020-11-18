@@ -17,15 +17,19 @@
     CDStruct_9f2792e4 _stepIndexs;
     NSString *_actionSheetName;
     int _nextOptionsIndex;
+    BOOL _disableAlightNotifications;
     struct {
         unsigned int nextOptionsIndex:1;
+        unsigned int disableAlightNotifications:1;
     } _has;
 }
 
 @property (readonly, nonatomic) unsigned int *actionSheetArtworkIndexs;
 @property (readonly, nonatomic) unsigned long long actionSheetArtworkIndexsCount;
 @property (strong, nonatomic) NSString *actionSheetName; // @synthesize actionSheetName=_actionSheetName;
+@property (nonatomic) BOOL disableAlightNotifications; // @synthesize disableAlightNotifications=_disableAlightNotifications;
 @property (readonly, nonatomic) BOOL hasActionSheetName;
+@property (nonatomic) BOOL hasDisableAlightNotifications;
 @property (nonatomic) BOOL hasNextOptionsIndex;
 @property (nonatomic) int nextOptionsIndex; // @synthesize nextOptionsIndex=_nextOptionsIndex;
 @property (readonly, nonatomic) unsigned int *routeDetailsArtworkIndexs;

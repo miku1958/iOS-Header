@@ -24,9 +24,13 @@
 @property (readonly, nonatomic) NSNumber *baselineOffset; // @synthesize baselineOffset=_baselineOffset;
 @property (readonly, nonatomic) NSNumber *roundCornerRadius; // @synthesize roundCornerRadius=_roundCornerRadius;
 
++ (id)_bagImageDataCache;
 + (id)schema;
 - (void).cxx_destruct;
 - (void)_fetchImageData;
+- (void)_fetchImageDataUsingBlock:(CDUnknownBlockType)arg1;
+- (id)_imageWithData:(id)arg1;
+- (id)_templateImageWithImage:(id)arg1;
 - (unsigned long long)hash;
 - (void)imageWithCompletion:(CDUnknownBlockType)arg1 forScale:(double)arg2;
 - (id)imageWithScaleFactor:(double)arg1;

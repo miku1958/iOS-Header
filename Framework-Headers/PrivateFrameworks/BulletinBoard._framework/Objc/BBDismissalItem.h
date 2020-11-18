@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDate;
 
@@ -14,11 +14,11 @@
     NSDate *_expiration;
 }
 
-@property (readonly, strong, nonatomic) NSDate *expiration; // @synthesize expiration=_expiration;
+@property (readonly, nonatomic) NSDate *expiration; // @synthesize expiration=_expiration;
 @property (readonly, nonatomic) unsigned long long feeds; // @synthesize feeds=_feeds;
 
+- (void).cxx_destruct;
 - (void)addFeeds:(unsigned long long)arg1;
-- (void)dealloc;
 - (id)description;
 - (BOOL)hasExpired;
 - (id)initWithFeeds:(unsigned long long)arg1;

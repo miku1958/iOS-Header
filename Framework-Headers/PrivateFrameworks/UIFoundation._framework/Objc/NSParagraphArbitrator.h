@@ -33,6 +33,7 @@
 - (id)init;
 - (id)initWithAttributedString:(id)arg1 range:(struct _NSRange)arg2;
 - (CDStruct_f03de906)lineBreakContextBeforeIndex:(unsigned long long)arg1 lineFragmentWidth:(double)arg2 range:(struct _NSRange)arg3;
+- (void)reset;
 
 @end
 

@@ -14,6 +14,7 @@
 
 @interface SFActivityAdvertiser : NSObject <SFCompanionXPCManagerObserver, SFActivityAdvertiserClient>
 {
+    BOOL _xpcSetupInProgress;
     id<SFActivityAdvertiserDelegate> _delegate;
     id<SFActivityAdvertiserProtocol> _connectionProxy;
     SFInternalAdvertisement *_currentAdvertisement;
@@ -26,15 +27,22 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property BOOL xpcSetupInProgress; // @synthesize xpcSetupInProgress=_xpcSetupInProgress;
 
 + (id)sharedAdvertiser;
-- (void)activityPayloadForAdvertisementPayload:(id)arg1 requestedByDevice:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
+- (void)activityPayloadForAdvertisementPayload:(id)arg1 command:(id)arg2 requestedByDevice:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)advertiseAdvertisementPayload:(id)arg1 options:(id)arg2;
 - (void)dealloc;
 - (void)didSendPayloadForActivityIdentifier:(id)arg1 toDevice:(id)arg2 error:(id)arg3;
+- (void)fetchLoginIDWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)fetchPeerForUUID:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchSFPeerDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
-- (void)setupXPCConnection;
+- (void)pairedDevicesChanged:(id)arg1;
+- (void)setupProxyIfNeeded;
 - (void)xpcManagerConnectionInterrupted;
+- (void)xpcManagerDidResumeConnection:(id)arg1;
 
 @end
 

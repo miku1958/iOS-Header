@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class BiometricKitIdentity, NSCondition, NSTimer;
 @protocol BiometricKitDelegate, OS_dispatch_queue;
@@ -25,12 +25,10 @@
     BOOL _inUse;
     int _enrollProgressConfigRenderMode;
     id<BiometricKitDelegate> _delegate;
-    struct CGSize _enrollProgressConfigRenderViewSize;
 }
 
 @property (nonatomic) id<BiometricKitDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) int enrollProgressConfigRenderMode; // @synthesize enrollProgressConfigRenderMode=_enrollProgressConfigRenderMode;
-@property (nonatomic) struct CGSize enrollProgressConfigRenderViewSize; // @synthesize enrollProgressConfigRenderViewSize=_enrollProgressConfigRenderViewSize;
 @property BOOL inUse; // @synthesize inUse=_inUse;
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
@@ -43,30 +41,40 @@
 - (int)detectFingerWithOptions:(id)arg1;
 - (int)diagnostics:(int)arg1 withOptions:(id)arg2 passed:(BOOL *)arg3 withDetails:(id *)arg4;
 - (int)dropUnlockToken;
+- (int)enableBackgroundFdet:(BOOL)arg1;
+- (int)enroll:(int)arg1 forUser:(unsigned int)arg2 withOptions:(id)arg3;
 - (int)enroll:(int)arg1 withAuthToken:(id)arg2;
 - (int)enroll:(int)arg1 withOptions:(id)arg2;
+- (BOOL)fileRadarWithLogs:(id)arg1 withDescription:(id)arg2;
 - (void)fingerOffTimerFired:(id)arg1;
 - (long long)getBioLockoutState;
+- (long long)getBioLockoutStateForUser:(unsigned int)arg1;
 - (long long)getCalBlobVersion;
 - (id)getCalibrationDataInfo;
 - (long long)getCalibrationDataState;
 - (int)getCountersignedStoreToken:(id *)arg1;
+- (long long)getFreeIdentityCount:(int)arg1 forUser:(unsigned int)arg2;
 - (id)getIdentitiesDatabaseHash;
+- (id)getIdentitiesDatabaseHashForUser:(unsigned int)arg1;
 - (id)getIdentitiesDatabaseUUID;
+- (id)getIdentitiesDatabaseUUIDForUser:(unsigned int)arg1;
 - (id)getIdentityFromUUID:(id)arg1;
 - (id)getLogs:(BOOL)arg1 withDetails:(id *)arg2;
 - (id)getMatchPolicyInfo;
 - (long long)getMaxIdentityCount:(int)arg1;
 - (float)getModulationRatio;
 - (id)getProtectedConfiguration;
+- (id)getProtectedConfigurationForUser:(unsigned int)arg1;
 - (long long)getProvisioningState;
 - (long long)getSensorCalibrationStatus;
 - (id)getSensorInfo;
+- (id)getSystemProtectedConfiguration;
 - (id)getTemplateInfo:(id)arg1;
 - (id)identities:(id)arg1;
 - (id)init;
 - (BOOL)isFingerOn;
 - (BOOL)isIdentityEnrolled;
+- (BOOL)isTouchIDCapable;
 - (int)match:(id)arg1;
 - (int)match:(id)arg1 withOptions:(id)arg2;
 - (int)matchIdentities:(id)arg1;
@@ -76,17 +84,21 @@
 - (int)registerDSID:(unsigned long long)arg1 withAuthToken:(id)arg2;
 - (int)registerDSID:(unsigned long long)arg1 withOptions:(id)arg2;
 - (int)registerStoreToken:(id)arg1;
+- (int)removeAllIdentitiesForUser:(unsigned int)arg1 withOptions:(id)arg2;
 - (int)removeIdentity:(id)arg1;
+- (int)removeIdentity:(id)arg1 withOptions:(id)arg2;
 - (int)resetAppleConnectCounter;
 - (void)setDebugImages:(BOOL)arg1;
+- (int)setProtectedConfiguration:(id)arg1 forUser:(unsigned int)arg2 withOptions:(id)arg3;
 - (int)setProtectedConfiguration:(id)arg1 withAuthToken:(id)arg2;
 - (int)setProtectedConfiguration:(id)arg1 withOptions:(id)arg2;
+- (int)setSystemProtectedConfiguration:(id)arg1 withOptions:(id)arg2;
 - (int)setUserDSID:(unsigned long long)arg1 withAuthToken:(id)arg2;
 - (int)setUserDSID:(unsigned long long)arg1 withOptions:(id)arg2;
 - (void)simulateFingerTouchMatching:(BOOL)arg1;
-- (id)stringFromSensorConfiguration;
 - (void)timestampEvent:(unsigned long long)arg1;
 - (int)updateIdentity:(id)arg1;
+- (int)updateIdentity:(id)arg1 withOptions:(id)arg2;
 
 @end
 

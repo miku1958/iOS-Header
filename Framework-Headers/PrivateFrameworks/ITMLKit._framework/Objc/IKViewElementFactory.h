@@ -25,7 +25,9 @@
 + (unsigned long long)elementTypeByTagName:(id)arg1;
 + (id)elementsForDocumentElement:(id)arg1 sparse:(BOOL)arg2 styleFactory:(id *)arg3;
 + (void)initialize;
++ (BOOL)isDependentByTagName:(id)arg1;
 + (void)registerClass:(Class)arg1 forElementName:(id)arg2 elementType:(unsigned long long)arg3;
++ (void)registerClass:(Class)arg1 forElementName:(id)arg2 elementType:(unsigned long long)arg3 dependent:(BOOL)arg4;
 - (void).cxx_destruct;
 - (id)elementForDOMElement:(id)arg1 parent:(id)arg2;
 

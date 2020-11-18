@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSDate, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface AKConfiguration : NSObject
@@ -16,7 +16,10 @@
     NSObject<OS_dispatch_queue> *_settingsQueue;
 }
 
+@property (copy, nonatomic) NSDate *lastCheckInAttemptDate;
+@property (copy, nonatomic) NSDate *lastCheckInSuccessDate;
 @property (nonatomic) long long shouldDisablePETs;
+@property (nonatomic) long long shouldDisablePiggybacking;
 @property (nonatomic) long long shouldFakeAuthSuccess;
 
 + (id)sharedConfiguration;

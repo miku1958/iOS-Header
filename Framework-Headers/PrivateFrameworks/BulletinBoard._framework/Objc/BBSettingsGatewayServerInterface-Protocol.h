@@ -20,6 +20,8 @@
 - (void)getSectionInfoForSectionIDs:(NSSet *)arg1 withHandler:(void (^)(NSArray *))arg2;
 - (void)getSectionInfoWithHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)getSectionOrderRuleWithHandler:(void (^)(NSNumber *, NSError *))arg1;
+- (void)requestQuietModeOverrideAssertionWithCompletion:(void (^)(BSAction *))arg1;
+- (void)setActiveBehaviorOverrideTypesChangeAssertionCountUpdatesEnabled:(BOOL)arg1;
 - (void)setActiveBehaviorOverrideTypesChangeUpdatesEnabled:(BOOL)arg1;
 - (void)setBehaviorOverrideStatus:(long long)arg1 effectiveDate:(NSDate *)arg2 source:(unsigned long long)arg3;
 - (void)setBehaviorOverrideStatusChangeUpdatesEnabled:(BOOL)arg1;

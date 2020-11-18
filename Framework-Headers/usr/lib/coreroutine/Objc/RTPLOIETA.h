@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class RTLOIDisplayInfo, RTPredictedLocationOfInterest;
+@class NSString, RTLOIDisplayInfo, RTPredictedLocationOfInterest;
 @protocol GEOMapItem;
 
 __attribute__((visibility("hidden")))
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     id<GEOMapItem> _origin;
     unsigned int _responseETASeconds;
     unsigned int _baselineETASeconds;
+    NSString *_responseRouteDescription;
     RTLOIDisplayInfo *_displayInfo;
 }
 
@@ -29,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)displayInfo;
 - (BOOL)etaExceedsMinimumETA:(unsigned int)arg1;
 - (BOOL)hasEquivalentDisplayTo:(id)arg1;
-- (id)initWithPLOI:(id)arg1 origin:(id)arg2 responseETASeconds:(unsigned int)arg3 baselineETASeconds:(unsigned int)arg4;
+- (id)initWithPLOI:(id)arg1 origin:(id)arg2 responseETASeconds:(unsigned int)arg3 baselineETASeconds:(unsigned int)arg4 responseRouteDescription:(id)arg5;
 - (id)localizedDescription;
 - (id)localizedMessage;
 - (id)localizedTitle;

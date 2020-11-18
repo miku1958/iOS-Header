@@ -6,33 +6,38 @@
 
 #import <CloudDocsDaemon/BRCLocalItem.h>
 
-@class BRCDirectoryItem, BRCDocumentItem, BRCItemID, BRCLocalContainer, NSString;
+@class BRCAppLibrary, BRCClientZone, BRCDirectoryItem, BRCDocumentItem, BRCItemID, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BRCAliasItem : BRCLocalItem
 {
 }
 
-@property (readonly, nonatomic) BRCAliasItem *asAlias;
+@property (readonly, nonatomic) BRCAliasItem *asBRAlias;
 @property (readonly, nonatomic) BRCDirectoryItem *asDirectory; // @dynamic asDirectory;
 @property (readonly, nonatomic) BRCDocumentItem *asDocument; // @dynamic asDocument;
-@property (readonly, nonatomic) NSString *targetContainerID;
+@property (readonly, nonatomic) BRCAppLibrary *targetAppLibrary;
+@property (readonly, nonatomic) NSString *targetAppLibraryID;
+@property (readonly, nonatomic) BRCClientZone *targetClientZone;
 @property (readonly, nonatomic) BRCItemID *targetItemID;
-@property (readonly, nonatomic) BRCLocalContainer *targetLocalContainer;
 
+- (BOOL)_deleteFromDB:(id)arg1 keepAliases:(BOOL)arg2;
 - (BOOL)_insertInDB:(id)arg1 dbRowID:(unsigned long long)arg2;
 - (BOOL)_updateInDB:(id)arg1 diffs:(unsigned long long)arg2;
 - (BOOL)changedAtRelativePath:(id)arg1 scanPackage:(BOOL)arg2;
-- (BOOL)isAlias;
+- (BOOL)evictInTask:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
+- (BOOL)isBRAlias;
 - (void)learnTarget:(id)arg1;
+- (void)markNeedsUploadOrSyncingUp;
 - (void)markNeedsUploadOrSyncingUpWithAliasTarget:(id)arg1;
 - (float)prepareEditSyncUpWithOperation:(id)arg1 defaults:(id)arg2;
 - (void)rewriteAliasOnDiskWithTarget:(id)arg1;
-- (void)serverDidAckAliasTargetDeletion;
-- (id)structureRecordBeingDeadInServerTruth:(BOOL)arg1 stageID:(id)arg2;
+- (BOOL)startDownloadInTask:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
+- (id)structureRecordBeingDeadInServerTruth:(BOOL)arg1 stageID:(id)arg2 pcsChained:(BOOL)arg3;
+- (void)targetMovedToTrashOrDeleted;
 - (id)targetReference;
 - (BOOL)updateOnDiskWithAliasTarget:(id)arg1 forServerEdit:(BOOL)arg2;
-- (BOOL)updateXattrInfoFromPathPath:(id)arg1 error:(id *)arg2;
+- (BOOL)updateXattrInfoFromPath:(id)arg1 error:(id *)arg2;
 
 @end
 

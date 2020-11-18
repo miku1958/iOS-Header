@@ -22,7 +22,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<WBSFeedParserDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<WBSFeedParserDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;

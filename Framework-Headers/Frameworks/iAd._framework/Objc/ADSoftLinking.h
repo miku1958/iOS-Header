@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
@@ -70,8 +70,6 @@
 @property (readonly, nonatomic) Class SLService;
 @property (readonly, nonatomic) NSString *SLServiceTypeTwitter;
 @property (readonly, nonatomic) Class TLToneManager;
-@property (readonly, nonatomic) NSString *UIMoviePlayerControllerDidEnterFullscreenNotification;
-@property (readonly, nonatomic) NSString *UIMoviePlayerControllerDidExitFullscreenNotification;
 @property (readonly, nonatomic) Class WBUFormDataControllerWK1;
 @property (readonly, nonatomic) NSMutableDictionary *boundSymbols; // @synthesize boundSymbols=_boundSymbols;
 @property (readonly, nonatomic) NSString *kToneArtistKey;

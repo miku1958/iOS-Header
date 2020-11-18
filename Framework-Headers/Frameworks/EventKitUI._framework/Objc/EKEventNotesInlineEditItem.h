@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isSaveable;
 - (void)reset;
 - (BOOL)saveAndDismissWithForce:(BOOL)arg1;
+- (id)searchStringForEventAutocomplete;
 - (void)textViewDidBeginEditing:(id)arg1;
 - (void)textViewDidChange:(id)arg1;
 - (void)textViewDidEndEditing:(id)arg1;

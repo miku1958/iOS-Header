@@ -18,7 +18,7 @@
 - (void)accessoryServer:(HAPAccessoryServer *)arg1 didUpdateValuesForCharacteristics:(NSArray *)arg2;
 - (void)accessoryServer:(HAPAccessoryServer *)arg1 isBlockedWithCompletionHandler:(void (^)(BOOL))arg2;
 - (void)accessoryServer:(HAPAccessoryServer *)arg1 promptUserForPasswordWithType:(unsigned long long)arg2;
-- (void)accessoryServer:(HAPAccessoryServer *)arg1 requestUserPermissionForUnauthenticatedAccessory:(NSError *)arg2;
+- (void)accessoryServer:(HAPAccessoryServer *)arg1 requestUserPermission:(long long)arg2;
 - (void)accessoryServerDidUpdateStateNumber:(HAPAccessoryServer *)arg1;
 @end
 

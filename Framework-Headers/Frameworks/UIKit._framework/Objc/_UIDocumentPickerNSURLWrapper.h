@@ -10,7 +10,6 @@
 
 @class NSData, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface _UIDocumentPickerNSURLWrapper : NSObject <NSSecureCoding>
 {
     BOOL _createSandbox;

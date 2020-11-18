@@ -6,26 +6,33 @@
 
 #import <Foundation/NSObject.h>
 
-@class PFCoalescer;
-@protocol OS_dispatch_group;
+@class NSArray, NSHashTable, PFCoalescer;
+@protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface PFCoalescerContext : NSObject
 {
     unsigned long long _coalescedUpdatesCount;
     PFCoalescer *_coalescer;
+    NSObject<OS_dispatch_queue> *_isolationQueue;
     NSObject<OS_dispatch_group> *_group;
+    NSHashTable *_pendingActivityTokens;
 }
 
 @property unsigned long long coalescedUpdatesCount; // @synthesize coalescedUpdatesCount=_coalescedUpdatesCount;
 @property (weak) PFCoalescer *coalescer; // @synthesize coalescer=_coalescer;
 @property (strong) NSObject<OS_dispatch_group> *group; // @synthesize group=_group;
+@property (strong) NSObject<OS_dispatch_queue> *isolationQueue; // @synthesize isolationQueue=_isolationQueue;
+@property (strong) NSHashTable *pendingActivityTokens; // @synthesize pendingActivityTokens=_pendingActivityTokens;
+@property (readonly) NSArray *pendingActivityTokensSnapshot;
 
 - (void).cxx_destruct;
 - (id)activityToken;
+- (id)activityTokenWithReason:(id)arg1;
+- (void)cancelPendingActivityTokens;
 - (void)delayNextInvocationByTimeInterval:(double)arg1;
 - (id)initWithCoalescer:(id)arg1;
+- (void)notifyActivityTokenCompletionOnQueue:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)pushBack:(CDUnknownBlockType)arg1;
-- (void)waitForActivityTokens;
 
 @end
 

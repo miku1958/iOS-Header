@@ -24,8 +24,6 @@
 @property (strong, nonatomic) UIRefreshControl *refreshControl; // @synthesize refreshControl=_refreshControl;
 
 - (void).cxx_destruct;
-- (double)_offsetForRubberBandOffset:(double)arg1 maxOffset:(double)arg2 minOffset:(double)arg3 range:(double)arg4;
-- (double)_rubberBandOffsetForOffset:(double)arg1 maxOffset:(double)arg2 minOffset:(double)arg3 range:(double)arg4 outside:(BOOL *)arg5;
 - (void)_updateIndexBarControlFrame;
 - (void)_updateShowsScrollIndicators;
 - (struct CGRect)bounds;
@@ -33,6 +31,7 @@
 - (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2;
 - (void)layoutSubviews;
 - (void)setCollectionViewLayout:(id)arg1 animated:(BOOL)arg2;
+- (void)setContentInset:(struct UIEdgeInsets)arg1;
 - (void)setContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)setShowsHorizontalScrollIndicator:(BOOL)arg1;

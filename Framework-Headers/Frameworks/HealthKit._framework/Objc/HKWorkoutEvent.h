@@ -6,30 +6,34 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class NSDate;
+@class NSDate, NSDictionary;
 
-@interface HKWorkoutEvent : NSObject <NSSecureCoding>
+@interface HKWorkoutEvent : NSObject <NSSecureCoding, NSCopying>
 {
     long long _type;
     NSDate *_date;
+    NSDictionary *_metadata;
 }
 
 @property (readonly, copy) NSDate *date;
+@property (readonly, copy) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property (readonly) long long type;
 
-+ (id)_newWorkoutEventWithType:(long long)arg1 date:(id)arg2;
-+ (id)_workoutEventWithType:(long long)arg1 date:(id)arg2;
++ (id)_newWorkoutEventWithType:(long long)arg1 date:(id)arg2 metadata:(id)arg3;
++ (id)_workoutEventWithInternalEvent:(id)arg1;
++ (id)_workoutEventWithType:(long long)arg1 date:(id)arg2 metadata:(id)arg3;
 + (BOOL)supportsSecureCoding;
 + (id)workoutEventWithType:(long long)arg1 date:(id)arg2;
++ (id)workoutEventWithType:(long long)arg1 date:(id)arg2 metadata:(id)arg3;
 - (void).cxx_destruct;
 - (void)_assertPropertiesValid;
 - (id)_init;
-- (void)_setDate:(id)arg1;
-- (void)_setType:(long long)arg1;
 - (id)_validateConfiguration;
 - (id)awakeAfterUsingCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

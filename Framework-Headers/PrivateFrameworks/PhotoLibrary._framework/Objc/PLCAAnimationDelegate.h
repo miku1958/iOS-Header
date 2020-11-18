@@ -6,14 +6,22 @@
 
 #import <Foundation/NSObject.h>
 
-@interface PLCAAnimationDelegate : NSObject
+#import <PhotoLibrary/CAAnimationDelegate-Protocol.h>
+
+@class NSString;
+
+@interface PLCAAnimationDelegate : NSObject <CAAnimationDelegate>
 {
     CDUnknownBlockType _completion;
     CDUnknownBlockType _start;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType start; // @synthesize start=_start;
+@property (readonly) Class superclass;
 
 - (void)animationDidStart:(id)arg1;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;

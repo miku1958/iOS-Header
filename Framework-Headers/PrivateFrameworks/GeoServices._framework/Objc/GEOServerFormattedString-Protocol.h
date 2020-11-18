@@ -11,7 +11,9 @@
 @protocol GEOServerFormattedString <NSObject>
 
 @property (readonly, nonatomic) NSString *formatString;
+@property (readonly, nonatomic) NSArray *formatStrings;
 @property (readonly, nonatomic) NSArray *formatTokens;
+@property (readonly, nonatomic) NSArray *separators;
 
 @end
 

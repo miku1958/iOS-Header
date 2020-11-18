@@ -26,6 +26,8 @@
     NSUUID *fSourceId;
     NSNumber *fIsOdometerDistance;
     NSNumber *fIsOdometerPace;
+    NSNumber *fNumberOfPushes;
+    NSNumber *fWorkoutType;
 }
 
 @property (readonly, nonatomic) NSNumber *averageActivePace;
@@ -35,11 +37,12 @@
 @property (readonly, nonatomic) NSDate *endDate;
 @property (readonly, nonatomic) NSNumber *floorsAscended;
 @property (readonly, nonatomic) NSNumber *floorsDescended;
+@property (readonly, nonatomic) NSNumber *numberOfPushes;
 @property (readonly, nonatomic) NSNumber *numberOfSteps;
-@property (readonly, nonatomic) NSNumber *pace;
 @property (readonly, nonatomic) long long recordId;
 @property (readonly, nonatomic) NSUUID *sourceId;
 @property (readonly, nonatomic) NSDate *startDate;
+@property (readonly, nonatomic) NSNumber *workoutType;
 
 + (id)maxPedometerEntries;
 + (BOOL)supportsSecureCoding;
@@ -49,7 +52,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithStartDate:(double)arg1 endDate:(double)arg2 steps:(int)arg3 distance:(double)arg4 floorsAscended:(id)arg5 floorsDescended:(id)arg6 recordID:(long long)arg7 currentPace:(id)arg8 currentCadence:(id)arg9 activeTime:(id)arg10 sourceId:(id)arg11 isOdometerDistance:(id)arg12 isOdometerPace:(id)arg13;
+- (id)initWithStartDate:(double)arg1 endDate:(double)arg2 steps:(int)arg3 distance:(double)arg4 floorsAscended:(id)arg5 floorsDescended:(id)arg6 recordID:(long long)arg7 currentPace:(id)arg8 currentCadence:(id)arg9 activeTime:(id)arg10 sourceId:(id)arg11 isOdometerDistance:(id)arg12 isOdometerPace:(id)arg13 pushes:(int)arg14 workoutType:(int)arg15;
 - (BOOL)isOdometerDistance;
 - (BOOL)isOdometerPace;
 

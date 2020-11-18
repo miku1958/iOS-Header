@@ -8,6 +8,8 @@
 
 @protocol GKAccountService <NSObject>
 - (oneway void)authenticatePlayerWithExistingCredentialsWithHandler:(void (^)(GKAuthenticateResponse *, NSError *))arg1;
+- (oneway void)authenticationWasCancelled;
 - (oneway void)generateIdentityVerificationSignatureWithHandler:(void (^)(NSDictionary *, NSError *))arg1;
+- (oneway void)resetCredentialsWithHandler:(void (^)(NSError *))arg1;
 @end
 

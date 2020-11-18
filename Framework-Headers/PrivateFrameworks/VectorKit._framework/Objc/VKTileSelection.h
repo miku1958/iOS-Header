@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long tileSize; // @synthesize tileSize=_tileSize;
 
 - (id)init;
-- (id)keysForContext:(id)arg1 neighbors:(id)arg2 selectionScale:(float)arg3;
-- (CDStruct_6adf2384)relevantTilesForContext:(id)arg1;
+- (id)keysForContext:(struct LayoutContext *)arg1 neighbors:(id)arg2 selectionScale:(float)arg3;
+- (CDStruct_6adf2384)relevantTilesForContext:(struct LayoutContext *)arg1;
 
 @end
 

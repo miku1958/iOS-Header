@@ -15,8 +15,8 @@
     UILabel *_label3;
 }
 
+- (void).cxx_destruct;
 - (struct CGRect)accessibilityFrame;
-- (void)dealloc;
 - (id)initWithAccessibilityContainer:(id)arg1 label1:(id)arg2 label2:(id)arg3 label3:(id)arg4;
 
 @end

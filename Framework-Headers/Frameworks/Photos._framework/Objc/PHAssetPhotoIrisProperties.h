@@ -4,25 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Photos/PHAssetPropertySet.h>
 
-@class PHAsset;
-
-@interface PHAssetPhotoIrisProperties : NSObject
+@interface PHAssetPhotoIrisProperties : PHAssetPropertySet
 {
     unsigned short _photoIrisVisibilityState;
-    PHAsset *_asset;
     CDStruct_1b6d18a9 _photoIrisStillDisplayTime;
     CDStruct_1b6d18a9 _photoIrisVideoDuration;
 }
 
-@property (readonly, weak, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 photoIrisStillDisplayTime; // @synthesize photoIrisStillDisplayTime=_photoIrisStillDisplayTime;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 photoIrisVideoDuration; // @synthesize photoIrisVideoDuration=_photoIrisVideoDuration;
 @property (readonly, nonatomic) unsigned short photoIrisVisibilityState; // @synthesize photoIrisVisibilityState=_photoIrisVisibilityState;
 
-- (void).cxx_destruct;
-- (id)initWithFetchDictionary:(id)arg1 asset:(id)arg2;
++ (id)propertiesToFetch;
++ (id)propertySetName;
+- (id)initWithFetchDictionary:(id)arg1 asset:(id)arg2 prefetched:(BOOL)arg3;
 
 @end
 

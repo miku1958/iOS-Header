@@ -8,7 +8,7 @@
 
 #import <Message/MFDiagnosticsGenerator-Protocol.h>
 
-@class NSCountedSet, NSString;
+@class BKSApplicationStateMonitor, NSCountedSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MFPowerController : NSObject <MFDiagnosticsGenerator>
@@ -18,6 +18,7 @@
     int _pluggedIn;
     int _powerToken;
     unsigned int _appState;
+    BKSApplicationStateMonitor *_appStateMonitor;
     NSCountedSet *_identifiers;
 }
 
@@ -29,6 +30,8 @@
 + (void)powerlog:(id)arg1 eventData:(id)arg2;
 + (id)sharedInstance;
 - (void)_applicationStateChanged:(id)arg1;
+- (double)_assertionTimeout;
+- (id)_bundleIdentifier;
 - (void)_deleteDuetAttributesForAccountWithUniqueId:(id)arg1;
 - (void)_initDuet;
 - (void)_lowPowerModeChangedNotification:(id)arg1;
@@ -41,6 +44,7 @@
 - (id)duetIdentifier;
 - (id)init;
 - (BOOL)isBatterySaverModeEnabled;
+- (BOOL)isHoldingAssertion;
 - (BOOL)isPluggedIn;
 - (void)recordDuetEventForAccount:(id)arg1 event:(id)arg2;
 - (void)releaseAssertionWithIdentifier:(id)arg1;

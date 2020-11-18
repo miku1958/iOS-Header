@@ -22,7 +22,7 @@
 @property (copy) NSString *password; // @synthesize password=_password;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 password:(id)arg2 channel:(id)arg3;

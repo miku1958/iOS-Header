@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreHAP/NSSecureCoding-Protocol.h>
+
 @class HAPPairingKey, NSString;
 
-@interface HAPPairingIdentity : NSObject
+@interface HAPPairingIdentity : NSObject <NSSecureCoding>
 {
     NSString *_identifier;
     HAPPairingKey *_publicKey;
@@ -21,12 +23,15 @@
 @property (readonly, nonatomic) HAPPairingKey *privateKey; // @synthesize privateKey=_privateKey;
 @property (readonly, nonatomic) HAPPairingKey *publicKey; // @synthesize publicKey=_publicKey;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (id)description;
 - (id)descriptionWithPointer:(BOOL)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 publicKey:(id)arg2 privateKey:(id)arg3 permissions:(unsigned long long)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (id)shortDescription;

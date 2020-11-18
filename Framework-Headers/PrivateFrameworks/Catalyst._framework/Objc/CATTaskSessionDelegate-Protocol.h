@@ -9,7 +9,7 @@
 @class CATTaskOperation, CATTaskRequest, CATTaskSession, CATTransport, NSDictionary, NSError, NSOperation, NSString;
 
 @protocol CATTaskSessionDelegate <NSObject>
-- (CATTaskOperation *)session:(CATTaskSession *)arg1 enqueueOperationForRequest:(CATTaskRequest *)arg2 error:(id *)arg3;
+- (CATTaskOperation *)session:(CATTaskSession *)arg1 prepareOperationForRequest:(CATTaskRequest *)arg2 error:(id *)arg3;
 - (BOOL)session:(CATTaskSession *)arg1 shouldAcceptConnectionFromTransport:(CATTransport *)arg2;
 
 @optional

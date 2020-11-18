@@ -10,15 +10,16 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface _EARSpeechRecognitionToken : NSObject <NSCopying>
 {
-    struct Token _token;
+    struct Token _quasarToken;
 }
 
 @property (readonly, nonatomic) double confidence;
 @property (readonly, nonatomic) double end;
 @property (readonly, nonatomic) BOOL hasSpaceAfter;
+@property (readonly, nonatomic) BOOL hasSpaceBefore;
+@property (readonly, nonatomic) struct Token quasarToken; // @synthesize quasarToken=_quasarToken;
 @property (readonly, nonatomic) double silenceStart;
 @property (readonly, nonatomic) double start;
 @property (readonly, copy, nonatomic) NSString *tokenName;
@@ -27,6 +28,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_initWithQuasarToken:(const struct Token *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (unsigned long long)hash;
+- (id)initWithTokenName:(id)arg1 start:(double)arg2 end:(double)arg3 silenceStart:(double)arg4 confidence:(double)arg5 hasSpaceAfter:(BOOL)arg6 hasSpaceBefore:(BOOL)arg7 phoneSeq:(id)arg8;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

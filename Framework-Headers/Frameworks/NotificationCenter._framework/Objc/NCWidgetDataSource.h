@@ -13,10 +13,11 @@
 
 @interface NCWidgetDataSource : NSObject <_NCDataSource, NCDataSource>
 {
-    _NCConcreteDataSource *_concreteDataSource;
     NSString *_dataSourceIdentifier;
+    _NCConcreteDataSource *_concreteDataSource;
 }
 
+@property (strong, nonatomic, getter=_concreteDataSource, setter=_setConcreteDataSource:) _NCConcreteDataSource *concreteDataSource; // @synthesize concreteDataSource=_concreteDataSource;
 @property (readonly, nonatomic) NSString *dataSourceIdentifier; // @synthesize dataSourceIdentifier=_dataSourceIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -25,8 +26,8 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *widgetIdentifiers;
 
+- (void).cxx_destruct;
 - (void)addWidgetObserver:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)dealloc;
 - (id)initWithIdentifier:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)removeDatumWithIdentifier:(id)arg1;

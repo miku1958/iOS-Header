@@ -8,34 +8,37 @@
 
 #import <VectorKit/VKImageCanvasDelegate-Protocol.h>
 
-@class GEOResourceManifestConfiguration, NSLocale, VKGlobeImageCanvas, VKMapImageCanvas, VKMemoryObserver;
+@class GEOResourceManifestConfiguration, GGLImageCanvas, NSLocale, VKGlobeImageCanvas, VKMapImageCanvas, VKMemoryObserver;
 
 @interface VKMapSnapshotCreator : NSObject <VKImageCanvasDelegate>
 {
     VKMapImageCanvas *_mapCanvas;
     VKGlobeImageCanvas *_globeCanvas;
     long long _mapType;
+    CDStruct_80aa614a _mapDisplayStyle;
     BOOL _didBecomeFullyDrawn;
     BOOL _hasFailedTiles;
     CDUnknownBlockType _completion;
-    struct GLRenderer *_gglRenderer;
+    struct Renderer *_renderer;
     GEOResourceManifestConfiguration *_manifestConfiguration;
     NSLocale *_locale;
+    GGLImageCanvas *_displayTarget;
     VKMemoryObserver *_memoryObserver;
 }
 
 @property (nonatomic) long long labelScaleFactor;
 @property (nonatomic) BOOL localizeLabels;
+@property (nonatomic) CDStruct_80aa614a mapDisplayStyle; // @synthesize mapDisplayStyle=_mapDisplayStyle;
 @property (nonatomic) long long mapType;
 @property (nonatomic) BOOL showsBuildings;
 @property (nonatomic) BOOL showsPointsOfInterest;
 @property (readonly) struct CGSize size;
 
-+ (shared_ptr_77723e34)device;
 + (BOOL)supportsHighResolutionSnapshots;
 + (BOOL)supportsSharingThumbnails;
 - (void)_transferSettingsFrom:(id)arg1 to:(id)arg2;
 - (id)activeCanvas;
+- (void)addCustomFeatureDataSource:(id)arg1;
 - (void)cancel;
 - (void)cancelFlushingTileDecodes:(BOOL)arg1;
 - (void)dealloc;
@@ -46,6 +49,7 @@
 - (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 homeQueue:(id)arg3 manifestConfiguration:(id)arg4 locale:(id)arg5;
 - (BOOL)isRoadClassDisabled:(int)arg1;
 - (void)lookAtX:(unsigned long long)arg1 y:(unsigned long long)arg2 z:(unsigned long long)arg3;
+- (void)removeCustomFeatureDataSource:(id)arg1;
 - (void)renderRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)renderSnapshot:(CDUnknownBlockType)arg1;
 - (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4;

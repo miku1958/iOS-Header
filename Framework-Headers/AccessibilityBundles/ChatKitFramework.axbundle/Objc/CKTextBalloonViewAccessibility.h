@@ -14,11 +14,14 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilitySpeakThisString;
 - (BOOL)_allowCustomActionHintSpeakOverride;
-- (id)_axMainContentString;
-- (id)accessibilityCustomRotorItemsAtIndex:(long long)arg1;
-- (id)accessibilityCustomRotorTitles;
+- (id)_axInvisibleInkDescription;
+- (BOOL)_axIsInvisibleInk;
+- (id)_axMainContentStringForSpeakThis:(BOOL)arg1;
+- (void)_setAXInvisibleInkDescription:(id)arg1;
+- (id)accessibilityCustomRotors;
+- (id)accessibilityHint;
 - (id)accessibilityLabel;
-- (BOOL)isAccessibilityElement;
+- (void)invisibleInkEffectViewWasUncovered;
 
 @end
 

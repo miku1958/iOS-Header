@@ -17,20 +17,25 @@
 + (id)cloudDocsAppSupportURL;
 + (id)cloudDocsCachesURL;
 + (id)defaultConnection;
++ (id)defaultConnectionIfExists;
 + (id)homeDirectoryURL;
 + (void)initialize;
 + (void)invalidateCachedURLProperties;
 + (id)mobileDocumentsURL;
 + (id)secondaryConnection;
++ (id)secondaryConnectionIfExists;
++ (id)syncedDesktopURL;
++ (id)syncedDocumentsURL;
++ (id)syncedRootURLs;
 + (id)t_connectionForUUID:(id)arg1;
 + (void)t_setDefaultConnection:(id)arg1;
 + (void)t_setMobileDocumentsURL:(id)arg1;
+- (void).cxx_destruct;
 - (void)_setupAndResume;
-- (void)dealloc;
 - (id)initUsingUserLocalDaemon;
 - (id)initUsingUserLocalDaemonTokenService;
-- (struct BRXPCSyncProxy *)syncProxy;
-- (struct BRXPCSyncProxy *)syncTokenProxy;
+- (struct BRXPCSyncProxy *)newSyncProxy;
+- (struct BRXPCSyncProxy *)newSyncTokenProxy;
 
 @end
 

@@ -14,15 +14,11 @@
     BOOL _maximumHeightChanged;
 }
 
-@property (nonatomic) BOOL accessoryViewChanged; // @synthesize accessoryViewChanged=_accessoryViewChanged;
-@property (nonatomic) BOOL accessoryViewTopOutsetChanged; // @synthesize accessoryViewTopOutsetChanged=_accessoryViewTopOutsetChanged;
-@property (nonatomic) BOOL maximumHeightChanged; // @synthesize maximumHeightChanged=_maximumHeightChanged;
-@property (nonatomic) BOOL toolbarItemsChanged; // @synthesize toolbarItemsChanged=_toolbarItemsChanged;
+@property (nonatomic, setter=_setAccessoryViewChanged:) BOOL accessoryViewChanged; // @synthesize accessoryViewChanged=_accessoryViewChanged;
+@property (nonatomic, setter=_setAccessoryViewTopOutsetChanged:) BOOL accessoryViewTopOutsetChanged; // @synthesize accessoryViewTopOutsetChanged=_accessoryViewTopOutsetChanged;
+@property (nonatomic, setter=_setMaximumHeightChanged:) BOOL maximumHeightChanged; // @synthesize maximumHeightChanged=_maximumHeightChanged;
+@property (nonatomic, setter=_setToolbarItemsChanged:) BOOL toolbarItemsChanged; // @synthesize toolbarItemsChanged=_toolbarItemsChanged;
 
-- (void)_setAccessoryViewChanged:(BOOL)arg1;
-- (void)_setAccessoryViewTopOutsetChanged:(BOOL)arg1;
-- (void)_setMaximumHeightChanged:(BOOL)arg1;
-- (void)_setToolbarItemsChanged:(BOOL)arg1;
 - (BOOL)hasChanges;
 
 @end

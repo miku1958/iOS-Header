@@ -14,9 +14,12 @@
     BOOL settingNoteData;
 }
 
+@property (strong, nonatomic) NSData *cryptoInitializationVector; // @dynamic cryptoInitializationVector;
+@property (strong, nonatomic) NSData *cryptoTag; // @dynamic cryptoTag;
 @property (strong, nonatomic) NSData *data; // @dynamic data;
 @property BOOL needsToBeSaved; // @synthesize needsToBeSaved;
 @property (strong, nonatomic) ICNote *note; // @dynamic note;
+@property (readonly, nonatomic) NSData *primitiveData; // @dynamic primitiveData;
 @property (nonatomic, getter=isSettingNoteData) BOOL settingNoteData; // @synthesize settingNoteData;
 
 - (void)saveNoteDataIfNeeded;

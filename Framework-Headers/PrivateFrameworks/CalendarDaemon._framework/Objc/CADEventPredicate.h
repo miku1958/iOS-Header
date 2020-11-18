@@ -13,13 +13,16 @@
 
 @interface CADEventPredicate : EKPredicate <EKDefaultPropertiesLoading, NSSecureCoding>
 {
+    BOOL _shouldLoadProposedTimesInRange;
+    BOOL _shouldLoadDefaultProperties;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *eventUUID;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL shouldLoadDefaultProperties;
+@property (readonly, nonatomic) BOOL shouldLoadDefaultProperties; // @synthesize shouldLoadDefaultProperties=_shouldLoadDefaultProperties;
+@property (readonly, nonatomic) BOOL shouldLoadProposedTimesInRange; // @synthesize shouldLoadProposedTimesInRange=_shouldLoadProposedTimesInRange;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSTimeZone *timeZone;
 

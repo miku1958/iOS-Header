@@ -6,9 +6,12 @@
 
 #import <MIME/MFMessage.h>
 
-@class MFMessageInfo;
+#import <Message/MFBaseMessage-Protocol.h>
+#import <Message/MFMailboxPredictionMessage-Protocol.h>
 
-@interface MFMailMessage : MFMessage
+@class MFMessageInfo, NSString;
+
+@interface MFMailMessage : MFMessage <MFBaseMessage, MFMailboxPredictionMessage>
 {
     unsigned long long _messageFlags;
     unsigned char _subjectPrefixLength;
@@ -17,8 +20,27 @@
     BOOL _shouldUseMailDrop;
 }
 
+@property (readonly, nonatomic) long long conversationHash; // @dynamic conversationHash;
+@property (readonly, nonatomic) unsigned int dateReceivedInterval; // @dynamic dateReceivedInterval;
+@property (readonly, nonatomic) unsigned int dateSentInterval; // @dynamic dateSentInterval;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) BOOL deleted;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL flagged;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isVIP;
+@property (readonly, nonatomic, getter=isKnownToHaveAttachments) BOOL knownToHaveAttachments;
+@property (readonly, nonatomic) unsigned int mailboxID; // @dynamic mailboxID;
+@property (readonly, nonatomic) long long messageIDHash; // @dynamic messageIDHash;
 @property unsigned long long modSequenceNumber;
+@property (readonly, nonatomic) BOOL read;
 @property (nonatomic) BOOL shouldUseMailDrop; // @synthesize shouldUseMailDrop=_shouldUseMailDrop;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned int uid;
 
 + (Class)dataMessageStoreToUse;
 + (unsigned int)displayablePriorityForPriority:(int)arg1;
@@ -28,10 +50,12 @@
 - (id)account;
 - (id)bestAlternativePart;
 - (id)bestAlternativePart:(BOOL *)arg1;
+- (id)ccAddressList;
 - (unsigned long long)conversationFlags;
 - (id)copyMessageInfo;
 - (void)dealloc;
 - (id)externalConversationID;
+- (id)firstSenderAddress;
 - (void)loadCachedHeaderValuesFromHeaders:(id)arg1;
 - (id)loadMeetingData;
 - (id)loadMeetingExternalID;
@@ -62,6 +86,7 @@
 - (id)subject;
 - (id)subjectAndPrefixLength:(unsigned int *)arg1;
 - (id)subjectNotIncludingReAndFwdPrefix;
+- (id)toAddressList;
 
 @end
 

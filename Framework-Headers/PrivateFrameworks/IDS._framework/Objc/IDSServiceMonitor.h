@@ -20,7 +20,6 @@
 - (void)_postAvailability:(long long)arg1;
 - (void)_updateAvailability;
 - (void)dealloc;
-- (void)handleActiveAccountsChanged:(id)arg1;
 - (id)initWithService:(id)arg1;
 - (long long)serviceAvailability;
 - (void)updateAvailability;

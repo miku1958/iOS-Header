@@ -13,22 +13,28 @@
 
 @interface HKQuery : NSObject <HKQueryClient>
 {
+    int _batchCount;
     NSPredicate *_predicate;
     NSObject<OS_dispatch_queue> *_activationQueue;
     id<HKQueryDelegate> _delegate;
     NSMutableArray *_sampleObjects;
     NSMutableArray *_deletedObjects;
-    BOOL _receivedInitialResults;
+    int _samplesDeliveredBeforeSuspend;
+    CDUnknownBlockType _activationHandler;
     BOOL _hasBeenExecuted;
+    BOOL _receivedInitialResults;
     HKObjectType *_objectType;
-    NSUUID *_activationUUID;
-    _HKFilter *_filter;
     NSObject<OS_dispatch_queue> *_clientQueue;
     id<NSXPCProxyCreating> _serverProxy;
+    NSUUID *_activationUUID;
+    _HKFilter *_filter;
+    double _collectionInterval;
 }
 
 @property (readonly, nonatomic) NSUUID *activationUUID; // @synthesize activationUUID=_activationUUID;
+@property (nonatomic, setter=_setBatchCount:) int batchCount;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property (nonatomic, getter=_collectionInterval, setter=_setCollectionInterval:) double collectionInterval; // @synthesize collectionInterval=_collectionInterval;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak, nonatomic) id<HKQueryDelegate> delegate;
 @property (readonly, copy) NSString *description;
@@ -45,7 +51,6 @@
 + (id)_clientInterfaceProtocol;
 + (void)_configureClientInterface:(id)arg1;
 + (id)_predicateForObjectsFromAppleWatches;
-+ (id)_predicateForSamplesSyncedFromOtherDevice;
 + (Class)_queryServerDataObjectClass;
 + (id)_serverInterfaceProtocol;
 + (id)clientInterface;
@@ -70,31 +75,38 @@
 + (id)predicateForWorkoutsWithOperatorType:(unsigned long long)arg1 duration:(double)arg2;
 + (id)predicateForWorkoutsWithOperatorType:(unsigned long long)arg1 totalDistance:(id)arg2;
 + (id)predicateForWorkoutsWithOperatorType:(unsigned long long)arg1 totalEnergyBurned:(id)arg2;
++ (id)predicateForWorkoutsWithOperatorType:(unsigned long long)arg1 totalSwimmingStrokeCount:(id)arg2;
 + (id)predicateForWorkoutsWithWorkoutActivityType:(unsigned long long)arg1;
 + (id)serverInterface;
++ (BOOL)shouldApplyPredicateForObjectType:(id)arg1;
 - (void).cxx_destruct;
+- (CDUnknownBlockType)_activationQueue_activationHandler;
 - (void)_client_receivedInitialResults;
 - (void)_dispatchAsyncToResourceQueue:(CDUnknownBlockType)arg1;
 - (void)_dispatchSyncToResourceQueue:(CDUnknownBlockType)arg1;
 - (void)_dispatchToClientForUUID:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)_initWithDataType:(id)arg1 predicate:(id)arg2;
 - (id)_predicateFilterClasses;
-- (void)_queue_activateWithConnection:(id)arg1 isReactivation:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)_queue_activateWithServer:(id)arg1 isReactivation:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_queue_cleanupAfterDeactivation;
 - (void)_queue_configureQueryServerDataObject:(id)arg1;
 - (void)_queue_deactivate;
 - (void)_queue_deliverErrorAndDeactivate:(id)arg1;
 - (CDUnknownBlockType)_queue_errorHandler;
-- (void)_queue_requestServerProxyWithUUID:(id)arg1 connection:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_queue_requestServerProxyWithUUID:(id)arg1 server:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (BOOL)_queue_shouldStayAliveAfterInitialResults;
 - (void)_queue_validate;
 - (BOOL)_requiresValidSampleType;
+- (int)_samplesDeliveredBeforeSuspend;
+- (void)_setActivationHandler:(CDUnknownBlockType)arg1;
+- (void)_setSamplesDeliveredBeforeSuspend:(int)arg1;
 - (BOOL)_shouldStayAliveAfterInitialResults;
 - (void)_throwInvalidArgumentExceptionIfHasBeenExecuted:(SEL)arg1;
-- (void)activateWithClientQueue:(id)arg1 connection:(id)arg2 delegate:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)activateWithClientQueue:(id)arg1 healthStore:(id)arg2 delegate:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)dataUpdatedInDatabaseWithAnchor:(id)arg1 query:(id)arg2;
 - (void)deactivate;
-- (void)deliverActivityStatisticsObjects:(id)arg1 forQuery:(id)arg2;
+- (void)deliverActivityMoveStatistics:(id)arg1 exerciseStatistics:(id)arg2 standHoursInfo:(id)arg3 workouts:(id)arg4 forQuery:(id)arg5;
+- (void)deliverCurrentActivityCache:(id)arg1 moveStatistics:(id)arg2 exerciseStatistics:(id)arg3 standHoursInfo:(id)arg4 queryUUID:(id)arg5;
 - (void)deliverError:(id)arg1 forQuery:(id)arg2;
 - (void)deliverInitialStatisticsObjects:(id)arg1 anchor:(id)arg2 forQuery:(id)arg3;
 - (void)deliverResetStatisticsObjects:(id)arg1 forQuery:(id)arg2;
@@ -104,12 +116,14 @@
 - (void)deliverSampleObjects:(id)arg1 deletedObjects:(id)arg2 withAnchor:(id)arg3 forQuery:(id)arg4;
 - (void)deliverSources:(id)arg1 forQuery:(id)arg2;
 - (void)deliverStatistics:(id)arg1 forQuery:(id)arg2;
+- (void)deliverStatisticsBatch:(id)arg1 initialDelivery:(BOOL)arg2 finalBatch:(BOOL)arg3 anchor:(id)arg4 forQuery:(id)arg5;
 - (void)deliverUpdatedSources:(id)arg1 added:(id)arg2 forQuery:(id)arg3;
 - (void)deliverUpdatedStatistics:(id)arg1 anchor:(id)arg2 forQuery:(id)arg3;
 - (void)deliverUpdatedValuesByType:(id)arg1 forQuery:(id)arg2;
 - (void)deliverValuesByType:(id)arg1 forQuery:(id)arg2;
 - (id)init;
-- (void)reactivateWithConnection:(id)arg1;
+- (void)reactivateWithServer:(id)arg1;
+- (void)resetStatisticsForQuery:(id)arg1;
 
 @end
 

@@ -17,8 +17,7 @@
 }
 
 @property (nonatomic, getter=_alternateGroupID, setter=_setAlternateGroupID:) short alternateGroupID;
-@property (readonly, nonatomic, getter=_isAttachedToMetadataAdaptor) BOOL attachedToMetadataAdaptor;
-@property (nonatomic, getter=_isAttachedToPixelBufferAdaptor, setter=_setAttachedToPixelBufferAdaptor:) BOOL attachedToPixelBufferAdaptor;
+@property (readonly, nonatomic, getter=_isAttachedToAdaptor) BOOL attachedToAdaptor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL expectsMediaDataInRealTime;
@@ -30,12 +29,12 @@
 @property (readonly, nonatomic) NSDictionary *outputSettings;
 @property (readonly, nonatomic, getter=_outputSettingsObject) AVOutputSettings *outputSettingsObject;
 @property (readonly, nonatomic, getter=_pixelBufferPool) struct __CVPixelBufferPool *pixelBufferPool;
+@property (nonatomic, getter=_provisionalAlternateGroupID, setter=_setProvisionalAlternateGroupID:) short provisionalAlternateGroupID;
 @property (readonly, nonatomic, getter=isReadyForMoreMediaData) BOOL readyForMoreMediaData;
 @property (readonly, nonatomic) const struct opaqueCMFormatDescription *sourceFormatHint;
 @property (copy, nonatomic, getter=_sourcePixelBufferAttributes, setter=_setSourcePixelBufferAttributes:) NSDictionary *sourcePixelBufferAttributes;
 @property (readonly, nonatomic, getter=_status) long long status;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic, getter=_trackID) int trackID;
 @property (readonly, nonatomic, getter=_trackReferences) NSDictionary *trackReferences;
 @property (strong, nonatomic, getter=_weakReferenceToAssetWriter, setter=_setWeakReferenceToAssetWriter:) AVWeakReference *weakReferenceToAssetWriter;
 
@@ -44,11 +43,12 @@
 + (void)initialize;
 - (BOOL)_appendPixelBuffer:(struct __CVBuffer *)arg1 withPresentationTime:(CDStruct_1b6d18a9)arg2;
 - (long long)_appendSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 error:(id *)arg2;
-- (void)_attachToMetadataAdaptor:(id)arg1;
+- (id)_attachedAdaptor;
 - (void)_didStartInitialSession;
 - (BOOL)_prepareForWritingWithFigAssetWriter:(struct OpaqueFigAssetWriter *)arg1 mediaFileType:(id)arg2 error:(id *)arg3;
 - (void)_prepareToEndSession;
 - (BOOL)_prepareToFinishWritingReturningError:(id *)arg1;
+- (void)_setAttachedAdaptor:(id)arg1;
 - (void)_tellAssetWriterToTransitionToFailedStatusWithError:(id)arg1;
 - (void)_transitionToTerminalStatus:(long long)arg1;
 - (void)addCallbackToCancelDuringDeallocation:(id)arg1;
@@ -74,6 +74,7 @@
 - (int)mediaTimeScale;
 - (struct CGSize)naturalSize;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (int)outputTrackID;
 - (BOOL)performsMultiPassEncodingIfSupported;
 - (long long)preferredMediaChunkAlignment;
 - (CDStruct_1b6d18a9)preferredMediaChunkDuration;

@@ -37,6 +37,7 @@
 - (id)_remoteInterface;
 - (id)_remoteInterfaceWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_remoteInterfaceWithErrorHandler:(CDUnknownBlockType)arg1 connectIfNecessary:(BOOL)arg2;
+- (id)_remoteSynchronousInterfaceWithErrorHandler:(CDUnknownBlockType)arg1 connectIfNecessary:(BOOL)arg2;
 - (void)_setClientType;
 - (void)_unregisterAutoInstallOperationClientHandler:(id)arg1;
 - (void)autoInstallOperationDidConsent:(id)arg1;
@@ -57,6 +58,7 @@
 - (void)downloadDidStart:(id)arg1;
 - (void)downloadProgressDidChange:(id)arg1;
 - (void)downloadWasInvalidatedForNewUpdateAvailable:(id)arg1;
+- (void)extraSpaceNeededForDownloadWithoutAppPurging:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 clientType:(int)arg2;

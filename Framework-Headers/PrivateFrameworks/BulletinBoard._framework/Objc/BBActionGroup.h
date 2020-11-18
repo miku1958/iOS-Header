@@ -16,11 +16,13 @@
 @property (copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 
 + (id)actionGroupWithActions:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
+- (id)awakeAfterUsingCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)replacementObjectForCoder:(id)arg1;
 
 @end
 

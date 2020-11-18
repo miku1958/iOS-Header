@@ -26,11 +26,23 @@
 @property (readonly) double red;
 @property (readonly) NSString *stringRepresentation;
 
++ (id)blackColor;
++ (id)blueColor;
++ (id)clearColor;
 + (id)colorWithCGColor:(struct CGColor *)arg1;
 + (id)colorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3;
 + (id)colorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
++ (id)colorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4 colorSpace:(struct CGColorSpace *)arg5;
++ (id)colorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 colorSpace:(struct CGColorSpace *)arg4;
 + (id)colorWithString:(id)arg1;
++ (id)cyanColor;
++ (id)grayColor;
++ (id)greenColor;
++ (id)magentaColor;
++ (id)redColor;
 + (BOOL)supportsSecureCoding;
++ (id)whiteColor;
++ (id)yellowColor;
 - (struct CGColor *)cgColor;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -43,6 +55,8 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3;
 - (id)initWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
+- (id)initWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4 colorSpace:(struct CGColorSpace *)arg5;
+- (id)initWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 colorSpace:(struct CGColorSpace *)arg4;
 - (id)initWithString:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

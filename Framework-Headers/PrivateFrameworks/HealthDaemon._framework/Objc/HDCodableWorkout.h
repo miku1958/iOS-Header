@@ -6,11 +6,12 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
+#import <HealthDaemon/HDDecoding-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class HDCodableSample, NSMutableArray;
+@class HDCodableSample, NSMutableArray, NSString;
 
-@interface HDCodableWorkout : PBCodable <NSCopying>
+@interface HDCodableWorkout : PBCodable <HDDecoding, NSCopying>
 {
     double _duration;
     double _goal;
@@ -18,6 +19,7 @@
     double _totalBasalEnergyBurnedInCanonicalUnit;
     double _totalDistanceInCanonicalUnit;
     double _totalEnergyBurnedInCanonicalUnit;
+    double _totalWStepsInCanonicalUnit;
     long long _type;
     NSMutableArray *_events;
     HDCodableSample *_sample;
@@ -28,10 +30,13 @@
         unsigned int totalBasalEnergyBurnedInCanonicalUnit:1;
         unsigned int totalDistanceInCanonicalUnit:1;
         unsigned int totalEnergyBurnedInCanonicalUnit:1;
+        unsigned int totalWStepsInCanonicalUnit:1;
         unsigned int type:1;
     } _has;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (strong, nonatomic) NSMutableArray *events; // @synthesize events=_events;
 @property (nonatomic) double goal; // @synthesize goal=_goal;
@@ -43,15 +48,20 @@
 @property (nonatomic) BOOL hasTotalBasalEnergyBurnedInCanonicalUnit;
 @property (nonatomic) BOOL hasTotalDistanceInCanonicalUnit;
 @property (nonatomic) BOOL hasTotalEnergyBurnedInCanonicalUnit;
+@property (nonatomic) BOOL hasTotalWStepsInCanonicalUnit;
 @property (nonatomic) BOOL hasType;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HDCodableSample *sample; // @synthesize sample=_sample;
+@property (readonly) Class superclass;
 @property (nonatomic) double totalBasalEnergyBurnedInCanonicalUnit; // @synthesize totalBasalEnergyBurnedInCanonicalUnit=_totalBasalEnergyBurnedInCanonicalUnit;
 @property (nonatomic) double totalDistanceInCanonicalUnit; // @synthesize totalDistanceInCanonicalUnit=_totalDistanceInCanonicalUnit;
 @property (nonatomic) double totalEnergyBurnedInCanonicalUnit; // @synthesize totalEnergyBurnedInCanonicalUnit=_totalEnergyBurnedInCanonicalUnit;
+@property (nonatomic) double totalWStepsInCanonicalUnit; // @synthesize totalWStepsInCanonicalUnit=_totalWStepsInCanonicalUnit;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
 - (void)addEvents:(id)arg1;
+- (BOOL)applyToObject:(id)arg1;
 - (void)clearEvents;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -60,12 +70,11 @@
 - (id)decodedTotalBasalEnergyBurned;
 - (id)decodedTotalDistance;
 - (id)decodedTotalEnergyBurned;
+- (id)decodedTotalSwimmingStrokeCount;
 - (id)decodedWorkoutEvents;
-- (id)description;
 - (id)dictionaryRepresentation;
 - (id)eventsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)eventsCount;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

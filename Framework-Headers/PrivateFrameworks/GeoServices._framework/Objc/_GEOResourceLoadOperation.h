@@ -7,35 +7,37 @@
 #import <Foundation/NSObject.h>
 
 #import <GeoServices/GEOResourceLoadOperation-Protocol.h>
-#import <GeoServices/NSURLConnectionDataDelegate-Protocol.h>
+#import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
 
-@class NSData, NSLock, NSMutableData, NSString, NSURL, NSURLConnection;
+@class NSData, NSLock, NSMutableData, NSString, NSURL, NSURLSession, NSURLSessionTask;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _GEOResourceLoadOperation : NSObject <NSURLConnectionDataDelegate, GEOResourceLoadOperation>
+@interface _GEOResourceLoadOperation : NSObject <NSURLSessionDataDelegate, GEOResourceLoadOperation>
 {
     NSURL *_url;
     CDUnknownBlockType _completionHandler;
     NSObject<OS_dispatch_queue> *_callbackQueue;
-    NSURLConnection *_conn;
+    NSURLSession *_session;
+    NSURLSessionTask *_task;
     NSMutableData *_data;
     BOOL _expectsPartialContent;
     NSData *_auditToken;
     NSLock *_lock;
+    BOOL _requiresWiFi;
 }
 
 @property (readonly, nonatomic) NSData *data; // @synthesize data=_data;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL requiresWiFi; // @synthesize requiresWiFi=_requiresWiFi;
 @property (readonly) Class superclass;
 
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)cancel;
-- (void)connection:(id)arg1 didFailWithError:(id)arg2;
-- (void)connection:(id)arg1 didReceiveData:(id)arg2;
-- (void)connection:(id)arg1 didReceiveResponse:(id)arg2;
-- (void)connectionDidFinishLoading:(id)arg1;
 - (void)dealloc;
 - (id)initWithResource:(id)arg1 existingPartialData:(id)arg2 auditToken:(id)arg3 baseURLString:(id)arg4;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1 callbackQueue:(id)arg2;

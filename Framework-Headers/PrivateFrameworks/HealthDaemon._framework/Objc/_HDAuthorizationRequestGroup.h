@@ -41,7 +41,6 @@
 - (void)cancelRequestsWithIdentifiers:(id)arg1 error:(id)arg2;
 - (id)description;
 - (void)finishRequestsWithError:(id)arg1;
-- (id)init;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (BOOL)promptIfNecessaryWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;
 

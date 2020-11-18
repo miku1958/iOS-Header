@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <SearchUI/SearchUIVibrantLabel.h>
 
-@class NSString;
-
-@interface SearchUIContentAdvisoryView : UIView
+@interface SearchUIContentAdvisoryView : SearchUIVibrantLabel
 {
-    NSString *_advisoryString;
 }
 
-@property (strong) NSString *advisoryString; // @synthesize advisoryString=_advisoryString;
-
-- (void).cxx_destruct;
-- (id)initWithString:(id)arg1 style:(unsigned long long)arg2 large:(BOOL)arg3;
+- (id)initWithStyle:(unsigned long long)arg1 large:(BOOL)arg2;
+- (struct CGSize)intrinsicContentSize;
+- (struct CGSize)makeLabelInsets:(struct CGSize)arg1;
+- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
+- (void)updateAdvisoryString:(id)arg1;
 
 @end
 

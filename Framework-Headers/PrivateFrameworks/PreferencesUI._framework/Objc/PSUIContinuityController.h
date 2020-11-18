@@ -6,14 +6,10 @@
 
 #import <Preferences/PSListController.h>
 
-@class SuggestedAppsController;
-
 @interface PSUIContinuityController : PSListController
 {
-    SuggestedAppsController *_suggestedAppsController;
 }
 
-- (void).cxx_destruct;
 - (id)init;
 - (id)isContinuityEnabled:(id)arg1;
 - (BOOL)isContinuityRestricted;

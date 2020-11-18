@@ -15,7 +15,7 @@
 
 - (BOOL)_shouldShowHeadersAndFooters;
 - (BOOL)canBecomeFirstResponder;
-- (id)preferredFocusedView;
+- (id)preferredFocusEnvironments;
 
 @end
 

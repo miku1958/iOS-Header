@@ -19,6 +19,7 @@
 @property (nonatomic) id<MFCorecipientsIndicatorAtomDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 
+- (void)dealloc;
 - (id)init;
 - (id)initWithRecipients:(id)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;

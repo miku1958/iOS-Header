@@ -6,10 +6,13 @@
 
 #import <CoreSuggestions/_SGSuggestionsServiceBaseProtocol-Protocol.h>
 #import <CoreSuggestions/_SGSuggestionsServiceContactsConfirmRejectProtocol-Protocol.h>
+#import <CoreSuggestions/_SGSuggestionsServiceContactsObserverProtocol-Protocol.h>
 
 @class CNContact, NSArray, NSString, SGContact, SGContactMatchArrayOption, SGOrigin, SGRecordId;
 
-@protocol SGSuggestionsServiceContactsProtocol <_SGSuggestionsServiceBaseProtocol, _SGSuggestionsServiceContactsConfirmRejectProtocol>
+@protocol SGSuggestionsServiceContactsProtocol <_SGSuggestionsServiceBaseProtocol, _SGSuggestionsServiceContactsConfirmRejectProtocol, _SGSuggestionsServiceContactsObserverProtocol>
+- (NSArray *)allContactsLimitedTo:(unsigned long long)arg1 error:(id *)arg2;
+- (void)allContactsLimitedTo:(unsigned long long)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (NSArray *)cnContactMatchesForRecordId:(SGRecordId *)arg1 error:(id *)arg2;
 - (void)cnContactMatchesForRecordId:(SGRecordId *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (NSArray *)cnContactMatchesForRecordIds:(NSArray *)arg1 error:(id *)arg2;

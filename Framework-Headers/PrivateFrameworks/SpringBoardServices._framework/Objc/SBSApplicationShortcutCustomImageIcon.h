@@ -10,14 +10,22 @@
 
 @interface SBSApplicationShortcutCustomImageIcon : SBSApplicationShortcutIcon
 {
-    NSData *_imagePNGData;
+    BOOL _isTemplate;
+    NSData *_imageData;
+    long long _dataType;
 }
 
-@property (readonly, nonatomic) NSData *imagePNGData; // @synthesize imagePNGData=_imagePNGData;
+@property (readonly, nonatomic) long long dataType; // @synthesize dataType=_dataType;
+@property (readonly, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
+@property (readonly, nonatomic) NSData *imagePNGData;
+@property (readonly, nonatomic) BOOL isTemplate; // @synthesize isTemplate=_isTemplate;
 
 - (void).cxx_destruct;
+- (id)_initForSubclass;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithImageData:(id)arg1 dataType:(long long)arg2;
+- (id)initWithImageData:(id)arg1 dataType:(long long)arg2 isTemplate:(BOOL)arg3;
 - (id)initWithImagePNGData:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

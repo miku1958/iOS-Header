@@ -8,6 +8,7 @@
 
 #import <SpringBoardUI/SBPluginBundleController-Protocol.h>
 
+@class NSString;
 @protocol SBUIPluginControllerHost;
 
 @interface SBUIPluginController : NSObject <SBPluginBundleController>
@@ -16,7 +17,11 @@
     BOOL _isVisible;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<SBUIPluginControllerHost> host; // @synthesize host=_host;
+@property (readonly) Class superclass;
 @property (nonatomic, getter=isVisible) BOOL visible; // @synthesize visible=_isVisible;
 
 - (void).cxx_destruct;

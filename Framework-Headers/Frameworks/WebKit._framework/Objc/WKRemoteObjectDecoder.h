@@ -6,17 +6,16 @@
 
 #import <Foundation/NSCoder.h>
 
-@class NSSet;
-
 __attribute__((visibility("hidden")))
 @interface WKRemoteObjectDecoder : NSCoder
 {
     struct RetainPtr<_WKRemoteObjectInterface> _interface;
     const struct Dictionary *_rootDictionary;
     const struct Dictionary *_currentDictionary;
+    SEL _replyToSelector;
     const struct Array *_objectStream;
     unsigned long long _objectStreamPosition;
-    NSSet *_allowedClasses;
+    const struct HashSet<Class, WTF::PtrHash<Class>, WTF::HashTraits<Class>> *_allowedClasses;
 }
 
 - (id).cxx_construct;
@@ -35,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)decodeObjectForKey:(id)arg1;
 - (id)decodeObjectOfClasses:(id)arg1 forKey:(id)arg2;
 - (void)decodeValueOfObjCType:(const char *)arg1 at:(void *)arg2;
-- (id)initWithInterface:(id)arg1 rootObjectDictionary:(const struct Dictionary *)arg2;
+- (id)initWithInterface:(id)arg1 rootObjectDictionary:(const struct Dictionary *)arg2 replyToSelector:(SEL)arg3;
 - (BOOL)requiresSecureCoding;
 
 @end

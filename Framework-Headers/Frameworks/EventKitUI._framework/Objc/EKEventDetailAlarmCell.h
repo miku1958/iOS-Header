@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)_alertLocalizedString;
 - (id)initWithEvent:(id)arg1 editable:(BOOL)arg2 platformStyle:(int)arg3;
 - (BOOL)isEditable;
 - (void)setAlarms:(id)arg1;

@@ -6,53 +6,40 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSLayoutConstraint, SearchUIRoundedView, UIView;
-@protocol SearchUIDelegate;
+@protocol SearchUIFeedbackDelegatePrivate;
 
 @interface SearchUITableViewCell : UITableViewCell
 {
     BOOL _expanded;
-    id<SearchUIDelegate> _delegate;
-    UIView *_clippingContainer;
-    NSLayoutConstraint *_clippingConstraint;
-    SearchUIRoundedView *_roundedView;
+    unsigned long long _style;
+    id<SearchUIFeedbackDelegatePrivate> _delegate;
 }
 
-@property (strong) NSLayoutConstraint *clippingConstraint; // @synthesize clippingConstraint=_clippingConstraint;
-@property (strong) UIView *clippingContainer; // @synthesize clippingContainer=_clippingContainer;
-@property (weak) id<SearchUIDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak) id<SearchUIFeedbackDelegatePrivate> delegate; // @synthesize delegate=_delegate;
 @property (getter=isExpanded) BOOL expanded; // @synthesize expanded=_expanded;
-@property (strong) SearchUIRoundedView *roundedView; // @synthesize roundedView=_roundedView;
+@property unsigned long long style; // @synthesize style=_style;
 
++ (BOOL)canCellExpandWithResults:(id)arg1;
 + (Class)classForResult:(id)arg1;
-+ (void)enableRoundedCorners;
-+ (struct UIEdgeInsets)insetLayoutMarginsForLayoutMargins:(struct UIEdgeInsets)arg1;
-+ (id)reuseCharacteristicsIDForResult:(id)arg1;
-+ (id)reuseIdentifierForClass:(Class)arg1 result:(id)arg2;
++ (id)convertResultIfNecessary:(id)arg1;
++ (double)distanceToTopOfAppIconsForMultiResultCell;
++ (BOOL)resultIsSuggestedQuery:(id)arg1;
++ (id)reuseIdentifierForClass:(Class)arg1;
 + (id)reuseIdentifierForResult:(id)arg1;
 + (id)reuseIdentifierForResults:(id)arg1;
-+ (id)rowViewForResult:(id)arg1 style:(unsigned long long)arg2;
-+ (struct CGRect)visibleFrameForHomeScreenIcons;
++ (id)rowViewForResult:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
 - (void).cxx_destruct;
-- (void)clearPurgeableMemory;
-- (id)initWithResult:(id)arg1 style:(unsigned long long)arg2;
-- (id)initWithResults:(id)arg1 style:(unsigned long long)arg2;
+- (id)initWithResult:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (id)initWithResults:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
 - (id)initWithStyle:(unsigned long long)arg1;
 - (BOOL)isExpandable;
-- (BOOL)layoutMarginsFollowReadableWidth;
 - (unsigned long long)numberOfVisibleResults;
-- (void)prepareForReuse;
-- (void)reset;
-- (void)setBackgroundColor:(id)arg1;
 - (void)setSectionLocation:(int)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldHideBottomSeparator;
 - (BOOL)supportsRecycling;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)updateClippingHeight:(double)arg1;
 - (void)updateExpanded:(BOOL)arg1;
-- (void)updateRoundedCorners;
 - (void)updateWithResult:(id)arg1;
 - (void)updateWithResults:(id)arg1;
-- (void)willMoveToSuperview:(id)arg1;
 
 @end
 

@@ -17,10 +17,10 @@
     NSURL *_url;
 }
 
-@property (strong) NSError *error; // @synthesize error=_error;
-@property BOOL liked; // @synthesize liked=_liked;
-@property unsigned long long numberOfFriendLikes; // @synthesize numberOfFriendLikes=_numberOfFriendLikes;
-@property unsigned long long numberOfLikes; // @synthesize numberOfLikes=_numberOfLikes;
+@property (strong, nonatomic) NSError *error; // @synthesize error=_error;
+@property (nonatomic) BOOL liked; // @synthesize liked=_liked;
+@property (nonatomic) unsigned long long numberOfFriendLikes; // @synthesize numberOfFriendLikes=_numberOfFriendLikes;
+@property (nonatomic) unsigned long long numberOfLikes; // @synthesize numberOfLikes=_numberOfLikes;
 @property (readonly) NSURL *url; // @synthesize url=_url;
 
 + (id)openGraphNodeAccessQueue;

@@ -6,16 +6,21 @@
 
 #import <CoreThemeDefinition/TDRenditionSpec.h>
 
-@class NSNumber, NSSet;
+@class NSNumber, NSOrderedSet, TDEffectComponent;
 
 @interface TDEffectRenditionSpec : TDRenditionSpec
 {
 }
 
-@property (strong, nonatomic) NSSet *components; // @dynamic components;
+@property (readonly, strong, nonatomic) TDEffectComponent *CUIShapeEffectOutputOpacity;
+@property (readonly, strong, nonatomic) TDEffectComponent *CUIShapeEffectShapeOpacity;
+@property (strong, nonatomic) NSOrderedSet *components; // @dynamic components;
 @property (strong, nonatomic) NSNumber *effectScale; // @dynamic effectScale;
 
++ (id)keyPathsForValuesAffectingCUIShapeEffectOutputOpacity;
++ (id)keyPathsForValuesAffectingCUIShapeEffectShapeOpacity;
 - (BOOL)canBePackedWithDocument:(id)arg1;
+- (id)componentOfType:(unsigned int)arg1;
 - (id)createCSIRepresentationWithCompression:(BOOL)arg1 colorSpaceID:(unsigned long long)arg2 document:(id)arg3;
 - (id)effectPreset;
 - (void)setComponentsFromEffectPreset:(id)arg1 withDocument:(id)arg2;

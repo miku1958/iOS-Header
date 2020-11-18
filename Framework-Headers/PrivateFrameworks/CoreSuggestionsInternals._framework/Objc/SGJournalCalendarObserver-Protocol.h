@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreSuggestionsInternals/NSObject-Protocol.h>
+#import <CoreSuggestionsInternals/SGJournalBaseObserver-Protocol.h>
 
 @class SGStorageEvent;
 
-@protocol SGJournalCalendarObserver <NSObject>
+@protocol SGJournalCalendarObserver <SGJournalBaseObserver>
 - (void)addEvent:(SGStorageEvent *)arg1;
 - (void)calendarDeleted;
 - (void)cancelEvent:(SGStorageEvent *)arg1;

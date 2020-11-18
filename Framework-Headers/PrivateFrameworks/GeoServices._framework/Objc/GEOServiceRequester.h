@@ -17,6 +17,7 @@
 + (id)_debugRequestName;
 + (int)_experimentDispatcherRequestTypeForRequest:(id)arg1;
 + (long long)_experimentType;
++ (unsigned char)_requestCounterInfoTypeForRequest:(id)arg1;
 + (id)_serviceTypeNumber;
 + (BOOL)_shouldThrottleRequests;
 + (id)_throttleKey;

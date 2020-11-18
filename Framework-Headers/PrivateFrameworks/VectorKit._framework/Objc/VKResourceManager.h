@@ -8,7 +8,6 @@
 
 @class GEOResourceManifestConfiguration;
 
-__attribute__((visibility("hidden")))
 @interface VKResourceManager : NSObject
 {
     GEOResourceManifestConfiguration *_manifestConfiguration;

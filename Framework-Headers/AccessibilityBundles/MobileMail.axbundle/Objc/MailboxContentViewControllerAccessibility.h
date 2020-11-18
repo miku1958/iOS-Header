@@ -16,7 +16,6 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)setTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (void)viewDidAppear:(BOOL)arg1;
 
 @end
 

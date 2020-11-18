@@ -14,13 +14,11 @@
     NSArray *_contentIdentifiersToRemove;
 }
 
-@property (copy, nonatomic) NSArray *contentIdentifiersToAdd; // @synthesize contentIdentifiersToAdd=_contentIdentifiersToAdd;
-@property (copy, nonatomic) NSArray *contentIdentifiersToRemove; // @synthesize contentIdentifiersToRemove=_contentIdentifiersToRemove;
+@property (copy, nonatomic, setter=_setContentIdentifiersToAdd:) NSArray *contentIdentifiersToAdd; // @synthesize contentIdentifiersToAdd=_contentIdentifiersToAdd;
+@property (copy, nonatomic, setter=_setContentIdentifiersToRemove:) NSArray *contentIdentifiersToRemove; // @synthesize contentIdentifiersToRemove=_contentIdentifiersToRemove;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_setContentIdentifiersToAdd:(id)arg1;
-- (void)_setContentIdentifiersToRemove:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

@@ -12,14 +12,10 @@ __attribute__((visibility("hidden")))
 @interface _UITintColorVisitor : _UIViewVisitor
 {
     unsigned long long _reasons;
-    BOOL _visitedViewIsWindow;
-    BOOL _viewHasDefinedTintColor;
-    BOOL _viewHasNonAutomaticTintAdjustmentMode;
     UIView *_originalVisitedView;
     UIView *_changedSubview;
 }
 
-- (void)_prepareForView:(id)arg1 trackingHierarchy:(BOOL)arg2;
 - (BOOL)_prepareVisitor:(id)arg1 toVisitView:(id)arg2 changedSubview:(id)arg3 previousWindow:(id)arg4 previousSuperview:(id)arg5;
 - (BOOL)_visitView:(id)arg1;
 - (id)initWithNotificationReasons:(unsigned long long)arg1;

@@ -8,7 +8,7 @@
 
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSString, NSURL, NSURLRequest, WKFrameInfo;
+@class NSString, NSURL, NSURLRequest, WKFrameInfo, _WKUserInitiatedAction;
 
 @interface WKNavigationAction : NSObject <WKObject>
 {
@@ -21,7 +21,9 @@
 @property (readonly, nonatomic) BOOL _shouldOpenAppLinks;
 @property (readonly, nonatomic) BOOL _shouldOpenExternalSchemes;
 @property (readonly, nonatomic) BOOL _shouldOpenExternalURLs;
+@property (readonly, nonatomic) long long _syntheticClickType;
 @property (readonly, nonatomic, getter=_isUserInitiated) BOOL _userInitiated;
+@property (readonly, nonatomic) _WKUserInitiatedAction *_userInitiatedAction;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

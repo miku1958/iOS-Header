@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface AXBZoomTouchManager : NSObject
 {
 }
 
++ (Class)getZoomBundlePrincipalClassForcingLoad:(BOOL)arg1;
 + (void)initializeZoomMonitor;
++ (void)toggleMagnifier;
 - (void)setZoomTouchEnabled:(BOOL)arg1;
 - (void)updateSettings;
 

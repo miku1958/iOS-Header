@@ -6,13 +6,13 @@
 
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
-@class NSArray;
+@class NSArray, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchSubscriptionsOperation : CKDDatabaseOperation
 {
     BOOL _isFetchAllSubscriptionsOperation;
-    NSArray *_subscriptions;
+    NSMutableArray *_subscriptions;
     CDUnknownBlockType _subscriptionFetchedProgressBlock;
     NSArray *_subscriptionIDs;
 }
@@ -20,12 +20,12 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isFetchAllSubscriptionsOperation; // @synthesize isFetchAllSubscriptionsOperation=_isFetchAllSubscriptionsOperation;
 @property (copy, nonatomic) CDUnknownBlockType subscriptionFetchedProgressBlock; // @synthesize subscriptionFetchedProgressBlock=_subscriptionFetchedProgressBlock;
 @property (strong, nonatomic) NSArray *subscriptionIDs; // @synthesize subscriptionIDs=_subscriptionIDs;
-@property (strong, nonatomic) NSArray *subscriptions; // @synthesize subscriptions=_subscriptions;
+@property (strong, nonatomic) NSMutableArray *subscriptions; // @synthesize subscriptions=_subscriptions;
 
 - (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleSubscriptionFetched:(id)arg1 withID:(id)arg2 responseCode:(id)arg3;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
 

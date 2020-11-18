@@ -18,6 +18,7 @@
 - (BOOL)_isSpeakerAvailable;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
+- (id)accessibilityValue;
 
 @end
 

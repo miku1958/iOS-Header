@@ -45,7 +45,6 @@
 @property (nonatomic, getter=isPublished) BOOL published;
 @property (copy, nonatomic) NSString *publishedURL;
 @property (copy, nonatomic) NSString *pushKey;
-@property (nonatomic) BOOL schedulingProhibited;
 @property (copy, nonatomic) NSURL *selfIdentityAddress;
 @property (copy, nonatomic) NSString *selfIdentityDisplayName;
 @property (copy, nonatomic) NSString *selfIdentityEmail;

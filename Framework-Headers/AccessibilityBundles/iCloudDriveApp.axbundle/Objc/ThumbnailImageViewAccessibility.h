@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_axIsDownloading;
+- (BOOL)_axIsDownloaded;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;

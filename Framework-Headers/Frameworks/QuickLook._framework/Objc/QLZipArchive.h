@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSFileWrapper, NSURL;
 
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSFileWrapper *_fileWrapper;
 }
 
+- (void).cxx_destruct;
 - (BOOL)_reopenWithError:(id *)arg1;
 - (void)dealloc;
 - (void)enumerateEntriesWithHandler:(CDUnknownBlockType)arg1;

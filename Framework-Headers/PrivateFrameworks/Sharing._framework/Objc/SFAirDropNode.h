@@ -8,26 +8,27 @@
 
 @class NSString, UIImage;
 
-__attribute__((visibility("hidden")))
 @interface SFAirDropNode : NSObject
 {
     struct __SFOperation *_sender;
+    BOOL _me;
     BOOL _unknown;
     BOOL _monogram;
-    BOOL _supportsPasses;
     BOOL _supportsFMF;
+    BOOL _supportsPasses;
     BOOL _supportsMixedTypes;
-    BOOL _isConversation;
     id _node;
+    NSString *_contactIdentifier;
     NSString *_realName;
     UIImage *_displayIcon;
     NSString *_displayName;
     NSString *_secondaryName;
 }
 
+@property (strong) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 @property (strong) UIImage *displayIcon; // @synthesize displayIcon=_displayIcon;
 @property (strong) NSString *displayName; // @synthesize displayName=_displayName;
-@property (readonly) BOOL isConversation; // @synthesize isConversation=_isConversation;
+@property (getter=isMe) BOOL me; // @synthesize me=_me;
 @property (getter=isMonogram) BOOL monogram; // @synthesize monogram=_monogram;
 @property (strong) id node; // @synthesize node=_node;
 @property (strong) NSString *realName; // @synthesize realName=_realName;

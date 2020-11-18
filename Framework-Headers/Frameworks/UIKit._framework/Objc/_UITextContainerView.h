@@ -9,6 +9,7 @@
 #import <UIKit/NSUITextViewCommonMethods-Protocol.h>
 
 @class NSDictionary, NSLayoutManager, NSString, NSTextContainer, NSTextStorage;
+@protocol _UITextContainerViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UITextContainerView : UIView <NSUITextViewCommonMethods>
@@ -25,16 +26,19 @@ __attribute__((visibility("hidden")))
         unsigned int verticalLayout:2;
         unsigned int horizontallyResizable:1;
         unsigned int verticallyResizable:1;
+        unsigned int freezeTextContainerSize:1;
     } _tcvFlags;
+    id<_UITextContainerViewDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<_UITextContainerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=_freezeTextContainerSize, setter=_setFreezeTextContainerSize:) BOOL freezeTextContainerSize;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHorizontallyResizable) BOOL horizontallyResizable;
 @property (readonly, nonatomic) NSLayoutManager *layoutManager;
 @property (readonly, nonatomic) long long layoutOrientation;
-@property (copy, nonatomic) NSDictionary *linkTextAttributes; // @synthesize linkTextAttributes=_linkTextAttributes;
 @property (nonatomic) struct _NSRange markedRange;
 @property (nonatomic) struct CGSize maxSize; // @synthesize maxSize=_maxSize;
 @property (nonatomic) struct CGSize minSize; // @synthesize minSize=_minSize;
@@ -56,14 +60,15 @@ __attribute__((visibility("hidden")))
 - (void)_setFrameOrBounds:(struct CGRect)arg1 oldRect:(struct CGRect)arg2 settingAction:(CDUnknownBlockType)arg3;
 - (void)_sizeToConstrainedContainerUsedRect;
 - (void)dealloc;
-- (id)delegate;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 textContainer:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 textContainer:(id)arg2 delegate:(id)arg3;
 - (void)invalidateTextContainerOrigin;
+- (id)layoutManager:(id)arg1 effectiveCUICatalogForTextEffect:(id)arg2;
+- (id)linkAttributesForLink:(id)arg1 forCharacterAtIndex:(unsigned long long)arg2;
+- (id)linkTextAttributes;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setConstrainedFrameSize:(struct CGSize)arg1;
-- (void)setDelegate:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setLayoutOrientation:(long long)arg1;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1 avoidAdditionalLayout:(BOOL)arg2;

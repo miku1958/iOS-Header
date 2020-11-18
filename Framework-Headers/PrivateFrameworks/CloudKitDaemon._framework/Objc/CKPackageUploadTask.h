@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long uploadRank;
 
 - (void).cxx_destruct;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
 - (void)cancel;
 - (id)initWithPackage:(id)arg1 trackProgress:(BOOL)arg2;
 

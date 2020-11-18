@@ -6,18 +6,18 @@
 
 #import <UIKit/_UIFocusRegionMapEntry.h>
 
-@protocol _UIFocusRegion;
+@protocol _UILegacyFocusRegion;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusableRegionMapEntry : _UIFocusRegionMapEntry
 {
     BOOL _isFocusGuide;
     BOOL _focusCandidate;
-    id<_UIFocusRegion> _focusableRegion;
+    id<_UILegacyFocusRegion> _focusableRegion;
 }
 
 @property (nonatomic, getter=isFocusCandidate) BOOL focusCandidate; // @synthesize focusCandidate=_focusCandidate;
-@property (weak, nonatomic) id<_UIFocusRegion> focusableRegion; // @synthesize focusableRegion=_focusableRegion;
+@property (weak, nonatomic) id<_UILegacyFocusRegion> focusableRegion; // @synthesize focusableRegion=_focusableRegion;
 @property (nonatomic) BOOL isFocusGuide; // @synthesize isFocusGuide=_isFocusGuide;
 
 - (void).cxx_destruct;

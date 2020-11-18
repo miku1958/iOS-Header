@@ -15,12 +15,12 @@
 }
 
 @property (readonly, nonatomic) long long actionType;
-@property (readonly, strong, nonatomic) IMHandle *otherHandle; // @synthesize otherHandle=_otherHandle;
-@property (readonly, strong, nonatomic) IMHandle *sender; // @synthesize sender=_sender;
+@property (readonly, nonatomic) IMHandle *otherHandle; // @synthesize otherHandle=_otherHandle;
+@property (readonly, nonatomic) IMHandle *sender; // @synthesize sender=_sender;
 
+- (void).cxx_destruct;
 - (id)_initWithItem:(id)arg1 sender:(id)arg2 otherHandle:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 
 @end
 

@@ -6,24 +6,40 @@
 
 #import <IMCore/IMMessageChatItem.h>
 
-@class NSAttributedString;
+#import <IMCore/IMVisibleAssociatedMessageHost-Protocol.h>
 
-@interface IMMessagePartChatItem : IMMessageChatItem
+@class NSArray, NSAttributedString, NSString;
+
+@interface IMMessagePartChatItem : IMMessageChatItem <IMVisibleAssociatedMessageHost>
 {
     NSAttributedString *_text;
     long long _index;
+    struct _NSRange _messagePartRange;
+    NSArray *_visibleAssociatedMessageChatItems;
+    NSArray *_messageEditChatItems;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long index; // @synthesize index=_index;
+@property (readonly, nonatomic) NSArray *messageEditChatItems; // @synthesize messageEditChatItems=_messageEditChatItems;
+@property (nonatomic) struct _NSRange messagePartRange; // @synthesize messagePartRange=_messagePartRange;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSAttributedString *text; // @synthesize text=_text;
+@property (strong, nonatomic, setter=_setVisibleAssociatedMessageChatItems:) NSArray *visibleAssociatedMessageChatItems; // @synthesize visibleAssociatedMessageChatItems=_visibleAssociatedMessageChatItems;
 
++ (id)_guidForMessage:(id)arg1 url:(id)arg2;
 + (id)_messageItemWithPartsDeleted:(id)arg1 fromMessageItem:(id)arg2;
 + (id)_newMessagePartsForMessageItem:(id)arg1;
-- (id)_initWithItem:(id)arg1 text:(id)arg2 index:(long long)arg3;
++ (BOOL)_testingSupportsURL:(id)arg1;
+- (void).cxx_destruct;
+- (id)_initWithItem:(id)arg1 messagePartRange:(struct _NSRange)arg2;
+- (id)_initWithItem:(id)arg1 text:(id)arg2 index:(long long)arg3 messagePartRange:(struct _NSRange)arg4 visibleAssociatedMessageChatItems:(id)arg5;
+- (void)_setMessageEditChatItems:(id)arg1;
 - (BOOL)canDelete;
+- (BOOL)canSendMessageAcknowledgment;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)description;
 
 @end
 

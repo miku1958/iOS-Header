@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class MRAVRoutingClientController, NSArray, NSMutableArray;
+@class MRAVRoutingClientController, MSVDistributedNotificationObserver, NSArray, NSMutableArray, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -17,6 +17,9 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_registeredOrigins;
     MRAVRoutingClientController *_routingClientController;
     void *_nowPlayingPlaybackQueueContext;
+    NSMutableDictionary *_transactionSources;
+    MSVDistributedNotificationObserver *_televisionPairedDevicesChangedObserver;
+    MSVDistributedNotificationObserver *_televisionIsPairingAllowedChangedObserver;
     BOOL _receivesExternalScreenTypeChangedNotifications;
     BOOL _receivesSupportedCommandsNotifications;
     BOOL _receivesRoutesChangedNotifications;
@@ -54,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)registerForNowPlayingNotificationsWithQueue:(id)arg1;
 - (void)registerOrigin:(struct _MROrigin *)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)sendTransaction:(unsigned long long)arg1 withData:(id)arg2 forOrigin:(struct _MROrigin *)arg3;
 - (void)unregisterAllOriginsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)unregisterForNowPlayingNotifications;
 - (void)unregisterOrigin:(struct _MROrigin *)arg1 withCompletion:(CDUnknownBlockType)arg2;

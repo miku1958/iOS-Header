@@ -13,10 +13,10 @@ __attribute__((visibility("hidden")))
 {
     AVPlayerController *_playerController;
     id _playerControllerCurrentTimeJumpedObserver;
-    unsigned int _nowPlayingInfoNeedsUpdate:1;
-    unsigned int _enabled:1;
+    BOOL _nowPlayingInfoNeedsUpdate;
+    BOOL _enabled;
     NSUUID *_identifier;
-    unsigned int _shouldOwnNowPlayingInfo:1;
+    BOOL _shouldOwnNowPlayingInfo;
 }
 
 @property (nonatomic, getter=isEnabled) BOOL enabled;

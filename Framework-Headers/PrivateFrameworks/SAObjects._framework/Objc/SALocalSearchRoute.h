@@ -18,6 +18,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSData *routeAsZilchBinary;
+@property (copy, nonatomic) NSData *routeId;
+@property (copy, nonatomic) NSData *sessionState;
 @property (readonly) Class superclass;
 
 + (id)route;

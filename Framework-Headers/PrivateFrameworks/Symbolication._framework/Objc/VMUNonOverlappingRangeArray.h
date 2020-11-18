@@ -6,7 +6,6 @@
 
 #import <Symbolication/VMURangeArray.h>
 
-__attribute__((visibility("hidden")))
 @interface VMUNonOverlappingRangeArray : VMURangeArray
 {
 }

@@ -8,7 +8,7 @@
 
 #import <AppleAccount/NSURLSessionDataDelegate-Protocol.h>
 
-@class NSString, NSURLRequest;
+@class NSDictionary, NSString, NSURLRequest;
 
 @interface AARequest : NSObject <NSURLSessionDataDelegate>
 {
@@ -18,8 +18,10 @@
     NSString *_oneTimePassword;
     NSString *_machineId;
     CDUnknownBlockType _handler;
+    NSDictionary *_customHeaders;
 }
 
+@property (copy, nonatomic) NSDictionary *customHeaders; // @synthesize customHeaders=_customHeaders;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL flushCache; // @synthesize flushCache=_flushCache;

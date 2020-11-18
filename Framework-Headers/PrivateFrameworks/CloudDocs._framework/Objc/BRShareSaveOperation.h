@@ -17,7 +17,7 @@
 @property (strong, nonatomic) CKShare *share; // @synthesize share=_share;
 @property (copy) CDUnknownBlockType shareSaveCompletionBlock; // @synthesize shareSaveCompletionBlock=_shareSaveCompletionBlock;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)initWithShare:(id)arg1;
 - (void)main;

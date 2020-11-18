@@ -7,22 +7,24 @@
 #import <UIKit/UIViewController.h>
 
 #import <EventKitUI/BlockableScrollViewDelegate-Protocol.h>
+#import <EventKitUI/EKDayOccurrenceViewDelegate-Protocol.h>
 #import <EventKitUI/EKDayViewDataSource-Protocol.h>
 #import <EventKitUI/EKDayViewDelegate-Protocol.h>
 #import <EventKitUI/EKEventGestureControllerDelegate-Protocol.h>
 #import <EventKitUI/UIScrollViewDelegate-Protocol.h>
 #import <EventKitUI/UIViewControllerPreviewingDelegate-Protocol.h>
 
-@class CalendarOccurrencesCollection, EKDayView, EKDayViewWithGutters, EKEventEditViewController, EKEventGestureController, NSCalendar, NSDateComponents, NSString, NSTimer, ScrollSpringFactory, UIScrollView, UIView;
+@class CalendarOccurrencesCollection, EKDayOccurrenceView, EKDayView, EKDayViewWithGutters, EKEventEditViewController, EKEventGestureController, NSCalendar, NSDateComponents, NSString, NSTimer, ScrollSpringFactory, UIScrollView, UIView;
 @protocol EKDayViewControllerDataSource, EKDayViewControllerDelegate, UIViewControllerPreviewing;
 
-@interface EKDayViewController : UIViewController <BlockableScrollViewDelegate, UIViewControllerPreviewingDelegate, EKDayViewDataSource, EKDayViewDelegate, EKEventGestureControllerDelegate, UIScrollViewDelegate>
+@interface EKDayViewController : UIViewController <BlockableScrollViewDelegate, UIViewControllerPreviewingDelegate, EKDayOccurrenceViewDelegate, EKDayViewDataSource, EKDayViewDelegate, EKEventGestureControllerDelegate, UIScrollViewDelegate>
 {
     UIView *_clipView;
     UIScrollView *_horizontalScrollingView;
     EKDayView *_previousDay;
     EKDayView *_currentDay;
     EKDayView *_nextDay;
+    EKDayOccurrenceView *_proposedTimeView;
     EKDayViewWithGutters *_previousDayWithGutter;
     EKDayViewWithGutters *_currentDayWithGutter;
     EKDayViewWithGutters *_nextDayWithGutter;
@@ -48,7 +50,6 @@
     BOOL _adjustingForDeceleration;
     BOOL _fingerDown;
     BOOL _correctAfterScroll;
-    int _parallaxState;
     NSDateComponents *_targetDateComponents;
     BOOL _needToCompleteScrollingAnimation;
     BOOL _needToCompleteDeceleration;
@@ -82,6 +83,7 @@
 @property (readonly, nonatomic) UIView *currentAllDayView;
 @property (readonly, nonatomic) BOOL currentDayContainsOccurrences;
 @property (readonly, nonatomic) UIView *currentDayContentGridView;
+@property (readonly, nonatomic) EKDayView *currentDayView;
 @property (strong, nonatomic) EKEventEditViewController *currentEditor; // @synthesize currentEditor=_currentEditor;
 @property (weak, nonatomic) id<EKDayViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
@@ -106,7 +108,6 @@
 
 + (BOOL)_shouldForwardViewWillTransitionToSize;
 - (void).cxx_destruct;
-- (void)_beginParallaxStateIfPossible;
 - (BOOL)_canScrollToNow;
 - (BOOL)_canShowNowAfterScrollViewDidEndDecelerating:(id)arg1;
 - (void)_cleanUpTargetDateComponents;
@@ -114,7 +115,6 @@
 - (void)_completeScrollingAnimationIfNeeded;
 - (id)_createGutterDayViewWithDayView:(id)arg1;
 - (void)_didRespondToApplicationDidBecomeActiveStateChange;
-- (void)_endParallaxStateIfNeeded;
 - (id)_eventGestureSuperview;
 - (id)_eventsForDay:(id)arg1;
 - (void)_highlightDayViewDate:(double)arg1 isAllDay:(BOOL)arg2;
@@ -130,13 +130,14 @@
 - (void)_relayoutDaysDuringScrollingAndPerformDayChanges:(BOOL)arg1;
 - (void)_scrollDayViewAfterRelayoutDays;
 - (void)_scrollToNowOnScrollViewDidEndScrollingAnimation:(id)arg1;
-- (void)_scrollViewDidEndDecelerating:(id)arg1 notifyParallxState:(BOOL)arg2;
+- (void)_scrollViewDidEndDecelerating:(id)arg1;
 - (void)_setDayView:(id)arg1 toDate:(id)arg2;
 - (void)_setDisplayDate:(id)arg1 forRepeat:(BOOL)arg2;
 - (void)_setDisplayDate:(id)arg1 forRepeat:(BOOL)arg2 animate:(BOOL)arg3;
 - (void)_setDisplayDateInternal:(id)arg1;
 - (void)_setHorizontalContentOffsetUsingSpringAnimation:(struct CGPoint)arg1;
 - (void)_setNextAndPreviousFirstVisibleSecondToCurrent;
+- (BOOL)_shouldEndGestureEditingOnTap;
 - (BOOL)_shouldRespondToApplicationDidBecomeActiveStateChange;
 - (BOOL)_shouldScrollToNow;
 - (void)_showNowAfterScrollViewDidEndDecelerating:(id)arg1;
@@ -148,11 +149,11 @@
 - (double)_weightedAllDayHeightForView:(id)arg1 visibleRect:(struct CGRect)arg2;
 - (void)applicationDidBecomeActive;
 - (void)applicationWillResignActive;
-- (void)beginExternallyControlledScrolling;
 - (BOOL)blockableScrollViewShouldAllowScrolling;
 - (void)bringEventToFront:(id)arg1;
 - (id)createEventForEventGestureController:(id)arg1;
 - (id)createOccurrenceViewForEventGestureController:(id)arg1;
+- (id)currentPresentationController;
 - (void)dayView:(id)arg1 didCreateOccurrenceViews:(id)arg2;
 - (void)dayView:(id)arg1 didScaleDayViewWithScale:(double)arg2;
 - (void)dayView:(id)arg1 didSelectEvent:(id)arg2;
@@ -167,7 +168,6 @@
 - (void)editorDidCancelEditingEvent:(id)arg1;
 - (void)editorDidDeleteEvent:(id)arg1;
 - (void)editorDidSaveEvent:(id)arg1;
-- (void)endExternallyControlledScrolling;
 - (BOOL)eventEditorPopoverActiveWhileDraggingForEventGestureController:(id)arg1;
 - (void)eventGestureController:(id)arg1 addViewToScroller:(id)arg2 isAllDay:(BOOL)arg3;
 - (void)eventGestureController:(id)arg1 adjustDraggingViewForAllDay:(BOOL)arg2;
@@ -214,11 +214,11 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1 gutterWidth:(double)arg2;
 - (void)setTimeZone:(id)arg1;
-- (void)setToDay:(id)arg1 normalizedOffset:(double)arg2;
 - (void)significantTimeChangeOccurred;
 - (double)timedRegionOriginForEventGestureController:(id)arg1;
 - (id)touchTrackingViewForEventGestureController:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateFrameForProposedTimeView;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

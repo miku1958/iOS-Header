@@ -6,16 +6,20 @@
 
 #import <HealthKit/HKQuery.h>
 
-@class HKActivitySummary;
+@class NSDictionary;
 
 @interface _HKCurrentActivitySummaryQuery : HKQuery
 {
     CDUnknownBlockType _updateHandler;
-    HKActivitySummary *_lastActivitySummary;
+    NSDictionary *_collectionIntervals;
 }
 
+@property (copy, nonatomic, getter=_collectionIntervals, setter=_setCollectionIntervals:) NSDictionary *collectionIntervals; // @synthesize collectionIntervals=_collectionIntervals;
+
++ (Class)_queryServerDataObjectClass;
 - (void).cxx_destruct;
 - (void)_queue_cleanupAfterDeactivation;
+- (void)_queue_configureQueryServerDataObject:(id)arg1;
 - (CDUnknownBlockType)_queue_errorHandler;
 - (BOOL)_queue_shouldStayAliveAfterInitialResults;
 - (void)_queue_validate;

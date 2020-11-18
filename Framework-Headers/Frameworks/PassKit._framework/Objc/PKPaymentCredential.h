@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, PKPaymentEligibilityResponse, PKPaymentRequirementsResponse;
 
@@ -25,7 +25,8 @@
 @property (strong, nonatomic) PKPaymentRequirementsResponse *requirementsResponse; // @synthesize requirementsResponse=_requirementsResponse;
 @property (copy, nonatomic) NSString *sanitizedPrimaryAccountNumber; // @synthesize sanitizedPrimaryAccountNumber=_sanitizedPrimaryAccountNumber;
 
-- (void)dealloc;
++ (id)fakeRemoteCredentials;
+- (void).cxx_destruct;
 - (BOOL)isLocalPassCredential;
 - (BOOL)isRemoteCredential;
 - (id)localPassCredential;

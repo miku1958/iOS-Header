@@ -15,12 +15,12 @@
 @interface DCBackgroundSessionManager : NSObject <NSURLSessionDelegate, NSURLSessionDownloadDelegate, NSURLSessionDataDelegate>
 {
     NSOperationQueue *_sessionQueue;
-    NSURLSession *_backgroundSession;
-    CDUnknownBlockType _backgroundEventsCompletionHandler;
     DCService *_service;
     NSString *_bundleIdentifier;
     NSMutableDictionary *_currentTasks;
     CDUnknownBlockType _serverRequestResponseHandler;
+    NSURLSession *_backgroundSession;
+    CDUnknownBlockType _backgroundEventsCompletionHandler;
 }
 
 @property (readonly, nonatomic) HTTPSASLClientSessionManager *HTTPSASLClientSessionManager;

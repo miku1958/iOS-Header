@@ -28,6 +28,7 @@
     int _cocoaSubVersion;
     int _readOnly;
     int _usesScreenFonts;
+    int _colorTblColorSpace;
     unsigned int _defaultToUniCharEncoding;
     struct _NSAttributeInfo _attributeInfo;
     NSMutableData *_attributeInfoStack;

@@ -11,7 +11,8 @@ __attribute__((visibility("hidden")))
 {
     BOOL _needsTileStencil;
     struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _stencilState;
-    vector_7afb2ddd _defaultStencilItems;
+    struct shared_ptr<ggl::PolygonSolidFill::MeshPipelineState> _stencilPipelineState;
+    vector_87190c80 _defaultStencilItems;
     unsigned int _stencilItemIndex;
 }
 
@@ -21,16 +22,16 @@ __attribute__((visibility("hidden")))
 + (BOOL)reloadOnStylesheetChange;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_layoutScene:(id)arg1 withContext:(id)arg2;
-- (void)_updateTilesInScene:(id)arg1 context:(id)arg2;
-- (id)featureMarkerAtPoint:(struct VKPoint)arg1;
-- (id)featureMarkerInTile:(id)arg1 atPoint:(struct VKPoint *)arg2;
-- (void)gglLayoutScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
+- (void)_layoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2;
+- (void)_updateTilesInScene:(id)arg1 context:(struct LayoutContext *)arg2;
+- (shared_ptr_430519ce)featureMarkerAtPoint:(Matrix_6e1d3589)arg1;
+- (shared_ptr_430519ce)featureMarkerInTile:(id)arg1 atPoint:(Matrix_6e1d3589 *)arg2;
+- (void)gglLayoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
 - (id)init;
+- (id)initWithTarget:(id)arg1 sharedResources:(id)arg2;
 - (unsigned long long)mapLayerPosition;
-- (int)pushStencilItems:(struct CommandBuffer *)arg1 fullyLoaded:(BOOL)arg2 layoutContext:(id)arg3;
-- (int)pushStencilItems:(struct CommandBuffer *)arg1 tiles:(id)arg2 minZ:(int)arg3 maxZ:(int)arg4 fullyLoaded:(BOOL)arg5 items:(vector_7afb2ddd *)arg6 layoutContext:(id)arg7 sourceTileOffset:(const int *)arg8;
-- (int)pushStencilItems:(struct CommandBuffer *)arg1 tiles:(id)arg2 minZ:(int)arg3 maxZ:(int)arg4 fullyLoaded:(BOOL)arg5 layoutContext:(id)arg6 sourceTileOffset:(const int *)arg7;
+- (void)pushStencilItems:(struct CommandBuffer *)arg1 tiles:(id)arg2 minZ:(int)arg3 maxZ:(int)arg4 fullyLoaded:(BOOL)arg5 items:(vector_87190c80 *)arg6 layoutContext:(struct LayoutContext *)arg7 sourceTileOffset:(int)arg8;
+- (void)pushStencilItems:(struct CommandBuffer *)arg1 tiles:(id)arg2 minZ:(int)arg3 maxZ:(int)arg4 fullyLoaded:(BOOL)arg5 layoutContext:(struct LayoutContext *)arg6 sourceTileOffset:(int)arg7;
 - (void)resetStencilState;
 - (BOOL)wantsCategorizedSourceTiles;
 

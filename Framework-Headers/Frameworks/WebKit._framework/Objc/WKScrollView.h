@@ -12,7 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface WKScrollView : UIWebScrollView
 {
-    id<UIScrollViewDelegate> _externalDelegate;
+    struct WeakObjCPtr<id<UIScrollViewDelegate>> _externalDelegate;
     WKScrollViewDelegateForwarder *_delegateForwarder;
     WKWebView<UIScrollViewDelegate> *_internalDelegate;
     double _preferredScrollDecelerationFactor;
@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) WKWebView<UIScrollViewDelegate> *internalDelegate; // @synthesize internalDelegate=_internalDelegate;
 @property (readonly, nonatomic) double preferredScrollDecelerationFactor; // @synthesize preferredScrollDecelerationFactor=_preferredScrollDecelerationFactor;
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (struct CGSize)_currentTopLeftRubberbandAmount;
 - (void)_restoreContentOffsetWithRubberbandAmount:(struct CGSize)arg1;
 - (double)_rubberBandOffsetForOffset:(double)arg1 maxOffset:(double)arg2 minOffset:(double)arg3 range:(double)arg4 outside:(BOOL *)arg5;
@@ -30,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)delegate;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setContentInset:(struct UIEdgeInsets)arg1;
+- (void)setDecelerationRate:(double)arg1;
 - (void)setDelegate:(id)arg1;
 
 @end

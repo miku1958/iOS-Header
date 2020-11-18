@@ -6,29 +6,26 @@
 
 #import <UIKit/UITableView.h>
 
-@class NSOperationQueue, SKUIClientContext, SKUILoadTrendingSearchPageOperation, SKUITrendingSearchPage, SKUITrendingSearchPageView;
+@class SKUITrendingSearchPage, SKUITrendingSearchPageView, SKUITrendingSearchProvider;
 @protocol SKUITrendingSearchPageViewDelegate;
 
 @interface SKUISearchFieldTableView : UITableView
 {
-    SKUIClientContext *_clientContext;
-    SKUILoadTrendingSearchPageOperation *_loadOperation;
-    NSOperationQueue *_operationQueue;
     SKUITrendingSearchPage *_page;
     SKUITrendingSearchPageView *_pageView;
-    id<SKUITrendingSearchPageViewDelegate> _trendingSearchDelegate;
     BOOL _trendingSearchesVisible;
+    SKUITrendingSearchProvider *_trendingSearchProvider;
+    id<SKUITrendingSearchPageViewDelegate> _trendingSearchDelegate;
 }
 
-@property (strong, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;
 @property (weak, nonatomic) id<SKUITrendingSearchPageViewDelegate> trendingSearchDelegate; // @synthesize trendingSearchDelegate=_trendingSearchDelegate;
+@property (strong, nonatomic) SKUITrendingSearchProvider *trendingSearchProvider; // @synthesize trendingSearchProvider=_trendingSearchProvider;
 @property (nonatomic) BOOL trendingSearchesVisible; // @synthesize trendingSearchesVisible=_trendingSearchesVisible;
 
 - (void).cxx_destruct;
 - (void)_reloadData;
 - (void)_reloadView;
 - (void)_setTrendingResponse:(id)arg1 error:(id)arg2;
-- (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
 - (void)layoutSubviews;
 
 @end

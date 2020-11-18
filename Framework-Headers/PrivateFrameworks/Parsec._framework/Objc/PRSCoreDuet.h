@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Parsec/PRSSharedPredictionService.h>
+#import <objc/NSObject.h>
 
-@interface PRSCoreDuet : PRSSharedPredictionService
+@interface PRSCoreDuet : NSObject
 {
 }
 

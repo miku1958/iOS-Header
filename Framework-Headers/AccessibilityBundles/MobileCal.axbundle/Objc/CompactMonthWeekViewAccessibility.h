@@ -25,7 +25,7 @@
 - (BOOL)_axShowsMonthHeader;
 - (BOOL)_axShowsWeekNumber;
 - (id)_axWeekNumber;
-- (void)_initializeDayNumbers;
+- (void)_initializeDays;
 - (void)_initializeMonthNameLabel;
 - (void)_reloadMonthNameLabel;
 - (id)accessibilityElements;

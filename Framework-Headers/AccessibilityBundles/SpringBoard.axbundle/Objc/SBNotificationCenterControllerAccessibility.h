@@ -13,8 +13,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityNotificationCenterGestureActive;
+- (BOOL)_accessibilityNotificationGestureInProgress;
+- (void)_accessibilitySetNotificationGestureInProgress:(BOOL)arg1;
 - (void)_cleanupAfterTransition:(BOOL)arg1;
-- (void)dismissAnimated:(BOOL)arg1 withStepper:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3 fromCurrentState:(BOOL)arg4;
+- (void)_handleShowNotificationCenterGesture:(id)arg1;
+- (void)dismissAnimated:(BOOL)arg1 fromCurrentState:(BOOL)arg2 withStepper:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

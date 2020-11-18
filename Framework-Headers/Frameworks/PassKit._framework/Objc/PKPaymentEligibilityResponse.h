@@ -17,19 +17,21 @@
     NSString *_termsID;
     NSString *_applicationIdentifier;
     NSString *_region;
+    NSString *_nonce;
     NSURL *_learnMoreURL;
 }
 
-@property (readonly, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
+@property (readonly, copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property (readonly, nonatomic) long long cardType; // @synthesize cardType=_cardType;
 @property (readonly, nonatomic) long long eligibilityStatus; // @synthesize eligibilityStatus=_eligibilityStatus;
-@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) NSURL *learnMoreURL; // @synthesize learnMoreURL=_learnMoreURL;
-@property (readonly, nonatomic) NSString *region; // @synthesize region=_region;
-@property (readonly, nonatomic) NSString *termsID; // @synthesize termsID=_termsID;
-@property (readonly, nonatomic) NSURL *termsURL; // @synthesize termsURL=_termsURL;
+@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSURL *learnMoreURL; // @synthesize learnMoreURL=_learnMoreURL;
+@property (readonly, copy, nonatomic) NSString *nonce; // @synthesize nonce=_nonce;
+@property (readonly, copy, nonatomic) NSString *region; // @synthesize region=_region;
+@property (readonly, copy, nonatomic) NSString *termsID; // @synthesize termsID=_termsID;
+@property (readonly, copy, nonatomic) NSURL *termsURL; // @synthesize termsURL=_termsURL;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithData:(id)arg1;
 
 @end

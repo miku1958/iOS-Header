@@ -15,16 +15,15 @@ __attribute__((visibility("hidden")))
     id<VKTrackableAnnotation> _annotation;
     id<VKTrackableAnnotationPresentation> _annotationPresentation;
     VKTimedAnimation *_currentAnimation;
-    struct VKPoint _currentAnimationStartPoint;
-    struct VKPoint _currentAnimationStartCameraPosition;
-    struct VKPoint _currentAnimationEndPoint;
-    struct VKPoint _currentAnimationEndCameraPosition;
+    Matrix_6e1d3589 _currentAnimationStartPoint;
+    Matrix_6e1d3589 _currentAnimationStartCameraPosition;
+    Matrix_6e1d3589 _currentAnimationEndPoint;
+    Matrix_6e1d3589 _currentAnimationEndCameraPosition;
     double _pendingChangeDuration;
     VKTimedAnimation *_currentHeadingAnimation;
     double _pendingHeadingChangeDuration;
     float _headingAnimationCompletedAngle;
     long long _headingAnimationDisplayRate;
-    struct VKEdgeInsets _edgeInsets;
     long long _zoomStyle;
     struct {
         unsigned int hasPendingChange:1;
@@ -41,7 +40,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) id<VKTrackableAnnotation> annotation; // @synthesize annotation=_annotation;
-@property (nonatomic) struct VKEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
 @property (nonatomic) long long headingAnimationDisplayRate; // @synthesize headingAnimationDisplayRate=_headingAnimationDisplayRate;
 @property (readonly, nonatomic, getter=isTrackingHeading) BOOL trackingHeading;
 @property (nonatomic) long long zoomStyle; // @synthesize zoomStyle=_zoomStyle;
@@ -55,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pauseAnimation;
 - (void)resumeAnimation;
+- (void)setEdgeInsets:(struct VKEdgeInsets)arg1;
 - (void)setGesturing:(BOOL)arg1;
 - (void)startTrackingAnnotation:(id)arg1 trackHeading:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)stopTrackingAnnotation;

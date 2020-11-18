@@ -21,7 +21,7 @@
 - (BOOL)_triangulateIndicesInto:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (id)triangulateIndicesForPoints:(Matrix_12bc3712 *)arg1 pointCount:(unsigned long long)arg2;
+- (id)triangulateIndicesForPoints:(Matrix_443f5d51 *)arg1 pointCount:(unsigned long long)arg2;
 
 @end
 

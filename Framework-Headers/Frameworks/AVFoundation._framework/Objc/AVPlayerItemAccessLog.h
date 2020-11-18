@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) unsigned long long extendedLogDataStringEncoding;
 
 - (id)_accessLogArray;
+- (id)_common_init;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

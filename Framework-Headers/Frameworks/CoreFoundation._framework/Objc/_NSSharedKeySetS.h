@@ -48,7 +48,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned int)count;
 - (void)dealloc;
-- (void)finalize;
 - (unsigned long long)hash;
 - (unsigned long long)indexForBytes:(char *)arg1 length:(unsigned long long)arg2;
 - (unsigned long long)indexForKey:(unsigned short *)arg1 length:(unsigned long long)arg2;

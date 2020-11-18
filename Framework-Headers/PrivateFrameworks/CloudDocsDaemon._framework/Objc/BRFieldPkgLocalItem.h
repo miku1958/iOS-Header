@@ -8,7 +8,7 @@
 
 #import <CloudDocsDaemon/NSCopying-Protocol.h>
 
-@class BRFieldPkgItem;
+@class BRFieldPkgItem, NSData;
 
 @interface BRFieldPkgLocalItem : PBCodable <NSCopying>
 {
@@ -16,6 +16,7 @@
     long long _size;
     unsigned int _generationID;
     BRFieldPkgItem *_item;
+    NSData *_xattrs;
     struct {
         unsigned int size:1;
         unsigned int generationID:1;
@@ -26,8 +27,10 @@
 @property (nonatomic) unsigned int generationID; // @synthesize generationID=_generationID;
 @property (nonatomic) BOOL hasGenerationID;
 @property (nonatomic) BOOL hasSize;
+@property (readonly, nonatomic) BOOL hasXattrs;
 @property (strong, nonatomic) BRFieldPkgItem *item; // @synthesize item=_item;
 @property (nonatomic) long long size; // @synthesize size=_size;
+@property (strong, nonatomic) NSData *xattrs; // @synthesize xattrs=_xattrs;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

@@ -7,6 +7,6 @@
 @class NPSDomainAccessorFilePresenter;
 
 @protocol NPSDomainAccessorFilePresenterDelegate
-- (void)filePresenterBecameNonCurrent:(NPSDomainAccessorFilePresenter *)arg1;
+- (void)filePresenterDidBecomeNonCurrent:(NPSDomainAccessorFilePresenter *)arg1;
 @end
 

@@ -15,11 +15,13 @@
     NSString *_displayName;
     NSArray *_emailAddresses;
     NSString *_uniqueID;
+    NSString *_likenessString;
     long long _version;
 }
 
 @property (readonly, strong) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, strong) NSArray *emailAddresses; // @synthesize emailAddresses=_emailAddresses;
+@property (strong) NSString *likenessString; // @synthesize likenessString=_likenessString;
 @property (readonly, strong) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
 @property long long version; // @synthesize version=_version;
 
@@ -29,7 +31,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDisplayName:(id)arg1 emailAddresses:(id)arg2 uniqueID:(id)arg3;
+- (id)initWithDisplayName:(id)arg1 emailAddresses:(id)arg2 uniqueID:(id)arg3 likenessString:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToMeCard:(id)arg1;
 - (id)preferredEmailAddress;

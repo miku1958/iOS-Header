@@ -6,7 +6,7 @@
 
 #import <StoreKitUI/SKUIClientContext.h>
 
-@class MusicJSNativeViewEventRegistry, MusicJSNowPlayingController, MusicJSPlaybackCoordinator, MusicJSRecentStationsManager, MusicJSUserInterfaceStatusController, MusicTransferAggregator, NSDictionary, RadioRecentStationsController, SKUILocalizedStringDictionary;
+@class MusicJSNativeViewEventRegistry, MusicJSNowPlayingController, MusicJSPlaybackCoordinator, MusicJSRecentStationsManager, MusicJSUserInterfaceStatusController, NSDictionary, RadioRecentStationsController, SKUILocalizedStringDictionary;
 
 @interface MusicClientContext : SKUIClientContext
 {
@@ -18,7 +18,6 @@
     MusicJSRecentStationsManager *_jsRecentStationsManager;
     MusicJSUserInterfaceStatusController *_jsUserInterfaceStatusController;
     RadioRecentStationsController *_recentStationsController;
-    MusicTransferAggregator *_transferAggregator;
 }
 
 @property (readonly, nonatomic) MusicJSNativeViewEventRegistry *jsNativeViewEventRegistry; // @synthesize jsNativeViewEventRegistry=_jsNativeViewEventRegistry;
@@ -27,7 +26,6 @@
 @property (readonly, nonatomic) MusicJSRecentStationsManager *jsRecentStationsManager; // @synthesize jsRecentStationsManager=_jsRecentStationsManager;
 @property (readonly, nonatomic) MusicJSUserInterfaceStatusController *jsUserInterfaceStatusController; // @synthesize jsUserInterfaceStatusController=_jsUserInterfaceStatusController;
 @property (strong, nonatomic) RadioRecentStationsController *recentStationsController; // @synthesize recentStationsController=_recentStationsController;
-@property (strong, nonatomic) MusicTransferAggregator *transferAggregator; // @synthesize transferAggregator=_transferAggregator;
 
 + (id)_fallbackConfigurationDictionary;
 - (void).cxx_destruct;

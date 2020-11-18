@@ -23,12 +23,14 @@
     int _notifyToken;
     PSListController *_listController;
     id<PSSearchControllerDelegate> _delegate;
+    CDUnknownBlockType _iconForSearchEntryHandler;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PSSearchControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) CDUnknownBlockType iconForSearchEntryHandler; // @synthesize iconForSearchEntryHandler=_iconForSearchEntryHandler;
 @property (readonly, weak, nonatomic) PSListController *listController; // @synthesize listController=_listController;
 @property (readonly, nonatomic) UISearchBar *searchBar;
 @property (readonly) Class superclass;

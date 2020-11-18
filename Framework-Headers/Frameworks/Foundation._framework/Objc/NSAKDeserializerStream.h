@@ -18,7 +18,6 @@
 }
 
 - (void)dealloc;
-- (void)finalize;
 - (id)initFromMemoryNoCopy:(const void *)arg1 length:(unsigned long long)arg2 freeWhenDone:(BOOL)arg3;
 - (id)initFromPath:(id)arg1;
 - (unsigned long long)readAlignedDataSize;

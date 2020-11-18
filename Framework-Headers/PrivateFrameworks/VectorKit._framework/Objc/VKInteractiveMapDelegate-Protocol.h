@@ -6,7 +6,7 @@
 
 #import <VectorKit/NSObject-Protocol.h>
 
-@class NSError, VKLabelMarker, VKOverlayPainter;
+@class NSError, VKOverlayPainter;
 @protocol VKInteractiveMap, VKOverlay, VKTrackableAnnotation, VKTrackableAnnotationPresentation;
 
 @protocol VKInteractiveMapDelegate <NSObject>
@@ -21,14 +21,15 @@
 - (void)map:(id<VKInteractiveMap>)arg1 flyoverModeWillChange:(int)arg2;
 - (VKOverlayPainter *)map:(id<VKInteractiveMap>)arg1 painterForOverlay:(id<VKOverlay>)arg2;
 - (id<VKTrackableAnnotationPresentation>)map:(id<VKInteractiveMap>)arg1 presentationForAnnotation:(id<VKTrackableAnnotation>)arg2;
-- (void)map:(id<VKInteractiveMap>)arg1 selectedLabelMarkerWillDisappear:(VKLabelMarker *)arg2;
+- (void)map:(id<VKInteractiveMap>)arg1 selectedLabelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
+- (void)map:(id<VKInteractiveMap>)arg1 selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)map:(id<VKInteractiveMap>)arg1 willChangeRegionAnimated:(BOOL)arg2;
 - (void)map:(id<VKInteractiveMap>)arg1 willTransitionFrom:(long long)arg2 to:(long long)arg3 duration:(double)arg4;
 - (void)mapDidBecomeFullyDrawn:(id<VKInteractiveMap>)arg1 hasFailedTiles:(BOOL)arg2;
 - (void)mapDidBecomePartiallyDrawn:(id<VKInteractiveMap>)arg1;
 - (void)mapDidChangeVisibleRegion:(id<VKInteractiveMap>)arg1;
 - (void)mapDidFailLoadingTiles:(id<VKInteractiveMap>)arg1 withError:(NSError *)arg2;
-- (void)mapDidFinishChangingMapDisplayStyle:(CDStruct_f0cfbbbb)arg1;
+- (void)mapDidFinishChangingMapDisplayStyle:(CDStruct_80aa614a)arg1;
 - (void)mapDidFinishInitialTrackingAnimation:(id<VKInteractiveMap>)arg1;
 - (void)mapDidFinishLoadingTiles:(id<VKInteractiveMap>)arg1;
 - (void)mapDidStartLoadingTiles:(id<VKInteractiveMap>)arg1;

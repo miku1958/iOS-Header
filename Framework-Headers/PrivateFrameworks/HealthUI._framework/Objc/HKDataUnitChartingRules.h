@@ -7,13 +7,13 @@
 #import <objc/NSObject.h>
 
 @class NSDictionary, NSMutableDictionary;
-@protocol HKInteractiveChartsAxisScalingRule;
+@protocol HKDecimalPrecisionRule, HKInteractiveChartsAxisScalingRule;
 
 @interface HKDataUnitChartingRules : NSObject
 {
     long long _defaultStyle;
     NSMutableDictionary *_rulesByTimeScope;
-    long long _allowedDecimalPrecision;
+    id<HKDecimalPrecisionRule> _allowedDecimalPrecisionRule;
     NSDictionary *_perUnitDecimalPrecision;
     BOOL _shouldHideAverageLine;
     BOOL _shouldStartDayAtNoon;
@@ -32,13 +32,13 @@
 - (id)_ruleForKey:(id)arg1 timeScope:(long long)arg2;
 - (void)_setRule:(id)arg1 forKey:(id)arg2 timeScope:(long long)arg3;
 - (void)adjustedBoundsForPortraitChartWithMin:(double)arg1 max:(double)arg2 minOut:(double *)arg3 maxOut:(double *)arg4 decimalPrecision:(long long *)arg5 unit:(id)arg6 timeScope:(long long)arg7;
-- (long long)allowedDecimalPrecisionForUnit:(id)arg1;
+- (id)allowedDecimalPrecisionRuleForUnit:(id)arg1;
 - (double)chartPointLineWidthForTimeScope:(long long)arg1;
 - (double)chartPointRadiusForTimeScope:(long long)arg1;
 - (long long)chartStyleForTimeScope:(long long)arg1;
 - (id)initWithDefaultChartStyle:(long long)arg1;
 - (id)intervalComponentsForTimeScope:(long long)arg1;
-- (void)setAllowedDecimalPrecision:(long long)arg1 perUnitPrecision:(id)arg2;
+- (void)setAllowedDecimalPrecisionRule:(id)arg1 perUnitPrecisionRules:(id)arg2;
 - (void)setChartPointLineWidth:(double)arg1 forTimeScope:(long long)arg2;
 - (void)setChartPointRadius:(double)arg1 forTimeScope:(long long)arg2;
 - (void)setChartStyle:(long long)arg1 forTimeScope:(long long)arg2;

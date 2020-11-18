@@ -8,59 +8,82 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAdditionalEnabledMarkets, GEOLatLng, NSString;
+@class GEOABSecondPartyPlaceRequestClientMetaData, GEOAdditionalEnabledMarkets, GEOLocation, NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPDClientMetadata : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
+    GEOABSecondPartyPlaceRequestClientMetaData *_abClientMetadata;
     GEOAdditionalEnabledMarkets *_additionalEnabledMarkets;
     unsigned int _dayOfWeek;
+    NSString *_debugApiKey;
     NSString *_deviceCountryCode;
     NSString *_deviceDisplayLanguage;
+    GEOLocation *_deviceExtendedLocation;
+    NSMutableArray *_deviceHistoricalLocations;
     NSString *_deviceKeyboardLanguage;
-    GEOLatLng *_deviceLocation;
     NSString *_deviceSpokenLanguage;
     unsigned int _hourOfDay;
+    int _requiredVersion;
     int _resultListAttributionSupport;
     unsigned int _timeSinceMapEnteredForeground;
     struct {
         unsigned int dayOfWeek:1;
         unsigned int hourOfDay:1;
+        unsigned int requiredVersion:1;
         unsigned int resultListAttributionSupport:1;
         unsigned int timeSinceMapEnteredForeground:1;
     } _has;
 }
 
+@property (strong, nonatomic) GEOABSecondPartyPlaceRequestClientMetaData *abClientMetadata;
 @property (strong, nonatomic) GEOAdditionalEnabledMarkets *additionalEnabledMarkets; // @synthesize additionalEnabledMarkets=_additionalEnabledMarkets;
 @property (nonatomic) unsigned int dayOfWeek; // @synthesize dayOfWeek=_dayOfWeek;
+@property (strong, nonatomic) NSString *debugApiKey; // @synthesize debugApiKey=_debugApiKey;
 @property (strong, nonatomic) NSString *deviceCountryCode; // @synthesize deviceCountryCode=_deviceCountryCode;
 @property (strong, nonatomic) NSString *deviceDisplayLanguage; // @synthesize deviceDisplayLanguage=_deviceDisplayLanguage;
+@property (strong, nonatomic) GEOLocation *deviceExtendedLocation; // @synthesize deviceExtendedLocation=_deviceExtendedLocation;
+@property (strong, nonatomic) NSMutableArray *deviceHistoricalLocations; // @synthesize deviceHistoricalLocations=_deviceHistoricalLocations;
 @property (strong, nonatomic) NSString *deviceKeyboardLanguage; // @synthesize deviceKeyboardLanguage=_deviceKeyboardLanguage;
-@property (strong, nonatomic) GEOLatLng *deviceLocation; // @synthesize deviceLocation=_deviceLocation;
 @property (strong, nonatomic) NSString *deviceSpokenLanguage; // @synthesize deviceSpokenLanguage=_deviceSpokenLanguage;
+@property (readonly, nonatomic) BOOL hasAbClientMetadata;
 @property (readonly, nonatomic) BOOL hasAdditionalEnabledMarkets;
 @property (nonatomic) BOOL hasDayOfWeek;
+@property (readonly, nonatomic) BOOL hasDebugApiKey;
 @property (readonly, nonatomic) BOOL hasDeviceCountryCode;
 @property (readonly, nonatomic) BOOL hasDeviceDisplayLanguage;
+@property (readonly, nonatomic) BOOL hasDeviceExtendedLocation;
 @property (readonly, nonatomic) BOOL hasDeviceKeyboardLanguage;
-@property (readonly, nonatomic) BOOL hasDeviceLocation;
 @property (readonly, nonatomic) BOOL hasDeviceSpokenLanguage;
 @property (nonatomic) BOOL hasHourOfDay;
+@property (nonatomic) BOOL hasRequiredVersion;
 @property (nonatomic) BOOL hasResultListAttributionSupport;
 @property (nonatomic) BOOL hasTimeSinceMapEnteredForeground;
 @property (nonatomic) unsigned int hourOfDay; // @synthesize hourOfDay=_hourOfDay;
+@property (nonatomic) int requiredVersion; // @synthesize requiredVersion=_requiredVersion;
 @property (nonatomic) int resultListAttributionSupport; // @synthesize resultListAttributionSupport=_resultListAttributionSupport;
 @property (nonatomic) unsigned int timeSinceMapEnteredForeground; // @synthesize timeSinceMapEnteredForeground=_timeSinceMapEnteredForeground;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)deviceHistoricalLocationType;
+- (int)StringAsRequiredVersion:(id)arg1;
+- (int)StringAsResultListAttributionSupport:(id)arg1;
+- (void)addDeviceHistoricalLocation:(id)arg1;
+- (void)clearDeviceHistoricalLocations;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)deviceHistoricalLocationAtIndex:(unsigned long long)arg1;
+- (unsigned long long)deviceHistoricalLocationsCount;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (id)initWithTraits:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)requiredVersionAsString:(int)arg1;
+- (id)resultListAttributionSupportAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

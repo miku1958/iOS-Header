@@ -8,5 +8,8 @@
 
 @interface SASSpeechRecognized (AssistantAdditions)
 - (id)af_correctionContext;
+- (BOOL)af_isUserUtterance;
+- (BOOL)af_isUtterance;
+- (BOOL)af_waitsForConfirmation;
 @end
 

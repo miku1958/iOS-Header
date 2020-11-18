@@ -24,16 +24,14 @@
 @property (strong, nonatomic) _UIBackdropView *_backdropView; // @synthesize _backdropView=__backdropView;
 @property (strong, nonatomic) _UILegibilitySettingsProvider *_legibilitySettingsProvider; // @synthesize _legibilitySettingsProvider=__legibilitySettingsProvider;
 @property (nonatomic, getter=isDisabledLayoutForLabels) BOOL disableLayoutForLabels; // @synthesize disableLayoutForLabels=_disableLayoutForLabels;
-@property (strong, nonatomic) NSArray *filterIndices; // @synthesize filterIndices=_filterIndices;
-@property (strong, nonatomic) NSArray *filterLabelViews; // @synthesize filterLabelViews=_filterLabelViews;
+@property (strong, nonatomic, setter=_setFilterIndices:) NSArray *filterIndices; // @synthesize filterIndices=_filterIndices;
+@property (strong, nonatomic, setter=_setFilterLabelViews:) NSArray *filterLabelViews; // @synthesize filterLabelViews=_filterLabelViews;
 @property (strong, nonatomic) CMKEffectsGridView *gridView; // @synthesize gridView=_gridView;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 
 - (void).cxx_destruct;
 - (void)_rebuildLabelViews;
 - (void)_replaceLabelViews:(BOOL)arg1;
-- (void)_setFilterIndices:(id)arg1;
-- (void)_setFilterLabelViews:(id)arg1;
 - (struct CGAffineTransform)_transformForOrientation:(long long)arg1;
 - (void)backdropViewDidChange:(id)arg1;
 - (void)dealloc;

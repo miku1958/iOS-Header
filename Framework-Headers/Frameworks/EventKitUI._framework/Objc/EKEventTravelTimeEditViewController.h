@@ -53,6 +53,11 @@
 @property (nonatomic) double selectedTravelTime; // @synthesize selectedTravelTime=_selectedTravelTime;
 @property (readonly) Class superclass;
 
++ (id)_cannotProvideDirectionsLocalizedString;
++ (id)_directionsCouldNotBeFoundLocalizedString;
++ (id)_okLocalizedString;
++ (id)_startingLocationLocalizedString;
++ (id)_travelTimeLocalizedString;
 - (void).cxx_destruct;
 - (void)_autoselectFromAvailableChoices;
 - (void)_checkItemAtIndexPath:(id)arg1;

@@ -8,11 +8,13 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _SYSharedServiceDB : NSObject
 {
-    struct os_lock_handoff_s _lock;
+    struct os_unfair_lock_s _lock;
     struct sqlite3 *_db;
     NSString *_name;
+    struct NSMutableDictionary *_schemaSetupCallbacks;
 }
 
 @property (readonly, nonatomic, getter=_dbPath) NSString *dbPath;
@@ -22,12 +24,13 @@
 + (void)pairingStorePathWasReset;
 + (id)sharedInstanceForServiceName:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_LOCKED_createOrOpenDBForServiceName:(id)arg1 error:(id *)arg2;
+- (BOOL)_LOCKED_ensureDBExists;
 - (void)_LOCKED_ensureSchemaVersionsTableInDB:(struct sqlite3 *)arg1;
 - (long long)_LOCKED_getClientVersion:(id)arg1;
 - (BOOL)_LOCKED_hasSchemaVersionForClient:(id)arg1;
+- (void)_LOCKED_runSchemaUpdate:(CDUnknownBlockType)arg1 forClientNamed:(id)arg2;
 - (void)_LOCKED_setVersion:(long long)arg1 forClient:(id)arg2;
-- (BOOL)_createOrOpenDBForServiceName:(id)arg1 error:(id *)arg2;
-- (BOOL)_ensureDBExists;
 - (BOOL)_ensureParentExists:(id)arg1 error:(id *)arg2;
 - (void)_ensureSchemaVersionsTable;
 - (BOOL)_runTransactionBlock:(CDUnknownBlockType)arg1 exclusive:(BOOL)arg2;

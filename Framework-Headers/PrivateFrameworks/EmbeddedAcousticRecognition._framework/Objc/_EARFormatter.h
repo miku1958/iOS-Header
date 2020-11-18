@@ -8,16 +8,18 @@
 
 @interface _EARFormatter : NSObject
 {
-    struct shared_ptr<sdapi::SdapiITN> _itn;
+    struct shared_ptr<SpeechITN> _itn;
 }
 
 + (void)initialize;
++ (BOOL)supportedByQuasarConfig:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (vector_07ad5caa)formatWords:(vector_07ad5caa)arg1;
-- (basic_string_805fe43b)getOrthography:(const vector_07ad5caa *)arg1;
+- (vector_ec3bbdac)formatWords:(vector_ec3bbdac)arg1;
+- (basic_string_805fe43b)getOrthography:(const vector_ec3bbdac *)arg1;
 - (id)initWithGeneralVoc:(id)arg1 withLexiconEnh:(id)arg2 withItnEnh:(id)arg3;
-- (id)initWithLanguage:(id)arg1 withSdapiConfig:(id)arg2;
+- (id)initWithLanguage:(id)arg1 withSdapiConfig:(id)arg2 quasarConfig:(id)arg3;
+- (id)initWithQuasarConfig:(id)arg1;
 
 @end
 

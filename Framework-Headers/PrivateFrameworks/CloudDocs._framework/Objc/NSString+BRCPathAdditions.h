@@ -7,34 +7,37 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (BRCPathAdditions)
-+ (id)brc_emptyFilenameAlternativeName;
-+ (id)brc_pathForDirectory:(unsigned long long)arg1;
-+ (id)brc_pathWithDeviceID:(int)arg1 fileID:(unsigned long long)arg2;
-+ (id)brc_pathWithFileSystemRepresentation:(const char *)arg1;
-+ (id)brc_representableHFSFileNameWithBase:(id)arg1 suffix:(id)arg2 extension:(id)arg3 makeDotFile:(BOOL)arg4;
-- (long long)brc_compareToStringForHFS:(id)arg1 isCaseSensitive:(BOOL)arg2;
-- (id)brc_displayFilenameWithExtensionHidden:(BOOL)arg1;
-- (const char *)brc_fileSystemRepresentation;
-- (BOOL)brc_isAbsolutePath;
-- (BOOL)brc_isEqualToStringForHFS:(id)arg1 isCaseSensitive:(BOOL)arg2;
-- (BOOL)brc_isExcludedWithMaximumDepth:(unsigned int)arg1;
-- (BOOL)brc_isInPackage;
-- (BOOL)brc_isPackageRoot;
-- (BOOL)brc_isSideFaultName;
-- (BOOL)brc_nameIsRepresentableOnHFS;
-- (id)brc_pathExtension;
-- (id)brc_pathOfPackageRoot;
-- (id)brc_pathRelativeToDirectory:(unsigned long long)arg1;
-- (id)brc_pathRelativeToPackageRoot;
-- (id)brc_pathRelativeToPath:(id)arg1;
-- (id)brc_realpath;
-- (id)brc_realpathKeepingLastSymlink;
-- (id)brc_representableDirectoryExtension;
-- (id)brc_representableHFSFileNameWithNumber:(id)arg1 addedExtension:(id)arg2 makeDotFile:(BOOL)arg3;
++ (id)br_emptyFilenameAlternativeName;
++ (id)br_pathForDirectory:(unsigned long long)arg1;
++ (id)br_pathWithDeviceID:(int)arg1 fileID:(unsigned long long)arg2;
++ (id)br_pathWithFileSystemRepresentation:(const char *)arg1;
++ (id)br_representableHFSFileNameWithBase:(id)arg1 suffix:(id)arg2 extension:(id)arg3 makeDotFile:(BOOL)arg4;
+- (long long)br_compareToStringForHFS:(id)arg1 isCaseSensitive:(BOOL)arg2;
+- (id)br_displayFilenameWithExtensionHidden:(BOOL)arg1;
+- (const char *)br_fileSystemRepresentation;
+- (BOOL)br_isAbsolutePath;
+- (BOOL)br_isDocumentTooLargeForUpload:(BOOL)arg1 maxUploadDocumentSize:(long long)arg2;
+- (BOOL)br_isEqualToStringForHFS:(id)arg1 isCaseSensitive:(BOOL)arg2;
+- (BOOL)br_isExcludedButPreservedAtLogOutWithFilenames:(id)arg1 extensions:(id)arg2;
+- (BOOL)br_isExcludedWithMaximumDepth:(unsigned int)arg1;
+- (BOOL)br_isInPackage;
+- (BOOL)br_isPackageRoot;
+- (BOOL)br_isSideFaultName;
+- (BOOL)br_nameIsRepresentableOnHFS;
+- (id)br_pathExtension;
+- (id)br_pathOfPackageRoot;
+- (id)br_pathRelativeToDirectory:(unsigned long long)arg1;
+- (id)br_pathRelativeToPackageRoot;
+- (id)br_pathRelativeToPath:(id)arg1;
+- (id)br_realpath;
+- (id)br_realpathKeepingLastSymlink;
+- (id)br_representableDirectoryExtension;
+- (id)br_representableHFSFileNameWithNumber:(id)arg1 addedExtension:(id)arg2 makeDotFile:(BOOL)arg3;
+- (id)br_sideFaultName;
+- (id)br_sideFaultPath;
+- (id)br_stringByDeletingPathBounceNo:(unsigned long long *)arg1;
+- (id)br_stringByDeletingPathBounceNo:(unsigned long long *)arg1 andPathExtension:(id *)arg2;
 - (id)brc_representableHFSFileNameWithSuffix:(id)arg1 addedExtension:(id)arg2 makeDotFile:(BOOL)arg3;
-- (id)brc_sideFaultName;
-- (id)brc_stringByDeletingPathBounceNo:(unsigned long long *)arg1;
-- (id)brc_stringByDeletingPathBounceNo:(unsigned long long *)arg1 andPathExtension:(id *)arg2;
 - (id)brc_stringByDeletingPathExtension;
 @end
 

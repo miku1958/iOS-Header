@@ -21,7 +21,7 @@
 - (struct UIEdgeInsets)_imageInsets;
 - (struct CGSize)_imageSize;
 - (id)_maskImage;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)intrinsicContentSize;
 
 @end
 

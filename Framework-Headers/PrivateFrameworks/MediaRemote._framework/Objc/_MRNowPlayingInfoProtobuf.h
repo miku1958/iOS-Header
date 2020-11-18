@@ -83,6 +83,8 @@
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) unsigned long long uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
+- (int)StringAsRepeatMode:(id)arg1;
+- (int)StringAsShuffleMode:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -92,6 +94,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)repeatModeAsString:(int)arg1;
+- (id)shuffleModeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

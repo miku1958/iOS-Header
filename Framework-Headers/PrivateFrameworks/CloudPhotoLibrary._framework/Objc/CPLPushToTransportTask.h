@@ -6,7 +6,7 @@
 
 #import <CloudPhotoLibrary/CPLEngineSyncTask.h>
 
-@class CPLChangeBatch, CPLEngineChangePipe, NSArray, NSDictionary, NSObject, NSString;
+@class CPLChangeBatch, CPLEngineChangePipe, NSArray, NSDictionary, NSMutableDictionary, NSObject, NSString;
 @protocol CPLEngineTransportCheckRecordsExistenceTask, CPLEngineTransportUploadBatchTask, CPLPushToTransportTaskDelegate, OS_dispatch_queue;
 
 @interface CPLPushToTransportTask : CPLEngineSyncTask
@@ -18,7 +18,9 @@
     NSArray *_staleOrUnavailableResources;
     NSArray *_resourcesForBackgroundUpload;
     NSDictionary *_recordsWithGeneratedResources;
-    NSDictionary *_recordsToCheckForExistence;
+    NSMutableDictionary *_recordsWithSparseResources;
+    NSMutableDictionary *_recordsWithForwardCompatibilityCheck;
+    NSMutableDictionary *_recordsToCheckForExistence;
     id<CPLEngineTransportCheckRecordsExistenceTask> _checkExistenceTask;
     id<CPLEngineTransportUploadBatchTask> _uploadTask;
     unsigned long long _lastReportedProgress;
@@ -36,7 +38,7 @@
 - (void).cxx_destruct;
 - (void)_checkForRecordExistence;
 - (void)_deleteGeneratedResourcesAfterError:(id)arg1;
-- (void)_detectUpdatesForFullRecordsWithNoChangeDataInBatch:(id)arg1;
+- (void)_detectUpdatesNeedingExistenceCheck:(id)arg1;
 - (BOOL)_discardResourcesToUploadFromBatch:(id)arg1 error:(id *)arg2;
 - (void)_doOneIteration;
 - (void)_generateDerivativesForNextRecord:(id)arg1;
@@ -46,6 +48,8 @@
 - (BOOL)_prepareResourcesToUploadInBatch:(id)arg1 error:(id *)arg2;
 - (void)_prepareUploadBatchWithTransaction:(id)arg1 andStore:(id)arg2;
 - (void)_pushTaskDidFinishWithError:(id)arg1;
+- (void)_requireExistenceCheckForRecords:(id)arg1;
+- (void)_updateChangeProperties:(id)arg1 withBaseChange:(id)arg2 withCopyProperty:(CDUnknownBlockType)arg3;
 - (void)_uploadBatch;
 - (void)cancel;
 - (void)cancel:(BOOL)arg1;

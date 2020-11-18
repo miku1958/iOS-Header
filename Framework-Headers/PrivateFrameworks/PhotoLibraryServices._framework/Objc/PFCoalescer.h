@@ -6,17 +6,20 @@
 
 #import <Foundation/NSObject.h>
 
-@class PFCoalescerContext;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@class NSString, PFCoalescerContext;
+@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction;
 
 @interface PFCoalescer : NSObject
 {
     long long _sequenceNumber;
     long long _fireSequenceNumber;
+    long long _resetSequenceNumber;
+    long long _lastUpdateResetSequenceNumber;
     BOOL _usesTarget;
     BOOL _initialDelayTimerIsArmed;
     double _initialDelay;
     long long _mode;
+    NSString *_label;
     id _target;
     id _buffer;
     NSObject<OS_dispatch_queue> *_sourceQueue;
@@ -27,6 +30,9 @@
     CDUnknownBlockType _snapshotAndDrainHandler;
     CDUnknownBlockType _action;
     PFCoalescerContext *_context;
+    long long _state;
+    NSObject<OS_os_transaction> *_transaction;
+    unsigned long long _stateCaptureHandlerHandle;
 }
 
 @property (copy) CDUnknownBlockType action; // @synthesize action=_action;
@@ -35,13 +41,17 @@
 @property double initialDelay; // @synthesize initialDelay=_initialDelay;
 @property BOOL initialDelayTimerIsArmed; // @synthesize initialDelayTimerIsArmed=_initialDelayTimerIsArmed;
 @property (strong) NSObject<OS_dispatch_queue> *isolationQueue; // @synthesize isolationQueue=_isolationQueue;
+@property (strong) NSString *label; // @synthesize label=_label;
 @property long long mode; // @synthesize mode=_mode;
 @property long long queueType; // @synthesize queueType=_queueType;
 @property (copy) CDUnknownBlockType snapshotAndDrainHandler; // @synthesize snapshotAndDrainHandler=_snapshotAndDrainHandler;
 @property (strong) NSObject<OS_dispatch_source> *source; // @synthesize source=_source;
 @property (strong) NSObject<OS_dispatch_queue> *sourceQueue; // @synthesize sourceQueue=_sourceQueue;
+@property long long state; // @synthesize state=_state;
+@property unsigned long long stateCaptureHandlerHandle; // @synthesize stateCaptureHandlerHandle=_stateCaptureHandlerHandle;
 @property (weak) id target; // @synthesize target=_target;
 @property (strong) id targetQueue; // @synthesize targetQueue=_targetQueue;
+@property (strong) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
 @property BOOL usesTarget; // @synthesize usesTarget=_usesTarget;
 
 + (id)arrayCoalescerWithLabel:(id)arg1 queue:(id)arg2 action:(CDUnknownBlockType)arg3;
@@ -57,9 +67,13 @@
 + (id)setCoalescerWithLabel:(id)arg1 queue:(id)arg2 action:(CDUnknownBlockType)arg3;
 + (id)setCoalescerWithLabel:(id)arg1 target:(id)arg2 queue:(id)arg3 action:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
+- (void)dealloc;
 - (void)dispatch_after:(unsigned long long)arg1 queue:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithLabel:(id)arg1 target:(id)arg2 buffer:(id)arg3 queue:(id)arg4 bufferDrainer:(CDUnknownBlockType)arg5 action:(CDUnknownBlockType)arg6;
+- (void)reset;
+- (void)setupStateCaptureHandler;
+- (id)stateInformation;
 - (void)update;
 - (void)update:(CDUnknownBlockType)arg1;
 

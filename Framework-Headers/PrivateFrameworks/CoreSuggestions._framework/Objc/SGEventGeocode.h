@@ -11,6 +11,7 @@
 }
 
 + (id)dateForUTCDate:(id)arg1 withTimeZone:(id)arg2;
++ (id)geocodeEvent:(id)arg1;
 + (void)geocodeEvent:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
 + (void)geocodeLocation:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
 + (BOOL)isGeocodeCandidate:(id)arg1;

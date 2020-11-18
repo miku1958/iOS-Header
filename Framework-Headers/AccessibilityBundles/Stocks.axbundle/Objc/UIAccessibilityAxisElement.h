@@ -21,9 +21,9 @@
 @property (nonatomic) BOOL isAxisX; // @synthesize isAxisX=_isAxisX;
 @property (nonatomic) BOOL isDetailMode; // @synthesize isDetailMode=_isDetailMode;
 
+- (void).cxx_destruct;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
-- (void)dealloc;
 
 @end
 

@@ -4,31 +4,44 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class CRRecentContactsLibrary;
+@class CNContact, CRRecentContactsLibrary;
+@protocol NSObject;
 
 @interface PKPaymentOptionsRecents : NSObject
 {
-    void *_abRef;
-    CRRecentContactsLibrary *_coreRecentsLibrary;
+    CNContact *_cachedMeContact;
+    id<NSObject> _meContactDidChangeNotificationObserver;
+    BOOL _meCardCachingEnabled;
+    CRRecentContactsLibrary *_recentContactsLibrary;
 }
 
-+ (id)_coreRecentsKindForProperty:(id)arg1;
+@property (readonly, nonatomic) CNContact *meCard;
+@property (nonatomic, getter=isMeCardCachingEnabled) BOOL meCardCachingEnabled; // @synthesize meCardCachingEnabled=_meCardCachingEnabled;
+@property (strong, nonatomic) CRRecentContactsLibrary *recentContactsLibrary; // @synthesize recentContactsLibrary=_recentContactsLibrary;
+
++ (id)_coreRecentsKindForPreference:(id)arg1;
 + (id)defaultInstance;
+- (void).cxx_destruct;
 - (BOOL)_addressIsInChina:(id)arg1;
-- (id)_contactFromRecent:(id)arg1 property:(id)arg2;
-- (void)_coreRecentsContactsForProperty:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_contactFromRecent:(id)arg1 preference:(id)arg2;
+- (void)_coreRecentsContactsForPreference:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_defaultCRSearchQuery;
+- (id)_labelsToPropertiesDictionaryForContact:(id)arg1;
+- (id)_postalAddressLabeledValueFromRecent:(id)arg1;
+- (id)contactMetadataForContact:(id)arg1 preference:(id)arg2;
 - (void)dealloc;
-- (void)deleteRecent:(id)arg1 forProperty:(id)arg2;
-- (void)deleteRecentsForProperty:(id)arg1;
+- (void)deleteAllRecentsWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)deleteRecent:(id)arg1;
+- (void)deleteRecentsForPreference:(id)arg1 callbackQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
-- (id)meCard;
-- (id)meCardEntriesForProperty:(id)arg1;
-- (void)meCardEntriesForProperty:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)recentsForProperty:(id)arg1;
-- (void)recentsForProperty:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)saveItemToCoreRecents:(id)arg1 contact:(id)arg2 property:(id)arg3;
+- (id)meCardEntriesForPreference:(id)arg1;
+- (void)meCardEntriesForPreference:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)postalAddressMetadataForContact:(id)arg1;
+- (id)recentsForPreference:(id)arg1;
+- (void)recentsForPreference:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)saveContactToCoreRecents:(id)arg1 preference:(id)arg2;
 
 @end
 

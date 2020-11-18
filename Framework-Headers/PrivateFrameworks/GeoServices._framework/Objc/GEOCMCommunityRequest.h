@@ -41,6 +41,9 @@
 @property (strong, nonatomic) GEOCMTicketSubmission *ticketSubmission; // @synthesize ticketSubmission=_ticketSubmission;
 @property (strong, nonatomic) GEORPUserCredentials *userCredentials; // @synthesize userCredentials=_userCredentials;
 
++ (Class)displayLocaleType;
++ (Class)spokenLocaleType;
+- (int)StringAsRequestType:(id)arg1;
 - (void)addDisplayLocale:(id)arg1;
 - (void)addSpokenLocale:(id)arg1;
 - (void)clearDisplayLocales;
@@ -56,6 +59,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)requestTypeAsString:(int)arg1;
 - (id)spokenLocaleAtIndex:(unsigned long long)arg1;
 - (unsigned long long)spokenLocalesCount;
 - (void)writeTo:(id)arg1;

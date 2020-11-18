@@ -14,9 +14,9 @@
     BOOL _hasThumbnail;
     BOOL _hasMetadata;
     BOOL _raw;
-    int _fetchingThumbnailLock;
+    struct os_unfair_lock_s _fetchingThumbnailLock;
     BOOL _fetchingThumbnail;
-    int _fetchingMetadataLock;
+    struct os_unfair_lock_s _fetchingMetadataLock;
     BOOL _fetchingMetadata;
     struct CGImage *_originalThumbnail;
     struct CGImage *_thumbnail;
@@ -55,6 +55,7 @@
 
 - (void)dealloc;
 - (void)finalize;
+- (id)init;
 
 @end
 

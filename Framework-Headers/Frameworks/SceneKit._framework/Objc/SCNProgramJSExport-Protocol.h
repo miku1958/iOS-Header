@@ -7,20 +7,24 @@
 #import <SceneKit/JSExport-Protocol.h>
 
 @class NSDictionary, NSString;
-@protocol SCNProgramDelegate;
+@protocol MTLLibrary, SCNProgramDelegate;
 
 @protocol SCNProgramJSExport <JSExport>
 
 @property (nonatomic) id<SCNProgramDelegate> delegate;
+@property (copy, nonatomic) NSString *fragmentFunctionName;
 @property (copy, nonatomic) NSString *fragmentShader;
 @property (copy, nonatomic) NSString *geometryShader;
+@property (strong, nonatomic) id<MTLLibrary> library;
 @property (nonatomic, getter=isOpaque) BOOL opaque;
 @property (copy, nonatomic) NSString *tessellationControlShader;
 @property (copy, nonatomic) NSString *tessellationEvaluationShader;
+@property (copy, nonatomic) NSString *vertexFunctionName;
 @property (copy, nonatomic) NSString *vertexShader;
 
 + (id)program;
 - (id)copy;
+- (void)handleBindingOfBufferNamed:(NSString *)arg1 frequency:(long long)arg2 usingBlock:(void (^)(id<SCNBufferStream>, SCNNode *, id<SCNShadable>, SCNRenderer *))arg3;
 - (NSString *)semanticForSymbol:(NSString *)arg1;
 - (void)setSemantic:(NSString *)arg1 forSymbol:(NSString *)arg2 options:(NSDictionary *)arg3;
 @end

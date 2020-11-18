@@ -57,6 +57,12 @@
 @property (nonatomic) unsigned int travelTime; // @synthesize travelTime=_travelTime;
 @property (strong, nonatomic) NSMutableArray *unmatchedStrings; // @synthesize unmatchedStrings=_unmatchedStrings;
 
++ (Class)additionalPlaceType;
++ (Class)disambiguationLabelType;
++ (Class)matchedTokenType;
++ (Class)namedFeatureType;
++ (Class)unmatchedStringType;
+- (int)StringAsCacheControl:(id)arg1;
 - (void)addAdditionalPlace:(id)arg1;
 - (void)addDisambiguationLabel:(id)arg1;
 - (void)addMatchedToken:(id)arg1;
@@ -64,6 +70,7 @@
 - (void)addUnmatchedString:(id)arg1;
 - (id)additionalPlaceAtIndex:(unsigned long long)arg1;
 - (unsigned long long)additionalPlacesCount;
+- (id)cacheControlAsString:(int)arg1;
 - (void)clearAdditionalPlaces;
 - (void)clearDisambiguationLabels;
 - (void)clearMatchedTokens;

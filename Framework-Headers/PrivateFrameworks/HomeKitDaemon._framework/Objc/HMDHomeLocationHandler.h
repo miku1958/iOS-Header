@@ -7,24 +7,29 @@
 #import <objc/NSObject.h>
 
 #import <HomeKitDaemon/HMDLocationDelegate-Protocol.h>
-#import <HomeKitDaemon/HMMessageReceiver-Protocol.h>
+#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class CLLocation, HMDHome, HMMessageDispatcher, NSDate, NSString, NSUUID;
+@class CLLocation, CLRegion, HMDHome, HMFMessageDispatcher, NSDate, NSString, NSTimeZone, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDHomeLocationHandler : NSObject <HMDLocationDelegate, HMMessageReceiver, NSSecureCoding>
+@interface HMDHomeLocationHandler : NSObject <HMDLocationDelegate, HMFMessageReceiver, NSSecureCoding>
 {
+    BOOL _shouldEvaluateRegionState;
+    BOOL _expectingLocationUpdateForHome;
     int _locationAuthorization;
     CLLocation *_location;
+    NSTimeZone *_timeZone;
     NSObject<OS_dispatch_queue> *_workQueue;
-    HMMessageDispatcher *_msgDispatcher;
+    HMFMessageDispatcher *_msgDispatcher;
     HMDHome *_home;
     NSDate *_locationUpdateTimestamp;
+    CLRegion *_region;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isExpectingLocationUpdateForHome) BOOL expectingLocationUpdateForHome; // @synthesize expectingLocationUpdateForHome=_expectingLocationUpdateForHome;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
@@ -32,29 +37,36 @@
 @property (strong, nonatomic) NSDate *locationUpdateTimestamp; // @synthesize locationUpdateTimestamp=_locationUpdateTimestamp;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) CLRegion *region; // @synthesize region=_region;
+@property (nonatomic) BOOL shouldEvaluateRegionState; // @synthesize shouldEvaluateRegionState=_shouldEvaluateRegionState;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (BOOL)mergeLocationDataForLocalHome:(id)arg1 withCloudHome:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_canExtractLocation;
+- (void)_evaluateHomeRegionState:(id)arg1;
 - (void)_evaluateLocationExtraction;
 - (void)_handleLocationAuthorization:(int)arg1;
 - (void)_handleLocationAuthorizationMessage:(id)arg1;
 - (void)_handleRetrieveLocation:(id)arg1;
 - (BOOL)_needToExtractLocation;
 - (void)_registerForMessages;
+- (void)_registerForRegionUpdate;
 - (void)_saveToLocalstoreWithLocalChange:(BOOL)arg1;
 - (void)_sendLocationUpdate;
 - (void)_setNewlocation:(id)arg1;
 - (void)_updateLocation:(id)arg1;
+- (void)_updateTimeZone:(id)arg1;
 - (void)accessoriesReachabilityStateChanged;
 - (void)accessoryAdded;
 - (void)configure:(id)arg1 queue:(id)arg2 messageDispatcher:(id)arg3;
 - (void)dealloc;
 - (void)didDetermineLocation:(id)arg1;
+- (void)didDetermineState:(long long)arg1 forRegion:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (void)extractHomeLocation:(CDUnknownBlockType)arg1;
 - (id)init;

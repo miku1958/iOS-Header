@@ -9,7 +9,6 @@
 @protocol CADEventInterface
 - (void)CADDatabaseActOnSuggestedEvent:(CDStruct_1ef3fb1f)arg1 action:(int)arg2 reply:(void (^)(BOOL))arg3;
 - (void)CADDatabaseCanModifySuggestedEventCalendar:(void (^)(int, BOOL))arg1;
-- (void)CADDatabaseExportEventAsICS:(CDStruct_1ef3fb1f)arg1 reply:(void (^)(int, NSData *))arg2;
 - (void)CADDatabaseGetBirthdayContactIdentifierForEvent:(CDStruct_1ef3fb1f)arg1 reply:(void (^)(int, NSString *))arg2;
 - (void)CADDatabaseGetCountOfNotifiableEvents:(void (^)(int, int))arg1;
 - (void)CADDatabaseGetCountOfUnacknowledgedEvents:(void (^)(int, int))arg1;

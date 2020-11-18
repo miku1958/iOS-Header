@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKit/PKPaymentDataItem.h>
+#import <PassKitCore/PKPaymentDataItem.h>
 
 @class PKShippingMethod;
 

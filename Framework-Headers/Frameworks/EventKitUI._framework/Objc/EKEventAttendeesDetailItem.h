@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)configureWithCalendar:(id)arg1 preview:(BOOL)arg2;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
+- (void)eventViewController:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
 - (unsigned long long)numberOfSubitems;
 - (void)reset;
 

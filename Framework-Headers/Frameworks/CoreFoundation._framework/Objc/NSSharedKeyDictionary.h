@@ -19,6 +19,7 @@
 }
 
 + (id)sharedKeyDictionaryWithKeySet:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (Class)classForCoder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
@@ -26,7 +27,6 @@
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateKeysAndObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)finalize;
 - (void)getObjects:(id *)arg1 andKeys:(id *)arg2 count:(unsigned long long)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithKeySet:(id)arg1;

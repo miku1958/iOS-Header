@@ -6,9 +6,14 @@
 
 #import <coreroutine/NSObject-Protocol.h>
 
-@class NSArray, NSError;
+@class NSError, RTVisitIncident, RTVisitMonitorState;
 
 @protocol RTVisitMonitorDelegate <NSObject>
-- (void)onVisits:(NSArray *)arg1 withError:(NSError *)arg2;
+
+@optional
+- (void)onLeechedVisitIncident:(RTVisitIncident *)arg1 error:(NSError *)arg2;
+- (void)onLowConfidenceVisitIncident:(RTVisitIncident *)arg1 error:(NSError *)arg2;
+- (void)onVisitIncident:(RTVisitIncident *)arg1 error:(NSError *)arg2;
+- (void)onVisitMonitorStateChanged:(RTVisitMonitorState *)arg1;
 @end
 

@@ -16,7 +16,6 @@
 - (int)fastThumbnailImageFormat;
 - (double)globalFooterHeight;
 - (id)gridSpec;
-- (id)photoBrowserSpec;
 - (double)sectionHeaderHeight;
 - (unsigned long long)supportedInterfaceOrientations;
 - (int)thumbnailImageFormat;

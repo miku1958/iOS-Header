@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary;
 @protocol CNPrimitiveUserDefaults;
@@ -17,11 +17,12 @@
 
 @property (copy) NSDictionary *registeredDefaults; // @synthesize registeredDefaults=_registeredDefaults;
 
++ (id)inMemoryPreferences;
 + (id)preferencesWithApplicationID:(id)arg1;
 + (id)standardPreferences;
+- (void).cxx_destruct;
 - (BOOL)boolForKey:(id)arg1;
 - (BOOL)boolForKey:(id)arg1 keyExists:(BOOL *)arg2;
-- (void)dealloc;
 - (double)doubleForKey:(id)arg1;
 - (id)initWithApplicationID:(id)arg1;
 - (id)initWithPrimitiveDefaults:(id)arg1;

@@ -12,7 +12,7 @@
 {
 }
 
-@property (nonatomic) RemindersCheckboxCellAccessibility *accessibilityCheckboxCell;
+@property (weak, nonatomic) RemindersCheckboxCellAccessibility *accessibilityCheckboxCell;
 @property (nonatomic) BOOL accessibilityIsRemindersCreationFooterViewTextView;
 
 + (void)_accessibilityPerformValidations:(id)arg1;

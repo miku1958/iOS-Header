@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) BOOL tracked; // @synthesize tracked=_tracked;
 
 + (id)allDay;
++ (id)allTags;
 + (id)contactDetail:(id)arg1;
 + (id)containsEntityExtraction:(long long)arg1;
 + (id)defaultDuration;
@@ -41,20 +42,29 @@
 + (id)extractedSocial;
 + (id)extractedTicket;
 + (id)extractedTrain;
++ (id)fromCalendarAttachment;
 + (id)fromExtractedDomain;
 + (id)fromForwardedMessage;
++ (id)fromInteraction;
 + (id)fromReply;
++ (id)fromTextMessage;
++ (id)fullyDissected;
 + (id)hardName;
 + (id)human;
 + (id)identity:(id)arg1;
 + (id)inhuman;
 + (void)initialize;
++ (id)interactionBundleId:(id)arg1;
++ (id)interactionContactIdentifier:(id)arg1;
++ (id)interactionGroupId:(id)arg1;
++ (id)interactionId:(id)arg1;
 + (id)isPartiallyDownloaded;
 + (id)mailingListId:(id)arg1;
 + (id)messageWithEmailKey:(id)arg1;
 + (id)messageWithMailMessageKey:(id)arg1;
 + (id)messageWithMessageId:(id)arg1 fromSource:(id)arg2;
 + (id)naturalLanguageEvent;
++ (id)naturalLanguageEventTypeIdentifier:(id)arg1;
 + (id)remember:(id)arg1;
 + (void)rememberPrefix:(id)arg1 stored:(BOOL)arg2 indexed:(BOOL)arg3 tracked:(BOOL)arg4;
 + (id)resolveName:(id)arg1;
@@ -73,7 +83,9 @@
 - (BOOL)isEventHash;
 - (BOOL)isExtraKey;
 - (BOOL)isExtractedEventCategory;
+- (BOOL)isInteractionContactIdentifier;
 - (BOOL)isMailingListId;
+- (BOOL)isNaturalLanguageEventTypeIdentifier;
 - (BOOL)isTemplateShortName;
 - (BOOL)isUrl;
 - (id)value;

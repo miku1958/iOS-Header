@@ -17,7 +17,7 @@
 @property (strong, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (nonatomic) int consumedSequenceNumber; // @synthesize consumedSequenceNumber=_consumedSequenceNumber;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 
 @end

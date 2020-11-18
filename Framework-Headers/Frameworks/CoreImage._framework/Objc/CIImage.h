@@ -16,9 +16,11 @@
     void *_priv;
 }
 
+@property (readonly, nonatomic) struct CGImage *CGImage;
 @property (readonly) struct CGColorSpace *colorSpace;
 @property (readonly) CIFilterShape *definition;
 @property (readonly, nonatomic) struct CGRect extent;
+@property (readonly, nonatomic) struct __CVBuffer *pixelBuffer;
 @property (readonly) NSDictionary *properties;
 @property (readonly) NSURL *url;
 
@@ -54,6 +56,7 @@
 + (id)nullImage;
 + (id)smartColorAdjustmentsForValue:(double)arg1 andStatistics:(id)arg2;
 + (id)smartToneAdjustmentsForValue:(double)arg1 andStatistics:(id)arg2;
++ (id)smartToneAdjustmentsForValue:(double)arg1 localLightAutoValue:(double)arg2 andStatistics:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (id)TIFFRepresentation;
 - (id)_autoRedEyeFilterWithFeatures:(id)arg1 imageProperties:(id)arg2 context:(id)arg3 options:(id)arg4;
@@ -74,7 +77,11 @@
 - (id)_initWithImageProvider:(CDUnknownBlockType)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3 format:(int)arg4 colorSpace:(struct CGColorSpace *)arg5 surfaceCache:(BOOL)arg6 options:(id)arg7;
 - (id)_initWithInternalRepresentation:(void *)arg1;
 - (void *)_internalRepresentation;
+- (struct CGImage *)_originalCGImage;
+- (struct __CVBuffer *)_originalCVPixelBuffer;
 - (id)_scaleImageToMaxDimension:(unsigned int)arg1;
+- (void)_setOriginalCGImage:(struct CGImage *)arg1;
+- (void)_setOriginalCVPixelBuffer:(struct __CVBuffer *)arg1;
 - (id)autoAdjustmentFilters;
 - (id)autoAdjustmentFiltersWithImageProperties:(id)arg1 options:(id)arg2;
 - (id)autoAdjustmentFiltersWithOptions:(id)arg1;
@@ -93,13 +100,23 @@
 - (id)getAutoRotateFilter:(id)arg1 ciImage:(id)arg2 rgbRows:(id)arg3 inputRect:(struct CGRect)arg4 rotateCropRect:(struct CGRect *)arg5;
 - (void)getAutocropRect:(id)arg1 rotateXfrm:(struct CGAffineTransform)arg2 inputImageRect:(struct CGRect)arg3 clipRect:(struct CGRect *)arg4;
 - (id)imageByApplyingFilter:(id)arg1 withInputParameters:(id)arg2;
+- (id)imageByApplyingGaussianBlurWithSigma:(double)arg1;
 - (id)imageByApplyingOrientation:(int)arg1;
 - (id)imageByApplyingTransform:(struct CGAffineTransform)arg1;
+- (id)imageByApplyingTransform:(struct CGAffineTransform)arg1 highQualityDownsample:(BOOL)arg2;
 - (id)imageByClampingToExtent;
+- (id)imageByClampingToRect:(struct CGRect)arg1;
+- (id)imageByColorMatchingColorSpaceToWorkingSpace:(struct CGColorSpace *)arg1;
+- (id)imageByColorMatchingWorkingSpaceToColorSpace:(struct CGColorSpace *)arg1;
 - (id)imageByCompositingOverImage:(id)arg1;
 - (id)imageByCroppingToRect:(struct CGRect)arg1;
+- (id)imageByPremultiplyingAlpha;
+- (id)imageBySettingAlphaOneInExtent:(struct CGRect)arg1;
+- (id)imageBySettingProperties:(id)arg1;
+- (id)imageByTaggingWithColorSpace:(struct CGColorSpace *)arg1;
+- (id)imageByUnpremultiplyingAlpha;
 - (struct CGAffineTransform)imageTransformForOrientation:(int)arg1;
-- (id)imageWithExtent:(struct CGRect)arg1 processorDescription:(id)arg2 inputFormat:(int)arg3 outputFormat:(int)arg4 roiCallback:(CDUnknownBlockType)arg5 processor:(CDUnknownBlockType)arg6 options:(id)arg7;
+- (id)imageWithExtent:(struct CGRect)arg1 processorDescription:(id)arg2 argumentDigest:(unsigned long long)arg3 inputFormat:(int)arg4 outputFormat:(int)arg5 options:(id)arg6 roiCallback:(CDUnknownBlockType)arg7 processor:(CDUnknownBlockType)arg8;
 - (id)init;
 - (id)initWithArrayOfImages:(id)arg1 selector:(CDUnknownBlockType)arg2;
 - (id)initWithBitmapData:(id)arg1 bytesPerRow:(unsigned long long)arg2 size:(struct CGSize)arg3 format:(int)arg4 colorSpace:(struct CGColorSpace *)arg5;
@@ -130,6 +147,9 @@
 - (id)initWithTexture:(unsigned int)arg1 size:(struct CGSize)arg2 flipped:(BOOL)arg3 options:(id)arg4;
 - (id)initWithTexture:(unsigned int)arg1 size:(struct CGSize)arg2 options:(id)arg3;
 - (BOOL)isOpaque;
+- (id)localLightStatistics;
+- (id)localLightStatisticsNoProxy;
+- (id)localLightStatisticsWithProxy:(BOOL)arg1;
 - (void)printTree;
 - (struct CGRect)regionOfInterestForImage:(id)arg1 inRect:(struct CGRect)arg2;
 - (void)setCacheHint:(BOOL)arg1;
@@ -140,6 +160,7 @@
 - (id)smartColorAdjustmentsForValue:(double)arg1 andStatistics:(id)arg2;
 - (id)smartColorStatistics;
 - (id)smartToneAdjustmentsForValue:(double)arg1 andStatistics:(id)arg2;
+- (id)smartToneAdjustmentsForValue:(double)arg1 localLightAutoValue:(double)arg2 andStatistics:(id)arg3;
 - (id)smartToneStatistics;
 - (id)userInfo;
 - (void)writeToTIFF:(id)arg1;

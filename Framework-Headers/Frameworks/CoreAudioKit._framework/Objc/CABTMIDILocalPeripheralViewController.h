@@ -22,6 +22,7 @@
     UIActivityIndicatorView *indicator;
     NSString *theServiceName;
     long long advertiseTimeout;
+    long long fullRefreshCounter;
     NSTimer *advertiseTimer;
     NSTimer *messageTimer;
     BOOL didCleanup;
@@ -41,7 +42,6 @@
 - (void)cleanup;
 - (void)deactivateController:(id)arg1;
 - (void)dealloc;
-- (void)didChangePreferredContentSize:(id)arg1;
 - (void)didReceiveMemoryWarning;
 - (BOOL)disconnectLocalPeripheral;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
@@ -61,6 +61,7 @@
 - (void)textFieldDone:(id)arg1;
 - (id)title;
 - (void)updateAdvertiseUI;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 
 @end

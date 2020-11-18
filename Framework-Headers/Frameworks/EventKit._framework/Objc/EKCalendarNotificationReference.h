@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) EKCalendarNotification *notification;
 @property (readonly, nonatomic) int type; // @synthesize type=_type;
 
+- (void).cxx_destruct;
 - (long long)_notificationTypeForResourceChange:(id)arg1 notificationType:(int)arg2;
-- (void)dealloc;
 - (id)description;
 - (id)initWithType:(int)arg1 objectID:(CDStruct_f683c4ba)arg2 date:(id)arg3 eventStore:(id)arg4;
 - (id)initWithType:(int)arg1 objectID:(CDStruct_f683c4ba)arg2 eventStore:(id)arg3;

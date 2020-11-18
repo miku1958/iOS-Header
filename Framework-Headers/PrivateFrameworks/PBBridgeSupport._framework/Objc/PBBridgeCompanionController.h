@@ -16,8 +16,6 @@
 
 @interface PBBridgeCompanionController : PBBridgeIDSServiceDelegate <IDSServiceDelegate, NSURLConnectionDelegate, RUILoaderDelegate, PBBridgeCompanionProtocol>
 {
-    BOOL _passcodeSet;
-    BOOL _selectedPairedUnlock;
     BOOL _nonSilentActivation;
     BOOL _connectionFailed;
     BOOL _awaitingCustomResponse;
@@ -25,6 +23,8 @@
     BOOL _allowAnyHTTPSCertificate;
     BOOL _sentSessionRequest;
     BOOL _sentActivationRequest;
+    BOOL _passcodeSet;
+    BOOL _selectedPairedUnlock;
     unsigned short _granularActivationState;
     int _activationState;
     RUIStyle *_remoteUIStyle;
@@ -79,7 +79,7 @@
 - (void).cxx_destruct;
 - (void)_cleanup;
 - (id)_connectionWithRequest:(id)arg1;
-- (BOOL)_dumpCustomRequestBody;
+- (BOOL)_dumpActivationResquests;
 - (BOOL)_sendRemoteCommandWithMessageID:(unsigned short)arg1 withArguments:(id)arg2;
 - (BOOL)_sendResponseToMessage:(id)arg1 withResponseMessageID:(unsigned short)arg2 withArguments:(id)arg3;
 - (unsigned short)_testActivationResponseType;
@@ -113,7 +113,7 @@
 - (void)invalidateTimeoutTimer;
 - (void)loader:(id)arg1 didFailWithError:(id)arg2;
 - (void)loader:(id)arg1 didReceiveHTTPResponse:(id)arg2;
-- (void)loader:(id)arg1 receivedObjectModel:(id)arg2 actionSignal:(int)arg3;
+- (void)loader:(id)arg1 receivedObjectModel:(id)arg2 actionSignal:(unsigned long long)arg3;
 - (void)objectModel:(id)arg1 pressedButton:(id)arg2 attributes:(id)arg3;
 - (double)offsetEventTime;
 - (void)queryGizmoForOfflineTerms;
@@ -129,6 +129,7 @@
 - (void)startEstablishingPairing;
 - (void)tellGizmoToBeginActivation;
 - (void)tellGizmoToDeleteWarrantySentinel;
+- (void)tellGizmoToKeepAliveForActivationEvent;
 - (void)tellGizmoToPopToControllerType:(unsigned long long)arg1;
 - (void)tellGizmoToPrepareForInitialSyncWithCompletion:(CDUnknownBlockType)arg1;
 - (void)tellGizmoToPushControllerType:(unsigned long long)arg1;

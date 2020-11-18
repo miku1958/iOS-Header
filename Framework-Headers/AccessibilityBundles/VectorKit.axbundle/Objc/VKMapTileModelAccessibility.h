@@ -19,7 +19,7 @@
 - (id)_axStoredTilesInScene;
 - (id)accessibilityTilesInScene;
 - (void)clearCollections;
-- (void)updateTilesInScene:(id)arg1 withContext:(id)arg2 categorize:(BOOL)arg3;
+- (void)updateTilesInScene:(id)arg1 withContext:(void *)arg2 categorize:(BOOL)arg3;
 
 @end
 

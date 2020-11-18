@@ -4,21 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SplashBoard/BSDescriptionProviding-Protocol.h>
 #import <SplashBoard/NSCoding-Protocol.h>
 
-@class NSMutableSet, NSSet, NSString, XBApplicationIdentity;
+@class NSMutableSet, NSSet, NSString, XBSnapshotContainerIdentity;
 
 @interface XBApplicationSnapshotGroup : NSObject <NSCoding, BSDescriptionProviding>
 {
     NSString *_identifier;
-    XBApplicationIdentity *_appIdentity;
+    XBSnapshotContainerIdentity *_containerIdentity;
     NSMutableSet *_snapshots;
 }
 
-@property (copy) XBApplicationIdentity *appIdentity; // @synthesize appIdentity=_appIdentity;
+@property (copy) XBSnapshotContainerIdentity *containerIdentity; // @synthesize containerIdentity=_containerIdentity;
 @property (readonly, copy, nonatomic) NSString *containerPath; // @dynamic containerPath;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -28,15 +28,16 @@
 @property (readonly) Class superclass;
 
 - (id)_commonInit;
+- (id)_initWithIdentifier:(id)arg1 containerIdentity:(id)arg2;
 - (void)_invalidate;
-- (BOOL)_validateWithAppIdentity:(id)arg1;
+- (void)_manifestQueueDecode_setStore:(id)arg1;
+- (BOOL)_validateWithContainerIdentity:(id)arg1;
 - (void)addSnapshot:(id)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 appIdentity:(id)arg2;
 - (BOOL)removeSnapshot:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

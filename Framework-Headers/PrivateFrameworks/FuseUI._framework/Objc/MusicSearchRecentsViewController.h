@@ -41,6 +41,7 @@
 - (void)_showTableView;
 - (id)_stringAtIndex:(unsigned long long)arg1;
 - (id)contentScrollView;
+- (void)dealloc;
 - (id)init;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

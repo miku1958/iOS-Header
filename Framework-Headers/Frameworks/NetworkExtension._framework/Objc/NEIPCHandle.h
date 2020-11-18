@@ -17,10 +17,10 @@
     struct ipc_queue *_send_queue;
 }
 
-@property NSUUID *config_id; // @synthesize config_id=_config_id;
+@property (strong) NSUUID *config_id; // @synthesize config_id=_config_id;
 @property struct __CFArray *configurations; // @synthesize configurations=_configurations;
-@property NEIPC *primary_ipc; // @synthesize primary_ipc=_primary_ipc;
-@property NEIPC *secondary_ipc; // @synthesize secondary_ipc=_secondary_ipc;
+@property (strong) NEIPC *primary_ipc; // @synthesize primary_ipc=_primary_ipc;
+@property (strong) NEIPC *secondary_ipc; // @synthesize secondary_ipc=_secondary_ipc;
 @property struct ipc_queue *send_queue; // @synthesize send_queue=_send_queue;
 
 + (void)deregisterConfiguration:(struct _VPNConfigurationPrivate *)arg1;

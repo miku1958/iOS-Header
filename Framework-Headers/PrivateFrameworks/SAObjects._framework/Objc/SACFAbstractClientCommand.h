@@ -6,15 +6,17 @@
 
 #import <SAObjects/SADomainCommand.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface SACFAbstractClientCommand : SADomainCommand
 {
 }
 
 @property (copy, nonatomic) NSString *domain;
+@property (copy, nonatomic) NSArray *jsLibraries;
 @property (copy, nonatomic) NSString *jsParameters;
 @property (copy, nonatomic) NSString *jsScript;
+@property (nonatomic) BOOL shouldCacheScript;
 
 + (id)abstractClientCommand;
 + (id)abstractClientCommandWithDictionary:(id)arg1 context:(id)arg2;

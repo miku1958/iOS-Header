@@ -15,13 +15,7 @@
     int _metricState;
     int _metricType;
     unsigned int _retryCount;
-    struct {
-        unsigned int messageSize:1;
-        unsigned int messageCount:1;
-        unsigned int metricState:1;
-        unsigned int metricType:1;
-        unsigned int retryCount:1;
-    } _has;
+    CDStruct_86e90cf6 _has;
 }
 
 @property (nonatomic) BOOL hasMessageCount;
@@ -35,6 +29,8 @@
 @property (nonatomic) int metricType; // @synthesize metricType=_metricType;
 @property (nonatomic) unsigned int retryCount; // @synthesize retryCount=_retryCount;
 
+- (int)StringAsMetricState:(id)arg1;
+- (int)StringAsMetricType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -42,6 +38,8 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)metricStateAsString:(int)arg1;
+- (id)metricTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

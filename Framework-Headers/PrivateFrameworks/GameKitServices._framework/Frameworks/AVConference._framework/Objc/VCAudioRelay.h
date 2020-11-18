@@ -29,23 +29,24 @@
     unsigned int _blocksRelayedCount;
     float _clientUplinkPowerMovingAverage;
     float _clientDownlinkPowerMovingAverage;
-    id _weakSelf;
+    struct opaqueCMSimpleQueue *_eventQueue;
+    CDStruct_bdecc0cd _threadEvent;
 }
 
 @property (readonly) float IOBufferDuration; // @synthesize IOBufferDuration=_IOBufferDuration;
 @property (readonly) unsigned int blocksRelayedCount; // @synthesize blocksRelayedCount=_blocksRelayedCount;
-@property (readonly) BOOL canStartRelay;
 @property (readonly) float clientDownlinkPowerMovingAverage; // @synthesize clientDownlinkPowerMovingAverage=_clientDownlinkPowerMovingAverage;
 @property (readonly, copy) VCAudioRelayIO *clientIO; // @synthesize clientIO=_clientIO;
 @property (readonly) struct OpaqueAudioConverter *clientToRemoteConverter; // @synthesize clientToRemoteConverter=_clientToRemoteConverter;
 @property (readonly) float clientUplinkPowerMovingAverage; // @synthesize clientUplinkPowerMovingAverage=_clientUplinkPowerMovingAverage;
+@property (readonly) struct opaqueCMSimpleQueue *eventQueue; // @synthesize eventQueue=_eventQueue;
 @property (readonly) BOOL isRelayRunning; // @synthesize isRelayRunning=_isRelayRunning;
 @property (readonly) NSObject<OS_dispatch_source> *periodicHealthPrintDispatchSource; // @synthesize periodicHealthPrintDispatchSource=_periodicHealthPrintDispatchSource;
 @property (readonly, copy) VCAudioRelayIO *remoteIO; // @synthesize remoteIO=_remoteIO;
 @property (readonly) struct OpaqueAudioConverter *remoteToClientConverter; // @synthesize remoteToClientConverter=_remoteToClientConverter;
+@property (readonly) CDStruct_bdecc0cd threadEvent; // @synthesize threadEvent=_threadEvent;
 
 - (BOOL)canSetPropertyWithError:(id *)arg1;
-- (BOOL)canStartRelayWithError:(id *)arg1;
 - (BOOL)createAudioConvertersWithError:(id *)arg1;
 - (void)dealloc;
 - (void)destroyAudioConverters;
@@ -60,6 +61,7 @@
 - (void)sleepTillTime:(struct timespec *)arg1;
 - (BOOL)start;
 - (void)startPeriodicHealthPrint;
+- (BOOL)startRelayIO:(id)arg1 name:(id)arg2;
 - (BOOL)startRelayThreadWithError:(id *)arg1;
 - (void)stop;
 - (void)stopRelayThread;

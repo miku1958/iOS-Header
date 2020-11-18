@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <CloudDocsDaemon/BRFileCoordinationProvider-Protocol.h>
+
 @class NSString;
 
-@protocol BRTokenProtocol
+@protocol BRTokenProtocol <BRFileCoordinationProvider>
 - (void)currentAccountCopyTokenWithBundleID:(NSString *)arg1 version:(NSString *)arg2 reply:(void (^)(NSData *, NSError *))arg3;
 @end
 

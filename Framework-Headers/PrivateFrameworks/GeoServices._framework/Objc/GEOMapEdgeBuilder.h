@@ -19,15 +19,17 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _edgeHandler;
     unordered_set_4cb294f7 _tileKeysSeen;
     BOOL _searchDirection;
+    unsigned long long _buildDirection;
 }
 
+@property (nonatomic) unsigned long long buildDirection; // @synthesize buildDirection=_buildDirection;
 @property (copy, nonatomic) CDUnknownBlockType edgeHandler; // @synthesize edgeHandler=_edgeHandler;
 @property (readonly, nonatomic) GEOMapAccess *map;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_buildCompleteEdge;
-- (BOOL)_edgeStart:(const Matrix_8746f91e *)arg1 end:(const Matrix_8746f91e *)arg2 connectsTo:(const CDStruct_c3b9c2ee *)arg3 rect:(const CDStruct_90e2a262 *)arg4;
+- (BOOL)_edgeStart:(const Matrix_8746f91e *)arg1 end:(const Matrix_8746f91e *)arg2 connectsTo:(const Matrix_8746f91e *)arg3;
 - (BOOL)_findEdgeAhead;
 - (BOOL)_findEdgeAheadInTile:(id)arg1;
 - (BOOL)_findEdgeBehind;

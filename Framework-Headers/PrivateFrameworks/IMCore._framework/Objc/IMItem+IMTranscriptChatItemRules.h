@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <IMFoundation/IMItem.h>
+#import <IMSharedUtilities/IMItem.h>
 
 @interface IMItem (IMTranscriptChatItemRules)
 - (BOOL)_hasMessageChatItem;
 - (id)_newChatItems;
 - (id)_service;
 - (id)_serviceHandle;
+- (BOOL)shouldGenerateTopLevelChatItem;
 @end
 

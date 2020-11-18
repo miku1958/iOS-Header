@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUI/PUPhotoLibraryUIChangeObserver-Protocol.h>
+#import <PhotosUI/PXPhotoLibraryUIChangeObserver-Protocol.h>
 
 @class NSArray, NSString, PHManualFetchResult;
 
 __attribute__((visibility("hidden")))
-@interface PUAssetHidingHelper : NSObject <PUPhotoLibraryUIChangeObserver>
+@interface PUAssetHidingHelper : NSObject <PXPhotoLibraryUIChangeObserver>
 {
     BOOL _areAllAssetsHidden;
     BOOL _didCheckAllAssetHidden;
@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)menuItemTitleForTogglingAssetsVisibility;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
-- (void)prepareForPhotoLibraryChange:(id)arg1;
+- (id)prepareForPhotoLibraryChange:(id)arg1;
 
 @end
 

@@ -32,7 +32,9 @@
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithEmailAddresses:(id)arg1 userRecordIDs:(id)arg2;
+- (Class)operationInfoClass;
 - (void)performCKOperation;
+- (void)setLongLived:(BOOL)arg1;
 
 @end
 

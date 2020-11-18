@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
 @property (strong, nonatomic) NSString *regionCode; // @synthesize regionCode=_regionCode;
 
++ (Class)enabledKeyboardsType;
 - (void).cxx_destruct;
 - (void)addEnabledKeyboards:(id)arg1;
 - (void)clearEnabledKeyboards;

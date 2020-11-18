@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long operationState; // @synthesize operationState=_operationState;
 @property (readonly) double queueing;
 @property (readonly) double relativeStart;
-@property (strong) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly) Class superclass;
 
 + (id)describedSortedRanges:(id)arg1;

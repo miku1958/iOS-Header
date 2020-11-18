@@ -12,8 +12,8 @@
 
 @property (readonly, nonatomic) BOOL failed;
 @property (readonly, nonatomic) BOOL isFromMe;
-@property (readonly, strong, nonatomic) IMHandle *sender;
-@property (readonly, strong, nonatomic) NSDate *time;
+@property (readonly, nonatomic) IMHandle *sender;
+@property (readonly, nonatomic) NSDate *time;
 
 @end
 

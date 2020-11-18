@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <DataDetectorsUI/DDTelephoneNumberAction.h>
+#import <DataDetectorsUI/DDCallAction.h>
 
 __attribute__((visibility("hidden")))
-@interface DDFaceTimeAudioAction : DDTelephoneNumberAction
+@interface DDFaceTimeAudioAction : DDCallAction
 {
 }
 
 + (BOOL)isAvailable;
+- (id)callProvider;
 - (int)interactionType;
 - (id)localizedName;
-- (void)perform;
 
 @end
 

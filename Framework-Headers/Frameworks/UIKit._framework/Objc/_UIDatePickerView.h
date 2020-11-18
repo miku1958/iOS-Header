@@ -73,17 +73,19 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=_usesBlackChrome, setter=_setUsesBlackChrome:) BOOL usesBlackChrome;
 
 - (void).cxx_destruct;
+- (void)_UIAppearance_setTextColor:(id)arg1;
 - (id)_componentsSelectedAfterEnforcingValidityOfComponents:(id)arg1 withLastManipulatedComponent:(long long)arg2;
 - (id)_contentViewForSizingLabelForPositioningInComponent:(long long)arg1;
 - (void)_datePickerReset:(id)arg1;
 - (void)_doneLoadingDateOrTime;
+- (id)_existingLabelForCalendarUnit:(unsigned long long)arg1;
 - (void)_fadeLabelForCalendarUnit:(unsigned long long)arg1 toText:(id)arg2 animated:(BOOL)arg3;
 - (id)_hoursStringForHour:(long long)arg1;
 - (BOOL)_isCurrentCalendar:(id)arg1;
 - (id)_labelForCalendarUnit:(unsigned long long)arg1 createIfNecessary:(BOOL)arg2;
 - (id)_labelTextForCalendarUnit:(unsigned long long)arg1;
 - (void)_loadDate:(id)arg1 animated:(BOOL)arg2;
-- (id)_makeNewAccessoryLabel;
+- (id)_makeNewCalendarUnitLabel;
 - (id)_minutesStringForHour:(long long)arg1 minutes:(long long)arg2;
 - (id)_orientationImageSuffix;
 - (void)_positionLabel:(id)arg1 forCalendarUnit:(unsigned long long)arg2 relativeTo:(id)arg3 order:(long long)arg4;
@@ -98,12 +100,15 @@ __attribute__((visibility("hidden")))
 - (void)_setHidesLabels:(BOOL)arg1;
 - (void)_setLabel:(id)arg1 forCalendarUnit:(unsigned long long)arg2 animated:(BOOL)arg3;
 - (void)_setMode:(id)arg1;
+- (void)_setTextColor:(id)arg1;
 - (BOOL)_showingDate;
 - (double)_tableRowHeight;
 - (void)_todayChanged:(id)arg1;
 - (BOOL)_updateDateOrTime;
 - (void)_updateEnabledCellsIncludingWMDCells:(BOOL)arg1;
+- (void)_updateLabelColors;
 - (void)_updateLabels:(BOOL)arg1;
+- (void)_updateTextColorForCalendarUnitLabel:(id)arg1;
 - (BOOL)_updatedLastSelectedComponentsByValidatingSelectedDateWithLastManipulatedComponent:(long long)arg1;
 - (id)_viewForSelectedRowInComponent:(long long)arg1;
 - (void)dealloc;

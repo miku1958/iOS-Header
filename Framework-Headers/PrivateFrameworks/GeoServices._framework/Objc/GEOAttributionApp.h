@@ -14,11 +14,27 @@
 {
     NSString *_appBundleIdentifier;
     NSMutableArray *_handledSchemes;
+    int _restaurantReservationExtensionSupport;
+    BOOL _supportsRestaurantQueueing;
+    BOOL _supportsRestaurantReservations;
+    struct {
+        unsigned int restaurantReservationExtensionSupport:1;
+        unsigned int supportsRestaurantQueueing:1;
+        unsigned int supportsRestaurantReservations:1;
+    } _has;
 }
 
 @property (strong, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
 @property (strong, nonatomic) NSMutableArray *handledSchemes; // @synthesize handledSchemes=_handledSchemes;
+@property (nonatomic) BOOL hasRestaurantReservationExtensionSupport;
+@property (nonatomic) BOOL hasSupportsRestaurantQueueing;
+@property (nonatomic) BOOL hasSupportsRestaurantReservations;
+@property (nonatomic) int restaurantReservationExtensionSupport; // @synthesize restaurantReservationExtensionSupport=_restaurantReservationExtensionSupport;
+@property (nonatomic) BOOL supportsRestaurantQueueing; // @synthesize supportsRestaurantQueueing=_supportsRestaurantQueueing;
+@property (nonatomic) BOOL supportsRestaurantReservations; // @synthesize supportsRestaurantReservations=_supportsRestaurantReservations;
 
++ (Class)handledSchemesType;
+- (int)StringAsRestaurantReservationExtensionSupport:(id)arg1;
 - (void)addHandledSchemes:(id)arg1;
 - (void)clearHandledSchemes;
 - (void)copyTo:(id)arg1;
@@ -32,6 +48,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)restaurantReservationExtensionSupportAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

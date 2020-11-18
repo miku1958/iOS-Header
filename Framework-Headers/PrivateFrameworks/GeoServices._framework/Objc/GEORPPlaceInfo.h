@@ -8,18 +8,24 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDPlaceRequest, GEOPDPlaceResponse;
+@class GEOPDPlaceRequest, GEOPDPlaceResponse, NSString;
 
 @interface GEORPPlaceInfo : PBCodable <NSCopying>
 {
     GEOPDPlaceRequest *_placeRequest;
     GEOPDPlaceResponse *_placeResponse;
+    NSString *_sourceApplication;
+    NSString *_sourceUrl;
 }
 
 @property (readonly, nonatomic) BOOL hasPlaceRequest;
 @property (readonly, nonatomic) BOOL hasPlaceResponse;
+@property (readonly, nonatomic) BOOL hasSourceApplication;
+@property (readonly, nonatomic) BOOL hasSourceUrl;
 @property (strong, nonatomic) GEOPDPlaceRequest *placeRequest; // @synthesize placeRequest=_placeRequest;
 @property (strong, nonatomic) GEOPDPlaceResponse *placeResponse; // @synthesize placeResponse=_placeResponse;
+@property (strong, nonatomic) NSString *sourceApplication; // @synthesize sourceApplication=_sourceApplication;
+@property (strong, nonatomic) NSString *sourceUrl; // @synthesize sourceUrl=_sourceUrl;
 
 - (void)clearSessionIdFromPlaceRequest;
 - (void)copyTo:(id)arg1;

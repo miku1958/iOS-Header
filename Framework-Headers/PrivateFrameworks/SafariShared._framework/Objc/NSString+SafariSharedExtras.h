@@ -7,6 +7,9 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (SafariSharedExtras)
+
+@property (readonly, copy, nonatomic) NSString *safari_stringByRemovingExcessWhitespace;
+
 + (void)_safari_reverseEnumerateComponents:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 + (id)safari_stringAsHexWithBuffer:(const char *)arg1 length:(unsigned long long)arg2;
 + (id)safari_stringAsHexWithData:(id)arg1;
@@ -20,6 +23,7 @@
 - (id)safari_bestURLForUserTypedString;
 - (id)safari_bestURLStringForUserTypedString;
 - (id)safari_canonicalURLStringForFrequentlyVisitedSites;
+- (id)safari_containedURLs;
 - (unsigned long long)safari_countOfString:(id)arg1;
 - (id)safari_domainFromHost;
 - (void)safari_enumerateSubdomainRangesInHostUsingBlock:(CDUnknownBlockType)arg1;
@@ -31,6 +35,7 @@
 - (id)safari_highLevelDomainFromHost;
 - (BOOL)safari_isCaseInsensitiveEqualToString:(id)arg1;
 - (BOOL)safari_isJavaScriptURLString;
+- (BOOL)safari_isVisualDuplicateOfURLString:(id)arg1;
 - (id)safari_md5Hash;
 - (id)safari_possibleTopLevelDomainCorrectionForUserTypedString;
 - (id)safari_scriptIfJavaScriptURLString;
@@ -45,6 +50,7 @@
 - (id)safari_stringBySubstitutingHTMLEntitiesForAmpersandAndAngleBrackets;
 - (id)safari_stringByTrimmingWhitespace;
 - (id)safari_stringEncodedAsURLQueryParameter;
+- (id)safari_stringWithFont:(id)arg1 forWidth:(double)arg2 lineBreakMode:(long long)arg3;
 - (id)safari_userVisibleURL;
 @end
 

@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/BBNotificationBehaviorUtilitiesClientProtocol-Protocol.h>
 
 @class NSString, NSXPCConnection;
+@protocol OS_dispatch_queue;
 
 @interface BBNotificationBehaviorUtilitiesClient : NSObject <BBNotificationBehaviorUtilitiesClientProtocol>
 {
+    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_calloutQueue;
     NSXPCConnection *_connection;
     CDUnknownBlockType _filteringStateChangeHandler;
     CDUnknownBlockType _activeBehaviorOverridesChangeHandler;
+    int _listeningToken;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,8 +27,13 @@
 @property (readonly) Class superclass;
 
 + (id)clientInterface;
+- (void).cxx_destruct;
+- (id)_queue_connection;
+- (void)_queue_invalidate;
+- (void)_registerForPublicationNotification;
 - (void)activeBehaviorOverrideTypesChanged:(unsigned long long)arg1 source:(unsigned long long)arg2;
 - (void)dealloc;
+- (void)establishXPCConnection;
 - (id)init;
 - (void)invalidate;
 - (void)notificationPresentationFilteringChangedToEnabled:(BOOL)arg1;

@@ -6,9 +6,10 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HDSQLiteDatabase, HDSQLiteDatabasePool;
+@class HDSQLiteDatabase, HDSQLiteDatabasePool, NSArray;
 
 @protocol HDSQLiteDatabasePoolDelegate <NSObject>
+- (void)databasePool:(HDSQLiteDatabasePool *)arg1 didFlushDatabases:(NSArray *)arg2;
 - (HDSQLiteDatabase *)newDatabaseForDatabasePool:(HDSQLiteDatabasePool *)arg1 error:(id *)arg2;
 @end
 

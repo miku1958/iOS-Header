@@ -6,15 +6,15 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class UIImage, UIImageView;
+@class UIImageView;
 
 @interface MCDTableViewCell : UITableViewCell
 {
-    UIImageView *_artworkImageView;
-    double _originalLeadingInset;
+    UIImageView *_explicitImageView;
+    BOOL _explicitContent;
 }
 
-@property (strong, nonatomic) UIImage *artworkImage;
+@property (nonatomic, getter=isExplicitContent) BOOL explicitContent; // @synthesize explicitContent=_explicitContent;
 
 - (void).cxx_destruct;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

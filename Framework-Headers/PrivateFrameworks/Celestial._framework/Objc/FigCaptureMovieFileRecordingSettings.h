@@ -6,12 +6,9 @@
 
 #import <Celestial/FigCaptureRecordingSettings.h>
 
-#import <Celestial/NSCoding-Protocol.h>
-#import <Celestial/NSCopying-Protocol.h>
-
 @class NSArray, NSDictionary;
 
-@interface FigCaptureMovieFileRecordingSettings : FigCaptureRecordingSettings <NSCoding, NSCopying>
+@interface FigCaptureMovieFileRecordingSettings : FigCaptureRecordingSettings
 {
     NSDictionary *_videoSettings;
     NSDictionary *_audioSettings;
@@ -20,20 +17,23 @@
     BOOL _recordVideoOrientationAndMirroringChanges;
     CDStruct_1b6d18a9 _movieFragmentInterval;
     NSArray *_movieLevelMetadata;
-    BOOL _sendThumbnailIOSurface;
+    BOOL _sendPreviewIOSurface;
     BOOL _irisRecording;
+    int _bravoCameraSelectionBehavior;
 }
 
 @property (copy, nonatomic) NSDictionary *audioSettings; // @synthesize audioSettings=_audioSettings;
+@property (nonatomic) int bravoCameraSelectionBehavior; // @synthesize bravoCameraSelectionBehavior=_bravoCameraSelectionBehavior;
 @property (nonatomic, getter=isIrisRecording) BOOL irisRecording; // @synthesize irisRecording=_irisRecording;
 @property (nonatomic) CDStruct_1b6d18a9 movieFragmentInterval; // @synthesize movieFragmentInterval=_movieFragmentInterval;
 @property (copy, nonatomic) NSArray *movieLevelMetadata; // @synthesize movieLevelMetadata=_movieLevelMetadata;
 @property (nonatomic) BOOL recordVideoOrientationAndMirroringChanges; // @synthesize recordVideoOrientationAndMirroringChanges=_recordVideoOrientationAndMirroringChanges;
-@property (nonatomic) BOOL sendThumbnailIOSurface; // @synthesize sendThumbnailIOSurface=_sendThumbnailIOSurface;
+@property (nonatomic) BOOL sendPreviewIOSurface; // @synthesize sendPreviewIOSurface=_sendPreviewIOSurface;
 @property (nonatomic) BOOL videoMirrored; // @synthesize videoMirrored=_videoMirrored;
 @property (nonatomic) int videoOrientation; // @synthesize videoOrientation=_videoOrientation;
 @property (copy, nonatomic) NSDictionary *videoSettings; // @synthesize videoSettings=_videoSettings;
 
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

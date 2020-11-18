@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ContactsFoundation/CNObserver-Protocol.h>
 
-@class NSString;
+@class CNObservableContractEnforcement, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _CNBlockObserver : NSObject <CNObserver>
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _resultBlock;
     CDUnknownBlockType _completionBlock;
     CDUnknownBlockType _failureBlock;
+    CNObservableContractEnforcement *_enforcement;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithResultBlock:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (void)observerDidComplete;
 - (void)observerDidFailWithError:(id)arg1;

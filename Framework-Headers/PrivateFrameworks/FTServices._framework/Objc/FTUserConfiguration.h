@@ -16,6 +16,10 @@
 
 + (id)sharedInstance;
 - (BOOL)_adequateInternalOrCarrierInstall;
+- (BOOL)cellularDataEnabledForBundleId:(id)arg1;
+- (void)dealloc;
+- (id)init;
+- (BOOL)wifiAllowedForBundleId:(id)arg1;
 
 @end
 

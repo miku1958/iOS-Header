@@ -16,6 +16,7 @@
 
 @property (readonly, copy, nonatomic) NSString *actionType; // @synthesize actionType=_actionType;
 @property (readonly, copy, nonatomic) NSDictionary *parameters; // @synthesize parameters=_parameters;
+@property (readonly, nonatomic) unsigned long long protocolVersion;
 
 + (id)actionWithActionType:(id)arg1 parameters:(id)arg2;
 + (id)actionWithData:(id)arg1 error:(id *)arg2 supportsLegacy:(BOOL)arg3;

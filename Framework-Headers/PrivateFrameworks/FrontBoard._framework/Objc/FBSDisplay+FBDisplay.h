@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoardUIServices/FBSDisplay.h>
+#import <FrontBoardServices/FBSDisplay.h>
 
 @interface FBSDisplay (FBDisplay)
 - (id)UIScreen;

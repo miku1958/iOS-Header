@@ -11,41 +11,40 @@
 #import <PhotosUI/UIActivityGroupViewControllerDelegate-Protocol.h>
 #import <PhotosUI/UINavigationControllerDelegate-Protocol.h>
 
-@class NSString, PHAsset, PUEditPlugin, PUEditPluginManager, UINavigationController, UIViewController;
-@protocol PUEditPluginSessionDataSource, PUEditPluginSessionDelegate;
+@class NSString, PUEditPlugin, PUEditPluginManager, UINavigationController, UIViewController;
+@protocol PUEditPluginSessionDataSource, PUEditPluginSessionDelegate, PUEditableAsset;
 
 __attribute__((visibility("hidden")))
 @interface PUEditPluginSession : NSObject <PUEditPluginHostViewControllerDataSource, PUEditPluginHostViewControllerDelegate, UINavigationControllerDelegate, UIActivityGroupViewControllerDelegate>
 {
     PUEditPluginManager *_pluginManager;
     UINavigationController *_pluginNavigationController;
-    PUEditPlugin *_currentPlugin;
     BOOL _isAvailable;
     id<PUEditPluginSessionDataSource> _dataSource;
     id<PUEditPluginSessionDelegate> _delegate;
-    PHAsset *_asset;
+    id<PUEditableAsset> _asset;
     long long _adjustmentType;
+    PUEditPlugin *_currentPlugin;
     UIViewController *__hostViewController;
 }
 
 @property (weak, nonatomic, setter=_setHostViewController:) UIViewController *_hostViewController; // @synthesize _hostViewController=__hostViewController;
-@property (nonatomic) long long adjustmentType; // @synthesize adjustmentType=_adjustmentType;
-@property (strong, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
+@property (nonatomic, setter=_setAdjustmentType:) long long adjustmentType; // @synthesize adjustmentType=_adjustmentType;
+@property (strong, nonatomic, setter=_setAsset:) id<PUEditableAsset> asset; // @synthesize asset=_asset;
+@property (strong, nonatomic, setter=_setCurrentPlugin:) PUEditPlugin *currentPlugin; // @synthesize currentPlugin=_currentPlugin;
 @property (weak, nonatomic) id<PUEditPluginSessionDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUEditPluginSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL isAvailable; // @synthesize isAvailable=_isAvailable;
-@property (readonly, nonatomic) long long mediaType;
+@property (nonatomic, setter=_setIsAvailable:) BOOL isAvailable; // @synthesize isAvailable=_isAvailable;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_beginSessionWithAsset:(id)arg1 fromViewController:(id)arg2 sourceElement:(id)arg3;
+- (void)_launchPlugin:(id)arg1 afterDismissingViewController:(id)arg2;
+- (id)_localizedEditorListTitle;
 - (void)_pluginManagerPluginsDidChange:(id)arg1;
-- (void)_setAdjustmentType:(long long)arg1;
-- (void)_setAsset:(id)arg1;
-- (void)_setIsAvailable:(BOOL)arg1;
 - (void)_updateAvailability;
 - (void)activityGroupViewController:(id)arg1 didSelectActivity:(id)arg2;
 - (void)beginSessionWithAsset:(id)arg1 fromViewController:(id)arg2 sourceElement:(id)arg3;
@@ -57,6 +56,10 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)loadItemProviderWithSupportedAdjustmentData:(id)arg1 loadHandler:(CDUnknownBlockType)arg2;
 - (id)navigationController:(id)arg1 animationControllerForOperation:(long long)arg2 fromViewController:(id)arg3 toViewController:(id)arg4;
+- (unsigned long long)pluginManagerMediaType;
+- (void)presentAlertController:(id)arg1;
+- (void)shouldLaunchPlugin:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)updatePluginManager;
 
 @end
 

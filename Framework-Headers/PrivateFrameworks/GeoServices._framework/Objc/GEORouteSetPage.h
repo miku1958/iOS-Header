@@ -6,14 +6,14 @@
 
 #import <Foundation/NSObject.h>
 
-@class GEOComposedRoute, GEODirectionsRouteRequest, GEODirectionsRouteResponse, GEORouteSet, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary;
+@class GEOComposedRoute, GEODirectionsRequest, GEODirectionsResponse, GEORouteSet, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary;
 @protocol GEOTransitRoutingIncidentMessage;
 
 __attribute__((visibility("hidden")))
 @interface GEORouteSetPage : NSObject
 {
-    GEODirectionsRouteRequest *_request;
-    GEODirectionsRouteResponse *_response;
+    GEODirectionsRequest *_request;
+    GEODirectionsResponse *_response;
     GEORouteSet *_routeSet;
     NSArray *_routes;
     NSArray *_routesAndGaps;
@@ -26,17 +26,20 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_alternateStartRoutesLookup;
     NSMutableArray *_contingentStartRoutes;
     NSMutableArray *_contingentMiddleRoutes;
+    NSMutableArray *_contingentRoutes;
     GEOComposedRoute *_preferredRoute;
     id<GEOTransitRoutingIncidentMessage> _transitRoutingIncidentMessage;
     BOOL _isNavigable;
+    BOOL _lazyLoadingEnabled;
+    long long _selectedRouteIndex;
 }
 
 @property (readonly, nonatomic) BOOL allTransitRoutesBlockedByIncident;
 @property (readonly, nonatomic) NSDictionary *alternateStartRoutesLookup;
 @property (readonly, nonatomic) BOOL isNavigable; // @synthesize isNavigable=_isNavigable;
-@property (readonly, nonatomic) GEOComposedRoute *preferredRoute; // @synthesize preferredRoute=_preferredRoute;
-@property (readonly, nonatomic) GEODirectionsRouteRequest *request; // @synthesize request=_request;
-@property (readonly, nonatomic) GEODirectionsRouteResponse *response; // @synthesize response=_response;
+@property (readonly, weak, nonatomic) GEOComposedRoute *preferredRoute; // @synthesize preferredRoute=_preferredRoute;
+@property (readonly, nonatomic) GEODirectionsRequest *request; // @synthesize request=_request;
+@property (readonly, nonatomic) GEODirectionsResponse *response; // @synthesize response=_response;
 @property (weak, nonatomic) GEORouteSet *routeSet; // @synthesize routeSet=_routeSet;
 @property (readonly, nonatomic) NSArray *routes; // @synthesize routes=_routes;
 @property (readonly, nonatomic) NSArray *routesAndContingencies;
@@ -50,12 +53,16 @@ __attribute__((visibility("hidden")))
 - (id)_composedRouteForRoute:(id)arg1;
 - (void)_createAlternateStartRoutesLookup;
 - (void)_createIncidentsOnRoute:(id)arg1;
+- (id)_lazyRoutesAtIndex:(unsigned long long)arg1 partial:(BOOL)arg2;
 - (void)_setupDriveWalkRoutesForResponse:(id)arg1;
 - (void)_setupTransitRoutesForResponse:(id)arg1;
 - (void)_stitchRoutesFromArray:(id)arg1 addToRoutes:(id)arg2 includeDepartureRoutes:(BOOL)arg3;
 - (void)dealloc;
-- (id)initWithRequest:(id)arg1 response:(id)arg2 routeSet:(id)arg3;
-- (id)initWithReroute:(id)arg1;
+- (unsigned long long)indexOfFullRoute:(id)arg1;
+- (id)initWithRequest:(id)arg1 response:(id)arg2 routeSet:(id)arg3 shouldLazyLoad:(BOOL)arg4 selectedRouteIndex:(long long)arg5;
+- (id)initWithReroute:(id)arg1 request:(id)arg2 response:(id)arg3 shouldLazyLoad:(BOOL)arg4;
+- (id)routeAndFullLazyContingenciesAtIndex:(unsigned long long)arg1;
+- (id)routeAndPartialLazyContingenciesAtIndex:(unsigned long long)arg1;
 
 @end
 

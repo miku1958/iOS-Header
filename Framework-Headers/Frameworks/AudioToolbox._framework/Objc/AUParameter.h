@@ -45,8 +45,10 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithID:(id)arg1 name:(id)arg2 address:(unsigned long long)arg3 min:(float)arg4 max:(float)arg5 unit:(unsigned int)arg6 unitName:(id)arg7 flags:(unsigned int)arg8 valueStrings:(id)arg9 dependentParameters:(id)arg10;
+- (void)setValue:(float)arg1 extOriginator:(struct AUParameterObserverExtendedToken)arg2 atHostTime:(unsigned long long)arg3 eventType:(unsigned int)arg4;
 - (void)setValue:(float)arg1 originator:(void *)arg2;
 - (void)setValue:(float)arg1 originator:(void *)arg2 atHostTime:(unsigned long long)arg3;
+- (void)setValue:(float)arg1 originator:(void *)arg2 atHostTime:(unsigned long long)arg3 eventType:(unsigned int)arg4;
 - (void)set_clumpID:(unsigned int)arg1;
 - (id)stringFromValue:(const float *)arg1;
 - (float)valueFromString:(id)arg1;

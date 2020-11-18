@@ -22,8 +22,10 @@
 
 - (BOOL)async;
 - (id)crossOrigin;
+- (id)nonce;
 - (void)setAsync:(BOOL)arg1;
 - (void)setCrossOrigin:(id)arg1;
+- (void)setNonce:(id)arg1;
 
 @end
 

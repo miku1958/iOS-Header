@@ -6,48 +6,53 @@
 
 #import <DataDetectorsNaturalLanguage/IPFeature.h>
 
-@class NSString, RKText;
+@class NSArray, NSString, RKText;
 
 @interface IPFeatureSentence : IPFeature
 {
     BOOL _hasCheckedEventVocabularyKeyword;
     BOOL _hasCheckedEventVocabularyIgnoreDateKeyword;
-    BOOL _hasCheckedPolarity;
-    unsigned long long _type;
+    RKText *_responseKitSentence;
+    NSArray *_fragments;
     NSString *_languageID;
     unsigned long long _storedPolarity;
-    RKText *_responseKitSentence;
-    NSString *_storedEventVocabularyPositiveKeyword;
     NSString *_storedEventVocabularyRejectionKeyword;
     NSString *_storedEventVocabularyIgnoreDateKeyword;
 }
 
-@property (readonly) NSString *eventVocabularyIgnoreDateKeyword;
-@property (readonly) NSString *eventVocabularyPositiveKeyword;
-@property (readonly) NSString *eventVocabularyRejectionKeyword;
+@property (readonly) unsigned long long clusterType;
+@property (readonly, copy) NSString *eventVocabularyIgnoreDateKeyword;
+@property (readonly, copy) NSString *eventVocabularyRejectionKeyword;
+@property (copy) NSArray *fragments; // @synthesize fragments=_fragments;
 @property (copy) NSString *languageID; // @synthesize languageID=_languageID;
 @property (readonly) unsigned long long polarity;
 @property (readonly, getter=isQuoteAttributionLine) BOOL quoteAttributionLine;
 @property (strong) RKText *responseKitSentence; // @synthesize responseKitSentence=_responseKitSentence;
 @property (copy) NSString *storedEventVocabularyIgnoreDateKeyword; // @synthesize storedEventVocabularyIgnoreDateKeyword=_storedEventVocabularyIgnoreDateKeyword;
-@property (copy) NSString *storedEventVocabularyPositiveKeyword; // @synthesize storedEventVocabularyPositiveKeyword=_storedEventVocabularyPositiveKeyword;
 @property (copy) NSString *storedEventVocabularyRejectionKeyword; // @synthesize storedEventVocabularyRejectionKeyword=_storedEventVocabularyRejectionKeyword;
 @property unsigned long long storedPolarity; // @synthesize storedPolarity=_storedPolarity;
-@property unsigned long long type; // @synthesize type=_type;
 
 + (id)bestLanguageIDFromText:(id)arg1;
++ (id)buildRegexForType:(id)arg1 languageID:(id)arg2;
 + (id)eventVocabularyIgnoreDateKeywordInString:(id)arg1 languageID:(id)arg2;
 + (id)eventVocabularyIgnoreDateRegexForLanguageID:(id)arg1;
-+ (id)eventVocabularyPositiveKeywordInString:(id)arg1 languageID:(id)arg2;
 + (id)eventVocabularyPositiveRegexForLanguageID:(id)arg1;
++ (id)eventVocabularyRegexForType:(id)arg1 languageID:(id)arg2;
 + (id)eventVocabularyRejectionKeywordInString:(id)arg1 languageID:(id)arg2;
 + (id)eventVocabularyRejectionRegexForLanguageID:(id)arg1;
-+ (id)keywordForRegex:(id)arg1 inString:(id)arg2;
-+ (id)regexPatternForLanguageID:(id)arg1 eventVocabularySet:(id)arg2;
++ (id)eventVocabularySubjectTitleInString:(id)arg1 languageID:(id)arg2;
++ (id)eventVocabularySubjectTitleRegexForLanguageID:(id)arg1;
++ (unsigned long long)numberOfMatchesForEventVocabularySubjectTitleInString:(id)arg1 languageID:(id)arg2;
++ (id)regexSetForType:(id)arg1 languageID:(id)arg2;
 - (void).cxx_destruct;
+- (void)addFragment:(id)arg1;
 - (void)checkEventVocabularyKeywordsIfNeeded;
 - (id)description;
-- (id)initWithType:(unsigned long long)arg1 languageID:(id)arg2 responseKitSentence:(id)arg3;
+- (id)descriptionForFragment:(id)arg1;
+- (id)descriptionForFragmentAtIndex:(unsigned long long)arg1;
+- (id)initWithLanguageID:(id)arg1 responseKitSentence:(id)arg2;
+- (unsigned long long)polarityForRange:(struct _NSRange)arg1;
+- (unsigned long long)polarityForRange:(struct _NSRange)arg1 confidence:(double *)arg2;
 
 @end
 

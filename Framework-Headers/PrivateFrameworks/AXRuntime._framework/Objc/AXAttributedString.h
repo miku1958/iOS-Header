@@ -24,13 +24,15 @@
 - (id)attributedSubstringFromRange:(struct _NSRange)arg1;
 - (id)attributesAtIndex:(long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (id)axAttributedStringDescription;
-- (struct __CFAttributedString *)cfAttributedString;
+- (const struct __CFAttributedString *)cfAttributedString;
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
+- (id)coalescedAttributes;
 - (id)coalescedFontAttributes;
 - (void)convertAttachmentsWithBlock:(CDUnknownBlockType)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
+- (void)enumerateAttribute:(id)arg1 inRange:(struct _NSRange)arg2 options:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)enumerateAttributesUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)hasAttribute:(id)arg1;
 - (BOOL)hasAttributes;

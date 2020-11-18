@@ -27,7 +27,6 @@
 - (id)_typeString;
 - (void)dealloc;
 - (id)debugDescription;
-- (void)finalize;
 - (const char *)getArgumentTypeAtIndex:(unsigned long long)arg1;
 - (unsigned long long)hash;
 - (id)init;

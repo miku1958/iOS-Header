@@ -25,7 +25,9 @@
 @property (readonly, nonatomic) BOOL hasError;
 
 - (void).cxx_destruct;
+- (int)StringAsCode:(id)arg1;
 - (void)_CKLogToFileHandle:(id)arg1 atDepth:(int)arg2;
+- (id)codeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

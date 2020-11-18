@@ -22,6 +22,7 @@
     unsigned long long _resultUnknownErrorCount;
     unsigned long long _timestamp;
     int _interfaceType;
+    int _protocolType;
     int _requestType;
     struct {
         unsigned int requestCount:1;
@@ -35,11 +36,13 @@
         unsigned int resultUnknownErrorCount:1;
         unsigned int timestamp:1;
         unsigned int interfaceType:1;
+        unsigned int protocolType:1;
         unsigned int requestType:1;
     } _has;
 }
 
 @property (nonatomic) BOOL hasInterfaceType;
+@property (nonatomic) BOOL hasProtocolType;
 @property (nonatomic) BOOL hasRequestCount;
 @property (nonatomic) BOOL hasRequestType;
 @property (nonatomic) BOOL hasResultCertificateFailureCount;
@@ -52,6 +55,7 @@
 @property (nonatomic) BOOL hasResultUnknownErrorCount;
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) int interfaceType; // @synthesize interfaceType=_interfaceType;
+@property (nonatomic) int protocolType; // @synthesize protocolType=_protocolType;
 @property (nonatomic) unsigned long long requestCount; // @synthesize requestCount=_requestCount;
 @property (nonatomic) int requestType; // @synthesize requestType=_requestType;
 @property (readonly, nonatomic) unsigned int *responseTimeBuckets;
@@ -67,6 +71,7 @@
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 
 - (int)StringAsInterfaceType:(id)arg1;
+- (int)StringAsProtocolType:(id)arg1;
 - (int)StringAsRequestType:(id)arg1;
 - (void)addResponseTimeBuckets:(unsigned int)arg1;
 - (void)clearResponseTimeBuckets;
@@ -79,6 +84,7 @@
 - (id)interfaceTypeAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)protocolTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)requestTypeAsString:(int)arg1;
 - (unsigned int)responseTimeBucketsAtIndex:(unsigned long long)arg1;

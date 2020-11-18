@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <FlightUtilities/NSCopying-Protocol.h>
+#import <FlightUtilities/NSSecureCoding-Protocol.h>
 
 @class NSString, NSURL;
 
-@interface FUAirline : NSObject <NSCopying>
+@interface FUAirline : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_IATACode;
     NSString *_FAACode;
@@ -25,9 +26,12 @@
 @property (strong) NSString *name; // @synthesize name=_name;
 @property (strong) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

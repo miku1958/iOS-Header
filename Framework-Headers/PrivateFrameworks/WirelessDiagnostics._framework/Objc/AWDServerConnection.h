@@ -14,9 +14,11 @@
 - (void)dealloc;
 - (void)flushToQueue:(struct dispatch_queue_s *)arg1 block:(CDUnknownBlockType)arg2;
 - (unsigned long long)getAWDTimestamp;
+- (id)getComponentConfigurationParameters;
 - (id)initWithComponentId:(unsigned int)arg1;
 - (id)initWithComponentId:(unsigned int)arg1 andBlockOnConfiguration:(BOOL)arg2;
 - (id)newMetricContainerWithIdentifier:(unsigned int)arg1;
+- (void)registerComponentParametersChangeCallback:(CDUnknownBlockType)arg1;
 - (BOOL)registerConfigChangeCallback:(CDUnknownBlockType)arg1;
 - (BOOL)registerQueriableMetric:(unsigned int)arg1 callback:(CDUnknownBlockType)arg2;
 - (BOOL)registerQueriableMetricCallback:(CDUnknownBlockType)arg1 forIdentifier:(unsigned int)arg2;

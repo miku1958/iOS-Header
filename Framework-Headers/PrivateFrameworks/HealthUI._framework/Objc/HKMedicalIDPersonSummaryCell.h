@@ -6,34 +6,40 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSDate, NSLayoutConstraint, NSString, UIFont, UIImage, UIImageView, UILabel;
+@class NSCalendar, NSDateComponents, NSLayoutConstraint, NSNumber, NSString, UIFont, UIImage, UIImageView, UILabel, UIStackView;
 
 @interface HKMedicalIDPersonSummaryCell : UITableViewCell
 {
     UIImageView *_pictureView;
     UILabel *_nameLabel;
     UILabel *_birthdateLabel;
+    UILabel *_organDonationLabel;
+    UIStackView *_mainContainerView;
+    UIStackView *_labelContainerView;
     UIFont *_nameLabelFont;
-    NSLayoutConstraint *_imageWidthConstraint;
-    NSLayoutConstraint *_imageGapConstraint;
+    NSLayoutConstraint *_pictureWidthAnchor;
+    NSCalendar *_gregorianCalendar;
     BOOL _resetFormatters;
     UIImage *_picture;
     NSString *_name;
-    NSDate *_birthdate;
+    NSDateComponents *_gregorianBirthday;
+    NSNumber *_organDonationStatus;
 }
 
-@property (strong, nonatomic) NSDate *birthdate; // @synthesize birthdate=_birthdate;
+@property (strong, nonatomic) NSDateComponents *gregorianBirthday; // @synthesize gregorianBirthday=_gregorianBirthday;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (strong, nonatomic) NSNumber *organDonationStatus; // @synthesize organDonationStatus=_organDonationStatus;
 @property (strong, nonatomic) UIImage *picture; // @synthesize picture=_picture;
 
 - (void).cxx_destruct;
+- (id)_cachedCalendar;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
-- (void)_createConstraints;
-- (double)_scaledValueForSmallWidth:(double)arg1 bigWidth:(double)arg2;
-- (double)calculatedHeight;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)localeDidChange:(id)arg1;
+- (id)notOrganDonorString;
+- (id)organDonorStringWithTemplate:(id)arg1;
+- (void)timeZoneDidChange:(id)arg1;
 - (void)updateSubviewsFromData;
 
 @end

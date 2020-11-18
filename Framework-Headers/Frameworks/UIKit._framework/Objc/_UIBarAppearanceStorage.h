@@ -11,12 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface _UIBarAppearanceStorage : NSObject
 {
-    NSMutableDictionary *backgroundImages;
+    NSMutableDictionary *_backgroundImages;
 }
 
 + (long long)typicalBarPosition;
+- (void).cxx_destruct;
 - (id)backgroundImageForBarPosition:(long long)arg1 barMetrics:(long long)arg2;
-- (void)dealloc;
 - (BOOL)hasAnyCustomBackgroundImage;
 - (void)setBackgroundImage:(id)arg1 forBarPosition:(long long)arg2 barMetrics:(long long)arg3;
 

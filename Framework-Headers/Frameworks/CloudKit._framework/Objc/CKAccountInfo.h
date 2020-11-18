@@ -17,12 +17,14 @@
     BOOL _accountWantsPushRegistration;
     NSString *_email;
     NSString *_password;
+    NSString *_secondEmail;
 }
 
 @property (nonatomic) BOOL accountWantsPushRegistration; // @synthesize accountWantsPushRegistration=_accountWantsPushRegistration;
 @property (readonly, nonatomic) NSString *email; // @synthesize email=_email;
 @property (nonatomic) BOOL isUnitTestingAccount; // @synthesize isUnitTestingAccount=_isUnitTestingAccount;
 @property (readonly, nonatomic) NSString *password; // @synthesize password=_password;
+@property (copy, nonatomic) NSString *secondEmail; // @synthesize secondEmail=_secondEmail;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

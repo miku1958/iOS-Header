@@ -6,22 +6,25 @@
 
 #import <Foundation/NSObject.h>
 
-@class PLCloudResourcePrefetchManager, PLCloudResourcePruneManager;
+@class NSDate, PLCloudResourcePrefetchManager, PLCloudResourcePruneManager;
 @protocol OS_dispatch_queue;
 
 @interface PLCloudResourceManager : NSObject
 {
+    NSObject<OS_dispatch_queue> *_workQueue;
     PLCloudResourcePrefetchManager *_prefetchManager;
     PLCloudResourcePruneManager *_pruneManager;
-    NSObject<OS_dispatch_queue> *_workQueue;
+    NSDate *_lastOperationDate;
+    BOOL _enqueuedOperation;
 }
 
 - (void)_runOnWorkQueueWithTransaction:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)init;
 - (id)initWithCPLManager:(id)arg1;
-- (void)startAutomaticPrefetchOrPrune;
+- (void)startAutomaticPrefetchOrPruneWithTimeout:(BOOL)arg1;
 - (id)statusForDebug:(BOOL)arg1;
+- (void)stop;
 
 @end
 

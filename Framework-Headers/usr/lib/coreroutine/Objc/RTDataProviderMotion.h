@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <coreroutine/RTDataProvider.h>
+#import <coreroutine/RTDataProviderEvent.h>
 
-#import <coreroutine/RTDataProviderProtocol-Protocol.h>
+#import <coreroutine/RTDataProviderEventProtocol-Protocol.h>
 
 @class NSString;
 
-@interface RTDataProviderMotion : RTDataProvider <RTDataProviderProtocol>
+@interface RTDataProviderMotion : RTDataProviderEvent <RTDataProviderEventProtocol>
 {
 }
 
@@ -25,7 +25,6 @@
 - (void)_processDominantMotionActivity:(id)arg1;
 - (void)_registerForDominantActivityNotifications;
 - (void)_unregisterForDominantActivityNotifications;
-- (id)init;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)onDominantMotionActivityNotification:(id)arg1;

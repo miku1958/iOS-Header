@@ -18,11 +18,14 @@
     NSData *_topLeftOriginData[14];
     NSData *_bottomLeftOriginData[14];
     BOOL _selfCreating;
+    BOOL _alphaValuesSet;
+    BOOL _hasAlphaValues;
 }
 
 @property (readonly, nonatomic) unsigned long long channelCount;
 @property (readonly, nonatomic) long long channelEncoding; // @synthesize channelEncoding=_channelEncoding;
 @property (readonly, nonatomic) MISSING_TYPE *dimensions;
+@property (nonatomic) BOOL hasAlphaValues;
 @property (nonatomic) BOOL isCube;
 @property (readonly, nonatomic) unsigned long long mipLevelCount;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
@@ -40,6 +43,7 @@
 - (void)clearTexelData;
 - (id)generateDataAtLevel:(long long)arg1;
 - (struct CGImage *)imageFromTexture;
+- (id)init;
 - (id)initWithData:(id)arg1 topLeftOrigin:(BOOL)arg2 name:(id)arg3 dimensions:(long long)arg4 rowStride:(unsigned long long)arg5 channelCount:(long long)arg6 channelEncoding:(BOOL)arg7 isCube: /* Error: Ran out of types for this method. */;
 - (void)loadDataWithBottomLeftOriginAtMipLevel:(long long)arg1 create:(BOOL)arg2;
 - (void)loadDataWithTopLeftOriginAtMipLevel:(long long)arg1 create:(BOOL)arg2;

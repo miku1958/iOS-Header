@@ -6,7 +6,7 @@
 
 #import <GeoServices/GEOComposedRouteStep.h>
 
-@class GEOInstructionSet, GEOPBTransitStop, GEOTransitStep, NSArray, NSString;
+@class GEOInstructionSet, GEOPBTransitHall, GEOPBTransitStop, GEOTransitStep, NSArray, NSString;
 @protocol GEOTransitArtworkDataSource, GEOTransitRoutingIncidentMessage;
 
 @interface GEOComposedTransitRouteStep : GEOComposedRouteStep
@@ -20,15 +20,21 @@
     NSArray *_steppingArtwork;
     id<GEOTransitRoutingIncidentMessage> _steppingIncidentMessage;
     id<GEOTransitRoutingIncidentMessage> _routeDetailsIncidentMessage;
+    GEOPBTransitStop *_originStop;
+    GEOPBTransitStop *_destinationStop;
+    GEOPBTransitHall *_originHall;
+    GEOPBTransitHall *_destinationHall;
 }
 
-@property (readonly, nonatomic) GEOPBTransitStop *destinationStop;
+@property (readonly, nonatomic) GEOPBTransitHall *destinationHall; // @synthesize destinationHall=_destinationHall;
+@property (readonly, nonatomic) GEOPBTransitStop *destinationStop; // @synthesize destinationStop=_destinationStop;
 @property (readonly, nonatomic) NSString *destinationStopIntermediateListName;
 @property (readonly, nonatomic) unsigned long long destinationTransitEntityMuid;
 @property (readonly, nonatomic) GEOInstructionSet *instructions;
 @property (readonly, nonatomic) int maneuver; // @synthesize maneuver=_maneuver;
 @property (readonly, nonatomic) GEOComposedTransitRouteStep *nextTransitStep;
-@property (readonly, nonatomic) GEOPBTransitStop *originStop;
+@property (readonly, nonatomic) GEOPBTransitHall *originHall; // @synthesize originHall=_originHall;
+@property (readonly, nonatomic) GEOPBTransitStop *originStop; // @synthesize originStop=_originStop;
 @property (readonly, nonatomic) NSString *originStopIntermediateListName;
 @property (readonly, nonatomic) unsigned long long originTransitEntityMuid;
 @property (readonly, nonatomic) GEOComposedTransitRouteStep *previousTransitStep;
@@ -49,6 +55,7 @@
 - (id)endingStop;
 - (BOOL)hasDuration;
 - (id)initWithComposedRoute:(id)arg1 routeLegType:(long long)arg2 step:(id)arg3 stepIndex:(unsigned long long)arg4 duration:(unsigned int)arg5 pointRange:(struct _NSRange)arg6;
+- (BOOL)isArrivalStep;
 - (id)nextAlightingStep;
 - (id)nextBoardingStep;
 - (id)nextStop;

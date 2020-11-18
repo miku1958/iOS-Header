@@ -47,11 +47,11 @@
 + (id)_accountWithPath:(id)arg1;
 + (void)_addAccountToSortedPaths:(id)arg1;
 + (id)_defaultMailAccountForDeliveryIncludingRestricted:(BOOL)arg1;
-+ (void)_invalidateAccounts:(id)arg1 missingFromNewAccounts:(id)arg2;
 + (id)_loadAllAccountsWithOptions:(unsigned long long)arg1 error:(id *)arg2;
 + (id)_loadDataAccessAccountsWithError:(id *)arg1;
 + (void)_removeAccountFromSortedPaths:(id)arg1;
 + (void)_removeLookAsideValuesNotInAccountList:(id)arg1;
++ (void)_setMailAccounts:(id)arg1 saveIfChanged:(BOOL)arg2 alreadyLocked:(BOOL)arg3;
 + (void)_setOutboxMailboxUid:(id)arg1;
 + (void)_setupSortedPathsForAccounts:(id)arg1;
 + (id)accountContainingEmailAddress:(id)arg1;
@@ -66,6 +66,7 @@
 + (id)activeAccounts;
 + (id)activeAccountsWithError:(id *)arg1;
 + (id)addressesThatReceivedMessage:(id)arg1;
++ (id)allActivePrimaryMailboxUids;
 + (id)allEmailAddressesIncludingFullUserName:(BOOL)arg1 includeReceiveAliases:(BOOL)arg2;
 + (id)allMailboxUids;
 + (BOOL)canMoveMessagesFromAccount:(id)arg1 toAccount:(id)arg2;
@@ -229,6 +230,7 @@
 - (BOOL)isHostnameEquivalentTo:(id)arg1;
 - (BOOL)isMailboxLocalForType:(int)arg1;
 - (BOOL)isPrimaryDeliveryAccountDisabled;
+- (BOOL)isSpecialMailbox:(id)arg1;
 - (BOOL)isUsernameEquivalentTo:(id)arg1;
 - (id)lastEmailAliasesSyncDate;
 - (id)library;
@@ -241,6 +243,7 @@
 - (id)mailboxUidForRelativePath:(id)arg1 create:(BOOL)arg2 withOption:(int)arg3;
 - (id)mailboxUidForURL:(id)arg1;
 - (id)mailboxUidOfType:(int)arg1 createIfNeeded:(BOOL)arg2;
+- (id)mailboxesForSuggestionsLostMessageSearchPriorToTime:(double)arg1;
 - (id)meetingStorePersistentID;
 - (BOOL)moveMailbox:(id)arg1 intoParent:(id)arg2;
 - (id)moveMessages:(id)arg1 fromMailbox:(id)arg2 toMailbox:(id)arg3 markAsRead:(BOOL)arg4;
@@ -299,7 +302,6 @@
 - (void)setPrimaryDeliveryAccountDisabled:(BOOL)arg1;
 - (void)setReceiveEmailAliasAddresses:(id)arg1;
 - (void)setSigningIdentityPersistentReference:(id)arg1 forAddress:(id)arg2;
-- (void)setUnreadCount:(unsigned long long)arg1 forMailbox:(id)arg2;
 - (void)setUsername:(id)arg1;
 - (void)setValueInAccountLookAsideProperties:(id)arg1 forKey:(id)arg2;
 - (void)setValueInAccountProperties:(id)arg1 forKey:(id)arg2;
@@ -317,7 +319,6 @@
 - (Class)storeClass;
 - (Class)storeClassForMailbox:(id)arg1;
 - (id)storeForMailboxUid:(id)arg1;
-- (id)suggestionsLostMessageSearchOrderWithLimit:(unsigned long long)arg1 wasTruncated:(BOOL *)arg2;
 - (BOOL)supportsAppend;
 - (BOOL)supportsArchiving;
 - (BOOL)supportsContinuationType:(id)arg1;
@@ -325,7 +326,6 @@
 - (BOOL)supportsMailboxEditing;
 - (BOOL)supportsMessageFlagging;
 - (BOOL)supportsPurge;
-- (BOOL)supportsRangeOperations;
 - (BOOL)supportsRemoteAppend;
 - (BOOL)supportsSyncingReadState;
 - (BOOL)supportsThreadOperations;
@@ -337,7 +337,6 @@
 - (void)transferNotificationSessionToAccount:(id)arg1;
 - (id)unactionableInvitationICSRepresentationInMessage:(id)arg1 summary:(id *)arg2;
 - (id)uniqueIdForPersistentConnection;
-- (void)unregisterStore:(id)arg1 forUid:(id)arg2;
 - (id)unsupportedContinuationTypes;
 - (BOOL)updateEmailAliases;
 - (id)valueInAccountLookAsidePropertiesForKey:(id)arg1;

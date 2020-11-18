@@ -23,16 +23,21 @@ __attribute__((visibility("hidden")))
 + (void)determineCloudKitInfoFromEmail:(id)arg1 password:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)primaryAccountInStore:(id)arg1;
 - (void).cxx_destruct;
+- (id)_accountCredentialForAccount:(id)arg1 withError:(id *)arg2;
 - (id)_initWithParentAccount:(id)arg1 inStore:(id)arg2;
 - (id)accountPropertiesForDataclass:(id)arg1;
-- (id)cloudKitAuthToken;
+- (id)cloudKitAuthTokenWithError:(id *)arg1;
 - (BOOL)cloudKitIsEnabled;
 - (BOOL)cloudPhotosIsEnabled;
 - (id)dsid;
-- (id)iCloudAuthToken;
+- (id)fullName;
+- (id)iCloudAuthTokenWithError:(id *)arg1;
 - (BOOL)iCloudDriveAllowsCellularAccess;
 - (id)identifier;
+- (BOOL)isDataclassEnabled:(id)arg1;
 - (id)primaryEmail;
+- (void)updateAccountProperiesInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)username;
 
 @end
 

@@ -13,6 +13,7 @@
 + (id)mf_stringRepresentationForBytes:(long long)arg1;
 + (id)mf_stringWithAttachmentCharacter;
 - (BOOL)mf_caseInsensitiveIsEqualToString:(id)arg1;
+- (BOOL)mf_containsSubstring:(id)arg1;
 - (BOOL)mf_containsSubstring:(id)arg1 options:(unsigned long long)arg2;
 - (id)mf_fileSystemString;
 - (id)mf_stringByAddingPercentEscapesUsingEncoding:(unsigned long long)arg1;
@@ -20,6 +21,7 @@
 - (id)mf_stringByEscapingHTMLCodes;
 - (id)mf_stringByLocalizingReOrFwdPrefix;
 - (id)mf_stringByReplacingPercentEscapesUsingEncoding:(unsigned long long)arg1;
+- (id)mf_stringByTrimmingWhitespaceAndNewlineCharacters;
 - (id)mf_stringWithNoExtraSpaces;
 - (unsigned int)mf_subjectPrefixLength;
 - (id)mf_uniqueFilenameWithRespectToFilenames:(id)arg1;

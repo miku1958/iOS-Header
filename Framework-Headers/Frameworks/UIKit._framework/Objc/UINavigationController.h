@@ -7,14 +7,15 @@
 #import <UIKit/UIViewController.h>
 
 #import <UIKit/UIGestureRecognizerDelegatePrivate-Protocol.h>
-#import <UIKit/UINavigationBarDelegate-Protocol.h>
+#import <UIKit/UILayoutContainerViewDelegate-Protocol.h>
+#import <UIKit/_UINavigationBarDelegatePrivate-Protocol.h>
 
-@class NSArray, NSMapTable, NSString, NSUUID, UIFocusContainerGuide, UIGestureRecognizer, UINavigationBar, UINavigationTransitionView, UIPanGestureRecognizer, UITapGestureRecognizer, UIToolbar, UIView, _UIAnimationCoordinator, _UIBarPanGestureRecognizer, _UIBarTapGestureRecognizer, _UINavigationControllerPalette, _UINavigationInteractiveTransition, _UINavigationParallaxTransition;
+@class NSArray, NSMapTable, NSString, NSUUID, UIFocusContainerGuide, UIGestureRecognizer, UILayoutContainerView, UINavigationBar, UINavigationTransitionView, UIPanGestureRecognizer, UITapGestureRecognizer, UIToolbar, UIView, _UIAnimationCoordinator, _UIBarPanGestureRecognizer, _UIBarTapGestureRecognizer, _UINavigationControllerPalette, _UINavigationInteractiveTransition, _UINavigationParallaxTransition;
 @protocol UINavigationControllerDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning;
 
-@interface UINavigationController : UIViewController <UIGestureRecognizerDelegatePrivate, UINavigationBarDelegate>
+@interface UINavigationController : UIViewController <UIGestureRecognizerDelegatePrivate, _UINavigationBarDelegatePrivate, UILayoutContainerViewDelegate>
 {
-    UIView *_containerView;
+    UILayoutContainerView *_containerView;
     UINavigationBar *_navigationBar;
     Class _navigationBarClass;
     UIToolbar *_toolbar;
@@ -26,7 +27,6 @@
     long long _savedNavBarStyleBeforeSheet;
     long long _savedToolBarStyleBeforeSheet;
     UITapGestureRecognizer *_backGestureRecognizer;
-    NSMapTable *_rememberedFocusedViews;
     _UINavigationControllerPalette *_topPalette;
     _UINavigationControllerPalette *_freePalette;
     _UINavigationControllerPalette *_transitioningTopPalette;
@@ -88,17 +88,24 @@
         unsigned int isWrappingDuringAdaptation:1;
         unsigned int cannotPerformShowViewController:1;
         unsigned int navigationSoundsEnabled:1;
+        unsigned int didSetNeedsFocusInTransition:1;
     } _navigationControllerFlags;
     BOOL _interactiveTransition;
     BOOL _hidesBarsWhenKeyboardAppears;
     BOOL _hidesBarsOnSwipe;
     BOOL _hidesBarsWhenVerticallyCompact;
     BOOL _hidesBarsOnTap;
+    BOOL __shouldUseBuiltinAnimator;
     BOOL __usingBuiltinAnimator;
     BOOL __toolbarAnimationWasCancelled;
     BOOL __navigationBarAnimationWasCancelled;
     Class _toolbarClass;
     double _customNavigationTransitionDuration;
+    NSMapTable *_rememberedFocusedItemsByViewController;
+    long long _builtinTransitionStyle;
+    double _builtinTransitionGap;
+    NSString *__backdropGroupName;
+    long long __preferredNavigationBarPosition;
     id<UIViewControllerAnimatedTransitioning> __transitionController;
     _UINavigationParallaxTransition *__cachedTransitionController;
     id<UIViewControllerInteractiveTransitioning> __interactionController;
@@ -111,9 +118,6 @@
     _UIBarPanGestureRecognizer *__barSwipeHideGesture;
     _UIAnimationCoordinator *__barInteractiveAnimationCoordinator;
     _UIBarTapGestureRecognizer *__barTapHideGesture;
-    long long _builtinTransitionStyle;
-    double _builtinTransitionGap;
-    NSString *__backdropGroupName;
 }
 
 @property (strong, nonatomic, getter=_backdropGroupName, setter=_setBackdropGroupName:) NSString *_backdropGroupName; // @synthesize _backdropGroupName=__backdropGroupName;
@@ -126,6 +130,8 @@
 @property (strong, nonatomic, setter=_setKeyboardAppearedNotificationToken:) id _keyboardAppearedNotificationToken; // @synthesize _keyboardAppearedNotificationToken=__keyboardAppearedNotificationToken;
 @property (strong, nonatomic, setter=_setNavbarAnimationId:) NSUUID *_navbarAnimationId; // @synthesize _navbarAnimationId=__navbarAnimationId;
 @property (nonatomic, setter=_setNavigationBarAnimationWasCancelled:) BOOL _navigationBarAnimationWasCancelled; // @synthesize _navigationBarAnimationWasCancelled=__navigationBarAnimationWasCancelled;
+@property (nonatomic, setter=_setPreferredNavigationBarPosition:) long long _preferredNavigationBarPosition; // @synthesize _preferredNavigationBarPosition=__preferredNavigationBarPosition;
+@property (nonatomic, setter=_setShouldUseBuiltinAnimator:) BOOL _shouldUseBuiltinAnimator; // @synthesize _shouldUseBuiltinAnimator=__shouldUseBuiltinAnimator;
 @property (strong, nonatomic, setter=_setToolbarAnimationId:) NSUUID *_toolbarAnimationId; // @synthesize _toolbarAnimationId=__toolbarAnimationId;
 @property (nonatomic, setter=_setToolbarAnimationWasCancelled:) BOOL _toolbarAnimationWasCancelled; // @synthesize _toolbarAnimationWasCancelled=__toolbarAnimationWasCancelled;
 @property (nonatomic, setter=_setToolbarClass:) Class _toolbarClass; // @synthesize _toolbarClass;
@@ -165,6 +171,7 @@
 @property (nonatomic) BOOL needsDeferredTransition;
 @property (nonatomic) BOOL pretendNavBarHidden;
 @property (readonly, nonatomic) UIViewController *previousViewController;
+@property (readonly, nonatomic, getter=_rememberedFocusedItemsByViewController) NSMapTable *rememberedFocusedItemsByViewController; // @synthesize rememberedFocusedItemsByViewController=_rememberedFocusedItemsByViewController;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIToolbar *toolbar;
 @property (nonatomic, getter=isToolbarHidden) BOOL toolbarHidden;
@@ -219,7 +226,7 @@
 - (id)_findViewControllerToPopTo;
 - (id)_findViewControllerToPopToForNavigationItem:(id)arg1;
 - (void)_finishInteractiveTransition:(double)arg1 transitionContext:(id)arg2;
-- (void)_forgetFocusedViewForViewController:(id)arg1;
+- (void)_forgetFocusedItemForViewController:(id)arg1;
 - (struct CGRect)_frameForContainerViewInSheetForBounds:(struct CGRect)arg1 displayingTopView:(BOOL)arg2 andBottomView:(BOOL)arg3;
 - (struct CGRect)_frameForPalette:(id)arg1;
 - (struct CGRect)_frameForViewController:(id)arg1;
@@ -230,12 +237,16 @@
 - (BOOL)_gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)_gestureRecognizerShouldBegin:(id)arg1;
 - (void)_getRotationContentSettings:(CDStruct_8bdd0ba6 *)arg1;
+- (BOOL)_hasInterruptibleNavigationTransition;
 - (BOOL)_hasNestedNavigationController;
+- (BOOL)_hasPreferredInterfaceOrientationForPresentation;
 - (BOOL)_hasTranslucentNavigationBarIncludingViewController:(id)arg1;
 - (void)_hideForKeyboardAppearance;
 - (void)_hideOrShowBottomBarIfNeededWithTransition:(int)arg1;
 - (void)_hideShowNavigationBarDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)_hideShowToolbarDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
+- (id)_interruptibleNavigationTransitionAnimator;
+- (BOOL)_isAlreadyPoppingNavItem;
 - (BOOL)_isInteractiveCustomNavigationTransition;
 - (BOOL)_isNavigationBarEffectivelyVisible;
 - (BOOL)_isNavigationBarVisible;
@@ -258,6 +269,8 @@
 - (id)_moreListTitle;
 - (BOOL)_navbarIsAppearingInteractively;
 - (void)_navigationBarDidChangeStyle:(id)arg1;
+- (void)_navigationBarDidEndAnimation:(id)arg1;
+- (id)_navigationBarForDragAffordance;
 - (id)_navigationBarForNestedNavigationController;
 - (id)_navigationBarHiddenByDefault:(BOOL)arg1;
 - (id)_navigationItems;
@@ -297,10 +310,10 @@
 - (void)_privateWillShowViewController:(id)arg1;
 - (void)_propagateContentAdjustmentsForControllersWithSharedViews;
 - (BOOL)_reallyWantsFullScreenLayout;
-- (id)_recallRememberedFocusedViewForViewController:(id)arg1;
+- (id)_recallRememberedFocusedItemForViewController:(id)arg1;
 - (void)_releaseContainerViews;
-- (void)_rememberFocusedView:(id)arg1 forViewController:(id)arg2;
-- (void)_rememberPresentingFocusedView:(id)arg1;
+- (void)_rememberFocusedItem:(id)arg1 forViewController:(id)arg2;
+- (void)_rememberPresentingFocusedItem:(id)arg1;
 - (void)_repositionPaletteWithNavigationBarHidden:(BOOL)arg1 duration:(double)arg2 shouldUpdateNavigationItems:(BOOL)arg3;
 - (void)_resetBottomBarHiddenState;
 - (id)_screenEdgePanGestureRecognizer;
@@ -361,6 +374,8 @@
 - (void)_startPaletteTransitionIfNecessary:(id)arg1 animated:(BOOL)arg2;
 - (void)_startToolbarTransitionIfNecessary:(id)arg1 animated:(BOOL)arg2;
 - (void)_startTransition:(int)arg1 fromViewController:(id)arg2 toViewController:(id)arg3;
+- (void)_stopTransitionsImmediately;
+- (long long)_subclassPreferredFocusedViewPrioritizationType;
 - (void)_tabBarControllerDidFinishShowingTabBar:(id)arg1 isHidden:(BOOL)arg2;
 - (BOOL)_toolbarIsAnimatingInteractively;
 - (double)_topBarHeight;
@@ -376,8 +391,8 @@
 - (void)_updateInteractivePopGestureEnabledState;
 - (void)_updateInteractiveTransition:(double)arg1;
 - (void)_updateLayoutForStatusBarAndInterfaceOrientation;
-- (void)_updatePaletteBackground;
 - (void)_updatePaletteConstraints;
+- (void)_updatePalettesWithBlock:(CDUnknownBlockType)arg1;
 - (void)_updateScrollViewFromViewController:(id)arg1 toViewController:(id)arg2;
 - (void)_updateToolbarItemsFromViewController:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)_useCrossFadeForGestureHiding;
@@ -385,6 +400,7 @@
 - (BOOL)_useStandardStatusBarHeight;
 - (BOOL)_usesTransitionController;
 - (id)_viewControllerForDisappearCallback;
+- (BOOL)_viewControllerUnderlapsStatusBar;
 - (BOOL)_viewControllerWasSelected;
 - (id)_viewForContentInPopover;
 - (id)_viewsWithDisabledInteractionGivenTransitionContext:(id)arg1;
@@ -398,6 +414,7 @@
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)childViewControllerForStatusBarHidden;
 - (id)childViewControllerForStatusBarStyle;
+- (id)childViewControllerForWhitePointAdaptivityStyle;
 - (void)collapseSecondaryViewController:(id)arg1 forSplitViewController:(id)arg2;
 - (BOOL)condensesBarsOnSwipe;
 - (struct CGSize)contentSizeForViewInPopover;
@@ -419,14 +436,12 @@
 - (id)initWithNavigationBarClass:(Class)arg1 toolbarClass:(Class)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithRootViewController:(id)arg1;
-- (BOOL)isAlreadyPoppingNavItem;
 - (BOOL)isBuiltinTransition;
 - (BOOL)isCustomTransition;
 - (BOOL)isModalInPopover;
 - (BOOL)isShown;
 - (long long)lastOperation;
 - (void)loadView;
-- (void)makeModalViewControllerTopViewController;
 - (long long)modalTransitionStyle;
 - (id)moreListImage;
 - (id)moreListSelectedImage;
@@ -451,6 +466,7 @@
 - (id)popViewControllerWithTransition:(int)arg1;
 - (struct CGSize)preferredContentSize;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
+- (id)preferredFocusEnvironments;
 - (id)preferredFocusedView;
 - (long long)preferredInterfaceOrientationForPresentation;
 - (long long)preferredStatusBarStyle;
@@ -494,6 +510,7 @@
 - (void)viewDidUnload;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (BOOL)wasLastOperationAnimated;
 - (void)willAnimateFirstHalfOfRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;

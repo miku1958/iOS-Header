@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface __CNCallStack : NSObject
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (void)finalize;
-- (int)frameCount;
+- (unsigned int)frameCount;
 - (void **)frames;
 - (unsigned long long)hash;
 - (id)initWithFrames:(void **)arg1 count:(unsigned int)arg2;

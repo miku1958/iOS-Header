@@ -18,6 +18,7 @@
 @property (readonly, nonatomic, getter=isKnownToBeUnsafe) BOOL knownToBeUnsafe;
 @property (readonly, nonatomic, getter=isMalware) BOOL malware;
 @property (readonly, nonatomic, getter=isPhishing) BOOL phishing;
+@property (readonly, nonatomic, getter=isUnwantedSoftware) BOOL unwantedSoftware;
 
 + (BOOL)supportsSecureCoding;
 - (id).cxx_construct;

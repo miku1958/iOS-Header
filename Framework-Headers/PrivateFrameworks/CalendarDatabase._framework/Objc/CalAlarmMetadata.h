@@ -24,9 +24,9 @@
 @property (strong) NSString *summary; // @synthesize summary=_summary;
 
 + (id)metadataWithData:(id)arg1;
+- (void).cxx_destruct;
 - (void)applyToAlarm:(id)arg1;
 - (id)dataRepresentation;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithICSAlarm:(id)arg1;

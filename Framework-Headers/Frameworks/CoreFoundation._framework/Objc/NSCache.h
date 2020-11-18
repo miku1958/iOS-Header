@@ -25,7 +25,6 @@
 - (id)allObjects;
 - (void)dealloc;
 - (BOOL)evictsObjectsWhenApplicationEntersBackground;
-- (void)finalize;
 - (id)init;
 - (unsigned long long)minimumObjectCount;
 - (id)objectForKey:(id)arg1;

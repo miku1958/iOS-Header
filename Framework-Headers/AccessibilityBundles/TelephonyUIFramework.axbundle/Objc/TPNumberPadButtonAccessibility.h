@@ -16,6 +16,7 @@
 - (BOOL)_accessibilityKeyboardKeyAllowsTouchTyping;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
+- (id)accessibilityPath;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 

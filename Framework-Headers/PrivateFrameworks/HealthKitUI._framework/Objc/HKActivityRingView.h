@@ -19,14 +19,21 @@
 @property (strong, nonatomic) HKActivitySummary *activitySummary; // @synthesize activitySummary=_activitySummary;
 @property (nonatomic, getter=_ringInsetPercentage, setter=_setRingInsetPercentage:) double ringInsetPercentage; // @synthesize ringInsetPercentage=_ringInsetPercentage;
 
++ (id)_iconSpriteImage;
 - (void).cxx_destruct;
+- (void)_displayIcons;
 - (double)_ringDiameter;
 - (void)_setActivityRingViewBackgroundColor:(id)arg1;
 - (void)_setActivityRingViewBackgroundTransparent:(BOOL)arg1;
+- (void)_setActivitySummary:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_setRingDiameter:(double)arg1 ringInterspacing:(double)arg2 ringThickness:(double)arg3;
 - (void)_setUpAfterInit;
 - (void)_setUpRingsView;
+- (id)_snapshotImage;
+- (void)_updateAndInterpolateRingsViewDiameterForWidth:(double)arg1 lowerDirective:(id)arg2 higherDirective:(id)arg3;
 - (void)_updateMaskPath;
 - (void)_updateRingsViewDiameter;
+- (void)_updateRingsViewDiameterLegacy;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

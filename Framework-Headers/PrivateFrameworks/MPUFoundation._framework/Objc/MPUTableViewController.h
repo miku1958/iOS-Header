@@ -50,6 +50,7 @@
 - (void)_recreateTableView;
 - (void)_reloadActionRowsAnimated:(BOOL)arg1 skipTableViewUpdates:(BOOL)arg2;
 - (void)_setCellConfigurationClass:(Class)arg1;
+- (long long)_totalNumberOfSections;
 - (void)_updateVisibleCellsForDownloads:(id)arg1 updateAllCells:(BOOL)arg2;
 - (Class)actionCellConfigurationClassForIndexPath:(id)arg1;
 - (Class)cellConfigurationForIndexPath:(id)arg1;

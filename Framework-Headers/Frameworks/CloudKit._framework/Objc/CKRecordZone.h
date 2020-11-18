@@ -9,28 +9,29 @@
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class CKContainerID, CKRecordZoneID, NSData, NSString;
+@class CKContainerID, CKRecordZoneID, CKServerChangeToken, NSData, NSString;
 
 @interface CKRecordZone : NSObject <NSSecureCoding, NSCopying>
 {
     int _deviceCount;
     CKRecordZoneID *_zoneID;
     unsigned long long _capabilities;
-    NSData *_currentServerContinuationToken;
+    CKContainerID *_containerID;
+    CKServerChangeToken *_currentServerChangeToken;
     NSData *_clientChangeToken;
     NSData *_protectionData;
     NSString *_protectionEtag;
     NSString *_previousProtectionEtag;
     long long _assetQuotaUsage;
     long long _metadataQuotaUsage;
-    CKContainerID *_containerID;
 }
 
 @property (nonatomic) long long assetQuotaUsage; // @synthesize assetQuotaUsage=_assetQuotaUsage;
 @property (nonatomic) unsigned long long capabilities; // @synthesize capabilities=_capabilities;
 @property (strong, nonatomic) NSData *clientChangeToken; // @synthesize clientChangeToken=_clientChangeToken;
 @property (copy, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
-@property (strong, nonatomic) NSData *currentServerContinuationToken; // @synthesize currentServerContinuationToken=_currentServerContinuationToken;
+@property (strong, nonatomic) CKServerChangeToken *currentServerChangeToken; // @synthesize currentServerChangeToken=_currentServerChangeToken;
+@property (readonly, nonatomic) NSData *currentServerContinuationToken;
 @property (nonatomic) int deviceCount; // @synthesize deviceCount=_deviceCount;
 @property (nonatomic) long long metadataQuotaUsage; // @synthesize metadataQuotaUsage=_metadataQuotaUsage;
 @property (strong, nonatomic) NSString *previousProtectionEtag; // @synthesize previousProtectionEtag=_previousProtectionEtag;
@@ -43,6 +44,7 @@
 - (void).cxx_destruct;
 - (void)CKAssignToContainerWithID:(id)arg1;
 - (id)CKPropertiesDescription;
+- (id)CKPropertiesToDescribe:(BOOL)arg1;
 - (id)_initZoneWithIdentifier:(id)arg1 capabilities:(unsigned long long)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

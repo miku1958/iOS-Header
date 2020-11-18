@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKDClientContext, NSDate, NSMutableDictionary, NSOperationQueue, NSString;
+@class CKDClientContext, CKDClientProxy, NSDate, NSMutableDictionary, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -14,14 +14,18 @@ __attribute__((visibility("hidden")))
 {
     BOOL _isFinished;
     BOOL _allowsCellularAccess;
+    BOOL _allowsBackgroundNetworking;
+    BOOL _useEncryption;
     CDUnknownBlockType _completionHandler;
     NSMutableDictionary *_completionHandlersByItemID;
+    unsigned long long _lastCompletionHandlerCount;
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_sourceApplicationSecondaryIdentifier;
     NSString *_deviceIdentifier;
     NSDate *_startDate;
     NSDate *_lastRequestDate;
     CKDClientContext *_context;
+    CKDClientProxy *_proxy;
     NSOperationQueue *_operationQueue;
     long long _scope;
     long long _usesBackgroundSession;
@@ -29,6 +33,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_callbackQueue;
 }
 
+@property (nonatomic) BOOL allowsBackgroundNetworking; // @synthesize allowsBackgroundNetworking=_allowsBackgroundNetworking;
 @property (nonatomic) BOOL allowsCellularAccess; // @synthesize allowsCellularAccess=_allowsCellularAccess;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
@@ -36,14 +41,17 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) CKDClientContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 @property (nonatomic) BOOL isFinished; // @synthesize isFinished=_isFinished;
+@property (nonatomic) unsigned long long lastCompletionHandlerCount; // @synthesize lastCompletionHandlerCount=_lastCompletionHandlerCount;
 @property (strong, nonatomic) NSDate *lastRequestDate; // @synthesize lastRequestDate=_lastRequestDate;
 @property (weak, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
+@property (weak, nonatomic) CKDClientProxy *proxy; // @synthesize proxy=_proxy;
 @property (nonatomic) long long qos; // @synthesize qos=_qos;
 @property (nonatomic) long long scope; // @synthesize scope=_scope;
 @property (readonly, nonatomic) BOOL shouldStart;
 @property (strong, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
 @property (strong, nonatomic) NSString *sourceApplicationSecondaryIdentifier; // @synthesize sourceApplicationSecondaryIdentifier=_sourceApplicationSecondaryIdentifier;
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (nonatomic) BOOL useEncryption; // @synthesize useEncryption=_useEncryption;
 @property (nonatomic) long long usesBackgroundSession; // @synthesize usesBackgroundSession=_usesBackgroundSession;
 
 - (void).cxx_destruct;

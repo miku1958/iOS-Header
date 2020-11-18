@@ -22,6 +22,7 @@
     unsigned int _directConnectionFailedCount;
     NSString *_firstPartyServiceName;
     int _interfaceType;
+    int _protocolType;
     unsigned int _requestCount;
     unsigned int _requestFailedCount;
     struct {
@@ -29,6 +30,7 @@
         unsigned int directConnectionCount:1;
         unsigned int directConnectionFailedCount:1;
         unsigned int interfaceType:1;
+        unsigned int protocolType:1;
         unsigned int requestCount:1;
         unsigned int requestFailedCount:1;
     } _has;
@@ -47,12 +49,14 @@
 @property (nonatomic) BOOL hasDirectConnectionFailedCount;
 @property (readonly, nonatomic) BOOL hasFirstPartyServiceName;
 @property (nonatomic) BOOL hasInterfaceType;
+@property (nonatomic) BOOL hasProtocolType;
 @property (nonatomic) BOOL hasRequestCount;
 @property (nonatomic) BOOL hasRequestFailedCount;
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) int interfaceType; // @synthesize interfaceType=_interfaceType;
 @property (readonly, nonatomic) unsigned int *lastByteBuckets;
 @property (readonly, nonatomic) unsigned long long lastByteBucketsCount;
+@property (nonatomic) int protocolType; // @synthesize protocolType=_protocolType;
 @property (nonatomic) unsigned int requestCount; // @synthesize requestCount=_requestCount;
 @property (nonatomic) unsigned int requestFailedCount; // @synthesize requestFailedCount=_requestFailedCount;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
@@ -60,6 +64,7 @@
 @property (readonly, nonatomic) unsigned long long udpRttBucketsCount;
 
 - (int)StringAsInterfaceType:(id)arg1;
+- (int)StringAsProtocolType:(id)arg1;
 - (void)addDirectConnectionFirstByteBuckets:(unsigned int)arg1;
 - (void)addDirectConnectionLastByteBuckets:(unsigned int)arg1;
 - (void)addFirstByteBuckets:(unsigned int)arg1;
@@ -83,6 +88,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (unsigned int)lastByteBucketsAtIndex:(unsigned long long)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)protocolTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setDirectConnectionFirstByteBuckets:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (void)setDirectConnectionLastByteBuckets:(unsigned int *)arg1 count:(unsigned long long)arg2;

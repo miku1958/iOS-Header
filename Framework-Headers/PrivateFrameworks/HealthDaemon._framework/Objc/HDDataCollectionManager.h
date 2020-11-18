@@ -10,63 +10,66 @@
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 #import <HealthDaemon/HDHealthDataCollectionManager-Protocol.h>
 
-@class HDDemoManager, NSDate, NSMutableDictionary, NSMutableSet, NSString;
-@protocol HDDataCollectionManagerDelegate, HDHealthDaemon, OS_dispatch_queue;
+@class HDDemoManager, HDPrimaryProfile, NSDate, NSMutableDictionary, NSString;
+@protocol HDDataCollectionManagerDelegate, OS_dispatch_queue;
 
 @interface HDDataCollectionManager : NSObject <HDDiagnosticObject, HDHealthDaemonReadyObserver, HDHealthDataCollectionManager>
 {
     NSDate *_lastLaunchUpdate;
-    NSMutableSet *_dataCollectors;
-    id<HDHealthDaemon> _healthDaemon;
+    HDPrimaryProfile *_primaryProfile;
     id<HDDataCollectionManagerDelegate> _delegate;
-    NSMutableDictionary *_activeDataClasses;
+    NSMutableDictionary *_dataCollectorsByType;
+    NSMutableDictionary *_observersByType;
     NSObject<OS_dispatch_queue> *_queue;
     HDDemoManager *_demoManager;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *activeDataClasses; // @synthesize activeDataClasses=_activeDataClasses;
+@property (strong, nonatomic) NSMutableDictionary *dataCollectorsByType; // @synthesize dataCollectorsByType=_dataCollectorsByType;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HDDataCollectionManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) HDDemoManager *demoManager; // @synthesize demoManager=_demoManager;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) id<HDHealthDaemon> healthDaemon; // @synthesize healthDaemon=_healthDaemon;
+@property (strong, nonatomic) NSMutableDictionary *observersByType; // @synthesize observersByType=_observersByType;
+@property (weak, nonatomic) HDPrimaryProfile *primaryProfile; // @synthesize primaryProfile=_primaryProfile;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_activeClassesString;
 - (id)_dataCollectorsDiagnosticDescription;
-- (void)_demoObjectsReceived:(id)arg1;
+- (void)_demoObjectsReceived:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_observersDescription;
 - (void)_queue_addDataCollector:(id)arg1;
-- (void)_queue_addObserver:(id)arg1 collectionInterval:(double)arg2 forType:(id)arg3;
-- (void)_queue_alertCollectorsCollectionStartedForType:(id)arg1;
-- (void)_queue_alertCollectorsCollectionStoppedForType:(id)arg1;
+- (void)_queue_adjustDataCollectionForType:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_queue_alertCollectorsOfTypesWithObservers;
-- (BOOL)_queue_anyObserversExistForTypes:(id)arg1;
-- (double)_queue_collectionIntervalForType:(id)arg1;
+- (CDStruct_fd1107da)_queue_collectionStateForType:(id)arg1;
 - (BOOL)_queue_dataReceived:(id)arg1 provenance:(id)arg2 isDemoData:(BOOL)arg3 error:(id *)arg4;
+- (double)_queue_defaultCollectionIntervalForType:(id)arg1;
 - (id)_queue_demoManagerCreatingIfNecessary;
-- (BOOL)_queue_observersExistForType:(id)arg1;
-- (void)_queue_removeObserver:(id)arg1 forType:(id)arg2;
+- (id)_queue_observerMapForType:(id)arg1;
 - (void)_queue_setupUnprotectedDataDependantState;
-- (void)_queue_updateCollectionPeriodForCollectorsOfType:(id)arg1;
 - (void)_updateDataCollectorsWithPrivacySettings;
+- (void)addDataCollectionObserver:(id)arg1 type:(id)arg2 collectionInterval:(double)arg3 state:(id)arg4;
+- (void)addDataCollector:(id)arg1;
 - (void)daemonReady:(id)arg1;
-- (id)dataCollectors;
+- (void)dataCollectionObserver:(id)arg1 didChangeState:(id)arg2;
 - (void)dealloc;
+- (double)defaultCollectionIntervalForType:(id)arg1;
 - (id)diagnosticDescription;
 - (void)generateFakeDataForActivityType:(long long)arg1 minutes:(double)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)initWithHealthDaemon:(id)arg1 delegate:(id)arg2;
+- (void)immediateUpdateForType:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)initWithPrimaryProfile:(id)arg1 delegate:(id)arg2;
 - (void)periodicUpdate;
+- (void)removeDataCollectionObserver:(id)arg1;
+- (void)removeDataCollectionObserver:(id)arg1 type:(id)arg2;
 - (void)sensorDataArrayReceived:(id)arg1 deviceEntity:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)sensorDataReceived:(id)arg1 deviceEntity:(id)arg2;
-- (void)setDataCollectors:(id)arg1;
 - (void)startDataCollectionForType:(id)arg1 observer:(id)arg2 collectionInterval:(double)arg3;
 - (void)startFakingDataWithActivityType:(long long)arg1 speed:(id)arg2;
 - (void)startFakingWithHKWorkoutActivityType:(unsigned long long)arg1;
 - (void)stopDataCollectionForType:(id)arg1 observer:(id)arg2;
 - (void)stopFakingData;
+- (void)updateCollectionInterval:(double)arg1 type:(id)arg2 observer:(id)arg3;
 
 @end
 

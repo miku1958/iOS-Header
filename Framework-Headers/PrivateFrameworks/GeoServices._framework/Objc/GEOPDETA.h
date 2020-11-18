@@ -11,10 +11,12 @@
 @interface GEOPDETA : PBCodable <NSCopying>
 {
     unsigned int _distance;
+    unsigned int _historicTravelTime;
     unsigned int _time;
     int _transportType;
     struct {
         unsigned int distance:1;
+        unsigned int historicTravelTime:1;
         unsigned int time:1;
         unsigned int transportType:1;
     } _has;
@@ -22,13 +24,16 @@
 
 @property (nonatomic) unsigned int distance; // @synthesize distance=_distance;
 @property (nonatomic) BOOL hasDistance;
+@property (nonatomic) BOOL hasHistoricTravelTime;
 @property (nonatomic) BOOL hasTime;
 @property (nonatomic) BOOL hasTransportType;
+@property (nonatomic) unsigned int historicTravelTime; // @synthesize historicTravelTime=_historicTravelTime;
 @property (nonatomic) unsigned int time; // @synthesize time=_time;
 @property (nonatomic) int transportType; // @synthesize transportType=_transportType;
 
 + (id)etaForPlaceData:(id)arg1 transportType:(int)arg2;
 + (int)recommendedTransportTypeForPlaceData:(id)arg1;
+- (int)StringAsTransportType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -37,6 +42,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)transportTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

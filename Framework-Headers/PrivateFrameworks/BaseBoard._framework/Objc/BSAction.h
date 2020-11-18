@@ -7,13 +7,15 @@
 #import <Foundation/NSObject.h>
 
 #import <BaseBoard/BSDescriptionProviding-Protocol.h>
+#import <BaseBoard/BSInvalidatable-Protocol.h>
 #import <BaseBoard/BSSettingDescriptionProvider-Protocol.h>
 #import <BaseBoard/BSXPCCoding-Protocol.h>
+#import <BaseBoard/NSSecureCoding-Protocol.h>
 
 @class BSActionResponse, BSAuditHistory, BSMachPortReceiveRight, BSMachPortTransferableSendRight, BSPortDeathWatcher, BSSettings, BSTimer, NSString;
 @protocol OS_dispatch_queue;
 
-@interface BSAction : NSObject <BSXPCCoding, BSSettingDescriptionProvider, BSDescriptionProviding>
+@interface BSAction : NSObject <BSXPCCoding, NSSecureCoding, BSSettingDescriptionProvider, BSDescriptionProviding, BSInvalidatable>
 {
     BSSettings *_info;
     BOOL _hasTimeout;
@@ -40,18 +42,24 @@
 @property (readonly, copy, nonatomic) BSSettings *info; // @synthesize info=_info;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (id)_descriptionBuilderWithMultilinePrefix:(id)arg1 safely:(BOOL)arg2;
+- (id)_initWithInfo:(id)arg1 invalidated:(BOOL)arg2 expectsResponse:(BOOL)arg3 auditHistory:(id)arg4 xPort:(id)arg5 xEndpoint:(id)arg6 sendRight:(id)arg7;
 - (void)_queue_addAuditHistoryWithFormat:(id)arg1;
 - (void)_queue_callHandlerWithResponse:(id)arg1;
+- (id)_queue_encodedSendRight;
 - (id)_queue_handlerDescription;
 - (void)_queue_setInvalidatedAndNotify:(BOOL)arg1 errorCode:(long long)arg2;
+- (void)_queue_tryExecuteQueueHandler;
 - (BOOL)canSendResponse;
 - (void)dealloc;
 - (id)debugDescriptionWithMultilinePrefix:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithInfo:(id)arg1 timeout:(double)arg2 forResponseOnQueue:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (id)initWithXPCDictionary:(id)arg1;
 - (void)invalidate;

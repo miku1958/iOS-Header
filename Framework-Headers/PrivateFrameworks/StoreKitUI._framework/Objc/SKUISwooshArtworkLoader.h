@@ -34,6 +34,7 @@
 - (unsigned long long)artworkRequestIdentifierForObject:(id)arg1;
 - (id)cachedImageForObject:(id)arg1;
 - (void)cancelImageLoading;
+- (void)deprioritizePendingImageLoads;
 - (id)initWithArtworkLoader:(id)arg1 swoosh:(id)arg2;
 - (BOOL)loadImageForObject:(id)arg1 URL:(id)arg2 reason:(long long)arg3;
 - (BOOL)loadImageForObject:(id)arg1 artworkRequest:(id)arg2 reason:(long long)arg3;

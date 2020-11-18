@@ -4,19 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
+
+@class MISSING_TYPE;
 
 @interface SCNTextureSource : NSObject
 {
     id _mtlTextureCache;
+    id _glTextureCache;
+    MISSING_TYPE *_size;
 }
 
 - (id)MTLTextureCache;
+- (struct __C3DTexture *)_textureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
 - (void)cleanup:(struct __C3DRendererContext *)arg1;
 - (void)dealloc;
+- (id)glTextureCache;
 - (double)nextFrameTime;
 - (void)renderWithEngineContext:(struct __C3DEngineContext *)arg1 nextFrameTime:(double *)arg2;
+- (void)setGlTextureCache:(id)arg1;
 - (void)setMTLTextureCache:(id)arg1;
+- (void)setSize: /* Error: Ran out of types for this method. */;
+- (MISSING_TYPE *)textureSize;
 - (struct __C3DTexture *)textureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
 
 @end

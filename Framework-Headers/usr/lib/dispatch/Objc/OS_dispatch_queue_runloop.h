@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 + (void)load;
 - (void)_xref_dispose;
+- (id)init;
 
 @end
 

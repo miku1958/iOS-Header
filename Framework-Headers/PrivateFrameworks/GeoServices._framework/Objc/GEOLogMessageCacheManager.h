@@ -6,8 +6,8 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableArray, NSString;
-@protocol OS_dispatch_queue;
+@class NSDate, NSMutableArray, NSString;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface GEOLogMessageCacheManager : NSObject
 {
@@ -22,16 +22,26 @@
     NSObject<OS_dispatch_queue> *_databaseQueue;
     void *_databaseQueueIdentityKey;
     void *_databaseQueueIdentityValue;
+    long long _maxNumberOfLogMessageAllowedInCache;
+    BOOL _encryptionEnabled;
+    NSObject<OS_dispatch_source> *_logMessageCacheTransactionTimer;
+    BOOL _logMessageCacheTransactionPending;
+    long long _pendingLogMessageCount;
 }
 
 @property (readonly) int currentRetrivedLogMessageRetryCount; // @synthesize currentRetrivedLogMessageRetryCount=_currentRetrivedLogMessageRetryCount;
+@property (nonatomic) BOOL encryptionEnabled; // @synthesize encryptionEnabled=_encryptionEnabled;
+@property (nonatomic) NSDate *oldestLogMessageInCache;
 
 - (void)_addRetryCountColumnToTable;
+- (void)_beginLogMessageCacheTransaction;
 - (void)_cleanupLogMessageCacheDatabase;
+- (void)_cleanupPartiallyCreatedLogMessageCacheDBFile;
+- (void)_commitLogMessageCacheTransaction;
 - (void)_createTables;
 - (void)_deleteAllExpiredLogMessages:(double)arg1;
 - (void)_deleteExpiredLogMessageCacheDBFile:(double)arg1;
-- (void)_executeSQL:(id)arg1;
+- (BOOL)_executeSQL:(id)arg1;
 - (long long)_getNumberOfLogMessagesInCache;
 - (id)_groupIDOfNextPendingLogMessage;
 - (BOOL)_logMessageCacheFileExists;
@@ -41,11 +51,16 @@
 - (long long)_queryLogMessageCacheDBUserVersion;
 - (id)_retrieveBatchOfLogMessagesLimitCount:(long long)arg1 limitSize:(long long)arg2;
 - (long long)_retrieveEndLogMessageCacheIterator;
+- (void)_setLogMessageCacheDBJournalMode;
+- (void)_startLogMessageCacheTransactionTimer;
+- (void)_stopLogMessageCacheTransactionTimer;
 - (void)_updateLogMessageCacheDBUserVersion;
 - (BOOL)_usingInMemoryLogMessageCacheFile;
+- (void)beginLogMessageCacheTransaction;
 - (void)closeLogMessageCache;
+- (void)commitLogMessageCacheTransaction;
 - (void)dealloc;
-- (id)initWithLogMessageCacheFilePath:(id)arg1 adaptorId:(id)arg2 fromLogFrameworkAdaptor:(BOOL)arg3;
+- (id)initWithLogMessageCacheFilePath:(id)arg1 maxNumberOfLogMessagesAllowedInCache:(long long)arg2 adaptorId:(id)arg3 fromLogFrameworkAdaptor:(BOOL)arg4;
 - (void)insertLogMessageIntoCache:(id)arg1;
 - (BOOL)isLogMessageCacheEmpty;
 - (void)openLogMessageCache;

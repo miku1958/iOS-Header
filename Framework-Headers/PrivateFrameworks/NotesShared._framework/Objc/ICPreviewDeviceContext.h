@@ -16,6 +16,7 @@
 }
 
 @property (readonly) NSArray *deviceScales;
+@property (readonly) double maxDeviceScale;
 @property (copy) NSArray *nonScalableDeviceInfo; // @synthesize nonScalableDeviceInfo=_nonScalableDeviceInfo;
 @property (copy) NSArray *scalableDeviceInfo; // @synthesize scalableDeviceInfo=_scalableDeviceInfo;
 

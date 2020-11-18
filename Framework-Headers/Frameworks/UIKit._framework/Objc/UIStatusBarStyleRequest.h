@@ -18,8 +18,10 @@
     long long _legibilityStyle;
     UIColor *_foregroundColor;
     NSNumber *_overrideHeight;
+    double _foregroundAlpha;
 }
 
+@property (readonly, nonatomic) double foregroundAlpha; // @synthesize foregroundAlpha=_foregroundAlpha;
 @property (readonly, strong, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 @property (readonly, nonatomic, getter=isLegacy) BOOL legacy; // @synthesize legacy=_legacy;
 @property (readonly, nonatomic) long long legibilityStyle; // @synthesize legibilityStyle=_legibilityStyle;
@@ -32,6 +34,8 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithStyle:(long long)arg1 legacy:(BOOL)arg2 legibilityStyle:(long long)arg3 foregroundColor:(id)arg4;
+- (id)initWithStyle:(long long)arg1 legacy:(BOOL)arg2 legibilityStyle:(long long)arg3 foregroundColor:(id)arg4 foregroundAlpha:(double)arg5;
+- (id)initWithStyle:(long long)arg1 legacy:(BOOL)arg2 legibilityStyle:(long long)arg3 foregroundColor:(id)arg4 foregroundAlpha:(double)arg5 overrideHeight:(id)arg6;
 - (id)initWithStyle:(long long)arg1 legacy:(BOOL)arg2 legibilityStyle:(long long)arg3 foregroundColor:(id)arg4 overrideHeight:(id)arg5;
 - (BOOL)isDoubleHeight;
 - (BOOL)isEqual:(id)arg1;

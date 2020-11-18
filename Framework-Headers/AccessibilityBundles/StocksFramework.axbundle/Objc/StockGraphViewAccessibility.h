@@ -16,7 +16,6 @@
 - (id)_accessibilityChildren;
 - (id)_accessibilityChildrenWithmaxChildrenCount:(int)arg1 frame:(struct CGRect)arg2;
 - (id)_accessibilityNanoChildren;
-- (id)accessibilityChartImageRegionsForStockChart;
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)accessibilityElementCount;
 - (struct CGRect)accessibilityFrame;

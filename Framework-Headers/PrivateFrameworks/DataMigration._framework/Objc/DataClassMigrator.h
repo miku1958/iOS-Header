@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) BOOL shouldPreserveSettingsAfterRestore;
 @property (readonly, nonatomic) BOOL wasPasscodeSetInBackup;
 
++ (id)dataClassMigratorForBundleAtPath:(id)arg1;
 - (void).cxx_destruct;
 - (id)dataClassName;
 - (float)estimatedDuration;

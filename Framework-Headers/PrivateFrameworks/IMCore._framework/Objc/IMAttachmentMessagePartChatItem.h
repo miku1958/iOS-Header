@@ -16,9 +16,10 @@
 
 @property (readonly, copy, nonatomic) NSString *transferGUID; // @synthesize transferGUID=_transferGUID;
 
-- (id)_initWithItem:(id)arg1 text:(id)arg2 index:(long long)arg3 transferGUID:(id)arg4;
+- (void).cxx_destruct;
+- (id)_initWithItem:(id)arg1 text:(id)arg2 index:(long long)arg3 messagePartRange:(struct _NSRange)arg4 transferGUID:(id)arg5;
+- (id)_initWithItem:(id)arg1 text:(id)arg2 index:(long long)arg3 messagePartRange:(struct _NSRange)arg4 transferGUID:(id)arg5 visibleAssociatedMessageChatItems:(id)arg6;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (BOOL)isAttachmentContiguousWithChatItem:(id)arg1;
 

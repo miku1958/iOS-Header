@@ -6,23 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class FAFamilyCircle, NSCache, NSNumber, NSOperationQueue, SKUIClientContext, SSFamilyCircle;
+@class FAFamilyCircle, NSCache, NSNumber, SKUIClientContext, SSFamilyCircle;
 
 @interface SKUIFamilyCircleController : NSObject
 {
+    NSCache *_imageCache;
+    BOOL _hasLoaded;
     SSFamilyCircle *_iTunesFamily;
+    SKUIClientContext *_clientContext;
     FAFamilyCircle *_iCloudFamily;
     NSNumber *_lastAccountID;
-    NSCache *_imageCache;
-    NSOperationQueue *_opQueue;
-    SKUIClientContext *_clientContext;
-    BOOL _hasLoaded;
+    long long _reloadPromptStyle;
 }
 
 @property (strong, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;
 @property (readonly, nonatomic) SSFamilyCircle *familyCircle; // @synthesize familyCircle=_iTunesFamily;
 @property (readonly, nonatomic) BOOL hasLoaded; // @synthesize hasLoaded=_hasLoaded;
 @property (readonly, nonatomic) FAFamilyCircle *iCloudFamily; // @synthesize iCloudFamily=_iCloudFamily;
+@property (strong) NSNumber *lastAccountID; // @synthesize lastAccountID=_lastAccountID;
+@property long long reloadPromptStyle; // @synthesize reloadPromptStyle=_reloadPromptStyle;
 
 + (id)sharedController;
 - (void).cxx_destruct;

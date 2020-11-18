@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/NSXPCListenerDelegate-Protocol.h>
 
@@ -13,8 +13,6 @@
 
 @interface BBDataProviderConnection : NSObject <NSXPCListenerDelegate>
 {
-    NSString *_serviceName;
-    NSString *_bundleID;
     BBDataProviderConnectionResolver *_connectionResolver;
     NSObject<OS_dispatch_queue> *_clientCalloutQueue;
     NSObject<OS_dispatch_queue> *_queue;
@@ -23,14 +21,19 @@
     BOOL _connected;
     NSMutableDictionary *_dataProvidersBySectionID;
     NSMutableDictionary *_parentFactoriesBySectionID;
+    NSString *_serviceName;
+    NSString *_bundleID;
 }
 
+@property (copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property (readonly) Class superclass;
 
 + (void)initialize;
+- (void).cxx_destruct;
 - (id)_addDataProvider:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_invalidate;
 - (id)addDataProvider:(id)arg1;
@@ -38,13 +41,11 @@
 - (void)addParentSectionInfo:(id)arg1 displayName:(id)arg2 icon:(id)arg3;
 - (void)addParentSectionInfo:(id)arg1 displayName:(id)arg2 icon:(id)arg3 universalSectionID:(id)arg4;
 - (void)addParentSectionInfo:(id)arg1 displayName:(id)arg2 icon:(id)arg3 unversalSectionID:(id)arg4;
-- (id)bundleID;
 - (void)dealloc;
 - (id)initWithServiceName:(id)arg1 onQueue:(id)arg2;
 - (void)invalidate;
 - (void)ping:(CDUnknownBlockType)arg1;
 - (void)removeDataProviderWithSectionID:(id)arg1;
-- (id)serviceName;
 - (void)setServerProxy:(id)arg1;
 
 @end

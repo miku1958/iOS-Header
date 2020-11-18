@@ -177,6 +177,7 @@
 - (BOOL)deviceHasSaneNetworkConnection;
 - (id)displayAccount;
 - (id)displayAlias;
+- (void)enablePhoneNumberRegistration;
 - (id)firstAccount;
 - (id)guessedAccountName;
 - (id)guessedAlias;

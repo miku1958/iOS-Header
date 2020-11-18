@@ -7,19 +7,18 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKDRecordCachePool : NSObject
 {
     NSMutableDictionary *_pools;
     NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_source> *_expiryTimer;
+    NSObject<OS_dispatch_queue> *_recordExpiryQueue;
 }
 
-@property (strong, nonatomic) NSObject<OS_dispatch_source> *expiryTimer; // @synthesize expiryTimer=_expiryTimer;
 @property (strong, nonatomic) NSMutableDictionary *pools; // @synthesize pools=_pools;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *recordExpiryQueue; // @synthesize recordExpiryQueue=_recordExpiryQueue;
 
 + (void)performWithClientContext:(id)arg1 scope:(long long)arg2 block:(CDUnknownBlockType)arg3;
 + (id)sharedPool;
@@ -27,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (id)_poolForContext:(id)arg1;
 - (void)_purgeRecordCachesForApplicationContainerPaths:(id)arg1 expiryDate:(id)arg2;
 - (id)acquireCacheWithContext:(id)arg1 scope:(long long)arg2;
-- (void)clearAllCachesForContext:(id)arg1;
 - (id)init;
 - (void)releaseCache:(id)arg1;
 

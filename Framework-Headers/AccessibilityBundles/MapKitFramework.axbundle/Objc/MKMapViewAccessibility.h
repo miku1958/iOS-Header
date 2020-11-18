@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_setCompassVisible:(BOOL)arg1 animated:(BOOL)arg2;
-- (id)accessibilityContainerElements;
+- (id)accessibilityElements;
 - (BOOL)accessibilityScroll:(long long)arg1;
 
 @end

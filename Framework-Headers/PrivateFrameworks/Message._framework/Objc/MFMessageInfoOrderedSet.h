@@ -14,12 +14,14 @@
     NSMutableArray *_mutableMessageInfos;
     NSMutableDictionary *_duplicateMessageInfos;
     CDUnknownBlockType _comparator;
+    CDUnknownBlockType _duplicatePreferenceComparator;
 }
 
 @property (readonly, nonatomic) NSArray *allMessageInfos;
 @property (copy, nonatomic) CDUnknownBlockType comparator; // @synthesize comparator=_comparator;
 @property (readonly, nonatomic) unsigned long long count;
 @property (readonly, nonatomic) unsigned long long countWithDuplicates;
+@property (copy, nonatomic) CDUnknownBlockType duplicatePreferenceComparator; // @synthesize duplicatePreferenceComparator=_duplicatePreferenceComparator;
 @property (readonly, nonatomic) MFMessageInfo *firstMessage;
 @property (readonly, nonatomic) MFMessageInfo *lastMessage;
 @property (readonly, nonatomic) NSArray *uniqueMessageInfos;
@@ -32,9 +34,9 @@
 - (void)dealloc;
 - (id)debugDescription;
 - (id)duplicatesOfMessageInfo:(id)arg1;
+- (void)enumerateUniqueMessageInfosWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (unsigned long long)indexOfMessageInfo:(id)arg1;
 - (unsigned long long)indexWhereMessageInfoWouldBeInserted:(id)arg1;
-- (id)init;
 - (id)initWithComparator:(CDUnknownBlockType)arg1;
 - (id)messageInfoAtIndex:(unsigned long long)arg1;
 - (id)messageInfoEquivalentToMessageInfo:(id)arg1;

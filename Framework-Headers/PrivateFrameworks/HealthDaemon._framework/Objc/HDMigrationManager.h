@@ -9,21 +9,21 @@
 #import <HealthDaemon/HDContentProtectionObserver-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
-@class HDDaemon, NSString;
+@class HDProfile, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDMigrationManager : NSObject <HDContentProtectionObserver, HDHealthDaemonReadyObserver>
 {
     BOOL _needsProtectedDataMigration;
-    HDDaemon *_daemon;
+    HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (weak, nonatomic) HDDaemon *daemon; // @synthesize daemon=_daemon;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL needsProtectedDataMigration; // @synthesize needsProtectedDataMigration=_needsProtectedDataMigration;
+@property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
@@ -32,7 +32,7 @@
 - (void)contentProtectionStateChanged:(long long)arg1 previousState:(long long)arg2;
 - (void)daemonReady:(id)arg1;
 - (void)dealloc;
-- (id)initWithDaemon:(id)arg1;
+- (id)initWithProfile:(id)arg1;
 - (void)performMigrationWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

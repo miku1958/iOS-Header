@@ -29,6 +29,9 @@
     NSData *_passwordReference;
     NSString *_identityDataPassword;
     NEProxySettings *_proxySettings;
+    long long _keychainDomain;
+    NSString *_keychainAccessGroup;
+    NEIdentityKeychainItem *_identity;
     NSUUID *_identifier;
     long long _type;
     NEKeychainItem *_passwordKeychainItem;
@@ -37,9 +40,6 @@
     NSData *_identityDataHash;
     NEKeychainItem *_identityDataPasswordKeychainItem;
     NEDNSSettings *_DNSSettings;
-    long long _keychainDomain;
-    NSString *_keychainAccessGroup;
-    NEIdentityKeychainItem *_identity;
 }
 
 @property (copy) NEDNSSettings *DNSSettings; // @synthesize DNSSettings=_DNSSettings;
@@ -87,6 +87,7 @@
 - (id)initWithProtocolIdentifier:(id)arg1;
 - (id)initWithType:(long long)arg1;
 - (void)migratePasswordsFromPreferences:(struct __SCPreferences *)arg1;
+- (BOOL)needToUpdateKeychain;
 - (void)removeKeychainItemsInDomain:(long long)arg1 keepIdentity:(BOOL)arg2;
 - (BOOL)setServiceProtocolsInService:(struct __SCNetworkService *)arg1;
 - (void)syncWithKeychainInDomain:(long long)arg1 configuration:(id)arg2 suffix:(id)arg3;

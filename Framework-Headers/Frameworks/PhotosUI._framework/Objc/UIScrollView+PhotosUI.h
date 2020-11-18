@@ -22,6 +22,7 @@
 - (void)pu_cancelScrollGesture;
 - (struct CGSize)pu_currentContentSize;
 - (struct CGRect)pu_displayFrameForRect:(struct CGRect)arg1;
+- (BOOL)pu_isScrolledAtEdge:(unsigned int)arg1;
 - (BOOL)pu_isScrolledAtEdge:(unsigned int)arg1 tolerance:(double)arg2;
 - (BOOL)pu_isScrolledBeyondEdge:(unsigned int)arg1;
 - (void)pu_performPageSwipeTest:(id)arg1 iterations:(long long)arg2 numberOfPages:(long long)arg3 scrollAxis:(int)arg4;

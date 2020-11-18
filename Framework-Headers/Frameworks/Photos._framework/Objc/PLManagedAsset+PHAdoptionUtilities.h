@@ -9,6 +9,6 @@
 @interface PLManagedAsset (PHAdoptionUtilities)
 + (id)pl_PHAssetsForManagedAssets:(id)arg1;
 - (id)pl_PHAsset;
-- (id)pl_PHAssetWithPropertyHint:(unsigned long long)arg1;
+- (id)pl_PHAssetWithPropertySets:(id)arg1;
 @end
 

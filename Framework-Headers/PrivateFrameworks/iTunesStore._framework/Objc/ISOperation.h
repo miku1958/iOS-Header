@@ -27,7 +27,7 @@
     id _threadSafeDelegate;
 }
 
-@property id<ISOperationDelegate> delegate;
+@property (weak) id<ISOperationDelegate> delegate;
 @property (strong) NSError *error; // @synthesize error=_error;
 @property (strong) NSRunLoop *operationRunLoop; // @synthesize operationRunLoop=_operationRunLoop;
 @property (strong) ISOperation *parentOperation; // @synthesize parentOperation=_parentOperation;
@@ -41,6 +41,7 @@
 @property (readonly) id threadSafeDelegate;
 @property (readonly) NSString *uniqueKey;
 
+- (void).cxx_destruct;
 - (void)_addSubOperation:(id)arg1;
 - (void)_failAfterException;
 - (void)_keepAliveTimer:(id)arg1;
@@ -54,7 +55,6 @@
 - (BOOL)copyAccountID:(id *)arg1 byAuthenticatingWithContext:(id)arg2 returningError:(id *)arg3;
 - (id)copyActivePowerAssertionIdentifiers;
 - (id)copySerializationLocks;
-- (void)dealloc;
 - (void)dispatchCompletionBlock;
 - (id)init;
 - (BOOL)loadSoftwareMapReturningError:(id *)arg1;

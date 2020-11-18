@@ -23,16 +23,13 @@
 
 + (id)dataProviderWithDataProvider:(id)arg1 serverQueue:(id)arg2;
 + (id)dataProviderWithPrincipalClass:(Class)arg1 serverQueue:(id)arg2 initializationCompletion:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
 - (id)_bulletinsWithRequestParameters:(id)arg1 lastCleared:(id)arg2;
 - (void)_doAsynchronousRemoteRequest:(CDUnknownBlockType)arg1 conditionalOn:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_doSynchronousRemoteRequest:(CDUnknownBlockType)arg1 conditionalOn:(CDUnknownBlockType)arg2;
 - (id)_initWithDataProvider:(id)arg1 sectionID:(id)arg2 serverQueue:(id)arg3 initializationCompletion:(CDUnknownBlockType)arg4;
 - (void)_ping;
 - (void)_watchdogFired;
-- (id)attachmentAspectRatioForRecordID:(id)arg1;
-- (void)attachmentAspectRatioForRecordID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)attachmentPNGDataForRecordID:(id)arg1 sizeConstraints:(id)arg2;
-- (void)attachmentPNGDataForRecordID:(id)arg1 sizeConstraints:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)bulletinsWithRequestParameters:(id)arg1 lastCleared:(id)arg2;
 - (void)bulletinsWithRequestParameters:(id)arg1 lastCleared:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)canPerformMigration;
@@ -43,14 +40,15 @@
 - (void)dataProviderDidLoad;
 - (void)dealloc;
 - (void)deliverMessageWithName:(id)arg1 userInfo:(id)arg2;
-- (void)deliverResponse:(id)arg1 forBulletinRequest:(id)arg2;
+- (void)deliverResponse:(id)arg1 forBulletinRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)getAspectRatioForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
+- (void)getDataForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
+- (void)getPNGDataForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(BOOL)arg3 sizeConstraints:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
 - (id)initWithDataProvider:(id)arg1 serverQueue:(id)arg2;
 - (id)initWithPrincipalClass:(Class)arg1 serverQueue:(id)arg2 initializationCompletion:(CDUnknownBlockType)arg3;
 - (void)invalidate;
 - (BOOL)migrateSectionInfo:(id)arg1 oldSectionInfo:(id)arg2;
 - (void)noteSectionInfoDidChange:(id)arg1;
-- (id)primaryAttachmentDataForRecordID:(id)arg1;
-- (void)primaryAttachmentDataForRecordID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)reloadIdentityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)startWatchdog;
 - (void)updateClearedInfoWithClearedInfo:(id)arg1 handler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -29,12 +29,12 @@
 + (id)sharedInstance;
 - (struct BTAccessoryManagerImpl *)_accessoryManager;
 - (void)_advertisingChanged;
-- (BOOL)_attach:(id)arg1;
+- (BOOL)_attach;
 - (void)_cleanup:(BOOL)arg1;
 - (void)_connectabilityChanged;
 - (void)_connectedStatusChanged;
 - (void)_discoveryStateChanged;
-- (BOOL)_onlySensorsConnected;
+- (void)_pairedStatusChanged;
 - (void)_postNotification:(id)arg1;
 - (void)_postNotificationWithArray:(id)arg1;
 - (void)_powerChanged;

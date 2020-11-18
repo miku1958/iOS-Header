@@ -14,6 +14,7 @@
 {
     BOOL _isFetchCurrentUserOperation;
     BOOL _shouldFetchAssetContent;
+    BOOL _shouldFetchAssetContentInMemory;
     NSArray *_recordIDs;
     NSArray *_desiredKeys;
     NSDictionary *_recordIDsToETags;
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) NSDictionary *recordIDsToVersionETags; // @synthesize recordIDsToVersionETags=_recordIDsToVersionETags;
 @property (nonatomic) unsigned long long requestedTTL; // @synthesize requestedTTL=_requestedTTL;
 @property (nonatomic) BOOL shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
+@property (nonatomic) BOOL shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;
 @property (strong, nonatomic) NSDictionary *signaturesOfAssetsByRecordIDAndKey; // @synthesize signaturesOfAssetsByRecordIDAndKey=_signaturesOfAssetsByRecordIDAndKey;
 @property (strong, nonatomic) NSDictionary *webSharingIdentityDataByRecordID; // @synthesize webSharingIdentityDataByRecordID=_webSharingIdentityDataByRecordID;
 

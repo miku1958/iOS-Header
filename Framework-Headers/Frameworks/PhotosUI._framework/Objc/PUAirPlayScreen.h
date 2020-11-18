@@ -26,19 +26,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic, setter=_setIdentifier:) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) unsigned long long placeholderType;
 @property (strong, nonatomic) UIViewController *rootViewController; // @synthesize rootViewController=_rootViewController;
-@property (strong, nonatomic) UIScreen *screen; // @synthesize screen=_screen;
-@property (nonatomic) struct CGSize size; // @synthesize size=_size;
+@property (strong, nonatomic, setter=_setScreen:) UIScreen *screen; // @synthesize screen=_screen;
+@property (nonatomic, setter=_setSize:) struct CGSize size; // @synthesize size=_size;
 @property (readonly) Class superclass;
-@property (nonatomic) unsigned long long type; // @synthesize type=_type;
+@property (nonatomic, setter=_setType:) unsigned long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
-- (void)_setIdentifier:(id)arg1;
-- (void)_setScreen:(id)arg1;
-- (void)_setSize:(struct CGSize)arg1;
-- (void)_setType:(unsigned long long)arg1;
 - (void)_updateWindow;
 - (void)dealloc;
 - (id)init;

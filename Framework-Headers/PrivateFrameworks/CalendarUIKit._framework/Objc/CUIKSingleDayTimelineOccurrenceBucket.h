@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class CUIKSingleDayTimelineLayoutPartition, NSArray, NSMutableArray;
-@protocol CUIKSingleDayTimelineLayoutScreenUtils, CUIKSingleDayTimelineViewItem;
+@protocol CUIKSingleDayTimelineGeometryDelegate, CUIKSingleDayTimelineLayoutScreenUtils, CUIKSingleDayTimelineViewItem;
 
 @interface CUIKSingleDayTimelineOccurrenceBucket : NSObject
 {
@@ -23,11 +23,13 @@
     BOOL _ignoreLastOccurrenceInFitnessCalculations;
     BOOL _isOnlyBucket;
     CUIKSingleDayTimelineLayoutPartition *_correspondingPartition;
+    id<CUIKSingleDayTimelineGeometryDelegate> _geometryDelegate;
     NSMutableArray *_currentOccurrences;
 }
 
 @property (strong, nonatomic) CUIKSingleDayTimelineLayoutPartition *correspondingPartition; // @synthesize correspondingPartition=_correspondingPartition;
 @property (strong, nonatomic) NSMutableArray *currentOccurrences; // @synthesize currentOccurrences=_currentOccurrences;
+@property (weak) id<CUIKSingleDayTimelineGeometryDelegate> geometryDelegate; // @synthesize geometryDelegate=_geometryDelegate;
 @property (nonatomic) BOOL isOnlyBucket; // @synthesize isOnlyBucket=_isOnlyBucket;
 @property (readonly, nonatomic) NSArray *occurrences;
 
@@ -37,6 +39,7 @@
 - (void)addOccurrenceTemporarilyToEnd:(id)arg1;
 - (id)earliestOccurrence;
 - (id)initWithOccurrences:(id)arg1 correspondingPartition:(id)arg2 screenUtilsDelegate:(id)arg3;
+- (id)initWithOccurrences:(id)arg1 correspondingPartition:(id)arg2 screenUtilsDelegate:(id)arg3 geometryDelegate:(id)arg4;
 - (void)makeTemporaryChangesPermanent;
 - (void)removeOccurrenceAtBeginningTemporarily;
 - (void)removeOccurrenceAtEndTemporarily;

@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) NSString *viewIdentifier;
 
 + (double)defaultAttachmentThumbnailViewHeight;
++ (Class)textAttachmentClassForAttachment:(id)arg1;
 + (BOOL)textAttachmentIsContent:(id)arg1;
 + (id)textAttachmentWithAttachment:(id)arg1;
 + (id)textAttachmentWithIdentifier:(id)arg1;
@@ -39,6 +40,7 @@
 - (Class)attachmentViewClass;
 - (void)fixAttachmentForAttributedString:(id)arg1 range:(struct _NSRange)arg2;
 - (id)initWithAttachment:(id)arg1;
+- (BOOL)isEqualToModelComparable:(id)arg1;
 - (struct UIView *)newlyCreatedView;
 - (struct UIView *)newlyCreatedViewForManualRendering;
 - (BOOL)requiresSpaceAfterAttachmentForPrinting;

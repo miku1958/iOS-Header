@@ -57,8 +57,13 @@
 @property (nonatomic) int responseTime; // @synthesize responseTime=_responseTime;
 @property (strong, nonatomic) NSMutableArray *tileSetUsages; // @synthesize tileSetUsages=_tileSetUsages;
 
++ (Class)tileSetUsageType;
+- (int)StringAsConnectionType:(id)arg1;
+- (int)StringAsNetworkService:(id)arg1;
+- (int)StringAsPlaceRequestType:(id)arg1;
 - (void)addTileSetUsage:(id)arg1;
 - (void)clearTileSetUsages;
+- (id)connectionTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -67,6 +72,8 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)networkServiceAsString:(int)arg1;
+- (id)placeRequestTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)tileSetUsageAtIndex:(unsigned long long)arg1;
 - (unsigned long long)tileSetUsagesCount;

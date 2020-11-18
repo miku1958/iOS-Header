@@ -21,8 +21,16 @@ __attribute__((visibility("hidden")))
     BOOL _shouldPostReturnKeyNotification;
     NSArray *_keyboardOutputs;
     NSString *_primaryLanguage;
+    long long _inputModeListTouchPhase;
+    double _inputModeListTouchBegan;
+    struct CGPoint _inputModeListFromLocation;
+    struct CGPoint _inputModeListUpdatePoint;
 }
 
+@property (nonatomic) struct CGPoint inputModeListFromLocation; // @synthesize inputModeListFromLocation=_inputModeListFromLocation;
+@property (nonatomic) double inputModeListTouchBegan; // @synthesize inputModeListTouchBegan=_inputModeListTouchBegan;
+@property (nonatomic) long long inputModeListTouchPhase; // @synthesize inputModeListTouchPhase=_inputModeListTouchPhase;
+@property (nonatomic) struct CGPoint inputModeListUpdatePoint; // @synthesize inputModeListUpdatePoint=_inputModeListUpdatePoint;
 @property (strong, nonatomic) NSArray *keyboardOutputs; // @synthesize keyboardOutputs=_keyboardOutputs;
 @property (copy, nonatomic) NSString *primaryLanguage; // @synthesize primaryLanguage=_primaryLanguage;
 @property (nonatomic) BOOL requiresInputManagerSync; // @synthesize requiresInputManagerSync=_requiresInputManagerSync;
@@ -43,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (void)insertText:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (void)setInputModeList:(long long)arg1 touchBegan:(double)arg2 fromLocation:(struct CGPoint)arg3 updatePoint:(struct CGPoint)arg4;
 
 @end
 

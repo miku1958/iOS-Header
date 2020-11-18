@@ -16,10 +16,10 @@
     NSString *_title;
 }
 
-@property (strong, nonatomic) NSArray *leftItems; // @synthesize leftItems=_leftItems;
+@property (copy, nonatomic) NSArray *leftItems; // @synthesize leftItems=_leftItems;
 @property (strong, nonatomic) UINavigationItem *navigationItem; // @synthesize navigationItem=_navigationItem;
-@property (strong, nonatomic) NSArray *rightItems; // @synthesize rightItems=_rightItems;
-@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (copy, nonatomic) NSArray *rightItems; // @synthesize rightItems=_rightItems;
+@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
 

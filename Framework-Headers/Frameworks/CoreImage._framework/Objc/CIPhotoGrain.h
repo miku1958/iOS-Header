@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (id)_interpolateGrainKernel;
 - (id)_paddedTileKernel;
 - (id)outputImage;
-- (void)paramtersFor:(float)arg1 destination:(struct GrainParameters *)arg2 imageScaleFactor:(float)arg3;
 
 @end
 

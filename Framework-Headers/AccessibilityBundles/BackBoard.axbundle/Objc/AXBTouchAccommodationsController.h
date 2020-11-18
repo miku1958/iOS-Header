@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import "AXUIClientDelegate-Protocol.h"
 
@@ -27,13 +27,13 @@
 + (void)hideHoldDurationTripleClickHelp;
 + (void)initializeMonitor;
 + (void)showHoldDurationTripleClickHelp;
+- (void).cxx_destruct;
 - (id)_clientIdentifier;
 - (void)_hideHoldDurationTripleClickHelp;
 - (void)_registerForTouchAccommodationsAXSettingsUpdate;
 - (void)_showHoldDurationTripleClickHelp;
 - (void)_updateTouchAccommodationsSetting;
 - (void)connectionWithServiceWasInterruptedForUserInterfaceClient:(id)arg1;
-- (void)dealloc;
 
 @end
 

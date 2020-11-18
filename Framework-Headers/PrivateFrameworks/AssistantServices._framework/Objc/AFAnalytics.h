@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) long long defaultCategoryType; // @synthesize defaultCategoryType=_defaultCategoryType;
 
 + (id)sharedAnalytics;
++ (id)syncAnalytics;
 - (void).cxx_destruct;
 - (id)_service:(BOOL)arg1;
 - (void)_stageEvent:(id)arg1;
@@ -31,6 +32,7 @@
 - (void)logEventWithType:(long long)arg1 contextProvider:(CDUnknownBlockType)arg2 contextProvidingQueue:(id)arg3;
 - (void)logEventWithType:(long long)arg1 machAbsoluteTime:(unsigned long long)arg2 categoryType:(long long)arg3 context:(id)arg4 contextNoCopy:(BOOL)arg5;
 - (void)logEventWithType:(long long)arg1 machAbsoluteTime:(unsigned long long)arg2 categoryType:(long long)arg3 contextProvider:(CDUnknownBlockType)arg4 contextProvidingQueue:(id)arg5;
+- (void)logEventWithType:(long long)arg1 machAbsoluteTime:(unsigned long long)arg2 context:(id)arg3;
 - (void)logEvents:(id)arg1;
 - (void)setService:(id)arg1;
 

@@ -9,11 +9,15 @@
 __attribute__((visibility("hidden")))
 @interface PUImageEditPluginSession : PUEditPluginSession
 {
+    BOOL _allowLivePhotoExtensions;
 }
+
+@property (nonatomic) BOOL allowLivePhotoExtensions; // @synthesize allowLivePhotoExtensions=_allowLivePhotoExtensions;
 
 - (id)imageDataSource;
 - (void)loadItemProviderWithSupportedAdjustmentData:(id)arg1 loadHandler:(CDUnknownBlockType)arg2;
-- (long long)mediaType;
+- (unsigned long long)pluginManagerMediaType;
+- (void)shouldLaunchPlugin:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

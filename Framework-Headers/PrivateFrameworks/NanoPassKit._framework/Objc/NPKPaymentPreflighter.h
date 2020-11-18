@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSSManager, PKPaymentWebService, PUConnection;
+@class NPKCompanionAgentConnection, NSDate, NSSManager, PKPaymentWebService, PUConnection;
 
 @interface NPKPaymentPreflighter : NSObject
 {
@@ -15,9 +15,10 @@
     BOOL _checkedWatchiCloudStatus;
     BOOL _checkedWristDetectionStatus;
     BOOL _authRandomSetIfNecessary;
+    BOOL _watchConnected;
+    BOOL _spaceAvailableOnSecureElement;
     BOOL _needsPasscode;
     BOOL _needsUnlock;
-    BOOL _watchConnected;
     BOOL _needsCompanioniCloudAccount;
     BOOL _needsWatchiCloudAccount;
     BOOL _needsWristDetection;
@@ -26,6 +27,7 @@
     NSSManager *_systemSettingsManager;
     CDUnknownBlockType _preflightCompletionHandler;
     PKPaymentWebService *_webService;
+    NPKCompanionAgentConnection *_companionAgentConnection;
     NSDate *_watchPasscodeAndUnlockedQueryDate;
 }
 
@@ -34,6 +36,7 @@
 @property (nonatomic) BOOL checkedWatchPasscodeAndUnlockedStatus; // @synthesize checkedWatchPasscodeAndUnlockedStatus=_checkedWatchPasscodeAndUnlockedStatus;
 @property (nonatomic) BOOL checkedWatchiCloudStatus; // @synthesize checkedWatchiCloudStatus=_checkedWatchiCloudStatus;
 @property (nonatomic) BOOL checkedWristDetectionStatus; // @synthesize checkedWristDetectionStatus=_checkedWristDetectionStatus;
+@property (strong, nonatomic) NPKCompanionAgentConnection *companionAgentConnection; // @synthesize companionAgentConnection=_companionAgentConnection;
 @property (nonatomic) BOOL needsCompanioniCloudAccount; // @synthesize needsCompanioniCloudAccount=_needsCompanioniCloudAccount;
 @property (nonatomic) BOOL needsPasscode; // @synthesize needsPasscode=_needsPasscode;
 @property (nonatomic) BOOL needsUnlock; // @synthesize needsUnlock=_needsUnlock;
@@ -42,6 +45,7 @@
 @property (strong, nonatomic) PUConnection *passcodeConnection; // @synthesize passcodeConnection=_passcodeConnection;
 @property (copy, nonatomic) CDUnknownBlockType preflightCompletionHandler; // @synthesize preflightCompletionHandler=_preflightCompletionHandler;
 @property (nonatomic, getter=isPreflighting) BOOL preflighting; // @synthesize preflighting=_preflighting;
+@property (nonatomic) BOOL spaceAvailableOnSecureElement; // @synthesize spaceAvailableOnSecureElement=_spaceAvailableOnSecureElement;
 @property (strong, nonatomic) NSSManager *systemSettingsManager; // @synthesize systemSettingsManager=_systemSettingsManager;
 @property (nonatomic) BOOL watchConnected; // @synthesize watchConnected=_watchConnected;
 @property (strong, nonatomic) NSDate *watchPasscodeAndUnlockedQueryDate; // @synthesize watchPasscodeAndUnlockedQueryDate=_watchPasscodeAndUnlockedQueryDate;
@@ -50,6 +54,7 @@
 - (void).cxx_destruct;
 - (void)_checkCompanioniCloudAccount;
 - (void)_checkPasscodeEnabledAndUnlockedState;
+- (void)_checkSpaceAvailableOnSecureElement;
 - (void)_checkWatchConnected;
 - (void)_checkWatchiCloudAccount;
 - (void)_checkWristDetectEnabledState;
@@ -63,7 +68,7 @@
 - (id)_errorForWristDetectNeeded;
 - (void)_finishPresentingSetupControllerIfReadyWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (void)_setAuthRandomIfNecessary;
-- (id)initWithWebService:(id)arg1;
+- (id)initWithWebService:(id)arg1 companionAgentConnection:(id)arg2;
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

@@ -36,6 +36,7 @@
 + (id)defaultSource;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)_hasFirstPartyBundleID;
 - (id)_init;
 - (BOOL)_isAppleWatch;
 - (BOOL)_isApplication;

@@ -38,6 +38,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long unreadAlbumsCount;
 
+- (void).cxx_destruct;
 - (BOOL)albumHasFixedOrder:(struct NSObject *)arg1;
 - (short)albumListType;
 - (id)albums;

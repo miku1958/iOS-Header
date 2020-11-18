@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IMDaemonCore/IDSServiceDelegate-Protocol.h>
 
@@ -28,14 +28,19 @@
 - (id)_defaultPairedDevice;
 - (void)_deleteFileAtPath:(id)arg1;
 - (long long)_getCurrentDBVersion;
+- (id)_getDowngradedDBPath;
 - (unsigned long long)_getFileSizeAtPath:(id)arg1;
 - (id)_getTempDBPath;
+- (id)_getTempRecentsPath;
 - (id)_getTruncatedDBPath;
 - (id)_getZippedDBPath;
+- (id)_getZippedRecentsPath;
 - (void)_handleDBVersionResponse:(id)arg1;
 - (void)_handleIncomingDB:(id)arg1;
+- (void)_handleIncomingRecents:(id)arg1;
 - (void)_handleQuickSwitchCompleted:(id)arg1;
 - (void)_handleQuickSwitchInitiateRequest;
+- (void)_handleRecentsRequest;
 - (void)_initiateQuickSwitch;
 - (BOOL)_isPairedDeviceInProxyMode;
 - (void)_notifyPSYDataSent;
@@ -45,7 +50,8 @@
 - (BOOL)_sendIDSFile:(id)arg1 withCommand:(long long)arg2;
 - (BOOL)_sendIDSMessage:(id)arg1;
 - (void)_sendQuickSwitchCompletedWithResult:(BOOL)arg1;
-- (BOOL)_sendZippedFileAtPath:(id)arg1;
+- (void)_sendRecentsRequest;
+- (BOOL)_sendZippedFileAtPath:(id)arg1 withCommand:(long long)arg2;
 - (BOOL)_truncateDBToPath:(id)arg1;
 - (void)dealloc;
 - (void)dummyMethod;

@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoardServices/FBSSystemServiceFacilityClient.h>
+#import <SpringBoardServices/SBSServiceFacilityClient.h>
 
-@interface SBSApplicationClient : FBSSystemServiceFacilityClient
+@interface SBSApplicationClient : SBSServiceFacilityClient
 {
 }
 
-- (void)fetchDynamicApplicationShortcutItemsForBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchRemovabilityForBundleIdentifier:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (id)initWithCalloutQueue:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 calloutQueue:(id)arg2;
-- (void)setRemovalAllowed:(BOOL)arg1 forBundleIdentifier:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
++ (id)serviceFacilityIdentifier;
+- (void)fetchApplicationShortcutItemsOfTypes:(unsigned long long)arg1 forBundleIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)fetchCarApplicationInformationForBundleIdentifier:(id)arg1 inVehicle:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)fetchIconStateForVehicleId:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)fetchRemovabilityForBundleIdentifier:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchWhitePointAdaptivityStyleForDisplayId:(unsigned int)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)resetIconStateForVehicleId:(id)arg1;
+- (void)setIconState:(id)arg1 hiddenIcons:(id)arg2 forVehicleId:(id)arg3;
+- (void)setRemovalAllowed:(BOOL)arg1 forBundleIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)updateDynamicApplicationShortcutItems:(id)arg1 bundleIdentifier:(id)arg2;
 
 @end

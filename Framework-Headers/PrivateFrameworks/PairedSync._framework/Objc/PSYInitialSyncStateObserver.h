@@ -20,6 +20,8 @@
     NSXPCConnection *_connection;
     BOOL _init;
     NSObject<OS_dispatch_queue> *_delegateQueue;
+    int _daemonStartedNotifyToken;
+    int _syncSwitchNotifyToken;
     id<PSYInitialSyncStateObserverDelegate> _delegate;
 }
 
@@ -31,9 +33,9 @@
 
 - (void).cxx_destruct;
 - (void)_handleConnectionInvalidated;
-- (void)_notifyCanRetryFailedRequests;
-- (void)_querySyncState;
 - (void)_queue_initializeIfNotInitialized;
+- (void)_queue_notifyCanRetryFailedRequests;
+- (void)_queue_querySyncState;
 - (void)_queue_updateSyncStates:(id)arg1 notifyDelegateOfChanges:(BOOL)arg2;
 - (void)dealloc;
 - (oneway void)didUpdateSyncForPairingID:(id)arg1;

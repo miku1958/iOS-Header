@@ -82,6 +82,7 @@
 - (void)_switchToFreeViewCamera;
 - (void)_translateTo:(struct CGPoint)arg1;
 - (float)_translationCoef;
+- (void)activateFreeCamera;
 - (void)beginGesture:(id)arg1;
 - (struct SCNVector3)cameraAutomaticTargetPoint;
 - (void)cameraDidChange;
@@ -92,6 +93,7 @@
 - (void)dealloc;
 - (void)endDraggingWithVelocity:(struct CGPoint)arg1;
 - (void)focusNode:(id)arg1;
+- (id)freeCamera;
 - (MISSING_TYPE *)frontVector;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
@@ -105,6 +107,7 @@
 - (void)rotateWithVector:(long long)arg1 mode: /* Error: Ran out of types for this method. */;
 - (void)sceneDidChange;
 - (void)sceneWillChange;
+- (void)setEnableFreeCamera:(BOOL)arg1;
 - (void)setZoomFactor:(double)arg1;
 - (void)translateByX:(float)arg1 Y:(float)arg2 Z:(float)arg3;
 - (void)updateBrowseScaleFactor;

@@ -14,14 +14,11 @@ __attribute__((visibility("hidden")))
     BOOL _playbackDurationDidChange;
 }
 
-@property (nonatomic) BOOL currentPlaybackTimeDidChange; // @synthesize currentPlaybackTimeDidChange=_currentPlaybackTimeDidChange;
+@property (nonatomic, setter=_setCurrentPlaybackTimeDidChange:) BOOL currentPlaybackTimeDidChange; // @synthesize currentPlaybackTimeDidChange=_currentPlaybackTimeDidChange;
 @property (readonly, nonatomic) BOOL hasChanges;
-@property (nonatomic) BOOL playPauseStateDidChange; // @synthesize playPauseStateDidChange=_playPauseStateDidChange;
-@property (nonatomic) BOOL playbackDurationDidChange; // @synthesize playbackDurationDidChange=_playbackDurationDidChange;
+@property (nonatomic, setter=_setPlayPauseStateDidChange:) BOOL playPauseStateDidChange; // @synthesize playPauseStateDidChange=_playPauseStateDidChange;
+@property (nonatomic, setter=_setPlaybackDurationDidChange:) BOOL playbackDurationDidChange; // @synthesize playbackDurationDidChange=_playbackDurationDidChange;
 
-- (void)_setCurrentPlaybackTimeDidChange:(BOOL)arg1;
-- (void)_setPlayPauseStateDidChange:(BOOL)arg1;
-- (void)_setPlaybackDurationDidChange:(BOOL)arg1;
 
 @end
 

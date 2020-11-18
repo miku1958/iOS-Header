@@ -12,7 +12,7 @@
 @interface GKLeaderboard : NSObject
 {
     int _loadingCount;
-    int _lock;
+    struct os_unfair_lock_s _lock;
     long long _timeScope;
     long long _playerScope;
     NSArray *_players;
@@ -34,7 +34,7 @@
 @property (nonatomic) int loadingCount; // @synthesize loadingCount=_loadingCount;
 @property (strong, nonatomic) GKScore *localPlayerScore; // @synthesize localPlayerScore=_localPlayerScore;
 @property (readonly, strong, nonatomic) NSString *localizedTitle; // @dynamic localizedTitle;
-@property (nonatomic) int lock; // @synthesize lock=_lock;
+@property (nonatomic) struct os_unfair_lock_s lock; // @synthesize lock=_lock;
 @property (readonly, nonatomic) unsigned long long maxRange; // @dynamic maxRange;
 @property (readonly, nonatomic) long long overallRank; // @dynamic overallRank;
 @property (readonly, nonatomic) long long overallRankCount; // @dynamic overallRankCount;

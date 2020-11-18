@@ -6,21 +6,27 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDEventTrigger, NSUUID;
+@class HMDEventTrigger, NSString, NSUUID;
 
-@interface HMDEvent : NSObject <NSSecureCoding>
+@interface HMDEvent : NSObject <NSSecureCoding, HMFDumpState>
 {
     HMDEventTrigger *_eventTrigger;
     NSUUID *_uuid;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (weak, nonatomic) HMDEventTrigger *eventTrigger; // @synthesize eventTrigger=_eventTrigger;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

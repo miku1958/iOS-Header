@@ -6,7 +6,6 @@
 
 #import <UIKit/UIViewController.h>
 
-__attribute__((visibility("hidden")))
 @interface UIApplicationRotationFollowingController : UIViewController
 {
     BOOL _sizesWindowToScene;

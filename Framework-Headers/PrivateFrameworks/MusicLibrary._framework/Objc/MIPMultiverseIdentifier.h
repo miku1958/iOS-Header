@@ -46,7 +46,10 @@
 @property (nonatomic) long long sagaId; // @synthesize sagaId=_sagaId;
 @property (nonatomic) long long storeId; // @synthesize storeId=_storeId;
 
++ (Class)libraryIdentifiersType;
 - (void).cxx_destruct;
+- (int)StringAsMediaObjectType:(id)arg1;
+- (int)StringAsMediaType:(id)arg1;
 - (void)addLibraryIdentifiers:(id)arg1;
 - (void)clearLibraryIdentifiers;
 - (void)copyTo:(id)arg1;
@@ -57,6 +60,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)libraryIdentifiersAtIndex:(unsigned long long)arg1;
 - (unsigned long long)libraryIdentifiersCount;
+- (id)mediaObjectTypeAsString:(int)arg1;
+- (id)mediaTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

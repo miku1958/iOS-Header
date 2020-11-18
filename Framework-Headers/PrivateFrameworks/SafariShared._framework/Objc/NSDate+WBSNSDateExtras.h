@@ -11,6 +11,7 @@
 - (BOOL)safari_isInSameDayAsDate:(id)arg1;
 - (BOOL)safari_isInToday;
 - (BOOL)safari_isInclusivelyBetweenDate:(id)arg1 andDate:(id)arg2;
+- (BOOL)safari_isNowOrInRecentPast;
 - (long long)safari_numberOfWeeksUntilDate:(id)arg1;
 - (id)safari_startOfDay;
 @end

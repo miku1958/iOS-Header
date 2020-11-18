@@ -6,38 +6,49 @@
 
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
-@class NSArray, NSDictionary, NSObject;
-@protocol OS_dispatch_group;
+@class NSDictionary, NSMutableArray, NSObject;
+@protocol OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CKDDecryptRecordsOperation : CKDDatabaseOperation
 {
     BOOL _forcePCSDecrypt;
-    CDUnknownBlockType _recordDecryptedBlock;
-    NSArray *_recordsToDecrypt;
+    BOOL _started;
+    BOOL _markedToFinish;
+    NSMutableArray *_outstandingDecryptions;
     NSObject<OS_dispatch_group> *_recordDecryptGroup;
+    NSObject<OS_dispatch_queue> *_recordDecryptQueue;
+    unsigned long long _maxUnwrapAttempts;
     NSDictionary *_webSharingIdentityDataByRecordID;
 }
 
 @property (nonatomic) BOOL forcePCSDecrypt; // @synthesize forcePCSDecrypt=_forcePCSDecrypt;
+@property (getter=isMarkedToFinish) BOOL markedToFinish; // @synthesize markedToFinish=_markedToFinish;
+@property (nonatomic) unsigned long long maxUnwrapAttempts; // @synthesize maxUnwrapAttempts=_maxUnwrapAttempts;
+@property (strong, nonatomic) NSMutableArray *outstandingDecryptions; // @synthesize outstandingDecryptions=_outstandingDecryptions;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *recordDecryptGroup; // @synthesize recordDecryptGroup=_recordDecryptGroup;
-@property (copy, nonatomic) CDUnknownBlockType recordDecryptedBlock; // @synthesize recordDecryptedBlock=_recordDecryptedBlock;
-@property (strong, nonatomic) NSArray *recordsToDecrypt; // @synthesize recordsToDecrypt=_recordsToDecrypt;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *recordDecryptQueue; // @synthesize recordDecryptQueue=_recordDecryptQueue;
+@property (getter=isStarted) BOOL started; // @synthesize started=_started;
 @property (strong, nonatomic) NSDictionary *webSharingIdentityDataByRecordID; // @synthesize webSharingIdentityDataByRecordID=_webSharingIdentityDataByRecordID;
 
 - (void).cxx_destruct;
-- (void)_decryptRecord:(id)arg1;
-- (void)_decryptRecord:(id)arg1 usingWebSharingIdentityData:(id)arg2;
+- (void)_clearProtectionDataForRecordInfo:(id)arg1;
+- (void)_decryptRecordInfo:(id)arg1;
+- (void)_decryptRecordInfo:(id)arg1 usingWebSharingIdentityData:(id)arg2;
+- (id)_decryptRecordPCSForRecord:(id)arg1 usingChainPCS:(id)arg2;
+- (id)_decryptRecordPCSForRecord:(id)arg1 usingSharePCS:(id)arg2;
+- (void)_finishDecryptOperation;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProtectionDataForRecord:(id)arg1;
-- (void)_handleShareProtectionDataForRecord:(id)arg1;
-- (void)_handleZoneProtectionDataForRecord:(id)arg1;
-- (void)_recordWasDecrypted:(id)arg1 withError:(id)arg2;
+- (void)_handleProtectionDataForRecordInfo:(id)arg1;
+- (void)_handleShareProtectionDataForRecordInfo:(id)arg1;
+- (void)_handleZoneProtectionDataForRecordInfo:(id)arg1;
+- (void)_recordInfoWasDecrypted:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)_unwrapAssetKey:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2;
-- (id)_unwrapEncryptedData:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2 forField:(id)arg3;
 - (id)_unwrapEncryptedPropertiesOnRecord:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2;
 - (id)_unwrapPackageAssets:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
+- (void)decryptRecord:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)finishDecryption;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
 - (BOOL)operationShouldBeFlowControlled;

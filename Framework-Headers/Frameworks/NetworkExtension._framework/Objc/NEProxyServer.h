@@ -41,6 +41,7 @@
 - (id)initWithAddress:(id)arg1 port:(long long)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithType:(long long)arg1 address:(id)arg2 port:(long long)arg3;
+- (BOOL)needToUpdateKeychain;
 - (void)removeFromKeychain;
 - (void)syncWithKeychain;
 

@@ -14,7 +14,9 @@
     NSObject<OS_dispatch_queue> *_callOutQueue;
     BOOL _pendingCheckIn;
     BOOL _sentConnect;
+    BOOL _waitingForPing;
     NSObject<OS_dispatch_semaphore> *_checkinSemaphore;
+    NSObject<OS_dispatch_semaphore> *_pingSemaphore;
     id<BKSSystemApplicationClientDelegate> _delegate;
 }
 
@@ -25,7 +27,7 @@
 - (void)_sendMessageOfType:(long long)arg1 packer:(CDUnknownBlockType)arg2;
 - (void)_sendMessageOfType:(long long)arg1 packer:(CDUnknownBlockType)arg2 replyHandler:(CDUnknownBlockType)arg3;
 - (void)_sendMessageOfType:(long long)arg1 packer:(CDUnknownBlockType)arg2 replyHandler:(CDUnknownBlockType)arg3 waitForReply:(BOOL)arg4 waitDuration:(unsigned long long)arg5;
-- (void)checkIn;
+- (void)checkInAndWaitForDataMigration:(BOOL)arg1;
 - (void)connect;
 - (void)dealloc;
 - (void)finishBooting;

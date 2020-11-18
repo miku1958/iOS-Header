@@ -50,6 +50,9 @@
     BOOL _delegateSupportsTargetContentOffset;
     BOOL _delegateSupportsTransitionAutoContentOffsetEnabled;
     BOOL _delegateSupportsDidInvalidateWithContext;
+    BOOL _delegateSupportsAspectRatioForItemAtIndexPath;
+    BOOL _delegateSupportsSectionHeaderHeightForVisualSection;
+    BOOL _delegateSupportsWillPrepareLayout;
     BOOL _usesRenderedStrips;
     NSIndexPath *_reorderingSourceIndexPath;
     NSIndexPath *_reorderingTargetIndexPath;
@@ -65,6 +68,7 @@
     BOOL _transitionZoomingOut;
     BOOL _floatingSectionHeadersEnabled;
     BOOL _usesRenderedStripTopExtendersForTransitions;
+    BOOL _usesAspectItems;
     NSSet *_hiddenItemIndexPaths;
     NSString *_sectionHeaderElementKind;
     double _sectionHeaderHeight;
@@ -93,7 +97,7 @@
     struct UIEdgeInsets _sectionContentInset;
 }
 
-@property (nonatomic) long long columnsPerRow; // @synthesize columnsPerRow=_columnsPerRow;
+@property (nonatomic, setter=_setColumnsPerRow:) long long columnsPerRow; // @synthesize columnsPerRow=_columnsPerRow;
 @property (nonatomic) double cropAmount; // @synthesize cropAmount=_cropAmount;
 @property (nonatomic) long long cropType; // @synthesize cropType=_cropType;
 @property (readonly, copy) NSString *debugDescription;
@@ -136,6 +140,7 @@
 @property (nonatomic) struct CGPoint transitionStartContentOffset; // @synthesize transitionStartContentOffset=_transitionStartContentOffset;
 @property (nonatomic) BOOL transitionZoomingOut; // @synthesize transitionZoomingOut=_transitionZoomingOut;
 @property (weak, nonatomic) id<PUCollectionViewLayoutTransitioningDelegate> transitioningDelegate; // @synthesize transitioningDelegate=_transitioningDelegate;
+@property (nonatomic) BOOL usesAspectItems; // @synthesize usesAspectItems=_usesAspectItems;
 @property (nonatomic) BOOL usesRenderedStripTopExtendersForTransitions; // @synthesize usesRenderedStripTopExtendersForTransitions=_usesRenderedStripTopExtendersForTransitions;
 
 + (Class)invalidationContextClass;
@@ -152,7 +157,7 @@
 - (struct CGPoint)_currentVisibleRectOrigin;
 - (void)_didFinishLayoutTransitionAnimations:(BOOL)arg1;
 - (void)_enumerateVisualItemFramesInRect:(struct CGRect)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (double)_finalSectionHeaderHeight;
+- (double)_finalSectionHeaderHeightForSection:(long long)arg1;
 - (long long)_firstVisualItemIndexForRenderedStripIndex:(long long)arg1;
 - (long long)_floatingHeaderVisualSectionForVisibleOrigin:(struct CGPoint)arg1;
 - (struct CGRect)_frameByAdjustingOffScreenEnteringFrame:(struct CGRect)arg1 forRowAtVisualIndexPath:(struct PUSimpleIndexPath)arg2 transitionSectionInfo:(id)arg3 toOrFromGridLayout:(id)arg4 isAppearing:(BOOL)arg5;
@@ -175,7 +180,6 @@
 - (id)_realItemIndexPathClosestToPoint:(struct CGPoint)arg1 inRect:(struct CGRect)arg2 withTest:(CDUnknownBlockType)arg3;
 - (long long)_renderedStripIndexForSectionRowIndex:(long long)arg1;
 - (double)_sectionWidth;
-- (void)_setColumnsPerRow:(long long)arg1;
 - (double)_startYOfContentAtVisualSectionIndex:(long long)arg1;
 - (double)_startYOfVisualSectionAtIndex:(long long)arg1;
 - (id)_supplementaryViewKinds;
@@ -207,6 +211,7 @@
 - (void)finalizeViewTransitionToSize;
 - (struct CGRect)frameForItemAtGridCoordinates:(struct PUGridCoordinates)arg1 inTransitionSection:(long long)arg2;
 - (struct CGRect)frameForItemAtGridCoordinates:(struct PUGridCoordinates)arg1 inVisualSection:(long long)arg2;
+- (struct CGRect)frameForItemAtGridCoordinates:(struct PUGridCoordinates)arg1 inVisualSection:(long long)arg2 indexPath:(id)arg3;
 - (struct CGRect)frameForSectionHeaderAtVisualSection:(long long)arg1;
 - (struct CGRect)frameForSectionHeaderOfRealItem:(id)arg1;
 - (void)getVisualSectionIndex:(long long *)arg1 visualItemRange:(struct _NSRange *)arg2 forRenderStripAtIndexPath:(id)arg3;

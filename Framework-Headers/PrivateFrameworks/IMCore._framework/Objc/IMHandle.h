@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <IMFoundation/IMDirectlyObservableObject.h>
+#import <objc/NSObject.h>
 
 #import <IMCore/NSCoding-Protocol.h>
 
 @class IMAccount, IMPerson, IMServiceImpl, NSArray, NSAttributedString, NSData, NSDate, NSDictionary, NSMutableArray, NSSet, NSString, NSURL;
 
-@interface IMHandle : IMDirectlyObservableObject <NSCoding>
+@interface IMHandle : NSObject <NSCoding>
 {
     NSString *_guid;
     IMAccount *_account;
@@ -70,6 +70,7 @@
     int _addressBookIdentifier;
     int _notificationQueueCount;
     NSURL *_statusMessageURL;
+    NSString *_suggestedName;
 }
 
 @property (readonly, strong, nonatomic) NSString *ID; // @synthesize ID=_id;
@@ -89,7 +90,7 @@
 @property (readonly, nonatomic) BOOL canBeAdded;
 @property (readonly, nonatomic) BOOL canBeDeleted;
 @property (readonly, nonatomic) unsigned long long capabilities;
-@property (strong, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
+@property (strong, nonatomic, setter=_setCountryCode:) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property (strong, nonatomic) NSData *customPictureData;
 @property (readonly, nonatomic) NSArray *dependentIMHandles;
 @property (readonly, strong, nonatomic) NSString *displayID;
@@ -136,7 +137,7 @@
 @property (readonly, strong, nonatomic) NSString *nickname;
 @property (readonly, strong, nonatomic) NSString *normalizedID;
 @property (readonly, strong, nonatomic) NSString *offlineString;
-@property (strong, nonatomic) NSString *originalID; // @synthesize originalID=_uncanonicalID;
+@property (strong, nonatomic, setter=_setOriginalID:) NSString *originalID; // @synthesize originalID=_uncanonicalID;
 @property (strong, nonatomic) NSDictionary *otherServiceIDs; // @synthesize otherServiceIDs=_otherServiceIDs;
 @property (strong, nonatomic, setter=setIMPerson:) IMPerson *person; // @synthesize person=_person;
 @property (readonly, strong, nonatomic) NSData *pictureData; // @synthesize pictureData=_pictureData;
@@ -153,20 +154,25 @@
 @property (readonly, strong, nonatomic) NSString *statusMessage;
 @property (strong, nonatomic) NSURL *statusMessageAsURL; // @synthesize statusMessageAsURL=_statusMessageURL;
 @property (readonly, strong, nonatomic) NSURL *statusURL; // @synthesize statusURL=_statusURL;
-@property (readonly, nonatomic) BOOL supportsARDMuxing;
+@property (strong, nonatomic) NSString *suggestedName; // @synthesize suggestedName=_suggestedName;
 @property (readonly, nonatomic) double timeSinceStatusChanged;
 @property (readonly, nonatomic) double timeSinceWentOffline;
 @property (readonly, strong, nonatomic) NSString *uniqueName; // @synthesize uniqueName=_uniqueName;
 @property (readonly, nonatomic) BOOL watchingIMHandle;
 
 + (void)_loadStatusNames;
++ (void)bestHandlesForPersons:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)bestHandlesForPersons:(id)arg1 useExtendedAsyncLookup:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)bestIMHandleInArray:(id)arg1;
 + (id)filterIMHandlesForAccountSiblings:(id)arg1 onAccount:(id)arg2;
 + (id)filterIMHandlesForBestAccountSiblings:(id)arg1;
++ (void)handlesForPersons:(id)arg1 useBestHandle:(BOOL)arg2 useExtendedAsyncLookup:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 + (id)imHandlesForIMPerson:(id)arg1;
 + (id)nameOfStatus:(unsigned long long)arg1;
 + (BOOL)notificationsEnabled;
 + (void)setNotificationsEnabled:(BOOL)arg1;
++ (void)validHandlesForPersons:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)validHandlesForPersons:(id)arg1 useExtendedAsyncLookup:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_IDWithTrimmedServer;
 - (id)_abPersonCreateIfNeeded;
 - (id)_bestChatSibling;
@@ -185,7 +191,7 @@
 - (BOOL)_isChatSiblingOf:(id)arg1;
 - (BOOL)_isMyIDInList:(id)arg1;
 - (id)_nameForComparisonPreferFirst:(BOOL)arg1;
-- (id)_nameUsingUnique:(BOOL)arg1;
+- (id)_nameWithoutSuggestedName;
 - (void)_postNotification:(id)arg1;
 - (void)_postNotificationName:(id)arg1 userInfo:(id)arg2;
 - (void)_registerForIMPersonPictureChanges;
@@ -198,10 +204,8 @@
 - (void)_setABPersonFirstName:(id)arg1 lastName:(id)arg2;
 - (void)_setBaseFirstName:(id)arg1 lastName:(id)arg2 fullName:(id)arg3;
 - (BOOL)_setCapabilities:(unsigned long long)arg1;
-- (void)_setCountryCode:(id)arg1;
 - (void)_setExtraProperties:(id)arg1;
 - (void)_setIDStatus:(long long)arg1;
-- (void)_setOriginalID:(id)arg1;
 - (void)_setOriginalID:(id)arg1 countryCode:(id)arg2 updateSiblings:(BOOL)arg3;
 - (void)_setOriginalID:(id)arg1 updateSiblings:(BOOL)arg2;
 - (void)_stopRetainingAccount:(id)arg1;
@@ -234,6 +238,7 @@
 - (unsigned long long)hash;
 - (id)imHandleForOtherAccount:(id)arg1;
 - (id)imHandleRegistrarGUID;
+- (id)immediateNameWithNeedsSuggestedNameFetch:(BOOL *)arg1 useSuggestedName:(BOOL)arg2;
 - (id)init;
 - (id)initWithAccount:(id)arg1 ID:(id)arg2;
 - (id)initWithAccount:(id)arg1 ID:(id)arg2 alreadyCanonical:(BOOL)arg3;

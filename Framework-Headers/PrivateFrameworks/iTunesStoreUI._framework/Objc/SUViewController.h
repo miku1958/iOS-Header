@@ -22,7 +22,6 @@
     UIViewController *_footerViewController;
     UIViewController *_inputAccessoryViewController;
     BOOL _isEnteringForeground;
-    BOOL _loading;
     SUViewControllerContext *_memoryPurgeContext;
     NSMutableArray *_operations;
     NSMutableArray *_pendingDialogs;
@@ -32,6 +31,7 @@
     BOOL _shouldInvalidateForMemoryPurge;
     BOOL _showsLibraryButton;
     long long _transitionSafetyCount;
+    BOOL _skLoading;
     BOOL _shouldAdjustContentOffsets;
 }
 
@@ -47,12 +47,12 @@
 @property (readonly, nonatomic) UIViewController *footerViewController; // @synthesize footerViewController=_footerViewController;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIViewController *inputAccessoryViewController; // @synthesize inputAccessoryViewController=_inputAccessoryViewController;
-@property (nonatomic, getter=isLoading) BOOL loading; // @synthesize loading=_loading;
 @property (readonly, strong, nonatomic) SUNavigationItem *navigationItem; // @dynamic navigationItem;
 @property (nonatomic) BOOL shouldAdjustContentOffsets; // @synthesize shouldAdjustContentOffsets=_shouldAdjustContentOffsets;
 @property (nonatomic) BOOL shouldExcludeFromNavigationHistory; // @synthesize shouldExcludeFromNavigationHistory=_excludeFromNavigationHistory;
 @property (nonatomic) BOOL shouldInvalidateForMemoryPurge; // @synthesize shouldInvalidateForMemoryPurge=_shouldInvalidateForMemoryPurge;
 @property (nonatomic) BOOL showsLibraryButton; // @synthesize showsLibraryButton=_showsLibraryButton;
+@property (nonatomic, getter=isSkLoading) BOOL skLoading; // @synthesize skLoading=_skLoading;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isVisible) BOOL visible;
 @property (readonly, nonatomic, getter=isVisibleAndFrontmost) BOOL visibleAndFrontmost;

@@ -8,21 +8,29 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEOPDReverseGeocodingParameters : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_locations;
     int _placeTypeLimit;
+    BOOL _preserveOriginalLocation;
     struct {
         unsigned int placeTypeLimit:1;
+        unsigned int preserveOriginalLocation:1;
     } _has;
 }
 
 @property (nonatomic) BOOL hasPlaceTypeLimit;
+@property (nonatomic) BOOL hasPreserveOriginalLocation;
 @property (strong, nonatomic) NSMutableArray *locations; // @synthesize locations=_locations;
 @property (nonatomic) int placeTypeLimit; // @synthesize placeTypeLimit=_placeTypeLimit;
+@property (nonatomic) BOOL preserveOriginalLocation; // @synthesize preserveOriginalLocation=_preserveOriginalLocation;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)locationType;
+- (int)StringAsPlaceTypeLimit:(id)arg1;
 - (void)addLocation:(id)arg1;
 - (void)clearLocations;
 - (void)copyTo:(id)arg1;
@@ -35,6 +43,7 @@
 - (id)locationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)locationsCount;
 - (void)mergeFrom:(id)arg1;
+- (id)placeTypeLimitAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

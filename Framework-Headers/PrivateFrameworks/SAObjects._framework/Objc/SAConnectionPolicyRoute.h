@@ -15,6 +15,7 @@
 }
 
 @property (copy, nonatomic) NSString *cname;
+@property (copy, nonatomic) NSString *connectionId;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

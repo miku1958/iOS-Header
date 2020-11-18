@@ -7,15 +7,13 @@
 #import <MediaPlayerUI/MPUNowPlayingTitlesView.h>
 
 #import <MediaPlayerUI/MPUContentSizeCategoryChanging-Protocol.h>
-#import <MediaPlayerUI/SBUIControlCenterControlObserver-Protocol.h>
 
 @class CALayer, NSString;
 @protocol MPUMediaControlsTitlesViewDelegate;
 
-@interface MPUMediaControlsTitlesView : MPUNowPlayingTitlesView <SBUIControlCenterControlObserver, MPUContentSizeCategoryChanging>
+@interface MPUMediaControlsTitlesView : MPUNowPlayingTitlesView <MPUContentSizeCategoryChanging>
 {
-    CALayer *_titleEdgesLayerMask;
-    CALayer *_detailEdgesLayerMask;
+    CALayer *_edgesLayerMask;
     NSString *_appDisplayName;
     BOOL _displayingAppName;
     BOOL _highlighted;
@@ -31,16 +29,16 @@
 @property (readonly, nonatomic) long long mediaControlsStyle; // @synthesize mediaControlsStyle=_mediaControlsStyle;
 @property (readonly) Class superclass;
 
-+ (id)detailTextColorForMediaControlsStyle:(long long)arg1 highlighted:(BOOL)arg2;
 - (void).cxx_destruct;
 - (id)_createEdgesLayerMask;
 - (id)_detailTextAttributes;
+- (BOOL)_isLockScreenMediaControlStyle;
 - (void)_setGlowEnabled:(BOOL)arg1 forLabel:(id)arg2;
 - (id)_titleTextAttributes;
 - (void)_touchControlActivate:(id)arg1;
 - (void)_touchControlDeactivate:(id)arg1;
 - (void)_touchControlTapped:(id)arg1;
-- (void)dealloc;
+- (id)detailTextColorHighlighted:(BOOL)arg1;
 - (id)initWithMediaControlsStyle:(long long)arg1;
 - (void)layoutSubviews;
 - (void)updateNowPlayingAppDisplayName:(id)arg1;

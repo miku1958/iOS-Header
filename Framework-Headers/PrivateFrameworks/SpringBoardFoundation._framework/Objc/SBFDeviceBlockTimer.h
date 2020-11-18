@@ -6,7 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSTimer, SBFDeviceLockController;
+@class NSString, NSTimer;
+@protocol SBFBlockStatusProvider;
 
 @interface SBFDeviceBlockTimer : NSObject
 {
@@ -14,25 +15,22 @@
     CDUnknownBlockType _handler;
     NSString *_titleText;
     NSString *_subtitleText;
-    SBFDeviceLockController *_deviceLockController;
+    id<SBFBlockStatusProvider> _blockStatusProvider;
     NSTimer *_timer;
-    NSString *_cachedLocalizedPlatformName;
 }
 
-@property (copy, nonatomic) NSString *cachedLocalizedPlatformName; // @synthesize cachedLocalizedPlatformName=_cachedLocalizedPlatformName;
-@property (strong, nonatomic) SBFDeviceLockController *deviceLockController; // @synthesize deviceLockController=_deviceLockController;
-@property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
+@property (strong, nonatomic, setter=_setBlockStatusProvider:) id<SBFBlockStatusProvider> blockStatusProvider; // @synthesize blockStatusProvider=_blockStatusProvider;
+@property (nonatomic, getter=_isEnabled, setter=_setEnabled:) BOOL enabled; // @synthesize enabled=_enabled;
 @property (copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 @property (copy, nonatomic) NSString *subtitleText; // @synthesize subtitleText=_subtitleText;
-@property (strong, nonatomic) NSTimer *timer; // @synthesize timer=_timer;
+@property (strong, nonatomic, setter=_setTimer:) NSTimer *timer; // @synthesize timer=_timer;
 @property (copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
 
 - (void).cxx_destruct;
 - (void)_clearTimer;
-- (id)_localizedPlatformName;
 - (void)_scheduleTimerIfNecessaryAndUpdateState;
 - (void)dealloc;
-- (id)initWithDeviceLockController:(id)arg1;
+- (id)initWithDeviceBlockStatusProvider:(id)arg1;
 - (void)invalidate;
 - (void)start;
 

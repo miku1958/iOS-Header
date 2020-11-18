@@ -6,7 +6,7 @@
 
 #import <PhotosUI/PUAssetActionPerformer.h>
 
-@class PUPhotoKitDataSourceManager;
+@class NSArray, PUPhotoKitDataSourceManager;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotoKitActionPerformer : PUAssetActionPerformer
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     PUPhotoKitDataSourceManager *_photoKitDataSourceManager;
 }
 
+@property (readonly, copy, nonatomic) NSArray *assets; // @dynamic assets;
 @property (strong, nonatomic) PUPhotoKitDataSourceManager *photoKitDataSourceManager; // @synthesize photoKitDataSourceManager=_photoKitDataSourceManager;
 
 + (BOOL)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2;
@@ -23,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (id)_photosDataSourceFromDataSourceManager:(id)arg1;
 - (void)forceIncludeAssetsInDataSource;
 - (void)instantlyExcludeAssetsFromDataSource;
-- (void)instantlyInvalidateAssetsInDataSource;
 - (void)stopExcludingAssetsFromDataSource;
 
 @end

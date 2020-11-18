@@ -7,8 +7,9 @@
 #import <CompanionSync/SYSession.h>
 
 @class NSMutableIndexSet, NSObject, _SYCountedSemaphore, _SYMessageTimerTable;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_activity;
 
+__attribute__((visibility("hidden")))
 @interface SYOutgoingBatchSyncSession : SYSession
 {
     NSObject<OS_dispatch_source> *_stateUpdateSource;
@@ -17,11 +18,13 @@
     NSMutableIndexSet *_ackedBatchIndices;
     NSObject<OS_dispatch_queue> *_changeFetcherQueue;
     _SYCountedSemaphore *_changeConcurrencySemaphore;
-    unsigned long long _activity;
+    NSObject<OS_os_activity> *_changeWaitActivity;
+    NSObject<OS_os_activity> *_sessionActivity;
     long long _state;
     BOOL _errorIsLocal;
     BOOL _hasSentEnd;
     _SYMessageTimerTable *_timers;
+    double _sessionStartTime;
     BOOL _canRestart;
     BOOL _canRollback;
     BOOL _cancelled;
@@ -49,11 +52,12 @@
 - (void)_waitForMessageWindow;
 - (BOOL)canRestart;
 - (BOOL)canRollback;
-- (void)cancel;
+- (void)cancelWithError:(id)arg1;
 - (id)initWithService:(id)arg1;
 - (BOOL)isResetSync;
 - (BOOL)isSending;
 - (unsigned long long)protocolVersion;
+- (double)remainingSessionTime;
 - (void)setCanRestart:(BOOL)arg1;
 - (void)setCanRollback:(BOOL)arg1;
 - (void)setState:(long long)arg1;

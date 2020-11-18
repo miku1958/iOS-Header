@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -20,7 +20,7 @@
 @property (readonly, nonatomic) unsigned long long lifecycleState; // @synthesize lifecycleState=_lifecycleState;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 lifecycleState:(unsigned long long)arg2;

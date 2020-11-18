@@ -6,65 +6,70 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, UIFocusGuide, UIImage, UIScrollView, UIView;
-@protocol UIFocusEnvironment;
+@class NSArray, UIFocusGuide, UIImage, UIResponder, UIScrollView, UIView, _UIFocusMapSearchInfo, _UIFocusMovementInfo, _UIFocusedItemInfo;
+@protocol UIFocusEnvironment, UIFocusItem;
 
 @interface UIFocusUpdateContext : NSObject
 {
     BOOL _isValidated;
-    BOOL _shouldUpdateDestinationView;
+    BOOL _shouldUpdateDestinationItem;
+    BOOL _sourceItemMayRemainFocused;
     BOOL _valid;
-    BOOL _forceSourceViewMayRemainFocused;
-    BOOL _requiresDestinationView;
+    BOOL _forceSourceItemMayRemainFocused;
+    BOOL _requiresDestinationItem;
     BOOL _requiresEnvironmentValidation;
-    UIView *_preferredDestinationView;
-    UIView *_destinationView;
+    _UIFocusedItemInfo *_destinationItemInfo;
+    UIResponder *_preferredFocusResponder;
     UIImage *_regionMapSnapshotsVisualRepresentation;
-    unsigned long long _focusHeading;
-    UIFocusGuide *_focusedGuide;
-    long long _focusUpdateType;
-    UIView *_sourceView;
+    _UIFocusedItemInfo *_sourceItemInfo;
+    _UIFocusMovementInfo *_focusMovement;
+    _UIFocusMapSearchInfo *_focusMapSearchInfo;
     id<UIFocusEnvironment> _initialDestinationEnvironment;
     UIScrollView *_commonScrollView;
     NSArray *_regionMapSnapshots;
     double _destinationViewDistanceOffscreen;
-    struct CGVector _focusVelocity;
+    UIFocusGuide *_focusedGuide;
 }
 
 @property (strong, nonatomic, getter=_commonScrollView, setter=_setCommonScrollView:) UIScrollView *commonScrollView; // @synthesize commonScrollView=_commonScrollView;
-@property (readonly, weak, nonatomic, getter=_destinationView) UIView *destinationView; // @synthesize destinationView=_destinationView;
+@property (readonly, weak, nonatomic, getter=_destinationItem) id<UIFocusItem> destinationItem;
+@property (readonly, copy, nonatomic, getter=_destinationItemInfo) _UIFocusedItemInfo *destinationItemInfo; // @synthesize destinationItemInfo=_destinationItemInfo;
 @property (nonatomic, getter=_destinationViewDistanceOffscreen, setter=_setDestinationViewDistanceOffscreen:) double destinationViewDistanceOffscreen; // @synthesize destinationViewDistanceOffscreen=_destinationViewDistanceOffscreen;
-@property (nonatomic) unsigned long long focusHeading; // @synthesize focusHeading=_focusHeading;
-@property (nonatomic, getter=_focusUpdateType, setter=_setFocusUpdateType:) long long focusUpdateType; // @synthesize focusUpdateType=_focusUpdateType;
-@property (readonly, nonatomic, getter=_focusVelocity) struct CGVector focusVelocity; // @synthesize focusVelocity=_focusVelocity;
-@property (readonly, nonatomic, getter=_focusVelocityBasedScaleFactor) double focusVelocityBasedScaleFactor;
+@property (readonly, nonatomic) unsigned long long focusHeading;
+@property (strong, nonatomic, getter=_focusMapSearchInfo, setter=_setFocusMapSearchInfo:) _UIFocusMapSearchInfo *focusMapSearchInfo; // @synthesize focusMapSearchInfo=_focusMapSearchInfo;
+@property (copy, nonatomic, getter=_focusMovement, setter=_setFocusMovement:) _UIFocusMovementInfo *focusMovement; // @synthesize focusMovement=_focusMovement;
+@property (readonly, nonatomic, getter=_focusUpdateType) long long focusUpdateType;
+@property (readonly, nonatomic, getter=_focusVelocity) struct CGVector focusVelocity;
 @property (readonly, weak, nonatomic, getter=_focusedGuide) UIFocusGuide *focusedGuide; // @synthesize focusedGuide=_focusedGuide;
-@property (nonatomic, getter=_forceSourceViewMayRemainFocused, setter=_setForceSourceViewMayRemainFocused:) BOOL forceSourceViewMayRemainFocused; // @synthesize forceSourceViewMayRemainFocused=_forceSourceViewMayRemainFocused;
-@property (weak, nonatomic, getter=_initialDestinationEnvironment, setter=_setInitialDestinationEnvironment:) id<UIFocusEnvironment> initialDestinationEnvironment; // @synthesize initialDestinationEnvironment=_initialDestinationEnvironment;
+@property (nonatomic, getter=_forceSourceItemMayRemainFocused, setter=_setForceSourceItemMayRemainFocused:) BOOL forceSourceItemMayRemainFocused; // @synthesize forceSourceItemMayRemainFocused=_forceSourceItemMayRemainFocused;
+@property (readonly, weak, nonatomic, getter=_initialDestinationEnvironment) id<UIFocusEnvironment> initialDestinationEnvironment; // @synthesize initialDestinationEnvironment=_initialDestinationEnvironment;
+@property (readonly, weak, nonatomic) id<UIFocusItem> nextFocusedItem;
 @property (readonly, weak, nonatomic) UIView *nextFocusedView;
-@property (readonly, weak, nonatomic, getter=_preferredDestinationView) UIView *preferredDestinationView; // @synthesize preferredDestinationView=_preferredDestinationView;
+@property (readonly, weak, nonatomic, getter=_preferredFocusResponder) UIResponder *preferredFocusResponder; // @synthesize preferredFocusResponder=_preferredFocusResponder;
+@property (readonly, weak, nonatomic) id<UIFocusItem> previouslyFocusedItem;
 @property (readonly, weak, nonatomic) UIView *previouslyFocusedView;
 @property (strong, nonatomic, getter=_regionMapSnapshots, setter=_setRegionMapSnapshots:) NSArray *regionMapSnapshots; // @synthesize regionMapSnapshots=_regionMapSnapshots;
 @property (readonly, nonatomic, getter=_regionMapSnapshotsVisualRepresentation) UIImage *regionMapSnapshotsVisualRepresentation; // @synthesize regionMapSnapshotsVisualRepresentation=_regionMapSnapshotsVisualRepresentation;
-@property (nonatomic, getter=_requiresDestinationView, setter=_setRequiresDestinationView:) BOOL requiresDestinationView; // @synthesize requiresDestinationView=_requiresDestinationView;
+@property (nonatomic, getter=_requiresDestinationItem, setter=_setRequiresDestinationItem:) BOOL requiresDestinationItem; // @synthesize requiresDestinationItem=_requiresDestinationItem;
 @property (nonatomic, getter=_requiresEnvironmentValidation, setter=_setRequiresEnvironmentValidation:) BOOL requiresEnvironmentValidation; // @synthesize requiresEnvironmentValidation=_requiresEnvironmentValidation;
-@property (weak, nonatomic, getter=_sourceView, setter=_setSourceView:) UIView *sourceView; // @synthesize sourceView=_sourceView;
+@property (readonly, weak, nonatomic, getter=_sourceItem) id<UIFocusItem> sourceItem;
+@property (copy, nonatomic, getter=_sourceItemInfo, setter=_setSourceItemInfo:) _UIFocusedItemInfo *sourceItemInfo; // @synthesize sourceItemInfo=_sourceItemInfo;
 @property (readonly, nonatomic, getter=_isValid) BOOL valid; // @synthesize valid=_valid;
 
-+ (id)_contextWithSourceView:(id)arg1;
-+ (id)_contextWithSourceView:(id)arg1 focusedContainerGuide:(id)arg2 heading:(unsigned long long)arg3;
-+ (id)_contextWithSourceView:(id)arg1 focusedRegion:(id)arg2 heading:(unsigned long long)arg3;
-+ (id)_contextWithSourceView:(id)arg1 initialDestinationEnvironment:(id)arg2;
++ (id)_contextWithSourceView:(id)arg1 focusedContainerGuide:(id)arg2 movement:(id)arg3;
++ (id)_contextWithSourceView:(id)arg1 focusedRegion:(id)arg2 movement:(id)arg3;
 - (void).cxx_destruct;
 - (void)_didUpdateFocus;
+- (id)_focusMapSnapshotDebugInfoArray;
 - (id)_initWithContext:(id)arg1;
-- (id)_initWithSourceView:(id)arg1 initialDestinationEnvironment:(id)arg2;
-- (id)_overridingDestinationEnvironmentForPreferredDestinationView:(id)arg1 visitedEnvironments:(id)arg2;
+- (id)_initWithSourceItem:(id)arg1 initialDestinationEnvironment:(id)arg2;
+- (id)_initWithSourceItemInfo:(id)arg1 initialDestinationEnvironment:(id)arg2;
+- (id)_overridingDestinationEnvironmentForPreferredDestinationEnvironment:(id)arg1 visitedEnvironments:(id)arg2;
 - (id)_publicRegionMapSnapshots;
-- (void)_setFocusHeading:(unsigned long long)arg1;
-- (void)_setFocusVelocity:(struct CGVector)arg1;
+- (id)_screen;
 - (void)_setFocusedGuide:(id)arg1;
-- (void)_updateDestinationViewIfNeeded;
+- (void)_setInitialDestinationEnvironment:(id)arg1;
+- (void)_updateDestinationItemIfNeeded;
 - (BOOL)_validate;
 - (id)debugQuickLookObject;
 - (id)init;

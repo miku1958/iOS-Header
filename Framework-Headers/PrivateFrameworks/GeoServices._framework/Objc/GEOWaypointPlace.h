@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) BOOL hasCenter;
 @property (strong, nonatomic) NSMutableArray *roadAccessPoints; // @synthesize roadAccessPoints=_roadAccessPoints;
 
++ (Class)roadAccessPointType;
 - (void)addRoadAccessPoint:(id)arg1;
 - (void)clearRoadAccessPoints;
 - (void)copyTo:(id)arg1;

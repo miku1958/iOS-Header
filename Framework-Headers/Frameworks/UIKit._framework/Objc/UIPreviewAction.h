@@ -8,17 +8,18 @@
 
 #import <UIKit/NSCopying-Protocol.h>
 #import <UIKit/UIPreviewActionItem-Protocol.h>
+#import <UIKit/UIPreviewActionItem_Internal-Protocol.h>
 
 @class NSString, UIColor, UIImage;
 
-@interface UIPreviewAction : NSObject <NSCopying, UIPreviewActionItem>
+@interface UIPreviewAction : NSObject <UIPreviewActionItem_Internal, NSCopying, UIPreviewActionItem>
 {
-    NSString *_identifier;
-    CDUnknownBlockType _handler;
-    long long _style;
-    UIImage *_image;
-    UIColor *_color;
     NSString *_title;
+    UIImage *_image;
+    NSString *_identifier;
+    UIColor *_color;
+    long long _style;
+    CDUnknownBlockType _handler;
 }
 
 @property (strong, nonatomic, getter=_color, setter=_setColor:) UIColor *color; // @synthesize color=_color;
@@ -36,8 +37,11 @@
 + (id)_actionWithTitle:(id)arg1 color:(id)arg2 image:(id)arg3 handler:(CDUnknownBlockType)arg4;
 + (id)_actionWithTitle:(id)arg1 style:(long long)arg2 color:(id)arg3 image:(id)arg4 handler:(CDUnknownBlockType)arg5;
 + (id)_actionWithTitle:(id)arg1 style:(long long)arg2 image:(id)arg3 handler:(CDUnknownBlockType)arg4;
++ (id)_checkmarkImage;
 + (id)actionWithTitle:(id)arg1 style:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
+- (id)_effectiveColor;
+- (id)_effectiveImage;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

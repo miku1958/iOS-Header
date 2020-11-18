@@ -21,9 +21,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double duration;
-@property (strong) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (strong, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property (readonly) unsigned long long hash;
-@property (strong) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly) Class superclass;
 
 + (id)rangeByExpandingRange:(id)arg1 direction:(long long)arg2 components:(id)arg3 calendar:(id)arg4;

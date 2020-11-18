@@ -14,14 +14,20 @@
     unsigned int target;
     unsigned int width;
     unsigned int height;
+    unsigned int depth;
     int alphaState;
     int textureOrigin;
     BOOL containsMipmaps;
+    unsigned int mimapLevelCount;
+    unsigned int arrayLength;
 }
 
 @property (readonly) int alphaState; // @synthesize alphaState;
+@property (readonly) unsigned int arrayLength; // @synthesize arrayLength;
 @property (readonly) BOOL containsMipmaps; // @synthesize containsMipmaps;
+@property (readonly) unsigned int depth; // @synthesize depth;
 @property (readonly) unsigned int height; // @synthesize height;
+@property (readonly) unsigned int mimapLevelCount; // @synthesize mimapLevelCount;
 @property (readonly) unsigned int name; // @synthesize name;
 @property (readonly) unsigned int target; // @synthesize target;
 @property (readonly) int textureOrigin; // @synthesize textureOrigin;
@@ -31,6 +37,7 @@
 - (void)dealloc;
 - (id)description;
 - (id)initWithTexture:(id)arg1 textureName:(unsigned int)arg2;
+- (id)initWithTextureTXR:(id)arg1 textureName:(unsigned int)arg2;
 
 @end
 

@@ -30,6 +30,7 @@
     NSString *_guid;
     unsigned long long _numDownloadedElements;
     unsigned long long _numUploadedElements;
+    CalDiagCalendarCollectionSync *_calendarCollectionSyncDiagnostics;
     NSMutableDictionary *_deletedCalendarItems;
     NSArray *_syncActions;
     NSArray *_shareeActions;
@@ -38,7 +39,6 @@
     NSMutableDictionary *_uniqueIdentifierToRecordIDMap;
     NSMutableDictionary *_URLToRecordIDMap;
     NSMutableDictionary *_URLToEtagMap;
-    CalDiagCalendarCollectionSync *_calendarCollectionSyncDiagnostics;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *URLToEtagMap; // @synthesize URLToEtagMap=_URLToEtagMap;

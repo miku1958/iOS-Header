@@ -11,7 +11,7 @@
 #import <FrontBoard/FBUISceneClientDelegate-Protocol.h>
 #import <FrontBoard/FBUISceneClientWorkspace-Protocol.h>
 
-@class FBApplicationProcessLaunchTransaction, FBSceneClientProviderInvalidationAction, FBUISceneClientIdentity, FBWorkspace, NSMutableDictionary, NSString;
+@class FBApplicationProcessLaunchTransaction, FBProcess, FBSceneClientProviderInvalidationAction, FBUISceneClientIdentity, FBWorkspace, NSMutableDictionary, NSString;
 @protocol FBUIProcess;
 
 @interface FBRemoteSceneClientWorkspace : NSObject <FBApplicationProcessLaunchTransactionObserver, FBUISceneClientDelegate, FBUISceneClientWorkspace, FBSceneClientProvider>
@@ -27,7 +27,7 @@
 }
 
 @property (readonly, copy, nonatomic) FBUISceneClientIdentity *clientIdentity; // @synthesize clientIdentity=_clientIdentity;
-@property (readonly, strong, nonatomic) id<FBUIProcess> clientProcess;
+@property (readonly, strong, nonatomic) FBProcess<FBUIProcess> *clientProcess;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

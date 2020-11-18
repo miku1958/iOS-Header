@@ -28,20 +28,18 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)attachmentPNGDataForRecordID:(id)arg1 sizeConstraints:(id)arg2;
 - (id)bulletinsWithRequestParameters:(id)arg1 lastCleared:(id)arg2;
 - (id)clearedInfoForBulletins:(id)arg1 lastClearedInfo:(id)arg2;
 - (void)configure:(id)arg1;
 - (void)configureHomeManager:(id)arg1;
 - (void)cullBulletinsToCount:(unsigned long long)arg1;
 - (id)defaultSectionInfo;
-- (id)defaultSubsectionInfos;
-- (id)displayNameForFilterID:(id)arg1;
-- (id)displayNameForSubsectionID:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)handleBulletinActionResponse:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (void)insertBulletinWithTitle:(id)arg1 message:(id)arg2 recordID:(id)arg3;
-- (void)insertBulletinWithTitle:(id)arg1 message:(id)arg2 recordID:(id)arg3 context:(struct NSDictionary *)arg4;
+- (void)insertBulletinWithTitle:(id)arg1 imageURL:(id)arg2 message:(id)arg3 recordID:(id)arg4 bulletinType:(unsigned long long)arg5 actionURL:(id)arg6 bulletinContext:(struct NSDictionary *)arg7 actionContext:(struct NSDictionary *)arg8;
 - (void)reloadDefaultSectionInfo;
 - (void)removeBulletin:(id)arg1;
 - (void)removeBulletinWithRecordID:(id)arg1;

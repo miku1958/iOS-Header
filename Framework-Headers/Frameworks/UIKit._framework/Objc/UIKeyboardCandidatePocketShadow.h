@@ -4,20 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UICollectionReusableView.h>
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardCandidatePocketShadow : UIView
+@interface UIKeyboardCandidatePocketShadow : UICollectionReusableView
 {
     BOOL _shadowFadesToBottom;
     BOOL _drawsShadow;
+    BOOL _showsInDarkBackground;
 }
 
 @property (nonatomic) BOOL drawsShadow; // @synthesize drawsShadow=_drawsShadow;
 @property (nonatomic) BOOL shadowFadesToBottom; // @synthesize shadowFadesToBottom=_shadowFadesToBottom;
+@property (nonatomic) BOOL showsInDarkBackground; // @synthesize showsInDarkBackground=_showsInDarkBackground;
 
 + (id)leftShadowImage;
 + (double)widthWithShadow:(BOOL)arg1;
+- (void)applyLayoutAttributes:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

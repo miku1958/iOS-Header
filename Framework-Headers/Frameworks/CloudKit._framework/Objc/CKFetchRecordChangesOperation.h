@@ -23,8 +23,6 @@
     NSData *_resultClientChangeTokenData;
     long long _status;
     NSMutableDictionary *_recordErrors;
-    CDUnknownBlockType _shareChangedBlock;
-    CDUnknownBlockType _shareWithIDWasDeletedBlock;
     CDUnknownBlockType _serverChangeTokenFetchedBlock;
     CDUnknownBlockType _changeTokensUpdatedBlock;
 }
@@ -43,8 +41,6 @@
 @property (strong, nonatomic) CKServerChangeToken *resultServerChangeToken; // @synthesize resultServerChangeToken=_resultServerChangeToken;
 @property (nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
 @property (copy, nonatomic) CDUnknownBlockType serverChangeTokenFetchedBlock; // @synthesize serverChangeTokenFetchedBlock=_serverChangeTokenFetchedBlock;
-@property (copy, nonatomic) CDUnknownBlockType shareChangedBlock; // @synthesize shareChangedBlock=_shareChangedBlock;
-@property (copy, nonatomic) CDUnknownBlockType shareWithIDWasDeletedBlock; // @synthesize shareWithIDWasDeletedBlock=_shareWithIDWasDeletedBlock;
 @property (nonatomic) BOOL shouldFetchAssetContents; // @synthesize shouldFetchAssetContents=_shouldFetchAssetContents;
 @property (nonatomic) long long status; // @synthesize status=_status;
 
@@ -53,12 +49,13 @@
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleCompletionCallback:(id)arg1;
 - (void)_handleProgressCallback:(id)arg1;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
 - (long long)changeTypesFromSetCallbacks;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)initWithRecordZoneID:(id)arg1 previousServerChangeToken:(id)arg2;
+- (Class)operationInfoClass;
 - (void)performCKOperation;
 
 @end

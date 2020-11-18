@@ -26,19 +26,15 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=setAirplayScreenAvailable:) BOOL isAirplayScreenAvailable; // @synthesize isAirplayScreenAvailable=_isAirplayScreenAvailable;
 @property (nonatomic, setter=setChromeVisible:) BOOL isChromeVisible; // @synthesize isChromeVisible=_isChromeVisible;
 @property (readonly, nonatomic) unsigned long long mode; // @synthesize mode=_mode;
-@property (nonatomic) BOOL shouldObserveAirplayRoute; // @synthesize shouldObserveAirplayRoute=_shouldObserveAirplayRoute;
+@property (nonatomic, setter=_setShouldObserveAirplayRoute:) BOOL shouldObserveAirplayRoute; // @synthesize shouldObserveAirplayRoute=_shouldObserveAirplayRoute;
 @property (readonly, nonatomic) BOOL shouldPauseWhenAppResignsActive;
 @property (readonly, nonatomic) BOOL shouldRegisterToAirplay;
-@property (nonatomic) BOOL shouldShowAirplayButton; // @synthesize shouldShowAirplayButton=_shouldShowAirplayButton;
-@property (nonatomic) BOOL shouldShowChromeBars; // @synthesize shouldShowChromeBars=_shouldShowChromeBars;
-@property (nonatomic) BOOL shouldShowPlaceholder; // @synthesize shouldShowPlaceholder=_shouldShowPlaceholder;
+@property (nonatomic, setter=_setShouldShowAirplayButton:) BOOL shouldShowAirplayButton; // @synthesize shouldShowAirplayButton=_shouldShowAirplayButton;
+@property (nonatomic, setter=_setShouldShowChromeBars:) BOOL shouldShowChromeBars; // @synthesize shouldShowChromeBars=_shouldShowChromeBars;
+@property (nonatomic, setter=_setShouldShowPlaceholder:) BOOL shouldShowPlaceholder; // @synthesize shouldShowPlaceholder=_shouldShowPlaceholder;
 @property (readonly, nonatomic) BOOL shouldUseChromeBars;
 @property (readonly, nonatomic) BOOL shouldUseTapGesture;
 
-- (void)_setShouldObserveAirplayRoute:(BOOL)arg1;
-- (void)_setShouldShowAirplayButton:(BOOL)arg1;
-- (void)_setShouldShowChromeBars:(BOOL)arg1;
-- (void)_setShouldShowPlaceholder:(BOOL)arg1;
 - (id)init;
 - (id)initWithMode:(unsigned long long)arg1;
 - (id)newSpecChange;

@@ -26,10 +26,10 @@
     long long _certificateType;
     NEVPNIKEv2SecurityAssociationParameters *_IKESecurityAssociationParameters;
     NEVPNIKEv2SecurityAssociationParameters *_childSecurityAssociationParameters;
+    NSString *_pluginType;
     NSArray *_IKESecurityAssociationParametersArray;
     NSArray *_childSecurityAssociationParametersArray;
     NSString *_providerBundleIdentifier;
-    NSString *_pluginType;
 }
 
 @property (readonly) NEVPNIKEv2SecurityAssociationParameters *IKESecurityAssociationParameters; // @synthesize IKESecurityAssociationParameters=_IKESecurityAssociationParameters;

@@ -11,13 +11,13 @@
 
 @protocol SCNPhysicsWorldJSExport <JSExport>
 
+@property (readonly, nonatomic) NSArray *allBehaviors;
 @property id<SCNPhysicsContactDelegate> contactDelegate;
 @property (nonatomic) struct SCNVector3 gravity;
 @property (nonatomic) double speed;
 @property (nonatomic) double timeStep;
 
 - (void)addBehavior:(SCNPhysicsBehavior *)arg1;
-- (NSArray *)allBehaviors;
 - (NSArray *)contactTestBetweenBody:(SCNPhysicsBody *)arg1 andBody:(SCNPhysicsBody *)arg2 options:(NSDictionary *)arg3;
 - (NSArray *)contactTestWithBody:(SCNPhysicsBody *)arg1 options:(NSDictionary *)arg2;
 - (NSArray *)convexSweepTestWithShape:(SCNPhysicsShape *)arg1 fromTransform:(struct SCNMatrix4)arg2 toTransform:(struct SCNMatrix4)arg3 options:(NSDictionary *)arg4;

@@ -14,7 +14,12 @@
 
 @property (nonatomic) BOOL commentChanged;
 @property (readonly, nonatomic) NSDate *lastModifiedParticipationStatus;
+@property (nonatomic) long long participantRole;
+@property (nonatomic) long long participantStatus;
+@property (nonatomic) long long participantType;
 @property (nonatomic) long long pendingStatus;
+@property (readonly, nonatomic) NSDate *proposedStartDate;
+@property (nonatomic) BOOL proposedStartDateChanged;
 @property (nonatomic) BOOL statusChanged;
 
 + (id)attendeeWithEmailAddress:(id)arg1 name:(id)arg2;
@@ -30,12 +35,6 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)lazyLoadRelationForKey:(id)arg1;
 - (id)owner;
-- (long long)participantRole;
-- (long long)participantStatus;
-- (long long)participantType;
-- (void)setParticipantRole:(long long)arg1;
-- (void)setParticipantStatus:(long long)arg1;
-- (void)setParticipantType:(long long)arg1;
 
 @end
 

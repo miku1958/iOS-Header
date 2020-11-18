@@ -14,7 +14,7 @@
 @interface GEOPBTransitLine : PBCodable <GEOTransitNamedItem, NSCopying>
 {
     unsigned long long _muid;
-    CDStruct_43c37391 *_operatingHours;
+    struct GEOPBTransitTimeRange *_operatingHours;
     unsigned long long _operatingHoursCount;
     unsigned long long _operatingHoursSpace;
     GEOPBTransitArtwork *_artwork;
@@ -24,15 +24,19 @@
     unsigned int _lineIndex;
     GEOPBTransitArtwork *_modeArtwork;
     NSString *_nameDisplayString;
+    int _placeDisplayStyle;
     int _preferredDepartureTimeStyle;
     GEOStyleAttributes *_styleAttributes;
     unsigned int _systemIndex;
+    int _transitType;
     struct {
         unsigned int muid:1;
         unsigned int guidanceSnappingType:1;
         unsigned int lineIndex:1;
+        unsigned int placeDisplayStyle:1;
         unsigned int preferredDepartureTimeStyle:1;
         unsigned int systemIndex:1;
+        unsigned int transitType:1;
     } _has;
 }
 
@@ -50,9 +54,11 @@
 @property (nonatomic) BOOL hasMuid;
 @property (nonatomic) BOOL hasMuid;
 @property (readonly, nonatomic) BOOL hasNameDisplayString;
+@property (nonatomic) BOOL hasPlaceDisplayStyle;
 @property (nonatomic) BOOL hasPreferredDepartureTimeStyle;
 @property (readonly, nonatomic) BOOL hasStyleAttributes;
 @property (nonatomic) BOOL hasSystemIndex;
+@property (nonatomic) BOOL hasTransitType;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *lineColor; // @synthesize lineColor=_lineColor;
 @property (nonatomic) unsigned int lineIndex; // @synthesize lineIndex=_lineIndex;
@@ -60,14 +66,19 @@
 @property (nonatomic) unsigned long long muid;
 @property (nonatomic) unsigned long long muid; // @synthesize muid=_muid;
 @property (strong, nonatomic) NSString *nameDisplayString; // @synthesize nameDisplayString=_nameDisplayString;
-@property (readonly, nonatomic) CDStruct_43c37391 *operatingHours;
+@property (readonly, nonatomic) struct GEOPBTransitTimeRange *operatingHours;
 @property (readonly, nonatomic) unsigned long long operatingHoursCount;
+@property (nonatomic) int placeDisplayStyle; // @synthesize placeDisplayStyle=_placeDisplayStyle;
 @property (nonatomic) int preferredDepartureTimeStyle; // @synthesize preferredDepartureTimeStyle=_preferredDepartureTimeStyle;
 @property (strong, nonatomic) GEOStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned int systemIndex; // @synthesize systemIndex=_systemIndex;
+@property (nonatomic) int transitType; // @synthesize transitType=_transitType;
 
-- (void)addOperatingHours:(CDStruct_43c37391)arg1;
+- (int)StringAsGuidanceSnappingType:(id)arg1;
+- (int)StringAsPlaceDisplayStyle:(id)arg1;
+- (int)StringAsPreferredDepartureTimeStyle:(id)arg1;
+- (void)addOperatingHours:(struct GEOPBTransitTimeRange)arg1;
 - (id)bestName;
 - (void)clearOperatingHours;
 - (void)copyTo:(id)arg1;
@@ -75,11 +86,14 @@
 - (void)dealloc;
 - (id)dictionaryRepresentation;
 - (id)geoTransitLineWithSystem:(id)arg1;
+- (id)guidanceSnappingTypeAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
-- (CDStruct_43c37391)operatingHoursAtIndex:(unsigned long long)arg1;
+- (struct GEOPBTransitTimeRange)operatingHoursAtIndex:(unsigned long long)arg1;
+- (id)placeDisplayStyleAsString:(int)arg1;
+- (id)preferredDepartureTimeStyleAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (void)setOperatingHours:(CDStruct_43c37391 *)arg1 count:(unsigned long long)arg2;
+- (void)setOperatingHours:(struct GEOPBTransitTimeRange *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

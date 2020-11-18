@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_createTemporaryView:(id)arg1;
+- (void)_createTemporaryView:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)_flingOrCancelDraggingViewIfNeeded;
 - (void)_longPress:(id)arg1;
 

@@ -22,7 +22,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned int packetsPerBundle; // @synthesize packetsPerBundle;
 @property (readonly) VCAudioPayload *payload; // @synthesize payload;
 
+- (id)description;
 - (id)initWithNetworkBitrate:(unsigned int)arg1 audioBitrate:(unsigned int)arg2 packetsPerBundle:(unsigned int)arg3 payload:(id)arg4;
+- (BOOL)isEqualTo:(id)arg1;
 
 @end
 

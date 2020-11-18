@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoardUIServices/FBSScene.h>
+#import <FrontBoardServices/FBSScene.h>
 
 #import <FrontBoard/FBSSceneDelegate-Protocol.h>
 
@@ -28,7 +28,6 @@
 - (void)attachLayer:(id)arg1;
 - (void)attachSceneContext:(id)arg1;
 - (id)clientSettings;
-- (id)contexts;
 - (void)dealloc;
 - (id)delegate;
 - (void)detachContext:(id)arg1;
@@ -38,6 +37,7 @@
 - (id)fbsDisplay;
 - (id)identifier;
 - (BOOL)invalidateSnapshotWithContext:(id)arg1;
+- (id)layers;
 - (BOOL)performSnapshotWithContext:(id)arg1;
 - (void)scene:(id)arg1 didReceiveActions:(id)arg2;
 - (void)scene:(id)arg1 didUpdateWithDiff:(id)arg2 transitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;

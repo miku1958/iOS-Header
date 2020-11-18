@@ -6,24 +6,26 @@
 
 #import <UIKit/UIView.h>
 
-@class NSURL, SKUIPlayButton, SearchUICardViewController, UILabel;
+@class SFMediaPlayerCardSection, SFPunchout, SKUIPlayButton, SearchUICardViewController, UILabel;
 
 @interface SearchUITrailerView : UIView
 {
     UILabel *_titleLabel;
     SKUIPlayButton *_playButton;
-    NSURL *_url;
+    SFPunchout *_punchout;
     SearchUICardViewController *_controller;
+    SFMediaPlayerCardSection *_section;
 }
 
 @property (weak) SearchUICardViewController *controller; // @synthesize controller=_controller;
 @property (strong) SKUIPlayButton *playButton; // @synthesize playButton=_playButton;
+@property (strong) SFPunchout *punchout; // @synthesize punchout=_punchout;
+@property (strong) SFMediaPlayerCardSection *section; // @synthesize section=_section;
 @property (strong) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property (strong) NSURL *url; // @synthesize url=_url;
 
 - (void).cxx_destruct;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)initWithTitle:(id)arg1 image:(id)arg2 url:(id)arg3 controller:(id)arg4;
+- (id)initWithMediaItem:(id)arg1 controller:(id)arg2 section:(id)arg3;
 - (void)playTrailer;
 
 @end

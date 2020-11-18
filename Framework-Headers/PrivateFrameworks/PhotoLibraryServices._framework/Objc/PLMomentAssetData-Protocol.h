@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotoLibraryServices/NSObject-Protocol.h>
+#import <PhotoLibraryServices/PLMomentRefreshable-Protocol.h>
 
 @class CLLocation, NSData, NSDate, NSObject, NSString;
 @protocol NSCopying, PLMomentAssetData, PLMomentData;
 
-@protocol PLMomentAssetData <NSObject>
+@protocol PLMomentAssetData <PLMomentRefreshable>
 
 @property (readonly, strong, nonatomic) NSString *cloudAssetGUID;
 @property (strong, nonatomic) NSString *customCollectionName;

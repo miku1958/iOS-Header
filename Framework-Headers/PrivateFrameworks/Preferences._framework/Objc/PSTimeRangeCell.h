@@ -6,7 +6,7 @@
 
 #import <Preferences/PSTableCell.h>
 
-@class UILabel;
+@class NSArray, UILabel;
 @protocol PSTimeRangeCellDelegate;
 
 @interface PSTimeRangeCell : PSTableCell
@@ -15,12 +15,14 @@
     UILabel *_toTitle;
     UILabel *_fromTime;
     UILabel *_toTime;
+    NSArray *_constraints;
     id<PSTimeRangeCellDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
 - (void)layoutSubviews;
+- (void)updateConstraints;
 
 @end
 

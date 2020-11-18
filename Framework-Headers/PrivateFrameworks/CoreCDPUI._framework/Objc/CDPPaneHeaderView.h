@@ -11,13 +11,11 @@
 @interface CDPPaneHeaderView : UIView
 {
     BFFPaneHeaderView *_header;
-    BOOL _formPresentation;
 }
 
 @property (readonly, nonatomic) UIView *_header;
 @property (readonly, nonatomic) UILabel *detailTextLabel;
-@property (nonatomic) BOOL formPresentation; // @synthesize formPresentation=_formPresentation;
-@property (readonly, nonatomic) BOOL isTextLabelAlignedByLastBaseline;
+@property (readonly, nonatomic) UILabel *subLabel;
 @property (readonly, nonatomic) UILabel *textLabel;
 
 - (void).cxx_destruct;
@@ -25,6 +23,7 @@
 - (double)innerHeaderMaxY;
 - (void)layoutSubviews;
 - (void)setLayoutMargins:(struct UIEdgeInsets)arg1;
+- (void)setTitleText:(id)arg1;
 
 @end
 

@@ -9,6 +9,5 @@
 @interface UIImage (TPTelephonyUIUtilities)
 + (id)_tpImageNamed:(id)arg1 inBundle:(id)arg2 compatibleWithTraitCollection:(id)arg3;
 + (id)tpImageNamed:(id)arg1 inBundle:(id)arg2;
-+ (id)tpStarkImageNamed:(id)arg1 inBundle:(id)arg2;
 @end
 

@@ -8,13 +8,14 @@
 
 #import <AVConference/VCAudioIOClient-Protocol.h>
 #import <AVConference/VCMediaStreamProtocol-Protocol.h>
+#import <AVConference/VCMediaStreamSyncSource-Protocol.h>
 #import <AVConference/WRMClientDelegate-Protocol.h>
 
-@class AVCMediaStreamConfig, DTMFEventHandler, NSMutableArray, NSString, VCAudioPayload, VCJitterBuffer, WRMClient;
-@protocol OS_dispatch_queue, OS_dispatch_source, VCMediaStreamDelegate;
+@class AVCMediaStreamConfig, DTMFEventHandler, NSMutableArray, NSString, VCAudioPayload, VCAudioTransmitter, VCPacketBundler, WRMClient;
+@protocol OS_dispatch_queue, OS_dispatch_source, VCMediaStreamDelegate, VCMediaStreamSyncSourceDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioStream : NSObject <VCMediaStreamProtocol, WRMClientDelegate, VCAudioIOClient>
+@interface VCAudioStream : NSObject <VCMediaStreamProtocol, WRMClientDelegate, VCAudioIOClient, VCMediaStreamSyncSource>
 {
     int numBufferBytesAvailable;
     NSObject<OS_dispatch_source> *pausedAudioHeartBeat;
@@ -25,11 +26,11 @@ __attribute__((visibility("hidden")))
     double lastRTPTimeoutReportTime;
     double lastRTCPTimeoutReportTime;
     struct tagHANDLE *rtpHandle;
-    char *bundleBuffer;
     unsigned int conferenceID;
     unsigned int lastInputAudioTimeStamp;
     unsigned int lastSentAudioSampleTime;
     unsigned int packetTimeoutCheckCounter;
+    unsigned int awdTime;
     long long sampleRate;
     long long samplesPerFrame;
     struct _opaque_pthread_rwlock_t stateLock;
@@ -40,7 +41,12 @@ __attribute__((visibility("hidden")))
     DTMFEventHandler *dtmfEventHandler;
     WRMClient *wrmClient;
     VCAudioPayload *currentAudioPayload;
-    VCJitterBuffer *vcJitterBuffer;
+    VCAudioPayload *currentDTXPayload;
+    char *lastInputSampleBuffer;
+    BOOL lastIsTalking;
+    struct tagVCAudioReceiver *_audioReceiver;
+    VCAudioTransmitter *audioTransmitter;
+    VCPacketBundler *audioBundler;
     NSString *callID;
     struct opaqueRTCReporting *reportingAgent;
     struct _METER_INFO soundMeter[2];
@@ -49,53 +55,71 @@ __attribute__((visibility("hidden")))
     BOOL isSRTPInitialized;
     BOOL isValid;
     int deviceRole;
+    int operatingMode;
     AVCMediaStreamConfig *streamConfig;
     NSObject<VCMediaStreamDelegate> *delegate;
+    NSObject<VCMediaStreamSyncSourceDelegate> *syncSourceDelegate;
+    struct tagWRMMetricsInfo wrmInfo;
+    unsigned int datagramChannelToken;
 }
 
 @property (readonly) unsigned int conferenceID; // @synthesize conferenceID;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) NSObject<VCMediaStreamDelegate> *delegate; // @synthesize delegate;
 @property (readonly, copy) NSString *description;
-@property int deviceRole; // @synthesize deviceRole;
+@property (nonatomic) int deviceRole; // @synthesize deviceRole;
 @property (readonly) unsigned long long hash;
-@property BOOL isValid; // @synthesize isValid;
+@property (nonatomic) BOOL isValid; // @synthesize isValid;
+@property (nonatomic) int operatingMode; // @synthesize operatingMode;
+@property (nonatomic) int state; // @synthesize state;
 @property (strong, nonatomic) AVCMediaStreamConfig *streamConfig; // @synthesize streamConfig;
 @property (readonly) Class superclass;
+@property (nonatomic) NSObject<VCMediaStreamSyncSourceDelegate> *syncSourceDelegate; // @synthesize syncSourceDelegate;
 
++ (id)capabilities;
 + (BOOL)isSameSRTPKey:(id)arg1 newKey:(id)arg2;
++ (id)supportedAudioPayloads;
 - (unsigned int)AMRModeToBitrate:(long long)arg1;
 - (int)SRTPCipherSuiteForLTECipherSuite:(long long)arg1;
 - (id)addAudioPayload:(int)arg1;
-- (BOOL)allocateBundleBuffer;
+- (BOOL)allocateLastInputSampleBuffer;
+- (int)bundleAndSendSamples:(char *)arg1 numEncodedBytes:(int)arg2 withPayload:(int)arg3 timeStamp:(unsigned int)arg4 voiceActivity:(BOOL)arg5;
 - (BOOL)canProcessAudio;
 - (int)captureMeshMode:(char *)arg1 numBytes:(int)arg2 numSamples:(int)arg3 timeStamp:(unsigned int)arg4 bufferedSamples:(int)arg5 hostTime:(double)arg6 voiceActivity:(BOOL)arg7;
 - (void)checkPacketTimeouts;
 - (BOOL)choosePayload:(int *)arg1 count:(int)arg2;
+- (void)cleanupAudio;
 - (unsigned int)codecTypeFromAudioPayload:(int)arg1;
+- (unsigned int)computePacketTimestampWithInputTimestamp:(unsigned int)arg1 numSamples:(int)arg2 hostTime:(double)arg3;
 - (BOOL)configureAudioStreamWithConfiguration:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
-- (int)encodeAudio:(void *)arg1 numInputBytes:(int)arg2 outputBytes:(void *)arg3 numOutputBytes:(int)arg4 withPayload:(int *)arg5;
+- (int)encodeAudio:(void *)arg1 numInputBytes:(int)arg2 outputBytes:(void *)arg3 numOutputBytes:(int)arg4 withPayload:(int *)arg5 isTalking:(BOOL)arg6;
+- (void)generateWRMReport;
 - (int)getCryptoSet:(struct tagSRTPExchangeInfo *)arg1 withMasterKey:(id)arg2;
 - (int)getSRTPMasterKeyLength:(long long)arg1;
+- (long long)getSyncSourceSampleRate;
 - (void)handleAMRCodecModeChange:(unsigned char)arg1;
 - (id)init;
 - (void)initializeWRM;
 - (BOOL)isFrequencyMeteringEnabled:(int)arg1;
 - (BOOL)isSameSRTPConfig:(id)arg1;
 - (void)lock;
+- (unsigned int)maximumPayloadSize;
 - (BOOL)onCaptureSound:(char *)arg1 numBytes:(int)arg2 numSamples:(int)arg3 timeStamp:(unsigned int)arg4 timeStampDelta:(int)arg5 bufferedSamples:(int)arg6 hostTime:(double)arg7 averagePower:(float)arg8 voiceActivity:(unsigned int)arg9;
 - (BOOL)onPlaySound:(char *)arg1 numBytes:(int)arg2 numSamples:(int)arg3 timeStamp:(unsigned int)arg4 averagePower:(float)arg5;
 - (unsigned int)preferredAudioBitrate;
+- (void)prepareAudio;
 - (void)pullDecodedMeshMode:(char *)arg1 timestamp:(unsigned int)arg2 numBytes:(int)arg3 numSamples:(int)arg4;
-- (void)registerCodecChangeNotifications;
+- (void)registerAMRModeChangeNotifications;
 - (void)reportRTCPPackets:(struct tagRTCPPACKET *)arg1 withCount:(int)arg2;
-- (void)reportWRMMetrics:(const CDStruct_449de213 *)arg1;
+- (void)reportWRMMetrics:(const CDStruct_0db8e210 *)arg1;
 - (void)sendDTMFEvent:(id)arg1;
-- (int)sendSamples:(char *)arg1 numEncodedBytes:(int)arg2 withPayload:(int)arg3 timeStamp:(unsigned int)arg4 bufferedSamples:(int)arg5 hasNewSamples:(BOOL)arg6 voiceActivity:(BOOL)arg7;
+- (int)sendSamples:(char *)arg1 numEncodedBytes:(int)arg2 withPayload:(int)arg3 timeStamp:(unsigned int)arg4 voiceActivity:(BOOL)arg5;
 - (void)setCanProcessAudio:(BOOL)arg1;
 - (void)setFrequencyMeteringEnabled:(BOOL)arg1 meterType:(int)arg2;
+- (void)setInputTimestamp:(unsigned int)arg1 packetTimestamp:(int)arg2 hostTime:(double)arg3;
 - (id)setLocalParticipantInfo:(id)arg1 networkSockets:(id)arg2 withError:(id *)arg3;
+- (BOOL)setMediaQueueStreamSettings;
 - (void)setPause:(BOOL)arg1;
 - (BOOL)setRTPPayloads:(int *)arg1 numPayloads:(int)arg2 withError:(id *)arg3;
 - (void)setRtcpEnabled:(BOOL)arg1;
@@ -107,26 +131,32 @@ __attribute__((visibility("hidden")))
 - (BOOL)setStreamConfig:(id)arg1 withError:(id *)arg2;
 - (void)setStreamDirection:(long long)arg1;
 - (void)setWRMMetricConfig:(CDStruct_69d7cc99 *)arg1;
+- (void)setWRMNotification:(CDStruct_d2860d30 *)arg1;
 - (BOOL)setupAudioCodecWithPayload:(int)arg1;
 - (BOOL)setupAudioEncoders;
-- (void)setupRTPPayloadsWithDestinationIPPort:(struct tagIPPORT *)arg1;
+- (void)setupRTPPayloads;
+- (id)setupRTPWithIDSDestination:(id)arg1 error:(id *)arg2;
+- (id)setupRTPWithIPInfo:(id)arg1 error:(id *)arg2;
 - (id)setupRTPWithLocalParticipantInfo:(id)arg1 error:(id *)arg2;
 - (id)setupRTPWithSockets:(id)arg1 error:(id *)arg2;
 - (int)setupSRTP;
+- (void)setupSpecialPayload:(id)arg1;
 - (void)start;
 - (void)startAudioWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)startPausedHeartbeat;
 - (void)startWRM;
+- (void)stateEnter;
+- (void)stateExit;
 - (void)stop;
 - (void)stopAudioWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)stopPausedHeartbeat;
 - (void)stopSendDTMFEvent;
 - (void)stopWRM;
 - (long long)streamDirection;
-- (id)supportedAudioPayloads;
+- (char *)streamStateToString:(int)arg1;
 - (void)uninitializeWRM;
 - (void)unlock;
-- (void)unregisterCodecChangeNotifications;
+- (void)unregisterAMRModeChangeNotifications;
 - (void)updateSoundMeter:(int)arg1 samples:(char *)arg2 numSamples:(int)arg3 averagePower:(float)arg4 voiceActivity:(unsigned int)arg5;
 
 @end

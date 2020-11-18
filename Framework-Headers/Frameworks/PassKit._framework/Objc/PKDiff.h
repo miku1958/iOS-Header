@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -19,12 +19,12 @@
 @property (copy, nonatomic) NSString *passUniqueID; // @synthesize passUniqueID=_passUniqueID;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (unsigned long long)_hunkIndexForKey:(id)arg1;
 - (void)addHunkWithKey:(id)arg1 oldValue:(id)arg2 newValue:(id)arg3 message:(id)arg4;
 - (void)addHunksFromDiff:(id)arg1;
 - (id)anyKey;
 - (long long)compare:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateHunks:(CDUnknownBlockType)arg1;

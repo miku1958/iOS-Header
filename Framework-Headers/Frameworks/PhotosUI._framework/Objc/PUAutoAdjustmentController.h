@@ -20,13 +20,12 @@ __attribute__((visibility("hidden")))
     BOOL _busy;
 }
 
-@property (nonatomic, getter=isBusy) BOOL busy; // @synthesize busy=_busy;
+@property (nonatomic, getter=isBusy, setter=_setBusy:) BOOL busy; // @synthesize busy=_busy;
 
 - (void).cxx_destruct;
 - (void)_applyAutoValuesOnModel:(id)arg1 whiteBalanceSettings:(id)arg2 redEyeCorrections:(id)arg3 smartToneLevel:(double)arg4 smartColorLevel:(double)arg5 valuesCalculator:(id)arg6 animated:(BOOL)arg7;
 - (void)_removeLegacyAutoEnhanceFromModel:(id)arg1;
 - (void)_revertAutoValuesOnModel:(id)arg1;
-- (void)_setBusy:(BOOL)arg1;
 - (void)disableAutoEnhanceOnModel:(id)arg1;
 - (void)enableAutoEnhanceOnModel:(id)arg1 baseImage:(id)arg2 valuesCalculator:(id)arg3 allowRedEye:(BOOL)arg4 animated:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)invalidateCachedAdjustments;

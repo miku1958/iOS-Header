@@ -21,7 +21,7 @@
 - (id)newNoItemsOverlayLabel;
 - (BOOL)openDocumentForItemAtIndexPath:(id)arg1 withApplication:(id)arg2;
 - (BOOL)purchaseItemAtIndexPath:(id)arg1;
-- (void)setLoading:(BOOL)arg1;
+- (void)setSkLoading:(BOOL)arg1;
 
 @end
 

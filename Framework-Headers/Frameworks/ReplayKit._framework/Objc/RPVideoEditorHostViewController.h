@@ -8,13 +8,15 @@
 
 #import <ReplayKit/RPVideoEditorExtensionHostProtocol-Protocol.h>
 
-@class RPPreviewViewController;
+@class RPPreviewViewController, RPVideoEditorExtensionHostContext;
 
 @interface RPVideoEditorHostViewController : _UIRemoteViewController <RPVideoEditorExtensionHostProtocol>
 {
     RPPreviewViewController *_previewViewController;
+    RPVideoEditorExtensionHostContext *_hostContext;
 }
 
+@property (strong, nonatomic) RPVideoEditorExtensionHostContext *hostContext; // @synthesize hostContext=_hostContext;
 @property (weak, nonatomic) RPPreviewViewController *previewViewController; // @synthesize previewViewController=_previewViewController;
 
 - (void).cxx_destruct;

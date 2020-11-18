@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <AccessibilityUtilities/AXEventRepresentationDescription-Protocol.h>
 #import <AccessibilityUtilities/NSCopying-Protocol.h>
 #import <AccessibilityUtilities/NSSecureCoding-Protocol.h>
 
-@interface AXEventPathInfoRepresentation : NSObject <NSSecureCoding, NSCopying>
+@class NSString;
+
+@interface AXEventPathInfoRepresentation : NSObject <AXEventRepresentationDescription, NSSecureCoding, NSCopying>
 {
     unsigned char _pathIndex;
     unsigned char _pathIdentity;
@@ -37,7 +40,10 @@
 @property (nonatomic) float altitude; // @synthesize altitude=_altitude;
 @property (nonatomic) float azimuth; // @synthesize azimuth=_azimuth;
 @property (nonatomic) float barrelPressure; // @synthesize barrelPressure=_barrelPressure;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned int didUpdateMask; // @synthesize didUpdateMask=_didUpdateMask;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) float orbValue; // @synthesize orbValue=_orbValue;
 @property (nonatomic) float pathDensity; // @synthesize pathDensity=_pathDensity;
 @property (nonatomic) unsigned int pathEventMask; // @synthesize pathEventMask=_pathEventMask;
@@ -53,14 +59,14 @@
 @property (nonatomic) float pathTwist; // @synthesize pathTwist=_pathTwist;
 @property (nonatomic) void *pathWindow; // @synthesize pathWindow=_pathWindow;
 @property (nonatomic) unsigned int pathWindowContextID; // @synthesize pathWindowContextID=_pathWindowContextID;
+@property (readonly) Class superclass;
 @property (nonatomic) unsigned int transducerType; // @synthesize transducerType=_transducerType;
 @property (nonatomic) unsigned int willUpdateMask; // @synthesize willUpdateMask=_willUpdateMask;
 
 + (id)representationWithPathInfo:(CDStruct_723b0d29 *)arg1;
 + (BOOL)supportsSecureCoding;
-- (id)_tabularDescription;
+- (id)accessibilityEventRepresentationTabularDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)writeToPathInfo:(CDStruct_723b0d29 *)arg1;

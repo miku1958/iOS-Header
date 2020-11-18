@@ -37,6 +37,7 @@
 - (id)initWithName:(id)arg1 targetQueue:(id)arg2;
 - (void)join:(CDUnknownBlockType)arg1;
 - (void)joinAndApplyUpdates;
+- (void)joinApplyUpdatesAndDo:(CDUnknownBlockType)arg1;
 - (void)perform:(CDUnknownBlockType)arg1;
 - (void)performOnQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)wait;

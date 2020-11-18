@@ -4,20 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface TKPickerItem : NSObject
 {
     long long _section;
 }
 
-@property (nonatomic) long long section; // @synthesize section=_section;
+@property (nonatomic, setter=_setSection:) long long section; // @synthesize section=_section;
 
 - (void)_appendDescriptionOfAttributeNamed:(id)arg1 withBoolValue:(BOOL)arg2 toString:(id)arg3;
 - (void)_appendDescriptionOfAttributeNamed:(id)arg1 withIntegerValue:(long long)arg2 toString:(id)arg3;
 - (void)_appendDescriptionOfAttributeNamed:(id)arg1 withStringValue:(id)arg2 toString:(id)arg3;
 - (void)_appendDescriptionOfAttributesToString:(id)arg1;
-- (void)_setSection:(long long)arg1;
 - (id)description;
 
 @end

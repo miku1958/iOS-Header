@@ -31,7 +31,7 @@
 - (BOOL)purchaseItemAtIndexPath:(id)arg1;
 - (void)reloadWithStorePage:(id)arg1 forURL:(id)arg2;
 - (id)setDisplayedSectionGroup:(id)arg1;
-- (void)setLoading:(BOOL)arg1;
+- (void)setSkLoading:(BOOL)arg1;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)viewWillDisappear:(BOOL)arg1;
 

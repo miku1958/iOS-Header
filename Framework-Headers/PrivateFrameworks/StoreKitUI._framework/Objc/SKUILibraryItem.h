@@ -12,15 +12,13 @@
 
 @interface SKUILibraryItem : NSObject <NSCopying>
 {
-    NSString *_storeFlavorIdentifier;
-    NSNumber *_storeItemIdentifier;
-    SKUIStoreIdentifier *_storeIdentifer;
     SKUIStoreIdentifier *_storeIdentifier;
+    NSString *_storeFlavorIdentifier;
 }
 
 @property (copy, nonatomic) NSString *storeFlavorIdentifier; // @synthesize storeFlavorIdentifier=_storeFlavorIdentifier;
 @property (copy, nonatomic) SKUIStoreIdentifier *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
-@property (copy, nonatomic) NSNumber *storeItemIdentifier; // @synthesize storeItemIdentifier=_storeItemIdentifier;
+@property (readonly, nonatomic) NSNumber *storeItemIdentifier;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -34,6 +34,7 @@
 
 + (id)sharedManager;
 - (void)_addPendingBulletins:(id)arg1;
+- (id)_albumCloudGUIDForRecordID:(unsigned long long)arg1;
 - (BOOL)_alertFiltrationEnabled;
 - (BOOL)_bulletinType:(long long)arg1 matchesCommentsOrLikeBulletins:(BOOL)arg2 andPhotosAddedToAlbumBulletins:(BOOL)arg3;
 - (id)_currentPendingBatch;
@@ -81,7 +82,9 @@
 - (void)noteUserDidNavigateIntoSharedAlbum:(id)arg1;
 - (void)noteUserDidReadCommentOnSharedAsset:(id)arg1;
 - (void)noteUserDidViewCloudFeedContent:(long long)arg1;
+- (void)sendResponse:(BOOL)arg1 toPhotoStreamInvitationForAlbumWithCloudGUID:(id)arg2;
 - (void)setEnableTemporaryDebugMode:(BOOL)arg1;
+- (void)userViewedBulletinWithRecordID:(unsigned long long)arg1;
 
 @end
 

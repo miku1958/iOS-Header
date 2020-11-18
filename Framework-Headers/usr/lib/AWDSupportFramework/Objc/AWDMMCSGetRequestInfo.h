@@ -21,14 +21,19 @@
     NSMutableArray *_cancelErrors;
     int _cancelledErrorCode;
     NSString *_cancelledErrorDomain;
+    NSString *_ckContainerId;
     NSString *_clientId;
     NSMutableArray *_completeHttpInfos;
     NSMutableArray *_containerHttpInfos;
     NSMutableArray *_errors;
     int _itemCount;
+    unsigned int _itemCountFailed;
+    unsigned int _itemCountSuccessful;
     int _itemsNeedingChunks;
     int _requestErrorCode;
     NSString *_requestErrorDomain;
+    BOOL _allItemsFailed;
+    BOOL _allItemsSuccessful;
     struct {
         unsigned int duration:1;
         unsigned int localBytes:1;
@@ -37,25 +42,37 @@
         unsigned int timestamp:1;
         unsigned int cancelledErrorCode:1;
         unsigned int itemCount:1;
+        unsigned int itemCountFailed:1;
+        unsigned int itemCountSuccessful:1;
         unsigned int itemsNeedingChunks:1;
         unsigned int requestErrorCode:1;
+        unsigned int allItemsFailed:1;
+        unsigned int allItemsSuccessful:1;
     } _has;
 }
 
+@property (nonatomic) BOOL allItemsFailed; // @synthesize allItemsFailed=_allItemsFailed;
+@property (nonatomic) BOOL allItemsSuccessful; // @synthesize allItemsSuccessful=_allItemsSuccessful;
 @property (strong, nonatomic) NSMutableArray *authHttpInfos; // @synthesize authHttpInfos=_authHttpInfos;
 @property (strong, nonatomic) NSMutableArray *cancelErrors; // @synthesize cancelErrors=_cancelErrors;
 @property (nonatomic) int cancelledErrorCode; // @synthesize cancelledErrorCode=_cancelledErrorCode;
 @property (strong, nonatomic) NSString *cancelledErrorDomain; // @synthesize cancelledErrorDomain=_cancelledErrorDomain;
+@property (strong, nonatomic) NSString *ckContainerId; // @synthesize ckContainerId=_ckContainerId;
 @property (strong, nonatomic) NSString *clientId; // @synthesize clientId=_clientId;
 @property (strong, nonatomic) NSMutableArray *completeHttpInfos; // @synthesize completeHttpInfos=_completeHttpInfos;
 @property (strong, nonatomic) NSMutableArray *containerHttpInfos; // @synthesize containerHttpInfos=_containerHttpInfos;
 @property (nonatomic) long long duration; // @synthesize duration=_duration;
 @property (strong, nonatomic) NSMutableArray *errors; // @synthesize errors=_errors;
+@property (nonatomic) BOOL hasAllItemsFailed;
+@property (nonatomic) BOOL hasAllItemsSuccessful;
 @property (nonatomic) BOOL hasCancelledErrorCode;
 @property (readonly, nonatomic) BOOL hasCancelledErrorDomain;
+@property (readonly, nonatomic) BOOL hasCkContainerId;
 @property (readonly, nonatomic) BOOL hasClientId;
 @property (nonatomic) BOOL hasDuration;
 @property (nonatomic) BOOL hasItemCount;
+@property (nonatomic) BOOL hasItemCountFailed;
+@property (nonatomic) BOOL hasItemCountSuccessful;
 @property (nonatomic) BOOL hasItemsNeedingChunks;
 @property (nonatomic) BOOL hasLocalBytes;
 @property (nonatomic) BOOL hasRequestErrorCode;
@@ -64,6 +81,8 @@
 @property (nonatomic) BOOL hasStartTime;
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) int itemCount; // @synthesize itemCount=_itemCount;
+@property (nonatomic) unsigned int itemCountFailed; // @synthesize itemCountFailed=_itemCountFailed;
+@property (nonatomic) unsigned int itemCountSuccessful; // @synthesize itemCountSuccessful=_itemCountSuccessful;
 @property (nonatomic) int itemsNeedingChunks; // @synthesize itemsNeedingChunks=_itemsNeedingChunks;
 @property (nonatomic) long long localBytes; // @synthesize localBytes=_localBytes;
 @property (nonatomic) int requestErrorCode; // @synthesize requestErrorCode=_requestErrorCode;

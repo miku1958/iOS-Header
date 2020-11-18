@@ -23,6 +23,7 @@
 @property (nonatomic) BOOL hasLocation;
 @property (nonatomic) int location; // @synthesize location=_location;
 
++ (Class)contentItemType;
 - (void)addContentItem:(id)arg1;
 - (void)clearContentItems;
 - (id)contentItemAtIndex:(unsigned long long)arg1;

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <CompanionSync/SYStateLoggable-Protocol.h>
 #import <CompanionSync/SYSyncEngineResponder-Protocol.h>
 
-@class NSDictionary, NSMutableArray, NSMutableSet, NSString, SYDevice, SYPersistentStore, SYSession, SYSyncEngine, SYVectorClock, _SYMultiSuspendableQueue, _SYQueuedStartSession;
-@protocol OS_dispatch_queue, OS_dispatch_source, SYServiceDelegate;
+@class NSDictionary, NSMutableArray, NSMutableSet, NSString, PBCodable, SYDevice, SYPersistentStore, SYSession, SYSyncEngine, SYVectorClock, _SYMultiSuspendableQueue, _SYQueuedStartSession;
+@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_activity, SYServiceDelegate;
 
-@interface SYService : NSObject <SYSyncEngineResponder>
+@interface SYService : NSObject <SYSyncEngineResponder, SYStateLoggable>
 {
     NSString *_serviceName;
     long long _defaultPriority;
@@ -20,6 +21,7 @@
     SYSession *_currentSession;
     id<SYServiceDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_incomingIOQueue;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     _SYMultiSuspendableQueue *_sessionQueue;
     NSObject<OS_dispatch_source> *_processSignalSource;
@@ -31,7 +33,9 @@
     _SYQueuedStartSession *_queuedStartSession;
     SYDevice *_targetedDevice;
     NSMutableArray *_onSessionEnd;
-    int _flagLock;
+    NSObject<OS_os_activity> *_serviceActivity;
+    unsigned long long _stateHandle;
+    struct os_unfair_lock_s _flagLock;
     struct {
         unsigned int isMaster:1;
         unsigned int hasChanges:1;
@@ -44,10 +48,12 @@
         unsigned int isObservingRemoteDeviceProperties:1;
         unsigned int requestedEngineType:3;
         unsigned int assignedEngineType:3;
+        unsigned int suspendedForQWS:1;
     } _flags;
     double _defaultMessageTimeout;
     double _sessionStalenessInterval;
     long long _engineType;
+    NSString *_generationID;
 }
 
 @property (readonly, nonatomic) SYSession *currentSession;
@@ -56,6 +62,8 @@
 @property (nonatomic) double defaultMessageTimeout; // @synthesize defaultMessageTimeout=_defaultMessageTimeout;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long engineType; // @synthesize engineType=_engineType;
+@property (readonly, nonatomic) NSDictionary *extraTransportOptions;
+@property (readonly, nonatomic) NSString *generationID; // @synthesize generationID=_generationID;
 @property (readonly, nonatomic) BOOL hasPairingStore;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isMasterStore;
@@ -64,7 +72,10 @@
 @property (readonly, nonatomic) SYPersistentStore *persistentStore; // @synthesize persistentStore=_persistentStore;
 @property (nonatomic) long long priority; // @synthesize priority=_defaultPriority;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (readonly, nonatomic) NSObject<OS_os_activity> *serviceActivity; // @synthesize serviceActivity=_serviceActivity;
+@property (readonly, nonatomic) _SYMultiSuspendableQueue *sessionQueue; // @synthesize sessionQueue=_sessionQueue;
 @property (nonatomic) double sessionStalenessInterval; // @synthesize sessionStalenessInterval=_sessionStalenessInterval;
+@property (readonly, nonatomic) PBCodable *stateForLogging;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) SYSyncEngine *syncEngine; // @synthesize syncEngine=_syncEngine;
 
@@ -107,7 +118,7 @@
 - (void)_setProtocolVersionForRemoteOSVersion:(id)arg1 build:(id)arg2 remoteIsWatch:(BOOL)arg3 switchingEngines:(BOOL)arg4;
 - (void)_setupPairingNotifications;
 - (void)_setupPairingStoreWithDevice:(id)arg1;
-- (BOOL)_shouldSession:(id)arg1 supercedeSession:(id)arg2 ofAge:(double)arg3;
+- (BOOL)_shouldSession:(id)arg1 fromPeer:(id)arg2 supercedeSession:(id)arg3 ofAge:(double)arg4 collisionDetected:(BOOL *)arg5;
 - (void)_signalPairingStoreAvailable;
 - (void)_signalPairingStoreUnavailable;
 - (void)_suspend;

@@ -6,30 +6,31 @@
 
 #import <Foundation/NSObject.h>
 
+#import <VectorKit/GGLLayerDelegate-Protocol.h>
 #import <VectorKit/GGLRenderQueueSource-Protocol.h>
 #import <VectorKit/MDRenderTarget-Protocol.h>
 
-@class GGLLayer, NSString;
-@protocol GGLRenderQueueSource;
+@class CALayer, NSString;
+@protocol GGLLayer, GGLRenderQueueSource;
 
 __attribute__((visibility("hidden")))
-@interface MDDisplayLayer : NSObject <GGLRenderQueueSource, MDRenderTarget>
+@interface MDDisplayLayer : NSObject <GGLRenderQueueSource, GGLLayerDelegate, MDRenderTarget>
 {
-    GGLLayer *_layer;
+    CALayer<GGLLayer> *_layer;
     id<GGLRenderQueueSource> _renderSource;
-    shared_ptr_77723e34 _device;
-    shared_ptr_3f8cd81b _renderer;
+    struct RenderTargetFormat _format;
+    shared_ptr_807ec9ac _device;
+    struct Renderer *_renderer;
     struct mutex _debugConsoleManagerCreationLock;
     struct unique_ptr<md::DebugConsoleManager, std::__1::default_delete<md::DebugConsoleManager>> _debugConsoleManager;
-    struct unique_ptr<ggl::RenderQueue, std::__1::default_delete<ggl::RenderQueue>> _renderQueueOuter;
-    struct unique_ptr<ggl::RenderTarget, std::__1::default_delete<ggl::RenderTarget>> _msaaRenderTarget;
-    struct unique_ptr<ggl::RenderTargetOperation, std::__1::default_delete<ggl::RenderTargetOperation>> _msaaBlitOperation;
-    struct unique_ptr<ggl::RenderBuffer, std::__1::default_delete<ggl::RenderBuffer>> _msaaColorBuffer;
-    struct unique_ptr<ggl::RenderBuffer, std::__1::default_delete<ggl::RenderBuffer>> _msaaDepthStencilBuffer;
-    BOOL _forceMSAATarget;
+    struct unique_ptr<ggl::RenderTarget, std::__1::default_delete<ggl::RenderTarget>> _renderTarget;
+    struct unique_ptr<ggl::RenderBuffer, std::__1::default_delete<ggl::RenderBuffer>> _depthStencil;
+    struct unique_ptr<ggl::RenderBuffer, std::__1::default_delete<ggl::RenderBuffer>> _msaaTexture;
     BOOL _useMultisampling;
     BOOL _requiresMultisampling;
     struct CGContext *_snapshotContext;
+    BOOL _readPixels;
+    BOOL _shouldRasterize;
     struct CGRect _bounds;
     double _contentsScale;
 }
@@ -39,38 +40,41 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL debugEnableMultisampling; // @dynamic debugEnableMultisampling;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) shared_ptr_807ec9ac device;
+@property (readonly, nonatomic) struct Device *device;
+@property (readonly, nonatomic) const struct RenderTargetFormat *format;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) GGLLayer *layer; // @synthesize layer=_layer;
+@property (readonly, nonatomic) CALayer *layer; // @synthesize layer=_layer;
+@property (readonly, nonatomic) BOOL multiSample; // @synthesize multiSample=_useMultisampling;
 @property (nonatomic) id<GGLRenderQueueSource> renderSource; // @synthesize renderSource=_renderSource;
-@property (readonly, nonatomic) struct GLRenderer *renderer;
+@property (readonly, nonatomic) struct Renderer *renderer;
+@property (readonly, nonatomic) BOOL shouldRasterize; // @synthesize shouldRasterize=_shouldRasterize;
 @property (readonly, nonatomic) struct CGSize size;
 @property (readonly, nonatomic) struct CGSize sizeInPixels;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL useMultisampling;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_createGLLayer;
-- (void)_createMSAARenderTarget;
-- (void)_destroyMSAARenderTarget;
+- (void)_createLayer;
+- (void)_createRenderTarget:(struct Texture *)arg1;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toLayer:(id)arg2;
 - (void)dealloc;
 - (struct DebugConsole *)debugConsoleForId:(int)arg1;
 - (void)destroyLayer;
 - (void)didEnterBackground;
+- (void)didPresent;
 - (void)didReadPixels:(shared_ptr_4ce39eb2 *)arg1;
 - (void)didReceiveMemoryWarning;
 - (void)disablePerformanceHUD:(id)arg1;
 - (void)drawInContext:(struct CGContext *)arg1;
-- (void)drawWithTimestamp:(double)arg1;
+- (void)drawToTexture:(struct Texture *)arg1 withTimestamp:(double)arg2;
+- (void)drawToTexture:(struct Texture *)arg1 withTimestamp:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)enablePerformanceHUD:(id)arg1;
 - (void)expandedPerformanceHUD:(id)arg1;
 - (void)forceLayout;
-- (id)init;
+- (id)initWithContentScale:(double)arg1 shouldRasterize:(BOOL)arg2;
+- (void)onTimerFired:(double)arg1;
 - (void)recreateLayer;
 - (RenderQueue_e4212455 *)renderQueue;
-- (void)resetRenderQueue;
 - (void)setBackgroundColor:(struct CGColor *)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setContentsGravity:(id)arg1;

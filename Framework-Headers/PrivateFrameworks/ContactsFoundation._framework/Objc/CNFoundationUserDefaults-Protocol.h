@@ -13,6 +13,7 @@
 @property unsigned long long nameOrder;
 @property BOOL preferNickname;
 @property unsigned long long shortNameFormat;
+@property (nonatomic, getter=isShortNameFormatEnabled) BOOL shortNameFormatEnabled;
 
 - (NSString *)countryCode;
 - (unsigned long long)newContactNameOrder;

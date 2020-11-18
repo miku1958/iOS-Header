@@ -36,7 +36,6 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalize;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 

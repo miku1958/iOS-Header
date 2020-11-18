@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SplashBoard/BSDescriptionProviding-Protocol.h>
 #import <SplashBoard/NSCoding-Protocol.h>
 
-@class BSTimer, NSDate, NSDictionary, NSMutableDictionary, NSString, UIImage, XBApplicationIdentity, XBApplicationSnapshotGenerationContext, XBStatusBarSettings;
+@class NSDate, NSDictionary, NSMutableDictionary, NSString, UIImage, XBApplicationSnapshotGenerationContext, XBSnapshotContainerIdentity, XBStatusBarSettings;
+@protocol XBSnapshotManifestStore;
 
 @interface XBApplicationSnapshot : NSObject <NSCoding, BSDescriptionProviding>
 {
-    XBApplicationIdentity *_appIdentity;
+    XBSnapshotContainerIdentity *_containerIdentity;
+    id<XBSnapshotManifestStore> _store;
     NSMutableDictionary *_variantsByID;
     BOOL _invalidated;
     NSString *_identifier;
@@ -29,11 +31,13 @@
     long long _fileLocation;
     NSDate *_creationDate;
     NSDate *_lastUsedDate;
+    NSDate *_expirationDate;
     BOOL _fullScreen;
     struct CGSize _referenceSize;
     struct CGRect _contentFrame;
     long long _interfaceOrientation;
     long long _contentType;
+    long long _fileFormat;
     BOOL _imageOpaque;
     double _imageScale;
     long long _imageOrientation;
@@ -43,10 +47,9 @@
     long long _backgroundStyle;
     XBApplicationSnapshotGenerationContext *_generationContext;
     UIImage *_cachedImage;
-    BSTimer *_imagePurgeTimer;
     unsigned long long _imageAccessCount;
+    BOOL _keepImageAccessUntilExpiration;
     NSDictionary *_extendedData;
-    NSDate *_expirationDate;
     struct CGAffineTransform _imageTransform;
 }
 
@@ -57,19 +60,20 @@
 @property (readonly, copy, nonatomic) NSString *_sortableRequiredOSVersion;
 @property (readonly, copy, nonatomic) NSString *_sortableScheme;
 @property (readonly, strong, nonatomic) XBStatusBarSettings *_sortableStatusBarSettings;
-@property (copy) XBApplicationIdentity *appIdentity; // @synthesize appIdentity=_appIdentity;
 @property (nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property (nonatomic) long long classicMode; // @synthesize classicMode=_classicMode;
 @property (nonatomic) long long compatibilityMode; // @synthesize compatibilityMode=_compatibilityMode;
+@property (copy) XBSnapshotContainerIdentity *containerIdentity; // @synthesize containerIdentity=_containerIdentity;
 @property (nonatomic) struct CGRect contentFrame;
 @property (nonatomic) long long contentType; // @synthesize contentType=_contentType;
 @property (readonly, strong, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+@property (strong, nonatomic) NSDate *expirationDate; // @dynamic expirationDate;
 @property (readonly, nonatomic, getter=isExpired) BOOL expired;
 @property (copy, nonatomic) NSDictionary *extendedData; // @synthesize extendedData=_extendedData;
 @property (readonly, nonatomic) BOOL fileExists;
+@property (readonly, nonatomic) long long fileFormat; // @synthesize fileFormat=_fileFormat;
 @property (nonatomic) long long fileLocation; // @synthesize fileLocation=_fileLocation;
 @property (readonly, copy, nonatomic) NSString *filename; // @synthesize filename=_filename;
 @property (nonatomic, getter=isFullScreen) BOOL fullScreen; // @synthesize fullScreen=_fullScreen;
@@ -92,30 +96,33 @@
 @property (copy, nonatomic) NSString *requiredOSVersion; // @synthesize requiredOSVersion=_requiredOSVersion;
 @property (copy, nonatomic) NSString *scheme; // @synthesize scheme=_scheme;
 @property (copy, nonatomic) XBStatusBarSettings *statusBarSettings; // @synthesize statusBarSettings=_statusBarSettings;
+@property (readonly, strong, nonatomic, getter=_store) id<XBSnapshotManifestStore> store; // @synthesize store=_store;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *variantID; // @synthesize variantID=_variantID;
 
 + (id)normalizeSnapshotName:(id)arg1;
 - (void)_cacheImage:(id)arg1;
 - (id)_cachedImage;
-- (void)_clearImagePurgeTimer;
 - (void)_commonInit;
-- (id)_configureDefaultPathWithinGroup;
+- (id)_configureDefaultPathWithinGroupForFormat:(long long)arg1;
 - (void)_configureWithPath:(id)arg1;
 - (id)_createVariantWithIdentifier:(id)arg1;
 - (id)_descriptionBuilderWithMultilinePrefix:(id)arg1 includeVariants:(BOOL)arg2;
 - (id)_determineRelativePathForPath:(id)arg1 location:(long long *)arg2;
 - (BOOL)_hasGenerationContext;
-- (id)_initWithGroupID:(id)arg1 appIdentity:(id)arg2;
-- (id)_initWithGroupID:(id)arg1 appIdentity:(id)arg2 generationContext:(id)arg3;
+- (id)_initWithContainerIdentity:(id)arg1 store:(id)arg2 groupID:(id)arg3 generationContext:(id)arg4;
 - (void)_invalidate;
 - (BOOL)_isInvalidated;
+- (void)_manifestQueueDecode_setStore:(id)arg1;
 - (BOOL)_path:(id)arg1 isRelativeToPath:(id)arg2 outRelativePath:(id *)arg3;
 - (void)_purgeCachedImageIfAppropriate:(BOOL)arg1;
 - (struct CGRect)_referenceBounds;
 - (BOOL)_shouldDeleteFileOnPurge;
-- (BOOL)_validateWithAppIdentity:(id)arg1;
+- (void)_snynchronized_evaluateImageAccessUntilExpirationEnablingIfNecessary:(BOOL)arg1;
+- (BOOL)_synchronized_isExpired;
+- (BOOL)_validateWithContainerIdentity:(id)arg1;
 - (void)beginImageAccess;
+- (void)beginImageAccessUntilExpiration;
 - (id)cachedImageForInterfaceOrientation:(long long)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -130,7 +137,6 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValid;
 - (void)loadImage;
-- (void)purgeCachedImageAfterInterval:(double)arg1;
 - (void)purgeImage;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

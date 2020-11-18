@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MLULookupItemContent, NSDictionary, NSString, NSURL;
+@class MLULookupItemContent, NSArray, NSDictionary, NSString, NSURL;
 
 @interface MLULookupItem : NSObject
 {
@@ -14,6 +14,8 @@
     struct __DDResult *_ddResult;
     NSString *_text;
     struct _NSRange _focusRange;
+    NSArray *_attachments;
+    unsigned long long _currentAttachmentIndex;
     struct _NSRange _proposedRange;
     BOOL _resolved;
     NSDictionary *_documentProperties;
@@ -24,12 +26,14 @@
 @property (strong, nonatomic) MLULookupItemContent *previewContent; // @synthesize previewContent=_previewContent;
 
 - (void).cxx_destruct;
+- (BOOL)_resolveAttachments:(id)arg1 currentAttachmentIndex:(unsigned long long)arg2;
 - (BOOL)_resolveText:(id)arg1 focusRange:(struct _NSRange)arg2;
 - (BOOL)_resolveURL:(id)arg1 DDResult:(struct __DDResult *)arg2 focusRange:(struct _NSRange)arg3;
 - (void)commit;
 - (unsigned long long)commitType;
 - (void)commitWithTransitionForPreviewViewController:(id)arg1 inViewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
+- (id)initWithAttachments:(id)arg1 currentAttachment:(unsigned long long)arg2;
 - (id)initWithURL:(id)arg1 dataDetectorsResult:(struct __DDResult *)arg2 text:(id)arg3 range:(struct _NSRange)arg4;
 - (struct _NSRange)proposedRange;
 - (BOOL)resolve;

@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (nonatomic) BOOL numberOfMatchesExceededLimit; // @synthesize numberOfMatchesExceededLimit=_numberOfMatchesExceededLimit;
 
+- (void).cxx_destruct;
 - (void)_finishWithError:(id)arg1;
 - (id)_processGroupsInResults:(id)arg1;
 - (id)_processLocationsInResults:(id)arg1;
@@ -31,7 +32,6 @@
 - (void)_processResults:(id)arg1;
 - (id)_recordTypes;
 - (void)cancel;
-- (void)dealloc;
 - (id)init;
 - (id)initWithSource:(id)arg1 query:(id)arg2 resultsBlock:(CDUnknownBlockType)arg3;
 - (BOOL)isConcurrent;

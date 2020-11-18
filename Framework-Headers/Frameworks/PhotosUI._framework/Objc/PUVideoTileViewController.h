@@ -63,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (id)generateAssetTransitionInfo;
 - (id)initWithReuseIdentifier:(id)arg1;
 - (id)loadView;
+- (void)removeAllAnimations;
 - (void)setEdgeAntialiasingEnabled:(BOOL)arg1;
 - (void)setPreloadedImage:(id)arg1;
 - (void)videoPlayerView:(id)arg1 isReadyForDisplayDidChange:(BOOL)arg2;

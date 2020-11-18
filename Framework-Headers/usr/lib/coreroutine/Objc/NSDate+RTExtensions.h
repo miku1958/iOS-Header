@@ -8,10 +8,19 @@
 
 @interface NSDate (RTExtensions)
 + (id)dateFormatter;
++ (id)dateWithResolution:(unsigned long long)arg1;
++ (id)dateWithResolution:(unsigned long long)arg1 calendar:(id)arg2;
 + (id)stringFromTimestamp:(double)arg1;
 - (BOOL)betweenDate:(id)arg1 andDate:(id)arg2;
+- (id)dateByAddingUnit:(unsigned long long)arg1 value:(long long)arg2;
 - (id)dateOfTimestampForCalendar:(id)arg1;
 - (id)dateOfTimestampForCurrentCalendar;
+- (id)dateReducedToResolution:(unsigned long long)arg1;
+- (id)dateReducedToResolution:(unsigned long long)arg1 calendar:(id)arg2;
+- (id)endOfDay;
+- (unsigned long long)hour;
+- (id)startOfDay;
 - (id)stringFromDate;
+- (long long)weekday;
 @end
 

@@ -26,16 +26,24 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
 - (void).cxx_destruct;
-- (void)fetchPredictedApplicationForEvent:(id)arg1 withReply:(CDUnknownBlockType)arg2;
+- (void)fetchMagicalMomentsModelPropertyListRepresentation:(CDUnknownBlockType)arg1;
+- (void)fetchPredictedApplicationsForEvent:(id)arg1 withReply:(CDUnknownBlockType)arg2;
+- (void)fetchStoredLocationsFromDate:(id)arg1 toDate:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)forceEventModelRefresh;
 - (void)forceSequentialClusterIdentification:(CDUnknownBlockType)arg1;
 - (void)forceUpdateAssetMetadata;
 - (id)initWithQueue:(id)arg1;
 - (void)injectLocationOfInterest:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)injectVisit:(id)arg1 locationOfInterest:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)printMagicalMomentsModelWithReply:(CDUnknownBlockType)arg1;
+- (void)printRoomAssistModel:(CDUnknownBlockType)arg1;
 - (void)processDataForPredictionModelWithReply:(CDUnknownBlockType)arg1;
+- (void)processDataForRoomAssistModelWithReply:(CDUnknownBlockType)arg1;
 - (void)removeLocationOfInterest:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)removeVisit:(id)arg1 locationOfInterest:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)requestCurrentMicroLocation;
+- (void)syncRoutineStateModelFromCompanionToGizmo:(CDUnknownBlockType)arg1;
+- (void)updateAssetServerURL:(id)arg1 assetType:(id)arg2 reply:(CDUnknownBlockType)arg3;
 
 @end
 

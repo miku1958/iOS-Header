@@ -19,18 +19,18 @@ __attribute__((visibility("hidden")))
     UIImage *_darkBackgroundImage;
     UIImage *_lightBackgroundImage;
     UIGestureRecognizer *_longPressGestureRecognizer;
-    BOOL _showsDarkBackground;
     BOOL _usesLightOverlayAndTintAlpha;
     double _backgroundAlphaFactor;
+    long long _backgroundStyle;
     id<_SFNavigationBarURLButtonDelegate> _delegate;
 }
 
 @property (nonatomic) double backgroundAlphaFactor; // @synthesize backgroundAlphaFactor=_backgroundAlphaFactor;
+@property (nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_SFNavigationBarURLButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL showsDarkBackground; // @synthesize showsDarkBackground=_showsDarkBackground;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL usesLightOverlayAndTintAlpha; // @synthesize usesLightOverlayAndTintAlpha=_usesLightOverlayAndTintAlpha;
 

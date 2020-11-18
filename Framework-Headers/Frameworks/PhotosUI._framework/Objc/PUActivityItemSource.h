@@ -61,8 +61,6 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL useStillImage; // @synthesize useStillImage=_useStillImage;
 
-+ (BOOL)_wantsIrisRemakerURLForActivityType:(id)arg1;
-+ (BOOL)_wantsPhotoRemakerURLForActivityType:(id)arg1;
 + (BOOL)supportsPhotoIrisBundleForActivityType:(id)arg1;
 - (void).cxx_destruct;
 - (void)_cancelVideoRemaking:(id)arg1;
@@ -70,6 +68,7 @@
 - (void)_cleanupPhotoRemaker;
 - (void)_cleanupRemaker;
 - (id)_createTempPhotoIrisBundle;
+- (id)_customAccessibilityLabel;
 - (void)_fetchImageWithProgressHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_fetchPhotoIrisForActivityType:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3 wantsAssetsLibraryURL:(BOOL)arg4;
 - (void)_fetchVideoForActivityType:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3 wantsAssetsLibraryURL:(BOOL)arg4;
@@ -82,8 +81,10 @@
 - (void)_removeTempPhotoFile;
 - (void)_removeTempVideoFile;
 - (BOOL)_wantsAssetsLibraryURLForActivityType:(id)arg1;
+- (BOOL)_wantsIrisRemakerURLForActivityType:(id)arg1;
 - (BOOL)_wantsLocalAssetsForActivityType:(id)arg1;
 - (BOOL)_wantsPhotoIrisBundleForActivityType:(id)arg1;
+- (BOOL)_wantsPhotoRemakerURLForActivityType:(id)arg1;
 - (BOOL)_wantsVideoRemakerForActivityType:(id)arg1 adjustmentData:(id)arg2 wantsAssetsLibraryURL:(BOOL)arg3;
 - (id)activityViewController:(id)arg1 dataTypeIdentifierForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;

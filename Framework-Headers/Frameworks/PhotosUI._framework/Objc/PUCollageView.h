@@ -6,31 +6,44 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSPointerArray;
+@class NSArray, NSPointerArray, PXRoundedCornerOverlayView, UIColor;
 
 __attribute__((visibility("hidden")))
 @interface PUCollageView : UIView
 {
+    BOOL _hasRoundedCorners;
     double _spacing;
     long long _numberOfItems;
+    double _cornerRadius;
+    double _subitemCornerRadius;
     long long __numberOfImageViews;
     NSArray *__imageViews;
     NSPointerArray *__imageSizes;
+    UIColor *_cornersBackgroundColor;
+    PXRoundedCornerOverlayView *__roundedCornerOverlayView;
     struct CGSize _collageSize;
 }
 
 @property (readonly, nonatomic) NSPointerArray *_imageSizes; // @synthesize _imageSizes=__imageSizes;
 @property (readonly, nonatomic) NSArray *_imageViews; // @synthesize _imageViews=__imageViews;
 @property (readonly, nonatomic) long long _numberOfImageViews; // @synthesize _numberOfImageViews=__numberOfImageViews;
+@property (strong, nonatomic, setter=_setRoundedCornerOverlayView:) PXRoundedCornerOverlayView *_roundedCornerOverlayView; // @synthesize _roundedCornerOverlayView=__roundedCornerOverlayView;
 @property (nonatomic) struct CGSize collageSize; // @synthesize collageSize=_collageSize;
+@property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property (strong, nonatomic) UIColor *cornersBackgroundColor; // @synthesize cornersBackgroundColor=_cornersBackgroundColor;
+@property (nonatomic) BOOL hasRoundedCorners; // @synthesize hasRoundedCorners=_hasRoundedCorners;
 @property (nonatomic) long long numberOfItems; // @synthesize numberOfItems=_numberOfItems;
 @property (nonatomic) double spacing; // @synthesize spacing=_spacing;
+@property (nonatomic) double subitemCornerRadius; // @synthesize subitemCornerRadius=_subitemCornerRadius;
 
 + (long long)maximumNumberOfItems;
 - (void).cxx_destruct;
+- (void)_updateImageViews;
+- (void)_updateRoundedCornerOverlayView;
 - (struct CGSize)imageSizeForItemAtIndex:(long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)setHasRoundedCorners:(BOOL)arg1 withCornersBackgroundColor:(id)arg2;
 - (void)setImage:(id)arg1 forItemAtIndex:(long long)arg2;
 - (void)setImageSize:(struct CGSize)arg1 forItemAtIndex:(long long)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

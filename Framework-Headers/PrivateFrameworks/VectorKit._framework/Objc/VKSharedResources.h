@@ -6,8 +6,9 @@
 
 #import <Foundation/NSObject.h>
 
-@class GEOResourceManifestConfiguration, VKGGLTextureManager, VKIconManager, VKResourceManager, VKShieldManager, VKStylesheetVendor, VKTrafficIncidentImageManager;
+@class GEOResourceManifestConfiguration, VKGGLTextureManager, VKIconManager, VKResourceManager, VKShieldManager;
 
+__attribute__((visibility("hidden")))
 @interface VKSharedResources : NSObject
 {
     GEOResourceManifestConfiguration *_manifestConfiguration;
@@ -15,30 +16,37 @@
     VKShieldManager *_shieldManager;
     VKGGLTextureManager *_gglTextureManager;
     VKResourceManager *_resourceManager;
-    VKStylesheetVendor *_stylesheetVendor;
-    VKTrafficIncidentImageManager *_trafficIncidentImageManager;
+    shared_ptr_dd2d1f5e _stylesheetVendor;
     shared_ptr_807ec9ac _device;
     struct unique_ptr<ggl::AlphaAtlas, std::__1::default_delete<ggl::AlphaAtlas>> _alphaAtlas;
     struct unique_ptr<ggl::IsoAlphaAtlas, std::__1::default_delete<ggl::IsoAlphaAtlas>> _highInflationAlphaAtlas;
     struct unique_ptr<ggl::IsoAlphaAtlas, std::__1::default_delete<ggl::IsoAlphaAtlas>> _isoAlphaAtlas;
+    struct unique_ptr<ggl::DistanceAtlas, std::__1::default_delete<ggl::DistanceAtlas>> _distanceAtlas;
+    shared_ptr_1ddd16cb _shaderLibrary;
+    struct mutex _referenceCountingLock;
+    unsigned int _referenceCount;
 }
 
 @property (readonly, nonatomic) struct AlphaAtlas *alphaAtlas;
 @property (readonly, nonatomic) struct Device *device;
+@property (readonly, nonatomic) struct DistanceAtlas *distanceAtlas;
 @property (readonly, nonatomic) VKGGLTextureManager *gglTextureManager; // @synthesize gglTextureManager=_gglTextureManager;
 @property (readonly, nonatomic) struct IsoAlphaAtlas *highInflationAlphaAtlas;
 @property (readonly, nonatomic) VKIconManager *iconManager; // @synthesize iconManager=_iconManager;
 @property (readonly, nonatomic) struct IsoAlphaAtlas *isoAlphaAtlas;
 @property (readonly, nonatomic) VKResourceManager *resourceManager; // @synthesize resourceManager=_resourceManager;
+@property (readonly, nonatomic) const struct StandardLibrary *shaderLibrary;
 @property (readonly, nonatomic) VKShieldManager *shieldManager; // @synthesize shieldManager=_shieldManager;
-@property (readonly, nonatomic) VKStylesheetVendor *stylesheetVendor; // @synthesize stylesheetVendor=_stylesheetVendor;
-@property (readonly, nonatomic) VKTrafficIncidentImageManager *trafficIncidentImageManager; // @synthesize trafficIncidentImageManager=_trafficIncidentImageManager;
+@property (readonly, nonatomic) shared_ptr_dd2d1f5e stylesheetVendor; // @synthesize stylesheetVendor=_stylesheetVendor;
 
 + (id)sharedResourcesForConfiguration:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)_initWithConfiguration:(id)arg1 device:(const shared_ptr_807ec9ac *)arg2 standardLibrary:(const shared_ptr_1ddd16cb *)arg3;
+- (void)addResourceUser;
 - (void)dealloc;
-- (id)initWithConfiguration:(id)arg1;
+- (void)purge;
+- (void)removeResourceUser;
 
 @end
 

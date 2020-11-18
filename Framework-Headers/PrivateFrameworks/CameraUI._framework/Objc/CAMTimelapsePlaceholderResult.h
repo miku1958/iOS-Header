@@ -12,11 +12,11 @@
 
 @interface CAMTimelapsePlaceholderResult : NSObject <CAMTransientAssetConvertible>
 {
-    BOOL _usingFrontCamera;
     unsigned short _sessionIdentifier;
     NSString *_assetUUID;
     NSDate *_creationDate;
     long long _captureOrientation;
+    long long _captureDevice;
     void *_previewImageSurface;
     struct CGSize _videoDimensions;
 }
@@ -24,6 +24,7 @@
 @property (readonly, copy, nonatomic) NSString *assetUUID; // @synthesize assetUUID=_assetUUID;
 @property (readonly, copy, nonatomic) NSString *burstIdentifier;
 @property (readonly, nonatomic) NSDate *captureDate;
+@property (readonly, nonatomic) long long captureDevice; // @synthesize captureDevice=_captureDevice;
 @property (readonly, nonatomic) long long captureOrientation; // @synthesize captureOrientation=_captureOrientation;
 @property (readonly, copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, copy) NSString *debugDescription;
@@ -42,14 +43,12 @@
 @property (readonly, nonatomic) unsigned short sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property (readonly, copy, nonatomic) NSDictionary *stillImageMetadata;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic, getter=isUsingFrontCamera) BOOL usingFrontCamera; // @synthesize usingFrontCamera=_usingFrontCamera;
 @property (readonly, nonatomic) NSString *uuid;
 @property (readonly, nonatomic) struct CGSize videoDimensions; // @synthesize videoDimensions=_videoDimensions;
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)init;
-- (id)initWithAssetUUID:(id)arg1 captureSession:(unsigned short)arg2 creationDate:(id)arg3 captureOrientation:(long long)arg4 usingFrontCamera:(BOOL)arg5 videoDimensions:(struct CGSize)arg6 previewImageSurface:(void *)arg7;
+- (id)initWithAssetUUID:(id)arg1 captureSession:(unsigned short)arg2 creationDate:(id)arg3 captureOrientation:(long long)arg4 captureDevice:(long long)arg5 videoDimensions:(struct CGSize)arg6 previewImageSurface:(void *)arg7;
 
 @end
 

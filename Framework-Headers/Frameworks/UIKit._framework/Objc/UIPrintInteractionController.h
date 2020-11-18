@@ -53,6 +53,7 @@
 - (void).cxx_destruct;
 - (BOOL)_canPrintPDFData:(id)arg1;
 - (BOOL)_canPrintPDFURL:(id)arg1;
+- (BOOL)_canShowAnnotations;
 - (BOOL)_canShowColor;
 - (BOOL)_canShowCopies;
 - (BOOL)_canShowDuplex;

@@ -6,11 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableDictionary;
+#import <SafariShared/WBSQuickWebsiteSearchProviderDelegate-Protocol.h>
+
+@class NSArray, NSMutableDictionary, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
-@interface WBSQuickWebsiteSearchController : NSObject
+@interface WBSQuickWebsiteSearchController : NSObject <WBSQuickWebsiteSearchProviderDelegate>
 {
+    NSURL *_searchDescriptionsURL;
+    BOOL _hasBegunLoadingFromDisk;
     NSObject<OS_dispatch_queue> *_quickWebsiteSearchProvidersBySourcePageURLStringAccessQueue;
     NSMutableDictionary *_quickWebsiteSearchProvidersByHost;
     NSMutableDictionary *_openSearchDescriptionsByDescriptionDocumentURLString;
@@ -19,8 +23,12 @@
     BOOL _quickWebsiteSearchProvidersLoadedFromDisk;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *quickWebsiteSearchHosts;
 @property BOOL quickWebsiteSearchProvidersLoadedFromDisk; // @synthesize quickWebsiteSearchProvidersLoadedFromDisk=_quickWebsiteSearchProvidersLoadedFromDisk;
+@property (readonly) Class superclass;
 
 + (id)sharedController;
 - (id).cxx_construct;
@@ -29,23 +37,23 @@
 - (id)_dictionaryRepresentation;
 - (void)_didCollectOpenSearchDescription:(id)arg1;
 - (void)_didFinishLoadingFromDisk;
+- (id)_initWithSearchDescriptionsURL:(id)arg1;
 - (void)_loadFromDisk;
 - (void)_pruneUnusedQuickWebsiteSearchProviders;
 - (BOOL)_quickWebsiteSearchProviderHasSearchURLTemplateStringOnAccessQueue:(id)arg1;
 - (void)_removeHost:(id)arg1 fromOpenSearchDescriptionWithDocumentURL:(id)arg2;
 - (void)_resetCachedDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_saveToDiskSoon;
-- (id)_searchDescriptionsURL;
 - (void)_sendNotification:(id)arg1 forQuickWebsiteSearchProvider:(id)arg2;
 - (BOOL)_shouldRemoveQuickWebsiteSearchProvider:(id)arg1;
 - (void)beginLoadingFromDiskIfNeeded;
 - (void)clear;
 - (void)didPerformSearchWithProvider:(id)arg1;
-- (id)init;
 - (void)noteProvidersAreStale;
 - (id)openSearchDescriptionForOpenSearchDescriptionURLString:(id)arg1;
 - (id)providerForSourcePageURLString:(id)arg1;
 - (id)providersMatchingQueryString:(id)arg1;
+- (id)quickWebsiteSearchProvider:(id)arg1 openSearchDescriptionForOpenSearchDescriptionURLString:(id)arg2;
 - (void)removeProviderWithHost:(id)arg1;
 - (void)removeProvidersAddedAfterDate:(id)arg1 beforeDate:(id)arg2;
 - (void)removeProvidersWithHosts:(id)arg1;

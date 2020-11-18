@@ -15,6 +15,7 @@
 }
 
 @property (copy, nonatomic) NSString *answer;
+@property (copy, nonatomic) NSString *confidenceLevel;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -23,10 +24,8 @@
 
 + (id)directAnswer;
 + (id)directAnswerWithDictionary:(id)arg1 context:(id)arg2;
-- (id)confidenceLevel;
 - (id)encodedClassName;
 - (id)groupIdentifier;
-- (void)setConfidenceLevel:(id)arg1;
 
 @end
 

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     _CSIRenditionBlockData *_cachedBlockDataRGBX;
     unsigned long long _sourceRowbytes;
     NSMutableArray *_layers;
+    struct CGSize _unslicedSize;
 }
 
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)sliceInformation;
 - (unsigned long long)sourceRowbytes;
 - (struct CGImage *)unslicedImage;
+- (struct CGSize)unslicedSize;
 
 @end
 

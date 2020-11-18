@@ -12,19 +12,20 @@ __attribute__((visibility("hidden")))
 @interface VKIconAtlas : NSObject
 {
     VKPIconPack *_iconPack;
-    struct _GEOGenericContainer<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, id, std::__1::hash<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>, std::__1::equal_to<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>, geo::GEOGenericContainerWeakReferenceTag, 0, 0, geo::GEOGenericContainerLockingTag, detail::_default_pointer_type> _artworkPool;
+    struct _GEOGenericContainer<md::IconCacheKey, id, std::__1::hash<md::IconCacheKey>, std::__1::equal_to<md::IconCacheKey>, geo::GEOGenericContainerWeakReferenceTag, 0, 0, geo::GEOGenericContainerLockingTag, detail::_default_pointer_type> _artworkPool;
     NSMapTable *_atlasToImages;
     NSLock *_atlasToImagesLock;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)_artworkForBaseImage:(struct CGImage *)arg1 additionalImage:(struct CGImage *)arg2 cacheKey:(id)arg3 style:(struct VKIconStyleInfo *)arg4 contentScale:(double)arg5;
+- (id)_artworkForBaseImage:(struct CGImage *)arg1 additionalImage:(struct CGImage *)arg2 fullBleedColor:(struct CGColor *)arg3 style:(struct VKIconStyleInfo *)arg4 contentScale:(double)arg5 hasText:(BOOL)arg6;
 - (struct CGImage *)_createImageForIconInfo:(id)arg1 contentScale:(double)arg2;
 - (struct CGImage *)_createImageForName:(id)arg1 contentScale:(double)arg2 size:(long long)arg3;
-- (id)artworkForName:(id)arg1 style:(struct VKIconStyleInfo *)arg2 contentScale:(double)arg3 size:(long long)arg4;
-- (id)artworkForStyleAttributeKey:(unsigned int)arg1 longValue:(unsigned long long)arg2 style:(struct VKIconStyleInfo *)arg3 contentScale:(double)arg4 size:(long long)arg5;
-- (id)artworkForStyleAttributeKey:(unsigned int)arg1 value:(unsigned int)arg2 style:(struct VKIconStyleInfo *)arg3 contentScale:(double)arg4 size:(long long)arg5;
+- (struct CGColor *)_newFullBleedColorForName:(id)arg1 contentScale:(double)arg2;
+- (id)artworkForName:(id)arg1 style:(struct VKIconStyleInfo *)arg2 contentScale:(double)arg3 size:(long long)arg4 hasText:(BOOL)arg5 includeFullBleedColor:(BOOL)arg6;
+- (id)artworkForStyleAttributeKey:(unsigned int)arg1 longValue:(unsigned long long)arg2 style:(struct VKIconStyleInfo *)arg3 contentScale:(double)arg4 size:(long long)arg5 includeFullBleedColor:(BOOL)arg6;
+- (id)artworkForStyleAttributeKey:(unsigned int)arg1 value:(unsigned int)arg2 style:(struct VKIconStyleInfo *)arg3 contentScale:(double)arg4 size:(long long)arg5 hasText:(BOOL)arg6 includeFullBleedColor:(BOOL)arg7;
 - (void)dealloc;
 - (id)init;
 - (id)initWithIconPack:(id)arg1;

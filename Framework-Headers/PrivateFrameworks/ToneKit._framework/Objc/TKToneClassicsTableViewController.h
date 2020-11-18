@@ -14,17 +14,17 @@
 
 @interface TKToneClassicsTableViewController : UITableViewController <TKTonePickerTableViewLayoutMarginsObserver, TKTonePickerTableViewSeparatorObserver>
 {
-    id<TKTonePickerTableViewControllerHelper> _tonePickerTableViewControllerHelper;
     TKTonePickerItem *_classicTonesHeaderItem;
+    id<TKTonePickerTableViewControllerHelper> _tonePickerTableViewControllerHelper;
 }
 
-@property (strong, nonatomic, setter=_setClassicTonesHeaderItem:) TKTonePickerItem *_classicTonesHeaderItem; // @synthesize _classicTonesHeaderItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (nonatomic) id<TKTonePickerTableViewControllerHelper> tonePickerTableViewControllerHelper; // @synthesize tonePickerTableViewControllerHelper=_tonePickerTableViewControllerHelper;
+@property (weak, nonatomic) id<TKTonePickerTableViewControllerHelper> tonePickerTableViewControllerHelper; // @synthesize tonePickerTableViewControllerHelper=_tonePickerTableViewControllerHelper;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)didReloadTones;
 - (void)didUpdateCheckedStatus:(BOOL)arg1 ofToneClassicsPickerItem:(id)arg2;

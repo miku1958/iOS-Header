@@ -16,6 +16,7 @@
 @property (copy, nonatomic) NSNumber *emergencyCall;
 @property (nonatomic) BOOL faceTime;
 @property (nonatomic) BOOL faceTimeAudio;
+@property (nonatomic) BOOL handsFreeCall;
 @property (nonatomic) BOOL speakerphoneCall;
 
 + (id)call;

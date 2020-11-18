@@ -48,6 +48,7 @@
 - (id)commonMetadata;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (long long)defaultAlternateGroupID;
 - (id)description;
 - (struct CGSize)dimensions;
 - (float)estimatedDataRate;
@@ -82,6 +83,7 @@
 - (int)playabilityValidationResult;
 - (struct CGAffineTransform)preferredTransform;
 - (float)preferredVolume;
+- (long long)provisionalAlternateGroupID;
 - (BOOL)requiresFrameReordering;
 - (CDStruct_1b6d18a9)samplePresentationTimeForTrackTime:(CDStruct_1b6d18a9)arg1;
 - (id)segmentForTrackTime:(CDStruct_1b6d18a9)arg1;

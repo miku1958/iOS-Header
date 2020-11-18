@@ -7,15 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <CompanionSync/SYChangeSerializer-Protocol.h>
+#import <CompanionSync/SYStateLoggable-Protocol.h>
 
-@class NSDictionary, NSError, NSMutableSet, NSString, SYService;
+@class NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSString, PBCodable, SYService;
 @protocol OS_dispatch_queue, SYChangeSerializer, SYSessionDelegate;
 
-@interface SYSession : NSObject <SYChangeSerializer>
+@interface SYSession : NSObject <SYChangeSerializer, SYStateLoggable>
 {
-    NSObject<OS_dispatch_queue> *_targetQueue;
-    int _inTransaction;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
+    _Atomic BOOL _inTransaction;
     NSMutableSet *_pendingMessageIDs;
+    BOOL _rejectedNewSessionFromSamePeer;
+    BOOL _sessionStarted;
     BOOL _isSending;
     long long _priority;
     id<SYSessionDelegate> _delegate;
@@ -31,6 +34,8 @@
     NSDictionary *_sessionMetadata;
     NSObject<OS_dispatch_queue> *_queue;
     double _birthDate;
+    unsigned long long _sessionSignpost;
+    NSMutableDictionary *_peerGenerationIDs;
 }
 
 @property (nonatomic) double birthDate; // @synthesize birthDate=_birthDate;
@@ -47,14 +52,18 @@
 @property (readonly, nonatomic) BOOL isSending; // @synthesize isSending=_isSending;
 @property (nonatomic) long long maxConcurrentMessages; // @synthesize maxConcurrentMessages=_maxConcurrentMessages;
 @property (copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
+@property (copy, nonatomic) NSMutableDictionary *peerGenerationIDs; // @synthesize peerGenerationIDs=_peerGenerationIDs;
 @property (nonatomic) double perMessageTimeout; // @synthesize perMessageTimeout=_perMessageTimeout;
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (readonly, nonatomic) unsigned long long protocolVersion;
 @property (readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (readonly, nonatomic) double remainingSessionTime;
 @property (strong, nonatomic) id<SYChangeSerializer> serializer; // @synthesize serializer=_serializer;
 @property (readonly, weak, nonatomic) SYService *service; // @synthesize service=_service;
 @property (copy, nonatomic) NSDictionary *sessionMetadata; // @synthesize sessionMetadata=_sessionMetadata;
+@property (nonatomic) unsigned long long sessionSignpost; // @synthesize sessionSignpost=_sessionSignpost;
 @property long long state;
+@property (readonly, nonatomic) PBCodable *stateForLogging;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *targetQueue;
 @property (strong, nonatomic) NSDictionary *userContext; // @synthesize userContext=_userContext;
@@ -63,6 +72,7 @@
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 - (void).cxx_destruct;
+- (id)CPObfuscatedDescription;
 - (BOOL)_beginTransaction;
 - (id)_cancelPendingMessagesReturningFailures;
 - (void)_clearOutgoingMessageUUID:(id)arg1;
@@ -78,14 +88,18 @@
 - (BOOL)_handleSyncBatchResponse:(id)arg1 error:(id *)arg2;
 - (void)_pause;
 - (void)_peerProcessedMessageWithIdentifier:(id)arg1 userInfo:(id)arg2;
+- (BOOL)_readyToProcessIncomingMessages;
 - (void)_recordOutgoingMessageUUID:(id)arg1;
 - (void)_resolvedIdentifier:(id)arg1 forResponse:(id)arg2;
 - (void)_resolvedIdentifierForRequest:(id)arg1;
 - (void)_sentMessageWithIdentifier:(id)arg1 userInfo:(id)arg2;
 - (void)_setStateQuietly:(long long)arg1;
 - (void)_supercededWithSession:(id)arg1;
+- (BOOL)_willAcquiesceToNewSessionFromPeer:(id)arg1;
 - (void)cancel;
+- (void)cancelWithError:(id)arg1;
 - (id)changeFromData:(id)arg1 ofType:(long long)arg2;
+- (id)combinedEngineOptions:(id)arg1;
 - (id)dataFromChange:(id)arg1;
 - (void)dealloc;
 - (id)decodeChangeData:(id)arg1 fromProtocolVersion:(long long)arg2 ofType:(long long)arg3;

@@ -47,11 +47,13 @@ __attribute__((visibility("hidden")))
 - (void)_updateCollectionView;
 - (void)_updateCollectionViewInsets;
 - (void)_updateEffectSelection;
+- (void)basePhotoInvalidated;
 - (BOOL)canResetToDefaultValue;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (BOOL)installLivePhotoPlaybackGestureRecognizer:(id)arg1;
 - (BOOL)installTogglePreviewGestureRecognizer:(id)arg1;
 - (id)localizedName;
 - (id)localizedResetToolActionTitle;

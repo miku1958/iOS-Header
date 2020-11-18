@@ -8,7 +8,7 @@
 
 #import <UIKit/NSSecureCoding-Protocol.h>
 
-@class CLRegion, NSCalendar, NSData, NSDate, NSString, NSTimeZone;
+@class CLRegion, NSCalendar, NSData, NSDate, NSNumber, NSString, NSTimeZone;
 
 __attribute__((visibility("hidden")))
 @interface UIConcreteLocalNotification : UILocalNotification <NSSecureCoding>
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     BOOL hideAlertTitle;
     BOOL allowSnooze;
     int soundType;
+    NSNumber *audioVolume;
     BOOL interruptAudioAndLockDevice;
     BOOL resumeApplicationInBackground;
     BOOL fireNotificationsWhenAppRunning;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
     NSString *vibrationName;
     BOOL isTransient;
     BOOL fromSnooze;
+    NSString *threadIdentifier;
 }
 
 + (BOOL)supportsSecureCoding;
@@ -54,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (id)alertTitle;
 - (BOOL)allowSnooze;
 - (long long)applicationIconBadgeNumber;
+- (id)audioVolume;
 - (id)category;
 - (void)clearNonSystemProperties;
 - (long long)compareFireDates:(id)arg1;
@@ -74,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isFromSnooze;
 - (BOOL)isTransient;
 - (BOOL)isTriggeredByDate;
+- (BOOL)isTriggeredByRegion;
 - (BOOL)isValid;
 - (id)nextFireDateAfterDate:(id)arg1 localTimeZone:(id)arg2;
 - (id)nextFireDateForLastFireDate:(id)arg1;
@@ -89,6 +93,7 @@ __attribute__((visibility("hidden")))
 - (void)setAlertTitle:(id)arg1;
 - (void)setAllowSnooze:(BOOL)arg1;
 - (void)setApplicationIconBadgeNumber:(long long)arg1;
+- (void)setAudioVolume:(id)arg1;
 - (void)setCategory:(id)arg1;
 - (void)setCustomLockSliderLabel:(id)arg1;
 - (void)setFireDate:(id)arg1;
@@ -109,6 +114,8 @@ __attribute__((visibility("hidden")))
 - (void)setSnoozedNotificationName:(id)arg1;
 - (void)setSoundName:(id)arg1;
 - (void)setSoundType:(int)arg1;
+- (void)setSoundVolume:(float)arg1;
+- (void)setThreadIdentifier:(id)arg1;
 - (void)setTimeZone:(id)arg1;
 - (void)setTotalRepeatCount:(int)arg1;
 - (void)setUserInfo:(id)arg1;
@@ -117,6 +124,8 @@ __attribute__((visibility("hidden")))
 - (id)snoozedNotificationName;
 - (id)soundName;
 - (int)soundType;
+- (float)soundVolume;
+- (id)threadIdentifier;
 - (id)timeZone;
 - (int)totalRepeatCount;
 - (id)userInfo;

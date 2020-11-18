@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _HKIdentifierLookupTable : NSObject
 {
     NSMapTable *_identifierMapTable;
-    int _lookupTableSpinLock;
+    struct os_unfair_lock_s _lookupTableSpinLock;
 }
 
 - (void).cxx_destruct;

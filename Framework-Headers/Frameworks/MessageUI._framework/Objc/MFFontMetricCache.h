@@ -19,6 +19,8 @@
 - (void)_invalidateCache;
 - (double)cachedFloat:(CDUnknownBlockType)arg1 forKey:(id)arg2;
 - (id)cachedFont:(CDUnknownBlockType)arg1 forKey:(id)arg2;
+- (id)cachedPreferredFontForStyle:(id)arg1;
+- (double)cachedScaledFloatWithValue:(double)arg1 fontStyle:(id)arg2;
 - (void)dealloc;
 - (BOOL)ensureCacheIsValid;
 - (id)init;

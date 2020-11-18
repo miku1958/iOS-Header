@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/PKPassLibraryDelegate-Protocol.h>
 
@@ -41,6 +41,7 @@
 @property (nonatomic) BOOL shouldSeparatePaymentPasses; // @synthesize shouldSeparatePaymentPasses=_shouldSeparatePaymentPasses;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_copyRemoteCatalog;
 - (unsigned long long)_destinationIndexForGroupID:(id)arg1 catalogGroups:(id)arg2 skippingNewGroupsAfterIndex:(unsigned long long)arg3;
 - (void)_fixIndex:(unsigned long long)arg1;

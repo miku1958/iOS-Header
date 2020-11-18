@@ -11,7 +11,7 @@
 @interface HDDiagnosticManager : NSObject
 {
     NSHashTable *_objects;
-    int _lock;
+    struct os_unfair_lock_s _lock;
 }
 
 + (id)sharedDiagnosticManager;

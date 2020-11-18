@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _block;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 - (id)subscribe:(id)arg1;
 

@@ -20,6 +20,7 @@
 @property (copy, nonatomic) NSString *domainObjectPropertyIdentifier;
 @property (copy, nonatomic) NSString *fullName;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *language;
 @property (copy, nonatomic) NSString *orthography;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSNumber *tokenOffset;

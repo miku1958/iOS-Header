@@ -22,20 +22,17 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic, setter=_setAlbumListViewController:) PUAlbumListViewController *_albumListViewController; // @synthesize _albumListViewController=__albumListViewController;
-@property (strong, nonatomic) PUAlbumPickerSessionInfo *albumPickerSessionInfo; // @synthesize albumPickerSessionInfo=_albumPickerSessionInfo;
+@property (strong, nonatomic, setter=_setSessionInfo:) PUAlbumPickerSessionInfo *albumPickerSessionInfo; // @synthesize albumPickerSessionInfo=_albumPickerSessionInfo;
 @property (strong, nonatomic) PHCollectionList *collectionList; // @synthesize collectionList=_collectionList;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property (strong, nonatomic) UINavigationController *contentNavigationController; // @synthesize contentNavigationController=_contentNavigationController;
+@property (strong, nonatomic, setter=_setContentNavigationController:) UINavigationController *contentNavigationController; // @synthesize contentNavigationController=_contentNavigationController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) PUAlbumPickerViewControllerSpec *spec; // @synthesize spec=_spec;
+@property (strong, nonatomic, setter=_setSpec:) PUAlbumPickerViewControllerSpec *spec; // @synthesize spec=_spec;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_setContentNavigationController:(id)arg1;
-- (void)_setSessionInfo:(id)arg1;
-- (void)_setSpec:(id)arg1;
 - (void)dealloc;
 - (void)didReceiveMemoryWarning;
 - (id)initWithSpec:(id)arg1 sessionInfo:(id)arg2;

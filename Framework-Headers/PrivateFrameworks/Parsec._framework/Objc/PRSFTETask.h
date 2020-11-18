@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (BOOL)allowLocation;
 - (id)initWithReply:(CDUnknownBlockType)arg1;
+- (BOOL)needsBag;
 - (void)triggerQuery:(BOOL)arg1;
 
 @end

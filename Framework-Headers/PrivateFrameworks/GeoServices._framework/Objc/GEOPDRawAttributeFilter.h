@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *keys; // @synthesize keys=_keys;
 
++ (Class)keyType;
 - (void)addKey:(id)arg1;
 - (void)clearKeys;
 - (void)copyTo:(id)arg1;

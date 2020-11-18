@@ -8,15 +8,18 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEOPDGeocodingResult : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_disambiguationLabels;
 }
 
 @property (strong, nonatomic) NSMutableArray *disambiguationLabels; // @synthesize disambiguationLabels=_disambiguationLabels;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)disambiguationLabelType;
 - (void)addDisambiguationLabel:(id)arg1;
 - (void)clearDisambiguationLabels;
 - (void)copyTo:(id)arg1;

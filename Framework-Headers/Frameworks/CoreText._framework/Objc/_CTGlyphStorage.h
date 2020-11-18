@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (long long)attachmentCountAtIndex:(long long)arg1;
 - (id)copyWithRange:(CDStruct_912cb5d2)arg1;
 - (void)disposeGlyphStack;
+- (BOOL)implementsOrigins;
 - (void)initGlyphStackWithCapacity:(long long)arg1;
 - (id)initWithCount:(long long)arg1;
 - (void)insertGlyphsAtRange:(CDStruct_912cb5d2)arg1;

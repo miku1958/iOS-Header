@@ -20,10 +20,9 @@
 - (void)_showVideoOverlay;
 - (void)_updateScrubberVisibilityWithDuration:(double)arg1;
 - (void)_videoOverlayFadeOutDidFinish;
-- (id)accessibilityContainerElements;
+- (id)accessibilityElements;
 - (id)accessibilityLabel;
 - (id)accessibilityURL;
-- (void)dealloc;
 - (BOOL)isAccessibilityElement;
 - (void)viewDidDisappear;
 

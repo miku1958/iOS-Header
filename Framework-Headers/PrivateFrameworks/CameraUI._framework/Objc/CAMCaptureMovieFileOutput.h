@@ -36,8 +36,6 @@
 @property (weak, nonatomic) id<AVCaptureFileOutputRecordingDelegate> wrappedDelegate; // @synthesize wrappedDelegate=_wrappedDelegate;
 
 - (void).cxx_destruct;
-- (void)_incrementSettingsIDAndStoreCaptureUserInfo;
-- (void)_userInfoQueueIncrementSettingsID;
 - (void)captureOutput:(id)arg1 didFinishRecordingToOutputFileAtURL:(id)arg2 fromConnections:(id)arg3 error:(id)arg4;
 - (void)captureOutput:(id)arg1 didStartRecordingToOutputFileAtURL:(id)arg2 fromConnections:(id)arg3;
 - (void)handleNotification:(id)arg1 payload:(id)arg2;

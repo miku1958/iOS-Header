@@ -29,11 +29,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_logDoesNotRespond:(SEL)arg1;
 - (void)_sendClientRequest:(CDUnknownBlockType)arg1;
 - (void)addBulletin:(id)arg1 forDestinations:(unsigned long long)arg2;
-- (void)attachmentAspectRatioForRecordID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)attachmentPNGDataForRecordID:(id)arg1 sizeConstraints:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)bulletinsWithRequestParameters:(id)arg1 lastCleared:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)calloutToServer:(CDUnknownBlockType)arg1;
 - (BOOL)canPerformMigration;
@@ -45,15 +44,17 @@
 - (void)dealloc;
 - (id)debugDescriptionWithChildren:(unsigned long long)arg1;
 - (void)deliverMessageWithName:(id)arg1 userInfo:(id)arg2;
-- (void)deliverResponse:(id)arg1 forBulletinRequest:(id)arg2;
+- (void)deliverResponse:(id)arg1 forBulletinRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)getAspectRatioForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)getClearedInfoWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getDataForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
+- (void)getPNGDataForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(BOOL)arg3 sizeConstraints:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
 - (void)getSectionInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithSectionID:(id)arg1 delegate:(id)arg2;
 - (void)invalidateBulletins;
 - (BOOL)migrateSectionInfo:(id)arg1 oldSectionInfo:(id)arg2;
 - (void)modifyBulletin:(id)arg1;
 - (void)noteSectionInfoDidChange:(id)arg1;
-- (void)primaryAttachmentDataForRecordID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)reloadDefaultSectionInfo:(id)arg1;
 - (void)reloadIdentityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)reloadSectionParameters:(id)arg1;

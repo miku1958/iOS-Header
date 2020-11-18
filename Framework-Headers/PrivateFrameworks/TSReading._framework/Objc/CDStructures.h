@@ -576,6 +576,7 @@ struct TSWPLineFragment {
     id _field32;
     double _field33;
     id _field34;
+    struct CGColor *_field35;
 };
 
 struct TSWPLineFragmentArray;
@@ -724,7 +725,10 @@ struct __hash_node<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPD
 
 struct __hash_node<std::__1::pair<unsigned int, SFUtility::ObjcSharedPtr<NSObject>>, void *>;
 
-struct __list_node<unsigned long, void *>;
+struct __list_node_base<unsigned long, void *> {
+    struct __list_node_base<unsigned long, void *> *__prev_;
+    struct __list_node_base<unsigned long, void *> *__next_;
+};
 
 struct __shared_weak_count;
 
@@ -1096,10 +1100,7 @@ struct in_addr {
 };
 
 struct list<unsigned long, std::__1::allocator<unsigned long>> {
-    struct __list_node_base<unsigned long, void *> {
-        struct __list_node<unsigned long, void *> *__prev_;
-        struct __list_node<unsigned long, void *> *__next_;
-    } __end_;
+    struct __list_node_base<unsigned long, void *> __end_;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<unsigned long, void *>>> {
         unsigned long long __first_;
     } __size_alloc_;
@@ -1477,6 +1478,10 @@ struct map<unsigned short, unsigned long, std::__1::less<unsigned short>, std::_
     } _field1;
 };
 
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
 struct pair<unsigned long, unsigned short>;
 
 struct path_descr;
@@ -1793,6 +1798,14 @@ struct vector<TSWPLineRef, std::__1::allocator<TSWPLineRef>> {
     struct __compressed_pair<TSWPLineRef *, std::__1::allocator<TSWPLineRef>> {
         struct TSWPLineRef *_field1;
     } _field3;
+};
+
+struct vector<TSWPRepBoundsAnalyzer::Info, std::__1::allocator<TSWPRepBoundsAnalyzer::Info>> {
+    struct Info *__begin_;
+    struct Info *__end_;
+    struct __compressed_pair<TSWPRepBoundsAnalyzer::Info *, std::__1::allocator<TSWPRepBoundsAnalyzer::Info>> {
+        struct Info *__first_;
+    } __end_cap_;
 };
 
 struct vector<TSWPStorageTransactionObject, std::__1::allocator<TSWPStorageTransactionObject>> {

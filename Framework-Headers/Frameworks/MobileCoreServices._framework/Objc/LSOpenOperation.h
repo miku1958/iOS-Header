@@ -6,7 +6,8 @@
 
 #import <Foundation/NSOperation.h>
 
-@class NSDictionary, NSString, NSURL;
+@class NSDictionary, NSError, NSString, NSURL, NSXPCConnection;
+@protocol LSOpenResourceOperationDelegate;
 
 __attribute__((visibility("hidden")))
 @interface LSOpenOperation : NSOperation
@@ -18,16 +19,21 @@ __attribute__((visibility("hidden")))
     NSURL *_resourceURL;
     NSString *_applicationIdentifier;
     NSString *_documentIdentifier;
-    id _userInfoPlist;
+    NSDictionary *_userInfoPlist;
     NSDictionary *_options;
-    id _delegate;
-    int _result;
+    id<LSOpenResourceOperationDelegate> _delegate;
+    BOOL _didSucceed;
+    NSError *_error;
+    NSXPCConnection *_XPCConnection;
 }
 
+@property (strong, nonatomic) NSXPCConnection *XPCConnection; // @synthesize XPCConnection=_XPCConnection;
+@property (nonatomic) BOOL didSucceed; // @synthesize didSucceed=_didSucceed;
+@property (copy, nonatomic) NSError *error; // @synthesize error=_error;
+
++ (id)queue;
 - (void)completeOperation;
 - (void)dealloc;
-- (BOOL)didSucceed;
-- (id)error;
 - (id)initForOpeningResource:(id)arg1 usingApplication:(id)arg2 uniqueDocumentIdentifier:(id)arg3 sourceIsManaged:(BOOL)arg4 userInfo:(id)arg5 options:(id)arg6 delegate:(id)arg7;
 - (BOOL)isConcurrent;
 - (BOOL)isExecuting;

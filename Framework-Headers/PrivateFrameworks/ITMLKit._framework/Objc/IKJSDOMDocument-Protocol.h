@@ -6,7 +6,7 @@
 
 #import <ITMLKit/JSExport-Protocol.h>
 
-@class IKDOMCDATASection, IKDOMComment, IKDOMDocument, IKDOMDocumentFragment, IKDOMElement, IKDOMImplementation, IKDOMNode, IKDOMNodeList, IKDOMText, IKJSNavigationDocument, NSArray, NSDictionary, NSString;
+@class IKDOMCDATASection, IKDOMComment, IKDOMDocument, IKDOMDocumentFragment, IKDOMElement, IKDOMImplementation, IKDOMNode, IKDOMNodeList, IKDOMText, IKJSNavigationDocument, JSValue, NSArray, NSDictionary, NSString;
 
 @protocol IKJSDOMDocument <JSExport>
 
@@ -28,7 +28,8 @@
 - (IKDOMText *)createTextNode:(NSString *)arg1;
 - (IKDOMElement *)getElementById:(NSString *)arg1;
 - (IKDOMNodeList *)getElementsByTagName:(NSString *)arg1;
-- (NSArray *)recordedImpressions;
+- (NSArray *)matchingImpressions:(NSString *)arg1:(JSValue *)arg2;
+- (NSArray *)recordedImpressions:(JSValue *)arg1;
 - (void)replace:(IKDOMDocument *)arg1;
 - (void)runTest:(NSString *)arg1:(NSDictionary *)arg2;
 - (void)scrollToTop;

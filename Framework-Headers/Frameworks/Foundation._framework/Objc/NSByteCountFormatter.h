@@ -6,12 +6,7 @@
 
 #import <Foundation/NSFormatter.h>
 
-#import <Foundation/NSObservable-Protocol.h>
-#import <Foundation/NSObserver-Protocol.h>
-
-@class NSString;
-
-@interface NSByteCountFormatter : NSFormatter <NSObservable, NSObserver>
+@interface NSByteCountFormatter : NSFormatter
 {
     unsigned int _allowedUnits;
     BOOL _countStyle;
@@ -29,14 +24,10 @@
 @property unsigned long long allowedUnits;
 @property BOOL allowsNonnumericFormatting; // @synthesize allowsNonnumericFormatting=_allowsNonnumericFormatting;
 @property long long countStyle;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property long long formattingContext;
-@property (readonly) unsigned long long hash;
 @property BOOL includesActualByteCount; // @synthesize includesActualByteCount=_includesActualByteCount;
 @property BOOL includesCount; // @synthesize includesCount=_includesCount;
 @property BOOL includesUnit; // @synthesize includesUnit=_includesUnit;
-@property (readonly) Class superclass;
 @property BOOL zeroPadsFractionDigits; // @synthesize zeroPadsFractionDigits=_zeroPadsFractionDigits;
 
 + (id)stringFromByteCount:(long long)arg1 countStyle:(long long)arg2;
@@ -48,7 +39,6 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isPartialStringValid:(id *)arg1 proposedSelectedRange:(struct _NSRange *)arg2 originalString:(id)arg3 originalSelectedRange:(struct _NSRange)arg4 errorDescription:(id *)arg5;
-- (void)receiveObservedValue:(id)arg1;
 - (id)stringForObjectValue:(id)arg1;
 - (id)stringFromByteCount:(long long)arg1;
 

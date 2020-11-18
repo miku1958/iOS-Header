@@ -10,7 +10,7 @@
 
 @interface GEOLeaveNowFeedbackCollection : PBCodable <NSCopying>
 {
-    CDStruct_612aec5b _sessionID;
+    struct GEOSessionID _sessionID;
     double _currentTimestamp;
     double _eventTimestamp;
     double _travelDuration;
@@ -39,10 +39,15 @@
 @property (nonatomic) BOOL hasSessionID;
 @property (nonatomic) BOOL hasTravelDuration;
 @property (nonatomic) BOOL hasTravelState;
-@property (nonatomic) CDStruct_612aec5b sessionID; // @synthesize sessionID=_sessionID;
+@property (nonatomic) struct GEOSessionID sessionID; // @synthesize sessionID=_sessionID;
 @property (nonatomic) double travelDuration; // @synthesize travelDuration=_travelDuration;
 @property (nonatomic) int travelState; // @synthesize travelState=_travelState;
 
+- (int)StringAsActionType:(id)arg1;
+- (int)StringAsAlertType:(id)arg1;
+- (int)StringAsTravelState:(id)arg1;
+- (id)actionTypeAsString:(int)arg1;
+- (id)alertTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -51,6 +56,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)travelStateAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

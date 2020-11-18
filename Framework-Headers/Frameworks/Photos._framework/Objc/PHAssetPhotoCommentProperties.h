@@ -4,25 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Photos/PHAssetPropertySet.h>
 
-@class PHAsset;
-
-@interface PHAssetPhotoCommentProperties : NSObject
+@interface PHAssetPhotoCommentProperties : PHAssetPropertySet
 {
     BOOL _hasUserLiked;
-    PHAsset *_asset;
     unsigned long long _commentCount;
     unsigned long long _likeCount;
 }
 
-@property (readonly, weak, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
 @property (readonly, nonatomic) unsigned long long commentCount; // @synthesize commentCount=_commentCount;
 @property (readonly, nonatomic) BOOL hasUserLiked; // @synthesize hasUserLiked=_hasUserLiked;
 @property (readonly, nonatomic) unsigned long long likeCount; // @synthesize likeCount=_likeCount;
 
-- (void).cxx_destruct;
-- (id)initWithFetchDictionaries:(id)arg1 asset:(id)arg2;
++ (id)entityName;
++ (BOOL)isToMany;
++ (id)keyPathFromPrimaryObject;
++ (id)keyPathToPrimaryObject;
++ (id)propertiesToFetch;
++ (id)propertySetName;
+- (id)initWithFetchDictionary:(id)arg1 asset:(id)arg2 prefetched:(BOOL)arg3;
 
 @end
 

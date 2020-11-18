@@ -19,6 +19,8 @@
     long long _fullSizeRenderWidth;
     long long _fullSizeRenderHeight;
     NSData *_penultimateRenderedJPEGData;
+    NSURL *_renderedVideoComplementContentURL;
+    NSURL *_penultimateRenderedVideoComplementContentURL;
     NSURL *_editorBundleURL;
     long long _mediaType;
 }
@@ -31,12 +33,16 @@
 @property (nonatomic) BOOL isSubstandardRender; // @synthesize isSubstandardRender=_isSubstandardRender;
 @property (readonly) long long mediaType; // @synthesize mediaType=_mediaType;
 @property (strong) NSData *penultimateRenderedJPEGData; // @synthesize penultimateRenderedJPEGData=_penultimateRenderedJPEGData;
+@property (copy) NSURL *penultimateRenderedVideoComplementContentURL; // @synthesize penultimateRenderedVideoComplementContentURL=_penultimateRenderedVideoComplementContentURL;
 @property (copy) NSURL *renderedContentURL; // @synthesize renderedContentURL=_renderedContentURL;
+@property (copy) NSURL *renderedVideoComplementContentURL; // @synthesize renderedVideoComplementContentURL=_renderedVideoComplementContentURL;
 
 + (unsigned long long)maximumAdjustmentDataLength;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_commonInit;
+- (id)_renderURLWithExtensionForMediaType:(long long)arg1;
+- (id)assetAdjustmentsWithEditorBundleID:(id)arg1;
 - (void)clearRenderedContentURL;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

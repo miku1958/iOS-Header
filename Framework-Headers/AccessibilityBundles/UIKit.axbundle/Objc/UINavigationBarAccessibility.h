@@ -19,15 +19,12 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityOnlyComparesByXAxis;
 - (BOOL)_canHandleStatusBarMouseEvents:(struct __GSEvent *)arg1;
-- (void)_navBarButtonPressed:(id)arg1;
 - (void)_setLeftViews:(id)arg1 rightViews:(id)arg2;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (BOOL)accessibilityPerformEscape;
 - (unsigned long long)accessibilityTraits;
 - (void)layoutSubviews;
-- (void)popNavigationItem;
-- (id)popNavigationItemAnimated:(BOOL)arg1;
 - (BOOL)shouldGroupAccessibilityChildren;
 
 @end

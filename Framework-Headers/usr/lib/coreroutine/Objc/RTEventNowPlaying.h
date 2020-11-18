@@ -17,17 +17,17 @@
     long long _playbackState;
 }
 
-@property (readonly, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
-@property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
-@property (readonly, nonatomic) long long playbackState; // @synthesize playbackState=_playbackState;
+@property (strong, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
+@property (nonatomic) double duration; // @synthesize duration=_duration;
+@property (nonatomic) long long playbackState; // @synthesize playbackState=_playbackState;
 
 + (id)playbackStateToString:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)appLaunchRepresentation;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithBundleId:(id)arg1 duration:(double)arg2 playbackState:(long long)arg3 source:(long long)arg4 startDate:(id)arg5 endDate:(id)arg6 locationIdentifier:(id)arg7;
+- (id)initWithBundleId:(id)arg1 duration:(double)arg2 playbackState:(long long)arg3 source:(long long)arg4 startDate:(id)arg5 endDate:(id)arg6;
 - (id)initWithCoder:(id)arg1;
 
 @end

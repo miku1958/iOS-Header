@@ -38,6 +38,7 @@
 }
 
 @property (nonatomic) long long activityIndicatorViewStyle; // @synthesize activityIndicatorViewStyle=_activityIndicatorViewStyle;
+@property (readonly, nonatomic, getter=isAnimating) BOOL animating;
 @property (readonly, nonatomic) NSString *artBackupKeyString; // @synthesize artBackupKeyString=_artBackupKeyString;
 @property (nonatomic) BOOL clockWise; // @synthesize clockWise=_clockWise;
 @property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
@@ -87,6 +88,7 @@
 - (BOOL)_isArtWorkBased;
 - (BOOL)_isModern;
 - (id)_layoutInfosForStyle:(long long)arg1;
+- (id)_orderedSpokeImagesForStartingAnimation;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)_removeAllAnimations:(BOOL)arg1;
 - (void)_setUpAnimation;
@@ -105,7 +107,6 @@
 - (id)initWithActivityIndicatorStyle:(long long)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (BOOL)isAnimating;
 - (BOOL)isElementAccessibilityExposedToInterfaceBuilder;
 - (BOOL)isHighlighted;
 - (void)setAnimating:(BOOL)arg1;

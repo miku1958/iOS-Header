@@ -8,21 +8,25 @@
 
 #import <HomeKitDaemon/CLLocationManagerDelegate-Protocol.h>
 
-@class CLLocationManager, HMMessageDispatcher, NSHashTable, NSMapTable, NSString;
+@class CLLocationManager, HMFMessageDispatcher, NSHashTable, NSMapTable, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HMDLocation : NSObject <CLLocationManagerDelegate>
 {
+    BOOL _beingConfigured;
     int _locationAuthorized;
     int _authStatus;
-    HMMessageDispatcher *_msgDispatcher;
+    HMFMessageDispatcher *_msgDispatcher;
     NSObject<OS_dispatch_queue> *_handlerQueue;
     CLLocationManager *_locationManager;
     NSHashTable *_locationCallbacks;
     NSMapTable *_regionStateCallbacks;
+    NSMapTable *_pendingRegionMonitoringRequests;
+    NSMapTable *_pendingRegionCallbacks;
 }
 
 @property (nonatomic) int authStatus; // @synthesize authStatus=_authStatus;
+@property (nonatomic) BOOL beingConfigured; // @synthesize beingConfigured=_beingConfigured;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *handlerQueue; // @synthesize handlerQueue=_handlerQueue;
@@ -30,17 +34,26 @@
 @property (nonatomic) int locationAuthorized; // @synthesize locationAuthorized=_locationAuthorized;
 @property (strong, nonatomic) NSHashTable *locationCallbacks; // @synthesize locationCallbacks=_locationCallbacks;
 @property (strong, nonatomic) CLLocationManager *locationManager; // @synthesize locationManager=_locationManager;
-@property (strong, nonatomic) HMMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) NSMapTable *pendingRegionCallbacks; // @synthesize pendingRegionCallbacks=_pendingRegionCallbacks;
+@property (strong, nonatomic) NSMapTable *pendingRegionMonitoringRequests; // @synthesize pendingRegionMonitoringRequests=_pendingRegionMonitoringRequests;
 @property (strong, nonatomic) NSMapTable *regionStateCallbacks; // @synthesize regionStateCallbacks=_regionStateCallbacks;
 @property (readonly) Class superclass;
 
 + (id)_getAlmanacWithLocation:(id)arg1;
++ (id)_getAlmanacWithLocation:(id)arg1 date:(id)arg2;
 + (id)findEvent:(id)arg1 withGeo:(id)arg2;
++ (id)nextSunriseTimeForLocation:(id)arg1 date:(id)arg2;
++ (id)nextSunsetTimeForLocation:(id)arg1 date:(id)arg2;
 + (id)sharedManager;
 + (id)sunriseTimeForLocation:(id)arg1;
 + (id)sunsetTimeForLocation:(id)arg1;
++ (void)timeZoneForCLLocationAsync:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (void)_callDelegate:(id)arg1 withLocation:(id)arg2;
+- (id)_delegateforRegion:(id)arg1;
+- (void)_updateEntryForRegion:(id)arg1;
+- (void)_updateExitForRegion:(id)arg1;
 - (void)_updateRegionState:(long long)arg1 forRegion:(id)arg2;
 - (void)_updateWithLocation:(id)arg1;
 - (void)_updateWithLocationAutorizationStatus:(int)arg1;
@@ -50,7 +63,6 @@
 - (void)extractLocationWithDelegate:(id)arg1;
 - (id)init;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
-- (void)locationManager:(id)arg1 didDetermineState:(long long)arg2 forRegion:(id)arg3;
 - (void)locationManager:(id)arg1 didEnterRegion:(id)arg2;
 - (void)locationManager:(id)arg1 didExitRegion:(id)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;

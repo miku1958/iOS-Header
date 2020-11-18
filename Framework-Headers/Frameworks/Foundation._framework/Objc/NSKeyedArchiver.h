@@ -6,6 +6,7 @@
 
 #import <Foundation/NSCoder.h>
 
+@class NSData;
 @protocol NSKeyedArchiverDelegate;
 
 @interface NSKeyedArchiver : NSCoder
@@ -30,6 +31,7 @@
 }
 
 @property id<NSKeyedArchiverDelegate> delegate;
+@property (readonly) NSData *encodedData;
 @property unsigned long long outputFormat;
 @property BOOL requiresSecureCoding;
 
@@ -38,6 +40,7 @@
 + (id)classNameForClass:(Class)arg1;
 + (void)initialize;
 + (void)setClassName:(id)arg1 forClass:(Class)arg2;
+- (BOOL)_allowsValueCoding;
 - (id)_blobForCurrentObject;
 - (void)_encodeArrayOfObjects:(id)arg1 forKey:(id)arg2;
 - (void)_encodePropertyList:(id)arg1 forKey:(id)arg2;
@@ -66,7 +69,6 @@
 - (void)encodeRootObject:(id)arg1;
 - (void)encodeValueOfObjCType:(const char *)arg1 at:(const void *)arg2;
 - (void)encodeValuesOfObjCTypes:(const char *)arg1;
-- (void)finalize;
 - (void)finishEncoding;
 - (id)init;
 - (id)initForWritingWithMutableData:(id)arg1;

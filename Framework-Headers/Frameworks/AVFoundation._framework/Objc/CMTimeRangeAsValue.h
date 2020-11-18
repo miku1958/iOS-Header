@@ -11,10 +11,17 @@
     CDStruct_e83c9415 _timeRange;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)valueWithCMTimeRange:(CDStruct_e83c9415)arg1;
 - (CDStruct_e83c9415)CMTimeRangeValue;
+- (Class)classForCoder;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (void)getValue:(void *)arg1;
+- (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqualToValue:(id)arg1;
 - (const char *)objCType;
 
 @end

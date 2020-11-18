@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKit/NSSecureCoding-Protocol.h>
 
@@ -19,6 +19,7 @@
     NSString *_encryptionVersion;
     NSData *_publicKeyHash;
     NSString *_issuerIdentifier;
+    NSData *_nonce;
     NSString *_hostApplicationIdentifier;
     NSString *_hostApplicationVersion;
     NSData *_FPInfo;
@@ -32,10 +33,12 @@
 @property (copy, nonatomic) NSString *hostApplicationIdentifier; // @synthesize hostApplicationIdentifier=_hostApplicationIdentifier;
 @property (copy, nonatomic) NSString *hostApplicationVersion; // @synthesize hostApplicationVersion=_hostApplicationVersion;
 @property (copy, nonatomic) NSString *issuerIdentifier; // @synthesize issuerIdentifier=_issuerIdentifier;
+@property (copy, nonatomic) NSData *nonce; // @synthesize nonce=_nonce;
 @property (copy, nonatomic) NSData *publicKeyHash; // @synthesize publicKeyHash=_publicKeyHash;
 @property (copy, nonatomic) NSData *wrappedKey; // @synthesize wrappedKey=_wrappedKey;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (BOOL)_hasRequiredFields:(BOOL)arg1;
 - (BOOL)_hasRequiredThirdPartyFields:(BOOL)arg1;
 - (void)dealloc;

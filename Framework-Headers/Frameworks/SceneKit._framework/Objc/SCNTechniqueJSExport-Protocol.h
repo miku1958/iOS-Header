@@ -7,6 +7,7 @@
 #import <SceneKit/JSExport-Protocol.h>
 
 @class CAAnimation, NSArray, NSDictionary, NSString, SCNTechnique;
+@protocol NSCopying;
 
 @protocol SCNTechniqueJSExport <JSExport>
 
@@ -19,9 +20,11 @@
 - (NSArray *)animationKeys;
 - (id)copy;
 - (void)handleBindingOfSymbol:(NSString *)arg1 usingBlock:(void (^)(unsigned int, unsigned int, SCNNode *, SCNRenderer *))arg2;
+- (id)objectForKeyedSubscript:(id)arg1;
 - (void)pauseAnimationForKey:(NSString *)arg1;
 - (void)removeAllAnimations;
 - (void)removeAnimationForKey:(NSString *)arg1;
 - (void)resumeAnimationForKey:(NSString *)arg1;
+- (void)setObject:(id)arg1 forKeyedSubscript:(id<NSCopying>)arg2;
 @end
 

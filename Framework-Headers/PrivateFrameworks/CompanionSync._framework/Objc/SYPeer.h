@@ -12,9 +12,12 @@
 
 @interface SYPeer : PBCodable <NSCopying>
 {
+    NSString *_generationID;
     NSString *_peerID;
 }
 
+@property (strong, nonatomic) NSString *generationID; // @synthesize generationID=_generationID;
+@property (readonly, nonatomic) BOOL hasGenerationID;
 @property (strong, nonatomic) NSString *peerID; // @synthesize peerID=_peerID;
 
 - (void).cxx_destruct;
@@ -23,7 +26,7 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
-- (id)initWithPeerID:(id)arg1;
+- (id)initWithPeerID:(id)arg1 generation:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

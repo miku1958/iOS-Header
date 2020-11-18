@@ -6,12 +6,13 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVAssetClientURLRequestHelper, AVWeakReference, NSMutableDictionary;
-@protocol OS_dispatch_queue;
+@class AVAssetClientURLRequestHelper, AVAssetResourceLoaderURLSessionDataDelegate, AVWeakReference, NSMutableDictionary, NSOperation, NSOperationQueue, NSURLSession;
+@protocol NSURLSessionDataDelegate, OS_dispatch_queue;
 
 @interface AVAssetResourceLoaderInternal : NSObject
 {
     AVAssetClientURLRequestHelper *URLRequestHelper;
+    AVWeakReference *weakReferenceToAsset;
     NSObject<OS_dispatch_queue> *stateQueue;
     AVWeakReference *weakReferenceToDelegate;
     NSObject<OS_dispatch_queue> *delegateQueue;
@@ -20,6 +21,12 @@
     NSObject<OS_dispatch_queue> *contentInformationCachingQueue;
     NSMutableDictionary *contentInformationCache;
     BOOL preloadsEligibleContentKeys;
+    long long makeResourceLoaderURLSessionSupportStuffOnlyOnce;
+    NSURLSession *URLSession;
+    NSOperation *waitForAssetURLSessionStuffOperation;
+    NSOperationQueue *URLSessionOperationQueue;
+    id<NSURLSessionDataDelegate> URLSessionDataDelegate;
+    AVAssetResourceLoaderURLSessionDataDelegate *shimURLSessionDataDelegate;
 }
 
 @end

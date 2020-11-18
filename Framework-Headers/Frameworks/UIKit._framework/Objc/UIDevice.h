@@ -29,6 +29,7 @@
 @property (nonatomic, getter=isBatteryMonitoringEnabled) BOOL batteryMonitoringEnabled;
 @property (readonly, nonatomic) long long batteryState;
 @property (readonly, strong, nonatomic) NSString *buildVersion;
+@property (readonly, nonatomic, getter=_feedbackSupportLevel) long long feedbackSupportLevel;
 @property (readonly, nonatomic, getter=isGeneratingDeviceOrientationNotifications) BOOL generatesDeviceOrientationNotifications;
 @property (readonly, nonatomic) NSUUID *identifierForVendor;
 @property (readonly, nonatomic) NSString *localizedModel;
@@ -50,15 +51,14 @@
 + (long long)currentDeviceOrientationAllowingAmbiguous:(BOOL)arg1;
 + (id)modelSpecificLocalizedStringKeyForKey:(id)arg1;
 - (void)_clearGraphicsQualityOverride;
-- (id)_defaultSimulatorName;
 - (id)_deviceInfoForKey:(struct __CFString *)arg1;
 - (void)_enableDeviceOrientationEvents:(BOOL)arg1;
 - (long long)_graphicsQuality;
 - (BOOL)_hasGraphicsQualityOverride;
 - (BOOL)_hasTouchPad;
 - (BOOL)_isSystemSoundEnabled;
-- (BOOL)_isTTYEnabled;
 - (long long)_keyboardGraphicsQuality;
+- (long long)_nativeScreenGamut;
 - (void)_playInputDeleteSound;
 - (void)_playInputSelectSound;
 - (void)_playSystemSound:(unsigned int)arg1;
@@ -72,8 +72,8 @@
 - (void)_setHasTouchPad:(BOOL)arg1;
 - (void)_setProximityState:(BOOL)arg1;
 - (float)_softwareDimmingAlpha;
+- (BOOL)_supportsDeepColor;
 - (BOOL)_supportsForceTouch;
-- (BOOL)_supportsHapticFeedback;
 - (id)_tapticEngine;
 - (void)_unregisterForSystemSounds:(id)arg1;
 - (void)_updateSystemSoundActiveStatus:(id)arg1;

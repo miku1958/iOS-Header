@@ -10,6 +10,7 @@
 
 @protocol IKAppKeyboardBridge <NSObject>
 
+@property (copy, nonatomic, setter=setJSSource:) NSString *jsSource;
 @property (copy, nonatomic, setter=setJSText:) NSString *jsText;
 
 @end

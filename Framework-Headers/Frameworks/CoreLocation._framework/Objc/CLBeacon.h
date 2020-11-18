@@ -9,24 +9,19 @@
 #import <CoreLocation/NSCopying-Protocol.h>
 #import <CoreLocation/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSUUID;
+@class CLBeaconInternal, NSNumber, NSUUID;
 
 @interface CLBeacon : NSObject <NSCopying, NSSecureCoding>
 {
-    NSUUID *_proximityUUID;
-    NSNumber *_major;
-    NSNumber *_minor;
-    long long _proximity;
-    double _accuracy;
-    long long _rssi;
+    CLBeaconInternal *_internal;
 }
 
-@property (readonly, nonatomic) double accuracy; // @synthesize accuracy=_accuracy;
-@property (readonly, nonatomic) NSNumber *major; // @synthesize major=_major;
-@property (readonly, nonatomic) NSNumber *minor; // @synthesize minor=_minor;
-@property (readonly, nonatomic) long long proximity; // @synthesize proximity=_proximity;
-@property (readonly, nonatomic) NSUUID *proximityUUID; // @synthesize proximityUUID=_proximityUUID;
-@property (readonly, nonatomic) long long rssi; // @synthesize rssi=_rssi;
+@property (readonly, nonatomic) double accuracy;
+@property (readonly, copy, nonatomic) NSNumber *major;
+@property (readonly, copy, nonatomic) NSNumber *minor;
+@property (readonly, nonatomic) long long proximity;
+@property (readonly, copy, nonatomic) NSUUID *proximityUUID;
+@property (readonly, nonatomic) long long rssi;
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;

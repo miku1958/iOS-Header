@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CloudDocs/BRContainerHelper-Protocol.h>
 
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (BOOL)canFetchAllContainersByID;
-- (id)fetchAllContainersByID;
+- (id)fetchAllContainersByIDWithError:(id *)arg1;
 - (id)fetchContainerForURL:(id)arg1;
 
 @end

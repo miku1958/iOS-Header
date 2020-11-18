@@ -10,7 +10,7 @@
 #import <PhotosUI/UICollectionViewDelegate-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, PUHorizontalCollectionViewLayout, UICollectionView, UIImageView, UITapGestureRecognizer, _UIBackdropView;
+@class NSIndexPath, NSString, PUHorizontalCollectionViewLayout, UICollectionView, UIImageView, UITapGestureRecognizer, _UIBackdropView, _UIFeedbackImpactBehavior;
 @protocol PUReviewScrubberDataSource, PUReviewScrubberDelegate;
 
 __attribute__((visibility("hidden")))
@@ -28,6 +28,8 @@ __attribute__((visibility("hidden")))
     PUHorizontalCollectionViewLayout *__collectionViewLayout;
     UICollectionView *__collectionView;
     UITapGestureRecognizer *__tapGestureRecognizer;
+    _UIFeedbackImpactBehavior *__impactFeedbackBehavior;
+    NSIndexPath *__indexPathForPreviousFeedbackQuery;
 }
 
 @property (readonly, nonatomic) UIImageView *_arrowImageView; // @synthesize _arrowImageView=__arrowImageView;
@@ -35,6 +37,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UICollectionView *_collectionView; // @synthesize _collectionView=__collectionView;
 @property (readonly, nonatomic) PUHorizontalCollectionViewLayout *_collectionViewLayout; // @synthesize _collectionViewLayout=__collectionViewLayout;
 @property (readonly, nonatomic) BOOL _ignoreScrollViewDidScrollUpdate; // @synthesize _ignoreScrollViewDidScrollUpdate=__ignoreScrollViewDidScrollUpdate;
+@property (readonly, nonatomic) _UIFeedbackImpactBehavior *_impactFeedbackBehavior; // @synthesize _impactFeedbackBehavior=__impactFeedbackBehavior;
+@property (strong, nonatomic, setter=_setIndexPathForPreviousFeedbackQuery:) NSIndexPath *_indexPathForPreviousFeedbackQuery; // @synthesize _indexPathForPreviousFeedbackQuery=__indexPathForPreviousFeedbackQuery;
 @property (readonly, nonatomic) unsigned long long _numberOfPhotos; // @synthesize _numberOfPhotos=__numberOfPhotos;
 @property (readonly, nonatomic) BOOL _performingInteractiveUpdate; // @synthesize _performingInteractiveUpdate=__performingInteractiveUpdate;
 @property (readonly, nonatomic) UIImageView *_shadowView; // @synthesize _shadowView=__shadowView;
@@ -48,13 +52,16 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_beginFeedbackInteraction;
 - (void)_commonPUReviewScrubberInitialization;
+- (void)_endFeedbackInteraction;
 - (void)_handleTapAtIndexPath:(id)arg1;
 - (void)_handleTapOnReviewScrubber:(id)arg1;
 - (long long)_indexOfCellAtContentOffset:(struct CGPoint)arg1 ofScrollView:(id)arg2;
 - (id)_indexPathInCollectionView:(id)arg1 closestToPoint:(struct CGPoint)arg2 excludingIndexPath:(id)arg3;
 - (void)_notifyDelegateOfScrub;
 - (void)_notifyDelegateOfSelection;
+- (void)_playFeedbackIfNeeded;
 - (void)_updateContentOffsetForSelectedIndexAnimated:(BOOL)arg1;
 - (void)_updateToSelectedIndex:(long long)arg1;
 - (void)beginInteractiveUpdate;
@@ -72,7 +79,10 @@ __attribute__((visibility("hidden")))
 - (void)reloadData;
 - (void)reloadIndex:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)reloadSelectedIndexAnimated:(BOOL)arg1;
+- (void)scrollViewDidEndDecelerating:(id)arg1;
+- (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)setSelectedIndex:(long long)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

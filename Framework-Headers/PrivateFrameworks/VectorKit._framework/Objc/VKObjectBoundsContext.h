@@ -9,7 +9,10 @@
 @interface VKObjectBoundsContext : NSObject
 {
     vector_e20517dc _points;
+    struct VKEdgeInsets _edgePadding;
 }
+
+@property (nonatomic) struct VKEdgeInsets edgePadding; // @synthesize edgePadding=_edgePadding;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

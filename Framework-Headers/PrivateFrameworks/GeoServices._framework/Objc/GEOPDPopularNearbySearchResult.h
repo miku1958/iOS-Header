@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapRegion, NSString;
+@class GEOMapRegion, NSString, PBUnknownFields;
 
 @interface GEOPDPopularNearbySearchResult : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     GEOMapRegion *_displayMapRegion;
     NSString *_sectionHeader;
     BOOL _isChainResultSet;
@@ -24,6 +25,7 @@
 @property (readonly, nonatomic) BOOL hasSectionHeader;
 @property (nonatomic) BOOL isChainResultSet; // @synthesize isChainResultSet=_isChainResultSet;
 @property (strong, nonatomic) NSString *sectionHeader; // @synthesize sectionHeader=_sectionHeader;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

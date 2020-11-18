@@ -11,8 +11,6 @@
 @interface MecabraCoreDataController : NSObject
 {
     NSEntityDescription *_entityDescription;
-    NSURL *_localInfoPlistURL;
-    NSURL *_localStoreURL;
     NSURL *_localURL;
     NSString *_localURLLastPartOfName;
     NSManagedObjectModel *_managedObjectModel;
@@ -24,8 +22,8 @@
 }
 
 @property (readonly, nonatomic) NSEntityDescription *entityDescription; // @synthesize entityDescription=_entityDescription;
-@property (readonly, nonatomic) NSURL *localInfoPlistURL; // @synthesize localInfoPlistURL=_localInfoPlistURL;
-@property (strong, nonatomic) NSURL *localStoreURL; // @synthesize localStoreURL=_localStoreURL;
+@property (readonly, nonatomic) NSURL *localInfoPlistURL;
+@property (readonly, nonatomic) NSURL *localStoreURL;
 @property (strong, nonatomic) NSURL *localURL; // @synthesize localURL=_localURL;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
 @property (strong, nonatomic) NSManagedObjectModel *managedObjectModel; // @synthesize managedObjectModel=_managedObjectModel;
@@ -37,12 +35,9 @@
 + (void)resetDatabaseWithType:(id)arg1 URL:(id)arg2;
 - (void)addEntry:(id)arg1;
 - (void)clearStoredMergeEntries;
-- (BOOL)containsLegacyUbiquitousInformation:(id)arg1;
-- (BOOL)containsLocalDatabase:(id)arg1;
 - (id)coreDataUbiquityFolderURLforStore:(id)arg1;
 - (id)databaseName;
 - (id)databasePropertyForKey:(id)arg1;
-- (void)databaseSynced:(id)arg1;
 - (void)dealloc;
 - (void)deleteAllElements;
 - (void)deleteAllMatchingEntries:(id)arg1;
@@ -58,10 +53,8 @@
 - (id)locallyPresentUbiquitousFiles;
 - (void)logEntry:(id)arg1 operationType:(id)arg2 extraInformation:(id)arg3;
 - (void)logMessage:(id)arg1;
-- (void)migrateLocallyStoredUbiquitousInformationToLocalDictionary;
 - (id)newPersistentStoreWithURL:(id)arg1 ubiquityContainerIdentifier:(id)arg2 managedObjectModel:(id)arg3;
 - (void)prepareURLForDatabaseFile:(id)arg1;
-- (void)removeCoreDataUbiquitySupportFolder:(id)arg1;
 - (id)removeDuplicatesForEntry:(id)arg1 uniquingKeys:(id)arg2 sortDescriptors:(id)arg3 restrictToNumberOfElements:(unsigned long long)arg4 identifierKey:(id)arg5;
 - (void)save;
 - (id)searchResultsWithValueDictionary:(id)arg1;

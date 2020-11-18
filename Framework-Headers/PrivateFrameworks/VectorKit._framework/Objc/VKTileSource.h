@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     VKTileKeyMap *_pendingLoads;
     VKTileKeyList *_decoding;
     VKTileKeyList *_failedTiles;
-    shared_ptr_f06afc6c _styleManager;
+    shared_ptr_a3c46825 _styleManager;
     double _contentScale;
     VKSharedResources *_sharedResources;
     int loadingTiles;
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     BOOL _preloadOnly;
     BOOL _requireWiFi;
     long long _mapType;
+    unsigned char _targetDisplay;
     NSObject<OS_dispatch_queue> *_homeQueue;
 }
 
@@ -44,7 +45,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL preloadOnly; // @synthesize preloadOnly=_preloadOnly;
 @property (nonatomic) BOOL requireWiFi; // @synthesize requireWiFi=_requireWiFi;
 @property (strong, nonatomic) VKSharedResources *sharedResources; // @synthesize sharedResources=_sharedResources;
-@property (nonatomic) shared_ptr_f06afc6c styleManager; // @synthesize styleManager=_styleManager;
+@property (nonatomic) shared_ptr_a3c46825 styleManager; // @synthesize styleManager=_styleManager;
+@property (nonatomic) unsigned char targetDisplay; // @synthesize targetDisplay=_targetDisplay;
 @property (readonly, nonatomic) long long tileSize;
 @property (readonly, nonatomic) long long zEquivalenceClass;
 
@@ -63,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)decodeData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3;
 - (id)detailedDescription;
+- (id)detailedDescriptionDictionaryRepresentation;
 - (void)didFailToLoadTileKey:(const struct _GEOTileKey *)arg1 error:(id)arg2;
 - (void)didFetchData:(id)arg1 forKey:(const struct _GEOTileKey *)arg2;
 - (void)didFinishWithNetwork;
@@ -76,8 +79,7 @@ __attribute__((visibility("hidden")))
 - (void)forceDownload;
 - (void)foreachTileInPool:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initWithResourceManifestConfiguration:(id)arg1 locale:(id)arg2;
-- (BOOL)mayUseNetwork;
+- (id)initWithResourceManifestConfiguration:(id)arg1 locale:(id)arg2 sharedResources:(id)arg3;
 - (struct VKTileKey)nativeKeyForRenderKey:(const struct VKTileKey *)arg1;
 - (void)performDownload:(const struct _GEOTileKey *)arg1;
 - (void)populateVisibleTileSets:(id)arg1 withTiles:(id)arg2;

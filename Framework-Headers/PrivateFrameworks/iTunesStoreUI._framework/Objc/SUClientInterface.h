@@ -11,6 +11,8 @@
 
 @interface SUClientInterface : NSObject
 {
+    NSString *_applicationIdentifier;
+    NSString *_applicationVersion;
     NSString *_askToBuyApprovalPrompt;
     SUUIAppearance *_appearance;
     BOOL _inAskToBuyApprovalFlow;
@@ -32,6 +34,8 @@
 
 @property (getter=_ignoresExpectedClientsProtocol, setter=_setIgnoresExpectedClientsProtocol:) BOOL _ignoresExpectedClientsProtocol;
 @property (copy) SUUIAppearance *appearance;
+@property (copy) NSString *applicationIdentifier;
+@property (copy) NSString *applicationVersion;
 @property (copy, nonatomic) NSString *askToBuyApprovalPrompt; // @synthesize askToBuyApprovalPrompt=_askToBuyApprovalPrompt;
 @property (copy) NSString *clientIdentifier;
 @property (copy, nonatomic) UIColor *darkKeyColor; // @synthesize darkKeyColor=_darkKeyColor;
@@ -47,6 +51,8 @@
 @property (strong) SUViewControllerFactory *viewControllerFactory; // @synthesize viewControllerFactory=_viewControllerFactory;
 @property BOOL wasLaunchedFromLibrary;
 
++ (id)_defaultApplicationIdentifier;
++ (id)_defaultApplicationVersion;
 - (id)URLBagKeyForIdentifier:(id)arg1;
 - (void)_dismissModalViewControllerFromViewController:(id)arg1 withTransition:(int)arg2;
 - (void)_dismissViewControllerFromViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
@@ -56,7 +62,6 @@
 - (void)_hidePreviewOverlayAnimated:(BOOL)arg1;
 - (void)_mediaPlayerViewControllerWillDismiss:(id)arg1 animated:(BOOL)arg2;
 - (id)_newScriptInterface;
-- (id)_newUIAlertView;
 - (void)_presentDialog:(id)arg1;
 - (void)_presentViewController:(id)arg1 fromViewController:(id)arg2 withTransition:(int)arg3;
 - (void)_returnToLibrary;

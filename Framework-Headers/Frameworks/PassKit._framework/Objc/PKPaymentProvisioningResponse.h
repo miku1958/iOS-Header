@@ -6,16 +6,18 @@
 
 #import <PassKitCore/PKPaymentWebServiceResponse.h>
 
-@class NSURL;
+@class NSArray, NSURL;
 
 @interface PKPaymentProvisioningResponse : PKPaymentWebServiceResponse
 {
     NSURL *_passURL;
+    NSArray *_moreInfoURLs;
 }
 
-@property (strong, nonatomic) NSURL *passURL; // @synthesize passURL=_passURL;
+@property (readonly, copy, nonatomic) NSArray *moreInfoURLs; // @synthesize moreInfoURLs=_moreInfoURLs;
+@property (copy, nonatomic) NSURL *passURL; // @synthesize passURL=_passURL;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithData:(id)arg1;
 
 @end

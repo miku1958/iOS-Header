@@ -26,6 +26,8 @@
 @property (strong, nonatomic) NSString *sourceURL;
 @property (nonatomic) double timestamp;
 
++ (Class)actionComponentMapEntriesType;
++ (Class)searchAttributionSourcesType;
 - (id)actionComponentMapEntriesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)actionComponentMapEntriesCount;
 - (void)addActionComponentMapEntries:(id)arg1;

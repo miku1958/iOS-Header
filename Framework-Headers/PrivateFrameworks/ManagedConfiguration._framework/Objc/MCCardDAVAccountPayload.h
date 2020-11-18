@@ -6,7 +6,7 @@
 
 #import <ManagedConfiguration/MCPayload.h>
 
-@class NSNumber, NSString;
+@class NSDictionary, NSNumber, NSString;
 
 @interface MCCardDAVAccountPayload : MCPayload
 {
@@ -18,12 +18,14 @@
     BOOL _useSSL;
     int _port;
     NSString *_accountPersistentUUID;
+    NSDictionary *_communicationServiceRules;
     NSNumber *_useSSLNum;
     NSNumber *_portNum;
 }
 
 @property (readonly, strong, nonatomic) NSString *accountDescription; // @synthesize accountDescription=_accountDescription;
 @property (copy, nonatomic) NSString *accountPersistentUUID; // @synthesize accountPersistentUUID=_accountPersistentUUID;
+@property (readonly, nonatomic) NSDictionary *communicationServiceRules; // @synthesize communicationServiceRules=_communicationServiceRules;
 @property (readonly, strong, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
 @property (copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property (readonly, nonatomic) int port; // @synthesize port=_port;
@@ -41,6 +43,7 @@
 - (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)payloadDescriptionKeyValueSections;
+- (id)restrictions;
 - (id)stubDictionary;
 - (id)subtitle1Description;
 - (id)subtitle1Label;

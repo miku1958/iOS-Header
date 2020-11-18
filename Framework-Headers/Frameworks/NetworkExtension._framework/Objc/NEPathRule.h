@@ -17,19 +17,27 @@
     NSNumber *_aggregatePersonalCellular;
     NSNumber *_aggregateEnterpriseCellular;
     long long _internalCellularBehavior;
+    NSNumber *_aggregatePersonalWiFi;
+    NSNumber *_aggregateEnterpriseWiFi;
+    long long _internalWiFiBehavior;
 }
 
 @property (strong) NSNumber *aggregateEnterpriseCellular; // @synthesize aggregateEnterpriseCellular=_aggregateEnterpriseCellular;
+@property (strong) NSNumber *aggregateEnterpriseWiFi; // @synthesize aggregateEnterpriseWiFi=_aggregateEnterpriseWiFi;
 @property (strong) NSNumber *aggregatePersonalCellular; // @synthesize aggregatePersonalCellular=_aggregatePersonalCellular;
+@property (strong) NSNumber *aggregatePersonalWiFi; // @synthesize aggregatePersonalWiFi=_aggregatePersonalWiFi;
 @property long long cellularBehavior;
 @property (readonly, getter=isDefaultPathRule) BOOL defaultPathRule;
 @property BOOL denyCellularFallback; // @synthesize denyCellularFallback=_denyCellularFallback;
 @property long long internalCellularBehavior; // @synthesize internalCellularBehavior=_internalCellularBehavior;
+@property long long internalWiFiBehavior; // @synthesize internalWiFiBehavior=_internalWiFiBehavior;
+@property long long wifiBehavior;
 
 + (long long)aggregateNetworkBehavior:(long long)arg1 other:(long long)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addCellularBehavior:(long long)arg1 grade:(long long)arg2;
+- (void)addWiFiBehavior:(long long)arg1 grade:(long long)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
@@ -40,6 +48,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)signingIdentifierAllowed:(id)arg1 domainsRequired:(out BOOL *)arg2;
 - (BOOL)supportsCellularBehavior:(long long)arg1;
+- (BOOL)supportsWiFiBehavior:(long long)arg1;
 
 @end
 

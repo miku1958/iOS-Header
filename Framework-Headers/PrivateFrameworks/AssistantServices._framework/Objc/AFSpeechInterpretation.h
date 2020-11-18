@@ -19,7 +19,11 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (long long)averageConfidenceScore;
 - (long long)confidenceScore;
+- (long long)confidenceScoreAvg;
+- (long long)confidenceScoreMax;
+- (long long)confidenceScoreMin;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

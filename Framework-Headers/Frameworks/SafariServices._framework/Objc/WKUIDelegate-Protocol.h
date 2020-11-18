@@ -6,15 +6,18 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSString, WKFrameInfo, WKNavigationAction, WKWebView, WKWebViewConfiguration, WKWindowFeatures;
+@class NSArray, NSString, UIViewController, WKFrameInfo, WKNavigationAction, WKPreviewElementInfo, WKWebView, WKWebViewConfiguration, WKWindowFeatures;
 
 @protocol WKUIDelegate <NSObject>
 
 @optional
+- (void)webView:(WKWebView *)arg1 commitPreviewingViewController:(UIViewController *)arg2;
 - (WKWebView *)webView:(WKWebView *)arg1 createWebViewWithConfiguration:(WKWebViewConfiguration *)arg2 forNavigationAction:(WKNavigationAction *)arg3 windowFeatures:(WKWindowFeatures *)arg4;
+- (UIViewController *)webView:(WKWebView *)arg1 previewingViewControllerForElement:(WKPreviewElementInfo *)arg2 defaultActions:(NSArray *)arg3;
 - (void)webView:(WKWebView *)arg1 runJavaScriptAlertPanelWithMessage:(NSString *)arg2 initiatedByFrame:(WKFrameInfo *)arg3 completionHandler:(void (^)(void))arg4;
 - (void)webView:(WKWebView *)arg1 runJavaScriptConfirmPanelWithMessage:(NSString *)arg2 initiatedByFrame:(WKFrameInfo *)arg3 completionHandler:(void (^)(BOOL))arg4;
 - (void)webView:(WKWebView *)arg1 runJavaScriptTextInputPanelWithPrompt:(NSString *)arg2 defaultText:(NSString *)arg3 initiatedByFrame:(WKFrameInfo *)arg4 completionHandler:(void (^)(NSString *))arg5;
+- (BOOL)webView:(WKWebView *)arg1 shouldPreviewElement:(WKPreviewElementInfo *)arg2;
 - (void)webViewDidClose:(WKWebView *)arg1;
 @end
 

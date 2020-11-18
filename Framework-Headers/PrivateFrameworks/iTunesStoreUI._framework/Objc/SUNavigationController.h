@@ -14,17 +14,17 @@
 {
     BOOL _canBeWeakScriptReference;
     SUClientInterface *_clientInterface;
-    BOOL _loading;
     SUSection *_section;
     long long _storeBarStyle;
+    BOOL _skLoading;
 }
 
 @property (strong, nonatomic) SUClientInterface *clientInterface; // @synthesize clientInterface=_clientInterface;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, getter=isLoading) BOOL loading; // @synthesize loading=_loading;
 @property (strong, nonatomic) SUSection *section; // @synthesize section=_section;
+@property (nonatomic, getter=isSkLoading) BOOL skLoading; // @synthesize skLoading=_skLoading;
 @property (readonly) Class superclass;
 
 - (long long)ITunesStoreUIBarStyle;

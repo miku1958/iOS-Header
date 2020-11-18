@@ -21,6 +21,7 @@
 
 + (id)serverInterface;
 + (void)setClassesForSelectorsReplyingWithCandidatesInInterface:(id)arg1;
+- (void)adjustPhraseBoundaryInForwardDirection:(BOOL)arg1 granularity:(int)arg2 keyboardState:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)adjustPhraseBoundaryInForwardDirection:(BOOL)arg1 keyboardState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)candidateRejected:(id)arg1;
 - (void)generateAutocorrectionsWithKeyboardState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -28,6 +29,7 @@
 - (void)generateRefinementsForCandidate:(id)arg1 keyboardState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)generateReplacementsForString:(id)arg1 keyLayout:(id)arg2 continuation:(CDUnknownBlockType)arg3;
 - (void)handleAcceptedCandidate:(id)arg1 keyboardState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)handleAcceptedCandidate:(id)arg1 keyboardState:(id)arg2 completionHandlerWithKeyboardOutput:(CDUnknownBlockType)arg3;
 - (void)handleKeyboardInput:(id)arg1 keyboardState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)keyboardConfiguration;
 - (void)lastAcceptedCandidateCorrected;

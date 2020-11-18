@@ -37,6 +37,7 @@
 
 - (void).cxx_destruct;
 - (void)dealloc;
+- (id)description;
 - (id)initWithQueryResult:(struct __CFDictionary *)arg1 shouldIncludeData:(BOOL)arg2;
 
 @end

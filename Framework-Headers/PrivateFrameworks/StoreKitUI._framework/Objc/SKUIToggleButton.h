@@ -8,7 +8,7 @@
 
 #import <StoreKitUI/SKUIToggleItemStateCenterObserver-Protocol.h>
 
-@class NSString, SKUIAttributedStringLayout, SKUIButtonViewElement, UIImage;
+@class NSString, SKUIAttributedStringLayout, SKUIButtonViewElement;
 @protocol SKUIToggleButtonDelegate;
 
 @interface SKUIToggleButton : SKUIStyledButton <SKUIToggleItemStateCenterObserver>
@@ -26,8 +26,8 @@
     NSString *_toggleItemIdentifier;
     NSString *_nonToggledTitle;
     NSString *_toggledTitle;
-    UIImage *_nonToggledImage;
-    UIImage *_toggledImage;
+    id _nonToggledContents;
+    id _toggledContents;
     long long _toggleButtonType;
 }
 
@@ -39,13 +39,13 @@
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) SKUIButtonViewElement *element; // @synthesize element=_element;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIImage *nonToggledImage; // @synthesize nonToggledImage=_nonToggledImage;
+@property (strong, nonatomic) id nonToggledContents; // @synthesize nonToggledContents=_nonToggledContents;
 @property (strong, nonatomic) NSString *nonToggledTitle; // @synthesize nonToggledTitle=_nonToggledTitle;
 @property (readonly) Class superclass;
 @property (nonatomic) long long toggleButtonType; // @synthesize toggleButtonType=_toggleButtonType;
 @property (strong, nonatomic) NSString *toggleItemIdentifier; // @synthesize toggleItemIdentifier=_toggleItemIdentifier;
 @property (nonatomic, getter=isToggled) BOOL toggled; // @synthesize toggled=_toggled;
-@property (strong, nonatomic) UIImage *toggledImage; // @synthesize toggledImage=_toggledImage;
+@property (strong, nonatomic) id toggledContents; // @synthesize toggledContents=_toggledContents;
 @property (strong, nonatomic) NSString *toggledTitle; // @synthesize toggledTitle=_toggledTitle;
 
 - (void).cxx_destruct;

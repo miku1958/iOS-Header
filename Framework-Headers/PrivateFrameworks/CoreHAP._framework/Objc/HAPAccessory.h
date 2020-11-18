@@ -20,10 +20,10 @@
     HAPAccessoryServer *_server;
     NSString *_identifier;
     NSNumber *_instanceID;
-    NSString *_uniqueIdentifier;
     NSArray *_services;
     NSString *_serverIdentifier;
     long long _linkType;
+    NSString *_uniqueIdentifier;
     NSString *_name;
     NSString *_model;
     NSString *_manufacturer;

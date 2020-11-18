@@ -15,7 +15,6 @@
 
 @property (strong, nonatomic) NSArray *predictedApplications; // @synthesize predictedApplications=_predictedApplications;
 
-+ (id)notificationName;
 - (void).cxx_destruct;
 - (id)initWithPredictedApplications:(id)arg1;
 

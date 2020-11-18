@@ -23,7 +23,7 @@
 - (void).cxx_destruct;
 - (id)connection;
 - (void)dealloc;
-- (id)initWithDelegateClassName:(id)arg1 queue:(id)arg2;
+- (id)initWithDelegateClassID:(int)arg1 queue:(id)arg2;
 - (void)sendRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 
 @end

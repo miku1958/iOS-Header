@@ -6,7 +6,7 @@
 
 #import <Preferences/PSListController.h>
 
-@class NSString, PSSpecifier, UIAlertView;
+@class NSString, PSSpecifier;
 
 @interface PSUIResetPrefController : PSListController
 {
@@ -22,13 +22,12 @@
     PSSpecifier *_locationSpecifier;
     long long _locationSpecifierIndex;
     NSString *_passcode;
-    UIAlertView *_alert;
 }
 
 - (void).cxx_destruct;
+- (void)_disablePhoneLocatorAndErase;
 - (void)_eraseSettingsAndContent;
 - (void)_resetWithMode:(int)arg1;
-- (void)alertView:(id)arg1 clickedButtonAtIndex:(long long)arg2;
 - (void)confirmEraseCellularSettings;
 - (void)confirmationSpecifierConfirmed:(id)arg1;
 - (void)dealloc;

@@ -12,8 +12,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)actionWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
+- (BOOL)canBePerformedByOpeningURL;
 - (id)localizedName;
-- (void)perform;
+- (void)performFromView:(id)arg1;
 
 @end
 

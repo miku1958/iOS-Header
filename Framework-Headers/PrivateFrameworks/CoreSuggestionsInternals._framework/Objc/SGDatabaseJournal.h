@@ -6,24 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, SGDatabaseJournalFile;
 @protocol OS_dispatch_queue;
 
 @interface SGDatabaseJournal : NSObject
 {
-    NSObject<OS_dispatch_queue> *_journalQueue;
+    NSObject<OS_dispatch_queue> *_queue;
     NSString *_directoryPath;
     unsigned long long _serialNumber;
     NSString *_uuid;
+    BOOL _journaling;
+    BOOL _inMemory;
+    SGDatabaseJournalFile *_currentFile;
 }
 
-+ (CDUnknownBlockType)binderForDictionary:(id)arg1;
+@property (readonly, nonatomic) BOOL journaling; // @synthesize journaling=_journaling;
+
++ (CDUnknownBlockType)_binderForDictionary:(id)arg1;
++ (id)journalForInMemoryDb;
 + (id)journalWithName:(id)arg1;
 - (void).cxx_destruct;
-- (BOOL)_executeFile:(id)arg1 onDb:(id)arg2;
+- (BOOL)_executeFile:(id)arg1 onDb:(id)arg2 becameLocked:(BOOL *)arg3;
 - (BOOL)deleteAllJournaledQueries;
-- (BOOL)executeQueriesFromAllJournalFilesOnDatabase:(id)arg1;
-- (void)writeQuery:(id)arg1 values:(id)arg2;
+- (BOOL)executeQueriesOnDatabase:(id)arg1;
+- (void)runQuery:(id)arg1 values:(id)arg2 onDb:(id)arg3;
+- (BOOL)startJournaling;
+- (BOOL)stopJournaling;
 
 @end
 

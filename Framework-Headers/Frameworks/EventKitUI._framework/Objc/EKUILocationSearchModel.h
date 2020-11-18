@@ -10,7 +10,7 @@
 #import <EventKitUI/CLLocationManagerDelegate-Protocol.h>
 #import <EventKitUI/MKSearchCompleterDelegate-Protocol.h>
 
-@class ABSearchOperation, CLGeocoder, CLInUseAssertion, CLLocationManager, EKEventStore, EKOccurrenceCacheLocationSearch, EKStructuredLocation, MKLocalSearch, MKLocalSearchCompleter, NSArray, NSCharacterSet, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString;
+@class ABSearchOperation, CLGeocoder, CLInUseAssertion, CLLocationManager, EKEventStore, EKOccurrenceCacheLocationSearch, EKStructuredLocation, EKUILocationSearchABSearchMatchProcessor, MKLocalSearch, MKLocalSearchCompleter, NSArray, NSCharacterSet, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString;
 @protocol EKUILocationSearchModelDelegate, GEOMapServiceCompletionTicket, OS_dispatch_queue;
 
 @interface EKUILocationSearchModel : NSObject <CLLocationManagerDelegate, MKSearchCompleterDelegate, ABSearchOperationDelegate>
@@ -36,6 +36,7 @@
     NSMutableArray *_frequentsSearchResults;
     NSMutableArray *_eventsSearchResults;
     NSMutableArray *_contactsSearchResults;
+    EKUILocationSearchABSearchMatchProcessor *_abSearchMatchProcessor;
     NSArray *_mapCompletionSearchResults;
     id<EKUILocationSearchModelDelegate> _delegate;
 }
@@ -55,7 +56,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)CLLocationForDictionary:(id)arg1;
 - (void)_addDiscoveredConferenceRooms:(id)arg1;
 - (void)_handleAvailabilityResults:(id)arg1 forOperation:(id)arg2;
 - (void)_processDirectorySearchResultSet:(id)arg1 forOperation:(id)arg2;
@@ -65,11 +65,11 @@
 - (void)completerDidUpdateResults:(id)arg1 finished:(BOOL)arg2;
 - (void)dealloc;
 - (void)dedupeResults;
-- (id)dictionaryForCLLocation:(id)arg1;
 - (void)getCurrentLocation;
 - (id)initWithEventStore:(id)arg1;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
+- (BOOL)removeRecentLocation:(id)arg1;
 - (void)resetConferenceRoomSearchResults;
 - (void)resetContactsSearchResults;
 - (void)resetEventsSearchResults;

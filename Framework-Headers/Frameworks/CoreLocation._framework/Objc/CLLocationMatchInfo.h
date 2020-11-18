@@ -14,7 +14,7 @@
     id _internal;
 }
 
-@property (readonly, nonatomic) CDStruct_c3b9c2ee matchCoordinate;
+@property (readonly, nonatomic) struct CLLocationCoordinate2D matchCoordinate;
 @property (readonly, nonatomic) double matchCourse;
 @property (readonly, nonatomic) int matchFormOfWay;
 @property (readonly, nonatomic) long long matchQuality;
@@ -27,7 +27,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithMatchQuality:(long long)arg1 matchCoordinate:(CDStruct_c3b9c2ee)arg2 matchCourse:(double)arg3 matchFormOfWay:(int)arg4 matchRoadClass:(int)arg5 matchShifted:(BOOL)arg6;
+- (id)initWithMatchQuality:(long long)arg1 matchCoordinate:(struct CLLocationCoordinate2D)arg2 matchCourse:(double)arg3 matchFormOfWay:(int)arg4 matchRoadClass:(int)arg5 matchShifted:(BOOL)arg6;
 - (id)shortDescription;
 
 @end

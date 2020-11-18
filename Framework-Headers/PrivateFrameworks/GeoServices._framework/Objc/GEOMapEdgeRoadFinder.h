@@ -15,7 +15,8 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_buildersInTile:(id)arg1 localPoint:(const Matrix_8746f91e *)arg2 localRadiusSqr:(float)arg3 localSearch:(const Box_3fb92e00 *)arg4 handler:(CDUnknownBlockType)arg5;
-- (BOOL)_checkEdgeForDuplicates:(const shared_ptr_b236f348 *)arg1;
+- (BOOL)_checkEdgeForDuplicates:(const shared_ptr_035a2da2 *)arg1;
+- (void)dealloc;
 - (id)initWithMap:(id)arg1 center:(CDStruct_c3b9c2ee)arg2 radius:(double)arg3;
 
 @end

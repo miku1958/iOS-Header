@@ -64,7 +64,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (nonatomic) double straightenAngle; // @synthesize straightenAngle=_straightenAngle;
 @property (readonly) Class superclass;
-@property (nonatomic, getter=isTracking) BOOL tracking; // @synthesize tracking=_tracking;
+@property (nonatomic, getter=isTracking, setter=_setTracking:) BOOL tracking; // @synthesize tracking=_tracking;
 
 - (void).cxx_destruct;
 - (struct CGSize)_boundingSizeOfStraightenedRectWithSize:(struct CGSize)arg1;
@@ -72,8 +72,8 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_fullCropRect;
 - (void)_handleTouchingRecognizer:(id)arg1;
 - (struct CGRect)_imageBounds;
-- (void)_setTracking:(BOOL)arg1;
 - (struct CGSize)_sizeRotatedIfNeeded:(struct CGSize)arg1;
+- (void)_updateLivePhotoScaleOffset;
 - (void)_updateScrollInsets;
 - (void)_updateScrollOffset;
 - (void)_updateScrollView;

@@ -4,9 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@interface NSObject (CAAnimatableValue)
+#import <QuartzCore/CAAnimatableValue-Protocol.h>
+
+@class NSString;
+
+@interface NSObject (CAAnimatableValue) <CAAnimatableValue>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 - (id)CA_addValue:(id)arg1 multipliedBy:(int)arg2;
 - (double)CA_distanceToValue:(id)arg1;
 - (id)CA_interpolateValue:(id)arg1 byFraction:(float)arg2;

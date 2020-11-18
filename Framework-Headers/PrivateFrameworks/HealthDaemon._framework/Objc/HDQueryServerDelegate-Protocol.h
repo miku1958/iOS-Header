@@ -12,9 +12,10 @@
 - (NSArray *)queryServer:(HDQueryServer *)arg1 filterSamplesForReadAuthorization:(NSArray *)arg2;
 - (BOOL)queryServer:(HDQueryServer *)arg1 isAuthorizationStatusDeterminedForTypes:(NSSet *)arg2 error:(id *)arg3;
 - (BOOL)queryServer:(HDQueryServer *)arg1 isAuthorizedToReadType:(HKObjectType *)arg2 withRestrictedSourceIdentifier:(id *)arg3 authorizationAnchor:(id *)arg4;
+- (void)queryServer:(HDQueryServer *)arg1 requestsAuthorizationForSamples:(NSArray *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (BOOL)queryServerClientHasActiveWorkout:(HDQueryServer *)arg1;
+- (BOOL)queryServerClientIsInBackground:(HDQueryServer *)arg1;
 - (void)queryServerDidFinish:(HDQueryServer *)arg1;
-- (void)queryServerDidStartDataCollection:(HDQueryServer *)arg1;
-- (void)queryServerDidStopDataCollection:(HDQueryServer *)arg1;
 - (BOOL)queryServerShouldObserveInBackground:(HDQueryServer *)arg1;
 @end
 

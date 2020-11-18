@@ -15,9 +15,11 @@
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityLabel;
 - (id)axDayForecastValue;
+- (id)axIsDataCelsiusValue;
 - (void)axSetDayForecastValue:(id)arg1;
+- (void)axSetIsDataCelsiusValue:(id)arg1;
 - (BOOL)isAccessibilityElement;
-- (void)setDayForecast:(id)arg1;
+- (void)setForecast:(id)arg1 temperatureUnit:(int)arg2;
 
 @end
 

@@ -12,20 +12,20 @@
 {
     CDPPaneHeaderView *_headerView;
     double _keyboardOffset;
-    BOOL _formPresentation;
 }
 
-@property (nonatomic) BOOL formPresentation; // @synthesize formPresentation=_formPresentation;
+@property (readonly, nonatomic) struct CGRect availableHeaderRect;
 
 - (void).cxx_destruct;
 - (void)_keyboardLayoutChanged;
 - (void)_layoutHeaderRect;
-- (void)_layoutPinViewWithHeight:(double)arg1;
+- (void)_layoutPinView;
 - (void)_layoutSubviews;
 - (void)dealloc;
+- (void)didFinishResizingHeaderView;
+- (void)didFinishResizingPinView;
 - (id)headerView;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (BOOL)isSmallScreen;
 - (double)keyboardHeightOffset;
 - (void)layoutSubviews;
 

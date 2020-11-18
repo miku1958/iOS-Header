@@ -36,7 +36,7 @@
 - (id)initWithVietnameseName:(id)arg1;
 - (id)initWithWesternName:(id)arg1;
 - (id)segmentWesternNameWithNameParts:(id)arg1 andPrefix:(id)arg2;
-- (id)toSGNameWithOrigin:(id)arg1 andRecordId:(id)arg2;
+- (id)toSGNameWithOrigin:(id)arg1 recordId:(id)arg2 extractionType:(unsigned long long)arg3;
 
 @end
 

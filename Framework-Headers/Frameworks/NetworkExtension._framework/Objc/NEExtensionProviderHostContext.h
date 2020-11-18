@@ -9,13 +9,14 @@
 #import <NetworkExtension/NEExtensionProviderHostProtocol-Protocol.h>
 #import <NetworkExtension/NEExtensionProviderProtocol-Protocol.h>
 
-@class NSString;
+@class NEUserNotification, NSString;
 @protocol NEExtensionProviderHostDelegate, NEExtensionProviderProtocol;
 
 @interface NEExtensionProviderHostContext : NSExtensionContext <NEExtensionProviderProtocol, NEExtensionProviderHostProtocol>
 {
     id<NEExtensionProviderProtocol> _vendorContext;
     NSString *_description;
+    NEUserNotification *_notification;
     id<NEExtensionProviderHostDelegate> _delegate;
 }
 
@@ -25,12 +26,12 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) int pid;
 @property (readonly) Class superclass;
-@property (readonly) id<NEExtensionProviderProtocol> vendorContext;
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void).cxx_destruct;
 - (id)copyValueForEntitlement:(id)arg1;
+- (void)displayMessage:(id)arg1 message:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dispose;
 - (void)setConfiguration:(id)arg1 extensionIdentifier:(id)arg2 deviceIdentifier:(id)arg3;
 - (void)setDescription:(id)arg1;
@@ -38,6 +39,7 @@
 - (void)startWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startedWithError:(id)arg1;
 - (void)stopWithReason:(int)arg1;
+- (id)vendorContext;
 - (void)wake;
 
 @end

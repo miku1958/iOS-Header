@@ -12,18 +12,21 @@ __attribute__((visibility("hidden")))
 @interface CKRecordGraphNode : NSObject
 {
     NSMutableSet *_edges;
-    long long _indegree;
+    NSMutableSet *_indegrees;
     CKRecord *_record;
 }
 
 @property (copy, nonatomic) NSMutableSet *edges; // @synthesize edges=_edges;
-@property (nonatomic) long long indegree; // @synthesize indegree=_indegree;
+@property (readonly, nonatomic) unsigned long long indegree;
+@property (readonly, copy, nonatomic) NSMutableSet *indegrees; // @synthesize indegrees=_indegrees;
 @property (strong, nonatomic) CKRecord *record; // @synthesize record=_record;
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
 - (id)description;
+- (unsigned long long)hash;
 - (id)init;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

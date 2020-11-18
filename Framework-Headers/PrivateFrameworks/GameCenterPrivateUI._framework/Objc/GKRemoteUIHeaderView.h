@@ -6,11 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <GameCenterPrivateUI/RemoteUITableHeader-Protocol.h>
+#import <GameCenterPrivateUI/RUIHeader-Protocol.h>
 
 @class GKLabel, NSString;
 
-@interface GKRemoteUIHeaderView : UIView <RemoteUITableHeader>
+@interface GKRemoteUIHeaderView : UIView <RUIHeader>
 {
     BOOL _isFirstSection;
     GKLabel *_textLabel;

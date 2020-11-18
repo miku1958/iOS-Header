@@ -28,6 +28,8 @@
 @property (readonly, nonatomic) NSURL *underlyingURL; // @synthesize underlyingURL=_url;
 
 - (void).cxx_destruct;
+- (id)_appStoreSearchURLBagKey;
+- (id)_decodedQueryParameter:(id)arg1;
 - (id)_queryDictionary;
 - (id)_searchGroupForSearchKind:(id)arg1;
 - (id)_searchURLBagKey;

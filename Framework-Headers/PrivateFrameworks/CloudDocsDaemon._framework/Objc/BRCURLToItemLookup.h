@@ -8,7 +8,7 @@
 
 #import <CloudDocsDaemon/NSSecureCoding-Protocol.h>
 
-@class BRCAccountSession, BRCDocumentItem, BRCItemID, BRCLocalItem, BRCRelativePath, BRCServerItem, NSString, NSURL;
+@class BRCAccountSession, BRCDocumentItem, BRCItemID, BRCLocalItem, BRCPQLConnection, BRCRelativePath, BRCServerItem, NSString, NSURL;
 
 @interface BRCURLToItemLookup : NSObject <NSSecureCoding>
 {
@@ -25,10 +25,13 @@
         unsigned int value;
     } _hasFetched;
     BRCRelativePath *__relpath;
+    BRCPQLConnection *_db;
+    BOOL _allowAppLibraryRoot;
     NSURL *_url;
     BRCRelativePath *_parentRelpath;
     BRCItemID *_parentItemID;
     NSString *_filename;
+    NSString *_parentPath;
     BRCLocalItem *_byIDLocalItem;
     BRCServerItem *_byIDServerItem;
     unsigned long long _byIDDiffs;
@@ -46,7 +49,6 @@
 @property (readonly, nonatomic) unsigned long long byIDDiffs; // @synthesize byIDDiffs=_byIDDiffs;
 @property (readonly, nonatomic) BRCLocalItem *byIDLocalItem; // @synthesize byIDLocalItem=_byIDLocalItem;
 @property (readonly, nonatomic) CDStruct_177058d5 byIDMatch;
-@property (readonly, nonatomic) BRCRelativePath *byIDRelpath;
 @property (readonly, nonatomic) BRCServerItem *byIDServerItem; // @synthesize byIDServerItem=_byIDServerItem;
 @property (readonly, nonatomic) unsigned long long byPathDiffs; // @synthesize byPathDiffs=_byPathDiffs;
 @property (readonly, nonatomic) BRCLocalItem *byPathLocalItem; // @synthesize byPathLocalItem=_byPathLocalItem;
@@ -54,6 +56,7 @@
 @property (readonly, nonatomic) BRCRelativePath *byPathRelpath;
 @property (readonly, nonatomic) BRCServerItem *byPathServerItem; // @synthesize byPathServerItem=_byPathServerItem;
 @property (readonly, nonatomic) BRCDocumentItem *bySharedEnclosureDocItem;
+@property (readonly, nonatomic) BRCPQLConnection *db; // @synthesize db=_db;
 @property (readonly, nonatomic) unsigned long long faultedDiffs; // @synthesize faultedDiffs=_faultedDiffs;
 @property (readonly, nonatomic) BRCDocumentItem *faultedLocalItem; // @synthesize faultedLocalItem=_faultedLocalItem;
 @property (readonly, nonatomic) CDStruct_177058d5 faultedMatch;
@@ -61,8 +64,10 @@
 @property (readonly, nonatomic) BRCServerItem *faultedServerItem; // @synthesize faultedServerItem=_faultedServerItem;
 @property (readonly, nonatomic) NSString *filename; // @synthesize filename=_filename;
 @property (readonly, nonatomic) BRCItemID *parentItemID; // @synthesize parentItemID=_parentItemID;
+@property (readonly, nonatomic) NSString *parentPath; // @synthesize parentPath=_parentPath;
 @property (readonly, nonatomic) BRCRelativePath *parentRelpath; // @synthesize parentRelpath=_parentRelpath;
 @property (readonly, nonatomic) unsigned short pathType;
+@property (readonly, nonatomic) BRCRelativePath *relpath;
 @property (readonly, nonatomic) BRCLocalItem *reservedLocalItem; // @synthesize reservedLocalItem=_reservedLocalItem;
 @property (readonly, nonatomic) CDStruct_177058d5 reservedMatch;
 @property (readonly, nonatomic) BRCServerItem *reservedServerItem; // @synthesize reservedServerItem=_reservedServerItem;
@@ -71,7 +76,6 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_bounceBouncesHiddenByFault:(id)arg1;
-- (BOOL)_bouncePathMatch:(const CDStruct_177058d5 *)arg1 toApplyServerItem:(id)arg2;
 - (BOOL)_canUpdatePathMatch:(const CDStruct_177058d5 *)arg1 hasAdditionsToApply:(BOOL)arg2;
 - (void)_clearNamespace:(unsigned char)arg1;
 - (void)_fetchFaultedPathMatch;
@@ -79,11 +83,8 @@
 - (void)_fetchPathMatch;
 - (void)_fetchRelPath;
 - (void)_fetchReservedPathMatch;
-- (id)_generateGentleBounceForPathMatch:(const CDStruct_177058d5 *)arg1 dirfd:(int)arg2;
-- (BOOL)_isPathMatchIdle:(const CDStruct_177058d5 *)arg1;
 - (void)_moveMissingItemAsideInNamespace:(unsigned char)arg1;
 - (CDStruct_177058d5)_pathMatchInNamespace:(unsigned char)arg1;
-- (id)_relpath;
 - (BOOL)_removeDirectory:(id)arg1 atPath:(id)arg2 error:(id *)arg3;
 - (void)clearByIDItem;
 - (void)clearByPathItem;
@@ -95,12 +96,15 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleReservedPathMatchesIfNeeded;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithURL:(id)arg1 root:(id)arg2;
+- (id)initWithURL:(id)arg1 allowAppLibraryRoot:(BOOL)arg2 session:(id)arg3;
+- (id)initWithURL:(id)arg1 allowAppLibraryRoot:(BOOL)arg2 session:(id)arg3 db:(id)arg4;
+- (id)initWithURL:(id)arg1 session:(id)arg2;
 - (void)markPathMatchLostIfLocationDoesntMatch:(CDStruct_177058d5 *)arg1;
 - (void)matchLookupItemsWithDisk;
 - (void)refreshByIDDiffs;
 - (void)refreshByPathDiffs;
 - (void)refreshFaultedDiffs;
+- (BOOL)resolveAndKeepOpenWithError:(id *)arg1;
 - (BOOL)resolveParentAndKeepOpenMustExist:(BOOL)arg1 errcode:(int *)arg2;
 - (BOOL)tryToDeleteItemInNamespace:(unsigned char)arg1;
 - (void)tryToUpdateItemInNamespace:(unsigned char)arg1 withDstLookup:(id)arg2;

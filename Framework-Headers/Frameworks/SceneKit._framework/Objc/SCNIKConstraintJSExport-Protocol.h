@@ -14,6 +14,7 @@
 @property (nonatomic) struct SCNVector3 targetPosition;
 
 + (id)inverseKinematicsConstraintWithChainRootNode:(SCNNode *)arg1;
+- (id)initWithChainRootNode:(SCNNode *)arg1;
 - (double)maxAllowedRotationAngleForJoint:(SCNNode *)arg1;
 - (void)setMaxAllowedRotationAngle:(double)arg1 forJoint:(SCNNode *)arg2;
 @end

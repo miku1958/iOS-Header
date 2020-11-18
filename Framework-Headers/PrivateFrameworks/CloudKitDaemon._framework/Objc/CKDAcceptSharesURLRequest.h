@@ -12,16 +12,16 @@ __attribute__((visibility("hidden")))
 @interface CKDAcceptSharesURLRequest : CKDURLRequest
 {
     CDUnknownBlockType _shareAcceptedBlock;
-    NSArray *_shareInfosToAccept;
-    NSMutableDictionary *_shareInfoByRequestID;
+    NSArray *_shareMetadatasToAccept;
+    NSMutableDictionary *_shareMetadataByRequestID;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType shareAcceptedBlock; // @synthesize shareAcceptedBlock=_shareAcceptedBlock;
-@property (strong, nonatomic) NSMutableDictionary *shareInfoByRequestID; // @synthesize shareInfoByRequestID=_shareInfoByRequestID;
-@property (strong, nonatomic) NSArray *shareInfosToAccept; // @synthesize shareInfosToAccept=_shareInfosToAccept;
+@property (strong, nonatomic) NSMutableDictionary *shareMetadataByRequestID; // @synthesize shareMetadataByRequestID=_shareMetadataByRequestID;
+@property (strong, nonatomic) NSArray *shareMetadatasToAccept; // @synthesize shareMetadatasToAccept=_shareMetadatasToAccept;
 
 - (void).cxx_destruct;
-- (id)initWithShareInfosToAccept:(id)arg1;
+- (id)initWithShareMetadatasToAccept:(id)arg1;
 - (int)operationType;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;

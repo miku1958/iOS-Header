@@ -11,6 +11,7 @@
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
++ (void)accessibilityApplyInfoFromDisplayItem:(id)arg1 toView:(id)arg2 correspondingIconView:(id)arg3;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityFrameShouldIncludeExtraSpaceBelow;

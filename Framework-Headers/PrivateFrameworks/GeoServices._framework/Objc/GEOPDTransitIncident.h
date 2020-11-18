@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *transitIncidents; // @synthesize transitIncidents=_transitIncidents;
 
++ (Class)transitIncidentType;
 + (id)transitIncidentsForPlaceData:(id)arg1 hasTransitIncidentComponent:(BOOL *)arg2;
 + (id)transitIncidentsTTLExpirationDateForPlaceData:(id)arg1;
 - (void)addTransitIncident:(id)arg1;

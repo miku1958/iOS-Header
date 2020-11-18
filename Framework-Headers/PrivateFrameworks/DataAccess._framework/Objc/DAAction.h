@@ -15,16 +15,17 @@
     id _serverId;
     id _instanceId;
     id _changedItem;
+    id _changedAttendees;
 }
 
 @property (nonatomic) int changeId; // @synthesize changeId=_changeId;
-@property (strong, nonatomic) id changedItem; // @synthesize changedItem=_changedItem;
+@property (strong, nonatomic) id changedAttendees; // @synthesize changedAttendees=_changedAttendees;
+@property (strong, nonatomic, setter=_setChangedItem:) id changedItem; // @synthesize changedItem=_changedItem;
 @property (strong, nonatomic) id instanceId; // @synthesize instanceId=_instanceId;
 @property (nonatomic) long long itemChangeType; // @synthesize itemChangeType=_itemChangeType;
 @property (strong, nonatomic) id serverId; // @synthesize serverId=_serverId;
 
 - (void).cxx_destruct;
-- (void)_setChangedItem:(id)arg1;
 - (struct ASContact *)contact;
 - (id)deletedContactID;
 - (id)deletedEventID;

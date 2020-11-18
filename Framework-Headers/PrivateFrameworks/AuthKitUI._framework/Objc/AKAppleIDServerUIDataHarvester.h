@@ -13,9 +13,11 @@
     NSMutableDictionary *_harvestedData;
 }
 
-@property (copy, nonatomic) NSDictionary *harvestedData; // @synthesize harvestedData=_harvestedData;
+@property (readonly, nonatomic) NSDictionary *harvestedData; // @synthesize harvestedData=_harvestedData;
 
 - (void).cxx_destruct;
+- (void)_harvestIDMSRecoveryHeadersInfo:(id)arg1;
+- (void)_harvestIDMSRecoveryInfoFromObjectModel:(id)arg1;
 - (id)_valueForTextFieldWithID:(id)arg1 inObjectModel:(id)arg2;
 - (void)harvestDataFromServerHTTPResponse:(id)arg1;
 - (void)harvestDataFromServerUIObjectModel:(id)arg1;

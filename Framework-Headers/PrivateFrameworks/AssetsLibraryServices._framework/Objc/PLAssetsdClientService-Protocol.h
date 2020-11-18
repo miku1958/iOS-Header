@@ -6,9 +6,9 @@
 
 #import <AssetsLibraryServices/NSObject-Protocol.h>
 
-@class NSError, NSString;
+@class NSData, NSError, NSString;
 
 @protocol PLAssetsdClientService <NSObject>
-- (void)downloadStatusForIdentifier:(NSString *)arg1 progress:(double)arg2 completed:(BOOL)arg3 error:(NSError *)arg4;
+- (void)downloadStatusForIdentifier:(NSString *)arg1 progress:(double)arg2 completed:(BOOL)arg3 data:(NSData *)arg4 error:(NSError *)arg5;
 @end
 

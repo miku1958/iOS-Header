@@ -8,7 +8,6 @@
 
 #import <PhotosUI/PLDiagnosticsAgent-Protocol.h>
 
-__attribute__((visibility("hidden")))
 @interface PUPhotosDiagnosticsAgent : NSObject <PLDiagnosticsAgent>
 {
 }
@@ -21,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)_viewModelDescription;
 - (id)_windowRecursiveDescription;
 - (void)captureDescriptionOfCloudPhotoLibraryWithResultHandler:(CDUnknownBlockType)arg1;
+- (void)captureDescriptionOfPhotoAnalysisWithResultHandler:(CDUnknownBlockType)arg1;
 - (void)captureDescriptionOfUIState:(long long)arg1 resultHandler:(CDUnknownBlockType)arg2;
 
 @end

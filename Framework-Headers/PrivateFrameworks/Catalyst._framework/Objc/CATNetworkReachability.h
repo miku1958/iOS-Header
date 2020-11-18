@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class CATAddress;
 @protocol CATNetworkReachabilityDelegate;
@@ -19,7 +19,7 @@
 
 @property (readonly, nonatomic) CATAddress *address; // @synthesize address=_address;
 @property (weak, nonatomic) id<CATNetworkReachabilityDelegate> delegate; // @synthesize delegate=_delegate;
-@property unsigned int flags; // @synthesize flags=_flags;
+@property (nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property (readonly, nonatomic, getter=isReachable) BOOL reachable;
 
 + (BOOL)isReachableForLocalWiFiWithFlags:(unsigned int)arg1;

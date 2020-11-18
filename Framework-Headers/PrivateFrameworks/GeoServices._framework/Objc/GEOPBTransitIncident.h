@@ -17,6 +17,7 @@
     unsigned int _creationDatetime;
     unsigned int _endDatetime;
     int _iconEnum;
+    unsigned int _incidentIndex;
     NSString *_longDescriptionString;
     NSString *_messageForAllBlocking;
     NSString *_messageForIncidentType;
@@ -31,6 +32,7 @@
         unsigned int creationDatetime:1;
         unsigned int endDatetime:1;
         unsigned int iconEnum:1;
+        unsigned int incidentIndex:1;
         unsigned int startDatetime:1;
         unsigned int updatedDatetime:1;
         unsigned int blocking:1;
@@ -45,6 +47,7 @@
 @property (nonatomic) BOOL hasCreationDatetime;
 @property (nonatomic) BOOL hasEndDatetime;
 @property (nonatomic) BOOL hasIconEnum;
+@property (nonatomic) BOOL hasIncidentIndex;
 @property (nonatomic) BOOL hasIncidentMuid;
 @property (readonly, nonatomic) BOOL hasLongDescriptionString;
 @property (readonly, nonatomic) BOOL hasMessageForAllBlocking;
@@ -55,6 +58,7 @@
 @property (readonly, nonatomic) BOOL hasTitleString;
 @property (nonatomic) BOOL hasUpdatedDatetime;
 @property (nonatomic) int iconEnum; // @synthesize iconEnum=_iconEnum;
+@property (nonatomic) unsigned int incidentIndex; // @synthesize incidentIndex=_incidentIndex;
 @property (nonatomic) unsigned long long incidentMuid; // @synthesize incidentMuid=_incidentMuid;
 @property (strong, nonatomic) NSString *longDescriptionString; // @synthesize longDescriptionString=_longDescriptionString;
 @property (strong, nonatomic) NSString *messageForAllBlocking; // @synthesize messageForAllBlocking=_messageForAllBlocking;
@@ -65,6 +69,8 @@
 @property (strong, nonatomic) NSString *titleString; // @synthesize titleString=_titleString;
 @property (nonatomic) unsigned int updatedDatetime; // @synthesize updatedDatetime=_updatedDatetime;
 
++ (Class)affectedEntityType;
+- (int)StringAsIconEnum:(id)arg1;
 - (void)addAffectedEntity:(id)arg1;
 - (id)affectedEntityAtIndex:(unsigned long long)arg1;
 - (unsigned long long)affectedEntitysCount;
@@ -75,6 +81,7 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)iconEnumAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

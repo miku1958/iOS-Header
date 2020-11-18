@@ -11,12 +11,13 @@
 @interface SGNoCloudNSUbiquitousKeyValueStore : NSUbiquitousKeyValueStore
 {
     NSMutableDictionary *_kv;
-    int _lock;
+    struct _opaque_pthread_mutex_t _lock;
 }
 
 - (void).cxx_destruct;
 - (id)arrayForKey:(id)arg1;
 - (id)dataForKey:(id)arg1;
+- (void)dealloc;
 - (id)init;
 - (id)objectForKey:(id)arg1;
 - (void)setArray:(id)arg1 forKey:(id)arg2;

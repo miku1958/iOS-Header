@@ -29,13 +29,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_documentURLs;
 - (BOOL)_loadNextURL;
 - (BOOL)_loadURLAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)initWithWebBrowserView:(id)arg1 request:(id)arg2 documentType:(id)arg3;
 - (long long)numberOfPages;
-- (id)pdfDataForPageAtIndex:(long long)arg1 printingDone:(BOOL *)arg2;
+- (id)pdfDataForPageAtIndex:(long long)arg1;
 - (void)prepareForDrawingPages:(struct _NSRange)arg1;
 - (void)webView:(id)arg1 didFailLoadWithError:(id)arg2 forFrame:(id)arg3;
 - (void)webView:(id)arg1 didFinishLoadForFrame:(id)arg2;

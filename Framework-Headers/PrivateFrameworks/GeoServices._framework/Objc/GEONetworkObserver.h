@@ -13,7 +13,7 @@
     NSLock *_lock;
     unsigned int _networkReachability;
     struct __SCNetworkReachability *_networkReach;
-    struct __CFDictionary *_networkObservers;
+    BOOL _initialized;
     BOOL _networkNotified;
     BOOL _networkReachable;
 }

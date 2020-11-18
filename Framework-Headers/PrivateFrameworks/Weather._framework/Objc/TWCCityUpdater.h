@@ -4,26 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Weather/TWCUpdater.h>
+#import <Foundation/NSObject.h>
 
-@class NSArray, NSMutableArray;
+@class NSLocale, NSString, WAForecastModelController;
+@protocol WeatherUpdaterDelegate;
 
-@interface TWCCityUpdater : TWCUpdater
+@interface TWCCityUpdater : NSObject
 {
-    CDUnknownBlockType _weatherUpdateCompletion;
-    NSArray *_requestedCities;
-    NSMutableArray *_parsedCities;
+    id<WeatherUpdaterDelegate> _delegate;
+    NSLocale *_locale;
+    WAForecastModelController *_forecastModelController;
 }
 
-@property (strong, nonatomic) NSMutableArray *parsedCities; // @synthesize parsedCities=_parsedCities;
-@property (strong, nonatomic) NSArray *requestedCities; // @synthesize requestedCities=_requestedCities;
+@property (weak, nonatomic) id<WeatherUpdaterDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) WAForecastModelController *forecastModelController; // @synthesize forecastModelController=_forecastModelController;
+@property (strong, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
+@property (strong, nonatomic) NSString *trackingParameter;
 
-+ (void)clearSharedCityUpdater;
 + (id)sharedCityUpdater;
 - (void).cxx_destruct;
-- (void)_failed:(unsigned long long)arg1;
-- (id)aggregateDictionaryDomain;
-- (void)handleCompletionForCity:(id)arg1 withUpdateDetail:(unsigned long long)arg2;
+- (void)cancel;
+- (id)init;
+- (BOOL)isUpdatingCity:(id)arg1;
+- (void)updateWeatherForCities:(id)arg1;
 - (void)updateWeatherForCities:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)updateWeatherForCity:(id)arg1;
 

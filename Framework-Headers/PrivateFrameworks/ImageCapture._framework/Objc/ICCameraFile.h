@@ -32,7 +32,7 @@
 - (void)finalize;
 - (void)flushMetadataCache;
 - (void)flushThumbnailCache;
-- (void)handleCommandCompletionNotification:(id)arg1;
+- (id)handleCommandCompletionNotification:(id)arg1;
 - (BOOL)hasMetadata;
 - (BOOL)hasThumbnail;
 - (id)initWithName:(id)arg1 parentFolder:(id)arg2 device:(id)arg3;

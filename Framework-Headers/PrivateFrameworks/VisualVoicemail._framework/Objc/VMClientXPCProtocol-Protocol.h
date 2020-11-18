@@ -6,9 +6,14 @@
 
 #import <VisualVoicemail/NSObject-Protocol.h>
 
-@class NSDictionary;
+@class NSArray, VMVoicemailCapabilities;
 
 @protocol VMClientXPCProtocol <NSObject>
-- (void)handleMessage:(NSDictionary *)arg1;
+- (void)setCapabilities:(VMVoicemailCapabilities *)arg1;
+- (void)setOnline:(BOOL)arg1;
+- (void)setStorageUsage:(unsigned long long)arg1;
+- (void)setSubscribed:(BOOL)arg1;
+- (void)setSyncInProgress:(BOOL)arg1;
+- (void)voicemailsUpdated:(NSArray *)arg1;
 @end
 

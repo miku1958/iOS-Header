@@ -9,27 +9,23 @@
 __attribute__((visibility("hidden")))
 @interface PUBrowsingIrisPlayerChange : PUViewModelChange
 {
-    BOOL _isPlayerLoadingAllowedDidChange;
+    BOOL _livePhotoPlaybackAllowedDidChange;
+    BOOL _livePhotoLoadingAllowedDidChange;
     BOOL _playerDidChange;
     BOOL _playbackStateDidChange;
-    BOOL _playerStatusDidChange;
     BOOL _hasPendingVitalityHintDidChange;
-    BOOL _canPlayVitalityDidChange;
+    BOOL _isLivePhotoLoadingAllowedDidChange;
+    BOOL _isLivePhotoPlaybackAllowedDidChange;
 }
 
-@property (nonatomic) BOOL canPlayVitalityDidChange; // @synthesize canPlayVitalityDidChange=_canPlayVitalityDidChange;
-@property (nonatomic) BOOL hasPendingVitalityHintDidChange; // @synthesize hasPendingVitalityHintDidChange=_hasPendingVitalityHintDidChange;
-@property (nonatomic) BOOL isPlayerLoadingAllowedDidChange; // @synthesize isPlayerLoadingAllowedDidChange=_isPlayerLoadingAllowedDidChange;
-@property (nonatomic) BOOL playbackStateDidChange; // @synthesize playbackStateDidChange=_playbackStateDidChange;
-@property (nonatomic) BOOL playerDidChange; // @synthesize playerDidChange=_playerDidChange;
-@property (nonatomic) BOOL playerStatusDidChange; // @synthesize playerStatusDidChange=_playerStatusDidChange;
+@property (nonatomic, setter=_setHasPendingVitalityHintDidChange:) BOOL hasPendingVitalityHintDidChange; // @synthesize hasPendingVitalityHintDidChange=_hasPendingVitalityHintDidChange;
+@property (nonatomic, setter=_setLivePhotoLoadingAllowedDidChange:) BOOL isLivePhotoLoadingAllowedDidChange; // @synthesize isLivePhotoLoadingAllowedDidChange=_isLivePhotoLoadingAllowedDidChange;
+@property (nonatomic, setter=_setLivePhotoPlaybackAllowedDidChange:) BOOL isLivePhotoPlaybackAllowedDidChange; // @synthesize isLivePhotoPlaybackAllowedDidChange=_isLivePhotoPlaybackAllowedDidChange;
+@property (readonly, nonatomic) BOOL livePhotoLoadingAllowedDidChange; // @synthesize livePhotoLoadingAllowedDidChange=_livePhotoLoadingAllowedDidChange;
+@property (readonly, nonatomic) BOOL livePhotoPlaybackAllowedDidChange; // @synthesize livePhotoPlaybackAllowedDidChange=_livePhotoPlaybackAllowedDidChange;
+@property (nonatomic, setter=_setPlaybackStateDidChange:) BOOL playbackStateDidChange; // @synthesize playbackStateDidChange=_playbackStateDidChange;
+@property (readonly, nonatomic) BOOL playerDidChange; // @synthesize playerDidChange=_playerDidChange;
 
-- (void)_setCanPlayVitalityDidChange:(BOOL)arg1;
-- (void)_setHasPendingVitalityHintDidChange:(BOOL)arg1;
-- (void)_setPlaybackStateDidChange:(BOOL)arg1;
-- (void)_setPlayerDidChange:(BOOL)arg1;
-- (void)_setPlayerLoadingAllowedDidChange:(BOOL)arg1;
-- (void)_setPlayerStatusDidChange:(BOOL)arg1;
 - (BOOL)hasChanges;
 
 @end

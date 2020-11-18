@@ -11,7 +11,6 @@
 @protocol PGPictureInPictureViewControllerDelegate <NSObject>
 
 @optional
-- (void)pictureInPictureViewController:(PGPictureInPictureViewController *)arg1 controlsVisibilityChanged:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)pictureInPictureViewController:(PGPictureInPictureViewController *)arg1 updateHostedWindowSize:(struct CGSize)arg2 animationType:(long long)arg3 initialSpringVelocity:(double)arg4;
 - (void)pictureInPictureViewControllerActionButtonTapped:(PGPictureInPictureViewController *)arg1;
 - (void)pictureInPictureViewControllerCancelButtonTapped:(PGPictureInPictureViewController *)arg1;

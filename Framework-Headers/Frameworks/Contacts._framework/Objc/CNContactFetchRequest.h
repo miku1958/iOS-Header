@@ -6,32 +6,39 @@
 
 #import <Foundation/NSObject.h>
 
+#import <Contacts/NSSecureCoding-Protocol.h>
+
 @class NSArray, NSPredicate;
 
-@interface CNContactFetchRequest : NSObject
+@interface CNContactFetchRequest : NSObject <NSSecureCoding>
 {
-    BOOL rankSort;
+    BOOL _rankSort;
     BOOL _mutableObjects;
     BOOL _unifyResults;
     BOOL _onlyMainStore;
+    BOOL _allowsBatching;
     NSPredicate *_predicate;
     NSArray *_keysToFetch;
     long long _sortOrder;
 }
 
+@property (nonatomic) BOOL allowsBatching; // @synthesize allowsBatching=_allowsBatching;
 @property (copy, nonatomic) NSArray *keysToFetch; // @synthesize keysToFetch=_keysToFetch;
 @property (nonatomic) BOOL mutableObjects; // @synthesize mutableObjects=_mutableObjects;
 @property (nonatomic) BOOL onlyMainStore; // @synthesize onlyMainStore=_onlyMainStore;
 @property (copy, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
-@property (nonatomic) BOOL rankSort; // @synthesize rankSort;
+@property (nonatomic) BOOL rankSort; // @synthesize rankSort=_rankSort;
 @property (nonatomic) long long sortOrder; // @synthesize sortOrder=_sortOrder;
 @property (nonatomic) BOOL unifyResults; // @synthesize unifyResults=_unifyResults;
 
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)effectiveKeysToFetch;
+- (void)encodeWithCoder:(id)arg1;
 - (void)executeFetchWithDataMapper:(id)arg1 observer:(id)arg2;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithKeysToFetch:(id)arg1;
 
 @end

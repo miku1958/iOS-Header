@@ -6,25 +6,31 @@
 
 #import <UIKit/UIView.h>
 
-@class MCDLikeButton, MCDPlayModeButton, MCDRepeatButton;
+@class MCDPlayModeButton, MCDRepeatButton, NSArray;
 
 @interface MCDPlayModeControlView : UIView
 {
-    BOOL _creatingGenius;
+    BOOL _fuseSubscriberLayout;
     MCDRepeatButton *_repeatButton;
-    MCDLikeButton *_likeButton;
+    MCDPlayModeButton *_moreButton;
     MCDPlayModeButton *_shuffleButton;
+    MCDPlayModeButton *_addToLibraryButton;
+    NSArray *_activeButtonLayoutConstraints;
 }
 
-@property (nonatomic) BOOL creatingGenius; // @synthesize creatingGenius=_creatingGenius;
-@property (readonly, nonatomic) MCDLikeButton *likeButton; // @synthesize likeButton=_likeButton;
+@property (strong, nonatomic) NSArray *activeButtonLayoutConstraints; // @synthesize activeButtonLayoutConstraints=_activeButtonLayoutConstraints;
+@property (readonly, nonatomic) MCDPlayModeButton *addToLibraryButton; // @synthesize addToLibraryButton=_addToLibraryButton;
+@property (nonatomic) BOOL fuseSubscriberLayout; // @synthesize fuseSubscriberLayout=_fuseSubscriberLayout;
+@property (readonly, nonatomic) MCDPlayModeButton *moreButton; // @synthesize moreButton=_moreButton;
 @property (readonly, nonatomic) MCDRepeatButton *repeatButton; // @synthesize repeatButton=_repeatButton;
 @property (readonly, nonatomic) MCDPlayModeButton *shuffleButton; // @synthesize shuffleButton=_shuffleButton;
 
 - (void).cxx_destruct;
 - (void)_addConstraints;
+- (void)_updateButtonLayouts;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)layoutSubviews;
 
 @end
 

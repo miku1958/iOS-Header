@@ -7,6 +7,10 @@
 #import <NanoRegistry/NRDevice.h>
 
 @interface NRDevice (VersionFactories)
++ (BOOL)_activePairedDeviceSupportIsGreaterEqualVersion:(unsigned long long)arg1;
++ (BOOL)activePairedDeviceSupportsAttachmentFiles;
++ (BOOL)activePairedDeviceSupportsFileBulletinAdd;
++ (BOOL)activePairedDeviceSupportsFileSettingSync;
 - (unsigned long long)bltVersion;
 @end
 

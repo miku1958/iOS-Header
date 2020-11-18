@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMObjectMerge-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class NSString, NSUUID;
 
-@interface HMAccessoryCategory : NSObject <NSSecureCoding, HMObjectMerge>
+@interface HMAccessoryCategory : NSObject <NSSecureCoding, HMObjectMerge, HMFDumpState>
 {
     NSString *_categoryType;
     NSString *_name;
@@ -29,6 +30,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
+- (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

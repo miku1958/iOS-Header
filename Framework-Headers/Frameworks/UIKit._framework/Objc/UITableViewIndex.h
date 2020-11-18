@@ -46,8 +46,8 @@ __attribute__((visibility("hidden")))
 - (id)_fontForIdiom:(long long)arg1;
 - (long long)_idiom;
 - (double)_minLineSpacingForIdiom:(long long)arg1;
-- (void)_selectSectionForTouch:(id)arg1 withEvent:(id)arg2;
 - (void)_setIdiom:(long long)arg1;
+- (BOOL)_updateSectionForTouch:(id)arg1 withEvent:(id)arg2;
 - (struct CGRect)_visibleBoundsForRect:(struct CGRect)arg1 stride:(double *)arg2;
 - (void)_willChangeToIdiom:(long long)arg1 onScreen:(id)arg2;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;

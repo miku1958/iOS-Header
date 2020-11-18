@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSNumber, PKCatalogGroup;
 @protocol PKGroupDelegate;
@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) NSNumber *groupID;
 @property (nonatomic, getter=isLocal) BOOL local; // @synthesize local=_local;
 
+- (void).cxx_destruct;
 - (unsigned long long)_indexOfUniqueID:(id)arg1;
 - (void)_insertPass:(id)arg1 atIndex:(unsigned long long)arg2 notify:(BOOL)arg3;
 - (void)_moveUniqueID:(id)arg1 toIndex:(unsigned long long)arg2 notify:(BOOL)arg3;
@@ -31,7 +32,6 @@
 - (BOOL)containsOnlyUniqueID:(id)arg1;
 - (BOOL)containsPasses;
 - (id)copyCatalogGroup;
-- (void)dealloc;
 - (id)description;
 - (void)enumerateUniqueIDsWithHandler:(CDUnknownBlockType)arg1;
 - (void)handleUserPassDelete:(id)arg1;

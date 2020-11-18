@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class AXDispatchTimer, AXIPCClient, AXIPCServer, NSMutableArray, NSString;
+@protocol OS_dispatch_queue;
 
 @interface AXServer : NSObject
 {
@@ -16,10 +17,12 @@
     NSString *_serverIdentifier;
     NSMutableArray *_assertionWorkBacklog;
     AXDispatchTimer *_assertionRetryTimer;
+    NSObject<OS_dispatch_queue> *_assertionWorkQueue;
 }
 
 @property (strong, nonatomic) AXDispatchTimer *assertionRetryTimer; // @synthesize assertionRetryTimer=_assertionRetryTimer;
 @property (strong, nonatomic) NSMutableArray *assertionWorkBacklog; // @synthesize assertionWorkBacklog=_assertionWorkBacklog;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *assertionWorkQueue; // @synthesize assertionWorkQueue=_assertionWorkQueue;
 @property (strong, nonatomic) AXIPCClient *client; // @synthesize client=_client;
 @property (strong, nonatomic) AXIPCServer *server; // @synthesize server=_server;
 @property (copy, nonatomic) NSString *serverIdentifier; // @synthesize serverIdentifier=_serverIdentifier;
@@ -36,6 +39,7 @@
 - (void)_willClearServer;
 - (void)acquireAssertionWithType:(id)arg1 identifier:(id)arg2;
 - (void)dealloc;
+- (id)init;
 - (void)relinquishAssertionWithType:(id)arg1 identifier:(id)arg2;
 - (void)sendAsynchronousMessage:(id)arg1 replyOnQueue:(id)arg2 boolResultHandler:(CDUnknownBlockType)arg3;
 - (void)sendAsynchronousMessage:(id)arg1 replyOnQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;

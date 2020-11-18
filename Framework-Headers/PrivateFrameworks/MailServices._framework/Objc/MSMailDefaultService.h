@@ -15,6 +15,7 @@
 
 - (id)_createServiceOnQueue:(id)arg1;
 - (id)_handleMessageSendFailure:(id)arg1 message:(id)arg2 messageIndex:(long long)arg3 context:(inout id *)arg4;
+- (BOOL)_launchMobileMailSuspendedError:(id *)arg1;
 - (BOOL)_shouldSimulate;
 - (id)init;
 

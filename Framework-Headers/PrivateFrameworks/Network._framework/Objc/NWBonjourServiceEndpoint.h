@@ -12,10 +12,11 @@
 {
 }
 
-@property (readonly) NSString *domain;
-@property (readonly) NSString *name;
-@property (readonly) NSString *type;
+@property (readonly, nonatomic) NSString *domain;
+@property (readonly, nonatomic) NSString *name;
+@property (readonly, nonatomic) NSString *type;
 
++ (unsigned int)endpointType;
 + (id)endpointWithName:(id)arg1 type:(id)arg2 domain:(id)arg3;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
 

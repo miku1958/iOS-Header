@@ -26,6 +26,7 @@
 - (void).cxx_destruct;
 - (BOOL)_shouldScrollEnclosingScrollView;
 - (void)_updatePlaceholder;
+- (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;

@@ -8,7 +8,12 @@
 
 @interface PKPaymentRemoteCredentialsRequest : PKPaymentWebServiceRequest
 {
+    BOOL _includeMetadata;
+    long long _credentialType;
 }
+
+@property (nonatomic) long long credentialType; // @synthesize credentialType=_credentialType;
+@property (nonatomic) BOOL includeMetadata; // @synthesize includeMetadata=_includeMetadata;
 
 - (id)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 account:(id)arg3;
 

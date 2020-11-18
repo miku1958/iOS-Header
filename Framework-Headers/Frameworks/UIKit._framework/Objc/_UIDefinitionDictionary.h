@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)_definitionValueForTerm:(id)arg1;
 - (id)_fullHTMLDefinitionForTerm:(id)arg1;
 - (BOOL)_hasDefinitionForTerm:(id)arg1;
+- (BOOL)_isTTYDictionary;
 - (id)_shortHTMLDefinitionForTerm:(id)arg1;
 - (void)dealloc;
 - (id)description;

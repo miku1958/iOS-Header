@@ -61,7 +61,7 @@
 - (void)_allocExtraData;
 - (void)_deallocExtraData;
 - (id)_initWithParagraphStyle:(id)arg1;
-- (BOOL)_isSuitableForFastStringDrawingWithAlignment:(long long *)arg1 lineBreakMode:(long long *)arg2 tighteningFactorForTruncation:(double *)arg3;
+- (BOOL)_isSuitableForFastStringDrawingWithAlignment:(long long *)arg1 mirrorsTextAlignment:(BOOL)arg2 lineBreakMode:(long long *)arg3 tighteningFactorForTruncation:(double *)arg4;
 - (unsigned long long)_lineBoundsOptions;
 - (BOOL)allowsHangingPunctuation;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -6,20 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
-@protocol OS_dispatch_queue;
+@class NSDictionary, NSMutableDictionary, NSString;
+@protocol OS_dispatch_queue, TKTokenDriverDelegate;
 
 @interface TKTokenDriver : NSObject
 {
+    id<TKTokenDriverDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_tokens;
 }
 
+@property (readonly) NSString *classID;
+@property (weak) id<TKTokenDriverDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly) NSDictionary *extensionAttributes;
+@property (readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (strong) NSMutableDictionary *tokens; // @synthesize tokens=_tokens;
+
 - (void).cxx_destruct;
-- (void)acquireTokenWithInstanceID:(id)arg1 classID:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)getTokenWithInstanceID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)getTokenEndpointWithAttributes:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)getTokenWithAttributes:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)init;
-- (void)releaseTokenWithInstanceID:(id)arg1;
+- (void)invalidateToken:(id)arg1;
+- (void)releaseTokenWithTokenID:(id)arg1;
+- (void)removeTokenEndpoint:(id)arg1;
+- (id)tokenIDForInstanceID:(id)arg1;
 
 @end
 

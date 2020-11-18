@@ -6,29 +6,33 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMMessageReceiver-Protocol.h>
+#import <HomeKitDaemon/HMFDumpState-Protocol.h>
+#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDHome, HMMessageDispatcher, NSString, NSUUID;
+@class HMDApplicationData, HMDHome, HMFMessageDispatcher, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDRoom : NSObject <HMMessageReceiver, NSSecureCoding>
+@interface HMDRoom : NSObject <HMFMessageReceiver, HMFDumpState, NSSecureCoding>
 {
     NSString *_name;
     NSUUID *_uuid;
     HMDHome *_home;
     NSObject<OS_dispatch_queue> *_workQueue;
-    HMMessageDispatcher *_msgDispatcher;
+    HMFMessageDispatcher *_msgDispatcher;
+    HMDApplicationData *_appData;
 }
 
+@property (strong, nonatomic) HMDApplicationData *appData; // @synthesize appData=_appData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) NSString *serializedIdentifier;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
@@ -36,13 +40,16 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_handleRenameRequest:(id)arg1;
+- (void)_logDuetEvent:(id)arg1;
 - (void)_registerForMessages;
-- (id)assistantUniqueIdentifier;
+- (id)assistantObject;
 - (void)configure:(id)arg1 queue:(id)arg2;
 - (void)dealloc;
+- (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 uuid:(id)arg2 home:(id)arg3;
+- (void)logDuetEvent;
 - (id)url;
 
 @end

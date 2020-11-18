@@ -24,11 +24,12 @@
 @property (readonly) unsigned long long timeStamp;
 @property (readonly, copy) NSString *type;
 
+- (BOOL)composed;
 - (void)dealloc;
 - (BOOL)defaultPrevented;
-- (void)finalize;
 - (void)initEvent:(id)arg1:(BOOL)arg2:(BOOL)arg3;
 - (void)initEvent:(id)arg1 canBubbleArg:(BOOL)arg2 cancelableArg:(BOOL)arg3;
+- (BOOL)isTrusted;
 - (void)preventDefault;
 - (void)stopImmediatePropagation;
 - (void)stopPropagation;

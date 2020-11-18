@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_boolDeviceInfoForKey:(struct __CFString *)arg1;
 - (id)_deviceInfoForKey:(struct __CFString *)arg1;
 - (id)_deviceInfoNumberForKey:(struct __CFString *)arg1;
-- (void)authTokenOfType:(long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)btMacAddress;
 - (id)deviceClass;
 - (id)deviceModelName;
@@ -28,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (id)meid;
 - (id)osBuildVersion;
 - (id)osVersion;
-- (id)ownerAccount;
 - (id)productName;
 - (id)productType;
 - (id)serialNumber;

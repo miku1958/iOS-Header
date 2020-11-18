@@ -17,6 +17,7 @@
     BOOL _appInstalled;
     BOOL _complicationEnabled;
     BOOL _iOSDeviceNeedsFirstUnlock;
+    unsigned long long _remainingComplicationUserInfoTransfers;
     NSString *_pairingID;
     NSSet *_pairedDevicesPairingIDs;
     NSString *_appInstallationID;
@@ -30,6 +31,7 @@
 @property (readonly, copy) NSSet *pairedDevicesPairingIDs; // @synthesize pairedDevicesPairingIDs=_pairedDevicesPairingIDs;
 @property (readonly, copy) NSString *pairingID; // @synthesize pairingID=_pairingID;
 @property (readonly, getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
+@property (readonly) unsigned long long remainingComplicationUserInfoTransfers; // @synthesize remainingComplicationUserInfoTransfers=_remainingComplicationUserInfoTransfers;
 @property (readonly, copy) NSURL *watchDirectoryURL;
 
 + (BOOL)supportsSecureCoding;
@@ -38,8 +40,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithReachable:(BOOL)arg1 iOSDeviceNeedsFirstUnlock:(BOOL)arg2 activePairingID:(id)arg3;
-- (id)initWithReachable:(BOOL)arg1 paired:(BOOL)arg2 appInstalled:(BOOL)arg3 complicationEnabled:(BOOL)arg4 activePairingID:(id)arg5 pairedDevicesPairingIDs:(id)arg6 appInstallationID:(id)arg7;
-- (id)initWithReachable:(BOOL)arg1 paired:(BOOL)arg2 appInstalled:(BOOL)arg3 complicationEnabled:(BOOL)arg4 iOSDeviceNeedsFirstUnlock:(BOOL)arg5 pairingID:(id)arg6 pairedDevicesPairingIDs:(id)arg7 appInstallationID:(id)arg8;
+- (id)initWithReachable:(BOOL)arg1 paired:(BOOL)arg2 appInstalled:(BOOL)arg3 complicationEnabled:(BOOL)arg4 remainingComplicationUserInfoTransfers:(unsigned long long)arg5 activePairingID:(id)arg6 pairedDevicesPairingIDs:(id)arg7 appInstallationID:(id)arg8;
+- (id)initWithReachable:(BOOL)arg1 paired:(BOOL)arg2 appInstalled:(BOOL)arg3 complicationEnabled:(BOOL)arg4 remainingComplicationUserInfoTransfers:(unsigned long long)arg5 iOSDeviceNeedsFirstUnlock:(BOOL)arg6 pairingID:(id)arg7 pairedDevicesPairingIDs:(id)arg8 appInstallationID:(id)arg9;
 
 @end
 

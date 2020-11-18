@@ -24,13 +24,17 @@
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_sourceApplicationSecondaryIdentifier;
     NSString *_authPromptReason;
+    double _timeoutIntervalForRequest;
+    double _timeoutIntervalForResource;
     CKContainerSetupInfo *_setupInfo;
-    NSString *_operationClass;
     NSDictionary *_additionalRequestHTTPHeaders;
+    NSString *_operationClass;
     NSString *_deviceIdentifier;
+    NSDictionary *_MMCSRequestOptions;
     id _parentOperation;
 }
 
+@property (strong, nonatomic) NSDictionary *MMCSRequestOptions; // @synthesize MMCSRequestOptions=_MMCSRequestOptions;
 @property (strong, nonatomic) NSDictionary *additionalRequestHTTPHeaders; // @synthesize additionalRequestHTTPHeaders=_additionalRequestHTTPHeaders;
 @property (nonatomic) BOOL allowsBackgroundNetworking; // @synthesize allowsBackgroundNetworking=_allowsBackgroundNetworking;
 @property (nonatomic) BOOL allowsCellularAccess; // @synthesize allowsCellularAccess=_allowsCellularAccess;
@@ -48,6 +52,8 @@
 @property (strong, nonatomic) CKContainerSetupInfo *setupInfo; // @synthesize setupInfo=_setupInfo;
 @property (strong, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
 @property (strong, nonatomic) NSString *sourceApplicationSecondaryIdentifier; // @synthesize sourceApplicationSecondaryIdentifier=_sourceApplicationSecondaryIdentifier;
+@property (nonatomic) double timeoutIntervalForRequest; // @synthesize timeoutIntervalForRequest=_timeoutIntervalForRequest;
+@property (nonatomic) double timeoutIntervalForResource; // @synthesize timeoutIntervalForResource=_timeoutIntervalForResource;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

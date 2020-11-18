@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     FMFWildcardGestureRecognizer *_gr;
     FMAnnotationView *_selectedAnnotationView;
     MKMapView *_mapView;
-    CDStruct_2c43369c _lastUserLocationCoordinate;
+    struct CLLocationCoordinate2D _lastUserLocationCoordinate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -30,14 +30,14 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) FMFWildcardGestureRecognizer *gr; // @synthesize gr=_gr;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isMapCenteringDisabled; // @synthesize isMapCenteringDisabled=_isMapCenteringDisabled;
-@property (nonatomic) CDStruct_2c43369c lastUserLocationCoordinate; // @synthesize lastUserLocationCoordinate=_lastUserLocationCoordinate;
+@property (nonatomic) struct CLLocationCoordinate2D lastUserLocationCoordinate; // @synthesize lastUserLocationCoordinate=_lastUserLocationCoordinate;
 @property (nonatomic) MKMapView *mapView; // @synthesize mapView=_mapView;
 @property (nonatomic) BOOL respondingToUserTouch; // @synthesize respondingToUserTouch=_respondingToUserTouch;
 @property (nonatomic) FMAnnotationView *selectedAnnotationView; // @synthesize selectedAnnotationView=_selectedAnnotationView;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_moveCenterByOffset:(struct CGPoint)arg1 from:(CDStruct_2c43369c)arg2 mapView:(id)arg3;
+- (void)_moveCenterByOffset:(struct CGPoint)arg1 from:(struct CLLocationCoordinate2D)arg2 mapView:(id)arg3;
 - (id)accuracyCircleForLocation:(id)arg1;
 - (BOOL)canSelectAnnotation:(id)arg1;
 - (struct UIEdgeInsets)edgeInsetsWithMinApplied:(struct UIEdgeInsets)arg1;
@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (id)fmfOverlayColorSatellite;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)initWithDelegate:(id)arg1 mapView:(id)arg2;
-- (CDStruct_2f492f29)mapRectMakeWithRadialDistanceForCoordinate:(CDStruct_2c43369c)arg1 andRadius:(double)arg2;
+- (CDStruct_90e2a262)mapRectMakeWithRadialDistanceForCoordinate:(struct CLLocationCoordinate2D)arg1 andRadius:(double)arg2;
 - (void)mapView:(id)arg1 didDeselectAnnotationView:(id)arg2;
 - (void)mapView:(id)arg1 didSelectAnnotationView:(id)arg2;
 - (void)mapView:(id)arg1 didUpdateUserLocation:(id)arg2;
@@ -55,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (id)mapView:(id)arg1 rendererForOverlay:(id)arg2;
 - (id)mapView:(id)arg1 viewForAnnotation:(id)arg2;
 - (void)mapViewDidFinishRenderingMap:(id)arg1 fullyRendered:(BOOL)arg2;
-- (BOOL)regionIsValid:(CDStruct_2f492f29)arg1;
+- (BOOL)regionIsValid:(CDStruct_26e8d939)arg1;
 - (void)selectAnnotation:(id)arg1;
 - (void)slideAnnotation:(id)arg1 intoViewIfNeededForMapView:(id)arg2;
 - (void)updateOverlaysForAnnotationMove:(id)arg1 mapView:(id)arg2;

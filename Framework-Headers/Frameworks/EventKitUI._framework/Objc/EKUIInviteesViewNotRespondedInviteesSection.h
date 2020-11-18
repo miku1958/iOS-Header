@@ -81,7 +81,7 @@
 - (BOOL)sectionShouldBeShown;
 - (void)selectRow:(id)arg1;
 - (id)titleForDeleteConfirmationButtonForRow:(id)arg1;
-- (void)updateWithEvent:(id)arg1 editable:(BOOL)arg2;
+- (void)updateWithEvent:(id)arg1 editable:(BOOL)arg2 fromDetail:(BOOL)arg3;
 
 @end
 

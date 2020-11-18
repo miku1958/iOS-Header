@@ -24,6 +24,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
+@property (readonly, nonatomic) BOOL hasText;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long keyboardAppearance;
 @property (nonatomic) long long keyboardType;
@@ -31,6 +32,7 @@
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
 @property (nonatomic) long long spellCheckingType;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *textContentType;
 
 + (id)presenter;
 - (void).cxx_destruct;
@@ -40,7 +42,6 @@
 - (void)dealloc;
 - (void)deleteBackward;
 - (struct CGSize)formSheetSizeForController:(id)arg1 withOrientation:(long long)arg2;
-- (BOOL)hasText;
 - (id)hidden;
 - (void)hideController:(id)arg1 animated:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)init;

@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_progressView;
-- (void)setProgress:(double)arg1;
+- (void)setFractionCompleted:(double)arg1;
 - (void)viewDidLoad;
 
 @end

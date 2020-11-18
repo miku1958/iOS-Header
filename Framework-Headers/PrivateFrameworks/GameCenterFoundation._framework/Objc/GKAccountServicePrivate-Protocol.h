@@ -11,10 +11,11 @@
 @protocol GKAccountServicePrivate <GKAccountService>
 - (oneway void)accountCreated:(NSString *)arg1 playerID:(NSString *)arg2 authenticationToken:(NSString *)arg3 alias:(NSString *)arg4 finished:(BOOL)arg5 handler:(void (^)(GKAuthenticateResponse *, NSError *))arg6;
 - (oneway void)accountEdited:(NSString *)arg1 alias:(NSString *)arg2 firstName:(NSString *)arg3 lastName:(NSString *)arg4 handler:(void (^)(void))arg5;
-- (oneway void)authenticatePlayerWithUsername:(NSString *)arg1 password:(NSString *)arg2 altDSID:(NSString *)arg3 usingFastPath:(BOOL)arg4 handler:(void (^)(GKAuthenticateResponse *, NSError *))arg5;
 - (oneway void)authenticatePlayerWithUsername:(NSString *)arg1 password:(NSString *)arg2 handler:(void (^)(GKAuthenticateResponse *, NSError *))arg3;
+- (oneway void)authenticatePlayerWithUsername:(NSString *)arg1 password:(NSString *)arg2 rawPassword:(NSString *)arg3 altDSID:(NSString *)arg4 usingFastPath:(BOOL)arg5 handler:(void (^)(GKAuthenticateResponse *, NSError *))arg6;
 - (oneway void)authenticationCancelled;
 - (oneway void)getAccountAuthTokenWithHandler:(void (^)(NSString *, NSError *))arg1;
+- (oneway void)isICloudAvailableWithHandler:(void (^)(BOOL, NSError *))arg1;
 - (oneway void)setLoginStatus:(unsigned long long)arg1 handler:(void (^)(NSError *))arg2;
 - (oneway void)setupAccountForParameters:(NSDictionary *)arg1 handler:(void (^)(NSError *))arg2;
 - (oneway void)signOutPlayerWithHandler:(void (^)(NSError *))arg1;

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSMutableArray *subscriptions; // @synthesize subscriptions=_subscriptions;
 
++ (Class)subscriptionsType;
 - (void).cxx_destruct;
 - (void)addSubscriptions:(id)arg1;
 - (void)clearSubscriptions;

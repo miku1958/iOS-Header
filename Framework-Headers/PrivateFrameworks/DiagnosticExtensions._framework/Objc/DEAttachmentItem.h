@@ -46,7 +46,6 @@
 - (id)initWithPath:(id)arg1;
 - (id)initWithPath:(id)arg1 withDisplayName:(id)arg2 modificationDate:(id)arg3 andFilesize:(id)arg4;
 - (id)initWithPathURL:(id)arg1;
-- (id)writeAssetToDiskWithURL:(id)arg1 toDirectory:(id)arg2;
 
 @end
 

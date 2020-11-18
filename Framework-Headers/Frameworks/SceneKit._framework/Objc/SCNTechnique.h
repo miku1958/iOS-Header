@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
@@ -31,8 +31,8 @@
 + (id)techniqueBySequencingTechniques:(id)arg1;
 + (id)techniqueWithDictionary:(id)arg1;
 + (id)techniqueWithTechniqueRef:(struct __C3DFXTechnique *)arg1;
-- (void *)__CFObject;
-- (void)__removeAnimation:(id)arg1 forKey:(id)arg2;
+- (const void *)__CFObject;
+- (BOOL)__removeAnimation:(id)arg1 forKey:(id)arg2;
 - (void)_customDecodingOfSCNTechnique:(id)arg1;
 - (void)_customEncodingOfSCNTechnique:(id)arg1;
 - (void)_didInstallInEngineContext:(struct __C3DEngineContext *)arg1;
@@ -43,6 +43,7 @@
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
 - (id)animationForKey:(id)arg1;
 - (struct __C3DAnimationManager *)animationManager;
+- (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
 - (id)copy;
 - (struct __C3DAnimationChannel *)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -64,9 +65,11 @@
 - (id)scene;
 - (struct __C3DScene *)sceneRef;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
+- (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
 - (void)setValue:(id)arg1 forSymbolNamed:(id)arg2;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (struct __C3DFXTechnique *)techniqueRef;
+- (void)unbindAnimatablePath:(id)arg1;
 - (id)valueForSymbolNamed:(id)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
 

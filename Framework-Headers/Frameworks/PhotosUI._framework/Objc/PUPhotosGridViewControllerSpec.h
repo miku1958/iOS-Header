@@ -49,7 +49,6 @@
 - (void).cxx_destruct;
 - (void)configureCollectionViewGridLayout:(id)arg1 forWidth:(double)arg2;
 - (id)init;
-- (id)photoBrowserSpec;
 - (unsigned long long)supportedInterfaceOrientations;
 
 @end

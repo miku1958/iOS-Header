@@ -85,12 +85,14 @@
 - (id)initWithInternalRepresentation:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)loadMatchDataWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)loadURLWithMatchRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)participantQuitInTurnWithOutcome:(long long)arg1 nextParticipant:(id)arg2 matchData:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)participantQuitInTurnWithOutcome:(long long)arg1 nextParticipants:(id)arg2 turnTimeout:(double)arg3 matchData:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)participantQuitOutOfTurnWithOutcome:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)rematchWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)reserveShareParticipantSlots:(long long)arg1 andInvitePlayers:(id)arg2 withMessage:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (void)saveCurrentTurnWithMatchData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)saveMergedMatchData:(id)arg1 withResolvedExchanges:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

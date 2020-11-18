@@ -6,14 +6,14 @@
 
 #import <Foundation/NSEnumerator.h>
 
-@class BRCLocalContainer, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSMutableSet;
+@class BRCClientZone, BRCLocalItem, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface BRCSyncUpEnumerator : NSEnumerator
 {
     unsigned int _batchSize;
     unsigned int _maxDepth;
-    BRCLocalContainer *_container;
+    BRCClientZone *_clientZone;
     NSMutableSet *_whitelist;
     NSMutableSet *_itemIDsLostOrThrottled;
     NSMutableSet *_itemIDsNeedingOSUpgrade;
@@ -23,9 +23,11 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_stack;
     int _stage;
     unsigned long long _retryAfter;
+    BRCLocalItem *_itemNeedingPCSChaining;
 }
 
 @property (readonly, nonatomic) unsigned int batchSize; // @synthesize batchSize=_batchSize;
+@property (readonly, nonatomic) BRCLocalItem *itemNeedingPCSChaining; // @synthesize itemNeedingPCSChaining=_itemNeedingPCSChaining;
 @property (readonly, nonatomic) unsigned long long retryAfter; // @synthesize retryAfter=_retryAfter;
 
 - (void).cxx_destruct;
@@ -38,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)_nextTombstone;
 - (struct PQLResultSet *)_tombstoneLeavesNeedingSyncUpEnumerator;
 - (BOOL)handleItemForOSUpgrade:(id)arg1 parentItemID:(id)arg2;
-- (id)initWithLocalContainer:(id)arg1;
+- (id)initWithClientZone:(id)arg1;
 - (void)invalidate;
 - (BOOL)isBlackListed:(id)arg1;
 - (id)nextObject;

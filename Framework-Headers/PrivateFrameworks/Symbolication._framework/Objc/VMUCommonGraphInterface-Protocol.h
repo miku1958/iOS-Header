@@ -6,7 +6,7 @@
 
 #import <Symbolication/NSObject-Protocol.h>
 
-@class NSString, VMUClassInfoMap;
+@class NSString, VMUClassInfoMap, VMUScanOverlay, VMUVMRegion;
 
 @protocol VMUCommonGraphInterface <NSObject>
 
@@ -18,11 +18,17 @@
 @property (readonly, nonatomic) unsigned int vmPageSize;
 @property (readonly, nonatomic) unsigned int zoneCount;
 
+- (void *)contentForNode:(unsigned int)arg1;
+- (void *)copyUserMarked;
+- (unsigned int)enumerateMarkedObjects:(void *)arg1 withBlock:(void (^)(unsigned int, struct, BOOL *))arg2;
 - (unsigned int)enumerateObjectsWithBlock:(void (^)(unsigned int, struct, BOOL *))arg1;
 - (unsigned int)enumerateReferencesWithBlock:(void (^)(unsigned int, unsigned int, unsigned int, struct, BOOL *))arg1;
 - (unsigned int)enumerateRegionsWithBlock:(void (^)(VMUVMRegion *, BOOL *))arg1;
 - (NSString *)labelForNode:(unsigned int)arg1;
+- (void)markReachableNodesFromRoots:(void *)arg1 inMap:(void *)arg2;
 - (CDStruct_599faf0f)nodeDetails:(unsigned int)arg1;
+- (void)refineTypesWithOverlay:(VMUScanOverlay *)arg1;
+- (VMUVMRegion *)vmuVMRegionForNode:(unsigned int)arg1;
 - (NSString *)zoneNameForIndex:(unsigned int)arg1;
 @end
 

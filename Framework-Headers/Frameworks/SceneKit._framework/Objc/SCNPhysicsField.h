@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
@@ -63,6 +63,7 @@
 - (void)_setOwner:(id)arg1;
 - (void)_setWorld:(id)arg1;
 - (void)_setupCommonProperties;
+- (void)_willRemoveFromPhysicsWorld;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

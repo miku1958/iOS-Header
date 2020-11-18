@@ -29,14 +29,14 @@
 - (void)_updateCurrentGlyphImage;
 - (void)_updateFromAllowedModesChangeWithCurrentMode:(long long)arg1;
 - (id)headerView;
-- (id)hiddenIndexesWhileCollapsed;
 - (unsigned long long)indexForMode:(long long)arg1;
-- (id)initWithExpansionOrientation:(long long)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithLayoutStyle:(long long)arg1;
 - (long long)modeForIndex:(long long)arg1;
 - (long long)numberOfMenuItems;
+- (double)padHeaderViewContentInsetLeft;
 - (void)prepareHeaderViewForExpanding:(BOOL)arg1;
 - (void)reloadData;
-- (void)setExpansionOrientation:(long long)arg1;
 - (BOOL)shouldAllowExpansion;
 - (id)titleForMenuItemAtIndex:(long long)arg1;
 

@@ -7,6 +7,7 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (SPAdditions)
++ (id)_sp_URLFromFileID:(id)arg1 filename:(id)arg2 parentFileID:(id)arg3 documentID:(id)arg4;
 + (id)sp_URLFromFileID:(id)arg1 filename:(id)arg2 parentFileID:(id)arg3 documentID:(id)arg4;
 @end
 

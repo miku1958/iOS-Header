@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IMDaemonCore/IMFileCopierDelegate-Protocol.h>
 
@@ -42,6 +42,7 @@
 - (void)_handleFileTransferRemoved:(id)arg1;
 - (void)_handleFileTransferStopped:(id)arg1;
 - (void)_handleSendFileTransfer:(id)arg1;
+- (id)_newFileTransferForStoredAttachmentPayloadDataWithTransferGUID:(id)arg1 messageGUID:(id)arg2;
 - (void)_postUpdated:(id)arg1;
 - (id)_progressForTransferGUID:(id)arg1 allowCreate:(BOOL)arg2 path:(id)arg3;
 - (void)_removeActiveTransfer:(id)arg1;
@@ -55,6 +56,7 @@
 - (void)addTransfer:(id)arg1 forGUID:(id)arg2;
 - (void)archiveFileTransfer:(id)arg1;
 - (void)assignTransfer:(id)arg1 toAccount:(id)arg2 otherPerson:(id)arg3;
+- (void)broadcastTransfersWithGUIDs:(id)arg1 atLocalPaths:(id)arg2;
 - (void)dealloc;
 - (void)endTransfer:(id)arg1;
 - (void)failTransfer:(id)arg1 error:(id)arg2;
@@ -63,9 +65,12 @@
 - (void)fileCopierDidStart:(id)arg1;
 - (id)guidForNewIncomingTransferWithFilename:(id)arg1 isDirectory:(BOOL)arg2 totalBytes:(unsigned long long)arg3 hfsType:(unsigned int)arg4 hfsCreator:(unsigned int)arg5 hfsFlags:(unsigned short)arg6;
 - (id)guidForNewOutgoingTransferWithFilename:(id)arg1 isDirectory:(BOOL)arg2 totalBytes:(unsigned long long)arg3 hfsType:(unsigned int)arg4 hfsCreator:(unsigned int)arg5 hfsFlags:(unsigned short)arg6;
+- (id)guidForNewOutgoingTransferWithLocalURL:(id)arg1;
+- (id)guidsForStoredAttachmentPayloadData:(id)arg1 messageGUID:(id)arg2;
 - (id)init;
 - (void)makeNewIncomingTransferWithGUID:(id)arg1 filename:(id)arg2 isDirectory:(BOOL)arg3 totalBytes:(unsigned long long)arg4 hfsType:(unsigned int)arg5 hfsCreator:(unsigned int)arg6 hfsFlags:(unsigned short)arg7;
 - (void)makeNewOutgoingTransferWithGUID:(id)arg1 filename:(id)arg2 isDirectory:(BOOL)arg3 totalBytes:(unsigned long long)arg4 hfsType:(unsigned int)arg5 hfsCreator:(unsigned int)arg6 hfsFlags:(unsigned short)arg7;
+- (BOOL)markAttachment:(id)arg1 sender:(id)arg2 recipients:(id)arg3 isIncoming:(BOOL)arg4;
 - (void)registerStandaloneTransfer:(id)arg1;
 - (void)removeTransferForGUID:(id)arg1;
 - (void)removeUnassignedTransfers;

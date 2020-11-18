@@ -8,7 +8,6 @@
 
 @class BKSApplicationStateMonitor, NSString, NSURL, UIImage;
 
-__attribute__((visibility("hidden")))
 @interface InterAppAudioApp : NSObject
 {
     BKSApplicationStateMonitor *appMonitor;

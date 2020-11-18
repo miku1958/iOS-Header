@@ -6,7 +6,7 @@
 
 #import <UIKit/UILabel.h>
 
-@class UIColor, _UITabBarItemAppearanceStorage;
+@class UIColor, UITabBarButton, _UITabBarItemAppearanceStorage;
 
 __attribute__((visibility("hidden")))
 @interface UITabBarButtonLabel : UILabel
@@ -17,25 +17,31 @@ __attribute__((visibility("hidden")))
     BOOL _isHighlighted;
     Class _appearanceGuideClass;
     UIColor *_unselectedTintColor;
+    UITabBarButton *_tabBarButton;
 }
 
-@property (nonatomic, setter=_setAppearanceGuideClass:) Class _appearanceGuideClass; // @synthesize _appearanceGuideClass;
+@property (strong, nonatomic, setter=_setAppearanceGuideClass:) Class _appearanceGuideClass; // @synthesize _appearanceGuideClass;
+@property (weak, nonatomic, getter=_tabBarButton, setter=_setTabBarButton:) UITabBarButton *tabBarButton; // @synthesize tabBarButton=_tabBarButton;
 @property (strong, nonatomic, getter=_unselectedTintColor, setter=_setUnselectedTintColor:) UIColor *unselectedTintColor; // @synthesize unselectedTintColor=_unselectedTintColor;
 
 + (double)_fontPointSizeForIdiom:(long long)arg1;
+- (void).cxx_destruct;
+- (void)_UIAppearance_setBadgeColor:(id)arg1;
+- (void)_UIAppearance_setBadgeTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_UIAppearance_setTitlePositionAdjustment:(struct UIOffset)arg1;
 - (void)_UIAppearance_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_applyTabBarButtonAppearanceStorage:(id)arg1 withTaggedSelectors:(id)arg2;
-- (id)_containingTabBarButton;
 - (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(BOOL)arg3;
 - (id)_fontForIdiom:(long long)arg1;
+- (void)_setBadgeColor:(id)arg1;
+- (void)_setBadgeTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_setTitlePositionAdjustment:(struct UIOffset)arg1;
 - (void)_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (BOOL)_shouldCeilSizeToViewScale;
 - (id)_titleTextAttributesForState:(unsigned long long)arg1;
 - (void)_updateForFontChangeWithIdiom:(long long)arg1;
-- (void)dealloc;
+- (void)_updateLabelsVibrancy;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1;
 - (void)sizeToFitBounds:(struct CGRect)arg1;

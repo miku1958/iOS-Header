@@ -6,29 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class CKDClientContext, CKDKeyValueDiskCache, CKDOperation, NSMutableArray;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@class CKDClientContext, CKDKeyValueDiskCache;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CKDPublicIdentityLookupService : NSObject
 {
-    NSMutableArray *_pendingRequests;
-    NSObject<OS_dispatch_source> *_lookupSource;
     NSObject<OS_dispatch_queue> *_queue;
-    CKDKeyValueDiskCache *_cache;
-    CKDOperation *_operationToUseForSettingUpThelookup;
     CKDClientContext *_context;
+    CKDKeyValueDiskCache *_cache;
 }
 
+@property (strong, nonatomic) CKDKeyValueDiskCache *cache; // @synthesize cache=_cache;
 @property (weak, nonatomic) CKDClientContext *context; // @synthesize context=_context;
 
 - (void).cxx_destruct;
-- (void)_fetchEmails;
-- (void)_finishCompletedRequests;
-- (void)_finishPendingRequestsWithError:(id)arg1;
-- (void)_saveAndFinishRequestsWithPublicIdentify:(id)arg1 userInfo:(id)arg2 forEmail:(id)arg3;
-- (void)dealloc;
+- (void)configureRequest:(id)arg1 parentOperation:(id)arg2;
 - (id)initWithClientContext:(id)arg1;
+- (void)removeCacheForLookupInfos:(id)arg1;
 - (void)scheduleRequest:(id)arg1 forOperation:(id)arg2;
 
 @end

@@ -15,11 +15,14 @@
     SKUIFloatingOverlayView *_floatingOverlayView;
     UIViewController *_floatingOverlayViewController;
     SKUITabBarBackgroundView *_tabBarBackgroundView;
+    BOOL _sizeTransitionInProgress;
 }
 
+@property (readonly, nonatomic) BOOL containsTransientViewControllerOnly;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL sizeTransitionInProgress; // @synthesize sizeTransitionInProgress=_sizeTransitionInProgress;
 @property (readonly) Class superclass;
 
 + (Class)_moreNavigationControllerClass;
@@ -35,6 +38,7 @@
 - (void)setFloatingOverlayViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)setTabBarBackdropStyle:(long long)arg1;
 - (void)setTransientViewController:(id)arg1 animated:(BOOL)arg2;
+- (id)traitCollection;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 

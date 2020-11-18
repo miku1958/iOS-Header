@@ -46,13 +46,13 @@
     NSString *_documentPasswordHint;
     TSPObject *_documentObject;
     id<TSPObjectContextDelegate> _delegate;
-    NSUUID *_documentUUID;
-    NSUUID *_versionUUID;
-    TSPObject *_supportObject;
     TSPDataManager *_dataManager;
     TSPObjectContainer *_documentObjectContainer;
     TSPObjectContainer *_supportObjectContainer;
     NSData *_passwordVerifier;
+    NSUUID *_documentUUID;
+    NSUUID *_versionUUID;
+    TSPObject *_supportObject;
 }
 
 @property (readonly, nonatomic) BOOL areNewExternalReferencesToDataAllowed;

@@ -24,6 +24,7 @@
 + (id)sharedDelegate;
 - (void)applicationDidReceiveMemoryWarning:(id)arg1;
 - (BOOL)centerOnInitialSelection;
+- (void)dealloc;
 - (id)image32IconForTXTFiles;
 - (id)init;
 - (id)noDocumentsImagePath;

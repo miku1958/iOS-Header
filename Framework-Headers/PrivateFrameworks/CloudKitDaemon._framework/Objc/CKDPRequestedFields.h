@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSMutableArray *fields; // @synthesize fields=_fields;
 
++ (Class)fieldsType;
 - (void).cxx_destruct;
 - (void)_CKLogToFileHandle:(id)arg1 atDepth:(int)arg2;
 - (void)addFields:(id)arg1;

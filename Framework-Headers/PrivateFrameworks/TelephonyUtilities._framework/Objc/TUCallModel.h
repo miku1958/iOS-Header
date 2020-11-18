@@ -6,38 +6,35 @@
 
 #import <Foundation/NSObject.h>
 
-@interface TUCallModel : NSObject
+#import <TelephonyUtilities/NSCopying-Protocol.h>
+#import <TelephonyUtilities/NSSecureCoding-Protocol.h>
+
+@interface TUCallModel : NSObject <NSCopying, NSSecureCoding>
 {
-    BOOL _ambiguous;
-    BOOL _swappable;
-    BOOL _mergeable;
-    BOOL _holdAllowed;
-    BOOL _addCallAllowed;
-    BOOL _takingCallsPrivateAllowed;
-    BOOL _hardPauseAvailable;
-    BOOL _endAndAnswerAllowed;
-    BOOL _holdAndAnswerAllowed;
-    BOOL _sendToVoicemailAllowed;
-    int _ambiguityState;
+    BOOL _supportsHolding;
+    BOOL _supportsGrouping;
+    BOOL _supportsUngrouping;
+    BOOL _supportsDTMF;
+    BOOL _supportsUnambiguousMultiPartyState;
+    BOOL _supportsAddCall;
+    BOOL _supportsSendingToVoicemail;
 }
 
-@property (readonly, nonatomic, getter=isAddCallAllowed) BOOL addCallAllowed; // @synthesize addCallAllowed=_addCallAllowed;
-@property (readonly, nonatomic) int ambiguityState; // @synthesize ambiguityState=_ambiguityState;
-@property (readonly, nonatomic, getter=isAmbiguous) BOOL ambiguous; // @synthesize ambiguous=_ambiguous;
-@property (readonly, nonatomic, getter=isEndAndAnswerAllowed) BOOL endAndAnswerAllowed; // @synthesize endAndAnswerAllowed=_endAndAnswerAllowed;
-@property (readonly, nonatomic, getter=isHardPauseAvailable) BOOL hardPauseAvailable; // @synthesize hardPauseAvailable=_hardPauseAvailable;
-@property (readonly, nonatomic, getter=isHoldAllowed) BOOL holdAllowed; // @synthesize holdAllowed=_holdAllowed;
-@property (readonly, nonatomic, getter=isHoldAndAnswerAllowed) BOOL holdAndAnswerAllowed; // @synthesize holdAndAnswerAllowed=_holdAndAnswerAllowed;
-@property (readonly, nonatomic, getter=isMergeable) BOOL mergeable; // @synthesize mergeable=_mergeable;
-@property (readonly, nonatomic, getter=isSendToVoicemailAllowed) BOOL sendToVoicemailAllowed; // @synthesize sendToVoicemailAllowed=_sendToVoicemailAllowed;
-@property (readonly, nonatomic, getter=isSwappable) BOOL swappable; // @synthesize swappable=_swappable;
-@property (readonly, nonatomic, getter=isTakingCallsPrivateAllowed) BOOL takingCallsPrivateAllowed; // @synthesize takingCallsPrivateAllowed=_takingCallsPrivateAllowed;
+@property (nonatomic) BOOL supportsAddCall; // @synthesize supportsAddCall=_supportsAddCall;
+@property (nonatomic) BOOL supportsDTMF; // @synthesize supportsDTMF=_supportsDTMF;
+@property (nonatomic) BOOL supportsGrouping; // @synthesize supportsGrouping=_supportsGrouping;
+@property (nonatomic) BOOL supportsHolding; // @synthesize supportsHolding=_supportsHolding;
+@property (nonatomic) BOOL supportsSendingToVoicemail; // @synthesize supportsSendingToVoicemail=_supportsSendingToVoicemail;
+@property (nonatomic) BOOL supportsUnambiguousMultiPartyState; // @synthesize supportsUnambiguousMultiPartyState=_supportsUnambiguousMultiPartyState;
+@property (nonatomic) BOOL supportsUngrouping; // @synthesize supportsUngrouping=_supportsUngrouping;
 
-+ (id)sharedInstance;
-- (id)audioCategoryForCall:(id)arg1;
-- (id)audioModeForCall:(id)arg1;
++ (BOOL)supportsSecureCoding;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (BOOL)shouldPlayDTMFToneForCall:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

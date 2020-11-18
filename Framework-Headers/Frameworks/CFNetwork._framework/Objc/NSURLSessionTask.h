@@ -8,17 +8,16 @@
 
 #import <CFNetwork/NSCopying-Protocol.h>
 
-@class NSArray, NSDictionary, NSError, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSession, NSURLSessionTaskHTTPAuthenticator;
+@class NSArray, NSDictionary, NSError, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSession, NSURLSessionTaskDependency, NSURLSessionTaskDependencyTree, NSURLSessionTaskHTTPAuthenticator;
 @protocol OS_dispatch_queue;
 
 @interface NSURLSessionTask : NSObject <NSCopying>
 {
     float _priority;
     double __loadingPriority;
-    NSURL *_currentRequest_URL;
-    NSURL *_currentRequest_mainDocumentURL;
 }
 
+@property (copy) NSDictionary *_DuetActivityProperties; // @dynamic _DuetActivityProperties;
 @property unsigned long long _allowedProtocolTypes; // @dynamic _allowedProtocolTypes;
 @property BOOL _allowsCellular; // @dynamic _allowsCellular;
 @property (copy, nonatomic) NSDictionary *_backgroundTaskTimingData; // @dynamic _backgroundTaskTimingData;
@@ -35,6 +34,7 @@
 @property int _cookieAcceptPolicy; // @dynamic _cookieAcceptPolicy;
 @property (strong) struct _CFURLRequest *_currentCFURLRequest; // @dynamic _currentCFURLRequest;
 @property unsigned int _darkWakePowerAssertion; // @dynamic _darkWakePowerAssertion;
+@property (strong, nonatomic) NSDictionary *_dependencyInfo; // @dynamic _dependencyInfo;
 @property BOOL _disallowCellular; // @dynamic _disallowCellular;
 @property long long _expectedWorkload; // @dynamic _expectedWorkload;
 @property (copy) NSURL *_ledBellyFallbackURL; // @dynamic _ledBellyFallbackURL;
@@ -43,6 +43,7 @@
 @property double _loadingPriority; // @synthesize _loadingPriority=__loadingPriority;
 @property double _loadingPriorityValue; // @dynamic _loadingPriorityValue;
 @property int _networkServiceType; // @dynamic _networkServiceType;
+@property (copy) NSString *_pathToDownloadTaskFile; // @dynamic _pathToDownloadTaskFile;
 @property (strong, nonatomic) struct __PerformanceTiming *_performanceTiming; // @dynamic _performanceTiming;
 @property unsigned int _powerAssertion; // @dynamic _powerAssertion;
 @property BOOL _preventsIdleSystemSleep; // @dynamic _preventsIdleSystemSleep;
@@ -59,11 +60,13 @@
 @property BOOL _shouldSkipPreferredClientCertificateLookup; // @dynamic _shouldSkipPreferredClientCertificateLookup;
 @property BOOL _shouldUsePipelineHeuristics; // @dynamic _shouldUsePipelineHeuristics;
 @property (copy) NSDictionary *_sslSettings; // @dynamic _sslSettings;
+@property (copy) NSString *_storagePartitionIdentifier; // @dynamic _storagePartitionIdentifier;
 @property BOOL _strictContentLength; // @dynamic _strictContentLength;
 @property long long _suspensionThreshhold; // @dynamic _suspensionThreshhold;
 @property double _timeWindowDelay; // @dynamic _timeWindowDelay;
 @property double _timeWindowDuration; // @dynamic _timeWindowDuration;
 @property double _timeoutInterval; // @dynamic _timeoutInterval;
+@property (strong, nonatomic) NSDictionary *_trailers; // @dynamic _trailers;
 @property (copy) NSString *_uniqueIdentifier; // @dynamic _uniqueIdentifier;
 @property (copy) NSURLSessionTaskHTTPAuthenticator *authenticator; // @dynamic authenticator;
 @property long long countOfBytesExpectedToReceive; // @dynamic countOfBytesExpectedToReceive;
@@ -71,8 +74,9 @@
 @property long long countOfBytesReceived; // @dynamic countOfBytesReceived;
 @property long long countOfBytesSent; // @dynamic countOfBytesSent;
 @property (copy) NSURLRequest *currentRequest; // @dynamic currentRequest;
-@property (readonly, strong) NSURL *currentRequest_URL; // @synthesize currentRequest_URL=_currentRequest_URL;
-@property (readonly, strong) NSURL *currentRequest_mainDocumentURL; // @synthesize currentRequest_mainDocumentURL=_currentRequest_mainDocumentURL;
+@property (readonly, strong) NSURL *currentRequest_URL; // @dynamic currentRequest_URL;
+@property (readonly, strong) NSURL *currentRequest_mainDocumentURL; // @dynamic currentRequest_mainDocumentURL;
+@property (strong, nonatomic) NSURLSessionTaskDependencyTree *dependencyTree; // @dynamic dependencyTree;
 @property (copy) NSError *error; // @dynamic error;
 @property (copy) NSURLRequest *originalRequest; // @dynamic originalRequest;
 @property float priority; // @synthesize priority=_priority;
@@ -80,6 +84,7 @@
 @property (strong) NSURLSession *session; // @dynamic session;
 @property double startTime; // @dynamic startTime;
 @property long long state; // @dynamic state;
+@property (strong, nonatomic) NSURLSessionTaskDependency *taskDependency; // @dynamic taskDependency;
 @property (copy) NSString *taskDescription; // @dynamic taskDescription;
 @property unsigned long long taskIdentifier; // @dynamic taskIdentifier;
 @property (readonly, strong) NSObject<OS_dispatch_queue> *workQueue; // @dynamic workQueue;
@@ -97,10 +102,12 @@
 - (void)_onqueue_adjustBytesPerSecondLimit:(long long)arg1;
 - (void)_onqueue_adjustPriorityHint:(float)arg1;
 - (void)_onqueue_releasePowerAsssertion;
+- (void)_prepareNewTimingDataContainer;
 - (void)_setBytesPerSecondLimit:(long long)arg1;
 - (void)_setExplicitCookieStorage:(struct OpaqueCFHTTPCookieStorage *)arg1;
 - (void)_setExplicitStorageSession:(struct __CFURLStorageSession *)arg1;
 - (void)_setSocketProperties:(struct __CFDictionary *)arg1 connectionProperties:(struct __CFDictionary *)arg2;
+- (id)_transactionMetrics;
 - (void)cancel;
 - (long long)computeAdjustedPoolPriority;
 - (id)copyWithZone:(struct _NSZone *)arg1;

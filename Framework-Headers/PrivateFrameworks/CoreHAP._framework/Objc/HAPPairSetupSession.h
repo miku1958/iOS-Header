@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreHAP/HAPTimerDelegate-Protocol.h>
+#import <CoreHAP/HMFTimerDelegate-Protocol.h>
 
-@class HAPTimer, NSString;
+@class HMFTimer, NSString;
 @protocol HAPPairSetupSessionDelegate, OS_dispatch_queue;
 
-@interface HAPPairSetupSession : NSObject <HAPTimerDelegate>
+@interface HAPPairSetupSession : NSObject <HMFTimerDelegate>
 {
     id<HAPPairSetupSessionDelegate> _delegate;
     long long _role;
@@ -19,10 +19,10 @@
     NSObject<OS_dispatch_queue> *_clientQueue;
     unsigned long long _state;
     struct PairingSessionPrivate *_pairingSession;
-    HAPTimer *_backoffTimer;
+    HMFTimer *_backoffTimer;
 }
 
-@property (strong, nonatomic) HAPTimer *backoffTimer; // @synthesize backoffTimer=_backoffTimer;
+@property (strong, nonatomic) HMFTimer *backoffTimer; // @synthesize backoffTimer=_backoffTimer;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak) id<HAPPairSetupSessionDelegate> delegate; // @synthesize delegate=_delegate;
@@ -34,6 +34,8 @@
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
++ (void)initialize;
++ (BOOL)isValidSetupCode:(id)arg1;
 - (void).cxx_destruct;
 - (void)_handleBackoffExpiration;
 - (id)_handleLocalPairingIdentityRequestWithStatus:(int *)arg1;

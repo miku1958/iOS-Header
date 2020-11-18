@@ -21,6 +21,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) DDRemoteActionViewController *viewController; // @synthesize viewController;
 
+- (void).cxx_destruct;
 - (void)eventEditViewController:(id)arg1 didCompleteWithAction:(long long)arg2;
 - (int)interactionType;
 - (void)invalidate;

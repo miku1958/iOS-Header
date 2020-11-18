@@ -8,7 +8,7 @@
 
 #import <UIKit/UITextDocumentProxy-Protocol.h>
 
-@class NSString, TIDocumentState, TIKeyboardOutput, TITextInputTraits, _UIInputViewControllerOutput, _UIInputViewControllerState;
+@class NSString, TIDocumentState, TIKeyboardOutput, TITextInputTraits, UITextInputMode, _UIInputViewControllerOutput, _UIInputViewControllerState;
 @protocol _UITextDocumentInterfaceDelegate;
 
 __attribute__((visibility("hidden")))
@@ -29,8 +29,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *documentContextAfterInput;
 @property (readonly, nonatomic) NSString *documentContextBeforeInput;
+@property (readonly, nonatomic) UITextInputMode *documentInputMode;
 @property (readonly, nonatomic, getter=_documentState) TIDocumentState *documentState;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
+@property (readonly, nonatomic) BOOL hasText;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long keyboardAppearance;
 @property (readonly, nonatomic, getter=_keyboardOutput) TIKeyboardOutput *keyboardOutput; // @synthesize keyboardOutput=_keyboardOutput;
@@ -39,11 +41,13 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
 @property (nonatomic) long long spellCheckingType;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *textContentType;
 @property (readonly, nonatomic, getter=_textInputTraits) TITextInputTraits *textInputTraits;
 
 - (void)_createControllerOutputIfNecessary;
 - (void)_didPerformOutputOperation;
 - (void)_handleInputViewControllerState:(id)arg1;
+- (void)_setInputModeList:(long long)arg1 touchBegan:(double)arg2 fromLocation:(struct CGPoint)arg3 updatePoint:(struct CGPoint)arg4;
 - (void)_setPrimaryLanguage:(id)arg1;
 - (void)_setShouldAdvanceInputMode;
 - (void)_setShouldDismiss;
@@ -51,7 +55,6 @@ __attribute__((visibility("hidden")))
 - (void)adjustTextPositionByCharacterOffset:(long long)arg1;
 - (void)dealloc;
 - (void)deleteBackward;
-- (BOOL)hasText;
 - (void)insertText:(id)arg1;
 - (void)setForwardingInterface:(id)arg1;
 

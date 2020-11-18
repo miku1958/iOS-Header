@@ -6,7 +6,19 @@
 
 #import <CloudKit/CKOperation.h>
 
-@interface CKOperation (IC)
+#import <NotesShared/ICLoggable-Protocol.h>
+
+@class NSString;
+
+@interface CKOperation (IC) <ICLoggable>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
+- (id)ic_loggingIdentifier;
+- (id)ic_loggingValues;
 - (void)ic_removeAllCompletionBlocks;
 @end
 

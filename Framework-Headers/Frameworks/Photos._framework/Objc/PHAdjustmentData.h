@@ -20,8 +20,8 @@
 
 @property (nonatomic) long long baseVersion; // @synthesize baseVersion=_baseVersion;
 @property (readonly) NSData *data; // @synthesize data=_data;
-@property (copy) NSString *formatIdentifier; // @synthesize formatIdentifier=_formatIdentifier;
-@property (copy) NSString *formatVersion; // @synthesize formatVersion=_formatVersion;
+@property (copy, nonatomic) NSString *formatIdentifier; // @synthesize formatIdentifier=_formatIdentifier;
+@property (copy, nonatomic) NSString *formatVersion; // @synthesize formatVersion=_formatVersion;
 @property (readonly, getter=isOpaque) BOOL opaque;
 
 + (long long)adjustmentBaseVersionFromImageRequestVersion:(long long)arg1;
@@ -31,6 +31,7 @@
 + (BOOL)supportsSecureCoding;
 + (long long)videoRequestVersionFromAdjustmentBaseVersion:(long long)arg1;
 - (void).cxx_destruct;
+- (BOOL)_hasAdjustments;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

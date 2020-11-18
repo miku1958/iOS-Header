@@ -26,9 +26,13 @@
 @property (nonatomic) BOOL hasComponent;
 @property (nonatomic) BOOL hasHandleLocally;
 
+- (int)StringAsActions:(id)arg1;
+- (int)StringAsComponent:(id)arg1;
+- (id)actionsAsString:(int)arg1;
 - (int)actionsAtIndex:(unsigned long long)arg1;
 - (void)addActions:(int)arg1;
 - (void)clearActions;
+- (id)componentAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

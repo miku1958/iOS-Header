@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <PassKit/PKPaymentWebServiceDelegate-Protocol.h>
+#import <PassKitCore/PKPaymentWebServiceDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableSet, NSString, NSTimer, PKPaymentEligibilityResponse, PKPaymentPass, PKPaymentRequirementsResponse, PKPaymentWebService;
+@class NSArray, NSMutableArray, NSMutableSet, NSString, NSTimer, PKPaymentEligibilityResponse, PKPaymentPass, PKPaymentProvisioningResponse, PKPaymentRequirementsResponse, PKPaymentWebService;
 
 @interface PKPaymentProvisioningController : NSObject <PKPaymentWebServiceDelegate>
 {
@@ -16,13 +16,17 @@
     NSTimer *_descriptionTimer;
     NSMutableArray *_associatedCredentials;
     BOOL _provisioningUserInterfaceIsVisible;
+    BOOL _proxyTargetDeviceWebServiceInUse;
+    NSString *_provisioningNonce;
     NSString *_productIdentifier;
+    PKPaymentWebService *_webService;
     long long _state;
+    NSString *_localizedProgressDescription;
     PKPaymentRequirementsResponse *_requirementsResponse;
     PKPaymentEligibilityResponse *_eligibilityResponse;
+    PKPaymentProvisioningResponse *_provisioningResponse;
     PKPaymentPass *_provisionedPass;
-    PKPaymentWebService *_webService;
-    NSString *_localizedProgressDescription;
+    NSArray *_moreInfoItems;
 }
 
 @property (readonly, copy, nonatomic) NSArray *associatedCredentials; // @synthesize associatedCredentials=_associatedCredentials;
@@ -31,17 +35,24 @@
 @property (readonly, nonatomic) PKPaymentEligibilityResponse *eligibilityResponse; // @synthesize eligibilityResponse=_eligibilityResponse;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *localizedProgressDescription; // @synthesize localizedProgressDescription=_localizedProgressDescription;
+@property (readonly, nonatomic) NSArray *moreInfoItems; // @synthesize moreInfoItems=_moreInfoItems;
 @property (readonly, copy, nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 @property (readonly, nonatomic) PKPaymentPass *provisionedPass; // @synthesize provisionedPass=_provisionedPass;
+@property (readonly, nonatomic) PKPaymentProvisioningResponse *provisioningResponse; // @synthesize provisioningResponse=_provisioningResponse;
 @property (readonly, nonatomic) PKPaymentRequirementsResponse *requirementsResponse; // @synthesize requirementsResponse=_requirementsResponse;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic) PKPaymentWebService *webService; // @synthesize webService=_webService;
+@property (readonly, nonatomic) PKPaymentWebService *webService; // @synthesize webService=_webService;
 
+- (void).cxx_destruct;
+- (void)_addAssociatedCredential:(id)arg1;
 - (long long)_defaultResetState;
 - (id)_displayableErrorOverrideForUnderlyingError:(id)arg1;
+- (void)_downloadMoreInfoItemURLs:(id)arg1 withMetadata:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_handleProvisioningError:(id)arg1 forRequest:(id)arg2;
+- (void)_moreInfoItemAtURL:(id)arg1 withMetadata:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_passAlreadyProvisioned;
+- (void)_provisoniningNonceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_queryEligibilityForCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queryRequirementsForCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_registerWhileRetrievingRemoteCredentials:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -53,8 +64,6 @@
 - (void)_updateLocalizedProgressAndInvalidateTimer;
 - (void)_validatePreconditionsWhileRetrievingRemoteCredentials:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)acceptTerms;
-- (id)alertForDisplayableError:(id)arg1;
-- (id)alertForDisplayableError:(id)arg1 earlyExitHandler:(CDUnknownBlockType)arg2;
 - (void)associateCredential:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)associateCredentials:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
@@ -66,13 +75,16 @@
 - (void)paymentWebService:(id)arg1 didCompleteTSMConnectionForTaskID:(unsigned long long)arg2;
 - (void)paymentWebService:(id)arg1 didQueueTSMConnectionForTaskID:(unsigned long long)arg2;
 - (BOOL)provisioningUserInterfaceIsVisible;
+- (void)registerDevice:(CDUnknownBlockType)arg1;
 - (void)requestEligibility:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)requestProvisioning:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)requestRemoteCredentials:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)requestRequirements:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)reset;
 - (void)resolveAmbiguousRequirementsWithProductIdentifier:(id)arg1;
 - (void)resolveRequirementsUsingProduct:(id)arg1;
 - (void)retrieveRemoteCredentials:(CDUnknownBlockType)arg1;
+- (void)validatePreconditions:(CDUnknownBlockType)arg1;
 - (void)validatePreconditionsAndRegister:(CDUnknownBlockType)arg1;
 - (void)validatePreconditionsRegisterAndAssociateRemoteCredentials:(CDUnknownBlockType)arg1;
 

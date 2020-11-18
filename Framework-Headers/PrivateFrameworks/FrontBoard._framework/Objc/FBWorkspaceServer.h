@@ -22,13 +22,14 @@
     BOOL _triedToSendMessageInTransaction;
 }
 
-@property (nonatomic) id<FBWorkspaceServerDelegate> delegate;
+@property (readonly, nonatomic) id<FBWorkspaceServerDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (id)_handlerForSceneID:(id)arg1;
 - (id)_queue;
 - (void)_queue_clientExited;
 - (void)_queue_deserializeEventFromMessage:(id)arg1 ofType:(Class)arg2 withHandlerBlock:(CDUnknownBlockType)arg3;
 - (void)_queue_deserializeEventFromMessage:(id)arg1 ofType:(Class)arg2 withSceneHandlerBlock:(CDUnknownBlockType)arg3;
+- (void)_queue_handleConnect:(id)arg1;
 - (void)_queue_handleCreateSceneRequest:(id)arg1;
 - (void)_queue_handleDestroySceneRequest:(id)arg1;
 - (void)_queue_handleMessage:(id)arg1;
@@ -36,6 +37,7 @@
 - (void)_queue_handleSceneAttachLayer:(id)arg1;
 - (void)_queue_handleSceneDetachLayer:(id)arg1;
 - (void)_queue_handleSceneDidReceiveActions:(id)arg1;
+- (void)_queue_handleSceneDidReceiveMessage:(id)arg1;
 - (void)_queue_handleSceneDidUpdateClientSettings:(id)arg1;
 - (void)_queue_handleSceneUpdateLayer:(id)arg1;
 - (void)_queue_sendMessage:(long long)arg1 withEvent:(id)arg2;
@@ -43,16 +45,16 @@
 - (void)_queue_sendMessage:(long long)arg1 withMessagePacker:(CDUnknownBlockType)arg2 withReplyHandler:(CDUnknownBlockType)arg3;
 - (void)_queue_sendReplyForMessage:(id)arg1 withEvent:(id)arg2;
 - (void)_queue_setXPCConnection:(id)arg1;
-- (id)auditToken;
 - (void)beginTransaction;
 - (void)dealloc;
 - (void)endTransaction;
-- (id)initWithQueue:(id)arg1;
+- (id)initWithDelegate:(id)arg1 queue:(id)arg2;
 - (void)invalidate;
 - (void)registerSceneEventHandler:(id)arg1 forSceneID:(id)arg2;
 - (void)sendActionsEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sendCreateSceneEvent:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)sendDestroySceneEvent:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)sendMessageEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sendSceneActionsEvent:(id)arg1;
 - (void)sendSceneUpdateEvent:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)unregisterSceneEventHandler:(id)arg1 forSceneID:(id)arg2;

@@ -17,6 +17,7 @@
 @property (nonatomic) int childNodeCount;
 @property (copy, nonatomic) NSArray *children;
 @property (strong, nonatomic) RWIProtocolDOMNode *contentDocument;
+@property (copy, nonatomic) NSString *contentSecurityPolicyHash;
 @property (copy, nonatomic) NSString *documentURL;
 @property (copy, nonatomic) NSString *frameId;
 @property (copy, nonatomic) NSString *internalSubset;
@@ -30,6 +31,7 @@
 @property (nonatomic) long long pseudoType;
 @property (copy, nonatomic) NSString *publicId;
 @property (copy, nonatomic) NSString *role;
+@property (nonatomic) long long shadowRootType;
 @property (copy, nonatomic) NSArray *shadowRoots;
 @property (copy, nonatomic) NSString *systemId;
 @property (strong, nonatomic) RWIProtocolDOMNode *templateContent;

@@ -6,22 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSSet;
 
 @interface MCDBrowserIdentifiers : NSObject
 {
-    BOOL _showSubscriptionContent;
+    NSArray *_cellIdentifiers;
+    NSArray *_orderedIdentifiers;
+    NSSet *_activeIdentifiers;
     double _maxImageWidth;
 }
 
-@property (readonly, nonatomic) NSArray *cellIdentifiers;
+@property (strong, nonatomic) NSSet *activeIdentifiers; // @synthesize activeIdentifiers=_activeIdentifiers;
+@property (strong, nonatomic) NSArray *cellIdentifiers; // @synthesize cellIdentifiers=_cellIdentifiers;
 @property (readonly, nonatomic) double maxImageWidth; // @synthesize maxImageWidth=_maxImageWidth;
+@property (strong, nonatomic) NSArray *orderedIdentifiers; // @synthesize orderedIdentifiers=_orderedIdentifiers;
 
 + (id)sharedInstance;
-- (id)images;
+- (void).cxx_destruct;
+- (id)MCDIdentifiersMusicIdentifiersMapping;
+- (BOOL)_identifiersDidChange;
+- (void)_updateCellIdentifiersOrdering;
+- (id)defaultFuseIdentifiers;
 - (id)init;
 - (id)localizedStrings;
-- (id)selectedImages;
 
 @end
 

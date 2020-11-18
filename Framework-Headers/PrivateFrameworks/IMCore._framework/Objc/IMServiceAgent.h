@@ -13,7 +13,7 @@
     NSDictionary *_currentAVChatInfo;
 }
 
-@property (readonly, nonatomic) NSDictionary *currentAVChatInfo;
+@property (readonly, weak, nonatomic) NSDictionary *currentAVChatInfo;
 @property (strong, nonatomic) NSArray *myAvailableMessages;
 @property (strong, nonatomic) NSArray *myAwayMessages;
 @property (readonly, nonatomic) unsigned long long requestAudioReflectorStart;
@@ -27,6 +27,7 @@
 + (long long)serviceAgentCapabilities;
 + (void)setServiceAgentCapabilities:(long long)arg1;
 + (id)sharedAgent;
+- (void).cxx_destruct;
 - (void)launchIfNecessary;
 - (id)myPictureData;
 - (id)notificationCenter;

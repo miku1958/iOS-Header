@@ -6,19 +6,21 @@
 
 #import <UIKit/UIView.h>
 
-#import <UIKit/UIAlertControllerBackgroundView-Protocol.h>
+#import <UIKit/UIInterfaceActionVisualBackgroundDisplaying-Protocol.h>
+#import <UIKit/UIInterfaceActionVisualGroupBackgroundDisplaying-Protocol.h>
 
 @class NSString, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
-@interface _UIDimmingKnockoutBackdropView : UIView <UIAlertControllerBackgroundView>
+@interface _UIDimmingKnockoutBackdropView : UIView <UIInterfaceActionVisualBackgroundDisplaying, UIInterfaceActionVisualGroupBackgroundDisplaying>
 {
     UIVisualEffectView *backdropView;
     UIView *dimmingKnockoutView;
+    double _cornerRadius;
     long long _style;
 }
 
-@property double cornerRadius;
+@property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -33,8 +35,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithStyle:(long long)arg1;
 - (void)layoutSubviews;
 - (void)setAlpha:(double)arg1;
-- (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setPressed:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setHighlighted:(BOOL)arg1;
+- (void)setPressed:(BOOL)arg1;
 
 @end
 

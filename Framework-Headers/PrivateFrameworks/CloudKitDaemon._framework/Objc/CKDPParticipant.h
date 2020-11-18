@@ -8,7 +8,7 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPContactInformation, CKDPIdentifier, CKDPProtectionInfo;
+@class CKDPContactInformation, CKDPIdentifier, CKDPProtectionInfo, NSData;
 
 __attribute__((visibility("hidden")))
 @interface CKDPParticipant : PBCodable <NSCopying>
@@ -16,44 +16,72 @@ __attribute__((visibility("hidden")))
     long long _acceptTimestamp;
     CKDPContactInformation *_contactInformation;
     CKDPIdentifier *_inviterId;
+    int _outOfNetworkKeyType;
+    NSData *_outOfNetworkPrivateKey;
     CKDPIdentifier *_participantId;
     int _participantType;
     int _permission;
+    CKDPProtectionInfo *_protectionInfo;
     CKDPProtectionInfo *_publicKey;
+    int _publicKeyVersion;
     int _state;
     CKDPIdentifier *_userId;
-    BOOL _createdOutOfProcess;
+    BOOL _acceptedInProcess;
+    BOOL _createdInProcess;
+    BOOL _isInNetwork;
     struct {
         unsigned int acceptTimestamp:1;
+        unsigned int outOfNetworkKeyType:1;
         unsigned int participantType:1;
         unsigned int permission:1;
+        unsigned int publicKeyVersion:1;
         unsigned int state:1;
-        unsigned int createdOutOfProcess:1;
+        unsigned int acceptedInProcess:1;
+        unsigned int createdInProcess:1;
+        unsigned int isInNetwork:1;
     } _has;
 }
 
 @property (nonatomic) long long acceptTimestamp; // @synthesize acceptTimestamp=_acceptTimestamp;
+@property (nonatomic) BOOL acceptedInProcess; // @synthesize acceptedInProcess=_acceptedInProcess;
 @property (strong, nonatomic) CKDPContactInformation *contactInformation; // @synthesize contactInformation=_contactInformation;
-@property (nonatomic) BOOL createdOutOfProcess; // @synthesize createdOutOfProcess=_createdOutOfProcess;
+@property (nonatomic) BOOL createdInProcess; // @synthesize createdInProcess=_createdInProcess;
 @property (nonatomic) BOOL hasAcceptTimestamp;
+@property (nonatomic) BOOL hasAcceptedInProcess;
 @property (readonly, nonatomic) BOOL hasContactInformation;
-@property (nonatomic) BOOL hasCreatedOutOfProcess;
+@property (nonatomic) BOOL hasCreatedInProcess;
 @property (readonly, nonatomic) BOOL hasInviterId;
+@property (nonatomic) BOOL hasIsInNetwork;
+@property (nonatomic) BOOL hasOutOfNetworkKeyType;
+@property (readonly, nonatomic) BOOL hasOutOfNetworkPrivateKey;
 @property (readonly, nonatomic) BOOL hasParticipantId;
 @property (nonatomic) BOOL hasParticipantType;
 @property (nonatomic) BOOL hasPermission;
+@property (readonly, nonatomic) BOOL hasProtectionInfo;
 @property (readonly, nonatomic) BOOL hasPublicKey;
+@property (nonatomic) BOOL hasPublicKeyVersion;
 @property (nonatomic) BOOL hasState;
 @property (readonly, nonatomic) BOOL hasUserId;
 @property (strong, nonatomic) CKDPIdentifier *inviterId; // @synthesize inviterId=_inviterId;
+@property (nonatomic) BOOL isInNetwork; // @synthesize isInNetwork=_isInNetwork;
+@property (nonatomic) int outOfNetworkKeyType; // @synthesize outOfNetworkKeyType=_outOfNetworkKeyType;
+@property (strong, nonatomic) NSData *outOfNetworkPrivateKey; // @synthesize outOfNetworkPrivateKey=_outOfNetworkPrivateKey;
 @property (strong, nonatomic) CKDPIdentifier *participantId; // @synthesize participantId=_participantId;
 @property (nonatomic) int participantType; // @synthesize participantType=_participantType;
 @property (nonatomic) int permission; // @synthesize permission=_permission;
+@property (strong, nonatomic) CKDPProtectionInfo *protectionInfo; // @synthesize protectionInfo=_protectionInfo;
 @property (strong, nonatomic) CKDPProtectionInfo *publicKey; // @synthesize publicKey=_publicKey;
+@property (nonatomic) int publicKeyVersion; // @synthesize publicKeyVersion=_publicKeyVersion;
 @property (nonatomic) int state; // @synthesize state=_state;
 @property (strong, nonatomic) CKDPIdentifier *userId; // @synthesize userId=_userId;
 
 - (void).cxx_destruct;
+- (int)StringAsParticipantType:(id)arg1;
+- (int)StringAsPermission:(id)arg1;
+- (int)StringAsState:(id)arg1;
+- (id)_participantTypeCKLogValue;
+- (id)_permissionCKLogValue;
+- (id)_stateCKLogValue;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -61,7 +89,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)participantTypeAsString:(int)arg1;
+- (id)permissionAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)stateAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

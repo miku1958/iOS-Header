@@ -9,7 +9,6 @@
 @interface AVSpeechUtterance (Private)
 
 @property (nonatomic) BOOL processEmoticons; // @dynamic processEmoticons;
-@property (nonatomic) BOOL useCompactVoice; // @dynamic useCompactVoice;
 @property (nonatomic) BOOL useMonarchStyleSpeechRate; // @dynamic useMonarchStyleSpeechRate;
 
 @end

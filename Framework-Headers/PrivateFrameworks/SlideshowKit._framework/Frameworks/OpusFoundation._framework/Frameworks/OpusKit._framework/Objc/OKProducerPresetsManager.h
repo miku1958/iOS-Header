@@ -20,6 +20,7 @@
 - (id)defaultPresets;
 - (id)defaultPresetsForFamily:(id)arg1;
 - (id)init;
+- (id)presetForUniqueIdentifier:(id)arg1;
 - (id)presetWithUniqueIdentifier:(id)arg1;
 - (id)presetsForFamily:(id)arg1;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -26,12 +26,17 @@
 @property (strong, nonatomic) NSString *supplementarySubLocality; // @synthesize supplementarySubLocality=_supplementarySubLocality;
 
 + (BOOL)supportsSecureCoding;
++ (long long)version;
+- (void).cxx_destruct;
 - (id)cnMutableContact;
-- (void)dealloc;
+- (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCNContact:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDictionary:(id)arg1 error:(id *)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToContact:(id)arg1;
 
 @end
 

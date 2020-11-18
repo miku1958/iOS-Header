@@ -6,13 +6,13 @@
 
 #import <UIKit/UIKeyboardMenuView.h>
 
-@class NSMutableArray;
+@class NSArray;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardSplitControlMenu : UIKeyboardMenuView
 {
-    NSMutableArray *m_menuOptions;
     struct CGSize m_preferredSize;
+    NSArray *_items;
     CDUnknownBlockType _finishSplitTransitionBlock;
 }
 
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 
 + (id)activeInstance;
 + (id)sharedInstance;
+- (void)actionForItem:(id)arg1;
 - (void)dealloc;
 - (unsigned long long)defaultSelectedIndex;
 - (void)didFinishSplitTransition;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)preferredSize;
 - (void)setSplitAndUndocked:(BOOL)arg1;
 - (id)titleForItemAtIndex:(unsigned long long)arg1;
+- (int)visibleItemForIndex:(unsigned long long)arg1;
 
 @end
 

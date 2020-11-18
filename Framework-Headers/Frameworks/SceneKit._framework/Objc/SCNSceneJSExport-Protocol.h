@@ -6,7 +6,7 @@
 
 #import <SceneKit/JSExport-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, SCNMaterialProperty, SCNNode, SCNParticleSystem, SCNPhysicsWorld;
+@class MDLAsset, NSArray, NSDictionary, NSString, NSURL, SCNMaterialProperty, SCNNode, SCNParticleSystem, SCNPhysicsWorld;
 @protocol SCNSceneExportDelegate;
 
 @protocol SCNSceneJSExport <JSExport>
@@ -18,6 +18,7 @@
 @property (nonatomic) double fogEndDistance;
 @property (nonatomic) double fogStartDistance;
 @property (nonatomic) double frameRate;
+@property (readonly, nonatomic) SCNMaterialProperty *lightingEnvironment;
 @property (readonly) NSArray *particleSystems;
 @property (nonatomic, getter=isPaused) BOOL paused;
 @property (readonly, nonatomic) SCNPhysicsWorld *physicsWorld;
@@ -27,6 +28,7 @@
 + (id)scene;
 + (id)sceneNamed:(NSString *)arg1;
 + (id)sceneNamed:(NSString *)arg1 inDirectory:(NSString *)arg2 options:(NSDictionary *)arg3;
++ (id)sceneWithMDLAsset:(MDLAsset *)arg1;
 + (id)sceneWithURL:(NSURL *)arg1 options:(NSDictionary *)arg2 error:(id *)arg3;
 - (void)addParticleSystem:(SCNParticleSystem *)arg1 withTransform:(struct SCNMatrix4)arg2;
 - (id)attributeForKey:(NSString *)arg1;

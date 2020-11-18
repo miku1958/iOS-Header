@@ -25,6 +25,7 @@
 - (id)initWithHead:(id)arg1 tail:(id)arg2;
 - (id)initWithInMemoryStorage;
 - (id)initWithInMemoryStorageSparse;
+- (void)rotate;
 
 @end
 

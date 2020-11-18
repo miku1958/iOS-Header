@@ -12,7 +12,7 @@
 
 @interface GEOLongSessionUsageLogMessage : PBCodable <NSCopying>
 {
-    CDStruct_612aec5b _sessionId;
+    struct GEOSessionID _sessionId;
     double _timestamp;
     GEOCacheHitLogMessage *_cacheHitLogMessage;
     GEOLogFrameworkMetricLogMessage *_logFrameworkMetricLogMessage;
@@ -34,7 +34,7 @@
 @property (strong, nonatomic) GEOLogFrameworkMetricLogMessage *logFrameworkMetricLogMessage; // @synthesize logFrameworkMetricLogMessage=_logFrameworkMetricLogMessage;
 @property (strong, nonatomic) GEONetworkUsageLogMessage *networkUsageLogMessage; // @synthesize networkUsageLogMessage=_networkUsageLogMessage;
 @property (strong, nonatomic) NSString *requestingAppIdentifier; // @synthesize requestingAppIdentifier=_requestingAppIdentifier;
-@property (nonatomic) CDStruct_612aec5b sessionId; // @synthesize sessionId=_sessionId;
+@property (nonatomic) struct GEOSessionID sessionId; // @synthesize sessionId=_sessionId;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
 - (void)copyTo:(id)arg1;

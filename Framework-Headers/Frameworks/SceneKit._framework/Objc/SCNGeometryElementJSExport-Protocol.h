@@ -6,7 +6,7 @@
 
 #import <SceneKit/JSExport-Protocol.h>
 
-@class NSData;
+@class MDLSubmesh, NSData;
 
 @protocol SCNGeometryElementJSExport <JSExport>
 
@@ -16,5 +16,6 @@
 @property (readonly, nonatomic) long long primitiveType;
 
 + (id)geometryElementWithData:(NSData *)arg1 primitiveType:(long long)arg2 primitiveCount:(long long)arg3 bytesPerIndex:(long long)arg4;
++ (id)geometryElementWithMDLSubmesh:(MDLSubmesh *)arg1;
 @end
 

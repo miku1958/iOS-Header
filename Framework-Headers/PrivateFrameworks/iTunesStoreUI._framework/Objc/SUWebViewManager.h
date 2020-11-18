@@ -13,7 +13,7 @@
 #import <iTunesStoreUI/WebResourceLoadDelegate-Protocol.h>
 #import <iTunesStoreUI/WebUIDelegate-Protocol.h>
 
-@class ISURLRequestPerformance, NSLock, NSMapTable, NSMutableSet, NSSet, NSString, SSAuthenticationContext, SUClientInterface, SUScriptWindowContext, UIWebView;
+@class ISURLRequestPerformance, NSLock, NSMapTable, NSMutableSet, NSSet, NSString, SSAuthenticationContext, SUClientInterface, SUScriptWindowContext, SUWebScriptReloadContext, UIWebView;
 @protocol SUWebViewManagerDelegate;
 
 @interface SUWebViewManager : NSObject <SUScriptInterfaceDelegate, WebFrameLoadDelegate, WebPolicyDelegate, WebResourceLoadDelegate, WebUIDelegate, UIWebViewDelegate>
@@ -23,11 +23,11 @@
     id<SUWebViewManagerDelegate> _delegate;
     ISURLRequestPerformance *_initialRequestPerformance;
     NSLock *_lock;
-    long long _modalAlertClickedIndex;
     id _originalFrameLoadDelegate;
     id _originalPolicyDelegate;
     id _originalResourceLoadDelegate;
     id _originalUIDelegate;
+    SUWebScriptReloadContext *_pendingWebScriptReloadContext;
     NSMutableSet *_requireCellularURLs;
     NSMapTable *_scriptInterfaces;
     SUScriptWindowContext *_scriptWindowContext;
@@ -58,9 +58,9 @@
 - (id)_delegate;
 - (void)_endUsingNetwork;
 - (void)_enumerateScriptInterfacesWithBlock:(CDUnknownBlockType)arg1;
-- (id)_newAlertWithMessage:(id)arg1;
+- (BOOL)_presentModalAlertWithMessage:(id)arg1 includingCancelButton:(BOOL)arg2 configurationHandler:(CDUnknownBlockType)arg3;
+- (void)_requestWebScriptReloadWithContext:(id)arg1;
 - (id)_userIdentifier;
-- (void)alertView:(id)arg1 clickedButtonAtIndex:(long long)arg2;
 - (void)connectToWebView:(id)arg1;
 - (void)dealloc;
 - (void)disconnectFromWebView;

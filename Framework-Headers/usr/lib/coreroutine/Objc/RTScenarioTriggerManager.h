@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     RTPersistentTimer *_settledTimer;
     unsigned long long _settledTimerArmCount;
     RTMotionActivity *_dominantActivity;
-    long long _constantFootprint;
+    long long _wiFiFootprintState;
     unsigned long long _interestedInCarKitConnectionState;
     long long _carKitConnectionState;
     unsigned long long _interestedInStarkConnectionState;
@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) long long carKitConnectionState; // @synthesize carKitConnectionState=_carKitConnectionState;
 @property (nonatomic) unsigned long long connectedToCarSignalCount; // @synthesize connectedToCarSignalCount=_connectedToCarSignalCount;
-@property (nonatomic) long long constantFootprint; // @synthesize constantFootprint=_constantFootprint;
 @property (strong, nonatomic) RTMotionActivity *dominantActivity; // @synthesize dominantActivity=_dominantActivity;
 @property (nonatomic) unsigned long long interestedInCarKitConnectionState; // @synthesize interestedInCarKitConnectionState=_interestedInCarKitConnectionState;
 @property (nonatomic) unsigned long long interestedInConstantFootprint; // @synthesize interestedInConstantFootprint=_interestedInConstantFootprint;
@@ -39,32 +38,33 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) RTPersistentTimer *settledTimer; // @synthesize settledTimer=_settledTimer;
 @property (nonatomic) unsigned long long settledTimerArmCount; // @synthesize settledTimerArmCount=_settledTimerArmCount;
 @property (nonatomic) long long starkConnectionState; // @synthesize starkConnectionState=_starkConnectionState;
+@property (nonatomic) long long wiFiFootprintState; // @synthesize wiFiFootprintState=_wiFiFootprintState;
 
 + (id)scenarioTriggerTypeToNotificationName:(unsigned long long)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_checkForArrivedEarlyWithVisit:(id)arg1 atLocationOfInterest:(id)arg2;
-- (void)_checkForAtFamiliarLocationWithVisit:(id)arg1 atLocationOfInterest:(id)arg2;
+- (void)_checkForArrivedEarlyWithVisitIncident:(id)arg1 atLocationOfInterest:(id)arg2;
+- (void)_checkForAtFamiliarLocationWithVisitIncident:(id)arg1 atLocationOfInterest:(id)arg2;
 - (void)_checkForConnectedToCarAfterCarKitConnectionStateChangedFrom:(long long)arg1 to:(long long)arg2;
 - (void)_checkForConnectedToCarAfterStarkConnectionStateChangedFrom:(long long)arg1 to:(long long)arg2;
-- (void)_checkForFirstTimeAtLocationWithVisit:(id)arg1 atLocationOfInterest:(id)arg2;
-- (void)_checkForFirstTimeInCityWithVisit:(id)arg1 atLocationOfInterst:(id)arg2;
-- (void)_checkForFirstTimeInNeighborhoodWithVisit:(id)arg1 atLocationOfInterest:(id)arg2;
-- (void)_checkForHeadedToHomeWithVisit:(id)arg1 atLocationOfInterst:(id)arg2;
-- (void)_checkForHeadedToWorkWithVisit:(id)arg1 atLocationOfInterst:(id)arg2;
-- (void)_checkForLastTimeAtLocationWithVisit:(id)arg1 atLocationOfInterest:(id)arg2;
-- (void)_checkForSettledAfterConstantFootprintChangedFrom:(long long)arg1 to:(long long)arg2;
+- (void)_checkForFirstTimeAtLocationWithVisitIncident:(id)arg1 atLocationOfInterest:(id)arg2;
+- (void)_checkForFirstTimeInCityWithVisitIncident:(id)arg1 atLocationOfInterest:(id)arg2;
+- (void)_checkForFirstTimeInNeighborhoodWithVisitIncident:(id)arg1 atLocationOfInterest:(id)arg2;
+- (void)_checkForHeadedToHomeWithVisitIncident:(id)arg1 atLocationOfInterest:(id)arg2;
+- (void)_checkForHeadedToWorkWithVisitIncident:(id)arg1 atLocationOfInterest:(id)arg2;
+- (void)_checkForLastTimeAtLocationWithVisitIncident:(id)arg1 atLocationOfInterest:(id)arg2;
 - (void)_checkForSettledAfterDominantActivityChangedFrom:(id)arg1 to:(id)arg2;
-- (void)_checkForStayedLateWithVisit:(id)arg1 atLocationOfInterest:(id)arg2;
+- (void)_checkForSettledAfterWiFiFootprintStateChangedFrom:(long long)arg1 to:(long long)arg2;
+- (void)_checkForStayedLateWithVisitIncident:(id)arg1 atLocationOfInterest:(id)arg2;
 - (void)_handleVisit:(id)arg1;
-- (void)_handleVisit:(id)arg1 atLocationOfInterst:(id)arg2;
+- (void)_handleVisitIncident:(id)arg1 atLocationOfInterest:(id)arg2;
 - (unsigned long long)_notificationNameToScenarioTriggerType:(id)arg1;
 - (void)_onBluetoothManagerNotification:(id)arg1;
-- (void)_onDeviceLocationPredictorNotification:(id)arg1;
 - (void)_onMotionActivityManagerNotification:(id)arg1;
 - (void)_onSettledTimer;
 - (void)_onStarkManagerNotification:(id)arg1;
-- (void)_onWiFiManagerNotification:(id)arg1;
+- (void)_onVisitManagerNotification:(id)arg1;
+- (void)_onWiFiFootprintStateNotification:(id)arg1;
 - (void)_postScenarioTriggerNotification:(id)arg1;
 - (BOOL)_settledCriteriaAchievedForActivity:(id)arg1;
 - (void)_startMonitoringScenarioTriggerOfType:(unsigned long long)arg1;
@@ -74,11 +74,11 @@ __attribute__((visibility("hidden")))
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)onBluetoothManagerNotification:(id)arg1;
-- (void)onDeviceLocationPredictorNotification:(id)arg1;
 - (void)onMotionActivityManagerNotification:(id)arg1;
 - (void)onPostScenarioTriggerNotificationFromDefaults;
 - (void)onStarkManagerNotification:(id)arg1;
-- (void)onWiFiManagerNotification:(id)arg1;
+- (void)onVisitManagerNotification:(id)arg1;
+- (void)onWiFiFootprintStateNotification:(id)arg1;
 - (void)postScenarioTriggerNotification:(id)arg1;
 
 @end

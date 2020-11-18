@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
@@ -28,14 +28,15 @@
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
-- (void *)__CFObject;
-- (void)__removeAnimation:(id)arg1 forKey:(id)arg2;
+- (const void *)__CFObject;
+- (BOOL)__removeAnimation:(id)arg1 forKey:(id)arg2;
 - (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2;
 - (void)_syncObjCAnimations;
 - (void)addAnimation:(id)arg1;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
 - (id)animationForKey:(id)arg1;
 - (struct __C3DAnimationManager *)animationManager;
+- (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
 - (struct __C3DConstraint *)constraintRef;
 - (id)copy;
 - (struct __C3DAnimationChannel *)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
@@ -60,6 +61,8 @@
 - (void)setConstraintRef:(struct __C3DConstraint *)arg1;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setName:(id)arg1;
+- (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
+- (void)unbindAnimatablePath:(id)arg1;
 
 @end
 

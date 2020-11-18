@@ -6,14 +6,14 @@
 
 #import <FrontBoard/NSObject-Protocol.h>
 
-@class FBUISceneIdentity, FBUISceneSpecification, NSString;
+@class FBSSceneSpecification, FBUISceneIdentity, NSString;
 @protocol FBUISceneWorkspace;
 
 @protocol FBUISceneManager <NSObject>
 - (void)invalidateSceneWorkspace:(id<FBUISceneWorkspace>)arg1;
 - (void)registerSceneWorkspace:(id<FBUISceneWorkspace>)arg1;
-- (void)workspace:(id<FBUISceneWorkspace>)arg1 createSceneWithName:(NSString *)arg2 specification:(FBUISceneSpecification *)arg3;
+- (void)workspace:(id<FBUISceneWorkspace>)arg1 createSceneWithName:(NSString *)arg2 specification:(FBSSceneSpecification *)arg3;
 - (void)workspace:(id<FBUISceneWorkspace>)arg1 destroySceneWithIdentity:(FBUISceneIdentity *)arg2;
-- (FBUISceneIdentity *)workspace:(id<FBUISceneWorkspace>)arg1 identityForSceneWithName:(NSString *)arg2 specification:(FBUISceneSpecification *)arg3;
+- (FBUISceneIdentity *)workspace:(id<FBUISceneWorkspace>)arg1 identityForSceneWithName:(NSString *)arg2 specification:(FBSSceneSpecification *)arg3;
 @end
 

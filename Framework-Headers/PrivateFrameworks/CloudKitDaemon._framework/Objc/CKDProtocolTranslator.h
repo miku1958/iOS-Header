@@ -9,26 +9,31 @@
 @class CKDPIdentifier, NSString;
 @protocol CKDProtocolTranslatorIdentityDelegate;
 
+__attribute__((visibility("hidden")))
 @interface CKDProtocolTranslator : NSObject
 {
+    BOOL _dontCreateValidatingParentReferences;
     NSString *_bundleIdentifier;
-    NSString *_containerScopedUserID;
     id<CKDProtocolTranslatorIdentityDelegate> _identityDelegate;
+    NSString *_containerScopedUserID;
     NSString *_overriddenContainerScopedUserID;
 }
 
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSString *containerScopedUserID; // @synthesize containerScopedUserID=_containerScopedUserID;
+@property (nonatomic) BOOL dontCreateValidatingParentReferences; // @synthesize dontCreateValidatingParentReferences=_dontCreateValidatingParentReferences;
 @property (weak, nonatomic) id<CKDProtocolTranslatorIdentityDelegate> identityDelegate; // @synthesize identityDelegate=_identityDelegate;
 @property (copy, nonatomic) NSString *overriddenContainerScopedUserID; // @synthesize overriddenContainerScopedUserID=_overriddenContainerScopedUserID;
 @property (readonly, nonatomic) CKDPIdentifier *pUserID;
 
 + (id)translatorIgnoringUserIDs;
 - (void).cxx_destruct;
+- (id)_canonicalizedPhoneNumber:(id)arg1;
 - (id)_initWithContainerScopedUserID:(id)arg1 bundleIdentifier:(id)arg2;
 - (BOOL)_isDefaultUserNameFromClient:(id)arg1;
 - (BOOL)_isDefaultUserNameFromServer:(id)arg1;
 - (id)_pRecordFromRecordSansValues:(id)arg1 forCache:(BOOL)arg2;
+- (id)ancestorFromPAncestor:(id)arg1 error:(id *)arg2;
 - (id)assetFromPAsset:(id)arg1 error:(id *)arg2;
 - (id)containerPrivacySettingsFromPContainerPrivacySettings:(id)arg1;
 - (id)deltaPRecordFromRecord:(id)arg1 withAllFields:(BOOL)arg2 outDeletedMergeFields:(id *)arg3 outKeysToSend:(id *)arg4;
@@ -42,32 +47,36 @@
 - (id)notificationFromPPushMessage:(id)arg1;
 - (id)objectRepresentationFromFieldValue:(id)arg1;
 - (id)pAliasWithEmailAddress:(id)arg1;
+- (id)pAliasWithHashedStringID:(id)arg1 type:(int)arg2;
+- (id)pAliasWithIdentityLookupInfo:(id)arg1;
+- (id)pAliasWithPhoneNumber:(id)arg1;
 - (id)pAliasWithUserRecordID:(id)arg1;
 - (id)pAssetFromAsset:(id)arg1;
 - (id)pFieldWithKey:(id)arg1 value:(id)arg2;
 - (id)pIdentifierFromUserRecordID:(id)arg1;
 - (id)pPackageFromPackage:(id)arg1;
-- (id)pParticipantFromShareParticipant:(id)arg1;
+- (id)pParticipantFromShareParticipant:(id)arg1 forCache:(BOOL)arg2;
 - (id)pQueryFromQuery:(id)arg1 error:(id *)arg2;
 - (id)pRecordFromRecord:(id)arg1;
 - (id)pRecordFromRecord:(id)arg1 forCache:(BOOL)arg2;
 - (id)pRecordIdentifierFromRecordID:(id)arg1;
-- (id)pRecordIdentifierFromShareID:(id)arg1;
 - (id)pRecordIdentifierFromUserRecordName:(id)arg1;
 - (id)pRecordZoneFromRecordZone:(id)arg1;
 - (id)pRecordZoneIdentifierFromRecordZoneID:(id)arg1;
-- (id)pShareFromShare:(id)arg1;
-- (id)pShareIdentifierFromShareID:(id)arg1;
+- (id)pReferenceFromReference:(id)arg1 error:(id *)arg2;
+- (id)pShareFromShare:(id)arg1 forCache:(BOOL)arg2;
+- (id)pShareIdentifierFromRecordID:(id)arg1;
 - (id)pSubscriptionFromSubscription:(id)arg1 error:(id *)arg2;
 - (id)pUserIdentifierFromUserRecordName:(id)arg1;
 - (id)packageFromPPackage:(id)arg1 error:(id *)arg2;
 - (id)recordFromPRecord:(id)arg1 error:(id *)arg2;
 - (id)recordIDFromPRecordIdentifier:(id)arg1 error:(id *)arg2;
+- (id)recordIDFromPShareIdentifier:(id)arg1 error:(id *)arg2;
 - (id)recordIDFromPUserName:(id)arg1 error:(id *)arg2;
 - (id)recordZoneFromPRecordZone:(id)arg1 withDatabaseScope:(long long)arg2 error:(id *)arg3;
 - (id)recordZoneIDFromPRecordZoneIdentifier:(id)arg1 error:(id *)arg2;
+- (id)referenceFromPReference:(id)arg1 error:(id *)arg2;
 - (id)shareFromPShare:(id)arg1 error:(id *)arg2;
-- (id)shareIDFromPShareIdentifier:(id)arg1 error:(id *)arg2;
 - (id)shareParticipantFromPParticipant:(id)arg1 error:(id *)arg2;
 - (id)subscriptionFromPSubscription:(id)arg1 error:(id *)arg2;
 - (id)userNameFromPIdentifier:(id)arg1 error:(id *)arg2;

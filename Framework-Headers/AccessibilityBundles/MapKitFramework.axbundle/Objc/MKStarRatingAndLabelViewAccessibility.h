@@ -11,8 +11,10 @@
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
++ (id)ratingAndReviewsAsAttributedString:(double)arg1 style:(long long)arg2 font:(id)arg3 numberOfReviews:(unsigned long long)arg4 textColor:(id)arg5;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
++ (id)starRatingAndProviderAsAttributedStringForMapItem:(id)arg1 textColor:(id)arg2 font:(id)arg3 showReviewsOrTips:(BOOL)arg4 theme:(id)arg5;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;
 

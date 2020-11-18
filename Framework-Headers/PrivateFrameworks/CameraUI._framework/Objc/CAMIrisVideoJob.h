@@ -12,16 +12,16 @@
 
 @interface CAMIrisVideoJob : NSObject <NSSecureCoding>
 {
-    BOOL _finalReferenceVideo;
     NSURL *_videoURL;
     NSString *_stillImagePersistenceUUID;
     NSString *_videoPersistenceUUID;
     NSString *_irisIdentifier;
     long long _captureDevice;
     long long _captureOrientation;
-    NSURL *_masterVideoURL;
     double _captureTime;
     NSError *_captureError;
+    NSString *_filterName;
+    NSURL *_filteredVideoURL;
     CDStruct_1b6d18a9 _duration;
     CDStruct_1b6d18a9 _stillImageDisplayTime;
 }
@@ -31,9 +31,9 @@
 @property (readonly, nonatomic) long long captureOrientation; // @synthesize captureOrientation=_captureOrientation;
 @property (readonly, nonatomic) double captureTime; // @synthesize captureTime=_captureTime;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 duration; // @synthesize duration=_duration;
-@property (readonly, nonatomic, getter=isFinalReferenceVideo) BOOL finalReferenceVideo; // @synthesize finalReferenceVideo=_finalReferenceVideo;
+@property (readonly, nonatomic) NSString *filterName; // @synthesize filterName=_filterName;
+@property (readonly, nonatomic) NSURL *filteredVideoURL; // @synthesize filteredVideoURL=_filteredVideoURL;
 @property (readonly, nonatomic) NSString *irisIdentifier; // @synthesize irisIdentifier=_irisIdentifier;
-@property (readonly, nonatomic) NSURL *masterVideoURL; // @synthesize masterVideoURL=_masterVideoURL;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 stillImageDisplayTime; // @synthesize stillImageDisplayTime=_stillImageDisplayTime;
 @property (readonly, nonatomic) NSString *stillImagePersistenceUUID; // @synthesize stillImagePersistenceUUID=_stillImagePersistenceUUID;
 @property (readonly, nonatomic) NSString *videoPersistenceUUID; // @synthesize videoPersistenceUUID=_videoPersistenceUUID;
@@ -44,7 +44,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithVideoURL:(id)arg1 stillImagePersistenceUUID:(id)arg2 videoPersistenceUUID:(id)arg3 irisIdentifier:(id)arg4 captureDevice:(long long)arg5 captureOrientation:(long long)arg6 duration:(CDStruct_1b6d18a9)arg7 stillImageDisplayTime:(CDStruct_1b6d18a9)arg8 masterVideoURL:(id)arg9 isFinalReferenceVideo:(BOOL)arg10 captureTime:(double)arg11 captureError:(id)arg12;
+- (id)initWithVideoURL:(id)arg1 stillImagePersistenceUUID:(id)arg2 videoPersistenceUUID:(id)arg3 irisIdentifier:(id)arg4 captureDevice:(long long)arg5 captureOrientation:(long long)arg6 duration:(CDStruct_1b6d18a9)arg7 stillImageDisplayTime:(CDStruct_1b6d18a9)arg8 captureTime:(double)arg9 captureError:(id)arg10 filterName:(id)arg11 filteredVideoURL:(id)arg12;
 
 @end
 

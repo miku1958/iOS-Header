@@ -6,15 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSMutableSet, NSSet, NSString, SGDuplicateKey, SGRecordId, SGSimpleNamedEmailAddress, SGSimpleTimeRange;
+@class CSPerson, NSData, NSMutableSet, NSSet, NSString, SGDuplicateKey, SGRecordId, SGSimpleTimeRange;
 
 @interface SGEntity : NSObject
 {
     NSMutableSet *_tags;
     NSSet *_tagsSnapshot;
-    int _tagsLock;
-    NSData *_contentData;
-    unsigned long long _contentDataEncoding;
+    struct _opaque_pthread_mutex_t _tagsLock;
     unsigned int _state;
     SGRecordId *_recordId;
     SGDuplicateKey *_duplicateKey;
@@ -22,9 +20,9 @@
     NSString *_sourceKey;
     NSString *_content;
     NSString *_title;
-    SGSimpleNamedEmailAddress *_author;
-    double _creationTimestamp;
-    double _lastModifiedTimestamp;
+    CSPerson *_author;
+    struct SGUnixTimestamp_ _creationTimestamp;
+    struct SGUnixTimestamp_ _lastModifiedTimestamp;
     SGSimpleTimeRange *_timeRange;
     NSData *_structuredData;
     double _quality;
@@ -34,14 +32,14 @@
     struct _NSRange _contentRangeOfInterest;
 }
 
-@property (strong, nonatomic) SGSimpleNamedEmailAddress *author; // @synthesize author=_author;
+@property (strong, nonatomic) CSPerson *author; // @synthesize author=_author;
 @property (strong, nonatomic) NSString *content; // @synthesize content=_content;
 @property (nonatomic) struct _NSRange contentRangeOfInterest; // @synthesize contentRangeOfInterest=_contentRangeOfInterest;
-@property (nonatomic) double creationTimestamp; // @synthesize creationTimestamp=_creationTimestamp;
+@property (nonatomic) struct SGUnixTimestamp_ creationTimestamp; // @synthesize creationTimestamp=_creationTimestamp;
 @property (strong, nonatomic) SGDuplicateKey *duplicateKey; // @synthesize duplicateKey=_duplicateKey;
 @property (nonatomic) unsigned long long extractionType; // @synthesize extractionType=_extractionType;
 @property (nonatomic) long long groupId; // @synthesize groupId=_groupId;
-@property (nonatomic) double lastModifiedTimestamp; // @synthesize lastModifiedTimestamp=_lastModifiedTimestamp;
+@property (nonatomic) struct SGUnixTimestamp_ lastModifiedTimestamp; // @synthesize lastModifiedTimestamp=_lastModifiedTimestamp;
 @property (strong, nonatomic) NSMutableSet *locations; // @synthesize locations=_locations;
 @property (nonatomic) long long masterEntityId; // @synthesize masterEntityId=_masterEntityId;
 @property (nonatomic) double quality; // @synthesize quality=_quality;
@@ -54,12 +52,13 @@
 
 - (void).cxx_destruct;
 - (void)addTag:(id)arg1;
-- (id)contentData;
-- (unsigned long long)contentDataEncoding;
+- (void)dealloc;
+- (id)description;
 - (id)extraKeyTag;
 - (id)fieldsToSaveOnConfirmation;
 - (unsigned long long)hash;
 - (id)init;
+- (id)initWithEntity:(id)arg1;
 - (BOOL)isCancelled;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToEntity:(id)arg1;
@@ -67,7 +66,6 @@
 - (BOOL)isInhuman;
 - (BOOL)isPartiallyDownloaded;
 - (id)loadOrigin:(id)arg1;
-- (void)setContentData:(id)arg1 encoding:(unsigned long long)arg2;
 - (id)tags;
 - (id)templateShortName;
 - (void)validate;

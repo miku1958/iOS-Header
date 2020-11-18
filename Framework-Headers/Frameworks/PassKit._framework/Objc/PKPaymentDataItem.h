@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <PassKit/PKPaymentValidating-Protocol.h>
+#import <PassKitCore/PKPaymentValidating-Protocol.h>
 
 @class NSString, PKPaymentAuthorizationDataModel;
 
@@ -20,13 +20,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) PKPaymentAuthorizationDataModel *model; // @synthesize model=_model;
+@property (weak, nonatomic) PKPaymentAuthorizationDataModel *model; // @synthesize model=_model;
 @property (readonly, nonatomic, getter=isRejected) BOOL rejected;
 @property (nonatomic) long long status; // @synthesize status=_status;
 @property (readonly) Class superclass;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
 + (long long)dataType;
+- (void).cxx_destruct;
 - (id)initWithModel:(id)arg1;
 - (BOOL)isValidWithError:(id *)arg1;
 

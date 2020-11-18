@@ -12,7 +12,7 @@
 #import <extension/_NSExtensionAuxHostingBase-Protocol.h>
 
 @class NSArray, NSString, NSUUID, NSXPCConnection, NSXPCListener;
-@protocol _NSExtensionContextHosting, _NSExtensionContextVending;
+@protocol OS_os_transaction, _NSExtensionContextHosting, _NSExtensionContextVending;
 
 @interface NSExtensionContext : NSObject <NSSecureCoding, NSCopying, NSXPCListenerDelegate, _NSExtensionAuxHostingBase>
 {
@@ -25,28 +25,33 @@
     NSXPCConnection *__auxiliaryConnection;
     NSXPCListener *__auxiliaryListener;
     id __principalObject;
+    NSObject<OS_os_transaction> *__transaction;
 }
 
 @property (copy, nonatomic) NSUUID *_UUID; // @synthesize _UUID=__UUID;
 @property (strong, nonatomic, setter=_setAuxiliaryConnection:) NSXPCConnection *_auxiliaryConnection; // @synthesize _auxiliaryConnection=__auxiliaryConnection;
 @property (strong, nonatomic, setter=_setAuxiliaryListener:) NSXPCListener *_auxiliaryListener; // @synthesize _auxiliaryListener=__auxiliaryListener;
 @property (nonatomic, getter=_isDummyExtension, setter=_setDummyExtension:) BOOL _dummyExtension; // @synthesize _dummyExtension=__dummyExtension;
-@property (strong, nonatomic, setter=_setExtensionHostProxy:) id<_NSExtensionContextHosting> _extensionHostProxy; // @synthesize _extensionHostProxy=__extensionHostProxy;
+@property (strong, setter=_setExtensionHostProxy:) id<_NSExtensionContextHosting> _extensionHostProxy; // @synthesize _extensionHostProxy=__extensionHostProxy;
 @property (strong, nonatomic, setter=_setExtensionVendorProxy:) id<_NSExtensionContextVending> _extensionVendorProxy; // @synthesize _extensionVendorProxy=__extensionVendorProxy;
 @property (nonatomic, setter=_setPrincipalObject:) id _principalObject; // @synthesize _principalObject=__principalObject;
 @property (copy, nonatomic, setter=_setRequestCleanUpBlock:) CDUnknownBlockType _requestCleanUpBlock; // @synthesize _requestCleanUpBlock=__requestCleanUpBlock;
+@property (strong, getter=_transaction, setter=_setTransaction:) NSObject<OS_os_transaction> *_transaction; // @synthesize _transaction=__transaction;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSArray *inputItems; // @synthesize inputItems=_inputItems;
+@property (copy, nonatomic, setter=_setInputItems:) NSArray *inputItems; // @synthesize inputItems=_inputItems;
 @property (readonly) Class superclass;
 
++ (id)_allowedErrorClasses;
++ (id)_defaultExtensionContextProtocol;
++ (id)_defaultExtensionContextVendorProtocol;
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
 + (id)_extensionContextForIdentifier:(id)arg1;
-+ (id)_extensionContextHostProtocol;
 + (id)_extensionContextHostProtocolAllowedClassesForItems;
-+ (id)_extensionContextVendorProtocol;
++ (id)_extensionContextHostProtocolWithAllowedErrorClasses:(id)arg1;
++ (id)_extensionContextVendorProtocolWithAllowedErrorClasses:(id)arg1;
 + (void)initialize;
 + (BOOL)supportsSecureCoding;
 - (void)___nsx_pingHost:(CDUnknownBlockType)arg1;
@@ -56,7 +61,6 @@
 - (void)_loadItemForPayload:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_loadPreviewImageForPayload:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_openURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_setInputItems:(id)arg1;
 - (void)_willPerformHostCallback:(CDUnknownBlockType)arg1;
 - (void)cancelRequestWithError:(id)arg1;
 - (void)completeRequestReturningItems:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

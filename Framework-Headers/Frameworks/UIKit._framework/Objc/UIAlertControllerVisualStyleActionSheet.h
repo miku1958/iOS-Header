@@ -11,11 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (double)_systemFontSize;
-- (struct UIEdgeInsets)actionImageMarginForAction:(id)arg1 withViewRepresentation:(id)arg2 inAlertController:(id)arg3;
++ (long long)interfaceActionPresentationStyle;
 - (void)animateAlertControllerView:(id)arg1 ofAlertController:(id)arg2 forPresentation:(BOOL)arg3 inContainerView:(id)arg4 descendantOfContainerView:(id)arg5 duration:(double)arg6 completionBlock:(CDUnknownBlockType)arg7;
-- (double)backgroundCornerRadius;
-- (id)backgroundViewForAction:(id)arg1 withViewRepresentation:(id)arg2 inAlertController:(id)arg3;
 - (struct UIEdgeInsets)contentInsets;
 - (id)defaultActionBackgroundColorWhenSeparate;
 - (BOOL)hideCancelAction:(id)arg1 inAlertController:(id)arg2;
@@ -27,12 +24,9 @@ __attribute__((visibility("hidden")))
 - (double)maximumWidth;
 - (id)messageLabelColor;
 - (id)messageLabelFont;
-- (double)minimumActionHeight;
 - (long long)permittedActionLayoutDirection;
+- (BOOL)placementAvoidsKeyboard;
 - (void)positionAlertControllerView:(id)arg1 ofAlertController:(id)arg2 inAvailableSpaceView:(id)arg3;
-- (id)preferredActionFont;
-- (id)regularActionFont;
-- (double)sectionDelimitingSeparatorDimension;
 - (id)titleLabelColor;
 - (id)titleLabelFont;
 - (double)transitionDurationForPresentation:(BOOL)arg1 ofAlertController:(id)arg2;

@@ -6,18 +6,17 @@
 
 #import <WatchKit/SPInterfaceObject.h>
 
-@class NSArray, NSDictionary;
-@protocol SPInterfaceController;
+@class NSArray, NSDictionary, WKInterfaceController;
 
 @interface SPInterfaceList : SPInterfaceObject
 {
     NSArray *_rowControllers;
     NSDictionary *_rowDescriptions;
-    id<SPInterfaceController> _controller;
+    WKInterfaceController *_controller;
     NSArray *_rowControllerProperties;
 }
 
-@property (weak, nonatomic) id<SPInterfaceController> controller; // @synthesize controller=_controller;
+@property (weak, nonatomic) WKInterfaceController *controller; // @synthesize controller=_controller;
 @property (readonly, nonatomic) long long numberOfRows;
 @property (strong, nonatomic) NSArray *rowControllerProperties; // @synthesize rowControllerProperties=_rowControllerProperties;
 @property (copy, nonatomic) NSArray *rowControllers; // @synthesize rowControllers=_rowControllers;

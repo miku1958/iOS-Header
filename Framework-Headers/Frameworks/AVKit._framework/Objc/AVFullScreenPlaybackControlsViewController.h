@@ -13,24 +13,24 @@
 __attribute__((visibility("hidden")))
 @interface AVFullScreenPlaybackControlsViewController : AVPlaybackControlsViewController <MPVolumeControllerDelegate>
 {
-    unsigned int _showsDoneButton:1;
-    unsigned int _showsScaleButton:1;
+    BOOL _showsDoneButton;
+    BOOL _showsScaleButton;
     long long _scaleButtonType;
-    unsigned int _showsLoadingIndicator:1;
-    unsigned int _playing:1;
-    unsigned int _scrubberEnabled:1;
+    BOOL _showsLoadingIndicator;
+    BOOL _playing;
+    BOOL _scrubberEnabled;
     NSArray *_scrubberLoadedTimeRanges;
-    unsigned int _scanBackwardButtonEnabled:1;
-    unsigned int _playPauseButtonEnabled:1;
-    unsigned int _scanForwardButtonEnabled:1;
-    unsigned int _showsStreamingControls:1;
-    unsigned int _skipBackwardThirtySecondsButtonEnabled:1;
-    unsigned int _gotoEndOfSeekableRangesButtonEnabled:1;
-    unsigned int _showsMediaSelectionButton:1;
-    unsigned int _showsExitFullScreenButton:1;
-    unsigned int _showsPictureInPictureButton:1;
-    unsigned int _pictureInPictureButtonEnabled:1;
-    unsigned int _showsVolumeSlider:1;
+    BOOL _scanBackwardButtonEnabled;
+    BOOL _playPauseButtonEnabled;
+    BOOL _scanForwardButtonEnabled;
+    BOOL _showsStreamingControls;
+    BOOL _skipBackwardThirtySecondsButtonEnabled;
+    BOOL _gotoEndOfSeekableRangesButtonEnabled;
+    BOOL _showsMediaSelectionButton;
+    BOOL _showsExitFullScreenButton;
+    BOOL _showsPictureInPictureButton;
+    BOOL _pictureInPictureButtonEnabled;
+    BOOL _showsVolumeSlider;
     NSString *_elapsedTimeLabelText;
     float _scrubberMinimumValue;
     float _scrubberValue;
@@ -62,21 +62,26 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_layoutConstraints;
     NSLayoutConstraint *_topControlsContainerViewHeightLayoutConstraint;
     NSLayoutConstraint *_bottomControlsContainerViewHeightLayoutConstraint;
-    unsigned int _bottomControlsSingleRowLayoutPossible:1;
-    unsigned int _showsScrubInstructions:1;
-    unsigned int _userDidTapScanButton:1;
+    BOOL _bottomControlsSingleRowLayoutPossible;
+    BOOL _showsScrubInstructions;
+    BOOL _userDidTapScanButton;
     NSTimer *_beginScanningBackwardTimer;
     NSTimer *_beginScanningForwardTimer;
-    unsigned int _isScanningBackward:1;
-    unsigned int _isScanningForward:1;
-    unsigned int _controlsVisibilityHasBeenManagedBefore:1;
-    unsigned int _supportForce:1;
+    BOOL _isScanningBackward;
+    BOOL _isScanningForward;
+    BOOL _controlsVisibilityHasBeenManagedBefore;
+    BOOL _supportForce;
     MPVolumeController *_volumeController;
+    BOOL _clientStatusBarHidden;
+    BOOL _ignoreNextStatusBarDidHideNotification;
+    id _statusBarHiddenObserver;
+    double scrubberWidth;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double scrubberWidth; // @synthesize scrubberWidth;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -99,6 +104,8 @@ __attribute__((visibility("hidden")))
 - (void)_skipBackwardThirtySecondsButtonTouchDown:(id)arg1;
 - (void)_skipBackwardThirtySecondsButtonTouchUpInside:(id)arg1;
 - (void)_skipBackwardThirtySecondsButtonTouchUpOutside:(id)arg1;
+- (void)_startKeepingStatusBarHidden;
+- (void)_stopKeepingStatusBarHidden;
 - (void)_updateScaleButton;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
@@ -115,7 +122,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)prefersStatusBarHidden;
 - (long long)scaleButtonType;
 - (id)scrubberLoadedTimeRanges;
-- (double)scrubberWidth;
 - (void)setGotoEndOfSeekableRangesButtonEnabled:(BOOL)arg1;
 - (void)setPictureInPictureButtonEnabled:(BOOL)arg1;
 - (void)setPlayPauseButtonEnabled:(BOOL)arg1;
@@ -148,6 +154,8 @@ __attribute__((visibility("hidden")))
 - (void)updateScrubberMinimumValue:(float)arg1;
 - (void)updateScrubberValue:(float)arg1;
 - (void)updateViewConstraints;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)volumeController:(id)arg1 volumeValueDidChange:(float)arg2;
 

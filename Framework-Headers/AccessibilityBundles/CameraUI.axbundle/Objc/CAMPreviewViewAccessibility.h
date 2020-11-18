@@ -17,6 +17,8 @@
 - (id)_accessibilityFaceElements;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityZoomIn:(BOOL)arg1;
+- (BOOL)_axIsBackFacing;
+- (BOOL)_axIsFocusLocked;
 - (BOOL)_axShowingEffects;
 - (void)_showFocusAtPoint:(struct CGPoint)arg1 startAnimating:(BOOL)arg2;
 - (struct CGPoint)accessibilityActivationPoint;
@@ -24,6 +26,7 @@
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityValue;
 - (void)accessibilityZoomInAtPoint:(struct CGPoint)arg1;
 - (void)accessibilityZoomOutAtPoint:(struct CGPoint)arg1;
 - (void)dealloc;

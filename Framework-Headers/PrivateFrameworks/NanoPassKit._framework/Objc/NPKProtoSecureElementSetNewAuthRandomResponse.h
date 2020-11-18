@@ -8,18 +8,27 @@
 
 #import <NanoPassKit/NSCopying-Protocol.h>
 
+@class NSData;
+
 @interface NPKProtoSecureElementSetNewAuthRandomResponse : PBCodable <NSCopying>
 {
+    NSData *_challengeResponse;
+    NSData *_cryptogram;
     BOOL _pending;
     BOOL _success;
     CDStruct_5ee4970e _has;
 }
 
+@property (strong, nonatomic) NSData *challengeResponse; // @synthesize challengeResponse=_challengeResponse;
+@property (strong, nonatomic) NSData *cryptogram; // @synthesize cryptogram=_cryptogram;
+@property (readonly, nonatomic) BOOL hasChallengeResponse;
+@property (readonly, nonatomic) BOOL hasCryptogram;
 @property (nonatomic) BOOL hasPending;
 @property (nonatomic) BOOL hasSuccess;
 @property (nonatomic) BOOL pending; // @synthesize pending=_pending;
 @property (nonatomic) BOOL success; // @synthesize success=_success;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

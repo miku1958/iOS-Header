@@ -24,7 +24,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) id<NEExtensionProviderHostProtocol> hostContext;
 @property (copy) CDUnknownBlockType stopCompletionHandler; // @synthesize stopCompletionHandler=_stopCompletionHandler;
 @property (readonly) Class superclass;
 
@@ -33,7 +32,9 @@
 - (void).cxx_destruct;
 - (void)cancelWithError:(id)arg1;
 - (void)completeSession;
+- (void)displayMessage:(id)arg1 message:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dispose;
+- (id)hostContext;
 - (long long)neStopReasonToProviderStopReason:(int)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setConfiguration:(id)arg1 extensionIdentifier:(id)arg2 deviceIdentifier:(id)arg3;

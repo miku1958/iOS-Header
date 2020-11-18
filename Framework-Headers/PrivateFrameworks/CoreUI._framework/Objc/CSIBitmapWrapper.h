@@ -12,27 +12,38 @@
 {
     struct CGContext *_bitmapContext;
     NSData *_pixelData;
-    NSData *_rawData;
     unsigned int _pixelFormat;
     unsigned int _width;
     unsigned int _height;
     unsigned long long _rowbytes;
     BOOL _allowsMultiPassEncoding;
+    BOOL _allowsOptimalPacking;
+    BOOL _flipped;
+    struct CGImage *_sourceImage;
+    long long _texturePixelFormat;
     unsigned int _imageAlpha;
     double _compressionQuality;
-    BOOL _useBlurredImageEncoding;
+    long long _compressionType;
+    unsigned long long _colorSpaceID;
+    long long _textureInterpretation;
+    int _exifOrientation;
 }
 
 @property BOOL allowsMultiPassEncoding; // @synthesize allowsMultiPassEncoding=_allowsMultiPassEncoding;
+@property BOOL allowsOptimalPacking; // @synthesize allowsOptimalPacking=_allowsOptimalPacking;
+@property (nonatomic) unsigned long long colorSpaceID; // @synthesize colorSpaceID=_colorSpaceID;
 @property (nonatomic) double compressionQuality; // @synthesize compressionQuality=_compressionQuality;
+@property long long compressionType; // @synthesize compressionType=_compressionType;
+@property (nonatomic) int exifOrientation; // @synthesize exifOrientation=_exifOrientation;
+@property (nonatomic) BOOL flipped; // @synthesize flipped=_flipped;
 @property (nonatomic) unsigned int pixelFormat; // @synthesize pixelFormat=_pixelFormat;
-@property BOOL useBlurredImageEncoding; // @synthesize useBlurredImageEncoding=_useBlurredImageEncoding;
+@property (nonatomic) long long textureInterpretation; // @synthesize textureInterpretation=_textureInterpretation;
 
 - (struct CGContext *)bitmapContext;
 - (id)compressedData:(BOOL)arg1 usedEncoding:(int *)arg2 andRowChunkSize:(unsigned int *)arg3;
 - (void)dealloc;
-- (void)finalize;
 - (unsigned int)height;
+- (id)initWithCGImage:(struct CGImage *)arg1 width:(unsigned int)arg2 height:(unsigned int)arg3 texturePixelFormat:(long long)arg4;
 - (id)initWithPixelWidth:(unsigned int)arg1 pixelHeight:(unsigned int)arg2;
 - (id)pixelData;
 - (unsigned long long)rowbytes;

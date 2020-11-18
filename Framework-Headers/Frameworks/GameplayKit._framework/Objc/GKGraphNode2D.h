@@ -11,18 +11,19 @@
 @interface GKGraphNode2D : GKGraphNode
 {
     struct GKCGraphNode2D *_cGraphNode2D;
-    MISSING_TYPE *_position;
 }
 
-@property (nonatomic) MISSING_TYPE *position; // @synthesize position=_position;
+@property (nonatomic) MISSING_TYPE *position;
 
 + (id)nodeWithPoint: /* Error: Ran out of types for this method. */;
 - (struct GKCGraphNode2D *)cGraphNode2D;
 - (float)costToNode:(id)arg1;
 - (void)deleteCGraphNode;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (float)estimatedCostToNode:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithPoint: /* Error: Ran out of types for this method. */;
 - (struct GKCGraphNode *)makeCGraphNode;
 

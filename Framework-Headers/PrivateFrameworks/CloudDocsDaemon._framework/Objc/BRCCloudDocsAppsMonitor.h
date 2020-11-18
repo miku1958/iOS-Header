@@ -8,19 +8,20 @@
 
 #import <CloudDocsDaemon/BRCAppListMonitorDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSString;
+@class NSMutableDictionary, NSMutableSet, NSString, br_pacer;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface BRCCloudDocsAppsMonitor : NSObject <BRCAppListMonitorDelegate>
 {
-    NSMutableDictionary *_cloudDocsContainersByAppID;
-    NSMutableDictionary *_appIDsByContainerID;
+    NSMutableDictionary *_cloudDocsAppLibrariesByAppID;
+    NSMutableDictionary *_appIDsByAppLibraryID;
     NSMutableSet *_observers;
-    struct br_pacer_t *_refetchPacer;
+    br_pacer *_refetchPacer;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_fetchInstalledAppsQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
+    BOOL _hasFetchedInitialApps;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -36,9 +37,9 @@ __attribute__((visibility("hidden")))
 - (id)allApplicationIdentifiers;
 - (id)applicationIdentifiersForContainerID:(id)arg1;
 - (id)containerIDsForApplicationIdentifier:(id)arg1;
-- (void)dealloc;
 - (void)dumpToContext:(id)arg1;
 - (void)forceRefetchAppList;
+- (BOOL)hasFetchedInitialApps;
 - (id)init;
 - (BOOL)isApplicationInstalledForContainerID:(id)arg1;
 - (void)removeObserver:(id)arg1;

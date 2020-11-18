@@ -14,7 +14,6 @@
 {
     NSString *_uuid;
     NSTimeZone *_timeZone;
-    BOOL _shouldLoadDefaultProperties;
     NSDate *_startDate;
     NSDate *_endDate;
     NSArray *_calendars;

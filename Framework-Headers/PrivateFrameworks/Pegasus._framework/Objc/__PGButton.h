@@ -6,14 +6,14 @@
 
 #import <UIKit/UIButton.h>
 
-@class UIImage, UIImageView, _UIBackdropView;
+@class PGBackdropView, UIImage, UIImageView;
 
 @interface __PGButton : UIButton
 {
-    _UIBackdropView *_backdropView;
+    PGBackdropView *_backdropView;
     UIImageView *_highlightImageView;
-    UIImage *_backgroundImage;
     UIImageView *_foregroundImageView;
+    UIImage *_backgroundImage;
     long long _buttonStyle;
 }
 

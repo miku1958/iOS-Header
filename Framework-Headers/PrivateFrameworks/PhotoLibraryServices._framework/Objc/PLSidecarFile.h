@@ -14,7 +14,6 @@
 
 @property (readonly, strong, nonatomic) NSURL *fileURL;
 
-- (void)setCaptureDateFromExifDictionary:(id)arg1;
 
 @end
 

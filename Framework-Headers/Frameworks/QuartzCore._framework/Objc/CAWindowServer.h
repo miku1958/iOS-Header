@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 
 @interface CAWindowServer : NSObject
 {
     struct CAWindowServerImpl *_impl;
+    BOOL _mirroringEnabled;
 }
 
 @property (readonly) NSArray *displays;
-@property (getter=isMirroringEnabled) BOOL mirroringEnabled;
+@property (getter=isMirroringEnabled) BOOL mirroringEnabled; // @synthesize mirroringEnabled=_mirroringEnabled;
 @property unsigned int rendererFlags;
 @property (getter=isSecure) BOOL secure;
 

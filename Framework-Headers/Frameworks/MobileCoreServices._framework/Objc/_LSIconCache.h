@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL initialized; // @synthesize initialized=_initialized;
 
 + (id)UUIDStringForString:(id)arg1;
-+ (id)dataWithResourcePath:(id)arg1;
 - (id)bundleCacheKeyForBundleIdentifier:(id)arg1 cacheKey:(id)arg2 variant:(int)arg3;
 - (id)bundleCacheKeyForBundleIdentifier:(id)arg1 roleIdentifier:(id)arg2 iconFiles:(id)arg3 variant:(int)arg4;
 - (id)bundleCacheKeyPrefixForBundleIdentifier:(id)arg1;

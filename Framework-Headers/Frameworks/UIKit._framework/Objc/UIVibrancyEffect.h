@@ -9,11 +9,15 @@
 @interface UIVibrancyEffect : UIVisualEffect
 {
     long long _blurStyle;
+    BOOL _invertAutomaticStyle;
 }
 
 + (id)effectForBlurEffect:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (long long)_blurStyle;
 - (id)_highQualityEffectConfig;
+- (BOOL)_isATVStyle;
+- (BOOL)_isAutomaticStyle;
 - (id)_lowQualityEffectConfig;
 - (id)_reduceTransparencyEffectConfig;
 - (id)copyWithZone:(struct _NSZone *)arg1;

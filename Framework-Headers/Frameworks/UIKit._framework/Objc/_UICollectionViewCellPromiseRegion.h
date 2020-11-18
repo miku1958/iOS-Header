@@ -6,12 +6,14 @@
 
 #import <Foundation/NSObject.h>
 
-#import <UIKit/_UIFocusRegion-Protocol.h>
+#import <UIKit/_UIFocusPromiseRegionDelegate-Protocol.h>
+#import <UIKit/_UIFocusRegionContainer-Protocol.h>
+#import <UIKit/_UILegacyFocusRegion-Protocol.h>
 
 @class NSString, UICollectionView, UICollectionViewLayoutAttributes;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewCellPromiseRegion : NSObject <_UIFocusRegion>
+@interface _UICollectionViewCellPromiseRegion : NSObject <_UIFocusPromiseRegionDelegate, _UILegacyFocusRegion, _UIFocusRegionContainer>
 {
     UICollectionView *_collectionView;
     UICollectionViewLayoutAttributes *_layoutAttributes;
@@ -34,9 +36,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)_focusRegionIsEligibleForFocus;
 - (id)_focusRegionItem;
 - (id)_focusRegionView;
+- (id)_fulfillFocusPromiseRegion:(id)arg1;
 - (id)_fulfillPromisedFocusRegion;
 - (BOOL)_isPromiseFocusRegion;
 - (BOOL)_isTransparentFocusRegion;
+- (void)_searchForFocusRegionsInContext:(id)arg1;
+- (BOOL)_shouldSearchForFocusRegionsInContext:(id)arg1;
 
 @end
 

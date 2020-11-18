@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) CMMotionActivity *activity; // @synthesize activity=_activity;
 
-+ (id)notificationName;
 - (void).cxx_destruct;
 - (id)initWithActivity:(id)arg1;
 

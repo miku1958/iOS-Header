@@ -17,12 +17,12 @@
 
 @property (readonly, nonatomic) NSData *bytes; // @synthesize bytes=_bytes;
 @property (readonly, nonatomic) NSData *historicalBytes; // @synthesize historicalBytes=_historicalBytes;
+@property (readonly, nonatomic) NSArray *historicalRecords;
 @property (readonly, nonatomic) NSArray *protocols;
 
 - (void).cxx_destruct;
 - (id)_formatHexData:(id)arg1 to:(id)arg2;
 - (id)description;
-- (id)historicalRecords;
 - (id)initWithBytes:(id)arg1;
 - (id)initWithSource:(CDUnknownBlockType)arg1;
 - (id)interfaceGroupAtIndex:(long long)arg1;

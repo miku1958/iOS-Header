@@ -14,8 +14,8 @@
 }
 
 - (void)dealloc;
-- (id)initWithWidget:(id)arg1;
 - (void)showVideoActivityIndicator:(BOOL)arg1;
+- (id)videoActivityIndicator;
 
 @end
 

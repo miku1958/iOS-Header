@@ -34,6 +34,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
 @property (copy, nonatomic) UIFont *font; // @synthesize font=_font;
+@property (readonly, nonatomic) BOOL hasText;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long keyboardAppearance;
 @property (nonatomic) long long keyboardType; // @synthesize keyboardType=_keyboardType;
@@ -44,6 +45,7 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property (copy, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
+@property (copy, nonatomic) NSString *textContentType;
 
 + (double)_defaultBoxSizeForFont:(id)arg1;
 + (struct CGSize)preferredSizeForViewElement:(id)arg1 context:(id)arg2;
@@ -57,7 +59,6 @@
 - (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
 - (void)deleteBackward;
-- (BOOL)hasText;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)insertText:(id)arg1;
 - (void)layoutSubviews;

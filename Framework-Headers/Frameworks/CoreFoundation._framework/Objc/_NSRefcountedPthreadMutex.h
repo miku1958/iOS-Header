@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (void)lock;
 - (void)unlock;

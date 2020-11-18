@@ -12,6 +12,7 @@
 - (id)aida_AppleIDAuthenticationAccounts;
 - (id)aida_accountForPrimaryiCloudAccount;
 - (id)aida_accountForiCloudAccount:(id)arg1;
+- (id)aida_iCloudAccountMatchingAppleIDAuthAccount:(id)arg1;
 - (void)aida_renewCredentialsForAccount:(id)arg1 services:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)aida_renewCredentialsForAccount:(id)arg1 services:(id)arg2 force:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 @end

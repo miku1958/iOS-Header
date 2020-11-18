@@ -56,6 +56,7 @@
 - (void)cameraViewWillRetakePhoto:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)initWithInitialImagePickerProperties:(id)arg1;
 - (void)loadView;
 - (long long)preferredStatusBarStyle;
 - (long long)preferredStatusBarUpdateAnimation;

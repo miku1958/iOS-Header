@@ -17,11 +17,14 @@
 - (id)_accessibilityCachedVariantKeys;
 - (BOOL)_accessibilityHasVariantKeys;
 - (BOOL)_accessibilityIsTouchContainer;
+- (BOOL)_accessibilityKeyboardKeyHasSignificantAlternateActions;
 - (void)_accessibilitySetCachedVariantKeys:(id)arg1;
 - (id)_accessibilityVariantKeys;
 - (id)_axEmoji;
+- (void)accessibilityElementDidBecomeFocused;
 - (id)accessibilityHeaderElements;
 - (id)accessibilityLabel;
+- (struct _NSRange)accessibilityRowRange;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 - (void)prepareForReuse;

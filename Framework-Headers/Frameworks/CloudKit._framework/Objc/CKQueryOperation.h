@@ -40,7 +40,7 @@
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleCompletionCallback:(id)arg1;
 - (void)_handleProgressCallback:(id)arg1;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
 - (BOOL)hasCKOperationCallbacksSet;

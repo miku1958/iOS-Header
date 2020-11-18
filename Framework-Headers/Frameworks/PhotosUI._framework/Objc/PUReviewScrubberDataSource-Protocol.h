@@ -6,9 +6,10 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class PUReviewScrubber;
+@class NSIndexPath, PUReviewScrubber;
 
 @protocol PUReviewScrubberDataSource <NSObject>
 - (unsigned long long)numberOfPhotosInReviewScrubber:(PUReviewScrubber *)arg1;
+- (BOOL)reviewScrubber:(PUReviewScrubber *)arg1 shouldProvideFeedbackForCellAtIndexPath:(NSIndexPath *)arg2;
 @end
 

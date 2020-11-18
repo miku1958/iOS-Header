@@ -11,14 +11,14 @@
 #import <PhotosUI/PUMapAnnotationManagerDataSource-Protocol.h>
 #import <PhotosUI/PUOneUpPresentationHelperDelegate-Protocol.h>
 #import <PhotosUI/PUPhotoBrowserZoomTransitionDelegate-Protocol.h>
-#import <PhotosUI/PUPhotoLibraryUIChangeObserver-Protocol.h>
 #import <PhotosUI/PUStackedAlbumTransitionDelegate-Protocol.h>
+#import <PhotosUI/PXPhotoLibraryUIChangeObserver-Protocol.h>
 
 @class MKMapView, NSArray, NSMutableArray, NSObject, NSString, PHFetchResult, PUDisplayLink, PUMapAnnotationManager, PUMapViewControllerSpec, PUOneUpPresentationHelper, PUPhotoBrowserOneUpPresentationAdaptor;
 @protocol PLDiagnosticsProvider;
 
 __attribute__((visibility("hidden")))
-@interface PUMapViewController : UIViewController <PUPhotoLibraryUIChangeObserver, PUOneUpPresentationHelperDelegate, PLDismissableViewController, MKMapViewDelegate, PUMapAnnotationManagerDataSource, PUPhotoBrowserZoomTransitionDelegate, PUStackedAlbumTransitionDelegate>
+@interface PUMapViewController : UIViewController <PXPhotoLibraryUIChangeObserver, PUOneUpPresentationHelperDelegate, PLDismissableViewController, MKMapViewDelegate, PUMapAnnotationManagerDataSource, PUPhotoBrowserZoomTransitionDelegate, PUStackedAlbumTransitionDelegate>
 {
     MKMapView *_mapView;
     NSMutableArray *_mapAnnotations;
@@ -59,7 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)_displayDetailsForAlbum:(struct NSObject *)arg1;
 - (void)_ensureOneUpPresentationHelperWithFetchResult:(id)arg1;
 - (void)_handleReportButton:(id)arg1;
-- (CDStruct_feeb6407)_mapRectWithDefaultZoomCenteredAtCoordinate:(CDStruct_c3b9c2ee)arg1;
+- (CDStruct_1f1f9651)_mapRectWithDefaultZoomCenteredAtCoordinate:(struct CLLocationCoordinate2D)arg1;
 - (id)_puAnnotationViewForAnnotation:(id)arg1;
 - (void)_showLocations:(id)arg1 animated:(BOOL)arg2;
 - (void)_updateAnnotationsForMapItems:(id)arg1;
@@ -70,21 +70,21 @@ __attribute__((visibility("hidden")))
 - (void)didReceiveMemoryWarning;
 - (id)init;
 - (id)initWithSpec:(id)arg1 assetsFetchResult:(id)arg2;
-- (id)mapAnnotationManager:(id)arg1 aggregateAnnotationForAnnotations:(id)arg2 averageCoordinate:(CDStruct_c3b9c2ee)arg3;
+- (id)mapAnnotationManager:(id)arg1 aggregateAnnotationForAnnotations:(id)arg2 averageCoordinate:(struct CLLocationCoordinate2D)arg3;
 - (void)mapView:(id)arg1 didAddAnnotationViews:(id)arg2;
 - (void)mapView:(id)arg1 didFailToLocateUserWithError:(id)arg2;
 - (void)mapView:(id)arg1 didSelectAnnotationView:(id)arg2;
 - (void)mapView:(id)arg1 regionDidChangeAnimated:(BOOL)arg2;
 - (void)mapView:(id)arg1 regionWillChangeAnimated:(BOOL)arg2;
+- (id)mapView:(id)arg1 rendererForOverlay:(id)arg2;
 - (id)mapView:(id)arg1 viewForAnnotation:(id)arg2;
-- (id)mapView:(id)arg1 viewForOverlay:(id)arg2;
 - (void)oneUpPresentationHelper:(id)arg1 didDismissOneUpViewController:(id)arg2;
 - (BOOL)oneUpPresentationHelperDisableFinalFadeoutAnimation:(id)arg1;
 - (BOOL)oneUpPresentationHelperShouldLeaveContentOnSecondScreen:(id)arg1;
 - (id)oneUpPresentationHelperViewController:(id)arg1;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
 - (BOOL)prepareForDismissingForced:(BOOL)arg1;
-- (void)prepareForPhotoLibraryChange:(id)arg1;
+- (id)prepareForPhotoLibraryChange:(id)arg1;
 - (BOOL)pu_wantsTabBarVisible;
 - (BOOL)pu_wantsToolbarVisible;
 - (id)stackedAlbumTransition:(id)arg1 layoutForCollection:(id)arg2 forCollectionView:(id)arg3;

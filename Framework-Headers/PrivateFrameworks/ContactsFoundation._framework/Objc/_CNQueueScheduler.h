@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ContactsFoundation/CNScheduler-Protocol.h>
 
@@ -23,11 +23,16 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
+- (id)_queueForQualityOfService:(unsigned long long)arg1;
 - (id)afterDelay:(double)arg1 performBlock:(CDUnknownBlockType)arg2;
-- (void)dealloc;
+- (id)afterDelay:(double)arg1 performBlock:(CDUnknownBlockType)arg2 qualityOfService:(unsigned long long)arg3;
 - (id)initWithQueue:(id)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1;
+- (void)performBlock:(CDUnknownBlockType)arg1 qualityOfService:(unsigned long long)arg2;
 - (id)performCancelableBlock:(CDUnknownBlockType)arg1;
+- (id)performCancelableBlock:(CDUnknownBlockType)arg1 qualityOfService:(unsigned long long)arg2;
+- (double)timestamp;
 
 @end
 

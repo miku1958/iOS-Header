@@ -8,3 +8,9 @@
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    double _field1;
+} CDStruct_2418a849;
+

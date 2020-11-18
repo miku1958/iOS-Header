@@ -8,12 +8,11 @@
 
 #import <FuseUI/MPUTextDrawingCacheInvalidationObserver-Protocol.h>
 #import <FuseUI/MusicArtworkViewDelegate-Protocol.h>
-#import <FuseUI/MusicEntityViewPlaybackStatusObserving-Protocol.h>
 
-@class MusicArtworkView, MusicEntityPlaybackProgressApplier, MusicEntityPlaybackStatus, MusicEntityViewContentDescriptor, MusicPlayButton, NSMapTable, NSMutableArray, NSString, UIControl, UIImage, UIImageView, UITraitCollection;
+@class MusicArtworkView, MusicEntityPlaybackStatus, MusicEntityViewContentDescriptor, MusicPlayButton, NSMapTable, NSMutableArray, NSString, UIControl, UIImage, UIImageView, UITraitCollection;
 @protocol MusicEntityValueProviding;
 
-@interface MusicEntityAbstractLockupView : UIView <MPUTextDrawingCacheInvalidationObserver, MusicArtworkViewDelegate, MusicEntityViewPlaybackStatusObserving>
+@interface MusicEntityAbstractLockupView : UIView <MPUTextDrawingCacheInvalidationObserver, MusicArtworkViewDelegate>
 {
     BOOL _artworkConfigurationBlockEnabled;
     MusicArtworkView *_artworkView;
@@ -22,7 +21,6 @@
     BOOL _hasDirtyPlaybackStatusUpdate;
     double _lastUsedArtworkViewAspectRatio;
     double _playbackCurrentTimeOriginatingTime;
-    MusicEntityPlaybackProgressApplier *_playbackProgressApplier;
     MusicPlayButton *_playButton;
     NSMutableArray *_recycledTextButtons;
     NSMutableArray *_recycledTextDrawingViews;
@@ -34,7 +32,6 @@
     BOOL _usingPlaceholderArt;
     UIImage *_artworkOverrideImage;
     id<MusicEntityValueProviding> _entityValueProvider;
-    MusicEntityPlaybackStatus *_playbackStatus;
     MusicEntityViewContentDescriptor *_contentDescriptor;
 }
 
@@ -50,13 +47,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (readonly, nonatomic, getter=_playButton) MusicPlayButton *playButton;
-@property (copy, nonatomic) MusicEntityPlaybackStatus *playbackStatus; // @synthesize playbackStatus=_playbackStatus;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isUsingPlaceholderArt) BOOL usingPlaceholderArt; // @synthesize usingPlaceholderArt=_usingPlaceholderArt;
 
 + (double)_maximumTextHeightForTextDescriptors:(id)arg1 traitCollection:(id)arg2;
 - (void).cxx_destruct;
-- (void)_applyPlaybackStatus:(id)arg1;
 - (void)_artworkViewImageDidChange;
 - (void)_configureArtworkCatalog:(id)arg1;
 - (void)_configureArtworkView:(id)arg1 forContentArtworkDescriptor:(id)arg2 entityValueProvider:(id)arg3;
@@ -69,11 +64,8 @@
 - (void)_handleArtworkImageUpdate:(id)arg1 idealArtworkSize:(struct CGSize)arg2;
 - (void)_handleArtworkViewTapped;
 - (void)_handleContentDescriptorDidInvalidate:(id)arg1;
-- (void)_handlePlayButtonTappedWithAction:(unsigned long long)arg1;
 - (void)_layoutArtworkViewWithAvailableContentBounds:(struct CGRect)arg1 layoutDirection:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (void)_layoutPlayButtonUsingBlock:(CDUnknownBlockType)arg1;
 - (id)_newArtworkView;
-- (void)_playButtonTapped:(id)arg1;
 - (void)_playbackStatusDidChange:(id)arg1;
 - (void)_recycleTextViewsForTextDescriptors:(id)arg1;
 - (BOOL)_shouldArtworkViewRespectHighlightProperty;
@@ -81,7 +73,6 @@
 - (BOOL)_shouldShowPlayButton;
 - (id)_viewForTextDescriptor:(id)arg1;
 - (void)dealloc;
-- (void)didMoveToWindow;
 - (void)musicArtworkViewDidTouchUpInside:(id)arg1;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)textDrawingCacheWasInvalidated:(id)arg1;

@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     UICollectionViewLayoutAttributes *_finalLayoutAttributes;
     double _startFraction;
     double _endFraction;
-    int _viewType;
+    long long _viewType;
     NSMutableArray *_completionHandlers;
     NSMutableArray *_startupHandlers;
     CDUnknownBlockType _animationBlock;
@@ -38,14 +38,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double startFraction; // @synthesize startFraction=_startFraction;
 @property (readonly, nonatomic) BOOL updateZIndexAfterAnimation; // @synthesize updateZIndexAfterAnimation=_updateZIndexAfterAnimation;
 @property (readonly, nonatomic) UICollectionReusableView *view; // @synthesize view=_view;
-@property (readonly, nonatomic) int viewType; // @synthesize viewType=_viewType;
+@property (readonly, nonatomic) long long viewType; // @synthesize viewType=_viewType;
 
 - (void).cxx_destruct;
 - (void)addCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)addStartupHandler:(CDUnknownBlockType)arg1;
 - (id)description;
-- (id)initWithView:(id)arg1 viewType:(int)arg2 finalLayoutAttributes:(id)arg3 startFraction:(double)arg4 endFraction:(double)arg5 animateFromCurrentPostion:(BOOL)arg6 deleteAfterAnimation:(BOOL)arg7 customAnimations:(CDUnknownBlockType)arg8;
+- (id)initWithView:(id)arg1 viewType:(long long)arg2 finalLayoutAttributes:(id)arg3 startFraction:(double)arg4 endFraction:(double)arg5 animateFromCurrentPostion:(BOOL)arg6 deleteAfterAnimation:(BOOL)arg7 customAnimations:(CDUnknownBlockType)arg8;
 - (void)start;
+- (void)startWithAnimator:(id)arg1;
 
 @end
 

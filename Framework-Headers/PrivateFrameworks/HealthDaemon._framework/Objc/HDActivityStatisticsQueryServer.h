@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/HDDataObserver-Protocol.h>
 
-@class HDActivityCacheDataSource, HKStatisticsCollection, NSDate, NSDateComponents, NSString, _HKDelayedOperation;
+@class HDActivityCacheDataSource, HDSourceManager, HKStatisticsCollection, NSDate, NSDateComponents, NSString, _HKDelayedOperation;
 
 @interface HDActivityStatisticsQueryServer : HDQueryServer <HDDataObserver>
 {
@@ -19,8 +19,10 @@
     _HKDelayedOperation *_resetOperation;
     NSDate *_startDate;
     NSDate *_endDate;
-    NSDateComponents *_intervalComponents;
+    NSDateComponents *_moveIntervalComponents;
+    NSDateComponents *_exerciseIntervalComponents;
     HDActivityCacheDataSource *_dataSource;
+    HDSourceManager *_sourceManager;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -29,16 +31,17 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_allObservedQuantityTypes;
 - (void)_createDataSourceIfNecessary;
-- (void)_queue_deliverActivityStatisticsObjects:(id)arg1;
+- (void)_queue_deliverActivityMoveStatistics:(id)arg1 exerciseStatistics:(id)arg2 standHoursInfo:(id)arg3 workouts:(id)arg4;
 - (void)_queue_deliverError:(id)arg1;
 - (void)_queue_deliverUpdates;
 - (BOOL)_queue_queryIsRunning;
 - (void)_queue_start;
 - (void)_queue_stop;
-- (id)_queue_updateDataSourceWithError:(id *)arg1;
+- (BOOL)_queue_updateDataSourceWithMoveStatistics:(id *)arg1 exerciseStatistics:(id *)arg2 standInfo:(id *)arg3 workoutInfoOut:(id *)arg4 error:(id *)arg5;
 - (BOOL)_shouldListenForUpdates;
-- (id)initWithQueryUUID:(id)arg1 dataObject:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 healthDaemon:(id)arg6;
+- (id)initWithQueryUUID:(id)arg1 dataObject:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 profile:(id)arg6;
 
 @end
 

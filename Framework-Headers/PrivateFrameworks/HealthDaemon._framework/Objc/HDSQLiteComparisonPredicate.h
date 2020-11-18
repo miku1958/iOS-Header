@@ -23,6 +23,7 @@
 + (id)predicateWithProperty:(id)arg1 lessThanOrEqualToValue:(id)arg2;
 + (id)predicateWithProperty:(id)arg1 lessThanValue:(id)arg2;
 + (id)predicateWithProperty:(id)arg1 likeValue:(id)arg2;
++ (id)predicateWithProperty:(id)arg1 likeValue:(id)arg2 escapeCharacter:(id)arg3;
 + (id)predicateWithProperty:(id)arg1 notEqualToValue:(id)arg2;
 + (id)predicateWithProperty:(id)arg1 value:(id)arg2 comparisonType:(long long)arg3;
 - (void).cxx_destruct;
@@ -32,6 +33,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
+- (id)initWithProperty:(id)arg1 value:(id)arg2 comparisonType:(long long)arg3;
 - (BOOL)isCompatibleWithPredicate:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

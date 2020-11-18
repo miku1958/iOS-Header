@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (id)ICSChecksumForVersion:(int)arg1;
 - (id)ICSChecksumStringForVersion:(int)arg1;
+- (id)ICSCompressedDataWithOptions:(unsigned long long)arg1;
 - (id)ICSDataWithOptions:(unsigned long long)arg1;
 - (id)ICSStringWithOptions:(unsigned long long)arg1;
 - (id)calendar;

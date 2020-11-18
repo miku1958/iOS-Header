@@ -10,7 +10,7 @@
 
 @interface GEORoadMatch : NSObject
 {
-    CDStruct_209eac20 *_roadFeature;
+    CDStruct_2244da21 *_roadFeature;
     NSString *_roadName;
     CDStruct_2c43369c _coordinateOnRoad;
     double _courseOnRoad;
@@ -25,12 +25,13 @@
 @property (nonatomic) double distanceFromJunction; // @synthesize distanceFromJunction=_distanceFromJunction;
 @property (nonatomic) double distanceFromRoad; // @synthesize distanceFromRoad=_distanceFromRoad;
 @property (nonatomic) double junctionRadius; // @synthesize junctionRadius=_junctionRadius;
-@property (readonly, nonatomic) CDStruct_209eac20 *roadFeature; // @synthesize roadFeature=_roadFeature;
+@property (readonly, nonatomic) CDStruct_2244da21 *roadFeature; // @synthesize roadFeature=_roadFeature;
 @property (copy, nonatomic) NSString *roadName; // @synthesize roadName=_roadName;
 @property (nonatomic) double roadWidth; // @synthesize roadWidth=_roadWidth;
 
 - (void)dealloc;
-- (void)setRoadFeature:(CDStruct_209eac20 *)arg1;
+- (id)initWithCoordinateOnRoad:(CDStruct_c3b9c2ee)arg1 courseOnRoad:(double)arg2;
+- (void)setRoadFeature:(CDStruct_2244da21 *)arg1;
 
 @end
 

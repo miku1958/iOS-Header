@@ -11,19 +11,22 @@
 
 @interface PRSQueryTask : NSObject
 {
-    BOOL _webSearch;
     BOOL _started;
     BOOL _canceled;
+    BOOL _webSearch;
     long long _queryId;
     NSDictionary *_category_stats;
+    NSDictionary *_ranking_inputs;
     NSArray *_parsecCategoryOrder;
     id _representedObject;
     NSString *_keyboardLanguage;
-    NSString *_fbq;
+    NSString *_queryString;
+    unsigned long long _queryIdent;
     PRSSearchFeedback *_feedback;
     id<PRSSearchQueryHandler> _handler;
     NSObject<OS_dispatch_queue> *_queue;
     PRSSearchSession *_session;
+    NSString *_fbq;
 }
 
 @property (nonatomic) BOOL canceled; // @synthesize canceled=_canceled;
@@ -34,7 +37,10 @@
 @property (strong, nonatomic) NSString *keyboardLanguage; // @synthesize keyboardLanguage=_keyboardLanguage;
 @property (strong, nonatomic) NSArray *parsecCategoryOrder; // @synthesize parsecCategoryOrder=_parsecCategoryOrder;
 @property long long queryId; // @synthesize queryId=_queryId;
+@property unsigned long long queryIdent; // @synthesize queryIdent=_queryIdent;
+@property (strong, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (strong, nonatomic) NSDictionary *ranking_inputs; // @synthesize ranking_inputs=_ranking_inputs;
 @property (weak, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
 @property (weak, nonatomic) PRSSearchSession *session; // @synthesize session=_session;
 @property (nonatomic) BOOL started; // @synthesize started=_started;

@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, SKUIArtworkList, SKUILink;
+@class NSString, SKUILink;
+@protocol SKUIArtworkProviding;
 
 @interface SKUICarouselItem : NSObject
 {
     NSString *_accessibilityLabel;
-    SKUIArtworkList *_artworkList;
     long long _carouselItemIdentifier;
     SKUILink *_link;
+    id<SKUIArtworkProviding> _artworkProvider;
 }
 
 @property (readonly, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
+@property (strong, nonatomic) id<SKUIArtworkProviding> artworkProvider; // @synthesize artworkProvider=_artworkProvider;
 @property (readonly, nonatomic) long long carouselItemIdentifier; // @synthesize carouselItemIdentifier=_carouselItemIdentifier;
 @property (readonly, nonatomic) SKUILink *link; // @synthesize link=_link;
 

@@ -6,5 +6,6 @@
 
 @protocol TIAddressBookMeCard
 - (void)requestMeCardWithCompletionHandler:(void (^)(NSData *))arg1;
+- (void)requestMeContactWithCompletionHandler:(void (^)(CNContact *))arg1;
 @end
 

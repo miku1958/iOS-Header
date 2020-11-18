@@ -6,35 +6,27 @@
 
 #import <objc/NSObject.h>
 
-#import <coreroutine/NSSecureCoding-Protocol.h>
-
 @class NSCountedSet;
 
-@interface RTEntropyFilter : NSObject <NSSecureCoding>
+@interface RTEntropyFilter : NSObject
 {
-    NSCountedSet *_appLaunchCounter;
-    NSCountedSet *_appLaunchInMomentsCounter;
+    NSCountedSet *_globalEvents;
+    NSCountedSet *_relevantEvents;
     double _maximumEntropy;
 }
 
-@property (strong, nonatomic) NSCountedSet *appLaunchCounter; // @synthesize appLaunchCounter=_appLaunchCounter;
-@property (strong, nonatomic) NSCountedSet *appLaunchInMomentsCounter; // @synthesize appLaunchInMomentsCounter=_appLaunchInMomentsCounter;
+@property (strong, nonatomic) NSCountedSet *globalEvents; // @synthesize globalEvents=_globalEvents;
 @property (nonatomic) double maximumEntropy; // @synthesize maximumEntropy=_maximumEntropy;
+@property (strong, nonatomic) NSCountedSet *relevantEvents; // @synthesize relevantEvents=_relevantEvents;
 
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)addAppLaunch:(id)arg1;
-- (void)addAppLaunchInMoment:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (void)fetchDefaultValues;
+- (void)addGlobalEvents:(id)arg1;
+- (void)addReleventEvent:(id)arg1;
 - (id)init;
-- (id)initWithAppLaunchCountedSet:(id)arg1 appLaunchInMomentCountedSet:(id)arg2;
-- (id)initWithAppLaunchCountedSet:(id)arg1 appLaunchesInMoments:(id)arg2;
-- (id)initWithCoder:(id)arg1;
-- (double)relevantScoreWithBundleId:(id)arg1;
+- (id)initWithGlobalEvents:(id)arg1 relevantEvents:(id)arg2 maximumEntropy:(double)arg3;
+- (id)initWithMaximumEntropy:(double)arg1;
 - (void)removeAllEvents;
-- (void)setAppLaunchCountedSet:(id)arg1;
-- (void)setAppLaunchInMomentCountedSet:(id)arg1;
+- (double)weightForBundleIdentifier:(id)arg1;
 
 @end
 

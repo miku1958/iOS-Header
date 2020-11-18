@@ -13,11 +13,8 @@
     struct CGPoint _normalizedRingLocation;
 }
 
-@property (nonatomic, setter=_setCreationTimestamp:) double _creationTimestamp; // @synthesize _creationTimestamp;
-@property (nonatomic, setter=_setNormalizedRingLocation:) struct CGPoint _normalizedRingLocation; // @synthesize _normalizedRingLocation;
-@property (nonatomic, setter=_setRingSpeed:) double _ringSpeed; // @synthesize _ringSpeed;
-@property (readonly, nonatomic) struct CGPoint normalizedRingLocation;
-@property (readonly, nonatomic) double ringSpeed;
+@property (readonly, nonatomic) struct CGPoint normalizedRingLocation; // @synthesize normalizedRingLocation=_normalizedRingLocation;
+@property (readonly, nonatomic) double ringSpeed; // @synthesize ringSpeed=_ringSpeed;
 
 - (void)configureWithTimeIntervalSinceCreation:(double)arg1 normalizedRingLocation:(struct CGPoint)arg2 ringSpeed:(double)arg3;
 - (id)init;

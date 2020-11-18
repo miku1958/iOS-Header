@@ -15,6 +15,7 @@
     double _bigHitSize;
     SKUIViewElementText *_buttonText;
     long long _buttonViewType;
+    NSString *_bundleIdentifier;
     SKUIBuyButtonDescriptor *_buyButtonDescriptor;
     NSString *_confirmationText;
     long long _dataPlaybackId;
@@ -31,10 +32,10 @@
     NSString *_variantIdentifier;
     IKDOMElement *_xml;
     BOOL _autoIncrementCount;
-    NSString *_toggleItemIdentifier;
     long long _buttonViewSubType;
     NSString *_playItemIdentifier;
     NSString *_sizeVariant;
+    NSString *_toggleItemIdentifier;
 }
 
 @property (readonly, nonatomic) SKUIImageViewElement *additionalButtonImage;
@@ -42,12 +43,13 @@
 @property (readonly, nonatomic) NSString *badgeResourceName; // @synthesize badgeResourceName=_badgeResourceName;
 @property (readonly, nonatomic, getter=isBigHitButton) BOOL bigHitButton; // @synthesize bigHitButton=_bigHitButton;
 @property (readonly, nonatomic) double bigHitSize; // @synthesize bigHitSize=_bigHitSize;
+@property (readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, nonatomic) SKUIImageViewElement *buttonImage;
 @property (readonly, nonatomic) SKUIViewElementText *buttonText;
 @property (readonly, nonatomic) IKViewElementStyle *buttonTitleStyle;
 @property (readonly, nonatomic) long long buttonViewSubType; // @synthesize buttonViewSubType=_buttonViewSubType;
 @property (readonly, nonatomic) long long buttonViewType; // @synthesize buttonViewType=_buttonViewType;
-@property (readonly, nonatomic) SKUIBuyButtonDescriptor *buyButtonDescriptor;
+@property (strong, nonatomic) SKUIBuyButtonDescriptor *buyButtonDescriptor; // @synthesize buyButtonDescriptor=_buyButtonDescriptor;
 @property (readonly, nonatomic) NSString *confirmationText; // @synthesize confirmationText=_confirmationText;
 @property (readonly, nonatomic) long long dataPlaybackId; // @synthesize dataPlaybackId=_dataPlaybackId;
 @property (readonly, nonatomic, getter=isDisabledButSelectable) BOOL disabledButSelectable; // @synthesize disabledButSelectable=_disabledButSelectable;

@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSDictionary, NSMutableDictionary, NSString, NSURL, UILocalNotification;
+#import <MobileTimer/MTAlarmSoundInfoProvider-Protocol.h>
+
+@class NSArray, NSDate, NSDictionary, NSMutableDictionary, NSNumber, NSString, NSURL, UILocalNotification;
 @protocol AlarmDelegate;
 
-@interface Alarm : NSObject
+@interface Alarm : NSObject <MTAlarmSoundInfoProvider>
 {
     UILocalNotification *_weeklyNotifications[7];
     UILocalNotification *_snoozedNotification;
@@ -23,24 +25,35 @@
     BOOL _pretendActiveIfProxy;
     NSMutableDictionary *_settings;
     NSArray *_repeatDays;
+    NSString *_vibrationID;
+    BOOL _isSleepAlarm;
     UILocalNotification *_notification;
-    NSString *_alarmID;
-    NSURL *_alarmIDURL;
     long long _soundType;
     NSString *_sound;
-    NSString *_vibrationID;
     NSString *_title;
     id<AlarmDelegate> _delegate;
+    NSString *_alarmID;
+    NSURL *_alarmIDURL;
 }
 
 @property (readonly, nonatomic, getter=isActive) BOOL active;
 @property (strong, nonatomic) NSString *alarmID; // @synthesize alarmID=_alarmID;
 @property (strong, nonatomic) NSURL *alarmIDURL; // @synthesize alarmIDURL=_alarmIDURL;
+@property (readonly, nonatomic) NSString *alarmSoundIdentifier;
+@property (readonly, nonatomic) long long alarmSoundType;
+@property (copy, nonatomic) NSNumber *alarmSoundVolume;
 @property (nonatomic) BOOL allowsSnooze; // @synthesize allowsSnooze=_allowsSnooze;
+@property (nonatomic) long long bedtimeHour;
+@property (nonatomic) long long bedtimeMinute;
+@property (copy, nonatomic) NSNumber *bedtimeReminderMinutes;
 @property (nonatomic) unsigned int daySetting; // @synthesize daySetting=_daySetting;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AlarmDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) Alarm *editingProxy; // @synthesize editingProxy=_editingProxy;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned int hour; // @synthesize hour=_hour;
+@property (nonatomic) BOOL isSleepAlarm; // @synthesize isSleepAlarm=_isSleepAlarm;
 @property (readonly, nonatomic) NSDate *lastModified; // @synthesize lastModified=_lastModified;
 @property (nonatomic) unsigned int minute; // @synthesize minute=_minute;
 @property (readonly, nonatomic) UILocalNotification *notification; // @synthesize notification=_notification;
@@ -51,9 +64,11 @@
 @property (readonly, nonatomic, getter=isSnoozed) BOOL snoozed;
 @property (readonly, nonatomic) NSString *sound; // @synthesize sound=_sound;
 @property (readonly, nonatomic) long long soundType; // @synthesize soundType=_soundType;
+@property (copy, nonatomic) NSNumber *soundVolume;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (readonly, nonatomic) NSString *uiTitle;
-@property (strong, nonatomic) NSString *vibrationID; // @synthesize vibrationID=_vibrationID;
+@property (copy, nonatomic) NSString *vibrationID;
 
 + (id)_newSettingsFromNotification:(id)arg1;
 + (BOOL)_verifyNotificationSettings:(id)arg1 againstAlarmSettings:(id)arg2;
@@ -73,13 +88,10 @@
 - (void)applySettings:(id)arg1;
 - (void)cancelNotifications;
 - (long long)compareTime:(id)arg1;
-- (id)debugDescription;
-- (id)description;
 - (void)dropEditingProxy;
 - (void)dropNotifications;
 - (void)handleAlarmFired:(id)arg1;
 - (void)handleNotificationSnoozed:(id)arg1 notifyDelegate:(BOOL)arg2;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithDefaultValues;
 - (id)initWithNotification:(id)arg1;
@@ -94,6 +106,7 @@
 - (void)prepareNotifications;
 - (void)refreshActiveState;
 - (void)scheduleNotifications;
+- (void)setAlarmSoundIdentifier:(id)arg1 ofType:(long long)arg2;
 - (void)setSound:(id)arg1 ofType:(long long)arg2;
 - (id)timeZoneForOffsetCalculation;
 - (BOOL)tryAddNotification:(id)arg1;

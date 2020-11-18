@@ -10,35 +10,45 @@
 #import <HealthDaemon/HDSyncChange-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSNumber, NSString;
 
 @interface HDCodableNanoSyncChange : PBCodable <HDSyncChange, HDNanoSyncDescription, NSCopying>
 {
     long long _endAnchor;
+    long long _sequence;
     long long _startAnchor;
     NSMutableArray *_objectDatas;
     int _objectType;
     NSMutableArray *_requiredAnchors;
+    BOOL _complete;
     BOOL _speculative;
     struct {
         unsigned int endAnchor:1;
+        unsigned int sequence:1;
         unsigned int startAnchor:1;
         unsigned int objectType:1;
+        unsigned int complete:1;
         unsigned int speculative:1;
     } _has;
 }
 
+@property (nonatomic) BOOL complete; // @synthesize complete=_complete;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL done;
 @property (nonatomic) long long endAnchor; // @synthesize endAnchor=_endAnchor;
+@property (nonatomic) BOOL hasComplete;
 @property (nonatomic) BOOL hasEndAnchor;
 @property (nonatomic) BOOL hasObjectType;
+@property (nonatomic) BOOL hasSequence;
 @property (nonatomic) BOOL hasSpeculative;
 @property (nonatomic) BOOL hasStartAnchor;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableArray *objectDatas; // @synthesize objectDatas=_objectDatas;
 @property (nonatomic) int objectType; // @synthesize objectType=_objectType;
 @property (strong, nonatomic) NSMutableArray *requiredAnchors; // @synthesize requiredAnchors=_requiredAnchors;
+@property (nonatomic) long long sequence; // @synthesize sequence=_sequence;
+@property (readonly, nonatomic) NSNumber *sequenceNumber;
 @property (readonly, nonatomic, getter=isSpeculative) BOOL speculative;
 @property (nonatomic) BOOL speculative; // @synthesize speculative=_speculative;
 @property (nonatomic) long long startAnchor; // @synthesize startAnchor=_startAnchor;
@@ -67,6 +77,7 @@
 - (id)requiredAnchorsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)requiredAnchorsCount;
 - (void)setObjects:(id)arg1 syncAnchorRange:(struct HDSyncAnchorRange)arg2 requiredAnchorMap:(id)arg3;
+- (void)setSequenceNumber:(long long)arg1 done:(BOOL)arg2;
 - (id)speculativeCopy;
 - (Class)syncEntityClass;
 - (void)writeTo:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -15,6 +15,7 @@
     BOOL _processedForLocation;
     BOOL _processedForMerchantCleanup;
     BOOL _hasAssociatedPaymentApplication;
+    BOOL _hasNotificationServiceData;
     NSString *_identifier;
     NSString *_serviceIdentifier;
     NSString *_transactionIdentifier;
@@ -33,16 +34,17 @@
     long long _transactionStatus;
     long long _transactionType;
     long long _technologyType;
-    unsigned long long _transactionSources;
+    unsigned long long _transactionSource;
 }
 
 @property (strong, nonatomic) NSString *administrativeArea; // @synthesize administrativeArea=_administrativeArea;
 @property (copy, nonatomic) NSDecimalNumber *amount; // @synthesize amount=_amount;
 @property (copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
-@property (readonly, nonatomic) NSString *displayLocation;
+@property (readonly, weak, nonatomic) NSString *displayLocation;
 @property (nonatomic) BOOL hasAssociatedPaymentApplication; // @synthesize hasAssociatedPaymentApplication=_hasAssociatedPaymentApplication;
-@property (readonly, nonatomic) BOOL hasLocalDeviceSource;
-@property (readonly, nonatomic) BOOL hasNotificationServiceSource;
+@property (readonly, nonatomic) BOOL hasBackingData;
+@property (nonatomic) BOOL hasNotificationServiceData; // @synthesize hasNotificationServiceData=_hasNotificationServiceData;
+@property (readonly, nonatomic) BOOL hasTransactionSource;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSString *locality; // @synthesize locality=_locality;
 @property (strong, nonatomic) CLLocation *location;
@@ -59,15 +61,20 @@
 @property (nonatomic) long long technologyType; // @synthesize technologyType=_technologyType;
 @property (copy, nonatomic) NSDate *transactionDate; // @synthesize transactionDate=_transactionDate;
 @property (copy, nonatomic) NSString *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;
-@property (nonatomic) unsigned long long transactionSources; // @synthesize transactionSources=_transactionSources;
+@property (nonatomic) unsigned long long transactionSource; // @synthesize transactionSource=_transactionSource;
 @property (nonatomic) long long transactionStatus; // @synthesize transactionStatus=_transactionStatus;
 @property (nonatomic) long long transactionType; // @synthesize transactionType=_transactionType;
 
 + (id)paymentTransactionFromSource:(unsigned long long)arg1;
-+ (id)paymentTransactionFromSource:(unsigned long long)arg1 withDictionary:(id)arg2;
++ (id)paymentTransactionWithSource:(unsigned long long)arg1;
++ (id)paymentTransactionWithSource:(unsigned long long)arg1 dictionary:(id)arg2 hasNotificationServiceData:(BOOL)arg3;
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
+- (id)_transactionSourceString;
+- (id)_transactionStatusString;
+- (id)_transactionTypeString;
 - (id)description;
+- (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;

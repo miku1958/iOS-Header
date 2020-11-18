@@ -6,7 +6,11 @@
 
 #import <QuartzCore/CAShapeLayer.h>
 
-@interface NLArcLayer : CAShapeLayer
+#import <FitnessUI/CALayerDelegate-Protocol.h>
+
+@class NSString;
+
+@interface NLArcLayer : CAShapeLayer <CALayerDelegate>
 {
     BOOL _needsRegeneration;
     double _arcStart;
@@ -15,7 +19,11 @@
 }
 
 @property (nonatomic) struct CGPoint center; // @synthesize center=_center;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) double radius; // @synthesize radius=_radius;
+@property (readonly) Class superclass;
 
 - (void)_regeneratePath;
 - (id)actionForKey:(id)arg1;

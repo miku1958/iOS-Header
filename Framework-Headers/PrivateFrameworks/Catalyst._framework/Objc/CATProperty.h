@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSString;
 
@@ -22,16 +22,16 @@
     SEL _customSetterSelector;
 }
 
-@property (readonly) long long association; // @synthesize association=_association;
-@property (readonly) SEL customGetterSelector; // @synthesize customGetterSelector=_customGetterSelector;
-@property (readonly) SEL customSetterSelector; // @synthesize customSetterSelector=_customSetterSelector;
-@property (readonly, copy) NSString *instanceVariableName; // @synthesize instanceVariableName=_instanceVariableName;
-@property (readonly, copy) NSString *name; // @synthesize name=_name;
-@property (readonly, getter=isNonAtomic) BOOL nonAtomic; // @synthesize nonAtomic=_nonAtomic;
-@property (readonly) Class objectClass; // @synthesize objectClass=_objectClass;
-@property (readonly, getter=isReadOnly) BOOL readOnly; // @synthesize readOnly=_readOnly;
-@property (readonly) long long type; // @synthesize type=_type;
-@property (readonly, getter=isWeakReference) BOOL weakReference; // @synthesize weakReference=_weakReference;
+@property (readonly, nonatomic) long long association; // @synthesize association=_association;
+@property (readonly, nonatomic) SEL customGetterSelector; // @synthesize customGetterSelector=_customGetterSelector;
+@property (readonly, nonatomic) SEL customSetterSelector; // @synthesize customSetterSelector=_customSetterSelector;
+@property (readonly, copy, nonatomic) NSString *instanceVariableName; // @synthesize instanceVariableName=_instanceVariableName;
+@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic, getter=isNonAtomic) BOOL nonAtomic; // @synthesize nonAtomic=_nonAtomic;
+@property (readonly, nonatomic) Class objectClass; // @synthesize objectClass=_objectClass;
+@property (readonly, nonatomic, getter=isReadOnly) BOOL readOnly; // @synthesize readOnly=_readOnly;
+@property (readonly, nonatomic) long long type; // @synthesize type=_type;
+@property (readonly, nonatomic, getter=isWeakReference) BOOL weakReference; // @synthesize weakReference=_weakReference;
 
 + (void)initialize;
 + (id)propertiesForClass:(Class)arg1;

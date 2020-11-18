@@ -6,43 +6,31 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreSpotlight/MDSearchQueryResultProcessor-Protocol.h>
+@class CSSearchQuery, NSDictionary, NSPredicate, NSString;
+@protocol MDSearchQueryDelegate, OS_dispatch_queue;
 
-@class NSDictionary, NSPredicate, NSString, NSXPCConnection;
-@protocol MDSearchQueryDelegate, MDSearchQueryService, OS_dispatch_queue;
-
-@interface MDSearchQuery : NSObject <MDSearchQueryResultProcessor>
+@interface MDSearchQuery : NSObject
 {
     unsigned long long _status;
-    NSString *_queryString;
-    BOOL _canceled;
     NSPredicate *_predicate;
-    NSDictionary *_options;
     id<MDSearchQueryDelegate> _delegate;
-    id<MDSearchQueryService> _queryServiceProxy;
-    NSXPCConnection *_connection;
     NSObject<OS_dispatch_queue> *_queue;
+    CSSearchQuery *_query;
     NSString *_clientBundleID;
 }
 
 @property (strong) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
-@property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (weak) id<MDSearchQueryDelegate> delegate; // @synthesize delegate=_delegate;
-@property (copy) NSDictionary *options; // @synthesize options=_options;
+@property (readonly, copy) NSDictionary *options;
 @property (copy) NSPredicate *predicate; // @synthesize predicate=_predicate;
-@property (strong) id<MDSearchQueryService> queryServiceProxy; // @synthesize queryServiceProxy=_queryServiceProxy;
+@property (strong, nonatomic) CSSearchQuery *query; // @synthesize query=_query;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property unsigned long long status;
 
 - (void).cxx_destruct;
-- (void)_didFailWithError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_finalize;
+- (void)_didFinishWithError:(id)arg1;
+- (void)_didReturnItems:(id)arg1;
 - (void)cancel;
-- (void)didFailWithError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)didFinishWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)didReturnResultsData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)extendedOptionsFromOptions:(id)arg1;
-- (id)initWithOptions:(id)arg1;
 - (id)initWithPredicate:(id)arg1 options:(id)arg2;
 - (id)initWithQueryString:(id)arg1 options:(id)arg2;
 - (id)queryString;

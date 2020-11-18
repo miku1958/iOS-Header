@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) long long carKitConnectionState; // @synthesize carKitConnectionState=_carKitConnectionState;
 
-+ (id)notificationName;
 - (id)initWithCarKitConnectionState:(long long)arg1;
 
 @end

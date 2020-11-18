@@ -6,7 +6,7 @@
 
 #import <CoreSuggestionsInternals/SGEntity.h>
 
-@class NSArray, NSData, NSIndexSet, NSMutableArray, NSMutableDictionary, NSString, SGSimpleMailMessage;
+@class NSArray, NSData, NSIndexSet, NSMutableArray, NSMutableDictionary, NSString, SGMessage;
 
 @interface SGPipelineEntity : SGEntity
 {
@@ -17,22 +17,26 @@
     BOOL _fullDownloadRequested;
     CDStruct_f96224e3 _inhumanFeatures;
     struct _opaque_pthread_mutex_t _dissectorLock;
+    BOOL _contactInformationExtracted;
     BOOL _pendingGeocode;
     NSIndexSet *_plainTextQuotedRegions;
     NSIndexSet *_plainTextTabularRegions;
     NSIndexSet *_plainTextSigHtmlBlockRegions;
     struct __DDResult *_dataDetectorsSignature;
+    NSArray *_instantMessageAddresses;
     NSArray *_plainTextLines;
     unsigned long long *_htmlOffsets;
     NSArray *_plainTextDetectedData;
     NSMutableDictionary *_emailToCanonicalEmailCache;
-    SGSimpleMailMessage *_mailMessage;
+    SGMessage *_message;
     NSData *_contentHash;
+    NSArray *_invalidatedMessageIdentifiers;
     struct _NSRange _plainTextSigRange;
 }
 
 @property (readonly, nonatomic) NSArray *addresses;
 @property (readonly, nonatomic) NSString *authorEmail;
+@property (nonatomic) BOOL contactInformationExtracted; // @synthesize contactInformationExtracted=_contactInformationExtracted;
 @property (strong, nonatomic) NSData *contentHash; // @synthesize contentHash=_contentHash;
 @property (nonatomic) struct __DDResult *dataDetectorsSignature; // @synthesize dataDetectorsSignature=_dataDetectorsSignature;
 @property (readonly, nonatomic) NSArray *emailAddresses;
@@ -41,7 +45,9 @@
 @property (readonly, getter=hasFullDownloadBeenRequested) BOOL fullDownloadRequested;
 @property (readonly, nonatomic) unsigned long long *htmlOffsets; // @synthesize htmlOffsets=_htmlOffsets;
 @property (readonly, nonatomic) CDStruct_f96224e3 *inhumanFeatures;
-@property (readonly, nonatomic) SGSimpleMailMessage *mailMessage; // @synthesize mailMessage=_mailMessage;
+@property (readonly, nonatomic) NSArray *instantMessageAddresses; // @synthesize instantMessageAddresses=_instantMessageAddresses;
+@property (strong) NSArray *invalidatedMessageIdentifiers; // @synthesize invalidatedMessageIdentifiers=_invalidatedMessageIdentifiers;
+@property (readonly, nonatomic) SGMessage *message; // @synthesize message=_message;
 @property (nonatomic) BOOL pendingGeocode; // @synthesize pendingGeocode=_pendingGeocode;
 @property (readonly, nonatomic) NSArray *phoneNumbers;
 @property (readonly, nonatomic) NSString *plainTextContent;
@@ -72,22 +78,24 @@
 - (void)chopOffContentBeforeIndex:(unsigned long long)arg1;
 - (id)contactDetailsWithType:(unsigned long long)arg1;
 - (void)dealloc;
-- (id)description;
 - (void)enumeratePeople:(CDUnknownBlockType)arg1;
 - (void)enumeratePlainTextLines:(CDUnknownBlockType)arg1;
-- (id)init;
+- (BOOL)hasEventEnrichment;
 - (id)initWithContactDetailWithKey:(id)arg1 type:(unsigned long long)arg2 extractionType:(unsigned long long)arg3 curated:(BOOL)arg4 parent:(id)arg5 value:(id)arg6 context:(id)arg7 contextRangeOfInterest:(struct _NSRange)arg8;
 - (id)initWithDuplicateKey:(id)arg1 title:(id)arg2 parent:(id)arg3;
 - (id)initWithEmailMessage:(id)arg1 fromSource:(id)arg2;
+- (id)initWithIntentPersonAtDate:(id)arg1 bundleId:(id)arg2 handle:(id)arg3 displayName:(id)arg4;
+- (id)initWithMessage:(id)arg1 fromSource:(id)arg2;
 - (id)initWithPseudoContactWithKey:(id)arg1 parent:(id)arg2 name:(id)arg3;
+- (id)initWithTextMessage:(id)arg1 fromSource:(id)arg2;
 - (id)initWithUnrecognizedContactWithKey:(id)arg1;
 - (BOOL)isEvent;
 - (BOOL)isPerson;
 - (void)releaseDissectorLock;
 - (void)requestFullDownload;
 - (void)setAuthor:(id)arg1;
-- (void)setCreationTimestamp:(double)arg1;
-- (void)setLastModifiedTimestamp:(double)arg1;
+- (void)setCreationTimestamp:(struct SGUnixTimestamp_)arg1;
+- (void)setLastModifiedTimestamp:(struct SGUnixTimestamp_)arg1;
 - (void)setPlainTextLines:(id)arg1;
 - (void)setPlainTextLines:(id)arg1 utf8Offsets:(id)arg2 isAscii:(BOOL)arg3;
 - (void)stripContactInformation;

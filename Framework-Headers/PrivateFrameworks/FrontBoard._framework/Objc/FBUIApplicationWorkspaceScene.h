@@ -12,7 +12,6 @@
 {
     NSMutableSet *_allWatchdogs;
     NSMutableArray *_watchdogStack;
-    BKSProcessAssertion *_launchBoostahAssertion;
     BKSProcessAssertion *_resumeProcessAssertion;
     BKSProcessAssertion *_suspendingProcessAssertion;
     BKSProcessAssertion *_seoProcessAssertion;
@@ -20,10 +19,7 @@
     unsigned long long _deliverMessageProcessAssertionCount;
     int _suspendType;
     BOOL _createResponseReceived;
-    BOOL _transitioningToForeground;
 }
-
-@property (readonly, nonatomic, getter=_workspaceQueue_isTransitioningToForeground) BOOL transitioningToForeground; // @synthesize transitioningToForeground=_transitioningToForeground;
 
 - (void)_dispatchBlockAfterProcessLaunch:(CDUnknownBlockType)arg1;
 - (void)_handleDidUpdateSettings:(id)arg1 withDiff:(id)arg2 transitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -44,7 +40,8 @@
 - (void)_workspaceQueue_dropSuspendingProcessAssertion;
 - (void)_workspaceQueue_invalidate;
 - (long long)_workspaceQueue_lifecycleStateForSettings:(id)arg1;
-- (id)_workspaceQueue_newProcessAssertionForReason:(unsigned int)arg1 withName:(id)arg2 transitionContext:(id)arg3;
+- (id)_workspaceQueue_newProcessAssertionForReason:(unsigned int)arg1 withName:(id)arg2 transitionContext:(id)arg3 acquireSynchronously:(BOOL)arg4;
+- (void)_workspaceQueue_performGracefulExitWithDeliveryConfirmation:(CDUnknownBlockType)arg1;
 - (int)_workspaceQueue_pid;
 - (id)_workspaceQueue_process;
 - (void)_workspaceQueue_takeAssertionsForDeactivation:(BOOL)arg1 transitionContext:(id)arg2;

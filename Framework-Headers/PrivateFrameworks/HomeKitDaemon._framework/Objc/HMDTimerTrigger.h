@@ -6,13 +6,16 @@
 
 #import <HomeKitDaemon/HMDTrigger.h>
 
-@class NSDate, NSDateComponents, NSString, NSTimeZone, NSTimer;
+@class NSArray, NSDate, NSDateComponents, NSString, NSTimeZone, NSTimer;
 
 @interface HMDTimerTrigger : HMDTrigger
 {
     NSDate *_fireDate;
     NSTimeZone *_fireDateTimeZone;
+    NSString *_significantEvent;
+    NSDateComponents *_significantEventOffset;
     NSDateComponents *_fireRepeatInterval;
+    NSArray *_recurrences;
     NSString *_timerID;
     NSDate *_currentFireDate;
     NSTimer *_timer;
@@ -22,31 +25,55 @@
 @property (copy, nonatomic) NSDate *fireDate; // @synthesize fireDate=_fireDate;
 @property (copy, nonatomic) NSTimeZone *fireDateTimeZone; // @synthesize fireDateTimeZone=_fireDateTimeZone;
 @property (copy, nonatomic) NSDateComponents *fireRepeatInterval; // @synthesize fireRepeatInterval=_fireRepeatInterval;
+@property (copy, nonatomic) NSArray *recurrences; // @synthesize recurrences=_recurrences;
+@property (copy, nonatomic) NSString *significantEvent; // @synthesize significantEvent=_significantEvent;
+@property (copy, nonatomic) NSDateComponents *significantEventOffset; // @synthesize significantEventOffset=_significantEventOffset;
 @property (strong, nonatomic) NSTimer *timer; // @synthesize timer=_timer;
 @property (strong, nonatomic) NSString *timerID; // @synthesize timerID=_timerID;
 
 + (BOOL)supportsSecureCoding;
 + (id)validateWholeMinuteDate:(id)arg1 onCalendar:(id)arg2;
 - (void).cxx_destruct;
+- (void)_activateFireDateTrigger:(id *)arg1;
+- (void)_activateSignificantEventTrigger:(id *)arg1;
 - (void)_closestDatesForStartDate:(id)arg1 earliestDate:(id)arg2 timeZone:(id)arg3 deliveryRepeatInterval:(id)arg4 returnDateBefore:(id *)arg5 returnDateAfter:(id *)arg6;
+- (void)_disableTimer:(id)arg1;
 - (void)_handleUpdateTimerTriggerPropertiesRequest:(id)arg1;
 - (id)_nextFireDate;
+- (id)_nextSignificantEventFireDate;
+- (BOOL)_reactivateFireDateTrigger:(id)arg1;
+- (BOOL)_reactivateSignificantEventTrigger:(id)arg1;
+- (BOOL)_reactivateTrigger:(id)arg1;
+- (void)_reactiveTriggerAfterDelay;
 - (void)_registerForMessages;
+- (id)_serializeForAdd;
+- (BOOL)_shouldExecuteActionSet;
+- (void)_startTimer:(id)arg1;
 - (void)_startTimerWithFireDate:(id)arg1;
+- (void)_startTimerWithSignificantEventDate:(id)arg1;
 - (void)_stopTimer;
 - (void)_timerTriggered;
 - (void)activate:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)completeConfiguration;
 - (void)configure:(id)arg1 messageDispatcher:(id)arg2 queue:(id)arg3;
 - (void)dealloc;
+- (id)description;
+- (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)getCalendar;
+- (id)getFireInterval;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithName:(id)arg1;
 - (id)initWithName:(id)arg1 fireDate:(id)arg2 timeZone:(id)arg3 recurrence:(id)arg4;
+- (id)initWithName:(id)arg1 fireDate:(id)arg2 timeZone:(id)arg3 recurrences:(id)arg4;
+- (id)initWithName:(id)arg1 significantEvent:(id)arg2 significantEventOffset:(id)arg3 recurrences:(id)arg4;
 - (void)invalidate;
 - (void)nsTimerTriggered:(id)arg1;
 - (void)timerTriggered;
+- (unsigned long long)triggerType;
 - (id)validateRecurrence:(id)arg1;
+- (id)validateRecurrences:(id)arg1;
+- (id)validateSignificantOffset:(id)arg1;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PersistentConnection/PCInterfaceMonitorDelegate-Protocol.h>
 #import <PersistentConnection/PCLoggingDelegate-Protocol.h>
@@ -80,8 +80,8 @@
 + (id)intervalCacheDictionaries;
 - (void)_adjustInterfaceAssertions;
 - (void)_adjustPollTimerIfNecessary;
-- (void)_callDelegateWithEvent:(id)arg1;
-- (void)_calloutWithEvent:(int)arg1;
+- (void)_callDelegateWithEventAndContext:(id)arg1;
+- (void)_calloutWithEvent:(id)arg1 context:(id)arg2;
 - (void)_clearTimers;
 - (void)_clearTimersReleasingPowerAssertion:(BOOL)arg1;
 - (id)_currentGrowthAlgorithm;
@@ -119,6 +119,7 @@
 - (void)logAtLevel:(int)arg1 format:(id)arg2;
 - (void)logAtLevel:(int)arg1 format:(id)arg2 arguments:(struct __va_list_tag [1])arg3;
 - (void)resumeManagerWithAction:(int)arg1;
+- (void)resumeManagerWithAction:(int)arg1 forceGrow:(BOOL)arg2;
 - (void)setEnableNonCellularConnections:(BOOL)arg1;
 - (void)setOnlyAllowedStyle:(int)arg1;
 - (void)setPollingIntervalOverride:(double)arg1;

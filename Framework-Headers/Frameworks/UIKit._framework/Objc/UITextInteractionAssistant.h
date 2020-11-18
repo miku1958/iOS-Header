@@ -7,18 +7,20 @@
 #import <Foundation/NSObject.h>
 
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKit/UIResponderStandardEditActions-Protocol.h>
 #import <UIKit/_UIKeyboardTextSelectionGestureControllerDelegate-Protocol.h>
 
 @class NSHashTable, NSMutableArray, NSMutableSet, NSString, UIFieldEditor, UIGestureRecognizer, UIKeyboardTaskQueue, UILongPressGestureRecognizer, UIPreviewItemController, UIResponder, UIScrollView, UITapGestureRecognizer, UITextChecker, UITextSelectionView, _UIKeyboardBasedNonEditableTextSelectionGestureController, _UIKeyboardTextSelectionController;
 @protocol UITextInput;
 
-@interface UITextInteractionAssistant : NSObject <UIGestureRecognizerDelegate, _UIKeyboardTextSelectionGestureControllerDelegate>
+@interface UITextInteractionAssistant : NSObject <UIGestureRecognizerDelegate, _UIKeyboardTextSelectionGestureControllerDelegate, UIResponderStandardEditActions>
 {
     UIResponder<UITextInput> *_view;
     UITextSelectionView *_selectionView;
     NSMutableArray *_recognizers;
     NSMutableSet *_linkGestures;
     UILongPressGestureRecognizer *_highlightGesture;
+    UITapGestureRecognizer *_linkTapGesture;
     UILongPressGestureRecognizer *_tapAndHoldGesture;
     UILongPressGestureRecognizer *_loupeGesture;
     UITapGestureRecognizer *_singleTapGesture;
@@ -49,13 +51,14 @@
 @property (nonatomic) BOOL autoscrolled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) UIGestureRecognizer *doubleTapGesture;
+@property (readonly, strong, nonatomic) UIGestureRecognizer *doubleTapGesture;
 @property (strong, nonatomic) UIGestureRecognizer *doubleTapGesture; // @dynamic doubleTapGesture;
 @property (readonly, nonatomic) BOOL externalTextInput;
 @property (readonly, nonatomic) UIFieldEditor *fieldEditor; // @dynamic fieldEditor;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL inGesture;
-@property (strong, nonatomic) UILongPressGestureRecognizer *loupeGesture;
+@property (readonly, strong, nonatomic) UILongPressGestureRecognizer *loupeGesture;
+@property (strong, nonatomic) UILongPressGestureRecognizer *loupeGesture; // @dynamic loupeGesture;
 @property (nonatomic) struct CGPoint loupeGestureEndPoint;
 @property (readonly, nonatomic) UIScrollView *scrollView;
 @property (readonly, nonatomic) UITextSelectionView *selectionView;
@@ -76,11 +79,13 @@
 - (void)_performPreemtiveLayoutToEnsureNoMoreLayoutWhileSelecting;
 - (id)_scrollable;
 - (id)_selectionView;
+- (BOOL)_shouldObscureTextInput;
 - (void)activateSelection;
 - (id)addDragRecognizer;
 - (void)addGestureRecognizersToView:(id)arg1;
-- (id)addHighlightLinkRecognizerToView:(id)arg1 withHighlightDelay:(BOOL)arg2;
+- (id)addHighlightLinkRecognizerToView:(id)arg1;
 - (void)addKeyboardTextSelectionGestureRecognizersToView:(id)arg1;
+- (id)addLinkTapGestureToView:(id)arg1;
 - (id)addLoupeGestureRecognizer:(BOOL)arg1 toView:(id)arg2;
 - (void)addNonEditableForceTextSelectionGestureRecognizersToView:(id)arg1;
 - (id)addOneFingerDoubleTapRecognizer:(SEL)arg1 toView:(id)arg2;
@@ -121,19 +126,23 @@
 - (void)detach:(BOOL)arg1;
 - (void)didEndGesture;
 - (void)didEndScrollingOverflow;
+- (void)didEndSelectionInteraction;
 - (void)disableClearsOnInsertion;
 - (double)distanceBetweenPoint:(struct CGPoint)arg1 andRange:(id)arg2;
 - (void)doubleTapInUneditable:(id)arg1;
 - (void)endFloatingCursor;
+- (id)generatorForRange:(id)arg1 withOptions:(unsigned long long)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (BOOL)hasReplacements;
 - (id)initWithResponder:(id)arg1;
 - (id)initWithView:(id)arg1;
 - (BOOL)isInteractingWithLink;
 - (void)layoutChangedByScrolling:(BOOL)arg1;
 - (void)legacyTwoFingerSingleTap:(id)arg1;
 - (id)linkInteractionView;
+- (void)linkTapRecognizer:(id)arg1;
 - (void)longDelayRecognizer:(id)arg1;
 - (void)loupeGesture:(id)arg1;
 - (id)loupeGestureRecognizer:(BOOL)arg1;
@@ -184,6 +193,7 @@
 - (BOOL)shouldHandleFormGestureAtLocation:(struct CGPoint)arg1;
 - (BOOL)shouldHandleOneFingerTapInUneditable:(id)arg1;
 - (BOOL)shouldIgnoreLinkGestures;
+- (BOOL)shouldSuppressSelectionCommands;
 - (void)smallDelayRecognizer:(id)arg1;
 - (void)startAutoscroll:(struct CGPoint)arg1;
 - (BOOL)swallowsDoubleTapWithScale:(double)arg1 atPoint:(struct CGPoint)arg2;
@@ -203,6 +213,7 @@
 - (BOOL)useGesturesForEditableContent;
 - (BOOL)viewCouldBecomeEditable:(id)arg1;
 - (void)willBeginGesture;
+- (void)willBeginSelectionInteraction;
 - (void)willStartScrollingOverflow;
 
 @end

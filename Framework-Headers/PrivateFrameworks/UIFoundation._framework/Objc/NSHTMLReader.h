@@ -64,7 +64,6 @@
 + (id)defaultParagraphStyle;
 + (void)initialize;
 - (Class)_DOMHTMLTableCellElementClass;
-- (Class)_WebMessageDocumentClass;
 - (BOOL)_addAttachmentForElement:(id)arg1 URL:(id)arg2 needsParagraph:(BOOL)arg3 usePlaceholder:(BOOL)arg4;
 - (void)_addMarkersToList:(id)arg1 range:(struct _NSRange)arg2;
 - (void)_addQuoteForElement:(id)arg1 opening:(BOOL)arg2 level:(long long)arg3;

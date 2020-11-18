@@ -13,6 +13,8 @@
 
 @property (nonatomic) double currentValue; // @synthesize currentValue=_currentValue;
 
+- (id)init;
+- (id)initWithValue:(double)arg1;
 - (double)outputValue;
 - (void)setInputValue:(double)arg1;
 - (double)updatedValue:(double)arg1 withTargetValue:(double)arg2;

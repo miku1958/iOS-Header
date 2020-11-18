@@ -6,8 +6,24 @@
 
 #import <UIKit/_UILegibilitySettings.h>
 
-@interface _UILegibilitySettings (SpringBoard)
+#import <SpringBoardFoundation/BSDescriptionProviding-Protocol.h>
+
+@class NSString;
+
+@interface _UILegibilitySettings (SpringBoard) <BSDescriptionProviding>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)sb_copy;
 - (id)sb_description;
+- (BOOL)sb_isEqualToLegibilitySettings:(id)arg1;
 - (id)sb_styleString;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
 @end
 

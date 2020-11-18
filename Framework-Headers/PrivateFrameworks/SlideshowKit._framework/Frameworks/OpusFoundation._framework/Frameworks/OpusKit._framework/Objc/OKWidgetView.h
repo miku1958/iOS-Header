@@ -16,6 +16,7 @@
 - (BOOL)_canRespondToEventWithPoint:(struct CGPoint)arg1;
 - (void)commonInit;
 - (void)dealloc;
+- (BOOL)downloadIndicatorEnabled;
 - (BOOL)isActivityIndicatorVisible;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setActivityIndicatorVisible:(BOOL)arg1;

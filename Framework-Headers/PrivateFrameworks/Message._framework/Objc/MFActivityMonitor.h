@@ -6,9 +6,11 @@
 
 #import <MIME/MFPriorityDesignator.h>
 
+#import <Message/MFCancelable-Protocol.h>
+
 @class MFError, MFInvocationQueue, MFMailboxUid, NSMutableSet, NSString, NSThread;
 
-@interface MFActivityMonitor : MFPriorityDesignator
+@interface MFActivityMonitor : MFPriorityDesignator <MFCancelable>
 {
     NSThread *_runningThread;
     NSString *_taskName;
@@ -37,16 +39,22 @@
     unsigned long long _bytesRead;
     unsigned long long _bytesWritten;
     NSMutableSet *_reasons;
-    NSMutableSet *_associatedProgresses;
+    NSMutableSet *_associatedCancelables;
+    BOOL _isRemoteSearch;
 }
 
 @property (nonatomic) BOOL canBeCancelled;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isRemoteSearch; // @synthesize isRemoteSearch=_isRemoteSearch;
 @property (strong) MFMailboxUid *mailbox; // @synthesize mailbox=_mailbox;
 @property (nonatomic) BOOL shouldCancel;
+@property (readonly) Class superclass;
 
 + (id)currentMonitor;
 + (void)destroyMonitor;
-- (void)_cancelAssociatedProgresses;
+- (void)_cancelAssociatedCancelables;
 - (void)_didChange;
 - (BOOL)_lockedAddActivityTarget:(id)arg1;
 - (id)_ntsThrottledUserInfoDict;
@@ -55,17 +63,15 @@
 - (id)activityTargets;
 - (void)addActivityTarget:(id)arg1;
 - (void)addActivityTargets:(id)arg1;
+- (void)addCancelable:(id)arg1;
 - (void)addReason:(id)arg1;
-- (void)associateProgress:(id)arg1;
 - (unsigned long long)bytesRead;
 - (unsigned long long)bytesWritten;
 - (void)cancel;
 - (void)cancelMessage;
 - (int)changeCount;
 - (void)dealloc;
-- (id)description;
 - (id)displayName;
-- (void)dissociateProgress:(id)arg1;
 - (id)error;
 - (unsigned long long)expectedLength;
 - (void)finishedActivity:(id)arg1;
@@ -84,6 +90,7 @@
 - (void)recordBytesWritten:(unsigned long long)arg1;
 - (void)relinquishExclusiveAccessKey:(int)arg1;
 - (void)removeActivityTarget:(id)arg1;
+- (void)removeCancelable:(id)arg1;
 - (void)reset;
 - (void)resetConnectionStats;
 - (void)setActivityTarget:(id)arg1;

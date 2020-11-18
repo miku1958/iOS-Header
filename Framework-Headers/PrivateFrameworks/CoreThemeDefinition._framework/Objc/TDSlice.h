@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class NSString;
+@class NSString, TDElementProduction, TDRenditionSpec;
 
 @interface TDSlice : NSManagedObject
 {
@@ -14,6 +14,8 @@
 }
 
 @property (nonatomic) struct CGRect primitiveSliceRect;
+@property (strong, nonatomic) TDElementProduction *production; // @dynamic production;
+@property (strong, nonatomic) TDRenditionSpec *rendition; // @dynamic rendition;
 @property (nonatomic) struct CGRect sliceRect; // @dynamic sliceRect;
 @property (strong, nonatomic) NSString *sliceRectString; // @dynamic sliceRectString;
 

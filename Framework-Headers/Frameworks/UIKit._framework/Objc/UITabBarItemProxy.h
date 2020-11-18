@@ -6,16 +6,16 @@
 
 #import <Foundation/NSObject.h>
 
-@class UITabBarItem, UIView;
+@class UITabBarButton, UITabBarItem;
 
 __attribute__((visibility("hidden")))
 @interface UITabBarItemProxy : NSObject
 {
     UITabBarItem *_item;
-    UIView *_view;
+    UITabBarButton *_view;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithItem:(id)arg1 inTabBar:(id)arg2;
 - (id)item;
 - (void)setSelected:(BOOL)arg1;

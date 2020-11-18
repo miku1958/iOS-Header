@@ -6,12 +6,13 @@
 
 #import <Foundation/NSObject.h>
 
-@class FBSApplicationDataStoreRepositoryClient, NSString;
+@class NSString;
+@protocol FBSApplicationDataStoreRepositoryClient;
 
 @interface FBSApplicationDataStore : NSObject
 {
     NSString *_bundleId;
-    FBSApplicationDataStoreRepositoryClient *_client;
+    id<FBSApplicationDataStoreRepositoryClient> _client;
     BOOL _clientNeedsCheckin;
 }
 
@@ -23,6 +24,7 @@
 + (void)setPrefetchedKeys:(id)arg1;
 + (id)storeForApplication:(id)arg1;
 + (void)synchronize;
++ (void)synchronizeWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_initWithBundleId:(id)arg1 client:(id)arg2;
 - (id)_makeSafe:(id)arg1 forType:(Class)arg2;
 - (id)archivedObjectForKey:(id)arg1;

@@ -12,7 +12,7 @@
 
 @interface VKTrafficIncident : NSObject <NSCopying>
 {
-    struct VKPoint _worldPoint;
+    Matrix_6e1d3589 _worldPoint;
     NSString *_title;
     NSString *_subtitle;
     long long _type;
@@ -54,14 +54,13 @@
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, nonatomic) unsigned long long uniqueID; // @synthesize uniqueID=_uniqueID;
 @property (readonly, nonatomic) NSString *uniqueString; // @synthesize uniqueString=_uniqueString;
-@property (readonly, nonatomic) struct VKPoint worldPoint; // @synthesize worldPoint=_worldPoint;
+@property (readonly, nonatomic) Mercator2_57ec32b6 worldPoint;
 
 - (id).cxx_construct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (BOOL)hasSameIdentifier:(id)arg1;
-- (id)initWithIncident:(id)arg1 vertices:(CDStruct_912cb5d2 *)arg2 tileRect:(CDStruct_d2b197d1)arg3 tileSize:(double)arg4;
-- (id)initWithIncidentData:(const struct Incident *)arg1 worldPoint:(struct VKPoint *)arg2;
+- (id)initWithIncidentData:(const struct Incident *)arg1 worldPoint:(Matrix_6e1d3589 *)arg2;
 - (id)initWithRouteIncident:(id)arg1 routeRelevance:(long long)arg2;
 
 @end

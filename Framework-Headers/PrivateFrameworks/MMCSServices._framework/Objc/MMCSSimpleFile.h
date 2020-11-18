@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSData, NSString, NSURL;
+@class NSData, NSError, NSString, NSURL;
 
 @interface MMCSSimpleFile : NSObject
 {
@@ -22,8 +22,11 @@
     NSData *_signature;
     NSData *_fileHash;
     unsigned long long _protocolFileSize;
+    NSError *_mmcsError;
+    NSData *_authResponseData;
 }
 
+@property (strong) NSData *authResponseData; // @synthesize authResponseData=_authResponseData;
 @property (strong) NSString *authToken; // @synthesize authToken=_authToken;
 @property long long encryptionBehavior; // @synthesize encryptionBehavior=_encryptionBehavior;
 @property int fd; // @synthesize fd=_fd;
@@ -31,6 +34,7 @@
 @property (strong) NSString *guid; // @synthesize guid=_guid;
 @property unsigned long long itemID; // @synthesize itemID=_itemID;
 @property (strong) NSString *localPath; // @synthesize localPath=_localPath;
+@property (strong, setter=setMMCSError:) NSError *mmcsError; // @synthesize mmcsError=_mmcsError;
 @property double progress; // @synthesize progress=_progress;
 @property unsigned long long protocolFileSize; // @synthesize protocolFileSize=_protocolFileSize;
 @property (strong) NSURL *requestURL; // @synthesize requestURL=_requestURL;

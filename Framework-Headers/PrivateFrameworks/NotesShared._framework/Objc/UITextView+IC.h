@@ -10,5 +10,6 @@
 - (struct _NSRange)rangeFromTextRange:(id)arg1;
 - (void)scrollRangeToVisible:(struct _NSRange)arg1 consideringInsets:(BOOL)arg2 animated:(BOOL)arg3;
 - (id)selectedRanges;
+- (id)textRangeFromRange:(struct _NSRange)arg1;
 @end
 

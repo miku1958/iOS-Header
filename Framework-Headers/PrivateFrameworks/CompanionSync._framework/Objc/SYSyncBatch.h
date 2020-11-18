@@ -23,6 +23,7 @@
 @property (nonatomic) unsigned long long index; // @synthesize index=_index;
 @property (strong, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 
++ (Class)changesType;
 - (void).cxx_destruct;
 - (void)addChanges:(id)arg1;
 - (id)changesAtIndex:(unsigned long long)arg1;

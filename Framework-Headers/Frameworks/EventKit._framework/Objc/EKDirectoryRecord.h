@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (strong, nonatomic) NSString *preferredAddress; // @synthesize preferredAddress=_preferredAddress;
 
+- (void).cxx_destruct;
 - (id)description;
 
 @end

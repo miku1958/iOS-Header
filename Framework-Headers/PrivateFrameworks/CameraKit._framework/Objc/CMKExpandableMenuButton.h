@@ -15,11 +15,11 @@
     long long _selectedIndex;
     long long _expansionOrientation;
     long long _orientation;
-    id<CMKExpandableMenuButtonDelegate> _expandableMenuDelegate;
     NSMutableArray *__menuItems;
     UIView *__headerView;
     NSIndexSet *__hiddenIndexesWhileCollapsed;
     NSMutableIndexSet *__highlightedIndexesWhileCollapsed;
+    id<CMKExpandableMenuButtonDelegate> _expandableMenuDelegate;
     struct UIEdgeInsets _tappableEdgeInsets;
 }
 

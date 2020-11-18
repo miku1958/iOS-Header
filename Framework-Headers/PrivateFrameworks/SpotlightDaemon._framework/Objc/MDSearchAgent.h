@@ -13,17 +13,23 @@
 
 @interface MDSearchAgent : MDAgent <MDSearchQueryService>
 {
-    SPCoreSpotlightTask *_queryTask;
+    _Atomic unsigned int _outBatchCount;
     BOOL _isInternal;
     BOOL _finishedQuery;
+    BOOL _cancelled;
     NSObject<MDIndexer> *_searchIndex;
     NSObject<MDSearchQueryResultProcessor> *_resultProcessor;
     NSString *_clientBundleID;
+    NSString *_protectionClass;
+    SPCoreSpotlightTask *_queryTask;
 }
 
+@property BOOL cancelled; // @synthesize cancelled=_cancelled;
 @property (strong) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
 @property BOOL finishedQuery; // @synthesize finishedQuery=_finishedQuery;
 @property BOOL isInternal; // @synthesize isInternal=_isInternal;
+@property (strong, nonatomic) NSString *protectionClass; // @synthesize protectionClass=_protectionClass;
+@property (strong, nonatomic) SPCoreSpotlightTask *queryTask; // @synthesize queryTask=_queryTask;
 @property (strong) NSObject<MDSearchQueryResultProcessor> *resultProcessor; // @synthesize resultProcessor=_resultProcessor;
 @property (strong) NSObject<MDIndexer> *searchIndex; // @synthesize searchIndex=_searchIndex;
 
@@ -31,12 +37,12 @@
 + (id)machServiceName;
 + (id)xpcInterface;
 - (void).cxx_destruct;
-- (void)_badQueryWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (BOOL)_convertMDSearchOptionsToSPQueryOptions:(id)arg1;
+- (void)_didReceiveResultsBatchCompletion;
 - (void)_pullEntitlementsOffConnection:(id)arg1;
+- (void)_willSendResultsBatch;
 - (void)cancelWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithClientConnection:(id)arg1 clientLink:(id)arg2 indexer:(id)arg3;
-- (void)startQueryForQueryString:(id)arg1 options:(id)arg2 resultProcessor:(id)arg3 limitToBundleID:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)startQuery:(id)arg1 withQueryContext:(id)arg2 resultProcessor:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

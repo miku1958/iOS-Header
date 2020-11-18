@@ -15,8 +15,8 @@
 
 @property (copy, nonatomic) NSString *updatedSince; // @synthesize updatedSince=_updatedSince;
 
+- (void).cxx_destruct;
 - (id)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 account:(id)arg3;
-- (void)dealloc;
 
 @end
 

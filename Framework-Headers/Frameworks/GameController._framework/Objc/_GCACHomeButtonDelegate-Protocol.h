@@ -6,7 +6,10 @@
 
 #import <GameController/NSObject-Protocol.h>
 
+@class _GCACHomeButton;
+
 @protocol _GCACHomeButtonDelegate <NSObject>
+- (_GCACHomeButton *)menuButton;
 - (void)toggleSuspendResume;
 @end
 

@@ -53,15 +53,21 @@
 @property (nonatomic) int transportType; // @synthesize transportType=_transportType;
 @property (nonatomic) int userTrackingMode; // @synthesize userTrackingMode=_userTrackingMode;
 
+- (int)StringAsMapType:(id)arg1;
+- (int)StringAsTransportType:(id)arg1;
+- (int)StringAsUserTrackingMode:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)dictionaryRepresentation;
 - (id)initWithUrlRepresentation:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)mapTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)transportTypeAsString:(int)arg1;
 - (id)urlRepresentation;
+- (id)userTrackingModeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

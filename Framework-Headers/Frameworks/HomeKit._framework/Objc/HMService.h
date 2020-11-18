@@ -6,31 +6,39 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKit/HMMutableApplicationData-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAccessory, HMDelegateCaller, HMMessageDispatcher, HMThreadSafeMutableArrayCollection, NSArray, NSNumber, NSString, NSUUID;
+@class HMAccessory, HMApplicationData, HMBulletinBoardNotification, HMDelegateCaller, HMFMessageDispatcher, HMThreadSafeMutableArrayCollection, NSArray, NSNumber, NSString, NSURL, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMService : NSObject <NSSecureCoding, HMObjectMerge>
+@interface HMService : NSObject <NSSecureCoding, HMObjectMerge, HMMutableApplicationData>
 {
     BOOL _userInteractive;
+    BOOL _primaryService;
     NSUUID *_uniqueIdentifier;
     HMAccessory *_accessory;
     NSString *_serviceType;
     NSString *_name;
     NSString *_associatedServiceType;
-    NSNumber *_instanceID;
+    HMApplicationData *_applicationData;
+    HMBulletinBoardNotification *_bulletinBoardNotificationInternal;
+    NSURL *_homeObjectURLInternal;
+    NSArray *_linkedServiceInstanceIDs;
     HMThreadSafeMutableArrayCollection *_currentCharacteristics;
     NSObject<OS_dispatch_queue> *_workQueue;
-    HMMessageDispatcher *_msgDispatcher;
+    HMFMessageDispatcher *_msgDispatcher;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     HMDelegateCaller *_delegateCaller;
+    NSNumber *_instanceID;
 }
 
 @property (weak, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
+@property (readonly, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
 @property (copy, nonatomic) NSString *associatedServiceType; // @synthesize associatedServiceType=_associatedServiceType;
+@property (readonly, nonatomic) HMBulletinBoardNotification *bulletinBoardNotificationInternal; // @synthesize bulletinBoardNotificationInternal=_bulletinBoardNotificationInternal;
 @property (readonly, copy, nonatomic) NSArray *characteristics;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (copy, nonatomic) HMThreadSafeMutableArrayCollection *currentCharacteristics; // @synthesize currentCharacteristics=_currentCharacteristics;
@@ -38,10 +46,14 @@
 @property (strong, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSURL *homeObjectURLInternal; // @synthesize homeObjectURLInternal=_homeObjectURLInternal;
 @property (readonly, nonatomic) NSNumber *instanceID; // @synthesize instanceID=_instanceID;
+@property (readonly, copy, nonatomic) NSArray *linkedServiceInstanceIDs; // @synthesize linkedServiceInstanceIDs=_linkedServiceInstanceIDs;
+@property (readonly, copy, nonatomic) NSArray *linkedServices;
 @property (readonly, copy, nonatomic) NSString *localizedDescription;
-@property (strong, nonatomic) HMMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic, getter=isPrimaryService) BOOL primaryService; // @synthesize primaryService=_primaryService;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property (readonly) Class superclass;
@@ -49,11 +61,13 @@
 @property (readonly, nonatomic, getter=isUserInteractive) BOOL userInteractive; // @synthesize userInteractive=_userInteractive;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (id)__localizedDescriptionForServiceType:(id)arg1;
 + (id)_serviceTypeAsString:(id)arg1;
++ (id)localizedDescriptionForServiceType:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_addCharacteristic:(id)arg1;
-- (void)_configure:(id)arg1 clientQueue:(id)arg2 delegateCaller:(id)arg3;
+- (void)_configure:(id)arg1 clientQueue:(id)arg2 delegateCaller:(id)arg3 msgDispatcher:(id)arg4;
 - (id)_findCharacteristic:(id)arg1;
 - (void)_handleMarkServiceInteractive:(id)arg1;
 - (void)_handleUpdateAssociatedServiceType:(id)arg1;
@@ -65,9 +79,14 @@
 - (id)_serviceTypeDescription;
 - (void)_updateAssociatedServiceType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)bulletinBoardNotification;
 - (void)encodeWithCoder:(id)arg1;
+- (id)homeObjectURL;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (void)setApplicationData:(id)arg1;
+- (void)updateApplicationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateAssociatedServiceType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 

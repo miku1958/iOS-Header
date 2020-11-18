@@ -17,11 +17,12 @@
     CDUnknownBlockType _completionHandler;
     long long _numberOfDownloadsInProgress;
     long long _numberOfCopiesInProgress;
-    NSMutableArray *_loadedResources;
     BOOL _canceled;
+    BOOL _requiresWiFi;
     NSString *_baseURLString;
     unsigned long long _maxConcurrentLoads;
     NSArray *_resourceInfos;
+    NSMutableArray *_loadedResources;
     NSData *_auditToken;
     BOOL _allowResumingPartialDownloads;
     NSMapTable *_inProgressResourceDownloads;
@@ -31,13 +32,15 @@
 }
 
 @property (strong, nonatomic) NSData *auditToken; // @synthesize auditToken=_auditToken;
-@property (readonly, nonatomic) NSArray *loadedResources; // @synthesize loadedResources=_loadedResources;
+@property (nonatomic) BOOL requiresWiFi; // @synthesize requiresWiFi=_requiresWiFi;
 
 + (Class)resourceLoadOperationClass;
 - (void)_cleanup;
+- (BOOL)_copyResource:(id)arg1 fromPath:(id)arg2 allowCreatingHardLink:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)_establishHardLinkIfPossibleForResource:(id)arg1 toResource:(id)arg2 error:(id *)arg3;
-- (void)_loadNextResource;
-- (void)_writeResourceToDisk:(id)arg1 withData:(id)arg2 orExistingPathOnDisk:(id)arg3 allowCreatingHardLink:(BOOL)arg4 checksum:(id)arg5 completionHandler:(CDUnknownBlockType)arg6 callbackQueue:(id)arg7;
+- (void)_loadNextResourceFromNetwork;
+- (void)_loadResourcesFromDisk;
+- (void)_writeResourceToDisk:(id)arg1 withData:(id)arg2 checksum:(id)arg3 completionHandler:(CDUnknownBlockType)arg4 callbackQueue:(id)arg5;
 - (void)cancel;
 - (void)dealloc;
 - (id)initWithTargetDirectory:(id)arg1 baseURLString:(id)arg2 resources:(id)arg3 maximumConcurrentLoads:(unsigned long long)arg4 additionalDirectoryToConsider:(id)arg5;

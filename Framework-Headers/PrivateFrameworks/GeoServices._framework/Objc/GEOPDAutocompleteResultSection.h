@@ -8,22 +8,33 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPDAutocompleteResultSection : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_entries;
     NSString *_name;
+    int _suggestionType;
     int _type;
-    CDStruct_f953fb60 _has;
+    struct {
+        unsigned int suggestionType:1;
+        unsigned int type:1;
+    } _has;
 }
 
 @property (strong, nonatomic) NSMutableArray *entries; // @synthesize entries=_entries;
 @property (readonly, nonatomic) BOOL hasName;
+@property (nonatomic) BOOL hasSuggestionType;
 @property (nonatomic) BOOL hasType;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (nonatomic) int suggestionType; // @synthesize suggestionType=_suggestionType;
 @property (nonatomic) int type; // @synthesize type=_type;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)entriesType;
+- (int)StringAsSuggestionType:(id)arg1;
+- (int)StringAsType:(id)arg1;
 - (void)addEntries:(id)arg1;
 - (void)clearEntries;
 - (void)copyTo:(id)arg1;
@@ -37,6 +48,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)suggestionTypeAsString:(int)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

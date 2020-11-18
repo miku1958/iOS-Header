@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CBCharacteristic, HAPCharacteristicMetadata, HAPService, NSNumber, NSString;
+@class CBCharacteristic, HAPCharacteristicMetadata, HAPService, NSDate, NSNumber, NSString;
 
 @interface HAPCharacteristic : NSObject
 {
@@ -18,7 +18,7 @@
     unsigned long long _properties;
     HAPCharacteristicMetadata *_metadata;
     id _value;
-    unsigned long long _valueUpdateTime;
+    NSDate *_valueUpdatedTime;
     HAPCharacteristicMetadata *_accessoryMetadata;
 }
 
@@ -33,7 +33,7 @@
 @property (readonly, nonatomic) BOOL supportsAdditionalAuthorizationData;
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property (copy, nonatomic, setter=setValue:) id value; // @synthesize value=_value;
-@property (nonatomic) unsigned long long valueUpdateTime; // @synthesize valueUpdateTime=_valueUpdateTime;
+@property (strong, nonatomic) NSDate *valueUpdatedTime; // @synthesize valueUpdatedTime=_valueUpdatedTime;
 
 - (void).cxx_destruct;
 - (id)_generateValidMetadata:(id)arg1;

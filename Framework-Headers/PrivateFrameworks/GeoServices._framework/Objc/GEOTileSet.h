@@ -15,6 +15,7 @@
     NSString *_baseURL;
     int _checksumType;
     NSMutableArray *_countryRegionWhitelists;
+    unsigned int _dataSet;
     NSString *_localizationURL;
     NSString *_multiTileURL;
     int _scale;
@@ -26,6 +27,7 @@
     BOOL _multiTileURLUsesStatusCodes;
     struct {
         unsigned int checksumType:1;
+        unsigned int dataSet:1;
         unsigned int updateBehavior:1;
         unsigned int multiTileURLUsesStatusCodes:1;
     } _has;
@@ -34,8 +36,10 @@
 @property (strong, nonatomic) NSString *baseURL; // @synthesize baseURL=_baseURL;
 @property (nonatomic) int checksumType; // @synthesize checksumType=_checksumType;
 @property (strong, nonatomic) NSMutableArray *countryRegionWhitelists; // @synthesize countryRegionWhitelists=_countryRegionWhitelists;
+@property (nonatomic) unsigned int dataSet; // @synthesize dataSet=_dataSet;
 @property (readonly, nonatomic) BOOL hasBaseURL;
 @property (nonatomic) BOOL hasChecksumType;
+@property (nonatomic) BOOL hasDataSet;
 @property (readonly, nonatomic) BOOL hasLocalizationURL;
 @property (readonly, nonatomic) BOOL hasMultiTileURL;
 @property (nonatomic) BOOL hasMultiTileURLUsesStatusCodes;
@@ -50,9 +54,18 @@
 @property (nonatomic) int updateBehavior; // @synthesize updateBehavior=_updateBehavior;
 @property (strong, nonatomic) NSMutableArray *validVersions; // @synthesize validVersions=_validVersions;
 
++ (Class)countryRegionWhitelistType;
++ (Class)supportedLanguageType;
++ (Class)validVersionType;
+- (int)StringAsChecksumType:(id)arg1;
+- (int)StringAsScale:(id)arg1;
+- (int)StringAsSize:(id)arg1;
+- (int)StringAsStyle:(id)arg1;
+- (int)StringAsUpdateBehavior:(id)arg1;
 - (void)addCountryRegionWhitelist:(id)arg1;
 - (void)addSupportedLanguage:(id)arg1;
 - (void)addValidVersion:(id)arg1;
+- (id)checksumTypeAsString:(int)arg1;
 - (void)clearCountryRegionWhitelists;
 - (void)clearSupportedLanguages;
 - (void)clearValidVersions;
@@ -67,8 +80,12 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)scaleAsString:(int)arg1;
+- (id)sizeAsString:(int)arg1;
+- (id)styleAsString:(int)arg1;
 - (id)supportedLanguageAtIndex:(unsigned long long)arg1;
 - (unsigned long long)supportedLanguagesCount;
+- (id)updateBehaviorAsString:(int)arg1;
 - (id)validVersionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)validVersionsCount;
 - (void)writeTo:(id)arg1;

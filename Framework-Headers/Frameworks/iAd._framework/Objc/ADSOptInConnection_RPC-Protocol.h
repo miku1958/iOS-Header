@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class NSDictionary;
+
 @protocol ADSOptInConnection_RPC
-- (void)getiAdIDsWithCompletionHandler:(void (^)(NSString *, NSString *, NSString *, NSString *))arg1;
+- (void)getiAdIDsWithCompletionHandler:(void (^)(NSString *, NSString *, NSString *, NSString *, NSString *, NSString *, NSString *))arg1;
 - (void)handleAccountChange;
+- (void)handlePushNotification:(NSDictionary *)arg1;
 - (void)refreshOptInStatus;
 - (void)refreshOptInStatusRefreshingWeakToken:(BOOL)arg1 withCompletionHandler:(void (^)(long long))arg2;
 - (void)setOptInStatus:(BOOL)arg1 completionHandler:(void (^)(long long))arg2;

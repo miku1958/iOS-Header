@@ -51,6 +51,7 @@
 @property (copy) NEProxyServer *SOCKSServer; // @synthesize SOCKSServer=_SOCKSServer;
 @property BOOL autoProxyConfigurationEnabled; // @synthesize autoProxyConfigurationEnabled=_autoProxyConfigurationEnabled;
 @property BOOL autoProxyDiscovery; // @synthesize autoProxyDiscovery=_autoProxyDiscovery;
+@property (readonly) BOOL enabled;
 @property (copy) NSArray *exceptionList; // @synthesize exceptionList=_exceptionList;
 @property BOOL excludeSimpleHostnames; // @synthesize excludeSimpleHostnames=_excludeSimpleHostnames;
 @property BOOL gopherEnabled; // @synthesize gopherEnabled=_gopherEnabled;
@@ -75,6 +76,7 @@
 - (id)init;
 - (id)initFromLegacyDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)needToUpdateKeychain;
 - (void)removeKeychainItems;
 - (void)syncWithKeychain;
 

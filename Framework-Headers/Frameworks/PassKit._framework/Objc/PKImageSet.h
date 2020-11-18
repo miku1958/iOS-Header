@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -20,24 +20,23 @@
 @property (nonatomic) long long version; // @synthesize version=_version;
 
 + (id)_archiveURL:(id)arg1;
-+ (id)_archivedImageSet:(id)arg1 forDisplayProfile:(id)arg2;
-+ (Class)_classForDisplayProfileType:(long long)arg1;
++ (id)_createXPCContainerForImageSetWithType:(long long)arg1 displayProfile:(id)arg2 screenScale:(double)arg3 screenSize:(struct CGSize)arg4 suffix:(id)arg5 fileURL:(id)arg6 cacheURL:(id)arg7 imageSetOut:(id *)arg8;
 + (id)archiveName;
-+ (BOOL)archivedObject:(id)arg1 matchesDisplayProfile:(id)arg2;
++ (Class)classForDisplayProfile:(id)arg1 imageSetType:(long long)arg2;
 + (Class)classForImageSetType:(long long)arg1;
-+ (long long)currentVersion;
++ (id)createXPCContainerForImageSetWithType:(long long)arg1 displayProfile:(id)arg2 screenScale:(double)arg3 screenSize:(struct CGSize)arg4 suffix:(id)arg5 fileURL:(id)arg6 cacheURL:(id)arg7;
++ (unsigned int)currentVersion;
 + (id)imageSetForType:(long long)arg1 displayProfile:(id)arg2 fileURL:(id)arg3 cacheURL:(id)arg4;
 + (id)imageSetForType:(long long)arg1 screenScale:(double)arg2 suffix:(id)arg3 displayProfile:(id)arg4 fileURL:(id)arg5 cacheURL:(id)arg6;
 + (long long)imageSetType;
 + (BOOL)shouldCache;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (BOOL)_isSetImage:(id)arg1 equalToImage:(id)arg2;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDisplayProfile:(id)arg1 fileURL:(id)arg2 screenScale:(double)arg3 suffix:(id)arg4;
 - (void)preheatImages;
-- (void)saveCache:(id)arg1;
 
 @end
 

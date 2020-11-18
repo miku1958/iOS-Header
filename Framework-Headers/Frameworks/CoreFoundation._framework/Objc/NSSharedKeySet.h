@@ -15,17 +15,16 @@
     char *_g;
     unsigned char _select;
     void *_rankTable;
-    double _c;
     unsigned int _M;
     unsigned int _factor;
     unsigned int _numKey;
     unsigned int *_seeds;
     id *_keys;
     NSSharedKeySet *_subSharedKeySet;
+    unsigned char _algorithmType;
 }
 
 @property unsigned int M; // @synthesize M=_M;
-@property double c; // @synthesize c=_c;
 @property unsigned int factor; // @synthesize factor=_factor;
 @property char *g; // @synthesize g=_g;
 @property id *keys; // @synthesize keys=_keys;
@@ -42,8 +41,8 @@
 - (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
+- (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalize;
 - (unsigned long long)hash;
 - (unsigned long long)indexForKey:(id)arg1;
 - (id)init;

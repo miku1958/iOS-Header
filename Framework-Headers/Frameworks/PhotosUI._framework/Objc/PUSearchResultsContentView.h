@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSAttributedString, NSMutableArray, NSPointerArray, NSString, UILabel;
+@class NSAttributedString, NSString, PXRoundedCornerOverlayView, UIImageView, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface PUSearchResultsContentView : UIView
@@ -15,40 +15,29 @@ __attribute__((visibility("hidden")))
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
     UILabel *_auxSubtitleLabel;
-    NSPointerArray *_images;
-    NSMutableArray *_imageViews;
-    UIView *_clippingView;
+    PXRoundedCornerOverlayView *_cornerOverlayView;
     NSAttributedString *_title;
     NSString *_subtitle;
     NSString *_auxSubtitle;
-    unsigned long long _maxImageCount;
-    double _draggingOffsetX;
-    double _clippingOffsetY;
-    struct CGSize _imageSize;
+    UIImageView *_imageView;
     struct UIEdgeInsets _contentInsets;
 }
 
 @property (copy, nonatomic) NSString *auxSubtitle; // @synthesize auxSubtitle=_auxSubtitle;
-@property (nonatomic) double clippingOffsetY; // @synthesize clippingOffsetY=_clippingOffsetY;
 @property (nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
-@property (nonatomic) double draggingOffsetX; // @synthesize draggingOffsetX=_draggingOffsetX;
-@property (nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
-@property (nonatomic) unsigned long long maxImageCount; // @synthesize maxImageCount=_maxImageCount;
+@property (readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (copy, nonatomic) NSAttributedString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
 - (void)_preferredContentSizeChanged:(id)arg1;
 - (void)_updateAuxSubtitleLabel;
-- (void)_updateImageContainers;
-- (void)_updateImageView;
 - (void)_updateSubtitleLabel;
 - (void)_updateTitleLabel;
-- (void)clearImages;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)setImage:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)setBackgroundColor:(id)arg1;
 
 @end
 

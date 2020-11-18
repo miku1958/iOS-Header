@@ -6,31 +6,44 @@
 
 #import <MarkupUI/NSObject-Protocol.h>
 
-@class AKAnnotation, AKController, AKPageModelController, CALayer, NSArray, NSData, NSUndoManager, UIView;
+@class AKAnnotation, AKController, AKPageModelController, CALayer, NSArray, NSData, NSIndexSet, NSUndoManager, UIView, UIViewController;
 
 @protocol AKControllerDelegateProtocol <NSObject>
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromModelToOverlayWithPageIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromOverlayToModelWithPageIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
 - (struct CGRect)maxPageRectWithPageIndex:(unsigned long long)arg1 forAnnotationController:(AKController *)arg2;
 - (NSData *)newContentSnapshotPDFDataIncludingAdornments:(BOOL)arg1 atScale:(double)arg2 inRect:(struct CGRect)arg3 onOverlayAtPageIndex:(unsigned long long)arg4 forAnnotationController:(AKController *)arg5;
+- (UIViewController *)popoverPresentingViewControllerForAnnotationController:(AKController *)arg1;
 - (NSUndoManager *)undoManagerForAnnotationController:(AKController *)arg1;
 
 @optional
+- (NSIndexSet *)characterIndexesForQuadPoints:(NSArray *)arg1 onPageAtIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
+- (void)clearHighlightableSelectionForAnnotationController:(AKController *)arg1;
 - (void)controller:(AKController *)arg1 didPlaceSingleShotAnnotation:(AKAnnotation *)arg2 onPageModelController:(AKPageModelController *)arg3;
 - (void)controller:(AKController *)arg1 willPlaceSingleShotAnnotation:(AKAnnotation *)arg2 onProposedPageModelController:(id *)arg3;
 - (NSArray *)controller:(AKController *)arg1 willSetToolbarItems:(NSArray *)arg2;
 - (void)controllerDidEnterToolMode:(AKController *)arg1;
 - (void)controllerDidExitToolMode:(AKController *)arg1;
 - (BOOL)controllerShouldDetectFormElements:(AKController *)arg1;
+- (void)controllerWillDismissSignatureCaptureView:(AKController *)arg1;
+- (void)controllerWillDismissSignatureManagerView:(AKController *)arg1;
 - (void)controllerWillEnterToolMode:(AKController *)arg1;
 - (void)controllerWillExitToolMode:(AKController *)arg1;
 - (void)controllerWillShowSignatureCaptureView:(AKController *)arg1;
+- (void)controllerWillShowSignatureManagerView:(AKController *)arg1;
 - (void)editCheckpointReachedForAnnotationController:(AKController *)arg1;
+- (void)editDetectedForAnnotationController:(AKController *)arg1;
+- (BOOL)hasHighlightableSelectionForAnnotationController:(AKController *)arg1;
+- (NSIndexSet *)highlightableSelectionCharacterIndexesOnPageAtIndex:(unsigned long long)arg1 forAnnotationController:(AKController *)arg2;
 - (CALayer *)layerContainingQuickBackgroundForLoupeOnOverlayAtPageIndex:(unsigned long long)arg1 forAnnotationController:(AKController *)arg2;
 - (double)modelBaseScaleFactorOfPageAtIndex:(unsigned long long)arg1 forAnnotationController:(AKController *)arg2;
+- (void)penStrokeCompletedForAnnotationController:(AKController *)arg1;
 - (void)placeAuxiliaryView:(UIView *)arg1 forAnnotationController:(AKController *)arg2;
+- (void)positionSketchOverlay:(UIView *)arg1 forAnnotationController:(AKController *)arg2;
 - (struct CGRect)postioningRectForCandidatePicker;
+- (NSArray *)quadPointsForCharacterIndexes:(NSIndexSet *)arg1 onPageAtIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
 - (void)removeAuxiliaryView:(UIView *)arg1 forAnnotationController:(AKController *)arg2;
+- (void)setAllowsNativeRenderingOfHighlightableSelection:(BOOL)arg1 forAnnotationController:(AKController *)arg2;
 - (BOOL)shouldPlaceFormElementAtPoint:(struct CGPoint)arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
 - (BOOL)shouldPlaceProposedFormElementAtRect:(struct CGRect)arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
 @end

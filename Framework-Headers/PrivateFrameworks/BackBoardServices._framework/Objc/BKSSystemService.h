@@ -20,7 +20,6 @@
 - (id)init;
 - (void)openApplication:(id)arg1 options:(id)arg2 clientPort:(unsigned int)arg3 withResult:(CDUnknownBlockType)arg4;
 - (void)openApplication:(id)arg1 options:(id)arg2 withResult:(CDUnknownBlockType)arg3;
-- (void)openDataActivationURL:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)openURL:(id)arg1 application:(id)arg2 options:(id)arg3 clientPort:(unsigned int)arg4 withResult:(CDUnknownBlockType)arg5;
 - (int)pidForApplication:(id)arg1;
 - (id)systemApplicationBundleIdentifier;

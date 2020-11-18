@@ -6,35 +6,41 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMMessageReceiver-Protocol.h>
+#import <HomeKitDaemon/HMFDumpState-Protocol.h>
+#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDHome, HMMessageDispatcher, NSArray, NSMutableArray, NSString, NSUUID;
+@class HMDApplicationData, HMDHome, HMFMessageDispatcher, NSArray, NSDate, NSMutableArray, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDActionSet : NSObject <HMMessageReceiver, NSSecureCoding>
+@interface HMDActionSet : NSObject <HMFMessageReceiver, NSSecureCoding, HMFDumpState>
 {
     BOOL _executionInProgress;
     NSString *_name;
     NSString *_type;
     NSUUID *_uuid;
+    NSDate *_lastExecutionDate;
     NSObject<OS_dispatch_queue> *_workQueue;
-    HMMessageDispatcher *_msgDispatcher;
+    HMFMessageDispatcher *_msgDispatcher;
     HMDHome *_home;
     NSMutableArray *_currentActions;
+    HMDApplicationData *_appData;
 }
 
 @property (readonly, nonatomic) NSArray *actions;
+@property (strong, nonatomic) HMDApplicationData *appData; // @synthesize appData=_appData;
 @property (strong, nonatomic) NSMutableArray *currentActions; // @synthesize currentActions=_currentActions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL executionInProgress; // @synthesize executionInProgress=_executionInProgress;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
+@property (strong, nonatomic) NSDate *lastExecutionDate; // @synthesize lastExecutionDate=_lastExecutionDate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) NSString *serializedIdentifier;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *type; // @synthesize type=_type;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
@@ -42,24 +48,29 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_execute:(CDUnknownBlockType)arg1 writeRequestTuples:(id)arg2;
+- (void)_execute:(id)arg1 writeRequestTuples:(id)arg2;
+- (BOOL)_fixupActions;
 - (id)_generateOverallError:(id)arg1;
 - (void)_handleAddActionRequest:(id)arg1;
 - (void)_handleRemoveActionRequest:(id)arg1;
 - (void)_handleRenameRequest:(id)arg1;
 - (void)_handleReplaceActionValueRequest:(id)arg1;
+- (void)_logDuetEvent:(id)arg1 endDate:(id)arg2 message:(id)arg3;
+- (void)_logDuetRoomEvent;
 - (void)_registerForMessages;
 - (void)_removeAction:(id)arg1 message:(id)arg2;
 - (id)actionWithUUID:(id)arg1;
 - (id)allCharacteristicsInActionsForServices:(id)arg1;
-- (id)assistantUniqueIdentifier;
-- (void)configure:(id)arg1 queue:(id)arg2;
-- (BOOL)containsAccessoryWithUUID:(id)arg1;
+- (id)assistantObject;
+- (BOOL)configure:(id)arg1 messageDispatcher:(id)arg2 queue:(id)arg3;
+- (BOOL)containsSecureCharacteristic;
 - (void)dealloc;
+- (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (void)execute:(id)arg1;
-- (void)executeWithTriggerSource:(id)arg1;
+- (void)executeWithTriggerSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fixupActionsForReplacementAccessory:(id)arg1;
+- (void)handleExecutionCompleted:(id)arg1 startDate:(id)arg2 error:(id)arg3 response:(id)arg4;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 uuid:(id)arg2 type:(id)arg3 home:(id)arg4 queue:(id)arg5;
 - (void)removeAccessory:(id)arg1;

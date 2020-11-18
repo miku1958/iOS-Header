@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, NSOperation, WBSSiteMetadataProvider;
+@class NSMutableSet, NSOperation;
+@protocol WBSSiteMetadataProvider;
 
 @interface _WBSSiteMetadataRequestInfo : NSObject
 {
-    WBSSiteMetadataProvider *_provider;
+    id<WBSSiteMetadataProvider> _provider;
     NSMutableSet *_tokens;
     NSOperation *_operation;
 }
 
-@property (strong, nonatomic) NSOperation *operation; // @synthesize operation=_operation;
-@property (readonly, nonatomic) WBSSiteMetadataProvider *provider; // @synthesize provider=_provider;
+@property (weak, nonatomic) NSOperation *operation; // @synthesize operation=_operation;
+@property (readonly, nonatomic) id<WBSSiteMetadataProvider> provider; // @synthesize provider=_provider;
 @property (readonly, nonatomic) NSMutableSet *tokens; // @synthesize tokens=_tokens;
 
 - (void).cxx_destruct;

@@ -30,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)deleteCharactersInRange:(struct _NSRange)arg1;
 - (unsigned long long)fastestEncoding;
-- (void)finalize;
 - (BOOL)getCString:(char *)arg1 maxLength:(unsigned long long)arg2 encoding:(unsigned long long)arg3;
 - (void)getCharacters:(unsigned short *)arg1 range:(struct _NSRange)arg2;
 - (void)getLineStart:(unsigned long long *)arg1 end:(unsigned long long *)arg2 contentsEnd:(unsigned long long *)arg3 forRange:(struct _NSRange)arg4;

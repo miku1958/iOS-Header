@@ -38,10 +38,11 @@
 
 - (void).cxx_destruct;
 - (void)_applicationWillResign:(id)arg1;
-- (void)_flushItemsQueue;
+- (void)_flushWithAppResigned:(BOOL)arg1 forced:(BOOL)arg2;
 - (void)_pushLastItem:(id)arg1 time:(double)arg2;
 - (void)_queueItems:(id)arg1;
 - (void)dealloc;
+- (void)flush;
 - (id)initWithIdleTime:(double)arg1 idleTimeLeeway:(double)arg2 maximumBatchSize:(unsigned long long)arg3 mode:(long long)arg4 notifyBlock:(CDUnknownBlockType)arg5;
 - (id)initWithMode:(long long)arg1 notifyBlock:(CDUnknownBlockType)arg2;
 - (void)queueItem:(id)arg1;

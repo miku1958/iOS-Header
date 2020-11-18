@@ -10,13 +10,13 @@
 
 @interface MCSharedDeviceConfigurationPayload : MCPayload
 {
-    NSString *_ifLostReturnToMessage;
+    NSString *_lockScreenFootnote;
     NSString *_assetTagInformation;
 }
 
-@property (strong, nonatomic) NSString *assetTagInformation; // @synthesize assetTagInformation=_assetTagInformation;
+@property (readonly, nonatomic) NSString *assetTagInformation; // @synthesize assetTagInformation=_assetTagInformation;
 @property (readonly, nonatomic) NSDictionary *configuration;
-@property (strong, nonatomic) NSString *ifLostReturnToMessage; // @synthesize ifLostReturnToMessage=_ifLostReturnToMessage;
+@property (readonly, nonatomic) NSString *lockScreenFootnote; // @synthesize lockScreenFootnote=_lockScreenFootnote;
 
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;

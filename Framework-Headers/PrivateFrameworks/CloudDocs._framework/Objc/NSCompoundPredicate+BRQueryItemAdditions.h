@@ -7,6 +7,9 @@
 #import <Foundation/NSCompoundPredicate.h>
 
 @interface NSCompoundPredicate (BRQueryItemAdditions)
+- (id)_br_watchedParentURLWithORPredicate1:(id)arg1 predicate2:(id)arg2;
+- (id)_br_watchedURLWithORPredicate1:(id)arg1 predicate2:(id)arg2;
+- (id)br_urlWithWatchedChildren;
 - (id)br_watchedURL;
 @end
 

@@ -16,10 +16,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)appLink;
+- (BOOL)canBePerformedByOpeningURL;
 - (id)companionAction;
 - (void)dealloc;
 - (id)localizedName;
-- (void)perform;
+- (void)performFromView:(id)arg1;
 - (BOOL)useAppLink;
 
 @end

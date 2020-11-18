@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     NSString *_currentFilterType;
 }
 
-@property (nonatomic) NSString *filterType; // @synthesize filterType=_currentFilterType;
+@property (strong, nonatomic) NSString *filterType; // @synthesize filterType=_currentFilterType;
 
 - (BOOL)_shouldInheritScreenScaleAsContentScaleFactor;
 - (void)clearImages;
@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)insertSubviewAtBottom:(id)arg1;
 - (void)prepareForDisplay:(BOOL)arg1;
-- (void)setAlpha:(double)arg1;
+- (void)setContentsMultiplyColor:(id)arg1;
 - (void)setImage:(id)arg1 cachedWidth:(double)arg2 keyplane:(id)arg3;
 - (void)setImage:(id)arg1 splitLeft:(id)arg2 splitRight:(id)arg3 keyplane:(id)arg4;
 

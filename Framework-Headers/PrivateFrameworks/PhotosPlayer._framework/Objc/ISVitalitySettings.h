@@ -12,6 +12,7 @@
 
 @interface ISVitalitySettings : ISSettings <ISVitalitySettings>
 {
+    BOOL _shouldPreroll;
     BOOL _useLegacyBehavior;
     ISVitalitySpecificSettings *_oneUpSettings;
     ISVitalitySpecificSettings *_shareViewSettings;
@@ -26,6 +27,7 @@
 @property (strong, nonatomic) ISVitalitySpecificSettings *oneUpSettings; // @synthesize oneUpSettings=_oneUpSettings;
 @property (strong, nonatomic) ISVitalitySpecificSettings *orbPreviewSettings; // @synthesize orbPreviewSettings=_orbPreviewSettings;
 @property (strong, nonatomic) ISVitalitySpecificSettings *shareViewSettings; // @synthesize shareViewSettings=_shareViewSettings;
+@property (nonatomic) BOOL shouldPreroll; // @synthesize shouldPreroll=_shouldPreroll;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL useLegacyBehavior; // @synthesize useLegacyBehavior=_useLegacyBehavior;
 

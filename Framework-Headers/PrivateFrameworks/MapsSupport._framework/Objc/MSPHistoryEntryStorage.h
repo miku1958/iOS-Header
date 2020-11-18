@@ -8,7 +8,7 @@
 
 #import <MapsSupport/NSCopying-Protocol.h>
 
-@class MSPDirectionsSearch, MSPPlaceDisplay, MSPQuerySearch, NSString, PBUnknownFields;
+@class MSPDirectionsSearch, MSPPlaceDisplay, MSPQuerySearch, MSPRidesharingTrip, MSPTransitStorageLineItem, NSString, PBUnknownFields;
 
 @interface MSPHistoryEntryStorage : PBCodable <NSCopying>
 {
@@ -19,7 +19,9 @@
     NSString *_identifier;
     MSPPlaceDisplay *_placeDisplay;
     MSPQuerySearch *_querySearch;
+    MSPRidesharingTrip *_ridesharingTrip;
     int _searchType;
+    MSPTransitStorageLineItem *_transitLineItem;
     struct {
         unsigned int position:1;
         unsigned int timestamp:1;
@@ -33,17 +35,22 @@
 @property (readonly, nonatomic) BOOL hasPlaceDisplay;
 @property (nonatomic) BOOL hasPosition;
 @property (readonly, nonatomic) BOOL hasQuerySearch;
+@property (readonly, nonatomic) BOOL hasRidesharingTrip;
 @property (nonatomic) BOOL hasSearchType;
 @property (nonatomic) BOOL hasTimestamp;
+@property (readonly, nonatomic) BOOL hasTransitLineItem;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) MSPPlaceDisplay *placeDisplay; // @synthesize placeDisplay=_placeDisplay;
 @property (nonatomic) double position; // @synthesize position=_position;
 @property (strong, nonatomic) MSPQuerySearch *querySearch; // @synthesize querySearch=_querySearch;
+@property (strong, nonatomic) MSPRidesharingTrip *ridesharingTrip; // @synthesize ridesharingTrip=_ridesharingTrip;
 @property (nonatomic) int searchType; // @synthesize searchType=_searchType;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
+@property (strong, nonatomic) MSPTransitStorageLineItem *transitLineItem; // @synthesize transitLineItem=_transitLineItem;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 - (void).cxx_destruct;
+- (int)StringAsSearchType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -52,6 +59,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)searchTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

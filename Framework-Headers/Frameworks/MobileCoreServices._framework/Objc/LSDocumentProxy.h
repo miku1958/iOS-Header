@@ -31,7 +31,9 @@
 + (id)documentProxyForName:(id)arg1 type:(id)arg2 MIMEType:(id)arg3 sourceIsManaged:(BOOL)arg4;
 + (id)documentProxyForURL:(id)arg1 sourceIsManaged:(BOOL)arg2;
 + (BOOL)supportsSecureCoding;
-- (void)bind;
+- (id)applicationsAvailableForOpeningWithHandlerRanks:(id)arg1 error:(id *)arg2;
+- (id)applicationsAvailableForOpeningWithTypeOwner:(BOOL)arg1 airDropStyle:(BOOL)arg2;
+- (id)boundDocumentProxy;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

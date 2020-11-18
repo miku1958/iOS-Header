@@ -5,11 +5,12 @@
 //
 
 #import <TSReading/TSDEditor-Protocol.h>
+#import <TSReading/UIResponderStandardEditActions-Protocol.h>
 
 @class NSArray, NSString, TSDTextPosition, TSKSelection, UIColor, UIFont, UIView;
 @protocol TSDTextSelection;
 
-@protocol TSDTextInput <TSDEditor>
+@protocol TSDTextInput <TSDEditor, UIResponderStandardEditActions>
 
 @property (readonly, strong) UIView *inputAccessoryView;
 @property (readonly, strong) UIView *inputView;

@@ -8,17 +8,22 @@
 
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
+#import <HealthKit/_HKDateBounded-Protocol.h>
 
-@class NSDate;
+@class NSDate, NSString;
 
-@interface _HKTimePeriod : NSObject <NSSecureCoding, NSCopying>
+@interface _HKTimePeriod : NSObject <NSSecureCoding, NSCopying, _HKDateBounded>
 {
     NSDate *_startDate;
     NSDate *_endDate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 + (id)timePeriodWithStartDate:(id)arg1 endDate:(id)arg2;
@@ -28,10 +33,8 @@
 - (BOOL)containsDate:(id)arg1;
 - (BOOL)containsTimePeriod:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)endsBeforeDate:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStartDate:(id)arg1 endDate:(id)arg2;
 - (BOOL)isEqual:(id)arg1;

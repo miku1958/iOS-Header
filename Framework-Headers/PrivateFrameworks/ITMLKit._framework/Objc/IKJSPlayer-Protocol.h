@@ -6,11 +6,15 @@
 
 #import <ITMLKit/JSExport-Protocol.h>
 
-@class IKDOMDocument, IKJSMediaItem, IKJSPlaylist, NSString;
+@class IKDOMDocument, IKJSMediaItem, IKJSPlaylist, NSDate, NSNumber, NSString;
 
 @protocol IKJSPlayer <JSExport>
 
 @property (readonly, nonatomic) IKJSMediaItem *currentMediaItem;
+@property (readonly, nonatomic) NSDate *currentMediaItemDate;
+@property (readonly, nonatomic) NSNumber *currentMediaItemDuration;
+@property (nonatomic) BOOL interactiveOverlayDismissable;
+@property (strong, nonatomic) IKDOMDocument *interactiveOverlayDocument;
 @property (readonly, nonatomic) IKJSMediaItem *nextMediaItem;
 @property (strong, nonatomic) IKDOMDocument *overlayDocument;
 @property (nonatomic) double playbackRate;
@@ -18,10 +22,13 @@
 @property (strong, nonatomic) IKJSPlaylist *playlist;
 @property (readonly, nonatomic) IKJSMediaItem *previousMediaItem;
 
+- (void)changeToMediaAtIndex:(unsigned long long)arg1;
 - (id)init;
+- (void)next;
 - (void)pause;
 - (void)play;
 - (void)present;
+- (void)previous;
 - (void)seekToTime:(double)arg1;
 - (void)stop;
 @end

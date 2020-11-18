@@ -26,6 +26,7 @@
 - (BOOL)_accessibilityUserTestingIsContinuityButton;
 - (BOOL)_accessibilityUserTestingIsDefaultButton;
 - (BOOL)_accessibilityUserTestingIsDestructiveButton;
+- (BOOL)_accessibilityUserTestingIsElementClassAcceptable;
 - (BOOL)_accessibilityUserTestingIsPreferredButton;
 - (BOOL)_accessibilityUserTestingIsRightNavButton;
 - (id)_accessibilityUserTestingParent;

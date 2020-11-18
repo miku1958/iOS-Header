@@ -13,6 +13,8 @@
 
 @interface AFDictationOptions : NSObject <NSSecureCoding, NSCopying>
 {
+    BOOL _forceOfflineRecognition;
+    BOOL _detectUtterances;
     BOOL _secureOfflineOnly;
     BOOL _releaseAudioSessionOnRecordingCompletion;
     NSString *_applicationName;
@@ -29,22 +31,33 @@
     long long _returnKeyType;
     long long _transcriptionMode;
     NSArray *_inlineItemList;
+    NSString *_microphoneIdentifier;
+    NSString *_orthography;
     NSString *_languageCodeOverride;
+    NSString *_offlineLanguage;
     long long _voiceSearchTypeOptions;
     NSDictionary *_voiceSearchHeaderFields;
     NSDictionary *_voiceSearchQueryParameters;
     NSDictionary *_voiceTriggerEventInfo;
+    double _maximumRecognitionDuration;
+    long long _taskHint;
 }
 
 @property (copy, nonatomic) NSString *applicationName; // @synthesize applicationName=_applicationName;
 @property (copy, nonatomic) NSString *applicationVersion; // @synthesize applicationVersion=_applicationVersion;
 @property (strong, nonatomic) STSiriContext *context; // @synthesize context=_context;
+@property (nonatomic) BOOL detectUtterances; // @synthesize detectUtterances=_detectUtterances;
 @property (copy, nonatomic) NSString *fieldIdentifier; // @synthesize fieldIdentifier=_fieldIdentifier;
 @property (copy, nonatomic) NSString *fieldLabel; // @synthesize fieldLabel=_fieldLabel;
+@property (nonatomic) BOOL forceOfflineRecognition; // @synthesize forceOfflineRecognition=_forceOfflineRecognition;
 @property (copy, nonatomic) NSArray *inlineItemList; // @synthesize inlineItemList=_inlineItemList;
 @property (copy, nonatomic) NSString *interactionIdentifier; // @synthesize interactionIdentifier=_interactionIdentifier;
 @property (nonatomic) long long keyboardType; // @synthesize keyboardType=_keyboardType;
 @property (copy, nonatomic) NSString *languageCodeOverride; // @synthesize languageCodeOverride=_languageCodeOverride;
+@property (nonatomic) double maximumRecognitionDuration; // @synthesize maximumRecognitionDuration=_maximumRecognitionDuration;
+@property (copy, nonatomic) NSString *microphoneIdentifier; // @synthesize microphoneIdentifier=_microphoneIdentifier;
+@property (copy, nonatomic) NSString *offlineLanguage; // @synthesize offlineLanguage=_offlineLanguage;
+@property (copy, nonatomic) NSString *orthography; // @synthesize orthography=_orthography;
 @property (copy, nonatomic) NSString *postfixText; // @synthesize postfixText=_postfixText;
 @property (copy, nonatomic) NSString *prefixText; // @synthesize prefixText=_prefixText;
 @property (nonatomic) BOOL releaseAudioSessionOnRecordingCompletion; // @synthesize releaseAudioSessionOnRecordingCompletion=_releaseAudioSessionOnRecordingCompletion;
@@ -52,6 +65,7 @@
 @property (nonatomic) long long returnKeyType; // @synthesize returnKeyType=_returnKeyType;
 @property (nonatomic) BOOL secureOfflineOnly; // @synthesize secureOfflineOnly=_secureOfflineOnly;
 @property (copy, nonatomic) NSString *selectedText; // @synthesize selectedText=_selectedText;
+@property (nonatomic) long long taskHint; // @synthesize taskHint=_taskHint;
 @property (nonatomic) long long transcriptionMode; // @synthesize transcriptionMode=_transcriptionMode;
 @property (copy, nonatomic) NSDictionary *voiceSearchHeaderFields; // @synthesize voiceSearchHeaderFields=_voiceSearchHeaderFields;
 @property (copy, nonatomic) NSDictionary *voiceSearchQueryParameters; // @synthesize voiceSearchQueryParameters=_voiceSearchQueryParameters;
@@ -63,6 +77,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictationOptionsWithoutTextContext;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 
 @end

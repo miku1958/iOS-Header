@@ -17,10 +17,10 @@
 @property (strong, nonatomic) UILabel *icon; // @synthesize icon=_icon;
 @property (strong, nonatomic) UILabel *name; // @synthesize name=_name;
 
+- (void).cxx_destruct;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
-- (void)dealloc;
 
 @end
 

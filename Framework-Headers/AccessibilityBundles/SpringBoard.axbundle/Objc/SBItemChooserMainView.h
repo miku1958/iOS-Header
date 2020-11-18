@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) SBVoiceOverTouchItemChooser *itemChooser; // @synthesize itemChooser=_itemChooser;
 
+- (void).cxx_destruct;
 - (id)_accessibilityObscuredScreenAllowedViews;
 - (BOOL)_accessibilitySupportsActivateAction;
 - (BOOL)accessibilityActivate;
@@ -22,7 +23,6 @@
 - (BOOL)accessibilityPerformEscape;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)accessibilityViewIsModal;
-- (void)dealloc;
 
 @end
 

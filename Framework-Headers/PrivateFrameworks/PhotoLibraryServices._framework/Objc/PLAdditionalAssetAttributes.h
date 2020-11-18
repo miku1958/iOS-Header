@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic, setter=_setCachedShiftedLocation:) CLLocation *_cachedShiftedLocation; // @synthesize _cachedShiftedLocation=__cachedShiftedLocation;
 @property (copy, nonatomic) NSString *adjustedFingerPrint; // @dynamic adjustedFingerPrint;
+@property (nonatomic) BOOL allowedForAnalysis; // @dynamic allowedForAnalysis;
 @property (strong, nonatomic) PLManagedAsset *asset; // @dynamic asset;
 @property (strong, nonatomic) PLAssetDescription *assetDescription; // @dynamic assetDescription;
 @property (nonatomic) short cameraCaptureDevice; // @dynamic cameraCaptureDevice;
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) NSString *customCollectionUUID; // @dynamic customCollectionUUID;
 @property (strong, nonatomic) NSString *customMomentName; // @dynamic customMomentName;
 @property (strong, nonatomic) NSString *customMomentUUID; // @dynamic customMomentUUID;
+@property (strong, nonatomic) NSData *distanceIdentity; // @dynamic distanceIdentity;
 @property (strong, nonatomic) NSString *editorBundleID; // @dynamic editorBundleID;
 @property (strong, nonatomic) NSNumber *embeddedThumbnailHeight; // @dynamic embeddedThumbnailHeight;
 @property (strong, nonatomic) NSNumber *embeddedThumbnailLength; // @dynamic embeddedThumbnailLength;
@@ -39,21 +41,28 @@
 @property (strong, nonatomic) NSNumber *locationHash; // @dynamic locationHash;
 @property (strong, nonatomic) NSString *longDescription;
 @property (copy, nonatomic) NSString *masterFingerPrint; // @dynamic masterFingerPrint;
+@property (strong, nonatomic) NSString *montage; // @dynamic montage;
 @property (strong, nonatomic) id originalAssetsUUID; // @dynamic originalAssetsUUID;
-@property (strong, nonatomic) NSString *originalColorSpace; // @dynamic originalColorSpace;
 @property (strong, nonatomic) NSString *originalFilename; // @dynamic originalFilename;
 @property (strong, nonatomic) NSNumber *originalFilesize; // @dynamic originalFilesize;
 @property (strong, nonatomic) NSData *originalHash; // @dynamic originalHash;
 @property (strong, nonatomic) NSNumber *originalHeight; // @dynamic originalHeight;
 @property (strong, nonatomic) NSNumber *originalOrientation; // @dynamic originalOrientation;
-@property (strong, nonatomic) NSString *originalPath; // @dynamic originalPath;
 @property (strong, nonatomic) NSNumber *originalResourceChoice; // @dynamic originalResourceChoice;
 @property (strong, nonatomic) NSNumber *originalWidth; // @dynamic originalWidth;
+@property (nonatomic) long long pendingPlayCount; // @dynamic pendingPlayCount;
+@property (nonatomic) long long pendingShareCount; // @dynamic pendingShareCount;
+@property (nonatomic) long long pendingViewCount; // @dynamic pendingViewCount;
 @property (strong, nonatomic) NSSet *personReferences; // @dynamic personReferences;
 @property (strong, nonatomic) NSData *placeAnnotationData; // @dynamic placeAnnotationData;
+@property (nonatomic) long long playCount; // @dynamic playCount;
 @property (strong, nonatomic) NSString *publicGlobalUUID; // @dynamic publicGlobalUUID;
 @property (strong, nonatomic) NSData *reverseLocationData; // @dynamic reverseLocationData;
 @property (strong, nonatomic) NSNumber *reverseLocationDataIsValid; // @dynamic reverseLocationDataIsValid;
+@property (strong, nonatomic) NSDate *sceneAnalysisTimestamp; // @dynamic sceneAnalysisTimestamp;
+@property (nonatomic) short sceneAnalysisVersion; // @dynamic sceneAnalysisVersion;
+@property (strong, nonatomic) NSSet *sceneClassifications; // @dynamic sceneClassifications;
+@property (nonatomic) long long shareCount; // @dynamic shareCount;
 @property (strong, nonatomic) CLLocation *shiftedLocation;
 @property (strong, nonatomic) NSData *shiftedLocationData; // @dynamic shiftedLocationData;
 @property (nonatomic) BOOL shiftedLocationIsValid; // @dynamic shiftedLocationIsValid;
@@ -65,13 +74,16 @@
 @property (nonatomic) int videoCpDisplayTimescale; // @dynamic videoCpDisplayTimescale;
 @property (nonatomic) long long videoCpDisplayValue; // @dynamic videoCpDisplayValue;
 @property (nonatomic) int videoCpDurationTimescale; // @dynamic videoCpDurationTimescale;
+@property (nonatomic) long long viewCount; // @dynamic viewCount;
 
++ (id)entityName;
 + (void)fromExtraDurationData:(id)arg1 getStillDisplayTime:(CDStruct_1b6d18a9 *)arg2 videoDuration:(CDStruct_1b6d18a9 *)arg3;
 + (id)listOfSyncedProperties;
 + (id)newExtraDurationDataFromStillDisplayTime:(CDStruct_1b6d18a9)arg1 videoDuration:(CDStruct_1b6d18a9)arg2;
-- (BOOL)_needToSetModificationDateOnAsset:(id)arg1;
 - (void)dealloc;
+- (BOOL)isSyncableChange;
 - (BOOL)migrateReverseLocationDataFromKeyedArchiverFormat;
+- (BOOL)supportsCloudUpload;
 - (BOOL)validateForInsert:(id *)arg1;
 - (BOOL)validateForUpdate:(id *)arg1;
 - (void)willSave;

@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)canHandleStyle:(struct VKIconStyleInfo *)arg1;
-+ (id)keyForName:(id)arg1 style:(struct VKIconStyleInfo *)arg2 size:(long long)arg3;
++ (id)keyForStyle:(struct VKIconStyleInfo *)arg1;
 + (id)newIconWithMask:(struct CGImage *)arg1 outlineMask:(struct CGImage *)arg2 style:(struct VKIconStyleInfo *)arg3 scale:(double)arg4;
 
 @end

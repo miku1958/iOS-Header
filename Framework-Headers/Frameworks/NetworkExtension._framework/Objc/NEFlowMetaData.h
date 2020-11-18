@@ -6,9 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <NetworkExtension/NSCopying-Protocol.h>
+#import <NetworkExtension/NSSecureCoding-Protocol.h>
+
 @class NSData, NSString;
 
-@interface NEFlowMetaData : NSObject
+@interface NEFlowMetaData : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _fastOpenRequested;
     BOOL _multipathRequested;
@@ -21,9 +24,15 @@
 @property (readonly) NSString *sourceAppSigningIdentifier; // @synthesize sourceAppSigningIdentifier=_sourceAppSigningIdentifier;
 @property (readonly) NSData *sourceAppUniqueIdentifier; // @synthesize sourceAppUniqueIdentifier=_sourceAppUniqueIdentifier;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initFromFlow:(struct _NEFlow *)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithProcessUUID:(id)arg1 signingIdentifier:(id)arg2;
+- (id)initWithUniqueIdentifier:(id)arg1 signingIdentifier:(id)arg2 fastOpenRequested:(BOOL)arg3 multipathRequested:(BOOL)arg4;
 
 @end
 

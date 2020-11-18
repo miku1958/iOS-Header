@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_xpc_object> *_oolObjects;
     NSXPCConnection *_connection;
-    struct __CFDictionary *_replacedObjects;
     struct __CFDictionary *_replacedByDelegateObjects;
     id<NSXPCEncoderDelegate> _delegate;
     BOOL _askForReplacement;
@@ -27,13 +26,14 @@ __attribute__((visibility("hidden")))
 
 + (id)_dataWithXPCObject:(id)arg1;
 - (void)_checkObject:(id)arg1;
-- (id)_createRootXPCObject;
 - (void)_encodeArrayOfObjects:(id)arg1 forKey:(id)arg2;
 - (void)_encodeCString:(const char *)arg1 forKey:(id)arg2;
 - (void)_encodeObject:(id)arg1;
 - (void)_insertIntoXPCObject:(id)arg1;
+- (id)_newRootXPCObject;
 - (id)_replaceObject:(id)arg1;
 - (BOOL)allowsKeyedCoding;
+- (id)connection;
 - (void)dealloc;
 - (id)debugDescription;
 - (void)encodeBool:(BOOL)arg1 forKey:(id)arg2;
@@ -51,7 +51,6 @@ __attribute__((visibility("hidden")))
 - (void)encodeObject:(id)arg1 forKey:(id)arg2;
 - (void)encodeValueOfObjCType:(const char *)arg1 at:(const void *)arg2;
 - (void)encodeXPCObject:(id)arg1 forKey:(id)arg2;
-- (void)finalize;
 - (id)init;
 
 @end

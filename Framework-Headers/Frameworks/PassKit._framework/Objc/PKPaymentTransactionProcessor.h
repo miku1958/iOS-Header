@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/CLLocationManagerDelegate-Protocol.h>
 
@@ -29,8 +29,9 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (nonatomic) PKUsageNotificationServer *usageNotificationServer; // @synthesize usageNotificationServer=_usageNotificationServer;
+@property (weak, nonatomic) PKUsageNotificationServer *usageNotificationServer; // @synthesize usageNotificationServer=_usageNotificationServer;
 
+- (void).cxx_destruct;
 - (void)_abortUpdatingLocationForAllLocationUpdateItems;
 - (void)_abortUpdatingLocationForLocationUpdateItem:(id)arg1;
 - (void)_continueUpdatingLocationForTransactionUpdateItem:(id)arg1;
@@ -42,7 +43,6 @@
 - (void)_startUpdatingLocationIfPossible;
 - (void)_stopUpdatingLocationIfPossible;
 - (void)_updateLocation:(id)arg1 forLocationUpdateItem:(id)arg2 andMarkAsProcessed:(BOOL)arg3;
-- (void)dealloc;
 - (id)init;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;

@@ -20,12 +20,15 @@
 @property (readonly, nonatomic) NSDictionary *cloudAssetCountPerType;
 @property (readonly, nonatomic) NSDate *cloudAssetCountPerTypeLastCheckDate;
 @property (weak, nonatomic) id<CPLStatusDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) NSDate *exitDeleteTime;
+@property (copy, nonatomic) NSDate *exitDeleteTime;
 @property (nonatomic) BOOL hasChangesToProcess;
 @property (nonatomic) BOOL iCloudLibraryExists;
 @property (nonatomic) BOOL iCloudLibraryHasBeenWiped;
+@property (copy, nonatomic) NSDate *initialSyncDate;
 @property (nonatomic) BOOL isExceedingQuota;
-@property (nonatomic) NSDate *lastSuccessfulSyncDate;
+@property (copy, nonatomic) NSDate *lastCompletePrefetchDate;
+@property (copy, nonatomic) NSDate *lastPruneDate;
+@property (copy, nonatomic) NSDate *lastSuccessfulSyncDate;
 
 + (id)statusForSharedLibrary;
 - (void).cxx_destruct;

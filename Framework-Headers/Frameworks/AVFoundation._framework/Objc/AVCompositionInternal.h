@@ -20,6 +20,8 @@
     struct CGSize naturalSize;
     NSDictionary *URLAssetInitializationOptions;
     NSMutableArray *tracks;
+    long long figAssetInitializationOnce;
+    struct OpaqueFigAsset *figAsset;
 }
 
 @end

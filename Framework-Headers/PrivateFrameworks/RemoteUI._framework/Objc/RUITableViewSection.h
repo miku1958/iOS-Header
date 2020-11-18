@@ -6,53 +6,47 @@
 
 #import <RemoteUI/RUIElement.h>
 
+#import <RemoteUI/RUIHeaderDelegate-Protocol.h>
 #import <RemoteUI/RUITableFooterDelegate-Protocol.h>
-#import <RemoteUI/RUITableHeaderDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSNumber, NSString, RUITableViewRow, UIView;
-@protocol RUITableViewSectionDelegate, RemoteUITableFooter, RemoteUITableHeader;
+@class NSArray, NSMutableArray, NSNumber, RUIDetailHeaderElement, RUIReadableContentContainer, RUISubHeaderElement, RUITableViewRow, UIView;
+@protocol RUIHeader, RUITableViewSectionDelegate, RemoteUITableFooter;
 
-@interface RUITableViewSection : RUIElement <RUITableHeaderDelegate, RUITableFooterDelegate>
+@interface RUITableViewSection : RUIElement <RUIHeaderDelegate, RUITableFooterDelegate>
 {
     NSMutableArray *_rows;
     long long _disclosureLimit;
+    RUIReadableContentContainer *_containerizedHeaderView;
+    RUIReadableContentContainer *_containerizedFooterView;
     NSNumber *_drawsTopSeparator;
     BOOL _configured;
     id<RUITableViewSectionDelegate> _delegate;
-    UIView<RemoteUITableHeader> *_headerView;
+    UIView<RUIHeader> *_headerView;
     UIView<RemoteUITableFooter> *_footerView;
     double _headerHeight;
     double _footerHeight;
     RUITableViewRow *_showAllRow;
-    NSString *_headerText;
-    NSDictionary *_headerAttributes;
-    NSString *_HTMLHeaderContent;
-    NSString *_detailHeaderText;
-    NSString *_subHeaderText;
-    NSDictionary *_subHeaderAttributes;
-    NSString *_footerText;
-    NSString *_HTMLFooterContent;
-    NSDictionary *_footerAttributes;
+    RUIElement *_header;
+    RUISubHeaderElement *_subHeader;
+    RUIDetailHeaderElement *_detailHeader;
+    RUIElement *_footer;
 }
 
-@property (copy, nonatomic) NSString *HTMLFooterContent; // @synthesize HTMLFooterContent=_HTMLFooterContent;
-@property (copy, nonatomic) NSString *HTMLHeaderContent; // @synthesize HTMLHeaderContent=_HTMLHeaderContent;
 @property (nonatomic) BOOL configured; // @synthesize configured=_configured;
+@property (strong, nonatomic) UIView *containerizedFooterView; // @synthesize containerizedFooterView=_containerizedFooterView;
+@property (strong, nonatomic) UIView *containerizedHeaderView; // @synthesize containerizedHeaderView=_containerizedHeaderView;
 @property (weak, nonatomic) id<RUITableViewSectionDelegate> delegate; // @synthesize delegate=_delegate;
-@property (copy, nonatomic) NSString *detailHeaderText; // @synthesize detailHeaderText=_detailHeaderText;
+@property (strong, nonatomic) RUIDetailHeaderElement *detailHeader; // @synthesize detailHeader=_detailHeader;
 @property (nonatomic) BOOL drawTopSeparator;
-@property (copy, nonatomic) NSDictionary *footerAttributes; // @synthesize footerAttributes=_footerAttributes;
+@property (strong, nonatomic) RUIElement *footer; // @synthesize footer=_footer;
 @property (nonatomic) double footerHeight; // @synthesize footerHeight=_footerHeight;
-@property (copy, nonatomic) NSString *footerText; // @synthesize footerText=_footerText;
 @property (strong, nonatomic) UIView<RemoteUITableFooter> *footerView; // @synthesize footerView=_footerView;
-@property (copy, nonatomic) NSDictionary *headerAttributes; // @synthesize headerAttributes=_headerAttributes;
+@property (strong, nonatomic) RUIElement *header; // @synthesize header=_header;
 @property (nonatomic) double headerHeight; // @synthesize headerHeight=_headerHeight;
-@property (copy, nonatomic) NSString *headerText; // @synthesize headerText=_headerText;
-@property (strong, nonatomic) UIView<RemoteUITableHeader> *headerView; // @synthesize headerView=_headerView;
+@property (strong, nonatomic) UIView<RUIHeader> *headerView; // @synthesize headerView=_headerView;
 @property (readonly, nonatomic) NSArray *rows;
 @property (strong, nonatomic) RUITableViewRow *showAllRow; // @synthesize showAllRow=_showAllRow;
-@property (copy, nonatomic) NSDictionary *subHeaderAttributes; // @synthesize subHeaderAttributes=_subHeaderAttributes;
-@property (copy, nonatomic) NSString *subHeaderText; // @synthesize subHeaderText=_subHeaderText;
+@property (strong, nonatomic) RUISubHeaderElement *subHeader; // @synthesize subHeader=_subHeader;
 
 - (void).cxx_destruct;
 - (Class)_customFooterClass;

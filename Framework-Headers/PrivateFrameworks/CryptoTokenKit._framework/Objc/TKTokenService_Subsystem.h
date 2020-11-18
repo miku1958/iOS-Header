@@ -8,18 +8,19 @@
 
 #import <CryptoTokenKit/PKModularService-Protocol.h>
 
-@class NSString, TKTokenDriver;
+@class NSDictionary, NSString, TKTokenDriver;
 
 @interface TKTokenService_Subsystem : NSObject <PKModularService>
 {
+    _Atomic int _usingCounter;
     TKTokenDriver *_driver;
-    NSString *_driverClassID;
+    NSDictionary *_extensionAttributes;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) TKTokenDriver *driver; // @synthesize driver=_driver;
-@property (readonly, nonatomic) NSString *driverClassID; // @synthesize driverClassID=_driverClassID;
+@property (readonly) TKTokenDriver *driver; // @synthesize driver=_driver;
+@property (readonly, copy) NSDictionary *extensionAttributes; // @synthesize extensionAttributes=_extensionAttributes;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

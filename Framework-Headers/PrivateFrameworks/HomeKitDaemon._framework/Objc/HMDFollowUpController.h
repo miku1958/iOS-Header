@@ -6,22 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue;
-
 @interface HMDFollowUpController : NSObject
 {
-    NSObject<OS_dispatch_queue> *_workQueue;
 }
 
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-
-- (void).cxx_destruct;
-- (void)_clearFollowUpItems;
-- (void)_postFollowUpItemWithUniqueIdentifier:(id)arg1 title:(id)arg2 informativeText:(id)arg3 actionURL:(id)arg4 actionLabelText:(id)arg5 showNotification:(BOOL)arg6;
 - (void)clearFollowUpItems;
 - (id)init;
-- (void)postFollowUpItemForIncomingInvitations:(id)arg1;
-- (void)postFollowUpItemWithUniqueIdentifier:(id)arg1 title:(id)arg2 informativeText:(id)arg3 actionURL:(id)arg4 actionLabelText:(id)arg5 showNotification:(BOOL)arg6;
 
 @end
 

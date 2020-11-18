@@ -11,8 +11,8 @@
 @interface ICCameraFolder : ICCameraItem
 {
     void *_folderProperties;
-    int _filesLock;
-    int _foldersLock;
+    struct os_unfair_lock_s _filesLock;
+    struct os_unfair_lock_s _foldersLock;
 }
 
 @property (readonly) NSArray *contents;

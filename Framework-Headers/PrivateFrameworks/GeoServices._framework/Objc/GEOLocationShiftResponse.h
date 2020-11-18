@@ -10,10 +10,10 @@
 
 @interface GEOLocationShiftResponse : PBCodable <NSCopying>
 {
-    CDStruct_bddcf505 _shiftedPixel;
+    struct GEOPixelPoint _shiftedPixel;
 }
 
-@property (nonatomic) CDStruct_bddcf505 shiftedPixel; // @synthesize shiftedPixel=_shiftedPixel;
+@property (nonatomic) struct GEOPixelPoint shiftedPixel; // @synthesize shiftedPixel=_shiftedPixel;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

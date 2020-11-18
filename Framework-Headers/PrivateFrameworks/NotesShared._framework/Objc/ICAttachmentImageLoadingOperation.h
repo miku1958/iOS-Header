@@ -6,26 +6,26 @@
 
 #import <Foundation/NSOperation.h>
 
-@class NSCache, NSManagedObjectID, NSMutableArray, NSString, NSURL;
+@class NSCache, NSManagedObjectID, NSMutableArray, NSURL;
 
 @interface ICAttachmentImageLoadingOperation : NSOperation
 {
+    short _attachmentType;
     NSURL *_mediaURL;
     NSCache *_cache;
     NSManagedObjectID *_mediaObjectID;
-    NSString *_typeUTI;
     NSMutableArray *_completionHandlers;
 }
 
+@property (nonatomic) short attachmentType; // @synthesize attachmentType=_attachmentType;
 @property (strong, nonatomic) NSCache *cache; // @synthesize cache=_cache;
 @property (strong, nonatomic) NSMutableArray *completionHandlers; // @synthesize completionHandlers=_completionHandlers;
 @property (strong, nonatomic) NSManagedObjectID *mediaObjectID; // @synthesize mediaObjectID=_mediaObjectID;
 @property (strong, nonatomic) NSURL *mediaURL; // @synthesize mediaURL=_mediaURL;
-@property (strong, nonatomic) NSString *typeUTI; // @synthesize typeUTI=_typeUTI;
 
 - (void).cxx_destruct;
 - (CDUnknownBlockType)addCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithCache:(id)arg1 media:(id)arg2 typeUTI:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)initWithCache:(id)arg1 media:(id)arg2 attachmentType:(short)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)main;
 - (void)removeCompletionHandler:(CDUnknownBlockType)arg1 cancelIfNoneLeft:(BOOL)arg2;
 

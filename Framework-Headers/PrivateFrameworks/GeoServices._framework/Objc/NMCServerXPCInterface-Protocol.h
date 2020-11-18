@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GeoServices/GEOGizmoXPCInterface-Protocol.h>
+#import <GeoServices/GEONavXPCInterface-Protocol.h>
 
 @class NSData;
 
-@protocol NMCServerXPCInterface <GEOGizmoXPCInterface>
+@protocol NMCServerXPCInterface <GEONavXPCInterface>
 - (void)invalidateNavigationSessionWithRouteContext:(NSData *)arg1;
 - (void)pingForNavigationBarrier:(void (^)(void))arg1;
 @end

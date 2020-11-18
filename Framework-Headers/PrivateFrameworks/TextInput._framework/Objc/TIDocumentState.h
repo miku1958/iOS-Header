@@ -25,10 +25,10 @@
 @property (readonly, nonatomic) struct _NSRange selectedRangeInMarkedText; // @synthesize selectedRangeInMarkedText=_selectedRangeInMarkedText;
 @property (readonly, nonatomic) NSString *selectedText; // @synthesize selectedText=_selectedText;
 
++ (id)documentStateForTestingWithContextBefore:(id)arg1 selectedText:(id)arg2 contextAfter:(id)arg3;
++ (id)documentStateForTestingWithText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 + (id)documentStateWithContextBefore:(id)arg1 markedText:(id)arg2 selectedRange:(struct _NSRange)arg3 contextAfter:(id)arg4;
 + (id)documentStateWithContextBefore:(id)arg1 selectedText:(id)arg2 contextAfter:(id)arg3;
-+ (id)documentStateWithContextBefore:(id)arg1 selectedText:(id)arg2 contextAfter:(id)arg3;
-+ (id)documentStateWithText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (BOOL)deletingBackwardsWillRemoveText;

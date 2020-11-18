@@ -33,6 +33,7 @@
 - (id)_interestDataFromInterestDictionary:(id)arg1;
 - (id)_interestDictionaryFromInterestData:(id)arg1;
 - (void)_onSerialQueue_faultInProperties;
+- (id)fileURLForEffect:(id)arg1;
 - (id)fileURLForSize:(struct CGSize)arg1;
 - (unsigned long long)hash;
 - (id)initWithToken:(id)arg1 artworkType:(long long)arg2 musicLibrary:(id)arg3;

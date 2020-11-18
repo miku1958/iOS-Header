@@ -6,30 +6,37 @@
 
 #import <Foundation/NSObject.h>
 
-@class _IDSSession;
+@class NSString, _IDSSession;
 
 @interface IDSSession : NSObject
 {
     _IDSSession *_internal;
 }
 
+@property (readonly, nonatomic) NSString *destination;
 @property (nonatomic) long long invitationTimeOut;
 @property (nonatomic) BOOL isAudioEnabled;
 @property (nonatomic) BOOL isMuted;
 @property (readonly, nonatomic) unsigned int sessionEndedReason;
+@property (readonly, nonatomic) NSString *sessionID;
 @property (readonly, nonatomic) int socket;
 
+- (unsigned long long)MTUForAddressFamily:(unsigned long long)arg1;
 - (id)_initWithAccount:(id)arg1 destinations:(id)arg2 transportType:(long long)arg3 uniqueID:(id)arg4;
 - (id)_internal;
+- (id)_streamPreferences;
 - (void)acceptInvitation;
 - (void)acceptInvitationWithData:(id)arg1;
 - (void)cancelInvitation;
 - (void)cancelInvitationWithData:(id)arg1;
+- (void)cancelInvitationWithRemoteEndedReasonOverride:(unsigned int)arg1;
 - (void)dealloc;
 - (void)declineInvitation;
 - (void)declineInvitationWithData:(id)arg1;
+- (id)description;
 - (void)endSession;
 - (void)endSessionWithData:(id)arg1;
+- (id)initWithAccount:(id)arg1 destinations:(id)arg2 options:(id)arg3;
 - (id)initWithAccount:(id)arg1 destinations:(id)arg2 transportType:(long long)arg3;
 - (BOOL)sendData:(id)arg1 error:(id *)arg2;
 - (void)sendInvitation;
@@ -38,6 +45,9 @@
 - (void)sendInvitationWithOptions:(id)arg1;
 - (void)sendSessionMessage:(id)arg1;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
+- (void)setPreferences:(id)arg1;
+- (void)setStreamPreferences:(id)arg1;
+- (BOOL)shouldUseSocketForTransport;
 - (unsigned int)state;
 
 @end

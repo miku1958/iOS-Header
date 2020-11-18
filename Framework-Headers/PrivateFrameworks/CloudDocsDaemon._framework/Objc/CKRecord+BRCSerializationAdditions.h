@@ -7,15 +7,16 @@
 #import <CloudKit/CKRecord.h>
 
 @interface CKRecord (BRCSerializationAdditions)
-- (BOOL)_deserializeFilename:(id *)arg1 userInfo:(id)arg2 error:(id *)arg3;
 - (BOOL)_deserializeValue:(id *)arg1 forKey:(id)arg2 expectClass:(Class)arg3 allowNil:(BOOL)arg4 errorDescription:(id *)arg5;
-- (BOOL)deserializeAliasInfo:(id *)arg1 error:(id *)arg2;
-- (BOOL)deserializeSharingOptions:(unsigned long long *)arg1 error:(id *)arg2;
-- (BOOL)deserializeStatInfo:(id *)arg1 itemID:(id)arg2 error:(id *)arg3;
-- (BOOL)deserializeVersion:(id *)arg1 fakeStatInfo:(id *)arg2 error:(id *)arg3;
+- (BOOL)deserializeAliasInfo:(id *)arg1 serverZone:(id)arg2 error:(id *)arg3;
+- (BOOL)deserializeFilename:(id *)arg1 basename:(id *)arg2 bounceno:(id *)arg3 extension:(id *)arg4 userInfo:(id)arg5 error:(id *)arg6;
+- (BOOL)deserializeStatInfo:(id *)arg1 itemID:(id)arg2 session:(id)arg3 error:(id *)arg4;
+- (BOOL)deserializeSymlinkTarget:(id *)arg1 error:(id *)arg2;
+- (BOOL)deserializeVersion:(id *)arg1 fakeStatInfo:(id *)arg2 clientZone:(id)arg3 error:(id *)arg4;
+- (BOOL)deserializeiWorkSharingOptions:(unsigned long long *)arg1 error:(id *)arg2;
 - (void)serializeFilename:(id)arg1 forCreation:(BOOL)arg2;
 - (void)serializeFilename:(id)arg1 forCreation:(BOOL)arg2 setExtension:(BOOL)arg3;
-- (void)serializeStatInfo:(id)arg1 diffs:(unsigned long long)arg2 stageID:(id)arg3 deadInServerTruth:(BOOL)arg4;
+- (void)serializeStatInfo:(id)arg1 diffs:(unsigned long long)arg2 stageID:(id)arg3 deadInServerTruth:(BOOL)arg4 pcsChaining:(BOOL)arg5;
 - (void)serializeSystemFields:(id)arg1;
 - (void)serializeVersion:(id)arg1 diffs:(unsigned long long)arg2 deadInServerTruth:(BOOL)arg3;
 @end

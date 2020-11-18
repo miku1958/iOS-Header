@@ -14,6 +14,7 @@
     BOOL isAudioPausedToStart;
     BOOL isVideoEnabled;
     BOOL isVideoPausedToStart;
+    BOOL isVideoSourceScreen;
     BOOL isDuplexAudioOnly;
     BOOL isDuplexVideoOnly;
     BOOL isKeyExchangeEnabled;
@@ -41,6 +42,7 @@
 @property BOOL isRelayForced; // @synthesize isRelayForced;
 @property BOOL isVideoEnabled; // @synthesize isVideoEnabled;
 @property BOOL isVideoPausedToStart; // @synthesize isVideoPausedToStart;
+@property BOOL isVideoSourceScreen; // @synthesize isVideoSourceScreen;
 @property unsigned int preferredAudioCodec; // @synthesize preferredAudioCodec;
 @property unsigned int preferredVideoCodec; // @synthesize preferredVideoCodec;
 @property BOOL requiresWifi; // @synthesize requiresWifi;
@@ -48,6 +50,7 @@
 + (id)AudioOnlyVCCapabilities;
 + (id)DataOnlyVCCapabilities;
 + (id)VideoOnlyVCCapabilities;
++ (id)screenSharingVCCapabilities;
 - (void)decodeFromNSDictionary:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

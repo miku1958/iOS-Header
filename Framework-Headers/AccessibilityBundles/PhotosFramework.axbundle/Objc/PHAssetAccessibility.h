@@ -13,17 +13,26 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityAssetDuration;
+- (id)_accessibilityCreationDate;
+- (id)_accessibilityOrientation;
 - (id)_accessibilityPhotoDescription;
 - (BOOL)_accessibilitySavePhotoLabel:(id)arg1;
 - (id)_accessibilityiCloudPhotoLabel;
+- (id)_axFaceObservations;
 - (BOOL)_axICloudLabelWasSet;
+- (id)_axPhotoDescriptionFromResults:(id)arg1;
+- (void)_axSetFaceObservations:(id)arg1;
 - (void)_axSetICloudLabelWasSet:(BOOL)arg1;
+- (id)_axVKImageAnalyzerOptions;
 - (id)_axValueCallback;
 - (void)_setAXValueCallback:(id)arg1;
 - (void)accessibilityApplyValueBlock:(CDUnknownBlockType)arg1;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
+- (id)expressionForFace:(id)arg1;
+- (id)localizedStringFormatterForExpression:(id)arg1;
 
 @end
 

@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class BBObserverClientProxy, NSMutableArray, NSMutableSet, NSString, PCPersistentTimer;
+@class BBMaskedSet, BBObserverClientProxy, NSMutableArray, NSString, PCPersistentTimer;
 @protocol OS_dispatch_queue;
 
 @interface BBObserverGatewayHolder : NSObject
 {
-    NSMutableSet *_observersByFeed[9];
     NSObject<OS_dispatch_queue> *_queue;
     PCPersistentTimer *_timeoutTimer;
     NSMutableArray *_timeouts;
@@ -19,13 +18,16 @@
     unsigned long long _gatewayPriority;
     unsigned long long _feed;
     NSString *_name;
+    BBMaskedSet *_observerFeedSet;
 }
 
 @property (nonatomic) unsigned long long feed; // @synthesize feed=_feed;
 @property (strong, nonatomic) BBObserverClientProxy *gateway; // @synthesize gateway=_gateway;
 @property (nonatomic) unsigned long long gatewayPriority; // @synthesize gatewayPriority=_gatewayPriority;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) BBMaskedSet *observerFeedSet; // @synthesize observerFeedSet=_observerFeedSet;
 
+- (void).cxx_destruct;
 - (id)_addTimeout:(double)arg1 forBulletinID:(id)arg2 inSectionID:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_handleTimeout;
 - (BOOL)_invalidateTimeout:(id)arg1;

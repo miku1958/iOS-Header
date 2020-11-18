@@ -43,6 +43,7 @@
 @property (strong, nonatomic) MIPSeries *series; // @synthesize series=_series;
 
 - (void).cxx_destruct;
+- (int)StringAsOperationType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -50,6 +51,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)operationTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

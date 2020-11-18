@@ -20,45 +20,30 @@
     BOOL _badgeInfoChanged;
     BOOL _wantsIrisBadgeVisibleChanged;
     BOOL _isFavoriteChanged;
-    BOOL _commentsOffsetChanged;
-    BOOL _commentsVisibilityChanged;
+    BOOL _accessoryViewVisibilityChanged;
+    BOOL _contentOffsetChanged;
     BOOL _isInEditModeChanged;
     PUBrowsingVideoPlayerChange *_videoPlayerChange;
     PUBrowsingIrisPlayerChange *_irisPlayerChange;
 }
 
-@property (nonatomic) BOOL assetChanged; // @synthesize assetChanged=_assetChanged;
-@property (nonatomic) BOOL badgeInfoChanged; // @synthesize badgeInfoChanged=_badgeInfoChanged;
-@property (nonatomic) BOOL commentsOffsetChanged; // @synthesize commentsOffsetChanged=_commentsOffsetChanged;
-@property (nonatomic) BOOL commentsVisibilityChanged; // @synthesize commentsVisibilityChanged=_commentsVisibilityChanged;
-@property (nonatomic) BOOL focusValueChanged; // @synthesize focusValueChanged=_focusValueChanged;
-@property (nonatomic) BOOL forceBadgesVisibleChanged; // @synthesize forceBadgesVisibleChanged=_forceBadgesVisibleChanged;
-@property (strong, nonatomic) PUBrowsingIrisPlayerChange *irisPlayerChange; // @synthesize irisPlayerChange=_irisPlayerChange;
-@property (nonatomic) BOOL isFavoriteChanged; // @synthesize isFavoriteChanged=_isFavoriteChanged;
-@property (nonatomic) BOOL isInEditModeChanged; // @synthesize isInEditModeChanged=_isInEditModeChanged;
-@property (nonatomic) BOOL isInFocusChanged; // @synthesize isInFocusChanged=_isInFocusChanged;
-@property (nonatomic) BOOL isUserTransformingTileDidChange; // @synthesize isUserTransformingTileDidChange=_isUserTransformingTileDidChange;
-@property (nonatomic) BOOL loadingStatusChanged; // @synthesize loadingStatusChanged=_loadingStatusChanged;
-@property (nonatomic) BOOL modelTileTransformChanged; // @synthesize modelTileTransformChanged=_modelTileTransformChanged;
-@property (strong, nonatomic) PUBrowsingVideoPlayerChange *videoPlayerChange; // @synthesize videoPlayerChange=_videoPlayerChange;
-@property (nonatomic) BOOL wantsIrisBadgeVisibleChanged; // @synthesize wantsIrisBadgeVisibleChanged=_wantsIrisBadgeVisibleChanged;
+@property (nonatomic, setter=_setAccessoryViewVisibilityChanged:) BOOL accessoryViewVisibilityChanged; // @synthesize accessoryViewVisibilityChanged=_accessoryViewVisibilityChanged;
+@property (nonatomic, setter=_setAssetChanged:) BOOL assetChanged; // @synthesize assetChanged=_assetChanged;
+@property (nonatomic, setter=_setBadgeInfoChanged:) BOOL badgeInfoChanged; // @synthesize badgeInfoChanged=_badgeInfoChanged;
+@property (nonatomic, setter=_setContentOffsetChanged:) BOOL contentOffsetChanged; // @synthesize contentOffsetChanged=_contentOffsetChanged;
+@property (nonatomic, setter=_setFocusValueChanged:) BOOL focusValueChanged; // @synthesize focusValueChanged=_focusValueChanged;
+@property (nonatomic, setter=_setForceBadgesVisibleChanged:) BOOL forceBadgesVisibleChanged; // @synthesize forceBadgesVisibleChanged=_forceBadgesVisibleChanged;
+@property (strong, nonatomic, setter=_setIrisPlayerChange:) PUBrowsingIrisPlayerChange *irisPlayerChange; // @synthesize irisPlayerChange=_irisPlayerChange;
+@property (nonatomic, setter=_setIsFavoriteChanged:) BOOL isFavoriteChanged; // @synthesize isFavoriteChanged=_isFavoriteChanged;
+@property (nonatomic, setter=_setIsInEditModeChanged:) BOOL isInEditModeChanged; // @synthesize isInEditModeChanged=_isInEditModeChanged;
+@property (nonatomic, setter=_setInFocusChanged:) BOOL isInFocusChanged; // @synthesize isInFocusChanged=_isInFocusChanged;
+@property (nonatomic, setter=_setUserTransformingTileDidChange:) BOOL isUserTransformingTileDidChange; // @synthesize isUserTransformingTileDidChange=_isUserTransformingTileDidChange;
+@property (nonatomic, setter=_setLoadingStatusChanged:) BOOL loadingStatusChanged; // @synthesize loadingStatusChanged=_loadingStatusChanged;
+@property (nonatomic, setter=_setModelTileTransformChanged:) BOOL modelTileTransformChanged; // @synthesize modelTileTransformChanged=_modelTileTransformChanged;
+@property (strong, nonatomic, setter=_setVideoPlayerChange:) PUBrowsingVideoPlayerChange *videoPlayerChange; // @synthesize videoPlayerChange=_videoPlayerChange;
+@property (nonatomic, setter=_setWantsIrisBadgeVisibleChanged:) BOOL wantsIrisBadgeVisibleChanged; // @synthesize wantsIrisBadgeVisibleChanged=_wantsIrisBadgeVisibleChanged;
 
 - (void).cxx_destruct;
-- (void)_setAssetChanged:(BOOL)arg1;
-- (void)_setBadgeInfoChanged:(BOOL)arg1;
-- (void)_setCommentsOffsetChanged:(BOOL)arg1;
-- (void)_setCommentsVisibilityChanged:(BOOL)arg1;
-- (void)_setFocusValueChanged:(BOOL)arg1;
-- (void)_setForceBadgesVisibleChanged:(BOOL)arg1;
-- (void)_setInFocusChanged:(BOOL)arg1;
-- (void)_setIrisPlayerChange:(id)arg1;
-- (void)_setIsFavoriteChanged:(BOOL)arg1;
-- (void)_setIsInEditModeChanged:(BOOL)arg1;
-- (void)_setLoadingStatusChanged:(BOOL)arg1;
-- (void)_setModelTileTransformChanged:(BOOL)arg1;
-- (void)_setUserTransformingTileDidChange:(BOOL)arg1;
-- (void)_setVideoPlayerChange:(id)arg1;
-- (void)_setWantsIrisBadgeVisibleChanged:(BOOL)arg1;
 - (BOOL)hasChanges;
 
 @end

@@ -21,6 +21,7 @@
 - (void)getCurrentBucketStats:(CDStruct_23c51cd0 *)arg1;
 - (BOOL)hasData;
 - (id)initWithBucketBoundaries:(id)arg1;
+- (id)sourceIDsForCurrentBucket;
 - (id)statsBySource;
 
 @end

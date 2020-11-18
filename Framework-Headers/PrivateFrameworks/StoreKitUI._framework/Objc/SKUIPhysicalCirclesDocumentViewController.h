@@ -51,6 +51,7 @@
 - (void)onboardingCircles:(id)arg1 didSelectAffiliationItem:(id)arg2 atIndex:(long long)arg3;
 - (void)physicalCirclesDOMFeature:(id)arg1 didRequestAnimation:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillDisappear:(BOOL)arg1;
 

@@ -4,43 +4,51 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <MarkupUI/MUContentViewController.h>
 
+#import <MarkupUI/MUContentViewControllerAKControllerSubdelegate-Protocol.h>
 #import <MarkupUI/MUContentViewControllerProtocol-Protocol.h>
 #import <MarkupUI/UIScrollViewDelegate-Protocol.h>
 
-@class AKController, NSArray, NSString, NSURL, UIImageView, UIScrollView, UIView;
+@class NSArray, NSString, UIImageView, UIScrollView, UITapGestureRecognizer, UIView;
 
-@interface MUImageContentViewController : UIViewController <UIScrollViewDelegate, MUContentViewControllerProtocol>
+@interface MUImageContentViewController : MUContentViewController <UIScrollViewDelegate, MUContentViewControllerProtocol, MUContentViewControllerAKControllerSubdelegate>
 {
     struct CGPoint _pointToCenterAfterRotation;
     double _scaleToRestoreAfterRotation;
+    BOOL _centersIgnoringContentInsets;
     BOOL _inDoubleTapZoom;
-    AKController *_annotationController;
+    BOOL _didSetup;
+    double _maxImageDimension;
     UIScrollView *_scrollView;
     UIView *_combinedContentView;
     UIImageView *_imageView;
-    double _initialContentScaleInModel;
     double _downsampledImageScale;
-    NSURL *_fileURL;
     CDUnknownBlockType _loadCompletionBlock;
+    UITapGestureRecognizer *_localDoubleTapRecognizer;
+    struct CGSize _sourceImagePixelSize;
     struct UIEdgeInsets _edgeInsets;
 }
 
-@property (weak) AKController *annotationController; // @synthesize annotationController=_annotationController;
+@property (nonatomic) BOOL centersIgnoringContentInsets; // @synthesize centersIgnoringContentInsets=_centersIgnoringContentInsets;
 @property (strong, nonatomic) UIView *combinedContentView; // @synthesize combinedContentView=_combinedContentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property BOOL didSetup; // @synthesize didSetup=_didSetup;
 @property double downsampledImageScale; // @synthesize downsampledImageScale=_downsampledImageScale;
 @property (nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
-@property (strong, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) BOOL inDoubleTapZoom; // @synthesize inDoubleTapZoom=_inDoubleTapZoom;
-@property double initialContentScaleInModel; // @synthesize initialContentScaleInModel=_initialContentScaleInModel;
 @property (copy) CDUnknownBlockType loadCompletionBlock; // @synthesize loadCompletionBlock=_loadCompletionBlock;
+@property (strong) UITapGestureRecognizer *localDoubleTapRecognizer; // @synthesize localDoubleTapRecognizer=_localDoubleTapRecognizer;
+@property double maxImageDimension; // @synthesize maxImageDimension=_maxImageDimension;
+@property (nonatomic) BOOL navigationModeHorizontal;
+@property (readonly) unsigned long long pageCount;
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
-@property (strong) NSArray *sourceContentReplacedAnnotationIndexes;
+@property (nonatomic) BOOL showsThumbnailView;
+@property (strong) NSArray *sourceContentReplacedAnnotationMaps;
+@property struct CGSize sourceImagePixelSize; // @synthesize sourceImagePixelSize=_sourceImagePixelSize;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -53,37 +61,42 @@
 - (struct CGPoint)_minimumContentOffset;
 - (void)_prepareToRotate;
 - (void)_recoverFromRotation;
+- (void)_setupScrollViewForImageOfScaledSize:(struct CGSize)arg1;
+- (void)_uninstallOverlayOfController:(id)arg1 forPageAtIndex:(unsigned long long)arg2;
 - (void)_updateMinMaxZoomFactor;
 - (struct CGRect)_zoomRectForScale:(double)arg1 withCenter:(struct CGPoint)arg2;
 - (double)_zoomToFitZoomFactor;
 - (double)_zoomToFitZoomFactorInBounds:(struct CGRect)arg1;
 - (double)_zoomToFitZoomFactorIncludingScrollViewEdgeInsets;
+- (struct CGSize)contentSize;
 - (id)contentSnapshot;
-- (void)controllerDidEnterToolMode:(id)arg1;
-- (void)controllerDidExitToolMode:(id)arg1;
-- (BOOL)controllerShouldDetectFormElements:(id)arg1;
-- (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromModelToOverlayWithPageIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
-- (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromOverlayToModelWithPageIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
+- (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromModelToOverlayWithPageIndex:(unsigned long long)arg2;
+- (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromOverlayToModelWithPageIndex:(unsigned long long)arg2;
 - (void)dealloc;
+- (void)didEnterToolMode;
+- (void)didExitToolMode;
 - (void)didReceiveMemoryWarning;
-- (id)init;
-- (id)layerContainingQuickBackgroundForLoupeOnOverlayAtPageIndex:(unsigned long long)arg1 forAnnotationController:(id)arg2;
-- (void)loadView;
-- (struct CGRect)maxPageRectWithPageIndex:(unsigned long long)arg1 forAnnotationController:(id)arg2;
-- (double)modelBaseScaleFactorOfPageAtIndex:(unsigned long long)arg1 forAnnotationController:(id)arg2;
-- (id)newContentSnapshotPDFDataIncludingAdornments:(BOOL)arg1 atScale:(double)arg2 inRect:(struct CGRect)arg3 onOverlayAtPageIndex:(unsigned long long)arg4 forAnnotationController:(id)arg5;
+- (struct CGSize)idealContentSizeForScreenSize:(struct CGSize)arg1 windowDecorationSize:(struct CGSize)arg2;
+- (id)initWithAnnotationController:(id)arg1;
+- (id)layerContainingQuickBackgroundForLoupeOnOverlayAtPageIndex:(unsigned long long)arg1;
+- (struct CGRect)maxPageRectWithPageIndex:(unsigned long long)arg1;
+- (id)newContentSnapshotPDFDataIncludingAdornments:(BOOL)arg1 atScale:(double)arg2 inRect:(struct CGRect)arg3 onOverlayAtPageIndex:(unsigned long long)arg4;
 - (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
 - (void)setImage:(id)arg1;
 - (void)setImage:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)setupForController:(id)arg1;
-- (BOOL)shouldPlaceFormElementAtPoint:(struct CGPoint)arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
-- (BOOL)shouldPlaceProposedFormElementAtRect:(struct CGRect)arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
+- (void)setup;
+- (BOOL)shouldDetectFormElements;
+- (BOOL)shouldPlaceFormElementAtPoint:(struct CGPoint)arg1 onOverlayAtPageIndex:(unsigned long long)arg2;
+- (BOOL)shouldPlaceProposedFormElementAtRect:(struct CGRect)arg1 onOverlayAtPageIndex:(unsigned long long)arg2;
+- (void)teardown;
+- (void)uninstallAllAnnotationControllerOverlays;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (id)viewForZoomingInScrollView:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (struct CGRect)visibleContentRect;
+- (struct CGRect)visibleContentRectInCoordinateSpace:(id)arg1;
 
 @end
 

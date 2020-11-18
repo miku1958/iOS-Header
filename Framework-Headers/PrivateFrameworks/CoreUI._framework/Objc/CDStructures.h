@@ -231,6 +231,11 @@ struct PSDGradientColorStop;
 
 struct PSDGradientOpacityStop;
 
+struct _NSRange {
+    unsigned long long location;
+    unsigned long long length;
+};
+
 struct _PSDImageInfo {
     unsigned int _field1;
     unsigned int _field2;
@@ -358,6 +363,10 @@ struct crmFlags {
     unsigned int reserved:14;
 };
 
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
 struct vImage_Buffer {
     void *_field1;
     unsigned long long _field2;
@@ -429,6 +438,35 @@ typedef struct {
 } CDStruct_c0454aff;
 
 typedef struct {
+    unsigned int _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+    float _field5;
+    BOOL _field6;
+} CDStruct_073a3662;
+
+typedef struct {
+    unsigned int _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+    float _field5;
+    float _field6;
+    float _field7;
+    float _field8;
+} CDStruct_bdea167c;
+
+typedef struct {
+    unsigned int _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+    float _field5;
+    float _field6;
+} CDStruct_3d979a67;
+
+typedef struct {
     double top;
     double left;
     double bottom;
@@ -436,20 +474,56 @@ typedef struct {
 } CDStruct_3c058996;
 
 typedef struct {
-    float beginRed;
-    float beginGreen;
-    float beginBlue;
-    float endRed;
-    float endGreen;
-    float endBlue;
-    float gradientOpacity;
-} CDStruct_429f1ac1;
+    float _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+    float _field5;
+    BOOL _field6;
+} CDStruct_2844c7c7;
+
+typedef struct {
+    float _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+    float _field5;
+    float _field6;
+    float _field7;
+    float _field8;
+    float _field9;
+    float _field10;
+    float _field11;
+    float _field12;
+    unsigned int _field13;
+} CDStruct_c78fd0c4;
+
+typedef struct {
+    float _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+    float _field5;
+    float _field6;
+} CDStruct_265c7ca9;
 
 typedef struct {
     long long _field1;
     char *_field2;
     char *_field3;
 } CDStruct_c77fb927;
+
+typedef struct {
+    unsigned int _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+    float _field5;
+    float _field6;
+    float _field7;
+    float _field8;
+    struct CGPoint _field9;
+} CDStruct_a5d4af33;
 
 typedef struct {
     char *_field1;
@@ -466,16 +540,16 @@ typedef struct {
 } CDStruct_26b2aa83;
 
 typedef struct {
-    float engraveRed;
-    float engraveGreen;
-    float engraveBlue;
-    float engraveOpacity;
-    float engraveBlurSize;
-    float engraveSpread;
-    float engraveOffsetAmount;
-    float engraveOffsetAngle;
-    struct CGPoint engraveOffset;
-} CDStruct_1b570c92;
+    float _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+    float _field5;
+    float _field6;
+    float _field7;
+    float _field8;
+    struct CGPoint _field9;
+} CDStruct_ca46f23f;
 
 typedef struct {
     struct CGSize _field1;
@@ -502,8 +576,8 @@ typedef struct {
     unsigned long long _field2;
     unsigned long long _field3;
     unsigned long long _field4;
-    CDStruct_c57d91d4 _field5[35];
-} CDStruct_52ca6128;
+    CDStruct_c57d91d4 _field5[125];
+} CDStruct_32d4b02d;
 
 #pragma mark Typedef'd Unions
 

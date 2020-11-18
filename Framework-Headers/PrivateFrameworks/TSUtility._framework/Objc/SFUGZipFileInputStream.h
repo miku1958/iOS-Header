@@ -13,7 +13,7 @@
 @interface SFUGZipFileInputStream : NSObject <SFUInputStream>
 {
     int _fd;
-    void *_file;
+    struct gzFile_s *_file;
     BOOL _isCachingDisabled;
     long long _offset;
 }

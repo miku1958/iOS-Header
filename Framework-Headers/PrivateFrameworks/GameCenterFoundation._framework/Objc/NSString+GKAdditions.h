@@ -13,6 +13,7 @@
 + (id)stringForPercentileWithRank:(float)arg1 totalScores:(float)arg2 asPercentile:(BOOL)arg3 isTop:(BOOL *)arg4;
 + (id)stringForRankAndPercentileWithRank:(float)arg1 totalScores:(float)arg2;
 + (id)stringForScoreAndPercentileWithRank:(float)arg1 totalScores:(float)arg2 formattedScore:(id)arg3;
+- (id)_gkArrayByTokenizingString;
 - (BOOL)_gkIsMixedDirection;
 - (BOOL)_gkIsNaturallyRTL;
 - (id)_gkLocaleSensitiveUppercaseString;

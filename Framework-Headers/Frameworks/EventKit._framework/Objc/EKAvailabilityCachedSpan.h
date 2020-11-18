@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (strong, nonatomic) EKAvailabilitySpan *span; // @synthesize span=_span;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 
 @end

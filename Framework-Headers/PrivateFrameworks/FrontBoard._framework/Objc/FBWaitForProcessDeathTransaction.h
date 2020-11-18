@@ -6,13 +6,12 @@
 
 #import <FrontBoard/FBTransaction.h>
 
-#import <FrontBoard/FBProcessObserver-Protocol.h>
+#import <FrontBoard/FBProcessManagerObserver-Protocol.h>
 
-@class BSWatchdog, FBProcess, FBProcessManager, NSString;
+@class BSWatchdog, FBProcess, NSString;
 
-@interface FBWaitForProcessDeathTransaction : FBTransaction <FBProcessObserver>
+@interface FBWaitForProcessDeathTransaction : FBTransaction <FBProcessManagerObserver>
 {
-    FBProcessManager *_manager;
     FBProcess *_process;
     double _timeout;
     BSWatchdog *_watchdog;
@@ -32,7 +31,8 @@
 - (void)dealloc;
 - (id)initWithProcess:(id)arg1;
 - (id)initWithProcess:(id)arg1 timeout:(double)arg2;
-- (void)processDidExit:(id)arg1;
+- (void)processManager:(id)arg1 didAddProcess:(id)arg2;
+- (void)processManager:(id)arg1 didRemoveProcess:(id)arg2;
 
 @end
 

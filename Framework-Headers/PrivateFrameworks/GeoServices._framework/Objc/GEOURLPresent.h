@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSMutableArray *items; // @synthesize items=_items;
 @property (strong, nonatomic) GEOURLOptions *options; // @synthesize options=_options;
 
++ (Class)itemType;
 - (void)addItem:(id)arg1;
 - (void)clearItems;
 - (void)copyTo:(id)arg1;

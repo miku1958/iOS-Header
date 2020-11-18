@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *cardAIDs; // @synthesize cardAIDs=_cardAIDs;
 
++ (Class)cardAIDsType;
 - (void).cxx_destruct;
 - (void)addCardAIDs:(id)arg1;
 - (id)cardAIDsAtIndex:(unsigned long long)arg1;

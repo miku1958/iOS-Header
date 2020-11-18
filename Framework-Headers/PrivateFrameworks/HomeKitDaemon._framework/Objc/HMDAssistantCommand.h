@@ -7,11 +7,12 @@
 #import <SAObjects/SAHACommand.h>
 
 #import <HomeKitDaemon/AFServiceCommand-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAssistantCommandHelper, HMDAssistantGather, HMHAPMetadata, NSArray, NSObject, NSString;
+@class HMDAssistantCommandHelper, HMDAssistantGather, HMHAPMetadata, NSArray, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDAssistantCommand : SAHACommand <AFServiceCommand>
+@interface HMDAssistantCommand : SAHACommand <AFServiceCommand, HMFLogging>
 {
     BOOL _completionHandlerCalled;
     HMDAssistantGather *_gather;
@@ -19,13 +20,17 @@
     NSArray *_homeKitObjects;
     long long _numberOfHomes;
     NSString *_primaryHomeName;
-    NSString *_primaryHomeID;
+    NSUUID *_primaryHomeUUID;
+    NSString *_currentHomeName;
+    NSUUID *_currentHomeUUID;
     HMHAPMetadata *_metadata;
     HMDAssistantCommandHelper *_assistantCommandHelper;
 }
 
 @property (strong, nonatomic) HMDAssistantCommandHelper *assistantCommandHelper; // @synthesize assistantCommandHelper=_assistantCommandHelper;
 @property (nonatomic) BOOL completionHandlerCalled; // @synthesize completionHandlerCalled=_completionHandlerCalled;
+@property (strong, nonatomic) NSString *currentHomeName; // @synthesize currentHomeName=_currentHomeName;
+@property (strong, nonatomic) NSUUID *currentHomeUUID; // @synthesize currentHomeUUID=_currentHomeUUID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) HMDAssistantGather *gather; // @synthesize gather=_gather;
@@ -33,40 +38,60 @@
 @property (strong, nonatomic) NSArray *homeKitObjects; // @synthesize homeKitObjects=_homeKitObjects;
 @property (strong, nonatomic) HMHAPMetadata *metadata; // @synthesize metadata=_metadata;
 @property (nonatomic) long long numberOfHomes; // @synthesize numberOfHomes=_numberOfHomes;
-@property (strong, nonatomic) NSString *primaryHomeID; // @synthesize primaryHomeID=_primaryHomeID;
 @property (strong, nonatomic) NSString *primaryHomeName; // @synthesize primaryHomeName=_primaryHomeName;
+@property (strong, nonatomic) NSUUID *primaryHomeUUID; // @synthesize primaryHomeUUID=_primaryHomeUUID;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
 + (void)initialize;
++ (id)logCategory;
 - (void).cxx_destruct;
+- (id)actionSetFromObject:(id)arg1;
+- (void)addActivationCharacteristicsIfNeeded:(id)arg1 forCharacteristic:(id)arg2;
+- (id)adjustGetValue:(id)arg1 type:(id)arg2 units:(id)arg3 attribute:(id)arg4;
+- (id)adjustSetValue:(id)arg1 type:(id)arg2 units:(id)arg3 attribute:(id)arg4;
 - (id)compareCurrentValue:(id)arg1 newValue:(id)arg2 withMetadata:(id)arg3;
 - (id)compareForBoundary:(id)arg1 withMetadata:(id)arg2;
+- (id)convertValue:(id)arg1 fromUnits:(id)arg2 toUnits:(id)arg3;
+- (id)entityFromActionSet:(id)arg1;
+- (id)entityFromService:(id)arg1 serviceType:(id)arg2;
 - (void)executeActionSet:(id)arg1 action:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (id)filterObjects:(id)arg1 byAttribute:(id)arg2;
+- (id)filterObjects:(id)arg1 byAttribute:(id)arg2 forActionType:(id)arg3;
 - (id)filterObjects:(id)arg1 byCharacteristicType:(id)arg2;
+- (id)filterObjects:(id)arg1 forCharacteristicType:(id)arg2;
 - (id)filterObjects:(id)arg1 forCharacteristics:(id)arg2;
 - (id)filterObjects:(id)arg1 forGroup:(id)arg2;
 - (id)filterObjects:(id)arg1 forRoom:(id)arg2 andZone:(id)arg3;
-- (id)filterObjects:(id)arg1 forcharacteristicType:(id)arg2;
+- (id)getLocaleUnits:(id)arg1;
+- (id)getReportingUnits:(id)arg1 hapCharacteristicType:(id)arg2;
+- (id)getValueOfType:(id)arg1 action:(id)arg2;
+- (id)getoverridingHomeUUIDFromName:(id)arg1;
 - (void)handleCommandWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleGetActionTypes:(id)arg1 serviceType:(id)arg2 forObjects:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handleGetColor:(id)arg1 forObjects:(id)arg2 serviceType:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handleGetMetadataActionTypes:(id)arg1 serviceType:(id)arg2 forObjects:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)handleReadWriteResponses:(id)arg1 error:(id)arg2 forAction:(id)arg3 inServiceType:(id)arg4 results:(id)arg5;
+- (id)handleReadWriteResponses:(id)arg1 error:(id)arg2 forAction:(id)arg3 inServiceType:(id)arg4 results:(id)arg5 forObjects:(id)arg6;
 - (void)handleSetActionTypes:(id)arg1 serviceType:(id)arg2 forObjects:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handleSetColor:(id)arg1 forObjects:(id)arg2 service:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handleUpdateActionTypes:(id)arg1 serviceType:(id)arg2 forObjects:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (BOOL)isAttributeValue:(id)arg1 equalTo:(id)arg2;
 - (id)objectsWithIdentifierList:(id)arg1;
 - (id)objectsWithSearchFilter:(id)arg1 inHome:(id)arg2;
 - (id)parseColorEncoding:(id)arg1;
 - (void)performWithGather:(id)arg1 queue:(id)arg2 msgDispatcher:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)populateColorResult:(id)arg1 serviceType:(id)arg2 service:(id)arg3 action:(id)arg4 responses:(id)arg5 forObjects:(id)arg6;
+- (BOOL)populateResult:(id)arg1 fromResponse:(id)arg2 forAction:(id)arg3 serviceType:(id)arg4 forObjects:(id)arg5;
+- (BOOL)populateResult:(id)arg1 withObject:(id)arg2 serviceType:(id)arg3 action:(id)arg4;
+- (BOOL)populateResult:(id)arg1 withService:(id)arg2 serviceType:(id)arg3 characteristic:(id)arg4 action:(id)arg5;
+- (BOOL)populateResultWithEntity:(id)arg1 action:(id)arg2 entity:(id)arg3;
 - (void)reportOutcome:(id)arg1 results:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)reportResults:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)reportUnlockRequired:(CDUnknownBlockType)arg1;
 - (void)returnResults:(id)arg1 serviceType:(id)arg2 forAction:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)serviceFromObject:(id)arg1;
+- (id)setValue:(id)arg1 format:(id)arg2 units:(id)arg3;
 - (id)updateValue:(id)arg1 forAction:(id)arg2;
-- (id)updateValueToBoundary:(id)arg1 metadata:(id)arg2;
+- (id)updateValueToBoundary:(id)arg1 valueType:(id)arg2 fudgeMinimum:(BOOL)arg3 metadata:(id)arg4;
 
 @end
 

@@ -4,16 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
-
-#import <CloudDocsDaemon/NSSecureCoding-Protocol.h>
-
-@class BRCAccountSession;
+#import <CloudDocsDaemon/BRCPersistedState.h>
 
 __attribute__((visibility("hidden")))
-@interface BRCClientRanksPersistedState : NSObject <NSSecureCoding>
+@interface BRCClientRanksPersistedState : BRCPersistedState
 {
-    BRCAccountSession *_session;
     unsigned long long _nextItemRowID;
     unsigned long long _nextNotifRank;
     unsigned long long _nextPackageItemRank;
@@ -23,9 +18,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long nextNotifRank;
 @property (nonatomic) unsigned long long nextPackageItemRank;
 
-+ (id)loadFromClientStateInSession:(id)arg1;
++ (id)loadFromClientStateInSession:(id)arg1 options:(id)arg2;
 + (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
 - (unsigned long long)allocateItemRowID;
 - (unsigned long long)allocateNotifRank;
 - (unsigned long long)allocatePackageItemRank;

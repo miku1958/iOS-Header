@@ -23,13 +23,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)_addStoreFrontHeaderSuffix:(id)arg1 forBundleIdentifier:(id)arg2;
++ (id)storeFrontHeaderSuffixForBundleIdentifier:(id)arg1;
+- (void).cxx_destruct;
 - (void)_addHeadersToRequestProperties:(id)arg1;
 - (void)_analyzeBagForActiveSystemApps:(id)arg1;
 - (void)_postBagDidLoadNotificationWithURLBag:(id)arg1;
 - (void)_sendPingsForURLBag:(id)arg1;
 - (void)_setOutputURLBag:(id)arg1;
 - (BOOL)_setURLBagWithDictionary:(id)arg1 response:(id)arg2 error:(id *)arg3;
-- (void)dealloc;
 - (id)init;
 - (id)initWithBagContext:(id)arg1;
 - (BOOL)operation:(id)arg1 shouldSetStoreFrontID:(id)arg2;

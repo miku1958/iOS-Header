@@ -7,19 +7,22 @@
 #import <Foundation/NSObject.h>
 
 #import <AVConference/VCMediaStreamProtocol-Protocol.h>
+#import <AVConference/VCMediaStreamSyncDestination-Protocol.h>
 #import <AVConference/VCVideoStreamReceiverDelegate-Protocol.h>
-#import <AVConference/VCVideoStreamTransmitterDelegate-Protocol.h>
 
 @class AVCMediaStreamConfig, NSString, VCVideoStreamReceiver, VCVideoStreamTransmitter;
-@protocol OS_dispatch_queue, VCMediaStreamDelegate;
+@protocol OS_dispatch_queue, OS_dispatch_source, VCMediaStreamDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCVideoStream : NSObject <VCMediaStreamProtocol, VCVideoStreamTransmitterDelegate, VCVideoStreamReceiverDelegate>
+@interface VCVideoStream : NSObject <VCMediaStreamProtocol, VCVideoStreamReceiverDelegate, VCMediaStreamSyncDestination>
 {
     NSObject<OS_dispatch_queue> *_delegateNotificationQueue;
+    NSObject<OS_dispatch_queue> *_lastDecodedFrameQueue;
+    NSObject<OS_dispatch_source> *_rtcpSendHeartBeat;
     int _state;
     BOOL _isSRTPInitialized;
     NSString *_callID;
+    NSString *_idsDestination;
     struct _opaque_pthread_mutex_t _streamLock;
     struct _opaque_pthread_mutex_t _remoteLayerLock;
     struct _opaque_pthread_mutex_t _localLayerLock;
@@ -29,41 +32,57 @@ __attribute__((visibility("hidden")))
     double _rtcpTimeoutEnabledTime;
     double _lastRTPTimeoutReportTime;
     double _lastRTCPTimeoutReportTime;
+    unsigned int _uplinkOperatingBitrate;
+    struct __CVBuffer *_cachedRemoteVideoFrame;
     id<VCMediaStreamDelegate> _delegate;
-    unsigned int _conferenceID;
+    long long _streamToken;
     BOOL _isValid;
     AVCMediaStreamConfig *_streamConfig;
     VCVideoStreamTransmitter *_videoTransmitter;
     VCVideoStreamReceiver *_videoReceiver;
+    unsigned int datagramChannelToken;
+    struct opaqueRTCReporting *_reportingAgent;
 }
 
-@property (readonly) unsigned int conferenceID; // @synthesize conferenceID=_conferenceID;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<VCMediaStreamDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property BOOL isValid; // @synthesize isValid=_isValid;
+@property (nonatomic) int state; // @synthesize state=_state;
 @property (strong, nonatomic) AVCMediaStreamConfig *streamConfig; // @synthesize streamConfig=_streamConfig;
+@property (readonly) long long streamToken; // @synthesize streamToken=_streamToken;
 @property (readonly) Class superclass;
 
++ (id)capabilities;
 + (BOOL)isSameSRTPKey:(id)arg1 newKey:(id)arg2;
++ (id)supportedVideoPayloads;
 - (int)SRTPCipherSuiteForLTECipherSuite:(long long)arg1;
+- (void)cacheRemoteVideoFrame:(struct __CVBuffer *)arg1;
 - (void)checkPacketTimeouts;
+- (void)collectVideoConfigMetrics:(struct __CFDictionary *)arg1;
+- (void)collectVideoStreamStartMetrics:(struct __CFDictionary *)arg1;
 - (BOOL)configureVideoStreamWithConfiguration:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (void)destroyVideoModules;
-- (void)didReceiveLocalVideoFrame:(struct __CVBuffer *)arg1 atTime:(CDStruct_198678f7)arg2;
+- (void)destroyVideoReceiver;
+- (void)destroyVideoTransmitter;
+- (unsigned int)generateStreamToken;
 - (int)getCryptoSet:(struct tagSRTPExchangeInfo *)arg1 withMasterKey:(id)arg2;
 - (int)getSRTPMasterKeyLength:(long long)arg1;
 - (id)init;
+- (void)initVideoTransmitter:(id)arg1;
 - (BOOL)isSameSRTPConfig:(id)arg1;
 - (void)lock;
+- (void)overrideConfigWithDefaults;
 - (void)reportRTCPPackets:(struct tagRTCPPACKET *)arg1 withCount:(int)arg2;
+- (void)reportingVideoStreamEvent:(unsigned short)arg1;
+- (void)requestLastDecodedFrame;
+- (void)resetRtcpSendHeartBeatTimer:(unsigned long long)arg1;
+- (void)sendLastRemoteVideoFrame:(struct __CVBuffer *)arg1;
 - (id)setLocalParticipantInfo:(id)arg1 networkSockets:(id)arg2 withError:(id *)arg3;
-- (unsigned int)setLocalVideoDestination:(void *)arg1;
 - (void)setPause:(BOOL)arg1;
 - (BOOL)setRTPPayloads:(int *)arg1 numPayloads:(int)arg2 withError:(id *)arg3;
-- (unsigned int)setRemoteVideoDestination:(void *)arg1;
 - (void)setRtcpEnabled:(BOOL)arg1;
 - (void)setRtcpSendInterval:(double)arg1;
 - (void)setRtcpTimeOutEnabled:(BOOL)arg1;
@@ -72,16 +91,26 @@ __attribute__((visibility("hidden")))
 - (void)setRtpTimeOutInterval:(double)arg1;
 - (BOOL)setStreamConfig:(id)arg1 withError:(id *)arg2;
 - (void)setStreamDirection:(long long)arg1;
-- (void)setupRTPPayloadsWithDestinationIPPort:(struct tagIPPORT *)arg1;
+- (void)setupRTPPayloads;
+- (id)setupRTPWithIDSDestination:(id)arg1 error:(id *)arg2;
+- (id)setupRTPWithIPInfo:(id)arg1 error:(id *)arg2;
 - (id)setupRTPWithLocalParticipantInfo:(id)arg1 error:(id *)arg2;
 - (id)setupRTPWithSockets:(id)arg1 error:(id *)arg2;
 - (int)setupSRTP:(struct tagHANDLE *)arg1 forVideo:(BOOL)arg2;
 - (void)start;
+- (void)startRtcpSendHeartBeat;
+- (BOOL)startSynchronization:(id)arg1;
 - (void)stop;
+- (void)stopRtcpSendHeartBeat;
+- (void)stopSynchronization;
 - (long long)streamDirection;
-- (id)supportedVideoPayloads;
 - (void)unlock;
-- (BOOL)vcVideoStreamReceiver:(id)arg1 didReceiveRemoteFrame:(struct __CVBuffer *)arg2 atTime:(CDStruct_198678f7)arg3;
+- (void)updateVideoConfig:(id)arg1;
+- (void)updateVideoReceiver:(id)arg1;
+- (BOOL)vcVideoStreamReceiver:(id)arg1 didReceiveRemoteFrame:(struct __CVBuffer *)arg2 atTime:(CDStruct_1b6d18a9)arg3 newVideoAttributes:(id)arg4 isFirstFrame:(BOOL)arg5;
+- (void)vcVideoStreamReceiver:(id)arg1 downlinkQualityDidChange:(id)arg2;
+- (unsigned int)vcVideoStreamReceiver:(id)arg1 receivedTMMBR:(unsigned int)arg2;
+- (void)vcVideoStreamReceiverRequestKeyFrame:(id)arg1;
 
 @end
 

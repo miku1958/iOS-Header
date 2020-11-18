@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@protocol SBPluginBundleController
+#import <SpringBoardUI/BSPluginBundleController-Protocol.h>
+
+@protocol SBPluginBundleController <BSPluginBundleController>
 
 @optional
 + (void)awakeFromBundle;

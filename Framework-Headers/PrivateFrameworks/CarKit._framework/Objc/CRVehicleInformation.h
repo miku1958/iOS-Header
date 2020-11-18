@@ -10,6 +10,7 @@
 
 @interface CRVehicleInformation : NSObject
 {
+    int _mapsAmbientBrightnessNotifyToken;
     AVExternalDevice *_externalDevice;
     unsigned long long _mapsFallbackAmbientBrightness;
 }
@@ -21,6 +22,7 @@
 @property (readonly, nonatomic) unsigned long long vehicleAmbientBrightness;
 
 - (void).cxx_destruct;
+- (void)_fetchMapsFallbackAmbientBrightnessWithToken:(int)arg1;
 - (void)_handleLimitedUIChanged:(id)arg1;
 - (void)_handleNightModeChanged:(id)arg1;
 - (void)_screenDidUpdate:(id)arg1;

@@ -6,12 +6,13 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSLock, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface GEODiskSpaceManager : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
+    NSLock *_lock;
     NSMutableDictionary *_freeableClaims;
 }
 

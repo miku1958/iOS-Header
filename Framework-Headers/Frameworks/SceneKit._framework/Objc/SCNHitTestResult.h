@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class SCNNode;
 
@@ -13,6 +13,7 @@
     struct __C3DHitTestResult *_result;
 }
 
+@property (readonly, nonatomic) SCNNode *boneNode;
 @property (readonly, nonatomic) long long faceIndex;
 @property (readonly, nonatomic) long long geometryIndex;
 @property (readonly, nonatomic) struct SCNVector3 localCoordinates;

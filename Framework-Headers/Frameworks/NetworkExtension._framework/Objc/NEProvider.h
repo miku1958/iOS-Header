@@ -13,11 +13,13 @@
 @interface NEProvider : NSObject <NSExtensionRequestHandling>
 {
     NWPath *_defaultPath;
+    NWPathEvaluator *_defaultPathEvaluator;
     NEExtensionProviderContext *_context;
     NSString *_deviceIdentifier;
-    NWPathEvaluator *_defaultPathEvaluator;
+    NSString *_appName;
 }
 
+@property (strong) NSString *appName; // @synthesize appName=_appName;
 @property (strong) NEExtensionProviderContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong) NWPath *defaultPath; // @synthesize defaultPath=_defaultPath;
@@ -32,9 +34,11 @@
 - (void).cxx_destruct;
 - (void)beginRequestWithExtensionContext:(id)arg1;
 - (id)createTCPConnectionToEndpoint:(id)arg1 enableTFO:(BOOL)arg2 initialData:(id)arg3 enableMultipath:(BOOL)arg4 enableTLS:(BOOL)arg5 TLSParameters:(id)arg6 delegate:(id)arg7;
+- (id)createTCPConnectionToEndpoint:(id)arg1 enableTFO:(BOOL)arg2 initialData:(id)arg3 enableMultipath:(BOOL)arg4 enableTLS:(BOOL)arg5 TLSParameters:(id)arg6 delegate:(id)arg7 URL:(id)arg8;
 - (id)createTCPConnectionToEndpoint:(id)arg1 enableTLS:(BOOL)arg2 TLSParameters:(id)arg3 delegate:(id)arg4;
 - (id)createUDPSessionToEndpoint:(id)arg1 fromEndpoint:(id)arg2;
 - (void)dealloc;
+- (void)displayMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)observerHelperHandler:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)sleepWithCompletionHandler:(CDUnknownBlockType)arg1;

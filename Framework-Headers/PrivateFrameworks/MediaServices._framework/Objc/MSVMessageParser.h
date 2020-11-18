@@ -20,6 +20,7 @@
 @property (nonatomic) long long unhandledObjectDataExpectedLength; // @synthesize unhandledObjectDataExpectedLength=_unhandledObjectDataExpectedLength;
 @property (strong, nonatomic) NSMutableData *unhandledPartialObjectData; // @synthesize unhandledPartialObjectData=_unhandledPartialObjectData;
 
++ (id)createHeader:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_notifyDelegate:(id)arg1;
 - (void)processData:(id)arg1;

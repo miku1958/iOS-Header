@@ -12,14 +12,14 @@ __attribute__((visibility("hidden")))
 @interface VKRasterTile : VKTile
 {
     NSData *_data;
-    shared_ptr_f06afc6c _styleManager;
+    shared_ptr_a3c46825 _styleManager;
     int _genericTileType;
     BOOL _hasGenericTileType;
     shared_ptr_479d1306 _gglTexture;
     struct RenderItem _renderItem;
-    struct unique_ptr<ggl::Texture::Shader::Setup, std::__1::default_delete<ggl::Texture::Shader::Setup>> _shaderSetup;
-    struct unique_ptr<ggl::Clut::Shader::Setup, std::__1::default_delete<ggl::Clut::Shader::Setup>> _shaderSetupCLUT;
-    struct unique_ptr<ggl::TextureWithReverseAlpha::Shader::Setup, std::__1::default_delete<ggl::TextureWithReverseAlpha::Shader::Setup>> _shaderReverseAlphaSetup;
+    struct unique_ptr<ggl::Textured::Pos2DUVPipelineSetup, std::__1::default_delete<ggl::Textured::Pos2DUVPipelineSetup>> _pipelineSetup;
+    struct unique_ptr<ggl::Clut::Pos2DUVPipelineSetup, std::__1::default_delete<ggl::Clut::Pos2DUVPipelineSetup>> _pipelineSetupCLUT;
+    struct unique_ptr<ggl::TextureWithReverseAlpha::Pos2DUVPipelineSetup, std::__1::default_delete<ggl::TextureWithReverseAlpha::Pos2DUVPipelineSetup>> _shaderReverseAlphaSetup;
 }
 
 @property (readonly, nonatomic) int genericTileType; // @synthesize genericTileType=_genericTileType;
@@ -29,16 +29,16 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (struct TextureData2D *)buildTextureDataFromCGImage:(struct CGImage *)arg1;
+- (shared_ptr_8bee8aae)buildTextureDataFromCGImage:(struct CGImage *)arg1;
 - (void)dealloc;
-- (void)gglBuildTexture:(struct Device *)arg1;
-- (void)immediateLoad:(struct Device *)arg1;
-- (id)initWithKey:(const struct VKTileKey *)arg1 imageData:(id)arg2 styleManager:(shared_ptr_f06afc6c)arg3;
-- (id)initWithKey:(const struct VKTileKey *)arg1 imageData:(id)arg2 styleManager:(shared_ptr_f06afc6c)arg3 genericTileType:(int)arg4;
+- (void)gglBuildTexture:(Device_f0710f89 *)arg1;
+- (void)immediateLoad:(Device_f0710f89 *)arg1;
+- (id)initWithKey:(const struct VKTileKey *)arg1 imageData:(id)arg2 styleManager:(shared_ptr_a3c46825)arg3;
+- (id)initWithKey:(const struct VKTileKey *)arg1 imageData:(id)arg2 styleManager:(shared_ptr_a3c46825)arg3 genericTileType:(int)arg4;
 - (struct CGImage *)newCGImageFromData:(id)arg1;
-- (void)setupClutShaderWithRenderState:(struct RenderState *)arg1 mesh:(struct Mesh *)arg2 clutTexture:(struct Texture2D *)arg3 clutBlend:(float)arg4;
-- (void)setupNormalShaderWithRenderState:(struct RenderState *)arg1 mesh:(struct Mesh *)arg2;
-- (void)setupReverseAlphaShaderWithRenderState:(struct RenderState *)arg1 mesh:(struct Mesh *)arg2 roadAlpha:(float)arg3;
+- (void)setupClutShaderWithRenderState:(struct RenderState *)arg1 pipelineState:(const shared_ptr_ec7954e2 *)arg2 mesh:(struct Mesh *)arg3 clutTexture:(struct Texture2D *)arg4 clutBlend:(float)arg5;
+- (void)setupNormalShaderWithRenderState:(struct RenderState *)arg1 pipelineState:(const shared_ptr_8d835d6a *)arg2 mesh:(struct Mesh *)arg3;
+- (void)setupReverseAlphaShaderWithRenderState:(struct RenderState *)arg1 pipelineState:(const shared_ptr_0854a852 *)arg2 mesh:(struct Mesh *)arg3 roadAlpha:(float)arg4;
 
 @end
 

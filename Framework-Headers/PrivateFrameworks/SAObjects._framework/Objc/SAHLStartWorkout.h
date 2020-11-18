@@ -6,7 +6,7 @@
 
 #import <SAObjects/SADomainCommand.h>
 
-@class SAHLWorkoutGoal, SAHLWorkoutType;
+@class NSString, SAHLWorkoutGoal, SAHLWorkoutType;
 
 @interface SAHLStartWorkout : SADomainCommand
 {
@@ -16,6 +16,7 @@
 @property (nonatomic) BOOL skipActivitySetup;
 @property (strong, nonatomic) SAHLWorkoutGoal *workoutGoal;
 @property (strong, nonatomic) SAHLWorkoutType *workoutType;
+@property (copy, nonatomic) NSString *workoutUserMode;
 
 + (id)startWorkout;
 + (id)startWorkoutWithDictionary:(id)arg1 context:(id)arg2;

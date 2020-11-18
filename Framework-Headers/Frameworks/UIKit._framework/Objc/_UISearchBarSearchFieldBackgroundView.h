@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)_strokeColor:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 active:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 active:(BOOL)arg2 updateView:(BOOL)arg3;
+- (void)setCornerRadius:(double)arg1;
 - (void)updateView;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BookmarkDAV/CoreDAVContainerInfoTaskGroupDelegate-Protocol.h>
 #import <BookmarkDAV/CoreDAVDeleteTaskDelegate-Protocol.h>
@@ -33,9 +33,11 @@
     CDUnknownBlockType _registerForPush;
     BOOL _forceSafariOrdering;
     BOOL _forceSave;
+    unsigned long long _accountPropertyFetchAttempt;
 }
 
 @property (readonly, nonatomic) id<CoreDAVAccountInfoProvider> accountInfoProvider; // @synthesize accountInfoProvider=_accountInfoProvider;
+@property (nonatomic) unsigned long long accountPropertyFetchAttempt; // @synthesize accountPropertyFetchAttempt=_accountPropertyFetchAttempt;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType getAccountPropertiesHandler; // @synthesize getAccountPropertiesHandler=_getAccountPropertiesHandler;

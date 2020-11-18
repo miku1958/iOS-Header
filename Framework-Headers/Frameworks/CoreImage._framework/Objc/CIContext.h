@@ -13,6 +13,7 @@
 
 @property (readonly) struct Context *_internalContext;
 @property (readonly, nonatomic) struct CGColorSpace *workingColorSpace;
+@property (readonly, nonatomic) int workingFormat;
 
 + (int)_crashed_because_nonaddressable_memory_was_passed_to_render:(id)arg1 toBitmap:(void *)arg2 rowBytes:(long long)arg3 bounds:(struct CGRect)arg4 format:(int)arg5 colorSpace:(struct CGColorSpace *)arg6;
 + (id)_singletonContext;
@@ -32,6 +33,9 @@
 + (struct Context *)internalContextWithMTLDevice:(id)arg1 options:(id)arg2;
 + (struct Context *)internalGLContextWithOptions:(id)arg1;
 - (struct CGAffineTransform)CTM;
+- (id)JPEGRepresentationOfImage:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 options:(id)arg3;
+- (id)TIFFRepresentationOfImage:(id)arg1 format:(int)arg2 colorSpace:(struct CGColorSpace *)arg3 options:(id)arg4;
+- (struct CGImage *)_createCGImage:(id)arg1 fromRect:(struct CGRect)arg2 format:(int)arg3 colorSpace:(struct CGColorSpace *)arg4 deferred:(BOOL)arg5 textureLimit:(unsigned long long)arg6;
 - (void)_gpuContextCheck;
 - (id)_initWithInternalRepresentation:(void *)arg1;
 - (void)_insertEventMarker:(const char *)arg1;
@@ -44,6 +48,7 @@
 - (struct CGImage *)createCGImage:(id)arg1 fromRect:(struct CGRect)arg2;
 - (struct CGImage *)createCGImage:(id)arg1 fromRect:(struct CGRect)arg2 format:(int)arg3;
 - (struct CGImage *)createCGImage:(id)arg1 fromRect:(struct CGRect)arg2 format:(int)arg3 colorSpace:(struct CGColorSpace *)arg4;
+- (struct CGImage *)createCGImage:(id)arg1 fromRect:(struct CGRect)arg2 format:(int)arg3 colorSpace:(struct CGColorSpace *)arg4 deferred:(BOOL)arg5;
 - (struct CGLayer *)createCGLayerWithSize:(struct CGSize)arg1 info:(struct __CFDictionary *)arg2;
 - (id)createColorCubeDataForFilters:(id)arg1 dimension:(int)arg2;
 - (void)dealloc;
@@ -77,6 +82,8 @@
 - (void)setCTM:(struct CGAffineTransform)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (void)unlock;
+- (BOOL)writeJPEGRepresentationOfImage:(id)arg1 toURL:(id)arg2 colorSpace:(struct CGColorSpace *)arg3 options:(id)arg4 error:(id *)arg5;
+- (BOOL)writeTIFFRepresentationOfImage:(id)arg1 toURL:(id)arg2 format:(int)arg3 colorSpace:(struct CGColorSpace *)arg4 options:(id)arg5 error:(id *)arg6;
 
 @end
 

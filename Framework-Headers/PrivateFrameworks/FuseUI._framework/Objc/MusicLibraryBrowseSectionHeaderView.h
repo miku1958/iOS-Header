@@ -43,7 +43,6 @@
 - (void).cxx_destruct;
 - (void)_setupForCurrentFloatingState;
 - (void)actionableHeaderViewDidSelectButton:(id)arg1;
-- (void)dealloc;
 - (id)initWithReuseIdentifier:(id)arg1;
 - (void)layoutBelowIfNeeded;
 - (void)layoutSubviews;

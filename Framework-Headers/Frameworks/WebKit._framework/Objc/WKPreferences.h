@@ -6,30 +6,41 @@
 
 #import <objc/NSObject.h>
 
+#import <WebKit/NSCoding-Protocol.h>
 #import <WebKit/WKObject-Protocol.h>
 
 @class NSString;
 
-@interface WKPreferences : NSObject <WKObject>
+@interface WKPreferences : NSObject <WKObject, NSCoding>
 {
     struct ObjectStorage<WebKit::WebPreferences> _preferences;
 }
 
+@property (nonatomic, setter=_setAcceleratedDrawingEnabled:) BOOL _acceleratedDrawingEnabled;
 @property (nonatomic, setter=_setAllowFileAccessFromFileURLs:) BOOL _allowFileAccessFromFileURLs;
-@property (nonatomic, setter=_setAntialiasedFontDilationEnabled:) BOOL _antialiasedFontDilationEnabled;
 @property (readonly) struct Object *_apiObject;
+@property (nonatomic, setter=_setApplePayCapabilityDisclosureAllowed:) BOOL _applePayCapabilityDisclosureAllowed;
 @property (nonatomic, setter=_setCompositingBordersVisible:) BOOL _compositingBordersVisible;
 @property (nonatomic, setter=_setCompositingRepaintCountersVisible:) BOOL _compositingRepaintCountersVisible;
+@property (nonatomic, setter=_setDefaultFixedPitchFontSize:) unsigned long long _defaultFixedPitchFontSize;
+@property (nonatomic, setter=_setDefaultFontSize:) unsigned long long _defaultFontSize;
 @property (nonatomic, setter=_setDeveloperExtrasEnabled:) BOOL _developerExtrasEnabled;
 @property (nonatomic, setter=_setDiagnosticLoggingEnabled:) BOOL _diagnosticLoggingEnabled;
+@property (nonatomic, setter=_setDisplayListDrawingEnabled:) BOOL _displayListDrawingEnabled;
+@property (copy, nonatomic, setter=_setFixedPitchFontFamily:) NSString *_fixedPitchFontFamily;
 @property (nonatomic, setter=_setFullScreenEnabled:) BOOL _fullScreenEnabled;
+@property (nonatomic, setter=_setHiddenPageDOMTimerThrottlingAutoIncreases:) BOOL _hiddenPageDOMTimerThrottlingAutoIncreases;
+@property (nonatomic, setter=_setHiddenPageDOMTimerThrottlingEnabled:) BOOL _hiddenPageDOMTimerThrottlingEnabled;
 @property (nonatomic, setter=_setJavaScriptRuntimeFlags:) unsigned long long _javaScriptRuntimeFlags;
 @property (nonatomic, setter=_setLogsPageMessagesToSystemConsoleEnabled:) BOOL _logsPageMessagesToSystemConsoleEnabled;
 @property (nonatomic, setter=_setOfflineApplicationCacheIsEnabled:) BOOL _offlineApplicationCacheIsEnabled;
+@property (nonatomic, setter=_setPageVisibilityBasedProcessSuppressionEnabled:) BOOL _pageVisibilityBasedProcessSuppressionEnabled;
+@property (nonatomic, setter=_setResourceUsageOverlayVisible:) BOOL _resourceUsageOverlayVisible;
 @property (nonatomic, setter=_setSimpleLineLayoutDebugBordersEnabled:) BOOL _simpleLineLayoutDebugBordersEnabled;
 @property (nonatomic, getter=_isStandalone, setter=_setStandalone:) BOOL _standalone;
 @property (nonatomic, setter=_setStorageBlockingPolicy:) long long _storageBlockingPolicy;
 @property (nonatomic, setter=_setTelephoneNumberDetectionIsEnabled:) BOOL _telephoneNumberDetectionIsEnabled;
+@property (nonatomic, setter=_setTextAutosizingEnabled:) BOOL _textAutosizingEnabled;
 @property (nonatomic, setter=_setTiledScrollingIndicatorVisible:) BOOL _tiledScrollingIndicatorVisible;
 @property (nonatomic, setter=_setVisibleDebugOverlayRegions:) unsigned long long _visibleDebugOverlayRegions;
 @property (readonly, copy) NSString *debugDescription;
@@ -40,8 +51,13 @@
 @property (nonatomic) double minimumFontSize;
 @property (readonly) Class superclass;
 
++ (id)_experimentalFeatures;
+- (BOOL)_isEnabledForFeature:(id)arg1;
+- (void)_setEnabled:(BOOL)arg1 forFeature:(id)arg2;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

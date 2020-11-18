@@ -21,10 +21,10 @@
 @property (nonatomic) unsigned long long percentCharge; // @synthesize percentCharge=_percentCharge;
 
 + (id)chargeGlyph;
+- (void).cxx_destruct;
 - (id)_batteryColorForLowCapacity:(BOOL)arg1;
 - (struct UIEdgeInsets)_edgeInsetsForBatteryInsidesForScale:(double)arg1;
 - (void)_setPercentCharge:(unsigned long long)arg1 force:(BOOL)arg2;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

@@ -6,36 +6,79 @@
 
 #import <EventKitUI/EKCalendarItemEditor.h>
 
-@class EKEvent, EKEventDateEditItem, UIColor;
+#import <EventKitUI/EKEventAutocompleteResultsEditItemDelegate-Protocol.h>
 
-@interface EKEventEditor : EKCalendarItemEditor
+@class EKCalendarItemAlarmEditItem, EKCalendarItemCalendarEditItem, EKCalendarItemLocationInlineEditItem, EKCalendarItemTitleInlineEditItem, EKEvent, EKEventAttendeesEditItem, EKEventAutocompleteResultsEditItem, EKEventDateEditItem, EKUIAutocompletePETTracker, EKUIAutocompleteSearchResult, NSString, NSTimer, UIColor;
+@protocol EKUIAutocompletePendingSearchProtocol;
+
+@interface EKEventEditor : EKCalendarItemEditor <EKEventAutocompleteResultsEditItemDelegate>
 {
     EKEventDateEditItem *_dateItem;
+    EKEventAttendeesEditItem *_attendeesEditItem;
+    EKEventAutocompleteResultsEditItem *_autocompleteEditItem;
+    EKCalendarItemTitleInlineEditItem *_titleInlineEditItem;
+    EKCalendarItemLocationInlineEditItem *_locationInlineEditItem;
+    EKCalendarItemCalendarEditItem *_calendarEditItem;
+    EKCalendarItemAlarmEditItem *_alarmEditItem;
+    BOOL _shouldAutocomplete;
+    id<EKUIAutocompletePendingSearchProtocol> _pendingSearch;
+    NSTimer *_autocompleteTimer;
+    NSString *_autocompleteSearchString;
     BOOL _isTransitioning;
+    BOOL _autocompleteResultsVisible;
+    BOOL _focusTitleOnAppearance;
+    EKUIAutocompleteSearchResult *_selectedAutocompleteResult;
+    unsigned long long _selectedAutocompleteResultIndex;
+    EKUIAutocompletePETTracker *_autocompletePETTracker;
     BOOL _showAttachments;
     UIColor *_backgroundColor;
 }
 
 @property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) EKEvent *event;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL showAttachments; // @synthesize showAttachments=_showAttachments;
+@property (readonly) Class superclass;
 
++ (void)_applyTimeToAutocompleteResults:(id)arg1 usingCurrentStartDate:(id)arg2 currentEndDate:(id)arg3 timeImplicitlySet:(BOOL)arg4;
++ (id)_copyAlarmsForAutocompleteFromResult:(id)arg1;
++ (id)_copyAttendeesForAutocompleteFromResult:(id)arg1;
++ (void)_modifyCurrentEvent:(id)arg1 withAutocompleteResult:(id)arg2;
++ (id)_now;
 - (void).cxx_destruct;
+- (void)_beginAutocompleteSearch:(id)arg1;
 - (id)_calendarItemIndexSet;
 - (BOOL)_canDetachSingleOccurrence;
+- (void)_cancelPendingAutocompleteAndCleanup;
 - (void)_copyEventForPossibleRevert;
 - (id)_editItems;
+- (void)_hideAndCancelAutocompleteResults;
 - (id)_nameForDeleteButton;
 - (id)_orderedEditItems;
 - (void)_revertEvent;
+- (void)_scheduleAutocompleteSearchWithString:(id)arg1;
+- (void)_scheduleAutocompleteTimerIfNeeded;
+- (void)_setAutocompleteResultsVisible:(BOOL)arg1;
+- (void)_setEventTitleForTestingAutocomplete:(id)arg1;
+- (void)_showAutocompleteResults;
+- (void)_updateTitleEditItemSeparatorVisibility;
 - (id)_viewForSheet;
+- (void)autocompleteResultsEditItem:(id)arg1 resultSelected:(id)arg2;
+- (void)autocompleteResultsEditItemDidHideResults:(id)arg1;
+- (void)autocompleteResultsEditItemDidShowResults:(id)arg1;
 - (id)defaultAlertTitle;
 - (id)defaultTitleForCalendarItem;
+- (void)editItemDidStartEditing:(id)arg1;
+- (void)editItemTextChanged:(id)arg1;
 - (unsigned long long)entityType;
+- (void)focusAndSelectTitle;
 - (void)loadView;
 - (id)notificationNamesForLocaleChange;
 - (struct CGSize)preferredContentSize;
 - (id)preferredTitle;
+- (void)prepareEditItems;
 - (void)refreshInvitees;
 - (void)refreshLocation;
 - (void)refreshStartAndEndDates;

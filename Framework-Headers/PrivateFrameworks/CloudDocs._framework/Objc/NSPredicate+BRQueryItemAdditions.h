@@ -7,6 +7,9 @@
 #import <Foundation/NSPredicate.h>
 
 @interface NSPredicate (BRQueryItemAdditions)
+- (id)br_fileObjectIDWithWatchedChildren;
+- (id)br_urlWithWatchedChildren;
+- (id)br_watchedFileObjectID;
 - (id)br_watchedURL;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/BBBehaviorOverrideEffectivePeriod-Protocol.h>
 
@@ -38,11 +38,11 @@
 + (id)dateWithComponents:(id)arg1 immediatelyPriorToDate:(id)arg2 calendar:(id)arg3 repeatInterval:(unsigned long long)arg4;
 + (unsigned long long)relevantUnitsForRepeatInterval:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_configuredCalendarWithIdentifier:(id)arg1;
 - (void)_synchronizeTimeZone;
 - (BOOL)containsDate:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStartComponents:(id)arg1 endComponents:(id)arg2 calendarIdentifier:(id)arg3 repeatInterval:(unsigned long long)arg4;

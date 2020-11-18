@@ -6,33 +6,30 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthUI/HKTimePeriod-Protocol.h>
 #import <HealthUI/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSDate;
 
-@interface HKValueRange : NSObject <HKTimePeriod, NSCopying>
+@interface HKValueRange : NSObject <NSCopying>
 {
     id _minValue;
     id _maxValue;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSDate *endDate;
 @property (copy, nonatomic) id maxValue; // @synthesize maxValue=_maxValue;
 @property (copy, nonatomic) id minValue; // @synthesize minValue=_minValue;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSDate *startDate;
 
 + (id)valueRangeWithMinValue:(id)arg1 maxValue:(id)arg2;
 - (void).cxx_destruct;
 - (BOOL)containsValue:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)endDate;
+- (id)description;
+- (unsigned long long)hash;
 - (BOOL)hk_animatable;
 - (id)hk_midPointToValue:(id)arg1 percentage:(double)arg2;
 - (BOOL)isEqual:(id)arg1;
-- (id)startDate;
 - (void)unionMaxValueWithRange:(id)arg1;
 - (void)unionMinValueWithRange:(id)arg1;
 - (void)unionRange:(id)arg1;

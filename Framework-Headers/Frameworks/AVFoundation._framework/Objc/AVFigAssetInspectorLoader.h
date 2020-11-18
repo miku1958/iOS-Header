@@ -24,6 +24,12 @@
     NSMutableArray *_loadingBatches;
     BOOL _loadingCanceled;
     BOOL _registeredForFigAssetNotifications;
+    BOOL _shouldRespondToFigAssetPropertyLoading;
+    BOOL _isRespondingToFigAssetPropertyLoading;
+    BOOL _URLSessionOperationQueueAvailable;
+    BOOL _URLSessionDataDelegateAvailable;
+    BOOL _didPostDidCompleteURLSessionSetUpNotification;
+    BOOL _didPostDidFailToCompleteURLSessionSetUpNotification;
     long long _fragmentMinderAssociationCount;
     NSURL *_URL;
 }
@@ -32,6 +38,8 @@
 + (id)_figAssetTrackPropertiesForKeys;
 + (void)_mapAssetKeys:(id)arg1 toFigAssetPropertySet:(id)arg2 figAssetTrackPropertySet:(id)arg3 callerName:(id)arg4;
 - (id)URL;
+- (id)_URLSessionDataDelegate;
+- (id)_URLSessionOperationQueue;
 - (void)_addFigAssetNotifications;
 - (Class)_classForTrackInspectors;
 - (id)_completionHandlerQueue;
@@ -44,9 +52,14 @@
 - (long long)_loadStatusForProperty:(id)arg1 figAsset:(struct OpaqueFigAsset *)arg2 error:(id *)arg3;
 - (id)_loadingBatches;
 - (struct OpaqueFigSimpleMutex *)_loadingMutex;
+- (void)_postDidFailToCompleteURLSessionSetUpNotificationIfAppropriate;
+- (void)_postURLSessionSetUpDidCompleteNotificationIfAppropriate;
 - (void)_removeFigAssetNotifications;
 - (void)_setFragmentMindingInterval:(double)arg1;
 - (void)_setIsAssociatedWithFragmentMinder:(BOOL)arg1;
+- (void)_setURLSessionDataDelegateAvailable:(BOOL)arg1;
+- (void)_setURLSessionOperationQueueAvailable:(BOOL)arg1;
+- (id)asset;
 - (id)assetInspector;
 - (void)cancelLoading;
 - (void)dealloc;

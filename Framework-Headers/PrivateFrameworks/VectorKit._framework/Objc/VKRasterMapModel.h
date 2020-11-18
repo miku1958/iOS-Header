@@ -17,11 +17,14 @@ __attribute__((visibility("hidden")))
     unsigned long long _mapLayer;
     BOOL _rasterViewer;
     BOOL _showingNoDataPlaceholders;
-    shared_ptr_b80d91ee _styleQuery;
+    shared_ptr_c5d816ee _styleQuery;
     shared_ptr_479d1306 _gglClutTexture;
     struct Pos2DUVMesh *_unitMesh;
     struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _renderState;
     struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _clutRenderState;
+    shared_ptr_8d835d6a _texturePipelineState;
+    shared_ptr_ec7954e2 _clutPipelineState;
+    shared_ptr_0854a852 _reverseAlphaPipelineState;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -36,13 +39,13 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (void)gglLayoutScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
-- (void)gglLayoutScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3 roadAlpha:(float)arg4;
+- (void)gglLayoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
+- (void)gglLayoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3 roadAlpha:(float)arg4;
 - (void)gglSetupClutTextureForLevelOfDetail:(unsigned long long)arg1 scale:(double)arg2;
-- (id)init;
+- (id)initWithTarget:(id)arg1 sharedResources:(id)arg2;
 - (void)reset;
 - (BOOL)shouldEnableCLUT;
-- (shared_ptr_f06afc6c)styleManager;
+- (shared_ptr_a3c46825)styleManager;
 - (void)stylesheetDidChange;
 
 @end

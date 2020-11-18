@@ -11,22 +11,15 @@
     long long _desiredFlashMode;
     long long _desiredHDRMode;
     long long _flashAndHDRConflictingControl;
-    long long _desiredIrisMode;
-    long long _desiredFilterType;
-    long long _irisAndFilterConflictingControl;
 }
 
-@property (readonly, nonatomic) long long desiredFilterType; // @synthesize desiredFilterType=_desiredFilterType;
 @property (readonly, nonatomic) long long desiredFlashMode; // @synthesize desiredFlashMode=_desiredFlashMode;
 @property (readonly, nonatomic) long long desiredHDRMode; // @synthesize desiredHDRMode=_desiredHDRMode;
-@property (readonly, nonatomic) long long desiredIrisMode; // @synthesize desiredIrisMode=_desiredIrisMode;
 @property (readonly, nonatomic) long long flashAndHDRConflictingControl; // @synthesize flashAndHDRConflictingControl=_flashAndHDRConflictingControl;
-@property (readonly, nonatomic) long long irisAndFilterConflictingControl; // @synthesize irisAndFilterConflictingControl=_irisAndFilterConflictingControl;
 
 + (void)resolveDesiredFlashMode:(long long)arg1 desiredHDRMode:(long long)arg2 primaryConflictingControl:(long long)arg3 device:(long long)arg4 toFlashMode:(long long *)arg5 HDRMode:(long long *)arg6;
-+ (void)resolveDesiredIrisMode:(long long)arg1 desiredFilterType:(long long)arg2 primaryConflictingControl:(long long)arg3 device:(long long)arg4 toIrisMode:(long long *)arg5 filterType:(long long *)arg6;
 - (id)init;
-- (id)initWithDesiredFlashMode:(long long)arg1 desiredHDRMode:(long long)arg2 flashAndHDRConflictingControl:(long long)arg3 desiredIrisMode:(long long)arg4 desiredFilterType:(long long)arg5 irisAndFilterConflictingControl:(long long)arg6;
+- (id)initWithDesiredFlashMode:(long long)arg1 desiredHDRMode:(long long)arg2 flashAndHDRConflictingControl:(long long)arg3;
 
 @end
 

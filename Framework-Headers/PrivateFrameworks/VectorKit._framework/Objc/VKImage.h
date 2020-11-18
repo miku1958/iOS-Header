@@ -17,10 +17,16 @@
     double _scale;
     BOOL _usedAsTextureAndImage;
     struct Texture2D *_gglTexture;
+    struct CGRect _collisionRect;
+    struct CGPoint _anchorPoint;
+    BOOL _hasCollisionRect;
+    BOOL _hasAnchorPoint;
     VKResourceManager *_resourceManager;
     unsigned char _imageHash[16];
 }
 
+- (struct CGPoint)anchorPoint;
+- (struct CGRect)collisionRect;
 - (int)compareTo:(id)arg1;
 - (void)dealloc;
 - (struct Texture2D *)gglTexture;
@@ -31,6 +37,8 @@
 - (id)initWithData:(id)arg1 scale:(double)arg2 usedAsTextureAndImage:(BOOL)arg3;
 - (id)initWithName:(id)arg1 scale:(double)arg2 resourceManager:(id)arg3;
 - (double)scale;
+- (void)setAnchorPoint:(struct CGPoint)arg1;
+- (void)setCollisionRect:(struct CGRect)arg1;
 - (struct CGSize)size;
 
 @end

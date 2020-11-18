@@ -6,18 +6,28 @@
 
 #import <SAObjects/SADomainObject.h>
 
-@class NSString;
+@class NSArray, NSString, NSURL;
 
 @interface SAHAEntity : SADomainObject
 {
 }
 
+@property (copy, nonatomic) NSString *accessory;
+@property (copy, nonatomic) NSURL *accessoryIdentifier;
+@property (copy, nonatomic) NSArray *attributes;
 @property (copy, nonatomic) NSString *entityType;
 @property (copy, nonatomic) NSString *home;
+@property (copy, nonatomic) NSURL *homeIdentifier;
 @property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSString *room;
+@property (copy, nonatomic) NSURL *roomIdentifier;
+@property (copy, nonatomic) NSString *sceneType;
+@property (copy, nonatomic) NSString *serviceGroup;
+@property (copy, nonatomic) NSArray *serviceGroupIdentifiers;
 @property (copy, nonatomic) NSString *serviceType;
+@property (copy, nonatomic) NSArray *targetAttributes;
 @property (copy, nonatomic) NSString *zone;
+@property (copy, nonatomic) NSArray *zoneIdentifiers;
 
 + (id)entity;
 + (id)entityWithDictionary:(id)arg1 context:(id)arg2;

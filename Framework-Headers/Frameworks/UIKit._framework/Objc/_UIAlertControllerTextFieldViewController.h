@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (long long)numberOfTextFields;
 - (void)removeAllTextFields;
+- (BOOL)resignFirstResponder;
 - (id)textFieldAtIndex:(long long)arg1;
 - (void)updateTextFieldStyle;
 - (void)viewDidLoad;

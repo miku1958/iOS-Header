@@ -8,10 +8,9 @@
 
 @interface GEOComposedRouteTransitTripSection (RenderRegion)
 - (BOOL)_getEndPoints:(id)arg1 gmRect:(const CDStruct_90e2a262 *)arg2 result:(vector_e20517dc *)arg3;
-- (BOOL)_getEndPoints:(id)arg1 vkRect:(const CDStruct_d2b197d1 *)arg2 result:(vector_e20517dc *)arg3;
-- (void)_getPointOnPath:(id)arg1 index:(int)arg2 bounds:(const CDStruct_d2b197d1 *)arg3 result:(Matrix_2bdd42a3 *)arg4;
+- (BOOL)_getEndPoints:(id)arg1 rect:(const Box_3d7e3c2c *)arg2 result:(vector_e20517dc *)arg3;
+- (void)_getPointOnPath:(id)arg1 index:(int)arg2 bounds:(const Box_3d7e3c2c *)arg3 result:(Matrix_2bdd42a3 *)arg4;
 - (id)pathsForRenderRegion:(id)arg1 inOverlay:(id)arg2 shouldSnapToTransit:(BOOL)arg3 verifySnapping:(BOOL)arg4;
 - (id)unsnappedPathsInOverlay:(id)arg1;
-- (void)updateLabelExternalObjectsInRenderRegion:(id)arg1 previousSection:(id)arg2 nextSection:(id)arg3 labelExternalObjectsModerator:(struct LabelExternalObjectsModerator *)arg4 nodeIDToStyleAttributeMap:(unordered_map_4f9963f1 *)arg5;
 @end
 

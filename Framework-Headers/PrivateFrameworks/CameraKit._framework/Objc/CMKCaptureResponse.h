@@ -13,11 +13,11 @@
     BOOL _completed;
     long long _type;
     CMKInflightAsset *_asset;
+    NSDictionary *__parameterStorage;
+    CMKCaptureRequest *_request;
     NSMutableDictionary *_metadata;
     NSDictionary *_additionalInformation;
     NSDictionary *_diagnostics;
-    CMKCaptureRequest *_request;
-    NSDictionary *__parameterStorage;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *_parameterStorage; // @synthesize _parameterStorage=__parameterStorage;

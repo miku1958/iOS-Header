@@ -15,7 +15,6 @@
 {
     AVConferenceXPCClient *_connection;
     id<AVCAudioStreamDelegate> _delegate;
-    id _weakSelf;
     VCAudioStream *_opaqueStream;
     AVCMediaStreamConfig *_configuration;
     NSDictionary *_capabilities;
@@ -38,14 +37,17 @@
 @property (nonatomic) double rtpTimeOutIntervalSec;
 @property (readonly) Class superclass;
 
-- (void)configure:(id)arg1 error:(id *)arg2;
++ (id)capabilities;
+- (BOOL)configure:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (void)deregisterBlocksForDelegateNotifications;
+- (id)initWithIDSDestination:(id)arg1 isOriginator:(BOOL)arg2 callID:(id)arg3 error:(id *)arg4;
+- (id)initWithIDSDestination:(id)arg1 isOriginator:(BOOL)arg2 error:(id *)arg3;
 - (id)initWithLocalAddress:(id)arg1 callID:(id)arg2 error:(id *)arg3;
 - (id)initWithLocalAddress:(id)arg1 error:(id *)arg2;
 - (id)initWithLocalAddress:(id)arg1 isOriginator:(BOOL)arg2 callID:(id)arg3 error:(id *)arg4;
 - (id)initWithLocalAddress:(id)arg1 isOriginator:(BOOL)arg2 error:(id *)arg3;
-- (id)initWithLocalAddress:(id)arg1 networkSockets:(id)arg2 isOriginator:(BOOL)arg3 callID:(id)arg4 error:(id *)arg5;
+- (id)initWithLocalAddress:(id)arg1 networkSockets:(id)arg2 IDSDestination:(id)arg3 isOriginator:(BOOL)arg4 callID:(id)arg5 error:(id *)arg6;
 - (id)initWithNetworkSockets:(id)arg1 isOriginator:(BOOL)arg2 callID:(id)arg3 error:(id *)arg4;
 - (id)initWithNetworkSockets:(id)arg1 isOriginator:(BOOL)arg2 error:(id *)arg3;
 - (void)pause;
@@ -55,6 +57,7 @@
 - (void)sendDTMFDigitString:(id)arg1 withVolume:(unsigned char)arg2 duration:(unsigned short)arg3 interval:(unsigned short)arg4;
 - (void)start;
 - (void)startContinuousDTMFWithDigit:(BOOL)arg1 volume:(unsigned char)arg2;
+- (void)startSynchronizeWithStream:(long long)arg1;
 - (void)stop;
 - (void)stopContinuousDTMF;
 - (void)terminateSession;

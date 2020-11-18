@@ -20,7 +20,7 @@
 
 - (void)_teardownDatabaseOnQueue;
 - (void)dealloc;
-- (id)initWithIdentifier:(struct __CFString *)arg1;
+- (id)initWithIdentifier:(struct __CFString *)arg1 qosClass:(unsigned short)arg2;
 - (BOOL)ownsCurrentThreadOtherwiseAssert:(BOOL)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1 afterDelay:(double)arg2;
 - (void)performBlock:(CDUnknownBlockType)arg1 waitUntilDone:(BOOL)arg2;

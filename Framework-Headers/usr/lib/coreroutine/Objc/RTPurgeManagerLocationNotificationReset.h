@@ -6,12 +6,9 @@
 
 #import <coreroutine/RTNotification.h>
 
-__attribute__((visibility("hidden")))
 @interface RTPurgeManagerLocationNotificationReset : RTNotification
 {
 }
-
-+ (id)notificationName;
 
 @end
 

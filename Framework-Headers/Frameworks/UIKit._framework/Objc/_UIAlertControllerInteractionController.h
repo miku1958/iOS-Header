@@ -20,11 +20,14 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
+@property (readonly, nonatomic) long long completionCurve;
+@property (readonly, nonatomic) double completionSpeed;
 @property (strong, nonatomic) id<UIViewControllerContextTransitioning> context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL wantsInteractiveStart;
 
 - (void).cxx_destruct;
 - (void)interactionProgress:(id)arg1 didEnd:(BOOL)arg2;

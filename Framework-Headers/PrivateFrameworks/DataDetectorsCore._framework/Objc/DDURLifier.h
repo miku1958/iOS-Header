@@ -10,7 +10,6 @@
 {
 }
 
-+ (void)initialize;
 + (BOOL)urlIfyNode:(id)arg1;
 + (BOOL)urlIfyNode:(id)arg1 phoneNumberTypes:(unsigned long long)arg2;
 + (id)urlIfyNode:(id)arg1 usingScanner:(struct __DDScanner *)arg2 phoneNumberTypes:(unsigned long long)arg3;

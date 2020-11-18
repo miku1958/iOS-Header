@@ -8,17 +8,19 @@
 
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, PUChangeDirectionValueFilter, PUSwipedDownTileTracker, UIPanGestureRecognizer;
+@class NSHashTable, NSString, PUChangeDirectionValueFilter, PUSwipedDownTileTracker, UIPanGestureRecognizer;
 
 __attribute__((visibility("hidden")))
 @interface PUInteractiveSwipeDismissalController : PUInteractiveDismissalController <UIGestureRecognizerDelegate>
 {
     BOOL _handlingPanGestureRecognizer;
     UIPanGestureRecognizer *__panGestureRecognizer;
+    NSHashTable *__dependentScrollViews;
     PUChangeDirectionValueFilter *__dismissGestureDirectionValueFilter;
     PUSwipedDownTileTracker *__swipedDownTileTracker;
 }
 
+@property (readonly, nonatomic) NSHashTable *_dependentScrollViews; // @synthesize _dependentScrollViews=__dependentScrollViews;
 @property (strong, nonatomic, setter=_setDismissGestureDirectionValueFilter:) PUChangeDirectionValueFilter *_dismissGestureDirectionValueFilter; // @synthesize _dismissGestureDirectionValueFilter=__dismissGestureDirectionValueFilter;
 @property (strong, nonatomic, setter=_setPanGestureRecognizer:) UIPanGestureRecognizer *_panGestureRecognizer; // @synthesize _panGestureRecognizer=__panGestureRecognizer;
 @property (strong, nonatomic, setter=_setSwipedDownTileTracker:) PUSwipedDownTileTracker *_swipedDownTileTracker; // @synthesize _swipedDownTileTracker=__swipedDownTileTracker;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (id)init;
 - (void)updateGestureRecognizersWithHostingView:(id)arg1;
 
 @end

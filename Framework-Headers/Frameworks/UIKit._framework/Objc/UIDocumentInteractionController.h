@@ -25,7 +25,7 @@
     struct CGRect _presentRect;
     UIView *_presentView;
     UIBarButtonItem *_presentItem;
-    NSArray *_availableApplications;
+    NSArray *_applicationActivities;
     UIPopoverController *_popoverController;
     UIActivityViewController *_activityViewController;
     BOOL _shouldUnzipDocument;
@@ -96,16 +96,16 @@
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
 + (id)_UTIForFileURL:(id)arg1;
-+ (id)_applicationsForDocumentProxy:(id)arg1;
 + (id)_pathFilterPredicate:(BOOL)arg1;
 + (id)_unzippingQueue;
 + (id)allActionSelectorNames;
 + (void)initialize;
 + (id)interactionControllerWithURL:(id)arg1;
 - (void).cxx_destruct;
+- (void)__openDocumentInPlaceWithApplication:(id)arg1;
 - (void)_activityControllerViewDidDismiss;
+- (id)_applicationActivities:(BOOL)arg1;
 - (id)_applicationToOpen;
-- (id)_applications:(BOOL)arg1;
 - (void)_callBeginSelector:(id)arg1;
 - (void)_callFinishSelectorForOpenInPlace:(id)arg1;
 - (BOOL)_canPreviewUnzippedDocument;
@@ -136,6 +136,7 @@
 - (void)_openDocumentWithApplication:(id)arg1;
 - (void)_openDocumentWithApplication:(id)arg1 userInfo:(id)arg2;
 - (void)_openDocumentWithCurrentApplication;
+- (id)_openWithAppActivitiesForDocumentProxy:(id)arg1;
 - (id)_pathsInArchive:(CDUnknownBlockType)arg1;
 - (void)_presentOpenIn:(id)arg1;
 - (void)_presentOptionsMenu:(id)arg1;
@@ -145,14 +146,15 @@
 - (BOOL)_setupForOpenInMenu;
 - (BOOL)_setupForOptionsMenu;
 - (BOOL)_setupPreviewController;
+- (BOOL)_shouldReturnDefaultApplication;
 - (void)_unzipFileAndSetupPayload:(CDUnknownBlockType)arg1;
 - (id)_unzipFileAndSetupPayload:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_unzippedDocumentURL;
-- (unsigned long long)applicationCount;
 - (void)dealloc;
 - (BOOL)defaultApplicationSupportsOpenInPlace;
 - (void)dismissMenuAnimated:(BOOL)arg1;
 - (void)dismissPreviewAnimated:(BOOL)arg1;
+- (id)excludedActivityTypesForPreviewController:(id)arg1;
 - (id)extractSubitemFromArchive:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithURL:(id)arg1;
 - (void)markupAction:(id)arg1;

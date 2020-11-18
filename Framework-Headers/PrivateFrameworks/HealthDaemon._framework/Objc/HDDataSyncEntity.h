@@ -20,18 +20,18 @@
 @property (readonly) Class superclass;
 
 + (id)_baseDataObjectPredicate;
-+ (BOOL)_insertObjectsFromCodableObjectCollection:(id)arg1 syncStore:(id)arg2 healthDaemon:(id)arg3 error:(id *)arg4;
++ (BOOL)_insertObjectsFromCodableObjectCollection:(id)arg1 syncStore:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)_objectWithCodable:(id)arg1;
-+ (id)_provenanceFromCollection:(id)arg1 syncStore:(id)arg2 healthDaemon:(id)arg3 error:(id *)arg4;
++ (id)_provenanceFromCollection:(id)arg1 syncStore:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)_syncObjectPredicateWithPredicate:(id)arg1;
 + (id)decodeSyncObjectWithData:(id)arg1;
++ (BOOL)generateSyncObjectsForStore:(id)arg1 predicate:(id)arg2 syncAnchorRange:(struct HDSyncAnchorRange)arg3 maxEncodedBytesPerMessage:(long long)arg4 profile:(id)arg5 error:(id *)arg6 handler:(CDUnknownBlockType)arg7;
 + (Class)healthEntityClass;
-+ (long long)nextSyncAnchorWithStore:(id)arg1 predicate:(id)arg2 startSyncAnchor:(long long)arg3 healthDaemon:(id)arg4 error:(id *)arg5;
++ (long long)nextSyncAnchorWithStore:(id)arg1 predicate:(id)arg2 startSyncAnchor:(long long)arg3 profile:(id)arg4 error:(id *)arg5;
 + (id)objectsFromCodableObjectsInCollection:(id)arg1;
-+ (long long)receiveSyncObjects:(id)arg1 syncStore:(id)arg2 healthDaemon:(id)arg3 error:(id *)arg4;
++ (long long)receiveSyncObjects:(id)arg1 syncStore:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)syncEntityDependencies;
 + (long long)syncEntityType;
-+ (id)syncObjectsWithStore:(id)arg1 predicate:(id)arg2 syncAnchorRange:(struct HDSyncAnchorRange)arg3 lastSyncAnchor:(long long *)arg4 limit:(unsigned long long)arg5 healthDaemon:(id)arg6 error:(id *)arg7;
 
 @end
 

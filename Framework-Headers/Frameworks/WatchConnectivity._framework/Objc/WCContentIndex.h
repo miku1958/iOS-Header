@@ -12,6 +12,7 @@
 
 @interface WCContentIndex : NSObject <NSFilePresenter>
 {
+    BOOL _invalidated;
     NSURL *_itemURL;
     NSOperationQueue *_operationQueue;
     NSMutableArray *_cachedContentIndex;
@@ -23,6 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSArray *index;
+@property (nonatomic) BOOL invalidated; // @synthesize invalidated=_invalidated;
 @property (strong, nonatomic) NSURL *itemURL; // @synthesize itemURL=_itemURL;
 @property (strong, nonatomic) id lastGenerationIdentifier; // @synthesize lastGenerationIdentifier=_lastGenerationIdentifier;
 @property (strong, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
@@ -34,8 +36,8 @@
 - (void).cxx_destruct;
 - (void)addContentIdentifier:(id)arg1;
 - (void)commit;
-- (void)dealloc;
 - (id)initWithContainingFolder:(id)arg1;
+- (void)invalidate;
 - (BOOL)isEqual:(id)arg1;
 - (void)loadContentIfNecessary;
 - (void)presentedItemDidChange;

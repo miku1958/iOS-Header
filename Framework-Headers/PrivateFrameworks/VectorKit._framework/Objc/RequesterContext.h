@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct _GEOTileKey key; // @synthesize key=_key;
 @property (strong, nonatomic) GEOTileRequester *tileRequester; // @synthesize tileRequester=_tileRequester;
 
+- (void)dealloc;
 
 @end
 

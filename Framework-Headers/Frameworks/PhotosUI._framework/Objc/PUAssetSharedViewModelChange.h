@@ -12,9 +12,8 @@ __attribute__((visibility("hidden")))
     BOOL _loadingStatusChanged;
 }
 
-@property (nonatomic) BOOL loadingStatusChanged; // @synthesize loadingStatusChanged=_loadingStatusChanged;
+@property (nonatomic, setter=_setLoadingStatusChanged:) BOOL loadingStatusChanged; // @synthesize loadingStatusChanged=_loadingStatusChanged;
 
-- (void)_setLoadingStatusChanged:(BOOL)arg1;
 - (BOOL)hasChanges;
 
 @end

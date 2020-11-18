@@ -6,8 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSURL, SearchUICardViewController;
-@protocol SearchUICardSection;
+@class NSURL, SFCardSection, SearchUICardViewController;
 
 @interface SearchUICardSectionView : UIView
 {
@@ -15,13 +14,13 @@
     BOOL _fullWidthSeparator;
     SearchUICardViewController *_controller;
     NSURL *_url;
-    id<SearchUICardSection> _section;
+    SFCardSection *_section;
 }
 
 @property (weak) SearchUICardViewController *controller; // @synthesize controller=_controller;
 @property (nonatomic) BOOL fullWidthSeparator; // @synthesize fullWidthSeparator=_fullWidthSeparator;
 @property (nonatomic) BOOL hideSeparatorBelow; // @synthesize hideSeparatorBelow=_hideSeparatorBelow;
-@property (strong, nonatomic) id<SearchUICardSection> section; // @synthesize section=_section;
+@property (strong, nonatomic) SFCardSection *section; // @synthesize section=_section;
 @property (strong) NSURL *url; // @synthesize url=_url;
 
 + (Class)classForSection:(id)arg1;

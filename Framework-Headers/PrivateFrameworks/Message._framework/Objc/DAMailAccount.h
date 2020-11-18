@@ -6,7 +6,7 @@
 
 #import <Message/MailAccount.h>
 
-@class DAAccount, MFDAMailbox, MFDAOfflineCache, MFRecursiveLock, NSArray, NSCountedSet, NSLock, NSMutableDictionary, NSObject, NSSet, NSString;
+@class DAAccount, MFDAMailbox, MFDAOfflineCache, MFMailboxUid, MFRecursiveLock, NSArray, NSCountedSet, NSLock, NSMutableDictionary, NSObject, NSSet, NSString;
 @protocol ASAccountActorMessages;
 
 @interface DAMailAccount : MailAccount
@@ -36,10 +36,12 @@
     BOOL _cachedSupportsMailDrop;
     BOOL _cachedArchiveByDefault;
     BOOL _cachedSourceIsManaged;
+    BOOL _cachedStoreDraftsOnServer;
     NSString *_cachedInboxFolderID;
     NSString *_cachedSentMessagesFolderID;
     NSString *_cachedTrashFolderID;
     NSString *_cachedJunkFolderID;
+    NSString *_cachedDraftsFolderID;
     MFDAMailbox *_temporaryInbox;
     BOOL _loadedInitialMailboxList;
     BOOL _receivedInitialMailboxUpdate;
@@ -48,13 +50,17 @@
     int _supportsServerSearch;
     int _supportsMessageFlagging;
     int _supportsConversations;
+    int _supportsServerDrafts;
     unsigned int _daysToSync;
     NSMutableDictionary *_requestQueuesByFolderID;
     NSLock *_watchedFolderIdsLock;
     NSSet *_watchedFolderIds;
     NSCountedSet *_userFocusMailboxIds;
     NSString *_folderTag;
+    MFMailboxUid *_virtualAllSearchMailbox;
 }
+
+@property (strong, nonatomic) MFMailboxUid *virtualAllSearchMailbox; // @synthesize virtualAllSearchMailbox=_virtualAllSearchMailbox;
 
 + (id)_URLScheme;
 + (Class)_accountConduitClass;
@@ -93,6 +99,7 @@
 - (void)addRequest:(id)arg1 mailbox:(id)arg2 consumer:(id)arg3;
 - (void)addRequests:(id)arg1 mailbox:(id)arg2 consumers:(id)arg3;
 - (void)addUserFocusMailbox:(id)arg1;
+- (id)allMailMailboxUid;
 - (id)allMailboxUids;
 - (BOOL)canGoOffline;
 - (BOOL)canReceiveNewMailNotifications;
@@ -164,6 +171,7 @@
 - (BOOL)supportsMailboxEditing;
 - (BOOL)supportsMessageFlagging;
 - (BOOL)supportsRemoteAppend;
+- (BOOL)supportsServerDrafts;
 - (BOOL)supportsServerSearch;
 - (BOOL)supportsThreadOperations;
 - (BOOL)supportsUserPushedMailboxes;

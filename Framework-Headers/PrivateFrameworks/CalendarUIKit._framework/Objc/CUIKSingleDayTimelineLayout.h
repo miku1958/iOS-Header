@@ -35,6 +35,7 @@
 - (double)_combinedWidthOfPartitions;
 - (double)_effectiveEndTimeForOccurrence:(id)arg1;
 - (double)_endOfCollisionZoneForY:(double)arg1 occurrence:(id)arg2;
+- (unsigned long long)_enumerationOptions;
 - (void)_findCollidingOccurrences;
 - (void)_generateNewPartitions;
 - (void)_initializeFirstGridStripe;
@@ -48,6 +49,7 @@
 - (double)_topOfOccurrence:(id)arg1;
 - (void)applyLayoutToOccurrences;
 - (id)initWithOccurrences:(id)arg1 startOfDay:(id)arg2 endOfDay:(id)arg3 geometryDelegate:(id)arg4 screenUtilsDelegate:(id)arg5 calendar:(id)arg6;
+- (BOOL)isRightToLeftLayout;
 
 @end
 

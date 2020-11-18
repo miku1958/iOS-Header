@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (id)descriptionWithContext:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)forgetChangeTokens;
 - (void)forgetClientRequestID;

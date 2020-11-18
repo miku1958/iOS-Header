@@ -9,36 +9,36 @@
 __attribute__((visibility("hidden")))
 @interface VKFootprint : NSObject
 {
-    CDStruct_aca18c62 _boundingRect;
+    Box_3d7e3c2c _boundingRect;
     struct VKFootprintConvexHull_struct _convexHull;
     double _maxDistance;
-    struct VKPoint _furthestGroundPoint;
+    Matrix_6e1d3589 _furthestGroundPoint;
     double _minDistance;
-    struct VKPoint _nearestGroundPoint;
+    Matrix_6e1d3589 _nearestGroundPoint;
     double _minDepth;
     double _maxDepth;
     double _centerDepth;
     int _cornerGroundPointsCount;
-    struct VKPoint _cornerGroundPoints[12];
+    Matrix_6e1d3589 _cornerGroundPoints[12];
 }
 
-@property (readonly, nonatomic) CDStruct_d2b197d1 boundingRect; // @synthesize boundingRect=_boundingRect;
+@property (readonly, nonatomic) Box_3d7e3c2c boundingRect; // @synthesize boundingRect=_boundingRect;
 @property (readonly, nonatomic) double centerDepth; // @synthesize centerDepth=_centerDepth;
 @property (readonly, nonatomic) struct VKFootprintConvexHull_struct convexHull; // @synthesize convexHull=_convexHull;
-@property (readonly, nonatomic) struct VKPoint *cornerGroundPoints;
+@property (readonly, nonatomic) Matrix_6e1d3589 *cornerGroundPoints;
 @property (readonly, nonatomic) int cornerGroundPointsCount; // @synthesize cornerGroundPointsCount=_cornerGroundPointsCount;
-@property (readonly, nonatomic) struct VKPoint furthestGroundPoint; // @synthesize furthestGroundPoint=_furthestGroundPoint;
+@property (readonly, nonatomic) Matrix_6e1d3589 furthestGroundPoint; // @synthesize furthestGroundPoint=_furthestGroundPoint;
 @property (readonly, nonatomic) double maxDepth; // @synthesize maxDepth=_maxDepth;
 @property (readonly, nonatomic) double minDepth; // @synthesize minDepth=_minDepth;
-@property (readonly, nonatomic) struct VKPoint nearestGroundPoint; // @synthesize nearestGroundPoint=_nearestGroundPoint;
+@property (readonly, nonatomic) Matrix_6e1d3589 nearestGroundPoint; // @synthesize nearestGroundPoint=_nearestGroundPoint;
 
 - (id).cxx_construct;
-- (CDStruct_d2b197d1)_expandedBoundingRect;
+- (Box_3d7e3c2c)_expandedBoundingRect;
 - (CDUnknownBlockType)annotationCoordinateTest;
 - (CDUnknownBlockType)annotationRectTest;
 - (void)computeFromCamera:(id)arg1;
-- (BOOL)containsGroundPoint:(struct VKPoint *)arg1;
-- (BOOL)rejectsRect:(const CDStruct_d2b197d1 *)arg1;
+- (BOOL)containsGroundPoint:(Matrix_6e1d3589 *)arg1;
+- (BOOL)rejectsRect:(const Box_3d7e3c2c *)arg1;
 
 @end
 

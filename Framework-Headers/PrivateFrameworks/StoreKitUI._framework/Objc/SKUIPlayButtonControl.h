@@ -39,8 +39,8 @@
     BOOL _showOuterBorder;
     BOOL _disabledButSelectable;
     NSString *_backdropGroupName;
-    SKUIButtonViewElement *_element;
     UIImage *_backgroundImageForBlurring;
+    SKUIButtonViewElement *_element;
     struct UIEdgeInsets _bigHitInsets;
 }
 

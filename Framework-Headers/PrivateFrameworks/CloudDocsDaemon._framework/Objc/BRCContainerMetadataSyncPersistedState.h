@@ -4,32 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CloudDocsDaemon/BRCPersistedState.h>
 
-#import <CloudDocsDaemon/NSSecureCoding-Protocol.h>
-
-@class BRCAccountSession, CKServerChangeToken, NSDate;
+@class CKServerChangeToken, NSDate;
 
 __attribute__((visibility("hidden")))
-@interface BRCContainerMetadataSyncPersistedState : NSObject <NSSecureCoding>
+@interface BRCContainerMetadataSyncPersistedState : BRCPersistedState
 {
-    BRCAccountSession *_session;
-    BOOL _needsContainerMetadataSync;
-    BOOL _needsSharedDBSync;
+    BOOL _needsContainerMetadataSyncDown;
+    BOOL _needsSharedDBSyncDown;
     CKServerChangeToken *_serverChangeToken;
     NSDate *_lastSyncDate;
 }
 
 @property (strong) NSDate *lastSyncDate; // @synthesize lastSyncDate=_lastSyncDate;
-@property (nonatomic) BOOL needsContainerMetadataSync; // @synthesize needsContainerMetadataSync=_needsContainerMetadataSync;
-@property (nonatomic) BOOL needsSharedDBSync; // @synthesize needsSharedDBSync=_needsSharedDBSync;
+@property (nonatomic) BOOL needsContainerMetadataSyncDown; // @synthesize needsContainerMetadataSyncDown=_needsContainerMetadataSyncDown;
+@property (nonatomic) BOOL needsSharedDBSyncDown; // @synthesize needsSharedDBSyncDown=_needsSharedDBSyncDown;
 @property (strong, nonatomic) CKServerChangeToken *serverChangeToken; // @synthesize serverChangeToken=_serverChangeToken;
 
-+ (id)loadFromClientStateInSession:(id)arg1;
++ (id)loadFromClientStateInSession:(id)arg1 options:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 
 @end

@@ -6,18 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class MCDBrowserViewController, MPAVController, RadioRecentStationsController, UIWindow;
+@class MCDBrowserViewController, MPAVController, MPCMediaPlayerLegacyPlayer, RadioRecentStationsController, UIWindow;
 @protocol MCDCarDisplayServiceProvider;
 
 @interface MCDRootController : NSObject
 {
     UIWindow *_carDisplayWindow;
     MCDBrowserViewController *_browserViewController;
+    MPCMediaPlayerLegacyPlayer *_legacyPlayer;
     MPAVController *_player;
     id<MCDCarDisplayServiceProvider> _serviceProvider;
 }
 
 @property (readonly, nonatomic) UIWindow *carDisplayWindow; // @synthesize carDisplayWindow=_carDisplayWindow;
+@property (strong, nonatomic) MPCMediaPlayerLegacyPlayer *legacyPlayer; // @synthesize legacyPlayer=_legacyPlayer;
 @property (strong, nonatomic) MPAVController *player; // @synthesize player=_player;
 @property (weak, nonatomic) RadioRecentStationsController *recentStationsController;
 @property (weak, nonatomic) id<MCDCarDisplayServiceProvider> serviceProvider; // @synthesize serviceProvider=_serviceProvider;
@@ -26,6 +28,7 @@
 - (void)dealloc;
 - (id)initWithScreen:(id)arg1 hostTabBarController:(id)arg2;
 - (void)reloadRadio;
+- (void)screenDidDisconnect;
 - (void)showNowPlaying:(BOOL)arg1;
 
 @end

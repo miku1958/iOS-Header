@@ -17,6 +17,5 @@
 - (oneway void)setFindable:(BOOL)arg1 handler:(void (^)(NSError *))arg2;
 - (oneway void)setPhotoData:(NSData *)arg1 handler:(void (^)(NSError *))arg2;
 - (oneway void)setStatus:(NSString *)arg1 handler:(void (^)(NSError *))arg2;
-- (oneway void)updateContactsWithHandler:(void (^)(NSError *))arg1;
 @end
 

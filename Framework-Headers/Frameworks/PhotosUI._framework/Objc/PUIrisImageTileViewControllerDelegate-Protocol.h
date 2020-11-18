@@ -13,6 +13,7 @@
 
 @optional
 - (id<UIGestureRecognizerDelegate>)irisImageTileViewController:(PUIrisImageTileViewController *)arg1 delegateForGestureRecognizer:(UIGestureRecognizer *)arg2;
+- (void)irisImageTileViewControllerDidBeginHinting:(PUIrisImageTileViewController *)arg1;
 - (void)irisImageTileViewControllerDidBeginPlaying:(PUIrisImageTileViewController *)arg1;
 - (void)irisImageTileViewControllerDidEndPlaying:(PUIrisImageTileViewController *)arg1;
 - (void)irisImageTileViewControllerDidEndVitality:(PUIrisImageTileViewController *)arg1;

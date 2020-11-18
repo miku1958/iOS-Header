@@ -6,12 +6,14 @@
 
 #import <NotesShared/ICNoteVisibilityTesting-Protocol.h>
 
-@class ICNote, NSArray, NSPredicate, NSString;
+@class ICAccount, ICNote, NSArray, NSPredicate, NSString;
 @protocol ICNoteVisibilityTesting;
 
 @protocol ICNoteContainer <ICNoteVisibilityTesting>
 - (NSString *)accountName;
+- (BOOL)canBeSharedViaICloud;
 - (BOOL)isDeleted;
+- (ICAccount *)noteContainerAccount;
 - (BOOL)noteIsVisible:(ICNote *)arg1;
 - (id<ICNoteVisibilityTesting>)noteVisibilityTestingForSearchingAccount;
 - (NSPredicate *)predicateForVisibleNotes;

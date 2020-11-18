@@ -13,9 +13,12 @@ __attribute__((visibility("hidden")))
 {
     struct SoundDec_t *encoder;
     int payload;
-    unsigned int samplesPerFrame;
+    unsigned int _codecSamplesPerFrame;
     unsigned int blockSize;
-    unsigned int sampleRate;
+    unsigned int _codecSampleRate;
+    unsigned int _inputSampleRate;
+    double _srcRatio;
+    unsigned int ttyBlockSize;
     unsigned int encodedBytesPerFrame;
     unsigned int bundleHeaderBytes;
     unsigned int bitrate;
@@ -29,6 +32,7 @@ __attribute__((visibility("hidden")))
     BOOL dtxEnabled;
     BOOL payloadOctetAligned;
     int format;
+    unsigned int internalBundleFactor;
 }
 
 @property (readonly, nonatomic) unsigned int bitrate; // @synthesize bitrate;
@@ -39,15 +43,16 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int encodedBytesPerFrame; // @synthesize encodedBytesPerFrame;
 @property (readonly, nonatomic) int payload; // @synthesize payload;
 @property (nonatomic) BOOL payloadOctetAligned; // @synthesize payloadOctetAligned;
-@property (readonly, nonatomic) unsigned int sampleRate; // @synthesize sampleRate;
-@property (readonly, nonatomic) unsigned int samplesPerFrame; // @synthesize samplesPerFrame;
+@property (nonatomic) unsigned int sampleRate; // @synthesize sampleRate=_codecSampleRate;
+@property (readonly, nonatomic) unsigned int samplesPerFrame;
 @property (readonly, nonatomic) NSArray *supportedBitrates; // @synthesize supportedBitrates;
 @property (readonly, nonatomic) BOOL useCookie;
 @property (nonatomic) BOOL useSBR; // @synthesize useSBR;
 
++ (unsigned int)blockSizeForPayload:(int)arg1;
 + (BOOL)isPayloadSupported:(int)arg1;
 - (unsigned int)aacBitrate;
-- (BOOL)createEncoderWithInternalFormat:(struct AudioStreamBasicDescription *)arg1;
+- (BOOL)createEncoderWithInputFormat:(struct AudioStreamBasicDescription *)arg1;
 - (void)createSupportedBitrates;
 - (void)createSupportedBitratesForAACELD;
 - (void)createSupportedBitratesForAMR16k;
@@ -58,11 +63,13 @@ __attribute__((visibility("hidden")))
 - (unsigned int)flags;
 - (BOOL)getMagicCookie:(char *)arg1 withLength:(unsigned int *)arg2;
 - (id)initWithPayload:(int)arg1 blockSize:(unsigned int)arg2;
+- (BOOL)isDtxEmptyPacket:(unsigned int)arg1;
 - (float)qualityForBitRate:(unsigned int)arg1;
 - (void)resetEncoder;
 - (void)resetEncoderWithSampleBuffer:(char *)arg1 numBytes:(int)arg2;
 - (BOOL)setBitrate:(unsigned int)arg1;
-- (void)setInternalSampleRate:(unsigned int)arg1;
+- (void)setInputSampleRate:(unsigned int)arg1;
+- (void)setInternalBundleSamples:(unsigned int)arg1;
 - (BOOL)setupEncodeProperties;
 - (BOOL)setupInputProperties;
 

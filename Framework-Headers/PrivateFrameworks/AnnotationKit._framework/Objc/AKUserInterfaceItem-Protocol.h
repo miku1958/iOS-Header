@@ -8,5 +8,8 @@
 
 @protocol AKUserInterfaceItem <NSObject>
 - (long long)tag;
+
+@optional
+- (long long)tagForSegment:(long long)arg1;
 @end
 

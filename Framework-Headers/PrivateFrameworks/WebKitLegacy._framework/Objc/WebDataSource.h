@@ -55,7 +55,6 @@
 - (void)addSubresource:(id)arg1;
 - (id)dataSourceDelegate;
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithRequest:(id)arg1;
 - (void)setDataSourceDelegate:(id)arg1;
 - (id)subresourceForURL:(id)arg1;

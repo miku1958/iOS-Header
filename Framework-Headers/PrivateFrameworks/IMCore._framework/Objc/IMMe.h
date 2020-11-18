@@ -34,10 +34,10 @@
 + (id)fallbackUserName;
 + (id)imHandleForService:(id)arg1;
 + (id)me;
+- (void).cxx_destruct;
 - (id)_imHandlesWithIDs:(id)arg1 onAccount:(id)arg2;
 - (BOOL)addIMHandle:(id)arg1;
 - (BOOL)addLoginIMHandle:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (BOOL)isIMHandleLoginIMHandle:(id)arg1;

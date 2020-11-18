@@ -13,9 +13,9 @@
     NSArray *_availableProducts;
 }
 
-@property (readonly, nonatomic) NSArray *availableProducts; // @synthesize availableProducts=_availableProducts;
+@property (readonly, copy, nonatomic) NSArray *availableProducts; // @synthesize availableProducts=_availableProducts;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithData:(id)arg1;
 
 @end

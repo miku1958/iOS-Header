@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <Catalyst/CATTaskSessionDelegate-Protocol.h>
 
@@ -56,7 +56,7 @@
 - (void)session:(id)arg1 didInterruptWithError:(id)arg2;
 - (void)session:(id)arg1 didReceiveNotificationWithName:(id)arg2 userInfo:(id)arg3;
 - (void)session:(id)arg1 enqueueOperation:(id)arg2;
-- (id)session:(id)arg1 enqueueOperationForRequest:(id)arg2 error:(id *)arg3;
+- (id)session:(id)arg1 prepareOperationForRequest:(id)arg2 error:(id *)arg3;
 - (BOOL)session:(id)arg1 shouldAcceptConnectionFromTransport:(id)arg2;
 - (void)sessionDidConnect:(id)arg1;
 - (void)sessionDidDisconnect:(id)arg1;

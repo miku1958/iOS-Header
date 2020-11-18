@@ -108,7 +108,13 @@
 + (id)_urlToShowCurrentLocationWithOptions:(id)arg1;
 + (id)_urlToShowPlaces:(id)arg1 options:(id)arg2;
 + (id)_urlToShowURLRepresentations:(id)arg1 options:(id)arg2;
++ (Class)businessType;
++ (Class)entryPointType;
 + (id)placeForPlaceData:(id)arg1;
++ (Class)roadAccessPointsType;
+- (int)StringAsAddressGeocodeAccuracy:(id)arg1;
+- (int)StringAsReferenceFrame:(id)arg1;
+- (int)StringAsType:(id)arg1;
 - (BOOL)_isEquivalentURLRepresentationTo:(id)arg1;
 - (id)_urlForDirectionsFromCurrentLocationWithOptions:(id)arg1;
 - (id)_urlForDirectionsFromPlace:(id)arg1 options:(id)arg2;
@@ -119,6 +125,7 @@
 - (void)addEntryPoint:(id)arg1;
 - (void)addRoadAccessPoints:(id)arg1;
 - (id)addressDictionary;
+- (id)addressGeocodeAccuracyAsString:(int)arg1;
 - (id)arrivalMapRegion;
 - (id)arrivalMapRegionForTransportType:(int)arg1;
 - (id)bestName;
@@ -139,16 +146,18 @@
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2 addressDictionary:(id)arg3;
 - (id)initWithLocation:(id)arg1 addressDictionary:(id)arg2 name:(id)arg3 businessURL:(id)arg4 phoneNumber:(id)arg5 muid:(unsigned long long)arg6 attributionID:(id)arg7 sampleSizeForUserRatingScore:(unsigned int)arg8 normalizedUserRatingScore:(float)arg9;
 - (id)initWithName:(id)arg1 placeType:(int)arg2 areaInMeters:(double)arg3;
-- (id)initWithPlaceInfo:(id)arg1 entity:(id)arg2 address:(id)arg3 bounds:(id)arg4 roadAccessInfo:(id)arg5;
+- (id)initWithPlaceInfo:(id)arg1 entity:(id)arg2 addressObject:(id)arg3 bounds:(id)arg4 roadAccessInfo:(id)arg5;
 - (id)initWithUrlRepresentation:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (double)radialDistance;
 - (BOOL)readFrom:(id)arg1;
+- (id)referenceFrameAsString:(int)arg1;
 - (id)roadAccessPointsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)roadAccessPointsCount;
 - (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1;
 - (void)setNSTimeZone:(id)arg1;
+- (id)typeAsString:(int)arg1;
 - (id)urlRepresentation;
 - (void)writeTo:(id)arg1;
 

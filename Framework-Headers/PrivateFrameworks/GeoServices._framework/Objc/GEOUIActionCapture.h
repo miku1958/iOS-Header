@@ -27,6 +27,8 @@
 @property (nonatomic) BOOL hasSequenceNumber;
 @property (nonatomic) int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 
+- (int)StringAsActionType:(id)arg1;
+- (id)actionTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

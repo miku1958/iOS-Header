@@ -24,26 +24,25 @@
     BOOL _shouldStripLocation;
     NSURL *_outputDirectoryURL;
     NSString *_generatedFileName;
+    NSString *_customAccessibilityLabel;
     NSURL *_videoURL;
     PFAssetAdjustments *__adjustments;
 }
 
 @property (strong, nonatomic, setter=_setAdjustments:) PFAssetAdjustments *_adjustments; // @synthesize _adjustments=__adjustments;
+@property (copy, nonatomic) NSString *customAccessibilityLabel; // @synthesize customAccessibilityLabel=_customAccessibilityLabel;
 @property (copy, nonatomic) NSString *generatedFileName; // @synthesize generatedFileName=_generatedFileName;
-@property (strong, nonatomic) NSError *operationError;
+@property (strong, nonatomic, setter=_setOperationError:) NSError *operationError;
 @property (copy, nonatomic) NSURL *outputDirectoryURL; // @synthesize outputDirectoryURL=_outputDirectoryURL;
 @property (readonly, nonatomic) float progress;
 @property (nonatomic) BOOL shouldStripLocation; // @synthesize shouldStripLocation=_shouldStripLocation;
 @property (nonatomic) BOOL shouldStripMetadata; // @synthesize shouldStripMetadata=_shouldStripMetadata;
-@property (nonatomic) BOOL success;
-@property (copy, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
+@property (nonatomic, setter=_setSuccess:) BOOL success;
+@property (copy, nonatomic, setter=_setVideoURL:) NSURL *videoURL; // @synthesize videoURL=_videoURL;
 
 - (void).cxx_destruct;
 - (BOOL)_ensureVideoProperties;
 - (BOOL)_runExport;
-- (void)_setOperationError:(id)arg1;
-- (void)_setSuccess:(BOOL)arg1;
-- (void)_setVideoURL:(id)arg1;
 - (void)_validateMetadata;
 - (void)cancel;
 - (id)initWithVideoURL:(id)arg1 adjustmentData:(id)arg2;

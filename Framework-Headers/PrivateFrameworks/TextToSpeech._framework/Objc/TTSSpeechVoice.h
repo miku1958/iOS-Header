@@ -6,37 +6,45 @@
 
 #import <Foundation/NSObject.h>
 
+#import <TextToSpeech/NSCopying-Protocol.h>
 #import <TextToSpeech/NSSecureCoding-Protocol.h>
 
 @class NSString;
 @protocol TTSSpeechService;
 
-@interface TTSSpeechVoice : NSObject <NSSecureCoding>
+@interface TTSSpeechVoice : NSObject <NSSecureCoding, NSCopying>
 {
     id<TTSSpeechService> _service;
-    BOOL _useVoiceBooster;
     BOOL _isDefault;
-    BOOL _isCustomVoice;
+    BOOL _canBeDownloaded;
+    BOOL _isCombinedFootprint;
+    BOOL _useVoiceBooster;
     NSString *_name;
     NSString *_language;
     NSString *_identifier;
     long long _footprint;
     long long _gender;
+    NSString *_nonCombinedVoiceId;
+    NSString *_serviceIdentifier;
 }
 
+@property (nonatomic) BOOL canBeDownloaded; // @synthesize canBeDownloaded=_canBeDownloaded;
 @property (nonatomic) long long footprint; // @synthesize footprint=_footprint;
 @property (nonatomic) long long gender; // @synthesize gender=_gender;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (nonatomic) BOOL isCustomVoice; // @synthesize isCustomVoice=_isCustomVoice;
+@property (readonly, nonatomic) BOOL isCombinedFootprint; // @synthesize isCombinedFootprint=_isCombinedFootprint;
 @property (readonly, nonatomic) BOOL isDefault; // @synthesize isDefault=_isDefault;
 @property (strong, nonatomic) NSString *language; // @synthesize language=_language;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, nonatomic) BOOL useVoiceBooster;
+@property (strong, nonatomic) NSString *nonCombinedVoiceId; // @synthesize nonCombinedVoiceId=_nonCombinedVoiceId;
+@property (strong, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
+@property (nonatomic) BOOL useVoiceBooster; // @synthesize useVoiceBooster=_useVoiceBooster;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_initializeVoiceBooster;
 - (void)_routeChange:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

@@ -6,13 +6,15 @@
 
 #import <HomeKit/HMHomeInvitation.h>
 
-@class HMUser;
+@class HMThreadSafeMutableArrayCollection, HMUser, NSArray;
 
 @interface HMOutgoingHomeInvitation : HMHomeInvitation
 {
+    HMThreadSafeMutableArrayCollection *_accessoryInvitations;
     HMUser *_invitee;
 }
 
+@property (readonly, nonatomic) NSArray *accessoryInvitations;
 @property (readonly, nonatomic) HMUser *invitee; // @synthesize invitee=_invitee;
 
 + (id)homeInvitationsFromData:(id)arg1 home:(id)arg2;
@@ -21,6 +23,7 @@
 - (void).cxx_destruct;
 - (void)_cancelInviteWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_configure:(id)arg1 clientQueue:(id)arg2 delegateCaller:(id)arg3;
+- (BOOL)_mergeWithNewAccessoryInvitations:(id)arg1 operations:(id)arg2;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)cancelInviteWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;

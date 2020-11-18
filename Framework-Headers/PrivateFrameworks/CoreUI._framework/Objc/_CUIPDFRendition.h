@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (struct CGImage *)createImageFromPDFRenditionWithScale:(double)arg1;
 - (void)dealloc;
 - (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
+- (id)metrics;
 - (struct CGPDFDocument *)pdfDocument;
 
 @end

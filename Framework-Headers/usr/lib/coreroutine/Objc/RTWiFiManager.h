@@ -6,49 +6,38 @@
 
 #import <coreroutine/RTNotifier.h>
 
-@class NSMutableArray, RTPersistentTimer;
+@class NSArray;
 
 @interface RTWiFiManager : RTNotifier
 {
-    long long _linkStatus;
-    long long _powerStatus;
-    long long _constantFootprint;
-    RTPersistentTimer *_constantFootprintScanTimer;
-    NSMutableArray *_scanResults;
+    unsigned long long _powerStatus;
+    unsigned long long _linkStatus;
+    NSArray *_accessPoints;
 }
 
-@property (nonatomic) long long constantFootprint; // @synthesize constantFootprint=_constantFootprint;
-@property (strong, nonatomic) RTPersistentTimer *constantFootprintScanTimer; // @synthesize constantFootprintScanTimer=_constantFootprintScanTimer;
-@property (nonatomic) long long linkStatus; // @synthesize linkStatus=_linkStatus;
-@property (nonatomic) long long powerStatus; // @synthesize powerStatus=_powerStatus;
-@property (strong, nonatomic) NSMutableArray *scanResults; // @synthesize scanResults=_scanResults;
+@property (strong, nonatomic) NSArray *accessPoints; // @synthesize accessPoints=_accessPoints;
+@property (readonly, nonatomic) unsigned long long linkStatus; // @synthesize linkStatus=_linkStatus;
+@property (nonatomic) unsigned long long powerStatus; // @synthesize powerStatus=_powerStatus;
 
-+ (id)constantFootprintToString:(long long)arg1;
-+ (id)linkStatusToString:(long long)arg1;
-+ (id)powerStatusToString:(long long)arg1;
++ (Class)classForSharedInstance;
++ (id)linkStatusToString:(unsigned long long)arg1;
++ (id)powerStatusToString:(unsigned long long)arg1;
 + (id)sharedInstance;
++ (id)supportedNotificationNames;
 - (void).cxx_destruct;
 - (void)_cancelScan;
-- (void)_checkForConstantFootprint;
-- (long long)_constantFootprintStatusForScanResults:(id)arg1;
-- (void)_destroyConnectionToWiFiManager;
-- (void)_establishConnectionToWiFiManager;
-- (void)_pruneScanResults;
-- (void)_registerExtendedLinkCallback;
-- (void)_registerPowerCallback;
-- (void)_registerScanUpdateCallbacks;
-- (void)_scan;
-- (void)_ungregisterAllDeviceCallbacks;
-- (void)_unregisterExtendedLinkCallback;
-- (void)_unregisterPowerCallback;
-- (void)_unregisterScanUpdateCallbacks;
-- (void)establishConnectionToWiFiManager;
-- (void)fetchConstantFootprintStatusForScanResults:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)fetchCurrentLinkStatusWithHandler:(CDUnknownBlockType)arg1;
-- (void)fetchCurrentPowerStatusWithHandler:(CDUnknownBlockType)arg1;
+- (void)_notifyScanResults:(id)arg1;
+- (void)_scheduleScan;
+- (void)_setup;
+- (void)_shutdown;
+- (void)cancelScan;
+- (void)fetchLinkStatus:(CDUnknownBlockType)arg1;
+- (void)fetchPowerStatus:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
+- (void)scheduleScan;
+- (void)setup;
 - (void)shutdown;
 
 @end

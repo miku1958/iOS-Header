@@ -23,11 +23,10 @@
 @property (readonly, nonatomic) CMMotionManager *_physicalButtonMotionManager; // @synthesize _physicalButtonMotionManager=__physicalButtonMotionManager;
 @property (nonatomic, setter=_setCaptureOrientation:) long long captureOrientation; // @synthesize captureOrientation=_captureOrientation;
 @property (nonatomic, setter=_setDeviceOrientation:) long long deviceOrientation; // @synthesize deviceOrientation=_deviceOrientation;
-@property (nonatomic) long long dominantPhysicalButton; // @synthesize dominantPhysicalButton=_dominantPhysicalButton;
+@property (nonatomic, setter=_setDominantPhysicalButton:) long long dominantPhysicalButton; // @synthesize dominantPhysicalButton=_dominantPhysicalButton;
 
 + (id)sharedController;
 - (void).cxx_destruct;
-- (void)_setDominantPhysicalButton:(long long)arg1;
 - (void)_updatePhysicalButtonObservation;
 - (void)beginGeneratingDominantPhysicalButtonNotifications;
 - (void)dealloc;

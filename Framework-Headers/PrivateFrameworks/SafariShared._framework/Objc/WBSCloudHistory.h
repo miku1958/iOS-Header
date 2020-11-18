@@ -8,8 +8,8 @@
 
 #import <SafariShared/WBSCloudHistoryThrottlerDataStore-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSTimer, WBSCloudHistoryConfiguration, WBSCloudHistoryPushAgentProxy, WBSCloudHistoryStore, WBSCloudHistoryThrottler;
-@protocol NSObject, OS_dispatch_queue;
+@class NSMutableDictionary, NSString, NSTimer, WBSCloudHistoryConfiguration, WBSCloudHistoryPushAgentProxy, WBSCloudHistoryThrottler;
+@protocol NSObject, OS_dispatch_queue, WBSCloudHistoryDataStore;
 
 @interface WBSCloudHistory : NSObject <WBSCloudHistoryThrottlerDataStore>
 {
@@ -24,7 +24,7 @@
     BOOL _removedHistoryItemsArePendingSave;
     BOOL _replayLongLivedSaveOperationHasBeenPerformed;
     WBSCloudHistoryConfiguration *_configuration;
-    WBSCloudHistoryStore *_store;
+    id<WBSCloudHistoryDataStore> _store;
     WBSCloudHistoryThrottler *_saveChangesThrottler;
     WBSCloudHistoryThrottler *_fetchChangesThrottler;
     WBSCloudHistoryThrottler *_syncCircleSizeRetrievalThrottler;
@@ -86,6 +86,7 @@
 - (void)fetchAndMergeChanges;
 - (void)fetchAndMergeChangesBypassingThrottler;
 - (id)initWithConfiguration:(id)arg1;
+- (id)initWithConfiguration:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)recordOfPastOperationsForThrottler:(id)arg1;
 - (void)resetForAccountChange;
 - (void)saveChangesToCloudHistoryStore;

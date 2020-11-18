@@ -8,10 +8,14 @@
 
 @interface SearchUITableView : UITableView
 {
+    BOOL _allowHeaderViewsToFloat;
 }
 
+@property BOOL allowHeaderViewsToFloat; // @synthesize allowHeaderViewsToFloat=_allowHeaderViewsToFloat;
+
+- (void)_numberOfRowsDidChange;
+- (BOOL)allowsHeaderViewsToFloat;
 - (id)initWithStyle:(unsigned long long)arg1;
-- (struct UIEdgeInsets)layoutMargins;
 
 @end
 

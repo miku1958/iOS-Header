@@ -6,12 +6,15 @@
 
 #import <HealthKit/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSError;
+@class HKLocationSeriesSample, NSArray, NSDate, NSDictionary, NSError, NSNumber, _HKWorkoutEvent;
 
 @protocol _HKActiveWorkoutClient <NSObject>
-- (void)serverFailedWithError:(NSError *)arg1;
-- (void)serverPausedWithDate:(NSDate *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
-- (void)serverStoppedWithDate:(NSDate *)arg1;
-- (void)updateTotalsWithQuantities:(NSDictionary *)arg1 resumeData:(NSDictionary *)arg2 UUIDs:(NSArray *)arg3;
+- (void)clientRemote_receivedWorkoutEvent:(_HKWorkoutEvent *)arg1;
+- (void)clientRemote_serverFailedWithError:(NSError *)arg1;
+- (void)clientRemote_serverPausedWithDate:(NSDate *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)clientRemote_serverStoppedWithDate:(NSDate *)arg1;
+- (void)clientRemote_updateElevationChange:(NSNumber *)arg1;
+- (void)clientRemote_updateLocationSeriesSample:(HKLocationSeriesSample *)arg1;
+- (void)clientRemote_updateTotalsWithQuantities:(NSDictionary *)arg1 resumeData:(NSDictionary *)arg2 UUIDs:(NSArray *)arg3;
 @end
 

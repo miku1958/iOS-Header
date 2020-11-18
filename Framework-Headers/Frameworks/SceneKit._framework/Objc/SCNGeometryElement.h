@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
 
@@ -24,11 +24,17 @@
 @property (readonly, nonatomic) long long primitiveCount;
 @property (readonly, nonatomic) long long primitiveType;
 
++ (id)_optimizedGeometryElementWithData:(id)arg1 primitiveType:(long long)arg2 primitiveCount:(long long)arg3 bytesPerIndex:(long long)arg4;
 + (id)geometryElementWithData:(id)arg1 primitiveType:(long long)arg2 primitiveCount:(long long)arg3 bytesPerIndex:(long long)arg4;
 + (id)geometryElementWithMDLSubmesh:(id)arg1;
++ (id)geometryElementWithMeshElementRef:(struct __C3DMeshElement *)arg1;
 + (BOOL)supportsSecureCoding;
+- (double)_computeACMR;
+- (void)_optimizeTriangleIndices;
+- (id)_renderableElementCopy;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)indexCount;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1 primitiveType:(long long)arg2 primitiveCount:(long long)arg3 bytesPerIndex:(long long)arg4;

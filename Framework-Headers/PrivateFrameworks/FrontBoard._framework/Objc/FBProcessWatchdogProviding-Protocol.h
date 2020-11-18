@@ -6,9 +6,12 @@
 
 #import <FrontBoard/NSObject-Protocol.h>
 
-@class FBProcess;
+@class FBProcess, FBProcessWatchdogEventContext, FBSProcessTerminationRequest, FBSProcessWatchdogPolicy, NSError;
 
 @protocol FBProcessWatchdogProviding <NSObject>
-- (double)watchdogIntervalForProcess:(FBProcess *)arg1 eventContext:(CDStruct_1b4a36b4)arg2;
+- (FBSProcessWatchdogPolicy *)watchdogPolicyForProcess:(FBProcess *)arg1 eventContext:(FBProcessWatchdogEventContext *)arg2;
+
+@optional
+- (FBSProcessTerminationRequest *)watchdogTerminationRequestForProcess:(FBProcess *)arg1 error:(NSError *)arg2;
 @end
 

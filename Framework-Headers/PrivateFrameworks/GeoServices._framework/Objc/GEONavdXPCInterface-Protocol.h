@@ -6,18 +6,15 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEONavdClientInfo, GEOPlannedDestination;
+@class GEONavdClientInfo, GEOPlannedDestination, NSUUID;
 
 @protocol GEONavdXPCInterface <NSObject>
 - (void)didPostUINotification:(unsigned long long)arg1 forDestination:(GEOPlannedDestination *)arg2 fromClient:(GEONavdClientInfo *)arg3;
 - (void)forceCacheRefresh;
-- (void)forceHome;
-- (void)forceNone;
-- (void)forceWork;
-- (void)startMonitoringDestination:(GEOPlannedDestination *)arg1 forClient:(GEONavdClientInfo *)arg2;
-- (void)startMonitoringSuggestionsForClient:(GEONavdClientInfo *)arg1;
+- (void)onlyPerformLocalUpdatesForPlannedDestination:(GEOPlannedDestination *)arg1 client:(GEONavdClientInfo *)arg2;
+- (void)requestRefreshForPlannedDestination:(GEOPlannedDestination *)arg1 client:(GEONavdClientInfo *)arg2;
+- (void)startMonitoringDestination:(GEOPlannedDestination *)arg1 forClient:(GEONavdClientInfo *)arg2 uuid:(NSUUID *)arg3;
 - (void)statusWithCallback:(void (^)(NSDictionary *))arg1;
-- (void)stopMonitoringDestination:(GEOPlannedDestination *)arg1 forClient:(GEONavdClientInfo *)arg2;
-- (void)stopMonitoringSuggestionsForClient:(GEONavdClientInfo *)arg1;
+- (void)stopMonitoringDestination:(GEOPlannedDestination *)arg1 forClient:(GEONavdClientInfo *)arg2 uuid:(NSUUID *)arg3;
 @end
 

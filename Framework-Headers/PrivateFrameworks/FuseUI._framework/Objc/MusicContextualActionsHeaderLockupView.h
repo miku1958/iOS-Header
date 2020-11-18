@@ -39,7 +39,6 @@
 - (void)_configureArtworkCatalog:(id)arg1;
 - (void)_downloadProgressButtonAction:(id)arg1;
 - (void)_likeButtonAction:(id)arg1;
-- (void)_radioButtonAction:(id)arg1;
 - (void)_setHighlighted:(BOOL)arg1;
 - (void)_shareButtonAction:(id)arg1;
 - (id)_touchForEvent:(id)arg1;

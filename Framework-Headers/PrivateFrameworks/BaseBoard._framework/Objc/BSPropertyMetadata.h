@@ -21,7 +21,7 @@
     unsigned long long _options;
 }
 
-@property (nonatomic) Class classType; // @synthesize classType=_classType;
+@property (strong, nonatomic) Class classType; // @synthesize classType=_classType;
 @property (copy, nonatomic) NSString *defaultKey; // @synthesize defaultKey=_defaultKey;
 @property (strong, nonatomic) id defaultValue; // @synthesize defaultValue=_defaultValue;
 @property (copy, nonatomic) NSString *getterName; // @synthesize getterName=_getterName;
@@ -33,7 +33,7 @@
 @property (copy, nonatomic) NSString *setterName; // @synthesize setterName=_setterName;
 @property (readonly, nonatomic) BOOL synchronizeOnSet;
 @property (nonatomic) BOOL type; // @synthesize type=_type;
-@property (nonatomic) NSString *typeString; // @synthesize typeString=_typeString;
+@property (copy, nonatomic) NSString *typeString; // @synthesize typeString=_typeString;
 
 - (void)dealloc;
 - (id)description;

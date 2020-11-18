@@ -25,6 +25,7 @@
 - (void)delegateWillAddOperation:(id)arg1;
 - (id)description;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)setUnderlyingQueue:(id)arg1;
 - (void)startObserving:(id)arg1;
 - (void)stopObserving:(id)arg1;
 

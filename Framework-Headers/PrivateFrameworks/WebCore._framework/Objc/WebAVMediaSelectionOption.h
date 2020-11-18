@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong) NSString *localizedDisplayName; // @synthesize localizedDisplayName=_localizedDisplayName;
 
+- (void)dealloc;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface CNVirtualSchedulerJob : NSObject
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 @property unsigned long long time; // @synthesize time=_time;
 
 + (id)jobWithTime:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithTime:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 

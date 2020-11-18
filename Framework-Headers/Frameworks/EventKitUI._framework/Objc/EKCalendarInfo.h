@@ -12,6 +12,7 @@
 {
     NSString *_title;
     BOOL _selected;
+    BOOL _isEnabled;
     int _customGroupType;
     EKCalendar *_calendar;
     UIColor *_color;
@@ -27,6 +28,7 @@
 @property (readonly, nonatomic) UIImage *highlightedIcon;
 @property (readonly, nonatomic) UIImage *icon;
 @property (readonly, nonatomic) BOOL isEditable;
+@property (nonatomic) BOOL isEnabled; // @synthesize isEnabled=_isEnabled;
 @property (readonly, nonatomic) BOOL isPublished;
 @property (readonly, nonatomic) BOOL isShared;
 @property (readonly, nonatomic) BOOL isSubscribed;

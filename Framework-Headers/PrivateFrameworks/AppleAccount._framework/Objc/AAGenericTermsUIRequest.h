@@ -12,11 +12,13 @@
 {
     NSDictionary *_requestDictionary;
     ACAccount *_account;
+    BOOL _preferPassword;
 }
 
 + (Class)responseClass;
 - (void).cxx_destruct;
 - (id)initWithAccount:(id)arg1 parameters:(id)arg2;
+- (id)initWithAccount:(id)arg1 parameters:(id)arg2 preferPassword:(BOOL)arg3;
 - (id)initWithParameters:(id)arg1;
 - (id)urlRequest;
 - (id)urlString;

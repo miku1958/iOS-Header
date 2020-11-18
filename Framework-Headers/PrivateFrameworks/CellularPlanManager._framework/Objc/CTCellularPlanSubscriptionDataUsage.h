@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <CellularPlanManager/NSCopying-Protocol.h>
 #import <CellularPlanManager/NSSecureCoding-Protocol.h>
@@ -27,7 +27,7 @@
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithCategory:(id)arg1 andDataUsed:(int)arg2 andDataCapacity:(int)arg3;
+- (id)initWithCategory:(id)arg1 andDataUsed:(double)arg2 andDataCapacity:(double)arg3;
 - (id)initWithCoder:(id)arg1;
 
 @end

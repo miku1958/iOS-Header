@@ -8,12 +8,13 @@
 
 #import <Symbolication/VMULibraryLoadDelegate-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSMutableArray, NSString, _VMULibraryLoadObserver;
+@class NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, _VMULibraryLoadObserver;
 
 @interface VMUProcessDescription : NSObject <VMULibraryLoadDelegate>
 {
     unsigned int _task;
     int _pid;
+    BOOL _taskIsCorpse;
     NSString *_hardwareModel;
     NSString *_processName;
     BOOL _processNameNeedsCorrection;
@@ -37,6 +38,7 @@
     NSString *_parentExecutablePath;
     int _ppid;
     NSDate *_date;
+    NSMutableDictionary *_environment;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -73,8 +75,11 @@
 - (void)dealloc;
 - (id)displayName;
 - (id)executablePath;
+- (BOOL)initFromCorpse;
+- (void)initFromLiveProcess;
 - (id)initWithPid:(int)arg1 orTask:(unsigned int)arg2;
 - (id)initWithPid:(int)arg1 orTask:(unsigned int)arg2 getBinariesList:(BOOL)arg3;
+- (BOOL)is64Bit;
 - (BOOL)isAppleApplication;
 - (id)parentProcessName;
 - (int)pid;
@@ -85,6 +90,7 @@
 - (id)processVersionDictionary;
 - (void)setCrashReporterInfo;
 - (unsigned int)task;
+- (id)valueForEnvVar:(id)arg1;
 
 @end
 

@@ -27,13 +27,18 @@
 - (void)_startedTest:(id)arg1;
 - (id)init;
 - (id)initWithHKPPTInterface:(id)arg1 usingQueue:(id)arg2;
-- (BOOL)pptTest:(id)arg1 anchoredQueryForType:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 withLimit:(long long)arg5 anchor:(long long)arg6;
-- (BOOL)pptTest:(id)arg1 collectionQueryForType:(id)arg2 anchorDate:(id)arg3 startDate:(id)arg4 endDate:(id)arg5 dateIntervalsString:(id)arg6 separateBySource:(BOOL)arg7 average:(BOOL)arg8 minimum:(BOOL)arg9 maximum:(BOOL)arg10 sum:(BOOL)arg11;
-- (BOOL)pptTest:(id)arg1 journalMergeAtHealthDirectory:(id)arg2;
-- (BOOL)pptTest:(id)arg1 preflightHealthDirectory:(id)arg2 sampleTypes:(id)arg3 killHealthd:(BOOL)arg4;
-- (BOOL)pptTest:(id)arg1 sampleQueryForType:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 withLimit:(long long)arg5;
-- (BOOL)pptTest:(id)arg1 saveDataWithCount:(long long)arg2;
-- (BOOL)pptTest:(id)arg1 statisticsQueryForType:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 separateBySource:(BOOL)arg5 average:(BOOL)arg6 minimum:(BOOL)arg7 maximum:(BOOL)arg8 sum:(BOOL)arg9;
+- (BOOL)performDateRangeQueryPPTTest:(id)arg1;
+- (BOOL)performJournalMergePPTTest:(id)arg1 healthDirectory:(id)arg2;
+- (BOOL)performLatestSummaryQueryPPTTest:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 types:(id)arg4;
+- (BOOL)performPPTTest:(id)arg1 anchoredQueryForType:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 withLimit:(long long)arg5 anchor:(long long)arg6;
+- (BOOL)performPPTTest:(id)arg1 collectionQueryForType:(id)arg2 anchorDate:(id)arg3 startDate:(id)arg4 endDate:(id)arg5 dateIntervalsString:(id)arg6 separateBySource:(BOOL)arg7 average:(BOOL)arg8 minimum:(BOOL)arg9 maximum:(BOOL)arg10 sum:(BOOL)arg11;
+- (BOOL)performPPTTest:(id)arg1 enumerateLocationSeriesWithDatumCount:(long long)arg2;
+- (BOOL)performPPTTest:(id)arg1 insertLocationSeriesWithDatumCount:(long long)arg2 batched:(BOOL)arg3;
+- (BOOL)performPPTTest:(id)arg1 preflightHealthDirectory:(id)arg2 sampleTypes:(id)arg3 killHealthd:(BOOL)arg4;
+- (BOOL)performPPTTest:(id)arg1 sampleQueryForType:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 withLimit:(long long)arg5;
+- (BOOL)performPPTTest:(id)arg1 saveDataWithCount:(long long)arg2;
+- (BOOL)performPPTTest:(id)arg1 statisticsQueryForType:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 separateBySource:(BOOL)arg5 average:(BOOL)arg6 minimum:(BOOL)arg7 maximum:(BOOL)arg8 sum:(BOOL)arg9;
+- (BOOL)performSyntheticJournalMergePPTTest:(id)arg1 simulatedDuration:(double)arg2;
 - (BOOL)runTest:(id)arg1 options:(id)arg2;
 
 @end

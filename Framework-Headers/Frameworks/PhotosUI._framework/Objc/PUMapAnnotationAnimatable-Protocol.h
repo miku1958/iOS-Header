@@ -13,12 +13,12 @@
 
 @protocol PUMapAnnotationAnimatable <NSObject, MKAnnotation, NSCopying>
 
-@property (nonatomic) CDStruct_c3b9c2ee coordinate;
+@property (nonatomic) struct CLLocationCoordinate2D coordinate;
 @property (readonly, nonatomic) unsigned long long count;
 @property (readonly, strong, nonatomic) NSDate *dateCreated;
 @property (readonly, strong, nonatomic) NSObject *itemId;
 @property (readonly, nonatomic) NSArray *mapItems;
-@property (readonly, nonatomic) CDStruct_c3b9c2ee originalCoordinate;
+@property (readonly, nonatomic) struct CLLocationCoordinate2D originalCoordinate;
 @property (nonatomic) unsigned long long relativeOrder;
 @property (readonly, strong, nonatomic) NSMutableSet *subAnnotations;
 

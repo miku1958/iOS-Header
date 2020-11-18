@@ -33,6 +33,7 @@
 - (void)layoutSubviews;
 - (void)passcodeField:(id)arg1 enteredPasscode:(id)arg2;
 - (BOOL)resignFirstResponder;
+- (void)setBlocked:(BOOL)arg1;
 - (void)setStringValue:(id)arg1;
 - (id)stringValue;
 

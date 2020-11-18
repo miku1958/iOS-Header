@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKDPRecordIdentifier *recordId; // @synthesize recordId=_recordId;
 @property (strong, nonatomic) CKDPRecordType *type; // @synthesize type=_type;
 
++ (Class)assetFieldsType;
 - (void).cxx_destruct;
 - (void)addAssetFields:(id)arg1;
 - (id)assetFieldsAtIndex:(unsigned long long)arg1;

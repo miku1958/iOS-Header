@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, br_pacer;
 @protocol BRContainerHelper, NSObject, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -15,12 +15,14 @@ __attribute__((visibility("hidden")))
     id<BRContainerHelper> _helper;
     NSMutableDictionary *_containersByID;
     BOOL _didFetchAllContainers;
-    struct br_pacer_t *_invalidationPacer;
+    br_pacer *_invalidationPacer;
     NSObject<OS_dispatch_source> *_memoryPressureSource;
     id<NSObject> _containerStatusObserver;
 }
 
 + (id)containerCache;
+- (void).cxx_destruct;
+- (void)_accountWillChange;
 - (id)_allContainersByIDNoCopy;
 - (void)_containerListDidChange;
 - (void)_invalidate;

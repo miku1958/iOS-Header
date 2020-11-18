@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) NSMutableSet *nodes; // @synthesize nodes=__nodes;
 @property (readonly, nonatomic) double range; // @synthesize range=__range;
 
+- (void)dealloc;
 - (id)initWithNodes:(id)arg1 inRange:(double)arg2;
 
 @end

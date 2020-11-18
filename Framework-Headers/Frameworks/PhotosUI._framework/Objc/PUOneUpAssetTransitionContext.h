@@ -19,21 +19,15 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _animationBlock;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType animationBlock; // @synthesize animationBlock=_animationBlock;
-@property (strong, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
-@property (strong, nonatomic) UIView *fromView; // @synthesize fromView=_fromView;
-@property (nonatomic) BOOL shouldHideBackground; // @synthesize shouldHideBackground=_shouldHideBackground;
-@property (strong, nonatomic) UIView *snapshotView; // @synthesize snapshotView=_snapshotView;
-@property (strong, nonatomic) PUOneUpAssetTransitionInfo *transitionInfo; // @synthesize transitionInfo=_transitionInfo;
+@property (copy, nonatomic, setter=_setAnimationBlock:) CDUnknownBlockType animationBlock; // @synthesize animationBlock=_animationBlock;
+@property (strong, nonatomic, setter=_setContainerView:) UIView *containerView; // @synthesize containerView=_containerView;
+@property (strong, nonatomic, setter=_setFromView:) UIView *fromView; // @synthesize fromView=_fromView;
+@property (nonatomic, setter=_setShouldHideBackground:) BOOL shouldHideBackground; // @synthesize shouldHideBackground=_shouldHideBackground;
+@property (strong, nonatomic, setter=_setSnapshotView:) UIView *snapshotView; // @synthesize snapshotView=_snapshotView;
+@property (strong, nonatomic, setter=_setTransitionInfo:) PUOneUpAssetTransitionInfo *transitionInfo; // @synthesize transitionInfo=_transitionInfo;
 
 + (id)oneUpAssetTransitionContextWithContainerView:(id)arg1 fromView:(id)arg2 snapshotView:(id)arg3 transitionInfo:(id)arg4;
 - (void).cxx_destruct;
-- (void)_setAnimationBlock:(CDUnknownBlockType)arg1;
-- (void)_setContainerView:(id)arg1;
-- (void)_setFromView:(id)arg1;
-- (void)_setShouldHideBackground:(BOOL)arg1;
-- (void)_setSnapshotView:(id)arg1;
-- (void)_setTransitionInfo:(id)arg1;
 - (id)oneUpTransitionContextWithAnimationBlock:(CDUnknownBlockType)arg1;
 - (id)oneUpTransitionContextWithContextShouldHideBackground:(BOOL)arg1;
 - (id)oneUpTransitionContextWithContextWithContainerView:(id)arg1;

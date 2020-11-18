@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/BBBehaviorOverrideEffectivePeriod-Protocol.h>
 
@@ -26,9 +26,9 @@
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (BOOL)containsDate:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStartDate:(id)arg1 effectiveInterval:(double)arg2 identifier:(id)arg3;

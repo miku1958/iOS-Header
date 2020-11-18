@@ -49,6 +49,7 @@
 @property (readonly, nonatomic) unsigned long long unreadAlbumsCount;
 
 + (id)filteredAlbumList:(id)arg1 filter:(int)arg2;
+- (void).cxx_destruct;
 - (void)_backingContextDidChange:(id)arg1;
 - (void)_invalidateFilteredIndexes;
 - (BOOL)albumHasFixedOrder:(struct NSObject *)arg1;

@@ -32,6 +32,7 @@
 - (id)knownAppContainerTuples;
 - (id)knownApplicationBundleIDs;
 - (id)pushTokenForAppContainerTuple:(id)arg1;
+- (void)removeContainerID:(id)arg1;
 - (void)removeKnownApplicationBundleID:(id)arg1;
 - (void)setAppContainerIntersectionMetadata:(id)arg1 forAppContainerTuple:(id)arg2;
 - (void)setApplicationMetadata:(id)arg1 forApplicationBundleID:(id)arg2 sourceApplicationBundleID:(id)arg3;

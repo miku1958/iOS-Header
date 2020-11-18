@@ -12,11 +12,13 @@
 
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
 - (id)activityItems;
-- (void)generatePreviews;
+- (BOOL)canMarkup;
+- (void)generatePreviewsInOperation:(id)arg1;
 - (CDUnknownBlockType)genericBrickThumbnailCreator;
 - (CDUnknownBlockType)genericListThumbnailCreator;
 - (BOOL)hasPreviews;
 - (BOOL)hasThumbnailImage;
+- (BOOL)needToGeneratePreviews;
 - (BOOL)showThumbnailInNoteList;
 - (void)updateAttachmentSize;
 - (void)updateFileBasedAttributes;

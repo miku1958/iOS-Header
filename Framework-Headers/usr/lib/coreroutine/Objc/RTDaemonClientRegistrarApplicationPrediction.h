@@ -34,7 +34,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)addPendingApplicationPredictionInvocation:(id)arg1 failBlock:(CDUnknownBlockType)arg2;
+- (void)addPendingApplicationPredictionBlock:(CDUnknownBlockType)arg1 failBlock:(CDUnknownBlockType)arg2 description:(id)arg3;
 - (long long)countOfPendingInvocations;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)evaluatePredicateKeyPath;

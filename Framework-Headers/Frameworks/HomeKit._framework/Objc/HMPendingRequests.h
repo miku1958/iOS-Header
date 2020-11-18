@@ -20,9 +20,10 @@
 
 - (void).cxx_destruct;
 - (void)_addRequest:(id)arg1 ofType:(long long)arg2 forIdentifier:(id)arg3;
-- (id)_removeRequestOfType:(long long)arg1 forIdentifier:(id)arg2;
+- (id)_retrieveRequestOfType:(long long)arg1 forIdentifier:(id)arg2 remove:(BOOL)arg3;
 - (void)addAccessory:(id)arg1 andCompletionBlock:(id)arg2 forIdentifier:(id)arg3;
 - (void)addAction:(id)arg1 andCompletionBlock:(id)arg2 forIdentifier:(id)arg3;
+- (void)addApplicationData:(id)arg1 andCompletionBlock:(id)arg2 forIdentifier:(id)arg3;
 - (void)addCompletionBlock:(id)arg1 forIdentifier:(id)arg2;
 - (void)addEvent:(id)arg1 andCompletionBlock:(id)arg2 forIdentifier:(id)arg3;
 - (void)addRequest:(id)arg1 ofType:(long long)arg2 forIdentifier:(id)arg3;
@@ -30,10 +31,13 @@
 - (id)init;
 - (id)removeAccessoryForIdentifier:(id)arg1;
 - (id)removeActionForIdentifier:(id)arg1;
+- (id)removeApplicationDataForIdentifier:(id)arg1;
 - (id)removeCompletionBlockForIdentifier:(id)arg1;
 - (id)removeEventForIdentifier:(id)arg1;
 - (id)removeRequestOfType:(long long)arg1 forIdentifier:(id)arg2;
 - (id)removeTriggerForIdentifier:(id)arg1;
+- (id)retrieveCompletionBlockForIdentifier:(id)arg1;
+- (id)retrieveRequestOfType:(long long)arg1 forIdentifier:(id)arg2;
 
 @end
 

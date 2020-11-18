@@ -15,9 +15,9 @@
 @interface NSItemProvider : NSObject <NSSecureCoding, NSCopying>
 {
     CDUnknownBlockType __previewImageHandler;
-    NSDictionary *_userInfo;
-    id<_NSItemProviderLoading> __loadOperator;
     NSMutableDictionary *__loadHandlers;
+    id<_NSItemProviderLoading> __loadOperator;
+    NSDictionary *_userInfo;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *_loadHandlers; // @synthesize _loadHandlers=__loadHandlers;

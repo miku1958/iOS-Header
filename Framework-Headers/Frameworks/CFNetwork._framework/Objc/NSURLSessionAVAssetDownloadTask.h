@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSURL *URL; // @synthesize URL=_URL;
 @property (readonly, copy) NSURL *destinationURL; // @synthesize destinationURL=_destinationURL;
 
+- (void)dealloc;
 
 @end
 

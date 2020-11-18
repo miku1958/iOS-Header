@@ -8,10 +8,11 @@
 
 #import <BaseBoard/BSDescriptionProviding-Protocol.h>
 #import <BaseBoard/BSXPCCoding-Protocol.h>
+#import <BaseBoard/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString;
 
-@interface BSAuditHistory : NSObject <BSXPCCoding, BSDescriptionProviding>
+@interface BSAuditHistory : NSObject <BSXPCCoding, NSSecureCoding, BSDescriptionProviding>
 {
     NSMutableArray *_items;
 }
@@ -23,13 +24,16 @@
 @property (readonly, strong, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void)addItem:(id)arg1;
 - (void)addItemWithFormat:(id)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

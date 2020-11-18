@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (void)enumerateObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)finalize;
 - (void)getObjects:(id *)arg1 range:(struct _NSRange)arg2;
 - (unsigned long long)indexOfObject:(id)arg1;
 - (id)objectAtIndex:(unsigned long long)arg1;

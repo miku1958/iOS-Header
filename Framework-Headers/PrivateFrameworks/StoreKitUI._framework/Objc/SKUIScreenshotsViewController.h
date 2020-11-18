@@ -52,8 +52,9 @@
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)reloadData;
 - (void)scrollViewWillBeginDragging:(id)arg1;
-- (id)slideshowViewController:(id)arg1 imageAtIndex:(long long)arg2;
-- (id)slideshowViewController:(id)arg1 imageURLAtIndex:(long long)arg2 size:(struct CGSize *)arg3;
+- (id)slideshowViewController:(id)arg1 dataConsumerAtIndex:(long long)arg2;
+- (id)slideshowViewController:(id)arg1 imageURLAtIndex:(long long)arg2;
+- (id)slideshowViewController:(id)arg1 placeholderImageAtIndex:(long long)arg2;
 - (id)slideshowViewController:(id)arg1 poppedImageViewAtIndex:(long long)arg2;
 - (void)slideshowViewController:(id)arg1 scrollToImageAtIndex:(long long)arg2;
 - (id)viewForZoomingInScrollView:(id)arg1;

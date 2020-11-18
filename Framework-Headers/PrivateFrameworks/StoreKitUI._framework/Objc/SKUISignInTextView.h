@@ -27,6 +27,7 @@
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
 @property (nonatomic) long long spellCheckingType;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *textContentType;
 
 
 @end

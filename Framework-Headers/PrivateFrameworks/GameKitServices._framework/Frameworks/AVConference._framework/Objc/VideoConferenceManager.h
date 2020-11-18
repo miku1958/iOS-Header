@@ -9,6 +9,7 @@
 #import <AVConference/VideoConferenceDelegate-Protocol.h>
 
 @class ICEResultWaitQueue, NSMutableArray, VCNetworkAgent, VCVTPWrapper, VideoConference;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface VideoConferenceManager : NSObject <VideoConferenceDelegate>
@@ -16,6 +17,7 @@ __attribute__((visibility("hidden")))
     unsigned char _clientUUID[16];
     struct _opaque_pthread_mutex_t stateLock;
     struct _opaque_pthread_mutex_t sipLock;
+    NSObject<OS_dispatch_queue> *_xpcCommandQueue;
     NSMutableArray *vcList;
     VideoConference *activeConference;
     VideoConference *conferenceWithMic;
@@ -41,21 +43,20 @@ __attribute__((visibility("hidden")))
 - (void)broadcastCellTechChange:(int)arg1 cellularMaxPktLen:(unsigned short)arg2;
 - (void)cleanupVTP;
 - (id)conferenceForCallID:(unsigned int)arg1;
-- (id)conferenceForIncomingConnectionResult:(struct tagCONNRESULT *)arg1;
 - (id)conferenceForParticipantID:(id)arg1;
+- (id)conferenceForSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
 - (void)createSIPWithPacketMultiplexMode:(int)arg1;
 - (id)defaultNetworkAgent;
 - (void)getClientUUID:(unsigned char [16])arg1;
 - (BOOL)hasVideoConference:(id)arg1;
 - (id)init;
 - (BOOL)isSIPHandleValid:(struct tagHANDLE *)arg1;
-- (void)notifyPrimaryConnChangeToClient:(id)arg1 newConnResult:(struct tagCONNRESULT *)arg2;
 - (void)pauseVideoConferences:(BOOL)arg1;
 - (void)registerBlocksForConference;
 - (void)removeVideoConference:(id)arg1;
-- (void)startSIPWithPacketMultiplexMode:(int)arg1;
+- (void)startSIPWithPacketMultiplexMode:(int)arg1 transportType:(unsigned int)arg2;
 - (void)startVTP;
-- (void)stopSIP;
+- (void)stopSIPWithTransportType:(unsigned int)arg1;
 - (void)stopVTP;
 - (void)unassertNetworkAgent;
 - (void)videoConference:(id)arg1 cancelRelayRequest:(unsigned int)arg2 requestDict:(id)arg3;
@@ -70,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)videoConference:(id)arg1 didStartSession:(BOOL)arg2 withCallID:(unsigned int)arg3 withUserInfo:(id)arg4 error:(id)arg5;
 - (void)videoConference:(id)arg1 didStopWithCallID:(unsigned int)arg2 error:(id)arg3 callMetadata:(id)arg4;
 - (void)videoConference:(id)arg1 inititiateRelayRequest:(unsigned int)arg2 requestDict:(id)arg3;
+- (void)videoConference:(id)arg1 isRemoteAudioBelowThreshold:(BOOL)arg2;
 - (void)videoConference:(id)arg1 localAudioEnabled:(BOOL)arg2 forCallID:(unsigned int)arg3 error:(id)arg4;
 - (void)videoConference:(id)arg1 localIPChange:(id)arg2 withCallID:(unsigned int)arg3;
 - (void)videoConference:(id)arg1 receivedNoRemotePacketsForTime:(double)arg2 callID:(unsigned int)arg3;
@@ -85,6 +87,7 @@ __attribute__((visibility("hidden")))
 - (void)videoConference:(id)arg1 updateOutputMeterLevel:(float)arg2;
 - (void)videoConference:(id)arg1 videoQualityNotificationForCallID:(unsigned int)arg2 isDegraded:(BOOL)arg3 isRemote:(BOOL)arg4;
 - (void)videoConference:(id)arg1 withCallID:(unsigned int)arg2 didPauseAudio:(BOOL)arg3 error:(id)arg4;
+- (void)videoConference:(id)arg1 withCallID:(unsigned int)arg2 didPauseVideo:(BOOL)arg3 error:(id)arg4;
 - (void)videoConference:(id)arg1 withCallID:(unsigned int)arg2 networkHint:(BOOL)arg3;
 
 @end

@@ -52,11 +52,11 @@
 @property (nonatomic) double accumulationRejectionTimeInterval; // @synthesize accumulationRejectionTimeInterval=_accumulationRejectionTimeInterval;
 @property (nonatomic) unsigned long long accumulationSize; // @synthesize accumulationSize=_accumulationSize;
 @property (nonatomic) double accumulationTimeInterval; // @synthesize accumulationTimeInterval=_accumulationTimeInterval;
-@property (copy, nonatomic) NSArray *clusters; // @synthesize clusters=_clusters;
-@property (copy, nonatomic) NSSet *deletedClusters; // @synthesize deletedClusters=_deletedClusters;
+@property (copy, nonatomic, setter=_setClusters:) NSArray *clusters; // @synthesize clusters=_clusters;
+@property (copy, nonatomic, setter=_setDeletedClusters:) NSSet *deletedClusters; // @synthesize deletedClusters=_deletedClusters;
 @property (nonatomic, getter=isDirty, setter=_setDirty:) BOOL dirty; // @synthesize dirty=_dirty;
 @property (readonly, nonatomic) BOOL hasMarkedNodes;
-@property (copy, nonatomic) NSSet *insertedClusters; // @synthesize insertedClusters=_insertedClusters;
+@property (copy, nonatomic, setter=_setInsertedClusters:) NSSet *insertedClusters; // @synthesize insertedClusters=_insertedClusters;
 @property (copy, nonatomic) CDUnknownBlockType progressBlock; // @synthesize progressBlock=_progressBlock;
 @property (nonatomic) BOOL shouldApplyUserInfluenceBeforeClustering; // @synthesize shouldApplyUserInfluenceBeforeClustering=_shouldApplyUserInfluenceBeforeClustering;
 @property (nonatomic) double sigma; // @synthesize sigma=_sigma;
@@ -64,16 +64,12 @@
 @property (nonatomic) double spatialJoinTimeInterval; // @synthesize spatialJoinTimeInterval=_spatialJoinTimeInterval;
 @property (nonatomic) BOOL spatialJoinsAdjacentClusters; // @synthesize spatialJoinsAdjacentClusters=_spatialJoinsAdjacentClusters;
 @property (nonatomic) double theta; // @synthesize theta=_theta;
-@property (copy, nonatomic) NSSet *updatedClusters; // @synthesize updatedClusters=_updatedClusters;
+@property (copy, nonatomic, setter=_setUpdatedClusters:) NSSet *updatedClusters; // @synthesize updatedClusters=_updatedClusters;
 
 + (double)maximumClusterTime;
 - (id)_clustersByMergingUserInfluencedClusters:(id)arg1;
 - (id)_clustersBySplittingUserInfluencedClusters:(id)arg1;
 - (void)_commonPLMomentClusteringManagerInitialization;
-- (void)_setClusters:(id)arg1;
-- (void)_setDeletedClusters:(id)arg1;
-- (void)_setInsertedClusters:(id)arg1;
-- (void)_setUpdatedClusters:(id)arg1;
 - (id)accumulateSmallClustersFromClusters:(id)arg1;
 - (id)clustersByApplyingUserInfluenceToClusters:(id)arg1;
 - (id)clustersWithNodes:(id)arg1 sigma:(double)arg2 theta:(double)arg3;

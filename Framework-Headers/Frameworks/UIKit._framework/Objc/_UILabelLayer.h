@@ -25,7 +25,9 @@ __attribute__((visibility("hidden")))
 - (void)invalidateContentInsets;
 - (void)layoutSublayers;
 - (void)setBounds:(struct CGRect)arg1;
+- (void)setContentsFormat:(id)arg1;
 - (void)setContentsGravity:(id)arg1;
+- (void)setContentsMultiplyColor:(struct CGColor *)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setMasksToBounds:(BOOL)arg1;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;

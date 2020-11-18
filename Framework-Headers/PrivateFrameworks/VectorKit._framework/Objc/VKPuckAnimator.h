@@ -21,7 +21,7 @@
     BOOL _suspended;
     double _tracePlaybackSpeedMultiplier;
     unsigned long long _behavior;
-    struct VKPoint _lastProjectedPosition;
+    Matrix_6e1d3589 _lastProjectedPosition;
     GEORouteMatch *_lastProjectedLocation;
 }
 

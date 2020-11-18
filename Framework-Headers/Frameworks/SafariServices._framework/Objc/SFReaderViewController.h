@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) WKWebView *readerWebView;
 @property (readonly) Class superclass;
 
-+ (void)initialize;
 - (void).cxx_destruct;
 - (void)_webView:(id)arg1 commitPreviewedViewController:(id)arg2;
 - (id)_webView:(id)arg1 previewViewControllerForURL:(id)arg2 defaultActions:(id)arg3 elementInfo:(id)arg4;

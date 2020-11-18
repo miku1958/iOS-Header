@@ -22,6 +22,7 @@
 @property (readonly) Class superclass;
 
 + (id)serializerWithStorage:(id)arg1;
+- (void).cxx_destruct;
 - (BOOL)canSerializeArray:(id)arg1;
 - (BOOL)canSerializeData:(id)arg1;
 - (BOOL)canSerializeString:(id)arg1;

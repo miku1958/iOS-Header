@@ -7,14 +7,23 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (Functional)
+
+@property (readonly, nonatomic) NSArray *mf_tail;
+
 - (BOOL)mf_all:(CDUnknownBlockType)arg1;
 - (BOOL)mf_any:(CDUnknownBlockType)arg1;
+- (unsigned long long)mf_countObjectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)mf_filter:(CDUnknownBlockType)arg1;
 - (id)mf_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)mf_flatMap:(CDUnknownBlockType)arg1;
 - (id)mf_flatten;
+- (id)mf_foldLeftWithStart:(id)arg1 reduce:(CDUnknownBlockType)arg2;
+- (id)mf_groupBy:(CDUnknownBlockType)arg1;
 - (id)mf_map:(CDUnknownBlockType)arg1;
+- (id)mf_mapSelector:(SEL)arg1;
+- (id)mf_partition:(CDUnknownBlockType)arg1;
 - (id)mf_reduce:(CDUnknownBlockType)arg1;
+- (id)mf_subarraysOfSize:(unsigned long long)arg1;
 - (id)mf_uniquifyWithComparator:(CDUnknownBlockType)arg1;
 @end
 

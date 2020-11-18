@@ -10,14 +10,14 @@ __attribute__((visibility("hidden")))
 @interface _VKScaledFallbackIconArtwork : VKIconArtwork
 {
     VKIconArtwork *_artwork;
-    struct CGSize _size;
 }
 
 - (void)_cleanUpAfterDrawing;
 - (id)_newImage;
+- (id)_newImageWithText:(id)arg1 fontName:(id)arg2;
+- (id)_newScaledImage:(id)arg1;
 - (void)dealloc;
 - (id)initWithArtwork:(id)arg1 contentScale:(double)arg2;
-- (struct CGSize)size;
 
 @end
 

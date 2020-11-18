@@ -15,6 +15,7 @@
     HKValueRange *_defaultAxisBounds;
     NSDictionary *_axisBoundsOverrides;
     BOOL _shouldExpandBoundsForOutliers;
+    long long _portraitPrettyNumberRule;
 }
 
 @property (readonly, nonatomic) NSDictionary *axisBoundsOverrides; // @synthesize axisBoundsOverrides=_axisBoundsOverrides;
@@ -22,6 +23,7 @@
 @property (readonly, nonatomic) HKValueRange *defaultAxisBounds; // @synthesize defaultAxisBounds=_defaultAxisBounds;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) long long portraitPrettyNumberRule; // @synthesize portraitPrettyNumberRule=_portraitPrettyNumberRule;
 @property (nonatomic) BOOL shouldExpandBoundsForOutliers; // @synthesize shouldExpandBoundsForOutliers=_shouldExpandBoundsForOutliers;
 @property (readonly) Class superclass;
 

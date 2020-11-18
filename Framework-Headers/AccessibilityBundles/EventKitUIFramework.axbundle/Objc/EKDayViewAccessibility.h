@@ -10,7 +10,7 @@
 {
 }
 
-@property (readonly, nonatomic) id accessibilityScrollView;
+@property (readonly, weak, nonatomic) id accessibilityScrollView;
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;

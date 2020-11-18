@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)supportsSecureCoding;
 - (BOOL)accessoryViewWillAppear;
-- (struct CGRect)remoteIntrinsicContentSizeForInputViewInSet:(id)arg1;
+- (struct CGRect)remoteIntrinsicContentSizeForInputViewInSet:(id)arg1 includingIAV:(BOOL)arg2;
 - (BOOL)showsInputViews;
 - (id)verticalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 

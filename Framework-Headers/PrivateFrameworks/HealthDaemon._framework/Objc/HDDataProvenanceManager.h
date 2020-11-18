@@ -8,12 +8,11 @@
 
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 
-@class HDDatabaseValueCache, NSLock, NSNumber, NSString;
-@protocol HDHealthDaemon;
+@class HDDatabaseValueCache, HDProfile, NSLock, NSNumber, NSString;
 
 @interface HDDataProvenanceManager : NSObject <HDDiagnosticObject>
 {
-    id<HDHealthDaemon> _healthDaemon;
+    HDProfile *_profile;
     NSString *_localSourceVersion;
     NSLock *_propertyLock;
     NSNumber *_propertyLock_localSourceID;
@@ -22,33 +21,34 @@
     int _defaultsLoaded;
     HDDatabaseValueCache *_persistentIDsByProvenanceKey;
     HDDatabaseValueCache *_originProvenanceByPersistentID;
-    NSString *_localBuildNumber;
-    NSString *_localDeviceModel;
+    NSString *_localSystemBuild;
+    NSString *_localProductType;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSNumber *deviceNoneID;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSString *localBuildNumber; // @synthesize localBuildNumber=_localBuildNumber;
 @property (readonly, nonatomic) NSNumber *localDeviceID;
-@property (copy, nonatomic) NSString *localDeviceModel; // @synthesize localDeviceModel=_localDeviceModel;
+@property (copy, nonatomic) NSString *localProductType; // @synthesize localProductType=_localProductType;
 @property (readonly, nonatomic) NSNumber *localSourceID;
+@property (copy, nonatomic) NSString *localSystemBuild; // @synthesize localSystemBuild=_localSystemBuild;
 @property (strong, nonatomic) HDDatabaseValueCache *originProvenanceByPersistentID; // @synthesize originProvenanceByPersistentID=_originProvenanceByPersistentID;
 @property (strong, nonatomic) HDDatabaseValueCache *persistentIDsByProvenanceKey; // @synthesize persistentIDsByProvenanceKey=_persistentIDsByProvenanceKey;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_loadDefaults;
-- (id)_lookupOrInsertProvenance:(id)arg1 withError:(id *)arg2;
+- (id)_localTimeZoneName;
+- (id)_lookupOrInsertProvenance:(id)arg1 error:(id *)arg2;
 - (void)checkDefaultsLoaded;
-- (id)dataProvenanceDefaultsWithSyncProvenance:(long long)arg1 deviceModel:(id)arg2 buildNumber:(id)arg3 sourceID:(id)arg4 deviceID:(id)arg5 sourceVersion:(id)arg6;
+- (id)dataProvenanceDefaultsWithSyncProvenance:(long long)arg1 productType:(id)arg2 systemBuild:(id)arg3 sourceVersion:(id)arg4 timeZoneName:(id)arg5 sourceID:(id)arg6 deviceID:(id)arg7;
 - (id)defaultLocalDataProvenance;
 - (id)diagnosticDescription;
-- (id)initWithHealthDaemon:(id)arg1;
+- (id)initWithProfile:(id)arg1;
 - (id)localDataProvenanceForSourceEntity:(id)arg1 version:(id)arg2 deviceEntity:(id)arg3;
-- (id)originProvenanceForPersistentID:(long long)arg1 inDatabase:(id)arg2;
-- (id)provenanceEntityForProvenance:(id)arg1 withError:(id *)arg2;
+- (id)originProvenanceForPersistentID:(long long)arg1 database:(id)arg2 error:(id *)arg3;
+- (id)provenanceEntityForProvenance:(id)arg1 error:(id *)arg2;
 - (void)setDeviceNoneID:(id)arg1;
 - (void)setLocalDeviceID:(id)arg1;
 - (void)setLocalSourceID:(id)arg1;

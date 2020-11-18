@@ -8,10 +8,10 @@
 
 @interface MusicContextualContentTasteAlertAction : MusicContextualAlertAction
 {
-    unsigned long long _currentTasteType;
+    long long _currentTasteType;
 }
 
-@property (readonly, nonatomic) unsigned long long currentTasteType; // @synthesize currentTasteType=_currentTasteType;
+@property (readonly, nonatomic) long long currentTasteType; // @synthesize currentTasteType=_currentTasteType;
 
 + (id)contextualLoveAlertActionWithEntityValueContext:(id)arg1 didDismissHandler:(CDUnknownBlockType)arg2;
 

@@ -36,6 +36,7 @@
 - (BOOL)textColorFollowsTintColor;
 - (id)treatmentColor;
 - (BOOL)usesTallCharacterSet;
+- (void)viewWasRecycled;
 
 @end
 

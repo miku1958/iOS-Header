@@ -6,10 +6,12 @@
 
 #import <PhotosUI/PUAnimationGroup.h>
 
+#import <PhotosUI/CAAnimationDelegate-Protocol.h>
+
 @class CAAnimation, CALayer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface PULayerAnimation : PUAnimationGroup
+@interface PULayerAnimation : PUAnimationGroup <CAAnimationDelegate>
 {
     float _speed;
     double _timeOffset;
@@ -21,14 +23,17 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic, setter=_setAnimation:) CAAnimation *_animation; // @synthesize _animation=__animation;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *key; // @synthesize key=_key;
 @property (readonly, nonatomic) CALayer *layer; // @synthesize layer=_layer;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_updateLayerAnimation;
 - (void)animationDidStart:(id)arg1;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
-- (id)description;
 - (void)finishImmediately;
 - (id)init;
 - (id)initWithLayer:(id)arg1 key:(id)arg2;

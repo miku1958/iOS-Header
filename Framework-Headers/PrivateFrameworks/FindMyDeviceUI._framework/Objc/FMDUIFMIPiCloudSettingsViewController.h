@@ -47,7 +47,6 @@
 - (id)_userAgentHeader;
 - (void)hideActivityInProgressUI;
 - (void)hideActivityInProgressUIWithDelay:(double)arg1;
-- (id)init;
 - (BOOL)isShowingActivityInProgressUI;
 - (void)showActivityInProgressUIWithMessage:(id)arg1;
 - (id)specifiers;

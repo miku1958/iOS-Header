@@ -10,16 +10,16 @@
 #import <PhotosUI/PUAvalancheReviewControllerDelegate-Protocol.h>
 #import <PhotosUI/PUCollectionViewLayoutProvider-Protocol.h>
 #import <PhotosUI/PUOneUpPhotosSharingTransitionDelegate-Protocol.h>
-#import <PhotosUI/PUPhotoEditViewControllerDelegate-Protocol.h>
+#import <PhotosUI/PUPhotoEditViewControllerPresentationDelegate-Protocol.h>
+#import <PhotosUI/PUPhotoMarkupViewControllerObserver-Protocol.h>
 #import <PhotosUI/PUPhotosSharingViewControllerDelegate-Protocol.h>
-#import <PhotosUI/PUPresentingPhotoBrowserController-Protocol.h>
 #import <PhotosUI/PUSlideshowViewControllerDelegate-Protocol.h>
-#import <PhotosUI/PUVideoEditViewControllerDelegate-Protocol.h>
+#import <PhotosUI/PUVideoEditViewControllerPresentationDelegate-Protocol.h>
 
-@class NSHashTable, NSString, PHAsset, PLPhotoTileViewController, PUAssetReference, PUAvalancheReviewController, PUEditViewController, PUPhotosSharingViewController, PUSlideshowViewController;
+@class NSHashTable, NSString, PUAssetReference, PUAvalancheReviewController, PUEditViewController, PUPhotoMarkupViewController, PUPhotosSharingViewController, PUSlideshowViewController;
 @protocol PUOverOneUpPresentationSessionBarsDelegate, PUOverOneUpPresentationSessionDelegate;
 
-@interface PUOverOneUpPresentationSession : NSObject <PUPresentingPhotoBrowserController, PUPhotoEditViewControllerDelegate, PUVideoEditViewControllerDelegate, PUSlideshowViewControllerDelegate, PUAvalancheReviewControllerDelegate, PUPhotosSharingViewControllerDelegate, PUOneUpPhotosSharingTransitionDelegate, PUCollectionViewLayoutProvider, PLDismissableViewController>
+@interface PUOverOneUpPresentationSession : NSObject <PUPhotoEditViewControllerPresentationDelegate, PUVideoEditViewControllerPresentationDelegate, PUSlideshowViewControllerDelegate, PUAvalancheReviewControllerDelegate, PUPhotosSharingViewControllerDelegate, PUOneUpPhotosSharingTransitionDelegate, PUCollectionViewLayoutProvider, PLDismissableViewController, PUPhotoMarkupViewControllerObserver>
 {
     struct {
         BOOL respondsToTilingView;
@@ -40,6 +40,7 @@
     PUAvalancheReviewController *__avalancheReviewController;
     PUSlideshowViewController *__slideshowViewController;
     PUEditViewController *__editViewController;
+    PUPhotoMarkupViewController *__photoMarkupViewController;
     PUAssetReference *__stashedAssetReference;
     struct NSHashTable *__presentedViewControllers;
 }
@@ -47,13 +48,12 @@
 @property (strong, nonatomic, setter=_setAvalancheReviewController:) PUAvalancheReviewController *_avalancheReviewController; // @synthesize _avalancheReviewController=__avalancheReviewController;
 @property (strong, nonatomic, setter=_setEditViewController:) PUEditViewController *_editViewController; // @synthesize _editViewController=__editViewController;
 @property (nonatomic, setter=_setNeedsUpdatePresentedViewControllers:) BOOL _needsUpdatePresentedViewControllers; // @synthesize _needsUpdatePresentedViewControllers=__needsUpdatePresentedViewControllers;
+@property (strong, nonatomic, setter=_setPhotoMarkupViewController:) PUPhotoMarkupViewController *_photoMarkupViewController; // @synthesize _photoMarkupViewController=__photoMarkupViewController;
 @property (strong, nonatomic, setter=_setPresentedViewControllers:) NSHashTable *_presentedViewControllers; // @synthesize _presentedViewControllers=__presentedViewControllers;
 @property (strong, nonatomic, setter=_setSharingViewController:) PUPhotosSharingViewController *_sharingViewController; // @synthesize _sharingViewController=__sharingViewController;
 @property (strong, nonatomic, setter=_setSlideshowViewController:) PUSlideshowViewController *_slideshowViewController; // @synthesize _slideshowViewController=__slideshowViewController;
 @property (copy, nonatomic, setter=_setStashedAssetReference:) PUAssetReference *_stashedAssetReference; // @synthesize _stashedAssetReference=__stashedAssetReference;
 @property (weak, nonatomic) id<PUOverOneUpPresentationSessionBarsDelegate> barsDelegate; // @synthesize barsDelegate=_barsDelegate;
-@property (nonatomic) PHAsset *currentAsset;
-@property (readonly, nonatomic) PLPhotoTileViewController *currentTile;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUOverOneUpPresentationSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -68,6 +68,7 @@
 - (id)_currentTileController;
 - (BOOL)_dismissAvalancheReviewController:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_dismissEditViewController:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)_dismissPhotoMarkupViewController:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_dismissPhotosSharingViewController:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_dismissSlideshowViewController:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_finalizeAvalancheReviewControllerDismiss;
@@ -84,6 +85,7 @@
 - (void)_prepareForSharingViewControllerDismiss:(id)arg1 withAsset:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_presentAvalancheReviewController:(id)arg1;
 - (BOOL)_presentEditViewController:(id)arg1;
+- (BOOL)_presentPhotoMarkupViewController:(id)arg1;
 - (BOOL)_presentPhotosSharingViewController:(id)arg1;
 - (BOOL)_presentScreenRoutePickerViewController:(id)arg1;
 - (BOOL)_presentSlideshowViewController:(id)arg1;
@@ -100,7 +102,8 @@
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;
 - (id)layoutAttributesForSupplementaryViewOfKind:(id)arg1 atIndexPath:(id)arg2;
-- (void)photoEditController:(id)arg1 didFinishWithSavedChanges:(BOOL)arg2 asset:(id)arg3 modificationDate:(id)arg4;
+- (void)photoEditController:(id)arg1 didFinishPreparingForTransitionAfterEditingAsset:(id)arg2;
+- (void)photoMarkupController:(id)arg1 didFinishWithSavedAsset:(id)arg2;
 - (struct CGPoint)photosSharingTransition:(id)arg1 contentOffsetForAssetReference:(id)arg2;
 - (id)photosSharingTransition:(id)arg1 layoutForAssetReference:(id)arg2;
 - (void)photosSharingTransition:(id)arg1 setVisibility:(BOOL)arg2 forAssetReference:(id)arg3;
@@ -119,8 +122,7 @@
 - (BOOL)prepareForDismissingForced:(BOOL)arg1;
 - (BOOL)presentViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)slideshowViewControllerDidFinish:(id)arg1 withVisibleAssets:(id)arg2;
-- (void)updateOverlaysAnimated:(BOOL)arg1;
-- (void)videoEditViewController:(id)arg1 didFinishWithSavedChanges:(BOOL)arg2 videoAsset:(id)arg3 modificationDate:(id)arg4 seekTime:(CDStruct_1b6d18a9)arg5;
+- (void)videoEditViewController:(id)arg1 didFinishPreparingForTransitionAfterEditingAsset:(id)arg2 modificationDate:(id)arg3 seekTime:(CDStruct_1b6d18a9)arg4;
 - (id)viewController;
 
 @end

@@ -20,7 +20,6 @@
     BOOL _didFinish;
     BOOL _refreshing;
     int _state;
-    CalDiagAccountSync *_accountSyncDiagnostics;
     CalDAVRefreshContext *_context;
     MobileCalDAVAccount *_account;
     CDUnknownBlockType _completionBlock;
@@ -31,6 +30,7 @@
     NSMutableSet *_outstandingTaskGroups;
     NSMutableSet *_outstandingTasks;
     NSString *_calendarHomeSyncToken;
+    CalDiagAccountSync *_accountSyncDiagnostics;
 }
 
 @property (weak, nonatomic) MobileCalDAVAccount *account; // @synthesize account=_account;

@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class HMMessage, NSUUID;
+@class HMFMessage, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDRemoteReadRequestMessage : NSObject
 {
-    HMMessage *_readMessage;
+    HMFMessage *_readMessage;
     NSUUID *_accessoryUUID;
     NSObject<OS_dispatch_queue> *_responseQueue;
 }
 
 @property (readonly, nonatomic) NSUUID *accessoryUUID; // @synthesize accessoryUUID=_accessoryUUID;
-@property (readonly, nonatomic) HMMessage *readMessage; // @synthesize readMessage=_readMessage;
+@property (readonly, nonatomic) HMFMessage *readMessage; // @synthesize readMessage=_readMessage;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *responseQueue; // @synthesize responseQueue=_responseQueue;
 
 - (void).cxx_destruct;

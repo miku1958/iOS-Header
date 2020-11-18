@@ -13,8 +13,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityCheckBorderHit:(BOOL)arg1 left:(BOOL)arg2;
-- (void)_moveLeft:(BOOL)arg1 withHistory:(id)arg2;
-- (void)_moveRight:(BOOL)arg1 withHistory:(id)arg2;
+- (id)_moveLeft:(BOOL)arg1 withHistory:(id)arg2;
+- (id)_moveRight:(BOOL)arg1 withHistory:(id)arg2;
 - (void)_updateSelectionWithTextRange:(id)arg1 withAffinityDownstream:(BOOL)arg2;
 
 @end

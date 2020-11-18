@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <iAd/ADBannerViewInternalDelegate-Protocol.h>
 
@@ -35,6 +35,7 @@
 @property (strong, nonatomic) id timeObserver; // @synthesize timeObserver=_timeObserver;
 @property (strong, nonatomic) ADBannerView *videoAd; // @synthesize videoAd=_videoAd;
 
+- (BOOL)_beginLoadingVideoFromURL:(id)arg1;
 - (id)_networkOptimalVideoURLForAd:(id)arg1;
 - (void)applicationDidBecomeActive;
 - (void)applicationWillResignActive;
@@ -56,7 +57,9 @@
 - (void)playerItemDidFailedToPlayToEnd:(id)arg1;
 - (void)playerItemDidPlayToEnd:(id)arg1;
 - (void)playerItemEncounteredPlaybackStall:(id)arg1;
+- (BOOL)prepareForPlayackOfInterstitialWithURL:(id)arg1;
 - (BOOL)prepareForPlayback;
+- (void)showAdTransparency;
 - (void)shutdown;
 - (id)viewControllerForStoryboardPresentationFromBannerView:(id)arg1;
 

@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *cacheFeedbacks; // @synthesize cacheFeedbacks=_cacheFeedbacks;
 
++ (Class)cacheFeedbackType;
 - (void)addCacheFeedback:(id)arg1;
 - (id)cacheFeedbackAtIndex:(unsigned long long)arg1;
 - (unsigned long long)cacheFeedbacksCount;

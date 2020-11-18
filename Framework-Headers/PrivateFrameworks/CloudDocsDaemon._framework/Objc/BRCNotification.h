@@ -6,30 +6,34 @@
 
 #import <CloudDocs/BRQueryItem.h>
 
-@class BRCItemID, BRCLocalContainer, NSMutableSet, NSNumber, NSSet, NSString, NSURL;
+@class BRCAppLibrary, BRCItemID, BRFileObjectID, NSMutableSet, NSSet, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface BRCNotification : BRQueryItem
 {
+    BOOL _isInDocumentScope;
+    BOOL _isInDataScope;
+    BOOL _isInTrashScope;
     BRCItemID *_itemID;
     BRCItemID *_parentID;
     unsigned long long _oldParentFileID;
-    unsigned long long _parentFileID;
     NSSet *_parentIDs;
-    NSMutableSet *_containerIDsWithReverseAliases;
-    BRCLocalContainer *_container;
-    NSString *_aliasContainerID;
+    NSMutableSet *_appLibraryIDsWithReverseAliases;
+    BRCAppLibrary *_appLibrary;
+    NSString *_aliasSourceAppLibraryID;
     NSString *_unsaltedBookmarkData;
 }
 
-@property (readonly, nonatomic) NSString *aliasContainerID; // @synthesize aliasContainerID=_aliasContainerID;
-@property (readonly, nonatomic) BRCLocalContainer *container; // @synthesize container=_container;
-@property (strong, nonatomic) NSMutableSet *containerIDsWithReverseAliases; // @synthesize containerIDsWithReverseAliases=_containerIDsWithReverseAliases;
+@property (readonly, nonatomic) NSString *aliasSourceAppLibraryID; // @synthesize aliasSourceAppLibraryID=_aliasSourceAppLibraryID;
+@property (readonly, nonatomic) BRCAppLibrary *appLibrary; // @synthesize appLibrary=_appLibrary;
+@property (strong, nonatomic) NSMutableSet *appLibraryIDsWithReverseAliases; // @synthesize appLibraryIDsWithReverseAliases=_appLibraryIDsWithReverseAliases;
+@property (readonly, nonatomic) BOOL isInDataScope; // @synthesize isInDataScope=_isInDataScope;
+@property (readonly, nonatomic) BOOL isInDocumentScope; // @synthesize isInDocumentScope=_isInDocumentScope;
+@property (readonly, nonatomic) BOOL isInTrashScope; // @synthesize isInTrashScope=_isInTrashScope;
 @property (readonly, nonatomic) BRCItemID *itemID; // @synthesize itemID=_itemID;
 @property (readonly, nonatomic) unsigned long long oldParentFileID; // @synthesize oldParentFileID=_oldParentFileID;
-@property (readonly, nonatomic) NSNumber *oldParentFileObjectID;
-@property (readonly, nonatomic) unsigned long long parentFileID; // @synthesize parentFileID=_parentFileID;
-@property (readonly, nonatomic) NSNumber *parentFileObjectID;
+@property (readonly, nonatomic) BRFileObjectID *oldParentFileObjectID;
+@property (readonly, nonatomic) BRFileObjectID *parentFileObjectID;
 @property (readonly, nonatomic) BRCItemID *parentID; // @synthesize parentID=_parentID;
 @property (strong, nonatomic) NSSet *parentIDs; // @synthesize parentIDs=_parentIDs;
 @property (strong, nonatomic) NSString *unsaltedBookmarkData; // @synthesize unsaltedBookmarkData=_unsaltedBookmarkData;
@@ -48,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithLocalItem:(id)arg1 itemDiffs:(unsigned long long)arg2;
 - (void)merge:(id)arg1;
 - (id)notificationByStrippingSharingInfoIfNeeded;
+- (void)setNumberAttribute:(id)arg1 forKey:(id)arg2;
 - (id)subclassDescription;
 
 @end

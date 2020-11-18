@@ -8,26 +8,23 @@
 
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class NSString;
 
 @interface CKArchivedAnchoredPackage : NSObject <NSSecureCoding>
 {
     NSString *_anchorPath;
     NSString *_packagePath;
     NSString *_UUID;
-    NSArray *_assets;
 }
 
 @property (strong, nonatomic) NSString *UUID; // @synthesize UUID=_UUID;
 @property (strong, nonatomic) NSString *anchorPath; // @synthesize anchorPath=_anchorPath;
-@property (strong, nonatomic) NSArray *assets; // @synthesize assets=_assets;
 @property (strong, nonatomic) NSString *packagePath; // @synthesize packagePath=_packagePath;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)awakeAfterUsingCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithCKPackage:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 
 @end

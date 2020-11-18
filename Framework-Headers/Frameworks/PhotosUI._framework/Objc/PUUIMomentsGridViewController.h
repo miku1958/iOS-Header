@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_handleImagePickerCancel:(id)arg1;
 - (void)_handleImagePickerMultipleSelectionDone:(id)arg1;
+- (BOOL)allowsPeeking;
 - (BOOL)canNavigateToPhotoInteractively:(BOOL)arg1;
 - (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3 animated:(BOOL)arg4;
 - (void)getTitle:(out id *)arg1 prompt:(out id *)arg2 shouldHideBackButton:(out BOOL *)arg3 leftBarButtonItems:(out id *)arg4 rightBarButtonItems:(out id *)arg5;

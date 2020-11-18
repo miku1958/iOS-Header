@@ -22,27 +22,29 @@
     NSLock *_atlasesLock;
     NSMapTable *_indexes;
     NSLock *_indexesLock;
+    BOOL _shouldCacheAtlases;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL shouldCacheAtlases; // @synthesize shouldCacheAtlases=_shouldCacheAtlases;
 @property (readonly) Class superclass;
 
 + (id)sharedManager;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)_atlasForName:(id)arg1;
-- (void)_didReceiveMemoryWarning:(id)arg1;
 - (id)_indexForName:(id)arg1;
 - (id)_nonRegionalIndexesAndPacks;
 - (id)artworkForShieldName:(id)arg1 textLength:(unsigned long long)arg2 contentScale:(double)arg3 resourceNames:(id)arg4 size:(long long)arg5 idiom:(long long)arg6 numberOfLines:(unsigned long long)arg7 colors:(CDStruct_87ab733e *)arg8;
-- (id)artworkForShieldType:(long long)arg1 textLength:(unsigned long long)arg2 contentScale:(double)arg3 resourceNames:(id)arg4 style:(shared_ptr_f0e6a37c)arg5 size:(long long)arg6 idiom:(long long)arg7 numberOfLines:(unsigned long long)arg8 colors:(CDStruct_87ab733e *)arg9 featureType:(unsigned long long)arg10 variant:(unsigned long long)arg11;
+- (id)artworkForShieldType:(long long)arg1 textLength:(unsigned long long)arg2 contentScale:(double)arg3 resourceNames:(id)arg4 style:(const shared_ptr_f1f56723 *)arg5 size:(long long)arg6 idiom:(long long)arg7 numberOfLines:(unsigned long long)arg8 colors:(CDStruct_87ab733e *)arg9 featureType:(unsigned long long)arg10 variant:(unsigned long long)arg11;
 - (id)artworkForShieldType:(long long)arg1 textLength:(unsigned long long)arg2 contentScale:(double)arg3 size:(long long)arg4 idiom:(long long)arg5 colors:(CDStruct_87ab733e *)arg6 featureType:(unsigned long long)arg7 variant:(unsigned long long)arg8;
 - (id)artworkForShieldType:(long long)arg1 textLength:(unsigned long long)arg2 contentScale:(double)arg3 size:(long long)arg4 idiom:(long long)arg5 mapRect:(CDStruct_90e2a262)arg6 colors:(CDStruct_87ab733e *)arg7 featureType:(unsigned long long)arg8 variant:(unsigned long long)arg9;
 - (void)dealloc;
 - (id)imageForShieldType:(long long)arg1 shieldText:(id)arg2 contentScale:(double)arg3 size:(long long)arg4 idiom:(long long)arg5 colors:(CDStruct_87ab733e *)arg6 featureType:(unsigned long long)arg7 variant:(unsigned long long)arg8;
 - (id)initWithConfiguration:(id)arg1 resourceManager:(id)arg2;
+- (id)initWithConfiguration:(id)arg1 resourceManager:(id)arg2 shouldCacheAtlases:(BOOL)arg3;
 - (void)purge;
 - (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;
 - (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;

@@ -12,16 +12,17 @@
 
 @interface OFUIPagingViewController : OFUIViewController <OFUIPagingViewDelegate>
 {
-    OFUIPagingView *pagingView;
+    OFUIPagingView *_pagingView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) OFUIPagingView *pagingView; // @synthesize pagingView;
+@property (strong, nonatomic) OFUIPagingView *pagingView; // @synthesize pagingView=_pagingView;
 @property (readonly) Class superclass;
 
 + (Class)pagingViewClass;
+- (void)dealloc;
 - (void)didMoveToParentViewController:(id)arg1;
 - (void)didReceiveMemoryWarning;
 - (void)didRotateFromInterfaceOrientation:(long long)arg1;

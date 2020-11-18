@@ -8,24 +8,26 @@
 
 #import <GeoServices/GEOExperimentServerProxy-Protocol.h>
 
-@class GEOABExperimentResponse, NSLock, NSString;
+@class GEOABAssignmentResponse, NSLock, NSString;
 @protocol GEOExperimentServerProxyDelegate;
 
 @interface GEOExperimentServerRemoteProxy : NSObject <GEOExperimentServerProxy>
 {
     id<GEOExperimentServerProxyDelegate> _delegate;
-    GEOABExperimentResponse *_experimentsInfo;
+    GEOABAssignmentResponse *_experimentsInfo;
     NSLock *_experimentsInfoLock;
     int _experimentsChangedToken;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<GEOExperimentServerProxyDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<GEOExperimentServerProxyDelegate> delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) GEOABExperimentResponse *experimentsInfo;
+@property (readonly, nonatomic) GEOABAssignmentResponse *experimentsInfo;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)_debug_fetchAllAvailableExperiments:(CDUnknownBlockType)arg1;
+- (void)_debug_setActiveExperimentBranchDictionaryRepresentation:(id)arg1;
 - (void)_debug_setQuerySubstring:(id)arg1 forExperimentType:(long long)arg2 dispatcherRequestType:(int)arg3;
 - (void)dealloc;
 - (void)forceUpdate;

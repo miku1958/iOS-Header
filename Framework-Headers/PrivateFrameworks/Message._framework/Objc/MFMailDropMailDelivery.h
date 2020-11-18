@@ -22,6 +22,7 @@
 + (id)_mailDropZone;
 - (id)_attachmentManager;
 - (long long)_processAttachments;
+- (id)_publishRecord:(id)arg1 database:(id)arg2 attachmentRecords:(id)arg3 images:(id)arg4 allowsCellularAccess:(BOOL)arg5;
 - (void)_recordZoneIDInDatabase:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_uploadAttachmentsViaCloudKit:(id)arg1 zone:(id)arg2 records:(id)arg3 zippedPhotos:(id)arg4 attachmentRecords:(id)arg5 images:(id)arg6;
 - (void)dealloc;

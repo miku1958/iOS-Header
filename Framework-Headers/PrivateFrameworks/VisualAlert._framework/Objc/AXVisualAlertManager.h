@@ -6,31 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-@class AXAccessQueueTimer, AXNotificationHandler, NSArray, NSDictionary, NSMutableArray;
-
 @interface AXVisualAlertManager : NSObject
 {
-    unsigned long long _alertTypes;
-    AXAccessQueueTimer *_timer;
-    AXAccessQueueTimer *_torchForceShutdownTimer;
-    NSDictionary *_patterns;
-    NSDictionary *_activePattern;
-    unsigned long long _activePatternCursor;
-    BOOL _shouldRepeatPattern;
-    NSDictionary *_patternToUseForVisualAlertAfterCaptureSessionStopsRunning;
-    NSArray *_notificationHandlers;
-    AXNotificationHandler *_deviceLockStateChangedNotificationHandler;
-    AXNotificationHandler *_torchInControlCenterWasEnabledNotificationHandler;
-    BOOL _torchDeviceOpen;
-    BOOL _torchDeviceOn;
-    BOOL _isDeviceLocked;
-    BOOL _isQuietModeEnabled;
-    BOOL _isTorchEnabledInControlCenter;
-    BOOL _captureSessionRunning;
-    BOOL _videoConferenceCallRinging;
-    BOOL _skipAutomaticStopOnUserInteraction;
-    NSMutableArray *_bulletins;
+    int _ringerStateNotifyToken;
 }
+
+@property (nonatomic) int ringerStateNotifyToken; // @synthesize ringerStateNotifyToken=_ringerStateNotifyToken;
 
 + (id)sharedVisualAlertManager;
 - (void)addBulletin:(id)arg1;

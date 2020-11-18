@@ -7,6 +7,6 @@
 #import <AVFoundation/AVAssetImageGenerator.h>
 
 @interface AVAssetImageGenerator (PhotosPlayer)
-- (void)is_generateCGImagesAsynchronouslyForTimes:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)is_generateCGImagesAsynchronouslyForTimes:(id)arg1 options:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @end
 

@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDViewportInfo, GEOStructuredAddress, NSString;
+@class GEOPDViewportInfo, GEOStructuredAddress, NSString, PBUnknownFields;
 
 @interface GEOPDGeocodingParameters : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     unsigned int _maxResults;
     NSString *_queryString;
     GEOStructuredAddress *_structuredAddress;
@@ -26,6 +27,7 @@
 @property (nonatomic) unsigned int maxResults; // @synthesize maxResults=_maxResults;
 @property (strong, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
 @property (strong, nonatomic) GEOStructuredAddress *structuredAddress; // @synthesize structuredAddress=_structuredAddress;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;
 
 - (void)copyTo:(id)arg1;

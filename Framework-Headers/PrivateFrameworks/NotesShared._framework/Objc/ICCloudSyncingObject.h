@@ -7,17 +7,14 @@
 #import <CoreData/NSManagedObject.h>
 
 #import <NotesShared/ICCloudObject-Protocol.h>
+#import <NotesShared/ICLoggable-Protocol.h>
 
-@class CKRecord, ICCloudState, NSData, NSMapTable, NSMutableDictionary, NSMutableSet, NSString;
+@class CKRecord, CKShare, ICCloudState, NSData, NSMutableDictionary, NSString;
 
-@interface ICCloudSyncingObject : NSManagedObject <ICCloudObject>
+@interface ICCloudSyncingObject : NSManagedObject <ICCloudObject, ICLoggable>
 {
-    BOOL deletedByThisDevice;
     BOOL needsToLoadDecryptedValues;
-    NSMapTable *versionsByOperation;
-    NSMutableSet *temporaryAssets;
-    long long failedToSyncCount;
-    long long numberOfPushAttemptsToWaitCount;
+    BOOL mergingUnappliedEncryptedRecord;
     NSMutableDictionary *_decryptedValues;
 }
 
@@ -29,56 +26,90 @@
 @property (strong, nonatomic) NSData *cryptoWrappedKey; // @dynamic cryptoWrappedKey;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) NSMutableDictionary *decryptedValues; // @synthesize decryptedValues=_decryptedValues;
-@property (nonatomic) BOOL deletedByThisDevice; // @synthesize deletedByThisDevice;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSData *encryptedValuesJSON; // @dynamic encryptedValuesJSON;
-@property (nonatomic) long long failedToSyncCount; // @synthesize failedToSyncCount;
+@property long long failedToSyncCount;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *identifier; // @dynamic identifier;
 @property (nonatomic) BOOL isPasswordProtected; // @dynamic isPasswordProtected;
+@property (readonly, nonatomic) BOOL isUnsupported;
 @property (nonatomic) BOOL markedForDeletion; // @dynamic markedForDeletion;
+@property (nonatomic, getter=isMergingUnappliedEncryptedRecord) BOOL mergingUnappliedEncryptedRecord; // @synthesize mergingUnappliedEncryptedRecord;
+@property (nonatomic) long long minimumSupportedNotesVersion; // @dynamic minimumSupportedNotesVersion;
 @property (nonatomic) BOOL needsInitialFetchFromCloud; // @dynamic needsInitialFetchFromCloud;
 @property (nonatomic) BOOL needsToBeFetchedFromCloud; // @dynamic needsToBeFetchedFromCloud;
 @property (nonatomic) BOOL needsToLoadDecryptedValues; // @synthesize needsToLoadDecryptedValues;
-@property (nonatomic) long long numberOfPushAttemptsToWaitCount; // @synthesize numberOfPushAttemptsToWaitCount;
+@property (nonatomic) BOOL needsToSaveUserSpecificRecord; // @dynamic needsToSaveUserSpecificRecord;
+@property long long numberOfPushAttemptsToWaitCount;
 @property (strong, nonatomic) NSString *passwordHint; // @dynamic passwordHint;
+@property (strong, nonatomic) NSString *primitiveZoneOwnerName; // @dynamic primitiveZoneOwnerName;
 @property (strong, nonatomic) CKRecord *serverRecord; // @dynamic serverRecord;
+@property (strong, nonatomic) CKShare *serverShare; // @dynamic serverShare;
 @property (readonly, nonatomic) BOOL shouldBeIgnoredForSync;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSMutableSet *temporaryAssets; // @synthesize temporaryAssets;
 @property (strong, nonatomic) NSData *unappliedEncryptedRecord; // @dynamic unappliedEncryptedRecord;
-@property (strong, nonatomic) NSMapTable *versionsByOperation; // @synthesize versionsByOperation;
+@property (strong, nonatomic) CKRecord *userSpecificServerRecord; // @dynamic userSpecificServerRecord;
+@property (strong, nonatomic) NSString *zoneOwnerName; // @dynamic zoneOwnerName;
 
-+ (id)allCloudObjects;
++ (id)allCloudObjectsInContext:(id)arg1;
 + (void)applicationWillTerminate:(id)arg1;
++ (id)assetForData:(id)arg1;
++ (id)currentNotesVersion;
 + (void)deleteAllTemporaryAssetFilesForAllObjects;
-+ (id)existingCloudObjectForRecordID:(id)arg1;
++ (void)deleteTemporaryAssetFilesForOperation:(id)arg1;
++ (void)deleteTemporaryFilesForAsset:(id)arg1;
++ (id)deletedByThisDeviceOperationQueue;
++ (id)deletedByThisDeviceSet;
++ (id)existingCloudObjectForRecordID:(id)arg1 context:(id)arg2;
++ (id)failedToSyncCountsByIdentifier;
++ (id)failureCountQueue;
 + (void)initialize;
++ (id)keyPathsForValuesAffectingCanBeSharedViaICloud;
++ (id)keyPathsForValuesAffectingCloudAccount;
++ (id)keyPathsForValuesAffectingIsSharedViaICloud;
 + (id)keyPathsForValuesAffectingNeedsToBeDeletedFromCloud;
 + (id)keyPathsForValuesAffectingNeedsToBePushedToCloud;
++ (id)keyPathsForValuesAffectingZoneOwnerName;
 + (BOOL)needsToReFetchServerRecordValue:(id)arg1;
-+ (id)newCloudObjectForRecord:(id)arg1;
++ (id)newCloudObjectForRecord:(id)arg1 context:(id)arg2;
++ (id)newObjectWithIdentifier:(id)arg1 context:(id)arg2;
++ (id)newPlaceholderObjectForRecordID:(id)arg1 context:(id)arg2;
++ (id)numberOfPushAttemptsToWaitByIdentifier;
++ (id)objectWithRecordID:(id)arg1 context:(id)arg2;
++ (void)resetAllDeletedByThisDeviceProperties;
++ (BOOL)supportsUserSpecificRecords;
 + (id)temporaryAssetDirectoryURL;
++ (id)temporaryAssets;
++ (id)versionsByOperationQueue;
++ (id)versionsByRecordIDByOperation;
 - (void).cxx_destruct;
-- (id)assetForData:(id)arg1;
 - (void)awakeFromFetch;
 - (void)awakeFromInsert;
+- (BOOL)canBeSharedViaICloud;
+- (id)childCloudObjects;
 - (void)clearChangeCount;
 - (void)clearServerRecord;
+- (id)cloudAccount;
 - (id)cryptoMasterKey;
 - (id)cryptoPassphraseVerifier;
+- (long long)databaseScope;
 - (void)dealloc;
 - (void)decrementFailureCounts;
 - (void)decryptAndMergeEncryptedJSON:(id)arg1;
 - (id)decryptedValueForKey:(id)arg1;
-- (void)deleteAllTemporaryAssetFiles;
 - (void)deleteChangeTokensAndReSync;
 - (void)deleteFromLocalDatabase;
-- (void)deleteTemporaryAssetFilesForOperation:(id)arg1;
-- (void)deleteTemporaryFilesForAsset:(id)arg1;
+- (BOOL)deletedByThisDevice;
+- (void)didAcceptShare:(id)arg1;
+- (void)didDeleteUserSpecificRecordID:(id)arg1;
+- (void)didFailToSaveUserSpecificRecord:(id)arg1 error:(id)arg2;
+- (void)didFetchUserSpecificRecord:(id)arg1;
+- (void)didSaveUserSpecificRecord:(id)arg1;
 - (void)fixBrokenReferences;
 - (BOOL)hasAllMandatoryFields;
 - (BOOL)hasSuccessfullyPushedLatestVersionToCloud;
+- (id)ic_loggingIdentifier;
+- (id)ic_loggingValues;
 - (void)incrementFailureCounts;
 - (void)initializeCryptoProperties;
 - (void)initializeCryptoPropertiesFromObject:(id)arg1;
@@ -86,21 +117,27 @@
 - (BOOL)isEncryptableKeyBinaryData:(id)arg1;
 - (BOOL)isInCloud;
 - (BOOL)isInICloudAccount;
+- (BOOL)isOwnedByCurrentUser;
+- (long long)isPushingSameOrLaterThanVersion:(long long)arg1;
+- (BOOL)isSharedRootObject;
+- (BOOL)isSharedViaICloud;
 - (BOOL)isValidObject;
 - (void)loadDecryptedValuesIfNecessary;
 - (id)loggingDescription;
-- (id)loggingDescriptionValues;
-- (id)loggingIdentifier;
 - (void)markForDeletion;
 - (void)mergeCryptoTagAndInitializationVectorFromRecord:(id)arg1;
 - (void)mergeDataFromRecord:(id)arg1;
+- (void)mergeDataFromUserSpecificRecord:(id)arg1;
 - (id)mergeDecryptedValue:(id)arg1 withOldValue:(id)arg2 forKey:(id)arg3;
 - (void)mergeEncryptedDataFromRecord:(id)arg1;
+- (void)mergeUnappliedEncryptedRecord;
 - (BOOL)needsToBeDeletedFromCloud;
 - (BOOL)needsToBePushedToCloud;
+- (BOOL)needsToDeleteShare;
 - (BOOL)needsToFetchAfterServerRecordChanged:(id)arg1;
 - (id)newlyCreatedRecord;
-- (void)objectFailedToBePushedToCloudWithOperation:(id)arg1 error:(id)arg2;
+- (id)newlyCreatedUserSpecificRecord;
+- (void)objectFailedToBePushedToCloudWithOperation:(id)arg1 record:(id)arg2 error:(id)arg3;
 - (void)objectWasDeletedFromCloud;
 - (void)objectWasDeletedFromCloudByAnotherDevice;
 - (void)objectWasFetchedButDoesNotExistInCloud;
@@ -108,13 +145,13 @@
 - (void)objectWasPushedToCloudWithOperation:(id)arg1 serverRecord:(id)arg2;
 - (void)objectWillBePushedToCloudWithOperation:(id)arg1;
 - (id)objectsToBeDeletedBeforeThisObject;
+- (id)parentCloudObject;
 - (id)parentEncryptableObject;
 - (id)primitiveValueForEncryptableKey:(id)arg1;
 - (id)recordID;
 - (id)recordName;
 - (id)recordType;
-- (id)recordZoneID;
-- (void)registerForCryptorNotifications;
+- (id)recordZoneName;
 - (void)resetFailureCounts;
 - (void)resetUniqueIdentifier;
 - (void)saveAndClearDecryptedData;
@@ -122,17 +159,29 @@
 - (void)saveEncryptedJSON;
 - (void)setCryptoMasterKey:(id)arg1;
 - (void)setDecryptedValue:(id)arg1 forKey:(id)arg2;
+- (void)setDeletedByThisDevice:(BOOL)arg1;
 - (void)setInCloud:(BOOL)arg1;
 - (void)setPrimitiveValue:(id)arg1 forEncryptableKey:(id)arg2;
+- (void)setServerShareIfNewer:(id)arg1;
 - (void)setValue:(id)arg1 forEncryptableKey:(id)arg2;
+- (void)setVersion:(long long)arg1 forOperation:(id)arg2;
+- (id)shareTitle;
+- (id)shareType;
+- (id)shortLoggingDescription;
 - (BOOL)shouldBeDeletedFromLocalDatabase;
+- (BOOL)shouldFallBackToCheckAllCryptoKeys;
 - (BOOL)supportsDeletionByTTL;
 - (BOOL)supportsEncryptedValuesDictionary;
-- (id)threadUnsafeNewlyCreatedRecord;
 - (void)unmarkForDeletion;
 - (void)updateChangeCount;
+- (void)updateChangeCountsForUnsavedParentReferences;
+- (void)updateParentReferenceIfNecessary;
+- (id)userSpecificRecordID;
+- (id)userSpecificRecordType;
 - (BOOL)validateIdentifier:(inout id *)arg1 error:(out id *)arg2;
 - (id)valueForEncryptableKey:(id)arg1;
+- (long long)versionForOperation:(id)arg1;
+- (BOOL)wantsUserSpecificRecord;
 
 @end
 

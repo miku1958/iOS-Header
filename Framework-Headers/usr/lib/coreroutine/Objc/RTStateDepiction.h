@@ -8,7 +8,7 @@
 
 #import <coreroutine/NSSecureCoding-Protocol.h>
 
-@class NSDate, RTStateDepictionOneState;
+@class NSDate, NSString, RTStateDepictionOneState, RTStateModelLocation;
 @protocol GEOMapItem;
 
 @interface RTStateDepiction : NSObject <NSSecureCoding>
@@ -18,40 +18,48 @@
 }
 
 @property (strong, nonatomic) RTStateDepictionOneState *clusterState; // @synthesize clusterState=_clusterState;
+@property (copy, nonatomic) NSString *customLabel;
 @property (strong, nonatomic) NSDate *geocodeDate;
+@property (strong, nonatomic) RTStateModelLocation *location;
 @property (strong, nonatomic) id<GEOMapItem> mapItem;
+@property (nonatomic) long long mapItemSource;
 @property (nonatomic) long long numOfDataPts; // @synthesize numOfDataPts=_numOfDataPts;
-@property (nonatomic) long long source;
 @property (nonatomic) long long type;
+@property (nonatomic) long long typeSource;
 
++ (long long)maximumNumberOfDataPoints;
++ (double)quantizeTimeIntervalSinceReferenceDate:(double)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (double)_calculateStandardDeviationForDates:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)_excludeEntryExitOutlierDates:(id)arg1 options:(id)arg2;
 - (id)_filterEntryExitData:(id)arg1 options:(id)arg2;
+- (void)_performErrorCorrection;
+- (void)_performIntegrityCheck;
 - (id)_referenceAdjustEntryExitDates:(id)arg1 options:(id)arg2;
 - (void)addOneVisitsFromStateDepiction:(id)arg1;
 - (double)calculateStandardDeviationWithOptions:(id)arg1 error:(id *)arg2;
 - (BOOL)cleanState:(double)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)exemptFromPurge;
 - (id)getAggStateStat;
 - (double)getAggTimeScaleFactor:(double)arg1 predictionWindow:(double)arg2;
 - (id)getAllOneVisits;
 - (id)getEarliestLatestEntry;
 - (id)getGetWeeklyStats:(double)arg1 numOfWeeks:(int)arg2 uniqueID:(id)arg3;
 - (double)getLastVisit;
-- (id)getLocation;
 - (unsigned long long)getNumOfVisitsOverall;
 - (id)getPredState:(double)arg1 predictionWindow:(double)arg2 numOfWeeks:(int)arg3 uniqueID:(id)arg4;
 - (id)getRecentVisits:(double)arg1;
 - (void)incrementNumOfDataPtsByInteger:(long long)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithLocation:(id)arg1 type:(long long)arg2 typeSource:(long long)arg3 mapItem:(id)arg4 mapItemSource:(long long)arg5 customLabel:(id)arg6;
 - (id)lastEntyExit;
-- (BOOL)needsGeocode;
 - (void)removeAllVisitsExceptMostRecent;
 - (void)removeEntry:(double)arg1 exit:(double)arg2;
-- (void)setLocation:(id)arg1;
+- (void)reverseGeocode;
 - (void)showState;
 - (void)submitEntry:(double)arg1 exit:(double)arg2;
 

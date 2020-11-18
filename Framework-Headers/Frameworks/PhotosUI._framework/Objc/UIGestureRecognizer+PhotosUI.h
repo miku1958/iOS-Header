@@ -7,6 +7,10 @@
 #import <UIKit/UIGestureRecognizer.h>
 
 @interface UIGestureRecognizer (PhotosUI)
+
+@property (readonly, nonatomic) BOOL pu_isScrollViewPanGestureRecognizer;
+
 - (void)pu_cancel;
+- (BOOL)pu_isPanGestureRecognizerOfScrollView:(id *)arg1;
 @end
 

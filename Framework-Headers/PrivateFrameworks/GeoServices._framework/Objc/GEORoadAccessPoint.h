@@ -32,15 +32,19 @@
 @property (strong, nonatomic) GEOLatLng *location; // @synthesize location=_location;
 @property (nonatomic) int walkingDirection; // @synthesize walkingDirection=_walkingDirection;
 
+- (int)StringAsDrivingDirection:(id)arg1;
+- (int)StringAsWalkingDirection:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)drivingDirectionAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)walkingDirectionAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

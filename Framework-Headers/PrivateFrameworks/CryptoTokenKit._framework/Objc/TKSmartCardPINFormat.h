@@ -32,9 +32,11 @@
 @property long long maxPINLength; // @synthesize maxPINLength=_maxPINLength;
 @property long long minPINLength; // @synthesize minPINLength=_minPINLength;
 
++ (void)_writeNumber:(unsigned long long)arg1 into:(id)arg2 bitOffset:(long long)arg3 bitLength:(long long)arg4;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)fillPIN:(id)arg1 intoAPDUTemplate:(id)arg2 PINByteOffset:(long long)arg3 error:(id *)arg4;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 

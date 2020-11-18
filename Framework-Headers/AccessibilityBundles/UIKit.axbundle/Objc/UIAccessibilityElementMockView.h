@@ -11,15 +11,16 @@
 
 @interface UIAccessibilityElementMockView : UIAccessibilityElement
 {
-    UIView *_view;
     id<UIAccessibilityElementMockViewDelegateProtocol> _delegate;
     long long _subviewIndex;
+    UIView *_view;
 }
 
-@property (nonatomic) id<UIAccessibilityElementMockViewDelegateProtocol> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<UIAccessibilityElementMockViewDelegateProtocol> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) long long subviewIndex; // @synthesize subviewIndex=_subviewIndex;
 @property (strong, nonatomic) UIView *view; // @synthesize view=_view;
 
+- (void).cxx_destruct;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
@@ -50,8 +51,7 @@
 - (long long)accessibilityCompareGeometry:(id)arg1;
 - (id)accessibilityContainerElements;
 - (id)accessibilityCustomActions;
-- (id)accessibilityCustomRotorItemsAtIndex:(long long)arg1;
-- (id)accessibilityCustomRotorTitles;
+- (id)accessibilityCustomRotors;
 - (void)accessibilityDecrement;
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)accessibilityElementCount;

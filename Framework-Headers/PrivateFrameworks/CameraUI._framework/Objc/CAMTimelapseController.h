@@ -70,7 +70,6 @@
 - (void)_deviceStarted:(id)arg1;
 - (void)_dismissDiskSpaceAlert;
 - (BOOL)_enqueueCaptureRequest;
-- (void)_notifyAGGDForDidStartCapturingWithState:(id)arg1;
 - (void)_notifyAGGDForDidStopCapturingWithState:(id)arg1;
 - (void)_notifyInsufficientDiskSpaceForContinuingCapture;
 - (void)_notifyInsufficientDiskSpaceForStartingCaptureWithNeededBytes:(long long)arg1 availableBytes:(long long)arg2;
@@ -98,10 +97,10 @@
 - (id)init;
 - (id)initWithCaptureController:(id)arg1 locationController:(id)arg2 motionController:(id)arg3 persistenceController:(id)arg4 nebulaDaemonProxyManager:(id)arg5;
 - (void)restoreConfiguration;
-- (void)startCapturingWithCaptureDevice:(long long)arg1 captureSession:(unsigned short)arg2;
+- (BOOL)startCapturingWithCaptureDevice:(long long)arg1 captureSession:(unsigned short)arg2;
 - (void)stillImageRequestDidCompleteStillImageCapture:(id)arg1 withResponse:(id)arg2 error:(id)arg3;
 - (void)stillImageRequestDidCompleteStillImageLocalPersistence:(id)arg1 withResponse:(id)arg2 error:(id)arg3;
-- (void)stopCapturingWithReasons:(long long)arg1;
+- (BOOL)stopCapturingWithReasons:(long long)arg1;
 
 @end
 

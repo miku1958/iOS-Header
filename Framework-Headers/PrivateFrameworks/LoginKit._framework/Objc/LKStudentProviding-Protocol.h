@@ -10,7 +10,7 @@
 
 @protocol LKStudentProviding <NSObject>
 
-@property (readonly, copy, nonatomic) NSArray *students;
+@property (copy, nonatomic) NSArray *students;
 
 @end
 

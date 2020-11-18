@@ -25,7 +25,6 @@
 - (void)requestPrepareForFullSync:(id)arg1;
 - (void)successfullySentProtobufWithIDSIdentifier:(id)arg1;
 - (void)warnErrorDownloadingContentForMessage:(id)arg1 notificationPriority:(BOOL)arg2 userRequested:(BOOL)arg3;
-- (void)warnNeedsUnlock:(id)arg1;
 
 @end
 

@@ -8,11 +8,20 @@
 
 #import <StoreKitUI/SKUIJSApplication-Protocol.h>
 
+@class SKUIApplicationController;
+
 @interface SKUIJSApplication : IKJSApplication <SKUIJSApplication>
 {
+    SKUIApplicationController *_applicationController;
 }
 
-- (void)restart;
+@property (readonly, weak, nonatomic) SKUIApplicationController *applicationController; // @synthesize applicationController=_applicationController;
+
+- (void).cxx_destruct;
+- (id)initWithAppContext:(id)arg1 applicationController:(id)arg2;
+- (void)launchComplete:(id)arg1;
+- (void)launchFailed;
+- (void)sendDocumentMessage:(id)arg1:(id)arg2:(id)arg3;
 
 @end
 

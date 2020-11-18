@@ -31,6 +31,8 @@ struct CGPDFContentStream;
 
 struct CGPDFDictionary;
 
+struct CGPDFObject;
+
 struct CGPDFStream;
 
 struct CGPath;
@@ -87,9 +89,11 @@ struct CPPDFChar {
 struct CPPDFClipBuffer {
     unsigned int _field1;
     unsigned int _field2;
-    unsigned int *_field3;
-    unsigned int _field4;
+    unsigned int _field3;
+    struct CPPDFClipSequence *_field4;
 };
+
+struct CPPDFClipSequence;
 
 struct CPPDFContext {
     struct CGRect _field1;
@@ -163,8 +167,8 @@ struct CPPDFStyle {
     double _field10;
     id _field11;
     double _field12;
-    union CGPDFObject *_field13;
-    union CGPDFObject *_field14;
+    struct CGPDFObject *_field13;
+    struct CGPDFObject *_field14;
     struct CGColor *_field15;
     struct CPPDFStyle *_field16;
 };
@@ -283,8 +287,4 @@ typedef struct {
     double underlinePosition;
     double underlineThickness;
 } CDStruct_05724ab2;
-
-#pragma mark Named Unions
-
-union CGPDFObject;
 

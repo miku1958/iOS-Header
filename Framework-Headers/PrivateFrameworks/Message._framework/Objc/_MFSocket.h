@@ -46,7 +46,11 @@
 @property (nonatomic) BOOL usesOpportunisticSockets; // @synthesize usesOpportunisticSockets=_usesOpportunisticSockets;
 
 - (unsigned int)_bufferedByteCount;
+- (BOOL)_certificateIsTrustedForAccount:(id)arg1;
+- (BOOL)_evaluateTrust:(struct __SecTrust *)arg1 errorPtr:(id *)arg2;
+- (void)_setCertificateIsTrusted:(BOOL)arg1 forAccount:(id)arg2;
 - (BOOL)_startSSLHandshakeWithProtocol:(id)arg1 disableSSL2:(BOOL)arg2 errorPtr:(id *)arg3;
+- (BOOL)_waitForSocketOpenAndFlag:(BOOL *)arg1;
 - (void)abort;
 - (BOOL)connectToHost:(id)arg1 withPort:(unsigned int)arg2 service:(id)arg3;
 - (void)dealloc;

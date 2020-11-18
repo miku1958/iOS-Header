@@ -7,33 +7,35 @@
 #import <objc/NSObject.h>
 
 #import <HomeKitDaemon/APSConnectionDelegate-Protocol.h>
-#import <HomeKitDaemon/HMMessageReceiver-Protocol.h>
+#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class APSConnection, CKContainer, CKDatabase, CKRecord, CKRecordID, CKRecordZone, CKSubscription, HAPOSTransaction, HMDCloudDataSyncStateFilter, HMDCloudReadOnlyModeFilter, HMDHomeManager, HMMessageDispatcher, NSData, NSMutableArray, NSString, NSUUID;
+@class APSConnection, CKContainer, CKDatabase, CKRecord, CKRecordID, CKRecordZone, CKSubscription, HAPOSTransaction, HMDCloudDataSyncStateFilter, HMDHomeManager, HMFMessageDispatcher, NSData, NSMutableArray, NSString, NSUUID;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface HMDCloudDataSyncManager : NSObject <APSConnectionDelegate, HMMessageReceiver>
+@interface HMDCloudDataSyncManager : NSObject <APSConnectionDelegate, HMFMessageReceiver>
 {
     BOOL _accountActive;
     BOOL _needConflictResolution;
     BOOL _cloudHomeDataRecordExists;
     BOOL _keychainSyncEnabled;
-    BOOL _decryptionFailed;
     BOOL _cloudMetadataRecordExists;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     CKContainer *_container;
     CKDatabase *_database;
     CKRecordZone *_homeDataBlobRecordZone;
     CKRecordID *_homeDataBlobRecordID;
+    CKRecordID *_homeDataBlobRecordIDVersion3;
     CKSubscription *_homeDataBlobSubscription;
     NSData *_cloudServerTokenData;
-    HMMessageDispatcher *_configSyncDispatcher;
+    HMFMessageDispatcher *_configSyncDispatcher;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSMutableArray *_pendingFetchedRecords;
     CDUnknownBlockType _fetchCompletionHandler;
     NSObject<OS_dispatch_queue> *_clientCallbackQueue;
     NSString *_lastHomeDataChangeTag;
+    NSString *_lastHomeDataChangeTagVersion3;
     CKRecord *_homeDataRecord;
+    CKRecord *_homeDataRecordVersion3;
     HAPOSTransaction *_homeDataFetchedTransaction;
     NSObject<OS_dispatch_source> *_retryTimer;
     NSObject<OS_dispatch_source> *_pollTimer;
@@ -43,17 +45,19 @@
     CDUnknownBlockType _cloudMetadataDeletedNotificationHandler;
     CDUnknownBlockType _controllerKeyAvailableNotificationHandler;
     HMDCloudDataSyncStateFilter *_cloudDataSyncStateFilter;
-    HMDCloudReadOnlyModeFilter *_cloudReadonlyModeFilter;
     NSUUID *_uuid;
-    HMMessageDispatcher *_msgDispatcher;
+    HMFMessageDispatcher *_msgDispatcher;
     HMDHomeManager *_homeManager;
     NSMutableArray *_currentBackoffTimerValuesInMinutes;
+    CDUnknownBlockType _dataDecryptionFailedHandler;
+    CDUnknownBlockType _accountActiveUpdateHandler;
     CKRecordID *_metadataBlobRecordID;
     CKRecord *_metadataRecord;
     NSString *_lastMetadataChangeTag;
 }
 
 @property (nonatomic) BOOL accountActive; // @synthesize accountActive=_accountActive;
+@property (copy, nonatomic) CDUnknownBlockType accountActiveUpdateHandler; // @synthesize accountActiveUpdateHandler=_accountActiveUpdateHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientCallbackQueue; // @synthesize clientCallbackQueue=_clientCallbackQueue;
 @property (copy, nonatomic) CDUnknownBlockType cloudDataDeletedNotificationHandler; // @synthesize cloudDataDeletedNotificationHandler=_cloudDataDeletedNotificationHandler;
@@ -61,33 +65,36 @@
 @property (nonatomic) BOOL cloudHomeDataRecordExists; // @synthesize cloudHomeDataRecordExists=_cloudHomeDataRecordExists;
 @property (copy, nonatomic) CDUnknownBlockType cloudMetadataDeletedNotificationHandler; // @synthesize cloudMetadataDeletedNotificationHandler=_cloudMetadataDeletedNotificationHandler;
 @property (nonatomic) BOOL cloudMetadataRecordExists; // @synthesize cloudMetadataRecordExists=_cloudMetadataRecordExists;
-@property (strong, nonatomic) HMDCloudReadOnlyModeFilter *cloudReadonlyModeFilter; // @synthesize cloudReadonlyModeFilter=_cloudReadonlyModeFilter;
 @property (strong, nonatomic) NSData *cloudServerTokenData; // @synthesize cloudServerTokenData=_cloudServerTokenData;
-@property (strong, nonatomic) HMMessageDispatcher *configSyncDispatcher; // @synthesize configSyncDispatcher=_configSyncDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *configSyncDispatcher; // @synthesize configSyncDispatcher=_configSyncDispatcher;
 @property (strong, nonatomic) CKContainer *container; // @synthesize container=_container;
 @property (copy, nonatomic) CDUnknownBlockType controllerKeyAvailableNotificationHandler; // @synthesize controllerKeyAvailableNotificationHandler=_controllerKeyAvailableNotificationHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *controllerKeyPollTimer; // @synthesize controllerKeyPollTimer=_controllerKeyPollTimer;
 @property (strong, nonatomic) NSMutableArray *currentBackoffTimerValuesInMinutes; // @synthesize currentBackoffTimerValuesInMinutes=_currentBackoffTimerValuesInMinutes;
+@property (copy, nonatomic) CDUnknownBlockType dataDecryptionFailedHandler; // @synthesize dataDecryptionFailedHandler=_dataDecryptionFailedHandler;
 @property (strong, nonatomic) CKDatabase *database; // @synthesize database=_database;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) BOOL decryptionFailed; // @synthesize decryptionFailed=_decryptionFailed;
+@property (readonly, nonatomic) BOOL decryptionFailed;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CKRecordID *homeDataBlobRecordID; // @synthesize homeDataBlobRecordID=_homeDataBlobRecordID;
+@property (strong, nonatomic) CKRecordID *homeDataBlobRecordIDVersion3; // @synthesize homeDataBlobRecordIDVersion3=_homeDataBlobRecordIDVersion3;
 @property (strong, nonatomic) CKRecordZone *homeDataBlobRecordZone; // @synthesize homeDataBlobRecordZone=_homeDataBlobRecordZone;
 @property (strong, nonatomic) CKSubscription *homeDataBlobSubscription; // @synthesize homeDataBlobSubscription=_homeDataBlobSubscription;
 @property (strong, nonatomic) HAPOSTransaction *homeDataFetchedTransaction; // @synthesize homeDataFetchedTransaction=_homeDataFetchedTransaction;
 @property (strong, nonatomic) CKRecord *homeDataRecord; // @synthesize homeDataRecord=_homeDataRecord;
+@property (strong, nonatomic) CKRecord *homeDataRecordVersion3; // @synthesize homeDataRecordVersion3=_homeDataRecordVersion3;
 @property (weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property (nonatomic) BOOL keychainSyncEnabled; // @synthesize keychainSyncEnabled=_keychainSyncEnabled;
 @property (strong, nonatomic) NSString *lastHomeDataChangeTag; // @synthesize lastHomeDataChangeTag=_lastHomeDataChangeTag;
+@property (strong, nonatomic) NSString *lastHomeDataChangeTagVersion3; // @synthesize lastHomeDataChangeTagVersion3=_lastHomeDataChangeTagVersion3;
 @property (strong, nonatomic) NSString *lastMetadataChangeTag; // @synthesize lastMetadataChangeTag=_lastMetadataChangeTag;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) CKRecordID *metadataBlobRecordID; // @synthesize metadataBlobRecordID=_metadataBlobRecordID;
 @property (strong, nonatomic) CKRecord *metadataRecord; // @synthesize metadataRecord=_metadataRecord;
-@property (strong, nonatomic) HMMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (nonatomic) BOOL needConflictResolution; // @synthesize needConflictResolution=_needConflictResolution;
 @property (strong, nonatomic) NSMutableArray *pendingFetchedRecords; // @synthesize pendingFetchedRecords=_pendingFetchedRecords;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *pollTimer; // @synthesize pollTimer=_pollTimer;
@@ -102,21 +109,25 @@
 - (void)_accountIsActive;
 - (id)_changeTokenFromData:(id)arg1;
 - (void)_createZoneAndFetchChanges:(CDUnknownBlockType)arg1;
+- (void)_fetchCompleted;
 - (void)_fetchExistingRecord:(CDUnknownBlockType)arg1;
+- (void)_fetchNewChangesForceFetch:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_fetchNewChangesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_fetchStarted;
 - (void)_handleAccountStatus:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2 error:(id)arg3;
 - (void)_handleChangedMetadataRecordWithEncodedData:(id)arg1 transaction:(id)arg2;
-- (void)_handleChangedRecordWithEncodedData:(id)arg1 encodeDataVersion2:(id)arg2;
+- (void)_handleChangedRecordWithEncodedData:(id)arg1 encodeDataVersion2:(id)arg2 encodeDataVersion3:(id)arg3 migrationOptions:(unsigned long long)arg4;
 - (void)_handleControllerKeyAvailable;
 - (void)_handleFetchCompletedWithError:(id)arg1 serverToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3 moreRecordsComing:(BOOL)arg4 emptyRecord:(BOOL)arg5;
-- (void)_handleFetchedHomeDataRecord;
+- (BOOL)_handleFetchedHomeDataRecord:(unsigned long long)arg1;
 - (void)_handleKeychainSyncChanged:(id)arg1;
 - (void)_handleKeychainSyncStateChanged:(BOOL)arg1;
-- (void)_handleModifiedHomeData;
+- (void)_handleModifiedHomeData:(BOOL)arg1;
 - (BOOL)_isControllerKeyAvailable;
 - (void)_registerForMessages;
 - (void)_registerForPushNotifications;
 - (void)_resetCloudDataAndDeleteMetadataForCurrentAccount:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_resetCloudServerTokenData;
 - (void)_resetHomeDataRecordState;
 - (void)_resetMetadataRecordState;
 - (void)_setupSubscription;
@@ -129,23 +140,28 @@
 - (void)_stopFetchPollTimer;
 - (void)_stopFetchRetryTimer;
 - (void)_updateCloudDataSyncFilterState:(BOOL)arg1;
-- (void)_uploadHomeData:(id)arg1 metadata:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_updateServerTokenStatusOnCloudFilter;
+- (void)_uploadHomeData:(id)arg1 metadata:(id)arg2 forcePush:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)_validFetchRetryCKErrorCode:(long long)arg1;
 - (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;
 - (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;
 - (void)connection:(id)arg1 didReceiveToken:(id)arg2 forTopic:(id)arg3 identifier:(id)arg4;
 - (void)dealloc;
 - (void)fetchCurrentAccountStateWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithCloudServerTokenData:(id)arg1 messageDispatcher:(id)arg2 cloudDataSyncStateFilter:(id)arg3 cloudReadonlyModeFilter:(id)arg4 homeManager:(id)arg5 callbackQueue:(id)arg6;
+- (void)fetchExistingRecordsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)forceFetchExistingRecords;
+- (id)initWithCloudServerTokenData:(id)arg1 messageDispatcher:(id)arg2 cloudDataSyncStateFilter:(id)arg3 homeManager:(id)arg4 callbackQueue:(id)arg5;
 - (void)resetCloudDataAndDeleteMetadataForCurrentAccount:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resetCloudServerTokenData:(id)arg1;
+- (void)setAccountActiveUpdateCallback:(CDUnknownBlockType)arg1;
 - (void)setCloudDataDeletedNotificationBlock:(CDUnknownBlockType)arg1;
 - (void)setCloudMetadataDeletedNotificationBlock:(CDUnknownBlockType)arg1;
 - (void)setControllerKeyAvailableNotificationBlock:(CDUnknownBlockType)arg1;
 - (void)setDataAvailableFromCloudCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)setDataDecryptionFailedCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)updateAccountStatusChanged:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateServerTokenStatusOnCloudFilter;
-- (void)uploadHomeData:(id)arg1 metadata:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)uploadHomeData:(id)arg1 metadata:(id)arg2 forcePush:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

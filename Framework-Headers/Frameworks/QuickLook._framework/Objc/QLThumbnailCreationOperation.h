@@ -12,6 +12,7 @@
 {
     BOOL _finished;
     BOOL _executing;
+    BOOL _generateIfNeeded;
     UIImage *_image;
     NSError *_error;
     NSURL *_documentURL;
@@ -24,23 +25,25 @@
 @property struct CGRect contentRect; // @synthesize contentRect=_contentRect;
 @property (strong) NSURL *documentURL; // @synthesize documentURL=_documentURL;
 @property (strong) NSError *error; // @synthesize error=_error;
+@property BOOL generateIfNeeded; // @synthesize generateIfNeeded=_generateIfNeeded;
 @property (strong) UIImage *image; // @synthesize image=_image;
 @property double maximumDimension; // @synthesize maximumDimension=_maximumDimension;
 @property double scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 @property unsigned long long useMode; // @synthesize useMode=_useMode;
 
+- (void).cxx_destruct;
 - (void)_finish;
 - (BOOL)_finishIfCancelled;
-- (void)checkIfThumbnailExistsAtPhysicalURL:(id)arg1;
-- (void)dealloc;
+- (void)_finishWithError:(id)arg1;
 - (BOOL)isConcurrent;
 - (BOOL)isExecuting;
 - (BOOL)isFinished;
 - (void)main;
-- (void)retrieveThumbnailForPhysicalURL:(id)arg1 hasThumbnailInIndex:(BOOL)arg2;
+- (void)retrieveThumbnailForTaggedLogicalURL:(id)arg1;
 - (void)setExecuting:(BOOL)arg1;
 - (void)setFinished:(BOOL)arg1;
 - (void)start;
+- (void)updateLastHitDateOfAddition:(id)arg1 onPhysicalURL:(id)arg2;
 
 @end
 

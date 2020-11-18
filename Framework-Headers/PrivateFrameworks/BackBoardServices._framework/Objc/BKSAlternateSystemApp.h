@@ -36,9 +36,9 @@
 
 - (void)_handleInterruptedConnection;
 - (void)_handleInvalidatedConnection;
-- (void)_invalidate;
 - (void)_queue_changeState:(long long)arg1;
 - (void)_queue_ensureConnection;
+- (void)_queue_invalidate;
 - (void)_waitForState:(long long)arg1;
 - (void)activate;
 - (void)alternateSystemAppWithBundleID:(id)arg1 didExitWithReason:(unsigned long long)arg2;

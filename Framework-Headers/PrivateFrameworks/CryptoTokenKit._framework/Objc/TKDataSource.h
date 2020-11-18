@@ -19,7 +19,7 @@
 @property (readonly) const char *ptr; // @synthesize ptr=_ptr;
 
 - (void).cxx_destruct;
-- (BOOL)containsOffset:(long long)arg1;
+- (BOOL)bytesSafeToRead:(long long)arg1;
 - (unsigned char)fetchByte;
 - (id)fetchDataWithLength:(long long)arg1;
 - (id)initWithData:(id)arg1;

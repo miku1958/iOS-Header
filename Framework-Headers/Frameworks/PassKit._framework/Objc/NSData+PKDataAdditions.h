@@ -7,6 +7,7 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (PKDataAdditions)
++ (id)dataWithCGImage:(struct CGImage *)arg1;
 - (id)SHA1Hash;
 - (id)SHA256Hash;
 - (id)fileSafeBase64Encoding;

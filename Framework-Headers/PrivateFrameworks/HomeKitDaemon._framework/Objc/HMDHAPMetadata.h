@@ -27,6 +27,8 @@
     NSArray *_hmBlacklistedCharacteristics;
     NSArray *_hmServicesBlacklistedFromApp;
     NSArray *_hmCharacteristicsBlacklistedFromApp;
+    NSArray *_hmNotificationAutoEnabledTuples;
+    NSArray *_hmBulletinBoardEnabledTuples;
     NSDictionary *_assistantServices;
     NSArray *_assistantCharacteristics;
     NSDictionary *_assistantUnits;
@@ -44,7 +46,9 @@
 @property (strong, nonatomic) NSArray *hmAccessoryCategories; // @synthesize hmAccessoryCategories=_hmAccessoryCategories;
 @property (strong, nonatomic) NSArray *hmBlacklistedCharacteristics; // @synthesize hmBlacklistedCharacteristics=_hmBlacklistedCharacteristics;
 @property (strong, nonatomic) NSArray *hmBlacklistedServices; // @synthesize hmBlacklistedServices=_hmBlacklistedServices;
+@property (strong, nonatomic) NSArray *hmBulletinBoardEnabledTuples; // @synthesize hmBulletinBoardEnabledTuples=_hmBulletinBoardEnabledTuples;
 @property (strong, nonatomic) NSArray *hmCharacteristicsBlacklistedFromApp; // @synthesize hmCharacteristicsBlacklistedFromApp=_hmCharacteristicsBlacklistedFromApp;
+@property (strong, nonatomic) NSArray *hmNotificationAutoEnabledTuples; // @synthesize hmNotificationAutoEnabledTuples=_hmNotificationAutoEnabledTuples;
 @property (strong, nonatomic) NSArray *hmRequiresDeviceUnlockTuples; // @synthesize hmRequiresDeviceUnlockTuples=_hmRequiresDeviceUnlockTuples;
 @property (strong, nonatomic) NSArray *hmServicesBlacklistedFromApp; // @synthesize hmServicesBlacklistedFromApp=_hmServicesBlacklistedFromApp;
 @property (nonatomic) BOOL incomplete; // @synthesize incomplete=_incomplete;
@@ -61,6 +65,7 @@
 - (id)categoryForIdentifier:(id)arg1;
 - (id)categoryForOther;
 - (BOOL)checkTuples:(id)arg1 forCharacteristic:(id)arg2 service:(id)arg3;
+- (BOOL)checkTuples:(id)arg1 forService:(id)arg2;
 - (id)createHAPMetadata:(id)arg1;
 - (void)createHMDContainersForHAPMetadata;
 - (id)descriptionForCharacteristicType:(id)arg1;
@@ -72,9 +77,12 @@
 - (id)generateCategoriesDictionary:(id)arg1;
 - (id)generateDictionary;
 - (id)generateHAPMetadataTuplesDictionary:(id)arg1;
+- (id)generateHMDHAPMetadataTupleArrayFromDict:(id)arg1;
 - (id)generateHMDictionary;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1 hapMetadata:(id)arg2 error:(id *)arg3;
+- (BOOL)isStandardCharacteristicType:(id)arg1;
+- (BOOL)isStandardServiceType:(id)arg1;
 - (id)parseAssistantCharacteristics:(id)arg1;
 - (BOOL)parseAssistantMetadata:(id)arg1;
 - (id)parseAssistantUnits:(id)arg1;
@@ -82,12 +90,18 @@
 - (BOOL)parseCategories:(id)arg1;
 - (id)parseHAPAssistantServices:(id)arg1;
 - (BOOL)parseHMMetadata:(id)arg1;
+- (BOOL)parseNotificationMetadata:(id)arg1;
 - (BOOL)parseRequiresDeviceUnlockMetadata:(id)arg1;
 - (BOOL)requiresDeviceUnlock:(id)arg1 forService:(id)arg2;
+- (BOOL)shouldAllowHomeNotificationForCharacteristicType:(id)arg1 serviceType:(id)arg2;
+- (BOOL)shouldAutoEnableNotificationForCharacteristic:(id)arg1 ofService:(id)arg2;
+- (BOOL)shouldEnableBulletinBoardForCharacteristic:(id)arg1 ofService:(id)arg2;
+- (BOOL)shouldEnableBulletinBoardForService:(id)arg1;
 - (BOOL)shouldFilterCharacteristicOfType:(id)arg1;
 - (BOOL)shouldFilterCharacteristicOfTypeFromApp:(id)arg1;
 - (BOOL)shouldFilterServiceOfType:(id)arg1;
 - (BOOL)shouldFilterServiceOfTypeFromApp:(id)arg1;
+- (BOOL)shouldNotCacheCharacteristicOfType:(id)arg1;
 - (BOOL)supportsAuthorizationData:(id)arg1 forService:(id)arg2;
 - (id)validateAssociatedServiceType:(id)arg1 forService:(id)arg2;
 

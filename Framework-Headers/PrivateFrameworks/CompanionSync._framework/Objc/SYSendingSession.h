@@ -7,7 +7,7 @@
 #import <CompanionSync/SYSession.h>
 
 @class NSMutableIndexSet, NSObject, _SYCountedSemaphore;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_activity;
 
 @interface SYSendingSession : SYSession
 {
@@ -16,10 +16,12 @@
     NSObject<OS_dispatch_source> *_messageTimer;
     NSObject<OS_dispatch_queue> *_changeFetcherQueue;
     _SYCountedSemaphore *_changeConcurrencySemaphore;
+    NSObject<OS_os_activity> *_changeWaitActivity;
     unsigned long long _batchIndex;
     NSMutableIndexSet *_ackedBatchIndices;
-    unsigned long long _activity;
-    int _flagsLock;
+    NSObject<OS_os_activity> *_sessionActivity;
+    double _sessionStartTime;
+    struct os_unfair_lock_s _flagsLock;
     struct {
         unsigned int state:4;
         unsigned int canRestart:1;
@@ -39,6 +41,7 @@
 - (void).cxx_destruct;
 - (void)_confirmedEnd;
 - (void)_confirmedStart;
+- (void)_continue;
 - (void)_fetchNextBatch;
 - (void)_handleEndSession:(id)arg1 response:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_handleEndSessionResponse:(id)arg1 error:(id *)arg2;
@@ -77,10 +80,11 @@
 - (void)_waitForMessageWindow;
 - (BOOL)canRestart;
 - (BOOL)canRollback;
-- (void)cancel;
+- (void)cancelWithError:(id)arg1;
 - (id)initWithService:(id)arg1 isReset:(BOOL)arg2;
 - (BOOL)isResetSync;
 - (BOOL)isSending;
+- (double)remainingSessionTime;
 - (void)setCanRestart:(BOOL)arg1;
 - (void)setCanRollback:(BOOL)arg1;
 - (void)setState:(long long)arg1;

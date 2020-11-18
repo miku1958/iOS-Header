@@ -42,6 +42,9 @@
 @property (nonatomic) unsigned long long transitLineMuid; // @synthesize transitLineMuid=_transitLineMuid;
 @property (strong, nonatomic) NSMutableArray *updatedPlaces; // @synthesize updatedPlaces=_updatedPlaces;
 
++ (Class)localizedChangeListType;
++ (Class)updatedPlaceType;
+- (int)StringAsDisplayStyle:(id)arg1;
 - (void)addLocalizedChangeList:(id)arg1;
 - (void)addUpdatedPlace:(id)arg1;
 - (void)clearLocalizedChangeLists;
@@ -51,6 +54,7 @@
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)displayStyleAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (id)localizedChangeListAtIndex:(unsigned long long)arg1;

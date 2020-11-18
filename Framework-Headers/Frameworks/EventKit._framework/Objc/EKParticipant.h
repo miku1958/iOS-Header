@@ -13,34 +13,45 @@
 
 @interface EKParticipant : EKObject <EKIdentityProtocol, NSCopying>
 {
+    NSString *_email;
+    NSString *_inviterNameString;
     EKCalendarItem *_owner;
 }
 
 @property (readonly, nonatomic) NSURL *URL;
 @property (readonly, nonatomic) NSString *UUID;
-@property (copy, nonatomic) NSURL *address;
+@property (copy, nonatomic) NSURL *addressURL;
 @property (copy, nonatomic) NSString *comment;
 @property (readonly, nonatomic) NSPredicate *contactPredicate;
 @property (readonly, nonatomic, getter=isCurrentUser) BOOL currentUser;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *email; // @synthesize email=_email;
 @property (copy, nonatomic) NSString *emailAddress;
 @property (copy, nonatomic) NSString *firstName;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *inviterNameString; // @synthesize inviterNameString=_inviterNameString;
 @property (copy, nonatomic) NSString *lastName;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) EKCalendarItem *owner; // @synthesize owner=_owner;
 @property (readonly, nonatomic) long long participantRole;
 @property (readonly, nonatomic) long long participantStatus;
 @property (readonly, nonatomic) long long participantType;
+@property (nonatomic) int proposedStartDateStatus;
 @property (readonly) Class superclass;
 
 + (void *)findABPersonByURL:(id)arg1 inAddressBook:(void *)arg2;
+- (void).cxx_destruct;
 - (const void *)ABRecordWithAddressBook:(void *)arg1;
 - (id)_persistentItem;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)isEqualToParticipant:(id)arg1;
+- (BOOL)isLocationRoom;
+- (id)nameComponents;
+- (id)proposedStartDateForEvent:(id)arg1;
 - (void)setDisplayName:(id)arg1;
+- (id)setInviterNameString;
+- (void)setProposedStartDate:(id)arg1 forEvent:(id)arg2;
 
 @end
 

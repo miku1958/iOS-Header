@@ -6,14 +6,16 @@
 
 #import <Pegasus/NSObject-Protocol.h>
 
-@class PGHostedWindowHostingHandle;
+@class NSArray, PGHostedWindowHostingHandle, PGPlaybackProgress;
 
 @protocol PGPictureInPictureRemoteObjectInterface <NSObject>
 - (oneway void)activateApplicationIfNeededWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;
 - (oneway void)cleanupWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;
 - (oneway void)initializePictureInPictureWithControlsStyle:(long long)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)rotateContentContainer:(long long)arg1 withCompletionHandler:(void (^)(BOOL, NSError *, BKSAnimationFenceHandle *))arg2;
+- (oneway void)setLoadedTimeRanges:(NSArray *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)setPictureInPictureShouldStartWhenEnteringBackground:(BOOL)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
+- (oneway void)setPlaybackProgress:(PGPlaybackProgress *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)setShouldShowAlternateActionButtonImage:(BOOL)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)setShouldShowLoadingIndicator:(BOOL)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)setupAnimated:(BOOL)arg1 withHostedWindowHostingHandle:(PGHostedWindowHostingHandle *)arg2 preferredContentSize:(struct CGSize)arg3 initialLayerFrame:(struct CGRect)arg4 completionHandler:(void (^)(BOOL, NSError *))arg5;

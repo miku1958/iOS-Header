@@ -6,13 +6,13 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class AFMetrics, AFRequestInfo, AFSpeechRequestOptions, NSArray, NSData, NSDictionary, NSError, NSString, NSURL, SASPronunciationContext, SASetApplicationContext;
+@class AFApplicationInfo, AFAudioPlaybackRequest, AFMetrics, AFRequestInfo, AFSpeechRequestOptions, NSArray, NSData, NSDictionary, NSError, NSSet, NSString, NSURL, SASPronunciationContext, SASetApplicationContext;
 
 @protocol AFClientService <NSObject>
 - (oneway void)_barrierWithReply:(void (^)(void))arg1;
 - (oneway void)_broadcastCommandDictionary:(NSDictionary *)arg1;
 - (oneway void)_clearAssistantInfoForAccountIdentifier:(NSString *)arg1;
-- (oneway void)_fetchAppContextWithReply:(void (^)(NSArray *))arg1;
+- (oneway void)_fetchAppContextForApplicationInfo:(AFApplicationInfo *)arg1 reply:(void (^)(NSArray *))arg2;
 - (oneway void)_listInstalledServicesWithReply:(void (^)(NSDictionary *))arg1;
 - (oneway void)_performCommandDictionary:(NSDictionary *)arg1 forBundleIdentifier:(NSString *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
 - (oneway void)_performTaskCommandDictionary:(NSDictionary *)arg1 forBundleIdentifier:(NSString *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
@@ -21,6 +21,7 @@
 - (oneway void)_requestBarrierWithReply:(void (^)(void))arg1;
 - (oneway void)_sendLargeData:(NSData *)arg1 reply:(void (^)(NSString *, NSData *))arg2;
 - (oneway void)_startSpeechWithURL:(NSURL *)arg1 isNarrowBand:(BOOL)arg2;
+- (oneway void)boostedPreheatWithStyle:(long long)arg1 completion:(void (^)(void))arg2;
 - (oneway void)cancelRequest;
 - (oneway void)cancelSpeech;
 - (oneway void)clearContext;
@@ -29,8 +30,9 @@
 - (oneway void)forceAudioSessionActive;
 - (oneway void)forceAudioSessionInactive;
 - (oneway void)getDeferredObjectsWithIdentifiers:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (oneway void)getSerializedCachedObjectsWithIdentifiers:(NSSet *)arg1 completion:(void (^)(NSDictionary *))arg2;
 - (oneway void)performGenericAceCommand:(NSDictionary *)arg1 interruptOutstandingRequest:(BOOL)arg2 reply:(void (^)(BOOL))arg3;
-- (oneway void)preheatWithStyle:(long long)arg1;
+- (oneway void)preheatWithStyle:(long long)arg1 forOptions:(AFSpeechRequestOptions *)arg2;
 - (oneway void)prepareForPhoneCall;
 - (oneway void)recordCancellationMetrics;
 - (oneway void)recordFailureMetricsForError:(NSError *)arg1;
@@ -47,10 +49,12 @@
 - (oneway void)setOverriddenApplicationContext:(NSString *)arg1 withContext:(id)arg2;
 - (oneway void)setVoiceOverIsActive:(BOOL)arg1;
 - (oneway void)startAcousticIDRequestWithOptions:(AFSpeechRequestOptions *)arg1 context:(NSString *)arg2;
+- (oneway void)startAudioPlaybackRequest:(AFAudioPlaybackRequest *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)startRecordingForPendingSpeechRequestWithOptions:(AFSpeechRequestOptions *)arg1 reply:(void (^)(NSXPCListenerEndpoint *))arg2;
+- (oneway void)startRequestActivityWithCompletion:(void (^)(void))arg1;
 - (oneway void)startRequestWithInfo:(AFRequestInfo *)arg1;
 - (oneway void)startSpeechPronunciationRequestWithOptions:(AFSpeechRequestOptions *)arg1 pronunciationContext:(SASPronunciationContext *)arg2;
-- (oneway void)startSpeechRequestWithOptions:(AFSpeechRequestOptions *)arg1;
+- (oneway void)stopCurrentAudioPlaybackRequest:(BOOL)arg1;
 - (oneway void)stopSpeechWithOptions:(AFSpeechRequestOptions *)arg1;
 - (oneway void)telephonyRequestCompleted;
 - (oneway void)updateSpeechOptions:(AFSpeechRequestOptions *)arg1;

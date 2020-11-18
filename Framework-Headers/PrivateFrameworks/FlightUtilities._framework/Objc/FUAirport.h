@@ -7,28 +7,34 @@
 #import <objc/NSObject.h>
 
 #import <FlightUtilities/NSCopying-Protocol.h>
+#import <FlightUtilities/NSSecureCoding-Protocol.h>
 
 @class CLPlacemark, NSString, NSTimeZone;
 
-@interface FUAirport : NSObject <NSCopying>
+@interface FUAirport : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_IATACode;
     NSString *_name;
+    NSString *_city;
     NSTimeZone *_timeZone;
     CLPlacemark *_placemark;
-    CDStruct_2c43369c _location;
+    struct CLLocationCoordinate2D _location;
 }
 
 @property (strong) NSString *IATACode; // @synthesize IATACode=_IATACode;
-@property CDStruct_2c43369c location; // @synthesize location=_location;
+@property (strong) NSString *city; // @synthesize city=_city;
+@property struct CLLocationCoordinate2D location; // @synthesize location=_location;
 @property (strong) NSString *name; // @synthesize name=_name;
 @property (strong) CLPlacemark *placemark; // @synthesize placemark=_placemark;
-@property (strong) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
+@property (strong, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (void)fetchPlacemarkWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

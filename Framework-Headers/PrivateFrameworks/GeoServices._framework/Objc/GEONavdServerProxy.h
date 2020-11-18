@@ -14,18 +14,15 @@
 - (void)dealloc;
 - (void)didPostUINotification:(unsigned long long)arg1 forDestination:(id)arg2 fromClient:(id)arg3;
 - (void)forceCacheRefresh;
-- (void)forceHome;
-- (void)forceNone;
-- (void)forceWork;
 - (void)getDirectionsForClient:(id)arg1 withRouteHypothesisRequest:(id)arg2 andCallback:(CDUnknownBlockType)arg3;
 - (id)init;
+- (void)onlyPerformLocalUpdatesForPlannedDestination:(id)arg1 client:(id)arg2;
 - (void)open;
+- (void)requestRefreshForPlannedDestination:(id)arg1 client:(id)arg2;
 - (void)shouldPostDarwinNotificationForNextUpdate:(BOOL)arg1;
-- (void)startMonitoringDestination:(id)arg1 forClient:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)startMonitoringSuggestionsForClient:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)startMonitoringDestination:(id)arg1 forClient:(id)arg2 uuid:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)statusWithCallback:(CDUnknownBlockType)arg1;
-- (void)stopMonitoringDestination:(id)arg1 forClient:(id)arg2;
-- (void)stopMonitoringSuggestionsForClient:(id)arg1;
+- (void)stopMonitoringDestination:(id)arg1 forClient:(id)arg2 uuid:(id)arg3;
 
 @end
 

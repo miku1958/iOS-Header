@@ -34,8 +34,7 @@
 - (void)_accessibilityZoomAtPoint:(struct CGPoint)arg1 zoomIn:(BOOL)arg2;
 - (void)_axZoomToCenterWithScale:(struct CGPoint)arg1 scale:(double)arg2;
 - (void)_showTextStyleOptions:(id)arg1;
-- (id)accessibilityElementAtIndex:(long long)arg1;
-- (long long)accessibilityElementCount;
+- (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
 - (BOOL)accessibilityScrollDownPage;
@@ -49,7 +48,6 @@
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;
 - (void)dealloc;
-- (long long)indexOfAccessibilityElement:(id)arg1;
 - (BOOL)isAccessibilityElement;
 - (void)paste:(id)arg1;
 - (void)selectAll:(id)arg1;

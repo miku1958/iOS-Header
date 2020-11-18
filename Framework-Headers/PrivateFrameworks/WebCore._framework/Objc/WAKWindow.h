@@ -24,7 +24,7 @@
     BOOL _visible;
     BOOL _useOrientationDependentFontAntialiasing;
     BOOL _entireWindowVisibleForTesting;
-    struct SpinLock _exposedScrollViewRectLock;
+    struct Lock _exposedScrollViewRectLock;
     struct CGRect _exposedScrollViewRect;
 }
 
@@ -41,6 +41,8 @@
 - (void)close;
 - (id)contentView;
 - (struct CGPoint)convertBaseToScreen:(struct CGPoint)arg1;
+- (struct CGRect)convertRectFromScreen:(struct CGRect)arg1;
+- (struct CGRect)convertRectToScreen:(struct CGRect)arg1;
 - (struct CGPoint)convertScreenToBase:(struct CGPoint)arg1;
 - (float)currentTileScale;
 - (void)dealloc;

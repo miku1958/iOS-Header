@@ -9,7 +9,7 @@
 #import <ITMLKit/IKJSDOMDocumentAppBridge-Protocol.h>
 #import <ITMLKit/IKStyleMediaQueryEvaluator-Protocol.h>
 
-@class IKAppContext, IKDOMDocument, IKHeadElement, IKJSNavigationDocument, IKJSObject, IKViewElement, IKViewElementStyleFactory, NSError, NSMutableDictionary, NSMutableSet, NSString;
+@class IKAppContext, IKDOMDocument, IKHeadElement, IKJSNavigationDocument, IKJSObject, IKViewElement, IKViewElementStyleFactory, NSError, NSHashTable, NSMutableDictionary, NSString;
 @protocol IKAppDocumentDelegate;
 
 @interface IKAppDocument : NSObject <IKJSDOMDocumentAppBridge, IKStyleMediaQueryEvaluator>
@@ -26,10 +26,10 @@
     NSError *_error;
     id<IKAppDocumentDelegate> _delegate;
     double _impressionThreshold;
-    IKJSObject *_owner;
-    NSMutableSet *_impressions;
-    NSMutableDictionary *_impressionsDict;
     IKViewElementStyleFactory *_styleFactory;
+    NSHashTable *_styleChangeObservers;
+    NSMutableDictionary *_impressions;
+    IKJSObject *_owner;
 }
 
 @property (readonly, weak) IKAppContext *appContext; // @synthesize appContext=_appContext;
@@ -38,31 +38,35 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) IKHeadElement *headElement; // @synthesize headElement=_headElement;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong) IKHeadElement *headElement; // @synthesize headElement=_headElement;
+@property (strong) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) double impressionThreshold; // @synthesize impressionThreshold=_impressionThreshold;
-@property (strong, nonatomic) NSMutableSet *impressions; // @synthesize impressions=_impressions;
-@property (strong, nonatomic) NSMutableDictionary *impressionsDict; // @synthesize impressionsDict=_impressionsDict;
+@property (strong, nonatomic) NSMutableDictionary *impressions; // @synthesize impressions=_impressions;
 @property (readonly, weak, nonatomic) IKDOMDocument *jsDocument; // @synthesize jsDocument=_jsDocument;
-@property (strong, nonatomic) IKViewElement *navigationBarElement; // @synthesize navigationBarElement=_navigationBarElement;
+@property (strong) IKViewElement *navigationBarElement; // @synthesize navigationBarElement=_navigationBarElement;
 @property (readonly, weak, nonatomic) IKJSNavigationDocument *navigationDocument;
 @property (readonly, weak, nonatomic) IKJSObject *owner; // @synthesize owner=_owner;
+@property (strong, nonatomic) NSHashTable *styleChangeObservers; // @synthesize styleChangeObservers=_styleChangeObservers;
 @property (strong, nonatomic) IKViewElementStyleFactory *styleFactory; // @synthesize styleFactory=_styleFactory;
 @property (getter=isSubtreeUpdated) BOOL subtreeUpdated; // @synthesize subtreeUpdated=_subtreeUpdated;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) IKViewElement *templateElement; // @synthesize templateElement=_templateElement;
-@property (strong, nonatomic) IKViewElement *toolbarElement; // @synthesize toolbarElement=_toolbarElement;
+@property (strong) IKViewElement *templateElement; // @synthesize templateElement=_templateElement;
+@property (strong) IKViewElement *toolbarElement; // @synthesize toolbarElement=_toolbarElement;
 @property (nonatomic, getter=isUpdated) BOOL updated; // @synthesize updated=_updated;
 
 - (void).cxx_destruct;
+- (void)_addStyleChangeObserver:(id)arg1;
 - (BOOL)_clearUpdatesForElement:(id)arg1;
-- (void)_impressionDataFromViewElements:(id)arg1 timestamp:(long long)arg2 impressions:(id)arg3 impressionsDict:(id)arg4;
+- (void)_removeStyleChangeObserver:(id)arg1;
+- (void)_setViewElementStylesDirty;
 - (void)_updateWithXML:(id)arg1;
 - (void)dealloc;
 - (BOOL)evaluateStyleMediaQueryList:(id)arg1;
+- (id)impressionsMatching:(id)arg1 reset:(BOOL)arg2;
 - (id)initWithAppContext:(id)arg1 document:(id)arg2 owner:(id)arg3;
 - (void)onAppear;
 - (void)onDisappear;
+- (void)onImpressionsChange:(id)arg1;
 - (void)onLoad;
 - (void)onNeedsUpdateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)onUnload;
@@ -70,6 +74,7 @@
 - (void)onViewAttributesChangeWithArguments:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)recordImpressionsForViewElements:(id)arg1;
 - (id)recordedImpressions;
+- (id)recordedImpressions:(BOOL)arg1;
 - (id)retrieveJSElementForViewElement:(id)arg1 jsContext:(id)arg2;
 - (void)runTestWithName:(id)arg1 options:(id)arg2;
 - (void)scrollToTop;

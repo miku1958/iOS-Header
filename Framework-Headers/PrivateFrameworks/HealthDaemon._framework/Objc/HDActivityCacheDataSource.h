@@ -9,8 +9,8 @@
 #import <HealthDaemon/HDActivityCacheStatisticsBuilderSourceOrderDelegate-Protocol.h>
 #import <HealthDaemon/HDDataObserver-Protocol.h>
 
-@class HDActivityCacheStatisticsBuilder, HKCategoryType, HKWorkoutType, NSSet, NSString, _HKDelayedOperation, _HKTimePeriod;
-@protocol HDHealthDaemon, OS_dispatch_queue;
+@class HDActivityCacheStatisticsBuilder, HDProfile, HKCategoryType, HKWorkoutType, NSSet, NSString, _HKDelayedOperation, _HKTimePeriod;
+@protocol OS_dispatch_queue;
 
 @interface HDActivityCacheDataSource : NSObject <HDActivityCacheStatisticsBuilderSourceOrderDelegate, HDDataObserver>
 {
@@ -21,6 +21,7 @@
     NSString *_nonQuantitySamplesQueryString;
     NSString *_quantitySamplesQueryString;
     HKCategoryType *_standHoursType;
+    HKCategoryType *_deepBreathingSessionType;
     HKWorkoutType *_workoutType;
     HKCategoryType *_watchActivationType;
     NSSet *_allObservedTypes;
@@ -28,7 +29,7 @@
     _HKDelayedOperation *_updateOperation;
     _HKDelayedOperation *_rebuildOperation;
     NSObject<OS_dispatch_queue> *_queue;
-    id<HDHealthDaemon> _healthDaemon;
+    HDProfile *_profile;
     HDActivityCacheStatisticsBuilder *_targetDayStatisticsBuilder;
     HDActivityCacheStatisticsBuilder *_previousDayStatisticsBuilder;
     _HKTimePeriod *_targetDayDateRange;
@@ -51,6 +52,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (BOOL)_nonQuantitySampleRequiresWatchSource:(long long)arg1;
 - (id)_nonQuantitySamplesQueryStringWithSampleTypes:(id)arg1;
 - (id)_overallTimePeriod;
 - (id)_parameterStringWithCount:(long long)arg1;
@@ -59,6 +61,7 @@
 - (BOOL)_primeQuantitySamplesWithError:(id *)arg1;
 - (BOOL)_quantitySampleIsValidWithTypeCode:(long long)arg1 workoutSourceIdentifier:(long long)arg2 isWatchSource:(BOOL)arg3;
 - (id)_quantitySamplesQueryStringWithQuatityTypes:(id)arg1;
+- (BOOL)_quantityTypeRequiresWatchSource:(long long)arg1;
 - (void)_queue_deregisterForSamplesAdded;
 - (void)_queue_registerForSamplesAdded;
 - (BOOL)_readyToPrimeActivationLogEntries;
@@ -68,11 +71,11 @@
 - (void)_resetStatisticsBuilders;
 - (void)_samplesAddedToWorkoutNotification:(id)arg1;
 - (BOOL)_timePeriodsAreSet;
-- (BOOL)_typeRequiresWatchSource:(long long)arg1;
+- (BOOL)_typeIsValidFromCompanionWithoutWorkout:(long long)arg1;
 - (BOOL)_updateStatisticsBuildersWithError:(id *)arg1;
 - (id)activityCacheStatisticsBuilder:(id)arg1 sourceOrderForObjectType:(id)arg2;
 - (void)dealloc;
-- (id)initWithHealthDaemon:(id)arg1 observedQuantityTypes:(id)arg2 updateOperation:(id)arg3 rebuildOperation:(id)arg4 queue:(id)arg5;
+- (id)initWithProfile:(id)arg1 observedQuantityTypes:(id)arg2 updateOperation:(id)arg3 rebuildOperation:(id)arg4 queue:(id)arg5;
 - (void)pauseUpdates;
 - (void)resumeUpdates;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;

@@ -8,7 +8,7 @@
 
 #import <EventKit/NSCopying-Protocol.h>
 
-@class NSString, NSURL;
+@class NSDate, NSString, NSURL;
 
 @interface EKPersistentParticipant : EKPersistentObject <NSCopying>
 {
@@ -20,7 +20,10 @@
 @property (copy, nonatomic) NSString *displayName;
 @property (copy, nonatomic) NSString *emailAddress;
 @property (copy, nonatomic) NSString *firstName;
+@property (readonly, nonatomic) NSString *invitedBy;
 @property (copy, nonatomic) NSString *lastName;
+@property (copy, nonatomic) NSDate *proposedStartDate;
+@property (nonatomic) int proposedStartDateStatus;
 
 + (id)defaultPropertiesToLoad;
 - (id)copyWithZone:(struct _NSZone *)arg1;

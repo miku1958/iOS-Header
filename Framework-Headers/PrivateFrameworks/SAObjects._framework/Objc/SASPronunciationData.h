@@ -8,7 +8,7 @@
 
 #import <SAObjects/SAAceSerializable-Protocol.h>
 
-@class NSArray, NSLocale, NSString;
+@class NSArray, NSString;
 
 @interface SASPronunciationData : AceObject <SAAceSerializable>
 {
@@ -18,7 +18,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSLocale *language;
+@property (copy, nonatomic) NSString *language;
 @property (copy, nonatomic) NSString *orthography;
 @property (readonly) Class superclass;
 @property (nonatomic) long long tokenOffset;

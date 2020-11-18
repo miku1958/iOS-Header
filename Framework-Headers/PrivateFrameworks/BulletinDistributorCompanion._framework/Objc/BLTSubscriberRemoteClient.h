@@ -27,10 +27,13 @@
 - (id)initWithConnection:(id)arg1;
 - (void)pingSubscriberDidLoad;
 - (void)pingWithBulletin:(id)arg1;
+- (void)pingWithBulletin:(id)arg1 ack:(CDUnknownBlockType)arg2;
 - (void)pingWithRecordID:(id)arg1 forSectionID:(id)arg2;
+- (void)pingWithRecordID:(id)arg1 forSectionID:(id)arg2 ack:(CDUnknownBlockType)arg3;
 - (id)sectionIDs;
 - (id)sectionIDsForBulletins;
 - (id)sectionIDsForPings;
+- (id)subscriptionInfos;
 
 @end
 

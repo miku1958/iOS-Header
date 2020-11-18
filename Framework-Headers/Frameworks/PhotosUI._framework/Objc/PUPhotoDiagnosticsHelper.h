@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)alertView:(id)arg1 clickedButtonAtIndex:(long long)arg2;
 - (void)collectDiagnosticsWithInformation:(id)arg1;
 - (id)initWithReferenceViewController:(id)arg1;
-- (void)mailComposeController:(id)arg1 didFinishWithResult:(int)arg2 error:(id)arg3;
+- (void)mailComposeController:(id)arg1 didFinishWithResult:(long long)arg2 error:(id)arg3;
 
 @end
 

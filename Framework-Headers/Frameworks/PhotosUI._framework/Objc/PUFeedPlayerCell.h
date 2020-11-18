@@ -6,7 +6,7 @@
 
 #import <PhotosUI/PUFeedCell.h>
 
-@class AVAsset, ISPlayer, ISPlayerView, UIButton, UICollectionView, UIImage;
+@class AVAsset, ISLivePhotoPlayer, ISLivePhotoUIView, UIButton, UICollectionView, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface PUFeedPlayerCell : PUFeedCell
@@ -23,8 +23,8 @@ __attribute__((visibility("hidden")))
     UIImage *_photoImage;
     double _photoTime;
     UICollectionView *_containingCollectionView;
-    ISPlayer *__player;
-    ISPlayerView *__playerView;
+    ISLivePhotoPlayer *__player;
+    ISLivePhotoUIView *__playerView;
     UIButton *__commentButton;
 }
 
@@ -32,8 +32,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setPerformingIrisPlayerChanges:) BOOL _isPerformingIrisPlayerChanges; // @synthesize _isPerformingIrisPlayerChanges=__isPerformingIrisPlayerChanges;
 @property (nonatomic, setter=_setNeedsUpdatePlayerItem:) BOOL _needsUpdatePlayerItem; // @synthesize _needsUpdatePlayerItem=__needsUpdatePlayerItem;
 @property (nonatomic, setter=_setNeedsUpdateVitality:) BOOL _needsUpdateVitality; // @synthesize _needsUpdateVitality=__needsUpdateVitality;
-@property (readonly, nonatomic) ISPlayer *_player; // @synthesize _player=__player;
-@property (readonly, nonatomic) ISPlayerView *_playerView; // @synthesize _playerView=__playerView;
+@property (readonly, nonatomic) ISLivePhotoPlayer *_player; // @synthesize _player=__player;
+@property (readonly, nonatomic) ISLivePhotoUIView *_playerView; // @synthesize _playerView=__playerView;
 @property (nonatomic, setter=_setShouldHideCommentButton:) BOOL _shouldHideCommentButton; // @synthesize _shouldHideCommentButton=__shouldHideCommentButton;
 @property (nonatomic) long long commentCount; // @synthesize commentCount=_commentCount;
 @property (weak, nonatomic) UICollectionView *containingCollectionView; // @synthesize containingCollectionView=_containingCollectionView;

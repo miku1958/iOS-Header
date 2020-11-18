@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _itemGroupCompletionBlock;
     CDUnknownBlockType _itemGroupSetCompletionBlock;
     NSObject<OS_dispatch_group> *_itemGroupSetCompletionGroup;
+    long long _mmcsOperationType;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType itemGroupCompletionBlock; // @synthesize itemGroupCompletionBlock=_itemGroupCompletionBlock;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKDMMCSItemGroupSet *itemGroupSet; // @synthesize itemGroupSet=_itemGroupSet;
 @property (copy, nonatomic) CDUnknownBlockType itemGroupSetCompletionBlock; // @synthesize itemGroupSetCompletionBlock=_itemGroupSetCompletionBlock;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *itemGroupSetCompletionGroup; // @synthesize itemGroupSetCompletionGroup=_itemGroupSetCompletionGroup;
+@property (nonatomic) long long mmcsOperationType; // @synthesize mmcsOperationType=_mmcsOperationType;
 @property (weak, nonatomic) CKDOperation *operation; // @synthesize operation=_operation;
 
 - (void).cxx_destruct;

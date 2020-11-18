@@ -6,21 +6,27 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSURL;
+@class NSArray, NSURL;
+@protocol OS_dispatch_queue;
 
 @interface _LSDefaults : NSObject
 {
+    NSObject<OS_dispatch_queue> *_ivarQueue;
     NSURL *_systemContainerURL;
     NSURL *_systemGroupContainerURL;
     NSURL *_iconsGroupContainerURL;
     NSURL *_userContainerURL;
     BOOL _inSyncBubble;
+    BOOL _inXCTestRigInsecure;
+    BOOL _appleInternal;
     BOOL _isServer;
     BOOL _hasServer;
     BOOL _inEducationMode;
     BOOL _hasPersistentPreferences;
 }
 
+@property (readonly, nonatomic, getter=isAppleInternal) BOOL appleInternal; // @synthesize appleInternal=_appleInternal;
+@property (readonly) unsigned int currentSchemaVersion;
 @property (readonly) double databaseSaveInterval;
 @property (readonly) double databaseSaveLatency;
 @property (readonly) NSURL *databaseStoreFileURL;
@@ -33,27 +39,36 @@
 @property (readonly) NSURL *identifiersFileURL;
 @property (readonly, getter=isInEducationMode) BOOL inEducationMode; // @synthesize inEducationMode=_inEducationMode;
 @property (readonly, getter=isInSyncBubble) BOOL inSyncBubble; // @synthesize inSyncBubble=_inSyncBubble;
+@property (readonly, nonatomic, getter=isInXCTestRigInsecure) BOOL inXCTestRigInsecure; // @synthesize inXCTestRigInsecure=_inXCTestRigInsecure;
 @property BOOL isServer; // @synthesize isServer=_isServer;
 @property (readonly) BOOL isSimulator;
 @property (readonly) NSURL *preferencesFileURL;
+@property (readonly) NSArray *preferredLocalizations; // @dynamic preferredLocalizations;
 @property (readonly) NSURL *queriedSchemesMapFileURL;
 @property (readonly) NSURL *securePeferencesFileURL;
 @property (readonly) NSURL *systemContainerURL;
 @property (readonly) NSURL *systemGroupContainerURL;
 @property (readonly) NSURL *userContainerURL;
 
++ (BOOL)appleInternal;
 + (BOOL)hasPersistentPreferences;
 + (BOOL)hasServer;
 + (id)iconsGroupContainerURL;
 + (BOOL)inSyncBubble;
++ (BOOL)inXCTestRigInsecure;
 + (id)sharedInstance;
 + (id)systemContainerURL;
 + (id)systemGroupContainerURL;
 + (id)userContainerURL;
-- (long long)currentSchemaVersion;
+- (id)darwinNotificationNameForCurrentUser:(id)arg1;
+- (id)databaseUpdateNotificationName;
 - (void)dealloc;
 - (id)debugDescription;
 - (id)init;
+- (id)preferencesFileChangeNotificationName;
+- (id)preferencesUpdateNotificationName;
+- (unsigned int)proxyUIDForCurrentEffectiveUID;
+- (unsigned int)proxyUIDForUID:(unsigned int)arg1;
 - (id)serviceNameForConnectionType:(unsigned short)arg1;
 - (id)userPreferencesURL;
 

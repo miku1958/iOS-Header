@@ -15,6 +15,7 @@
 @property (nonatomic) double delay; // @dynamic delay;
 @property (nonatomic) double duration; // @dynamic duration;
 @property (nonatomic) double frameInterval; // @dynamic frameInterval;
+@property (nonatomic) float speed; // @dynamic speed;
 @property (strong, nonatomic) CAMediaTimingFunction *timingFunction; // @dynamic timingFunction;
 
 + (id)settingsWithDuration:(double)arg1;

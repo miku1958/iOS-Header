@@ -8,29 +8,39 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEOPDViewportInfo, NSString;
+@class GEOLatLng, GEOPDNearestTransitParameters, GEOPDViewportInfo, NSString, PBUnknownFields;
 
 @interface GEOPDLocationDirectedSearchParameters : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     unsigned int _maxResults;
+    GEOPDNearestTransitParameters *_nearestTransitParameters;
     GEOLatLng *_searchLocation;
     NSString *_searchString;
+    int _searchType;
     int _sortOrder;
     GEOPDViewportInfo *_viewportInfo;
-    CDStruct_6c9bcd7c _has;
+    CDStruct_aa0bba6c _has;
 }
 
 @property (nonatomic) BOOL hasMaxResults;
+@property (readonly, nonatomic) BOOL hasNearestTransitParameters;
 @property (readonly, nonatomic) BOOL hasSearchLocation;
 @property (readonly, nonatomic) BOOL hasSearchString;
+@property (nonatomic) BOOL hasSearchType;
 @property (nonatomic) BOOL hasSortOrder;
 @property (readonly, nonatomic) BOOL hasViewportInfo;
 @property (nonatomic) unsigned int maxResults; // @synthesize maxResults=_maxResults;
+@property (strong, nonatomic) GEOPDNearestTransitParameters *nearestTransitParameters; // @synthesize nearestTransitParameters=_nearestTransitParameters;
 @property (strong, nonatomic) GEOLatLng *searchLocation; // @synthesize searchLocation=_searchLocation;
 @property (strong, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
+@property (nonatomic) int searchType; // @synthesize searchType=_searchType;
 @property (nonatomic) int sortOrder; // @synthesize sortOrder=_sortOrder;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;
 
+- (int)StringAsSearchType:(id)arg1;
+- (int)StringAsSortOrder:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -41,6 +51,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)searchTypeAsString:(int)arg1;
+- (id)sortOrderAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

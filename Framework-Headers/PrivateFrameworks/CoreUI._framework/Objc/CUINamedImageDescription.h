@@ -13,6 +13,8 @@
     long long _subtype;
     long long _sizeClassHorizontal;
     long long _sizeClassVertical;
+    long long _displayGamut;
+    long long _layoutDirection;
     int _blendMode;
     long long _templateRenderingMode;
     long long _imageType;
@@ -24,11 +26,13 @@
 
 @property (nonatomic) CDStruct_3c058996 alignmentEdgeInsets; // @synthesize alignmentEdgeInsets=_alignmentEdgeInsets;
 @property (nonatomic) int blendMode; // @synthesize blendMode=_blendMode;
+@property (nonatomic) long long displayGamut; // @synthesize displayGamut=_displayGamut;
 @property (nonatomic) CDStruct_3c058996 edgeInsets; // @synthesize edgeInsets=_edgeInsets;
 @property (nonatomic) int exifOrientation; // @synthesize exifOrientation=_exifOrientation;
 @property (nonatomic) long long idiom; // @synthesize idiom=_idiom;
 @property (nonatomic) long long imageType; // @synthesize imageType=_imageType;
 @property (nonatomic) BOOL isTemplate;
+@property (nonatomic) long long layoutDirection; // @synthesize layoutDirection=_layoutDirection;
 @property (nonatomic) long long resizingMode; // @synthesize resizingMode=_resizingMode;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 @property (nonatomic) long long sizeClassHorizontal; // @synthesize sizeClassHorizontal=_sizeClassHorizontal;

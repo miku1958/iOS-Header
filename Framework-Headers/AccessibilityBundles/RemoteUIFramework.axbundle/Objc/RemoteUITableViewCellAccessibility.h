@@ -13,8 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityCustomActions;
 - (void)_accessoriesChanged;
+- (id)_privateAccessibilityCustomActions;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (void)setRemoteUIAccessoryView:(id)arg1;

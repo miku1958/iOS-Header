@@ -6,7 +6,7 @@
 
 #import <UIKit/NSObject-Protocol.h>
 
-@class NSString, TIKeyboardBehaviors, TIKeyboardCandidate, TIKeyboardCandidateResultSet;
+@class NSString, TIKeyboardBehaviors, TIKeyboardCandidate, TIKeyboardCandidateResultSet, TIKeyboardSecureCandidateRenderTraits;
 @protocol UIKeyboardCandidateListDelegate;
 
 @protocol UIKeyboardCandidateList <NSObject>
@@ -15,7 +15,6 @@
 - (unsigned long long)currentIndex;
 - (BOOL)hasCandidates;
 - (BOOL)isExtendedList;
-- (BOOL)isHiddenCandidatesList;
 - (TIKeyboardBehaviors *)keyboardBehaviors;
 - (unsigned long long)selectedSortIndex;
 - (void)setCandidates:(TIKeyboardCandidateResultSet *)arg1 inlineText:(NSString *)arg2 inlineRect:(struct CGRect)arg3 maxX:(double)arg4 layout:(BOOL)arg5;
@@ -40,6 +39,7 @@
 - (NSString *)inlineText;
 - (void)jumpToCompositions;
 - (void)revealHiddenCandidates;
+- (TIKeyboardSecureCandidateRenderTraits *)secureCandidateRenderTraits;
 - (void)setCandidates:(TIKeyboardCandidateResultSet *)arg1 type:(int)arg2 inlineText:(NSString *)arg3 inlineRect:(struct CGRect)arg4 maxX:(double)arg5 layout:(BOOL)arg6;
 - (void)setCompletionContext:(NSString *)arg1;
 - (void)setInlineText:(NSString *)arg1;

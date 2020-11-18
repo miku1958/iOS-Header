@@ -6,11 +6,20 @@
 
 #import <Foundation/NSObject.h>
 
+#import <UIKit/CAAnimationDelegate-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface _UIRefreshControlAnimationDelegate : NSObject
+@interface _UIRefreshControlAnimationDelegate : NSObject <CAAnimationDelegate>
 {
     CDUnknownBlockType block;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)delegateWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;

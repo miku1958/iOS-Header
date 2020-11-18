@@ -16,6 +16,8 @@
 @property (readonly) unsigned long long attributeIndex; // @dynamic attributeIndex;
 @property (readonly) unsigned long long attributeType; // @dynamic attributeType;
 @property (readonly) NSString *name; // @dynamic name;
+@property (readonly, getter=isPatchControlPointData) BOOL patchControlPointData; // @dynamic patchControlPointData;
+@property (readonly, getter=isPatchData) BOOL patchData; // @dynamic patchData;
 
 + (id)alloc;
 + (id)allocWithZone:(struct _NSZone *)arg1;

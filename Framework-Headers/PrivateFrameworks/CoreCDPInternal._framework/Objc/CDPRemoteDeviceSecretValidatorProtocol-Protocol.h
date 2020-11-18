@@ -7,10 +7,14 @@
 @class NSArray, NSError, NSString;
 
 @protocol CDPRemoteDeviceSecretValidatorProtocol
+
+@property (nonatomic) unsigned long long supportedEscapeOfferMask;
+
 - (void)approveFromAnotherDeviceWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)cancelApproveFromAnotherDevice;
 - (void)cancelValidationWithError:(NSError *)arg1;
 - (void)resetAccountCDPState;
+- (void)supportedEscapeOfferMaskCompletion:(void (^)(unsigned long long))arg1;
 - (void)validateSecret:(NSString *)arg1 devices:(NSArray *)arg2 type:(unsigned long long)arg3 withCompletion:(void (^)(BOOL, BOOL, NSError *))arg4;
 @end
 

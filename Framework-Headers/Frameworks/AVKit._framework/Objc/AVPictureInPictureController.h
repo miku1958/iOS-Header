@@ -9,7 +9,7 @@
 #import <AVKit/AVPictureInPictureViewControllerDelegate-Protocol.h>
 #import <AVKit/PGPictureInPictureProxyDelegate-Protocol.h>
 
-@class AVPictureInPictureViewController, AVPlayerController, AVPlayerControllerTimeResolver, AVPlayerLayer, NSString, PGPictureInPictureProxy, __AVPlayerLayerView;
+@class AVPictureInPictureViewController, AVPlayerController, AVPlayerLayer, NSString, PGPictureInPictureProxy, __AVPlayerLayerView;
 @protocol AVPictureInPictureControllerDelegate, OS_dispatch_source;
 
 @interface AVPictureInPictureController : NSObject <AVPictureInPictureViewControllerDelegate, PGPictureInPictureProxyDelegate>
@@ -19,18 +19,17 @@
     AVPlayerController *_playerController;
     PGPictureInPictureProxy *_pictureInPictureProxy;
     AVPictureInPictureViewController *_pictureInPictureViewController;
-    AVPlayerControllerTimeResolver *_timeResolver;
     NSObject<OS_dispatch_source> *_fullScreenCheckTimer;
-    unsigned int _isPlaying:1;
-    unsigned int _isFullScreen:1;
+    BOOL _isPlaying;
+    BOOL _isFullScreen;
     id<AVPictureInPictureControllerDelegate> _delegate;
     struct {
-        unsigned int pictureInPictureControllerWillStartPictureInPicture:1;
-        unsigned int pictureInPictureControllerDidStartPictureInPicture:1;
-        unsigned int pictureInPictureController_failedToStartPictureInPictureWithError:1;
-        unsigned int pictureInPictureControllerWillStopPictureInPicture:1;
-        unsigned int pictureInPictureControllerDidStopPictureInPicture:1;
-        unsigned int pictureInPictureController_restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:1;
+        BOOL pictureInPictureControllerWillStartPictureInPicture;
+        BOOL pictureInPictureControllerDidStartPictureInPicture;
+        BOOL pictureInPictureController_failedToStartPictureInPictureWithError;
+        BOOL pictureInPictureControllerWillStopPictureInPicture;
+        BOOL pictureInPictureControllerDidStopPictureInPicture;
+        BOOL pictureInPictureController_restoreUserInterfaceForPictureInPictureStopWithCompletionHandler;
     } _delegateRespondsTo;
     BOOL _allowsPictureInPicturePlayback;
 }
@@ -81,6 +80,7 @@
 - (void)playerLayerLayoutDidChange;
 - (void)startPictureInPicture;
 - (void)stopPictureInPicture;
+- (void)stopPictureInPictureEvenWhenInBackground;
 
 @end
 

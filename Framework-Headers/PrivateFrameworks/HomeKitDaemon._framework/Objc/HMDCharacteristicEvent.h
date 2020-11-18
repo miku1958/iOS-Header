@@ -8,23 +8,33 @@
 
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDCharacteristic;
+@class HMDCharacteristic, NSNumber, NSUUID;
 
 @interface HMDCharacteristicEvent : HMDEvent <NSSecureCoding>
 {
     HMDCharacteristic *_characteristic;
     id _eventValue;
+    id _previousValue;
+    NSUUID *_accessoryUUID;
+    NSNumber *_serviceID;
+    NSNumber *_characteristicInstanceID;
 }
 
+@property (readonly, nonatomic) NSUUID *accessoryUUID; // @synthesize accessoryUUID=_accessoryUUID;
 @property (readonly, nonatomic) HMDCharacteristic *characteristic; // @synthesize characteristic=_characteristic;
+@property (readonly, nonatomic) NSNumber *characteristicInstanceID; // @synthesize characteristicInstanceID=_characteristicInstanceID;
 @property (strong, nonatomic) id eventValue; // @synthesize eventValue=_eventValue;
+@property (strong, nonatomic) id previousValue; // @synthesize previousValue=_previousValue;
+@property (readonly, nonatomic) NSNumber *serviceID; // @synthesize serviceID=_serviceID;
 
 + (id)characteristicEventWithDictionary:(id)arg1 home:(id)arg2 error:(id *)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCharacteristic:(id)arg1 eventValue:(id)arg2;
 - (id)initWithCoder:(id)arg1;
+- (void)replaceCharacteristic:(id)arg1;
 
 @end
 

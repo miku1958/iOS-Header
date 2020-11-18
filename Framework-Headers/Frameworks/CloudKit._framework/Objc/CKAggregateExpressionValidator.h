@@ -11,10 +11,10 @@
 __attribute__((visibility("hidden")))
 @interface CKAggregateExpressionValidator : CKPredicateValidatorInstance
 {
-    NSArray *_rangeValidators;
+    NSArray *_subExpressionValidators;
 }
 
-@property (strong, nonatomic) NSArray *rangeValidators; // @synthesize rangeValidators=_rangeValidators;
+@property (strong, nonatomic) NSArray *subExpressionValidators; // @synthesize subExpressionValidators=_subExpressionValidators;
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;

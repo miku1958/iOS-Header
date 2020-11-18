@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL needUserID; // @synthesize needUserID=_needUserID;
 
 - (void).cxx_destruct;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
 - (void)setCompletionBlock:(CDUnknownBlockType)arg1;

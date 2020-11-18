@@ -22,6 +22,8 @@
 @property (readonly, nonatomic) unsigned long long photoSizesCount;
 @property (nonatomic) int photoType; // @synthesize photoType=_photoType;
 
+- (int)StringAsPhotoSizes:(id)arg1;
+- (int)StringAsPhotoType:(id)arg1;
 - (void)addPhotoSize:(int)arg1;
 - (void)clearPhotoSizes;
 - (void)copyTo:(id)arg1;
@@ -33,6 +35,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (int)photoSizeAtIndex:(unsigned long long)arg1;
+- (id)photoSizesAsString:(int)arg1;
+- (id)photoTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setPhotoSizes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

@@ -6,7 +6,6 @@
 
 #import <dispatch/OS_object.h>
 
-__attribute__((visibility("hidden")))
 @interface OS_os_log : OS_object
 {
 }

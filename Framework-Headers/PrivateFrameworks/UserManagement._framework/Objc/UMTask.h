@@ -25,13 +25,11 @@
 @property (copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
-+ (id)taskFromDictionaryRepresentation:(id)arg1;
 + (id)taskWithName:(id)arg1 reason:(id)arg2;
 + (id)taskWithName:(id)arg1 reason:(id)arg2 forBundleID:(id)arg3;
 - (void).cxx_destruct;
 - (void)begin;
 - (id)description;
-- (id)dictionaryRepresentation;
 - (void)end;
 - (id)init;
 

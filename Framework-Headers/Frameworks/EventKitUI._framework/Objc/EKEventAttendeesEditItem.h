@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     long long _numberOfConflicts;
 }
 
++ (id)_noneInviteesLocalizedString;
 - (void).cxx_destruct;
 - (id)attendeesWithoutSelfOrganizerAndLocations;
 - (BOOL)canBeConfiguredForCalendarConstraints:(id)arg1;

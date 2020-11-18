@@ -26,6 +26,7 @@
 - (void)account:(NSString *)arg1 chat:(NSString *)arg2 style:(unsigned char)arg3 chatProperties:(NSDictionary *)arg4 messageReceived:(IMItem *)arg5;
 - (void)account:(NSString *)arg1 chat:(NSString *)arg2 style:(unsigned char)arg3 chatProperties:(NSDictionary *)arg4 messageSent:(IMMessageItem *)arg5;
 - (void)account:(NSString *)arg1 chat:(NSString *)arg2 style:(unsigned char)arg3 chatProperties:(NSDictionary *)arg4 messageUpdated:(IMItem *)arg5;
+- (void)account:(NSString *)arg1 chat:(NSString *)arg2 style:(unsigned char)arg3 chatProperties:(NSDictionary *)arg4 messagesReceived:(NSArray *)arg5;
 - (void)account:(NSString *)arg1 chat:(NSString *)arg2 style:(unsigned char)arg3 chatProperties:(NSDictionary *)arg4 messagesUpdated:(NSArray *)arg5;
 - (void)account:(NSString *)arg1 chat:(NSString *)arg2 style:(unsigned char)arg3 chatProperties:(NSDictionary *)arg4 notifySentMessage:(IMMessageItem *)arg5 sendTime:(NSNumber *)arg6;
 - (void)account:(NSString *)arg1 chat:(NSString *)arg2 style:(unsigned char)arg3 chatProperties:(NSDictionary *)arg4 statusChanged:(int)arg5 handleInfo:(NSArray *)arg6;
@@ -68,11 +69,13 @@
 - (void)fileTransfer:(NSString *)arg1 createdWithProperties:(NSDictionary *)arg2;
 - (void)fileTransfer:(NSString *)arg1 updatedWithCurrentBytes:(unsigned long long)arg2 totalBytes:(unsigned long long)arg3 averageTransferRate:(unsigned long long)arg4;
 - (void)fileTransfer:(NSString *)arg1 updatedWithProperties:(NSDictionary *)arg2;
+- (void)fileTransfers:(NSArray *)arg1 createdWithLocalPaths:(NSArray *)arg2;
 - (void)frequentRepliesQuery:(NSString *)arg1 chatID:(NSString *)arg2 services:(NSArray *)arg3 finishedWithResult:(NSArray *)arg4 limit:(unsigned long long)arg5;
 - (void)historicalMessageGUIDsDeleted:(NSArray *)arg1 chatGUIDs:(NSArray *)arg2 queryID:(NSString *)arg3;
 - (void)historyQuery:(NSString *)arg1 chatID:(NSString *)arg2 services:(NSArray *)arg3 finishedWithResult:(NSArray *)arg4 limit:(unsigned long long)arg5;
 - (void)lastFailedMessageIDChanged:(long long)arg1;
 - (void)leftChat:(NSString *)arg1;
+- (void)markAsSpamQuery:(NSString *)arg1 chatID:(NSString *)arg2 services:(NSArray *)arg3 finishedWithResult:(NSNumber *)arg4;
 - (void)messageQuery:(NSString *)arg1 finishedWithResult:(IMMessageItem *)arg2 chatGUIDs:(NSArray *)arg3;
 - (void)pendingACRequestComplete;
 - (void)pendingVCRequestComplete;
@@ -84,6 +87,8 @@
 - (void)showForgotPasswordNotificationForAccount:(NSString *)arg1;
 - (void)showInvalidCertNotificationForAccount:(NSString *)arg1;
 - (void)standaloneFileTransferRegistered:(NSString *)arg1;
+- (void)stickerPackRemoved:(NSArray *)arg1;
+- (void)stickerPackUpdated:(NSDictionary *)arg1;
 - (void)unreadCountChanged:(long long)arg1;
 - (void)vcCapabilitiesChanged:(unsigned long long)arg1;
 @end

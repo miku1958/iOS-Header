@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSString *value; // @synthesize value=_value;
 
 - (void).cxx_destruct;
+- (id)description;
 
 @end
 

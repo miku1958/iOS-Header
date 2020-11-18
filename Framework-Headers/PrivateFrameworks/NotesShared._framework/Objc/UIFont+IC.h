@@ -13,14 +13,17 @@
 + (double)fontSizeForSubheaderImport;
 + (double)lineHeightForAttachmentTitleText:(long long)arg1;
 + (struct UIFont *)listViewTitleFont;
++ (double)pointSizeForBodyTextWithContentSizeCategory:(id)arg1;
 + (id)preferredFontForAttachmentText:(long long)arg1;
 + (id)preferredFontForBodyText;
 + (struct UIFont *)preferredFontForBodyTextWithContentSizeCategory:(id)arg1;
 + (id)preferredFontForDateText;
 + (id)preferredFontForFixedWidthText;
++ (id)preferredFontForFixedWidthTextWithContentSizeCategory:(id)arg1;
 + (id)preferredFontForHeadingText;
 + (struct UIFont *)preferredFontForHeadingTextWithContentSizeCategory:(id)arg1;
 + (id)preferredFontForSubheadingText;
++ (struct UIFont *)preferredFontForSubheadingTextWithContentSizeCategory:(id)arg1;
 + (id)preferredFontForTitleText;
 + (struct UIFont *)preferredFontForTitleTextWithContentSizeCategory:(id)arg1;
 + (double)preferredFontSizeWithBaseSize:(double)arg1 withContentSizeCategory:(id)arg2 minSize:(double)arg3 maxSize:(double)arg4;

@@ -16,19 +16,25 @@
     NSString *_searchString;
     NSString *_keyboardLanguage;
     NSString *_keyboardPrimaryLanguage;
+    NSArray *markedTextArray;
     BOOL _cancelled;
     BOOL _finished;
     BOOL _internal;
-    NSArray *_searchDomains;
-    int _nextDomainIndex;
     double _creationTime;
     double _cancellationTime;
     unsigned long long _creationStamp;
     BOOL _dictationStable;
     BOOL _grouped;
+    BOOL _infinitePatience;
+    BOOL _isWideScreen;
+    NSArray *_searchDomains;
+    NSArray *_markedTextArray;
+    NSArray *_disabledDomains;
     NSDictionary *_dictationResponse;
     long long _maxCount;
     NSArray *_disabledBundles;
+    unsigned long long _whyQuery;
+    unsigned long long _queryIdent;
     long long _contentFilters;
 }
 
@@ -40,22 +46,32 @@
 @property (strong, nonatomic) NSDictionary *dictationResponse; // @synthesize dictationResponse=_dictationResponse;
 @property (nonatomic) BOOL dictationStable; // @synthesize dictationStable=_dictationStable;
 @property (strong, nonatomic) NSArray *disabledBundles; // @synthesize disabledBundles=_disabledBundles;
+@property (readonly, nonatomic) NSArray *disabledDomains; // @synthesize disabledDomains=_disabledDomains;
 @property (nonatomic) BOOL grouped; // @synthesize grouped=_grouped;
+@property (readonly, nonatomic) BOOL hasMarkedText;
+@property (nonatomic) BOOL infinitePatience; // @synthesize infinitePatience=_infinitePatience;
 @property (nonatomic) BOOL internal; // @synthesize internal=_internal;
+@property (nonatomic) BOOL isWideScreen; // @synthesize isWideScreen=_isWideScreen;
 @property (readonly, nonatomic) NSString *keyboardLanguage; // @synthesize keyboardLanguage=_keyboardLanguage;
 @property (readonly, nonatomic) NSString *keyboardPrimaryLanguage; // @synthesize keyboardPrimaryLanguage=_keyboardPrimaryLanguage;
+@property (readonly, nonatomic) NSArray *markedTextArray; // @synthesize markedTextArray=_markedTextArray;
 @property (nonatomic) long long maxCount; // @synthesize maxCount=_maxCount;
+@property (nonatomic) unsigned long long queryIdent; // @synthesize queryIdent=_queryIdent;
 @property (readonly, nonatomic) NSArray *searchDomains; // @synthesize searchDomains=_searchDomains;
 @property (readonly, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
+@property (nonatomic) unsigned long long whyQuery; // @synthesize whyQuery=_whyQuery;
 
 - (void).cxx_destruct;
 - (void)cancel;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)execute:(CDUnknownBlockType)arg1;
 - (unsigned long long)hash;
 - (id)initWithQuery:(id)arg1 domains:(id)arg2;
+- (id)initWithSearchQueryContext:(id)arg1;
 - (id)initWithSearchString:(id)arg1;
 - (id)initWithSearchString:(id)arg1 keyboardLanguage:(id)arg2 forSearchDomains:(id)arg3 disabledBundles:(id)arg4;
-- (id)initWithSearchString:(id)arg1 keyboardLanguage:(id)arg2 keyboardPrimaryLanguage:(id)arg3 forSearchDomains:(id)arg4 disabledBundles:(id)arg5;
+- (id)initWithSearchString:(id)arg1 keyboardLanguage:(id)arg2 forSearchDomains:(id)arg3 disabledDomains:(id)arg4 disabledBundles:(id)arg5;
+- (id)initWithSearchString:(id)arg1 keyboardLanguage:(id)arg2 keyboardPrimaryLanguage:(id)arg3 forSearchDomains:(id)arg4 disabledDomains:(id)arg5 disabledBundles:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
 
 @end

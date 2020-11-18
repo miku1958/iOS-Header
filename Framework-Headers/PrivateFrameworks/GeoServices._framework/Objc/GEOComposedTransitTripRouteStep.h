@@ -6,7 +6,7 @@
 
 #import <GeoServices/GEOComposedTransitRouteStep.h>
 
-@class GEOComposedTransitTripRouteLeg, GEOPBTransitStop, GEOTransitVehicleInfo, NSArray, NSDate, NSTimeZone;
+@class GEOComposedTransitTripRouteLeg, GEOTransitVehicleInfo, NSArray, NSDate, NSTimeZone;
 @protocol GEOTransitLine, GEOTransitSystem;
 
 @interface GEOComposedTransitTripRouteStep : GEOComposedTransitRouteStep
@@ -15,8 +15,6 @@
     NSArray *_arrivalTimes;
     double _departureTimeIntervalMin;
     double _departureTimeIntervalMax;
-    GEOPBTransitStop *_originStop;
-    GEOPBTransitStop *_destinationStop;
     GEOTransitVehicleInfo *_transitVehicle;
     id<GEOTransitLine> _transitLine;
     id<GEOTransitSystem> _transitSystem;
@@ -45,11 +43,9 @@
 
 - (void)dealloc;
 - (id)description;
-- (id)destinationStop;
 - (unsigned int)duration;
 - (BOOL)hasDuration;
 - (id)initWithComposedRoute:(id)arg1 decoderData:(id)arg2 step:(id)arg3 stepIndex:(unsigned long long)arg4 duration:(unsigned int)arg5 pointRange:(struct _NSRange)arg6;
-- (id)originStop;
 
 @end
 

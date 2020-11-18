@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class ALCity, City, NSDictionary, NSNumber, NSString, NSURL;
+@class ALCity, NSDictionary, NSNumber, NSString, NSURL;
 
 @interface WorldClockCity : NSObject
 {
     ALCity *_alCity;
-    City *_weatherCity;
     NSString *_timeZone;
     NSString *_name;
     NSString *_countryName;
@@ -30,7 +29,6 @@
 @property (readonly, nonatomic) NSString *timeZone;
 @property (readonly, nonatomic) NSString *unlocalizedCityName;
 @property (readonly, nonatomic) NSString *unlocalizedCountryName;
-@property (strong, nonatomic) City *weatherCity; // @synthesize weatherCity=_weatherCity;
 
 + (BOOL)isCachedLanguageStaleForProperties:(id)arg1;
 + (BOOL)isCachedLanguageStaleForProperties:(id)arg1 systemLanguage:(id)arg2;

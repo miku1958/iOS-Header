@@ -11,18 +11,20 @@
 
 @interface _MDIndexExtensionLoader : NSObject
 {
-    id _extensionMatchingContext;
+    id _matchingContext;
     NSObject<OS_dispatch_queue> *_queue;
-    NSDictionary *_indexExtensionsByBundleID;
+    NSDictionary *_extensionsByBundleId;
 }
 
-@property (strong, nonatomic) id extensionMatchingContext; // @synthesize extensionMatchingContext=_extensionMatchingContext;
-@property (strong, nonatomic) NSDictionary *indexExtensionsByBundleID; // @synthesize indexExtensionsByBundleID=_indexExtensionsByBundleID;
+@property (strong, nonatomic) NSDictionary *extensionsByBundleId; // @synthesize extensionsByBundleId=_extensionsByBundleId;
+@property (strong, nonatomic) id matchingContext; // @synthesize matchingContext=_matchingContext;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
++ (id)_matchDictionary;
 - (void).cxx_destruct;
+- (id)_filterIndexExtensions:(id)arg1;
 - (id)_loadExtensionsSynchronously;
-- (id)_matchingDictionary;
+- (void)findExtensionsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)startLookingForExtensionsWithMatchUpdateHandler:(CDUnknownBlockType)arg1;
 - (void)stopLookingForExtensions;

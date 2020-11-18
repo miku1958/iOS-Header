@@ -9,13 +9,12 @@
 #import <WebKit/UIScrollViewDelegate-Protocol.h>
 
 @class NSString, WKWebView;
-@protocol UIScrollViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface WKScrollViewDelegateForwarder : NSObject <UIScrollViewDelegate>
 {
     WKWebView *_internalDelegate;
-    id<UIScrollViewDelegate> _externalDelegate;
+    struct WeakObjCPtr<id<UIScrollViewDelegate>> _externalDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,6 +22,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)forwardInvocation:(id)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithInternalDelegate:(id)arg1 externalDelegate:(id)arg2;

@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)_canBeReusedInPickerView;
 - (void)_setIsCenterCell:(BOOL)arg1 shouldModifyAlphaOfView:(BOOL)arg2;
-- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 isModern:(BOOL)arg3 textColor:(id)arg4;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 isModern:(BOOL)arg3 textColor:(id)arg4 forceTextAlignmentCentered:(BOOL)arg5;
 - (void)prepareForReuse;
 
 @end

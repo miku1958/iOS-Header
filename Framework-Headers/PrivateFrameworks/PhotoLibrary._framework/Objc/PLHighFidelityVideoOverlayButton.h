@@ -8,13 +8,14 @@
 
 #import <PhotoLibrary/PLVideoOverlayButton-Protocol.h>
 
-@class UIButton, _UIBackdropView;
+@class UIButton, UIImageView, _UIBackdropView;
 
 @interface PLHighFidelityVideoOverlayButton : UIView <PLVideoOverlayButton>
 {
     long long _style;
     UIButton *_button;
     _UIBackdropView *_backdropView;
+    UIImageView *_overlayPlayBackground;
     id _target;
     SEL _action;
 }
@@ -24,6 +25,7 @@
 - (void)_playButtonTapped:(id)arg1;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1;
+- (void)layoutSubviews;
 - (void)setTarget:(id)arg1 action:(SEL)arg2;
 - (long long)style;
 

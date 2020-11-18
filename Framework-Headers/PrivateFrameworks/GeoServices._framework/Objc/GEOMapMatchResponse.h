@@ -28,6 +28,8 @@
 @property (nonatomic) int status; // @synthesize status=_status;
 @property (strong, nonatomic) NSData *zilchPoints; // @synthesize zilchPoints=_zilchPoints;
 
+- (int)StringAsMatchingStatus:(id)arg1;
+- (int)StringAsStatus:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -35,8 +37,10 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)matchingStatusAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)statusAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

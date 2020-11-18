@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSURL, NSURLSession;
 @protocol OS_dispatch_queue;
@@ -17,11 +17,11 @@
     NSMutableDictionary *_manifestItemsByRelativeURL;
 }
 
+- (void).cxx_destruct;
 - (void)_flushBundleCaches;
 - (BOOL)addRemoteAssetData:(id)arg1 forManifestItem:(id)arg2 error:(id *)arg3;
 - (BOOL)assetExistsLocally:(id)arg1;
 - (void)cancelDownloads;
-- (void)dealloc;
 - (id)deviceSpecificItems;
 - (id)deviceSpecificItemsForScreenScale:(double)arg1 suffix:(id)arg2;
 - (void)downloadRemoteAssetsWithCompletion:(CDUnknownBlockType)arg1;

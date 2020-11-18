@@ -6,17 +6,25 @@
 
 #import <coreroutine/NSObject-Protocol.h>
 
-@class RTEvent, RTLocationOfInterest, RTLocationOfInterestVisit;
+@class NSDate, NSString, NSURL, RTEvent, RTLocationOfInterest, RTLocationOfInterestVisit;
 
 @protocol RTDaemonInternalProtocol <NSObject>
-- (void)fetchPredictedApplicationForEvent:(RTEvent *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
+- (void)fetchMagicalMomentsModelPropertyListRepresentation:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)fetchPredictedApplicationsForEvent:(RTEvent *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
+- (void)fetchStoredLocationsFromDate:(NSDate *)arg1 toDate:(NSDate *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
+- (void)forceEventModelRefresh;
 - (void)forceSequentialClusterIdentification:(void (^)(NSError *))arg1;
 - (void)forceUpdateAssetMetadata;
 - (void)injectLocationOfInterest:(RTLocationOfInterest *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)injectVisit:(RTLocationOfInterestVisit *)arg1 locationOfInterest:(RTLocationOfInterest *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)printMagicalMomentsModelWithReply:(void (^)(NSError *))arg1;
+- (void)printRoomAssistModel:(void (^)(NSError *))arg1;
 - (void)processDataForPredictionModelWithReply:(void (^)(NSError *))arg1;
+- (void)processDataForRoomAssistModelWithReply:(void (^)(NSError *))arg1;
 - (void)removeLocationOfInterest:(RTLocationOfInterest *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)removeVisit:(RTLocationOfInterestVisit *)arg1 locationOfInterest:(RTLocationOfInterest *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)requestCurrentMicroLocation;
+- (void)syncRoutineStateModelFromCompanionToGizmo:(void (^)(NSString *, NSError *))arg1;
+- (void)updateAssetServerURL:(NSURL *)arg1 assetType:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 @end
 

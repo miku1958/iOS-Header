@@ -9,6 +9,7 @@
 @interface NSFileManager (RTExtensions)
 + (id)cacheDirectoryPath;
 + (id)defaultsDomain;
++ (id)frameworkDirectoryPath;
 + (id)pathInCacheDirectory:(id)arg1;
 @end
 

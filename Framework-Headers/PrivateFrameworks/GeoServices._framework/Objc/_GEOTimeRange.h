@@ -13,8 +13,8 @@
 __attribute__((visibility("hidden")))
 @interface _GEOTimeRange : NSObject <GEOTransitTimeRange>
 {
-    CDStruct_43c37391 _pbTimeRange;
-    CDStruct_43c37391 _pdTimeRange;
+    struct GEOPBTransitTimeRange _pbTimeRange;
+    struct GEOPDTimeRange _pdTimeRange;
     BOOL _usePB;
 }
 
@@ -28,8 +28,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (BOOL)contains:(id)arg1;
-- (id)initWithPBTimeRange:(CDStruct_43c37391)arg1;
-- (id)initWithPDTimeRange:(CDStruct_43c37391)arg1;
+- (id)initWithPBTimeRange:(struct GEOPBTransitTimeRange)arg1;
+- (id)initWithPDTimeRange:(struct GEOPDTimeRange)arg1;
 
 @end
 

@@ -64,7 +64,6 @@
 - (void)dealloc;
 - (void)enumerateLayersUsingBlock:(CDUnknownBlockType)arg1;
 - (id)fillSampleAtLayer:(unsigned int)arg1;
-- (void)finalize;
 - (id)gradientAtLayer:(unsigned int)arg1;
 - (id)imageAtLayer:(unsigned int)arg1;
 - (id)imageAtLayer:(unsigned int)arg1 isZeroSizeImage:(BOOL *)arg2;

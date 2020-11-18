@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSError, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSThread, NSURL, NSURLConnection, NSURLRequest, NSURLResponse;
 
@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
     BOOL _progressive;
     void *_convertFunction;
     NSURLConnection *_connection;
-    id _delegate;
     long long _pageCount;
     float _pageWidth;
     float _pageHeight;
@@ -36,6 +35,7 @@ __attribute__((visibility("hidden")))
     CDStruct_b3b3fc87 representedObjectCallbacks;
     long long representedObjectProtection;
     BOOL htmlErrorDisabled;
+    id _delegate;
 }
 
 @property (readonly, nonatomic) NSSet *attachmentURLs;
@@ -43,7 +43,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, getter=isComputed) BOOL computed;
 @property (strong, nonatomic) NSURLConnection *connection; // @synthesize connection=_connection;
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
-@property (nonatomic) id delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSString *fileName; // @synthesize fileName=_fileName;
 @property BOOL htmlErrorDisabled; // @synthesize htmlErrorDisabled;
 @property (readonly) long long pageCount; // @synthesize pageCount=_pageCount;
@@ -63,6 +63,7 @@ __attribute__((visibility("hidden")))
 + (id)relativeStringForSafeURL:(id)arg1;
 + (id)safeURLScheme;
 + (void)unregisterPreview:(id)arg1;
+- (void).cxx_destruct;
 - (void)_discardRepresentedObjectSafely;
 - (void)_protectRepresentedObjectSafely;
 - (void)_registerURL:(id)arg1 mimeType:(id)arg2 textEncoding:(id)arg3;

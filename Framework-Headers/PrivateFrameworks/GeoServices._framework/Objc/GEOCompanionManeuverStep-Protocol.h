@@ -12,7 +12,7 @@
 
 @property (nonatomic) BOOL hasJunctionType;
 @property (nonatomic) BOOL hasManeuverType;
-@property (readonly, nonatomic) CDStruct_e02beb0c *junctionElements;
+@property (readonly, nonatomic) struct GEOJunctionElement *junctionElements;
 @property (readonly, nonatomic) unsigned long long junctionElementsCount;
 @property (nonatomic) int junctionType;
 @property (strong, nonatomic) NSMutableArray *maneuverNames;

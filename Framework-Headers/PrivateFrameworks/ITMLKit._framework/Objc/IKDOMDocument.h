@@ -49,9 +49,10 @@
 - (id)initWithAppContext:(id)arg1 qualifiedName:(id)arg2;
 - (id)initWithAppContext:(id)arg1 xmlStr:(id)arg2 error:(id *)arg3;
 - (BOOL)markUpdated;
+- (id)matchingImpressions:(id)arg1:(id)arg2;
 - (id)nodeName;
 - (long long)nodeType;
-- (id)recordedImpressions;
+- (id)recordedImpressions:(id)arg1;
 - (void)replace:(id)arg1;
 - (void)runTest:(id)arg1:(id)arg2;
 - (void)scrollToTop;

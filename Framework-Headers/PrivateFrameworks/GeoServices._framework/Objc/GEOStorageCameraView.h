@@ -26,6 +26,7 @@
 @property (nonatomic) int mapType; // @synthesize mapType=_mapType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
+- (int)StringAsMapType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -33,6 +34,7 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)mapTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

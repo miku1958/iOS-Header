@@ -6,12 +6,13 @@
 
 #import <GenerationalStorage/GSAddition.h>
 
-@class NSString;
+@class NSPersonNameComponents, NSString;
 
 @interface GSAddition (BRConflictLosers)
 
 @property (readonly, nonatomic) NSString *br_lastEditorDeviceName;
 @property (readonly, nonatomic) NSString *br_lastEditorName;
+@property (readonly, nonatomic) NSPersonNameComponents *br_lastEditorNameComponents;
 
 - (BOOL)_br_markResolvedWithError:(id *)arg1;
 - (BOOL)br_markResolvedWithError:(id *)arg1;

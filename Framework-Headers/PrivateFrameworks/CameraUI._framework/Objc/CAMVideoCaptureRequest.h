@@ -19,9 +19,11 @@
     long long _maximumRecordedFileSize;
     long long _remainingDiskUsageThreshold;
     id<CAMVideoCaptureRequestDelegate> _delegate;
+    long long _captureVideoConfiguration;
     long long _torchMode;
 }
 
+@property (readonly, nonatomic) long long captureVideoConfiguration; // @synthesize captureVideoConfiguration=_captureVideoConfiguration;
 @property (readonly, weak, nonatomic) id<CAMVideoCaptureRequestDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) double maximumRecordedDuration; // @synthesize maximumRecordedDuration=_maximumRecordedDuration;
 @property (readonly, nonatomic) long long maximumRecordedFileSize; // @synthesize maximumRecordedFileSize=_maximumRecordedFileSize;

@@ -18,7 +18,6 @@
 @property (readonly) DOMCSSPrimitiveValue *top;
 
 - (void)dealloc;
-- (void)finalize;
 
 @end
 

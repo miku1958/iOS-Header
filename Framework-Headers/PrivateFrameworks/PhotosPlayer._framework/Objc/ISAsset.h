@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) BOOL hasColorAdjustments;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (readonly, nonatomic) struct CGImage *photo; // @synthesize photo=_photo;
+@property (readonly, nonatomic) CDStruct_1b6d18a9 photoCMTime;
 @property (readonly, nonatomic) int photoEXIFOrientation; // @synthesize photoEXIFOrientation=_photoEXIFOrientation;
 @property (readonly, nonatomic) double photoTime; // @synthesize photoTime=_photoTime;
 @property (readonly, copy, nonatomic) AVAsset *videoAsset; // @synthesize videoAsset=_videoAsset;

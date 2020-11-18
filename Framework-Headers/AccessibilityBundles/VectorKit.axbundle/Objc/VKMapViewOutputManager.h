@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSMutableArray *outputQueue; // @synthesize outputQueue=_outputQueue;
 
 + (id)sharedOutputManager;
+- (void).cxx_destruct;
 - (void)_handleAccessibilityAnnouncementDidFinish:(id)arg1;
 - (void)clearOutputQueue;
 - (void)dealloc;

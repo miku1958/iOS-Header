@@ -13,6 +13,7 @@
 @interface BRFieldPkgItem : PBCodable <NSCopying>
 {
     long long _mtime;
+    long long _xattrIndex;
     NSString *_path;
     NSData *_quarantineInfo;
     NSData *_signature;
@@ -22,6 +23,7 @@
     BOOL _isWritable;
     struct {
         unsigned int mtime:1;
+        unsigned int xattrIndex:1;
         unsigned int isExecutable:1;
         unsigned int isWritable:1;
     } _has;
@@ -34,6 +36,7 @@
 @property (readonly, nonatomic) BOOL hasQuarantineInfo;
 @property (readonly, nonatomic) BOOL hasSignature;
 @property (readonly, nonatomic) BOOL hasSymlinkContent;
+@property (nonatomic) BOOL hasXattrIndex;
 @property (nonatomic) BOOL isExecutable; // @synthesize isExecutable=_isExecutable;
 @property (nonatomic) BOOL isWritable; // @synthesize isWritable=_isWritable;
 @property (nonatomic) long long mtime; // @synthesize mtime=_mtime;
@@ -42,8 +45,10 @@
 @property (strong, nonatomic) NSData *signature; // @synthesize signature=_signature;
 @property (strong, nonatomic) NSString *symlinkContent; // @synthesize symlinkContent=_symlinkContent;
 @property (nonatomic) int type; // @synthesize type=_type;
+@property (nonatomic) long long xattrIndex; // @synthesize xattrIndex=_xattrIndex;
 
 - (void).cxx_destruct;
+- (int)StringAsType:(id)arg1;
 - (void)clear;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -54,6 +59,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)updateWithPkgItem:(id)arg1;
 - (void)writeTo:(id)arg1;
 

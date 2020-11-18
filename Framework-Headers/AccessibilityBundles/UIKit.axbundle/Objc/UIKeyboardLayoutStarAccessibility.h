@@ -47,9 +47,13 @@
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (unsigned long long)accessibilityTraits;
+- (id)atvGetKeyboardRowsByNumber;
+- (id)atvGetOrderedRowsForRows:(id)arg1 sortedRows:(id)arg2 numRows:(long long)arg3;
 - (BOOL)canProduceString:(id)arg1;
-- (void)continueFromInternationalActionForTouchUp:(id)arg1 withActions:(long long)arg2 timestamp:(double)arg3 interval:(double)arg4 didLongPress:(BOOL)arg5 prevActions:(long long)arg6 executionContext:(id)arg7;
+- (void)continueFromInternationalActionForTouchUp:(id)arg1 withActions:(unsigned long long)arg2 timestamp:(double)arg3 interval:(double)arg4 didLongPress:(BOOL)arg5 prevActions:(unsigned long long)arg6 executionContext:(id)arg7;
 - (void)dealloc;
+- (id)iOSGetKeyboardRowsByNumber;
+- (id)iOSGetOrderedRowsForRows:(id)arg1 sortedRows:(id)arg2 numRows:(long long)arg3;
 - (long long)indexOfAccessibilityElement:(id)arg1;
 - (BOOL)isAccessibilityElement;
 - (void)setActiveKey:(id)arg1;

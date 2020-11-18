@@ -13,9 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityLoadAccessibilityInformation;
+- (id)_axSafariAccessibilityLabelForResult:(id)arg1;
+- (id)_axScoreStringForType:(id)arg1 withLeftTeamName:(id)arg2 score:(id)arg3 rightTeamName:(id)arg4 score:(id)arg5;
 - (id)accessibilityLabel;
-- (id)initWithCardSection:(id)arg1 controller:(id)arg2;
 - (BOOL)isAccessibilityElement;
 
 @end

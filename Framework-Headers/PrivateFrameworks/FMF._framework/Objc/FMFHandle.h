@@ -61,6 +61,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isPhoneNumber;
 - (BOOL)isSharingThroughGroupId:(id)arg1;
 - (id)prettyName;
 - (long long)prettyNameCompare:(id)arg1;

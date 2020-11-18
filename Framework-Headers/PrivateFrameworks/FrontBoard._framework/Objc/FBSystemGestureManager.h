@@ -26,6 +26,7 @@
 - (void)dealloc;
 - (id)init;
 - (void)removeGestureRecognizer:(id)arg1 fromDisplay:(id)arg2;
+- (id)windowForSystemGesturesForDisplay:(id)arg1;
 
 @end
 

@@ -9,7 +9,7 @@
 #import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
 
-@class NSString, SKTexture;
+@class MISSING_TYPE, NSMutableArray, NSString, SKTexture;
 
 @interface SKUniform : NSObject <NSCopying, NSCoding>
 {
@@ -17,14 +17,12 @@
     NSString *_name;
     unsigned long long _seed;
     SKTexture *_textureValue;
+    NSMutableArray *_targetShaders;
     union {
         float _floatValue;
-        union _GLKVector2 _floatVector2Value;
-        union _GLKVector3 _floatVector3Value;
-        union _GLKVector4 _floatVector4Value;
-        union _GLKMatrix2 _floatMatrix2Value;
-        union _GLKMatrix3 _floatMatrix3Value;
-        union _GLKMatrix4 _floatMatrix4Value;
+        CDStruct_1c3b5cc1 _floatVector2Value___floatVector3Value___floatVector4Value___floatMatrix2Value;
+        CDStruct_8e0628e6 _floatMatrix3Value;
+        CDStruct_14d5dc5e _floatMatrix4Value;
     } _value;
 }
 
@@ -32,13 +30,19 @@
 @property union _GLKMatrix2 floatMatrix2Value;
 @property union _GLKMatrix3 floatMatrix3Value;
 @property union _GLKMatrix4 floatMatrix4Value;
-@property float floatValue;
+@property (nonatomic) float floatValue;
 @property union _GLKVector2 floatVector2Value;
 @property union _GLKVector3 floatVector3Value;
 @property union _GLKVector4 floatVector4Value;
+@property (nonatomic) CDStruct_1c3b5cc1 matrixFloat2x2Value;
+@property (nonatomic) CDStruct_8e0628e6 matrixFloat3x3Value;
+@property (nonatomic) CDStruct_14d5dc5e matrixFloat4x4Value;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) SKTexture *textureValue;
 @property (readonly, nonatomic) long long uniformType;
+@property (nonatomic) MISSING_TYPE *vectorFloat2Value;
+@property (nonatomic) MISSING_TYPE *vectorFloat3Value;
+@property (nonatomic) MISSING_TYPE *vectorFloat4Value;
 
 + (id)uniformWithName:(id)arg1;
 + (id)uniformWithName:(id)arg1 float:(float)arg2;
@@ -48,8 +52,17 @@
 + (id)uniformWithName:(id)arg1 floatVector2:(union _GLKVector2)arg2;
 + (id)uniformWithName:(id)arg1 floatVector3:(union _GLKVector3)arg2;
 + (id)uniformWithName:(id)arg1 floatVector4:(union _GLKVector4)arg2;
++ (id)uniformWithName:(id)arg1 matrixFloat2x2:(CDStruct_1c3b5cc1)arg2;
++ (id)uniformWithName:(id)arg1 matrixFloat3x3:(CDStruct_8e0628e6)arg2;
++ (id)uniformWithName:(id)arg1 matrixFloat4x4:(CDStruct_14d5dc5e)arg2;
 + (id)uniformWithName:(id)arg1 texture:(id)arg2;
++ (id)uniformWithName:(id)arg1 vectorFloat2: /* Error: Ran out of types for this method. */;
++ (id)uniformWithName:(id)arg1 vectorFloat3: /* Error: Ran out of types for this method. */;
++ (id)uniformWithName:(id)arg1 vectorFloat4: /* Error: Ran out of types for this method. */;
 - (void).cxx_destruct;
+- (void)_addTargetShader:(id)arg1;
+- (void)_propagateChange;
+- (void)_removeTargetShader:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -62,7 +75,13 @@
 - (id)initWithName:(id)arg1 floatVector2:(union _GLKVector2)arg2;
 - (id)initWithName:(id)arg1 floatVector3:(union _GLKVector3)arg2;
 - (id)initWithName:(id)arg1 floatVector4:(union _GLKVector4)arg2;
+- (id)initWithName:(id)arg1 matrixFloat2x2:(CDStruct_1c3b5cc1)arg2;
+- (id)initWithName:(id)arg1 matrixFloat3x3:(CDStruct_8e0628e6)arg2;
+- (id)initWithName:(id)arg1 matrixFloat4x4:(CDStruct_14d5dc5e)arg2;
 - (id)initWithName:(id)arg1 texture:(id)arg2;
+- (id)initWithName:(id)arg1 vectorFloat2: /* Error: Ran out of types for this method. */;
+- (id)initWithName:(id)arg1 vectorFloat3: /* Error: Ran out of types for this method. */;
+- (id)initWithName:(id)arg1 vectorFloat4: /* Error: Ran out of types for this method. */;
 
 @end
 

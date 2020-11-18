@@ -12,7 +12,7 @@
 
 @interface GEOShortSessionUsageLogMessage : PBCodable <NSCopying>
 {
-    CDStruct_612aec5b _sessionId;
+    struct GEOSessionID _sessionId;
     double _relativeTimestamp;
     GEOPlaceDataCacheLogMessage *_placeDataCacheLogMessage;
     unsigned int _sequenceNumber;
@@ -40,7 +40,7 @@
 @property (strong, nonatomic) GEOPlaceDataCacheLogMessage *placeDataCacheLogMessage; // @synthesize placeDataCacheLogMessage=_placeDataCacheLogMessage;
 @property (nonatomic) double relativeTimestamp; // @synthesize relativeTimestamp=_relativeTimestamp;
 @property (nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
-@property (nonatomic) CDStruct_612aec5b sessionId; // @synthesize sessionId=_sessionId;
+@property (nonatomic) struct GEOSessionID sessionId; // @synthesize sessionId=_sessionId;
 @property (strong, nonatomic) GEOStateTimingUsageLogMessage *stateTimingLogMessage; // @synthesize stateTimingLogMessage=_stateTimingLogMessage;
 @property (strong, nonatomic) GEOSuggestionsUsageLogMessage *suggestionsLogMessage; // @synthesize suggestionsLogMessage=_suggestionsLogMessage;
 @property (strong, nonatomic) GEOTileSetStateUsageLogMessage *tileSetStateUsageLogMessage; // @synthesize tileSetStateUsageLogMessage=_tileSetStateUsageLogMessage;

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class GEOComposedRoute, GEOComposedWaypoint, GEOETATrafficUpdateRequest, GEOLocation, GEORouteAttributes, GEORouteMatch, GEORouteSummaryAttributes, NSData, NSTimer;
+@class GEOCommonOptions, GEOComposedRoute, GEOComposedWaypoint, GEOETATrafficUpdateRequest, GEOLocation, GEORouteAttributes, GEORouteMatch, NSData, NSTimer;
 @protocol GEOETAUpdaterDelegate;
 
 @interface GEOETAUpdater : NSObject
@@ -27,7 +27,7 @@
     double _lastETARequestTime;
     double _debugTimeWindowDuration;
     NSData *_directionsResponseID;
-    GEORouteSummaryAttributes *_routeSummaryAttributes;
+    GEOCommonOptions *_commonOptions;
 }
 
 @property (nonatomic) BOOL allowRequests; // @synthesize allowRequests=_allowRequests;
@@ -44,17 +44,14 @@
 @property (strong, nonatomic) GEOLocation *userLocation; // @synthesize userLocation=_userLocation;
 
 - (double)_calculateNextTransitionTime;
-- (void)_clearCurrentETARequest;
 - (void)_clearTimer;
 - (void)_continueUpdateRequests;
-- (void)_createETARequest;
-- (void)_fakeResponseForWalkingWithETAUpdateRequest:(id)arg1 currentStep:(id)arg2 percentOfCurrentStepRemaining:(double)arg3;
-- (BOOL)_sendETARequest:(id)arg1 isUpdate:(BOOL)arg2;
+- (void)_sendRequest:(id)arg1;
 - (BOOL)_shouldStartConditionalETARequest;
 - (void)_startConditionalConnectionETARequest;
 - (void)_startStateWaitingForBestTimeStart:(id)arg1;
-- (void)_updateCurrentETARequest;
 - (BOOL)_updateETAResponse:(id)arg1 withRemainingDistanceFromRequest:(id)arg2;
+- (void)_updateRequest:(id)arg1;
 - (BOOL)_updateRouteWithETATrafficUpdateResponse:(id)arg1;
 - (void)cancelRequest;
 - (id)currentStep;

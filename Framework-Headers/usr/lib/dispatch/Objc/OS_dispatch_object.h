@@ -6,22 +6,12 @@
 
 #import <dispatch/OS_object.h>
 
-#import <dispatch/OS_dispatch_object-Protocol.h>
-
-@class NSString;
-
-__attribute__((visibility("hidden")))
-@interface OS_dispatch_object : OS_object <OS_dispatch_object>
+@interface OS_dispatch_object : OS_object
 {
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
 - (void)_dispose;
-- (void)_xref_dispose;
+- (id)debugDescription;
 - (id)init;
 
 @end

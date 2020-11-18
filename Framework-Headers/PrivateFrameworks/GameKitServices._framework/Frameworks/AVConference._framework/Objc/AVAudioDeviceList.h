@@ -18,6 +18,7 @@
 + (id)currentInputDevice;
 + (id)defaultInputDevice;
 + (id)defaultOutputDevice;
++ (id)deviceForUID:(id)arg1;
 + (BOOL)setInputDevice:(id)arg1;
 - (void)dealloc;
 - (id)devices;

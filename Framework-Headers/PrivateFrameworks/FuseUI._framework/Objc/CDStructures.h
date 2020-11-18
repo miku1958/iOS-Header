@@ -10,15 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct CGAffineTransform {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-};
-
 struct CGPoint {
     double x;
     double y;
@@ -40,11 +31,6 @@ struct EditingEntityProviderEntry {
     id _field3;
 };
 
-struct MusicEntityDownloadInformation {
-    long long downloadStatus;
-    double downloadProgress;
-};
-
 struct UIEdgeInsets {
     double top;
     double left;
@@ -58,8 +44,8 @@ struct UIOffset {
 };
 
 struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 struct map<MusicStoreBrowseDetailedContentItemType, unsigned long, std::__1::less<MusicStoreBrowseDetailedContentItemType>, std::__1::allocator<std::__1::pair<const MusicStoreBrowseDetailedContentItemType, unsigned long>>> {
@@ -83,14 +69,6 @@ struct vector<_NSRange, std::__1::allocator<_NSRange>> {
     struct _NSRange *__end_;
     struct __compressed_pair<_NSRange *, std::__1::allocator<_NSRange>> {
         struct _NSRange *__first_;
-    } __end_cap_;
-};
-
-struct vector<__weak id<MusicEntityProviderDownloadInformationControllerObserver>, std::__1::allocator<__weak id<MusicEntityProviderDownloadInformationControllerObserver>>> {
-    id *__begin_;
-    id *__end_;
-    struct __compressed_pair<__weak id<MusicEntityProviderDownloadInformationControllerObserver>*, std::__1::allocator<__weak id<MusicEntityProviderDownloadInformationControllerObserver>>> {
-        id *__first_;
     } __end_cap_;
 };
 
@@ -129,20 +107,8 @@ typedef struct {
 } CDStruct_1dee9796;
 
 typedef struct {
-    long long _field1;
-    long long _field2;
-    double _field3;
-} CDStruct_8ff95007;
-
-typedef struct {
     struct CGRect _field1;
     struct CGRect _field2;
     struct CGRect _field3;
 } CDStruct_6b60c6e5;
-
-// Ambiguous groups
-typedef struct {
-    unsigned int identifiers:1;
-    unsigned int name:1;
-} CDStruct_63a3d127;
 

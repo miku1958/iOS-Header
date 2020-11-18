@@ -7,17 +7,21 @@
 #import <CloudDocsDaemon/NSCopying-Protocol.h>
 #import <CloudDocsDaemon/NSSecureCoding-Protocol.h>
 
-@class BRCAccountSession, BRCItemID, BRCLocalContainer, BRCServerZone, BRCStatInfo, NSNumber;
+@class BRCAccountSession, BRCClientZone, BRCItemID, BRCServerZone, BRCStatInfo, NSNumber;
 
 @protocol BRCItem <NSCopying, NSSecureCoding>
 
-@property (readonly, nonatomic) BRCLocalContainer *container;
-@property (readonly, nonatomic) BOOL isAlias;
+@property (readonly, nonatomic) BRCClientZone *clientZone;
+@property (readonly, nonatomic) BOOL isBRAlias;
 @property (readonly, nonatomic) BOOL isDead;
 @property (readonly, nonatomic) BOOL isDirectory;
 @property (readonly, nonatomic) BOOL isDocument;
+@property (readonly, nonatomic) BOOL isFSRoot;
+@property (readonly, nonatomic) BOOL isFinderBookmark;
 @property (readonly, nonatomic) BOOL isLive;
 @property (readonly, nonatomic) BOOL isPackage;
+@property (readonly, nonatomic) BOOL isSymLink;
+@property (readonly, nonatomic) BOOL isZoneRoot;
 @property (readonly, nonatomic) BRCItemID *itemID;
 @property (readonly, nonatomic) NSNumber *ownerKey;
 @property (readonly, nonatomic) BRCServerZone *serverZone;

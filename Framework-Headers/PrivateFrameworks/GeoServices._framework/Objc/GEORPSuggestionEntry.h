@@ -31,6 +31,8 @@
 @property (nonatomic) unsigned int serverSearchCompletionSectionIndex; // @synthesize serverSearchCompletionSectionIndex=_serverSearchCompletionSectionIndex;
 @property (nonatomic) int type; // @synthesize type=_type;
 
++ (Class)displayLineType;
+- (int)StringAsType:(id)arg1;
 - (void)addDisplayLine:(id)arg1;
 - (void)clearDisplayLines;
 - (void)copyTo:(id)arg1;
@@ -44,6 +46,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

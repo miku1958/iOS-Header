@@ -9,7 +9,7 @@
 #import <FrontBoardServices/BSDescriptionProviding-Protocol.h>
 #import <FrontBoardServices/BSXPCCoding-Protocol.h>
 
-@class FBSDisplay, NSArray, NSMutableArray, NSString;
+@class FBSDisplay, NSArray, NSDate, NSMutableArray, NSString;
 
 @interface FBSDisplayLayout : NSObject <BSXPCCoding, BSDescriptionProviding>
 {
@@ -20,6 +20,7 @@
     long long _interfaceOrientation;
     struct CGRect _bounds;
     struct CGRect _referenceBounds;
+    NSDate *_timestamp;
 }
 
 @property (nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
@@ -33,6 +34,7 @@
 @property (nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property (readonly, nonatomic) struct CGRect referenceBounds; // @synthesize referenceBounds=_referenceBounds;
 @property (readonly) Class superclass;
+@property (readonly, strong, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 
 - (id)_initWithElements:(id)arg1;
 - (void)_sortElements;

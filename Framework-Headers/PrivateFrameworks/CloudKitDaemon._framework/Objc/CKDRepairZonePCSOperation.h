@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)_fetchZones;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_uploadRepairedZones;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
 - (BOOL)makeStateTransition;

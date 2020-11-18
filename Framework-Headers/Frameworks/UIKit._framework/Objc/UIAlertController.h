@@ -11,8 +11,8 @@
 #import <UIKit/UIPreviewInteractionControllerDelegate-Protocol.h>
 #import <UIKit/_UIAlertControllerTextFieldViewControllerContaining-Protocol.h>
 
-@class NSArray, NSAttributedString, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, UIAlertAction, UIAlertControllerVisualStyle, UIGestureRecognizer, UIPopoverController, UIPreviewInteractionController, UITapGestureRecognizer, UIView, _UIAlertControllerSelectGestureRecognizer, _UIAlertControllerTextFieldViewController, _UIAnimationCoordinator;
-@protocol UIAlertControllerSystemProvidedPresentationDelegate, UIAlertControllerVisualStyleProviding;
+@class NSArray, NSAttributedString, NSIndexSet, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, UIAlertAction, UIAlertControllerVisualStyle, UIGestureRecognizer, UIPopoverController, UIPreviewInteractionController, UITapGestureRecognizer, UIView, _UIAlertControllerTextFieldViewController, _UIAnimationCoordinator;
+@protocol UIAlertControllerCoordinatedActionPerforming, UIAlertControllerSystemProvidedPresentationDelegate, UIAlertControllerVisualStyleProviding;
 
 @interface UIAlertController : UIViewController <UIAlertControllerContaining, _UIAlertControllerTextFieldViewControllerContaining, UIPreviewInteractionControllerDelegate, UIAlertControllerVisualStyleProviding>
 {
@@ -20,40 +20,40 @@
     NSAttributedString *_attributedTitle;
     NSAttributedString *_attributedMessage;
     NSAttributedString *_attributedDetailMessage;
-    NSMutableArray *_actionDelimiterIndices;
     NSSet *_linkedAlertControllers;
     UIAlertAction *_cancelAction;
     NSMutableDictionary *_actionToKeyCommandsDictionary;
     NSMapTable *_keyCommandToActionMapTable;
     long long _resolvedStyle;
     long long _preferredStyle;
-    NSObject<UIAlertControllerVisualStyleProviding> *_styleProvider;
     UIViewController *_contentViewController;
     _UIAlertControllerTextFieldViewController *_textFieldViewController;
     UITapGestureRecognizer *_backButtonDismissGestureRecognizer;
-    _UIAlertControllerSelectGestureRecognizer *_selectGestureRecognizer;
     id _ownedTransitioningDelegate;
     BOOL _shouldInformViewOfAddedContentViewController;
     BOOL _isInSupportedInterfaceOrientations;
     BOOL _shouldEnsureContentControllerViewIsVisibleOnAppearance;
     BOOL _hidden;
-    BOOL _ignoresKeyboardForPositioning;
+    BOOL __shouldFlipFrameForShimDismissal;
     BOOL __shouldAllowNilParameters;
     BOOL _hasPreservedInputViews;
-    BOOL __shouldFlipFrameForShimDismissal;
     NSMutableArray *_actions;
+    NSObject<UIAlertControllerVisualStyleProviding> *_styleProvider;
     UIAlertAction *_preferredAction;
-    UIView *__presentationSourceRepresentationView;
+    _UIAnimationCoordinator *_temporaryAnimationCoordinator;
+    UIPreviewInteractionController *_previewInteractionController;
     UIAlertControllerVisualStyle *__visualStyle;
+    NSIndexSet *_indexesOfActionSectionSeparators;
+    NSMutableArray *__actionDelimiterIndices;
     UIPopoverController *__compatibilityPopoverController;
     UIView *__systemProvidedPresentationView;
     id<UIAlertControllerSystemProvidedPresentationDelegate> __systemProvidedPresentationDelegate;
     UIGestureRecognizer *_systemProvidedGestureRecognizer;
-    _UIAnimationCoordinator *_temporaryAnimationCoordinator;
-    UIPreviewInteractionController *_previewInteractionController;
+    id<UIAlertControllerCoordinatedActionPerforming> _coordinatedActionPerformingDelegate;
+    UIView *__presentationSourceRepresentationView;
 }
 
-@property (readonly) NSMutableArray *_actionDelimiterIndices; // @synthesize _actionDelimiterIndices;
+@property (readonly) NSMutableArray *_actionDelimiterIndices; // @synthesize _actionDelimiterIndices=__actionDelimiterIndices;
 @property (readonly) NSMutableArray *_actions; // @synthesize _actions;
 @property (copy, nonatomic, getter=_attributedDetailMessage, setter=_setAttributedDetailMessage:) NSAttributedString *_attributedDetailMessage;
 @property (readonly) UIAlertAction *_cancelAction; // @synthesize _cancelAction;
@@ -76,21 +76,22 @@
 @property (readonly) _UIAlertControllerTextFieldViewController *_textFieldViewController;
 @property (setter=_setTextFieldsHidden:) BOOL _textFieldsHidden;
 @property (strong, nonatomic, setter=_setVisualStyle:) UIAlertControllerVisualStyle *_visualStyle; // @synthesize _visualStyle=__visualStyle;
-@property (nonatomic) NSArray *actions;
+@property (strong, nonatomic, setter=_setActions:) NSArray *actions;
 @property (copy, nonatomic, getter=_attributedMessage, setter=_setAttributedMessage:) NSAttributedString *attributedMessage;
 @property (copy, nonatomic, getter=_attributedTitle, setter=_setAttributedTitle:) NSAttributedString *attributedTitle;
 @property (strong, nonatomic) UIViewController *contentViewController;
+@property (weak, nonatomic) id<UIAlertControllerCoordinatedActionPerforming> coordinatedActionPerformingDelegate; // @synthesize coordinatedActionPerformingDelegate=_coordinatedActionPerformingDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=_effectAlpha, setter=_setEffectAlpha:) double effectAlpha;
 @property (nonatomic, getter=_hasPreservedInputViews, setter=_setHasPreservedInputViews:) BOOL hasPreservedInputViews; // @synthesize hasPreservedInputViews=_hasPreservedInputViews;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, getter=_ignoresKeyboardForPositioning, setter=_setIgnoresKeyboardForPositioning:) BOOL ignoresKeyboardForPositioning; // @synthesize ignoresKeyboardForPositioning=_ignoresKeyboardForPositioning;
+@property (copy, nonatomic, getter=_indexesOfActionSectionSeparators, setter=_setIndexesOfActionSectionSeparators:) NSIndexSet *indexesOfActionSectionSeparators; // @synthesize indexesOfActionSectionSeparators=_indexesOfActionSectionSeparators;
 @property (copy, nonatomic) NSString *message;
 @property (strong, nonatomic) UIAlertAction *preferredAction; // @synthesize preferredAction=_preferredAction;
 @property (nonatomic) long long preferredStyle;
 @property (strong, nonatomic, getter=_previewInteractionController, setter=_setPreviewInteractionController:) UIPreviewInteractionController *previewInteractionController; // @synthesize previewInteractionController=_previewInteractionController;
-@property (strong, nonatomic, getter=_styleProvider, setter=_setStyleProvider:) NSObject<UIAlertControllerVisualStyleProviding> *styleProvider;
+@property (weak, nonatomic, getter=_styleProvider, setter=_setStyleProvider:) NSObject<UIAlertControllerVisualStyleProviding> *styleProvider; // @synthesize styleProvider=_styleProvider;
 @property (readonly) Class superclass;
 @property (strong, nonatomic, getter=_systemProvidedGestureRecognizer, setter=_setSystemProvidedGestureRecognizer:) UIGestureRecognizer *systemProvidedGestureRecognizer; // @synthesize systemProvidedGestureRecognizer=_systemProvidedGestureRecognizer;
 @property (strong, nonatomic) _UIAnimationCoordinator *temporaryAnimationCoordinator; // @synthesize temporaryAnimationCoordinator=_temporaryAnimationCoordinator;
@@ -105,8 +106,6 @@
 - (void).cxx_destruct;
 - (void)_action:(id)arg1 changedToKeyCommandWithInput:(id)arg2 modifierFlags:(long long)arg3;
 - (id)_actionForReturnKey;
-- (void)_actionSelected:(id)arg1;
-- (void)_actionViewHighlightChanged:(id)arg1;
 - (void)_addActionWithTitle:(id)arg1 image:(id)arg2 style:(long long)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_addActionWithTitle:(id)arg1 style:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_addActionWithTitle:(id)arg1 style:(long long)arg2 handler:(CDUnknownBlockType)arg3 shouldDismissHandler:(CDUnknownBlockType)arg4;
@@ -133,12 +132,10 @@
 - (id)_dismissGestureRecognizer;
 - (void)_dismissWithAction:(id)arg1;
 - (void)_dismissWithCancelAction;
-- (void)_fireOffActionOnTargetIfValidForAction:(id)arg1;
 - (void)_flipFrameForShimDismissalIfNecessary;
 - (void)_getRotationContentSettings:(CDStruct_8bdd0ba6 *)arg1;
 - (void)_handleKeyCommand:(id)arg1;
 - (void)_handleReturn;
-- (void)_handleSystemProvidedPresentationGesture:(id)arg1;
 - (BOOL)_hasAttributedMessage;
 - (BOOL)_hasAttributedTitle;
 - (BOOL)_hasContentToDisplay;
@@ -146,20 +143,24 @@
 - (BOOL)_hasMessage;
 - (BOOL)_hasTitle;
 - (BOOL)_idiomSupportsBackGesture:(long long)arg1;
-- (BOOL)_idiomSupportsSelectGesture:(long long)arg1;
 - (void)_installBackGestureRecognizer;
-- (void)_installSelectGestureRecognizer;
+- (void)_invokeHandlersForAction:(id)arg1;
 - (BOOL)_isPresented;
 - (BOOL)_isPresentedAsPopover;
 - (BOOL)_isPresentedAsPopoverWithLegacyUI;
 - (BOOL)_isSupportedInterfaceOrientation:(long long)arg1;
 - (id)_keyCommandForAction:(id)arg1 input:(id)arg2 modifierFlags:(long long)arg3;
 - (long long)_modalPresentationStyleForResolvedStyle;
+- (BOOL)_needsPreferredSizeCalculated;
+- (void)_performAction:(id)arg1 invokeActionBlock:(CDUnknownBlockType)arg2 dismissAndPerformActionIfNotAlreadyPerformed:(CDUnknownBlockType)arg3;
+- (void)_performBatchActionChangesWithBlock:(CDUnknownBlockType)arg1;
+- (void)_postDidBeginSystemProvidedDismissalOfAlertController;
+- (void)_postWillBeginSystemProvidedDismissalOfAlertController;
 - (id)_presentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (void)_preserveInputViewsAnimated:(BOOL)arg1;
-- (long long)_pressTypeForSelectGesture;
 - (void)_recomputePreferredContentSize;
 - (void)_reevaluateResolvedStyle;
+- (void)_removeAllActions;
 - (void)_removeAllTextFields;
 - (void)_removeKeyCommandForAction:(id)arg1;
 - (id)_requiredNotificationsForRemoteServices;
@@ -168,20 +169,17 @@
 - (void)_restoreInputViewsAnimated:(BOOL)arg1;
 - (id)_returnKeyCommand;
 - (void)_returnKeyPressedInLastTextField;
-- (void)_selectGestureChanged:(id)arg1;
-- (void)_setActions:(id)arg1;
 - (void)_setShouldReverseActions:(BOOL)arg1;
 - (id)_setView:(id)arg1 forSystemProvidedPresentationWithDelegate:(id)arg2;
 - (BOOL)_shouldBecomeFirstResponder;
-- (BOOL)_shouldDismissAction:(id)arg1;
 - (BOOL)_shouldDismissOnSizeChange;
 - (BOOL)_shouldFitWidthToContentViewControllerWidth;
 - (BOOL)_shouldPreserveInputViews;
 - (BOOL)_shouldSizeToFillSuperview;
+- (BOOL)_shouldSupportReturnKeyPresses;
 - (BOOL)_shouldTreatEmptyStringsAsNil;
 - (id)_textFieldContainingViewWithTextField:(id)arg1;
 - (void)_uninstallBackGestureRecognizer;
-- (void)_uninstallSelectGestureRecognizer;
 - (void)_updateModalPresentationStyle;
 - (void)_updateProvidedStyle;
 - (void)_updateProvidedStyleWithTraitCollection:(id)arg1;

@@ -14,11 +14,13 @@
 @interface CIFilter : NSObject <NSSecureCoding, NSCopying>
 {
     void *_priv[8];
+    BOOL _enabled;
 }
 
 @property (readonly, nonatomic) NSDictionary *attributes;
+@property (getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) NSArray *inputKeys;
-@property (readonly, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *name;
 @property (readonly, nonatomic) CIImage *outputImage; // @dynamic outputImage;
 @property (readonly, nonatomic) NSArray *outputKeys;
 
@@ -32,6 +34,7 @@
 + (id)filterArrayFromSerializedXMP:(id)arg1 inputImageExtent:(struct CGRect)arg2 error:(id *)arg3;
 + (id)filterNamesInCategories:(id)arg1;
 + (id)filterNamesInCategory:(id)arg1;
++ (id)filterWithCVPixelBuffer:(struct __CVBuffer *)arg1 properties:(id)arg2 options:(id)arg3;
 + (id)filterWithImageData:(id)arg1 options:(id)arg2;
 + (id)filterWithImageURL:(id)arg1 options:(id)arg2;
 + (id)filterWithName:(id)arg1;

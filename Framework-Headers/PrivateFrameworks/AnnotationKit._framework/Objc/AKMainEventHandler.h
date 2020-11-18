@@ -8,7 +8,7 @@
 
 #import <AnnotationKit/AKFormFeatureDetectorDelegate-Protocol.h>
 
-@class AKAlignmentGuideController, AKAnnotation, AKAnnotationEventHandler, AKController, AKPageController, NSString, UIEvent;
+@class AKAlignmentGuideController, AKAnnotation, AKAnnotationEventHandler, AKController, AKHighlightColorEditorController, AKPageController, NSString, UIEvent;
 
 @interface AKMainEventHandler : UIResponder <AKFormFeatureDetectorDelegate>
 {
@@ -22,18 +22,19 @@
     BOOL _wasSelectedByLongPressRecognizer;
     AKAnnotationEventHandler *_annotationEventHandler;
     unsigned long long _currentModifierFlags;
-    AKController *_controller;
     AKPageController *_dragPageController;
     AKAlignmentGuideController *_dragAlignmentGuideController;
     UIEvent *_lastEventWithValidLocationForAutoscroll;
     UIEvent *_lastLeftMouseDownEvent;
     AKAnnotation *_annotationToBeginEditingOnDragEnd;
-    struct CGPoint _firstDragPoint;
-    struct CGPoint _panGestureStartPointInWindow;
+    AKHighlightColorEditorController *_highlightColorEditor;
+    AKController *_controller;
     struct CGPoint _leftMouseDownPoint;
     struct CGPoint _lastDragPoint;
     struct CGPoint _lastDragActualLocation;
     struct CGPoint _lastDragActualLocationInWindow;
+    struct CGPoint _firstDragPoint;
+    struct CGPoint _panGestureStartPointInWindow;
 }
 
 @property (strong) AKAnnotationEventHandler *annotationEventHandler; // @synthesize annotationEventHandler=_annotationEventHandler;
@@ -47,6 +48,7 @@
 @property (strong) AKPageController *dragPageController; // @synthesize dragPageController=_dragPageController;
 @property struct CGPoint firstDragPoint; // @synthesize firstDragPoint=_firstDragPoint;
 @property (readonly) unsigned long long hash;
+@property (strong) AKHighlightColorEditorController *highlightColorEditor; // @synthesize highlightColorEditor=_highlightColorEditor;
 @property struct CGPoint lastDragActualLocation; // @synthesize lastDragActualLocation=_lastDragActualLocation;
 @property struct CGPoint lastDragActualLocationInWindow; // @synthesize lastDragActualLocationInWindow=_lastDragActualLocationInWindow;
 @property struct CGPoint lastDragPoint; // @synthesize lastDragPoint=_lastDragPoint;

@@ -28,6 +28,7 @@
 + (double)defaultDAVProbeTimeout;
 + (double)defaultEASTaskTimeoutOutWasFound:(BOOL *)arg1;
 + (BOOL)earlyPingEnabled;
++ (BOOL)enablePromptForServerTrust;
 + (double)holidayCalendarRefreshInterval;
 + (id)holidayCalendarURL;
 + (BOOL)ignoreBadLDAPCerts;

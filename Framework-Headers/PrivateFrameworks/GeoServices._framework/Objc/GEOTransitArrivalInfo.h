@@ -19,9 +19,11 @@
 @property (nonatomic) int destinationLocation; // @synthesize destinationLocation=_destinationLocation;
 @property (nonatomic) BOOL hasDestinationLocation;
 
+- (int)StringAsDestinationLocation:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (id)destinationLocationAsString:(int)arg1;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

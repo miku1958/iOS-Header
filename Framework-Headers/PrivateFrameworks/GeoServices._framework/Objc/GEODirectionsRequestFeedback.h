@@ -28,6 +28,8 @@
 @property (nonatomic) int purpose; // @synthesize purpose=_purpose;
 @property (nonatomic) int source; // @synthesize source=_source;
 
+- (int)StringAsPurpose:(id)arg1;
+- (int)StringAsSource:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -39,7 +41,9 @@
 - (id)initWithPurpose:(int)arg1 andSource:(int)arg2 andIdentifier:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)purposeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)sourceAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

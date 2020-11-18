@@ -17,16 +17,18 @@
 
 + (id)mapTable;
 - (void).cxx_destruct;
+- (void)_dispatchIsolatedRead:(CDUnknownBlockType)arg1;
+- (void)_dispatchIsolatedWriteAsync:(CDUnknownBlockType)arg1;
+- (void)_dispatchIsolatedWriteSync:(CDUnknownBlockType)arg1;
+- (id)allKeys;
 - (unsigned long long)count;
-- (void)dispatchIsolatedRead:(CDUnknownBlockType)arg1;
-- (void)dispatchIsolatedWrite:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)lockedEnumerateKeysAndObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)objectForKey:(id)arg1;
-- (void)performLockedKeyEnumeration:(CDUnknownBlockType)arg1;
-- (id)queue;
 - (void)removeAllObjects;
 - (void)removeObjectForKey:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
+- (BOOL)tryRemoveObjectForKey:(id)arg1;
 
 @end
 

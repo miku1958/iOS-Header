@@ -10,13 +10,13 @@
 {
 }
 
++ (struct CGSize)defaultPreviewSize;
 + (struct CGSize)maximumSize;
-+ (double)panoramaViewLayoutHorizontalInset;
-+ (double)panoramaViewPreviewHorizontalInset;
-+ (double)panoramaViewPreviewVerticalInset;
-+ (struct CGSize)previewSize;
-+ (struct CGSize)scaledPreviewSize;
-+ (double)singlePreviewFrameWidth;
++ (struct UIEdgeInsets)panoramaViewLayoutInsetsForLayoutStyle:(long long)arg1;
++ (struct UIEdgeInsets)panoramaViewPreviewInsetsForLayoutStyle:(long long)arg1;
++ (struct CGSize)previewSizeForAvailableWidth:(double)arg1 layoutStyle:(long long)arg2;
++ (struct CGSize)previewViewSizeForAvailableWidth:(double)arg1 layoutStyle:(long long)arg2;
++ (double)singlePreviewFrameWidthForPreviewHeight:(double)arg1;
 
 @end
 

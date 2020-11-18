@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _count;
     NSArray *_cascade;
     NSMutableArray *_fallbacks;
-    struct CharRangeToDescriptorMap *_charMap;
+    unsigned long long _hash;
 }
 
 - (struct __CTFontDescriptor *)cachedDescriptorForCharacter:(unsigned short)arg1;

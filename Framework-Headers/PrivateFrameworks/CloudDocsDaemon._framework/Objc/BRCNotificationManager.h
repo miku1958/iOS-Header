@@ -8,7 +8,7 @@
 
 #import <CloudDocsDaemon/BRCModule-Protocol.h>
 
-@class BRCAccountSession, BRCClientRanksPersistedState, BRCXPCClient, BRNotificationQueue, NSHashTable, NSMutableDictionary, NSString;
+@class BRCAccountSession, BRCClientRanksPersistedState, BRCXPCClient, BRNotificationQueue, NSHashTable, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_transferCache;
     BRCXPCClient *_client;
     _Atomic unsigned long long _activeAliasQueries;
+    NSMutableSet *_additionalUpdatesItemRowID;
     BOOL _isCancelled;
 }
 
@@ -30,23 +31,29 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) BOOL hasActiveAliasWatchers;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL isCancelled; // @synthesize isCancelled=_isCancelled;
+@property (readonly, nonatomic) BOOL isCancelled; // @synthesize isCancelled=_isCancelled;
 @property (readonly, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_dispatchUpdatesToPipes;
+- (void)_queueAdditionalUpdates;
 - (void)cancel;
 - (void)close;
 - (void)flushUpdates;
-- (void)getPipeWithXPCReceiver:(id)arg1 client:(id)arg2 root:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)getPipeWithXPCReceiver:(id)arg1 client:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)initWithAccountSession:(id)arg1;
-- (void)invalidatePipesWatchingContainerID:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (id)pipeWithReceiver:(id)arg1 root:(id)arg2;
+- (void)invalidatePipeReceiversWatchingAppLibraryIDs:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)invalidatePipesWatchingAppLibraryIDs:(id)arg1;
+- (void)pipeDelegateInvalidated:(id)arg1;
+- (id)pipeWithReceiver:(id)arg1;
+- (void)queueProgressUpdates:(id)arg1;
 - (void)queueUpdate:(id)arg1;
-- (void)registerContainers:(id)arg1 forFlags:(unsigned long long)arg2;
+- (void)queueUpdateForItemAtRowID:(unsigned long long)arg1;
+- (void)registerAppLibraries:(id)arg1 forFlags:(unsigned long long)arg2;
 - (void)resume;
 - (void)suspend;
-- (void)unregisterContainers:(id)arg1 forFlags:(unsigned long long)arg2;
+- (void)unregisterAppLibraries:(id)arg1 forFlags:(unsigned long long)arg2;
 
 @end
 

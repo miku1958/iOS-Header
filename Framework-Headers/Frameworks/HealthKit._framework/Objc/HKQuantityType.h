@@ -20,7 +20,6 @@
 @property (readonly, nonatomic) HKUnit *canonicalUnit;
 @property (readonly, nonatomic) _HKDimension *dimension;
 
-+ (void)_insertCode:(long long)arg1 forIdentifier:(id)arg2;
 + (id)_quantityTypeWithCode:(long long)arg1;
 - (void).cxx_destruct;
 - (id)_initWithDefinition:(CDStruct_6b208136 *)arg1;

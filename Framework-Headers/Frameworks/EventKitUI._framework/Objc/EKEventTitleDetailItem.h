@@ -8,7 +8,7 @@
 
 #import <EventKitUI/EKEventDetailTitleCellDelegate-Protocol.h>
 
-@class NSObject, UIColor, UITableViewCell;
+@class NSDate, NSObject, UIColor, UITableViewCell;
 @protocol EKEventTitleDetailItemDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,11 +19,15 @@ __attribute__((visibility("hidden")))
     BOOL _showDot;
     BOOL _cellNeedsUpdate;
     BOOL _hidesSeparator;
+    BOOL _hasMapItemLaunchOptionFromTimeToLeaveNotification;
+    NSDate *_proposedTime;
     NSObject<EKEventTitleDetailItemDelegate> *_editDelegate;
 }
 
 @property (weak, nonatomic) NSObject<EKEventTitleDetailItemDelegate> *editDelegate; // @synthesize editDelegate=_editDelegate;
+@property (nonatomic) BOOL hasMapItemLaunchOptionFromTimeToLeaveNotification; // @synthesize hasMapItemLaunchOptionFromTimeToLeaveNotification=_hasMapItemLaunchOptionFromTimeToLeaveNotification;
 @property (nonatomic) BOOL hidesSeparator; // @synthesize hidesSeparator=_hidesSeparator;
+@property (strong, nonatomic) NSDate *proposedTime; // @synthesize proposedTime=_proposedTime;
 
 - (void).cxx_destruct;
 - (void)_updateCellIfNeededForWidth:(double)arg1;
@@ -31,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)configureWithCalendar:(id)arg1 preview:(BOOL)arg2;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (void)editButtonPressed;
+- (void)predictionWasActedOn;
 - (void)reset;
 - (void)setCellPosition:(int)arg1;
 - (BOOL)shouldShowEditButtonInline;

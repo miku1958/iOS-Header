@@ -32,7 +32,6 @@
 + (id)debugDescription;
 + (id)description;
 + (void)doesNotRecognizeSelector:(SEL)arg1;
-+ (void)finalize;
 + (void)forwardInvocation:(id)arg1;
 + (id)forwardingTargetForSelector:(SEL)arg1;
 + (unsigned long long)hash;

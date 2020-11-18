@@ -31,9 +31,12 @@
 - (id)appleIDClientIdentifier;
 - (id)buildVersion;
 - (id)clientInfoHeader;
+- (id)deviceBackingColor;
 - (id)deviceClass;
 - (id)deviceColor;
+- (id)deviceCoverGlassColor;
 - (id)deviceEnclosureColor;
+- (id)deviceHousingColor;
 - (id)deviceInfoDictionary;
 - (id)deviceName;
 - (BOOL)hasCellularCapability;

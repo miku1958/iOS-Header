@@ -10,18 +10,12 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct CAMCaptureModeWithOptions {
-    long long mode;
-    long long videoConfiguration;
-    long long previewConfiguration;
-    long long audioConfiguration;
-};
-
 struct CAMShutterButtonSpec {
     double outerRingDiameter;
     double outerRingStrokeWidth;
     double stopSquareSideLength;
     double stopSquareCornerRadius;
+    double interRingSpacing;
 };
 
 struct CATransform3D {

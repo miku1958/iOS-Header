@@ -7,19 +7,16 @@
 @class NSArray, NSData, NSDate, NSDictionary, NSString;
 
 @protocol NetworkStorageXPCProtocol
-- (void)addCachedResponse:(NSData *)arg1 identifier:(NSString *)arg2 key:(NSString *)arg3;
-- (void)addCachedResponseWithDictionary:(NSDictionary *)arg1 identifier:(NSString *)arg2 key:(NSString *)arg3;
-- (void)cachedResponseDictionaryForKey:(NSString *)arg1 withIdentifier:(NSString *)arg2 handler:(void (^)(NSDictionary *, NSString *, NSString *))arg3;
-- (void)copyAllHostNamesForOptionalPartition:(NSString *)arg1 identifier:(NSString *)arg2 completionHandler:(void (^)(NSArray *))arg3;
-- (void)copyAllPartitionNamesWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSArray *))arg2;
-- (void)createStorageTaskManagerForPath:(NSString *)arg1 maxSize:(long long)arg2 extension:(NSData *)arg3 withIdentifier:(NSString *)arg4;
-- (void)currentDiskUsageWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(long long))arg2;
-- (void)deleteAllHostNames:(NSArray *)arg1 forOptionalPartition:(NSString *)arg2 identifier:(NSString *)arg3;
-- (void)deleteAllResponsesWithIdentifier:(NSString *)arg1;
-- (void)deleteResponseForRequestWithKey:(NSString *)arg1 withIdentifier:(NSString *)arg2 completionHandler:(void (^)(BOOL))arg3;
-- (void)deleteResponsesSinceDate:(NSDate *)arg1 withIdentifier:(NSString *)arg2;
-- (void)setMaxSize:(long long)arg1 withIdentifier:(NSString *)arg2;
-- (void)setMinSizeForVMCachedResource:(long long)arg1 withIdentifier:(NSString *)arg2;
-- (void)storageTaskManagerExistsWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(BOOL))arg2;
+- (void)addCachedResponseWithDictionary:(NSDictionary *)arg1 key:(NSString *)arg2;
+- (void)copyAllHostNamesForOptionalPartition:(NSString *)arg1 completionHandler:(void (^)(NSArray *))arg2;
+- (void)copyAllPartitionNamesWithCompletionHandler:(void (^)(NSArray *))arg1;
+- (void)createStorageTaskManagerForPath:(NSString *)arg1 maxSize:(long long)arg2 extension:(NSData *)arg3;
+- (void)currentDiskUsageWithCompletionHandler:(void (^)(long long))arg1;
+- (void)deleteAllHostNames:(NSArray *)arg1 forOptionalPartition:(NSString *)arg2;
+- (void)deleteAllResponses;
+- (void)deleteResponseForRequestWithKey:(NSString *)arg1 completionHandler:(void (^)(BOOL))arg2;
+- (void)deleteResponsesSinceDate:(NSDate *)arg1;
+- (void)setMaxSize:(long long)arg1;
+- (void)setMinSizeForVMCachedResource:(long long)arg1;
 @end
 

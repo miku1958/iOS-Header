@@ -4,33 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CoreCDP/CDPController.h>
 
-@class CDPContext, CDPDaemonConnection, CDPStateUIProviderProxy;
-@protocol CDPStateUIProvider;
-
-@interface CDPStateController : NSObject
+@interface CDPStateController : CDPController
 {
-    CDPContext *_context;
-    id<CDPStateUIProvider> _uiProvider;
-    CDPDaemonConnection *_daemonConn;
-    CDPStateUIProviderProxy *_uiProviderProxy;
 }
 
-@property (readonly, nonatomic) CDPContext *context; // @synthesize context=_context;
-@property (strong, nonatomic) CDPDaemonConnection *daemonConn; // @synthesize daemonConn=_daemonConn;
-@property (strong, nonatomic) id<CDPStateUIProvider> uiProvider; // @synthesize uiProvider=_uiProvider;
-@property (strong, nonatomic) CDPStateUIProviderProxy *uiProviderProxy; // @synthesize uiProviderProxy=_uiProviderProxy;
-
-- (void).cxx_destruct;
-- (void)_handleRejoinURLActionWithInfo:(id)arg1;
 - (void)finishOfflineLocalSecretChangeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getStingrayDisableEligibilityWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getStringrayStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleURLActionWithInfo:(id)arg1;
-- (id)initWithContext:(id)arg1;
-- (void)invalidate;
+- (void)handleURLActionWithInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)localSecretChangedTo:(id)arg1 secretType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)preflightStingrayDisableWithCompletion:(CDUnknownBlockType)arg1;
 - (void)repairCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)setStingrayState:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)shouldPerformRepair:(id *)arg1;
 
 @end
 

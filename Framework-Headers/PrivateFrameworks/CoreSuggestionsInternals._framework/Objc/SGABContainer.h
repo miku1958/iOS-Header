@@ -10,11 +10,12 @@
 {
     void *_ab;
     NSObject *_lifetimeObject;
-    unsigned int _isInvalidated;
+    struct atomic_flag _isValid;
     BOOL _isInUse;
 }
 
 - (void).cxx_destruct;
+- (id)init;
 
 @end
 

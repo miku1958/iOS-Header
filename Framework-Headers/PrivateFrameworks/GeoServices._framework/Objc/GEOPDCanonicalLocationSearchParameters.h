@@ -8,15 +8,17 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBUnknownFields;
 
 @interface GEOPDCanonicalLocationSearchParameters : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSString *_queryString;
 }
 
 @property (readonly, nonatomic) BOOL hasQueryString;
 @property (strong, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

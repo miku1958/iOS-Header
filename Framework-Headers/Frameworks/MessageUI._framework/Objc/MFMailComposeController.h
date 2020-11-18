@@ -23,7 +23,7 @@
 #import <MessageUI/UINavigationControllerDelegate-Protocol.h>
 #import <MessageUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class CNContactPickerViewController, CNContactViewController, MFAddressPickerReformatter, MFComposeActivityContinuationOperation, MFComposeBodyField, MFComposeImageSizeView, MFComposeRecipient, MFComposeSubjectView, MFComposeTextContentView, MFLANContinuationAgent, MFLock, MFMailAccountProxyGenerator, MFMailComposeRecipientView, MFMailMarkup, MFMailPopoverManager, MFMailSignatureController, MFMailboxUid, MFMessageContentProgressLayer, MFModernComposeRecipientAtom, MFMutableMessageHeaders, MFOutgoingMessageDelivery, MFRecentComposeRecipient, MFSecureMIMECompositionManager, NSArray, NSDate, NSDictionary, NSObject, NSString, NSTimer, UIAlertController, UIBarButtonItem, UIImagePickerController, UIKeyCommand, UIProgressView, UITapGestureRecognizer, UIView, _MFMailCompositionContext;
+@class CNContactPickerViewController, CNContactViewController, MFAddressPickerReformatter, MFComposeActivityContinuationOperation, MFComposeBodyField, MFComposeImageSizeView, MFComposeRecipient, MFComposeSubjectView, MFComposeTextContentView, MFLANContinuationAgent, MFLock, MFMailAccountProxyGenerator, MFMailComposeRecipientView, MFMailMarkup, MFMailPopoverManager, MFMailSignatureController, MFMailboxUid, MFMessageContentProgressLayer, MFModernComposeRecipientAtom, MFMutableMessageHeaders, MFOutgoingMessageDelivery, MFRecentComposeRecipient, MFSecureMIMECompositionManager, NSArray, NSDate, NSDictionary, NSObject, NSString, NSTimer, UIAlertController, UIBarButtonItem, UIImagePickerController, UIKeyCommand, UIProgressView, UIView, _MFMailCompositionContext;
 @protocol MFMailComposeViewControllerDelegate, NSCoding, OS_dispatch_group;
 
 @interface MFMailComposeController : UIViewController <UINavigationControllerDelegate, CNContactViewControllerDelegate, MFMailComposeToFieldDelegate, NSUserActivityDelegate, MFComposeActivityContinuationOperationDelegate, MFMailComposeViewDelegate, MFComposeHeaderViewDelegate, MFComposeSubjectViewDelegate, MFComposeImageSizeViewDelegate, MFComposeRecipientTextViewDelegate, MFSecureMIMECompositionManagerDelegate, MFComposeTypeFactoryDelegate, UIImagePickerControllerDelegate, UIPopoverPresentationControllerDelegate, MFGroupDetailViewControllerDelegate, CNContactPickerDelegate>
@@ -98,14 +98,12 @@
     BOOL _encryptionOverrideSetting;
     UIKeyCommand *_sendKeyCommand;
     UIKeyCommand *_escapeKeyCommand;
-    UITapGestureRecognizer *_requestModalTapGestureRecognizer;
     UIAlertController *_notifyConfirmation;
     MFComposeActivityContinuationOperation *_continuationOperation;
     UIProgressView *_continuationProgressView;
     MFMessageContentProgressLayer *_progressIndicatorView;
     MFLANContinuationAgent *_LANContinuationAgent;
     NSObject<OS_dispatch_group> *_imageScalingGroup;
-    BOOL _autosaveIsValid;
     unsigned short _lastTypedCharacter;
     NSTimer *_autosaveTimer;
     NSDate *_autosavedDate;
@@ -113,6 +111,7 @@
     NSDictionary *_securityScopes;
     BOOL _isModal;
     BOOL _useMailDrop;
+    BOOL _autosaveIsValid;
     BOOL _attachmentToMarkupIsLoaded;
     BOOL _delayToShowMarkupHasPassed;
     int _sourceAccountManagement;
@@ -127,6 +126,7 @@
 @property (strong, nonatomic) MFModernComposeRecipientAtom *atomPresentingCard; // @synthesize atomPresentingCard=_atomPresentingCard;
 @property (nonatomic) BOOL attachmentToMarkupIsLoaded; // @synthesize attachmentToMarkupIsLoaded=_attachmentToMarkupIsLoaded;
 @property (strong, nonatomic) id<NSCoding> autosaveIdentifier;
+@property (nonatomic) BOOL autosaveIsValid; // @synthesize autosaveIsValid=_autosaveIsValid;
 @property (readonly, nonatomic) NSDate *autosavedDate; // @synthesize autosavedDate=_autosavedDate;
 @property (strong, nonatomic) NSDictionary *certificatesByRecipient; // @synthesize certificatesByRecipient=_certificatesByRecipient;
 @property (strong, nonatomic) CNContactViewController *contactViewController; // @synthesize contactViewController=_contactViewController;
@@ -165,6 +165,7 @@
 - (void)_autosaveTimerFired:(id)arg1;
 - (id)_availableAccountProxies;
 - (void)_bodyTextChanged:(id)arg1;
+- (void)_checkForCanSendMailWithContinuation:(CDUnknownBlockType)arg1;
 - (void)_checkForEmptySubjectWithContinuation:(CDUnknownBlockType)arg1;
 - (void)_checkForInvalidAddressesWithContinuation:(CDUnknownBlockType)arg1;
 - (void)_checkForReplyAndForwardRestriction;
@@ -205,7 +206,7 @@
 - (void)_leaveMessageInOutbox;
 - (void)_loadAttachments;
 - (void)_loadCompositionContext;
-- (void)_loadingContextDidLoad:(id)arg1;
+- (void)_loadingContextDidLoadMessage;
 - (void)_makeComposeUserActivityCurrent;
 - (id)_messageForAutosave;
 - (id)_messageForDraft;
@@ -227,7 +228,6 @@
 - (id)_reformattedAddressAtIndex:(unsigned long long)arg1;
 - (unsigned long long)_reloadNumberOfReformattedAddressesWithMaximumWidth:(double)arg1 defaultFontSize:(double)arg2;
 - (void)_removeRecent;
-- (void)_requestBecomeModalGestureRecognized:(id)arg1;
 - (void)_resetProxyGenerator;
 - (void)_resetSecureCompositionManager;
 - (void)_resetSecureCompositionManagerUsingNewAccount:(BOOL)arg1;
@@ -323,10 +323,10 @@
 - (void)composeRecipientViewReturnPressed:(id)arg1;
 - (BOOL)composeRecipientViewShowingSearchResults:(id)arg1;
 - (void)composeShortcutInvoked:(id)arg1;
-- (void)composeSubjectViewDidRemoveContent:(id)arg1;
 - (void)composeSubjectViewDidSelectNotifyButton:(id)arg1;
 - (void)composeSubjectViewTextFieldDidBecomeFirstResponder:(id)arg1;
 - (void)composeSubjectViewTextFieldDidResignFirstResponder:(id)arg1;
+- (void)composeSubjectViewWillRemoveContent:(id)arg1;
 - (int)composeType;
 - (id)compositionContext;
 - (int)compositionType;
@@ -338,7 +338,7 @@
 - (BOOL)contactViewController:(id)arg1 shouldPerformDefaultActionForContactProperty:(id)arg2;
 - (id)currentScaleImageSize;
 - (void)dealloc;
-- (int)deliverMessageRemotely;
+- (long long)deliverMessageRemotely;
 - (void)didBecomeActiveComposeController;
 - (void)didInsertAttachment:(id)arg1;
 - (void)didInsertBodyText:(id)arg1;
@@ -372,6 +372,7 @@
 - (id)initWithCompositionContext:(id)arg1 options:(unsigned long long)arg2;
 - (void)insertPhotoOrVideo;
 - (BOOL)isDirty;
+- (BOOL)isManagedAccount;
 - (BOOL)isSavingAsDraft;
 - (BOOL)isShowingRecentPersonCard;
 - (id)keyCommands;

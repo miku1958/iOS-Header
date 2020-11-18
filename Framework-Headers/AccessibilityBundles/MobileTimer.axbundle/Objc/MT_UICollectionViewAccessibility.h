@@ -17,6 +17,7 @@
 - (BOOL)accessibilityCollectionViewBehavesLikeUIViewAccessibility;
 - (id)accessibilityElements;
 - (BOOL)accessibilityViewIsModal;
+- (void)moveItemAtIndexPath:(id)arg1 toIndexPath:(id)arg2;
 
 @end
 

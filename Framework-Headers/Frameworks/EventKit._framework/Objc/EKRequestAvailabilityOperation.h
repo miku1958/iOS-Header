@@ -26,9 +26,9 @@
 
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 
+- (void).cxx_destruct;
 - (void)_finishWithError:(id)arg1;
 - (void)cancel;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (id)initWithSource:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 ignoredEventID:(id)arg4 addresses:(id)arg5 resultsBlock:(CDUnknownBlockType)arg6;

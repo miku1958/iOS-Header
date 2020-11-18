@@ -10,6 +10,28 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct BTStatus {
+    unsigned long long leRemote;
+    unsigned long long leAcc;
+    unsigned long long btKB;
+    unsigned long long a2dp;
+    unsigned long long btGC;
+    unsigned long long eAcc;
+    unsigned long long hk;
+    unsigned long long lowEnergyConnections;
+    unsigned long long nonHIDConnections;
+    unsigned long long connectedHIDDevices;
+    unsigned long long oneSniffAttemptDevices;
+    unsigned long long twoSniffAttemptDevices;
+    unsigned long long sco;
+    unsigned long long wiap;
+    unsigned long long remote;
+    unsigned long long connectedDevices;
+    BOOL isScanning;
+    BOOL isDiscoverable;
+    BOOL isConnectable;
+};
+
 struct HTTPMessagePrivate {
     struct __CFRuntimeBase {
         unsigned long long _field1;
@@ -64,21 +86,31 @@ struct HTTPMessagePrivate {
     unsigned long long _field10;
     unsigned char _field11[32000];
     char *_field12;
-    struct iovec _field13[2];
-    struct iovec *_field14;
-    int _field15;
-    unsigned long long _field16;
-    int _field17;
+    struct *_field13;
+    char *_field14;
+    unsigned long long _field15;
+    struct iovec _field16[2];
+    struct iovec *_field17;
     int _field18;
-    int _field19;
-    void *_field20;
-    void *_field21;
-    void *_field22;
+    unsigned long long _field19;
+    int _field20;
+    int _field21;
+    int _field22;
     void *_field23;
     void *_field24;
     void *_field25;
-    CDUnknownFunctionPointerType _field26;
-    CDUnknownBlockType _field27;
+    void *_field26;
+    void *_field27;
+    void *_field28;
+    CDUnknownFunctionPointerType _field29;
+    CDUnknownFunctionPointerType _field30;
+    CDUnknownBlockType _field31;
+    int _field32;
+    unsigned char _field33;
+    long long _field34;
+    char *_field35;
+    int _field36;
+    unsigned long long _field37;
 };
 
 struct iovec {

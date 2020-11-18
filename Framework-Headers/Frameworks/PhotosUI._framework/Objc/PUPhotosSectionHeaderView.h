@@ -14,8 +14,9 @@
     PUPhotosSectionHeaderContentView *_contentView;
     UILabel *_titleLabel;
     UILabel *_locationsLabel;
+    UILabel *_separatorLabel;
     UILabel *_dateLabel;
-    UIImageView *_locationsIconView;
+    UIImageView *_disclosureIconView;
     UIButton *_actionButton;
     struct CGSize _actionButtonInitialSize;
     double _actionButtonLabelInitialMaxY;
@@ -29,7 +30,7 @@
     BOOL _generateDefaultTitleFromDates;
     BOOL _useYearOnlyForDefaultTitle;
     BOOL _showsActionButton;
-    BOOL _allowsLocationInteraction;
+    BOOL _allowsPhotosDetailsInteraction;
     NSString *_backdropViewGroupName;
     id<PUPhotosSectionHeaderViewDelegate> _delegate;
     long long _style;
@@ -45,7 +46,7 @@
 }
 
 @property (copy, nonatomic) NSString *actionButtonTitle; // @synthesize actionButtonTitle=_actionButtonTitle;
-@property (nonatomic) BOOL allowsLocationInteraction; // @synthesize allowsLocationInteraction=_allowsLocationInteraction;
+@property (nonatomic) BOOL allowsPhotosDetailsInteraction; // @synthesize allowsPhotosDetailsInteraction=_allowsPhotosDetailsInteraction;
 @property (copy, nonatomic) NSString *backdropViewGroupName; // @synthesize backdropViewGroupName=_backdropViewGroupName;
 @property (nonatomic) unsigned long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property (nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
@@ -64,6 +65,7 @@
 
 + (void)_updateLabelGlobalCachedSizes;
 + (void)initialize;
++ (double)sectionHeaderHeightForHeaderStyle:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryDidChangeNotification:(id)arg1;
 - (id)_dateRangeCompactFormatter;
@@ -86,8 +88,8 @@
 - (void)_updateBackground;
 - (void)_updateDateDependentLabels;
 - (void)_updateDateLabel;
+- (void)_updateDisclosureIconVisibility;
 - (void)_updateHighlightView;
-- (void)_updateLocationsIconVisibility;
 - (void)_updateLocationsLabelVisibility;
 - (void)_updateTitleLabel;
 - (BOOL)_usingDateAsTitle;

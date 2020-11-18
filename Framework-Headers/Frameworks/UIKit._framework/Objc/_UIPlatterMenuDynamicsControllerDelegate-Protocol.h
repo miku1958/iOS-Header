@@ -20,5 +20,8 @@
 - (void)platterMenuDynamicsController:(_UIPlatterMenuDynamicsController *)arg1 didMoveSwipeView:(UIView *)arg2 toPosition:(struct CGPoint)arg3;
 - (void)platterMenuDynamicsControllerDidDismissWithController:(_UIPlatterMenuDynamicsController *)arg1;
 - (UIView *)trailingSwipeActionView;
+
+@optional
+- (void)translationDidUpdateForPlatterMenuDynamicsController:(_UIPlatterMenuDynamicsController *)arg1;
 @end
 

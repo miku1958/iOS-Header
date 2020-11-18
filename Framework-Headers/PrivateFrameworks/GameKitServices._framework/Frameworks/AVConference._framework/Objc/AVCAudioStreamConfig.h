@@ -9,6 +9,8 @@
 @interface AVCAudioStreamConfig : NSObject
 {
     long long _codecType;
+    BOOL _cnEnabled;
+    unsigned long long _cnPayloadType;
     unsigned long long _dtmfPayloadType;
     unsigned long long _dtmfTimestampRate;
     unsigned long long _ptime;
@@ -16,12 +18,13 @@
     long long _audioStreamMode;
     long long _rateModeMask;
     long long _preferredAMRMode;
-    BOOL _rateAdaptationEnabled;
     BOOL _octetAligned;
     BOOL _dtxEnabled;
 }
 
 @property (nonatomic) long long audioStreamMode; // @synthesize audioStreamMode=_audioStreamMode;
+@property (nonatomic, getter=isCNEnabled) BOOL cnEnabled; // @synthesize cnEnabled=_cnEnabled;
+@property (nonatomic) unsigned long long cnPayloadType; // @synthesize cnPayloadType=_cnPayloadType;
 @property (nonatomic) long long codecType; // @synthesize codecType=_codecType;
 @property (nonatomic) unsigned long long dtmfPayloadType; // @synthesize dtmfPayloadType=_dtmfPayloadType;
 @property (nonatomic) unsigned long long dtmfTimestampRate; // @synthesize dtmfTimestampRate=_dtmfTimestampRate;
@@ -30,9 +33,12 @@
 @property (nonatomic, getter=isOctectAligned) BOOL octetAligned; // @synthesize octetAligned=_octetAligned;
 @property (nonatomic) long long preferredAMRMode; // @synthesize preferredAMRMode=_preferredAMRMode;
 @property (nonatomic) unsigned long long ptime; // @synthesize ptime=_ptime;
-@property (nonatomic, getter=isRateAdaptationEnabled) BOOL rateAdaptationEnabled; // @synthesize rateAdaptationEnabled=_rateAdaptationEnabled;
 @property (nonatomic) long long rateModeMask; // @synthesize rateModeMask=_rateModeMask;
 
+- (id)init;
+- (BOOL)isCNValid;
+- (BOOL)isDTMFValid;
+- (BOOL)isValid;
 
 @end
 

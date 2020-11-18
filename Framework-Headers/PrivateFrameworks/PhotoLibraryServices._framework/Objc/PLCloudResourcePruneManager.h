@@ -13,13 +13,15 @@
 {
     PLPhotoLibrary *_photoLibrary;
     PLCloudPhotoLibraryManager *_cplManager;
+    BOOL _stopped;
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
 + (id)_nonOriginalResourceTypes;
 + (id)_orderedPruneConditionStringsOnAssets;
 + (id)_originalResourceTypes;
-- (void)_fetchResourcesForPruningWithBatchHandler:(CDUnknownBlockType)arg1 budget:(long long)arg2;
+- (id)_colorAwareResourceTypes;
+- (long long)_fetchResourcesForPruningWithBatchHandler:(CDUnknownBlockType)arg1 budget:(long long)arg2;
 - (id)_identifierForResource:(id)arg1;
 - (long long)_localResourcesSize;
 - (id)_notOnDemandDownloadPredicate;
@@ -27,6 +29,7 @@
 - (id)_predicateForCPLResourceType:(unsigned long long)arg1 additionalAssetConditions:(id)arg2 additionalResourcePredicates:(id)arg3;
 - (id)_predicatesForPrune;
 - (void)_runOnWorkQueueWithTransaction:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)_updateLocalSRGBFileForPrunedResource:(id)arg1 inPhotoLibrary:(id)arg2;
 - (void)_updateLocalStateForPrunedResource:(id)arg1 inPhotoLibrary:(id)arg2;
 - (void)dealloc;
 - (long long)diskSpaceToPrune;
@@ -34,7 +37,8 @@
 - (id)initWithCPLManager:(id)arg1;
 - (long long)pruneResources:(id)arg1 inPhotoLibrary:(id)arg2;
 - (id)pruneStatusForDebug:(BOOL)arg1;
-- (void)startAutomaticPruneWithBudget:(long long)arg1;
+- (long long)startAutomaticPruneWithBudget:(long long)arg1;
+- (void)stop;
 
 @end
 

@@ -16,12 +16,12 @@
     double _totalCost;
     double _budget;
     double _maximumThrottleTime;
-    NSDate *_lastExpenditure;
+    NSDate *_lastRegeneration;
 }
 
 @property double budget; // @synthesize budget=_budget;
 @property unsigned long long budgetCap; // @synthesize budgetCap=_budgetCap;
-@property (strong) NSDate *lastExpenditure; // @synthesize lastExpenditure=_lastExpenditure;
+@property (strong) NSDate *lastRegeneration; // @synthesize lastRegeneration=_lastRegeneration;
 @property (nonatomic) double maximumThrottleTime; // @synthesize maximumThrottleTime=_maximumThrottleTime;
 @property double regenerationPerSecond; // @synthesize regenerationPerSecond=_regenerationPerSecond;
 

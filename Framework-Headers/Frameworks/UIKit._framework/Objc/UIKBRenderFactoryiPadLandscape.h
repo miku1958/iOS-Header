@@ -35,6 +35,8 @@ __attribute__((visibility("hidden")))
 - (id)handwritingMoreKeyImageName;
 - (double)internationalKeyFontSize;
 - (double)keyCornerRadius;
+- (double)messagesTypeKeyplanSwitchKeyFontSize;
+- (id)messagesWriteboardKeyImageName;
 - (double)moreKeyFontSize;
 - (id)multitapCompleteKeyImageName;
 - (id)muttitapReverseKeyImageName;

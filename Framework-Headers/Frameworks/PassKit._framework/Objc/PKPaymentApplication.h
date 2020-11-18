@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
@@ -49,9 +49,11 @@
 @property (nonatomic) BOOL supportsInAppPayment; // @synthesize supportsInAppPayment=_supportsInAppPayment;
 @property (copy, nonatomic) NSString *suspendedReason; // @synthesize suspendedReason=_suspendedReason;
 
++ (id)applicationWithProtobuf:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (BOOL)acceptedForSupportedNetworkIdentifiers:(id)arg1 merchantCapabilities:(unsigned long long)arg2 webService:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
@@ -59,6 +61,8 @@
 - (id)initWithPaymentApplicationDictionary:(id)arg1 auxiliaryApplication:(BOOL)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToPaymentApplication:(id)arg1;
+- (id)protobuf;
+- (BOOL)supportsWebPaymentMode:(long long)arg1 withExclusionList:(id)arg2;
 
 @end
 

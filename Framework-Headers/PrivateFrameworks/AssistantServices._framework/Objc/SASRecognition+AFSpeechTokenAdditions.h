@@ -8,5 +8,6 @@
 
 @interface SASRecognition (AFSpeechTokenAdditions)
 - (id)af_speechPhrases;
+- (id)af_speechUtterances;
 @end
 

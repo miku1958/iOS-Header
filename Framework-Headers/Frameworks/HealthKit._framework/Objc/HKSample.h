@@ -6,9 +6,11 @@
 
 #import <HealthKit/HKObject.h>
 
+#import <HealthKit/NSCopying-Protocol.h>
+
 @class HKSampleType, NSDate;
 
-@interface HKSample : HKObject
+@interface HKSample : HKObject <NSCopying>
 {
     HKSampleType *_sampleType;
     double _startTimestamp;
@@ -25,6 +27,7 @@
 + (id)_sampleWithUUID:(id)arg1 metadata:(id)arg2 sourceBundleIdentifier:(id)arg3 creationDate:(double)arg4 sampleType:(id)arg5 startDate:(double)arg6 endDate:(double)arg7;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_enumerateTimePeriodsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_setSampleType:(id)arg1;
 - (id)_validateConfiguration;
 - (id)description;

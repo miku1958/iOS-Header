@@ -9,7 +9,7 @@
 #import <Message/DAMailboxRequestConsumer-Protocol.h>
 #import <Message/DAMailboxStreamingContentConsumer-Protocol.h>
 
-@class MFActivityMonitor, NSArray, NSMutableData, NSString;
+@class MFActivityMonitor, NSArray, NSMutableData, NSMutableDictionary, NSString;
 
 @interface MFDAMailAccountSyncConsumer : MFDAMailAccountConsumer <DAMailboxRequestConsumer, DAMailboxStreamingContentConsumer>
 {
@@ -25,6 +25,7 @@
     BOOL _firstSyncBatch;
     int _syncKeyResets;
     int _serverErrors;
+    NSMutableDictionary *_syncResponseConsumersByMessageId;
 }
 
 @property (readonly, nonatomic) BOOL moreAvailable; // @synthesize moreAvailable=_moreAvailable;

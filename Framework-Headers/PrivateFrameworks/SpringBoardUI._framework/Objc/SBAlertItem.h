@@ -6,15 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <SpringBoardUI/UIAlertViewDelegate-Protocol.h>
+#import <SpringBoardUI/BSDescriptionProviding-Protocol.h>
 
-@class NSArray, NSString, UIAlertView, UIImage;
+@class NSArray, NSString, _SBAlertController;
 
-@interface SBAlertItem : NSObject <UIAlertViewDelegate>
+@interface SBAlertItem : NSObject <BSDescriptionProviding>
 {
-    UIAlertView *_alertSheet;
-    BOOL _orderOverSBAlert;
-    BOOL _preventLockOver;
+    _SBAlertController *_alertController;
+    NSArray *_allowedBundleIDs;
     BOOL _didEverActivate;
     BOOL _didEverDeactivate;
     BOOL _ignoreIfAlreadyDisplaying;
@@ -22,21 +21,24 @@
     BOOL _allowInSetup;
     BOOL _pendInSetupIfNotAllowed;
     BOOL _pendWhileKeyBagLocked;
-    NSArray *_allowedBundleIDs;
     BOOL _allowInCar;
     BOOL _allowMessageInCar;
-    UIImage *_iconImage;
+    BOOL _occluded;
+    NSString *_iconImagePath;
+    NSString *_attachmentImagePath;
 }
 
 @property (nonatomic) BOOL allowInCar; // @synthesize allowInCar=_allowInCar;
 @property (nonatomic) BOOL allowInSetup; // @synthesize allowInSetup=_allowInSetup;
 @property (nonatomic) BOOL allowMessageInCar; // @synthesize allowMessageInCar=_allowMessageInCar;
 @property (strong, nonatomic) NSArray *allowedBundleIDs; // @synthesize allowedBundleIDs=_allowedBundleIDs;
+@property (strong, nonatomic, getter=_attachmentImagePath) NSString *attachmentImagePath; // @synthesize attachmentImagePath=_attachmentImagePath;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIImage *iconImage; // @synthesize iconImage=_iconImage;
+@property (strong, nonatomic, getter=_iconImagePath) NSString *iconImagePath; // @synthesize iconImagePath=_iconImagePath;
 @property (nonatomic) BOOL ignoreIfAlreadyDisplaying; // @synthesize ignoreIfAlreadyDisplaying=_ignoreIfAlreadyDisplaying;
+@property (nonatomic, getter=_isOccluded, setter=_setOccluded:) BOOL occluded; // @synthesize occluded=_occluded;
 @property (nonatomic) BOOL pendInSetupIfNotAllowed; // @synthesize pendInSetupIfNotAllowed=_pendInSetupIfNotAllowed;
 @property (nonatomic) BOOL pendWhileKeyBagLocked; // @synthesize pendWhileKeyBagLocked=_pendWhileKeyBagLocked;
 @property (readonly) Class superclass;
@@ -44,28 +46,32 @@
 + (id)_alertItemsController;
 + (void)activateAlertItem:(id)arg1;
 - (void).cxx_destruct;
+- (id)_alertController;
+- (id)_attachmentImage;
+- (void)_clearAlertController;
+- (void)_deactivationCompleted;
 - (BOOL)_didEverActivate;
-- (BOOL)_didEverDeactivate;
-- (BOOL)_dismissesOverlaysOnLockScreen;
-- (void)_noteDeactivated;
-- (void)_playPresentationSound;
+- (BOOL)_dismissesAutomatically;
+- (BOOL)_displayActionButtonOnLockScreen;
+- (BOOL)_hasActiveKeyboardOnScreen;
+- (id)_iconImage;
+- (void)_noteVolumeOrLockPressed;
+- (id)_prepareNewAlertControllerWithLockedState:(BOOL)arg1 requirePasscodeForActions:(BOOL)arg2;
+- (BOOL)_preventLockOver;
+- (id)_publicDescription;
 - (id)alertController;
-- (id)alertItemNotificationDate;
-- (id)alertItemNotificationSender;
-- (int)alertItemNotificationType;
 - (int)alertPriority;
-- (id)alertSheet;
-- (Class)alertSheetClass;
-- (void)alertView:(id)arg1 clickedButtonAtIndex:(long long)arg2;
-- (BOOL)allowAutoUnlock;
+- (BOOL)allowInLoginWindow;
 - (BOOL)allowLockScreenDismissal;
 - (BOOL)allowMenuButtonDismissal;
-- (double)autoDismissInterval;
 - (BOOL)behavesSuperModally;
 - (void)buttonDismissed;
-- (void)cleanPreviousConfiguration;
 - (void)configure:(BOOL)arg1 requirePasscodeForActions:(BOOL)arg2;
-- (void)dealloc;
+- (void)deactivate;
+- (void)deactivateForButton;
+- (void)deactivateForReason:(int)arg1;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)didActivate;
 - (void)didDeactivateForReason:(int)arg1;
 - (void)didFailToActivate;
@@ -73,32 +79,21 @@
 - (void)dismiss;
 - (void)dismiss:(int)arg1;
 - (BOOL)dismissOnLock;
-- (BOOL)dismissOnModalDisplayActivation;
-- (BOOL)dismissesAutomatically;
-- (BOOL)displayActionButtonOnLockScreen;
+- (BOOL)dismissesOverlaysOnLockScreen;
 - (BOOL)forcesModalAlertAppearance;
-- (BOOL)hasActiveKeyboardOnScreen;
 - (id)init;
-- (BOOL)isCriticalAlert;
 - (id)lockLabel;
-- (void)noteVolumeOrLockPressed;
 - (void)performUnlockAction;
 - (void)playPresentationSound;
-- (id)prepareNewAlertSheetWithLockedState:(BOOL)arg1 requirePasscodeForActions:(BOOL)arg2;
-- (BOOL)preventInterruption;
-- (BOOL)preventLockOver;
 - (BOOL)reappearsAfterLock;
 - (BOOL)reappearsAfterUnlock;
-- (void)screenWillUndim;
-- (void)setOrderOverSBAlert:(BOOL)arg1;
-- (void)setPreventLockOver:(BOOL)arg1;
 - (id)shortLockLabel;
 - (BOOL)shouldShowInEmergencyCall;
 - (BOOL)shouldShowInLockScreen;
 - (id)sound;
-- (BOOL)togglesMediaControls;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
 - (BOOL)undimsScreen;
-- (int)unlockSource;
 - (BOOL)unlocksScreen;
 - (void)willActivate;
 - (void)willDeactivateForReason:(int)arg1;

@@ -14,17 +14,24 @@ __attribute__((visibility("hidden")))
 @interface CKDPUserQueryRequest : PBRequest <NSCopying>
 {
     CKDPUserAlias *_alias;
-    NSString *_pcsServiceType;
+    NSString *_oBSOLETEPcsServiceType;
     NSMutableArray *_sortedBys;
+    BOOL _publicKeyRequested;
+    struct {
+        unsigned int publicKeyRequested:1;
+    } _has;
 }
 
 @property (strong, nonatomic) CKDPUserAlias *alias; // @synthesize alias=_alias;
 @property (readonly, nonatomic) BOOL hasAlias;
-@property (readonly, nonatomic) BOOL hasPcsServiceType;
-@property (strong, nonatomic) NSString *pcsServiceType; // @synthesize pcsServiceType=_pcsServiceType;
+@property (readonly, nonatomic) BOOL hasOBSOLETEPcsServiceType;
+@property (nonatomic) BOOL hasPublicKeyRequested;
+@property (strong, nonatomic) NSString *oBSOLETEPcsServiceType; // @synthesize oBSOLETEPcsServiceType=_oBSOLETEPcsServiceType;
+@property (nonatomic) BOOL publicKeyRequested; // @synthesize publicKeyRequested=_publicKeyRequested;
 @property (strong, nonatomic) NSMutableArray *sortedBys; // @synthesize sortedBys=_sortedBys;
 
 + (id)options;
++ (Class)sortedByType;
 - (void).cxx_destruct;
 - (void)addSortedBy:(id)arg1;
 - (void)clearSortedBys;

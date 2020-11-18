@@ -38,6 +38,7 @@
 @property (readonly, strong, nonatomic) NSString *displayName;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isActive;
+@property (readonly, nonatomic) BOOL isUserDisabled;
 @property (strong, nonatomic) NSString *loginID;
 @property (readonly, strong, nonatomic) NSArray *nearbyDevices;
 @property (readonly, nonatomic) NSDate *nextRegistrationDate;
@@ -58,6 +59,7 @@
 @property (readonly, strong, nonatomic) NSString *uniqueID;
 @property (readonly, strong, nonatomic) NSArray *vettedAliases;
 
+- (void)_callCloudConnectedDevicesChanged;
 - (void)_callConnectedDevicesChanged;
 - (void)_callDelegatesRespondingToSelector:(SEL)arg1 withPreCallbacksBlock:(CDUnknownBlockType)arg2 callbackBlock:(CDUnknownBlockType)arg3 postCallbacksBlock:(CDUnknownBlockType)arg4;
 - (void)_callDelegatesRespondingToSelector:(SEL)arg1 withPreCallbacksBlock:(CDUnknownBlockType)arg2 callbackBlock:(CDUnknownBlockType)arg3 postCallbacksBlock:(CDUnknownBlockType)arg4 group:(id)arg5;
@@ -93,7 +95,6 @@
 - (id)connectedDevices;
 - (void)deactivateAndPurgeIdentify;
 - (void)dealloc;
-- (void)device:(id)arg1 nsuuidChanged:(id)arg2;
 - (id)initWithDictionary:(id)arg1 uniqueID:(id)arg2 serviceName:(id)arg3 delegateContext:(id)arg4;
 - (id)initWithLoginID:(id)arg1 uniqueID:(id)arg2 serviceName:(id)arg3 delegateContext:(id)arg4;
 - (void)passwordUpdated;

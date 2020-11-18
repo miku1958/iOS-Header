@@ -13,11 +13,9 @@ __attribute__((visibility("hidden")))
     BOOL _wantsChromeVisibleDidChange;
 }
 
-@property (nonatomic) BOOL currentStateDidChange; // @synthesize currentStateDidChange=_currentStateDidChange;
-@property (nonatomic) BOOL wantsChromeVisibleDidChange; // @synthesize wantsChromeVisibleDidChange=_wantsChromeVisibleDidChange;
+@property (nonatomic, setter=_setCurrentStateDidChange:) BOOL currentStateDidChange; // @synthesize currentStateDidChange=_currentStateDidChange;
+@property (nonatomic, setter=_setWantsChromeVisibleDidChange:) BOOL wantsChromeVisibleDidChange; // @synthesize wantsChromeVisibleDidChange=_wantsChromeVisibleDidChange;
 
-- (void)_setCurrentStateDidChange:(BOOL)arg1;
-- (void)_setWantsChromeVisibleDidChange:(BOOL)arg1;
 - (BOOL)hasChanges;
 
 @end

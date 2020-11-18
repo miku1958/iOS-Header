@@ -15,6 +15,7 @@
 - (void)URLSession:(NSURLSession *)arg1 task:(NSURLSessionTask *)arg2 _conditionalRequirementsChanged:(BOOL)arg3;
 - (void)URLSession:(NSURLSession *)arg1 task:(NSURLSessionTask *)arg2 _isWaitingForConnectionWithError:(NSError *)arg3;
 - (void)URLSession:(NSURLSession *)arg1 task:(NSURLSessionTask *)arg2 _isWaitingForConnectionWithReason:(long long)arg3;
+- (void)URLSession:(NSURLSession *)arg1 task:(NSURLSessionTask *)arg2 _schemeUpgraded:(NSURLRequest *)arg3 completionHandler:(void (^)(NSURLRequest *))arg4;
 - (void)URLSession:(NSURLSession *)arg1 task:(NSURLSessionTask *)arg2 _willSendRequestForEstablishedConnection:(NSURLRequest *)arg3 completionHandler:(void (^)(NSURLRequest *))arg4;
 @end
 

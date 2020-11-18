@@ -8,15 +8,14 @@
 
 #import <IMCore/IMSystemMonitorListener-Protocol.h>
 
-@class IMHandle, IMPeople, IMServiceImpl, NSArray, NSAttributedString, NSData, NSDate, NSDictionary, NSMutableDictionary, NSRecursiveLock, NSString;
+@class IMHandle, IMPeople, IMServiceImpl, NSArray, NSAttributedString, NSData, NSDate, NSDictionary, NSMapTable, NSMutableDictionary, NSRecursiveLock, NSString;
 
 @interface IMAccount : NSObject <IMSystemMonitorListener>
 {
     IMServiceImpl *_service;
     IMPeople *_buddyList;
     NSRecursiveLock *_lock;
-    NSMutableDictionary *_imHandles;
-    NSMutableDictionary *_inlineTransfers;
+    NSMapTable *_imHandles;
     IMHandle *_loginIMHandle;
     NSArray *_cachedAllowList;
     NSArray *_cachedBlockList;
@@ -103,7 +102,7 @@
 @property (readonly, nonatomic) IMPeople *buddyList; // @synthesize buddyList=_buddyList;
 @property (readonly, nonatomic) BOOL canActivate;
 @property (readonly, nonatomic) unsigned long long capabilities; // @synthesize capabilities=_capabilities;
-@property (readonly, strong, nonatomic) NSString *countryCode;
+@property (readonly, nonatomic) NSString *countryCode;
 @property (readonly, nonatomic) NSDictionary *dictionary;
 @property (copy, nonatomic) NSString *displayName;
 @property (readonly, nonatomic) NSArray *emailDomains;
@@ -141,15 +140,15 @@
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) NSString *password;
 @property (readonly, nonatomic) long long port;
-@property (readonly, strong, nonatomic) NSDictionary *profileInfo;
-@property (readonly, strong, nonatomic) NSDictionary *registrationFailureAlertInfo;
+@property (readonly, nonatomic) NSDictionary *profileInfo;
+@property (readonly, nonatomic) NSDictionary *registrationFailureAlertInfo;
 @property (readonly, nonatomic) long long registrationFailureReason;
 @property (readonly, nonatomic) long long registrationStatus;
 @property (readonly, nonatomic) NSString *server;
-@property (readonly, nonatomic) IMServiceImpl *service; // @synthesize service=_service;
+@property (readonly, weak, nonatomic) IMServiceImpl *service; // @synthesize service=_service;
 @property (readonly, nonatomic) NSString *serviceName;
 @property (readonly, nonatomic) NSString *shortName;
-@property (readonly, strong, nonatomic) NSString *strippedLogin; // @synthesize strippedLogin=_strippedLogin;
+@property (readonly, nonatomic) NSString *strippedLogin; // @synthesize strippedLogin=_strippedLogin;
 @property (readonly, nonatomic) BOOL supportsAuthorization;
 @property (readonly, nonatomic) BOOL supportsRegistration;
 @property (readonly, nonatomic) NSString *temporaryPassword;
@@ -167,9 +166,10 @@
 + (id)passwordForAccount:(id)arg1 forServiceName:(id)arg2;
 + (void)removePasswordForAccount:(id)arg1 forServiceName:(id)arg2;
 + (void)removeTemporaryPasswordForAccount:(id)arg1 forServiceName:(id)arg2;
-+ (void)setPassword:(id)arg1 forAccount:(id)arg2 forServiceName:(id)arg3;
-+ (void)setTemporaryPassword:(id)arg1 forAccount:(id)arg2 forServiceName:(id)arg3;
-+ (id)temporaryPasswordForAccount:(id)arg1 forServiceName:(id)arg2;
++ (void)setPassword:(id)arg1 forAccount:(id)arg2 forAuthID:(id)arg3 forServiceName:(id)arg4;
++ (void)setTemporaryPassword:(id)arg1 forAccount:(id)arg2 forAuthID:(id)arg3 forServiceName:(id)arg4;
++ (id)temporaryPasswordForAccount:(id)arg1 forAuthID:(id)arg2 forServiceName:(id)arg3;
+- (void).cxx_destruct;
 - (id)_aliasInfoForAlias:(id)arg1;
 - (id)_aliases;
 - (void)_applyChangesToTemporaryCache:(id)arg1;
@@ -256,7 +256,6 @@
 - (id)existingIMHandleWithID:(id)arg1 countryCode:(id)arg2;
 - (id)existingIMHandleWithInfo:(id)arg1;
 - (id)existingIMHandleWithInfo:(id)arg1 alreadyCanonical:(BOOL)arg2;
-- (void)finalize;
 - (void)forgetAllWatches;
 - (id)groupMembers:(id)arg1;
 - (void)groupsChanged:(id)arg1 error:(id)arg2;

@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithUndoStep:(PassRefPtr_f4b194ba)arg1;
 - (struct UndoStep *)step;
 

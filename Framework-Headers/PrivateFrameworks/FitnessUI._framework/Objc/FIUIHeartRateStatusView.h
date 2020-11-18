@@ -6,27 +6,27 @@
 
 #import <UIKit/UIView.h>
 
-@class NSBundle, NSCache, NSObject, NSString, UIImageView;
-@protocol OS_dispatch_queue;
+@class FIUIAnimatingSpriteImageView, NSBundle, NSString, UIImageView;
 
 @interface FIUIHeartRateStatusView : UIView
 {
-    NSString *_heartImageNameFormat;
-    int _frameRateDivider;
+    NSString *_heartSpriteImageName;
+    long long _heartSpriteImageFrameCount;
+    long long _heartSpriteImageColumnCount;
     NSBundle *_resourceBundle;
     unsigned long long _state;
     double _heartRate;
     BOOL _delayedStartMeasuringAnimation;
-    NSObject<OS_dispatch_queue> *_assetLoadingQueue;
-    NSCache *_assetCache;
     BOOL _isBeatingHeart;
+    BOOL _animationsSuspended;
     UIImageView *_fullHeartImageView;
-    UIImageView *_animatingImageView;
+    FIUIAnimatingSpriteImageView *_animatingImageView;
     UIImageView *_reloadOutlineView;
     UIImageView *_reloadArrowView;
 }
 
-@property (strong, nonatomic) UIImageView *animatingImageView; // @synthesize animatingImageView=_animatingImageView;
+@property (strong, nonatomic) FIUIAnimatingSpriteImageView *animatingImageView; // @synthesize animatingImageView=_animatingImageView;
+@property (nonatomic) BOOL animationsSuspended; // @synthesize animationsSuspended=_animationsSuspended;
 @property (strong, nonatomic) UIImageView *fullHeartImageView; // @synthesize fullHeartImageView=_fullHeartImageView;
 @property (strong, nonatomic) UIImageView *reloadArrowView; // @synthesize reloadArrowView=_reloadArrowView;
 @property (strong, nonatomic) UIImageView *reloadOutlineView; // @synthesize reloadOutlineView=_reloadOutlineView;
@@ -34,16 +34,12 @@
 - (void).cxx_destruct;
 - (void)_beatFullHeartOnce;
 - (void)_finishedHeartBeat;
-- (void)_loadHeartMeasuringImagesWithCompletion:(CDUnknownBlockType)arg1;
-- (id)_queue_heartMeasuringImages;
+- (id)_loadHeartMeasuringImage;
 - (void)_resumeAnimations;
 - (void)_startBeatingHeart;
 - (void)_startMeasuringAnimationAnimated:(BOOL)arg1;
 - (void)_suspendAnimations;
-- (void)dealloc;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 heartImageNameFormat:(id)arg2 frameRateDivider:(int)arg3 resourceBundle:(id)arg4;
+- (id)initWithFrame:(struct CGRect)arg1 heartSpriteImageName:(id)arg2 spriteFrameCount:(long long)arg3 spriteColumnCount:(long long)arg4 resourceBundle:(id)arg5;
 - (void)layoutSubviews;
 - (void)setHeartRate:(double)arg1;
 - (void)setReloadArrowImage:(id)arg1;

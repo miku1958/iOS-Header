@@ -8,31 +8,27 @@
 
 #import <EventKit/CADClientInterface-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSXPCConnection;
+@class NSMutableDictionary, NSXPCConnection;
 @protocol CADInterface, OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface EKDaemonConnection : NSObject <CADClientInterface>
 {
-    unsigned int _options;
-    NSString *_dbPath;
-    id _delegate;
     NSObject<OS_dispatch_queue> *_connectionLock;
     id<CADInterface> _remoteOperationProxy;
     NSObject<OS_dispatch_queue> *_replyHandlerLock;
     NSMutableDictionary *_cancellableOperations;
     unsigned int _nextCancellationToken;
     BOOL _registeredForStartNote;
-    int _connectionIdentifier;
     NSXPCConnection *_xpcConnection;
+    id _delegate;
 }
 
 @property (readonly, strong, nonatomic) id<CADInterface> CADOperationProxy;
-@property (nonatomic) int connectionIdentifier; // @synthesize connectionIdentifier=_connectionIdentifier;
-@property id delegate; // @synthesize delegate=_delegate;
+@property (weak) id delegate; // @synthesize delegate=_delegate;
 @property (readonly, strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
 + (void)waitOnSemaphoreWithBlock:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 - (void)CADClientReceiveOccurrenceCacheSearchResults:(id)arg1 forSearchToken:(unsigned int)arg2 finished:(BOOL)arg3;
 - (BOOL)_connectToServer;
 - (void)_daemonRestarted;
@@ -41,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)cancelRemoteOperation:(unsigned int)arg1;
 - (void)dealloc;
 - (void)disconnect;
-- (id)initWithOptions:(unsigned int)arg1 path:(id)arg2;
+- (id)init;
 - (void)removeCancellableRemoteOperation:(unsigned int)arg1;
 
 @end

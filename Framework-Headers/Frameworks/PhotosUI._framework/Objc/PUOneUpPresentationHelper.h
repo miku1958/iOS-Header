@@ -14,7 +14,7 @@
 #import <PhotosUI/PUTilingViewTileUseDelegate-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSSet, NSString, PUBrowsingSession, PUCameraPreviewTransitionDelegate, PUChangeDirectionValueFilter, PUOneUpViewController, PUPhotosDataSource, PUPinchedTileTracker, PUTilingView, UITapGestureRecognizer, UIViewController;
+@class NSSet, NSString, PUBrowsingSession, PUCameraPreviewTransitionDelegate, PUChangeDirectionValueFilter, PUOneUpViewController, PUPinchedTileTracker, PUTilingView, PXPhotosDataSource, UITapGestureRecognizer, UIViewController;
 @protocol PUOneUpPresentationHelperAssetDisplayDelegate, PUOneUpPresentationHelperDelegate;
 
 @interface PUOneUpPresentationHelper : NSObject <PUPhotosPreviewPresentationControllerDelegate, UIGestureRecognizerDelegate, PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, PUTilingViewTileUseDelegate, PUPinchedTileTrackerDelegate, PUTilingViewControllerTransitionEndPoint>
@@ -29,6 +29,8 @@
         BOOL respondsToShouldLeaveContentOnSecondScreen;
         BOOL respondsToDisableFinalFadeoutAnimation;
         BOOL respondsToPreviewScrubberDidBecomeAvailable;
+        BOOL respondsToShouldAutoPlay;
+        BOOL respondsToPreventRevealInMomentAction;
     } _delegateFlags;
     struct {
         BOOL respondsToCurrentImageForAssetReference;
@@ -38,14 +40,18 @@
     } _assetDisplayDelegateFlags;
     BOOL _cachesScrubberView;
     BOOL __isEndingPresentation;
+    BOOL __shouldPauseLibraryChanges;
     BOOL __needsUpdateAssetReferencesDisplayedInTilingView;
     BOOL __isPerformingNonAnimatedPush;
     PUBrowsingSession *_browsingSession;
-    PUPhotosDataSource *_photosDataSource;
+    PXPhotosDataSource *_photosDataSource;
     id<PUOneUpPresentationHelperDelegate> _delegate;
     id<PUOneUpPresentationHelperAssetDisplayDelegate> _assetDisplayDelegate;
+    CDUnknownBlockType _unlockDeviceStatus;
+    CDUnknownBlockType _unlockDeviceHandler;
     long long __state;
     long long __presentationEndTimeoutIdentifier;
+    id __libraryChangePauseToken;
     CDUnknownBlockType __browsingSessionCreationBlock;
     UIViewController *__presentingViewController;
     PUTilingView *__tilingView;
@@ -65,18 +71,20 @@
 @property (weak, nonatomic, setter=_setDisappearingTilingView:) PUTilingView *_disappearingTilingView; // @synthesize _disappearingTilingView=__disappearingTilingView;
 @property (nonatomic, setter=_setEndingPresentation:) BOOL _isEndingPresentation; // @synthesize _isEndingPresentation=__isEndingPresentation;
 @property (nonatomic, setter=_setIsPerformingNonAnimatedPush:) BOOL _isPerformingNonAnimatedPush; // @synthesize _isPerformingNonAnimatedPush=__isPerformingNonAnimatedPush;
+@property (strong, nonatomic, setter=_setLibraryChangePauseToken:) id _libraryChangePauseToken; // @synthesize _libraryChangePauseToken=__libraryChangePauseToken;
 @property (nonatomic, setter=_setNeedsUpdateAssetReferencesDisplayedInTilingView:) BOOL _needsUpdateAssetReferencesDisplayedInTilingView; // @synthesize _needsUpdateAssetReferencesDisplayedInTilingView=__needsUpdateAssetReferencesDisplayedInTilingView;
 @property (strong, nonatomic, setter=_setOneUpViewController:) PUOneUpViewController *_oneUpViewController; // @synthesize _oneUpViewController=__oneUpViewController;
 @property (strong, nonatomic, setter=_setPanDirectionValueFilter:) PUChangeDirectionValueFilter *_panDirectionValueFilter; // @synthesize _panDirectionValueFilter=__panDirectionValueFilter;
 @property (strong, nonatomic, setter=_setPinchedTileTracker:) PUPinchedTileTracker *_pinchedTileTracker; // @synthesize _pinchedTileTracker=__pinchedTileTracker;
 @property (nonatomic, setter=_setPresentationEndTimeoutIdentifier:) long long _presentationEndTimeoutIdentifier; // @synthesize _presentationEndTimeoutIdentifier=__presentationEndTimeoutIdentifier;
 @property (weak, nonatomic, setter=_setPresentingViewController:) UIViewController *_presentingViewController; // @synthesize _presentingViewController=__presentingViewController;
+@property (nonatomic, setter=_setShouldPauseLibraryChanges:) BOOL _shouldPauseLibraryChanges; // @synthesize _shouldPauseLibraryChanges=__shouldPauseLibraryChanges;
 @property (nonatomic, setter=_setState:) long long _state; // @synthesize _state=__state;
 @property (strong, nonatomic, setter=_setTapGestureRecognizer:) UITapGestureRecognizer *_tapGestureRecognizer; // @synthesize _tapGestureRecognizer=__tapGestureRecognizer;
 @property (strong, nonatomic, setter=_setTilingView:) PUTilingView *_tilingView; // @synthesize _tilingView=__tilingView;
 @property (strong, nonatomic, setter=_setTransitioningTilingView:) PUTilingView *_transitioningTilingView; // @synthesize _transitioningTilingView=__transitioningTilingView;
 @property (weak, nonatomic) id<PUOneUpPresentationHelperAssetDisplayDelegate> assetDisplayDelegate; // @synthesize assetDisplayDelegate=_assetDisplayDelegate;
-@property (strong, nonatomic) PUBrowsingSession *browsingSession; // @synthesize browsingSession=_browsingSession;
+@property (strong, nonatomic, setter=_setBrowsingSession:) PUBrowsingSession *browsingSession; // @synthesize browsingSession=_browsingSession;
 @property (nonatomic) BOOL cachesScrubberView; // @synthesize cachesScrubberView=_cachesScrubberView;
 @property (readonly, nonatomic) BOOL canPresentOneUpViewController;
 @property (readonly, copy) NSString *debugDescription;
@@ -84,25 +92,30 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isOneUpPresented;
-@property (strong, nonatomic) PUPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
+@property (strong, nonatomic) PXPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) CDUnknownBlockType unlockDeviceHandler; // @synthesize unlockDeviceHandler=_unlockDeviceHandler;
+@property (copy, nonatomic) CDUnknownBlockType unlockDeviceStatus; // @synthesize unlockDeviceStatus=_unlockDeviceStatus;
 
 - (void).cxx_destruct;
 - (void)_cleanUpAfterTilingViewTransitionAnimated:(BOOL)arg1;
 - (void)_cleanupOneUpViewControllerForDismissalIfNeeded;
+- (id)_createOneUpViewControllerWithBrowsingSession:(id)arg1 options:(unsigned long long)arg2;
 - (long long)_currentNavigationControllerOperation;
 - (id)_currentTilingViewControllerTransition;
 - (void)_didFinishTransitioningToOneUp;
 - (void)_disappearingTilingView:(id)arg1 animationCompleted:(BOOL)arg2;
+- (void)_ensureRegistrationWithPresentingViewController;
 - (BOOL)_handleInteractivePresentationWithBlock:(CDUnknownBlockType)arg1;
 - (void)_handleTap:(id)arg1;
 - (void)_handleTileControllerAnimationEnd;
 - (void)_invalidateAssetReferencesDisplayedInTilingView;
 - (id)_newCollapsedLayout;
+- (BOOL)_prepareDismissalForced:(BOOL)arg1;
 - (void)_presentOneUpViewController:(id)arg1 animated:(BOOL)arg2 interactiveMode:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_presentationEndDidTimeOut:(long long)arg1;
 - (id)_scrollViewForPreviewing;
-- (void)_setBrowsingSession:(id)arg1;
+- (BOOL)_shouldAutoplayOnNavigation;
 - (void)_updateAssetReferencesDisplayedInTilingView;
 - (void)_updateLayout;
 - (void)_updateLayout:(id)arg1;
@@ -110,7 +123,9 @@
 - (void)_updateTapGestureRecognizer;
 - (void)beginUsingBlackTheme;
 - (id)cameraPreviewTransitionDelegateWithSourceRect:(struct CGRect)arg1 sourceImage:(id)arg2;
+- (BOOL)canDismissOneUpViewController;
 - (void)cancelCommitTransitionForPreviewViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)commitPreviewViewController:(id)arg1;
 - (void)dealloc;
 - (void)didDismissPreviewViewController:(id)arg1 committing:(BOOL)arg2;
 - (BOOL)dismissOneUpViewControllerForced:(BOOL)arg1 animated:(BOOL)arg2;
@@ -123,7 +138,6 @@
 - (void)interactiveTileTracker:(id)arg1 didStopTrackingTileController:(id)arg2;
 - (void)interactiveTileTracker:(id)arg1 willStartTrackingTileController:(id)arg2;
 - (void)navigateToAssetAtIndexPath:(id)arg1;
-- (void)performCommitTransitionForPreviewViewController:(id)arg1 shouldSnapshot:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)photosPreviewPresentationController:(id)arg1 willPresentPreviewViewController:(id)arg2;
 - (id)pinchedTiledTracker:(id)arg1 finalLayoutInfoForTileWithLayoutInfo:(id)arg2;
 - (double)pinchedTiledTracker:(id)arg1 initialAspectRatioForTileWithLayoutInfo:(id)arg2;

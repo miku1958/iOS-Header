@@ -10,6 +10,9 @@
 {
 }
 
+@property (nonatomic, getter=isBootstrapScriptFallbackEnabled) BOOL bootstrapScriptFallbackEnabled; // @dynamic bootstrapScriptFallbackEnabled;
+@property (nonatomic) double bootstrapScriptFallbackMaximumAge; // @dynamic bootstrapScriptFallbackMaximumAge;
+@property (nonatomic) double bootstrapScriptTimeoutInterval; // @dynamic bootstrapScriptTimeoutInterval;
 @property (nonatomic) BOOL requiresLocalBootstrapScript; // @dynamic requiresLocalBootstrapScript;
 @property (nonatomic) BOOL supportsFullApplicationReload; // @dynamic supportsFullApplicationReload;
 @property (nonatomic) long long tabBarControllerStyle; // @dynamic tabBarControllerStyle;

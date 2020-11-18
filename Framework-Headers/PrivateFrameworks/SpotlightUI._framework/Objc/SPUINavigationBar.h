@@ -6,12 +6,29 @@
 
 #import <UIKit/UINavigationBar.h>
 
+@class UIView;
+
 @interface SPUINavigationBar : UINavigationBar
 {
+    UIView *_topDividerView;
+    double _currentBlurProgress;
 }
 
+@property double currentBlurProgress; // @synthesize currentBlurProgress=_currentBlurProgress;
+@property (strong) UIView *topDividerView; // @synthesize topDividerView=_topDividerView;
+
++ (BOOL)_supportsCanvasView;
+- (void).cxx_destruct;
+- (id)_popNavigationItemWithTransition:(int)arg1;
 - (void)didAddSubview:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (BOOL)isLocked;
+- (void)performShowSeparator:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)performUpdateBlurProgress:(double)arg1 animated:(BOOL)arg2;
+- (void)pushNavigationItem:(id)arg1;
+- (void)showSeparator:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)updateBackgroundViewVisibility;
+- (void)updateBlurProgress:(double)arg1 animated:(BOOL)arg2;
 
 @end
 

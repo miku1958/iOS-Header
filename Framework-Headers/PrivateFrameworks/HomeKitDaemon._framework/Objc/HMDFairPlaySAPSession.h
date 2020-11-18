@@ -11,17 +11,25 @@
 
 @interface HMDFairPlaySAPSession : NSObject
 {
+    unsigned long long _state;
     id<HMDFairPlaySAPSessionDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSUUID *_sessionIdentifier;
+    NSObject<OS_dispatch_queue> *_clientQueue;
 }
 
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, weak) id<HMDFairPlaySAPSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (readonly, nonatomic) NSUUID *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
+@property (nonatomic) unsigned long long state; // @synthesize state=_state;
 
 - (void).cxx_destruct;
+- (void)_closeWithError:(id)arg1;
+- (void)_setupSAPSessionWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_teardown;
 - (void)close;
+- (void)dealloc;
 - (id)initWithDelegate:(id)arg1 delegateQueue:(id)arg2;
 - (void)openWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)signatureForData:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

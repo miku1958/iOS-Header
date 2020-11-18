@@ -6,14 +6,26 @@
 
 #import <CoreRoutine/RTSource.h>
 
-@class NSString;
+@class NSDate, NSString;
 
 @interface RTSourceEventKit : RTSource
 {
+    BOOL _allDay;
     NSString *_eventIdentifier;
+    NSDate *_startDate;
+    NSDate *_endDate;
+    NSString *_title;
+    NSString *_location;
+    NSString *_suggestionInfo_opaqueKey;
 }
 
+@property (readonly, nonatomic, getter=isAllDay) BOOL allDay; // @synthesize allDay=_allDay;
+@property (readonly, strong, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property (readonly, strong, nonatomic) NSString *eventIdentifier; // @synthesize eventIdentifier=_eventIdentifier;
+@property (readonly, strong, nonatomic) NSString *location; // @synthesize location=_location;
+@property (readonly, strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (readonly, strong, nonatomic) NSString *suggestionInfo_opaqueKey; // @synthesize suggestionInfo_opaqueKey=_suggestionInfo_opaqueKey;
+@property (readonly, strong, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -21,7 +33,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithEventIdentifier:(id)arg1;
+- (id)initWithEventIdentifier:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 title:(id)arg4 location:(id)arg5 allDay:(BOOL)arg6 suggestionInfo_opaqueKey:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 
 @end

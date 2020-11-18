@@ -9,30 +9,33 @@
 #import <coreroutine/NSSecureCoding-Protocol.h>
 #import <coreroutine/RTEventStore-Protocol.h>
 
-@class NSMutableArray, NSString, RTEntropyFilter, RTEventDateBasedDecayHistogram, RTPrimingFilter;
+@class NSMutableArray, NSMutableSet, NSString, RTDefaultsManager, RTEntropyFilter, RTEventDateBasedDecayHistogram, RTMediaRemote;
 
 @interface RTEventStoreHistogram : RTEventStore <RTEventStore, NSSecureCoding>
 {
     double _confidence;
+    RTMediaRemote *_mediaRemote;
+    RTDefaultsManager *_defaultsManager;
     NSMutableArray *_events;
     RTEventDateBasedDecayHistogram *_processedEventModel;
     RTEntropyFilter *_entropyFilter;
-    RTPrimingFilter *_primingFilter;
     double _globalLaunchThreshold;
+    NSMutableSet *_bundleIdentifiersSupportingPriming;
 }
 
+@property (strong, nonatomic) NSMutableSet *bundleIdentifiersSupportingPriming; // @synthesize bundleIdentifiersSupportingPriming=_bundleIdentifiersSupportingPriming;
 @property (nonatomic) double confidence; // @synthesize confidence=_confidence;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) RTDefaultsManager *defaultsManager; // @synthesize defaultsManager=_defaultsManager;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) RTEntropyFilter *entropyFilter; // @synthesize entropyFilter=_entropyFilter;
 @property (strong, nonatomic) NSMutableArray *events; // @synthesize events=_events;
 @property (nonatomic) double globalLaunchThreshold; // @synthesize globalLaunchThreshold=_globalLaunchThreshold;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) RTPrimingFilter *primingFilter; // @synthesize primingFilter=_primingFilter;
+@property (strong, nonatomic) RTMediaRemote *mediaRemote; // @synthesize mediaRemote=_mediaRemote;
 @property (strong, nonatomic) RTEventDateBasedDecayHistogram *processedEventModel; // @synthesize processedEventModel=_processedEventModel;
 @property (readonly) Class superclass;
 
-+ (double)calculateModelConfidenceWithCorrectPredictions:(double)arg1 incorrectPredictions:(double)arg2 iterations:(unsigned long long)arg3 minimumConfidence:(double)arg4;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_processEventsWithGlobalAppLaunchCountedSet:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -43,16 +46,14 @@
 - (void)clearAllEvents;
 - (unsigned long long)countOfEvents;
 - (void)encodeWithCoder:(id)arg1;
-- (void)fetchPredictionForEvent:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)fetchRecommendedAppsHistogramMetric:(CDUnknownBlockType)arg1;
+- (void)fetchAllPredictionsWithHandler:(CDUnknownBlockType)arg1;
 - (double)getConfidence;
 - (id)init;
 - (id)initWithApplicableEventClasses:(id)arg1;
-- (id)initWithApplicableEventClasses:(id)arg1 withDecayRate:(double)arg2 withDate:(id)arg3;
+- (id)initWithApplicableEventClasses:(id)arg1 decayRate:(double)arg2;
+- (id)initWithApplicableEventClasses:(id)arg1 decayRate:(double)arg2 mediaRemote:(id)arg3 defaultsManager:(id)arg4;
 - (id)initWithCoder:(id)arg1;
 - (void)invalidate;
-- (void)logRecommendedAppsHistogramMetric:(CDUnknownBlockType)arg1;
-- (void)processEventsWithGlobalAppLaunchCountedSet:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)removeEvent:(id)arg1;
 - (void)removeEvents:(id)arg1;
 - (void)setupThreshold;

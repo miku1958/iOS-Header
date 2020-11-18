@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, strong, nonatomic) RTScenarioTrigger *scenarioTrigger; // @synthesize scenarioTrigger=_scenarioTrigger;
 
-+ (id)notificationName;
 - (void).cxx_destruct;
 - (id)initWithScenarioTrigger:(id)arg1;
 

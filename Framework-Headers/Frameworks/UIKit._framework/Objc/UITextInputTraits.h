@@ -10,7 +10,7 @@
 #import <UIKit/UITextInputTraits-Protocol.h>
 #import <UIKit/UITextInputTraits_Private-Protocol.h>
 
-@class NSIndexSet, NSString, UIColor, UIImage;
+@class NSIndexSet, NSString, UIColor, UIImage, UIInputContextHistory;
 
 @interface UITextInputTraits : NSObject <UITextInputTraits, UITextInputTraits_Private, NSCopying>
 {
@@ -22,6 +22,7 @@
     long long returnKeyType;
     BOOL enablesReturnKeyAutomatically;
     BOOL secureTextEntry;
+    NSString *textContentType;
     struct __CFCharacterSet *textTrimmingSet;
     UIColor *insertionPointColor;
     UIColor *selectionBarColor;
@@ -34,7 +35,10 @@
     BOOL isSingleLineDocument;
     BOOL contentsIsSingleValue;
     BOOL acceptsEmoji;
+    BOOL acceptsDictationSearchResults;
     BOOL forceEnableDictation;
+    BOOL forceDisableDictation;
+    BOOL forceDefaultDictationInfo;
     BOOL returnKeyGoesToNextResponder;
     BOOL acceptsFloatingKeyboard;
     BOOL acceptsSplitKeyboard;
@@ -49,14 +53,20 @@
     NSString *autocorrectionContext;
     NSString *responseContext;
     BOOL disablePrediction;
+    BOOL disableInputBars;
     BOOL isCarPlayIdiom;
     NSString *recentInputIdentifier;
     struct _NSRange validTextRange;
+    long long textScriptType;
+    UIInputContextHistory *inputContextHistory;
+    BOOL hasDefaultContents;
     BOOL displaySecureEditsUsingPlainText;
     NSIndexSet *PINEntrySeparatorIndexes;
+    long long forceDictationKeyboardType;
 }
 
 @property (copy, nonatomic) NSIndexSet *PINEntrySeparatorIndexes; // @synthesize PINEntrySeparatorIndexes;
+@property (nonatomic) BOOL acceptsDictationSearchResults; // @synthesize acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji; // @synthesize acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard; // @synthesize acceptsFloatingKeyboard;
 @property (nonatomic) BOOL acceptsSplitKeyboard; // @synthesize acceptsSplitKeyboard;
@@ -67,14 +77,22 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL deferBecomingResponder; // @synthesize deferBecomingResponder;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) long long dictationInfoKeyboardType;
+@property (readonly, nonatomic) long long dictationKeyboardType;
+@property (nonatomic) BOOL disableInputBars; // @synthesize disableInputBars;
 @property (nonatomic) BOOL disablePrediction; // @synthesize disablePrediction;
 @property (nonatomic) BOOL displaySecureEditsUsingPlainText; // @synthesize displaySecureEditsUsingPlainText;
 @property (nonatomic) BOOL displaySecureTextUsingPlainText; // @synthesize displaySecureTextUsingPlainText;
 @property (nonatomic) int emptyContentReturnKeyType; // @synthesize emptyContentReturnKeyType;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically; // @synthesize enablesReturnKeyAutomatically;
 @property (nonatomic) BOOL enablesReturnKeyOnNonWhiteSpaceContent; // @synthesize enablesReturnKeyOnNonWhiteSpaceContent;
+@property (nonatomic) BOOL forceDefaultDictationInfo; // @synthesize forceDefaultDictationInfo;
+@property (nonatomic) long long forceDictationKeyboardType; // @synthesize forceDictationKeyboardType;
+@property (nonatomic) BOOL forceDisableDictation; // @synthesize forceDisableDictation;
 @property (nonatomic) BOOL forceEnableDictation; // @synthesize forceEnableDictation;
+@property (nonatomic) BOOL hasDefaultContents; // @synthesize hasDefaultContents;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIInputContextHistory *inputContextHistory; // @synthesize inputContextHistory;
 @property (strong, nonatomic) UIColor *insertionPointColor; // @synthesize insertionPointColor;
 @property (nonatomic) unsigned long long insertionPointWidth; // @synthesize insertionPointWidth;
 @property (nonatomic) BOOL isCarPlayIdiom; // @synthesize isCarPlayIdiom;
@@ -94,7 +112,9 @@
 @property (nonatomic) long long spellCheckingType; // @synthesize spellCheckingType;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressReturnKeyStyling; // @synthesize suppressReturnKeyStyling;
+@property (copy, nonatomic) NSString *textContentType; // @synthesize textContentType;
 @property (nonatomic) int textLoupeVisibility; // @synthesize textLoupeVisibility;
+@property (nonatomic) long long textScriptType; // @synthesize textScriptType;
 @property (nonatomic) int textSelectionBehavior; // @synthesize textSelectionBehavior;
 @property (nonatomic) id textSuggestionDelegate; // @dynamic textSuggestionDelegate;
 @property (nonatomic) struct __CFCharacterSet *textTrimmingSet; // @dynamic textTrimmingSet;

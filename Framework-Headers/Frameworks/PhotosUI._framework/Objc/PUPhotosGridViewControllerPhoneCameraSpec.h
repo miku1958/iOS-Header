@@ -10,7 +10,5 @@
 {
 }
 
-- (id)photoBrowserSpec;
-
 @end
 

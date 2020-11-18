@@ -13,8 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_cardInfoCells;
-- (id)_deviceAccountNumberCell;
+- (unsigned long long)_cardInfoSectionGenerateCellWithOutput:(id *)arg1 forRowIndex:(long long)arg2 tableView:(id)arg3;
+- (id)_deviceAccountNumberCellForIndexPath:(id)arg1 tableView:(id)arg2;
+- (id)_linkCellWithText:(id)arg1 forTableView:(id)arg2;
 
 @end
 

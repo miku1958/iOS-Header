@@ -18,6 +18,7 @@
 @property (nonatomic) long long participantStatus;
 @property (nonatomic) long long participantType;
 @property (nonatomic) long long pendingStatus;
+@property (nonatomic) BOOL proposedStartDateChanged;
 @property (nonatomic) BOOL statusChanged;
 
 + (id)attendeeWithEmailAddress:(id)arg1 name:(id)arg2;

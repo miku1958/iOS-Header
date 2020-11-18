@@ -54,6 +54,7 @@
 - (void)_didFinishWithResult:(long long)arg1;
 - (void)_fireLoadBlockBeforeFinishing;
 - (void)_forceOrientationBackToSupportedOrientation;
+- (BOOL)_isPeeking;
 - (void)_loadDidFinishWithResult:(BOOL)arg1 error:(id)arg2;
 - (void)_presentPageWithRequest:(id)arg1 animated:(BOOL)arg2;
 - (void)_requestRemoteViewController;
@@ -74,6 +75,7 @@
 - (long long)preferredStatusBarStyle;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)willMoveToParentViewController:(id)arg1;

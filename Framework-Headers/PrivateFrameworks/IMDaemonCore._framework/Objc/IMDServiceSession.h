@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IMDaemonCore/IMConnectionMonitorDelegate-Protocol.h>
 #import <IMDaemonCore/IMServiceSessionProtocol-Protocol.h>
@@ -84,7 +84,11 @@
 @property (readonly, strong, nonatomic) IMDService *service; // @synthesize service=_service;
 @property (readonly, nonatomic) BOOL useSSL; // @synthesize useSSL=_useSSL;
 
++ (id)__allServiceSessionsWeakReferenceArray;
++ (void)__registerNewServiceSession:(id)arg1;
 + (id)_firewallUserNotificationForService:(id)arg1;
++ (id)allServiceSessions;
++ (id)existingServiceSessionForService:(id)arg1;
 + (void)initialize;
 - (void)__forceSetLoginStatus:(unsigned int)arg1 oldStatus:(unsigned int)arg2 message:(id)arg3 reason:(int)arg4 properties:(id)arg5 account:(id)arg6;
 - (void)_abandonPWFetcher;
@@ -192,6 +196,7 @@
 - (void)didJoinChat:(id)arg1 style:(unsigned char)arg2 handleInfo:(id)arg3 account:(id)arg4;
 - (void)didLeaveChat:(id)arg1 style:(unsigned char)arg2;
 - (void)didLeaveChat:(id)arg1 style:(unsigned char)arg2 account:(id)arg3;
+- (void)didReceiveBalloonPayload:(id)arg1 forChat:(id)arg2 style:(unsigned char)arg3 messageGUID:(id)arg4 account:(id)arg5;
 - (void)didReceiveDisplayNameChange:(id)arg1 fromID:(id)arg2 forChat:(id)arg3 style:(unsigned char)arg4 account:(id)arg5;
 - (void)didReceiveError:(unsigned int)arg1 forMessageID:(id)arg2 forceError:(BOOL)arg3;
 - (void)didReceiveError:(unsigned int)arg1 forMessageID:(id)arg2 forceError:(BOOL)arg3 account:(id)arg4;
@@ -209,7 +214,9 @@
 - (void)didReceiveMessageReadReceiptForMessageID:(id)arg1 date:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)didReceiveMessageSavedForMessageID:(id)arg1 ofType:(long long)arg2 forChat:(id)arg3 fromHandle:(id)arg4 fromMe:(BOOL)arg5 date:(id)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (void)didReceiveMessageSavedForMessageID:(id)arg1 ofType:(long long)arg2 forChat:(id)arg3 fromHandle:(id)arg4 fromMe:(BOOL)arg5 date:(id)arg6 useMessageSuppression:(BOOL)arg7 account:(id)arg8 completionBlock:(CDUnknownBlockType)arg9;
+- (void)didReceiveMessages:(id)arg1 forChat:(id)arg2 style:(unsigned char)arg3 account:(id)arg4;
 - (void)didReceiveReplaceMessageID:(int)arg1 forChat:(id)arg2 style:(unsigned char)arg3;
+- (void)didSendBalloonPayload:(id)arg1 forChat:(id)arg2 style:(unsigned char)arg3 messageGUID:(id)arg4 account:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (void)didSendMessage:(id)arg1 forChat:(id)arg2 style:(unsigned char)arg3;
 - (void)didSendMessage:(id)arg1 forChat:(id)arg2 style:(unsigned char)arg3 account:(id)arg4 forceDate:(id)arg5;
 - (void)didSendMessage:(id)arg1 forChat:(id)arg2 style:(unsigned char)arg3 forceDate:(id)arg4;
@@ -288,6 +295,7 @@
 - (void)removeChatID:(id)arg1 identifier:(id)arg2 style:(unsigned char)arg3;
 - (void)removePersonInfo:(id)arg1 chatID:(id)arg2 identifier:(id)arg3 style:(unsigned char)arg4;
 - (void)renameGroup:(id)arg1 to:(id)arg2;
+- (void)replayMessage:(id)arg1;
 - (void)requestGroups;
 - (void)requestProperty:(id)arg1 ofPerson:(id)arg2;
 - (void)requestSubscriptionTo:(id)arg1;

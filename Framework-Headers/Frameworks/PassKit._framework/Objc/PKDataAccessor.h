@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSBundle, NSData, PKRemoteAssetManager;
 @protocol OS_dispatch_queue;
@@ -14,13 +14,14 @@
     NSObject<OS_dispatch_queue> *_processingQueue;
 }
 
-@property (readonly, strong, nonatomic) NSData *archiveData;
-@property (readonly, strong, nonatomic) NSBundle *bundle;
-@property (readonly, strong, nonatomic) NSData *manifestHash;
-@property (readonly, strong, nonatomic) PKRemoteAssetManager *remoteAssetManager;
+@property (readonly, nonatomic) NSData *archiveData;
+@property (readonly, nonatomic) NSBundle *bundle;
+@property (readonly, nonatomic) NSData *manifestHash;
+@property (readonly, nonatomic) PKRemoteAssetManager *remoteAssetManager;
 @property (readonly, nonatomic) BOOL remoteAssetsDownloaded;
-@property (readonly, strong, nonatomic) NSData *serializedFileWrapper;
+@property (readonly, nonatomic) NSData *serializedFileWrapper;
 
+- (void).cxx_destruct;
 - (id)content;
 - (void)contentWithCompletion:(CDUnknownBlockType)arg1;
 - (id)dataForBundleResourceNamed:(id)arg1 withExtension:(id)arg2;

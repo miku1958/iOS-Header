@@ -16,10 +16,10 @@
     NSUUID *_uniqueIdentifier;
     NSUUID *_uuid;
     HMActionSet *_actionSet;
+    unsigned long long _actionType;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     HMDelegateCaller *_delegateCaller;
-    unsigned long long _actionType;
 }
 
 @property (weak, nonatomic) HMActionSet *actionSet; // @synthesize actionSet=_actionSet;

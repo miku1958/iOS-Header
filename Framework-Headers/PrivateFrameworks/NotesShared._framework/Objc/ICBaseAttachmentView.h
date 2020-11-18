@@ -26,6 +26,7 @@
 - (void)attachmentDidLoad:(id)arg1;
 - (void)attachmentPreviewImagesDidUpdate:(id)arg1;
 - (void)attachmentWillBeDeleted:(id)arg1;
+- (BOOL)cancelDidScrollIntoVisibleRange;
 - (void)contentSizeCategoryDidChange;
 - (void)dealloc;
 - (void)didChangeAttachment;

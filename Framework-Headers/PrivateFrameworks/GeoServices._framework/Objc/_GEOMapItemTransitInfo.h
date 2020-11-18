@@ -39,7 +39,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSDate *lastFullScheduleValidDate;
 @property (readonly, nonatomic) NSArray *lines;
 @property (readonly, nonatomic) unsigned long long linesCount;
-@property (readonly, nonatomic) unsigned long long numAdditionalDepartures;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *systems;
 @property (readonly, nonatomic) unsigned long long systemsCount;
@@ -52,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (id)inactiveLinesForSystem:(id)arg1 relativeToDateFromBlock:(CDUnknownBlockType)arg2 excludingIncidentEntities:(id)arg3;
 - (id)initWithTransitInfo:(id)arg1 schedule:(id)arg2 timeZone:(id)arg3 incidents:(id)arg4 hasTransitIncidentComponent:(BOOL)arg5 incidentExpirationDate:(id)arg6 providerID:(int)arg7;
 - (id)linesForSystem:(id)arg1;
+- (unsigned long long)numAdditionalDeparturesForSequence:(id)arg1;
 - (id)sequencesForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 direction:(id)arg3 validForDateFromBlock:(CDUnknownBlockType)arg4;
 - (id)serviceResumesDateForLine:(id)arg1 excludingIncidentEntities:(id)arg2 afterDate:(id)arg3 blocked:(out BOOL *)arg4;
 

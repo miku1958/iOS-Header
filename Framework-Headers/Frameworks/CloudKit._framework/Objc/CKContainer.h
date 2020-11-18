@@ -8,16 +8,18 @@
 
 #import <CloudKit/CKBXPCClient-Protocol.h>
 
-@class ACAccountStore, CKAccountInfo, CKContainerID, CKContainerSetupInfo, CKDatabase, CKOperationCallbackManager, CKOperationFlowControlManager, CKRecordID, NSMapTable, NSMutableArray, NSOperationQueue, NSString, NSXPCConnection;
+@class ACAccountStore, CKAccountInfo, CKContainerID, CKContainerSetupInfo, CKDatabase, CKOperationCallbackManager, CKOperationFlowControlManager, CKRecordID, NSMapTable, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString, NSXPCConnection;
 
 @interface CKContainer : NSObject <CKBXPCClient>
 {
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_sourceApplicationSecondaryIdentifier;
+    BOOL _holdAllOperations;
     BOOL _hasValidConnection;
     BOOL _needsSandboxExtensions;
     BOOL _hasCachedSetupInfo;
     BOOL _captureResponseHTTPHeaders;
+    BOOL _wantsSiloedContext;
     int _statusReportToken;
     int _killSwitchToken;
     int _accountChangeToken;
@@ -37,6 +39,8 @@
     NSMutableArray *_sandboxExtensionHandles;
     CKContainerSetupInfo *_cachedSetupInfo;
     NSMapTable *_assetsByUUID;
+    NSMutableDictionary *_fakeEntitlements;
+    unsigned long long _stateHandle;
 }
 
 @property (nonatomic) int accountChangeToken; // @synthesize accountChangeToken=_accountChangeToken;
@@ -53,6 +57,7 @@
 @property (strong, nonatomic) NSOperationQueue *convenienceOperationQueue; // @synthesize convenienceOperationQueue=_convenienceOperationQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSMutableDictionary *fakeEntitlements; // @synthesize fakeEntitlements=_fakeEntitlements;
 @property (strong, nonatomic) CKOperationFlowControlManager *flowControlManager; // @synthesize flowControlManager=_flowControlManager;
 @property (nonatomic) BOOL hasCachedSetupInfo; // @synthesize hasCachedSetupInfo=_hasCachedSetupInfo;
 @property (nonatomic) BOOL hasValidConnection; // @synthesize hasValidConnection=_hasValidConnection;
@@ -62,11 +67,12 @@
 @property (strong, nonatomic) CKDatabase *privateCloudDatabase; // @synthesize privateCloudDatabase=_privateCloudDatabase;
 @property (strong, nonatomic) CKDatabase *publicCloudDatabase; // @synthesize publicCloudDatabase=_publicCloudDatabase;
 @property (strong, nonatomic) NSMutableArray *sandboxExtensionHandles; // @synthesize sandboxExtensionHandles=_sandboxExtensionHandles;
-@property (readonly, nonatomic) CKDatabase *sharedCloudDatabase;
 @property (strong, nonatomic) CKDatabase *sharedCloudDatabase; // @synthesize sharedCloudDatabase=_sharedCloudDatabase;
+@property (nonatomic) unsigned long long stateHandle; // @synthesize stateHandle=_stateHandle;
 @property (nonatomic) int statusReportToken; // @synthesize statusReportToken=_statusReportToken;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSOperationQueue *throttlingOperationQueue; // @synthesize throttlingOperationQueue=_throttlingOperationQueue;
+@property (nonatomic) BOOL wantsSiloedContext; // @synthesize wantsSiloedContext=_wantsSiloedContext;
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
 + (id)containerWithIdentifier:(id)arg1;
@@ -77,37 +83,55 @@
 + (void)unregisterOutstandingOperationWithID:(id)arg1;
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
+- (id)CKStatusReportArray;
+- (id)_allStatusReports;
 - (void)_checkSelfCloudServicesEntitlement;
 - (id)_checkSelfContainerIdentifier;
 - (void)_cleanupSandboxExtensionHandles:(id)arg1;
 - (void)_consumeSandboxExtensions:(id)arg1;
+- (void)_discoverUserIdentityWithLookupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_fetchLongLivedOperationsWithIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_fetchUserIdentityWithInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_initWithContainerIdentifier:(id)arg1;
 - (id)_initWithContainerIdentifier:(id)arg1 environment:(long long)arg2;
 - (void)_prepareForDaemonLaunch;
+- (void)_scheduleConvenienceOperation:(id)arg1;
 - (void)_setupWithContainerID:(id)arg1 accountInfoOverride:(id)arg2;
 - (long long)_untrustedDatabaseEnvironment;
 - (id)_untrustedEntitlementForKey:(id)arg1;
+- (void)acceptShareMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)accountChangedWithID:(id)arg1;
 - (void)accountStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)accountsDidGrantAccessToBundleID:(id)arg1 containerIdentifiers:(id)arg2;
 - (void)accountsDidRevokeAccessToBundleID:(id)arg1 containerIdentifiers:(id)arg2;
 - (void)accountsWillDeleteAccount:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addOperation:(id)arg1;
+- (void)clearContextFromMetadataCache;
 - (id)connection;
 - (id)daemonWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)databaseWithDatabaseScope:(long long)arg1;
+- (void)dataclassEnabled:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
+- (void)decryptPersonalInfoOnShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)discoverAllContactUserInfosWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)discoverAllIdentitiesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)discoverUserIdentityWithEmailAddress:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)discoverUserIdentityWithPhoneNumber:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)discoverUserIdentityWithUserRecordID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)discoverUserInfoWithEmailAddress:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)discoverUserInfoWithUserRecordID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)dumpAllClientsStatusReportToFileHandle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)dumpDaemonStatusReport;
+- (void)dumpDaemonStatusReportToFileHandle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchAllLongLivedOperationIDsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchCurrentDeviceIDWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)fetchFullNameAndPrimaryEmailOnAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchLongLivedOperationWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchLongLivedOperationsWithIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchServerEnvironment:(CDUnknownBlockType)arg1;
-- (void)fetchUserIdentityWithEmailAddress:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchUserIdentityWithUserRecordID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchShareMetadataWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchShareParticipantWithEmailAddress:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchShareParticipantWithLookupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchShareParticipantWithPhoneNumber:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchShareParticipantWithUserRecordID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchUserRecordIDWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)findTrackedAssetByUUID:(id)arg1;
 - (void)getNewWebSharingIdentity:(CDUnknownBlockType)arg1;
@@ -115,6 +139,7 @@
 - (void)handleOperationCompletion:(id)arg1 forOperationWithID:(id)arg2;
 - (void)handleOperationProgress:(id)arg1 forOperationWithID:(id)arg2;
 - (void)handleOperationProgress:(id)arg1 forOperationWithID:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (BOOL)holdAllOperations;
 - (id)initWithContainerID:(id)arg1;
 - (id)initWithContainerID:(id)arg1 accountInfoOverride:(id)arg2;
 - (void)openFileWithOpenInfo:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -123,8 +148,10 @@
 - (void)resetAllApplicationPermissionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)serverPreferredPushEnvironmentWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setApplicationPermission:(unsigned long long)arg1 enabled:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)setEffectiveClientBundleIdentifier:(id)arg1;
+- (void)setFakeEntitlement:(id)arg1 forKey:(id)arg2;
 - (void)setFakeError:(id)arg1 forNextRequestOfClassName:(id)arg2;
+- (void)setFakeResponseOperationResult:(id)arg1 forNextRequestOfClassName:(id)arg2 forItemID:(id)arg3;
+- (void)setHoldAllOperations:(BOOL)arg1;
 - (void)setSourceApplicationBundleIdentifier:(id)arg1;
 - (void)setSourceApplicationSecondaryIdentifier:(id)arg1;
 - (id)setupInfo;
@@ -132,7 +159,6 @@
 - (id)sourceApplicationSecondaryIdentifier;
 - (void)statusForApplicationPermission:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)statusGroupsForApplicationPermission:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)statusReport;
 - (void)tossConfigWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)trackAssets:(id)arg1;
 - (void)updatePushTokens;

@@ -6,21 +6,28 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMMessageReceiver-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDHome, HMMessageDispatcher, NSString, NSUUID;
+@class HMDHome, HMFMessageDispatcher, HMFTimer, NSArray, NSMutableArray, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDAssistantCommandHelper : NSObject <HMMessageReceiver>
+@interface HMDAssistantCommandHelper : NSObject <HMFMessageReceiver, HMFTimerDelegate, HMFLogging>
 {
     CDUnknownBlockType _responseHandler;
     NSUUID *_messageId;
     HMDHome *_home;
     NSObject<OS_dispatch_queue> *_queue;
-    HMMessageDispatcher *_msgDispatcher;
+    HMFMessageDispatcher *_msgDispatcher;
     NSUUID *_uuid;
+    NSMutableArray *_responses;
+    unsigned long long _numErrors;
+    HMFTimer *_actionTimer;
+    NSArray *_requests;
 }
 
+@property (strong, nonatomic) HMFTimer *actionTimer; // @synthesize actionTimer=_actionTimer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -28,20 +35,29 @@
 @property (strong, nonatomic) NSUUID *messageId; // @synthesize messageId=_messageId;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (nonatomic) unsigned long long numErrors; // @synthesize numErrors=_numErrors;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (strong, nonatomic) NSArray *requests; // @synthesize requests=_requests;
 @property (copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
+@property (strong, nonatomic) NSMutableArray *responses; // @synthesize responses=_responses;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
++ (id)logCategory;
 - (void).cxx_destruct;
 - (void)_handleAccessoryCharacteristicsChangedNotification:(id)arg1;
 - (void)_register;
+- (void)_reportResponses;
+- (void)_resetActionTimer;
+- (void)_startActionTimer;
 - (void)addActionSetRequest:(id)arg1 actionSet:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)addReadRequest:(id)arg1 characteristics:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)addWriteRequest:(id)arg1 characteristics:(id)arg2 withArrayCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)addReadRequests:(id)arg1 home:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)addWriteRequests:(id)arg1 home:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)initWithQueue:(id)arg1 msgDispatcher:(id)arg2;
+- (void)removeResponses:(id)arg1;
+- (void)timerDidFire:(id)arg1;
 
 @end
 

@@ -15,8 +15,10 @@
 
 @property (readonly, nonatomic) AVAssetWriterInput *defaultInput;
 @property (readonly, nonatomic) NSArray *inputs;
+@property (readonly, nonatomic) NSArray *provisionalInputs;
 
 + (id)assetWriterInputGroupWithInputs:(id)arg1 defaultInput:(id)arg2;
++ (id)assetWriterInputGroupWithInputs:(id)arg1 provisionalInputs:(id)arg2 defaultInput:(id)arg3;
 - (void)_startObservingInputPropertiesThatMayChangeValueOfOptions;
 - (void)_stopObservingInputPropertiesThatMayChangeValueOfOptions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -24,6 +26,7 @@
 - (void)finalize;
 - (id)init;
 - (id)initWithInputs:(id)arg1 defaultInput:(id)arg2;
+- (id)initWithInputs:(id)arg1 provisionalInputs:(id)arg2 defaultInput:(id)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)options;
 

@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL trustedConnectionEstablished; // @synthesize trustedConnectionEstablished=_trustedConnectionEstablished;
 
-+ (id)notificationName;
 - (id)initWithTrustedConnectionEstablished:(BOOL)arg1;
 
 @end

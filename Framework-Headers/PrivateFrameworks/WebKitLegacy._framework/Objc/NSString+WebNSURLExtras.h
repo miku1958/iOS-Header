@@ -10,13 +10,13 @@
 - (id)_web_decodeHostName;
 - (id)_web_encodeHostName;
 - (BOOL)_web_isUserVisibleURL;
+- (id)_webkit_decodeHostName;
+- (id)_webkit_encodeHostName;
 - (BOOL)_webkit_isFileURL;
 - (BOOL)_webkit_isJavaScriptURL;
 - (BOOL)_webkit_looksLikeAbsoluteURL;
-- (id)_webkit_queryKeysAndValues;
 - (struct _NSRange)_webkit_rangeOfURLScheme;
 - (id)_webkit_scriptIfJavaScriptURL;
 - (id)_webkit_stringByReplacingValidPercentEscapes;
-- (id)_webkit_unescapedQueryValue;
 @end
 

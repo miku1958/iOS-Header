@@ -6,7 +6,7 @@
 
 #import <CloudDocsDaemon/BRCStatInfo.h>
 
-@class BRCGenerationID, NSNumber, NSString;
+@class BRCGenerationID, BRFileObjectID, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BRCLocalStatInfo : BRCStatInfo
@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *bouncedName; // @synthesize bouncedName=_bouncedName;
 @property (readonly, nonatomic) NSNumber *documentID; // @synthesize documentID=_documentID;
 @property (readonly, nonatomic) NSNumber *fileID; // @synthesize fileID=_fileID;
-@property (readonly, nonatomic) NSNumber *fileObjectID;
+@property (readonly, nonatomic) BRFileObjectID *fileObjectID;
 @property (readonly, nonatomic) NSString *filename;
 @property (readonly, nonatomic) BRCGenerationID *generationID; // @synthesize generationID=_generationID;
 @property (nonatomic) unsigned char itemScope; // @synthesize itemScope=_itemScope;
@@ -36,6 +36,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSNumber *stagedFileIDForDB;
 @property (readonly, nonatomic) unsigned int stagedGenerationID; // @synthesize stagedGenerationID=_stagedGenerationID;
 
++ (id)_finderTagsFromRelativePath:(id)arg1;
++ (BOOL)_modeFromRelativePath:(id)arg1 isPackageFault:(BOOL)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_clearBouncedName;
@@ -47,10 +49,12 @@ __attribute__((visibility("hidden")))
 - (void)_markDead;
 - (void)_markFound;
 - (void)_markLiveFromStageAsFault:(BOOL)arg1;
-- (void)_markLostAddingBackoffWithMode:(unsigned char)arg1 container:(id)arg2;
+- (void)_markLiveFromStageAsType:(BOOL)arg1;
+- (void)_markLostAddingBackoffWithMode:(unsigned char)arg1 appLibrary:(id)arg2;
 - (void)_markReserved;
 - (void)_markStagedWithFileID:(id)arg1 generationID:(unsigned int)arg2 documentID:(id)arg3;
 - (void)_migrateBouncedNameToLocalName;
+- (void)_migrateBouncedNameToName;
 - (void)_moveItemAsideWithUUIDString;
 - (void)_setCKInfo:(id)arg1;
 - (void)_setItemScope:(unsigned char)arg1;
@@ -63,12 +67,14 @@ __attribute__((visibility("hidden")))
 - (id)descriptionWithContext:(id)arg1 origName:(id)arg2;
 - (unsigned long long)diffAgainstLocalInfo:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initFromResultSet:(id)arg1 pos:(int)arg2 container:(id)arg3;
+- (id)initAsShareAcceptFaultWithName:(id)arg1;
+- (id)initFromResultSet:(id)arg1 pos:(int)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLocalStatInfo:(id)arg1;
 - (id)initWithRelativePath:(id)arg1 itemID:(id)arg2 parentID:(id)arg3;
 - (void)setFilename:(id)arg1;
 - (void)setFilename:(id)arg1 forceRename:(BOOL)arg2;
+- (void)updateAsAppLibraryRoot:(id)arg1;
 - (void)updateFromFSAtPath:(id)arg1 itemID:(id)arg2 parentID:(id)arg3 isPackageFault:(BOOL)arg4;
 - (void)updateLocationAndMetaFromFSAtPath:(id)arg1 itemID:(id)arg2 parentID:(id)arg3 isPackageFault:(BOOL)arg4;
 

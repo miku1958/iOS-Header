@@ -4,12 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSError, SPDaemonQueryToken, SPSearchResultDeserializer;
+#import <SpotlightUI/NSObject-Protocol.h>
 
-@protocol SPDaemonQueryDelegate
-- (void)searchDaemonQuery:(SPDaemonQueryToken *)arg1 addedResults:(SPSearchResultDeserializer *)arg2;
+@class NSArray, NSError, NSString, SPDaemonQueryToken, SPResultSet;
+
+@protocol SPDaemonQueryDelegate <NSObject>
 - (void)searchDaemonQuery:(SPDaemonQueryToken *)arg1 encounteredError:(NSError *)arg2;
-- (void)searchDaemonQueryCompleted:(SPDaemonQueryToken *)arg1;
-- (void)searchDaemonQueryReset:(SPDaemonQueryToken *)arg1;
+- (void)searchDaemonRankingLog:(NSString *)arg1;
+- (void)searchDaemonSuggestionsArray:(NSArray *)arg1;
+
+@optional
+- (void)searchDaemonQuery:(SPDaemonQueryToken *)arg1 gotResultSet:(SPResultSet *)arg2 replace:(BOOL)arg3 complete:(BOOL)arg4 finished:(BOOL)arg5 blendingDuration:(double)arg6 geoEntityString:(NSString *)arg7;
 @end
 

@@ -8,7 +8,7 @@
 
 #import <IMCore/NSCopying-Protocol.h>
 
-@class IMHandle, IMMessageItem, NSArray, NSAttributedString, NSDate, NSError, NSString;
+@class IMHandle, IMMessageItem, NSArray, NSAttributedString, NSData, NSDate, NSDictionary, NSError, NSString;
 
 @interface IMMessage : NSObject <NSCopying>
 {
@@ -24,21 +24,39 @@
     NSAttributedString *_messageSubject;
     NSArray *_fileTransferGUIDs;
     NSError *_error;
+    NSString *_balloonBundleID;
+    NSData *_payloadData;
+    NSString *_expressiveSendStyleID;
+    NSDate *_timeExpressiveSendPlayed;
     unsigned long long _flags;
     BOOL _isInvitationMessage;
     long long _messageID;
+    NSString *_associatedMessageGUID;
+    long long _associatedMessageType;
+    NSDictionary *_messageSummaryInfo;
+    NSData *_customTypingIndicatorIcon;
+    struct _NSRange _associatedMessageRange;
 }
 
-@property (readonly, strong, nonatomic) IMMessageItem *_imMessageItem;
-@property (strong, nonatomic) NSError *error; // @synthesize error=_error;
-@property (copy, nonatomic) NSArray *fileTransferGUIDs; // @synthesize fileTransferGUIDs=_fileTransferGUIDs;
-@property (nonatomic) unsigned long long flags; // @synthesize flags=_flags;
-@property (strong, nonatomic) NSString *guid; // @synthesize guid=_guid;
+@property (readonly, nonatomic) IMMessageItem *_imMessageItem;
+@property (readonly, copy, nonatomic) NSString *associatedMessageGUID;
+@property (copy, nonatomic, setter=_associatedMessageGUID:) NSString *associatedMessageGUID; // @synthesize associatedMessageGUID=_associatedMessageGUID;
+@property (nonatomic, setter=_associatedMessageRange:) struct _NSRange associatedMessageRange; // @synthesize associatedMessageRange=_associatedMessageRange;
+@property (readonly, nonatomic) long long associatedMessageType;
+@property (nonatomic, setter=_associatedMessageType:) long long associatedMessageType; // @synthesize associatedMessageType=_associatedMessageType;
+@property (strong, nonatomic) NSString *balloonBundleID; // @synthesize balloonBundleID=_balloonBundleID;
+@property (strong, nonatomic) NSData *customTypingIndicatorIcon; // @synthesize customTypingIndicatorIcon=_customTypingIndicatorIcon;
+@property (strong, nonatomic, setter=_updateError:) NSError *error; // @synthesize error=_error;
+@property (strong, nonatomic) NSString *expressiveSendStyleID; // @synthesize expressiveSendStyleID=_expressiveSendStyleID;
+@property (copy, nonatomic, setter=_updateFileTransferGUIDs:) NSArray *fileTransferGUIDs; // @synthesize fileTransferGUIDs=_fileTransferGUIDs;
+@property (nonatomic, setter=_updateFlags:) unsigned long long flags; // @synthesize flags=_flags;
+@property (strong, nonatomic, setter=_updateGUID:) NSString *guid; // @synthesize guid=_guid;
 @property (readonly, nonatomic) BOOL hasDataDetectorResults;
 @property (readonly, nonatomic) BOOL hasInlineAttachments;
-@property (readonly, strong, nonatomic) NSArray *inlineAttachmentAttributesArray;
+@property (readonly, nonatomic) NSArray *inlineAttachmentAttributesArray;
 @property (readonly, nonatomic) BOOL isAddressedToMe;
 @property (readonly, nonatomic) BOOL isAlert;
+@property (readonly, nonatomic) BOOL isAssociatedMessage;
 @property (readonly, nonatomic) BOOL isAudioMessage;
 @property (readonly, nonatomic) BOOL isAutoReply;
 @property (readonly, nonatomic) BOOL isDelayed;
@@ -54,53 +72,57 @@
 @property (readonly, nonatomic) BOOL isSent;
 @property (readonly, nonatomic) BOOL isSystemMessage;
 @property (readonly, nonatomic) BOOL isTypingMessage;
-@property (nonatomic) long long messageID; // @synthesize messageID=_messageID;
-@property (readonly, strong, nonatomic) NSAttributedString *messageSubject; // @synthesize messageSubject=_messageSubject;
-@property (readonly, strong, nonatomic) NSString *plainBody;
-@property (strong, nonatomic) IMHandle *sender; // @synthesize sender=_sender;
-@property (readonly, strong, nonatomic) NSString *senderName;
-@property (readonly, strong, nonatomic) IMHandle *subject; // @synthesize subject=_subject;
-@property (readonly, strong, nonatomic) NSString *summaryString;
-@property (strong, nonatomic) NSAttributedString *text; // @synthesize text=_text;
-@property (strong, nonatomic) NSDate *time; // @synthesize time=_time;
-@property (strong, nonatomic) NSDate *timeDelivered; // @synthesize timeDelivered=_timeDelivered;
-@property (strong, nonatomic) NSDate *timePlayed; // @synthesize timePlayed=_timePlayed;
-@property (strong, nonatomic) NSDate *timeRead; // @synthesize timeRead=_timeRead;
+@property (nonatomic, setter=_updateMessageID:) long long messageID; // @synthesize messageID=_messageID;
+@property (readonly, nonatomic) NSAttributedString *messageSubject; // @synthesize messageSubject=_messageSubject;
+@property (readonly, copy, nonatomic) NSDictionary *messageSummaryInfo;
+@property (copy, nonatomic, setter=_messageSummaryInfo:) NSDictionary *messageSummaryInfo; // @synthesize messageSummaryInfo=_messageSummaryInfo;
+@property (strong, nonatomic) NSData *payloadData; // @synthesize payloadData=_payloadData;
+@property (readonly, nonatomic) NSString *plainBody;
+@property (strong, nonatomic, setter=_updateSender:) IMHandle *sender; // @synthesize sender=_sender;
+@property (readonly, nonatomic) NSString *senderName;
+@property (readonly, nonatomic) IMHandle *subject; // @synthesize subject=_subject;
+@property (readonly, nonatomic) NSString *summaryString;
+@property (strong, nonatomic, setter=_updateText:) NSAttributedString *text; // @synthesize text=_text;
+@property (strong, nonatomic, setter=_updateTime:) NSDate *time; // @synthesize time=_time;
+@property (strong, nonatomic, setter=_updateTimeDelivered:) NSDate *timeDelivered; // @synthesize timeDelivered=_timeDelivered;
+@property (strong, nonatomic) NSDate *timeExpressiveSendPlayed; // @synthesize timeExpressiveSendPlayed=_timeExpressiveSendPlayed;
+@property (strong, nonatomic, setter=_updateTimePlayed:) NSDate *timePlayed; // @synthesize timePlayed=_timePlayed;
+@property (strong, nonatomic, setter=_updateTimeRead:) NSDate *timeRead; // @synthesize timeRead=_timeRead;
 @property (readonly, nonatomic) BOOL wasDataDetected;
 @property (readonly, nonatomic) BOOL wasDowngraded;
 
 + (id)_vCardDataWithCLLocation:(id)arg1;
++ (id)breadcrumbMessageWithText:(id)arg1 associatedMessageGUID:(id)arg2 balloonBundleID:(id)arg3 fileTransferGUIDs:(id)arg4 payloadData:(id)arg5;
 + (id)defaultInvitationMessageFromSender:(id)arg1 flags:(unsigned long long)arg2;
++ (id)determineRichLinksInMessage:(id)arg1;
++ (id)editedMessageWithOriginalMessage:(id)arg1 originalPrefixedGUID:(id)arg2 newBody:(id)arg3;
 + (id)fromMeIMHandle:(id)arg1 withText:(id)arg2 fileTransferGUIDs:(id)arg3 flags:(unsigned long long)arg4;
++ (id)instantMessageWithAssociatedMessageContent:(id)arg1 flags:(unsigned long long)arg2 associatedMessageGUID:(id)arg3 associatedMessageType:(long long)arg4 associatedMessageRange:(struct _NSRange)arg5 messageSummaryInfo:(id)arg6;
 + (id)instantMessageWithText:(id)arg1 flags:(unsigned long long)arg2;
 + (id)instantMessageWithText:(id)arg1 messageSubject:(id)arg2 fileTransferGUIDs:(id)arg3 flags:(unsigned long long)arg4;
++ (id)instantMessageWithText:(id)arg1 messageSubject:(id)arg2 fileTransferGUIDs:(id)arg3 flags:(unsigned long long)arg4 balloonBundleID:(id)arg5 payloadData:(id)arg6 expressiveSendStyleID:(id)arg7;
 + (id)instantMessageWithText:(id)arg1 messageSubject:(id)arg2 flags:(unsigned long long)arg3;
 + (id)locatingMessageWithGuid:(id)arg1 error:(id)arg2;
 + (id)messageFromIMMessageItem:(id)arg1 sender:(id)arg2 subject:(id)arg3;
 + (id)messageFromIMMessageItemDictionary:(id)arg1 body:(id)arg2 sender:(id)arg3 subject:(id)arg4;
 + (id)messageWithLocation:(id)arg1 flags:(unsigned long long)arg2 error:(id)arg3 guid:(id)arg4;
+- (void).cxx_destruct;
 - (id)_copyWithFlags:(unsigned long long)arg1;
-- (id)_initWithSender:(id)arg1 time:(id)arg2 timeRead:(id)arg3 timeDelivered:(id)arg4 timePlayed:(id)arg5 plainText:(id)arg6 text:(id)arg7 messageSubject:(id)arg8 fileTransferGUIDs:(id)arg9 flags:(unsigned long long)arg10 error:(id)arg11 guid:(id)arg12 messageID:(long long)arg13 subject:(id)arg14;
-- (void)_updateError:(id)arg1;
-- (void)_updateFileTransferGUIDs:(id)arg1;
-- (void)_updateFlags:(unsigned long long)arg1;
-- (void)_updateGUID:(id)arg1;
-- (void)_updateMessageID:(long long)arg1;
-- (void)_updateSender:(id)arg1;
-- (void)_updateText:(id)arg1;
-- (void)_updateTime:(id)arg1;
-- (void)_updateTimeDelivered:(id)arg1;
-- (void)_updateTimePlayed:(id)arg1;
-- (void)_updateTimeRead:(id)arg1;
+- (id)_initWithSender:(id)arg1 time:(id)arg2 timeRead:(id)arg3 timeDelivered:(id)arg4 timePlayed:(id)arg5 plainText:(id)arg6 text:(id)arg7 messageSubject:(id)arg8 fileTransferGUIDs:(id)arg9 flags:(unsigned long long)arg10 error:(id)arg11 guid:(id)arg12 messageID:(long long)arg13 subject:(id)arg14 balloonBundleID:(id)arg15 payloadData:(id)arg16 expressiveSendStyleID:(id)arg17 timeExpressiveSendPlayed:(id)arg18 associatedMessageGUID:(id)arg19 associatedMessageType:(long long)arg20 associatedMessageRange:(struct _NSRange)arg21 messageSummaryInfo:(id)arg22;
 - (long long)compare:(id)arg1;
 - (long long)compare:(id)arg1 comparisonType:(long long)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
+- (id)descriptionForPurpose:(long long)arg1;
+- (id)descriptionForPurpose:(long long)arg1 inChat:(id)arg2;
 - (id)initWithSender:(id)arg1 fileTransfer:(id)arg2;
 - (id)initWithSender:(id)arg1 time:(id)arg2 text:(id)arg3 fileTransferGUIDs:(id)arg4 flags:(unsigned long long)arg5 error:(id)arg6 guid:(id)arg7 subject:(id)arg8;
 - (id)initWithSender:(id)arg1 time:(id)arg2 text:(id)arg3 messageSubject:(id)arg4 fileTransferGUIDs:(id)arg5 flags:(unsigned long long)arg6 error:(id)arg7 guid:(id)arg8 subject:(id)arg9;
+- (id)initWithSender:(id)arg1 time:(id)arg2 text:(id)arg3 messageSubject:(id)arg4 fileTransferGUIDs:(id)arg5 flags:(unsigned long long)arg6 error:(id)arg7 guid:(id)arg8 subject:(id)arg9 associatedMessageGUID:(id)arg10 associatedMessageType:(long long)arg11 associatedMessageRange:(struct _NSRange)arg12 associatedMessageInfo:(id)arg13;
+- (id)initWithSender:(id)arg1 time:(id)arg2 text:(id)arg3 messageSubject:(id)arg4 fileTransferGUIDs:(id)arg5 flags:(unsigned long long)arg6 error:(id)arg7 guid:(id)arg8 subject:(id)arg9 associatedMessageGUID:(id)arg10 associatedMessageType:(long long)arg11 associatedMessageRange:(struct _NSRange)arg12 messageSummaryInfo:(id)arg13;
+- (id)initWithSender:(id)arg1 time:(id)arg2 text:(id)arg3 messageSubject:(id)arg4 fileTransferGUIDs:(id)arg5 flags:(unsigned long long)arg6 error:(id)arg7 guid:(id)arg8 subject:(id)arg9 balloonBundleID:(id)arg10 payloadData:(id)arg11 expressiveSendStyleID:(id)arg12;
 - (BOOL)isEqual:(id)arg1;
+- (id)messagesBySeparatingRichLinks;
 - (void)setIsAddressedToMe:(BOOL)arg1;
 
 @end

@@ -6,23 +6,24 @@
 
 #import <RemoteUI/RUIElement.h>
 
+#import <RemoteUI/CAAnimationDelegate-Protocol.h>
 #import <RemoteUI/PSPasscodeFieldDelegate-Protocol.h>
 #import <RemoteUI/RUITableFooterDelegate-Protocol.h>
+#import <RemoteUI/RUITopLevelPageElement-Protocol.h>
 
-@class NSString, PSPasscodeField, RUIObjectModel, RUIPage, UIColor, UILabel, UITextField, UIView;
-@protocol RemoteUITableFooter, RemoteUITableHeader;
+@class NSString, PSPasscodeField, RUIHTMLHeaderElement, RUIHTMLHeaderView, RUIHeaderElement, RUIObjectModel, RUIPage, UIColor, UITextField, UIView;
+@protocol RUIHeader, RemoteUITableFooter;
 
-@interface RUIPasscodeView : RUIElement <RUITableFooterDelegate, PSPasscodeFieldDelegate>
+@interface RUIPasscodeView : RUIElement <RUITableFooterDelegate, PSPasscodeFieldDelegate, CAAnimationDelegate, RUITopLevelPageElement>
 {
     UIView *_containerView;
-    RUIElement *_header;
-    UIView<RemoteUITableHeader> *_headerView;
+    UIView<RUIHeader> *_headerView;
+    RUIHTMLHeaderView *_HTMLHeaderView;
     UITextField *_complexPasscodeField;
     RUIElement *_footer;
     UIView<RemoteUITableFooter> *_footerView;
     NSString *_pendingAutoFillToken;
     BOOL _appeared;
-    UILabel *_titleLabel;
     unsigned long long _passcodeValidationAttempts;
     RUIObjectModel *_objectModel;
     RUIPage *_page;
@@ -31,15 +32,18 @@
     UIColor *_foregroundColor;
     long long _keyboardAppearance;
     unsigned long long _numberOfEntryFields;
+    RUIHeaderElement *_header;
+    RUIHTMLHeaderElement *_HTMLHeader;
     NSString *_submittedPIN;
 }
 
+@property (strong, nonatomic) RUIHTMLHeaderElement *HTMLHeader; // @synthesize HTMLHeader=_HTMLHeader;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) RUIElement *footer; // @synthesize footer=_footer;
 @property (strong, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) RUIElement *header; // @synthesize header=_header;
+@property (strong, nonatomic) RUIHeaderElement *header; // @synthesize header=_header;
 @property (copy, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
 @property (nonatomic) long long keyboardAppearance; // @synthesize keyboardAppearance=_keyboardAppearance;
 @property (nonatomic) unsigned long long numberOfEntryFields; // @synthesize numberOfEntryFields=_numberOfEntryFields;
@@ -50,6 +54,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)HTMLHeaderView;
 - (void)_clearPasscode;
 - (void)_complexPasscodeFieldDidChange:(id)arg1;
 - (void)_doneButtonTapped:(id)arg1;
@@ -67,6 +72,7 @@
 - (id)sourceURL;
 - (void)submitPIN;
 - (id)titleLabel;
+- (id)view;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayout;
 - (void)viewWillAppear:(BOOL)arg1;

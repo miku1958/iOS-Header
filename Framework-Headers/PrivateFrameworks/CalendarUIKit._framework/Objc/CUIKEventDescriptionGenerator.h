@@ -27,7 +27,7 @@
 - (id)_locationStringForEvent:(id)arg1;
 - (id)_naturalLanguageDescriptionForEvent:(id)arg1 isFirstInDay:(BOOL)arg2;
 - (id)_noonDateForEvents:(id)arg1;
-- (id)_notReallyRandomNumberBetween1AndN:(int)arg1;
+- (long long)_notReallyRandomNumberBetween1AndN:(int)arg1;
 - (BOOL)_prepareToUseMessageWithID:(id)arg1 shouldAllowWeekendUsage:(BOOL)arg2;
 - (BOOL)_prependBusyDayMessageToEventSummaryIfPossible:(id)arg1;
 - (BOOL)_prependEarlyStartMessageToEventSummaryIfPossible:(id)arg1;

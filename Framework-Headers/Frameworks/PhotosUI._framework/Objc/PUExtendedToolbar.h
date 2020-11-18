@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     UIView *__accessoryView;
     double __containedToolbarHeight;
     double __accessoryViewTopOutset;
+    double __minimumBackgroundHeight;
     UIToolbar *__containedToolbar;
     UIView *__accessoryViewContainer;
     NSMutableSet *__accessoryViewContainers;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setContainedToolbar:) UIToolbar *_containedToolbar; // @synthesize _containedToolbar=__containedToolbar;
 @property (nonatomic, setter=_setContainedToolbarHeight:) double _containedToolbarHeight; // @synthesize _containedToolbarHeight=__containedToolbarHeight;
 @property (nonatomic, setter=_setUpdating:) BOOL _isUpdating; // @synthesize _isUpdating=__isUpdating;
+@property (nonatomic, setter=_setMinimumBackgroundHeight:) double _minimumBackgroundHeight; // @synthesize _minimumBackgroundHeight=__minimumBackgroundHeight;
 @property (nonatomic, setter=_setNeedsUpdateAccessoryView:) BOOL _needsUpdateAccessoryView; // @synthesize _needsUpdateAccessoryView=__needsUpdateAccessoryView;
 @property (nonatomic, setter=_setNeedsUpdateAccessoryViewContainer:) BOOL _needsUpdateAccessoryViewContainer; // @synthesize _needsUpdateAccessoryViewContainer=__needsUpdateAccessoryViewContainer;
 @property (nonatomic, setter=_setNeedsUpdateAccessoryViewTopOutset:) BOOL _needsUpdateAccessoryViewTopOutset; // @synthesize _needsUpdateAccessoryViewTopOutset=__needsUpdateAccessoryViewTopOutset;

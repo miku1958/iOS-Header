@@ -26,6 +26,7 @@
 - (id)description;
 - (void)filterSearchResultsUsingVisiblityTesting:(id)arg1;
 - (BOOL)hideSearchResultsForIdentifier:(id)arg1;
+- (BOOL)hideSearchResultsForObjects:(id)arg1;
 - (id)init;
 - (void)noteWillBeUndeletedOrUntrashed:(id)arg1;
 - (void)objectsDidChange:(id)arg1;
@@ -34,6 +35,7 @@
 - (BOOL)removeSearchResultWithIdentifier:(id)arg1 forHiding:(BOOL)arg2;
 - (BOOL)removeSearchResultWithIdentifier:(id)arg1 fromSection:(unsigned long long)arg2 forHiding:(BOOL)arg3;
 - (unsigned long long)removeSearchResultsWithIdentifiers:(id)arg1 forHiding:(BOOL)arg2;
+- (BOOL)replaceSearchResultObject:(id)arg1 withObject:(id)arg2;
 - (id)searchResultAtRow:(long long)arg1 section:(unsigned long long)arg2;
 - (id)searchResultObjectsInSection:(unsigned long long)arg1;
 - (id)searchResultSectionForSectionIndex:(unsigned long long)arg1;
@@ -41,6 +43,7 @@
 - (id)searchResultsInSection:(unsigned long long)arg1;
 - (unsigned long long)sectionForSearchResult:(id)arg1;
 - (void)setSearchResults:(id)arg1 forSection:(unsigned long long)arg2;
+- (void)updateForSortTypeChange;
 
 @end
 

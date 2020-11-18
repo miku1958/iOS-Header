@@ -22,13 +22,13 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) struct CGColorSpace *dstColorSpace; // @synthesize dstColorSpace=_dstColorSpace;
 @property (readonly) NSObject<OS_dispatch_group> *filteringRequestsInFlight; // @synthesize filteringRequestsInFlight=_filteringRequestsInFlight;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSDictionary *requiredPixelBufferAttributesForRenderContext;
 @property BOOL shouldCancelAllRequests; // @synthesize shouldCancelAllRequests=_shouldCancelAllRequests;
 @property (readonly, nonatomic) NSDictionary *sourcePixelBufferAttributes;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsWideColorSourceFrames;
 
 + (void)initialize;
 - (void)_willDeallocOrFinalize;

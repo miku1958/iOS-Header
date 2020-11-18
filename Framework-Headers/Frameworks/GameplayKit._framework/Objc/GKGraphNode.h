@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <GameplayKit/NSCoding-Protocol.h>
+
 @class NSArray, NSMutableArray;
 
-@interface GKGraphNode : NSObject
+@interface GKGraphNode : NSObject <NSCoding>
 {
     NSMutableArray *_connectedNodes;
     struct GKCGraphNode *_cGraphNode;
@@ -24,10 +26,12 @@
 - (float)costToNode:(id)arg1;
 - (void)dealloc;
 - (void)deleteCGraphNode;
+- (void)encodeWithCoder:(id)arg1;
 - (float)estimatedCostToNode:(id)arg1;
 - (id)findPathFromNode:(id)arg1;
 - (id)findPathToNode:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (struct GKCGraphNode *)makeCGraphNode;
 - (id)mutConnectedNodes;
 - (void)removeConnection:(id)arg1;

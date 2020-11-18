@@ -11,7 +11,7 @@
 @interface MFCoalescer : NSObject
 {
     CDUnknownBlockType _coalescerAction;
-    int _lock;
+    struct os_unfair_lock_s _lock;
     id _coalescedValue;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_source> *_coalescer;

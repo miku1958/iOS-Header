@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
 
@@ -19,7 +19,7 @@
 
 @property (readonly, nonatomic) BOOL isEnabled;
 @property (readonly, nonatomic) NSString *messageFormat;
-@property (nonatomic) NSDictionary *playerInfo; // @synthesize playerInfo=_playerInfo;
+@property (nonatomic) NSMutableDictionary *playerInfo; // @synthesize playerInfo=_playerInfo;
 
 + (id)sharedTunesController;
 - (void)_playerChanged:(id)arg1;

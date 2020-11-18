@@ -11,11 +11,11 @@
 __attribute__((visibility("hidden")))
 @interface CKDFetchRecordZonePCSDiagnosticsOperation : CKDDatabaseOperation
 {
-    CKPCSDiagnosticInformation *_pcsDiagnosticInfo;
     NSString *_identityStatus;
     NSDictionary *_invalidPCSByZoneID;
     NSDictionary *_validPCSByZoneID;
     NSArray *_recordZoneIDs;
+    CKPCSDiagnosticInformation *_pcsDiagnosticInfo;
 }
 
 @property (strong, nonatomic) NSString *identityStatus; // @synthesize identityStatus=_identityStatus;
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_handleRecordZoneFetch:(id)arg1 zoneID:(id)arg2 responseCode:(id)arg3;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
 

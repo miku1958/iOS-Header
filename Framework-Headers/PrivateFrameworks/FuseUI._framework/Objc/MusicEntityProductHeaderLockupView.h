@@ -8,7 +8,7 @@
 
 #import <FuseUI/UITextViewDelegate-Protocol.h>
 
-@class MPUTextButton, MusicDownloadProgressButton, MusicEntityViewProductHeaderLockupContentDescriptor, MusicNowPlayingFloatingButton, NSString, UIActivityIndicatorView, UIButton, UILabel, UITextView, UIView, _UIBackdropView;
+@class MPUTextButton, MusicDownloadProgressButton, MusicEntityViewProductHeaderLockupContentDescriptor, NSString, UIActivityIndicatorView, UIButton, UILabel, UITextView, UIView, _UIBackdropView;
 @protocol MusicEntityProductHeaderLockupViewDelegate;
 
 @interface MusicEntityProductHeaderLockupView : MusicEntityAbstractLockupView <UITextViewDelegate>
@@ -18,7 +18,6 @@
     _UIBackdropView *_backdropView;
     UIView *_bottomHairlineView;
     double _cachedTallestButtonHeight;
-    MusicNowPlayingFloatingButton *_cameraButton;
     NSString *_editableText;
     UIView *_editableTextBottomHairlineView;
     UILabel *_editableTextHeaderLabel;
@@ -65,7 +64,6 @@
 - (struct CGRect)_adjustAvailableContentBounds:(struct CGRect)arg1 forActionControl:(id)arg2;
 - (struct CGRect)_adjustAvailableContentBounds:(struct CGRect)arg1 forActionView:(id)arg2;
 - (void)_artworkViewImageDidChange;
-- (void)_cameraButtonTapped:(id)arg1;
 - (void)_contentDescriptorDidChange:(id)arg1;
 - (void)_contextualActionsButtonTapped:(id)arg1;
 - (void)_downloadProgressButtonTapped:(id)arg1;
@@ -73,7 +71,6 @@
 - (id)_genericActionButtonWithImage:(id)arg1;
 - (id)_genericActionButtonWithImageName:(id)arg1;
 - (id)_genericActionButtonWithText:(id)arg1;
-- (void)_handlePlayButtonTappedWithAction:(unsigned long long)arg1;
 - (void)_layoutButtonsWithAvailableContentBounds:(struct CGRect)arg1 insetContentBounds:(struct CGRect)arg2;
 - (void)_layoutEditingSubviews;
 - (void)_layoutEditingSubviewsForEditing:(BOOL)arg1 editingViewsAlpha:(double)arg2;

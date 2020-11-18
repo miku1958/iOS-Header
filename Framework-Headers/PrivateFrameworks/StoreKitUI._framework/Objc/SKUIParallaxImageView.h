@@ -28,11 +28,13 @@
 - (id)image;
 - (struct CGSize)imageSize;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)placeholder;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setImage:(id)arg1;
 - (void)setImagePadding:(struct UIEdgeInsets)arg1;
 - (void)setImageSize:(struct CGSize)arg1;
 - (void)setPerspectiveTargetView:(id)arg1;
+- (void)setPlaceholder:(id)arg1;
 - (void)setVanishingPoint:(struct CGPoint)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateForChangedDistanceFromVanishingPoint;

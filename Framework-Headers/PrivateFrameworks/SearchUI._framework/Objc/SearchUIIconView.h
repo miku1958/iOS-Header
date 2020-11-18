@@ -6,27 +6,32 @@
 
 #import <UIKit/UIView.h>
 
-@class NSLayoutConstraint, SearchUITableViewCell, UIButton, UILabel;
-@protocol SearchUIResult;
+@class NSLayoutConstraint, SFSearchResult, SearchUIAppIconButton, SearchUIForceTouchGestureRecognizer, SearchUITableViewCell, UILabel;
 
 @interface SearchUIIconView : UIView
 {
-    UIButton *_iconButton;
+    UIView *_iconButtonContainer;
+    SearchUIAppIconButton *_iconButton;
     UILabel *_label;
-    id<SearchUIResult> _result;
+    SFSearchResult *_result;
     NSLayoutConstraint *_bottomConstraint;
+    SearchUIForceTouchGestureRecognizer *_forceTouchRecognizer;
     SearchUITableViewCell *_cell;
 }
 
 @property (strong) NSLayoutConstraint *bottomConstraint; // @synthesize bottomConstraint=_bottomConstraint;
 @property (strong) SearchUITableViewCell *cell; // @synthesize cell=_cell;
-@property (strong) UIButton *iconButton; // @synthesize iconButton=_iconButton;
+@property (strong) SearchUIForceTouchGestureRecognizer *forceTouchRecognizer; // @synthesize forceTouchRecognizer=_forceTouchRecognizer;
+@property (strong) SearchUIAppIconButton *iconButton; // @synthesize iconButton=_iconButton;
+@property (strong) UIView *iconButtonContainer; // @synthesize iconButtonContainer=_iconButtonContainer;
 @property (strong) UILabel *label; // @synthesize label=_label;
-@property (strong) id<SearchUIResult> result; // @synthesize result=_result;
+@property (strong) SFSearchResult *result; // @synthesize result=_result;
 
++ (id)labelFont;
 - (void).cxx_destruct;
 - (void)iconButtonPressed;
 - (id)initWithStyle:(unsigned long long)arg1 cell:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateWithResult:(id)arg1;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;

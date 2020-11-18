@@ -22,12 +22,14 @@
 @property (readonly) Class superclass;
 
 + (BOOL)canAuthenticate;
-+ (void)registerCredentialsFromContext:(id)arg1;
++ (BOOL)registerCredentialsFromContext:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_performSOSCBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
+- (BOOL)anyPeerHasEnabledViewsInSet:(id)arg1 error:(id *)arg2;
 - (int)circleStatus:(id *)arg1;
 - (BOOL)hasNonViewAwarePeers;
 - (id)initWithContext:(id)arg1;
+- (BOOL)isLastBackupMakingPeer:(id *)arg1;
 - (unsigned long long)peerCount;
 - (id)peerDeviceNamesByPeerID;
 - (id)peerId;

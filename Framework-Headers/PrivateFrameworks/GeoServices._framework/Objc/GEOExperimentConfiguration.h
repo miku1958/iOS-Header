@@ -8,35 +8,47 @@
 
 #import <GeoServices/GEOExperimentServerProxyDelegate-Protocol.h>
 
-@class GEOABExperimentResponse, NSLock, NSMutableArray, NSString;
+@class GEOABAssignmentResponse, NSDictionary, NSLock, NSMutableArray, NSString;
 @protocol GEOExperimentServerProxy;
 
 @interface GEOExperimentConfiguration : NSObject <GEOExperimentServerProxyDelegate>
 {
     id<GEOExperimentServerProxy> _serverProxy;
-    GEOABExperimentResponse *_experimentsInfo;
+    GEOABAssignmentResponse *_experimentsInfo;
     NSLock *_experimentsInfoLock;
     NSMutableArray *_experimentObservers;
     NSLock *_experimentObserversLock;
+    NSDictionary *_debugClientConfig;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) GEOABExperimentResponse *experimentsInfo;
+@property (readonly, nonatomic) GEOABAssignmentResponse *experimentsInfo;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (void)setServerProxyClass:(Class)arg1;
 + (id)sharedConfiguration;
+- (id)_debugClientConfig;
 - (id)_debug_configurationDate;
 - (id)_debug_customQuerySubstringForType:(long long)arg1 dispatcherRequestType:(int)arg2;
 - (id)_debug_defaultQuerySubstringForType:(long long)arg1 dispatcherRequestType:(int)arg2;
+- (void)_debug_fetchAllAvailableExperiments:(CDUnknownBlockType)arg1;
 - (void)_debug_forEachExperimentType:(CDUnknownBlockType)arg1;
 - (void)_debug_forceUpdate;
+- (void)_debug_setActiveExperimentBranch:(id)arg1;
 - (void)_debug_setCustomQuerySubstring:(id)arg1 forExperimentType:(long long)arg2 dispatcherRequestType:(int)arg3;
+- (void)_fetchAllAvailableExperimentsResponse:(CDUnknownBlockType)arg1;
+- (id)_parsecClientMetadata;
+- (id)_reportAProblemClientMetadata;
+- (void)_setActiveExperimentBranchDictionaryRepresentation:(id)arg1;
+- (id)_siriClientMetadata;
 - (void)addExperimentObserver:(id)arg1 queue:(id)arg2;
+- (id)clientConfig;
+- (id)clientConfigurationValueForKey:(id)arg1;
 - (void)dealloc;
 - (id)detailedDescription;
+- (id)detailedDescriptionDictionaryRepresentation;
 - (id)experimentAssignmentForType:(long long)arg1 dispatcherRequestType:(int)arg2;
 - (id)experimentAssignments;
 - (id)experimentURLForURL:(id)arg1 type:(long long)arg2 dispatcherRequestType:(int)arg3;

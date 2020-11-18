@@ -14,6 +14,7 @@
     EKEventStore *_store;
     NSObject<OS_dispatch_queue> *_occurrencesLock;
     NSArray *_loadedOccurrences;
+    NSArray *_loadedProposedTimeOccurrences;
     NSMutableSet *_occurrencesAwaitingRefresh;
     NSMutableSet *_occurrencesAwaitingDeletion;
     NSSet *_selectedCalendars;

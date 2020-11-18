@@ -42,6 +42,8 @@
 @property (nonatomic) unsigned long long muid; // @synthesize muid=_muid;
 @property (nonatomic) unsigned int stationIndex; // @synthesize stationIndex=_stationIndex;
 
++ (Class)entranceZoomNameType;
++ (Class)exitZoomNameType;
 - (void)addEntranceZoomName:(id)arg1;
 - (void)addExitZoomName:(id)arg1;
 - (id)bestEntranceName;

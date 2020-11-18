@@ -13,12 +13,13 @@
 
 @interface SKUINavigationDocumentController : NSObject <IKAppNavigationController>
 {
+    NSMutableArray *_pendingNavigationStackEnsureConsistencyRequests;
+    NSMutableArray *_stackItems;
+    UINavigationController *_navigationController;
     SKUIClientContext *_clientContext;
     id<SKUINavigationDocumentDelegate> _delegate;
-    UINavigationController *_navigationController;
-    NSMutableArray *_pendingNavigationStackEnsureConsistencyRequests;
     UINavigationController *_overrideNavigationController;
-    NSMutableArray *_stackItems;
+    UINavigationController *_moreNavigationController;
 }
 
 @property (strong, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;
@@ -27,6 +28,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSArray *documentStackItems; // @synthesize documentStackItems=_stackItems;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UINavigationController *moreNavigationController; // @synthesize moreNavigationController=_moreNavigationController;
 @property (readonly, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
 @property (strong, nonatomic) UINavigationController *overrideNavigationController; // @synthesize overrideNavigationController=_overrideNavigationController;
 @property (readonly) Class superclass;

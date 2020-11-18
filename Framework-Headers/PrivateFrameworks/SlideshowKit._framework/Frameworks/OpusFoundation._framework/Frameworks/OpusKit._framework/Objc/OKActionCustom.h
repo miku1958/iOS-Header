@@ -23,6 +23,7 @@
 + (id)customActionWithName:(id)arg1;
 + (void)setupJavascriptContext:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

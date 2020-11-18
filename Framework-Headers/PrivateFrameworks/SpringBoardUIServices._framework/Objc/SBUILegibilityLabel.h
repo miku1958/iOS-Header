@@ -6,48 +6,65 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSAttributedString, NSString, UIFont, UILabel, UILayoutGuide, _UILegibilitySettings, _UILegibilityView;
+#import <SpringBoardUIServices/SBUILegibility-Protocol.h>
 
-@interface SBUILegibilityLabel : UIView
+@class NSArray, NSAttributedString, NSString, UIColor, UIFont, UILabel, UILayoutGuide, _UILegibilitySettings, _UILegibilityView;
+
+@interface SBUILegibilityLabel : UIView <SBUILegibility>
 {
     UILabel *_lookasideLabel;
     _UILegibilityView *_legibilityView;
+    BOOL _isDirty;
     double _strength;
     long long _options;
-    _UILegibilitySettings *_settings;
     NSArray *_legibilityConstraints;
     UILayoutGuide *_firstBaselineLayoutGuide;
     UILayoutGuide *_lastBaselineLayoutGuide;
     NSString *_string;
     UIFont *_font;
     NSAttributedString *_attributedText;
+    UIColor *_textColorOverride;
+    _UILegibilitySettings *_legibilitySettings;
+    BOOL _isWaitingToMoveToWindow;
 }
 
 @property (nonatomic) BOOL adjustsFontSizeToFitWidth; // @dynamic adjustsFontSizeToFitWidth;
 @property (copy, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
 @property (readonly, nonatomic) double baselineOffset;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double firstBaselineOffsetFromBottom;
 @property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double lastBaselineOffsetFromBottom;
+@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property (nonatomic) long long lineBreakMode; // @dynamic lineBreakMode;
 @property (nonatomic) double minimumScaleFactor; // @dynamic minimumScaleFactor;
 @property (nonatomic) long long numberOfLines; // @dynamic numberOfLines;
 @property (nonatomic) double strength; // @synthesize strength=_strength;
 @property (copy, nonatomic) NSString *string; // @synthesize string=_string;
+@property (readonly) Class superclass;
+@property (nonatomic) long long textAlignment; // @dynamic textAlignment;
+@property (copy, nonatomic) UIColor *textColor;
+@property (nonatomic) BOOL useColorFilters; // @dynamic useColorFilters;
 
 - (void).cxx_destruct;
 - (double)_layoutGuideOffsetFromBottom:(id)arg1;
+- (void)_markOurselfDirty;
+- (BOOL)_needsColorImage;
 - (void)_updateLabelForLegibilitySettings;
 - (void)_updateLegibilityView;
+- (void)didMoveToWindow;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithSettings:(id)arg1 strength:(double)arg2;
 - (id)initWithSettings:(id)arg1 strength:(double)arg2 string:(id)arg3 font:(id)arg4;
 - (id)initWithSettings:(id)arg1 strength:(double)arg2 string:(id)arg3 font:(id)arg4 options:(long long)arg5;
+- (void)layoutSubviews;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setOptions:(long long)arg1;
-- (void)updateConstraints;
-- (void)updateForChangedSettings:(id)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
 

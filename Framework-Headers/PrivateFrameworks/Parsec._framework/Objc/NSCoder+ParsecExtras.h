@@ -15,7 +15,6 @@
 - (id)prs_dictionaryForKey:(id)arg1;
 - (double)prs_doubleForKey:(id)arg1;
 - (float)prs_floatForKey:(id)arg1;
-- (id)prs_imageForKey:(id)arg1;
 - (int)prs_intForKey:(id)arg1;
 - (long long)prs_integerForKey:(id)arg1;
 - (id)prs_numberForKey:(id)arg1;

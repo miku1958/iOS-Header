@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL ignoresOrganization; // @synthesize ignoresOrganization=_ignoresOrganization;
 @property (copy, nonatomic) NSSet *mandatoryNameProperties; // @synthesize mandatoryNameProperties=_mandatoryNameProperties;
 
++ (BOOL)supportsSecureCoding;
 - (void)_cn_executeGetterForRepresentedKeys:(CDUnknownBlockType)arg1;
 - (id)_cn_requiredKeys;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -10,8 +10,8 @@
 
 @interface _WKRemoteObjectInterface : NSObject
 {
-    struct HashMap<SEL *, WTF::Vector<WTF::RetainPtr<NSSet>, 0, WTF::CrashOnOverflow, 16>, WTF::PtrHash<SEL *>, WTF::HashTraits<SEL *>, WTF::HashTraits<WTF::Vector<WTF::RetainPtr<NSSet>, 0, WTF::CrashOnOverflow, 16>>> _allowedArgumentClasses;
     struct RetainPtr<NSString> _identifier;
+    struct HashMap<SEL *, MethodInfo, WTF::PtrHash<SEL *>, WTF::HashTraits<SEL *>, WTF::HashTraits<MethodInfo>> _methods;
     Protocol *_protocol;
 }
 
@@ -21,12 +21,16 @@
 + (id)remoteObjectInterfaceWithProtocol:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (const Vector_66be88e3 *)_allowedArgumentClassesForSelector:(SEL)arg1;
+- (const Vector_cee2251c *)_allowedArgumentClassesForReplyBlockOfSelector:(SEL)arg1;
+- (const Vector_cee2251c *)_allowedArgumentClassesForSelector:(SEL)arg1;
+- (id)_methodSignatureForReplyBlockOfSelector:(SEL)arg1;
 - (id)_methodSignatureForSelector:(SEL)arg1;
 - (id)classesForSelector:(SEL)arg1 argumentIndex:(unsigned long long)arg2;
-- (id)description;
+- (id)classesForSelector:(SEL)arg1 argumentIndex:(unsigned long long)arg2 ofReply:(BOOL)arg3;
+- (id)debugDescription;
 - (id)initWithProtocol:(id)arg1 identifier:(id)arg2;
 - (void)setClasses:(id)arg1 forSelector:(SEL)arg2 argumentIndex:(unsigned long long)arg3;
+- (void)setClasses:(id)arg1 forSelector:(SEL)arg2 argumentIndex:(unsigned long long)arg3 ofReply:(BOOL)arg4;
 
 @end
 

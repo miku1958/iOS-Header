@@ -16,8 +16,9 @@
 - (BOOL)_accessibilityIsPlaying;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_setLyricsVisible:(BOOL)arg1;
+- (void)_updateSupportedCommands;
 - (BOOL)accessibilityPerformEscape;
-- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 
 @end

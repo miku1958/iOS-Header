@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HAPBlockOperation, NSData, NSMutableSet, NSSet;
+@class HMFBlockOperation, NSData, NSMutableSet, NSSet;
 
 @interface HAPRelayRequestMessage : NSObject
 {
@@ -15,13 +15,13 @@
     NSData *_body;
     unsigned long long _type;
     double _timeout;
-    HAPBlockOperation *_operation;
+    HMFBlockOperation *_operation;
 }
 
 @property (readonly, copy, nonatomic) NSData *body; // @synthesize body=_body;
 @property (readonly, nonatomic, getter=isEncrypted) BOOL encrypted;
 @property (readonly, nonatomic, getter=isFinished) BOOL finished;
-@property (weak, nonatomic) HAPBlockOperation *operation; // @synthesize operation=_operation;
+@property (weak, nonatomic) HMFBlockOperation *operation; // @synthesize operation=_operation;
 @property (readonly, nonatomic) NSSet *requestIdentifiers; // @synthesize requestIdentifiers=_requestIdentifiers;
 @property (readonly, nonatomic) BOOL sent;
 @property (readonly, nonatomic) double timeout; // @synthesize timeout=_timeout;

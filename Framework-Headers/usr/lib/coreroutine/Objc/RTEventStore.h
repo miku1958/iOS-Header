@@ -29,19 +29,18 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_processEventsWithGlobalAppLaunchCountedSet:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)addAppLaunchEvent:(id)arg1;
 - (void)addEvent:(id)arg1;
 - (void)addEvents:(id)arg1;
 - (void)clearAllEvents;
 - (unsigned long long)countOfEvents;
 - (void)encodeWithCoder:(id)arg1;
-- (void)fetchPredictionForEvent:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)fetchAllPredictionsWithHandler:(CDUnknownBlockType)arg1;
 - (double)getConfidence;
 - (id)initWithApplicableEventClasses:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)invalidate;
-- (void)logRecommendedAppsHistogramMetric:(CDUnknownBlockType)arg1;
-- (void)processEventsWithGlobalAppLaunchCountedSet:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)removeEvent:(id)arg1;
 - (void)removeEvents:(id)arg1;
 - (void)setUnderlyingQueue:(id)arg1;

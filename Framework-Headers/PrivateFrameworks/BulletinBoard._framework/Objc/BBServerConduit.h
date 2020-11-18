@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/BBServerConduitClientInterface-Protocol.h>
 
@@ -23,6 +23,7 @@
 + (id)clientInterface;
 + (id)serverInterface;
 + (id)sharedConduit;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;

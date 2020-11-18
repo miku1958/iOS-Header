@@ -20,16 +20,16 @@
     BOOL _deliverData;
     BOOL _characteristicsDiscovered;
     int _deviceInformationLoaded;
+    id<HDHealthDaemon> _healthDaemon;
     CBPeripheral *_peripheral;
     NSUUID *_peripheralUUID;
     NSString *_serviceId;
-    HKDevice *_deviceInformation;
     HDHealthServiceManager *_serviceManager;
     CBCharacteristic *_writableCharacteristic;
     NSObject<OS_dispatch_queue> *_writeQueue;
     NSMutableArray *_pendingWrites;
     NSString *_peripheralName;
-    id<HDHealthDaemon> _healthDaemon;
+    HKDevice *_deviceInformation;
 }
 
 @property (readonly, nonatomic) BOOL characteristicsDiscovered; // @synthesize characteristicsDiscovered=_characteristicsDiscovered;

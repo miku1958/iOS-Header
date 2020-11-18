@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <MapsSupport/MSPRemoteModelAccessDelegate-Protocol.h>
+
 @class NSData, NSString;
 
-@protocol MSPMapsPushDaemonProxyObserver
+@protocol MSPMapsPushDaemonProxyObserver <MSPRemoteModelAccessDelegate>
 - (void)pushDaemonProxyReceivedNotificationData:(NSData *)arg1 forType:(NSString *)arg2 recordIdentifier:(NSString *)arg3;
 @end
 

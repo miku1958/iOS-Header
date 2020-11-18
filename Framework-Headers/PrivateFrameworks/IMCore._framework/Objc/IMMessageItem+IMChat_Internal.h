@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <IMFoundation/IMMessageItem.h>
+#import <IMSharedUtilities/IMMessageItem.h>
 
 @interface IMMessageItem (IMChat_Internal)
 + (Class)contextClass;

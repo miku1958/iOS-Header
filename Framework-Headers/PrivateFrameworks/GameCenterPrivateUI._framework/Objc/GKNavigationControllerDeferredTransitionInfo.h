@@ -19,6 +19,7 @@
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (strong, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
+- (void)dealloc;
 
 @end
 

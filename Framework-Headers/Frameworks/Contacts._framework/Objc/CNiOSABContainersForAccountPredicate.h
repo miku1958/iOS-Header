@@ -24,9 +24,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL includesDisabledContainers; // @synthesize includesDisabledContainers=_includesDisabledContainers;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (struct __CFArray *)cn_copyContainersInAddressBook:(void *)arg1 error:(struct __CFError **)arg2;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithAccountIdentifier:(id)arg1 includingDisabledContainers:(BOOL)arg2;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithPredicate:(id)arg1;
 
 @end
 

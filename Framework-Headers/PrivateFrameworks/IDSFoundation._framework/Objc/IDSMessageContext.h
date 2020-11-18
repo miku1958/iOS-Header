@@ -7,16 +7,19 @@
 #import <Foundation/NSObject.h>
 
 @class NSMutableDictionary, NSNumber, NSString;
+@protocol OS_dispatch_queue;
 
 @interface IDSMessageContext : NSObject
 {
     NSMutableDictionary *_dict;
     id _boostContext;
+    NSObject<OS_dispatch_queue> *_ivarQueue;
 }
 
 @property (strong, nonatomic) id boostContext;
 @property (nonatomic) long long broadcastID;
 @property (nonatomic) NSNumber *broadcastTime;
+@property (nonatomic) long long connectionType;
 @property (nonatomic) BOOL expectsPeerResponse;
 @property (copy, nonatomic) NSString *fromID;
 @property (copy, nonatomic) NSString *incomingResponseIdentifier;

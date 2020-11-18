@@ -42,6 +42,7 @@
 @property (strong, nonatomic) EKEvent *selectedOccurrence; // @synthesize selectedOccurrence=_selectedOccurrence;
 @property (readonly, nonatomic) long long visibleCalendarCount;
 
++ (id)calendarModelWithDataPath:(id)arg1;
 - (void).cxx_destruct;
 - (void)_createOccurrenceCacheDataSources;
 - (id)_dataSourceUsingFilter:(BOOL)arg1;
@@ -81,6 +82,7 @@
 - (void)fetchCachedDaysInBackgroundStartingFromSection:(long long)arg1;
 - (void)fetchCachedDaysInBackgroundStartingFromSection:(long long)arg1 usingFilter:(BOOL)arg2;
 - (id)init;
+- (id)initWithDataPath:(id)arg1;
 - (BOOL)invitationBearingStoresExistForEvents;
 - (BOOL)isCalendarVisibleWithID:(id)arg1;
 - (long long)numberOfCachedOccurrencesInSection:(long long)arg1;

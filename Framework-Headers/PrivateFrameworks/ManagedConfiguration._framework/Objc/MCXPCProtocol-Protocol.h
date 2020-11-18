@@ -22,6 +22,8 @@
 - (void)cloudConfigurationMachineInfoDataWithCompletion:(void (^)(NSData *, NSError *))arg1;
 - (void)cloudConfigurationStoreDetails:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)createActivationLockBypassCodeWithCompletion:(void (^)(NSString *, NSError *))arg1;
+- (void)defaultAppBundleIDForCommunicationServiceType:(NSString *)arg1 forAccountWithIdentifier:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
+- (void)filteredMailAccountsWithSourceAccountManagement:(int)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)installProfileData:(NSData *)arg1 interactive:(BOOL)arg2 options:(NSDictionary *)arg3 completion:(void (^)(NSString *, NSError *))arg4;
 - (void)installProvisioningProfileData:(NSData *)arg1 managingProfileIdentifer:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)isProfileInstalledWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *, BOOL))arg2;
@@ -31,7 +33,7 @@
 - (void)markStoredProfileForPurposeAsInstalled:(int)arg1 completion:(void (^)(NSError *))arg2;
 - (void)mayShareToAirDropAndOriginatingAccountIsManaged:(BOOL)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)mayShareToMessagesAndOriginatingAccountIsManaged:(BOOL)arg1 completion:(void (^)(BOOL, NSError *))arg2;
-- (void)migrateMDMWithContext:(int)arg1 completion:(void (^)(NSError *))arg2;
+- (void)migratePostMDMDataMigratorWithContext:(int)arg1 completion:(void (^)(NSError *))arg2;
 - (void)migrateWithContext:(int)arg1 passcodeWasSetInBackup:(BOOL)arg2 forceAllowHostPairing:(BOOL)arg3 completion:(void (^)(NSError *))arg4;
 - (void)notifyDeviceUnlockedWithCompletion:(void (^)(NSError *))arg1;
 - (void)notifyHaveSeenComplianceMessageWithLastLockDate:(NSDate *)arg1 completion:(void (^)(NSError *))arg2;
@@ -46,7 +48,7 @@
 - (void)removeBoolSetting:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)removeExpiredProfilesWithCompletion:(void (^)(NSError *))arg1;
 - (void)removeOrphanedClientRestrictionsWithCompletion:(void (^)(NSError *))arg1;
-- (void)removeProfileWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)removeProfileWithIdentifier:(NSString *)arg1 installationType:(long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)removeProvisioningProfileWithUUID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)removeValueSetting:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)removeWebContentFilterUserBlacklistedURLString:(NSString *)arg1 completion:(void (^)(NSError *))arg2;

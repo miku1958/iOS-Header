@@ -6,16 +6,15 @@
 
 #import <SearchUI/SearchUICardSectionView.h>
 
-@class UIImage;
-@protocol SearchUIRowCardSection;
+@class SFRowCardSection, SearchUIImageView;
 
 @interface SearchUIRowCardSectionView : SearchUICardSectionView
 {
-    UIImage *_leftImage;
+    SearchUIImageView *_leftImageView;
 }
 
-@property (strong, nonatomic) UIImage *leftImage; // @synthesize leftImage=_leftImage;
-@property (readonly, nonatomic) id<SearchUIRowCardSection> section; // @dynamic section;
+@property (strong, nonatomic) SearchUIImageView *leftImageView; // @synthesize leftImageView=_leftImageView;
+@property (readonly, nonatomic) SFRowCardSection *section; // @dynamic section;
 
 - (void).cxx_destruct;
 - (id)addContainerWithImage:(id)arg1 text:(id)arg2 formatter:(id)arg3 left:(BOOL)arg4;

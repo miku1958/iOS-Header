@@ -8,7 +8,7 @@
 
 #import <UIFoundation/NSCoding-Protocol.h>
 
-@class NSArray, NSFont, NSGlyphGenerator, NSMutableArray, NSParagraphArbitrator, NSRunStorage, NSStorage, NSTextContainer, NSTextStorage, NSTypesetter;
+@class CUIStyleEffectConfiguration, NSArray, NSFont, NSGlyphGenerator, NSMutableArray, NSParagraphArbitrator, NSRunStorage, NSStorage, NSTextContainer, NSTextStorage, NSTypesetter;
 @protocol NSLayoutManagerDelegate;
 
 @interface NSLayoutManager : NSObject <NSCoding>
@@ -78,12 +78,15 @@
 @property (readonly, nonatomic) struct CGRect extraLineFragmentRect;
 @property (readonly, nonatomic) NSTextContainer *extraLineFragmentTextContainer;
 @property (readonly, nonatomic) struct CGRect extraLineFragmentUsedRect;
+@property (readonly, nonatomic) unsigned long long firstUnlaidCharacterIndex;
+@property (readonly, nonatomic) unsigned long long firstUnlaidGlyphIndex;
 @property (readonly, nonatomic) BOOL hasNonContiguousLayout;
 @property (nonatomic) double hyphenationFactor;
 @property (readonly, nonatomic) unsigned long long numberOfGlyphs;
 @property (strong) NSParagraphArbitrator *paragraphArbitrator;
 @property (nonatomic) BOOL showsControlCharacters;
 @property (nonatomic) BOOL showsInvisibleCharacters;
+@property (copy) CUIStyleEffectConfiguration *styleEffectConfiguration;
 @property (readonly, nonatomic) NSArray *textContainers;
 @property (nonatomic) NSTextStorage *textStorage;
 @property (nonatomic) BOOL usesFontLeading;
@@ -135,6 +138,7 @@
 - (void)_firstTextViewChanged;
 - (void)_fixSelectionAfterChangeInCharacterRange:(struct _NSRange)arg1 changeInLength:(long long)arg2;
 - (void)_forceDisplayToBeCorrectForViewsWithUnlaidGlyphs;
+- (BOOL)_forcesTrackingFloor;
 - (unsigned int)_glyphAtIndex:(unsigned long long)arg1 characterIndex:(unsigned long long *)arg2 glyphInscription:(unsigned long long *)arg3 isValidIndex:(BOOL *)arg4;
 - (id)_glyphDescription;
 - (id)_glyphDescriptionForGlyphRange:(struct _NSRange)arg1;
@@ -168,6 +172,7 @@
 - (void)_markSelfAsDirtyForBackgroundLayout:(id)arg1;
 - (void)_mergeGlyphHoles;
 - (void)_mergeLayoutHoles;
+- (BOOL)_mirrorsTextAlignment;
 - (BOOL)_needToFlushGlyph;
 - (void)_noteFirstTextViewVisibleCharacterRangeIfAfterIndex:(unsigned long long)arg1;
 - (char *)_packedGlyphs:(unsigned long long)arg1 range:(struct _NSRange)arg2 length:(unsigned long long *)arg3;
@@ -188,10 +193,12 @@
 - (void)_setDrawsDebugBaselines:(BOOL)arg1;
 - (void)_setDrawsUnderlinesLikeWebKit:(BOOL)arg1;
 - (void)_setExtraLineFragmentRect:(struct CGRect)arg1 usedRect:(struct CGRect)arg2 textContainer:(id)arg3;
+- (void)_setForcesTrackingFloor:(BOOL)arg1;
 - (void)_setGlyphGenerator:(id)arg1;
 - (void)_setGlyphsPerLineEstimate:(unsigned long long)arg1 integerOffsetPerLineEstimate:(unsigned long long)arg2;
 - (void)_setGlyphsPerLineEstimate:(unsigned long long)arg1 offsetPerLineEstimate:(double)arg2;
 - (void)_setHasSeenRightToLeft:(BOOL)arg1;
+- (void)_setMirrorsTextAlignment:(BOOL)arg1;
 - (void)_setNeedToFlushGlyph:(BOOL)arg1;
 - (void)_setRowArrayCache:(id)arg1;
 - (void)_setTextContainer:(id)arg1 forGlyphRange:(struct _NSRange)arg2;
@@ -245,8 +252,6 @@
 - (void)enumerateLineFragmentsForGlyphRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)fillBackgroundRectArray:(const struct CGRect *)arg1 count:(unsigned long long)arg2 forCharacterRange:(struct _NSRange)arg3 color:(id)arg4;
 - (void)finalize;
-- (unsigned long long)firstUnlaidCharacterIndex;
-- (unsigned long long)firstUnlaidGlyphIndex;
 - (BOOL)flipsIfNeeded;
 - (double)fractionOfDistanceThroughGlyphForPoint:(struct CGPoint)arg1 inTextContainer:(id)arg2;
 - (void)getFirstUnlaidCharacterIndex:(unsigned long long *)arg1 glyphIndex:(unsigned long long *)arg2;
@@ -289,6 +294,7 @@
 - (struct CGRect)lineFragmentUsedRectForGlyphAtIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (struct CGRect)lineFragmentUsedRectForGlyphAtIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2 allowLayout:(BOOL)arg3;
 - (struct CGRect)lineFragmentUsedRectForGlyphAtIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2 withoutAdditionalLayout:(BOOL)arg3;
+- (id)linkAttributesForLink:(id)arg1 forCharacterAtIndex:(unsigned long long)arg2;
 - (struct CGPoint)locationForGlyphAtIndex:(unsigned long long)arg1;
 - (BOOL)notShownAttributeForGlyphAtIndex:(unsigned long long)arg1;
 - (void)processEditingForTextStorage:(id)arg1 edited:(unsigned long long)arg2 range:(struct _NSRange)arg3 changeInLength:(long long)arg4 invalidatedRange:(struct _NSRange)arg5;

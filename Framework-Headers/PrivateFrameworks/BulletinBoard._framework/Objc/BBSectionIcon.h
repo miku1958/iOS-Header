@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/NSCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
@@ -19,13 +19,15 @@
 @property (copy, nonatomic) NSSet *variants; // @synthesize variants=_variants;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_bestVariantForFormat:(long long)arg1;
 - (id)_bestVariantForUIFormat:(int)arg1;
 - (void)addVariant:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

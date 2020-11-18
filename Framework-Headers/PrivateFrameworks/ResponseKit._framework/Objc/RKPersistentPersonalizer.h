@@ -12,9 +12,9 @@
 @interface RKPersistentPersonalizer : NSObject
 {
     void *_model;
+    NSURL *_dynamicDataURL;
     NSString *_languageID;
     NSLocale *_languageLocale;
-    NSURL *_dynamicDataURL;
     id<RKDisplayStringsProvider> _displayStringsProvider;
     NSDate *_lastObservedDynamicDataCreationDate;
     NSDate *_lastDynamicDataCreationCheckDate;

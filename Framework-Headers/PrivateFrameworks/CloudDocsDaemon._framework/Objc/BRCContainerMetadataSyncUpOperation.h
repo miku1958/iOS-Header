@@ -22,11 +22,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL shouldPerformAnotherBatch; // @synthesize shouldPerformAnotherBatch=_shouldPerformAnotherBatch;
 @property (readonly) Class superclass;
 
+- (id)createActivity;
 - (id)initWithSession:(id)arg1;
 - (void)main;
 - (void)performAfterSavingRecords:(CDUnknownBlockType)arg1;
 - (BOOL)shouldRetryForError:(id)arg1;
-- (unsigned long long)startActivity;
 
 @end
 

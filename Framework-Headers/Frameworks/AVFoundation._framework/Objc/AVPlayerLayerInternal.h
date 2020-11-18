@@ -6,45 +6,40 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVNetworkPlaybackPerfHUDLayer, AVPlayer, AVPlayerItem, AVPlayerLayer, CALayer, FigSubtitleCALayer, FigVideoContainerLayer, NSDictionary, NSSet, NSString;
-@protocol OS_dispatch_queue;
+@class AVKeyPathDependencyManager, AVNetworkPlaybackPerfHUDLayer, AVPlayer, AVPlayerLayer, CALayer, FigBaseCALayer, FigSubtitleCALayer, FigVideoContainerLayer, NSDictionary, NSSet, NSString;
+@protocol AVCallbackCancellation, OS_dispatch_queue;
 
 @interface AVPlayerLayerInternal : NSObject
 {
-    AVPlayer *_player;
-    CALayer *maskLayer;
+    AVNetworkPlaybackPerfHUDLayer *hudLayer;
+    NSObject<OS_dispatch_queue> *serialQueue;
+    BOOL isPresentationLayer;
+    struct OpaqueFigSimpleMutex *isReadyForDisplayMutex;
+    NSObject<OS_dispatch_queue> *configurationQueue;
+    NSString *subtitleGravity;
+    AVKeyPathDependencyManager *dependencyManager;
+    AVPlayer *player;
+    NSString *videoGravity;
+    NSDictionary *pixelBufferAttributes;
+    BOOL lanczosDownscalingEnabled;
+    long long lanczosDownscalingFactor;
+    BOOL shouldObservePlayer;
+    FigBaseCALayer *maskLayer;
     FigVideoContainerLayer *videoLayer;
+    FigSubtitleCALayer *subtitleLayer;
+    FigBaseCALayer *closedCaptionLayer;
     AVPlayerLayer *associatedPIPLayer;
     BOOL willManageSublayersAsSwappedLayers;
     BOOL canEnterPIPMode;
-    BOOL isPIPModeEnabled;
+    BOOL isReadyForDisplay;
+    AVPlayer *playerBeingObserved;
+    NSSet *KVOInvokers;
+    id<AVCallbackCancellation> playerCurrentItemHasVideoFrameEnqueuedKVOInvoker;
+    struct CGSize latestAppliedPresentationSize;
     BOOL preventsChangesToSublayerHierarchy;
     NSDictionary *clientLayers;
+    BOOL isPIPModeEnabled;
     CALayer *placeholderContentLayerDuringPIPMode;
-    CALayer *closedCaptionLayer;
-    NSString *videoGravity;
-    NSString *subtitleGravity;
-    FigSubtitleCALayer *subtitleLayer;
-    AVNetworkPlaybackPerfHUDLayer *hudLayer;
-    struct CGRect latestPlayerLayerBoundsAtRendering;
-    struct CGRect latestSubtitleLayoutAtRendering;
-    BOOL shouldObservePlayer;
-    BOOL isObservingPlayer;
-    BOOL hasPlayerToObserve;
-    NSSet *KVOInvokers;
-    NSObject<OS_dispatch_queue> *serialQueue;
-    BOOL isPresentationLayer;
-    BOOL isReadyForDisplay;
-    struct OpaqueFigSimpleMutex *isReadyForDisplayMutex;
-    AVPlayerItem *itemMarkedReadyForDisplay;
-    struct CGSize presentationSize;
-    struct CGSize latestPresentationSizeAtRendering;
-    NSDictionary *pixelBufferAttributes;
-    struct CATransform3D oldSublayerTransform;
-    BOOL canDispatchOverrides;
-    NSObject<OS_dispatch_queue> *queueForDispatchingOverrides;
-    BOOL lanczosDownscalingEnabled;
-    long long lanczosDownscalingFactor;
 }
 
 @end

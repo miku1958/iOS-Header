@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) SEL renderSelector;
 @property (readonly, nonatomic) BOOL renderUnder;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL usesRGBColors;
 @property (nonatomic) double weight; // @synthesize weight=_weight;
 
 + (id)effectWithColor:(id)arg1 edges:(unsigned long long)arg2 inset:(double)arg3 weight:(double)arg4;

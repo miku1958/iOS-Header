@@ -11,7 +11,7 @@
 @protocol SCNLookAtConstraintJSExport <JSExport>
 
 @property (nonatomic) BOOL gimbalLockEnabled;
-@property (readonly, nonatomic) SCNNode *target;
+@property (strong, nonatomic) SCNNode *target;
 
 + (id)lookAtConstraintWithTarget:(SCNNode *)arg1;
 @end

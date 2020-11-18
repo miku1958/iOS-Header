@@ -39,6 +39,7 @@
 - (void)accountTypeWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)accountTypesWithHandler:(CDUnknownBlockType)arg1;
 - (void)accountWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)accountsOnPairedDeviceWithAccountType:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)accountsWithAccountType:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)accountsWithAccountTypeIdentifiers:(id)arg1 preloadedProperties:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)accountsWithHandler:(CDUnknownBlockType)arg1;
@@ -92,6 +93,7 @@
 - (void)supportedDataclassesForAccountType:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)syncableDataclassesForAccountType:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)tetheredSyncSourceTypeForDataclass:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)triggerKeychainMigrationIfNecessary:(CDUnknownBlockType)arg1;
 - (void)typeIdentifierForDomain:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)updateExistenceCacheOfAccountWithTypeIdentifier:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)verifyCredentialsForAccount:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;

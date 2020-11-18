@@ -12,11 +12,10 @@
 @interface WKBrowsingContextController : NSObject
 {
     struct WeakObjCPtr<id<WKBrowsingContextHistoryDelegate>> _historyDelegate;
-    struct RefPtr<WebKit::WebPageProxy> _page;
-    struct unique_ptr<PageLoadStateObserver, std::__1::default_delete<PageLoadStateObserver>> _pageLoadStateObserver;
+    RefPtr_0cd9f53a _page;
+    struct unique_ptr<WebKit::PageLoadStateObserver, std::__1::default_delete<WebKit::PageLoadStateObserver>> _pageLoadStateObserver;
     struct WeakObjCPtr<id<WKBrowsingContextLoadDelegate>> _loadDelegate;
     struct WeakObjCPtr<id<WKBrowsingContextPolicyDelegate>> _policyDelegate;
-    struct RetainPtr<_WKRemoteObjectRegistry> _remoteObjectRegistry;
 }
 
 @property (readonly) struct OpaqueWKPage *_pageRef;
@@ -40,6 +39,7 @@
 @property double pageLength;
 @property double pageZoom;
 @property BOOL paginationBehavesLikeColumns;
+@property BOOL paginationLineGridEnabled;
 @property unsigned long long paginationMode;
 @property (weak) id<WKBrowsingContextPolicyDelegate> policyDelegate;
 @property (readonly, nonatomic) int processIdentifier;
@@ -55,6 +55,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)_initWithPageRef:(struct OpaqueWKPage *)arg1;
+- (BOOL)_webProcessIsResponsive;
 - (void)dealloc;
 - (void)goBack;
 - (void)goForward;

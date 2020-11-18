@@ -26,6 +26,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)configure:(id)arg1 actionSet:(id)arg2;
+- (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCharacteristic:(id)arg1 targetValue:(id)arg2;

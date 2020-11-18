@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)setSearchContext:(id)arg1;
-- (void)updateEntry:(id)arg1 atTableIndexPath:(id)arg2 addressList:(id *)arg3 options:(unsigned long long)arg4;
+- (void)updateEntry:(id)arg1 atTableIndexPath:(id)arg2 addressList:(id *)arg3 options:(unsigned long long)arg4 entryStyle:(unsigned long long)arg5;
 
 @end
 

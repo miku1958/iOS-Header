@@ -12,11 +12,13 @@
 {
     BOOL _outbound;
     STContactAddress *_senderAddress;
+    NSString *_senderInternalGUID;
     NSArray *_recipientAddresses;
     NSString *_groupName;
     NSString *_groupNameId;
     NSString *_subjectText;
     NSString *_bodyText;
+    NSString *_effect;
     NSURL *_attachmentURL;
     NSDate *_sendDate;
     NSString *_chatIdentifier;
@@ -25,9 +27,11 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_aceContextObjectValue;
+- (void)_setSenderInternalGUID:(id)arg1;
 - (id)attachmentURL;
 - (id)bodyText;
 - (id)chatIdentifier;
+- (id)effect;
 - (void)encodeWithCoder:(id)arg1;
 - (id)groupName;
 - (id)groupNameId;
@@ -37,9 +41,11 @@
 - (id)recipientAddresses;
 - (id)sendDate;
 - (id)senderAddress;
+- (id)senderInternalGUID;
 - (void)setAttachmentURL:(id)arg1;
 - (void)setBodyText:(id)arg1;
 - (void)setChatIdentifier:(id)arg1;
+- (void)setEffect:(id)arg1;
 - (void)setGroupName:(id)arg1;
 - (void)setGroupNameId:(id)arg1;
 - (void)setOutbound:(BOOL)arg1;

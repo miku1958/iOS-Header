@@ -10,7 +10,7 @@
 #import <iAd/ADPrerollTopBarDelegate-Protocol.h>
 #import <iAd/UIGestureRecognizerDelegate-Protocol.h>
 
-@class ADPrerollBottomBar, ADPrerollTopBar, NSString, NSTimer, UIImageView;
+@class ADPrerollBottomBar, ADPrerollTopBar, ADPrivacyButton, NSString, NSTimer, UIImageView;
 @protocol ADPrerollViewDelegate;
 
 @interface ADPrerollView : UIView <UIGestureRecognizerDelegate, ADPrerollTopBarDelegate, ADPrerollBottomBarDelegate>
@@ -24,6 +24,7 @@
     UIImageView *_swooshView;
     NSTimer *_passiveWatchingTimer;
     double _accumulatedViewingTime;
+    ADPrivacyButton *_privacyButton;
 }
 
 @property (nonatomic) double accumulatedViewingTime; // @synthesize accumulatedViewingTime=_accumulatedViewingTime;
@@ -35,6 +36,7 @@
 @property (nonatomic) BOOL hasAction; // @synthesize hasAction=_hasAction;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSTimer *passiveWatchingTimer; // @synthesize passiveWatchingTimer=_passiveWatchingTimer;
+@property (strong, nonatomic) ADPrivacyButton *privacyButton; // @synthesize privacyButton=_privacyButton;
 @property (nonatomic) BOOL skipButtonCountingDown; // @synthesize skipButtonCountingDown=_skipButtonCountingDown;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIImageView *swooshView; // @synthesize swooshView=_swooshView;
@@ -43,6 +45,7 @@
 + (Class)layerClass;
 - (void)_firePassiveWatchingTimer:(id)arg1;
 - (BOOL)_layoutForExpandedSize;
+- (void)_privacyButtonWasTapped;
 - (void)_restartPassiveWatchingTimer;
 - (void)_singleTapGestureRecognized:(id)arg1;
 - (BOOL)accessibilityPerformEscape;
@@ -54,6 +57,7 @@
 - (void)bottomBarSkipButtonTapped:(id)arg1;
 - (void)dealloc;
 - (void)displayAsPaused:(BOOL)arg1;
+- (void)enablePrivacyButton;
 - (void)fadeToBlackWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;

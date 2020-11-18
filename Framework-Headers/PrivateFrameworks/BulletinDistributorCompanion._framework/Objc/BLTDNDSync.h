@@ -10,7 +10,8 @@
 {
 }
 
-- (id)init;
+- (id)initWithSettingsGateway:(id)arg1 connection:(id)arg2;
+- (id)initWithSettingsGateway:(id)arg1 connection:(id)arg2 assertionActiveKey:(id)arg3 assertionOnBehalfOfActiveKey:(id)arg4;
 - (void)removeDNDHandlers;
 - (void)setDNDHandlers;
 

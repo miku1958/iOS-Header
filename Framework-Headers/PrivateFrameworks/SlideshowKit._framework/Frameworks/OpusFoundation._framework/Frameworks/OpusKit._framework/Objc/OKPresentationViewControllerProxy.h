@@ -47,6 +47,7 @@
     BOOL _isPaused;
     BOOL _isFinished;
     BOOL _hasAppeared;
+    BOOL _shouldCleanup;
     id<OKPresentationViewControllerDelegate> _delegate;
     id<OKPresentationViewControllerEditingDelegate> _editingDelegate;
     id<NSObject> _activityLatency;
@@ -55,16 +56,20 @@
     struct CGPoint _arrowKeyCurrentPanVelocity;
     double _lastArrowKeyTimestamp;
     BOOL _arrowKeyIsRepeating;
-    NSOperationQueue *_prerationOperationQueue;
+    NSOperationQueue *_preparationOperationQueue;
     OFReachability *_reachability;
     long long _reachabilityStatus;
+    BOOL _logRenderingTimes;
+    BOOL _isRenderLoggingActive;
     BOOL _couchModeLoops;
     BOOL _interactivityEnabled;
     BOOL _isExporting;
+    BOOL _downloadIndicatorEnabled;
+    BOOL _muted;
     BOOL _rewindAudioOnCouchPotatoLoop;
     BOOL _arrowKeysSendSwipeAndPan;
     BOOL _hasBeenHidden;
-    OKPresentationView *presentationView;
+    OKPresentationView *_presentationView;
     OKResourceManager *_resourceManager;
     OKCouchController *_couchController;
     double _couchInitialDelay;
@@ -97,6 +102,7 @@
 @property (nonatomic) id<OKPresentationViewControllerDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) struct CGSize displaySize; // @synthesize displaySize=_displaySize;
+@property (nonatomic) BOOL downloadIndicatorEnabled; // @synthesize downloadIndicatorEnabled=_downloadIndicatorEnabled;
 @property (nonatomic) id<OKPresentationViewControllerEditingDelegate> editingDelegate;
 @property (readonly, nonatomic) BOOL hasBeenHidden; // @synthesize hasBeenHidden=_hasBeenHidden;
 @property (readonly) unsigned long long hash;
@@ -108,10 +114,12 @@
 @property (nonatomic) BOOL isExporting; // @synthesize isExporting=_isExporting;
 @property (readonly, strong, nonatomic) OKJavaScriptContext *jsContext;
 @property (readonly, nonatomic) BOOL keepAspectRatio; // @synthesize keepAspectRatio=_keepAspectRatio;
+@property (nonatomic) BOOL logRenderingTimes; // @synthesize logRenderingTimes=_logRenderingTimes;
 @property (strong, nonatomic) OKNavigatorViewController *mainNavigatorViewController; // @synthesize mainNavigatorViewController=_mainNavigatorViewController;
+@property (nonatomic) BOOL muted; // @synthesize muted=_muted;
 @property (nonatomic) unsigned long long playbackMode; // @synthesize playbackMode=_playbackMode;
 @property (readonly, strong, nonatomic) OKPresentation *presentation; // @synthesize presentation=_presentation;
-@property (readonly, strong, nonatomic) OKPresentationView *presentationView; // @synthesize presentationView;
+@property (readonly, strong, nonatomic) OKPresentationView *presentationView; // @synthesize presentationView=_presentationView;
 @property (readonly, strong, nonatomic) OKProducer *producer; // @synthesize producer=_producer;
 @property (readonly, nonatomic) long long reachabilityStatus; // @synthesize reachabilityStatus=_reachabilityStatus;
 @property (readonly, strong, nonatomic) NSString *resolution; // @synthesize resolution=_resolution;
@@ -123,11 +131,13 @@
 
 + (void)setupJavascriptContext:(id)arg1;
 + (Class)viewClass;
-- (void)_addSubWidgetNodesFromSubWidgets:(id)arg1 toWidgetNode:(id)arg2;
 - (void)_addSubWidgetViewsFromSubWidgets:(id)arg1 toWidgetView:(id)arg2;
+- (void)_beginCARenderLogging;
+- (void)_cleanupIfNecessary;
 - (void)_delayedPrepareForRefresh;
 - (void)_doArrowKeyDownForDirection:(unsigned long long)arg1 atTimestamp:(double)arg2;
 - (void)_doArrowKeyUpForDirection:(unsigned long long)arg1 atTimestamp:(double)arg2;
+- (void)_endCARenderLogging;
 - (struct CGSize)_fitDisplaySizeForRenderSize:(struct CGSize)arg1;
 - (BOOL)_hasAppeared;
 - (void)_loadMainNavigatorIfNeeded;
@@ -146,6 +156,7 @@
 - (void)_stopActivityIndicator:(CDUnknownBlockType)arg1;
 - (void)_stopActivityIndicatorWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)_stopPresentation;
+- (void)_unloadContent;
 - (id)actionBindingForAction:(id)arg1 isTouchCountAgnostic:(BOOL)arg2;
 - (void)addActionBinding:(id)arg1 scope:(unsigned long long)arg2;
 - (id)allActionBindings;
@@ -153,12 +164,12 @@
 - (void)allowCouchPlayback;
 - (void)audioFinishedPlayingForTrackID:(id)arg1;
 - (void)audioStartedPlayingForTrackID:(id)arg1 withAVAsset:(id)arg2 andVolume:(float)arg3;
-- (void)audioStartedPlayingForTrackID:(id)arg1 withMediaURL:(id)arg2 andVolume:(float)arg3;
 - (id)beginAudioForController:(id)arg1 withAVAsset:(id)arg2 andVolume:(float)arg3;
-- (id)beginAudioForController:(id)arg1 withURL:(id)arg2 andVolume:(float)arg3;
+- (void)beginEditingTextInWidget:(id)arg1;
+- (void)beginPanningMediaInWidget:(id)arg1;
 - (id)cachedNavigatorPageViewControllers;
-- (BOOL)canEditTextForWidget:(id)arg1;
-- (BOOL)canPanMediaForWidget:(id)arg1;
+- (BOOL)canEditTextInWidget:(id)arg1;
+- (BOOL)canPanMediaInWidget:(id)arg1;
 - (BOOL)canPerformAction:(id)arg1;
 - (BOOL)canStartCouchPotatoPlayback;
 - (void)cancelCouchPotatoIfNeededWithAction:(id)arg1;
@@ -187,18 +198,20 @@
 - (void)dealloc;
 - (id)deepestDisplayedPageViewController;
 - (id)dictionaryProxy:(id)arg1 objectForKey:(id)arg2;
-- (void)didChangeTextForWidget:(id)arg1 toSettings:(id)arg2;
 - (void)didMoveToParentViewController:(id)arg1;
 - (void)didReceiveMemoryWarning;
 - (void)displayPresentation:(BOOL)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (id)displayedPageViewControllers;
 - (id)dynamicsPushBehaviors;
 - (void)endAudioForController:(id)arg1 andTrackID:(id)arg2;
+- (void)endEditingTextInWidget:(id)arg1 finalSettings:(id)arg2;
+- (void)endPanningMediaInWidget:(id)arg1 finalState:(id)arg2;
 - (id)evaluateScript:(id)arg1;
 - (id)evaluateScript:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (id)evaluateScript:(id)arg1 withInfoDictionary:(id)arg2 andCompletionBlock:(CDUnknownBlockType)arg3 forNavigatorViewController:(id)arg4 pageViewController:(id)arg5 andWidgetView:(id)arg6;
 - (void)fadeAllAudioTracksWithDuration:(double)arg1;
 - (void)fadeMainNavigatorTracksWithDuration:(double)arg1;
+- (void)forceCleanup;
 - (void)initSynopsisView;
 - (void)initWheelController;
 - (id)initWithPresentation:(id)arg1;
@@ -223,6 +236,7 @@
 - (void)producer:(id)arg1 didProcessLiveAuthoringKeyPaths:(id)arg2;
 - (void)removeActionBinding:(id)arg1;
 - (void)removeAllActionBindings;
+- (void)renderingTimeLogMessage:(id)arg1 withTimestamp:(double)arg2;
 - (void)restart;
 - (BOOL)sendAction:(id)arg1 toTarget:(id)arg2;
 - (void)setActivityIndicatorVisible:(BOOL)arg1;
@@ -230,8 +244,6 @@
 - (void)setInteractiveTransitionTrackingBoxRadiusFromNumber:(id)arg1;
 - (void)setInteractiveTransitionVelocityThresholdFromNumber:(id)arg1;
 - (void)setPropertyWithValue:(id)arg1 forKey:(id)arg2 inJSObject:(struct OpaqueJSValue *)arg3;
-- (BOOL)shouldChangeTextForWidget:(id)arg1 toSettings:(id)arg2;
-- (BOOL)shouldPanMediaForWidget:(id)arg1 toOffset:(struct CGPoint)arg2;
 - (BOOL)shouldShowPlayIcon;
 - (BOOL)shouldShowSynopsisView;
 - (void)startCouchPotatoPlayback;
@@ -245,6 +257,8 @@
 - (void)updateDisplayResolution;
 - (void)updateMotion;
 - (void)updateTimeLeft;
+- (BOOL)validateChangingTextInWidget:(id)arg1 toSettings:(id)arg2;
+- (BOOL)validatePanningMediaInWidget:(id)arg1 toState:(id)arg2;
 - (id)valueForUndefinedKey:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
@@ -258,9 +272,7 @@
 - (id)visibleMediaItemsForProducer:(id)arg1;
 - (id)visibleMediaObjects;
 - (id)visibleWidgets;
-- (id)widgetNodeFromWidget:(id)arg1;
 - (id)widgetViewFromWidget:(id)arg1;
-- (void)willChangeFocusForTextWidget:(id)arg1 toFocusState:(BOOL)arg2;
 - (void)willMoveToParentViewController:(id)arg1;
 
 @end

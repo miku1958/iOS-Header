@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *key; // @synthesize key=_key;
 
 - (void).cxx_destruct;
+- (void)completeWithError:(id)arg1;
 - (CDUnknownBlockType)completionHandlerFor:(id)arg1;
 - (id)description;
 - (id)init;

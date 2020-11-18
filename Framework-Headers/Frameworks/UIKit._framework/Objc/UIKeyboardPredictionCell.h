@@ -6,22 +6,25 @@
 
 #import <UIKit/UIView.h>
 
-@class TIKeyboardCandidate, UIKBKeyView, UIMorphingLabel;
+@class TIKeyboardCandidate, UIKBKeyView, UILabel, UIMorphingLabel;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardPredictionCell : UIView
 {
     UIMorphingLabel *m_label;
+    UILabel *m_suggestionLabel;
     UIView *m_maskView;
     UIKBKeyView *m_activeKeyView;
     UIKBKeyView *m_enabledKeyView;
     BOOL m_lightKeyboard;
     struct CGSize m_keyViewSize;
+    double m_maskViewMargin;
     BOOL _isAutocorrection;
     BOOL _isTypedString;
     BOOL _isCenter;
     BOOL _isLongCandidate;
     int _state;
+    unsigned int _slotID;
     TIKeyboardCandidate *_prediction;
     struct CGRect _collapsedFrame;
     struct CGRect _baseFrame;
@@ -36,22 +39,28 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isLongCandidate; // @synthesize isLongCandidate=_isLongCandidate;
 @property (nonatomic) BOOL isTypedString; // @synthesize isTypedString=_isTypedString;
 @property (readonly, strong, nonatomic) TIKeyboardCandidate *prediction; // @synthesize prediction=_prediction;
+@property (nonatomic) unsigned int slotID; // @synthesize slotID=_slotID;
 @property (nonatomic) int state; // @synthesize state=_state;
 
 + (id)newKeyViewWithSize:(struct CGSize)arg1 state:(int)arg2 needsBackground:(BOOL)arg3;
+- (void)clearKeyViewForState:(int)arg1;
 - (void)dealloc;
 - (void)dimKeys:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)label;
 - (void)scrollLabelWithText:(id)arg1 force:(BOOL)arg2;
 - (void)setCellAttributes;
+- (void)setKeyViewForState:(int)arg1;
+- (void)setState:(int)arg1 withAttrText:(id)arg2;
 - (void)setState:(int)arg1 withText:(id)arg2;
 - (void)setText:(id)arg1 prediction:(id)arg2 active:(BOOL)arg3;
 - (void)setVisibleRect;
+- (BOOL)shouldDisplayHeaderForPrediction:(id)arg1;
 - (id)textColor;
 - (void)touchMoved:(double)arg1;
 - (void)updateBackgroundWithRenderConfig:(id)arg1;
 - (struct CGRect)visibleRect;
+- (void)willMoveToSuperview:(id)arg1;
 
 @end
 

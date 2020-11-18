@@ -25,7 +25,7 @@
 
 + (id)transportButton;
 - (void).cxx_destruct;
-- (void)applyTransportButtonLayoutAttributes:(CDStruct_fa8656bd)arg1;
+- (void)applyTransportButtonLayoutAttributes:(CDStruct_62e32a95)arg1;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;

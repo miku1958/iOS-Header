@@ -14,26 +14,25 @@
     PBCodable *_underlyingCodableMessage;
     NSError *_error;
     NSString *_identifier;
-    NSString *_authToken;
-    double _timestamp;
+    unsigned long long _timestamp;
     MSVMultiCallback *_messageSentCallbacks;
     MSVMultiCallback *_messagePurgedCallbacks;
 }
 
-@property (copy, nonatomic) NSString *authToken; // @synthesize authToken=_authToken;
 @property (readonly, nonatomic) NSString *description;
-@property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
+@property (readonly, nonatomic) unsigned long long encryptionType;
+@property (copy, nonatomic) NSError *error; // @synthesize error=_error;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) MSVMultiCallback *messagePurgedCallbacks; // @synthesize messagePurgedCallbacks=_messagePurgedCallbacks;
 @property (readonly, nonatomic) MSVMultiCallback *messageSentCallbacks; // @synthesize messageSentCallbacks=_messageSentCallbacks;
 @property (readonly, nonatomic) unsigned long long priority;
 @property (readonly, nonatomic) NSData *protobufData;
-@property (readonly, nonatomic) BOOL requiresAuthentication;
 @property (readonly, nonatomic) BOOL shouldLog;
-@property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 @property (readonly, nonatomic) unsigned long long type;
 @property (strong, nonatomic) PBCodable *underlyingCodableMessage; // @synthesize underlyingCodableMessage=_underlyingCodableMessage;
 
++ (unsigned long long)currentProtocolVersion;
 + (id)protocolMessageWithProtobufData:(id)arg1;
 - (void)dealloc;
 - (id)init;

@@ -15,6 +15,8 @@
 + (id)categoryKeywordMap;
 + (id)constantClasses;
 + (id)fixedPhrases;
++ (id)localizedStrings;
++ (id)momentsPhrases;
 + (id)polarTagKeywords;
 + (id)sensitiveSubjectRegularExpressionPatterns;
 + (id)synonyms;

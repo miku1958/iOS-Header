@@ -7,22 +7,23 @@
 #import <EventKitUI/EKEventDetailItem.h>
 
 @class UITableViewCell;
+@protocol EKIdentityProtocol;
 
 __attribute__((visibility("hidden")))
 @interface EKEventOrganizerDetailItem : EKEventDetailItem
 {
     UITableViewCell *_cell;
-    BOOL _cellNeedsUpdate;
+    id<EKIdentityProtocol> _organizerOverride;
 }
 
+@property (strong) id<EKIdentityProtocol> organizerOverride; // @synthesize organizerOverride=_organizerOverride;
+
 - (void).cxx_destruct;
-- (void)_updateCellIfNeededForWidth:(double)arg1;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (BOOL)configureWithCalendar:(id)arg1 preview:(BOOL)arg2;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
 - (void)reset;
-- (void)setCellPosition:(int)arg1;
 
 @end
 

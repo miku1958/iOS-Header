@@ -19,7 +19,7 @@
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSIndexPath, NSMutableDictionary, NSMutableSet, NSOrderedSet, NSString, PHCachingImageManager, PHFetchResult, PLAvalanche, PLManagedAsset, PUAvalancheReviewCollectionViewLayout, PUAvalancheReviewControllerSpec, PUOneUpAssetTransitionInfo, PUPhotoPinchGestureRecognizer, PUPhotosSharingTransitionContext, PUPhotosZoomingSharingGridCell, PUReviewInstructionalView, PUReviewScrubber, PUTransitionViewAnimator, UIBarButtonItem, UICollectionView, UICollectionViewLayout, UITapGestureRecognizer;
-@protocol PLAssetContainer, PLAssetContainerList, PUAvalancheReviewControllerDelegate, PUPresentingPhotoBrowserController;
+@protocol PLAssetContainer, PLAssetContainerList, PUAvalancheReviewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PUAvalancheReviewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, PUReviewScrubberDataSource, PUReviewScrubberDelegate, PUAvalancheReviewCollectionViewLayoutDelegate, UIGestureRecognizerDelegate, PUTransitionViewAnimatorDelegate, PUPhotosSharingTransitionViewController, PHAssetCollectionDataSource, PUOneUpPhotosSharingTransitionViewController, PUOneUpAssetTransitionViewController>
@@ -30,7 +30,6 @@ __attribute__((visibility("hidden")))
     BOOL __completingReviewMode;
     id<PUAvalancheReviewControllerDelegate> _delegate;
     id<PLAssetContainerList> _avalancheContainerList;
-    id<PUPresentingPhotoBrowserController> _presentingPhotoBrowserController;
     PUAvalancheReviewControllerSpec *__spec;
     UICollectionView *__collectionView;
     PUAvalancheReviewCollectionViewLayout *__collectionViewLayout;
@@ -86,7 +85,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) id<PUAvalancheReviewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) id<PUPresentingPhotoBrowserController> presentingPhotoBrowserController; // @synthesize presentingPhotoBrowserController=_presentingPhotoBrowserController;
 @property (readonly) Class superclass;
 
 + (id)filteringContext;
@@ -142,7 +140,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)embeddedActivityViewFrameWhenShowing:(BOOL)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
-- (id)initWithSpec:(id)arg1 startingAtAsset:(id)arg2 inAvalanche:(id)arg3 currentAssetContainer:(id)arg4 fromPhotoBrowserController:(id)arg5;
+- (id)initWithSpec:(id)arg1 startingAtAsset:(id)arg2 inAvalanche:(id)arg3 currentAssetContainer:(id)arg4;
 - (struct CGRect)layout:(id)arg1 collectionView:(id)arg2 selectionBadgeFrameForItemFrame:(struct CGRect)arg3 atIndexPath:(id)arg4;
 - (struct CGSize)layout:(id)arg1 collectionView:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (unsigned long long)numberOfPhotosInReviewScrubber:(id)arg1;
@@ -152,6 +150,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)pu_wantsNavigationBarVisible;
 - (BOOL)pu_wantsTabBarVisible;
 - (BOOL)pu_wantsToolbarVisible;
+- (BOOL)reviewScrubber:(id)arg1 shouldProvideFeedbackForCellAtIndexPath:(id)arg2;
 - (void)reviewScrubber:(id)arg1 willDisplayCell:(id)arg2 atIndexPath:(id)arg3;
 - (void)reviewScrubberDidScrub:(id)arg1;
 - (void)reviewScrubberDidSelectItemAtIndexPath:(id)arg1;

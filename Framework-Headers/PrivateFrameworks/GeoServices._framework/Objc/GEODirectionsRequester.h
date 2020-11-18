@@ -17,6 +17,7 @@
 + (id)sharedRequester;
 - (void)cancelRequest:(id)arg1;
 - (void)dealloc;
+- (void)finalizeRequest:(id)arg1;
 - (id)init;
 - (void)startRequest:(id)arg1 finished:(CDUnknownBlockType)arg2 networkActivity:(CDUnknownBlockType)arg3 error:(CDUnknownBlockType)arg4;
 

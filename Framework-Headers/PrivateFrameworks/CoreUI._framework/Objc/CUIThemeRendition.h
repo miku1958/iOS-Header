@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface CUIThemeRendition : NSObject
 {
-    struct _renditionkeytoken _stackKey[16];
+    struct _renditionkeytoken _stackKey[17];
     struct _renditionkeytoken *_key;
     long long _type;
     unsigned int _subtype;
@@ -22,7 +22,11 @@ __attribute__((visibility("hidden")))
         unsigned int isVectorBased:1;
         unsigned int isOpaque:1;
         unsigned int bitmapEncoding:4;
-        unsigned int reserved:24;
+        unsigned int optOutOfThinning:1;
+        unsigned int isFlippable:1;
+        unsigned int otherImageProvider:1;
+        unsigned int isTintable:1;
+        unsigned int reserved:20;
     } _renditionFlags;
     long long _templateRenderingMode;
     long long _artworkStatus;
@@ -34,6 +38,7 @@ __attribute__((visibility("hidden")))
     int _blendMode;
     NSString *_utiType;
     int _exifOrientation;
+    struct CGImage *_uncroppedImage;
 }
 
 @property (nonatomic) int blendMode; // @synthesize blendMode=_blendMode;
@@ -68,11 +73,13 @@ __attribute__((visibility("hidden")))
 - (id)imageForSliceIndex:(long long)arg1;
 - (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
 - (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
+- (BOOL)isFlippable;
 - (BOOL)isHeaderFlaggedFPO;
 - (BOOL)isInternalLink;
 - (BOOL)isOpaque;
 - (BOOL)isScaled;
 - (BOOL)isTiled;
+- (BOOL)isTintable;
 - (BOOL)isValidForLookGradation:(long long)arg1;
 - (BOOL)isVectorBased;
 - (const struct _renditionkeytoken *)key;
@@ -80,17 +87,23 @@ __attribute__((visibility("hidden")))
 - (id)linkingToRendition;
 - (id)maskForSliceIndex:(long long)arg1;
 - (id)metrics;
+- (id)mipLevels;
 - (id)name;
+- (BOOL)optOutOfThinning;
 - (struct CGSize)originalUncroppedSize;
 - (id)packedContents;
 - (struct CGPDFDocument *)pdfDocument;
 - (int)pixelFormat;
+- (id)provideTextureInfo;
 - (double)scale;
 - (id)sliceInformation;
 - (unsigned int)subtype;
 - (long long)templateRenderingMode;
+- (id)textureImages;
 - (long long)type;
+- (struct CGImage *)uncroppedImage;
 - (struct CGImage *)unslicedImage;
+- (struct CGSize)unslicedSize;
 - (id)utiType;
 - (unsigned short)valueForTokenIdentifier:(unsigned short)arg1;
 

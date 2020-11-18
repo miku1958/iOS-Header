@@ -6,113 +6,66 @@
 
 #import <objc/NSObject.h>
 
-#import <Parsec/PRSBagFetchSuccessDelegate-Protocol.h>
-#import <Parsec/PRSImageSource-Protocol.h>
-#import <Parsec/PRSInstalledAppsDataSourceDelegate-Protocol.h>
-#import <Parsec/PRSResourceProvider-Protocol.h>
+#import <Parsec/PARResultFactory-Protocol.h>
+#import <Parsec/PARSessionDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSMutableSet, NSSet, NSString, PRSCache;
-@protocol OS_dispatch_group, OS_dispatch_queue, PRSBagFetchSuccessDelegate><PRSInstalledAppsDataSourceDelegate, PRSSessionController;
+@class NSArray, NSDictionary, NSMutableArray, NSSet, NSString, PARSession, PRSCEPData, PRSFeedbackProxy, PRSRankingKnobs;
+@protocol OS_dispatch_queue, PRSSessionController, SFFeedbackListener;
 
-@interface PRSSearchSession : NSObject <PRSInstalledAppsDataSourceDelegate, PRSResourceProvider, PRSBagFetchSuccessDelegate, PRSImageSource>
+@interface PRSSearchSession : NSObject <PARSessionDelegate, PARResultFactory>
 {
-    id<PRSSessionController> _client;
-    PRSCache *_cachedResults;
-    PRSCache *_cachedWebResults;
-    NSObject<OS_dispatch_group> *_feedbackGroup;
-    NSMutableSet *_feedbackTasks;
     NSMutableArray *_feedback;
-    BOOL _lastFeedbackZKW;
-    BOOL _hasEngagementZKW;
+    id<PRSSessionController> _client;
     double _lastQueryTime;
-    NSString *_userAgent;
     NSString *_queryLanguage;
-    NSDictionary *sqfData;
-    BOOL _valid;
-    BOOL _enableFeedbackDebugLogging;
-    id<PRSBagFetchSuccessDelegate><PRSInstalledAppsDataSourceDelegate> delegate;
+    NSDictionary *_sqfData;
+    NSString *_userAgent;
+    PRSFeedbackProxy *_listener;
     NSObject<OS_dispatch_queue> *_clientQueue;
     double _sessionStartTime;
     NSArray *_supportedServices;
+    PARSession *_session;
     double _retryAfter;
 }
 
 @property (readonly, nonatomic) NSSet *appBlacklist;
+@property (readonly, nonatomic) PRSCEPData *cannedCEPValues;
+@property (readonly, nonatomic) NSDictionary *cepDictionary;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<PRSBagFetchSuccessDelegate><PRSInstalledAppsDataSourceDelegate> delegate; // @synthesize delegate;
 @property (readonly, copy) NSString *description;
-@property BOOL enableFeedbackDebugLogging; // @synthesize enableFeedbackDebugLogging=_enableFeedbackDebugLogging;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<SFFeedbackListener> listener;
+@property (readonly, nonatomic) PRSRankingKnobs *rankingKnobs;
 @property double retryAfter; // @synthesize retryAfter=_retryAfter;
 @property (readonly, nonatomic) double searchRenderTimeout;
+@property (strong) PARSession *session; // @synthesize session=_session;
 @property (nonatomic) double sessionStartTime; // @synthesize sessionStartTime=_sessionStartTime;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *supportedServices; // @synthesize supportedServices=_supportedServices;
-@property (readonly, nonatomic, getter=isValid) BOOL valid; // @synthesize valid=_valid;
+@property (strong) NSString *userAgent; // @synthesize userAgent=_userAgent;
 
-+ (id)_cURLFromURLRequest:(id)arg1;
-+ (id)_createQueryURL:(id)arg1 userQueryString:(id)arg2 keyboardLanguage:(id)arg3 currentLocation:(id)arg4 locationSource:(id)arg5 currentCoordinates:(CDStruct_c3b9c2ee)arg6 storeFrontId:(id)arg7 locale:(id)arg8 context:(id)arg9 routineLocation:(id)arg10 userAgent:(id)arg11 queryLanguage:(id)arg12 isVoiceSearch:(BOOL)arg13;
-+ (id)_createURLRequestWithString:(id)arg1 keyboardLanguage:(id)arg2 webSearch:(BOOL)arg3 scaleFactor:(double)arg4 allowLocation:(BOOL)arg5 fallbackURL:(id *)arg6 urlSessionConfiguration:(id)arg7 cachedQueries:(id)arg8 cachedResults:(id)arg9 userAgent:(id)arg10 queryLanguage:(id)arg11 isVoiceSearch:(BOOL)arg12;
-+ (id)_urlRequestFromURL:(id)arg1 urlSessionConfiguration:(id)arg2 isVoiceSearch:(BOOL)arg3;
-+ (id)currentLocation;
-+ (void)getLocation:(CDUnknownBlockType)arg1;
-+ (id)getParsecHeadersFromURLRequest:(id)arg1;
-+ (id)getParsecParametersFromURLRequest:(id)arg1;
-+ (id)getParsecURLRequest;
-+ (id)getParsecURLRequestWithKeyboardLanguage:(id)arg1;
 - (void).cxx_destruct;
-- (void)_endSession;
-- (void)_invalidate;
 - (void)activate;
-- (void)addFeedback:(id)arg1;
-- (void)bagFetchSuccessCallback;
-- (void)cacheQueryResponse:(id)arg1 webSearch:(BOOL)arg2;
-- (id)cachedResultSetForCompletionString:(id)arg1 webSearch:(BOOL)arg2;
-- (id)cachedResultSetForQuery:(id)arg1 webSearch:(BOOL)arg2;
-- (id)cachedResultSetForQueryTask:(id)arg1;
-- (id)cannedCEPValues;
-- (id)compressedData:(id)arg1;
-- (id)connectionType;
-- (id)copyCachedResult:(id)arg1 webSearch:(BOOL)arg2;
-- (id)createFeedbackRequest:(id *)arg1 allowUserId:(BOOL)arg2 keyboardLanguage:(id)arg3;
-- (id)createQueryURL:(id)arg1 userQueryString:(id)arg2 keyboardLanguage:(id)arg3 currentLocation:(id)arg4 locationSource:(id)arg5 currentCoordinates:(CDStruct_c3b9c2ee)arg6 storeFrontId:(id)arg7 locale:(id)arg8 context:(id)arg9 routineLocation:(id)arg10 isVoiceSearch:(BOOL)arg11;
-- (id)createURLRequestWithString:(id)arg1 keyboardLanguage:(id)arg2 webSearch:(BOOL)arg3 scaleFactor:(double)arg4 allowLocation:(BOOL)arg5 fallbackURL:(id *)arg6;
 - (void)deactivate;
-- (void)dealloc;
-- (id)dictationQueryWithResponse:(id)arg1 keyboardLanguage:(id)arg2 externalId:(unsigned int)arg3 webSearch:(BOOL)arg4 handler:(id)arg5;
-- (void)enableFeedbackDebugLogging:(BOOL)arg1;
-- (void)fetchCardDataFromURL:(id)arg1 withFactory:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (id)fetchLookupBagProperties;
-- (BOOL)flushFeedback;
-- (BOOL)flushFeedbackSync;
-- (id)getCEPData;
+- (id)dictationQueryWithResponse:(id)arg1 keyboardLanguage:(id)arg2 externalId:(unsigned int)arg3 webSearch:(BOOL)arg4 handler:(id)arg5 queryIdent:(unsigned long long)arg6 whyQuery:(unsigned long long)arg7;
+- (id)feedbackListener;
 - (void)getCachedQueries:(id *)arg1 results:(id *)arg2 webSearch:(BOOL)arg3;
 - (long long)getCategoryScoreToReturnInFeedback;
 - (void)getFTEStringsWithReply:(CDUnknownBlockType)arg1;
-- (void)getImageWithIdentifier:(id)arg1 block:(CDUnknownBlockType)arg2;
-- (id)getRankingKnobs;
-- (id)initWithClient:(id)arg1;
+- (id)getModelParameters;
+- (id)getQueryTaskForHandler:(id)arg1 scaleFactor:(double)arg2 whyQuery:(unsigned long long)arg3;
 - (id)initWithClient:(id)arg1 clientQueue:(id)arg2;
-- (id)initWithClient:(id)arg1 clientQueue:(id)arg2 delegate:(id)arg3;
-- (id)initWithClient:(id)arg1 delegate:(id)arg2;
-- (id)installedApps;
-- (BOOL)isCurrentLocaleSupported:(id)arg1;
-- (void)isLocaleSupported:(id)arg1 withReply:(CDUnknownBlockType)arg2;
-- (void)killFeedback;
 - (void)pruneCache;
 - (void)queryCompleted:(id)arg1;
-- (id)queryWithString:(id)arg1 keyboardLanguage:(id)arg2 externalId:(unsigned int)arg3 handler:(id)arg4;
-- (id)queryWithString:(id)arg1 keyboardLanguage:(id)arg2 externalId:(unsigned int)arg3 webSearch:(BOOL)arg4 handler:(id)arg5;
-- (id)queryWithString:(id)arg1 keyboardLanguage:(id)arg2 externalId:(unsigned int)arg3 webSearch:(BOOL)arg4 scaleFactor:(double)arg5 handler:(id)arg6;
-- (id)resourceWithID:(id)arg1;
+- (id)queryWithString:(id)arg1 keyboardLanguage:(id)arg2 externalId:(unsigned int)arg3 handler:(id)arg4 queryIdent:(unsigned long long)arg5 whyQuery:(unsigned long long)arg6;
+- (id)queryWithString:(id)arg1 keyboardLanguage:(id)arg2 externalId:(unsigned int)arg3 scaleFactor:(double)arg4 handler:(id)arg5 queryIdent:(unsigned long long)arg6 whyQuery:(unsigned long long)arg7;
+- (void)session:(id)arg1 bag:(id)arg2 didLoadWithError:(id)arg3;
 - (void)setFeedbackStartTime;
+- (void)setParsecFeedbackAllowed:(BOOL)arg1;
 - (void)setQueryLanguage:(id)arg1;
 - (void)setUserAgentString:(id)arg1;
 - (void)shrinkCaches;
-- (void)syncFeedback;
-- (id)urlRequestFromURL:(id)arg1;
-- (id)urlSessionForImage:(id)arg1;
 - (void)warmup;
 
 @end

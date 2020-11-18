@@ -9,22 +9,21 @@
 #import <Search/MCProfileConnectionObserver-Protocol.h>
 #import <Search/SPDaemonQueryDelegate-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSMutableArray, NSString, SPDaemonQueryToken, SPSearchResult, SPSearchResultSection;
-@protocol OS_dispatch_queue, SPSearchAgentDelegate;
+@class NSArray, NSDictionary, NSMutableArray, NSString, SFResultSection, SPDaemonQueryToken;
+@protocol OS_dispatch_queue, SPSearchAgentDelegate, SPSearchSuggestionsDelegate;
 
 @interface SPSearchAgent : NSObject <SPDaemonQueryDelegate, MCProfileConnectionObserver>
 {
     SPDaemonQueryToken *_currentToken;
     NSString *_prefixWithNoResults;
+    NSString *_sessionEntityString;
+    NSString *_mutableSessionEntityString;
     NSArray *_sections;
     NSMutableArray *_mutableSections;
     NSArray *_searchDomains;
     unsigned int _resultCount;
     int _options;
-    SPSearchResultSection *_topHitResultSection;
-    SPSearchResult *_webSearchThroughResult;
-    SPSearchResult *_appStoreSearchThroughResult;
-    SPSearchResult *_mapsSearchThroughResult;
+    SFResultSection *_topHitResultSection;
     BOOL _searchThroughAllowed;
     BOOL _observersAdded;
     BOOL _defaultSearchEnabled;
@@ -41,12 +40,12 @@
     NSObject<OS_dispatch_queue> *_queryProcessor;
     int _currentZKWLevel;
     long long _updatesDisabled;
-    struct WaitingResults_s *_deferredUpdate;
+    _Atomic struct WaitingResults_s *_deferredUpdate;
+    BOOL _didReceiveCompleteCallback;
     NSString *_lastQueryString;
     int _seqNo;
     int _storedSeqNo;
     int _lastUpdateSeqNo;
-    NSDate *_parsecNewsExpireTime;
     int _prefsToken;
     BOOL _newQuery;
     BOOL _willNotify;
@@ -55,21 +54,29 @@
     BOOL _activeCachedZKW;
     NSMutableArray *_cachedZKW1;
     NSMutableArray *_cachedZKW2;
+    BOOL _infinitePatience;
+    BOOL _forceStableResults;
+    NSString *_rankingDebugLog;
     NSString *_fbq;
     NSString *_web_fbq;
+    id<SPSearchSuggestionsDelegate> _suggestionsDelegate;
 }
 
-@property (readonly) int currentZKWLevel; // @synthesize currentZKWLevel=_currentZKWLevel;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) NSObject<SPSearchAgentDelegate> *delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) NSString *fbq; // @synthesize fbq=_fbq;
+@property (nonatomic) BOOL forceStableResults; // @synthesize forceStableResults=_forceStableResults;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL infinitePatience; // @synthesize infinitePatience=_infinitePatience;
 @property (nonatomic) int options; // @synthesize options=_options;
 @property (readonly, nonatomic) BOOL queryComplete; // @synthesize queryComplete=_queryComplete;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queryProcessor; // @synthesize queryProcessor=_queryProcessor;
+@property (strong, nonatomic) NSString *rankingDebugLog; // @synthesize rankingDebugLog=_rankingDebugLog;
 @property (strong, nonatomic) NSArray *searchDomains; // @synthesize searchDomains=_searchDomains;
 @property (readonly) NSArray *sections;
+@property (readonly) NSString *sessionEntityString; // @synthesize sessionEntityString=_sessionEntityString;
+@property (weak, nonatomic) id<SPSearchSuggestionsDelegate> suggestionsDelegate; // @synthesize suggestionsDelegate=_suggestionsDelegate;
 @property (readonly) Class superclass;
 @property (readonly) NSString *web_fbq; // @synthesize web_fbq=_web_fbq;
 
@@ -78,66 +85,60 @@
 + (BOOL)hasSeenZKWApps;
 + (void)initialize;
 - (void).cxx_destruct;
-- (id)_indexesOfCompatibleSection:(id)arg1;
+- (BOOL)_setSearchDomains:(id)arg1;
 - (BOOL)_shouldIgnoreQuery:(id)arg1;
+- (BOOL)_shouldPromptUserToOpenTTR;
 - (void)activate;
-- (void)addDeserializer:(id)arg1;
 - (void)addSearchThroughSectionWithQuery:(id)arg1;
 - (void)addSections:(id)arg1;
-- (void)cacheZKWQueryLive:(BOOL)arg1 allowInternet:(BOOL)arg2;
+- (void)cacheZKWQueryLive:(BOOL)arg1 whyQuery:(unsigned long long)arg2 isWideScreen:(BOOL)arg3;
 - (void)cachedZKWAvailable:(BOOL)arg1;
 - (void)cancelCurrentQuery;
-- (BOOL)cleanupObsoleteResults;
 - (void)clear;
-- (void)clearInternal:(int)arg1;
-- (void)clearParsecResultsIfStale;
+- (void)clearInternal:(int)arg1 invalidate:(BOOL)arg2;
+- (void)clearLastQueryString;
 - (long long)contentFilters;
 - (int)currentQuerySeqNo;
 - (void)deactivate;
 - (void)dealloc;
 - (void)disableUpdates;
 - (void)enableUpdates;
+- (void)finishRanking:(id)arg1 blendingDuration:(double)arg2;
+- (id)getTapToRadarPunchOutForRanking;
 - (void)handleHiddenResult:(id)arg1 shownResult:(id)arg2 inSection:(id)arg3;
 - (void)handleOptionsForNewSections:(id)arg1;
-- (BOOL)hasParsecNews;
-- (BOOL)hasParsecNewsHigh;
 - (BOOL)hasResults;
 - (id)init;
 - (id)initWithZKWLevel:(int)arg1 andOptions:(int)arg2;
 - (void)internetDomainsChanged;
 - (void)invalidateCurrentQuery;
+- (void)invalidateCurrentQuery:(BOOL)arg1;
 - (int)levelZKW;
 - (void)mergeSections;
-- (void)performZKWQueryWithKeyboardLanguage:(id)arg1 allowInternet:(BOOL)arg2;
 - (void)postSearchAgentClearedResultsToDelegate;
 - (void)postSearchAgentUpdatedResultsToDelegate;
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
 - (BOOL)promoteCachedQuery;
 - (void)pushAndPostUpdates;
+- (BOOL)queryDidFinish;
 - (id)queryId;
 - (id)queryString;
-- (void)retrieveImageDataForIdentifier:(id)arg1 inSection:(id)arg2 preferredSize:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)retrieveImageDataForResult:(id)arg1 inSection:(id)arg2 preferredSize:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)searchDaemonQuery:(id)arg1 addedResults:(id)arg2;
+- (id)resultWithIdentifier:(id)arg1 title:(id)arg2 url:(id)arg3;
 - (void)searchDaemonQuery:(id)arg1 encounteredError:(id)arg2;
-- (void)searchDaemonQueryCompleted:(id)arg1;
-- (void)searchDaemonQueryReset:(id)arg1;
+- (void)searchDaemonQuery:(id)arg1 gotResultSet:(id)arg2 replace:(BOOL)arg3 complete:(BOOL)arg4 finished:(BOOL)arg5 blendingDuration:(double)arg6 geoEntityString:(id)arg7;
+- (void)searchDaemonRankingLog:(id)arg1;
+- (void)searchDaemonSuggestionsArray:(id)arg1;
 - (id)sectionAtIndex:(unsigned int)arg1;
 - (unsigned long long)sectionCount;
-- (BOOL)sectionNeedsMoreMapsOption:(id)arg1;
-- (BOOL)setQueryString:(id)arg1 keyboardLanguage:(id)arg2 keyboardPrimaryLanguage:(id)arg3 levelZKW:(int)arg4 allowInternet:(BOOL)arg5;
+- (BOOL)setQueryContext:(id)arg1 allowInternet:(BOOL)arg2;
+- (BOOL)setQueryContext:(id)arg1 withResponse:(id)arg2 isStable:(BOOL)arg3 allowInternet:(BOOL)arg4;
+- (BOOL)setQueryString:(id)arg1 keyboardLanguage:(id)arg2 allowInternet:(BOOL)arg3;
+- (BOOL)setQueryString:(id)arg1 keyboardLanguage:(id)arg2 keyboardPrimaryLanguage:(id)arg3 allowInternet:(BOOL)arg4;
 - (BOOL)setQueryString:(id)arg1 keyboardLanguage:(id)arg2 keyboardPrimaryLanguage:(id)arg3 withResponse:(id)arg4 isStable:(BOOL)arg5;
-- (BOOL)setQueryString:(id)arg1 keyboardLanguage:(id)arg2 levelZKW:(int)arg3 allowInternet:(BOOL)arg4;
 - (BOOL)setQueryString:(id)arg1 keyboardLanguage:(id)arg2 withResponse:(id)arg3 isStable:(BOOL)arg4;
-- (BOOL)setQueryString:(id)arg1 withResponse:(id)arg2 keyboardLanguage:(id)arg3 keyboardPrimaryLanguage:(id)arg4 isStable:(BOOL)arg5 levelZKW:(int)arg6 allowInternet:(BOOL)arg7;
-- (void)stuffChanged;
-- (void)stuffChangedNotification;
-- (void)testPermuteSection:(id)arg1 domain:(unsigned int)arg2 count:(int)arg3;
-- (void)testRestoreCacheZKW;
-- (void)testSaveCachedZKWPermUsers:(int)arg1 appLinks:(int)arg2 apps:(int)arg3;
+- (void)settingsChanged;
 - (void)updateResultsThroughDelegate;
-- (void)updateResultsThroughDelegate:(BOOL)arg1;
-- (void)updateSearchThroughSectionWithQuery:(id)arg1;
+- (void)updateResultsThroughDelegate:(BOOL)arg1 complete:(BOOL)arg2;
 
 @end
 

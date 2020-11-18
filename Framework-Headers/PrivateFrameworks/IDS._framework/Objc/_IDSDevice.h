@@ -18,9 +18,10 @@
     CUTWeakReference *_account;
     int _socket;
     int _nearbyToken;
-    int _lastActivityToken;
     BOOL _nearby;
     BOOL _connected;
+    BOOL _immutableCloudConnected;
+    BOOL _cloudConnected;
     CDUnknownBlockType _openSocketCompletionHandler;
     NSObject<OS_dispatch_queue> *_openSocketCompletionHandlerQueue;
     NSString *_openSocketCompletionHandlerID;
@@ -28,6 +29,7 @@
     NSOutputStream *_outputStreamForSocket;
 }
 
+@property (readonly, nonatomic, getter=isCloudConnected) BOOL cloudConnected;
 @property (readonly, nonatomic, getter=isConnected) BOOL connected;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -54,7 +56,9 @@
 @property (readonly, nonatomic) NSString *productVersion;
 @property (readonly, strong, nonatomic) NSData *pushToken;
 @property (readonly, strong, nonatomic) NSString *service;
+@property (readonly, nonatomic) unsigned long long serviceMinCompatibilityVersion;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsApplePay;
 @property (readonly, nonatomic) BOOL supportsHandoff;
 @property (readonly, nonatomic) BOOL supportsMMSRelay;
 @property (readonly, nonatomic) BOOL supportsPhoneCalls;
@@ -65,15 +69,16 @@
 @property (readonly, strong, nonatomic) NSString *uniqueIDOverride;
 
 - (void)_addIdentity:(id)arg1;
+- (void)_cloudConnectedStateChanged;
 - (void)_connect;
 - (void)_connectedStateChanged;
 - (void)_nearbyStateChanged;
 - (void)_setAccount:(id)arg1;
-- (void)_updateNSUUID:(id)arg1;
 - (void)closeSocket:(int)arg1;
 - (void)closeSocketForDomain:(id)arg1;
 - (void)closeStreamPairWithInputStream:(id)arg1 outputStream:(id)arg2;
 - (void)dealloc;
+- (id)fullDescription;
 - (id)initWithDictionary:(id)arg1;
 - (void)openSocketWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 onQueue:(id)arg3;
 - (void)setStreamPairWithInputStream:(id)arg1 outputStream:(id)arg2;

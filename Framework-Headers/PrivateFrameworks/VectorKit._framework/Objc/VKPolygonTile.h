@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     VKAnimation *_animation;
     VKAnimation *_animationForPitch;
     struct unordered_map<unsigned long long, VKPolygonGroup *, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, VKPolygonGroup *>>> _transitPolygonGroupMap;
-    unordered_map_717402f9 _transitNodesRouteAttributesMap;
+    unordered_map_9fd1a77d _transitNodesRouteAttributesMap;
 }
 
 @property (nonatomic) float alpha; // @synthesize alpha=_alpha;
@@ -34,11 +34,11 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)buildCoastlinesWithStyleSession:(StyleResolutionSession_e599f5f4 *)arg1;
-- (void)buildMeshesWithStyleSession:(StyleResolutionSession_404d82cf *)arg1 device:(struct Device *)arg2 triangulator:(id)arg3 prepareExtrusion:(BOOL)arg4;
+- (void)buildCoastlinesWithStyleManager:(shared_ptr_a3c46825 *)arg1;
+- (void)buildMeshesWithDevice:(Device_f0710f89 *)arg1 triangulator:(id)arg2 prepareExtrusion:(BOOL)arg3;
 - (void)dealloc;
-- (id)initWithKey:(const struct VKTileKey *)arg1 modelTile:(id)arg2 prepareExtrusion:(BOOL)arg3 styleManager:(shared_ptr_f06afc6c)arg4 sharedResources:(id)arg5 contentScale:(double)arg6 device:(struct Device *)arg7;
-- (void)setTransitNodesRouteAttributes:(const unordered_map_717402f9 *)arg1;
+- (id)initWithKey:(const struct VKTileKey *)arg1 modelTile:(id)arg2 prepareExtrusion:(BOOL)arg3 styleManager:(shared_ptr_a3c46825)arg4 sharedResources:(id)arg5 contentScale:(double)arg6 device:(Device_f0710f89 *)arg7;
+- (void)setTransitNodesRouteAttributes:(const unordered_map_9fd1a77d *)arg1;
 
 @end
 

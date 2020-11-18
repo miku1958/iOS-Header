@@ -12,11 +12,11 @@
     id _displayItem;
 }
 
-@property (nonatomic) id deckSwitcherDelegate; // @synthesize deckSwitcherDelegate=_deckSwitcherDelegate;
+@property (weak, nonatomic) id deckSwitcherDelegate; // @synthesize deckSwitcherDelegate=_deckSwitcherDelegate;
 @property (strong, nonatomic) id displayItem; // @synthesize displayItem=_displayItem;
 
+- (void).cxx_destruct;
 - (BOOL)_accessibilityScrollToVisible;
-- (void)dealloc;
 
 @end
 

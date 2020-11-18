@@ -6,9 +6,9 @@
 
 #import <CameraUI/NSObject-Protocol.h>
 
-@class CUCaptureController;
+@class CAMCaptureGraphConfiguration, CUCaptureController;
 
 @protocol CAMConfigurationDelegate <NSObject>
-- (void)captureController:(CUCaptureController *)arg1 didChangeToMode:(struct CAMCaptureModeWithOptions)arg2 device:(long long)arg3;
+- (void)captureController:(CUCaptureController *)arg1 didChangeToGraphConfiguration:(CAMCaptureGraphConfiguration *)arg2 forDesiredConfiguration:(CAMCaptureGraphConfiguration *)arg3 requestID:(int)arg4;
 @end
 

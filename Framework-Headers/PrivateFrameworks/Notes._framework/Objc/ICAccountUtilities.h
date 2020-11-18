@@ -10,6 +10,7 @@
 
 @interface ICAccountUtilities : NSObject
 {
+    BOOL _primaryICloudACAccountValid;
     ACAccount *_primaryICloudACAccount;
     ACAccountStore *_accountStore;
     NSDictionary *_currentICloudAccountState;
@@ -19,11 +20,10 @@
 @property (copy, nonatomic) NSDictionary *currentICloudAccountState; // @synthesize currentICloudAccountState=_currentICloudAccountState;
 @property (readonly, nonatomic) BOOL didChooseToMigratePrimaryICloudAccount;
 @property (readonly) ACAccount *primaryICloudACAccount; // @synthesize primaryICloudACAccount=_primaryICloudACAccount;
+@property (nonatomic, getter=isPrimaryICloudACAccountValid) BOOL primaryICloudACAccountValid; // @synthesize primaryICloudACAccountValid=_primaryICloudACAccountValid;
 @property (readonly, nonatomic) BOOL primaryICloudAccountEnabled;
 
-+ (void)clearSharedInstance;
 + (id)sharedInstance;
-+ (void)startSharedInstance;
 - (void).cxx_destruct;
 - (void)accountStoreDidChange:(id)arg1;
 - (id)allICloudACAccounts;

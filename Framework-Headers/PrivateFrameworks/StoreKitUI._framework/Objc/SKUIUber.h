@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, SKUIArtworkList, SKUIColorScheme;
+@class NSString, SKUIColorScheme;
+@protocol SKUIArtworkProviding;
 
 @interface SKUIUber : NSObject
 {
-    SKUIArtworkList *_artworkList;
     SKUIColorScheme *_colorScheme;
     NSString *_text;
+    id<SKUIArtworkProviding> _artworkProvider;
 }
 
-@property (readonly, nonatomic) SKUIArtworkList *artworkList; // @synthesize artworkList=_artworkList;
+@property (readonly, nonatomic) id<SKUIArtworkProviding> artworkProvider; // @synthesize artworkProvider=_artworkProvider;
 @property (readonly, nonatomic) SKUIColorScheme *colorScheme; // @synthesize colorScheme=_colorScheme;
 @property (readonly, nonatomic) NSString *text; // @synthesize text=_text;
 

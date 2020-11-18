@@ -38,6 +38,8 @@
 @property (strong, nonatomic) NSMutableArray *sortedETAs; // @synthesize sortedETAs=_sortedETAs;
 @property (nonatomic) int status; // @synthesize status=_status;
 
++ (Class)sortedETAType;
+- (int)StringAsStatus:(id)arg1;
 - (void)addSortedETA:(id)arg1;
 - (void)clearSortedETAs;
 - (void)copyTo:(id)arg1;
@@ -51,6 +53,7 @@
 - (BOOL)readFrom:(id)arg1;
 - (id)sortedETAAtIndex:(unsigned long long)arg1;
 - (unsigned long long)sortedETAsCount;
+- (id)statusAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

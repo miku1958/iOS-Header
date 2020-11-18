@@ -9,6 +9,10 @@
 @class IKDOMLSInput, IKDOMLSParser, IKDOMLSSerializer, NSString;
 
 @protocol IKJSDOMImplementationLS <JSExport>
+
+@property (readonly, getter=asynchronousMode) long long MODE_ASYNCHRONOUS;
+@property (readonly, getter=synchronousMode) long long MODE_SYNCHRONOUS;
+
 - (IKDOMLSInput *)createLSInput;
 - (IKDOMLSParser *)createLSParser:(long long)arg1:(NSString *)arg2;
 - (IKDOMLSSerializer *)createLSSerializer;

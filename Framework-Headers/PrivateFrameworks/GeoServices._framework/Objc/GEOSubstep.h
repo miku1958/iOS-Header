@@ -30,6 +30,8 @@
 @property (strong, nonatomic) NSMutableArray *signposts; // @synthesize signposts=_signposts;
 @property (nonatomic) int zilchIndex; // @synthesize zilchIndex=_zilchIndex;
 
++ (Class)signpostType;
+- (int)StringAsManeuverType:(id)arg1;
 - (void)addSignpost:(id)arg1;
 - (void)clearSignposts;
 - (void)copyTo:(id)arg1;
@@ -39,6 +41,7 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)maneuverTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)signpostAtIndex:(unsigned long long)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKit/NSObject-Protocol.h>
+#import <PassKitCore/NSObject-Protocol.h>
 
 @protocol PKMicaResizableView <NSObject>
 - (struct CGSize)boundsSizeToMatchPointScale:(double)arg1;

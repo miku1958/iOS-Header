@@ -11,7 +11,7 @@
 }
 
 + (id)errorWithCode:(unsigned long long)arg1;
-+ (id)errorWithVerificationFailureCode:(long long)arg1 inFailureObject:(id)arg2;
++ (id)errorWithCode:(unsigned long long)arg1 userInfo:(id)arg2;
 
 @end
 

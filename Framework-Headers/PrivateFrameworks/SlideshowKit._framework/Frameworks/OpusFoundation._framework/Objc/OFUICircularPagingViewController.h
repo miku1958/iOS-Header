@@ -12,10 +12,10 @@
 
 @interface OFUICircularPagingViewController : OFUIViewController <OFUICircularPagingViewDelegate>
 {
-    OFUICircularPagingView *circularPagingView;
+    OFUICircularPagingView *_circularPagingView;
 }
 
-@property (strong, nonatomic) OFUICircularPagingView *circularPagingView; // @synthesize circularPagingView;
+@property (strong, nonatomic) OFUICircularPagingView *circularPagingView; // @synthesize circularPagingView=_circularPagingView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

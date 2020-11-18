@@ -31,7 +31,7 @@
 @property (nonatomic) CDStruct_1b6d18a9 sampleBufferCoalescingInterval; // @synthesize sampleBufferCoalescingInterval=_sampleBufferCoalescingInterval;
 @property (readonly, nonatomic) int trackID; // @synthesize trackID=_trackID;
 
-+ (id)assetWriterTrackWithFigAssetWriter:(struct OpaqueFigAssetWriter *)arg1 mediaType:(id)arg2 mediaFileType:(id)arg3 formatSpecification:(id)arg4 sourcePixelBufferAttributes:(id)arg5 multiPass:(BOOL)arg6 error:(id *)arg7;
++ (id)assetWriterTrackWithFigAssetWriter:(struct OpaqueFigAssetWriter *)arg1 mediaType:(id)arg2 mediaFileType:(id)arg3 formatSpecification:(id)arg4 sourcePixelBufferAttributes:(id)arg5 multiPass:(BOOL)arg6 attachedAdaptor:(id)arg7 error:(id *)arg8;
 - (int)_attachToFigAssetWriterUsingFormatSpecification:(id)arg1 sourcePixelBufferAttributes:(id)arg2 multiPass:(BOOL)arg3 error:(id *)arg4;
 - (void)_figAssetWriterDidDropBelowLowWaterLevelForTrackID:(int)arg1;
 - (void)_refreshAboveHighWaterLevel;
@@ -59,6 +59,7 @@
 - (void)setPreferredChunkAlignment:(long long)arg1;
 - (void)setPreferredChunkDuration:(CDStruct_1b6d18a9)arg1;
 - (void)setPreferredChunkSize:(long long)arg1;
+- (void)setProvisionalAlternateGroupID:(short)arg1;
 - (void)setSampleReferenceBaseURL:(id)arg1;
 - (void)setTrackVolume:(float)arg1;
 - (void)setWritesMediaDataToBeginningOfFile:(BOOL)arg1;

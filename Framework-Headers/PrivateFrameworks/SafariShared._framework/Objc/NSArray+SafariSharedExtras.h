@@ -11,10 +11,15 @@
 - (id)safari_arrayAtIndex:(unsigned long long)arg1;
 - (id)safari_dictionaryAtIndex:(unsigned long long)arg1;
 - (id)safari_filterObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (id)safari_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)safari_mapAndFilterObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_mapAndFilterObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)safari_mapObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (id)safari_maximumUsingComparator:(CDUnknownBlockType)arg1;
+- (id)safari_minimumUsingComparator:(CDUnknownBlockType)arg1;
 - (id)safari_numberAtIndex:(unsigned long long)arg1;
+- (id)safari_reduceObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (id)safari_reduceObjectsWithInitialValue:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)safari_stringAtIndex:(unsigned long long)arg1;
 @end
 

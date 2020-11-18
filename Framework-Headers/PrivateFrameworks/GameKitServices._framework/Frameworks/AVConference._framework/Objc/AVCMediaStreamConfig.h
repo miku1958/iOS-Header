@@ -17,6 +17,7 @@
     unsigned long long _rxPayloadType;
     unsigned int _remoteSSRC;
     NSString *_cName;
+    BOOL _rateAdaptationEnabled;
     BOOL _rtcpEnabled;
     BOOL _rtcpXREnabled;
     unsigned short _rtcpRemotePort;
@@ -25,6 +26,7 @@
     BOOL _rtcpTimeOutEnabled;
     double _rtpTimeOutInterval;
     double _rtcpTimeOutInterval;
+    unsigned long long _recommendedMTU;
     NSData *_sendMasterKey;
     NSData *_receiveMasterKey;
     long long _SRTPCipherSuite;
@@ -39,7 +41,9 @@
 @property (copy, nonatomic) NSString *cName; // @synthesize cName=_cName;
 @property (nonatomic) long long direction; // @synthesize direction=_direction;
 @property (strong, nonatomic) AVCNetworkAddress *localAddress; // @synthesize localAddress=_localAddress;
+@property (nonatomic, getter=isRateAdaptationEnabled) BOOL rateAdaptationEnabled; // @synthesize rateAdaptationEnabled=_rateAdaptationEnabled;
 @property (strong, nonatomic) NSData *receiveMasterKey; // @synthesize receiveMasterKey=_receiveMasterKey;
+@property (nonatomic) unsigned long long recommendedMTU; // @synthesize recommendedMTU=_recommendedMTU;
 @property (strong, nonatomic) AVCNetworkAddress *remoteAddress; // @synthesize remoteAddress=_remoteAddress;
 @property (nonatomic) unsigned int remoteSSRC; // @synthesize remoteSSRC=_remoteSSRC;
 @property (nonatomic, getter=isRTCPEnabled) BOOL rtcpEnabled; // @synthesize rtcpEnabled=_rtcpEnabled;
@@ -61,7 +65,6 @@
 - (BOOL)isAudioCodecValid;
 - (BOOL)isValidAudioConfig;
 - (BOOL)isValidVideoConfig;
-- (BOOL)isVideoCodecValid;
 
 @end
 

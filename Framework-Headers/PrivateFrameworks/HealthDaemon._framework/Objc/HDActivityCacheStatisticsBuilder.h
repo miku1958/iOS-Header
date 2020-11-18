@@ -11,17 +11,19 @@
 
 @interface HDActivityCacheStatisticsBuilder : NSObject
 {
-    vector_e4bf223f _workouts;
+    vector_53e1d725 _workouts;
     vector_81c32433 _standHourSamples;
     vector_6dc0ebed _activationLogSamples;
     HKQuantity *_lastActiveEnergyValue;
     HKQuantity *_lastDistanceWalkingValue;
     HKQuantity *_lastFlightsClimbedValue;
     NSNumber *_lastStepCountValue;
+    NSNumber *_lastPushCountValue;
     NSNumber *_lastStandHourValue;
     NSNumber *_lastExerciseMinuteValue;
+    double _deepBreathingDurationValue;
     vector_6dc0ebed _activeSourcesList;
-    struct map<_HKDataTypeCode, std::__1::map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>>, std::__1::less<_HKDataTypeCode>, std::__1::allocator<std::__1::pair<const _HKDataTypeCode, std::__1::map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>>>>> _sourceTotalsByIntervalIndexByTypeCode;
+    struct map<_HKDataTypeCode, std::__1::map<long long, _HDActivityCacheSourceTotal, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, _HDActivityCacheSourceTotal>>>, std::__1::less<_HKDataTypeCode>, std::__1::allocator<std::__1::pair<const _HKDataTypeCode, std::__1::map<long long, _HDActivityCacheSourceTotal, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, _HDActivityCacheSourceTotal>>>>>> _sourceTotalsByIntervalIndexByTypeCode;
     double _builderStartTime;
     double _builderEndTime;
     NSString *_loggingName;
@@ -35,35 +37,44 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (vector_6dc0ebed)_activeSourceVectorFromActivationLogSamples:(const vector_e4bf223f *)arg1;
-- (void)_addSample:(struct HDActivityCacheStatisticsBuilderSample)arg1 toSourceMap:(map_a99630af *)arg2;
-- (void)_addSamples:(const vector_e4bf223f *)arg1 toSourceMap:(map_a99630af *)arg2;
+- (void)_addSample:(struct HDActivityCacheStatisticsBuilderSample)arg1 toSourceTotals:(map_a52608a0 *)arg2 fromWorkout:(BOOL)arg3;
+- (void)_addSamples:(const vector_e4bf223f *)arg1 toSourceTotals:(map_a52608a0 *)arg2 fromWorkout:(BOOL)arg3;
 - (void)_clearActiveSources;
 - (void)_clearCachedValueForTypeCode:(long long)arg1;
+- (id)_createStatisticsForType:(id)arg1 withIntervalComponents:(id)arg2 calendar:(id)arg3;
 - (void)_loadActiveSourceList;
 - (void)_logActiveSourcesList:(vector_6dc0ebed *)arg1;
 - (id)_loggingPrefix;
-- (double)_maxTimestampInSourceMap:(const map_a99630af *)arg1;
-- (double)_minTimestampInSourceMap:(const map_a99630af *)arg1;
+- (double)_maxTimestampInSourceTotals:(const map_a52608a0 *)arg1;
+- (double)_minTimestampInSourceTotals:(const map_a52608a0 *)arg1;
 - (void)_resetAllCachedValues;
-- (BOOL)_sourceMapIsEmpty:(const map_a99630af *)arg1;
+- (BOOL)_sourceMapIsEmpty:(const map_a52608a0 *)arg1;
 - (vector_d87a6415)_sourceOrderForTypeCode:(long long)arg1;
-- (double)_sumSamplesInSourceMap:(map_a99630af *)arg1 orderedSources:(vector_d87a6415)arg2;
-- (double)_sumSamplesInSourceMap:(map_a99630af *)arg1 orderedSources:(vector_d87a6415)arg2 strictStartTime:(double)arg3 strictEndTime:(double)arg4;
+- (double)_sumSourceTotals:(map_a52608a0 *)arg1 orderedSources:(vector_d87a6415)arg2;
+- (double)_sumSourceTotals:(map_a52608a0 *)arg1 orderedSources:(vector_d87a6415)arg2 strictStartTime:(double)arg3 strictEndTime:(double)arg4;
 - (id)_workoutIdentifiersStringForActiveSource:(struct HDActivityCacheActiveSource *)arg1;
 - (id)activeEnergyValue;
 - (void)addActivationLogSamples:(const vector_e4bf223f *)arg1;
-- (void)addSample:(struct HDActivityCacheStatisticsBuilderSample)arg1 typeCode:(long long)arg2;
-- (void)addSamples:(const vector_e4bf223f *)arg1 typeCode:(long long)arg2;
+- (void)addDeepBreathingSessionDuration:(double)arg1;
+- (void)addDeviceSample:(struct HDActivityCacheStatisticsBuilderSample)arg1 typeCode:(long long)arg2;
+- (void)addDeviceSamples:(const vector_e4bf223f *)arg1 typeCode:(long long)arg2;
 - (void)addStandHourSamples:(const vector_81c32433 *)arg1;
-- (void)addWorkouts:(const vector_e4bf223f *)arg1;
+- (void)addWorkoutSample:(struct HDActivityCacheStatisticsBuilderSample)arg1 typeCode:(long long)arg2;
+- (void)addWorkouts:(const vector_53e1d725 *)arg1;
+- (id)createExerciseStatisticsWithIntervalComponents:(id)arg1 calendar:(id)arg2;
+- (id)createMoveStatisticsWithIntervalComponents:(id)arg1 calendar:(id)arg2;
+- (id)createStandStatisticsWithCalendar:(id)arg1;
 - (id)createStatisticsCollectionWithType:(id)arg1 intervalComponents:(id)arg2 calendar:(id)arg3;
+- (double)deepBreathingDurationValue;
 - (id)distanceWalkingValue;
 - (long long)exerciseMinuteValue;
 - (id)flightsClimbedValue;
 - (id)init;
 - (id)initWithTimePeriod:(id)arg1 loggingName:(id)arg2;
+- (long long)pushCountValue;
 - (long long)standHourValue;
 - (long long)stepCountValue;
+- (id)workoutSamplesWithSourceManager:(id)arg1;
 
 @end
 

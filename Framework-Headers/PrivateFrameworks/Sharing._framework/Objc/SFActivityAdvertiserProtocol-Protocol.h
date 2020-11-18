@@ -6,9 +6,12 @@
 
 #import <Sharing/NSObject-Protocol.h>
 
-@class NSData, NSDictionary;
+@class NSData, NSDictionary, NSString;
 
 @protocol SFActivityAdvertiserProtocol <NSObject>
 - (void)advertiseAdvertisementPayload:(NSData *)arg1 options:(NSDictionary *)arg2 withErrorHandler:(void (^)(NSError *))arg3;
+- (void)loginIDWithOptions:(NSDictionary *)arg1 completionHandler:(void (^)(NSString *, NSError *))arg2;
+- (void)pairedSFPeerDevicesWithOptions:(NSDictionary *)arg1 completionHandler:(void (^)(NSSet *, NSError *))arg2;
+- (void)peerForUUID:(NSString *)arg1 completionHandler:(void (^)(SFPeerDevice *, NSError *))arg2;
 @end
 

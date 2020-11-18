@@ -40,7 +40,6 @@
     BOOL __needsUpdateZoomAndScroll;
     id<PUUserTransformViewDelegate> _delegate;
     unsigned long long _enabledInteractions;
-    UIImage *_debugScrollViewContentImage;
     UIScrollView *__scrollView;
     UIView *__scrollContentView;
     double __doubleTapZoomScale;
@@ -51,6 +50,7 @@
     double __preferredMinimumZoomScale;
     double __preferredMaximumZoomScale;
     long long __numberOfNestedZoomAndScrollChanges;
+    UIImage *_debugScrollViewContentImage;
     struct CGSize _contentPixelSize;
     struct CGSize _scrollPadding;
     struct CGPoint __contentCenter;
@@ -96,7 +96,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long enabledInteractions; // @synthesize enabledInteractions=_enabledInteractions;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL isUserInteracting; // @synthesize isUserInteracting=_isUserInteracting;
+@property (nonatomic, setter=_setUserInteracting:) BOOL isUserInteracting; // @synthesize isUserInteracting=_isUserInteracting;
 @property (nonatomic) struct CGSize scrollPadding; // @synthesize scrollPadding=_scrollPadding;
 @property (readonly) Class superclass;
 @property (nonatomic) struct CGRect untransformedContentFrame; // @synthesize untransformedContentFrame=_untransformedContentFrame;
@@ -125,7 +125,6 @@
 - (void)_setEnabledInteractions:(unsigned long long)arg1;
 - (void)_setNeedsStateUpdate;
 - (void)_setUserAffineTransform:(struct CGAffineTransform)arg1;
-- (void)_setUserInteracting:(BOOL)arg1;
 - (void)_updateAnimatingZoomEndIfNeeded;
 - (void)_updateContentStateIfNeeded;
 - (void)_updateDisplayLink;

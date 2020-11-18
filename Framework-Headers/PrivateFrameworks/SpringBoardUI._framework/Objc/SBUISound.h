@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVItem, NSDictionary, NSString;
+@class AVItem, NSDictionary, NSString, TLAlertConfiguration;
 
 @interface SBUISound : NSObject
 {
@@ -20,20 +20,19 @@
     BOOL _repeats;
     double _maxDuration;
     NSDictionary *_controllerAttributes;
-    int _alertType;
-    NSString *_accountIdentifier;
-    NSString *_toneIdentifier;
-    NSString *_vibrationIdentifier;
-    NSString *_resolvedToneIdentifier;
+    TLAlertConfiguration *_alertConfiguration;
     CDUnknownBlockType _completionBlock;
     NSString *_songPath;
+    long long _eventType;
+    long long _alertType;
 }
 
 @property (nonatomic, setter=_setResolvedSoundID:) unsigned int _resolvedSystemSoundID; // @synthesize _resolvedSystemSoundID;
-@property (copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
-@property (nonatomic) int alertType; // @synthesize alertType=_alertType;
+@property (copy, nonatomic) TLAlertConfiguration *alertConfiguration; // @synthesize alertConfiguration=_alertConfiguration;
+@property (nonatomic) long long alertType; // @synthesize alertType=_alertType;
 @property (strong, nonatomic) AVItem *avItem; // @synthesize avItem=_avItem;
 @property (strong, nonatomic) NSDictionary *controllerAttributes; // @synthesize controllerAttributes=_controllerAttributes;
+@property (nonatomic) long long eventType; // @synthesize eventType=_eventType;
 @property (nonatomic) double maxDuration; // @synthesize maxDuration=_maxDuration;
 @property (nonatomic, getter=isRepeating) BOOL repeats; // @synthesize repeats=_repeats;
 @property (strong, nonatomic) NSString *ringtoneName; // @synthesize ringtoneName=_ringtoneName;
@@ -41,22 +40,21 @@
 @property (nonatomic) unsigned long long soundBehavior; // @synthesize soundBehavior=_soundBehavior;
 @property (nonatomic) long long soundType; // @synthesize soundType=_soundType;
 @property (nonatomic) unsigned int systemSoundID; // @synthesize systemSoundID=_systemSoundID;
-@property (copy, nonatomic) NSString *toneIdentifier; // @synthesize toneIdentifier=_toneIdentifier;
-@property (copy, nonatomic) NSString *vibrationIdentifier; // @synthesize vibrationIdentifier=_vibrationIdentifier;
 @property (strong, nonatomic) NSDictionary *vibrationPattern; // @synthesize vibrationPattern=_vibrationPattern;
 
++ (id)soundWithFeedbackEventType:(long long)arg1;
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_completionBlock;
-- (id)_resolvedToneIdentifier;
 - (void)_setCompletionBlock:(CDUnknownBlockType)arg1;
-- (void)_setResolvedToneIdentifier:(id)arg1;
 - (id)description;
 - (id)initWithAVItem:(id)arg1 vibrationPattern:(id)arg2 repeats:(BOOL)arg3 maxDuration:(double)arg4 controllerAttributes:(id)arg5;
+- (id)initWithFeedbackEventType:(long long)arg1;
 - (id)initWithRingtone:(id)arg1 vibrationPattern:(id)arg2 repeats:(BOOL)arg3 maxDuration:(double)arg4 controllerAttributes:(id)arg5;
 - (id)initWithSong:(id)arg1 vibrationPattern:(id)arg2 repeats:(BOOL)arg3 maxDuration:(double)arg4 controllerAttributes:(id)arg5;
 - (id)initWithSystemSoundID:(unsigned int)arg1 behavior:(unsigned long long)arg2 vibrationPattern:(id)arg3;
 - (id)initWithSystemSoundPath:(id)arg1 behavior:(unsigned long long)arg2 vibrationPattern:(id)arg3;
-- (id)initWithToneAlert:(int)arg1 accountIdentifier:(id)arg2 toneIdentifier:(id)arg3 vibrationIdentifier:(id)arg4;
+- (id)initWithToneAlert:(long long)arg1 accountIdentifier:(id)arg2 toneIdentifier:(id)arg3 vibrationIdentifier:(id)arg4;
+- (id)initWithToneAlertConfiguration:(id)arg1;
 - (BOOL)isPlaying;
 - (BOOL)playInEvironments:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)stop;

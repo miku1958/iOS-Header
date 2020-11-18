@@ -7,26 +7,21 @@
 #import <Foundation/NSProxy.h>
 
 @class NSError, NSObject;
-@protocol OS_dispatch_group;
 
 @interface BRXPCSyncProxy : NSProxy
 {
     NSObject *_target;
-    NSObject<OS_dispatch_group> *_group;
     NSError *_error;
     id _result;
-    int _nested;
 }
 
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) id result; // @synthesize result=_result;
 
-- (void)dealloc;
-- (void)finalize;
+- (void).cxx_destruct;
 - (void)forwardInvocation:(id)arg1;
 - (id)initWithXPCObject:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
-- (id)resultWithTimeout:(int)arg1;
 - (void)setBoolResult:(BOOL)arg1 error:(id)arg2;
 - (void)setObjResult:(id)arg1 error:(id)arg2;
 

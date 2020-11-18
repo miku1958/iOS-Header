@@ -10,16 +10,15 @@
 {
     BOOL _eventInitialized;
     BOOL _hasEvent;
-    CDStruct_9f528be3 _gcEvent;
+    CDStruct_06eb3966 _gcEvent;
     unsigned long long _priority;
-    BOOL _shouldLog;
 }
 
 @property (readonly, nonatomic) unsigned long long controllerID;
-@property (readonly, nonatomic) CDStruct_9f528be3 *event;
+@property (readonly, nonatomic) CDStruct_06eb3966 *event;
 
 - (id)initWithButtons:(CDStruct_af4f530f *)arg1 controllerID:(unsigned long long)arg2;
-- (id)initWithGameControllerEvent:(const CDStruct_9f528be3 *)arg1 controllerID:(unsigned long long)arg2;
+- (id)initWithGameControllerEvent:(const CDStruct_06eb3966 *)arg1 controllerID:(unsigned long long)arg2;
 - (unsigned long long)priority;
 - (BOOL)shouldLog;
 - (unsigned long long)type;

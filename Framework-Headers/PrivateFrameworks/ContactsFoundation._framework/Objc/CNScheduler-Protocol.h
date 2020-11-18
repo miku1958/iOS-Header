@@ -10,7 +10,11 @@
 
 @protocol CNScheduler <NSObject>
 - (id<CNCancelable>)afterDelay:(double)arg1 performBlock:(void (^)(void))arg2;
+- (id<CNCancelable>)afterDelay:(double)arg1 performBlock:(void (^)(void))arg2 qualityOfService:(unsigned long long)arg3;
 - (void)performBlock:(void (^)(void))arg1;
+- (void)performBlock:(void (^)(void))arg1 qualityOfService:(unsigned long long)arg2;
 - (id<CNCancelable>)performCancelableBlock:(void (^)(CNCancelationToken *))arg1;
+- (id<CNCancelable>)performCancelableBlock:(void (^)(CNCancelationToken *))arg1 qualityOfService:(unsigned long long)arg2;
+- (double)timestamp;
 @end
 

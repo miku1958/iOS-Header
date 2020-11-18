@@ -13,7 +13,7 @@
 {
     NSObject<OS_dispatch_semaphore> *mCanEnqueueReaders;
     NSObject<OS_dispatch_group> *mInFlightReaders;
-    int mReaderSpinLock;
+    struct os_unfair_lock_s mReaderSpinLock;
     unsigned long long mReaderCount;
     NSObject<OS_dispatch_semaphore> *mReadLockSignal;
     long long mShutdownToken;

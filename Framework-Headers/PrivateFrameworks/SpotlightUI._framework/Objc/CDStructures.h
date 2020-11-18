@@ -16,20 +16,13 @@ struct CGPoint {
 };
 
 struct CGRect {
-    struct CGPoint _field1;
-    struct CGSize _field2;
+    struct CGPoint origin;
+    struct CGSize size;
 };
 
 struct CGSize {
-    double _field1;
-    double _field2;
-};
-
-struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
+    double width;
+    double height;
 };
 
 struct _NSRange {

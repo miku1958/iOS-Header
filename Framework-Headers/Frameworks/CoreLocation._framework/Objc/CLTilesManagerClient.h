@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary;
-@protocol OS_dispatch_queue, OS_xpc_object;
+@class CLTilesManagerClientInternal;
 
 @interface CLTilesManagerClient : NSObject
 {
-    NSObject<OS_xpc_object> *fXpcConnection;
-    NSObject<OS_dispatch_queue> *fQueue;
-    NSDictionary *fNotificationHandlers;
+    CLTilesManagerClientInternal *_internal;
 }
 
 + (void)initialize;

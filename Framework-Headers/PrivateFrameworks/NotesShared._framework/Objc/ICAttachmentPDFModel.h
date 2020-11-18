@@ -12,7 +12,8 @@
 
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
 + (int)populateSearchStrings:(id)arg1 url:(id)arg2 maxStringLength:(unsigned long long)arg3 isCancelledBlock:(CDUnknownBlockType)arg4;
-- (void)generatePreviews;
+- (BOOL)canMarkup;
+- (void)generatePreviewsInOperation:(id)arg1;
 - (id)generateSearchIndexStringsOperation;
 - (CDUnknownBlockType)genericBrickThumbnailCreator;
 - (CDUnknownBlockType)genericListThumbnailCreator;

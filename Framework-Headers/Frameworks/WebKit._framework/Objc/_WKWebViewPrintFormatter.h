@@ -6,22 +6,21 @@
 
 #import <UIKit/UIViewPrintFormatter.h>
 
-@class WKWebView, _WKFrameHandle;
+@class _WKFrameHandle;
 
 __attribute__((visibility("hidden")))
 @interface _WKWebViewPrintFormatter : UIViewPrintFormatter
 {
-    double _totalScaleFactor;
-    struct PrintInfo _printInfo;
-    _WKFrameHandle *_frameToPrint;
+    struct RetainPtr<_WKFrameHandle> _frameToPrint;
+    struct RetainPtr<CGPDFDocument *> _printedDocument;
 }
 
-@property (strong, nonatomic) _WKFrameHandle *frameToPrint; // @synthesize frameToPrint=_frameToPrint;
-@property (readonly, nonatomic) WKWebView *webView;
+@property (strong, nonatomic) _WKFrameHandle *frameToPrint;
 
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (long long)_recalcPageCount;
-- (void)dealloc;
+- (id)_webView;
 - (void)drawInRect:(struct CGRect)arg1 forPageAtIndex:(long long)arg2;
 - (struct CGRect)rectForPageAtIndex:(long long)arg1;
 

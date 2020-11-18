@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class IMHandle, NSArray, NSDate, NSDictionary, NSNumber, NSString;
 
@@ -22,7 +22,6 @@
 @property (readonly, strong, nonatomic) NSDate *dateEnded;
 @property (readonly, nonatomic) int endedError;
 @property (readonly, nonatomic) unsigned int endedReason;
-@property (readonly, nonatomic) BOOL hasAudioInterruption;
 @property (readonly, nonatomic) BOOL hasReceivedFirstFrame;
 @property (readonly, strong, nonatomic) IMHandle *initiatorIMHandle;
 @property (nonatomic) double invitationTimeoutTime;
@@ -30,6 +29,7 @@
 @property (readonly, nonatomic) BOOL isCaller;
 @property (nonatomic, setter=setMute:) BOOL isMute;
 @property (nonatomic) BOOL isSendingAudio;
+@property (nonatomic) BOOL isSendingVideo;
 @property (readonly, nonatomic) BOOL isStateFinal;
 @property (readonly, nonatomic) BOOL isVideo;
 @property (readonly, strong, nonatomic) IMHandle *otherIMHandle;
@@ -41,8 +41,6 @@
 - (BOOL)_isCallUpgradeTo:(id)arg1;
 - (BOOL)_isProxy;
 - (void)acceptInvitation;
-- (void)acceptInvitationWithHoldMusic;
-- (void)acceptInvitationWithSource:(id)arg1;
 - (id)account;
 - (void)cancelInvitation;
 - (void)dealloc;
@@ -53,6 +51,7 @@
 - (void)finalUpdate;
 - (void)forwardInvocation:(id)arg1;
 - (void)invite:(id)arg1 additionalPeers:(id)arg2;
+- (void)invite:(id)arg1 additionalPeers:(id)arg2 excludingPushTokens:(id)arg3;
 - (void)inviteAll;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)setLocalAspectRatio:(struct CGSize)arg1 cameraOrientation:(unsigned int)arg2 cameraType:(unsigned int)arg3;

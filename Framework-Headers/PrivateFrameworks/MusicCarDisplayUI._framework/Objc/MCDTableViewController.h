@@ -6,12 +6,12 @@
 
 #import <MediaPlayerUI/MPUTableViewController.h>
 
-@class AVExternalDevice, MPMediaPredicate, UIView;
+@class AVExternalDevice, MCDNowPlayingButton, MPMediaPredicate, UIColor, UIView;
 
 @interface MCDTableViewController : MPUTableViewController
 {
     AVExternalDevice *_externalDevice;
-    UIView *_nowPlayingButton;
+    MCDNowPlayingButton *_nowPlayingButton;
     UIView *_snapshotView;
     BOOL _limiting;
     MPMediaPredicate *_localPredicate;
@@ -19,11 +19,14 @@
     BOOL _limitedUI;
     BOOL _topLevel;
     BOOL _showMore;
+    UIColor *_tintColor;
 }
 
+@property (readonly) BOOL currentAppIsPlaying;
 @property (nonatomic) BOOL limitedUI; // @synthesize limitedUI=_limitedUI;
 @property (nonatomic) BOOL shouldHideIndexTitles; // @synthesize shouldHideIndexTitles=_shouldHideIndexTitles;
 @property (nonatomic) BOOL showMore; // @synthesize showMore=_showMore;
+@property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property (nonatomic) BOOL topLevel; // @synthesize topLevel=_topLevel;
 
 + (Class)_tableViewClass;
@@ -32,6 +35,7 @@
 - (void)_MCD_nowPlayingButtonAction:(id)arg1;
 - (void)_itemChanged:(id)arg1;
 - (void)_limitedUIDidChange;
+- (void)_nowPlayingDidChangeNotification:(id)arg1;
 - (void)_updateNowPlayingVisibility;
 - (BOOL)_viewControllerWasSelected;
 - (void)dataSourceDidInvalidate;
@@ -46,6 +50,7 @@
 - (void)tableView:(id)arg1 didUnhighlightRowAtIndexPath:(id)arg2;
 - (BOOL)tableView:(id)arg1 shouldChangeFocusedItem:(id)arg2 fromRowAtIndexPath:(id)arg3;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 willDisplayHeaderView:(id)arg2 forSection:(long long)arg3;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

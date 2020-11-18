@@ -6,7 +6,7 @@
 
 #import <CFNetwork/NSURLSessionTask.h>
 
-@class NSArray, NSDictionary, NSError, NSObject, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSession, NSURLSessionConfiguration, NSURLSessionTaskHTTPAuthenticator;
+@class NSArray, NSDictionary, NSError, NSMutableArray, NSObject, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSession, NSURLSessionConfiguration, NSURLSessionTaskDependency, NSURLSessionTaskDependencyTree, NSURLSessionTaskHTTPAuthenticator;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -74,9 +74,18 @@ __attribute__((visibility("hidden")))
     id _protocolForTask;
     NSURLSessionTaskHTTPAuthenticator *_authenticator;
     BOOL _shouldReportTimingDataToAWD;
+    NSString *_storagePartitionIdentifier;
+    NSDictionary *_dependencyInfo;
+    NSDictionary *_DuetActivityProperties;
+    NSURLSessionTaskDependencyTree *_dependencyTree;
+    NSURLSessionTaskDependency *_taskDependency;
+    NSString *_pathToDownloadTaskFile;
+    NSMutableArray *_transactionMetrics;
+    NSDictionary *_trailers;
 }
 
 + (BOOL)supportsSecureCoding;
+- (id)_DuetActivityProperties;
 - (unsigned long long)_allowedProtocolTypes;
 - (BOOL)_allowsCellular;
 - (id)_backgroundTaskTimingData;
@@ -102,6 +111,7 @@ __attribute__((visibility("hidden")))
 - (const struct XURLCache *)_createXURLCache;
 - (struct _CFURLRequest *)_currentCFURLRequest;
 - (unsigned int)_darkWakePowerAssertion;
+- (id)_dependencyInfo;
 - (BOOL)_disallowCellular;
 - (long long)_expectedWorkload;
 - (void)_getAuthenticationHeadersForResponse:(struct _CFURLResponse *)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -116,8 +126,10 @@ __attribute__((visibility("hidden")))
 - (void)_onSessionQueue_cleanupAndBreakCycles;
 - (void)_onqueue_adjustPriorityHint:(float)arg1;
 - (void)_onqueue_releasePowerAsssertion;
+- (id)_pathToDownloadTaskFile;
 - (struct __PerformanceTiming *)_performanceTiming;
 - (unsigned int)_powerAssertion;
+- (void)_prepareNewTimingDataContainer;
 - (BOOL)_preventsIdleSystemSleep;
 - (long long)_priority;
 - (long long)_priorityValue;
@@ -138,6 +150,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldSkipPreferredClientCertificateLookup;
 - (BOOL)_shouldUsePipelineHeuristics;
 - (id)_sslSettings;
+- (id)_storagePartitionIdentifier;
 - (BOOL)_strictContentLength;
 - (long long)_suspensionThreshhold;
 - (void)_takePreventIdleSleepAssertionIfAppropriate;
@@ -145,6 +158,8 @@ __attribute__((visibility("hidden")))
 - (double)_timeWindowDuration;
 - (double)_timeoutInterval;
 - (id)_timingData;
+- (id)_trailers;
+- (id)_transactionMetrics;
 - (id)_uniqueIdentifier;
 - (void)addAdditionalHeadersToRequest:(struct _CFURLRequest *)arg1;
 - (void)adjustConditionalConnectionProperties:(struct __CFDictionary *)arg1;
@@ -160,6 +175,7 @@ __attribute__((visibility("hidden")))
 - (id)currentRequest_URL;
 - (id)currentRequest_mainDocumentURL;
 - (void)dealloc;
+- (id)dependencyTree;
 - (id)description;
 - (id)error;
 - (id)initWithOriginalRequest:(id)arg1 updatedRequest:(id)arg2 ident:(unsigned long long)arg3 session:(id)arg4;
@@ -176,6 +192,7 @@ __attribute__((visibility("hidden")))
 - (void)setCountOfBytesReceived:(long long)arg1;
 - (void)setCountOfBytesSent:(long long)arg1;
 - (void)setCurrentRequest:(id)arg1;
+- (void)setDependencyTree:(id)arg1;
 - (void)setError:(id)arg1;
 - (void)setOriginalRequest:(id)arg1;
 - (void)setPriority:(float)arg1;
@@ -183,8 +200,10 @@ __attribute__((visibility("hidden")))
 - (void)setSession:(id)arg1;
 - (void)setStartTime:(double)arg1;
 - (void)setState:(long long)arg1;
+- (void)setTaskDependency:(id)arg1;
 - (void)setTaskDescription:(id)arg1;
 - (void)setTaskIdentifier:(unsigned long long)arg1;
+- (void)set_DuetActivityProperties:(id)arg1;
 - (void)set_allowedProtocolTypes:(unsigned long long)arg1;
 - (void)set_allowsCellular:(BOOL)arg1;
 - (void)set_backgroundTaskTimingData:(id)arg1;
@@ -200,6 +219,7 @@ __attribute__((visibility("hidden")))
 - (void)set_cookieAcceptPolicy:(int)arg1;
 - (void)set_currentCFURLRequest:(struct _CFURLRequest *)arg1;
 - (void)set_darkWakePowerAssertion:(unsigned int)arg1;
+- (void)set_dependencyInfo:(id)arg1;
 - (void)set_disallowCellular:(BOOL)arg1;
 - (void)set_expectedWorkload:(long long)arg1;
 - (void)set_ledBellyFallbackURL:(id)arg1;
@@ -208,6 +228,7 @@ __attribute__((visibility("hidden")))
 - (void)set_loadingPriority:(double)arg1;
 - (void)set_loadingPriorityValue:(double)arg1;
 - (void)set_networkServiceType:(int)arg1;
+- (void)set_pathToDownloadTaskFile:(id)arg1;
 - (void)set_performanceTiming:(struct __PerformanceTiming *)arg1;
 - (void)set_powerAssertion:(unsigned int)arg1;
 - (void)set_preventsIdleSystemSleep:(BOOL)arg1;
@@ -224,16 +245,19 @@ __attribute__((visibility("hidden")))
 - (void)set_shouldSkipPreferredClientCertificateLookup:(BOOL)arg1;
 - (void)set_shouldUsePipelineHeuristics:(BOOL)arg1;
 - (void)set_sslSettings:(id)arg1;
+- (void)set_storagePartitionIdentifier:(id)arg1;
 - (void)set_strictContentLength:(BOOL)arg1;
 - (void)set_suspensionThreshhold:(long long)arg1;
 - (void)set_timeWindowDelay:(double)arg1;
 - (void)set_timeWindowDuration:(double)arg1;
 - (void)set_timeoutInterval:(double)arg1;
+- (void)set_trailers:(id)arg1;
 - (void)set_uniqueIdentifier:(id)arg1;
 - (BOOL)shouldHandleCookiesAndSchemeIsAppropriate;
 - (double)startTime;
 - (long long)state;
 - (void)suspend;
+- (id)taskDependency;
 - (id)taskDescription;
 - (unsigned long long)taskIdentifier;
 - (void)updateCurrentRequest:(id)arg1;

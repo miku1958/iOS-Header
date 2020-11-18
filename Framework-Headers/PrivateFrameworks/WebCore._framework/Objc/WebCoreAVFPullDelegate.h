@@ -24,8 +24,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (id)initWithCallback:(struct MediaPlayerPrivateAVFoundationObjC *)arg1;
-- (void)outputMediaDataWillChange:(id)arg1;
-- (void)outputSequenceWasFlushed:(id)arg1;
+- (void)outputMediaDataWillChange:(struct AVPlayerItemVideoOutput *)arg1;
+- (void)outputSequenceWasFlushed:(struct AVPlayerItemVideoOutput *)arg1;
 - (void)setCallback:(struct MediaPlayerPrivateAVFoundationObjC *)arg1;
 
 @end

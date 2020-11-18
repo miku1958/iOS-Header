@@ -11,9 +11,11 @@
 @interface SubtitleCellWithAdditionalDetail : EKUIConstrainedFontsTableViewCell
 {
     UILabel *_additionalDetailLabel;
+    id _source;
 }
 
 @property (readonly, strong, nonatomic) UILabel *additionalDetailLabel;
+@property id source; // @synthesize source=_source;
 
 - (void).cxx_destruct;
 - (void)layoutSubviews;

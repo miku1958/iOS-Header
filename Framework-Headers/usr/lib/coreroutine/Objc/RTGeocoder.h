@@ -8,7 +8,6 @@
 
 @protocol GEOMapServiceTicket;
 
-__attribute__((visibility("hidden")))
 @interface RTGeocoder : NSObject
 {
     id<GEOMapServiceTicket> _ticket;
@@ -22,6 +21,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)geocodeAddressDictionary:(id)arg1 error:(id *)arg2;
 - (void)geocodeAddressDictionary:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (id)geocodeAddressString:(id)arg1 error:(id *)arg2;
+- (void)geocodeAddressString:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (id)geocodeLatitude:(double)arg1 longitude:(double)arg2 error:(id *)arg3;
 - (void)geocodeLatitude:(double)arg1 longitude:(double)arg2 handler:(CDUnknownBlockType)arg3;
 

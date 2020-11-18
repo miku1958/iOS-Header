@@ -13,17 +13,20 @@
 
 @interface HMSetupAccessoryDescription : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _addAndSetupAccessories;
     NSUUID *_accessoryUUID;
     NSString *_accessoryName;
 }
 
 @property (readonly, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;
 @property (readonly, nonatomic) NSUUID *accessoryUUID; // @synthesize accessoryUUID=_accessoryUUID;
+@property (readonly, nonatomic) BOOL addAndSetupAccessories; // @synthesize addAndSetupAccessories=_addAndSetupAccessories;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initToSetupAccessories;
 - (id)initWithAccessoryUUID:(id)arg1 accessoryName:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 

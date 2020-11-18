@@ -28,6 +28,7 @@
 - (void)dealloc;
 - (void)drawBackgroundWithFrame:(struct CGRect)arg1 inView:(id)arg2 characterRange:(struct _NSRange)arg3 layoutManager:(id)arg4;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTable:(id)arg1 startingRow:(long long)arg2 rowSpan:(long long)arg3 startingColumn:(long long)arg4 columnSpan:(long long)arg5;
 - (struct CGRect)rectForLayoutAtPoint:(struct CGPoint)arg1 inRect:(struct CGRect)arg2 textContainer:(id)arg3 characterRange:(struct _NSRange)arg4;

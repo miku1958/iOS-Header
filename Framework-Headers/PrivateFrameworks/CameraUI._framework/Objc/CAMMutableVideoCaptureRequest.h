@@ -7,13 +7,14 @@
 #import <CameraUI/CAMVideoCaptureRequest.h>
 
 #import <CameraUI/CAMMutableCaptureRequestLocation-Protocol.h>
+#import <CameraUI/CAMMutableCaptureRequestOrigin-Protocol.h>
 #import <CameraUI/CAMMutableCaptureRequestPersistence-Protocol.h>
 #import <CameraUI/CAMMutableCaptureRequestPower-Protocol.h>
 
 @class CLLocation, NSString, NSURL;
 @protocol CAMVideoCaptureRequestDelegate;
 
-@interface CAMMutableVideoCaptureRequest : CAMVideoCaptureRequest <CAMMutableCaptureRequestPersistence, CAMMutableCaptureRequestLocation, CAMMutableCaptureRequestPower>
+@interface CAMMutableVideoCaptureRequest : CAMVideoCaptureRequest <CAMMutableCaptureRequestPersistence, CAMMutableCaptureRequestLocation, CAMMutableCaptureRequestPower, CAMMutableCaptureRequestOrigin>
 {
 }
 
@@ -21,6 +22,7 @@
 @property (nonatomic) long long captureDevice; // @dynamic captureDevice;
 @property (nonatomic) long long captureMode; // @dynamic captureMode;
 @property (nonatomic) long long captureOrientation; // @dynamic captureOrientation;
+@property (nonatomic) long long captureVideoConfiguration; // @dynamic captureVideoConfiguration;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) unsigned long long deferredPersistenceOptions;
 @property (weak, nonatomic) id<CAMVideoCaptureRequestDelegate> delegate; // @dynamic delegate;
@@ -30,6 +32,7 @@
 @property (strong, nonatomic) CLLocation *location;
 @property (nonatomic) double maximumRecordedDuration; // @dynamic maximumRecordedDuration;
 @property (nonatomic) long long maximumRecordedFileSize; // @dynamic maximumRecordedFileSize;
+@property (nonatomic) long long origin;
 @property (nonatomic) long long persistenceOptions;
 @property (copy, nonatomic) NSString *persistenceUUID;
 @property (nonatomic) long long physicalButtonType; // @dynamic physicalButtonType;
@@ -40,12 +43,12 @@
 @property (nonatomic) BOOL shouldGenerateVideoPreviewImage; // @dynamic shouldGenerateVideoPreviewImage;
 @property (nonatomic) BOOL shouldPersistDiagnosticsToSidecar;
 @property (readonly) Class superclass;
+@property (nonatomic) long long temporaryPersistenceOptions;
 @property (nonatomic, getter=isTimelapse) BOOL timelapse; // @dynamic timelapse;
 @property (nonatomic) long long torchMode; // @dynamic torchMode;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
-- (void)setParameter:(id)arg1 forKey:(id)arg2;
 
 @end
 

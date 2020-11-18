@@ -6,20 +6,20 @@
 
 #import <PhotosUI/PUAssetsDataSource.h>
 
-@class NSCache, NSString, PUPhotosDataSource, PUPhotosDataSourceChange;
+@class NSCache, NSString, PXPhotosDataSource, PXPhotosDataSourceChange;
 
 @interface PUPhotoKitAssetsDataSource : PUAssetsDataSource
 {
-    PUPhotosDataSource *_photosDataSource;
-    PUPhotosDataSourceChange *_change;
+    PXPhotosDataSource *_photosDataSource;
+    PXPhotosDataSourceChange *_change;
     NSString *_changeFromDataSourceIdentifier;
     NSCache *__assetReferenceByIndexPathCache;
 }
 
 @property (readonly, nonatomic) NSCache *_assetReferenceByIndexPathCache; // @synthesize _assetReferenceByIndexPathCache=__assetReferenceByIndexPathCache;
-@property (readonly, nonatomic) PUPhotosDataSourceChange *change; // @synthesize change=_change;
+@property (readonly, nonatomic) PXPhotosDataSourceChange *change; // @synthesize change=_change;
 @property (readonly, nonatomic) NSString *changeFromDataSourceIdentifier; // @synthesize changeFromDataSourceIdentifier=_changeFromDataSourceIdentifier;
-@property (readonly, nonatomic) PUPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
+@property (readonly, nonatomic) PXPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
 
 - (void).cxx_destruct;
 - (id)assetAtIndexPath:(id)arg1;

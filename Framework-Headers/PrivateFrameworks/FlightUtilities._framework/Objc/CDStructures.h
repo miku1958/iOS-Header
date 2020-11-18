@@ -15,6 +15,18 @@ struct CGSize {
     double _field2;
 };
 
+struct CLLocationCoordinate2D {
+    double latitude;
+    double longitude;
+};
+
+struct UIEdgeInsets {
+    double top;
+    double left;
+    double bottom;
+    double right;
+};
+
 struct _xmlDict;
 
 struct _xmlDoc {
@@ -68,11 +80,4 @@ struct _xmlNode {
 };
 
 struct _xmlNs;
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    double latitude;
-    double longitude;
-} CDStruct_2c43369c;
 

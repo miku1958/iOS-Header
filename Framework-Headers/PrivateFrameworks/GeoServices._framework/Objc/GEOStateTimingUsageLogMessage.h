@@ -14,15 +14,14 @@
 {
     double _durationInOldState;
     NSMutableArray *_stateTransitionLogMessages;
-    struct {
-        unsigned int durationInOldState:1;
-    } _has;
+    CDStruct_ef245c49 _has;
 }
 
 @property (nonatomic) double durationInOldState; // @synthesize durationInOldState=_durationInOldState;
 @property (nonatomic) BOOL hasDurationInOldState;
 @property (strong, nonatomic) NSMutableArray *stateTransitionLogMessages; // @synthesize stateTransitionLogMessages=_stateTransitionLogMessages;
 
++ (Class)stateTransitionLogMessageType;
 - (void)addStateTransitionLogMessage:(id)arg1;
 - (void)clearStateTransitionLogMessages;
 - (void)copyTo:(id)arg1;

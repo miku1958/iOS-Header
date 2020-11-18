@@ -29,6 +29,7 @@
 + (struct CGImage *)createCGImageFromCUINamedImage:(struct CGImage *)arg1 withSize:(struct CGSize)arg2 atRect:(struct CGRect)arg3;
 + (id)findTextureNamed:(id)arg1;
 + (id)getSupportedPostfixes;
++ (id)lookupCachedTextureNamed:(id)arg1;
 + (void)preloadTextureAtlases:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (void)preloadTextureAtlasesNamed:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id).cxx_construct;
@@ -45,7 +46,6 @@
 - (void)loadTextures;
 - (void)loadTexturesFromCUIImageAtlas:(id)arg1;
 - (void)parseAtlasPropertyList:(id)arg1 withPath:(id)arg2;
-- (void)preload;
 - (void)preloadWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)textureNamed:(id)arg1;
 - (void)unload;

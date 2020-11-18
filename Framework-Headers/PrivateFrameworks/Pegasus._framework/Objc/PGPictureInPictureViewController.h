@@ -8,7 +8,7 @@
 
 #import <Pegasus/PGPictureInPictureControlsViewControllerDelegate-Protocol.h>
 
-@class NSString, PGHostedWindowHostingHandle, PGLayerHostView, PGLoadingIndicatorView, PGPictureInPictureApplication, PGPictureInPictureControlsViewController, PGStashedView, UIView;
+@class NSArray, NSString, PGHostedWindowHostingHandle, PGLayerHostView, PGLoadingIndicatorView, PGPictureInPictureApplication, PGPictureInPictureControlsViewController, PGPlaybackProgress, PGStashedView, UIView;
 @protocol PGPictureInPictureViewControllerContentContainer, PGPictureInPictureViewControllerDelegate;
 
 @interface PGPictureInPictureViewController : UIViewController <PGPictureInPictureControlsViewControllerDelegate>
@@ -16,21 +16,23 @@
     long long _stashState;
     PGHostedWindowHostingHandle *_hostedWindowHostingHandle;
     struct CGAffineTransform _layerHostTransform;
-    unsigned int _showsAlternateActionButtonImage:1;
-    unsigned int _showsLoadingIndicator:1;
+    BOOL _showsAlternateActionButtonImage;
+    BOOL _showsLoadingIndicator;
+    PGPlaybackProgress *_playbackProgress;
+    NSArray *_loadedTimeRanges;
     UIView *_styleViewBelow;
+    UIView *_containerView;
     PGLayerHostView *_contentView;
     PGLoadingIndicatorView *_loadingIndicatorView;
     PGStashedView *_stashedView;
     UIView *_styleViewAbove;
     PGPictureInPictureControlsViewController *_controlsViewController;
-    unsigned int _initialLayerFrameIsNull:1;
+    BOOL _initialLayerFrameIsNull;
     id<PGPictureInPictureViewControllerDelegate> _delegate;
     struct {
         unsigned int pictureInPictureViewController_updateHostedWindowSize_animationType_initialSpringVelocity:1;
         unsigned int pictureInPictureViewControllerHostedWindowSizeChangeBegan:1;
         unsigned int pictureInPictureViewControllerHostedWindowSizeChangeEnded:1;
-        unsigned int pictureInPictureViewController_controlsVisibilityChanged_animated:1;
         unsigned int pictureInPictureViewControllerStopButtonTapped:1;
         unsigned int pictureInPictureViewControllerActionButtonTapped:1;
         unsigned int pictureInPictureViewControllerCancelButtonTapped:1;
@@ -49,6 +51,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PGHostedWindowHostingHandle *hostedWindowHostingHandle;
+@property (strong, nonatomic) NSArray *loadedTimeRanges;
+@property (strong, nonatomic) PGPlaybackProgress *playbackProgress;
 @property (nonatomic) BOOL showsAlternateActionButtonImage;
 @property (nonatomic) BOOL showsLoadingIndicator;
 @property (nonatomic) long long stashState;
@@ -68,7 +72,6 @@
 - (void)performStartAnimationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)performStopAnimationWithFinalLayerFrame:(struct CGRect)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performSuspendAnimationWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)pictureInPictureControlsViewController:(id)arg1 controlsVisibilityChanged:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)pictureInPictureControlsViewControllerActionButtonTapped:(id)arg1;
 - (void)pictureInPictureControlsViewControllerCancelButtonTapped:(id)arg1;
 - (BOOL)pictureInPictureControlsViewControllerShouldHandleDoubleTapGesture:(id)arg1;
@@ -78,8 +81,8 @@
 - (void)prepareStartAnimationWithInitialLayerFrame:(struct CGRect)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setPreferredContentSize:(struct CGSize)arg1;
 - (void)setStashState:(long long)arg1 animated:(BOOL)arg2;
-- (void)startShowingControls;
-- (void)stopShowingControls;
+- (void)startShowingControlsAnimated:(BOOL)arg1;
+- (void)stopShowingControlsAnimated:(BOOL)arg1;
 - (void)updateHostedWindowSize:(struct CGSize)arg1;
 - (void)updateLayerHostTransform:(struct CGAffineTransform)arg1;
 

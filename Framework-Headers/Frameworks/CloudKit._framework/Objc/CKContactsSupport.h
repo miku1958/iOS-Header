@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) Class CKCNContactFetchRequest;
 @property (readonly, nonatomic) Class CKCNContactStore;
 @property (readonly, nonatomic) Class CKCNMutableContact;
+@property (readonly, nonatomic) Class CKCNPhoneNumber;
 
 + (id)sharedInstance;
 

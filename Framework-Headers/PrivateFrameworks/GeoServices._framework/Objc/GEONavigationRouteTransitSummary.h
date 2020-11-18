@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSMutableArray *possibleStops; // @synthesize possibleStops=_possibleStops;
 @property (strong, nonatomic) NSMutableArray *scheduledLinks; // @synthesize scheduledLinks=_scheduledLinks;
 
++ (Class)possibleStopType;
++ (Class)scheduledLinkType;
 - (void)addPossibleStop:(id)arg1;
 - (void)addScheduledLink:(id)arg1;
 - (void)clearPossibleStops;

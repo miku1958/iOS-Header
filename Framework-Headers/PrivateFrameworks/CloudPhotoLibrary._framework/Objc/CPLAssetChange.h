@@ -6,7 +6,7 @@
 
 #import <CloudPhotoLibrary/CPLItemChange.h>
 
-@class CLLocation, CPLAdjustments, CPLPlaceAnnotation, NSArray, NSDate, NSNumber, NSString;
+@class CLLocation, CPLAdjustments, CPLFaceAnalysisReference, CPLPlaceAnnotation, NSArray, NSData, NSDate, NSNumber, NSString;
 
 @interface CPLAssetChange : CPLItemChange
 {
@@ -41,8 +41,15 @@
     unsigned long long _assetHDRType;
     CPLAdjustments *_adjustments;
     unsigned long long _originalChoice;
+    long long _customRenderedValue;
     NSArray *_people;
+    long long _facesVersion;
+    NSString *_facesAdjustmentsFingerprint;
     CPLPlaceAnnotation *_placeAnnotation;
+    long long _playCount;
+    long long _shareCount;
+    long long _viewCount;
+    NSData *_facesData;
 }
 
 @property (copy, nonatomic) NSDate *addedDate; // @synthesize addedDate=_addedDate;
@@ -55,8 +62,13 @@
 @property (copy, nonatomic) NSString *caption; // @synthesize caption=_caption;
 @property (copy, nonatomic) NSString *collectionIdentifier; // @synthesize collectionIdentifier=_collectionIdentifier;
 @property (copy, nonatomic) NSString *collectionName; // @synthesize collectionName=_collectionName;
+@property (nonatomic) long long customRenderedValue; // @synthesize customRenderedValue=_customRenderedValue;
 @property (nonatomic) long long duration; // @synthesize duration=_duration;
 @property (copy, nonatomic) NSString *extendedDescription; // @synthesize extendedDescription=_extendedDescription;
+@property (copy, nonatomic) CPLFaceAnalysisReference *faces;
+@property (copy, nonatomic) NSString *facesAdjustmentsFingerprint; // @synthesize facesAdjustmentsFingerprint=_facesAdjustmentsFingerprint;
+@property (copy, nonatomic) NSData *facesData; // @synthesize facesData=_facesData;
+@property (nonatomic) long long facesVersion; // @synthesize facesVersion=_facesVersion;
 @property (nonatomic, getter=isFavorite) BOOL favorite; // @synthesize favorite=_favorite;
 @property (nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
 @property (copy, nonatomic) NSArray *keywords; // @synthesize keywords=_keywords;
@@ -70,7 +82,9 @@
 @property (nonatomic) unsigned long long originalChoice; // @synthesize originalChoice=_originalChoice;
 @property (copy, nonatomic) NSArray *people; // @synthesize people=_people;
 @property (strong, nonatomic) CPLPlaceAnnotation *placeAnnotation; // @synthesize placeAnnotation=_placeAnnotation;
+@property (nonatomic) long long playCount; // @synthesize playCount=_playCount;
 @property (copy, nonatomic) NSArray *resources; // @synthesize resources=_resources;
+@property (nonatomic) long long shareCount; // @synthesize shareCount=_shareCount;
 @property (copy, nonatomic) NSString *timeZoneName; // @synthesize timeZoneName=_timeZoneName;
 @property (copy, nonatomic) NSNumber *timeZoneOffset; // @synthesize timeZoneOffset=_timeZoneOffset;
 @property (nonatomic) long long videoComplementDurationTimescale; // @synthesize videoComplementDurationTimescale=_videoComplementDurationTimescale;
@@ -78,24 +92,35 @@
 @property (nonatomic) long long videoComplementImageDisplayTimescale; // @synthesize videoComplementImageDisplayTimescale=_videoComplementImageDisplayTimescale;
 @property (nonatomic) long long videoComplementImageDisplayValue; // @synthesize videoComplementImageDisplayValue=_videoComplementImageDisplayValue;
 @property (nonatomic) unsigned long long videoComplementVisibilityState; // @synthesize videoComplementVisibilityState=_videoComplementVisibilityState;
+@property (nonatomic) long long viewCount; // @synthesize viewCount=_viewCount;
 
++ (CDUnknownBlockType)copyPropertyBlockForDirection:(unsigned long long)arg1;
++ (BOOL)cplShouldIgnorePropertyForCoding:(id)arg1;
++ (BOOL)cplShouldIgnorePropertyForEquality:(id)arg1;
++ (CDUnknownBlockType)equalityBlockForDirection:(unsigned long long)arg1;
++ (BOOL)serverSupportsVision;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)addExpandedChangesToChangeBatch:(id)arg1 andApplyToClientCache:(id)arg2 error:(id *)arg3;
+- (id)allRelatedIdentifiers;
 - (void)awakeFromStorage;
 - (CDUnknownBlockType)checkDefaultValueBlockForPropertyWithSelector:(SEL)arg1;
-- (id)compactedChangeWithRelatedChanges:(id)arg1 isOnlyChange:(BOOL)arg2 usingClientCache:(id)arg3;
+- (id)compactedChangeWithRelatedChanges:(id)arg1 isOnlyChange:(BOOL)arg2 fullRecord:(id)arg3 usingClientCache:(id)arg4;
 - (long long)dequeueOrder;
 - (id)identifiersForMapping;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (void)prepareForStorage;
 - (id)propertiesDescription;
 - (id)propertiesForChangeType:(unsigned long long)arg1;
 - (id)proposedCloudIdentifierWithError:(id *)arg1;
 - (id)relatedIdentifier;
 - (void)setRelatedIdentifier:(id)arg1;
+- (BOOL)supportsDeletion;
 - (BOOL)supportsResources;
 - (id)translateToClientChangeUsingIDMapping:(id)arg1 error:(id *)arg2;
 - (id)translateToCloudChangeUsingIDMapping:(id)arg1 error:(id *)arg2;
+- (BOOL)validateChangeWithError:(id *)arg1;
 - (BOOL)validateFullRecord;
 
 @end

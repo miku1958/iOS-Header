@@ -21,8 +21,11 @@
     float _ivarQueue_rate;
     float _ivarQueue_volume;
     long long _ivarQueue_itemStatus;
+    NSError *_ivarQueue_itemError;
     CDStruct_1b6d18a9 _ivarQueue_itemForwardPlaybackEndTime;
     NSMutableDictionary *_observersByID;
+    void *_ivarQueueIdentifier;
+    void *_playerQueueIdentifier;
     id<ISWrappedAVPlayerDelegate> _delegate;
 }
 
@@ -49,6 +52,7 @@
 - (void)attachToPlayerLayerIfNeeded:(id)arg1;
 - (void)cancelPendingPrerolls;
 - (id)currentItem;
+- (id)currentItemError;
 - (long long)currentItemStatus;
 - (CDStruct_1b6d18a9)currentTime;
 - (void)dealloc;
@@ -65,6 +69,9 @@
 - (void)replaceCurrentItemWithPlayerItem:(id)arg1 thenCall:(CDUnknownBlockType)arg2;
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1 toleranceBefore:(CDStruct_1b6d18a9)arg2 toleranceAfter:(CDStruct_1b6d18a9)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setAllowsExternalPlayback:(BOOL)arg1;
+- (void)setAudioSession:(id)arg1;
+- (void)setDimensionsOfReservedVideoMemory:(struct CGSize)arg1;
+- (void)setItemBlendsVideoFrames:(BOOL)arg1;
 - (void)setItemForwardEndPlaybackTime:(CDStruct_1b6d18a9)arg1;
 - (void)setRate:(float)arg1;
 - (void)setRate:(float)arg1 time:(CDStruct_1b6d18a9)arg2 atHostTime:(CDStruct_1b6d18a9)arg3;

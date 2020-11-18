@@ -37,7 +37,6 @@ __attribute__((visibility("hidden")))
 - (id)_webFrame;
 - (unsigned long long)count;
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithHitTestResult:(const struct HitTestResult *)arg1;
 - (id)keyEnumerator;
 - (id)objectForKey:(id)arg1;

@@ -6,25 +6,26 @@
 
 #import <Foundation/NSOperation.h>
 
-@class NSError, NSString;
+@class NSError, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface NSFilesystemItemMoveOperation : NSOperation
 {
     id _delegate;
-    NSString *_sourcePath;
-    NSString *_destinationPath;
+    NSURL *_sourceURL;
+    NSURL *_destinationURL;
     NSError *_error;
+    unsigned long long _options;
 }
 
-+ (id)_errorWithErrno:(int)arg1 sourcePath:(id)arg2 destinationPath:(id)arg3;
-+ (id)filesystemItemMoveOperationWithSourcePath:(id)arg1 destinationPath:(id)arg2;
++ (id)_errorWithErrno:(int)arg1 sourceURL:(id)arg2 destinationURL:(id)arg3;
++ (id)filesystemItemMoveOperationWithSourceURL:(id)arg1 destinationURL:(id)arg2 options:(unsigned long long)arg3;
 - (void)_setError:(id)arg1;
 - (void)dealloc;
 - (id)delegate;
 - (id)error;
 - (BOOL)filesystemItemCopyOperation:(id)arg1 shouldProceedAfterError:(id)arg2 copyingItemAtPath:(id)arg3 toPath:(id)arg4;
-- (void)initWithSourcePath:(id)arg1 destinationPath:(id)arg2;
+- (void)initWithSourceURL:(id)arg1 destinationURL:(id)arg2 options:(unsigned long long)arg3;
 - (void)main;
 - (void)setDelegate:(id)arg1;
 

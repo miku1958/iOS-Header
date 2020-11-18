@@ -13,7 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityPostScreenChangedForChildViewController:(id)arg1 isAddition:(BOOL)arg2;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

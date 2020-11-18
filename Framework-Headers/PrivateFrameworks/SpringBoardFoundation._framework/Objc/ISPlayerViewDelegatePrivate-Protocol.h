@@ -11,7 +11,6 @@
 @protocol ISPlayerViewDelegatePrivate <ISPlayerViewDelegate>
 
 @optional
-- (void)playerViewPlayingVitalityChanged:(ISPlayerView *)arg1;
 - (AVPlayer *)videoPlayerForPlayerView:(ISPlayerView *)arg1;
 @end
 

@@ -24,6 +24,7 @@
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
+- (void)dealloc;
 - (void)dispose;
 - (void)handleNewFlow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)notifyRulesChanged;
@@ -31,6 +32,7 @@
 - (void)provideRemediationMap:(id)arg1;
 - (void)provideURLAppendStringMap:(id)arg1;
 - (void)startFilterWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)stopObserving;
 - (void)stopWithReason:(int)arg1;
 
 @end

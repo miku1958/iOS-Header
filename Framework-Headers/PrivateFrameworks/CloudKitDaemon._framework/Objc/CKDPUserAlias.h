@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
+- (int)StringAsType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

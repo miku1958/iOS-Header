@@ -25,12 +25,13 @@
 
 + (id)attributedStringWithMatchHighlightedWithString:(id)arg1 withinString:(id)arg2 usingAttributes:(id)arg3 insideFrame:(struct CGRect)arg4;
 + (id)attributesByHighlightingAttributes:(id)arg1;
-+ (id)bestMatchOfString:(id)arg1 withinString:(id)arg2;
++ (id)authorNameToHighlightForNote:(id)arg1 fromSearchResult:(id)arg2 matchWordBoundaries:(BOOL)arg3;
++ (id)bestMatchOfString:(id)arg1 withinString:(id)arg2 matchWordBoundaries:(BOOL)arg3;
 + (id)bestMatchTokensForString:(id)arg1;
 + (struct CGRect)boundingRectForAttributedString:(id)arg1 fittingSize:(struct CGSize)arg2;
 + (BOOL)canFitAttributedString:(id)arg1 ellipses:(id)arg2 shouldPrefixWithEllipses:(BOOL)arg3 insideFrame:(struct CGRect)arg4;
-+ (id)firstMatchOfString:(id)arg1 withinString:(id)arg2;
-+ (id)regularExpressionForSearchingWithString:(id)arg1;
++ (id)firstMatchOfString:(id)arg1 withinString:(id)arg2 matchWordBoundaries:(BOOL)arg3;
++ (id)regularExpressionForSearchingWithString:(id)arg1 matchWordBoundaries:(BOOL)arg2;
 + (id)snippetWithMatchHighlightedForNote:(id)arg1 fromSearchResult:(id)arg2 usingAttributes:(id)arg3 insideFrame:(struct CGRect)arg4;
 + (id)stringMatchHighlightedForAttributedString:(id)arg1 fromSearchResult:(id)arg2;
 + (id)stringMatchHighlightedForString:(id)arg1 atributedString:(id)arg2 searchString:(id)arg3;
@@ -38,6 +39,7 @@
 + (id)titleWithMatchHighlightedForNote:(id)arg1 fromSearchResult:(id)arg2 usingAttributes:(id)arg3 insideFrame:(struct CGRect)arg4;
 - (void).cxx_destruct;
 - (id)bestMatchWithinString:(id)arg1;
+- (id)bestMatchWithinString:(id)arg1 matchWordBoundaries:(BOOL)arg2;
 - (long long)compareByModificationDate:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

@@ -25,7 +25,6 @@
 - (void)setSiriViewServicePid:(int)arg1;
 - (void)setVoiceOverItemChooserVisible:(BOOL)arg1;
 - (void)userEventOccurred;
-- (void)wakeUpDeviceIfNecessary;
 - (void)zoomListenerRegistered;
 @end
 

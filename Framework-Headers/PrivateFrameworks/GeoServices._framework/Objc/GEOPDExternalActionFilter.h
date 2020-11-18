@@ -16,9 +16,11 @@
 @property (readonly, nonatomic) int *componentTypes;
 @property (readonly, nonatomic) unsigned long long componentTypesCount;
 
+- (int)StringAsComponentTypes:(id)arg1;
 - (void)addComponentType:(int)arg1;
 - (void)clearComponentTypes;
 - (int)componentTypeAtIndex:(unsigned long long)arg1;
+- (id)componentTypesAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

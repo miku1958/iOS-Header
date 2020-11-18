@@ -27,8 +27,8 @@
 
 + (void)initialize;
 - (void)_addFPListeners;
+- (void)_attachToPlayer:(id)arg1;
 - (void)_removeFPListeners;
-- (void)_setFigPlayer:(struct OpaqueFigPlayer *)arg1;
 - (id)_weakReference;
 - (void)dealloc;
 - (id)init;

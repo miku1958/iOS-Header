@@ -6,7 +6,7 @@
 
 #import <VectorKit/VKTileSource.h>
 
-@class NSArray, NSMutableArray, NSObject;
+@class NSArray, NSMutableArray, NSMutableSet, NSObject;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_group> *_renderGroup;
     NSObject<OS_dispatch_queue> *_homeQ;
     BOOL _overrideMaxZoomLevel;
+    NSMutableSet *_worldSizedOverlays;
 }
 
 @property (readonly, nonatomic) NSArray *overlays;
@@ -34,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)insertOverlay:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)insertOverlay:(id)arg1 belowOverlay:(id)arg2;
 - (void)invalidate;
-- (void)invalidateRect:(const CDStruct_d2b197d1 *)arg1 level:(long long)arg2;
+- (void)invalidateRect:(const Box_3d7e3c2c *)arg1 level:(long long)arg2;
 - (unsigned int)maximumDownloadZoomLevel;
 - (BOOL)maximumZoomLevelBoundsCamera;
 - (unsigned int)minimumDownloadZoomLevel;

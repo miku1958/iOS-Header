@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSDictionary;
+@class CUICatalog, CUIStyleEffectConfiguration, NSDictionary;
 
 @interface NSStringDrawingContext : NSObject
 {
@@ -16,6 +16,8 @@
     double _actualTrackingAdjustment;
     struct CGRect _totalBounds;
     NSDictionary *_linkAttributes;
+    CUICatalog *_CUICatalog;
+    CUIStyleEffectConfiguration *_CUIStyleEffects;
     unsigned long long _numberOfLineFragments;
     unsigned long long _maximumNumberOfLines;
     double _baselineOffset;
@@ -42,6 +44,8 @@
 @property (nonatomic) double actualTrackingAdjustment; // @synthesize actualTrackingAdjustment=_actualTrackingAdjustment;
 @property (nonatomic) double baselineOffset; // @synthesize baselineOffset=_baselineOffset;
 @property (nonatomic) BOOL cachesLayout;
+@property (strong, nonatomic) CUICatalog *cuiCatalog; // @synthesize cuiCatalog=_CUICatalog;
+@property (strong, nonatomic) CUIStyleEffectConfiguration *cuiStyleEffects; // @synthesize cuiStyleEffects=_CUIStyleEffects;
 @property (nonatomic) BOOL drawsDebugBaselines;
 @property (nonatomic) double firstBaselineOffset; // @synthesize firstBaselineOffset=_firstBaselineOffset;
 @property (strong, nonatomic) id layout; // @synthesize layout=_layout;

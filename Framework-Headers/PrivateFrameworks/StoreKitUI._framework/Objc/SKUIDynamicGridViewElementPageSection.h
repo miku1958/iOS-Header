@@ -68,7 +68,7 @@
 - (id)backgroundColorForIndexPath:(id)arg1;
 - (id)cellForIndexPath:(id)arg1;
 - (struct CGSize)cellSizeForIndexPath:(id)arg1;
-- (void)collectionViewDidConfirmButtonElement:(id)arg1 forItemAtIndexPath:(id)arg2;
+- (void)collectionViewDidConfirmButtonElement:(id)arg1 withClickInfo:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionViewDidSelectItemAtIndexPath:(id)arg1;
 - (void)collectionViewWillApplyLayoutAttributes:(id)arg1;
 - (void)dealloc;

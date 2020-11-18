@@ -19,6 +19,7 @@
 + (void)willBeginFirstTransaction;
 - (id)databasesWithOrigin:(id)arg1;
 - (void)deleteAllDatabases;
+- (void)deleteAllIndexedDatabases;
 - (BOOL)deleteDatabase:(id)arg1 withOrigin:(id)arg2;
 - (BOOL)deleteOrigin:(id)arg1;
 - (id)detailsForDatabase:(id)arg1 withOrigin:(id)arg2;

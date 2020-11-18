@@ -6,8 +6,8 @@
 
 #import <Metal/NSObject-Protocol.h>
 
-@class MTLCompileOptions, MTLComputePipelineDescriptor, MTLDepthStencilDescriptor, MTLRenderPipelineDescriptor, MTLSamplerDescriptor, MTLTextureDescriptor, NSObject, NSString;
-@protocol MTLBuffer, MTLCommandQueue, MTLComputePipelineState, MTLDepthStencilState, MTLFunction, MTLLibrary, MTLRenderPipelineState, MTLSamplerState, MTLTexture, OS_dispatch_data;
+@class MTLCompileOptions, MTLComputePipelineDescriptor, MTLDepthStencilDescriptor, MTLHeapDescriptor, MTLRenderPipelineDescriptor, MTLSamplerDescriptor, MTLTextureDescriptor, NSBundle, NSObject, NSString;
+@protocol MTLBuffer, MTLCommandQueue, MTLComputePipelineState, MTLDepthStencilState, MTLFence, MTLFunction, MTLHeap, MTLLibrary, MTLRenderPipelineState, MTLSamplerState, MTLTexture, OS_dispatch_data;
 
 @protocol MTLDevice <NSObject>
 
@@ -16,7 +16,10 @@
 @property (readonly, getter=isLowPower) BOOL lowPower;
 @property (readonly) CDStruct_14f26992 maxThreadsPerThreadgroup;
 @property (readonly) NSString *name;
+@property (readonly) unsigned long long recommendedMaxWorkingSetSize;
 
+- (CDStruct_4bcfbbae)heapBufferSizeAndAlignWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
+- (CDStruct_4bcfbbae)heapTextureSizeAndAlignWithDescriptor:(MTLTextureDescriptor *)arg1;
 - (id<MTLBuffer>)newBufferWithBytes:(const void *)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3;
 - (id<MTLBuffer>)newBufferWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3 deallocator:(void (^)(void *, unsigned long long))arg4;
 - (id<MTLBuffer>)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
@@ -29,7 +32,10 @@
 - (void)newComputePipelineStateWithFunction:(id<MTLFunction>)arg1 options:(unsigned long long)arg2 completionHandler:(void (^)(id<MTLComputePipelineState>, MTLComputePipelineReflection *, NSError *))arg3;
 - (id<MTLComputePipelineState>)newComputePipelineStateWithFunction:(id<MTLFunction>)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
 - (id<MTLLibrary>)newDefaultLibrary;
+- (id<MTLLibrary>)newDefaultLibraryWithBundle:(NSBundle *)arg1 error:(id *)arg2;
 - (id<MTLDepthStencilState>)newDepthStencilStateWithDescriptor:(MTLDepthStencilDescriptor *)arg1;
+- (id<MTLFence>)newFence;
+- (id<MTLHeap>)newHeapWithDescriptor:(MTLHeapDescriptor *)arg1;
 - (id<MTLLibrary>)newLibraryWithData:(NSObject<OS_dispatch_data> *)arg1 error:(id *)arg2;
 - (id<MTLLibrary>)newLibraryWithFile:(NSString *)arg1 error:(id *)arg2;
 - (void)newLibraryWithSource:(NSString *)arg1 options:(MTLCompileOptions *)arg2 completionHandler:(void (^)(id<MTLLibrary>, NSError *))arg3;

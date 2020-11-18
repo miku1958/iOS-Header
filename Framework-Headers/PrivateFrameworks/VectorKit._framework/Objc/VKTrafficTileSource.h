@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     VKTrafficDynamicTileSource *_dynamicTileSource;
     VKTileCache *_recentTrafficTiles;
     struct TrafficMeshStyle _trafficMeshStyle;
+    BOOL _buildTrafficTexture;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -40,26 +41,27 @@ __attribute__((visibility("hidden")))
 - (void)failedToDecodeSourceKey:(const struct VKTileKey *)arg1;
 - (void)fetchTileForKey:(const struct VKTileKey *)arg1;
 - (void)fetchedTile:(id)arg1 forKey:(const struct VKTileKey *)arg2;
-- (id)initWithSkeletonTileSet:(id)arg1 dynamicTileSet:(id)arg2 resourceManifestConfiguration:(id)arg3 locale:(id)arg4;
+- (id)initWithSkeletonTileSet:(id)arg1 dynamicTileSet:(id)arg2 resourceManifestConfiguration:(id)arg3 locale:(id)arg4 sharedResources:(id)arg5;
 - (void)invalidateTilesFromTileSource:(id)arg1;
 - (long long)maximumZoomLevel;
+- (BOOL)minimumZoomLevelBoundsCamera;
 - (void)populateVisibleTileSets:(id)arg1 withTiles:(id)arg2;
 - (void)sawTileForKey:(const struct VKTileKey *)arg1;
 - (void)setContentScale:(double)arg1;
+- (void)setMapType:(long long)arg1;
 - (void)setSharedResources:(id)arg1;
-- (void)setStyleManager:(shared_ptr_f06afc6c)arg1;
+- (void)setStyleManager:(shared_ptr_a3c46825)arg1;
 - (BOOL)shouldObeyHybridUnavailableRegions;
 - (id)tileForData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3;
 - (id)tileForKey:(const struct VKTileKey *)arg1;
 - (void)tileSource:(id)arg1 didFailToDecodeTileForKey:(const struct VKTileKey *)arg2;
 - (void)tileSource:(id)arg1 didFailToLoadTileForKey:(const struct VKTileKey *)arg2 error:(id)arg3;
 - (void)tileSource:(id)arg1 didFetchTile:(id)arg2 forKey:(const struct VKTileKey *)arg3;
-- (void)tileSource:(id)arg1 dirtyTilesWithinRect:(const CDStruct_d2b197d1 *)arg2 level:(long long)arg3;
+- (void)tileSource:(id)arg1 dirtyTilesWithinRect:(const Box_3d7e3c2c *)arg2 level:(long long)arg3;
 - (void)tileSource:(id)arg1 invalidateKey:(const struct VKTileKey *)arg2;
 - (void)tileSource:(id)arg1 invalidateKeys:(id)arg2;
 - (void)tileSource:(id)arg1 invalidateTilesWithState:(unsigned long long)arg2;
 - (BOOL)tileSource:(id)arg1 keyIsNeeded:(const struct VKTileKey *)arg2;
-- (BOOL)tileSourceMayUseNetwork:(id)arg1;
 - (void)willStartLoadingTiles;
 
 @end

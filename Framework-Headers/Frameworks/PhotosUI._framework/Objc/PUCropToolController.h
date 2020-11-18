@@ -10,7 +10,8 @@
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class CIImage, NSDictionary, NSMutableDictionary, NSString, PLImageGeometry, PLPhotoEditModel, PLPhotoEditRenderer, PUCropAndStraightenView, PUCropAspect, PUCropHandleView, PUCropOverlayView, PUCropToolControllerSpec, PUTiltWheelControl, UIAlertController, UIButton, UIImage, UIView;
+@class CIImage, NSDictionary, NSMutableDictionary, NSObject, NSString, PLImageGeometry, PLPhotoEditModel, PLPhotoEditRenderer, PUCropAndStraightenView, PUCropAspect, PUCropHandleView, PUCropOverlayView, PUCropToolControllerSpec, PUTiltWheelControl, PUVideoEditRenderer, UIAlertController, UIButton, UIImage, UIView;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface PUCropToolController : PUPhotoEditToolController <UIGestureRecognizerDelegate, PUCropAndStraightenViewDelegate, UIPopoverPresentationControllerDelegate>
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
     BOOL __ignoreTrackingUpdates;
     BOOL _trackingTiltControl;
     BOOL __needsImageLoad;
+    BOOL __needsLivePhotoLoad;
     BOOL __activeTool;
     BOOL __needsModelLoad;
     BOOL __modelChangeLocal;
@@ -43,8 +45,10 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *__animationTargetsByKeyPath;
     unsigned long long __rotatingAnimationCount;
     unsigned long long __contentViewsHiddenAnimationCount;
+    NSObject<OS_dispatch_queue> *__fileSystemQueue;
     PLPhotoEditModel *__lastKnownEditModel;
     PLPhotoEditRenderer *__renderer;
+    PUVideoEditRenderer *__videoRenderer;
     PLImageGeometry *__geometry;
     UIImage *__image;
     CIImage *__CIImage;
@@ -75,6 +79,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic, setter=_setCropToggleButtonTitle:) NSString *_cropToggleButtonTitle; // @synthesize _cropToggleButtonTitle=__cropToggleButtonTitle;
 @property (strong, nonatomic, setter=_setCropView:) PUCropAndStraightenView *_cropView; // @synthesize _cropView=__cropView;
 @property (nonatomic, setter=_setCropViewFrameForLastModelLoad:) struct CGRect _cropViewFrameForLastModelLoad; // @synthesize _cropViewFrameForLastModelLoad=__cropViewFrameForLastModelLoad;
+@property (strong, nonatomic, setter=_setFileSystemQueue:) NSObject<OS_dispatch_queue> *_fileSystemQueue; // @synthesize _fileSystemQueue=__fileSystemQueue;
 @property (strong, nonatomic, setter=_setGeometry:) PLImageGeometry *_geometry; // @synthesize _geometry=__geometry;
 @property (nonatomic, setter=_setHasAppliedCropSuggestion:) BOOL _hasAppliedCropSuggestion; // @synthesize _hasAppliedCropSuggestion=__hasAppliedCropSuggestion;
 @property (nonatomic, setter=_setHasAutoAppliedCropSuggestion:) BOOL _hasAutoAppliedCropSuggestion; // @synthesize _hasAutoAppliedCropSuggestion=__hasAutoAppliedCropSuggestion;
@@ -86,6 +91,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setLastKnownEditModel:) PLPhotoEditModel *_lastKnownEditModel; // @synthesize _lastKnownEditModel=__lastKnownEditModel;
 @property (nonatomic, getter=_isModelChangeLocal, setter=_setModelChangeLocal:) BOOL _modelChangeLocal; // @synthesize _modelChangeLocal=__modelChangeLocal;
 @property (nonatomic, setter=_setNeedsImageLoad:) BOOL _needsImageLoad; // @synthesize _needsImageLoad=__needsImageLoad;
+@property (nonatomic, setter=_setNeedsLivePhotoLoad:) BOOL _needsLivePhotoLoad; // @synthesize _needsLivePhotoLoad=__needsLivePhotoLoad;
 @property (nonatomic, setter=_setNeedsModelLoad:) BOOL _needsModelLoad; // @synthesize _needsModelLoad=__needsModelLoad;
 @property (nonatomic, setter=_setNormalizedImageRect:) struct CGRect _normalizedImageRect; // @synthesize _normalizedImageRect=__normalizedImageRect;
 @property (nonatomic, setter=_setPreviewViewInsets:) struct UIEdgeInsets _previewViewInsets; // @synthesize _previewViewInsets=__previewViewInsets;
@@ -98,6 +104,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setSuggestedCrop:) struct CGRect _suggestedCrop; // @synthesize _suggestedCrop=__suggestedCrop;
 @property (nonatomic, setter=_setSuggestedStraightenAngle:) double _suggestedStraightenAngle; // @synthesize _suggestedStraightenAngle=__suggestedStraightenAngle;
 @property (strong, nonatomic, setter=_setTiltControl:) PUTiltWheelControl *_tiltControl; // @synthesize _tiltControl=__tiltControl;
+@property (strong, nonatomic, setter=_setVideoRenderer:) PUVideoEditRenderer *_videoRenderer; // @synthesize _videoRenderer=__videoRenderer;
 @property (nonatomic, setter=_setViewCropRect:) struct CGRect _viewCropRect; // @synthesize _viewCropRect=__viewCropRect;
 @property (nonatomic, setter=_setWantsPreviewViewHidden:) BOOL _wantsPreviewViewHidden; // @synthesize _wantsPreviewViewHidden=__wantsPreviewViewHidden;
 @property (readonly, copy) NSString *debugDescription;
@@ -121,6 +128,7 @@ __attribute__((visibility("hidden")))
 - (void)_cancelAnimationForKeyPath:(id)arg1;
 - (void)_cancelDelayedRecomposeCropRect;
 - (struct CGVector)_correctInputVector:(struct CGVector)arg1 forHandle:(unsigned long long)arg2 onCropRect:(struct CGRect)arg3 lockDirection:(BOOL)arg4;
+- (void)_createRendererIfNeeded;
 - (struct CGRect)_cropCanvasFrame;
 - (struct CGRect)_cropRectFromPanningHandle:(unsigned long long)arg1 byAmount:(struct CGVector)arg2;
 - (void)_cropToggleTapped:(id)arg1;
@@ -132,6 +140,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_denormalizeImageRect:(struct CGRect)arg1;
 - (void)_handleCropHandlePan:(id)arg1;
 - (void)_handleDidCreateEditedImage:(struct CGImage *)arg1;
+- (void)_handleRenderedVideoWithURL:(id)arg1 originalLivePhoto:(id)arg2 success:(BOOL)arg3 error:(id)arg4;
 - (void)_handleTouchingGesture:(id)arg1;
 - (BOOL)_hasConstraintsForKey:(id)arg1;
 - (BOOL)_hasCropSuggestion;
@@ -143,6 +152,7 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateConstraintsForKey:(id)arg1;
 - (void)_loadCropSuggestionIfNeeded;
 - (void)_loadImageIfNeeded;
+- (void)_loadLivePhotoIfNeeded;
 - (void)_loadStateFromModel;
 - (BOOL)_needsRecomposeCropRect;
 - (struct CGRect)_normalizeImageRect:(struct CGRect)arg1;
@@ -175,7 +185,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateCropToggleButton;
 - (void)_updateCropToggleConstraintsIfNeeded;
 - (void)_updateCropViewsForInteraction;
-- (void)_updateLivePhoto;
 - (void)_updatePreviewViewInsets;
 - (void)_updateTiltControlColor;
 - (void)_updateTiltWheelConstraintsIfNeeded;
@@ -183,6 +192,8 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_viewCropToMatchPreview;
 - (void)animateBecomingActiveTool;
 - (void)animateResigningActiveTool;
+- (void)baseLivePhotoInvalidated;
+- (void)basePhotoInvalidated;
 - (BOOL)canResetToDefaultValue;
 - (void)cropAndStraightenViewDidEndTracking:(id)arg1;
 - (void)cropAndStraightenViewDidTrack:(id)arg1;

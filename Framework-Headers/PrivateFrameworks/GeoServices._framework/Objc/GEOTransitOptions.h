@@ -8,9 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class GEOFareOptions;
+
 @interface GEOTransitOptions : PBCodable <NSCopying>
 {
     CDStruct_95bda58d _avoidedModes;
+    GEOFareOptions *_fareOptions;
     int _prioritization;
     struct {
         unsigned int prioritization:1;
@@ -19,11 +22,19 @@
 
 @property (readonly, nonatomic) int *avoidedModes;
 @property (readonly, nonatomic) unsigned long long avoidedModesCount;
+@property (strong, nonatomic) GEOFareOptions *fareOptions; // @synthesize fareOptions=_fareOptions;
+@property (readonly, nonatomic) BOOL hasFareOptions;
 @property (nonatomic) BOOL hasPrioritization;
+@property (readonly, nonatomic) BOOL hasSurchargeOption;
 @property (nonatomic) int prioritization; // @synthesize prioritization=_prioritization;
+@property (nonatomic) BOOL showICFares;
+@property (nonatomic) int surchargeOption;
 
+- (int)StringAsAvoidedModes:(id)arg1;
+- (int)StringAsPrioritization:(id)arg1;
 - (void)addAvoidedMode:(int)arg1;
 - (int)avoidedModeAtIndex:(unsigned long long)arg1;
+- (id)avoidedModesAsString:(int)arg1;
 - (void)clearAvoidedModes;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -33,6 +44,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)prioritizationAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setAvoidedModes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

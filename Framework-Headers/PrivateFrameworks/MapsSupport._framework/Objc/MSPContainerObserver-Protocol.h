@@ -6,11 +6,10 @@
 
 #import <MapsSupport/NSObject-Protocol.h>
 
-@class MSPContainer, NSArray, NSDictionary, NSObject;
+@class MSPContainer, NSArray, NSObject;
 @protocol NSObject><NSCopying, OS_dispatch_queue;
 
 @protocol MSPContainerObserver <NSObject>
-- (void)container:(MSPContainer *)arg1 didEditByReplacingObjectsWithReplacements:(NSDictionary *)arg2 context:(id<NSObject><NSCopying>)arg3;
 - (void)container:(MSPContainer *)arg1 didEditWithNewContents:(NSArray *)arg2 orderedEdits:(NSArray *)arg3 cause:(long long)arg4 context:(id<NSObject><NSCopying>)arg5;
 
 @optional

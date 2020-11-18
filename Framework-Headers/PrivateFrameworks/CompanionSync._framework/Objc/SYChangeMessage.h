@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSMutableArray *changes; // @synthesize changes=_changes;
 @property (strong, nonatomic) SYMessageHeader *header; // @synthesize header=_header;
 
++ (Class)changesType;
 - (void).cxx_destruct;
 - (void)addChanges:(id)arg1;
 - (id)changesAtIndex:(unsigned long long)arg1;

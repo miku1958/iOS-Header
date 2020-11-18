@@ -12,8 +12,10 @@
 __attribute__((visibility("hidden")))
 @interface CKDDownloadAssetsOperation : CKDDatabaseOperation
 {
+    BOOL _shouldFetchAssetContentInMemory;
     CDUnknownBlockType _downloadPreparationBlock;
     CDUnknownBlockType _downloadProgressBlock;
+    CDUnknownBlockType _downloadCommandBlock;
     CDUnknownBlockType _downloadCompletionBlock;
     NSObject<OS_dispatch_queue> *_queue;
     NSArray *_assetsToDownload;
@@ -27,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *MMCSItemsToDownload; // @synthesize MMCSItemsToDownload=_MMCSItemsToDownload;
 @property (strong, nonatomic) NSArray *assetsToDownload; // @synthesize assetsToDownload=_assetsToDownload;
 @property (strong, nonatomic) CKDCancelTokenGroup *cancelTokens; // @synthesize cancelTokens=_cancelTokens;
+@property (copy, nonatomic) CDUnknownBlockType downloadCommandBlock; // @synthesize downloadCommandBlock=_downloadCommandBlock;
 @property (copy, nonatomic) CDUnknownBlockType downloadCompletionBlock; // @synthesize downloadCompletionBlock=_downloadCompletionBlock;
 @property (copy, nonatomic) CDUnknownBlockType downloadPreparationBlock; // @synthesize downloadPreparationBlock=_downloadPreparationBlock;
 @property (copy, nonatomic) CDUnknownBlockType downloadProgressBlock; // @synthesize downloadProgressBlock=_downloadProgressBlock;
@@ -34,11 +37,15 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long maxPackageDownloadsPerBatch; // @synthesize maxPackageDownloadsPerBatch=_maxPackageDownloadsPerBatch;
 @property (strong, nonatomic) NSArray *packageIndexSets; // @synthesize packageIndexSets=_packageIndexSets;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (nonatomic) BOOL shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;
 
 - (void).cxx_destruct;
+- (id)CKStatusReportLogGroups;
 - (void)_collectMetricsFromCompletedItemGroup:(id)arg1;
 - (void)_collectMetricsFromCompletedItemGroupSet:(id)arg1;
 - (void)_collectMetricsFromMMCSOperationMetrics:(id)arg1;
+- (void)_didCommandForAsset:(id)arg1 command:(id)arg2;
+- (void)_didCommandForMMCSItem:(id)arg1 command:(id)arg2;
 - (void)_didDownloadAsset:(id)arg1 error:(id)arg2;
 - (void)_didDownloadMMCSItem:(id)arg1 error:(id)arg2;
 - (void)_didDownloadMMCSItems:(id)arg1 error:(id)arg2;
@@ -56,7 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (BOOL)_prepareForDownload;
 - (void)_removeUntrackedMMCSItems:(id)arg1;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
 - (void)cancel;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2 assetsToDownload:(id)arg3 packageIndexSets:(id)arg4;
 - (void)main;

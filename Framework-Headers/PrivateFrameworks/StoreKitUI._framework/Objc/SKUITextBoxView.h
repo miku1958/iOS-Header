@@ -25,6 +25,8 @@
     struct __CTLine *_truncationToken;
     long long _truncationStyle;
     NSString *_underlyingText;
+    BOOL _titleTextIsNaturallyRTL;
+    BOOL _textIsNaturallyRTL;
 }
 
 @property (strong, nonatomic) SKUIColorScheme *colorScheme; // @synthesize colorScheme=_colorScheme;
@@ -34,6 +36,7 @@
 @property (nonatomic) double rating; // @synthesize rating=_rating;
 @property (copy, nonatomic) NSString *ratingText;
 @property (copy, nonatomic) NSString *subtitle;
+@property (nonatomic) BOOL textIsNaturallyRTL; // @synthesize textIsNaturallyRTL=_textIsNaturallyRTL;
 @property (nonatomic) struct UIEdgeInsets titleInsets; // @synthesize titleInsets=_titleInsets;
 @property (nonatomic) long long truncationStyle; // @synthesize truncationStyle=_truncationStyle;
 

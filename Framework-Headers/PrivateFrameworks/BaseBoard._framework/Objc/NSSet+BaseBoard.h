@@ -7,9 +7,9 @@
 #import <Foundation/NSSet.h>
 
 @interface NSSet (BaseBoard)
+- (BOOL)bs_containsObjectPassingTest:(CDUnknownBlockType)arg1;
 - (void)bs_each:(CDUnknownBlockType)arg1;
 - (id)bs_filter:(CDUnknownBlockType)arg1;
 - (id)bs_map:(CDUnknownBlockType)arg1;
-- (id)bs_mapNoNulls:(CDUnknownBlockType)arg1;
 @end
 

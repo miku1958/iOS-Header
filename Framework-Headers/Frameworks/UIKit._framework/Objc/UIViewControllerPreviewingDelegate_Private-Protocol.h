@@ -13,7 +13,6 @@
 
 @optional
 - (void)animateRevealWithInteractionProgress:(UIInteractionProgress *)arg1 forPreviewingAtLocation:(struct CGPoint)arg2 inSourceView:(UIView *)arg3 containerView:(UIView *)arg4;
-- (void)animateRevealWithInteractionProgress:(UIInteractionProgress *)arg1 forPreviewingAtPosition:(struct CGPoint)arg2 inSourceView:(UIView *)arg3;
 - (UIViewController *)committedViewControllerForPreviewViewController:(UIViewController *)arg1;
 - (void)didDismissPreviewViewController:(UIViewController *)arg1 committing:(BOOL)arg2;
 - (void)performCommitTransitionForPreviewViewController:(UIViewController *)arg1 completion:(void (^)(void))arg2;

@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityObscuredScreenAllowedWindows;
 - (BOOL)accessibilityElementsHidden;
 - (BOOL)accessibilityViewIsModal;
 - (void)noteInterfaceOrientationChangingTo:(long long)arg1 animated:(BOOL)arg2 withActivatingAlert:(id)arg3;

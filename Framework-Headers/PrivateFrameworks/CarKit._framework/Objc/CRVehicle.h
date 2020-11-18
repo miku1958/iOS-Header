@@ -37,9 +37,11 @@
 - (id)description;
 - (id)displayName;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 certificateSerial:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 - (void)mergeAttributesFromVehicle:(id)arg1;
 
 @end

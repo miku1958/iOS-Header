@@ -15,7 +15,6 @@
     NSString *_text;
     NSNumber *_maximumLines;
     double _starRating;
-    NSString *_percentRating;
     NSArray *_formattedTextList;
     NSString *_formattedTextDelimiter;
     NSArray *_moreGlyphRepresentations;
@@ -28,7 +27,6 @@
 @property (readonly, nonatomic) BOOL hasStarRating; // @synthesize hasStarRating=_hasStarRating;
 @property (readonly, nonatomic) NSNumber *maximumLines; // @synthesize maximumLines=_maximumLines;
 @property (readonly, nonatomic) NSArray *moreGlyphRepresentations; // @synthesize moreGlyphRepresentations=_moreGlyphRepresentations;
-@property (readonly, nonatomic) NSString *percentRating; // @synthesize percentRating=_percentRating;
 @property (readonly, nonatomic) double starRating; // @synthesize starRating=_starRating;
 @property (readonly, nonatomic) NSString *text; // @synthesize text=_text;
 
@@ -39,8 +37,6 @@
 - (id)initWithDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)moreGlyphsWithSession:(id)arg1;
-- (id)test_contentAdvisoryImage;
-- (id)test_moreGlyphs;
 
 @end
 

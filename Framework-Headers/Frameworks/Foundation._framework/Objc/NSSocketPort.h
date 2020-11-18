@@ -42,7 +42,6 @@
 - (void)dealloc;
 - (id)delegate;
 - (id)description;
-- (void)finalize;
 - (void)handleConnDeath:(id)arg1;
 - (void)handlePortMessage:(id)arg1;
 - (id)init;

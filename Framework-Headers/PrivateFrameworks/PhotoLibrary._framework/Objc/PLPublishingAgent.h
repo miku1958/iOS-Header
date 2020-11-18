@@ -69,6 +69,7 @@
 @property (nonatomic) BOOL shouldCancelPublish; // @synthesize shouldCancelPublish=_shouldCancelPublish;
 @property (readonly) Class superclass;
 
++ (BOOL)canUploadHDVideoOverCellular;
 + (id)publishingAgentForBundleNamed:(id)arg1 toPublishMedia:(id)arg2;
 - (void)_agentIsReadyToPublish:(id)arg1;
 - (void)_cancelRemaking:(id)arg1;

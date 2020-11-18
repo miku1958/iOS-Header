@@ -23,7 +23,9 @@
 - (id)_gkLocalizedStringForKey:(id)arg1 defaultValue:(id)arg2 arguments:(id)arg3;
 - (id)_gkLocalizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3 language:(id)arg4;
 - (id)_gkPathForChallengeSound;
+- (id)_gkPathForImageWithName:(id)arg1;
 - (id)_gkPathForInviteSound;
+- (id)_gkPathForMessageImage;
 - (id)_gkPathForSoundWithName:(id)arg1;
 - (id)_gkPreferredLanguage;
 - (BOOL)_gkShouldAddQuickActions;

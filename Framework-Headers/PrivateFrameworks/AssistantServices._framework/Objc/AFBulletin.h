@@ -8,12 +8,13 @@
 
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSString;
+@class BBBulletin, NSArray, NSDate, NSString;
 
 @interface AFBulletin : NSObject <NSSecureCoding>
 {
     BOOL _read;
     BOOL _allDay;
+    BBBulletin *_bbBulletin;
     NSString *_bulletinID;
     NSString *_recordID;
     NSDate *_date;
@@ -26,16 +27,21 @@
     NSString *_subtitle;
     NSString *_timeZone;
     NSString *_title;
+    NSArray *_intentIDs;
+    NSString *_publisherBulletinID;
     NSString *_displayName;
 }
 
 @property (readonly, nonatomic, getter=isAllDay) BOOL allDay; // @synthesize allDay=_allDay;
+@property (readonly, nonatomic) BBBulletin *bbBulletin; // @synthesize bbBulletin=_bbBulletin;
 @property (readonly, copy, nonatomic) NSString *bulletinID; // @synthesize bulletinID=_bulletinID;
 @property (readonly, copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (readonly, copy, nonatomic) NSArray *intentIDs; // @synthesize intentIDs=_intentIDs;
 @property (readonly, copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property (readonly, copy, nonatomic) NSString *modalAlertContentMessage; // @synthesize modalAlertContentMessage=_modalAlertContentMessage;
+@property (readonly, copy, nonatomic) NSString *publisherBulletinID; // @synthesize publisherBulletinID=_publisherBulletinID;
 @property (nonatomic, getter=isRead) BOOL read; // @synthesize read=_read;
 @property (readonly, copy, nonatomic) NSDate *recencyDate; // @synthesize recencyDate=_recencyDate;
 @property (readonly, copy, nonatomic) NSString *recordID; // @synthesize recordID=_recordID;

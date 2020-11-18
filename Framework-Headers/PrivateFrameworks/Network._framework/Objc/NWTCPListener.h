@@ -27,6 +27,7 @@
 @property (strong) NWParameters *parameters; // @synthesize parameters=_parameters;
 
 - (void).cxx_destruct;
+- (void)cancel;
 - (void)handleError:(int)arg1;
 - (void)handleNewConnection:(id)arg1;
 - (id)initWithBonjourServiceEndpoint:(id)arg1 parameters:(id)arg2 delegate:(id)arg3;

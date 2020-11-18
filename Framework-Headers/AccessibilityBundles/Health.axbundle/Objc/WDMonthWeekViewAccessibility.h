@@ -13,8 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (id)accessibilityElements;
-- (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;
 
 @end

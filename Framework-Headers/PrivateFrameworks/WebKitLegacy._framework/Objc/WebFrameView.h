@@ -65,7 +65,6 @@
 - (BOOL)becomeFirstResponder;
 - (void)dealloc;
 - (void)drawRect:(struct CGRect)arg1;
-- (void)finalize;
 - (void)frameSizeChanged;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isOpaque;

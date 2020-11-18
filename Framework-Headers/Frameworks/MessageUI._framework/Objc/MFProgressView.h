@@ -39,7 +39,6 @@
 - (id)initWithProgressViewStyle:(int)arg1 stroke:(double)arg2 frame:(struct CGRect)arg3;
 - (struct CGSize)intrinsicContentSize;
 - (void)progressDidFinish;
-- (struct CGRect)scaleBaselineBoundsToScale:(struct CGSize)arg1;
 - (void)setProgress:(double)arg1;
 - (void)simulateActivity;
 

@@ -8,6 +8,7 @@
 
 @class NSTimer, UILabel, _UIBackdropView;
 
+__attribute__((visibility("hidden")))
 @interface MUPDFPageLabelView : UIView
 {
     UILabel *_label;

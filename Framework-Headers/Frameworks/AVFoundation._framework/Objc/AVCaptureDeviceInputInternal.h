@@ -17,6 +17,7 @@
     BOOL authorizedForCamera;
     AVWeakReference *weakReference;
     id<AVCallbackCancellation> deviceOpenCallbackInvoker;
+    id<AVCallbackCancellation> deviceClockCallbackInvoker;
 }
 
 - (void)dealloc;

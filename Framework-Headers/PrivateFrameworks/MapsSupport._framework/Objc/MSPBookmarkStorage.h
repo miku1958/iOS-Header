@@ -8,7 +8,7 @@
 
 #import <MapsSupport/NSCopying-Protocol.h>
 
-@class MSPPlaceBookmark, MSPRegionBookmark, MSPRouteBookmark, NSString, PBUnknownFields;
+@class MSPPlaceBookmark, MSPRegionBookmark, MSPRouteBookmark, MSPTransitLineBookmark, NSString, PBUnknownFields;
 
 @interface MSPBookmarkStorage : PBCodable <NSCopying>
 {
@@ -19,6 +19,7 @@
     MSPPlaceBookmark *_placeBookmark;
     MSPRegionBookmark *_regionBookmark;
     MSPRouteBookmark *_routeBookmark;
+    MSPTransitLineBookmark *_transitLineBookmark;
     int _type;
     CDStruct_dd13975a _has;
 }
@@ -29,6 +30,7 @@
 @property (readonly, nonatomic) BOOL hasRegionBookmark;
 @property (readonly, nonatomic) BOOL hasRouteBookmark;
 @property (nonatomic) BOOL hasTimestamp;
+@property (readonly, nonatomic) BOOL hasTransitLineBookmark;
 @property (nonatomic) BOOL hasType;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) MSPPlaceBookmark *placeBookmark; // @synthesize placeBookmark=_placeBookmark;
@@ -36,10 +38,14 @@
 @property (strong, nonatomic) MSPRegionBookmark *regionBookmark; // @synthesize regionBookmark=_regionBookmark;
 @property (strong, nonatomic) MSPRouteBookmark *routeBookmark; // @synthesize routeBookmark=_routeBookmark;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
+@property (strong, nonatomic) MSPTransitLineBookmark *transitLineBookmark; // @synthesize transitLineBookmark=_transitLineBookmark;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (id)__test_newBookmarkStorageForLine;
++ (id)__test_newBookmarkStorageForLineWithMuid:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (int)StringAsType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -48,6 +54,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

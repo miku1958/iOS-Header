@@ -25,9 +25,11 @@
 - (id)cn_predicate;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (BOOL)evaluateWithObject:(id)arg1;
 - (BOOL)evaluateWithObject:(id)arg1 substitutionVariables:(id)arg2;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithPredicate:(id)arg1;
 - (void)mainStoreDidFetchContacts:(id)arg1 unifiedFetch:(BOOL)arg2;
 - (id)predicateFormat;

@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *nameInfos; // @synthesize nameInfos=_nameInfos;
 
++ (Class)nameInfoType;
 - (void)addNameInfo:(id)arg1;
 - (void)clearNameInfos;
 - (void)copyTo:(id)arg1;

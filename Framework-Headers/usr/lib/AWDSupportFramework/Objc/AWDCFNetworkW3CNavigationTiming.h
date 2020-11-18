@@ -17,6 +17,7 @@
     unsigned long long _domainLookupEnd;
     unsigned long long _domainLookupStart;
     unsigned long long _fetchStart;
+    long long _isCellular;
     long long _isReused;
     long long _redirectCount;
     long long _redirectCountW3C;
@@ -28,6 +29,7 @@
     unsigned long long _secureConnectionStart;
     unsigned long long _timestamp;
     NSString *_hostname;
+    NSString *_procname;
     NSString *_url;
     struct {
         unsigned int connectEnd:1;
@@ -35,6 +37,7 @@
         unsigned int domainLookupEnd:1;
         unsigned int domainLookupStart:1;
         unsigned int fetchStart:1;
+        unsigned int isCellular:1;
         unsigned int isReused:1;
         unsigned int redirectCount:1;
         unsigned int redirectCountW3C:1;
@@ -59,7 +62,9 @@
 @property (nonatomic) BOOL hasDomainLookupStart;
 @property (nonatomic) BOOL hasFetchStart;
 @property (readonly, nonatomic) BOOL hasHostname;
+@property (nonatomic) BOOL hasIsCellular;
 @property (nonatomic) BOOL hasIsReused;
+@property (readonly, nonatomic) BOOL hasProcname;
 @property (nonatomic) BOOL hasRedirectCount;
 @property (nonatomic) BOOL hasRedirectCountW3C;
 @property (nonatomic) BOOL hasRedirectEnd;
@@ -71,7 +76,9 @@
 @property (nonatomic) BOOL hasTimestamp;
 @property (readonly, nonatomic) BOOL hasUrl;
 @property (strong, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
+@property (nonatomic) long long isCellular; // @synthesize isCellular=_isCellular;
 @property (nonatomic) long long isReused; // @synthesize isReused=_isReused;
+@property (strong, nonatomic) NSString *procname; // @synthesize procname=_procname;
 @property (nonatomic) long long redirectCount; // @synthesize redirectCount=_redirectCount;
 @property (nonatomic) long long redirectCountW3C; // @synthesize redirectCountW3C=_redirectCountW3C;
 @property (nonatomic) unsigned long long redirectEnd; // @synthesize redirectEnd=_redirectEnd;

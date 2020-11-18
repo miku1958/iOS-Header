@@ -6,23 +6,18 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableSet;
 @protocol OS_dispatch_queue;
 
 @interface FBPreferences : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
-    NSMutableSet *_enabledLogNames;
 }
 
 + (id)sharedInstance;
-- (id)_extractEnabledLoggersFromPreferenceDomain:(id)arg1;
 - (void)_queue_reload;
 - (void)dealloc;
 - (id)description;
-- (id)enabledLogNames;
 - (id)init;
-- (BOOL)isLogEnabled:(id)arg1;
 - (void)reload;
 
 @end

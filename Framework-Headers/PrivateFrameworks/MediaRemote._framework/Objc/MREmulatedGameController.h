@@ -14,14 +14,16 @@
     MRGameControllerDaemonProxy *_remote;
     int _profile;
     unsigned long long _controllerID;
+    double _buttonAUpDelay;
 }
 
+@property (nonatomic) double buttonAUpDelay; // @synthesize buttonAUpDelay=_buttonAUpDelay;
 @property (readonly, nonatomic) unsigned long long controllerID; // @synthesize controllerID=_controllerID;
 @property (readonly, nonatomic) int profile; // @synthesize profile=_profile;
 
 - (void)dealloc;
-- (id)initWithProfile:(int)arg1;
-- (void)sendGameControllerEvent:(CDStruct_9f528be3 *)arg1;
+- (id)initWithProperties:(void *)arg1;
+- (void)sendGameControllerEvent:(CDStruct_06eb3966 *)arg1;
 
 @end
 

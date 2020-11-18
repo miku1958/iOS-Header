@@ -6,16 +6,14 @@
 
 #import <CloudKit/CKDatabaseOperationInfo.h>
 
-@class NSArray, NSDictionary;
+@class NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface CKDDecryptRecordsOperationInfo : CKDatabaseOperationInfo
 {
-    NSArray *_recordsToDecrypt;
     NSDictionary *_webSharingIdentityDataByRecordID;
 }
 
-@property (strong, nonatomic) NSArray *recordsToDecrypt; // @synthesize recordsToDecrypt=_recordsToDecrypt;
 @property (strong, nonatomic) NSDictionary *webSharingIdentityDataByRecordID; // @synthesize webSharingIdentityDataByRecordID=_webSharingIdentityDataByRecordID;
 
 - (void).cxx_destruct;

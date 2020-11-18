@@ -33,6 +33,8 @@
     double _pathMajorRadius;
     double _majorRadiusTolerance;
     double _pressure;
+    double _maxObservedPressure;
+    float _zGradient;
     struct {
         unsigned int _firstTouchForView:1;
         unsigned int _isTap:1;
@@ -42,6 +44,7 @@
         unsigned int _deliversUpdatesInTouchesMovedIsValid:1;
         unsigned int _deliversUpdatesInTouchesMoved:1;
         unsigned int _isPredictedTouch:1;
+        unsigned int _didDispatchAsEnded:1;
     } _touchFlags;
     BOOL _eaten;
     BOOL _needsForceUpdate;
@@ -78,7 +81,8 @@
 @property (nonatomic, setter=_setSenderID:) unsigned long long _senderID; // @synthesize _senderID;
 @property (readonly, nonatomic) double _unclampedForce;
 @property (strong, nonatomic, setter=_setWindowServerHitTestWindow:) UIWindow *_windowServerHitTestWindow; // @synthesize _windowServerHitTestWindow=__windowServerHitTestWindow;
-@property (nonatomic) double altitudeAngle; // @synthesize altitudeAngle=_altitudeAngle;
+@property (nonatomic, setter=_setZGradient:) float _zGradient; // @synthesize _zGradient;
+@property (nonatomic, setter=_setAltitudeAngle:) double altitudeAngle; // @synthesize altitudeAngle=_altitudeAngle;
 @property (readonly, nonatomic) double azimuthAngle;
 @property (nonatomic, setter=_setAzimuthAngleInCADisplay:) double azimuthAngleInCADisplay; // @synthesize azimuthAngleInCADisplay=_azimuthAngleInCADisplay;
 @property (readonly, nonatomic) double azimuthAngleInWindow; // @synthesize azimuthAngleInWindow=_azimuthAngleInWindow;
@@ -104,7 +108,7 @@
 @property (readonly, nonatomic) unsigned long long tapCount;
 @property (nonatomic) double timestamp;
 @property (readonly, nonatomic) double timestamp;
-@property (nonatomic) long long type; // @synthesize type=_type;
+@property (nonatomic, setter=_setType:) long long type; // @synthesize type=_type;
 @property (strong, nonatomic) UIView *view;
 @property (readonly, nonatomic) UIView *view;
 @property (strong, nonatomic) UIView *warpedIntoView;
@@ -112,7 +116,6 @@
 @property (readonly, nonatomic) UIWindow *window;
 
 + (id)_createTouchesWithGSEvent:(struct __GSEvent *)arg1 phase:(long long)arg2 view:(id)arg3;
-+ (void)_setShouldReverseAltitudeAngleSense:(BOOL)arg1;
 - (void).cxx_destruct;
 - (void)_abandonForwardingRecord;
 - (void)_addGestureRecognizer:(id)arg1;
@@ -139,13 +142,11 @@
 - (struct CGPoint)_previousLocationInWindow:(id)arg1;
 - (void)_removeGestureRecognizer:(id)arg1;
 - (SEL)_responderSelectorForPhase:(long long)arg1;
-- (void)_setAltitudeAngle:(double)arg1;
 - (void)_setIsFirstTouchForView:(BOOL)arg1;
 - (void)_setLocation:(struct CGPoint)arg1 preciseLocation:(struct CGPoint)arg2 inWindowResetPreviousLocation:(BOOL)arg3;
 - (void)_setLocationInWindow:(struct CGPoint)arg1 resetPrevious:(BOOL)arg2;
 - (void)_setPressure:(double)arg1 resetPrevious:(BOOL)arg2;
 - (void)_setPreviousTouch:(id)arg1;
-- (void)_setType:(long long)arg1;
 - (BOOL)_shouldDeliverTouchForTouchesMoved;
 - (double)_standardForceAmount;
 - (BOOL)_supportsForce;
@@ -153,6 +154,7 @@
 - (void)_updateMovementMagnitudeFromLocation:(struct CGPoint)arg1 toLocation:(struct CGPoint)arg2;
 - (void)_updateWithChildEvent:(struct __IOHIDEvent *)arg1;
 - (BOOL)_wantsForwardingFromResponder:(id)arg1 toNextResponder:(id)arg2 withEvent:(id)arg3;
+- (void)_willBeDispatchedAsEnded;
 - (double)azimuthAngleInView:(id)arg1;
 - (struct CGVector)azimuthUnitVectorInView:(id)arg1;
 - (void)dealloc;

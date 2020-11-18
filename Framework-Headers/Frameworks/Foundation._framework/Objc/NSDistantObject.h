@@ -41,7 +41,6 @@
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalize;
 - (void)forwardInvocation:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

@@ -11,8 +11,8 @@
 
 @interface PSSplitViewController : UISplitViewController
 {
-    PSRootController *_containerNavigationController;
     id<PSSplitViewControllerNavigationDelegate> _navigationDelegate;
+    PSRootController *_containerNavigationController;
 }
 
 @property (strong, nonatomic) PSRootController *containerNavigationController; // @synthesize containerNavigationController=_containerNavigationController;

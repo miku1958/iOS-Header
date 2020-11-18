@@ -8,7 +8,7 @@
 
 #import <TextToSpeech/TTSSpeechConnectionDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue, TTSSpeechSynthesizerDelegate;
 
 @interface TTSSpeechSynthesizer : NSObject <TTSSpeechConnectionDelegate>
@@ -33,31 +33,52 @@
         unsigned int delegateWillSpeakWithRequest:1;
         unsigned int willUseInput:1;
     } _synthesizerFlags;
+    NSArray *_outputChannels;
+    BOOL _ignoreSubstitutions;
     float _rate;
     float _pitch;
     float _volume;
     NSString *_voiceIdentifier;
+    NSString *_bundleIdentifier;
+    void *_speakingRequestClientContext;
+    NSArray *_userSubstitutions;
+    NSArray *_phonemeSubstitutions;
 }
 
+@property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (weak, nonatomic) id<TTSSpeechSynthesizerDelegate> delegate; // @dynamic delegate;
+@property (nonatomic) BOOL ignoreSubstitutions; // @synthesize ignoreSubstitutions=_ignoreSubstitutions;
+@property (strong, nonatomic) NSArray *outputChannels;
+@property (copy, nonatomic) NSArray *phonemeSubstitutions; // @synthesize phonemeSubstitutions=_phonemeSubstitutions;
 @property (nonatomic) float pitch; // @synthesize pitch=_pitch;
 @property (nonatomic) float rate; // @synthesize rate=_rate;
 @property (readonly, nonatomic) NSString *resolvedVoiceIdentifier;
+@property (nonatomic) void *speakingRequestClientContext; // @synthesize speakingRequestClientContext=_speakingRequestClientContext;
+@property (copy, nonatomic) NSArray *userSubstitutions; // @synthesize userSubstitutions=_userSubstitutions;
 @property (strong, nonatomic) NSString *voiceIdentifier; // @synthesize voiceIdentifier=_voiceIdentifier;
 @property (nonatomic) float volume; // @synthesize volume=_volume;
 
++ (id)_speechServiceForVoiceIdentifier:(id)arg1;
 + (id)allAvailableVoices;
 + (id)availableLanguageCodes;
 + (id)availableVoices;
 + (id)availableVoicesForLanguageCode:(id)arg1;
++ (BOOL)employSpeechMarkupForType:(long long)arg1 identifier:(id)arg2 withLanguage:(id)arg3;
 + (void)initialize;
 + (BOOL)isSystemSpeaking;
 + (void)refreshAllAvailableVoices;
++ (id)speechMarkupStringForType:(long long)arg1 forIdentifier:(id)arg2;
++ (id)supportedIPAPhonemeLanguages;
++ (void)testingSetAllVoices:(id)arg1;
++ (id)voiceForIdentifier:(id)arg1;
 - (void).cxx_destruct;
+- (id)_applySubstitution:(id)arg1 toText:(id)arg2 wordRange:(struct _NSRange)arg3 request:(id)arg4 phonemes:(id *)arg5;
 - (BOOL)_continueSpeakingRequest:(id)arg1 withError:(id *)arg2;
 - (void)_mediaServicesDied;
 - (BOOL)_pauseSpeakingRequest:(id)arg1 atNextBoundary:(long long)arg2 synchronously:(BOOL)arg3 error:(id *)arg4;
 - (id)_preprocessText:(id)arg1 languageCode:(id)arg2;
+- (void)_processPhonemeSubstitutions:(id)arg1 toText:(id)arg2 request:(id)arg3 bundleIdentifier:(id)arg4 voice:(id)arg5;
+- (void)_processUserSubstitutions:(id)arg1 toText:(id)arg2 request:(id)arg3 bundleIdentifier:(id)arg4 voice:(id)arg5;
 - (void)_setDelegate:(id)arg1;
 - (id)_speechVoiceForIdentifier:(id)arg1 language:(id)arg2;
 - (BOOL)_startSpeakingString:(id)arg1 orAttributedString:(id)arg2 toURL:(id)arg3 withLanguageCode:(id)arg4 request:(id *)arg5 error:(id *)arg6;
@@ -84,6 +105,7 @@
 - (void)setUseMonarchStyleRate:(BOOL)arg1;
 - (id)speechString;
 - (BOOL)startSpeakingAttributedString:(id)arg1 toURL:(id)arg2 withLanguageCode:(id)arg3 error:(id *)arg4;
+- (BOOL)startSpeakingIPAPhonemes:(id)arg1 withLanguageCode:(id)arg2 request:(id *)arg3 error:(id *)arg4;
 - (BOOL)startSpeakingString:(id)arg1 error:(id *)arg2;
 - (BOOL)startSpeakingString:(id)arg1 request:(id *)arg2 error:(id *)arg3;
 - (BOOL)startSpeakingString:(id)arg1 toURL:(id)arg2 error:(id *)arg3;

@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 @interface PUZoomableGridViewControllerSpec : NSObject
 {
     BOOL _canDisplayMultipleRightBarButtonItems;
-    PUPhotosGridViewControllerSpec *_gridSpec;
     double _magnifiedYOffset;
     long long _fullMomentsSectionHeaderStyle;
     double _fullMomentsSectionHeaderHeight;
@@ -20,6 +19,7 @@ __attribute__((visibility("hidden")))
     double _collectionsSectionHeaderHeight;
     long long _yearsSectionHeaderStyle;
     double _yearsSectionHeaderHeight;
+    PUPhotosGridViewControllerSpec *_gridSpec;
     struct CGSize _magnifiedImageSize;
     struct CGSize _fullMomentsLevelThumbnailSize;
     struct UIEdgeInsets _magnifiedDragEdgeInsets;
@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long fullMomentsSectionHeaderBackgroundStyle;
 @property (readonly, nonatomic) double fullMomentsSectionHeaderHeight; // @synthesize fullMomentsSectionHeaderHeight=_fullMomentsSectionHeaderHeight;
 @property (readonly, nonatomic) long long fullMomentsSectionHeaderStyle; // @synthesize fullMomentsSectionHeaderStyle=_fullMomentsSectionHeaderStyle;
-@property (strong, nonatomic) PUPhotosGridViewControllerSpec *gridSpec; // @synthesize gridSpec=_gridSpec;
+@property (strong, nonatomic, setter=_setGridSpec:) PUPhotosGridViewControllerSpec *gridSpec; // @synthesize gridSpec=_gridSpec;
 @property (nonatomic) struct UIEdgeInsets magnifiedDragEdgeInsets; // @synthesize magnifiedDragEdgeInsets=_magnifiedDragEdgeInsets;
 @property (readonly, nonatomic) struct CGSize magnifiedImageSize; // @synthesize magnifiedImageSize=_magnifiedImageSize;
 @property (nonatomic) double magnifiedYOffset; // @synthesize magnifiedYOffset=_magnifiedYOffset;
@@ -59,10 +59,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long yearsSectionHeaderStyle; // @synthesize yearsSectionHeaderStyle=_yearsSectionHeaderStyle;
 
 - (void).cxx_destruct;
-- (void)_setGridSpec:(id)arg1;
 - (void)configureCollectionsLevelGridLayout:(id)arg1 forWidth:(double)arg2;
 - (void)configureFullMomentsLevelGridLayout:(id)arg1 forWidth:(double)arg2;
 - (void)configureYearsLevelGridLayout:(id)arg1 forWidth:(double)arg2;
+- (id)init;
+- (id)initWithUserTraitCollection:(id)arg1 referenceSize:(struct CGSize)arg2;
+- (BOOL)isEqual:(id)arg1;
 - (id)mapViewControllerSpec;
 - (id)newGridSpec;
 

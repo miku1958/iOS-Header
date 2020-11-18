@@ -26,6 +26,10 @@
 @property (strong, nonatomic) NSMutableArray *systems; // @synthesize systems=_systems;
 @property (strong, nonatomic) NSMutableArray *transitConnections; // @synthesize transitConnections=_transitConnections;
 
++ (Class)labelType;
++ (Class)lineType;
++ (Class)systemType;
++ (Class)transitConnectionType;
 + (id)transitInfoForPlaceData:(id)arg1;
 - (void)addLabel:(id)arg1;
 - (void)addLine:(id)arg1;

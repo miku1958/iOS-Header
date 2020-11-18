@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableArray, NSString, TTSSpeechRequest;
+@class NSAttributedString, NSMutableArray, NSString, TTSSpeechRequest;
 
 @interface AXSpeechAction : NSObject
 {
@@ -27,19 +27,26 @@
     CDUnknownBlockType _onWillSpeakRangeCallback;
     CDUnknownBlockType _onSpeechStartCallback;
     TTSSpeechRequest *_speechRequest;
-    BOOL _useCompactVoice;
+    BOOL _ignoreCustomSubstitutions;
+    BOOL _useMonarchStyleSpeechRate;
     unsigned int _audioQueueFlags;
     NSString *_voiceIdentifier;
+    NSAttributedString *_attributedString;
+    NSString *_IPAPhonemes;
+    long long _wordCallbackPostProcessedOffset;
+    NSString *_finalSpokenString;
     NSString *_processedString;
     NSMutableArray *_emojiRangeReplacements;
-    double _useMonarchStyleSpeechRate;
-    long long _wordCallbackPostProcessedOffset;
 }
 
+@property (copy, nonatomic) NSString *IPAPhonemes; // @synthesize IPAPhonemes=_IPAPhonemes;
+@property (copy, nonatomic) NSAttributedString *attributedString; // @synthesize attributedString=_attributedString;
 @property (nonatomic) unsigned int audioQueueFlags; // @synthesize audioQueueFlags=_audioQueueFlags;
 @property (nonatomic) BOOL cannotInterrupt; // @synthesize cannotInterrupt=_cannotInterrupt;
 @property (copy, nonatomic) CDUnknownBlockType completionCallback; // @synthesize completionCallback=_completionCallback;
 @property (strong, nonatomic) NSMutableArray *emojiRangeReplacements; // @synthesize emojiRangeReplacements=_emojiRangeReplacements;
+@property (strong, nonatomic) NSString *finalSpokenString; // @synthesize finalSpokenString=_finalSpokenString;
+@property (nonatomic) BOOL ignoreCustomSubstitutions; // @synthesize ignoreCustomSubstitutions=_ignoreCustomSubstitutions;
 @property (strong, nonatomic) NSString *language; // @synthesize language=_language;
 @property (copy, nonatomic) CDUnknownBlockType onPauseCallback; // @synthesize onPauseCallback=_onPauseCallback;
 @property (copy, nonatomic) CDUnknownBlockType onResumeCallback; // @synthesize onResumeCallback=_onResumeCallback;
@@ -55,12 +62,12 @@
 @property (nonatomic) double speakingRate; // @synthesize speakingRate=_speakingRate;
 @property (strong, nonatomic) TTSSpeechRequest *speechRequest; // @synthesize speechRequest=_speechRequest;
 @property (copy, nonatomic) NSString *string; // @synthesize string=_string;
-@property (nonatomic) BOOL useCompactVoice; // @synthesize useCompactVoice=_useCompactVoice;
-@property (nonatomic) double useMonarchStyleSpeechRate; // @synthesize useMonarchStyleSpeechRate=_useMonarchStyleSpeechRate;
+@property (nonatomic) BOOL useMonarchStyleSpeechRate; // @synthesize useMonarchStyleSpeechRate=_useMonarchStyleSpeechRate;
 @property (strong, nonatomic) NSString *voiceIdentifier; // @synthesize voiceIdentifier=_voiceIdentifier;
 @property (nonatomic) double volume; // @synthesize volume=_volume;
 @property (nonatomic) long long wordCallbackPostProcessedOffset; // @synthesize wordCallbackPostProcessedOffset=_wordCallbackPostProcessedOffset;
 
++ (id)actionWithAttributedString:(id)arg1 shouldQueue:(BOOL)arg2;
 + (id)actionWithString:(id)arg1 shouldQueue:(BOOL)arg2;
 - (id)_detectLanguageFromContent;
 - (void)dealloc;

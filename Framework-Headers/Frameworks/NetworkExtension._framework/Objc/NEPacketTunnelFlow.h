@@ -6,33 +6,48 @@
 
 #import <objc/NSObject.h>
 
-@class NSFileHandle;
+@class NSFileHandle, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface NEPacketTunnelFlow : NSObject
 {
     BOOL _handlerSetup;
-    long long _interfaceType;
-    struct NEVirtualInterface_s *_interface;
     NSObject<OS_dispatch_queue> *_queue;
     NSFileHandle *_socket;
+    NSMutableDictionary *_uuidMappings;
     CDUnknownBlockType _packetHandler;
+    CDUnknownBlockType _packetObjectHandler;
+    char **_packetDataArray;
+    unsigned int *_packetProtocols;
+    unsigned long long *_packetLengths;
+    unsigned long long _buffersSize;
+    long long _interfaceType;
+    struct NEVirtualInterface_s *_interface;
 }
 
+@property unsigned long long buffersSize; // @synthesize buffersSize=_buffersSize;
 @property BOOL handlerSetup; // @synthesize handlerSetup=_handlerSetup;
 @property (readonly) struct NEVirtualInterface_s *interface; // @synthesize interface=_interface;
 @property (readonly) long long interfaceType; // @synthesize interfaceType=_interfaceType;
+@property char **packetDataArray; // @synthesize packetDataArray=_packetDataArray;
 @property (copy) CDUnknownBlockType packetHandler; // @synthesize packetHandler=_packetHandler;
+@property unsigned long long *packetLengths; // @synthesize packetLengths=_packetLengths;
+@property (copy) CDUnknownBlockType packetObjectHandler; // @synthesize packetObjectHandler=_packetObjectHandler;
+@property unsigned int *packetProtocols; // @synthesize packetProtocols=_packetProtocols;
 @property (strong) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong) NSFileHandle *socket; // @synthesize socket=_socket;
+@property (strong) NSMutableDictionary *uuidMappings; // @synthesize uuidMappings=_uuidMappings;
 
 - (void).cxx_destruct;
 - (void)closeVirtualInterface;
 - (void)dealloc;
 - (id)initWithVirtualInterfaceType:(long long)arg1;
+- (void)readPacketObjectsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)readPacketsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)resetReadHandler;
 - (BOOL)setVirtualInterfaceSocket:(id)arg1;
+- (id)signingIdentifierForUUID:(id)arg1;
+- (BOOL)writePacketObjects:(id)arg1;
 - (BOOL)writePackets:(id)arg1 withProtocols:(id)arg2;
 
 @end

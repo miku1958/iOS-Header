@@ -26,6 +26,8 @@
 - (BOOL)compactChangeBatchesWithError:(id *)arg1;
 - (unsigned long long)countOfQueuedBatches;
 - (BOOL)deleteAllChangeBatchesWithError:(id *)arg1;
+- (BOOL)hasQueuedBatches;
+- (BOOL)hasSomeChangeWithIdentifier:(id)arg1;
 - (id)initWithEngineStore:(id)arg1 name:(id)arg2;
 - (BOOL)markChangesWithIdentifier:(id)arg1 withAlterationType:(unsigned long long)arg2 error:(id *)arg3;
 - (id)nextBatch;

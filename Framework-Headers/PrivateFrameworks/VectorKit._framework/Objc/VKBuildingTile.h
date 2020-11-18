@@ -47,17 +47,17 @@ __attribute__((visibility("hidden")))
 - (void)_buildShadowTexture;
 - (void)_fillShadowAreasInContext:(struct CGContext *)arg1 data:(char *)arg2;
 - (Box_3fb92e00)_shadowBounds;
-- (void)buildMeshesWithTriangulator:(id)arg1 device:(struct Device *)arg2 prepareExtrusion:(BOOL)arg3;
-- (void)confirmBuildingSuppression:(CDStruct_957c25a5 *)arg1;
+- (void)buildMeshesWithTriangulator:(id)arg1 device:(Device_f0710f89 *)arg2 prepareExtrusion:(BOOL)arg3;
+- (void)confirmBuildingSuppression:(CDStruct_de1a80f1 *)arg1;
 - (void)dealloc;
 - (const vector_dc840c5c *)facadeTextures;
 - (BOOL)heightAtPoint:(const Matrix_8746f91e *)arg1 outZ:(float *)arg2;
-- (id)initWithKey:(const struct VKTileKey *)arg1 modelTile:(id)arg2 prepareExtrusion:(BOOL)arg3 styleManager:(shared_ptr_f06afc6c)arg4 sharedResources:(id)arg5 contentScale:(double)arg6 device:(struct Device *)arg7;
+- (id)initWithKey:(const struct VKTileKey *)arg1 modelTile:(id)arg2 prepareExtrusion:(BOOL)arg3 styleManager:(shared_ptr_a3c46825)arg4 sharedResources:(id)arg5 contentScale:(double)arg6 device:(Device_f0710f89 *)arg7;
 - (unsigned long long)numberOfFacadeTextures;
 - (id)polygonGroupsForTextureAtIndex:(unsigned long long)arg1;
-- (void)updateViewDependentStateIfNecessaryWithContext:(id)arg1;
-- (void)updateViewDependentStateWithContext:(id)arg1;
-- (void)updateWithStyleResolutionSession:(StyleResolutionSession_e599f5f4 *)arg1;
+- (void)updateViewDependentStateIfNecessaryWithContext:(struct LayoutContext *)arg1;
+- (void)updateViewDependentStateWithContext:(struct LayoutContext *)arg1;
+- (void)updateWithStyleManager:(shared_ptr_a3c46825 *)arg1;
 
 @end
 

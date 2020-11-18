@@ -7,6 +7,6 @@
 #import <GeoServices/GEOMapItemCoreRoutineEvent.h>
 
 @interface GEOMapItemCoreRoutineEvent (RTEventManagerAdditions)
-- (id)initWithEKEvent:(id)arg1;
+- (id)initWithEKEvent:(id)arg1 locationOfInterest:(id)arg2;
 @end
 

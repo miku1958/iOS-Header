@@ -24,8 +24,10 @@
     unsigned int _updatedABPerson:1;
     unsigned int _isDisplayStringFromAddressBook:1;
     void *_addressBook;
+    NSString *_addressIdentifier;
 }
 
+@property (readonly, nonatomic) NSString *addressIdentifier;
 @property (readonly, nonatomic) struct CGPoint baselinePoint; // @dynamic baselinePoint;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -49,6 +51,7 @@
 - (void)_updateABPerson;
 - (void)_updateDisplayStringIncludingABPerson:(BOOL)arg1;
 - (void)addressBookDidChange:(id)arg1;
+- (id)contactWithKeysToFetch:(id)arg1;
 - (void)dealloc;
 - (id)displayString;
 - (id)emailAddress;
@@ -64,12 +67,14 @@
 - (void)setAddress:(id)arg1;
 - (void)setAtomFont:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setEnabled:(BOOL)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setMaxWidth:(unsigned int)arg1;
 - (void)setOpaque:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)unmodifiedAddressString;
+- (id)viewForLastBaselineLayout;
 
 @end
 

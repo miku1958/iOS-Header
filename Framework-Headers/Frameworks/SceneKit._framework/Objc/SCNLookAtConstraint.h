@@ -15,7 +15,7 @@
 }
 
 @property (nonatomic) BOOL gimbalLockEnabled;
-@property (readonly, nonatomic) SCNNode *target;
+@property (strong, nonatomic) SCNNode *target;
 
 + (id)lookAtConstraintWithTarget:(id)arg1;
 + (BOOL)supportsSecureCoding;

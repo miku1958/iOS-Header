@@ -7,17 +7,13 @@
 #import <UIKit/UIViewController.h>
 
 #import <FuseUI/MusicContextualActionsHeaderLockupViewDelegate-Protocol.h>
-#import <FuseUI/MusicEntityProviderDownloadInformationControllerObserver-Protocol.h>
 
-@class MusicContextualActionsHeaderLockupView, MusicContextualAlertAction, MusicEntityDownloadInformationController, MusicEntityProviderDownloadInformationController, MusicEntityValueContext, MusicEntityViewHorizontalLockupContentDescriptor, NSArray, NSString;
+@class MusicContextualActionsHeaderLockupView, MusicContextualAlertAction, MusicEntityProviderDownloadInformationController, MusicEntityValueContext, MusicEntityViewHorizontalLockupContentDescriptor, NSArray, NSString;
 
-@interface MusicContextualActionsHeaderViewController : UIViewController <MusicContextualActionsHeaderLockupViewDelegate, MusicEntityProviderDownloadInformationControllerObserver>
+@interface MusicContextualActionsHeaderViewController : UIViewController <MusicContextualActionsHeaderLockupViewDelegate>
 {
     MusicEntityProviderDownloadInformationController *_containerDownloadInformationController;
     MusicEntityViewHorizontalLockupContentDescriptor *_contentDescriptor;
-    struct MusicEntityDownloadInformation _downloadInformation;
-    MusicEntityDownloadInformationController *_entityDownloadInformationController;
-    id _entityDownloadInformationObservationToken;
     MusicContextualAlertAction *_pendingAlertAction;
     MusicContextualActionsHeaderLockupView *_lockupView;
     struct CGSize _previousBoundsSize;
@@ -45,20 +41,15 @@
 - (id)_keepLocalAlertAction;
 - (id)_libraryUpdateAlertActionPassingTest:(CDUnknownBlockType)arg1;
 - (id)_newContentDescriptorForEntityValueContext:(id)arg1;
-- (id)_radioAlertAction;
 - (id)_removeFromLibraryAlertAction;
 - (void)_requestDismissalWithDelay:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_shareAlertAction;
-- (void)_updateDownloadProgress;
-- (void)_updateDownloadProgressWithInformation:(struct MusicEntityDownloadInformation)arg1;
 - (void)_updatePreferredContentSizeForced:(BOOL)arg1;
 - (void)contextualActionsHeaderLockupViewDidSelectDownloadButton:(id)arg1;
 - (void)contextualActionsHeaderLockupViewDidSelectLikeButton:(id)arg1;
-- (void)contextualActionsHeaderLockupViewDidSelectRadioButton:(id)arg1;
 - (void)contextualActionsHeaderLockupViewDidSelectShareButton:(id)arg1;
 - (void)contextualActionsHeaderLockupViewWasSelected:(id)arg1;
 - (void)dealloc;
-- (void)downloadInformationController:(id)arg1 downloadInformationDidChange:(struct MusicEntityDownloadInformation)arg2;
 - (id)initWithEntityValueContext:(id)arg1 contextualActions:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

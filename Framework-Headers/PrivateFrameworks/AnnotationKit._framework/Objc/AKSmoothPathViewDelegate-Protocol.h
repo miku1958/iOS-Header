@@ -6,11 +6,11 @@
 
 #import <AnnotationKit/NSObject-Protocol.h>
 
-@class AKSmoothPathView, NSArray;
+@class AKSmoothPathView;
 
 @protocol AKSmoothPathViewDelegate <NSObject>
 - (void)inputView:(AKSmoothPathView *)arg1 didCollectPath:(struct CGPath *)arg2;
-- (void)inputView:(AKSmoothPathView *)arg1 didCollectRichBrushStrokePoints:(NSArray *)arg2;
+- (void)inputView:(AKSmoothPathView *)arg1 didCollectPrestrokedPath:(struct CGPath *)arg2;
 - (void)inputViewWillStartDrawing:(AKSmoothPathView *)arg1;
 @end
 

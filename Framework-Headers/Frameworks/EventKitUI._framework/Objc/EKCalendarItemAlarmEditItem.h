@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) EKAlarmsViewModel *alarmsViewModel; // @synthesize alarmsViewModel=_alarmsViewModel;
 
-+ (id)_labelTextForIndex:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (BOOL)_alarmsMatchCalendarItem;
 - (BOOL)_calendarItemHasLeaveNowAlarm;

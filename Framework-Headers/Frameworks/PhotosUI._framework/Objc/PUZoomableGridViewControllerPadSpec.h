@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (void)configureCollectionsLevelGridLayout:(id)arg1 forWidth:(double)arg2;
 - (void)configureFullMomentsLevelGridLayout:(id)arg1 forWidth:(double)arg2;
 - (void)configureYearsLevelGridLayout:(id)arg1 forWidth:(double)arg2;
-- (struct UIEdgeInsets)fullMomentsLevelSectionHeaderContentInset;
 - (struct UIEdgeInsets)fullMomentsLevelSectionHeaderHighlightInset;
 - (struct CGSize)fullMomentsLevelThumbnailSize;
 - (unsigned long long)fullMomentsSectionHeaderBackgroundStyle;

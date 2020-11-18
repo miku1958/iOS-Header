@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <CameraUI/CAMNebulaDaemonConnectionManagerDelegate-Protocol.h>
+#import <CameraUI/CAMPersistenceResultDelegate-Protocol.h>
 #import <CameraUI/NSXPCListenerDelegate-Protocol.h>
 
 @class CAMNebulaIrisBackendController, CAMNebulaKeepAliveController, CAMPersistenceController, CAMTimelapseBackendController, NSMutableArray, NSString, NSXPCListener;
 @protocol OS_dispatch_queue;
 
-@interface CAMNebulaDaemon : NSObject <NSXPCListenerDelegate, CAMNebulaDaemonConnectionManagerDelegate>
+@interface CAMNebulaDaemon : NSObject <NSXPCListenerDelegate, CAMNebulaDaemonConnectionManagerDelegate, CAMPersistenceResultDelegate>
 {
     CAMTimelapseBackendController *__timelapseBackendController;
     CAMNebulaIrisBackendController *__irisBackendController;
@@ -41,6 +42,7 @@
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)performPendingWorkAfterDelay:(double)arg1;
+- (void)persistenceController:(id)arg1 didGenerateVideoLocalPersistenceResult:(id)arg2 forCaptureResult:(id)arg3 fromRequest:(id)arg4;
 
 @end
 

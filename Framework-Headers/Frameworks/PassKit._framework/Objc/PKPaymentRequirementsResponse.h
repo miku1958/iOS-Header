@@ -14,18 +14,18 @@
     NSArray *_requiredPaymentSetupFields;
     NSString *_productIdentifier;
     NSArray *_possibleProducts;
-    NSArray *_possibleProductIdentifiers;
     NSURL *_learnMoreURL;
+    NSString *_nonce;
 }
 
-@property (readonly, nonatomic) NSURL *learnMoreURL; // @synthesize learnMoreURL=_learnMoreURL;
-@property (readonly, nonatomic) NSArray *possibleProductIdentifiers; // @synthesize possibleProductIdentifiers=_possibleProductIdentifiers;
-@property (readonly, nonatomic) NSArray *possibleProducts; // @synthesize possibleProducts=_possibleProducts;
-@property (readonly, nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
-@property (readonly, nonatomic) NSArray *requiredPaymentSetupFields; // @synthesize requiredPaymentSetupFields=_requiredPaymentSetupFields;
+@property (readonly, copy, nonatomic) NSURL *learnMoreURL; // @synthesize learnMoreURL=_learnMoreURL;
+@property (readonly, copy, nonatomic) NSString *nonce; // @synthesize nonce=_nonce;
+@property (readonly, copy, nonatomic) NSArray *possibleProducts; // @synthesize possibleProducts=_possibleProducts;
+@property (readonly, copy, nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
+@property (readonly, copy, nonatomic) NSArray *requiredPaymentSetupFields; // @synthesize requiredPaymentSetupFields=_requiredPaymentSetupFields;
 @property (readonly, nonatomic) long long status; // @synthesize status=_status;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithData:(id)arg1;
 - (id)initWithProduct:(id)arg1;
 

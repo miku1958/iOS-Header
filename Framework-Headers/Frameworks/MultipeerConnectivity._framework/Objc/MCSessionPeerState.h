@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MCPeerID, NSData, NSMutableDictionary;
 
@@ -34,6 +34,7 @@
 @property (nonatomic) long long state; // @synthesize state=_state;
 
 - (void)dealloc;
+- (id)description;
 - (id)initWithPeer:(id)arg1;
 
 @end

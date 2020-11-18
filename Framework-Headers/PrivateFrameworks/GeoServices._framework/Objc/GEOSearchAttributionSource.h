@@ -31,12 +31,17 @@
 @property (strong, nonatomic) NSMutableArray *supportedComponentActions; // @synthesize supportedComponentActions=_supportedComponentActions;
 @property (strong, nonatomic) NSString *webBaseActionURL; // @synthesize webBaseActionURL=_webBaseActionURL;
 
++ (Class)attributionAppsType;
++ (Class)localizedAttributionType;
++ (Class)supportedComponentActionsType;
+- (int)StringAsAttributionRequirements:(id)arg1;
 - (void)addAttributionApps:(id)arg1;
 - (void)addAttributionRequirements:(int)arg1;
 - (void)addLocalizedAttribution:(id)arg1;
 - (void)addSupportedComponentActions:(id)arg1;
 - (id)attributionAppsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)attributionAppsCount;
+- (id)attributionRequirementsAsString:(int)arg1;
 - (int)attributionRequirementsAtIndex:(unsigned long long)arg1;
 - (id)bestLocalizedAttribution;
 - (BOOL)canLocallyHandleAction:(int)arg1 forComponent:(int)arg2;

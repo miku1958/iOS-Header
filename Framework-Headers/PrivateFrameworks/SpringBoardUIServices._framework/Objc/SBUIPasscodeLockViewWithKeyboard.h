@@ -14,8 +14,6 @@
 {
     SBPasscodeKeyboard *_keyboard;
     SBUIAlphanumericPasscodeEntryField *_alphaEntryField;
-    UILabel *_statusField;
-    UILabel *_statusSubtitleView;
     UIView *_statusFieldBackground;
     SBUIRingViewLabelButton *_emergencyCallButton;
     UIView *_emergencyCallToTopFiller;
@@ -29,6 +27,8 @@
     BOOL _triedToMinMaxWhileRotating;
     BOOL _isAnimating;
     BOOL _usesLightStyle;
+    UILabel *_statusField;
+    UILabel *_statusSubtitleView;
 }
 
 @property (readonly, copy) NSString *debugDescription;

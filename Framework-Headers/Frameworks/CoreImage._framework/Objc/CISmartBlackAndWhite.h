@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSNumber *inputTone;
     NSNumber *inputHue;
     NSNumber *inputGrain;
+    NSNumber *inputSeed;
     NSNumber *inputScaleFactor;
 }
 
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 @property (copy, nonatomic) NSNumber *inputNeutralGamma; // @synthesize inputNeutralGamma;
 @property (copy, nonatomic) NSNumber *inputScaleFactor; // @synthesize inputScaleFactor;
+@property (copy, nonatomic) NSNumber *inputSeed; // @synthesize inputSeed;
 @property (copy, nonatomic) NSNumber *inputStrength; // @synthesize inputStrength;
 @property (copy, nonatomic) NSNumber *inputTone; // @synthesize inputTone;
 

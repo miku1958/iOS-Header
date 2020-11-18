@@ -13,19 +13,25 @@
 
 @interface ICAttachment : ICCloudSyncingObject <ICSearchIndexable, ICCloudObject>
 {
+    short _attachmentType;
     ICAttachmentModel *_attachmentModel;
     BOOL previewImagesIntegrityChecked;
+    BOOL settingMergeableData;
     BOOL isBeingEditedLocallyOnDevice;
+    NSURL *_URL;
     struct AVAsset *_movie;
 }
 
+@property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (nonatomic) BOOL checkedForLocation; // @dynamic checkedForLocation;
+@property (strong, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double duration; // @dynamic duration;
 @property (nonatomic) long long fileSize; // @dynamic fileSize;
+@property (nonatomic) BOOL hasMarkupData; // @dynamic hasMarkupData;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isBeingEditedLocallyOnDevice; // @synthesize isBeingEditedLocallyOnDevice;
@@ -43,6 +49,7 @@
 @property (strong, nonatomic) NSDate *previewUpdateDate; // @dynamic previewUpdateDate;
 @property (strong, nonatomic) NSURL *remoteFileURL; // @dynamic remoteFileURL;
 @property (nonatomic) short section; // @dynamic section;
+@property (nonatomic, getter=isSettingMergeableData) BOOL settingMergeableData; // @synthesize settingMergeableData;
 @property (nonatomic) double sizeHeight; // @dynamic sizeHeight;
 @property (nonatomic) double sizeWidth; // @dynamic sizeWidth;
 @property (strong, nonatomic) NSString *summary; // @dynamic summary;
@@ -54,12 +61,12 @@
 
 + (void)addPreviewImages:(id)arg1 toRecord:(id)arg2;
 + (id)allAttachmentsInContext:(id)arg1;
-+ (id)allCloudObjects;
++ (id)allCloudObjectsInContext:(id)arg1;
 + (id)attachmentWithIdentifier:(id)arg1 context:(id)arg2;
 + (id)attachmentWithIdentifier:(id)arg1 includeDeleted:(BOOL)arg2 context:(id)arg3;
 + (id)attachmentsMatchingPredicate:(id)arg1 context:(id)arg2;
 + (void)deleteAttachment:(id)arg1;
-+ (id)existingCloudObjectForRecordID:(id)arg1;
++ (id)existingCloudObjectForRecordID:(id)arg1 context:(id)arg2;
 + (id)filenameExtensionForUTI:(id)arg1;
 + (id)filenameFromUTI:(id)arg1;
 + (id)imageCache;
@@ -67,10 +74,11 @@
 + (void)initialize;
 + (BOOL)isPathExtensionSupportedForPasswordProtectedNotes:(id)arg1;
 + (BOOL)isTypeUTISupportedForPasswordProtectedNotes:(id)arg1;
++ (id)keyPathsForValuesAffectingParentCloudObject;
 + (id)newAttachmentWithIdentifier:(id)arg1 context:(id)arg2;
-+ (id)newCloudObjectForRecord:(id)arg1;
-+ (id)newFetchRequestForAttachmentsInContext:(id)arg1;
-+ (id)noteFromAttachmentRecord:(id)arg1;
++ (id)newCloudObjectForRecord:(id)arg1 context:(id)arg2;
++ (id)newFetchRequestForAttachments;
++ (id)noteFromAttachmentRecord:(id)arg1 context:(id)arg2;
 + (id)predicateForAttachmentBrowser;
 + (id)predicateForSearchableAttachments;
 + (id)predicateForVisibleAttachments;
@@ -79,12 +87,10 @@
 + (short)sectionFromTypeUTI:(id)arg1 url:(id)arg2;
 + (id)thumbnailOperationQueue;
 + (BOOL)typeUTIIsDrawing:(id)arg1;
-+ (BOOL)typeUTIIsImage:(id)arg1;
 + (BOOL)typeUTIIsPlayableAudio:(id)arg1;
 + (BOOL)typeUTIIsPlayableMovie:(id)arg1;
 + (id)visibleAttachmentsInContext:(id)arg1;
 - (void).cxx_destruct;
-- (id)URL;
 - (id)activityItems;
 - (id)addLocationIfNeeded;
 - (id)addLocationWithLatitude:(double)arg1 longitude:(double)arg2;
@@ -96,11 +102,17 @@
 - (void)attachmentDidChange;
 - (id)attachmentModel;
 - (id)attachmentPreviewImageCreatingIfNecessaryWithWidth:(double)arg1 height:(double)arg2 scale:(double)arg3 scaleWhenDrawing:(BOOL)arg4 metadata:(id)arg5;
+- (id)attachmentPreviewImageCreatingIfNecessaryWithWidth:(double)arg1 height:(double)arg2 scale:(double)arg3 scaleWhenDrawing:(BOOL)arg4 metadata:(id)arg5 save:(BOOL)arg6;
 - (id)attachmentPreviewImageWithMinSize:(struct CGSize)arg1 scale:(double)arg2;
 - (id)attachmentPreviewImageWithMinSize:(struct CGSize)arg1 scale:(double)arg2 matchScale:(BOOL)arg3;
+- (short)attachmentType;
 - (id)attributedString;
+- (id)authorsExcludingCurrentUser;
 - (struct CGRect)bounds;
-- (void)checkPreviewImagesIntegrity;
+- (struct UIImage *)cachedImage;
+- (BOOL)checkPreviewImagesIntegrity;
+- (id)childCloudObjects;
+- (void)clearCachedImages;
 - (void)deleteAttachmentPreviewImages;
 - (void)deleteFromLocalDatabase;
 - (void)deleteFromNoteContextUsingIndexerContext:(id)arg1;
@@ -110,9 +122,9 @@
 - (void)fixBrokenReferences;
 - (id)generateSearchIndexStringsOperation;
 - (BOOL)hasAllMandatoryFields;
+- (id)ic_loggingValues;
 - (BOOL)ignoreInSearchIndexer;
 - (struct UIImage *)image;
-- (struct UIImage *)imageCache;
 - (struct CGSize)intrinsicContentSize;
 - (void)invalidateAttachmentPreviewImages;
 - (BOOL)isAppStore;
@@ -121,6 +133,7 @@
 - (BOOL)isHiddenFromSearch;
 - (BOOL)isInICloudAccount;
 - (BOOL)isMap;
+- (BOOL)isNews;
 - (BOOL)isURL;
 - (BOOL)isVisible;
 - (BOOL)isiTunes;
@@ -129,7 +142,6 @@
 - (CDUnknownBlockType)loadImage:(CDUnknownBlockType)arg1 aboutToLoadHandler:(CDUnknownBlockType)arg2;
 - (void)loadPreviewArchive:(const struct PreviewImage *)arg1;
 - (BOOL)locationNeedsUpdate;
-- (id)loggingDescriptionValues;
 - (void)markForDeletion;
 - (void)mergeDataFromRecord:(id)arg1;
 - (void)mergeDataFromRecord:(id)arg1 newAttachment:(BOOL)arg2;
@@ -138,24 +150,26 @@
 - (id)movieDurationForSpeaking;
 - (BOOL)needsToBePushedToCloud;
 - (BOOL)needsToBeRequested;
+- (id)newlyCreatedRecord;
 - (id)nonModelSearchIndexStrings;
 - (id)objectIdentifier;
 - (void)objectWasFetchedFromCloudWithRecord:(id)arg1;
 - (id)objectsToBeDeletedBeforeThisObject;
+- (id)parentCloudObject;
 - (id)parentEncryptableObject;
 - (id)pasteboardDataForAttributedString;
-- (void)prepareForDeletion;
+- (BOOL)preferLocalPreviewImages;
 - (id)previewItemTitle;
 - (id)previewItemURL;
 - (void)purgeAttachmentPreviewImages;
 - (id)recordType;
-- (id)recordZoneID;
+- (id)recordZoneName;
 - (void)releaseMemoryForIndexing;
 - (void)resetUniqueIdentifier;
 - (void)saveAndClearDecryptedData;
 - (void)saveMergeableDataIfNeeded;
 - (void)savePreview:(id)arg1 toArchive:(struct PreviewImage *)arg2;
-- (void)saveToArchive:(struct Attachment *)arg1;
+- (void)saveToArchive:(struct Attachment *)arg1 stripImageMarkupMetadata:(BOOL)arg2;
 - (id)searchDomainIdentifier;
 - (id)searchIndexStringsOutHasAdditionalStrings:(BOOL *)arg1;
 - (id)searchIndexableTitleUsingContentTextIfNecessary:(id)arg1;
@@ -164,14 +178,16 @@
 - (id)searchableItemAttributeSet;
 - (id)searchableItemIdentifier;
 - (void)setBounds:(struct CGRect)arg1;
+- (void)setCachedImage:(struct UIImage *)arg1;
 - (BOOL)shouldUpdateIndexForChangedValues:(id)arg1;
 - (BOOL)supportsDeletionByTTL;
 - (BOOL)supportsSavingAttachmentToExternalFile;
-- (id)threadUnsafeNewlyCreatedRecord;
 - (BOOL)thumbnailImage:(struct UIImage **)arg1 minSize:(struct CGSize)arg2 scale:(double)arg3 imageScaling:(unsigned long long *)arg4 showAsFileIcon:(BOOL *)arg5 isMovie:(BOOL *)arg6 movieDuration:(CDStruct_198678f7 *)arg7;
 - (void)unmarkForDeletion;
 - (void)updateAfterMediaChange;
-- (id)updateAttachmentPreviewImageWithImage:(struct UIImage *)arg1 scale:(double)arg2 scaleWhenDrawing:(BOOL)arg3 metadata:(id)arg4 sendNotification:(BOOL)arg5;
+- (id)updateAttachmentPreviewImageWithImage:(struct UIImage *)arg1 scale:(double)arg2 scaleWhenDrawing:(BOOL)arg3 metadata:(id)arg4 sendNotification:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (id)updateAttachmentPreviewImageWithImageSrc:(struct CGImageSource *)arg1 maxDimension:(double)arg2 scale:(double)arg3 scaleWhenDrawing:(BOOL)arg4 metadata:(id)arg5 sendNotification:(BOOL)arg6;
+- (void)updateParentReferenceIfNecessary;
 - (void)updatePlaceInLocationIfNeededHandler:(CDUnknownBlockType)arg1;
 - (void)updatePreviewsFromRecord:(id)arg1;
 - (long long)visibilityTestingType;

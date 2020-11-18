@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <IMFoundation/IMGroupTitleChangeItem.h>
+#import <IMSharedUtilities/IMGroupTitleChangeItem.h>
 
 @interface IMGroupTitleChangeItem (IMTranscriptChatItemRules)
 - (id)_newChatItems;

@@ -32,6 +32,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (strong, nonatomic, getter=_widgetVisbilityManager) NCWidgetVisibilityManager *widgetVisbilityManager; // @synthesize widgetVisbilityManager=_widgetVisbilityManager;
 
++ (id)_widgetExtensionsDiscoveryAttributes;
++ (void)availableWidgetsWithCompletion:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 - (void)_beginContinuousPlugInDiscovery;
 - (void)_endContinuousPlugInDiscovery;
 - (void)_revokeExtensionWithIdentifier:(id)arg1;
@@ -40,8 +43,6 @@ __attribute__((visibility("hidden")))
 - (void)_stop:(CDUnknownBlockType)arg1;
 - (void)_updateDataSourceWithExtension:(id)arg1;
 - (void)_updatePublishedWidgetExtensions:(id)arg1;
-- (id)_widgetExtensionsDiscoveryAttributes;
-- (void)dealloc;
 - (id)init;
 - (void)widgetVisibilityDidChange;
 

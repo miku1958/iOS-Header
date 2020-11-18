@@ -19,7 +19,6 @@
     CDUnknownBlockType fHandler;
 }
 
-- (id)_getExecutablePathFromPid:(int)arg1;
 - (void)_handleQueryResponse:(shared_ptr_bdcc6d0f)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (unsigned long long)_promptsNeeded;
 - (void)_queryAbsoluteNatalimetryDataSinceDataRecord:(id)arg1 withHandler:(CDUnknownBlockType)arg2;

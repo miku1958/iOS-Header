@@ -10,15 +10,14 @@
 {
 }
 
-@property (readonly, nonatomic) CDStruct_c3b9c2ee center;
+@property (readonly, nonatomic) struct CLLocationCoordinate2D center;
 @property (readonly, nonatomic) double radius;
 
 + (BOOL)supportsSecureCoding;
-- (BOOL)containsCoordinate:(CDStruct_c3b9c2ee)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)containsCoordinate:(struct CLLocationCoordinate2D)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithCenter:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 identifier:(id)arg3;
+- (id)initWithCenter:(struct CLLocationCoordinate2D)arg1 radius:(double)arg2 identifier:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 
 @end

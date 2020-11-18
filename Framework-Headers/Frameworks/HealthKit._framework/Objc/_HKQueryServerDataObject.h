@@ -14,13 +14,19 @@ __attribute__((visibility("hidden")))
 @interface _HKQueryServerDataObject : NSObject <NSSecureCoding>
 {
     BOOL _shouldStayAliveAfterInitialResults;
+    BOOL _waitForStart;
+    int _samplesDeliveredBeforeSuspend;
     HKObjectType *_objectType;
     _HKFilter *_filter;
+    double _collectionInterval;
 }
 
+@property (nonatomic) double collectionInterval; // @synthesize collectionInterval=_collectionInterval;
 @property (strong, nonatomic) _HKFilter *filter; // @synthesize filter=_filter;
 @property (strong, nonatomic) HKObjectType *objectType; // @synthesize objectType=_objectType;
+@property (nonatomic) int samplesDeliveredBeforeSuspend; // @synthesize samplesDeliveredBeforeSuspend=_samplesDeliveredBeforeSuspend;
 @property (nonatomic) BOOL shouldStayAliveAfterInitialResults; // @synthesize shouldStayAliveAfterInitialResults=_shouldStayAliveAfterInitialResults;
+@property (nonatomic) BOOL waitForStart; // @synthesize waitForStart=_waitForStart;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

@@ -6,18 +6,19 @@
 
 #import <HealthKit/HKQuery.h>
 
-@class HKStatisticsCollection, NSDate, NSDateComponents, NSNumber;
+@class HKStatisticsCollection, NSDate, NSDateComponents, NSMutableArray, NSNumber;
 
 @interface HKStatisticsCollectionQuery : HKQuery
 {
     NSDate *_anchorDate;
     unsigned long long _options;
     NSDateComponents *_intervalComponents;
+    NSMutableArray *_results;
     CDUnknownBlockType _initialResultsHandler;
     CDUnknownBlockType _statisticsUpdateHandler;
-    unsigned long long _mergeStrategy;
     NSNumber *_lastAnchor;
     HKStatisticsCollection *_statisticsCollection;
+    unsigned long long _mergeStrategy;
 }
 
 @property (readonly) NSDate *anchorDate;
@@ -41,9 +42,11 @@
 - (BOOL)_queue_shouldStayAliveAfterInitialResults;
 - (void)_queue_validate;
 - (void)deliverInitialStatisticsObjects:(id)arg1 anchor:(id)arg2 forQuery:(id)arg3;
-- (void)deliverResetStatisticsObjects:(id)arg1 forQuery:(id)arg2;
+- (void)deliverStatisticsBatch:(id)arg1 initialDelivery:(BOOL)arg2 finalBatch:(BOOL)arg3 anchor:(id)arg4 forQuery:(id)arg5;
+- (void)deliverStatisticsResetForQuery:(id)arg1;
 - (void)deliverUpdatedStatistics:(id)arg1 anchor:(id)arg2 forQuery:(id)arg3;
 - (id)initWithQuantityType:(id)arg1 quantitySamplePredicate:(id)arg2 options:(unsigned long long)arg3 anchorDate:(id)arg4 intervalComponents:(id)arg5;
+- (void)resetStatisticsForQuery:(id)arg1;
 
 @end
 

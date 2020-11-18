@@ -10,7 +10,7 @@
 #import <FrontBoard/FBSceneHost-Protocol.h>
 #import <FrontBoard/FBUISceneUpdater-Protocol.h>
 
-@class FBProcess, FBSDisplay, FBSMutableSceneSettings, FBSSceneClientSettings, FBSSceneSettings, FBSceneHostManager, FBSceneLayerManager, FBUISceneSpecification, FBWindowContextHostManager, FBWindowContextManager, NSHashTable, NSString;
+@class FBProcess, FBSDisplay, FBSMutableSceneSettings, FBSSceneClientSettings, FBSSceneDefinition, FBSSceneParameters, FBSSceneSettings, FBSceneHostManager, FBSceneLayerManager, FBWindowContextHostManager, FBWindowContextManager, NSHashTable, NSString;
 @protocol FBSceneClient, FBSceneClientProvider, FBSceneDelegate;
 
 @interface FBScene : NSObject <BSDescriptionProviding, FBUISceneUpdater, FBSceneHost>
@@ -28,7 +28,7 @@
     FBSMutableSceneSettings *_mutableSettings;
     FBSSceneSettings *_settings;
     FBSSceneClientSettings *_clientSettings;
-    FBUISceneSpecification *_specification;
+    FBSSceneDefinition *_definition;
     NSHashTable *_geometryObservers;
     unsigned long long _transactionID;
     BOOL _waitingForResponse;
@@ -44,6 +44,7 @@
 @property (readonly, strong, nonatomic) FBWindowContextHostManager *contextHostManager;
 @property (readonly, strong, nonatomic) FBWindowContextManager *contextManager;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy, nonatomic) FBSSceneDefinition *definition; // @synthesize definition=_definition;
 @property (nonatomic) id<FBSceneDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, strong, nonatomic) FBSDisplay *display; // @synthesize display=_display;
@@ -52,17 +53,17 @@
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, strong, nonatomic) FBSceneLayerManager *layerManager; // @synthesize layerManager=_layerManager;
 @property (readonly, strong, nonatomic) FBSMutableSceneSettings *mutableSettings; // @synthesize mutableSettings=_mutableSettings;
+@property (readonly, copy, nonatomic) FBSSceneParameters *parameters;
 @property (readonly, copy, nonatomic) NSString *sceneIdentifier;
 @property (readonly, strong, nonatomic) FBSSceneSettings *settings; // @synthesize settings=_settings;
-@property (copy, nonatomic) FBUISceneSpecification *specification; // @synthesize specification=_specification;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isValid) BOOL valid; // @synthesize valid=_valid;
 @property (readonly, nonatomic, getter=isWaitingForResponse) BOOL waitingForResponse; // @synthesize waitingForResponse=_waitingForResponse;
-@property (copy, nonatomic) NSString *workspaceIdentifier; // @synthesize workspaceIdentifier=_workspaceIdentifier;
+@property (readonly, copy, nonatomic) NSString *workspaceIdentifier; // @synthesize workspaceIdentifier=_workspaceIdentifier;
 
 - (void)_addSceneGeometryObserver:(id)arg1;
 - (unsigned long long)_applyMutableSettings:(id)arg1 withTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_handleSceneClientMessage:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)_dispatchClientMessageWithBlock:(CDUnknownBlockType)arg1;
 - (void)_invalidateWithTransitionContext:(id)arg1;
 - (void)_removeSceneGeometryObserver:(id)arg1;
 - (void)client:(id)arg1 attachLayer:(id)arg2;
@@ -70,6 +71,7 @@
 - (void)client:(id)arg1 didReceiveActions:(id)arg2;
 - (void)client:(id)arg1 didUpdateClientSettings:(id)arg2 withDiff:(id)arg3 transitionContext:(id)arg4;
 - (void)client:(id)arg1 updateLayer:(id)arg2;
+- (void)clientWillInvalidate:(id)arg1;
 - (id)contentView;
 - (id)createSnapshot;
 - (id)createSnapshotWithContext:(id)arg1;
@@ -77,7 +79,7 @@
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 display:(id)arg2 initialClientSettings:(id)arg3 clientProvider:(id)arg4;
+- (id)initWithDefiniton:(id)arg1 initialParameters:(id)arg2 clientProvider:(id)arg3;
 - (void)sendActions:(id)arg1;
 - (id)snapshotContext;
 - (id)succinctDescription;

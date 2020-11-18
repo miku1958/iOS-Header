@@ -9,6 +9,11 @@
 @class NSArray, NSDictionary, SCNGeometry, SCNNode;
 
 @protocol SCNPhysicsShapeJSExport <JSExport>
+
+@property (readonly, nonatomic) NSDictionary *options;
+@property (readonly, nonatomic) id sourceObject;
+@property (readonly, nonatomic) NSArray *transforms;
+
 + (id)shapeWithGeometry:(SCNGeometry *)arg1 options:(NSDictionary *)arg2;
 + (id)shapeWithNode:(SCNNode *)arg1 options:(NSDictionary *)arg2;
 + (id)shapeWithShapes:(NSArray *)arg1 transforms:(NSArray *)arg2;

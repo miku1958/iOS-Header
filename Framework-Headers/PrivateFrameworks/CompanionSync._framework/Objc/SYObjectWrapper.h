@@ -11,6 +11,7 @@
 @class NSString;
 @protocol SYObject;
 
+__attribute__((visibility("hidden")))
 @interface SYObjectWrapper : NSObject <SYChange>
 {
     long long _type;

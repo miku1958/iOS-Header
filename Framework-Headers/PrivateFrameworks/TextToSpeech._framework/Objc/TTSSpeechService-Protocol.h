@@ -6,7 +6,7 @@
 
 #import <TextToSpeech/NSObject-Protocol.h>
 
-@class NSObject, NSString, TTSSpeechRequest;
+@class NSObject, NSSet, NSString, TTSSpeechRequest, TTSSpeechVoice;
 @protocol OS_dispatch_queue;
 
 @protocol TTSSpeechService <NSObject>
@@ -17,8 +17,20 @@
 - (oneway void)getSpeechIsActiveForRequest:(TTSSpeechRequest *)arg1 reply:(void (^)(BOOL))arg2;
 - (oneway void)getSpeechIsActiveReply:(void (^)(BOOL))arg1;
 - (oneway void)getVoicesForLanguage:(NSString *)arg1 reply:(void (^)(NSArray *))arg2;
+- (BOOL)isVoiceValid:(TTSSpeechVoice *)arg1;
 - (oneway void)pauseSpeechRequest:(TTSSpeechRequest *)arg1 atMark:(long long)arg2;
+- (NSString *)speechMarkupStringForType:(long long)arg1;
 - (oneway void)startSpeechRequest:(TTSSpeechRequest *)arg1;
 - (oneway void)stopSpeechRequest:(TTSSpeechRequest *)arg1 atMark:(long long)arg2;
+- (NSSet *)supportedIPAPhonemeLanguages;
+
+@optional
+- (BOOL)employSpeechMarkupForType:(long long)arg1 language:(NSString *)arg2;
+- (NSString *)enclosedStringWithPhonemes:(NSString *)arg1;
+- (NSString *)lhPhonemesFromIPA:(NSString *)arg1 language:(NSString *)arg2;
+- (NSString *)nashvilleVoiceIdentifier:(NSString *)arg1 footprint:(long long)arg2 voiceType:(long long)arg3 gender:(long long)arg4;
+- (NSString *)nashvilleVoiceName:(NSString *)arg1 footprint:(long long)arg2 voiceType:(long long)arg3 gender:(long long)arg4;
+- (NSString *)phonemesFromIPA:(NSString *)arg1 language:(NSString *)arg2;
+- (NSString *)phonemesFromLHPhonemes:(NSString *)arg1 language:(NSString *)arg2;
 @end
 

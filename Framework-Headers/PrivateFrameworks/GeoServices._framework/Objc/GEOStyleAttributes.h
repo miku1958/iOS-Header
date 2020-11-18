@@ -23,6 +23,7 @@
 @property (nonatomic) unsigned long long customIconId; // @synthesize customIconId=_customIconId;
 @property (nonatomic) BOOL hasCustomIconId;
 
++ (Class)attributeType;
 + (id)attributesForTransitLine:(id)arg1;
 + (id)attributesForTransitSystem:(id)arg1;
 - (void)addAttribute:(id)arg1;

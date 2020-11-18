@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
     PUAssetReference *_assetReference;
     struct CGRect _assetRect;
     struct UIEdgeInsets _cropInsets;
+    struct CGRect _contentsRect;
 }
 
 @property (nonatomic) struct CGRect assetRect; // @synthesize assetRect=_assetRect;
 @property (strong, nonatomic) PUAssetReference *assetReference; // @synthesize assetReference=_assetReference;
+@property (nonatomic) struct CGRect contentsRect; // @synthesize contentsRect=_contentsRect;
 @property (nonatomic) struct UIEdgeInsets cropInsets; // @synthesize cropInsets=_cropInsets;
 
 - (void).cxx_destruct;

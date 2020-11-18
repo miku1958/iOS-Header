@@ -19,6 +19,7 @@
     NSData *_MFiCertSerial;
     NSObject<OS_dispatch_queue> *_queue;
     NSArray *_oemIcons;
+    NSArray *_screenInfo;
     long long _makeIconsOnlyOnce;
 }
 

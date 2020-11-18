@@ -10,7 +10,6 @@
 {
 }
 
-- (id)initWithFragment:(id)arg1 entriesType:(int)arg2 listType:(int)arg3 traits:(id)arg4;
 - (Class)responseClass;
 
 @end

@@ -17,7 +17,7 @@
     WebBookmarkCollection *_collection;
 }
 
-@property (readonly, nonatomic) unsigned int folderID;
+@property (readonly, nonatomic) int folderID;
 
 - (void).cxx_destruct;
 - (void)_moveBookmarkAtIndex:(unsigned int)arg1 toIndex:(unsigned int)arg2;

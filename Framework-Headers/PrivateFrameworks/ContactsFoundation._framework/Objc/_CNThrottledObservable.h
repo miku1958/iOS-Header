@@ -11,23 +11,25 @@
 __attribute__((visibility("hidden")))
 @interface _CNThrottledObservable : CNObservable
 {
-    double _interval;
-    id<CNCancelable> _delayToken;
     id<CNObservable> _observable;
-    id<CNScheduler> _scheduler;
-    id _result;
-    BOOL _hasResult;
-    unsigned long long _resultCounter;
+    double _interval;
+    id<CNScheduler> _observerScheduler;
+    id<CNScheduler> _resourceLock;
+    id _mostRecentResult;
+    id<CNCancelable> _delayToken;
 }
 
-- (void)_cancel;
-- (void)_clearResult;
-- (void)_sendCompletionToObserver:(id)arg1;
-- (void)_sendResultToObserver:(id)arg1 withIdentifier:(unsigned long long)arg2;
-- (void)_setDelayToken:(id)arg1;
-- (unsigned long long)_setResult:(id)arg1;
+@property (strong) id<CNCancelable> delayToken; // @synthesize delayToken=_delayToken;
+@property (readonly) double interval; // @synthesize interval=_interval;
+@property (strong) id mostRecentResult; // @synthesize mostRecentResult=_mostRecentResult;
+@property (readonly) CNObservable *observable; // @synthesize observable=_observable;
+@property (readonly) id<CNScheduler> observerScheduler; // @synthesize observerScheduler=_observerScheduler;
+@property (readonly) id<CNScheduler> resourceLock; // @synthesize resourceLock=_resourceLock;
+
+- (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithInterval:(double)arg1 observable:(id)arg2 scheduler:(id)arg3;
+- (id)initWithInterval:(double)arg1 observable:(id)arg2 schedulerProvider:(id)arg3;
+- (void)observerScheduler_sendResultToObserver:(id)arg1;
 - (id)subscribe:(id)arg1;
 
 @end

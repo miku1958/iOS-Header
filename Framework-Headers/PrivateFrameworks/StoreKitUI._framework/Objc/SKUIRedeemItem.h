@@ -6,20 +6,18 @@
 
 #import <StoreKitUI/SKUIItem.h>
 
-@class NSString, SKUIArtworkList;
+@class NSString;
+@protocol SKUIArtworkProviding;
 
 @interface SKUIRedeemItem : SKUIItem
 {
-    SKUIArtworkList *artworks;
-    long long itemIdentifier;
-    NSString *title;
-    long long itemKind;
+    id<SKUIArtworkProviding> _artworks;
 }
 
-@property (strong, nonatomic) SKUIArtworkList *artworks; // @synthesize artworks;
-@property (nonatomic) long long itemIdentifier; // @synthesize itemIdentifier;
-@property (nonatomic) long long itemKind; // @synthesize itemKind;
-@property (strong, nonatomic) NSString *title; // @synthesize title;
+@property (strong, nonatomic) id<SKUIArtworkProviding> artworks; // @synthesize artworks=_artworks;
+@property (nonatomic) long long itemIdentifier; // @dynamic itemIdentifier;
+@property (nonatomic) long long itemKind; // @dynamic itemKind;
+@property (strong, nonatomic) NSString *title; // @dynamic title;
 
 - (void).cxx_destruct;
 - (struct _NSRange)ageBandRange;

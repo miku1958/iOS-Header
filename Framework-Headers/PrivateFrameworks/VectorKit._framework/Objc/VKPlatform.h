@@ -16,6 +16,7 @@
     BOOL _supports3DBuildingStrokes;
     BOOL _lowPerformanceDevice;
     BOOL _supportsCoastlineGlows;
+    BOOL _supportsPerFragmentLighting;
 }
 
 @property (readonly, nonatomic) BOOL canMakeSharingThumbnails;
@@ -39,6 +40,7 @@
 @property (readonly, nonatomic) BOOL supportsCoastlineGlows; // @synthesize supportsCoastlineGlows=_supportsCoastlineGlows;
 @property (readonly, nonatomic) BOOL supportsHiResBuildings;
 @property (readonly, nonatomic) BOOL supportsHiResRTT;
+@property (readonly, nonatomic) BOOL supportsPerFragmentLighting; // @synthesize supportsPerFragmentLighting=_supportsPerFragmentLighting;
 @property (readonly, nonatomic) unsigned char tileDecodeQueueWidth;
 @property (readonly, nonatomic) unsigned long long tileMaximumLimit;
 @property (readonly, nonatomic) unsigned int tilePrefetchNumberOfScreens;
@@ -49,7 +51,6 @@
 - (void)_determineHardware;
 - (void)dealloc;
 - (id)init;
-- (unsigned long long)tileReserveLimit:(BOOL)arg1;
 
 @end
 

@@ -9,6 +9,6 @@
 @class MFMessageComposeViewController;
 
 @protocol MFMessageComposeViewControllerDelegate <NSObject>
-- (void)messageComposeViewController:(MFMessageComposeViewController *)arg1 didFinishWithResult:(int)arg2;
+- (void)messageComposeViewController:(MFMessageComposeViewController *)arg1 didFinishWithResult:(long long)arg2;
 @end
 

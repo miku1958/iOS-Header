@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (BOOL)modalPresentationCapturesStatusBarAppearance;
+- (long long)preferredWhitePointAdaptivityStyle;
 - (BOOL)prefersStatusBarHidden;
 - (void)viewDidLoad;
 

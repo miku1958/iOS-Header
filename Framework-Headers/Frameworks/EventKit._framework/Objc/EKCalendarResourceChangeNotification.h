@@ -43,7 +43,7 @@
 @property (nonatomic) BOOL titleChanged; // @synthesize titleChanged=_titleChanged;
 @property (strong, nonatomic) NSNumber *updateCount; // @synthesize updateCount=_updateCount;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithType:(long long)arg1;
 - (BOOL)needsAlert;
 - (id)resourceChangeFromEventStore:(id)arg1;

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)_openDB;
+- (void)_openDBIfNotAlreadyOpen;
 - (id)_placeDataForIdentifier:(unsigned long long)arg1;
 - (id)allCacheEntries;
 - (id)componentForKey:(union _GEOPlaceDataComponentKey)arg1;

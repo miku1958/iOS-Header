@@ -10,7 +10,7 @@
 #import <AnnotationKit/AKSignaturesViewControllerDelegate-Protocol.h>
 #import <AnnotationKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class AKColorPickerViewController, AKFloatingAttributePickerViewController, AKLineStylesViewController, AKSignaturesViewController_iOS, AKTextAttributesViewController, AKUndoRedoViewController, NSArray, NSLayoutConstraint, NSString, UIAlertController, UIBarButtonItem, UIGestureRecognizer, UIView;
+@class AKColorPickerViewController, AKFloatingAttributePickerViewController, AKLineStylesViewController, AKSignaturesViewController_iOS, AKTextAttributesViewController, AKUndoViewController, NSArray, NSLayoutConstraint, NSString, UIAlertController, UIBarButtonItem, UIGestureRecognizer, UIView;
 
 @interface AKToolbarViewController_iOS : AKToolbarViewController <AKSignaturesViewControllerDelegate, AKSignatureCreationControllerDelegate, UIPopoverPresentationControllerDelegate>
 {
@@ -31,7 +31,7 @@
     AKLineStylesViewController *_lineStylesViewController;
     AKTextAttributesViewController *_textAttributesViewController;
     AKColorPickerViewController *_colorPickerPopoverViewController;
-    AKUndoRedoViewController *_undoPopoverViewController;
+    AKUndoViewController *_undoPopoverViewController;
     AKFloatingAttributePickerViewController *_attributeToolbarViewController;
     NSLayoutConstraint *_attributeToolbarViewControllerConstraint;
 }
@@ -60,7 +60,7 @@
 @property (strong, nonatomic) UIBarButtonItem *textButton; // @synthesize textButton=_textButton;
 @property (strong, nonatomic) UIBarButtonItem *textStyleButton; // @synthesize textStyleButton=_textStyleButton;
 @property (strong, nonatomic) UIBarButtonItem *undoButton; // @synthesize undoButton=_undoButton;
-@property (strong, nonatomic) AKUndoRedoViewController *undoPopoverViewController; // @synthesize undoPopoverViewController=_undoPopoverViewController;
+@property (strong, nonatomic) AKUndoViewController *undoPopoverViewController; // @synthesize undoPopoverViewController=_undoPopoverViewController;
 
 - (void).cxx_destruct;
 - (long long)_attributeTagForCurrentSelectionState;
@@ -71,7 +71,7 @@
 - (id)_createNewCustomViewToolbarButtonWithImage:(id)arg1 target:(id)arg2 selector:(SEL)arg3;
 - (id)_createNewToggleToolbarButtonWithImage:(id)arg1 tag:(long long)arg2 target:(id)arg3 selector:(SEL)arg4;
 - (void)_deleteSelectedItems:(id)arg1;
-- (void)_dismissCurrentlyPresentedPopover;
+- (void)_dismissCurrentlyPresentedPopoverAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)_doodleModeToolbarImage;
 - (void)_layoutAttributeContainer;
 - (void)_layoutToolbarForTraitCollection:(id)arg1;
@@ -84,12 +84,13 @@
 - (void)_showUndoAlert:(id)arg1;
 - (void)_sketchButtonAction:(id)arg1;
 - (id)_toolbarButtonItemOfType:(unsigned long long)arg1;
+- (void)_undoAllButtonAction:(id)arg1;
 - (void)_undoButtonAction:(id)arg1;
 - (void)_undoLongPressAction:(id)arg1;
 - (void)_undoManagerNotification:(id)arg1;
 - (void)_updateToggleButton:(id)arg1 withTraitCollection:(id)arg2;
-- (BOOL)_validateRedoButton;
 - (BOOL)_validateUndoButton;
+- (unsigned long long)_workaroundToolbarPopoverPositioningBug26744300;
 - (void)dealloc;
 - (void)dismissAttributeToolbarForSelectedAnnotations;
 - (void)dismissPresentedPopovers;

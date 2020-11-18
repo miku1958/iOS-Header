@@ -7,7 +7,9 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (GKAdditions)
++ (void)_gkLoadRemoteImageDataForORBForURL:(id)arg1 queue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 + (void)_gkLoadRemoteImageDataForURL:(id)arg1 queue:(id)arg2 handler:(CDUnknownBlockType)arg3;
++ (void)_gkLoadRemoteImageDataForUrl:(id)arg1 queue:(id)arg2 imageQueue:(id)arg3 handler:(CDUnknownBlockType)arg4;
 + (void)_gkRequestClientsRemoteImageDataForURL:(id)arg1 queue:(id)arg2 reply:(CDUnknownBlockType)arg3;
 @end
 

@@ -11,8 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (BOOL)getPrefersOpenGL;
 + (id)globalGLSharedContext;
 + (void)setGlobalGLSharedContext:(id)arg1;
++ (void)setPrefersOpenGL:(BOOL)arg1;
 
 @end
 

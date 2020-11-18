@@ -11,13 +11,13 @@
 
 @class NSArray, NSIndexPath, NSString, NSTimer, PLCPLStatus, PUGridMagnifiedImageViewController, PUGridPinchGestureRecognizer, PUGridZoomLevelInfo, PUMomentsZoomLevelManager, PUZoomableGridTransition, PUZoomableGridViewControllerSpec, UITapGestureRecognizer;
 
-@interface PUZoomableGridViewController : PUPhotosGridViewController <PUMagnfiedViewControllerDelegate, PLCPLStatusDelegate>
+@interface PUZoomableGridViewController : PUPhotosGridViewController <PLCPLStatusDelegate, PUMagnfiedViewControllerDelegate>
 {
     BOOL __hasAppearedOnce;
     NSArray *__syncProgressAlbums;
-    PUZoomableGridViewControllerSpec *_zoomableGridSpec;
     PUMomentsZoomLevelManager *_zoomLevelManager;
     unsigned long long _zoomLevel;
+    PUZoomableGridViewControllerSpec *_zoomableGridSpec;
     PUGridZoomLevelInfo *__zoomLevelInfo;
     PUZoomableGridTransition *_currentGridZoomTransitionInfo;
     NSIndexPath *__transitionExplicitAnchorIndexPath;
@@ -47,13 +47,9 @@
 @property (readonly, nonatomic) PUZoomableGridTransition *currentGridZoomTransitionInfo;
 @property (strong, nonatomic, setter=_setCurrentGridZoomTransitionInfo:) PUZoomableGridTransition *currentGridZoomTransitionInfo; // @synthesize currentGridZoomTransitionInfo=_currentGridZoomTransitionInfo;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic, setter=_setMagnifiedImageViewController:) PUGridMagnifiedImageViewController *magnifiedImageViewController; // @synthesize magnifiedImageViewController=_magnifiedImageViewController;
-@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long zoomLevel; // @synthesize zoomLevel=_zoomLevel;
 @property (readonly, nonatomic) PUMomentsZoomLevelManager *zoomLevelManager; // @synthesize zoomLevelManager=_zoomLevelManager;
@@ -65,6 +61,7 @@
 - (void)_configureMagnifiedImageViewController:(id)arg1 forIndexPath:(id)arg2 gestureLocationInWindow:(struct CGPoint)arg3;
 - (void)_cplStatusUpdateTimerFired:(id)arg1;
 - (BOOL)_disallowNavigationToHigherZoomLevel;
+- (unsigned long long)_eventSourceFromZoomLevel:(unsigned long long)arg1;
 - (struct CGRect)_frameForItemAtIndexPath:(id)arg1;
 - (void)_handleGridPinchGestureRecognizer:(id)arg1;
 - (void)_handlePreviewGesture:(id)arg1;
@@ -94,6 +91,7 @@
 - (struct CGPoint)contentOffsetForPreheating;
 - (struct CGSize)contentSizeForPreheating;
 - (void)cplStatusDidChange:(id)arg1;
+- (unsigned long long)dateRangeFormatterPreset;
 - (void)dealloc;
 - (void)didDismissPreviewViewController:(id)arg1 committing:(BOOL)arg2;
 - (void)didReceiveMemoryWarning;
@@ -115,17 +113,20 @@
 - (void)navigateToLowerZoomLevelWithReferenceItemPath:(id)arg1;
 - (id)newGridLayout;
 - (void)oneUpPresentationHelper:(id)arg1 willPresentOneUpPreviewViewController:(id)arg2;
+- (void)ppt_navigateToPhotosDetailsAnimated:(BOOL)arg1;
 - (void)preheatAssets;
 - (void)prepareForTransitionToZoomableViewController:(id)arg1 anchorItemIndexPath:(id)arg2 anchorShiftsColumns:(BOOL)arg3 animated:(BOOL)arg4 interactive:(BOOL)arg5;
 - (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (void)processDataSourceChange:(id)arg1;
 - (BOOL)pu_shouldActAsTabRootViewController;
+- (BOOL)px_isSnapBackDestination;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (BOOL)scrollViewShouldScrollToTop:(id)arg1;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelected:(BOOL)arg1 itemsAtIndexes:(id)arg2 inSection:(long long)arg3 animated:(BOOL)arg4;
 - (BOOL)shouldPerformAutomaticContentOffsetAdjustment;
 - (BOOL)shouldPerformFullReloadForIncrementalDataSourceChange:(id)arg1;
+- (BOOL)shouldPreventRevealInMomentAction;
 - (void)tearDownMagnifiedImageViewController;
 - (void)uninstallGestureRecognizers;
 - (void)updateInterfaceForIncrementalDataSourceChanges:(id)arg1;

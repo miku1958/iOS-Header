@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class HKActivitySummary, HKQuantitySample, NSArray, NSDate, NSNumber;
+@class HKActivitySummary, HKQuantitySample, NSArray, NSDate, NSDateComponents, NSNumber;
 
 @interface HDCoachingDiagnosticSubmittableMetrics : NSObject
 {
     NSDate *_startOfDay;
     NSArray *_diagnosticData;
     HKActivitySummary *_activitySummary;
-    NSDate *_dateOfBirth;
+    NSDateComponents *_dateOfBirth;
     NSNumber *_biologicalSex;
     HKQuantitySample *_heightSample;
     HKQuantitySample *_weightSample;
@@ -21,7 +21,7 @@
 
 @property (strong, nonatomic) HKActivitySummary *activitySummary; // @synthesize activitySummary=_activitySummary;
 @property (strong, nonatomic) NSNumber *biologicalSex; // @synthesize biologicalSex=_biologicalSex;
-@property (strong, nonatomic) NSDate *dateOfBirth; // @synthesize dateOfBirth=_dateOfBirth;
+@property (strong, nonatomic) NSDateComponents *dateOfBirth; // @synthesize dateOfBirth=_dateOfBirth;
 @property (readonly, nonatomic) NSArray *diagnosticData; // @synthesize diagnosticData=_diagnosticData;
 @property (strong, nonatomic) HKQuantitySample *heightSample; // @synthesize heightSample=_heightSample;
 @property (strong, nonatomic) NSDate *startOfDay; // @synthesize startOfDay=_startOfDay;

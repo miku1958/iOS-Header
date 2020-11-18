@@ -4,86 +4,99 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CloudKit/CKRecord.h>
 
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class CKContainerID, CKShareID, CKShareParticipant, NSArray, NSData, NSMutableArray, NSString, NSURL;
+@class CKContainerID, CKRecordID, CKShareID, CKShareParticipant, NSArray, NSData, NSMutableArray, NSMutableSet, NSString, NSURL;
 
-@interface CKShare : NSObject <NSSecureCoding, NSCopying>
+@interface CKShare : CKRecord <NSSecureCoding, NSCopying>
 {
-    BOOL _isKnownToServer;
-    CKShareID *_shareID;
-    NSURL *_shareURL;
+    BOOL _allowsReadOnlyParticipantsToSeeEachOther;
+    BOOL _serializePersonalInfo;
     long long _publicPermission;
+    NSMutableSet *_addedParticipantIDs;
+    NSMutableSet *_removedParticipantIDs;
+    NSMutableArray *_lastFetchedParticipants;
     CKContainerID *_containerID;
-    NSString *_etag;
-    NSMutableArray *_participants;
-    NSData *_publicSharingIdentity;
-    NSString *_routingKey;
-    NSString *_baseToken;
-    NSData *_protectionData;
-    NSString *_protectionEtag;
-    NSString *_previousProtectionEtag;
+    CKRecordID *_rootRecordID;
+    NSMutableArray *_allParticipants;
+    NSData *_invitedProtectionData;
+    NSString *_invitedProtectionEtag;
+    NSString *_previousInvitedProtectionEtag;
     NSData *_publicProtectionData;
     NSString *_publicProtectionEtag;
     NSString *_previousPublicProtectionEtag;
-    NSMutableArray *_addedParticipants;
-    NSMutableArray *_removedParticipants;
+    NSArray *_invitedKeysToRemove;
+    CKShareID *_shareID;
 }
 
-@property (strong, nonatomic) NSMutableArray *addedParticipants; // @synthesize addedParticipants=_addedParticipants;
-@property (readonly, nonatomic) NSArray *allParticipants;
-@property (strong, nonatomic) NSString *baseToken; // @synthesize baseToken=_baseToken;
+@property (readonly, copy, nonatomic) NSURL *URL; // @dynamic URL;
+@property (strong, nonatomic) NSMutableSet *addedParticipantIDs; // @synthesize addedParticipantIDs=_addedParticipantIDs;
+@property (strong, nonatomic) NSMutableArray *allParticipants; // @synthesize allParticipants=_allParticipants;
+@property (nonatomic) BOOL allowsReadOnlyParticipantsToSeeEachOther; // @synthesize allowsReadOnlyParticipantsToSeeEachOther=_allowsReadOnlyParticipantsToSeeEachOther;
 @property (strong, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
 @property (readonly, nonatomic) CKShareParticipant *currentUserParticipant;
-@property (readonly, nonatomic) NSData *encryptedFullTokenData;
-@property (copy, nonatomic) NSString *etag; // @synthesize etag=_etag;
-@property (readonly, nonatomic) NSString *fullToken;
-@property (nonatomic) BOOL isKnownToServer; // @synthesize isKnownToServer=_isKnownToServer;
+@property (strong, nonatomic) NSArray *invitedKeysToRemove; // @synthesize invitedKeysToRemove=_invitedKeysToRemove;
+@property (strong, nonatomic) NSData *invitedProtectionData; // @synthesize invitedProtectionData=_invitedProtectionData;
+@property (strong, nonatomic) NSString *invitedProtectionEtag; // @synthesize invitedProtectionEtag=_invitedProtectionEtag;
+@property (strong, nonatomic) NSMutableArray *lastFetchedParticipants; // @synthesize lastFetchedParticipants=_lastFetchedParticipants;
+@property (copy, nonatomic) NSURL *mutableURL; // @dynamic mutableURL;
 @property (readonly, nonatomic) CKShareParticipant *owner;
-@property (strong, nonatomic) NSMutableArray *participants; // @synthesize participants=_participants;
-@property (strong, nonatomic) NSString *previousProtectionEtag; // @synthesize previousProtectionEtag=_previousProtectionEtag;
+@property (readonly, nonatomic) NSArray *participants;
+@property (strong, nonatomic) NSString *previousInvitedProtectionEtag; // @synthesize previousInvitedProtectionEtag=_previousInvitedProtectionEtag;
 @property (strong, nonatomic) NSString *previousPublicProtectionEtag; // @synthesize previousPublicProtectionEtag=_previousPublicProtectionEtag;
-@property (strong, nonatomic) NSData *protectionData; // @synthesize protectionData=_protectionData;
-@property (strong, nonatomic) NSString *protectionEtag; // @synthesize protectionEtag=_protectionEtag;
 @property (nonatomic) long long publicPermission; // @synthesize publicPermission=_publicPermission;
 @property (strong, nonatomic) NSData *publicProtectionData; // @synthesize publicProtectionData=_publicProtectionData;
 @property (strong, nonatomic) NSString *publicProtectionEtag; // @synthesize publicProtectionEtag=_publicProtectionEtag;
-@property (strong, nonatomic) NSData *publicSharingIdentity; // @synthesize publicSharingIdentity=_publicSharingIdentity;
-@property (strong, nonatomic) NSMutableArray *removedParticipants; // @synthesize removedParticipants=_removedParticipants;
-@property (strong, nonatomic) NSString *routingKey; // @synthesize routingKey=_routingKey;
+@property (strong, nonatomic) NSData *publicSharingIdentity;
+@property (strong, nonatomic) NSMutableSet *removedParticipantIDs; // @synthesize removedParticipantIDs=_removedParticipantIDs;
+@property (copy, nonatomic) CKRecordID *rootRecordID; // @synthesize rootRecordID=_rootRecordID;
+@property (nonatomic) BOOL serializePersonalInfo; // @synthesize serializePersonalInfo=_serializePersonalInfo;
 @property (copy, nonatomic) CKShareID *shareID; // @synthesize shareID=_shareID;
-@property (readonly, copy, nonatomic) NSURL *shareURL; // @synthesize shareURL=_shareURL;
-@property (readonly, nonatomic) NSData *shortSharingTokenData;
-@property (readonly, nonatomic) NSData *shortSharingTokenHashData;
 
-+ (id)decryptFullToken:(id)arg1 shortSharingTokenData:(id)arg2;
-+ (id)encryptFullToken:(id)arg1 shortSharingTokenData:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)CKAssignToContainerWithID:(id)arg1;
-- (id)CKPropertiesDescription;
-- (id)_knownParticipantEqualToParticipant:(id)arg1 inArray:(id)arg2;
-- (id)addParticipant:(id)arg1;
+- (id)CKPropertiesToDescribe:(BOOL)arg1;
+- (void)_addOwnerParticipant;
+- (void)_addParticipantBypassingChecks:(id)arg1;
+- (void)_addParticipantEmails:(id)arg1 phoneNumbers:(id)arg2 asReadWrite:(BOOL)arg3 inContainer:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_commonCKShareInit;
+- (id)_copyWithoutPersonalInfo;
+- (void)_getDecryptedShareInContainer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_initWithShareRecordID:(id)arg1;
+- (id)_knownParticipantEqualToParticipant:(id)arg1;
+- (BOOL)_participantArray:(id)arg1 containsEquivalentWithPermissionsParticipant:(id)arg2;
+- (BOOL)_participantArray:(id)arg1 isEquivalentToArray:(id)arg2;
+- (void)_removeAllParticipants;
+- (void)_removeParticipantBypassingChecks:(id)arg1;
+- (void)_removePendingPrivateParticipants;
+- (void)_setPublicPermissionNoSideEffects:(long long)arg1;
+- (void)_stripPersonalInfo;
+- (void)addParticipant:(id)arg1;
+- (id)addedParticipants;
 - (void)clearModifiedParticipants;
+- (id)copyWithOriginalValues;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
-- (id)decryptFullToken:(id)arg1;
 - (id)description;
-- (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
-- (id)iWorkShareURLWithAppName:(id)arg1 documentName:(id)arg2 error:(id *)arg3;
+- (void)encodeSystemFieldsWithCoder:(id)arg1;
+- (id)encryptedPublicSharingKey;
+- (BOOL)hasEncryptedData;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithShareID:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
+- (id)initWithRootRecord:(id)arg1;
+- (id)initWithRootRecord:(id)arg1 shareID:(id)arg2;
 - (id)privateToken;
-- (id)removeParticipant:(id)arg1;
-- (id)shortSharingToken;
-- (id)shortToken;
-- (void)updateFromServerShare:(id)arg1;
+- (void)registerFetchedParticipant:(id)arg1;
+- (void)removeParticipant:(id)arg1;
+- (id)removedParticipants;
+- (void)resetFetchedParticipants;
+- (void)setWantsPublicSharingKey:(BOOL)arg1;
+- (id)shareURL;
+- (id)updateFromServerShare:(id)arg1;
 
 @end
 

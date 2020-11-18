@@ -26,6 +26,7 @@
     NSArray *_bcc;
     NSDate *_dateSent;
     NSString *_messageIdHeader;
+    NSString *_notificationMessageId;
 }
 
 @property (strong, nonatomic) NSString *accountId; // @synthesize accountId=_accountId;
@@ -40,13 +41,18 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *messageId; // @synthesize messageId=_messageId;
 @property (strong, nonatomic) NSString *messageIdHeader; // @synthesize messageIdHeader=_messageIdHeader;
+@property (strong, nonatomic) NSString *notificationMessageId; // @synthesize notificationMessageId=_notificationMessageId;
 @property (strong, nonatomic) NSString *preview; // @synthesize preview=_preview;
 @property (nonatomic) unsigned long long status; // @synthesize status=_status;
 @property (strong, nonatomic) NSString *subject; // @synthesize subject=_subject;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSArray *to; // @synthesize to=_to;
 
++ (id)URLForMessageId:(id)arg1;
++ (BOOL)_isOldMessageIdFormat:(id)arg1;
++ (BOOL)isMessageURL:(id)arg1;
 + (BOOL)messageHasMultipleRecipients:(id)arg1;
++ (id)messageIdForURL:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addState:(unsigned long long)arg1;

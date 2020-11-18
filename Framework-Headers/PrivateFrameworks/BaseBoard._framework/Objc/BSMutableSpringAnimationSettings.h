@@ -18,6 +18,7 @@
 @property (nonatomic) double frameInterval; // @dynamic frameInterval;
 @property (nonatomic) double initialVelocity; // @dynamic initialVelocity;
 @property (nonatomic) double mass; // @dynamic mass;
+@property (nonatomic) float speed; // @dynamic speed;
 @property (nonatomic) double stiffness; // @dynamic stiffness;
 @property (strong, nonatomic) CAMediaTimingFunction *timingFunction; // @dynamic timingFunction;
 

@@ -8,8 +8,8 @@
 
 #import <UIKit/NSCopying-Protocol.h>
 
-@class NSString, UIAlertController, UIColor, UIImage, UIViewController;
-@protocol UIAlertActionViewRepresentation_Internal;
+@class NSString, UIAlertController, UIColor, UIImage, UIInterfaceAction, UIViewController;
+@protocol UIAlertActionMutablePropertyObservering, UIAlertActionViewRepresentation_Internal;
 
 @interface UIAlertAction : NSObject <NSCopying>
 {
@@ -30,11 +30,13 @@
     NSString *_keyCommandInput;
     long long _keyCommandModifierFlags;
     id<UIAlertActionViewRepresentation_Internal> __representer;
+    UIInterfaceAction<UIAlertActionMutablePropertyObservering> *__interfaceActionRepresentation;
     UIAlertController *__alertController;
 }
 
 @property (nonatomic, setter=_setAlertController:) UIAlertController *_alertController; // @synthesize _alertController=__alertController;
 @property (copy, nonatomic, setter=_setDescriptiveText:) NSString *_descriptiveText; // @synthesize _descriptiveText=__descriptiveText;
+@property (setter=_setInterfaceActionRepresentation:) UIInterfaceAction<UIAlertActionMutablePropertyObservering> *_interfaceActionRepresentation; // @synthesize _interfaceActionRepresentation=__interfaceActionRepresentation;
 @property (setter=_setIsPreferred:) BOOL _isPreferred;
 @property (setter=_setRepresenter:) id<UIAlertActionViewRepresentation_Internal> _representer; // @synthesize _representer=__representer;
 @property (strong, nonatomic, getter=_contentViewController, setter=_setContentViewController:) UIViewController *contentViewController; // @synthesize contentViewController=_contentViewController;

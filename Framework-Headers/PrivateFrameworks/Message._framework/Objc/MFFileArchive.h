@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@class MFFileArchiveDirectory, NSData, NSMutableData;
+@class NSData, NSMutableData;
 
 @interface MFFileArchive : NSObject
 {
-    MFFileArchiveDirectory *_archiveDirectory;
     NSData *_inputData;
     NSMutableData *_outputData;
     CDUnknownBlockType _readerBlock;
@@ -18,7 +17,6 @@
     struct _NSRange _inputRange;
 }
 
-@property (strong) MFFileArchiveDirectory *archiveDirectory; // @synthesize archiveDirectory=_archiveDirectory;
 @property (strong, nonatomic) NSData *inputData; // @synthesize inputData=_inputData;
 @property (nonatomic) struct _NSRange inputRange; // @synthesize inputRange=_inputRange;
 @property (strong, nonatomic) NSMutableData *outputData; // @synthesize outputData=_outputData;

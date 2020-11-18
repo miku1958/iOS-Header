@@ -6,24 +6,20 @@
 
 #import <coreroutine/RTNotification.h>
 
-@class NSDictionary, NSString;
+@class NSArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface RTWalletManagerNotificationPassUsed : RTNotification
 {
-    NSString *_identifier;
+    NSString *_passTypeIdentifier;
     long long _source;
-    NSDictionary *_infoDict;
+    NSArray *_storeIDs;
 }
 
-@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) NSDictionary *infoDict; // @synthesize infoDict=_infoDict;
+@property (readonly, nonatomic) NSString *passTypeIdentifier; // @synthesize passTypeIdentifier=_passTypeIdentifier;
 @property (readonly, nonatomic) long long source; // @synthesize source=_source;
+@property (readonly, copy, nonatomic) NSArray *storeIDs; // @synthesize storeIDs=_storeIDs;
 
-+ (id)notificationName;
 - (void).cxx_destruct;
-- (id)init;
-- (id)initWithIdentifier:(id)arg1 source:(long long)arg2 info:(id)arg3;
 
 @end
 

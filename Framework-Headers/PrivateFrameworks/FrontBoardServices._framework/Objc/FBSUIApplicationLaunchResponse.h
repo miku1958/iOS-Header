@@ -6,20 +6,15 @@
 
 #import <FrontBoardServices/FBSWorkspaceResponse.h>
 
-@class BSMachPortSendRight;
-
 @interface FBSUIApplicationLaunchResponse : FBSWorkspaceResponse
 {
     BOOL _supportsTaskSuspension;
     BOOL _supportsTaskSuspensionOnLock;
-    BSMachPortSendRight *_taskPort;
 }
 
 @property (nonatomic) BOOL supportsTaskSuspension; // @synthesize supportsTaskSuspension=_supportsTaskSuspension;
 @property (nonatomic) BOOL supportsTaskSuspensionOnLock; // @synthesize supportsTaskSuspensionOnLock=_supportsTaskSuspensionOnLock;
-@property (strong, nonatomic) BSMachPortSendRight *taskPort; // @synthesize taskPort=_taskPort;
 
-- (void)dealloc;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 

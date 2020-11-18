@@ -12,9 +12,9 @@
 @interface NRActiveDeviceAssertion : NSObject
 {
     BOOL _isActive;
-    NRDevice *_device;
     NSString *_identifier;
     NSObject<OS_dispatch_queue> *_queue;
+    NRDevice *_device;
 }
 
 @property (strong, nonatomic) NRDevice *device; // @synthesize device=_device;

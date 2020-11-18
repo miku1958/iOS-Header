@@ -33,12 +33,17 @@
 
 + (id)briskColors;
 + (id)clockColors;
++ (id)deepBreathingColors;
 + (id)distanceColors;
 + (id)elapsedTimeColors;
++ (id)elevationColors;
 + (id)energyColors;
 + (id)heartRateColors;
 + (id)keyColors;
++ (id)lapColors;
++ (id)lapsColors;
 + (id)metricColorsForGoalTypeIdentifier:(unsigned long long)arg1;
++ (id)metricColorsForMetricType:(unsigned long long)arg1;
 + (struct CGGradient *)newGradientForStartColor:(id)arg1 endColor:(id)arg2;
 + (id)noMetricColors;
 + (id)paceColors;

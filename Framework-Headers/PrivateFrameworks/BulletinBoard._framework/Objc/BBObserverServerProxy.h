@@ -4,28 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/BBObserverClientInterface-Protocol.h>
 #import <BulletinBoard/BBObserverServerInterface-Protocol.h>
 
-@class BBZeroingWeakReference, NSXPCConnection;
+@class BBObserver, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface BBObserverServerProxy : NSObject <BBObserverClientInterface, BBObserverServerInterface>
 {
     BOOL _isValid;
     BOOL _isEstablished;
-    BBZeroingWeakReference *_observerZWR;
+    BBObserver *_observer;
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_calloutQueue;
 }
 
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *calloutQueue; // @synthesize calloutQueue=_calloutQueue;
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
-@property (strong, nonatomic) BBZeroingWeakReference *observerZWR; // @synthesize observerZWR=_observerZWR;
+@property (weak, nonatomic) BBObserver *observer; // @synthesize observer=_observer;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 + (id)xpcInterface;
+- (void).cxx_destruct;
 - (void)clearBulletinIDs:(id)arg1 inSection:(id)arg2;
 - (void)clearBulletinsFromDate:(id)arg1 toDate:(id)arg2 inSections:(id)arg3;
 - (void)clearSection:(id)arg1;
@@ -33,13 +36,15 @@
 - (BOOL)established;
 - (void)finishedWithBulletinID:(id)arg1 transactionID:(unsigned long long)arg2;
 - (void)getActiveAlertBehaviorOverridesWithHandler:(CDUnknownBlockType)arg1;
-- (void)getAttachmentAspectRatioForBulletinID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)getAttachmentPNGDataForBulletinID:(id)arg1 sizeConstraints:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
+- (void)getAspectRatioForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)getBulletinsForPublisherMatchIDs:(id)arg1 sectionID:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
+- (void)getBulletinsPublishedAfterDate:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getBulletinsWithHandler:(CDUnknownBlockType)arg1;
+- (void)getDataForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)getObserverDebugInfo:(CDUnknownBlockType)arg1;
-- (void)getPrimaryAttachmentDataForBulletinID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)getPNGDataForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(BOOL)arg3 sizeConstraints:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
 - (void)getPrivilegedSenderTypesWithHandler:(CDUnknownBlockType)arg1;
+- (void)getPublisherMatchIDsOfBulletinsPublishedAfterDate:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getSectionInfoForActiveSectionsWithHandler:(CDUnknownBlockType)arg1;
 - (void)getSectionInfoForSectionIDs:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getSectionInfoWithHandler:(CDUnknownBlockType)arg1;
@@ -47,22 +52,21 @@
 - (void)getSectionParametersForSectionID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getSortDescriptorsForSectionID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getUniversalSectionIDForSectionID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)handleResponse:(id)arg1;
-- (id)initWithObserver:(id)arg1 queue:(id)arg2;
+- (void)handleResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)initWithObserver:(id)arg1 calloutQueue:(id)arg2;
 - (void)invalidate;
 - (BOOL)isValid;
 - (void)noteAlertBehaviorOverrideStateChanged:(id)arg1;
 - (void)noteAlertBehaviorOverridesChanged:(id)arg1;
 - (void)noteServerReceivedResponseForBulletin:(id)arg1;
-- (id)observer;
 - (void)removeBulletins:(id)arg1 inSection:(id)arg2 fromFeeds:(unsigned long long)arg3;
-- (void)requestFutureBulletinsForSectionID:(id)arg1;
+- (void)removeSection:(id)arg1;
+- (void)requestNoticesBulletinsForAllSections;
 - (void)requestNoticesBulletinsForSectionID:(id)arg1;
-- (void)requestTodayBulletinsForSectionID:(id)arg1;
 - (void)setObserverFeed:(unsigned long long)arg1 asLightsAndSirensGateway:(id)arg2 priority:(unsigned long long)arg3;
 - (void)setObserverFeed:(unsigned long long)arg1 attachToLightsAndSirensGateway:(id)arg2;
-- (void)updateBulletin:(id)arg1 forFeeds:(unsigned long long)arg2;
-- (void)updateBulletin:(id)arg1 forFeeds:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
+- (void)updateBulletin:(id)arg1;
+- (void)updateBulletin:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)updateSectionInfo:(id)arg1;
 - (void)updateSectionOrder:(id)arg1;
 - (void)updateSectionOrderRule:(id)arg1;

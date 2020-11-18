@@ -25,19 +25,19 @@
     NSString *_conversionType;
 }
 
-@property (strong) NSArray *additionalResults; // @synthesize additionalResults=_additionalResults;
-@property (strong) NSString *conversionType; // @synthesize conversionType=_conversionType;
+@property (strong, nonatomic) NSArray *additionalResults; // @synthesize additionalResults=_additionalResults;
+@property (strong, nonatomic) NSString *conversionType; // @synthesize conversionType=_conversionType;
 @property float currencyUpdateTimeOut; // @synthesize currencyUpdateTimeOut=_currencyUpdateTimeOut;
-@property (strong) NSString *inputString; // @synthesize inputString=_inputString;
-@property (strong) NSString *inputUnit; // @synthesize inputUnit=_inputUnit;
-@property (strong) NSNumber *inputValue; // @synthesize inputValue=_inputValue;
+@property (strong, nonatomic) NSString *inputString; // @synthesize inputString=_inputString;
+@property (strong, nonatomic) NSString *inputUnit; // @synthesize inputUnit=_inputUnit;
+@property (strong, nonatomic) NSNumber *inputValue; // @synthesize inputValue=_inputValue;
 @property (readonly) BOOL isCurrency; // @synthesize isCurrency=_isCurrency;
-@property (strong) NSString *localizedInputValueAndUnit; // @synthesize localizedInputValueAndUnit=_localizedInputValueAndUnit;
-@property (strong) NSString *localizedOutputUnit; // @synthesize localizedOutputUnit=_localizedOutputUnit;
-@property (strong) NSString *localizedOutputValue; // @synthesize localizedOutputValue=_localizedOutputValue;
-@property (strong) NSString *localizedOutputValueAndUnit; // @synthesize localizedOutputValueAndUnit=_localizedOutputValueAndUnit;
-@property (strong) NSString *outputUnit; // @synthesize outputUnit=_outputUnit;
-@property (strong) NSNumber *outputValue; // @synthesize outputValue=_outputValue;
+@property (strong, nonatomic) NSString *localizedInputValueAndUnit; // @synthesize localizedInputValueAndUnit=_localizedInputValueAndUnit;
+@property (strong, nonatomic) NSString *localizedOutputUnit; // @synthesize localizedOutputUnit=_localizedOutputUnit;
+@property (strong, nonatomic) NSString *localizedOutputValue; // @synthesize localizedOutputValue=_localizedOutputValue;
+@property (strong, nonatomic) NSString *localizedOutputValueAndUnit; // @synthesize localizedOutputValueAndUnit=_localizedOutputValueAndUnit;
+@property (strong, nonatomic) NSString *outputUnit; // @synthesize outputUnit=_outputUnit;
+@property (strong, nonatomic) NSNumber *outputValue; // @synthesize outputValue=_outputValue;
 
 + (id)currencyCacheLastRefreshDate;
 + (BOOL)refreshCurrencyCache;

@@ -19,29 +19,34 @@
     BOOL _cacheInvalid;
     CDUnknownBlockType _updateRangeBlock;
     BOOL _hasLocalChanges;
-    BOOL _hasDeltas;
     NSUUID *_replicaUUID;
     TTVectorMultiTimestamp *_timestamp;
     NSObject<TTMergeableStringDelegate> *_delegate;
     NSHashTable *_objectsNeedingUpdatedRanges;
     NSMutableAttributedString *_attributedString;
+    unsigned long long _replicaTextClock;
+    unsigned long long _replicaStyleClock;
 }
 
 @property (strong, nonatomic) NSMutableAttributedString *attributedString; // @synthesize attributedString=_attributedString;
 @property (nonatomic) NSObject<TTMergeableStringDelegate> *delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) BOOL hasDeltas; // @synthesize hasDeltas=_hasDeltas;
 @property (nonatomic) BOOL hasLocalChanges; // @synthesize hasLocalChanges=_hasLocalChanges;
 @property (readonly, nonatomic) NSHashTable *objectsNeedingUpdatedRanges; // @synthesize objectsNeedingUpdatedRanges=_objectsNeedingUpdatedRanges;
+@property (readonly, nonatomic) unsigned long long replicaStyleClock; // @synthesize replicaStyleClock=_replicaStyleClock;
+@property (readonly, nonatomic) unsigned long long replicaTextClock; // @synthesize replicaTextClock=_replicaTextClock;
 @property (strong, nonatomic) NSUUID *replicaUUID; // @synthesize replicaUUID=_replicaUUID;
 @property (strong, nonatomic) TTVectorMultiTimestamp *timestamp; // @synthesize timestamp=_timestamp;
 
 + (id)unserialisedReplicaID;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_testSetTextTimestamp:(unsigned long long)arg1;
 - (void)beginEditing;
 - (BOOL)canMergeString:(id)arg1;
 - (id)characterRangesForSelection:(id)arg1;
+- (id)characterRangesForSelection:(id)arg1 selectedSubstringsBlock:(CDUnknownBlockType)arg2;
 - (BOOL)check:(id *)arg1;
+- (void)checkTimestampLogStyleErrors:(BOOL)arg1;
 - (void)cleanupObjectsNeedingUpdatedRanges;
 - (void)coalesce;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -53,6 +58,8 @@
 - (void)dumpMergeData:(id)arg1;
 - (void)endEditing;
 - (vector_6c07be0f *)endNodes;
+- (void)enumerateRangesModifiedAfter:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateSubstrings:(CDUnknownBlockType)arg1;
 - (void)generateIdsForLocalChanges;
 - (unsigned long long)getCharacterIndexForCharID:(struct TopoID)arg1;
 - (void)getCharacterRanges:(vector_7053a16b *)arg1 forSubstrings:(vector_6c07be0f *)arg2;
@@ -85,6 +92,7 @@
 - (void)saveDeltaSinceTimestamp:(id)arg1 toArchive:(struct String *)arg2;
 - (void)saveSubstrings:(vector_6c07be0f *)arg1 archiveSet:(unordered_set_cb0b1a0f *)arg2 linkSet:(unordered_set_cb0b1a0f *)arg3 archivedString:(id *)arg4 toArchive:(struct String *)arg5;
 - (void)saveToArchive:(struct String *)arg1;
+- (BOOL)selection:(id)arg1 wasModifiedAfter:(id)arg2;
 - (id)selectionForCharacterRanges:(id)arg1;
 - (id)selectionForCharacterRanges:(id)arg1 selectionAffinity:(unsigned long long)arg2;
 - (id)serialize;
@@ -93,6 +101,8 @@
 - (struct TopoSubstring *)splitTopoSubstring:(struct TopoSubstring *)arg1 atIndex:(unsigned int)arg2;
 - (vector_6c07be0f *)startNodes;
 - (id)string;
+- (long long)substring:(struct TopoSubstring *)arg1 modifiedAfter:(id)arg2;
+- (BOOL)textEitherSideOfSelectionAnchor:(struct TopoID)arg1 wasModifiedAfter:(id)arg2;
 - (void)traverseUnordered:(CDUnknownBlockType)arg1;
 - (void)updateAttributedStringAfterMerge;
 - (void)updateCache;

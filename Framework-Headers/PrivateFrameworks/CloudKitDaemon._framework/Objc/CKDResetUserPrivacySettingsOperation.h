@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (unsigned long long)activityStart;
+- (id)activityCreate;
 - (void)main;
 - (BOOL)shouldCheckAppVersion;
 

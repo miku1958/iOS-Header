@@ -35,10 +35,10 @@
 + (id)lineWithName:(id)arg1 value:(id)arg2;
 + (id)lineWithName:(id)arg1 value:(id)arg2 itemSeparator:(id)arg3;
 + (id)versionPlaceholderLine;
+- (void).cxx_destruct;
 - (void)addGroupedLine:(id)arg1 withCounter:(long long *)arg2;
 - (void)addParameterWithName:(id)arg1 value:(id)arg2;
 - (BOOL)canSerializeWithStrategy:(id)arg1;
-- (void)dealloc;
 - (id)initWithName:(id)arg1 value:(id)arg2 itemSeparator:(id)arg3;
 - (void)insertParameterWithName:(id)arg1 value:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)makeGroupingNameWithCounter:(long long *)arg1;

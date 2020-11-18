@@ -6,17 +6,22 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface RTTransaction : NSObject
 {
     id _object;
+    NSString *_userDescription;
 }
 
 @property (strong, nonatomic) id object; // @synthesize object=_object;
+@property (copy, nonatomic) NSString *userDescription; // @synthesize userDescription=_userDescription;
 
 - (void).cxx_destruct;
-- (void)dealloc;
+- (id)init;
 - (id)initForObject:(id)arg1;
+- (id)initForObject:(id)arg1 description:(id)arg2;
 
 @end
 

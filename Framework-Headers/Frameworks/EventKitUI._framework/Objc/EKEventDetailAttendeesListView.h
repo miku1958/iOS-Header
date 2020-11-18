@@ -6,31 +6,39 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, UIColor;
+#import <EventKitUI/EKEventDetailAttendeesList-Protocol.h>
+
+@class NSArray, NSString, UIColor, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface EKEventDetailAttendeesListView : UIView
+@interface EKEventDetailAttendeesListView : UIView <EKEventDetailAttendeesList>
 {
     BOOL _highlighted;
     BOOL _groupsNames;
-    NSArray *_acceptedNames;
-    NSArray *_maybeNames;
-    NSArray *_declinedNames;
-    NSArray *_noReplyNames;
-    NSArray *_ungroupedNames;
+    NSArray *_accepted;
+    NSArray *_maybe;
+    NSArray *_declined;
+    NSArray *_noReply;
+    NSArray *_ungrouped;
     UIColor *_textColor;
     UIColor *_highlightedTextColor;
+    UIViewController *_viewController;
 }
 
-@property (strong, nonatomic) NSArray *acceptedNames; // @synthesize acceptedNames=_acceptedNames;
-@property (strong, nonatomic) NSArray *declinedNames; // @synthesize declinedNames=_declinedNames;
+@property (strong, nonatomic) NSArray *accepted; // @synthesize accepted=_accepted;
+@property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) NSArray *declined; // @synthesize declined=_declined;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL groupsNames; // @synthesize groupsNames=_groupsNames;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (strong, nonatomic) UIColor *highlightedTextColor; // @synthesize highlightedTextColor=_highlightedTextColor;
-@property (strong, nonatomic) NSArray *maybeNames; // @synthesize maybeNames=_maybeNames;
-@property (strong, nonatomic) NSArray *noReplyNames; // @synthesize noReplyNames=_noReplyNames;
+@property (strong, nonatomic) NSArray *maybe; // @synthesize maybe=_maybe;
+@property (strong, nonatomic) NSArray *noReply; // @synthesize noReply=_noReply;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
-@property (strong, nonatomic) NSArray *ungroupedNames; // @synthesize ungroupedNames=_ungroupedNames;
+@property (strong, nonatomic) NSArray *ungrouped; // @synthesize ungrouped=_ungrouped;
+@property (weak, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;
 - (void)_drawColumnOfStrings:(id)arg1 inRange:(struct _NSRange)arg2 startingAtPoint:(struct CGPoint)arg3 givenWidth:(double)arg4;
@@ -38,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (double)_offsetFromOffsetToBaseline:(double)arg1 withFont:(id)arg2;
 - (void)drawInvitees:(id)arg1 withStatus:(id)arg2 startingAtPoint:(struct CGPoint)arg3 givenWidth:(double)arg4;
 - (void)drawRect:(struct CGRect)arg1;
+- (void)setup;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

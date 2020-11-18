@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)alterations;
+- (id)abbreviatedKeys;
 - (BOOL)fullComponentsAreValid:(id)arg1;
 - (id)keysOfInterest;
 - (long long)shortNameFormat;

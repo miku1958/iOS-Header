@@ -7,24 +7,25 @@
 #import <SpringBoardUI/SBAlertItem.h>
 
 #import "UIAlertViewDelegate-Protocol.h"
+#import "UITextFieldDelegate-Protocol.h"
 
 @class NSString;
-@protocol UIAlertViewDelegate><UITextFieldDelegate;
+@protocol SBVoiceOverTouchLabelElementAlertItemDelegate;
 
-@interface SBVoiceOverTouchLabelElementAlertItem : SBAlertItem <UIAlertViewDelegate>
+@interface SBVoiceOverTouchLabelElementAlertItem : SBAlertItem <UITextFieldDelegate, UIAlertViewDelegate>
 {
-    id<UIAlertViewDelegate><UITextFieldDelegate> delegate;
-    NSString *initialValue;
+    NSString *_initialValue;
+    id<SBVoiceOverTouchLabelElementAlertItemDelegate> _voiceOverAlertItemDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<UIAlertViewDelegate><UITextFieldDelegate> delegate; // @synthesize delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSString *initialValue; // @synthesize initialValue;
+@property (strong, nonatomic) NSString *initialValue; // @synthesize initialValue=_initialValue;
 @property (readonly) Class superclass;
+@property (weak, nonatomic) id<SBVoiceOverTouchLabelElementAlertItemDelegate> voiceOverAlertItemDelegate; // @synthesize voiceOverAlertItemDelegate=_voiceOverAlertItemDelegate;
 
-- (void)alertView:(id)arg1 clickedButtonAtIndex:(long long)arg2;
+- (void).cxx_destruct;
 - (BOOL)allowMenuButtonDismissal;
 - (void)configure:(BOOL)arg1 requirePasscodeForActions:(BOOL)arg2;
 - (BOOL)dismissOnLock;

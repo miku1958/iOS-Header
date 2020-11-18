@@ -7,6 +7,7 @@
 @class NSString;
 
 @protocol NanoRegistryPrivateDaemonDelegate
+- (void)xpcPingActiveGizmoWithPriority:(long long)arg1 withMessageSize:(unsigned long long)arg2 withBlock:(void (^)(BOOL, double, double))arg3;
 - (void)xpcSubmitServerRequestReportWithRequestType:(NSString *)arg1 duration:(double)arg2 errorCode:(unsigned int)arg3 block:(void (^)(void))arg4;
 @end
 

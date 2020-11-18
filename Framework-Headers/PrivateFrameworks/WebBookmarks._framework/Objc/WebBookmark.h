@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <WebBookmarks/NSCopying-Protocol.h>
+
 @class NSData, NSDate, NSDictionary, NSString;
 
-@interface WebBookmark : NSObject
+@interface WebBookmark : NSObject <NSCopying>
 {
     BOOL _folder;
     NSString *_title;
@@ -28,9 +30,9 @@
     int _webFilterStatus;
     NSDictionary *_extraAttributes;
     NSDictionary *_localAttributes;
-    unsigned int _id;
-    unsigned int _parentID;
-    unsigned int _specialID;
+    int _id;
+    int _parentID;
+    int _specialID;
     unsigned int _orderIndex;
     BOOL _inserted;
     BOOL _needsSyncUpdate;
@@ -44,26 +46,27 @@
 @property (strong, nonatomic) NSDate *dateLastFetched;
 @property (strong, nonatomic) NSDate *dateLastViewed;
 @property (readonly, nonatomic, getter=isDeletable) BOOL deletable; // @synthesize deletable=_deletable;
+@property (readonly, copy, nonatomic) NSDictionary *dictionaryRepresentationForInMemoryChangeTracking;
 @property (readonly, nonatomic, getter=isEditable) BOOL editable; // @synthesize editable=_editable;
 @property (strong, nonatomic) NSDictionary *extraAttributes; // @synthesize extraAttributes=_extraAttributes;
 @property (nonatomic) BOOL fetchedIconData; // @synthesize fetchedIconData=_fetchedIconData;
 @property (readonly, nonatomic, getter=isFolder) BOOL folder; // @synthesize folder=_folder;
 @property (readonly, nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
 @property (strong, nonatomic) NSData *iconData; // @synthesize iconData=_iconData;
-@property (readonly, nonatomic) unsigned int identifier; // @synthesize identifier=_id;
+@property (readonly, nonatomic) int identifier; // @synthesize identifier=_id;
 @property (readonly, nonatomic, getter=isInserted) BOOL inserted; // @synthesize inserted=_inserted;
 @property (strong, nonatomic) NSDictionary *localAttributes; // @synthesize localAttributes=_localAttributes;
 @property (strong, nonatomic) NSString *localPreviewText;
 @property (nonatomic) BOOL locallyAdded;
 @property (nonatomic) BOOL needsSyncUpdate; // @synthesize needsSyncUpdate=_needsSyncUpdate;
 @property (strong, nonatomic) NSDictionary *nextPageURLs;
-@property (readonly, nonatomic) unsigned int parentID; // @synthesize parentID=_parentID;
+@property (readonly, nonatomic) int parentID; // @synthesize parentID=_parentID;
 @property (strong, nonatomic) NSString *previewText;
 @property (strong, nonatomic) NSString *serverID;
 @property (strong, nonatomic) NSString *siteName;
 @property (strong, nonatomic) NSString *sourceBundleID;
 @property (strong, nonatomic) NSString *sourceLocalizedAppName;
-@property (readonly, nonatomic) unsigned int specialID; // @synthesize specialID=_specialID;
+@property (readonly, nonatomic) int specialID; // @synthesize specialID=_specialID;
 @property (strong, nonatomic) NSData *syncData;
 @property (strong, nonatomic) NSString *syncKey;
 @property (readonly, nonatomic, getter=isSyncable) BOOL syncable; // @synthesize syncable=_syncable;
@@ -75,17 +78,17 @@
 - (void).cxx_destruct;
 - (id)_initWithSqliteRow:(struct sqlite3_stmt *)arg1;
 - (id)_initWithSqliteRow:(struct sqlite3_stmt *)arg1 hasIcon:(BOOL)arg2;
-- (void)_markSpecial:(unsigned int)arg1;
+- (void)_markSpecial:(int)arg1;
 - (void)_modifyExtraReadingListAttributes:(CDUnknownBlockType)arg1;
 - (void)_modifyLocalReadingListAttributes:(CDUnknownBlockType)arg1;
 - (unsigned int)_orderIndex;
 - (id)_readingListPropertyNamed:(id)arg1;
 - (void)_removeDirectoryAtPath:(id)arg1;
 - (void)_setHidden:(BOOL)arg1;
-- (void)_setID:(unsigned int)arg1;
+- (void)_setID:(int)arg1;
 - (void)_setInserted:(BOOL)arg1;
 - (void)_setOrderIndex:(unsigned int)arg1;
-- (void)_setParentID:(unsigned int)arg1;
+- (void)_setParentID:(int)arg1;
 - (void)_setSyncable:(BOOL)arg1;
 - (void)_setUUID:(id)arg1;
 - (unsigned long long)_sizeForFileOrDirectory:(id)arg1 withAttributes:(id)arg2;
@@ -94,15 +97,17 @@
 - (void)cleanupRedundantPreviewText;
 - (void)clearArchive;
 - (void)clearArchiveSynchronously;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (BOOL)fullArchiveAvailable;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initBuiltinDeviceBookmarkWithTitle:(id)arg1 address:(id)arg2;
 - (id)initCarrierBookmarkWithTitle:(id)arg1 address:(id)arg2;
-- (id)initFolderWithParentID:(unsigned int)arg1;
+- (id)initFolderWithParentID:(int)arg1;
 - (id)initReadingListBookmarkWithTitle:(id)arg1 address:(id)arg2 previewText:(id)arg3;
 - (id)initWhiteListBookmarkWithTitle:(id)arg1 address:(id)arg2;
+- (id)initWithDictionaryRepresentationForInMemoryChangeTracking:(id)arg1;
 - (id)initWithTitle:(id)arg1 address:(id)arg2;
 - (BOOL)isBookmarksBarFolder;
 - (BOOL)isBookmarksMenuFolder;

@@ -66,6 +66,7 @@
 - (id)_init;
 - (void)_tearDownConnectionBecauseOfInvalidation;
 - (void)_updatePassDescriptions;
+- (void)_updatePassDescriptionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_updateRelevantPassIDs;
 - (void)addPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addPassData:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -77,7 +78,8 @@
 - (void)getDiffForPassWithID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getPassWithID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getPassWithID:(id)arg1 reply:(CDUnknownBlockType)arg2 queue:(id)arg3;
-- (void)getSecureElementIdentifier:(CDUnknownBlockType)arg1;
+- (void)getSecureElementIdentifiers:(CDUnknownBlockType)arg1;
+- (void)getSharedWebServiceContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handlePassLibraryChangedNotification:(id)arg1;
 - (void)handleRelevancyCheckCompletedNotification:(id)arg1;
 - (void)handleRelevancyPotentialChangedNotification:(id)arg1;
@@ -86,9 +88,11 @@
 - (void)handleValueAddedServiceTransactions:(id)arg1 forPassUniqueIDs:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)markAsHavingReceivedLocation;
+- (void)noteWebServiceUpdateNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performWorkAfterFirstLibraryLoad:(CDUnknownBlockType)arg1;
 - (id)preferredPaymentApplicationForPaymentPass:(id)arg1;
 - (void)setPreferredPaymentApplication:(id)arg1 forPaymentPass:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setSharedWebServiceContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

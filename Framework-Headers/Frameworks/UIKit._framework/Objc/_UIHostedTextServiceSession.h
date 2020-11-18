@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) id<_UIHostedTextServiceSessionDelegate> delegate; // @synthesize delegate=_delegate;
 
++ (id)showServiceForText:(id)arg1 selectedTextRange:(struct _NSRange)arg2 type:(long long)arg3 fromRect:(struct CGRect)arg4 inView:(id)arg5;
 + (id)showServiceForText:(id)arg1 type:(long long)arg2 fromRect:(struct CGRect)arg3 inView:(id)arg4;
 - (void)dismissTextServiceAnimated:(BOOL)arg1;
 - (void)remoteSessionDidDismiss;

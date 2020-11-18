@@ -9,15 +9,15 @@
 @class NSArray, NSCountedSet, RTEvent;
 
 @protocol RTEventStore <NSObject>
+- (void)_processEventsWithGlobalAppLaunchCountedSet:(NSCountedSet *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
 - (void)addEvent:(RTEvent *)arg1;
 - (void)addEvents:(NSArray *)arg1;
 - (void)clearAllEvents;
 - (unsigned long long)countOfEvents;
-- (void)fetchPredictionForEvent:(RTEvent *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
+- (void)fetchAllPredictionsWithHandler:(void (^)(NSArray *, NSError *))arg1;
 - (double)getConfidence;
 - (id)initWithApplicableEventClasses:(NSArray *)arg1;
 - (void)invalidate;
-- (void)processEventsWithGlobalAppLaunchCountedSet:(NSCountedSet *)arg1 handler:(void (^)(NSError *))arg2;
 - (void)removeEvent:(RTEvent *)arg1;
 - (void)removeEvents:(NSArray *)arg1;
 - (BOOL)storesEventOfClass:(Class)arg1;

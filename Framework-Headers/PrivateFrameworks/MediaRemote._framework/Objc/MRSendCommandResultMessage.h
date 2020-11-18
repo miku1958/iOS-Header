@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) NSArray *results;
 @property (readonly, nonatomic) unsigned int sendError;
 
+- (void)dealloc;
 - (id)initWithSendError:(unsigned int)arg1 results:(id)arg2;
 - (unsigned long long)type;
 

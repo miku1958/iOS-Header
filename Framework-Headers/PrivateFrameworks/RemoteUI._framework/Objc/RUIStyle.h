@@ -12,20 +12,44 @@
 {
     UIColor *_backgroundColor;
     UIColor *_radioGroupSelectedColor;
-    UIColor *_selectPageDetailTextColor;
     UIColor *_buttonRowTextColor;
+    UIColor *_labelRowTextColor;
+    UIColor *_selectPageDetailTextColor;
+    UIColor *_headerLabelTextColor;
+    UIColor *_subHeaderLabelTextColor;
+    UIColor *_detailHeaderLabelTextColor;
+    UIColor *_footerLabelTextColor;
+    long long _labelRowTextAlignment;
+    long long _headerLabelAlignment;
+    long long _subHeaderLabelAlignment;
+    long long _footerLabelAlignment;
+    long long _footerLinkAlignment;
 }
 
-@property (readonly, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
-@property (readonly, nonatomic) UIColor *buttonRowTextColor; // @synthesize buttonRowTextColor=_buttonRowTextColor;
-@property (readonly, nonatomic) UIColor *radioGroupSelectedColor; // @synthesize radioGroupSelectedColor=_radioGroupSelectedColor;
-@property (readonly, nonatomic) UIColor *selectPageDetailTextColor; // @synthesize selectPageDetailTextColor=_selectPageDetailTextColor;
+@property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property (strong, nonatomic) UIColor *buttonRowTextColor; // @synthesize buttonRowTextColor=_buttonRowTextColor;
+@property (strong, nonatomic) UIColor *detailHeaderLabelTextColor; // @synthesize detailHeaderLabelTextColor=_detailHeaderLabelTextColor;
+@property (nonatomic) long long footerLabelAlignment; // @synthesize footerLabelAlignment=_footerLabelAlignment;
+@property (strong, nonatomic) UIColor *footerLabelTextColor; // @synthesize footerLabelTextColor=_footerLabelTextColor;
+@property (nonatomic) long long footerLinkAlignment; // @synthesize footerLinkAlignment=_footerLinkAlignment;
+@property (nonatomic) long long headerLabelAlignment; // @synthesize headerLabelAlignment=_headerLabelAlignment;
+@property (strong, nonatomic) UIColor *headerLabelTextColor; // @synthesize headerLabelTextColor=_headerLabelTextColor;
+@property (nonatomic) long long labelRowTextAlignment; // @synthesize labelRowTextAlignment=_labelRowTextAlignment;
+@property (strong, nonatomic) UIColor *labelRowTextColor; // @synthesize labelRowTextColor=_labelRowTextColor;
+@property (readonly, nonatomic) long long navBarActivityIndicatorStyle;
+@property (strong, nonatomic) UIColor *radioGroupSelectedColor; // @synthesize radioGroupSelectedColor=_radioGroupSelectedColor;
+@property (strong, nonatomic) UIColor *selectPageDetailTextColor; // @synthesize selectPageDetailTextColor=_selectPageDetailTextColor;
+@property (nonatomic) long long subHeaderLabelAlignment; // @synthesize subHeaderLabelAlignment=_subHeaderLabelAlignment;
+@property (strong, nonatomic) UIColor *subHeaderLabelTextColor; // @synthesize subHeaderLabelTextColor=_subHeaderLabelTextColor;
 
 + (id)defaultStyle;
 + (id)frontRowStyle;
 + (id)setupAssistantModalStyle;
 + (id)setupAssistantStyle;
++ (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)applyToLabel:(id)arg1;
+- (void)applyToNavigationController:(id)arg1;
 - (void)applyToObjectModel:(id)arg1;
 - (id)init;
 

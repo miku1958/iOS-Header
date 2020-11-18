@@ -39,6 +39,10 @@
 @property (nonatomic) unsigned int version; // @synthesize version=_version;
 @property (strong, nonatomic) NSMutableArray *versionDomains; // @synthesize versionDomains=_versionDomains;
 
++ (Class)batchPlaceResultType;
++ (Class)clusterType;
++ (Class)versionDomainType;
+- (int)StringAsStatusCode:(id)arg1;
 - (void)addBatchPlaceResult:(id)arg1;
 - (void)addCluster:(id)arg1;
 - (void)addVersionDomain:(id)arg1;
@@ -60,6 +64,7 @@
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setHttpHeaders:(id)arg1;
+- (id)statusCodeAsString:(int)arg1;
 - (id)versionDomainAtIndex:(unsigned long long)arg1;
 - (unsigned long long)versionDomainsCount;
 - (void)writeTo:(id)arg1;

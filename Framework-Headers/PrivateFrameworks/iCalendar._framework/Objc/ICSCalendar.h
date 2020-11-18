@@ -44,6 +44,7 @@
 - (void)_addTimeZonesInComponent:(id)arg1 toDictionary:(id)arg2;
 - (void)_addTimeZonesInComponent:(id)arg1 toSet:(id)arg2;
 - (id)_init;
+- (id)_initWithVersionAndProdID:(BOOL)arg1;
 - (id)_timeZonesForComponents:(id)arg1 options:(int)arg2;
 - (void)addComponent:(id)arg1;
 - (void)addParsingError:(id)arg1;

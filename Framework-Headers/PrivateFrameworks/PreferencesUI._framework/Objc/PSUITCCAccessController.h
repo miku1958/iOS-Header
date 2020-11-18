@@ -6,40 +6,30 @@
 
 #import <Preferences/PSListController.h>
 
-@class HMHomeManager, NSString;
+@class NSString;
 
 @interface PSUITCCAccessController : PSListController
 {
     NSString *_serviceKey;
-    BOOL _iCloudURLIsReachable;
     NSString *_footer;
     NSString *_header;
     NSString *_explanation;
-    HMHomeManager *_homeManager;
-    struct __SCNetworkReachability *_reachability;
 }
 
 @property (copy, nonatomic) NSString *explanation; // @synthesize explanation=_explanation;
 @property (copy, nonatomic) NSString *footer; // @synthesize footer=_footer;
 @property (copy, nonatomic) NSString *header; // @synthesize header=_header;
-@property (strong, nonatomic) HMHomeManager *homeManager; // @synthesize homeManager=_homeManager;
-@property (nonatomic) BOOL iCloudURLIsReachable; // @synthesize iCloudURLIsReachable=_iCloudURLIsReachable;
-@property (nonatomic) struct __SCNetworkReachability *reachability; // @synthesize reachability=_reachability;
 @property (readonly, nonatomic) NSString *serviceKey; // @synthesize serviceKey=_serviceKey;
 
 + (BOOL)isServiceRestricted:(id)arg1;
 - (void).cxx_destruct;
-- (void)_confirmResetWillowData;
-- (void)_resetWillowData;
 - (id)accesssForSpecifier:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (void)setAccess:(id)arg1 forSpecifier:(id)arg2;
 - (void)setSpecifier:(id)arg1;
 - (id)specifiers;
 - (void)updateSpecifiersForImposedSettings;
 - (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

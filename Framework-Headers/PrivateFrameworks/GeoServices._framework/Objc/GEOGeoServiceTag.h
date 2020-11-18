@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSString *tag; // @synthesize tag=_tag;
 
 + (id)defaultTag;
+- (int)StringAsServiceType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -33,6 +34,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)serviceTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

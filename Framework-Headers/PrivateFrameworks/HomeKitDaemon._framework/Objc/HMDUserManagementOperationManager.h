@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HAPTimerDelegate-Protocol.h>
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HAPTimer, NSArray, NSHashTable, NSMutableArray, NSString;
+@class HMFTimer, NSArray, NSHashTable, NSMutableArray, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDUserManagementOperationManager : NSObject <HAPTimerDelegate>
+@interface HMDUserManagementOperationManager : NSObject <HMFTimerDelegate>
 {
     NSMutableArray *_operations;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
-    HAPTimer *_saveTimer;
+    HMFTimer *_saveTimer;
     NSHashTable *_observedAccessories;
 }
 
@@ -27,7 +27,7 @@
 @property (readonly, nonatomic) NSHashTable *observedAccessories; // @synthesize observedAccessories=_observedAccessories;
 @property (readonly, nonatomic) NSArray *operations;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property (readonly, nonatomic) HAPTimer *saveTimer; // @synthesize saveTimer=_saveTimer;
+@property (readonly, nonatomic) HMFTimer *saveTimer; // @synthesize saveTimer=_saveTimer;
 @property (readonly) Class superclass;
 
 + (void)initialize;
@@ -40,6 +40,7 @@
 - (void)__registerIfNeededForReachablityChangeNotificationsForAccessory:(id)arg1;
 - (void)__removeOperationAndProcessDependantOperations:(id)arg1;
 - (void)__save;
+- (void)_cleanPriorOperations:(id)arg1;
 - (id)_filteredOperationsForAccessory:(id)arg1;
 - (id)_filteredOperationsWithDependency:(id)arg1;
 - (void)_handleAccessoryIsReachable:(id)arg1;

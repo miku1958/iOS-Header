@@ -21,25 +21,17 @@
     struct CGSize _boundingSize;
 }
 
-@property (copy, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
-@property (nonatomic) struct CGSize boundingSize; // @synthesize boundingSize=_boundingSize;
-@property (nonatomic) double firstBaselineOffsetFromTop; // @synthesize firstBaselineOffsetFromTop=_firstBaselineOffsetFromTop;
+@property (copy, nonatomic, setter=_setAttributedText:) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
+@property (nonatomic, setter=_setBoundingSize:) struct CGSize boundingSize; // @synthesize boundingSize=_boundingSize;
+@property (nonatomic, setter=_setFirstBaselineOffsetFromTop:) double firstBaselineOffsetFromTop; // @synthesize firstBaselineOffsetFromTop=_firstBaselineOffsetFromTop;
 @property (strong, nonatomic, getter=_image, setter=_setImage:) UIImage *image; // @synthesize image=_image;
-@property (nonatomic) double lastBaselineOffsetFromBottom; // @synthesize lastBaselineOffsetFromBottom=_lastBaselineOffsetFromBottom;
-@property (strong, nonatomic) NSStringDrawingContext *stringDrawingContext; // @synthesize stringDrawingContext=_stringDrawingContext;
-@property (nonatomic) long long stringDrawingOptions; // @synthesize stringDrawingOptions=_stringDrawingOptions;
-@property (copy, nonatomic) NSString *text; // @synthesize text=_text;
-@property (copy, nonatomic) NSDictionary *uniformTextAttributes; // @synthesize uniformTextAttributes=_uniformTextAttributes;
+@property (nonatomic, setter=_setLastBaselineOffsetFromBottom:) double lastBaselineOffsetFromBottom; // @synthesize lastBaselineOffsetFromBottom=_lastBaselineOffsetFromBottom;
+@property (strong, nonatomic, setter=_setStringDrawingContext:) NSStringDrawingContext *stringDrawingContext; // @synthesize stringDrawingContext=_stringDrawingContext;
+@property (nonatomic, setter=_setStringDrawingOptions:) long long stringDrawingOptions; // @synthesize stringDrawingOptions=_stringDrawingOptions;
+@property (copy, nonatomic, setter=_setText:) NSString *text; // @synthesize text=_text;
+@property (copy, nonatomic, setter=_setUniformTextAttributes:) NSDictionary *uniformTextAttributes; // @synthesize uniformTextAttributes=_uniformTextAttributes;
 
 - (void).cxx_destruct;
-- (void)_setAttributedText:(id)arg1;
-- (void)_setBoundingSize:(struct CGSize)arg1;
-- (void)_setFirstBaselineOffsetFromTop:(double)arg1;
-- (void)_setLastBaselineOffsetFromBottom:(double)arg1;
-- (void)_setStringDrawingContext:(id)arg1;
-- (void)_setStringDrawingOptions:(long long)arg1;
-- (void)_setText:(id)arg1;
-- (void)_setUniformTextAttributes:(id)arg1;
 
 @end
 

@@ -51,10 +51,10 @@ struct Point3D {
 };
 
 struct UIEdgeInsets {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
+    double top;
+    double left;
+    double bottom;
+    double right;
 };
 
 struct UIOffset {
@@ -67,7 +67,12 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-struct pair<unsigned long, unsigned long>;
+struct __va_list_tag {
+    unsigned int _field1;
+    unsigned int _field2;
+    void *_field3;
+    void *_field4;
+};
 
 struct vector<MPU::LayoutInterpolator::EntriesContainer, std::__1::allocator<MPU::LayoutInterpolator::EntriesContainer>> {
     struct EntriesContainer *__begin_;
@@ -93,15 +98,20 @@ struct vector<MPU::Point3D, std::__1::allocator<MPU::Point3D>> {
     } _field3;
 };
 
-struct vector<std::__1::pair<unsigned long, unsigned long>, std::__1::allocator<std::__1::pair<unsigned long, unsigned long>>> {
-    struct pair<unsigned long, unsigned long> *__begin_;
-    struct pair<unsigned long, unsigned long> *__end_;
-    struct __compressed_pair<std::__1::pair<unsigned long, unsigned long>*, std::__1::allocator<std::__1::pair<unsigned long, unsigned long>>> {
-        struct pair<unsigned long, unsigned long> *__first_;
-    } __end_cap_;
-};
-
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    double ascender;
+    BOOL isAscenderInitialized;
+    double bodyLeading;
+    BOOL isBodyLeadingInitialized;
+    double capHeight;
+    BOOL isCapHeightInitialized;
+    double descender;
+    BOOL isDescenderInitialized;
+    double lineHeight;
+    BOOL isLineHeightInitialized;
+} CDStruct_1aa0583f;
 
 typedef struct {
     struct CGRect _field1;

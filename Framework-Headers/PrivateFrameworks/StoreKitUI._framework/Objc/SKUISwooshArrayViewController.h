@@ -8,14 +8,13 @@
 
 #import <StoreKitUI/SKUIMetricsViewController-Protocol.h>
 #import <StoreKitUI/SKUIProductPageChildViewController-Protocol.h>
-#import <StoreKitUI/SKUIResourceLoaderDelegate-Protocol.h>
 #import <StoreKitUI/SKUISwooshViewControllerDelegate-Protocol.h>
 #import <StoreKitUI/UIScrollViewDelegate-Protocol.h>
 
 @class NSArray, NSMutableArray, NSOperationQueue, NSString, SKUIClientContext, SKUIColorScheme, SKUIMetricsController, SKUIProductPageHeaderViewController, SKUIResourceLoader, SSVPlatformRequestOperation, UIScrollView;
 @protocol SKUIProductPageChildViewControllerDelegate;
 
-@interface SKUISwooshArrayViewController : UIViewController <SKUIMetricsViewController, SKUIResourceLoaderDelegate, SKUISwooshViewControllerDelegate, UIScrollViewDelegate, SKUIProductPageChildViewController>
+@interface SKUISwooshArrayViewController : UIViewController <SKUIMetricsViewController, SKUISwooshViewControllerDelegate, UIScrollViewDelegate, SKUIProductPageChildViewController>
 {
     BOOL _askPermission;
     SKUIResourceLoader *_artworkLoader;
@@ -57,10 +56,9 @@
 - (void)_reloadChildViewControllers;
 - (id)_scrollView;
 - (id)activeMetricsController;
-- (void)artworkLoaderDidIdle:(id)arg1;
 - (void)dealloc;
 - (id)initWithSwooshComponents:(id)arg1;
-- (BOOL)isLoaded;
+- (BOOL)isSkLoaded;
 - (void)loadMissingItemData;
 - (void)loadView;
 - (void)scrollViewDidScroll:(id)arg1;

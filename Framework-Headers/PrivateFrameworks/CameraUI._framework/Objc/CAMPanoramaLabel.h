@@ -4,30 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <CameraUI/CAMInstructionLabel.h>
 
-#import <CameraUI/_UIBackdropViewObserver-Protocol.h>
-
-@class NSString, _UIBackdropView, _UILegibilitySettingsProvider, _UILegibilityView;
-
-@interface CAMPanoramaLabel : UIView <_UIBackdropViewObserver>
+@interface CAMPanoramaLabel : CAMInstructionLabel
 {
-    _UIBackdropView *_backdropView;
-    _UILegibilityView *_legibilityView;
-    _UILegibilitySettingsProvider *_legibilitySettingsProvider;
-    NSString *_text;
 }
 
-@property (copy, nonatomic) NSString *text; // @synthesize text=_text;
-
-- (void).cxx_destruct;
-- (void)_updateLegibilityView;
-- (void)backdropViewDidChange:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (struct CGSize)intrinsicContentSize;
-- (void)layoutSubviews;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)updateToContentSize:(id)arg1;
+- (double)_backgroundAlpha;
+- (struct UIEdgeInsets)_textInsets;
 
 @end
 

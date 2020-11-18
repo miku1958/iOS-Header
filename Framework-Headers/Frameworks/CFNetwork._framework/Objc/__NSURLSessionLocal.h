@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id)AVAssetDownloadTaskForURLAsset:(id)arg1 assetTitle:(id)arg2 assetArtworkData:(id)arg3 options:(id)arg4;
 - (id)AVAssetDownloadTaskForURLAsset:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
@@ -51,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)URLSession:(id)arg1 task:(id)arg2 _isWaitingForConnectionWithReason:(long long)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 _willSendRequestForEstablishedConnection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
+- (void)URLSession:(id)arg1 task:(id)arg2 didFinishCollectingMetrics:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didSendBodyData:(long long)arg3 totalBytesSent:(long long)arg4 totalBytesExpectedToSend:(long long)arg5;
 - (void)URLSession:(id)arg1 task:(id)arg2 needNewBodyStream:(CDUnknownBlockType)arg3;
@@ -78,9 +80,11 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateAllConnections;
 - (struct URLProtocol *)_newURLProtocolForTask:(id)arg1 client:(struct URLProtocolClient *)arg2;
 - (struct URLProtocol *)_newURLProtocolForTask:(id)arg1 client:(struct URLProtocolClient *)arg2 protocolClass:(Class)arg3;
+- (void)_onqueue_canonicalizeTaskAndCreateConnection:(id)arg1;
 - (void)_onqueue_checkForCompletion;
 - (void)_onqueue_completeInvalidation:(BOOL)arg1;
 - (void)_onqueue_connectUploadTask:(id)arg1 strippedRequest:(id)arg2 bodyStream:(id)arg3 bodyParts:(id)arg4;
+- (void)_onqueue_finishConnectUpRequest:(id)arg1 task:(id)arg2;
 - (void)_onqueue_flushWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_onqueue_getTasksWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_onqueue_invalidateSession:(BOOL)arg1 withQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -98,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (struct __CFString *)_withConnectionCache_getCurrentSSLMethodForKey:(const struct HTTPConnectionCacheKey *)arg1 scheduling:(const struct CoreSchedulingSet *)arg2;
 - (struct GlueTube *)_withConnectionCache_getPendingTubeForProtocol:(struct MetaConnectionCacheClient *)arg1 withKey:(const struct HTTPConnectionCacheKey *)arg2 scheduling:(const struct CoreSchedulingSet *)arg3;
 - (void)_withConnectionCache_setCurrentSSLMethod:(struct __CFString *)arg1 forKey:(const struct HTTPConnectionCacheKey *)arg2 scheduling:(const struct CoreSchedulingSet *)arg3;
+- (void)_withConnectionCache_setIOFallbackForKey:(const struct HTTPConnectionCacheKey *)arg1 scheduling:(const struct CoreSchedulingSet *)arg2;
 - (void)addConnectionlessTask:(id)arg1;
 - (id)connToTask:(id)arg1;
 - (const struct XCookieStorage *)copyBaseStorageForRequest:(struct _CFURLRequest *)arg1;

@@ -19,6 +19,7 @@
     NSMutableString *_stringValue;
     BOOL _securePasscodeEntry;
     BOOL _enabled;
+    BOOL _shouldBecomeFirstResponderOnTap;
     id<PSPasscodeFieldDelegate> _delegate;
     unsigned long long _numberOfEntryFields;
     UIColor *_foregroundColor;
@@ -35,6 +36,7 @@
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
 @property (strong, nonatomic) NSArray *fieldSpacing; // @synthesize fieldSpacing=_fieldSpacing;
 @property (strong, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
+@property (readonly, nonatomic) BOOL hasText;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long keyboardAppearance; // @synthesize keyboardAppearance=_keyboardAppearance;
 @property (nonatomic) long long keyboardType;
@@ -42,14 +44,16 @@
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic) BOOL securePasscodeEntry; // @synthesize securePasscodeEntry=_securePasscodeEntry;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
+@property (nonatomic) BOOL shouldBecomeFirstResponderOnTap; // @synthesize shouldBecomeFirstResponderOnTap=_shouldBecomeFirstResponderOnTap;
 @property (nonatomic) long long spellCheckingType;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *textContentType;
 
 - (void).cxx_destruct;
+- (void)_delegateEnteredPasscode:(id)arg1;
 - (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
 - (void)deleteBackward;
-- (BOOL)hasText;
 - (id)initWithNumberOfEntryFields:(unsigned long long)arg1;
 - (void)insertText:(id)arg1;
 - (void)layoutSubviews;

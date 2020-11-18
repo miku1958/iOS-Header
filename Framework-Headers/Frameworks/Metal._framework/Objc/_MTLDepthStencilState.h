@@ -6,12 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-#import <Metal/MTLDepthStencilState-Protocol.h>
+#import <Metal/MTLDepthStencilStateSPI-Protocol.h>
 
 @class NSString;
 @protocol MTLDevice;
 
-@interface _MTLDepthStencilState : NSObject <MTLDepthStencilState>
+@interface _MTLDepthStencilState : NSObject <MTLDepthStencilStateSPI>
 {
     id<MTLDevice> _device;
     NSString *_label;
@@ -22,7 +22,11 @@
 @property (readonly) id<MTLDevice> device; // @synthesize device=_device;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSString *label; // @synthesize label=_label;
+@property (readonly) BOOL readsDepth;
+@property (readonly) BOOL readsStencil;
 @property (readonly) Class superclass;
+@property (readonly) BOOL writesDepth;
+@property (readonly) BOOL writesStencil;
 
 - (void)dealloc;
 - (id)initWithDevice:(id)arg1 depthStencilDescriptor:(id)arg2;

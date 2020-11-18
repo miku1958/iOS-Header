@@ -11,8 +11,8 @@
 @interface _UIVisualEffectLayerConfig : NSObject
 {
     NSString *_filterType;
-    double _opacity;
     UIColor *_fillColor;
+    double _opacity;
 }
 
 @property (readonly, nonatomic) UIColor *fillColor; // @synthesize fillColor=_fillColor;

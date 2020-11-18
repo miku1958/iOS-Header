@@ -6,27 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class BRCAccountSession, NSString;
+#import <CloudDocsDaemon/MCProfileConnectionObserver-Protocol.h>
+
+@class BRCAccountSession, NSMutableDictionary, NSString;
 @protocol BRCAccountHandlerDelegate, OS_dispatch_queue;
 
-@interface BRCAccountHandler : NSObject
+@interface BRCAccountHandler : NSObject <MCProfileConnectionObserver>
 {
     BRCAccountSession *_session;
     NSString *_currentAccountID;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_migrationStatusSetterQueue;
     BOOL _hasSetMigrationComplete;
+    NSMutableDictionary *_syncPolicyByFolderType;
     id<BRCAccountHandlerDelegate> _delegate;
+    NSObject<OS_dispatch_queue> *_pushQueue;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<BRCAccountHandlerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *pushQueue; // @synthesize pushQueue=_pushQueue;
 @property (readonly, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
+@property (readonly) Class superclass;
 
 + (void)_migrateAccountIfNecessaryForAccountID:(id)arg1;
++ (id)accountIDPath;
++ (id)dbAccountID;
++ (BOOL)destroyCurrentAccountSynchronously;
 + (id)icloudDriveAccountID;
++ (id)mobileDocsAccountID;
 + (id)primaryiCloudAccount;
 + (id)primaryiCloudAccountID;
 - (void).cxx_destruct;
+- (void)__destroySessionWithIntents:(id)arg1;
 - (void)_cleanupPushAndActivitiesStatesWhenNoSessionExists;
 - (BOOL)_createCurrentAccountSessionWithID:(id)arg1 error:(id *)arg2;
 - (void)_destroyCurrentSessionSynchronously;
@@ -34,16 +48,20 @@
 - (void)_handleAccountWillChange;
 - (BOOL)_loadCurrentOnDiskAccountSessionWithError:(id *)arg1;
 - (void)_updateAccountToAccountID:(id)arg1;
-- (id)accountIDPath;
 - (BOOL)createCurrentAccountSessionWithID:(id)arg1 error:(id *)arg2;
+- (void)dealloc;
 - (void)destroyCurrentSessionSynchronously;
 - (id)init;
 - (void)jetsamCloudDocsApps;
 - (void)markMigrationCompletedForDSID:(id)arg1;
-- (id)onDiskAccountID;
+- (void)profileConnectionDidReceiveRestrictionChangedNotification:(id)arg1 userInfo:(id)arg2;
+- (void)reloadSyncedFolderPolicies;
+- (void)reloadSyncedFolderPoliciesDisableiCloudDesktop:(BOOL)arg1;
+- (BOOL)setDBAccountID:(id)arg1;
 - (void)setMigrationStatus:(BOOL)arg1 forDSID:(id)arg2 shouldUpdateAccount:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
-- (BOOL)setOnDiskAccountID:(id)arg1;
+- (void)setSyncPolicy:(long long)arg1 forSyncedFolderType:(unsigned long long)arg2;
 - (void)startAndLoadCurrentAccountSynchronously;
+- (long long)syncPolicyforSyncedFolderType:(unsigned long long)arg1;
 
 @end
 

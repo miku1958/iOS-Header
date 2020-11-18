@@ -4,23 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <CoreImage/CIImageProcessorInOut.h>
 
-@interface CIImageProcessorOutput : NSObject
+#import <CoreImage/CIImageProcessorOutput-Protocol.h>
+
+@protocol MTLCommandBuffer, MTLTexture;
+
+__attribute__((visibility("hidden")))
+@interface CIImageProcessorOutput : CIImageProcessorInOut <CIImageProcessorOutput>
 {
-    void *_priv;
+    id<MTLCommandBuffer> _cmdBuffer;
 }
 
+@property (readonly, nonatomic) void *baseAddress;
 @property (readonly, nonatomic) unsigned long long bytesPerRow;
 @property (readonly, nonatomic) int format;
+@property (readonly, nonatomic) id<MTLCommandBuffer> metalCommandBuffer;
+@property (readonly, nonatomic) id<MTLTexture> metalTexture;
+@property (readonly, nonatomic) struct __CVBuffer *pixelBuffer;
 @property (readonly, nonatomic) struct CGRect region;
 
 - (void)dealloc;
-- (void *)getBaseAddress;
 - (id)initWithSurface:(struct __IOSurface *)arg1 texture:(struct Texture)arg2 bounds:(struct CGRect)arg3 context:(struct Context *)arg4;
-- (id)metalCommandBuffer;
-- (id)metalTexture;
-- (struct __IOSurface *)surface;
+- (BOOL)metalCommandBufferRequested;
 
 @end
 

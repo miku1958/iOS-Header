@@ -12,13 +12,12 @@
 
 @interface TKTokenDriverContext : NSExtensionContext <TKTokenDriverProtocol>
 {
-    NSString *_instanceID;
     TKTokenDriver *_driver;
-    NSString *_driverClassID;
+    NSString *_tokenID;
 }
 
-@property (strong, nonatomic) TKTokenDriver *driver; // @synthesize driver=_driver;
-@property (strong, nonatomic) NSString *driverClassID; // @synthesize driverClassID=_driverClassID;
+@property (strong) TKTokenDriver *driver; // @synthesize driver=_driver;
+@property (strong) NSString *tokenID; // @synthesize tokenID=_tokenID;
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;

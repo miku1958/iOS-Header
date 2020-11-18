@@ -14,13 +14,11 @@
     long long _contentBackdropOverlayBlendMode;
 }
 
-@property (nonatomic, setter=_setContentBackdropOverlayBlendMode:) long long _contentBackdropOverlayBlendMode; // @synthesize _contentBackdropOverlayBlendMode;
-@property (strong, nonatomic, setter=_setDividerView:) UIView *_dividerView; // @synthesize _dividerView;
-@property (nonatomic) long long contentBackdropOverlayBlendMode;
+@property (nonatomic) long long contentBackdropOverlayBlendMode; // @synthesize contentBackdropOverlayBlendMode=_contentBackdropOverlayBlendMode;
 @property (strong, nonatomic) UIColor *contentBackgroundColor;
 
+- (void).cxx_destruct;
 - (struct CGRect)_dividerViewFrame;
-- (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (void)setSeparatorStyle:(long long)arg1;

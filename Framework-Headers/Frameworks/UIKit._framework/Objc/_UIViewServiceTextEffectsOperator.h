@@ -55,7 +55,6 @@ __attribute__((visibility("hidden")))
 - (id)_queue;
 - (void)_resetSceneSize;
 - (void)_restoreInputViews;
-- (void)_sendNotification:(id)arg1;
 - (BOOL)_tryRetain;
 - (void)_viewServiceHostWillEnterForeground:(id)arg1;
 - (id)autorelease;

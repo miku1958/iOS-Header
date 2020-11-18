@@ -37,7 +37,6 @@
 - (BOOL)_isCollectionEmpty:(id)arg1;
 - (id)_propertyFromSelector:(SEL)arg1;
 - (void)_removeObserver:(id)arg1;
-- (void)_resetAllDefaults;
 - (void)_setUserDefaults:(id)arg1;
 - (id)_store;
 - (void)dealloc;
@@ -47,6 +46,7 @@
 - (id)init;
 - (id)observeDefault:(id)arg1 onQueue:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (id)observeDefaults:(id)arg1 onQueue:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)resetAllDefaults;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (void)synchronizeDefaults;

@@ -34,8 +34,10 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithServiceType:(id)arg1;
+- (id)instructorSocketOptions;
 - (void)netService:(id)arg1 didAcceptConnectionWithInputStream:(id)arg2 outputStream:(id)arg3;
 - (void)netService:(id)arg1 didNotPublish:(id)arg2;
+- (void)registerDefaults;
 - (void)scheduleBeaconToggle:(id)arg1;
 - (void)startClassBeacon;
 - (void)stopBeacon;

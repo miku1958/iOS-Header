@@ -8,9 +8,7 @@
 
 @interface UIScreen (SpringBoard)
 + (id)sbs_launchImageInfoPlistKeyModifier:(long long)arg1;
-+ (id)sbs_screenTypes;
 + (id)sbs_snapshotImagePathComponent:(long long)arg1;
-- (BOOL)sbs_isCarScreen;
 - (BOOL)sbs_isMainScreen;
 - (id)sbs_launchImageInfoPlistKeyModifier;
 - (id)sbs_snapshotImagePathComponent;

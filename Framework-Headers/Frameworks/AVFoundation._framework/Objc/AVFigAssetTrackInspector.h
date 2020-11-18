@@ -18,6 +18,7 @@
     struct OpaqueFigSimpleMutex *_loadingMutex;
     NSObject<OS_dispatch_queue> *_completionHandlerQueue;
     NSMutableArray *_loadingBatches;
+    unsigned int _mediaType;
     AVWeakReference *_weakReferenceToAsset;
 }
 
@@ -39,6 +40,7 @@
 - (id)availableMetadataFormats;
 - (id)commonMetadata;
 - (void)dealloc;
+- (long long)defaultAlternateGroupID;
 - (struct CGSize)dimensions;
 - (float)estimatedDataRate;
 - (id)extendedLanguageTag;
@@ -66,6 +68,7 @@
 - (int)playabilityValidationResult;
 - (struct CGAffineTransform)preferredTransform;
 - (float)preferredVolume;
+- (long long)provisionalAlternateGroupID;
 - (BOOL)requiresFrameReordering;
 - (id)segmentForTrackTime:(CDStruct_1b6d18a9)arg1;
 - (id)segments;

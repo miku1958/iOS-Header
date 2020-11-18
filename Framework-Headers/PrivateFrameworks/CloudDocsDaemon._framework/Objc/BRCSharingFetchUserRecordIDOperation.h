@@ -20,10 +20,10 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id)createActivity;
 - (id)initWithSyncContext:(id)arg1;
 - (void)main;
 - (BOOL)shouldRetryForError:(id)arg1;
-- (unsigned long long)startActivity;
 
 @end
 

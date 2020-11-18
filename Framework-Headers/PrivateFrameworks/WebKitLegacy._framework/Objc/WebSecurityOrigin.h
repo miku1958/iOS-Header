@@ -23,7 +23,6 @@
 - (id)databaseIdentifier;
 - (id)databaseQuotaManager;
 - (void)dealloc;
-- (void)finalize;
 - (id)host;
 - (id)initWithURL:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

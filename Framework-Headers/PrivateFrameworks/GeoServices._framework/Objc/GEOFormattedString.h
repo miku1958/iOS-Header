@@ -14,30 +14,44 @@
 @interface GEOFormattedString : PBCodable <GEOServerFormattedString, NSCopying>
 {
     NSMutableArray *_formatArguments;
-    NSString *_formatString;
+    NSMutableArray *_formatStrings;
+    NSMutableArray *_separators;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableArray *formatArguments; // @synthesize formatArguments=_formatArguments;
 @property (readonly, nonatomic) NSString *formatString;
-@property (strong, nonatomic) NSString *formatString; // @synthesize formatString=_formatString;
+@property (readonly, nonatomic) NSArray *formatStrings;
+@property (strong, nonatomic) NSMutableArray *formatStrings; // @synthesize formatStrings=_formatStrings;
 @property (readonly, nonatomic) NSArray *formatTokens;
-@property (readonly, nonatomic) BOOL hasFormatString;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSArray *separators;
+@property (strong, nonatomic) NSMutableArray *separators; // @synthesize separators=_separators;
 @property (readonly) Class superclass;
 
++ (Class)formatArgumentType;
++ (Class)formatStringType;
++ (Class)separatorType;
 - (void)addFormatArgument:(id)arg1;
+- (void)addFormatString:(id)arg1;
+- (void)addSeparator:(id)arg1;
 - (void)clearFormatArguments;
+- (void)clearFormatStrings;
+- (void)clearSeparators;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)dictionaryRepresentation;
 - (id)formatArgumentAtIndex:(unsigned long long)arg1;
 - (unsigned long long)formatArgumentsCount;
+- (id)formatStringAtIndex:(unsigned long long)arg1;
+- (unsigned long long)formatStringsCount;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)separatorAtIndex:(unsigned long long)arg1;
+- (unsigned long long)separatorsCount;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -10,7 +10,7 @@
 #import <UIKit/UIInteractionProgressObserver-Protocol.h>
 #import <UIKit/UIViewControllerAnimatedTransitioning-Protocol.h>
 
-@class NSDictionary, NSMutableDictionary, NSString, UIInteractionProgress;
+@class NSDictionary, NSMutableDictionary, NSString, UIInteractionProgress, _UIFeedbackStatesBehavior;
 @protocol UIViewControllerContextTransitioning;
 
 __attribute__((visibility("hidden")))
@@ -19,21 +19,26 @@ __attribute__((visibility("hidden")))
     UIInteractionProgress *_interactionProgress;
     unsigned long long _targetPresentationPhase;
     NSDictionary *_viewsParticipatingInCommitTransition;
+    _UIFeedbackStatesBehavior *_feedbackBehavior;
     NSMutableDictionary *_animationsByPresentationPhase;
     id<UIViewControllerContextTransitioning> _transitionContext;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *animationsByPresentationPhase; // @synthesize animationsByPresentationPhase=_animationsByPresentationPhase;
+@property (readonly, nonatomic) long long completionCurve;
+@property (readonly, nonatomic) double completionSpeed;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) _UIFeedbackStatesBehavior *feedbackBehavior; // @synthesize feedbackBehavior=_feedbackBehavior;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIInteractionProgress *interactionProgress; // @synthesize interactionProgress=_interactionProgress;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long targetPresentationPhase; // @synthesize targetPresentationPhase=_targetPresentationPhase;
 @property (weak, nonatomic) id<UIViewControllerContextTransitioning> transitionContext; // @synthesize transitionContext=_transitionContext;
 @property (strong, nonatomic) NSDictionary *viewsParticipatingInCommitTransition; // @synthesize viewsParticipatingInCommitTransition=_viewsParticipatingInCommitTransition;
+@property (readonly, nonatomic) BOOL wantsInteractiveStart;
 
-+ (void)performCommitTransitionWithDelegate:(id)arg1 forViewController:(id)arg2 previewViewController:(id)arg3 previewInteractionController:(id)arg4 completion:(CDUnknownBlockType)arg5;
++ (id)performCommitTransitionWithDelegate:(id)arg1 forViewController:(id)arg2 previewViewController:(id)arg3 previewInteractionController:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void).cxx_destruct;
 - (void)_animateCommitTransition:(id)arg1;
 - (void)_animateDismissTransition:(id)arg1;

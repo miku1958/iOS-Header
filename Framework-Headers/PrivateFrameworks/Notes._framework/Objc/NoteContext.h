@@ -37,6 +37,7 @@
 
 + (id)allVisibleNotesMatchingPredicate:(id)arg1 context:(id)arg2;
 + (id)allVisibleNotesMatchingPredicate:(id)arg1 sorted:(BOOL)arg2 context:(id)arg3;
++ (id)allVisibleNotesMatchingPredicate:(id)arg1 sorted:(BOOL)arg2 context:(id)arg3 fetchLimit:(unsigned long long)arg4;
 + (void)clearTestsNotesRootPath;
 + (BOOL)databaseIsCorrupt:(id)arg1;
 + (id)defaultNotesSortDescriptors;

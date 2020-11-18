@@ -4,22 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATOperation.h>
+#import <Foundation/NSBlockOperation.h>
 
-@interface _CATTransportDidSendMessageOperation : CATOperation
+@interface _CATTransportDidSendMessageOperation : NSBlockOperation
 {
-    CDUnknownBlockType _block;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
-
-+ (id)blockOperationWithBlock:(CDUnknownBlockType)arg1;
-- (void).cxx_destruct;
 - (void)cancel;
-- (BOOL)isAsynchronous;
 - (BOOL)isCanceled;
 - (BOOL)isCancelled;
-- (void)main;
 
 @end
 

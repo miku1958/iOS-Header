@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)controlKeyDividerColorName;
 - (id)controlKeyForegroundColorName;
 - (id)defaultKeyDividerColorName;
-- (id)initWithRenderConfig:(id)arg1;
+- (id)initWithRenderingContext:(id)arg1;
 - (long long)lightHighQualityEnabledBlendForm;
 - (id)traitsForCellSize:(struct CGSize)arg1 highlighted:(BOOL)arg2 edges:(BOOL)arg3;
 - (id)traitsForEdgeGradientWithSize:(struct CGSize)arg1;

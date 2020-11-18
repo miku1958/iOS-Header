@@ -6,18 +6,23 @@
 
 #import <Foundation/NSObject.h>
 
-#import <GeoServices/GEOMapItemPrivate-Protocol.h>
+#import <GeoServices/GEOMapItem-Protocol.h>
 
-@class GEOAddress, GEOFeatureStyleAttributes, GEOMapItemAttribution, GEOMapItemClientAttributes, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapRegion, GEOPDBusinessClaim, GEOPDFlyover, GEOPDMultiLocalizedString, GEOPDPlace, GEOPlace, NSArray, NSData, NSDate, NSDictionary, NSMapTable, NSString, NSTimeZone, NSURL;
-@protocol GEOMapItemTransitAttribution, GEOMapItemTransitInfo;
+@class GEOAddress, GEOAddressObject, GEOFeatureStyleAttributes, GEOMapItemClientAttributes, GEOMapItemDetourInfo, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapRegion, GEOPDBusinessClaim, GEOPDFlyover, GEOPDMultiLocalizedString, GEOPDPlace, GEOPlace, GEORestaurantFeaturesLink, NSArray, NSData, NSDate, NSDictionary, NSMapTable, NSString, NSTimeZone, NSURL, _GEOEncyclopedicInfo;
+@protocol GEOEncyclopedicInfo, GEOMapItemTransitInfo, GEOTransitAttribution;
 
 __attribute__((visibility("hidden")))
-@interface _GEOPlaceDataItem : NSObject <GEOMapItemPrivate>
+@interface _GEOPlaceDataItem : NSObject <GEOMapItem>
 {
     GEOPDPlace *_placeData;
     GEOPlace *_place;
     NSMapTable *_attributionMap;
     GEOPDMultiLocalizedString *_disambiguationLabel;
+    GEOMapItemDetourInfo *_detourInfo;
+    _GEOEncyclopedicInfo *_encyclopedicInfo;
+    GEOAddressObject *_addressObject;
+    NSString *_name;
+    NSData *_externalTransitStationCode;
 }
 
 @property (readonly, nonatomic, getter=_acceptsApplePay) BOOL acceptsApplePay;
@@ -31,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=_businessURL) NSString *businessURL;
 @property (readonly, nonatomic) CDStruct_c3b9c2ee centerCoordinate;
 @property (readonly, nonatomic, getter=_clientAttributes) GEOMapItemClientAttributes *clientAttributes;
+@property (readonly, nonatomic, getter=_completeOperatingHours) NSArray *completeOperatingHours;
 @property (readonly, nonatomic) int contactAddressType;
 @property (readonly, nonatomic) BOOL contactIsMe;
 @property (readonly, nonatomic) NSString *contactName;
@@ -39,15 +45,17 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=_customIconID) unsigned long long customIconID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) GEOMapItemDetourInfo *detourInfo;
 @property (readonly, nonatomic, getter=_disambiguationName) NSString *disambiguationName;
 @property (readonly, nonatomic) GEOMapRegion *displayMapRegion;
 @property (readonly, nonatomic) GEOMapRegion *displayMapRegionOrNil;
 @property (readonly, nonatomic, getter=isDisputed) BOOL disputed;
 @property (readonly, nonatomic) NSData *encodedData;
-@property (readonly, nonatomic, getter=_encyclopedicAttribution) GEOMapItemAttribution *encyclopedicAttribution;
+@property (readonly, nonatomic, getter=_encyclopedicInfo) id<GEOEncyclopedicInfo> encyclopedicInfo;
 @property (readonly, nonatomic) NSDate *eventDate;
 @property (readonly, nonatomic) NSString *eventName;
-@property (readonly, nonatomic, getter=_factoids) NSArray *factoids;
+@property (readonly, nonatomic) NSData *externalTransitStationCode;
+@property (readonly, nonatomic, getter=_featureLink) GEORestaurantFeaturesLink *featureLink;
 @property (readonly, nonatomic, getter=_flyover) GEOPDFlyover *flyover;
 @property (readonly, nonatomic, getter=_flyoverAnnouncementMessage) NSString *flyoverAnnouncementMessage;
 @property (readonly, nonatomic) GEOAddress *geoAddress;
@@ -60,17 +68,18 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=_hasCurrentOperatingHours) BOOL hasCurrentOperatingHours;
 @property (readonly, nonatomic, getter=_hasDelivery) BOOL hasDelivery;
 @property (readonly, nonatomic, getter=_hasDeliveryAmenity) BOOL hasDeliveryAmenity;
+@property (readonly, nonatomic, getter=_hasEncyclopedicInfo) BOOL hasEncyclopedicInfo;
+@property (readonly, nonatomic) BOOL hasExpiredComponents;
+@property (readonly, nonatomic, getter=_hasFeatureLink) BOOL hasFeatureLink;
 @property (readonly, nonatomic, getter=_hasFlyover) BOOL hasFlyover;
 @property (readonly, nonatomic, getter=_hasGoodForKidsAmenity) BOOL hasGoodForKidsAmenity;
 @property (readonly, nonatomic, getter=_hasMUID) BOOL hasMUID;
 @property (readonly, nonatomic, getter=_hasOperatingHours) BOOL hasOperatingHours;
-@property (readonly, nonatomic, getter=_hasPairOfFactoids) BOOL hasPairOfFactoids;
 @property (readonly, nonatomic, getter=_hasPriceRange) BOOL hasPriceRange;
 @property (readonly, nonatomic, getter=_hasResolvablePartialInformation) BOOL hasResolvablePartialInformation;
 @property (readonly, nonatomic, getter=_hasResultProviderID) BOOL hasResultProviderID;
 @property (readonly, nonatomic, getter=_hasTakesReservationsAmenity) BOOL hasTakesReservationsAmenity;
 @property (readonly, nonatomic, getter=_hasTelephone) BOOL hasTelephone;
-@property (readonly, nonatomic, getter=_hasTextBlock) BOOL hasTextBlock;
 @property (readonly, nonatomic, getter=_hasTransit) BOOL hasTransit;
 @property (readonly, nonatomic, getter=_hasUserRatingScore) BOOL hasUserRatingScore;
 @property (readonly) unsigned long long hash;
@@ -81,6 +90,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=_normalizedUserRatingScore) float normalizedUserRatingScore;
 @property (readonly, nonatomic, getter=_openingHoursOptions) unsigned long long openingHoursOptions;
 @property (readonly, nonatomic, getter=_operatingHours) NSArray *operatingHours;
+@property (readonly, nonatomic, getter=_optsOutOfTelephoneAds) BOOL optsOutOfTelephoneAds;
 @property (readonly, nonatomic, getter=_photos) NSArray *photos;
 @property (readonly, nonatomic, getter=_photosAttribution) GEOMapItemPhotosAttribution *photosAttribution;
 @property (readonly, nonatomic, getter=_place) GEOPlace *place;
@@ -99,14 +109,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=_reviewsAttribution) GEOMapItemReviewsAttribution *reviewsAttribution;
 @property (readonly, nonatomic, getter=_roadAccessPoints) NSArray *roadAccessPoints;
 @property (readonly, nonatomic, getter=_sampleSizeForUserRatingScore) unsigned int sampleSizeForUserRatingScore;
+@property (readonly, nonatomic) NSArray *spatialMappedCategories;
 @property (readonly, nonatomic, getter=_styleAttributes) GEOFeatureStyleAttributes *styleAttributes;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=_takesReservations) BOOL takesReservations;
 @property (readonly, nonatomic, getter=_telephone) NSString *telephone;
-@property (readonly, nonatomic, getter=_textBlockText) NSString *textBlockText;
-@property (readonly, nonatomic, getter=_textBlockTitle) NSString *textBlockTitle;
 @property (readonly, nonatomic) NSTimeZone *timezone;
-@property (readonly, nonatomic, getter=_transitAttribution) id<GEOMapItemTransitAttribution> transitAttribution;
+@property (readonly, nonatomic, getter=_tips) NSArray *tips;
+@property (readonly, nonatomic, getter=_transitAttribution) id<GEOTransitAttribution> transitAttribution;
 @property (readonly, nonatomic, getter=_transitInfo) id<GEOMapItemTransitInfo> transitInfo;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 @property (readonly, copy, nonatomic, getter=_vendorID) NSString *vendorID;
@@ -129,10 +139,14 @@ __attribute__((visibility("hidden")))
 - (id)_spokenAddressForLocale:(id)arg1;
 - (unsigned int)_travelDistanceForTransportType:(int)arg1;
 - (unsigned int)_travelTimeForTransportType:(int)arg1;
+- (id)addressObject;
 - (void)dealloc;
 - (id)initWithPlaceData:(id)arg1;
-- (id)initWithPlaceData:(id)arg1 attributionMap:(id)arg2 disambiguationLabel:(id)arg3;
+- (id)initWithPlaceData:(id)arg1 attributionMap:(id)arg2 disambiguationLabel:(id)arg3 detourInfo:(id)arg4 externalTransitStationCode:(id)arg5;
+- (id)initWithPlaceData:(id)arg1 detourInfo:(id)arg2;
+- (BOOL)isEqualToMapItem:(id)arg1;
 - (id)spokenNameForLocale:(id)arg1;
+- (id)weatherDisplayName;
 
 @end
 

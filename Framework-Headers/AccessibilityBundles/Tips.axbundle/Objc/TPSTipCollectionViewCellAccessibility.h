@@ -16,13 +16,9 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityProvidesScannerGroupElements;
 - (id)_accessibilityScannerGroupElements;
-- (id)_axRelatedAppName;
 - (id)avplayer;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)setLike:(BOOL)arg1 animate:(BOOL)arg2;
 - (void)setTip:(id)arg1 withCellAppearance:(id)arg2;
-- (void)userLiked:(id)arg1;
-- (void)userUnlike:(id)arg1;
 
 @end
 

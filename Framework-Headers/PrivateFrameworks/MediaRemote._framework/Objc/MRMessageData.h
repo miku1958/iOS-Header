@@ -6,23 +6,25 @@
 
 #import <Foundation/NSObject.h>
 
-@class MRProtocolMessage, NSDate;
+@class MRProtocolMessage, NSData;
 
 __attribute__((visibility("hidden")))
 @interface MRMessageData : NSObject
 {
+    NSData *_data;
     MRProtocolMessage *_message;
+    CDUnknownBlockType _dataBlock;
     long long _readPosition;
-    NSDate *_timestamp;
 }
 
+@property (readonly, nonatomic) BOOL canPurge;
+@property (readonly, nonatomic) NSData *data;
 @property (readonly, nonatomic, getter=isFinished) BOOL finished;
-@property (readonly, nonatomic) MRProtocolMessage *message; // @synthesize message=_message;
+@property (readonly, nonatomic) MRProtocolMessage *message;
 @property (nonatomic) long long readPosition; // @synthesize readPosition=_readPosition;
-@property (readonly, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 
 - (void)dealloc;
-- (id)initWithMessage:(id)arg1;
+- (id)initWithMessage:(id)arg1 createDataBlock:(CDUnknownBlockType)arg2;
 
 @end
 

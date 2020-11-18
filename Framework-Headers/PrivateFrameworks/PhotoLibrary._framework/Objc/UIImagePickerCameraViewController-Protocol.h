@@ -6,7 +6,7 @@
 
 #import <PhotoLibrary/NSObject-Protocol.h>
 
-@class UIView;
+@class NSDictionary, UIView;
 
 @protocol UIImagePickerCameraViewController <NSObject>
 - (long long)_cameraCaptureMode;
@@ -24,5 +24,6 @@
 - (BOOL)_startVideoCapture;
 - (void)_stopVideoCapture;
 - (void)_takePicture;
+- (id)initWithInitialImagePickerProperties:(NSDictionary *)arg1;
 @end
 

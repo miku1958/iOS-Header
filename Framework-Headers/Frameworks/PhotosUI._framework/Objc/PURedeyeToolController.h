@@ -54,7 +54,6 @@ __attribute__((visibility("hidden")))
 - (id)toolbarIcon;
 - (void)updateViewConstraints;
 - (void)viewDidLoad;
-- (BOOL)wantsIrisAutoDisableWarning;
 - (BOOL)wantsSecondaryToolbarVisible;
 - (BOOL)wantsZoomAndPanEnabled;
 

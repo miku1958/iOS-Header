@@ -8,5 +8,6 @@
 
 @interface UIColor (RemoteUIAdditions)
 + (id)_remoteUI_colorWithString:(id)arg1;
++ (id)_remoteUI_colorWithString:(id)arg1 defaultColor:(id)arg2;
 @end
 

@@ -13,7 +13,6 @@
     UIImage *_fallbackProfileImage;
     BOOL _repostedByAuthenticatedUser;
     BOOL _fetchingProfileImage;
-    NSString *_uniqueIdentifier;
     id _sourceRecordID;
     NSDate *_sourceRecordCreationDate;
     NSString *_sourceRecordText;
@@ -22,9 +21,10 @@
     NSString *_urlString;
     NSString *_reposterDisplayName;
     NSString *_reposterScreenName;
-    UIImage *_originatorProfileImage;
     NSString *_socialSourceAccountIdentifier;
     UIImage *_serviceImage;
+    NSString *_uniqueIdentifier;
+    UIImage *_originatorProfileImage;
 }
 
 @property (readonly, nonatomic) NSURL *biggerOriginatorProfileImageURL;

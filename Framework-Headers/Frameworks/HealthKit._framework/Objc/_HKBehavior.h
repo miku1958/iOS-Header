@@ -6,29 +6,86 @@
 
 #import <objc/NSObject.h>
 
+@class NSDictionary, NSNumber, NSString, NSTimeZone;
+
 @interface _HKBehavior : NSObject
 {
+    NSNumber *_overridenAreSwimmingSessionsAvailable;
+    BOOL _isDeviceSupported;
+    BOOL _isAppleInternalInstall;
+    BOOL _isAppleWatch;
+    BOOL _isCompanionCapable;
+    BOOL _hasTelephonyCapability;
+    BOOL _isCoachingEventLoggingEnabled;
+    BOOL _requestsRemoteAuthorization;
+    BOOL _canCreateSources;
+    BOOL _shouldPruneOldSamples;
+    BOOL _isTestingDevice;
+    NSString *_hostWriteAuthorizationUsageDescription;
+    NSString *_hostReadAuthorizationUsageDescription;
 }
 
+@property (nonatomic) BOOL areSwimmingSessionsAvailable;
+@property (nonatomic) BOOL canCreateSources; // @synthesize canCreateSources=_canCreateSources;
+@property (readonly, copy, nonatomic) NSString *currentDeviceClass;
+@property (readonly, copy, nonatomic) NSString *currentDeviceDisplayName;
+@property (readonly, copy, nonatomic) NSString *currentDeviceManufacturer;
+@property (readonly, copy, nonatomic) NSString *currentDeviceName;
+@property (readonly, copy, nonatomic) NSString *currentDeviceProductType;
+@property (readonly, nonatomic) unsigned long long currentDiskSpaceAvailable;
+@property (readonly, nonatomic) NSDictionary *currentDiskUsage;
+@property (readonly, copy, nonatomic) NSString *currentInternalDeviceModel;
+@property (readonly, copy, nonatomic) NSString *currentOSBuild;
+@property (readonly, copy, nonatomic) NSString *currentOSVersion;
+@property (nonatomic) BOOL hasTelephonyCapability; // @synthesize hasTelephonyCapability=_hasTelephonyCapability;
+@property (copy, nonatomic) NSString *hostReadAuthorizationUsageDescription; // @synthesize hostReadAuthorizationUsageDescription=_hostReadAuthorizationUsageDescription;
+@property (copy, nonatomic) NSString *hostWriteAuthorizationUsageDescription; // @synthesize hostWriteAuthorizationUsageDescription=_hostWriteAuthorizationUsageDescription;
+@property (nonatomic) BOOL isAppleInternalInstall; // @synthesize isAppleInternalInstall=_isAppleInternalInstall;
+@property (nonatomic) BOOL isAppleWatch; // @synthesize isAppleWatch=_isAppleWatch;
+@property (nonatomic) BOOL isCoachingEventLoggingEnabled; // @synthesize isCoachingEventLoggingEnabled=_isCoachingEventLoggingEnabled;
+@property (nonatomic) BOOL isCompanionCapable; // @synthesize isCompanionCapable=_isCompanionCapable;
+@property (nonatomic) BOOL isDeviceSupported; // @synthesize isDeviceSupported=_isDeviceSupported;
+@property (nonatomic) BOOL isTestingDevice; // @synthesize isTestingDevice=_isTestingDevice;
+@property (readonly, copy, nonatomic) NSTimeZone *localTimeZone;
+@property (nonatomic) BOOL requestsRemoteAuthorization; // @synthesize requestsRemoteAuthorization=_requestsRemoteAuthorization;
+@property (nonatomic) BOOL shouldPruneOldSamples; // @synthesize shouldPruneOldSamples=_shouldPruneOldSamples;
+@property (readonly, nonatomic) unsigned long long totalDiskCapacity;
+
++ (BOOL)_hasCompletedBuddy;
++ (BOOL)_hasTelephonyCapability;
++ (BOOL)_isAppleInternalInstall;
++ (BOOL)_isDeviceSupported;
++ (BOOL)_isForceBuddyEnabled;
++ (BOOL)_isSkipBuddyEnabled;
++ (BOOL)_shouldShowBuddy;
 + (id)_simulatorDefaultName;
 + (id)_simulatorSettings;
++ (BOOL)allPairedWatchesMeetMinimumVersion:(int)arg1;
++ (id)behaviorQueue;
 + (id)currentDeviceClass;
 + (id)currentDeviceDisplayName;
 + (id)currentDeviceManufacturer;
 + (id)currentDeviceName;
 + (id)currentDeviceProductType;
-+ (unsigned long long)currentDiskSpaceAvailable;
-+ (id)currentDiskUsage;
-+ (id)currentInternalDeviceModel;
 + (id)currentOSBuild;
 + (id)currentOSVersion;
++ (void)disableForceBuddy;
++ (void)disableSkipBuddy;
++ (BOOL)hasCompletedBuddy;
 + (BOOL)hasPairedWatch;
++ (BOOL)hasTelephonyCapability;
 + (BOOL)isAppleInternalInstall;
-+ (BOOL)isAppleWatch;
-+ (BOOL)isCoachingEventLoggingEnabled;
 + (BOOL)isCompanionCapable;
 + (BOOL)isDeviceSupported;
-+ (unsigned long long)totalDiskCapacity;
++ (BOOL)isRunningStoreDemoMode;
++ (BOOL)isTestingDevice;
++ (int)protocolVersionForNRDevice:(id)arg1;
++ (void)resetSharedBehavior;
++ (void)setSharedBehavior:(id)arg1;
++ (id)sharedBehavior;
++ (BOOL)shouldShowBuddy;
+- (void).cxx_destruct;
+- (id)init;
 
 @end
 

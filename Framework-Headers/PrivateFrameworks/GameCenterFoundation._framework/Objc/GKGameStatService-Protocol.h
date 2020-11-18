@@ -19,6 +19,7 @@
 - (oneway void)getPlayersForGameDescriptor:(NSDictionary *)arg1 includeCompatibleMultiplayerGames:(BOOL)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
 - (oneway void)getPlayersForGameDescriptor:(NSDictionary *)arg1 leaderboardIdentifier:(NSString *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
 - (oneway void)getRecentMatchesForGameDescriptor:(NSDictionary *)arg1 otherPlayer:(GKPlayerInternal *)arg2 handler:(void (^)(NSArray *, NSString *, NSError *))arg3;
+- (oneway void)getRecentPlayersWithHandler:(void (^)(NSArray *, NSError *))arg1;
 - (oneway void)resetAchievementsWithHandler:(void (^)(NSError *))arg1;
 - (oneway void)setDefaultLeaderboardID:(NSString *)arg1 handler:(void (^)(NSError *))arg2;
 - (void)submitAchievements:(NSArray *)arg1 whileScreeningChallenges:(BOOL)arg2 withEligibleChallenges:(NSArray *)arg3 handler:(void (^)(NSError *))arg4;

@@ -13,7 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)becameActive;
+- (void)setActive:(BOOL)arg1;
+- (void)visibilityWillChangeForFindOnPageView:(id)arg1;
 
 @end
 

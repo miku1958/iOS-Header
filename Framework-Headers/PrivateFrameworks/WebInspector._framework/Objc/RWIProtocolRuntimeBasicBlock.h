@@ -11,10 +11,11 @@
 }
 
 @property (nonatomic) int endOffset;
+@property (nonatomic) int executionCount;
 @property (nonatomic) BOOL hasExecuted;
 @property (nonatomic) int startOffset;
 
-- (id)initWithStartOffset:(int)arg1 endOffset:(int)arg2 hasExecuted:(BOOL)arg3;
+- (id)initWithStartOffset:(int)arg1 endOffset:(int)arg2 hasExecuted:(BOOL)arg3 executionCount:(int)arg4;
 
 @end
 

@@ -35,11 +35,8 @@
 - (id)initForAddingToFavoritesInCollection:(id)arg1;
 - (id)initWithBookmark:(id)arg1 inCollection:(id)arg2;
 - (id)initWithCollection:(id)arg1;
-- (void)panelWillSuspend;
-- (BOOL)shouldResumePanel;
-- (BOOL)shouldShowBrowserPanel;
+- (BOOL)prepareForPresentationForAddingBookmark:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
-- (void)willHideOnSuspend;
 
 @end
 

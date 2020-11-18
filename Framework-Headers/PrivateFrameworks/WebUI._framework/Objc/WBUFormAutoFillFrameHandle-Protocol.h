@@ -6,12 +6,12 @@
 
 #import <WebUI/NSObject-Protocol.h>
 
-@class NSArray, NSURL;
+@class NSURL;
 
 @protocol WBUFormAutoFillFrameHandle <NSObject>
 
 @property (readonly, nonatomic) NSURL *webui_URL;
-@property (readonly, nonatomic) NSArray *webui_certificateChain;
+@property (readonly, nonatomic) struct __SecTrust *webui_serverTrust;
 
 @end
 

@@ -11,10 +11,9 @@
     long long _row;
 }
 
-@property (nonatomic) long long row; // @synthesize row=_row;
+@property (nonatomic, setter=_setRow:) long long row; // @synthesize row=_row;
 
 - (void)_appendDescriptionOfAttributesToString:(id)arg1;
-- (void)_setRow:(long long)arg1;
 
 @end
 

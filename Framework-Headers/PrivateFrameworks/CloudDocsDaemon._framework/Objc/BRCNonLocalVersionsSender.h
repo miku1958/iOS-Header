@@ -9,7 +9,7 @@
 #import <CloudDocsDaemon/BRCOperationSubclass-Protocol.h>
 #import <CloudDocsDaemon/BRNonLocalVersionSending-Protocol.h>
 
-@class BRCItemID, BRCServerZone, BRCStatInfo, BRCXPCClient, CKRecordID, NSString, NSURL;
+@class BRCAppLibrary, BRCItemID, BRCServerZone, BRCStatInfo, BRCXPCClient, CKRecordID, NSString, NSURL;
 @protocol BRNonLocalVersionReceiving;
 
 __attribute__((visibility("hidden")))
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     struct NSObject *_storage;
     BRCXPCClient *_client;
     BRCServerZone *_serverZone;
+    BRCAppLibrary *_appLibrary;
     CKRecordID *_recordID;
     CDUnknownBlockType _reply;
     BOOL _includeCachedVersions;
@@ -47,13 +48,13 @@ __attribute__((visibility("hidden")))
 - (id)_depsTrackingOperation;
 - (id)_fetchThumbnailOperationForVersionRecord:(id)arg1 physicalURL:(id)arg2;
 - (id)_fetchVersionsOperationWithDepsOp:(id)arg1;
+- (id)createActivity;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)initWithDocument:(id)arg1 serverItem:(id)arg2 relpath:(id)arg3 logicalURL:(id)arg4 client:(id)arg5 XPCReceiver:(id)arg6 error:(id *)arg7;
 - (oneway void)invalidate;
 - (void)listNonLocalVersionsWithReply:(CDUnknownBlockType)arg1;
 - (void)main;
 - (BOOL)shouldRetryForError:(id)arg1;
-- (unsigned long long)startActivity;
 
 @end
 

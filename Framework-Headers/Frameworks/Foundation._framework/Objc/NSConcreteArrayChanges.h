@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)enumerateChanges:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateChangesUsingBlock:(CDUnknownBlockType)arg1;
-- (void)finalize;
 - (void)getObjects:(id *)arg1 range:(struct _NSRange)arg2;
 - (id)init;
 - (id)initWithCapacity:(unsigned long long)arg1;

@@ -14,7 +14,10 @@ __attribute__((visibility("hidden")))
 @interface _CTMutableGlyphStorage : _CTGlyphStorage <_CTGlyphStorageAdvanceLookup>
 {
     CTGlyphStorageInterface *_interface;
+    BOOL _implementsOrigins;
 }
+
+@property (readonly, nonatomic) BOOL implementsOrigins; // @synthesize implementsOrigins=_implementsOrigins;
 
 - (long long)attachmentCountAtIndex:(long long)arg1;
 - (id)copyWithRange:(CDStruct_912cb5d2)arg1;

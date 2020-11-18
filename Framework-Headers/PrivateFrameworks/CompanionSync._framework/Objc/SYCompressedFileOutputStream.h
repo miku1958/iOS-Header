@@ -21,7 +21,7 @@
     BOOL _append;
     int _fd;
     int _class;
-    void *_file;
+    struct gzFile_s *_file;
     long long _level;
     _SYStreamGuts *_internal;
     CDUnknownBlockType _onOpenComplete;

@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isIdentity;
 - (id)_kernel;
 - (id)outputImage;
-- (void)setDefaults;
 
 @end
 

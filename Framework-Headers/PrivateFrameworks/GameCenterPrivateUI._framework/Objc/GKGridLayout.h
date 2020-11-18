@@ -24,11 +24,6 @@
     double _leftLayoutGuideOffset;
     double _rightLayoutGuideOffset;
     double _bottomContentPadding;
-    NSSet *_visibleIndexPathsFilter;
-    GKSectionMetrics *_defaultSectionMetricsInternal;
-    GKDataSourceMetrics *_dataSourceMetrics;
-    double _hiddenSearchBarOffset;
-    double _segmentedHeaderPinningOffset;
     NSPointerArray *_sectionToPresentationData;
     NSPointerArray *_sectionToMetricData;
     NSMutableArray *_laidOutAttributes;
@@ -53,6 +48,11 @@
     GKCollectionViewLayoutAttributes *_clipViewAttributes;
     unsigned long long _invalidationFlags;
     double _segmentedBoxY;
+    NSSet *_visibleIndexPathsFilter;
+    GKSectionMetrics *_defaultSectionMetricsInternal;
+    GKDataSourceMetrics *_dataSourceMetrics;
+    double _hiddenSearchBarOffset;
+    double _segmentedHeaderPinningOffset;
     struct CGSize _laidOutContentSize;
     struct CGSize _minimumLaidOutContentSize;
     struct CGSize _oldLaidOutContentSize;

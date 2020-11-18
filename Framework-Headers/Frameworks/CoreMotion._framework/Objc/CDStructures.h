@@ -37,14 +37,15 @@ struct CLConnectionClient {
     id _field3;
     id _field4;
     struct CLConnection *_field5;
-    struct CLNameValuePair _field6;
+    BOOL _field6;
     struct CLNameValuePair _field7;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field8;
-    CDUnknownBlockType _field9;
+    struct CLNameValuePair _field8;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field9;
     CDUnknownBlockType _field10;
-    id _field11;
-    CDUnknownBlockType _field12;
+    CDUnknownBlockType _field11;
+    id _field12;
     CDUnknownBlockType _field13;
+    CDUnknownBlockType _field14;
 };
 
 struct CLConnectionMessage;
@@ -63,15 +64,7 @@ struct CLGeomagneticModelProviderClient {
     id _field11;
 };
 
-struct CLGestureReport {
-    union {
-        unsigned char _field1;
-        struct Ping _field2;
-        struct GestureState _field3;
-        struct Simulate _field4;
-        struct ControlMode _field5;
-    } _field1;
-};
+struct CLGestureReport;
 
 struct CLGyroCalibrationDatabaseRemote {
     CDUnknownFunctionPointerType *_field1;
@@ -112,6 +105,50 @@ struct CLNotifierClientBase {
     CDUnknownFunctionPointerType *_field1;
 };
 
+struct CLRunningBufferStats<float> {
+    CDUnknownFunctionPointerType *_field1;
+    unsigned long long _field2;
+    float _field3;
+    float _field4;
+    struct deque<float, std::__1::allocator<float>> _field5;
+};
+
+struct CLRunningVector3d<float> {
+    CDUnknownFunctionPointerType *_field1;
+    unsigned long long _field2;
+    struct CLRunningBufferStats<float> _field3;
+    struct CLRunningBufferStats<float> _field4;
+    struct CLRunningBufferStats<float> _field5;
+};
+
+struct CLSignificantElevation {
+    int _field1;
+    unsigned char _field2[16];
+    double _field3;
+    double _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+};
+
+struct CLSwimEntry {
+    unsigned long long _field1;
+    unsigned char _field2[16];
+    unsigned char _field3[16];
+    double _field4;
+    double _field5;
+    double _field6;
+    double _field7;
+    double _field8;
+    double _field9;
+    int _field10;
+    int _field11;
+    int _field12;
+    int _field13;
+    float _field14;
+    float _field15;
+    float _field16;
+};
+
 struct CMAccel100 {
     float _field1;
     float _field2;
@@ -119,39 +156,22 @@ struct CMAccel100 {
     unsigned long long _field4;
 };
 
-struct CMWakeGestureVisitor;
-
-struct ControlMode {
-    unsigned char _field1;
-    unsigned char _field2;
-    unsigned char _field3;
-    unsigned char _field4;
+struct CMLiftDetector {
+    struct CLRunningVector3d<float> _field1;
+    struct CLRunningVector3d<float> _field2;
+    struct CLRunningVector3d<float> _field3;
+    BOOL _field4;
+    int _field5;
 };
+
+struct CMWakeGestureVisitor;
 
 struct Dispatcher {
     CDUnknownFunctionPointerType *_field1;
     id _field2;
 };
 
-struct GestureState {
-    unsigned char _field1;
-    int _field2;
-    unsigned char _field3;
-    unsigned char _field4;
-};
-
 struct MutexInfo;
-
-struct Ping {
-    unsigned char _field1;
-    unsigned int _field2;
-};
-
-struct Simulate {
-    unsigned char _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-};
 
 struct Unpacker {
     char *fData;
@@ -299,6 +319,10 @@ struct map<unsigned long, int, std::__1::less<unsigned long>, std::__1::allocato
             unsigned long long __first_;
         } __pair3_;
     } __tree_;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 struct ostream;

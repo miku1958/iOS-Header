@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <CoreDAV/CoreDAVSubmittable-Protocol.h>
 
@@ -93,8 +93,10 @@
 - (void)_handleBadPasswordResponse;
 - (BOOL)_handleUnauthorizedAccessError:(id)arg1;
 - (BOOL)_includeGeneralHeaders;
+- (id)_osLogDescription;
 - (id)_requestForLogging;
 - (void)_sendTimeSpentInNetworkingToProvider;
+- (BOOL)_shouldCreateCredentialForBasicOrDigestAuthChallenge:(id)arg1;
 - (BOOL)_shouldHandleStatusCode:(long long)arg1;
 - (id)additionalHeaderValues;
 - (unsigned long long)cachePolicy;

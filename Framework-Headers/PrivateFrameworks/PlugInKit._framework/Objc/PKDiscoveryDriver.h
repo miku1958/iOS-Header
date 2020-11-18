@@ -9,7 +9,7 @@
 #import <PlugInKit/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 
 @class NSDictionary, NSSet, NSString, PKDiscoveryLSWatcher;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_os_activity;
 
 @interface PKDiscoveryDriver : NSObject <LSApplicationWorkspaceObserverProtocol>
 {
@@ -17,6 +17,7 @@
     NSDictionary *_attributes;
     unsigned long long _flags;
     CDUnknownBlockType _report;
+    NSObject<OS_os_activity> *_relatedActivity;
     NSSet *_lastResults;
     id _mcNotificationToken;
     PKDiscoveryLSWatcher *_lsWatcher;
@@ -34,6 +35,7 @@
 @property (strong) PKDiscoveryLSWatcher *lsWatcher; // @synthesize lsWatcher=_lsWatcher;
 @property (strong) id mcNotificationToken; // @synthesize mcNotificationToken=_mcNotificationToken;
 @property (strong) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (strong) NSObject<OS_os_activity> *relatedActivity; // @synthesize relatedActivity=_relatedActivity;
 @property (copy) CDUnknownBlockType report; // @synthesize report=_report;
 @property (readonly) Class superclass;
 @property (strong) NSObject<OS_dispatch_queue> *sync; // @synthesize sync=_sync;

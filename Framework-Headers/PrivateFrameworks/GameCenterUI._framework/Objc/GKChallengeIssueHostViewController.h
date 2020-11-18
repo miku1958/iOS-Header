@@ -25,7 +25,7 @@
 + (id)challengeExtension;
 - (id)contextForRequestIdentifier;
 - (void)dealloc;
-- (void)didFinishWithPlayerInternals:(id)arg1 message:(id)arg2;
+- (void)didFinishWithPlayerIDs:(id)arg1 message:(id)arg2;
 - (void)remoteViewControllerIsCanceling;
 - (void)setChallenge:(id)arg1 withPlayers:(id)arg2 defaultMessage:(id)arg3 forcePicker:(BOOL)arg4;
 

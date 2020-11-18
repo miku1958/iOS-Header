@@ -19,22 +19,24 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_desiredKeysForDesiredAssets;
     NSMutableDictionary *_recordIDsToVersionETagsForDesiredAssets;
     NSMutableSet *_containerIDsUpdated;
+    BOOL _shouldFetchAnotherBatch;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL shouldFetchAnotherBatch; // @synthesize shouldFetchAnotherBatch=_shouldFetchAnotherBatch;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_completedWithServerChangeToken:(id)arg1;
+- (id)createActivity;
 - (id)initWithSession:(id)arg1 state:(id)arg2;
 - (void)main;
 - (void)performAfterCreatingZoneIfNeeded:(CDUnknownBlockType)arg1;
 - (void)performAfterFetchingAssetContents:(CDUnknownBlockType)arg1;
 - (void)performAfterFetchingRecordChanges:(CDUnknownBlockType)arg1;
 - (BOOL)shouldRetryForError:(id)arg1;
-- (unsigned long long)startActivity;
 
 @end
 

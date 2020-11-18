@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_cycleTimerDidFire:(id)arg1;
+- (void)_infoButtonTapped;
 - (void)loadView;
 
 @end

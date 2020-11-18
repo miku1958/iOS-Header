@@ -6,16 +6,18 @@
 
 #import <UIKit/UIView.h>
 
-@class NSAttributedString, UIColor, UIRefreshControl;
+@class NSAttributedString, UIColor, UIRefreshControl, _UIFeedbackImpactBehavior;
 
 __attribute__((visibility("hidden")))
 @interface _UIRefreshControlContentView : UIView
 {
     UIRefreshControl *_refreshControl;
     UIColor *_tintColor;
+    _UIFeedbackImpactBehavior *_impactFeedbackBehavior;
 }
 
 @property (strong, nonatomic) NSAttributedString *attributedTitle;
+@property (strong, nonatomic) _UIFeedbackImpactBehavior *impactFeedbackBehavior; // @synthesize impactFeedbackBehavior=_impactFeedbackBehavior;
 @property (readonly, nonatomic) double maximumSnappingHeight;
 @property (readonly, nonatomic) double minimumSnappingHeight;
 @property (nonatomic) UIRefreshControl *refreshControl; // @synthesize refreshControl=_refreshControl;
@@ -24,9 +26,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (double)_heightAtWhichNoneOfTheInterfaceElementsAreVisibleEvenIfTheControlIsStillPartiallyOnScreen;
-- (void)didTransitionFromState:(int)arg1 toState:(int)arg2;
+- (void)didTransitionFromState:(long long)arg1 toState:(long long)arg2;
 - (void)refreshControlInvalidatedSnappingHeight;
-- (void)willTransitionFromState:(int)arg1 toState:(int)arg2;
+- (void)willTransitionFromState:(long long)arg1 toState:(long long)arg2;
 
 @end
 

@@ -48,11 +48,9 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)dictionaryRepresentationIncludingChildren:(BOOL)arg1;
-- (void)finalize;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initFromDictionaryRepresentation:(id)arg1;
-- (id)initWithURL:(id)arg1 target:(id)arg2 parent:(id)arg3 title:(id)arg4;
 - (id)initWithURL:(id)arg1 title:(id)arg2;
 - (id)initWithURLString:(id)arg1 title:(id)arg2 displayTitle:(id)arg3 lastVisitedTimeInterval:(double)arg4;
 - (id)initWithURLString:(id)arg1 title:(id)arg2 lastVisitedTimeInterval:(double)arg3;
@@ -65,7 +63,6 @@
 - (void)setTitle:(id)arg1;
 - (void)setViewState:(id)arg1;
 - (id)target;
-- (id)targetItem;
 
 @end
 

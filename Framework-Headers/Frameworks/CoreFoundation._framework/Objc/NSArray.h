@@ -35,8 +35,6 @@
 + (id)newArrayWithObjects:(const id *)arg1 count:(unsigned long long)arg2;
 + (BOOL)supportsSecureCoding;
 - (unsigned long long)_cfTypeID;
-- (BOOL)_hasObjects;
-- (BOOL)_hasStrongReferences;
 - (id)allObjects;
 - (id)arrayByAddingObject:(id)arg1;
 - (id)arrayByAddingObjectsFromArray:(id)arg1;

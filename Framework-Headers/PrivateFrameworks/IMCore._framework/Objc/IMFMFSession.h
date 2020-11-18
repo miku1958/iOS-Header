@@ -12,8 +12,8 @@
 
 @interface IMFMFSession : NSObject <FMFSessionDelegate>
 {
-    FMFSession *_session;
     NSString *_establishingAccountID;
+    FMFSession *_session;
     FMFDevice *_activeDevice;
 }
 
@@ -28,6 +28,7 @@
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (Class)__FMFSessionClass;
 - (id)_bestAccountForAddresses:(id)arg1;
 - (id)_callerIDForChat:(id)arg1;

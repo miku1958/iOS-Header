@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class BBDismissalItem, NSString;
 
@@ -21,7 +21,7 @@
 @property (nonatomic) unsigned long long feeds; // @synthesize feeds=_feeds;
 @property (copy, nonatomic) NSString *sectionID; // @synthesize sectionID=_sectionID;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithDismissalDictionaryItem:(id)arg1;
 - (id)initWithDismissalID:(id)arg1 andItem:(id)arg2;

@@ -6,18 +6,21 @@
 
 #import <EventKitUI/EKEventDetailItem.h>
 
-@class EKDayPreviewController, UITableViewCell;
+@class EKDayPreviewController, EKEvent, NSDate, UITableViewCell;
 
 __attribute__((visibility("hidden")))
 @interface EKEventPreviewDetailItem : EKEventDetailItem
 {
     UITableViewCell *_cell;
     EKDayPreviewController *_containedDayViewController;
+    EKEvent *_eventCopy;
     BOOL _showsInlineDayView;
     BOOL _inlineDayViewRespectsSelectedCalendarsFilter;
+    NSDate *_proposedTime;
 }
 
 @property (nonatomic) BOOL inlineDayViewRespectsSelectedCalendarsFilter; // @synthesize inlineDayViewRespectsSelectedCalendarsFilter=_inlineDayViewRespectsSelectedCalendarsFilter;
+@property (strong, nonatomic) NSDate *proposedTime; // @synthesize proposedTime=_proposedTime;
 @property (nonatomic) BOOL showsInlineDayView; // @synthesize showsInlineDayView=_showsInlineDayView;
 
 - (void).cxx_destruct;

@@ -10,8 +10,8 @@
 
 @interface WBSAutomaticReadingListAppExtensionItem : WBSAutomaticReadingListItem
 {
-    UIImage *_profileImage;
     NSString *_title;
+    UIImage *_profileImage;
 }
 
 @property (strong, nonatomic) UIImage *profileImage; // @synthesize profileImage=_profileImage;

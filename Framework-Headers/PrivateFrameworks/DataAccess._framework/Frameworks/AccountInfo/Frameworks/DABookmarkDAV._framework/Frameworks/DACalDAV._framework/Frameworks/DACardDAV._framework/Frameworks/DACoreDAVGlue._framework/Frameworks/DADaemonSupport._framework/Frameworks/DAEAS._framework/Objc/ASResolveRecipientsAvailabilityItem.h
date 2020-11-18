@@ -14,7 +14,7 @@
     NSString *_mergedFreeBusy;
 }
 
-@property (strong, nonatomic) NSNumber *easStatus; // @synthesize easStatus=_easStatus;
+@property (strong, nonatomic, setter=setEASStatus:) NSNumber *easStatus; // @synthesize easStatus=_easStatus;
 @property (strong, nonatomic) NSString *mergedFreeBusy; // @synthesize mergedFreeBusy=_mergedFreeBusy;
 
 + (BOOL)acceptsTopLevelLeaves;
@@ -25,7 +25,6 @@
 + (BOOL)parsingWithSubItems;
 - (void).cxx_destruct;
 - (id)description;
-- (void)setEASStatus:(id)arg1;
 
 @end
 

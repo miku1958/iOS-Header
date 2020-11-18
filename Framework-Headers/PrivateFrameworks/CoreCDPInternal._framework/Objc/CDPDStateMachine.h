@@ -7,13 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <CoreCDPInternal/CDPDCircleDelegate-Protocol.h>
-#import <CoreCDPInternal/CDPDRemoteDeviceSecretValidatorDelegate-Protocol.h>
 #import <CoreCDPInternal/CDPDSecureBackupDelegate-Protocol.h>
 
-@class CDPContext, CDPDCircleController, CDPDPCSController, CDPDSecureBackupController, NSString;
+@class CDPContext, CDPDCircleController, CDPDPCSController, CDPDSecureBackupController;
 @protocol CDPStateUIProviderInternal;
 
-@interface CDPDStateMachine : NSObject <CDPDSecureBackupDelegate, CDPDCircleDelegate, CDPDRemoteDeviceSecretValidatorDelegate>
+@interface CDPDStateMachine : NSObject <CDPDSecureBackupDelegate, CDPDCircleDelegate>
 {
     CDPContext *_context;
     id<CDPStateUIProviderInternal> _uiProvider;
@@ -23,43 +22,50 @@
     BOOL _attemptedCDPEnable;
 }
 
+@property (nonatomic) BOOL attemptedCDPEnable; // @synthesize attemptedCDPEnable=_attemptedCDPEnable;
 @property (strong, nonatomic) CDPDCircleController *circleController; // @synthesize circleController=_circleController;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) CDPContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) CDPDPCSController *pcsController; // @synthesize pcsController=_pcsController;
 @property (strong, nonatomic) CDPDSecureBackupController *secureBackupController; // @synthesize secureBackupController=_secureBackupController;
-@property (readonly) Class superclass;
+@property (strong, nonatomic) id<CDPStateUIProviderInternal> uiProvider; // @synthesize uiProvider=_uiProvider;
 
-+ (void)_decrementActiveStateMachineCount;
-+ (void)_incrementActiveStateMachineCount;
 - (void).cxx_destruct;
 - (void)_attemptBackupRecoveryByPromptingForRemoteSecretWithLocalSecret:(id)arg1 localSecretType:(unsigned long long)arg2 useCachedSecret:(BOOL)arg3 hasPeersForRemoteApproval:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_attemptBackupRecoveryWithLocalSecret:(id)arg1 type:(unsigned long long)arg2 useCachedSecret:(BOOL)arg3 hasPeersForRemoteApproval:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_attemptCDPEnable:(CDUnknownBlockType)arg1;
 - (void)_authenticatedRepairCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_authenticatedShouldPerformRepairWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_confirmCDPEligibilityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_disableCloudDataProtectionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_enableKVSForAccount:(id)arg1 store:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_enableSecureBackupWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_enrollOrDisableCDPAfterEnabledStateVerified:(CDUnknownBlockType)arg1;
+- (void)_handleBackupRecoveryWithPeersForRemoteApproval:(BOOL)arg1 circleStatus:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_handleCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_handleJoinCircleEvent:(CDUnknownBlockType)arg1;
+- (void)_handlePreflightError:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handleiCDPStatusCheckError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performInteractivelyAuthenticatedRepair:(CDUnknownBlockType)arg1;
+- (id)_predicateForRecordUpgradeCheck;
 - (void)_preflightAccountStateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_recoverSecureBackupWithHasPeersForRemoteApproval:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_recoverSecureBackupWithRemotePeers:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_refreshWithContext:(id)arg1;
+- (void)_requestPostLockoutAccountReset:(CDUnknownBlockType)arg1;
 - (void)_resetAccountCDPStateWithCompletion:(CDUnknownBlockType)arg1;
-- (void)cancelRemoteSecretValidatorApplicationToJoinCircle:(id)arg1;
 - (void)circleController:(id)arg1 secureBackupRecordsArePresentWithCompletion:(CDUnknownBlockType)arg2;
 - (id)circlePeerIDForSecureBackupController:(id)arg1;
+- (id)contextForController:(id)arg1;
 - (void)dealloc;
+- (void)getStingrayDisableEligibilityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithContext:(id)arg1 uiProvider:(id)arg2;
-- (void)joinCircleAfterRecoveryWithCompletion:(CDUnknownBlockType)arg1;
-- (void)prepareCircleStateForRecoveryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)preflightStingrayDisableWithCompletion:(CDUnknownBlockType)arg1;
 - (void)promotForLocalSecretWithCompletion:(CDUnknownBlockType)arg1;
 - (void)promptForAdoptionOfMultipleICSCWithCompletion:(CDUnknownBlockType)arg1;
-- (BOOL)remoteSecretValidator:(id)arg1 applyToJoinCircleWithJoinHandler:(CDUnknownBlockType)arg2;
-- (void)remoteSecretValidator:(id)arg1 recoverSecureBackupWithSecret:(id)arg2 device:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)repairCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)shouldAllowCDPEnrollment;
+- (void)shouldPerformRepairWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)synchronizeCircleViewsForSecureBackupController:(id)arg1;
 
 @end

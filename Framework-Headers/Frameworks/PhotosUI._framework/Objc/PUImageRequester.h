@@ -44,9 +44,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setObserver:) NSHashTable *_observers; // @synthesize _observers=__observers;
 @property (nonatomic, setter=_setShouldUpdateImageOnCurrentRequestCompletion:) BOOL _shouldUpdateImageOnCurrentRequestCompletion; // @synthesize _shouldUpdateImageOnCurrentRequestCompletion=__shouldUpdateImageOnCurrentRequestCompletion;
 @property (readonly, nonatomic) id<PUDisplayAsset> asset; // @synthesize asset=_asset;
-@property (strong, nonatomic) NSData *fullsizeImageData; // @synthesize fullsizeImageData=_fullsizeImageData;
-@property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
-@property (nonatomic) BOOL imageIsFullQuality; // @synthesize imageIsFullQuality=_imageIsFullQuality;
+@property (strong, nonatomic, setter=_setFullsizeImageData:) NSData *fullsizeImageData; // @synthesize fullsizeImageData=_fullsizeImageData;
+@property (strong, nonatomic, setter=_setImage:) UIImage *image; // @synthesize image=_image;
+@property (nonatomic, setter=_setImageIsFullQuality:) BOOL imageIsFullQuality; // @synthesize imageIsFullQuality=_imageIsFullQuality;
 @property (nonatomic, setter=_setImageIsPlaceholder:) BOOL imageIsPlaceholder; // @synthesize imageIsPlaceholder=_imageIsPlaceholder;
 @property (readonly, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (nonatomic, getter=isNetworkAccessAllowed) BOOL networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
@@ -60,12 +60,10 @@ __attribute__((visibility("hidden")))
 - (void)_handleResultOfImageRequestWithID:(int)arg1 image:(id)arg2 info:(id)arg3;
 - (void)_invalidateImageRequest;
 - (void)_publishChange:(id)arg1;
-- (void)_setFullsizeImageData:(id)arg1;
-- (void)_setImage:(id)arg1;
-- (void)_setImageIsFullQuality:(BOOL)arg1;
 - (void)_update;
 - (void)_willChange;
 - (void)cancelAllImageRequests;
+- (void)handlePreloadedImage:(id)arg1;
 - (id)init;
 - (id)initWithMediaProvider:(id)arg1 asset:(id)arg2;
 - (void)performChanges:(CDUnknownBlockType)arg1;

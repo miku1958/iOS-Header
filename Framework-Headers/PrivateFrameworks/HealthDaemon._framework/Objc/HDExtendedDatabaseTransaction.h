@@ -14,8 +14,6 @@
     BOOL _pendingWorkDidSucceed;
     NSUUID *_transactionIdentifier;
     id<HDHealthDatabase> _healthDatabase;
-    double _transactionTimeout;
-    double _continuationTimeout;
     NSObject<OS_dispatch_queue> *_transactionQueue;
     NSObject<OS_dispatch_queue> *_dataQueue;
     NSObject<OS_dispatch_semaphore> *_completionSemaphore;
@@ -24,6 +22,8 @@
     CDUnknownBlockType _pendingWork;
     unsigned long long _status;
     NSError *_lastError;
+    double _transactionTimeout;
+    double _continuationTimeout;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *automaticRollbackTimer; // @synthesize automaticRollbackTimer=_automaticRollbackTimer;

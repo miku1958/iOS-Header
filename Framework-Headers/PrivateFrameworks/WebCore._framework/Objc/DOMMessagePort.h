@@ -11,7 +11,6 @@
 }
 
 - (void)dealloc;
-- (void)finalize;
 
 @end
 

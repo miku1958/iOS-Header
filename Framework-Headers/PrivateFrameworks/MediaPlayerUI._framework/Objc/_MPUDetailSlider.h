@@ -9,10 +9,11 @@
 #import <MediaPlayerUI/MPDetailedScrubbing-Protocol.h>
 #import <MediaPlayerUI/_MPUSliderScrubForwarding-Protocol.h>
 
-@class MPDetailScrubController, NSString;
+@class MPDetailScrubController, NSString, UIView;
 
 @interface _MPUDetailSlider : UISlider <MPDetailedScrubbing, _MPUSliderScrubForwarding>
 {
+    UIView *_magnifiedThumbView;
     MPDetailScrubController *_scrubController;
 }
 
@@ -23,11 +24,16 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_setMagnifiedThumbViewVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;
+- (BOOL)ccuiSupportsDelayedTouchesByContainingScrollViewForGesture:(id)arg1;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)setValue:(float)arg1;
 - (struct CGRect)thumbHitRect;
+- (struct CGRect)thumbRectForBounds:(struct CGRect)arg1 trackRect:(struct CGRect)arg2 value:(float)arg3;
 
 @end
 

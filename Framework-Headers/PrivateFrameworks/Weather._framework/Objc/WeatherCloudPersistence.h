@@ -35,10 +35,11 @@
 - (id)initWithDelegate:(id)arg1;
 - (BOOL)isInitialSyncNotification:(id)arg1;
 - (id)objectForKey:(id)arg1;
+- (void)removeObjectForKey:(id)arg1;
 - (void)setBool:(BOOL)arg1 forKey:(id)arg2;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (id)stringForKey:(id)arg1;
-- (void)synchronize;
+- (BOOL)synchronize;
 
 @end
 

@@ -6,19 +6,19 @@
 
 #import <UIKit/UIView.h>
 
-#import <UIKit/UIAlertControllerBackgroundView-Protocol.h>
+#import <UIKit/UIInterfaceActionVisualBackgroundDisplaying-Protocol.h>
+#import <UIKit/UIInterfaceActionVisualGroupBackgroundDisplaying-Protocol.h>
 
 @class NSString, _UIBlendingHighlightView, _UIDimmingKnockoutBackdropView;
 
 __attribute__((visibility("hidden")))
-@interface _UIAlertControlleriOSActionSheetCancelBackgroundView : UIView <UIAlertControllerBackgroundView>
+@interface _UIAlertControlleriOSActionSheetCancelBackgroundView : UIView <UIInterfaceActionVisualBackgroundDisplaying, UIInterfaceActionVisualGroupBackgroundDisplaying>
 {
     UIView *backgroundView;
     _UIDimmingKnockoutBackdropView *blurView;
     _UIBlendingHighlightView *highlightView;
 }
 
-@property double cornerRadius;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -27,8 +27,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setPressed:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setCornerRadius:(double)arg1;
+- (void)setHighlighted:(BOOL)arg1;
+- (void)setPressed:(BOOL)arg1;
 
 @end
 

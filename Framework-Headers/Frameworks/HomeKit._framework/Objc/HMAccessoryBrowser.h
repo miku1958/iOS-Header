@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKit/HMMessageReceiver-Protocol.h>
+#import <HomeKit/HMFMessageReceiver-Protocol.h>
 
-@class HMDelegateCaller, HMMessageDispatcher, HMThreadSafeMutableArrayCollection, HMXpcClient, NSArray, NSString, NSUUID;
+@class HMDelegateCaller, HMFMessageDispatcher, HMThreadSafeMutableArrayCollection, HMXpcClient, NSArray, NSString, NSUUID;
 @protocol HMAccessoryBrowserDelegate, OS_dispatch_queue;
 
-@interface HMAccessoryBrowser : NSObject <HMMessageReceiver>
+@interface HMAccessoryBrowser : NSObject <HMFMessageReceiver>
 {
     BOOL _browsing;
     id<HMAccessoryBrowserDelegate> _delegate;
@@ -21,7 +21,7 @@
     NSUUID *_uuid;
     HMThreadSafeMutableArrayCollection *_accessories;
     HMXpcClient *_xpcClient;
-    HMMessageDispatcher *_msgDispatcher;
+    HMFMessageDispatcher *_msgDispatcher;
     unsigned long long _generationCounter;
 }
 
@@ -37,7 +37,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;

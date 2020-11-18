@@ -30,7 +30,7 @@
 @property (strong, nonatomic) NSDictionary *indexExtensionsByBundleID; // @synthesize indexExtensionsByBundleID=_indexExtensionsByBundleID;
 @property BOOL isUnderMemoryPressure; // @synthesize isUnderMemoryPressure=_isUnderMemoryPressure;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *memoryStatusSource; // @synthesize memoryStatusSource=_memoryStatusSource;
-@property (strong) NSObject<OS_dispatch_queue> *notifyQueue; // @synthesize notifyQueue=_notifyQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *notifyQueue; // @synthesize notifyQueue=_notifyQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
@@ -47,6 +47,7 @@
 - (id)anyExtensionWithBlock:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)extensions;
+- (void)findExtensionsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)indexRequestsPerformJob:(id)arg1 extensions:(id)arg2 perExtensionCompletionHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)indexRequestsPerformJob:(id)arg1 forBundle:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)indexRequestsPerformJob:(id)arg1 perExtensionCompletionHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;

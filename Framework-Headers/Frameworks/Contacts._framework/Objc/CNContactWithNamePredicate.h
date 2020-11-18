@@ -14,16 +14,23 @@ __attribute__((visibility("hidden")))
 @interface CNContactWithNamePredicate : CNPredicate <CNSuggestedContactPredicate>
 {
     NSString *_name;
+    unsigned long long _options;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (readonly) Class superclass;
 
++ (id)descriptionForOptions:(unsigned long long)arg1;
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1;
+- (id)initWithName:(id)arg1 options:(unsigned long long)arg2;
 - (id)sgContactMatchesWithSortOrder:(long long)arg1 mutableObjects:(BOOL)arg2 service:(id)arg3 error:(id *)arg4;
 
 @end

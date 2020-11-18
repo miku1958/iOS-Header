@@ -20,8 +20,8 @@
     int lineJoin;
     struct CGColor *fillColor;
     struct CGColor *strokeColor;
-    union CGPDFObject *fillObject;
-    union CGPDFObject *strokeObject;
+    struct CGPDFObject *fillObject;
+    struct CGPDFObject *strokeObject;
     struct CGAffineTransform paintTransform;
     BOOL boundsComputed;
     BOOL renderedBoundsComputed;
@@ -36,7 +36,7 @@
 - (void)dealloc;
 - (void)dispose;
 - (struct CGColor *)fillColor;
-- (union CGPDFObject *)fillObject;
+- (struct CGPDFObject *)fillObject;
 - (void)finalize;
 - (BOOL)hasFill;
 - (BOOL)hasSamePathAs:(id)arg1;
@@ -60,7 +60,7 @@
 - (void)recomputeRenderedBounds;
 - (struct CGRect)renderedBounds;
 - (void)setFillColor:(struct CGColor *)arg1;
-- (void)setFillObject:(union CGPDFObject *)arg1;
+- (void)setFillObject:(struct CGPDFObject *)arg1;
 - (void)setLineCap:(int)arg1;
 - (void)setLineJoin:(int)arg1;
 - (void)setLineWidth:(double)arg1;
@@ -69,11 +69,11 @@
 - (void)setPath:(struct CGPath *)arg1;
 - (void)setPdfObjectID:(unsigned int)arg1;
 - (void)setStrokeColor:(struct CGColor *)arg1;
-- (void)setStrokeObject:(union CGPDFObject *)arg1;
+- (void)setStrokeObject:(struct CGPDFObject *)arg1;
 - (void)setWindingRule:(int)arg1;
 - (id)string;
 - (struct CGColor *)strokeColor;
-- (union CGPDFObject *)strokeObject;
+- (struct CGPDFObject *)strokeObject;
 - (int)windingRule;
 - (long long)zOrder;
 

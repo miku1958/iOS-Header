@@ -6,11 +6,14 @@
 
 #import <UIKit/UIView.h>
 
-@class EKEvent, NSMutableArray, UILabel, UIScrollView;
+#import <EventKitUI/EKDayOccurrenceViewDelegate-Protocol.h>
+#import <EventKitUI/EKUITintColorUpdateDelegate-Protocol.h>
+
+@class EKEvent, EKUIVisualEffectView, NSMutableArray, UIColor, UILabel, UIScrollView;
 @protocol EKDayAllDayViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface EKDayAllDayView : UIView
+@interface EKDayAllDayView : UIView <EKDayOccurrenceViewDelegate, EKUITintColorUpdateDelegate>
 {
     long long _orientation;
     NSMutableArray *_occurrenceViews;
@@ -24,8 +27,12 @@ __attribute__((visibility("hidden")))
     BOOL _usesSmallText;
     UIView *_dividerLineViewTop;
     UIView *_dividerLineViewBottom;
+    EKUIVisualEffectView *_dividerLineSuperview;
+    UIColor *_dividerLineVisualEffectColor;
     BOOL _showsBorderLines;
     BOOL _showsLabel;
+    BOOL _hideOccurrenceBackground;
+    BOOL _forceSingleColumnLayout;
     int _maxVisibleRows;
     id<EKDayAllDayViewDelegate> _delegate;
     double _fixedHeight;
@@ -36,6 +43,8 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<EKDayAllDayViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) EKEvent *dimmedOccurrence; // @synthesize dimmedOccurrence=_dimmedOccurrence;
 @property (nonatomic) double fixedHeight; // @synthesize fixedHeight=_fixedHeight;
+@property (nonatomic) BOOL forceSingleColumnLayout; // @synthesize forceSingleColumnLayout=_forceSingleColumnLayout;
+@property (nonatomic) BOOL hideOccurrenceBackground; // @synthesize hideOccurrenceBackground=_hideOccurrenceBackground;
 @property (nonatomic) int maxVisibleRows; // @synthesize maxVisibleRows=_maxVisibleRows;
 @property (readonly, nonatomic) double naturalHeight;
 @property (nonatomic) BOOL showsBorderLines; // @synthesize showsBorderLines=_showsBorderLines;
@@ -49,11 +58,13 @@ __attribute__((visibility("hidden")))
 - (double)_allDayAreaHeightForEventCount:(long long)arg1;
 - (double)_borderLineWidth;
 - (void)_configureOccurrenceViewMarginAndPadding:(id)arg1;
+- (id)_findSelectedCopySubviewOfView:(id)arg1;
 - (double)_height;
+- (id)_selectedCopyView;
 - (void)addViewToScroller:(id)arg1;
 - (void)configureOccurrenceViewForGestureController:(id)arg1;
 - (BOOL)containsEvent:(id)arg1;
-- (void)dayOccurrenceViewClicked:(id)arg1 atPoint:(struct CGPoint)arg2;
+- (void)dayOccurrenceViewSelected:(id)arg1 atPoint:(struct CGPoint)arg2 wasTapped:(BOOL)arg3;
 - (void)didMoveToWindow;
 - (double)firstEventYOffset;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -68,12 +79,15 @@ __attribute__((visibility("hidden")))
 - (void)setAllDayLabelColor:(id)arg1;
 - (void)setAllDayLabelHighlighted:(BOOL)arg1;
 - (void)setBorderColor:(id)arg1;
+- (void)setDividerLineVisualEffect:(id)arg1;
 - (void)setOccurrenceInset:(double)arg1 labelInset:(double)arg2;
 - (void)setOccurrences:(id)arg1;
 - (void)setOrientation:(long long)arg1;
+- (void)setTopBorderLineHidden:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)updateLabelFont;
+- (void)viewTintColorDidChangeForView:(id)arg1 toColor:(id)arg2;
 
 @end
 

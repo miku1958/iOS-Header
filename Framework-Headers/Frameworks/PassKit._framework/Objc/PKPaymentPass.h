@@ -22,10 +22,13 @@
     NSString *_primaryAccountIdentifier;
     NSString *_primaryAccountNumberSuffix;
     NSSet *_associatedApplicationIdentifiers;
+    NSSet *_associatedWebDomains;
     NSString *_sanitizedPrimaryAccountNumber;
     NSSet *_paymentApplications;
     NSSet *_devicePaymentApplications;
     PKPaymentApplication *_devicePrimaryPaymentApplication;
+    PKPaymentApplication *_devicePrimaryContactlessPaymentApplication;
+    PKPaymentApplication *_devicePrimaryInAppPaymentApplication;
     NSString *_cobrandName;
     NSURL *_transactionServiceURL;
     NSString *_transactionPushTopic;
@@ -38,11 +41,14 @@
 @property (readonly, nonatomic) unsigned long long activationState;
 @property (copy, nonatomic) NSString *appURLScheme; // @synthesize appURLScheme=_appURLScheme;
 @property (copy, nonatomic) NSSet *associatedApplicationIdentifiers; // @synthesize associatedApplicationIdentifiers=_associatedApplicationIdentifiers;
+@property (copy, nonatomic) NSSet *associatedWebDomains; // @synthesize associatedWebDomains=_associatedWebDomains;
 @property (copy, nonatomic) NSString *cobrandName; // @synthesize cobrandName=_cobrandName;
 @property (nonatomic, getter=isCobranded) BOOL cobranded; // @synthesize cobranded=_cobranded;
-@property (readonly) NSString *deviceAccountIdentifier;
-@property (readonly) NSString *deviceAccountNumberSuffix;
+@property (readonly, weak) NSString *deviceAccountIdentifier;
+@property (readonly, weak) NSString *deviceAccountNumberSuffix;
 @property (copy, nonatomic) NSSet *devicePaymentApplications; // @synthesize devicePaymentApplications=_devicePaymentApplications;
+@property (strong, nonatomic) PKPaymentApplication *devicePrimaryContactlessPaymentApplication; // @synthesize devicePrimaryContactlessPaymentApplication=_devicePrimaryContactlessPaymentApplication;
+@property (strong, nonatomic) PKPaymentApplication *devicePrimaryInAppPaymentApplication; // @synthesize devicePrimaryInAppPaymentApplication=_devicePrimaryInAppPaymentApplication;
 @property (strong, nonatomic) PKPaymentApplication *devicePrimaryPaymentApplication; // @synthesize devicePrimaryPaymentApplication=_devicePrimaryPaymentApplication;
 @property (copy, nonatomic) NSString *localizedSuspendedReason; // @synthesize localizedSuspendedReason=_localizedSuspendedReason;
 @property (copy, nonatomic) NSString *messagePushTopic; // @synthesize messagePushTopic=_messagePushTopic;
@@ -62,25 +68,25 @@
 
 + (unsigned long long)defaultSettings;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (unsigned long long)_activationStateForApplicationState:(long long)arg1;
 - (id)_localizedSuspendedReasonForAID:(id)arg1;
 - (BOOL)availableForAutomaticPresentationUsingBeaconContext;
 - (BOOL)availableForAutomaticPresentationUsingVASContext;
 - (unsigned long long)contactlessActivationState;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (long long)effectiveContactlessPaymentApplicationState;
 - (void)encodeWithCoder:(id)arg1;
-- (BOOL)hasDevicePaymentApplicationsAvailable;
+- (BOOL)hasContactlessDevicePaymentApplicationsAvailable;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1 bundle:(id)arg2;
 - (BOOL)isDevicePrimaryPaymentApplicationPersonalized;
 - (id)paymentApplicationForAID:(id)arg1;
-- (id)paymentApplicationsForSecureElementIdentifier:(id)arg1;
-- (id)primaryPaymentApplicationForSecureElementIdentifier:(id)arg1;
+- (id)paymentApplicationsForSecureElementIdentifiers:(id)arg1;
+- (id)primaryPaymentApplicationForSecureElementIdentifiers:(id)arg1;
 - (void)sanitizePaymentApplications;
 - (id)sanitizedDeviceAccountNumber;
-- (void)updateDevicePaymentApplicationsWithSecureElementIdentifier:(id)arg1;
+- (void)updateDevicePaymentApplicationsWithSecureElementIdentifiers:(id)arg1;
 
 @end
 

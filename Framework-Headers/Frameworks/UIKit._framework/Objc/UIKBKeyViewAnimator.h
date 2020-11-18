@@ -6,32 +6,62 @@
 
 #import <Foundation/NSObject.h>
 
+#import <UIKit/CAAnimationDelegate-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface UIKBKeyViewAnimator : NSObject
+@interface UIKBKeyViewAnimator : NSObject <CAAnimationDelegate>
 {
     BOOL _disabled;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disabled; // @synthesize disabled=_disabled;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL shouldPurgeKeyViews;
+@property (readonly) Class superclass;
 
 + (id)normalizedAnimationWithKeyPath:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3;
-+ (id)normalizedUnwindAnimationWithKeyPath:(id)arg1 originallyFromValue:(id)arg2 toValue:(id)arg3;
++ (id)normalizedUnwindAnimationWithKeyPath:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3 offset:(double)arg4;
++ (id)normalizedUnwindAnimationWithKeyPath:(id)arg1 originallyFromValue:(id)arg2 toValue:(id)arg3 offset:(double)arg4;
++ (id)normalizedUnwindOpacityAnimationWithKeyPath:(id)arg1 originallyFromValue:(id)arg2 toValue:(id)arg3 offset:(double)arg4;
 - (void)_fadeInKeyView:(id)arg1 duration:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fadeOutKeyView:(id)arg1 duration:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (Class)_keyViewClassForSpecialtyKey:(id)arg1;
+- (double)delayedDeactivationTimeForKeyView:(id)arg1;
 - (void)endTransitionForKeyView:(id)arg1;
+- (void)gestureTransitionEndedForKeyView:(id)arg1 alternateCount:(unsigned long long)arg2;
+- (void)gestureTransitionStartedForKeyView:(id)arg1 alternateCount:(unsigned long long)arg2 direction:(int)arg3;
 - (Class)keyViewClassForKey:(id)arg1 traits:(id)arg2;
+- (id)keycapAlternateBackspaceInvertedTransform;
+- (id)keycapAlternateBackspaceTransform;
+- (id)keycapAlternateSpaceInvertedTransform;
+- (id)keycapAlternateSpaceTransform;
+- (id)keycapAlternateStandardInvertedTransform;
 - (id)keycapAlternateStandardTransform;
+- (id)keycapLeftInvertedTransform;
 - (id)keycapLeftSelectLeftTransform;
+- (id)keycapLeftSelectPrimaryInvertedTransform;
 - (id)keycapLeftSelectPrimaryTransform;
+- (id)keycapLeftSelectRightInvertedTransform;
 - (id)keycapLeftSelectRightTransform;
 - (id)keycapLeftStandardTransform;
 - (id)keycapMeshTransformFromRect:(struct CGRect)arg1 toRect:(struct CGRect)arg2;
 - (id)keycapNullTransform;
+- (id)keycapPrimaryBackspaceInvertedTransform;
+- (id)keycapPrimaryBackspaceTransform;
+- (id)keycapPrimaryExitInvertedTransform;
 - (id)keycapPrimaryExitTransform;
+- (id)keycapPrimarySpaceInvertedTransform;
+- (id)keycapPrimarySpaceTransform;
+- (id)keycapPrimaryStandardInvertedTransform;
 - (id)keycapPrimaryStandardTransform;
+- (id)keycapRightInvertedTransform;
+- (id)keycapRightSelectLeftInvertedTransform;
 - (id)keycapRightSelectLeftTransform;
+- (id)keycapRightSelectPrimaryInvertedTransform;
 - (id)keycapRightSelectPrimaryTransform;
 - (id)keycapRightSelectRightTransform;
 - (id)keycapRightStandardTransform;

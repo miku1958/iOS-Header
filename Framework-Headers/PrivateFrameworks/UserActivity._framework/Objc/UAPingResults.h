@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <UserActivity/NSSecureCoding-Protocol.h>
 
@@ -25,6 +25,7 @@
 
 + (id)sharedFormatter;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)addDevice:(id)arg1;
 - (void)addKeysForDevice:(id)arg1;
 - (double)averagePingTime;

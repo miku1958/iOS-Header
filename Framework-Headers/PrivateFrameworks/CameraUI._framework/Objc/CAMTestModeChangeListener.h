@@ -9,11 +9,11 @@
 @interface CAMTestModeChangeListener : NSObject
 {
     long long _desiredMode;
-    long long _desiredDevice;
+    long long _desiredDevicePosition;
     CDUnknownBlockType _handler;
 }
 
-@property (nonatomic) long long desiredDevice; // @synthesize desiredDevice=_desiredDevice;
+@property (nonatomic) long long desiredDevicePosition; // @synthesize desiredDevicePosition=_desiredDevicePosition;
 @property (nonatomic) long long desiredMode; // @synthesize desiredMode=_desiredMode;
 @property (copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 

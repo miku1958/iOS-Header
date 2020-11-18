@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) NSArray *events;
 @property (readonly, nonatomic) unsigned long long extendedLogDataStringEncoding;
 
+- (id)_common_init;
 - (id)_errorLogArray;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

@@ -36,8 +36,6 @@
 + (id)privateDaemonInterface;
 + (id)sharedManager;
 - (void).cxx_destruct;
-- (void)addActiveGlanceIdentifier:(id)arg1;
-- (void)addActiveNotificationIdentifier:(id)arg1;
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(BOOL)arg3;
 - (void)dealloc;
 - (void)fakeIncomingPayloadOnSubService:(id)arg1 ofType:(id)arg2 clientData:(id)arg3 resource:(id)arg4 resourceSandboxToken:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
@@ -45,8 +43,6 @@
 - (void)handlePingForExtensionBundleID:(id)arg1;
 - (id)init;
 - (void)isExtensionPrivileged:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)removeActiveGlanceIdentifier:(id)arg1;
-- (void)removeActiveNotificationIdentifier:(id)arg1;
 - (void)setupConnection;
 
 @end

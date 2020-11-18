@@ -28,16 +28,21 @@
     BOOL _shouldInstallPersistentTimer;
     BOOL _useSyncIdleTimer;
     BOOL _loadRecentlyRepliedNotifications;
-    BOOL _handlesOnlyEvents;
+    BOOL _registerForDarwinNotifications;
+    long long _notificationTypes;
     NSMutableSet *_alertedNotificationsThatFailedToMarkAlerted;
+    BOOL _allowedToMarkAlerted;
 }
 
+@property (nonatomic) BOOL allowedToMarkAlerted; // @synthesize allowedToMarkAlerted=_allowedToMarkAlerted;
 @property (readonly, nonatomic) unsigned long long eventNotificationCount;
 @property (readonly, nonatomic) NSArray *eventNotificationReferences;
 @property (readonly, nonatomic) unsigned long long notificationCount;
 @property (readonly, nonatomic) NSArray *notificationReferences;
 @property (readonly, nonatomic) NSArray *reminderNotificationReferences;
 
++ (id)requestedDarwinNotifications;
+- (void).cxx_destruct;
 - (void)_alertPrefChanged;
 - (unsigned long long)_checkForEventNotifications:(id)arg1;
 - (unsigned long long)_checkForReminderNotifications:(id)arg1;
@@ -56,12 +61,15 @@
 - (void)attemptReload;
 - (void)attemptReloadSynchronously:(BOOL)arg1;
 - (void)dealloc;
+- (void)handleDarwinNotification:(id)arg1;
 - (id)init;
-- (id)initByHandlingOnlyEvents:(BOOL)arg1 bulletinBoardWithEventStoreGetter:(CDUnknownBlockType)arg2;
 - (id)initByHandlingOnlyEvents:(BOOL)arg1 eventStore:(id)arg2;
+- (id)initByHandlingTypes:(long long)arg1 bulletinBoardWithEventStoreGetter:(CDUnknownBlockType)arg2;
 - (void)killTimer;
 - (void)start;
 - (void)stop;
+- (BOOL)wantsEvents;
+- (BOOL)wantsReminders;
 
 @end
 

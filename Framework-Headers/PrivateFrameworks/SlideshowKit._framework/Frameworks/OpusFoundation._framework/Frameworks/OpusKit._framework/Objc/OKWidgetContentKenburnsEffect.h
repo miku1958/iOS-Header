@@ -6,9 +6,11 @@
 
 #import <OpusKit/OKWidgetContentEffect.h>
 
+#import <OpusKit/CAAnimationDelegate-Protocol.h>
+
 @class CABasicAnimation, NSString, OKPanGenerator;
 
-@interface OKWidgetContentKenburnsEffect : OKWidgetContentEffect
+@interface OKWidgetContentKenburnsEffect : OKWidgetContentEffect <CAAnimationDelegate>
 {
     OKPanGenerator *_panGenerator;
     CABasicAnimation *_translationXAnimation;
@@ -30,6 +32,11 @@
     double _animationProgressAtStateChange;
     double _animationResumeTime;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)supportedSettings;
 - (void)_applyGeometryForStart:(BOOL)arg1;

@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (double)URLFieldHorizontalMargin;
 - (id)_toolbarItems;
 - (void)actionButtonPressed;
-- (void)addBookmarkButtonPressed;
 - (void)backButtonPressed;
 - (void)forwardButtonPressed;
 - (BOOL)isMinibar;

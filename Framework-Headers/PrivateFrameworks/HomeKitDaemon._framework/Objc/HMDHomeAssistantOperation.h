@@ -6,23 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HAPTimerDelegate-Protocol.h>
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HAPTimer, NSMutableSet, NSSet, NSString;
+@class HMFTimer, NSMutableSet, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDHomeAssistantOperation : NSObject <HAPTimerDelegate>
+@interface HMDHomeAssistantOperation : NSObject <HMFTimerDelegate>
 {
     BOOL _completionHandlerCalled;
     NSObject<OS_dispatch_queue> *_workQueue;
     CDUnknownBlockType _completionHandler;
-    HAPTimer *_accessoryConnectivityWaitTimer;
+    HMFTimer *_accessoryConnectivityWaitTimer;
     NSSet *_accessoriesToOperateOn;
     NSMutableSet *_reachableAccessoriesToOperateOn;
 }
 
 @property (readonly, nonatomic) NSSet *accessoriesToOperateOn; // @synthesize accessoriesToOperateOn=_accessoriesToOperateOn;
-@property (readonly, nonatomic) HAPTimer *accessoryConnectivityWaitTimer; // @synthesize accessoryConnectivityWaitTimer=_accessoryConnectivityWaitTimer;
+@property (readonly, nonatomic) HMFTimer *accessoryConnectivityWaitTimer; // @synthesize accessoryConnectivityWaitTimer=_accessoryConnectivityWaitTimer;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (nonatomic) BOOL completionHandlerCalled; // @synthesize completionHandlerCalled=_completionHandlerCalled;
 @property (readonly, copy) NSString *debugDescription;

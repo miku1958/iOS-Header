@@ -34,6 +34,8 @@
 @property (weak) AKPageController *pageController; // @synthesize pageController=_pageController;
 
 + (Class)_handlerClassForPlatformForAnnotation:(id)arg1;
++ (BOOL)allowsDragging;
++ (BOOL)allowsDraggingOfAnnotation:(id)arg1;
 + (struct CGRect)annotationRectangleForDraggingBounds:(struct CGRect)arg1 forAnnotation:(id)arg2 onPageController:(id)arg3 withOriginalCenter:(struct CGPoint)arg4;
 + (id)newAnnotationEventHandlerForCurrentPlatformForAnnotation:(id)arg1 withPageController:(id)arg2;
 - (void).cxx_destruct;
@@ -43,6 +45,7 @@
 - (BOOL)continueDraggableAreaEventTrackingLoopWithEvent:(id)arg1 orRecognizer:(id)arg2;
 - (BOOL)enterDraggableAreaEventTrackingLoopWithEvent:(id)arg1 orRecognizer:(id)arg2;
 - (void)getInitialDraggedPoint:(struct CGPoint *)arg1 otherPoint:(struct CGPoint *)arg2 center:(struct CGPoint *)arg3 forEvent:(id)arg4 orRecognizer:(id)arg5;
+- (BOOL)handleDownEvent:(id)arg1 orRecognizer:(id)arg2;
 - (BOOL)lockAspectRatioByDefault;
 - (struct CGPoint)modelPointFromPointInWindow:(struct CGPoint)arg1;
 - (double)naturalAspectRatioForAnnotation;

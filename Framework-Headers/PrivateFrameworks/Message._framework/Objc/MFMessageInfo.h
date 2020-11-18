@@ -6,7 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@interface MFMessageInfo : NSObject
+#import <Message/MFBaseMessage-Protocol.h>
+#import <Message/NSCopying-Protocol.h>
+
+@class NSString;
+
+@interface MFMessageInfo : NSObject <MFBaseMessage, NSCopying>
 {
     unsigned int _flagged:1;
     unsigned int _read:1;
@@ -14,33 +19,52 @@
     unsigned int _uidIsLibraryID:1;
     unsigned int _hasAttachments:1;
     unsigned int _isVIP:1;
-    unsigned int _uid;
-    unsigned int _dateReceivedInterval;
+    unsigned int _isHighPriority:1;
     unsigned int _dateSentInterval;
     unsigned int _mailboxID;
+    unsigned int _uid;
+    unsigned int _dateReceivedInterval;
+    unsigned int _sortUid;
+    unsigned int _sortDateReceivedInterval;
     long long _conversationHash;
     long long _generationNumber;
-    long long _messageID;
+    long long _messageIDHash;
 }
 
+@property (readonly, nonatomic) long long conversationHash;
 @property (nonatomic) long long conversationHash; // @synthesize conversationHash=_conversationHash;
+@property (readonly, nonatomic) unsigned int dateReceivedInterval;
 @property (nonatomic) unsigned int dateReceivedInterval; // @synthesize dateReceivedInterval=_dateReceivedInterval;
+@property (readonly, nonatomic) unsigned int dateSentInterval;
 @property (nonatomic) unsigned int dateSentInterval; // @synthesize dateSentInterval=_dateSentInterval;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) BOOL deleted;
 @property (nonatomic) BOOL deleted;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL flagged;
 @property (nonatomic) BOOL flagged;
 @property (readonly, nonatomic) long long generationNumber; // @synthesize generationNumber=_generationNumber;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isVIP;
 @property (nonatomic) BOOL isVIP;
+@property (readonly, nonatomic, getter=isKnownToHaveAttachments) BOOL knownToHaveAttachments;
 @property (nonatomic, getter=isKnownToHaveAttachments) BOOL knownToHaveAttachments;
+@property (readonly, nonatomic) unsigned int mailboxID;
 @property (nonatomic) unsigned int mailboxID; // @synthesize mailboxID=_mailboxID;
-@property (nonatomic) long long messageID; // @synthesize messageID=_messageID;
+@property (readonly, nonatomic) long long messageIDHash;
+@property (nonatomic) long long messageIDHash; // @synthesize messageIDHash=_messageIDHash;
+@property (readonly, nonatomic) BOOL read;
 @property (nonatomic) BOOL read;
+@property (nonatomic) unsigned int sortDateReceivedInterval; // @synthesize sortDateReceivedInterval=_sortDateReceivedInterval;
+@property (nonatomic) unsigned int sortUid; // @synthesize sortUid=_sortUid;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned int uid;
 @property (nonatomic) unsigned int uid; // @synthesize uid=_uid;
 @property (nonatomic) BOOL uidIsLibraryID;
 
 + (long long)newGenerationNumber;
-- (id)description;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)generationCompare:(id)arg1;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithUid:(unsigned int)arg1 mailboxID:(unsigned int)arg2 messageID:(long long)arg3 dateReceivedInterval:(unsigned int)arg4 dateSentInterval:(unsigned int)arg5 conversationHash:(long long)arg6 read:(BOOL)arg7 knownToHaveAttachments:(BOOL)arg8 flagged:(BOOL)arg9 isVIP:(BOOL)arg10;
 - (BOOL)isEqual:(id)arg1;

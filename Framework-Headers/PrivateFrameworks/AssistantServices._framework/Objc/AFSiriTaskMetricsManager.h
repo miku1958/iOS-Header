@@ -6,15 +6,21 @@
 
 #import <objc/NSObject.h>
 
+@class CDSession;
+@protocol OS_dispatch_queue;
+
 @interface AFSiriTaskMetricsManager : NSObject
 {
+    NSObject<OS_dispatch_queue> *_duetQueue;
+    CDSession *_coreDuetSession;
 }
 
 + (id)sharedManager;
+- (void).cxx_destruct;
 - (BOOL)_parseCoreDuetAttributeValue:(id)arg1 aceId:(id *)arg2 duration:(double *)arg3;
 - (void)deleteRegisteredIdentifiers;
 - (id)init;
-- (void)registerPunchoutIdentifier:(id)arg1;
+- (void)registerPunchoutIdentifier:(id)arg1 metricsContext:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)retrieveMetricsFromPreviousPunchout:(CDUnknownBlockType)arg1;
 
 @end

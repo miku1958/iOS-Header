@@ -8,7 +8,7 @@
 
 #import <FrontBoardServices/FBSSceneUpdater-Protocol.h>
 
-@class BSBasicServerClient, NSMutableArray, NSMutableDictionary, NSObject, NSString;
+@class BSBasicServerClient, FBSProcessHandle, NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol FBSWorkspaceClientDelegate, OS_dispatch_queue;
 
 @interface FBSWorkspaceClient : BSBaseXPCClient <FBSSceneUpdater>
@@ -17,6 +17,7 @@
     NSMutableArray *_queuedMessages;
     NSMutableDictionary *_sceneIDToSceneHandlerMap;
     NSObject<OS_dispatch_queue> *_callOutQueue;
+    FBSProcessHandle *_processHandle;
     BOOL _inTransaction;
     id<FBSWorkspaceClientDelegate> _delegate;
 }
@@ -36,6 +37,7 @@
 - (void)_queue_handleCreateScene:(id)arg1;
 - (void)_queue_handleDestroyScene:(id)arg1;
 - (void)_queue_handleSceneActions:(id)arg1;
+- (void)_queue_handleSceneMessage:(id)arg1;
 - (void)_queue_handleSceneUpdate:(id)arg1;
 - (void)_queue_handleTransactionBookEnd;
 - (void)_queue_sendMessage:(long long)arg1 withEvent:(id)arg2;
@@ -45,6 +47,7 @@
 - (void)_sendMessage:(long long)arg1 withEvent:(id)arg2;
 - (void)_sendMessageReply:(id)arg1 withEvent:(id)arg2;
 - (void)dealloc;
+- (id)hostProcess;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithServiceName:(id)arg1 endpoint:(id)arg2;
@@ -57,6 +60,7 @@
 - (void)scene:(id)arg1 didReceiveActions:(id)arg2;
 - (void)scene:(id)arg1 didUpdateClientSettings:(id)arg2 withDiff:(id)arg3 transitionContext:(id)arg4;
 - (void)scene:(id)arg1 didUpdateLayer:(id)arg2;
+- (void)scene:(id)arg1 sendMessage:(id)arg2 withResponse:(CDUnknownBlockType)arg3;
 - (void)sendCreateSceneRequestEvent:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)sendDestroySceneRequestEvent:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)unregisterDelegateForSceneID:(id)arg1;

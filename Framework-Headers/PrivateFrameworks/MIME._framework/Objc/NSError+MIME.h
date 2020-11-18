@@ -8,6 +8,7 @@
 
 @interface NSError (MIME)
 + (id)mf_cancelledError;
++ (id)mf_decodeFailedErrorWithUserInfo:(id)arg1;
 + (id)mf_timeoutError;
 - (BOOL)mf_isCancelledError;
 - (BOOL)mf_isTimeoutError;

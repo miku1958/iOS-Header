@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSMutableSet;
+@class NSMutableDictionary, NSMutableSet, NSSet;
 @protocol BLTObjectCacheDelegate, OS_dispatch_queue;
 
 @interface BLTObjectCache : NSObject
@@ -18,6 +18,8 @@
     long long _maxItemCount;
     id<BLTObjectCacheDelegate> _delegate;
 }
+
+@property (readonly, nonatomic) NSSet *keys;
 
 - (void).cxx_destruct;
 - (void)_addKeyToSet:(id)arg1;

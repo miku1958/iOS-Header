@@ -28,6 +28,7 @@
 
 - (void).cxx_destruct;
 - (id)_activityIndicator;
+- (struct CGRect)_computedFrameForActivityIndicatorView;
 - (id)_layoutCache;
 - (void)_reloadViewStyling;
 - (void)_showActivityIndicator;
@@ -39,6 +40,7 @@
 - (void)loadView;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end
 

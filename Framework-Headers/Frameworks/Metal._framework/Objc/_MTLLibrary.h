@@ -18,6 +18,7 @@
     NSArray *_functionNames;
     struct MTLLibraryData *_libraryData;
     NSMutableDictionary *_functionDictionary;
+    struct MTLLibraryContainer *_cacheEntry;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -31,15 +32,10 @@
 @property (readonly) Class superclass;
 
 - (void)dealloc;
-- (id)initWithCIFilters:(id)arg1 imageFilterFunctionInfo:(const CDStruct_dbc1e4aa *)arg2 device:(id)arg3 error:(id *)arg4;
-- (id)initWithData:(id)arg1 device:(id)arg2 error:(id *)arg3;
-- (id)initWithDefaultBundle:(id)arg1;
-- (id)initWithFile:(id)arg1 device:(id)arg2 error:(id *)arg3;
-- (id)initWithRequestData:(void *)arg1 requestSize:(unsigned long long)arg2 requestType:(int)arg3 device:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)initWithSharedLibrary:(id)arg1 device:(id)arg2;
-- (id)initWithSource:(id)arg1 options:(id)arg2 device:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)initWithSource:(id)arg1 options:(id)arg2 device:(id)arg3 error:(id *)arg4;
+- (id)initWithLibraryContainer:(struct MTLLibraryContainer *)arg1 device:(id)arg2;
 - (id)newFunctionWithName:(id)arg1;
+- (void)newFunctionWithName:(id)arg1 constantValues:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 error:(id *)arg3;
 
 @end
 

@@ -11,8 +11,6 @@
 - (void)_ICSEscapeParameterValue;
 - (void)_ICSEscapePropertyValue;
 - (void)_ICSRemoveCharactersFromSet:(id)arg1;
-- (void)_ICSStringAppendingParameterName:(id)arg1;
-- (void)_ICSStringParameterName:(id)arg1 value:(id)arg2;
 - (void)_ICSStripControlChracters;
 @end
 

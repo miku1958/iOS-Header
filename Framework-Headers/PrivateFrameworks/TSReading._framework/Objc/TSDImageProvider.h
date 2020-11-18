@@ -12,11 +12,11 @@
 {
     int mLoadState;
     TSPData *mImageData;
-    int mRetainCount;
-    int mOwnerCount;
+    _Atomic int mRetainCount;
+    _Atomic int mOwnerCount;
     TSUFlushingManager *mFlushingManager;
     int mInterest;
-    int mInterestLock;
+    struct os_unfair_lock_s mInterestLock;
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;

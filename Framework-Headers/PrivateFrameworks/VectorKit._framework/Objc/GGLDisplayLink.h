@@ -15,15 +15,12 @@ __attribute__((visibility("hidden")))
     struct _geo_weak_ptr<id> _target;
     CADisplayLink *_displayLink;
     CADisplay *_display;
-    long long _frameInterval;
-    long long _skippedFrames;
-    BOOL _paused;
 }
 
 @property (strong, nonatomic) CADisplay *display; // @synthesize display=_display;
-@property (nonatomic) long long frameInterval;
+@property (nonatomic) long long frameRate;
 @property (nonatomic, getter=isPaused) BOOL paused;
-@property (readonly, nonatomic) double timestamp;
+@property (readonly, nonatomic) double targetTimestamp;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

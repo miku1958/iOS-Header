@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 
 + (id)relationWithEntityName:(id)arg1 toMany:(BOOL)arg2 inversePropertyNames:(id)arg3;
 + (id)relationWithEntityName:(id)arg1 toMany:(BOOL)arg2 inversePropertyNames:(id)arg3 ownsRelated:(BOOL)arg4;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithEntityName:(id)arg1 toMany:(BOOL)arg2 inversePropertyNames:(id)arg3 ownsRelated:(BOOL)arg4;
 - (BOOL)shouldSetInverseProperty:(id)arg1 onObject:(id)arg2 forObject:(id)arg3;

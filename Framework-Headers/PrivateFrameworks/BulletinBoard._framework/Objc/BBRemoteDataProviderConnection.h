@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/BBDataProviderConnectionServerProxy-Protocol.h>
 #import <BulletinBoard/BBDataProviderStore-Protocol.h>
@@ -15,14 +15,14 @@
 
 @interface BBRemoteDataProviderConnection : NSObject <BBRemoteDataProviderDelegate, BBDataProviderConnectionServerProxy, BBDataProviderStore>
 {
-    NSString *_serviceName;
-    NSString *_bundleID;
     BOOL _connected;
     id<BBRemoteDataProviderStoreDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_dataProvidersBySectionID;
     NSMutableDictionary *_dataProvidersByUniversalSectionID;
     BOOL _clientReady;
+    NSString *_serviceName;
+    NSString *_bundleID;
 }
 
 @property (copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
@@ -33,13 +33,13 @@
 @property (copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_queue_removeDataProvider:(id)arg1;
 - (void)addDataProviderWithSectionID:(id)arg1 clientProxy:(id)arg2 identity:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)addParentSectionFactory:(id)arg1;
 - (void)clientIsReady:(CDUnknownBlockType)arg1;
 - (id)dataProviderForSectionID:(id)arg1;
 - (id)dataProviderForUniversalSectionID:(id)arg1;
-- (void)dealloc;
 - (id)debugDescriptionWithChildren:(unsigned long long)arg1;
 - (id)initWithServiceName:(id)arg1 bundleID:(id)arg2 delegate:(id)arg3;
 - (void)loadAllDataProviders;

@@ -15,7 +15,6 @@
 @property (readonly, copy) NSString *type;
 
 - (void)dealloc;
-- (void)finalize;
 - (BOOL)matchMedium:(id)arg1;
 
 @end

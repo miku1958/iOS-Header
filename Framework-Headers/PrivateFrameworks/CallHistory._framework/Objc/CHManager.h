@@ -11,18 +11,19 @@
 
 @interface CHManager : CHSynchronizedLoggable
 {
+    BOOL _showsTelephonyCalls;
     BOOL _showsFaceTimeVideoCalls;
     BOOL _showsFaceTimeAudioCalls;
-    BOOL _showsTelephonyCalls;
     BOOL _generateSyncTransactions;
     BOOL _cacheIsDirty;
     BOOL _reCoalesce;
     unsigned int _limitingCallTypes;
-    NSArray *_recentCalls;
     NSDate *_limitingStartDate;
     NSDate *_limitingEndDate;
+    NSArray *_limitingCallKinds;
     NSPredicate *_postFetchingPredicate;
     NSString *_coalescingStrategy;
+    NSArray *_recentCalls;
     long long _numberOfUnseenMissedCalls;
     id<SyncManagerProtocol> _syncManager;
     NSArray *_uncoalescedRecentCalls;
@@ -37,6 +38,7 @@
 @property (copy, nonatomic) NSString *coalescingStrategy; // @synthesize coalescingStrategy=_coalescingStrategy;
 @property (strong) id databaseChangedNotificationRef; // @synthesize databaseChangedNotificationRef=_databaseChangedNotificationRef;
 @property BOOL generateSyncTransactions; // @synthesize generateSyncTransactions=_generateSyncTransactions;
+@property (copy, nonatomic) NSArray *limitingCallKinds; // @synthesize limitingCallKinds=_limitingCallKinds;
 @property (nonatomic) unsigned int limitingCallTypes; // @synthesize limitingCallTypes=_limitingCallTypes;
 @property (copy, nonatomic) NSDate *limitingEndDate; // @synthesize limitingEndDate=_limitingEndDate;
 @property (copy, nonatomic) NSDate *limitingStartDate; // @synthesize limitingStartDate=_limitingStartDate;
@@ -53,6 +55,7 @@
 @property (strong) NSNumber *unreadCallCount; // @synthesize unreadCallCount=_unreadCallCount;
 
 + (unsigned int)CHCallStatusForCallWithDuration:(double)arg1 isOriginated:(BOOL)arg2 isAnswered:(BOOL)arg3;
++ (id)limitingCallKindsForCallType:(unsigned int)arg1;
 - (void).cxx_destruct;
 - (void)addMultipleCallsToCallHistory:(id)arg1;
 - (void)addToCallHistory:(id)arg1;
@@ -62,6 +65,7 @@
 - (double)callTimersGetLifetime;
 - (double)callTimersGetOutgoing;
 - (void)callTimersReset;
+- (void)clearDatabase;
 - (id)coalesceCalls:(id)arg1;
 - (unsigned long long)countCallsWithPredicate:(id)arg1;
 - (unsigned long long)countCallsWithPredicateSync:(id)arg1;
@@ -77,12 +81,15 @@
 - (id)fetchRecentCallsSyncWithCoalescing:(BOOL)arg1;
 - (unsigned long long)fetchUnreadCallsCount;
 - (void)flush;
+- (id)getLimitsDictionary;
 - (id)init;
 - (id)initWithFetchingLimitsDictionary:(id)arg1 andCoalescingStrategy:(id)arg2 andPostFetchingPredicate:(id)arg3 withQueue:(id)arg4;
 - (void)markAllCallsAsReadWithPredicate:(id)arg1;
 - (id)recentCallsWithPredicate:(id)arg1;
 - (void)registerForNotifications;
 - (void)setDefaultInitValues;
+- (void)setInitialLimitingCallKinds:(id)arg1;
+- (void)setLimitingCallKindsSync:(id)arg1;
 - (void)setLimitingCallTypesSync:(unsigned int)arg1;
 - (id)unCoalesceCall:(id)arg1;
 - (void)unRegisterForNotifications;

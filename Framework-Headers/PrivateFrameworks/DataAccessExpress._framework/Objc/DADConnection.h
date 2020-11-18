@@ -107,6 +107,7 @@
 - (BOOL)updateFolderListForAccountID:(id)arg1 andDataclasses:(long long)arg2 requireChangedFolders:(BOOL)arg3 isUserRequested:(BOOL)arg4;
 - (BOOL)updateOofSettingsRequest:(id)arg1 forAccountWithID:(id)arg2;
 - (BOOL)watchFoldersWithKeys:(id)arg1 forAccountID:(id)arg2;
+- (BOOL)watchFoldersWithKeys:(id)arg1 forAccountID:(id)arg2 persistent:(BOOL)arg3;
 
 @end
 

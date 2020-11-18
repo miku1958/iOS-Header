@@ -11,8 +11,6 @@
 }
 
 @property (readonly, nonatomic, getter=isBatteryWidgetAlwaysAvailable) BOOL batteryWidgetAlwaysAvailable; // @dynamic batteryWidgetAlwaysAvailable;
-@property (readonly, nonatomic) BOOL disableNotificationCenterBlur; // @dynamic disableNotificationCenterBlur;
-@property (nonatomic) BOOL publishBatteryWidget; // @dynamic publishBatteryWidget;
 @property (readonly, nonatomic) BOOL showInternalWidgets; // @dynamic showInternalWidgets;
 @property (readonly, nonatomic) BOOL showWidgetSnapshotDebugLabels; // @dynamic showWidgetSnapshotDebugLabels;
 @property (readonly, nonatomic) BOOL useDuetRecommendations; // @dynamic useDuetRecommendations;
@@ -20,7 +18,6 @@
 @property (readonly, nonatomic, getter=isWidgetSnapshottingEnabled) BOOL widgetSnapshottingEnabled; // @dynamic widgetSnapshottingEnabled;
 
 - (void)_bindAndRegisterDefaults;
-- (BOOL)publishBatteryWidgetExists;
 
 @end
 

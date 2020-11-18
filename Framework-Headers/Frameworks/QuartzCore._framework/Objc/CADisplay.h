@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CADisplayMode, NSArray, NSString;
 
 @interface CADisplay : NSObject
 {
     void *_impl;
+    BOOL _allowsVirtualModes;
 }
 
-@property BOOL allowsVirtualModes;
+@property BOOL allowsVirtualModes; // @synthesize allowsVirtualModes=_allowsVirtualModes;
 @property (readonly, nonatomic) NSArray *availableModes;
 @property (readonly, nonatomic) struct CGRect bounds;
 @property (readonly, getter=isCloned) BOOL cloned;
@@ -25,6 +26,10 @@
 @property (readonly) unsigned int displayId;
 @property (readonly, getter=isExternal) BOOL external;
 @property (readonly, nonatomic) struct CGRect frame;
+@property (readonly) double heartbeatRate;
+@property (readonly) double maximumRefreshRate;
+@property (readonly) long long minimumFrameDuration;
+@property (readonly) double minimumRefreshRate;
 @property (readonly, nonatomic) NSString *name;
 @property (copy, nonatomic) NSString *overscanAdjustment;
 @property (readonly) double overscanAmount;
@@ -36,6 +41,7 @@
 @property (readonly, nonatomic) struct CGRect safeBounds;
 @property (readonly) unsigned int seed;
 @property (readonly, getter=isSupported) BOOL supported;
+@property (readonly) BOOL supportsExtendedColors;
 @property (readonly) long long tag;
 @property (readonly) NSString *uniqueId;
 

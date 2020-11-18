@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 - (long long)code;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)domain;
-- (void)finalize;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (oneway void)release;

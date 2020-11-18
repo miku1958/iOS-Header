@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <NanoRegistry/NSCopying-Protocol.h>
 #import <NanoRegistry/NSSecureCoding-Protocol.h>
 
 @class NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
-@interface NRSecureDevicePropertyStore : NSObject <NSSecureCoding>
+@interface NRSecureDevicePropertyStore : NSObject <NSSecureCoding, NSCopying>
 {
     NSMutableDictionary *_IDToProperty;
     NSMutableDictionary *_propertyToID;
@@ -27,6 +28,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)allSecurePropertyIDs;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)description;

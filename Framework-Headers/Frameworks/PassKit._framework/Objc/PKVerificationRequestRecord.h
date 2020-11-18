@@ -4,28 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSString, PKVerificationChannel;
+@class NSArray, NSDate, NSDictionary, NSString, PKVerificationChannel;
 
 @interface PKVerificationRequestRecord : NSObject <NSSecureCoding>
 {
+    NSString *_currentStepIdentifier;
+    NSString *_previousStepIdentifier;
+    long long _verificationStatus;
     NSString *_passUniqueID;
-    PKVerificationChannel *_channel;
     NSDate *_date;
+    PKVerificationChannel *_channel;
+    NSArray *_allChannels;
+    NSDictionary *_requiredFieldData;
 }
 
+@property (copy, nonatomic) NSArray *allChannels; // @synthesize allChannels=_allChannels;
 @property (copy, nonatomic) PKVerificationChannel *channel; // @synthesize channel=_channel;
+@property (copy, nonatomic) NSString *currentStepIdentifier; // @synthesize currentStepIdentifier=_currentStepIdentifier;
 @property (copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (copy, nonatomic) NSString *passUniqueID; // @synthesize passUniqueID=_passUniqueID;
+@property (copy, nonatomic) NSString *previousStepIdentifier; // @synthesize previousStepIdentifier=_previousStepIdentifier;
+@property (copy, nonatomic) NSDictionary *requiredFieldData; // @synthesize requiredFieldData=_requiredFieldData;
+@property (nonatomic) long long verificationStatus; // @synthesize verificationStatus=_verificationStatus;
 
 + (BOOL)supportsSecureCoding;
-+ (id)verificationRequestRecordForPass:(id)arg1 channel:(id)arg2 date:(id)arg3;
-- (void)dealloc;
++ (id)verificationRequestRecordForPass:(id)arg1;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)requiredVerificationFields;
 
 @end
 

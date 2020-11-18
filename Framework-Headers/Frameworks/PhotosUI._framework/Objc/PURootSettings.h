@@ -6,16 +6,14 @@
 
 #import <PhotosUI/PUSettings.h>
 
-@class NSMutableSet, PUAirPlaySettings, PUFeedSettings, PUIrisSettings, PUMedusaSettings, PUMomentsSettings, PUOneUpSettings, PUPerformanceDiagnosticsSettings, PUPhotoEditProtoSettings, PUPhotosDataSourceSettings, PUPhotosGridSettings, PUSlideshowSettings, PUTilingViewSettings;
+@class NSMutableSet, PUAirPlaySettings, PUAlbumListSettings, PUFeedSettings, PUIrisSettings, PULoggingSettings, PUMedusaSettings, PUMemoriesSettings, PUMomentsSettings, PUOneUpSettings, PUPerformanceDiagnosticsSettings, PUPhotoEditProtoSettings, PUPhotosGridSettings, PUSceneSettings, PUSlideshowSettings, PUTilingViewSettings, PUWelcomeSettings, PUWorkaroundSettings;
 
 @interface PURootSettings : PUSettings
 {
     NSMutableSet *_archivedSettings;
     BOOL _enforceDisableIrisUI;
-    BOOL _allowIrisEditing;
     BOOL _allowIrisUI;
     PUPhotosGridSettings *_photosGridSettings;
-    PUPhotosDataSourceSettings *_photosDataSourceSettings;
     PUPhotoEditProtoSettings *_photoEditingSettings;
     PUFeedSettings *_feedSettings;
     PUMomentsSettings *_momentsSettings;
@@ -25,32 +23,44 @@
     Class _interfaceThemeClass;
     PUAirPlaySettings *_airPlaySettings;
     PUSlideshowSettings *_slideshowSettings;
+    PUAlbumListSettings *_albumListSettings;
+    PUMemoriesSettings *_memoriesSettings;
+    PUWelcomeSettings *_welcomeSettings;
+    PUWorkaroundSettings *_workaroundSettings;
+    PUSceneSettings *_sceneSettings;
     PUIrisSettings *_irisSettings;
     Class _orbInterfaceThemeClass;
     PUPerformanceDiagnosticsSettings *_performanceDiagnosticsSettings;
     unsigned long long _settingsVersion;
+    PULoggingSettings *_loggingSettings;
 }
 
 @property (strong, nonatomic) PUAirPlaySettings *airPlaySettings; // @synthesize airPlaySettings=_airPlaySettings;
-@property (nonatomic) BOOL allowIrisEditing; // @synthesize allowIrisEditing=_allowIrisEditing;
+@property (strong, nonatomic) PUAlbumListSettings *albumListSettings; // @synthesize albumListSettings=_albumListSettings;
 @property (nonatomic) BOOL allowIrisUI; // @synthesize allowIrisUI=_allowIrisUI;
 @property (strong, nonatomic) PUFeedSettings *feedSettings; // @synthesize feedSettings=_feedSettings;
 @property (nonatomic) Class interfaceThemeClass; // @synthesize interfaceThemeClass=_interfaceThemeClass;
 @property (strong, nonatomic) PUIrisSettings *irisSettings; // @synthesize irisSettings=_irisSettings;
+@property (strong, nonatomic) PULoggingSettings *loggingSettings; // @synthesize loggingSettings=_loggingSettings;
 @property (strong, nonatomic) PUMedusaSettings *medusaSettings; // @synthesize medusaSettings=_medusaSettings;
+@property (strong, nonatomic) PUMemoriesSettings *memoriesSettings; // @synthesize memoriesSettings=_memoriesSettings;
 @property (strong, nonatomic) PUMomentsSettings *momentsSettings; // @synthesize momentsSettings=_momentsSettings;
 @property (strong, nonatomic) PUOneUpSettings *oneUpSettings; // @synthesize oneUpSettings=_oneUpSettings;
 @property (nonatomic) Class orbInterfaceThemeClass; // @synthesize orbInterfaceThemeClass=_orbInterfaceThemeClass;
 @property (strong, nonatomic) PUPerformanceDiagnosticsSettings *performanceDiagnosticsSettings; // @synthesize performanceDiagnosticsSettings=_performanceDiagnosticsSettings;
 @property (strong, nonatomic) PUPhotoEditProtoSettings *photoEditingSettings; // @synthesize photoEditingSettings=_photoEditingSettings;
-@property (strong, nonatomic) PUPhotosDataSourceSettings *photosDataSourceSettings; // @synthesize photosDataSourceSettings=_photosDataSourceSettings;
 @property (strong, nonatomic) PUPhotosGridSettings *photosGridSettings; // @synthesize photosGridSettings=_photosGridSettings;
+@property (strong, nonatomic) PUSceneSettings *sceneSettings; // @synthesize sceneSettings=_sceneSettings;
 @property (nonatomic) unsigned long long settingsVersion; // @synthesize settingsVersion=_settingsVersion;
 @property (strong, nonatomic) PUSlideshowSettings *slideshowSettings; // @synthesize slideshowSettings=_slideshowSettings;
 @property (strong, nonatomic) PUTilingViewSettings *tilingViewSettings; // @synthesize tilingViewSettings=_tilingViewSettings;
+@property (strong, nonatomic) PUWelcomeSettings *welcomeSettings; // @synthesize welcomeSettings=_welcomeSettings;
+@property (strong, nonatomic) PUWorkaroundSettings *workaroundSettings; // @synthesize workaroundSettings=_workaroundSettings;
 
 + (id)_debugRowsForViewControllerStack:(id)arg1;
 + (void)_deleteAllDiagnosticFiles;
++ (id)_memoriesRelatedSettings;
++ (id)_photosUICoreSettings;
 + (void)_setCurrentAsset:(id)arg1;
 + (void)_setDebugRows:(id)arg1;
 + (id)currentAsset;

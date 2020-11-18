@@ -12,9 +12,9 @@
 {
     BOOL _queriesLocalAssetInformationOnly;
     NSPredicate *_predicate;
-    NSArray *_results;
     double _networkTimeout;
     NSString *_assetType;
+    NSArray *_results;
 }
 
 @property (copy, nonatomic) NSString *assetType; // @synthesize assetType=_assetType;

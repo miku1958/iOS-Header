@@ -8,20 +8,38 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapRegion;
+@class GEOMapRegion, GEOPDRelatedSearchSuggestion, GEOPDSearchClientBehavior, NSMutableArray, PBUnknownFields;
 
 @interface GEOPDCategorySearchResult : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
+    GEOPDRelatedSearchSuggestion *_defaultRelatedSearchSuggestion;
     GEOMapRegion *_displayMapRegion;
+    NSMutableArray *_relatedSearchSuggestions;
+    NSMutableArray *_resultDetourInfos;
+    GEOPDSearchClientBehavior *_searchClientBehavior;
     BOOL _isChainResultSet;
     CDStruct_5984ff81 _has;
 }
 
+@property (strong, nonatomic) GEOPDRelatedSearchSuggestion *defaultRelatedSearchSuggestion; // @synthesize defaultRelatedSearchSuggestion=_defaultRelatedSearchSuggestion;
 @property (strong, nonatomic) GEOMapRegion *displayMapRegion; // @synthesize displayMapRegion=_displayMapRegion;
+@property (readonly, nonatomic) BOOL hasDefaultRelatedSearchSuggestion;
 @property (readonly, nonatomic) BOOL hasDisplayMapRegion;
 @property (nonatomic) BOOL hasIsChainResultSet;
+@property (readonly, nonatomic) BOOL hasSearchClientBehavior;
 @property (nonatomic) BOOL isChainResultSet; // @synthesize isChainResultSet=_isChainResultSet;
+@property (strong, nonatomic) NSMutableArray *relatedSearchSuggestions; // @synthesize relatedSearchSuggestions=_relatedSearchSuggestions;
+@property (strong, nonatomic) NSMutableArray *resultDetourInfos; // @synthesize resultDetourInfos=_resultDetourInfos;
+@property (strong, nonatomic) GEOPDSearchClientBehavior *searchClientBehavior; // @synthesize searchClientBehavior=_searchClientBehavior;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)relatedSearchSuggestionType;
++ (Class)resultDetourInfoType;
+- (void)addRelatedSearchSuggestion:(id)arg1;
+- (void)addResultDetourInfo:(id)arg1;
+- (void)clearRelatedSearchSuggestions;
+- (void)clearResultDetourInfos;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -31,6 +49,10 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)relatedSearchSuggestionAtIndex:(unsigned long long)arg1;
+- (unsigned long long)relatedSearchSuggestionsCount;
+- (id)resultDetourInfoAtIndex:(unsigned long long)arg1;
+- (unsigned long long)resultDetourInfosCount;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -6,45 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class CFPDDataBuffer;
-@protocol OS_dispatch_group, OS_dispatch_queue;
+@class CFPDDataBuffer, CFPrefsDaemon;
+@protocol OS_dispatch_group, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
 @interface CFPDSource : NSObject
 {
-    NSObject<OS_dispatch_queue> *_queue;
+    CFPrefsDaemon *_cfprefsd;
     CFPDDataBuffer *_plist;
-    struct __CFArray *_pendingChangesQueue;
+    NSObject<OS_xpc_object> *_pendingChangesQueue;
     unsigned long long _pendingChangesSize;
     struct __CFString *_userName;
     struct __CFString *_domain;
     const char *_actualPath;
     const char *_pathToTemporaryFileToWriteTo;
     NSObject<OS_dispatch_group> *_inProgressWriteGroup;
-    struct __CFDictionary *_observingConnections;
+    struct __CFSet *_observingConnections;
+    struct os_unfair_lock_s _lock;
     unsigned int _lastEuid;
     unsigned int _lastEgid;
-    int _owner;
     short _generationShmemIndex;
-    unsigned int _handlingRequest:1;
-    unsigned int _dirty:1;
-    unsigned int _byHost:1;
-    unsigned int _managed:1;
-    unsigned int _neverCache:1;
-    unsigned int _checkedForNonPrefsPlist:1;
-    unsigned int _hasDrainedPendingChangesSinceLastReplyToOwner:1;
-    unsigned int _restrictedReadability:1;
-    unsigned int _waitingForDeviceUnlock:1;
-    unsigned int _watchingParentDirectory:1;
-    unsigned int _unusedBits:6;
+    BOOL _handlingRequest;
+    BOOL _dirty;
+    BOOL _byHost;
+    BOOL _managed;
+    BOOL _neverCache;
+    BOOL _checkedForNonPrefsPlist;
+    BOOL _hasDrainedPendingChangesSinceLastReplyToOwner;
+    BOOL _restrictedReadability;
+    BOOL _waitingForDeviceUnlock;
+    BOOL _watchingParentDirectory;
+    BOOL _disableBackup;
+    BOOL _hasPreviouslyBeenUnableToDetermineSandboxAccess;
 }
 
-+ (void)synchronousWithSourceCache:(CDUnknownBlockType)arg1;
-+ (void)withSourceCache:(CDUnknownBlockType)arg1;
-+ (void)withSourceForDomain:(struct __CFString *)arg1 inContainer:(struct __CFString *)arg2 user:(struct __CFString *)arg3 byHost:(BOOL)arg4 managed:(BOOL)arg5 cloudStoreEntitlement:(id)arg6 cloudConfigurationPath:(struct __CFString *)arg7 synchronously:(BOOL)arg8 perform:(CDUnknownBlockType)arg9;
-- (unsigned char)_backingPlistChangedSinceLastSync:(unsigned long long *)arg1;
 - (void)_writeToDisk:(BOOL)arg1;
-- (BOOL)acceptLocalMessage:(id)arg1 withReply:(struct __CFDictionary *)arg2 inode:(unsigned long long *)arg3;
 - (id)acceptMessage:(id)arg1;
 - (void)addOwner:(id)arg1;
 - (void)asyncNotifyObserversOfChanges;
@@ -56,18 +52,19 @@ __attribute__((visibility("hidden")))
 - (void)cacheActualPath;
 - (void)cacheActualPathCreatingIfNecessary:(BOOL)arg1 euid:(unsigned int)arg2 egid:(unsigned int)arg3;
 - (void)clearCache;
-- (BOOL)clearCacheIfStale:(unsigned long long *)arg1;
 - (struct __CFString *)cloudConfigurationPath;
 - (struct __CFString *)container;
+- (id)copyCachedObservationConnectionForMessage:(id)arg1;
 - (id)copyPropertyList;
 - (id)copyPropertyListWithoutDrainingPendingChanges;
+- (struct __CFString *)copyUncanonicalizedPath;
 - (void)dealloc;
 - (struct __CFString *)debugDump;
 - (id)description;
 - (struct __CFString *)domain;
 - (void)drainPendingChanges;
 - (void)endHandlingRequest;
-- (void)enqueueNewKey:(struct __CFString *)arg1 value:(void *)arg2 size:(unsigned long long)arg3;
+- (BOOL)enqueueNewKey:(id)arg1 value:(id)arg2 size:(unsigned long long)arg3 encoding:(int)arg4;
 - (BOOL)getUncanonicalizedPath:(char *)arg1;
 - (void)handleAvoidCache;
 - (void)handleDeviceUnlock;
@@ -78,27 +75,32 @@ __attribute__((visibility("hidden")))
 - (void)handleRootWrite;
 - (void)handleSynchronous;
 - (BOOL)hasEverHadMultipleOwners;
-- (id)initWithDomain:(struct __CFString *)arg1 userName:(struct __CFString *)arg2 byHost:(BOOL)arg3 managed:(BOOL)arg4 shmemIndex:(short)arg5;
+- (BOOL)hasObservers;
+- (unsigned long long)hash;
+- (id)initWithDomain:(struct __CFString *)arg1 userName:(struct __CFString *)arg2 byHost:(BOOL)arg3 managed:(BOOL)arg4 shmemIndex:(short)arg5 daemon:(id)arg6;
+- (BOOL)isEqual:(id)arg1;
 - (void)lockedAsync:(CDUnknownBlockType)arg1;
 - (void)lockedSync:(CDUnknownBlockType)arg1;
 - (BOOL)managed;
 - (void)markNeedsToReloadFromDiskDueToFailedWrite;
+- (int)owner;
 - (void)removeOwner;
+- (void)respondToFileWrittenToBehindOurBack;
 - (void)setDirty:(BOOL)arg1;
 - (void)setObserved:(BOOL)arg1 bySenderOfMessage:(id)arg2;
 - (void)setPlist:(id)arg1;
 - (short)shmemIndex;
 - (BOOL)shouldBePurgable;
-- (void)stopObservingProcess:(int)arg1;
+- (void)stopNotifyingObserver:(long long)arg1;
 - (void)syncWriteToDisk;
 - (void)syncWriteToDiskAndFlushCache;
 - (void)transitionToMultiOwner;
 - (void)updateShmemEntry;
 - (struct __CFString *)user;
 - (BOOL)validateAccessToken:(int)arg1 accessType:(int)arg2;
-- (int)validateMessage:(id)arg1 withNewKey:(struct __CFString *)arg2 newValue:(void *)arg3 currentPlistData:(id)arg4 containerPath:(const char *)arg5 diagnosticMessage:(const char **)arg6;
+- (int)validateMessage:(id)arg1 withNewKey:(id)arg2 newValue:(id)arg3 currentPlistData:(id)arg4 containerPath:(const char *)arg5 diagnosticMessage:(const char **)arg6;
 - (int)validatePOSIXPermissionsForMessage:(id)arg1 accessType:(int)arg2 fullyValidated:(BOOL *)arg3;
-- (BOOL)validateSandboxForRead:(id)arg1 containerPath:(const char *)arg2;
+- (int)validateSandboxForRead:(id)arg1 containerPath:(const char *)arg2;
 - (BOOL)validateSandboxForWrite:(id)arg1 containerPath:(const char *)arg2;
 - (int)validateSandboxPermissionsForMessage:(id)arg1 containerPath:(const char *)arg2 accessType:(int)arg3;
 

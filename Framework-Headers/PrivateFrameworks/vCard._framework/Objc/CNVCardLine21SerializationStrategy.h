@@ -14,6 +14,7 @@
 }
 
 + (id)serializerWithStorage:(id)arg1 encodings:(id)arg2;
+- (void).cxx_destruct;
 - (void)_addAutomagicParametersForData:(id)arg1;
 - (id)detectedTypeOfData:(id)arg1;
 - (id)initWithStorage:(id)arg1;

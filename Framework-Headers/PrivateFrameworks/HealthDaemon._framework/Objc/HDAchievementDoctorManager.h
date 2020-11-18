@@ -10,12 +10,12 @@
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
-@class HDAchievementDoctor, NSNumber, NSString;
-@protocol HDHealthDaemon, OS_dispatch_queue;
+@class HDAchievementDoctor, HDProfile, NSNumber, NSString;
+@protocol OS_dispatch_queue;
 
 @interface HDAchievementDoctorManager : NSObject <HDDiagnosticObject, HDHealthDaemonReadyObserver, HDDatabaseProtectedDataObserver>
 {
-    id<HDHealthDaemon> _healthDaemon;
+    HDProfile *_profile;
     HDAchievementDoctor *_achievementDoctor;
     NSObject<OS_dispatch_queue> *_fixupWaitQueue;
     NSNumber *_waitingToRun;
@@ -26,7 +26,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_achievementTypesModifiedPerFixupVersion;
++ (id)_definitionIdentifiersModifiedPerFixupVersion;
 - (void).cxx_destruct;
 - (long long)_activityInterval;
 - (void)_generateCrashReportForMissingAchievements:(id)arg1;
@@ -46,7 +46,7 @@
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)dealloc;
 - (id)diagnosticDescription;
-- (id)initWithHealthDaemon:(id)arg1;
+- (id)initWithProfile:(id)arg1;
 
 @end
 

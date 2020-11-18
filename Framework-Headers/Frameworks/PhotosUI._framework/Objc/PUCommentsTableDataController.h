@@ -7,21 +7,20 @@
 #import <objc/NSObject.h>
 
 #import <PhotosUI/PLCloudCommentsChangeObserver-Protocol.h>
-#import <PhotosUI/PLPhotoCommentEntryViewDelegate-Protocol.h>
+#import <PhotosUI/PUPhotoCommentEntryViewDelegate-Protocol.h>
 #import <PhotosUI/UITableViewDataSource-Protocol.h>
 #import <PhotosUI/UITableViewDelegate-Protocol.h>
 
-@class NSCache, NSString, PHAsset, PLCloudSharedComment, PLManagedAsset, PLPhotoCommentEntryView, UITableView;
+@class NSCache, NSString, PHAsset, PLCloudSharedComment, PLManagedAsset, PUPhotoCommentEntryView, UITableView;
 @protocol PUCommentsTableDataControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PUCommentsTableDataController : NSObject <PLCloudCommentsChangeObserver, PLPhotoCommentEntryViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface PUCommentsTableDataController : NSObject <PLCloudCommentsChangeObserver, PUPhotoCommentEntryViewDelegate, UITableViewDelegate, UITableViewDataSource>
 {
     NSCache *_commentsHeightCache;
-    PLPhotoCommentEntryView *_entryView;
+    PUPhotoCommentEntryView *_entryView;
     BOOL _editing;
     BOOL _shouldUseCompactCommentSeparators;
-    BOOL __beginningToEdit;
     UITableView *_tableView;
     PHAsset *_asset;
     id<PUCommentsTableDataControllerDelegate> _delegate;
@@ -29,7 +28,6 @@ __attribute__((visibility("hidden")))
     PLCloudSharedComment *_justInsertedComment;
 }
 
-@property (nonatomic, getter=_isBeginningToEdit, setter=_setBeginningToEdit:) BOOL _beginningToEdit; // @synthesize _beginningToEdit=__beginningToEdit;
 @property (strong, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUCommentsTableDataControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -38,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PLCloudSharedComment *justInsertedComment; // @synthesize justInsertedComment=_justInsertedComment;
 @property (strong, nonatomic) PLManagedAsset *managedAsset; // @synthesize managedAsset=_managedAsset;
+@property (readonly, nonatomic) double minimumHeight;
 @property (nonatomic) BOOL shouldUseCompactCommentSeparators; // @synthesize shouldUseCompactCommentSeparators=_shouldUseCompactCommentSeparators;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;

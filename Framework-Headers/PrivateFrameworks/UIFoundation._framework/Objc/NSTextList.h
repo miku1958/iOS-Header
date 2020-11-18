@@ -8,10 +8,11 @@
 
 #import <UIFoundation/NSCoding-Protocol.h>
 #import <UIFoundation/NSCopying-Protocol.h>
+#import <UIFoundation/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface NSTextList : NSObject <NSCoding, NSCopying>
+@interface NSTextList : NSObject <NSSecureCoding, NSCoding, NSCopying>
 {
     NSString *_markerFormat;
     unsigned long long _listFlags;
@@ -25,6 +26,7 @@
 
 + (id)_standardMarkerAttributesForAttributes:(id)arg1;
 + (void)initialize;
++ (BOOL)supportsSecureCoding;
 - (BOOL)_isOrdered;
 - (id)_markerAtIndex:(unsigned long long)arg1 inText:(id)arg2;
 - (id)_markerForMarkerFormat:(id)arg1 itemNumber:(long long)arg2 isNumbered:(BOOL *)arg3 substitutionStart:(unsigned long long *)arg4 end:(unsigned long long *)arg5 specifierStart:(unsigned long long *)arg6 end:(unsigned long long *)arg7;

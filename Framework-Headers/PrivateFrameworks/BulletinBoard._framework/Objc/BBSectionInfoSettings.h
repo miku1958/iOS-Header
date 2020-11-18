@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/NSCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
@@ -18,10 +18,12 @@
     BOOL _showsMessagePreview;
     unsigned long long _alertType;
     unsigned long long _pushSettings;
+    long long _carPlaySetting;
 }
 
 @property (nonatomic) unsigned long long alertType; // @synthesize alertType=_alertType;
 @property (nonatomic) BOOL allowsNotifications; // @synthesize allowsNotifications=_allowsNotifications;
+@property (nonatomic) long long carPlaySetting; // @synthesize carPlaySetting=_carPlaySetting;
 @property (nonatomic) unsigned long long pushSettings; // @synthesize pushSettings=_pushSettings;
 @property (nonatomic) BOOL showsInLockScreen; // @synthesize showsInLockScreen=_showsInLockScreen;
 @property (nonatomic) BOOL showsInNotificationCenter; // @synthesize showsInNotificationCenter=_showsInNotificationCenter;
@@ -32,7 +34,6 @@
 + (BOOL)supportsSecureCoding;
 - (id)_alertTypeDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
@@ -40,7 +41,6 @@
 - (id)initWithDefaultsForSectionType:(long long)arg1;
 - (id)initWithManagedBundleSettingsDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)uniqueIdentifier;
 
 @end
 

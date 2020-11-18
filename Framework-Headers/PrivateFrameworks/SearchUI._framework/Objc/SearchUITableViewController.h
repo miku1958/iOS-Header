@@ -4,31 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <SearchUI/SearchUIKeyboardableTableViewController.h>
 
-#import <SearchUI/SearchUICardViewController-Protocol.h>
-
-@class NSString;
-@protocol SearchUIViewControllerDelegate;
-
-@interface SearchUITableViewController : UITableViewController <SearchUICardViewController>
+@interface SearchUITableViewController : SearchUIKeyboardableTableViewController
 {
-    id<SearchUIViewControllerDelegate> _searchUIViewControllerDelegate;
-    id<SearchUIViewControllerDelegate> _searchUICardViewControllerDelegate;
+    BOOL _insetSectionsOverride;
+    BOOL _hasCheckedInsetSectionsOverride;
     unsigned long long _style;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (weak, nonatomic) id<SearchUIViewControllerDelegate> searchUICardViewControllerDelegate; // @synthesize searchUICardViewControllerDelegate=_searchUICardViewControllerDelegate;
-@property (weak, nonatomic) id<SearchUIViewControllerDelegate> searchUIViewControllerDelegate; // @synthesize searchUIViewControllerDelegate=_searchUIViewControllerDelegate;
+@property BOOL hasCheckedInsetSectionsOverride; // @synthesize hasCheckedInsetSectionsOverride=_hasCheckedInsetSectionsOverride;
+@property BOOL insetSectionsOverride; // @synthesize insetSectionsOverride=_insetSectionsOverride;
 @property unsigned long long style; // @synthesize style=_style;
-@property (readonly) Class superclass;
 
-- (void).cxx_destruct;
-- (id)initWithStyle:(unsigned long long)arg1;
-- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (id)initWithUIStyle:(unsigned long long)arg1;
+- (void)setAllowsHeaderViewsToFloat:(BOOL)arg1;
 
 @end
 

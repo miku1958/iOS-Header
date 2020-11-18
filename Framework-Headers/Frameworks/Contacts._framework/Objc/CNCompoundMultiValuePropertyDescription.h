@@ -6,13 +6,15 @@
 
 #import <Contacts/CNMultiValuePropertyDescription.h>
 
-__attribute__((visibility("hidden")))
+@class NSArray;
+
 @interface CNCompoundMultiValuePropertyDescription : CNMultiValuePropertyDescription
 {
 }
 
 @property (readonly, nonatomic) CDUnknownBlockType dictionaryTransform;
 @property (readonly, nonatomic) CDUnknownBlockType fromDictionaryTransform;
+@property (readonly, nonatomic) NSArray *summarizationKeys;
 
 - (CDUnknownBlockType)fromPlistTransform;
 - (CDUnknownBlockType)plistTransform;

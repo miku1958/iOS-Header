@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     unsigned int _element;
     AVAudioFormat *_format;
     NSArray *_supportedChannelLayoutTags;
+    BOOL _removingObserverWithContext;
 }
 
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEnabled;
 - (void)propertyChanged:(id)arg1;
+- (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2 context:(void *)arg3;
 - (void)setEnabled:(BOOL)arg1;
 - (BOOL)setFormat:(id)arg1 error:(id *)arg2;

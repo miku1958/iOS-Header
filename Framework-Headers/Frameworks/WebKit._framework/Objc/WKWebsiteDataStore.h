@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
+#import <WebKit/NSCoding-Protocol.h>
 #import <WebKit/WKObject-Protocol.h>
 
 @class NSString;
 
-@interface WKWebsiteDataStore : NSObject <WKObject>
+@interface WKWebsiteDataStore : NSObject <WKObject, NSCoding>
 {
     struct ObjectStorage<API::WebsiteDataStore> _websiteDataStore;
 }
 
 @property (readonly) struct Object *_apiObject;
+@property (nonatomic, setter=_setResourceLoadStatisticsEnabled:) BOOL _resourceLoadStatisticsEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -25,8 +27,11 @@
 + (id)allWebsiteDataTypes;
 + (id)defaultDataStore;
 + (id)nonPersistentDataStore;
+- (void)_fetchDataRecordsOfTypes:(id)arg1 withOptions:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (void)fetchDataRecordsOfTypes:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)initWithCoder:(id)arg1;
 - (void)removeDataOfTypes:(id)arg1 forDataRecords:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)removeDataOfTypes:(id)arg1 modifiedSince:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 

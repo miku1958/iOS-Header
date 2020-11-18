@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SpringBoardUI/NSObject-Protocol.h>
+#import <SpringBoardUI/SBUIOptionalLegibility-Protocol.h>
 
 @class _UILegibilitySettings;
 
-@protocol SBUILegibility <NSObject>
-- (void)setStrength:(double)arg1;
-- (void)updateForChangedSettings:(_UILegibilitySettings *)arg1;
+@protocol SBUILegibility <SBUIOptionalLegibility>
+
+@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property (nonatomic) double strength;
+
 @end
 

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class GSPermanentStorage, NSDate, NSString, NSURL;
+@class GSPermanentStorage, NSDate, NSPersonNameComponents, NSString, NSURL;
 @protocol NSCopying><NSSecureCoding;
 
 @interface BRNonLocalVersion : NSObject
@@ -17,7 +17,7 @@
     unsigned long long _size;
     NSDate *_modificationDate;
     NSString *_lastEditorDeviceName;
-    NSString *_lastEditorFormattedName;
+    NSPersonNameComponents *_lastEditorNameComponents;
     BOOL _hasThumbnail;
     GSPermanentStorage *_versionsStore;
     long long _sandboxHandle;
@@ -29,16 +29,18 @@
 @property (nonatomic) BOOL hasThumbnail; // @synthesize hasThumbnail=_hasThumbnail;
 @property (readonly, nonatomic) BOOL isLatestVersion;
 @property (readonly, nonatomic) NSString *lastEditorDeviceName; // @synthesize lastEditorDeviceName=_lastEditorDeviceName;
-@property (readonly, nonatomic) NSString *lastEditorFormattedName; // @synthesize lastEditorFormattedName=_lastEditorFormattedName;
+@property (readonly, nonatomic) NSString *lastEditorFormattedName;
+@property (readonly, nonatomic) NSPersonNameComponents *lastEditorNameComponents; // @synthesize lastEditorNameComponents=_lastEditorNameComponents;
 @property (readonly, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (readonly, nonatomic) id<NSCopying><NSSecureCoding> persistentIdentifier;
 @property (readonly, nonatomic) unsigned long long size; // @synthesize size=_size;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 
 + (id)listVersionsOfDocumentAtURL:(id)arg1;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
-- (id)initWithURL:(id)arg1 physicalURL:(id)arg2 size:(id)arg3 extension:(id)arg4 etag:(id)arg5 hasThumbnail:(BOOL)arg6 displayName:(id)arg7 lastEditorDeviceName:(id)arg8 lastEditorFormattedName:(id)arg9 modificationDate:(id)arg10 versionsStore:(id)arg11;
+- (id)initWithURL:(id)arg1 physicalURL:(id)arg2 size:(id)arg3 extension:(id)arg4 etag:(id)arg5 hasThumbnail:(BOOL)arg6 displayName:(id)arg7 lastEditorDeviceName:(id)arg8 lastEditorNameComponents:(id)arg9 modificationDate:(id)arg10 versionsStore:(id)arg11;
 
 @end
 

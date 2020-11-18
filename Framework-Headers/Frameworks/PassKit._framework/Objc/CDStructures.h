@@ -10,6 +10,25 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CATransform3D {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+    double _field7;
+    double _field8;
+    double _field9;
+    double _field10;
+    double _field11;
+    double _field12;
+    double _field13;
+    double _field14;
+    double _field15;
+    double _field16;
+};
+
 struct CGPoint {
     double x;
     double y;
@@ -25,6 +44,11 @@ struct CGSize {
     double height;
 };
 
+struct CLLocationCoordinate2D {
+    double _field1;
+    double _field2;
+};
+
 struct PKEdgeInsets {
     double top;
     double left;
@@ -38,8 +62,13 @@ typedef struct {
     unsigned int _field1[8];
 } CDStruct_6ad76789;
 
+// Ambiguous groups
 typedef struct {
-    double _field1;
-    double _field2;
-} CDStruct_c3b9c2ee;
+    unsigned int amount:1;
+    unsigned int type:1;
+} CDStruct_9fb36b4c;
+
+typedef struct {
+    unsigned int status:1;
+} CDStruct_47fe53f2;
 

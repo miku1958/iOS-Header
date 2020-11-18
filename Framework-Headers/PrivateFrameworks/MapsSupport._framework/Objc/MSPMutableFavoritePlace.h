@@ -8,18 +8,19 @@
 
 #import <MapsSupport/MSPFavoritePlace-Protocol.h>
 
-@class NSString;
-@protocol GEOMapItemPrivate;
+@class NSString, NSUUID;
+@protocol GEOMapItem;
 
 @interface MSPMutableFavoritePlace : MSPMutableFavorite <MSPFavoritePlace>
 {
 }
 
-@property (nonatomic) CDStruct_c3b9c2ee coordinateOfDroppedPin;
+@property (nonatomic) struct CLLocationCoordinate2D coordinateOfDroppedPin;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) id<GEOMapItemPrivate> geoMapItem;
+@property (strong, nonatomic) id<GEOMapItem> geoMapItem;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSUUID *storageIdentifier;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title;
 
@@ -28,7 +29,7 @@
 + (Class)mutableObjectClass;
 + (id)mutableObjectProtocol;
 - (id)initWithBookmarkStorage:(id)arg1;
-- (id)transferToImmutableWithError:(out id *)arg1;
+- (id)transferToImmutableIfValidWithError:(out id *)arg1;
 
 @end
 

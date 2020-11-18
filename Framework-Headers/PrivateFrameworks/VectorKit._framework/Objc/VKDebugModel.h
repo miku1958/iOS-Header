@@ -15,8 +15,10 @@ __attribute__((visibility("hidden")))
 {
     BOOL _geocentric;
     float _fontSize;
-    struct unique_ptr<ggl::FragmentedPool<ggl::Debug::Shader::Setup>, std::__1::default_delete<ggl::FragmentedPool<ggl::Debug::Shader::Setup>>> _debugShaderSetupPool;
-    struct unique_ptr<ggl::FragmentedPool<ggl::DebugPoints::Shader::Setup>, std::__1::default_delete<ggl::FragmentedPool<ggl::DebugPoints::Shader::Setup>>> _debugPointsShaderSetupPool;
+    struct shared_ptr<ggl::Debug::BasePipelineState> _debugPipelineState;
+    struct shared_ptr<ggl::DebugPoints::BasePipelineState> _debugPointsPipelineState;
+    struct unique_ptr<ggl::FragmentedPool<ggl::Debug::BasePipelineSetup>, std::__1::default_delete<ggl::FragmentedPool<ggl::Debug::BasePipelineSetup>>> _debugPipelineSetupPool;
+    struct unique_ptr<ggl::FragmentedPool<ggl::DebugPoints::BasePipelineSetup>, std::__1::default_delete<ggl::FragmentedPool<ggl::DebugPoints::BasePipelineSetup>>> _debugPointsPipelineSetupPool;
     struct unique_ptr<ggl::FragmentedPool<ggl::RenderItem>, std::__1::default_delete<ggl::FragmentedPool<ggl::RenderItem>>> _debugRenderItemPool;
     struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _debugLinesRenderState;
     struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _debugPointsRenderState;
@@ -32,15 +34,15 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)appendDebugTileCommandsToBuffer:(struct CommandBuffer *)arg1 forMapTile:(id)arg2 fromLayer:(unsigned long long)arg3 withContext:(id)arg4 withConsole:(struct DebugConsole *)arg5;
+- (void)appendDebugTileCommandsToBuffer:(struct CommandBuffer *)arg1 forMapTile:(id)arg2 fromLayer:(unsigned long long)arg3 withContext:(struct LayoutContext *)arg4 withConsole:(struct DebugConsole *)arg5;
 - (void)dealloc;
 - (void)didReceiveMemoryWarning:(BOOL)arg1;
 - (void)flushPools;
-- (void)gglLayoutScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
-- (id)init;
+- (void)gglLayoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
+- (id)initWithTarget:(id)arg1 sharedResources:(id)arg2;
 - (unsigned long long)mapLayerPosition;
 - (void)reset;
-- (void)resetPools:(id)arg1;
+- (void)resetPools:(struct LayoutContext *)arg1;
 - (BOOL)shouldLayoutWithoutStyleManager;
 - (shared_ptr_a5e35864)unitRectMesh;
 

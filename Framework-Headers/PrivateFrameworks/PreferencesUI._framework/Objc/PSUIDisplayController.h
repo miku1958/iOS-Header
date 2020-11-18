@@ -8,33 +8,54 @@
 
 #import <PreferencesUI/PSMagnifyControllerDelegate-Protocol.h>
 
-@class CBClient, NSDateFormatter;
+@class CBClient, NSArray, NSDateFormatter, NSDictionary, NSMutableDictionary;
 
 @interface PSUIDisplayController : PSListController <PSMagnifyControllerDelegate>
 {
+    NSArray *_autoLockValues;
+    NSDictionary *_autoLockTitleDictionary;
+    NSMutableDictionary *_localizedAutoLockTitleDictionary;
     CBClient *_brightnessClient;
     NSDateFormatter *_timeFormatter;
 }
 
 - (void).cxx_destruct;
 - (void)_cleanupTransactionRef;
+- (void)_localizeAutoLockTitles;
+- (id)autoBrightness:(id)arg1;
 - (id)backlightValue:(id)arg1;
 - (id)blueLightSchedule:(id)arg1;
 - (id)boldTextEnabledForSpecifier:(id)arg1;
 - (void)brightnessChangedExternally;
 - (id)controllerForSpecifier:(id)arg1;
 - (void)dealloc;
+- (id)getAutoWhiteBalanceEnabled:(id)arg1;
 - (void)handleBlueLightStatusChanged:(CDStruct_f4084295 *)arg1;
 - (void)handleBrightnessChangedNotification:(id)arg1;
+- (id)init;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)localizedMagnifyModeName;
 - (id)localizedTimeForTime:(CDStruct_1ef3fb1f)arg1;
+- (id)lockGroupFooter;
+- (id)locksAndUnlocksWithCase:(id)arg1;
 - (void)magnifyController:(id)arg1 didFinishWithDisplayMode:(id)arg2;
 - (void)presentModalMagnifyController;
+- (void)profileNotification:(id)arg1;
 - (void)reloadBlueLightSpecifiers;
+- (id)screenLock:(id)arg1;
+- (void)setAutoBrightness:(id)arg1 specifier:(id)arg2;
+- (void)setAutoWhiteBalanceEnabled:(id)arg1 forSpecifier:(id)arg2;
 - (void)setBacklightValue:(id)arg1 specifier:(id)arg2;
 - (void)setBoldTextEnabled:(id)arg1 specifier:(id)arg2;
+- (void)setLocksAndUnlocksWithCase:(id)arg1 specifier:(id)arg2;
+- (void)setScreenLock:(id)arg1 specifier:(id)arg2;
+- (BOOL)shouldShowAutoLock;
+- (BOOL)shouldShowCaseLockOption;
+- (BOOL)shouldShowRaiseToWake;
+- (void)showAlertToDisableAccessibilityFilters:(CDUnknownBlockType)arg1 cancel:(CDUnknownBlockType)arg2;
 - (id)specifiers;
+- (void)updateAutoLockSpecifier;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

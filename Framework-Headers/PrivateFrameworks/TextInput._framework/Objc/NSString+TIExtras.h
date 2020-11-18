@@ -15,6 +15,7 @@
 + (struct USet *)_ideographSet;
 + (struct USet *)_japaneseLetterSet;
 + (struct USet *)_nonFullwidthLettersAndNumbersSet;
++ (struct USet *)_nonFullwidthLettersAndSymbolsSet;
 + (struct USet *)_nonHiraganaKatakanaOrBopomofoSet;
 + (struct USet *)_nonHiraganaOrKatakanaSet;
 + (struct USet *)_nonIdeographicCharacterSet;
@@ -33,10 +34,12 @@
 - (BOOL)_containsEmoji;
 - (BOOL)_containsFullwidthLettersAndNumbers;
 - (BOOL)_containsFullwidthLettersAndNumbersOnly;
+- (BOOL)_containsFullwidthLettersAndSymbols;
 - (BOOL)_containsHiraganaKatakanaOrBopomofo;
 - (BOOL)_containsHiraganaOnly;
 - (BOOL)_containsHiraganaOrKatakana;
 - (BOOL)_containsIdeographicCharacters;
+- (BOOL)_containsIdeographsOrBopomofoOnly;
 - (BOOL)_containsJapanese;
 - (BOOL)_containsJapaneseOnly;
 - (BOOL)_containsKatakanaOrKanji;
@@ -62,6 +65,7 @@
 - (BOOL)_isSpaceOrReturn;
 - (BOOL)_isTripledPunctuation;
 - (id)_lastGrapheme;
+- (unsigned int)_lastLongCharacter;
 - (BOOL)_looksLikeEmailAddress;
 - (BOOL)_looksLikeNumberInput;
 - (BOOL)_looksLikeURL;
@@ -69,6 +73,7 @@
 - (struct _NSRange)_rangeOfCharacterClusterAtIndex:(unsigned long long)arg1 withClusterOffset:(long long)arg2;
 - (struct _NSRange)_rangeOfLongCharacterAtIndex:(unsigned long long)arg1;
 - (struct _NSRange)_rangeOfString:(id)arg1 fromLocation:(unsigned long long)arg2;
+- (void)_reverseEnumerateLongCharactersInRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (BOOL)_shouldBePaddedWithSpaces;
 - (id)_stringByApplyingTransform:(id)arg1;
 - (id)_stringByComposingDiacriticsLogicalOrder:(BOOL)arg1 allowedCharacters:(CDUnknownBlockType)arg2;

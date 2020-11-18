@@ -27,9 +27,11 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCLLocation:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLat:(double)arg1 Lon:(double)arg2 Uncertainty:(double)arg3 confidence:(double)arg4 andTimestamp_s:(double)arg5;
-- (id)initWithLocation:(id)arg1;
+- (id)initWithLatitude:(double)arg1 longitude:(double)arg2 uncertainty:(double)arg3;
+- (id)initWithRTLocation:(id)arg1;
 
 @end
 

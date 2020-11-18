@@ -6,13 +6,13 @@
 
 #import <AuthKit/NSObject-Protocol.h>
 
-@class NSData, NSString;
+@class AKDevice, NSData, NSString;
 
 @protocol AKAnisetteProvisioningDaemonProtocol <NSObject>
-- (void)eraseAnisetteWithCompletion:(void (^)(BOOL, NSError *))arg1;
-- (void)fetchAnisetteDataAndProvisionIfNecessary:(BOOL)arg1 withCompletion:(void (^)(AKAnisetteData *, NSError *))arg2;
-- (void)legacyAnisetteDataForDSID:(NSString *)arg1 withCompletion:(void (^)(AKAnisetteData *, NSError *))arg2;
-- (void)provisionAnisetteWithCompletion:(void (^)(BOOL, NSError *))arg1;
-- (void)syncAnisetteWithSIMData:(NSData *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)eraseAnisetteForDevice:(AKDevice *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)fetchAnisetteDataAndProvisionIfNecessary:(BOOL)arg1 device:(AKDevice *)arg2 completion:(void (^)(AKAnisetteData *, NSError *))arg3;
+- (void)legacyAnisetteDataForDSID:(NSString *)arg1 device:(AKDevice *)arg2 completion:(void (^)(AKAnisetteData *, NSError *))arg3;
+- (void)provisionAnisetteForDevice:(AKDevice *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)syncAnisetteWithSIMData:(NSData *)arg1 device:(AKDevice *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 @end
 

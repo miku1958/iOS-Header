@@ -51,6 +51,7 @@
 - (BOOL)_distillCursorFacetDefinitions:(id)arg1;
 - (BOOL)_distillFonts:(id)arg1;
 - (BOOL)_distillNamedElements:(id)arg1;
+- (id)_filterRenditions:(id)arg1;
 - (id)_keyDataFromKey:(const struct _renditionkeytoken *)arg1;
 - (id)_keySpecsToRemoveFromKeySpecs:(id)arg1;
 - (void)_logError:(id)arg1;
@@ -67,6 +68,7 @@
 - (BOOL)_setupWithOutputPath:(id)arg1 attemptIncremental:(BOOL)arg2;
 - (BOOL)_sortRenditionEntries;
 - (void)_storeRenditions;
+- (id)_textureFaceExclusionPredicate;
 - (BOOL)assetStoreWriteToDisk;
 - (void)beginDistillWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)cancelDistill;

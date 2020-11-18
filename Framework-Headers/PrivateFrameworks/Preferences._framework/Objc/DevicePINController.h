@@ -53,10 +53,12 @@
 - (void)_adjustUnblockTime;
 - (BOOL)_asyncSetPinCompatible;
 - (void)_clearBlockedState;
+- (id)_createAndShowAnimatedNavBarSpinner;
 - (void)_dismiss;
 - (int)_getScreenType;
 - (void)_invalidateSEPLockInfo;
 - (void)_preflightPasswordForWeakness:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_removePinWithOldPassword:(id)arg1;
 - (void)_rereadBlockedState;
 - (double)_secondsToBlockForFailedAttempts:(long long)arg1;
 - (id)_sepLockInfo;

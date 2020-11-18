@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *supportedCommands; // @synthesize supportedCommands=_supportedCommands;
 
++ (Class)supportedCommandType;
 - (void)addSupportedCommand:(id)arg1;
 - (void)clearSupportedCommands;
 - (void)copyTo:(id)arg1;

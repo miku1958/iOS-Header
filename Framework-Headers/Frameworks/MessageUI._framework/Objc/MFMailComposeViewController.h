@@ -21,6 +21,7 @@
 + (BOOL)canSendMail;
 + (BOOL)canSendMailSourceAccountManagement:(int)arg1;
 + (BOOL)hasAutosavedMessageWithIdentifier:(id)arg1;
++ (BOOL)isMailDropConfigured;
 + (unsigned long long)maximumAttachmentSize;
 + (void)removeAutosavedMessageWithIdentifier:(id)arg1;
 - (void)__viewControllerWillBePresented:(BOOL)arg1;

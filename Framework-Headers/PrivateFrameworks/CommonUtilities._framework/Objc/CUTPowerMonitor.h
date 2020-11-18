@@ -24,7 +24,7 @@
 
 @property (readonly, nonatomic) double batteryPercentRemaining;
 @property (nonatomic) double currentLevel; // @synthesize currentLevel=_currentLevel;
-@property (nonatomic) BOOL isExternalPowerConnected; // @synthesize isExternalPowerConnected=_isExternalPowerConnected;
+@property (nonatomic, setter=setExternalPowerConnected:) BOOL isExternalPowerConnected; // @synthesize isExternalPowerConnected=_isExternalPowerConnected;
 
 + (id)sharedInstance;
 - (void)_handlePowerChangedNotificationWithMessageType:(unsigned int)arg1 notificationID:(void *)arg2;
@@ -33,7 +33,6 @@
 - (void)dealloc;
 - (id)init;
 - (void)removeDelegate:(id)arg1;
-- (void)setExternalPowerConnected:(BOOL)arg1;
 - (void)updateBatteryConnectedStateWithBatteryEntry:(unsigned int)arg1;
 - (void)updateBatteryLevelWithBatteryEntry:(unsigned int)arg1;
 

@@ -13,9 +13,9 @@
     BOOL _initialHandlerCalled;
     BOOL _includeDeletedObjects;
     CDUnknownBlockType _updateHandler;
-    CDUnknownBlockType _completionHandler;
     HKQueryAnchor *_anchor;
     unsigned long long _limit;
+    CDUnknownBlockType _completionHandler;
 }
 
 @property (strong, nonatomic) HKQueryAnchor *anchor; // @synthesize anchor=_anchor;

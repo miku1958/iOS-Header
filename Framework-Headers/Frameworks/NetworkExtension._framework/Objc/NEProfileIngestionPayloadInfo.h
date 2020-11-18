@@ -11,7 +11,7 @@
 #import <NetworkExtension/NSCopying-Protocol.h>
 #import <NetworkExtension/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSDate, NSString;
 
 @interface NEProfileIngestionPayloadInfo : NSObject <NEPrettyDescription, NEConfigurationLegacySupport, NSSecureCoding, NSCopying>
 {
@@ -23,6 +23,9 @@
     NSString *_profileOrganization;
     NSString *_profileIdentifier;
     NSString *_profileUUID;
+    NSDate *_profileIngestionDate;
+    NSString *_systemVersion;
+    long long _profileSource;
 }
 
 @property BOOL applicationCreated; // @synthesize applicationCreated=_applicationCreated;
@@ -31,8 +34,11 @@
 @property (copy) NSString *payloadProtocolType; // @synthesize payloadProtocolType=_payloadProtocolType;
 @property (copy) NSString *payloadUUID; // @synthesize payloadUUID=_payloadUUID;
 @property (copy) NSString *profileIdentifier; // @synthesize profileIdentifier=_profileIdentifier;
+@property (copy) NSDate *profileIngestionDate; // @synthesize profileIngestionDate=_profileIngestionDate;
 @property (copy) NSString *profileOrganization; // @synthesize profileOrganization=_profileOrganization;
+@property long long profileSource; // @synthesize profileSource=_profileSource;
 @property (copy) NSString *profileUUID; // @synthesize profileUUID=_profileUUID;
+@property (copy) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -40,6 +46,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initFromLegacyDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

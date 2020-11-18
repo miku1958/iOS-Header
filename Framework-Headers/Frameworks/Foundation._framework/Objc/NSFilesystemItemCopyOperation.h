@@ -13,16 +13,17 @@ __attribute__((visibility("hidden")))
 {
     NSString *_destinationPath;
     NSMutableSet *_skippedPaths;
+    unsigned long long _options;
 }
 
 + (id)_errorWithErrno:(int)arg1 sourcePath:(id)arg2 destinationPath:(id)arg3;
-+ (id)filesystemItemCopyOperationWithSourcePath:(id)arg1 destinationPath:(id)arg2;
++ (id)filesystemItemCopyOperationWithSourcePath:(id)arg1 destinationPath:(id)arg2 options:(unsigned long long)arg3;
 - (void)_handleFTSEntry:(struct _ftsent *)arg1;
 - (BOOL)_shouldCopyItemAtPath:(const char *)arg1 toPath:(const char *)arg2;
 - (BOOL)_shouldProceedAfterErrno:(int)arg1 copyingItemAtPath:(const char *)arg2 toPath:(const char *)arg3;
 - (BOOL)_validatePaths:(id *)arg1;
 - (void)dealloc;
-- (void)initWithSourcePath:(id)arg1 destinationPath:(id)arg2;
+- (void)initWithSourcePath:(id)arg1 destinationPath:(id)arg2 options:(unsigned long long)arg3;
 - (BOOL)shouldCopyItemAtPath:(id)arg1 toPath:(id)arg2;
 - (BOOL)shouldProceedAfterError:(id)arg1 copyingItemAtPath:(id)arg2 toPath:(id)arg3;
 

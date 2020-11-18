@@ -6,7 +6,7 @@
 
 #import <Foundation/NSXPCConnection.h>
 
-@class MFFuture, NSLock, NSObject, NSXPCInterface, Protocol;
+@class MFPromise, NSLock, NSObject, NSXPCInterface, Protocol;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 {
     NSLock *_lock;
     NSObject<OS_dispatch_queue> *_queue;
-    MFFuture *_connectionFuture;
+    MFPromise *_connectionPromise;
     NSXPCInterface *_remoteObjectInterface;
     NSXPCInterface *_exportedInterface;
     id _exportedObject;
@@ -30,10 +30,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL shouldLaunchMobileMail; // @synthesize shouldLaunchMobileMail=_shouldLaunchMobileMail;
 
 - (id)_connection;
-- (id)_connectionForFuture:(id)arg1;
-- (void)_finishFuture:(id)arg1 withConnection:(id)arg2 error:(id)arg3;
-- (void)_invalidateFuture:(id)arg1;
-- (void)_invokeInterruptionHandlerForFuture:(id)arg1;
+- (id)_connectionForPromise:(id)arg1;
+- (void)_finishPromise:(id)arg1 withConnection:(id)arg2 error:(id)arg3;
+- (void)_invalidatePromise:(id)arg1;
+- (void)_invokeInterruptionHandlerForPromise:(id)arg1;
 - (CDUnknownBlockType)_nts_wrappedInterruptionHandler;
 - (void)_queue_invokeInvalidationHandler;
 - (void)_sendInvocation:(id)arg1 remoteInterface:(id)arg2 remoteProxy:(id)arg3 errorHandler:(CDUnknownBlockType)arg4;

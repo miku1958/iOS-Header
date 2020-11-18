@@ -6,14 +6,15 @@
 
 #import <iTunesStore/ISOperation.h>
 
-@class ISDataProvider, ISURLRequestPerformance, NSArray, NSCountedSet, NSMutableData, NSURLConnection, NSURLRequest, NSURLResponse, SSAuthenticationContext, SSMutableURLRequestProperties, SSURLRequestProperties;
+#import <iTunesStore/SSURLSessionManagerDelegate-Protocol.h>
+
+@class ISDataProvider, ISURLRequestPerformance, NSArray, NSCountedSet, NSData, NSMutableData, NSString, NSURLCache, NSURLRequest, NSURLResponse, NSURLSessionTask, SSAuthenticationContext, SSMutableURLRequestProperties, SSURLRequestProperties, SSURLSessionManager;
 @protocol ISURLOperationDelegate;
 
-@interface ISURLOperation : ISOperation
+@interface ISURLOperation : ISOperation <SSURLSessionManagerDelegate>
 {
     NSURLRequest *_activeURLRequest;
     SSAuthenticationContext *_authenticationContext;
-    NSURLConnection *_connection;
     NSMutableData *_dataBuffer;
     ISDataProvider *_dataProvider;
     long long _networkRetryCount;
@@ -21,6 +22,8 @@
     SSMutableURLRequestProperties *_requestProperties;
     NSURLResponse *_response;
     BOOL _shouldSetCookies;
+    SSURLSessionManager *_urlSessionManager;
+    NSURLSessionTask *_urlSessionTask;
     BOOL _usesPrivateCookieStore;
     ISURLRequestPerformance *_performanceMetrics;
     BOOL _loadsHTTPFailures;
@@ -28,23 +31,41 @@
     NSArray *_passThroughErrors;
 }
 
+@property (readonly, nonatomic) NSURLCache *URLCache;
+@property (readonly, nonatomic) NSString *URLCacheID;
 @property (getter=_loadsHTTPFailures, setter=_setLoadsHTTPFailures:) BOOL _loadsHTTPFailures; // @synthesize _loadsHTTPFailures;
 @property (getter=_shouldSetCookies, setter=_setShouldSetCookies:) BOOL _shouldSetCookies; // @synthesize _shouldSetCookies;
 @property (getter=_usesPrivateCookieStore, setter=_setUsesPrivateCookieStore:) BOOL _usesPrivateCookieStore; // @synthesize _usesPrivateCookieStore;
 @property (strong) SSAuthenticationContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
 @property (strong) ISDataProvider *dataProvider; // @synthesize dataProvider=_dataProvider;
+@property (readonly, copy) NSString *debugDescription;
 @property id<ISURLOperationDelegate> delegate; // @dynamic delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *passThroughErrors; // @synthesize passThroughErrors=_passThroughErrors;
 @property (readonly) ISURLRequestPerformance *performanceMetrics;
 @property (copy) SSURLRequestProperties *requestProperties;
 @property (strong) NSURLResponse *response; // @synthesize response=_response;
+@property (readonly, nonatomic) BOOL shouldDisableCellular;
+@property (readonly, nonatomic) BOOL shouldRequireCellular;
+@property (readonly, nonatomic) BOOL shouldSetCookies;
+@property (readonly, nonatomic) NSData *sourceAppAuditTokenData;
+@property (readonly, nonatomic) NSString *sourceAppBundleID;
+@property (readonly) Class superclass;
 @property BOOL tracksPerformanceMetrics;
 @property (nonatomic, getter=isUploadProgressRequested) BOOL uploadProgressRequested; // @synthesize uploadProgressRequested=_uploadProgressRequested;
 
++ (struct __CFURLStorageSession *)_sharedCacheStorageSession;
 + (id)copyUserAgent;
-+ (BOOL)isSharedCacheStorageSession:(struct __CFURLStorageSession *)arg1;
-+ (struct __CFURLStorageSession *)newSharedCacheStorageSession;
 + (struct _CFURLCache *)sharedCFURLCache;
+- (void).cxx_destruct;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithEvent:(id)arg3 error:(id)arg4;
+- (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 task:(id)arg2 didSendBodyData:(long long)arg3 totalBytesSent:(long long)arg4 totalBytesExpectedToSend:(long long)arg5;
+- (void)URLSession:(id)arg1 task:(id)arg2 needNewBodyStream:(CDUnknownBlockType)arg3;
+- (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_accountIdentifier;
 - (id)_activeURL;
 - (id)_activeURLRequest;
@@ -53,12 +74,14 @@
 - (id)_copyConnectionPropertiesWithDataConnectionServiceType:(struct __CFString *)arg1;
 - (id)_copyQueryStringDictionaryForRedirect:(id)arg1;
 - (id)_decodedDataForData:(id)arg1;
+- (long long)_defaultAuthChallengeDispositionForChallenge:(id)arg1;
 - (id)_errorWithDefaultStringsForError:(id)arg1;
 - (id)_errorWithDomain:(id)arg1 code:(long long)arg2;
 - (void)_handleFinishedLoading;
 - (void)_handleReceivedData:(id)arg1;
 - (void)_handleReceivedResponse:(id)arg1;
 - (id)_handleRedirectRequest:(id)arg1 response:(id)arg2;
+- (BOOL)_isExternalURL:(id)arg1;
 - (BOOL)_isPassThroughStatus:(long long)arg1;
 - (void)_logRequest:(id)arg1;
 - (void)_logResponseBody:(id)arg1;
@@ -79,21 +102,15 @@
 - (BOOL)_shouldFollowRedirectWithRequest:(id)arg1 error:(id *)arg2;
 - (void)_stopConnection;
 - (void)_stopIfCancelled;
+- (id)_stringForCachePolicy:(unsigned long long)arg1;
 - (void)_updateProgress;
 - (BOOL)_validateContentLength:(long long)arg1 error:(id *)arg2;
 - (void)_willSendRequest:(id)arg1;
-- (void)connection:(id)arg1 didFailWithError:(id)arg2;
-- (void)connection:(id)arg1 didReceiveData:(id)arg2;
-- (void)connection:(id)arg1 didReceiveResponse:(id)arg2;
-- (void)connection:(id)arg1 didSendBodyData:(long long)arg2 totalBytesWritten:(long long)arg3 totalBytesExpectedToWrite:(long long)arg4;
-- (id)connection:(id)arg1 needNewBodyStream:(id)arg2;
-- (id)connection:(id)arg1 willSendRequest:(id)arg2 redirectResponse:(id)arg3;
-- (void)connection:(id)arg1 willSendRequestForAuthenticationChallenge:(id)arg2;
-- (void)connectionDidFinishLoading:(id)arg1;
 - (void)dealloc;
 - (BOOL)handleRedirectFromDataProvider:(id)arg1 error:(id *)arg2;
 - (void)handleResponse:(id)arg1;
 - (id)init;
+- (id)initWithSessionManager:(id)arg1;
 - (id)newRequestWithURL:(id)arg1;
 - (id)request;
 - (void)run;

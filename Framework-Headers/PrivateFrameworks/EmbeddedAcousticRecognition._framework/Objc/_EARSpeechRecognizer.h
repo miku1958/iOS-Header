@@ -6,33 +6,50 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSString, _EARFormatter, _EARSpeechModelInfo;
+@class NSData, NSDictionary, NSString, _EARFormatter, _EARSpeechModelInfo, _EARSpeechRecognitionAudioBuffer;
 @protocol OS_dispatch_queue;
 
 @interface _EARSpeechRecognizer : NSObject
 {
     struct unique_ptr<quasar::SpeechRecognizer, std::__1::default_delete<quasar::SpeechRecognizer>> _recognizer;
+    _EARSpeechRecognitionAudioBuffer *_currentAudioBuffer;
     _EARFormatter *_formatter;
     NSObject<OS_dispatch_queue> *_formatterQueue;
     NSObject<OS_dispatch_queue> *_recognitionQueue;
     NSString *_configPath;
+    BOOL _detectUtterances;
+    BOOL _concatenateUtterances;
     NSData *_userProfileData;
+    double _maximumRecognitionDuration;
+    NSDictionary *_recognitionReplacements;
 }
 
+@property (nonatomic) BOOL concatenateUtterances; // @synthesize concatenateUtterances=_concatenateUtterances;
+@property (nonatomic) BOOL detectUtterances; // @synthesize detectUtterances=_detectUtterances;
+@property (nonatomic) double maximumRecognitionDuration; // @synthesize maximumRecognitionDuration=_maximumRecognitionDuration;
 @property (readonly, nonatomic) _EARSpeechModelInfo *modelInfo;
+@property (copy, nonatomic) NSDictionary *recognitionReplacements; // @synthesize recognitionReplacements=_recognitionReplacements;
 @property (copy, nonatomic) NSData *userProfileData; // @synthesize userProfileData=_userProfileData;
 
 + (void)initialize;
++ (id)maximumSupportedConfigurationVersion;
++ (id)minimumSupportedConfigurationVersion;
 + (id)rawTokenResultsFromRecognitionResults:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)cancelRecognition;
 - (id)initWithConfiguration:(id)arg1;
+- (id)initWithConfiguration:(id)arg1 overrides:(id)arg2;
+- (id)initWithConfiguration:(id)arg1 overrides:(id)arg2 generalVoc:(id)arg3 lexiconEnh:(id)arg4 itnEnh:(id)arg5;
+- (id)initWithConfiguration:(id)arg1 useQuasarFormatter:(BOOL)arg2;
 - (id)initWithConfiguration:(id)arg1 withGeneralVoc:(id)arg2 withLexiconEnh:(id)arg3 withItnEnh:(id)arg4;
 - (id)initWithConfiguration:(id)arg1 withLanguage:(id)arg2 withSdapiConfig:(id)arg3;
 - (id)recognitionResultsWithAudioData:(id)arg1 userProfileData:(id)arg2 language:(id)arg3 task:(id)arg4 samplingRate:(unsigned long long)arg5 extraLanguageModel:(id)arg6;
-- (shared_ptr_0aca8e43)requestParametersWithUserProfileData:(id)arg1 task:(id)arg2 samplingRate:(unsigned long long)arg3 resultStream:(shared_ptr_5fd04aec)arg4 extraLanguageModel:(id)arg5 symbolTableList:(struct SymbolTableList *)arg6;
+- (id)recognitionStatistics;
+- (shared_ptr_9f04d411)requestParametersWithUserProfileData:(id)arg1 task:(id)arg2 samplingRate:(unsigned long long)arg3 resultStream:(shared_ptr_5cb47a18)arg4 extraLanguageModel:(id)arg5 symbolTableList:(const shared_ptr_ca83464d *)arg6;
 - (id)runRecognitionWithResultStream:(id)arg1;
 - (id)runRecognitionWithResultStream:(id)arg1 language:(id)arg2 task:(id)arg3 samplingRate:(unsigned long long)arg4;
+- (void)updateUserProfileData:(id)arg1;
 
 @end
 

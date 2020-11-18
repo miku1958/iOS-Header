@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface SCNCommonProfileProgramGenerator : NSObject
@@ -16,8 +16,10 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) int profile;
 
++ (id)deferredGeneratorWithProfile:(int)arg1;
 + (id)generatorWithProfile:(int)arg1;
 - (void)dealloc;
+- (void)emptyShaderCache;
 - (id)init;
 - (struct __C3DFXProgram *)programWithHashCode:(struct __C3DRendererElementProgramHashCode *)arg1 trackedResource:(id)arg2 introspectionDataPtr:(void *)arg3;
 - (void)releaseProgramForResource:(id)arg1;

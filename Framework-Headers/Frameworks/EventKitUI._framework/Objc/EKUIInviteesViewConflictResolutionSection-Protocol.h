@@ -6,15 +6,15 @@
 
 #import <EventKitUI/EKUIInviteesViewSection-Protocol.h>
 
-@class EKUIInviteeAlternativeTimeSearcher;
+@class EKInviteeAlternativeTimeSearcher;
 
 @protocol EKUIInviteesViewConflictResolutionSection <EKUIInviteesViewSection>
-- (EKUIInviteeAlternativeTimeSearcher *)availabilitySearcher;
+- (EKInviteeAlternativeTimeSearcher *)availabilitySearcher;
 - (void)availabilitySearcherChangedState:(long long)arg1;
 - (void)clearCheckmark;
 - (BOOL)injectNewRowsBeforeLastExistingRow;
 - (void)refreshCellsAfterStateChange;
-- (void)setAvailabilitySearcher:(EKUIInviteeAlternativeTimeSearcher *)arg1;
+- (void)setAvailabilitySearcher:(EKInviteeAlternativeTimeSearcher *)arg1;
 - (void)setNewTimeChosen:(void (^)(NSDate *, NSDate *))arg1;
 - (void)setShowPreviewOfEventAtTime:(void (^)(NSDate *, NSDate *))arg1;
 @end

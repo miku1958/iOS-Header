@@ -11,12 +11,13 @@
 @interface PLUIAccessibilityMockSlider : UIAccessibilityElement
 {
     UIView *_view;
-    id _delegate;
+    id _mockSliderDelegate;
 }
 
-@property (nonatomic) id delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id mockSliderDelegate; // @synthesize mockSliderDelegate=_mockSliderDelegate;
 @property (strong, nonatomic) UIView *view; // @synthesize view=_view;
 
+- (void).cxx_destruct;
 - (void)accessibilityDecrement;
 - (struct CGRect)accessibilityFrame;
 - (void)accessibilityIncrement;

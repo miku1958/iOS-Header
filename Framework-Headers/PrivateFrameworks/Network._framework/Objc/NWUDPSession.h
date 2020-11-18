@@ -6,39 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NWEndpoint, NWParameters, NWPath;
-@protocol OS_nw_udp_session;
+@class NSString, NWDatagramConnection, NWEndpoint, NWParameters, NWPath;
 
 @interface NWUDPSession : NSObject
 {
-    BOOL _internalIsViable;
-    BOOL _internalHasBetterPath;
+    BOOL _viable;
+    BOOL _hasBetterPath;
+    long long _state;
     NWEndpoint *_endpoint;
-    NWParameters *_parameters;
-    NSObject<OS_nw_udp_session> *_internalUDPSession;
-    NWEndpoint *_currentResolvedEndpoint;
-    NWPath *_internalCurrentPath;
-    long long _internalState;
+    NWEndpoint *_resolvedEndpoint;
+    NWPath *_currentPath;
+    NWDatagramConnection *_connection;
+    unsigned long long _maxReadDatagrams;
+    CDUnknownBlockType _readHandler;
     unsigned long long _internalMTU;
+    NWParameters *_parameters;
 }
 
-@property (readonly) NWPath *currentPath;
-@property (strong) NWEndpoint *currentResolvedEndpoint; // @synthesize currentResolvedEndpoint=_currentResolvedEndpoint;
+@property (strong) NWDatagramConnection *connection; // @synthesize connection=_connection;
+@property (strong, nonatomic) NWPath *currentPath; // @synthesize currentPath=_currentPath;
 @property (readonly) NWEndpoint *endpoint; // @synthesize endpoint=_endpoint;
-@property (readonly) BOOL hasBetterPath;
-@property (strong) NWPath *internalCurrentPath; // @synthesize internalCurrentPath=_internalCurrentPath;
-@property BOOL internalHasBetterPath; // @synthesize internalHasBetterPath=_internalHasBetterPath;
-@property BOOL internalIsViable; // @synthesize internalIsViable=_internalIsViable;
+@property (nonatomic) BOOL hasBetterPath; // @synthesize hasBetterPath=_hasBetterPath;
 @property unsigned long long internalMTU; // @synthesize internalMTU=_internalMTU;
-@property long long internalState; // @synthesize internalState=_internalState;
-@property (strong) NSObject<OS_nw_udp_session> *internalUDPSession; // @synthesize internalUDPSession=_internalUDPSession;
-@property (readonly) NSString *localPort;
-@property (readonly) unsigned long long maximumDatagramLength;
+@property (readonly, nonatomic) NSString *localPort;
+@property unsigned long long maxReadDatagrams; // @synthesize maxReadDatagrams=_maxReadDatagrams;
+@property (readonly, nonatomic) unsigned long long maximumDatagramLength;
 @property (readonly) NWParameters *parameters; // @synthesize parameters=_parameters;
-@property (readonly, copy) NSString *privateDescription;
-@property (readonly) NWEndpoint *resolvedEndpoint;
-@property (readonly) long long state;
-@property (readonly, getter=isViable) BOOL viable;
+@property (readonly, copy, nonatomic) NSString *privateDescription;
+@property (copy) CDUnknownBlockType readHandler; // @synthesize readHandler=_readHandler;
+@property (strong, nonatomic) NWEndpoint *resolvedEndpoint; // @synthesize resolvedEndpoint=_resolvedEndpoint;
+@property (nonatomic) long long state; // @synthesize state=_state;
+@property (nonatomic, getter=isViable) BOOL viable; // @synthesize viable=_viable;
 
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 - (void).cxx_destruct;
@@ -46,9 +44,11 @@
 - (void)dealloc;
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
-- (id)initWithAcceptedInternalSession:(id)arg1;
+- (id)initWithConnectedSocket:(int)arg1;
 - (id)initWithEndpoint:(id)arg1 parameters:(id)arg2;
 - (id)initWithUpgradeForSession:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)readInternal;
 - (void)setReadHandler:(CDUnknownBlockType)arg1 maxDatagrams:(unsigned long long)arg2;
 - (void)setupEventHandler;
 - (void)tryNextResolvedEndpoint;

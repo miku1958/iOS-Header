@@ -20,6 +20,7 @@
     NSString *_offerTypeString;
     float _price;
     NSString *_variantIdentifier;
+    BOOL _shouldEnableMessagesExtension;
 }
 
 @property (readonly, nonatomic) NSString *actionParameters; // @synthesize actionParameters=_actionParameters;
@@ -34,6 +35,7 @@
 @property (readonly, nonatomic) NSDictionary *lookupDictionary;
 @property (readonly, nonatomic) long long offerType;
 @property (readonly, nonatomic) float price; // @synthesize price=_price;
+@property (readonly, nonatomic) BOOL shouldEnableMessagesExtension; // @synthesize shouldEnableMessagesExtension=_shouldEnableMessagesExtension;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *variantIdentifier; // @synthesize variantIdentifier=_variantIdentifier;
 

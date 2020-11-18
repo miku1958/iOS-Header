@@ -11,10 +11,10 @@
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
++ (id)_accessibilityTransitArtworkTextForDataList:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityTransitArtworkText;
-- (id)_accessibilityTransitArtworkTextFromServer;
 
 @end
 

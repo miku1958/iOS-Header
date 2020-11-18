@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class HKHealthStore, NSMutableDictionary;
+@class NSMutableDictionary;
 
 @interface FIUIUnitManager : NSObject
 {
-    HKHealthStore *_healthStore;
     NSMutableDictionary *_preferredUnits;
 }
 
++ (void)setHealthStore:(id)arg1;
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (id)_loadPreferredUnitsFromDefaults;
@@ -25,6 +25,7 @@
 - (void)_updatePreferredUnits;
 - (void)_userPreferencesDidChange:(id)arg1;
 - (void)dealloc;
+- (id)healthStore;
 - (id)init;
 - (void)setPreferredUnitsForTesting:(id)arg1;
 - (void)setUserActiveEnergyBurnedUnit:(id)arg1;
@@ -36,10 +37,13 @@
 - (id)userBasalEnergyBurnedUnit;
 - (id)userDistanceCyclingHKUnit;
 - (long long)userDistanceCyclingUnit;
+- (id)userDistanceElevationHKUnit;
+- (long long)userDistanceElevationUnit;
 - (id)userDistanceHKUnitForDistanceType:(long long)arg1;
 - (long long)userDistanceUnitForDistanceType:(long long)arg1;
 - (id)userDistanceWalkingRunningHKUnit;
 - (long long)userDistanceWalkingRunningUnit;
+- (id)userLapLengthHKUnit;
 
 @end
 

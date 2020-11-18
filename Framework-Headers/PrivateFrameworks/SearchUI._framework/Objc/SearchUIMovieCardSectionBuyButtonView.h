@@ -6,25 +6,27 @@
 
 #import <UIKit/UIView.h>
 
-@class NSURL, SKUIItemOfferButton, SearchUICardViewController, UILabel;
+@class SFMediaInfoCardSection, SFPunchout, SKUIItemOfferButton, SearchUICardViewController, UILabel;
 
 @interface SearchUIMovieCardSectionBuyButtonView : UIView
 {
     UILabel *_subtitleLabel;
     SKUIItemOfferButton *_button;
-    NSURL *_url;
+    SFPunchout *_punchout;
     SearchUICardViewController *_controller;
+    SFMediaInfoCardSection *_section;
 }
 
 @property (strong) SKUIItemOfferButton *button; // @synthesize button=_button;
-@property (strong, nonatomic) SearchUICardViewController *controller; // @synthesize controller=_controller;
+@property (weak) SearchUICardViewController *controller; // @synthesize controller=_controller;
+@property (strong) SFPunchout *punchout; // @synthesize punchout=_punchout;
+@property (strong) SFMediaInfoCardSection *section; // @synthesize section=_section;
 @property (strong) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
-@property (strong) NSURL *url; // @synthesize url=_url;
 
 - (void).cxx_destruct;
 - (void)buttonPressed;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)initWithTitle:(id)arg1 subtitle:(id)arg2 url:(id)arg3 adamID:(id)arg4 offerIdentifier:(id)arg5 controller:(id)arg6;
+- (id)initWithTitle:(id)arg1 subtitle:(id)arg2 punchout:(id)arg3 adamID:(id)arg4 offerIdentifier:(id)arg5 controller:(id)arg6 section:(id)arg7;
 - (void)lookupPriceForAdamID:(id)arg1 offerIdentifier:(id)arg2;
 
 @end

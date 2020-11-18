@@ -8,15 +8,15 @@
 
 #import <VectorKit/VKAnchorDelegate-Protocol.h>
 
-@class MDDisplayLayer, NSString, VKAnchor, VKLayoutContext;
+@class MDDisplayLayer, NSString;
 
 @interface VKAnchorWrapper : NSObject <VKAnchorDelegate>
 {
-    VKAnchor *_anchor;
+    shared_ptr_2fc78ff4 _anchor;
     BOOL _followsTerrain;
     struct CGPoint _screenPointInCanvas;
-    VKLayoutContext *_lastLayoutContext;
-    CDStruct_2c43369c _lastCoordinate;
+    struct LayoutContext *_lastLayoutContext;
+    struct Coordinate2D<Degrees, double> _lastCoordinate;
     BOOL _isUpdating;
     double _pointsPerMeter;
     MDDisplayLayer *_displayLayer;
@@ -30,11 +30,14 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)_anchorWithContext:(id)arg1;
-- (void)_updateCachedPointWithContext:(id)arg1;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (shared_ptr_2fc78ff4)_anchorWithContext:(struct LayoutContext *)arg1;
+- (void)_updateCachedPointWithContext:(struct LayoutContext *)arg1;
 - (void)anchorWorldPointDidChange:(void *)arg1;
 - (void)dealloc;
-- (void)layoutWithContext:(id)arg1;
+- (void)destroyAnchor;
+- (void)layoutWithContext:(struct LayoutContext *)arg1;
 - (struct CGPoint)pointInLayer:(id)arg1;
 - (double)pointOffsetForDistanceOffset:(double)arg1;
 - (void)updateIfNeeded;

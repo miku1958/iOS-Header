@@ -28,6 +28,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, strong, nonatomic) NSSet *enabledAccounts;
 @property (readonly) unsigned long long hash;
+@property (readonly, strong, nonatomic) NSSet *internalAccounts;
 @property (readonly, strong, nonatomic) NSString *serviceName;
 @property (readonly) Class superclass;
 
@@ -58,7 +59,6 @@
 - (void)disableAccount:(id)arg1;
 - (void)enableAccount:(id)arg1;
 - (id)initWithService:(id)arg1 delegateContext:(id)arg2;
-- (id)internalAccounts;
 - (void)removeDelegate:(id)arg1;
 - (void)setupAccountWithLoginID:(id)arg1 aliases:(id)arg2 password:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setupAccountWithLoginID:(id)arg1 authToken:(id)arg2 profileID:(id)arg3 selfHandle:(id)arg4 aliases:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;

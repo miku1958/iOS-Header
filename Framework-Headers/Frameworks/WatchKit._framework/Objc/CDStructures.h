@@ -27,6 +27,11 @@ struct CGSize {
     double height;
 };
 
+struct CLLocationCoordinate2D {
+    double _field1;
+    double _field2;
+};
+
 struct UIEdgeInsets {
     double _field1;
     double _field2;
@@ -50,4 +55,9 @@ typedef struct {
     CDStruct_c3b9c2ee _field1;
     CDStruct_c3b9c2ee _field2;
 } CDStruct_90e2a262;
+
+typedef struct {
+    struct CLLocationCoordinate2D _field1;
+    CDStruct_c3b9c2ee _field2;
+} CDStruct_2b0c6e0b;
 

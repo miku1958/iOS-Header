@@ -13,12 +13,12 @@
 
 @interface CAMTimelapseState : NSObject <NSCoding, NSCopying>
 {
-    BOOL _usingFrontCamera;
     BOOL _allFramesWritten;
     unsigned short _sessionIdentifier;
     int _captureOrientation;
     float _focusLensPosition;
     NSString *_timelapseUUID;
+    long long _captureDevice;
     NSDate *_startTime;
     CLLocation *_startLocation;
     NSDate *_lastFrameResponseTime;
@@ -31,6 +31,7 @@
 }
 
 @property (nonatomic) BOOL allFramesWritten; // @synthesize allFramesWritten=_allFramesWritten;
+@property (nonatomic) long long captureDevice; // @synthesize captureDevice=_captureDevice;
 @property (nonatomic) int captureOrientation; // @synthesize captureOrientation=_captureOrientation;
 @property (readonly, nonatomic) double captureTimeInterval; // @synthesize captureTimeInterval=_captureTimeInterval;
 @property (readonly, nonatomic) long long connectionMode;
@@ -45,7 +46,6 @@
 @property (nonatomic) long long stopReasons; // @synthesize stopReasons=_stopReasons;
 @property (strong, nonatomic) NSDate *stopTime; // @synthesize stopTime=_stopTime;
 @property (strong, nonatomic) NSString *timelapseUUID; // @synthesize timelapseUUID=_timelapseUUID;
-@property (nonatomic, getter=isUsingFrontCamera) BOOL usingFrontCamera; // @synthesize usingFrontCamera=_usingFrontCamera;
 
 + (double)maxTimeToWaitForWrittenFrameAfterStop;
 + (id)stateWithContentsOfFile:(id)arg1;

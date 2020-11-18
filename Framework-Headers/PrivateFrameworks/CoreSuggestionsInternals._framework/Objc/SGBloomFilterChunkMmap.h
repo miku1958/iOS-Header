@@ -15,6 +15,7 @@
     NSString *_path;
     int _fd;
     unsigned int *_countPtr;
+    unsigned int _mask;
     char *_buf;
 }
 

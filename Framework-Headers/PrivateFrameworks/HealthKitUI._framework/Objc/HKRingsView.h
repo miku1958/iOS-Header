@@ -86,9 +86,15 @@
 
 + (id)_iconSpriteImage;
 + (id)_ringsViewConfiguredForCompanionWithNumberOfRings:(long long)arg1 ringType:(long long)arg2;
++ (id)_ringsViewConfiguredForGizmoWithNumberOfRings:(long long)arg1 ringType:(long long)arg2 withIcons:(BOOL)arg3;
++ (void)clearSharedCaches;
 + (id)ringsViewConfiguredForOneRingOnCompanionOfType:(long long)arg1;
++ (id)ringsViewConfiguredForOneRingOnWatchOfType:(long long)arg1;
++ (id)ringsViewConfiguredForOneRingOnWatchOfType:(long long)arg1 withIcon:(BOOL)arg2;
 + (id)ringsViewConfiguredForThreeRingsOnCompanion;
++ (id)ringsViewConfiguredForThreeRingsOnWatch;
 - (void).cxx_destruct;
+- (void)_context_checkAndRepairFramebuffer;
 - (void)_context_createBuffers;
 - (void)_context_loadFlatColorProgramIfNeeded;
 - (void)_context_loadRingDataForGroupAtIndex:(long long)arg1;
@@ -102,11 +108,13 @@
 - (void)_setupIfNecessary;
 - (void)_updateProjectionMatrix;
 - (void)dealloc;
+- (void)didMoveToWindow;
 - (unsigned int)drawInRect:(struct CGRect)arg1;
 - (id)initWithRingGroups:(id)arg1 numberOfRingsPerGroup:(int)arg2;
 - (void)layoutSubviews;
 - (void)ringGroupDidBeginAnimations:(id)arg1;
 - (void)setActiveEnergyPercentage:(double)arg1 animated:(BOOL)arg2;
+- (void)setActiveEnergyPercentage:(double)arg1 briskPercentage:(double)arg2 movingHoursPercentage:(double)arg3 animated:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)setBriskPercentage:(double)arg1 animated:(BOOL)arg2;
 - (void)setMovingHoursPercentage:(double)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldAutorotate;

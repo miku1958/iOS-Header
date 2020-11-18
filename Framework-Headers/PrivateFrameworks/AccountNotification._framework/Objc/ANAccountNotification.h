@@ -24,6 +24,8 @@
     ANNotificationAction *_clearAction;
     NSDictionary *_userInfo;
     NSString *_eventIdentifier;
+    long long _destinations;
+    long long _sectionSubtype;
     NSString *_callbackMachService;
 }
 
@@ -33,11 +35,13 @@
 @property (copy, nonatomic) NSString *callbackMachService; // @synthesize callbackMachService=_callbackMachService;
 @property (strong, nonatomic) ANNotificationAction *clearAction; // @synthesize clearAction=_clearAction;
 @property (copy, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (nonatomic) long long destinations; // @synthesize destinations=_destinations;
 @property (strong, nonatomic) ANNotificationAction *dismissAction; // @synthesize dismissAction=_dismissAction;
 @property (copy, nonatomic) NSString *dismissButtonTitle; // @synthesize dismissButtonTitle=_dismissButtonTitle;
 @property (copy, nonatomic) NSString *eventIdentifier; // @synthesize eventIdentifier=_eventIdentifier;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *message; // @synthesize message=_message;
+@property (nonatomic) long long sectionSubtype; // @synthesize sectionSubtype=_sectionSubtype;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 

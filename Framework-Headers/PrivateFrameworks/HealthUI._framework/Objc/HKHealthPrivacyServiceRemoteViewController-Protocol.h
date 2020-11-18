@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class HKAuthorizationRequestRecord, NSString;
+@class HKAuthorizationRequestRecord, HKObjectAuthorizationPromptSession, NSString;
 
 @protocol HKHealthPrivacyServiceRemoteViewController
+- (void)setPromptSession:(HKObjectAuthorizationPromptSession *)arg1;
 - (void)setRequestRecord:(HKAuthorizationRequestRecord *)arg1 updateDescription:(NSString *)arg2 shareDescription:(NSString *)arg3;
 @end
 

@@ -14,7 +14,6 @@
 __attribute__((visibility("hidden")))
 @interface _UIPrintPreviewPageCell : UICollectionViewCell <UIGestureRecognizerDelegate>
 {
-    id<PageRangeDelegate> _delegate;
     BOOL _inRange;
     BOOL _menuPresented;
     BOOL _thisCellIsPresentingMenu;
@@ -23,11 +22,12 @@ __attribute__((visibility("hidden")))
     UITapGestureRecognizer *_tapRecognizer;
     UIImageView *_imageView;
     UIView *_dimmingView;
+    id<PageRangeDelegate> _delegate;
     long long _pageIndex;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<PageRangeDelegate> delegate;
+@property (weak, nonatomic) id<PageRangeDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIView *dimmingView; // @synthesize dimmingView=_dimmingView;
 @property (readonly) unsigned long long hash;
@@ -45,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)dealloc;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (id)gestureRecognizers;
 - (void)handleLongPress:(id)arg1;
 - (void)handleTap:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

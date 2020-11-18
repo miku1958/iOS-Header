@@ -26,6 +26,8 @@
 + (id)_convertRedEyeCorrections:(id)arg1 withOrientation:(long long)arg2;
 + (id)addUnmanagedAdjustmentFromAdjustmentFileAtPath:(id)arg1 withAsset:(id)arg2;
 + (id)addUnmanagedAdjustmentFromXMPDataIfNeededForAsset:(id)arg1;
+- (BOOL)isSyncableChange;
+- (BOOL)supportsCloudUpload;
 - (void)willSave;
 
 @end

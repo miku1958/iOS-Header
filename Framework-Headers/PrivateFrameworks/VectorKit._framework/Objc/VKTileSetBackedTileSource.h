@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (struct _GEOTileKey)downloadKeyAtX:(unsigned int)arg1 y:(unsigned int)arg2 z:(unsigned int)arg3;
 - (BOOL)expires;
 - (void)fetchedTile:(id)arg1 forKey:(const struct VKTileKey *)arg2;
-- (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3;
+- (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3 sharedResources:(id)arg4;
 - (unsigned long long)mapLayerForZoomLevelRange;
 - (unsigned int)maximumDownloadZoomLevel;
 - (long long)maximumZoomLevel;
@@ -43,12 +43,11 @@ __attribute__((visibility("hidden")))
 - (long long)minimumZoomLevel;
 - (void)populateVisibleTileSets:(id)arg1 withTiles:(id)arg2;
 - (void)setClient:(id)arg1;
-- (void)setStyleManager:(shared_ptr_f06afc6c)arg1;
+- (void)setStyleManager:(shared_ptr_a3c46825)arg1;
 - (BOOL)shouldObeyHybridUnavailableRegions;
 - (struct VKTileKey)sourceKeyForRenderKey:(const struct VKTileKey *)arg1;
 - (id)tileForData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3;
 - (id)tileForKey:(const struct VKTileKey *)arg1;
-- (id)tileLoader;
 - (long long)tileSize;
 
 @end

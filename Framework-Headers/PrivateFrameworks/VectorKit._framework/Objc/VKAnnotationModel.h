@@ -9,48 +9,38 @@
 #import <VectorKit/VKMapLayer-Protocol.h>
 #import <VectorKit/VKStyleManagerObserver-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableSet, NSString, VKAnnotationMarker, VKMapModel;
+@class NSArray, NSMutableArray, NSString, VKMapModel;
 
 __attribute__((visibility("hidden")))
 @interface VKAnnotationModel : VKModelObject <VKMapLayer, VKStyleManagerObserver>
 {
     NSMutableArray *_annotationMarkers;
-    VKAnnotationMarker *_selectedAnnotationMarker;
-    NSMutableSet *_animatingMarkers;
-    NSMutableArray *_markersToAnimate;
-    VKAnnotationMarker *_draggingAnnotationMarker;
-    BOOL _didDragMarker;
-    BOOL _hasEverDrawnSomething;
-    CDStruct_e123902a _styleTransitionState;
-    CDUnknownBlockType _annotationMarkerDeselectionCallback;
+    CDStruct_6bdb9208 _styleTransitionState;
     VKMapModel *_mapModel;
+    struct unique_ptr<AnnotationPipelineStates, std::__1::default_delete<AnnotationPipelineStates>> _annotationPipelineStates;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType annotationMarkerDeselectionCallback; // @synthesize annotationMarkerDeselectionCallback=_annotationMarkerDeselectionCallback;
 @property (readonly, nonatomic) NSArray *annotationMarkers; // @synthesize annotationMarkers=_annotationMarkers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) VKMapModel *mapModel; // @synthesize mapModel=_mapModel;
 @property (readonly, nonatomic) BOOL needsLayout;
-@property (readonly, nonatomic) VKAnnotationMarker *selectedAnnotationMarker;
-@property (readonly, nonatomic) shared_ptr_f06afc6c styleManager;
-@property (nonatomic) CDStruct_e123902a styleTransitionState; // @synthesize styleTransitionState=_styleTransitionState;
+@property (readonly, nonatomic) const struct AnnotationPipelineStates *pipelineStates;
+@property (readonly, nonatomic) shared_ptr_a3c46825 styleManager;
+@property (nonatomic) CDStruct_6bdb9208 styleTransitionState; // @synthesize styleTransitionState=_styleTransitionState;
 @property (readonly) Class superclass;
 
 + (BOOL)reloadOnStylesheetChange;
-- (void)addAnnotationMarker:(id)arg1 allowAnimation:(BOOL)arg2;
-- (void)anchorPositionChangedForMarker:(id)arg1;
-- (CDUnknownBlockType)annotationCoordinateTest;
-- (id)annotationMarkerForSelectionAtPoint:(struct VKPoint)arg1 avoidCurrent:(BOOL)arg2 canvasSize:(struct CGSize)arg3;
-- (CDUnknownBlockType)annotationRectTest;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (void)addAnnotationMarker:(id)arg1;
 - (void)dealloc;
-- (void)deselectAnnotationMarker:(id)arg1;
-- (void)gglLayoutScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
+- (void)gglLayoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
 - (id)init;
+- (id)initWithTarget:(id)arg1 sharedResources:(id)arg2;
 - (unsigned long long)mapLayerPosition;
 - (void)removeAnnotationMarker:(id)arg1;
-- (void)selectAnnotationMarker:(id)arg1;
 - (BOOL)shouldLayoutWithoutStyleManager;
 - (void)stylesheetDidChange;
 

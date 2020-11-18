@@ -16,9 +16,7 @@
     GEOURLRouteHandle *_routeHandle;
     int _transportType;
     NSMutableArray *_waypoints;
-    struct {
-        unsigned int transportType:1;
-    } _has;
+    CDStruct_a995201b _has;
 }
 
 @property (readonly, nonatomic) BOOL hasRouteHandle;
@@ -28,6 +26,8 @@
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) NSMutableArray *waypoints; // @synthesize waypoints=_waypoints;
 
++ (Class)waypointsType;
+- (int)StringAsTransportType:(id)arg1;
 - (void)addWaypoints:(id)arg1;
 - (void)clearWaypoints;
 - (void)copyTo:(id)arg1;
@@ -39,6 +39,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)transportTypeAsString:(int)arg1;
 - (id)waypointsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)waypointsCount;
 - (void)writeTo:(id)arg1;

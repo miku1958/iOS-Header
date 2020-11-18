@@ -24,6 +24,7 @@
 - (void)accessPlugIns:(id)arg1 flags:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)addPlugIns:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)bulkPlugins:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)bulkSetPluginAnnotations:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)convertFromXPC:(id)arg1;
 - (void)copyReceipt:(CDUnknownBlockType)arg1;
 - (id)errorInReply:(id)arg1;

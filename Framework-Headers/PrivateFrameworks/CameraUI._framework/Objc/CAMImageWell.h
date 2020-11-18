@@ -11,6 +11,7 @@
 @interface CAMImageWell : UIButton
 {
     BOOL _thumbnailImageHidden;
+    long long _layoutStyle;
     long long _cameraOrientation;
     UIView *__containerView;
     UIImageView *__thumbnailImageView;
@@ -28,21 +29,24 @@
 @property (readonly, nonatomic) UIImageView *_thumbnailImageView; // @synthesize _thumbnailImageView=__thumbnailImageView;
 @property (strong, nonatomic, setter=_setUuid:) NSString *_uuid; // @synthesize _uuid=__uuid;
 @property (nonatomic) long long cameraOrientation; // @synthesize cameraOrientation=_cameraOrientation;
+@property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property (nonatomic) struct UIEdgeInsets tappableEdgeInsets; // @synthesize tappableEdgeInsets=_tappableEdgeInsets;
 @property (readonly, nonatomic) UIImage *thumbnailImage;
 @property (nonatomic, getter=isThumbnailImageHidden) BOOL thumbnailImageHidden; // @synthesize thumbnailImageHidden=_thumbnailImageHidden;
 
 - (void).cxx_destruct;
 - (struct CGAffineTransform)_affineTransformForImageOrientation:(long long)arg1;
-- (void)_commonCAMImageWellInitialization;
+- (void)_commonCAMImageWellInitializationWithLayoutStyle:(long long)arg1;
 - (id)_maskImage;
 - (void)_performEmitAnimationWithImage:(id)arg1 orientation:(long long)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 - (void)_removeFirstDimmingView;
+- (void)_updateForLayoutStyle;
 - (void)_updateThumbnailImageAnimated:(BOOL)arg1;
 - (void)_updateThumbnailTransformFromCameraOrientation;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithLayoutStyle:(long long)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)prepareForThumbnailUpdateFromCapture;

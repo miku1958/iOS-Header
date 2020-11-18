@@ -8,12 +8,15 @@
 
 #import <HealthDaemon/HDActivityCacheManagerObserver-Protocol.h>
 
-@class HDActivityCacheManager, NSString;
+@class HDActivityCacheManager, HKActivityCache, NSCalendar, NSDateComponents, NSString;
 
 @interface HDCurrentActivityCacheQueryServer : HDQueryServer <HDActivityCacheManagerObserver>
 {
     double _createdTime;
     double _firstResultsTime;
+    NSDateComponents *_statisticsIntervalComponents;
+    NSCalendar *_calendar;
+    HKActivityCache *_lastActivityCache;
     HDActivityCacheManager *_activityCacheManager;
 }
 
@@ -27,8 +30,8 @@
 - (void)_queue_stop;
 - (BOOL)_shouldExecuteWhenProtectedDataIsUnavailable;
 - (BOOL)_shouldListenForUpdates;
-- (void)activityCacheManager:(id)arg1 changedTodayActivityCache:(id)arg2 updatedFields:(unsigned long long)arg3 error:(id)arg4;
-- (id)initWithQueryUUID:(id)arg1 dataObject:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 healthDaemon:(id)arg6 activityCacheManager:(id)arg7;
+- (void)activityCacheManager:(id)arg1 changedTodayActivityCache:(id)arg2 currentStatisticsBuilder:(id)arg3 updatedFields:(unsigned long long)arg4 error:(id)arg5;
+- (id)initWithQueryUUID:(id)arg1 dataObject:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 profile:(id)arg6 activityCacheManager:(id)arg7;
 
 @end
 

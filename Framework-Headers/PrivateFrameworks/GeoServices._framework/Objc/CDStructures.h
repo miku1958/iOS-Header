@@ -10,6 +10,8 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct AddressObject;
+
 struct Box<float, 2> {
     Matrix_8746f91e _field1;
     Matrix_8746f91e _field2;
@@ -30,9 +32,229 @@ struct Entry;
 
 struct ErrorInfo;
 
+struct GEOActiveResourceFilter {
+    double _field1;
+    int _field2;
+    int _field3;
+    CDStruct_8a1bf2a3 _field4;
+};
+
 struct GEOFeatureShield {
     CDStruct_29923528 _field1;
     long long _field2;
+};
+
+struct GEOGenericTile {
+    unsigned int _field1;
+    unsigned int _field2;
+    int _field3;
+    CDStruct_8a1bf2a3 _field4;
+};
+
+struct GEOHighlight {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    CDStruct_8a1bf2a3 _field4;
+};
+
+struct GEOJunctionElement {
+    int _field1;
+    int _field2;
+    int _field3;
+    CDStruct_8a1bf2a3 _field4;
+};
+
+struct GEOLaneGuidance {
+    int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    int _field4;
+    unsigned int _field5;
+    int _field6;
+    struct {
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+    } _field7;
+};
+
+struct GEONavigationAudioFeedback {
+    int _currentRouteTypeAtEndOfNav;
+    unsigned int _manuallyChangedRouteCount;
+    unsigned int _manuallyDisabledHFPCount;
+    unsigned int _manuallyEnabledHFPCount;
+    unsigned int _spokenPromptsCount;
+    BOOL _bTHFPAvailableAtEndOfNav;
+    BOOL _bTHFPRoutesAvailable;
+    BOOL _currentRouteHFPEnabledAtEndOfNav;
+    BOOL _everManuallyChangedRoute;
+    BOOL _everManuallyEnabledHFPRoute;
+    BOOL _everViewedAudioSheet;
+    BOOL _everViewedAudioSheetBTAny;
+    BOOL _everViewedAudioSheetBTHFP;
+    BOOL _pauseSpokenAudioEnabled;
+    BOOL _viewedAudioSheet;
+    BOOL _viewedAudioSheetBTAny;
+    BOOL _viewedAudioSheetBTHFP;
+    BOOL _wirelessRoutesAvailable;
+    struct {
+        unsigned int currentRouteTypeAtEndOfNav:1;
+        unsigned int manuallyChangedRouteCount:1;
+        unsigned int manuallyDisabledHFPCount:1;
+        unsigned int manuallyEnabledHFPCount:1;
+        unsigned int spokenPromptsCount:1;
+        unsigned int bTHFPAvailableAtEndOfNav:1;
+        unsigned int bTHFPRoutesAvailable:1;
+        unsigned int currentRouteHFPEnabledAtEndOfNav:1;
+        unsigned int everManuallyChangedRoute:1;
+        unsigned int everManuallyEnabledHFPRoute:1;
+        unsigned int everViewedAudioSheet:1;
+        unsigned int everViewedAudioSheetBTAny:1;
+        unsigned int everViewedAudioSheetBTHFP:1;
+        unsigned int pauseSpokenAudioEnabled:1;
+        unsigned int viewedAudioSheet:1;
+        unsigned int viewedAudioSheetBTAny:1;
+        unsigned int viewedAudioSheetBTHFP:1;
+        unsigned int wirelessRoutesAvailable:1;
+    } _has;
+};
+
+struct GEOPBTransitTimeRange {
+    unsigned int _duration;
+    unsigned int _startTime;
+    CDStruct_beabc505 _has;
+};
+
+struct GEOPDAmenityValue {
+    int _field1;
+    BOOL _field2;
+    CDStruct_d7010776 _field3;
+};
+
+struct GEOPDCameraPathFrame {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+    double _field7;
+    double _field8;
+    float _field9;
+    float _field10;
+    float _field11;
+    CDStruct_dca542ad _field12;
+};
+
+struct GEOPDLabelFrame {
+    float _field1;
+    unsigned int _field2;
+    float _field3;
+    CDStruct_8a1bf2a3 _field4;
+};
+
+struct GEOPDLitePlaceResult {
+    unsigned long long _field1;
+    int _field2;
+    CDStruct_d7010776 _field3;
+};
+
+struct GEOPDLocalTimeRange {
+    unsigned int _field1;
+    unsigned int _field2;
+    CDStruct_d7010776 _field3;
+};
+
+struct GEOPDPhotoSizeFilterValue {
+    unsigned int _field1;
+    unsigned int _field2;
+    CDStruct_d7010776 _field3;
+};
+
+struct GEOPDTimeRange {
+    unsigned int _duration;
+    unsigned int _startTime;
+    CDStruct_beabc505 _has;
+};
+
+struct GEOPixelPoint {
+    double _x;
+    double _y;
+    int _z;
+    struct {
+        unsigned int z:1;
+    } _has;
+};
+
+struct GEOProblemDetail {
+    int _field1;
+    int _field2;
+    CDStruct_d7010776 _field3;
+};
+
+struct GEORPFeatureHandleStyleAttribute {
+    int _field1;
+    int _field2;
+};
+
+struct GEORPVisibleTileKey {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    CDStruct_8a1bf2a3 _field4;
+};
+
+struct GEORegionalResourceIndex {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    CDStruct_8a1bf2a3 _field4;
+};
+
+struct GEOScreenResolution {
+    double _height;
+    double _width;
+    CDStruct_db93fd0f _has;
+};
+
+struct GEOSessionID {
+    unsigned long long _high;
+    unsigned long long _low;
+};
+
+struct GEOTileKeyList {
+    Class _field1;
+    void *_field2;
+    void *_field3;
+    id _field4;
+    unsigned long long _field5;
+    unsigned long long _field6;
+    unsigned long long _field7;
+};
+
+struct GEOTileSetRegion {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+};
+
+struct GEOTileUsage {
+    unsigned int _field1;
+    int _field2;
+    CDStruct_d7010776 _field3;
+};
+
+struct GEOTimepoint {
+    double _time;
+    int _type;
+    CDStruct_46f138b4 _has;
 };
 
 struct GEOTransitNodeFeature {
@@ -59,6 +281,11 @@ struct GEOTransitNodeFeature {
     struct _NSRange _field21;
 };
 
+struct GEOVersionedTileSet {
+    unsigned int _field1;
+    unsigned int _field2;
+};
+
 struct GeoCoordinates {
     struct Longitude _field1;
     struct Latitude _field2;
@@ -76,9 +303,9 @@ struct Latitude {
 };
 
 struct LocationNameStrings {
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field1;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field2;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field3;
+    basic_string_a1f69cfb _field1;
+    basic_string_a1f69cfb _field2;
+    basic_string_a1f69cfb _field3;
     BOOL _field4;
     BOOL _field5;
     BOOL _field6;
@@ -133,7 +360,7 @@ struct RoadPathElement<std::__1::shared_ptr<geo::MapEdge>> {
     CDUnknownFunctionPointerType *_field1;
     int _field2;
     unsigned long long _field3;
-    shared_ptr_b236f348 _field4;
+    shared_ptr_035a2da2 _field4;
     struct GeoPolyline _field5;
     int _field6;
 };
@@ -211,18 +438,33 @@ struct __hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_ite
 struct __hash_node<std::__1::__hash_value_type<unsigned short, std::__1::__list_iterator<geo::detail::_CacheItem<unsigned short, (anonymous namespace)::PackReader, _value_ptr>, void *>>, void *>;
 
 struct __list_iterator<LoadItem, void *> {
-    struct __list_node<LoadItem, void *> *_field1;
+    struct __list_node_base<LoadItem, void *> *_field1;
 };
 
-struct __list_node<CacheItem, void *>;
+struct __list_node_base<CacheItem, void *> {
+    struct __list_node_base<CacheItem, void *> *__prev_;
+    struct __list_node_base<CacheItem, void *> *__next_;
+};
 
-struct __list_node<LoadItem, void *>;
+struct __list_node_base<LoadItem, void *> {
+    struct __list_node_base<LoadItem, void *> *__prev_;
+    struct __list_node_base<LoadItem, void *> *__next_;
+};
 
-struct __list_node<_CacheRequester<void (^)(unsigned long long)>, void *>;
+struct __list_node_base<_CacheRequester<void (^)(unsigned long long)>, void *> {
+    struct __list_node_base<_CacheRequester<void (^)(unsigned long long)>, void *> *__prev_;
+    struct __list_node_base<_CacheRequester<void (^)(unsigned long long)>, void *> *__next_;
+};
 
-struct __list_node<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>;
+struct __list_node_base<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *> {
+    struct __list_node_base<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *> *__prev_;
+    struct __list_node_base<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *> *__next_;
+};
 
-struct __list_node<geo::detail::_CacheItem<unsigned short, (anonymous namespace)::PackReader, _value_ptr>, void *>;
+struct __list_node_base<geo::detail::_CacheItem<unsigned short, (anonymous namespace)::PackReader, _value_ptr>, void *> {
+    struct __list_node_base<geo::detail::_CacheItem<unsigned short, (anonymous namespace)::PackReader, _value_ptr>, void *> *__prev_;
+    struct __list_node_base<geo::detail::_CacheItem<unsigned short, (anonymous namespace)::PackReader, _value_ptr>, void *> *__next_;
+};
 
 struct __shared_weak_count;
 
@@ -296,50 +538,35 @@ struct deque<geo::TransitEdgePiece, std::__1::allocator<geo::TransitEdgePiece>> 
 };
 
 struct list<CacheItem, std::__1::allocator<CacheItem>> {
-    struct __list_node_base<CacheItem, void *> {
-        struct __list_node<CacheItem, void *> *__prev_;
-        struct __list_node<CacheItem, void *> *__next_;
-    } __end_;
+    struct __list_node_base<CacheItem, void *> __end_;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<CacheItem, void *>>> {
         unsigned long long __first_;
     } __size_alloc_;
 };
 
 struct list<LoadItem, std::__1::allocator<LoadItem>> {
-    struct __list_node_base<LoadItem, void *> {
-        struct __list_node<LoadItem, void *> *__prev_;
-        struct __list_node<LoadItem, void *> *__next_;
-    } __end_;
+    struct __list_node_base<LoadItem, void *> __end_;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<LoadItem, void *>>> {
         unsigned long long __first_;
     } __size_alloc_;
 };
 
 struct list<_CacheRequester<void (^)(unsigned long long)>, std::__1::allocator<_CacheRequester<void (^)(unsigned long long)>>> {
-    struct __list_node_base<_CacheRequester<void (^)(unsigned long long)>, void *> {
-        struct __list_node<_CacheRequester<void (^)(unsigned long long)>, void *> *__prev_;
-        struct __list_node<_CacheRequester<void (^)(unsigned long long)>, void *> *__next_;
-    } __end_;
+    struct __list_node_base<_CacheRequester<void (^)(unsigned long long)>, void *> __end_;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<_CacheRequester<void (^)(unsigned long long)>, void *>>> {
         unsigned long long __first_;
     } __size_alloc_;
 };
 
 struct list<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, std::__1::allocator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>>> {
-    struct __list_node_base<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *> {
-        struct __list_node<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *> *__prev_;
-        struct __list_node<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *> *__next_;
-    } __end_;
+    struct __list_node_base<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *> __end_;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>> {
         unsigned long long __first_;
     } __size_alloc_;
 };
 
 struct list<geo::detail::_CacheItem<unsigned short, (anonymous namespace)::PackReader, _value_ptr>, std::__1::allocator<geo::detail::_CacheItem<unsigned short, (anonymous namespace)::PackReader, _value_ptr>>> {
-    struct __list_node_base<geo::detail::_CacheItem<unsigned short, (anonymous namespace)::PackReader, _value_ptr>, void *> {
-        struct __list_node<geo::detail::_CacheItem<unsigned short, (anonymous namespace)::PackReader, _value_ptr>, void *> *__prev_;
-        struct __list_node<geo::detail::_CacheItem<unsigned short, (anonymous namespace)::PackReader, _value_ptr>, void *> *__next_;
-    } __end_;
+    struct __list_node_base<geo::detail::_CacheItem<unsigned short, (anonymous namespace)::PackReader, _value_ptr>, void *> __end_;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<geo::detail::_CacheItem<unsigned short, (anonymous namespace)::PackReader, _value_ptr>, void *>>> {
         unsigned long long __first_;
     } __size_alloc_;
@@ -371,6 +598,11 @@ struct shared_ptr<(anonymous namespace)::PackReader> {
     struct __shared_weak_count *_field2;
 };
 
+struct shared_ptr<addr_obj::AddressObject> {
+    struct AddressObject *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
 struct shared_ptr<const std::__1::vector<zilch::GeoCoordinates, std::__1::allocator<zilch::GeoCoordinates>>> {
     struct vector<zilch::GeoCoordinates, std::__1::allocator<zilch::GeoCoordinates>> *_field1;
     struct __shared_weak_count *_field2;
@@ -382,8 +614,8 @@ struct shared_ptr<geo::MapAccessPointFeature> {
 };
 
 struct shared_ptr<geo::MapEdge> {
-    struct MapEdge *_field1;
-    struct __shared_weak_count *_field2;
+    struct MapEdge *__ptr_;
+    struct __shared_weak_count *__cntrl_;
 };
 
 struct shared_ptr<geo::MapEdgeRoad> {
@@ -663,10 +895,10 @@ struct vector<zilch::Path<std::__1::shared_ptr<geo::MapEdge>>::Entry, std::__1::
 };
 
 struct vector<zilch::RoadPathElement<std::__1::shared_ptr<geo::MapEdge>>, std::__1::allocator<zilch::RoadPathElement<std::__1::shared_ptr<geo::MapEdge>>>> {
-    RoadPathElement_384b44ed *_field1;
-    RoadPathElement_384b44ed *_field2;
+    RoadPathElement_1a15aef6 *_field1;
+    RoadPathElement_1a15aef6 *_field2;
     struct __compressed_pair<zilch::RoadPathElement<std::__1::shared_ptr<geo::MapEdge>>*, std::__1::allocator<zilch::RoadPathElement<std::__1::shared_ptr<geo::MapEdge>>>> {
-        RoadPathElement_384b44ed *_field1;
+        RoadPathElement_1a15aef6 *_field1;
     } _field3;
 };
 
@@ -699,15 +931,6 @@ typedef struct {
     unsigned int _field2;
     unsigned int _field3;
     unsigned int _field4;
-    unsigned int _field5;
-    unsigned int _field6;
-} CDStruct_d66e66b9;
-
-typedef struct {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
 } CDStruct_7523a67d;
 
 typedef struct {
@@ -732,14 +955,9 @@ typedef struct {
 
 typedef struct {
     unsigned long long stopID;
+    unsigned long long hallID;
     unsigned long long stationID;
-    unsigned long long hubID;
-} CDStruct_6ccc2c1e;
-
-typedef struct {
-    unsigned long long _high;
-    unsigned long long _low;
-} CDStruct_612aec5b;
+} CDStruct_79c5c966;
 
 typedef struct {
     unsigned long long _field1;
@@ -749,10 +967,10 @@ typedef struct {
 } CDStruct_70511ce9;
 
 typedef struct {
-    unsigned long long _field1;
-    double _field2;
-    unsigned long long _field3;
-} CDStruct_96e0509c;
+    unsigned long long workLoad;
+    double timeWindowStartTime;
+    unsigned long long timeWindowDuration;
+} CDStruct_e05fddca;
 
 typedef struct {
     unsigned short _field1;
@@ -789,6 +1007,12 @@ typedef struct {
 } CDStruct_82f37d05;
 
 typedef struct {
+    float *list;
+    unsigned long long count;
+    unsigned long long size;
+} CDStruct_fae3dc92;
+
+typedef struct {
     int *list;
     unsigned long long count;
     unsigned long long size;
@@ -801,20 +1025,23 @@ typedef struct {
 } CDStruct_5df41632;
 
 typedef struct {
+    unsigned int ignoresResponse:1;
+    unsigned int loading:1;
+    unsigned int needsCancel:1;
+    unsigned int responseStatusSet:1;
+    unsigned int parsedResponseHeader:1;
+    unsigned int delegateDidReceiveResponse:1;
+    unsigned int delegateDidFinish:1;
+    unsigned int delegateDidCancel:1;
+    unsigned int delegateDidFailWithError:1;
+    unsigned int paused:1;
+    unsigned int resuming:1;
+} CDStruct_dca542ad;
+
+typedef struct {
     float _field1;
     float _field2;
 } CDStruct_b2fbf00d;
-
-typedef struct {
-    int _beginIndex;
-    int _endIndex;
-    int _stringType;
-} CDStruct_0756942c;
-
-typedef struct {
-    int _field1;
-    int _field2;
-} CDStruct_1ef3fb1f;
 
 typedef struct {
     long long _field1;
@@ -884,59 +1111,8 @@ typedef struct {
 typedef struct {
     unsigned int _field1;
     unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    struct {
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-    } _field5;
-} CDStruct_3f74b7eb;
-
-typedef struct {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    CDStruct_8a1bf2a3 _field4;
-} CDStruct_97e972fa;
-
-typedef struct {
-    unsigned int _field1;
-    unsigned int _field2;
     CDStruct_183601bc *_field3;
 } CDStruct_3b01f0aa;
-
-typedef struct {
-    unsigned int _duration;
-    unsigned int _startTime;
-    CDStruct_beabc505 _has;
-} CDStruct_43c37391;
-
-typedef struct {
-    unsigned int _field1;
-    int _field2;
-    CDStruct_d7010776 _field3;
-} CDStruct_8f5f9923;
-
-typedef struct {
-    unsigned int _field1;
-    struct {
-        double _field1;
-        double _field2;
-    } _field2;
-    struct {
-        double _field1;
-        double _field2;
-    } _field3;
-    id _field4;
-} CDStruct_4d790470;
-
-typedef struct {
-    unsigned long long _field1;
-    int _field2;
-    CDStruct_d7010776 _field3;
-} CDStruct_b9067c0b;
 
 typedef struct {
     CDStruct_183601bc *_field1;
@@ -960,138 +1136,6 @@ typedef struct {
         BOOL _field2;
     } _field7;
 } CDStruct_effb527d;
-
-typedef struct {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-    double _field7;
-    double _field8;
-    float _field9;
-    float _field10;
-    float _field11;
-    struct {
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-    } _field12;
-} CDStruct_3d4e3f4a;
-
-typedef struct {
-    double _x;
-    double _y;
-    int _z;
-    struct {
-        unsigned int z:1;
-    } _has;
-} CDStruct_bddcf505;
-
-typedef struct {
-    double _height;
-    double _width;
-    CDStruct_db93fd0f _has;
-} CDStruct_af817366;
-
-typedef struct {
-    double _time;
-    int _type;
-    CDStruct_46f138b4 _has;
-} CDStruct_4db06779;
-
-typedef struct {
-    float _field1;
-    unsigned int _field2;
-    float _field3;
-    CDStruct_8a1bf2a3 _field4;
-} CDStruct_11cc3dfc;
-
-typedef struct {
-    int _field1;
-    BOOL _field2;
-    CDStruct_d7010776 _field3;
-} CDStruct_2961ad32;
-
-typedef struct {
-    int _currentRouteTypeAtEndOfNav;
-    unsigned int _manuallyChangedRouteCount;
-    unsigned int _manuallyDisabledHFPCount;
-    unsigned int _manuallyEnabledHFPCount;
-    unsigned int _spokenPromptsCount;
-    BOOL _bTHFPAvailableAtEndOfNav;
-    BOOL _bTHFPRoutesAvailable;
-    BOOL _currentRouteHFPEnabledAtEndOfNav;
-    BOOL _everManuallyChangedRoute;
-    BOOL _everManuallyEnabledHFPRoute;
-    BOOL _everViewedAudioSheet;
-    BOOL _everViewedAudioSheetBTAny;
-    BOOL _everViewedAudioSheetBTHFP;
-    BOOL _pauseSpokenAudioEnabled;
-    BOOL _viewedAudioSheet;
-    BOOL _viewedAudioSheetBTAny;
-    BOOL _viewedAudioSheetBTHFP;
-    BOOL _wirelessRoutesAvailable;
-    struct {
-        unsigned int currentRouteTypeAtEndOfNav:1;
-        unsigned int manuallyChangedRouteCount:1;
-        unsigned int manuallyDisabledHFPCount:1;
-        unsigned int manuallyEnabledHFPCount:1;
-        unsigned int spokenPromptsCount:1;
-        unsigned int bTHFPAvailableAtEndOfNav:1;
-        unsigned int bTHFPRoutesAvailable:1;
-        unsigned int currentRouteHFPEnabledAtEndOfNav:1;
-        unsigned int everManuallyChangedRoute:1;
-        unsigned int everManuallyEnabledHFPRoute:1;
-        unsigned int everViewedAudioSheet:1;
-        unsigned int everViewedAudioSheetBTAny:1;
-        unsigned int everViewedAudioSheetBTHFP:1;
-        unsigned int pauseSpokenAudioEnabled:1;
-        unsigned int viewedAudioSheet:1;
-        unsigned int viewedAudioSheetBTAny:1;
-        unsigned int viewedAudioSheetBTHFP:1;
-        unsigned int wirelessRoutesAvailable:1;
-    } _has;
-} CDStruct_f580248a;
-
-typedef struct {
-    int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    int _field4;
-    unsigned int _field5;
-    int _field6;
-    struct {
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-    } _field7;
-} CDStruct_bf9e66ee;
-
-typedef struct {
-    int _field1;
-    int _field2;
-    int _field3;
-    CDStruct_8a1bf2a3 _field4;
-} CDStruct_e02beb0c;
-
-typedef struct {
-    int _field1;
-    int _field2;
-    CDStruct_d7010776 _field3;
-} CDStruct_c55e649d;
 
 typedef struct {
     CDStruct_58d0ca89 _field1;
@@ -1144,28 +1188,6 @@ typedef struct {
     char *_field6;
     unsigned int _field7;
 } CDStruct_8f1ffc8e;
-
-typedef struct {
-    double _field1;
-    struct PolylineCoordinate _field2;
-    struct {
-        double _field1;
-        double _field2;
-    } _field3;
-    double _field4;
-    double _field5;
-    unsigned long long _field6;
-    BOOL _field7;
-    struct {
-        unsigned long long _field1;
-        double _field2;
-        struct PolylineCoordinate _field3;
-        struct {
-            double _field1;
-            double _field2;
-        } _field4;
-    } _field8;
-} CDStruct_7233881d;
 
 typedef struct {
     CDStruct_7523a67d _field1;
@@ -1247,20 +1269,27 @@ typedef struct {
         unsigned short _field2[2];
     } _field11;
     unsigned char _field12;
-    struct _NSRange _field13;
-    BOOL _field14;
-} CDStruct_209eac20;
+    BOOL _field13;
+    unsigned char _field14;
+    BOOL _field15;
+    BOOL _field16;
+    unsigned char _field17;
+    BOOL _field18;
+    unsigned char _field19;
+    struct _NSRange _field20;
+    BOOL _field21;
+} CDStruct_2244da21;
 
 typedef struct {
-    CDStruct_209eac20 _field1;
+    CDStruct_2244da21 _field1;
     unsigned long long _field2;
     unsigned long long _field3;
     BOOL _field4;
     BOOL _field5;
-} CDStruct_495a9644;
+} CDStruct_2a80a239;
 
 typedef struct {
-    CDStruct_209eac20 _field1;
+    CDStruct_2244da21 _field1;
     CDStruct_b2fbf00d _field2;
     BOOL _field3;
     BOOL _field4;
@@ -1268,15 +1297,57 @@ typedef struct {
     unsigned long long _field6;
     unsigned long long _field7;
     CDStruct_b2fbf00d _field8;
-} CDStruct_ccb8b08f;
+} CDStruct_658d36a4;
 
 // Ambiguous groups
+typedef struct {
+    unsigned int earliestArrivalOffset:1;
+    unsigned int earliestDepartureOffset:1;
+    unsigned int latestArrivalOffset:1;
+    unsigned int latestDepartureOffset:1;
+    unsigned int arrival:1;
+    unsigned int departure:1;
+    unsigned int numberOfReroutes:1;
+    unsigned int ttlUiNotificationShown:1;
+} CDStruct_90e5f431;
+
+typedef struct {
+    unsigned int color:1;
+    unsigned int confidence:1;
+    unsigned int decayTimeWindowInMinutes:1;
+    unsigned int endOffset:1;
+    unsigned int speedKph:1;
+    unsigned int startOffset:1;
+    unsigned int hidden:1;
+} CDStruct_c254c6af;
+
+typedef struct {
+    unsigned int messageSize:1;
+    unsigned int messageCount:1;
+    unsigned int metricState:1;
+    unsigned int metricType:1;
+    unsigned int retryCount:1;
+} CDStruct_86e90cf6;
+
+typedef struct {
+    unsigned int durationInOldState:1;
+    unsigned int newCoverage:1;
+    unsigned int oldCoverage:1;
+    unsigned int tileSetStateType:1;
+} CDStruct_8081ba47;
+
 typedef struct {
     unsigned int muid:1;
     unsigned int addressGeocodeAccuracyHint:1;
     unsigned int placeTypeHint:1;
     unsigned int resultProviderId:1;
 } CDStruct_f8e30bfb;
+
+typedef struct {
+    unsigned int maxResults:1;
+    unsigned int searchType:1;
+    unsigned int sortOrder:1;
+} CDStruct_aa0bba6c;
 
 typedef struct {
     unsigned int navigationAudioFeedback:1;
@@ -1289,6 +1360,16 @@ typedef struct {
     unsigned int :1;
     unsigned int :1;
 } CDStruct_8a1bf2a3;
+
+typedef struct {
+    unsigned int count:1;
+    unsigned int style:1;
+} CDStruct_f13729b5;
+
+typedef struct {
+    unsigned int debugServerLatencyMs:1;
+    unsigned int status:1;
+} CDStruct_00a28cb6;
 
 typedef struct {
     unsigned int duration:1;
@@ -1311,11 +1392,6 @@ typedef struct {
 } CDStruct_00ef3c1e;
 
 typedef struct {
-    unsigned int maxResults:1;
-    unsigned int sortOrder:1;
-} CDStruct_6c9bcd7c;
-
-typedef struct {
     unsigned int time:1;
     unsigned int type:1;
 } CDStruct_46f138b4;
@@ -1326,12 +1402,16 @@ typedef struct {
 } CDStruct_d7010776;
 
 typedef struct {
-    unsigned int isChainResultSet:1;
-} CDStruct_5984ff81;
+    unsigned int dataSet:1;
+} CDStruct_2fe9a6d4;
 
 typedef struct {
-    unsigned int locationShiftVersion:1;
-} CDStruct_467495ea;
+    unsigned int durationInOldState:1;
+} CDStruct_ef245c49;
+
+typedef struct {
+    unsigned int isChainResultSet:1;
+} CDStruct_5984ff81;
 
 typedef struct {
     unsigned int maxResults:1;
@@ -1358,10 +1438,6 @@ typedef struct {
 } CDStruct_08086d5c;
 
 typedef struct {
-    unsigned int status:1;
-} CDStruct_47fe53f2;
-
-typedef struct {
     unsigned int statusCode:1;
 } CDStruct_bcb1eac0;
 
@@ -1370,16 +1446,12 @@ typedef struct {
 } CDStruct_b5306035;
 
 typedef struct {
+    unsigned int transportType:1;
+} CDStruct_a995201b;
+
+typedef struct {
     unsigned int travelTime:1;
 } CDStruct_36597415;
-
-typedef struct {
-    unsigned int type:1;
-} CDStruct_f953fb60;
-
-typedef struct {
-    unsigned int zoomLevel:1;
-} CDStruct_8adc1701;
 
 typedef struct {
     double _field1;
@@ -1445,19 +1517,48 @@ typedef struct RoadPathElement<std::__1::shared_ptr<geo::MapEdge>> {
     CDUnknownFunctionPointerType *_field1;
     int _field2;
     unsigned long long _field3;
-    shared_ptr_b236f348 _field4;
+    shared_ptr_035a2da2 _field4;
     struct GeoPolyline _field5;
     int _field6;
-} RoadPathElement_384b44ed;
+} RoadPathElement_1a15aef6;
 
 typedef struct __list_iterator<LoadItem, void *> {
-    struct __list_node<LoadItem, void *> *_field1;
-} __list_iterator_d839716a;
+    struct __list_node_base<LoadItem, void *> *_field1;
+} __list_iterator_aef25af4;
+
+typedef struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
+    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
+        struct __rep {
+            union {
+                struct __long {
+                    unsigned long long _field1;
+                    unsigned long long _field2;
+                    char *_field3;
+                } _field1;
+                struct __short {
+                    union {
+                        unsigned char _field1;
+                        char _field2;
+                    } _field1;
+                    char _field2[23];
+                } _field2;
+                struct __raw {
+                    unsigned long long _field1[3];
+                } _field3;
+            } _field1;
+        } _field1;
+    } _field1;
+} basic_string_a1f69cfb;
 
 typedef struct shared_ptr<(anonymous namespace)::PackReader> {
     struct PackReader *_field1;
     struct __shared_weak_count *_field2;
 } shared_ptr_ef0c1bec;
+
+typedef struct shared_ptr<addr_obj::AddressObject> {
+    struct AddressObject *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} shared_ptr_3c8cf4aa;
 
 typedef struct shared_ptr<geo::MapAccessPointFeature> {
     struct MapAccessPointFeature *__ptr_;
@@ -1465,9 +1566,9 @@ typedef struct shared_ptr<geo::MapAccessPointFeature> {
 } shared_ptr_4792c490;
 
 typedef struct shared_ptr<geo::MapEdge> {
-    struct MapEdge *_field1;
-    struct __shared_weak_count *_field2;
-} shared_ptr_b236f348;
+    struct MapEdge *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} shared_ptr_035a2da2;
 
 typedef struct shared_ptr<geo::MapEdgeRoad> {
     struct MapEdgeRoad *__ptr_;

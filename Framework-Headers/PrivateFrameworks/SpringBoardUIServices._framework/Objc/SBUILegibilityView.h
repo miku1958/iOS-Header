@@ -6,16 +6,25 @@
 
 #import <UIKit/_UILegibilityView.h>
 
-@class UIImage;
+#import <SpringBoardUIServices/SBUILegibility-Protocol.h>
 
-@interface SBUILegibilityView : _UILegibilityView
+@class NSString, UIImage, _UILegibilitySettings;
+
+@interface SBUILegibilityView : _UILegibilityView <SBUILegibility>
 {
+    _UILegibilitySettings *_legibilitySettings;
     long long _tintColor;
     UIImage *_tintImage;
     struct UIEdgeInsets _hitTestEdgeInsets;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) struct UIEdgeInsets hitTestEdgeInsets; // @synthesize hitTestEdgeInsets=_hitTestEdgeInsets;
+@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property (nonatomic) double strength; // @dynamic strength;
+@property (readonly) Class superclass;
 @property (nonatomic) long long tintColor; // @synthesize tintColor=_tintColor;
 @property (strong, nonatomic) UIImage *tintImage; // @synthesize tintImage=_tintImage;
 
@@ -24,6 +33,7 @@
 - (id)initWithSettings:(id)arg1 strength:(double)arg2 image:(id)arg3 tintColor:(long long)arg4;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setSettings:(id)arg1 image:(id)arg2 shadowImage:(id)arg3;
+- (void)updateForChangedSettings:(id)arg1;
 
 @end
 

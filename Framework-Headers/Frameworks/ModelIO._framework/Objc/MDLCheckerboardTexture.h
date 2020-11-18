@@ -6,15 +6,11 @@
 
 #import <ModelIO/MDLTexture.h>
 
-@class MISSING_TYPE;
-
 @interface MDLCheckerboardTexture : MDLTexture
 {
     int _divisions;
-    struct CGColor *_cgColor1;
-    struct CGColor *_cgColor2;
-    MISSING_TYPE *_color1;
-    MISSING_TYPE *_color2;
+    struct CGColor *_color1;
+    struct CGColor *_color2;
 }
 
 @property (nonatomic) struct CGColor *color1;

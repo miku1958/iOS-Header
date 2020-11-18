@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (void)assertIsValidCallingThread;
 - (BOOL)currentIsCreationThread;
+- (void)dealloc;
 - (id)init;
 - (void)performBlock:(CDUnknownBlockType)arg1;
 - (void)performBlockAndWaitUntilDone:(BOOL)arg1 block:(CDUnknownBlockType)arg2;

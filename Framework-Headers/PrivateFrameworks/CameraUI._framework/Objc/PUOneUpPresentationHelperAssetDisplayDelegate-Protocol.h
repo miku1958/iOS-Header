@@ -9,7 +9,7 @@
 @class NSSet, PUAssetReference, PUOneUpPresentationHelper, UIImage;
 
 @protocol PUOneUpPresentationHelperAssetDisplayDelegate <NSObject>
-- (struct CGRect)oneUpPresentationHelper:(PUOneUpPresentationHelper *)arg1 rectForAssetReference:(PUAssetReference *)arg2 cropInsets:(struct UIEdgeInsets *)arg3;
+- (struct CGRect)oneUpPresentationHelper:(PUOneUpPresentationHelper *)arg1 rectForAssetReference:(PUAssetReference *)arg2 cropInsets:(struct UIEdgeInsets *)arg3 contentsRect:(struct CGRect *)arg4;
 
 @optional
 - (UIImage *)oneUpPresentationHelper:(PUOneUpPresentationHelper *)arg1 currentImageForAssetReference:(PUAssetReference *)arg2;

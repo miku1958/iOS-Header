@@ -33,7 +33,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)countOfItems;
 - (void)dealloc;
-- (void)getItems:(id **)arg1 range:(struct _NSRange)arg2;
 - (id)indexPathsForItem:(id)arg1;
 - (id)init;
 - (void)insertItems:(id)arg1 atIndexes:(id)arg2;

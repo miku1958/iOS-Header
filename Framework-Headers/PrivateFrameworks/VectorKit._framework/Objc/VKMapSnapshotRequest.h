@@ -32,6 +32,7 @@
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
 
 - (struct VKRequestKey)_requestKey;
+- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

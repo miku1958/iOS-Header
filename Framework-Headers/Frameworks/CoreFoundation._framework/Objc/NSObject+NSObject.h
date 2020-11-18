@@ -12,7 +12,6 @@
 + (void)dealloc;
 + (id)description;
 + (void)doesNotRecognizeSelector:(SEL)arg1;
-+ (void)finalize;
 + (id)init;
 + (id)instanceMethodSignatureForSelector:(SEL)arg1;
 + (void)load;

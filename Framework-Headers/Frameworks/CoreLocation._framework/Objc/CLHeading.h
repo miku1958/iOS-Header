@@ -9,14 +9,13 @@
 #import <CoreLocation/NSCopying-Protocol.h>
 #import <CoreLocation/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSString;
+@class NSDate;
 
 @interface CLHeading : NSObject <NSCopying, NSSecureCoding>
 {
     id _internal;
 }
 
-@property (readonly, copy, nonatomic) NSString *description;
 @property (readonly, nonatomic) double headingAccuracy;
 @property (readonly, nonatomic) double magneticHeading;
 @property (readonly, copy, nonatomic) NSDate *timestamp;
@@ -28,6 +27,7 @@
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithClientHeading:(CDStruct_b560b707)arg1;
 - (id)initWithCoder:(id)arg1;

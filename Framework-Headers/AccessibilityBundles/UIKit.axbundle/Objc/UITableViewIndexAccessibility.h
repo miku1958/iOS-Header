@@ -19,7 +19,7 @@
 - (void)_accessibilityMoveToIndexAtPosition:(long long)arg1;
 - (long long)_accessibilityTableIndexAdjustment;
 - (id)_accessibilityValueToPost:(id)arg1;
-- (void)_selectSectionForTouch:(id)arg1 withEvent:(id)arg2;
+- (BOOL)_updateSectionForTouch:(id)arg1 withEvent:(id)arg2;
 - (struct CGPoint)accessibilityActivationPoint;
 - (void)accessibilityDecrement;
 - (id)accessibilityFlowToElements;

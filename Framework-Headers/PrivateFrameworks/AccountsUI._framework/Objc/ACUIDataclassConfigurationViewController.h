@@ -48,6 +48,7 @@
 - (id)_activityInProgressTextForDataclass:(id)arg1 isBeingEnabled:(BOOL)arg2;
 - (BOOL)_confirmDeleteLocalDataForDataclasses:(id)arg1;
 - (BOOL)_confirmKeepLocalDataForDataclasses:(id)arg1;
+- (BOOL)_confirmSyncDelete;
 - (void)_enableAllProvisionedDataclassesWithoutRequringUserInteraction;
 - (BOOL)_isShowingDeleteAccountButton;
 - (void)_markDataclassSwitchCellAsDirty:(id)arg1;
@@ -55,6 +56,7 @@
 - (void)_notifyOfAccountSetupCompletion;
 - (id)_orderDataclassList:(id)arg1;
 - (BOOL)_promptUserToConfirmAccountDeletion;
+- (long long)_promptUserToConfirmAccountSyncDeletion;
 - (void)_setDataclass:(id)arg1 enabled:(BOOL)arg2;
 - (void)_showDelayedActivityInProgressUIWithMessage:(id)arg1;
 - (id)_specifiersForDataclasses:(id)arg1;
@@ -65,17 +67,20 @@
 - (id)dataclassSwitchStateForSpecifier:(id)arg1;
 - (long long)deleteButtonIndex;
 - (void)deleteButtonTapped:(id)arg1;
+- (id)deviceMessage;
 - (id)displayedAccountTypeString;
 - (id)displayedShortAccountTypeString;
 - (void)doneButtonTapped:(id)arg1;
 - (void)forceMailSetup;
 - (void)hideActivityInProgressUIWithDelay:(double)arg1;
 - (id)init;
+- (BOOL)isAppleMailAccount:(id)arg1;
 - (id)messageForAccountDeletionProgressUI;
 - (id)operationsHelper:(id)arg1 desiredDataclassActionFromPicker:(id)arg2;
 - (void)operationsHelper:(id)arg1 didRemoveAccount:(id)arg2 withSuccess:(BOOL)arg3 error:(id)arg4;
 - (void)operationsHelper:(id)arg1 didSaveAccount:(id)arg2 withSuccess:(BOOL)arg3 error:(id)arg4;
 - (BOOL)operationsHelper:(id)arg1 shouldRemoveAccount:(id)arg2;
+- (long long)operationsHelper:(id)arg1 shouldRemoveOrDisableAccount:(id)arg2;
 - (void)operationsHelper:(id)arg1 willRemoveAccount:(id)arg2;
 - (void)operationsHelper:(id)arg1 willSaveAccount:(id)arg2;
 - (id)otherSpecifiers;

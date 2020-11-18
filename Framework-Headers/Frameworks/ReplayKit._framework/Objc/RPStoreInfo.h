@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSString *itemURL; // @synthesize itemURL=_itemURL;
 
 - (void).cxx_destruct;
+- (id)dictionary;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOInstructionSet, GEOLatLng, GEOPBTransitRoutingIncidentMessage, GEOTransitArrivalInfo, NSMutableArray;
+@class GEOInstructionSet, GEOLatLng, GEOTransitArrivalInfo, GEOTransitBaseFare, GEOTransitSurcharge, NSMutableArray;
 
 @interface GEOTransitStep : PBCodable <NSCopying>
 {
@@ -16,6 +16,7 @@
     CDStruct_9f2792e4 _steppingArtworkIndexs;
     unsigned int _accessPointZilchIndex;
     GEOTransitArrivalInfo *_arrivalInfo;
+    GEOTransitBaseFare *_baseFare;
     unsigned int _defaultVehicleInfoIndex;
     unsigned int _departureFrequency;
     unsigned int _distanceInMeters;
@@ -30,8 +31,8 @@
     unsigned int _startingStopIndex;
     unsigned int _startingTime;
     unsigned int _steppingTransitIncidentMessageIndex;
+    GEOTransitSurcharge *_surcharge;
     NSMutableArray *_transferInfos;
-    GEOPBTransitRoutingIncidentMessage *_transitIncidentMessage;
     NSMutableArray *_vehicleInfos;
     unsigned int _walkingIndex;
     unsigned int _zilchIndex;
@@ -57,6 +58,7 @@
 
 @property (nonatomic) unsigned int accessPointZilchIndex; // @synthesize accessPointZilchIndex=_accessPointZilchIndex;
 @property (strong, nonatomic) GEOTransitArrivalInfo *arrivalInfo; // @synthesize arrivalInfo=_arrivalInfo;
+@property (strong, nonatomic) GEOTransitBaseFare *baseFare; // @synthesize baseFare=_baseFare;
 @property (nonatomic) unsigned int defaultVehicleInfoIndex; // @synthesize defaultVehicleInfoIndex=_defaultVehicleInfoIndex;
 @property (nonatomic) unsigned int departureFrequency; // @synthesize departureFrequency=_departureFrequency;
 @property (nonatomic) unsigned int distanceInMeters; // @synthesize distanceInMeters=_distanceInMeters;
@@ -64,6 +66,7 @@
 @property (strong, nonatomic) NSMutableArray *enterExitInfos; // @synthesize enterExitInfos=_enterExitInfos;
 @property (nonatomic) BOOL hasAccessPointZilchIndex;
 @property (readonly, nonatomic) BOOL hasArrivalInfo;
+@property (readonly, nonatomic) BOOL hasBaseFare;
 @property (nonatomic) BOOL hasDefaultVehicleInfoIndex;
 @property (nonatomic) BOOL hasDepartureFrequency;
 @property (nonatomic) BOOL hasDistanceInMeters;
@@ -78,7 +81,7 @@
 @property (nonatomic) BOOL hasStartingStopIndex;
 @property (nonatomic) BOOL hasStartingTime;
 @property (nonatomic) BOOL hasSteppingTransitIncidentMessageIndex;
-@property (readonly, nonatomic) BOOL hasTransitIncidentMessage;
+@property (readonly, nonatomic) BOOL hasSurcharge;
 @property (nonatomic) BOOL hasWalkingIndex;
 @property (nonatomic) BOOL hasZilchIndex;
 @property (strong, nonatomic) GEOInstructionSet *instructions; // @synthesize instructions=_instructions;
@@ -95,12 +98,17 @@
 @property (readonly, nonatomic) unsigned int *steppingArtworkIndexs;
 @property (readonly, nonatomic) unsigned long long steppingArtworkIndexsCount;
 @property (nonatomic) unsigned int steppingTransitIncidentMessageIndex; // @synthesize steppingTransitIncidentMessageIndex=_steppingTransitIncidentMessageIndex;
+@property (strong, nonatomic) GEOTransitSurcharge *surcharge; // @synthesize surcharge=_surcharge;
 @property (strong, nonatomic) NSMutableArray *transferInfos; // @synthesize transferInfos=_transferInfos;
-@property (strong, nonatomic) GEOPBTransitRoutingIncidentMessage *transitIncidentMessage; // @synthesize transitIncidentMessage=_transitIncidentMessage;
 @property (strong, nonatomic) NSMutableArray *vehicleInfos; // @synthesize vehicleInfos=_vehicleInfos;
 @property (nonatomic) unsigned int walkingIndex; // @synthesize walkingIndex=_walkingIndex;
 @property (nonatomic) unsigned int zilchIndex; // @synthesize zilchIndex=_zilchIndex;
 
++ (Class)enterExitInfoType;
++ (Class)transferInfoType;
++ (Class)vehicleInfoType;
+- (int)StringAsManeuverType:(id)arg1;
+- (int)StringAsSignificanceForEndNode:(id)arg1;
 - (void)addEnterExitInfo:(id)arg1;
 - (void)addRouteDetailsPrimaryArtworkIndex:(unsigned int)arg1;
 - (void)addSteppingArtworkIndex:(unsigned int)arg1;
@@ -120,11 +128,14 @@
 - (unsigned long long)enterExitInfosCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (long long)legTypeForManuever;
+- (id)maneuverTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (unsigned int)routeDetailsPrimaryArtworkIndexAtIndex:(unsigned long long)arg1;
 - (void)setRouteDetailsPrimaryArtworkIndexs:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (void)setSteppingArtworkIndexs:(unsigned int *)arg1 count:(unsigned long long)arg2;
+- (id)significanceForEndNodeAsString:(int)arg1;
 - (unsigned int)steppingArtworkIndexAtIndex:(unsigned long long)arg1;
 - (id)transferInfoAtIndex:(unsigned long long)arg1;
 - (unsigned long long)transferInfosCount;

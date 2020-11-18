@@ -48,7 +48,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isDeleteCandidate:(id)arg1;
 - (BOOL)isExtendedList;
-- (BOOL)isHiddenCandidatesList;
 - (id)keyboardBehaviors;
 - (void)layoutSubviews;
 - (unsigned long long)selectedSortIndex;

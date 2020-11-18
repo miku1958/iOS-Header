@@ -10,7 +10,7 @@
 {
 }
 
-+ (void)_playAlertWithType:(int)arg1 accountIdentifier:(id)arg2;
++ (void)_playAlertWithType:(long long)arg1 accountIdentifier:(id)arg2;
 + (void)_playNewMailSoundForAccount:(id)arg1;
 + (void)_playNewMailSoundForSubscribedConversation;
 + (void)_playNewMailSoundForVIP;

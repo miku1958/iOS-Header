@@ -8,12 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAddressFilter, GEOPDAmenitiesFilter, GEOPDBoundsFilter, GEOPDBusinessClaimFilter, GEOPDCaptionedPhotoFilter, GEOPDETAFilter, GEOPDEntityFilter, GEOPDExternalActionFilter, GEOPDFactoidFilter, GEOPDFlyoverFilter, GEOPDHoursFilter, GEOPDPhotoFilter, GEOPDPlaceInfoFilter, GEOPDRatingFilter, GEOPDRawAttributeFilter, GEOPDResultSnippetFilter, GEOPDReviewFilter, GEOPDRoadAccessInfoFilter, GEOPDStyleAttributesFilter, GEOPDTextBlockFilter, GEOPDTransitAttributionFilter, GEOPDTransitIncidentFilter, GEOPDTransitInfoFilter, GEOPDTransitInfoSnippetFilter, GEOPDTransitScheduleFilter;
+@class GEOPDAddressFilter, GEOPDAddressObjectFilter, GEOPDAmenitiesFilter, GEOPDBoundsFilter, GEOPDBusinessClaimFilter, GEOPDCaptionedPhotoFilter, GEOPDETAFilter, GEOPDEntityFilter, GEOPDExternalActionFilter, GEOPDFactoidFilter, GEOPDFlyoverFilter, GEOPDHoursFilter, GEOPDPhotoFilter, GEOPDPlaceInfoFilter, GEOPDPlacecardURLFilter, GEOPDRatingFilter, GEOPDRawAttributeFilter, GEOPDRestaurantReservationLinkFilter, GEOPDResultSnippetFilter, GEOPDReviewFilter, GEOPDRoadAccessInfoFilter, GEOPDSimpleRestaurantMenuTextFilter, GEOPDSpatialLookupFilter, GEOPDStyleAttributesFilter, GEOPDTextBlockFilter, GEOPDTipFilter, GEOPDTransitAttributionFilter, GEOPDTransitIncidentFilter, GEOPDTransitInfoFilter, GEOPDTransitInfoSnippetFilter, GEOPDTransitScheduleFilter;
 
 @interface GEOPDComponentFilter : PBCodable <NSCopying>
 {
     GEOPDRoadAccessInfoFilter *_accessInfoFilter;
     GEOPDAddressFilter *_addressFilter;
+    GEOPDAddressObjectFilter *_addressObjectFilter;
     GEOPDAmenitiesFilter *_amenitiesFilter;
     GEOPDBoundsFilter *_boundsFilter;
     GEOPDBusinessClaimFilter *_businessClaimFilter;
@@ -26,12 +27,17 @@
     GEOPDHoursFilter *_hoursFilter;
     GEOPDPhotoFilter *_photoFilter;
     GEOPDPlaceInfoFilter *_placeInfoFilter;
+    GEOPDPlacecardURLFilter *_placecardUrlFilter;
     GEOPDRatingFilter *_ratingFilter;
     GEOPDRawAttributeFilter *_rawAttributeFilter;
+    GEOPDRestaurantReservationLinkFilter *_restaurantReservationLinkFilter;
     GEOPDResultSnippetFilter *_resultSnippetFilter;
     GEOPDReviewFilter *_reviewFilter;
+    GEOPDSimpleRestaurantMenuTextFilter *_simpleRestaurantMenuTextFilter;
+    GEOPDSpatialLookupFilter *_spatialLookupFilter;
     GEOPDStyleAttributesFilter *_styleAttributesFilter;
     GEOPDTextBlockFilter *_textBlockFilter;
+    GEOPDTipFilter *_tipFilter;
     GEOPDTransitAttributionFilter *_transitAttributionFilter;
     GEOPDTransitIncidentFilter *_transitIncidentFilter;
     GEOPDTransitInfoFilter *_transitInfoFilter;
@@ -41,6 +47,7 @@
 
 @property (strong, nonatomic) GEOPDRoadAccessInfoFilter *accessInfoFilter; // @synthesize accessInfoFilter=_accessInfoFilter;
 @property (strong, nonatomic) GEOPDAddressFilter *addressFilter; // @synthesize addressFilter=_addressFilter;
+@property (strong, nonatomic) GEOPDAddressObjectFilter *addressObjectFilter; // @synthesize addressObjectFilter=_addressObjectFilter;
 @property (strong, nonatomic) GEOPDAmenitiesFilter *amenitiesFilter; // @synthesize amenitiesFilter=_amenitiesFilter;
 @property (strong, nonatomic) GEOPDBoundsFilter *boundsFilter; // @synthesize boundsFilter=_boundsFilter;
 @property (strong, nonatomic) GEOPDBusinessClaimFilter *businessClaimFilter; // @synthesize businessClaimFilter=_businessClaimFilter;
@@ -52,6 +59,7 @@
 @property (strong, nonatomic) GEOPDFlyoverFilter *flyoverFilter; // @synthesize flyoverFilter=_flyoverFilter;
 @property (readonly, nonatomic) BOOL hasAccessInfoFilter;
 @property (readonly, nonatomic) BOOL hasAddressFilter;
+@property (readonly, nonatomic) BOOL hasAddressObjectFilter;
 @property (readonly, nonatomic) BOOL hasAmenitiesFilter;
 @property (readonly, nonatomic) BOOL hasBoundsFilter;
 @property (readonly, nonatomic) BOOL hasBusinessClaimFilter;
@@ -64,12 +72,17 @@
 @property (readonly, nonatomic) BOOL hasHoursFilter;
 @property (readonly, nonatomic) BOOL hasPhotoFilter;
 @property (readonly, nonatomic) BOOL hasPlaceInfoFilter;
+@property (readonly, nonatomic) BOOL hasPlacecardUrlFilter;
 @property (readonly, nonatomic) BOOL hasRatingFilter;
 @property (readonly, nonatomic) BOOL hasRawAttributeFilter;
+@property (readonly, nonatomic) BOOL hasRestaurantReservationLinkFilter;
 @property (readonly, nonatomic) BOOL hasResultSnippetFilter;
 @property (readonly, nonatomic) BOOL hasReviewFilter;
+@property (readonly, nonatomic) BOOL hasSimpleRestaurantMenuTextFilter;
+@property (readonly, nonatomic) BOOL hasSpatialLookupFilter;
 @property (readonly, nonatomic) BOOL hasStyleAttributesFilter;
 @property (readonly, nonatomic) BOOL hasTextBlockFilter;
+@property (readonly, nonatomic) BOOL hasTipFilter;
 @property (readonly, nonatomic) BOOL hasTransitAttributionFilter;
 @property (readonly, nonatomic) BOOL hasTransitIncidentFilter;
 @property (readonly, nonatomic) BOOL hasTransitInfoFilter;
@@ -78,12 +91,17 @@
 @property (strong, nonatomic) GEOPDHoursFilter *hoursFilter; // @synthesize hoursFilter=_hoursFilter;
 @property (strong, nonatomic) GEOPDPhotoFilter *photoFilter; // @synthesize photoFilter=_photoFilter;
 @property (strong, nonatomic) GEOPDPlaceInfoFilter *placeInfoFilter; // @synthesize placeInfoFilter=_placeInfoFilter;
+@property (strong, nonatomic) GEOPDPlacecardURLFilter *placecardUrlFilter; // @synthesize placecardUrlFilter=_placecardUrlFilter;
 @property (strong, nonatomic) GEOPDRatingFilter *ratingFilter; // @synthesize ratingFilter=_ratingFilter;
 @property (strong, nonatomic) GEOPDRawAttributeFilter *rawAttributeFilter; // @synthesize rawAttributeFilter=_rawAttributeFilter;
+@property (strong, nonatomic) GEOPDRestaurantReservationLinkFilter *restaurantReservationLinkFilter; // @synthesize restaurantReservationLinkFilter=_restaurantReservationLinkFilter;
 @property (strong, nonatomic) GEOPDResultSnippetFilter *resultSnippetFilter; // @synthesize resultSnippetFilter=_resultSnippetFilter;
 @property (strong, nonatomic) GEOPDReviewFilter *reviewFilter; // @synthesize reviewFilter=_reviewFilter;
+@property (strong, nonatomic) GEOPDSimpleRestaurantMenuTextFilter *simpleRestaurantMenuTextFilter; // @synthesize simpleRestaurantMenuTextFilter=_simpleRestaurantMenuTextFilter;
+@property (strong, nonatomic) GEOPDSpatialLookupFilter *spatialLookupFilter; // @synthesize spatialLookupFilter=_spatialLookupFilter;
 @property (strong, nonatomic) GEOPDStyleAttributesFilter *styleAttributesFilter; // @synthesize styleAttributesFilter=_styleAttributesFilter;
 @property (strong, nonatomic) GEOPDTextBlockFilter *textBlockFilter; // @synthesize textBlockFilter=_textBlockFilter;
+@property (strong, nonatomic) GEOPDTipFilter *tipFilter; // @synthesize tipFilter=_tipFilter;
 @property (strong, nonatomic) GEOPDTransitAttributionFilter *transitAttributionFilter; // @synthesize transitAttributionFilter=_transitAttributionFilter;
 @property (strong, nonatomic) GEOPDTransitIncidentFilter *transitIncidentFilter; // @synthesize transitIncidentFilter=_transitIncidentFilter;
 @property (strong, nonatomic) GEOPDTransitInfoFilter *transitInfoFilter; // @synthesize transitInfoFilter=_transitInfoFilter;
@@ -96,12 +114,15 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)initAddressObjectFilterWithLibraryVersion:(id)arg1;
 - (id)initCaptionedPhotoFilterWithTraits:(id)arg1;
 - (id)initETAFilterWithTraits:(id)arg1;
 - (id)initEntityFilterWithSpokenNames;
 - (id)initPhotoFilterWithTraits:(id)arg1;
+- (id)initRestaurantReservationLinkFilterWithTraits:(id)arg1;
 - (id)initResultSnippetFilterWithTraits:(id)arg1;
 - (id)initReviewUserPhotoFilterWithTraits:(id)arg1;
+- (id)initTipUserPhotoFilterWithTraits:(id)arg1;
 - (id)initTransitScheduleFilterWithTraits:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

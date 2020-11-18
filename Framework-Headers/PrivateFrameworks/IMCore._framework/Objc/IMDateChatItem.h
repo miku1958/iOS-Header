@@ -12,7 +12,7 @@
 {
 }
 
-@property (readonly, strong, nonatomic) NSDate *date;
+@property (readonly, nonatomic) NSDate *date;
 
 - (id)_initWithItem:(id)arg1;
 

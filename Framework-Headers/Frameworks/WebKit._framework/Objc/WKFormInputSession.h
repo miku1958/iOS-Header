@@ -8,27 +8,39 @@
 
 #import <WebKit/_WKFormInputSession-Protocol.h>
 
-@class NSString, WKContentView;
-@protocol NSSecureCoding;
+@class NSArray, NSString, UIView, WKContentView;
+@protocol NSSecureCoding, _WKFocusedElementInfo;
 
 __attribute__((visibility("hidden")))
 @interface WKFormInputSession : NSObject <_WKFormInputSession>
 {
     WKContentView *_contentView;
     struct RetainPtr<NSObject<NSSecureCoding>> _userObject;
+    struct RetainPtr<WKFocusedElementInfo> _focusedElementInfo;
+    struct RetainPtr<UIView> _customInputView;
+    struct RetainPtr<NSArray<UITextSuggestion *>> _suggestions;
+    struct RetainPtr<NSString> _textContentType;
+    BOOL _accessoryViewShouldNotShow;
+    BOOL _forceSecureTextEntry;
 }
 
 @property (copy, nonatomic) NSString *accessoryViewCustomButtonTitle;
+@property (nonatomic) BOOL accessoryViewShouldNotShow;
+@property (strong, nonatomic) UIView *customInputView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<_WKFocusedElementInfo> focusedElementInfo;
+@property (nonatomic) BOOL forceSecureTextEntry;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *suggestions;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *textContentType;
 @property (readonly, nonatomic) NSObject<NSSecureCoding> *userObject;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithContentView:(id)arg1 userObject:(id)arg2;
+- (id)initWithContentView:(id)arg1 focusedElementInfo:(id)arg2 userObject:(id)arg3;
 - (void)invalidate;
 
 @end

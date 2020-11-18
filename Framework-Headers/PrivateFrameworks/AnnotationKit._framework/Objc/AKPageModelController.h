@@ -23,6 +23,7 @@
 
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 - (void).cxx_destruct;
+- (void)_enableEditObservationForAnnotationIfNew:(id)arg1;
 - (void)addCropToolAnnotation;
 - (void)addSelectedAnnotations:(id)arg1;
 - (void)addSelectedAnnotationsObject:(id)arg1;
@@ -30,12 +31,14 @@
 - (void)bringSelectedAnnotationsForward;
 - (void)bringSelectedAnnotationsToFront;
 - (BOOL)containsAnnotation:(id)arg1;
+- (void)establishAnnotationParentChildRelationships;
 - (BOOL)hasMaskBorderAnnotation;
 - (id)init;
 - (id)initWithArchivableRepresentation:(id)arg1;
 - (void)insertAnnotations:(id)arg1 atIndexes:(id)arg2;
 - (void)insertObject:(id)arg1 inAnnotationsAtIndex:(unsigned long long)arg2;
 - (void)intersectSelectedAnnotations:(id)arg1;
+- (void)removeAllAnnotations;
 - (void)removeAnnotationsAtIndexes:(id)arg1;
 - (void)removeCropToolAnnotation;
 - (void)removeObjectFromAnnotationsAtIndex:(unsigned long long)arg1;

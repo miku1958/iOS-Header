@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SceneKit/SCNRenderContext-Protocol.h>
 
@@ -18,6 +18,9 @@ __attribute__((visibility("hidden")))
     long long _currentFrameIndex;
     struct __C3DEngineStats *__engineStats;
     SCNRenderTargetRegistry *_renderTargetRegistry;
+    BOOL enablesDeferredShading;
+    BOOL wantsWideGamut;
+    BOOL isOpaque;
     double contentScaleFactor;
     long long sampleCount;
 }
@@ -26,31 +29,37 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long currentFrameIndex;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL enablesDeferredShading; // @synthesize enablesDeferredShading;
 @property (readonly, nonatomic) unsigned int features;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isOpaque; // @synthesize isOpaque;
 @property (readonly, nonatomic) int profile;
 @property (readonly, nonatomic) SCNRenderTargetRegistry *renderTargetRegistry; // @synthesize renderTargetRegistry=_renderTargetRegistry;
 @property (readonly, nonatomic) id<SCNResourceManager> resourceManager;
 @property (nonatomic) long long sampleCount; // @synthesize sampleCount;
 @property (nonatomic) BOOL showsAuthoringEnvironment;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL wantsWideGamut; // @synthesize wantsWideGamut;
 
+- (void)beginDeferredLighting;
 - (void)beginFrame:(id)arg1;
-- (BOOL)beginRenderPass:(struct __C3DFXPass *)arg1 isFinalTechnique:(BOOL)arg2;
+- (BOOL)beginRenderPass:(struct __C3DFXPass *)arg1 cubemapFaceIndex:(unsigned long long)arg2 isFinalTechnique:(BOOL)arg3;
 - (struct __C3DMeshElement *)createVolatileMeshElementOfType:(BOOL)arg1 primitiveCount:(long long)arg2 bytesPerIndex:(long long)arg3;
 - (void)dealloc;
 - (void)drawFullScreenQuadForPass:(struct __C3DFXPass *)arg1;
 - (void)drawRenderElement:(struct __C3DRendererElement *)arg1 withPass:(struct __C3DFXPass *)arg2;
+- (void)endDeferredLighting;
 - (void)endFrameWaitingUntilCompleted:(BOOL)arg1;
 - (void)endRenderPass;
 - (id)init;
 - (BOOL)mapVolatileMesh:(struct __C3DMesh *)arg1 verticesCount:(long long)arg2;
-- (id)newRenderTargetWithDescription:(CDStruct_2e3d5ba3 *)arg1 size: /* Error: Ran out of types for this method. */;
+- (id)newRenderTargetWithDescription:(CDStruct_fd8065c6 *)arg1 size: /* Error: Ran out of types for this method. */;
 - (void)popDebugGroup;
 - (void)processRendererElement:(struct __C3DRendererElement *)arg1;
 - (void)processRendererElement:(struct __C3DRendererElement *)arg1 engineIterationContext:(CDStruct_256c7a3c *)arg2;
 - (void)pushDebugGroup:(id)arg1;
 - (void)renderBackground:(struct __C3DEffectSlot *)arg1 engineContext:(struct __C3DEngineContext *)arg2;
+- (void)renderLight:(struct __C3DNode *)arg1 lightType:(int)arg2 lightData:(struct __C3DLightRuntimeData *)arg3;
 - (void)renderMesh:(struct __C3DMesh *)arg1 meshElement:(struct __C3DMeshElement *)arg2 withProgram:(struct __C3DFXProgram *)arg3 engineContext:(struct __C3DEngineContext *)arg4 transform:(union C3DMatrix4x4)arg5 color:(const struct C3DColor4 *)arg6 rasterizerStates:(struct __C3DRasterizerStates *)arg7 blendState:(struct __C3DBlendStates *)arg8 texture:(struct __C3DImage *)arg9 depthBias:(BOOL)arg10;
 - (void)setBackgroundColor:(struct C3DColor4)arg1;
 - (void)startProcessingRendererElementsWithEngineIterationContext:(CDStruct_256c7a3c *)arg1;

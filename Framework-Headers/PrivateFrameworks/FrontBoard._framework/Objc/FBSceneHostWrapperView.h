@@ -50,6 +50,7 @@
 @property (readonly, strong, nonatomic) FBScene *scene; // @synthesize scene=_scene;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_backgroundColorWhileHosting;
 - (id)_backgroundColorWhileNotHosting;
 - (id)_hitTest:(struct CGPoint)arg1 withEvent:(id)arg2 windowServerHitTestWindow:(id)arg3;

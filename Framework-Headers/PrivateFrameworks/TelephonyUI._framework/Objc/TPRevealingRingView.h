@@ -6,15 +6,18 @@
 
 #import <UIKit/UIView.h>
 
-@class TPBackgroundRoundedRectView, TPPathView, UIColor;
+@class UIColor, _TPTemplatedColoredImageView;
 
 @interface TPRevealingRingView : UIView
 {
-    BOOL _revealed;
-    TPBackgroundRoundedRectView *_outerView;
-    TPPathView *_outerGammaView;
-    TPPathView *_innerGammaView;
-    TPPathView *_innerView;
+    CDStruct_f15746dd _outerViewDrawingProperties;
+    _TPTemplatedColoredImageView *_outerView;
+    CDStruct_f15746dd _outerGammaViewDrawingProperties;
+    _TPTemplatedColoredImageView *_outerGammaView;
+    CDStruct_f15746dd _innerGammaViewDrawingProperties;
+    _TPTemplatedColoredImageView *_innerGammaView;
+    CDStruct_f15746dd _innerViewDrawingProperties;
+    _TPTemplatedColoredImageView *_innerView;
     UIColor *_colorOutsideRing;
     UIColor *_colorInsideRing;
     struct UIEdgeInsets _paddingOutsideRing;
@@ -26,7 +29,8 @@
     double _cornerRadius;
     int _animationStyle;
     BOOL _isCircularRing;
-    BOOL _innerGammaAlpha;
+    double _innerGammaAlpha;
+    BOOL _revealed;
     BOOL _gammaBoostOuterRing;
     BOOL _gammaBoostInside;
     double _alphaInsideRing;
@@ -49,17 +53,18 @@
 @property (readonly, nonatomic) struct CGSize ringSize; // @dynamic ringSize;
 @property (nonatomic) double unrevealAnimationDuration; // @synthesize unrevealAnimationDuration=_unrevealAnimationDuration;
 
++ (id)classIdentifier;
 - (void).cxx_destruct;
 - (void)_adjustGammaBoostIfNecessary;
 - (void)_animateForReveal:(BOOL)arg1 withDuration:(float)arg2 delay:(double)arg3;
-- (id)_bezierPathForRect:(struct CGRect)arg1 cornerRadius:(double)arg2;
 - (void)_calculateOuter:(struct CGRect *)arg1 inner:(struct CGRect *)arg2 newXOffset:(double *)arg3 newYOffset:(double *)arg4 withScale:(double)arg5;
+- (void)_computeInnerGammaViewDrawingPropertiesWithScale:(double)arg1;
+- (void)_computeInnerViewDrawingPropertiesWithScale:(double)arg1;
+- (void)_computeOuterGammaViewDrawingPropertiesWithScale:(double)arg1;
 - (void)_evaluateCircularness;
 - (BOOL)_isSquare:(struct CGSize)arg1;
-- (void)_setInnerCircleScale:(double)arg1;
-- (void)_setInnerGammaScale:(double)arg1;
-- (void)_setOuterGammaScale:(double)arg1;
 - (BOOL)_shouldDrawAsCircle:(struct CGSize)arg1 cornerRadius:(double)arg2;
+- (id)description;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 paddingOutsideRing:(struct UIEdgeInsets)arg2;
 - (struct CGSize)intrinsicContentSize;

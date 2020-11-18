@@ -8,13 +8,14 @@
 
 #import <SoftwareUpdateServices/NSKeyedUnarchiverDelegate-Protocol.h>
 
-@class NSDate, NSString, SUDescriptor, SUDownload, _SUAutoInstallOperationModel;
+@class NSDate, NSDictionary, NSString, SUDescriptor, SUDownload, _SUAutoInstallOperationModel;
 
 @interface SUState : NSObject <NSKeyedUnarchiverDelegate>
 {
     SUDownload *_lastDownload;
     SUDescriptor *_lastScannedDescriptor;
     SUDescriptor *_currentDescriptor;
+    SUDescriptor *_failedPatchDescriptor;
     NSDate *_lastScannedDescriptorTime;
     NSDate *_scheduledManualDownloadWifiPeriodEndTime;
     NSDate *_scheduledAutodownloadWifiPeriodEndTime;
@@ -25,6 +26,7 @@
     NSString *_lastProductBuild;
     NSString *_lastProductType;
     NSString *_lastReleaseType;
+    NSDictionary *_unlockCallbacks;
     _SUAutoInstallOperationModel *_lastAutoInstallOperationModel;
 }
 
@@ -32,6 +34,7 @@
 @property (copy, nonatomic) SUDescriptor *currentDescriptor; // @synthesize currentDescriptor=_currentDescriptor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) SUDescriptor *failedPatchDescriptor; // @synthesize failedPatchDescriptor=_failedPatchDescriptor;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _SUAutoInstallOperationModel *lastAutoInstallOperationModel; // @synthesize lastAutoInstallOperationModel=_lastAutoInstallOperationModel;
 @property (copy, nonatomic) SUDownload *lastDownload; // @synthesize lastDownload=_lastDownload;
@@ -46,6 +49,7 @@
 @property (strong, nonatomic) NSDate *scheduledManualDownloadWifiPeriodEndTime; // @synthesize scheduledManualDownloadWifiPeriodEndTime=_scheduledManualDownloadWifiPeriodEndTime;
 @property (nonatomic) BOOL stashbagPersisted; // @synthesize stashbagPersisted=_stashbagPersisted;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSDictionary *unlockCallbacks; // @synthesize unlockCallbacks=_unlockCallbacks;
 
 + (id)currentState;
 + (id)statePath;

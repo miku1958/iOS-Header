@@ -6,18 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class ISDialog, UIAlertView;
+@class ISDialog;
+@protocol SUScriptModalDialogDelegate;
 
 @interface SUScriptModalDialog : NSObject
 {
-    UIAlertView *_alert;
-    long long _buttonIndex;
     ISDialog *_dialog;
+    id<SUScriptModalDialogDelegate> _delegate;
 }
+
+@property (nonatomic) id<SUScriptModalDialogDelegate> delegate; // @synthesize delegate=_delegate;
 
 + (id)titleForURL:(id)arg1;
 - (id)_copyResponseByRunningModal;
-- (void)alertView:(id)arg1 clickedButtonAtIndex:(long long)arg2;
 - (id)copyResponseByRunningModal;
 - (void)dealloc;
 - (id)initWithDialog:(id)arg1;

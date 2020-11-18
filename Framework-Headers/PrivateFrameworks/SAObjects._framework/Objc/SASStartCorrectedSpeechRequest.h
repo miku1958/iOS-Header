@@ -12,8 +12,15 @@
 {
 }
 
+@property (nonatomic) long long combinedRank;
+@property (nonatomic) double combinedScore;
 @property (copy, nonatomic) NSString *interactionId;
+@property (nonatomic) BOOL onDeviceUtterancesPresent;
+@property (nonatomic) long long originalRank;
+@property (nonatomic) double originalScore;
+@property (copy, nonatomic) NSString *previousUtterance;
 @property (copy, nonatomic) NSString *sessionId;
+@property (copy, nonatomic) NSString *utteranceSource;
 
 + (id)startCorrectedSpeechRequest;
 + (id)startCorrectedSpeechRequestWithDictionary:(id)arg1 context:(id)arg2;

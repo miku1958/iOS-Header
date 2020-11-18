@@ -22,12 +22,12 @@
 @property (strong, nonatomic) struct CGPath *path; // @synthesize path=_path;
 
 + (struct CGRect)resizeFrameForDisplay:(struct CGRect)arg1;
+- (void).cxx_destruct;
 - (void)_orderIn;
 - (void)_orderOut;
 - (id)_retrieveBezierPaths:(struct CGRect)arg1 usingRealPaths:(BOOL *)arg2;
 - (id)_retrieveFrameBezierPath:(struct CGRect)arg1;
 - (id)_retrievePathBezierPaths;
-- (void)dealloc;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isHidden;

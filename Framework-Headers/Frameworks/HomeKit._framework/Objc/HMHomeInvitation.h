@@ -9,12 +9,13 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMDelegateCaller, HMHome, HMHomeInvitationData, NSDate, NSString, NSUUID;
+@class HMDelegateCaller, HMHome, HMHomeInvitationData, NSDate, NSString, NSURL, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMHomeInvitation : NSObject <HMObjectMerge, NSSecureCoding>
 {
     HMHome *_home;
+    NSURL *_homeObjectURL;
     HMHomeInvitationData *_invitationData;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
@@ -28,6 +29,7 @@
 @property (readonly, copy, nonatomic) NSDate *endDate;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMHome *home; // @synthesize home=_home;
+@property (readonly, nonatomic) NSURL *homeObjectURL; // @synthesize homeObjectURL=_homeObjectURL;
 @property (readonly, copy, nonatomic) NSUUID *identifier;
 @property (strong, nonatomic) HMHomeInvitationData *invitationData; // @synthesize invitationData=_invitationData;
 @property (readonly, nonatomic) long long invitationState;

@@ -21,6 +21,7 @@
     RCAcousticAnnotationView *_acousticAnnotationView;
     UIView *_bottomLineView;
     UIView *_topLineView;
+    UIView *_backgroundView;
     NSMutableArray *_timeMarkerViews;
     NSTimer *_overlayAutoscrollTimer;
     CDStruct_73a5d3ca _visibleTimeRangeBeforeSelectionTracking;

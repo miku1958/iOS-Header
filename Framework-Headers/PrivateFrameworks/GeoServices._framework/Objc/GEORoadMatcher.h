@@ -13,6 +13,7 @@
 @interface GEORoadMatcher : NSObject <GEOMapAccessRestrictions>
 {
     GEOMapAccess *_map;
+    BOOL _useRawLocations;
 }
 
 @property (readonly, nonatomic) BOOL allowsNetworkTileLoad;
@@ -20,6 +21,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL useRawLocations; // @synthesize useRawLocations=_useRawLocations;
 
 - (id)_bestSegmentForTile:(id)arg1 location:(id)arg2 transportType:(int)arg3;
 - (id)_tilesAround:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2;

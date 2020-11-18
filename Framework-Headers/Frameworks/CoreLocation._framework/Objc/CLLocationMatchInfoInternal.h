@@ -11,7 +11,7 @@
 @interface CLLocationMatchInfoInternal : NSObject <NSCopying>
 {
     long long fMatchQuality;
-    CDStruct_2c43369c fMatchCoordinate;
+    struct CLLocationCoordinate2D fMatchCoordinate;
     double fMatchCourse;
     int fMatchFormOfWay;
     int fMatchRoadClass;
@@ -19,7 +19,7 @@
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithMatchQuality:(long long)arg1 matchCoordinate:(CDStruct_c3b9c2ee)arg2 matchCourse:(double)arg3 matchFormOfWay:(int)arg4 matchRoadClass:(int)arg5 matchShifted:(BOOL)arg6;
+- (id)initWithMatchQuality:(long long)arg1 matchCoordinate:(struct CLLocationCoordinate2D)arg2 matchCourse:(double)arg3 matchFormOfWay:(int)arg4 matchRoadClass:(int)arg5 matchShifted:(BOOL)arg6;
 
 @end
 

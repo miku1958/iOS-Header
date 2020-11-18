@@ -22,7 +22,7 @@
 @property (readonly, copy) NSDictionary *userInfo;
 
 + (BOOL)supportsSecureCoding;
-- (struct _CFCachedURLResponse *)_CFCachedURLResponse;
+- (const struct _CFCachedURLResponse *)_CFCachedURLResponse;
 - (void)_deallocInternalCFCachedURLResponse;
 - (id)_initWithCFCachedURLResponse:(struct _CFCachedURLResponse *)arg1;
 - (void)_reestablishInternalCFCachedURLResponse:(struct _CFCachedURLResponse *)arg1;

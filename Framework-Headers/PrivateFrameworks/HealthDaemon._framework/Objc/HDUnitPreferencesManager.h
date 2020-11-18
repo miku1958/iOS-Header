@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSHashTable, NSMutableDictionary;
-@protocol HDHealthDaemon, OS_dispatch_queue;
+@class HDProfile, NSDictionary, NSHashTable, NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface HDUnitPreferencesManager : NSObject
 {
-    id<HDHealthDaemon> _healthDaemon;
+    HDProfile *_profile;
     NSDictionary *_unitPreferences;
     NSMutableDictionary *_defaultPreferredUnits;
     NSHashTable *_observers;
@@ -36,7 +36,7 @@
 - (void)_unitPreferencesDidChange;
 - (void)addUnitPreferenceObserver:(id)arg1;
 - (void)dealloc;
-- (id)initWithHealthDaemon:(id)arg1;
+- (id)initWithProfile:(id)arg1;
 - (void)removeUnitPreferenceObserver:(id)arg1;
 - (BOOL)setPreferredUnit:(id)arg1 forType:(id)arg2 error:(id *)arg3;
 - (void)setPreferredUnitToDefaultIfNotSetForType:(id)arg1;

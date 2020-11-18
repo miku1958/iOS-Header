@@ -23,29 +23,28 @@
         unsigned int invalidateDataSource:1;
         unsigned int invalidateEverything:1;
     } _invalidationContextFlags;
+    BOOL _initiatedFromReloadData;
+    BOOL _retainExistingSizingInfoForEstimates;
 }
 
 @property (nonatomic) struct CGPoint contentOffsetAdjustment;
 @property (nonatomic) struct CGSize contentSizeAdjustment;
-@property (nonatomic) struct CGPoint interactiveMovementTarget;
-@property (nonatomic) BOOL invalidateDataSourceCounts;
-@property (nonatomic) BOOL invalidateEverything;
+@property (nonatomic, getter=_initiatedFromReloadData, setter=_setInitiatedFromReloadData:) BOOL initiatedFromReloadData; // @synthesize initiatedFromReloadData=_initiatedFromReloadData;
+@property (nonatomic, setter=_setInteractiveMovementTarget:) struct CGPoint interactiveMovementTarget;
+@property (nonatomic, setter=_setInvalidateDataSourceCounts:) BOOL invalidateDataSourceCounts;
+@property (nonatomic, setter=_setInvalidateEverything:) BOOL invalidateEverything;
 @property (readonly, nonatomic) NSDictionary *invalidatedDecorationIndexPaths;
 @property (readonly, nonatomic) NSArray *invalidatedItemIndexPaths;
 @property (readonly, nonatomic) NSDictionary *invalidatedSupplementaryIndexPaths;
-@property (copy, nonatomic) NSArray *previousIndexPathsForInteractivelyMovingItems;
-@property (copy, nonatomic) NSArray *targetIndexPathsForInteractivelyMovingItems;
+@property (copy, nonatomic, setter=_setPreviousIndexPathsForInteractivelyMovingItems:) NSArray *previousIndexPathsForInteractivelyMovingItems;
+@property (nonatomic, getter=_retainExistingSizingInfoForEstimates, setter=_setRetainExistingSizingInfoForEstimates:) BOOL retainExistingSizingInfoForEstimates; // @synthesize retainExistingSizingInfoForEstimates=_retainExistingSizingInfoForEstimates;
+@property (copy, nonatomic, setter=_setTargetIndexPathsForInteractivelyMovingItems:) NSArray *targetIndexPathsForInteractivelyMovingItems;
 @property (strong, nonatomic, getter=_updateItems, setter=_setUpdateItems:) NSArray *updateItems;
 
 - (void).cxx_destruct;
 - (void)_invalidateSupplementaryElementsOfKind:(id)arg1 atIndexPaths:(id)arg2;
 - (id)_invalidatedSupplementaryViews;
-- (void)_setInteractiveMovementTarget:(struct CGPoint)arg1;
-- (void)_setInvalidateDataSourceCounts:(BOOL)arg1;
-- (void)_setInvalidateEverything:(BOOL)arg1;
 - (void)_setInvalidatedSupplementaryViews:(id)arg1;
-- (void)_setPreviousIndexPathsForInteractivelyMovingItems:(id)arg1;
-- (void)_setTargetIndexPathsForInteractivelyMovingItems:(id)arg1;
 - (void)invalidateDecorationElementsOfKind:(id)arg1 atIndexPaths:(id)arg2;
 - (void)invalidateItemsAtIndexPaths:(id)arg1;
 - (void)invalidateSupplementaryElementsOfKind:(id)arg1 atIndexPaths:(id)arg2;

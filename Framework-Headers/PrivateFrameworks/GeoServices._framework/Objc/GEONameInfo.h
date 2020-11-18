@@ -41,6 +41,8 @@
 @property (nonatomic) int shieldType; // @synthesize shieldType=_shieldType;
 @property (nonatomic) int signType; // @synthesize signType=_signType;
 
+- (int)StringAsPhoneticType:(id)arg1;
+- (int)StringAsSignType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -49,7 +51,9 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)phoneticTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)signTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

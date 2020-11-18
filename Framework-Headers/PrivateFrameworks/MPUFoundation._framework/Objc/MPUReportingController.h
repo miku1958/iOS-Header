@@ -4,27 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <MediaPlaybackCore/MPCReportingController.h>
 
-@class NSArray, NSMutableArray;
-@protocol OS_dispatch_queue;
-
-@interface MPUReportingController : NSObject
+@interface MPUReportingController : MPCReportingController
 {
-    NSObject<OS_dispatch_queue> *_accessQueue;
-    NSMutableArray *_childReportingControllers;
-    MPUReportingController *_parentReportingController;
 }
-
-@property (readonly, copy, nonatomic) NSArray *childReportingControllers;
-@property (weak, nonatomic) MPUReportingController *parentReportingController;
-
-- (void).cxx_destruct;
-- (void)_recordReportingEvents:(id)arg1;
-- (void)addChildReportingController:(id)arg1;
-- (id)init;
-- (void)recordReportingEvents:(id)arg1;
-- (void)removeChildReportingController:(id)arg1;
 
 @end
 

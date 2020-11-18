@@ -50,6 +50,7 @@
     BOOL _retry;
     long long _sentBytesCount;
     long long _receivedBytesCount;
+    NSString *_sourceApplicationBundleIdentifier;
     DATaskManager *_strongTaskManagerDuringDelegateCallout;
 }
 
@@ -66,6 +67,7 @@
 @property (readonly, nonatomic) ASParseContext *parseContext; // @synthesize parseContext=_parseContext;
 @property (nonatomic) long long receivedBytesCount; // @synthesize receivedBytesCount=_receivedBytesCount;
 @property (nonatomic) long long sentBytesCount; // @synthesize sentBytesCount=_sentBytesCount;
+@property (copy, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
 @property (strong, nonatomic) DATaskManager *strongTaskManagerDuringDelegateCallout; // @synthesize strongTaskManagerDuringDelegateCallout=_strongTaskManagerDuringDelegateCallout;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) DATaskManager *taskManager; // @synthesize taskManager=_taskManager;
@@ -122,6 +124,7 @@
 - (BOOL)isInCallOutToDelegate;
 - (void)loadRequest:(id)arg1;
 - (int)numDownloadedElements;
+- (id)onBehalfOfBundleIdentifier;
 - (id)parameterData;
 - (double)percentComplete;
 - (void)performTask;

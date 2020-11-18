@@ -8,15 +8,19 @@
 
 @interface NSArray (BaseBoard)
 - (BOOL)bs_containsObjectPassingTest:(CDUnknownBlockType)arg1;
+- (id)bs_differenceWithArray:(id)arg1;
 - (void)bs_each:(CDUnknownBlockType)arg1;
+- (void)bs_enumerateObjectsOfClass:(Class)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)bs_filter:(CDUnknownBlockType)arg1;
 - (id)bs_first:(unsigned long long)arg1;
 - (id)bs_firstObjectOfClass:(Class)arg1;
 - (id)bs_firstObjectOfClassNamed:(id)arg1;
 - (id)bs_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)bs_flatten;
+- (id)bs_flattenedDifferenceWithArray:(id)arg1;
 - (id)bs_map:(CDUnknownBlockType)arg1;
 - (id)bs_mapNoNulls:(CDUnknownBlockType)arg1;
+- (id)bs_objectsOfClass:(Class)arg1;
 - (id)bs_reverse;
 @end
 

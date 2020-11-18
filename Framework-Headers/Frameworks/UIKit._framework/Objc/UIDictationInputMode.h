@@ -18,6 +18,7 @@
 @property (strong, nonatomic) UITouch *triggeringTouch; // @synthesize triggeringTouch=_triggeringTouch;
 @property (readonly, nonatomic) Class viewControllerClass;
 
++ (BOOL)currentInputModeSupportsDictation;
 - (void)dealloc;
 
 @end

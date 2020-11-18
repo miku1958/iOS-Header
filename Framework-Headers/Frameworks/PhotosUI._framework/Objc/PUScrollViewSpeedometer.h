@@ -40,15 +40,13 @@
 @property (nonatomic) double fastUpperThreshold; // @synthesize fastUpperThreshold=_fastUpperThreshold;
 @property (nonatomic) double mediumLowerThreshold; // @synthesize mediumLowerThreshold=_mediumLowerThreshold;
 @property (nonatomic) double mediumUpperThreshold; // @synthesize mediumUpperThreshold=_mediumUpperThreshold;
-@property (nonatomic) long long regime; // @synthesize regime=_regime;
-@property (nonatomic) struct CGPoint scrollSpeed; // @synthesize scrollSpeed=_scrollSpeed;
+@property (nonatomic, setter=_setRegime:) long long regime; // @synthesize regime=_regime;
+@property (nonatomic, setter=_setScrollSpeed:) struct CGPoint scrollSpeed; // @synthesize scrollSpeed=_scrollSpeed;
 
 - (void).cxx_destruct;
 - (void)_handleTimeoutTimer:(id)arg1;
 - (long long)_newRegimeForScrollSpeed:(struct CGPoint)arg1;
 - (void)_rescheduleTimeout;
-- (void)_setRegime:(long long)arg1;
-- (void)_setScrollSpeed:(struct CGPoint)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;

@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (id)acquireObject:(void *)arg1;
 - (void)dealloc;
 - (BOOL)enumerate:(CDUnknownBlockType)arg1;
-- (void)finalize;
 - (void)find:(void *)arg1 observer:(void *)arg2 matching:(CDStruct_3de10e06 *)arg3;
 - (id)initWithName:(struct __CFString *)arg1 options:(unsigned long long)arg2 parent:(id)arg3;
 - (void *)key;

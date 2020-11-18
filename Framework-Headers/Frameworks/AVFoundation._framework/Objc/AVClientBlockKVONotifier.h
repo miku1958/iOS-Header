@@ -6,11 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
+#import <AVFoundation/AVKVOIntrospection-Protocol.h>
 #import <AVFoundation/AVKVONotifier-Protocol.h>
 
 @class AVCallbackContextRegistry, NSString;
 
-@interface AVClientBlockKVONotifier : NSObject <AVKVONotifier>
+@interface AVClientBlockKVONotifier : NSObject <AVKVONotifier, AVKVOIntrospection>
 {
     AVCallbackContextRegistry *_callbackContextRegistry;
     void *_callbackContextToken;
@@ -24,6 +25,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSObject *observedObject;
 @property (readonly) Class superclass;
 
 - (void)callbackDidFireWithChangeDictionary:(id)arg1;

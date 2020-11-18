@@ -12,8 +12,10 @@
 - (NSString *)contentInfoText;
 - (NSDate *)dateForCurrentSortType;
 - (BOOL)isPasswordProtected;
+- (BOOL)isSharedViaICloud;
 - (NSString *)noteAsPlainTextWithoutTitle;
 - (NSArray *)searchableContentKeyPaths;
 - (NSString *)title;
+- (NSString *)trimmedTitle;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <CellularPlanManager/CTCellularPlanClientDelegate-Protocol.h>
 
@@ -32,11 +32,13 @@
 - (void)carrierHandoffToken:(CDUnknownBlockType)arg1;
 - (void)connectionSettings:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (void)didProvisionEsimWithIccid:(id)arg1;
 - (void)didPurchasePlanWithIccid:(id)arg1 downloadProfile:(BOOL)arg2;
 - (void)didSelectPlanItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)expirePlan;
 - (void)getCurrentPlanType:(CDUnknownBlockType)arg1;
 - (void)getDeviceInfo:(CDUnknownBlockType)arg1;
+- (void)getESimServerURL:(CDUnknownBlockType)arg1;
 - (void)getIMEIPrefix:(CDUnknownBlockType)arg1;
 - (void)getSelectedEnv:(CDUnknownBlockType)arg1;
 - (void)getSelectedProxy:(CDUnknownBlockType)arg1;
@@ -59,6 +61,7 @@
 - (void)plansWithProgress:(CDUnknownBlockType)arg1 andCompletion:(CDUnknownBlockType)arg2;
 - (void)plansWithProgress:(CDUnknownBlockType)arg1 andCompletion:(CDUnknownBlockType)arg2 additionalParameters:(id)arg3;
 - (void)setActivePlan:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setESimServerURL:(id)arg1;
 - (void)setIMEIPrefix:(id)arg1;
 - (void)setLatitude:(id)arg1 andLongitude:(id)arg2;
 - (void)setMcc:(long long)arg1 andMnc:(long long)arg2;

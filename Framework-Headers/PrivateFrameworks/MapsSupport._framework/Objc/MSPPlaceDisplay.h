@@ -8,16 +8,19 @@
 
 #import <MapsSupport/NSCopying-Protocol.h>
 
-@class GEOMapItemStorage, PBUnknownFields;
+@class GEOMapItemStorage, NSString, PBUnknownFields;
 
 @interface MSPPlaceDisplay : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
     GEOMapItemStorage *_placeMapItemStorage;
+    NSString *_supersededSearchIdentifier;
 }
 
 @property (readonly, nonatomic) BOOL hasPlaceMapItemStorage;
+@property (readonly, nonatomic) BOOL hasSupersededSearchIdentifier;
 @property (strong, nonatomic) GEOMapItemStorage *placeMapItemStorage; // @synthesize placeMapItemStorage=_placeMapItemStorage;
+@property (strong, nonatomic) NSString *supersededSearchIdentifier; // @synthesize supersededSearchIdentifier=_supersededSearchIdentifier;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 - (void).cxx_destruct;

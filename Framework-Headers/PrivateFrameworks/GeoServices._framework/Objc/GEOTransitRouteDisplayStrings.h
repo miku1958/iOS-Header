@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOFormattedString, NSString;
+@class GEOFormattedString, NSMutableArray, NSString;
 
 @interface GEOTransitRouteDisplayStrings : PBCodable <NSCopying>
 {
+    NSMutableArray *_advisorys;
     NSString *_detailTimeFormatted;
     GEOFormattedString *_duration;
     GEOFormattedString *_durationList;
@@ -19,8 +20,10 @@
     GEOFormattedString *_overviewSubtitle;
     GEOFormattedString *_planningDescription;
     GEOFormattedString *_serviceGap;
+    GEOFormattedString *_travelDescription;
 }
 
+@property (strong, nonatomic) NSMutableArray *advisorys; // @synthesize advisorys=_advisorys;
 @property (strong, nonatomic) NSString *detailTimeFormatted; // @synthesize detailTimeFormatted=_detailTimeFormatted;
 @property (strong, nonatomic) GEOFormattedString *duration; // @synthesize duration=_duration;
 @property (strong, nonatomic) GEOFormattedString *durationList; // @synthesize durationList=_durationList;
@@ -32,10 +35,17 @@
 @property (readonly, nonatomic) BOOL hasOverviewSubtitle;
 @property (readonly, nonatomic) BOOL hasPlanningDescription;
 @property (readonly, nonatomic) BOOL hasServiceGap;
+@property (readonly, nonatomic) BOOL hasTravelDescription;
 @property (strong, nonatomic) GEOFormattedString *overviewSubtitle; // @synthesize overviewSubtitle=_overviewSubtitle;
 @property (strong, nonatomic) GEOFormattedString *planningDescription; // @synthesize planningDescription=_planningDescription;
 @property (strong, nonatomic) GEOFormattedString *serviceGap; // @synthesize serviceGap=_serviceGap;
+@property (strong, nonatomic) GEOFormattedString *travelDescription; // @synthesize travelDescription=_travelDescription;
 
++ (Class)advisoryType;
+- (void)addAdvisory:(id)arg1;
+- (id)advisoryAtIndex:(unsigned long long)arg1;
+- (unsigned long long)advisorysCount;
+- (void)clearAdvisorys;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

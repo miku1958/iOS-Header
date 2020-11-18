@@ -11,9 +11,11 @@ __attribute__((visibility("hidden")))
 {
     BOOL _overlay;
     BOOL _darkStyle;
+    BOOL _isDevice;
 }
 
 @property (nonatomic) BOOL darkStyle; // @synthesize darkStyle=_darkStyle;
+@property (nonatomic) BOOL isDevice; // @synthesize isDevice=_isDevice;
 @property (nonatomic) BOOL overlay; // @synthesize overlay=_overlay;
 
 - (id)initWithPersonImageView:(id)arg1;

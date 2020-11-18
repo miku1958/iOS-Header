@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_beginReorderingItem:(id)arg1;
+- (void)_beginReorderingItemWithGestureRecognizer:(id)arg1;
 - (void)_finishReorderingAnimated:(BOOL)arg1;
 
 @end

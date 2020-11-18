@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSString *_name;
     unsigned int _initialRetryCount;
     unsigned int _finalRetryCount;
+    unsigned int _maximumElementCount;
     long long _minimumNsecsBetweenRetries;
     long long _maximumNsecsBetweenRetries;
     long long _nsecsBeforeForgettingCounter;

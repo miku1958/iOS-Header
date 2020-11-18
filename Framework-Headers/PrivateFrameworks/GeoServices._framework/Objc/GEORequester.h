@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ProtocolBuffer/PBRequester.h>
+#import <GeoServices/GEOPBSessionRequester.h>
 
 @class NSString, NSThread;
 
-@interface GEORequester : PBRequester
+@interface GEORequester : GEOPBSessionRequester
 {
     BOOL _disableReplay;
     NSThread *_thread;
@@ -17,8 +17,11 @@
     NSString *_debugRequestName;
     NSString *_throttleKey;
     BOOL _canceled;
+    CDStruct_e05fddca _conditionalConnectionProperties;
+    BOOL _hasConditionalConnectionProperties;
 }
 
+@property (nonatomic) CDStruct_e05fddca conditionalConnectionProperties; // @synthesize conditionalConnectionProperties=_conditionalConnectionProperties;
 @property (strong, nonatomic) NSString *debugRequestName; // @synthesize debugRequestName=_debugRequestName;
 @property BOOL disableReplay; // @synthesize disableReplay=_disableReplay;
 @property (copy, nonatomic) NSString *throttleKey; // @synthesize throttleKey=_throttleKey;
@@ -43,9 +46,10 @@
 - (id)initWithURL:(id)arg1 andDelegate:(id)arg2 useBackgroundConnection:(BOOL)arg3;
 - (id)logRequestToFile;
 - (id)logResponseToFile;
-- (struct _CFURLRequest *)newCFMutableURLRequestWithURL:(id)arg1;
-- (id)newConnectionWithCFURLRequest:(struct _CFURLRequest *)arg1 delegate:(id)arg2;
-- (id)persistentConnectionSession;
+- (id)newMutableURLRequestWithURL:(id)arg1;
+- (id)newSessionWithDelegate:(id)arg1 delegateQueue:(id)arg2;
+- (id)newSessionWithDelegate:(id)arg1 delegateQueue:(id)arg2 connectionProperties:(id)arg3;
+- (id)persistentSessionConfig;
 - (id)requestPreamble;
 - (void)setNeedsCancel;
 - (void)start;

@@ -11,8 +11,8 @@
 @interface SKUILocalizedStringDictionary : NSObject
 {
     NSArray *_bundles;
-    NSString *_localeName;
     NSMutableArray *_stringTables;
+    NSString *_localeName;
 }
 
 @property (readonly, nonatomic) NSString *localeName; // @synthesize localeName=_localeName;

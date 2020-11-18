@@ -29,6 +29,10 @@
 - (void)_reallySetCriticalReliability:(BOOL)arg1;
 - (void)_setReliabilityTimeoutInterval;
 - (void)_tryToEnableReliability;
+- (BOOL)validNetworkActiveForBundleId:(id)arg1;
+- (BOOL)validNetworkEnabledForBundleId:(id)arg1;
+- (BOOL)validNetworkReachableForBundleId:(id)arg1;
+- (BOOL)willSearchForNetworkForBundleId:(id)arg1;
 
 @end
 

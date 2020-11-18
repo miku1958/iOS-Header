@@ -17,7 +17,7 @@
     char *_output;
     unsigned long long _writeOffset;
     unsigned long long _readOffset;
-    int _lock;
+    struct os_unfair_lock_s _lock;
 }
 
 @property (readonly, nonatomic) void *inputPtr;

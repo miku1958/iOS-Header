@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@protocol HDHealthDaemon;
+@class HDProfile;
 
 @interface HDActivitySummaryBuilder : NSObject
 {
-    id<HDHealthDaemon> _healthDaemon;
+    HDProfile *_profile;
     BOOL _shouldIncludePrivateProperties;
 }
 
@@ -19,7 +19,7 @@
 - (void).cxx_destruct;
 - (void)activitySummariesWithPredicate:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)init;
-- (id)initWithHealthDaemon:(id)arg1;
+- (id)initWithProfile:(id)arg1;
 
 @end
 

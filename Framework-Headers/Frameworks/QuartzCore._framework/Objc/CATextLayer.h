@@ -19,6 +19,7 @@
 @property double fontSize;
 @property struct CGColor *foregroundColor;
 @property (copy) id string;
+@property (readonly, getter=isTruncated) BOOL truncated;
 @property (copy) NSString *truncationMode;
 @property (copy) id truncationString;
 @property (getter=isWrapped) BOOL wrapped;
@@ -27,6 +28,7 @@
 + (id)defaultValueForKey:(id)arg1;
 + (BOOL)needsDisplayForKey:(id)arg1;
 - (void)_applyLinesToFunction:(CDUnknownFunctionPointerType)arg1 info:(void *)arg2;
+- (void)_applyLinesToFunction:(CDUnknownFunctionPointerType)arg1 info:(void *)arg2 truncated:(BOOL *)arg3;
 - (id)_createStringDict;
 - (struct __CTLine *)_createTruncationToken;
 - (void)_drawLine:(struct __CTLine *)arg1 inContext:(struct CGContext *)arg2 atPoint:(struct CGPoint)arg3;

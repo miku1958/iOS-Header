@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) struct __CFArray *images;
 @property (readonly, nonatomic) double scale;
 
+- (BOOL)_dimension1ExistsInKeyFormatForThemeRef:(unsigned long long)arg1;
 - (id)_renditionForKey:(id)arg1 inThemeRef:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)imageWithName:(id)arg1;

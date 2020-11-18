@@ -25,8 +25,8 @@
 @property (nonatomic) unsigned long long mtuLength; // @synthesize mtuLength=_mtuLength;
 @property (nonatomic) long long pairingState; // @synthesize pairingState=_pairingState;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)handleHostStateUpdated:(id)arg1;
 - (void)handleLinkEncryptionChanged:(id)arg1;
 - (void)handleMTUChanged:(id)arg1;

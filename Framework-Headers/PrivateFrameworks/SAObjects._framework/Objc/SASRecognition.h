@@ -20,6 +20,7 @@
 @property (copy, nonatomic) NSArray *phrases;
 @property (nonatomic) long long sentenceConfidence;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSArray *utterances;
 
 + (id)recognition;
 + (id)recognitionWithDictionary:(id)arg1 context:(id)arg2;

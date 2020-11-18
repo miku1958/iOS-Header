@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, RTCReporting;
+@class NSArray, RTCReporting, VCAggregator;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -16,16 +16,22 @@ __attribute__((visibility("hidden")))
     int _client;
     NSObject<OS_dispatch_queue> *_reportingQueue;
     NSArray *_backends;
+    BOOL _isUserInfoSet;
+    VCAggregator *_aggregator;
+    CDUnknownBlockType _aggregationBlock;
 }
 
+@property (strong) VCAggregator *aggregator; // @synthesize aggregator=_aggregator;
 @property (copy) NSArray *backends; // @synthesize backends=_backends;
 @property int client; // @synthesize client=_client;
+@property BOOL isUserInfoSet; // @synthesize isUserInfoSet=_isUserInfoSet;
 @property (strong) RTCReporting *reportingObject; // @synthesize reportingObject=_reportingObject;
-@property NSObject<OS_dispatch_queue> *reportingQueue; // @synthesize reportingQueue=_reportingQueue;
+@property (readonly) NSObject<OS_dispatch_queue> *reportingQueue; // @synthesize reportingQueue=_reportingQueue;
 
 - (void)dealloc;
 - (id)initWithCallID:(unsigned int)arg1 clientType:(int)arg2;
 - (void)releaseReportingObject;
+- (void)sendAggregatedReport;
 
 @end
 

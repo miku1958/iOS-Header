@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isDeleted; // @synthesize isDeleted=_isDeleted;
 @property (strong, nonatomic) NSMutableArray *recordVersions; // @synthesize recordVersions=_recordVersions;
 
++ (Class)recordVersionsType;
 - (void).cxx_destruct;
 - (void)addRecordVersions:(id)arg1;
 - (void)clearRecordVersions;

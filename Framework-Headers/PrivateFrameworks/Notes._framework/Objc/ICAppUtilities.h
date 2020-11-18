@@ -10,6 +10,7 @@
 {
 }
 
++ (id)applicationDataContainerURL;
 + (id)applicationDocumentsURL;
 + (id)attributesForGroupContainerDirectory;
 + (BOOL)isReadOnlyPersistentStore;

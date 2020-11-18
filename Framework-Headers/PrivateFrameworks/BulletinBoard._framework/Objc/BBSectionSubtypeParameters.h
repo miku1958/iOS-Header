@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
@@ -42,6 +42,10 @@
     NSNumber *_boxedIPodOutAlertType;
     NSNumber *_boxedAllowsAutomaticRemovalFromLockScreen;
     NSNumber *_boxedAllowsAddingToLockScreenWhenUnlocked;
+    NSNumber *_boxedPrioritizeAtTopOfLockScreen;
+    NSNumber *_boxedPreemptsPresentedAlert;
+    NSNumber *_boxedRevealsAdditionalContentOnPresentation;
+    NSNumber *_boxedPrivacySettings;
 }
 
 @property (strong, nonatomic) NSSet *alertSuppressionAppIDs;
@@ -58,9 +62,13 @@
 @property (strong, nonatomic) NSNumber *boxedIgnoresQuietMode; // @synthesize boxedIgnoresQuietMode=_boxedIgnoresQuietMode;
 @property (strong, nonatomic) NSNumber *boxedInertWhenLocked; // @synthesize boxedInertWhenLocked=_boxedInertWhenLocked;
 @property (strong, nonatomic) NSNumber *boxedPlaysSoundForModify; // @synthesize boxedPlaysSoundForModify=_boxedPlaysSoundForModify;
+@property (strong, nonatomic) NSNumber *boxedPreemptsPresentedAlert; // @synthesize boxedPreemptsPresentedAlert=_boxedPreemptsPresentedAlert;
 @property (strong, nonatomic) NSNumber *boxedPreservesUnlockActionCase; // @synthesize boxedPreservesUnlockActionCase=_boxedPreservesUnlockActionCase;
 @property (strong, nonatomic) NSNumber *boxedPreventLock; // @synthesize boxedPreventLock=_boxedPreventLock;
+@property (strong, nonatomic) NSNumber *boxedPrioritizeAtTopOfLockScreen; // @synthesize boxedPrioritizeAtTopOfLockScreen=_boxedPrioritizeAtTopOfLockScreen;
+@property (strong, nonatomic) NSNumber *boxedPrivacySettings; // @synthesize boxedPrivacySettings=_boxedPrivacySettings;
 @property (strong, nonatomic) NSNumber *boxedRealertCount; // @synthesize boxedRealertCount=_boxedRealertCount;
+@property (strong, nonatomic) NSNumber *boxedRevealsAdditionalContentOnPresentation; // @synthesize boxedRevealsAdditionalContentOnPresentation=_boxedRevealsAdditionalContentOnPresentation;
 @property (strong, nonatomic) NSNumber *boxedShowsContactPhoto; // @synthesize boxedShowsContactPhoto=_boxedShowsContactPhoto;
 @property (strong, nonatomic) NSNumber *boxedShowsUnreadIndicatorForNoticesFeed; // @synthesize boxedShowsUnreadIndicatorForNoticesFeed=_boxedShowsUnreadIndicatorForNoticesFeed;
 @property (strong, nonatomic) NSNumber *boxedSubtypePriority; // @synthesize boxedSubtypePriority=_boxedSubtypePriority;
@@ -69,7 +77,7 @@
 @property (strong, nonatomic) NSNumber *boxedVisuallyIndicatesWhenDateIsInFuture; // @synthesize boxedVisuallyIndicatesWhenDateIsInFuture=_boxedVisuallyIndicatesWhenDateIsInFuture;
 @property (nonatomic) BOOL canBeSilencedByMenuButtonPress;
 @property (nonatomic) BOOL coalescesWhenLocked;
-@property (nonatomic) BBSectionSubtypeParameters *fallbackParameters; // @synthesize fallbackParameters=_fallbackParameters;
+@property (weak, nonatomic) BBSectionSubtypeParameters *fallbackParameters; // @synthesize fallbackParameters=_fallbackParameters;
 @property (copy, nonatomic) NSString *fullAlternateActionLabel; // @synthesize fullAlternateActionLabel=_fullAlternateActionLabel;
 @property (copy, nonatomic) NSString *fullUnlockActionLabel; // @synthesize fullUnlockActionLabel=_fullUnlockActionLabel;
 @property (nonatomic) long long iPodOutAlertType;
@@ -77,9 +85,13 @@
 @property (nonatomic) BOOL inertWhenLocked;
 @property (copy, nonatomic) NSString *missedBannerDescriptionFormat; // @synthesize missedBannerDescriptionFormat=_missedBannerDescriptionFormat;
 @property (nonatomic) BOOL playsSoundForModify;
+@property (nonatomic) BOOL preemptsPresentedAlert;
 @property (nonatomic) BOOL preservesUnlockActionCase;
 @property (nonatomic) BOOL preventLock;
+@property (nonatomic) BOOL prioritizeAtTopOfLockScreen;
+@property (nonatomic) unsigned long long privacySettings;
 @property (nonatomic) unsigned long long realertCount;
+@property (nonatomic) BOOL revealsAdditionalContentOnPresentation;
 @property (copy, nonatomic) NSString *secondaryContentRemoteServiceBundleIdentifier; // @synthesize secondaryContentRemoteServiceBundleIdentifier=_secondaryContentRemoteServiceBundleIdentifier;
 @property (copy, nonatomic) NSString *secondaryContentRemoteViewControllerClassName; // @synthesize secondaryContentRemoteViewControllerClassName=_secondaryContentRemoteViewControllerClassName;
 @property (copy, nonatomic) BBSectionIcon *sectionIconOverride; // @synthesize sectionIconOverride=_sectionIconOverride;
@@ -94,10 +106,12 @@
 @property (nonatomic) BOOL visuallyIndicatesWhenDateIsInFuture;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFallbackParameters:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

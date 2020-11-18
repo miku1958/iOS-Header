@@ -17,6 +17,7 @@
     NSMutableSet *_tasks;
     BOOL _deallocating;
     PSStackPushAnimationController *_stackAnimationController;
+    unsigned long long _supportedOrientationsOverride;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -63,6 +64,7 @@
 - (void)setPreferenceValue:(id)arg1 specifier:(id)arg2;
 - (void)setRootController:(id)arg1;
 - (void)setSpecifier:(id)arg1;
+- (void)setSupportedInterfaceOrientations:(unsigned long long)arg1;
 - (void)setViewControllers:(id)arg1 animated:(BOOL)arg2;
 - (void)showController:(id)arg1;
 - (void)showController:(id)arg1 animate:(BOOL)arg2;

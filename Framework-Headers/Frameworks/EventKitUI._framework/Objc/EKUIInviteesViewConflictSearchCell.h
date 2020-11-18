@@ -25,6 +25,7 @@
 
 + (id)_grayTextColor;
 + (id)_labelFont;
++ (id)_showMoreLocalizedString;
 - (void).cxx_destruct;
 - (void)_setText:(id)arg1 textColor:(id)arg2 spinnerEnabled:(BOOL)arg3;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

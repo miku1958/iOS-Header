@@ -21,6 +21,7 @@
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (id)variantKeysForKey:(id)arg1;
+- (void).cxx_destruct;
 - (BOOL)_accessibilityActivateForPanAlternate:(BOOL)arg1 isSecondAlternate:(BOOL)arg2;
 - (BOOL)_accessibilityActivatePanAlternate:(id)arg1;
 - (BOOL)_accessibilityAllowsAlternativeCharacterActivation;
@@ -45,6 +46,7 @@
 - (void)_applyCapitalLetterTransform;
 - (id)_axDualStringLabel;
 - (BOOL)_axIsDictationKey;
+- (BOOL)_axIsShifted;
 - (id)_axLayoutStar;
 - (BOOL)_performCapsLockDoubleTap;
 - (BOOL)accessibilityActivate;
@@ -57,7 +59,6 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (BOOL)allowsCaseChangeOnShift;
-- (void)dealloc;
 - (id)description;
 - (id)initWithAccessibilityContainer:(id)arg1 key:(id)arg2;
 - (BOOL)isAccessibilityElement;

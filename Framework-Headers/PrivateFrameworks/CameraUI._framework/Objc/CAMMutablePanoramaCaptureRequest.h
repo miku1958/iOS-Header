@@ -7,13 +7,14 @@
 #import <CameraUI/CAMPanoramaCaptureRequest.h>
 
 #import <CameraUI/CAMMutableCaptureRequestLocation-Protocol.h>
+#import <CameraUI/CAMMutableCaptureRequestOrigin-Protocol.h>
 #import <CameraUI/CAMMutableCaptureRequestPersistence-Protocol.h>
 #import <CameraUI/CAMMutableCaptureRequestPower-Protocol.h>
 
 @class CLLocation, NSString, NSURL;
 @protocol CAMPanoramaCaptureRequestDelegate;
 
-@interface CAMMutablePanoramaCaptureRequest : CAMPanoramaCaptureRequest <CAMMutableCaptureRequestPersistence, CAMMutableCaptureRequestLocation, CAMMutableCaptureRequestPower>
+@interface CAMMutablePanoramaCaptureRequest : CAMPanoramaCaptureRequest <CAMMutableCaptureRequestPersistence, CAMMutableCaptureRequestLocation, CAMMutableCaptureRequestPower, CAMMutableCaptureRequestOrigin>
 {
 }
 
@@ -28,6 +29,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSURL *localDestinationURL;
 @property (strong, nonatomic) CLLocation *location;
+@property (nonatomic) long long origin;
 @property (nonatomic) long long persistenceOptions;
 @property (copy, nonatomic) NSString *persistenceUUID;
 @property (nonatomic) long long physicalButtonType; // @dynamic physicalButtonType;
@@ -36,10 +38,10 @@
 @property (nonatomic) BOOL shouldExtractDiagnosticsFromMetadata;
 @property (nonatomic) BOOL shouldPersistDiagnosticsToSidecar;
 @property (readonly) Class superclass;
+@property (nonatomic) long long temporaryPersistenceOptions;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
-- (void)setParameter:(id)arg1 forKey:(id)arg2;
 
 @end
 

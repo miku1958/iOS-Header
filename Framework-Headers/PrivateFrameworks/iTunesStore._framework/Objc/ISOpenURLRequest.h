@@ -26,8 +26,8 @@
 @property (copy, nonatomic) NSString *targetIdentifier; // @synthesize targetIdentifier=_targetIdentifier;
 
 + (id)openURLRequestWithURL:(id)arg1;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (id)initWithURL:(id)arg1;

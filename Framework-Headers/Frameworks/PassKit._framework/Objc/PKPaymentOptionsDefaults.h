@@ -4,46 +4,59 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <PassKit/PKPassbookSettingsOptionsDelegate-Protocol.h>
+#import <PassKitCore/PKPaymentOptionsProtocol-Protocol.h>
 
 @class CNContact, NSDictionary, NSString;
 
-@interface PKPaymentOptionsDefaults : NSObject <PKPassbookSettingsOptionsDelegate>
+@interface PKPaymentOptionsDefaults : NSObject <PKPaymentOptionsProtocol>
 {
-    CNContact *_defaultShippingAddress;
-    CNContact *_defaultContactEmail;
-    CNContact *_defaultContactName;
-    CNContact *_defaultContactPhone;
+    int _defaultsChangedNotifyToken;
+    unsigned long long _postedNotificationCount;
     NSDictionary *_defaultBillingAddresses;
+    CNContact *_defaultShippingAddress;
+    CNContact *_defaultContactName;
+    CNContact *_defaultContactEmail;
+    CNContact *_defaultContactPhone;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) NSDictionary *defaultBillingAddresses; // @synthesize defaultBillingAddresses=_defaultBillingAddresses;
-@property (strong, nonatomic) CNContact *defaultContactEmail;
-@property (strong, nonatomic) CNContact *defaultContactName;
-@property (strong, nonatomic) CNContact *defaultContactPhone;
-@property (strong, nonatomic) CNContact *defaultShippingAddress;
+@property (readonly, nonatomic) NSDictionary *defaultBillingAddresses; // @synthesize defaultBillingAddresses=_defaultBillingAddresses;
+@property (strong, nonatomic) CNContact *defaultContactEmail; // @synthesize defaultContactEmail=_defaultContactEmail;
+@property (strong, nonatomic) CNContact *defaultContactName; // @synthesize defaultContactName=_defaultContactName;
+@property (strong, nonatomic) CNContact *defaultContactPhone; // @synthesize defaultContactPhone=_defaultContactPhone;
+@property (strong, nonatomic) CNContact *defaultShippingAddress; // @synthesize defaultShippingAddress=_defaultShippingAddress;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (id)defaults;
+- (void).cxx_destruct;
 - (id)_contactForKeychainKey:(id)arg1;
-- (void)_keychainData:(id *)arg1 forKey:(id)arg2;
+- (void)_deleteKeychainDataForKey:(id)arg1;
+- (void)_hardDeleteDefaultBillingAddress;
+- (id)_keychainDataForKey:(id)arg1;
 - (id)_rawDefaultBillingAddresses;
+- (void)_registerForChangeNotifications;
 - (void)_setContact:(id)arg1 forKeychainKey:(id)arg2;
 - (void)_setContact:(id)arg1 property:(id)arg2 forKeychainKey:(id)arg3;
 - (void)_setKeychainData:(id)arg1 forKey:(id)arg2;
+- (void)_setRawDefaultBillingAddresses:(id)arg1;
+- (void)_unregisterForChangeNotifications;
 - (void)dealloc;
 - (id)defaultBillingAddressForPaymentPass:(id)arg1;
+- (id)defaultBillingAddressForPrimaryAccountIdentifier:(id)arg1;
+- (id)defaultBillingAddressForRemotePaymentInstrument:(id)arg1;
+- (void)deleteAllDefaults;
 - (void)deleteDefaultBillingAddress:(id)arg1;
 - (void)deleteDefaultContactEmail;
 - (void)deleteDefaultContactName;
 - (void)deleteDefaultContactPhone;
+- (void)deleteDefaultForContactKey:(id)arg1;
 - (void)deleteDefaultShippingAddress;
 - (id)init;
+- (void)migrateToSyncable;
 - (void)setDefaultBillingAddress:(id)arg1 forPaymentPass:(id)arg2;
 
 @end

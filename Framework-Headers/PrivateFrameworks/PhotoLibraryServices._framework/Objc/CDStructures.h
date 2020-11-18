@@ -36,6 +36,11 @@ struct CGSize {
     double height;
 };
 
+struct CLLocationCoordinate2D {
+    double _field1;
+    double _field2;
+};
+
 struct NSObject {
     Class _field1;
 };
@@ -119,11 +124,6 @@ typedef struct {
     double _field1;
     double _field2;
 } CDStruct_c3b9c2ee;
-
-typedef struct {
-    int retries;
-    int state;
-} CDStruct_691a9b3b;
 
 typedef struct {
     long long value;

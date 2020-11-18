@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -41,6 +41,7 @@
 + (id)newImageNamed:(id)arg1 inBundle:(id)arg2 screenScale:(double)arg3 suffix:(id)arg4;
 + (id)passesImageNamed:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (BOOL)_isTiledWhenStretchedToSize:(struct CGSize)arg1;
 - (void)_queue_createImageRefIfNecessary;
 - (id)blurredImageWithRadius:(unsigned long long)arg1 constraints:(id)arg2;

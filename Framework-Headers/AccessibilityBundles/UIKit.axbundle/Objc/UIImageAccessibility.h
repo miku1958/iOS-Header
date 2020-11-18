@@ -28,6 +28,7 @@
 - (id)_imageScaledToProportion:(double)arg1 interpolationQuality:(int)arg2;
 - (id)accessibilityIdentifier;
 - (void)dealloc;
+- (id)imageFlippedForRightToLeftLayoutDirection;
 - (id)imageWithAlignmentRectInsets:(struct UIEdgeInsets)arg1;
 - (id)imageWithRenderingMode:(long long)arg1;
 - (id)initWithContentsOfFile:(id)arg1;

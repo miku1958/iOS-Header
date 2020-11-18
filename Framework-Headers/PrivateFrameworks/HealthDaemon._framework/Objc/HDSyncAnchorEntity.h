@@ -18,6 +18,7 @@
 + (long long)_syncAnchorForProperty:(id)arg1 entityClass:(Class)arg2 store:(id)arg3 healthDatabase:(id)arg4 error:(id *)arg5;
 + (id)columnsDefinition;
 + (id)databaseTable;
++ (BOOL)enumerateSyncAnchorsForStoreID:(long long)arg1 database:(id)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
 + (BOOL)getReceivedAnchorsWithSet:(id)arg1 store:(id)arg2 healthDatabase:(id)arg3 error:(id *)arg4;
 + (long long)nextSyncAnchorForEntityClass:(Class)arg1 store:(id)arg2 healthDatabase:(id)arg3 error:(id *)arg4;
 + (long long)protectionClass;

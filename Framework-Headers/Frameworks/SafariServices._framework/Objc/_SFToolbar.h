@@ -6,7 +6,7 @@
 
 #import <UIKit/UIToolbar.h>
 
-@class UIView, _UIBackdropView;
+@class NSString, UIView, _UIBackdropView;
 
 @interface _SFToolbar : UIToolbar
 {
@@ -19,6 +19,7 @@
 
 @property (readonly, nonatomic) double URLFieldHorizontalMargin;
 @property (nonatomic) BOOL backdropComputesColorSettings;
+@property (copy, nonatomic) NSString *backdropGroupName;
 @property (nonatomic) BOOL hasDarkBackground; // @synthesize hasDarkBackground=_hasDarkBackground;
 @property (readonly, nonatomic) long long placement; // @synthesize placement=_placement;
 @property (readonly, nonatomic) long long toolbarSize;
@@ -27,6 +28,7 @@
 - (void).cxx_destruct;
 - (id)initWithPlacement:(long long)arg1;
 - (void)layoutSubviews;
+- (void)updateBackdropSettings:(id)arg1;
 - (void)updateTintColor;
 
 @end

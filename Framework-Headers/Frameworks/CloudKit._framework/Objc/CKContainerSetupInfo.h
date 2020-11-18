@@ -8,20 +8,26 @@
 
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class CKAccountInfo, CKContainerID, NSString;
+@class CKAccountInfo, CKContainerID, NSDictionary, NSString;
 
 @interface CKContainerSetupInfo : NSObject <NSSecureCoding>
 {
     BOOL _captureResponseHTTPHeaders;
+    BOOL _wantsSiloedContext;
+    BOOL _holdAllOperations;
     CKContainerID *_containerID;
     NSString *_sourceApplicationBundleIdentifier;
     CKAccountInfo *_accountInfoOverride;
+    NSDictionary *_fakeEntitlements;
 }
 
 @property (strong, nonatomic) CKAccountInfo *accountInfoOverride; // @synthesize accountInfoOverride=_accountInfoOverride;
 @property (nonatomic) BOOL captureResponseHTTPHeaders; // @synthesize captureResponseHTTPHeaders=_captureResponseHTTPHeaders;
 @property (strong, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
+@property (strong, nonatomic) NSDictionary *fakeEntitlements; // @synthesize fakeEntitlements=_fakeEntitlements;
+@property (nonatomic) BOOL holdAllOperations; // @synthesize holdAllOperations=_holdAllOperations;
 @property (strong, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
+@property (nonatomic) BOOL wantsSiloedContext; // @synthesize wantsSiloedContext=_wantsSiloedContext;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

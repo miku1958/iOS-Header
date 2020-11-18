@@ -16,6 +16,8 @@
     NSMutableDictionary *_wallpaperImageCache;
     NSMutableDictionary *_proceduralWallpaperCache;
     int _externalNotificationToken;
+    unsigned long long _batchChangeCount;
+    long long _batchNotifyVariants;
     BOOL _cachedVariantsShareWallpaperConfiguration;
     BOOL _cachedVariantsShareWallpaperConfigurationValid;
     id<SBFWallpaperConfigurationManagerDelegate> _delegate;
@@ -49,22 +51,29 @@
 + (long long)currentDeviceWallpaperSizeType;
 + (void)initialize;
 - (void).cxx_destruct;
+- (void)beginChangeBatch;
 - (id)cachedProceduralWallpaperWithIdentifier:(id)arg1 options:(id)arg2 forVariant:(long long)arg3;
 - (void)clearCacheForVariants:(long long)arg1;
+- (void)clearDelayedChangeNotifications;
 - (struct CGRect)cropRectForOldCropRect:(struct CGRect)arg1 portrait:(BOOL)arg2 zoomScale:(double)arg3 oldParallaxFactor:(double)arg4 forImageSize:(struct CGSize)arg5 newZoomScale:(double *)arg6;
 - (struct CGRect)cropRectForViewPort:(struct CGRect)arg1 portrait:(BOOL)arg2 zoomScale:(double)arg3 parallaxFactor:(double)arg4 forImageSize:(struct CGSize)arg5 contentScaleFactor:(double)arg6;
 - (void)dealloc;
+- (void)delayNotifyingChangeForVariants:(long long)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (long long)effectiveSharedVariantForVariants:(long long)arg1;
+- (void)endChangeBatch;
+- (void)getBestCropRect:(out struct CGRect *)arg1 zoomScale:(out double *)arg2 forImageSize:(struct CGSize)arg3 portrait:(BOOL)arg4 parallaxFactor:(double)arg5;
 - (id)init;
 - (id)initWithWallpaperDataStores:(id)arg1;
 - (id)initWithWallpaperDataStores:(id)arg1 wallpaperSize:(struct CGSize)arg2 scale:(double)arg3 sizeType:(long long)arg4;
+- (BOOL)isInChangeBatch;
 - (BOOL)isProceduralWallpaperInfoValid:(id)arg1;
 - (BOOL)isVideoSupportedByDefaultForVariant:(long long)arg1;
 - (BOOL)isVideoSupportedForVariant:(long long)arg1;
 - (void)migrateWallpaperOptionsForImageIfNecessaryForVariant:(long long)arg1;
 - (id)normalizeImage:(id)arg1;
+- (void)notifyDelegateOfChangesToVariants:(long long)arg1;
 - (long long)parallaxDeviceType;
 - (double)parallaxFactorForCropRect:(struct CGRect)arg1 portrait:(BOOL)arg2 forImageSize:(struct CGSize)arg3 zoomScale:(double)arg4;
 - (void)performMigrationWithFailureHandler:(CDUnknownBlockType)arg1;
@@ -81,7 +90,7 @@
 - (void)removeWallpaperOptionsForVariants:(long long)arg1;
 - (void)restoreDefaultWallpaperForAllVariantsAndNotify:(BOOL)arg1;
 - (void)safeMigrateWallpaperImageIfNecessary;
-- (BOOL)safeMigrateWallpaperImageIfNecessaryForVariant:(long long)arg1;
+- (BOOL)safeMigrateWallpaperImageIfNecessaryForVariant:(long long)arg1 representingVariants:(long long)arg2;
 - (void)saveCroppedVideo:(id)arg1 toURL:(id)arg2 cropRect:(struct CGRect)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)setProceduralWallpaperIdentifier:(id)arg1 options:(id)arg2 forVariants:(long long)arg3;
 - (BOOL)setVideoURL:(id)arg1 forVariant:(long long)arg2 shoudCrop:(BOOL)arg3 relativeCropRect:(struct CGRect)arg4;
@@ -102,6 +111,7 @@
 - (id)wallpaperOriginalImageForVariant:(long long)arg1;
 - (id)wallpaperThumbnailImageDataForVariant:(long long)arg1;
 - (id)wallpaperThumbnailImageForVariant:(long long)arg1;
+- (long long)wallpaperTypeForSharedWallpaperConfigurationForTypes:(unsigned long long)arg1;
 - (void)wallpaperWillChangeForVariants:(long long)arg1;
 
 @end

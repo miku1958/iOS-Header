@@ -6,32 +6,48 @@
 
 #import <Foundation/NSObject.h>
 
-@class GEOPlannedDestination, GEORouteHypothesis, NSString;
+@class GEOPlannedDestination, GEORouteHypothesis, NSError, NSUUID;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface GEORouteHypothesizer : NSObject
 {
     GEOPlannedDestination *_plannedDestination;
     unsigned long long _state;
+    BOOL _unableToFindRouteForOriginalTransportType;
     GEORouteHypothesis *_currentHypothesis;
+    NSError *_currentError;
     CDUnknownBlockType _updateHandler;
-    NSString *_activityIdentifier;
+    NSUUID *_uuid;
+    NSObject<OS_dispatch_queue> *_serialQueue;
+    BOOL _wakeForDelay;
+    NSObject<OS_dispatch_source> *_delayDispatchTimer;
 }
 
+@property (readonly, nonatomic) NSError *currentError; // @synthesize currentError=_currentError;
 @property (readonly, nonatomic) GEORouteHypothesis *currentHypothesis; // @synthesize currentHypothesis=_currentHypothesis;
 @property (readonly, nonatomic) GEOPlannedDestination *plannedDestination; // @synthesize plannedDestination=_plannedDestination;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
+@property (readonly, nonatomic) BOOL unableToFindRouteForOriginalTransportType; // @synthesize unableToFindRouteForOriginalTransportType=_unableToFindRouteForOriginalTransportType;
 @property (readonly, nonatomic) double willBeginHypothesizingInterval;
 @property (readonly, nonatomic) double willEndHypothesizingInterval;
 
 + (id)hypothesizerForPlannedDestination:(id)arg1;
++ (BOOL)transitTTLSupportedInCurrentCountry;
+- (void)_delayStartingWithXpc;
+- (void)_delayStartingWithoutXpc;
+- (void)_performDelayedStart;
 - (BOOL)_wontHypothesizeAgain;
+- (void)cancelDelayDispatchTimer;
 - (void)dealloc;
-- (void)delayStarting;
 - (id)description;
 - (void)didPostUINotification:(unsigned long long)arg1;
 - (id)initWithPlannedDestination:(id)arg1;
+- (void)onlyPerformLocalUpdates;
+- (void)requestRefresh;
+- (void)setDoNotWakeForDelay;
 - (void)startHypothesizingWithUpdateHandler:(CDUnknownBlockType)arg1;
 - (void)stopHypothesizing;
+- (BOOL)wakeForDelay;
 
 @end
 

@@ -6,27 +6,28 @@
 
 #import <coreroutine/RTNotifier.h>
 
-__attribute__((visibility("hidden")))
 @interface RTBatteryManager : RTNotifier
 {
     unsigned int _battery;
     struct IONotificationPort *_ioNotificationPort;
     unsigned int _batteryInterestNotification;
     BOOL _monitorBatteryStatusChanges;
-    long long _externalConnectedState;
+    long long _externalConnectionState;
 }
 
-@property (nonatomic) long long externalConnectedState; // @synthesize externalConnectedState=_externalConnectedState;
+@property (nonatomic) long long externalConnectionState; // @synthesize externalConnectionState=_externalConnectionState;
 @property (nonatomic) BOOL monitorBatteryStatusChanges; // @synthesize monitorBatteryStatusChanges=_monitorBatteryStatusChanges;
 
-+ (id)externalConnectedStateToString:(long long)arg1;
++ (id)RTBatteryManagerExternalConnectionStateToString:(long long)arg1;
 + (id)sharedInstance;
+- (void)_unregisterForNotifications;
 - (void)batteryStatusChange:(unsigned int)arg1 messageType:(unsigned int)arg2 messageArgument:(void *)arg3;
 - (void)dealloc;
 - (id)init;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)matchedBattery:(unsigned int)arg1;
+- (void)shutdown;
 - (void)startMonitoringBatteryStatusChanges;
 - (void)stopMonitoringBatteryStatusChanges;
 - (void)updateBatteryStatus:(unsigned int)arg1;

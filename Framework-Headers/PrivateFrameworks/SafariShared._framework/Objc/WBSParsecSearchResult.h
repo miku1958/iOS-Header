@@ -8,13 +8,15 @@
 
 #import <SafariShared/WBSCompletionListItem-Protocol.h>
 
-@class NSArray, NSDictionary, NSNumber, NSString, NSURL, WBSParsecActionButton, WBSParsecImageRepresentation;
+@class MKMapItem, NSArray, NSDictionary, NSNumber, NSString, NSURL, SFResultSection, SFSearchResult, WBSParsecActionButton, WBSParsecImageRepresentation;
 
 @interface WBSParsecSearchResult : WBSParsecModel <WBSCompletionListItem>
 {
     WBSParsecImageRepresentation *_icon;
     WBSParsecImageRepresentation *_completionIcon;
     NSURL *_reportProblemURL;
+    BOOL _topHit;
+    SFSearchResult *_sfSearchResult;
     NSString *_title;
     NSString *_descriptionText;
     NSString *_identifier;
@@ -36,11 +38,16 @@
     WBSParsecActionButton *_actionButton;
     NSURL *_cardURL;
     NSNumber *_cardLoadHint;
+    MKMapItem *_mapItem;
+    NSArray *_additionalMapItems;
+    SFSearchResult *_sfSearchResultValue;
+    SFResultSection *_sfResultSection;
     NSArray *_supportedStyleOverrides;
     NSDictionary *_styleOverrides;
 }
 
 @property (readonly, nonatomic) WBSParsecActionButton *actionButton; // @synthesize actionButton=_actionButton;
+@property (readonly, nonatomic) NSArray *additionalMapItems; // @synthesize additionalMapItems=_additionalMapItems;
 @property (readonly, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
 @property (readonly, nonatomic) NSURL *appInstallURL; // @synthesize appInstallURL=_appInstallURL;
 @property (readonly, nonatomic) NSString *appName; // @synthesize appName=_appName;
@@ -53,18 +60,22 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *descriptionText; // @synthesize descriptionText=_descriptionText;
+@property (readonly, nonatomic) unsigned long long engagementDestination;
 @property (readonly, nonatomic) NSString *feedbackIdentifier; // @synthesize feedbackIdentifier=_feedbackIdentifier;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *iTunesItemIdentifier; // @synthesize iTunesItemIdentifier=_iTunesItemIdentifier;
 @property (readonly, nonatomic) WBSParsecImageRepresentation *icon; // @synthesize icon=_icon;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSString *lastSearchQuery;
+@property (readonly, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property (readonly, copy, nonatomic) NSString *mediaKind; // @synthesize mediaKind=_mediaKind;
 @property (readonly, nonatomic) unsigned long long minimumRankOfTopHitToSuppressResult; // @synthesize minimumRankOfTopHitToSuppressResult=_minimumRankOfTopHitToSuppressResult;
 @property (readonly, nonatomic) NSString *parsecDomainIdentifier;
 @property (readonly, copy, nonatomic) NSString *referrerForLoadingResult; // @synthesize referrerForLoadingResult=_referrerForLoadingResult;
 @property (readonly, nonatomic) NSURL *reportProblemURL;
 @property (readonly, nonatomic) NSString *sectionHeader; // @synthesize sectionHeader=_sectionHeader;
+@property (strong, nonatomic) SFResultSection *sfResultSection; // @synthesize sfResultSection=_sfResultSection;
+@property (strong, nonatomic) SFSearchResult *sfSearchResultValue; // @synthesize sfSearchResultValue=_sfSearchResultValue;
 @property (readonly, nonatomic) NSDictionary *styleOverrides; // @synthesize styleOverrides=_styleOverrides;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *supportedStyleOverrides; // @synthesize supportedStyleOverrides=_supportedStyleOverrides;
@@ -73,19 +84,19 @@
 @property (readonly, copy, nonatomic) NSString *typeString; // @synthesize typeString=_typeString;
 @property (readonly, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 
-+ (id)_searchResultSchemaForCachedResult:(BOOL)arg1;
 + (id)_specializedSchema;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (Class)replacementClass;
-+ (id)resultWithDictionary:(id)arg1 cache:(id)arg2;
++ (id)resultWithDictionary:(id)arg1;
++ (id)schema;
 + (id)searchResultSchemaForCardDetailRequest;
-+ (id)searchResultSchemaWithCache:(id)arg1;
 + (void)setReplacementClass:(Class)arg1;
 - (void).cxx_destruct;
 - (unsigned long long)_constructTypeMaskForTypeString:(id)arg1;
 - (id)_glyphRepresentationsFromGlyphDictionaries:(id)arg1;
 - (id)_glyphsFromGlyphRepresentations:(id)arg1 withSession:(id)arg2;
 - (void)_setStyleOverridesWithDictionary:(id)arg1;
+- (BOOL)canBecomeTopHitForQuery:(id)arg1;
 - (id)completionIconWithSession:(id)arg1;
 - (id)iconWithSession:(id)arg1;
 - (id)initWithDictionary:(id)arg1;

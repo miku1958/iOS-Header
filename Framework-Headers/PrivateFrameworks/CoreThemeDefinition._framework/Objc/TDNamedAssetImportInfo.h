@@ -6,10 +6,15 @@
 
 #import <Foundation/NSObject.h>
 
+#import <CoreThemeDefinition/NSCopying-Protocol.h>
+
 @class NSArray, NSDate, NSSet, NSString, NSURL;
 
-@interface TDNamedAssetImportInfo : NSObject
+@interface TDNamedAssetImportInfo : NSObject <NSCopying>
 {
+    BOOL _optOutOfThinning;
+    BOOL _isFlippable;
+    BOOL _cubeMap;
     NSString *_name;
     long long _nameIdentifier;
     NSURL *_fileURL;
@@ -22,13 +27,24 @@
     long long _templateRenderingMode;
     long long _sizeClassHorizontal;
     long long _sizeClassVertical;
+    long long _displayGamut;
+    long long _layoutDirection;
     unsigned long long _memoryClass;
     unsigned long long _graphicsClass;
     long long _graphicsFeatureSetClass;
+    long long _compressionType;
+    double _lossyCompressionQuality;
     NSSet *_tags;
     NSString *_universalTypeIdentifier;
     NSArray *_containedImageNames;
     NSArray *_layerReferences;
+    unsigned long long _textureWidth;
+    unsigned long long _textureHeight;
+    unsigned long long _textureDepth;
+    unsigned long long _arrayIndex;
+    long long _texturePixelFormat;
+    long long _textureInterpretation;
+    NSArray *_textureInfos;
     struct CGSize _resizableSliceSize;
     struct CGSize _canvasSize;
     CDStruct_3c058996 _sliceInsets;
@@ -36,18 +52,26 @@
 }
 
 @property (nonatomic) struct CGRect alignmentRect; // @synthesize alignmentRect=_alignmentRect;
+@property (nonatomic) unsigned long long arrayIndex; // @synthesize arrayIndex=_arrayIndex;
 @property (nonatomic) struct CGSize canvasSize; // @synthesize canvasSize=_canvasSize;
+@property (nonatomic) long long compressionType; // @synthesize compressionType=_compressionType;
 @property (copy, nonatomic) NSArray *containedImageNames; // @synthesize containedImageNames=_containedImageNames;
+@property (nonatomic) BOOL cubeMap; // @synthesize cubeMap=_cubeMap;
+@property (nonatomic) long long displayGamut; // @synthesize displayGamut=_displayGamut;
 @property (copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property (nonatomic) unsigned long long graphicsClass; // @synthesize graphicsClass=_graphicsClass;
 @property (nonatomic) long long graphicsFeatureSetClass; // @synthesize graphicsFeatureSetClass=_graphicsFeatureSetClass;
 @property (nonatomic) long long idiom; // @synthesize idiom=_idiom;
+@property (nonatomic) BOOL isFlippable; // @synthesize isFlippable=_isFlippable;
 @property (nonatomic) BOOL isTemplate;
 @property (copy, nonatomic) NSArray *layerReferences; // @synthesize layerReferences=_layerReferences;
+@property (nonatomic) long long layoutDirection; // @synthesize layoutDirection=_layoutDirection;
+@property (nonatomic) double lossyCompressionQuality; // @synthesize lossyCompressionQuality=_lossyCompressionQuality;
 @property (nonatomic) unsigned long long memoryClass; // @synthesize memoryClass=_memoryClass;
 @property (copy, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) long long nameIdentifier; // @synthesize nameIdentifier=_nameIdentifier;
+@property (nonatomic) BOOL optOutOfThinning; // @synthesize optOutOfThinning=_optOutOfThinning;
 @property (nonatomic) long long renditionType; // @synthesize renditionType=_renditionType;
 @property (nonatomic) struct CGSize resizableSliceSize; // @synthesize resizableSliceSize=_resizableSliceSize;
 @property (nonatomic) long long resizingMode; // @synthesize resizingMode=_resizingMode;
@@ -58,9 +82,17 @@
 @property (nonatomic) long long subtype; // @synthesize subtype=_subtype;
 @property (copy, nonatomic) NSSet *tags; // @synthesize tags=_tags;
 @property (nonatomic) long long templateRenderingMode; // @synthesize templateRenderingMode=_templateRenderingMode;
+@property (nonatomic) unsigned long long textureDepth; // @synthesize textureDepth=_textureDepth;
+@property (nonatomic) unsigned long long textureHeight; // @synthesize textureHeight=_textureHeight;
+@property (copy, nonatomic) NSArray *textureInfos; // @synthesize textureInfos=_textureInfos;
+@property (nonatomic) long long textureInterpretation; // @synthesize textureInterpretation=_textureInterpretation;
+@property (nonatomic) long long texturePixelFormat; // @synthesize texturePixelFormat=_texturePixelFormat;
+@property (nonatomic) unsigned long long textureWidth; // @synthesize textureWidth=_textureWidth;
 @property (copy, nonatomic) NSString *universalTypeIdentifier; // @synthesize universalTypeIdentifier=_universalTypeIdentifier;
 
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)description;
 - (id)init;
 - (long long)renditionSubtype;
 

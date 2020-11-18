@@ -7,15 +7,17 @@
 #import <CompanionSync/SYSession.h>
 
 @class NSMutableIndexSet, NSObject;
-@protocol OS_dispatch_source;
+@protocol OS_dispatch_group, OS_dispatch_source, OS_os_activity;
 
 @interface SYReceivingSession : SYSession
 {
     NSObject<OS_dispatch_source> *_stateUpdateSource;
     NSObject<OS_dispatch_source> *_sessionTimer;
     NSMutableIndexSet *_receivedBatchIndices;
-    unsigned long long _activity;
-    int _flagsLock;
+    NSObject<OS_os_activity> *_sessionActivity;
+    NSObject<OS_dispatch_group> *_asyncResetGroupToWaitOn;
+    CDUnknownBlockType _weakBlockWaitingForReset;
+    struct os_unfair_lock_s _flagsLock;
     struct {
         unsigned int state:4;
         unsigned int canRestart:1;
@@ -38,13 +40,16 @@
 - (BOOL)_handleStartSessionResponse:(id)arg1 error:(id *)arg2;
 - (void)_handleSyncBatch:(id)arg1 response:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_handleSyncBatchResponse:(id)arg1 error:(id *)arg2;
+- (BOOL)_hasCompleted;
 - (BOOL)_hasStarted;
 - (void)_installStateListener;
 - (void)_installTimers;
 - (BOOL)_isMissingSyncBatches;
+- (void)_midStreamErrorHandled;
 - (id)_newMessageHeader;
 - (void)_notifyErrorAndShutdown;
 - (void)_peerProcessedMessageWithIdentifier:(id)arg1 userInfo:(id)arg2;
+- (BOOL)_postAsyncResetRequestReturningError:(id *)arg1;
 - (void)_processNextState;
 - (void)_resolvedIdentifier:(id)arg1 forResponse:(id)arg2;
 - (void)_resolvedIdentifierForRequest:(id)arg1;
@@ -60,12 +65,13 @@
 - (void)_tweakMessageHeader:(id)arg1;
 - (BOOL)canRestart;
 - (BOOL)canRollback;
-- (void)cancel;
+- (void)cancelWithError:(id)arg1;
 - (id)initWithService:(id)arg1 isReset:(BOOL)arg2 metadata:(id)arg3;
 - (BOOL)isResetSync;
 - (BOOL)isSending;
 - (void)setCanRestart:(BOOL)arg1;
 - (void)setCanRollback:(BOOL)arg1;
+- (void)setDelegate:(id)arg1;
 - (void)setSessionMetadata:(id)arg1;
 - (void)setState:(long long)arg1;
 - (void)start:(CDUnknownBlockType)arg1;

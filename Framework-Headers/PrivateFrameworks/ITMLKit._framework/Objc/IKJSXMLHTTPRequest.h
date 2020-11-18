@@ -9,12 +9,12 @@
 #import <ITMLKit/IKJSXMLHTTPRequest-Protocol.h>
 #import <ITMLKit/ISStoreURLOperationDelegate-Protocol.h>
 
-@class IKDOMDocument, ISURLOperation, JSManagedValue, NSDictionary, NSError, NSHTTPURLResponse, NSMutableArray, NSMutableData, NSMutableURLRequest, NSString, NSURLConnection;
+@class IKDOMDocument, ISURLOperation, JSManagedValue, NSData, NSDictionary, NSError, NSHTTPURLResponse, NSMutableArray, NSMutableURLRequest, NSString, NSURLConnection;
 
 @interface IKJSXMLHTTPRequest : IKJSEventListenerObject <ISStoreURLOperationDelegate, IKJSXMLHTTPRequest>
 {
     BOOL _shouldSquashOnReadyStateEvents;
-    int _onReadyStateChangeMessageQueueLock;
+    struct os_unfair_lock_s _onReadyStateChangeMessageQueueLock;
     BOOL _async;
     BOOL _inProgress;
     BOOL _jingleRequest;
@@ -32,7 +32,7 @@
     NSString *_password;
     long long _primeRetryCount;
     NSHTTPURLResponse *_urlResponse;
-    NSMutableData *_receivedData;
+    NSData *_receivedData;
     long long _reprimingResponseStatus;
     long long _requestReadyState;
     NSString *_requestStatusText;
@@ -57,7 +57,7 @@
 @property (readonly, nonatomic) BOOL primeEnabled; // @synthesize primeEnabled=_primeEnabled;
 @property (nonatomic) long long primeRetryCount; // @synthesize primeRetryCount=_primeRetryCount;
 @property unsigned int readyState; // @synthesize readyState=_readyState;
-@property (strong, nonatomic) NSMutableData *receivedData; // @synthesize receivedData=_receivedData;
+@property (strong) NSData *receivedData; // @synthesize receivedData=_receivedData;
 @property (readonly, nonatomic) long long reprimingResponseStatus; // @synthesize reprimingResponseStatus=_reprimingResponseStatus;
 @property (strong, nonatomic) NSError *requestError; // @synthesize requestError=_requestError;
 @property (nonatomic) long long requestReadyState; // @synthesize requestReadyState=_requestReadyState;
@@ -108,6 +108,7 @@
 - (void)operation:(id)arg1 failedWithError:(id)arg2;
 - (void)operation:(id)arg1 finishedWithOutput:(id)arg2;
 - (void)operation:(id)arg1 willSendRequest:(id)arg2;
+- (id)responseArrayBuffer;
 - (id)responseBlob;
 - (void)send:(id)arg1;
 - (void)setRequestHeader:(id)arg1:(id)arg2;

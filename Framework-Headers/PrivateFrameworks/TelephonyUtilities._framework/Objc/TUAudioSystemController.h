@@ -44,30 +44,32 @@
     unsigned long long _lastVoicemailRoutesScheduleTime;
 }
 
+@property (nonatomic, getter=isDownlinkMuted) BOOL downlinkMuted;
+@property (readonly, nonatomic, getter=isTTY) BOOL tty;
+@property (nonatomic, getter=isUplinkMuted) BOOL uplinkMuted;
+
 + (id)sharedAudioSystemController;
 + (id)sharedSystemController;
++ (id)sourceIdentifierForRouteID:(id)arg1;
 - (void).cxx_destruct;
-- (void)_handleCallStatusChanged;
 - (void)_handleDownlinkMuteDidChangeNotification:(id)arg1;
+- (void)_handlePickableRoutesDidChangeNotification:(id)arg1;
+- (void)_handleServerConnectionDiedNotification:(id)arg1;
 - (void)_handleUplinkMuteDidChangeNotification:(id)arg1;
-- (void)_pickableRoutesDidChangeNotification:(id)arg1;
 - (id)_pickableRoutesForPhoneCallWithForceNewRequest:(BOOL)arg1;
 - (id)_pickableRoutesForPlayAndRecordRemoteVoiceWithForceNewRequest:(BOOL)arg1;
 - (id)_pickableRoutesForPlayAndRecordVideoWithForceNewRequest:(BOOL)arg1;
 - (id)_pickableRoutesForPlayAndRecordVoiceWithForceNewRequest:(BOOL)arg1;
 - (id)_pickableRoutesForTTYWithForceNewRequest:(BOOL)arg1;
 - (id)_pickableRoutesForVoiceMailWithForceNewRequest:(BOOL)arg1;
+- (void)_updateCachedState;
 - (id)bestGuessPickableRoutesForAnyCall;
+- (id)currentlyPickedRouteIdForCategory:(id)arg1 andMode:(id)arg2;
 - (void)dealloc;
 - (id)init;
-- (BOOL)isDownlinkMuted;
-- (BOOL)isTTY;
-- (BOOL)isUplinkMuted;
 - (id)pickableRouteWithUniqueIdentifier:(id)arg1;
 - (id)pickableRoutesForCategory:(id)arg1 andMode:(id)arg2;
 - (id)pickableRoutesForTTY;
-- (BOOL)setDownlinkMuted:(BOOL)arg1;
-- (BOOL)setUplinkMuted:(BOOL)arg1;
 - (BOOL)shouldSuppressCallUsingRoute:(id)arg1;
 
 @end

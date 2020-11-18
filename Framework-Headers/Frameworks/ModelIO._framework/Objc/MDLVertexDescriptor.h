@@ -24,10 +24,12 @@
 - (id)attributeNamed:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)debugPrintToFile:(struct __sFILE *)arg1;
+- (id)description;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithVertexDescriptor:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (void)removeAttributeNamed:(id)arg1;
 - (void)reset;
 - (void)setPackedOffsets;
 - (void)setPackedStrides;

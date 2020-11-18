@@ -20,9 +20,10 @@
 @property (copy, nonatomic) NSString *webAuthToken; // @synthesize webAuthToken=_webAuthToken;
 
 - (void).cxx_destruct;
+- (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleCompletionCallback:(id)arg1;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
 - (BOOL)hasCKOperationCallbacksSet;

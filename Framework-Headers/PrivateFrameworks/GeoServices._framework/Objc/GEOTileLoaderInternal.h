@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 @interface GEOTileLoaderInternal : GEOTileLoader <GEOTileServerProxyDelegate, GEOResourceManifestTileGroupObserver, GEOExperimentConfigurationObserver>
 {
     struct list<LoadItem, std::__1::allocator<LoadItem>> _loadItems;
-    struct mutex _lock;
+    NSObject<OS_dispatch_queue> *_isolationQueue;
     GEOTilePool *_cache;
     GEOTilePool *_expiringCache;
     struct unique_ptr<geo::DispatchTimer, std::__1::default_delete<geo::DispatchTimer>> _timer;
@@ -25,9 +25,9 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_openers;
     CDStruct_34734122 _sortPoint;
     GEOTileServerProxy *_proxy;
-    int _memoryHits;
-    int _diskHits;
-    int _networkHits;
+    _Atomic int _memoryHits;
+    _Atomic int _diskHits;
+    _Atomic int _networkHits;
     struct list<_CacheRequester<void (^)(unsigned long long)>, std::__1::allocator<_CacheRequester<void (^)(unsigned long long)>>> _shrinkCacheRequesters;
     struct list<_CacheRequester<void (^)(unsigned long long)>, std::__1::allocator<_CacheRequester<void (^)(unsigned long long)>>> _freeableSizeRequesters;
     NSMutableArray *_tileDecoders;
@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
     id<GEOTileLoaderInternalDelegate> _internalDelegate;
     NSObject<OS_dispatch_queue> *_internalDelegateQ;
     GEOTileLoaderConfiguration *_config;
-    struct mutex _usageLock;
+    NSObject<OS_dispatch_queue> *_usageIsolation;
     struct unordered_map<_GEOTileKey, UsageData, std::__1::hash<GEOTileKey>, std::__1::equal_to<GEOTileKey>, std::__1::allocator<std::__1::pair<const _GEOTileKey, UsageData>>> _usageData;
     struct unique_ptr<geo::DispatchTimer, std::__1::default_delete<geo::DispatchTimer>> _usageTimer;
     BOOL _isUsageTimerScheduled;
@@ -51,11 +51,12 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_activeTileGroupChanged:(id)arg1;
-- (void)_cancel:(__list_iterator_d839716a *)arg1 err:(id)arg2;
-- (BOOL)_cancelIfNeeded:(__list_iterator_d839716a *)arg1;
+- (void)_cancel:(__list_iterator_aef25af4 *)arg1 err:(id)arg2;
+- (BOOL)_cancelIfNeeded:(__list_iterator_aef25af4 *)arg1;
 - (id)_findInCache:(const struct _GEOTileKey *)arg1;
 - (void)_loadedTile:(id)arg1 forKey:(const struct _GEOTileKey *)arg2 fromOfflinePack:(id)arg3;
 - (void)_loadedTile:(id)arg1 forKey:(const struct _GEOTileKey *)arg2 info:(id)arg3;
+- (void)_loadedTileForLocalKey:(struct _GEOTileKey)arg1 preliminary:(BOOL)arg2 quickly:(BOOL)arg3 tileDecoder:(id)arg4 data:(id)arg5 disburseTile:(CDUnknownBlockType)arg6;
 - (void)_localeChanged:(id)arg1;
 - (void)_requestOnlineTiles;
 - (void)_tileEditionChanged:(id)arg1;
@@ -70,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)clearAllCaches;
 - (void)closeForClient:(id)arg1;
 - (void)dealloc;
+- (id)descriptionDictionaryRepresentation;
 - (int)diskHits;
 - (void)endPreloadSessionForClient:(id)arg1;
 - (void)experimentConfigurationDidChange:(id)arg1;
@@ -90,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (void)proxy:(id)arg1 failedToLoadTiles:(id)arg2 error:(id)arg3;
 - (void)proxy:(id)arg1 loadedTile:(id)arg2 forKey:(const struct _GEOTileKey *)arg3 info:(id)arg4;
 - (void)proxy:(id)arg1 willGoToNetworkForTiles:(id)arg2;
+- (void)proxyDidDownloadRegionalResources:(id)arg1;
 - (void)registerTileDecoder:(id)arg1;
 - (void)registerTileLoader:(Class)arg1;
 - (void)reportCorruptTile:(const struct _GEOTileKey *)arg1;

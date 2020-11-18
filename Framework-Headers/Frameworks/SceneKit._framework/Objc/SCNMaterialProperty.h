@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
 #import <SceneKit/SCNAnimatable-Protocol.h>
@@ -56,14 +56,14 @@
 + (struct __C3DImage *)_copyC3DImageFromImageData:(id)arg1 typeID:(unsigned long long)arg2;
 + (id)_copyImageFromC3DImage:(struct __C3DImage *)arg1;
 + (struct __C3DImage *)copyC3DImageFromImage:(id)arg1;
-+ (struct __C3DImage *)copyC3DImageFromImage:(id)arg1 autoCubemap:(BOOL)arg2;
++ (struct __C3DImage *)copyC3DImageFromImage:(id)arg1 textureOptions:(int)arg2;
 + (id)copyImageFromC3DImage:(struct __C3DImage *)arg1;
 + (id)materialPropertyWithContents:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)UIView;
-- (void *)__CFObject;
+- (const void *)__CFObject;
 - (void)__allocateContentTransformIfNeeded;
-- (void)__removeAnimation:(id)arg1 forKey:(id)arg2;
+- (BOOL)__removeAnimation:(id)arg1 forKey:(id)arg2;
 - (id)_animationPathForKey:(id)arg1;
 - (void)_clearContents;
 - (void)_customDecodingOfSCNMaterialProperty:(id)arg1;
@@ -75,9 +75,9 @@
 - (void)_setC3DImageRef:(struct __C3DImage *)arg1;
 - (void)_setColor:(id)arg1;
 - (void)_setParent:(id)arg1;
-- (BOOL)_supportsCubeMaps;
 - (void)_syncObjCAnimations;
 - (void)_syncObjCModel;
+- (int)_textureOptions;
 - (void)_updateMaterialAttachment:(id)arg1;
 - (void)_updateMaterialBorderColor:(id)arg1;
 - (void)_updateMaterialColor:(id)arg1;
@@ -85,6 +85,7 @@
 - (void)_updateMaterialImage:(id)arg1;
 - (void)_updateMaterialLayer:(id)arg1;
 - (void)_updateMaterialMTLTexture:(id)arg1;
+- (void)_updateMaterialNumber:(id)arg1;
 - (void)_updateMaterialProceduralContents:(id)arg1;
 - (void)_updateMaterialPropertyTransform:(union C3DMatrix4x4)arg1;
 - (void)_updateMaterialSKScene:(id)arg1;
@@ -95,6 +96,7 @@
 - (id)animationForKey:(id)arg1;
 - (struct __C3DAnimationManager *)animationManager;
 - (id)attachment;
+- (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
 - (struct C3DColor4)borderColor4;
 - (id)color;
 - (struct C3DColor4)color4;
@@ -106,6 +108,7 @@
 - (struct __C3DEffectSlot *)effectSlot;
 - (struct __C3DEffectSlot *)effectSlotCreateIfNeeded:(BOOL)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)floatValue;
 - (struct __C3DImage *)getC3DImageRef;
 - (id)image;
 - (id)init;
@@ -134,18 +137,21 @@
 - (void)setAttachment:(id)arg1;
 - (void)setColor:(id)arg1;
 - (void)setContent:(id)arg1;
+- (void)setFloatValue:(id)arg1;
 - (void)setImage:(id)arg1;
 - (void)setLayer:(id)arg1;
 - (void)setMtlTexture:(id)arg1;
 - (void)setProceduralContents:(id)arg1;
 - (void)setSkScene:(id)arg1;
 - (void)setSkTexture:(id)arg1;
+- (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
 - (void)setUIView:(id)arg1;
 - (void)setUIWindow:(id)arg1;
 - (id)skScene;
 - (id)skTexture;
 - (id)slotName;
 - (struct __C3DTextureSampler *)textureSampler;
+- (void)unbindAnimatablePath:(id)arg1;
 - (void)unlinkCustomPropertyWithParent:(id)arg1;
 
 @end

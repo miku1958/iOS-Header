@@ -10,12 +10,16 @@
 
 @interface ASItemOperationsFetchCommand : NSObject
 {
+    NSString *_collectionID;
+    NSString *_serverID;
     NSString *_longID;
 }
 
 - (void).cxx_destruct;
-- (id)initWithlongID:(id)arg1;
+- (id)collectionID;
+- (id)initWithCollectionID:(id)arg1 withServerID:(id)arg2 withLongID:(id)arg3;
 - (id)longID;
+- (id)serverID;
 
 @end
 

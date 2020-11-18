@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class AVExternalDevice, MPAVController, MPMediaQuery, UIView;
+@class AVExternalDevice, MCDNowPlayingButton, MPAVController, MPMediaQuery, UIColor;
 @protocol MCDCarDisplayServiceProvider;
 
 @interface MCD_OLD_TableViewController : UITableViewController
@@ -15,31 +15,38 @@
     MPAVController *_player;
     MPMediaQuery *_query;
     BOOL _viewHasAppeared;
-    UIView *_nowPlayingButton;
+    MCDNowPlayingButton *_nowPlayingButton;
     AVExternalDevice *_externalDevice;
     BOOL _alwaysShowNavBar;
     BOOL _limitedUI;
     BOOL _topLevel;
+    UIColor *_tintColor;
 }
 
 @property (nonatomic) BOOL alwaysShowNavBar; // @synthesize alwaysShowNavBar=_alwaysShowNavBar;
+@property (readonly) BOOL currentAppIsPlaying;
 @property (nonatomic) BOOL limitedUI; // @synthesize limitedUI=_limitedUI;
 @property (readonly, nonatomic) MPAVController *player; // @synthesize player=_player;
 @property (readonly, nonatomic) MPMediaQuery *query; // @synthesize query=_query;
 @property (readonly, nonatomic) id<MCDCarDisplayServiceProvider> serviceProvider; // @synthesize serviceProvider=_serviceProvider;
+@property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property (nonatomic) BOOL topLevel; // @synthesize topLevel=_topLevel;
 @property (nonatomic) BOOL viewHasAppeared; // @synthesize viewHasAppeared=_viewHasAppeared;
 
-+ (void)_adjustTintColorForSubviewsInCell:(id)arg1 didHighlight:(BOOL)arg2;
-+ (id)addAlbumArtViewFromItem:(id)arg1 toCell:(id)arg2 rowHeight:(double)arg3;
++ (void)_addTemplateImage:(id)arg1 toCell:(id)arg2 tintColor:(id)arg3;
++ (void)_adjustTintColor:(id)arg1 forSubviewsInCell:(id)arg2;
 + (id)addAlbumArtViewWithImage:(id)arg1 toCell:(id)arg2 rowHeight:(double)arg3;
++ (void)addGenericTemplateImage:(id)arg1 toCell:(id)arg2;
 + (void)addTemplateImage:(id)arg1 toCell:(id)arg2;
++ (void)matchingNowPlayingApplicationWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (void)removeImageFromCell:(id)arg1;
 - (void).cxx_destruct;
 - (void)_itemChanged:(id)arg1;
+- (void)_itemDidChange;
 - (void)_limitedUIDidChange;
 - (void)_nowPlayingButtonTapped:(id)arg1;
-- (void)_presentNowPlayingViewController;
+- (void)_nowPlayingDidChangeNotification:(id)arg1;
+- (void)_updateNowPlayingPlayingVisibilityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_updateNowPlayingVisibility;
 - (id)dequeueReusableCarDisplayCellForTableView:(id)arg1 indexPath:(id)arg2;
 - (BOOL)hasRowsToDisplay;

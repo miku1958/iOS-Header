@@ -26,9 +26,12 @@
 @property (readonly, nonatomic) id propertyListForProxy;
 
 + (id)assetProxyWithPropertyList:(id)arg1;
++ (id)assetWithData:(id)arg1 contentType:(id)arg2 options:(id)arg3;
 + (id)assetWithURL:(id)arg1;
 + (id)assetWithURL:(id)arg1 figPlaybackItem:(struct OpaqueFigPlaybackItem *)arg2 trackIDs:(id)arg3 dynamicBehavior:(BOOL)arg4;
 - (id)_ID3Metadata;
+- (id)_URLSessionDataDelegate;
+- (id)_URLSessionOperationQueue;
 - (id)_absoluteURL;
 - (unsigned long long)_addChapterMetadataItem:(id)arg1 timeRange:(CDStruct_e83c9415)arg2 toChapters:(id)arg3 fromIndex:(unsigned long long)arg4;
 - (id)_assetInspector;
@@ -45,7 +48,7 @@
 - (BOOL)_containsAtLeastOnePlayableVideoTrack;
 - (id)_exportURL;
 - (struct OpaqueFigAsset *)_figAsset;
-- (id)_firstTrackGroupWithMediaType:(id)arg1;
+- (id)_firstTrackGroupWithMediaTypes:(id)arg1;
 - (struct OpaqueFigFormatReader *)_formatReader;
 - (double)_fragmentMindingInterval;
 - (void)_handleURLRequest:(id)arg1;
@@ -58,9 +61,11 @@
 - (struct OpaqueFigMutableComposition *)_mutableComposition;
 - (BOOL)_needsLegacyChangeNotifications;
 - (struct OpaqueFigPlaybackItem *)_playbackItem;
+- (id)_resourceLoaderURLSession;
 - (void)_setFragmentMindingInterval:(double)arg1;
 - (void)_setIsAssociatedWithFragmentMinder:(BOOL)arg1;
 - (void)_tracksDidChange;
+- (id)_tracksWithClass:(Class)arg1;
 - (id)_weakReference;
 - (id)alternateTrackGroups;
 - (id)audioAlternatesTrackGroup;
@@ -80,6 +85,7 @@
 - (BOOL)hasProtectedContent;
 - (unsigned long long)hash;
 - (id)init;
+- (id)initWithData:(id)arg1 contentType:(id)arg2 options:(id)arg3;
 - (id)initWithURL:(id)arg1 options:(id)arg2;
 - (BOOL)isCompatibleWithAirPlayVideo;
 - (BOOL)isCompatibleWithSavedPhotosAlbum;

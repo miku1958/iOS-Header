@@ -8,10 +8,20 @@
 
 @interface SearchUIVibrantLabel : UILabel
 {
+    unsigned long long _style;
 }
 
+@property unsigned long long style; // @synthesize style=_style;
+
++ (id)condenseWhitespaceForText:(id)arg1 keepNewlinesAndTabs:(BOOL)arg2;
++ (BOOL)richTextOverridesAsyncLoader:(id)arg1;
++ (id)stripUnnecessaryCharactersInString:(id)arg1;
++ (id)textColorForStyle:(unsigned long long)arg1;
 + (id)vibrantTextColorForStyle:(unsigned long long)arg1;
+- (id)attributedStringForRichText:(id)arg1 keepWhitespace:(BOOL)arg2;
 - (id)initWithStyle:(unsigned long long)arg1;
+- (void)setVibrancyEnabled:(BOOL)arg1;
+- (void)updateWithRichText:(id)arg1 keepWhitespace:(BOOL)arg2;
 - (void)willMoveToSuperview:(id)arg1;
 
 @end

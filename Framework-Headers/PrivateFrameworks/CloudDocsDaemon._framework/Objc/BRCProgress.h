@@ -6,22 +6,29 @@
 
 #import <Foundation/NSProgress.h>
 
-@class NSMutableDictionary;
+@class BRCAccountSession, NSArray, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface BRCProgress : NSProgress
 {
     NSMutableDictionary *_progressByAliasContainerID;
-    BOOL _isPublished;
+    BOOL _published;
+    NSArray *_parentFileIDs;
+    BRCAccountSession *_session;
+    BOOL _group;
 }
 
-+ (id)downloadProgressWithBRCDocumentItem:(id)arg1;
-+ (id)progressWithBRCDocumentItem:(id)arg1 totalSize:(long long)arg2 kind:(id)arg3;
-+ (id)uploadProgressWithBRCDocumentItem:(id)arg1 transferSize:(unsigned long long)arg2;
+@property (readonly, nonatomic) BOOL isPublished; // @synthesize isPublished=_published;
+@property (readonly, nonatomic) NSArray *parentFileIDs; // @synthesize parentFileIDs=_parentFileIDs;
+
++ (id)_progressForDocument:(id)arg1 group:(BOOL)arg2 sizeInfo:(id)arg3;
++ (id)downloadProgressForDocument:(id)arg1 sizeInfo:(id)arg2;
++ (id)uploadProgressForDocument:(id)arg1 sizeInfo:(id)arg2;
 - (void).cxx_destruct;
 - (void)addAliasItem:(id)arg1;
 - (void)brc_publish;
 - (void)brc_unpublish;
+- (id)initWithGroup:(BOOL)arg1 parentFileIDs:(id)arg2 session:(id)arg3;
 - (void)setCompletedUnitCount:(long long)arg1;
 
 @end

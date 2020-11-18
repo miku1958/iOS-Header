@@ -21,6 +21,7 @@
 
 + (Class)_queryServerDataObjectClass;
 - (void).cxx_destruct;
+- (BOOL)_prepareSamplesForDelivery:(id)arg1 error:(id *)arg2;
 - (void)_queue_cleanupAfterDeactivation;
 - (void)_queue_configureQueryServerDataObject:(id)arg1;
 - (CDUnknownBlockType)_queue_errorHandler;

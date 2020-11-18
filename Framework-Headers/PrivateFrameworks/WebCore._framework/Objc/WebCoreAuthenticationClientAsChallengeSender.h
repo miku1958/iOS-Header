@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface WebCoreAuthenticationClientAsChallengeSender : NSObject <NSURLAuthenticationChallengeSender>
 {
     struct AuthenticationClient *m_client;
-    struct _CFURLAuthChallenge *m_cfChallenge;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,12 +22,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void)cancelAuthenticationChallenge:(id)arg1;
-- (struct _CFURLAuthChallenge *)cfChallenge;
 - (struct AuthenticationClient *)client;
 - (void)continueWithoutCredentialForAuthenticationChallenge:(id)arg1;
 - (void)detachClient;
 - (id)initWithAuthenticationClient:(struct AuthenticationClient *)arg1;
-- (void)setCFChallenge:(struct _CFURLAuthChallenge *)arg1;
+- (void)performDefaultHandlingForAuthenticationChallenge:(id)arg1;
+- (void)rejectProtectionSpaceAndContinueWithChallenge:(id)arg1;
 - (void)useCredential:(id)arg1 forAuthenticationChallenge:(id)arg2;
 
 @end

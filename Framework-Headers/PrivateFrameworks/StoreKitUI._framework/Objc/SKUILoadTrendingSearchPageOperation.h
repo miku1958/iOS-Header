@@ -11,15 +11,16 @@
 @interface SKUILoadTrendingSearchPageOperation : NSOperation
 {
     SKUIClientContext *_clientContext;
+    NSURL *_pageURL;
     CDUnknownBlockType _outputBlock;
-    NSURL *_url;
 }
 
-@property (copy, nonatomic) NSURL *URL; // @synthesize URL=_url;
-@property (strong, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;
-@property (copy) CDUnknownBlockType outputBlock; // @synthesize outputBlock=_outputBlock;
+@property (readonly, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;
+@property (readonly, copy, nonatomic) CDUnknownBlockType outputBlock; // @synthesize outputBlock=_outputBlock;
+@property (readonly, nonatomic) NSURL *pageURL; // @synthesize pageURL=_pageURL;
 
 - (void).cxx_destruct;
+- (id)initWithClientContext:(id)arg1 pageURL:(id)arg2 outputBlock:(CDUnknownBlockType)arg3;
 - (void)main;
 
 @end

@@ -17,8 +17,8 @@
 + (BOOL)characterIsStringValueCharacter:(unsigned short)arg1;
 + (id)scanAlertValueFromString:(id)arg1;
 + (id)scannerWithString:(id)arg1;
+- (void).cxx_destruct;
 - (BOOL)atEnd;
-- (void)dealloc;
 - (id)initWithString:(id)arg1;
 - (unsigned short)nextCharacter;
 - (unsigned short)nextUnescapedCharacter;

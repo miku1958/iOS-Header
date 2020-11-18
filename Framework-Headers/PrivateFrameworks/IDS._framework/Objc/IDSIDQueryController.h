@@ -6,11 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-@class _IDSIDQueryController;
+@class IDSInternalQueueController, _IDSIDQueryController;
 
 @interface IDSIDQueryController : NSObject
 {
     _IDSIDQueryController *_internal;
+    IDSInternalQueueController *_queueController;
 }
 
 + (id)sharedInstance;

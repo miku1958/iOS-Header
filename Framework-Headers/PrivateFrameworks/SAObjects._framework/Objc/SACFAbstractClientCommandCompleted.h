@@ -20,6 +20,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *outputLogs;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
+@property (copy, nonatomic) NSString *results;
 @property (nonatomic) long long status;
 @property (readonly) Class superclass;
 

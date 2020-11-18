@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 - (void)_goToAnnotationAnimated:(BOOL)arg1 duration:(double)arg2 isInitial:(BOOL)arg3;
 - (double)_minTrackingCameraDistance;
 - (void)_rotateToHeadingAnimated:(BOOL)arg1 duration:(double)arg2;
-- (double)_zoomLevelForCameraPosition:(struct VKPoint)arg1;
+- (double)_zoomLevelForCameraPosition:(Matrix_6e1d3589)arg1;
 - (void)setEdgeInsets:(struct VKEdgeInsets)arg1;
 
 @end

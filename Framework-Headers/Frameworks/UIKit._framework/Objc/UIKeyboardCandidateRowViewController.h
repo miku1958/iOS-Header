@@ -8,13 +8,14 @@
 
 #import <UIKit/UICollectionViewDataSource-Protocol.h>
 #import <UIKit/UICollectionViewDelegate-Protocol.h>
+#import <UIKit/UIKeyboardCandidateBarLayoutDelegate-Protocol.h>
 #import <UIKit/UIKeyboardCandidateList-Protocol.h>
 
 @class NSArray, NSString, TIKeyboardCandidateResultSet, UIKBCandidateCollectionView;
 @protocol UIKeyboardCandidateListDelegate, UIKeyboardCandidateRowViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardCandidateRowViewController : UIViewController <UIKeyboardCandidateList, UICollectionViewDelegate, UICollectionViewDataSource>
+@interface UIKeyboardCandidateRowViewController : UIViewController <UIKeyboardCandidateList, UICollectionViewDelegate, UICollectionViewDataSource, UIKeyboardCandidateBarLayoutDelegate>
 {
     BOOL _showsHiddenCandidates;
     id<UIKeyboardCandidateRowViewControllerDelegate> _delegate;
@@ -48,10 +49,10 @@ __attribute__((visibility("hidden")))
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (id)currentCandidate;
 - (unsigned long long)currentIndex;
+- (void)dealloc;
 - (BOOL)hasCandidates;
 - (id)initWithCellClass:(Class)arg1;
 - (BOOL)isExtendedList;
-- (BOOL)isHiddenCandidatesList;
 - (id)keyboardBehaviors;
 - (void)loadView;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;

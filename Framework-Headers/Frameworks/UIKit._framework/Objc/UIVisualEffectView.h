@@ -7,19 +7,20 @@
 #import <UIKit/UIView.h>
 
 #import <UIKit/NSSecureCoding-Protocol.h>
-#import <UIKit/UIInteractionProgressObserver-Protocol.h>
 
-@class NSArray, NSString, NSUUID, UIVisualEffect, _UIVisualEffectBackdropView, _UIVisualEffectContentView, _UIVisualEffectFilterView;
+@class NSArray, NSString, UIImage, UIVisualEffect, _UIVisualEffectBackdropView, _UIVisualEffectContentView, _UIVisualEffectFilterView;
 
-@interface UIVisualEffectView : UIView <UIInteractionProgressObserver, NSSecureCoding>
+@interface UIVisualEffectView : UIView <NSSecureCoding>
 {
     struct {
         unsigned int hasHadAlphaAnimated:1;
         unsigned int suppressReportingEmptyContentView:1;
         unsigned int interactiveAnimationInFlight:1;
         unsigned int interactiveAnimationCompleted:1;
+        unsigned int cornerRadiusIsContinuous:1;
     } _effectViewFlags;
     UIView *_maskView;
+    UIImage *_maskImage;
     _UIVisualEffectContentView *_contentView;
     _UIVisualEffectBackdropView *_backdropSubview;
     _UIVisualEffectFilterView *_grayscaleSubview;
@@ -27,44 +28,46 @@
     _UIVisualEffectFilterView *_colorBurnSubview;
     _UIVisualEffectFilterView *_darkeningSubview;
     NSArray *_effectConfigViews;
-    double _pausedTime;
-    NSUUID *_animationUUID;
-    UIVisualEffect *_initialEffect;
-    UIVisualEffect *_finalEffect;
-    BOOL __adaptsToInterfaceStyle;
+    BOOL __blurDisabled;
     NSString *_groupName;
     double _cornerRadius;
     UIVisualEffect *_effect;
     UIVisualEffect *_overrideEffect;
 }
 
-@property (nonatomic, setter=_setAdaptsToInterfaceStyle:) BOOL _adaptsToInterfaceStyle; // @synthesize _adaptsToInterfaceStyle=__adaptsToInterfaceStyle;
+@property (nonatomic, getter=_isBlurDisabled, setter=_setBlurDisabled:) BOOL _blurDisabled; // @synthesize _blurDisabled=__blurDisabled;
 @property (nonatomic, setter=_setCornerRadius:) double _cornerRadius; // @synthesize _cornerRadius;
+@property (readonly, nonatomic) NSArray *_effectViews;
 @property (copy, nonatomic, setter=_setGroupName:) NSString *_groupName; // @synthesize _groupName;
+@property (strong, nonatomic, setter=_setMaskImage:) UIImage *_maskImage;
 @property (readonly, nonatomic) UIVisualEffect *_trueEffect;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) UIVisualEffect *effect; // @synthesize effect=_effect;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIVisualEffect *overrideEffect; // @synthesize overrideEffect=_overrideEffect;
-@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_applyCornerRadiusToSubviews;
 - (void)_applyGroupNameToSubviews;
+- (id)_backdropSubview;
 - (void)_commonInit;
+- (void)_configureBackgroundColorForEffectIfNeeded;
 - (void)_configureForCurrentEffect;
 - (void)_configureForEffectConfig:(id)arg1;
 - (void)_configureForEffectSettings:(id)arg1;
+- (double)_continuousCornerRadius;
 - (void)_createContentViewIfNecessary;
+- (id)_maskViewImageMask;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)_rebuildEffectViewForCurrentEffect;
+- (void)_setContinuousCornerRadius:(double)arg1;
 - (void)_setEffect:(id)arg1;
 - (void)_setTintOpacity:(double)arg1;
 - (void)_setupEffectsViewsForSettings:(id)arg1;
+- (BOOL)_shouldRegenerateMasksForNewMaskView:(id)arg1;
 - (void)_updateEffectForAccessibilityChanges:(id)arg1;
+- (void)_updateEffectForInterfaceStyle:(long long)arg1;
+- (void)_updateEffectViewMasks;
 - (id)_whatsWrongWithThisEffect;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (void)dealloc;
@@ -72,10 +75,8 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithEffect:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)interactionProgress:(id)arg1 didEnd:(BOOL)arg2;
-- (void)interactionProgressDidUpdate:(id)arg1;
+- (void)layoutSubviews;
 - (id)maskView;
-- (void)setEffect:(id)arg1 withInteractionProgress:(id)arg2;
 - (void)setMaskView:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidMoveToSuperview;

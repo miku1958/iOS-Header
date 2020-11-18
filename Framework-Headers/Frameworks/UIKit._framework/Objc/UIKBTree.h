@@ -46,8 +46,12 @@
 - (int)_variantType;
 - (id)activeGeometriesList;
 - (id)activeShapesFromOutputShapes:(id)arg1 inputShapes:(id)arg2;
+- (void)addMessagesWriteboardKey;
+- (void)addkeyToCachedKeyList:(id)arg1;
 - (BOOL)allowRetestAfterCommittingDownActions;
 - (id)alternateKeyplaneName;
+- (id)alternateStrings;
+- (BOOL)alternatesOnTop;
 - (id)attributeSet:(BOOL)arg1;
 - (id)autolocalizedKeyCacheIterator;
 - (BOOL)avoidAutoDeactivation;
@@ -59,6 +63,7 @@
 - (id)cacheSecondaryDisplayString;
 - (id)cachedKeysByKeyName:(id)arg1;
 - (void)centerKeys:(id)arg1 inRect:(struct CGRect)arg2 scale:(double)arg3;
+- (void)clearManualAddedKey;
 - (void)clearTransientCaches;
 - (int)clipCorners;
 - (id)componentName;
@@ -78,6 +83,7 @@
 - (void)elaborateLayoutWithSize:(struct CGSize)arg1 scale:(double)arg2;
 - (id)findLeftMoreKey;
 - (id)firstCachedKeyWithName:(id)arg1;
+- (id)firstKeyplaneSwitchKey;
 - (long long)flickDirection;
 - (BOOL)forceMultitap;
 - (struct CGRect)frame;
@@ -123,6 +129,7 @@
 - (id)keysOrderedByPositionRTL;
 - (id)keysOrderedByPositionWithoutZip;
 - (id)keysWithString:(id)arg1;
+- (id)keysetCanContainWriteboardKey;
 - (id)layoutName;
 - (id)listShapes;
 - (id)localizationKey;
@@ -145,13 +152,17 @@
 - (double)primaryKeylayoutOffset;
 - (double)primaryKeylayoutWidthRatio;
 - (id)recursiveDescription;
+- (void)removeKeyFromCachedKeyList:(id)arg1;
 - (BOOL)renderKeyInKeyplane:(id)arg1;
 - (int)rendering;
 - (id)representedString;
+- (id)rightSpaceKey;
 - (id)secondaryDisplayStrings;
 - (id)secondaryRepresentedStrings;
 - (long long)selectedVariantIndex;
 - (void)setActiveGeometriesList:(id)arg1;
+- (void)setAlternateStrings:(id)arg1;
+- (void)setAlternatesOnTop:(BOOL)arg1;
 - (void)setAttributes:(id)arg1;
 - (void)setClipCorners:(int)arg1;
 - (void)setDisabled:(BOOL)arg1;

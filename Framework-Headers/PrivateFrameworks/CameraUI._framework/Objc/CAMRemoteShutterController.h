@@ -17,6 +17,8 @@
     long long _captureMode;
     long long _captureDevice;
     long long _flashMode;
+    long long _hdrMode;
+    long long _irisMode;
     double _zoomAmount;
     id<CAMRemoteShutterDelegate> _delegate;
     CAMMotionController *__motionController;
@@ -30,6 +32,8 @@
 @property (readonly, nonatomic, getter=isConnected) BOOL connected;
 @property (weak, nonatomic) id<CAMRemoteShutterDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) long long flashMode; // @synthesize flashMode=_flashMode;
+@property (nonatomic) long long hdrMode; // @synthesize hdrMode=_hdrMode;
+@property (nonatomic) long long irisMode; // @synthesize irisMode=_irisMode;
 @property (nonatomic, getter=isShowingPreview) BOOL showingPreview; // @synthesize showingPreview=_showingPreview;
 @property (nonatomic) double zoomAmount; // @synthesize zoomAmount=_zoomAmount;
 
@@ -39,6 +43,9 @@
 - (void)_enterForeground:(id)arg1;
 - (void)_sendMode;
 - (void)applyCaptureConfiguration:(id)arg1;
+- (void)burstCaptureDidStop;
+- (void)burstCaptureNumberOfPhotosDidChange:(unsigned long long)arg1;
+- (void)burstCaptureWillStart;
 - (void)closeConnection;
 - (void)countdownCanceled;
 - (void)dealloc;

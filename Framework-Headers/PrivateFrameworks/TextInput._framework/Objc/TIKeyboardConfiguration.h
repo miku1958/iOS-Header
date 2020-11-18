@@ -8,7 +8,7 @@
 
 #import <TextInput/NSSecureCoding-Protocol.h>
 
-@class NSString, TIKeyboardInputManagerState, TIKeyboardIntermediateText;
+@class NSArray, NSString, TIKeyboardInputManagerState, TIKeyboardIntermediateText;
 
 @interface TIKeyboardConfiguration : NSObject <NSSecureCoding>
 {
@@ -17,6 +17,7 @@
     TIKeyboardIntermediateText *_intermediateText;
     NSString *_layoutTag;
     NSString *_accentKeyString;
+    NSArray *_multilingualLanguages;
 }
 
 @property (copy, nonatomic) NSString *accentKeyString; // @synthesize accentKeyString=_accentKeyString;
@@ -24,6 +25,7 @@
 @property (copy, nonatomic) TIKeyboardInputManagerState *inputManagerState; // @synthesize inputManagerState=_inputManagerState;
 @property (strong, nonatomic) TIKeyboardIntermediateText *intermediateText; // @synthesize intermediateText=_intermediateText;
 @property (copy, nonatomic) NSString *layoutTag; // @synthesize layoutTag=_layoutTag;
+@property (strong, nonatomic) NSArray *multilingualLanguages; // @synthesize multilingualLanguages=_multilingualLanguages;
 
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;

@@ -53,5 +53,10 @@ typedef struct {
 
 typedef struct {
     unsigned int timestamp:1;
+    unsigned int uiPlacement:1;
+} CDStruct_a6119c26;
+
+typedef struct {
+    unsigned int timestamp:1;
 } CDStruct_b5306035;
 

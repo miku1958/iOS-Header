@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSHashTable, NSMutableArray, NSString;
+@class Alarm, NSArray, NSDate, NSHashTable, NSMutableArray, NSString;
 
 @interface AlarmManager : NSObject
 {
@@ -17,6 +17,7 @@
     NSHashTable *_observers;
     BOOL invalidAlarmsDetected;
     NSMutableArray *logMessageList;
+    Alarm *_sleepAlarm;
     NSDate *lastModified;
 }
 
@@ -27,13 +28,16 @@
 @property (nonatomic) BOOL invalidAlarmsDetected; // @synthesize invalidAlarmsDetected;
 @property (strong, nonatomic) NSDate *lastModified; // @synthesize lastModified;
 @property (strong, nonatomic) NSMutableArray *logMessageList; // @synthesize logMessageList;
+@property (readonly, nonatomic) Alarm *sleepAlarm; // @synthesize sleepAlarm=_sleepAlarm;
 
 + (id)copyReadAlarmsFromPreferences;
++ (id)copySleepAlarmFromPreferences;
 + (BOOL)discardOldVersion;
 + (BOOL)isAlarmNotification:(id)arg1;
 + (id)sharedManager;
 + (BOOL)upgrade;
 + (void)writeAlarmsToPreferences:(id)arg1;
++ (void)writeSleepAlarmToPreferences:(id)arg1;
 - (void).cxx_destruct;
 - (void)addAlarm:(id)arg1 active:(BOOL)arg2;
 - (void)addObserver:(id)arg1;
@@ -54,6 +58,9 @@
 - (void)loadScheduledNotifications;
 - (void)loadScheduledNotificationsWithCancelUnused:(BOOL)arg1;
 - (id)nextAlarmForDate:(id)arg1 activeOnly:(BOOL)arg2 allowRepeating:(BOOL)arg3;
+- (id)nextAlarmForDate:(id)arg1 activeOnly:(BOOL)arg2 allowRepeating:(BOOL)arg3 allowSnoozed:(BOOL)arg4;
+- (id)nextAlarmForDate:(id)arg1 activeOnly:(BOOL)arg2 allowRepeating:(BOOL)arg3 allowSnoozed:(BOOL)arg4 allowSleepAlarm:(BOOL)arg5;
+- (void)reloadDefaultSoundAndType;
 - (void)reloadScheduledNotifications;
 - (void)reloadScheduledNotificationsWithRefreshActive:(BOOL)arg1 cancelUnused:(BOOL)arg2;
 - (void)removeAlarm:(id)arg1;
@@ -63,6 +70,7 @@
 - (void)setDefaultSound:(id)arg1 ofType:(long long)arg2;
 - (void)unloadAlarms;
 - (void)updateAlarm:(id)arg1 active:(BOOL)arg2;
+- (void)updateSleepAlarm:(id)arg1 active:(BOOL)arg2;
 
 @end
 

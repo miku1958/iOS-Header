@@ -27,6 +27,7 @@
 - (id)initWithGetter:(CDUnknownBlockType)arg1 setter:(CDUnknownBlockType)arg2;
 - (BOOL)isFinishedAnimating;
 - (void)removeAllPropertyAnimations;
+- (void)setValueImmediate:(id)arg1;
 - (void)update:(double)arg1;
 
 @end

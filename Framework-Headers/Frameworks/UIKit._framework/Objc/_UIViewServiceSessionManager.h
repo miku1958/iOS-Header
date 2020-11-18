@@ -12,7 +12,7 @@
 
 @interface _UIViewServiceSessionManager : NSObject <NSXPCListenerDelegate>
 {
-    int _lock;
+    struct os_unfair_lock_s _lock;
     NSXPCListener *_listener;
     NSMutableArray *_sessions;
     int _connectionNotificationToken;

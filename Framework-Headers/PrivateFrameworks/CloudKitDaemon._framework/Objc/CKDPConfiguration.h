@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasCreated;
 @property (nonatomic) BOOL hasExpires;
 
++ (Class)fieldsType;
 - (void).cxx_destruct;
 - (void)addFields:(id)arg1;
 - (void)clearFields;

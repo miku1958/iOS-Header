@@ -6,52 +6,48 @@
 
 #import <UIKit/UIView.h>
 
-@class AKController, AKRichBrushStroke, CHBoxcarFilterPointFIFO, CHPointStrokeFIFO, CHQuadCurvePointFIFO, MISSING_TYPE, NSMutableArray, UIColor;
+@class AKBitmapFIFO, AKController, CHBoxcarFilterPointFIFO, CHPointStrokeFIFO, CHQuadCurvePointFIFO, MISSING_TYPE, UIColor;
 @protocol AKSmoothPathViewDelegate;
 
 @interface AKSmoothPathView : UIView
 {
     double _cachedEffectiveStrokeWidthInModel;
     double _cachedModelToViewScale;
-    struct CGPath *_mutablePath;
     BOOL _prestrokedOutputMode;
     BOOL _hasShadow;
     BOOL _applyModelBaseScaleFactorToStroke;
-    BOOL _disableSingleDotSpecialCase;
+    BOOL _startedTouchDrawing;
     BOOL _isAddingPointWithoutSmoothing;
+    BOOL _disableSingleDotSpecialCase;
     AKController *_controller;
     id<AKSmoothPathViewDelegate> _delegate;
     UIColor *_strokeColor;
     double _strokeWidth;
-    double _currentWeight;
-    double _singleDotCurrentSize;
-    NSMutableArray *_strokes;
-    AKRichBrushStroke *_currentBrushStroke;
-    CHPointStrokeFIFO *_strokeFIFO;
-    CHBoxcarFilterPointFIFO *_smoothingFIFO;
-    CHQuadCurvePointFIFO *_interpolatingFIFO;
+    double _shadowRadiusInModel;
+    double _shadowRadiusInView;
     double _minPressure;
     double _maxPressure;
     double _minThickness;
     double _maxThickness;
-    double _shadowRadiusInModel;
-    double _shadowRadiusInView;
-    struct CGPoint _singleDotLocation;
-    MISSING_TYPE *_lastPoint;
-    struct CGRect _aggregateInvalidRect;
+    CHPointStrokeFIFO *_strokeFIFO;
+    CHBoxcarFilterPointFIFO *_smoothingFIFO;
+    CHQuadCurvePointFIFO *_interpolatingFIFO;
+    AKBitmapFIFO *_bitmapFifo;
+    double _currentWeight;
+    double _singleDotCurrentSize;
+    struct CGRect _singleDotRect;
 }
 
-@property (nonatomic) struct CGRect aggregateInvalidRect; // @synthesize aggregateInvalidRect=_aggregateInvalidRect;
 @property BOOL applyModelBaseScaleFactorToStroke; // @synthesize applyModelBaseScaleFactorToStroke=_applyModelBaseScaleFactorToStroke;
+@property (strong, nonatomic) AKBitmapFIFO *bitmapFifo; // @synthesize bitmapFifo=_bitmapFifo;
+@property double cachedModelToViewScale; // @synthesize cachedModelToViewScale=_cachedModelToViewScale;
 @property (weak) AKController *controller; // @synthesize controller=_controller;
-@property (strong, nonatomic) AKRichBrushStroke *currentBrushStroke; // @synthesize currentBrushStroke=_currentBrushStroke;
 @property double currentWeight; // @synthesize currentWeight=_currentWeight;
 @property id<AKSmoothPathViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property BOOL disableSingleDotSpecialCase; // @synthesize disableSingleDotSpecialCase=_disableSingleDotSpecialCase;
 @property (nonatomic) BOOL hasShadow; // @synthesize hasShadow=_hasShadow;
 @property (strong, nonatomic) CHQuadCurvePointFIFO *interpolatingFIFO; // @synthesize interpolatingFIFO=_interpolatingFIFO;
 @property BOOL isAddingPointWithoutSmoothing; // @synthesize isAddingPointWithoutSmoothing=_isAddingPointWithoutSmoothing;
-@property MISSING_TYPE *lastPoint; // @synthesize lastPoint=_lastPoint;
 @property (nonatomic) double maxPressure; // @synthesize maxPressure=_maxPressure;
 @property (nonatomic) double maxThickness; // @synthesize maxThickness=_maxThickness;
 @property (nonatomic) double minPressure; // @synthesize minPressure=_minPressure;
@@ -60,27 +56,25 @@
 @property double shadowRadiusInModel; // @synthesize shadowRadiusInModel=_shadowRadiusInModel;
 @property double shadowRadiusInView; // @synthesize shadowRadiusInView=_shadowRadiusInView;
 @property double singleDotCurrentSize; // @synthesize singleDotCurrentSize=_singleDotCurrentSize;
-@property struct CGPoint singleDotLocation; // @synthesize singleDotLocation=_singleDotLocation;
+@property struct CGRect singleDotRect; // @synthesize singleDotRect=_singleDotRect;
 @property (strong, nonatomic) CHBoxcarFilterPointFIFO *smoothingFIFO; // @synthesize smoothingFIFO=_smoothingFIFO;
+@property (nonatomic) BOOL startedTouchDrawing; // @synthesize startedTouchDrawing=_startedTouchDrawing;
 @property (strong, nonatomic) UIColor *strokeColor; // @synthesize strokeColor=_strokeColor;
 @property (strong, nonatomic) CHPointStrokeFIFO *strokeFIFO; // @synthesize strokeFIFO=_strokeFIFO;
 @property (nonatomic) double strokeWidth; // @synthesize strokeWidth=_strokeWidth;
-@property (strong, nonatomic) NSMutableArray *strokes; // @synthesize strokes=_strokes;
 
++ (id)newSmoothPathViewForCurrentPlatformWithController:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_catchUpAccumulatedTouchesForRecognizer:(id)arg1;
 - (void)_clear;
 - (double)_convertValueFromModelToSelf:(double)arg1;
-- (void)_deferredInvalidate:(id)arg1;
-- (void)_dispatchInvalidateWithNewPoints:(id)arg1 invalidViewRect:(struct CGRect)arg2;
 - (double)_effectiveStrokeWidthInModel;
 - (struct CGContext *)_getPlatformCGContext;
-- (void)_handleForwardedUIEvent:(id)arg1;
 - (MISSING_TYPE *)_pointForRecognizer:(id)arg1;
 - (MISSING_TYPE *)_pointForTouch:(id)arg1;
-- (void)_setupFilterChain;
+- (void)_setupFilterChainWithBitmapFifo:(BOOL)arg1;
 - (void)_setupShadowInContext:(struct CGContext *)arg1;
 - (void)_updateInterpolatingFifoLineWidth;
-- (void)_updateInterpolatingFifoUnitScale;
 - (void)_updateShadowRadiusInView;
 - (double)_windowBackingScaleFactor;
 - (void)awakeFromNib;
@@ -96,9 +90,10 @@
 - (id)initWithController:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isOpaque;
-- (void)startStroke: /* Error: Ran out of types for this method. */;
+- (void)startStroke;
 - (void)teardown;
 - (void)terminateStroke;
+- (void)updateInterpolatingFifoUnitScale;
 - (double)weightForValue:(double)arg1;
 
 @end

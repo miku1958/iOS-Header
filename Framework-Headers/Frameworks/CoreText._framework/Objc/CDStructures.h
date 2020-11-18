@@ -10,6 +10,8 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CGFont;
+
 struct CGPoint {
     double _field1;
     double _field2;
@@ -23,13 +25,6 @@ struct CGRect {
 struct CGSize {
     double _field1;
     double _field2;
-};
-
-struct CharRangeToDescriptorMap {
-    struct TInlineVector<std::__1::tuple<unsigned short, unsigned short, const __CTFontDescriptor *>, 30> _field1;
-    struct __wrap_iter<const std::__1::tuple<unsigned short, unsigned short, const __CTFontDescriptor *>*> {
-        struct tuple<unsigned short, unsigned short, const __CTFontDescriptor *> *_field1;
-    } _field2;
 };
 
 struct GlyphStack {
@@ -57,11 +52,51 @@ struct StrikeMetrics {
     BOOL _field7;
 };
 
+struct TAtomicPtr<CGFont *> {
+    _Atomic struct CGFont *_field1;
+};
+
+struct TAtomicPtr<TTraitsValues *> {
+    _Atomic struct TTraitsValues *_field1;
+};
+
+struct TAtomicPtr<__CFDictionary *> {
+    _Atomic struct __CFDictionary *_field1;
+};
+
+struct TAtomicPtr<const TBMPDataCache *> {
+    _Atomic struct TBMPDataCache *_field1;
+};
+
+struct TAtomicPtr<const __CFArray *> {
+    _Atomic struct __CFArray *__a_;
+};
+
+struct TAtomicPtr<const __CFCharacterSet *> {
+    _Atomic struct __CFCharacterSet *_field1;
+};
+
+struct TAtomicPtr<const __CFData *> {
+    _Atomic struct __CFData *_field1;
+};
+
+struct TAtomicPtr<const __CFSet *> {
+    _Atomic struct __CFSet *__a_;
+};
+
+struct TAtomicPtr<const __CFURL *> {
+    _Atomic struct __CFURL *_field1;
+};
+
+struct TAtomicPtr<const std::__1::unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>>*> {
+    _Atomic struct unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>> *_field1;
+};
+
 struct TBMPDataCache;
 
 struct TBaseFont {
     CDUnknownFunctionPointerType *_field1;
-    int _field2;
+    struct atomic<int> _field2;
     struct TCFRef<const __CFData *> _field3;
     struct TCFRef<const __CFData *> _field4;
     struct TCFRef<const __CFData *> _field5;
@@ -70,66 +105,64 @@ struct TBaseFont {
     struct TCFRef<const __CFData *> _field8;
     struct TCFRef<const __CFData *> _field9;
     struct TCFRef<const __CFData *> _field10;
-    struct TCFRef<const __CFURL *> _field11;
-    int _field12;
-    struct TCFRef<__CFDictionary *> _field13;
-    struct TCFRef<const __CFArray *> _field14;
-    struct TCFRef<const __CFCharacterSet *> _field15;
+    struct TCFRef<const __CFData *> _field11;
+    struct TCFRef<const __CFURL *> _field12;
+    struct TCFRef<CGFont *> _field13;
+    int _field14;
+    struct TCFRef<__CFDictionary *> _field15;
     struct TCFRef<const __CFArray *> _field16;
     struct TCFRef<const __CFCharacterSet *> _field17;
-    unsigned int _field18;
-    unsigned int _field19;
-    unsigned int _field20;
-    unsigned int _field21;
-    struct TCFRef<const __CFCharacterSet *> _field22;
-    struct TCFRef<const __CFData *> _field23;
-    long long _field24;
-    struct TBMPDataCache *_field25;
-    struct unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>> *_field26;
-    struct TTraitsValues *_field27;
-    unsigned short _field28;
-    struct UnscaledAdvancesPage *_field29;
-    struct StrikeMetrics _field30;
-    unsigned int _field31;
-    unsigned int _field32;
-    unsigned int _field33;
-    struct TMutex _field34;
-    struct TInlineVector<TCFRef<const __CFData *>, 4> _field35;
-    struct array<TCFRef<__CFDictionary *>, 7> _field36;
+    struct TCFRef<const __CFArray *> _field18;
+    struct TCFRef<const __CFCharacterSet *> _field19;
+    struct atomic<unsigned int> _field20;
+    struct atomic<unsigned int> _field21;
+    struct atomic<unsigned int> _field22;
+    unsigned int _field23;
+    struct TCFRef<const __CFCharacterSet *> _field24;
+    struct atomic<long> _field25;
+    struct TAtomicPtr<const TBMPDataCache *> _field26;
+    struct TAtomicPtr<const std::__1::unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>>*> _field27;
+    struct TAtomicPtr<TTraitsValues *> _field28;
+    struct StrikeMetrics _field29;
+    struct atomic<unsigned int> _field30;
+    struct atomic<unsigned int> _field31;
+    struct atomic<CTFontFormat> _field32;
+    struct TMutex _field33;
+    struct TInlineVector<TCFRef<const __CFData *>, 4> _field34;
+    struct array<TCFRef<__CFDictionary *>, 7> _field35;
+};
+
+struct TCFRef<CGFont *> {
+    struct TAtomicPtr<CGFont *> _field1;
 };
 
 struct TCFRef<__CFDictionary *> {
-    struct __CFDictionary *_field1;
+    struct TAtomicPtr<__CFDictionary *> _field1;
 };
 
 struct TCFRef<const __CFArray *> {
-    struct __CFArray *fRef;
+    struct TAtomicPtr<const __CFArray *> fRef;
 };
 
 struct TCFRef<const __CFCharacterSet *> {
-    struct __CFCharacterSet *_field1;
+    struct TAtomicPtr<const __CFCharacterSet *> _field1;
 };
 
 struct TCFRef<const __CFData *> {
-    struct __CFData *_field1;
+    struct TAtomicPtr<const __CFData *> _field1;
 };
 
 struct TCFRef<const __CFSet *> {
-    struct __CFSet *fRef;
+    struct TAtomicPtr<const __CFSet *> fRef;
 };
 
 struct TCFRef<const __CFURL *> {
-    struct __CFURL *_field1;
+    struct TAtomicPtr<const __CFURL *> _field1;
 };
 
 struct TInlineBufferAllocator<TCFRef<const __CFData *>, 4> {
     struct type _field1;
     struct TCFRef<const __CFData *> *_field2;
-};
-
-struct TInlineBufferAllocator<std::__1::tuple<unsigned short, unsigned short, const __CTFontDescriptor *>, 30> {
-    struct type _field1;
-    struct tuple<unsigned short, unsigned short, const __CTFontDescriptor *> *_field2;
 };
 
 struct TInlineVector<TCFRef<const __CFData *>, 4> {
@@ -141,22 +174,14 @@ struct TInlineVector<TCFRef<const __CFData *>, 4> {
     } _field3;
 };
 
-struct TInlineVector<std::__1::tuple<unsigned short, unsigned short, const __CTFontDescriptor *>, 30> {
-    struct tuple<unsigned short, unsigned short, const __CTFontDescriptor *> *_field1;
-    struct tuple<unsigned short, unsigned short, const __CTFontDescriptor *> *_field2;
-    struct __compressed_pair<std::__1::tuple<unsigned short, unsigned short, const __CTFontDescriptor *>*, TInlineBufferAllocator<std::__1::tuple<unsigned short, unsigned short, const __CTFontDescriptor *>, 30>> {
-        struct tuple<unsigned short, unsigned short, const __CTFontDescriptor *> *_field1;
-        struct TInlineBufferAllocator<std::__1::tuple<unsigned short, unsigned short, const __CTFontDescriptor *>, 30> _field2;
-    } _field3;
-};
-
 struct TMutex {
-    id _field1;
+    struct _opaque_pthread_mutex_t {
+        long long _field1;
+        char _field2[56];
+    } _field1;
 };
 
 struct TTraitsValues;
-
-struct UnscaledAdvancesPage;
 
 struct _NSRange {
     unsigned long long _field1;
@@ -167,10 +192,24 @@ struct array<TCFRef<__CFDictionary *>, 7> {
     struct TCFRef<__CFDictionary *> _field1[7];
 };
 
-struct tuple<unsigned short, unsigned short, const __CTFontDescriptor *>;
+struct atomic<CTFontFormat> {
+    _Atomic unsigned int _field1;
+};
+
+struct atomic<int> {
+    _Atomic int _field1;
+};
+
+struct atomic<long> {
+    _Atomic long long _field1;
+};
+
+struct atomic<unsigned int> {
+    _Atomic unsigned int _field1;
+};
 
 struct type {
-    unsigned char _field1[480];
+    unsigned char __lx[216];
 };
 
 struct unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>>;

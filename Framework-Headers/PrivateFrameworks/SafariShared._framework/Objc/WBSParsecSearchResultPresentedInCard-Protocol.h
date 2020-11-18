@@ -6,11 +6,11 @@
 
 #import <SafariShared/NSObject-Protocol.h>
 
-@class WBSParsecSearchSession;
+@protocol WBSParsecSearchSession;
 
 @protocol WBSParsecSearchResultPresentedInCard <NSObject>
 
-@property (strong, nonatomic) WBSParsecSearchSession *parsecSearchSession;
+@property (strong, nonatomic) id<WBSParsecSearchSession> parsecSearchSession;
 @property (readonly, nonatomic) BOOL willPresentResultInCard;
 
 @end

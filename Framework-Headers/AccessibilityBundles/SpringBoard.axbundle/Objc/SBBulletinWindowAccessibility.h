@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityIsMainWindow;
 - (BOOL)_accessibilityIsModalWithKeyboard;
+- (id)_accessibilityObscuredScreenAllowedWindows;
 - (BOOL)accessibilityElementsHidden;
 - (BOOL)accessibilityViewIsModal;
 

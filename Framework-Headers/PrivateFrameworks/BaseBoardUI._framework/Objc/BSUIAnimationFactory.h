@@ -14,8 +14,10 @@
 @interface BSUIAnimationFactory : NSObject <_UIBasicAnimationFactory, NSCopying>
 {
     BSAnimationSettings *_settings;
+    BOOL _allowsAdditiveAnimations;
 }
 
+@property (nonatomic) BOOL allowsAdditiveAnimations; // @synthesize allowsAdditiveAnimations=_allowsAdditiveAnimations;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) double delay;
 @property (readonly, copy) NSString *description;
@@ -25,6 +27,7 @@
 @property (readonly, copy, nonatomic) BSAnimationSettings *settings; // @synthesize settings=_settings;
 @property (readonly) Class superclass;
 
++ (void)addAlongsideAnimations:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)animateWithFactory:(id)arg1 actions:(CDUnknownBlockType)arg2;
 + (void)animateWithFactory:(id)arg1 actions:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)animateWithFactory:(id)arg1 additionalDelay:(double)arg2 actions:(CDUnknownBlockType)arg3;
@@ -54,6 +57,7 @@
 - (void)_animateWithAdditionalDelay:(double)arg1 options:(unsigned long long)arg2 actions:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
 - (id)_initWithSettings:(id)arg1;
+- (BOOL)_shouldAnimateAdditivelyForView:(id)arg1 withKeyPath:(id)arg2;
 - (id)_timingFunctionForAnimation;
 - (void)applySettingsToCAAnimation:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

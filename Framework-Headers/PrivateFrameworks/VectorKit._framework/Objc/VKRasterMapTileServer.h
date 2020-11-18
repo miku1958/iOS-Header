@@ -23,6 +23,7 @@
 - (void)_renderRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)detailedDescription;
+- (id)detailedDescriptionDictionaryRepresentation;
 - (id)init;
 - (id)initWithSuperTileSize:(unsigned int)arg1 homeQueue:(id)arg2;
 - (void)renderRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;

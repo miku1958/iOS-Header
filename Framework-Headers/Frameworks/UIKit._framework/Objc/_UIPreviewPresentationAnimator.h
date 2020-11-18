@@ -19,14 +19,13 @@ __attribute__((visibility("hidden")))
 }
 
 @property (copy, nonatomic) CDUnknownBlockType advanceBlock; // @synthesize advanceBlock=_advanceBlock;
-@property (strong, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;
+@property (weak, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (strong, nonatomic) CAMediaTimingFunction *mediaTimingFunction; // @synthesize mediaTimingFunction=_mediaTimingFunction;
 @property (nonatomic) double startMediaTime; // @synthesize startMediaTime=_startMediaTime;
 
 - (void).cxx_destruct;
 - (void)_advanceFromDisplayLink:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)initWithDuration:(double)arg1 advanceBlock:(CDUnknownBlockType)arg2;
 - (void)stopAnimation;

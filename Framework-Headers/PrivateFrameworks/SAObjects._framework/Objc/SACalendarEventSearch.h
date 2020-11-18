@@ -4,24 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SAObjects/SABaseClientBoundCommand.h>
+#import <SAObjects/SADomainCommand.h>
 
-@class NSArray, NSDate, NSNumber, NSString, NSURL;
+@class NSArray, NSDate, NSNumber, NSString;
 
-@interface SACalendarEventSearch : SABaseClientBoundCommand
+@interface SACalendarEventSearch : SADomainCommand
 {
-    NSURL *_targetAppId;
-    NSURL *_eventId;
 }
 
 @property (copy, nonatomic) NSDate *endDate;
-@property (copy, nonatomic) NSURL *eventId; // @synthesize eventId=_eventId;
-@property (strong, nonatomic) NSNumber *limit;
+@property (copy, nonatomic) NSNumber *limit;
 @property (copy, nonatomic) NSString *location;
 @property (copy, nonatomic) NSString *notes;
 @property (copy, nonatomic) NSArray *participants;
 @property (copy, nonatomic) NSDate *startDate;
-@property (copy, nonatomic) NSURL *targetAppId; // @synthesize targetAppId=_targetAppId;
 @property (copy, nonatomic) NSString *timeZoneId;
 @property (copy, nonatomic) NSString *title;
 

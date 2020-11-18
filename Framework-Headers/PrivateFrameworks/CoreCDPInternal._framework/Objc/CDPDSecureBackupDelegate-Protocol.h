@@ -8,8 +8,6 @@
 
 @protocol CDPDSecureBackupDelegate
 - (NSString *)circlePeerIDForSecureBackupController:(CDPDSecureBackupController *)arg1;
-- (void)joinCircleAfterRecoveryWithCompletion:(void (^)(BOOL, NSError *))arg1;
-- (void)prepareCircleStateForRecoveryWithCompletion:(void (^)(void))arg1;
 - (void)promotForLocalSecretWithCompletion:(void (^)(NSString *, unsigned long long, NSError *))arg1;
 - (void)promptForAdoptionOfMultipleICSCWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (BOOL)synchronizeCircleViewsForSecureBackupController:(CDPDSecureBackupController *)arg1;

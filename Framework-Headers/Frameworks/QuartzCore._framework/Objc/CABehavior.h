@@ -4,22 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <QuartzCore/NSCoding-Protocol.h>
 #import <QuartzCore/NSCopying-Protocol.h>
 
 @class NSDictionary, NSString;
+@protocol CABehaviorDelegate;
 
 @interface CABehavior : NSObject <NSCoding, NSCopying>
 {
     void *_attr;
     unsigned int _refcount;
     unsigned int _uid;
-    void *_priv;
 }
 
-@property (weak) id delegate;
+@property (weak) id<CABehaviorDelegate> delegate;
 @property (getter=isEnabled) BOOL enabled;
 @property (copy) NSString *name;
 @property (copy) NSDictionary *style;

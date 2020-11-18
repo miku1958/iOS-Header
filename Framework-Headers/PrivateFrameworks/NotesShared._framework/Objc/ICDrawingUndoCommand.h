@@ -24,6 +24,7 @@
 
 - (void).cxx_destruct;
 - (double)renderCost;
+- (id)undoCommandHidden:(BOOL)arg1;
 
 @end
 

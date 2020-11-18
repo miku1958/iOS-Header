@@ -6,28 +6,33 @@
 
 #import <iTunesStoreUI/SUScriptObject.h>
 
+#import <iTunesStoreUI/SUScriptModalDialogDelegate-Protocol.h>
 #import <iTunesStoreUI/SUScriptXMLHTTPRequestDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString, SSAuthenticationContext, SUClientInterface, SUScriptAccount, SUScriptAccountManager, SUScriptAppleAccountStore, SUScriptApplication, SUScriptDevice, SUScriptFairPlayContext, SUScriptKeyValueStore, SUScriptMediaLibrary, SUScriptNavigationBar, SUScriptNotificationObserver, SUScriptOperationDelegate, SUScriptPassbookLibrary, SUScriptPreviewOverlay, SUScriptProtocol, SUScriptPurchaseManager, SUScriptSectionsController, SUScriptTelephony, SUScriptViewController, SUScriptWindow, SUScriptWindowContext, WebFrame;
+@class NSArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString, SSAuthenticationContext, SUClientInterface, SUScriptAccount, SUScriptAccountManager, SUScriptAppleAccountStore, SUScriptApplication, SUScriptCarrierBundlingController, SUScriptDevice, SUScriptDictionary, SUScriptFairPlayContext, SUScriptKeyValueStore, SUScriptMediaLibrary, SUScriptMetricsController, SUScriptNavigationBar, SUScriptNotificationObserver, SUScriptOperationDelegate, SUScriptPassbookLibrary, SUScriptPreviewOverlay, SUScriptProtocol, SUScriptPurchaseManager, SUScriptSectionsController, SUScriptStoreBagLoader, SUScriptSubscriptionStatusCoordinator, SUScriptTelephony, SUScriptViewController, SUScriptWindow, SUScriptWindowContext, WebFrame;
 @protocol SUScriptInterfaceDelegate;
 
-@interface SUScriptInterface : SUScriptObject <SUScriptXMLHTTPRequestDelegate>
+@interface SUScriptInterface : SUScriptObject <SUScriptModalDialogDelegate, SUScriptXMLHTTPRequestDelegate>
 {
     SUScriptAccountManager *_accountManager;
     SUScriptKeyValueStore *_applicationLocalStorage;
     SSAuthenticationContext *_authenticationContext;
+    SUScriptCarrierBundlingController *_carrierBundlingController;
     SUClientInterface *_clientInterface;
     id<SUScriptInterfaceDelegate> _delegate;
     SUScriptKeyValueStore *_deviceLocalStorage;
     NSMutableDictionary *_downloadQueues;
     WebFrame *_frame;
     SUScriptMediaLibrary *_mediaLibrary;
+    SUScriptMetricsController *_metricsController;
     SUScriptNotificationObserver *_notificationObserver;
     SUScriptPreviewOverlay *_previewOverlay;
     SUScriptPurchaseManager *_purchaseManager;
     NSMutableSet *_requireCellularURLs;
     SUScriptOperationDelegate *_scriptOperationDelegate;
+    SUScriptStoreBagLoader *_scriptStoreBagLoader;
     SUScriptWindowContext *_scriptWindowContext;
+    SUScriptSubscriptionStatusCoordinator *_subscriptionStatusCoordinator;
     id _threadSafeDelegate;
 }
 
@@ -42,9 +47,12 @@
 @property (readonly) SUScriptKeyValueStore *applicationLocalStorage;
 @property (readonly) NSString *askToBuyPrompt;
 @property (copy) SSAuthenticationContext *authenticationContext;
+@property (readonly) SUScriptCarrierBundlingController *carrierBundlingController;
 @property (readonly) NSString *clientIdentifier;
 @property (strong) SUClientInterface *clientInterface;
 @property (copy) NSString *cookie;
+@property (readonly) NSString *cookieDefaultURL;
+@property (readonly) NSString *cookieForDefaultURL;
 @property (readonly, copy) NSString *debugDescription;
 @property id<SUScriptInterfaceDelegate> delegate;
 @property (readonly, copy) NSString *description;
@@ -55,6 +63,7 @@
 @property (readonly) NSArray *installedSoftwareApplications;
 @property (readonly) id loggingEnabled;
 @property (readonly) SUScriptMediaLibrary *mediaLibrary;
+@property (readonly) SUScriptMetricsController *metricsController;
 @property (readonly) SUScriptNavigationBar *navigationBar;
 @property (readonly) NSNumber *orientation;
 @property (readonly) SUScriptPassbookLibrary *passbookLibrary;
@@ -63,10 +72,13 @@
 @property (strong) SUScriptAccount *primaryLockerAccount;
 @property (readonly) SUScriptProtocol *protocol;
 @property (readonly) SUScriptPurchaseManager *purchaseManager;
+@property (readonly) NSString *referrerURL;
 @property (readonly) NSString *referringUserAgent;
 @property (readonly) id screenReaderRunning;
+@property (readonly) SUScriptDictionary *scriptStoreBagDictionary;
 @property (strong) SUScriptWindowContext *scriptWindowContext;
 @property (readonly) SUScriptSectionsController *sectionsController;
+@property (readonly) NSString *storeFrontIdentifier;
 @property (readonly) long long storeSheetType;
 @property (readonly) long long storeSheetTypeAskToBuy;
 @property (readonly) long long storeSheetTypeDefault;
@@ -84,6 +96,7 @@
 - (id)DOMElementWithElement:(id)arg1;
 - (void)_accessibilityPostLayoutChange;
 - (id)_className;
+- (id)_cookieForURL:(id)arg1;
 - (id)_copyDialogWithMessage:(id)arg1 title:(id)arg2 cancelButtonTitle:(id)arg3 okButtonTitle:(id)arg4;
 - (void)_getSoftwareApplicationWithCompletionFunction:(id)arg1 lookupBlock:(CDUnknownBlockType)arg2;
 - (void)_globalEventNotification:(id)arg1;
@@ -100,7 +113,7 @@
 - (void)addExternalDownloadsFromManifestURL:(id)arg1;
 - (void)addPurchaseWithInfo:(id)arg1;
 - (void)addPurchaseWithInfo:(id)arg1 options:(id)arg2;
-- (void)approveInPerson:(id)arg1;
+- (void)approveInPerson:(id)arg1 completionFunction:(id)arg2;
 - (BOOL)arePodcastsDisabled;
 - (id)attributeKeys;
 - (void)authenticateForAccount:(id)arg1 withOptions:(id)arg2;
@@ -111,7 +124,10 @@
 - (struct OpaqueJSContext *)copyJavaScriptContext;
 - (void)dealloc;
 - (void)deallocAuthentication;
+- (void)deallocCarrierBundlingController;
 - (void)deallocMediaLibrary;
+- (void)deallocMetricsController;
+- (void)deallocSubscriptionStatusCoordinator;
 - (long long)dialogDisplayCountForKey:(id)arg1;
 - (id)diskSpaceAvailable;
 - (void)dismissSheet;
@@ -178,6 +194,7 @@
 - (id)makeSplitViewController;
 - (id)makeStorePageWithURLs:(id)arg1;
 - (id)makeStoreSheetViewController;
+- (id)makeSubscriptionStatusRequest;
 - (id)makeTextFieldWithStyle:(id)arg1 placeholder:(id)arg2 value:(id)arg3 width:(id)arg4;
 - (id)makeTweetComposeViewController;
 - (id)makeURLRequestWithURLs:(id)arg1 timeoutInterval:(id)arg2;
@@ -189,6 +206,7 @@
 - (void)perfLog:(id)arg1;
 - (void)performPurchaseAnimationForIdentifier:(id)arg1 style:(id)arg2;
 - (void)pingURL:(id)arg1;
+- (id)presentingViewControllerForScriptModalDialog:(id)arg1;
 - (void)redeemCode:(id)arg1;
 - (void)registerNavBarButtonWithTitle:(id)arg1 side:(id)arg2 function:(id)arg3;
 - (void)reloadFooterSection:(id)arg1 withURL:(id)arg2;
@@ -202,14 +220,21 @@
 - (void)selectTrackListItemWithIdentifier:(id)arg1;
 - (void)sendPostOfType:(id)arg1 withOptions:(id)arg2;
 - (void)setAccounts:(id)arg1;
+- (void)setCarrierBundlingController:(id)arg1;
+- (void)setCookieDefaultURL:(id)arg1;
+- (void)setCookieForDefaultURL:(id)arg1;
 - (void)setDevice:(id)arg1;
 - (void)setGlobalRootObject:(id)arg1;
 - (void)setLibraryIdentifierWithType:(id)arg1 value:(id)arg2;
 - (void)setLoggingEnabled:(id)arg1;
 - (void)setMediaLibrary:(id)arg1;
+- (void)setMetricsController:(id)arg1;
 - (void)setNavigationBar:(id)arg1;
 - (void)setOrientation:(id)arg1;
+- (void)setReferrerURL:(id)arg1;
 - (void)setReferringUserAgent:(id)arg1;
+- (void)setStoreFrontIdentifier:(id)arg1;
+- (void)setSubscriptionStatusCoordinator:(id)arg1;
 - (void)setWindow:(id)arg1;
 - (BOOL)shouldRestrictContentOfSystem:(id)arg1 level:(id)arg2;
 - (void)showAlertWithMessage:(id)arg1 title:(id)arg2 buttonTitle:(id)arg3;
@@ -221,6 +246,7 @@
 - (id)softwareApplicationWithAdamID:(id)arg1;
 - (id)softwareApplicationWithBundleID:(id)arg1;
 - (void)startedTest:(id)arg1;
+- (id)subscriptionStatusCoordinator;
 - (id)systemItemAction;
 - (id)systemItemAdd;
 - (id)systemItemBookmarks;

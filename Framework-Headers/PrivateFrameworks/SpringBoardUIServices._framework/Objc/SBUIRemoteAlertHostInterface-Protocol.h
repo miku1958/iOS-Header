@@ -23,5 +23,6 @@
 - (void)setStatusBarHidden:(BOOL)arg1 withDuration:(double)arg2;
 - (void)setSupportedInterfaceOrientationOverride:(unsigned long long)arg1;
 - (void)setWallpaperTunnelActive:(BOOL)arg1;
+- (void)setWhitePointAdaptivityStyle:(long long)arg1;
 @end
 

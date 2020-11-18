@@ -17,6 +17,7 @@
 {
     AKBasicLoginAlertController *_basicLoginViewController;
     UINavigationController *_navController;
+    UINavigationController *_modalRemoteUINavController;
     RemoteUIController *_remoteUIController;
     CDUnknownBlockType _serverUICompletion;
     AKAppleIDServerResourceLoadDelegate *_serverUIDelegate;
@@ -38,11 +39,15 @@
 - (void)_assertValidPresentingViewController;
 - (void)_cleanUpBasicLogin;
 - (void)_cleanUpBasicLoginWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_completeWithFinalResponse:(id)arg1;
+- (BOOL)_isDeferrableFinalResponseHarvested;
 - (id)_navController;
+- (void)_presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 waitForInteraction:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)_remoteUIController;
 - (void)basicLoginAlertControllerDidDismiss:(id)arg1;
 - (void)basicLoginAlertControllerDidPresent:(id)arg1;
 - (void)basicLoginAlertControllerWillDismiss:(id)arg1;
+- (id)cdpUiProvider;
 - (void)dealloc;
 - (void)dismissBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dismissKeepUsingUIWithCompletion:(CDUnknownBlockType)arg1;
@@ -58,7 +63,7 @@
 - (void)remoteUIController:(id)arg1 didFinishLoadWithError:(id)arg2;
 - (void)remoteUIController:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)remoteUIController:(id)arg1 didReceiveHTTPResponse:(id)arg2;
-- (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(int *)arg3;
+- (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
 - (BOOL)remoteUIController:(id)arg1 shouldLoadRequest:(id)arg2 redirectResponse:(id)arg3;
 - (void)remoteUIController:(id)arg1 willPresentModalNavigationController:(id)arg2;
 - (void)remoteUIController:(id)arg1 willPresentObjectModel:(id)arg2 modally:(BOOL)arg3;

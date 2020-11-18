@@ -6,39 +6,50 @@
 
 #import <ModelIO/MDLObject.h>
 
-@class MDLTransform, MISSING_TYPE;
+@class CAAnimation, MISSING_TYPE;
 
 @interface MDLCamera : MDLObject
 {
     struct RTCamera *_camera;
-    MDLTransform *_mkTransform;
     float _worldToMetersConversionScale;
+    CAAnimation *_focalDistanceAnimation;
+    CAAnimation *_fStopAnimation;
+    CAAnimation *_focalLengthAnimation;
+    CAAnimation *_apertureAnimation;
+    CAAnimation *_apertureAspectAnimation;
     float _barrelDistortion;
     float _fisheyeDistortion;
     float _opticalVignetting;
     float _chromaticAberration;
     float _fStop;
     float _maximumCircleOfConfusion;
+    unsigned long long _projection;
     unsigned long long _apertureBladeCount;
     double _shutterOpenInterval;
     MISSING_TYPE *_flash;
 }
 
+@property (copy, nonatomic) CAAnimation *apertureAnimation; // @synthesize apertureAnimation=_apertureAnimation;
+@property (copy, nonatomic) CAAnimation *apertureAspectAnimation; // @synthesize apertureAspectAnimation=_apertureAspectAnimation;
 @property (nonatomic) unsigned long long apertureBladeCount; // @synthesize apertureBladeCount=_apertureBladeCount;
 @property (nonatomic) float barrelDistortion; // @synthesize barrelDistortion=_barrelDistortion;
 @property (nonatomic) float chromaticAberration; // @synthesize chromaticAberration=_chromaticAberration;
 @property (nonatomic) MISSING_TYPE *exposure;
 @property (nonatomic) MISSING_TYPE *exposureCompression;
 @property (nonatomic) float fStop; // @synthesize fStop=_fStop;
+@property (copy, nonatomic) CAAnimation *fStopAnimation; // @synthesize fStopAnimation=_fStopAnimation;
 @property (nonatomic) float farVisibilityDistance;
 @property (nonatomic) float fieldOfView;
 @property (nonatomic) float fisheyeDistortion; // @synthesize fisheyeDistortion=_fisheyeDistortion;
 @property (nonatomic) MISSING_TYPE *flash; // @synthesize flash=_flash;
+@property (copy, nonatomic) CAAnimation *focalDistanceAnimation; // @synthesize focalDistanceAnimation=_focalDistanceAnimation;
 @property (nonatomic) float focalLength;
+@property (copy, nonatomic) CAAnimation *focalLengthAnimation; // @synthesize focalLengthAnimation=_focalLengthAnimation;
 @property (nonatomic) float focusDistance;
 @property (nonatomic) float maximumCircleOfConfusion; // @synthesize maximumCircleOfConfusion=_maximumCircleOfConfusion;
 @property (nonatomic) float nearVisibilityDistance;
 @property (nonatomic) float opticalVignetting; // @synthesize opticalVignetting=_opticalVignetting;
+@property (nonatomic) unsigned long long projection; // @synthesize projection=_projection;
 @property (readonly, nonatomic) CDStruct_14d5dc5e projectionMatrix;
 @property (readonly, nonatomic) struct RTCamera *rtCamera;
 @property (nonatomic) float sensorAspect;
@@ -53,6 +64,7 @@
 - (float)aspect;
 - (id)bokehKernelWithSize: /* Error: Ran out of types for this method. */;
 - (float)circleOfConfusionForDistance:(float)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (float)fov;
 - (void)frameBoundingBox:(struct)arg1 setNearAndFar:(BOOL)arg2;
 - (CDStruct_14d5dc5e)getProjectionMatrixAtTime:(double)arg1;
@@ -66,7 +78,6 @@
 - (void)setFov:(float)arg1;
 - (void)setZFar:(float)arg1;
 - (void)setZNear:(float)arg1;
-- (id)transform;
 - (long long)version;
 - (float)zFar;
 - (float)zNear;

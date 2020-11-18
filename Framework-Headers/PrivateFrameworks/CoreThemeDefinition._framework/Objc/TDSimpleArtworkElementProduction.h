@@ -12,6 +12,8 @@
 {
 }
 
+@property (nonatomic) BOOL isFlippable; // @dynamic isFlippable;
+@property (nonatomic) BOOL optOutOfThinning; // @dynamic optOutOfThinning;
 @property (strong, nonatomic) TDTemplateRenderingMode *templateRenderingMode; // @dynamic templateRenderingMode;
 
 - (id)associatedFileModificationDateWithDocument:(id)arg1;

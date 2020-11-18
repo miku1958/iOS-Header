@@ -18,11 +18,13 @@
 @property (copy, nonatomic) NSDictionary *overlayParameters;
 @property (copy, nonatomic) NSDictionary *secureOverlayParameters;
 
+- (void).cxx_destruct;
 - (void)_applyOverlayToDictionary:(id)arg1;
 - (void)_applySecureOverlayToDictionary:(id)arg1;
 - (id)_redirectDataWithOverrides:(id)arg1;
+- (id)_retryData;
 - (void)_setOverriddenKeys:(id)arg1;
-- (void)dealloc;
+- (BOOL)hasOverlayParameters;
 - (id)init;
 - (id)overlayValueForKey:(id)arg1;
 - (id)secureOverlayValueForKey:(id)arg1;

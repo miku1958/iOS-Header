@@ -22,6 +22,7 @@
     struct NSObject *_sourceAlbum;
     NSOrderedSet *_transferredAssets;
     struct NSObject *_targetAlbum;
+    NSString *_targetAlbumName;
     NSString *_localizedPrompt;
     long long _promptLocation;
     CDUnknownBlockType _bannerGenerator;
@@ -41,6 +42,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<PLAlbumProtocol> *targetAlbum; // @synthesize targetAlbum=_targetAlbum;
 @property (nonatomic) BOOL targetAlbumIsNewLocalAlbum; // @synthesize targetAlbumIsNewLocalAlbum=_targetAlbumIsNewLocalAlbum;
+@property (strong, nonatomic) NSString *targetAlbumName; // @synthesize targetAlbumName=_targetAlbumName;
 @property (copy, nonatomic) NSOrderedSet *transferredAssets; // @synthesize transferredAssets=_transferredAssets;
 
 - (void).cxx_destruct;

@@ -28,7 +28,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VKFeatureAccessibilityElement *lastCurrentTourLocation; // @synthesize lastCurrentTourLocation=_lastCurrentTourLocation;
 @property (strong, nonatomic) NSString *lastTourStatusAnnouncement; // @synthesize lastTourStatusAnnouncement=_lastTourStatusAnnouncement;
-@property (nonatomic) VKMapView *mapView; // @synthesize mapView=_mapView;
+@property (weak, nonatomic) VKMapView *mapView; // @synthesize mapView=_mapView;
 @property (nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
 @property (nonatomic) long long secondsSinceZoomRequest; // @synthesize secondsSinceZoomRequest=_secondsSinceZoomRequest;
 @property (readonly) Class superclass;
@@ -39,6 +39,7 @@
 + (long long)detailLevel;
 + (void)increaseDetailLevel;
 + (BOOL)shouldSuppressLocationUpdates;
+- (void).cxx_destruct;
 - (CDStruct_2c43369c)_center;
 - (id)_descriptionForOrientation:(long long)arg1;
 - (BOOL)_elementIntersectsElement:(id)arg1 point:(struct CGPoint)arg2 radius:(double)arg3;

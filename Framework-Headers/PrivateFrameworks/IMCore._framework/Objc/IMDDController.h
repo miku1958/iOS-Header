@@ -14,8 +14,8 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (BOOL)_scanMessageUsingScanner:(id)arg1 attributedString:(id)arg2;
-- (void)dealloc;
 - (id)init;
 - (void)scanMessage:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)scanMessage:(id)arg1 waitUntilDone:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;

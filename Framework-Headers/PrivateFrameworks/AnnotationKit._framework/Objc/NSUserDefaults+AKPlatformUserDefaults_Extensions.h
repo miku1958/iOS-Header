@@ -7,8 +7,6 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (AKPlatformUserDefaults_Extensions)
-+ (id)_akColorForData:(id)arg1;
-+ (id)_akFontForData:(id)arg1;
 + (id)akDataForColor:(id)arg1;
 + (id)akDataForFont:(id)arg1;
 + (id)akDataForTextAttributes:(id)arg1;

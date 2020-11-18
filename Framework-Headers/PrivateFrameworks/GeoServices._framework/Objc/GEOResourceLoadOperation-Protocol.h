@@ -12,6 +12,7 @@
 @protocol GEOResourceLoadOperation <NSObject>
 
 @property (readonly, nonatomic) NSData *data;
+@property (nonatomic) BOOL requiresWiFi;
 
 - (void)cancel;
 - (id)initWithResource:(GEOResourceInfo *)arg1 existingPartialData:(NSData *)arg2 auditToken:(NSData *)arg3 baseURLString:(NSString *)arg4;

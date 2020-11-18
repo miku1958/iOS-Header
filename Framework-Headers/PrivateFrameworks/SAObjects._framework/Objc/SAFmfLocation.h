@@ -6,17 +6,15 @@
 
 #import <SAObjects/SALocation.h>
 
-@class NSNumber, NSString, SAPersonAttribute;
+@class NSNumber, SAPersonAttribute;
 
 @interface SAFmfLocation : SALocation
 {
-    NSString *_emailAddress;
 }
 
-@property (strong, nonatomic) NSNumber *distance;
-@property (copy, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
+@property (copy, nonatomic) NSNumber *distance;
 @property (strong, nonatomic) SAPersonAttribute *friend;
-@property (strong, nonatomic) NSNumber *locationDate;
+@property (copy, nonatomic) NSNumber *locationDate;
 
 + (id)location;
 + (id)locationWithDictionary:(id)arg1 context:(id)arg2;

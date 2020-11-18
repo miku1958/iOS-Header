@@ -6,41 +6,62 @@
 
 #import <UIKit/UIView.h>
 
-@class NSUUID;
+#import <MPUFoundation/CAAnimationDelegate-Protocol.h>
+
+@class NSArray, NSPointerArray, NSString, NSUUID;
 @protocol MPUMarqueeViewDelegate;
 
-@interface MPUMarqueeView : UIView
+@interface MPUMarqueeView : UIView <CAAnimationDelegate>
 {
     NSUUID *_currentAnimationID;
-    long long _lastEnableOptions;
+    long long _options;
+    NSPointerArray *_coordinatedMarqueeViews;
+    MPUMarqueeView *_primaryMarqueeView;
     BOOL _marqueeEnabled;
     double _contentGap;
     UIView *_contentView;
     id<MPUMarqueeViewDelegate> _delegate;
     double _marqueeDelay;
     double _marqueeScrollRate;
+    UIView *_viewForContentSize;
     struct CGSize _contentSize;
+    struct UIEdgeInsets _fadeEdgeInsets;
 }
 
 @property (nonatomic) double contentGap; // @synthesize contentGap=_contentGap;
 @property (nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property (readonly, nonatomic) NSArray *coordinatedMarqueeViews;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MPUMarqueeViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) struct UIEdgeInsets fadeEdgeInsets; // @synthesize fadeEdgeInsets=_fadeEdgeInsets;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) double marqueeDelay; // @synthesize marqueeDelay=_marqueeDelay;
 @property (nonatomic, getter=isMarqueeEnabled) BOOL marqueeEnabled; // @synthesize marqueeEnabled=_marqueeEnabled;
 @property (nonatomic) double marqueeScrollRate; // @synthesize marqueeScrollRate=_marqueeScrollRate;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) UIView *viewForContentSize; // @synthesize viewForContentSize=_viewForContentSize;
 
 - (void).cxx_destruct;
-- (void)_createMarqueeAnimationIfNeededWithOptions:(long long)arg1;
+- (void)_applyMarqueeFade;
+- (void)_createMarqueeAnimationIfNeeded;
+- (void)_createMarqueeAnimationIfNeededWithMaximumDuration:(double)arg1 beginTime:(double)arg2;
+- (double)_duration;
 - (void)_tearDownMarqueeAnimation;
+- (void)addCoordinatedMarqueeView:(id)arg1;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)intrinsicContentSize;
+- (void)invalidateIntrinsicContentSize;
 - (void)layoutSubviews;
 - (void)resetMarqueePosition;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setMarqueeEnabled:(BOOL)arg1 withOptions:(long long)arg2;
+- (id)viewForFirstBaselineLayout;
+- (id)viewForLastBaselineLayout;
 
 @end
 

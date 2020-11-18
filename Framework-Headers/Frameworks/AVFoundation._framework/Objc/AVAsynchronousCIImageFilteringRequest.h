@@ -25,7 +25,7 @@
 - (void)finalize;
 - (void)finishWithError:(id)arg1;
 - (void)finishWithImage:(id)arg1 context:(id)arg2;
-- (id)initUsingCompositingRequest:(id)arg1 sourceFrame:(struct __CVBuffer *)arg2 dstColorSpace:(struct CGColorSpace *)arg3 cancellationTest:(CDUnknownBlockType)arg4 defaultCIContextProvider:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (id)initUsingCompositingRequest:(id)arg1 sourceFrame:(struct __CVBuffer *)arg2 cancellationTest:(CDUnknownBlockType)arg3 defaultCIContextProvider:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 
 @end
 

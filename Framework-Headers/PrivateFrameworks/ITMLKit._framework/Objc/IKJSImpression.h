@@ -14,6 +14,7 @@
 @interface IKJSImpression : IKJSObject <IKJSImpression, JSExport>
 {
     IKJSImpression *_parentImpression;
+    NSString *_metricsTag;
     NSString *_metricsData;
     NSMutableArray *_mutableTimestamps;
     NSMutableArray *_mutableChildren;
@@ -22,9 +23,11 @@
 
 @property (readonly, nonatomic) NSArray *children;
 @property (readonly, nonatomic) NSString *data;
+@property (readonly, nonatomic) NSString *impressionQueueTag;
 @property (readonly, nonatomic) long long index;
 @property (nonatomic) long long indexInParent; // @synthesize indexInParent=_indexInParent;
 @property (copy, nonatomic) NSString *metricsData; // @synthesize metricsData=_metricsData;
+@property (copy, nonatomic) NSString *metricsTag; // @synthesize metricsTag=_metricsTag;
 @property (strong, nonatomic) NSMutableArray *mutableChildren; // @synthesize mutableChildren=_mutableChildren;
 @property (strong, nonatomic) NSMutableArray *mutableTimestamps; // @synthesize mutableTimestamps=_mutableTimestamps;
 @property (readonly, nonatomic) id parent;
@@ -35,7 +38,7 @@
 - (void)addChild:(id)arg1;
 - (void)addTimestamp:(long long)arg1;
 - (id)description;
-- (id)initWithAppContext:(id)arg1 data:(id)arg2 index:(unsigned long long)arg3;
+- (id)initWithAppContext:(id)arg1 data:(id)arg2 index:(unsigned long long)arg3 queueTag:(id)arg4;
 - (void)linkReferences;
 
 @end

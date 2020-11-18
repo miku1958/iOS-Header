@@ -9,11 +9,14 @@
 @interface HKCaretOptionalTextField : UITextField
 {
     BOOL _allowsSelection;
+    BOOL _disableActions;
 }
 
 @property (nonatomic) BOOL allowsSelection; // @synthesize allowsSelection=_allowsSelection;
+@property (nonatomic) BOOL disableActions; // @synthesize disableActions=_disableActions;
 
 - (double)actualMinimumFontSize;
+- (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (struct CGRect)caretRectForPosition:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (double)interItemSpace;
 - (double)leftTitleMargin;
 - (double)navigationItemBaselineOffset;
+- (id)timingFunctionForAnimationInView:(id)arg1 withKeyPath:(id)arg2 isInteractive:(BOOL)arg3;
 - (double)topMargin;
 
 @end

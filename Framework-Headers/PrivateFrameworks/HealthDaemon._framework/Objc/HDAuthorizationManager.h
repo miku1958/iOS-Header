@@ -8,25 +8,31 @@
 
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, _HDAuthorizationRequestGroup;
-@protocol HDHealthDaemon, OS_dispatch_queue;
+@class HDProfile, NSMutableArray, NSMutableDictionary, NSString, _HDAuthorizationRequestGroup;
+@protocol OS_dispatch_queue;
 
 @interface HDAuthorizationManager : NSObject <HDDiagnosticObject>
 {
     BOOL _suppressAuthorizationPrompt;
-    double _requestSessionTimeout;
-    id<HDHealthDaemon> _healthDaemon;
+    HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_completionQueue;
     NSMutableDictionary *_requestGroupsByBundleIdentifier;
     NSMutableArray *_pendingRequestGroups;
     _HDAuthorizationRequestGroup *_promptingRequestGroup;
+    NSMutableDictionary *_pendingObjectAuthorizationRequestsByBundleIdentifier;
+    NSMutableDictionary *_activeObjectPromptSessionsBySessionIdentifier;
+    double _requestSessionTimeout;
 }
 
+@property (strong, nonatomic) NSMutableDictionary *activeObjectPromptSessionsBySessionIdentifier; // @synthesize activeObjectPromptSessionsBySessionIdentifier=_activeObjectPromptSessionsBySessionIdentifier;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) id<HDHealthDaemon> healthDaemon; // @synthesize healthDaemon=_healthDaemon;
+@property (strong, nonatomic) NSMutableDictionary *pendingObjectAuthorizationRequestsByBundleIdentifier; // @synthesize pendingObjectAuthorizationRequestsByBundleIdentifier=_pendingObjectAuthorizationRequestsByBundleIdentifier;
 @property (strong, nonatomic) NSMutableArray *pendingRequestGroups; // @synthesize pendingRequestGroups=_pendingRequestGroups;
+@property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) _HDAuthorizationRequestGroup *promptingRequestGroup; // @synthesize promptingRequestGroup=_promptingRequestGroup;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSMutableDictionary *requestGroupsByBundleIdentifier; // @synthesize requestGroupsByBundleIdentifier=_requestGroupsByBundleIdentifier;
@@ -37,6 +43,7 @@
 - (void).cxx_destruct;
 - (BOOL)_needsAuthorizationForRequestGroup:(id)arg1 overwriteAuthorizationStatus:(BOOL)arg2 error:(id *)arg3;
 - (void)_performNanoSyncImmediatelyWithReason:(id)arg1;
+- (id)_queue_activePromptSessionForBundleIdentifier:(id)arg1;
 - (void)_queue_beginAuthorizationDelegateTransactionWithSessionIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_cancelAuthorizationRequestsWithIdentifiers:(id)arg1;
 - (void)_queue_endAuthorizationDelegateTransactionWithSessionIdentifier:(id)arg1 error:(id)arg2;
@@ -53,8 +60,10 @@
 - (id)diagnosticDescription;
 - (void)endAuthorizationDelegateTransactionWithSessionIdentifier:(id)arg1 error:(id)arg2;
 - (id)enqueueAuthorizationRequestForBundleIdentifier:(id)arg1 writeTypes:(id)arg2 readTypes:(id)arg3 authorizationNeededHandler:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)enqueueObjectAuthorizationRequestForBundleIdentifier:(id)arg1 samples:(id)arg2 promptIfNeeded:(BOOL)arg3 authorizationNeededHandler:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)handleAuthorizationRequestsForBundleIdentifier:(id)arg1 promptHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)initWithHealthDaemon:(id)arg1;
+- (void)handleObjectAuthorizationRequestsForBundleIdentifier:(id)arg1 promptHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)initWithProfile:(id)arg1;
 - (void)openAppForAuthorization:(id)arg1 sessionIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)resetAllAuthorizationRecordsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setAuthorizationStatuses:(id)arg1 forBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;

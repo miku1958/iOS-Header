@@ -24,6 +24,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKDPRecordZoneIdentifier *zoneIdentifier; // @synthesize zoneIdentifier=_zoneIdentifier;
 
 - (void).cxx_destruct;
+- (int)StringAsChangeType:(id)arg1;
+- (id)changeTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

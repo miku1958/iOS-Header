@@ -21,7 +21,6 @@
 @property (readonly, copy) NSString *stringValue;
 
 - (void)dealloc;
-- (void)finalize;
 - (id)iterateNext;
 - (id)snapshotItem:(unsigned int)arg1;
 

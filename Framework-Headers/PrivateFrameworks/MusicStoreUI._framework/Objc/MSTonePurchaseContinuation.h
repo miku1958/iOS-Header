@@ -6,17 +6,17 @@
 
 #import <iTunesStoreUI/SUPurchaseContinuation.h>
 
-#import <MusicStoreUI/ABPeoplePickerNavigationControllerDelegate-Protocol.h>
+#import <MusicStoreUI/CNContactPickerDelegate-Protocol.h>
 #import <MusicStoreUI/UIActionSheetDelegate-Protocol.h>
 #import <MusicStoreUI/UIAlertViewDelegate-Protocol.h>
 
-@class ABPeoplePickerNavigationController, NSString, UIActionSheet, UIAlertView;
+@class CNContactPickerViewController, NSString, UIActionSheet, UIAlertView;
 
-@interface MSTonePurchaseContinuation : SUPurchaseContinuation <ABPeoplePickerNavigationControllerDelegate, UIActionSheetDelegate, UIAlertViewDelegate>
+@interface MSTonePurchaseContinuation : SUPurchaseContinuation <CNContactPickerDelegate, UIActionSheetDelegate, UIAlertViewDelegate>
 {
     UIActionSheet *_actionSheet;
     UIAlertView *_alertView;
-    ABPeoplePickerNavigationController *_peoplePicker;
+    CNContactPickerViewController *_contactPicker;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,7 +27,7 @@
 - (id)_copyAllowedToneStyles;
 - (void)_destroyActionSheet;
 - (void)_destroyAlertView;
-- (void)_dismissPeoplePicker;
+- (void)_dismissContactPicker;
 - (void)_pickAssigneeToneStyle;
 - (void)_showPeoplePicker;
 - (void)actionSheet:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
@@ -35,11 +35,10 @@
 - (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (void)alertViewCancel:(id)arg1;
 - (void)cancel;
+- (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
+- (void)contactPickerDidCancel:(id)arg1;
 - (void)dealloc;
 - (id)initWithPurchase:(id)arg1;
-- (BOOL)peoplePickerNavigationController:(id)arg1 shouldContinueAfterSelectingPerson:(void *)arg2;
-- (BOOL)peoplePickerNavigationController:(id)arg1 shouldContinueAfterSelectingPerson:(void *)arg2 property:(int)arg3 identifier:(int)arg4;
-- (void)peoplePickerNavigationControllerDidCancel:(id)arg1;
 - (void)start;
 
 @end

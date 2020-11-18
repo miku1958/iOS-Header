@@ -26,28 +26,33 @@
 - (void)_addLogAdaptor:(id)arg1;
 - (void)_applicationDeactivating:(id)arg1;
 - (void)_applicationWillTerminate:(id)arg1;
-- (void)_disableLogMsgInstrumentation;
+- (void)_disableLogMsgInstrumentationWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)_disableUsageLoggingForCountry;
 - (void)_enableLogMsgInstrumentation;
 - (void)_flushLogs;
 - (id)_logMessageUsageURL;
 - (void)_queueLogMessage:(id)arg1;
+- (void)_registerLogMsgState:(id)arg1;
 - (void)_removeAllLogAdaptors;
 - (void)_removeLogAdaptor:(id)arg1;
 - (void)_setupDefaultAdaptors;
 - (void)_setupXPCRemoteAdators;
+- (void)_unregisterLogMsgStateOfType:(int)arg1;
 - (void)_updateAndSetupRemoteAdaptors;
 - (BOOL)_updateRemoteAdaptorOptions;
 - (void)addLogAdaptor:(id)arg1;
 - (void)dealloc;
 - (void)disableLogMsgInstrumentation;
+- (void)disableLogMsgInstrumentationWithBlock:(CDUnknownBlockType)arg1;
 - (void)enableLogMsgInstrumentation;
 - (void)flushLogs;
 - (id)init;
 - (void)queueLogMessage:(id)arg1;
+- (void)registerLogMsgState:(id)arg1;
 - (void)removeAllLogAdators;
 - (void)removeLogAdaptor:(id)arg1;
 - (BOOL)shouldSendUsageUsingNewLogManager;
+- (void)unregisterLogMsgStateOfType:(int)arg1;
 - (void)waitForEmptyLoggingQueue:(CDUnknownBlockType)arg1;
 
 @end

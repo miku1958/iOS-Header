@@ -14,21 +14,12 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) BOOL allowsDrawingOutsideTabBar;
-@property (readonly, nonatomic) double blinkImagePadding;
-@property (readonly, nonatomic) double blinkLeftBadgePadding;
-@property (readonly, nonatomic) double blinkMaxBadgeWidth;
-@property (readonly, nonatomic) double blinkMinBadgeWidth;
-@property (readonly, nonatomic) double blinkRate;
-@property (readonly, nonatomic) double blinkRightBadgePadding;
-@property (readonly, nonatomic) double blinkShadowHeight;
-@property (readonly, nonatomic) double blinkSingleBadgeWidth;
 @property (readonly, nonatomic) double edgePadding;
 @property (readonly, nonatomic) UIFont *font;
 @property (readonly, nonatomic) double fontSize;
 @property (readonly, nonatomic) double horizontalAnimatedInset;
 @property (readonly, nonatomic) double horizontalBorderedInset;
 @property (readonly, nonatomic) double horizontalInset;
-@property (readonly, nonatomic) double imagePadding;
 @property (readonly, nonatomic) double maxWidth;
 @property (readonly, nonatomic) double minWidth;
 @property (readonly, nonatomic) double shadowHeight;

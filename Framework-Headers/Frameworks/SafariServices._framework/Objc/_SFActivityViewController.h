@@ -6,16 +6,20 @@
 
 #import <UIKit/UIActivityViewController.h>
 
-@class NSString, _SFSafariSharingExtensionController;
+@class LPMetadataProvider, NSString, _SFSafariSharingExtensionController;
+@protocol _SFActivityViewControllerDelegate;
 
 @interface _SFActivityViewController : UIActivityViewController
 {
+    LPMetadataProvider *_pendingMessageMetadataProvider;
     BOOL _viewCanEarlyDismiss;
     _SFSafariSharingExtensionController *_sharingExtensionController;
+    id<_SFActivityViewControllerDelegate> _delegate;
     NSString *_currentExtensionIdentifier;
 }
 
 @property (copy, nonatomic) NSString *currentExtensionIdentifier; // @synthesize currentExtensionIdentifier=_currentExtensionIdentifier;
+@property (weak, nonatomic) id<_SFActivityViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (weak, nonatomic) _SFSafariSharingExtensionController *sharingExtensionController; // @synthesize sharingExtensionController=_sharingExtensionController;
 @property (readonly, nonatomic) BOOL viewCanEarlyDismiss; // @synthesize viewCanEarlyDismiss=_viewCanEarlyDismiss;
 
@@ -24,10 +28,12 @@
 - (void)_executeActivity;
 - (id)_extensionItemForExtensionActivity:(id)arg1;
 - (id)_javaScriptProcessingFileURLInExtension:(id)arg1;
+- (void)_prepareActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_prepareJavaScriptExtensionItemForActivity:(id)arg1;
 - (void)_processJavaScriptFinalizeReturnedItems:(id)arg1 forExtension:(id)arg2;
 - (void)activityDidComplete:(id)arg1 withReturnedItems:(id)arg2 success:(BOOL)arg3;
 - (id)initWithActivityItems:(id)arg1 applicationActivities:(id)arg2;
+- (void)prepareMessageActivity:(id)arg1 fromWebView:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

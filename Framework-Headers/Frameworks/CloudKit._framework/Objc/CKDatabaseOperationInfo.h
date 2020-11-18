@@ -16,7 +16,7 @@
 @property (nonatomic) long long databaseScope; // @synthesize databaseScope=_databaseScope;
 
 + (BOOL)supportsSecureCoding;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

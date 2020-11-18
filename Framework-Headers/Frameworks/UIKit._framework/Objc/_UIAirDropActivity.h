@@ -13,10 +13,12 @@ __attribute__((visibility("hidden")))
 {
     SFAirDropActivityViewController *_airDropViewController;
     CDUnknownBlockType _airdropCompletion;
+    long long _maxPreviews;
 }
 
 @property (strong, nonatomic) SFAirDropActivityViewController *airDropViewController; // @synthesize airDropViewController=_airDropViewController;
 @property (copy, nonatomic) CDUnknownBlockType airdropCompletion; // @synthesize airdropCompletion=_airdropCompletion;
+@property (nonatomic) long long maxPreviews; // @synthesize maxPreviews=_maxPreviews;
 
 - (void).cxx_destruct;
 - (struct CGSize)_thumbnailSize;

@@ -15,7 +15,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)_createLayers:(unsigned long long)arg1;
-- (void)_layoutForNodeHighlight:(const struct Highlight *)arg1;
+- (void)_layoutForNodeHighlight:(const struct Highlight *)arg1 offset:(unsigned int)arg2;
+- (void)_layoutForNodeListHighlight:(const struct Highlight *)arg1;
 - (void)_layoutForRectsHighlight:(const struct Highlight *)arg1;
 - (void)_removeAllLayers;
 - (void)dealloc;

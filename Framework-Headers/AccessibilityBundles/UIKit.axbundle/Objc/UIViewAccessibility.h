@@ -18,13 +18,12 @@
 - (id)_accessibilityAutomaticIdentifier;
 - (BOOL)_accessibilityAvoidsMockViewContainers;
 - (BOOL)_accessibilityBlocksInteraction;
-- (BOOL)_accessibilityCanBecomeNativeFocused;
+- (struct CGRect)_accessibilityBounds;
 - (id)_accessibilityCheckForAllowedModalView:(struct CGPoint)arg1 event:(id)arg2;
 - (id)_accessibilityChildVendingParent;
 - (id)_accessibilityCirclePathBasedOnBoundsWidth;
 - (void)_accessibilityFinalize;
 - (struct CGRect)_accessibilityFrameForView:(id)arg1;
-- (BOOL)_accessibilityHasNativeFocus;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityHitTestSubviews;
 - (long long)_accessibilityHorizontalSizeClass;
@@ -40,7 +39,6 @@
 - (id)_accessibilityRetrieveIvarText;
 - (id)_accessibilityRetrieveLabelFromTableViewCell;
 - (BOOL)_accessibilityServesAsContainingParentForOrdering;
-- (BOOL)_accessibilitySetNativeFocus;
 - (BOOL)_accessibilityShouldHitTestLayers;
 - (id)_accessibilitySortedElementsWithin;
 - (id)_accessibilitySupportGesturesAttributes;
@@ -53,17 +51,16 @@
 - (id)_axResponderChain;
 - (id)_axSubviews;
 - (id)_axWindowSubviews;
-- (struct CGSize)_mainScreenSizeForCurrentOrientation;
 - (id)_superAccessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)accessibilityContainer;
 - (BOOL)accessibilityElementIsFocused;
 - (BOOL)accessibilityElementsHidden;
 - (struct CGRect)accessibilityFrame;
 - (BOOL)accessibilityIsWindow;
+- (id)accessibilityPath;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)accessibilityViewIsModal;
 - (BOOL)isAccessibilityElement;
-- (void)setAccessibilityContainer:(id)arg1;
 - (void)setIsAccessibilityElement:(BOOL)arg1;
 
 @end

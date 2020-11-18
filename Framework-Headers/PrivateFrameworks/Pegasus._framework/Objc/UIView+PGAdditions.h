@@ -9,12 +9,14 @@
 @interface UIView (PGAdditions)
 
 @property (nonatomic, setter=PG_setAllowsEdgeAntialiasing:) BOOL PG_allowsEdgeAntialiasing;
+@property (nonatomic, setter=PG_setAllowsGroupBlending:) BOOL PG_allowsGroupBlending;
 @property (nonatomic, setter=PG_setAnchorPoint:) struct CGPoint PG_anchorPoint;
 @property (strong, nonatomic, setter=PG_setCompositingFilter:) id PG_compositingFilter;
 @property (nonatomic, setter=PG_setCornerRadius:) double PG_cornerRadius;
 
 + (void)PG_animateUsingDefaultDampedSpringWithInitialSpringVelocity:(double)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)PG_animateUsingDefaultTimingWithAnimations:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)PG_animateUsingDefaultTimingWithOptions:(unsigned long long)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)PG_performWithoutAnimation:(CDUnknownBlockType)arg1;
 + (void)PG_transitionViews:(id)arg1 hidden:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)PG_setHasRoundedCorners:(BOOL)arg1 animated:(BOOL)arg2;

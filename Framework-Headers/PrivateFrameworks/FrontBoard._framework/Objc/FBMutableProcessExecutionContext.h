@@ -7,6 +7,7 @@
 #import <FrontBoard/FBProcessExecutionContext.h>
 
 @class NSArray, NSDictionary, NSURL;
+@protocol FBProcessWatchdogProviding;
 
 @interface FBMutableProcessExecutionContext : FBProcessExecutionContext
 {
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) NSURL *standardOutputURL; // @dynamic standardOutputURL;
 @property (nonatomic) BOOL waitForDebugger; // @dynamic waitForDebugger;
 @property (nonatomic) double watchdogExtension; // @dynamic watchdogExtension;
+@property (strong, nonatomic) id<FBProcessWatchdogProviding> watchdogProvider; // @dynamic watchdogProvider;
 @property (nonatomic) double watchdogScaleFactor; // @dynamic watchdogScaleFactor;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

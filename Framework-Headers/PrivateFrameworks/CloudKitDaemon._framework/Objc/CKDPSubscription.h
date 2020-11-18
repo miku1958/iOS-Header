@@ -50,7 +50,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *recordTypes; // @synthesize recordTypes=_recordTypes;
 @property (strong, nonatomic) CKDPRecordZoneIdentifier *zoneIdentifier; // @synthesize zoneIdentifier=_zoneIdentifier;
 
++ (Class)filtersType;
++ (Class)recordTypesType;
 - (void).cxx_destruct;
+- (int)StringAsEvaluationType:(id)arg1;
+- (int)StringAsMutationTriggers:(id)arg1;
+- (int)StringAsOwner:(id)arg1;
 - (void)addFilters:(id)arg1;
 - (void)addMutationTriggers:(int)arg1;
 - (void)addRecordTypes:(id)arg1;
@@ -62,12 +67,15 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)evaluationTypeAsString:(int)arg1;
 - (id)filtersAtIndex:(unsigned long long)arg1;
 - (unsigned long long)filtersCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)mutationTriggersAsString:(int)arg1;
 - (int)mutationTriggersAtIndex:(unsigned long long)arg1;
+- (id)ownerAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)recordTypesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)recordTypesCount;

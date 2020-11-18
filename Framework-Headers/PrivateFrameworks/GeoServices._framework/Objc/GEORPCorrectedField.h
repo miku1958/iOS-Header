@@ -34,11 +34,13 @@
 @property (nonatomic) BOOL isMarkedIncorrect; // @synthesize isMarkedIncorrect=_isMarkedIncorrect;
 @property (strong, nonatomic) NSString *originalValue; // @synthesize originalValue=_originalValue;
 
+- (int)StringAsField:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)fieldAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

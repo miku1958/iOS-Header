@@ -6,21 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary;
+@class NSDictionary, NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface SUScriptDictionary : NSObject
 {
+    NSObject<OS_dispatch_queue> *_accessQueue;
+    NSMutableDictionary *_cachedNestedScriptDictionaries;
     NSDictionary *_dictionary;
 }
 
 @property (readonly) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
 
++ (void)initialize;
 + (BOOL)isKeyExcludedFromWebScript:(const char *)arg1;
++ (BOOL)isSelectorExcludedFromWebScript:(SEL)arg1;
++ (id)webScriptNameForSelector:(SEL)arg1;
+- (void).cxx_destruct;
 - (id)attributeKeys;
-- (void)dealloc;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;
 - (void)setValue:(id)arg1 forKey:(id)arg2;
+- (id)stringRepresentation;
 - (id)valueForKey:(id)arg1;
 
 @end

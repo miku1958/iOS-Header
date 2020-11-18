@@ -10,7 +10,10 @@
 {
 }
 
+- (BOOL)_canChangeFirstResponder:(id)arg1 toResponder:(id)arg2;
 - (id)_hitTest:(struct CGPoint)arg1 withEvent:(id)arg2 windowServerHitTestWindow:(id)arg3;
+- (BOOL)canBecomeFirstResponder;
+- (BOOL)canResignFirstResponder;
 
 @end
 

@@ -11,10 +11,10 @@
 
 @protocol HDSensorDatum <NSObject, NSSecureCoding>
 - (NSDate *)endDate;
-- (long long)recordID;
 - (NSDate *)startDate;
 
 @optional
+- (long long)recordID;
 - (NSUUID *)sourceId;
 @end
 

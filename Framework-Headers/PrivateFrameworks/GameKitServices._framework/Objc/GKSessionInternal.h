@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class GKAutoPeerIDTable, GKConnection, GKList, GKSession, GKTable, GKVoiceChatSessionListener, NSString;
 @protocol GKSessionDOOBReceiveHandler, GKSessionDataReceiveHandler, GKSessionDelegate, GKSessionPrivateDelegate;
@@ -82,8 +82,6 @@
 - (BOOL)checkDNSConnection;
 - (void)cleanupExAvailablePeers;
 - (void)connectToPeer:(id)arg1 withTimeout:(double)arg2;
-- (id)createNSErrorFromGKSessionError:(int)arg1 description:(id)arg2 reason:(id)arg3;
-- (id)createNSErrorFromHRESULT:(int)arg1 description:(id)arg2 reason:(id)arg3;
 - (void)dealloc;
 - (void)denyConnectionFromPeer:(id)arg1;
 - (id)description;
@@ -103,6 +101,8 @@
 - (BOOL)isPeerBusy:(id)arg1;
 - (BOOL)isShuttingDown;
 - (void)lock;
+- (id)newNSErrorFromGKSessionError:(int)arg1 description:(id)arg2 reason:(id)arg3;
+- (id)newNSErrorFromHRESULT:(int)arg1 description:(id)arg2 reason:(id)arg3;
 - (BOOL)parseServiceName:(const char *)arg1 intoDisplayName:(id *)arg2 pid:(unsigned int *)arg3 state:(id *)arg4;
 - (BOOL)passesSendDataSanityCheck:(id)arg1 toPeers:(id)arg2 withDataMode:(int)arg3 error:(id *)arg4;
 - (id)peersWithConnectionState:(int)arg1;

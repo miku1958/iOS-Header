@@ -15,20 +15,15 @@
     struct CGSize _interpageSpacing;
 }
 
-@property (nonatomic) struct CGSize interpageSpacing; // @synthesize interpageSpacing=_interpageSpacing;
-@property (nonatomic) double pagingFrictionAdjustment; // @synthesize pagingFrictionAdjustment=_pagingFrictionAdjustment;
-@property (nonatomic) double pagingSpringPullAdjustment; // @synthesize pagingSpringPullAdjustment=_pagingSpringPullAdjustment;
-@property (nonatomic) long long scrollDirections; // @synthesize scrollDirections=_scrollDirections;
-@property (nonatomic) BOOL shouldEnablePaging; // @synthesize shouldEnablePaging=_shouldEnablePaging;
+@property (nonatomic, setter=_setInterpageSpacing:) struct CGSize interpageSpacing; // @synthesize interpageSpacing=_interpageSpacing;
+@property (nonatomic, setter=_setPagingFrictionAdjustment:) double pagingFrictionAdjustment; // @synthesize pagingFrictionAdjustment=_pagingFrictionAdjustment;
+@property (nonatomic, setter=_setPagingSpringPullAdjustment:) double pagingSpringPullAdjustment; // @synthesize pagingSpringPullAdjustment=_pagingSpringPullAdjustment;
+@property (nonatomic, setter=_setScrollDirections:) long long scrollDirections; // @synthesize scrollDirections=_scrollDirections;
+@property (nonatomic, setter=_setShouldEnablePaging:) BOOL shouldEnablePaging; // @synthesize shouldEnablePaging=_shouldEnablePaging;
 
 + (id)scrollInfoWithScrollDirections:(long long)arg1;
 + (id)scrollInfoWithScrollDirections:(long long)arg1 enabledPagingWithInterpageSpacing:(struct CGSize)arg2;
 + (id)scrollInfoWithScrollDirections:(long long)arg1 enabledPagingWithInterpageSpacing:(struct CGSize)arg2 pagingSpringPullAdjustment:(double)arg3 pagingFrictionAdjustment:(double)arg4;
-- (void)_setInterpageSpacing:(struct CGSize)arg1;
-- (void)_setPagingFrictionAdjustment:(double)arg1;
-- (void)_setPagingSpringPullAdjustment:(double)arg1;
-- (void)_setScrollDirections:(long long)arg1;
-- (void)_setShouldEnablePaging:(BOOL)arg1;
 
 @end
 

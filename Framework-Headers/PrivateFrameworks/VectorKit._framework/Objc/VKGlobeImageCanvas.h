@@ -8,18 +8,93 @@
 
 #import <VectorKit/MDSnapshotMap-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface VKGlobeImageCanvas : VKImageCanvas <MDSnapshotMap>
 {
-    struct Viewer *_viewer;
-    struct unique_ptr<vk::GlobeAdapter, std::__1::default_delete<vk::GlobeAdapter>> _globeAdapter;
-    struct shared_ptr<vk::VKGlobeStylesheet> _globeStyleSheet;
+    struct GlobeView {
+        CDUnknownFunctionPointerType *;
+        struct AnchorManagerPrivate *;
+        struct Scene *;
+        struct Context *;
+        struct DtmCacheNode *;
+        struct DtmRequestManager *;
+        struct FreezeViewNode *;
+        struct Projection;
+        struct FrameLatLon;
+        BOOL;
+        basic_string_805fe43b;
+        basic_string_805fe43b;
+        struct vector<altitude::TileBound, std::__1::allocator<altitude::TileBound>>;
+        struct vector<altitude::SimpleTileKey, std::__1::allocator<altitude::SimpleTileKey>>;
+        BOOL;
+        unsigned int;
+        unsigned int;
+        unsigned int;
+        unsigned int;
+        struct VKClassicGlobeCanvas *;
+        BOOL;
+        BOOL;
+        int;
+        struct AnimationManager;
+        struct Timer;
+        double;
+        BOOL;
+        double;
+        double;
+        double;
+        struct FrameLatLon;
+        struct C3mmRequestManager *;
+        struct RenderableGroup *;
+        unsigned int;
+        double;
+        BOOL;
+        BOOL;
+        struct LabelDataManagerPrivate *;
+        BOOL;
+        BOOL;
+        BOOL;
+        BOOL;
+        struct RouteLineManager *;
+        struct GlobeCleanupLoader *;
+        struct CompleteGlobeTileSetCullingGraph *;
+        struct CompleteGlobeTileSetLoader *;
+        struct TileSetNode *;
+        struct GlobeTileRenderManager *;
+        struct CullingNode *;
+        struct EarthAdjustedViewNode *;
+        struct UserViewNode *;
+        struct View *;
+        struct BasicViewNode *;
+        struct GlobeMainViewNode *;
+        struct C3bRequestManager *;
+        float;
+        BOOL;
+        struct shared_ptr<bool>;
+        struct HeightRequestManager *;
+        struct map<gm::Matrix<int, 2, 1>, std::__1::pair<bool, altitude::Position3d>, altitude::GlobeView::LessVector2i, std::__1::allocator<std::__1::pair<const gm::Matrix<int, 2, 1>, std::__1::pair<bool, altitude::Position3d>>>>;
+        struct Mutex;
+        struct shared_ptr<altitude::Stylesheet>;
+        struct FlyoverTour *;
+        BOOL;
+        struct TriggerManager *;
+        struct Viewport;
+        struct AnimationReferenceTimer;
+        BOOL;
+        struct set<altitude::ManifestListener *, std::__1::less<altitude::ManifestListener *>, std::__1::allocator<altitude::ManifestListener *>>;
+        struct GeoServicesLoader *;
+        struct ManifestManager *;
+        struct GlobeDispatch *;
+    } *_globeView;
+    struct unique_ptr<md::GlobeAdapter, std::__1::default_delete<md::GlobeAdapter>> _globeAdapter;
+    struct shared_ptr<md::VKGlobeStylesheet> _globeStyleSheet;
     BOOL _notifyFullyLoaded;
     BOOL _notifyFullyDrawn;
+    struct _MDRenderTargetRef _renderTargetRef;
 }
 
+@property (strong, nonatomic) NSArray *customFeatureDataSources;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -34,13 +109,17 @@ __attribute__((visibility("hidden")))
 - (void)_updateCameraFromGlobe;
 - (void)_updateViewTransform;
 - (void)_updateViewport;
+- (void)addCustomFeatureDataSource:(id)arg1;
 - (void)cancelTileRequests;
 - (void)dealloc;
 - (void)didLayout;
 - (void)globeDidBecomeFullyDrawn;
 - (void)globeWillBecomeFullyDrawn;
-- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 useMultisampling:(BOOL)arg3 device:(const shared_ptr_807ec9ac *)arg4 homeQueue:(id)arg5 renderer:(struct GLRenderer *)arg6 manifestConfiguration:(id)arg7;
+- (id)initWithTarget:(id)arg1 device:(struct Device *)arg2 homeQueue:(id)arg3 renderer:(struct Renderer *)arg4 manifestConfiguration:(id)arg5;
 - (BOOL)isShowingNoDataPlaceholders;
+- (void)removeCustomFeatureDataSource:(id)arg1;
+- (void)removeRenderer;
+- (void)setMapDisplayStyle:(struct DisplayStyle)arg1;
 - (void)setMapType:(long long)arg1;
 - (void)update;
 

@@ -15,7 +15,6 @@
 
 @property (strong, nonatomic) NSArray *updatedKeys; // @synthesize updatedKeys=_updatedKeys;
 
-+ (id)notificationName;
 - (void).cxx_destruct;
 - (id)initWithUpdatedKeys:(id)arg1;
 

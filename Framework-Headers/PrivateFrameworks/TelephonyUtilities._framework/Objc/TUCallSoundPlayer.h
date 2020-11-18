@@ -11,8 +11,10 @@
 @interface TUCallSoundPlayer : NSObject
 {
     TUSoundPlayer *_player;
+    long long _currentlyPlayingSoundType;
 }
 
+@property (nonatomic) long long currentlyPlayingSoundType; // @synthesize currentlyPlayingSoundType=_currentlyPlayingSoundType;
 @property (strong, nonatomic) TUSoundPlayer *player; // @synthesize player=_player;
 @property (readonly, nonatomic, getter=isPlaying) BOOL playing;
 

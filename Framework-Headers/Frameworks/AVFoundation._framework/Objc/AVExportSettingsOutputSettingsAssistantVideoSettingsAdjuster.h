@@ -22,6 +22,7 @@
 @property (readonly) Class superclass;
 
 - (long long)averageBitRateForSourceDimensions:(struct CGSize)arg1 andTargetFrameRate:(float)arg2;
+- (id)colorSpaceFromSourceFormatDescriptions:(id)arg1 andRendererColorSpace:(id)arg2;
 - (void)dealloc;
 - (id)initWithOutputSettingsPreset:(id)arg1;
 

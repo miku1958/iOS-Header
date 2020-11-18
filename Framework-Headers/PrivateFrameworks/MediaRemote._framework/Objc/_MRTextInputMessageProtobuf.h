@@ -28,6 +28,8 @@
 @property (strong, nonatomic) NSString *text; // @synthesize text=_text;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
+- (int)StringAsActionType:(id)arg1;
+- (id)actionTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

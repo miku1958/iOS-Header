@@ -9,7 +9,7 @@
 #import <GeoServices/GEOResourceManifestServerProxyDelegate-Protocol.h>
 
 @class GEOActiveTileGroup, GEOLocalizationRegionsInfo, GEOResourceManifestConfiguration, NSDictionary, NSHashTable, NSLock, NSMutableArray, NSSet, NSString;
-@protocol GEOResourceManifestServerProxy;
+@protocol GEOResourceManifestServerProxy, OS_dispatch_source;
 
 @interface GEOResourceManifestManager : NSObject <GEOResourceManifestServerProxyDelegate>
 {
@@ -25,12 +25,14 @@
     NSLock *_tileGroupObserversLock;
     NSLock *_closedCountLock;
     long long _closedCount;
+    BOOL _constantlyChangeTileGroup;
     GEOLocalizationRegionsInfo *_localizationRegionsInfo;
     NSMutableArray *_networkActivityHandlers;
     BOOL _isUpdatingManifest;
     BOOL _isLoadingResources;
     NSLock *_resourceNamesToPathsLock;
     GEOResourceManifestConfiguration *_configuration;
+    NSObject<OS_dispatch_source> *_cachedResourceInfoPurgeTimer;
 }
 
 @property (readonly, nonatomic) GEOActiveTileGroup *activeTileGroup;
@@ -55,6 +57,9 @@
 - (id)_loadActiveTileGroupIfNecessary:(BOOL)arg1;
 - (void)_localeChanged:(id)arg1;
 - (void)_notifyObserversOfResourcesChange;
+- (void)_scheduleCachedResourceInfoPurgeTimer;
+- (void)activateResourceScale:(int)arg1;
+- (void)activateResourceScenario:(int)arg1;
 - (unsigned int)activeTileGroupIdentifier;
 - (void)addNetworkActivityHandler:(CDUnknownBlockType)arg1;
 - (void)addServerProxyObserver:(id)arg1;
@@ -65,10 +70,14 @@
 - (id)authToken;
 - (id)baseURLStringForTileKey:(const struct _GEOTileKey *)arg1;
 - (void)closeServerConnection;
+- (void)deactivateResourceScale:(int)arg1;
+- (void)deactivateResourceScenario:(int)arg1;
 - (void)dealloc;
 - (id)detailedDescription;
+- (id)detailedDescriptionDictionaryRepresentation;
 - (void)devResourcesFolderDidChange;
 - (id)disputedBordersQueryStringForTileKey:(const struct _GEOTileKey *)arg1 country:(id)arg2 region:(id)arg3;
+- (void)fakeTileGroupChange;
 - (void)forceUpdate;
 - (void)getResourceManifestWithHandler:(CDUnknownBlockType)arg1;
 - (BOOL)hasResourceManifest;
@@ -89,9 +98,11 @@
 - (oneway void)serverProxy:(id)arg1 didChangeActiveTileGroup:(id)arg2 finishedCallback:(CDUnknownBlockType)arg3;
 - (oneway void)serverProxyDidStopLoadingResources:(id)arg1;
 - (oneway void)serverProxyDidStopUpdatingResourceManifest:(id)arg1;
+- (void)serverProxyNeedsWiFiResourceActivity:(id)arg1;
 - (oneway void)serverProxyWillStartLoadingResources:(id)arg1;
 - (oneway void)serverProxyWillStartUpdatingResourceManifest:(id)arg1;
 - (void)setActiveTileGroupIdentifier:(unsigned int)arg1;
+- (void)setConstantlyChangeTileGroup:(BOOL)arg1;
 - (void)setManifestToken:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startObservingDevResources;
 - (void)stopObservingDevResources;

@@ -4,36 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CloudKitDaemon/CKDDatabaseOperation.h>
+#import <CloudKitDaemon/CKDOperation.h>
 
 @class NSMutableArray, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface CKDAcceptSharesOperation : CKDDatabaseOperation
+@interface CKDAcceptSharesOperation : CKDOperation
 {
     int _numShareAcceptAttempts;
     CDUnknownBlockType _acceptCompletionBlock;
+    NSMutableDictionary *_clientProvidedMetadatasByURL;
     NSMutableArray *_shareURLsToAccept;
     NSMutableArray *_acceptedShareURLsToFetch;
-    NSMutableDictionary *_shareInfosToAcceptByURL;
+    NSMutableDictionary *_shareMetadatasToAcceptByURL;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType acceptCompletionBlock; // @synthesize acceptCompletionBlock=_acceptCompletionBlock;
 @property (strong, nonatomic) NSMutableArray *acceptedShareURLsToFetch; // @synthesize acceptedShareURLsToFetch=_acceptedShareURLsToFetch;
+@property (strong, nonatomic) NSMutableDictionary *clientProvidedMetadatasByURL; // @synthesize clientProvidedMetadatasByURL=_clientProvidedMetadatasByURL;
 @property (nonatomic) int numShareAcceptAttempts; // @synthesize numShareAcceptAttempts=_numShareAcceptAttempts;
-@property (strong, nonatomic) NSMutableDictionary *shareInfosToAcceptByURL; // @synthesize shareInfosToAcceptByURL=_shareInfosToAcceptByURL;
+@property (strong, nonatomic) NSMutableDictionary *shareMetadatasToAcceptByURL; // @synthesize shareMetadatasToAcceptByURL=_shareMetadatasToAcceptByURL;
 @property (strong, nonatomic) NSMutableArray *shareURLsToAccept; // @synthesize shareURLsToAccept=_shareURLsToAccept;
 
 - (void).cxx_destruct;
 - (BOOL)_acceptShares;
-- (id)_addSelfIdentityToShareInfoPublicPCS:(id)arg1 forShareWithURL:(id)arg2 error:(id *)arg3;
+- (id)_addSelfIdentityToShareMetadataPublicPCS:(id)arg1 forShareWithURL:(id)arg2 error:(id *)arg3;
+- (BOOL)_callingParticipantOONForShareMetadata:(id)arg1;
+- (void)_decryptShareMetadata;
 - (void)_fetchAcceptedShares;
-- (void)_fetchInfoForShares;
+- (void)_fetchMetadataForShares;
+- (BOOL)_fillInPublicKeyIntoAcceptMetadata:(id)arg1 serviceType:(unsigned long long)arg2 keyVersion:(unsigned long long)arg3 error:(id *)arg4;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleShareURLAccepted:(id)arg1 forShare:(id)arg2 responseCode:(id)arg3;
+- (id)_keySwapForOONParticipant:(id)arg1;
 - (void)_performCallbackForURL:(id)arg1 withShare:(id)arg2 error:(id)arg3;
-- (void)_prepareShareInfo;
-- (unsigned long long)activityStart;
+- (void)_prepareShareMetadata;
+- (BOOL)_validateInvitedPCSCanBeDecryptedForShare:(id)arg1;
+- (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
 - (BOOL)makeStateTransition;

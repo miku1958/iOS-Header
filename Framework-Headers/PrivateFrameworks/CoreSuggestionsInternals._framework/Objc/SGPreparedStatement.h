@@ -7,23 +7,29 @@
 #import <objc/NSObject.h>
 
 #import <CoreSuggestionsInternals/NSCopying-Protocol.h>
+#import <CoreSuggestionsInternals/NSDiscardableContent-Protocol.h>
 
 @class SGSqliteDatabase;
 
-@interface SGPreparedStatement : NSObject <NSCopying>
+@interface SGPreparedStatement : NSObject <NSDiscardableContent, NSCopying>
 {
     SGSqliteDatabase *_owner;
     BOOL _isFinalized;
+    unsigned int _useCount;
     struct sqlite3_stmt *_stmt;
 }
 
 @property (readonly, nonatomic) struct sqlite3_stmt *stmt; // @synthesize stmt=_stmt;
 
 - (void).cxx_destruct;
+- (void)_finalizeWithLogWarning:(id)arg1;
+- (BOOL)beginContentAccess;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (void)finalize;
+- (void)discardContentIfPossible;
+- (void)endContentAccess;
 - (id)initWithStatementPointer:(struct sqlite3_stmt *)arg1 owner:(id)arg2;
+- (BOOL)isContentDiscarded;
 
 @end
 

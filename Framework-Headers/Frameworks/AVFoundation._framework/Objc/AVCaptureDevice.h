@@ -23,7 +23,13 @@
 @property (readonly, nonatomic) NSString *uniqueID;
 
 + (id)_devices;
++ (id)_devicesWithDeviceTypes:(id)arg1 mediaType:(id)arg2 position:(long long)arg3;
++ (void)_filterConnectedDevices:(id)arg1 withDeviceTypes:(id)arg2 mediaType:(id)arg3 position:(long long)arg4;
++ (void)_filterConnectedLegacyDevices:(id)arg1;
++ (id)_legacyDevicesWithMediaType:(id)arg1;
++ (void)_reconnectDevices:(id)arg1;
 + (long long)authorizationStatusForMediaType:(id)arg1;
++ (id)defaultDeviceWithDeviceType:(id)arg1 mediaType:(id)arg2 position:(long long)arg3;
 + (id)defaultDeviceWithMediaType:(id)arg1;
 + (id)deviceWithUniqueID:(id)arg1;
 + (id)devices;
@@ -34,17 +40,24 @@
 - (float)ISO;
 - (float)ISODigitalThreshold;
 - (void)_checkTCCAccess;
+- (BOOL)_isFlashScene;
+- (BOOL)_isHighDynamicRangeScene;
 - (void)_setActiveVideoMaxFrameDuration:(CDStruct_1b6d18a9)arg1;
 - (void)_setActiveVideoMinFrameDuration:(CDStruct_1b6d18a9)arg1;
+- (void)_setFlashSceneDetectionEnabled:(BOOL)arg1;
+- (void)_setHighDynamicRangeSceneDetectionEnabled:(BOOL)arg1;
 - (void)_setStillImageStabilizationAutomaticallyEnabled:(BOOL)arg1;
+- (void)_setStillImageStabilizationDetectionEnabled:(BOOL)arg1;
 - (void)_setVideoHDREnabled:(BOOL)arg1;
 - (BOOL)_startUsingDevice:(id *)arg1;
 - (void)_stopUsingDevice;
+- (long long)activeColorSpace;
 - (long long)autoFocusRangeRestriction;
 - (BOOL)automaticallyAdjustsImageControlMode;
 - (BOOL)automaticallyAdjustsVideoHDREnabled;
 - (BOOL)automaticallyEnablesLowLightBoostWhenAvailable;
 - (id)availableBoxedMetadataFormatDescriptions;
+- (id)bravoCameraSelectionBehavior;
 - (BOOL)cachesFigCaptureSourceConfigurationChanges;
 - (void)cancelVideoZoomRamp;
 - (CDStruct_b2fbf00d)chromaticityValuesForDeviceWhiteBalanceGains:(CDStruct_d6531dd4)arg1;
@@ -54,6 +67,7 @@
 - (id)description;
 - (struct OpaqueCMClock *)deviceClock;
 - (long long)deviceSourceOrigin;
+- (id)deviceType;
 - (CDStruct_d6531dd4)deviceWhiteBalanceGains;
 - (CDStruct_d6531dd4)deviceWhiteBalanceGainsForChromaticityValues:(CDStruct_b2fbf00d)arg1;
 - (CDStruct_d6531dd4)deviceWhiteBalanceGainsForTemperatureAndTintValues:(CDStruct_b2fbf00d)arg1;
@@ -91,6 +105,7 @@
 - (BOOL)isFlashActive;
 - (BOOL)isFlashAvailable;
 - (BOOL)isFlashModeSupported:(long long)arg1;
+- (BOOL)isFlashSceneDetectedForPhotoOutput;
 - (BOOL)isFocusModeSupported:(long long)arg1;
 - (BOOL)isFocusPointOfInterestSupported;
 - (BOOL)isHDRSupported;
@@ -101,6 +116,8 @@
 - (BOOL)isInUseByAnotherApplication;
 - (BOOL)isLensStabilizationSupported;
 - (BOOL)isLockedForConfiguration;
+- (BOOL)isLockingFocusWithCustomLensPositionSupported;
+- (BOOL)isLockingWhiteBalanceWithCustomDeviceGainsSupported;
 - (BOOL)isLowLightBoostEnabled;
 - (BOOL)isLowLightBoostSupported;
 - (BOOL)isMachineReadableCodeDetectionSupported;
@@ -117,6 +134,7 @@
 - (BOOL)isVideoHDREnabled;
 - (BOOL)isVideoStabilizationSupported;
 - (BOOL)isWhiteBalanceModeSupported:(long long)arg1;
+- (BOOL)isWideColorSupported;
 - (float)lensAperture;
 - (float)lensPosition;
 - (BOOL)lockForConfiguration:(id *)arg1;
@@ -124,18 +142,22 @@
 - (CDStruct_79c71658)maxH264PhotoDimensions;
 - (CDStruct_79c71658)maxH264VideoDimensions;
 - (float)maxWhiteBalanceGain;
+- (double)minAvailableVideoZoomFactor;
 - (float)minExposureTargetBias;
 - (int)minMacroblocksForHighProfileAbove30fps;
 - (int)minMacroblocksForHighProfileUpTo30fps;
 - (BOOL)open:(id *)arg1;
 - (long long)position;
 - (BOOL)providesStortorgetMetadata;
+- (void)rampExponentiallyToVideoZoomFactor:(float)arg1 withDuration:(double)arg2;
 - (void)rampToVideoZoomFactor:(double)arg1 withRate:(float)arg2;
 - (float)saturation;
+- (void)setActiveColorSpace:(long long)arg1;
 - (void)setAutoFocusRangeRestriction:(long long)arg1;
 - (void)setAutomaticallyAdjustsImageControlMode:(BOOL)arg1;
 - (void)setAutomaticallyAdjustsVideoHDREnabled:(BOOL)arg1;
 - (void)setAutomaticallyEnablesLowLightBoostWhenAvailable:(BOOL)arg1;
+- (void)setBravoCameraSelectionBehavior:(id)arg1;
 - (void)setCachesFigCaptureSourceConfigurationChanges:(BOOL)arg1;
 - (void)setContrast:(float)arg1;
 - (void)setExposureMode:(long long)arg1;
@@ -171,6 +193,7 @@
 - (float)torchLevel;
 - (long long)torchMode;
 - (void)unlockForConfiguration;
+- (BOOL)usesQuantizationScalingMatrix_H264_Steep_16_48;
 - (double)videoZoomFactor;
 - (long long)whiteBalanceMode;
 

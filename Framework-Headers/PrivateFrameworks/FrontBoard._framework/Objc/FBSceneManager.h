@@ -40,7 +40,7 @@
 + (void)synchronizeChanges:(CDUnknownBlockType)arg1;
 - (void)_applyMutableSettings:(id)arg1 toScene:(id)arg2 asUpdate:(BOOL)arg3 withTransitionContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_beginSynchronizationBlock;
-- (id)_createSceneWithIdentifier:(id)arg1 workspaceIdentifier:(id)arg2 display:(id)arg3 settings:(id)arg4 initialClientSettings:(id)arg5 clientProvider:(id)arg6 transitionContext:(id)arg7;
+- (id)_createSceneWithDefinition:(id)arg1 initialParameters:(id)arg2 clientProvider:(id)arg3 transitionContext:(id)arg4;
 - (void)_destroyScene:(id)arg1 withTransitionContext:(id)arg2;
 - (void)_endSynchronizationBlock;
 - (void)_enqueueEventForScene:(id)arg1 withName:(id)arg2 block:(CDUnknownBlockType)arg3;
@@ -63,6 +63,7 @@
 - (void)_updateScene:(id)arg1 withSettings:(id)arg2 transitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)addObserver:(id)arg1;
 - (void)attachDefaultTransform:(id)arg1 forDisplay:(id)arg2;
+- (id)createSceneWithDefinition:(id)arg1 initialParameters:(id)arg2;
 - (id)createSceneWithIdentifier:(id)arg1 display:(id)arg2 settings:(id)arg3 initialClientSettings:(id)arg4 clientProvider:(id)arg5 transitionContext:(id)arg6;
 - (id)createSceneWithIdentifier:(id)arg1 settings:(id)arg2 initialClientSettings:(id)arg3 clientProvider:(id)arg4 transitionContext:(id)arg5;
 - (void)dealloc;

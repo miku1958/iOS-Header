@@ -19,8 +19,8 @@
     BOOL _needsAccountPropertyRefresh;
     BOOL _isRefreshing;
     BOOL _searchQueriesShouldCancel;
-    BOOL _subscribedCalendarsChanged;
     BOOL _isSpinning;
+    BOOL _subscribedCalendarsChanged;
     int _preferredEventDaysToSync;
     int _preferredToDoDaysToSync;
     NSMutableSet *_movedItemURLStrings;

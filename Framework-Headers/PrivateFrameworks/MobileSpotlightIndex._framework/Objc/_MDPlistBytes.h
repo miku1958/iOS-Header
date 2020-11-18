@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
     unsigned long long _byteVector;
     unsigned int _byteVectorCnt;
     unsigned int _byteVectorCapacity;
+    CDUnknownBlockType _deallocator;
     unsigned int _isBad:16;
-    unsigned int _shouldDeallocate:1;
     unsigned int _isMutable:1;
     unsigned int _isMutating:1;
     unsigned int _didFinalize:1;
@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)finalize;
+- (id)initWithByteVector:(char *)arg1 count:(unsigned int)arg2 deallocator:(CDUnknownBlockType)arg3;
 - (id)initWithByteVector:(char *)arg1 count:(unsigned int)arg2 shouldDeallocate:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
 

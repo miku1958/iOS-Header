@@ -6,33 +6,96 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary;
+@class NSDictionary, NSManagedObjectContext, RTDefaultsManager, RTDeviceLocationPredictor, RTEventManager, RTInvocationDispatcher, RTMetricManager, RTPurgeManager;
 @protocol OS_dispatch_queue;
 
 @interface RTEventModelProvider : NSObject
 {
+    BOOL _locationsOfInterestsAvailable;
+    int _highProbabilityItemMinNumOfEvents;
     NSObject<OS_dispatch_queue> *_queue;
+    RTDeviceLocationPredictor *_deviceLocationPredictor;
+    RTEventManager *_eventManager;
+    RTMetricManager *_metricManager;
+    NSManagedObjectContext *_managedObjectContext;
+    RTDefaultsManager *_defaultsManager;
+    RTPurgeManager *_purgeManager;
+    RTInvocationDispatcher *_dispatcher;
+    double _highProbabilityItemMinProbability;
+    double _relativeHighProbabilityItemMinDifference;
     NSDictionary *_locationOfInterestHistograms;
 }
 
+@property (strong, nonatomic) RTDefaultsManager *defaultsManager; // @synthesize defaultsManager=_defaultsManager;
+@property (strong, nonatomic) RTDeviceLocationPredictor *deviceLocationPredictor; // @synthesize deviceLocationPredictor=_deviceLocationPredictor;
+@property (strong, nonatomic) RTInvocationDispatcher *dispatcher; // @synthesize dispatcher=_dispatcher;
+@property (strong, nonatomic) RTEventManager *eventManager; // @synthesize eventManager=_eventManager;
+@property (nonatomic) int highProbabilityItemMinNumOfEvents; // @synthesize highProbabilityItemMinNumOfEvents=_highProbabilityItemMinNumOfEvents;
+@property (nonatomic) double highProbabilityItemMinProbability; // @synthesize highProbabilityItemMinProbability=_highProbabilityItemMinProbability;
 @property (strong, nonatomic) NSDictionary *locationOfInterestHistograms; // @synthesize locationOfInterestHistograms=_locationOfInterestHistograms;
+@property (nonatomic) BOOL locationsOfInterestsAvailable; // @synthesize locationsOfInterestsAvailable=_locationsOfInterestsAvailable;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
+@property (strong, nonatomic) RTMetricManager *metricManager; // @synthesize metricManager=_metricManager;
+@property (strong, nonatomic) RTPurgeManager *purgeManager; // @synthesize purgeManager=_purgeManager;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (nonatomic) double relativeHighProbabilityItemMinDifference; // @synthesize relativeHighProbabilityItemMinDifference=_relativeHighProbabilityItemMinDifference;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_buildLocationOfInterestHistogramAndCollectMetrics:(BOOL)arg1;
+- (BOOL)_deleteUserInteractionsBeforeDate:(id)arg1;
+- (void)_fetchLOIHistogramForEventLocation:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)_finishRestoreEventModelWithIdentifiers:(id)arg1 histoItems:(id)arg2 locationsOfInterest:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (id)_geoLocationOfEvent:(id)arg1;
+- (id)_getLocationOfInterestWithIdentifier:(id)arg1 fromArray:(id)arg2;
+- (id)_getObjectWithSameOrSimilarIdentifier:(id)arg1 fromDictionary:(id)arg2;
+- (BOOL)_hasSuggestedLocationForEvent:(id)arg1;
+- (unsigned long long)_locationStateOfEvent:(id)arg1;
+- (BOOL)_persistEventModel;
+- (BOOL)_persistUserInteractionWithPredictedLocationOfInterest:(id)arg1 interaction:(unsigned long long)arg2 feedback:(id)arg3;
+- (id)_predictedLocationsOfInterestAssociatedToTitle:(id)arg1 location:(id)arg2 calendarIdentifier:(id)arg3;
+- (void)_registerScoreBoardSubmission;
+- (void)_restoreEventModelWithHandler:(CDUnknownBlockType)arg1;
+- (void)_submitMetricAutofillWithInteraction:(unsigned long long)arg1 identifier:(id)arg2;
+- (void)_submitMetricModelWithLearnedNongeocodable:(int)arg1 unlearnedNongeocodable:(int)arg2;
+- (void)_submitMetricRequestedWithLoiIdentifier:(id)arg1 identifier:(id)arg2;
+- (void)_submitMetricResponseWithInteraction:(unsigned long long)arg1 feedback:(id)arg2 identifier:(id)arg3;
+- (void)_submitMetricScoreBoardFromStartDate:(id)arg1 endDate:(id)arg2 submissionHandler:(CDUnknownBlockType)arg3;
+- (void)_submitMetricScoreBoardOnDate:(id)arg1;
+- (void)_submitMetricScoreBoardOnDate:(id)arg1 submissionHandler:(CDUnknownBlockType)arg2;
+- (id)_suggestedLocationForEvent:(id)arg1;
+- (void)_updateRegisteredDefaults:(CDUnknownBlockType)arg1;
+- (void)addEvent:(id)arg1 toIdentifierDict:(id)arg2 useCalendarIdentifier:(BOOL)arg3;
+- (id)categoryForLocationState:(unsigned long long)arg1 ttlTrigggerd:(BOOL)arg2;
 - (void)dealloc;
+- (BOOL)deleteEventModel;
 - (void)fetchAllLOIHistogramsWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchLOIHistogramForEventLocation:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)fetchLocationsOfInterestAssociatedToEvent:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)fetchLocationsOfInterestAssociatedToIdentifier:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)fetchLocationsOfInterestAssociatedToTitle:(id)arg1 location:(id)arg2 calendarIdentifier:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
+- (void)fetchPredictedLocationsOfInterestAssociatedToTitle:(id)arg1 location:(id)arg2 calendarIdentifier:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (id)getAllLOIHistogramsForEvents:(id)arg1 andLocationsOfInterest:(id)arg2 collectMetrics:(BOOL)arg3;
 - (id)getLOIHistogramForEvents:(id)arg1 andLocationsOfInterest:(id)arg2;
-- (id)getObjectForSimilarIdentifier:(id)arg1 fromDictionary:(id)arg2;
+- (id)getObjectWithName:(id)arg1 source:(unsigned long long)arg2 calendarIdentifier:(id)arg3 fromDictionary:(id)arg4;
 - (double)getOverlapTimeForIntervalStart1:(id)arg1 intervalEnd1:(id)arg2 intervalStart2:(id)arg3 intervalEnd2:(id)arg4;
+- (BOOL)highProbabilityHistogramItem:(id)arg1;
 - (id)init;
+- (id)initWithDeviceLocationPredictor:(id)arg1 eventManager:(id)arg2 metricManager:(id)arg3 managedObjectContext:(id)arg4 defaultsManager:(id)arg5 purgeManager:(id)arg6;
+- (id)keywordForCategory:(id)arg1 visited:(unsigned long long)arg2;
+- (unsigned long long)lengthOfEvent:(id)arg1;
 - (void)onDeviceLocationPredictorNotification:(id)arg1;
+- (void)onManagedObjectContextCreated:(id)arg1;
+- (void)onPurgeNotification:(id)arg1;
+- (void)persistEventModel;
 - (void)refreshAllLOIHistograms;
+- (BOOL)relativeHighProbabilityHistogramItem:(id)arg1 toItem:(id)arg2;
+- (void)restoreEventModelIfAppropriate;
+- (void)restoreEventModelWithHandler:(CDUnknownBlockType)arg1;
+- (id)scoreBoardFromEventCounter:(id)arg1 categories:(id)arg2;
+- (unsigned long long)timeOfDayOfEvent:(id)arg1;
+- (void)updateValueForKey:(id)arg1 expectedClass:(Class)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)userInteractionWithPredictedLocationOfInterest:(id)arg1 interaction:(unsigned long long)arg2 feedback:(id)arg3;
+- (unsigned long long)verifyPresenceOfUserWithEventLocation:(id)arg1 deviceLOIs:(id)arg2;
 
 @end
 

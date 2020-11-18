@@ -40,7 +40,7 @@
 @property (nonatomic) float volume;
 
 - (void)_playMediaItem:(id)arg1 forMediaItem:(id)arg2;
-- (void)audioFinishedPlayingWithURL:(id)arg1;
+- (void)audioFinishedPlaying:(id)arg1;
 - (void)beginDuckingToLevel:(double)arg1 fadeDuration:(double)arg2;
 - (void)beginFadingWithDuration:(double)arg1;
 - (id)currentMedia;

@@ -11,9 +11,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)actionContentColorForAction:(id)arg1 withViewRepresentation:(id)arg2 inAlertController:(id)arg3;
-- (id)backgroundView;
-- (id)backgroundViewForAction:(id)arg1 withViewRepresentation:(id)arg2 inAlertController:(id)arg3;
 - (struct UIEdgeInsets)contentInsets;
 - (double)marginAboveTitleLabelFirstBaseline;
 - (double)marginBelowLastLabelLastBaseline;
@@ -21,10 +18,8 @@ __attribute__((visibility("hidden")))
 - (long long)maximumNumberOfLinesInTitleLabel;
 - (id)messageLabelColor;
 - (id)messageLabelFont;
-- (double)minimumActionHeight;
 - (long long)permittedActionLayoutDirection;
-- (id)preferredActionFont;
-- (id)regularActionFont;
+- (BOOL)placementAvoidsKeyboard;
 - (id)titleLabelColor;
 - (id)titleLabelFont;
 

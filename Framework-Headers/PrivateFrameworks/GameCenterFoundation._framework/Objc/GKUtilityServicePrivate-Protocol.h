@@ -10,6 +10,8 @@
 
 @protocol GKUtilityServicePrivate <GKUtilityService>
 - (oneway void)loadDataForURL:(NSURL *)arg1 postBody:(NSData *)arg2 completionHandler:(void (^)(NSData *, NSError *))arg3;
+- (oneway void)openGameCenterSettings;
+- (oneway void)openICloudSettings;
 - (oneway void)openSettings;
 - (oneway void)pingWithHandler:(void (^)(void))arg1;
 - (oneway void)refreshPreferences;

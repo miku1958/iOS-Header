@@ -22,11 +22,11 @@ __attribute__((visibility("hidden")))
 - (void)addDownload:(id)arg1;
 - (void)addReaderID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cancelReaderID:(id)arg1;
+- (id)createActivity;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
-- (void)finishedTransfer:(id)arg1 error:(id)arg2;
 - (id)initWithSyncContext:(id)arg1 forNonLocalVersion:(BOOL)arg2;
 - (void)mainWithTransfers:(id)arg1;
-- (unsigned long long)startActivity;
+- (void)sendTransferCompletionCallBack:(id)arg1 error:(id)arg2;
 - (id)transferredObjectsPrettyName;
 
 @end

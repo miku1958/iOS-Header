@@ -4,44 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UILabel.h>
 
-@class NSArray, NSString, UIButton, UIFont, UILabel;
+@class NSArray;
+@protocol MFCaptionLabelDataSource;
 
-@interface MFCaptionLabel : UIView
+@interface MFCaptionLabel : UILabel
 {
     BOOL _needsLabelUpdate;
-    void *_addressBook;
+    id<MFCaptionLabelDataSource> _dataSource;
     NSArray *_toRecipients;
     NSArray *_ccRecipients;
     NSArray *_bccRecipients;
-    UILabel *_recipientLabel;
-    UIButton *_moreButton;
+    NSArray *_fromSenders;
 }
 
-@property (nonatomic) void *addressBook; // @synthesize addressBook=_addressBook;
-@property (readonly, nonatomic) struct CGPoint baselinePoint;
 @property (strong, nonatomic) NSArray *bccRecipients; // @synthesize bccRecipients=_bccRecipients;
 @property (strong, nonatomic) NSArray *ccRecipients; // @synthesize ccRecipients=_ccRecipients;
-@property (strong, nonatomic) UIFont *font;
-@property (readonly, nonatomic) UIButton *moreButton; // @synthesize moreButton=_moreButton;
-@property (readonly, nonatomic) UILabel *recipientLabel; // @synthesize recipientLabel=_recipientLabel;
-@property (strong, nonatomic) NSString *text;
+@property (weak, nonatomic) id<MFCaptionLabelDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (strong, nonatomic) NSArray *fromSenders; // @synthesize fromSenders=_fromSenders;
 @property (strong, nonatomic) NSArray *toRecipients; // @synthesize toRecipients=_toRecipients;
 
-+ (id)_propertiesThatNeedLabelUpdates;
-+ (id)defaultFont;
+- (void).cxx_destruct;
 - (void)_setNeedsLabelUpdate;
 - (id)_stringAtIndexForCombinedRecipientLists:(unsigned long long)arg1;
-- (void)clear;
 - (void)dealloc;
-- (id)initWithAddressBook:(void *)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)setBounds:(struct CGRect)arg1;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)updateLabelNow;
-- (id)viewForBaselineLayout;
 
 @end
 

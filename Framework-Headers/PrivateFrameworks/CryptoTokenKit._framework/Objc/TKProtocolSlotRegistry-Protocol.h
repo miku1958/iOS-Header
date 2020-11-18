@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString, NSXPCListenerEndpoint;
+@class NSArray, NSString, NSXPCListenerEndpoint;
 
 @protocol TKProtocolSlotRegistry
-- (void)addSlotWithEndpoint:(NSXPCListenerEndpoint *)arg1 name:(NSString *)arg2 type:(NSString *)arg3 reply:(void (^)(void))arg4;
+- (void)addSlotWithEndpoint:(NSXPCListenerEndpoint *)arg1 name:(NSString *)arg2 type:(NSString *)arg3 forProcesses:(NSArray *)arg4 reply:(void (^)(void))arg5;
 @end
 

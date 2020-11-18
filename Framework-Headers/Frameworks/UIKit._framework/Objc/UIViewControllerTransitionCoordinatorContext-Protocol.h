@@ -9,17 +9,20 @@
 @class NSString, UIView, UIViewController;
 
 @protocol UIViewControllerTransitionCoordinatorContext <NSObject>
-- (long long)completionCurve;
-- (double)completionVelocity;
-- (UIView *)containerView;
-- (BOOL)initiallyInteractive;
-- (BOOL)isAnimated;
-- (BOOL)isCancelled;
-- (BOOL)isInteractive;
-- (double)percentComplete;
-- (long long)presentationStyle;
-- (struct CGAffineTransform)targetTransform;
-- (double)transitionDuration;
+
+@property (readonly, nonatomic, getter=isAnimated) BOOL animated;
+@property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
+@property (readonly, nonatomic) long long completionCurve;
+@property (readonly, nonatomic) double completionVelocity;
+@property (readonly, nonatomic) UIView *containerView;
+@property (readonly, nonatomic) BOOL initiallyInteractive;
+@property (readonly, nonatomic, getter=isInteractive) BOOL interactive;
+@property (readonly, nonatomic) BOOL isInterruptible;
+@property (readonly, nonatomic) double percentComplete;
+@property (readonly, nonatomic) long long presentationStyle;
+@property (readonly, nonatomic) struct CGAffineTransform targetTransform;
+@property (readonly, nonatomic) double transitionDuration;
+
 - (UIViewController *)viewControllerForKey:(NSString *)arg1;
 - (UIView *)viewForKey:(NSString *)arg1;
 @end

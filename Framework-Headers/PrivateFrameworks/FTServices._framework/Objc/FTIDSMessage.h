@@ -8,7 +8,7 @@
 
 #import <FTServices/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, NSString;
+@class NSData, NSMutableArray, NSNumber, NSString;
 
 @interface FTIDSMessage : IDSBaseMessage <NSCopying>
 {
@@ -24,6 +24,8 @@
     NSMutableArray *_publicKeyArray;
     NSMutableArray *_privateKeyArray;
     NSMutableArray *_userIDArray;
+    NSNumber *_serverTimestamp;
+    NSNumber *_serverTimestampReceivedDate;
 }
 
 @property (copy, nonatomic) NSData *IDCertificate; // @synthesize IDCertificate=_identityCert;
@@ -47,6 +49,10 @@
 - (void)dealloc;
 - (id)init;
 - (long long)responseCommand;
+- (id)serverTimestamp;
+- (id)serverTimestampReceivedDate;
+- (void)setServerTimestamp:(id)arg1;
+- (void)setServerTimestampReceivedDate:(id)arg1;
 - (BOOL)wantsBagKey;
 - (BOOL)wantsBinaryPush;
 - (BOOL)wantsBodySignature;

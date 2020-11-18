@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSNumber, NSString;
 
 @interface HAPMetadataService : NSObject
 {
@@ -15,15 +15,19 @@
     NSString *_svcDescription;
     NSString *_uuidStr;
     NSString *_btleuuidStr;
+    NSNumber *_properties;
+    NSArray *_linkedServices;
     NSArray *_mandatoryCharacteristics;
     NSArray *_optionalCharacteristics;
 }
 
 @property (nonatomic) BOOL allowAssociatedService; // @synthesize allowAssociatedService=_allowAssociatedService;
 @property (strong, nonatomic) NSString *btleuuidStr; // @synthesize btleuuidStr=_btleuuidStr;
+@property (strong, nonatomic) NSArray *linkedServices; // @synthesize linkedServices=_linkedServices;
 @property (strong, nonatomic) NSArray *mandatoryCharacteristics; // @synthesize mandatoryCharacteristics=_mandatoryCharacteristics;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSArray *optionalCharacteristics; // @synthesize optionalCharacteristics=_optionalCharacteristics;
+@property (strong, nonatomic) NSNumber *properties; // @synthesize properties=_properties;
 @property (strong, nonatomic) NSString *svcDescription; // @synthesize svcDescription=_svcDescription;
 @property (strong, nonatomic) NSString *uuidStr; // @synthesize uuidStr=_uuidStr;
 
@@ -31,7 +35,7 @@
 - (id)description;
 - (void)dump;
 - (id)generateDictionary:(id)arg1;
-- (id)initWithName:(id)arg1 uuid:(id)arg2 description:(id)arg3 mandatoryCharacteristics:(id)arg4;
+- (id)initWithName:(id)arg1 uuid:(id)arg2 description:(id)arg3 mandatoryCharacteristics:(id)arg4 properties:(id)arg5 linkedServices:(id)arg6;
 
 @end
 

@@ -10,8 +10,8 @@
 {
 }
 
-- (CDStruct_f1db2b5e)cameraBoundingBox;
-- (CDStruct_f1db2b5e)cameraBoundingBoxOverridingSceneSize:(struct CGSize)arg1;
+- (CDStruct_14d5dc5e)cameraBoundingBox;
+- (CDStruct_14d5dc5e)cameraBoundingBoxOverridingSceneSize:(struct CGSize)arg1;
 - (id)containedNodeSet;
 - (BOOL)containsNode:(id)arg1;
 

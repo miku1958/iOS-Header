@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CALayer, HKCalendarDayCell, HKDateCache, NSArray, NSDate, NSMutableArray;
+@class HKCalendarDayCell, HKDateCache, NSArray, NSDate, NSMutableArray;
 @protocol HKCalendarMonthTitleFormatting, HKCalendarWeekViewDelegate;
 
 @interface HKCalendarWeekView : UIView
@@ -14,7 +14,6 @@
     NSMutableArray *_dayCells;
     HKDateCache *_dateCache;
     UIView<HKCalendarMonthTitleFormatting> *_monthTitleView;
-    CALayer *_topBorderLine;
     double _dateTopMargin;
     double _dateBottomMargin;
     double _leftMargin;
@@ -44,7 +43,6 @@
 @property (strong, nonatomic) NSDate *monthWeekStart; // @synthesize monthWeekStart=_monthWeekStart;
 @property (strong, nonatomic) HKCalendarDayCell *pressedDayCell; // @synthesize pressedDayCell=_pressedDayCell;
 @property (nonatomic) long long pressedDayOfWeek; // @synthesize pressedDayOfWeek=_pressedDayOfWeek;
-@property (readonly, nonatomic) CALayer *topBorderLine; // @synthesize topBorderLine=_topBorderLine;
 
 - (void).cxx_destruct;
 - (id)_getDayCellWithTouches:(id)arg1;
@@ -54,7 +52,6 @@
 - (id)currentWeekStartDate;
 - (id)description;
 - (struct CGRect)frameForDayCell:(id)arg1;
-- (id)init;
 - (id)initWithDateCache:(id)arg1;
 - (Class)monthTitleClass;
 - (id)nextWeekStartDate;
@@ -63,6 +60,7 @@
 - (id)previousWeekStartDate;
 - (void)reloadCells;
 - (void)selectedCalendarDay:(id)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;

@@ -30,6 +30,26 @@ struct PQLResultSet {
     Class _field1;
 };
 
+struct RootItemObject {
+    unsigned char _field1;
+    unsigned int _field2;
+};
+
+struct UUIDItemObject {
+    unsigned char _field1;
+    unsigned int _field2;
+    unsigned char _field3[16];
+};
+
+struct _BRCFrameworkOperation {
+    Class _field1;
+    id _field2;
+    int _field3;
+    int _field4;
+    id _field5;
+    unsigned char _field6[16];
+};
+
 struct _BRCOperation {
     Class _field1;
     id _field2;
@@ -72,15 +92,37 @@ struct _opaque_pthread_mutex_t {
     char __opaque[56];
 };
 
-struct _opaque_pthread_rwlock_t {
-    long long __sig;
-    char __opaque[192];
-};
-
 struct backup_detector {
     unsigned long long _field1;
     unsigned long long _field2;
     unsigned long long _field3;
+};
+
+struct brc_mutex {
+    struct _opaque_pthread_mutex_t pthread;
+};
+
+struct fsid {
+    int val[2];
+};
+
+struct statfs {
+    unsigned int f_bsize;
+    int f_iosize;
+    unsigned long long f_blocks;
+    unsigned long long f_bfree;
+    unsigned long long f_bavail;
+    unsigned long long f_files;
+    unsigned long long f_ffree;
+    struct fsid f_fsid;
+    unsigned int f_owner;
+    unsigned int f_type;
+    unsigned int f_flags;
+    unsigned int f_fssubtype;
+    char f_fstypename[16];
+    char f_mntonname[1024];
+    char f_mntfromname[1024];
+    unsigned int f_reserved[8];
 };
 
 struct throttle_stamps {

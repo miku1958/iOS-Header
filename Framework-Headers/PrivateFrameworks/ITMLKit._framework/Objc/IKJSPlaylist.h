@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) unsigned long long length;
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)init;
 - (id)item:(long long)arg1;
 - (id)pop;

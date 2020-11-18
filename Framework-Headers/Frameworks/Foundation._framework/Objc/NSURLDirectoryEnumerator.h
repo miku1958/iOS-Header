@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)directoryAttributes;
 - (id)fileAttributes;
-- (void)finalize;
 - (id)initWithURL:(id)arg1 includingPropertiesForKeys:(id)arg2 options:(unsigned long long)arg3 errorHandler:(CDUnknownBlockType)arg4;
 - (unsigned long long)level;
 - (id)nextObject;

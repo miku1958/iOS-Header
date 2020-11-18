@@ -12,6 +12,7 @@
 {
     BOOL _hasMigrated;
     BOOL _shouldVacuum;
+    BOOL _traced;
     BOOL _corrupt;
     int _userVersion;
     NSString *_path;
@@ -38,6 +39,7 @@
 @property (nonatomic) BOOL shouldVacuum; // @synthesize shouldVacuum=_shouldVacuum;
 @property (readonly, nonatomic) NSMutableDictionary *statementsBySQL; // @synthesize statementsBySQL=_statementsBySQL;
 @property (nonatomic) long long synchronousMode; // @synthesize synchronousMode=_synchronousMode;
+@property (nonatomic) BOOL traced; // @synthesize traced=_traced;
 @property (nonatomic) int userVersion; // @synthesize userVersion=_userVersion;
 
 - (void).cxx_destruct;
@@ -50,11 +52,15 @@
 - (id)allTableNames;
 - (void)analyze;
 - (void)begin;
+- (int)changes;
 - (void)close;
 - (id)creationDate;
 - (id)datePropertyForKey:(id)arg1;
 - (int)dbUserVersion;
 - (void)dealloc;
+- (int)deleteAllObjectsOfClass:(Class)arg1 where:(id)arg2 bindings:(id)arg3;
+- (BOOL)deleteExactObject:(id)arg1;
+- (void)deleteFrom:(id)arg1 matchingValues:(id)arg2;
 - (void)deleteFrom:(id)arg1 where:(id)arg2 bindings:(id)arg3;
 - (void)dropAllTables;
 - (void)end;
@@ -74,17 +80,21 @@
 - (void)rollback;
 - (id)select:(id)arg1 from:(id)arg2;
 - (id)select:(id)arg1 from:(id)arg2 where:(id)arg3 bindings:(id)arg4;
+- (void)select:(id)arg1 from:(id)arg2 where:(id)arg3 bindings:(id)arg4 orderBy:(id)arg5 limit:(id)arg6 block:(CDUnknownBlockType)arg7;
 - (id)selectAllFrom:(id)arg1 where:(id)arg2 bindings:(id)arg3;
 - (id)selectAllObjectsOfClass:(Class)arg1;
 - (id)selectAllObjectsOfClass:(Class)arg1 where:(id)arg2 bindings:(id)arg3;
 - (id)selectAllObjectsOfClass:(Class)arg1 where:(id)arg2 bindings:(id)arg3 limit:(id)arg4;
+- (void)selectAllObjectsOfClass:(Class)arg1 where:(id)arg2 bindings:(id)arg3 orderBy:(id)arg4 limit:(id)arg5 block:(CDUnknownBlockType)arg6;
 - (unsigned long long)selectCountFrom:(id)arg1 where:(id)arg2 bindings:(id)arg3;
 - (id)selectFrom:(id)arg1 where:(id)arg2 bindings:(id)arg3 limit:(id)arg4;
-- (void)selectFrom:(id)arg1 where:(id)arg2 bindings:(id)arg3 limit:(id)arg4 block:(CDUnknownBlockType)arg5;
+- (void)selectFrom:(id)arg1 where:(id)arg2 bindings:(id)arg3 orderBy:(id)arg4 limit:(id)arg5 block:(CDUnknownBlockType)arg6;
 - (id)selectObjectOfClass:(Class)arg1 where:(id)arg2 bindings:(id)arg3;
 - (void)setDateProperty:(id)arg1 forKey:(id)arg2;
 - (void)setProperty:(id)arg1 forKey:(id)arg2;
 - (id)statementForSQL:(id)arg1;
+- (void)update:(id)arg1 set:(id)arg2 where:(id)arg3 bindings:(id)arg4 limit:(id)arg5;
+- (void)updateAllObjectsOfClass:(Class)arg1 set:(id)arg2 where:(id)arg3 bindings:(id)arg4;
 - (void)vacuum;
 
 @end

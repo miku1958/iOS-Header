@@ -6,7 +6,10 @@
 
 #import <SpringBoardUIServices/SBUIPasscodeLockView-Protocol.h>
 
+@class NSString;
+
 @protocol SBUIPasscodeLockView_Internal <SBUIPasscodeLockView>
+- (void)_overrideBiometricMatchingEnabled:(BOOL)arg1 forReason:(NSString *)arg2;
 
 @optional
 - (void)_noteAppearingForSmartCoverUnlock:(BOOL)arg1;

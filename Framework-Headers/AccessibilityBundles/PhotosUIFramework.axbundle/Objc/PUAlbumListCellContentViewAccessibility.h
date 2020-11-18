@@ -17,9 +17,12 @@
 - (BOOL)_accessibilityHitTestReverseOrder;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityUserTestingChildren;
+- (id)_axCustomContentType;
+- (void)_axSetCellCustomContentType:(id)arg1;
 - (BOOL)_axShowsDeleteButton;
 - (id)_axTypeStringWithCount:(long long)arg1;
 - (id)_deleteButton;
+- (void)_setAXCustomContentType:(id)arg1;
 - (struct CGPoint)accessibilityActivationPoint;
 - (struct CGPoint)accessibilityActivationPoint:(id)arg1;
 - (id)accessibilityContainerElements;

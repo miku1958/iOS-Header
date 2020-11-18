@@ -14,8 +14,7 @@
     BOOL _isMessagesSyncSuspendedByUsage;
     BOOL _isMessagesSyncSuspendedByConnectivity;
     BOOL _organizeByThread;
-    BOOL _protectedChannelSupported;
-    BOOL _isMoreMessagesRequestPending;
+    BOOL _protectedContentChannelSupported;
     NSString *_path;
     unsigned long long _fullMessagesSyncVersion;
     NSDate *_dateReceivedCapForAdding;
@@ -35,10 +34,9 @@
 @property (nonatomic) BOOL isMessagesSyncActive; // @synthesize isMessagesSyncActive=_isMessagesSyncActive;
 @property (nonatomic) BOOL isMessagesSyncSuspendedByConnectivity; // @synthesize isMessagesSyncSuspendedByConnectivity=_isMessagesSyncSuspendedByConnectivity;
 @property (nonatomic) BOOL isMessagesSyncSuspendedByUsage; // @synthesize isMessagesSyncSuspendedByUsage=_isMessagesSyncSuspendedByUsage;
-@property (nonatomic) BOOL isMoreMessagesRequestPending; // @synthesize isMoreMessagesRequestPending=_isMoreMessagesRequestPending;
 @property (nonatomic) BOOL organizeByThread; // @synthesize organizeByThread=_organizeByThread;
 @property (readonly, nonatomic) NSString *path; // @synthesize path=_path;
-@property (nonatomic) BOOL protectedChannelSupported; // @synthesize protectedChannelSupported=_protectedChannelSupported;
+@property (nonatomic) BOOL protectedContentChannelSupported; // @synthesize protectedContentChannelSupported=_protectedContentChannelSupported;
 @property (strong, nonatomic) NNMKSyncedMailbox *syncedMailbox; // @synthesize syncedMailbox=_syncedMailbox;
 
 - (void).cxx_destruct;
@@ -76,7 +74,6 @@
 - (void)removeSyncedMessageForMessageWithId:(id)arg1;
 - (void)removeSyncedMessagesBeforeDateReceived:(id)arg1 adjustDateReceivedCapForAdding:(BOOL)arg2;
 - (void)rescheduleIDSIdentifier:(id)arg1 resendInterval:(unsigned long long)arg2 withDateToResend:(id)arg3 errorCode:(long long)arg4;
-- (void)setMoreMessagesRequestPending:(BOOL)arg1;
 - (void)setProgress:(long long)arg1 forComposedMessageWithId:(id)arg2;
 - (id)syncedAccountForAccountWithId:(id)arg1;
 - (id)syncedAccountIdsResendRequested;
@@ -85,7 +82,7 @@
 - (id)syncedMessageIdsResendRequested;
 - (unsigned long long)syncedMessagesCount;
 - (id)syncedMessagesForConversationWithId:(id)arg1;
-- (id)syncedMessagesStatusKeyedByMessageIdAfterDateReceived:(id)arg1;
+- (id)syncedMessagesKeyedByMessageIdAfterDateReceived:(id)arg1;
 - (id)typeForIDSIdentifierNotYetAckd:(id)arg1;
 
 @end

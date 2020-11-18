@@ -17,7 +17,7 @@
 @property (readonly) unsigned long long position; // @synthesize position=_position;
 
 + (id)scannerWithString:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithString:(id)arg1;
 - (BOOL)isAtEnd;
 - (unsigned long long)lengthOfCalendarUnit:(unsigned long long)arg1;

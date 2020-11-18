@@ -28,8 +28,13 @@ struct InspectorObject {
     CDUnknownFunctionPointerType *_field1;
     unsigned int _field2;
     int _field3;
-    struct HashMap<WTF::String, WTF::RefPtr<Inspector::InspectorValue>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::RefPtr<Inspector::InspectorValue>>> _field4;
-    struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> _field5;
+    union {
+        BOOL _field1;
+        double _field2;
+        struct StringImpl *_field3;
+    } _field4;
+    struct HashMap<WTF::String, WTF::RefPtr<Inspector::InspectorValue>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::RefPtr<Inspector::InspectorValue>>> _field5;
+    struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> _field6;
 };
 
 struct KeyValuePair<WTF::String, WTF::RefPtr<Inspector::InspectorValue>>;
@@ -49,6 +54,8 @@ struct RetainPtr<RWIProtocolConfiguration> {
 };
 
 struct String;
+
+struct StringImpl;
 
 struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> {
     struct String *_field1;

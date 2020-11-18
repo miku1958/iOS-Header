@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateCollectionsFetchResult;
 - (void)_updateCollectionsFetchResultIfNeeded;
 - (id)assetsFilterPredicate;
-- (long long)estimatedCountForAssetCollection:(id)arg1;
+- (long long)filteringAssetTypes;
 - (id)init;
 - (void)loadView;
 - (id)newGridViewControllerForAllPhotos;

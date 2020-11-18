@@ -18,6 +18,7 @@
 - (BOOL)_accessibilityServesAsContainingParentForOrdering;
 - (id)_accessibilitySubviews;
 - (void)setIdleText:(id)arg1;
+- (void)transitionDidFinish:(id)arg1;
 
 @end
 

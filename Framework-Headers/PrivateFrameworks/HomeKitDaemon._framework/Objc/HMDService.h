@@ -6,51 +6,72 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HMDBulletinIdentifiers-Protocol.h>
+#import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessory, NSArray, NSNumber, NSString;
+@class HMDAccessory, HMDApplicationData, HMDBulletinBoardNotification, NSArray, NSNumber, NSString, NSUUID;
 
-@interface HMDService : NSObject <NSSecureCoding>
+@interface HMDService : NSObject <HMDBulletinIdentifiers, NSSecureCoding, HMFDumpState>
 {
     BOOL _hidden;
+    BOOL _primary;
     HMDAccessory *_accessory;
     NSString *_name;
-    NSNumber *_instanceID;
     NSString *_associatedServiceType;
     NSArray *_characteristics;
     NSString *_serviceType;
+    HMDApplicationData *_appData;
+    HMDBulletinBoardNotification *_bulletinBoardNotification;
     NSString *_providedName;
+    NSNumber *_instanceID;
+    NSArray *_linkedServices;
 }
 
 @property (readonly, weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
+@property (strong, nonatomic) HMDApplicationData *appData; // @synthesize appData=_appData;
 @property (readonly, nonatomic) NSString *associatedServiceType; // @synthesize associatedServiceType=_associatedServiceType;
-@property (readonly, copy, nonatomic) NSArray *characteristics; // @synthesize characteristics=_characteristics;
+@property (strong, nonatomic) HMDBulletinBoardNotification *bulletinBoardNotification; // @synthesize bulletinBoardNotification=_bulletinBoardNotification;
+@property (copy, nonatomic) NSArray *characteristics; // @synthesize characteristics=_characteristics;
 @property (readonly, copy, nonatomic) NSString *contextID;
+@property (readonly, copy, nonatomic) NSUUID *contextSPIUniqueIdentifier;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
 @property (copy, nonatomic) NSNumber *instanceID; // @synthesize instanceID=_instanceID;
+@property (strong, nonatomic) NSArray *linkedServices; // @synthesize linkedServices=_linkedServices;
 @property (copy, nonatomic, getter=getName) NSString *name; // @synthesize name=_name;
+@property (getter=isPrimary) BOOL primary; // @synthesize primary=_primary;
 @property (strong, nonatomic) NSString *providedName; // @synthesize providedName=_providedName;
+@property (readonly, copy, nonatomic) NSString *serviceIdentifier;
 @property (strong, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *type;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_readNameCharacterisiticIfNeeded:(id)arg1;
+- (void)_createNotification;
+- (void)_readRequiredBTLECharacteristicValues:(BOOL)arg1;
+- (void)_setServiceProperties:(id)arg1;
 - (void)_shouldServiceBeHidden;
+- (BOOL)_supportsBulletinNotification;
 - (void)_updateName:(id)arg1;
 - (void)_updateProvidedName:(id)arg1;
-- (id)assistantUniqueIdentifier;
+- (id)assistantObject;
+- (void)configureMsgDispatcher:(id)arg1;
 - (id)configureWithService:(id)arg1 accessory:(id)arg2;
-- (id)description;
+- (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)findCharacteristic:(id)arg1;
 - (id)findCharacteristicWithType:(id)arg1;
 - (id)getConfiguredName;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithService:(id)arg1 accessory:(id)arg2;
+- (void)updateAccessory:(id)arg1;
 - (BOOL)updateAssociatedServiceType:(id)arg1 error:(id *)arg2;
 - (void)updateLastKnownValues;
-- (id)updateName:(id)arg1;
+- (void)updateName:(id)arg1;
 - (id)url;
 
 @end

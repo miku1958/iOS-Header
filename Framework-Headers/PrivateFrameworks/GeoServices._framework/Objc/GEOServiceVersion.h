@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int minimumVersion; // @synthesize minimumVersion=_minimumVersion;
 @property (strong, nonatomic) NSMutableArray *versionDomains; // @synthesize versionDomains=_versionDomains;
 
++ (Class)versionDomainType;
 - (void)addVersionDomain:(id)arg1;
 - (void)clearVersionDomains;
 - (void)copyTo:(id)arg1;

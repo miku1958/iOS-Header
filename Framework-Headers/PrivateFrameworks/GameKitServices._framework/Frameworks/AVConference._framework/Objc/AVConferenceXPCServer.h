@@ -24,10 +24,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSMutableDictionary *registeredBlocks; // @synthesize registeredBlocks;
 
 + (id)AVConferenceXPCServerSingleton;
-+ (id)createMediaStreamConfigFromDictionary:(id)arg1;
++ (id)newMediaStreamConfigFromDictionary:(id)arg1;
++ (void)setupAudioConfig:(id)arg1 fromDictionary:(id)arg2;
++ (void)setupCommonStreamConfig:(id)arg1 fromDictionary:(id)arg2;
++ (void)setupVideoConfig:(id)arg1 fromDictionary:(id)arg2;
 - (void)_xpc_add_connection_to_list:(id)arg1;
 - (id)_xpc_get_connection_from_list_for_connection:(id)arg1;
 - (id)_xpc_get_connection_from_list_for_context:(id)arg1;
+- (id)_xpc_get_connections_from_list_for_context:(id)arg1;
 - (void)_xpc_handle_incoming_request:(id)arg1;
 - (void)_xpc_remove_connection_from_list:(id)arg1;
 - (void)_xpc_remove_connections_from_list;
@@ -38,21 +42,23 @@ __attribute__((visibility("hidden")))
 - (id)authorizedTokenData;
 - (id)autorelease;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)createClientDiedDictionary;
-- (id)createNSDictionaryFromNSError:(id)arg1;
-- (id)createNSDictionaryFromXPCDictionary:(id)arg1;
-- (id)createNSErrorFromNSDictionary:(id)arg1;
-- (id)createXPCDictionaryFromNSDictionary:(id)arg1 forEvent:(id)arg2;
 - (void)dealloc;
 - (void)deregisterFromService:(char *)arg1;
 - (id)init;
+- (id)newClientDiedDictionary;
+- (id)newNSDictionaryFromNSError:(id)arg1;
+- (id)newNSDictionaryFromXPCDictionary:(id)arg1;
+- (id)newNSErrorFromNSDictionary:(id)arg1;
+- (id)newXPCDictionaryFromNSDictionary:(id)arg1 forEvent:(id)arg2;
 - (void)registerBlockForService:(char *)arg1 block:(CDUnknownBlockType)arg2;
 - (void)registerBlockForService:(char *)arg1 block:(CDUnknownBlockType)arg2 queue:(id)arg3;
+- (void)registerBlockForService:(char *)arg1 block:(CDUnknownBlockType)arg2 queue:(id)arg3 eventLogLevel:(int)arg4;
 - (oneway void)release;
 - (id)retain;
 - (unsigned long long)retainCount;
 - (void)sendMessageAsync:(char *)arg1 arguments:(id)arg2;
 - (void)sendMessageAsync:(char *)arg1 arguments:(id)arg2 context:(id)arg3;
+- (void)sendMessageAsync:(char *)arg1 arguments:(id)arg2 toAllClientsWithContext:(id)arg3;
 
 @end
 

@@ -6,47 +6,74 @@
 
 #import <objc/NSObject.h>
 
-@class IKAppContext, IKAppMediaItemBridge, IKAppPlaylistBridge, IKDOMDocument, IKJSPlayer;
-@protocol IKAppPlayer;
+#import <ITMLKit/IKDOMFeature-Protocol.h>
 
-@interface IKAppPlayerBridge : NSObject
+@class IKAppContext, IKAppDocument, IKAppMediaItemBridge, IKAppPlaylistBridge, IKDOMDocument, IKJSPlayer, NSArray, NSDate, NSMutableSet, NSNumber, NSString;
+@protocol IKAppPlayer, IKAppPlaylist;
+
+@interface IKAppPlayerBridge : NSObject <IKDOMFeature>
 {
-    id<IKAppPlayer> _appPlayer;
+    id<IKAppPlaylist> _appPlaylist;
+    IKAppDocument *_appOverlayDocument;
+    IKAppDocument *_appInteractiveOverlayDocument;
+    BOOL _interactiveOverlayDismissable;
+    NSMutableSet *_observedTimeIntervals;
+    NSMutableSet *_observedTimeBoundaries;
+    NSArray *_observedMetadataKeys;
     IKAppContext *_appContext;
+    NSString *_featureName;
+    id<IKAppPlayer> _appPlayer;
     IKJSPlayer *_jsPlayer;
     long long _state;
 }
 
 @property (readonly, weak, nonatomic) IKAppContext *appContext; // @synthesize appContext=_appContext;
-@property (readonly, nonatomic) id<IKAppPlayer> appPlayer; // @synthesize appPlayer=_appPlayer;
+@property (weak, nonatomic) id<IKAppPlayer> appPlayer; // @synthesize appPlayer=_appPlayer;
 @property (readonly, nonatomic) IKAppMediaItemBridge *currentMediaItem;
-@property (readonly, weak, nonatomic) IKJSPlayer *jsPlayer; // @synthesize jsPlayer=_jsPlayer;
+@property (readonly, nonatomic) NSDate *currentMediaItemDate;
+@property (readonly, nonatomic) NSNumber *currentMediaItemDuration;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSString *featureName; // @synthesize featureName=_featureName;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL interactiveOverlayDismissable;
+@property (strong, nonatomic) IKDOMDocument *interactiveOverlayDocument;
+@property (weak, nonatomic) IKJSPlayer *jsPlayer; // @synthesize jsPlayer=_jsPlayer;
 @property (readonly, nonatomic) IKAppMediaItemBridge *nextMediaItem;
 @property (strong, nonatomic) IKDOMDocument *overlayDocument;
-@property (weak, nonatomic) IKAppPlaylistBridge *playlist;
+@property (strong, nonatomic) IKAppPlaylistBridge *playlist;
 @property (readonly, nonatomic) IKAppMediaItemBridge *previousMediaItem;
 @property (readonly, nonatomic) double scanRate;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
+@property (readonly) Class superclass;
 
++ (id)makeFeatureJSObjectForFeature:(id)arg1;
 - (void).cxx_destruct;
 - (void)addTimeIntervalObserver:(unsigned long long)arg1;
+- (void)changeToMediaAtIndex:(unsigned long long)arg1 reason:(id)arg2;
 - (void)cleanup;
-- (void)dealloc;
-- (id)initWithJSPlayer:(id)arg1;
+- (void)currentMediaItemDurationDidChange:(double)arg1;
+- (id)initWithAppContext:(id)arg1 jsPlayer:(id)arg2;
+- (id)initWithDOMNode:(id)arg1 featureName:(id)arg2;
 - (void)mediaItemDidChange:(long long)arg1;
 - (void)mediaItemDidChange:(id)arg1 userInitiated:(BOOL)arg2;
 - (void)mediaItemWillChange:(long long)arg1;
 - (void)mediaItemWillChange:(id)arg1 userInitiated:(BOOL)arg2;
+- (void)next;
 - (void)observeTimeBoundary:(double)arg1;
 - (void)pause;
 - (void)play;
+- (void)playbackDidStall:(double)arg1;
+- (void)playbackError:(id)arg1 shouldStopDueToError:(BOOL)arg2;
 - (void)present;
+- (void)previous;
 - (void)removeTimeIntervalObserver:(unsigned long long)arg1;
 - (BOOL)requestSeekToTime:(double *)arg1 currentTime:(double)arg2;
 - (void)requestSeekToTime:(double)arg1 currentTime:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)scan:(double)arg1;
 - (void)setElapsedTime:(double)arg1 precise:(BOOL)arg2;
 - (void)setTimedMetadataKeysToObserve:(id)arg1;
+- (void)shouldChangeToMediaAtIndex:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)shouldHandleStateEvent:(id)arg1;
 - (void)shouldHandleStateEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)stateDidChange:(id)arg1;
@@ -56,6 +83,7 @@
 - (void)timeBoundaryDidCross:(double)arg1;
 - (void)timeIntervalElapsed:(double)arg1 time:(double)arg2;
 - (void)timedMetadataDidChange:(id)arg1 value:(id)arg2;
+- (void)transportBarVisibilityDidChange:(BOOL)arg1;
 
 @end
 

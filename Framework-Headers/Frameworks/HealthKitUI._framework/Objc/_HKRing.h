@@ -11,14 +11,13 @@
 @interface _HKRing : HKAnimatableObject
 {
     float _percentage;
-    float _dotPercentage;
     double _size;
     double _thickness;
     double _opacity;
+    double _zRotation;
     UIColor *_topColor;
     UIColor *_bottomColor;
     _HKIcon *_icon;
-    _HKIcon *_dotIcon;
     double _topColorRed;
     double _topColorGreen;
     double _topColorBlue;
@@ -32,8 +31,6 @@
 @property (readonly, nonatomic) double bottomColorBlue; // @synthesize bottomColorBlue=_bottomColorBlue;
 @property (readonly, nonatomic) double bottomColorGreen; // @synthesize bottomColorGreen=_bottomColorGreen;
 @property (readonly, nonatomic) double bottomColorRed; // @synthesize bottomColorRed=_bottomColorRed;
-@property (strong, nonatomic) _HKIcon *dotIcon; // @synthesize dotIcon=_dotIcon;
-@property (nonatomic) float dotPercentage; // @synthesize dotPercentage=_dotPercentage;
 @property (strong, nonatomic) _HKIcon *icon; // @synthesize icon=_icon;
 @property (nonatomic) double opacity; // @synthesize opacity=_opacity;
 @property (nonatomic) float percentage; // @synthesize percentage=_percentage;
@@ -44,12 +41,15 @@
 @property (readonly, nonatomic) double topColorBlue; // @synthesize topColorBlue=_topColorBlue;
 @property (readonly, nonatomic) double topColorGreen; // @synthesize topColorGreen=_topColorGreen;
 @property (readonly, nonatomic) double topColorRed; // @synthesize topColorRed=_topColorRed;
+@property (nonatomic) double zRotation; // @synthesize zRotation=_zRotation;
 
 - (void).cxx_destruct;
 - (id)_newAnimatablePropertyForType:(unsigned long long)arg1;
 - (void)addAnimation:(id)arg1 forRingPropertyType:(unsigned long long)arg2;
 - (id)init;
 - (void)removeAllAnimationsForRingPropertyType:(unsigned long long)arg1;
+- (void)setCGPointValue:(struct CGPoint)arg1 forRingPropertyType:(unsigned long long)arg2;
+- (void)setFloatValue:(double)arg1 forRingPropertyType:(unsigned long long)arg2;
 
 @end
 

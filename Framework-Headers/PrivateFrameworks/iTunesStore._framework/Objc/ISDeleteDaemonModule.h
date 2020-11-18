@@ -10,8 +10,6 @@
 
 @interface ISDeleteDaemonModule : NSObject
 {
-    struct __CFURLStorageSession *_storageSession;
-    struct _CFURLCache *_urlCache;
     SSAppPurchaseHistoryCache *_purchaseHistoryCache;
 }
 

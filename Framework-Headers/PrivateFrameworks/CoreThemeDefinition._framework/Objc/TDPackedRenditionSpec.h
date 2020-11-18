@@ -6,9 +6,13 @@
 
 #import <CoreThemeDefinition/TDRenditionSpec.h>
 
+@class TDThemeCompressionType;
+
 @interface TDPackedRenditionSpec : TDRenditionSpec
 {
 }
+
+@property (strong, nonatomic) TDThemeCompressionType *compressionType; // @dynamic compressionType;
 
 - (id)createCSIRepresentationWithCompression:(BOOL)arg1 colorSpaceID:(unsigned long long)arg2 document:(id)arg3;
 

@@ -13,14 +13,14 @@ __attribute__((visibility("hidden")))
 {
     GEORouteMatch *_routeMatch;
     GEORouteMatch *_projectedRouteMatch;
-    struct VKPoint _projectedPosition;
+    Matrix_6e1d3589 _projectedPosition;
     double _projectedCourse;
 }
 
 @property (readonly, nonatomic) double projectedCourse; // @synthesize projectedCourse=_projectedCourse;
 @property (readonly, nonatomic) CDStruct_c3b9c2ee projectedLocation;
 @property (readonly, nonatomic) BOOL projectedLocationOnRoute;
-@property (readonly, nonatomic) struct VKPoint projectedPosition; // @synthesize projectedPosition=_projectedPosition;
+@property (readonly, nonatomic) Matrix_6e1d3589 projectedPosition; // @synthesize projectedPosition=_projectedPosition;
 @property (strong, nonatomic) GEORouteMatch *projectedRouteMatch; // @synthesize projectedRouteMatch=_projectedRouteMatch;
 @property (strong, nonatomic) GEORouteMatch *routeMatch; // @synthesize routeMatch=_routeMatch;
 

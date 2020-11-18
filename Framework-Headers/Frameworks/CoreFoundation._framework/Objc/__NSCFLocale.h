@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 - (void)_setNullLocale;
 - (BOOL)_tryRetain;
 - (id)displayNameForKey:(id)arg1 value:(id)arg2;
-- (void)finalize;
 - (unsigned long long)hash;
 - (id)initWithLocaleIdentifier:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

@@ -7,8 +7,9 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (CKUtilsAdditions)
-+ (id)errorFromErrno;
-+ (id)errorWithPOSIXCode:(int)arg1;
-- (BOOL)isPOSIXErrorCode:(long long)arg1;
++ (id)CKErrorFromErrno;
++ (id)CKErrorWithPOSIXCode:(int)arg1;
+- (BOOL)CKIsPOSIXErrorCode:(long long)arg1;
+- (id)CKPropertiesToDescribe:(BOOL)arg1;
 @end
 

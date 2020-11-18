@@ -6,12 +6,13 @@
 
 #import <CoreMotion/CLSilo.h>
 
-@class NSObject;
+@class NSObject, NSOperationQueue;
 @protocol OS_dispatch_queue;
 
 @interface CLDispatchSilo : CLSilo
 {
     NSObject<OS_dispatch_queue> *_queue;
+    NSOperationQueue *_operationQueue;
 }
 
 - (void).cxx_destruct;
@@ -24,6 +25,7 @@
 - (id)initWithIdentifier:(id)arg1;
 - (id)initWithUnderlyingQueue:(id)arg1;
 - (id)newTimer;
+- (id)operationQueue;
 - (id)queue;
 - (void)sync:(CDUnknownBlockType)arg1;
 

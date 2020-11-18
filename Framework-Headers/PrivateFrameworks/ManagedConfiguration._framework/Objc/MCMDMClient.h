@@ -24,6 +24,7 @@
 - (void)dealloc;
 - (BOOL)isActivationLockAllowedWhileSupervised;
 - (BOOL)isManagedByMDM;
+- (void)migrateMDMWithContext:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)notifyNewConfiguration;
 - (void)processUserRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)retryNotNowResponse;

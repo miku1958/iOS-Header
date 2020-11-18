@@ -25,9 +25,7 @@
     BOOL mIsInfinite;
     BOOL mHorizontallyCenteredInScrollView;
     BOOL mVerticallyCenteredInScrollView;
-    BOOL mDisableLayout;
     BOOL mAvoidKeyboardWhenVerticallyCenteredInScrollView;
-    BOOL _disableLayout;
     BOOL _torndown;
     BOOL _createdByPresentationLayer;
 }
@@ -41,7 +39,7 @@
 @property (nonatomic) BOOL createdByPresentationLayer; // @synthesize createdByPresentationLayer=_createdByPresentationLayer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, getter=isLayoutDisabled) BOOL disableLayout; // @synthesize disableLayout=_disableLayout;
+@property (readonly, nonatomic, getter=isLayoutDisabled) BOOL disableLayout;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL horizontallyCenteredInScrollView; // @synthesize horizontallyCenteredInScrollView=mHorizontallyCenteredInScrollView;
 @property (nonatomic, getter=isInfinite) BOOL infinite; // @synthesize infinite=mIsInfinite;

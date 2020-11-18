@@ -9,17 +9,16 @@
 #import <UserManagement/NSCopying-Protocol.h>
 #import <UserManagement/NSMutableCopying-Protocol.h>
 
-@class NSDate, NSString, NSURL;
+@class NSArray, NSDate, NSError, NSString, NSURL;
 
 @interface UMUser : NSObject <NSCopying, NSMutableCopying>
 {
     NSString *_displayName;
-    unsigned long long _passcodeType;
+    BOOL _shouldFetchAttributes;
     BOOL _isLoginUser;
     BOOL _isAuditor;
     BOOL _isDisabled;
     BOOL _hasDataToSync;
-    BOOL _attributesHaveBeenSet;
     unsigned int _uid;
     unsigned int _gid;
     NSString *_alternateDSID;
@@ -28,21 +27,25 @@
     NSString *_givenName;
     NSString *_familyName;
     NSURL *_photoURL;
+    id __photo;
     NSDate *_creationDate;
     NSDate *_lastLoginDate;
     NSDate *_lastRemoteAuthDate;
+    unsigned long long _passcodeType;
+    unsigned long long _passcodeLockGracePeriod;
+    NSArray *_languages;
     unsigned long long _dataQuota;
     unsigned long long _dataUsed;
-    id __photo;
+    NSError *_errorCausingLogout;
 }
 
 @property (copy, nonatomic) id _photo; // @synthesize _photo=__photo;
 @property (copy, nonatomic) NSString *alternateDSID; // @synthesize alternateDSID=_alternateDSID;
-@property (nonatomic) BOOL attributesHaveBeenSet; // @synthesize attributesHaveBeenSet=_attributesHaveBeenSet;
 @property (copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (nonatomic) unsigned long long dataQuota; // @synthesize dataQuota=_dataQuota;
 @property (nonatomic) unsigned long long dataUsed; // @synthesize dataUsed=_dataUsed;
 @property (copy, nonatomic) NSString *displayName;
+@property (strong, nonatomic) NSError *errorCausingLogout; // @synthesize errorCausingLogout=_errorCausingLogout;
 @property (copy, nonatomic) NSString *familyName; // @synthesize familyName=_familyName;
 @property (nonatomic) unsigned int gid; // @synthesize gid=_gid;
 @property (copy, nonatomic) NSString *givenName; // @synthesize givenName=_givenName;
@@ -51,27 +54,31 @@
 @property (nonatomic) BOOL isAuditor; // @synthesize isAuditor=_isAuditor;
 @property (nonatomic) BOOL isDisabled; // @synthesize isDisabled=_isDisabled;
 @property (nonatomic) BOOL isLoginUser; // @synthesize isLoginUser=_isLoginUser;
+@property (copy, nonatomic) NSArray *languages; // @synthesize languages=_languages;
 @property (copy, nonatomic) NSDate *lastLoginDate; // @synthesize lastLoginDate=_lastLoginDate;
 @property (copy, nonatomic) NSDate *lastRemoteAuthDate; // @synthesize lastRemoteAuthDate=_lastRemoteAuthDate;
-@property (nonatomic) unsigned long long passcodeType;
+@property (readonly, nonatomic) double passcodeBackOffInterval;
+@property (nonatomic) unsigned long long passcodeLockGracePeriod; // @synthesize passcodeLockGracePeriod=_passcodeLockGracePeriod;
+@property (nonatomic) unsigned long long passcodeType; // @synthesize passcodeType=_passcodeType;
 @property (copy, nonatomic) NSURL *photoURL; // @synthesize photoURL=_photoURL;
+@property (nonatomic) BOOL shouldFetchAttributes; // @synthesize shouldFetchAttributes=_shouldFetchAttributes;
 @property (nonatomic) unsigned int uid; // @synthesize uid=_uid;
 @property (readonly, nonatomic) unsigned long long userType;
 @property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 
-+ (id)userFromAttributes:(id)arg1;
 - (void).cxx_destruct;
+- (struct dqblk)_diskQuota;
+- (BOOL)commitChanges;
+- (BOOL)commitChangesWithError:(id *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (void)fetchAttributes;
 - (void)fetchAttributesIfNeeded;
+- (BOOL)fetchAttributesWithOutError:(id *)arg1;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToUser:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
-- (void)setAttributes:(id)arg1;
-- (void)setOwnPropertiesOnUser:(id)arg1;
-- (void)setPasscodeTypeWithoutTellingMKB:(unsigned long long)arg1;
+- (void)setPropertiesFromUser:(id)arg1;
 
 @end
 

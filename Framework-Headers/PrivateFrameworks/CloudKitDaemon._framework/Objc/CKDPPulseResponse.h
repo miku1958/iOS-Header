@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasCurrentEtag;
 @property (strong, nonatomic) NSMutableArray *userDatas; // @synthesize userDatas=_userDatas;
 
++ (Class)userDataType;
 - (void).cxx_destruct;
 - (void)addUserData:(id)arg1;
 - (void)clearUserDatas;

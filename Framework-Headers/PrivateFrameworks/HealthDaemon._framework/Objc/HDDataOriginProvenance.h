@@ -14,21 +14,23 @@
 @interface HDDataOriginProvenance : NSObject <NSSecureCoding, NSCopying>
 {
     long long _syncProvenance;
-    NSString *_deviceModel;
-    NSString *_buildNumber;
+    NSString *_productType;
+    NSString *_systemBuild;
+    NSString *_sourceVersion;
+    NSString *_timeZoneName;
     NSNumber *_sourceID;
     NSNumber *_deviceID;
-    NSString *_sourceVersion;
 }
 
-@property (copy, nonatomic) NSString *buildNumber; // @synthesize buildNumber=_buildNumber;
 @property (strong, nonatomic) NSNumber *deviceID; // @synthesize deviceID=_deviceID;
-@property (copy, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
+@property (copy, nonatomic) NSString *productType; // @synthesize productType=_productType;
 @property (strong, nonatomic) NSNumber *sourceID; // @synthesize sourceID=_sourceID;
-@property (strong, nonatomic) NSString *sourceVersion; // @synthesize sourceVersion=_sourceVersion;
+@property (copy, nonatomic) NSString *sourceVersion; // @synthesize sourceVersion=_sourceVersion;
 @property (nonatomic) long long syncProvenance; // @synthesize syncProvenance=_syncProvenance;
+@property (copy, nonatomic) NSString *systemBuild; // @synthesize systemBuild=_systemBuild;
+@property (copy, nonatomic) NSString *timeZoneName; // @synthesize timeZoneName=_timeZoneName;
 
-+ (id)dataProvenanceWithSyncProvenance:(long long)arg1 deviceModel:(id)arg2 buildNumber:(id)arg3 sourceID:(id)arg4 deviceID:(id)arg5 sourceVersion:(id)arg6;
++ (id)dataProvenanceWithSyncProvenance:(long long)arg1 productType:(id)arg2 systemBuild:(id)arg3 sourceVersion:(id)arg4 timeZoneName:(id)arg5 sourceID:(id)arg6 deviceID:(id)arg7;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -7,25 +7,30 @@
 #import <Foundation/NSOperation.h>
 
 @class CKContainer, CKOperationInfo, CKOperationMetrics, CKPlaceholderOperation, CKTimeLogger, NSArray, NSDictionary, NSError, NSObject, NSString;
-@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction;
+@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_activity, OS_os_transaction, OS_voucher;
 
 @interface CKOperation : NSOperation
 {
     NSObject<OS_os_transaction> *_isExecuting;
-    unsigned long long _activityID;
+    NSObject<OS_voucher> *_clientVoucher;
+    NSObject<OS_os_activity> *_osActivity;
     BOOL _allowsCellularAccess;
     BOOL _longLived;
+    BOOL _isOutstandingOperation;
     BOOL _isFinished;
     BOOL _isDiscretionary;
     BOOL _preferAnonymousRequests;
     BOOL _allowsBackgroundNetworking;
-    BOOL _isOutstandingOperation;
     CKContainer *_container;
+    NSObject<OS_dispatch_queue> *_callbackQueue;
     NSString *_operationID;
+    double _timeoutIntervalForRequest;
+    double _timeoutIntervalForResource;
     CDUnknownBlockType _longLivedOperationWasPersistedBlock;
+    NSObject<OS_dispatch_source> *_timeoutSource;
+    long long _usesBackgroundSessionOverride;
     CKPlaceholderOperation *_placeholderOperation;
     NSError *_error;
-    NSObject<OS_dispatch_queue> *_callbackQueue;
     NSString *_sectionID;
     NSString *_parentSectionID;
     id _context;
@@ -39,10 +44,10 @@
     NSString *_sourceApplicationSecondaryIdentifier;
     NSString *_authPromptReason;
     NSString *_deviceIdentifier;
-    NSObject<OS_dispatch_source> *_timeoutSource;
-    long long _usesBackgroundSessionOverride;
+    NSDictionary *_MMCSRequestOptions;
 }
 
+@property (strong, nonatomic) NSDictionary *MMCSRequestOptions; // @synthesize MMCSRequestOptions=_MMCSRequestOptions;
 @property (strong, nonatomic) NSDictionary *additionalRequestHTTPHeaders; // @synthesize additionalRequestHTTPHeaders=_additionalRequestHTTPHeaders;
 @property (nonatomic) BOOL allowsBackgroundNetworking; // @synthesize allowsBackgroundNetworking=_allowsBackgroundNetworking;
 @property (nonatomic) BOOL allowsCellularAccess; // @synthesize allowsCellularAccess=_allowsCellularAccess;
@@ -70,6 +75,8 @@
 @property (strong, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
 @property (strong, nonatomic) NSString *sourceApplicationSecondaryIdentifier; // @synthesize sourceApplicationSecondaryIdentifier=_sourceApplicationSecondaryIdentifier;
 @property (strong, nonatomic) CKTimeLogger *timeLogger; // @synthesize timeLogger=_timeLogger;
+@property (nonatomic) double timeoutIntervalForRequest; // @synthesize timeoutIntervalForRequest=_timeoutIntervalForRequest;
+@property (nonatomic) double timeoutIntervalForResource; // @synthesize timeoutIntervalForResource=_timeoutIntervalForResource;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *timeoutSource; // @synthesize timeoutSource=_timeoutSource;
 @property (nonatomic) BOOL usesBackgroundSession;
 @property (nonatomic) long long usesBackgroundSessionOverride; // @synthesize usesBackgroundSessionOverride=_usesBackgroundSessionOverride;
@@ -86,7 +93,7 @@
 - (void)_installTimeoutSource;
 - (void)_start;
 - (void)_uninstallTimeoutSource;
-- (unsigned long long)activityStart;
+- (id)activityCreate;
 - (void)cancel;
 - (id)daemon;
 - (void)dealloc;
@@ -100,6 +107,7 @@
 - (void)main;
 - (Class)operationClass;
 - (Class)operationInfoClass;
+- (id)osActivity;
 - (void)performCKOperation;
 - (void)processOperationResult:(id)arg1;
 - (void)start;

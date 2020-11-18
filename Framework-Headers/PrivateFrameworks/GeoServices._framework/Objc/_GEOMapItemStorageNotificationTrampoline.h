@@ -7,12 +7,12 @@
 #import <Foundation/NSObject.h>
 
 @class GEOMapItemStorage;
-@protocol GEOMapItemPrivate, NSObject;
+@protocol GEOMapItem, NSObject;
 
 __attribute__((visibility("hidden")))
 @interface _GEOMapItemStorageNotificationTrampoline : NSObject
 {
-    id<GEOMapItemPrivate> _mapItem;
+    id<GEOMapItem> _mapItem;
     GEOMapItemStorage *_storage;
     id<NSObject> _notificationToken;
 }

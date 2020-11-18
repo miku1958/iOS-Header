@@ -13,10 +13,9 @@
 __attribute__((visibility("hidden")))
 @interface GEORegionalResource : PBCodable <NSCopying>
 {
-    CDStruct_d66e66b9 *_tileRanges;
+    struct GEOTileSetRegion *_tileRanges;
     unsigned long long _tileRangesCount;
     unsigned long long _tileRangesSpace;
-    CDStruct_9f2792e4 _validSubManifestVersions;
     NSMutableArray *_attributions;
     NSMutableArray *_iconChecksums;
     NSMutableArray *_icons;
@@ -36,26 +35,25 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasZ;
 @property (strong, nonatomic) NSMutableArray *iconChecksums; // @synthesize iconChecksums=_iconChecksums;
 @property (strong, nonatomic) NSMutableArray *icons; // @synthesize icons=_icons;
-@property (readonly, nonatomic) CDStruct_d66e66b9 *tileRanges;
+@property (readonly, nonatomic) struct GEOTileSetRegion *tileRanges;
 @property (readonly, nonatomic) unsigned long long tileRangesCount;
-@property (readonly, nonatomic) unsigned int *validSubManifestVersions;
-@property (readonly, nonatomic) unsigned long long validSubManifestVersionsCount;
 @property (nonatomic) unsigned int x; // @synthesize x=_x;
 @property (nonatomic) unsigned int y; // @synthesize y=_y;
 @property (nonatomic) unsigned int z; // @synthesize z=_z;
 
++ (Class)attributionType;
++ (Class)iconChecksumType;
++ (Class)iconType;
 - (void)addAttribution:(id)arg1;
 - (void)addIcon:(id)arg1;
 - (void)addIconChecksum:(id)arg1;
-- (void)addTileRange:(CDStruct_d66e66b9)arg1;
-- (void)addValidSubManifestVersion:(unsigned int)arg1;
+- (void)addTileRange:(struct GEOTileSetRegion)arg1;
 - (id)attributionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)attributionsCount;
 - (void)clearAttributions;
 - (void)clearIconChecksums;
 - (void)clearIcons;
 - (void)clearTileRanges;
-- (void)clearValidSubManifestVersions;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -69,10 +67,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (void)setTileRanges:(CDStruct_d66e66b9 *)arg1 count:(unsigned long long)arg2;
-- (void)setValidSubManifestVersions:(unsigned int *)arg1 count:(unsigned long long)arg2;
-- (CDStruct_d66e66b9)tileRangeAtIndex:(unsigned long long)arg1;
-- (unsigned int)validSubManifestVersionAtIndex:(unsigned long long)arg1;
+- (void)setTileRanges:(struct GEOTileSetRegion *)arg1 count:(unsigned long long)arg2;
+- (struct GEOTileSetRegion)tileRangeAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

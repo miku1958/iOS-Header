@@ -22,6 +22,7 @@
     NSMutableArray *_invalidSectionZilchPoints;
     NSMutableArray *_reroutedRoutes;
     NSData *_routeID;
+    unsigned int _staticTravelTime;
     NSMutableArray *_steps;
     GEOTrafficBannerText *_trafficBannerText;
     unsigned int _travelTimeAggressiveEstimate;
@@ -31,6 +32,7 @@
     BOOL _routeNoLongerValid;
     struct {
         unsigned int historicTravelTime:1;
+        unsigned int staticTravelTime:1;
         unsigned int travelTimeAggressiveEstimate:1;
         unsigned int travelTimeBestEstimate:1;
         unsigned int travelTimeConservativeEstimate:1;
@@ -42,6 +44,7 @@
 @property (nonatomic) BOOL hasHistoricTravelTime;
 @property (readonly, nonatomic) BOOL hasRouteID;
 @property (nonatomic) BOOL hasRouteNoLongerValid;
+@property (nonatomic) BOOL hasStaticTravelTime;
 @property (readonly, nonatomic) BOOL hasTrafficBannerText;
 @property (nonatomic) BOOL hasTravelTimeAggressiveEstimate;
 @property (nonatomic) BOOL hasTravelTimeBestEstimate;
@@ -57,6 +60,7 @@
 @property (strong, nonatomic) NSMutableArray *reroutedRoutes; // @synthesize reroutedRoutes=_reroutedRoutes;
 @property (strong, nonatomic) NSData *routeID; // @synthesize routeID=_routeID;
 @property (nonatomic) BOOL routeNoLongerValid; // @synthesize routeNoLongerValid=_routeNoLongerValid;
+@property (nonatomic) unsigned int staticTravelTime; // @synthesize staticTravelTime=_staticTravelTime;
 @property (strong, nonatomic) NSMutableArray *steps; // @synthesize steps=_steps;
 @property (strong, nonatomic) GEOTrafficBannerText *trafficBannerText; // @synthesize trafficBannerText=_trafficBannerText;
 @property (readonly, nonatomic) unsigned int *trafficColorOffsets;
@@ -68,6 +72,12 @@
 @property (nonatomic) unsigned int travelTimeConservativeEstimate; // @synthesize travelTimeConservativeEstimate=_travelTimeConservativeEstimate;
 @property (strong, nonatomic) NSData *zilchPoints; // @synthesize zilchPoints=_zilchPoints;
 
++ (Class)incidentsOffReRoutesType;
++ (Class)incidentsOnETARouteType;
++ (Class)incidentsOnReRoutesType;
++ (Class)invalidSectionZilchPointsType;
++ (Class)reroutedRouteType;
++ (Class)stepType;
 - (void)_addDebugArguments:(id)arg1;
 - (void)addIncidentEndOffsetsInETARoute:(unsigned int)arg1;
 - (void)addIncidentsOffReRoutes:(id)arg1;
@@ -116,6 +126,7 @@
 - (void)setTrafficColorOffsets:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (void)setTrafficColors:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (id)stepAtIndex:(unsigned long long)arg1;
+- (unsigned long long)stepIndexOfStepWithID:(unsigned int)arg1;
 - (unsigned long long)stepsCount;
 - (unsigned int)trafficColorAtIndex:(unsigned long long)arg1;
 - (unsigned int)trafficColorOffsetAtIndex:(unsigned long long)arg1;

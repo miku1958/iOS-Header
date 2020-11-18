@@ -6,16 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class ACAccount, ACAccountStore, NSString;
 
 @interface AAQuotaDepletionAlert : NSObject
 {
     NSString *_dataclass;
+    ACAccountStore *_accountStore;
+    ACAccount *_primaryAccount;
 }
 
 + (BOOL)_isDisabledDataclass:(id)arg1;
 - (void).cxx_destruct;
 - (id)_deviceSpecificLocalizedString:(id)arg1;
+- (id)_primaryAccount;
 - (id)init;
 - (id)initForDataclass:(id)arg1;
 - (BOOL)showIfNecessaryWithHandler:(CDUnknownBlockType)arg1;

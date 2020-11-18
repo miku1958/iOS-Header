@@ -28,7 +28,6 @@
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (void)finalize;
 - (id)forwardListWithLimit:(int)arg1;
 - (void)goBack;
 - (void)goForward;

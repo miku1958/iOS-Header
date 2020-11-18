@@ -8,6 +8,7 @@
 
 @class SYBatchSyncChunk;
 
+__attribute__((visibility("hidden")))
 @interface _SYIncomingBatch : NSObject
 {
     SYBatchSyncChunk *_batch;

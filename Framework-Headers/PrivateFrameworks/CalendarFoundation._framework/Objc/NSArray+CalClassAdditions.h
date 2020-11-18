@@ -10,6 +10,12 @@
 + (id)arrayOfSetsBySplitting:(id)arg1 batchSize:(unsigned long long)arg2;
 - (BOOL)CalContainsObjectIdenticalTo:(id)arg1;
 - (id)CalMutableRecursiveCopy;
+- (id)CalStringValueForKeyPaths:(id)arg1;
+- (id)CalStringValueForKeys:(id)arg1;
+- (id)CalStringValueForKeys:(id)arg1 keyPaths:(id)arg2;
+- (id)_CalArrayOfValueForKeyPaths:(id)arg1;
+- (id)_CalArrayOfValueForKeys:(id)arg1;
+- (id)_CalStringForArrayOfValues:(id)arg1;
 - (id)allObjectsWithClass:(Class)arg1;
 - (id)filteredArrayUsingTest:(CDUnknownBlockType)arg1;
 @end

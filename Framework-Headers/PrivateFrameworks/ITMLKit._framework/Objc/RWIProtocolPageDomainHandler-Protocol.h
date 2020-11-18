@@ -23,7 +23,7 @@
 - (void)navigateWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 url:(NSString *)arg3;
 - (void)reloadWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 ignoreCache:(BOOL *)arg3 scriptToEvaluateOnLoad:(id *)arg4;
 - (void)removeScriptToEvaluateOnLoadWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 identifier:(NSString *)arg3;
-- (void)searchInResourceWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 frameId:(NSString *)arg3 url:(NSString *)arg4 query:(NSString *)arg5 caseSensitive:(BOOL *)arg6 isRegex:(BOOL *)arg7;
+- (void)searchInResourceWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 frameId:(NSString *)arg3 url:(NSString *)arg4 query:(NSString *)arg5 caseSensitive:(BOOL *)arg6 isRegex:(BOOL *)arg7 requestId:(id *)arg8;
 - (void)searchInResourcesWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 text:(NSString *)arg3 caseSensitive:(BOOL *)arg4 isRegex:(BOOL *)arg5;
 - (void)setCompositingBordersVisibleWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 visible:(BOOL)arg3;
 - (void)setDocumentContentWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 frameId:(NSString *)arg3 html:(NSString *)arg4;

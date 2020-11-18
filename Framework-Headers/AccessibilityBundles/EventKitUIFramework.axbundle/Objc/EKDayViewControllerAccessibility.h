@@ -15,7 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_axDayString;
 - (void)_relayoutDaysDuringScrolling;
-- (void)_scrollViewDidEndDecelerating:(id)arg1 notifyParallxState:(BOOL)arg2;
+- (void)_scrollViewDidEndDecelerating:(id)arg1;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (id)accessibilityScrollStatusForScrollView:(id)arg1;
 

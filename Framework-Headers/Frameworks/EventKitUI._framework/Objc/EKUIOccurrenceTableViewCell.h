@@ -4,31 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewCell.h>
+#import <EventKitUI/EKUITableViewCellWithPrimaryAndSecondaryFonts.h>
 
-@class ColorBarView, EKCalendarDate, NSAttributedString, NSDate, NSDictionary, NSLayoutConstraint, NSString, NSTimer, UIColor, UIImageView, UILabel, UIView;
+@class ColorBarView, EKCalendarDate, EKUIOccurrenceTableViewCellLabel, NSArray, NSDate, NSDictionary, NSLayoutConstraint, NSString, NSTimer, UIColor, UIImageView, UIVisualEffect, UIVisualEffectView;
 
-@interface EKUIOccurrenceTableViewCell : UITableViewCell
+@interface EKUIOccurrenceTableViewCell : EKUITableViewCellWithPrimaryAndSecondaryFonts
 {
-    UIView *_separatorViewForNonOpaqueTables;
-    UILabel *_travelTextLabel;
-    UILabel *_primaryLabel;
-    UILabel *_secondaryLabel;
-    UILabel *_attendeesLabel;
-    UILabel *_travelDepartureTimeLabel;
-    UILabel *_topTimeLabel;
-    UILabel *_bottomTimeLabel;
-    UILabel *_countdownLabel;
+    EKUIOccurrenceTableViewCellLabel *_travelTextLabel;
+    EKUIOccurrenceTableViewCellLabel *_primaryLabel;
+    EKUIOccurrenceTableViewCellLabel *_secondaryLabel;
+    EKUIOccurrenceTableViewCellLabel *_travelDepartureTimeLabel;
+    EKUIOccurrenceTableViewCellLabel *_topTimeLabel;
+    EKUIOccurrenceTableViewCellLabel *_bottomTimeLabel;
+    EKUIOccurrenceTableViewCellLabel *_countdownLabel;
     ColorBarView *_colorBarView;
     ColorBarView *_travelTimeColorBarView;
     UIImageView *_angleStripeBackgroundView;
     UIImageView *_accessoryImageView;
-    UIView *_fadingBackgroundView;
+    NSArray *_ekUIOccurrenceTableViewCellConstraints;
+    UIVisualEffectView *_primaryVisualEffectParentView;
+    UIVisualEffectView *_secondaryVisualEffectParentView;
+    BOOL _travelTimeTemplate;
+    BOOL _invitationTemplate;
     NSLayoutConstraint *_contentTop_to_travelTextBaseline_Constraint;
     NSLayoutConstraint *_contentTop_to_primaryTextBaseline_Constraint;
-    NSLayoutConstraint *_attendeesTextBaseline_to_contentBottom_Constraint;
-    NSLayoutConstraint *_secondaryTextBaseline_to_attendeesTextBaseline_Constraint;
-    NSLayoutConstraint *_attendeesTextBaseline_to_primaryTextBaseline_Constraint;
     NSLayoutConstraint *_contentBottom_to_secondaryTextBaseline_Constraint;
     NSLayoutConstraint *_primaryTextBaseline_to_secondaryTextBaseline_Constraint;
     NSLayoutConstraint *_travelTextBaseline_to_primaryTextBaseLine_Constraint;
@@ -39,23 +38,17 @@
     NSLayoutConstraint *_timeTextRightMarginConstraint;
     NSLayoutConstraint *_countdownLabelRightMarginConstraint;
     NSLayoutConstraint *_countdownLabelBaseling_to_contentBottom_Constraint;
-    NSLayoutConstraint *_accessoryImageViewToColorBarHorizontalConstraint;
-    NSLayoutConstraint *_accessoryImageViewToPrimaryLabelVerticalConstraint;
-    NSLayoutConstraint *_accessoryImageViewToPrimaryLabelHorizontalConstraint;
-    NSLayoutConstraint *_colorBarViewToPrimaryLabelHorizontalConstraint;
     double _travelTime;
     UIColor *_eventCalendarColor;
     UIColor *_selectedBackGroundColor;
     NSDate *_eventStartDateIncludingTravelTime;
     EKCalendarDate *_eventStartDate;
     EKCalendarDate *_eventEndDate;
-    NSAttributedString *_eventTitleAttrString;
     NSString *_eventTitle;
     NSString *_eventLocation;
     NSString *_topTimeString;
     NSString *_bottomTimeString;
     NSString *_countdownLabelString;
-    NSString *_attendeesDescription;
     NSString *_travelTextLabelString;
     NSString *_travelAddressString;
     NSString *_travelDepartureTimeString;
@@ -76,28 +69,31 @@
     BOOL _cancelled;
     BOOL _opaque;
     NSTimer *_countdownLabelUpdateTimer;
-    BOOL _drawsOwnRowSeparators;
-    BOOL _usesVibrantSeparatorOverlayDrawing;
-    BOOL _usesInsetMargin;
-    UIColor *_rowSeparatorColor;
+    BOOL _doesNotUseTemplate;
+    BOOL _isTemplateCell;
+    BOOL _isFakeInvitation;
+    UIVisualEffect *_primaryVisualEffect;
+    UIVisualEffect *_secondaryVisualEffect;
 }
 
-@property (nonatomic) BOOL drawsOwnRowSeparators; // @synthesize drawsOwnRowSeparators=_drawsOwnRowSeparators;
-@property (strong, nonatomic) UIColor *rowSeparatorColor; // @synthesize rowSeparatorColor=_rowSeparatorColor;
-@property (nonatomic) BOOL usesInsetMargin; // @synthesize usesInsetMargin=_usesInsetMargin;
-@property (nonatomic) BOOL usesVibrantSeparatorOverlayDrawing; // @synthesize usesVibrantSeparatorOverlayDrawing=_usesVibrantSeparatorOverlayDrawing;
+@property (nonatomic) BOOL doesNotUseTemplate; // @synthesize doesNotUseTemplate=_doesNotUseTemplate;
+@property (nonatomic) BOOL isFakeInvitation; // @synthesize isFakeInvitation=_isFakeInvitation;
+@property (nonatomic) BOOL isTemplateCell; // @synthesize isTemplateCell=_isTemplateCell;
+@property (strong, nonatomic) UIVisualEffect *primaryVisualEffect; // @synthesize primaryVisualEffect=_primaryVisualEffect;
+@property (strong, nonatomic) UIVisualEffect *secondaryVisualEffect; // @synthesize secondaryVisualEffect=_secondaryVisualEffect;
 
++ (id)_allDayLocalizedString;
 + (id)_birthdayIcon;
 + (void)_clearCaches;
 + (id)_facebookIcon;
 + (id)_needsReplyAngledStripeBackground;
 + (id)_needsReplyDot;
++ (id)_nowLocalizedString;
 + (double)_rightImageSpacing;
 + (id)_tentativeAngledStripeBackground;
++ (id)allReuseIdentifiers;
 + (id)cancelledDeclinedColorBarColor;
 + (double)cellHeightForWidth:(double)arg1;
-+ (void)clearFontCaches;
-+ (id)constrainedPrimaryTextLabelFont;
 + (void)initialize;
 + (id)invitationPrimaryTextColor;
 + (id)needsReplyBackgroundColor;
@@ -110,26 +106,27 @@
 + (id)normalTopTimeTextColor;
 + (id)prefixPrimaryTextColor;
 + (BOOL)requiresConstraintBasedLayout;
-+ (id)reuseIdentifier;
-+ (id)scalablePrimaryTextLabelFont;
-+ (id)secondaryTextLabelFont;
++ (id)reuseIdentifierForEvent:(id)arg1;
++ (id)reuseIdentifierForTemplate;
++ (id)reuseIdentifierForTemplateInvitation;
++ (id)reuseIdentifierForTemplateWithTravelTime;
 + (id)strikethroughPrimaryTextColor;
 + (id)strikethroughSecondaryTextColor;
 + (id)strikethroughTimeTextColor;
 + (id)tentativeBackgroundColor;
 + (double)tentativeStripeBackgroundAlpha;
 + (id)tentativeStripeColor;
-+ (id)timeLabelsFont;
++ (BOOL)vibrant;
 - (void).cxx_destruct;
 - (void)_countdownTimerFired:(id)arg1;
 - (void)_countdownTimerKill;
 - (void)_countdownTimerStart;
-- (void)_createViews;
+- (id)_createParentVisualEffectViewWithVisualEffect:(id)arg1;
+- (void)_createViewsForReuseIdentifier:(id)arg1;
 - (BOOL)_eventIsNow;
 - (double)_leftMarginForTimeViewsFromTimeWidth:(double)arg1;
 - (double)_rightMarginForTimeViewsFromTimeWidth:(double)arg1;
 - (id)_selectedBackgroundViewWithColor:(id)arg1;
-- (void)_setMarginExtendsToFullWidth:(BOOL)arg1;
 - (void)_setUpConstraints;
 - (id)_sharedNumberFormatter;
 - (id)_textForBottomTimeLabel;
@@ -138,18 +135,15 @@
 - (id)_textForTopTimeLabel;
 - (void)_updateAccessoryImage;
 - (void)_updateAngleBackgroundColor;
-- (void)_updateAttendeesTextLabel;
 - (void)_updateBottomTimeLabel;
 - (void)_updateColorBarColor;
 - (void)_updateContentForSizeCategoryChange:(id)arg1;
 - (void)_updateCountdownLabel;
-- (void)_updateFadingBackgroundColor;
 - (void)_updatePrimaryTextLabel;
 - (void)_updateSecondaryTextLabel;
 - (void)_updateTopTimeLabel;
 - (void)_updateTravelDepartureTimeLabel;
 - (void)_updateTravelTimeLabel;
-- (double)_verticalSpacingBetweenBaselinesForSecondaryFontLabels;
 - (double)_verticalSpacingBottomToBaselineForBottomLabel;
 - (double)_verticalSpacingTopToBaselineForBottomLabel;
 - (double)_verticalSpacingTopToBaselineForTopLabel;
@@ -157,7 +151,9 @@
 - (id)accessoryImage;
 - (void)contentCategorySizeChanged;
 - (void)dealloc;
+- (id)detailTextLabel;
 - (void)forceUpdateOfAllElements;
+- (id)imageView;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (BOOL)isAllDay;
 - (BOOL)isBirthday;
@@ -166,14 +162,15 @@
 - (BOOL)isFacebook;
 - (BOOL)isPast;
 - (BOOL)isTentative;
-- (struct UIEdgeInsets)layoutMargins;
-- (void)layoutSubviews;
 - (BOOL)needsReply;
-- (id)primaryTextLabelFont;
 - (id)reuseIdentifier;
-- (void)setFrame:(struct CGRect)arg1;
+- (void)setCalendarColor:(id)arg1;
+- (void)setColorBarLayerFilter:(id)arg1;
+- (id)textLabel;
 - (void)updateConstraints;
 - (void)updateWithEvent:(id)arg1 calendar:(id)arg2 placedUnderDayWithStartDate:(id)arg3 opaque:(BOOL)arg4 drawsDimmedForPast:(BOOL)arg5;
+- (void)updateWithEvent:(id)arg1 calendar:(id)arg2 placedUnderDayWithStartDate:(id)arg3 opaque:(BOOL)arg4 drawsDimmedForPast:(BOOL)arg5 includingTravelTime:(BOOL)arg6;
+- (void)updateWithEvent:(id)arg1 calendar:(id)arg2 placedUnderDayWithStartDate:(id)arg3 opaque:(BOOL)arg4 drawsDimmedForPast:(BOOL)arg5 includingTravelTime:(BOOL)arg6 includingCountdown:(BOOL)arg7;
 
 @end
 

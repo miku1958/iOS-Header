@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MediaPlayerUI/MPUModelResponse.h>
+#import <MediaPlayer/MPModelResponse.h>
 
-@class NSArray;
+@class MPChangeDetails, NSArray;
 
-@interface MusicStoreCuratorPlaylistsResponse : MPUModelResponse
+@interface MusicStoreCuratorPlaylistsResponse : MPModelResponse
 {
+    MPChangeDetails *_changeDetails;
     NSArray *_additionalPlaylistIdentifiers;
 }
 
 @property (copy, nonatomic) NSArray *additionalPlaylistIdentifiers; // @synthesize additionalPlaylistIdentifiers=_additionalPlaylistIdentifiers;
+@property (strong, nonatomic) MPChangeDetails *changeDetails; // @synthesize changeDetails=_changeDetails;
 @property (readonly, nonatomic) BOOL hasAdditionalPlaylists;
 
 - (void).cxx_destruct;

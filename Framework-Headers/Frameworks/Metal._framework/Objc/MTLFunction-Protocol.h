@@ -6,14 +6,19 @@
 
 #import <Metal/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSDictionary, NSString;
 @protocol MTLDevice;
 
 @protocol MTLFunction <NSObject>
 
 @property (readonly) id<MTLDevice> device;
+@property (readonly) NSDictionary *functionConstantsDictionary;
 @property (readonly) unsigned long long functionType;
+@property (copy) NSString *label;
 @property (readonly) NSString *name;
+@property (readonly) long long patchControlPointCount;
+@property (readonly) unsigned long long patchType;
+@property (readonly) NSArray *stageInputAttributes;
 @property (readonly) NSArray *vertexAttributes;
 
 @end

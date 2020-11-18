@@ -19,16 +19,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSNumber *inputRadius; // @synthesize inputRadius;
 
 + (id)customAttributes;
-- (id)_CIGaussianBlur11;
-- (id)_CIGaussianBlur15;
-- (id)_CIGaussianBlur19;
-- (id)_CIGaussianBlur3;
-- (id)_CIGaussianBlur7;
-- (id)_CIGaussianReduce2;
-- (id)_CIGaussianReduce4;
 - (BOOL)_isIdentity;
 - (id)outputImage;
-- (id)outputImageV1;
 
 @end
 

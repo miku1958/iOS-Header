@@ -8,12 +8,10 @@
 
 #import <FrontBoard/FBApplicationDataStoreRepositoryServerClientDelegate-Protocol.h>
 
-@class FBApplicationDataStoreRepositoryManager;
 @protocol FBApplicationDataStoreRepository;
 
 @interface FBApplicationDataStoreRepositoryServer : FBSystemServiceFacility <FBApplicationDataStoreRepositoryServerClientDelegate>
 {
-    FBApplicationDataStoreRepositoryManager *_dataStoreManager;
     id<FBApplicationDataStoreRepository> _dataStore;
 }
 
@@ -24,12 +22,14 @@
 - (void)_handleGetObjectForKey:(id)arg1;
 - (void)_handleRemoveAllObjects:(id)arg1;
 - (void)_handleRemoveObjectForKey:(id)arg1 client:(id)arg2;
+- (void)_handleSetChangesInterest:(id)arg1 client:(id)arg2;
 - (void)_handleSetObjectForKey:(id)arg1 client:(id)arg2;
 - (void)_handleSetPrefetchedKeys:(id)arg1 client:(id)arg2;
 - (void)_handleSynchronize:(id)arg1;
 - (void)applicationDataStoreRepositoryClient:(id)arg1 valueChangedForObject:(id)arg2 key:(id)arg3 bundleID:(id)arg4;
 - (void)applicationDataStoreRespositoryClient:(id)arg1 repositoryInvalidatedForBundleID:(id)arg2;
 - (Class)classForClient:(id)arg1;
+- (void)dealloc;
 - (id)init;
 - (id)initWithIdentifier:(id)arg1 queue:(id)arg2 clientAuthenticator:(id)arg3;
 - (void)noteClientDidConnect:(id)arg1 withMessage:(id)arg2;

@@ -6,12 +6,15 @@
 
 #import <NotesShared/NSObject-Protocol.h>
 
-@class ICScrollViewKeyboardResizer;
+@class ICScrollViewKeyboardResizer, UIScrollView;
 
 @protocol ICScrollViewKeyboardResizerDelegate <NSObject>
 - (double)consumedBottomAreaForResizer:(ICScrollViewKeyboardResizer *)arg1;
+- (UIScrollView *)keyboardResizerScrollView;
 
 @optional
+- (void)keyboardResizerAdjustInsetsWithKeyboardFrame:(struct CGRect)arg1 duration:(double)arg2;
+- (BOOL)keyboardResizerAutoscrollAboveKeyboard;
 - (double)topInsetForResizer:(ICScrollViewKeyboardResizer *)arg1;
 @end
 

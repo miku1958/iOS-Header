@@ -17,6 +17,7 @@
 - (void)accountTypeWithIdentifier:(NSString *)arg1 handler:(void (^)(ACAccountType *, NSError *))arg2;
 - (void)accountTypesWithHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)accountWithIdentifier:(NSString *)arg1 handler:(void (^)(ACAccount *, NSError *))arg2;
+- (void)accountsOnPairedDeviceWithAccountType:(ACAccountType *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
 - (void)accountsWithAccountType:(ACAccountType *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
 - (void)accountsWithAccountTypeIdentifiers:(NSArray *)arg1 preloadedProperties:(NSArray *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)accountsWithHandler:(void (^)(NSArray *, NSError *))arg1;
@@ -70,6 +71,7 @@
 - (void)supportedDataclassesForAccountType:(ACAccountType *)arg1 handler:(void (^)(NSSet *, NSError *))arg2;
 - (void)syncableDataclassesForAccountType:(ACAccountType *)arg1 handler:(void (^)(NSSet *, NSError *))arg2;
 - (void)tetheredSyncSourceTypeForDataclass:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
+- (void)triggerKeychainMigrationIfNecessary:(void (^)(BOOL, NSError *))arg1;
 - (void)typeIdentifierForDomain:(NSString *)arg1 withHandler:(void (^)(NSString *, NSError *))arg2;
 - (void)updateExistenceCacheOfAccountWithTypeIdentifier:(NSString *)arg1 withHandler:(void (^)(NSNumber *, NSError *))arg2;
 - (void)verifyCredentialsForAccount:(ACAccount *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(ACAccount *, NSError *))arg3;

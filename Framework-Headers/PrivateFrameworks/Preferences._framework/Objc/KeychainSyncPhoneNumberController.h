@@ -10,12 +10,11 @@
 #import <Preferences/KeychainSyncViewController-Protocol.h>
 #import <Preferences/UIAlertViewDelegate-Protocol.h>
 
-@class KeychainSyncPhoneSettingsFragment, NSString, UIAlertView, UILabel;
+@class KeychainSyncPhoneSettingsFragment, NSString, UILabel;
 
 @interface KeychainSyncPhoneNumberController : PSKeychainSyncViewController <KeychainSyncPhoneSettingsFragmentDelegate, UIAlertViewDelegate, KeychainSyncViewController>
 {
     KeychainSyncPhoneSettingsFragment *_phoneSettingsFragment;
-    UIAlertView *_invalidPhoneNumberAlert;
     UILabel *_footerLabel;
 }
 
@@ -25,7 +24,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (void)controllerDone;
 - (void)loadView;
 - (void)nextPressed;

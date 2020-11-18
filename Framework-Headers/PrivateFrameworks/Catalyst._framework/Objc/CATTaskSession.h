@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
+#import <Catalyst/CATTaskOperationNotificationDelegate-Protocol.h>
 #import <Catalyst/CATTransportDelegate-Protocol.h>
 
 @class CATOperationQueue, CATStateMachine, CATTransport, NSDictionary, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSUUID;
 @protocol CATTaskSessionDelegate, OS_dispatch_group;
 
-@interface CATTaskSession : NSObject <CATTransportDelegate>
+@interface CATTaskSession : NSObject <CATTransportDelegate, CATTaskOperationNotificationDelegate>
 {
     CATStateMachine *mFSM;
     CATTransport *mTransport;
@@ -23,6 +24,8 @@
     CATOperationQueue *mOrphanedOperationQueue;
     NSDictionary *mPreviousSessionInfo;
     NSObject<OS_dispatch_group> *mSessionDidInvalidateGroup;
+    BOOL mIsStarting;
+    CATOperationQueue *mDelegationQueue;
     NSUUID *_sessionUUID;
     id<CATTaskSessionDelegate> _delegate;
     NSDictionary *_userInfo;
@@ -54,7 +57,7 @@
 - (void)delegateDidInvalidate;
 - (void)delegateDidInvalidateAndFinalize;
 - (void)delegateEnqueueOperation:(id)arg1;
-- (id)delegateEnqueueOperationWithRequest:(id)arg1 error:(id *)arg2;
+- (id)delegatePrepareOperationWithRequest:(id)arg1 error:(id *)arg2;
 - (BOOL)delegateShouldAcceptConnection;
 - (void)delegateWillInvalidate;
 - (void)delegateWillInvalidateAndInvalidateSessionWithError:(id)arg1;
@@ -87,6 +90,7 @@
 - (void)sendMessageThroughTransport:(id)arg1;
 - (void)sendResumedMessage;
 - (void)sessionDidInvalidate;
+- (void)taskOperation:(id)arg1 didPostNotificationWithName:(id)arg2 userInfo:(id)arg3;
 - (void)transport:(id)arg1 didFailToSendMessage:(id)arg2 error:(id)arg3;
 - (void)transport:(id)arg1 didInterruptWithError:(id)arg2;
 - (void)transport:(id)arg1 didReceiveMessage:(id)arg2;

@@ -17,7 +17,7 @@
 + (CDUnknownBlockType)bucketerWithMapping:(CDUnknownBlockType)arg1;
 + (id)dedupe:(id)arg1 bucketer:(CDUnknownBlockType)arg2 resolver:(CDUnknownBlockType)arg3;
 + (id)dedupeContactDetails:(id)arg1;
-+ (id)nearDuplicateEKEventOfPseudoEventTitle:(id)arg1 inEKEventsWithSameStartTime:(id)arg2;
++ (void)enumerateEKEventsForPseudoEventBySimilarTitleAndStartTime:(id)arg1 store:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 + (CDUnknownBlockType)resolveByPairs:(CDUnknownBlockType)arg1;
 + (CDUnknownBlockType)resolveByScoreBreakTiesArbitrarily:(CDUnknownBlockType)arg1;
 + (CDUnknownBlockType)resolveSGContactDetailsPreferringPhraseExtractionsAndLabels;

@@ -25,9 +25,11 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (double)duration;
+- (void)encodeWithCoder:(id)arg1;
 - (double)fadeInDuration;
 - (double)fadeOutDuration;
 - (id)fillMode;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isAdditive;
 - (BOOL)isCumulative;
 - (BOOL)isRemovedOnCompletion;

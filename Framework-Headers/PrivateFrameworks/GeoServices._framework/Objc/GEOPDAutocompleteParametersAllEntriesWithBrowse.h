@@ -8,17 +8,23 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAutocompleteEntry, GEOPDViewportInfo, NSData, NSString;
+@class GEOPDAutocompleteEntry, GEOPDViewportInfo, NSData, NSString, PBUnknownFields;
 
 @interface GEOPDAutocompleteParametersAllEntriesWithBrowse : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     GEOPDAutocompleteEntry *_categorySuggestionEntry;
     NSData *_categorySuggestionEntryMetadata;
     int _maxResults;
     NSString *_query;
     GEOPDViewportInfo *_viewportInfo;
     BOOL _highlightDiff;
-    CDStruct_00ef3c1e _has;
+    BOOL _interleaveCategorySuggestions;
+    struct {
+        unsigned int maxResults:1;
+        unsigned int highlightDiff:1;
+        unsigned int interleaveCategorySuggestions:1;
+    } _has;
 }
 
 @property (strong, nonatomic) GEOPDAutocompleteEntry *categorySuggestionEntry; // @synthesize categorySuggestionEntry=_categorySuggestionEntry;
@@ -26,12 +32,15 @@
 @property (readonly, nonatomic) BOOL hasCategorySuggestionEntry;
 @property (readonly, nonatomic) BOOL hasCategorySuggestionEntryMetadata;
 @property (nonatomic) BOOL hasHighlightDiff;
+@property (nonatomic) BOOL hasInterleaveCategorySuggestions;
 @property (nonatomic) BOOL hasMaxResults;
 @property (readonly, nonatomic) BOOL hasQuery;
 @property (readonly, nonatomic) BOOL hasViewportInfo;
 @property (nonatomic) BOOL highlightDiff; // @synthesize highlightDiff=_highlightDiff;
+@property (nonatomic) BOOL interleaveCategorySuggestions; // @synthesize interleaveCategorySuggestions=_interleaveCategorySuggestions;
 @property (nonatomic) int maxResults; // @synthesize maxResults=_maxResults;
 @property (strong, nonatomic) NSString *query; // @synthesize query=_query;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;
 
 - (void)copyTo:(id)arg1;

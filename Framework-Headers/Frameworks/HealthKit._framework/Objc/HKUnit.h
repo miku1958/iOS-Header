@@ -13,9 +13,9 @@
 
 @interface HKUnit : NSObject <NSSecureCoding, NSCopying>
 {
-    long long _reduceToken;
     _HKFactorization *_dimensionReduction;
     _HKFactorization *_baseUnitReduction;
+    struct os_unfair_lock_s _dimensionReductionLock;
     double _reducedProportionalSize;
     double _scaleOffset;
 }
@@ -91,9 +91,11 @@
 - (id)_baseUnitReductionAndProportionalSize:(out double *)arg1 withCycleSet:(id)arg2;
 - (id)_computeBaseUnitReductionAndProportionalSize:(out double *)arg1 withCycleSet:(id)arg2;
 - (id)_dimensionReduction;
+- (id)_foundationUnit;
 - (id)_init;
 - (BOOL)_isCompatibleWithDimension:(id)arg1;
 - (BOOL)_isCompatibleWithUnit:(id)arg1;
+- (BOOL)_isMetricDistance;
 - (void)_reduceIfNecessaryWithCycleSet:(id)arg1;
 - (double)_reducedProportionalSize;
 - (double)_valueByConvertingValue:(double)arg1 toUnit:(id)arg2;

@@ -34,16 +34,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) PUValueFilter *_xSmoothingFilter;
 @property (readonly, nonatomic) PUValueFilter *_ySmoothingFilter;
 @property (weak, nonatomic) id<PUTilingViewSpeedometerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) struct CGPoint scrollSpeed; // @synthesize scrollSpeed=_scrollSpeed;
-@property (nonatomic) struct CGPoint smoothScrollSpeed; // @synthesize smoothScrollSpeed=_smoothScrollSpeed;
+@property (nonatomic, setter=_setScrollSpeed:) struct CGPoint scrollSpeed; // @synthesize scrollSpeed=_scrollSpeed;
+@property (nonatomic, setter=_setSmoothScrollSpeed:) struct CGPoint smoothScrollSpeed; // @synthesize smoothScrollSpeed=_smoothScrollSpeed;
 
 - (void).cxx_destruct;
 - (void)_handleDisplayLink:(id)arg1;
 - (void)_handleTimeoutTimer:(id)arg1;
 - (id)_newSmoothingFilter;
 - (void)_rescheduleTimers;
-- (void)_setScrollSpeed:(struct CGPoint)arg1;
-- (void)_setSmoothScrollSpeed:(struct CGPoint)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 
 @end

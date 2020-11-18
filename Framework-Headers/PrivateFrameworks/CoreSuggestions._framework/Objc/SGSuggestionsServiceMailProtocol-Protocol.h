@@ -6,11 +6,13 @@
 
 #import <CoreSuggestions/_SGSuggestionsServiceBaseProtocol-Protocol.h>
 #import <CoreSuggestions/_SGSuggestionsServiceContactsConfirmRejectProtocol-Protocol.h>
+#import <CoreSuggestions/_SGSuggestionsServiceContactsObserverProtocol-Protocol.h>
 #import <CoreSuggestions/_SGSuggestionsServiceEventsConfirmRejectProtocol-Protocol.h>
+#import <CoreSuggestions/_SGSuggestionsServiceEventsObserverProtocol-Protocol.h>
 
 @class CSSearchableItem, NSArray, NSData, NSString;
 
-@protocol SGSuggestionsServiceMailProtocol <_SGSuggestionsServiceBaseProtocol, _SGSuggestionsServiceEventsConfirmRejectProtocol, _SGSuggestionsServiceContactsConfirmRejectProtocol>
+@protocol SGSuggestionsServiceMailProtocol <_SGSuggestionsServiceBaseProtocol, _SGSuggestionsServiceEventsConfirmRejectProtocol, _SGSuggestionsServiceContactsConfirmRejectProtocol, _SGSuggestionsServiceContactsObserverProtocol, _SGSuggestionsServiceEventsObserverProtocol>
 - (NSArray *)fullDownloadRequestBatch:(unsigned long long)arg1 error:(id *)arg2;
 - (void)fullDownloadRequestBatch:(unsigned long long)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (NSArray *)harvestedSuggestionsFromSearchableItem:(CSSearchableItem *)arg1 options:(unsigned long long)arg2 error:(id *)arg3;

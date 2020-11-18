@@ -17,11 +17,14 @@
 }
 
 @property (readonly) struct Object *_apiObject;
+@property (copy, nonatomic) NSArray *alwaysRevalidatedURLSchemes;
 @property (copy, nonatomic) NSArray *cachePartitionedURLSchemes;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long diskCacheSizeOverride;
+@property (nonatomic) BOOL diskCacheSpeculativeValidationEnabled;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL ignoreSynchronousMessagingTimeoutsForTesting;
 @property (copy, nonatomic) NSURL *injectedBundleURL;
 @property (nonatomic) unsigned long long maximumProcessCount;
 @property (readonly) Class superclass;

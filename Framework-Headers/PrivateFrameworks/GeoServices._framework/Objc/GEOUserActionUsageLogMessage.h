@@ -46,6 +46,8 @@
 @property (strong, nonatomic) NSString *usageEventKey; // @synthesize usageEventKey=_usageEventKey;
 @property (strong, nonatomic) NSString *usageEventValue; // @synthesize usageEventValue=_usageEventValue;
 
+- (int)StringAsLocationBucket:(id)arg1;
+- (int)StringAsUiTarget:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -53,8 +55,10 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)locationBucketAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)uiTargetAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

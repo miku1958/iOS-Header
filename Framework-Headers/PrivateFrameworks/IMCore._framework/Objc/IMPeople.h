@@ -21,6 +21,7 @@
 @property (nonatomic, setter=setShouldHidePeople:) BOOL hidePeople; // @synthesize hidePeople=_hidePeople;
 @property (readonly, nonatomic) NSArray *people;
 
+- (void).cxx_destruct;
 - (void)_addedPeople:(id)arg1;
 - (BOOL)addIMHandle:(id)arg1;
 - (void)addNotificationObserver:(id)arg1 selector:(SEL)arg2;

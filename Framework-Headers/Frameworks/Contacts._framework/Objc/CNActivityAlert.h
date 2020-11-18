@@ -14,6 +14,7 @@
 
 @interface CNActivityAlert : NSObject <CNObjectValidation, NSCopying, NSSecureCoding>
 {
+    BOOL _ignoreMute;
     NSString *_sound;
     NSString *_vibration;
     NSDictionary *_userInfo;
@@ -22,6 +23,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL ignoreMute; // @synthesize ignoreMute=_ignoreMute;
 @property (copy, nonatomic) NSString *sound; // @synthesize sound=_sound;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
@@ -32,8 +34,8 @@
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSound:(id)arg1 vibration:(id)arg2;
-- (id)initWithSound:(id)arg1 vibration:(id)arg2 userInfo:(id)arg3;
+- (id)initWithSound:(id)arg1 vibration:(id)arg2 ignoreMute:(BOOL)arg3;
+- (id)initWithSound:(id)arg1 vibration:(id)arg2 ignoreMute:(BOOL)arg3 userInfo:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValid:(id *)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

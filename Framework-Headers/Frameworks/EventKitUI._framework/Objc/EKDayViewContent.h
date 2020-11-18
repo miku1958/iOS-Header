@@ -7,18 +7,19 @@
 #import <UIKit/UIView.h>
 
 #import <EventKitUI/CUIKSingleDayTimelineLayoutScreenUtils-Protocol.h>
+#import <EventKitUI/EKDayOccurrenceViewDelegate-Protocol.h>
 #import <EventKitUI/UIGestureRecognizerDelegate-Protocol.h>
 
 @class EKCalendarDate, EKDayGridView, EKDayViewContentGeometryDelegate, EKEvent, NSCalendar, NSMutableArray, NSString, NSTimeZone, UIColor;
 @protocol EKDayViewContentDelegate;
 
-@interface EKDayViewContent : UIView <CUIKSingleDayTimelineLayoutScreenUtils, UIGestureRecognizerDelegate>
+@interface EKDayViewContent : UIView <CUIKSingleDayTimelineLayoutScreenUtils, EKDayOccurrenceViewDelegate, UIGestureRecognizerDelegate>
 {
     EKDayGridView *_grid;
     UIView *_saturdayDarkeningView;
     UIView *_sundayDarkeningView;
     unsigned long long _daysToDisplay;
-    BOOL *_dayWasLaidOut;
+    NSMutableArray *_lastLayoutWidthForDay;
     BOOL _loadingOccurrences;
     BOOL _putSelectionOnTop;
     BOOL _hasCustomOccurrenceMargin;
@@ -87,7 +88,7 @@
 - (void)_adjustViewsForPinning;
 - (void)_computeDayStartsAndEnds;
 - (void)_configureOccurrenceViewMarginAndPadding:(id)arg1;
-- (struct _NSRange)_dayRangeForEvent:(id)arg1;
+- (struct _NSRange)_dayRangeForEvent:(id)arg1 useProposedTime:(BOOL)arg2;
 - (struct _NSRange)_dayRangeForEventWithStartDate:(id)arg1 endDate:(id)arg2;
 - (id)_dayStarts;
 - (double)_dayWidth;
@@ -99,13 +100,14 @@
 - (void)configureOccurrenceViewForGestureController:(id)arg1;
 - (BOOL)containsEvent:(id)arg1;
 - (double)dateForPoint:(struct CGPoint)arg1;
-- (void)dayOccurrenceViewClicked:(id)arg1 atPoint:(struct CGPoint)arg2;
+- (void)dayOccurrenceViewSelected:(id)arg1 atPoint:(struct CGPoint)arg2 wasTapped:(BOOL)arg3;
 - (void)dealloc;
 - (BOOL)eventsIntersectRect:(struct CGRect)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)grid;
 - (id)initWithFrame:(struct CGRect)arg1 orientation:(long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 orientation:(long long)arg2 backgroundColor:(id)arg3 opaque:(BOOL)arg4 numberOfDaysToDisplay:(unsigned long long)arg5;
+- (struct UIEdgeInsets)insetsForInterfaceLayout:(struct UIEdgeInsets)arg1;
 - (id)lastDisplayedSecond;
 - (void)layoutSubviews;
 - (id)occurrenceViewForEvent:(id)arg1;

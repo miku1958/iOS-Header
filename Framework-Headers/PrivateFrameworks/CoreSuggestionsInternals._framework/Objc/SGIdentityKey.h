@@ -24,22 +24,27 @@
 + (id)keyForContactExternalId:(int)arg1;
 + (id)keyForContactUniqueId:(id)arg1;
 + (id)keyForEmail:(id)arg1;
++ (id)keyForInstantMessageAddress:(id)arg1;
 + (id)keyForNormalizedEmail:(id)arg1;
 + (id)keyForNormalizedPhone:(id)arg1;
++ (id)keyForPersonHandle:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)emailAddress;
 - (BOOL)hasEmailAddress;
+- (BOOL)hasInstantMessageAddress;
 - (BOOL)hasPhone;
 - (unsigned long long)hash;
 - (id)identityKey;
 - (id)initWithSerialized:(id)arg1;
 - (id)initWithType:(unsigned long long)arg1 content:(id)arg2;
+- (id)instantMessageAddress;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToIdentityKey:(id)arg1;
 - (id)phone;
 - (id)serialize;
+- (id)uniqueIdentifier;
 
 @end
 

@@ -14,7 +14,10 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityRoleDescription;
+- (unsigned int)_accessibilitySlotID;
+- (void)_activateSpeaking:(id)arg1;
 - (BOOL)_axHideCell;
+- (id)accessibilityCustomActions;
 - (BOOL)accessibilityElementsHidden;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

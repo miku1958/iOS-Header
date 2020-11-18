@@ -10,9 +10,8 @@
 
 @interface CAMVideoCaptureResult : NSObject
 {
-    BOOL _finalReferenceVideo;
     NSURL *_localDestinationURL;
-    NSURL *_masterVideoURL;
+    NSURL *_filteredLocalDestinationURL;
     NSArray *_metadata;
     double _videoZoomFactor;
     long long _reason;
@@ -25,9 +24,8 @@
 @property (readonly, nonatomic) NSDate *captureDate; // @synthesize captureDate=_captureDate;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 duration; // @synthesize duration=_duration;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
-@property (readonly, nonatomic, getter=isFinalReferenceVideo) BOOL finalReferenceVideo; // @synthesize finalReferenceVideo=_finalReferenceVideo;
+@property (readonly, nonatomic) NSURL *filteredLocalDestinationURL; // @synthesize filteredLocalDestinationURL=_filteredLocalDestinationURL;
 @property (readonly, nonatomic) NSURL *localDestinationURL; // @synthesize localDestinationURL=_localDestinationURL;
-@property (readonly, nonatomic) NSURL *masterVideoURL; // @synthesize masterVideoURL=_masterVideoURL;
 @property (readonly, copy, nonatomic) NSArray *metadata; // @synthesize metadata=_metadata;
 @property (readonly, nonatomic) long long reason; // @synthesize reason=_reason;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 stillDisplayTime; // @synthesize stillDisplayTime=_stillDisplayTime;
@@ -35,7 +33,7 @@
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithURL:(id)arg1 masterVideoURL:(id)arg2 isFinalReferenceVideo:(BOOL)arg3 duration:(CDStruct_1b6d18a9)arg4 stillDisplayTime:(CDStruct_1b6d18a9)arg5 metadata:(id)arg6 videoZoomFactor:(double)arg7 reason:(long long)arg8 videoPreviewSurface:(void *)arg9 error:(id)arg10;
+- (id)initWithURL:(id)arg1 filteredLocalDestinationURL:(id)arg2 duration:(CDStruct_1b6d18a9)arg3 stillDisplayTime:(CDStruct_1b6d18a9)arg4 metadata:(id)arg5 videoZoomFactor:(double)arg6 reason:(long long)arg7 videoPreviewSurface:(void *)arg8 error:(id)arg9;
 
 @end
 

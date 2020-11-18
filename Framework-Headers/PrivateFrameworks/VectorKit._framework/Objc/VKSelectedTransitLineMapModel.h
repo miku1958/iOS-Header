@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)cloneSelectedItemsFromTransitLineModel:(id)arg1;
-- (id)initWithSharedResources:(id)arg1 contentScale:(double)arg2 labelExternalObjectsModerator:(struct LabelExternalObjectsModerator *)arg3;
+- (id)initWithTarget:(id)arg1 sharedResources:(id)arg2 labelExternalObjectsModerator:(struct LabelExternalObjectsModerator *)arg3;
 - (unsigned long long)mapLayerPosition;
 - (void)setSelectedLines:(const unordered_set_6cd805f9 *)arg1;
 - (void)setSelectedNodes:(const unordered_set_6cd805f9 *)arg1;

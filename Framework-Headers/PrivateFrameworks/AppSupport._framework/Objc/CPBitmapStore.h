@@ -25,7 +25,7 @@
 @property (nonatomic) BOOL lockOnRead; // @synthesize lockOnRead=_lockOnRead;
 @property (readonly, nonatomic) int version;
 
-- (struct CGImage *)_copyAndStoreImageForKey:(id)arg1 inGroup:(id)arg2 withSize:(struct CGSize)arg3 format:(int)arg4 scale:(double)arg5 fillMem:(CDUnknownBlockType)arg6 alternateCompletion:(CDUnknownBlockType)arg7;
+- (struct CGImage *)_copyAndStoreImageForKey:(id)arg1 inGroup:(id)arg2 withSize:(struct CGSize)arg3 format:(unsigned char)arg4 scale:(double)arg5 fillMem:(CDUnknownBlockType)arg6 alternateCompletion:(CDUnknownBlockType)arg7;
 - (id)_versionPath;
 - (id)allGroups;
 - (id)cacheNumberForKey:(id)arg1;
@@ -48,6 +48,8 @@
 - (BOOL)saveImageWithKey:(id)arg1 inGroup:(id)arg2 andInfo:(struct _img *)arg3;
 - (int)setVersion:(int)arg1;
 - (void)storeGrayscaleImageDataForKey:(id)arg1 inGroup:(id)arg2 withSize:(struct CGSize)arg3 opaque:(BOOL)arg4 scale:(double)arg5 data:(id)arg6;
+- (void)storeImageDataForKey:(id)arg1 inGroup:(id)arg2 withSize:(struct CGSize)arg3 format:(unsigned char)arg4 formatColor:(struct CGColor *)arg5 scale:(double)arg6 data:(id)arg7;
+- (void)storeImageDataForKey:(id)arg1 inGroup:(id)arg2 withSize:(struct CGSize)arg3 format:(unsigned char)arg4 scale:(double)arg5 data:(id)arg6;
 - (void)storeImageDataForKey:(id)arg1 inGroup:(id)arg2 withSize:(struct CGSize)arg3 opaque:(BOOL)arg4 scale:(double)arg5 data:(id)arg6;
 - (void)storeImageForKey:(id)arg1 inGroup:(id)arg2 opaque:(BOOL)arg3 image:(struct CGImage *)arg4;
 

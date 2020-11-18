@@ -6,7 +6,7 @@
 
 #import <CloudDocsDaemon/BRCDownload.h>
 
-@class BRCServerZone, NSIndexSet;
+@class BRCProgress, BRCServerZone, NSIndexSet;
 
 __attribute__((visibility("hidden")))
 @interface BRCDownloadContent : BRCDownload
@@ -15,7 +15,8 @@ __attribute__((visibility("hidden")))
     unsigned int _liveDocumentID;
     BOOL _liveItemIsPackage;
     BRCServerZone *_zone;
-    BOOL _requiresSecondPhase;
+    BOOL _isFinderBookmark;
+    BOOL _requiresTwoPhase;
     NSIndexSet *_desiredIndices;
 }
 
@@ -23,12 +24,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int liveDocumentID; // @synthesize liveDocumentID=_liveDocumentID;
 @property (readonly, nonatomic) unsigned long long liveFileID; // @synthesize liveFileID=_liveFileID;
 @property (readonly, nonatomic) BOOL liveItemIsPackage; // @synthesize liveItemIsPackage=_liveItemIsPackage;
-@property (readonly, nonatomic) BOOL requiresSecondPhase; // @synthesize requiresSecondPhase=_requiresSecondPhase;
+@property (strong, nonatomic) BRCProgress *progress; // @dynamic progress;
+@property (readonly, nonatomic) BOOL requiresTwoPhase; // @synthesize requiresTwoPhase=_requiresTwoPhase;
 
 - (void).cxx_destruct;
 - (BOOL)_prepareSecondStageWithSession:(id)arg1 manifest:(id)arg2 package:(id)arg3 error:(id *)arg4;
 - (BOOL)_stageWithSession:(id)arg1 error:(id *)arg2;
-- (BOOL)_stageWithSession:(id)arg1 manifest:(id)arg2 package:(id)arg3 error:(id *)arg4;
+- (BOOL)_stageWithSession:(id)arg1 manifest:(id)arg2 package:(id)arg3 xattrsPackage:(id)arg4 error:(id *)arg5;
 - (id)description;
 - (id)initWithDocument:(id)arg1 stageID:(id)arg2;
 - (int)kind;

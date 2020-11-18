@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (unsigned long long)hash;
 - (id)initWithName:(struct __CFString *)arg1 object:(const void *)arg2 userInfo:(struct __CFDictionary *)arg3 foundation:(BOOL)arg4;
 - (BOOL)isEqual:(id)arg1;

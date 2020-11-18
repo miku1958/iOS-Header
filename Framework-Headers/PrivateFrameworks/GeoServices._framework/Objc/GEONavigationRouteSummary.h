@@ -34,6 +34,7 @@
 @property (nonatomic) int transportType; // @synthesize transportType=_transportType;
 @property (nonatomic) double travelTime; // @synthesize travelTime=_travelTime;
 
+- (int)StringAsTransportType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -45,6 +46,7 @@
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setRoute:(id)arg1;
+- (id)transportTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

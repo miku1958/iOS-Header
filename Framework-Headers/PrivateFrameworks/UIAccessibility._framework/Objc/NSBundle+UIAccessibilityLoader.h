@@ -8,8 +8,10 @@
 
 @interface NSBundle (UIAccessibilityLoader)
 + (id)accessibilityBundleWithLastPathComponent:(id)arg1;
++ (id)accessibilityInternalBundleWithLastPathComponent:(id)arg1;
 + (id)accessibilityLocalBundleWithLastPathComponent:(id)arg1;
 - (void)_accessibilityInitializeContainerLogic;
+- (void)_loadAXBundleForBundleOffMainThread;
 - (id)accessibilityBundlePath;
 @end
 

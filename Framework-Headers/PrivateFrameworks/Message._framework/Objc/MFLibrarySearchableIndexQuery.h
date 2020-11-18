@@ -7,16 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <Message/MDSearchQueryDelegate-Protocol.h>
+#import <Message/MFCancelable-Protocol.h>
 #import <Message/NSProgressReporting-Protocol.h>
 
-@class MDSearchQuery, MFFuture, NSLock, NSMutableArray, NSProgress, NSString;
+@class MDSearchQuery, MFPromise, NSLock, NSMutableArray, NSProgress, NSString;
 
-@interface MFLibrarySearchableIndexQuery : NSObject <MDSearchQueryDelegate, NSProgressReporting>
+@interface MFLibrarySearchableIndexQuery : NSObject <MDSearchQueryDelegate, MFCancelable, NSProgressReporting>
 {
     NSLock *_lock;
     NSProgress *_progress;
     NSProgress *_internalProgress;
-    MFFuture *_resultsFuture;
+    MFPromise *_resultsPromise;
     NSMutableArray *_resultsBlocks;
     unsigned int _cancellableQuery:1;
     MDSearchQuery *_query;
@@ -37,6 +38,7 @@
 + (id)queryStringForPhrase:(id)arg1 attributes:(id)arg2 modifiers:(unsigned long long)arg3;
 + (id)queryWithString:(id)arg1 options:(id)arg2;
 + (id)searchWordsForPhrase:(id)arg1;
+- (void)_cancel;
 - (void)_completed;
 - (void)_failedWithError:(id)arg1;
 - (void)_foundItems:(id)arg1;

@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSString *localizedSectionHeader; // @synthesize localizedSectionHeader=_localizedSectionHeader;
 @property (strong, nonatomic) NSMutableArray *suggestionEntries; // @synthesize suggestionEntries=_suggestionEntries;
 
++ (Class)suggestionEntriesType;
 - (void)addSuggestionEntries:(id)arg1;
 - (void)clearSuggestionEntries;
 - (void)copyTo:(id)arg1;

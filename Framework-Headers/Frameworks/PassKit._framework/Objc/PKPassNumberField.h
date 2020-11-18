@@ -18,7 +18,7 @@
 @property (nonatomic) long long numberStyle; // @synthesize numberStyle=_numberStyle;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)value;

@@ -16,28 +16,36 @@
         unsigned int resizingMode:2;
         unsigned int templateRenderingMode:3;
         unsigned int exifOrientation:4;
-        unsigned int _reserved:20;
+        unsigned int isAlphaCropped:1;
+        unsigned int isFlippable:1;
+        unsigned int isTintable:1;
+        unsigned int _reserved:17;
     } _imageProperties;
 }
 
 @property (readonly, nonatomic) CDStruct_3c058996 alignmentEdgeInsets;
 @property (readonly, nonatomic) int blendMode;
+@property (readonly, nonatomic) struct CGImage *croppedImage;
+@property (readonly, nonatomic) long long displayGamut;
 @property (readonly, nonatomic) CDStruct_3c058996 edgeInsets;
 @property (readonly, nonatomic) int exifOrientation;
 @property (readonly, nonatomic) BOOL hasAlignmentInformation;
 @property (readonly, nonatomic) BOOL hasSliceInformation;
 @property (readonly, nonatomic) struct CGImage *image;
 @property (readonly, nonatomic) long long imageType;
+@property (readonly, nonatomic) BOOL isAlphaCropped;
+@property (readonly, nonatomic) BOOL isFlippable;
 @property (readonly, nonatomic) BOOL isStructured;
 @property (readonly, nonatomic) BOOL isTemplate;
 @property (readonly, nonatomic) BOOL isVectorBased;
+@property (readonly, nonatomic) long long layoutDirection;
 @property (readonly, nonatomic) double opacity;
 @property (readonly, nonatomic) long long resizingMode;
 @property (readonly, nonatomic) double scale; // @synthesize scale=_scale;
 @property (readonly, nonatomic) struct CGSize size;
 @property (readonly, nonatomic) long long templateRenderingMode;
 
-- (void)_cacheRenditionProperties;
+- (BOOL)_cacheRenditionProperties;
 - (struct CGRect)alphaCroppedRect;
 - (id)baseKey;
 - (struct CGImage *)createImageFromPDFRenditionWithScale:(double)arg1;

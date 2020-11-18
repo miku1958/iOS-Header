@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_completeWithRecord:(void *)arg1;
-- (void)dealloc;
 - (void)searchOperation:(id)arg1 didFindMatches:(id)arg2 moreComing:(BOOL)arg3;
 - (void)setCompletionHandler:(CDUnknownBlockType)arg1;
 

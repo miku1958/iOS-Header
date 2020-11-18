@@ -46,6 +46,11 @@
 @property (strong, nonatomic) NSData *suggestionMetadata; // @synthesize suggestionMetadata=_suggestionMetadata;
 @property (nonatomic) double turnaroundTime; // @synthesize turnaroundTime=_turnaroundTime;
 
++ (Class)namedFeaturesType;
++ (Class)placeResultType;
++ (Class)suggestionEntryListsType;
+- (int)StringAsStatus:(id)arg1;
+- (int)StringAsStatusCodeInfo:(id)arg1;
 - (void)addNamedFeatures:(id)arg1;
 - (void)addPlaceResult:(id)arg1;
 - (void)addSuggestionEntryLists:(id)arg1;
@@ -65,6 +70,8 @@
 - (id)placeResultAtIndex:(unsigned long long)arg1;
 - (unsigned long long)placeResultsCount;
 - (BOOL)readFrom:(id)arg1;
+- (id)statusAsString:(int)arg1;
+- (id)statusCodeInfoAsString:(int)arg1;
 - (id)suggestionEntryListsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)suggestionEntryListsCount;
 - (void)writeTo:(id)arg1;

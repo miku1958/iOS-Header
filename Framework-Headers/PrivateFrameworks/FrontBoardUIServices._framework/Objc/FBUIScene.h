@@ -4,20 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardUIServices/FBUISceneContentManager-Protocol.h>
 #import <FrontBoardUIServices/FBUISceneIdentity-Protocol.h>
 #import <FrontBoardUIServices/FBUISceneSurrogate-Protocol.h>
 
-@class FBSSceneClientSettings, FBSSceneSettings, FBUISceneIdentity, FBUISceneSpecification, FBUISceneWorkspace, NSMutableArray, NSString, UIView;
+@class FBSSceneClientSettings, FBSSceneSettings, FBSSceneSpecification, FBUISceneIdentity, FBUISceneWorkspace, NSMutableArray, NSString, UIView;
 @protocol FBUISceneClientProxy, FBUISceneContentManager, FBUISceneDelegate, FBUISceneHostProxy, FBUISceneUpdater;
 
 @interface FBUIScene : NSObject <FBUISceneContentManager, FBUISceneSurrogate, FBUISceneIdentity>
 {
     NSString *_name;
     FBUISceneIdentity *_identity;
-    FBUISceneSpecification *_specification;
+    FBSSceneSpecification *_specification;
     FBSSceneSettings *_settings;
     FBSSceneClientSettings *_clientSettings;
     FBUISceneWorkspace *_workspace;
@@ -48,10 +48,11 @@
 @property (weak) id<FBUISceneHostProxy> sceneHost; // @synthesize sceneHost=_sceneHost;
 @property (readonly, copy, nonatomic) NSString *sceneIdentifier;
 @property (copy, nonatomic) FBSSceneSettings *settings; // @synthesize settings=_settings;
-@property (readonly, copy, nonatomic) FBUISceneSpecification *specification; // @synthesize specification=_specification;
+@property (readonly, copy, nonatomic) FBSSceneSpecification *specification; // @synthesize specification=_specification;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) FBUISceneWorkspace *workspace; // @synthesize workspace=_workspace;
 
+- (void).cxx_destruct;
 - (BOOL)_isReallyActive;
 - (void)_performPendingUpdates;
 - (void)_performSceneUpdate:(CDUnknownBlockType)arg1;

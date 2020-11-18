@@ -4,44 +4,49 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <MobileCoreServices/_LSQueryResult.h>
 
 #import <MobileCoreServices/NSCopying-Protocol.h>
 #import <MobileCoreServices/NSSecureCoding-Protocol.h>
 
-@class LSApplicationProxy, NSArray, NSDictionary, NSString, NSURL;
+@class LSApplicationProxy, NSArray, NSDictionary, NSString, NSURL, _LSLazyPropertyList;
 
-@interface LSResourceProxy : NSObject <NSCopying, NSSecureCoding>
+@interface LSResourceProxy : _LSQueryResult <NSCopying, NSSecureCoding>
 {
+    BOOL _boundIconIsBadge;
+    BOOL _privateDocumentIconAllowOverride;
+    BOOL _boundIconIsPrerendered;
     NSString *_localizedName;
+    unsigned long long _propertyListCachingStrategy;
     NSString *_boundApplicationIdentifier;
     NSURL *_boundContainerURL;
     NSURL *_boundDataContainerURL;
-    NSURL *_boundResourcesDirURL;
-    NSDictionary *_boundIconsDictionary;
+    NSURL *_boundResourcesDirectoryURL;
+    _LSLazyPropertyList *__boundIconsDictionary;
     NSString *_boundIconCacheKey;
     NSArray *_boundIconFileNames;
     LSApplicationProxy *_typeOwner;
-    BOOL _boundIconIsPrerendered;
-    BOOL _boundIconIsBadge;
 }
 
-@property (readonly, nonatomic) BOOL boundIconIsBadge;
+@property (copy, nonatomic, setter=_setBoundIconsDictionary:) _LSLazyPropertyList *_boundIconsDictionary; // @synthesize _boundIconsDictionary=__boundIconsDictionary;
+@property (copy, nonatomic) NSString *boundApplicationIdentifier; // @synthesize boundApplicationIdentifier=_boundApplicationIdentifier;
+@property (copy, nonatomic) NSURL *boundContainerURL; // @synthesize boundContainerURL=_boundContainerURL;
+@property (copy, nonatomic) NSURL *boundDataContainerURL; // @synthesize boundDataContainerURL=_boundDataContainerURL;
+@property (copy, nonatomic) NSString *boundIconCacheKey; // @synthesize boundIconCacheKey=_boundIconCacheKey;
+@property (copy, nonatomic) NSArray *boundIconFileNames; // @synthesize boundIconFileNames=_boundIconFileNames;
+@property (nonatomic) BOOL boundIconIsBadge; // @synthesize boundIconIsBadge=_boundIconIsBadge;
+@property (nonatomic) BOOL boundIconIsPrerendered; // @synthesize boundIconIsPrerendered=_boundIconIsPrerendered;
+@property (readonly, nonatomic) NSDictionary *boundIconsDictionary; // @dynamic boundIconsDictionary;
+@property (copy, nonatomic) NSURL *boundResourcesDirectoryURL; // @synthesize boundResourcesDirectoryURL=_boundResourcesDirectoryURL;
 @property (readonly, nonatomic) NSDictionary *iconsDictionary;
-@property (readonly, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
+@property (copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
+@property (nonatomic) BOOL privateDocumentIconAllowOverride; // @synthesize privateDocumentIconAllowOverride=_privateDocumentIconAllowOverride;
+@property (nonatomic) unsigned long long propertyListCachingStrategy; // @synthesize propertyListCachingStrategy=_propertyListCachingStrategy;
+@property (copy, nonatomic) LSApplicationProxy *typeOwner; // @synthesize typeOwner=_typeOwner;
 
-+ (id)allowedClasses;
 + (BOOL)supportsSecureCoding;
 - (id)_initWithLocalizedName:(id)arg1;
 - (id)_initWithLocalizedName:(id)arg1 boundApplicationIdentifier:(id)arg2 boundContainerURL:(id)arg3 dataContainerURL:(id)arg4 boundResourcesDirectoryURL:(id)arg5 boundIconsDictionary:(id)arg6 boundIconCacheKey:(id)arg7 boundIconFileNames:(id)arg8 typeOwner:(id)arg9 boundIconIsPrerendered:(BOOL)arg10 boundIconIsBadge:(BOOL)arg11;
-- (id)boundApplicationIdentifier;
-- (id)boundContainerURL;
-- (id)boundDataContainerURL;
-- (id)boundIconCacheKey;
-- (id)boundIconFileNames;
-- (BOOL)boundIconIsPrerendered;
-- (id)boundIconsDictionary;
-- (id)boundResourcesDirectoryURL;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
@@ -49,18 +54,6 @@
 - (id)iconDataForVariant:(int)arg1;
 - (id)iconStyleDomain;
 - (id)initWithCoder:(id)arg1;
-- (void)setBoundApplicationIdentifier:(id)arg1;
-- (void)setBoundContainerURL:(id)arg1;
-- (void)setBoundDataContainerURL:(id)arg1;
-- (void)setBoundIconCacheKey:(id)arg1;
-- (void)setBoundIconFileNames:(id)arg1;
-- (void)setBoundIconIsBadge:(BOOL)arg1;
-- (void)setBoundIconIsPrerendered:(BOOL)arg1;
-- (void)setBoundIconsDictionary:(id)arg1;
-- (void)setBoundResourcesDirectoryURL:(id)arg1;
-- (void)setLocalizedName:(id)arg1;
-- (void)setTypeOwner:(id)arg1;
-- (id)typeOwner;
 - (id)uniqueIdentifier;
 
 @end

@@ -53,7 +53,7 @@
 - (id)extensionForKind:(id)arg1;
 - (id)init;
 - (id)initWithPLGenericAlbum:(id)arg1;
-- (id)initWithPersistedDataAtPath:(id)arg1;
+- (id)initWithPersistedDataAtURL:(id)arg1;
 - (id)initWithTitle:(id)arg1 uuid:(id)arg2 cloudGUID:(id)arg3 kind:(id)arg4 assetUUIDs:(id)arg5;
 - (id)insertAlbumFromDataInManagedObjectContext:(id)arg1;
 - (void)persistAlbumData;

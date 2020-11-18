@@ -9,6 +9,7 @@
 #import <UIKit/NSISEngineDelegate-Protocol.h>
 
 @class CALayer, FBSScene, FBSSceneLayer, NSArray, NSMutableArray, NSMutableSet, NSString, NSUndoManager, UIResponder, UIScreen, UITraitCollection, UIViewController, _UIFocusEngine, _UISystemGestureGateGestureRecognizer, _UIViewControllerNullAnimationTransitionCoordinator, _UIWindowAnimationController;
+@protocol UIFocusItem;
 
 @interface UIWindow : UIView <NSISEngineDelegate>
 {
@@ -39,7 +40,6 @@
     NSMutableSet *_subtreeMonitoringViews;
     NSMutableSet *_tintViews;
     id _currentTintView;
-    UIView *_rememberedFocusedView;
     struct {
         unsigned int delegateWillRotate:1;
         unsigned int delegateDidRotate:1;
@@ -57,7 +57,6 @@
         unsigned int autorotates:1;
         unsigned int isRotating:1;
         unsigned int isUsingOnePartRotationAnimation:1;
-        unsigned int isHandlingContentRotation:1;
         unsigned int disableAutorotationCount:4;
         unsigned int needsAutorotationWhenReenabled:1;
         unsigned int forceTwoPartRotationAnimation:1;
@@ -73,9 +72,8 @@
         unsigned int statusBarFollowsOrientation:1;
         unsigned int secure:1;
         unsigned int isMainSceneSized:1;
-        unsigned int isSettingFocusedView:1;
-        unsigned int debugNeedsFocusItemOverlayUpdate:1;
         unsigned int didSetRestorationIdentifier:1;
+        unsigned int resigningFirstResponderFromHost:1;
     } _windowFlags;
     id _windowController;
     _UISystemGestureGateGestureRecognizer *_systemGestureGateForGestures;
@@ -90,20 +88,21 @@
     long long _horizontalSizeClassStateRestorationOverride;
     _UIFocusEngine *_focusEngine;
     BOOL _shouldDisableTransformLayerScalingForSnapshotting;
-    BOOL __containedGestureRecognizersShouldRespectGestureServerInstructions;
-    BOOL __representsSelfHostedContent;
+    BOOL __shouldHitTestEntireScreen;
     BOOL __usesLegacySupportedOrientationChecks;
     BOOL ___hostViewUnderlapsStatusBar;
-    BOOL __shouldHitTestEntireScreen;
+    BOOL __containedGestureRecognizersShouldRespectGestureServerInstructions;
+    BOOL __representsSelfHostedContent;
     _UIViewControllerNullAnimationTransitionCoordinator *_traitCollectionChangeTransitionCoordinator;
     NSArray *_windowInternalConstraints;
     NSArray *_rootViewConstraints;
     CDUnknownBlockType _deferredLaunchBlock;
+    long long __deferredLaunchOrientation;
+    id<UIFocusItem> _rememberedFocusedItem;
     long long _toWindowOrientation;
     long long _fromWindowOrientation;
     _UIWindowAnimationController *__animationController;
     CDUnknownBlockType __shouldPreventRotationHook;
-    long long __deferredLaunchOrientation;
 }
 
 @property (nonatomic, setter=__setHostViewUnderlapsStatusBar:) BOOL __hostViewUnderlapsStatusBar; // @synthesize __hostViewUnderlapsStatusBar=___hostViewUnderlapsStatusBar;
@@ -127,6 +126,7 @@
 @property (nonatomic, getter=_fromWindowOrientation, setter=_setFromWindowOrientation:) long long fromWindowOrientation; // @synthesize fromWindowOrientation=_fromWindowOrientation;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isKeyWindow) BOOL keyWindow;
+@property (weak, nonatomic, getter=_rememberedFocusedItem, setter=_setRememberedFocusedItem:) id<UIFocusItem> rememberedFocusedItem; // @synthesize rememberedFocusedItem=_rememberedFocusedItem;
 @property (strong, nonatomic) UIViewController *rootViewController; // @synthesize rootViewController=_rootViewController;
 @property (strong, nonatomic) UIScreen *screen;
 @property (readonly) Class superclass;
@@ -145,6 +145,7 @@
 + (id)_hitTestToPoint:(struct CGPoint)arg1 forEvent:(id)arg2 windowServerHitTestWindow:(id)arg3 screen:(id)arg4;
 + (BOOL)_isSecure;
 + (BOOL)_isSystemWindow;
++ (id)_keyWindowIgnoringAlertViewWindow;
 + (unsigned long long)_keyWindowStackSize;
 + (void)_noteStatusBarHeightChanged:(double)arg1 oldHeight:(double)arg2;
 + (void)_noteStatusBarHeightChanged:(double)arg1 oldHeight:(double)arg2 forAutolayoutRootViewsOnly:(BOOL)arg3;
@@ -170,6 +171,7 @@
 + (id)_topVisibleWindowPassingTest:(CDUnknownBlockType)arg1;
 + (BOOL)_transformLayerRotationsAreEnabled;
 + (void)_unregisterChargedView:(id)arg1;
++ (id)_whitePointAdaptivityStyleControllingWindow;
 + (id)_windowWithContextId:(unsigned int)arg1;
 + (void)adjustForAccessibilityIfNeeded:(id)arg1;
 + (id)allWindowsIncludingInternalWindows:(BOOL)arg1 onlyVisibleWindows:(BOOL)arg2;
@@ -188,10 +190,12 @@
 + (Class)layerClass;
 - (void).cxx_destruct;
 - (id)__clientsForRotationCallbacks;
+- (id)_aboveWindowScrollView;
 - (void)_addRotationViewController:(id)arg1;
 - (void)_addTintView:(id)arg1;
 - (void)_adjustSizeClassesAndResizeWindowToFrame:(struct CGRect)arg1;
 - (double)_adjustedWindowLevelFromLevel:(double)arg1;
+- (BOOL)_allowsLinkPreviewInteractionInViewServices;
 - (BOOL)_alwaysGetsContexts;
 - (id)_appearanceContainer;
 - (BOOL)_appearsInLoupe;
@@ -204,7 +208,9 @@
 - (BOOL)_becomeFirstResponderWhenPossible;
 - (void)_beginKeyWindowDeferral;
 - (void)_beginModalSession;
+- (BOOL)_cachedTraitCollectionIsValid;
 - (BOOL)_canActAsKeyWindowForScreen:(id)arg1;
+- (BOOL)_canAffectDisplayAdaptation;
 - (BOOL)_canAffectStatusBarAppearance;
 - (BOOL)_canBecomeKeyWindow;
 - (BOOL)_canBecomeLayoutEngineDelegate;
@@ -249,9 +255,12 @@
 - (void)_destroyContext;
 - (void)_detachSceneLayer;
 - (void)_didSnapshot;
+- (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (BOOL)_disableAutomaticKeyboardBehavior;
 - (BOOL)_disableAutomaticKeyboardUI;
 - (BOOL)_disableGroupOpacity;
+- (unsigned long long)_edgeForTouch:(id)arg1;
+- (unsigned long long)_edgesForSystemGesturesTouchDelay;
 - (void)_endKeyWindowDeferral;
 - (void)_endModalSession;
 - (id)_exclusiveTouchView;
@@ -263,13 +272,14 @@
 - (id)_firstResponder;
 - (id)_focusResponder;
 - (id)_focusedView;
-- (void)_focusedViewDidChange:(id)arg1;
 - (void)_forceTwoPartRotationAnimation:(BOOL)arg1;
 - (BOOL)_guardSizeTransitionFromAnimations;
 - (void)_handleDeviceOrientationChange:(id)arg1;
+- (void)_handleSBActiveInterfaceOrientationChange:(id)arg1;
 - (void)_handleStatusBarOrientationChange:(id)arg1;
 - (BOOL)_hasContext;
 - (id)_hostingHandle;
+- (id)_hostingWindow;
 - (BOOL)_ignoresHitTest;
 - (BOOL)_includeInDefaultImageSnapshot;
 - (id)_initWithFrame:(struct CGRect)arg1 attached:(BOOL)arg2;
@@ -304,12 +314,12 @@
 - (BOOL)_needsShakesWhenInactive;
 - (id)_newSceneLayer;
 - (id)_normalInheritedTintColor;
-- (void)_noteEnvironmentNeedsFocusUpdate:(id)arg1 allowsDeferral:(BOOL)arg2;
 - (void)_noteOverlayInsetsDidChange;
 - (void)_orderFrontWithoutMakingKey;
 - (long long)_orientationForRootTransform;
 - (long long)_orientationForViewTransform;
 - (struct UIEdgeInsets)_overlayInsets;
+- (id)_overridingDestinationEnvironmentForFocusUpdateInContext:(id)arg1;
 - (id)_parentFocusEnvironment;
 - (void)_positionHeaderView:(id)arg1 andFooterView:(id)arg2 outsideContentViewForInterfaceOrientation:(long long)arg3;
 - (void)_propagateTraitCollectionChangedForStateRestoration;
@@ -318,6 +328,7 @@
 - (void)_registerScrollToTopView:(id)arg1;
 - (void)_registerViewForSubtreeMonitoring:(id)arg1;
 - (id)_registeredScrollToTopViews;
+- (void)_removeAllViewControllersFromWindowHierarchy;
 - (void)_removeFocusEngine;
 - (void)_removeRotationViewController:(id)arg1;
 - (void)_removeTintView:(id)arg1;
@@ -339,9 +350,7 @@
 - (id)_screen;
 - (void)_screenWillTransitionToTraitCollection:(id)arg1;
 - (void)_scrollToTopViewsUnderScreenPointIfNecessary:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
-- (void)_sendButtonGesturesForEvent:(id)arg1;
 - (void)_sendButtonsForEvent:(id)arg1;
-- (void)_sendGesturesForEvent:(id)arg1;
 - (void)_sendTouchesForEvent:(id)arg1;
 - (void)_setAssociatingScene:(id)arg1;
 - (void)_setAttachedToScene:(BOOL)arg1;
@@ -349,10 +358,10 @@
 - (void)_setFirstResponder:(id)arg1;
 - (void)_setHidden:(BOOL)arg1 forced:(BOOL)arg2;
 - (void)_setIsLoweringAnchoringConstraints:(BOOL)arg1;
+- (void)_setIsResigningFirstResponderFromHost:(BOOL)arg1;
 - (void)_setIsSettingFirstResponder:(BOOL)arg1;
 - (void)_setMouseDownView:(id)arg1 withEvent:(struct __GSEvent *)arg2;
 - (void)_setMouseEnteredView:(id)arg1;
-- (void)_setNeedsFocusItemOverlayUpdate;
 - (void)_setRotatableClient:(id)arg1 toOrientation:(long long)arg2 updateStatusBar:(BOOL)arg3 duration:(double)arg4 force:(BOOL)arg5 isRotating:(BOOL)arg6;
 - (void)_setRotatableViewOrientation:(long long)arg1 duration:(double)arg2;
 - (void)_setRotatableViewOrientation:(long long)arg1 duration:(double)arg2 force:(BOOL)arg3;
@@ -372,12 +381,14 @@
 - (BOOL)_shouldDelayTouchForSystemGestures:(id)arg1;
 - (BOOL)_shouldParticipateInVirtualResizing;
 - (BOOL)_shouldPrepareScreenForWindow;
-- (BOOL)_shouldPropigateTraitCollectionChanges;
+- (BOOL)_shouldPropagateTraitCollectionChanges;
 - (BOOL)_shouldResizeWithScene;
+- (BOOL)_shouldTextEffectsWindowBeHostedForView:(id)arg1;
 - (BOOL)_shouldUseRemoteContext;
 - (BOOL)_shouldZoom;
 - (void)_slideFooterFromOrientation:(long long)arg1 toOrientation:(long long)arg2 startSnapshot:(id)arg3 endSnapshot:(id)arg4 duration:(double)arg5;
 - (void)_slideHeaderView:(id)arg1 andFooterView:(id)arg2 offScreen:(BOOL)arg3 forInterfaceOrientation:(long long)arg4;
+- (long long)_subclassPreferredFocusedViewPrioritizationType;
 - (id)_subtreeMonitorsForView:(id)arg1;
 - (unsigned long long)_supportedInterfaceOrientationsForRootViewController;
 - (BOOL)_supportsBecomeFirstResponderWhenPossible;
@@ -404,9 +415,12 @@
 - (void)_unregisterScrollToTopView:(id)arg1;
 - (void)_unregisterViewForSubtreeMonitoring:(id)arg1;
 - (void)_updateAppTintView;
+- (void)_updateConstraintsIfNeededPostponeVariableChangeNotifications:(BOOL)arg1;
 - (void)_updateCurrentTintView;
 - (void)_updateCurrentTintViewForPotentialTintView:(id)arg1;
-- (void)_updateFocusItemOverlayViews;
+- (void)_updateInterfaceOrientationFromActiveInterfaceOrientation;
+- (void)_updateInterfaceOrientationFromActiveInterfaceOrientation:(BOOL)arg1;
+- (void)_updateInterfaceOrientationFromActiveInterfaceOrientationIfRotationEnabled:(BOOL)arg1;
 - (void)_updateInterfaceOrientationFromDeviceOrientation;
 - (void)_updateInterfaceOrientationFromDeviceOrientation:(BOOL)arg1;
 - (void)_updateInterfaceOrientationFromDeviceOrientationIfRotationEnabled:(BOOL)arg1;
@@ -415,15 +429,17 @@
 - (void)_updateRootViewConstraintsForInterfaceOrientationAndStatusBarHeight;
 - (void)_updateStatusBarToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)_updateStatusBarToInterfaceOrientation:(long long)arg1 duration:(double)arg2 animation:(int)arg3;
+- (void)_updateSystemConstraints;
 - (void)_updateToInterfaceOrientation:(long long)arg1 animated:(BOOL)arg2;
 - (void)_updateToInterfaceOrientation:(long long)arg1 duration:(double)arg2 force:(BOOL)arg3;
+- (void)_updateToNotificationProvidedInterfaceOrientation:(long long)arg1 animated:(BOOL)arg2;
 - (void)_updateTransformLayer;
 - (void)_updateTransformLayerForClassicPresentation;
 - (void)_updateTransformLayerSizeForClassicPresentation;
+- (void)_updateWindowBackgroundColorForUserInterfaceStyle:(long long)arg1 force:(BOOL)arg2;
 - (void)_updateWindowTraits;
 - (void)_updateWindowTraitsAndNotify:(BOOL)arg1;
 - (BOOL)_usesWindowServerHitTesting;
-- (id)_viewControllersInPreferredFocusedChain;
 - (struct CGAffineTransform)_viewTransformForInterfaceOrientation:(long long)arg1;
 - (BOOL)_wantsFocusEngine;
 - (BOOL)_wantsSceneAssociation;
@@ -480,7 +496,6 @@
 - (BOOL)isUsingOnePartRotationAnimation;
 - (BOOL)keepContextInBackground;
 - (void)keyboardDidHide;
-- (void)layoutSubviews;
 - (double)level;
 - (void)makeKey:(id)arg1;
 - (void)makeKeyAndOrderFront:(id)arg1;
@@ -491,6 +506,7 @@
 - (void)orderFront:(id)arg1;
 - (void)orderOut:(id)arg1;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)preferredFocusEnvironments;
 - (id)preferredFocusedItem;
 - (id)preferredFocusedView;
 - (void)redo:(id)arg1;
@@ -520,8 +536,6 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)undo:(id)arg1;
 - (id)undoManager;
-- (void)updateConstraints;
-- (void)updateConstraintsIfNeeded;
 - (void)updateFocusIfNeeded;
 - (void)updatePreferredFocusedItemIfNeeded;
 - (struct CGPoint)warpPoint:(struct CGPoint)arg1;

@@ -29,9 +29,9 @@
     NSMutableDictionary *_monitoredDispatchSourcesByURL;
     BOOL _useVoiceMemoSettings;
     AVPlayerItem *_AVPlayerItem;
-    RCAVState *_AVState;
     double _currentTimeDelegateUpdateRate;
     RCAVPlayer *_AVPlayer;
+    RCAVState *_AVState;
 }
 
 @property (readonly, nonatomic) RCAVPlayer *AVPlayer; // @synthesize AVPlayer=_AVPlayer;

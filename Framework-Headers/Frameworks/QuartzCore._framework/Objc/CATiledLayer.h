@@ -6,10 +6,13 @@
 
 #import <QuartzCore/CALayer.h>
 
+@protocol CATiledLayerDelegate><CALayerDelegate;
+
 @interface CATiledLayer : CALayer
 {
 }
 
+@property (weak) id<CATiledLayerDelegate><CALayerDelegate> delegate;
 @property (getter=isDrawingEnabled) BOOL drawingEnabled;
 @property struct CGColor *fillColor;
 @property unsigned long long levelsOfDetail;

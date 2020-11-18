@@ -17,6 +17,7 @@
 @property (weak, nonatomic) id<MSPContainerPersisterDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) long long duplicatesPolicy; // @synthesize duplicatesPolicy=_duplicatesPolicy;
 
++ (void)initialize;
 - (void).cxx_destruct;
 - (void)commitEditedContents:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchContentsWithCompletion:(CDUnknownBlockType)arg1;

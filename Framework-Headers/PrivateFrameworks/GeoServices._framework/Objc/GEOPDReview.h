@@ -33,6 +33,7 @@
 @property (strong, nonatomic) NSMutableArray *snippets; // @synthesize snippets=_snippets;
 
 + (id)reviewsForPlaceData:(id)arg1;
++ (Class)snippetType;
 - (id)_bestSnippet;
 - (void)addSnippet:(id)arg1;
 - (void)clearSnippets;

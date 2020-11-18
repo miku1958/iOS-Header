@@ -6,16 +6,19 @@
 
 #import <SAObjects/SADomainObject.h>
 
-@class NSString, NSURL, SASportsLeague, SAUIAppPunchOut;
+@class NSDictionary, NSString, NSURL, SASportsLeague, SAUIAppPunchOut;
 
 @interface SASportsEntity : SADomainObject
 {
 }
 
 @property (copy, nonatomic) NSURL *image;
+@property (copy, nonatomic) NSDictionary *images;
 @property (copy, nonatomic) NSURL *largeImage;
+@property (copy, nonatomic) NSDictionary *largeImages;
 @property (strong, nonatomic) SASportsLeague *league;
 @property (copy, nonatomic) NSURL *listImage;
+@property (copy, nonatomic) NSDictionary *listImages;
 @property (copy, nonatomic) NSString *name;
 @property (strong, nonatomic) SAUIAppPunchOut *punchout;
 

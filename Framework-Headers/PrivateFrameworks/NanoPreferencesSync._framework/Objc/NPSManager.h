@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
++ (void)initialize;
 - (void).cxx_destruct;
 - (id)connection;
 - (void)dealloc;

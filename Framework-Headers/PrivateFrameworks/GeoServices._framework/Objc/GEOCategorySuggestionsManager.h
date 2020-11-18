@@ -15,6 +15,7 @@
 
 + (void)setUseLocalProxy:(BOOL)arg1;
 + (id)sharedManager;
+- (id)_categorySuggestionsForSuggestionsResult:(id)arg1 dayOfWeek:(long long)arg2 hourOfDay:(long long)arg3;
 - (id)_spotlightCategorySuggestionsForResponse:(id)arg1;
 - (void)dealloc;
 - (void)fetchSpotlightCategorySuggestions:(CDUnknownBlockType)arg1;

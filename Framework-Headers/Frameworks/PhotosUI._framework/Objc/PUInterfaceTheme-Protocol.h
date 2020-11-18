@@ -19,9 +19,11 @@
 @property (readonly, nonatomic) UIFont *airPlayVideoPlaceholderTitleFont;
 @property (readonly, nonatomic) UIColor *airPlayVideoPlaceholderTitleTextColor;
 @property (readonly, nonatomic) UIColor *albumBadgeInTitleColor;
+@property (readonly, nonatomic) UIColor *albumCornersBackgroundColor;
 @property (readonly, nonatomic) UIColor *albumListBackgroundColor;
 @property (readonly, nonatomic) double albumListDisabledAlbumStackViewAlpha;
 @property (readonly, nonatomic) double albumListDisabledAlbumTitleAlpha;
+@property (readonly, nonatomic) UIFont *albumListSectionTitleLabelFont;
 @property (readonly, nonatomic) UIFont *albumListSubtitleLabelFont;
 @property (readonly, nonatomic) UIFont *albumListTitleLabelFont;
 @property (readonly, nonatomic) UIColor *badgeOverThumbnailColor;
@@ -59,6 +61,8 @@
 @property (readonly, nonatomic) UIColor *gridViewCellBannerDestructiveTextColor;
 @property (readonly, nonatomic) UIColor *gridViewCellBannerTextColor;
 @property (readonly, nonatomic) UIFont *gridViewCellBannerTextFont;
+@property (readonly, nonatomic) double padAlbumCornerRadius;
+@property (readonly, nonatomic) double phoneAlbumCornerRadius;
 @property (readonly, nonatomic) long long photoBrowserBarStyle;
 @property (readonly, nonatomic) UIColor *photoBrowserChromeHiddenBackgroundColor;
 @property (readonly, nonatomic) UIColor *photoBrowserChromeVisibleBackgroundColor;
@@ -66,6 +70,7 @@
 @property (readonly, nonatomic) UIFont *photoBrowserPhotoSubtitleFont;
 @property (readonly, nonatomic) long long photoBrowserStatusBarStyle;
 @property (readonly, nonatomic) UIFont *photoBrowserTimeTitleFont;
+@property (readonly, nonatomic) UIColor *photoBrowserTitleViewTappableTextColor;
 @property (readonly, nonatomic) UIColor *photoBrowserTitleViewTextColor;
 @property (readonly, nonatomic) double photoCollectionToolbarIconToTextSpacerWidth;
 @property (readonly, nonatomic) double photoCollectionToolbarTextTitleSpacerWidth;
@@ -104,15 +109,18 @@
 @property (readonly, nonatomic) UIColor *photoEditingToolbarSecondaryButtonColor;
 @property (readonly, nonatomic) UIColor *photoEditingTooltipColor;
 @property (readonly, nonatomic) UIFont *photoEditingTooltipFont;
+@property (readonly, nonatomic) UIColor *placeholderCellBackgroundColor;
 @property (readonly, nonatomic) UIColor *playbackTimeLabelBackgroundColor;
 @property (readonly, nonatomic) UIFont *playbackTimeLabelFont;
 @property (readonly, nonatomic) UIColor *playheadBackgroundColor;
 @property (readonly, nonatomic) UIColor *playheadColor;
 @property (readonly, nonatomic) UIImage *regularLoadErrorIcon;
 @property (readonly, nonatomic) UIColor *scrubberPlaceholderColor;
-@property (readonly, nonatomic) UIColor *searchContentViewBackgroundColor;
+@property (readonly, nonatomic) UIFont *searchRecentLabelFont;
+@property (readonly, nonatomic) UIColor *searchRecentLabelTextColor;
 @property (readonly, nonatomic) UIFont *searchSubtitleLabelFont;
 @property (readonly, nonatomic) UIColor *searchSubtitleTextColor;
+@property (readonly, nonatomic) UIColor *searchTableViewBackgroundColor;
 @property (readonly, nonatomic) UIFont *searchTitleLabelFont;
 @property (readonly, nonatomic) UIFont *sharedAlbumCommentCardAlbumTitleFont;
 @property (readonly, nonatomic) UIFont *sharedAlbumCommentCardButtonFont;
@@ -148,7 +156,7 @@
 - (void)configureAlbumListDeleteButton:(UIButton *)arg1;
 - (void)configureAlbumListEmptyStackViewPadPhotoDecoration:(PUPhotoDecoration *)arg1;
 - (void)configureAlbumListEmptyStackViewPhonePhotoDecoration:(PUPhotoDecoration *)arg1;
-- (void)configureAlbumListPinButton:(UIButton *)arg1;
+- (void)configureAlbumListSectionTitleLabel:(UILabel *)arg1;
 - (void)configureAlbumListStackViewPadPhotoDecoration:(PUPhotoDecoration *)arg1;
 - (void)configureAlbumListStackViewPhonePhotoDecoration:(PUPhotoDecoration *)arg1;
 - (void)configureAlbumListSubtitleLabel:(UILabel *)arg1 asOpaque:(BOOL)arg2;
@@ -182,7 +190,7 @@
 - (UIFontDescriptor *)photoCollectionHeaderActionButtonFontDescriptorForStyle:(long long)arg1;
 - (UIColor *)photoCollectionHeaderBackgroundColorForBackgroundStyle:(unsigned long long)arg1;
 - (UIFontDescriptor *)photoCollectionHeaderDateLabelFontDescriptorForStyle:(long long)arg1;
-- (UIImage *)photoCollectionHeaderLocationIconForStyle:(long long)arg1;
+- (UIImage *)photoCollectionHeaderDisclosureIconForStyle:(long long)arg1;
 - (struct UIOffset)photoCollectionHeaderLocationIconOffsetForStyle:(long long)arg1;
 - (UIFontDescriptor *)photoCollectionHeaderLocationLabelFontDescriptorForStyle:(long long)arg1;
 - (UIFontDescriptor *)photoCollectionHeaderTitleLabelFontDescriptorForStyle:(long long)arg1;

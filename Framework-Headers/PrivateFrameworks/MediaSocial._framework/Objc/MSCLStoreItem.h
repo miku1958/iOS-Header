@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <MediaSocial/NSCopying-Protocol.h>
+#import <MediaSocial/NSSecureCoding-Protocol.h>
 
 @class MPArtworkCatalog, NSString, SKUIArtworkList, SSLookupItemArtwork;
 
-@interface MSCLStoreItem : NSObject <NSCopying>
+@interface MSCLStoreItem : NSObject <NSCopying, NSSecureCoding>
 {
     MPArtworkCatalog *_artworkCatalog;
     SKUIArtworkList *_artworkList;
@@ -31,10 +32,14 @@
 @property (copy, nonatomic) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property (copy, nonatomic) NSString *kind; // @synthesize kind=_kind;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyMediaSocialPostItem;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithItemDictionary:(id)arg1;
+- (id)initWithMPModelObject:(id)arg1;
 
 @end
 

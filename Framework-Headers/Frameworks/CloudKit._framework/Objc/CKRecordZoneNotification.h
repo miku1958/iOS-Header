@@ -13,8 +13,10 @@
 @interface CKRecordZoneNotification : CKNotification <NSSecureCoding>
 {
     CKRecordZoneID *_recordZoneID;
+    long long _databaseScope;
 }
 
+@property (nonatomic) long long databaseScope; // @synthesize databaseScope=_databaseScope;
 @property (copy, nonatomic) CKRecordZoneID *recordZoneID; // @synthesize recordZoneID=_recordZoneID;
 
 + (BOOL)supportsSecureCoding;

@@ -23,7 +23,6 @@
 - (void)_daemonDisconnected:(id)arg1;
 - (void)_statusImageAppearanceChanged:(id)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (void)launchIfNecessary;
 - (id)myAvailableMessages;

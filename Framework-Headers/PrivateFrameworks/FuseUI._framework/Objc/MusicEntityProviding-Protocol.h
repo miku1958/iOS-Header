@@ -6,7 +6,7 @@
 
 #import <FuseUI/SKUIEntityProviding-Protocol.h>
 
-@class MusicEntityProviderDownloadInformationController, MusicEntityValueContext, MusicSectionEntityValueContext, NSIndexPath, NSSet, SKUIIndexBarEntry;
+@class MusicEntityValueContext, MusicSectionEntityValueContext, NSIndexPath, NSSet, SKUIIndexBarEntry;
 @protocol IKEntityValueProviding;
 
 @protocol MusicEntityProviding <SKUIEntityProviding>
@@ -27,7 +27,6 @@
 - (BOOL)hasEntitiesNotInLibrary;
 - (BOOL)hasExplicitContent;
 - (BOOL)hasMultipleEntitiesIncludingStoreContent;
-- (MusicEntityProviderDownloadInformationController *)newDownloadInformationController;
 - (BOOL)setEditing:(BOOL)arg1;
 @end
 

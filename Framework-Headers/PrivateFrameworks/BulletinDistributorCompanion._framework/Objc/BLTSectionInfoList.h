@@ -42,8 +42,8 @@
 - (id)overriddenSettings;
 - (id)overrides;
 - (void)reloadWithCompletion:(CDUnknownBlockType)arg1;
+- (void)removedSectionWithSectionID:(id)arg1;
 - (id)sectionIDs;
-- (id)sectionInfoForSectionID:(id)arg1;
 - (id)universalSectionIDForSectionID:(id)arg1;
 - (void)updateOverrides:(id)arg1 forSectionID:(id)arg2;
 - (void)updateSectionInfo:(id)arg1 withUniversalSectionID:(id)arg2 displayName:(id)arg3;

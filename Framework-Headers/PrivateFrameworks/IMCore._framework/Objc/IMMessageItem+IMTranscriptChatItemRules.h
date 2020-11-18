@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <IMFoundation/IMMessageItem.h>
+#import <IMSharedUtilities/IMMessageItem.h>
 
 @interface IMMessageItem (IMTranscriptChatItemRules)
 - (BOOL)_hasMessageChatItem;
 - (id)_newChatItems;
 - (id)_service;
+- (BOOL)isExtensibleMessageWithPluginPayload:(id *)arg1;
 @end
 

@@ -9,7 +9,6 @@
 @protocol CKDFlowControllable
 
 @property (readonly, nonatomic) NSString *flowControlKey;
-@property (readonly, nonatomic) NSString *sectionID;
 
 @end
 

@@ -23,6 +23,7 @@
 + (id)colorWithHue:(double)arg1 saturation:(double)arg2 brightness:(double)arg3 alpha:(double)arg4;
 + (id)colorWithPatternImage:(id)arg1;
 + (id)colorWithPlatformColor:(id)arg1;
++ (id)colorWithRGBAComponents:(const double *)arg1;
 + (id)colorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
 + (id)colorWithUIColor:(id)arg1;
 + (id)colorWithWhite:(double)arg1 alpha:(double)arg2;

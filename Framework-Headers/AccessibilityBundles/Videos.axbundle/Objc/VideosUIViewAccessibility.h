@@ -14,7 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityParentForFindingScrollParent;
-- (id)accessibilityElements;
 
 @end
 

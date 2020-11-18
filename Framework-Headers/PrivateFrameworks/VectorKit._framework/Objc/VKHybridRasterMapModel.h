@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
     float _roadAlpha;
 }
 
-+ (float)roadAlphaForLayoutContext:(id)arg1;
-- (void)gglLayoutScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
++ (float)roadAlphaForLayoutContext:(struct LayoutContext *)arg1;
+- (void)gglLayoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
 
 @end
 

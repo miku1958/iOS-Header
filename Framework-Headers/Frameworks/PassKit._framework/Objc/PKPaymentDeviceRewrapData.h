@@ -4,26 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSString, PKSecureElementCertificateSet;
 
 @interface PKPaymentDeviceRewrapData : NSObject <NSSecureCoding>
 {
     NSString *_deviceIdentifier;
-    NSString *_CASDECCCertificate;
-    NSString *_CASDRSACertificate;
+    PKSecureElementCertificateSet *_certificates;
 }
 
-@property (copy, nonatomic) NSString *CASDECCCertificate; // @synthesize CASDECCCertificate=_CASDECCCertificate;
-@property (copy, nonatomic) NSString *CASDRSACertificate; // @synthesize CASDRSACertificate=_CASDRSACertificate;
+@property (copy, nonatomic) PKSecureElementCertificateSet *certificates; // @synthesize certificates=_certificates;
 @property (copy, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

@@ -7,8 +7,10 @@
 #import <HealthKit/HKWorkout.h>
 
 @interface HKWorkout (Description)
+- (double)FU_averageTimePerLap;
 - (double)FU_completionFactor;
 - (id)FU_fitnessLocalizedGoalDescriptionWithValue:(id *)arg1;
+- (id)FU_fitnessLocalizedGoalWithUnit:(id *)arg1;
 - (id)FU_fitnessLocalizedGoalWithValue:(id *)arg1;
 - (id)FU_localizedKeyMetricCyclingStringWithUnitStyle:(long long)arg1;
 - (id)FU_localizedKeyMetricDistanceStringWithUnitStyle:(long long)arg1;
@@ -17,7 +19,12 @@
 - (id)FU_localizedKeyMetricStringWithUnitStyle:(long long)arg1;
 - (id)FU_localizedOpenGoalKeyMetricStringWithUnitStyle:(long long)arg1;
 - (id)FU_localizedShareTextWithShareValue:(id)arg1;
+- (long long)FU_numberOfEventsOfType:(long long)arg1;
+- (long long)FU_strokeStyle;
+- (id)FU_workoutLocalizedGoalValueWithUnitsWithFormattedValue:(id *)arg1;
 - (unsigned long long)_FU_effectiveGoalType;
+- (id)_FU_eventsOfType:(long long)arg1;
+- (BOOL)_FU_supportsDistanceMetricForGoalDisplay;
 - (id)_localizedGoalDescriptionWithActivity:(id)arg1 formattedValue:(id *)arg2;
 @end
 

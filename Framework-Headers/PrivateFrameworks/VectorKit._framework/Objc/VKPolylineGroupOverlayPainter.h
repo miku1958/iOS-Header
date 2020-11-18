@@ -26,9 +26,10 @@
 
 - (void)_addPainterForOverlay:(id)arg1;
 - (void)dealloc;
-- (void)gglLayoutWithContext:(id)arg1 traveledStrokeCommandBuffer:(struct CommandBuffer *)arg2 strokeCommandBuffer:(struct CommandBuffer *)arg3 traveledFillCommandBuffer:(struct CommandBuffer *)arg4 fillCommandBuffer:(struct CommandBuffer *)arg5 tiles:(id)arg6;
+- (void)flush;
+- (void)gglLayoutWithContext:(struct LayoutContext *)arg1 overlayMaskCommandBuffer:(struct CommandBuffer *)arg2 traveledStrokeCommandBuffer:(struct CommandBuffer *)arg3 strokeCommandBuffer:(struct CommandBuffer *)arg4 traveledFillCommandBuffer:(struct CommandBuffer *)arg5 fillCommandBuffer:(struct CommandBuffer *)arg6 tiles:(id)arg7;
 - (id)initWithOverlay:(id)arg1;
-- (void)layoutWithContext:(id)arg1 tiles:(id)arg2 keysInView:(id)arg3;
+- (void)layoutWithContext:(struct LayoutContext *)arg1 tiles:(id)arg2 keysInView:(id)arg3;
 - (void)polylineGroup:(id)arg1 didAddPolyline:(id)arg2;
 - (void)polylineGroup:(id)arg1 didRemovePolyline:(id)arg2;
 - (void)polylineGroup:(id)arg1 didSelectPolyline:(id)arg2;

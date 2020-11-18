@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ContactsFoundation/CNFuture-Protocol.h>
 #import <ContactsFoundation/CNPromise-Protocol.h>
@@ -29,9 +29,13 @@ __attribute__((visibility("hidden")))
 
 - (void)_flushCompletionBlocks;
 - (void)addFailureBlock:(CDUnknownBlockType)arg1;
+- (void)addFailureBlock:(CDUnknownBlockType)arg1 scheduler:(id)arg2;
 - (void)addSuccessBlock:(CDUnknownBlockType)arg1;
+- (void)addSuccessBlock:(CDUnknownBlockType)arg1 scheduler:(id)arg2;
+- (CDUnknownBlockType)boolErrorCompletionHandlerAdapter;
 - (BOOL)cancel;
 - (CDUnknownBlockType)completionHandlerAdapter;
+- (CDUnknownBlockType)completionHandlerAdapterWithDefaultValue:(id)arg1;
 - (void)dealloc;
 - (void)didCancel;
 - (CDUnknownBlockType)errorOnlyCompletionHandlerAdapter;

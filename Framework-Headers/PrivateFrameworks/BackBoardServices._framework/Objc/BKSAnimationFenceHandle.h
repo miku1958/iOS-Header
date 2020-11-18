@@ -18,12 +18,10 @@
     BSMachPortSendRight *_preFence;
     BSMachPortSendRight *_preFenceTrigger;
     BOOL _notObservable;
-    BOOL _reportable;
     int _invalidated;
 }
 
 @property (readonly, strong, nonatomic) BSMachPortSendRight *_caFence; // @synthesize _caFence;
-@property (readonly, nonatomic, getter=_isReportable) BOOL _reportable; // @synthesize _reportable;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -36,7 +34,7 @@
 + (id)newSystemFenceHandle;
 + (BOOL)supportsSecureCoding;
 - (unsigned int)CAPort;
-- (id)_initWithCAFence:(id)arg1 preFence:(id)arg2 preFenceTrigger:(id)arg3 reportable:(BOOL)arg4 notObservable:(BOOL)arg5;
+- (id)_initWithCAFence:(id)arg1 preFence:(id)arg2 preFenceTrigger:(id)arg3 notObservable:(BOOL)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

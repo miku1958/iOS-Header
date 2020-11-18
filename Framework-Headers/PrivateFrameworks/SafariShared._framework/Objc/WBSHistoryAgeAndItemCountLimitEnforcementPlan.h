@@ -14,9 +14,9 @@
     NSSet *_items;
     double _ageLimit;
     unsigned long long _itemCountLimit;
+    long long _reason;
     NSSet *_itemsToKeep;
     NSSet *_itemsToDiscard;
-    long long _reason;
     WBSHistoryDeletionPlan *_deletionPlan;
 }
 
@@ -25,7 +25,7 @@
 @property (readonly, nonatomic) NSSet *itemsToKeep; // @synthesize itemsToKeep=_itemsToKeep;
 
 - (void).cxx_destruct;
-- (id)_itemsToDiscardFromItemsOrderedByLastVisitTime:(id)arg1;
+- (id)_itemsToDiscard;
 - (void)execute;
 - (id)initWithSQLiteStore:(id)arg1 items:(id)arg2 ageLimit:(double)arg3 itemCountLimit:(unsigned long long)arg4 reason:(long long)arg5;
 - (void)prepare;

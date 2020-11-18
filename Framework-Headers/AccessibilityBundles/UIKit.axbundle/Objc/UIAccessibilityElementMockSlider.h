@@ -14,9 +14,10 @@
     id _delegate;
 }
 
-@property (nonatomic) id delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UIView *view; // @synthesize view=_view;
 
+- (void).cxx_destruct;
 - (struct CGPoint)_accessibilityMaxScrubberPosition;
 - (struct CGPoint)_accessibilityMinScrubberPosition;
 - (void)accessibilityDecrement;

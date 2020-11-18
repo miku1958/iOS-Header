@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSString *roadDirection; // @synthesize roadDirection=_roadDirection;
 @property (nonatomic) int travelDirection; // @synthesize travelDirection=_travelDirection;
 
+- (void).cxx_destruct;
 - (float)_accessibilityDistance:(struct CGPoint)arg1 forAngle:(float)arg2 toRoad:(id)arg3;
 - (float)_accessibilityDistanceFromEndOfRoad:(struct CGPoint)arg1 forAngle:(float)arg2;
 - (BOOL)_accessibilityLastHitTestNearBorder;
@@ -43,7 +44,6 @@
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
 - (id)accessibilityPaths;
-- (void)dealloc;
 - (id)detailedFeatureElementInfoAtPoint:(struct CGPoint)arg1;
 - (BOOL)pointInside:(struct CGPoint)arg1;
 - (id)trueLabel;

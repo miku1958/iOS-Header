@@ -15,11 +15,11 @@
 {
     NSString *_subscriptionID;
     long long _subscriptionType;
+    CKNotificationInfo *_notificationInfo;
+    CKRecordZoneID *_zoneID;
     NSString *_recordType;
     NSPredicate *_predicate;
     unsigned long long _subscriptionOptions;
-    CKNotificationInfo *_notificationInfo;
-    CKRecordZoneID *_zoneID;
 }
 
 @property (copy, nonatomic) CKNotificationInfo *notificationInfo; // @synthesize notificationInfo=_notificationInfo;
@@ -34,7 +34,10 @@
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
 - (id)_initBare;
+- (id)_initWithRecordType:(id)arg1 predicate:(id)arg2 subscriptionID:(id)arg3 options:(unsigned long long)arg4;
 - (id)_initWithSubscriptionType:(long long)arg1 subscriptionID:(id)arg2 options:(unsigned long long)arg3;
+- (id)_initWithZoneID:(id)arg1 subscriptionID:(id)arg2 options:(unsigned long long)arg3;
+- (unsigned long long)_subscriptionOptions;
 - (void)_validateSubscriptionOptions:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;

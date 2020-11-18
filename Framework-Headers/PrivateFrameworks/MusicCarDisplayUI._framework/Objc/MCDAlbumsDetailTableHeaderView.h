@@ -27,6 +27,7 @@
 - (id)initWithReuseIdentifier:(id)arg1;
 - (void)layoutSubviews;
 - (void)setDuration:(double)arg1 count:(unsigned long long)arg2;
+- (void)setTemplateArtworkImage:(id)arg1;
 
 @end
 

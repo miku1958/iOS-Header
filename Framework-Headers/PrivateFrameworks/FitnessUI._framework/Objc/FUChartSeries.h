@@ -54,7 +54,6 @@
 - (void)layoutSubviews;
 - (void)refreshView;
 - (void)selectedPointIndexesUpdated:(id)arg1 selectionPoints:(id)arg2;
-- (void)tapDragGestureRecognizerUpdated:(id)arg1;
 
 @end
 

@@ -8,5 +8,6 @@
 
 @interface HKQuery (FUQuerySupport)
 + (id)FU_predicateForWorkoutsWithMetadataIndoor:(BOOL)arg1;
++ (id)FU_predicateForWorkoutsWithMetadataSwimmingLocationType:(long long)arg1;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @interface IMAVInterface : NSObject
 {
@@ -52,13 +52,13 @@
 - (void)avChat:(id)arg1 setSendingAudio:(BOOL)arg2;
 - (void)avChat:(id)arg1 setSendingVideo:(BOOL)arg2;
 - (void)avChat:(id)arg1 setValidatedIdentity:(struct __SecIdentity *)arg2;
+- (void)cancelConferenceForAVChat:(id)arg1;
 - (void)chatRelayedStatusChanged:(id)arg1;
 - (void)chatStateUpdated;
 - (void)cleanupAVInterface;
 - (void)dealloc;
 - (void)endAVConferenceWithChat:(id)arg1 callID:(long long)arg2;
 - (int)endConferenceForAVChat:(id)arg1;
-- (void)endInterruptionForChat:(id)arg1;
 - (id)getNatIPFromICEData:(id)arg1;
 - (void)handleRelayCancel:(id)arg1 fromParticipant:(id)arg2 callInfo:(id)arg3;
 - (void)handleRelayInitate:(id)arg1 fromParticipant:(id)arg2 callInfo:(id)arg3;
@@ -79,13 +79,10 @@
 - (void)setRemoteVideoLayersFromChat:(id)arg1 toChat:(id)arg2;
 - (void)setRemoteVideoPresentationSize:(struct CGSize)arg1 forChat:(id)arg2;
 - (void)setRemoteVideoPresentationState:(unsigned int)arg1 forChat:(id)arg2;
-- (void)startInterruptionForChat:(id)arg1;
-- (void)startInterruptionForChat:(id)arg1 withSource:(id)arg2;
 - (BOOL)startPreviewWithError:(id *)arg1;
 - (BOOL)stopPreview;
 - (void)unsetDelegate:(id)arg1;
-- (void)updateAVChat:(id)arg1 withCallMetadata:(id)arg2;
-- (void)updateInterruptionForChat:(id)arg1;
+- (void)updateAVChat:(id)arg1 withCallMetadata:(id)arg2 isFinalUpdate:(BOOL)arg3;
 
 @end
 

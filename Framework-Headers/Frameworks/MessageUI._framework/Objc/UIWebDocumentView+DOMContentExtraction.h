@@ -7,7 +7,9 @@
 #import <UIKit/UIWebDocumentView.h>
 
 @interface UIWebDocumentView (DOMContentExtraction)
-- (id)mf_NodeForAttachmentInRange:(id)arg1;
+- (id)_mf_URLsForAttachmentsInRange:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
+- (id)mf_DOMNodeForAttachment:(id)arg1;
+- (id)mf_URLsForAttachmentsBorderingRange:(id)arg1;
 - (id)mf_URLsForAttachmentsInRange:(id)arg1;
 @end
 

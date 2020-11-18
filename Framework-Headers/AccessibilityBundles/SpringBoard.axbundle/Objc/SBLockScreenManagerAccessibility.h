@@ -13,8 +13,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_finishUIUnlockFromSource:(int)arg1 withOptions:(id)arg2;
+- (BOOL)_finishUIUnlockFromSource:(int)arg1 withOptions:(id)arg2;
+- (void)_handleAuthenticationFeedback:(id)arg1;
 - (void)_setUILocked:(BOOL)arg1;
+- (void)lockUIFromSource:(int)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)mesaCoordinator:(id)arg1 requestsUnlockWithIntent:(int)arg2;
 
 @end
 

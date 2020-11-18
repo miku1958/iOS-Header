@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class BRCAccountSession, BRCDocumentItem, BRCLocalContainer, BRCRelativePath, BRCServerZone, NSData;
+@class BRCAccountSession, BRCAppLibrary, BRCLocalItem, BRCRelativePath, BRCServerZone, NSData;
 
 __attribute__((visibility("hidden")))
 @interface BRCBookmark : NSObject
 {
     BRCAccountSession *_session;
-    BRCLocalContainer *_container;
+    BRCAppLibrary *_appLibrary;
     NSData *_bookmarkData;
-    BRCDocumentItem *_target;
+    BRCLocalItem *_target;
     BRCServerZone *_targetServerZone;
     BRCRelativePath *_targetRelpath;
     BOOL _targetResolved;
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) BOOL containsItemID;
-@property (readonly, nonatomic) BRCDocumentItem *target;
+@property (readonly, nonatomic) BRCLocalItem *target;
 @property (readonly, nonatomic) BRCServerZone *targetServerZone;
 
 + (id)createName;
@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_resolveTargetWithError:(id *)arg1;
 - (int)_validateSignatureWithFd:(int)arg1;
 - (id)initWithRelpath:(id)arg1;
-- (id)initWithTarget:(id)arg1 owningContainer:(id)arg2 path:(id)arg3 session:(id)arg4;
+- (id)initWithTarget:(id)arg1 owningAppLibrary:(id)arg2 path:(id)arg3 session:(id)arg4;
 - (BOOL)resolveWithError:(id *)arg1;
 - (id)writeUnderParent:(id)arg1 name:(id)arg2 error:(id *)arg3;
 

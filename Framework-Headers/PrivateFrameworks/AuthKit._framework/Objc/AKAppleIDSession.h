@@ -8,28 +8,31 @@
 
 #import <AuthKit/NSURLSessionAppleIDContext-Protocol.h>
 
-@class AKAnisetteData, AKAnisetteProvisioningController, NSLock, NSString;
+@class AKAnisetteData, AKAnisetteProvisioningController, AKDevice, NSLock, NSString;
 
 @interface AKAppleIDSession : NSObject <NSURLSessionAppleIDContext>
 {
     NSString *_serviceID;
-    AKAnisetteProvisioningController *_anisetteController;
+    AKAnisetteProvisioningController *_nativeAnisetteController;
+    AKAnisetteProvisioningController *_pairedDeviceAnisetteController;
     AKAnisetteData *_proxiedAnisetteData;
     NSLock *_anisetteControllerLock;
+    AKDevice *_pairedDevice;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) AKAnisetteData *proxiedAnisetteData; // @synthesize proxiedAnisetteData=_proxiedAnisetteData;
+@property (strong, nonatomic) AKDevice *pairedDevice; // @synthesize pairedDevice=_pairedDevice;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 task:(id)arg2 getAppleIDHeadersForResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)_anisetteController;
 - (void)_generateAppleIDHeadersForRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_handleURLResponse:(id)arg1 forRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (id)_nativeAnisetteController;
+- (id)_pairedDeviceAnisetteController;
 - (id)appleIDHeadersForRequest:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class CKShareID, NSData, NSString;
+@class CKRecordID, NSData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDModifyShareTokenInfo : NSObject
 {
-    CKShareID *_shareID;
+    CKRecordID *_shareID;
     NSData *_shortSharingTokenHashData;
     NSData *_encryptedFullTokenData;
     NSString *_baseToken;
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSString *baseToken; // @synthesize baseToken=_baseToken;
 @property (strong, nonatomic) NSData *encryptedFullTokenData; // @synthesize encryptedFullTokenData=_encryptedFullTokenData;
-@property (strong, nonatomic) CKShareID *shareID; // @synthesize shareID=_shareID;
+@property (strong, nonatomic) CKRecordID *shareID; // @synthesize shareID=_shareID;
 @property (strong, nonatomic) NSData *shortSharingTokenHashData; // @synthesize shortSharingTokenHashData=_shortSharingTokenHashData;
 
 - (void).cxx_destruct;

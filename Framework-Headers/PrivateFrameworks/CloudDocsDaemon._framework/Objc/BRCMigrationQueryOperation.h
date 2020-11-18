@@ -14,12 +14,17 @@ __attribute__((visibility("hidden")))
     NSString *_migrationKey;
     CKQueryCursor *_continuationCursor;
     NSMutableArray *_recordsWithShareID;
+    NSMutableArray *_sharedIDsToFetch;
+    NSMutableArray *_shares;
 }
 
 + (id)allMigrationKeysOrdered;
-+ (id)shareIDsMigrationKey;
++ (id)sharesMigrationKey;
 - (void).cxx_destruct;
+- (void)_performAfterFetchShares:(CDUnknownBlockType)arg1;
 - (void)_performAfterQueryingForShareIDs:(CDUnknownBlockType)arg1;
+- (void)_performQuery:(id)arg1 recordFetchedBlock:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_saveQueryRecords:(id)arg1;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)initWithServerZone:(id)arg1 migrationKey:(id)arg2 continuationCursor:(id)arg3;
 - (void)main;

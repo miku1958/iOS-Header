@@ -38,7 +38,6 @@
 @property (readonly, nonatomic) NSSet *pictureInPictureApplications; // @synthesize pictureInPictureApplications=_pictureInPictureApplications;
 @property (readonly) Class superclass;
 
-+ (void)initialize;
 + (BOOL)isPictureInPictureSupported;
 - (void).cxx_destruct;
 - (BOOL)_pictureInPictureRemoteObjectIsFaceTime:(id)arg1;

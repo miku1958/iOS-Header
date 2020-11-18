@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface NSObject (BRCSwizzle)
 + (BOOL)brc_swizzleClassMethod:(SEL)arg1 with:(SEL)arg2;

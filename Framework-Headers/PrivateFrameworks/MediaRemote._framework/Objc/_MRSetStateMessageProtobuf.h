@@ -8,7 +8,7 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSString, _MRNowPlayingInfoProtobuf, _MRPlaybackQueueProtobuf, _MRSupportedCommandsProtobuf;
+@class NSString, _MRNowPlayingInfoProtobuf, _MRPlaybackQueueContextProtobuf, _MRPlaybackQueueProtobuf, _MRSupportedCommandsProtobuf;
 
 @interface _MRSetStateMessageProtobuf : PBCodable <NSCopying>
 {
@@ -16,6 +16,7 @@
     NSString *_displayName;
     _MRNowPlayingInfoProtobuf *_nowPlayingInfo;
     _MRPlaybackQueueProtobuf *_playbackQueue;
+    _MRPlaybackQueueContextProtobuf *_playbackQueueContext;
     unsigned int _playbackState;
     _MRSupportedCommandsProtobuf *_supportedCommands;
     struct {
@@ -29,10 +30,12 @@
 @property (readonly, nonatomic) BOOL hasDisplayName;
 @property (readonly, nonatomic) BOOL hasNowPlayingInfo;
 @property (readonly, nonatomic) BOOL hasPlaybackQueue;
+@property (readonly, nonatomic) BOOL hasPlaybackQueueContext;
 @property (nonatomic) BOOL hasPlaybackState;
 @property (readonly, nonatomic) BOOL hasSupportedCommands;
 @property (strong, nonatomic) _MRNowPlayingInfoProtobuf *nowPlayingInfo; // @synthesize nowPlayingInfo=_nowPlayingInfo;
 @property (strong, nonatomic) _MRPlaybackQueueProtobuf *playbackQueue; // @synthesize playbackQueue=_playbackQueue;
+@property (strong, nonatomic) _MRPlaybackQueueContextProtobuf *playbackQueueContext; // @synthesize playbackQueueContext=_playbackQueueContext;
 @property (nonatomic) unsigned int playbackState; // @synthesize playbackState=_playbackState;
 @property (strong, nonatomic) _MRSupportedCommandsProtobuf *supportedCommands; // @synthesize supportedCommands=_supportedCommands;
 

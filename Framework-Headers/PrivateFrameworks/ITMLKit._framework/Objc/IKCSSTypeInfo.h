@@ -11,7 +11,8 @@
 }
 
 + (id)getTypeInfoForPropertyName:(id)arg1;
-+ (void)initPropertyInfo;
++ (void)registerStyle:(id)arg1 type:(unsigned long long)arg2;
++ (void)unregisterStyles;
 
 @end
 

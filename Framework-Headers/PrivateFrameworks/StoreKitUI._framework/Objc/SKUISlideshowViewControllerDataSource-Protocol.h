@@ -6,13 +6,12 @@
 
 #import <StoreKitUI/NSObject-Protocol.h>
 
-@class NSURL, UIImage, UIViewController;
+@class NSURL, SKUIScreenshotDataConsumer, UIImage, UIViewController;
 
 @protocol SKUISlideshowViewControllerDataSource <NSObject>
 - (long long)numberOfItemsInSlideshowViewController:(UIViewController *)arg1;
-
-@optional
-- (UIImage *)slideshowViewController:(UIViewController *)arg1 imageAtIndex:(long long)arg2;
-- (NSURL *)slideshowViewController:(UIViewController *)arg1 imageURLAtIndex:(long long)arg2 size:(struct CGSize *)arg3;
+- (SKUIScreenshotDataConsumer *)slideshowViewController:(UIViewController *)arg1 dataConsumerAtIndex:(long long)arg2;
+- (NSURL *)slideshowViewController:(UIViewController *)arg1 imageURLAtIndex:(long long)arg2;
+- (UIImage *)slideshowViewController:(UIViewController *)arg1 placeholderImageAtIndex:(long long)arg2;
 @end
 

@@ -47,6 +47,8 @@
 @property (readonly, nonatomic) PSSpecifier *specifier; // @synthesize specifier=_specifier;
 @property (readonly, copy, nonatomic) NSURL *url;
 
++ (id)schemeNameOverride;
++ (void)setSchemeNameOverride:(id)arg1;
 - (void).cxx_destruct;
 - (id)_prefsURLIsRoot:(BOOL *)arg1;
 - (BOOL)_specifier:(id)arg1 hasDetailController:(BOOL)arg2;

@@ -21,10 +21,10 @@
 - (void)_cleanupClient:(id)arg1;
 - (void)_clientConnected;
 - (void)_configureWithClient:(id)arg1;
-- (void)_requestCallGrantForIdentifier:(id)arg1 forService:(id)arg2 waitForResponse:(BOOL)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)_requestCallGrantForIdentifier:(id)arg1 forProviderIdentifier:(id)arg2 waitForResponse:(BOOL)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)init;
-- (void)shouldAllowIncomingCallForNumber:(id)arg1 forService:(id)arg2 response:(CDUnknownBlockType)arg3;
+- (void)shouldAllowIncomingCallForNumber:(id)arg1 forProviderIdentifier:(id)arg2 response:(CDUnknownBlockType)arg3;
 
 @end
 

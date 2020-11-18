@@ -21,6 +21,7 @@
 @property (strong) NSString *name; // @synthesize name=_name;
 @property (strong) NSSet *whitelist; // @synthesize whitelist=_whitelist;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 
 @end

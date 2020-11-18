@@ -14,13 +14,16 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)_accessibilityMailPresentedViewController;
 - (id)_accessibilityPrimaryViewController;
+- (void)_accessibilitySetMailPresentedViewController:(id)arg1;
 - (id)_accessibilitySpeakThisViewController;
 - (void)_accessibilityUpdateDraftElements;
 - (void)_accessibilityUpdateDraftLabelForBorrowedView:(id)arg1 withActorAtIndex:(long long)arg2;
 - (id)_actorItemForActorViewController:(id)arg1 createIfNecessary:(BOOL)arg2;
 - (void)_axPrepareActorLabel:(id)arg1 index:(long long)arg2;
 - (void)_setActiveActorItem:(id)arg1 animated:(BOOL)arg2;
+- (void)dismissViewController:(struct UIViewController *)arg1 animated:(BOOL)arg2 options:(id)arg3;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)presentModalViewController:(id)arg1 animated:(BOOL)arg2 options:(id)arg3;
 - (id)tiltedTabView:(id)arg1 contentViewForItemAtIndex:(unsigned long long)arg2;

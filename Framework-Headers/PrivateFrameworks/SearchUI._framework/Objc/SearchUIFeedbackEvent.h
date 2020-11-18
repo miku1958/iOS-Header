@@ -7,11 +7,10 @@
 #import <objc/NSObject.h>
 
 @class NSDate, NSString;
-@protocol SearchUIResult;
 
 @interface SearchUIFeedbackEvent : NSObject
 {
-    id<SearchUIResult> _result;
+    id _result;
     NSString *_actionArea;
     NSString *_actionType;
     NSString *_actionCardType;
@@ -25,7 +24,7 @@
 @property (copy, nonatomic) NSString *actionDestination; // @synthesize actionDestination=_actionDestination;
 @property (copy, nonatomic) NSString *actionTarget; // @synthesize actionTarget=_actionTarget;
 @property (copy, nonatomic) NSString *actionType; // @synthesize actionType=_actionType;
-@property (strong, nonatomic) id<SearchUIResult> result; // @synthesize result=_result;
+@property (strong, nonatomic) id result; // @synthesize result=_result;
 @property (strong, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 
 + (id)feedbackEventOnResult:(id)arg1 actionArea:(id)arg2 actionType:(id)arg3 cardType:(id)arg4 actionTarget:(id)arg5 actionDestination:(id)arg6;

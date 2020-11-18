@@ -50,6 +50,7 @@
 @property (strong, nonatomic) NSString *timezone; // @synthesize timezone=_timezone;
 @property (strong, nonatomic) NSMutableArray *zoomNames; // @synthesize zoomNames=_zoomNames;
 
++ (Class)zoomNameType;
 - (void)addZoomName:(id)arg1;
 - (id)bestName;
 - (id)bestNameWithLocale:(out id *)arg1;

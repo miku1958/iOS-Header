@@ -8,7 +8,7 @@
 
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSSet, NSString;
+@class NSSet, NSString, _WKWebsiteDataSize;
 
 @interface WKWebsiteDataRecord : NSObject <WKObject>
 {
@@ -16,6 +16,7 @@
 }
 
 @property (readonly) struct Object *_apiObject;
+@property (readonly, nonatomic) _WKWebsiteDataSize *_dataSize;
 @property (readonly, copy, nonatomic) NSSet *dataTypes;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

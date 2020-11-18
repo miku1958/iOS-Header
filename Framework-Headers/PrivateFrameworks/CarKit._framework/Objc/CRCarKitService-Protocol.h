@@ -13,6 +13,7 @@
 - (void)handleCarPlayRestrictionChangedWithReply:(void (^)(void))arg1;
 - (void)handleDidConnectBluetoothAddress:(NSString *)arg1 reply:(void (^)(BOOL, NSString *, NSError *))arg2;
 - (void)handleDidDisconnectBluetoothAddress:(NSString *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
+- (void)hasVehiclesWithReply:(void (^)(BOOL, NSError *))arg1;
 - (void)isBluetoothInCarWithReply:(void (^)(BOOL, NSString *, NSError *))arg1;
 - (void)isCarPlayAllowedWithReply:(void (^)(BOOL, NSError *))arg1;
 - (void)isPairedWithCertificateSerial:(NSData *)arg1 reply:(void (^)(BOOL, NSError *))arg2;

@@ -6,21 +6,26 @@
 
 #import <Foundation/NSObject.h>
 
-@class GEOComposedRoute, GEOComposedRouteLeg, GEOComposedTransitTripRouteStep, GEOInstructionSet, GEOPBTransitStop, GEOStep, GEOTransitStep, NSArray;
+@class GEOComposedRoute, GEOComposedRouteLeg, GEOComposedTransitTripRouteStep, GEOInstructionSet, GEOPBTransitStop, GEOStep, GEOTransitStep, NSArray, NSString, NSTimeZone;
 @protocol GEOTransitArtworkDataSource;
 
 @interface GEOComposedRouteStep : NSObject
 {
     GEOComposedRoute *_composedRoute;
     GEOStep *_geoStep;
+    int _drivingSide;
     unsigned long long _stepIndex;
     struct _NSRange _pointRange;
     struct _NSRange _maneuverPointRange;
+    NSString *_maneuverRoadOrExitName;
+    NSString *_maneuverRoadName;
     long long _routeLegType;
 }
 
+@property (readonly, nonatomic) GEOComposedTransitTripRouteStep *closestLogicalBoardOrAlightStep;
 @property (nonatomic) GEOComposedRoute *composedRoute; // @synthesize composedRoute=_composedRoute;
 @property (readonly, nonatomic) unsigned int distance;
+@property (readonly, nonatomic) int drivingSide; // @synthesize drivingSide=_drivingSide;
 @property (readonly, nonatomic) unsigned int duration;
 @property (readonly, nonatomic) CDStruct_c3b9c2ee endGeoCoordinate;
 @property (readonly, nonatomic) unsigned int endPointIndex;
@@ -33,6 +38,8 @@
 @property (readonly, nonatomic) GEOComposedRouteLeg *leg;
 @property (readonly, nonatomic) unsigned int maneuverEndPointIndex;
 @property (readonly, nonatomic) struct _NSRange maneuverPointRange; // @synthesize maneuverPointRange=_maneuverPointRange;
+@property (readonly, nonatomic) NSString *maneuverRoadName;
+@property (readonly, nonatomic) NSString *maneuverRoadOrExitName;
 @property (readonly, nonatomic) unsigned int maneuverStartPointIndex;
 @property (readonly, nonatomic) GEOComposedTransitTripRouteStep *nextAlightingStep;
 @property (readonly, nonatomic) GEOComposedTransitTripRouteStep *nextBoardingStep;
@@ -57,8 +64,11 @@
 @property (readonly, nonatomic) unsigned int startPointIndex;
 @property (readonly, nonatomic) unsigned int startTime;
 @property (readonly, nonatomic) GEOPBTransitStop *startingStop;
+@property (readonly, nonatomic) unsigned int stepID;
 @property (readonly, nonatomic) unsigned long long stepIndex; // @synthesize stepIndex=_stepIndex;
 @property (readonly, nonatomic) NSArray *steppingArtwork;
+@property (readonly, nonatomic) NSTimeZone *timeZoneForFormattedString;
+@property (readonly, nonatomic) NSTimeZone *timeZoneForStartingOrEndingStop;
 @property (readonly, nonatomic) GEOTransitStep *transitStep;
 @property (readonly, nonatomic) int transportType;
 

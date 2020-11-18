@@ -70,8 +70,6 @@
 + (BOOL)unlinkRedownloadableAssetsFromLibrary:(id)arg1 persistentIDs:(id)arg2 deletionType:(int)arg3 deletedFileSize:(long long *)arg4;
 + (id)unsettableProperties;
 + (void)updateAllBookmarkableStoreBookmarkMetadataIdentifiersOnConnection:(id)arg1;
-- (void)_createVideoSnapshotAtTime:(double)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
-- (id)_screenshotArtworkDataStoredAsItemArtwork;
 - (id)absoluteFilePath;
 - (id)artworkTokenAtPlaybackTime:(double)arg1;
 - (id)chapterTOC;

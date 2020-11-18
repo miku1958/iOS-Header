@@ -20,7 +20,6 @@
 - (void)configureCollectionViewGridLayout:(id)arg1 forWidth:(double)arg2;
 - (long long)forceLoadInitialSectionCount;
 - (double)globalFooterHeight;
-- (id)photoBrowserSpec;
 - (id)photosPickerViewControllerSpec;
 - (double)sectionHeaderHeight;
 - (BOOL)shouldPlaceSelectAllButtonInRightNavigationBar;

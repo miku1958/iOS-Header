@@ -32,6 +32,7 @@
 - (id)absoluteQuadsWithOwner:(id)arg1;
 - (struct CGRect)boundingBoxWithOwner:(id)arg1;
 - (id)boundingBoxesWithOwner:(id)arg1;
+- (id)origin;
 - (id)ping;
 - (id)rel;
 - (id)relList;

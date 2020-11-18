@@ -18,10 +18,10 @@
 @interface AVPlayerViewController : UIViewController <AVPictureInPictureControllerDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate>
 {
     AVPlayerController *_playerController;
-    unsigned int _playerShouldAutoplay:1;
-    unsigned int _showsPlaybackControls:1;
+    BOOL _playerShouldAutoplay;
+    BOOL _showsPlaybackControls;
     long long _videoGravity;
-    unsigned int _allowsPictureInPicturePlayback:1;
+    BOOL _allowsPictureInPicturePlayback;
     NSDictionary *_pixelBufferAttributes;
     AVNowPlayingInfoController *_nowPlayingInfoController;
     AVPictureInPictureController *_pictureInPictureController;
@@ -37,7 +37,7 @@
     AVTouchIgnoringView *_iAdPrerollView;
     AVPlaybackControlsViewController *_playbackControlsViewController;
     UIWindow *_secondScreenWindow;
-    unsigned int _viewIsFullScreen:1;
+    BOOL _viewIsFullScreen;
     id _screenDidConnectObserver;
     id _screenDidDisconnectObserver;
     id _screenModeDidChangeObserver;
@@ -45,38 +45,38 @@
     id _nowPlayingControllerDidReceiveStopCommandEventObserver;
     id _applicationSuspendedObserver;
     NSTimer *_loadingIndicatorTimer;
-    unsigned int _playbackControlsViewControllerShouldShowLoadingIndicator:1;
-    unsigned int _playbackControlsViewControllerShowsScaleButton:1;
+    BOOL _playbackControlsViewControllerShouldShowLoadingIndicator;
+    BOOL _playbackControlsViewControllerShowsScaleButton;
     long long _playbackControlsViewControllerScaleButtonType;
-    unsigned int _playbackControlsViewControllerPictureInPictureButtonEnabled:1;
-    unsigned int _playbackControlsViewVisibilityNeedsUpdate:1;
+    BOOL _playbackControlsViewControllerPictureInPictureButtonEnabled;
+    BOOL _playbackControlsViewVisibilityNeedsUpdate;
     long long _playbackControlsViewVisibilityCounter;
     NSTimer *_playbackControlsViewVisibilityTimer;
-    unsigned int _isShowingPlaybackControlsViewForUserInteraction:1;
-    unsigned int _isShowingPlaybackControlsViewAfterUserInteraction:1;
-    unsigned int _isShowingPlaybackControlsViewForUnsupportedContent:1;
-    unsigned int _isShowingPlaybackControlsViewForAudioOnlyContent:1;
-    unsigned int _isShowingPlaybackControlsViewForPlayingOnExternalScreen:1;
-    unsigned int _isHidingPlaybackControlsViewForPictureInPicturePlayback:1;
-    unsigned int _showsPlaybackControlsView:1;
-    unsigned int _isAnimatingPlaybackControlsViewVisibility:1;
+    BOOL _isShowingPlaybackControlsViewForUserInteraction;
+    BOOL _isShowingPlaybackControlsViewAfterUserInteraction;
+    BOOL _isShowingPlaybackControlsViewForUnsupportedContent;
+    BOOL _isShowingPlaybackControlsViewForAudioOnlyContent;
+    BOOL _isShowingPlaybackControlsViewForPlayingOnExternalScreen;
+    BOOL _isHidingPlaybackControlsViewForPictureInPicturePlayback;
+    BOOL _showsPlaybackControlsView;
+    BOOL _isAnimatingPlaybackControlsViewVisibility;
     AVFullScreenViewController *_fullScreenViewController;
-    unsigned int _animateFullScreenTransitionForPresenting:1;
-    unsigned int _isTransitioningToOrFromFullScreen:1;
-    unsigned int _animateFullScreenTransition:1;
-    unsigned int _transitionFromFullScreenOrDismissViewControllerWhenEnteringBackgroundAfterPictureInPictureStart:1;
+    BOOL _animateFullScreenTransitionForPresenting;
+    BOOL _isTransitioningToOrFromFullScreen;
+    BOOL _animateFullScreenTransition;
+    BOOL _transitionFromFullScreenOrDismissViewControllerWhenEnteringBackgroundAfterPictureInPictureStart;
     id<AVPlayerViewControllerDelegate> _delegate;
     struct {
-        unsigned int playerViewControllerWillStartPictureInPicture:1;
-        unsigned int playerViewControllerDidStartPictureInPicture:1;
-        unsigned int playerViewController_failedToStartPictureInPictureWithError:1;
-        unsigned int playerViewControllerWillStopPictureInPicture:1;
-        unsigned int playerViewControllerDidStopPictureInPicture:1;
-        unsigned int playerViewControllerShouldAutomaticallyDismissAtPictureInPictureStart:1;
-        unsigned int playerViewController_restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:1;
-        unsigned int playerViewController_shouldExitFullScreenWithReason:1;
+        BOOL playerViewControllerWillStartPictureInPicture;
+        BOOL playerViewControllerDidStartPictureInPicture;
+        BOOL playerViewController_failedToStartPictureInPictureWithError;
+        BOOL playerViewControllerWillStopPictureInPicture;
+        BOOL playerViewControllerDidStopPictureInPicture;
+        BOOL playerViewControllerShouldAutomaticallyDismissAtPictureInPictureStart;
+        BOOL playerViewController_restoreUserInterfaceForPictureInPictureStopWithCompletionHandler;
+        BOOL playerViewController_shouldExitFullScreenWithReason;
     } _delegateRespondsTo;
-    unsigned int _showsExitFullScreenButton:1;
+    BOOL _showsExitFullScreenButton;
 }
 
 @property (nonatomic) BOOL allowsPictureInPicturePlayback;
@@ -120,6 +120,7 @@
 - (void)_handleSingleTapGesture:(id)arg1;
 - (void)_hidePlaybackControlsViewIfPossible;
 - (void)_hidePlaybackControlsViewIfPossibleAfterDelayIfPlaying;
+- (void)_hidePlaybackControlsViewIfPossibleAfterDelayIfPlayingWithDelay:(double)arg1;
 - (void)_hidePlaybackControlsViewIfPossibleUntilFurtherUserInteraction;
 - (BOOL)_ignoreAppSupportedOrientations;
 - (BOOL)_isAudioOnlyContent;
@@ -177,6 +178,7 @@
 - (void)pictureInPictureControllerWillStartPictureInPicture:(id)arg1;
 - (void)pictureInPictureControllerWillStopPictureInPicture:(id)arg1;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
+- (long long)preferredWhitePointAdaptivityStyle;
 - (id)presentationController:(id)arg1 viewControllerForAdaptivePresentationStyle:(long long)arg2;
 - (void)scaleButtonTapped:(id)arg1;
 - (void)showPlaybackControlsViewForTouchDown;

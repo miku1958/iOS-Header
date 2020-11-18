@@ -6,27 +6,22 @@
 
 #import <UIKit/UIView.h>
 
-@class PGBackdropView, PGChevronView;
+@class PGChevronView;
 
 @interface PGStashedView : UIView
 {
-    unsigned int _active:1;
-    unsigned int _stashed:1;
-    PGBackdropView *_backdropView;
     PGChevronView *_chevronViewLeftColorBurn;
     PGChevronView *_chevronViewLeftPlusD;
     PGChevronView *_chevronViewRightColorBurn;
     PGChevronView *_chevronViewRightPlusD;
+    BOOL _stashed;
 }
 
-@property (nonatomic, getter=isActive) BOOL active;
-@property (nonatomic, getter=isStashed) BOOL stashed;
+@property (nonatomic, getter=isStashed) BOOL stashed; // @synthesize stashed=_stashed;
 
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)setActive:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setStashed:(BOOL)arg1 animated:(BOOL)arg2;
 
 @end
 

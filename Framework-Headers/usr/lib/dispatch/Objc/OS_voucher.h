@@ -6,23 +6,14 @@
 
 #import <dispatch/OS_object.h>
 
-#import <dispatch/OS_voucher-Protocol.h>
-
-@class NSString;
-
-__attribute__((visibility("hidden")))
-@interface OS_voucher : OS_object <OS_voucher>
+@interface OS_voucher : OS_object
 {
 }
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 + (void)load;
 - (void)_dispose;
 - (void)_xref_dispose;
+- (id)debugDescription;
 - (id)init;
 
 @end

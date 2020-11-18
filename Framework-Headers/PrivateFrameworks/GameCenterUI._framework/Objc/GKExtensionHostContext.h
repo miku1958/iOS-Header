@@ -25,7 +25,6 @@
 @property (readonly) Class superclass;
 
 - (void)dealloc;
-- (BOOL)extensionHasGameCenterEntitlement;
 - (id)extensionObjectProxy;
 - (void)hostApp:(id)arg1 grantingAccessExtensionSandbox:(id)arg2 replyWithEndpoint:(CDUnknownBlockType)arg3;
 - (void)nudge;

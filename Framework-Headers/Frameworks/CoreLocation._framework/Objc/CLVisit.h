@@ -17,11 +17,11 @@
     NSDate *_departureDate;
     double _horizontalAccuracy;
     NSDate *_detectionDate;
-    CDStruct_2c43369c _coordinate;
+    struct CLLocationCoordinate2D _coordinate;
 }
 
 @property (readonly, copy, nonatomic) NSDate *arrivalDate; // @synthesize arrivalDate=_arrivalDate;
-@property (readonly, nonatomic) CDStruct_c3b9c2ee coordinate; // @synthesize coordinate=_coordinate;
+@property (readonly, nonatomic) struct CLLocationCoordinate2D coordinate; // @synthesize coordinate=_coordinate;
 @property (readonly, copy, nonatomic) NSDate *departureDate; // @synthesize departureDate=_departureDate;
 @property (readonly, copy, nonatomic) NSDate *detectionDate; // @synthesize detectionDate=_detectionDate;
 @property (readonly, nonatomic) BOOL hasArrivalDate;
@@ -34,7 +34,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithCoordinate:(CDStruct_c3b9c2ee)arg1 horizontalAccuracy:(double)arg2 arrivalDate:(id)arg3 departureDate:(id)arg4 detectionDate:(id)arg5;
+- (id)initWithCoordinate:(struct CLLocationCoordinate2D)arg1 horizontalAccuracy:(double)arg2 arrivalDate:(id)arg3 departureDate:(id)arg4 detectionDate:(id)arg5;
 
 @end
 

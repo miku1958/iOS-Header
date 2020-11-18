@@ -53,7 +53,6 @@
     AVPlayerItem *nextItem;
     AVPlayerConnection *playerConnection;
     BOOL initialLimitReadAhead;
-    BOOL allowsExtendedReadAhead;
     long long initialPlaybackLikelyToKeepUpTrigger;
     BOOL initialWillNeverSeekBackwardsHint;
     BOOL initialAlwaysMonitorsPlayability;
@@ -100,11 +99,16 @@
     NSString *serviceIdentifier;
     BOOL networkUsuallyExceedsMaxBitRate;
     BOOL allowProgressiveSwitchUp;
+    BOOL allowProgressiveStartup;
+    BOOL allowProgressiveResume;
     struct CGSize IFramePrefetchTargetDimensions;
+    struct CGSize preferredPeakPresentationSize;
     double preferredPeakBitRate;
     CDStruct_1b6d18a9 maximumTrailingBufferDuration;
     CDStruct_1b6d18a9 maximumForwardBufferDuration;
     BOOL requiresAccessLog;
+    BOOL suppressesAudioOnlyVariants;
+    NSString *videoApertureMode;
     unsigned int RTCReportingFlags;
     long long status;
     NSError *error;

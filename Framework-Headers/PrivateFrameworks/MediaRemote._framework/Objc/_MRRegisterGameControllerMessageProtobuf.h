@@ -8,19 +8,19 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+@class _MRGameControllerPropertiesProtobuf;
+
 @interface _MRRegisterGameControllerMessageProtobuf : PBCodable <NSCopying>
 {
-    int _gameControllerProfile;
-    struct {
-        unsigned int gameControllerProfile:1;
-    } _has;
+    _MRGameControllerPropertiesProtobuf *_properties;
 }
 
-@property (nonatomic) int gameControllerProfile; // @synthesize gameControllerProfile=_gameControllerProfile;
-@property (nonatomic) BOOL hasGameControllerProfile;
+@property (readonly, nonatomic) BOOL hasProperties;
+@property (strong, nonatomic) _MRGameControllerPropertiesProtobuf *properties; // @synthesize properties=_properties;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

@@ -11,10 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface CUIRuntimeStatistics : NSObject
 {
+    long long _wasted_size;
+    long long _total_size;
+    long long _shortCircuitImageLookup;
+    long long _total_lookup;
     NSObject<OS_dispatch_queue> *_queue;
     int _notify_token;
-    double _wasted_size;
-    double _total_size;
 }
 
 + (void)generateLog;
@@ -22,6 +24,8 @@ __attribute__((visibility("hidden")))
 - (void)_logStatistics:(int)arg1;
 - (void)addStatisticAllocatedImageSize:(unsigned long long)arg1 roundedSize:(unsigned long long)arg2;
 - (void)dealloc;
+- (void)incrementStatisticDidShortCircuitImageLookup;
+- (void)incrementStatisticLookup;
 - (id)init;
 
 @end

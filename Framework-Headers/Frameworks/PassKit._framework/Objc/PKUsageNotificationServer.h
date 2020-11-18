@@ -22,6 +22,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (void)initializeUsageNotificationServer;

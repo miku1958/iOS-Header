@@ -23,7 +23,7 @@
 @property (strong, nonatomic) NSMutableArray *currentAddedObjects; // @synthesize currentAddedObjects=_currentAddedObjects;
 @property (strong, nonatomic) NSMutableArray *currentExistingObjects; // @synthesize currentExistingObjects=_currentExistingObjects;
 @property (strong, nonatomic) NSMutableArray *currentModifiedObjects; // @synthesize currentModifiedObjects=_currentModifiedObjects;
-@property (strong, nonatomic) HMObjectMergeOperations *currentOperations; // @synthesize currentOperations=_currentOperations;
+@property (weak, nonatomic) HMObjectMergeOperations *currentOperations; // @synthesize currentOperations=_currentOperations;
 @property (strong, nonatomic) NSMutableArray *currentRemovedObjects; // @synthesize currentRemovedObjects=_currentRemovedObjects;
 @property (readonly, nonatomic) NSArray *existingObjects;
 @property (readonly, nonatomic, getter=isModified) BOOL modified;

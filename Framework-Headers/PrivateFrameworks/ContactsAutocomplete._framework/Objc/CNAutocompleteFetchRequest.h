@@ -41,7 +41,6 @@
 + (id)request;
 + (id)searchablePropertiesForSearchType:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (BOOL)canExecute;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)executeWithDelegate:(id)arg1;
@@ -49,6 +48,7 @@
 - (id)includeDebugString;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isValid:(id *)arg1;
 - (id)searchTypeDebugString;
 
 @end

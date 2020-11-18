@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoardUIServices/FBSSceneSnapshotAction.h>
+#import <FrontBoardServices/FBSSceneSnapshotAction.h>
 
 @class BKSProcessAssertion, NSString;
 

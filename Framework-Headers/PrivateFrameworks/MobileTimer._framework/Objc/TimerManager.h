@@ -30,11 +30,11 @@
 + (void)updateTimerShortcutItem;
 + (BOOL)upgrade;
 - (void).cxx_destruct;
+- (void)_reloadStateAndRefreshLocalNotificationsWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)cancel;
 - (void)changeSound:(id)arg1;
 - (BOOL)pause;
 - (void)reloadState;
-- (void)reloadStateAndRefreshLocalNotifications;
 - (BOOL)resume;
 - (void)scheduleAt:(double)arg1 withSound:(id)arg2;
 - (void)setDefaultSound:(id)arg1;

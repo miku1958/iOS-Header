@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     CUIPSDLayerGroupRef *_layerGroup;
     unsigned int _currentIndex;
+    BOOL _isImageFile;
 }
 
 + (id)enumeratorWithPSDImage:(id)arg1;

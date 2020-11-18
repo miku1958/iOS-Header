@@ -15,7 +15,16 @@ struct _opaque_pthread_mutex_t {
     char __opaque[56];
 };
 
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    char _field1;
+    unsigned short _field2;
+} CDStruct_ec0e349a;
 
 typedef struct {
     long long _field1;

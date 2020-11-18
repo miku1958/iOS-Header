@@ -20,9 +20,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIBezierPath *path; // @synthesize path=_path;
 @property (strong, nonatomic) NSMutableArray *prevPoints; // @synthesize prevPoints=_prevPoints;
 
+- (void).cxx_destruct;
 - (void)addPoint:(struct)arg1;
 - (void)clear;
-- (void)dealloc;
 - (void)flush;
 - (id)initWithFIFO:(id)arg1;
 

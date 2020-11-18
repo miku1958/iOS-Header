@@ -31,10 +31,12 @@
 @property (readonly) BOOL hasMoves;
 @property (readonly) NSIndexSet *insertedIndexes;
 @property (readonly) NSArray *insertedObjects;
+@property (readonly, nonatomic) struct __CFArray *movedFromIndexes;
+@property (readonly, nonatomic) NSIndexSet *movedIndexes;
 @property (readonly) NSIndexSet *removedIndexes;
 @property (readonly) NSArray *removedObjects;
 
-+ (id)_oidsForPHObjects:(id)arg1;
++ (id)_identifiersForPHObjects:(id)arg1;
 + (id)changeDetailsFromFetchResult:(id)arg1 toFetchResult:(id)arg2 changedObjects:(id)arg3;
 - (void).cxx_destruct;
 - (void)calculateDiffs;

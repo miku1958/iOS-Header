@@ -10,8 +10,8 @@
 {
 }
 
++ (id)defaultPlaceholderText;
 + (BOOL)deleteAfterEditingIfEmpty;
-+ (id)placeholderText;
 
 @end
 

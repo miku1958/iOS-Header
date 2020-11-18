@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @protocol OS_dispatch_queue;
 
@@ -15,7 +15,7 @@
 @property (copy, nonatomic) CDUnknownBlockType connectedHandler;
 @property (copy, nonatomic) CDUnknownBlockType receiveDataHandler;
 @property (strong, nonatomic) id socketName;
-@property (nonatomic) NSObject<OS_dispatch_queue> *targetQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *targetQueue;
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 - (void)invalidate;

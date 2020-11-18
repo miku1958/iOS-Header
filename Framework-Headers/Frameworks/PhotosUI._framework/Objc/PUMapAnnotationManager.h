@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_processingQueue;
     int _updateId;
     struct CGSize _currentMapSize;
-    CDStruct_feeb6407 _currentCoordRegion;
+    CDStruct_b7cb895d _currentCoordRegion;
     BOOL _alwaysFadeRemoves;
     id<PUMapAnnotationManagerDataSource> _dataSource;
     MKMapView *_mapView;
@@ -43,19 +43,19 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) MKMapView *mapView; // @synthesize mapView=_mapView;
 @property (readonly) Class superclass;
 
-+ (BOOL)coordinateRegion:(CDStruct_feeb6407)arg1 overlapsWithCoordinateRegion2:(CDStruct_feeb6407)arg2;
-+ (void)mergeOverlappingAnnotations:(id)arg1 withQuadtree:(id)arg2 treeLevel:(unsigned int)arg3 coordRegion:(CDStruct_feeb6407)arg4 mapSize:(struct CGSize)arg5 annotationSize:(struct CGSize)arg6;
-+ (id)newAnnotationsFromQuadtree:(id)arg1 treeLevel:(unsigned int)arg2 coordRegion:(CDStruct_feeb6407)arg3 mapSize:(struct CGSize)arg4 updateId:(int)arg5 referenceId:(int *)arg6 annotationSize:(struct CGSize)arg7;
++ (BOOL)coordinateRegion:(CDStruct_b7cb895d)arg1 overlapsWithCoordinateRegion2:(CDStruct_b7cb895d)arg2;
++ (void)mergeOverlappingAnnotations:(id)arg1 withQuadtree:(id)arg2 treeLevel:(unsigned int)arg3 coordRegion:(CDStruct_b7cb895d)arg4 mapSize:(struct CGSize)arg5 annotationSize:(struct CGSize)arg6;
++ (id)newAnnotationsFromQuadtree:(id)arg1 treeLevel:(unsigned int)arg2 coordRegion:(CDStruct_b7cb895d)arg3 mapSize:(struct CGSize)arg4 updateId:(int)arg5 referenceId:(int *)arg6 annotationSize:(struct CGSize)arg7;
 - (void).cxx_destruct;
 - (BOOL)_addMappedAnimationInfoToInfoSet:(id)arg1 forRemoveAnnotation:(id)arg2 remainingRemoveAnnotationsToAnimate:(id)arg3 remainingAddedAnnotationsToAnimate:(id)arg4 addContainsRemoveMap:(id)arg5 removeContainsAddMap:(id)arg6 activeTreeLevel:(unsigned int)arg7 addAddressesToAnnotations:(id)arg8;
 - (id)_animatableMapViewAnnotations;
 - (void)_executeOnProcessingQueueWithBlock:(CDUnknownBlockType)arg1;
 - (long long)_fadeTypeWithIsEqual:(BOOL)arg1 removeAnnotation:(id)arg2 addAnnotation:(id)arg3 isRemove:(BOOL)arg4;
-- (void)_internalUpdateAnnotationsTreeLevel:(unsigned int)arg1 coordRegion:(CDStruct_feeb6407)arg2 mapSize:(struct CGSize)arg3 updateId:(int)arg4;
+- (void)_internalUpdateAnnotationsTreeLevel:(unsigned int)arg1 coordRegion:(CDStruct_b7cb895d)arg2 mapSize:(struct CGSize)arg3 updateId:(int)arg4;
 - (id)_puAnnotationViewForAnnotation:(id)arg1;
 - (void)_removeAnnotationFromMapView:(id)arg1 wasAnimated:(BOOL)arg2;
 - (void)_updateAnnotationsForMapViewAdjustTreeLevel:(BOOL)arg1 forceUpdate:(BOOL)arg2;
-- (void)_updateAnnotationsFromQuadtreeWithTreeLevel:(unsigned int)arg1 coordRegion:(CDStruct_feeb6407)arg2 mapSize:(struct CGSize)arg3 updateId:(int)arg4;
+- (void)_updateAnnotationsFromQuadtreeWithTreeLevel:(unsigned int)arg1 coordRegion:(CDStruct_b7cb895d)arg2 mapSize:(struct CGSize)arg3 updateId:(int)arg4;
 - (void)_updateAnnotationsWithIncomingAnnotationToAddress:(id)arg1;
 - (BOOL)_updateMapParams;
 - (BOOL)_updateTreeLevelFromMap;
@@ -63,7 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)addAnnotation:(id)arg1;
 - (void)addAnnotations:(id)arg1;
 - (id)init;
-- (id)mapAnnotationQuadtree:(id)arg1 aggregateAnnotationForAnnotations:(id)arg2 averageCoordinate:(CDStruct_c3b9c2ee)arg3;
+- (id)mapAnnotationQuadtree:(id)arg1 aggregateAnnotationForAnnotations:(id)arg2 averageCoordinate:(struct CLLocationCoordinate2D)arg3;
 - (void)mapView:(id)arg1 didAddAnnotationViews:(id)arg2;
 - (void)removeAllMapAnnotations;
 - (void)removeAnnotation:(id)arg1;

@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 - (id)data;
 - (double)daylightSavingTimeOffsetForDate:(id)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (BOOL)isDaylightSavingTimeForDate:(id)arg1;
 - (id)localizedName:(long long)arg1 locale:(id)arg2;
 - (id)name;

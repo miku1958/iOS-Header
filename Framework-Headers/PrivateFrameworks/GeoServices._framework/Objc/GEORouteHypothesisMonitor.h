@@ -7,20 +7,19 @@
 #import <Foundation/NSObject.h>
 
 #import <GeoServices/GEOETAUpdaterDelegate-Protocol.h>
-#import <GeoServices/GEORouteHypothesizerUpdaterDelegate-Protocol.h>
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequestFeedback, GEOETARoute, GEOETAUpdater, GEOLocation, GEOMapServiceTraits, GEORoute, GEORouteAttributes, GEORouteHypothesis, GEORouteHypothesizerAnalyticsStore, GEORouteHypothesizerUpdater, NSData, NSDate, NSString;
+@class GEOCommonOptions, GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsRequestFeedback, GEOETARoute, GEOETAUpdater, GEOLocation, GEOMapRegion, GEOMapServiceTraits, GEORouteAttributes, GEORouteHypothesis, GEORouteHypothesizerAnalyticsStore, GEORouteMatch, NSDate, NSMutableArray, NSString;
+@protocol OS_dispatch_semaphore;
 
-@interface GEORouteHypothesisMonitor : NSObject <GEORouteHypothesizerUpdaterDelegate, GEOETAUpdaterDelegate, NSSecureCoding>
+@interface GEORouteHypothesisMonitor : NSObject <GEOETAUpdaterDelegate, NSSecureCoding>
 {
     CDUnknownBlockType _handler;
-    CDUnknownBlockType _errorHandler;
     GEODirectionsRequestFeedback *_feedback;
     GEOComposedWaypoint *_source;
     GEOComposedWaypoint *_destination;
+    GEOLocation *_originLocation;
     int _transportType;
-    NSDate *_departureDate;
     NSDate *_arrivalDate;
     GEORouteHypothesis *_hypothesis;
     GEOLocation *_lastLocation;
@@ -28,36 +27,58 @@
     GEOETARoute *_liveETARoute;
     GEOETARoute *_baselineETARoute;
     GEORouteAttributes *_routeAttributes;
-    GEORouteHypothesizerUpdater *_updater;
-    GEORoute *_existingRoute;
-    NSData *_usualRouteData;
+    GEOCommonOptions *_commonOptions;
     GEOMapServiceTraits *_traits;
     GEORouteHypothesizerAnalyticsStore *_analyticsStore;
+    GEOComposedRoute *_route;
+    NSObject<OS_dispatch_semaphore> *_requestLock;
+    GEODirectionsRequest *_currentRequest;
+    BOOL _needReroute;
+    NSMutableArray *_rerouteEntries;
+    GEORouteMatch *_routeMatch;
+    GEOLocation *_lastMatchedLocation;
+    BOOL _hasArrived;
+    BOOL _isTraveling;
+    double _travelScore;
+    GEOMapRegion *_arrivalMapRegion;
 }
 
 @property (readonly, nonatomic) NSDate *arrivalDate; // @synthesize arrivalDate=_arrivalDate;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) NSDate *departureDate; // @synthesize departureDate=_departureDate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) GEOComposedWaypoint *destination; // @synthesize destination=_destination;
 @property (strong, nonatomic) GEODirectionsRequestFeedback *feedback; // @synthesize feedback=_feedback;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) GEOComposedRoute *route;
+@property (readonly, nonatomic) GEORouteHypothesis *hypothesis; // @synthesize hypothesis=_hypothesis;
+@property (readonly, nonatomic) NSString *routeName;
 @property (readonly, nonatomic) GEOComposedWaypoint *source; // @synthesize source=_source;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsDirections;
 @property (readonly, nonatomic) BOOL supportsLiveTraffic;
 @property (readonly, nonatomic) int transportType; // @synthesize transportType=_transportType;
 
++ (id)monitorWithSource:(id)arg1 toDestination:(id)arg2 transportType:(int)arg3 arrivalDate:(id)arg4 traits:(id)arg5;
++ (id)serverFormattedStringFormatter;
++ (void)setServerFormattedStringFormatter:(id)arg1;
++ (void)setUserPreferencesProvider:(id)arg1;
 + (BOOL)supportsSecureCoding;
++ (id)userPreferencesProvider;
 - (void)_commonInit;
-- (void)_createFeedback;
-- (void)_createRouteAttributes;
-- (void)_createUpdaterWithStartingLocation:(id)arg1;
+- (void)_executeBlockAccessingCurrentRequest:(CDUnknownBlockType)arg1;
+- (void)_fetchETAWithRouteMatch:(id)arg1;
 - (void)_finishEtaUpdaterInit;
-- (void)_refreshETAWithRouteMatch:(id)arg1;
-- (void)_updateETAWithRouteMatch:(id)arg1;
-- (void)_updateLocation:(id)arg1 hypothesisHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
+- (BOOL)_hasInitialRoute;
+- (void)_recalculateETAWithRouteMatch:(id)arg1;
+- (void)_recievedRouteResponse:(id)arg1 forLocation:(id)arg2 isReroute:(BOOL)arg3;
+- (void)_requestNewRouteFromLocation:(id)arg1 usualRouteData:(id)arg2;
+- (void)_routeRequestFailed:(id)arg1;
+- (void)_showDebugAlert;
+- (void)_updateLocation:(id)arg1 allowServer:(BOOL)arg2;
+- (void)_updateRouteMatchETAAndTravelState;
+- (void)_updateScoreForLocation:(id)arg1;
+- (void)callHandlerIvar;
+- (void)cancelCurrentRequest;
+- (void)checkRouteForLocation:(id)arg1;
 - (void)clientDisplayedUINotification:(unsigned long long)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
@@ -65,21 +86,16 @@
 - (void)etaUpdater:(id)arg1 receivedError:(id)arg2;
 - (void)etaUpdater:(id)arg1 willSendETATrafficUpdateRequest:(id)arg2;
 - (void)etaUpdaterReceivedInvalidRoute:(id)arg1 newRoute:(id)arg2 incidentsOnRoute:(id)arg3 incidentsOffRoute:(id)arg4;
+- (void)etaUpdaterRequestCompleted:(id)arg1;
 - (id)etaUpdaterRoutesForETATrafficUpdateRequest:(id)arg1;
 - (void)etaUpdaterUpdatedETA:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithExistingRoute:(id)arg1 source:(id)arg2 destination:(id)arg3 etaUpdater:(id)arg4 traits:(id)arg5;
-- (id)initWithSource:(id)arg1 toDestination:(id)arg2 transportType:(int)arg3 arrivalDate:(id)arg4 usualRouteData:(id)arg5 traits:(id)arg6;
-- (id)initWithSource:(id)arg1 toDestination:(id)arg2 transportType:(int)arg3 departureDate:(id)arg4 usualRouteData:(id)arg5 traits:(id)arg6;
+- (id)initWithSource:(id)arg1 toDestination:(id)arg2 transportType:(int)arg3 arrivalDate:(id)arg4 traits:(id)arg5;
 - (void)recordETAUpdatesAfterEventStart;
-- (void)routeHypothesizerUpdater:(id)arg1 didChangeTravelState:(BOOL)arg2;
-- (void)routeHypothesizerUpdater:(id)arg1 faultedWithError:(id)arg2;
-- (void)routeHypothesizerUpdater:(id)arg1 receivedNewRoute:(id)arg2 request:(id)arg3 response:(id)arg4;
-- (void)routeHypothesizerUpdater:(id)arg1 willRequestNewRoute:(id)arg2;
-- (void)routeHypothesizerUpdaterDidArrive:(id)arg1;
+- (id)routeMatchForLocation:(id)arg1;
 - (void)stopMonitoring;
-- (void)updateLocation:(id)arg1 hypothesisHandler:(CDUnknownBlockType)arg2;
-- (void)updateLocation:(id)arg1 hypothesisHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
+- (void)travelStateChanged;
+- (void)updateLocation:(id)arg1 allowServer:(BOOL)arg2 hypothesisHandler:(CDUnknownBlockType)arg3;
 
 @end
 

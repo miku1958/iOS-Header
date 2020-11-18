@@ -10,9 +10,9 @@
 {
 }
 
-+ (void)_insertCode:(long long)arg1 forIdentifier:(id)arg2;
 - (BOOL)_acceptsValue:(long long)arg1;
 - (long long)_defaultValue;
+- (id)_predicateForSDKVersion:(unsigned int)arg1;
 - (BOOL)_validateMetadata:(id)arg1 error:(id *)arg2;
 
 @end

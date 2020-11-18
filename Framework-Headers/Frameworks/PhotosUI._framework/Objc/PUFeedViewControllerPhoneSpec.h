@@ -30,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (id)gridSpec;
 - (long long)largeNumberOfSubjectsForLikes;
 - (struct CGSize)minimumVideoTileSize;
-- (id)photoBrowserSpec;
 - (id)photosPickerSpec;
 - (long long)promptStyle;
 - (BOOL)shouldHideBarsInLandscape;

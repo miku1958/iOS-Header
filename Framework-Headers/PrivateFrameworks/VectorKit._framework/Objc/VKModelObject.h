@@ -6,8 +6,8 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSMutableArray, VKWorld;
-@protocol OS_dispatch_semaphore;
+@class NSArray, NSMutableArray, VKSharedResources, VKWorld;
+@protocol MDRenderTarget, OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
 @interface VKModelObject : NSObject
@@ -21,10 +21,14 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_semaphore> *_drawReady;
     struct map<md::CommandBufferId, std::__1::unique_ptr<ggl::CommandBuffer, std::__1::default_delete<ggl::CommandBuffer>>, std::__1::less<md::CommandBufferId>, std::__1::allocator<std::__1::pair<const md::CommandBufferId, std::__1::unique_ptr<ggl::CommandBuffer, std::__1::default_delete<ggl::CommandBuffer>>>>> _commandBuffers;
     struct CommandBufferIdSet _supportedPassIds;
+    VKSharedResources *_sharedResources;
+    id<MDRenderTarget> _renderTarget;
 }
 
 @property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
-@property (readonly, nonatomic) shared_ptr_f06afc6c styleManager;
+@property (readonly, nonatomic) id<MDRenderTarget> renderTarget; // @synthesize renderTarget=_renderTarget;
+@property (readonly, nonatomic) VKSharedResources *sharedResources; // @synthesize sharedResources=_sharedResources;
+@property (readonly, nonatomic) shared_ptr_a3c46825 styleManager;
 @property (readonly, nonatomic) NSArray *submodels; // @synthesize submodels=_submodels;
 @property (readonly, nonatomic) VKModelObject *supermodel; // @synthesize supermodel=_supermodel;
 @property (nonatomic) VKWorld *world; // @synthesize world=_world;
@@ -34,14 +38,17 @@ __attribute__((visibility("hidden")))
 - (void)_removeSubmodel:(id)arg1;
 - (void)addSubmodel:(id)arg1;
 - (void)clearCommandBuffers;
+- (void)clearLockedCommandBuffers;
 - (void)dealloc;
 - (void)didMoveToSupermodel;
 - (void)didReceiveMemoryWarning:(BOOL)arg1;
 - (void)didRemoveFromSuperModel;
-- (void)gglLayoutScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
-- (void)gglLayoutSceneIfNeeded:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3 dispatchQueue:(id)arg4;
-- (id)init;
-- (void)layoutScene:(id)arg1 withContext:(id)arg2;
+- (void)gglLayoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
+- (void)gglLayoutSceneIfNeeded:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3 dispatchQueue:(id)arg4;
+- (void)gglLayoutSceneWithoutStyleManager:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
+- (BOOL)hasSubmodel:(id)arg1;
+- (id)initWithTarget:(id)arg1 sharedResources:(id)arg2;
+- (void)layoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2;
 - (void)lockCommandBuffers:(struct RenderQueue *)arg1;
 - (void)removeFromSupermodel;
 - (void)removeSubmodel:(id)arg1;

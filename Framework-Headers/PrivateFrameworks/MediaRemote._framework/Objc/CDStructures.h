@@ -10,9 +10,21 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct NSMutableDictionary {
+    Class _field1;
+};
+
+struct _MRHIDButtonEvent {
+    unsigned int _field1;
+    unsigned int _field2;
+    BOOL _field3;
+};
+
 struct _MRHIDTouchEvent {
     union _MRHIDPoint _field1;
     unsigned int _field2;
+    unsigned long long _field3;
+    unsigned int _field4;
 };
 
 struct _MRTextInputTraits {
@@ -64,6 +76,13 @@ typedef struct {
 } CDStruct_627e0f85;
 
 typedef struct {
+    CDStruct_627e0f85 _field1;
+    BOOL _field2;
+    double _field3;
+    double _field4;
+} CDStruct_c537be58;
+
+typedef struct {
     int type;
     union {
         struct {
@@ -90,9 +109,10 @@ typedef struct {
             float x;
             float y;
             BOOL touchDown;
+            unsigned long long timestamp;
         } digitizer;
     } ;
-} CDStruct_9f528be3;
+} CDStruct_06eb3966;
 
 // Ambiguous groups
 typedef struct {

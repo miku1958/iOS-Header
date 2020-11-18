@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOStyleAttributes, NSData, NSMutableArray, NSString;
+@class GEOStyleAttributes, NSData, NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPDBrowseCategory : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSString *_displayString;
     NSString *_popularDisplayToken;
     NSString *_shortDisplayString;
@@ -31,7 +32,9 @@
 @property (strong, nonatomic) GEOStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
 @property (strong, nonatomic) NSMutableArray *subCategorys; // @synthesize subCategorys=_subCategorys;
 @property (strong, nonatomic) NSData *suggestionEntryMetadata; // @synthesize suggestionEntryMetadata=_suggestionEntryMetadata;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)subCategoryType;
 - (void)addSubCategory:(id)arg1;
 - (void)clearSubCategorys;
 - (void)copyTo:(id)arg1;

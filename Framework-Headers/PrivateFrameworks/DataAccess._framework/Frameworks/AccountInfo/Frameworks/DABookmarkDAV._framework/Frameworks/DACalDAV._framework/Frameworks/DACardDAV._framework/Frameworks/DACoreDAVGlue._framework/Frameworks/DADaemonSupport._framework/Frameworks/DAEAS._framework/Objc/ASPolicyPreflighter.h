@@ -32,6 +32,7 @@
 
 - (void).cxx_destruct;
 - (id)_originalKey;
+- (void)acknowledgeAccountOnlyRemoteWipeWithSuccess:(BOOL)arg1;
 - (void)acknowledgeIntentionToRemoteWipe;
 - (void)acknowledgePolicyCompliance;
 - (void)cancelPendingPreflightRequest;
@@ -39,7 +40,7 @@
 - (id)initWithAccount:(id)arg1 policyKey:(id)arg2;
 - (void)invalidate;
 - (void)provisionTask:(id)arg1 failedWithError:(id)arg2;
-- (void)provisionTask:(id)arg1 wipeRequested:(BOOL)arg2 policies:(id)arg3 status:(int)arg4;
+- (void)provisionTask:(id)arg1 wipeRequested:(BOOL)arg2 accountOnlyRipeRequested:(BOOL)arg3 policies:(id)arg4 status:(int)arg5;
 - (void)startPreflight;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSConditionLock, NSMutableArray, UIKeyboardTaskEntry, UIKeyboardTaskExecutionContext;
+@class NSArray, NSConditionLock, NSMutableArray, UIKeyboardTaskEntry, UIKeyboardTaskExecutionContext;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardTaskQueue : NSObject
@@ -17,10 +17,13 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_deferredTasks;
     UIKeyboardTaskExecutionContext *_executionContext;
     UIKeyboardTaskEntry *_mainThreadContinuation;
+    NSArray *_activeOriginator;
 }
 
+@property (strong, nonatomic) NSArray *activeOriginator; // @synthesize activeOriginator=_activeOriginator;
 @property (strong, nonatomic) UIKeyboardTaskExecutionContext *executionContext; // @synthesize executionContext=_executionContext;
 
+- (id)addAndReturnTask:(CDUnknownBlockType)arg1;
 - (void)addDeferredTask:(CDUnknownBlockType)arg1;
 - (void)addTask:(CDUnknownBlockType)arg1;
 - (void)continueExecutionOnMainThread;
@@ -31,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)lock;
 - (void)lockWhenReadyForMainThread;
 - (void)performDeferredTaskIfIdle;
+- (void)performSingleTask:(CDUnknownBlockType)arg1;
 - (void)performTask:(CDUnknownBlockType)arg1;
 - (void)performTaskOnMainThread:(CDUnknownBlockType)arg1 waitUntilDone:(BOOL)arg2;
 - (void)promoteDeferredTaskIfIdle;
@@ -38,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)tryLockWhenReadyForMainThread;
 - (void)unlock;
 - (void)waitUntilAllTasksAreFinished;
+- (void)waitUntilTaskIsFinished:(id)arg1;
 
 @end
 

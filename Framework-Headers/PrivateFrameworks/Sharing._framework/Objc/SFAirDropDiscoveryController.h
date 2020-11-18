@@ -38,6 +38,7 @@
 @property (readonly) Class superclass;
 @property (readonly, getter=isVisible) BOOL visible;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)discoverableModeAlertController;
 - (id)discoverableModeToString:(long long)arg1;

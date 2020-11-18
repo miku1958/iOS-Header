@@ -6,51 +6,28 @@
 
 #import <objc/NSObject.h>
 
+@class ICDrawingCommandData;
+
 @interface ICDrawingCommand : NSObject
 {
-    struct CGRect _cachedBounds;
-    vector_82e5b66f _points;
-    BOOL _isClipped;
     BOOL _hidden;
-    unsigned int _type;
-    struct CGColor *_color;
-    struct CGPoint _clipOrigin;
-    struct CGPoint _clipNormal;
+    ICDrawingCommandData *_data;
     struct TopoID _timestamp;
-    CDStruct_30364a2d _parameters;
-    struct ICDrawingCommandID _commandID;
-    CDStruct_4a3d0796 _baseValues;
 }
 
-@property (nonatomic) CDStruct_4a3d0796 baseValues; // @synthesize baseValues=_baseValues;
-@property (readonly, nonatomic) struct CGRect bounds;
-@property (nonatomic) struct CGPoint clipNormal; // @synthesize clipNormal=_clipNormal;
-@property (nonatomic) struct CGPoint clipOrigin; // @synthesize clipOrigin=_clipOrigin;
-@property (strong, nonatomic) struct CGColor *color; // @synthesize color=_color;
-@property (nonatomic) struct ICDrawingCommandID commandID; // @synthesize commandID=_commandID;
-@property (nonatomic) BOOL hidden; // @synthesize hidden=_hidden;
-@property BOOL isClipped; // @synthesize isClipped=_isClipped;
-@property (nonatomic) CDStruct_30364a2d parameters; // @synthesize parameters=_parameters;
-@property (readonly, nonatomic) vector_82e5b66f *points; // @synthesize points=_points;
-@property (readonly, nonatomic) unsigned int randomSeed;
-@property (nonatomic) struct TopoID timestamp; // @synthesize timestamp=_timestamp;
-@property (nonatomic) unsigned int type; // @synthesize type=_type;
+@property (readonly, nonatomic) ICDrawingCommandData *data; // @synthesize data=_data;
+@property (readonly, nonatomic) BOOL hidden; // @synthesize hidden=_hidden;
+@property (readonly, nonatomic) struct TopoID timestamp; // @synthesize timestamp=_timestamp;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
-- (id)init;
 - (id)initWithArchive:(const struct Command *)arg1 version:(unsigned int)arg2 sortedUUIDs:(id)arg3;
-- (void)invalidateBounds;
+- (id)initWithCommand:(id)arg1 hidden:(BOOL)arg2 timestamp:(struct TopoID)arg3;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isEqualDrawingCommand:(id)arg1;
-- (CDStruct_4a3d0796)readPointFromArchive:(const struct Point *)arg1 deltaFrom:(const CDStruct_4a3d0796 *)arg2;
-- (double)renderCost;
-- (unsigned int)savePoint:(const CDStruct_4a3d0796 *)arg1 deltaFrom:(const CDStruct_4a3d0796 *)arg2 toArchive:(struct Point *)arg3;
+- (BOOL)isEqualDrawingVisibleCommand:(id)arg1;
 - (unsigned int)saveToArchive:(struct Command *)arg1 sortedUUIDs:(id)arg2 withPathData:(BOOL)arg3;
-- (CDStruct_30364a2d)version1Parameters;
 
 @end
 

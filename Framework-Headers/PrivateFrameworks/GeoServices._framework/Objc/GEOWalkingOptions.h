@@ -22,8 +22,10 @@
 @property (nonatomic) BOOL hasPreferredSpeed;
 @property (nonatomic) double preferredSpeed; // @synthesize preferredSpeed=_preferredSpeed;
 
+- (int)StringAsAvoidedModes:(id)arg1;
 - (void)addAvoidedMode:(int)arg1;
 - (int)avoidedModeAtIndex:(unsigned long long)arg1;
+- (id)avoidedModesAsString:(int)arg1;
 - (void)clearAvoidedModes;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

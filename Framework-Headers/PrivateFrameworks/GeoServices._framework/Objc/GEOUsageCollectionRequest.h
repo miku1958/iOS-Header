@@ -24,6 +24,9 @@
 @property (strong, nonatomic) NSMutableArray *timeToLeaveHypothesisFeedbackCollections; // @synthesize timeToLeaveHypothesisFeedbackCollections=_timeToLeaveHypothesisFeedbackCollections;
 @property (strong, nonatomic) NSMutableArray *timeToLeaveInitialTravelTimeFeedbackCollections; // @synthesize timeToLeaveInitialTravelTimeFeedbackCollections=_timeToLeaveInitialTravelTimeFeedbackCollections;
 
++ (Class)abExperimentAssignmentType;
++ (Class)timeToLeaveHypothesisFeedbackCollectionType;
++ (Class)timeToLeaveInitialTravelTimeFeedbackCollectionType;
 - (id)abExperimentAssignmentAtIndex:(unsigned long long)arg1;
 - (unsigned long long)abExperimentAssignmentsCount;
 - (void)addAbExperimentAssignment:(id)arg1;

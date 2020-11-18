@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSIndexSet, PUPhotoBrowserControllerSpec, PUPhotosGridViewControllerSpec, PUPhotosPickerViewControllerSpec;
+@class NSIndexSet, PUPhotosGridViewControllerSpec, PUPhotosPickerViewControllerSpec;
 
 __attribute__((visibility("hidden")))
 @interface PUFeedViewControllerSpec : NSObject
@@ -34,7 +34,6 @@ __attribute__((visibility("hidden")))
     NSIndexSet *_qualityImageFormats;
     long long _largeNumberOfSubjectsForLikes;
     PUFeedViewControllerSpec *_popoverFeedViewControllerSpec;
-    PUPhotoBrowserControllerSpec *_photoBrowserSpec;
     PUPhotosGridViewControllerSpec *_gridSpec;
     PUPhotosPickerViewControllerSpec *_photosPickerSpec;
     long long _promptStyle;
@@ -45,11 +44,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) PUPhotosGridViewControllerSpec *gridSpec; // @synthesize gridSpec=_gridSpec;
 @property (readonly, nonatomic) long long largeNumberOfSubjectsForLikes; // @synthesize largeNumberOfSubjectsForLikes=_largeNumberOfSubjectsForLikes;
 @property (readonly, nonatomic) struct CGSize minimumVideoTileSize; // @synthesize minimumVideoTileSize=_minimumVideoTileSize;
-@property (readonly, nonatomic) PUPhotoBrowserControllerSpec *photoBrowserSpec; // @synthesize photoBrowserSpec=_photoBrowserSpec;
 @property (readonly, nonatomic) PUPhotosPickerViewControllerSpec *photosPickerSpec; // @synthesize photosPickerSpec=_photosPickerSpec;
 @property (readonly, nonatomic) PUFeedViewControllerSpec *popoverFeedViewControllerSpec; // @synthesize popoverFeedViewControllerSpec=_popoverFeedViewControllerSpec;
 @property (readonly, nonatomic) long long promptStyle; // @synthesize promptStyle=_promptStyle;
-@property (copy, nonatomic) NSIndexSet *qualityImageFormats; // @synthesize qualityImageFormats=_qualityImageFormats;
+@property (copy, nonatomic, setter=_setQualityImageFormats:) NSIndexSet *qualityImageFormats; // @synthesize qualityImageFormats=_qualityImageFormats;
 @property (readonly, nonatomic) BOOL shouldHideBarsInLandscape; // @synthesize shouldHideBarsInLandscape=_shouldHideBarsInLandscape;
 @property (readonly, nonatomic) BOOL shouldShowInvitationsInPopover; // @synthesize shouldShowInvitationsInPopover=_shouldShowInvitationsInPopover;
 @property (readonly, nonatomic) BOOL shouldUseAspectThumbnails; // @synthesize shouldUseAspectThumbnails=_shouldUseAspectThumbnails;
@@ -57,7 +55,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGSize thumbnailSize; // @synthesize thumbnailSize=_thumbnailSize;
 
 - (void).cxx_destruct;
-- (void)_setQualityImageFormats:(id)arg1;
 - (BOOL)canUseSimplePreheatManager;
 - (void)configureCommentSeparatorMetrics:(inout struct PUFeedSeparatorMetrics *)arg1;
 - (void)configureFeedCollectionViewLayout:(id)arg1 forCollectionViewType:(long long)arg2 collectionViewSize:(struct CGSize)arg3 contentInset:(struct UIEdgeInsets)arg4;

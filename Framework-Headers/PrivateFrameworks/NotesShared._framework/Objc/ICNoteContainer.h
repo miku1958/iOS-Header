@@ -25,7 +25,10 @@
 @property (nonatomic) int sortOrder; // @dynamic sortOrder;
 @property (readonly) Class superclass;
 
++ (id)keyPathsForValuesAffectingCloudAccount;
 - (id)accountName;
+- (id)cloudAccount;
+- (id)noteContainerAccount;
 - (BOOL)noteIsVisible:(id)arg1;
 - (id)noteVisibilityTestingForSearchingAccount;
 - (id)predicateForSearchableAttachments;

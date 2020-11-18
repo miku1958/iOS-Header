@@ -18,7 +18,8 @@
 - (id<NSCopying>)visualIdenticalityIdentifierForCatalog:(MPArtworkCatalog *)arg1;
 
 @optional
-- (id)existingArtworkEffectResultForEffectType:(unsigned long long)arg1 catalog:(MPArtworkCatalog *)arg2 options:(NSDictionary *)arg3;
-- (void)loadArtworkEffectResultForEffectType:(unsigned long long)arg1 catalog:(MPArtworkCatalog *)arg2 options:(NSDictionary *)arg3 systemEffectHandler:(void (^)(void (^)(id, NSError *)))arg4 completionHandler:(void (^)(id, NSError *))arg5;
+- (id)existingArtworkEffectResultForEffectType:(long long)arg1 catalog:(MPArtworkCatalog *)arg2 options:(NSDictionary *)arg3;
+- (BOOL)hasExistingRepresentationOnDiskForArtworkCatalog:(MPArtworkCatalog *)arg1;
+- (void)loadArtworkEffectResultForEffectType:(long long)arg1 catalog:(MPArtworkCatalog *)arg2 options:(NSDictionary *)arg3 systemEffectHandler:(void (^)(void (^)(id, NSError *)))arg4 completionHandler:(void (^)(id, NSError *))arg5;
 @end
 

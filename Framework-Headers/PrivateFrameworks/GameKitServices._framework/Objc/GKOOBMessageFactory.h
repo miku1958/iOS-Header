@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @interface GKOOBMessageFactory : NSObject
 {
 }
 
-+ (id)createMessageFromData:(id)arg1;
++ (id)newMessageFromData:(id)arg1;
 
 @end
 

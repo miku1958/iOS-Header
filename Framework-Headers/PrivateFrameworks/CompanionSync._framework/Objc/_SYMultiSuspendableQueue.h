@@ -6,21 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSMutableArray, NSString;
 @protocol OS_dispatch_queue;
 
 @interface _SYMultiSuspendableQueue : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_targetQueue;
-    int _resumeCount;
+    unsigned long long _stateHandle;
+    _Atomic int _resumeCount;
+    NSMutableArray *_latestSuspendBacktraces;
+    NSMutableArray *_latestResumeBacktraces;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) unsigned int qosClass;
 @property (readonly, nonatomic, getter=isSuspended) BOOL suspended;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *targetQueue;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *targetQueue;
 
 - (void).cxx_destruct;
 - (void)async:(CDUnknownBlockType)arg1;
@@ -29,6 +32,7 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithName:(id)arg1 qosClass:(unsigned int)arg2 serial:(BOOL)arg3;
+- (id)initWithName:(id)arg1 qosClass:(unsigned int)arg2 serial:(BOOL)arg3 target:(id)arg4;
 - (void)resume;
 - (void)suspend;
 - (void)sync:(CDUnknownBlockType)arg1;

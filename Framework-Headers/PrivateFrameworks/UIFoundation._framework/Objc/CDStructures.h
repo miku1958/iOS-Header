@@ -141,7 +141,12 @@ struct _NSRunBlock {
 struct _NSStoredContainerUsage {
     struct CGRect _field1;
     struct CGRect _field2;
-    CDStruct_cfe5321f _field3;
+    struct {
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :29;
+    } _field3;
     struct CGRect _field4;
     struct _NSRange _field5;
 };
@@ -153,13 +158,6 @@ typedef struct {
     unsigned long long _field2;
     BOOL _field3;
 } CDStruct_f03de906;
-
-typedef struct {
-    unsigned int _forceColorWrite:1;
-    unsigned int _activeFontFeatures:1;
-    unsigned int _preserveNaturalAlignment:1;
-    unsigned int _reserved:29;
-} CDStruct_cfe5321f;
 
 typedef struct {
     long long location;

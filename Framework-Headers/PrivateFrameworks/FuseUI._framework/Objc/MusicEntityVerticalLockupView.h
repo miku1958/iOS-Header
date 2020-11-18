@@ -7,25 +7,22 @@
 #import <FuseUI/MusicEntityAbstractLockupView.h>
 
 #import <FuseUI/MusicEntityContentDescriptorViewConfiguring-Protocol.h>
-#import <FuseUI/MusicEntityViewDownloadInformationObserving-Protocol.h>
 
 @class MusicEntityViewContentDescriptor, NSString, UIImageView;
 @protocol MusicEntityValueProviding, MusicEntityVerticalLockupViewDelegate;
 
-@interface MusicEntityVerticalLockupView : MusicEntityAbstractLockupView <MusicEntityContentDescriptorViewConfiguring, MusicEntityViewDownloadInformationObserving>
+@interface MusicEntityVerticalLockupView : MusicEntityAbstractLockupView <MusicEntityContentDescriptorViewConfiguring>
 {
     UIImageView *_availableOfflineBadgeImageView;
     BOOL _isAvailableOffline;
     double _textLateralEdgePadding;
     id<MusicEntityVerticalLockupViewDelegate> _delegate;
-    struct MusicEntityDownloadInformation _downloadInformation;
 }
 
 @property (strong, nonatomic) MusicEntityViewContentDescriptor *contentDescriptor;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MusicEntityVerticalLockupViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) struct MusicEntityDownloadInformation downloadInformation; // @synthesize downloadInformation=_downloadInformation;
 @property (strong, nonatomic) id<MusicEntityValueProviding> entityValueProvider;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
@@ -33,7 +30,6 @@
 + (double)maximumHeightForContentDescriptor:(id)arg1 width:(double)arg2 traitCollection:(id)arg3;
 - (void).cxx_destruct;
 - (void)_contentDescriptorDidChange:(id)arg1;
-- (void)_handlePlayButtonTappedWithAction:(unsigned long long)arg1;
 - (BOOL)_shouldArtworkViewRespectHighlightProperty;
 - (BOOL)_shouldEnableArtworkViewUserInteraction;
 - (void)layoutSubviews;

@@ -21,10 +21,10 @@ __attribute__((visibility("hidden")))
 @property long long pageCount;
 @property long long pageNumber;
 
+- (void).cxx_destruct;
 - (struct CGPath *)_copyMutablePathForRoundedRect:(struct CGRect)arg1 radius:(double)arg2 inverted:(BOOL)arg3;
 - (id)_indexFormatter;
 - (void)_updateString;
-- (void)dealloc;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

@@ -21,6 +21,7 @@
 @property (strong) OKMediaFeeder *mediaFeeder; // @synthesize mediaFeeder=_mediaFeeder;
 @property (strong) OKProducerPreset *preset; // @synthesize preset=_preset;
 
+- (void)dealloc;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HMDAccessoryBrowser, HMDAccessoryManager, HMDCloudDataSyncManager, HMDHomeManager, HMDIDSMessageDispatcher, HMDIDSMessageTransport, HMDIdentityRegistry, HMDMessageFilterChain, HMDXpcServer, HMMessageDispatcher, NSMutableArray;
+@class HMDAccessoryBrowser, HMDCentralMessageDispatcher, HMDCloudDataSyncManager, HMDHomeManager, HMDMessageFilterChain, HMDRemoteIdentityRegistry, HMDXpcServer, HMFMessageDispatcher;
 @protocol OS_dispatch_queue;
 
 @interface HMDMainDriver : NSObject
@@ -15,28 +15,20 @@
     HMDHomeManager *_homeManager;
     HMDAccessoryBrowser *_accessoryBrowser;
     HMDXpcServer *_xpcServer;
-    HMDIDSMessageDispatcher *_messageDispatcher;
-    HMMessageDispatcher *_notificationRelayDispatcher;
+    HMDCentralMessageDispatcher *_messageDispatcher;
+    HMFMessageDispatcher *_notificationRelayDispatcher;
     HMDCloudDataSyncManager *_cloudDataSyncManager;
-    HMDIDSMessageTransport *_idsTransport;
-    HMDIDSMessageTransport *_idsProxyTransport;
-    HMDAccessoryManager *_accessoryManager;
-    NSMutableArray *_unpairedAccessories;
     HMDMessageFilterChain *_msgFilterChain;
-    HMDIdentityRegistry *_identityRegistry;
+    HMDRemoteIdentityRegistry *_identityRegistry;
 }
 
 @property (strong, nonatomic) HMDAccessoryBrowser *accessoryBrowser; // @synthesize accessoryBrowser=_accessoryBrowser;
-@property (strong, nonatomic) HMDAccessoryManager *accessoryManager; // @synthesize accessoryManager=_accessoryManager;
 @property (strong, nonatomic) HMDCloudDataSyncManager *cloudDataSyncManager; // @synthesize cloudDataSyncManager=_cloudDataSyncManager;
 @property (strong, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
-@property (strong, nonatomic) HMDIdentityRegistry *identityRegistry; // @synthesize identityRegistry=_identityRegistry;
-@property (strong, nonatomic) HMDIDSMessageTransport *idsProxyTransport; // @synthesize idsProxyTransport=_idsProxyTransport;
-@property (strong, nonatomic) HMDIDSMessageTransport *idsTransport; // @synthesize idsTransport=_idsTransport;
-@property (strong, nonatomic) HMDIDSMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
+@property (strong, nonatomic) HMDRemoteIdentityRegistry *identityRegistry; // @synthesize identityRegistry=_identityRegistry;
+@property (strong, nonatomic) HMDCentralMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (strong, nonatomic) HMDMessageFilterChain *msgFilterChain; // @synthesize msgFilterChain=_msgFilterChain;
-@property (strong, nonatomic) HMMessageDispatcher *notificationRelayDispatcher; // @synthesize notificationRelayDispatcher=_notificationRelayDispatcher;
-@property (strong, nonatomic) NSMutableArray *unpairedAccessories; // @synthesize unpairedAccessories=_unpairedAccessories;
+@property (strong, nonatomic) HMFMessageDispatcher *notificationRelayDispatcher; // @synthesize notificationRelayDispatcher=_notificationRelayDispatcher;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property (strong, nonatomic) HMDXpcServer *xpcServer; // @synthesize xpcServer=_xpcServer;
 

@@ -26,7 +26,6 @@
 + (id)assetImageGeneratorWithAsset:(id)arg1;
 - (id)_NSErrorForError:(int)arg1;
 - (struct CGImage *)_copyCGImageAtTime:(CDStruct_1b6d18a9)arg1 usingAssetReader:(id)arg2 error:(id *)arg3;
-- (struct __CFDictionary *)_createPixelBufferAttributesWithSize:(struct CGSize)arg1;
 - (void)_didGenerateCGImage:(id)arg1;
 - (BOOL)_ensureFigAssetImageGeneratorReturningError:(id *)arg1;
 - (void)_failedToGenerateCGImage:(id)arg1;
@@ -35,6 +34,7 @@
 - (id)_requestWithRequestID:(id)arg1;
 - (struct CGSize)_scaledSizeForRenderSize:(struct CGSize)arg1;
 - (void)_serverDied;
+- (id)_videoSettingWithSize:(struct CGSize)arg1;
 - (void)cancelAllCGImageGeneration;
 - (struct CGImage *)copyCGImageAtTime:(CDStruct_1b6d18a9)arg1 actualTime:(CDStruct_1b6d18a9 *)arg2 error:(id *)arg3;
 - (void)dealloc;

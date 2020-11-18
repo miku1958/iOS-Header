@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSString *_stageID;
     BRCProgress *_progress;
     CKRecord *_record;
+    BOOL _progressPublished;
     CKRecordID *_recordID;
     unsigned long long _doneSize;
 }
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BRCItemID *itemID; // @synthesize itemID=_itemID;
 @property (readonly, nonatomic) int kind;
 @property (readonly, nonatomic) BRCProgress *progress; // @synthesize progress=_progress;
+@property (nonatomic) BOOL progressPublished; // @synthesize progressPublished=_progressPublished;
 @property (strong, nonatomic) CKRecord *record; // @synthesize record=_record;
 @property (readonly, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
 @property (strong, nonatomic) CKRecord *secondaryRecord;
