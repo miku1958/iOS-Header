@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (long long)_orientationInSceneSpace;
 - (void)_resetScene;
 - (void)_setRotatableClient:(id)arg1 toOrientation:(long long)arg2 updateStatusBar:(BOOL)arg3 duration:(double)arg4 force:(BOOL)arg5 isRotating:(BOOL)arg6;
+- (BOOL)_shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (BOOL)_usesWindowServerHitTesting;
 - (BOOL)_wantsSceneAssociation;
 - (void)attachBindable;

@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
 - (void)layoutSubviews;
+- (id)outlinePathInContainerView:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)tintColorDidChange;

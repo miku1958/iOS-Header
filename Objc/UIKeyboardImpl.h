@@ -317,6 +317,7 @@
 @property (readonly, nonatomic) double timestampOfLastTouchesEnded;
 @property (strong, nonatomic) TIKeyboardTouchEvent *touchEventWaitingForKeyInputEvent; // @synthesize touchEventWaitingForKeyInputEvent=m_touchEventWaitingForKeyInputEvent;
 @property (strong, nonatomic) UIDelayedAction *updateCapsLockDelayOverrideForNonTyping; // @synthesize updateCapsLockDelayOverrideForNonTyping=m_updateCapsLockDelayOverrideForNonTyping;
+@property (readonly, nonatomic) BOOL updatingPreferences; // @synthesize updatingPreferences=m_updatingPreferences;
 @property (nonatomic) BOOL viewServiceStateIsActiveForRTI; // @synthesize viewServiceStateIsActiveForRTI=_viewServiceStateIsActiveForRTI;
 
 + (void)_clearHardwareKeyboardMinimizationPreference;
@@ -873,6 +874,7 @@
 - (BOOL)noContent;
 - (void)notifyShiftState;
 - (void)pasteOperation;
+- (void)performBlockWithTextInputChangesIgnoredForNonMacOS:(CDUnknownBlockType)arg1;
 - (void)performDelete;
 - (void)performHitTestForTouchEvent:(id)arg1 executionContextPassingNSNumber:(id)arg2;
 - (void)performHitTestForTouchEvents:(id)arg1 executionContextPassingNSNumber:(id)arg2;
@@ -940,6 +942,7 @@
 - (id)responderForSendCurrentLocation;
 - (id)responderStylingTraitsForceEditingMask:(BOOL)arg1;
 - (void)responseContextDidChange;
+- (void)restartCurrentRemoteTextInputSession;
 - (void)restoreFocusFromEntryPoint:(struct CGPoint)arg1;
 - (id)returnKeyDisplayName;
 - (BOOL)returnKeyEnabled;

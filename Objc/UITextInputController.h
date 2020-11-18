@@ -294,6 +294,7 @@
 - (void)_replaceDocumentWithText:(id)arg1;
 - (void)_replaceRange:(id)arg1 withAttributedTextFromKeyboard:(id)arg2 addingUnderlinesForAlternatives:(BOOL)arg3;
 - (void)_resetShowingTextStyle:(id)arg1;
+- (long long)_resolveNaturalDirection:(long long)arg1;
 - (void)_scrollRectToVisible:(struct CGRect)arg1 animated:(BOOL)arg2;
 - (void)_selectAll;
 - (id)_selectableText;

@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
 @interface UISectionRowData : NSObject <NSCopying>
 {
     BOOL _valid;
-    unsigned long long _numRows;
-    double _sectionOffset;
     BOOL _sectionOffsetValid;
+    double _sectionOffset;
     long long _sectionRowOffset;
+    unsigned long long _numRows;
     double _sectionHeight;
     double _headerOffset;
     double _footerOffset;

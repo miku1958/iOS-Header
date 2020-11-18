@@ -29,6 +29,7 @@
 - (BOOL)containerAllowsSelectionTintOnly;
 - (BOOL)containerIsTextField;
 - (void)didEndSelectionInteraction;
+- (BOOL)didPerformLoupeSelectionHandoff;
 - (BOOL)didUseStashedSelection;
 - (void)endFloatingCursor;
 - (void)extendSelectionToLoupeOrSetToPoint:(struct CGPoint)arg1;
@@ -39,7 +40,7 @@
 - (UITextRange *)rangeForTextReplacement:(UITextRange *)arg1;
 - (void)resetWillHandoffLoupeMagnifier;
 - (void)scheduleDictationReplacementsForAlternatives:(NSTextAlternatives *)arg1 range:(UITextRange *)arg2;
-- (void)scheduleReplacementsForRange:(UITextRange *)arg1 withOptions:(unsigned long long)arg2;
+- (BOOL)scheduleReplacementsForRange:(UITextRange *)arg1 withOptions:(unsigned long long)arg2;
 - (void)scrollSelectionToVisible;
 - (void)selectWordWithoutShowingCommands;
 - (UITextSelectionView *)selectionView;

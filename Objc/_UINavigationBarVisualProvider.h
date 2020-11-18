@@ -41,6 +41,7 @@
 - (id)_accessibility_controlToActivateForHUDGestureLiftAtPoint:(struct CGPoint)arg1;
 - (BOOL)_accessibility_shouldBeginHUDGestureAtPoint:(struct CGPoint)arg1;
 - (void)_installContentClippingView:(id)arg1;
+- (void)_refreshBackButtonMenu;
 - (void)_removeContentClippingView;
 - (void)_shim_30244716;
 - (BOOL)_shim_34415965;

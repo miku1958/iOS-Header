@@ -6,18 +6,25 @@
 
 #import <UIKitCore/UITextInputAssistantItem.h>
 
+@class NSArray;
 @protocol UISystemDefaultTextInputAssistantItemDelegate;
 
 @interface UISystemDefaultTextInputAssistantItem : UITextInputAssistantItem
 {
+    BOOL _systemItem;
     id<UISystemDefaultTextInputAssistantItemDelegate> _delegate;
+    NSArray *_defaultSystemLeadingBarButtonGroups;
+    NSArray *_defaultSystemTrailingBarButtonGroups;
 }
 
+@property (strong, nonatomic) NSArray *defaultSystemLeadingBarButtonGroups; // @synthesize defaultSystemLeadingBarButtonGroups=_defaultSystemLeadingBarButtonGroups;
+@property (strong, nonatomic) NSArray *defaultSystemTrailingBarButtonGroups; // @synthesize defaultSystemTrailingBarButtonGroups=_defaultSystemTrailingBarButtonGroups;
 @property (weak, nonatomic) id<UISystemDefaultTextInputAssistantItemDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic, getter=_isSystemItem) BOOL systemItem; // @synthesize systemItem=_systemItem;
 
 - (void).cxx_destruct;
-- (void)_performReturn;
 - (SEL)_responderSelectorForSystemButtonStyle:(long long)arg1;
+- (void)_updateIsSystemItem;
 - (void)analyticsDispatchWithActionStyle:(long long)arg1;
 - (void)assistantBold;
 - (void)assistantCopy;
@@ -28,15 +35,15 @@
 - (void)assistantItalic;
 - (void)assistantPaste;
 - (void)assistantRedo;
-- (void)assistantReturn;
-- (void)assistantSelectPencilTextInputLanguage;
-- (void)assistantSelectPencilTextInputLanguage:(id)arg1;
 - (void)assistantShowKeyboard;
 - (void)assistantUnderline;
 - (void)assistantUndo;
 - (void)assistantWriteboard;
 - (BOOL)canPerformSystemButtonActionForStyle:(long long)arg1;
+- (id)init;
 - (void)performSystemButtonActionForStyle:(long long)arg1;
+- (void)setLeadingBarButtonGroups:(id)arg1;
+- (void)setTrailingBarButtonGroups:(id)arg1;
 
 @end
 

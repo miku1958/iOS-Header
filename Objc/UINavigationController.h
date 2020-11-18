@@ -252,7 +252,7 @@
 - (id)_customInteractionController:(id)arg1;
 - (double)_customNavigationTransitionDuration;
 - (id)_customTransitionController:(BOOL)arg1;
-- (id)_deepestUnambiguousResponder;
+- (id)_deepestActionResponder;
 - (int)_deferredTransition;
 - (void)_detachPalette:(id)arg1;
 - (void)_detachTopPaletteIfShowingSearchBarForTopmostViewControllerInNavigationController:(id)arg1;
@@ -338,6 +338,7 @@
 - (double)_navigationBar:(id)arg1 preferredHeightForTransitionToHeightRange:(CDStruct_39925896)arg2;
 - (void)_navigationBar:(id)arg1 requestPopToItem:(id)arg2;
 - (void)_navigationBar:(id)arg1 topItemUpdatedContentLayout:(id)arg2;
+- (id)_navigationBarAdditionalActionsForBackButtonMenu:(id)arg1;
 - (void)_navigationBarChangedSize:(id)arg1;
 - (void)_navigationBarDidChangeStyle:(id)arg1;
 - (void)_navigationBarDidEndAnimation:(id)arg1;

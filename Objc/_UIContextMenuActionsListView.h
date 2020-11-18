@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
     UIHoverGestureRecognizer *_highlightHoverGestureRecognizer;
     NSIndexPath *_highlightedIndexPath;
     UISelectionFeedbackGenerator *_feedbackGenerator;
+    struct CGSize _visibleContentSize;
 }
 
 @property (strong, nonatomic) UIView *clippingView; // @synthesize clippingView=_clippingView;
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL showsTitle; // @synthesize showsTitle=_showsTitle;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL surfacesActionRadius; // @synthesize surfacesActionRadius=_surfacesActionRadius;
+@property (nonatomic) struct CGSize visibleContentSize; // @synthesize visibleContentSize=_visibleContentSize;
 
 - (void).cxx_destruct;
 - (double)_clampedCornerRadius;

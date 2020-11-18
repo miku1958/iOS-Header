@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UITextInteraction.h>
 
-@class NSNumber, UITextGestureTuning, UITextSelectionGrabberSuppressionAssertion, _UIKeyboardTextSelectionController;
+@class UITextGestureTuning, UITextSelectionGrabberSuppressionAssertion, _UIKeyboardTextSelectionController;
 
 __attribute__((visibility("hidden")))
 @interface UITextSelectionInteraction : UITextInteraction
@@ -15,9 +15,10 @@ __attribute__((visibility("hidden")))
     struct CGPoint _lastTapLocation;
     UITextGestureTuning *_gestureTuning;
     BOOL _indirectSelectionType;
+    BOOL _viewConformsToTextInput;
     struct CGRect _originalCaretRect;
     BOOL _wasOriginallyFirstResponder;
-    NSNumber *_granularityToHandOff;
+    long long _granularityToHandOff;
     _UIKeyboardTextSelectionController *_activeSelectionController;
     UITextSelectionGrabberSuppressionAssertion *_grabberSuppressionAssertion;
 }
@@ -45,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)finishSetup;
 - (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (id)handOffGranularity;
+- (long long)handOffGranularity;
 - (id)initWithMode:(long long)arg1;
 - (id)initWithMode:(long long)arg1 indirect:(BOOL)arg2;
 - (BOOL)interaction_gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;

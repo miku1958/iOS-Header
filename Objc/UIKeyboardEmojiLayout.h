@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (Class)invalidationContextClass;
 - (void)_setAttributes:(id)arg1 ForSection:(long long)arg2;
 - (void)dealloc;
+- (BOOL)flipsHorizontallyInOppositeLayoutDirection;
 - (void)invalidateLayoutWithContext:(id)arg1;
 - (id)invalidationContextForBoundsChange:(struct CGRect)arg1;
 - (id)invalidationContextForPreferredLayoutAttributes:(id)arg1 withOriginalAttributes:(id)arg2;

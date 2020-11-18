@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
     long long _viewState;
     _UIDatePickerCalendarMonthYearSelector *_monthYearSelector;
     NSLayoutConstraint *_minimumWidthConstraint;
+    NSLayoutConstraint *_maximumWidthConstraint;
     struct CGSize _lastSize;
     unsigned long long _stateUpdatesInFlight;
     UIDatePicker *_datePicker;

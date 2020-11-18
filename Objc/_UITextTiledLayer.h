@@ -8,15 +8,13 @@
 
 #import <UIKitCore/CALayerDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, NSTimer, UIBezierPath;
+@class NSArray, NSMutableArray, NSString, UIBezierPath;
 @protocol _UITextTiledLayerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UITextTiledLayer : CALayer <CALayerDelegate>
 {
     NSMutableArray *_visibleTiles;
-    NSMutableArray *_unusedTiles;
-    NSTimer *_unusedTilesCleanupTimer;
     struct CGSize _tileSize;
     CALayer *_viewportLayer;
     double _viewportLayerExtraWidthFactor;
@@ -50,7 +48,6 @@ __attribute__((visibility("hidden")))
 - (id)_prepareTilesForVisibleBounds:(struct CGRect)arg1 inBounds:(struct CGRect)arg2;
 - (id)_preparedTileForFrame:(struct CGRect)arg1 mask:(id)arg2 opacity:(double)arg3 deferred:(BOOL)arg4;
 - (void)_updateTilingViewportWindow:(id)arg1;
-- (void)dealloc;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (id)init;
 - (void)layerWillDraw:(id)arg1;

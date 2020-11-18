@@ -13,6 +13,7 @@
 
 @interface NSUserActivity (UISceneActivationConditions) <UIItemProviderReading, UIItemProviderWriting>
 
+@property (readonly, nonatomic) NSString *_sourceApplication; // @dynamic _sourceApplication;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -23,6 +24,7 @@
 + (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
 + (id)readableTypeIdentifiersForItemProvider;
 + (id)writableTypeIdentifiersForItemProvider;
+- (void)_setSourceApplication:(id)arg1;
 - (id)initWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
 - (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
 @end

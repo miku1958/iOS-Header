@@ -115,7 +115,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)_centerForOrientation:(long long)arg1;
 - (unsigned long long)_clipCornersOfView:(id)arg1;
 - (struct CGRect)_defaultInitialViewFrame;
-- (void)_didChangeDeepestUnambiguousResponder;
+- (void)_didChangeDeepestActionResponder;
 - (void)_forcePreLayoutHostViewFrame;
 - (void)_getRotationContentSettings:(CDStruct_8bdd0ba6 *)arg1;
 - (struct UIEdgeInsets)_inputViewPadding;

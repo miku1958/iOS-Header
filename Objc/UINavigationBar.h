@@ -233,6 +233,7 @@
 - (void)_redisplayItems;
 - (void)_reenableUserInteraction;
 - (void)_reenableUserInteractionWhenReadyWithContext:(id)arg1;
+- (void)_refreshBackButtonMenu;
 - (void)_removeContentClippingView;
 - (struct NSDirectionalEdgeInsets)_resolvedLargeTitleMargins;
 - (struct NSDirectionalEdgeInsets)_resolvedLayoutMargins;

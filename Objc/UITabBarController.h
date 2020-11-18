@@ -111,7 +111,7 @@
 - (void)_configureTargetActionForTabBarItem:(id)arg1;
 - (id)_customAnimatorForFromViewController:(id)arg1 toViewController:(id)arg2;
 - (id)_customInteractionControllerForAnimator:(id)arg1;
-- (id)_deepestUnambiguousResponder;
+- (id)_deepestActionResponder;
 - (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (BOOL)_doAllViewControllersSupportInterfaceOrientation:(long long)arg1;
 - (struct UIEdgeInsets)_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(BOOL *)arg2;
@@ -128,6 +128,7 @@
 - (void)_hideBarWithTransition:(int)arg1 isExplicit:(BOOL)arg2 duration:(double)arg3;
 - (BOOL)_ignoreUnselectedTabsForStateRestoration;
 - (void)_invalidateBarLayoutIfNecessary;
+- (BOOL)_isBarEffectivelyHidden;
 - (BOOL)_isBarHidden;
 - (BOOL)_isFocusedTabVisible;
 - (BOOL)_isLegacyTabBar;
@@ -180,6 +181,7 @@
 - (long long)_subclassPreferredFocusedViewPrioritizationType;
 - (void)_tabBarItemClicked:(id)arg1;
 - (long long)_tabBarPosition;
+- (void)_tabBarVisibilityDidChange;
 - (id)_tabBarWindowForInterfaceOrientation:(id)arg1;
 - (void)_toggleAccessibilityHUDLongPressRecognizerIfNecessary;
 - (id)_traitCollectionForChildEnvironment:(id)arg1;

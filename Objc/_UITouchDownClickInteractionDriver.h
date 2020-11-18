@@ -48,7 +48,6 @@ __attribute__((visibility("hidden")))
 - (void)cancelInteraction;
 - (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (id)init;
 - (struct CGPoint)locationInCoordinateSpace:(id)arg1;
 

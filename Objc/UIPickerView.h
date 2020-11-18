@@ -72,6 +72,8 @@
 @property (strong, nonatomic, getter=_textShadowColor, setter=_setTextShadowColor:) UIColor *textShadowColor;
 @property (getter=_usesDynamicRowHeight, setter=_setUsesDynamicRowHeight:) BOOL usesDynamicRowHeight;
 
++ (BOOL)_allowsUnsupportedMacIdiomBehavior;
++ (void)_setAllowsUnsupportedMacIdiomBehavior:(BOOL)arg1;
 + (struct CGSize)defaultSizeForCurrentOrientation;
 + (struct CGSize)defaultSizeForMainScreenTraits;
 + (struct CGSize)defaultSizeForTraits:(id)arg1;

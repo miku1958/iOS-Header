@@ -78,11 +78,13 @@
 + (long long)_defaultStyleForRequestedStyle:(long long)arg1 styleOverrides:(int)arg2 activeStyleOverride:(int *)arg3;
 + (struct CGRect)_frameInSceneReferenceSpaceForStyle:(long long)arg1 orientation:(long long)arg2 inSceneWithReferenceSize:(struct CGSize)arg3;
 + (double)_heightForStyle:(long long)arg1 orientation:(long long)arg2 forStatusBarFrame:(BOOL)arg3 inWindow:(id)arg4;
++ (double)_heightForStyle:(long long)arg1 orientation:(long long)arg2 forStatusBarFrame:(BOOL)arg3 inWindow:(id)arg4 isAzulBLinked:(BOOL)arg5;
 + (Class)_implementationClass;
 + (void)_setImplementationClass:(Class)arg1;
 + (double)_viewControllerAdjustmentForOrientation:(long long)arg1 inWindow:(id)arg2;
 + (double)heightForStyle:(long long)arg1 orientation:(long long)arg2;
 + (double)heightForStyle:(long long)arg1 orientation:(long long)arg2 inWindow:(id)arg3;
++ (double)heightForStyle:(long long)arg1 orientation:(long long)arg2 inWindow:(id)arg3 isAzulBLinked:(BOOL)arg4;
 - (void).cxx_destruct;
 - (BOOL)_canShowInOrientation:(long long)arg1;
 - (void)_clearOverrideHeight;
@@ -126,6 +128,7 @@
 - (struct CGRect)frameForOrientation:(long long)arg1;
 - (struct CGRect)frameForPartWithIdentifier:(id)arg1;
 - (double)heightForOrientation:(long long)arg1;
+- (double)heightForOrientation:(long long)arg1 isAzulBLinked:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 showForegroundView:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 showForegroundView:(BOOL)arg2 inProcessStateProvider:(id)arg3;

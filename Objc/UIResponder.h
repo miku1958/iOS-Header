@@ -108,6 +108,7 @@
 - (void)_controlTouchMoved:(id)arg1 withEvent:(id)arg2;
 - (id)_currentOverrideClient;
 - (id)_currentOverrideHost;
+- (id)_deepestActionResponder;
 - (id)_deepestUnambiguousResponder;
 - (void)_define:(id)arg1;
 - (void)_deleteBackwardAndNotify:(BOOL)arg1;
@@ -117,6 +118,7 @@
 - (void)_deleteToEndOfLine;
 - (void)_deleteToEndOfParagraph;
 - (void)_deleteToStartOfLine;
+- (void)_didChangeDeepestActionResponder;
 - (void)_didChangeDeepestUnambiguousResponder;
 - (void)_didChangeToFirstResponder:(id)arg1;
 - (BOOL)_disableAutomaticKeyboardBehavior;
@@ -136,7 +138,7 @@
 - (void)_extendCurrentSelection:(int)arg1;
 - (id)_findPleasingWordBoundaryFromPosition:(id)arg1;
 - (BOOL)_finishResignFirstResponder;
-- (id)_firstNonnullActivityItemsConfigurationInResponderChainForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2 skipPresentingViewControllers:(BOOL)arg3 sender:(id)arg4 responder:(id *)arg5;
+- (id)_firstNonnullActivityItemsConfigurationInResponderChainForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2 skipPresentingViewControllers:(BOOL)arg3 sender:(id)arg4 target:(id *)arg5;
 - (id)_firstNonnullActivityItemsConfigurationInResponderChainForView:(id)arg1 location:(struct CGPoint)arg2 sender:(id)arg3 responder:(id *)arg4;
 - (id)_firstResponder;
 - (id)_fontForCaretSelection;
@@ -162,7 +164,7 @@
 - (id)_keyCommandForEvent:(id)arg1;
 - (id)_keyCommandForEvent:(id)arg1 target:(out id *)arg2;
 - (id)_keyCommands;
-- (id)_keyCommandsInChainPassingTest:(CDUnknownBlockType)arg1 skipViewControllersPresentingModally:(BOOL)arg2;
+- (id)_keyCommandsInChainPassingTest:(CDUnknownBlockType)arg1;
 - (id)_keyInput;
 - (id)_keyboardResponder;
 - (struct CGRect)_lastRectForRange:(id)arg1;
@@ -185,7 +187,7 @@
 - (BOOL)_nextResponderChainContainsResponder:(id)arg1;
 - (id)_nextResponderOverride;
 - (id)_nextResponderThatCanBecomeFirstResponder;
-- (id)_nextResponderUsingLookupStrategy:(unsigned long long)arg1;
+- (id)_nextResponderUsingTraversalStrategy:(unsigned long long)arg1;
 - (void)_nonDestructivelyResignFirstResponder;
 - (id)_normalizedStringForRangeComparison:(id)arg1;
 - (struct _NSRange)_nsrangeForTextRange:(id)arg1;
@@ -266,8 +268,6 @@
 - (BOOL)_suppressSoftwareKeyboard;
 - (void)_tagAsRestorableResponder;
 - (id)_targetCanPerformBlock:(CDUnknownBlockType)arg1;
-- (id)_targetCanPerformBlock:(CDUnknownBlockType)arg1 nextTargetBlock:(CDUnknownBlockType)arg2;
-- (id)_targetForAction:(SEL)arg1 sender:(id)arg2 skipViewControllersPresentingModally:(BOOL)arg3;
 - (id)_textColorForCaretSelection;
 - (long long)_textInputSource;
 - (id)_textInteraction;

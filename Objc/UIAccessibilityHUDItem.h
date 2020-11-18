@@ -31,7 +31,7 @@
 @property (nonatomic) BOOL scaleImage; // @synthesize scaleImage=_scaleImage;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
-+ (id)HUDItemForBarButtonItem:(id)arg1 atPoint:(struct CGPoint)arg2 inView:(id)arg3;
++ (id)HUDItemForBarButtonItem:(id)arg1 atPoint:(struct CGPoint)arg2 inView:(id)arg3 isBackButton:(BOOL)arg4;
 + (id)HUDItemForTabBarItem:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

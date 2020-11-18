@@ -69,8 +69,8 @@
 - (void)_addSupplementaryItemsToLayout:(id)arg1;
 - (id)_createSeparatorForBottom:(BOOL)arg1;
 - (id)_createSwipeActionsContainer;
-- (double)_defaultCellHeight;
 - (long long)_defaultContentInsetsReference;
+- (double)_defaultRowHeight;
 - (double)_defaultSectionFooterHeight;
 - (double)_defaultSectionHeaderHeight;
 - (long long)_defaultSeparatorStyleForAppearanceStyle:(long long)arg1;

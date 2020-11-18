@@ -368,6 +368,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)keyHasAccentedVariants:(id)arg1;
 - (id)keyHitTest:(struct CGPoint)arg1;
 - (id)keyHitTestClosestToPoint:(struct CGPoint)arg1;
+- (id)keyHitTestClosestToPoint:(struct CGPoint)arg1 inKeys:(id)arg2;
 - (id)keyHitTestContainingPoint:(struct CGPoint)arg1;
 - (id)keyHitTestWithoutCharging:(struct CGPoint)arg1;
 - (id)keyViewAnimator;

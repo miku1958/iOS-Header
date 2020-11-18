@@ -6,11 +6,12 @@
 
 #import <UIKitCore/UIScrollView.h>
 
-@class UICollectionView;
+@class UICollectionView, UIFocusContainerGuide;
 
 __attribute__((visibility("hidden")))
 @interface _UICollectionViewOrthogonalScrollerEmbeddedScrollView : UIScrollView
 {
+    UIFocusContainerGuide *_sectionFocusContainerGuide;
     UICollectionView *_collectionView;
     long long _section;
 }
@@ -20,8 +21,10 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
+- (void)_configureSectionFocusContainerGuide;
 - (void)_focusedItem:(id)arg1 isMinX:(BOOL *)arg2 isMaxX:(BOOL *)arg3 isMinY:(BOOL *)arg4 isMaxY:(BOOL *)arg5;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;

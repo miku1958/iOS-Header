@@ -14,20 +14,24 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_menuDeletes;
     NSMutableDictionary *_itemDeletes;
     NSMutableDictionary *_inserts;
+    NSMutableDictionary *_replacements;
 }
 
 @property (readonly, nonatomic) NSDictionary *inserts; // @synthesize inserts=_inserts;
 @property (readonly, nonatomic) NSDictionary *itemDeletes; // @synthesize itemDeletes=_itemDeletes;
 @property (readonly, nonatomic) NSSet *menuDeletes; // @synthesize menuDeletes=_menuDeletes;
+@property (readonly, nonatomic) NSDictionary *replacements; // @synthesize replacements=_replacements;
 
 - (void).cxx_destruct;
 - (id)_deletesForMenu:(id)arg1;
 - (id)_parentInsertsForMenu:(id)arg1;
+- (id)_replacementsForMenu:(id)arg1;
 - (void)deleteItem:(id)arg1 inMenu:(id)arg2;
 - (void)deleteMenu:(id)arg1;
 - (void)insertAtStartElements:(id)arg1 atEndElements:(id)arg2 inMenu:(id)arg3;
 - (void)insertBeforeElements:(id)arg1 afterElements:(id)arg2 aroundElement:(id)arg3 inMenu:(id)arg4;
 - (void)insertFallbackBeforeElements:(id)arg1 fallbackAfterElements:(id)arg2 inMenu:(id)arg3;
+- (void)replaceItem:(id)arg1 inMenu:(id)arg2 withElements:(id)arg3;
 
 @end
 

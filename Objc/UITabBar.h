@@ -196,8 +196,10 @@
 - (void)layoutSubviews;
 - (id)preferredFocusedView;
 - (void)removeConstraint:(id)arg1;
+- (void)setAlpha:(double)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)setHidden:(BOOL)arg1;
 - (void)setItems:(id)arg1 animated:(BOOL)arg2;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setSpringLoaded:(BOOL)arg1;

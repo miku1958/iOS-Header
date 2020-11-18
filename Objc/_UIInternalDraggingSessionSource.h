@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
     NSArray *_internalItems;
     long long _dataOwner;
     UIWindow *_centroidWindow;
+    UIWindow *_weakCentroidWindow;
     unsigned long long _withinAppSourceOperationMask;
     unsigned long long _outsideAppSourceOperationMask;
     _UIDruidSourceConnection *_druidConnection;
@@ -62,11 +63,13 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
+@property (readonly, weak, nonatomic) UIWindow *weakCentroidWindow; // @synthesize weakCentroidWindow=_weakCentroidWindow;
 @property (readonly, nonatomic) unsigned long long withinAppSourceOperationMask; // @synthesize withinAppSourceOperationMask=_withinAppSourceOperationMask;
 
 - (void).cxx_destruct;
 - (BOOL)_canHandOffCancelledItems:(id)arg1;
 - (void)_didBeginDrag;
+- (void)_endWithOperation:(unsigned long long)arg1;
 - (void)_getOperationMaskFromDelegate;
 - (void)_handOffCancelledItems:(id)arg1;
 - (void)_hostDidDeactivate;

@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
     BSMachPortSendRight *_hostAccessibilityServerPort;
     long long _availableTextServices;
     long long _initialInterfaceOrientation;
-    long long _userInterfaceIdiom;
 }
 
 @property (nonatomic) long long availableTextServices; // @synthesize availableTextServices=_availableTextServices;
@@ -31,7 +30,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long initialInterfaceOrientation; // @synthesize initialInterfaceOrientation=_initialInterfaceOrientation;
 @property (copy, nonatomic) NSArray *serializedAppearanceRepresentations; // @synthesize serializedAppearanceRepresentations=_serializedAppearanceRepresentations;
 @property (strong, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
-@property (nonatomic) long long userInterfaceIdiom; // @synthesize userInterfaceIdiom=_userInterfaceIdiom;
 @property (copy, nonatomic) NSString *viewControllerClassName; // @synthesize viewControllerClassName=_viewControllerClassName;
 
 + (BOOL)supportsSecureCoding;

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     struct CGPoint _touchDownPoint;
 }
 
+@property (nonatomic) BOOL active;
 @property (strong, nonatomic) UIKeyboardDockItemButton *button; // @synthesize button=_button;
 @property (nonatomic) BOOL enabled;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;

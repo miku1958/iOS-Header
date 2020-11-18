@@ -95,6 +95,7 @@
 - (void)_setScalesPageToFitViewportSettings;
 - (void)_setWebSelectionEnabled:(BOOL)arg1;
 - (void)_share:(id)arg1;
+- (BOOL)_shouldUseViewForSceneDraggingBehavior;
 - (void)_updateBrowserViewExposedScrollViewRect;
 - (void)_updateCheckeredPattern;
 - (void)_updateOpaqueAndBackgroundColor;

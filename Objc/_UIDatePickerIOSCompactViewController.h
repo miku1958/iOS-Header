@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     UIDatePicker *_datePicker;
 }
 
-@property (readonly, nonatomic) UIDatePicker *datePicker;
+@property (readonly, nonatomic) UIDatePicker *datePicker; // @synthesize datePicker=_datePicker;
 
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithValuesFromDataModel:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

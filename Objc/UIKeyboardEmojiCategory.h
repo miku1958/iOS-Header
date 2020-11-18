@@ -33,6 +33,7 @@
 + (id)enabledCategoryIndexes;
 + (id)fallbackDisplayName:(long long)arg1;
 + (unsigned long long)hasVariantsForEmoji:(id)arg1;
++ (BOOL)isRTLMode;
 + (id)loadPrecomputedEmojiFlagCategory;
 + (id)localizedStringForKey:(id)arg1;
 + (long long)numberOfCategories;

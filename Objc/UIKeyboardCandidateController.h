@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
     double _additionalExtendedBarBackdropOffset;
     TIKeyboardCandidate *_currentCandidate;
     NSDictionary *_opacities;
+    double _singleSlottedCellMargin;
     UIPanGestureRecognizer *_panGestureRecognizer;
     UIViewPropertyAnimator *_animator;
     UIKBRenderConfig *_renderConfig;
@@ -91,6 +92,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
 @property (nonatomic) BOOL reuseArrowButtonToExpandAssistantBarItems; // @synthesize reuseArrowButtonToExpandAssistantBarItems=_reuseArrowButtonToExpandAssistantBarItems;
 @property (strong, nonatomic) UIKBScreenTraits *screenTraits; // @synthesize screenTraits=_screenTraits;
+@property (nonatomic) double singleSlottedCellMargin; // @synthesize singleSlottedCellMargin=_singleSlottedCellMargin;
 @property (nonatomic) double splitGap; // @synthesize splitGap=_splitGap;
 @property (readonly) Class superclass;
 

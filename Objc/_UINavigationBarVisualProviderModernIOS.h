@@ -74,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (void)_postDidEncounterFirstTitleWithExcessiveHeightChanged;
 - (void)_prepareLayouts;
 - (void)_presentOrDismissSearch:(int)arg1 withTransitionCoordinator:(id)arg2;
+- (void)_refreshBackButtonMenu;
 - (void)_removeContentClippingView;
 - (void)_setupAccessibilityLimitsForView:(id)arg1;
 - (void)_setupTopNavigationItemAnimated:(BOOL)arg1;
@@ -90,6 +91,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_stackWantsLargeTitleDisplayedForItem:(id)arg1;
 - (BOOL)_stackWantsLargeTitleDisplayedForItem:(id)arg1 hideLargeTitleForActiveSearch:(BOOL)arg2;
 - (BOOL)_stackWantsSearchDisplayedBelowContentViewForItem:(id)arg1;
+- (id)_staticNavBarButtonFakeBackMenu;
 - (id)_timingFunctionForAnimationInView:(id)arg1 withKeyPath:(id)arg2;
 - (void)_updateAugmentedTitleDataSources;
 - (void)_updateBackground;

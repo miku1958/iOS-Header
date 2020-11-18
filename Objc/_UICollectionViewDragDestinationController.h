@@ -50,12 +50,6 @@ __attribute__((visibility("hidden")))
 - (id)_computeNextItemAttributesStartingFromItemAttributes:(id)arg1 withCurrentDragLocation:(struct CGPoint)arg2;
 - (void)_configureInteraction;
 - (void)_configureReorderingDisplayLinkIfNeeded;
-- (BOOL)_delegateImplementsDidExit;
-- (BOOL)_delegateImplementsDropActionForIndexPath;
-- (BOOL)_delegateImplementsPerformDropFromIndexPathsWithAction;
-- (BOOL)_delegateImplementsPerformDropFromIndexPathsWithCoordinator;
-- (BOOL)_delegateImplementsSelector:(SEL)arg1;
-- (BOOL)_delegateImplementsTargetIndexPath;
 - (id)_dragAndDropController;
 - (id)_dragDestinationDelegateActual;
 - (id)_dragDestinationDelegateProxy;
@@ -73,7 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)_resumeReorderingDisplayLink;
 - (BOOL)_shouldPerformMovementForProposal:(id)arg1;
 - (BOOL)_shouldQueryDropActionForIndexPath:(id)arg1;
-- (void)_updateDropProposalByQueryingClientIfNeeded:(id)arg1;
+- (void)_updateDropProposalByQueryingClientIfNeeded:(id)arg1 indicatorLayoutAttributes:(id)arg2;
 - (void)applyingRebasingUpdatesWithUpdateMap:(id)arg1;
 - (void)deactivate;
 - (void)dealloc;
@@ -90,7 +84,6 @@ __attribute__((visibility("hidden")))
 - (void)dropWasCancelled;
 - (BOOL)hasPerformedReordering;
 - (id)initWithCollectionView:(id)arg1 delegate:(id)arg2;
-- (BOOL)isInteractiveReorderingDisabled;
 
 @end
 

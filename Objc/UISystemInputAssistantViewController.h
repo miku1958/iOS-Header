@@ -77,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (void)_inputModeChanged:(id)arg1;
 - (BOOL)_isAssistantPreferenceEnabled;
 - (BOOL)_isEmojiInputMode;
+- (void)_keyboardDictationAvailabilityDidChangeNotification:(id)arg1;
 - (id)_popoverViewControllerForBarButtonItemGroup:(id)arg1;
 - (void)_queueResponderChangedForNewResponder:(id)arg1;
 - (void)_registerForAssistantViewNotifications;

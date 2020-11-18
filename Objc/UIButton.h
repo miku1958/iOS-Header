@@ -121,6 +121,7 @@
 @property (nonatomic) struct UIEdgeInsets titleEdgeInsets; // @dynamic titleEdgeInsets;
 @property (readonly, nonatomic) UILabel *titleLabel;
 
++ (BOOL)_allowsUnsupportedMacIdiomBehavior;
 + (BOOL)_buttonTypeIsModernUI:(long long)arg1;
 + (BOOL)_buttonTypeIsSystemProvided:(long long)arg1;
 + (BOOL)_buttonTypeIsiOSSystemProvided:(long long)arg1;
@@ -138,6 +139,7 @@
 + (id)_defaultSymbolConfigurationForType:(long long)arg1 andState:(unsigned long long)arg2 compact:(BOOL)arg3;
 + (id)_defaultTitleColorForState:(unsigned long long)arg1 button:(id)arg2 isTintColor:(BOOL *)arg3;
 + (id)_selectedIndicatorImage;
++ (void)_setAllowsUnsupportedMacIdiomBehavior:(BOOL)arg1;
 + (void)_setVisuallyHighlighted:(BOOL)arg1 forViews:(id)arg2 initialPress:(BOOL)arg3;
 + (void)_setVisuallyHighlighted:(BOOL)arg1 forViews:(id)arg2 initialPress:(BOOL)arg3 baseAlpha:(double)arg4;
 + (void)_setVisuallyHighlighted:(BOOL)arg1 forViews:(id)arg2 initialPress:(BOOL)arg3 highlightBlock:(CDUnknownBlockType)arg4;

@@ -145,6 +145,7 @@ __attribute__((visibility("hidden")))
 - (double)_contentMarginForChildViewController:(id)arg1;
 - (struct CGSize)_contentSizeForChildViewController:(id)arg1 inPopoverController:(id)arg2;
 - (long long)_currentInterfaceIdiom;
+- (id)_deepestActionResponder;
 - (id)_deepestUnambiguousResponder;
 - (id)_defaultDisplayModes;
 - (double)_defaultMaximumPrimaryColumnWidthForSize:(struct CGSize)arg1;
@@ -198,6 +199,7 @@ __attribute__((visibility("hidden")))
 - (long long)_medusaState;
 - (long long)_medusaStateForOrientation:(long long)arg1 viewWidth:(double)arg2;
 - (id)_multitaskingDragExclusionRects;
+- (id)_nextVisibleViewControllerForResponderAfterChildViewController:(id)arg1;
 - (BOOL)_optsOutOfPopoverControllerHierarchyCheck;
 - (void)_popoverController:(id)arg1 didChangeFromVisible:(BOOL)arg2;
 - (void)_popoverController:(id)arg1 willChangeToVisible:(BOOL)arg2;

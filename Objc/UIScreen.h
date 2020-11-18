@@ -173,6 +173,7 @@
 - (struct CGRect)_boundsForInterfaceOrientation:(long long)arg1;
 - (id)_capabilities;
 - (id)_capabilityForKey:(id)arg1;
+- (void)_capturedStateUpdated:(BOOL)arg1;
 - (void)_clearCarPlayHumanPresenceState;
 - (void)_computeMetrics;
 - (void)_computeMetrics:(BOOL)arg1;

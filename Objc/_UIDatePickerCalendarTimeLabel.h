@@ -82,6 +82,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)_digits:(unsigned long long *)arg1 fromText:(id)arg2 count:(long long *)arg3;
 - (void)_endEditingHoursFromWheelsOfTime:(id)arg1;
 - (void)_endEditingMinutesFromWheelsOfTime:(id)arg1;
+- (void)_increasedHourWheelRect:(struct CGRect *)arg1 minuteWheelRect:(struct CGRect *)arg2;
+- (void)_isPoint:(struct CGPoint)arg1 insideExtendedHourRect:(BOOL *)arg2 minuteRect:(BOOL *)arg3;
+- (BOOL)_pointIsInsideHourSide:(struct CGPoint)arg1;
 - (void)_pushCurrentStateIntoUI;
 - (void)_pushCurrentStateIntoUIAndNotify;
 - (void)_recreateWheelsOfTime;
@@ -89,14 +92,17 @@ __attribute__((visibility("hidden")))
 - (void)_stateMachineSendEvent:(unsigned long long)arg1;
 - (void)_stateMachineUpdateFromState:(unsigned long long)arg1 toState:(unsigned long long)arg2;
 - (BOOL)_suppressSoftwareKeyboard;
+- (BOOL)_treatMinutesAsHoursForState:(unsigned long long)arg1;
 - (void)_updateHoursFromWheelsOfTime:(id)arg1;
 - (void)_updateLayoutRectsForHourRange:(struct _NSRange)arg1 minuteRange:(struct _NSRange)arg2;
 - (void)_updateMinutesFromWheelsOfTime:(id)arg1;
 - (void)_updateWheelsOfTimePosition;
+- (void)_visualHourRect:(struct CGRect *)arg1 minuteRect:(struct CGRect *)arg2;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
 - (void)deleteBackward;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)indirectScribbleInteraction:(id)arg1 didFinishWritingInElement:(id)arg2;
 - (void)indirectScribbleInteraction:(id)arg1 focusElementIfNeeded:(id)arg2 referencePoint:(struct CGPoint)arg3 completion:(CDUnknownBlockType)arg4;
 - (struct CGRect)indirectScribbleInteraction:(id)arg1 frameForElement:(id)arg2;

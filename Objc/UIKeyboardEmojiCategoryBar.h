@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (void)dimKeys:(id)arg1;
+- (unsigned long long)flippedIndexForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForDivider:(int)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3 screenTraits:(id)arg4;

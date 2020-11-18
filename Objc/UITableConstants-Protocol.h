@@ -17,7 +17,6 @@
 - (double)defaultAlphaForReorderingCell;
 - (UIColor *)defaultBackgroundColorForTableViewStyle:(long long)arg1;
 - (NSArray *)defaultBackgroundEffectsForTableViewStyle:(long long)arg1;
-- (double)defaultBackgroundPaddingForTableViewStyle:(long long)arg1;
 - (struct _UITableConstantsBackgroundProperties)defaultCellBackgroundPropertiesForTableViewStyle:(long long)arg1 state:(id<_UICellConfigurationStateReadonly>)arg2;
 - (double)defaultCellContentLeadingPaddingForOutline:(BOOL)arg1;
 - (double)defaultCellContentTrailingPadding;
@@ -46,6 +45,7 @@
 - (UIFont *)defaultHeaderFontForTableViewStyle:(long long)arg1;
 - (UIFont *)defaultHeaderFontForView:(id<UITableConstantsHeaderFooterProviding>)arg1 inTableView:(id<UITableConstantsTableProviding>)arg2;
 - (UIColor *)defaultHeaderFooterBackgroundColorForTableViewStyle:(long long)arg1 tableBackgroundColor:(UIColor *)arg2 floatingHeaderFooter:(BOOL)arg3;
+- (struct UIEdgeInsets)defaultHeaderFooterLayoutMarginsForTableViewStyle:(long long)arg1;
 - (UIColor *)defaultHeaderTextColorForTableViewStyle:(long long)arg1 focused:(BOOL)arg2;
 - (UIImageSymbolConfiguration *)defaultImageSymbolConfigurationForTraitCollection:(UITraitCollection *)arg1;
 - (UIColor *)defaultImageTintColorForState:(unsigned long long)arg1;

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)caretRectForRightmostSelectedPosition;
 - (BOOL)cursorPositionIsContainedByRange:(id)arg1;
 - (void)endFloatingCursor;
+- (void)modifySelectionWithExtentPoint:(struct CGPoint)arg1 executionContext:(id)arg2;
 - (void)selectPositionAtBoundary:(long long)arg1 inDirection:(long long)arg2 relativeToSelection:(id)arg3 executionContext:(id)arg4;
 - (void)selectPositionAtPoint:(struct CGPoint)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)selectPositionAtPoint:(struct CGPoint)arg1 executionContext:(id)arg2;

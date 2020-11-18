@@ -19,12 +19,14 @@ __attribute__((visibility("hidden")))
     BOOL _hasPerformedInteraction;
     struct CGPoint _initialPointFromPreviousInteraction;
     UITextGestureTuning *_gestureTuning;
+    long long _inheritedGranularity;
     id<UITextLoupeInteractionBehaviorDelegate> _behaviorDelegate;
     _UITextLoupeResponderProxy *_responderProxy;
 }
 
 @property (strong, nonatomic) id<UITextLoupeInteractionBehaviorDelegate> behaviorDelegate; // @synthesize behaviorDelegate=_behaviorDelegate;
 @property (readonly, nonatomic) UITextGestureTuning *gestureTuning; // @synthesize gestureTuning=_gestureTuning;
+@property (nonatomic) long long inheritedGranularity; // @synthesize inheritedGranularity=_inheritedGranularity;
 @property (readonly, nonatomic) UIResponder *responder;
 @property (strong, nonatomic) _UITextLoupeResponderProxy *responderProxy; // @synthesize responderProxy=_responderProxy;
 @property (nonatomic) BOOL shouldUseLineThreshold;

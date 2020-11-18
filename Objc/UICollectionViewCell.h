@@ -33,6 +33,7 @@
         unsigned int editing:1;
         unsigned int swiped:1;
         unsigned int reordering:1;
+        unsigned int showingCompactContextMenu:1;
         unsigned int needsConfigurationStateUpdate:1;
         unsigned int hasCustomBackgroundColor:1;
         unsigned int hasCustomBackgroundView:1;
@@ -46,6 +47,7 @@
         unsigned int waitingForSelectionAnimationHalfwayPoint:1;
         unsigned int contentViewWantsSystemLayoutSizeFittingSize:1;
         unsigned int selectionOrHighlightStateChangedSinceBackgroundUpdate:1;
+        unsigned int needsFocusRingUpdateAfterLayout:1;
     } _collectionCellFlags;
     long long _dragState;
     BOOL _selected;
@@ -64,6 +66,7 @@
 @property (nonatomic, getter=_isDropTarget, setter=_setDropTarget:) BOOL _dropTarget;
 @property (nonatomic, getter=_isLayoutEngineSuspended, setter=_setLayoutEngineSuspended:) BOOL _layoutEngineSuspended; // @synthesize _layoutEngineSuspended=_isLayoutEngineSuspended;
 @property (nonatomic, getter=_isReordering, setter=_setReordering:) BOOL _reordering;
+@property (nonatomic, getter=_isShowingCompactContextMenu, setter=_setShowingCompactContextMenu:) BOOL _showingCompactContextMenu;
 @property (nonatomic, getter=_isSwiped, setter=_setSwiped:) BOOL _swiped;
 @property (nonatomic) BOOL automaticallyUpdatesBackgroundConfiguration;
 @property (nonatomic) BOOL automaticallyUpdatesContentConfiguration;
@@ -90,6 +93,7 @@
 + (BOOL)_isInternalCell;
 + (BOOL)_subclassOverridesContentViewClass;
 - (void).cxx_destruct;
+- (BOOL)_appliesLayoutAttributesMaskingToBackgroundConfiguration;
 - (BOOL)_appliesLayoutAttributesMaskingToReusableView;
 - (void)_applyBackgroundViewConfiguration:(id)arg1 withState:(id)arg2;
 - (void)_applyContentViewConfiguration:(id)arg1 withState:(id)arg2 usingSPI:(BOOL)arg3;

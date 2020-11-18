@@ -7,7 +7,7 @@
 #import <UIKitCore/UILongPressGestureRecognizer.h>
 
 __attribute__((visibility("hidden")))
-@interface UIAccessibilityHUDGestureLongPressRecognizer : UILongPressGestureRecognizer
+@interface _UIAccessibilityHUDLongPressGestureRecognizer : UILongPressGestureRecognizer
 {
 }
 

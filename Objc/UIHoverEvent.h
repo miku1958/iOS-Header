@@ -21,6 +21,7 @@
 
 - (void).cxx_destruct;
 - (void)_cancelAllGestureRecognizers;
+- (void)_completelyRemoveHoverTouchAndDeliveryTableForContextIdNumber:(id)arg1;
 - (id)_deliveryTableByTouchCreateIfNeeded:(id)arg1;
 - (void)_gestureRecognizerNoLongerNeedsSendEvent:(id)arg1;
 - (id)_gestureRecognizersForWindow:(id)arg1;
@@ -30,6 +31,7 @@
 - (BOOL)_sendEventToGestureRecognizer:(id)arg1;
 - (void)_setNeedsUpdateForWindow:(id)arg1 forcingHitTest:(BOOL)arg2;
 - (id)_touchesByContextId:(unsigned int)arg1 createIfNeeded:(BOOL)arg2;
+- (void)_windowDidBecomeHidden:(id)arg1;
 - (void)_windowDidDetachContext:(id)arg1;
 - (id)_windows;
 - (id)allTouches;

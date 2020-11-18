@@ -260,6 +260,10 @@ struct _UITableConstantsBackgroundProperties {
     id _field3;
     BOOL _field4;
     long long _field5;
+    double _field6;
+    double _field7;
+    BOOL _field8;
+    id _field9;
 };
 
 struct _UITraitCollectionChangeDescription {

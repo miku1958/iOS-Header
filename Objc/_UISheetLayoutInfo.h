@@ -17,15 +17,20 @@ __attribute__((visibility("hidden")))
         unsigned int minimumTopInset:1;
         unsigned int maximumWidth:1;
         unsigned int preferredSize:1;
+        unsigned int percentFullHeight:1;
+        unsigned int proposedDepthLevel:1;
         unsigned int depthLevel:1;
         unsigned int bottomAttached:1;
+        unsigned int forcedFullScreen:1;
+        unsigned int functionallyFullScreen:1;
         unsigned int percentFullScreen:1;
         unsigned int effectiveKeyboardFrame:1;
         unsigned int floatingUntransformedFrame:1;
         unsigned int bottomAttachedUntransformedFrame:1;
-        unsigned int fullHeightUntransformedFrame:1;
         unsigned int stackAlignmentFrame:1;
         unsigned int stacksWithChild:1;
+        unsigned int fullHeightUntransformedFrame:1;
+        unsigned int fullHeightUntransformedFrameForDepthLevel:1;
         unsigned int dismissOffset:1;
         unsigned int activeDetents:1;
         unsigned int rubberBandExtentBeyondMinimumOffset:1;
@@ -52,6 +57,8 @@ __attribute__((visibility("hidden")))
         unsigned int activeDetents:1;
     } _computing;
     BOOL __bottomAttached;
+    BOOL __forcedFullScreen;
+    BOOL __functionallyFullScreen;
     BOOL __stacksWithChild;
     BOOL __anyDescendantDragging;
     BOOL __interactionEnabled;
@@ -75,6 +82,8 @@ __attribute__((visibility("hidden")))
     double __systemMinimumTopInset;
     double __minimumTopInset;
     double __maximumWidth;
+    double __percentFullHeight;
+    double __proposedDepthLevel;
     double __depthLevel;
     double __percentFullScreen;
     double __dismissOffset;
@@ -118,8 +127,9 @@ __attribute__((visibility("hidden")))
     struct CGRect __effectiveKeyboardFrame;
     struct CGRect __floatingUntransformedFrame;
     struct CGRect __bottomAttachedUntransformedFrame;
-    struct CGRect __fullHeightUntransformedFrame;
     struct CGRect __stackAlignmentFrame;
+    struct CGRect __fullHeightUntransformedFrame;
+    struct CGRect __fullHeightUntransformedFrameForDepthLevel;
     struct CGRect __untransformedFrame;
     struct CGRect __hostedUntransformedFrame;
     struct UIEdgeInsets __touchInsets;
@@ -161,7 +171,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=_isDraggingAndDismissing, setter=_setDraggingAndDismissing:) BOOL _draggingAndDismissing; // @synthesize _draggingAndDismissing=__draggingAndDismissing;
 @property (readonly, nonatomic) struct CGRect _effectiveKeyboardFrame; // @synthesize _effectiveKeyboardFrame=__effectiveKeyboardFrame;
 @property (readonly, nonatomic) struct CGRect _floatingUntransformedFrame; // @synthesize _floatingUntransformedFrame=__floatingUntransformedFrame;
+@property (readonly, nonatomic, getter=_isForcedFullScreen) BOOL _forcedFullScreen; // @synthesize _forcedFullScreen=__forcedFullScreen;
 @property (readonly, nonatomic) struct CGRect _fullHeightUntransformedFrame; // @synthesize _fullHeightUntransformedFrame=__fullHeightUntransformedFrame;
+@property (readonly, nonatomic) struct CGRect _fullHeightUntransformedFrameForDepthLevel; // @synthesize _fullHeightUntransformedFrameForDepthLevel=__fullHeightUntransformedFrameForDepthLevel;
+@property (readonly, nonatomic, getter=_isFunctionallyFullScreen) BOOL _functionallyFullScreen; // @synthesize _functionallyFullScreen=__functionallyFullScreen;
 @property (readonly, nonatomic) double _grabberAlpha; // @synthesize _grabberAlpha=__grabberAlpha;
 @property (nonatomic, setter=_setGrabberTopSpacing:) double _grabberTopSpacing; // @synthesize _grabberTopSpacing=__grabberTopSpacing;
 @property (readonly, nonatomic) struct CGRect _hostedUntransformedFrame; // @synthesize _hostedUntransformedFrame=__hostedUntransformedFrame;
@@ -184,6 +197,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setPassthroughViews:) NSArray *_passthroughViews; // @synthesize _passthroughViews=__passthroughViews;
 @property (readonly, nonatomic) double _percentDimmed; // @synthesize _percentDimmed=__percentDimmed;
 @property (readonly, nonatomic) double _percentDimmedFromOffset; // @synthesize _percentDimmedFromOffset=__percentDimmedFromOffset;
+@property (readonly, nonatomic) double _percentFullHeight; // @synthesize _percentFullHeight=__percentFullHeight;
 @property (readonly, nonatomic) double _percentFullScreen; // @synthesize _percentFullScreen=__percentFullScreen;
 @property (readonly, nonatomic) double _percentPresented; // @synthesize _percentPresented=__percentPresented;
 @property (nonatomic, setter=_setPreferredCornerRadius:) double _preferredCornerRadius; // @synthesize _preferredCornerRadius=__preferredCornerRadius;
@@ -192,6 +206,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=_isPresented, setter=_setPresented:) BOOL _presented; // @synthesize _presented=__presented;
 @property (strong, nonatomic) UIViewController *_presentedViewController; // @synthesize _presentedViewController=__presentedViewController;
 @property (weak, nonatomic) UIViewController *_presentingViewController; // @synthesize _presentingViewController=__presentingViewController;
+@property (readonly, nonatomic) double _proposedDepthLevel; // @synthesize _proposedDepthLevel=__proposedDepthLevel;
 @property (nonatomic, getter=_isReduceMotionEnabled, setter=_setReduceMotionEnabled:) BOOL _reduceMotionEnabled; // @synthesize _reduceMotionEnabled=__reduceMotionEnabled;
 @property (strong, nonatomic, setter=_setReversedDetents:) NSArray *_reversedDetents; // @synthesize _reversedDetents=__reversedDetents;
 @property (nonatomic, setter=_setReversedIndexOfCurrentDetent:) long long _reversedIndexOfCurrentDetent;
@@ -219,8 +234,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setWidthFollowsPreferredContentSizeWhenBottomAttached:) BOOL _widthFollowsPreferredContentSizeWhenBottomAttached; // @synthesize _widthFollowsPreferredContentSizeWhenBottomAttached=__widthFollowsPreferredContentSizeWhenBottomAttached;
 
 - (void).cxx_destruct;
+- (id)_descendantDescription;
 - (void)_invalidatePreferredSize;
 - (void)_layout;
+- (id)description;
 - (id)init;
 
 @end

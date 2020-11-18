@@ -6,20 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@protocol NSObject><NSCopying;
+@class NSString;
 
 @interface _UIFocusGroupDescriptor : NSObject
 {
-    struct {
-        unsigned int isStringIdentifier:1;
-    } _flags;
-    id<NSObject><NSCopying> _identifier;
+    NSString *_identifier;
 }
 
-+ (id)_stringIdentifierMapTable;
 - (void).cxx_destruct;
 - (id)_stringIdentifier;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;

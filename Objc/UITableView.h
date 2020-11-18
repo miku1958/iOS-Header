@@ -277,7 +277,7 @@
         unsigned int allowsMultipleSelection:1;
         unsigned int allowsMultipleSelectionDuringEditing:1;
         unsigned int selectionFollowsFocus:2;
-        unsigned int shouldBecomeFocusedOnSelection:1;
+        unsigned int shouldBecomeFocusedOnSelection:2;
         unsigned int allowsCursorInteractionSPI:1;
         unsigned int indexHidden:1;
         unsigned int indexHiddenForSearch:1;
@@ -354,7 +354,7 @@
         unsigned int scrollFirstResponderCellVisibleAfterVisibleCellsUpdate:1;
         unsigned int ignoreCopyFilterForTableAnimations:1;
         unsigned int disableReuseQueuePurgeOnTextSizeChanges:1;
-        unsigned int doFirstResponderUpdatesAfterVisibleCellsUpdate:1;
+        unsigned int doUpdateFocusConfigurationAfterVisibleCellsUpdate:1;
         unsigned int useUnifiedSelectionBehavior:1;
         unsigned int preserveSelectionStateDuringReload:1;
     } _tableFlags;
@@ -985,9 +985,11 @@
 - (BOOL)_shouldHaveHeaderViewForSection:(long long)arg1;
 - (BOOL)_shouldHaveIndexOverlaySelectionView;
 - (BOOL)_shouldHighlightInsteadOfSelectRowAtIndexPath:(id)arg1;
+- (BOOL)_shouldIncludeRowInMultipleSelectionGroupWithCell:(id)arg1 atIndexPath:(id)arg2;
 - (BOOL)_shouldIndentWhileEditingForRowAtIndexPath:(id)arg1;
 - (BOOL)_shouldResignFirstResponderWithInteractionDisabled;
 - (BOOL)_shouldRestorePreReloadScrollPositionWithFirstVisibleIndexPath:(id)arg1 scrolledToTop:(BOOL)arg2;
+- (BOOL)_shouldReusePreviouslyFocusedTableViewSubview:(id)arg1 viewType:(int)arg2;
 - (BOOL)_shouldSetIndexBackgroundColorToTableBackgroundColor;
 - (BOOL)_shouldShowHeadersAndFooters;
 - (BOOL)_shouldShowIndexOverlays;
@@ -1049,6 +1051,7 @@
 - (void)_updateBackgroundViewFrame;
 - (void)_updateCell:(id)arg1 withValue:(id)arg2;
 - (void)_updateCellContentStringCallout:(id)arg1;
+- (void)_updateCompactContextMenuStateForVisibleCells:(id)arg1;
 - (void)_updateConstants;
 - (void)_updateConstantsForVisibleCellsAndHeaderFooterViews;
 - (void)_updateContentSize;
@@ -1069,6 +1072,7 @@
 - (void)_updateIndexTitles:(id)arg1;
 - (void)_updateIndexTitlesFromDataSource;
 - (void)_updateMarginWidthForVisibleViewsForceLayout:(BOOL)arg1;
+- (void)_updateMultiSelectControllerIfNeeded;
 - (void)_updatePinnedTableHeader;
 - (void)_updatePrefetchContext;
 - (void)_updateRowData;
@@ -1077,6 +1081,8 @@
 - (void)_updateSectionIndex;
 - (id)_updateSections:(id)arg1 withUpdateAction:(int)arg2 rowAnimation:(long long)arg3 headerFooterOnly:(BOOL)arg4 usingPresentationValues:(BOOL)arg5;
 - (void)_updateSelectedAndHighlightedStateForCell:(id)arg1 atIndexPath:(id)arg2;
+- (void)_updateSelectionGroupingForCell:(id)arg1 atIndexPath:(id)arg2;
+- (void)_updateSelectionGroupingForVisibleCells;
 - (void)_updateSeparatorStateForCell:(id)arg1 atIndexPath:(id)arg2;
 - (void)_updateSeparatorStyleForCell:(id)arg1 atIndexPath:(id)arg2;
 - (void)_updateShowScrollIndicatorsFlag;

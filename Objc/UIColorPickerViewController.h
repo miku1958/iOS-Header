@@ -66,6 +66,7 @@
 - (void)_presentationController:(id)arg1 prepareAdaptivePresentationController:(id)arg2;
 - (void)_processKeyboardNotification:(id)arg1;
 - (void)_setSelectedColor:(id)arg1;
+- (void)_tryLaunchingExtension:(long long)arg1;
 - (void)_updateRemoteConfiguration;
 - (void)dealloc;
 - (void)didMoveToParentViewController:(id)arg1;

@@ -33,6 +33,7 @@
 @property (nonatomic, getter=_marginOverride, setter=_setMarginOverride:) double marginOverride; // @synthesize marginOverride=_marginOverride;
 @property (readonly, nonatomic, getter=_requiresPredictionDisabled) BOOL requiresPredictionDisabled;
 @property (nonatomic, getter=_showsBarButtonItemsInline, setter=_setShowsBarButtonItemsInline:) BOOL showsBarButtonItemsInline; // @synthesize showsBarButtonItemsInline=_showsBarButtonItemsInline;
+@property (readonly, nonatomic, getter=_isSystemItem) BOOL systemItem;
 @property (copy, nonatomic) NSArray *trailingBarButtonGroups; // @synthesize trailingBarButtonGroups=_trailingBarButtonGroups;
 
 + (id)_keyboardDeleteItem;

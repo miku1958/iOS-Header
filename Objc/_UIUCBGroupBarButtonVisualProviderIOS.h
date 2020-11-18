@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)configureButton:(id)arg1 withAppearanceDelegate:(id)arg2 fromBarItem:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)shouldLift;
 - (void)updateButton:(id)arg1 forSelectedState:(BOOL)arg2;
 - (void)updateButton:(id)arg1 toUseButtonShapes:(BOOL)arg2;
 

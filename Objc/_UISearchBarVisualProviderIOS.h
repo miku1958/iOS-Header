@@ -273,6 +273,7 @@ __attribute__((visibility("hidden")))
 - (void)teardown;
 - (void)updateBackgroundToBackdropStyle:(long long)arg1;
 - (void)updateDictationButton;
+- (void)updateDictationButtonActiveState;
 - (void)updateDictationButtonForDynamicTypeWithSearchField:(id)arg1;
 - (void)updateEffectiveContentInset;
 - (void)updateForAllowedToShowDictationChange;

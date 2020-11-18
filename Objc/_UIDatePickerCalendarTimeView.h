@@ -77,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (long long)keyboardTypeForTimeLabel:(id)arg1;
 - (BOOL)passthroughScrollInteraction:(id)arg1 shouldInteractAtLocation:(struct CGPoint)arg2 withEvent:(id)arg3;
 - (BOOL)passthroughScrollInteractionDidRecognize:(id)arg1;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)presentationControllerWillDismiss:(id)arg1;
 - (id)primaryFirstResponder;
 - (void)reloadWithCalendar:(id)arg1 locale:(id)arg2 selectedTime:(id)arg3;

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long compositePhase; // @synthesize compositePhase=_compositePhase;
 @property (readonly, nonatomic) double scaleZ; // @synthesize scaleZ=_scaleZ;
 
+- (void)_setCompositePhase:(unsigned long long)arg1 withEvent:(struct __IOHIDEvent *)arg2;
 - (void)reset;
 - (void)updateWithHIDEvent:(struct __IOHIDEvent *)arg1;
 

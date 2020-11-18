@@ -48,10 +48,10 @@
 - (struct NSDirectionalEdgeInsets)_effectiveSectionHorizontalInsets;
 - (void)_enrichLayoutAttributes:(id)arg1 interactionState:(id)arg2;
 - (void)_enrichPreferredLayoutAttributes:(id)arg1 interactionState:(id)arg2;
+- (BOOL)_hasHeaderFooterBelowLastItemInSection:(long long)arg1 interactionState:(id)arg2;
 - (BOOL)_hasHorizontalInsets;
 - (id)_invalidationContextForBackgroundChangeAtIndexPath:(id)arg1 interactionState:(id)arg2;
 - (BOOL)_isRTL;
-- (BOOL)_isVisuallyContiguousWithSectionAfterSectionIndex:(long long)arg1 interactionState:(id)arg2;
 - (id)_leadingSwipeActionsConfigurationForIndexPath:(id)arg1;
 - (unsigned long long)_maskedCornersForBackgroundOfItemWithSelectionGrouping:(unsigned long long)arg1;
 - (struct NSDirectionalEdgeInsets)_preferredSeparatorInsetsFromCellLayoutAttributes:(id)arg1;

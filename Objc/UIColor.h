@@ -109,7 +109,9 @@
 + (id)_secondarySystemBackgroundColor;
 + (id)_secondarySystemGroupedBackgroundColor;
 + (id)_separatorColor;
++ (id)_sidebarBackgroundColor;
 + (id)_splitViewBorderColor;
++ (id)_swipedSidebarCellBackgroundColor;
 + (id)_switchOffColor;
 + (id)_switchOffImageColor;
 + (id)_systemBackgroundColor;

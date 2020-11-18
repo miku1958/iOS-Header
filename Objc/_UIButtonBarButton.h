@@ -16,6 +16,7 @@
     _UIButtonBarButtonVisualProvider *_visualProvider;
     NSLayoutConstraint *_widthMinimizingConstraint;
     NSLayoutConstraint *_heightMinimizingConstraint;
+    BOOL _autolayoutIsCleanForBoundsChange;
     BOOL _backButton;
     _UIBarButtonItemData *_appearanceData;
 }
@@ -39,6 +40,7 @@
 - (void)_configureFromBarItem:(id)arg1 appearanceDelegate:(id)arg2 isBackButton:(BOOL)arg3;
 - (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
 - (unsigned long long)_controlEventsForActionTriggered;
+- (void)_is_setNeedsLayout;
 - (void)_setTouchHasHighlighted:(BOOL)arg1;
 - (void)_traitCollectionDidChangeOnSubtreeInternal:(const struct _UITraitCollectionChangeDescription *)arg1;
 - (struct UIEdgeInsets)alignmentRectInsets;
@@ -67,6 +69,7 @@
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
 - (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
+- (void)setBounds:(struct CGRect)arg1;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setNeedsAppearanceUpdate;

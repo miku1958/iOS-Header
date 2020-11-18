@@ -61,7 +61,6 @@
     BOOL _sizeTrackingViewShouldTranslateAutoResizeMaskIntoConstraints;
     int _sizeTrackingViewAutoResizeMask;
     struct CGSize _serviceScreenSize;
-    BOOL _alreadySentFence;
     UIView *_viewServiceTouchInterdictionView;
     UIAlertController *_proxiedEditAlertController;
     long long _proxiedEditAlertToken;
@@ -98,6 +97,7 @@
 
 + (BOOL)__shouldAllowHostProcessToTakeFocus;
 + (BOOL)__shouldHostRemoteTextEffectsWindow;
++ (BOOL)__shouldHostedWindowMoveBetweenSecureAndInsecureMainScreen;
 + (id)_requestViewController:(id)arg1 traitCollection:(id)arg2 fromServiceWithBundleIdentifier:(id)arg3 service:(id)arg4 connectionHandler:(CDUnknownBlockType)arg5;
 + (BOOL)_shouldForwardViewWillTransitionToSize;
 + (BOOL)_shouldSendLegacyMethodsFromViewWillTransitionToSize;

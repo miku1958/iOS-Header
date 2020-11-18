@@ -27,6 +27,7 @@
 - (void).cxx_destruct;
 - (double)_resolvedOffsetInContainerView:(id)arg1 fullHeightFrameOfPresentedView:(struct CGRect)arg2 bottomAttached:(BOOL)arg3;
 - (id)awakeAfterUsingCoder:(id)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(long long)arg1 internalBlock:(CDUnknownBlockType)arg2;

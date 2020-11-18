@@ -190,7 +190,7 @@
         unsigned int allowsHighContrastForBackgroundColor:1;
         unsigned int hasPendingTraitStorageConstraints:1;
         unsigned int hasEverBeenInAWindow:1;
-        unsigned int hasFocusGroupDescriptor:2;
+        unsigned int hasFocusGroupIdentifier:2;
         unsigned int allowsSkippingLayout:1;
     } _viewFlags;
     unsigned short _unsatisfiableConstraintsLoggingSuspensionCount;
@@ -431,6 +431,7 @@
 + (void)_addHierarchyTrackingVisitor:(id)arg1;
 + (void)_addOrPerformCompletion:(CDUnknownBlockType)arg1;
 + (void)_addOrPerformCompletionWithPosition:(CDUnknownBlockType)arg1;
++ (BOOL)_allowsUnsupportedMacIdiomBehavior;
 + (CDUnknownBlockType)_alongsideAnimations;
 + (void)_animateByRetargetingAnimations:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)_animateUsingDefaultDampedSpringWithDelay:(double)arg1 initialSpringVelocity:(double)arg2 options:(unsigned long long)arg3 animations:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
@@ -504,6 +505,7 @@
 + (void)_registerClassForIdiomInitializationIfNeccessary;
 + (void)_removeHierarchyTrackingVisitor:(id)arg1;
 + (void)_resetHostLayoutEngineOnlyTAMIC_YES;
++ (void)_setAllowsUnsupportedMacIdiomBehavior:(BOOL)arg1;
 + (void)_setAlongsideAnimations:(CDUnknownBlockType)arg1;
 + (void)_setAlongsideAnimations:(CDUnknownBlockType)arg1 toRunByEndOfBlock:(CDUnknownBlockType)arg2;
 + (void)_setAnimatedPropertiesEnabled:(BOOL)arg1;
@@ -597,6 +599,7 @@
 - (id)_actingParentViewForGestureRecognizers;
 - (id)_activityItemsConfigurationAtLocation:(struct CGPoint)arg1;
 - (void)_addBoundingPathChangeObserver:(id)arg1;
+- (void)_addBoundsMatchingSubview:(id)arg1;
 - (void)_addCenterExpressionToExpression:(id)arg1 isVertical:(BOOL)arg2;
 - (void)_addConstraint:(id)arg1;
 - (void)_addConstraintPendingAnimatedChanges:(id)arg1;
@@ -1116,6 +1119,7 @@
 - (BOOL)_shouldSkipNormalLayoutForSakeOfTemplateLayout;
 - (BOOL)_shouldSuspendLayoutEngine;
 - (BOOL)_shouldUpdateFocusInContext:(id)arg1;
+- (BOOL)_shouldUseViewForSceneDraggingBehavior;
 - (void)_snipDangliesWithForce:(BOOL)arg1 repairIfPossibleForViewThatMoved:(id)arg2 newSuperview:(id)arg3 oldSuperview:(id)arg4;
 - (unsigned long long)_speedBumpEdges;
 - (void)_startObservingVariablesOnlyToSupportTAMICChange:(BOOL)arg1;
@@ -1126,16 +1130,19 @@
 - (int)_style;
 - (BOOL)_subclassImplementsDrawRect;
 - (void)_subscribeToScrollNotificationsIfNecessary:(id)arg1;
+- (BOOL)_subviewPreventsSkipLayout:(id)arg1;
 - (BOOL)_subviewWantsAutolayout;
 - (BOOL)_supportsBecomeFirstResponderWhenPossible;
 - (BOOL)_supportsContentDimensionVariables;
 - (void)_switchToLayoutEngine:(id)arg1;
 - (id)_systemDefaultFocusGroupDescriptor;
+- (id)_systemDefaultFocusGroupIdentifier;
 - (struct CGSize)_systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (struct CGSize)_systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3 hasIntentionallyCollapsedHeight:(BOOL *)arg4;
 - (id)_targetVelocityForKey:(id)arg1;
 - (double)_textButtonMargin;
 - (id)_textServicesResponderProxy;
+- (void)_throwForUnsupportedNonMacIdiomBehaviorWithReason:(id)arg1;
 - (id)_tintColorArchivingKey;
 - (void)_tintColorDidChange;
 - (long long)_topToBottomLeftToRightViewCompare:(id)arg1;

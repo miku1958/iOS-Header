@@ -6,19 +6,16 @@
 
 #import <UIKitCore/UIView.h>
 
-@class UIKBKeyView;
-
 __attribute__((visibility("hidden")))
 @interface _UIUCBKBSelectionBackground : UIView
 {
-    UIKBKeyView *_backgroundProvidingView;
+    UIView *_backgroundProvidingView;
     BOOL _showButtonShape;
 }
 
 @property (nonatomic) BOOL showButtonShape; // @synthesize showButtonShape=_showButtonShape;
 
 - (void).cxx_destruct;
-- (id)_makeBackgroundView;
 - (void)_updateBackgroundProvidingView;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;

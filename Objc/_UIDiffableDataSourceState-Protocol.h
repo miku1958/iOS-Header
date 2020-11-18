@@ -5,28 +5,18 @@
 //
 
 #import <UIKitCore/NSObject-Protocol.h>
+#import <UIKitCore/_UIDiffableDataSourceQuerying-Protocol.h>
 
-@class NSArray, NSIndexPath, NSIndexSet, NSOrderedSet, NSUUID;
+@class NSIndexSet, NSOrderedSet, NSUUID;
 @protocol _UIDataSourceSnapshotTranslating;
 
-@protocol _UIDiffableDataSourceState <NSObject>
+@protocol _UIDiffableDataSourceState <_UIDiffableDataSourceQuerying, NSObject>
 
 @property (readonly, nonatomic) id<_UIDataSourceSnapshotTranslating> dataSourceSnapshot;
 @property (readonly, nonatomic) NSUUID *generationID;
 @property (readonly, nonatomic) NSOrderedSet *identifiers;
 @property (readonly, nonatomic) NSOrderedSet *sections;
 
-- (long long)indexOfItemIdentifier:(id)arg1;
-- (long long)indexOfSectionIdentifier:(id)arg1;
-- (NSIndexPath *)indexPathForItemIdentifier:(id)arg1;
-- (id)itemIdentifierForIndexPath:(NSIndexPath *)arg1;
-- (NSArray *)itemIdentifiers;
-- (NSArray *)itemIdentifiersInSectionWithIdentifier:(id)arg1;
-- (long long)numberOfItems;
-- (long long)numberOfItemsInSection:(id)arg1;
-- (long long)numberOfSections;
-- (id)sectionIdentifierForSectionContainingItemIdentifier:(id)arg1;
-- (NSArray *)sectionIdentifiers;
 - (NSIndexSet *)sectionIndexesForItemIndexRange:(struct _NSRange)arg1;
 @end
 

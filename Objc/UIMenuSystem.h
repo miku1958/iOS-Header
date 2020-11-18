@@ -12,6 +12,8 @@
 {
     _UIMenuBuilder *_defaultBuilder;
     _UIMenuBuilder *_automaticallyRebuildingBuilder;
+    CDUnknownBlockType _adaptBuilderToResponderPre;
+    CDUnknownBlockType _adaptBuilderToResponderPost;
     BOOL _shouldAutomaticallyRebuild;
 }
 
@@ -23,8 +25,8 @@
 + (id)mainSystem;
 - (void).cxx_destruct;
 - (void)_automaticallyRebuildIfNeeded;
-- (id)_newBuilderFromResponderChain:(id)arg1;
-- (id)initWithDefaultBuilder:(id)arg1 shouldAutomaticallyRebuild:(BOOL)arg2;
+- (id)_newBuilderFromResponderChain:(id)arg1 atLocation:(struct CGPoint)arg2 inCoordinateSpace:(id)arg3;
+- (id)initWithDefaultBuilder:(id)arg1 shouldAutomaticallyRebuild:(BOOL)arg2 adaptBuilderToResponderPre:(CDUnknownBlockType)arg3 adaptBuilderToResponderPost:(CDUnknownBlockType)arg4;
 - (void)setNeedsRebuild;
 - (void)setNeedsRevalidate;
 

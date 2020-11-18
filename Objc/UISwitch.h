@@ -46,6 +46,8 @@
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) UISwitchVisualElement *visualElement; // @synthesize visualElement=_visualElement;
 
++ (BOOL)_allowsUnsupportedMacIdiomBehavior;
++ (void)_setAllowsUnsupportedMacIdiomBehavior:(BOOL)arg1;
 + (void)setVisualElementProvider:(id)arg1;
 + (id)visualElementForTraitCollection:(id)arg1;
 + (id)visualElementForTraitCollection:(id)arg1 style:(long long)arg2;
