@@ -10,7 +10,6 @@
 
 @class NSString, TUSenderIdentity;
 
-__attribute__((visibility("hidden")))
 @interface CNGeminiChannel : NSObject <NSSecureCoding>
 {
     BOOL _available;
@@ -31,6 +30,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initUnavailableChannelWithIdentifier:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDanglingPlanItem:(id)arg1;
 - (id)initWithSenderIdentity:(id)arg1;

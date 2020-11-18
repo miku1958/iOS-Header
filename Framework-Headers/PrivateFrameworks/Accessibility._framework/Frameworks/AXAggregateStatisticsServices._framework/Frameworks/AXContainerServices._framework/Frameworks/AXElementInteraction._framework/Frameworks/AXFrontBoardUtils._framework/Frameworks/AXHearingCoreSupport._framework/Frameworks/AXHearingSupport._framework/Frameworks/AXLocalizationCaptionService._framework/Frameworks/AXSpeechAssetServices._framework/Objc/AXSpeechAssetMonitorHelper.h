@@ -22,6 +22,7 @@
 - (void)_registerForReachabilityNotifications;
 - (id)_speechAssetUpdaterClient;
 - (void)_unregisterForReachabilityNotifications;
+- (void)clearCurrentVoicesAndRefreshTTSVoiceList;
 - (id)init;
 - (id)speechAssetUpdaterClient;
 - (void)updateAvailableSpeechAssets;

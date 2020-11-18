@@ -67,7 +67,6 @@
 - (void)_currentLocaleDidChange:(id)arg1;
 - (id)_domainsWithPreviousDataOnInternalQueue;
 - (void)_fillPhoneNumber:(id)arg1 intoValues:(id)arg2 controls:(id)arg3 formTextSample:(id)arg4 multiRoundAutoFillManager:(id)arg5;
-- (void)_getCredentialMatches:(id *)arg1 andPotentialMatches:(id *)arg2 matchesForAssociatedDomains:(id *)arg3 forURL:(id)arg4 matchingPartialUsername:(id)arg5 omittingCredentialsUserHasDeniedAccessTo:(BOOL)arg6;
 - (id)_knownUsernamesForURL:(id)arg1;
 - (id)_lastUsedUsernameForDomain:(id)arg1 protectionSpace:(id *)arg2;
 - (void)_loadCompletionDBIfNeededOnInternalQueue;
@@ -113,6 +112,7 @@
 - (id)encryptOrDecryptData:(id)arg1 encrypt:(BOOL)arg2;
 - (void)getCredentialMatches:(id *)arg1 andPotentialMatches:(id *)arg2 forURL:(id)arg3 matchingPartialUsername:(id)arg4 omittingCredentialsUserHasDeniedAccessTo:(BOOL)arg5;
 - (void)getCredentialMatches:(id *)arg1 andPotentialMatches:(id *)arg2 matchesForAssociatedDomains:(id *)arg3 forURL:(id)arg4 matchingPartialUsername:(id)arg5;
+- (void)getCredentialMatches:(id *)arg1 andPotentialMatches:(id *)arg2 matchesForAssociatedDomains:(id *)arg3 forURL:(id)arg4 matchingPartialUsername:(id)arg5 omittingCredentialsUserHasDeniedAccessTo:(BOOL)arg6;
 - (void)getFormFieldValues:(id *)arg1 andFieldToFocus:(id *)arg2 forCreditCardForm:(id)arg3 fromCreditCardData:(id)arg4;
 - (BOOL)hasCredentialsForPageWithMainFrame:(id)arg1;
 - (BOOL)hasUserDeniedAccessToCredential:(id)arg1 inProtectionSpace:(id)arg2;

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class MISSING_TYPE, NSString;
+@class MISSING_TYPE, NSString, UIView;
 @protocol CNKFaceTimeInCallControlsViewControllerDelegate;
 
 @interface CNKFaceTimeInCallControlsViewController : UIViewController
@@ -24,17 +24,18 @@
     MISSING_TYPE *videoButtonIsEnabled;
     MISSING_TYPE *videoIsEnabled;
     MISSING_TYPE *audioIsEnabled;
+    MISSING_TYPE *effectsButtonIsEnabled;
     MISSING_TYPE *shouldShowJoinButton;
-    MISSING_TYPE *effectsButtonIsSelected;
     MISSING_TYPE *delegate;
     MISSING_TYPE *participantDelegate;
     MISSING_TYPE *participantsViewControllerDelegate;
 }
 
+@property (nonatomic, readonly) UIView *audioButton;
 @property (nonatomic) BOOL audioIsEnabled; // @synthesize audioIsEnabled;
 @property (nonatomic, weak) id<CNKFaceTimeInCallControlsViewControllerDelegate> delegate; // @synthesize delegate;
 @property (nonatomic, readonly) NSString *description;
-@property (nonatomic) BOOL effectsButtonIsSelected; // @synthesize effectsButtonIsSelected;
+@property (nonatomic) BOOL effectsButtonIsEnabled; // @synthesize effectsButtonIsEnabled;
 @property (nonatomic) BOOL isExpanded; // @synthesize isExpanded;
 @property (nonatomic) BOOL shouldShowJoinButton; // @synthesize shouldShowJoinButton;
 @property (nonatomic) BOOL videoButtonIsEnabled; // @synthesize videoButtonIsEnabled;

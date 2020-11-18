@@ -10,19 +10,13 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct CTServerState;
-
 struct EmergencyMode {
-    BOOL _field1;
+    int _field1;
     int _field2;
     int _field3;
 };
 
-struct block<void (^)(NSDictionary *)>;
-
 struct dispatch_object_s;
-
-struct dispatch_queue_s;
 
 struct object {
     struct dispatch_object_s *fObj;
@@ -30,14 +24,6 @@ struct object {
 
 struct queue {
     struct object fObj;
-};
-
-struct vector<dispatch::block<void (^)(NSDictionary *)>, std::__1::allocator<dispatch::block<void (^)(NSDictionary *)>>> {
-    struct block<void (^)(NSDictionary *)> *__begin_;
-    struct block<void (^)(NSDictionary *)> *__end_;
-    struct __compressed_pair<dispatch::block<void (^)(NSDictionary *)>*, std::__1::allocator<dispatch::block<void (^)(NSDictionary *)>>> {
-        struct block<void (^)(NSDictionary *)> *__value_;
-    } __end_cap_;
 };
 
 #pragma mark Typedef'd Structures

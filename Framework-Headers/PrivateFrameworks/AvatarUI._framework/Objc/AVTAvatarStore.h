@@ -8,11 +8,12 @@
 
 #import <AvatarUI/AVTAvatarStore-Protocol.h>
 #import <AvatarUI/AVTAvatarStoreInternal-Protocol.h>
+#import <AvatarUI/AVTStoreBackendDelegate-Protocol.h>
 
 @class AVTAvatarRecordImageGenerator, AVTPuppetStore, AVTUIEnvironment, NSString;
 @protocol AVTStoreBackend, AVTUILogger, OS_dispatch_queue;
 
-@interface AVTAvatarStore : NSObject <AVTAvatarStoreInternal, AVTAvatarStore>
+@interface AVTAvatarStore : NSObject <AVTStoreBackendDelegate, AVTAvatarStoreInternal, AVTAvatarStore>
 {
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_backendAccessQueue;
@@ -39,10 +40,13 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
-+ (id)defaultBackendForDomainIdentifier:(id)arg1 environment:(id)arg2;
++ (id)defaultBackendForDomainIdentifier:(id)arg1 workQueue:(id)arg2 environment:(id)arg3;
 + (id)defaultImageGeneratorForEnvironment:(id)arg1;
++ (unsigned long long)maximumNumberOfFetchableAvatars;
++ (unsigned long long)maximumNumberOfSavableAvatars;
 - (void).cxx_destruct;
 - (id)avatarsForFetchRequest:(id)arg1 error:(id *)arg2;
+- (void)backend:(id)arg1 didChangeRecordsWithIdentifiers:(id)arg2;
 - (BOOL)canCreateAvatar;
 - (BOOL)canCreateAvatarWithError:(id *)arg1;
 - (void)deleteAvatar:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -50,11 +54,11 @@
 - (void)duplicateAvatar:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)fetchAvatarsForFetchRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithDomainIdentifier:(id)arg1;
-- (id)initWithDomainIdentifier:(id)arg1 backend:(id)arg2 puppetStore:(id)arg3 imageGenerator:(id)arg4 environment:(id)arg5;
+- (id)initWithDomainIdentifier:(id)arg1 backend:(id)arg2 backendAccessQueue:(id)arg3 puppetStore:(id)arg4 imageGenerator:(id)arg5 environment:(id)arg6;
 - (void)performAsynchronousWork:(CDUnknownBlockType)arg1;
 - (void)performBackendWork:(CDUnknownBlockType)arg1;
 - (void)performPuppetStoreWork:(CDUnknownBlockType)arg1;
-- (void)postChangeNotificationForRecordWithIdentifier:(id)arg1;
+- (void)postChangeNotificationForRecordWithIdentifiers:(id)arg1 remote:(BOOL)arg2;
 - (void)saveAvatar:(id)arg1 completionBlock:(CDUnknownBlockType)arg2 thumbnailGenerationCompletionBlock:(CDUnknownBlockType)arg3;
 
 @end

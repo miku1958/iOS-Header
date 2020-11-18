@@ -11,11 +11,11 @@
 @interface PUApertureGradientView : UIView
 {
     UIColor *_gradientColor;
-    double _topPadding;
+    struct UIEdgeInsets _edgeInsets;
 }
 
-@property (copy, nonatomic) UIColor *gradientColor; // @synthesize gradientColor=_gradientColor;
-@property (nonatomic) double topPadding; // @synthesize topPadding=_topPadding;
+@property (nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
+@property (strong, nonatomic) UIColor *gradientColor; // @synthesize gradientColor=_gradientColor;
 
 - (void).cxx_destruct;
 - (void)drawRect:(struct CGRect)arg1;

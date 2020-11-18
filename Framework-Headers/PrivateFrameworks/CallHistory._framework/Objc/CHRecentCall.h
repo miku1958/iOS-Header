@@ -27,8 +27,8 @@
     long long _handleType;
     NSUUID *_localParticipantUUID;
     NSUUID *_outgoingLocalParticipantUUID;
-    CHHandle *_localParticipantHandle;
     NSSet *_remoteParticipantHandles;
+    CHHandle *_localParticipantHandle;
     NSString *_uniqueId;
     NSString *_serviceProvider;
     NSNumber *_bytesOfDataUsed;

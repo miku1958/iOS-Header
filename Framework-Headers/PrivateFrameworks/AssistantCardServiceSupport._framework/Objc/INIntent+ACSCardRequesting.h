@@ -9,6 +9,7 @@
 #import <AssistantCardServiceSupport/ACSCardRequesting-Protocol.h>
 
 @interface INIntent (ACSCardRequesting) <ACSCardRequesting>
+- (BOOL)acs_needsTitleCardSection;
 - (void)requestCard:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (unsigned long long)servicePriorityForCardRequest:(id)arg1;
 @end

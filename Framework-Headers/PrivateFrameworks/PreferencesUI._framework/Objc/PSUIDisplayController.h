@@ -33,13 +33,16 @@
 - (id)blueLightSchedule:(id)arg1;
 - (id)boldTextEnabledForSpecifier:(id)arg1;
 - (void)brightnessChangedExternally;
+- (id)connectedDisplaySpecifiers;
 - (id)controllerForSpecifier:(id)arg1;
 - (void)dealloc;
 - (id)getAutoWhiteBalanceEnabled:(id)arg1;
 - (void)handleBlueLightStatusChanged:(CDStruct_f4084295 *)arg1;
 - (void)handleBrightnessChangedNotification:(id)arg1;
+- (void)handlePSUIExternalDisplayManagerCurrentModeDidChangeNotification:(id)arg1;
 - (id)init;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)insertExternalDisplaySpecifiers;
 - (id)localizedMagnifyModeName;
 - (id)localizedTimeForTime:(CDStruct_1ef3fb1f)arg1;
 - (id)lockGroupFooter;
@@ -48,6 +51,7 @@
 - (void)presentModalMagnifyController;
 - (void)profileNotification:(id)arg1;
 - (void)reloadBlueLightSpecifiers;
+- (void)removeExternalDisplaySpecifiers;
 - (id)screenLock:(id)arg1;
 - (void)setAutoWhiteBalanceEnabled:(id)arg1 forSpecifier:(id)arg2;
 - (void)setBacklightValue:(id)arg1 specifier:(id)arg2;

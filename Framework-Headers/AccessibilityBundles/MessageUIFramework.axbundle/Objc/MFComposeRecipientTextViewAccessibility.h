@@ -15,7 +15,9 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_didRemoveRecipient:(id)arg1;
+- (void)_ensureAddButton;
 - (void)_updateInactiveTextView;
+- (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

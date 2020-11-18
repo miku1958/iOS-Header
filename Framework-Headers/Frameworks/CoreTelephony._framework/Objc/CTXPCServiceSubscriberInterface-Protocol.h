@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CTXPCServiceSubscriptionContext, NSData, NSDictionary, NSString;
+@class CTServiceDescriptor, CTSubscriberAuthRequest, CTXPCServiceSubscriptionContext, NSData, NSDictionary, NSString;
 
 @protocol CTXPCServiceSubscriberInterface
 - (void)SIMUnlockProcedureDidComplete;
+- (void)authenticate:(CTServiceDescriptor *)arg1 request:(CTSubscriberAuthRequest *)arg2 completion:(void (^)(CTSubscriberAuthResult *, NSError *))arg3;
 - (void)changePIN:(CTXPCServiceSubscriptionContext *)arg1 oldPin:(NSString *)arg2 newPin:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)context:(CTXPCServiceSubscriptionContext *)arg1 isProtectedIdentitySupported:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)copyFirmwareUpdateInfo:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
@@ -32,8 +33,10 @@
 - (void)getSIMTrayStatus:(void (^)(NSString *, NSError *))arg1;
 - (void)getShortLabel:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)getSimLabel:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTSimLabel *, NSError *))arg2;
+- (void)getUserAuthToken:(CTServiceDescriptor *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
 - (void)isEsimFor:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(long long, NSError *))arg2;
 - (void)promptForSIMUnlock:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)refreshUserAuthToken:(CTServiceDescriptor *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)saveSIMLockValue:(CTXPCServiceSubscriptionContext *)arg1 enabled:(BOOL)arg2 pin:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)setActiveUserDataSelection:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setAllowedToLaunchSimUnlockDuringBuddy:(BOOL)arg1 completion:(void (^)(NSError *))arg2;

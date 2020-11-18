@@ -19,6 +19,7 @@
     NSObject<OS_dispatch_semaphore> *_canBeginRenderSemaphore;
     struct atomic_flag _readyToBeginRender;
     _Atomic double _lastFrameDuration;
+    _Atomic unsigned long long _lastPresentationTime;
     _Atomic int _queuedRenders;
     NSMutableArray *_postPresentCallbacks;
     BOOL _isTorndown;
@@ -29,6 +30,7 @@
     double _presentationDelayGrowth;
     double _presentationMaxDelay;
     CDUnknownBlockType _vSyncTimeoutBlock;
+    struct PKRunningStat _strokeLatencyStat;
     PKStrokeGenerator *_inputController;
     PKLinedPaper *_linedPaper;
     CAMetalLayer *_presentationLayer;
@@ -58,6 +60,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) struct CGRect viewScissor; // @synthesize viewScissor=_viewScissor;
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_copyIntoTilesFromRenderQueue:(id)arg1 tileTransform:(struct CGAffineTransform)arg2;
 - (void)_drawStrokesAfterClear:(id)arg1 clippedToStrokeSpaceRect:(struct CGRect)arg2 strokeTransform:(struct CGAffineTransform)arg3 useLayerContext:(BOOL)arg4 renderCompletion:(CDUnknownBlockType)arg5;
@@ -96,6 +99,7 @@
 - (BOOL)isLongRunningRenderingCancelled;
 - (struct CGImage *)newCGImage;
 - (struct CGImage *)newCGImageWithClipRect:(struct CGRect)arg1;
+- (void)pokeEventDispatcher;
 - (BOOL)prerenderWithTransform:(struct CGAffineTransform)arg1 inputScale:(double)arg2 at:(double)arg3;
 - (void)purgeOriginalBackFramebuffer;
 - (void)renderStrokes:(id)arg1 clippedToStrokeSpaceRect:(struct CGRect)arg2 strokeTransform:(struct CGAffineTransform)arg3 imageClipRect:(struct CGRect)arg4 completion:(CDUnknownBlockType)arg5;

@@ -75,6 +75,7 @@
 - (float)averagePowerForChannel:(unsigned long long)arg1;
 - (void)beepCancellerDidCancelSamples:(id)arg1 buffer:(id)arg2 timestamp:(unsigned long long)arg3;
 - (void)dealloc;
+- (void)enableMiniDucking:(BOOL)arg1;
 - (double)getRecordBufferDuration;
 - (id)initWithContext:(id)arg1 error:(id *)arg2;
 - (BOOL)isNarrowBand;

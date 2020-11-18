@@ -13,16 +13,17 @@
 @interface AVTEngagementListCollectionViewLayout : UICollectionViewLayout <AVTCollectionViewLayout>
 {
     AVTEngagementLayout *_engagementLayout;
-    NSValue *_overriddenContentOffset;
+    NSValue *_ignoredProposedContentOffset;
+    NSValue *_targetContentOffset;
 }
 
-@property (readonly, nonatomic) struct CGRect collectionViewBounds;
 @property (readonly, nonatomic) AVTEngagementLayout *engagementLayout; // @synthesize engagementLayout=_engagementLayout;
-@property (strong, nonatomic) NSValue *overriddenContentOffset; // @synthesize overriddenContentOffset=_overriddenContentOffset;
+@property (strong, nonatomic) NSValue *ignoredProposedContentOffset; // @synthesize ignoredProposedContentOffset=_ignoredProposedContentOffset;
+@property (strong, nonatomic) NSValue *targetContentOffset; // @synthesize targetContentOffset=_targetContentOffset;
 
 - (void).cxx_destruct;
 - (struct CGPoint)centerForCenteringElementAtIndex:(long long)arg1 visibleBoundsSize:(struct CGSize)arg2 proposedOrigin:(struct CGPoint)arg3;
-- (void)clearContentOffsetOverride;
+- (void)clearTargetContentOffsetForAnimations;
 - (struct CGSize)collectionViewContentSize;
 - (struct CGSize)contentSizeForVisibleBounds:(struct CGRect)arg1 numberOfItems:(long long)arg2;
 - (struct UIEdgeInsets)engagementInsetsForCollectionViewBounds:(struct CGSize)arg1;
@@ -33,8 +34,9 @@
 - (void)invalidateLayout;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;
-- (void)overrideContentOffsetWithPoint:(struct CGPoint)arg1;
+- (void)setTargetContentOffsetForAnimations:(struct CGPoint)arg1;
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
+- (struct CGPoint)targetContentOffsetForProposedContentOffset:(struct CGPoint)arg1;
 
 @end
 

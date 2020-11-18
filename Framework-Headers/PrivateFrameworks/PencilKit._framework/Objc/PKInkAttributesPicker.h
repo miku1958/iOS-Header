@@ -7,30 +7,32 @@
 #import <UIKit/UIViewController.h>
 
 #import <PencilKit/UIPopoverPresentationControllerDelegate-Protocol.h>
+#import <PencilKit/_PKInkAttributesPickerViewDelegate-Protocol.h>
 
 @class NSString, PKInk, _PKInkAttributesPickerView;
 @protocol PKInkAttributesPickerDelegate;
 
-@interface PKInkAttributesPicker : UIViewController <UIPopoverPresentationControllerDelegate>
+@interface PKInkAttributesPicker : UIViewController <UIPopoverPresentationControllerDelegate, _PKInkAttributesPickerViewDelegate>
 {
     id<PKInkAttributesPickerDelegate> _delegate;
     _PKInkAttributesPickerView *_pickerView;
-    unsigned long long _displayMode;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) id<PKInkAttributesPickerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) unsigned long long displayMode; // @synthesize displayMode=_displayMode;
+@property (nonatomic) unsigned long long displayMode;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _PKInkAttributesPickerView *pickerView; // @synthesize pickerView=_pickerView;
 @property (strong, nonatomic) PKInk *selectedInk;
 @property (readonly) Class superclass;
 
-+ (double)representableOpacityForOpacity:(double)arg1;
 - (void).cxx_destruct;
+- (void)_inkAttributesPickerViewUserDidEndDraggingSlider:(id)arg1;
+- (void)_inkAttributesPickerViewUserDidStartDraggingSlider:(id)arg1;
 - (id)initWithInk:(id)arg1;
 - (void)selectedInkDidChange:(id)arg1;
+- (void)setSelectedInk:(id)arg1 animated:(BOOL)arg2;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 

@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AXHearingCoreSupport/AXHeardServer.h>
+#import <AXHearingCoreSupport/HCServer.h>
 
 #import <AXHearingSupport/AXHARemoteUpdateProtocol-Protocol.h>
 
 @class NSArray, NSMutableDictionary, NSString;
 @protocol AXHAServerDelegate;
 
-@interface AXHAServer : AXHeardServer <AXHARemoteUpdateProtocol>
+@interface AXHAServer : HCServer <AXHARemoteUpdateProtocol>
 {
     NSMutableDictionary *_responseBlocks;
     BOOL _hearingAidReachableForAudioTransfer;

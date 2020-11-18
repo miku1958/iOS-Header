@@ -801,7 +801,7 @@
 - (void)_reapTentativeViews;
 - (void)_rebaseExistingShadowUpdatesIfNecessaryWithItems:(id)arg1 insertItems:(id)arg2 deleteItems:(id)arg3 sortedInsertItems:(id)arg4 sortedDeleteItems:(id)arg5 sortedMoveItems:(id)arg6;
 - (void)_rebuildGeometry;
-- (void)_rebuildGeometryForcingRowDataUpdate:(BOOL)arg1;
+- (void)_rebuildGeometryForcingRowDataUpdate:(BOOL)arg1 skipContentOffsetAdjustment:(BOOL)arg2 updateImmediatelyIfPossible:(BOOL)arg3;
 - (void)_recomputeSectionIndexTitleIndex;
 - (void)_rectChangedWithNewSize:(struct CGSize)arg1 oldSize:(struct CGSize)arg2;
 - (struct CGRect)_rectForFooterInSection:(long long)arg1 usingPresentationValues:(BOOL)arg2;
@@ -903,6 +903,7 @@
 - (void)_setMarginWidth:(double)arg1;
 - (void)_setNeedsIndexBarInsetsUpdate;
 - (void)_setNeedsVisibleCellsUpdate:(BOOL)arg1 withFrames:(BOOL)arg2;
+- (void)_setNeedsVisibleCellsUpdate:(BOOL)arg1 withFrames:(BOOL)arg2 updateImmediatelyIfPossible:(BOOL)arg3;
 - (void)_setPinsTableHeaderView:(BOOL)arg1;
 - (void)_setRemembersPreviouslyFocusedItem:(BOOL)arg1;
 - (void)_setReorderFeedbackGenerator:(id)arg1;
@@ -1024,6 +1025,7 @@
 - (void)_updateCell:(id)arg1 withValue:(id)arg2;
 - (void)_updateCellContentStringCallout:(id)arg1;
 - (void)_updateContentSize;
+- (void)_updateContentSizeSkippingContentOffsetAdjustment:(BOOL)arg1;
 - (void)_updateDragControllerEnabledState;
 - (void)_updateDragStateForCell:(id)arg1 atIndexPath:(id)arg2;
 - (void)_updateDropTargetAppearanceWithTargetIndexPath:(id)arg1 dropProposal:(id)arg2 dropSession:(id)arg3;
@@ -1189,6 +1191,7 @@
 - (void)setContentInset:(struct UIEdgeInsets)arg1;
 - (void)setContentOffset:(struct CGPoint)arg1;
 - (void)setContentSize:(struct CGSize)arg1;
+- (void)setContentSize:(struct CGSize)arg1 skipContentOffsetAdjustment:(BOOL)arg2;
 - (void)setCountString:(id)arg1;
 - (void)setCountStringInsignificantRowCount:(unsigned long long)arg1;
 - (void)setDelaysContentTouches:(BOOL)arg1;

@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *containingView;
     MISSING_TYPE *constraintManagers;
+    MISSING_TYPE *effectsConstraintManagers;
     MISSING_TYPE *currentConstraints;
     MISSING_TYPE *currentSize;
     MISSING_TYPE *currentDeviceOrientation;

@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
     CIImage *inputImage;
     CIImage *inputCenterLeft;
     CIImage *inputCenterRight;
+    CIVector *inputCenterExtentLeft;
+    CIVector *inputCenterExtentRight;
     NSNumber *inputPercentileRepair;
     NSNumber *inputPercentileSpecular;
     NSNumber *inputPercentRepair;
@@ -23,8 +25,10 @@ __attribute__((visibility("hidden")))
     NSNumber *inputMinDensity;
     NSNumber *inputMaxRelDensity;
     NSNumber *inputDensityRadius;
+    NSNumber *inputMaxInterDispersion;
     CIVector *inputMinimum;
     CIVector *inputMaxArea;
+    CIVector *inputMaxAreaRatio;
     CIVector *inputCenterOffsetLeft;
     CIVector *inputCenterOffsetRight;
     CIImage *inputDetectionLeft;
@@ -33,6 +37,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) NSNumber *inputAbortMaxCenterDist; // @synthesize inputAbortMaxCenterDist;
+@property (strong, nonatomic) CIVector *inputCenterExtentLeft; // @synthesize inputCenterExtentLeft;
+@property (strong, nonatomic) CIVector *inputCenterExtentRight; // @synthesize inputCenterExtentRight;
 @property (strong, nonatomic) CIImage *inputCenterLeft; // @synthesize inputCenterLeft;
 @property (strong, nonatomic) CIVector *inputCenterOffsetLeft; // @synthesize inputCenterOffsetLeft;
 @property (strong, nonatomic) CIVector *inputCenterOffsetRight; // @synthesize inputCenterOffsetRight;
@@ -42,6 +48,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CIImage *inputDetectionRight; // @synthesize inputDetectionRight;
 @property (strong, nonatomic) NSNumber *inputInterPeakMinRepair; // @synthesize inputInterPeakMinRepair;
 @property (strong, nonatomic) CIVector *inputMaxArea; // @synthesize inputMaxArea;
+@property (strong, nonatomic) CIVector *inputMaxAreaRatio; // @synthesize inputMaxAreaRatio;
+@property (strong, nonatomic) NSNumber *inputMaxInterDispersion; // @synthesize inputMaxInterDispersion;
 @property (strong, nonatomic) NSNumber *inputMaxRelDensity; // @synthesize inputMaxRelDensity;
 @property (strong, nonatomic) NSNumber *inputMinDensity; // @synthesize inputMinDensity;
 @property (strong, nonatomic) CIVector *inputMinimum; // @synthesize inputMinimum;

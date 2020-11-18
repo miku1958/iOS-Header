@@ -19,9 +19,11 @@
     BOOL _lowPowerModeEnabled;
     BOOL _showChargingUI;
     BOOL _adapterSharedSource;
+    BOOL _added;
     BOOL _present;
     int _powerState;
     int _role;
+    unsigned int _changes;
     NSString *_accessoryCategory;
     NSString *_accessoryID;
     double _chargeLevel;
@@ -35,9 +37,6 @@
     long long _productID;
     long long _sourceID;
     NSString *_state;
-    SFPowerSource *_subLeft;
-    SFPowerSource *_subRight;
-    SFPowerSource *_subCase;
     long long _temperature;
     NSString *_transportType;
     NSString *_type;
@@ -58,8 +57,8 @@
 @property (copy, nonatomic) NSString *adapterName; // @synthesize adapterName=_adapterName;
 @property (nonatomic) BOOL adapterSharedSource; // @synthesize adapterSharedSource=_adapterSharedSource;
 @property (nonatomic) long long adapterSourceID; // @synthesize adapterSourceID=_adapterSourceID;
-@property (readonly, nonatomic) BOOL aggregate;
-@property (readonly, nonatomic) BOOL aggregateComponent;
+@property (nonatomic) BOOL added; // @synthesize added=_added;
+@property (nonatomic) unsigned int changes; // @synthesize changes=_changes;
 @property (nonatomic) double chargeLevel; // @synthesize chargeLevel=_chargeLevel;
 @property (nonatomic) BOOL charging; // @synthesize charging=_charging;
 @property (nonatomic) long long familyCode; // @synthesize familyCode=_familyCode;
@@ -69,6 +68,7 @@
 @property (copy, nonatomic) NSDictionary *ioKitDescription; // @synthesize ioKitDescription=_ioKitDescription;
 @property (readonly, nonatomic, getter=isLowPowerModeEnabled) BOOL lowPowerModeEnabled; // @synthesize lowPowerModeEnabled=_lowPowerModeEnabled;
 @property (nonatomic) double lowWarnLevel; // @synthesize lowWarnLevel=_lowWarnLevel;
+@property (readonly, nonatomic) long long matID;
 @property (nonatomic) double maxCapacity; // @synthesize maxCapacity=_maxCapacity;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *partID; // @synthesize partID=_partID;
@@ -80,13 +80,11 @@
 @property (nonatomic) BOOL showChargingUI; // @synthesize showChargingUI=_showChargingUI;
 @property (nonatomic) long long sourceID; // @synthesize sourceID=_sourceID;
 @property (copy, nonatomic) NSString *state; // @synthesize state=_state;
-@property (strong, nonatomic) SFPowerSource *subCase; // @synthesize subCase=_subCase;
-@property (strong, nonatomic) SFPowerSource *subLeft; // @synthesize subLeft=_subLeft;
-@property (strong, nonatomic) SFPowerSource *subRight; // @synthesize subRight=_subRight;
 @property (nonatomic) long long temperature; // @synthesize temperature=_temperature;
 @property (copy, nonatomic) NSString *transportType; // @synthesize transportType=_transportType;
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property (nonatomic) long long vendorID; // @synthesize vendorID=_vendorID;
+@property (readonly, nonatomic) BOOL wirelessCharging;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -95,7 +93,6 @@
 - (id)description;
 - (id)detailedDescription;
 - (void)encodeWithCoder:(id)arg1;
-- (void)handleSubComponentsUpdated;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

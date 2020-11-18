@@ -26,6 +26,8 @@
 @property (readonly, nonatomic) id<AVTAvatarStoreInternal> store; // @synthesize store=_store;
 @property (readonly) Class superclass;
 
++ (unsigned long long)maximumNumberOfFetchableAvatars;
++ (unsigned long long)maximumNumberOfSavableAvatars;
 - (void).cxx_destruct;
 - (id)avatarsForFetchRequest:(id)arg1 error:(id *)arg2;
 - (BOOL)canCreateAvatar;

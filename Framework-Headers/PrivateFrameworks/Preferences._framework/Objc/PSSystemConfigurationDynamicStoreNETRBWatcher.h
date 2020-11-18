@@ -15,7 +15,10 @@
 + (id)sharedManager;
 - (void)dealloc;
 - (id)init;
+- (BOOL)isDataEnabled;
+- (BOOL)isTetheringEnabled;
 - (void)sendStateUpdate;
+- (BOOL)shouldShowTethering;
 
 @end
 

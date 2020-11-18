@@ -58,7 +58,7 @@
 - (id)formAutoFillNodeForJSWrapper:(struct OpaqueJSValue *)arg1 inContext:(struct OpaqueJSContext *)arg2;
 - (id)initWithPageController:(id)arg1;
 - (void)invalidate;
-- (void)passwordFieldFocused:(id)arg1 inFrame:(id)arg2;
+- (void)passwordFieldFocused:(id)arg1 inFrame:(id)arg2 isPasswordFieldForUserCredentials:(BOOL)arg3;
 - (void)removeAutomaticPasswordElementsInFrame:(id)arg1 focusedPasswordControlUniqueID:(id)arg2 passwordControlUniqueIDs:(id)arg3 blurAfterRemoval:(BOOL)arg4;
 - (void)removeAutomaticPasswordVisualTreatmentInFrame:(id)arg1 passwordControlUniqueIDs:(id)arg2;
 - (BOOL)shouldAttemptToClassifyFormsWithoutAPasswordFieldAsLoginForms;

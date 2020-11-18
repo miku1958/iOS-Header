@@ -6,15 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <VisualVoicemail/VMStateRequestControllerDelegate-Protocol.h>
+@class NSArray, NSDictionary, NSError, NSMutableDictionary, NSNumber, NSRecursiveLock, NSString, VMCarrierStateRequestController, VMTranscriptionService, VVVerifier;
+@protocol OS_dispatch_queue, VMTelephonySubscription;
 
-@class CTXPCServiceSubscriptionContext, NSArray, NSDictionary, NSError, NSMutableDictionary, NSRecursiveLock, NSString, VMStateRequestController, VMTranscriptionService, VVVerifier;
-@protocol OS_dispatch_queue;
-
-@interface VVService : NSObject <VMStateRequestControllerDelegate>
+@interface VVService : NSObject
 {
     NSRecursiveLock *_lock;
-    long long _capabilities;
     int _mailboxUsage;
     double _trashCompactionAge;
     unsigned int _unreadCount;
@@ -37,32 +34,32 @@
         unsigned int notificationFallbackEnabled:1;
         unsigned int capabilitiesLoaded:1;
     } _serviceFlags;
+    struct os_unfair_lock_s _accessorLock;
     NSMutableDictionary *_stateRequestAttemptCount;
+    NSNumber *_SMSReadyState;
     NSString *_serviceIdentifier;
     NSString *_serviceDestinationID;
     VMTranscriptionService *_transcriptionService;
     VVVerifier *_verifier;
-    CTXPCServiceSubscriptionContext *_context;
+    id<VMTelephonySubscription> _subscription;
     unsigned long long _numFailedAttemptsToSyncOverWifi;
     struct __CFString *_lastConnectionTypeUsed;
     NSDictionary *_accountDictionary;
     NSObject<OS_dispatch_queue> *_serialDispatchQueue;
-    VMStateRequestController *_stateRequestController;
+    VMCarrierStateRequestController *_stateRequestController;
 }
 
+@property (strong, nonatomic) NSNumber *SMSReadyState; // @synthesize SMSReadyState=_SMSReadyState;
+@property (readonly, nonatomic) struct os_unfair_lock_s accessorLock; // @synthesize accessorLock=_accessorLock;
 @property (strong, nonatomic) NSDictionary *accountDictionary; // @synthesize accountDictionary=_accountDictionary;
-@property (readonly, nonatomic) CTXPCServiceSubscriptionContext *context; // @synthesize context=_context;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) struct __CFString *lastConnectionTypeUsed; // @synthesize lastConnectionTypeUsed=_lastConnectionTypeUsed;
 @property (nonatomic) unsigned long long numFailedAttemptsToSyncOverWifi; // @synthesize numFailedAttemptsToSyncOverWifi=_numFailedAttemptsToSyncOverWifi;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialDispatchQueue; // @synthesize serialDispatchQueue=_serialDispatchQueue;
-@property (strong, nonatomic) NSString *serviceDestinationID; // @synthesize serviceDestinationID=_serviceDestinationID;
-@property (strong, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
+@property (copy, nonatomic) NSString *serviceDestinationID; // @synthesize serviceDestinationID=_serviceDestinationID;
+@property (copy, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
 @property (readonly, nonatomic) NSMutableDictionary *stateRequestAttemptCount; // @synthesize stateRequestAttemptCount=_stateRequestAttemptCount;
-@property (readonly, nonatomic) VMStateRequestController *stateRequestController; // @synthesize stateRequestController=_stateRequestController;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) VMCarrierStateRequestController *stateRequestController; // @synthesize stateRequestController=_stateRequestController;
+@property (readonly, nonatomic) id<VMTelephonySubscription> subscription; // @synthesize subscription=_subscription;
 @property (strong, nonatomic) VMTranscriptionService *transcriptionService; // @synthesize transcriptionService=_transcriptionService;
 @property (strong, nonatomic) VVVerifier *verifier; // @synthesize verifier=_verifier;
 
@@ -76,7 +73,7 @@
 + (void)initialize;
 + (void)obtainInsomniaAssertion;
 + (void)releaseInsomniaAssertion;
-+ (id)serviceWithIdentifier:(id)arg1 context:(id)arg2;
++ (id)serviceWithIdentifier:(id)arg1 subscription:(id)arg2 stateRequestController:(id)arg3;
 + (BOOL)sharedServiceIsSubscribed;
 - (void).cxx_destruct;
 - (void)_attemptDelayedSynchronize;
@@ -91,7 +88,6 @@
 - (void)_enterFallbackMode;
 - (void)_handleIndicatorNotification:(struct __CFDictionary *)arg1;
 - (void)_handleSMSCAvailable;
-- (void)_handleSMSReady:(BOOL)arg1;
 - (BOOL)_isOfflineDueToRoamingWithDataStatusDict:(struct __CFDictionary *)arg1;
 - (void)_reactToIndicator;
 - (void)_reportReachabilityChange:(id)arg1;
@@ -107,9 +103,7 @@
 - (void)cancelDelayedSynchronize;
 - (void)cancelNotificationFallback;
 - (void)cancelPasswordRequest;
-- (long long)capabilities;
 - (id)carrierParameterValueForKey:(id)arg1;
-- (void)changePassword:(id)arg1 fromPassword:(id)arg2;
 - (void)clearActivationError;
 - (void)clearRemoteUIDsForDetachedMessages;
 - (struct __CFString *)connectionServiceType;
@@ -128,7 +122,7 @@
 - (void)handleVoicemailInfoUpdate:(id)arg1;
 - (BOOL)headerChangesPending;
 - (void)incrementAttemptCountForStateRequest:(id)arg1;
-- (id)initWithServiceIdentifier:(id)arg1 context:(id)arg2;
+- (id)initWithServiceIdentifier:(id)arg1 subscription:(id)arg2 stateRequestController:(id)arg3;
 - (BOOL)isInSync;
 - (BOOL)isMessageWaiting;
 - (BOOL)isOfflineDueToRoaming;
@@ -143,7 +137,6 @@
 - (id)mailboxName;
 - (BOOL)mailboxRequiresSetup;
 - (int)mailboxUsage;
-- (int)maximumGreetingDuration;
 - (int)maximumPasswordLength;
 - (int)maximumRecordedNameDuration;
 - (int)minimumPasswordLength;
@@ -154,6 +147,7 @@
 - (id)password;
 - (BOOL)passwordChangeRequiresEnteringOldPassword;
 - (id)passwordIgnoringSubscription:(BOOL)arg1;
+- (void)performAtomicAccessorBlock:(CDUnknownBlockType)arg1;
 - (void)performSynchronousBlock:(CDUnknownBlockType)arg1;
 - (void)progressiveDataLengthsForRecord:(void *)arg1 expected:(unsigned int *)arg2 current:(unsigned int *)arg3;
 - (id)provisionalPassword;
@@ -167,17 +161,18 @@
 - (void)resetDelayedSynchronizationAttemptCount;
 - (BOOL)respectsMWINotifications;
 - (void)retrieveDataForRecord:(void *)arg1;
-- (void)retrieveGreeting;
+- (void)retrieveGreetingForAccountUUID:(id)arg1;
 - (id)retryIntervals;
 - (void)scheduleAutomatedTrashCompaction;
 - (void)scheduleDelayedSynchronize;
 - (void)scheduleImmediateSynchronizeRetryOverCellular;
-- (void)setGreetingType:(long long)arg1 withData:(id)arg2 duration:(unsigned long long)arg3;
+- (void)setGreetingType:(long long)arg1 data:(id)arg2 duration:(unsigned long long)arg3 forAccountUUID:(id)arg4;
 - (void)setLastUsedConnectionType:(struct __CFString *)arg1;
 - (void)setMailboxRequiresSetup:(BOOL)arg1;
 - (void)setMailboxUsage:(int)arg1;
 - (void)setMessageWaiting:(BOOL)arg1;
 - (void)setOnline:(BOOL)arg1;
+- (void)setPasscode:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setPassword:(id)arg1;
 - (void)setProvisionalPassword:(id)arg1;
 - (void)setSubscribed:(BOOL)arg1;

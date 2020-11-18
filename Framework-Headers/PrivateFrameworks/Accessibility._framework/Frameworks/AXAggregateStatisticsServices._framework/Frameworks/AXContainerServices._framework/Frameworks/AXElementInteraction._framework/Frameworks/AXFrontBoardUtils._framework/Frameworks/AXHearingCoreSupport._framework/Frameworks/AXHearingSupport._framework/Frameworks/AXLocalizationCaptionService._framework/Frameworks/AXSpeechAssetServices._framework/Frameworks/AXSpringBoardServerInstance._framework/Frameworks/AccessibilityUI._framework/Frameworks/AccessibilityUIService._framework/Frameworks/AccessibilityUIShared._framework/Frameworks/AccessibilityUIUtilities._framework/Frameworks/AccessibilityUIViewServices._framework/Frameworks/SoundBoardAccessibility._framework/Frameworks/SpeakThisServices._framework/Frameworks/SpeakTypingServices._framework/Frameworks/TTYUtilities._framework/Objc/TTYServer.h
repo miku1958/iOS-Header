@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AXHearingCoreSupport/AXHeardServer.h>
+#import <AXHearingCoreSupport/HCServer.h>
 
 @class NSLock, NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
-@interface TTYServer : AXHeardServer
+@interface TTYServer : HCServer
 {
     NSLock *_dataResponseBlocksLock;
     NSMutableDictionary *_databaseResponseBlocks;

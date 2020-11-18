@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)accessibilityPerformEscape;
+- (void)restartAutoHideInCallControlsDrawerTimer;
 - (void)setControlsState:(long long)arg1 animated:(BOOL)arg2;
 
 @end

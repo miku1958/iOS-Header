@@ -39,6 +39,7 @@
 - (id)init;
 - (void)provideUserConsentResponse:(long long)arg1;
 - (id)remapSimLabel:(id)arg1 to:(id)arg2;
+- (void)resumePlanProvisioning:(BOOL)arg1 userConsent:(long long)arg2;
 - (void)selectPlanForData:(id)arg1;
 - (void)selectPlanForIMessage:(id)arg1;
 - (void)selectPlanForVoice:(id)arg1;

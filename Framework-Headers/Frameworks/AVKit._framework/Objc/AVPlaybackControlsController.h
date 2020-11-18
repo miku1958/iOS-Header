@@ -11,7 +11,7 @@
 #import <AVKit/AVScrollViewObserverDelegate-Protocol.h>
 #import <AVKit/AVTransportControlsViewDelegate-Protocol.h>
 
-@class AVNowPlayingInfoController, AVObservationController, AVPictureInPictureController, AVPlaybackControlsView, AVPlaybackControlsVisibilityControllerItem, AVPlayerController, AVPlayerControllerTimeResolver, AVPlayerViewController, AVRouteDetectorCoordinator, AVScrollViewObserver, AVTimeFormatter, AVTurboModePlaybackControlsPlaceholderView, AVVolumeController, NSArray, NSString, NSTimer, UIAlertController, UIViewPropertyAnimator;
+@class AVNowPlayingInfoController, AVObservationController, AVPictureInPictureController, AVPlaybackControlsView, AVPlaybackControlsVisibilityControllerItem, AVPlayerController, AVPlayerControllerTimeResolver, AVPlayerViewController, AVRouteDetectorCoordinator, AVScrollViewObserver, AVSecondScreenContentViewConnection, AVTimeFormatter, AVTurboModePlaybackControlsPlaceholderView, AVVolumeController, NSArray, NSString, NSTimer, UIAlertController, UIViewPropertyAnimator;
 
 @interface AVPlaybackControlsController : NSObject <AVTransportControlsViewDelegate, AVRoutePickerViewDelegate, AVScrollViewObserverDelegate, AVPlayerViewControllerContentViewDelegate>
 {
@@ -55,6 +55,7 @@
     AVPictureInPictureController *_pictureInPictureController;
     AVVolumeController *_volumeController;
     AVNowPlayingInfoController *_nowPlayingInfoControllerIfLoaded;
+    AVSecondScreenContentViewConnection *_secondScreenConnection;
     AVPlayerViewController *_playerViewController;
     AVPlaybackControlsView *_playbackControlsView;
     AVTurboModePlaybackControlsPlaceholderView *_turboModePlaybackControlsPlaceholderView;
@@ -141,6 +142,7 @@
 @property (weak, nonatomic) UIAlertController *routePickerAlertController; // @synthesize routePickerAlertController=_routePickerAlertController;
 @property (strong, nonatomic) AVScrollViewObserver *scrollViewObserver; // @synthesize scrollViewObserver=_scrollViewObserver;
 @property (nonatomic, getter=isScrubbingOrSeeking) BOOL scrubbingOrSeeking; // @synthesize scrubbingOrSeeking=_scrubbingOrSeeking;
+@property (strong, nonatomic) AVSecondScreenContentViewConnection *secondScreenConnection; // @synthesize secondScreenConnection=_secondScreenConnection;
 @property (readonly, nonatomic, getter=isSeekingEnabled) BOOL seekingEnabled;
 @property (readonly, nonatomic) BOOL shouldEnterFullScreenWhenPlaybackBegins;
 @property (nonatomic) BOOL shouldIgnoreTimeResolverUpdates; // @synthesize shouldIgnoreTimeResolverUpdates=_shouldIgnoreTimeResolverUpdates;
@@ -211,6 +213,7 @@
 - (void)_updatePreferredPlaybackControlsLoadedStatusNotifyingContentViewOfChanges:(BOOL)arg1;
 - (void)_updatePrefersInspectionSuspended;
 - (void)_updateScrubberAndTimeLabels;
+- (void)_updateSecondScreenConnectionReadyToConnect;
 - (void)_updateVideoGravityButtonType;
 - (void)_updateVolumeButtonGlyph;
 - (void)_updateVolumeSliderValueWithSystemVolume:(float)arg1 animated:(BOOL)arg2;
@@ -235,6 +238,8 @@
 - (void)routePickerViewDidEndPresentingRoutes:(id)arg1;
 - (void)routePickerViewWillBeginPresentingRoutes:(id)arg1;
 - (void)scrollViewObserverValuesDidChange:(id)arg1;
+- (void)secondScreenConnectionDidBecomeActive:(id)arg1;
+- (void)secondScreenConnectionDidResignActive:(id)arg1;
 - (void)skipButtonForcePressChanged:(id)arg1;
 - (void)skipButtonLongPressEnded:(id)arg1;
 - (void)skipButtonLongPressTriggered:(id)arg1;

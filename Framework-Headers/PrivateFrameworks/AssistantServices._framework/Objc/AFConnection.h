@@ -9,16 +9,18 @@
 #import <AssistantServices/AFAccessibilityListening-Protocol.h>
 #import <AssistantServices/AFAudioPowerUpdaterDelegate-Protocol.h>
 #import <AssistantServices/AFDeviceRingerSwitchListening-Protocol.h>
+#import <AssistantServices/AFInterstitialProviderDelegate-Protocol.h>
 #import <AssistantServices/NSXPCListenerDelegate-Protocol.h>
 
-@class AFAudioPowerUpdater, AFClientConfiguration, AFClockAlarmSnapshot, AFClockTimerSnapshot, AFConnectionLocationManager, AFOneArgumentSafetyBlock, NSArray, NSError, NSMutableDictionary, NSString, NSUUID, NSXPCConnection;
+@class AFAudioPowerUpdater, AFClientConfiguration, AFClockAlarmSnapshot, AFClockTimerSnapshot, AFConnectionLocationManager, AFInterstitialProvider, AFOneArgumentSafetyBlock, NSArray, NSError, NSMutableArray, NSMutableDictionary, NSString, NSUUID, NSXPCConnection;
 @protocol AFAssistantUIService, AFSpeechDelegate, OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source;
 
-@interface AFConnection : NSObject <NSXPCListenerDelegate, AFAudioPowerUpdaterDelegate, AFAccessibilityListening, AFDeviceRingerSwitchListening>
+@interface AFConnection : NSObject <NSXPCListenerDelegate, AFAudioPowerUpdaterDelegate, AFAccessibilityListening, AFDeviceRingerSwitchListening, AFInterstitialProviderDelegate>
 {
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_queue> *_targetQueue;
     NSString *_outstandingRequestClass;
+    void *_clientID;
     NSArray *_cachedBulletins;
     AFClockAlarmSnapshot *_cachedClockAlarmSnapshot;
     AFClockTimerSnapshot *_cachedClockTimerSnapshot;
@@ -27,14 +29,18 @@
     long long _activeRequestUsefulUserResultType;
     NSObject<OS_dispatch_source> *_requestTimeoutTimer;
     AFOneArgumentSafetyBlock *_requestCompletion;
+    BOOL _activeRequestHasSpeechRecognition;
     NSMutableDictionary *_replyHandlerForAceId;
     unsigned int _stateInSync:1;
     unsigned int _shouldSpeak:1;
     unsigned int _isCapturingSpeech:1;
     unsigned int _hasOutstandingRequest:1;
     unsigned int _audioSessionID;
+    NSString *_recordRoute;
     AFAudioPowerUpdater *_inputAudioPowerUpdater;
     AFClientConfiguration *_clientConfiguration;
+    AFInterstitialProvider *_interstitialProvider;
+    NSMutableArray *_interstitialCommands;
     unsigned int _clientConfigurationIsInSync:1;
     unsigned int _voiceOverIsActive:1;
     NSError *_lastRetryError;
@@ -68,11 +74,13 @@
 + (BOOL)userDataSyncNeeded;
 - (void).cxx_destruct;
 - (void)_aceConnectionWillRetryOnError:(id)arg1;
+- (id)_activeRequestUUID;
 - (void)_barrier;
+- (void)_beginInterstitialsForReason:(id)arg1;
 - (id)_cachedBulletins;
 - (id)_cachedClockAlarmSnapshot;
 - (id)_cachedClockTimerSnapshot;
-- (void)_cancelRequestTimeout;
+- (void)_cancelRequestTimeoutForReason:(id)arg1;
 - (void)_checkAndSetIsCapturingSpeech:(BOOL)arg1;
 - (void)_clearAssistantInfoForAccountWithIdentifier:(id)arg1;
 - (void)_clearConnection;
@@ -83,15 +91,22 @@
 - (id)_connection;
 - (void)_connectionFailedWithError:(id)arg1;
 - (void)_dispatchCallbackGroupBlock:(CDUnknownBlockType)arg1;
-- (void)_doCommand:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)_extendExistingRequestTimeout;
-- (void)_extendRequestTimeout;
-- (void)_invokeRequestTimeout;
+- (void)_dispatchCommand:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)_endInterstitialsForReason:(id)arg1;
+- (void)_enqueueInterstitialCommand:(id)arg1;
+- (void)_extendExistingRequestTimeoutForReason:(id)arg1;
+- (void)_extendRequestTimeoutForReason:(id)arg1;
+- (void)_handleCommand:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)_handleInterstitialPhase:(long long)arg1 fromProvider:(id)arg2 displayText:(id)arg3 speakableText:(id)arg4 context:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)_invokeRequestTimeoutForReason:(id)arg1;
+- (BOOL)_isInterstitialsRunning;
+- (void)_markSpeechRecognized;
 - (void)_requestDidEnd;
 - (void)_requestWillBeginWithRequestClass:(id)arg1 isSpeechRequest:(BOOL)arg2 analyticsEventProvider:(CDUnknownBlockType)arg3;
 - (void)_requestWillBeginWithRequestClass:(id)arg1 isSpeechRequest:(BOOL)arg2 isBackgroundRequest:(BOOL)arg3 analyticsEventProvider:(CDUnknownBlockType)arg4;
-- (void)_scheduleRequestTimeout;
+- (void)_scheduleRequestTimeoutForReason:(id)arg1;
 - (void)_setAudioSessionID:(unsigned int)arg1;
+- (void)_setRecordRoute:(id)arg1;
 - (void)_setShouldSpeak:(BOOL)arg1;
 - (void)_speechRecordingDidFailWithError:(id)arg1;
 - (BOOL)_startInputAudioPowerUpdatesWithXPCWrapper:(id)arg1;
@@ -166,6 +181,7 @@
 - (void)failRequestWithError:(id)arg1;
 - (void)forceAudioSessionActive;
 - (void)forceAudioSessionActiveWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)forceAudioSessionActiveWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)forceAudioSessionInactive;
 - (void)forceAudioSessionInactiveWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getCachedObjectsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -173,6 +189,7 @@
 - (void)getRemoteClockTimerSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithTargetQueue:(id)arg1;
+- (void)interstitialProvider:(id)arg1 handlePhase:(long long)arg2 displayText:(id)arg3 speakableText:(id)arg4 context:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)invalidate;
 - (float)peakPower;
 - (void)preheatWithStyle:(long long)arg1;

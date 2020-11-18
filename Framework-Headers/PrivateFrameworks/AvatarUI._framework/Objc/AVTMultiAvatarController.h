@@ -7,14 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <AvatarUI/AVTAvatarDisplayingController-Protocol.h>
-#import <AvatarUI/AVTAvatarListContainerViewDelegate-Protocol.h>
+#import <AvatarUI/AVTNotifyingContainerViewDelegate-Protocol.h>
 #import <AvatarUI/UICollectionViewDataSource-Protocol.h>
 #import <AvatarUI/UICollectionViewDelegate-Protocol.h>
 
 @class AVTAvatarListCell, AVTAvatarRecordDataSource, AVTCenteringCollectionViewDelegate, AVTPlusButtonView, AVTRenderingScope, AVTTransitionCoordinator, AVTUIEnvironment, AVTViewSession, AVTZIndexEngagementListCollectionViewLayout, NSArray, NSString, UICollectionView, UIView, _AVTAvatarRecordImageProvider;
 @protocol AVTAvatarDisplayingControllerDelegate, AVTAvatarListItem, AVTAvatarRecord, AVTPresenterDelegate, AVTUILogger, AVTViewCarouselLayout;
 
-@interface AVTMultiAvatarController : NSObject <UICollectionViewDelegate, UICollectionViewDataSource, AVTAvatarListContainerViewDelegate, AVTAvatarDisplayingController>
+@interface AVTMultiAvatarController : NSObject <UICollectionViewDelegate, UICollectionViewDataSource, AVTNotifyingContainerViewDelegate, AVTAvatarDisplayingController>
 {
     BOOL _allowsCreate;
     BOOL _hideImageForDisplayedRecord;
@@ -73,8 +73,6 @@
 + (id)newCollectionViewLayoutForEngagedCellSize:(struct CGSize)arg1 boundsSize:(struct CGSize)arg2 environment:(id)arg3;
 + (id)snapshotProviderFocusedOnRecordWithIdentifier:(id)arg1 size:(struct CGSize)arg2 avtViewAspectRatio:(struct CGSize)arg3 dataSource:(id)arg4 environment:(id)arg5;
 - (void).cxx_destruct;
-- (void)avatarListDidChangeSize:(struct CGSize)arg1;
-- (void)avatarListWillChangeSize:(struct CGSize)arg1;
 - (void)buildCollectionViewAndConfigureLayoutIfNeeded;
 - (id)cellForRecordItem:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
@@ -98,6 +96,8 @@
 - (void)loadView;
 - (void)notifyDelegateForScrollingTowardItem:(id)arg1 ratio:(double)arg2;
 - (void)notifyDelegateForScrollingTowardItemFromOffset:(struct CGPoint)arg1;
+- (void)notifyingContainerViewDidChangeSize:(struct CGSize)arg1;
+- (void)notifyingContainerViewWillChangeSize:(struct CGSize)arg1;
 - (void)preloadAll;
 - (void)prepareToTransitionToVisible:(BOOL)arg1 completionHandler:(CDUnknownBlockType *)arg2;
 - (id)recordForItem:(id)arg1;

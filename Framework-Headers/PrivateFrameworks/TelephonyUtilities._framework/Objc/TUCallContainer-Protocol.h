@@ -28,6 +28,7 @@
 @property (readonly, nonatomic) TUCall *currentVideoCall;
 @property (readonly, nonatomic) unsigned long long currentVideoCallCount;
 @property (readonly, copy, nonatomic) NSArray *currentVideoCalls;
+@property (readonly, copy, nonatomic) NSArray *displayedAudioAndVideoCalls;
 @property (readonly, copy, nonatomic) NSArray *displayedCalls;
 @property (readonly, nonatomic) BOOL hasCurrentAudioCalls;
 @property (readonly, nonatomic) BOOL hasCurrentCalls;

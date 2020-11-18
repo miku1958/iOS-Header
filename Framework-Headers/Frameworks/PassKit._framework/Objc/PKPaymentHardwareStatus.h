@@ -17,6 +17,7 @@
     BOOL _canMakeRemotePayments;
 }
 
+@property (readonly, nonatomic, getter=_isDemoModeActive) BOOL _isDemoModeActive;
 @property (readonly, nonatomic) BOOL canMakeLocalPayments;
 @property (readonly, nonatomic) BOOL canMakePayments;
 @property (nonatomic) BOOL canMakeRemotePayments; // @synthesize canMakeRemotePayments=_canMakeRemotePayments;

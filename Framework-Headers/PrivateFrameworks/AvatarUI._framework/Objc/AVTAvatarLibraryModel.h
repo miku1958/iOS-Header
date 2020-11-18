@@ -41,12 +41,14 @@
 - (void)insertItemForRecord:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)libraryItemsFromAvatarRecords:(id)arg1;
 - (void)load;
+- (unsigned long long)numberOfRecords;
 - (void)performActionOnItemAtIndex:(unsigned long long)arg1;
 - (void)presentActionSheetForRecordItem:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)presentEditor:(id)arg1 forCreating:(BOOL)arg2;
 - (void)presetShareSheetWithRecords:(id)arg1;
 - (void)reloadDataForRecords:(id)arg1;
 - (void)removeItemForRecordAtIndex:(unsigned long long)arg1;
+- (void)storeDidChangeNotification:(id)arg1;
 - (void)updateForCreatedRecord:(id)arg1;
 - (void)updateForEditedRecord:(id)arg1;
 

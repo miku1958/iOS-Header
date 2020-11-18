@@ -31,6 +31,8 @@
 + (BOOL)isRecognizedClassForContent:(id)arg1;
 + (BOOL)parseContentTypeHeader:(id)arg1 type:(id *)arg2 subtype:(id *)arg3;
 + (BOOL)parseContentTypeHeader:(id)arg1 type:(id *)arg2 subtype:(id *)arg3 info:(id *)arg4;
+- (void)_clearNextAndSibling;
+- (void)_clearParent;
 - (void)_contents:(id *)arg1 toOffset:(unsigned long long)arg2 resultOffset:(unsigned long long *)arg3 downloadIfNecessary:(BOOL)arg4 asHTML:(BOOL)arg5 isComplete:(BOOL *)arg6;
 - (void)_ensureBodyDataToOffset:(unsigned long long)arg1 resultOffset:(unsigned long long *)arg2 downloadIfNecessary:(BOOL)arg3 isComplete:(BOOL *)arg4 decoded:(id *)arg5;
 - (id)_fullMimeTypeEvenInsideAppleDouble;

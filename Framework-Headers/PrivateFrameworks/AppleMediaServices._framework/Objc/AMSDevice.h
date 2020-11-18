@@ -17,6 +17,7 @@
 + (id)_followUpItemWithIdentifier:(id)arg1 account:(id)arg2 priority:(long long)arg3 bagContract:(id)arg4 logKey:(id)arg5;
 + (void)_startListeningForDeviceLanguageChangeWithBagContract:(id)arg1 callback:(CDUnknownBlockType)arg2;
 + (id)_systemVersionDictionary;
++ (id)_userNotificationCenter;
 + (id)buildVersion;
 + (id)deviceGUID;
 + (BOOL)deviceIsAppleTV;

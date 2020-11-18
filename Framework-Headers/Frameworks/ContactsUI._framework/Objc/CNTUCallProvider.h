@@ -26,11 +26,8 @@
 @property (readonly, nonatomic) BOOL supportsAudio;
 @property (readonly, nonatomic) BOOL supportsVideo;
 
-+ (void)setSenderIdentity:(id)arg1 forDialRequest:(id)arg2 handle:(id)arg3 contact:(id)arg4;
-+ (void)setSenderIdentity:(id)arg1 forDialRequest:(id)arg2 handle:(id)arg3 contact:(id)arg4 geminiManager:(id)arg5 contactStore:(id)arg6;
 - (void).cxx_destruct;
 - (id)dialRequestForHandle:(id)arg1 contact:(id)arg2 video:(BOOL)arg3;
-- (id)dialRequestForHandle:(id)arg1 contact:(id)arg2 video:(BOOL)arg3 senderIdentity:(id)arg4;
 - (id)initWithCallProvider:(id)arg1;
 
 @end

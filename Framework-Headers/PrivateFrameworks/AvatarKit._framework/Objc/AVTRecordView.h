@@ -54,7 +54,6 @@
     long long _preferredFramesPerSecond_user;
     long long _preferredFramesPerSecond_thermal;
     CALayer *_backingLayer;
-    BOOL _captureImageIsTooDark;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -88,7 +87,6 @@
 - (void)cancelMovieExport;
 - (void)cancelRecording;
 - (void)cancelRecordingAudio;
-- (BOOL)captureImageIsTooDark;
 - (id)convertRecordedDataToAnimationGroup;
 - (struct opaqueCMSampleBuffer *)createSilentAudioAtFrame:(long long)arg1 nFrames:(int)arg2 sampleRate:(double)arg3 numChannels:(int)arg4;
 - (double)currentAudioTime;

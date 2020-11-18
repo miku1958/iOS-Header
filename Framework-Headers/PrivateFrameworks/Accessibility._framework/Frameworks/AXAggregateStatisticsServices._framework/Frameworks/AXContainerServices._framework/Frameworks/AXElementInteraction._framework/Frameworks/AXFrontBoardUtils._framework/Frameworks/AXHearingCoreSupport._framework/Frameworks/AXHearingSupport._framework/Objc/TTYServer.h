@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AXHearingCoreSupport/AXHeardServer.h>
+#import <AXHearingCoreSupport/HCServer.h>
 
 @class NSLock, NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
-@interface TTYServer : AXHeardServer
+@interface TTYServer : HCServer
 {
     NSLock *_dataResponseBlocksLock;
     NSMutableDictionary *_databaseResponseBlocks;
@@ -34,7 +34,7 @@
 - (void)registerForUpdates:(CDUnknownBlockType)arg1 forCallUID:(id)arg2;
 - (void)registerResponseBlock:(CDUnknownBlockType)arg1 forUUID:(id)arg2;
 - (void)resetConnection;
-- (void)sendCharacter:(unsigned short)arg1 forCallUID:(id)arg2;
+- (void)sendString:(id)arg1 forCallUID:(id)arg2;
 - (void)setShouldSuppressIncomingNotification:(BOOL)arg1;
 - (void)setTTYDictionaryAvailability:(BOOL)arg1;
 - (id)valueForTTYSetting:(id)arg1;

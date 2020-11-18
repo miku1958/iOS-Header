@@ -35,7 +35,7 @@
 @class CALayer, NSArray, NSISEngine, NSISVariable, NSLayoutDimension, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSMapTable, NSMutableArray, NSMutableSet, NSString, UIBezierPath, UIColor, UIDropInteraction, UIKBRenderConfig, UILayoutGuide, UIPresentationController, UIStoryboardPreviewingSegueTemplateStorage, UITraitCollection, UIViewAnimationInfo, UIViewController, UIWindow, _UIBoundingPath, _UITouchForceObservable, _UIViewLayoutEngineRelativeAlignmentRectOriginCache;
 @protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItemContainer, _UIFocusRegionContainer, _UIViewDraggingDestinationDelegate, _UIViewDraggingSourceDelegate;
 
-@interface UIView : UIResponder <NSISVariableDelegate, _UILayoutItem, _UIMultilineTextContentSizing, NSISEngineDelegate, _UIDraggingItemVisualTarget, UITextEffectsOrdering, UILayoutItem_Internal, _UIScrollViewScrollObserver_Internal, _UITraitEnvironmentInternal, _UIFocusItemInternal, _UIFocusItemDebuggable, _UIFocusRegionContainerInternal, _UILegacyFocusRegion, _UIGeometryChangeObserver, _UIFocusEnvironmentPrivate, _UIFocusRegionContainer, NSCoding, UIAppearance, UIAppearanceContainer, UIDynamicItem, UITraitEnvironment, UICoordinateSpace, UIFocusItem, UIFocusItemContainer, CALayerDelegate>
+@interface UIView : UIResponder <_UIDraggingItemVisualTarget, UILayoutItem_Internal, UITextEffectsOrdering, NSISVariableDelegate, _UILayoutItem, _UIMultilineTextContentSizing, NSISEngineDelegate, _UIScrollViewScrollObserver_Internal, _UITraitEnvironmentInternal, _UIFocusItemInternal, _UIFocusItemDebuggable, _UIFocusRegionContainerInternal, _UILegacyFocusRegion, _UIGeometryChangeObserver, _UIFocusEnvironmentPrivate, _UIFocusRegionContainer, NSCoding, UIAppearance, UIAppearanceContainer, UIDynamicItem, UITraitEnvironment, UICoordinateSpace, UIFocusItem, UIFocusItemContainer, CALayerDelegate>
 {
     NSMutableArray *_constraintsExceptingSubviewAutoresizingConstraints;
     UITraitCollection *_cachedTraitCollection;
@@ -247,6 +247,7 @@
 @property (copy, nonatomic, setter=_setLayoutDebuggingIdentifier:) NSString *_layoutDebuggingIdentifier; // @synthesize _layoutDebuggingIdentifier;
 @property (strong, nonatomic, setter=_setLayoutEngine:) NSISEngine *_layoutEngine; // @synthesize _layoutEngine;
 @property (nonatomic, setter=_setLayoutMarginsGuideIgnoresSystemMinimumMargins:) BOOL _layoutMarginsGuideIgnoresSystemMinimumMargins;
+@property (readonly, nonatomic) NSMapTable *_lfld_constraintsAffectingVariableValueChanges;
 @property (readonly, nonatomic) long long _lfld_count;
 @property (readonly, nonatomic) NSString *_lfld_currentLayoutMethodName;
 @property (readonly, nonatomic) NSMutableArray *_lfld_geometryChangeRecords;
@@ -941,6 +942,7 @@
 - (id)_layoutVariablesWithAmbiguousValue;
 - (BOOL)_legacy_isEligibleForFocusInteraction;
 - (id)_legendEntryForDescriptionForLayout;
+- (void)_lfld_addConstraintsAffectingVariableValueChange:(id)arg1;
 - (void)_lfld_addGeometryChangeRecordWithPropertyName:(id)arg1 value:(id)arg2;
 - (void)_lfld_addSetNeedsLayoutCallStack:(id)arg1;
 - (void)_lfld_addVariableChangeRecordForVariable:(id)arg1 inLayoutEngine:(id)arg2;

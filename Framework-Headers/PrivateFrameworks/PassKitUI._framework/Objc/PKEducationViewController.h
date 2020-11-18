@@ -23,7 +23,10 @@
     PKPaymentPass *_paymentPass;
     unsigned long long _educationContext;
     BOOL _isFaceIDDevice;
+    BOOL _isPad;
+    double _maxHeight;
     AVPlayerLayer *_video;
+    UIView *_videoBoundingView;
     AVPlayer *_player;
     AVPlayerItem *_playerItem;
     BOOL _playerStarted;
@@ -38,6 +41,7 @@
 @property (readonly) Class superclass;
 
 + (id)assetBackgroundColor;
++ (id)assetBackgroundColorPad;
 + (BOOL)shouldPresentForPass:(id)arg1 inEducationContext:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (void)_performAddToWatchFlow;
@@ -54,6 +58,7 @@
 - (void)performContinue;
 - (void)startPlayingVideo;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 
 @end

@@ -42,6 +42,7 @@
 - (void)layoutSubviews;
 - (id)nibImageName;
 - (id)nibStrokeImageName;
+- (void)setColor:(id)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1 sizeState:(unsigned long long)arg2;
 - (id)toolBaseImageName;

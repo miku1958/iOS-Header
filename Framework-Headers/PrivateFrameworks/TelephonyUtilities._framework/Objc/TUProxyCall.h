@@ -66,6 +66,7 @@
     TUCallDisplayContext *_displayContext;
     NSSet *_remoteParticipantHandles;
     NSUUID *_localSenderIdentityUUID;
+    NSUUID *_localSenderIdentityAccountUUID;
     id<TUCallServicesProxyCallActions> _proxyCallActionsDelegate;
     id<TURemoteVideoClient> _localVideo;
     id<TURemoteVideoClient> _remoteVideo;
@@ -103,6 +104,7 @@
 @property (nonatomic) BOOL isVideo; // @synthesize isVideo=_isVideo;
 @property (strong, nonatomic) NSData *localFrequency; // @synthesize localFrequency=_localFrequency;
 @property (nonatomic) float localMeterLevel; // @synthesize localMeterLevel=_localMeterLevel;
+@property (copy, nonatomic) NSUUID *localSenderIdentityAccountUUID; // @synthesize localSenderIdentityAccountUUID=_localSenderIdentityAccountUUID;
 @property (copy, nonatomic) NSUUID *localSenderIdentityUUID; // @synthesize localSenderIdentityUUID=_localSenderIdentityUUID;
 @property (strong, nonatomic) id<TURemoteVideoClient> localVideo; // @synthesize localVideo=_localVideo;
 @property (strong, nonatomic) NSMutableDictionary *localVideoModeToLayer; // @synthesize localVideoModeToLayer=_localVideoModeToLayer;

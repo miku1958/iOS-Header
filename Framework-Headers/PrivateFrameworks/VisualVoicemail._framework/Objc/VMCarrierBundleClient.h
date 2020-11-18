@@ -20,10 +20,15 @@
 @property (readonly) Class superclass;
 
 - (void)carrierBundleChange:(id)arg1;
+- (BOOL)isGreetingChangeSupportedForSubscription:(id)arg1;
+- (BOOL)isPasswordChangeSupportedForDefaultSubscription;
+- (BOOL)isPasswordChangeSupportedForSubscription:(id)arg1;
+- (BOOL)isServiceSupportedForSubscription:(id)arg1;
+- (double)maximumGreetingDurationForSubscription:(id)arg1;
+- (id)objectForDomain:(id)arg1 key:(id)arg2 subscription:(id)arg3;
+- (id)objectForDomain:(id)arg1 key:(id)arg2 subscription:(id)arg3 error:(id *)arg4;
 - (id)objectForKey:(id)arg1 subscription:(id)arg2;
 - (id)objectForKey:(id)arg1 subscription:(id)arg2 error:(id *)arg3;
-- (BOOL)supportsPasswordChangeForDefaultSubscription;
-- (BOOL)supportsPasswordChangeForSubscription:(id)arg1;
 
 @end
 

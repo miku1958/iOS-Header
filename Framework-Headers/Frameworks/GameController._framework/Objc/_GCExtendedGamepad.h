@@ -26,6 +26,8 @@
     _GCControllerButtonInput *_rightShoulder;
     _GCControllerButtonInput *_leftTrigger;
     _GCControllerButtonInput *_rightTrigger;
+    _GCControllerButtonInput *_leftThumbstickButton;
+    _GCControllerButtonInput *_rightThumbstickButton;
     BOOL _dpadFlippedY;
     BOOL _leftFlippedY;
     BOOL _rightFlippedY;
@@ -49,12 +51,14 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithController:(id)arg1;
-- (id)initWithController:(id)arg1 dpadFlippedY:(BOOL)arg2 leftFlippedY:(BOOL)arg3 rightFlippedY:(BOOL)arg4;
+- (id)initWithController:(id)arg1 dpadFlippedY:(BOOL)arg2 leftFlippedY:(BOOL)arg3 rightFlippedY:(BOOL)arg4 l3r3andDigitalSupported:(BOOL)arg5;
 - (id)leftShoulder;
 - (id)leftThumbstick;
+- (id)leftThumbstickButton;
 - (id)leftTrigger;
 - (id)rightShoulder;
 - (id)rightThumbstick;
+- (id)rightThumbstickButton;
 - (id)rightTrigger;
 - (void)setController:(id)arg1;
 - (void)setPlayerIndex:(long long)arg1;

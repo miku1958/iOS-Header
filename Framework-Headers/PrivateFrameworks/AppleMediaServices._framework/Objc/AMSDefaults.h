@@ -16,9 +16,12 @@
 + (long long)_integerForKey:(id)arg1 defaultValue:(long long)arg2 domain:(struct __CFString *)arg3;
 + (double)_randomDouble;
 + (void)_setBool:(BOOL)arg1 forKey:(id)arg2;
++ (void)_setBool:(BOOL)arg1 forKey:(id)arg2 domain:(struct __CFString *)arg3;
 + (void)_setInteger:(long long)arg1 forKey:(id)arg2;
 + (void)_setValue:(id)arg1 forKey:(id)arg2;
++ (void)_setValue:(id)arg1 forKey:(id)arg2 domain:(struct __CFString *)arg3;
 + (id)_valueForKey:(id)arg1;
++ (id)_valueForKey:(id)arg1 domain:(struct __CFString *)arg2;
 + (BOOL)alwaysSendCacheBuster;
 + (BOOL)alwaysSendGUID;
 + (id)bagURLCookies;

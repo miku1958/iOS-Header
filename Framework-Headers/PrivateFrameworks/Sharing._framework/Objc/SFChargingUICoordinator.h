@@ -14,10 +14,12 @@
     BOOL _activateCalled;
     BOOL _invalidateCalled;
     BOOL _runningAsCarry;
-    NSDate *_syncMaxDate;
-    NSDate *_syncRequestDate;
-    NSObject<OS_dispatch_source> *_syncTimer;
-    CDUnknownBlockType _syncUIHandler;
+    NSDate *_uiUpdateMaxDate;
+    NSDate *_uiUpdateRequestDate;
+    CDUnknownBlockType _uiUpdateHandler;
+    BOOL _uiUpdateMinTimeElapsed;
+    BOOL _uiUpdateShouldDismiss;
+    NSObject<OS_dispatch_source> *_uiUpdateTimer;
     long long _defaultDuration;
 }
 
@@ -25,28 +27,27 @@
 
 - (void).cxx_destruct;
 - (void)_activate;
+- (void)_dismissUI;
+- (void)_initialViewControllerDidAppear;
+- (void)_initialViewControllerDidDisappear;
 - (void)_invalidate;
-- (void)_logDashboardWatchSyncRequestWithIntervalFromStart:(double)arg1 remainingIntervalToWait:(double)arg2 intervalToMaxWait:(double)arg3;
 - (void)_requestToDismissUIHandler:(CDUnknownBlockType)arg1;
-- (void)_requestToShowUIWithHandler:(CDUnknownBlockType)arg1;
-- (void)_sendUISyncDate:(id)arg1;
-- (void)_syncHandleShowUIDate:(id)arg1;
-- (void)_syncTimerInvalidateSync;
-- (void)_syncTimerRestartSyncWithTimeout:(double)arg1;
+- (void)_sendDismissUIWithReason:(long long)arg1;
+- (void)_timingInvalidateMinTimer;
+- (void)_timingRestartMinTimer;
 - (void)activate;
 - (id)exportedInterface;
+- (void)initialViewControllerDidAppear;
+- (void)initialViewControllerDidDisappear;
 - (void)invalidate;
 - (id)machServiceName;
-- (id)millisecondsFromTimeInterval:(double)arg1;
 - (void)onqueue_connectionEstablished;
 - (void)onqueue_connectionInterrupted;
 - (void)onqueue_connectionInvalidated;
 - (id)remoteObjectInterface;
 - (void)requestToDismissUIHandler:(CDUnknownBlockType)arg1;
 - (void)requestToShowUIWithHandler:(CDUnknownBlockType)arg1;
-- (void)sendUICoordinationDate:(id)arg1;
-- (void)sendUISyncDate:(id)arg1;
-- (void)sendUISyncDateDirect:(id)arg1;
+- (void)sendDismissUIWithReason:(long long)arg1;
 - (BOOL)shouldEscapeXpcTryCatch;
 
 @end

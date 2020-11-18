@@ -49,6 +49,8 @@ struct AccessoryProximityConfig;
 
 struct AccessoryWake;
 
+struct AccessoryWakeDebug;
+
 struct AirpodEvent;
 
 struct BTConnection;
@@ -368,6 +370,7 @@ struct Item {
     struct unique_ptr<CMMsl::AccessoryProxTempComp, std::__1::default_delete<CMMsl::AccessoryProxTempComp>> _accessoryProxTempComp;
     struct unique_ptr<CMMsl::AccessoryProximityConfig, std::__1::default_delete<CMMsl::AccessoryProximityConfig>> _accessoryProximityConfig;
     struct unique_ptr<CMMsl::AccessoryWake, std::__1::default_delete<CMMsl::AccessoryWake>> _accessoryWake;
+    struct unique_ptr<CMMsl::AccessoryWakeDebug, std::__1::default_delete<CMMsl::AccessoryWakeDebug>> _accessoryWakeDebug;
     struct unique_ptr<CMMsl::AirpodEvent, std::__1::default_delete<CMMsl::AirpodEvent>> _airpodEvent;
     struct unique_ptr<CMMsl::BTConnection, std::__1::default_delete<CMMsl::BTConnection>> _bTConnection;
     struct unique_ptr<CMMsl::BasebandSpeed, std::__1::default_delete<CMMsl::BasebandSpeed>> _basebandSpeed;
@@ -853,6 +856,12 @@ struct unique_ptr<CMMsl::AccessoryProximityConfig, std::__1::default_delete<CMMs
 struct unique_ptr<CMMsl::AccessoryWake, std::__1::default_delete<CMMsl::AccessoryWake>> {
     struct __compressed_pair<CMMsl::AccessoryWake *, std::__1::default_delete<CMMsl::AccessoryWake>> {
         struct AccessoryWake *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::AccessoryWakeDebug, std::__1::default_delete<CMMsl::AccessoryWakeDebug>> {
+    struct __compressed_pair<CMMsl::AccessoryWakeDebug *, std::__1::default_delete<CMMsl::AccessoryWakeDebug>> {
+        struct AccessoryWakeDebug *__value_;
     } __ptr_;
 };
 

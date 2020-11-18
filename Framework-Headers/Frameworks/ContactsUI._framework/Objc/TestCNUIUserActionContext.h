@@ -15,11 +15,13 @@ __attribute__((visibility("hidden")))
 @interface TestCNUIUserActionContext : NSObject <CNUIUserActionContext>
 {
     BOOL _actionExecutionWasAttemted;
+    NSString *_channelIdentifier;
 }
 
 @property (readonly, nonatomic) id<CNUIUserActionCurator> actionCurator;
 @property (nonatomic) BOOL actionExecutionWasAttemted; // @synthesize actionExecutionWasAttemted=_actionExecutionWasAttemted;
 @property (readonly, nonatomic) id<CNUIUserActionRecorder> actionRecorder;
+@property (copy, nonatomic) NSString *channelIdentifier; // @synthesize channelIdentifier=_channelIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<CNUIUserActionDialRequestOpener> dialRequestOpener;
@@ -28,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) id<CNUIUserActionURLOpener> urlOpener;
 @property (readonly, nonatomic) id<CNUIUserActionUserActivityOpener> userActivityOpener;
 
+- (void).cxx_destruct;
 - (id)nilValue;
 
 @end

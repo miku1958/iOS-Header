@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _isAudioEnabled;
     BOOL _isVideoEnabled;
     BOOL _live;
+    BOOL _isFullSize;
     int _duration;
     int _adjustedDuration;
     int _interval;
@@ -31,28 +32,37 @@ __attribute__((visibility("hidden")))
     unsigned int _timeToHearFirstRemoteAudioFrame;
     unsigned int _averageReceiveFramerate;
     unsigned int _averageJitterbufferLength;
-    unsigned int _timeInvitationAccepted;
+    double _connectionTime;
     unsigned int _firstVideoFrameReceivedDelta;
     unsigned int _firstMKIReceivedDelta;
     unsigned int _firstDecodableVideoFrameDelta;
+    BOOL _isVideoDegraded;
+    unsigned int _videoDegradedTotalCounter;
+    double _videoDegradedTotalTime;
+    double _videoDegradedStartTime;
 }
 
 @property int adjustedDuration; // @synthesize adjustedDuration=_adjustedDuration;
 @property unsigned int audioStreamSwitchCount; // @synthesize audioStreamSwitchCount=_audioStreamSwitchCount;
 @property unsigned int averageJitterbufferLength; // @synthesize averageJitterbufferLength=_averageJitterbufferLength;
+@property double connectionTime; // @synthesize connectionTime=_connectionTime;
 @property unsigned int downlinkTargetBitrateSwitchCount; // @synthesize downlinkTargetBitrateSwitchCount=_downlinkTargetBitrateSwitchCount;
 @property int duration; // @synthesize duration=_duration;
 @property unsigned int firstDecodableVideoFrameDelta; // @synthesize firstDecodableVideoFrameDelta=_firstDecodableVideoFrameDelta;
 @property unsigned int firstMKIReceivedDelta; // @synthesize firstMKIReceivedDelta=_firstMKIReceivedDelta;
 @property unsigned int firstVideoFrameReceivedDelta; // @synthesize firstVideoFrameReceivedDelta=_firstVideoFrameReceivedDelta;
 @property BOOL isAudioEnabled; // @synthesize isAudioEnabled=_isAudioEnabled;
+@property BOOL isFullSize; // @synthesize isFullSize=_isFullSize;
+@property BOOL isVideoDegraded; // @synthesize isVideoDegraded=_isVideoDegraded;
 @property BOOL isVideoEnabled; // @synthesize isVideoEnabled=_isVideoEnabled;
 @property (readonly, getter=isLive) BOOL live; // @synthesize live=_live;
 @property (readonly) NSString *remoteParticipantID; // @synthesize remoteParticipantID=_remoteParticipantID;
 @property (readonly) NSMutableDictionary *streams; // @synthesize streams=_streams;
-@property unsigned int timeInvitationAccepted; // @synthesize timeInvitationAccepted=_timeInvitationAccepted;
 @property unsigned int timeToHearFirstRemoteAudioFrame; // @synthesize timeToHearFirstRemoteAudioFrame=_timeToHearFirstRemoteAudioFrame;
 @property unsigned int timeToSeeFirstRemoteVideoFrame; // @synthesize timeToSeeFirstRemoteVideoFrame=_timeToSeeFirstRemoteVideoFrame;
+@property double videoDegradedStartTime; // @synthesize videoDegradedStartTime=_videoDegradedStartTime;
+@property unsigned int videoDegradedTotalCounter; // @synthesize videoDegradedTotalCounter=_videoDegradedTotalCounter;
+@property double videoDegradedTotalTime; // @synthesize videoDegradedTotalTime=_videoDegradedTotalTime;
 @property unsigned int videoStreamSwitchCount; // @synthesize videoStreamSwitchCount=_videoStreamSwitchCount;
 
 - (unsigned int)RTPeriod;
@@ -67,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (id)initCallWithRemoteParticipantID:(id)arg1;
 - (void)processActualBitrateRateChange:(unsigned int)arg1;
 - (void)processDownlinkRateChange:(unsigned int)arg1;
+- (void)processVideoDegraded:(BOOL)arg1;
 - (unsigned short)significantVideoStallCount;
 - (double)significantVideoStallTotalTime;
 

@@ -12,22 +12,24 @@ __attribute__((visibility("hidden")))
 @interface MultiwayStream : NSObject
 {
     NSString *_streamID;
+    int _interval;
+    int _frequency;
     double _lastReceivedVideoStallTime;
     double _currentStallTime;
     double _totalVideoStallTime;
     double _maxVideoStallTime;
     unsigned short _significantVideoStallCount;
-    double _lastReceivedAudioErasure;
     unsigned short _audioErasureCount;
-    double _totalAudioErasureRate;
+    double _totalAudioErasureTime;
     double _averageFramerateSum;
     unsigned short _averageFramerateReportCounter;
     double _averageJitterLengthSum;
     unsigned short _averageJitterReportCounter;
 }
 
+- (unsigned int)RTPeriod;
 - (unsigned short)audioErasureCount;
-- (double)audioErasureTotalRate;
+- (double)audioErasureTotalTime;
 - (unsigned short)averageFramerateReportCounter;
 - (double)averageFramerateSum;
 - (double)averageJitterLengthSum;

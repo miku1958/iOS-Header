@@ -64,6 +64,7 @@
 + (id)policyForSyncTransportType:(long long)arg1;
 + (id)policyFromDictionary:(id)arg1;
 + (void)possiblyDownloadSyncPolicyWithPolicyDownloadIntervalInDays:(unsigned long long)arg1;
++ (id)productVersion;
 + (BOOL)rapportSyncDisabled;
 + (void)setOkToDownloadPolicyUpdates:(BOOL)arg1;
 + (id)syncPolicyConfigPathForFilename:(id)arg1;
@@ -72,7 +73,8 @@
 - (BOOL)canDeferSyncOperationWithSyncType:(id)arg1;
 - (BOOL)canPerformSyncOperationWithSyncType:(id)arg1 lastSyncDate:(id)arg2 lastDaySyncCount:(unsigned long long)arg3 isCharging:(BOOL)arg4;
 - (id)description;
-- (BOOL)highPriorityForSyncType:(id)arg1 lastSyncDate:(id)arg2;
+- (BOOL)highPriorityForSyncDownWithSyncType:(id)arg1;
+- (BOOL)highPriorityForSyncUpWithSyncType:(id)arg1 lastSyncDate:(id)arg2;
 - (double)hoursBetweenSyncsWhenIsSingleDevice:(BOOL)arg1;
 - (double)hoursBetweenSyncsWhenIsSingleDevice:(BOOL)arg1 urgency:(unsigned long long)arg2;
 - (id)initWithDictionary:(id)arg1;

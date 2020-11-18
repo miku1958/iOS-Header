@@ -25,6 +25,7 @@
     BOOL _showDebugOutlines;
     BOOL _isLayingOut;
     BOOL _shouldHideCanvasAfterScroll;
+    BOOL _aggd_didMergeWithCollaborator;
     PKLinedPaper *_linedPaper;
     UIScrollView *_scrollView;
     UIView *_attachmentContainerView;
@@ -38,20 +39,23 @@
     PKAttachmentView *_liveAttachment;
     PKDrawing *_isRenderingDrawing;
     PKController *_tileController;
-    UITouch *_drawingTouchThatHitNothing;
     PKDrawing *_createdDrawingForTouchThatHitNothing;
-    PKSelectionController *_selectionController;
     NSArray *_additionalStrokes;
     NSArray *_hideAdditionalStrokes;
     NSArray *_cachedHiddenAdditionalStrokes;
     NSMutableArray *_cachedVisibleStrokesForDirtyDrawing;
     NSMutableArray *_cachedVisibleStrokesMinusHiddenStrokesForDirtyDrawing;
     PKDrawing *_cachedDrawingForHiddenAdditionalStrokes;
+    long long _aggd_cachedVisibleStrokeCount;
+    PKSelectionController *_selectionController;
+    UITouch *_drawingTouchThatHitNothing;
     struct CGPoint _lastContentOffset;
     struct CGPoint _liveStrokeContentOffset;
 }
 
 @property (readonly, nonatomic) NSArray *additionalStrokes; // @synthesize additionalStrokes=_additionalStrokes;
+@property (nonatomic) long long aggd_cachedVisibleStrokeCount; // @synthesize aggd_cachedVisibleStrokeCount=_aggd_cachedVisibleStrokeCount;
+@property (nonatomic) BOOL aggd_didMergeWithCollaborator; // @synthesize aggd_didMergeWithCollaborator=_aggd_didMergeWithCollaborator;
 @property (weak, nonatomic) UIView *attachmentContainerView; // @synthesize attachmentContainerView=_attachmentContainerView;
 @property (copy, nonatomic) PKDrawing *cachedDrawingForHiddenAdditionalStrokes; // @synthesize cachedDrawingForHiddenAdditionalStrokes=_cachedDrawingForHiddenAdditionalStrokes;
 @property (copy, nonatomic) NSArray *cachedHiddenAdditionalStrokes; // @synthesize cachedHiddenAdditionalStrokes=_cachedHiddenAdditionalStrokes;
@@ -62,7 +66,7 @@
 @property (strong, nonatomic) PKDrawing *createdDrawingForTouchThatHitNothing; // @synthesize createdDrawingForTouchThatHitNothing=_createdDrawingForTouchThatHitNothing;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) UITouch *drawingTouchThatHitNothing; // @synthesize drawingTouchThatHitNothing=_drawingTouchThatHitNothing;
+@property (readonly, nonatomic) UITouch *drawingTouchThatHitNothing; // @synthesize drawingTouchThatHitNothing=_drawingTouchThatHitNothing;
 @property (nonatomic, getter=isFingerDrawingEnabled) BOOL fingerDrawingEnabled; // @synthesize fingerDrawingEnabled=_fingerDrawingEnabled;
 @property (strong, nonatomic) UIView *gestureView; // @synthesize gestureView=_gestureView;
 @property (readonly, nonatomic) BOOL hasSelection;
@@ -77,7 +81,7 @@
 @property (strong, nonatomic) PKAttachmentView *liveAttachment; // @synthesize liveAttachment=_liveAttachment;
 @property (nonatomic) struct CGPoint liveStrokeContentOffset; // @synthesize liveStrokeContentOffset=_liveStrokeContentOffset;
 @property (weak, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
-@property (strong, nonatomic) PKSelectionController *selectionController; // @synthesize selectionController=_selectionController;
+@property (readonly, nonatomic) PKSelectionController *selectionController; // @synthesize selectionController=_selectionController;
 @property (nonatomic) BOOL shouldHideCanvasAfterScroll; // @synthesize shouldHideCanvasAfterScroll=_shouldHideCanvasAfterScroll;
 @property (nonatomic) BOOL showDebugOutlines; // @synthesize showDebugOutlines=_showDebugOutlines;
 @property (readonly) Class superclass;
@@ -101,6 +105,7 @@
 - (void)_layoutSubviews;
 - (void)_observeScrollViewDidScroll:(id)arg1;
 - (void)_scrollViewDidLayoutSubviews:(id)arg1;
+- (long long)_totalVisibleStrokes;
 - (void)_updateAttachmentHeightIfNecessaryForDrawing:(id)arg1;
 - (void)_updateHeightOfAttachmentIfNecessary:(id)arg1;
 - (id)_visibleTilesForAttachment:(id)arg1 includePartiallyVisible:(BOOL)arg2;

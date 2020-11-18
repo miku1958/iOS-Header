@@ -60,7 +60,7 @@
 - (id)cellAtIndexPath:(id)arg1;
 - (id)currentContactPath;
 - (void)dealloc;
-- (void)deviceDidReceiveCharacter:(unsigned short)arg1 forUtterance:(id)arg2;
+- (void)deviceDidReceiveString:(id)arg1 forUtterance:(id)arg2;
 - (void)gaButtonPressed:(id)arg1;
 - (id)init;
 - (id)inputTextView;
@@ -83,7 +83,7 @@
 - (void)updateMuteButton;
 - (void)updateTableViewSizeAnimated:(BOOL)arg1;
 - (void)updateViewForKeyboard:(id)arg1;
-- (void)updateVoiceOverAnnouncement:(unsigned short)arg1;
+- (void)updateVoiceOverAnnouncement:(id)arg1;
 - (void)utteranceCellDidUpdateContent:(id)arg1;
 - (BOOL)utteranceIsSelected;
 - (void)viewDidLoad;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AAGrandSlamSigner, ACAccount, ACAccountStore, AIDAServiceOwnersManager, AKAppleIDSigningController;
+@class AAGrandSlamSigner, ACAccount, ACAccountStore, AIDAServiceOwnersManager, AKAppleIDSigningController, NSData;
 
 @interface FARequestConfigurator : NSObject
 {
@@ -17,6 +17,7 @@
     AAGrandSlamSigner *_familyGrandSlamSigner;
     AIDAServiceOwnersManager *_serviceOwnersManager;
     AKAppleIDSigningController *_akSigningController;
+    NSData *_pushToken;
     BOOL _attachSetupHeader;
 }
 
@@ -33,6 +34,7 @@
 - (id)_fresnoPayloadWithAdditionalHeaders:(id)arg1;
 - (id)_grandSlamAccount;
 - (id)_grandSlamSigner;
+- (id)_pushToken;
 - (id)_serviceOwnersManager;
 - (id)_urlForEventType:(id)arg1;
 - (void)addFresnoHeadersToRequest:(id)arg1;

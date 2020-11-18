@@ -52,6 +52,7 @@
 - (void)_updateContentSizeAndNotifyDelegateIfNecessary:(BOOL)arg1;
 - (void)_validateCardForParsecFeedbackDelivery:(id)arg1 validHandler:(CDUnknownBlockType)arg2;
 - (void)_validateCardSectionForParsecFeedbackDelivery:(id)arg1 validHandler:(CDUnknownBlockType)arg2;
+- (double)boundingWidthForPresentation:(id)arg1;
 - (BOOL)cardLoader:(id)arg1 loadCard:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)cardLoader:(id)arg1 shouldLoadCard:(id)arg2;
 - (void)cardLoadingMonitor:(id)arg1 didReceiveCardSnippet:(id)arg2;

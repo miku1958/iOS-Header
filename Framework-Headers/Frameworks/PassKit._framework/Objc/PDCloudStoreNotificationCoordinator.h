@@ -43,7 +43,8 @@
 - (id)_containerWithZoneName:(id)arg1;
 - (id)_errorWithCode:(long long)arg1 description:(id)arg2;
 - (void)_initialCloudDatabaseSetupForContainer:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_initialCloudDatabaseSetupForContainer:(id)arg1 shouldScheduleBackgroundActivity:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_initialCloudDatabaseSetupForContainer:(id)arg1 operationGroupNameSuffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_initialCloudDatabaseSetupForContainer:(id)arg1 operationGroupNameSuffix:(id)arg2 shouldScheduleBackgroundActivity:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (double)_nextTimeIntervalForBackgroundInterval:(unsigned long long)arg1;
 - (void)_performCloudStoreContainerInitalizationBackgroundActivityWithCurrentInterval:(unsigned long long)arg1 nextBackgroundInterval:(unsigned long long)arg2;
 - (void)_processCloudStorePushNotificationForContainer:(id)arg1;

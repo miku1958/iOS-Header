@@ -11,7 +11,7 @@
 #import <SOS/SOSInternalServerProtocol-Protocol.h>
 #import <SOS/SOSServerProtocol-Protocol.h>
 
-@class CLLocation, FKFriendsManager, NPHSOSPersistentTimerLocationManager, NSDate, NSMutableArray, NSString, SOSContactsManager;
+@class CLLocation, FKFriendsManager, NPHSOSPersistentTimerLocationManager, NSDate, NSMutableArray, NSString, SOSContactsManager, _MKLocationShifter;
 
 @interface SOSEngine : NSObject <NPHSOSPersistentTimerLocationManagerDelegate, SOSInternalServerProtocol, SOSServerProtocol, NSXPCListenerDelegate>
 {
@@ -22,6 +22,7 @@
     SOSContactsManager *_contactsManager;
     long long _notifyContactsReason;
     FKFriendsManager *_friendsManager;
+    _MKLocationShifter *_locationShifter;
     NSMutableArray *_clientConnections;
 }
 
@@ -30,6 +31,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) FKFriendsManager *friendsManager; // @synthesize friendsManager=_friendsManager;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) _MKLocationShifter *locationShifter; // @synthesize locationShifter=_locationShifter;
 @property (readonly) Class superclass;
 
 + (id)GPSCoordinatesURLForLocation:(id)arg1;
@@ -46,9 +48,11 @@
 + (id)contactStore;
 + (id)firstNameForContact:(id)arg1;
 + (id)fullNameForContact:(id)arg1;
++ (id)locationShifter;
 + (id)meContact;
 + (void)preloadContactStoreIfNecessary;
 + (id)sharedInstance;
++ (void)shiftedLocationWithLocation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (void)SOSSendingLocationUpdateChanged:(id)arg1;
 - (void)contactStoreDidChange;

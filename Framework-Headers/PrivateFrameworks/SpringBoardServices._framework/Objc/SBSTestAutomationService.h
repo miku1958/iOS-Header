@@ -10,7 +10,7 @@
 {
 }
 
-- (void)resetToHomeScreenAnimated:(BOOL)arg1 useSafeTransitions:(BOOL)arg2;
+- (void)resetToHomeScreenAnimated:(BOOL)arg1;
 - (void)setAlertsEnabled:(BOOL)arg1;
 - (void)setApplicationBundleIdentifier:(id)arg1 blockedForScreenTime:(BOOL)arg2;
 - (void)setIdleTimerEnabled:(BOOL)arg1;

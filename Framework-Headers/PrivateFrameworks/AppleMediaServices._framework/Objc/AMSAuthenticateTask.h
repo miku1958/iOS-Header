@@ -31,6 +31,7 @@
 - (id)_accountForAuthentication;
 - (id)_accountStoreForAuthentication;
 - (id)_createVerifyCredentialOptionsWithCredentialSource:(unsigned long long)arg1;
+- (id)_performAuthenticationUsingAccount:(id)arg1 credentialSource:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)_shouldPerformInProcessAuthKitUpdateForAccount:(id)arg1;
 - (void)_updateAccountWithProvidedInformation:(id)arg1;
 - (id)_updatedAccountForAuthenticationWithError:(id *)arg1;

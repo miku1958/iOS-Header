@@ -23,7 +23,7 @@
 
 + (id)serverSupportedLanguages;
 - (void).cxx_destruct;
-- (id)_urlRequestWithServiceURL:(id)arg1 account:(id)arg2;
+- (id)_urlRequestWithServiceURL:(id)arg1 appleAccountInformation:(id)arg2;
 - (id)initWithMerchantSession:(id)arg1 secureElementIdentifier:(id)arg2 amount:(id)arg3 currencyCode:(id)arg4;
 
 @end

@@ -9,30 +9,28 @@
 #import <SIMSetupSupport/TSCellularPlanManagerCacheDelegate-Protocol.h>
 #import <SIMSetupSupport/TSSIMSetupFlowDelegate-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, UIBarButtonItem;
 
 @interface TSSetupAssistantSIMSetupFlow : TSSIMSetupFlow <TSSIMSetupFlowDelegate, TSCellularPlanManagerCacheDelegate>
 {
     BOOL _showAddPlan;
-    BOOL _allowDismiss;
     NSMutableArray *_danglingPlanItems;
     NSString *_iccid;
+    UIBarButtonItem *_cancelButton;
 }
 
-@property BOOL allowDismiss; // @synthesize allowDismiss=_allowDismiss;
-@property (strong) NSMutableArray *danglingPlanItems; // @synthesize danglingPlanItems=_danglingPlanItems;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) NSString *iccid; // @synthesize iccid=_iccid;
-@property BOOL showAddPlan; // @synthesize showAddPlan=_showAddPlan;
 @property (readonly) Class superclass;
 
 + (void)needsToRun:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (id)firstViewController;
 - (id)initWithIccid:(id)arg1 showAddPlan:(BOOL)arg2 allowDismiss:(BOOL)arg3;
+- (BOOL)isPhoneFlow;
 - (id)nextViewControllerFrom:(id)arg1;
+- (void)setDefaultNavigationItems:(id)arg1;
 - (void)viewControllerDidComplete:(id)arg1;
 
 @end

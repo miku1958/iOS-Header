@@ -11,6 +11,7 @@
 @interface _TtC15ConversationKit31StagingAreaViewControllerLayout : SwiftObject
 {
     MISSING_TYPE *stateConstraints;
+    MISSING_TYPE *effectsConstraintManagers;
     MISSING_TYPE *currentConstraints;
 }
 

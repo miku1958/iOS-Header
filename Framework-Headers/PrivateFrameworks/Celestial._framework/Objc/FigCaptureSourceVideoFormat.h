@@ -117,6 +117,7 @@
 - (int)maxIntegrationTimeOverride;
 - (struct CGRect)maxVisibleSensorRect;
 - (unsigned int)mediaType;
+- (CDStruct_79c71658)nativeDimensions;
 - (id)nonSIFRCompanionFormat;
 - (int)previewImageQueueSyncStrategy;
 - (id)rawLensShadingCorrection;

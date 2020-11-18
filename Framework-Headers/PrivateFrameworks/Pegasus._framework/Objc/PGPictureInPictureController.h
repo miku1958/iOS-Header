@@ -24,6 +24,7 @@
         unsigned int pictureInPictureController_didCreatePictureInPictureViewController:1;
         unsigned int pictureInPictureController_willDestroyPictureInPictureViewController:1;
         unsigned int pictureInPictureController_willHidePictureInPictureViewController:1;
+        unsigned int pictureInPictureController_didHidePictureInPictureViewController:1;
     } _delegateRespondsTo;
     BOOL _pictureInPictureActive;
     NSSet *_pictureInPictureApplications;
@@ -36,6 +37,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isStartingStoppingOrCancellingPictureInPicture;
+@property (readonly, nonatomic) BOOL isStoppingPictureInPictureForAlert;
 @property (readonly, nonatomic, getter=isPictureInPictureActive) BOOL pictureInPictureActive; // @synthesize pictureInPictureActive=_pictureInPictureActive;
 @property (readonly, nonatomic) NSSet *pictureInPictureApplications; // @synthesize pictureInPictureApplications=_pictureInPictureApplications;
 @property (readonly) Class superclass;
@@ -51,6 +53,7 @@
 - (void)pictureInPictureInterruptionBegan;
 - (void)pictureInPictureInterruptionEnded;
 - (void)pictureInPictureRemoteObject:(id)arg1 didCreatePictureInPictureViewController:(id)arg2;
+- (void)pictureInPictureRemoteObject:(id)arg1 didHidePictureInPictureViewController:(id)arg2;
 - (void)pictureInPictureRemoteObject:(id)arg1 didShowPictureInPictureViewController:(id)arg2;
 - (void)pictureInPictureRemoteObject:(id)arg1 willDestroyPictureInPictureViewController:(id)arg2;
 - (void)pictureInPictureRemoteObject:(id)arg1 willHidePictureInPictureViewController:(id)arg2;

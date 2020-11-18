@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
     unsigned int _statsResponseCounter;
     unsigned int _numStatsDroppedDueToStatsID;
     unsigned int _numStatsDroppedDueToLinkID;
+    unsigned int _numStatsDroppedDueToTooLate;
     unsigned int _numStatsProcessed;
     unsigned int _numStatsTriggered;
     double _totalStatsTransportStreamQueueTime;
@@ -60,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (void)handleRemoteSessionStats:(CDStruct_88f6cd69 *)arg1;
 - (void)healthPrintForServerStats;
 - (id)initWithConnectionManager:(id)arg1 uplinkStatsCollector:(id)arg2 downlinkStatsCollector:(id)arg3 reportingAgent:(struct opaqueRTCReporting *)arg4 transportSessionID:(unsigned int)arg5 streamID:(unsigned short)arg6 mediaQueue:(struct tagVCMediaQueue *)arg7;
+- (BOOL)isRemoteSessionStatsTooLateWithStatsId:(unsigned short)arg1;
 - (void)periodicTask:(void *)arg1;
 - (void)registerPeriodicTask;
 - (void)reset;

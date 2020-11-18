@@ -9,13 +9,12 @@
 #import <ScreenTimeUI/NSFetchedResultsControllerDelegate-Protocol.h>
 #import <ScreenTimeUI/STContentPrivacyViewModelCoordinator-Protocol.h>
 
-@class NSFetchedResultsController, NSManagedObjectID, NSMutableDictionary, NSNumber, NSString, STContentPrivacyViewModel;
+@class NSArray, NSManagedObjectID, NSMutableDictionary, NSNumber, NSString, STContentPrivacyViewModel;
 @protocol RMPersistenceControllerProtocol;
 
 @interface STContentPrivacyViewModelCoordinator : NSObject <NSFetchedResultsControllerDelegate, STContentPrivacyViewModelCoordinator>
 {
     BOOL _isLocalDevice;
-    BOOL _needsViewModelRefresh;
     STContentPrivacyViewModel *_viewModel;
     id<RMPersistenceControllerProtocol> _persistenceController;
     NSString *_organizationIdentifier;
@@ -23,20 +22,17 @@
     NSString *_userName;
     NSManagedObjectID *_userObjectID;
     NSMutableDictionary *_configurationPayloadsByType;
-    NSFetchedResultsController *_blueprintFetchController;
-    NSFetchedResultsController *_configurationFetchController;
-    unsigned long long _expectedChanges;
+    NSArray *_fetchedResultsControllers;
+    unsigned long long _numExpectedChanges;
 }
 
-@property (readonly, nonatomic) NSFetchedResultsController *blueprintFetchController; // @synthesize blueprintFetchController=_blueprintFetchController;
-@property (readonly, nonatomic) NSFetchedResultsController *configurationFetchController; // @synthesize configurationFetchController=_configurationFetchController;
 @property (strong, nonatomic) NSMutableDictionary *configurationPayloadsByType; // @synthesize configurationPayloadsByType=_configurationPayloadsByType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property unsigned long long expectedChanges; // @synthesize expectedChanges=_expectedChanges;
+@property (strong, nonatomic) NSArray *fetchedResultsControllers; // @synthesize fetchedResultsControllers=_fetchedResultsControllers;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isLocalDevice; // @synthesize isLocalDevice=_isLocalDevice;
-@property (nonatomic) BOOL needsViewModelRefresh; // @synthesize needsViewModelRefresh=_needsViewModelRefresh;
+@property unsigned long long numExpectedChanges; // @synthesize numExpectedChanges=_numExpectedChanges;
 @property (copy, nonatomic) NSString *organizationIdentifier; // @synthesize organizationIdentifier=_organizationIdentifier;
 @property (readonly, nonatomic) id<RMPersistenceControllerProtocol> persistenceController; // @synthesize persistenceController=_persistenceController;
 @property (readonly) Class superclass;
@@ -66,9 +62,9 @@
 - (id)_valuesByRestriction;
 - (id)_visibleRestrictions;
 - (void)controller:(id)arg1 didChangeObject:(id)arg2 atIndexPath:(id)arg3 forChangeType:(unsigned long long)arg4 newIndexPath:(id)arg5;
-- (void)controllerDidChangeContent:(id)arg1;
 - (id)initWithPersistenceController:(id)arg1 organizationIdentifier:(id)arg2 userDSID:(id)arg3 userName:(id)arg4;
 - (void)loadViewModelWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)reloadViewModelForRemoteChanges;
 - (void)saveContentPrivacyEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)saveRestrictionValue:(id)arg1 forItem:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)saveValuesForRestrictions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

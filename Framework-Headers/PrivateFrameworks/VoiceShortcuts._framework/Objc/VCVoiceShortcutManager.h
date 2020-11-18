@@ -20,9 +20,10 @@
     id<VCVoiceShortcutSyncService> _masterSyncService;
     NSObject<OS_dispatch_queue> *_syncServicesIsolationQueue;
     HMHomeManager *_hmHomeManager;
-    NSObject<OS_dispatch_queue> *_updateVoiceShortcutsSharedVocabularyQueue;
+    NSObject<OS_dispatch_queue> *_dataMigratorQueue;
 }
 
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *dataMigratorQueue; // @synthesize dataMigratorQueue=_dataMigratorQueue;
 @property (readonly, nonatomic) VCCoreDataStore *dataStore; // @synthesize dataStore=_dataStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -33,12 +34,10 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSMapTable *syncServices; // @synthesize syncServices=_syncServices;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *syncServicesIsolationQueue; // @synthesize syncServicesIsolationQueue=_syncServicesIsolationQueue;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *updateVoiceShortcutsSharedVocabularyQueue; // @synthesize updateVoiceShortcutsSharedVocabularyQueue=_updateVoiceShortcutsSharedVocabularyQueue;
 
 + (void)initialize;
 + (id)sharedManager;
 - (void).cxx_destruct;
-- (void)_updateVoiceShortcutsSharedVocabularyAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)addExtraVocabForDemoIfAppropriate:(id)arg1;
 - (void)addVoiceShortcut:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)applyChangeSet:(struct NSOrderedSet *)arg1 fromSyncServiceWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -52,13 +51,14 @@
 - (void)deregisterSyncServiceWithIdentifier:(id)arg1;
 - (void)describeSyncStateIncludingDeleted:(BOOL)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)enumerateSyncServicesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)getInactiveAppsWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getNumberOfVoiceShortcutsWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getShortcutSuggestionsForAllAppsWithLimit:(unsigned long long)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getShortcutSuggestionsForAppWithBundleIdentifier:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getUnsyncedChangesForSyncServiceWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getVoiceShortcutWithIdentifier:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getVoiceShortcutWithPhrase:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)getVoiceShortcutsForAppWithBundleIdentifier:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getVoiceShortcutsForAppsWithBundleIdentifiers:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getVoiceShortcutsWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleAssistantPrefChangedNotification;
 - (int)handledMessageType;
@@ -69,14 +69,16 @@
 - (void)populateBlacklistStatusOnVoiceShortcut:(id)arg1 withAccessSpecifier:(id)arg2;
 - (void)registerSyncService:(id)arg1 asMaster:(BOOL)arg2;
 - (void)rehydrateFromMasterSyncServiceIfNeeded;
+- (void)removeSyncStateForChanges:(id)arg1 withSyncServiceWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeSyncStateForSyncServiceWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)requestDataMigrationWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestSyncForServiceClassName:(id)arg1 forceReset:(BOOL)arg2 accessSpecifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)requestVoiceShortuctsSpotlightIndexUpdate;
 - (id)sanitizePhrase:(id)arg1;
-- (void)scheduleVocabularySyncToServerWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setShortcutSuggestions:(id)arg1 forAppWithBundleIdentifier:(id)arg2 accessSpecifier:(id)arg3;
-- (void)setUpAfterInstalledApps:(id)arg1;
 - (void)syncVocabularyToServer;
 - (void)updateVoiceShortcutWithIdentifier:(id)arg1 phrase:(id)arg2 workflow:(id)arg3 accessSpecifier:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)updateVoiceShortcutsSharedVocabularyWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)validateVoiceShortcutPhrases:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

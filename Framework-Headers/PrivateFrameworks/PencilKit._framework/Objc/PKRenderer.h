@@ -105,10 +105,10 @@
 - (void)renderLinesRenderBufferSize:(struct CGSize)arg1;
 - (void)renderLiveStrokeWithTransform:(struct CGAffineTransform)arg1 renderBufferSize:(struct CGSize)arg2;
 - (void)renderPaperTransform:(struct CGAffineTransform)arg1 paperTransform:(struct CGAffineTransform)arg2 flipped:(BOOL)arg3 multiply:(double)arg4;
-- (void)renderParticleStroke:(struct _PKStrokePointSlice)arg1 animatingStroke:(struct AnimatingStroke *)arg2 starts:(BOOL)arg3 ends:(BOOL)arg4 combinedRendering:(BOOL)arg5;
+- (void)renderParticleStroke:(_PKStrokePointSlice_6dfeec92)arg1 animatingStroke:(struct AnimatingStroke *)arg2 starts:(BOOL)arg3 ends:(BOOL)arg4 combinedRendering:(BOOL)arg5;
 - (void)renderParticleStrokeVertices:(StrokeVertex_e2fc4686 *)arg1 numVertices:(unsigned long long)arg2 buffer:(id)arg3 shader:(id)arg4;
-- (void)renderPenStroke:(struct _PKStrokePointSlice)arg1 animatingStroke:(struct AnimatingStroke *)arg2 alpha:(double)arg3 combinedRendering:(BOOL)arg4;
-- (void)renderStroke:(struct _PKStrokePointSlice)arg1 animatingStroke:(struct AnimatingStroke *)arg2 accumulating:(BOOL)arg3 combinedRendering:(BOOL)arg4;
+- (void)renderPenStroke:(_PKStrokePointSlice_6dfeec92)arg1 animatingStroke:(struct AnimatingStroke *)arg2 alpha:(double)arg3 combinedRendering:(BOOL)arg4;
+- (void)renderStroke:(_PKStrokePointSlice_6dfeec92)arg1 animatingStroke:(struct AnimatingStroke *)arg2 accumulating:(BOOL)arg3 combinedRendering:(BOOL)arg4;
 - (void)renderStroke:(id)arg1 withTransform:(struct CGAffineTransform)arg2 mode:(long long)arg3 flipped:(BOOL)arg4 renderBufferSize:(struct CGSize)arg5;
 - (void)renderStrokeVertices:(StrokeVertex_e2fc4686 *)arg1 numVertices:(unsigned long long)arg2 buffer:(id)arg3 shader:(id)arg4;
 - (unsigned long long)renderStrokes:(id)arg1 clippedToStrokeSpaceRect:(struct CGRect)arg2 strokeTransform:(struct CGAffineTransform)arg3 stopBlock:(CDUnknownBlockType)arg4;

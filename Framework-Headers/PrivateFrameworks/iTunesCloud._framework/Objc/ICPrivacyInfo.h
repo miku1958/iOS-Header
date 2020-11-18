@@ -6,8 +6,13 @@
 
 #import <objc/NSObject.h>
 
+@class NSMutableDictionary;
+@protocol OS_dispatch_queue;
+
 @interface ICPrivacyInfo : NSObject
 {
+    NSMutableDictionary *_cache;
+    NSObject<OS_dispatch_queue> *_accessQueue;
 }
 
 @property (readonly, nonatomic) BOOL privacyAcknowledgementRequiredForApplications;
@@ -17,7 +22,10 @@
 @property (readonly, nonatomic) BOOL privacyAcknowledgementRequiredForVideos;
 
 + (id)sharedPrivacyInfo;
+- (void).cxx_destruct;
+- (void)_handleUserIdentityStoreDidChangeNotification:(id)arg1;
 - (BOOL)_privacyAcknowledgementRequiredForIdentifier:(id)arg1;
+- (id)init;
 
 @end
 

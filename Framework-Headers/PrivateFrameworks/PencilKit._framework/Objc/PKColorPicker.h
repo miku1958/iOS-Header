@@ -31,7 +31,6 @@
 - (id)init;
 - (struct CGSize)preferredContentSize;
 - (void)viewDidLoad;
-- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 
 @end

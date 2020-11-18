@@ -6,30 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, SFChargingUICoordinator, SFWirelessChargingMonitor;
+#import <Sharing/SBSRemoteAlertHandleObserver-Protocol.h>
+
+@class NSDate, NSString, SBSRemoteAlertHandle, SFChargingUICoordinator, SFWirelessChargingMonitor;
 @protocol OS_dispatch_queue;
 
-@interface SFChargingCenterClient : NSObject
+@interface SFChargingCenterClient : NSObject <SBSRemoteAlertHandleObserver>
 {
     BOOL _activateCalled;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     int _triggerEngagementToken;
     BOOL _forcePill;
+    BOOL _triggerUIForInBandComms;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
+    SBSRemoteAlertHandle *_currentRemoteHandle;
     CDUnknownBlockType _visualInformationRequestHandler;
     CDUnknownBlockType _requestHandler;
     NSObject<OS_dispatch_queue> *_workQueue;
     SFWirelessChargingMonitor *_monitor;
     SFChargingUICoordinator *_uiCoordinator;
-    NSMutableDictionary *_errorNotifications;
+    NSString *_mostRecentSuccessfullActivationReason;
+    NSDate *_mostRecentDeactivationDate;
 }
 
+@property (nonatomic) SBSRemoteAlertHandle *currentRemoteHandle; // @synthesize currentRemoteHandle=_currentRemoteHandle;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
-@property (strong, nonatomic) NSMutableDictionary *errorNotifications; // @synthesize errorNotifications=_errorNotifications;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SFWirelessChargingMonitor *monitor; // @synthesize monitor=_monitor;
+@property (strong, nonatomic) NSDate *mostRecentDeactivationDate; // @synthesize mostRecentDeactivationDate=_mostRecentDeactivationDate;
+@property (strong, nonatomic) NSString *mostRecentSuccessfullActivationReason; // @synthesize mostRecentSuccessfullActivationReason=_mostRecentSuccessfullActivationReason;
 @property (readonly, nonatomic) long long numberOfDevicesCharging;
 @property (copy, nonatomic) CDUnknownBlockType requestHandler; // @synthesize requestHandler=_requestHandler;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) SFChargingUICoordinator *uiCoordinator; // @synthesize uiCoordinator=_uiCoordinator;
 @property (copy, nonatomic) CDUnknownBlockType visualInformationRequestHandler; // @synthesize visualInformationRequestHandler=_visualInformationRequestHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
@@ -50,12 +61,13 @@
 - (id)onqueue_dataRepresentationForInformationProvider:(id)arg1;
 - (void)onqueue_invalidate;
 - (void)onqueue_presentationRequestContextsForReason:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)onqueue_sendPresentationRequestForPowerSource:(id)arg1 removed:(BOOL)arg2;
+- (void)onqueue_sendPresentationRequestForChargingDevice:(id)arg1 removed:(BOOL)arg2;
 - (void)onqueue_updateConfigurationContext:(id)arg1 withInformationProvider:(id)arg2;
-- (void)onqueue_updateConfigurationContext:(id)arg1 withKeyPowerSource:(id)arg2;
+- (void)onqueue_updateConfigurationContext:(id)arg1 withKeyChargingDevice:(id)arg2;
 - (void)onqueue_updateConfigurationContextWithPowerSourcesData:(id)arg1;
+- (void)remoteAlertHandleDidDeactivate:(id)arg1;
 - (void)setUpMonitor;
-- (void)updateErrorNotificationsForPowerSource:(id)arg1 removed:(BOOL)arg2;
+- (void)updateErrorNotificationsForChargingDevice:(id)arg1 removed:(BOOL)arg2;
 
 @end
 

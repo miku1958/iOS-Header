@@ -24,12 +24,12 @@
 @property (nonatomic) unsigned long long tintStyle; // @synthesize tintStyle=_tintStyle;
 @property (readonly, nonatomic) long long toolbarSize;
 
-+ (double)defaultHeight;
 - (void).cxx_destruct;
 - (id)_backdropInputSettings;
 - (BOOL)_tintUsesDarkTheme;
 - (id)initWithPlacement:(long long)arg1;
 - (void)layoutSubviews;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateBackdropSettings:(id)arg1;
 - (void)updateTintColor;
 

@@ -24,6 +24,7 @@
     _DKSyncHistory *_history;
     id<_DKKeyValueStore> _keyValueStore;
     NSString *_hadAdditionsKey;
+    BOOL _hadAdditions;
     NSDate *_highWaterMark;
     unsigned long long _batchNumber;
     NSArray *_overlappingWindows;
@@ -43,6 +44,7 @@
 - (BOOL)isAsynchronous;
 - (void)main;
 - (void)performSyncDownPeerAdditions;
+- (void)performSyncDownPeerAdditionsWithDidPrewarm:(BOOL)arg1 orError:(id)arg2;
 - (void)performSyncDownPeerAdditionsWithHighWaterMark:(id)arg1 orError:(id)arg2;
 - (void)performSyncDownPeerAdditionsWithPreviousWindow:(id)arg1;
 - (void)startPerfMetrics;

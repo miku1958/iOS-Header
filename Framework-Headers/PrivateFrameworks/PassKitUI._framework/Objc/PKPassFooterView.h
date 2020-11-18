@@ -30,9 +30,11 @@
     unsigned char _contentViewVisibility;
     BOOL _userIntentRequired;
     long long _state;
+    long long _coachingState;
     id<PKPassFooterViewDelegate> _delegate;
 }
 
+@property (readonly, nonatomic) long long coachingState; // @synthesize coachingState=_coachingState;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKPassFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -57,6 +59,7 @@
 - (void)_endSession;
 - (void)_endSessionStartTimer;
 - (void)_lostModeButtonTapped;
+- (void)_setCoachingState:(long long)arg1;
 - (void)_setContentView:(id)arg1 animated:(BOOL)arg2;
 - (void)_setUserIntentRequired:(BOOL)arg1;
 - (void)_startContactlessInterfaceSessionWithContext:(id)arg1 sessionAvailable:(CDUnknownBlockType)arg2 sessionUnavailable:(CDUnknownBlockType)arg3;
@@ -73,6 +76,7 @@
 - (BOOL)isPassFooterContentViewInGroup:(id)arg1;
 - (void)layoutSubviews;
 - (void)passFooterContentViewDidBeginAuthenticating:(id)arg1;
+- (void)passFooterContentViewDidChangeCoachingState:(id)arg1;
 - (void)passFooterContentViewDidChangeUserIntentRequirement:(id)arg1;
 - (void)passFooterContentViewDidEndAuthenticating:(id)arg1;
 - (void)passFooterContentViewRequestsSessionSuppression:(id)arg1;

@@ -25,6 +25,7 @@
 - (id)_accessibilityAXAttributedValue;
 - (id)_accessibilityAccessibleAncestor;
 - (id)_accessibilityAccessibleDescendants;
+- (BOOL)_accessibilityActivateParagraphInTextViewRange:(struct _NSRange)arg1;
 - (float)_accessibilityActivationDelay;
 - (id)_accessibilityActiveKeyboard;
 - (id)_accessibilityActiveURL;
@@ -99,6 +100,7 @@
 - (unsigned int)_accessibilityContextId;
 - (id)_accessibilityControlDescendantWithAction:(SEL)arg1;
 - (id)_accessibilityControlDescendantWithTarget:(id)arg1;
+- (BOOL)_accessibilityControlShouldPerformAccessibilityActivate;
 - (struct CGPoint)_accessibilityConvertPointToViewSpace:(struct CGPoint)arg1;
 - (void)_accessibilityConvertStyleAttributesToAccessibility:(id)arg1;
 - (id)_accessibilityConvertSystemBoundedPathToContextSpace:(id)arg1;
@@ -460,6 +462,7 @@
 - (void)_accessibilitySetAuditIssueForType:(unsigned long long)arg1;
 - (void)_accessibilitySetCameraIrisOpen:(BOOL)arg1;
 - (void)_accessibilitySetContextDescriptors:(id)arg1;
+- (void)_accessibilitySetControlShouldPerformAccessibilityActivate:(BOOL)arg1;
 - (void)_accessibilitySetCurrentGesture:(id)arg1;
 - (void)_accessibilitySetCurrentWordInPageContext:(id)arg1;
 - (void)_accessibilitySetElementHelp:(id)arg1;
@@ -616,6 +619,8 @@
 - (id)_axOutermostScrollParent;
 - (struct CGRect)_axScreenBoundsForBoundsCheck;
 - (void)_axSetCachedHasTabBarAncestor:(id)arg1;
+- (void)_axSetStoredControlShouldPerformAccessibilityActivate:(id)arg1;
+- (id)_axStoredControlShouldPerformAccessibilityActivate;
 - (id)_axSuperviews;
 - (void)_cleanupRotorCache;
 - (id)_getAccessibilityAttributedString;

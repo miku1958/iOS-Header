@@ -39,6 +39,7 @@
 - (void)appendNextQuotedPrintableDataToData:(id)arg1;
 - (BOOL)atEOF;
 - (unsigned short)charAtPosition:(unsigned long long)arg1 withOffset:(long long)arg2;
+- (id)clipAtGraphemeClusters:(id)arg1 maximumValueLength:(unsigned long long)arg2 addEllipsisIfClipped:(BOOL)arg3;
 - (unsigned long long)cursor;
 - (id)dataWithRange:(struct _NSRange)arg1;
 - (struct _NSRange)emptyRangeStartingAtCursor;

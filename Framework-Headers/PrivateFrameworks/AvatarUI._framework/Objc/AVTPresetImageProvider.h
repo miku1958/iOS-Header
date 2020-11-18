@@ -9,7 +9,7 @@
 #import <AvatarUI/AVTDeviceResourceConsumer-Protocol.h>
 
 @class AVTAvatarConfigurationImageRenderer, AVTRenderingScope, NSString;
-@protocol AVTDeviceResourceConsumerDelegate, AVTImageCache, AVTScheduler, AVTUILogger, OS_dispatch_queue;
+@protocol AVTDeviceResourceConsumerDelegate, AVTImageCache, AVTTaskScheduler, AVTUILogger, OS_dispatch_queue;
 
 @interface AVTPresetImageProvider : NSObject <AVTDeviceResourceConsumer>
 {
@@ -17,7 +17,7 @@
     id<AVTImageCache> _cache;
     id<AVTUILogger> _logger;
     AVTAvatarConfigurationImageRenderer *_renderer;
-    id<AVTScheduler> _renderingScheduler;
+    id<AVTTaskScheduler> _renderingScheduler;
     NSObject<OS_dispatch_queue> *_presetQueue;
     NSObject<OS_dispatch_queue> *_colorQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
@@ -37,7 +37,7 @@
 @property (readonly, nonatomic) id<AVTUILogger> logger; // @synthesize logger=_logger;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *presetQueue; // @synthesize presetQueue=_presetQueue;
 @property (readonly, nonatomic) AVTAvatarConfigurationImageRenderer *renderer; // @synthesize renderer=_renderer;
-@property (readonly, nonatomic) id<AVTScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
+@property (readonly, nonatomic) id<AVTTaskScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
 @property (readonly) Class superclass;
 
 + (id)configurationToRenderForPreset:(id)arg1 overrides:(id)arg2 baseConfiguration:(id)arg3;

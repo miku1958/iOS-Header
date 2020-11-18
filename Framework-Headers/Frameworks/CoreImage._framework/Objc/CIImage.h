@@ -59,6 +59,8 @@
 + (id)imageWithMTLTexture:(id)arg1 options:(id)arg2;
 + (id)imageWithPortaitEffectsMatte:(id)arg1;
 + (id)imageWithPortaitEffectsMatte:(id)arg1 options:(id)arg2;
++ (id)imageWithPortraitEffectsMatte:(id)arg1;
++ (id)imageWithPortraitEffectsMatte:(id)arg1 options:(id)arg2;
 + (id)imageWithTexture:(unsigned int)arg1 size:(struct CGSize)arg2 flipped:(BOOL)arg3 colorSpace:(struct CGColorSpace *)arg4;
 + (id)imageWithTexture:(unsigned int)arg1 size:(struct CGSize)arg2 flipped:(BOOL)arg3 options:(id)arg4;
 + (id)imageWithTexture:(unsigned int)arg1 size:(struct CGSize)arg2 options:(id)arg3;
@@ -181,6 +183,8 @@
 - (id)initWithMTLTexture:(id)arg1 options:(id)arg2;
 - (id)initWithPortaitEffectsMatte:(id)arg1;
 - (id)initWithPortaitEffectsMatte:(id)arg1 options:(id)arg2;
+- (id)initWithPortraitEffectsMatte:(id)arg1;
+- (id)initWithPortraitEffectsMatte:(id)arg1 options:(id)arg2;
 - (id)initWithTexture:(unsigned int)arg1 size:(struct CGSize)arg2 flipped:(BOOL)arg3 colorSpace:(struct CGColorSpace *)arg4;
 - (id)initWithTexture:(unsigned int)arg1 size:(struct CGSize)arg2 flipped:(BOOL)arg3 options:(id)arg4;
 - (id)initWithTexture:(unsigned int)arg1 size:(struct CGSize)arg2 options:(id)arg3;

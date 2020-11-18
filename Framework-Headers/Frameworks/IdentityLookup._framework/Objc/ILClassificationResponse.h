@@ -8,16 +8,18 @@
 
 #import <IdentityLookup/NSSecureCoding-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @interface ILClassificationResponse : NSObject <NSSecureCoding>
 {
     long long _action;
+    NSString *_userString;
     NSDictionary *_userInfo;
 }
 
 @property (readonly, nonatomic) long long action; // @synthesize action=_action;
 @property (copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
+@property (copy, nonatomic) NSString *userString; // @synthesize userString=_userString;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

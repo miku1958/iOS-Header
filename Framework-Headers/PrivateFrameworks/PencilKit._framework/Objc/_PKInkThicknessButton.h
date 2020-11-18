@@ -24,15 +24,16 @@
 @property (readonly, nonatomic) double weight; // @synthesize weight=_weight;
 
 + (id)backgroundColorForIsSelected:(BOOL)arg1 highlighted:(BOOL)arg2;
++ (struct CGSize)buttonSize;
 + (id)imageTintColorForIsSelected:(BOOL)arg1 highlighted:(BOOL)arg2;
 - (void).cxx_destruct;
 - (void)_animateToHighlightedState:(BOOL)arg1;
-- (void)_animateToSelectedState:(BOOL)arg1;
 - (void)didTouchUpInside;
 - (id)initWithInkIdentifier:(id)arg1 weight:(double)arg2;
 - (void)layoutSubviews;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1;
+- (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

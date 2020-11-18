@@ -20,6 +20,7 @@
 - (long long)hk_compareBuildVersionWithString:(id)arg1;
 - (id)hk_copyNonEmptyString;
 - (BOOL)hk_isBase64;
+- (BOOL)hk_isBetweenLowerBuildVersion:(id)arg1 upperBuildVersion:(id)arg2;
 - (BOOL)hk_isCaseInsensitiveSubstringInString:(id)arg1;
 - (BOOL)hk_isValidPurposeString;
 - (id)hk_stringByAppendingKeyPathComponent:(id)arg1;

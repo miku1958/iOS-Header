@@ -8,5 +8,6 @@
 
 @interface NSArray (AvatarUI)
 - (id)avt_description;
+- (id)avt_map:(CDUnknownBlockType)arg1;
 @end
 

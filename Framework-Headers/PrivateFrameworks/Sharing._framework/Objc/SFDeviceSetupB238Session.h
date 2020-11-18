@@ -81,7 +81,6 @@
     double _basicConfigSecs;
     NSString *_deviceGUID;
     NSString *_deviceSerialNumber;
-    BOOL _wifiSetupEnabled;
     SFDeviceOperationWiFiSetup *_wifiSetupOperation;
     int _wifiSetupState;
     double _wifiSetupSecs;
@@ -94,8 +93,6 @@
     double _trSetupConfigurationSecs;
     BOOL _trNeedsNetwork;
     NSSet *_trUnauthServices;
-    int _trNetworkState;
-    unsigned long long _trNetworkStartTicks;
     int _trActivationState;
     unsigned long long _trActivationStartTicks;
     double _trActivationSecs;
@@ -227,7 +224,6 @@
 - (void)_runStereoPairUserInputPickColors:(BOOL)arg1;
 - (int)_runTRActivation;
 - (int)_runTRAuthentication;
-- (int)_runTRNetwork;
 - (int)_runTRSessionStart;
 - (int)_runTRSetupConfiguration;
 - (int)_runTerms;

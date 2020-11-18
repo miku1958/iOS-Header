@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VisualVoicemail/NSObject-Protocol.h>
+#import <VisualVoicemail/VMAccountManagerXPCClient-Protocol.h>
+#import <VisualVoicemail/VMGreetingManagerXPCClient-Protocol.h>
 
 @class NSOrderedSet, VMVoicemailCapabilities;
 
-@protocol VMClientXPCProtocol <NSObject>
+@protocol VMClientXPCProtocol <VMAccountManagerXPCClient, VMGreetingManagerXPCClient>
 - (void)setCapabilities:(VMVoicemailCapabilities *)arg1;
 - (void)setOnline:(BOOL)arg1;
 - (void)setStorageUsage:(unsigned long long)arg1;

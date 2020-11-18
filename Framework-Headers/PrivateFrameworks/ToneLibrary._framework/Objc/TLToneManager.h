@@ -31,9 +31,9 @@
 @property (readonly, nonatomic) NSString *_rootDirectory;
 @property (readonly, nonatomic) NSString *_systemRingtoneDirectory;
 
-+ (BOOL)_checkForFileExistenceAtPath:(id)arg1 allowingTCCPreflight:(BOOL)arg2;
 + (id)_currentOverridePolicyPreferenceKeyForAlertType:(long long)arg1;
 + (id)_defaultToneIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
++ (BOOL)_ensureTCCAccessPreflightAndCheckForFileExistenceAtPath:(id)arg1;
 + (BOOL)_migrateLegacyToneSettings;
 + (id)_systemWideTonePreferenceKeyForAlertType:(long long)arg1;
 + (id)sharedToneManager;

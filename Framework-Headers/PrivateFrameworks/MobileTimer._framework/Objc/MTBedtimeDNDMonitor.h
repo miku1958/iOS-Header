@@ -37,7 +37,7 @@
 - (void)checkDND;
 - (void)dealloc;
 - (void)disengageDND;
-- (void)engageDND;
+- (void)engageDNDUntilDate:(id)arg1;
 - (id)gatherDiagnostics;
 - (void)handleManualDNDInvalidation;
 - (id)initWithAlarmStorage:(id)arg1 sleepMonitor:(id)arg2;
@@ -48,7 +48,9 @@
 - (void)sleepMonitor:(id)arg1 bedtimeReminderWasConfirmed:(id)arg2 sleepAlarm:(id)arg3;
 - (void)sleepMonitor:(id)arg1 bedtimeWasReached:(id)arg2 sleepAlarm:(id)arg3;
 - (void)sleepMonitor:(id)arg1 sleepAlarmDidChange:(id)arg2;
+- (void)sleepMonitor:(id)arg1 wakeUpAlarmDidFire:(id)arg2 sleepAlarm:(id)arg3;
 - (void)sleepMonitor:(id)arg1 wakeUpAlarmWasDismissed:(id)arg2 sleepAlarm:(id)arg3;
+- (void)sleepMonitor:(id)arg1 wakeUpAlarmWasSnoozed:(id)arg2 sleepAlarm:(id)arg3;
 - (void)timeListener:(id)arg1 didDetectSignificantTimeChangeWithCompletionBlock:(CDUnknownBlockType)arg2;
 
 @end

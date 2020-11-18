@@ -22,7 +22,7 @@
 - (void)_refreshStatusBarAndPIPAnimated:(BOOL)arg1;
 - (BOOL)accessibilityPerformEscape;
 - (void)loadView;
-- (void)setControlsState:(long long)arg1 animated:(BOOL)arg2;
+- (void)setControlsState:(long long)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)toggleLocalCameraType;
 - (void)updateTopBar:(BOOL)arg1 bottomBar:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)videoOverlayViewController:(id)arg1 isShowingOverlay:(BOOL)arg2;

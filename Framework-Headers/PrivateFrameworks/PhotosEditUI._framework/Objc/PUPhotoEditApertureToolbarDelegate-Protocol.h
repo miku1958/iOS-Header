@@ -10,5 +10,6 @@
 
 @protocol PUPhotoEditApertureToolbarDelegate <NSObject>
 - (void)apertureToolbar:(PUPhotoEditApertureToolbar *)arg1 didChangeValue:(double)arg2;
+- (BOOL)apertureToolbarShouldRotateLabelsWithOrientation:(PUPhotoEditApertureToolbar *)arg1;
 @end
 

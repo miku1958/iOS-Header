@@ -12,7 +12,6 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_accessibilityIsSoftwareKeyboardMimic;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)initWithFrame:(struct CGRect)arg1;
 

@@ -50,7 +50,6 @@
 - (id)_contentForCardRequestWithInteraction:(id)arg1;
 - (void)_createOrUpdateCardViewControllerForInteraction:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_installChildViewController:(id)arg1;
-- (void)_setWorkflowControllerExecutionContext;
 - (void)_setupProgressIndicator;
 - (void)_updateCardViewControllerForInteraction:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)beginRunningIntent;

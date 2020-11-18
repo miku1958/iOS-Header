@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (void)forwardInvocation:(id)arg1;
 - (id)initWithQueue:(struct queue)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
-- (void)remoteObjectRespondsToSelector:(SEL)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

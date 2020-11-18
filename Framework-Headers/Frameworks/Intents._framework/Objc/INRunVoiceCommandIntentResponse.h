@@ -8,7 +8,7 @@
 
 #import <Intents/INRunVoiceCommandIntentResponseExport-Protocol.h>
 
-@class INArchivedObject, NSDictionary, NSNumber, NSString, _INPBRunVoiceCommandIntentResponse;
+@class INArchivedObject, NSArray, NSDictionary, NSNumber, NSString, _INPBRunVoiceCommandIntentResponse;
 
 @interface INRunVoiceCommandIntentResponse : INIntentResponse <INRunVoiceCommandIntentResponseExport>
 {
@@ -27,6 +27,7 @@
 @property (copy, nonatomic) NSString *localizedAppName;
 @property (copy, nonatomic) NSDictionary *parameters;
 @property (copy, nonatomic) NSString *responseTemplate;
+@property (copy, nonatomic) NSArray *steps;
 @property (readonly) Class superclass;
 @property (nonatomic) long long toggleState;
 @property (copy, nonatomic) INArchivedObject *underlyingIntent;

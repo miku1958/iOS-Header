@@ -117,6 +117,7 @@
 - (void)_removeComplicationForSlot:(id)arg1;
 - (void)_removeDetachedComplicationForSlot:(id)arg1 andDisconnectDisplay:(BOOL)arg2;
 - (void)_removeNormalComplicationForSlot:(id)arg1 andDisconnectDisplay:(BOOL)arg2;
+- (id)_selectedVisibleSlotForEditMode:(long long)arg1;
 - (void)_setDataMode:(long long)arg1 becomeLiveOnUnfreeze:(BOOL)arg2;
 - (void)_setFaceViewResourceDirectoryFromFace;
 - (void)_setupEditViewForComplications;
@@ -163,6 +164,8 @@
 - (id)faceViewComplicationAppIdentifierForSlot:(id)arg1;
 - (id)faceViewComplicationForSlot:(id)arg1;
 - (BOOL)faceViewComplicationIsEmptyForSlot:(id)arg1;
+- (id)faceViewComplicationSlots;
+- (void)faceViewDidChangeWantsStatusBarIconShadow;
 - (void)faceViewDidHideOrShowComplicationSlot;
 - (void)faceViewDidLayoutSubviews;
 - (void)faceViewDidReloadSnapshotContentViews;

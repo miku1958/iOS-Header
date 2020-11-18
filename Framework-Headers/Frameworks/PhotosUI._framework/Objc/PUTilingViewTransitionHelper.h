@@ -9,7 +9,7 @@
 #import <PhotosUI/PUInterruptibleViewControllerTransition-Protocol.h>
 #import <PhotosUI/PUTilingViewControllerTransition-Protocol.h>
 
-@class NSString, PUAnimationGroup, PUMaximumChangeRateValueFilter, PUTilingView, PUViewControllerTransition;
+@class NSArray, NSString, PUAnimationGroup, PUMaximumChangeRateValueFilter, PUTilingView, PUViewControllerTransition;
 @protocol PUTilingViewControllerTransition><PUInterruptibleViewControllerTransition, PUTilingViewControllerTransitionEndPoint;
 
 __attribute__((visibility("hidden")))
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     id<PUTilingViewControllerTransitionEndPoint> __toEndPoint;
     id<PUTilingViewControllerTransitionEndPoint> __endPointOwningTilingView;
     unsigned long long __interactionOptions;
+    NSArray *_transitionPausingCall;
 }
 
 @property (nonatomic, setter=_setBackgroundProgressOffset:) double _backgroundProgressOffset; // @synthesize _backgroundProgressOffset=__backgroundProgressOffset;
@@ -57,6 +58,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (weak, nonatomic) PUViewControllerTransition<PUTilingViewControllerTransition><PUInterruptibleViewControllerTransition> *transition; // @synthesize transition=_transition;
 @property (nonatomic, getter=isTransitionPaused, setter=_setTransitionPaused:) BOOL transitionPaused; // @synthesize transitionPaused=_transitionPaused;
+@property (copy, nonatomic) NSArray *transitionPausingCall; // @synthesize transitionPausingCall=_transitionPausingCall;
 
 + (void)registerTransitionEndPoint:(id)arg1 forViewController:(id)arg2;
 + (id)transitionEndPointWithViewController:(id)arg1;

@@ -17,6 +17,7 @@
 
 + (UIButton<PKInkToolButton> *)buttonWithIdentifier:(NSString *)arg1 color:(UIColor *)arg2 sizeState:(unsigned long long)arg3;
 - (UIButton<PKInkToolButton> *)initWithIdentifier:(NSString *)arg1 color:(UIColor *)arg2 sizeState:(unsigned long long)arg3;
+- (void)setColor:(UIColor *)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1 sizeState:(unsigned long long)arg2;
 @end
 

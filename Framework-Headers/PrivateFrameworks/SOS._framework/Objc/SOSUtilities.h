@@ -26,6 +26,7 @@
 + (BOOL)longPressTriggersEmergencySOS;
 + (BOOL)mustAllowThreeClickTrigger;
 + (BOOL)newtonTriggersEmergencySOS;
++ (id)newtonTriggersEmergencySOSNumber;
 + (void)setAllowedToMessageSOSContacts:(BOOL)arg1;
 + (void)setAutomaticCallCountdownEnabled:(BOOL)arg1;
 + (void)setLongPressTriggersEmergencySOS:(BOOL)arg1;

@@ -14,7 +14,7 @@
 #import <AvatarUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
 @class AVTAvatarListImageItem, AVTCenteringCollectionViewDelegate, AVTEngagementLayout, AVTFunCamAvatarPickerListLayout, AVTRenderingScope, AVTUIEnvironment, NSArray, NSString, UICollectionView, UICollectionViewFlowLayout, UIView, _AVTAvatarRecordImageProvider;
-@protocol AVTAvatarPickerDelegate, AVTAvatarStoreInternal, AVTPresenterDelegate, AVTUILogger;
+@protocol AVTAvatarPickerDelegate, AVTAvatarRecord, AVTAvatarStoreInternal, AVTPresenterDelegate, AVTUILogger, NSObject;
 
 @interface AVTFunCamAvatarPickerController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, AVTViewSessionProviderDelegate, AVTObjectViewController, AVTAvatarPicker>
 {
@@ -24,6 +24,7 @@
     UIView *_container;
     UICollectionView *_collectionView;
     UIView *_listBottomClippingView;
+    id<AVTAvatarRecord> _selectedAvatarRecord;
     AVTEngagementLayout *_engagementLayout;
     AVTFunCamAvatarPickerListLayout *_listLayout;
     UICollectionViewFlowLayout *_gridLayout;
@@ -38,10 +39,12 @@
     _AVTAvatarRecordImageProvider *_imageProvider;
     AVTRenderingScope *_editableRecordsListRenderingScope;
     AVTRenderingScope *_gridRenderingScope;
+    id<NSObject> _changeNotificationToken;
 }
 
 @property (weak, nonatomic) id<AVTAvatarPickerDelegate> avatarPickerDelegate; // @synthesize avatarPickerDelegate;
 @property (strong, nonatomic) AVTCenteringCollectionViewDelegate *centeringDelegate; // @synthesize centeringDelegate=_centeringDelegate;
+@property (strong, nonatomic) id<NSObject> changeNotificationToken; // @synthesize changeNotificationToken=_changeNotificationToken;
 @property (strong, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property (strong, nonatomic) UIView *container; // @synthesize container=_container;
 @property (readonly, copy) NSString *debugDescription;
@@ -62,6 +65,7 @@
 @property (strong, nonatomic) AVTAvatarListImageItem *noneItem; // @synthesize noneItem=_noneItem;
 @property (weak, nonatomic) id<AVTPresenterDelegate> presenterDelegate; // @synthesize presenterDelegate;
 @property (strong, nonatomic) NSArray *puppetRecords; // @synthesize puppetRecords=_puppetRecords;
+@property (strong, nonatomic) id<AVTAvatarRecord> selectedAvatarRecord; // @synthesize selectedAvatarRecord=_selectedAvatarRecord;
 @property (strong, nonatomic) id<AVTAvatarStoreInternal> store; // @synthesize store=_store;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIView *view;
@@ -98,12 +102,13 @@
 - (void)selectAvatarRecordWithIdentifier:(id)arg1 animated:(BOOL)arg2;
 - (void)selectItemAtCenterNotifyDelegate:(BOOL)arg1;
 - (void)selectItemAtIndexPath:(id)arg1 animated:(BOOL)arg2 notifyDelegate:(BOOL)arg3;
-- (void)selectItemForAvatarRecord:(id)arg1 notifyDelegate:(BOOL)arg2;
+- (void)selectItemForAvatarRecord:(id)arg1 animated:(BOOL)arg2 notifyDelegate:(BOOL)arg3;
 - (id)selectedIndexPath;
 - (void)sendSelectionEventToDelegateForItemAtIndexPath:(id)arg1;
 - (void)sessionProviderDidEndCameraSession:(id)arg1;
 - (void)sessionProviderWillStartCameraSession:(id)arg1;
-- (void)updateForCurrentMode;
+- (void)startObservingChangesIfNeeded;
+- (void)updateViewForCurrentMode;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
 

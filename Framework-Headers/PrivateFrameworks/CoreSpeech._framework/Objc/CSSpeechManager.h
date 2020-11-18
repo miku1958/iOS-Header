@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreSpeech/CSAssetManagerDelegate-Protocol.h>
 #import <CoreSpeech/CSAudioRecorderDelegate-Protocol.h>
 #import <CoreSpeech/CSAudioRouteChangeMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSAudioServerCrashMonitorGibraltarDelegate-Protocol.h>
@@ -14,12 +13,13 @@
 #import <CoreSpeech/CSSiriEnabledMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSSmartSiriVolumeDelegate-Protocol.h>
 #import <CoreSpeech/CSStateMachineDelegate-Protocol.h>
+#import <CoreSpeech/CSVoiceTriggerAssetDownloadMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSVoiceTriggerDelegate-Protocol.h>
 
 @class CSAudioCircularBuffer, CSAudioRecorder, CSSmartSiriVolume, CSStateMachine, NSDictionary, NSHashTable, NSString, NSUUID;
 @protocol CSSpeechManagerDelegate, OS_dispatch_queue, OS_dispatch_source;
 
-@interface CSSpeechManager : NSObject <CSAudioRecorderDelegate, CSStateMachineDelegate, CSVoiceTriggerDelegate, CSSiriEnabledMonitorDelegate, CSAudioServerCrashMonitorGibraltarDelegate, CSSmartSiriVolumeDelegate, CSAudioRouteChangeMonitorDelegate, CSAssetManagerDelegate, CSLanguageCodeUpdateMonitorDelegate>
+@interface CSSpeechManager : NSObject <CSAudioRecorderDelegate, CSStateMachineDelegate, CSVoiceTriggerDelegate, CSSiriEnabledMonitorDelegate, CSAudioServerCrashMonitorGibraltarDelegate, CSSmartSiriVolumeDelegate, CSAudioRouteChangeMonitorDelegate, CSVoiceTriggerAssetDownloadMonitorDelegate, CSLanguageCodeUpdateMonitorDelegate>
 {
     BOOL _isSiriEnabled;
     BOOL _deviceRoleIsStereo;
@@ -75,12 +75,12 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)CSAssetManagerDidDownloadNewAsset:(id)arg1;
 - (void)CSLanguageCodeUpdateMonitor:(id)arg1 didReceiveLanguageCodeChanged:(id)arg2;
 - (void)CSSiriEnabledMonitor:(id)arg1 didReceiveEnabled:(BOOL)arg2;
 - (void)CSSmartSiriVolumeDidReceiveAlarmChanged:(long long)arg1;
 - (void)CSSmartSiriVolumeDidReceiveMusicVolumeChanged:(float)arg1;
 - (void)CSSmartSiriVolumeDidReceiveTimerChanged:(long long)arg1;
+- (void)CSVoiceTriggerAssetDownloadMonitor:(id)arg1 didInstallNewAsset:(BOOL)arg2;
 - (void)_cancelPendingSetRecordModeToRecordingForReason:(id)arg1;
 - (void)_createCircularBuffer;
 - (void)_createClearLoggingFileTimer;
@@ -88,6 +88,7 @@
 - (BOOL)_createRecorderWithContextIfNeeded:(id)arg1 error:(id *)arg2;
 - (void)_destroyAudioRecorderIfNeeded;
 - (void)_destroyCircularBuffer;
+- (void)_enableMiniDucking:(BOOL)arg1;
 - (id)_eventName:(unsigned long long)arg1;
 - (id)_getClientRecordContext;
 - (void)_getVoiceTriggerAsset:(CDUnknownBlockType)arg1;

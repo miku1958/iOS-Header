@@ -19,17 +19,15 @@
     id<TSSIMSetupFlowDelegate> _delegate;
 }
 
-@property BOOL allowDismiss; // @synthesize allowDismiss=_allowDismiss;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<TSSIMSetupFlowDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property BOOL showAddPlan; // @synthesize showAddPlan=_showAddPlan;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_cancelButtonTapped;
 - (id)initShowAddPlan:(BOOL)arg1 allowDismiss:(BOOL)arg2;
-- (void)leftCancelButtonTapped;
 - (void)viewDidLoad;
 
 @end

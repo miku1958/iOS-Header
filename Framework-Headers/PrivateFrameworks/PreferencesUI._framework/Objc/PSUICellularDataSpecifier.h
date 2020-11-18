@@ -40,8 +40,10 @@
 - (id)isCellularDataEnabled:(id)arg1;
 - (BOOL)isSubcontrollerNeeded;
 - (id)planItemForListItem:(id)arg1;
+- (void)setAirplaneMode:(BOOL)arg1;
 - (void)setCellularDataEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setCellularDataSwitch:(BOOL)arg1;
+- (id)subscriptionContextForListItem:(id)arg1;
 - (void)updateCachedState;
 
 @end

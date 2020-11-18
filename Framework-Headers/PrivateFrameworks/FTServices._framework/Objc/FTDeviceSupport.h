@@ -146,6 +146,7 @@
 - (BOOL)_wantsForcedCellularQueries;
 - (void)carrierBundleChange:(id)arg1;
 - (void)dealloc;
+- (BOOL)inProcess_isCallingSupported;
 - (id)init;
 - (BOOL)isInDualPhoneIdentityMode;
 - (long long)memorySize;

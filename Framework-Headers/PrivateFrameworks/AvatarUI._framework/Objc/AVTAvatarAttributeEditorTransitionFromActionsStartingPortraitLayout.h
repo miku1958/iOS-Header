@@ -23,6 +23,7 @@
 - (double)headerMaskingViewAlpha;
 - (struct CGRect)headerMaskingViewFrame;
 - (id)initWithContainerSize:(struct CGSize)arg1 insets:(struct UIEdgeInsets)arg2 screenScale:(double)arg3 avatarViewContainerFrame:(struct CGRect)arg4 attributesContentViewFrameExtraHeight:(double)arg5;
+- (unsigned long long)supportedLayoutOrientation;
 - (struct CGRect)userInfoFrame;
 - (double)verticalRuleAlpha;
 - (struct CGRect)verticalRuleFrame;

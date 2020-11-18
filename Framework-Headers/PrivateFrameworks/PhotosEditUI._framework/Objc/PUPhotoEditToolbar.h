@@ -31,11 +31,13 @@ __attribute__((visibility("hidden")))
     UIButton *_mainActionButton;
     UIButton *_secondaryActionButton;
     UIView *_stretchableView;
+    NSString *_backdropViewGroupName;
     double _longSideMargin;
     id<PUPhotoEditToolbarDelegate> _delegate;
     struct UIEdgeInsets _contentPadding;
 }
 
+@property (copy, nonatomic) NSString *backdropViewGroupName; // @synthesize backdropViewGroupName=_backdropViewGroupName;
 @property (readonly, nonatomic) long long buttonSpacing; // @synthesize buttonSpacing=_buttonSpacing;
 @property (nonatomic) struct UIEdgeInsets contentPadding; // @synthesize contentPadding=_contentPadding;
 @property (readonly, copy) NSString *debugDescription;
@@ -50,6 +52,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UIView *stretchableView; // @synthesize stretchableView=_stretchableView;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSArray *toolButtons; // @synthesize toolButtons=_toolButtons;
+@property (readonly, nonatomic) double toolbarButtonsLength;
 @property (nonatomic) BOOL useLargeShortSideHeight; // @synthesize useLargeShortSideHeight=_useLargeShortSideHeight;
 @property (nonatomic) BOOL useTranslucentBackground; // @synthesize useTranslucentBackground=_useTranslucentBackground;
 

@@ -65,6 +65,8 @@
 - (void)_noteMetricsForSyncStartFrom:(id)arg1 fullSync:(BOOL)arg2;
 - (void)_noteSyncEnded;
 - (void)_nukeCKData;
+- (void)_performLastCompleteSyncedDBDateMetricForSuccessfulSync;
+- (void)_performLastSyncDateMetricForSuccessfulSync;
 - (long long)_periodicSyncAttemptCount;
 - (void)_postMetricsToCloudKitOnAutomaticHistoryDeletionAgentLaunch;
 - (id)_recordManager;

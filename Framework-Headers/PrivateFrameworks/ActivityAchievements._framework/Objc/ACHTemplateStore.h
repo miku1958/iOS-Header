@@ -58,7 +58,7 @@
 - (void)_removeTemplatesFromLocalCollections:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)addTemplates:(id)arg1;
-- (id)availableTemplatesForDateComponents:(id)arg1;
+- (id)availableTemplatesForDateComponents:(id)arg1 countryCode:(id)arg2;
 - (void)daemonReady:(id)arg1;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (id)initWithProfile:(id)arg1 entityWrapper:(id)arg2 device:(unsigned char)arg3;

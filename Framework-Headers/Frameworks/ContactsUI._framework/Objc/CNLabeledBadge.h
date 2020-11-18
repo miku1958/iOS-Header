@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 + (id)labeledBadgeWithText:(id)arg1;
 - (void).cxx_destruct;
+- (void)setText:(id)arg1;
 
 @end
 

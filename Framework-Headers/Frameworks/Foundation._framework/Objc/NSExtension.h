@@ -107,8 +107,8 @@
 - (void)_reallyBeginExtensionRequestWithInputItems:(id)arg1 processAssertion:(id)arg2 listenerEndpoint:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_resetExtensionState;
 - (void)_safelyBeginUsing:(CDUnknownBlockType)arg1;
-- (void)_safelyBeginUsingSynchronously:(BOOL)arg1 withAssertion_onSafeQueue:(CDUnknownBlockType)arg2;
-- (void)_safelyBeginUsing_withAssertion:(CDUnknownBlockType)arg1;
+- (void)_safelyBeginUsingSynchronously:(BOOL)arg1 options:(unsigned long long)arg2 withAssertion_onSafeQueue:(CDUnknownBlockType)arg3;
+- (void)_safelyBeginUsingWithOptions:(unsigned long long)arg1 withAssertion_onSafeQueue:(CDUnknownBlockType)arg2;
 - (void)_safelyEndUsing:(CDUnknownBlockType)arg1;
 - (void)_safelyEndUsingWithProcessAssertion:(id)arg1 continuation:(CDUnknownBlockType)arg2;
 - (BOOL)_wantsProcessPerRequest;
@@ -118,12 +118,16 @@
 - (id)beginExtensionRequestWithInputItems:(id)arg1 error:(id *)arg2;
 - (void)beginExtensionRequestWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)beginExtensionRequestWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 error:(id *)arg3;
+- (void)beginExtensionRequestWithOptions:(unsigned long long)arg1 inputItems:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)beginExtensionRequestWithOptions:(unsigned long long)arg1 inputItems:(id)arg2 error:(id *)arg3;
+- (void)beginExtensionRequestWithOptions:(unsigned long long)arg1 inputItems:(id)arg2 listenerEndpoint:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)beginExtensionRequestWithOptions:(unsigned long long)arg1 inputItems:(id)arg2 listenerEndpoint:(id)arg3 error:(id *)arg4;
 - (void)cancelExtensionRequestWithIdentifier:(id)arg1;
 - (void)dealloc;
 - (id)extensionContexts;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
-- (id)newAssertionToBeginUsingPluginWithError:(id *)arg1;
+- (id)newAssertionToBeginUsingPluginWithOptions:(unsigned long long)arg1 error:(id *)arg2;
 - (id)objectForInfoDictionaryKey:(id)arg1;
 - (int)pidForRequestIdentifier:(id)arg1;
 

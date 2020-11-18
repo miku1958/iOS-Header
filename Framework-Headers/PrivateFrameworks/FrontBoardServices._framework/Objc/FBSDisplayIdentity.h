@@ -26,10 +26,8 @@
 
 @property (readonly, nonatomic, getter=isCarDisplay) BOOL carDisplay;
 @property (readonly, nonatomic, getter=isCarInstrumentsDisplay) BOOL carInstrumentsDisplay;
-@property (readonly, nonatomic) unsigned int connectionSeed; // @synthesize connectionSeed=_connectionSeed;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) unsigned int displayID; // @synthesize displayID=_displayID;
 @property (readonly, nonatomic, getter=isExternal) BOOL external; // @synthesize external=_external;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isRootIdentity;
@@ -42,7 +40,9 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_initWithType:(long long)arg1 displayID:(unsigned int)arg2 connectionSeed:(unsigned int)arg3 pid:(int)arg4 external:(BOOL)arg5 uniqueIdentifier:(id)arg6 secure:(BOOL)arg7 root:(id)arg8;
+- (unsigned int)connectionSeed;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned int)displayID;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (BOOL)expectsSecureRendering;

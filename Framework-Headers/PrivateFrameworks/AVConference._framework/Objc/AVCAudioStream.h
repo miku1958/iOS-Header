@@ -43,6 +43,8 @@
 - (BOOL)configure:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (void)deregisterBlocksForDelegateNotifications;
+- (void)didInterruptionBeginHandler;
+- (void)didInterruptionEndHandler;
 - (id)initWithIDSDestination:(id)arg1 isOriginator:(BOOL)arg2 callID:(id)arg3 error:(id *)arg4;
 - (id)initWithIDSDestination:(id)arg1 isOriginator:(BOOL)arg2 error:(id *)arg3;
 - (id)initWithLocalAddress:(id)arg1 callID:(id)arg2 error:(id *)arg3;

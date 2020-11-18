@@ -14,6 +14,7 @@
 {
     unsigned long long _authenticationType;
     BOOL _allowServerDialogs;
+    BOOL _canMakeAccountActive;
     BOOL _allowSecondaryCredentialSource;
     BOOL _remoteProxyAuthentication;
     NSDictionary *_createAccountQueryParams;
@@ -33,6 +34,7 @@
 @property (nonatomic) BOOL allowServerDialogs; // @synthesize allowServerDialogs=_allowServerDialogs;
 @property (readonly, nonatomic) BOOL allowSilentAuthentication;
 @property (nonatomic) unsigned long long authenticationType;
+@property (nonatomic) BOOL canMakeAccountActive; // @synthesize canMakeAccountActive=_canMakeAccountActive;
 @property (strong, nonatomic) NSDictionary *createAccountQueryParams; // @synthesize createAccountQueryParams=_createAccountQueryParams;
 @property (nonatomic) unsigned long long credentialSource; // @synthesize credentialSource=_credentialSource;
 @property (strong, nonatomic) NSString *defaultButtonString; // @synthesize defaultButtonString=_defaultButtonString;

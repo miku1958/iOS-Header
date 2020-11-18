@@ -19,6 +19,7 @@
     int _backingWidth;
     int _backingHeight;
     unsigned int _isDepthBufferRequired:1;
+    unsigned int _isTimeoutFixRequired:1;
 }
 
 + (Class)layerClass;

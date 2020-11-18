@@ -8,20 +8,23 @@
 
 #import <MediaPlayer/MPLazySectionedCollectionDataSource-Protocol.h>
 
-@class NSArray, NSString;
+@class MPModelRequest, NSArray, NSString;
 
 @interface MPModelLibrarySearchSectionedCollectionDataSource : NSObject <MPLazySectionedCollectionDataSource>
 {
     NSArray *_resultContainers;
+    MPModelRequest *_request;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) MPModelRequest *request; // @synthesize request=_request;
 @property (readonly, copy, nonatomic) NSArray *resultContainers; // @synthesize resultContainers=_resultContainers;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)identifiersForItemAtIndexPath:(id)arg1;
 - (id)initWithEntitiesQueryResultContainers:(id)arg1;
 - (id)itemAtIndexPath:(id)arg1;
 - (unsigned long long)numberOfItemsInSection:(unsigned long long)arg1;

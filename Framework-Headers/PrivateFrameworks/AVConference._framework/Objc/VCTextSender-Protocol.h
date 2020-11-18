@@ -8,5 +8,6 @@
 
 @protocol VCTextSender <NSObject>
 - (void)sendCharacter:(unsigned short)arg1;
+- (void)sendText:(struct NSString *)arg1;
 @end
 

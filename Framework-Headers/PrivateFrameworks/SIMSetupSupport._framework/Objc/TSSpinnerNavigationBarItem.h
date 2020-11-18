@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIBarButtonItem.h>
+#import <UIKitCore/UIBarButtonItem.h>
 
 @class UIActivityIndicatorView;
 

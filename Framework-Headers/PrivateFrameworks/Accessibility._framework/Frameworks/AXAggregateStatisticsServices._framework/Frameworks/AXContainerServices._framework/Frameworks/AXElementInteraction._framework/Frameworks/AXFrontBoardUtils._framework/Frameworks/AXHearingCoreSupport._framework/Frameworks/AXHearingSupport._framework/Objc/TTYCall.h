@@ -13,6 +13,7 @@
 
 @interface TTYCall : NSObject <AVCVirtualTTYDeviceDelegate>
 {
+    long long _ttyMode;
     NSObject<OS_dispatch_queue> *_callQueue;
     id<TTYCallDelegate> _delegate;
     TTYConversation *_conversation;
@@ -35,13 +36,14 @@
 - (void)audioSessionWasInterrupted:(id)arg1;
 - (void)dealloc;
 - (void)device:(id)arg1 didReceiveCharacter:(unsigned short)arg2;
+- (void)device:(id)arg1 didReceiveText:(struct NSString *)arg2;
 - (void)device:(id)arg1 didStart:(BOOL)arg2 error:(id)arg3;
 - (void)deviceDidStop:(id)arg1;
 - (id)initWithCall:(id)arg1;
 - (void)mediaServerDied;
 - (void)recreateTTYDevice:(id)arg1;
 - (void)registerNotifications;
-- (void)sendCharacter:(unsigned short)arg1;
+- (void)sendString:(id)arg1;
 - (void)start;
 - (void)stop;
 

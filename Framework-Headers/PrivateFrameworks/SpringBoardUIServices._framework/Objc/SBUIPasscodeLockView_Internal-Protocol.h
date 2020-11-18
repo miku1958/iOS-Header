@@ -10,8 +10,9 @@
 
 @protocol SBUIPasscodeLockView_Internal <SBUIPasscodeLockView>
 
+@property (nonatomic) BOOL confirmedNotInPocket;
 @property (strong, nonatomic) SBUIProudLockContainerViewController *overrideProudLockContainerViewController;
-@property (nonatomic) CDStruct_4613c6c6 proudLockConfiguration;
+@property (nonatomic) CDStruct_29b32c11 proudLockConfiguration;
 
 - (void)_overrideBiometricMatchingEnabled:(BOOL)arg1 forReason:(NSString *)arg2;
 - (void)_resumeBiometricMatchingAdvisory:(BOOL)arg1;

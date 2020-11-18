@@ -32,8 +32,6 @@
     unsigned int _ifIndex;
     unsigned int _ifMedia;
     char _ifName[17];
-    CDUnion_fab80606 _peerAddr;
-    CDUnion_fab80606 _selfAddr;
     int _defaultPort;
     unsigned int _flags;
     int _keepAliveSeconds;
@@ -49,6 +47,8 @@
     NSString *_label;
     CUNetLinkManager *_netLinkManager;
     CDUnknownBlockType _serverInvalidationHandler;
+    CDUnion_fab80606 _peerAddr;
+    CDUnion_fab80606 _selfAddr;
 }
 
 @property (nonatomic) double connectTimeoutSecs; // @synthesize connectTimeoutSecs=_connectTimeoutSecs;
@@ -64,6 +64,8 @@
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (strong, nonatomic) CUNetLinkManager *netLinkManager; // @synthesize netLinkManager=_netLinkManager;
 @property (readonly, nonatomic) unsigned int netTransportType; // @synthesize netTransportType=_netTransportType;
+@property (readonly, nonatomic) CDUnion_fab80606 peerAddr; // @synthesize peerAddr=_peerAddr;
+@property (readonly, nonatomic) CDUnion_fab80606 selfAddr; // @synthesize selfAddr=_selfAddr;
 @property (copy, nonatomic) CDUnknownBlockType serverInvalidationHandler; // @synthesize serverInvalidationHandler=_serverInvalidationHandler;
 @property (nonatomic) int socketFD; // @synthesize socketFD=_socketFD;
 

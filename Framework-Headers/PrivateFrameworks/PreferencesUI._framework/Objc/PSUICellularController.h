@@ -8,7 +8,7 @@
 
 #import <PreferencesUI/CoreTelephonyClientSubscriberDelegate-Protocol.h>
 
-@class CHManager, CoreTelephonyClient, NSString, PSSpecifier, PSUIAppCellularUsageExtensionGroup, PSUICarrierItemGroup, PSUICellularDataOptionsController, PSUICellularDataPlanDetailGroup, PSUICellularDataPlanListGroup, PSUICellularDataPlanSetupGroup, PSUICellularPlanListGroup, PSUISubscriptionContextMenusGroup;
+@class CHManager, CoreTelephonyClient, NSString, PSSpecifier, PSUIAppCellularUsageExtensionGroup, PSUICarrierItemGroup, PSUICellularDataOptionsController, PSUICellularDataPlanDetailGroup, PSUICellularDataPlanListGroup, PSUICellularDataPlanSetupGroup, PSUICellularDataSpecifier, PSUICellularPlanListGroup, PSUISubscriptionContextMenusGroup;
 
 @interface PSUICellularController : PSListController <CoreTelephonyClientSubscriberDelegate>
 {
@@ -22,6 +22,7 @@
     PSSpecifier *_lastResetSpecifier;
     BOOL _ignoreNextEntitlementStatusChange;
     PSSpecifier *_personalHotspotSpecifier;
+    PSUICellularDataSpecifier *_cellularDataSpecifier;
     PSUICellularDataOptionsController *_cellularDataOptionsController;
     PSUICellularDataPlanSetupGroup *_cellularDataPlanSetupGroup;
     PSUICellularDataPlanListGroup *_cellularDataPlanListGroup;
@@ -40,6 +41,7 @@
 @property (strong, nonatomic) PSUICellularDataPlanDetailGroup *cellularDataPlanDetailGroup; // @synthesize cellularDataPlanDetailGroup=_cellularDataPlanDetailGroup;
 @property (strong, nonatomic) PSUICellularDataPlanListGroup *cellularDataPlanListGroup; // @synthesize cellularDataPlanListGroup=_cellularDataPlanListGroup;
 @property (strong, nonatomic) PSUICellularDataPlanSetupGroup *cellularDataPlanSetupGroup; // @synthesize cellularDataPlanSetupGroup=_cellularDataPlanSetupGroup;
+@property (strong, nonatomic) PSUICellularDataSpecifier *cellularDataSpecifier; // @synthesize cellularDataSpecifier=_cellularDataSpecifier;
 @property (strong, nonatomic) PSUICarrierItemGroup *cellularNewNetworkGroup; // @synthesize cellularNewNetworkGroup=_cellularNewNetworkGroup;
 @property (strong, nonatomic) PSUICellularPlanListGroup *cellularPlanListGroup; // @synthesize cellularPlanListGroup=_cellularPlanListGroup;
 @property (strong, nonatomic) CoreTelephonyClient *coreTelephonyClient; // @synthesize coreTelephonyClient=_coreTelephonyClient;
@@ -54,7 +56,6 @@
 - (id)_lastUpdateDate;
 - (void)_updateLastResetText;
 - (void)airplaneModeChanged;
-- (void)airplaneModeOrSIMStatusChanged;
 - (id)callTime:(id)arg1;
 - (id)callTimeDurationRestrictedToCurrentPeriod:(BOOL)arg1;
 - (void)carrierItemsChanged;
@@ -89,7 +90,7 @@
 - (void)totalBytesUsedChangedNotification;
 - (id)totalDataUsageForSpecifier:(id)arg1;
 - (id)totalRoamingDataUsageForSpecifier:(id)arg1;
-- (void)updateAppUsageGroupEnabledState;
+- (void)turnOnLocationServicesPressed:(id)arg1;
 - (void)updatePaneWithCellularDataState:(BOOL)arg1;
 - (void)viewAccountPressed:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;

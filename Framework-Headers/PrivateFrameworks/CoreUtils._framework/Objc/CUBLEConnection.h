@@ -33,6 +33,7 @@
     struct NSMutableArray *_writeRequests;
     struct LogCategory *_ucat;
     unsigned short _destinationPSM;
+    int _connectionLatency;
     NSUUID *_destinationUUID;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _errorHandler;
@@ -42,6 +43,7 @@
     CDUnknownBlockType _serverInvalidationHandler;
 }
 
+@property (nonatomic) int connectionLatency; // @synthesize connectionLatency=_connectionLatency;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned short destinationPSM; // @synthesize destinationPSM=_destinationPSM;

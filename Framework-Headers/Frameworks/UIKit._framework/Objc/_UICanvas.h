@@ -11,7 +11,7 @@
 #import <UIKitCore/_UICanvasLifecycleStateMonitoring-Protocol.h>
 #import <UIKitCore/_UIContextBinderDelegate-Protocol.h>
 
-@class FBSDisplayConfigurationRequest, FBSScene, FBSSceneSettings, NSArray, NSPointerArray, NSString, UIScreen, _UIContextBinder, __UISceneSubstrate;
+@class FBSScene, FBSSceneSettings, NSArray, NSPointerArray, NSString, UIScreen, _UIContextBinder, __UISceneSubstrate;
 @protocol UICoordinateSpace, _UIAnimationFenceCoordinating, _UICanvasDelegate, _UICanvasMetricsUpdating;
 
 @interface _UICanvas : UIResponder <UICoordinateSpace, _UIContextBinderDelegate, FBSSceneDelegate, _UICanvasLifecycleStateMonitoring>
@@ -24,11 +24,13 @@
     id<_UICanvasMetricsUpdating> _metricsCalculator;
     NSPointerArray *_inheritingCanvases;
     BOOL _active;
+    long long _avkitRequestedOverscanCompensation;
     BOOL suspendedEventsOnly;
     BOOL runningInTaskSwitcher;
     BOOL suspendedUnderLock;
     BOOL respondingToLifecycleEvent;
     long long state;
+    long long _screenRequestedOverscanCompensation;
     FBSSceneSettings *_oldSettings;
     id<_UICanvasDelegate> _delegate;
     FBSScene *_scene;
@@ -45,20 +47,17 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) id<_UICanvasDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic, getter=_displayConfigurationRequest, setter=_setDisplayConfigurationRequest:) FBSDisplayConfigurationRequest *displayConfigurationRequest;
 @property (readonly, nonatomic, getter=_effectiveSettings) FBSSceneSettings *effectiveSettings;
 @property (readonly, nonatomic, getter=_hasLifecycle) BOOL hasLifecycle;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL keepContextAssociationInBackground;
 @property (readonly, nonatomic, getter=_oldSettings) FBSSceneSettings *oldSettings; // @synthesize oldSettings=_oldSettings;
-@property (nonatomic, getter=_requestedDisplayPixelSize, setter=_setRequestedDisplayPixelSize:) struct CGSize requestedDisplayPixelSize; // @dynamic requestedDisplayPixelSize;
-@property (readonly, nonatomic, getter=_requestedHDRMode) long long requestedHDRMode; // @dynamic requestedHDRMode;
-@property (nonatomic, getter=_requestedOverscanCompensation, setter=_setRequestedOverscanCompensation:) long long requestedOverscanCompensation; // @dynamic requestedOverscanCompensation;
-@property (readonly, nonatomic, getter=_requestedRefreshRate) double requestedRefreshRate; // @dynamic requestedRefreshRate;
 @property (nonatomic, getter=_isRespondingToLifecycleEvent, setter=_setIsRespondingToLifecycleEvent:) BOOL respondingToLifecycleEvent; // @synthesize respondingToLifecycleEvent;
 @property (nonatomic, getter=_runningInTaskSwitcher, setter=_setRunningInTaskSwitcher:) BOOL runningInTaskSwitcher; // @synthesize runningInTaskSwitcher;
 @property (readonly, nonatomic) FBSScene *scene; // @synthesize scene=_scene;
 @property (readonly, nonatomic) UIScreen *screen;
+@property (nonatomic, getter=_screenRequestedDisplayPixelSize, setter=_setScreenRequestedDisplayPixelSize:) struct CGSize screenRequestedDisplayPixelSize; // @dynamic screenRequestedDisplayPixelSize;
+@property (nonatomic, getter=_screenRequestedOverscanCompensation, setter=_setScreenRequestedOverscanCompensation:) long long screenRequestedOverscanCompensation; // @synthesize screenRequestedOverscanCompensation=_screenRequestedOverscanCompensation;
 @property (readonly, weak, nonatomic) _UICanvas *settingsCanvas;
 @property (readonly, nonatomic) long long state; // @synthesize state;
 @property (readonly) Class superclass;
@@ -85,6 +84,7 @@
 - (double)_canvasSystemMinimumMargin;
 - (void)_computeMetrics:(BOOL)arg1;
 - (void)_didBecomeActive;
+- (id)_displayConfigurationRequest;
 - (id)_displayEdgeInfoProvider;
 - (void)_enumerateWindowsIncludingInternalWindows:(BOOL)arg1 onlyVisibleWindows:(BOOL)arg2 asCopy:(BOOL)arg3 stopped:(BOOL *)arg4 withBlock:(CDUnknownBlockType)arg5;
 - (void)_enumerateWindowsIncludingInternalWindows:(BOOL)arg1 onlyVisibleWindows:(BOOL)arg2 asCopy:(BOOL)arg3 withBlock:(CDUnknownBlockType)arg4;
@@ -98,8 +98,10 @@
 - (struct CGRect)_referenceBounds;
 - (struct CGRect)_referenceBoundsForOrientation:(long long)arg1;
 - (void)_removeInheritingCanvas:(id)arg1;
+- (long long)_resolvedOverscanCompensation;
 - (struct UIEdgeInsets)_safeAreaInsetsForInterfaceOrientation:(long long)arg1;
-- (void)_setRequestedRefreshRate:(double)arg1 HDRMode:(long long)arg2;
+- (void)_setAVKitRequestedRefreshRate:(double)arg1 HDRMode:(long long)arg2 overscanCompensation:(long long)arg3;
+- (void)_setDisplayConfigurationRequest:(id)arg1;
 - (void)_updateVisibleWindowOrderWithTest:(CDUnknownBlockType)arg1;
 - (void)_willAttach;
 - (void)_willResignActive;

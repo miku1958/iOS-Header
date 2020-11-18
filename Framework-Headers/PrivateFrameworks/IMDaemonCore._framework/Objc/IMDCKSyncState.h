@@ -28,6 +28,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isInExitState) BOOL inExitState; // @dynamic inExitState;
 @property (readonly, nonatomic) IMKeyValueCollection *keyValueCollection; // @synthesize keyValueCollection=_storage;
+@property (copy, nonatomic) NSDate *lastCompleteSyncedDBDate; // @dynamic lastCompleteSyncedDBDate;
 @property (copy, nonatomic) NSDate *lastSyncDate; // @dynamic lastSyncDate;
 @property (nonatomic, getter=isRemovedFromBackup) BOOL removedFromBackup; // @dynamic removedFromBackup;
 @property (nonatomic, getter=isStartingEnabledSettingChange) BOOL startingEnabledSettingChange; // @dynamic startingEnabledSettingChange;

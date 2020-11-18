@@ -6,11 +6,12 @@
 
 #import <HomeKit/HMAccessory.h>
 
-@class HMResidentDevice, NSSet, NSString;
+@class HMResidentDevice, NSArray, NSSet, NSString;
 
 @interface HMAccessory (HFAdditions)
 
 @property (readonly, nonatomic) long long hf_appPunchOutReason;
+@property (readonly, nonatomic) NSArray *hf_bridgedAccessories;
 @property (readonly, copy, nonatomic) NSSet *hf_componentServices;
 @property (readonly, copy, nonatomic) NSString *hf_defaultName;
 @property (readonly, copy, nonatomic) NSSet *hf_displayNamesForVisibleTiles;

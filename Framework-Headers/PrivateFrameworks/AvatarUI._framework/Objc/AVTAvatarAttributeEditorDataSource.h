@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class AVTUIEnvironment, NSArray, NSMutableDictionary;
-@protocol AVTScheduler;
+@protocol AVTTaskScheduler;
 
 @interface AVTAvatarAttributeEditorDataSource : NSObject
 {
@@ -15,13 +15,13 @@
     NSArray *_categories;
     NSMutableDictionary *_sectionControllers;
     AVTUIEnvironment *_environment;
-    id<AVTScheduler> _renderingScheduler;
+    id<AVTTaskScheduler> _renderingScheduler;
 }
 
 @property (strong, nonatomic) NSArray *categories; // @synthesize categories=_categories;
 @property (nonatomic) unsigned long long currentCategoryIndex; // @synthesize currentCategoryIndex=_currentCategoryIndex;
 @property (readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
-@property (readonly, nonatomic) id<AVTScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
+@property (readonly, nonatomic) id<AVTTaskScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
 @property (strong, nonatomic) NSMutableDictionary *sectionControllers; // @synthesize sectionControllers=_sectionControllers;
 
 + (unsigned long long)indexForCurrentCategoryGivenPreferredIdentifier:(id)arg1 categories:(id)arg2;

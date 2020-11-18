@@ -7,12 +7,13 @@
 #import <UIKit/UIViewController.h>
 
 #import <AvatarUI/AVTAvatarActionsModelDelegate-Protocol.h>
+#import <AvatarUI/AVTFaceTrackingManagerDelegate-Protocol.h>
 #import <AvatarUI/UINavigationControllerDelegate-Protocol.h>
 
 @class AVTAvatarActionButton, AVTAvatarActionsModel, AVTImageTransitioningContainerView, AVTUIEnvironment, AVTViewSession, AVTViewSessionProvider, NSString, UIImageView, UIStackView, UITapGestureRecognizer;
 @protocol AVTAvatarActionsViewControllerDelegate, AVTAvatarActionsViewControllerLayout;
 
-@interface AVTAvatarActionsViewController : UIViewController <AVTAvatarActionsModelDelegate, UINavigationControllerDelegate>
+@interface AVTAvatarActionsViewController : UIViewController <AVTAvatarActionsModelDelegate, UINavigationControllerDelegate, AVTFaceTrackingManagerDelegate>
 {
     BOOL _isAnimating;
     id<AVTAvatarActionsViewControllerDelegate> _delegate;
@@ -76,6 +77,7 @@
 - (double)duplicateScaleDelay;
 - (double)duplicateScaleDuration;
 - (id)initWithAVTViewSessionProvider:(id)arg1 actionsModel:(id)arg2 environment:(id)arg3;
+- (long long)interfaceOrientationForFaceTrackingManager:(id)arg1;
 - (void)layoutViewFromModel:(id)arg1;
 - (void)loadView;
 - (id)navigationController:(id)arg1 animationControllerForOperation:(long long)arg2 fromViewController:(id)arg3 toViewController:(id)arg4;

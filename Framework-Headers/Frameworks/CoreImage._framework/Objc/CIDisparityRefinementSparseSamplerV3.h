@@ -6,7 +6,7 @@
 
 #import <CoreImage/CIFilter.h>
 
-@class CIImage, NSDictionary;
+@class CIImage, NSDictionary, NSNumber;
 
 __attribute__((visibility("hidden")))
 @interface CIDisparityRefinementSparseSamplerV3 : CIFilter
@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
     CIImage *inputImage;
     CIImage *inputPreprocImage;
     NSDictionary *inputTuningParameters;
+    NSNumber *inputScale;
 }
 
 @property (strong) CIImage *inputImage; // @synthesize inputImage;
 @property (strong) CIImage *inputPreprocImage; // @synthesize inputPreprocImage;
+@property (strong) NSNumber *inputScale; // @synthesize inputScale;
 @property (strong) NSDictionary *inputTuningParameters; // @synthesize inputTuningParameters;
 
 - (id)outputImage;

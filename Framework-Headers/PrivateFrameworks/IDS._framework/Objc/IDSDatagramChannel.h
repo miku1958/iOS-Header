@@ -33,6 +33,7 @@
 - (void)invalidate;
 - (void)optinStreamIDs:(id)arg1;
 - (void)optoutStreamIDs:(id)arg1;
+- (void)osChannelInfoLog;
 - (void)processMetadataForDatagram:(char *)arg1 size:(unsigned long long)arg2 datagramInfo:(CDStruct_54fea20c *)arg3 options:(CDStruct_920a6c75 *)arg4;
 - (void)readDatagramWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)readDatagramsWithCompletionHandler:(CDUnknownBlockType)arg1;

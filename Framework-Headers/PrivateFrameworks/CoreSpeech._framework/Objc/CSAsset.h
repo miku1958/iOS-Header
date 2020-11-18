@@ -58,6 +58,7 @@
 - (id)_decodeJson:(id)arg1;
 - (id)_sha1:(id)arg1;
 - (id)_sha256:(id)arg1;
+- (BOOL)containsKey:(id)arg1 category:(id)arg2;
 - (id)description;
 - (BOOL)getBoolForKey:(id)arg1 category:(id)arg2 default:(BOOL)arg3;
 - (id)getNumberForKey:(id)arg1 category:(id)arg2 default:(id)arg3;

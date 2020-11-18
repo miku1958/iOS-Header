@@ -43,6 +43,9 @@
     BOOL _visible;
     BOOL _authenticating;
     BOOL _allowCompactProcessing;
+    long long _internalPearlState;
+    unsigned int _pearlCameraEdge;
+    long long _internalCoachingState;
     UIViewController *_passcodeViewController;
     UIViewController *_passphraseViewController;
     BOOL _hostApplicationResignedActive;
@@ -64,12 +67,14 @@
     BOOL _blockingHardwareCancels;
     PKPaymentAuthorizationStateMachine *_stateMachine;
     PKAuthenticator *_authenticator;
+    long long _coachingState;
     LAUIPhysicalButtonView *_physicalButtonView;
     id<PKPaymentAuthorizationServiceViewControllerDelegate><PKPaymentAuthorizationHostProtocol> _delegate;
 }
 
 @property (strong, nonatomic) PKAuthenticator *authenticator; // @synthesize authenticator=_authenticator;
 @property (readonly, nonatomic) BOOL blockingHardwareCancels; // @synthesize blockingHardwareCancels=_blockingHardwareCancels;
+@property (readonly, nonatomic) long long coachingState; // @synthesize coachingState=_coachingState;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKPaymentAuthorizationServiceViewControllerDelegate><PKPaymentAuthorizationHostProtocol> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -125,6 +130,7 @@
 - (void)_updateAvailableCardsPreferences;
 - (void)_updateBackgroundedState:(BOOL)arg1;
 - (void)_updateCancelButtonEnabledForState:(unsigned long long)arg1 param:(id)arg2;
+- (void)_updateCoachingInstruction;
 - (void)_updateFooterStateForBiometricMatchMissIfNecessary;
 - (void)_updatePendingTransaction:(id)arg1 withAuthorizationStateParam:(id)arg2;
 - (void)_updatePhysicalButtonInstruction;
@@ -134,6 +140,7 @@
 - (void)_updateUserIntentRequired;
 - (Class)_viewPresenterClassForDataItem:(id)arg1;
 - (void)authenticator:(id)arg1 didRequestUserAction:(long long)arg2;
+- (void)authenticator:(id)arg1 didTransitionToCoachingState:(long long)arg2;
 - (void)authenticator:(id)arg1 didTransitionToPearlState:(long long)arg2;
 - (void)authenticatorDidEncounterBiometricLockout:(id)arg1;
 - (void)authenticatorDidEncounterFingerOff:(id)arg1;

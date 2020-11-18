@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <AVConference/VCObject.h>
 
 @class NSDictionary, VCSessionBandwidthAllocationTable;
 
 __attribute__((visibility("hidden")))
-@interface VCSessionUplinkBandwidthAllocator : NSObject
+@interface VCSessionUplinkBandwidthAllocator : VCObject
 {
     VCSessionBandwidthAllocationTable *_table;
     NSDictionary *_currentTable;
@@ -20,17 +20,17 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isRedundancyEnabled) BOOL redundancyEnabled;
 @property (nonatomic, getter=isVideoEnabled) BOOL videoEnabled; // @synthesize videoEnabled=_videoEnabled;
 
+- (void)_assignCurrentTables;
+- (id)_audioEntriesForTargetBitrate:(unsigned int)arg1;
+- (BOOL)_isAvailableStreamConfiguration:(id)arg1;
+- (id)_videoEntriesForTargetBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(BOOL)arg2;
 - (void)addBandwidthAllocationTableEntry:(id)arg1 updateNow:(BOOL)arg2;
-- (void)assignCurrentTables;
-- (id)audioEntriesForTargetBitrate:(unsigned int)arg1;
 - (id)audioRepairStreamIDsForStreamIDs;
 - (id)audioRepairStreamIDsforTargetBitrate:(unsigned int)arg1;
 - (id)audioStreamIDsforTargetBitrate:(unsigned int)arg1;
 - (void)dealloc;
 - (BOOL)enableVideoStream:(BOOL)arg1 streamID:(unsigned short)arg2;
 - (id)init;
-- (BOOL)isAvailableStreamConfiguration:(id)arg1;
-- (id)videoEntriesForTargetBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(BOOL)arg2;
 - (id)videoRepairStreamIDsForStreamIDs;
 - (id)videoRepairStreamIDsforTargetBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(BOOL)arg2;
 - (id)videoStreamIDsforTargetBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(BOOL)arg2;

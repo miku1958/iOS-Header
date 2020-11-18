@@ -81,6 +81,8 @@
 - (id)getLimitsDictionary;
 - (id)init;
 - (id)initWithFetchingLimitsDictionary:(id)arg1 andCoalescingStrategy:(id)arg2 andPostFetchingPredicate:(id)arg3 withQueue:(id)arg4;
+- (id)latestRecentCallMatchingPredicate:(id)arg1;
+- (id)latestTelephonyCallMatchingNormalizedRemoteParticipantHandleValues:(id)arg1;
 - (void)markAllCallsAsReadWithPredicate:(id)arg1;
 - (id)recentCallsWithPredicate:(id)arg1;
 - (void)registerForNotifications;

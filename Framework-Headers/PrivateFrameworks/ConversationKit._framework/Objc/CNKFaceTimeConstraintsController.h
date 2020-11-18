@@ -24,6 +24,9 @@
 - (CDUnknownBlockType).cxx_destruct;
 - (id)init;
 - (id)initWithContainingView:(id)arg1 controlsViewController:(id)arg2 inCallControlsState:(long long)arg3 deviceOrientation:(long long)arg4;
+- (void)removeEffectsConstraints;
+- (void)updateConstraintsWith:(id)arg1 controlsViewController:(id)arg2 effectsView:(id)arg3 effectsBrowserViewController:(id)arg4;
+- (void)updateFor:(struct CGRect)arg1 deviceOrientation:(long long)arg2;
 
 @end
 

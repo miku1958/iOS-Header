@@ -12,7 +12,7 @@
 #import <PassKitUI/PKPaymentSetupDelegate-Protocol.h>
 #import <PassKitUI/SBSHardwareButtonEventConsuming-Protocol.h>
 
-@class LAUIPhysicalButtonView, NSString, NSXPCConnection, PKAssertion, PKCompactNavigationContainerController, PKInAppPaymentService, PKPaymentAuthorizationRemoteAlertViewControllerExportedObject, PKPaymentAuthorizationServiceNavigationController, PKPaymentProvisioningController, PKPaymentRequest, PKPaymentSetupNavigationController;
+@class LAUIHorizontalArrowView, LAUIPhysicalButtonView, NSString, NSXPCConnection, PKAssertion, PKCompactNavigationContainerController, PKInAppPaymentService, PKPaymentAuthorizationRemoteAlertViewControllerExportedObject, PKPaymentAuthorizationServiceNavigationController, PKPaymentProvisioningController, PKPaymentRequest, PKPaymentSetupNavigationController;
 @protocol BSInvalidatable;
 
 @interface PKPaymentAuthorizationRemoteAlertViewController : SBUIRemoteAlertServiceViewController <PKCompactNavigationContainerControllerDelegate, PKPaymentAuthorizationServiceViewControllerDelegate, PKPaymentAuthorizationHostProtocol, PKPaymentSetupDelegate, SBSHardwareButtonEventConsuming>
@@ -30,6 +30,8 @@
     PKPaymentAuthorizationServiceNavigationController *_navigationController;
     BOOL _pearlViewsInserted;
     LAUIPhysicalButtonView *_physicalButtonView;
+    LAUIHorizontalArrowView *_cameraArrowView;
+    long long _coachingState;
     PKPaymentProvisioningController *_paymentProvisioningController;
     PKPaymentSetupNavigationController *_paymentSetupNavigationController;
     BOOL _paymentSetupWasRequired;
@@ -86,6 +88,7 @@
 - (void)authorizationDidSelectShippingAddress:(id)arg1;
 - (void)authorizationDidSelectShippingMethod:(id)arg1;
 - (void)authorizationViewController:(id)arg1 didEncounterAuthorizationEvent:(unsigned long long)arg2;
+- (void)authorizationViewControllerDidChangeCoachingState:(id)arg1;
 - (void)authorizationViewControllerDidChangeUserIntentRequirement:(id)arg1;
 - (void)authorizationWillStart;
 - (void)compactNavigationContainerControllerReceivedExternalTap:(id)arg1;

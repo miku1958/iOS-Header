@@ -23,6 +23,7 @@
     IMBalloonPlugin *_currentBalloonPlugin;
     CKFullScreenAppViewController *_expandedAppViewController;
     CKBrowserTransitionCoordinator *_alwaysExpandedCoordinator;
+    BOOL _isTransitioningPresentationStyles;
     BOOL _alwaysPresentAppsExpanded;
     BOOL _hidesCompactAppForStickerDrag;
     id<IMADockViewControllerDelegate> _delegate;
@@ -48,8 +49,11 @@
 - (id)appViewControllerPresenter;
 - (struct CGSize)browserTransitionCoordinator:(id)arg1 preferredSizeForBrowser:(id)arg2;
 - (double)browserTransitionCoordinatorCollapsedContentHeight:(id)arg1;
+- (void)browserTransitionCoordinatorDidCollapseOrDismiss:(id)arg1 withReason:(long long)arg2;
 - (void)browserTransitionCoordinatorDidTransitionOrPresentToFullscreen:(id)arg1 withReason:(long long)arg2;
 - (BOOL)browserTransitionCoordinatorShouldDismissOnDragSuccess:(id)arg1;
+- (void)browserTransitionCoordinatorWillCollapseOrDismiss:(id)arg1 withReason:(long long)arg2;
+- (void)browserTransitionCoordinatorWillTransitionOrPresentToFullscreen:(id)arg1 withReason:(long long)arg2;
 - (void)cleanupRunningApps;
 - (void)commitPayload:(id)arg1;
 - (void)commitSticker:(id)arg1;

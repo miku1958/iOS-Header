@@ -13,6 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (double)_accessibilityColorAlpha;
+- (void)_accessibilitySetColorAlpha:(double)arg1;
 - (struct CGPoint)accessibilityActivationPoint;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;

@@ -11,12 +11,13 @@
 #import <SpringBoardServices/BSXPCCoding-Protocol.h>
 #import <SpringBoardServices/NSSecureCoding-Protocol.h>
 
-@class BSMutableSettings, NSSet, NSString, SBSRemoteAlertPresentationTarget;
+@class BSMutableSettings, NSDictionary, NSSet, NSString, SBSRemoteAlertPresentationTarget;
 
 @interface SBSRemoteAlertActivationContext : NSObject <BSDescriptionProviding, BSSettingDescriptionProvider, BSXPCCoding, NSSecureCoding>
 {
     BSMutableSettings *_settings;
     NSSet *_actions;
+    NSDictionary *_userInfo;
     SBSRemoteAlertPresentationTarget *_presentationTarget;
 }
 
@@ -28,11 +29,13 @@
 @property (strong, nonatomic) SBSRemoteAlertPresentationTarget *presentationTarget; // @synthesize presentationTarget=_presentationTarget;
 @property (strong, nonatomic) NSString *reason;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_initWithSettings:(id)arg1 actions:(id)arg2;
 - (id)_initWithSettings:(id)arg1 actions:(id)arg2 presentationTarget:(id)arg3;
+- (id)_initWithSettings:(id)arg1 actions:(id)arg2 presentationTarget:(id)arg3 userInfo:(id)arg4;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

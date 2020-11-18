@@ -96,11 +96,13 @@
     BOOL _footerSuppressed;
     BOOL _staggerPileAnimations;
     id<PKPassGroupStackViewDatasource> _datasource;
+    long long _coachingState;
     UIColor *_pageIndicatorTintColor;
     UIColor *_currentPageIndicatorTintColor;
     double _topContentSeparatorHeight;
 }
 
+@property (readonly, nonatomic) long long coachingState; // @synthesize coachingState=_coachingState;
 @property (copy, nonatomic) UIColor *currentPageIndicatorTintColor; // @synthesize currentPageIndicatorTintColor=_currentPageIndicatorTintColor;
 @property (nonatomic) id<PKPassGroupStackViewDatasource> datasource; // @synthesize datasource=_datasource;
 @property (readonly, copy) NSString *debugDescription;
@@ -226,6 +228,7 @@
 - (void)_transitionSuccessful:(BOOL)arg1;
 - (void)_undoUserReorderWithReorderedGroupView:(id)arg1;
 - (void)_updateBottomContentSeparatorVisibilityAnimated:(BOOL)arg1;
+- (void)_updateCoachingState;
 - (void)_updateContentSize;
 - (void)_updateContentSizeAndLayout:(BOOL)arg1;
 - (void)_updateContentSizeAndLayout:(BOOL)arg1 forceUpdate:(BOOL)arg2;
@@ -291,6 +294,7 @@
 - (void)layoutSubviews;
 - (void)moveGroup:(id)arg1 fromIndex:(unsigned long long)arg2 toIndex:(unsigned long long)arg3;
 - (void)noteDidEndScrollingForTesting;
+- (void)passFooterViewDidChangeCoachingState:(id)arg1;
 - (void)passFooterViewDidChangeUserIntentRequirement:(id)arg1;
 - (void)passFooterViewDidChangeUserIntentRequirement:(id)arg1 withContext:(id)arg2;
 - (void)paymentDeviceDidBecomeAvailable;

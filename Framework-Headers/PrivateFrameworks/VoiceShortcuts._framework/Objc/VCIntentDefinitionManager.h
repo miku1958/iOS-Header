@@ -45,6 +45,7 @@
 - (BOOL)loadPersistentStoreWithURL:(id)arg1;
 - (void)markChangesAsSynced:(id)arg1 withSyncServiceWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)registerSyncService:(id)arg1 asMaster:(BOOL)arg2;
+- (void)removeSyncStateForChanges:(id)arg1 withSyncServiceWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeSyncStateForSyncServiceWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)resetPersistentStore;
 

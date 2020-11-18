@@ -74,6 +74,7 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isSameSRTPKey:(id)arg1 newKey:(id)arg2;
 - (void)checkDecryptionTimeoutAgainstTime:(double)arg1 decryptionErrorStartTime:(double)arg2;
+- (void)checkForDecryptionTimeout;
 - (void)checkRTCPPacketTimeoutAgainstTime:(double)arg1 lastReceivedPacketTime:(double)arg2;
 - (void)checkRTPPacketTimeoutAgainstTime:(double)arg1 lastReceivedPacketTime:(double)arg2;
 - (void)collectRxChannelMetrics:(CDStruct_1c8e0384 *)arg1;

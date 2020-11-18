@@ -13,6 +13,7 @@
 
 @interface PKStrokeGenerator : NSObject <PKInputProvider>
 {
+    double _latestNonPredictedTimestamp;
     vector_58517711 _drawPoints;
     vector_03cfcf00 _outputPoints;
     long long _outputImmutableCount;
@@ -65,6 +66,7 @@
 @property (nonatomic) double inputScale; // @synthesize inputScale=_inputScale;
 @property (nonatomic) struct PKInputSmoother *inputSmoother; // @synthesize inputSmoother=_inputSmoother;
 @property (nonatomic) struct PKInputToOutputFilter *inputToOutputFilter; // @synthesize inputToOutputFilter=_inputToOutputFilter;
+@property (readonly, nonatomic) long long inputType; // @dynamic inputType;
 @property BOOL isSnappedToRuler; // @synthesize isSnappedToRuler=_isSnappedToRuler;
 @property (nonatomic) BOOL isSnappedToRulerTopSide; // @synthesize isSnappedToRulerTopSide=_isSnappedToRulerTopSide;
 @property struct CGPoint lastPoint; // @synthesize lastPoint=_lastPoint;
@@ -106,6 +108,7 @@
 - (struct CGPoint)getRulerSnapLineOriginAndTangent:(struct CGPoint *)arg1 andNormal:(struct CGPoint *)arg2;
 - (vector_03cfcf00 *)getUpdatedRangeFromIndex:(inout unsigned long long *)arg1;
 - (id)init;
+- (double)latestNonPredictedTimestamp;
 - (void)maskToRuler;
 - (struct _PKStrokePoint)outputCurrentStrokePoint:(CDStruct_f17e9403)arg1;
 - (PKInputProvider_28cf270a *)outputFilter;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 #import <SIMSetupSupport/TSCellularPlanQRCodeScannerCaptureDelegate-Protocol.h>
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
@@ -15,6 +15,7 @@
 
 @interface TSCellularPlanScanViewController : UIViewController <TSCellularPlanQRCodeScannerCaptureDelegate, UINavigationControllerDelegate, TSSetupFlowItem>
 {
+    BOOL _preinstallCompleted;
     NSDate *_nextTimeToAcceptScan;
     CAShapeLayer *_fillWithHoleLayer;
     CAShapeLayer *_holeOutlineLayer;
@@ -23,7 +24,6 @@
     BOOL _manualCardInfoEntry;
     id<TSSIMSetupFlowDelegate> _delegate;
     NSString *_fauxCardData;
-    long long _userConsentResponse;
     UIView *_scanView;
     UIView *_cutoutView;
     UIButton *_enterDetailsManuallyButton;
@@ -44,15 +44,17 @@
 @property (weak, nonatomic) UILabel *scanQRCodeLabel; // @synthesize scanQRCodeLabel=_scanQRCodeLabel;
 @property (weak, nonatomic) UIView *scanView; // @synthesize scanView=_scanView;
 @property (readonly) Class superclass;
-@property (readonly) long long userConsentResponse; // @synthesize userConsentResponse=_userConsentResponse;
 
 - (void).cxx_destruct;
 - (void)_addNewPlanWithCardData:(id)arg1 confirmationCode:(id)arg2;
-- (void)cancelButtonTapped;
 - (void)captureOutput:(id)arg1 didOutputMetadataObjects:(id)arg2 fromConnection:(id)arg3;
 - (void)captureSession:(id)arg1 isRunning:(BOOL)arg2;
+- (void)didChangeValueForKey:(id)arg1;
 - (void)enterFauxCardDataManually:(id)arg1;
 - (id)init;
+- (void)planInfoDidUpdate:(id)arg1 planListError:(id)arg2;
+- (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

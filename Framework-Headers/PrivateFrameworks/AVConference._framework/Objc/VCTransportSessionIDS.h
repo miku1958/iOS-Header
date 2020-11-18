@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
     BOOL _requireEncryptionInfo;
     VCIDSSessionInfoSynchronizer *_sessionInfoSynchronizer;
     BOOL _isIDSDCEventUsageErrorReported;
-    BOOL _isSessionStarted;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -37,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)didEnableDuplication:(BOOL)arg1 activeConnection:(id)arg2;
 - (void)discardConnection:(id)arg1;
+- (void)dispatchedProcessDatagramChannelEventInfo:(id)arg1;
 - (BOOL)getConnectionSetupData:(id *)arg1 withOptions:(id)arg2 error:(id *)arg3;
 - (void)handleCellularMTUChanged:(id)arg1;
 - (void)handleChannelInfoReport:(id)arg1;
@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)optOutAllStreamsForConnection:(id)arg1;
 - (void)primaryConnectionChanged:(id)arg1 oldPrimaryConnection:(id)arg2;
 - (void)processDatagramChannelEventInfo:(id)arg1;
+- (void)resetParticipantGenerationCounter;
 - (void)setConnectionSetupPiggybackBlob:(id)arg1;
 - (void)setConnectionSetupTime;
 - (void)setDefaultLink:(id)arg1;

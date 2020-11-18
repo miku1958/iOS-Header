@@ -22,7 +22,7 @@
 - (void)didUnhighlightItemAtIndex:(long long)arg1 cell:(AVTAttributeCollectionViewCell *)arg2 completionBlock:(void (^)(BOOL))arg3;
 - (struct UIEdgeInsets)edgeInsetsFittingSize:(struct CGSize)arg1;
 - (unsigned long long)indexForItem:(id<AVTAvatarAttributeEditorSectionItem>)arg1;
-- (void)invalidateLayout;
+- (void)invalidateLayoutForNewContainerSize:(struct CGSize)arg1;
 - (long long)numberOfItems;
 - (id<AVTAvatarAttributeEditorSectionItemPrefetching>)prefetchingSectionItemForIndex:(long long)arg1;
 - (void)resetToDefaultState;

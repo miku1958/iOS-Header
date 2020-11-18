@@ -10,23 +10,22 @@
 
 @class CNGeminiChannel, NSArray;
 
-__attribute__((visibility("hidden")))
 @interface CNGeminiResult : NSObject <NSSecureCoding>
 {
     CNGeminiChannel *_channel;
-    long long _channelType;
+    long long _usage;
     NSArray *_availableChannels;
 }
 
 @property (readonly, nonatomic) NSArray *availableChannels; // @synthesize availableChannels=_availableChannels;
 @property (readonly, nonatomic) CNGeminiChannel *channel; // @synthesize channel=_channel;
-@property (readonly, nonatomic) long long channelType; // @synthesize channelType=_channelType;
+@property (readonly, nonatomic) long long usage; // @synthesize usage=_usage;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
-- (id)initWithChannel:(id)arg1 type:(long long)arg2 availableChannels:(id)arg3;
+- (id)initWithChannel:(id)arg1 usage:(long long)arg2 availableChannels:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 
 @end

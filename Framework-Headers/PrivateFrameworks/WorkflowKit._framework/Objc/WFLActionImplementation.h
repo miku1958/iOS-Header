@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSProgress, WFLAction;
+@class INVoiceCommandDeviceInformation, NSArray, NSProgress, WFLAction;
 @protocol WFLActionUserInterface;
 
 @interface WFLActionImplementation : NSObject
@@ -18,15 +18,17 @@
     NSArray *_output;
     long long _executionContext;
     CDUnknownBlockType _completionHandler;
+    INVoiceCommandDeviceInformation *_originDeviceInformation;
 }
 
 @property (readonly, nonatomic) WFLAction *action; // @synthesize action=_action;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (nonatomic) long long executionContext; // @synthesize executionContext=_executionContext;
 @property (readonly, nonatomic) NSArray *input; // @synthesize input=_input;
+@property (strong, nonatomic) INVoiceCommandDeviceInformation *originDeviceInformation; // @synthesize originDeviceInformation=_originDeviceInformation;
 @property (strong, nonatomic) NSArray *output; // @synthesize output=_output;
 @property (readonly, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
-@property (readonly, nonatomic) id<WFLActionUserInterface> userInterface; // @synthesize userInterface=_userInterface;
+@property (readonly, weak, nonatomic) id<WFLActionUserInterface> userInterface; // @synthesize userInterface=_userInterface;
 
 + (void)initialize;
 + (id)userCancelledError;

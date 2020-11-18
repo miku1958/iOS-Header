@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)originAtIndex:(long long)arg1;
 - (const struct CGPoint *)origins;
 - (void)popGlyphAtIndex:(long long)arg1;
-- (void)prepareWithCapacity:(long long)arg1 preallocated:(BOOL)arg2;
+- (id)prepareWithCapacity:(long long)arg1 preallocated:(BOOL)arg2;
 - (void)puntStringIndicesInRange:(CDStruct_912cb5d2)arg1 by:(long long)arg2;
 - (void)pushGlyphAtIndex:(long long)arg1;
 - (oneway void)release;

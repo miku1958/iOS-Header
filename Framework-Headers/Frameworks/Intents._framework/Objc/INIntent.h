@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <Intents/INFileURLEnumerable-Protocol.h>
 #import <Intents/INGenericIntent-Protocol.h>
 #import <Intents/INImageProxyInjecting-Protocol.h>
 #import <Intents/INIntentExport-Protocol.h>
@@ -17,7 +18,7 @@
 
 @class INImage, NSArray, NSDictionary, NSMutableDictionary, NSOrderedSet, NSString, PBCodable, _INPBIntentMetadata;
 
-@interface INIntent : NSObject <INImageProxyInjecting, INIntentSlotComposing, INKeyImageProducing, INIntentExport, INGenericIntent, INRuntimeObject, NSCopying, NSSecureCoding>
+@interface INIntent : NSObject <INImageProxyInjecting, INIntentSlotComposing, INFileURLEnumerable, INKeyImageProducing, INIntentExport, INGenericIntent, INRuntimeObject, NSCopying, NSSecureCoding>
 {
     NSMutableDictionary *_intentInstanceDescriptionMapping;
     NSArray *_parameterImages;
@@ -54,11 +55,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *domain;
 @property (strong, nonatomic, setter=_setExtensionBundleId:) NSString *extensionBundleId;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
@@ -70,6 +74,7 @@
 @property (copy, nonatomic) NSDictionary *parametersByName;
 @property (readonly, copy, nonatomic, getter=_sortedParameterImages) NSArray *sortedParameterImages;
 @property (copy, nonatomic) NSString *suggestedInvocationPhrase;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
@@ -90,6 +95,7 @@
 - (id)_defaultImageNameWithSchema:(id)arg1;
 - (id)_dictionaryRepresentation;
 - (id)_emptyCopy;
+- (void)_enumerateFileURLsWithMutatingBlock:(CDUnknownBlockType)arg1;
 - (id)_imageForParameter:(id)arg1;
 - (id)_impl;
 - (id)_inCodable;

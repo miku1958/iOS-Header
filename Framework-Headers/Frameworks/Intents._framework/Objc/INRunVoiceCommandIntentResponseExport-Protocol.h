@@ -7,7 +7,7 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class INArchivedObject, NSDictionary, NSNumber, NSString;
+@class INArchivedObject, NSArray, NSDictionary, NSNumber, NSString;
 
 @protocol INRunVoiceCommandIntentResponseExport <NSObject, JSExport>
 
@@ -20,6 +20,7 @@
 @property (copy, nonatomic) NSString *localizedAppName;
 @property (copy, nonatomic) NSDictionary *parameters;
 @property (copy, nonatomic) NSString *responseTemplate;
+@property (copy, nonatomic) NSArray *steps;
 @property (nonatomic) long long toggleState;
 @property (copy, nonatomic) INArchivedObject *underlyingIntent;
 @property (copy, nonatomic) INArchivedObject *underlyingIntentResponse;

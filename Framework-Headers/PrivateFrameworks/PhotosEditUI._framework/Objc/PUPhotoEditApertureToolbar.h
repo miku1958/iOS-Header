@@ -9,7 +9,7 @@
 #import <PhotosEditUI/PUApertureSliderDelegate-Protocol.h>
 #import <PhotosEditUI/PUPhotoEditLayoutDynamicAdaptable-Protocol.h>
 
-@class NSMutableArray, NSString, PUApertureSlider, UILabel, UIView;
+@class NSMutableArray, NSString, PUApertureSlider, UILabel, UIView, _UIBackdropView;
 @protocol PUPhotoEditApertureToolbarDelegate;
 
 __attribute__((visibility("hidden")))
@@ -17,19 +17,22 @@ __attribute__((visibility("hidden")))
 {
     UIView *_containerView;
     UIView *_solidBackgroundView;
-    UIView *_backdropBackgroundView;
+    _UIBackdropView *_backdropBackgroundView;
     BOOL _isResizing;
-    struct CGSize _cachedContainerSize;
+    struct CGSize _cachedSize;
     NSMutableArray *_constraints;
     BOOL _useTranslucentBackground;
     long long _layoutOrientation;
     id<PUPhotoEditApertureToolbarDelegate> _delegate;
+    double _sliderLength;
+    NSString *_backdropViewGroupName;
     PUApertureSlider *_slider;
     UILabel *_depthEffectLabel;
     UILabel *_valueLabel;
 }
 
 @property (readonly, nonatomic) double apertureValue;
+@property (copy, nonatomic) NSString *backdropViewGroupName; // @synthesize backdropViewGroupName=_backdropViewGroupName;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUPhotoEditApertureToolbarDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UILabel *depthEffectLabel; // @synthesize depthEffectLabel=_depthEffectLabel;
@@ -42,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double originalApertureValue;
 @property (readonly, nonatomic) struct UIEdgeInsets preferredPreviewViewInsets;
 @property (strong, nonatomic) PUApertureSlider *slider; // @synthesize slider=_slider;
+@property (nonatomic) double sliderLength; // @synthesize sliderLength=_sliderLength;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL useTranslucentBackground; // @synthesize useTranslucentBackground=_useTranslucentBackground;
 @property (strong, nonatomic) UILabel *valueLabel; // @synthesize valueLabel=_valueLabel;

@@ -6,33 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class NSData;
+#import <CoreTelephony/CoreTelephonyClientSubscriberDelegate-Protocol.h>
 
-@interface CTSubscriber : NSObject
+@class CTServiceDescriptor, CoreTelephonyClient, NSData, NSString;
+@protocol CTSubscriberDelegate;
+
+@interface CTSubscriber : NSObject <CoreTelephonyClientSubscriberDelegate>
 {
-    struct __CTServerConnection {
-        struct __CFRuntimeBase {
-            unsigned long long _field1;
-            _Atomic unsigned long long _field2;
-        } _field1;
-        struct dispatch_queue_s *_field2;
-        struct CTServerState *_field3;
-        unsigned char _field4;
-        unsigned char _field5;
-        unsigned int _field6;
-        struct _xpc_connection_s *_field7;
-    } *_server;
-    struct vector<dispatch::block<void (^)(NSDictionary *)>, std::__1::allocator<dispatch::block<void (^)(NSDictionary *)>>> _authCallbacks;
+    struct queue _queue;
+    CoreTelephonyClient *_client;
+    id<CTSubscriberDelegate> _delegate;
+    CTServiceDescriptor *_descriptor;
 }
 
 @property (readonly, strong, nonatomic) NSData *carrierToken; // @dynamic carrierToken;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<CTSubscriberDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) CTServiceDescriptor *descriptor; // @synthesize descriptor=_descriptor;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *identifier;
+@property (readonly) Class superclass;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)authTokenChanged:(id)arg1;
+- (void)authenticate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)authenticateWithInfo:(id)arg1 handleResult:(CDUnknownBlockType)arg2;
-- (void)dealloc;
-- (void)handleAuthCallback:(id)arg1;
 - (id)init;
+- (id)initWithDescriptor:(id)arg1;
+- (id)initWithDescriptor:(id)arg1 client:(id)arg2;
 - (BOOL)refreshCarrierToken;
 
 @end

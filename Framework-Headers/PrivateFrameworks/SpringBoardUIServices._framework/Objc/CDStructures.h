@@ -56,7 +56,16 @@ typedef struct {
     BOOL showScanningState;
     BOOL showScanningStateDuringFaceDetect;
     double minimumDurationBeforeShowScanningState;
-} CDStruct_4613c6c6;
+    BOOL bkCoachingHintsEnabled;
+    double minimumDurationBetweenLeavingCoachingAndCoaching;
+    double minimumDurationShowingCoaching;
+    double durationOnCameraCoveredGlyphBeforeCoaching;
+    double durationToSuppressCameraCoveredWhenWakingWithSmartCover;
+    BOOL coachingDelaysUnlock;
+    BOOL suppressFaceIDDisabledState;
+    BOOL spinBeforeCoaching;
+    unsigned long long substate;
+} CDStruct_29b32c11;
 
 typedef struct {
     long long fromState;

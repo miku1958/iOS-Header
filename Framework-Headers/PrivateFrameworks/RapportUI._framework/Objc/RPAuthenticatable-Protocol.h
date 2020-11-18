@@ -9,6 +9,7 @@
 
 @protocol RPAuthenticatable
 
+@property (copy, nonatomic) CDUnknownBlockType authCompletionHandler;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType hidePasswordHandler;
 @property (nonatomic) unsigned int pairSetupFlags;

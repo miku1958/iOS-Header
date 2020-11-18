@@ -6,11 +6,9 @@
 
 #import <UIKit/UIView.h>
 
-@class MTMaterialView;
-
 @interface MediaControlsMaterialView : UIView
 {
-    MTMaterialView *_materialView;
+    UIView *_backgroundView;
     UIView *_highlightView;
     BOOL _highlighted;
 }

@@ -33,6 +33,7 @@
 
 + (id)graphWithDevice:(id)arg1 resultImage:(id)arg2;
 + (id)graphWithDevice:(id)arg1 resultImage:(id)arg2 resultImageIsNeeded:(BOOL)arg3;
++ (id)graphWithDevice:(id)arg1 resultImages:(id)arg2 resultsAreNeeded:(BOOL *)arg3;
 + (const struct MPSLibraryInfo *)libraryInfo;
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -45,10 +46,12 @@
 - (id)encodeToCommandBuffer:(id)arg1 sourceImages:(id)arg2 sourceStates:(id)arg3 intermediateImages:(id)arg4 destinationStates:(id)arg5;
 - (void)encodeWithCoder:(id)arg1;
 - (id)executeAsyncWithSourceImages:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)initTrainingGraphWithDevice:(id)arg1 resultImage:(id)arg2 resultImageIsNeeded:(BOOL)arg3 gradientCustomizationBlock:(CDUnknownBlockType)arg4;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1 resultImage:(id)arg2;
 - (id)initWithDevice:(id)arg1 resultImage:(id)arg2 resultImageIsNeeded:(BOOL)arg3;
+- (id)initWithDevice:(id)arg1 resultImages:(id)arg2 resultsAreNeeded:(BOOL *)arg3;
+- (unsigned long long)readCountForSourceImageAtIndex:(unsigned long long)arg1;
+- (unsigned long long)readCountForSourceStateAtIndex:(unsigned long long)arg1;
 - (void)reloadFromDataSources;
 - (void)setOptions:(unsigned long long)arg1;
 

@@ -14,6 +14,7 @@
 @interface PKGlyphView : UIView <PKFingerprintGlyphViewDelegate>
 {
     long long _style;
+    BOOL _isPad;
     unsigned long long _transitionIndex;
     BOOL _transitioning;
     BOOL _transitioningAnimated;
@@ -38,6 +39,7 @@
     double _phoneAspectRatio;
     CALayer *_customImageLayer;
     struct UIColor *_secondaryColor;
+    unsigned int _userIntentEdge;
     long long _colorMode;
     UIColor *_primaryColor;
     struct CGImage *_customImage;
@@ -57,6 +59,7 @@
 @property (readonly, copy, nonatomic) UIColor *primaryColor; // @synthesize primaryColor=_primaryColor;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned int userIntentEdge; // @synthesize userIntentEdge=_userIntentEdge;
 
 + (BOOL)automaticallyNotifiesObserversOfState;
 + (id)sharedStaticResources;
@@ -83,6 +86,7 @@
 - (void)_updateLastAnimationTimeWithAnimationOfDuration:(double)arg1;
 - (void)_updatePhoneLayoutWithTransitionIndex:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)_updatePhoneWiggleIfNecessary;
+- (void)_updateUserIntentLayerRotation;
 - (void)_updateUserIntentLayoutAnimated:(BOOL)arg1;
 - (id)createCustomImageLayer;
 - (void)dealloc;
@@ -98,6 +102,7 @@
 - (void)setState:(long long)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)tintColorDidChange;
 - (void)updateRasterizationScale:(double)arg1;
+- (void)updateRotation;
 
 @end
 

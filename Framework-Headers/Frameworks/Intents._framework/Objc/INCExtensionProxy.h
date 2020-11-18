@@ -8,7 +8,7 @@
 
 #import <IntentsCore/INCExtensionProxy-Protocol.h>
 
-@class INCExtensionConnection, NSExtension;
+@class INCExtensionConnection, NSExtension, NSValue;
 @protocol INExtensionContextVending;
 
 @interface INCExtensionProxy : NSObject <INCExtensionProxy>
@@ -17,12 +17,14 @@
     INCExtensionConnection *_connection;
     NSExtension *_extension;
     id<INExtensionContextVending> _vendorRemote;
+    NSValue *_auditTokenValue;
     CDUnknownBlockType _imageCachingHandler;
     CDUnknownBlockType _imageProcessingHandler;
     CDUnknownBlockType _responseHandler;
     CDUnknownBlockType _backgroundAppHandler;
 }
 
+@property (readonly, nonatomic) NSValue *_auditTokenValue; // @synthesize _auditTokenValue;
 @property (readonly, nonatomic) INCExtensionConnection *_connection; // @synthesize _connection;
 @property (readonly, nonatomic) NSExtension *_extension; // @synthesize _extension;
 @property (readonly, nonatomic, getter=_isExtensionBeingDebugged) BOOL _extensionBeingDebugged;
@@ -35,8 +37,9 @@
 
 + (void)initialize;
 - (void).cxx_destruct;
-- (id)_initWithConnection:(id)arg1 extension:(id)arg2 vendorRemote:(id)arg3;
+- (id)_initWithConnection:(id)arg1 extension:(id)arg2 vendorRemote:(id)arg3 auditTokenValue:(id)arg4;
 - (BOOL)_isIntentRestrictedWhileProtectedDataUnavailableWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_issueSandboxExtensionsForFileURLsIfNeededToIntent:(id)arg1;
 - (id)_processIntent:(id)arg1 intentResponse:(id)arg2 withCacheItems:(id)arg3;
 - (void)confirmIntentWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleIntentWithCompletionHandler:(CDUnknownBlockType)arg1;

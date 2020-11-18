@@ -7,12 +7,13 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class INArchivedObject, NSNumber, NSString;
+@class INArchivedObject, NSArray, NSNumber, NSString;
 
 @protocol INRunWorkflowIntentResponseExport <NSObject, JSExport>
 
 @property (readonly, nonatomic) long long code;
 @property (copy, nonatomic) NSNumber *continueRunning;
+@property (copy, nonatomic) NSArray *steps;
 @property (copy, nonatomic) INArchivedObject *underlyingIntent;
 @property (copy, nonatomic) INArchivedObject *underlyingIntentResponse;
 @property (copy, nonatomic) NSString *utterance;

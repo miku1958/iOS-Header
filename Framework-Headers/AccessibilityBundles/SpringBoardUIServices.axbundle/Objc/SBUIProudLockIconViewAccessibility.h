@@ -19,7 +19,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)lockViewAccessibilityLabel;
 - (BOOL)lockViewIsAccessibilityElement;
-- (void)setState:(long long)arg1 animated:(BOOL)arg2;
+- (void)setState:(long long)arg1 animated:(BOOL)arg2 options:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

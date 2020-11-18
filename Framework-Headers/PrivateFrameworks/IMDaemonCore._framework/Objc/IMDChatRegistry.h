@@ -48,6 +48,7 @@
 - (void)__addChatToGroupIDChatIndex:(id)arg1;
 - (void)__removeChatFromGroupIDChatIndex:(id)arg1;
 - (id)_activeTUConversations;
+- (void)_addHandlesToPCMIDMapForChatParticipants:(id)arg1 pcmidToHandleMap:(id)arg2;
 - (void)_addTUConversationToMessageStore:(id)arg1 shouldBroadcast:(BOOL)arg2;
 - (id)_aliasToHandlesMap:(id)arg1;
 - (id)_allChatInfo;
@@ -66,7 +67,10 @@
 - (id)_existingiMessageChatForChatIdentifier:(id)arg1 style:(unsigned char)arg2;
 - (id)_findChatWinnerInDuplicateChatArray:(struct NSArray *)arg1 fixDisplayName:(BOOL *)arg2;
 - (id)_findLosingChatGUIDsInArrayOfChats:(struct NSArray *)arg1 withWinner:(id)arg2;
+- (void)_fixUpChatParticipantsIfNeeded:(id)arg1;
 - (void)_forceReloadChats:(BOOL)arg1;
+- (id)_handlesThatNeedPCMIDUpdatedGivenArray:(id)arg1;
+- (id)_handlesThatNeedPCMIDsUpdatedGivenMap:(id)arg1;
 - (id)_initiatorForConversation:(id)arg1 chat:(id)arg2;
 - (void)_insertChatUsingCKRecord:(id)arg1;
 - (void)_insertCurrentActiveTUConversationsIfNeeded;
@@ -76,13 +80,20 @@
 - (void)_markForksAsSyncedForChat:(id)arg1;
 - (BOOL)_mergeDuplicateGroupsIfNeeded;
 - (id)_messageStore;
+- (void)_noteDownAttemptToMigratePersonCentricIDsOnIMDHandles;
+- (id)_pcmidToHandlesMapForChats:(id)arg1;
+- (id)_personCentricIDForHandleID:(id)arg1;
 - (void)_populateCNRecordIDForHandles:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)_saveChats;
 - (BOOL)_shouldAddNewItemForConversation:(id)arg1;
+- (BOOL)_shouldMigrateIMDHandlesPersonCentricIDsOnAllChats;
 - (BOOL)_shouldUpdateSyncStatsForChat:(id)arg1 originalSyncState:(long long)arg2;
 - (BOOL)_shouldUpdateSyncStatsForMessage:(id)arg1 originalSyncState:(long long)arg2;
 - (id)_statsCollector;
 - (BOOL)_updateDuplicateUnnamedGroupsWithNewGroupIDIfNeeded;
+- (void)_updateHandleInDBWithPCMID:(id)arg1 handle:(id)arg2;
+- (void)_updatePCMIDForHandle:(id)arg1;
+- (void)_updatePCMIDOnHandles:(id)arg1;
 - (void)_updateSyncStatisticsForChat:(id)arg1 incrementTotalCount:(unsigned long long)arg2;
 - (void)_updateSyncStatisticsForMessage:(id)arg1 incrementTotalCount:(unsigned long long)arg2;
 - (void)addChat:(id)arg1;
@@ -132,6 +143,7 @@
 - (void)removeItem:(id)arg1 fromChat:(id)arg2;
 - (void)removeMessage:(id)arg1 fromChat:(id)arg2;
 - (BOOL)repairDuplicateChatsIfNeeded;
+- (void)repairPersonCentricIDsOnChatsIfNeeded;
 - (void)resetChatSyncStateForRecord:(id)arg1;
 - (BOOL)saveChats;
 - (void)setUpInitialConversationManager;

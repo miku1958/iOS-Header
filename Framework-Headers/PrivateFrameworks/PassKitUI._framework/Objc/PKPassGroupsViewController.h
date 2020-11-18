@@ -24,7 +24,7 @@
 @interface PKPassGroupsViewController : UIViewController <PKGroupsControllerDelegate, PKPassGroupStackViewDatasource, PKPassGroupStackViewDelegate, UIScrollViewDelegate, PKForegroundActiveArbiterObserver, PKPaymentServiceDelegate, PKPaymentSetupDelegate, PKPerformActionViewControllerDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKPGSVFooterViewDelegate, PKPassPersonalizationViewControllerDelegate>
 {
     long long _backdropStyle;
-    BOOL _invalidated;
+    long long _invalidationStatus;
     PKPassGroupStackView *_groupStackView;
     _UIBackdropView *_headerBackground;
     _UIBackdropView *_footerBackground;
@@ -90,6 +90,7 @@
 - (void)_handlePeerPaymentAccountDidChangeNotification:(id)arg1;
 - (void)_handleProvisioningError:(id)arg1;
 - (void)_handleStatusBarChange:(id)arg1;
+- (void)_invalidateForType:(long long)arg1;
 - (void)_localeDidChangeNotification:(id)arg1;
 - (id)_passFromGroupsControllerWithUniqueIdentifier:(id)arg1;
 - (id)_passPendingActivationToPresent;
@@ -130,6 +131,7 @@
 - (void)groupStackView:(id)arg1 wantsTopContentSeparatorWithVisibility:(double)arg2 animated:(BOOL)arg3;
 - (BOOL)groupStackView:(id)arg1 willHaveHeaderViewForPassType:(unsigned long long)arg2;
 - (void)groupStackViewDidBeginReordering:(id)arg1;
+- (void)groupStackViewDidChangeCoachingState:(id)arg1;
 - (void)groupStackViewDidEndReordering:(id)arg1;
 - (BOOL)groupStackViewShouldAllowReordering:(id)arg1;
 - (BOOL)groupStackViewShouldShowHeaderViews:(id)arg1;
@@ -147,6 +149,7 @@
 - (void)invalidate;
 - (void)loadView;
 - (unsigned long long)numberOfGroups;
+- (void)partiallyInvalidate;
 - (void)passPersonalizationViewController:(id)arg1 didFinishPersonalizingPass:(id)arg2;
 - (void)paymentDeviceDidEnterFieldWithProperties:(id)arg1;
 - (void)paymentSetupDidFinish:(id)arg1;
@@ -195,7 +198,6 @@
 - (BOOL)shouldAutorotate;
 - (void)startPaymentPreflight:(id)arg1 withPaymentSetupMode:(long long)arg2 referrerIdentifier:(id)arg3 paymentNetwork:(id)arg4;
 - (unsigned long long)supportedInterfaceOrientations;
-- (void)terminateFieldDetect;
 - (void)updateLockscreenIdleTimer;
 - (void)updatePassesIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateRegionSupportIfNecessary;

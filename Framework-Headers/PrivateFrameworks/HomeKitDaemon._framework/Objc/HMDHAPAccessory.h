@@ -23,6 +23,7 @@
     BOOL _timeInformationServiceExists;
     BOOL _supportsTargetController;
     BOOL _keyGenerationInProgress;
+    BOOL _hardwareSupport;
     BOOL _supportsRelay;
     unsigned char _keyGenerationType;
     BOOL _systemTimeNeedsUpdate;
@@ -76,6 +77,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableArray *discoveredServices; // @synthesize discoveredServices=_discoveredServices;
 @property (readonly, copy, nonatomic) NSNumber *hapInstanceId;
+@property (nonatomic) BOOL hardwareSupport; // @synthesize hardwareSupport=_hardwareSupport;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableSet *identifiersForBridgedAccessories; // @synthesize identifiersForBridgedAccessories=_identifiersForBridgedAccessories;
 @property BOOL keyGenerationInProgress; // @synthesize keyGenerationInProgress=_keyGenerationInProgress;
@@ -169,6 +171,7 @@
 - (BOOL)_resolveAudioAbility:(id)arg1;
 - (BOOL)_resolveSupportedSiriInputType:(id)arg1;
 - (void)_retrieveStateForTrackedAccessory:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_saveHardwareSupport:(BOOL)arg1;
 - (void)_saveTargetUUIDs:(id)arg1;
 - (void)_setCurrentRelayAccessoryState:(unsigned long long)arg1;
 - (void)_setCurrentTimeCharacteristic:(id)arg1;
@@ -286,6 +289,7 @@
 - (id)messageReceiverChildren;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (id)namesOfServicesShowingTilesInHomeApp;
+- (void)notifyClientsOfTargetControlSupportUpdate;
 - (void)notifyValue:(id)arg1 previousValue:(id)arg2 error:(id)arg3 forCharacteristic:(id)arg4 requestMessage:(id)arg5;
 - (void)notifyingCharacteristicStateNumberUpdated:(id)arg1;
 - (void)pairingsWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -312,6 +316,7 @@
 - (void)requestResource:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)resetNotificationEnabledTime;
 - (id)retrieveUpdatedTransportInfoArray:(id)arg1;
+- (void)saveHardwareSupport:(BOOL)arg1;
 - (void)savePublicKeyToKeychain;
 - (void)saveTargetUUIDs:(id)arg1;
 - (void)sendTargetControlWhoAmIWithIdentifier:(unsigned int)arg1;

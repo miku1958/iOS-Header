@@ -20,6 +20,7 @@
 
 - (void).cxx_destruct;
 - (id)_pendingFollowUpWithBackingIdentifier:(id)arg1 error:(id *)arg2;
+- (id)clearFollowUpItem:(id)arg1;
 - (id)clearFollowUpWithIdentifier:(id)arg1 account:(id)arg2;
 - (id)init;
 - (id)pendingFollowUpWithIdentifier:(id)arg1 account:(id)arg2;

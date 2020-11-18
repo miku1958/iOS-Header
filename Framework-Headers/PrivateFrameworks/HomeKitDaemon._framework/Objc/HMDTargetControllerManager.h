@@ -45,8 +45,8 @@
 - (void)__accessoryIsReachable:(id)arg1;
 - (void)__accessoryNameUpdated:(id)arg1;
 - (void)__accessoryRemoved:(id)arg1;
-- (void)__characteristicsChanged:(id)arg1;
-- (void)__handleActiveIdentifierChanges:(id)arg1;
+- (void)__characteristicEventsReceived:(id)arg1;
+- (void)__handleActiveIdentifierChange:(id)arg1 forCharacteristic:(id)arg2;
 - (id)__refreshedConfiguration:(id)arg1;
 - (void)_addTargets:(id)arg1;
 - (void)_auditTargets:(id)arg1;

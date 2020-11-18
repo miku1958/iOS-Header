@@ -17,12 +17,14 @@
     id _delegateContext;
     id _boostContext;
     NSString *_uniqueID;
+    NSString *_instanceID;
     NSString *_accountID;
     NSSet *_destinations;
     NSString *_fromID;
     IDSBaseSocketPairConnection *_unreliableSocketPairConnection;
     CUTWeakReference *_delegate;
     NSObject<OS_dispatch_queue> *_queue;
+    BOOL _isInvalidated;
     unsigned int _state;
     long long _transportType;
     unsigned long long _connectionCountHint;
@@ -70,6 +72,7 @@
 - (void)groupSessionDidTerminate:(id)arg1;
 - (void)groupSessionEnded:(id)arg1 withReason:(unsigned int)arg2 error:(id)arg3;
 - (id)initWithAccount:(id)arg1 destinations:(id)arg2 options:(id)arg3 delegateContext:(id)arg4;
+- (void)invalidate;
 - (void)joinGroupSession;
 - (void)joinWithOptions:(id)arg1;
 - (void)leaveGroupSession;

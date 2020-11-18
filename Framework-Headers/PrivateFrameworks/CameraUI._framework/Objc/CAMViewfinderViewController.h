@@ -391,6 +391,7 @@
 @property (readonly, nonatomic) BOOL shouldHideQRCodeInstructionLabel;
 @property (readonly, nonatomic) BOOL shouldHideTimerButton;
 @property (readonly, nonatomic) BOOL shouldHideTopBar;
+@property (readonly, nonatomic) BOOL shouldLayoutLightingNameBadgeAtBottom;
 @property (readonly, nonatomic) BOOL shouldShiftPreviewForUtilityBar;
 @property (nonatomic, getter=isShowingStandardControls) BOOL showingStandardControls; // @synthesize showingStandardControls=_showingStandardControls;
 @property (readonly) Class superclass;
@@ -611,7 +612,7 @@
 - (BOOL)_isHDRSupportedForGraphConfiguration:(id)arg1;
 - (BOOL)_isLivePhotoSupportedForGraphConfiguration:(id)arg1;
 - (BOOL)_isLivePhotoSupportedForMode:(long long)arg1 device:(long long)arg2;
-- (BOOL)_isMenuButtonConflictingWithBadge:(id)arg1;
+- (BOOL)_isMenuButtonConflictingWithView:(id)arg1;
 - (BOOL)_isPinchingForZoom;
 - (BOOL)_isShowingBurstIndicatorView;
 - (BOOL)_isShowingCameraRoll;
@@ -781,6 +782,7 @@
 - (void)_updateAGGDForVideoCaptureRequest:(id)arg1;
 - (void)_updateAGGDForVideoCaptureResponse:(id)arg1 request:(id)arg2;
 - (void)_updateAllControlsWithContentSize:(id)arg1;
+- (void)_updateApertureAggregateDictionariesForRequest:(id)arg1;
 - (void)_updateBadgeVisibilityAnimated:(BOOL)arg1;
 - (void)_updateBarBackgroundStyleForMode:(long long)arg1 animated:(BOOL)arg2;
 - (void)_updateCameraRollPreviewGestureRecognizer;
@@ -937,6 +939,7 @@
 - (void)pressStillDuringVideoForRemoteShutter;
 - (BOOL)previewViewController:(id)arg1 gestureRecognizer:(id)arg2 shouldRequireFailureOfGestureRecognizer:(id)arg3;
 - (void)previewViewControllerDidChangeFocusOrExposureLocked:(id)arg1 shouldAnimate:(BOOL)arg2;
+- (void)previewViewControllerDidChangeVideoFillAspectRatio:(id)arg1;
 - (void)remoteShutter:(id)arg1 focusOn:(struct CGPoint)arg2;
 - (void)remoteShutter:(id)arg1 setCaptureDevice:(long long)arg2;
 - (void)remoteShutter:(id)arg1 setFlashMode:(long long)arg2;

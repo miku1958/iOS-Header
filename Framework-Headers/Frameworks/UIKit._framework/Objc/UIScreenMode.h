@@ -24,7 +24,6 @@
 - (struct CGSize)_sizeWithLevel:(unsigned long long)arg1;
 - (id)description;
 - (id)initWithDisplayMode:(id)arg1 mainScreen:(BOOL)arg2;
-- (id)valueForKey:(id)arg1;
 
 @end
 

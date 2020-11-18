@@ -23,6 +23,7 @@
     unsigned int _pairVerifyFlags;
     int _passwordType;
     NSString *_password;
+    CDUnknownBlockType _authCompletionHandler;
     CDUnknownBlockType _showPasswordHandler;
     CDUnknownBlockType _hidePasswordHandler;
     CDUnknownBlockType _promptForPasswordHandler;
@@ -35,6 +36,7 @@
     NSString *_serviceIdentifier;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType authCompletionHandler; // @synthesize authCompletionHandler=_authCompletionHandler;
 @property (strong, nonatomic) NSString *destinationID; // @synthesize destinationID=_destinationID;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType hidePasswordHandler; // @synthesize hidePasswordHandler=_hidePasswordHandler;

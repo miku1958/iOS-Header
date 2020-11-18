@@ -32,6 +32,8 @@
     double _lastTrackingDate;
     long long _orientation;
     BOOL _lowLight;
+    BOOL _isSensorCovered;
+    BOOL limitRoll;
     BOOL _faceTrackingPaused;
     BOOL _skipUpdates;
     BOOL _faceIsTracked;
@@ -53,8 +55,10 @@
 @property (nonatomic) long long interfaceOrientation;
 @property (readonly) unsigned long long lastTrackingCaptureTimestamp; // @synthesize lastTrackingCaptureTimestamp=_lastTrackingCaptureTimestamp;
 @property (readonly) double lastTrackingDate; // @synthesize lastTrackingDate=_lastTrackingDate;
+@property (nonatomic) BOOL limitRoll; // @synthesize limitRoll;
 @property (readonly) BOOL lowLight; // @synthesize lowLight=_lowLight;
 @property (readonly) CDStruct_14d5dc5e rawTransform;
+@property (readonly, getter=isSensorCovered) BOOL sensorCovered; // @synthesize sensorCovered=_isSensorCovered;
 @property (nonatomic) BOOL shouldConstraintHeadPose; // @synthesize shouldConstraintHeadPose=_shouldConstraintHeadPose;
 @property (nonatomic) BOOL skipUpdates; // @synthesize skipUpdates=_skipUpdates;
 
@@ -76,6 +80,7 @@
 - (void)run;
 - (void)setFaceIsTracked:(BOOL)arg1;
 - (void)setLowLight:(BOOL)arg1;
+- (void)setSensorCovered:(BOOL)arg1;
 - (void)startRecording;
 - (void)stop;
 - (void)stopRecording;

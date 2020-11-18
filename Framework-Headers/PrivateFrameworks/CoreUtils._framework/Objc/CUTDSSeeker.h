@@ -6,13 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, NSString;
+#import <CoreUtils/CUTDSXPCClientInterface-Protocol.h>
+#import <CoreUtils/NSSecureCoding-Protocol.h>
+
+@class NSMutableSet, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
-@interface CUTDSSeeker : NSObject
+@interface CUTDSSeeker : NSObject <CUTDSXPCClientInterface, NSSecureCoding>
 {
+    BOOL _activateCalled;
     BOOL _invalidateCalled;
+    BOOL _invalidateDone;
     struct LogCategory *_ucat;
+    NSXPCConnection *_xpcCnx;
     BOOL _directedOnly;
     BOOL _passive;
     int _dataLinkType;
@@ -23,7 +29,9 @@
     CDUnknownBlockType _invalidationHandler;
     NSString *_label;
     NSString *_serviceType;
+    NSString *_xpcServiceName;
     struct NSMutableSet *_endpoints;
+    unsigned long long _tdsHashProvide;
     unsigned long long _tdsHashSeek;
 }
 
@@ -38,16 +46,28 @@
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (nonatomic) BOOL passive; // @synthesize passive=_passive;
 @property (copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
+@property (nonatomic) unsigned long long tdsHashProvide; // @synthesize tdsHashProvide=_tdsHashProvide;
 @property (nonatomic) unsigned long long tdsHashSeek; // @synthesize tdsHashSeek=_tdsHashSeek;
+@property (copy, nonatomic) NSString *xpcServiceName; // @synthesize xpcServiceName=_xpcServiceName;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_activateDirectWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_activateXPCWithCompletion:(CDUnknownBlockType)arg1 reactivate:(BOOL)arg2;
+- (void)_ensureXPCStarted;
+- (void)_interrupted;
 - (void)_invalidate;
+- (void)_invalidated;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (void)invalidate;
 - (void)updateEndpointsForDevices:(struct NSMutableDictionary *)arg1;
+- (void)xpcTDSProviderStateChanged:(unsigned int)arg1;
+- (void)xpcTDSSeekerEndpointFound:(id)arg1;
+- (void)xpcTDSSeekerEndpointLost:(id)arg1;
 
 @end
 

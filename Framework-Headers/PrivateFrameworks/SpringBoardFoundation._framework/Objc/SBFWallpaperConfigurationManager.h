@@ -77,6 +77,7 @@
 - (id)migratedWallpaperOptionsForWallpaperOptions:(id)arg1 originalImageSize:(struct CGSize)arg2;
 - (id)normalizeImage:(id)arg1;
 - (void)notifyDelegateOfChangesToVariants:(long long)arg1;
+- (unsigned long long)optionsForSettingWallpaperFromDefaultWallpaperConfiguration;
 - (long long)parallaxDeviceType;
 - (double)parallaxFactorForCropRect:(struct CGRect)arg1 portrait:(BOOL)arg2 forImageSize:(struct CGSize)arg3 zoomScale:(double)arg4;
 - (void)performMigrationWithFailureHandler:(CDUnknownBlockType)arg1;

@@ -6,11 +6,12 @@
 
 #import <ContactsUI/NSObject-Protocol.h>
 
-@class CNContactInlineActionsViewController, NSString;
+@class CNContactInlineActionsViewController, CNUIGeminiDataSource, NSString;
 
 @protocol CNContactInlineActionsViewControllerDelegate <NSObject>
 
 @optional
 - (void)contactInlineActionsViewController:(CNContactInlineActionsViewController *)arg1 willPerformActionOfType:(NSString *)arg2;
+- (CNUIGeminiDataSource *)geminiDataSource;
 @end
 

@@ -6,18 +6,19 @@
 
 #import <ViceroyTrace/VCAggregator.h>
 
-#import <ViceroyTrace/DownlinkSegmentDelegate-Protocol.h>
+#import <ViceroyTrace/SegmentStatsDelegate-Protocol.h>
 
 @class DownlinkSegment, NSMutableDictionary, NSString, UplinkSegment;
 
 __attribute__((visibility("hidden")))
-@interface VCAggregatorMultiway : VCAggregator <DownlinkSegmentDelegate>
+@interface VCAggregatorMultiway : VCAggregator <SegmentStatsDelegate>
 {
     NSString *_currentUplinkSegmentKey;
     UplinkSegment *_currentUplinkSegment;
     NSString *_currentDownlinkSegmentKey;
     DownlinkSegment *_currentDownlinkSegment;
     NSMutableDictionary *_calls;
+    NSMutableDictionary *_internalErrors;
     unsigned int _participantCounter;
     double _lastParticipantNumberChangeTime;
     double _numberOfParticipantsDuration[40];
@@ -28,12 +29,23 @@ __attribute__((visibility("hidden")))
     unsigned int _sessionAggregatedDurationTicks;
     unsigned int _sessionUplinkTargetBitrateSwitchCount;
     unsigned long long _sessionUplinkBWEstimationSum;
+    unsigned int _sessionUplinkBWEstimationCounter;
     unsigned long long _sessionDownlinkBWEstimationSum;
+    unsigned int _sessionDownlinkBWEstimationCounter;
     unsigned long long _sessionUplinkTargetBitrateSum;
+    unsigned int _sessionUplinkTargetBitrateCounter;
+    unsigned long long _sessionDownlinkTargetBitrateSum;
+    unsigned int _sessionDownlinkTargetBitrateCounter;
     unsigned long long _sessionUplinkActualBitrateSum;
-    unsigned long long _sessionRoundTripTimeSum;
-    unsigned long long _sessionTotalReceivedSum;
-    unsigned long long _sessionTotalLostSum;
+    unsigned int _sessionUplinkActualBitrateCounter;
+    unsigned long long _sessionDownlinkActualBitrateSum;
+    unsigned int _sessionDownlinkActualBitrateCounter;
+    unsigned long long _sessionDownlinkRoundTripTimeSum;
+    unsigned int _sessionDownlinkRoundTripTimeCounter;
+    unsigned long long _sessionDownlinkTotalPacketsReceivedSum;
+    unsigned long long _sessionDownlinkTotalLostSum;
+    unsigned long long _sessionUplinkTotalPacketsSentSum;
+    unsigned long long _sessionUplinkTotalLostSum;
     unsigned int _sessionEndReason;
     unsigned int _sessionDetailedEndReason;
     unsigned int _lastReportedDownlinkPacketsReceived;
@@ -41,6 +53,7 @@ __attribute__((visibility("hidden")))
     unsigned int _lastReportedUplinkPacketsReceived;
     unsigned int _lastReportedUplinkPacketsSent;
     unsigned int _lastReportedUplinkBytesSent;
+    double _sessionCreatedTime;
     BOOL _isFullsizeUI;
 }
 
@@ -61,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (void)audioEnabled:(id)arg1;
 - (unsigned int)audioErasureCount;
 - (double)audioErasureTotalTime;
+- (BOOL)currentUISize;
 - (void)dealloc;
 - (void)finalizeCall:(id)arg1;
 - (void)flushCurrentDownlinkSegment;
@@ -70,15 +84,28 @@ __attribute__((visibility("hidden")))
 - (id)initWithDelegate:(id)arg1;
 - (int)initialSettledBitrate;
 - (id)interfaceTypeIndicator;
+- (BOOL)isVideoDegraded;
 - (BOOL)isWhitelistedEvent:(unsigned short)arg1;
 - (int)learntBitrateForSegment:(id)arg1 defaultValue:(int)arg2;
 - (void)processActualBitrateChange:(id)arg1;
 - (void)processAudioStreamSwitch:(id)arg1;
+- (void)processDownlinkActualBitrate:(unsigned int)arg1;
+- (void)processDownlinkBWEstimation:(unsigned int)arg1;
 - (void)processDownlinkRateChange:(id)arg1;
+- (void)processDownlinkRoundTripTime:(unsigned int)arg1;
+- (void)processDownlinkTargetBitrate:(unsigned int)arg1;
 - (void)processEventWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3;
+- (void)processInternalErrorDetectedWithCode:(id)arg1;
 - (void)processNumberOfParticipants:(unsigned int)arg1;
 - (void)processParticipantTimingInfo:(id)arg1;
 - (void)processRTEvent:(id)arg1;
+- (void)processSessionInit;
+- (void)processSessionStart;
+- (void)processUISizeEventForParticipant:(id)arg1 isFullSize:(BOOL)arg2;
+- (void)processUplinkActualBitrate:(unsigned int)arg1;
+- (void)processUplinkBWEstimation:(unsigned int)arg1;
+- (void)processUplinkTargetBitrate:(unsigned int)arg1;
+- (void)processVideoDegraded:(BOOL)arg1 participantID:(id)arg2;
 - (void)processVideoStreamSwitch:(id)arg1;
 - (void)resetDownlinkSegment;
 - (void)resetUplinkSegment;
@@ -87,6 +114,7 @@ __attribute__((visibility("hidden")))
 - (double)significantVideoStallTotalTime;
 - (void)startDownlinkSegment;
 - (void)startUplinkSegment;
+- (double)timeWeightedNumberOfParticipants;
 - (void)updateSegment:(id)arg1 TBR:(int)arg2 ISBTR:(int)arg3 SATXBR:(int)arg4 SARBR:(int)arg5 BWE:(int)arg6;
 - (void)videoEnabled:(id)arg1;
 

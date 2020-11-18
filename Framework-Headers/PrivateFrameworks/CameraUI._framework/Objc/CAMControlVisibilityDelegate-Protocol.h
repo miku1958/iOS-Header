@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) BOOL shouldHideQRCodeInstructionLabel;
 @property (readonly, nonatomic) BOOL shouldHideTimerButton;
 @property (readonly, nonatomic) BOOL shouldHideTopBar;
+@property (readonly, nonatomic) BOOL shouldLayoutLightingNameBadgeAtBottom;
 @property (readonly, nonatomic) BOOL shouldShiftPreviewForUtilityBar;
 
 - (BOOL)shouldHideLightingNameBadgeForOrientation:(long long)arg1;

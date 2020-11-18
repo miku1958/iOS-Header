@@ -8,13 +8,13 @@
 
 #import <WebKit/_WKFormInputSession-Protocol.h>
 
-@class NSArray, NSString, UIView, WKContentView;
+@class NSArray, NSString, UIView;
 @protocol NSSecureCoding, _WKFocusedElementInfo;
 
 __attribute__((visibility("hidden")))
 @interface WKFormInputSession : NSObject <_WKFormInputSession>
 {
-    WKContentView *_contentView;
+    struct WeakObjCPtr<WKContentView> _contentView;
     struct RetainPtr<WKFocusedElementInfo> _focusedElementInfo;
     struct RetainPtr<UIView> _customInputView;
     struct RetainPtr<NSArray<UITextSuggestion *>> _suggestions;

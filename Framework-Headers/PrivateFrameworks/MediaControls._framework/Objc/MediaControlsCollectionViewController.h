@@ -100,7 +100,6 @@
 - (void)_transitionToDisplayMode:(long long)arg1 usingTransitionCoordinator:(id)arg2 assumingSize:(struct CGSize)arg3;
 - (void)_transitionToVisible:(BOOL)arg1;
 - (void)_transitionTopAndBottomViewControllersToVisible:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_updateContentInsets;
 - (void)_updateContentSize;
 - (void)_updateFrameForViewController:(id)arg1 atIndex:(long long)arg2 withCoordinator:(id)arg3 assumingSize:(struct CGSize)arg4;
 - (void)_updateFramesForActiveViewControllersWithCoordinator:(id)arg1 assumingSize:(struct CGSize)arg2;
@@ -130,6 +129,7 @@
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setSelectedItemIndex:(long long)arg1 animated:(BOOL)arg2 shouldScroll:(BOOL)arg3;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
+- (void)updateContentInsets;
 - (id)viewControllerForItemAtIndex:(long long)arg1;
 - (id)viewControllerForItemAtPoint:(struct CGPoint)arg1;
 - (id)viewControllerForSelectedItem;

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 
 + (id)geminiBadgeWithText:(id)arg1;
 - (void).cxx_destruct;
+- (void)setText:(id)arg1;
 
 @end
 

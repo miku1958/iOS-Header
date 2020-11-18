@@ -32,6 +32,7 @@
     BOOL _supportsMediaAccessControl;
     BOOL _supportsTargetControl;
     BOOL _supportsTargetController;
+    BOOL _targetControllerHardwareSupport;
     BOOL _paired;
     BOOL _needsReprovisioning;
     NSUUID *_uniqueIdentifier;
@@ -125,6 +126,7 @@
 @property (nonatomic) BOOL supportsTargetControl; // @synthesize supportsTargetControl=_supportsTargetControl;
 @property (nonatomic) BOOL supportsTargetController; // @synthesize supportsTargetController=_supportsTargetController;
 @property (copy) HMSymptomsHandler *symptomsHandler; // @synthesize symptomsHandler=_symptomsHandler;
+@property (nonatomic) BOOL targetControllerHardwareSupport; // @synthesize targetControllerHardwareSupport=_targetControllerHardwareSupport;
 @property (nonatomic) unsigned long long transportTypes; // @synthesize transportTypes=_transportTypes;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (copy, nonatomic) NSArray *uniqueIdentifiersForBridgedAccessories; // @synthesize uniqueIdentifiersForBridgedAccessories=_uniqueIdentifiersForBridgedAccessories;

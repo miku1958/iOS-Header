@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) double headerMaskingViewAlpha;
 @property (readonly, nonatomic) struct CGRect headerMaskingViewFrame;
 @property (readonly, nonatomic) double screenScale;
+@property (readonly, nonatomic) unsigned long long supportedLayoutOrientation;
 @property (readonly, nonatomic) struct CGRect userInfoFrame;
 @property (readonly, nonatomic) double verticalRuleAlpha;
 @property (readonly, nonatomic) struct CGRect verticalRuleFrame;

@@ -11,34 +11,24 @@
 
 @interface VMVoicemailCapabilities : NSObject <NSCopying, NSSecureCoding>
 {
-    BOOL _canChangeGreeting;
-    BOOL _canChangePassword;
-    BOOL _mailboxRequiresSetup;
     BOOL _transcriptionEnabled;
-    long long _mailboxGreetingState;
-    double _maximumGreetingDuration;
-    unsigned long long _minimumPasswordLength;
-    unsigned long long _maximumPasswordLength;
 }
 
-@property (readonly, nonatomic) BOOL canChangeGreeting; // @synthesize canChangeGreeting=_canChangeGreeting;
-@property (readonly, nonatomic) BOOL canChangePassword; // @synthesize canChangePassword=_canChangePassword;
-@property (readonly, nonatomic) long long mailboxGreetingState; // @synthesize mailboxGreetingState=_mailboxGreetingState;
-@property (readonly, nonatomic) BOOL mailboxRequiresSetup; // @synthesize mailboxRequiresSetup=_mailboxRequiresSetup;
-@property (readonly, nonatomic) double maximumGreetingDuration; // @synthesize maximumGreetingDuration=_maximumGreetingDuration;
-@property (readonly, nonatomic) unsigned long long maximumPasswordLength; // @synthesize maximumPasswordLength=_maximumPasswordLength;
-@property (readonly, nonatomic) unsigned long long minimumPasswordLength; // @synthesize minimumPasswordLength=_minimumPasswordLength;
 @property (readonly, nonatomic, getter=isTranscriptionEnabled) BOOL transcriptionEnabled; // @synthesize transcriptionEnabled=_transcriptionEnabled;
 
 + (BOOL)supportsSecureCoding;
++ (id)unarchivedObjectClasses;
++ (id)unarchivedObjectFromData:(id)arg1 error:(id *)arg2;
+- (id)archivedDataWithError:(id *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithCanChangeGreeting:(BOOL)arg1 canChangePassword:(BOOL)arg2 mailboxRequiresSetup:(BOOL)arg3 mailboxGreetingState:(long long)arg4 maximumGreetingDuration:(double)arg5 minimumPasswordLength:(unsigned long long)arg6 maximumPasswordLength:(unsigned long long)arg7 transcriptionEnabled:(BOOL)arg8;
 - (id)initWithCapabilities:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithTranscriptionEnabled:(BOOL)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToCapabilities:(id)arg1;
 

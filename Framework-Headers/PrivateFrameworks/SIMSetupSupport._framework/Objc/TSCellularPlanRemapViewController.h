@@ -11,7 +11,7 @@
 #import <SIMSetupSupport/UITableViewDataSource-Protocol.h>
 #import <SIMSetupSupport/UITableViewDelegate-Protocol.h>
 
-@class CTCellularPlanItem, CTDanglingPlanItem, NSArray, NSIndexPath, NSString, UIColor, UITableView, UITableViewCell;
+@class CTCellularPlanItem, CTDanglingPlanItem, NSArray, NSIndexPath, NSString, UITableView, UITableViewCell;
 @protocol TSSIMSetupFlowDelegate;
 
 @interface TSCellularPlanRemapViewController : BFFSplashController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, TSSetupFlowItem>
@@ -25,10 +25,8 @@
     CTCellularPlanItem *_defaultVoiceItem;
     UITableViewCell *_sectionFooter;
     NSIndexPath *_chosenTargetCellularPlanItem;
-    UIColor *_buttonSystemBlue;
 }
 
-@property (strong) UIColor *buttonSystemBlue; // @synthesize buttonSystemBlue=_buttonSystemBlue;
 @property (strong) NSIndexPath *chosenTargetCellularPlanItem; // @synthesize chosenTargetCellularPlanItem=_chosenTargetCellularPlanItem;
 @property (strong) CTDanglingPlanItem *danglingPlanItem; // @synthesize danglingPlanItem=_danglingPlanItem;
 @property (readonly, copy) NSString *debugDescription;

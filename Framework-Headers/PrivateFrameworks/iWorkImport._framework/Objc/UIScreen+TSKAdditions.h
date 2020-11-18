@@ -15,6 +15,7 @@
 + (double)tsk_expectedScreenScale;
 + (BOOL)tsk_is3xScreenScale;
 + (BOOL)tsk_pad1112H;
++ (BOOL)tsk_pad1194H;
 + (BOOL)tsk_pad1366H;
 + (BOOL)tsk_pad1366HOrLarger;
 + (BOOL)tsk_phoneUI568H;

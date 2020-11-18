@@ -61,6 +61,7 @@
 @property (nonatomic) float volume; // @synthesize volume=_volume;
 
 + (id)_speechVoiceForIdentifier:(id)arg1 language:(id)arg2 footprint:(long long)arg3;
++ (id)_speechVoiceForIdentifier:(id)arg1 language:(id)arg2 footprint:(long long)arg3 useFallbackDefault:(BOOL)arg4;
 + (id)allAvailableVoices;
 + (id)availableLanguageCodes;
 + (id)availableVoices;

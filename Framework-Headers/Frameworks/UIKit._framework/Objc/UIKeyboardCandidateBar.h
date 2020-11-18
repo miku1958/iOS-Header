@@ -98,6 +98,7 @@ __attribute__((visibility("hidden")))
 - (void)_scrollToFirstCandidateInSection:(long long)arg1 withAnimation:(BOOL)arg2;
 - (long long)_sectionForSectionIndex:(unsigned long long)arg1 candidateView:(id)arg2;
 - (unsigned long long)_sectionIndexForSection:(long long)arg1;
+- (BOOL)_selectedCellCloseToLeftBorder;
 - (BOOL)_shouldShowBorders;
 - (void)_showCandidateAtIndex:(unsigned long long)arg1 inSection:(long long)arg2 scrollCellToVisible:(BOOL)arg3 animated:(BOOL)arg4;
 - (void)_showPageAtIndexPath:(id)arg1;
@@ -141,6 +142,7 @@ __attribute__((visibility("hidden")))
 - (void)revealHiddenCandidates;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
+- (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;

@@ -41,6 +41,7 @@
 - (void)setDate:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setNumber:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setValuesWithDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)stringForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

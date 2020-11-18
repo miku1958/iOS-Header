@@ -9,9 +9,15 @@
 __attribute__((visibility("hidden")))
 @interface CNCardPropertyGeminiGroup : CNCardPropertyGroup
 {
+    BOOL _shouldShowGemini;
 }
 
+@property (nonatomic) BOOL shouldShowGemini; // @synthesize shouldShowGemini=_shouldShowGemini;
+
 - (id)_loadPropertyItems;
+- (id)displayItems;
+- (id)editingItems;
+- (void)setGeminiResult:(id)arg1;
 
 @end
 

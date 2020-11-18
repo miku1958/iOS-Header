@@ -6,13 +6,38 @@
 
 #import <SIMSetupSupport/TSSIMSetupFlow.h>
 
-@interface TSActivationCodeOnlyFlow : TSSIMSetupFlow
+#import <SIMSetupSupport/TSCellularPlanManagerCacheDelegate-Protocol.h>
+#import <SIMSetupSupport/TSSIMSetupFlowDelegate-Protocol.h>
+
+@class NSError, NSString, UIBarButtonItem, UIViewController;
+@protocol TSSetupFlowItem;
+
+@interface TSActivationCodeOnlyFlow : TSSIMSetupFlow <TSSIMSetupFlowDelegate, TSCellularPlanManagerCacheDelegate>
 {
+    BOOL _isPreinstallingViewControllerActive;
+    NSError *_planInstallError;
+    NSString *_carrierName;
+    unsigned long long _userConsentType;
+    UIBarButtonItem *_cancelButton;
+    UIViewController<TSSetupFlowItem> *_currentViewController;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
+- (void).cxx_destruct;
+- (void)dealloc;
 - (id)firstViewController;
 - (void)firstViewController:(CDUnknownBlockType)arg1;
+- (id)init;
+- (BOOL)isPhoneFlow;
 - (id)nextViewControllerFrom:(id)arg1;
+- (void)planItemsUpdated:(id)arg1 planListError:(id)arg2;
+- (void)popViewController:(id)arg1;
+- (void)setDefaultNavigationItems:(id)arg1;
+- (long long)signupUserConsentResponse;
 - (void)viewControllerDidComplete:(id)arg1;
 
 @end

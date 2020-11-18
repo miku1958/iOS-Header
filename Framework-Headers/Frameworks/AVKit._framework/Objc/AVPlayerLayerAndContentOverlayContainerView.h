@@ -10,6 +10,7 @@
 
 @interface AVPlayerLayerAndContentOverlayContainerView : UIView
 {
+    BOOL _playingOnSecondScreen;
     BOOL _canShowStatusBarBackgroundGradientWhenStatusBarVisible;
     BOOL _observingStatusBarHidden;
     __AVPlayerLayerView *_playerLayerView;
@@ -23,10 +24,12 @@
 @property (readonly, nonatomic) UIView *contentOverlayView; // @synthesize contentOverlayView=_contentOverlayView;
 @property (nonatomic, getter=isObservingStatusBarHidden) BOOL observingStatusBarHidden; // @synthesize observingStatusBarHidden=_observingStatusBarHidden;
 @property (strong, nonatomic) __AVPlayerLayerView *playerLayerView; // @synthesize playerLayerView=_playerLayerView;
+@property (nonatomic, getter=isPlayingOnSecondScreen) BOOL playingOnSecondScreen; // @synthesize playingOnSecondScreen=_playingOnSecondScreen;
 @property (readonly, nonatomic) AVStatusBarBackgroundGradientView *statusBarBackgroundGradientView; // @synthesize statusBarBackgroundGradientView=_statusBarBackgroundGradientView;
 
 - (void).cxx_destruct;
 - (struct CGRect)_frameForStatusBarBackgroundGradientView;
+- (struct CGRect)_resolvedContentFrame;
 - (void)_updateStatusBarBackgroundGradientViewAlpha;
 - (void)dealloc;
 - (void)didMoveToSuperview;

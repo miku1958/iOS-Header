@@ -47,6 +47,7 @@
 @property (readonly, copy, nonatomic) NSString *currentDeviceManufacturer;
 @property (readonly, copy, nonatomic) NSString *currentDeviceName;
 @property (readonly, copy, nonatomic) NSString *currentDeviceProductType;
+@property (readonly, copy, nonatomic) NSString *currentDeviceRegionCode;
 @property (readonly, nonatomic) unsigned long long currentDiskSpaceAvailable;
 @property (readonly, nonatomic) NSDictionary *currentDiskUsage;
 @property (readonly, copy, nonatomic) NSString *currentInternalDeviceModel;
@@ -64,6 +65,7 @@
 @property (nonatomic) BOOL isAppleWatch; // @synthesize isAppleWatch=_isAppleWatch;
 @property (nonatomic) BOOL isCompanionCapable; // @synthesize isCompanionCapable=_isCompanionCapable;
 @property (readonly, nonatomic) BOOL isCurrentDeviceN2XA;
+@property (readonly, nonatomic) BOOL isCurrentDeviceSeries3OrOlder;
 @property (nonatomic) BOOL isDeviceSupported; // @synthesize isDeviceSupported=_isDeviceSupported;
 @property (readonly, nonatomic) BOOL isRunningStoreDemoMode; // @synthesize isRunningStoreDemoMode=_isRunningStoreDemoMode;
 @property (nonatomic) BOOL isTestingDevice; // @synthesize isTestingDevice=_isTestingDevice;
@@ -91,6 +93,7 @@
 + (BOOL)_isAppleInternalInstall;
 + (BOOL)_isDeviceSupported;
 + (BOOL)_isForceBuddyEnabled;
++ (BOOL)_isProductTypeSeries3OrOlder:(id)arg1;
 + (BOOL)_isRunningStoreDemoMode;
 + (BOOL)_performsWorkoutCondensation;
 + (BOOL)_readEnableManateeForHSA2AccountsFromHealthdDefaults;
@@ -114,6 +117,7 @@
 + (id)currentDeviceManufacturer;
 + (id)currentDeviceName;
 + (id)currentDeviceProductType;
++ (id)currentDeviceRegionCode;
 + (id)currentOSBuild;
 + (id)currentOSVersion;
 + (CDStruct_f6aba300)currentOSVersionStruct;
@@ -127,6 +131,8 @@
 + (BOOL)isManateeEnabledByDefault;
 + (BOOL)isRunningStoreDemoMode;
 + (BOOL)isTestingDevice;
++ (int)nanoSyncProtocolVersionForCompanionSystemBuildVersion:(id)arg1;
++ (int)nanoSyncProtocolVersionForWatchSystemBuildVersion:(id)arg1;
 + (void)resetSharedBehavior;
 + (BOOL)runningInStoreDemoModeF201;
 + (void)setSharedBehavior:(id)arg1;
@@ -134,7 +140,6 @@
 + (BOOL)shouldShowBuddy;
 + (BOOL)showSensitiveLogItems;
 + (int)syncProtocolVersionForNRDevice:(id)arg1;
-+ (int)syncProtocolVersionForSystemBuildVersion:(id)arg1;
 - (void).cxx_destruct;
 - (id)init;
 - (void)setManateeEnabledForHSA2AccountsOverride:(BOOL)arg1;

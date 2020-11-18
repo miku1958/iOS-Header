@@ -14,6 +14,7 @@
 - (void)phraseRecognizer:(VCUIPhraseRecognizer *)arg1 availabilityDidChange:(BOOL)arg2;
 - (void)phraseRecognizer:(VCUIPhraseRecognizer *)arg1 didReceiveFinalTranscription:(NSString *)arg2 alternativeTranscriptions:(NSArray *)arg3;
 - (void)phraseRecognizer:(VCUIPhraseRecognizer *)arg1 didReceiveHypothesizedTranscription:(NSString *)arg2;
+- (void)phraseRecognizerDidFailToStartRecording:(VCUIPhraseRecognizer *)arg1;
 - (void)phraseRecognizerDidStartRecording:(VCUIPhraseRecognizer *)arg1 successfully:(BOOL)arg2 error:(NSError *)arg3;
 - (void)phraseRecognizerDidStopRecording:(VCUIPhraseRecognizer *)arg1 withError:(NSError *)arg2;
 @end

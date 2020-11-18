@@ -8,11 +8,10 @@
 
 #import <RemoteManagement/RMUniquelySerializableManagedObject-Protocol.h>
 
-@class NSData, NSDate, NSSet, NSString, RMBlueprintSchedule, RMBlueprintUsageLimit, RMCoreOrganization, RMVersionVector;
+@class NSData, NSDate, NSSet, NSString, RMBlueprintSchedule, RMBlueprintUsageLimit, RMCoreOrganization;
 
 @interface RMBlueprint : RMUniquedManagedObject <RMUniquelySerializableManagedObject>
 {
-    RMVersionVector *_cachedVersionVector;
 }
 
 @property (strong, nonatomic) NSSet *configurations; // @dynamic configurations;
@@ -29,10 +28,9 @@
 @property (strong, nonatomic) RMBlueprintSchedule *schedule; // @dynamic schedule;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *type; // @dynamic type;
-@property (readonly, copy, nonatomic) NSData *unmodeled_versionVector;
 @property (strong, nonatomic) RMBlueprintUsageLimit *usageLimit; // @dynamic usageLimit;
 @property (strong, nonatomic) NSSet *users; // @dynamic users;
-@property (copy, nonatomic) RMVersionVector *versionVector; // @dynamic versionVector;
+@property (copy, nonatomic) NSData *versionVector; // @dynamic versionVector;
 
 + (id)fetchOrCreateWithDictionaryRepresentation:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
 + (id)fetchRequestMatchingBlueprintsForUserWithDSID:(id)arg1;
@@ -43,8 +41,6 @@
 + (id)fetchRequestMatchingExpiredBlueprints;
 + (id)fetchResultsRequestsForChangesToBlueprints;
 + (id)fetchResultsRequestsForChangesToBlueprintsForUserWithDSID:(id)arg1;
-- (void).cxx_destruct;
-- (void)awakeFromInsert;
 - (id)computeUniqueIdentifier;
 - (id)declarationsWithError:(id *)arg1;
 - (void)delete;

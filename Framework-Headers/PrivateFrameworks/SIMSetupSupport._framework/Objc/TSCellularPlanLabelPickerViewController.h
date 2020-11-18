@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <UIKitCore/UITableViewController.h>
 
 #import <SIMSetupSupport/UITextFieldDelegate-Protocol.h>
 
@@ -31,9 +31,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_doneButtonTapped;
 - (id)customLabelIndexPath;
 - (id)customLabelRowValue;
-- (void)doneClicked;
 - (id)init;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

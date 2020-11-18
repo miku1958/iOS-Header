@@ -150,11 +150,13 @@
 - (double)_multiplierForAspectRatio:(long long)arg1;
 - (struct CGRect)_previewFrameForAspectRatio:(long long)arg1 topBarFrame:(struct CGRect)arg2 bottomBarFrame:(struct CGRect)arg3 shouldShiftPreviewForUtilityBar:(BOOL)arg4;
 - (void)_previewLayoutForAspectRatio:(long long)arg1 shouldShiftPreviewForUtilityBar:(BOOL)arg2 outPreviewBounds:(struct CGRect *)arg3 outPreviewCenter:(struct CGPoint *)arg4 outFourThreeTopBarFrame:(struct CGRect *)arg5 outBottomBarFrame:(struct CGRect *)arg6;
+- (struct UIOffset)_previewOffset;
 - (struct CGSize)_previewSizeForAspectRatio:(long long)arg1;
 - (BOOL)_shouldLayoutPortraitInstructionsAtTop;
 - (void)_topBarForLayoutForLayoutStyle:(long long)arg1 shouldAdjustTopBarOrientation:(BOOL)arg2 bounds:(struct CGRect *)arg3 center:(struct CGPoint *)arg4 transform:(struct CGAffineTransform *)arg5;
 - (struct CGSize)_topBarSizeForLayoutStyle:(long long)arg1;
 - (void)_updateBarExtensionViewsIfNecessary;
+- (double)_utilityBarExtensionDistanceForLayoutStyle:(long long)arg1;
 - (id)_viewToLayoutBadgesBelowForLayoutStyle:(long long)arg1 orientation:(long long)arg2;
 - (BOOL)_wantsFullScreenPreviewRegardlessOfLayoutForLayoutStyle:(long long)arg1;
 - (BOOL)_wantsInterfaceOrientedPreviewForLayoutStyle:(long long)arg1;

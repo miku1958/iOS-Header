@@ -58,6 +58,7 @@
 @property (readonly) Class superclass;
 
 + (struct CGSize)cellSizeFittingWidth:(double)arg1 environment:(id)arg2;
++ (struct CGPoint)clampedContentOffsetForOffset:(struct CGPoint)arg1 collectionView:(id)arg2;
 + (double)edgeLengthFittingWidth:(double)arg1 environment:(id)arg2;
 + (BOOL)supportsSelection;
 + (BOOL)updateCollectionViewLayout:(id)arg1 containerSize:(struct CGSize)arg2 environment:(id)arg3 forExtended:(BOOL)arg4 withSlider:(BOOL)arg5 subSection:(BOOL)arg6 subSectionHeight:(double)arg7 numberOfItems:(long long)arg8;
@@ -90,7 +91,7 @@
 - (id)initWithDataSource:(id)arg1 showsHeader:(BOOL)arg2 environment:(id)arg3;
 - (id)initWithEnvironment:(id)arg1;
 - (id)initWithEnvironment:(id)arg1 showsHeader:(BOOL)arg2;
-- (void)invalidateLayout;
+- (void)invalidateLayoutForNewContainerSize:(struct CGSize)arg1;
 - (void)layoutSubviewsForIndex:(long long)arg1;
 - (long long)numberOfItems;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
@@ -104,7 +105,7 @@
 - (void)showSliderAnimated:(BOOL)arg1;
 - (struct CGSize)sizeForItemAtIndex:(long long)arg1 fittingSize:(struct CGSize)arg2;
 - (void)updateCell:(id)arg1 forItemAtIndex:(long long)arg2;
-- (void)updateCollectionViewLayoutWithSizeChanged:(BOOL)arg1;
+- (void)updateCollectionViewLayoutWithSizeChanged:(BOOL)arg1 containerSize:(struct CGSize)arg2;
 - (void)updateSectionItem:(id)arg1 withVariation:(double)arg2;
 - (void)updateWithSection:(id)arg1;
 - (id)viewForIndex:(long long)arg1;

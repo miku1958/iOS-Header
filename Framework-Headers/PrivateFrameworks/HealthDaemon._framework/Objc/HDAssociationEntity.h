@@ -34,7 +34,7 @@
 + (id)privateSubEntities;
 + (id)propertyForSyncProvenance;
 + (long long)protectionClass;
-+ (BOOL)realizePendingAssociationsWithDatabase:(id)arg1 error:(id *)arg2;
++ (BOOL)realizePendingAssociationsWithTransaction:(id)arg1 startingAnchor:(long long)arg2 error:(id *)arg3;
 + (id)tableAliases;
 + (id)uniquedColumns;
 

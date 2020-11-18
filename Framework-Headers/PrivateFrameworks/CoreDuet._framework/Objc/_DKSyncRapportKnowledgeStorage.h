@@ -33,6 +33,7 @@
 - (void)cancelOutstandingOperations;
 - (id)changeSetForSyncWithEventsToInsert:(id)arg1 eventIDsToDeletes:(id)arg2 error:(id *)arg3;
 - (id)changeSetFromCompressedData:(id)arg1 deviceIdentifier:(id)arg2 sequenceNumber:(unsigned long long)arg3;
+- (void)clearPrewarmedFlag;
 - (id)clientForPeer:(id)arg1;
 - (void)companionLinkCleanupTimerFired;
 - (void)createOrRescheduleCompanionLinkClientsCleanupTimer;

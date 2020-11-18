@@ -73,6 +73,7 @@ __attribute__((visibility("hidden")))
     BOOL isDisplayingClosedCaptions;
     BOOL externalPlaybackActive;
     BOOL airPlayVideoActive;
+    BOOL isConnectedToPhysicalSecondScreen;
     BOOL outputObscuredDueToInsufficientExternalProtection;
     NSString *ancillaryPerformanceInformationForDisplay;
     float rate;

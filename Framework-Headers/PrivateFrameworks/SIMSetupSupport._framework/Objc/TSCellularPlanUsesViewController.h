@@ -10,39 +10,33 @@
 #import <SIMSetupSupport/UITableViewDataSource-Protocol.h>
 #import <SIMSetupSupport/UITableViewDelegate-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, UIColor, UITableView, UITableViewCell;
+@class NSArray, NSIndexPath, NSString, UITableView, UITableViewCell;
 @protocol TSSIMSetupFlowDelegate;
 
 @interface TSCellularPlanUsesViewController : BFFSplashController <UITableViewDataSource, UITableViewDelegate, TSSetupFlowItem>
 {
-    BOOL _showAddPlan;
     BOOL _hasDoneButton;
     id<TSSIMSetupFlowDelegate> _delegate;
     UITableView *_tableView;
     NSArray *_selectedPlanItems;
     UITableViewCell *_sectionFooter;
     NSIndexPath *_chosenComboIndexPath;
-    NSString *_iccid;
-    UIColor *_buttonSystemBlue;
 }
 
-@property (strong) UIColor *buttonSystemBlue; // @synthesize buttonSystemBlue=_buttonSystemBlue;
 @property (strong) NSIndexPath *chosenComboIndexPath; // @synthesize chosenComboIndexPath=_chosenComboIndexPath;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<TSSIMSetupFlowDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property BOOL hasDoneButton; // @synthesize hasDoneButton=_hasDoneButton;
 @property (readonly) unsigned long long hash;
-@property (readonly) NSString *iccid; // @synthesize iccid=_iccid;
 @property (strong) UITableViewCell *sectionFooter; // @synthesize sectionFooter=_sectionFooter;
 @property (strong) NSArray *selectedPlanItems; // @synthesize selectedPlanItems=_selectedPlanItems;
-@property BOOL showAddPlan; // @synthesize showAddPlan=_showAddPlan;
 @property (readonly) Class superclass;
 @property (strong) UITableView *tableView; // @synthesize tableView=_tableView;
 
 - (void).cxx_destruct;
 - (void)configureDefaultVoice:(id)arg1 configureUserData:(id)arg2 configureIMessage:(id)arg3;
-- (id)initWithIccid:(id)arg1 showAddPlan:(BOOL)arg2 hasDoneButton:(BOOL)arg3;
+- (id)initWithDoneButton:(BOOL)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)prepare:(CDUnknownBlockType)arg1;
 - (void)savePlanUses:(CDUnknownBlockType)arg1;

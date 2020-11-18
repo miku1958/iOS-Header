@@ -12,11 +12,13 @@
     unsigned long long _numRedundantPayloads;
     unsigned long long _txRedPayloadType;
     unsigned long long _rxRedPayloadType;
+    float _txIntervalMin;
 }
 
 @property (nonatomic) long long codecType; // @synthesize codecType=_codecType;
 @property (nonatomic) unsigned long long numRedundantPayloads; // @synthesize numRedundantPayloads=_numRedundantPayloads;
 @property (nonatomic) unsigned long long rxRedPayloadType; // @synthesize rxRedPayloadType=_rxRedPayloadType;
+@property (nonatomic) float txIntervalMin; // @synthesize txIntervalMin=_txIntervalMin;
 @property (nonatomic) unsigned long long txRedPayloadType; // @synthesize txRedPayloadType=_txRedPayloadType;
 
 + (long long)clientCodecTypeWithCodecType:(long long)arg1;

@@ -79,6 +79,7 @@
 - (BOOL)taskIsRunning:(id)arg1;
 - (id)tasksDescription;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)willBecomeActive;
 - (void)willDismissFormSheetView;
 - (void)willDismissPopupView;

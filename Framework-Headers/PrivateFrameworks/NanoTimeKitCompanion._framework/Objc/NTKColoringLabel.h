@@ -17,8 +17,6 @@
     CLKDevice *_device;
     unsigned long long _options;
     _NTKColorManager *_colorManager;
-    struct UIEdgeInsets _cachedOpticalEdgeInsets;
-    BOOL _cachedOpticalEdgeInsetsIsValid;
     struct NSNumber *_updateToken;
     BOOL _updatedAfterTimeTravelStateChange;
     CLKFont *_preTimeTravelFont;
@@ -26,6 +24,7 @@
     BOOL _uppercase;
     BOOL _usesTextProviderTintColoring;
     BOOL _cachedSizeIsValid;
+    BOOL _cachedOpticalEdgeInsetsIsValid;
     BOOL _usesTextProviderSize;
     UIColor *_overrideColor;
     CLKTextProvider *_textProvider;
@@ -37,10 +36,13 @@
     CDUnknownBlockType _nowProvider;
     CDUnknownBlockType _needsResizeHandler;
     struct CGSize _cachedSingleLineSize;
+    struct UIEdgeInsets _cachedOpticalEdgeInsets;
 }
 
 @property (readonly, nonatomic) double _lastLineBaseline;
 @property (copy, nonatomic) NSAttributedString *attributedText;
+@property (readonly, nonatomic) struct UIEdgeInsets cachedOpticalEdgeInsets; // @synthesize cachedOpticalEdgeInsets=_cachedOpticalEdgeInsets;
+@property (nonatomic) BOOL cachedOpticalEdgeInsetsIsValid; // @synthesize cachedOpticalEdgeInsetsIsValid=_cachedOpticalEdgeInsetsIsValid;
 @property (nonatomic) struct CGSize cachedSingleLineSize; // @synthesize cachedSingleLineSize=_cachedSingleLineSize;
 @property (nonatomic) BOOL cachedSizeIsValid; // @synthesize cachedSizeIsValid=_cachedSizeIsValid;
 @property (strong, nonatomic) UIColor *color;

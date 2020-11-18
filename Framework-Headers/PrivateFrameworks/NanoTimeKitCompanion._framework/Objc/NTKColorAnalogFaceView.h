@@ -4,26 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKSpriteKitAnalogFaceView.h>
+#import <NanoTimeKitCompanion/NTKAnalogFaceView.h>
 
-@class NTKColorAnalogScene, UIColor;
+@class NTKColorAnalogBackgroundView, UIColor, UIView;
 
-@interface NTKColorAnalogFaceView : NTKSpriteKitAnalogFaceView
+@interface NTKColorAnalogFaceView : NTKAnalogFaceView
 {
+    UIView *_backgroundComplicationContainerView;
+    NTKColorAnalogBackgroundView *_backgroundView;
     UIColor *_complicationForegroundColor;
     UIColor *_complicationPlatterColor;
+    UIColor *_monogramForegroundColor;
+    unsigned long long _currentStyle;
+    unsigned long long _currentColor;
+    struct CGRect _monogramOverrideFrame;
 }
 
-@property (readonly, nonatomic) NTKColorAnalogScene *analogScene; // @dynamic analogScene;
-
++ (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
-- (double)_backgroundAlphaForEditMode:(long long)arg1;
 - (id)_colorComplicationViewForSlot:(id)arg1;
+- (id)_complicationContainerViewForSlot:(id)arg1;
 - (long long)_complicationPickerStyleForSlot:(id)arg1;
+- (id)_complicationSlotsHiddenByEditOption:(id)arg1;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
@@ -31,7 +37,7 @@
 - (double)_edgeGapForState:(long long)arg1;
 - (void)_enumerateColorComplicationSlotsWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
-- (double)_handAlphaForEditMode:(long long)arg1;
+- (struct CGRect)_frameForComplicationDisplayWrapper:(id)arg1 inSlot:(id)arg2;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
@@ -41,12 +47,17 @@
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (double)_lisaGapForState:(long long)arg1;
 - (void)_loadLayoutRules;
-- (void)_loadScene;
+- (void)_loadSnapshotContentViews;
 - (struct UIEdgeInsets)_monogramKeylinePadding;
 - (struct CGRect)_monogramReferenceFrameForState:(long long)arg1;
+- (struct CGRect)_monogramReferenceFrameForState:(long long)arg1 style:(unsigned long long)arg2;
 - (BOOL)_needsForegroundContainerView;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
-- (BOOL)_supportsUnadornedSnapshot;
+- (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
+- (void)_unloadSnapshotContentViews;
+- (BOOL)_wantsStatusBarIconShadow;
+- (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
+- (void)layoutSubviews;
 
 @end
 

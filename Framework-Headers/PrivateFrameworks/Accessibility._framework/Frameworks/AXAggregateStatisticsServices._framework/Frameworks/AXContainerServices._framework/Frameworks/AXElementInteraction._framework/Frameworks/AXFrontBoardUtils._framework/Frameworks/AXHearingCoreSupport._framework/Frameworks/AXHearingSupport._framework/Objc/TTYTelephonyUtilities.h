@@ -56,6 +56,7 @@
 - (BOOL)contactIsTTYContact:(id)arg1;
 - (BOOL)contactPathIsMe:(id)arg1;
 - (unsigned long long)currentPreferredTransportMethod;
+- (unsigned long long)currentPreferredTransportMethodForContext:(id)arg1;
 - (void)dealloc;
 - (id)getCarrierValueForKey:(id)arg1 andContext:(id)arg2;
 - (id)getCarrierValueForKeyHierarchy:(id)arg1 andContext:(id)arg2;

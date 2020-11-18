@@ -15,7 +15,7 @@
     BOOL _returningFromPINSheetWithSuccess;
     BOOL _shouldEraseWithFMiP;
     BOOL _shouldTryEraseAgainWithFMiP;
-    BOOL _shouldEraseDataPlans;
+    BOOL _shouldEraseCellularPlans;
     int _codesNeeded;
     int _codesEntered;
     PSSpecifier *_currentSpecifier;

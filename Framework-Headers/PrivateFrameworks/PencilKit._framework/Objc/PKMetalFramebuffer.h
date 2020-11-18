@@ -10,12 +10,14 @@
 
 @interface PKMetalFramebuffer : NSObject
 {
+    BOOL _isPurgeable;
     BOOL _memoryless;
     BOOL _backedByIOSurface;
     id<MTLTexture> _colorTexture;
     id<MTLDevice> _device;
     unsigned long long _pixelFormat;
     struct __CVBuffer *_pixelBuffer;
+    unsigned long long _sampleCount;
     struct CGSize _size;
 }
 
@@ -25,13 +27,16 @@
 @property (readonly, nonatomic) BOOL memoryless; // @synthesize memoryless=_memoryless;
 @property (readonly, nonatomic) struct __CVBuffer *pixelBuffer; // @synthesize pixelBuffer=_pixelBuffer;
 @property (readonly, nonatomic) unsigned long long pixelFormat; // @synthesize pixelFormat=_pixelFormat;
+@property (readonly, nonatomic) unsigned long long sampleCount; // @synthesize sampleCount=_sampleCount;
 @property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
 
 - (void).cxx_destruct;
 - (void)createColorTextureIfNecessary;
 - (void)dealloc;
 - (id)init;
-- (id)initWithSize:(struct CGSize)arg1 pixelFormat:(unsigned long long)arg2 device:(id)arg3 memoryless:(BOOL)arg4 backedByIOSurface:(BOOL)arg5;
+- (id)initWithSize:(struct CGSize)arg1 pixelFormat:(unsigned long long)arg2 device:(id)arg3 memoryless:(BOOL)arg4 backedByIOSurface:(BOOL)arg5 sampleCount:(unsigned long long)arg6;
+- (BOOL)makeNonPurgeable;
+- (void)makePurgeable;
 
 @end
 

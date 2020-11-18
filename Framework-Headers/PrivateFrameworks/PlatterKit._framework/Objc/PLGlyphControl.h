@@ -10,7 +10,6 @@
 
 @interface PLGlyphControl : UIControl
 {
-    NSString *_groupName;
     long long _materialRecipe;
     unsigned long long _backgroundMaterialOptions;
     unsigned long long _overlayMaterialOptions;
@@ -26,7 +25,7 @@
 @property (copy, nonatomic) UIImage *glyph;
 @property (readonly, nonatomic, getter=_glyphView) UIImageView *glyphView;
 @property (strong, nonatomic, getter=_glyphView) UIImageView *glyphView; // @synthesize glyphView=_glyphView;
-@property (copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
+@property (copy, nonatomic) NSString *groupName;
 @property (strong, nonatomic, getter=_hightlightView) UIView *highlightView; // @synthesize highlightView=_highlightView;
 @property (readonly, nonatomic) long long materialRecipe; // @synthesize materialRecipe=_materialRecipe;
 @property (readonly, nonatomic) unsigned long long overlayMaterialOptions; // @synthesize overlayMaterialOptions=_overlayMaterialOptions;

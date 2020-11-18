@@ -48,6 +48,7 @@
     double _previousHorizontalVelocity;
     double _previousVerticalVelocity;
     CADisplayLink *_scrollHeartbeat;
+    CADisplayLink *_trackingHeartbeat;
     struct CGPoint _pageDecelerationTarget;
     struct CGSize _decelerationFactor;
     struct CGPoint _adjustedDecelerationTarget;
@@ -462,6 +463,7 @@
 - (void)_handleLowFidelitySwipe:(id)arg1;
 - (void)_handlePanFailure;
 - (void)_handleSwipe:(id)arg1;
+- (void)_handleTrackingHeartbeat:(id)arg1;
 - (BOOL)_hasScrollViewWillEndDraggingInvocationsToPerform;
 - (double)_heightForFocusFastScrollingUI:(double)arg1;
 - (void)_hideScrollIndicators;
@@ -656,6 +658,8 @@
 - (struct UIEdgeInsets)_systemContentInset;
 - (BOOL)_touchMayChangeSelection;
 - (id)_touchesDelayedGestureRecognizer;
+- (void)_trackingDidBegin;
+- (void)_trackingDidEnd;
 - (BOOL)_transfersScrollToContainer;
 - (id)_uili_existingObservationEligibleLayoutVariables;
 - (void)_unregisterForSpringBoardBlankedScreenNotification;

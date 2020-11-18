@@ -58,6 +58,9 @@ __attribute__((visibility("hidden")))
     BOOL _currentDTXEnable;
     NSNumber *_targetStreamID;
     float _volume;
+    BOOL _rtpEnabledBeforeInterrupt;
+    BOOL _rtcpEnabledBeforeInterrupt;
+    unsigned int _pullAudioSamplesCount;
 }
 
 @property (strong) VCAudioIO *audioIO; // @synthesize audioIO=_audioIO;

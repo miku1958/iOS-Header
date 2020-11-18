@@ -8,9 +8,13 @@
 
 @interface PUApertureSliderDotView : UIView
 {
+    BOOL _useLegibilityShadow;
 }
 
+@property (nonatomic) BOOL useLegibilityShadow; // @synthesize useLegibilityShadow=_useLegibilityShadow;
+
 - (void)drawRect:(struct CGRect)arg1;
+- (BOOL)isOpaque;
 
 @end
 

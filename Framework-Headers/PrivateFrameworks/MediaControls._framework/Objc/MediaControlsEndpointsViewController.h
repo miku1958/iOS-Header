@@ -87,6 +87,7 @@
 - (void)setDisplayMode:(long long)arg1;
 - (void)startPrewarming;
 - (void)stopPrewarming;
+- (void)updateContentInsets;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

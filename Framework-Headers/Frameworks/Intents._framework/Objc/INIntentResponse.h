@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 #import <Intents/INCacheableContainer-Protocol.h>
+#import <Intents/INFileURLEnumerable-Protocol.h>
 #import <Intents/INGenericIntentResponse-Protocol.h>
 #import <Intents/INImageProxyInjecting-Protocol.h>
 #import <Intents/INIntentResponseExport-Protocol.h>
@@ -17,7 +18,7 @@
 
 @class INIntentResponseCodableCode, INIntentResponseDescription, NSDictionary, NSString, NSUserActivity, PBCodable, _INPBIntentResponse;
 
-@interface INIntentResponse : NSObject <INImageProxyInjecting, INIntentSlotComposing, INCacheableContainer, INIntentResponseExport, INGenericIntentResponse, INRuntimeObject, NSCopying, NSSecureCoding>
+@interface INIntentResponse : NSObject <INImageProxyInjecting, INIntentSlotComposing, INFileURLEnumerable, INCacheableContainer, INIntentResponseExport, INGenericIntentResponse, INRuntimeObject, NSCopying, NSSecureCoding>
 {
     BOOL __userConfirmationRequired;
     long long _code;
@@ -44,14 +45,18 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSDictionary *propertiesByName;
 @property (nonatomic) BOOL shouldOpenContainingApplication;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
@@ -72,6 +77,7 @@
 - (long long)_code;
 - (BOOL)_commonInit;
 - (id)_dictionaryRepresentation;
+- (void)_enumerateFileURLsWithMutatingBlock:(CDUnknownBlockType)arg1;
 - (id)_impl;
 - (id)_inCodable;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;

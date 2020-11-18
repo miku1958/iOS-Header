@@ -12,6 +12,7 @@
 @property (readonly) BOOL isAvailable;
 
 - (void)cancelOutstandingOperations;
+- (void)clearPrewarmedFlag;
 - (void)fetchAdditionsHighWaterMarkWithPeer:(_DKSyncPeer *)arg1 highPriority:(BOOL)arg2 completion:(void (^)(NSDate *, NSError *))arg3;
 - (void)fetchDeletedEventIDsFromPeer:(_DKSyncPeer *)arg1 sinceDate:(NSDate *)arg2 streamNames:(NSArray *)arg3 limit:(unsigned long long)arg4 highPriority:(BOOL)arg5 completion:(void (^)(NSArray *, NSDate *, NSError *))arg6;
 - (void)fetchDeletionsHighWaterMarkWithPeer:(_DKSyncPeer *)arg1 highPriority:(BOOL)arg2 completion:(void (^)(NSDate *, NSError *))arg3;

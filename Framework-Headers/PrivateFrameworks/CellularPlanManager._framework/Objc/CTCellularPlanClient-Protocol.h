@@ -13,7 +13,7 @@
 - (void)addNewPlanWithCardData:(NSString *)arg1 confirmationCode:(NSString *)arg2 triggerType:(long long)arg3 userConsent:(long long)arg4 completion:(void (^)(NSError *))arg5;
 - (void)addNewPlanWithCarrierItem:(CTCellularPlanCarrierItem *)arg1 triggerType:(long long)arg2 userConsent:(long long)arg3 completion:(void (^)(NSError *))arg4;
 - (void)addNewPlanWithFlowType:(unsigned long long)arg1 completion:(void (^)(NSError *))arg2;
-- (void)addNewPlanWithUserInWebsheetWithCompletion:(void (^)(NSError *))arg1;
+- (void)addNewPlanWithUserInWebsheetWithUserConsent:(long long)arg1 completion:(void (^)(NSError *))arg2;
 - (void)addNewRemotePlan:(BOOL)arg1 withCSN:(NSString *)arg2 withContext:(CTXPCServiceSubscriptionContext *)arg3 userConsent:(long long)arg4 completion:(void (^)(NSError *))arg5;
 - (void)addNewRemotePlanWithAddress:(NSString *)arg1 matchingId:(NSString *)arg2 oid:(NSString *)arg3 confirmationCode:(NSString *)arg4 isPairing:(BOOL)arg5 withCSN:(NSString *)arg6 withContext:(CTXPCServiceSubscriptionContext *)arg7 userConsent:(long long)arg8 completion:(void (^)(NSError *))arg9;
 - (void)addNewRemotePlanWithCardData:(NSString *)arg1 confirmationCode:(NSString *)arg2 isPairing:(BOOL)arg3 withCSN:(NSString *)arg4 withContext:(CTXPCServiceSubscriptionContext *)arg5 userConsent:(long long)arg6 completion:(void (^)(NSError *))arg7;
@@ -52,6 +52,7 @@
 - (void)getSelectedEnv:(void (^)(long long))arg1;
 - (void)getSelectedProxy:(void (^)(long long))arg1;
 - (void)getShortLabelsForLabels:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)getSkipEligibilityCheck:(void (^)(BOOL))arg1;
 - (void)getSubscriptionContextUUIDforPlan:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)getSupportedFlowTypes:(void (^)(unsigned long long, NSError *))arg1;
 - (void)isAddButtonEnabled:(void (^)(BOOL))arg1;
@@ -74,6 +75,7 @@
 - (void)remotePlanLaunchInfoForEid:(NSData *)arg1 completion:(void (^)(NSString *, NSDictionary *, NSError *))arg2;
 - (void)remoteUserDidProvideConsentResponse:(BOOL)arg1 plan:(CTCellularPlanItem *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)resolveSimLabel:(CTDanglingPlanItem *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)resumePlanProvisioning:(BOOL)arg1 userConsent:(long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)retrieveRequestSettings:(void (^)(NSDictionary *, NSDictionary *, NSDictionary *))arg1;
 - (void)selectRemoteProfile:(NSString *)arg1;
 - (void)setAutoPlanSelection:(BOOL)arg1;
@@ -96,7 +98,7 @@
 - (void)startProvisioningWithCompletion:(void (^)(BOOL))arg1;
 - (void)startRemoteProvisioningWithCompletion:(void (^)(BOOL))arg1;
 - (void)triggerAddNewDataPlan:(void (^)(NSError *))arg1;
-- (void)userDidProvideConsentResponse:(BOOL)arg1 plan:(CTCellularPlanItem *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)userDidProvideConsentResponse:(long long)arg1 plan:(CTCellularPlanItem *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)willDisplayPlanItems;
 @end
 

@@ -135,6 +135,8 @@ __attribute__((visibility("hidden")))
 - (id)allocWithZone:(struct _NSZone *)arg1;
 - (id)autorelease;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)enableAudioDumpParticipantLocal:(BOOL)arg1;
+- (BOOL)enableAudioDumpParticipantRemote:(BOOL)arg1;
 - (unsigned int)forceThermalLevelFramerate:(unsigned int)arg1;
 - (id)init;
 - (oneway void)release;

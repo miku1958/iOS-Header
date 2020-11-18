@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *stateConstraints;
     MISSING_TYPE *participantListHeightConstraint;
+    MISSING_TYPE *effectsConstraintManagers;
     MISSING_TYPE *currentConstraints;
 }
 

@@ -8,23 +8,21 @@
 
 #import <ImageCapture/ICDeviceManagerProtocol-Protocol.h>
 
-@class DeviceManagerThread, NSDictionary, NSMutableDictionary, NSOperationQueue, NSString;
+@class NSDictionary, NSMutableDictionary, NSOperationQueue, NSString;
 
 __attribute__((visibility("hidden")))
 @interface DeviceManager : NSObject <ICDeviceManagerProtocol>
 {
-    DeviceManagerThread *_thread;
     NSDictionary *_deviceMatchingInfo;
     NSMutableDictionary *_devices;
-    NSOperationQueue *_deviceOperations;
+    NSOperationQueue *_deviceOperationQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong) NSOperationQueue *deviceOperations; // @synthesize deviceOperations=_deviceOperations;
+@property (strong) NSOperationQueue *deviceOperations; // @synthesize deviceOperations=_deviceOperationQueue;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (strong) DeviceManagerThread *thread; // @synthesize thread=_thread;
 
 - (void)addInitiatedOperation:(id)arg1;
 - (void)addInteractiveOperation:(id)arg1;
@@ -57,8 +55,6 @@ __attribute__((visibility("hidden")))
 - (void)openSessionImp:(id)arg1;
 - (void)postCommandCompletionNotification:(id)arg1;
 - (void)postNotification:(id)arg1;
-- (void)startRunning;
-- (void)stopRunning;
 - (long long)syncClock:(id)arg1 contextInfo:(void *)arg2;
 - (void)syncClockImp:(id)arg1;
 

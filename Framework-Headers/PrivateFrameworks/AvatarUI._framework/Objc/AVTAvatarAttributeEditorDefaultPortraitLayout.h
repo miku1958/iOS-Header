@@ -18,6 +18,7 @@
 - (struct CGRect)groupDialContainerFrame;
 - (double)headerMaskingViewAlpha;
 - (struct CGRect)headerMaskingViewFrame;
+- (unsigned long long)supportedLayoutOrientation;
 - (struct CGRect)userInfoFrame;
 - (double)verticalRuleAlpha;
 - (struct CGRect)verticalRuleFrame;

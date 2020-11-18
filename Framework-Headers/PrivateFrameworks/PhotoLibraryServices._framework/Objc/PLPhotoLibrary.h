@@ -77,6 +77,7 @@
 + (id)_pauseDataOnPath:(id)arg1;
 + (id)_rebuildingPersonsIndicatorFilePath;
 + (void)_setIsRebuildingPersons:(BOOL)arg1;
++ (void)_setSqliteErrorAndExitIfNecessaryForReason:(int)arg1;
 + (id)_statusDescriptionForQueue:(id)arg1;
 + (void)_updateAssetCountKeyPath:(id)arg1 withPendingCountKeyPath:(id)arg2 inContext:(id)arg3;
 + (void)_updateMemoryCountKeyPath:(id)arg1 withPendingCountKeyPath:(id)arg2 inContext:(id)arg3;
@@ -164,6 +165,7 @@
 + (void)setLibraryAvailableIndicatorState:(BOOL)arg1;
 + (void)setMomentAnalysisNeeded:(BOOL)arg1;
 + (void)setPhotoStreamEnabled:(BOOL)arg1;
++ (void)setSqliteErrorAndExitIfNecessaryForDemoContentInstallation;
 + (void)setSqliteErrorAndExitIfNecessaryForSimulatedCorruption:(BOOL)arg1;
 + (void)setStreamsLibraryUpdatingExpired:(BOOL)arg1;
 + (void)setTakingPhotoIsBusy:(BOOL)arg1;
@@ -203,6 +205,7 @@
 - (BOOL)_hasPendingAssetsIgnoreiTunes:(BOOL)arg1;
 - (BOOL)_isHeifUTI:(struct __CFString *)arg1;
 - (BOOL)_isOTARestoreInProgress;
+- (void)_legacyCleanupForStoreDemoMode;
 - (void)_linkAsideAlbumMetadataForOTARestore;
 - (void)_loadDatabase:(const char *)arg1;
 - (void)_photoLibraryCorruptNotification;
@@ -216,6 +219,7 @@
 - (void)_safeSave:(id)arg1;
 - (BOOL)_safeSave:(id)arg1 error:(id *)arg2;
 - (BOOL)_shouldCreateDatabase;
+- (BOOL)_stageDemoLibraryContentForStoreDemoMode;
 - (void)_updateWithInsertedAssetsCount:(unsigned long long)arg1 deletedCount:(unsigned long long)arg2;
 - (void)_userApplyTrashedState:(short)arg1 toAlbums:(id)arg2;
 - (void)_userApplyTrashedState:(short)arg1 toAssets:(id)arg2;

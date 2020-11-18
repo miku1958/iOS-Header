@@ -35,6 +35,7 @@
 - (void)dealloc;
 - (id)generateAnimationArrayFromVista:(unsigned long long)arg1 toVista:(unsigned long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2 options:(unsigned long long)arg3;
 - (void)layoutSubviews;
 - (void)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1;
 - (id)rotatable:(unsigned long long)arg1;

@@ -79,6 +79,7 @@
 - (id)senderIdentities;
 - (id)senderIdentityForAccountUUID:(id)arg1;
 - (id)senderIdentityForHandle:(id)arg1;
+- (id)senderIdentityForUUID:(id)arg1;
 - (void)setSenderIdentities:(id)arg1;
 - (BOOL)supportsHandleType:(long long)arg1;
 - (BOOL)supportsShowingInCallUI;

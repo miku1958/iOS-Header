@@ -27,8 +27,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)edgesAdjustedForTranslucentGapsForGeometry:(id)arg1 key:(id)arg2 onKeyplane:(id)arg3;
 - (struct CGPoint)globeKeyTextOffset;
 - (double)interkeyGapsCenterXOfKeyplaneFrame:(struct CGRect)arg1;
+- (double)keyCornerRadius;
 - (long long)lightHighQualityEnabledBlendForm;
 - (struct CGPoint)longVowelSignKeyTextOffset;
+- (void)modifyTraitsForDetachedInputSwitcher:(id)arg1 withKey:(id)arg2;
 - (double)numberPadKeyPrimarySymbolSize;
 - (struct CGPoint)numberPadKeyPrimaryTextOffset;
 - (struct CGPoint)numberPadKeySecondaryTextOffset;

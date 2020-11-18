@@ -6,9 +6,9 @@
 
 #import <AXSpringBoardServerInstance/NSObject-Protocol.h>
 
-@class AXHeardServer;
+@class HCServer;
 
 @protocol AXHeardServerDelegate <NSObject>
-- (void)serverDidDie:(AXHeardServer *)arg1;
+- (void)serverDidDie:(HCServer *)arg1;
 @end
 

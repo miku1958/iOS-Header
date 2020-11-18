@@ -6,7 +6,7 @@
 
 #import <SpringBoardUIServices/SBUIInteractionForwardingView.h>
 
-@class NSLayoutConstraint, NSString, PKGlyphView, SBUIButton, SBUIPasscodePillButton, UILabel;
+@class NSLayoutConstraint, NSString, PKGlyphView, SBUIButton, SBUIPasscodePillButton, UILabel, UILayoutGuide;
 @protocol SBUIPasscodeBiometricAuthenticationViewDelegate, SBUIPasscodeBiometricAuthenticationViewLayoutDelegate;
 
 @interface SBUIPasscodeBiometricAuthenticationView : SBUIInteractionForwardingView
@@ -28,6 +28,8 @@
     UILabel *_touchIDReasonLabel;
     UILabel *_faceIDLabel;
     UILabel *_faceIDReasonLabel;
+    UILayoutGuide *_faceIDLabelAndReasonHelperGuide;
+    UILayoutGuide *_faceIDLabelAndReasonLayoutGuide;
     NSLayoutConstraint *_faceIDLabelFaceIDReasonBaselineConstraint;
 }
 
@@ -36,6 +38,8 @@
 @property (weak, nonatomic) id<SBUIPasscodeBiometricAuthenticationViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) SBUIButton *emergencyCallButton; // @synthesize emergencyCallButton=_emergencyCallButton;
 @property (strong, nonatomic) UILabel *faceIDLabel; // @synthesize faceIDLabel=_faceIDLabel;
+@property (strong, nonatomic) UILayoutGuide *faceIDLabelAndReasonHelperGuide; // @synthesize faceIDLabelAndReasonHelperGuide=_faceIDLabelAndReasonHelperGuide;
+@property (strong, nonatomic) UILayoutGuide *faceIDLabelAndReasonLayoutGuide; // @synthesize faceIDLabelAndReasonLayoutGuide=_faceIDLabelAndReasonLayoutGuide;
 @property (strong, nonatomic) NSLayoutConstraint *faceIDLabelFaceIDReasonBaselineConstraint; // @synthesize faceIDLabelFaceIDReasonBaselineConstraint=_faceIDLabelFaceIDReasonBaselineConstraint;
 @property (copy, nonatomic, setter=_setFaceIDReason:) NSString *faceIDReason; // @synthesize faceIDReason=_faceIDReason;
 @property (strong, nonatomic) UILabel *faceIDReasonLabel; // @synthesize faceIDReasonLabel=_faceIDReasonLabel;

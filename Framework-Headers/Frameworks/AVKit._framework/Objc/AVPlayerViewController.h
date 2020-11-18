@@ -14,7 +14,7 @@
 #import <AVKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <AVKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class AVAppBasedStatusBarAppearanceController, AVFullScreenViewController, AVObservationController, AVPictureInPictureController, AVPlaybackControlsController, AVPlaybackControlsVisibilityController, AVPlayer, AVPlayerController, AVPlayerView, AVPlayerViewControllerContentView, AVPlayerViewControllerCustomControlsView, AVTransitionController, NSArray, NSDictionary, NSMutableDictionary, NSString, UIPopoverPresentationController, UIScreen, UIView, UIWindow, __AVPlayerLayerView;
+@class AVAppBasedStatusBarAppearanceController, AVFullScreenViewController, AVObservationController, AVPictureInPictureController, AVPlaybackControlsController, AVPlaybackControlsVisibilityController, AVPlayer, AVPlayerController, AVPlayerView, AVPlayerViewControllerContentView, AVPlayerViewControllerCustomControlsView, AVSecondScreenConnection, AVTransitionController, NSArray, NSDictionary, NSMutableDictionary, NSString, UIPopoverPresentationController, UIView, __AVPlayerLayerView;
 @protocol AVPlayerViewControllerContentTransitioning_NewsOnly, AVPlayerViewControllerDelegate;
 
 @interface AVPlayerViewController : UIViewController <AVPictureInPictureControllerDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, AVPlaybackControlsVisibilityControllerDelegate, AVFullScreenViewControllerDelegate, AVContentTransitioningDelegate, AVTransitionControllerDelegate>
@@ -27,6 +27,7 @@
     BOOL _hasClientSetVideoGravity;
     BOOL _hasClientSetTransitioningDelegate;
     NSDictionary *_pixelBufferAttributes;
+    AVSecondScreenConnection *_secondScreenConnection;
     AVPictureInPictureController *_pictureInPictureController;
     UIPopoverPresentationController *_mediaSelectionPopoverPresentationController;
     AVTransitionController *_transitionController;
@@ -66,8 +67,6 @@
     AVPlayer *_player;
     NSMutableDictionary *__targetVideoGravitiesForLayoutClass;
     AVPlayerController *_playerController;
-    UIWindow *_secondScreenWindow;
-    UIScreen *_playbackTargetScreen;
     CDUnknownBlockType _finishPreparingForInteractiveDismissalHandler;
     CDUnknownBlockType _interactiveDismissalCompletionHandler;
     AVPlayer *_contentTransitioningPlayer;
@@ -121,7 +120,6 @@
 @property (nonatomic) BOOL playbackControlsIncludeTransportControls;
 @property (nonatomic) BOOL playbackControlsIncludeVolumeControls; // @synthesize playbackControlsIncludeVolumeControls=_playbackControlsIncludeVolumeControls;
 @property (readonly, nonatomic) AVPlaybackControlsVisibilityController *playbackControlsVisibilityController;
-@property (strong, nonatomic) UIScreen *playbackTargetScreen; // @synthesize playbackTargetScreen=_playbackTargetScreen;
 @property (strong, nonatomic) AVPlayer *player; // @synthesize player=_player;
 @property (strong, nonatomic) AVPlayerController *playerController; // @synthesize playerController=_playerController;
 @property (nonatomic) long long preferredUnobscuredArea;
@@ -129,7 +127,6 @@
 @property (readonly, nonatomic, getter=isPresentingFullScreenFromInline) BOOL presentingFullScreenFromInline;
 @property (readonly, nonatomic, getter=isReadyForDisplay) BOOL readyForDisplay;
 @property (nonatomic) BOOL requiresLinearPlayback;
-@property (strong, nonatomic) UIWindow *secondScreenWindow; // @synthesize secondScreenWindow=_secondScreenWindow;
 @property (nonatomic) BOOL shouldUseNetworkingResourcesForLiveStreamingWhilePaused; // @synthesize shouldUseNetworkingResourcesForLiveStreamingWhilePaused=_shouldUseNetworkingResourcesForLiveStreamingWhilePaused;
 @property (nonatomic) BOOL showsExitFullScreenButton;
 @property (nonatomic) BOOL showsMinimalPlaybackControlsWhenEmbeddedInline;

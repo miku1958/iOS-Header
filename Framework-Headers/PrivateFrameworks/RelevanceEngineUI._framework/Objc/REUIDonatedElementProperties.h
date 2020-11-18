@@ -62,12 +62,12 @@
 - (void)_loadContentForUserActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_loadContentForUserActivityOnShortcut:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_placeholderImageNameForBundleID:(id)arg1;
+- (id)_scaleImageForDisplay:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDonatedAction:(id)arg1;
 - (void)loadWithCompletion:(CDUnknownBlockType)arg1;
-- (id)scaleImageForDisplay:(id)arg1;
 
 @end
 

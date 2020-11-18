@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_os_log> *_osLogNetworkingHandle;
     NSObject<OS_dispatch_queue> *_reportingQueue;
     CDUnknownFunctionPointerType _symptomReporterCallback;
-    void *_symptomReporterContext;
+    id _symptomReporterContext;
 }
 
 @property (copy, nonatomic) NSString *loggingDirectory; // @synthesize loggingDirectory=_loggingDirectory;
@@ -47,7 +47,6 @@ __attribute__((visibility("hidden")))
 - (int)reportNoSNATMAPResponseWithOptionalDictionary:(id)arg1;
 - (int)reportQRATKNTokenError;
 - (int)reportRateTargetMismatch;
-- (int)reportReceiveMKIDuplicateKeys;
 - (int)reportReceiveSessionStatsFailed;
 - (int)reportSessionInfoErrorResponse;
 - (int)reportSignalingFailed;

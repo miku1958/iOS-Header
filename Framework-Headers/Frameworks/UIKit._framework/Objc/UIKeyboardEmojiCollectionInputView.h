@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (nonatomic) NSIndexPath *tappedSkinToneEmoji; // @synthesize tappedSkinToneEmoji=_tappedSkinToneEmoji;
 
++ (BOOL)shouldHighlightEmoji:(id)arg1;
 - (void)_setUserHasSelectedSkinToneEmoji:(BOOL)arg1;
 - (BOOL)_shouldReverseLayoutDirection;
 - (BOOL)_userHasSelectedSkinToneEmoji;

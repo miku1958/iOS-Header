@@ -17,6 +17,7 @@
     BOOL _shouldSuppressInCallUI;
     BOOL _wantsStagingArea;
     BOOL _showUIPrompt;
+    BOOL _uplinkMuted;
     NSSet *_remoteMembers;
     NSUUID *_UUID;
     TUHandle *_callerID;
@@ -32,6 +33,7 @@
 @property (readonly, copy, nonatomic) NSSet *remoteMembers; // @synthesize remoteMembers=_remoteMembers;
 @property (nonatomic) BOOL shouldSuppressInCallUI; // @synthesize shouldSuppressInCallUI=_shouldSuppressInCallUI;
 @property (nonatomic) BOOL showUIPrompt; // @synthesize showUIPrompt=_showUIPrompt;
+@property (nonatomic, getter=isUplinkMuted) BOOL uplinkMuted; // @synthesize uplinkMuted=_uplinkMuted;
 @property (nonatomic, getter=isVideoEnabled) BOOL videoEnabled; // @synthesize videoEnabled=_videoEnabled;
 @property (nonatomic) BOOL wantsStagingArea; // @synthesize wantsStagingArea=_wantsStagingArea;
 

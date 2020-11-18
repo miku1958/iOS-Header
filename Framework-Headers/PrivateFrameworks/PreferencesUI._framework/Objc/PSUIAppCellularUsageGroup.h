@@ -39,7 +39,6 @@
 - (void)prefetchResourcesFor:(id)arg1;
 - (void)reloadSpecifiers;
 - (void)setAppCellularUsagePolicy:(id)arg1 forSpecifier:(id)arg2;
-- (void)setSwitchesEnabled:(BOOL)arg1;
 - (id)specifiers;
 - (void)updateTotalUsage:(id)arg1;
 - (CDUnknownBlockType)usageComparator;

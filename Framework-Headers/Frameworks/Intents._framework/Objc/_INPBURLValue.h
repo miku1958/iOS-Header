@@ -10,12 +10,13 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBURLValue-Protocol.h>
 
-@class NSString, _INPBValueMetadata;
+@class NSData, NSString, _INPBValueMetadata;
 
 @interface _INPBURLValue : PBCodable <_INPBURLValue, NSSecureCoding, NSCopying>
 {
     struct _has;
     NSString *_absoluteString;
+    NSData *_scope;
     _INPBValueMetadata *_valueMetadata;
 }
 
@@ -23,8 +24,10 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasAbsoluteString;
+@property (readonly, nonatomic) BOOL hasScope;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSData *scope; // @synthesize scope=_scope;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 

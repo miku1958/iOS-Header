@@ -6,7 +6,7 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NSArray, NSString, NSURL, PKPaymentProvisioningController, PKPeerPaymentAccount, PKPeerPaymentCredential;
+@class NSArray, NSString, NSURL, PKAppleAccountInformation, PKPaymentProvisioningController, PKPeerPaymentAccount, PKPeerPaymentCredential;
 
 @protocol PKPeerPaymentWebServiceTargetDeviceProtocol <NSObject>
 - (PKPeerPaymentAccount *)account;
@@ -20,11 +20,13 @@
 - (BOOL)userHasDisabledPeerPayment;
 
 @optional
+- (PKAppleAccountInformation *)appleAccountInformation;
 - (void)checkTLKsMissingWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (NSString *)deviceRegion;
 - (void)initalizeCloudStoreIfNecessaryWithCompletion:(void (^)(BOOL))arg1;
 - (void)initalizeCloudStoreIfNecessaryWithHandler:(void (^)(BOOL, NSError *))arg1;
 - (void)peerPaymentReRegisterWithURL:(NSURL *)arg1 pushToken:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)renewAppleAccountWithCompletionHandler:(void (^)(long long, PKAppleAccountInformation *))arg1;
 - (void)resetApplePayManateeViewWithCompletion:(void (^)(BOOL, NSError *))arg1;
 @end
 

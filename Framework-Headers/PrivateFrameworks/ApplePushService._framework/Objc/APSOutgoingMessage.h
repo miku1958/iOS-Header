@@ -31,7 +31,6 @@
 - (id)originator;
 - (long long)priority;
 - (id)rawTimeoutTime;
-- (long long)retries;
 - (long long)sendInterface;
 - (id)sendTimeoutTime;
 - (id)sentTimestamp;
@@ -39,7 +38,6 @@
 - (void)setMessageID:(unsigned long long)arg1;
 - (void)setOriginator:(id)arg1;
 - (void)setPriority:(long long)arg1;
-- (void)setRetries:(long long)arg1;
 - (void)setSendInterface:(long long)arg1;
 - (void)setSent:(BOOL)arg1;
 - (void)setSentTimestamp:(id)arg1;

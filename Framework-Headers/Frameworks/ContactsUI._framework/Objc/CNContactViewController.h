@@ -20,6 +20,7 @@
     BOOL _highlightedPropertyImportant;
     BOOL _requiresSetup;
     BOOL _showingMeContact;
+    BOOL _allowsDisplayModePickerActions;
     CNContact *_contact;
     NSArray *_displayedPropertyKeys;
     id<CNContactViewControllerDelegate> _delegate;
@@ -52,6 +53,7 @@
 @property (nonatomic) long long actions; // @synthesize actions=_actions;
 @property (strong, nonatomic) CNContact *additionalContact; // @synthesize additionalContact=_additionalContact;
 @property (nonatomic) BOOL allowsActions;
+@property (nonatomic) BOOL allowsDisplayModePickerActions; // @synthesize allowsDisplayModePickerActions=_allowsDisplayModePickerActions;
 @property (nonatomic) BOOL allowsEditing;
 @property (copy, nonatomic) NSString *alternateName; // @synthesize alternateName=_alternateName;
 @property (strong, nonatomic) CNContact *contact; // @synthesize contact=_contact;

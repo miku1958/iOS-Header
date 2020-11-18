@@ -87,6 +87,8 @@
 + (id)radiosPreferences;
 + (void)setAirplaneMode:(BOOL)arg1;
 - (void).cxx_destruct;
+- (void)NETRBStateChangedNotification:(id)arg1;
+- (void)NETRBStateChangedNotification:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_accountStore;
 - (void)_beginObservingAccountStoreDidChangeNotification;
 - (void)_beginObservingProfilePictureStoreDidChangeNotification;
@@ -128,7 +130,6 @@
 - (id)bundle;
 - (BOOL)canBecomeFirstResponder;
 - (id)cellularDataStatusForSpecifier:(id)arg1;
-- (id)cellularDisabledStatusForSpecifier:(id)arg1;
 - (void)checkDeveloperSettingsState;
 - (void)clearCache;
 - (id)configurePasscodeSpecifierFromSpecifiers:(id)arg1;
@@ -189,6 +190,9 @@
 - (BOOL)shouldShowClassKitSpecifier;
 - (BOOL)shouldShowClassroomSpecifier;
 - (BOOL)shouldShowEthernetSpecifier;
+- (BOOL)shouldShowFaceID;
+- (BOOL)shouldShowSimulatorSettings;
+- (BOOL)shouldShowTouchID;
 - (void)showDeviceSupervisionInfo;
 - (void)showPINSheet:(id)arg1;
 - (void)signInController:(id)arg1 didCompleteWithSuccess:(BOOL)arg2 error:(id)arg3;
@@ -206,8 +210,10 @@
 - (void)updateClassKitSpecifier;
 - (void)updateClassroomSpecifier;
 - (void)updateEthernet;
+- (void)updateEthernetWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateFollowupSpecifiers;
 - (void)updateHomeKitSpecifier;
+- (void)updatePersonalHotspot;
 - (void)updateRestrictedSettings;
 - (void)updateSOS;
 - (void)updateSearchResultsForSearchController:(id)arg1;

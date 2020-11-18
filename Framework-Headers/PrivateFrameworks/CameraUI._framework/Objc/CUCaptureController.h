@@ -138,7 +138,7 @@
 - (id)_availabilityKeyPaths;
 - (void)_availabilityResultChangedForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3;
 - (void)_beginTrackingVideoRecordingForStillImageRequest:(id)arg1;
-- (void)_cancelDelayedFocusAndExposureReset;
+- (void)_cancelDelayedFocusAndExposureResetIncludingResetAfterLivePhotoVideoCapture:(BOOL)arg1;
 - (BOOL)_captureStillImageWithRequest:(id)arg1;
 - (id)_commandForChangeToGraphConfiguration:(id)arg1 resetZoom:(BOOL)arg2 minimumExecutionTime:(double)arg3 outRequestID:(int *)arg4;
 - (id)_commandForConfiguration:(id)arg1 outRequestID:(int *)arg2;

@@ -11,32 +11,37 @@
 #import <AvatarUI/FBSDisplayLayoutObserver-Protocol.h>
 
 @class AVTUIEnvironment, AVTUIRaiseGestureManager, AVTUserInfoView, AVTView, NSString, NSTimer;
+@protocol AVTFaceTrackingManagerDelegate;
 
 @interface AVTFaceTrackingManager : NSObject <AVTViewFaceTrackingDelegate, AVTUIRaiseGestureManagerDelegate, FBSDisplayLayoutObserver>
 {
     BOOL _faceTrackingManagementPaused;
-    BOOL _shouldRecheckLowLightState;
+    BOOL _shouldRecheckLowLightAndSensorOcclusionState;
+    id<AVTFaceTrackingManagerDelegate> _delegate;
     AVTUserInfoView *_userInfoView;
     AVTUIEnvironment *_environment;
     AVTUIRaiseGestureManager *_raiseGestureManager;
     AVTView *_avatarView;
-    NSTimer *_lowLightLockoutTimer;
+    NSTimer *_lowLightAndSensorOcclusionLockoutTimer;
     NSTimer *_trackingLostMessageTimer;
     NSTimer *_pauseTrackingTimer;
     unsigned long long _interruptionType;
+    NSString *_localizedDeviceName;
 }
 
 @property (readonly, nonatomic) AVTView *avatarView; // @synthesize avatarView=_avatarView;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<AVTFaceTrackingManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
 @property (nonatomic) BOOL faceTrackingManagementPaused; // @synthesize faceTrackingManagementPaused=_faceTrackingManagementPaused;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long interruptionType; // @synthesize interruptionType=_interruptionType;
-@property (strong, nonatomic) NSTimer *lowLightLockoutTimer; // @synthesize lowLightLockoutTimer=_lowLightLockoutTimer;
+@property (readonly, copy, nonatomic) NSString *localizedDeviceName; // @synthesize localizedDeviceName=_localizedDeviceName;
+@property (strong, nonatomic) NSTimer *lowLightAndSensorOcclusionLockoutTimer; // @synthesize lowLightAndSensorOcclusionLockoutTimer=_lowLightAndSensorOcclusionLockoutTimer;
 @property (strong, nonatomic) NSTimer *pauseTrackingTimer; // @synthesize pauseTrackingTimer=_pauseTrackingTimer;
 @property (readonly, nonatomic) AVTUIRaiseGestureManager *raiseGestureManager; // @synthesize raiseGestureManager=_raiseGestureManager;
-@property (nonatomic) BOOL shouldRecheckLowLightState; // @synthesize shouldRecheckLowLightState=_shouldRecheckLowLightState;
+@property (nonatomic) BOOL shouldRecheckLowLightAndSensorOcclusionState; // @synthesize shouldRecheckLowLightAndSensorOcclusionState=_shouldRecheckLowLightAndSensorOcclusionState;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSTimer *trackingLostMessageTimer; // @synthesize trackingLostMessageTimer=_trackingLostMessageTimer;
 @property (readonly, nonatomic) AVTUserInfoView *userInfoView; // @synthesize userInfoView=_userInfoView;
@@ -45,10 +50,12 @@
 - (void).cxx_destruct;
 - (void)avatarView:(id)arg1 didUpdateWithFaceTrackingStatus:(BOOL)arg2;
 - (void)avatarView:(id)arg1 didUpdateWithLowLightStatus:(BOOL)arg2;
+- (void)avatarView:(id)arg1 didUpdateWithSensorOcclusionStatus:(BOOL)arg2;
 - (void)avatarView:(id)arg1 faceTrackingSessionFailedWithError:(id)arg2;
+- (void)avatarViewDidUpdateWithLowLightOrCameraOcclusionStatus;
 - (void)avatarViewFaceTrackingSessionInterruptionDidBegin:(id)arg1;
 - (void)avatarViewFaceTrackingSessionInterruptionDidEnd:(id)arg1;
-- (void)cancelLowLightTimer;
+- (void)cancelLowLightAndSensorOcclusionTimer;
 - (void)dealloc;
 - (id)initWithAvatarView:(id)arg1 raiseGestureManager:(id)arg2 environment:(id)arg3;
 - (id)initWithAvatarView:(id)arg1 raiseGestureManager:(id)arg2 userInfoView:(id)arg3 environment:(id)arg4;
@@ -59,7 +66,6 @@
 - (void)resetForTrackingFoundAFaceAnimated:(BOOL)arg1;
 - (void)resumeFaceTrackingIfNeededAnimated:(BOOL)arg1;
 - (void)startTrackingLostTimers;
-- (void)tearDown;
 - (void)updateForPausingTracking;
 - (void)updateForPausingTrackingWithLabel:(BOOL)arg1;
 - (void)updateForTrackingLost;

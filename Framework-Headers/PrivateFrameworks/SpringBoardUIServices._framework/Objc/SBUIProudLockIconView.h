@@ -6,17 +6,20 @@
 
 #import <UIKit/UIView.h>
 
-@class LAUIPearlGlyphView, NSSet, SBUICAPackageView, SBUIFaceIDCameraGlyphView, UIColor, _UILegibilitySettings;
+@class LAUIPearlGlyphView, NSSet, SBUICAPackageView, SBUIFaceIDCameraGlyphView, SBUIFaceIDCoachingView, UIColor, _UILegibilitySettings;
 
 @interface SBUIProudLockIconView : UIView
 {
     long long _state;
+    UIView *_iconContainerView;
     SBUICAPackageView *_lockView;
     NSSet *_imageLayers;
     NSSet *_shadowImageLayers;
     NSSet *_shadowFilterLayers;
     LAUIPearlGlyphView *_lazy_pearlGlyphView;
     id _pearlGlyphViewSharedResources;
+    SBUIFaceIDCoachingView *_lazy_faceIDCoachingView;
+    BOOL _performingIncomingLayout;
     SBUIFaceIDCameraGlyphView *_cameraCoveredView;
     _UILegibilitySettings *_legibilitySettings;
     double _durationOnCameraCoveredGlyphBeforeCoaching;
@@ -35,13 +38,23 @@
 - (double)_alphaForActiveViewForState:(long long)arg1;
 - (void)_configureShadowFromLegibilitySettings:(id)arg1;
 - (id)_defaultAnimationSettingsForTransitionFromViews:(id)arg1 andState:(long long)arg2 toViews:(id)arg3 andState:(long long)arg4;
+- (id)_faceIDCoachingView;
 - (void)_forEachLayerInHierarchy:(id)arg1 perform:(CDUnknownBlockType)arg2;
 - (struct CGAffineTransform)_incomingTransformForActiveView:(id)arg1 forState:(long long)arg2;
+- (id)_layoutAnimationSettingsForTransitionFromViews:(id)arg1 andState:(long long)arg2 toViews:(id)arg3 andState:(long long)arg4;
+- (double)_lockToCoachingSpacing;
 - (struct CGAffineTransform)_outgoingTransformForView:(id)arg1 fromState:(long long)arg2;
 - (id)_pearlGlyphView;
+- (void)_resetCameraGlyphView;
+- (void)_resetPearlGlyphView;
+- (void)_resetfaceIDCoachingView;
+- (double)_scaleAmountForZoom;
+- (struct CGSize)_smallLockSize;
+- (struct CGSize)_smallLockSizeForTextSize:(id)arg1;
 - (id)_transformAnimationSettingsForTransitionFromViews:(id)arg1 andState:(long long)arg2 toViews:(id)arg3 andState:(long long)arg4 forIncomingViews:(BOOL)arg5;
-- (struct CGAffineTransform)_transformForActiveViewForState:(long long)arg1;
+- (struct CGAffineTransform)_transformForActiveView:(id)arg1 forState:(long long)arg2;
 - (void)_transitionToState:(long long)arg1 animated:(BOOL)arg2 options:(long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (struct CGAffineTransform)_zoomedTransform;
 - (id)fileNameForCurrentDevice;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

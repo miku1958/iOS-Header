@@ -29,6 +29,7 @@
 + (id)localTargetDevice;
 - (void).cxx_destruct;
 - (void)_validateCommonPreconditionsWithCompletion:(CDUnknownBlockType)arg1;
+- (id)appleAccountInformation;
 - (id)bridgedClientInfo;
 - (BOOL)claimSecureElementForCurrentUser;
 - (void)claimSecureElementForCurrentUserWithCompletion:(CDUnknownBlockType)arg1;
@@ -59,6 +60,7 @@
 - (void)paymentWebService:(id)arg1 provisioningDataWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 queueConnectionToTrustedServiceManagerForPushTopic:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 registrationDataWithAuthToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)paymentWebService:(id)arg1 registrationDataWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 removePass:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 setNewAuthRandom:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 setNewAuthRandomIfNecessaryReturningPairingState:(CDUnknownBlockType)arg2;
@@ -67,6 +69,7 @@
 - (void)paymentWebService:(id)arg1 validateTransferPreconditionsWithCompletion:(CDUnknownBlockType)arg2;
 - (void)paymentWebServiceDidUpdateConfiguration:(id)arg1;
 - (BOOL)paymentWebServiceSupportsPeerPaymentRegistration:(id)arg1;
+- (void)renewAppleAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)secureElementIdentifiers;
 - (BOOL)secureElementIsAvailable;
 - (unsigned long long)secureElementOwnershipStateForCurrentUser;

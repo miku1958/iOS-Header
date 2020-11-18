@@ -29,8 +29,9 @@ __attribute__((visibility("hidden")))
     FigVideoContainerLayer *videoLayer;
     FigSubtitleCALayer *subtitleLayer;
     FigBaseCALayer *closedCaptionLayer;
-    AVPlayerLayer *associatedPIPLayer;
+    AVPlayerLayer *associatedRemoteModeLayer;
     BOOL willManageSublayersAsSwappedLayers;
+    long long activeMode;
     BOOL isReadyForDisplay;
     AVPlayer *playerBeingObserved;
     NSSet *KVOInvokers;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *clientLayers;
     BOOL isPIPModeEnabled;
     CALayer *placeholderContentLayerDuringPIPMode;
+    BOOL isConnectedToSecondScreen;
 }
 
 @end

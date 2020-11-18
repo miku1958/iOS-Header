@@ -11,7 +11,6 @@
 
 @protocol CNXPCDataMapperService <NSObject>
 - (void)accountsMatchingPredicate:(NSPredicate *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
-- (void)bestGeminiResultForContact:(CNContact *)arg1 substituteDefaultForDangling:(BOOL)arg2 withReply:(void (^)(CNGeminiResult *, NSError *))arg3;
 - (void)bestSenderIdentityForHandle:(CNGeminiHandle *)arg1 withReply:(void (^)(TUSenderIdentity *, NSError *))arg2;
 - (void)changeHistoryWithFetchRequest:(CNChangeHistoryFetchRequest *)arg1 withReply:(void (^)(CNChangeHistoryResult *, NSError *))arg2;
 - (void)clearChangeHistoryForClientIdentifier:(NSString *)arg1 toChangeAnchor:(CNChangeHistoryAnchor *)arg2 withReply:(void (^)(NSNumber *, NSError *))arg3;
@@ -24,6 +23,7 @@
 - (void)encodedContactsAndCursorForFetchRequest:(CNContactFetchRequest *)arg1 withReply:(void (^)(NSData *, id<CNEncodedFetchCursor>, NSError *))arg2;
 - (void)executeSaveRequest:(CNSaveRequest *)arg1 withReply:(void (^)(BOOL, CNSaveResponse *, NSError *))arg2;
 - (void)favoritesEntryDictionariesAtPath:(NSString *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
+- (void)geminiResultForContact:(CNContact *)arg1 substituteDefaultForDangling:(BOOL)arg2 withReply:(void (^)(CNGeminiResult *, NSError *))arg3;
 - (void)groupsMatchingPredicate:(NSPredicate *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
 - (void)identifierWithReply:(void (^)(NSString *, NSError *))arg1;
 - (void)meContactIdentifiersWithReply:(void (^)(NSArray *, NSError *))arg1;

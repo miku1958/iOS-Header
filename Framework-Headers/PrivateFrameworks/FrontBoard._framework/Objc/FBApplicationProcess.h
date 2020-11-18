@@ -71,6 +71,7 @@
 - (id)_createWorkspace;
 - (long long)_exceptionCodeForKillReason:(int)arg1;
 - (void)_queue_addAllowedLockedFilePath:(id)arg1;
+- (void)_queue_addAllowedLockedPaths;
 - (long long)_queue_bksVisibilityForVisibility:(int)arg1;
 - (BOOL)_queue_bootstrapAndExecWithContext:(id)arg1;
 - (void)_queue_callExitObservers;
@@ -90,6 +91,7 @@
 - (id)_queue_internalDebugEnvironmentVariables;
 - (void)_queue_invalidateBKSProcess;
 - (BOOL)_queue_isAllowedLockedFilePath:(id)arg1 standardizedPath:(out id *)arg2;
+- (BOOL)_queue_isPlatformExecutable;
 - (void)_queue_killForReason:(long long)arg1 andReport:(BOOL)arg2 withDescription:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_queue_killWithSignal:(int)arg1;
 - (void)_queue_launchIfNecessary;

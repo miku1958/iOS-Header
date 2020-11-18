@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
+#pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
@@ -34,6 +32,10 @@ struct CGRect {
 struct CGSize {
     double width;
     double height;
+};
+
+struct NSString {
+    Class _field1;
 };
 
 struct UIEdgeInsets {

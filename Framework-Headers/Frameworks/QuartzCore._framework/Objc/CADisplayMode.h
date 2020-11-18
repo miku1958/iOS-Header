@@ -17,6 +17,7 @@
 @property (readonly, copy, nonatomic) NSString *colorMode;
 @property (readonly, copy, nonatomic) NSString *hdrMode;
 @property (readonly, nonatomic) unsigned long long height;
+@property (readonly, nonatomic, getter=isHighBandwidth) BOOL highBandwidth;
 @property (readonly, nonatomic) unsigned long long internalRepresentation;
 @property (readonly, nonatomic) BOOL isVirtual;
 @property (readonly, nonatomic) double pixelAspectRatio;

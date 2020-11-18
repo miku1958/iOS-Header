@@ -10,6 +10,7 @@
 
 @protocol PKPaymentWebServiceProxyObjectExportedInterface <NSObject>
 - (void)addPassData:(NSData *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)appleAccountInformationWithCompletion:(void (^)(PKAppleAccountInformation *))arg1;
 - (void)archiveBackgroundContext:(PKPaymentWebServiceBackgroundContext *)arg1;
 - (void)archiveContext:(PKPaymentWebServiceContext *)arg1;
 - (void)canProvisionPaymentPassWithPrimaryAccountIdentifier:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
@@ -21,6 +22,7 @@
 - (void)getContextWithCompletion:(void (^)(PKPaymentWebServiceContext *))arg1;
 - (void)getProvisioningDataWithCompletion:(void (^)(PKPaymentDeviceProvisioningData *, NSError *))arg1;
 - (void)getRegistrationDataWithAuthToken:(NSString *)arg1 completion:(void (^)(PKPaymentDeviceRegistrationData *, NSError *))arg2;
+- (void)getRegistrationDataWithCompletion:(void (^)(PKPaymentDeviceRegistrationData *, NSError *))arg1;
 - (void)getTrustedDeviceEnrollmentInfoWithCompletion:(void (^)(PKTrustedDeviceEnrollmentInfo *))arg1;
 - (void)handlePotentialExpressPass:(PKPaymentPass *)arg1 withCompletion:(void (^)(NSSet *))arg2;
 - (void)hasPassesOfType:(unsigned long long)arg1 completion:(void (^)(BOOL))arg2;
@@ -33,6 +35,7 @@
 - (void)paymentSupportedInCurrentRegion:(void (^)(int))arg1;
 - (void)queueConnectionToTrustedServiceManagerForPushTopic:(NSString *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
 - (void)removePass:(PKPass *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)renewAppleAccountWithCompletion:(void (^)(long long, PKAppleAccountInformation *))arg1;
 - (void)secureElementOwnershipStateForCurrentUserWithCompletion:(void (^)(unsigned long long))arg1;
 - (void)setNewAuthRandom:(void (^)(BOOL))arg1;
 - (void)setNewAuthRandomIfNecessaryReturningPairingState:(void (^)(BOOL, NSData *, NSData *))arg1;

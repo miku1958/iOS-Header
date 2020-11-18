@@ -9,7 +9,7 @@
 #import <AppleMediaServices/AMSRequestEncoding-Protocol.h>
 
 @class ACAccount, AMSProcessInfo, NSDictionary, NSString;
-@protocol AMSResponseDecoding, AMSURLBagContract;
+@protocol AMSResponseDecoding, AMSURLBagContract, OS_dispatch_queue;
 
 @interface AMSURLRequestEncoder : NSObject <AMSRequestEncoding>
 {
@@ -27,6 +27,7 @@
     NSString *_logUUID;
     long long _mescalType;
     id<AMSResponseDecoding> _responseDecoder;
+    NSObject<OS_dispatch_queue> *_internalQueue;
 }
 
 @property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
@@ -42,6 +43,7 @@
 @property (nonatomic) BOOL disableAccountMediaTypeComponent; // @synthesize disableAccountMediaTypeComponent=_disableAccountMediaTypeComponent;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL includeClientVersions; // @synthesize includeClientVersions=_includeClientVersions;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property (strong, nonatomic) NSString *logUUID; // @synthesize logUUID=_logUUID;
 @property (nonatomic) long long mescalType; // @synthesize mescalType=_mescalType;
 @property (strong, nonatomic) id<AMSResponseDecoding> responseDecoder; // @synthesize responseDecoder=_responseDecoder;
@@ -52,12 +54,15 @@
 - (id)_methodStringFromMethod:(long long)arg1;
 - (id)init;
 - (id)initWithBagContract:(id)arg1;
+- (id)requestByEncodingRequest:(id)arg1 parameters:(id)arg2;
 - (id)requestByEncodingRequest:(id)arg1 parameters:(id)arg2 error:(id *)arg3;
 - (id)requestWithMethod:(long long)arg1 URL:(id)arg2 error:(id *)arg3;
+- (id)requestWithMethod:(long long)arg1 URL:(id)arg2 parameters:(id)arg3;
 - (id)requestWithMethod:(long long)arg1 URL:(id)arg2 parameters:(id)arg3 error:(id *)arg4;
 - (id)requestWithMethod:(long long)arg1 URLString:(id)arg2 error:(id *)arg3;
 - (id)requestWithMethod:(long long)arg1 URLString:(id)arg2 parameters:(id)arg3 error:(id *)arg4;
 - (id)requestWithMethod:(long long)arg1 bagURL:(id)arg2 error:(id *)arg3;
+- (id)requestWithMethod:(long long)arg1 bagURL:(id)arg2 parameters:(id)arg3;
 - (id)requestWithMethod:(long long)arg1 bagURL:(id)arg2 parameters:(id)arg3 error:(id *)arg4;
 
 @end

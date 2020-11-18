@@ -55,6 +55,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType disconnectCallPreflight; // @synthesize disconnectCallPreflight=_disconnectCallPreflight;
+@property (readonly, copy, nonatomic) NSArray *displayedAudioAndVideoCalls;
 @property (readonly, copy, nonatomic) NSArray *displayedCalls;
 @property (readonly, nonatomic, getter=isEndAndAnswerAllowed) BOOL endAndAnswerAllowed;
 @property (readonly, nonatomic) BOOL hasCurrentAudioCalls;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVTAvatarConfigurationImageRenderer, AVTCoreModel, AVTDeviceResourceManager, AVTInMemoryImageCache, NSNotificationCenter, NSURL;
+@class AVTAvatarConfigurationImageRenderer, AVTCoreEnvironment, AVTCoreModel, AVTDeviceResourceManager, AVTInMemoryImageCache, NSNotificationCenter, NSURL;
 @protocol AVTUILogger, AVTUsageTrackingSession, OS_dispatch_queue;
 
 @interface AVTUIEnvironment : NSObject
@@ -15,16 +15,12 @@
     AVTAvatarConfigurationImageRenderer *_renderer;
     AVTInMemoryImageCache *_inMemoryImageCache;
     id<AVTUsageTrackingSession> _usageTrackingSession;
-    id<AVTUILogger> _logger;
+    BOOL _deviceIsSunflower;
+    AVTCoreEnvironment *_coreEnvironment;
     double _mainScreenScale;
     long long _userInterfaceLayoutDirection;
-    CDUnknownBlockType _serialQueueProvider;
-    CDUnknownBlockType _lockProvider;
     NSObject<OS_dispatch_queue> *_backgroundQueue;
-    NSURL *_storeLocation;
-    NSURL *_imageStoreLocation;
-    NSURL *_imageCacheStoreLocation;
-    NSNotificationCenter *_notificationCenter;
+    NSObject<OS_dispatch_queue> *_backgroundRenderingQueue;
     AVTDeviceResourceManager *_deviceResourceManager;
     double _actionAnimationsMultiplier;
     struct CGSize _mainScreenSize;
@@ -32,33 +28,32 @@
 
 @property (nonatomic) double actionAnimationsMultiplier; // @synthesize actionAnimationsMultiplier=_actionAnimationsMultiplier;
 @property (readonly, copy, nonatomic) NSObject<OS_dispatch_queue> *backgroundQueue; // @synthesize backgroundQueue=_backgroundQueue;
+@property (readonly, copy, nonatomic) NSObject<OS_dispatch_queue> *backgroundRenderingQueue; // @synthesize backgroundRenderingQueue=_backgroundRenderingQueue;
+@property (readonly, nonatomic) AVTCoreEnvironment *coreEnvironment; // @synthesize coreEnvironment=_coreEnvironment;
+@property (readonly, nonatomic) BOOL deviceIsSunflower; // @synthesize deviceIsSunflower=_deviceIsSunflower;
 @property (readonly, nonatomic) AVTDeviceResourceManager *deviceResourceManager; // @synthesize deviceResourceManager=_deviceResourceManager;
 @property (readonly, nonatomic) AVTCoreModel *editorCoreModel;
-@property (readonly, copy, nonatomic) NSURL *imageCacheStoreLocation; // @synthesize imageCacheStoreLocation=_imageCacheStoreLocation;
-@property (readonly, copy, nonatomic) NSURL *imageStoreLocation; // @synthesize imageStoreLocation=_imageStoreLocation;
+@property (readonly, copy, nonatomic) NSURL *imageCacheStoreLocation;
+@property (readonly, copy, nonatomic) NSURL *imageStoreLocation;
 @property (readonly, nonatomic) AVTInMemoryImageCache *inMemoryImageCache;
-@property (readonly, copy, nonatomic) CDUnknownBlockType lockProvider; // @synthesize lockProvider=_lockProvider;
-@property (readonly, nonatomic) id<AVTUILogger> logger; // @synthesize logger=_logger;
+@property (readonly, copy, nonatomic) CDUnknownBlockType lockProvider;
+@property (readonly, nonatomic) id<AVTUILogger> logger;
 @property (readonly, nonatomic) double mainScreenScale; // @synthesize mainScreenScale=_mainScreenScale;
 @property (readonly, nonatomic) struct CGSize mainScreenSize; // @synthesize mainScreenSize=_mainScreenSize;
-@property (readonly, nonatomic) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
+@property (readonly, nonatomic) NSNotificationCenter *notificationCenter;
 @property (readonly, nonatomic) AVTAvatarConfigurationImageRenderer *renderer;
-@property (readonly, copy, nonatomic) CDUnknownBlockType serialQueueProvider; // @synthesize serialQueueProvider=_serialQueueProvider;
-@property (readonly, copy, nonatomic) NSURL *storeLocation; // @synthesize storeLocation=_storeLocation;
+@property (readonly, copy, nonatomic) CDUnknownBlockType serialQueueProvider;
+@property (readonly, copy, nonatomic) NSURL *storeLocation;
 @property (readonly, nonatomic) id<AVTUsageTrackingSession> usageTrackingSession;
 @property (readonly, nonatomic) long long userInterfaceLayoutDirection; // @synthesize userInterfaceLayoutDirection=_userInterfaceLayoutDirection;
 
 + (id)createEditorCoreModelWithLogger:(id)arg1;
 + (id)createFunCamEnvironment;
-+ (id)createQueueWithQoSClass:(unsigned int)arg1;
++ (id)createQueueWithQoSClass:(unsigned int)arg1 label:(const char *)arg2;
 + (id)createUsageTrackingSessionWithCoreModel:(id)arg1 serialQueueProvider:(CDUnknownBlockType)arg2 logger:(id)arg3;
 + (id)defaultEnvironment;
-+ (id)imageCacheStoreLocationWithError:(id *)arg1;
-+ (id)imageStoreLocation;
-+ (CDUnknownBlockType)serialQueueProvider;
-+ (id)storeLocation;
 - (void).cxx_destruct;
-- (id)init;
+- (id)initWithCoreEnvironment:(id)arg1;
 
 @end
 

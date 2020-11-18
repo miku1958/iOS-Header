@@ -25,6 +25,7 @@
 - (id)initWithStreamToken:(long long)arg1 error:(id *)arg2;
 - (void)registerBlocksForDelegateNotifications;
 - (id)sendCharacter:(unsigned short)arg1;
+- (BOOL)sendText:(struct NSString *)arg1;
 - (void)start;
 - (void)stop;
 - (void)terminateSession;

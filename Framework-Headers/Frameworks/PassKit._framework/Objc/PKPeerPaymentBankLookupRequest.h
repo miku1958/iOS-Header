@@ -18,7 +18,7 @@
 @property (copy, nonatomic) NSString *query; // @synthesize query=_query;
 
 - (void).cxx_destruct;
-- (id)_urlRequestWithServiceURL:(id)arg1 account:(id)arg2;
+- (id)_urlRequestWithServiceURL:(id)arg1 appleAccountInformation:(id)arg2;
 - (id)initWithCountryCode:(id)arg1 query:(id)arg2;
 
 @end

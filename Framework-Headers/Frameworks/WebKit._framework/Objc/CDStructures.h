@@ -148,6 +148,10 @@ struct BlockPtr<void (PKPaymentRequestShippingMethodUpdate *)> {
     CDUnknownBlockType m_block;
 };
 
+struct BlockPtr<void (WebEvent *, bool)> {
+    CDUnknownBlockType m_block;
+};
+
 struct CATransform3D {
     double m11;
     double m12;
@@ -685,14 +689,13 @@ struct Document {
     struct RefPtr<WTF::Logger, WTF::DumbPtrTraits<WTF::Logger>> _field257;
     struct RefPtr<WebCore::StringCallback, WTF::DumbPtrTraits<WebCore::StringCallback>> _field258;
     BOOL _field259;
-    BOOL _field260;
-    struct RefPtr<WebCore::DocumentAnimationScheduler, WTF::DumbPtrTraits<WebCore::DocumentAnimationScheduler>> _field261;
-    struct RefPtr<WebCore::DocumentTimeline, WTF::DumbPtrTraits<WebCore::DocumentTimeline>> _field262;
-    struct ObjectIdentifier<WebCore::DocumentIdentifierType> _field263;
-    struct RefPtr<WebCore::SWClientConnection, WTF::DumbPtrTraits<WebCore::SWClientConnection>> _field264;
-    struct HashSet<WebCore::ApplicationStateChangeListener *, WTF::PtrHash<WebCore::ApplicationStateChangeListener *>, WTF::HashTraits<WebCore::ApplicationStateChangeListener *>> _field265;
-    struct String _field266;
-    struct unique_ptr<WebCore::UserGestureIndicator, std::__1::default_delete<WebCore::UserGestureIndicator>> _field267;
+    struct RefPtr<WebCore::DocumentAnimationScheduler, WTF::DumbPtrTraits<WebCore::DocumentAnimationScheduler>> _field260;
+    struct RefPtr<WebCore::DocumentTimeline, WTF::DumbPtrTraits<WebCore::DocumentTimeline>> _field261;
+    struct ObjectIdentifier<WebCore::DocumentIdentifierType> _field262;
+    struct RefPtr<WebCore::SWClientConnection, WTF::DumbPtrTraits<WebCore::SWClientConnection>> _field263;
+    struct HashSet<WebCore::ApplicationStateChangeListener *, WTF::PtrHash<WebCore::ApplicationStateChangeListener *>, WTF::HashTraits<WebCore::ApplicationStateChangeListener *>> _field264;
+    struct String _field265;
+    struct unique_ptr<WebCore::UserGestureIndicator, std::__1::default_delete<WebCore::UserGestureIndicator>> _field266;
 };
 
 struct DocumentAnimationScheduler;
@@ -4701,20 +4704,21 @@ struct ViewGestureController {
     CDUnknownFunctionPointerType *_field1;
     struct WebPageProxy *_field2;
     int _field3;
-    struct Timer<WebKit::ViewGestureController> _field4;
-    struct Color _field5;
-    struct WeakPtr<WebKit::WebPageProxy> _field6;
-    RefPtr_a805eeb8 _field7;
-    unsigned long long _field8;
-    id _field9;
-    struct RetainPtr<UIView> _field10;
+    BOOL _field4;
+    struct Timer<WebKit::ViewGestureController> _field5;
+    struct Color _field6;
+    struct WeakPtr<WebKit::WebPageProxy> _field7;
+    RefPtr_a805eeb8 _field8;
+    unsigned long long _field9;
+    id _field10;
     struct RetainPtr<UIView> _field11;
     struct RetainPtr<UIView> _field12;
-    struct RetainPtr<WKSwipeTransitionController> _field13;
-    struct RetainPtr<_UIViewControllerOneToOneTransitionContext> _field14;
-    unsigned long long _field15;
-    struct Function<void ()> _field16;
-    struct SnapshotRemovalTracker _field17;
+    struct RetainPtr<UIView> _field13;
+    struct RetainPtr<WKSwipeTransitionController> _field14;
+    struct RetainPtr<_UIViewControllerOneToOneTransitionContext> _field15;
+    unsigned long long _field16;
+    struct Function<void ()> _field17;
+    struct SnapshotRemovalTracker _field18;
 };
 
 struct ViewGestureGeometryCollector;
@@ -4912,6 +4916,10 @@ struct WeakObjCPtr<UIView> {
 };
 
 struct WeakObjCPtr<WKActionSheetAssistant> {
+    id m_weakReference;
+};
+
+struct WeakObjCPtr<WKContentView> {
     id m_weakReference;
 };
 

@@ -19,6 +19,7 @@
 
 - (void)addFile:(id)arg1;
 - (void)addFolder:(id)arg1;
+- (BOOL)containsItem:(id)arg1;
 - (void)dealloc;
 - (void)deleteFile:(id)arg1;
 - (void)deleteFolder:(id)arg1;

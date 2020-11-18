@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSMutableArray, NSMutableIndexSet, NSMutableOrderedSet, NSNumber, NSString;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface ICCameraProperties : NSObject
@@ -30,12 +30,6 @@ __attribute__((visibility("hidden")))
     unsigned long long _numberOfDownloadableItems;
     BOOL _contentReceived;
     double _downloadCancelTimestamp;
-    NSObject<OS_dispatch_queue> *_thumbnailFetchQ;
-    NSObject<OS_dispatch_queue> *_metadataFetchQ;
-    NSObject<OS_dispatch_queue> *_downloadQ;
-    NSObject<OS_dispatch_queue> *_generalQ;
-    NSObject<OS_dispatch_queue> *_enumerationQ;
-    NSObject<OS_dispatch_semaphore> *_deviceQSemaphore;
     NSMutableArray *_originalMediaFiles;
     NSMutableArray *_convertedMediaFiles;
     NSMutableArray *_universalMediaFiles;
@@ -50,6 +44,8 @@ __attribute__((visibility("hidden")))
     long long _appleRelatedUUIDSupport;
     long long _enumerationOrder;
     unsigned int _deviceFailureCount;
+    NSObject<OS_dispatch_queue> *_deviceNotificationQueue;
+    NSObject<OS_dispatch_queue> *_deviceCommandQueue;
     unsigned long long _mediaPresentation;
     NSMutableOrderedSet *_indexedCameraFileUUIDs;
     NSMutableOrderedSet *_indexedCameraFileDates;
@@ -69,16 +65,14 @@ __attribute__((visibility("hidden")))
 @property (strong) NSMutableArray *contents; // @synthesize contents=_contents;
 @property struct os_unfair_lock_s contentsLock; // @synthesize contentsLock=_contentsLock;
 @property (strong) NSMutableArray *convertedMediaFiles; // @synthesize convertedMediaFiles=_convertedMediaFiles;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *deviceCommandQueue; // @synthesize deviceCommandQueue=_deviceCommandQueue;
 @property unsigned int deviceFailureCount; // @synthesize deviceFailureCount=_deviceFailureCount;
-@property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *deviceQSemaphore; // @synthesize deviceQSemaphore=_deviceQSemaphore;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *deviceNotificationQueue; // @synthesize deviceNotificationQueue=_deviceNotificationQueue;
 @property double downloadCancelTimestamp; // @synthesize downloadCancelTimestamp=_downloadCancelTimestamp;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *downloadQ; // @synthesize downloadQ=_downloadQ;
 @property BOOL ejectable; // @synthesize ejectable=_ejectable;
 @property (strong) NSMutableIndexSet *enumeratedObjectIndexes; // @synthesize enumeratedObjectIndexes=_enumeratedObjectIndexes;
 @property long long enumerationOrder; // @synthesize enumerationOrder=_enumerationOrder;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *enumerationQ; // @synthesize enumerationQ=_enumerationQ;
 @property unsigned long long estimatedNumberOfDownloadableItems; // @synthesize estimatedNumberOfDownloadableItems=_estimatedNumberOfDownloadableItems;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *generalQ; // @synthesize generalQ=_generalQ;
 @property BOOL iCloudPhotosEnabled; // @synthesize iCloudPhotosEnabled=_iCloudPhotosEnabled;
 @property (strong) NSMutableOrderedSet *indexedCameraFileDates; // @synthesize indexedCameraFileDates=_indexedCameraFileDates;
 @property (strong) NSMutableOrderedSet *indexedCameraFileUUIDs; // @synthesize indexedCameraFileUUIDs=_indexedCameraFileUUIDs;
@@ -88,10 +82,8 @@ __attribute__((visibility("hidden")))
 @property (strong) NSMutableArray *mediaFiles; // @synthesize mediaFiles=_mediaFiles;
 @property struct os_unfair_lock_s mediaFilesLock; // @synthesize mediaFilesLock=_mediaFilesLock;
 @property unsigned long long mediaPresentation; // @synthesize mediaPresentation=_mediaPresentation;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *metadataFetchQ; // @synthesize metadataFetchQ=_metadataFetchQ;
 @property unsigned long long numberOfDownloadableItems; // @synthesize numberOfDownloadableItems=_numberOfDownloadableItems;
 @property (strong) NSMutableArray *originalMediaFiles; // @synthesize originalMediaFiles=_originalMediaFiles;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *thumbnailFetchQ; // @synthesize thumbnailFetchQ=_thumbnailFetchQ;
 @property double timeOffset; // @synthesize timeOffset=_timeOffset;
 @property (strong) NSMutableArray *toBeNotifiedAddedItems; // @synthesize toBeNotifiedAddedItems=_toBeNotifiedAddedItems;
 @property (strong) NSMutableArray *universalMediaFiles; // @synthesize universalMediaFiles=_universalMediaFiles;

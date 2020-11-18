@@ -39,6 +39,7 @@
 @property (readonly, copy, nonatomic) NSArray *currentVideoCalls;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSArray *displayedAudioAndVideoCalls;
 @property (readonly, nonatomic) TUCall *displayedCall;
 @property (readonly, copy, nonatomic) NSArray *displayedCalls;
 @property (readonly, nonatomic) BOOL existingCallsHaveMultipleProviders;

@@ -74,6 +74,7 @@
 - (void)markAllMessagesAsNeedingCloudKitSync;
 - (void)markMessageAsCleanWithROWID:(long long)arg1;
 - (void)markMessageAsDeduplicated:(id)arg1;
+- (void)markMessageAsIgnoreButNeedingSyncWithROWID:(long long)arg1;
 - (id)markMessagesAsReadWithHandle:(id)arg1 onService:(id)arg2 upToGUID:(id)arg3 readDate:(id)arg4 fromMe:(BOOL)arg5;
 - (id)markMessagesAsReadWithHandles:(id)arg1 onServices:(id)arg2 upToGUID:(id)arg3 readDate:(id)arg4 fromMe:(BOOL)arg5;
 - (id)markMessagesAsReadWithRoomNames:(id)arg1 onServices:(id)arg2 upToGUID:(id)arg3 readDate:(id)arg4 fromMe:(BOOL)arg5;

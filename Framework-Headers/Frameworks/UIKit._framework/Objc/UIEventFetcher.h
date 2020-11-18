@@ -24,9 +24,13 @@ __attribute__((visibility("hidden")))
     int _displayLinkIdleTicks;
     CADisplayLink *_displayLink;
     long long _countOfDigitizerEventsReceivedSinceLastDisplayLinkCallback;
-    BOOL _didDispatchOneMoveEventSinceLastDisplayLinkCallback;
+    long long _countOfDigitizerEventsReceivedInPreviousFrame;
+    BOOL _didSignalOneMoveEventSinceLastDisplayLinkCallback;
     double _lastImportantEventTimestamp;
-    BOOL _shouldSignalOnDisplayLink;
+    double _lastSignalTimestamp;
+    double _estimatedDisplayLinkDrift;
+    long long _lastSignalType;
+    BOOL _needsSignalOnDisplayLink;
     id<UIEventFetcherSink> _eventFetcherSink;
     double _commitTimeForTouchEvents;
     NSMutableDictionary *_latestMoveDragEventsBySessionID;
@@ -39,7 +43,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double latestMoveDragEventResendTimestamp; // @synthesize latestMoveDragEventResendTimestamp=_latestMoveDragEventResendTimestamp;
 @property (nonatomic) double latestMoveDragEventTimestamp; // @synthesize latestMoveDragEventTimestamp=_latestMoveDragEventTimestamp;
 @property (strong, nonatomic) NSMutableDictionary *latestMoveDragEventsBySessionID; // @synthesize latestMoveDragEventsBySessionID=_latestMoveDragEventsBySessionID;
-@property (nonatomic) BOOL shouldSignalOnDisplayLink; // @synthesize shouldSignalOnDisplayLink=_shouldSignalOnDisplayLink;
+@property (nonatomic) BOOL needsSignalOnDisplayLink; // @synthesize needsSignalOnDisplayLink=_needsSignalOnDisplayLink;
 
 - (void).cxx_destruct;
 - (void)_addHIDEventFilter:(CDUnknownBlockType)arg1;

@@ -10,7 +10,7 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBRunWorkflowIntentResponse-Protocol.h>
 
-@class NSString, _INPBArchivedObject;
+@class NSArray, NSString, _INPBArchivedObject;
 
 @interface _INPBRunWorkflowIntentResponse : PBCodable <_INPBRunWorkflowIntentResponse, NSSecureCoding, NSCopying>
 {
@@ -20,6 +20,7 @@
     } _has;
     BOOL _continueRunning;
     BOOL _waitingForResume;
+    NSArray *_steps;
     _INPBArchivedObject *_underlyingIntent;
     _INPBArchivedObject *_underlyingIntentResponse;
     NSString *_utterance;
@@ -34,17 +35,23 @@
 @property (readonly, nonatomic) BOOL hasUtterance;
 @property (nonatomic) BOOL hasWaitingForResume;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *steps; // @synthesize steps=_steps;
+@property (readonly, nonatomic) unsigned long long stepsCount;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBArchivedObject *underlyingIntent; // @synthesize underlyingIntent=_underlyingIntent;
 @property (strong, nonatomic) _INPBArchivedObject *underlyingIntentResponse; // @synthesize underlyingIntentResponse=_underlyingIntentResponse;
 @property (copy, nonatomic) NSString *utterance; // @synthesize utterance=_utterance;
 @property (nonatomic) BOOL waitingForResume; // @synthesize waitingForResume=_waitingForResume;
 
++ (Class)stepType;
 - (void).cxx_destruct;
+- (void)addStep:(id)arg1;
+- (void)clearSteps;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)stepAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

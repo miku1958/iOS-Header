@@ -14,6 +14,12 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityOverridesInvalidFrames;
+- (void)_axClearCachedElements;
+- (id)accessibilityElements;
+- (void)addKeyline:(id)arg1 forKey:(id)arg2 tappable:(BOOL)arg3;
+- (void)layoutSubviews;
+- (void)removeAllKeylines;
+- (void)startBreathing;
 
 @end
 

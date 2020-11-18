@@ -32,12 +32,13 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void)dealloc;
-- (void)didReceiveCharacter:(unsigned short)arg1;
+- (void)didReceiveText:(struct NSString *)arg1;
 - (id)initWithSendDelegate:(id)arg1 clientPid:(int)arg2 delegate:(id)arg3 delegateQueue:(id)arg4;
 - (void)pause;
 - (void)resume;
 - (void)sendCharacter:(unsigned short)arg1;
 - (id)sendDelegate;
+- (void)sendText:(struct NSString *)arg1;
 - (void)setPause:(BOOL)arg1;
 - (BOOL)setStreamConfig:(id)arg1 withError:(id *)arg2;
 - (void)start;

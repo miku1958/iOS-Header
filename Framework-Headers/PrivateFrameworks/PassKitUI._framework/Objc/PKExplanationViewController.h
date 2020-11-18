@@ -35,8 +35,8 @@
 - (void)loadView;
 - (id)pkui_navigationBarTintColor;
 - (BOOL)pkui_prefersNavigationBarShadowHidden;
-- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 
 @end
 

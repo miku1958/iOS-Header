@@ -21,10 +21,14 @@
 
 + (long long)cellStyle;
 - (void).cxx_destruct;
+- (void)_setCenteredText:(id)arg1;
+- (void)_setLabel:(id)arg1 andPhoneNumber:(id)arg2;
 - (BOOL)canBeChecked;
 - (BOOL)canReload;
+- (id)detailTextLabel;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
+- (id)textLabel;
 
 @end
 

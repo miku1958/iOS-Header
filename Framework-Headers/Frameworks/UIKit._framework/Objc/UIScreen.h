@@ -291,7 +291,6 @@
 - (id)snapshotViewAfterScreenUpdates:(BOOL)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateFocusIfNeeded;
-- (id)valueForKey:(id)arg1;
 
 @end
 

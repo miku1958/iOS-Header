@@ -35,6 +35,7 @@
 - (void)getEnhancedVoiceLinkQualityMetric:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTEnhancedLinkQualityMetric *, NSError *))arg2;
 - (void)getIMSRegistrationStatus:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTIMSRegistrationStatus *, NSError *))arg2;
 - (void)getMaxDataRate:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(long long, NSError *))arg2;
+- (void)getPublicSignalStrength:(CTServiceDescriptor *)arg1 completion:(void (^)(CTSignalStrengthInfo *, NSError *))arg2;
 - (void)getRatSelection:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSString *, NSError *))arg2;
 - (void)getSignalStrengthInfo:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTSignalStrengthInfo *, NSError *))arg2;
 - (void)getSupportedDataRates:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTSupportedMaxDataRates *, NSError *))arg2;

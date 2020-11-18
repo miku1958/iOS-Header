@@ -51,6 +51,7 @@
 - (BOOL)notifyZoomDeviceWasUnlocked;
 - (BOOL)notifyZoomDockPositionWasChangedInSettingsTo:(id)arg1;
 - (BOOL)notifyZoomFluidSwitcherGestureDidFinish;
+- (BOOL)notifyZoomFluidSwitcherGestureDidFinishWithDock;
 - (BOOL)notifyZoomFluidSwitcherGestureWillBegin;
 - (BOOL)notifyZoomFocusDidChangeWithType:(long long)arg1 rect:(struct CGRect)arg2 contextId:(unsigned int)arg3;
 - (BOOL)notifyZoomFocusDidChangeWithType:(long long)arg1 rect:(struct CGRect)arg2 contextId:(unsigned int)arg3 keyboardFrame:(struct CGRect)arg4;

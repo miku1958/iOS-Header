@@ -7,7 +7,7 @@
 #import <ContactsUICore/NSObject-Protocol.h>
 
 @class CNContact, CNHandle, NSSet, NSString;
-@protocol CNTUDialRequest, CNTUSenderIdentity;
+@protocol CNTUDialRequest;
 
 @protocol CNTUCallProvider <NSObject>
 
@@ -18,6 +18,5 @@
 @property (readonly, nonatomic) BOOL supportsVideo;
 
 - (id<CNTUDialRequest>)dialRequestForHandle:(CNHandle *)arg1 contact:(CNContact *)arg2 video:(BOOL)arg3;
-- (id<CNTUDialRequest>)dialRequestForHandle:(CNHandle *)arg1 contact:(CNContact *)arg2 video:(BOOL)arg3 senderIdentity:(id<CNTUSenderIdentity>)arg4;
 @end
 

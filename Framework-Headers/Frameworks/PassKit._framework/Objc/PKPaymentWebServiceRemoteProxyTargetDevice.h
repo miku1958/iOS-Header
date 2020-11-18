@@ -27,6 +27,7 @@
 
 - (void).cxx_destruct;
 - (void)addPassData:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)appleAccountInformationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)archiveBackgroundContext:(id)arg1;
 - (void)archiveContext:(id)arg1;
 - (void)canProvisionPaymentPassWithPrimaryAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -39,6 +40,7 @@
 - (void)getContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getProvisioningDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getRegistrationDataWithAuthToken:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getRegistrationDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getTrustedDeviceEnrollmentInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handlePotentialExpressPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)hasPassesOfType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
@@ -53,6 +55,7 @@
 - (void)paymentSupportedInCurrentRegion:(CDUnknownBlockType)arg1;
 - (void)queueConnectionToTrustedServiceManagerForPushTopic:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)removePass:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)renewAppleAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (void)secureElementOwnershipStateForCurrentUserWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setNewAuthRandom:(CDUnknownBlockType)arg1;
 - (void)setNewAuthRandomIfNecessaryReturningPairingState:(CDUnknownBlockType)arg1;

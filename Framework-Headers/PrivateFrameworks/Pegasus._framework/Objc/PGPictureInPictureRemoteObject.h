@@ -9,7 +9,7 @@
 #import <Pegasus/PGPictureInPictureRemoteObjectInterface-Protocol.h>
 #import <Pegasus/PGPictureInPictureViewControllerDelegate-Protocol.h>
 
-@class BKSProcessAssertion, NSArray, NSString, NSXPCConnection, PGPictureInPictureApplication, PGPictureInPictureViewController, PGPlaybackProgress;
+@class BKSProcessAssertion, NSArray, NSString, NSUUID, NSXPCConnection, PGPictureInPictureApplication, PGPictureInPictureViewController, PGPlaybackProgress;
 @protocol OS_dispatch_queue, PGPictureInPictureRemoteObjectDelegate;
 
 __attribute__((visibility("hidden")))
@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
     long long _controlsStyle;
     long long _currentState;
     BKSProcessAssertion *_processAssertion;
+    BKSProcessAssertion *_interruptionBeganFinishTaskAssertion;
+    NSUUID *_finishTaskInvalidationUUID;
     PGPictureInPictureViewController *_pictureInPictureViewController;
     BOOL _isPictureInPicturePossible;
     long long _pictureInPictureInterruptionCounter;
@@ -28,7 +30,7 @@ __attribute__((visibility("hidden")))
     BOOL _shouldShowLoadingIndicator;
     PGPlaybackProgress *_playbackProgress;
     NSArray *_loadedTimeRanges;
-    BOOL _isStartingStoppingOrCancellingPictureInPicture;
+    unsigned long long _transitioningState;
     id<PGPictureInPictureRemoteObjectDelegate> _delegate;
     struct {
         unsigned int pictureInPictureRemoteObject_shouldAcceptSetupRequest:1;
@@ -57,8 +59,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
 @property (readonly, nonatomic) BOOL shouldStartPictureInPictureEnteringBackground;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long transitioningState;
 
 - (void).cxx_destruct;
+- (id)_finishTaskAssertionForProcessIdentifier:(int)arg1;
+- (void)_invalidateInterruptionBeganFinishTaskAssertion;
 - (id)_processAssertionForProcessIdentifier:(int)arg1;
 - (void)_tearDownAndNotifyClientAboutCancellation:(BOOL)arg1;
 - (void)cancel;

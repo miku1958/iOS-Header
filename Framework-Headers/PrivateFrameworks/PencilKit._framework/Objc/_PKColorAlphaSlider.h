@@ -7,11 +7,12 @@
 #import <UIKit/UIControl.h>
 
 @class CAGradientLayer, UIColor, UIView, _PKCheckerGridView, _PKSliderKnobView;
+@protocol _PKColorAlphaSliderDelegate;
 
 @interface _PKColorAlphaSlider : UIControl
 {
+    id<_PKColorAlphaSliderDelegate> _delegate;
     UIColor *_color;
-    double _colorAlpha;
     double _minAlpha;
     double _maxAlpha;
     UIView *_colorView;
@@ -24,9 +25,9 @@
 @property (strong, nonatomic) _PKCheckerGridView *alphaGridView; // @synthesize alphaGridView=_alphaGridView;
 @property (strong, nonatomic) CAGradientLayer *alphaGridViewMaskLayer; // @synthesize alphaGridViewMaskLayer=_alphaGridViewMaskLayer;
 @property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
-@property (nonatomic) double colorAlpha; // @synthesize colorAlpha=_colorAlpha;
 @property (strong, nonatomic) UIView *colorView; // @synthesize colorView=_colorView;
 @property (strong, nonatomic) CAGradientLayer *colorViewMaskLayer; // @synthesize colorViewMaskLayer=_colorViewMaskLayer;
+@property (weak, nonatomic) id<_PKColorAlphaSliderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) double maxAlpha; // @synthesize maxAlpha=_maxAlpha;
 @property (nonatomic) double minAlpha; // @synthesize minAlpha=_minAlpha;
 @property (strong, nonatomic) _PKSliderKnobView *sliderKnobView; // @synthesize sliderKnobView=_sliderKnobView;
@@ -34,11 +35,14 @@
 + (void)_layoutGradientMaskLayer:(id)arg1 frame:(struct CGRect)arg2 isReversed:(BOOL)arg3;
 + (id)rgbaColorFromColorIfPossible:(id)arg1;
 - (void).cxx_destruct;
+- (struct CGRect)_knobViewFrameForColorAlpha:(double)arg1;
+- (void)_setColorNoLayout:(id)arg1;
 - (double)_sliderKnobViewWidth;
 - (double)colorAlphaForSliderKnobXPosition:(double)arg1;
 - (void)didPanSliderKnob:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)setColor:(id)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (double)sliderKnobXPositionForColorAlpha:(double)arg1;
 

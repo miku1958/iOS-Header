@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (BOOL)_updateSignalView:(id)arg1 withUpdate:(id)arg2 entry:(id)arg3;
 - (id)init;
 
 @end

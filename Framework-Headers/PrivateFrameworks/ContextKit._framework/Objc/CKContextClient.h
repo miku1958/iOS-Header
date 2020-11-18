@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, NSString;
+@class NSMutableArray, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CKContextClient : NSObject
@@ -14,6 +14,7 @@
     NSObject<OS_dispatch_queue> *_notificationsQueue;
     NSSet *_capabilities;
     NSString *_indexVersionId;
+    NSMutableArray *_updateHandlers;
     unsigned long long _defaultRequestType;
 }
 
@@ -22,6 +23,7 @@
 
 + (id)clientWithDefaultRequestType:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (void)_handleConfigurationUpdate;
 - (void)_updateCachedCapabilites;
 - (void)capabilitiesWithReply:(CDUnknownBlockType)arg1;
 - (id)indexVersionId;

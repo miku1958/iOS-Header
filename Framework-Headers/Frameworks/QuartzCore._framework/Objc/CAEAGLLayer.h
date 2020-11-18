@@ -17,6 +17,7 @@
 
 @property (getter=isAsynchronous) BOOL asynchronous;
 @property (copy) NSDictionary *drawableProperties;
+@property double drawableTimeoutSeconds;
 @property double inputTime;
 @property BOOL lowLatency;
 @property unsigned long long maximumDrawableCount;

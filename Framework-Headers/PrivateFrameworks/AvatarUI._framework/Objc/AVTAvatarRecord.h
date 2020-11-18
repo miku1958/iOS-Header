@@ -11,12 +11,13 @@
 #import <AvatarUI/NSSecureCoding-Protocol.h>
 #import <AvatarUI/UIActivityItemSource-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSDate, NSString;
 
 @interface AVTAvatarRecord : NSObject <UIActivityItemSource, AVTAvatarRecordInternal, NSSecureCoding, NSCopying>
 {
     NSString *_identifier;
     NSData *_avatarData;
+    NSDate *_orderDate;
 }
 
 @property (strong, nonatomic) NSData *avatarData; // @synthesize avatarData=_avatarData;
@@ -28,6 +29,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) NSDate *orderDate; // @synthesize orderDate=_orderDate;
 @property (readonly, nonatomic, getter=isPuppet) BOOL puppet;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
@@ -47,8 +49,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
-- (id)initWithAvatarData:(id)arg1;
-- (id)initWithAvatarData:(id)arg1 identifier:(id)arg2;
+- (id)initWithAvatarData:(id)arg1 identifier:(id)arg2 orderDate:(id)arg3;
+- (id)initWithAvatarData:(id)arg1 orderDate:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

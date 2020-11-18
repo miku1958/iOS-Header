@@ -334,6 +334,18 @@ struct PKRulerExtremaFilter {
     id _field10;
 };
 
+struct PKRunningStat {
+    long long numValues;
+    long long numValuesOverLimit;
+    double oldM;
+    double newM;
+    double oldS;
+    double newS;
+    double maxValue;
+    double limit;
+    struct os_unfair_lock_s lock;
+};
+
 struct PKSmoothingPoint;
 
 struct PKStartCapsFilter {
@@ -492,11 +504,6 @@ struct _PKStrokePoint {
     double opacity;
 };
 
-struct _PKStrokePointSlice {
-    struct __wrap_iter<_PKStrokePoint *> _field1;
-    struct __wrap_iter<_PKStrokePoint *> _field2;
-};
-
 struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, DKDGLFrameBufferTextureConfig *>, void *>*> {
     struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, DKDGLFrameBufferTextureConfig *>, void *>*> *__next_;
 };
@@ -513,6 +520,10 @@ struct __wrap_iter<_PKStrokePoint *> {
     struct _PKStrokePoint *_field1;
 };
 
+struct __wrap_iter<const _PKStrokePoint *> {
+    struct _PKStrokePoint *_field1;
+};
+
 struct atomic_flag {
     _Atomic BOOL _Value;
 };
@@ -521,6 +532,10 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
 
 struct half {
     unsigned short _field1;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 struct pair<long, double>;
@@ -915,6 +930,16 @@ typedef struct {
     struct half _field5;
     struct half _field6;
 } StrokeVertex_afa3f00a;
+
+typedef struct {
+    struct __wrap_iter<_PKStrokePoint *> _field1;
+    struct __wrap_iter<_PKStrokePoint *> _field2;
+} _PKStrokePointSlice_6dfeec92;
+
+typedef struct {
+    struct __wrap_iter<const _PKStrokePoint *> _field1;
+    struct __wrap_iter<const _PKStrokePoint *> _field2;
+} _PKStrokePointSlice_0c0423af;
 
 typedef struct {
     id _field1;

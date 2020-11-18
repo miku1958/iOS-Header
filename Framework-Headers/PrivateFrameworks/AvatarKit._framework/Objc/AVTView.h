@@ -20,6 +20,7 @@
     BOOL _enableFaceTracking;
     BOOL _faceIsTracked;
     BOOL _captureImageIsTooDark;
+    BOOL _isSensorCovered;
     BOOL _directRetargetingMode;
     id<AVTViewFaceTrackingDelegate> _faceTrackingDelegate;
     BOOL _arMode;
@@ -53,6 +54,7 @@
 @property (nonatomic) BOOL enableReticle; // @synthesize enableReticle=_enableReticle;
 @property (readonly, nonatomic) BOOL faceIsTracked; // @synthesize faceIsTracked=_faceIsTracked;
 @property (nonatomic, getter=faceTrackingIsPaused) BOOL faceTrackingPaused; // @synthesize faceTrackingPaused=_faceTrackingPaused;
+@property (readonly, nonatomic, getter=isSensorCovered) BOOL sensorCovered;
 
 - (void).cxx_destruct;
 - (void)_UIOrientationDidChangeNotification:(id)arg1;
@@ -107,6 +109,7 @@
 - (void)setFaceTracker:(id)arg1;
 - (void)setFaceTrackingDelegate:(id)arg1;
 - (void)setInterfaceOrientation:(long long)arg1;
+- (void)setSensorCovered:(BOOL)arg1;
 - (void)setShowPerfHUD:(BOOL)arg1;
 - (void)setup;
 - (void)setupOrientation;

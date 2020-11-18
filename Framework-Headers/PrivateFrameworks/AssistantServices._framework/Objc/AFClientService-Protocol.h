@@ -31,7 +31,7 @@
 - (oneway void)didDismissUI;
 - (oneway void)endSession;
 - (oneway void)endUpdateOutputAudioPower;
-- (oneway void)forceAudioSessionActiveWithOptions:(unsigned long long)arg1 completion:(void (^)(unsigned int, NSError *))arg2;
+- (oneway void)forceAudioSessionActiveWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(void (^)(unsigned int, NSError *))arg3;
 - (oneway void)forceAudioSessionInactiveWithOptions:(unsigned long long)arg1 completion:(void (^)(void))arg2;
 - (oneway void)getDeferredObjectsWithIdentifiers:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)getRemoteClockTimerSnapshotWithCompletion:(void (^)(AFClockTimerSnapshot *, NSError *))arg1;

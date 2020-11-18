@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <FrontBoardServices/BSDescriptionProviding-Protocol.h>
+#import <FrontBoardServices/BSDebugDescriptionProviding-Protocol.h>
 #import <FrontBoardServices/NSCopying-Protocol.h>
 #import <FrontBoardServices/NSMutableCopying-Protocol.h>
 
 @class BSSettings, FBSDisplayConfiguration, FBSDisplayIdentity, NSArray, NSSet, NSString;
 
-@interface FBSSceneSettings : NSObject <BSDescriptionProviding, NSCopying, NSMutableCopying>
+@interface FBSSceneSettings : NSObject <BSDebugDescriptionProviding, NSCopying, NSMutableCopying>
 {
     FBSDisplayConfiguration *_displayConfiguration;
     struct CGRect _frame;
@@ -42,9 +42,11 @@
 + (BOOL)_isMutable;
 + (id)settings;
 - (void).cxx_destruct;
+- (id)_descriptionBuilderWithMultilinePrefix:(id)arg1 debug:(BOOL)arg2;
 - (struct CGRect)bounds;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)debugDescriptionWithMultilinePrefix:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)ignoreOcclusionReasons;

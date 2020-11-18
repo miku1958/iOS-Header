@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class MISSING_TYPE, TUCall;
+@class MISSING_TYPE, NSTimer, TUCall;
 @protocol CNKFaceTimeMultiwayConversationViewControllerDelegate;
 
 @interface CNKFaceTimeMultiwayConversationViewController : UIViewController
@@ -18,6 +18,7 @@
     MISSING_TYPE *viewContent;
     MISSING_TYPE *inCallControlsDismissTimer;
     MISSING_TYPE *hideInactiveParticipantsTimer;
+    MISSING_TYPE *effectsLayoutController;
     MISSING_TYPE *deviceOrientation;
     MISSING_TYPE *delegate;
     MISSING_TYPE *shouldInitializeEffects;
@@ -29,7 +30,9 @@
 @property (nonatomic, weak) id<CNKFaceTimeMultiwayConversationViewControllerDelegate> delegate; // @synthesize delegate;
 @property (nonatomic) long long deviceOrientation; // @synthesize deviceOrientation;
 @property (nonatomic) BOOL effectsEnabled; // @synthesize effectsEnabled;
+@property (nonatomic, strong) NSTimer *inCallControlsDismissTimer; // @synthesize inCallControlsDismissTimer;
 @property (nonatomic, readonly) UIViewController *pipViewController;
+@property (nonatomic, readonly) BOOL wantsApplicationDismissalStyle;
 
 - (CDUnknownBlockType).cxx_destruct;
 - (id)accessibilityConstraintController;
@@ -38,7 +41,9 @@
 - (id)initWithActiveCall:(id)arg1 stagingAreaViewController:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)muteVideo;
 - (void)openMessagesConversation;
+- (void)restartAutoHideInCallControlsDrawerTimer;
 - (void)setControllerIsPipped:(BOOL)arg1;
 - (void)toggleAudioMute;
 - (void)toggleVideoMute;

@@ -30,6 +30,7 @@
 - (id)initWithPlanManagerCache:(id)arg1 planManager:(id)arg2 simStatusCache:(id)arg3;
 - (id)planItemForListItem:(id)arg1;
 - (void)setDefaultVoiceLine:(id)arg1 specifier:(id)arg2;
+- (id)subscriptionContextForListItem:(id)arg1;
 - (void)updateCachedState;
 
 @end

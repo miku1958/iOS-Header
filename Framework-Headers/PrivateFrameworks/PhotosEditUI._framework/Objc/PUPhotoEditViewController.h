@@ -321,6 +321,7 @@
 - (void)_transitionToEditingTool:(id)arg1 animated:(BOOL)arg2;
 - (void)_transitionToNewToolViewController:(id)arg1 oldToolViewController:(id)arg2 animationBlock:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4 animated:(BOOL)arg5;
 - (void)_updateAlternateToolbarAnimated:(BOOL)arg1;
+- (void)_updateApertureSliderLength;
 - (void)_updateAutoEnhanceButtonAnimated:(BOOL)arg1;
 - (void)_updateBackgroundColor;
 - (void)_updateDepthEffectAnimated:(BOOL)arg1;
@@ -363,6 +364,7 @@
 - (void)_updateValuesCalculator;
 - (BOOL)_wantsTrimControl;
 - (void)apertureToolbar:(id)arg1 didChangeValue:(double)arg2;
+- (BOOL)apertureToolbarShouldRotateLabelsWithOrientation:(id)arg1;
 - (id)childViewControllerForScreenEdgesDeferringSystemGestures;
 - (void)dealloc;
 - (void)didFinishWithAsset:(id)arg1 savedChanges:(BOOL)arg2;

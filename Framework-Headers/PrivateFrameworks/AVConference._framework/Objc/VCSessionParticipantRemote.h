@@ -66,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)debounceAudioPriority:(unsigned char)arg1;
 - (id)entryForStreamID:(id)arg1;
+- (id)getAudioDumpName;
 - (id)initWithIDSDestination:(id)arg1 idsParticipantID:(unsigned long long)arg2 mediaNegotiator:(id)arg3 opaqueData:(id)arg4 delegate:(id)arg5 processId:(int)arg6 transportSessionID:(unsigned int)arg7 sessionUUID:(id)arg8 config:(id)arg9;
 - (BOOL)isAudioActive;
 - (BOOL)isVideoActive;

@@ -19,10 +19,12 @@
     PKLinkedAppIconView *_appIconView;
     UIButton *_infoButton;
     UIView *_bottomRule;
+    long long _coachingState;
 }
 
 @property (readonly, nonatomic) PKLinkedAppIconView *appIconView; // @synthesize appIconView=_appIconView;
 @property (readonly, nonatomic) UIView *bottomRule; // @synthesize bottomRule=_bottomRule;
+@property (readonly, nonatomic) long long coachingState; // @synthesize coachingState=_coachingState;
 @property (nonatomic) id<PKPassFooterContentViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) UIButton *infoButton; // @synthesize infoButton=_infoButton;
 @property (readonly, nonatomic) BOOL invalidated; // @synthesize invalidated=_invalidated;
@@ -35,6 +37,7 @@
 - (void).cxx_destruct;
 - (double)_bottomRulePadding;
 - (void)_infoButtonPressed:(id)arg1;
+- (void)_setCoachingState:(long long)arg1;
 - (void)_setUserIntentRequired:(BOOL)arg1;
 - (void)dealloc;
 - (void)didBecomeHiddenAnimated:(BOOL)arg1;

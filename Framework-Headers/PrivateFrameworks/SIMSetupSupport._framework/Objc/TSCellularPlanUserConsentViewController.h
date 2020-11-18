@@ -13,25 +13,27 @@
 
 @interface TSCellularPlanUserConsentViewController : BFFSplashController <TSSetupFlowItem>
 {
-    BOOL _didAccept;
-    id<TSSIMSetupFlowDelegate> _delegate;
+    BOOL _didReceiveResponse;
     NSString *_name;
     unsigned long long _consentType;
+    BOOL _requireAdditionalConsent;
+    id<TSSIMSetupFlowDelegate> _delegate;
 }
 
-@property unsigned long long consentType; // @synthesize consentType=_consentType;
+@property (readonly, nonatomic) unsigned long long consentType; // @synthesize consentType=_consentType;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<TSSIMSetupFlowDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property BOOL didAccept; // @synthesize didAccept=_didAccept;
 @property (readonly) unsigned long long hash;
-@property (strong) NSString *name; // @synthesize name=_name;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithName:(id)arg1 consentType:(unsigned long long)arg2;
-- (void)viewDidDisappear:(BOOL)arg1;
+- (void)_acceptButtonTapped;
+- (void)_cancelButtonTapped;
+- (void)_declineButtonTapped;
+- (id)initWithName:(id)arg1 consentType:(unsigned long long)arg2 requireAdditionalConsent:(BOOL)arg3;
 - (void)viewDidLoad;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

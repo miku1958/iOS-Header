@@ -11,7 +11,7 @@
 #import <HealthDaemon/HKDataFlowLinkProcessor-Protocol.h>
 #import <HealthDaemon/HKStateMachineDelegate-Protocol.h>
 
-@class HDProfile, HDWorkoutManager, HDWorkoutSessionEntity, HDWorkoutSessionTaskServer, HDXPCClient, HKDataFlowLink, HKObserverSet, HKSource, HKStateMachine, HKWorkoutConfiguration, NSDate, NSString, NSUUID, _HKExpiringCompletionTimer;
+@class BKSProcessAssertion, HDProfile, HDWorkoutManager, HDWorkoutSessionEntity, HDWorkoutSessionTaskServer, HDXPCClient, HKDataFlowLink, HKObserverSet, HKSource, HKStateMachine, HKWorkoutConfiguration, NSDate, NSString, NSUUID, _HKExpiringCompletionTimer;
 @protocol HDWorkoutDataAccumulator, HDWorkoutSessionController, OS_dispatch_queue;
 
 @interface HDWorkoutSessionServer : NSObject <HKDataFlowLinkProcessor, HKStateMachineDelegate, HDWorkoutSessionStateController, HDWorkoutDataSource>
@@ -24,6 +24,7 @@
     HKObserverSet *_observers;
     id<HDWorkoutSessionController> _sessionController;
     _HKExpiringCompletionTimer *_invalidationTimer;
+    BKSProcessAssertion *_invalidationAssertion;
     HDWorkoutSessionEntity *_persistentEntity;
     double _stopEventGenerationWaitInterval;
     HKStateMachine *_stateMachine;
@@ -94,6 +95,7 @@
 - (void)addObserver:(id)arg1 queue:(id)arg2;
 - (void)autoPauseWithDate:(id)arg1;
 - (void)autoResumeWithDate:(id)arg1;
+- (void)dealloc;
 - (void)didBecomeCurrent;
 - (void)didResignCurrentWithError:(id)arg1;
 - (void)endHeartRateRecovery;

@@ -11,7 +11,7 @@
 #import <TelephonyUtilities/TUCallRequest-Protocol.h>
 #import <TelephonyUtilities/TUVideoRequest-Protocol.h>
 
-@class CNContactStore, IDSDestination, NSArray, NSDate, NSString, NSURL, NSUUID, NSUserActivity, TUCallProvider, TUCallProviderManager, TUHandle, TUSenderIdentityClient;
+@class CNContactStore, IDSDestination, NSArray, NSDate, NSString, NSURL, NSUUID, NSUserActivity, TUCallProvider, TUCallProviderManager, TUHandle, TUSenderIdentity, TUSenderIdentityClient;
 
 @interface TUDialRequest : NSObject <TUCallRequest, TUVideoRequest, NSSecureCoding, NSCopying>
 {
@@ -40,6 +40,7 @@
     NSDate *_dateDialed;
     NSString *_endpointIDSDestinationURI;
     NSUUID *_localSenderIdentityUUID;
+    NSUUID *_localSenderIdentityAccountUUID;
     long long _originatingUIType;
     struct CGSize _localPortraitAspectRatio;
     struct CGSize _localLandscapeAspectRatio;
@@ -65,6 +66,8 @@
 @property (copy, nonatomic) CDUnknownBlockType isEmergencyNumberOrIsWhitelistedBlock; // @synthesize isEmergencyNumberOrIsWhitelistedBlock=_isEmergencyNumberOrIsWhitelistedBlock;
 @property (nonatomic) struct CGSize localLandscapeAspectRatio; // @synthesize localLandscapeAspectRatio=_localLandscapeAspectRatio;
 @property (nonatomic) struct CGSize localPortraitAspectRatio; // @synthesize localPortraitAspectRatio=_localPortraitAspectRatio;
+@property (readonly, copy, nonatomic) TUSenderIdentity *localSenderIdentity;
+@property (copy, nonatomic) NSUUID *localSenderIdentityAccountUUID; // @synthesize localSenderIdentityAccountUUID=_localSenderIdentityAccountUUID;
 @property (copy, nonatomic) NSUUID *localSenderIdentityUUID; // @synthesize localSenderIdentityUUID=_localSenderIdentityUUID;
 @property (nonatomic) long long originatingUIType; // @synthesize originatingUIType=_originatingUIType;
 @property (nonatomic) BOOL performDialAssist; // @synthesize performDialAssist=_performDialAssist;
@@ -73,12 +76,14 @@
 @property (copy, nonatomic) NSString *providerCustomIdentifier; // @synthesize providerCustomIdentifier=_providerCustomIdentifier;
 @property (readonly, nonatomic) TUCallProviderManager *providerManager; // @synthesize providerManager=_providerManager;
 @property (nonatomic, getter=isRedial) BOOL redial; // @synthesize redial=_redial;
+@property (readonly, nonatomic, getter=isRTTAvailable) BOOL rttAvailable;
 @property (readonly, nonatomic) TUSenderIdentityClient *senderIdentityClient; // @synthesize senderIdentityClient=_senderIdentityClient;
 @property (readonly, nonatomic) int service;
 @property (nonatomic) BOOL shouldSuppressInCallUI; // @synthesize shouldSuppressInCallUI=_shouldSuppressInCallUI;
 @property (nonatomic) BOOL showUIPrompt; // @synthesize showUIPrompt=_showUIPrompt;
 @property (nonatomic, getter=isSOS, setter=setSOS:) BOOL sos; // @synthesize sos=_sos;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic, getter=isTTYAvailable) BOOL ttyAvailable;
 @property (nonatomic) long long ttyType; // @synthesize ttyType=_ttyType;
 @property (copy, nonatomic) NSString *uniqueProxyIdentifier; // @synthesize uniqueProxyIdentifier=_uniqueProxyIdentifier;
 @property (readonly, nonatomic) BOOL useTTY;
@@ -134,6 +139,7 @@
 - (id)isVoicemailURLQueryItem;
 - (int)legacyAddressBookIdentifierFromURLComponents:(id)arg1;
 - (id)legacyAddressBookIdentifierQueryItemName;
+- (id)localSenderIdentityAccountUUIDURLQueryItem;
 - (id)localSenderIdentityUUIDURLQueryItem;
 - (id)noPromptURLQueryItem;
 - (id)originatingUIURLQueryItem;

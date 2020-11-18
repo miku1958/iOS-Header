@@ -12,7 +12,7 @@
 #import <PencilKit/_PKAllowDrawingWhilePresentingPopoverViewDelegate-Protocol.h>
 
 @class NSArray, NSString, PKColorPicker, UIColor, UIScrollView;
-@protocol PKInlineColorPickerDelegate, _PKInlineColorPickerAllowDrawingWithPopoverDelegate;
+@protocol PKInlineColorPickerContentsHiddenDelegate, PKInlineColorPickerDelegate, PKInlineColorPickerSerialViewControllerTransitionDelegate, _PKInlineColorPickerAllowDrawingWithPopoverDelegate;
 
 @interface PKInlineColorPicker : UIView <UIScrollViewDelegate, PKColorPickerDelegatePrivate, UIPopoverPresentationControllerDelegate, _PKAllowDrawingWhilePresentingPopoverViewDelegate>
 {
@@ -33,11 +33,18 @@
     PKColorPicker *_presentedColorPicker;
     UIColor *__pickerColor;
     UIColor *_selectedColorBeforeSpringLoadedSelection;
+    UIColor *_aggd_initialColorOnPopoverOpen;
+    long long _aggd_colorsChangedCount;
     id<_PKInlineColorPickerAllowDrawingWithPopoverDelegate> __allowDrawingWithPopoverDelegate;
+    id<PKInlineColorPickerContentsHiddenDelegate> __contentsHiddenDelegate;
+    id<PKInlineColorPickerSerialViewControllerTransitionDelegate> _serialViewControllerTransitionDelegate;
 }
 
 @property (weak, nonatomic) id<_PKInlineColorPickerAllowDrawingWithPopoverDelegate> _allowDrawingWithPopoverDelegate; // @synthesize _allowDrawingWithPopoverDelegate=__allowDrawingWithPopoverDelegate;
+@property (weak, nonatomic) id<PKInlineColorPickerContentsHiddenDelegate> _contentsHiddenDelegate; // @synthesize _contentsHiddenDelegate=__contentsHiddenDelegate;
 @property (strong, nonatomic) UIColor *_pickerColor; // @synthesize _pickerColor=__pickerColor;
+@property (nonatomic) long long aggd_colorsChangedCount; // @synthesize aggd_colorsChangedCount=_aggd_colorsChangedCount;
+@property (strong, nonatomic) UIColor *aggd_initialColorOnPopoverOpen; // @synthesize aggd_initialColorOnPopoverOpen=_aggd_initialColorOnPopoverOpen;
 @property (strong, nonatomic) NSArray *buttonItems; // @synthesize buttonItems=_buttonItems;
 @property (nonatomic) unsigned long long colorSet; // @synthesize colorSet=_colorSet;
 @property (strong, nonatomic) NSArray *colors; // @synthesize colors=_colors;
@@ -56,6 +63,7 @@
 @property (strong, nonatomic) UIColor *selectedColorBeforeSpringLoadedSelection; // @synthesize selectedColorBeforeSpringLoadedSelection=_selectedColorBeforeSpringLoadedSelection;
 @property (nonatomic) unsigned long long selectedColorIndex; // @synthesize selectedColorIndex=_selectedColorIndex;
 @property (nonatomic) unsigned long long selectionState; // @synthesize selectionState=_selectionState;
+@property (weak, nonatomic) id<PKInlineColorPickerSerialViewControllerTransitionDelegate> serialViewControllerTransitionDelegate; // @synthesize serialViewControllerTransitionDelegate=_serialViewControllerTransitionDelegate;
 @property (nonatomic) BOOL shouldEmboss; // @synthesize shouldEmboss=_shouldEmboss;
 @property (nonatomic) unsigned long long sizeState; // @synthesize sizeState=_sizeState;
 @property (readonly) Class superclass;
@@ -64,17 +72,18 @@
 - (void)_allowDrawingWhilePresentingPopoverViewDidBeginDrawing:(id)arg1;
 - (void)_axHandleLongPressOnColorButtonForLargeTextHUD:(id)arg1;
 - (id)_axLabelForColorButton:(id)arg1;
-- (void)_colorPicker:(id)arg1 willDismissAnimated:(BOOL)arg2;
 - (void)_colorPickerUserDidTouchUpInside:(id)arg1;
 - (void)_colorPickerWillDismiss:(id)arg1;
 - (void)_commonInit;
 - (void)_dismissColorPickerPopover:(BOOL)arg1;
+- (id)_effectiveBarButtonItemForPopoverPresentation;
+- (struct CGRect)_effectiveRectForPopoverPresentation;
 - (id)_effectiveViewControllerForPopoverPresentation;
 - (void)_forceSetColorSet:(unsigned long long)arg1;
+- (BOOL)_isInkPickerContentsHidden;
 - (void)_presentColorPickerPopover:(BOOL)arg1;
 - (id)_representableColorForColor:(id)arg1;
 - (void)_selectColorWithButton:(id)arg1;
-- (void)_showColorPickerFromButton:(id)arg1 animated:(BOOL)arg2;
 - (void)_toggleColorPickerPopoverPresentation:(BOOL)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)colorButtonTapHandler:(id)arg1;
@@ -90,9 +99,10 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
-- (void)notifiyDelegateDidSelectColor:(BOOL)arg1;
+- (void)notifyDelegateDidSelectColor:(BOOL)arg1;
 - (void)notifyDelegateDidSelectColorInCompactChooseToolState;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
+- (BOOL)popoverPresentationControllerShouldDismissPopover:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)showOverflowViewsIfNeeded;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

@@ -44,6 +44,7 @@
 - (id)displayAccountForContact:(id)arg1;
 - (void)headerPhotoDidSaveEditsForImageDrop;
 - (void)headerPhotoDidUpdate;
+- (void)headerViewDidPickPreferredChannel:(id)arg1;
 - (void)headerViewDidUpdateLabelSizes;
 - (id)init;
 - (id)initWithCache:(id)arg1 style:(id)arg2;

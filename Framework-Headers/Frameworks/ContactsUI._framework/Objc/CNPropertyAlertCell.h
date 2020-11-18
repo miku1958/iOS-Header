@@ -22,10 +22,13 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (BOOL)wantsChevron;
+- (id)alertGroup;
+- (BOOL)allowsCellSelection;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)performDefaultAction;
 - (void)picker:(id)arg1 didPickItem:(id)arg2;
 - (void)pickerDidCancel:(id)arg1;
+- (void)setCardGroupItem:(id)arg1;
 - (BOOL)shouldPerformDefaultAction;
 
 @end

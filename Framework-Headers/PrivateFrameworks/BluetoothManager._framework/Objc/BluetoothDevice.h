@@ -70,6 +70,7 @@
 - (BOOL)setUserName:(id)arg1;
 - (void)startVoiceCommand;
 - (BOOL)supportsBatteryLevel;
+- (BOOL)supportsHS;
 - (id)syncGroups;
 - (CDStruct_df7f102b)syncSettings;
 - (int)type;

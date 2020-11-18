@@ -4,17 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIButton.h>
+#import <UIKit/UIControl.h>
+
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC15ConversationKit19InCallControlButton : UIButton
+@interface _TtC15ConversationKit19InCallControlButton : UIControl
 {
+    MISSING_TYPE *discView;
+    MISSING_TYPE *imageView;
+    MISSING_TYPE *image;
 }
 
 @property (nonatomic) BOOL highlighted;
 @property (nonatomic, readonly) struct CGSize intrinsicContentSize;
 @property (nonatomic) BOOL selected;
 
+- (CDUnknownBlockType).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isHighlighted;

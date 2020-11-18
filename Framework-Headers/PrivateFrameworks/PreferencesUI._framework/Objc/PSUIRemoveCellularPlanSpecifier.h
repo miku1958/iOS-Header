@@ -26,6 +26,7 @@
 - (void).cxx_destruct;
 - (void)alignLeft;
 - (id)initWithPlanUniversalReference:(id)arg1 cellularPlanManager:(id)arg2 planManagerCache:(id)arg3 hostController:(id)arg4 popViewControllerOnPlanDeletion:(BOOL)arg5;
+- (void)removeCellularPlan:(id)arg1;
 - (void)removeCellularPlanConfirmed:(id)arg1;
 
 @end

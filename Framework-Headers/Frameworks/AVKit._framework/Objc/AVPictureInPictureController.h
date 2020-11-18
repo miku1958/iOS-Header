@@ -9,15 +9,17 @@
 #import <AVKit/AVPictureInPictureViewControllerDelegate-Protocol.h>
 #import <AVKit/PGPictureInPictureProxyDelegate-Protocol.h>
 
-@class AVObservationController, AVPictureInPictureViewController, AVPlayerController, AVPlayerLayer, NSString, PGPictureInPictureProxy, __AVPlayerLayerView;
+@class AVObservationController, AVPictureInPictureViewController, AVPlayerController, AVPlayerLayer, AVSecondScreenConnection, NSString, PGPictureInPictureProxy, __AVPlayerLayerView;
 @protocol AVPictureInPictureControllerDelegate, OS_dispatch_source;
 
 @interface AVPictureInPictureController : NSObject <AVPictureInPictureViewControllerDelegate, PGPictureInPictureProxyDelegate>
 {
     AVObservationController *_keyValueObservationController;
+    BOOL _isRedirectingVideoForPIP;
     AVPlayerLayer *_playerLayer;
     __AVPlayerLayerView *_playerLayerView;
     AVPlayerController *_playerController;
+    AVSecondScreenConnection *_secondScreenConnection;
     PGPictureInPictureProxy *_pictureInPictureProxy;
     AVPictureInPictureViewController *_pictureInPictureViewController;
     NSObject<OS_dispatch_source> *_fullScreenCheckTimer;
@@ -62,6 +64,8 @@
 - (void).cxx_destruct;
 - (void)_checkIsFullScreenAndUpdatePictureInPictureShouldStartWhenEnteringBackground;
 - (struct CGRect)_playerLayerVideoRectInScreen;
+- (void)_startRedirectingLayerForPictureInPicture;
+- (void)_stopRedirectingLayerForPictureInPicture;
 - (void)_updatePictureInPictureShouldStartWhenEnteringBackground;
 - (void)_updatePlaybackProgress;
 - (id)_window;

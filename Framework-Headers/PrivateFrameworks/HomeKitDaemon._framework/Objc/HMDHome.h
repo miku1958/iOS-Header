@@ -614,6 +614,7 @@
 - (id)hapAccessoryServerIdentifiers;
 - (id)hapAccessoryUniqueIdentifiers;
 - (id)hapAccessoryWithIdentifier:(id)arg1;
+- (id)hapAccessoryWithIdentifier:(id)arg1 instanceID:(id)arg2;
 - (id)homeConfigurationModelObjectWithChangeType:(unsigned long long)arg1;
 - (id)homeConfigurationUUID;
 - (id)initWithCoder:(id)arg1;

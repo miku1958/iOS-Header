@@ -246,6 +246,7 @@
 - (BOOL)hasFlash;
 - (BOOL)hasMediaType:(id)arg1;
 - (BOOL)hasTorch;
+- (BOOL)hevcAllowBFramesForHighCTUCount;
 - (int)hevcTurboModeVersion;
 - (long long)imageControlMode;
 - (id)init;

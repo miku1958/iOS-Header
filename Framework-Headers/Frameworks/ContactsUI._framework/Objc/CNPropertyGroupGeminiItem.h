@@ -6,29 +6,36 @@
 
 #import <ContactsUI/CNPropertyGroupItem.h>
 
-@class CNGeminiChannel, CNGeminiResult;
+#import <ContactsUI/CNUIGeminiDataSourceDelegate-Protocol.h>
+
+@class CNGeminiResult, CNMutableContact, NSString;
+@protocol CNUIGeminiDataSourceDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNPropertyGroupGeminiItem : CNPropertyGroupItem
+@interface CNPropertyGroupGeminiItem : CNPropertyGroupItem <CNUIGeminiDataSourceDelegate>
 {
-    BOOL _allowsPickerAction;
     CNGeminiResult *_geminiResult;
-    CNGeminiChannel *_bestChannel;
-    long long _channelType;
+    id<CNUIGeminiDataSourceDelegate> _geminiUpdateDelegate;
+    CNMutableContact *_editingContact;
 }
 
-@property BOOL allowsPickerAction; // @synthesize allowsPickerAction=_allowsPickerAction;
-@property (strong, nonatomic) CNGeminiChannel *bestChannel; // @synthesize bestChannel=_bestChannel;
-@property (nonatomic) long long channelType; // @synthesize channelType=_channelType;
-@property (strong) CNGeminiResult *geminiResult; // @synthesize geminiResult=_geminiResult;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) CNMutableContact *editingContact; // @synthesize editingContact=_editingContact;
+@property (strong, nonatomic) CNGeminiResult *geminiResult; // @synthesize geminiResult=_geminiResult;
+@property (weak, nonatomic) id<CNUIGeminiDataSourceDelegate> geminiUpdateDelegate; // @synthesize geminiUpdateDelegate=_geminiUpdateDelegate;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)description;
+- (BOOL)canRemove;
 - (id)displayLabel;
 - (id)displayStringForValue:(id)arg1;
 - (id)displayValue;
+- (void)geminiDataSourceDidUpdate:(id)arg1;
 - (BOOL)isEquivalentToItem:(id)arg1 whenEditing:(BOOL)arg2;
 - (BOOL)isValidValue:(id)arg1;
+- (void)updateLabeledValueWithValue:(id)arg1;
 
 @end
 

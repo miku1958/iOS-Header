@@ -14,7 +14,10 @@
     _GCControllerAxisInput *_xAxis;
     _GCControllerAxisInput *_yAxis;
     NSString *_descriptionName;
+    BOOL _nonAnalog;
 }
+
+@property BOOL nonAnalog; // @synthesize nonAnalog=_nonAnalog;
 
 - (void).cxx_destruct;
 - (void)_fireValueChanged;
@@ -23,6 +26,7 @@
 - (id)down;
 - (id)initWithFlippedY:(BOOL)arg1 digital:(BOOL)arg2;
 - (id)initWithFlippedY:(BOOL)arg1 digital:(BOOL)arg2 descriptionName:(id)arg3;
+- (BOOL)isAnalog;
 - (id)left;
 - (id)right;
 - (BOOL)setHIDValue:(struct __IOHIDValue *)arg1;

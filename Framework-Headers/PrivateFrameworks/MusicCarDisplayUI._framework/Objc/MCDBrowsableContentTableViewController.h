@@ -71,6 +71,7 @@
 - (void)_nowPlayingDidChange:(id)arg1;
 - (void)_pushToNowPlaying:(BOOL)arg1;
 - (void)_replacePlaceholderViewWithView:(id)arg1;
+- (BOOL)_shouldLimitLists;
 - (void)_showLoadingScreen;
 - (void)_showTimeoutScreen;
 - (void)_updateNowPlayingButtonVisibility;

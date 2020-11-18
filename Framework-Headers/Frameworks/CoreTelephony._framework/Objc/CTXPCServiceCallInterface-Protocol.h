@@ -11,5 +11,6 @@
 - (void)getOperatorMultiPartyCallCountMaximum:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
 - (void)isEmergencyNumber:(CTXPCServiceSubscriptionContext *)arg1 number:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)isEmergencyNumberWithWhitelistIncluded:(CTXPCServiceSubscriptionContext *)arg1 number:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)shouldShowUserWarningWhenDialingCallOnContext:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 @end
 

@@ -118,6 +118,7 @@
 - (id)_defaultComplicationOfType:(unsigned long long)arg1 forSlot:(id)arg2;
 - (id)_defaultName;
 - (id)_defaultOptionForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (id)_defaultOptionForMissingCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_deleteResourceDirectoryHardLinkIfNecessary;
 - (long long)_editModeForOldEncodingIndex:(long long)arg1;
 - (id)_faceDescription;

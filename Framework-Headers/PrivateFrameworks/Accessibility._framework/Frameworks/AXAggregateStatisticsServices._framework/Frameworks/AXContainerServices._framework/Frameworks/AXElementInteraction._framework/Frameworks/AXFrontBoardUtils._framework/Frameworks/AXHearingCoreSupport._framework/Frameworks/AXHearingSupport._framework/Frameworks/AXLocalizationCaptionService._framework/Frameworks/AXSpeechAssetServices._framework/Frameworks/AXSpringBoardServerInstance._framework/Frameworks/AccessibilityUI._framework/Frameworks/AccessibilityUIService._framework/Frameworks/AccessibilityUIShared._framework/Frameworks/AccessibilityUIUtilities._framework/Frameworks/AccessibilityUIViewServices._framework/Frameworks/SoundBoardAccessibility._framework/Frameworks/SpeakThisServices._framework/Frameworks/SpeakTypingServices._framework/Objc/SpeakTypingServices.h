@@ -31,8 +31,9 @@
 - (void)initializeServerConnection;
 - (id)lastSpokenString;
 - (id)lastUsedVoiceIdentifier;
+- (BOOL)notifySpeakServicesForAttributedSpeechOutput:(id)arg1;
 - (BOOL)notifySpeakServicesForSpeakAutoCorrections:(id)arg1 forCurrentInputMode:(id)arg2;
-- (BOOL)notifySpeakServicesForSpeechOutput:(id)arg1;
+- (BOOL)notifySpeakServicesForSpeechOutput:(id)arg1 volume:(double)arg2 speakingRate:(double)arg3;
 - (BOOL)notifySpeakServicesToFeedbackCharacter:(id)arg1 forCurrentInputMode:(id)arg2;
 - (BOOL)notifySpeakServicesToFeedbackQuickTypePrediction:(id)arg1 forCurrentInputMode:(id)arg2;
 - (BOOL)notifySpeakServicesToFeedbackWord:(id)arg1 forCurrentInputMode:(id)arg2;

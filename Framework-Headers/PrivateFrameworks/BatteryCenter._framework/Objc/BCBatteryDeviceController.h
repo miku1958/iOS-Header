@@ -52,6 +52,7 @@
 - (id)_fakeDeviceRightHearingAidPowerSourceDescription;
 - (void)_handleBatterySaverModeChanged:(int)arg1;
 - (void)_handlePSChange;
+- (id)_identifierFromPowerSourceDescription:(id)arg1;
 - (void)_incrementNumberOfConnectedDevices:(BOOL)arg1;
 - (void)_incrementPercentChargeForConnectedDevices:(BOOL)arg1;
 - (BOOL)_isDevicePartOfPair:(id)arg1;

@@ -517,21 +517,22 @@ struct ControllerImpl {
     int _field93;
     BOOL _field94;
     unsigned int _field95;
-    long long _field96;
-    id _field97;
-    struct MyMutex *_field98[4];
-    int _field99;
+    BOOL _field96;
+    long long _field97;
+    id _field98;
+    struct MyMutex *_field99[4];
     int _field100;
-    BOOL _field101;
-    int _field102;
+    int _field101;
+    BOOL _field102;
     int _field103;
-    struct ZeroRunLog _field104[75];
-    BOOL _field105;
-    struct AVVCRecordingEngine *_field106;
-    struct AVVCPluginRecordingEngine *_field107;
-    struct AVVCAudioQueueRecordingEngine *_field108;
-    id _field109;
+    int _field104;
+    struct ZeroRunLog _field105[75];
+    BOOL _field106;
+    struct AVVCRecordingEngine *_field107;
+    struct AVVCPluginRecordingEngine *_field108;
+    struct AVVCAudioQueueRecordingEngine *_field109;
     id _field110;
+    id _field111;
 };
 
 struct DataSourceDescriptionImpl {

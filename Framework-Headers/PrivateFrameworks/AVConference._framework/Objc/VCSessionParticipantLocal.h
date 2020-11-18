@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     struct tagVCMediaQueue *_mediaQueue;
     unsigned int _uplinkBitrateCapWifi;
     unsigned int _uplinkBitrateCapCell;
+    struct tagVCMemoryPool *_audioStreamUpdatePool;
     struct tagVCMemoryPool *_redundancyPool;
     struct tagVCMemoryPool *_videoRedundancyPool;
     _Atomic unsigned char _videoPriority;
@@ -102,6 +103,7 @@ __attribute__((visibility("hidden")))
 - (void)generateKeyFrameWithStreamID:(unsigned short)arg1;
 - (unsigned int)generateSSRC;
 - (unsigned short)generateStreamID;
+- (id)getAudioDumpName;
 - (void)handleActiveConnectionChange:(id)arg1;
 - (id)initWithIDSDestination:(id)arg1 delegate:(id)arg2 processId:(int)arg3 sessionUUID:(id)arg4;
 - (void)initializeUplinkVideoStreamController;
@@ -137,7 +139,7 @@ __attribute__((visibility("hidden")))
 - (id)supportedAudioRules;
 - (void)thermalLevelDidChange:(int)arg1;
 - (void)updateActiveAudioStreamWithTargetBitrate:(unsigned int)arg1;
-- (void)updateActiveAudioStreams:(id)arg1;
+- (void)updateActiveAudioStreams:(id)arg1 allStreamIds:(id)arg2;
 - (void)updateActiveVideoStreamWithTargetBitrate:(unsigned int)arg1;
 - (void)updateActiveVoiceOnly;
 - (void)updateAudioPriorityWithSampleBuffer:(struct opaqueVCAudioBufferList *)arg1;

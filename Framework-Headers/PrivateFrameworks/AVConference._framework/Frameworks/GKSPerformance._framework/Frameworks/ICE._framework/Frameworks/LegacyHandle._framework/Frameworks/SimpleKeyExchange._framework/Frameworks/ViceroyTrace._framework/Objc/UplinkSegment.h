@@ -11,7 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithSegmentName:(id)arg1 previousSegmentName:(id)arg2;
+- (void)dealloc;
+- (id)initWithSegmentName:(id)arg1 previousSegmentName:(id)arg2 delegate:(id)arg3;
 - (id)segmentReport;
 
 @end

@@ -16,6 +16,9 @@
 @property (strong, nonatomic) PSSpecifier *togglePasscodeSpecifier; // @synthesize togglePasscodeSpecifier=_togglePasscodeSpecifier;
 
 - (void).cxx_destruct;
+- (void)_removeManagedPasscode;
+- (id)_removePasscodeAction;
+- (void)_setManagedPasscode;
 - (void)changeOrRemovePasscode:(id)arg1;
 - (id)init;
 - (BOOL)isHidden;

@@ -15,6 +15,7 @@
     NSArray *_editingItems;
     NSArray *_originalEditingItems;
     BOOL _showActionsWhenEmpty;
+    BOOL _allowsDisplayModePickerActions;
     BOOL _isAdded;
     NSString *_property;
     CNPolicy *_policy;
@@ -24,6 +25,7 @@
 }
 
 @property (readonly, nonatomic) BOOL allowsAdding;
+@property (nonatomic) BOOL allowsDisplayModePickerActions; // @synthesize allowsDisplayModePickerActions=_allowsDisplayModePickerActions;
 @property (readonly, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property (strong, nonatomic) NSArray *deletedItems; // @synthesize deletedItems=_deletedItems;
 @property (strong, nonatomic) NSArray *editingItems;

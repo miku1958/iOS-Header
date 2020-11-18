@@ -18,11 +18,9 @@ __attribute__((visibility("hidden")))
     UITableViewController *_tableViewController;
     NSMutableArray *_geminiChannels;
     CNGeminiChannel *_preferredGeminiChannel;
-    NSString *_contactName;
     NSIndexPath *_selectedIndexPath;
 }
 
-@property (strong, nonatomic) NSString *contactName; // @synthesize contactName=_contactName;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CNPickerControllerDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
@@ -39,9 +37,11 @@ __attribute__((visibility("hidden")))
 - (void)donePicker:(id)arg1;
 - (id)geminiChannelForIndexPath:(id)arg1;
 - (id)indexPathForGeminiChannel:(id)arg1;
-- (id)initWithGeminiItem:(id)arg1;
+- (id)initWithGeminiResult:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)prepareCell:(id)arg1 atIndexPath:(id)arg2;
+- (void)setGeminiResult:(id)arg1;
+- (void)setGeminiResult:(id)arg1 reload:(BOOL)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;

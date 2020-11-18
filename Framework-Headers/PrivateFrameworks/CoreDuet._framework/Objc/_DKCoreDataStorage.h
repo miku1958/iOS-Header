@@ -21,6 +21,7 @@
     BOOL _readOnly;
     BOOL _localOnly;
     BOOL _sync;
+    BOOL _requiresManualMigration;
     NSString *_directory;
     NSURL *_modelURL;
     NSString *_databaseName;
@@ -36,6 +37,7 @@
 @property (readonly) NSCloudKitMirroringDelegate *mirroringDelegate; // @synthesize mirroringDelegate=_mirroringDelegate;
 @property (readonly) NSURL *modelURL; // @synthesize modelURL=_modelURL;
 @property (readonly) BOOL readOnly; // @synthesize readOnly=_readOnly;
+@property (nonatomic) BOOL requiresManualMigration; // @synthesize requiresManualMigration=_requiresManualMigration;
 @property (readonly) BOOL sync; // @synthesize sync=_sync;
 
 + (unsigned long long)anonymizeObjectStringsInContext:(id)arg1 entityName:(id)arg2 predicate:(id)arg3 sortDescriptors:(id)arg4 batchFetchLimit:(unsigned long long)arg5 totalFetchLimit:(unsigned long long)arg6 includeSubentities:(BOOL)arg7 salt:(id)arg8;

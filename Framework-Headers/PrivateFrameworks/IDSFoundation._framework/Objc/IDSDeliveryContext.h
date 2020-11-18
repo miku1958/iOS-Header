@@ -19,6 +19,7 @@
     NSError *_deliveryError;
     long long _idsResponseCode;
     BOOL _lastCall;
+    BOOL _lastCourierAck;
     APSOutgoingMessageCheckpointTrace *_apsCheckpointTrace;
     NSString *_deviceID;
     NSNumber *_currentAverageRTT;
@@ -38,6 +39,7 @@
 @property (nonatomic) long long idsResponseCode; // @synthesize idsResponseCode=_idsResponseCode;
 @property (copy, nonatomic) NSNumber *isDeviceBlackedOut; // @synthesize isDeviceBlackedOut=_isDeviceBlackedOut;
 @property (nonatomic) BOOL lastCall; // @synthesize lastCall=_lastCall;
+@property (nonatomic) BOOL lastCourierAck; // @synthesize lastCourierAck=_lastCourierAck;
 @property (copy, nonatomic) NSNumber *localMessageState; // @synthesize localMessageState=_localMessageState;
 @property (nonatomic) long long responseCode; // @synthesize responseCode=_responseCode;
 @property (copy, nonatomic) NSNumber *responseCommand; // @synthesize responseCommand=_responseCommand;

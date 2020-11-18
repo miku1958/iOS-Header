@@ -16,6 +16,7 @@
     NSMutableDictionary *_restrictedApps;
     NSMutableDictionary *_removedApps;
     NSMutableDictionary *_applicationTypes;
+    NSMutableDictionary *_watchKitExtensions;
     NSObject<OS_dispatch_queue> *_queue;
     REKeyValueMap *_remoteApplicationsMap;
     NARApplicationWorkspace *_workspace;
@@ -46,6 +47,7 @@
 - (id)localApplicationForRemoteApplication:(struct NSString *)arg1;
 - (id)remoteApplicationForLocalApplication:(struct NSString *)arg1;
 - (unsigned long long)typeForApplication:(id)arg1;
+- (id)watchKitExtensionForApplication:(id)arg1;
 
 @end
 

@@ -22,13 +22,11 @@
         unsigned int delegateRespondsToDidChangeStateFromTo:1;
     } _flags;
     unsigned long long _state;
-    NSString *_name;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) unsigned long long state;
 @property (readonly) Class superclass;
 

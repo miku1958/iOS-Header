@@ -14,8 +14,8 @@
 @interface AVTImageStore : NSObject <AVTImageCache>
 {
     BOOL _validateImages;
-    NSFileManager *_fileManager;
     NSURL *_location;
+    NSFileManager *_fileManager;
     id<AVTImageEncoder> _imageEncoder;
     NSObject<OS_dispatch_queue> *_stateLock;
     id<AVTUILogger> _logger;

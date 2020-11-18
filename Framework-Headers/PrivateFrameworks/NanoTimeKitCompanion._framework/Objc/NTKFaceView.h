@@ -167,7 +167,8 @@
 - (void)_cleanupAfterZoom;
 - (id)_complicationContainerViewForSlot:(id)arg1;
 - (long long)_complicationPickerStyleForSlot:(id)arg1;
-- (BOOL)_configurationsHaveOptionSelectedThatHidesAllComplications;
+- (id)_complicationSlotsHiddenByCurrentConfiguration;
+- (id)_complicationSlotsHiddenByEditOption:(id)arg1;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
@@ -193,7 +194,6 @@
 - (void)_handleOrdinaryScreenWake;
 - (BOOL)_handlePhysicalButton:(unsigned long long)arg1 event:(unsigned long long)arg2;
 - (void)_handleWristRaiseScreenWake;
-- (BOOL)_isEditOptionThatHidesComplications:(id)arg1;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
 - (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (struct UIEdgeInsets)_keylineLabelActiveAreaInsetsForComplicationAtSlot:(id)arg1;
@@ -262,6 +262,7 @@
 - (BOOL)_wantsDimWithDesaturationFilterDuringComplicationEditing;
 - (BOOL)_wantsOpportunisticLiveFaceLoading;
 - (BOOL)_wantsStatusBarHidden;
+- (BOOL)_wantsStatusBarIconShadow;
 - (BOOL)_wantsTimeTravelStatusModule;
 - (BOOL)_wheelChangedWithEvent:(id)arg1;
 - (void)_willEnterForeground;
@@ -276,6 +277,8 @@
 - (void)cleanupAfterTransitionComplicationSlot:(id)arg1 selectedComplication:(id)arg2;
 - (void)cleanupAfterTransitionToOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)cleanupAfterZoom;
+- (id)closestVisibleComplicationSlotToSlot:(id)arg1;
+- (id)closestVisibleSlotToSlot:(id)arg1 editMode:(long long)arg2;
 - (BOOL)complicationDisplayWrapperView:(id)arg1 shouldStartCustomDataAnimationFromEarlierView:(id)arg2 laterView:(id)arg3 isForward:(BOOL)arg4;
 - (void)complicationDisplayWrapperView:(id)arg1 startCustomDataAnimationFromEarlierView:(id)arg2 laterView:(id)arg3 isForward:(BOOL)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (BOOL)complicationIsHiddenAtSlot:(id)arg1;
@@ -300,6 +303,7 @@
 - (void)handleOrdinaryScreenWake;
 - (void)handleUnadornedSnapshotRemoved;
 - (void)handleWristRaiseScreenWake;
+- (void)hideAppropriateComplicationsForCurrentConfiguration;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (void)invalidateComplicationLayout;
 - (struct CGRect)keylineFrameForComplicationSlot:(id)arg1 selected:(BOOL)arg2;
@@ -343,6 +347,7 @@
 - (void)setTimeOffset:(double)arg1;
 - (void)setTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 customEditMode:(long long)arg4 slot:(id)arg5;
 - (void)setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
+- (void)shiftSelectedComplicationSlotIfHidden;
 - (BOOL)slotSupportsCurvedText:(id)arg1;
 - (id)snapshotContainerView;
 - (void)startScrubbingAnimated:(BOOL)arg1;
@@ -353,6 +358,7 @@
 - (BOOL)usesCustomZoom;
 - (double)verticalPaddingForStatusBar;
 - (BOOL)wantsStatusBarHidden;
+- (BOOL)wantsStatusBarIconShadow;
 - (void)willMoveToWindow:(id)arg1;
 
 @end

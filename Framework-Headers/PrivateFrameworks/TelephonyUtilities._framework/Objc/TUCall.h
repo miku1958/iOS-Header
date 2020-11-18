@@ -119,6 +119,7 @@
 @property (readonly, nonatomic) NSData *localFrequency;
 @property (readonly, nonatomic) float localMeterLevel;
 @property (readonly, copy, nonatomic) TUSenderIdentity *localSenderIdentity;
+@property (readonly, copy, nonatomic) NSUUID *localSenderIdentityAccountUUID;
 @property (readonly, copy, nonatomic) NSUUID *localSenderIdentityUUID;
 @property (readonly, copy, nonatomic) NSString *localizedLabel;
 @property (readonly, nonatomic, getter=isMediaStalled) BOOL mediaStalled;

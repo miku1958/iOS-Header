@@ -50,6 +50,7 @@
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)_addVerificationRequestRecord:(id)arg1;
+- (id)_appleAccountInformation;
 - (void)_archiveBackgroundContext;
 - (void)_archiveContext;
 - (void)_backgroundDownloadCloudStoreAssetsforItem:(id)arg1 cloudStoreCoordinatorDelegate:(id)arg2;
@@ -83,6 +84,7 @@
 - (void)_performVerificationRequest:(id)arg1 selectedChannel:(id)arg2 paymentPass:(id)arg3 taskID:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_recentConfiguration:(CDUnknownBlockType)arg1;
 - (void)_removeVerificationRequestRecord:(id)arg1;
+- (void)_renewAppleAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (unsigned long long)_resultForResponse:(id)arg1 error:(id)arg2 successHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)_resultForUnexpectedStatusCode:(long long)arg1;
 - (void)_startBackgroundURLSessionWithIdentifier:(id)arg1 context:(id)arg2 backgroundDelegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -109,6 +111,7 @@
 - (unsigned long long)devicePassesSinceLastUpdatedTag:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (unsigned long long)eligibilityForRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)forbiddenErrorWithResponse:(id)arg1;
+- (void)handleAuthenticationFailureWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleResponse:(id)arg1 withError:(id)arg2 data:(id)arg3 task:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)handleWillPerformHTTPRedirectionWithResponse:(id)arg1 redirectHandler:(CDUnknownBlockType)arg2;
 - (unsigned long long)inAppPaymentNonceForPass:(id)arg1 completion:(CDUnknownBlockType)arg2;

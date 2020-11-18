@@ -36,6 +36,7 @@
 @property (weak, nonatomic) SiriUISnippetViewController *snippetViewController; // @synthesize snippetViewController=_snippetViewController;
 @property (readonly) Class superclass;
 
++ (struct CGRect)contentBoundsForCollectionViewCellBounds:(struct CGRect)arg1 snippetViewController:(id)arg2;
 + (double)defaultHeight;
 + (id)elementKind;
 + (id)reuseIdentifier;

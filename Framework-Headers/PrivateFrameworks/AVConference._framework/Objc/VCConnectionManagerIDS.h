@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (int)removeConnection:(id)arg1;
 - (void)reportConnection:(id)arg1 isInitialConnection:(BOOL)arg2;
 - (void)resetPacketCountAndByteCountWithConnection:(id)arg1;
+- (void)resetParticipantGenerationCounter;
 - (BOOL)selectPrimaryAndSecondaryWithConnection:(id)arg1;
 - (void)setPreferredLocalInterfaceForDuplication:(int)arg1;
 - (void)setPreferredRemoteInterfaceForDuplication:(int)arg1;

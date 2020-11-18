@@ -25,7 +25,7 @@
 @property (copy, nonatomic) NSString *pushToken; // @synthesize pushToken=_pushToken;
 @property (readonly, copy, nonatomic) NSString *pushTopic; // @synthesize pushTopic=_pushTopic;
 @property (readonly, copy, nonatomic) NSURL *serviceURL; // @synthesize serviceURL=_serviceURL;
-@property (readonly, copy, nonatomic) NSData *signedEnrollmentDataSignature; // @synthesize signedEnrollmentDataSignature=_signedEnrollmentDataSignature;
+@property (copy, nonatomic) NSData *signedEnrollmentDataSignature; // @synthesize signedEnrollmentDataSignature=_signedEnrollmentDataSignature;
 
 + (id)contextWithArchive:(id)arg1;
 + (BOOL)supportsSecureCoding;

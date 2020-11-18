@@ -34,6 +34,7 @@
 @property (nonatomic, getter=isVisible) BOOL visible; // @synthesize visible=_visible;
 
 + (double)_circleDiameterForBounds:(struct CGRect)arg1 orientation:(long long)arg2;
++ (BOOL)_useLargeLayoutForBounds:(struct CGRect)arg1;
 + (struct CGRect)circleFrameForBounds:(struct CGRect)arg1 orientation:(long long)arg2 bottomContentInset:(double)arg3;
 - (void).cxx_destruct;
 - (struct CGRect)_circleFrameForOrientation:(long long)arg1;

@@ -18,10 +18,12 @@
     id<CNUIUserActionDialRequestOpener> _dialRequestOpener;
     id<CNUIUserActionRecorder> _actionRecorder;
     id<CNUIUserActionCurator> _actionCurator;
+    NSString *_channelIdentifier;
 }
 
 @property (strong, nonatomic) id<CNUIUserActionCurator> actionCurator; // @synthesize actionCurator=_actionCurator;
 @property (strong, nonatomic) id<CNUIUserActionRecorder> actionRecorder; // @synthesize actionRecorder=_actionRecorder;
+@property (copy, nonatomic) NSString *channelIdentifier; // @synthesize channelIdentifier=_channelIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) id<CNUIUserActionDialRequestOpener> dialRequestOpener; // @synthesize dialRequestOpener=_dialRequestOpener;

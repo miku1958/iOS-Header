@@ -10,7 +10,7 @@
 #import <PersistentConnection/PCInterfaceUsabilityMonitorDelegate-Protocol.h>
 #import <PersistentConnection/PCInterfaceUsabilityMonitorProtocol-Protocol.h>
 
-@class CUTWeakReference, CoreTelephonyClient, NSString, PCInterfaceUsabilityMonitor;
+@class CTXPCServiceSubscriptionContext, CUTWeakReference, CoreTelephonyClient, NSString, PCInterfaceUsabilityMonitor;
 @protocol OS_dispatch_queue, PCInterfaceUsabilityMonitorDelegate;
 
 __attribute__((visibility("hidden")))
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     CoreTelephonyClient *_ctClient;
     int _wwanContextID;
     NSObject<OS_dispatch_queue> *_ctServerQueue;
+    CTXPCServiceSubscriptionContext *_currentDataSimContext;
 }
 
 @property (readonly, nonatomic) int currentRAT; // @synthesize currentRAT=_currentRAT;
@@ -55,10 +56,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct __CFString *wwanInterfaceName;
 
 - (void).cxx_destruct;
-- (void)_adjustInterfaceNameForWWANContextID:(int)arg1 interfaceName:(id)arg2;
+- (void)_adjustInterfaceNameForWWANContextID:(int)arg1 interfaceName:(id)arg2 forContext:(id)arg3;
 - (void)_callDelegateOnIvarQueueWithBlock:(CDUnknownBlockType)arg1;
-- (id)_dataPreferredSubcriptionContext;
+- (id)_currentDataSimContext;
 - (void)_forwardConfigurationOnIvarQueue;
+- (BOOL)_isCurrentDataSimContextOnIvarQueue:(id)arg1;
 - (void)_setupWWANMonitor;
 - (void)dealloc;
 - (id)initWithDelegateQueue:(id)arg1;

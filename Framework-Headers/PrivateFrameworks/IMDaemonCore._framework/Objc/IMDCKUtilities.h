@@ -55,7 +55,6 @@
 - (BOOL)_checkEligibilityWithAccountInfo:(id)arg1;
 - (void)_checkEligibilityWithLoggedInAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_checkIfEnabledByServerBagOrDefault:(id)arg1;
-- (id)_ckStatisticCaluclations;
 - (id)_createAccountError:(id)arg1;
 - (BOOL)_deviceActive;
 - (id)_errorsFromPartialError:(id)arg1;
@@ -90,6 +89,7 @@
 - (BOOL)cacheDeleteEnabled;
 - (void)checkCloudkitEnabledStatusAndToggleiCloudSwitchIfNeeded;
 - (void)checkiCloudQuota:(CDUnknownBlockType)arg1;
+- (id)ckStatisticCalculations;
 - (BOOL)cloudKitSyncDownloadAssetsOnly;
 - (BOOL)cloudKitSyncingEnabled;
 - (id)deviceActiveString;
@@ -157,7 +157,7 @@
 - (BOOL)shouldSyncToSRContainer;
 - (BOOL)shouldUseDevContainer;
 - (void)submitPCSReportManateeStatuMetricWithPrefix:(id)arg1 andReason:(id)arg2;
-- (id)syncFailureMetricString:(id)arg1 error:(id)arg2;
+- (id)syncFailureMetricString:(id)arg1 isRecoverable:(BOOL)arg2 error:(id)arg3;
 - (void)syncStateWillUpdate:(id)arg1;
 
 @end

@@ -10,7 +10,7 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBRunVoiceCommandIntentResponse-Protocol.h>
 
-@class NSString, _INPBArchivedObject, _INPBDictionary;
+@class NSArray, NSString, _INPBArchivedObject, _INPBDictionary;
 
 @interface _INPBRunVoiceCommandIntentResponse : PBCodable <_INPBRunVoiceCommandIntentResponse, NSSecureCoding, NSCopying>
 {
@@ -30,6 +30,7 @@
     NSString *_localizedAppName;
     _INPBDictionary *_parameters;
     NSString *_responseTemplate;
+    NSArray *_steps;
     _INPBArchivedObject *_underlyingIntent;
     _INPBArchivedObject *_underlyingIntentResponse;
     NSString *_underlyingIntentTitle;
@@ -60,6 +61,8 @@
 @property (copy, nonatomic) NSString *localizedAppName; // @synthesize localizedAppName=_localizedAppName;
 @property (strong, nonatomic) _INPBDictionary *parameters; // @synthesize parameters=_parameters;
 @property (copy, nonatomic) NSString *responseTemplate; // @synthesize responseTemplate=_responseTemplate;
+@property (copy, nonatomic) NSArray *steps; // @synthesize steps=_steps;
+@property (readonly, nonatomic) unsigned long long stepsCount;
 @property (readonly) Class superclass;
 @property (nonatomic) int toggleState; // @synthesize toggleState=_toggleState;
 @property (strong, nonatomic) _INPBArchivedObject *underlyingIntent; // @synthesize underlyingIntent=_underlyingIntent;
@@ -67,14 +70,18 @@
 @property (copy, nonatomic) NSString *underlyingIntentTitle; // @synthesize underlyingIntentTitle=_underlyingIntentTitle;
 @property (copy, nonatomic) NSString *verb; // @synthesize verb=_verb;
 
++ (Class)stepType;
 - (void).cxx_destruct;
 - (int)StringAsIntentCategory:(id)arg1;
 - (int)StringAsToggleState:(id)arg1;
+- (void)addStep:(id)arg1;
+- (void)clearSteps;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
 - (id)intentCategoryAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)stepAtIndex:(unsigned long long)arg1;
 - (id)toggleStateAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

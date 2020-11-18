@@ -8,7 +8,7 @@
 
 #import <DCIMServices/UIScrollViewDelegate-Protocol.h>
 
-@class CAMSelectionFeedbackGenerator, NSNumberFormatter, NSString, PUApertureGradientView, PUApertureSliderDotView, PUApertureSliderTickMarksView, UIColor, UILabel, UIScrollView;
+@class CAMSelectionFeedbackGenerator, NSNumberFormatter, NSString, PUApertureGradientView, PUApertureSliderDotView, PUApertureSliderTickMarksView, UIColor, UIImageView, UILabel, UIScrollView;
 @protocol PUApertureSliderDelegate;
 
 @interface PUApertureSlider : UIView <UIScrollViewDelegate>
@@ -16,6 +16,7 @@
     NSNumberFormatter *_decimalFormatter;
     NSNumberFormatter *_wholeNumberFormatter;
     BOOL _enabled;
+    BOOL _useLegibilityBackgrounds;
     BOOL __overscrolling;
     BOOL __active;
     unsigned int __endStopSoundID;
@@ -23,12 +24,16 @@
     unsigned int __thirdStopSoundID;
     unsigned int __overscrollStopSoundID;
     id<PUApertureSliderDelegate> _delegate;
+    long long _textOrientation;
     UIScrollView *__scrollView;
     UIView *__indicatorView;
-    UILabel *__depthEffectLabel;
+    UILabel *__titleLabel;
     UILabel *__valueLabel;
     PUApertureGradientView *__opaqueGradientView;
     PUApertureGradientView *__transparentGradientView;
+    UIImageView *__valueBackground;
+    UIImageView *__titleBackground;
+    UIView *__indicatorBackground;
     PUApertureSliderTickMarksView *__tickMarksView;
     PUApertureSliderDotView *__dotView;
     CAMSelectionFeedbackGenerator *__feedbackGenerator;
@@ -40,51 +45,63 @@
 
 @property (nonatomic, getter=_isActive, setter=_setActive:) BOOL _active; // @synthesize _active=__active;
 @property (nonatomic, setter=_setCurrentApertureIndex:) unsigned long long _currentApertureIndex; // @synthesize _currentApertureIndex=__currentApertureIndex;
-@property (readonly, nonatomic) UILabel *_depthEffectLabel; // @synthesize _depthEffectLabel=__depthEffectLabel;
 @property (readonly, nonatomic) PUApertureSliderDotView *_dotView; // @synthesize _dotView=__dotView;
 @property (readonly, nonatomic) unsigned int _endStopSoundID; // @synthesize _endStopSoundID=__endStopSoundID;
 @property (readonly, nonatomic) CAMSelectionFeedbackGenerator *_feedbackGenerator; // @synthesize _feedbackGenerator=__feedbackGenerator;
 @property (readonly, nonatomic) unsigned int _fullStopSoundID; // @synthesize _fullStopSoundID=__fullStopSoundID;
+@property (strong, nonatomic) UIView *_indicatorBackground; // @synthesize _indicatorBackground=__indicatorBackground;
 @property (readonly, nonatomic) UIView *_indicatorView; // @synthesize _indicatorView=__indicatorView;
 @property (nonatomic, setter=_setMarkedApertureIndex:) unsigned long long _markedApertureIndex; // @synthesize _markedApertureIndex=__markedApertureIndex;
 @property (nonatomic, setter=_setMaximumApertureIndex:) unsigned long long _maximumApertureIndex; // @synthesize _maximumApertureIndex=__maximumApertureIndex;
 @property (nonatomic, setter=_setMinimumApertureIndex:) unsigned long long _minimumApertureIndex; // @synthesize _minimumApertureIndex=__minimumApertureIndex;
-@property (readonly, nonatomic) PUApertureGradientView *_opaqueGradientView; // @synthesize _opaqueGradientView=__opaqueGradientView;
+@property (strong, nonatomic) PUApertureGradientView *_opaqueGradientView; // @synthesize _opaqueGradientView=__opaqueGradientView;
 @property (readonly, nonatomic) unsigned int _overscrollStopSoundID; // @synthesize _overscrollStopSoundID=__overscrollStopSoundID;
 @property (nonatomic, getter=_isOverscrolling, setter=_setOverscrolling:) BOOL _overscrolling; // @synthesize _overscrolling=__overscrolling;
 @property (readonly, nonatomic) UIScrollView *_scrollView; // @synthesize _scrollView=__scrollView;
 @property (readonly, nonatomic) unsigned int _thirdStopSoundID; // @synthesize _thirdStopSoundID=__thirdStopSoundID;
 @property (readonly, nonatomic) PUApertureSliderTickMarksView *_tickMarksView; // @synthesize _tickMarksView=__tickMarksView;
-@property (readonly, nonatomic) PUApertureGradientView *_transparentGradientView; // @synthesize _transparentGradientView=__transparentGradientView;
+@property (strong, nonatomic) UIImageView *_titleBackground; // @synthesize _titleBackground=__titleBackground;
+@property (readonly, nonatomic) UILabel *_titleLabel; // @synthesize _titleLabel=__titleLabel;
+@property (strong, nonatomic) PUApertureGradientView *_transparentGradientView; // @synthesize _transparentGradientView=__transparentGradientView;
+@property (strong, nonatomic) UIImageView *_valueBackground; // @synthesize _valueBackground=__valueBackground;
 @property (readonly, nonatomic) UILabel *_valueLabel; // @synthesize _valueLabel=__valueLabel;
 @property (readonly, nonatomic) double apertureValue;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUApertureSliderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
-@property (nonatomic) UIColor *gradientColor;
+@property (strong, nonatomic) UIColor *gradientColor;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double markedApertureValue;
 @property (readonly, nonatomic) double maximumApertureValue;
 @property (readonly, nonatomic) double minimumApertureValue;
 @property (readonly) Class superclass;
+@property (nonatomic) long long textOrientation; // @synthesize textOrientation=_textOrientation;
+@property (nonatomic) BOOL useLegibilityBackgrounds; // @synthesize useLegibilityBackgrounds=_useLegibilityBackgrounds;
 
 + (unsigned long long)firstFullStopIndexAfterOrIncludingIndex:(unsigned long long)arg1;
 + (BOOL)isValidApertureIndex:(unsigned long long)arg1;
 + (BOOL)isValidApertureIndexFullStop:(unsigned long long)arg1;
 + (id)validApertureValues;
 - (void).cxx_destruct;
+- (unsigned long long)_biasedValidApertureIndexForContentOffset:(struct CGPoint)arg1;
 - (struct CGPoint)_contentOffsetForApertureIndex:(unsigned long long)arg1;
+- (id)_createLegibilityImage;
 - (unsigned long long)_indexOfClosestValidValueForAperture:(double)arg1;
+- (double)_interpolatedValidApertureIndexForContentOffset:(struct CGPoint)arg1;
+- (void)_layoutSliderContentAtY:(double)arg1 withHorizontalPadding:(double)arg2;
+- (void)_layoutSubviewsWithLabelRotation:(double)arg1;
+- (void)_layoutSubviewsWithNoRotation;
+- (unsigned long long)_nearestValidApertureIndexForContentOffset:(struct CGPoint)arg1;
 - (void)_removeDotView;
 - (double)_scrollableDistanceInScrollView:(id)arg1;
 - (void)_setActive:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setApertureWithIndex:(unsigned long long)arg1 shouldDelegate:(BOOL)arg2 shouldScroll:(BOOL)arg3 shouldEmitFeedback:(BOOL)arg4;
 - (void)_updateColorsAnimated:(BOOL)arg1;
 - (void)_updateLabel;
+- (void)_updateLegibilityBackgrounds;
 - (void)_updateMarkedApertureViewAnimated:(BOOL)arg1;
 - (void)_updateScrollViewContentOffset;
-- (unsigned long long)_validApertureIndexForContentOffset:(struct CGPoint)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
@@ -98,6 +115,7 @@
 - (void)setMarkedApertureValueClosestTo:(double)arg1;
 - (void)setMarkedApertureValueToNone;
 - (void)setMinimumApertureValueClosestTo:(double)arg1 maximumApertureValueClosestTo:(double)arg2;
+- (void)setTextOrientation:(long long)arg1 animated:(BOOL)arg2;
 
 @end
 

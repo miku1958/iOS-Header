@@ -8,7 +8,7 @@
 
 #import <Intents/INRunWorkflowIntentResponseExport-Protocol.h>
 
-@class INArchivedObject, NSNumber, NSString, _INPBRunWorkflowIntentResponse;
+@class INArchivedObject, NSArray, NSNumber, NSString, _INPBRunWorkflowIntentResponse;
 
 @interface INRunWorkflowIntentResponse : INIntentResponse <INRunWorkflowIntentResponseExport>
 {
@@ -20,6 +20,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *steps;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) INArchivedObject *underlyingIntent;
 @property (copy, nonatomic) INArchivedObject *underlyingIntentResponse;

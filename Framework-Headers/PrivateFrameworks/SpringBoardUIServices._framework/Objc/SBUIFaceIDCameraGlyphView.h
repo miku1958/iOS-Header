@@ -6,24 +6,48 @@
 
 #import <SpringBoardFoundation/SBFTouchPassThroughView.h>
 
-@class UIView, _UILegibilitySettings, _UILegibilityView;
+@class CALayer, SBUILegibilityLabel, UIView, _UILegibilitySettings, _UILegibilityView;
 
 @interface SBUIFaceIDCameraGlyphView : SBFTouchPassThroughView
 {
     _UILegibilitySettings *_legibilitySettings;
-    _UILegibilityView *_glyphView;
+    UIView *_arrowContainer;
+    SBUILegibilityLabel *_callToActionLabel;
+    unsigned long long _state;
+    _UILegibilityView *_arrowHead;
+    _UILegibilityView *_arrowTail;
+    CALayer *_maskContainerLayer;
+    CALayer *_maskTopLayer;
+    CALayer *_maskLeftLayer;
+    CALayer *_maskRightLayer;
     UIView *_localRotationView;
     struct CGAffineTransform _localTransform;
 }
 
-@property (strong, nonatomic) _UILegibilityView *glyphView; // @synthesize glyphView=_glyphView;
+@property (strong, nonatomic) UIView *arrowContainer; // @synthesize arrowContainer=_arrowContainer;
+@property (strong, nonatomic) _UILegibilityView *arrowHead; // @synthesize arrowHead=_arrowHead;
+@property (strong, nonatomic) _UILegibilityView *arrowTail; // @synthesize arrowTail=_arrowTail;
+@property (strong, nonatomic) SBUILegibilityLabel *callToActionLabel; // @synthesize callToActionLabel=_callToActionLabel;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (strong, nonatomic) UIView *localRotationView; // @synthesize localRotationView=_localRotationView;
 @property (nonatomic) struct CGAffineTransform localTransform; // @synthesize localTransform=_localTransform;
+@property (strong, nonatomic) CALayer *maskContainerLayer; // @synthesize maskContainerLayer=_maskContainerLayer;
+@property (strong, nonatomic) CALayer *maskLeftLayer; // @synthesize maskLeftLayer=_maskLeftLayer;
+@property (strong, nonatomic) CALayer *maskRightLayer; // @synthesize maskRightLayer=_maskRightLayer;
+@property (strong, nonatomic) CALayer *maskTopLayer; // @synthesize maskTopLayer=_maskTopLayer;
+@property (nonatomic) unsigned long long state; // @synthesize state=_state;
 
 - (void).cxx_destruct;
+- (void)_fadeComponenetsOut:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_fadeComponentsIn:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_flyInWithText:(BOOL)arg1 delay:(double)arg2;
+- (void)_installMask;
+- (void)_removeAnimations;
+- (void)_setAlpha:(double)arg1 onComponents:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_updateCallToActionLabelFont;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)setState:(unsigned long long)arg1 delay:(double)arg2;
 
 @end
 

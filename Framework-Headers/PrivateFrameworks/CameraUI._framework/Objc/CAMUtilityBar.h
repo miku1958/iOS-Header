@@ -24,6 +24,7 @@
 - (void)_layoutPortraitApertureSlider;
 - (void)_updateVisibilityForUpdatedContent:(unsigned long long)arg1 contentView:(id)arg2;
 - (void)_updateVisibleViewAnimated:(BOOL)arg1;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)layoutSubviews;
 - (void)setVisibleContent:(unsigned long long)arg1 animated:(BOOL)arg2;
 

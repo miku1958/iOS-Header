@@ -9,7 +9,7 @@
 #import <AVConference/AVCSessionParticipantControlProtocol-Protocol.h>
 #import <AVConference/AVCSessionParticipantDelegate-Protocol.h>
 
-@class AVCSessionConfiguration, AVCSessionParticipant, NSArray, NSData, NSMutableDictionary, NSString, VCXPCClientShared;
+@class AVCSessionConfiguration, AVCSessionParticipant, NSArray, NSData, NSDictionary, NSMutableDictionary, NSString, VCXPCClientShared;
 @protocol AVCSessionDelegate, OS_dispatch_queue;
 
 @interface AVCSession : NSObject <AVCSessionParticipantDelegate, AVCSessionParticipantControlProtocol>
@@ -24,6 +24,7 @@
     NSObject<OS_dispatch_queue> *_stateQueue;
     VCXPCClientShared *_connection;
     long long _sessionToken;
+    NSDictionary *_capabilities;
     NSString *_uuid;
     NSData *_frequencyLevels;
     int _activeConfigurationCount;
@@ -32,6 +33,7 @@
 @property (nonatomic, getter=isAudioEnabled) BOOL audioEnabled;
 @property (nonatomic, getter=isAudioMuted) BOOL audioMuted;
 @property (nonatomic, getter=isAudioPaused) BOOL audioPaused;
+@property (strong, nonatomic) NSDictionary *capabilities; // @synthesize capabilities=_capabilities;
 @property (strong, nonatomic) AVCSessionConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<AVCSessionDelegate> delegate;
@@ -57,9 +59,9 @@
 - (void)beginParticipantConfiguration;
 - (void)dealloc;
 - (void)deregisterFromNotifications;
-- (void)didDetectErrorHandler:(id)arg1;
 - (void)endParticipantConfiguration;
 - (id)initWithTransportToken:(id)arg1 configuration:(id)arg2 delegate:(id)arg3 queue:(id)arg4;
+- (id)newNSErrorWithErrorDictionary:(id)arg1;
 - (void)participant:(id)arg1 audioEnabled:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
 - (void)participant:(id)arg1 audioPaused:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
 - (void)participant:(id)arg1 frequencyLevelsDidChange:(id)arg2;

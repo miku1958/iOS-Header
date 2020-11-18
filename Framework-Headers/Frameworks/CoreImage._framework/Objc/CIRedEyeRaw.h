@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
     NSNumber *inputClosingDilation;
     NSNumber *inputSplat;
     NSNumber *inputSpecArea;
+    NSNumber *inputSpecAreaScale;
     NSNumber *inputWhiteCutoff;
     NSNumber *inputFalloffDensity;
     NSNumber *inputFalloffRepair;
@@ -76,6 +77,9 @@ __attribute__((visibility("hidden")))
     NSNumber *inputFoobar4;
     NSNumber *inputRefilterRange;
     NSNumber *inputRefilterSpace;
+    NSNumber *inputMaxInterDispersion;
+    NSNumber *inputGlintThreshold;
+    NSNumber *inputTargetClosing;
 }
 
 @property (strong, nonatomic) NSNumber *inputAbortDensityDiff; // @synthesize inputAbortDensityDiff;
@@ -107,8 +111,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSNumber *inputFoobar3; // @synthesize inputFoobar3;
 @property (strong, nonatomic) NSNumber *inputFoobar4; // @synthesize inputFoobar4;
 @property (strong, nonatomic) NSNumber *inputGamma; // @synthesize inputGamma;
+@property (strong, nonatomic) NSNumber *inputGlintThreshold; // @synthesize inputGlintThreshold;
 @property (strong, nonatomic) NSNumber *inputInterPeakMin; // @synthesize inputInterPeakMin;
 @property (strong, nonatomic) NSNumber *inputIntersect; // @synthesize inputIntersect;
+@property (strong, nonatomic) NSNumber *inputMaxInterDispersion; // @synthesize inputMaxInterDispersion;
 @property (strong, nonatomic) CIVector *inputMidSpectrumWhiteOffsets; // @synthesize inputMidSpectrumWhiteOffsets;
 @property (strong, nonatomic) NSNumber *inputOrientationHint; // @synthesize inputOrientationHint;
 @property (strong, nonatomic) NSNumber *inputOrientationScale; // @synthesize inputOrientationScale;
@@ -137,11 +143,13 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSNumber *inputSkinThreshold; // @synthesize inputSkinThreshold;
 @property (strong, nonatomic) NSNumber *inputSkinThresholdMed; // @synthesize inputSkinThresholdMed;
 @property (strong, nonatomic) NSNumber *inputSpecArea; // @synthesize inputSpecArea;
+@property (strong, nonatomic) NSNumber *inputSpecAreaScale; // @synthesize inputSpecAreaScale;
 @property (strong, nonatomic) NSNumber *inputSpecIntensity; // @synthesize inputSpecIntensity;
 @property (strong, nonatomic) NSNumber *inputSpecMax; // @synthesize inputSpecMax;
 @property (strong, nonatomic) NSNumber *inputSpecMin; // @synthesize inputSpecMin;
 @property (strong, nonatomic) NSNumber *inputSpecular; // @synthesize inputSpecular;
 @property (strong, nonatomic) NSNumber *inputSplat; // @synthesize inputSplat;
+@property (strong, nonatomic) NSNumber *inputTargetClosing; // @synthesize inputTargetClosing;
 @property (strong, nonatomic) NSNumber *inputWhiteCutoff; // @synthesize inputWhiteCutoff;
 
 - (id)outputImage;

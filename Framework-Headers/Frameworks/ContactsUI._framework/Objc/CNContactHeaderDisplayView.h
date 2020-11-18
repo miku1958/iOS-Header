@@ -6,13 +6,17 @@
 
 #import <ContactsUI/CNContactHeaderView.h>
 
+#import <ContactsUI/CNPickerControllerDelegate-Protocol.h>
 #import <ContactsUI/CNUIReusableView-Protocol.h>
 
-@class CNContactFormatter, NSDictionary, NSLayoutConstraint, NSString, UILabel, UIView;
+@class CNContactFormatter, CNContactGeminiView, CNGeminiPickerController, CNGeminiResult, NSDictionary, NSLayoutConstraint, NSString, UILabel, UIView;
 
-@interface CNContactHeaderDisplayView : CNContactHeaderView <CNUIReusableView>
+@interface CNContactHeaderDisplayView : CNContactHeaderView <CNPickerControllerDelegate, CNUIReusableView>
 {
     NSDictionary *_taglineTextAttributes;
+    NSDictionary *_geminiTextAttributes;
+    BOOL _shouldShowGemini;
+    BOOL _allowsPickerActions;
     CNContactFormatter *_contactFormatter;
     NSString *_alternateName;
     NSString *_message;
@@ -24,15 +28,22 @@
     NSLayoutConstraint *_photoTopConstraint;
     NSLayoutConstraint *_photoHeightConstraint;
     NSLayoutConstraint *_avatarNameSpacingConstraint;
+    CNContactGeminiView *_geminiView;
+    CNGeminiResult *_geminiResult;
+    CNGeminiPickerController *_geminiPicker;
     struct CGSize _maxNameSize;
 }
 
+@property (nonatomic) BOOL allowsPickerActions; // @synthesize allowsPickerActions=_allowsPickerActions;
 @property (strong, nonatomic) NSString *alternateName; // @synthesize alternateName=_alternateName;
 @property (strong) NSLayoutConstraint *avatarNameSpacingConstraint; // @synthesize avatarNameSpacingConstraint=_avatarNameSpacingConstraint;
 @property (nonatomic) unsigned long long avatarStyle;
 @property (strong, nonatomic) CNContactFormatter *contactFormatter; // @synthesize contactFormatter=_contactFormatter;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) CNGeminiPickerController *geminiPicker; // @synthesize geminiPicker=_geminiPicker;
+@property (strong) CNGeminiResult *geminiResult; // @synthesize geminiResult=_geminiResult;
+@property (strong) CNContactGeminiView *geminiView; // @synthesize geminiView=_geminiView;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double lastViewWidth; // @synthesize lastViewWidth=_lastViewWidth;
 @property (nonatomic) double maxHeight; // @synthesize maxHeight=_maxHeight;
@@ -44,6 +55,7 @@
 @property (readonly, nonatomic) double photoLabelSpacing;
 @property (readonly, nonatomic) double photoMinTopMargin;
 @property (strong) NSLayoutConstraint *photoTopConstraint; // @synthesize photoTopConstraint=_photoTopConstraint;
+@property (nonatomic) BOOL shouldShowGemini; // @synthesize shouldShowGemini=_shouldShowGemini;
 @property (readonly) Class superclass;
 @property (strong) UILabel *taglineLabel; // @synthesize taglineLabel=_taglineLabel;
 @property (copy, nonatomic) NSDictionary *taglineTextAttributes;
@@ -57,20 +69,27 @@
 - (id)_taglineStringForContacts:(id)arg1;
 - (void)_updatePhotoView;
 - (void)calculateLabelSizes;
+- (void)calculateLabelSizesIfNeeded;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)copy:(id)arg1;
 - (id)descriptorForRequiredKeys;
 - (void)disablePhotoTapGesture;
+- (id)geminiTextAttributes;
+- (void)handleGeminiViewTouch:(id)arg1;
 - (void)handleNameLabelLongPress:(id)arg1;
 - (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 delegate:(id)arg3;
 - (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 monogrammerStyle:(long long)arg3 shouldAllowImageDrops:(BOOL)arg4 delegate:(id)arg5;
 - (void)layoutSubviews;
 - (void)menuWillHide:(id)arg1;
+- (void)picker:(id)arg1 didPickItem:(id)arg2;
+- (void)pickerDidCancel:(id)arg1;
 - (void)reloadDataPreservingChanges:(BOOL)arg1;
+- (void)setGeminiTextAttributes:(id)arg1;
 - (void)setNameTextAttributes:(id)arg1;
 - (void)tintColorDidChange;
 - (void)updateConstraints;
 - (void)updateFontSizes;
+- (void)updateGeminiResult:(id)arg1;
 - (void)updateSizeDependentAttributes;
 
 @end

@@ -6,12 +6,13 @@
 
 #import <Sharing/SDXPCDaemonProtocol-Protocol.h>
 
-@class NSDate, NSDictionary, NSString;
+@class NSDictionary, NSString;
 
 @protocol SFPairedDeviceDaemonInterface <SDXPCDaemonProtocol>
-- (void)requestToShowChargingUIWithHandler:(void (^)(NSDate *, NSError *))arg1;
+- (void)initialViewControllerDidAppear;
+- (void)initialViewControllerDidDisappear;
 - (void)sendDashboardEntryWithName:(NSString *)arg1 dict:(NSDictionary *)arg2;
-- (void)sendUICoordinationDate:(NSDate *)arg1;
-- (void)sendUISyncDate:(NSDate *)arg1;
+- (void)sendDismissUIWithReason:(long long)arg1;
+- (void)triggerChargingUIWithDismissHandler:(void (^)(NSError *))arg1;
 @end
 

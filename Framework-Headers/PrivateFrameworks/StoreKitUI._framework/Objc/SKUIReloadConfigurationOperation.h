@@ -19,6 +19,7 @@
 @property (strong) SSURLBag *URLBag;
 @property (copy) CDUnknownBlockType outputBlock;
 
++ (id)cachePath;
 - (void).cxx_destruct;
 - (id)init;
 - (void)main;

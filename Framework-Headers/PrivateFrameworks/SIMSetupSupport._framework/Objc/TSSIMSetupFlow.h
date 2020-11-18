@@ -32,8 +32,10 @@
 - (void)firstViewController:(CDUnknownBlockType)arg1;
 - (void)navigateToNextPaneFrom:(id)arg1 navigationController:(id)arg2;
 - (id)nextViewControllerFrom:(id)arg1;
-- (void)userDidTapCancel:(id)arg1;
+- (void)receivedResponse;
+- (void)userDidTapCancel;
 - (void)viewControllerDidComplete:(id)arg1;
+- (void)waitForResponse:(id)arg1;
 
 @end
 

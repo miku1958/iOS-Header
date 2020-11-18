@@ -25,6 +25,7 @@
 @property (copy, nonatomic) NSString *type; // @dynamic type;
 
 + (id)fetchOrCreateWithDictionaryRepresentation:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
++ (id)fetchRequestMatchingBlueprintsForUserWithDSID:(id)arg1 ofType:(id)arg2;
 - (void)delete;
 - (id)dictionaryRepresentation;
 - (id)syncableRootObject;

@@ -42,6 +42,7 @@
 - (id)bubbleFillForMe:(BOOL)arg1;
 - (struct UIEdgeInsets)bubbleInsetForMe:(BOOL)arg1;
 - (BOOL)contactIsTTYContact:(id)arg1;
+- (id)contactPathForCall:(id)arg1;
 - (id)conversationForCallUID:(id)arg1;
 - (unsigned long long)currentPreferredTransportMethod;
 - (BOOL)deleteConversationWithCallUID:(id)arg1;

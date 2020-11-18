@@ -42,6 +42,7 @@
 - (BOOL)_canStartTimeScrubbing;
 - (void)_cleanupAfterEditing;
 - (void)_cleanupAfterZoom;
+- (long long)_complicationPickerStyleForSlot:(id)arg1;
 - (id)_complicationView;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;

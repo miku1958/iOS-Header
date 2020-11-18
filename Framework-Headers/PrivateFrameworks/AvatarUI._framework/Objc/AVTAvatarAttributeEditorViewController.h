@@ -8,16 +8,18 @@
 
 #import <AvatarUI/AVTAvatarAttributeEditorControllerSubSelectionDelegate-Protocol.h>
 #import <AvatarUI/AVTCollapsibleHeaderControllerDelegate-Protocol.h>
+#import <AvatarUI/AVTFaceTrackingManagerDelegate-Protocol.h>
 #import <AvatarUI/AVTGroupDialDelegate-Protocol.h>
+#import <AvatarUI/AVTNotifyingContainerViewDelegate-Protocol.h>
 #import <AvatarUI/AVTTransitionModel-Protocol.h>
 #import <AvatarUI/UICollectionViewDataSource-Protocol.h>
 #import <AvatarUI/UICollectionViewDataSourcePrefetching-Protocol.h>
 #import <AvatarUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
 @class AVTAttributeEditorAnimationCoordinator, AVTAvatarAttributeEditorDataSource, AVTAvatarAttributeEditorModelManager, AVTAvatarRecord, AVTCollapsibleHeaderController, AVTGroupDial, AVTImageTransitioningContainerView, AVTShadowView, AVTTransition, AVTUIEnvironment, AVTViewSession, AVTViewSessionProvider, AVTViewThrottler, CALayer, NSString, UICollectionView, UILabel, UITapGestureRecognizer, UIView, _AVTAvatarRecordImageProvider;
-@protocol AVTAvatarAttributeEditorLayout, AVTAvatarAttributeEditorViewControllerDelegate, AVTScheduler;
+@protocol AVTAvatarAttributeEditorLayout, AVTAvatarAttributeEditorViewControllerDelegate, AVTTaskScheduler;
 
-@interface AVTAvatarAttributeEditorViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDataSourcePrefetching, UICollectionViewDelegateFlowLayout, AVTAvatarAttributeEditorControllerSubSelectionDelegate, AVTGroupDialDelegate, AVTCollapsibleHeaderControllerDelegate, AVTTransitionModel>
+@interface AVTAvatarAttributeEditorViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDataSourcePrefetching, UICollectionViewDelegateFlowLayout, AVTAvatarAttributeEditorControllerSubSelectionDelegate, AVTGroupDialDelegate, AVTCollapsibleHeaderControllerDelegate, AVTTransitionModel, AVTNotifyingContainerViewDelegate, AVTFaceTrackingManagerDelegate>
 {
     BOOL _isCreating;
     BOOL _hasMadeAnySelection;
@@ -25,7 +27,7 @@
     id<AVTAvatarAttributeEditorViewControllerDelegate> _delegate;
     id<AVTAvatarAttributeEditorLayout> _currentLayout;
     AVTAvatarAttributeEditorModelManager *_modelManager;
-    id<AVTScheduler> _imageProviderScheduler;
+    id<AVTTaskScheduler> _imageProviderScheduler;
     UIView *_headerMaskingView;
     UIView *_groupDialContainerView;
     AVTGroupDial *_groupDial;
@@ -69,7 +71,7 @@
 @property (nonatomic) BOOL hasMadeAnySelection; // @synthesize hasMadeAnySelection=_hasMadeAnySelection;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *headerMaskingView; // @synthesize headerMaskingView=_headerMaskingView;
-@property (readonly, nonatomic) id<AVTScheduler> imageProviderScheduler; // @synthesize imageProviderScheduler=_imageProviderScheduler;
+@property (readonly, nonatomic) id<AVTTaskScheduler> imageProviderScheduler; // @synthesize imageProviderScheduler=_imageProviderScheduler;
 @property (nonatomic) BOOL isAnimatingHighlight; // @synthesize isAnimatingHighlight=_isAnimatingHighlight;
 @property (readonly, nonatomic) BOOL isCreating; // @synthesize isCreating=_isCreating;
 @property (readonly, nonatomic) AVTAvatarAttributeEditorModelManager *modelManager; // @synthesize modelManager=_modelManager;
@@ -122,7 +124,11 @@
 - (void)groupDial:(id)arg1 didSelectGroupAtIndex:(long long)arg2 tapped:(BOOL)arg3;
 - (id)init;
 - (id)initWithAvatarRecord:(id)arg1 avtViewSessionProvider:(id)arg2 environment:(id)arg3 isCreating:(BOOL)arg4;
+- (long long)interfaceOrientationForFaceTrackingManager:(id)arg1;
 - (id)liveView;
+- (void)loadView;
+- (void)notifyingContainerViewDidChangeSize:(struct CGSize)arg1;
+- (void)notifyingContainerViewWillChangeSize:(struct CGSize)arg1;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)prepareForAnimatedTransitionWithLayout:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)presetSectionItemForIndexPath:(id)arg1;

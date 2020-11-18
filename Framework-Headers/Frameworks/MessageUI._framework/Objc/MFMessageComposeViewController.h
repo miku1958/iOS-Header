@@ -20,6 +20,10 @@
     unsigned long long _currentAttachedAudioCount;
     unsigned long long _currentAttachedImageCount;
     NSArray *_UTITypes;
+    NSArray *_photoIDs;
+    NSArray *_cloudPhotoIDs;
+    NSArray *_contentText;
+    NSArray *_contentURLs;
     NSArray *_attachments;
 }
 
@@ -65,11 +69,19 @@
 - (id)attachmentURLs;
 - (BOOL)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers;
 - (BOOL)canAddAttachmentURL:(id)arg1;
+- (id)cloudPhotoIDs;
+- (id)contentText;
+- (id)contentURLs;
 - (void)dealloc;
 - (void)disableUserAttachments;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)mutableAttachmentURLs;
+- (id)photoIDs;
+- (void)setCloudPhotoIDs:(id)arg1;
+- (void)setContentText:(id)arg1;
+- (void)setContentURLs:(id)arg1;
 - (void)setModalPresentationStyle:(long long)arg1;
+- (void)setPhotoIDs:(id)arg1;
 - (void)setUTITypes:(id)arg1;
 - (void)smsComposeControllerCancelled:(id)arg1;
 - (void)smsComposeControllerSendStarted:(id)arg1;

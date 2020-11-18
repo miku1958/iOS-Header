@@ -4,35 +4,47 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <TelephonyUI/TPView.h>
 
-@class NSString, TPBadgeView, UILabel, UIStackView, UITapGestureRecognizer;
+@class NSLayoutConstraint, NSString, TPBadgeView, UILabel, UIStackView, UITapGestureRecognizer;
 @protocol TPPillViewDelegate;
 
-@interface TPPillView : UIView
+@interface TPPillView : TPView
 {
     id<TPPillViewDelegate> _delegate;
     unsigned long long _theme;
-    UIStackView *_stackView;
     TPBadgeView *_badgeView;
-    UILabel *_label;
+    UIStackView *_stackView;
+    UILabel *_textLabel;
     UITapGestureRecognizer *_gestureRecognizer;
+    NSLayoutConstraint *_stackViewBottomAnchorLayoutConstraint;
+    NSLayoutConstraint *_stackViewLeftAnchorLayoutConstraint;
+    NSLayoutConstraint *_stackViewRightAnchorLayoutConstraint;
+    NSLayoutConstraint *_stackViewTopAnchorLayoutConstraint;
 }
 
 @property (copy, nonatomic) NSString *badgeText;
 @property (readonly, nonatomic) TPBadgeView *badgeView; // @synthesize badgeView=_badgeView;
 @property (weak, nonatomic) id<TPPillViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) UITapGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
-@property (readonly, nonatomic) UILabel *label; // @synthesize label=_label;
 @property (readonly, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
+@property (strong, nonatomic) NSLayoutConstraint *stackViewBottomAnchorLayoutConstraint; // @synthesize stackViewBottomAnchorLayoutConstraint=_stackViewBottomAnchorLayoutConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *stackViewLeftAnchorLayoutConstraint; // @synthesize stackViewLeftAnchorLayoutConstraint=_stackViewLeftAnchorLayoutConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *stackViewRightAnchorLayoutConstraint; // @synthesize stackViewRightAnchorLayoutConstraint=_stackViewRightAnchorLayoutConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *stackViewTopAnchorLayoutConstraint; // @synthesize stackViewTopAnchorLayoutConstraint=_stackViewTopAnchorLayoutConstraint;
+@property (readonly, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 @property (nonatomic) unsigned long long theme; // @synthesize theme=_theme;
 @property (copy, nonatomic) NSString *title;
 
 - (void).cxx_destruct;
+- (void)commonInit;
 - (void)handleTap:(id)arg1;
 - (id)initWithTitle:(id)arg1 frame:(struct CGRect)arg2;
 - (id)initWithTitle:(id)arg1 frame:(struct CGRect)arg2 theme:(unsigned long long)arg3;
-- (void)updateView;
+- (void)loadConstraints;
+- (void)unloadConstraints;
+- (void)updateFonts;
+- (void)updateTheme;
 
 @end
 

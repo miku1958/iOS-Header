@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     unsigned int _transportSessionID;
     int _vfdMessage;
     int _vfdCancel;
+    BOOL _isRunning;
     struct _opaque_pthread_t *_pidReceiveProc;
     NSMutableDictionary *_dialogs;
     NSMutableArray *_activeParticipants;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL isEncryptionEnabled; // @synthesize isEncryptionEnabled=_isEncryptionEnabled;
+@property (readonly) BOOL isRunning; // @synthesize isRunning=_isRunning;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned int transportSessionID; // @synthesize transportSessionID=_transportSessionID;
@@ -73,6 +75,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)sendReliableMessageAndWait:(id)arg1 participantID:(unsigned long long)arg2;
 - (void)sendUnreliableMessage:(id)arg1 participantID:(unsigned long long)arg2;
 - (void)setCurrentSendMKIWithKeyMaterial:(id)arg1;
+- (void)start;
+- (void)stop;
 - (int)updateEncryption:(CDStruct_5b6da142 *)arg1 derivedSSRC:(unsigned int)arg2;
 - (void)updateEncryptionWithKeyMaterial:(id)arg1;
 

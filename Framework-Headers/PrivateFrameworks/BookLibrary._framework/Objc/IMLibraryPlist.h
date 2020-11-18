@@ -29,11 +29,13 @@
 + (id)authorFromPlistEntry:(id)arg1;
 + (id)backupFolderNameFromPlistEntry:(id)arg1;
 + (id)bookEpubIdFromPlistEntry:(id)arg1;
++ (id)booksArrayFromPlistEntry:(id)arg1;
 + (id)booksRepositoryPath;
 + (id)coverHashFromItunesMetadataEntry:(id)arg1;
 + (id)coverPathFromItunesMetadataEntry:(id)arg1;
 + (id)coverPathFromPlistEntry:(id)arg1;
 + (id)coverWritingModeFromPlistEntry:(id)arg1;
++ (id)deletesArrayFromPlistEntry:(id)arg1;
 + (id)entryForAssetID:(id)arg1 contents:(id)arg2;
 + (id)entryForAssetURL:(id)arg1 contents:(id)arg2;
 + (id)extensionFromPlistEntry:(id)arg1;
@@ -112,6 +114,9 @@
 + (id)purchasesRepositoryPath;
 + (id)sampleRepositoryPath;
 + (id)scrollDirectionFromPlistEntry:(id)arg1;
++ (void)setAccessDate:(id)arg1 toPlistEntry:(id)arg2;
++ (void)setBooksArray:(id)arg1 toPlistEntry:(id)arg2;
++ (void)setDeletesArray:(id)arg1 toPlistEntry:(id)arg2;
 + (id)sharedContainerURL;
 + (id)sharedRepositoryPath;
 + (id)sortAuthorFromPlistEntry:(id)arg1;

@@ -14,13 +14,17 @@
     CDUnknownBlockType _pressedChangedHandler;
     float _value;
     NSString *_descriptionName;
+    BOOL _nonAnalog;
 }
+
+@property BOOL nonAnalog; // @synthesize nonAnalog=_nonAnalog;
 
 - (void).cxx_destruct;
 - (BOOL)_setValue:(float)arg1;
 - (BOOL)_setValue:(float)arg1 queue:(id)arg2;
 - (id)description;
 - (id)initWithDescriptionName:(id)arg1;
+- (BOOL)isAnalog;
 - (CDUnknownBlockType)pressedChangedHandler;
 - (void)setPressedChangedHandler:(CDUnknownBlockType)arg1;
 - (void)setValueChangedHandler:(CDUnknownBlockType)arg1;

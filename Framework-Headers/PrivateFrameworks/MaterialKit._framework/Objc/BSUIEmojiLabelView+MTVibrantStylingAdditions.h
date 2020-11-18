@@ -8,5 +8,6 @@
 
 @interface BSUIEmojiLabelView (MTVibrantStylingAdditions)
 - (void)mt_applyVibrantStyling:(id)arg1;
+- (void)mt_removeAllVibrantStyling;
 @end
 

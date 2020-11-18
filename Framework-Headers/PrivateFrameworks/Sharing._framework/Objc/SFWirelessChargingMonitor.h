@@ -6,68 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary, NSURL, SFPowerSource, SFPowerSourceMonitor;
+@class NSSet, SFPowerSourceMonitor, SFWirelessChargingDevicePhone;
 @protocol OS_dispatch_queue;
 
 @interface SFWirelessChargingMonitor : NSObject
 {
-    BOOL _updateDisengagementHistory;
-    BOOL _anyCharger;
+    BOOL _meDeviceWasWirelesslyCharging;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _invalidationHandler;
-    SFPowerSource *_mePowerSource;
+    SFWirelessChargingDevicePhone *_meChargingDevice;
     CDUnknownBlockType _wirelessPowerSourceFoundHandler;
     CDUnknownBlockType _wirelessPowerSourceLostHandler;
     CDUnknownBlockType _wirelessPowerSourceChangedHandler;
-    CDUnknownBlockType _powerSourceFoundHandler;
-    CDUnknownBlockType _powerSourceLostHandler;
-    CDUnknownBlockType _powerSourceChangedHandler;
     SFPowerSourceMonitor *_monitor;
-    NSMutableDictionary *_allWirelessChargingPowerSources;
-    NSMutableDictionary *_onMatWithMePowerSources;
-    long long _engagementBudgetTime;
-    NSURL *_cacheDirectory;
-    NSDictionary *_cachedDisengagementHistory;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *allWirelessChargingPowerSources; // @synthesize allWirelessChargingPowerSources=_allWirelessChargingPowerSources;
-@property (nonatomic) BOOL anyCharger; // @synthesize anyCharger=_anyCharger;
-@property (strong, nonatomic) NSURL *cacheDirectory; // @synthesize cacheDirectory=_cacheDirectory;
-@property (strong, nonatomic) NSDictionary *cachedDisengagementHistory; // @synthesize cachedDisengagementHistory=_cachedDisengagementHistory;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
-@property (nonatomic) long long engagementBudgetTime; // @synthesize engagementBudgetTime=_engagementBudgetTime;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
-@property (strong, nonatomic) SFPowerSource *mePowerSource; // @synthesize mePowerSource=_mePowerSource;
+@property (readonly, nonatomic) SFWirelessChargingDevicePhone *meChargingDevice; // @synthesize meChargingDevice=_meChargingDevice;
+@property (nonatomic) BOOL meDeviceWasWirelesslyCharging; // @synthesize meDeviceWasWirelesslyCharging=_meDeviceWasWirelesslyCharging;
 @property (strong, nonatomic) SFPowerSourceMonitor *monitor; // @synthesize monitor=_monitor;
-@property (strong, nonatomic) NSMutableDictionary *onMatWithMePowerSources; // @synthesize onMatWithMePowerSources=_onMatWithMePowerSources;
-@property (copy, nonatomic) CDUnknownBlockType powerSourceChangedHandler; // @synthesize powerSourceChangedHandler=_powerSourceChangedHandler;
-@property (copy, nonatomic) CDUnknownBlockType powerSourceFoundHandler; // @synthesize powerSourceFoundHandler=_powerSourceFoundHandler;
-@property (copy, nonatomic) CDUnknownBlockType powerSourceLostHandler; // @synthesize powerSourceLostHandler=_powerSourceLostHandler;
-@property (nonatomic) BOOL updateDisengagementHistory; // @synthesize updateDisengagementHistory=_updateDisengagementHistory;
+@property (readonly, copy, nonatomic) NSSet *wirelessChargingDevices;
 @property (copy, nonatomic) CDUnknownBlockType wirelessPowerSourceChangedHandler; // @synthesize wirelessPowerSourceChangedHandler=_wirelessPowerSourceChangedHandler;
 @property (copy, nonatomic) CDUnknownBlockType wirelessPowerSourceFoundHandler; // @synthesize wirelessPowerSourceFoundHandler=_wirelessPowerSourceFoundHandler;
 @property (copy, nonatomic) CDUnknownBlockType wirelessPowerSourceLostHandler; // @synthesize wirelessPowerSourceLostHandler=_wirelessPowerSourceLostHandler;
-@property (readonly, copy, nonatomic) NSDictionary *wirelessPowerSources;
 
 - (void).cxx_destruct;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
-- (void)addNewChargingPowerSource:(id)arg1;
-- (void)checkDefaults;
-- (void)clearDisengagementHistoryForReason:(id)arg1;
-- (id)disengagementHistory;
-- (BOOL)engagementAdmissionCheckForPowerSource:(id)arg1;
-- (void)evaluatePowerSource:(id)arg1 found:(BOOL)arg2 changed:(BOOL)arg3 lost:(BOOL)arg4 changes:(unsigned int)arg5;
-- (id)identifierForPowerSource:(id)arg1;
+- (id)chargingDeviceForPowerSources:(id)arg1;
+- (void)evaluatePowerSources:(id)arg1 found:(BOOL)arg2 changed:(BOOL)arg3 lost:(BOOL)arg4;
 - (id)init;
 - (void)invalidate;
-- (BOOL)powerSourceHasAppleWirelessCharging:(id)arg1;
-- (BOOL)powerSourceHasWirelessCharging:(id)arg1;
-- (void)removeNoLongerChargingPowerSource:(id)arg1 forKeys:(id)arg2;
+- (void)refreshOnSameMatAsMeChargingDevice:(id)arg1 withMeWirelesslyCharging:(BOOL)arg2;
 - (void)setUpMonitor;
-- (void)storeDisengagementHistoryInCache:(id)arg1;
-- (void)updateDisengagementHistoryEntryForIdentifier:(id)arg1;
-- (void)updateDisengagementHistoryEntryForPowerSource:(id)arg1;
-- (void)updateGroupedPowerSources;
 
 @end
 

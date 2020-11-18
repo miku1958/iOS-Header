@@ -9,38 +9,37 @@
 #import <SIMSetupSupport/TSCellularPlanManagerCacheDelegate-Protocol.h>
 #import <SIMSetupSupport/TSSIMSetupFlowDelegate-Protocol.h>
 
-@class NSError, NSString, TSCellularPlanAddingViewController;
+@class NSError, NSMutableArray, NSString, UIBarButtonItem, UIViewController;
+@protocol TSSetupFlowItem;
 
 @interface TSActivationFlowWithSimSetupFlow : TSSIMSetupFlow <TSSIMSetupFlowDelegate, TSCellularPlanManagerCacheDelegate>
 {
-    BOOL _planInstalled;
     BOOL _requireSetup;
-    NSString *_planInstallingUuid;
+    BOOL _isPreinstallingViewControllerActive;
     NSError *_planInstallError;
-    TSCellularPlanAddingViewController *_spinnerViewController;
-    unsigned long long _userConsentType;
+    NSMutableArray *_danglingPlanItems;
     NSString *_name;
+    unsigned long long _userConsentType;
+    UIBarButtonItem *_cancelButton;
+    UIViewController<TSSetupFlowItem> *_currentViewController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) NSString *name; // @synthesize name=_name;
-@property NSError *planInstallError; // @synthesize planInstallError=_planInstallError;
-@property BOOL planInstalled; // @synthesize planInstalled=_planInstalled;
-@property (strong) NSString *planInstallingUuid; // @synthesize planInstallingUuid=_planInstallingUuid;
-@property (nonatomic) BOOL requireSetup; // @synthesize requireSetup=_requireSetup;
-@property (weak) TSCellularPlanAddingViewController *spinnerViewController; // @synthesize spinnerViewController=_spinnerViewController;
 @property (readonly) Class superclass;
-@property unsigned long long userConsentType; // @synthesize userConsentType=_userConsentType;
 
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)firstViewController;
 - (void)firstViewController:(CDUnknownBlockType)arg1;
 - (id)initRequireSetup:(BOOL)arg1;
+- (BOOL)isPhoneFlow;
 - (id)nextViewControllerFrom:(id)arg1;
 - (void)planItemsUpdated:(id)arg1 planListError:(id)arg2;
+- (void)popViewController:(id)arg1;
+- (void)setDefaultNavigationItems:(id)arg1;
+- (long long)signupUserConsentResponse;
 - (void)viewControllerDidComplete:(id)arg1;
 
 @end

@@ -27,6 +27,7 @@
     BOOL _inspectionSuspended;
     id _updateAtMinMaxTimePeriodicObserverToken;
     BOOL _pictureInPictureInterrupted;
+    BOOL _handlesAudioSessionInterruptions;
     NSNumber *_rateToRestoreAfterAudioSessionInterruptionEnds;
     CDUnknownBlockType _retryPlayingImmediatelyBlock;
     BOOL _shouldPlayImmediately;
@@ -94,8 +95,10 @@
 @property (nonatomic, getter=isDeviceBatteryChargingOrFull) BOOL deviceBatteryChargingOrFull; // @synthesize deviceBatteryChargingOrFull=_deviceBatteryChargingOrFull;
 @property (nonatomic, getter=isDisablingAutomaticTermination) BOOL disablingAutomaticTermination; // @synthesize disablingAutomaticTermination=_disablingAutomaticTermination;
 @property (readonly, nonatomic) NSError *error;
+@property (nonatomic) BOOL handlesAudioSessionInterruptions;
 @property (nonatomic) BOOL hasProtectedContent; // @synthesize hasProtectedContent=_hasProtectedContent;
 @property (strong, nonatomic) AVValueTiming *maxTiming; // @synthesize maxTiming=_maxTiming;
+@property (readonly, nonatomic) struct CGSize maximumVideoResolution;
 @property (strong, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property (strong, nonatomic) AVValueTiming *minTiming; // @synthesize minTiming=_minTiming;
 @property (readonly, nonatomic) AVObservationController *observationController; // @synthesize observationController=_observationController;
@@ -157,11 +160,13 @@
 + (id)keyPathsForValuesAffectingHasVideo;
 + (id)keyPathsForValuesAffectingLoadedTimeRanges;
 + (id)keyPathsForValuesAffectingMaxTime;
++ (id)keyPathsForValuesAffectingMaximumVideoResolution;
 + (id)keyPathsForValuesAffectingMinTime;
 + (id)keyPathsForValuesAffectingMuted;
 + (id)keyPathsForValuesAffectingPictureInPicturePossible;
 + (id)keyPathsForValuesAffectingPlaying;
 + (id)keyPathsForValuesAffectingPlayingOnExternalScreen;
++ (id)keyPathsForValuesAffectingPreferredDisplayCriteria;
 + (id)keyPathsForValuesAffectingReadyToPlay;
 + (id)keyPathsForValuesAffectingReversePlaybackEndTime;
 + (id)keyPathsForValuesAffectingSeekableTimeRanges;
@@ -267,6 +272,7 @@
 - (void *)observationInfo;
 - (void)pause:(id)arg1;
 - (void)play:(id)arg1;
+- (id)preferredDisplayCriteria;
 - (double)rate;
 - (void)reloadAudioOptions;
 - (void)reloadLegibleOptions;

@@ -45,6 +45,7 @@
 - (void)_configureToggleControlPairIfNecessary;
 - (double)_cornerRadius;
 - (struct UIEdgeInsets)_edgeInsets;
+- (id)_effectiveGroupName;
 - (double)_effectiveValue:(double)arg1;
 - (void)_handleClearAll:(id)arg1;
 - (void)_handleClearPrimaryAction:(id)arg1;

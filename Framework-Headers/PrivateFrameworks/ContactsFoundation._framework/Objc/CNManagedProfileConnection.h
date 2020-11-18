@@ -28,8 +28,8 @@
 - (id)init;
 - (id)initWithProfileConnection:(id)arg1;
 - (BOOL)isOpenInRestrictionInEffect;
-- (BOOL)mayShowLocalAccountsForBundleID:(id)arg1 sourceAccountManagement:(long long)arg2;
-- (BOOL)mayShowLocalAccountsForTargetBundleID:(id)arg1 targetAccountManagement:(long long)arg2;
+- (BOOL)mayShowLocalContactsAccountsForBundleID:(id)arg1 sourceAccountManagement:(long long)arg2;
+- (BOOL)mayShowLocalContactsAccountsForTargetBundleID:(id)arg1 targetAccountManagement:(long long)arg2;
 
 @end
 

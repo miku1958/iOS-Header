@@ -73,13 +73,12 @@
 - (void)decrementEstimatedNumberOfDownloadableItems;
 - (void)decrementNumberOfDownloadableItems;
 - (id)description;
-- (id)deviceQSemaphore;
+- (id)deviceCommandQueue;
+- (id)deviceNotificationQueue;
 - (void)discardCameraFiles:(id)arg1;
 - (void)dispatchAsyncForOperationType:(long long)arg1 block:(CDUnknownBlockType)arg2;
 - (double)downloadCancelTimestamp;
-- (id)enumerationQ;
 - (id)filesOfType:(id)arg1;
-- (id)generalQ;
 - (void)grindMedia:(id [10])arg1 index:(int *)arg2 file:(id)arg3;
 - (void)handleCommandCompletionNotification:(id)arg1;
 - (void)handleImageCaptureEventNotification:(id)arg1;
@@ -104,7 +103,6 @@
 - (void)removeCameraFolderFromIndex:(id)arg1;
 - (void)removeFolder:(id)arg1;
 - (void)removeMediaFile:(id)arg1;
-- (void)removeMediaFiles:(id)arg1;
 - (void)requestCloseSession;
 - (void)requestDeleteFiles:(id)arg1;
 - (void)requestDownloadFile:(id)arg1 options:(id)arg2 downloadDelegate:(id)arg3 didDownloadSelector:(SEL)arg4 contextInfo:(void *)arg5;
@@ -115,11 +113,9 @@
 - (void)resetFailureCount;
 - (void)setApplePTPObjectLimit:(id)arg1;
 - (void)setAppleRelatedUUIDSupport:(unsigned long long)arg1;
-- (void)signalCommandCompletion;
 - (long long)stitchMedia:(id)arg1 withMedia:(id)arg2;
 - (BOOL)supportsMediaFormatCatalog;
 - (BOOL)updateMediaPresentation;
-- (void)waitForCommandCompletion;
 
 @end
 

@@ -18,7 +18,7 @@
 - (void)fetchUnlockCredentialSetWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleMessage:(id)arg1 withType:(long long)arg2;
 - (void)requestPasscodeUnlockUIWithOptions:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)resetToHomeScreenAnimated:(BOOL)arg1 useSafeTransitions:(BOOL)arg2;
+- (void)resetToHomeScreenAnimated:(BOOL)arg1;
 - (void)setAlertsEnabled:(BOOL)arg1;
 - (void)setApplicationBundleIdentifier:(id)arg1 blockedForScreenTime:(BOOL)arg2;
 - (void)setButtonEventServiceIsWaitingForServerMessages:(BOOL)arg1;

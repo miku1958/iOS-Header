@@ -6,10 +6,14 @@
 
 #import <UIKit/UIControl.h>
 
-@class PKInk, UIView, _PKColorAlphaSlider, _PKInkThicknessPicker;
+#import <PencilKit/_PKColorAlphaSliderDelegate-Protocol.h>
 
-@interface _PKInkAttributesPickerView : UIControl
+@class NSString, PKInk, UIView, _PKColorAlphaSlider, _PKInkThicknessPicker;
+@protocol _PKInkAttributesPickerViewDelegate;
+
+@interface _PKInkAttributesPickerView : UIControl <_PKColorAlphaSliderDelegate>
 {
+    id<_PKInkAttributesPickerViewDelegate> _delegate;
     PKInk *_ink;
     unsigned long long _displayMode;
     _PKInkThicknessPicker *_thicknessPicker;
@@ -18,16 +22,23 @@
 }
 
 @property (strong, nonatomic) _PKColorAlphaSlider *colorAlphaSlider; // @synthesize colorAlphaSlider=_colorAlphaSlider;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<_PKInkAttributesPickerViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long displayMode; // @synthesize displayMode=_displayMode;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PKInk *ink; // @synthesize ink=_ink;
 @property (strong, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _PKInkThicknessPicker *thicknessPicker; // @synthesize thicknessPicker=_thicknessPicker;
 
-+ (double)representableOpacityForOpacity:(double)arg1;
 - (void).cxx_destruct;
+- (void)_colorAlphaSliderUserDidEndDraggingSlider:(id)arg1;
+- (void)_colorAlphaSliderUserDidStartDraggingSlider:(id)arg1;
 - (id)initWithInk:(id)arg1;
 - (void)layoutSubviews;
 - (void)opacityValueChanged:(id)arg1;
+- (void)setInk:(id)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)thicknessValueChanged:(id)arg1;
 

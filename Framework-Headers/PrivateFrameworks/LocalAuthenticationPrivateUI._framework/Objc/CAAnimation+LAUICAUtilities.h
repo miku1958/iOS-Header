@@ -7,7 +7,9 @@
 #import <QuartzCore/CAAnimation.h>
 
 @interface CAAnimation (LAUICAUtilities)
+- (CDUnknownBlockType)laui_didStartHandler;
+- (CDUnknownBlockType)laui_didStopHandler;
+- (void)laui_setDidStartHandler:(CDUnknownBlockType)arg1;
 - (void)laui_setDidStopHandler:(CDUnknownBlockType)arg1;
-- (CDUnknownBlockType)pkui_didStopHandler;
 @end
 

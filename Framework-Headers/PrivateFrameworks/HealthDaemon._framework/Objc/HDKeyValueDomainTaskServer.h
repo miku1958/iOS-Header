@@ -33,6 +33,7 @@
 - (void)remote_setDate:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_setNumber:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_setValuesWithDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remote_stringForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

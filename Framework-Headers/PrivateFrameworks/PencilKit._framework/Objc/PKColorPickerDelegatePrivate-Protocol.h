@@ -9,7 +9,6 @@
 @class PKColorPicker;
 
 @protocol PKColorPickerDelegatePrivate <PKColorPickerDelegate>
-- (void)_colorPicker:(PKColorPicker *)arg1 willDismissAnimated:(BOOL)arg2;
 - (void)_colorPickerUserDidTouchUpInside:(PKColorPicker *)arg1;
 @end
 

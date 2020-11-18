@@ -9,7 +9,7 @@
 #import <AvatarUI/AVTAvatarAttributeEditorSectionController-Protocol.h>
 
 @class AVTAvatarAttributeEditorSection, AVTTransitionCoordinator, AVTUIEnvironment, NSString;
-@protocol AVTAvatarAttributeEditorControllerSubSelectionDelegate, AVTIndexBasedScheduler, AVTScheduler;
+@protocol AVTAvatarAttributeEditorControllerSubSelectionDelegate, AVTIndexBasedTaskScheduler, AVTTaskScheduler;
 
 @interface AVTAvatarAttributeEditorSectionController : NSObject <AVTAvatarAttributeEditorSectionController>
 {
@@ -18,8 +18,8 @@
     AVTAvatarAttributeEditorSection *_section;
     AVTTransitionCoordinator *_transitionCoordinator;
     AVTUIEnvironment *_environment;
-    id<AVTIndexBasedScheduler> _thumbnailScheduler;
-    id<AVTScheduler> _renderingScheduler;
+    id<AVTIndexBasedTaskScheduler> _thumbnailScheduler;
+    id<AVTTaskScheduler> _renderingScheduler;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,11 +27,11 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<AVTScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
+@property (readonly, nonatomic) id<AVTTaskScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
 @property (strong, nonatomic) AVTAvatarAttributeEditorSection *section; // @synthesize section=_section;
 @property (nonatomic) long long selectedIndex; // @synthesize selectedIndex=_selectedIndex;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) id<AVTIndexBasedScheduler> thumbnailScheduler; // @synthesize thumbnailScheduler=_thumbnailScheduler;
+@property (readonly, nonatomic) id<AVTIndexBasedTaskScheduler> thumbnailScheduler; // @synthesize thumbnailScheduler=_thumbnailScheduler;
 @property (strong, nonatomic) AVTTransitionCoordinator *transitionCoordinator; // @synthesize transitionCoordinator=_transitionCoordinator;
 
 + (struct CGSize)cellSizeForSectionItem:(id)arg1 inSection:(id)arg2 fittingWidth:(double)arg3 environment:(id)arg4;
@@ -46,7 +46,7 @@
 - (struct UIEdgeInsets)edgeInsetsFittingSize:(struct CGSize)arg1;
 - (unsigned long long)indexForItem:(id)arg1;
 - (id)initWithThumbnailScheduler:(id)arg1 renderingScheduler:(id)arg2 environment:(id)arg3;
-- (void)invalidateLayout;
+- (void)invalidateLayoutForNewContainerSize:(struct CGSize)arg1;
 - (long long)numberOfItems;
 - (id)prefetchingSectionItemForIndex:(long long)arg1;
 - (void)resetToDefaultState;

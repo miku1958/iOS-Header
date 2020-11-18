@@ -79,7 +79,7 @@
 - (void)setDataSet:(id)arg1 animated:(BOOL)arg2;
 - (void)setUpBarViewHeightContraints;
 - (void)setUpBedtimeFields;
-- (void)setUpGraphWithDividerInterval:(unsigned long long)arg1 labelFormatter:(id)arg2;
+- (void)setUpGraphWithLabelFormatter:(id)arg1;
 - (void)setUpWeeklyAverageLine:(BOOL)arg1;
 - (void)updateBarViews;
 

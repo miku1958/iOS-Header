@@ -24,6 +24,7 @@
     MISSING_TYPE *effectsCaptureInfo;
     MISSING_TYPE *effectsViewController;
     MISSING_TYPE *effectsBrowserViewController;
+    MISSING_TYPE *effectsLayoutController;
     MISSING_TYPE *conversationController;
     MISSING_TYPE *videoDeviceController;
     MISSING_TYPE *numberFormatter;

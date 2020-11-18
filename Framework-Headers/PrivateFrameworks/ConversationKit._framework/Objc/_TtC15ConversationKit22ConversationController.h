@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *includeLocalParticipantInVisibleParticipants;
     MISSING_TYPE *audioFrequencyController;
     MISSING_TYPE *audioCallbackQueue;
+    MISSING_TYPE *recentPresentationContexts;
     MISSING_TYPE *conversationState;
     MISSING_TYPE *deviceOrientation;
     MISSING_TYPE *broadcastingState;

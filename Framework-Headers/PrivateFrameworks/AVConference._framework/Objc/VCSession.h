@@ -16,7 +16,7 @@
 #import <AVConference/VCSessionParticipantDelegate-Protocol.h>
 #import <AVConference/VCSessionParticipantStreamDelegate-Protocol.h>
 
-@class AVCRateController, NSArray, NSError, NSMutableArray, NSMutableDictionary, NSString, VCControlChannelMultiWay, VCNetworkFeedbackController, VCRateControlMediaController, VCSecurityKeyManager, VCSessionConfiguration, VCSessionDownlinkBandwidthAllocator, VCSessionMessaging, VCSessionParticipant, VCSessionParticipantLocal, VCSessionStatsController, VCTransportSession;
+@class AVCRateController, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSString, VCControlChannelMultiWay, VCNetworkFeedbackController, VCRateControlMediaController, VCSecurityKeyManager, VCSessionConfiguration, VCSessionDownlinkBandwidthAllocator, VCSessionMessaging, VCSessionParticipant, VCSessionParticipantLocal, VCSessionStatsController, VCTransportSession;
 @protocol OS_dispatch_queue, VCConnectionProtocol, VCSessionDelegate;
 
 __attribute__((visibility("hidden")))
@@ -63,6 +63,7 @@ __attribute__((visibility("hidden")))
     NSError *_stopError;
 }
 
+@property (readonly, nonatomic) NSDictionary *capabilities;
 @property (strong, nonatomic) id<VCConnectionProtocol> currentActiveConnection; // @synthesize currentActiveConnection=_currentActiveConnection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) id<VCSessionDelegate> delegate;
@@ -147,6 +148,7 @@ __attribute__((visibility("hidden")))
 - (void)setSessionInfoSynchronizerErrorResponseCallback;
 - (void)setSessionInfoSynchronizerPeerSubscribedStreamsCallback;
 - (void)setState:(unsigned int)arg1;
+- (void)setTransportSessionEventHandler;
 - (void)setupAudioEnabledMessages;
 - (void)setupAudioPausedMessages;
 - (void)setupKeyFrameGenerationMessages;

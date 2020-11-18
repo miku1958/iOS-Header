@@ -71,6 +71,7 @@
 - (BOOL)_accessibilityViewHierarchyHasNativeFocus;
 - (BOOL)_isAccessibilityExplorerElement;
 - (void)_setAccessibilityActivateBlock:(CDUnknownBlockType)arg1;
+- (void)_setAccessibilityActivateParagraphInTextViewRangeBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityActivationPointBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityAdditionalTraitsBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityDecrementBlock:(CDUnknownBlockType)arg1;

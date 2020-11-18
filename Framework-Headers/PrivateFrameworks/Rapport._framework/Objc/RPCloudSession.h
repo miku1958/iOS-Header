@@ -34,6 +34,7 @@
     unsigned int _destinationPort;
     unsigned int _sourcePort;
     NSString *_password;
+    CDUnknownBlockType _authCompletionHandler;
     CDUnknownBlockType _showPasswordHandler;
     CDUnknownBlockType _hidePasswordHandler;
     CDUnknownBlockType _promptForPasswordHandler;
@@ -48,6 +49,7 @@
     RPCloudXPCConnection *_serverXPCCnx;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType authCompletionHandler; // @synthesize authCompletionHandler=_authCompletionHandler;
 @property (strong, nonatomic) NSString *destinationID; // @synthesize destinationID=_destinationID;
 @property (copy, nonatomic) NSString *destinationIDMulticast; // @synthesize destinationIDMulticast=_destinationIDMulticast;
 @property (copy, nonatomic) NSString *destinationIDUnicast; // @synthesize destinationIDUnicast=_destinationIDUnicast;

@@ -106,6 +106,7 @@
 - (void)setSingleAvatarMode:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)showMultiAvatarControllerAnimated:(BOOL)arg1;
 - (void)showSingleAvatarControllerAnimated:(BOOL)arg1;
+- (void)significantRecordChangeInDataSource:(id)arg1;
 - (id)snapshotProviderFocusedOnRecordWithIdentifier:(id)arg1 size:(struct CGSize)arg2;
 - (void)unlockFromFocusedViewAnimated:(BOOL)arg1;
 - (void)willBeginFocus:(id)arg1;

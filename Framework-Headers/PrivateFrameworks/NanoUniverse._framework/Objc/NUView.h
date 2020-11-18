@@ -27,7 +27,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 options:(unsigned long long)arg2;
 - (void)layoutSubviews;
 - (void)quadViewWillDisplay:(id)arg1 forTime:(double)arg2;
 - (void)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1;

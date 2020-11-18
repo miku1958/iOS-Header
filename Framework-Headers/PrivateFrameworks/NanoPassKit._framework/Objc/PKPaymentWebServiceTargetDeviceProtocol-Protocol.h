@@ -6,7 +6,7 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, PKPass, PKPaymentPass, PKPaymentWebService, PKTrustedDeviceEnrollmentInfo, PKVerificationChannel;
+@class NSArray, NSData, NSDictionary, NSString, PKAppleAccountInformation, PKPass, PKPaymentPass, PKPaymentWebService, PKTrustedDeviceEnrollmentInfo, PKVerificationChannel;
 
 @protocol PKPaymentWebServiceTargetDeviceProtocol <NSObject>
 - (NSString *)bridgedClientInfo;
@@ -42,14 +42,17 @@
 - (BOOL)supportsAutomaticPassPresentation;
 
 @optional
+- (PKAppleAccountInformation *)appleAccountInformation;
 - (BOOL)felicaSecureElementIsAvailable;
 - (unsigned long long)maximumPaymentCards;
 - (void)noteForegroundVerificationObserverActive:(BOOL)arg1;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 addPaymentPass:(PKPaymentPass *)arg2 withCompletionHandlerV2:(void (^)(PKPaymentPass *))arg3;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 handlePotentialExpressPass:(PKPaymentPass *)arg2 withCompletionHandler:(void (^)(NSSet *))arg3;
 - (NSArray *)paymentWebService:(PKPaymentWebService *)arg1 passesOfType:(unsigned long long)arg2;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 registrationDataWithCompletionHandler:(void (^)(PKPaymentDeviceRegistrationData *, NSError *))arg2;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 removePass:(PKPass *)arg2 withCompletionHandler:(void (^)(BOOL, NSError *))arg3;
 - (BOOL)paymentWebServiceSupportsPeerPaymentRegistration:(PKPaymentWebService *)arg1;
+- (void)renewAppleAccountWithCompletionHandler:(void (^)(long long, PKAppleAccountInformation *))arg1;
 - (BOOL)secureElementIsAvailable;
 - (void)setMaximumPaymentCards:(unsigned long long)arg1;
 - (void)startBackgroundVerificationObserverForPass:(PKPaymentPass *)arg1 verificationMethod:(PKVerificationChannel *)arg2;

@@ -20,6 +20,7 @@
 }
 
 @property (readonly, nonatomic) NSString *_baseString;
+@property (readonly, nonatomic) BOOL _shouldHighlightEmoji;
 @property (readonly, copy, nonatomic) NSArray *_skinToneVariantStrings;
 @property (readonly, nonatomic) const struct __EmojiTokenWrapper *emojiTokenRef; // @synthesize emojiTokenRef=_emojiTokenRef;
 @property (readonly, nonatomic) BOOL isCommon;

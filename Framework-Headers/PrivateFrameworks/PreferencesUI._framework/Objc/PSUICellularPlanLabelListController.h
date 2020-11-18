@@ -13,7 +13,6 @@
 @interface PSUICellularPlanLabelListController : PSListController <UITextFieldDelegate>
 {
     NSArray *_predefinedLabels;
-    NSString *_rawCustomLabelText;
     NSString *_validatedCustomLabelText;
     UITextField *_textField;
     PSUICellularPlanUniversalReference *_planReference;
@@ -24,7 +23,6 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PSUICellularPlanUniversalReference *planReference; // @synthesize planReference=_planReference;
 @property (strong, nonatomic) NSArray *predefinedLabels; // @synthesize predefinedLabels=_predefinedLabels;
-@property (strong, nonatomic) NSString *rawCustomLabelText; // @synthesize rawCustomLabelText=_rawCustomLabelText;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) UITextField *textField; // @synthesize textField=_textField;
 @property (strong, nonatomic) NSString *validatedCustomLabelText; // @synthesize validatedCustomLabelText=_validatedCustomLabelText;
@@ -36,6 +34,7 @@
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)textFieldDidEndEditing:(id)arg1;
 - (void)viewDidLoad;
+- (void)willMoveToParentViewController:(id)arg1;
 
 @end
 

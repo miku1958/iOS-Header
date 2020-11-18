@@ -77,6 +77,7 @@ __attribute__((visibility("hidden")))
     VCRedundancyControllerAudio *_audioRedundancyController;
     VCRedundancyControllerVideo *_videoRedundancyController;
     id _reportingAgentWeak;
+    unsigned int _pullAudioSamplesCount;
 }
 
 @property (readonly, nonatomic) NSArray *allParticipantStreamInfo;
@@ -136,10 +137,11 @@ __attribute__((visibility("hidden")))
 - (void)dispatchedStream:(id)arg1 didStart:(BOOL)arg2 error:(id)arg3;
 - (void)dispatchedStreamDidStop:(id)arg1;
 - (id)generateEncryptionKey;
+- (id)getAudioDumpName;
 - (void)handleActiveConnectionChange:(id)arg1;
 - (BOOL)handleEncryptionInfoChange:(id)arg1;
 - (id)initWithIDSDestination:(id)arg1 delegate:(id)arg2 processId:(int)arg3 sessionUUID:(id)arg4;
-- (BOOL)isAnyStreamRunning;
+- (BOOL)isAnyStreamRunningOrPaused;
 - (BOOL)isAudioStream:(id)arg1;
 - (BOOL)isVideoStream:(id)arg1;
 - (char *)participantStateToString:(unsigned int)arg1;
@@ -163,10 +165,12 @@ __attribute__((visibility("hidden")))
 - (void)setupNetworkAddressesForMediaConfig:(id)arg1;
 - (BOOL)shouldStartAudioIO;
 - (void)start;
+- (void)startAudioDump;
 - (void)startAudioIO;
 - (void)startAudioStreams;
 - (void)startVideoStreams;
 - (void)stop;
+- (void)stopAudioDump;
 - (void)stopAudioIOCompletion;
 - (void)stopAudioStreams;
 - (void)stopAudioStreamsCompletion;

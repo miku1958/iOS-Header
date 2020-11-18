@@ -108,6 +108,7 @@
 - (long long)_inferredTimeControlStatusAndWaitingReason:(id *)arg1 forRate:(float)arg2;
 - (void)_insertItem:(id)arg1 afterItem:(id)arg2;
 - (BOOL)_isAirPlayVideoActive;
+- (BOOL)_isConnectedToPhysicalSecondScreen;
 - (BOOL)_isDisplayingClosedCaptions;
 - (BOOL)_isIAPDExtendedModeActive;
 - (BOOL)_isMuted;
@@ -176,6 +177,7 @@
 - (long long)_timeControlStatusAndWaitingReason:(id *)arg1 forPlaybackState:(int)arg2;
 - (CDUnknownBlockType)_unregisterAndReturnRetainedPrerollCompletionHandler;
 - (void)_updateClosedCaptionLayerBounds:(id)arg1;
+- (void)_updateConnectionToSecondScreen;
 - (void)_updateCurrentItemPreferredPixelBufferAttributesAndVideoLayerSuppression;
 - (void)_updateDecoderPixelBufferAttributes:(id)arg1 onFigPlayer:(struct OpaqueFigPlayer *)arg2;
 - (void)_updateProxyTimebaseFromNewCurrentItem;

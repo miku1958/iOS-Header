@@ -63,7 +63,7 @@ __attribute__((visibility("hidden")))
     struct AssistedNodeInformation _assistedNodeInformation;
     struct RetainPtr<NSObject<WKFormPeripheral>> _inputPeripheral;
     struct RetainPtr<UIEvent> _uiEventBeingResent;
-    CDUnknownBlockType _keyWebEventHandler;
+    struct BlockPtr<void (WebEvent *, bool)> _keyWebEventHandler;
     struct CGPoint _lastInteractionLocation;
     unsigned long long _layerTreeTransactionIdAtLastTouchStart;
     struct WKSelectionDrawingInfo _lastSelectionDrawingInfo;

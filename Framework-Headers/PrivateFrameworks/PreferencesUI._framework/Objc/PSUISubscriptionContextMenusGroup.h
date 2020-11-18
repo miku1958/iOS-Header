@@ -8,7 +8,7 @@
 
 #import <PreferencesUI/PSSpecifierGroup-Protocol.h>
 
-@class CTCellularPlanManager, NSString, PSListController, PSSimStatusCache, PSSpecifier, PSUICallingSubgroup, PSUICarrierSpaceGroup, PSUICellularPlanManagerCache, PSUICoreTelephonyCarrierBundleCache, PSUIMyNumberSubgroup, PSUINetworkSelectionSubgroup, PSUINetworkSettingsSubgroup, PSUISIMSubgroup;
+@class CTCellularPlanManager, NSString, PSListController, PSSimStatusCache, PSSpecifier, PSUICallingSubgroup, PSUICarrierSpaceGroup, PSUICellularPlanManagerCache, PSUICoreTelephonyCarrierBundleCache, PSUICoreTelephonyDataCache, PSUIMyNumberSubgroup, PSUINetworkSelectionSubgroup, PSUINetworkSettingsSubgroup, PSUISIMSubgroup;
 
 @interface PSUISubscriptionContextMenusGroup : NSObject <PSSpecifierGroup>
 {
@@ -24,6 +24,7 @@
     PSUISIMSubgroup *_simSubgroup;
     PSSimStatusCache *_simStatusCache;
     PSUICoreTelephonyCarrierBundleCache *_carrierBundleCache;
+    PSUICoreTelephonyDataCache *_dataCache;
     PSUICellularPlanManagerCache *_planManagerCache;
     CTCellularPlanManager *_cellularPlanManager;
 }
@@ -32,6 +33,7 @@
 @property (strong, nonatomic) PSUICoreTelephonyCarrierBundleCache *carrierBundleCache; // @synthesize carrierBundleCache=_carrierBundleCache;
 @property (strong, nonatomic) PSUICarrierSpaceGroup *carrierSpaceSubgroup; // @synthesize carrierSpaceSubgroup=_carrierSpaceSubgroup;
 @property (strong, nonatomic) CTCellularPlanManager *cellularPlanManager; // @synthesize cellularPlanManager=_cellularPlanManager;
+@property (strong, nonatomic) PSUICoreTelephonyDataCache *dataCache; // @synthesize dataCache=_dataCache;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) PSSpecifier *groupSpecifier; // @synthesize groupSpecifier=_groupSpecifier;

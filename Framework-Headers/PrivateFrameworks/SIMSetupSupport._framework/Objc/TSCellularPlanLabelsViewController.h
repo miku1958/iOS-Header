@@ -11,7 +11,7 @@
 #import <SIMSetupSupport/UITableViewDataSource-Protocol.h>
 #import <SIMSetupSupport/UITableViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, TSCellularPlanLabelPickerViewController, UIColor, UITableView;
+@class NSArray, NSMutableArray, NSString, TSCellularPlanLabelPickerViewController, UITableView, UITableViewCell;
 @protocol TSSIMSetupFlowDelegate;
 
 @interface TSCellularPlanLabelsViewController : BFFSplashController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, TSSetupFlowItem>
@@ -19,15 +19,14 @@
     BOOL _allowDismiss;
     id<TSSIMSetupFlowDelegate> _delegate;
     UITableView *_tableView;
+    UITableViewCell *_sectionFooter;
     NSMutableArray *_sortedPlanItemsWithPendingLabels;
     TSCellularPlanLabelPickerViewController *_labelPickerViewController;
     NSArray *_planItemBadges;
-    UIColor *_buttonSystemBlue;
     NSString *_iccid;
 }
 
 @property BOOL allowDismiss; // @synthesize allowDismiss=_allowDismiss;
-@property (strong) UIColor *buttonSystemBlue; // @synthesize buttonSystemBlue=_buttonSystemBlue;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<TSSIMSetupFlowDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -35,26 +34,28 @@
 @property (readonly) NSString *iccid; // @synthesize iccid=_iccid;
 @property (strong) TSCellularPlanLabelPickerViewController *labelPickerViewController; // @synthesize labelPickerViewController=_labelPickerViewController;
 @property (strong) NSArray *planItemBadges; // @synthesize planItemBadges=_planItemBadges;
+@property (strong) UITableViewCell *sectionFooter; // @synthesize sectionFooter=_sectionFooter;
 @property (strong) NSMutableArray *sortedPlanItemsWithPendingLabels; // @synthesize sortedPlanItemsWithPendingLabels=_sortedPlanItemsWithPendingLabels;
 @property (readonly) Class superclass;
 @property (strong) UITableView *tableView; // @synthesize tableView=_tableView;
 
 - (void).cxx_destruct;
-- (id)formattedPhoneNumber:(id)arg1;
+- (void)_cancelButtonTapped;
 - (id)getPendingLabelAtIndex:(long long)arg1;
 - (id)getPlanItemByIndex:(long long)arg1;
 - (id)getPredefinedUserLabels;
 - (id)initWithAllowDismiss:(BOOL)arg1;
 - (id)initWithIccid:(id)arg1 allowDismiss:(BOOL)arg2;
-- (void)leftCancelButtonTapped;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)prepare:(CDUnknownBlockType)arg1;
 - (void)savePlanLabels:(CDUnknownBlockType)arg1;
 - (void)setPendingLabel:(id)arg1 forPlanItem:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

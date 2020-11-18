@@ -58,6 +58,7 @@
 - (void)dealloc;
 - (void)decodeError;
 - (int)doStartRecordingAtTime:(unsigned long long)arg1 behavior:(id)arg2;
+- (void)enableMiniDucking:(BOOL)arg1;
 - (void)encodeError;
 - (void)endAudioSessionActivate:(BOOL)arg1;
 - (void)endPlaybackInterruption;
@@ -79,7 +80,7 @@
 - (struct ControllerImpl *)impl;
 - (id)initWithContext:(id)arg1 error:(id *)arg2;
 - (void)interspeechPointDetected;
-- (void)lpcmRecordBufferForNonLPCMReceived:(struct AudioQueueBuffer *)arg1 atTime:(unsigned long long)arg2;
+- (void)lpcmRecordBufferForNonLPCMReceived:(struct AudioQueueBuffer *)arg1 atTime:(unsigned long long)arg2 withASBD:(struct AudioStreamBasicDescription *)arg3;
 - (void)lpcmRecordBufferReceived:(struct AudioQueueBuffer *)arg1 atTime:(unsigned long long)arg2;
 - (float)peakPowerForChannel:(unsigned long long)arg1;
 - (BOOL)playAlertSoundForType:(int)arg1;

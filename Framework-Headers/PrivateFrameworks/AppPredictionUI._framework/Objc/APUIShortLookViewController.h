@@ -21,6 +21,7 @@
 @interface APUIShortLookViewController : UIViewController <APUIIntentHandlingViewControllerDelegate, CRKCardPresentationDelegate, CRKCardViewControllerDelegate, PLPreviewInteractionPresenting, PLPreviewInteractionManagerDelegate, APUILongLookViewControllerDataSource, APUILongLookViewControllerDelegate, SearchUIResultShortLook>
 {
     APUILongLookViewController<PLPreviewInteractionPresentable> *_presentableViewController;
+    BOOL _safeToReleaseLongLookViewController;
     double _preferredPlatterContentHeight;
     BOOL _acceptPlatterTaps;
     long long _dismissalReason;

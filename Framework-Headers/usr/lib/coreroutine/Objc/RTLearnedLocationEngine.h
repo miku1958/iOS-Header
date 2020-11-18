@@ -105,6 +105,7 @@
 - (void)_updateMonitorFingerprintsWithVisit:(id)arg1;
 - (BOOL)_updatePlaceTypesFromInferenceWithError:(id *)arg1;
 - (id)_visitsFromDate:(id)arg1 toDate:(id)arg2 error:(id *)arg3;
+- (void)didFinishTraining;
 - (id)init;
 - (id)initWithAccountManager:(id)arg1 algorithmMetricCalculator:(id)arg2 contactsManager:(id)arg3 defaultsManager:(id)arg4 diagnostics:(id)arg5 distanceCalculator:(id)arg6 eventManager:(id)arg7 fingerprintManager:(id)arg8 learnedLocationStore:(id)arg9 locationManager:(id)arg10 locationStore:(id)arg11 mapServiceManager:(id)arg12 mapsSupportManager:(id)arg13 metricManager:(id)arg14 motionActivityManager:(id)arg15 portraitManager:(id)arg16 visitManager:(id)arg17 xpcActivityManager:(id)arg18;
 - (void)onContactsManagerNotification:(id)arg1;
@@ -116,6 +117,7 @@
 - (void)shutdown;
 - (void)trainLocationsOfInterestModelWithHandler:(CDUnknownBlockType)arg1;
 - (void)trainWithHandler:(CDUnknownBlockType)arg1;
+- (void)willBeginTraining;
 
 @end
 

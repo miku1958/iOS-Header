@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) struct UIEdgeInsets previewViewInsetsLandscape;
 @property (readonly, nonatomic) struct UIEdgeInsets previewViewInsetsPortrait;
+@property (readonly, nonatomic) BOOL shouldAnchorLightingAgainstToolbar;
 @property (readonly, nonatomic) BOOL shouldDisplayCompactToolbar;
 @property (readonly, nonatomic) BOOL shouldDisplayExtensionButtonInMainToolbar;
 @property (readonly, nonatomic) BOOL shouldDisplaySecondaryToolButtonsInMainToolbar;

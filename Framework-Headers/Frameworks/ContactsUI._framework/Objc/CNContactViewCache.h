@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNCache, CNContactStore;
+@class CNCache, CNContactStore, CNUIGeminiDataSource;
 
 __attribute__((visibility("hidden")))
 @interface CNContactViewCache : NSObject
@@ -15,18 +15,21 @@ __attribute__((visibility("hidden")))
     CNCache *_cachedPolicies;
     CNCache *_cachedAccounts;
     CNContactStore *_contactStore;
+    CNUIGeminiDataSource *_geminiDataSource;
 }
 
 @property (strong, nonatomic) CNCache *cachedAccounts; // @synthesize cachedAccounts=_cachedAccounts;
 @property (strong, nonatomic) CNCache *cachedContainers; // @synthesize cachedContainers=_cachedContainers;
 @property (strong, nonatomic) CNCache *cachedPolicies; // @synthesize cachedPolicies=_cachedPolicies;
 @property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
+@property (strong, nonatomic) CNUIGeminiDataSource *geminiDataSource; // @synthesize geminiDataSource=_geminiDataSource;
 
 - (void).cxx_destruct;
 - (id)_accountForContact:(id)arg1;
 - (id)_containerForContact:(id)arg1;
 - (id)_policyForContact:(id)arg1;
 - (id)accountForContact:(id)arg1;
+- (id)nts_lazyContactStore;
 - (id)policyForContact:(id)arg1;
 - (id)policyForDefaultContainer;
 - (void)resetCache;

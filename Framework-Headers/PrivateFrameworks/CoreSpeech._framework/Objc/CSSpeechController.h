@@ -71,6 +71,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL twoShotNotificationEnabled; // @synthesize twoShotNotificationEnabled=_twoShotNotificationEnabled;
 
++ (BOOL)isSmartSiriVolumeAvailable;
 + (id)sharedController;
 - (void).cxx_destruct;
 - (void)CSAlarmMonitor:(id)arg1 didReceiveAlarmChanged:(long long)arg2;
@@ -109,6 +110,7 @@
 - (BOOL)initializeRecordSessionWithContext:(id)arg1;
 - (BOOL)isRTSTriggered;
 - (BOOL)isRecording;
+- (BOOL)isSmartSiriVolumeAvailable;
 - (BOOL)isVoiceTriggered;
 - (void)keywordDetectorDidDetectKeyword;
 - (double)lastEndOfVoiceActivityTime;

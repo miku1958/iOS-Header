@@ -27,6 +27,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContact:(id)arg1;
+- (id)initWithContact:(id)arg1 additionalHandles:(id)arg2;
 - (id)initWithDestinations:(id)arg1;
 - (id)initWithHandles:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

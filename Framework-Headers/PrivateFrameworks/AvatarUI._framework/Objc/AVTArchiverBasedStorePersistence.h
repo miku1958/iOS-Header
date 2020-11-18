@@ -19,11 +19,13 @@
 + (BOOL)_performMigrationIfNeededForStoreAtLocation:(id)arg1 logger:(id)arg2 fileManager:(id)arg3 error:(id *)arg4;
 + (id)_readContentFromDiskAtLocation:(id)arg1 logger:(id)arg2 error:(id *)arg3;
 + (BOOL)_writeContent:(id)arg1 toDiskAtLocation:(id)arg2 logger:(id)arg3 error:(id *)arg4;
++ (BOOL)contentExistsAtLocation:(id)arg1;
 + (id)currentVersion;
 + (id)dbLocationForStoreLocation:(id)arg1;
 + (BOOL)isFileNotFoundError:(id)arg1;
 + (id)readContentFromDiskAtLocation:(id)arg1 logger:(id)arg2 error:(id *)arg3;
 + (id)readVersionForStoreAtLocation:(id)arg1 error:(id *)arg2;
++ (BOOL)removeFilesAtLocation:(id)arg1 error:(id *)arg2;
 + (BOOL)writeContent:(id)arg1 toDiskAtLocation:(id)arg2 logger:(id)arg3 error:(id *)arg4;
 + (BOOL)writeVersion:(id)arg1 toDiskAtLocation:(id)arg2 error:(id *)arg3;
 

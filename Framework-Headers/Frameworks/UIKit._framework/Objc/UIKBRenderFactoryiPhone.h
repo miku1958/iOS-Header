@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)globalKeyImageName;
 - (double)hintNoneKeyFontSize;
 - (BOOL)iPadFudgeLayout;
+- (BOOL)iPadSansHomeButtonLayout;
 - (struct CGPoint)internationalKeyOffset;
 - (BOOL)isTallPopup;
 - (struct CGPoint)leftArrowKeyOffset;

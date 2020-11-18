@@ -7,12 +7,12 @@
 #import <UIKit/UIViewController.h>
 
 #import <MessageUI/MFMailComposeRemoteViewControllerDelegate-Protocol.h>
-#import <MessageUI/MFMailCompositionUTITypes-Protocol.h>
+#import <MessageUI/MFMailCompositionAdditionalDonating-Protocol.h>
 
 @class MFMailComposePlaceholderViewController, MFMailComposeRemoteViewController, NSArray, NSError, NSMutableArray, NSMutableDictionary, NSString, _UIAsyncInvocation;
 @protocol MFMailComposeViewControllerDelegate;
 
-@interface MFMailComposeInternalViewController : UIViewController <MFMailComposeRemoteViewControllerDelegate, MFMailCompositionUTITypes>
+@interface MFMailComposeInternalViewController : UIViewController <MFMailComposeRemoteViewControllerDelegate, MFMailCompositionAdditionalDonating>
 {
     id<MFMailComposeViewControllerDelegate> _mailComposeDelegate;
     MFMailComposePlaceholderViewController *_placeholderViewController;
@@ -37,7 +37,11 @@
 
 @property (copy, nonatomic) NSArray *UTITypes;
 @property (nonatomic) id autorotationDelegate; // @synthesize autorotationDelegate=_autorotationDelegate;
+@property (copy, nonatomic) NSArray *cloudPhotoIDs;
+@property (copy, nonatomic) NSArray *contentText;
+@property (copy, nonatomic) NSArray *contentURLs;
 @property (nonatomic) id<MFMailComposeViewControllerDelegate> mailComposeDelegate; // @synthesize mailComposeDelegate=_mailComposeDelegate;
+@property (copy, nonatomic) NSArray *photoIDs;
 
 - (void)_beginDelayingCompositionPresenation;
 - (void)_cancelComposition:(id)arg1;

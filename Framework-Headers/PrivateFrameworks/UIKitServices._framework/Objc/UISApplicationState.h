@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, UISApplicationStateClient;
+@class NSDate, NSString, UISApplicationStateClient;
 
 @interface UISApplicationState : NSObject
 {
+    NSString *_bundleIdentifier;
     UISApplicationStateClient *_client;
 }
 

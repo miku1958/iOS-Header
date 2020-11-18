@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)messageComposeViewController:(id)arg1 didFinishWithResult:(long long)arg2;
 - (void)reportResponse:(id)arg1 forExtension:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)reportResponseViaNetwork:(id)arg1 forExtension:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (void)reportViaSMSWithSender:(id)arg1 body:(id)arg2;
+- (void)reportResponseViaSMS:(id)arg1 forExtension:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 
 @end
 

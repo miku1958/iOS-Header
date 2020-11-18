@@ -8,6 +8,8 @@
 
 @interface UIView (SafariServicesExtras)
 
+@property (readonly, nonatomic) struct CGRect _sf_bottomUnsafeAreaFrame;
+@property (readonly, nonatomic) struct CGRect _sf_bottomUnsafeAreaFrameForToolbar;
 @property (readonly, nonatomic) BOOL _sf_hasLandscapeAspectRatio;
 @property (readonly, nonatomic) BOOL _sf_isFullScreenWidth;
 @property (readonly, nonatomic) struct CGRect _sf_safeAreaBounds;

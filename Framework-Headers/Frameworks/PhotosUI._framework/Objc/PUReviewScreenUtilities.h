@@ -37,7 +37,9 @@
 + (struct CGRect)reviewScreenControlBarFrameForReferenceBounds:(struct CGRect)arg1;
 + (CDStruct_d54ccef3)reviewScreenControlBarGeometryForReferenceBounds:(struct CGRect)arg1 withOrientation:(long long)arg2;
 + (struct CGRect)reviewScreenScrubberBarFrameForReferenceBounds:(struct CGRect)arg1;
++ (struct CGRect)reviewScreenScrubberBarFrameForReferenceBounds:(struct CGRect)arg1 safeAreaInsets:(struct UIEdgeInsets)arg2;
 + (CDStruct_d54ccef3)reviewScreenScrubberBarGeometryForReferenceBounds:(struct CGRect)arg1 withOrientation:(long long)arg2;
++ (CDStruct_d54ccef3)reviewScreenScrubberBarGeometryForReferenceBounds:(struct CGRect)arg1 withOrientation:(long long)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;
 + (struct CGRect)reviewScreenTopBarFrameForReferenceBounds:(struct CGRect)arg1;
 + (CDStruct_d54ccef3)reviewScreenTopBarGeometryForReferenceBounds:(struct CGRect)arg1 withOrientation:(long long)arg2;
 + (BOOL)useCompactControlBarButtonsForReferenceBounds:(struct CGRect)arg1;

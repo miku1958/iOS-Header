@@ -9,7 +9,7 @@
 #import <UIKitCore/UIApplicationSceneSettings-Protocol.h>
 #import <UIKitCore/_UIDisplayEdgeInfoProviding-Protocol.h>
 
-@class NSNumber, NSString;
+@class BSCornerRadiusConfiguration, NSNumber, NSString;
 
 @interface UIApplicationSceneSettings : FBSSceneSettings <_UIDisplayEdgeInfoProviding, UIApplicationSceneSettings>
 {
@@ -17,6 +17,7 @@
 
 @property (readonly, nonatomic) unsigned long long artworkSubtype;
 @property (readonly, nonatomic) BOOL canShowAlerts;
+@property (readonly, nonatomic) BSCornerRadiusConfiguration *cornerRadiusConfiguration;
 @property (readonly, nonatomic) unsigned long long deactivationReasons;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

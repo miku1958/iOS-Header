@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <MessageUI/MFMailCompositionUTITypes-Protocol.h>
+#import <MessageUI/MFMailCompositionAdditionalDonating-Protocol.h>
 
 @class MFAttachmentCompositionContext, MFMailMessage, MFMessageLoadingContext, NSArray, NSMutableArray, NSString, UIView;
 @protocol MFComposeBodyField;
 
-@interface _MFMailCompositionContext : NSObject <MFMailCompositionUTITypes>
+@interface _MFMailCompositionContext : NSObject <MFMailCompositionAdditionalDonating>
 {
     NSString *_sendingAddress;
     NSString *_subject;
@@ -35,13 +35,17 @@
     BOOL _usingDefaultAccount;
     BOOL _prefersFirstLineSelection;
     int _sourceAccountManagement;
-    NSArray *UTITypes;
+    NSArray *_UTITypes;
+    NSArray *_photoIDs;
+    NSArray *_cloudPhotoIDs;
+    NSArray *_contentText;
+    NSArray *_contentURLs;
     unsigned long long _caretPosition;
     NSString *_originatingBundleID;
     UIView<MFComposeBodyField> *_bodyField;
 }
 
-@property (copy, nonatomic) NSArray *UTITypes; // @synthesize UTITypes;
+@property (copy, nonatomic) NSArray *UTITypes; // @synthesize UTITypes=_UTITypes;
 @property (readonly, nonatomic) MFAttachmentCompositionContext *attachmentContext; // @synthesize attachmentContext=_attachmentContext;
 @property (strong, nonatomic) NSString *attachmentToMarkupContentID; // @synthesize attachmentToMarkupContentID=_attachmentToMarkupContentID;
 @property (readonly, nonatomic) NSString *autosaveIdentifier; // @synthesize autosaveIdentifier=_autosaveIdentifier;
@@ -49,7 +53,10 @@
 @property UIView<MFComposeBodyField> *bodyField; // @synthesize bodyField=_bodyField;
 @property (nonatomic) unsigned long long caretPosition; // @synthesize caretPosition=_caretPosition;
 @property (copy, nonatomic) NSArray *ccRecipients; // @synthesize ccRecipients=_ccRecipients;
+@property (copy, nonatomic) NSArray *cloudPhotoIDs; // @synthesize cloudPhotoIDs=_cloudPhotoIDs;
 @property (readonly, nonatomic) int composeType; // @synthesize composeType=_composeType;
+@property (copy, nonatomic) NSArray *contentText; // @synthesize contentText=_contentText;
+@property (copy, nonatomic) NSArray *contentURLs; // @synthesize contentURLs=_contentURLs;
 @property (readonly, nonatomic) NSString *contextID;
 @property (nonatomic) BOOL includeAttachments; // @synthesize includeAttachments=_includeAttachments;
 @property (nonatomic) BOOL loadRest; // @synthesize loadRest=_loadRest;
@@ -57,6 +64,7 @@
 @property (strong, nonatomic) id originalContent; // @synthesize originalContent=_originalContent;
 @property (readonly, nonatomic) MFMailMessage *originalMessage; // @synthesize originalMessage=_originalMessage;
 @property (copy, nonatomic) NSString *originatingBundleID; // @synthesize originatingBundleID=_originatingBundleID;
+@property (copy, nonatomic) NSArray *photoIDs; // @synthesize photoIDs=_photoIDs;
 @property (nonatomic) BOOL prefersFirstLineSelection; // @synthesize prefersFirstLineSelection=_prefersFirstLineSelection;
 @property (copy, nonatomic) NSString *sendingAddress; // @synthesize sendingAddress=_sendingAddress;
 @property (nonatomic) BOOL showContentImmediately; // @synthesize showContentImmediately=_showContentImmediately;
@@ -73,6 +81,7 @@
 - (id)attachments;
 - (void)contextDidDraw:(id)arg1;
 - (void)dealloc;
+- (BOOL)hasDuetDonationContext;
 - (id)init;
 - (id)initDraftRestoreOfMessage:(id)arg1;
 - (id)initForwardOfMessage:(id)arg1;

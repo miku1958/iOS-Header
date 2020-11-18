@@ -19,6 +19,7 @@
     UILabel *_passbookPaymentDetailsView;
     UIView *_separatorView;
     UIView *_lockupView;
+    NSString *_overrideString;
     unsigned long long _stateTransitionIndex;
     BOOL _deferringState;
     BOOL _deferredStateRequiresRetry;
@@ -38,6 +39,7 @@
     BOOL _isPad;
     BOOL _hasPearl;
     double _minimumHeight;
+    unsigned int _emphasizedEdge;
     long long _state;
     PKPaymentAuthorizationLayout *_layout;
     unsigned long long _requestType;
@@ -70,6 +72,7 @@
 - (void)dealloc;
 - (id)defaultHeightConstraints;
 - (void)glyphView:(id)arg1 revealingCheckmark:(BOOL)arg2;
+- (void)glyphViewUserIntentEdgeDidChange:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 layout:(id)arg2;
 - (BOOL)setConstraintState:(long long)arg1;
@@ -77,6 +80,7 @@
 - (void)setState:(long long)arg1 string:(id)arg2 animated:(BOOL)arg3;
 - (void)setState:(long long)arg1 string:(id)arg2 animated:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)updateConstraints;
+- (void)updateRotation;
 
 @end
 

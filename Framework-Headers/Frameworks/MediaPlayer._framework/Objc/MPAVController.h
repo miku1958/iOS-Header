@@ -344,10 +344,10 @@
 - (BOOL)canSeekBackwards;
 - (BOOL)canSeekForwards;
 - (BOOL)canSkipToSeekableEnd;
-- (void)changePlaybackIndexBy:(long long)arg1;
-- (void)changePlaybackIndexBy:(long long)arg1 deltaType:(long long)arg2;
-- (void)changePlaybackIndexBy:(long long)arg1 deltaType:(long long)arg2 ignoreElapsedTime:(BOOL)arg3;
-- (void)changePlaybackIndexBy:(long long)arg1 deltaType:(long long)arg2 ignoreElapsedTime:(BOOL)arg3 allowSkippingUnskippableContent:(BOOL)arg4;
+- (BOOL)changePlaybackIndexBy:(long long)arg1;
+- (BOOL)changePlaybackIndexBy:(long long)arg1 deltaType:(long long)arg2;
+- (BOOL)changePlaybackIndexBy:(long long)arg1 deltaType:(long long)arg2 ignoreElapsedTime:(BOOL)arg3;
+- (BOOL)changePlaybackIndexBy:(long long)arg1 deltaType:(long long)arg2 ignoreElapsedTime:(BOOL)arg3 allowSkippingUnskippableContent:(BOOL)arg4;
 - (BOOL)changePlaybackIndexBy:(long long)arg1 deltaType:(long long)arg2 ignoreElapsedTime:(BOOL)arg3 allowSkippingUnskippableContent:(BOOL)arg4 error:(id *)arg5;
 - (double)currentTimeForBookmarking;
 - (void)dealloc;

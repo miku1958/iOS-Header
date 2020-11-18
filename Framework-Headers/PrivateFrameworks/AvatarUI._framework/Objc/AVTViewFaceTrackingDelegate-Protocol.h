@@ -11,6 +11,7 @@
 @protocol AVTViewFaceTrackingDelegate <NSObject>
 - (void)avatarView:(AVTView *)arg1 didUpdateWithFaceTrackingStatus:(BOOL)arg2;
 - (void)avatarView:(AVTView *)arg1 didUpdateWithLowLightStatus:(BOOL)arg2;
+- (void)avatarView:(AVTView *)arg1 didUpdateWithSensorOcclusionStatus:(BOOL)arg2;
 - (void)avatarView:(AVTView *)arg1 faceTrackingSessionFailedWithError:(NSError *)arg2;
 - (void)avatarViewFaceTrackingSessionInterruptionDidBegin:(AVTView *)arg1;
 - (void)avatarViewFaceTrackingSessionInterruptionDidEnd:(AVTView *)arg1;

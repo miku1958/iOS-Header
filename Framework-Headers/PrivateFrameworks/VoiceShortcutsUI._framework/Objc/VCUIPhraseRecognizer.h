@@ -38,6 +38,8 @@
 + (void)initialize;
 - (void).cxx_destruct;
 - (void)_startRecordingWithContextualStrings:(id)arg1 fileAtPath:(id)arg2;
+- (void)clearDictationConnection;
+- (void)dealloc;
 - (void)dictationConnection:(id)arg1 didRecognizePackage:(id)arg2;
 - (void)dictationConnection:(id)arg1 didRecognizeTokens:(id)arg2 languageModel:(id)arg3;
 - (void)dictationConnection:(id)arg1 speechRecognitionDidFail:(id)arg2;

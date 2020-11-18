@@ -228,6 +228,7 @@
 - (BOOL)_isDuplicate:(id)arg1;
 - (void)_itemsDidChange:(id)arg1;
 - (id)_lastFinishedMessage;
+- (void)_launchAppForJoinRequest:(id)arg1;
 - (void)_leaveChat:(BOOL)arg1;
 - (void)_markItemAsPlayed:(id)arg1;
 - (void)_participant:(id)arg1 statusChanged:(int)arg2;
@@ -327,14 +328,14 @@
 - (BOOL)hasSurfRequestForPaymentType:(unsigned long long)arg1;
 - (BOOL)hasSurfRequestNotFromMe:(id)arg1;
 - (id)init;
-- (void)initiateTUConversationWithVideo:(BOOL)arg1;
+- (void)initiateTUConversationWithVideoEnabled:(BOOL)arg1;
 - (void)inviteParticipants:(id)arg1 reason:(id)arg2;
 - (void)inviteParticipantsToiMessageChat:(id)arg1 reason:(id)arg2;
 - (BOOL)isDowngraded;
 - (BOOL)isHoldingUpdatesForKey:(id)arg1;
 - (BOOL)isInScrutinyMode;
 - (void)join;
-- (void)joinExistingTUConversation;
+- (void)joinExistingTUConversationWithVideoEnabled:(BOOL)arg1;
 - (id)lastRelatedIncomingFinishedMessageTextContentWithLimit:(long long)arg1;
 - (void)leave;
 - (void)leaveiMessageGroup;

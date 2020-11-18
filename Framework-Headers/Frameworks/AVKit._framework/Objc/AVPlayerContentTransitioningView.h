@@ -14,6 +14,7 @@
 
 @interface AVPlayerContentTransitioningView : UIScrollView <UIScrollViewDelegate, AVContentTransitioning>
 {
+    BOOL _playingOnSecondScreen;
     BOOL _transitionInteractive;
     id<AVContentTransitioningDelegate> _contentTransitioningDelegate;
     AVPlayerLayerAndContentOverlayContainerView *_activeContentView;
@@ -38,6 +39,7 @@
 @property (nonatomic) struct CGRect frameForActiveContentView; // @synthesize frameForActiveContentView=_frameForActiveContentView;
 @property (nonatomic) struct CGRect frameForTransitioningContentView; // @synthesize frameForTransitioningContentView=_frameForTransitioningContentView;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isPlayingOnSecondScreen) BOOL playingOnSecondScreen; // @synthesize playingOnSecondScreen=_playingOnSecondScreen;
 @property (copy, nonatomic) NSString *stateDescription; // @synthesize stateDescription=_stateDescription;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSValue *targetContentOffset; // @synthesize targetContentOffset=_targetContentOffset;

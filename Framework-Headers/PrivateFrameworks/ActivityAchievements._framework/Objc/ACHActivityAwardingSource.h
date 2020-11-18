@@ -36,6 +36,8 @@
     CDUnknownBlockType _incrementalUpdateCompletionHandler;
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSNumber *_overrideIsAppleWatch;
+    NSString *_overrideWatchCountryCode;
+    NSString *_watchCountryCode;
 }
 
 @property (strong, nonatomic) ACHActivitySummaryUtility *activitySummaryUtility; // @synthesize activitySummaryUtility=_activitySummaryUtility;
@@ -55,6 +57,7 @@
 @property (readonly, nonatomic) BOOL isAppleWatch;
 @property (nonatomic) BOOL isObservingSummaryUpdates; // @synthesize isObservingSummaryUpdates=_isObservingSummaryUpdates;
 @property (strong, nonatomic) NSNumber *overrideIsAppleWatch; // @synthesize overrideIsAppleWatch=_overrideIsAppleWatch;
+@property (strong, nonatomic) NSString *overrideWatchCountryCode; // @synthesize overrideWatchCountryCode=_overrideWatchCountryCode;
 @property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) ACHActivityAwardingDataProvider *progressDataProvider; // @synthesize progressDataProvider=_progressDataProvider;
 @property (strong, nonatomic) ACHActivityAwardingEnvironment *progressEnvironment; // @synthesize progressEnvironment=_progressEnvironment;
@@ -64,6 +67,7 @@
 @property (strong, nonatomic) HKActivitySummary *todayActivitySummary; // @synthesize todayActivitySummary=_todayActivitySummary;
 @property (strong, nonatomic) ACHActivityTriggerGenerator *triggerGenerator; // @synthesize triggerGenerator=_triggerGenerator;
 @property (readonly, nonatomic) NSString *uniqueName;
+@property (strong, nonatomic) NSString *watchCountryCode; // @synthesize watchCountryCode=_watchCountryCode;
 @property (strong, nonatomic) HKActivitySummary *yesterdayActivitySummary; // @synthesize yesterdayActivitySummary=_yesterdayActivitySummary;
 
 - (void).cxx_destruct;

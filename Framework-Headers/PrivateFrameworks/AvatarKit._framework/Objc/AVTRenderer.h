@@ -24,10 +24,12 @@
     BOOL _arMode;
     BOOL _enableDepthMask;
     AVTFaceTracker *_faceTracker;
+    unsigned long long _antialiasingMode;
 }
 
 @property (nonatomic) BOOL arMode;
 @property (strong, nonatomic) AVTAvatar *avatar;
+@property (nonatomic) unsigned long long avt_antialiasingMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enableDepthMask;

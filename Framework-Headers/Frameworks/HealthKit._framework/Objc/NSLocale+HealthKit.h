@@ -7,6 +7,9 @@
 #import <Foundation/NSLocale.h>
 
 @interface NSLocale (HealthKit)
+
+@property (readonly, nonatomic) BOOL hk_isUSLocale;
+
 + (BOOL)hk_isUSLocale;
 + (void)hk_setTestLocale:(id)arg1;
 + (id)hk_testableAutoupdatingCurrentLocale;

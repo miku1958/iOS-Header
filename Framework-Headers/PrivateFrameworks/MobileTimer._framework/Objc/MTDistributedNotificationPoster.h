@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)_shouldNotifyForTrigger:(id)arg1;
 - (void)dismissNotificationsForAlarm:(id)arg1;
 - (void)dismissNotificationsForTimer:(id)arg1;
 - (void)postNotificationForScheduledAlarm:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;

@@ -20,9 +20,11 @@
 @property (readonly, nonatomic) GCControllerDirectionPad *dpad;
 @property (readonly, nonatomic) GCControllerButtonInput *leftShoulder;
 @property (readonly, nonatomic) GCControllerDirectionPad *leftThumbstick;
+@property (readonly, nonatomic) GCControllerButtonInput *leftThumbstickButton;
 @property (readonly, nonatomic) GCControllerButtonInput *leftTrigger;
 @property (readonly, nonatomic) GCControllerButtonInput *rightShoulder;
 @property (readonly, nonatomic) GCControllerDirectionPad *rightThumbstick;
+@property (readonly, nonatomic) GCControllerButtonInput *rightThumbstickButton;
 @property (readonly, nonatomic) GCControllerButtonInput *rightTrigger;
 @property (copy, nonatomic) CDUnknownBlockType valueChangedHandler;
 

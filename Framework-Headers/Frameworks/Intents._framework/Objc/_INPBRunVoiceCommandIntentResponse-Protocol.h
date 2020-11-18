@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSString, _INPBArchivedObject, _INPBDictionary;
+@class NSArray, NSString, _INPBArchivedObject, _INPBDictionary, _INPBVoiceCommandStepInfo;
 
 @protocol _INPBRunVoiceCommandIntentResponse <NSObject>
 
@@ -31,15 +31,21 @@
 @property (copy, nonatomic) NSString *localizedAppName;
 @property (strong, nonatomic) _INPBDictionary *parameters;
 @property (copy, nonatomic) NSString *responseTemplate;
+@property (copy, nonatomic) NSArray *steps;
+@property (readonly, nonatomic) unsigned long long stepsCount;
 @property (nonatomic) int toggleState;
 @property (strong, nonatomic) _INPBArchivedObject *underlyingIntent;
 @property (strong, nonatomic) _INPBArchivedObject *underlyingIntentResponse;
 @property (copy, nonatomic) NSString *underlyingIntentTitle;
 @property (copy, nonatomic) NSString *verb;
 
++ (Class)stepType;
 - (int)StringAsIntentCategory:(NSString *)arg1;
 - (int)StringAsToggleState:(NSString *)arg1;
+- (void)addStep:(_INPBVoiceCommandStepInfo *)arg1;
+- (void)clearSteps;
 - (NSString *)intentCategoryAsString:(int)arg1;
+- (_INPBVoiceCommandStepInfo *)stepAtIndex:(unsigned long long)arg1;
 - (NSString *)toggleStateAsString:(int)arg1;
 @end
 

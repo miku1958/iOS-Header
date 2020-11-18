@@ -22,13 +22,20 @@ __attribute__((visibility("hidden")))
     double _shortAverageLag;
     double _longAverageLag;
     double _owrd;
+    BOOL _sendTimestampSpikeDetected;
+    BOOL _receiveTimestampSpikeDetected;
+    double _averageSendInterval;
+    double _averageReceiveInterval;
 }
 
 @property (readonly, nonatomic) double owrd; // @synthesize owrd=_owrd;
 
 - (void)calculateOWRDWithSendTime:(double)arg1 receiveTime:(double)arg2;
+- (BOOL)detectOutOfOrderAndSpikeWithReceiveTimestamp:(unsigned short)arg1;
+- (BOOL)detectOutOfOrderAndSpikeWithSendTimestamp:(unsigned short)arg1;
 - (double)relativeReceiveTimeWithTimestamp:(unsigned short)arg1 timestampRate:(unsigned short)arg2;
 - (double)relativeSendTimeWithTimestamp:(unsigned short)arg1 timestampRate:(unsigned short)arg2;
+- (void)resetOWRDEstimation;
 
 @end
 

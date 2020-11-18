@@ -9,6 +9,8 @@
 @class AVTAvatarRecord, NSString;
 
 @protocol AVTAvatarStoreInternal <AVTAvatarStore>
++ (unsigned long long)maximumNumberOfFetchableAvatars;
++ (unsigned long long)maximumNumberOfSavableAvatars;
 - (void)deleteAvatarWithIdentifier:(NSString *)arg1 completionBlock:(void (^)(BOOL, NSError *))arg2;
 - (void)duplicateAvatar:(AVTAvatarRecord *)arg1 completionBlock:(void (^)(BOOL, id<AVTAvatarRecord>, NSError *))arg2;
 - (void)saveAvatar:(AVTAvatarRecord *)arg1 completionBlock:(void (^)(BOOL, NSError *))arg2 thumbnailGenerationCompletionBlock:(void (^)(BOOL, NSError *))arg3;

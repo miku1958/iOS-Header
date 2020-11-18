@@ -21,10 +21,12 @@
     BOOL _receivedTransaction;
     BOOL _receivedExit;
     BOOL _needsResolution;
-    BOOL _showingAlert;
     BOOL _showingResolution;
+    BOOL _showingSuccessResolution;
     BOOL _animatingResolution;
+    BOOL _showingAlert;
     NSObject<OS_dispatch_source> *_activityResolutionTimer;
+    unsigned long long _resolutionCounter;
     NSDate *_visibleDate;
     NSMutableDictionary *_registeredExpressObservers;
     PKPaymentService *_paymentService;
@@ -36,6 +38,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_beginResolution;
 - (void)_disableActivityTimer;
 - (id)_expressNotificationNames;
 - (void)_handleExpressNotification:(id)arg1;
@@ -46,6 +49,7 @@
 - (void)_registerForExpressTransactionNotifications:(BOOL)arg1;
 - (void)_registerObserverForNotificationName:(id)arg1 center:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_resolveActivityIfNecessary;
+- (void)_resolveActivityIfNecessaryWithDelay;
 - (void)_updateContentViewsWithTransaction:(id)arg1;
 - (void)_updateContentViewsWithTransaction:(id)arg1 transitProperties:(id)arg2;
 - (void)_updateContentViewsWithTransitProperties:(id)arg1;

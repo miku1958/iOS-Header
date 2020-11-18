@@ -14,6 +14,7 @@
     BOOL _wantsSecondaryVideo;
     BOOL _needsLayout;
     id<AVTSplashScreenLayoutDelegate> _delegate;
+    unsigned long long _labelEdgePaddingStyle;
     NSString *_currentContentSizeCategory;
     struct CGSize _containerSize;
     struct UIEdgeInsets _edgeInsets;
@@ -29,6 +30,7 @@
 @property (copy, nonatomic) NSString *currentContentSizeCategory; // @synthesize currentContentSizeCategory=_currentContentSizeCategory;
 @property (weak, nonatomic) id<AVTSplashScreenLayoutDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
+@property (readonly, nonatomic) unsigned long long labelEdgePaddingStyle; // @synthesize labelEdgePaddingStyle=_labelEdgePaddingStyle;
 @property (nonatomic) BOOL needsLayout; // @synthesize needsLayout=_needsLayout;
 @property (nonatomic) struct CGRect primaryVideoFrame; // @synthesize primaryVideoFrame=_primaryVideoFrame;
 @property (nonatomic) struct CGRect secondaryVideoFrame; // @synthesize secondaryVideoFrame=_secondaryVideoFrame;
@@ -36,22 +38,24 @@
 @property (nonatomic) struct CGRect titleFrame; // @synthesize titleFrame=_titleFrame;
 @property (nonatomic) BOOL wantsSecondaryVideo; // @synthesize wantsSecondaryVideo=_wantsSecondaryVideo;
 
++ (unsigned long long)appropriateLabelEdgePaddingStyleForViewSize:(struct CGSize)arg1;
 + (id)blueButton;
 + (id)buttonFont;
 + (struct CGRect)buttonFrameForString:(id)arg1 containerSize:(struct CGSize)arg2 edgeInsets:(struct UIEdgeInsets)arg3;
++ (double)defaultLabelEdgePaddingForLabelEdgePaddingStyle:(unsigned long long)arg1 contentSizeCategory:(id)arg2 numberOfLines:(long long)arg3;
 + (struct CGRect)primaryVideoFrameForContentFrame:(struct CGRect)arg1 wantsSecondaryVideo:(BOOL)arg2;
 + (struct CGRect)secondaryVideoFrameForContentFrame:(struct CGRect)arg1;
 + (id)subTitleFont;
-+ (struct CGRect)subTitleFrameForString:(id)arg1 titleFrame:(struct CGRect)arg2 buttonFrame:(struct CGRect)arg3 wantsSecondaryVideo:(BOOL)arg4 containerSize:(struct CGSize)arg5;
++ (struct CGRect)subTitleFrameForString:(id)arg1 titleFrame:(struct CGRect)arg2 buttonFrame:(struct CGRect)arg3 wantsSecondaryVideo:(BOOL)arg4 containerSize:(struct CGSize)arg5 labelEdgePadding:(double)arg6;
 + (id)titleFont;
-+ (struct CGRect)titleFrameForString:(id)arg1 yOrigin:(double)arg2 containerSize:(struct CGSize)arg3;
++ (struct CGRect)titleFrameForString:(id)arg1 yOrigin:(double)arg2 containerSize:(struct CGSize)arg3 labelEdgePadding:(double)arg4;
 - (void).cxx_destruct;
 - (void)calculateLayoutWithTitleString:(id)arg1 subTitleString:(id)arg2 buttonTitle:(id)arg3;
 - (void)dealloc;
 - (void)didChangeContentSizeCategory:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithContainerSize:(struct CGSize)arg1 edgeInsets:(struct UIEdgeInsets)arg2 wantsSecondaryVideo:(BOOL)arg3;
-- (id)initWithContainerSize:(struct CGSize)arg1 edgeInsets:(struct UIEdgeInsets)arg2 wantsSecondaryVideo:(BOOL)arg3 currentContentSizeCategory:(id)arg4;
+- (id)initWithContainerSize:(struct CGSize)arg1 edgeInsets:(struct UIEdgeInsets)arg2 wantsSecondaryVideo:(BOOL)arg3 labelEdgePaddingStyle:(unsigned long long)arg4;
+- (id)initWithContainerSize:(struct CGSize)arg1 edgeInsets:(struct UIEdgeInsets)arg2 wantsSecondaryVideo:(BOOL)arg3 labelEdgePaddingStyle:(unsigned long long)arg4 currentContentSizeCategory:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
 
 @end

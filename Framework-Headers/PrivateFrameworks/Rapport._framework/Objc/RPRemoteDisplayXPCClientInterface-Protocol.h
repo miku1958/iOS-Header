@@ -9,6 +9,7 @@
 @protocol RPRemoteDisplayXPCClientInterface
 
 @optional
+- (void)remoteDisplayAuthCompleted:(NSError *)arg1;
 - (void)remoteDisplayChangedDevice:(RPRemoteDisplayDevice *)arg1 changes:(unsigned int)arg2;
 - (void)remoteDisplayFoundDevice:(RPRemoteDisplayDevice *)arg1;
 - (void)remoteDisplayHidePasswordWithFlags:(unsigned int)arg1;

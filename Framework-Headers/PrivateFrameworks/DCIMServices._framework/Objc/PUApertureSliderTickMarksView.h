@@ -8,11 +8,14 @@
 
 @interface PUApertureSliderTickMarksView : UIView
 {
+    BOOL _useLegibilityShadows;
     long long _mainTickMarkOffset;
 }
 
 @property (nonatomic) long long mainTickMarkOffset; // @synthesize mainTickMarkOffset=_mainTickMarkOffset;
+@property (nonatomic) BOOL useLegibilityShadows; // @synthesize useLegibilityShadows=_useLegibilityShadows;
 
+- (struct UIEdgeInsets)alignmentRectInsets;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (double)widthForTickMarkCount:(unsigned long long)arg1;

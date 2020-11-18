@@ -8,36 +8,39 @@
 
 #import <AvatarUI/AVTStoreBackend-Protocol.h>
 
-@class AVTArchiverBasedStoreRoot, AVTUIEnvironment, NSArray, NSDictionary, NSString, NSURL;
+@class AVTArchiverBasedStoreRoot, AVTCoreEnvironment, NSArray, NSDictionary, NSString, NSURL;
+@protocol AVTAvatarRecordChangeTracker, AVTStoreBackendDelegate;
 
 @interface AVTArchiverBasedStoreBackend : NSObject <AVTStoreBackend>
 {
     NSURL *_storeLocation;
     NSString *_domainIdentifier;
-    AVTUIEnvironment *_environment;
+    AVTCoreEnvironment *_environment;
     AVTArchiverBasedStoreRoot *_model;
     NSDictionary *_avatarsByIdentifiers;
     NSArray *_sortedAvatars;
 }
 
 @property (copy, nonatomic) NSDictionary *avatarsByIdentifiers; // @synthesize avatarsByIdentifiers=_avatarsByIdentifiers;
+@property (weak, nonatomic) id<AVTStoreBackendDelegate> backendDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *domainIdentifier; // @synthesize domainIdentifier=_domainIdentifier;
-@property (readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
+@property (readonly, nonatomic) AVTCoreEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) AVTArchiverBasedStoreRoot *model; // @synthesize model=_model;
+@property (readonly, nonatomic) id<AVTAvatarRecordChangeTracker> recordChangeTracker;
 @property (copy, nonatomic) NSArray *sortedAvatars; // @synthesize sortedAvatars=_sortedAvatars;
 @property (readonly, copy, nonatomic) NSURL *storeLocation; // @synthesize storeLocation=_storeLocation;
 @property (readonly) Class superclass;
 
 + (id)classifyRecordsByIdentifiers:(id)arg1;
-+ (unsigned long long)maximumNumberOfAvatars;
 + (id)rootByRemovingAvatarWithIdentifier:(id)arg1 fromRoot:(id)arg2;
 + (id)rootBySavingAvatarRecord:(id)arg1 afterAvatarRecord:(id)arg2 forDomainIdentifier:(id)arg3 toRoot:(id)arg4;
 + (id)storeLocationForDomainIdentifier:(id)arg1 environment:(id)arg2;
 - (void).cxx_destruct;
 - (id)allAvatars;
+- (unsigned long long)avatarCountWithError:(id *)arg1;
 - (id)avatarsForFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)avatarsWithIdentifier:(id)arg1 error:(id *)arg2;
 - (BOOL)canCreateAvatarWithError:(id *)arg1;
@@ -48,6 +51,7 @@
 - (BOOL)loadContentFromDiskIfNeeded:(id *)arg1;
 - (void)loadModel:(id)arg1;
 - (BOOL)saveAvatar:(id)arg1 error:(id *)arg2;
+- (BOOL)saveAvatars:(id)arg1 error:(id *)arg2;
 - (BOOL)saveModel:(id)arg1 logger:(id)arg2 error:(id *)arg3;
 
 @end

@@ -11,6 +11,7 @@
 }
 
 + (id)subscriber;
++ (id)subscribers;
 
 @end
 

@@ -60,7 +60,6 @@
 - (void)oneTimeCodeFieldFocused:(id)arg1 withFieldMetadata:(id)arg2 inFrame:(id)arg3;
 - (BOOL)pageWithMainFrameMeetsEditedFormTextWarningCriteria:(id)arg1;
 - (void)passwordFieldBlurred:(id)arg1 inFrame:(id)arg2 page:(id)arg3 textFieldMetadata:(id)arg4 formMetadata:(id)arg5;
-- (void)passwordFieldFocused:(id)arg1 inFrame:(id)arg2;
 - (void)passwordFieldFocused:(id)arg1 inFrame:(id)arg2 isPasswordFieldForUserCredentials:(BOOL)arg3;
 - (void)recursivelyClearMetadataForFrames:(id)arg1;
 - (void)recursivelyCollectMetadataInFrame:(id)arg1 requestType:(unsigned long long)arg2 frames:(id)arg3 formMetadata:(id)arg4;

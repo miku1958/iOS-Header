@@ -39,8 +39,11 @@
 - (BOOL)getInternationalDataAccessStatus;
 - (id)init;
 - (id)initPrivate;
+- (BOOL)isAirplaneModeEnabled;
 - (BOOL)isCellularDataEnabled;
+- (BOOL)isDataFallbackEnabled;
 - (void)setCellularDataEnabled:(BOOL)arg1;
+- (void)setDataFallbackEnabled:(BOOL)arg1;
 - (void)setInternationalDataAccessStatus:(BOOL)arg1;
 - (void)willEnterForeground;
 

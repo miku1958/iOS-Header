@@ -22,6 +22,7 @@
     ACHTemplateStore *_templateStore;
     ACHWorkoutUtility *_workoutUtility;
     NSDate *_currentDateOverride;
+    NSString *_watchCountryCodeOverride;
 }
 
 @property (nonatomic) unsigned char creatorDevice; // @synthesize creatorDevice=_creatorDevice;
@@ -35,6 +36,7 @@
 @property (readonly) Class superclass;
 @property (weak, nonatomic) ACHTemplateStore *templateStore; // @synthesize templateStore=_templateStore;
 @property (readonly, nonatomic) NSString *uniqueName;
+@property (strong, nonatomic) NSString *watchCountryCodeOverride; // @synthesize watchCountryCodeOverride=_watchCountryCodeOverride;
 @property (weak, nonatomic) ACHWorkoutUtility *workoutUtility; // @synthesize workoutUtility=_workoutUtility;
 
 - (void).cxx_destruct;
@@ -49,6 +51,7 @@
 - (id)initWithProfile:(id)arg1 awardingEngine:(id)arg2 templateStore:(id)arg3 creatorDevice:(unsigned char)arg4 progressProvider:(id)arg5 workoutUtility:(id)arg6;
 - (BOOL)providesProgressForTemplate:(id)arg1;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
+- (id)watchCountryCode;
 
 @end
 

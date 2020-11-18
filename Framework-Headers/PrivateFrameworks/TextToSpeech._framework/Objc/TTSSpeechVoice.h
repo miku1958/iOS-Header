@@ -16,6 +16,7 @@
 {
     id<TTSSpeechService> _service;
     BOOL _isDefault;
+    BOOL _isFallbackDefault;
     BOOL _canBeDownloaded;
     BOOL _isCombinedFootprint;
     BOOL _useVoiceBooster;
@@ -34,6 +35,7 @@
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isCombinedFootprint; // @synthesize isCombinedFootprint=_isCombinedFootprint;
 @property (readonly, nonatomic) BOOL isDefault; // @synthesize isDefault=_isDefault;
+@property (readonly, nonatomic) BOOL isFallbackDefault; // @synthesize isFallbackDefault=_isFallbackDefault;
 @property (strong, nonatomic) NSString *language; // @synthesize language=_language;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSString *nonCombinedVoiceId; // @synthesize nonCombinedVoiceId=_nonCombinedVoiceId;

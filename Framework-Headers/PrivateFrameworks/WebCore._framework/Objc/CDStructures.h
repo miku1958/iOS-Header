@@ -809,10 +809,11 @@ struct HTMLVideoElement {
     BOOL _field122;
     BOOL _field123;
     BOOL _field124;
-    struct unique_ptr<WebCore::HTMLImageLoader, std::__1::default_delete<WebCore::HTMLImageLoader>> _field125;
-    struct AtomicString _field126;
-    unsigned int _field127;
+    BOOL _field125;
+    struct unique_ptr<WebCore::HTMLImageLoader, std::__1::default_delete<WebCore::HTMLImageLoader>> _field126;
+    struct AtomicString _field127;
     unsigned int _field128;
+    unsigned int _field129;
 };
 
 struct HTTPHeaderMap {

@@ -31,6 +31,7 @@
 - (id)_inkOpacityLabelString;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)setInkOpacity:(double)arg1 animated:(BOOL)arg2;
 
 @end
 

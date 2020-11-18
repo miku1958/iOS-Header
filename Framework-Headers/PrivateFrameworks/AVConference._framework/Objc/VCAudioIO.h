@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _stopCompletionBlock;
     struct _VCAudioEndpointData _sourceData;
     struct _VCAudioEndpointData _sinkData;
+    unsigned int _pullAudioSamplesCount;
 }
 
 @property (readonly, nonatomic) struct AudioStreamBasicDescription clientAudioFormat; // @synthesize clientAudioFormat=_clientFormat;
@@ -47,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isGKVoiceChat; // @synthesize isGKVoiceChat=_isGKVoiceChat;
 @property (nonatomic, getter=isMuted) BOOL muted; // @synthesize muted=_isMuted;
 @property (nonatomic, getter=isOutputMeteringEnabled) BOOL outputMeteringEnabled;
+@property (readonly, nonatomic) unsigned int pullAudioSamplesCount; // @synthesize pullAudioSamplesCount=_pullAudioSamplesCount;
 @property (readonly, nonatomic) unsigned int samplesPerFrame; // @synthesize samplesPerFrame=_clientSamplesPerFrame;
 @property (readonly, nonatomic) unsigned int state; // @synthesize state=_state;
 @property (readonly) Class superclass;

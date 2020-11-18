@@ -23,7 +23,7 @@
 + (BOOL)supportsGreetingChanges;
 + (BOOL)supportsPasswordChanges;
 - (void).cxx_destruct;
-- (id)initWithSubscriptionContext:(id)arg1 service:(id)arg2;
+- (id)initWithService:(id)arg1;
 - (id)parameterValueForKey:(id)arg1;
 
 @end

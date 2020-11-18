@@ -25,6 +25,11 @@
 @property (readonly, nonatomic) struct _NSRange selectedRangeInMarkedText; // @synthesize selectedRangeInMarkedText=_selectedRangeInMarkedText;
 @property (readonly, nonatomic) NSString *selectedText; // @synthesize selectedText=_selectedText;
 
++ (id)_contextStringByTrimmingPrecedingLines:(id)arg1;
++ (id)_contextStringByTrimmingSuccedingLines:(id)arg1;
++ (id)_selectedTextByDeletingInteriorSentences:(id)arg1;
++ (id)_string:(id)arg1 byTrimmingWordsAfterIndex:(unsigned long long)arg2;
++ (id)_string:(id)arg1 byTrimmingWordsBeforeIndex:(unsigned long long)arg2;
 + (id)documentStateForTestingWithContextBefore:(id)arg1 selectedText:(id)arg2 contextAfter:(id)arg3;
 + (id)documentStateForTestingWithText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 + (id)documentStateWithContextBefore:(id)arg1 markedText:(id)arg2 selectedRange:(struct _NSRange)arg3 contextAfter:(id)arg4;

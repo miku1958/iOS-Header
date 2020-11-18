@@ -14,9 +14,9 @@
 + (id)_contentsOfDirectoryAtURL:(id)arg1 matchingPattern:(id)arg2 includingPropertiesForKeys:(id)arg3 error:(id *)arg4;
 + (void)_sortedURLsInDirectory:(id)arg1 matchingPattern:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (struct AudioStreamBasicDescription)aiffFileASBD;
++ (id)alertMuteBehaviorDict;
 + (id)alertMuteSettings;
 + (id)assetHashInResourcePath:(id)arg1;
-+ (BOOL)canLookupVoiceTriggerModelFromMobileAsset;
 + (void)clearLogFilesInDirectory:(id)arg1 matchingPattern:(id)arg2 exceedNumber:(unsigned long long)arg3;
 + (id)convertToFloatLPCMBufFromShortLPCMBuf:(id)arg1;
 + (id)convertToShortLPCMBufFromFloatLPCMBuf:(id)arg1;
@@ -30,6 +30,7 @@
 + (double)getHostClockFrequency;
 + (unsigned int)getNumElementInBitset:(unsigned long long)arg1;
 + (id)getSiriLanguageWithFallback:(id)arg1;
++ (BOOL)hasRemoteBuiltInMic;
 + (BOOL)hasRemoteCoreSpeech;
 + (unsigned long long)hostTimeFromSampleCount:(unsigned long long)arg1 anchorHostTime:(unsigned long long)arg2 anchorSampleCount:(unsigned long long)arg3;
 + (float)hostTimeToSeconds:(unsigned long long)arg1;

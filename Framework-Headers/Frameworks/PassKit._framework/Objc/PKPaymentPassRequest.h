@@ -18,7 +18,7 @@
 @property (copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 
 - (void).cxx_destruct;
-- (id)_urlRequestWithServiceURL:(id)arg1 account:(id)arg2;
+- (id)_urlRequestWithServiceURL:(id)arg1 appleAccountInformation:(id)arg2;
 - (id)initWithPassTypeID:(id)arg1 serialNumber:(id)arg2;
 
 @end

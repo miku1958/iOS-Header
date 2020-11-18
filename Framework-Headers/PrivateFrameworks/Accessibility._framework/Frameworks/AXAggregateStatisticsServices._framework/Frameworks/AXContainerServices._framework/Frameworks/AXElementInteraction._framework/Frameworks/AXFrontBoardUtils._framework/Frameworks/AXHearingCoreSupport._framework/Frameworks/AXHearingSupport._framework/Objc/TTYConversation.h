@@ -24,7 +24,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addUtterance:(id)arg1;
-- (id)appendCharacter:(unsigned short)arg1;
+- (id)appendStringFromOtherContactPath:(id)arg1;
 - (void)cleanup;
 - (void)dealloc;
 - (id)description;
