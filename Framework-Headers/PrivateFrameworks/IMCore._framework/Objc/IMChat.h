@@ -62,6 +62,7 @@
     NSString *_currentUnreadHistoryQuery;
     BOOL _hasEarlierMessagesToLoad;
     BOOL _hasMoreRecentMessagesToLoad;
+    BOOL _hasSurfRequest;
     NSString *_personCentricID;
     NSDictionary *_bizIntent;
     double _latestTypingIndicatorTimeInterval;
@@ -103,6 +104,7 @@
 @property (readonly, nonatomic) BOOL hasRecipientsFollowingLocation;
 @property (readonly, nonatomic) BOOL hasRecipientsSharingLocation;
 @property (readonly, nonatomic) BOOL hasSiblingRecipientsSharingLocation;
+@property (nonatomic) BOOL hasSurfRequest; // @synthesize hasSurfRequest=_hasSurfRequest;
 @property (readonly, nonatomic) BOOL hasUnhandledInvitation;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
@@ -284,6 +286,8 @@
 - (void)endListeningToAttributionChanges;
 - (BOOL)hasKnownParticipants;
 - (BOOL)hasStoredMessageWithGUID:(id)arg1;
+- (BOOL)hasSurfRequestForPaymentType:(unsigned long long)arg1;
+- (BOOL)hasSurfRequestNotFromMe:(id)arg1;
 - (id)init;
 - (void)inviteParticipants:(id)arg1 reason:(id)arg2;
 - (void)inviteParticipantsToiMessageChat:(id)arg1 reason:(id)arg2;
@@ -317,6 +321,7 @@
 - (id)messageAcknowledgmentSummaryForConversationListWithMessage:(id)arg1;
 - (id)messageForGUID:(id)arg1;
 - (id)participantsWithState:(unsigned long long)arg1;
+- (unsigned long long)paymentTypeForMessage:(id)arg1;
 - (void)refreshServiceForSending;
 - (void)remove;
 - (void)removeParticipants:(id)arg1 reason:(id)arg2;

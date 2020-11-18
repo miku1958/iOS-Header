@@ -41,6 +41,7 @@
 - (void)configurationDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)deleteApplicationWithAID:(id)arg1;
+- (BOOL)hasRegistrationRegionMap;
 - (id)init;
 - (id)initWithCallbackQueue:(id)arg1;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;

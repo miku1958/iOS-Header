@@ -29,6 +29,7 @@
 + (void)initialize;
 + (struct __AXUIElement *)systemWideAXUIElement;
 + (id)uiApplicationAtCoordinate:(struct CGPoint)arg1;
++ (id)uiApplicationForContext:(unsigned int)arg1;
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1;
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1 forApplication:(struct __AXUIElement *)arg2 contextId:(unsigned int)arg3;
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1 startWithElement:(id)arg2;

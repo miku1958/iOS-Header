@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitUI/PKPaymentSetupViewController.h>
+#import <PassKitUI/PKPaymentSetupHeroViewController.h>
 
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
 
 @class NSArray, NSObject, NSString, UIButton;
 @protocol OS_dispatch_group, PKPaymentSetupViewControllerDelegate;
 
-@interface PKPaymentSetupAssistantRegistrationViewController : PKPaymentSetupViewController <PKPaymentSetupViewControllerDelegate>
+@interface PKPaymentSetupAssistantRegistrationViewController : PKPaymentSetupHeroViewController <PKPaymentSetupViewControllerDelegate>
 {
     UIButton *_skipButton;
     id<PKPaymentSetupViewControllerDelegate> _externalDelegate;
@@ -30,7 +30,6 @@
 + (BOOL)setupAssistantNeedsToRun;
 + (BOOL)setupAssistantNeedsToRunReturningRequirements:(unsigned long long *)arg1;
 - (void).cxx_destruct;
-- (id)_deviceSpecificLocalizedStringKeyForKey:(id)arg1;
 - (void)_setExternalDelegate:(id)arg1;
 - (id)delegate;
 - (id)initWithPaymentWebService:(id)arg1 context:(long long)arg2 delegate:(id)arg3;

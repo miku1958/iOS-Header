@@ -9,8 +9,8 @@
 #import <PassKitCore/PKPaymentAuthorizationCoordinatorDelegate-Protocol.h>
 #import <PassKitCore/PKPaymentAuthorizationCoordinatorPrivateDelegate-Protocol.h>
 
-@class NSError, NSString, PKPaymentAuthorizationCoordinator, PKPaymentPass, PKPeerPaymentAccount, PKPeerPaymentContactResolver, PKPeerPaymentControllerInternalState, PKPeerPaymentPerformResponse, PKPeerPaymentQuote, PKPeerPaymentRecipient, PKPeerPaymentWebService;
-@protocol OS_dispatch_group;
+@class NSError, NSString, PKPaymentAuthorizationCoordinator, PKPaymentPass, PKPeerPaymentAccount, PKPeerPaymentContactResolver, PKPeerPaymentControllerInternalState, PKPeerPaymentPerformResponse, PKPeerPaymentQuote, PKPeerPaymentRecipient, PKPeerPaymentRequestToken, PKPeerPaymentWebService;
+@protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface PKPeerPaymentController : NSObject <PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate>
 {
@@ -20,6 +20,7 @@
     PKPeerPaymentContactResolver *_contactResolver;
     PKPaymentAuthorizationCoordinator *_performQuoteAuthorizationCoordinator;
     NSObject<OS_dispatch_group> *_performQuoteGroup;
+    NSObject<OS_dispatch_queue> *_performQuoteCallbackQueue;
     BOOL _performQuoteSuccess;
     NSError *_performQuoteError;
     PKPeerPaymentWebService *_webService;
@@ -36,29 +37,35 @@
 @property (readonly, copy, nonatomic) PKPeerPaymentRecipient *recipient;
 @property (readonly, copy, nonatomic) NSString *recipientDisplayName;
 @property (readonly, copy, nonatomic) NSString *recipientPhoneOrEmail;
-@property (readonly, nonatomic) NSString *requestToken;
+@property (readonly, nonatomic) PKPeerPaymentRequestToken *requestToken;
 @property (readonly, copy, nonatomic) NSString *senderPhoneOrEmail;
 @property (readonly, nonatomic) unsigned long long state;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PKPeerPaymentWebService *webService; // @synthesize webService=_webService;
 
++ (id)_displayableErrorOverrideForUnderlyingError:(id)arg1;
++ (id)_peerPaymentPassURL;
++ (id)displayableErrorForError:(id)arg1;
 + (BOOL)errorIsIdentityVerificationRequiredError:(id)arg1;
 + (BOOL)errorIsTermsAcceptanceRequiredError:(id)arg1;
++ (unsigned long long)proposedResolutionForError:(id)arg1;
 - (void).cxx_destruct;
-- (void)_completePerformQuote;
 - (id)_defaultAlternateFundingSourceForMode:(unsigned long long)arg1;
-- (id)_displayableErrorOverrideForUnderlyingError:(id)arg1;
 - (BOOL)_ensureState:(unsigned long long)arg1;
 - (void)_handleAccountChanged:(id)arg1;
 - (void)_refreshRecipientWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_requestQuoteWithRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_resetToState:(unsigned long long)arg1;
 - (void)_setPerformQuoteSuccess:(BOOL)arg1;
 - (void)_setState:(unsigned long long)arg1 notify:(BOOL)arg2;
+- (void)_updateLastUsedAlternateFundingSource;
+- (void)aggDAuthorizedQuoteWithSuccess:(BOOL)arg1 authorizedQuote:(id)arg2;
 - (void)dealloc;
 - (id)displayNameForRecipientAddress:(id)arg1;
 - (id)displayNameForRecipientAddress:(id)arg1 foundInContacts:(BOOL *)arg2;
 - (id)displayableErrorForError:(id)arg1;
 - (id)externalizedControllerState;
+- (void)formalRequestTokenForAmount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleIdentityVerificationWithError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleTermsAcceptanceRequiredWithError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)identifyRecipientSelf;
@@ -83,7 +90,7 @@
 - (BOOL)restoreStateWithExternalizedControllerState:(id)arg1;
 - (void)selectMode:(unsigned long long)arg1;
 - (void)statusForPaymentIdentifier:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (id)summaryItemsForQuote:(id)arg1 withAlternateFundingSource:(id)arg2;
+- (id)summaryItemsForQuote:(id)arg1;
 
 @end
 

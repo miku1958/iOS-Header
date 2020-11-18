@@ -56,6 +56,7 @@
 - (id)initWithPlayer:(id)arg1 reportingController:(id)arg2;
 - (id)newPlayActivityEvent;
 - (void)recordPlayActivityEvents:(id)arg1 forEventSource:(id)arg2;
+- (void)recordUserSeekFromTime:(double)arg1 toTime:(double)arg2 forItem:(id)arg3;
 - (void)willHitPlaybackTimeoutEndingPlayback:(BOOL)arg1 withCurrentItem:(id)arg2;
 - (void)willTransitionItemForBan:(id)arg1;
 

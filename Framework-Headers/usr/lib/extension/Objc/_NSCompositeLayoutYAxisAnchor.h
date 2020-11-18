@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSLayoutYAxisAnchor.h>
+#import <extension/NSLayoutYAxisAnchor.h>
 
-#import <Foundation/NSCompositeLayoutAnchor-Protocol.h>
+#import <extension/NSCompositeLayoutAnchor-Protocol.h>
 
 @class NSArray, NSLayoutDimension;
 

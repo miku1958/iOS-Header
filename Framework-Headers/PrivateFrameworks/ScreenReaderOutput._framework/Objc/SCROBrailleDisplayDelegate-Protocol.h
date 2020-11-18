@@ -13,6 +13,7 @@
 - (void)brailleDidStartEditingWithDisplay:(SCROBrailleDisplay *)arg1;
 - (void)brailleDisplay:(SCROBrailleDisplay *)arg1 deletedUntranslatedText:(NSString *)arg2 speakLiterally:(BOOL)arg3;
 - (void)brailleDisplay:(SCROBrailleDisplay *)arg1 didDisplay:(NSAttributedString *)arg2;
+- (void)brailleDisplay:(SCROBrailleDisplay *)arg1 didMoveSelection:(unsigned long long)arg2;
 - (void)brailleDisplay:(SCROBrailleDisplay *)arg1 didPanLeft:(NSNumber *)arg2 elementToken:(NSNumber *)arg3 appToken:(id)arg4;
 - (void)brailleDisplay:(SCROBrailleDisplay *)arg1 didPanRight:(NSNumber *)arg2 elementToken:(NSNumber *)arg3 appToken:(id)arg4;
 - (void)brailleDisplay:(SCROBrailleDisplay *)arg1 didReplaceRange:(struct _NSRange)arg2 withString:(NSString *)arg3 cursor:(unsigned long long)arg4;

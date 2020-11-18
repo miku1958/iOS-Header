@@ -31,6 +31,7 @@
     BOOL _loadsHTTPFailures;
     BOOL _uploadProgressRequested;
     NSArray *_passThroughErrors;
+    NSNumber *_convertAccountDSID;
 }
 
 @property (readonly) SSHTTPArchive *HTTPArchive;
@@ -42,6 +43,7 @@
 @property (readonly, copy) NSURLRequest *activeURLRequest; // @synthesize activeURLRequest=_activeURLRequest;
 @property (strong) SSAuthenticationContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
 @property (readonly, nonatomic) SSBag *bag;
+@property (copy, nonatomic) NSNumber *convertAccountDSID; // @synthesize convertAccountDSID=_convertAccountDSID;
 @property (strong) ISDataProvider *dataProvider; // @synthesize dataProvider=_dataProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<ISURLOperationDelegate> delegate; // @dynamic delegate;

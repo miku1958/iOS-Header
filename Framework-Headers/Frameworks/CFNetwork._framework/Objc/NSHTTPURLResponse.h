@@ -19,6 +19,7 @@
 + (BOOL)isErrorStatusCode:(long long)arg1;
 + (id)localizedStringForStatusCode:(long long)arg1;
 + (BOOL)supportsSecureCoding;
+- (id)_allHTTPHeaderFieldsAsArrays;
 - (id)_clientCertificateChain;
 - (id)_clientCertificateState;
 - (id)_initWithCFURLResponse:(struct _CFURLResponse *)arg1;

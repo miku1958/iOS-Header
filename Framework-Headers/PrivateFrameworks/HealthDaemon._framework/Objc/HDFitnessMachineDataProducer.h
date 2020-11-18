@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HDHealthServiceManager, HDProfile, HKQuantity, _HDFTMProducerMetricTracker;
+@class HDEurotasData, HDHealthServiceManager, HDProfile, HKQuantity, _HDFTMProducerMetricTracker;
 @protocol OS_dispatch_queue;
 
 @interface HDFitnessMachineDataProducer : NSObject
@@ -19,6 +19,7 @@
     HKQuantity *_averageHeartRate;
     _HDFTMProducerMetricTracker *_heartRateTracker;
     BOOL _heartRateEnabled;
+    HDEurotasData *_previousEurotasData;
     HDProfile *_profile;
 }
 
@@ -30,16 +31,19 @@
 - (id)_queue_generateEurotasData;
 - (void)_queue_metricsAddedToWorkout:(id)arg1;
 - (void)_queue_quantitiesAddedToWorkout:(id)arg1;
-- (void)_queue_sendEurotasData:(id)arg1;
+- (void)_queue_sendEurotasData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_updateFitnessMachine;
+- (void)_queue_updateFitnessMachineWithCompletion:(CDUnknownBlockType)arg1 forcing:(BOOL)arg2;
 - (void)_readHeartRateEnabledPreference;
 - (void)connectToHealthServiceSession:(unsigned long long)arg1;
 - (void)dealloc;
+- (void)deliverFinalValues:(CDUnknownBlockType)arg1;
 - (void)disconnectHealthServiceSession;
 - (id)initWithProfile:(id)arg1;
 - (void)metricsAddedToWorkout:(id)arg1;
 - (void)pauseCurrentSession;
 - (void)quantitiesAddedToWorkout:(id)arg1;
+- (void)quantitiesResetForWorkout:(id)arg1;
 - (void)resumeCurrentSession;
 
 @end

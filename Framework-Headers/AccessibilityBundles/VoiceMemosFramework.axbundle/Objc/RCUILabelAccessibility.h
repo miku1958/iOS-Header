@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VoiceMemosFramework/__RCUILabelAccessibility_super.h>
+#import "__RCUILabelAccessibility_super.h"
 
 @interface RCUILabelAccessibility : __RCUILabelAccessibility_super
 {

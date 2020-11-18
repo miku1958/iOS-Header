@@ -104,6 +104,7 @@
 @property (strong, nonatomic) NSArray *currentVoices;
 @property (strong, nonatomic) NSArray *customPronunciationSubstitutions;
 @property (readonly, nonatomic) NSArray *deviceKeys;
+@property (nonatomic) BOOL didResetD22Reachability;
 @property (nonatomic) BOOL didTriggerSOSToday;
 @property (nonatomic) double dockSize;
 @property (nonatomic) BOOL enableHearingAidReporter;
@@ -269,6 +270,7 @@
 @property (nonatomic) long long voiceOverDeletionFeedback;
 @property (nonatomic) long long voiceOverDescribedMedia;
 @property (nonatomic) double voiceOverDoubleTapInterval;
+@property (nonatomic) BOOL voiceOverEditAppsActionEnabled;
 @property BOOL voiceOverEnabled;
 @property BOOL voiceOverEnabledThroughAccessory;
 @property (readonly, nonatomic) BOOL voiceOverHandwritingEnabled;

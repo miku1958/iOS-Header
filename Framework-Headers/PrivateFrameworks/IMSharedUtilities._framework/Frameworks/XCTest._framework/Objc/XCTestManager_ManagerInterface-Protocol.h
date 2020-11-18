@@ -18,7 +18,6 @@
 - (void)_XCT_performAccessibilityAction:(int)arg1 onElement:(XCAccessibilityElement *)arg2 withValue:(id)arg3 reply:(void (^)(NSError *))arg4;
 - (void)_XCT_performDeviceEvent:(XCDeviceEvent *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)_XCT_registerForAccessibilityNotification:(int)arg1 reply:(void (^)(NSNumber *, NSError *))arg2;
-- (void)_XCT_registerTarget;
 - (void)_XCT_requestBackgroundAssertionForPID:(int)arg1 reply:(void (^)(BOOL))arg2;
 - (void)_XCT_requestBackgroundAssertionWithReply:(void (^)(void))arg1;
 - (void)_XCT_requestBundleIDForPID:(int)arg1 reply:(void (^)(NSString *, NSError *))arg2;

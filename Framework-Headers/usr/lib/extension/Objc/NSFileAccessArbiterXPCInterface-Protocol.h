@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSFileAccessArbiter-Protocol.h>
+#import <extension/NSFileAccessArbiter-Protocol.h>
 
 @class NSArray, NSFileAccessClaim, NSFileSubarbitrationClaim, NSNumber, NSSet, NSString, NSURL, NSUUID, NSXPCListenerEndpoint;
 @protocol NSFilePresenterXPCInterface, NSFileProviderXPCInterface;

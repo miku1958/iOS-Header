@@ -11,7 +11,9 @@
 @protocol PKPeerPaymentWebServiceTargetDeviceProtocol <NSObject>
 - (PKPeerPaymentAccount *)account;
 - (NSString *)bridgedClientInfo;
+- (void)cloudStoreStatusWithCompletion:(void (^)(CKAccountInfo *, BOOL, NSError *))arg1;
 - (void)downloadPassIfNecessaryWithCompletion:(void (^)(BOOL))arg1;
+- (void)initalizeCloudStoreIfNecessaryWithCompletion:(void (^)(BOOL))arg1;
 - (void)provisionPeerPaymentPassWithProvisioningController:(PKPaymentProvisioningController *)arg1 credential:(PKPeerPaymentCredential *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)setUserHasDisabledPeerPayment:(BOOL)arg1;
 - (void)updateAccountWithCompletion:(void (^)(PKPeerPaymentAccount *))arg1;

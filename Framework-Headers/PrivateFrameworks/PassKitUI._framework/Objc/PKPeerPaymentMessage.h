@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MSMessage, NSDecimalNumber, NSString, NSUUID, PKCurrencyAmount, PKProtobufPeerPaymentMessage;
+@class MSMessage, NSDecimalNumber, NSString, NSUUID, PKCurrencyAmount, PKPeerPaymentRequestToken, PKProtobufPeerPaymentMessage;
 
 @interface PKPeerPaymentMessage : NSObject
 {
@@ -22,13 +22,14 @@
 @property (copy, nonatomic) NSString *memo;
 @property (copy, nonatomic) NSString *paymentIdentifier;
 @property (copy, nonatomic) NSString *recipientAddress;
-@property (copy, nonatomic) NSString *requestToken;
+@property (copy, nonatomic) PKPeerPaymentRequestToken *requestToken;
 @property (copy, nonatomic) NSString *senderAddress;
 @property (copy, nonatomic) NSString *transactionIdentifier;
 @property (nonatomic) unsigned long long type;
 @property (readonly, nonatomic) MSMessage *underlyingMessage; // @synthesize underlyingMessage=_underlyingMessage;
 
 - (void).cxx_destruct;
+- (id)_requestDeviceScoreIdentifier;
 - (void)_updateDataURL;
 - (void)_updateLayoutContents;
 - (void)_updateSummaryText;

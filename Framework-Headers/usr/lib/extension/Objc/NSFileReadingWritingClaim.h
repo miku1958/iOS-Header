@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSFileAccessClaim.h>
+#import <extension/NSFileAccessClaim.h>
 
 @class NSFileAccessNode, NSURL;
 

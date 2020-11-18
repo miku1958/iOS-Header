@@ -29,6 +29,8 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToForeignExchangeInformation:(id)arg1;
+- (BOOL)isValid;
+- (id)jsonDictionaryRepresentation;
 - (id)jsonString;
 - (id)recordTypesAndNames;
 

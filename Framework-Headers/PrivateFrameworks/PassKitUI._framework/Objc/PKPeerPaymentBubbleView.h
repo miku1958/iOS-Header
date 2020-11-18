@@ -6,19 +6,24 @@
 
 #import <UIKit/UIView.h>
 
-@class CAShapeLayer, NSDecimalNumber, NSNumberFormatter, NSString, PKContinuousButton, PKPeerPayment3DTextView, UIActivityIndicatorView, UIImageView, UILabel;
+#import <PassKitUI/CKTranscriptPluginView-Protocol.h>
 
-@interface PKPeerPaymentBubbleView : UIView
+@class CAShapeLayer, NSDecimalNumber, NSString, NSTimer, PKContinuousButton, PKPeerPayment3DTextView, UIActivityIndicatorView, UIImageView, UILabel;
+@protocol CKTranscriptPluginViewDelegate;
+
+@interface PKPeerPaymentBubbleView : UIView <CKTranscriptPluginView>
 {
     PKPeerPayment3DTextView *_renderView;
+    BOOL _renderViewRemovedByLossOfWindow;
+    BOOL _snapshotInProgress;
     UILabel *_messageLabel;
     UILabel *_statusLabel;
-    PKContinuousButton *_actionButton;
     UIActivityIndicatorView *_actionSpinner;
     CAShapeLayer *_maskLayer;
     struct CGRect _lastBoundsForRoundedCornerLayout;
-    NSNumberFormatter *_currencyFormatter;
     UIImageView *_applePayLogoImageView;
+    NSTimer *_testTimer;
+    BOOL _testTransition;
     BOOL _showsActionSpinner;
     BOOL _hasRoundedCorners;
     BOOL _displaysApplePayLogo;
@@ -28,19 +33,36 @@
     NSString *_currency;
     unsigned long long _action;
     CDUnknownBlockType _actionHandler;
+    PKContinuousButton *_actionButton;
+    struct UIEdgeInsets _contentInset;
 }
 
 @property (nonatomic) unsigned long long action; // @synthesize action=_action;
+@property (readonly, nonatomic) PKContinuousButton *actionButton; // @synthesize actionButton=_actionButton;
 @property (copy, nonatomic) CDUnknownBlockType actionHandler; // @synthesize actionHandler=_actionHandler;
 @property (copy, nonatomic) NSDecimalNumber *amount; // @synthesize amount=_amount;
+@property (nonatomic) struct UIEdgeInsets contentInset; // @synthesize contentInset=_contentInset;
 @property (copy, nonatomic) NSString *currency; // @synthesize currency=_currency;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL displaysApplePayLogo; // @synthesize displaysApplePayLogo=_displaysApplePayLogo;
 @property (nonatomic) BOOL hasRoundedCorners; // @synthesize hasRoundedCorners=_hasRoundedCorners;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isLiveRenderingEnabled) BOOL liveRenderingEnabled; // @synthesize liveRenderingEnabled=_liveRenderingEnabled;
+@property (weak, nonatomic) id<CKTranscriptPluginViewDelegate> pluginViewDelegate;
+@property (readonly, nonatomic) struct CGRect referenceBounds;
+@property (readonly, nonatomic) struct CGSize referenceSize;
 @property (nonatomic) BOOL showsActionSpinner; // @synthesize showsActionSpinner=_showsActionSpinner;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
+@property (readonly) Class superclass;
+@property (nonatomic) BOOL testTransition; // @synthesize testTransition=_testTransition;
+@property (readonly, nonatomic) BOOL wantsOutline;
 
++ (id)generatedSnapshotForDataURL:(id)arg1 contentInset:(struct UIEdgeInsets)arg2 isFromMe:(BOOL)arg3;
++ (id)referenceBackgroundColor;
++ (id)referenceBackgroundColorForState:(unsigned long long)arg1;
 + (struct CGSize)referenceSize;
++ (struct CGSize)referenceSizeForPeerPaymentStatusResponse:(id)arg1;
 + (struct CGSize)referenceSizeForState:(unsigned long long)arg1;
 + (struct CGSize)referenceSizeForState:(unsigned long long)arg1 andAction:(unsigned long long)arg2;
 - (void).cxx_destruct;
@@ -48,23 +70,28 @@
 - (id)_actionTitle;
 - (id)_backgroundColor;
 - (void)_commonInit;
+- (double)_messageAlpha;
 - (id)_messageText;
 - (id)_messageTextAttributes;
-- (id)_messageTextColor;
 - (id)_statusText;
 - (void)_updateContent;
-- (void)_updateCurrencyFormatter;
 - (void)awakeFromNib;
+- (void)didMoveToWindow;
+- (id)generatedSnapshot;
 - (id)init;
 - (id)initWithAmount:(id)arg1 currency:(id)arg2 state:(unsigned long long)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)interactiveViews;
 - (void)layoutSubviews;
+- (void)performPostRender:(CDUnknownBlockType)arg1;
+- (void)setAction:(unsigned long long)arg1 animated:(BOOL)arg2;
+- (void)setState:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)updateWithPaymentTransaction:(id)arg1;
-- (void)updateWithPeerPaymentMessage:(id)arg1;
-- (void)updateWithPeerPaymentStatus:(unsigned long long)arg1;
-- (void)updateWithPeerPaymentStatusResponse:(id)arg1;
+- (void)updateWithPaymentTransaction:(id)arg1 animated:(BOOL)arg2;
+- (void)updateWithPeerPaymentMessage:(id)arg1 animated:(BOOL)arg2;
+- (void)updateWithPeerPaymentStatus:(long long)arg1 animated:(BOOL)arg2;
+- (void)updateWithPeerPaymentStatusResponse:(id)arg1 animated:(BOOL)arg2;
 
 @end
 

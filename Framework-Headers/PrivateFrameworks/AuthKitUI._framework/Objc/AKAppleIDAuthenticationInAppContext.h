@@ -15,6 +15,8 @@
 
 @interface AKAppleIDAuthenticationInAppContext : AKAppleIDAuthenticationContext <AKBasicLoginAlertControllerDelegate, AKAppleIDAuthenticationUIProvider, RemoteUIControllerDelegate>
 {
+    UIViewController *_topViewControllerOnLoadStart;
+    BOOL _overrideFirstActionSignal;
     AKBasicLoginAlertController *_basicLoginViewController;
     UINavigationController *_navController;
     UINavigationController *_modalRemoteUINavController;
@@ -27,6 +29,7 @@
     NSHTTPURLResponse *_deferredResponse;
     BOOL _isPresentingServerUI;
     AAUICDPStingrayRemoteUIController *_stingrayController;
+    BOOL _forceInlinePresentation;
     UIViewController *_presentingViewController;
     id<AKAppleIDAuthenticationInAppContextDelegate> _delegate;
     id<AKAppleIDAuthenticationInAppContextAlertDelegate> _alertDelegate;
@@ -36,6 +39,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AKAppleIDAuthenticationInAppContextDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL forceInlinePresentation; // @synthesize forceInlinePresentation=_forceInlinePresentation;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property (readonly) Class superclass;
@@ -45,6 +49,7 @@
 - (void)_cleanUpBasicLogin;
 - (void)_cleanUpBasicLoginWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_completeWithFinalResponse:(id)arg1;
+- (void)_handleBackButtonTap:(id)arg1;
 - (BOOL)_isDeferrableFinalResponseHarvested;
 - (id)_navController;
 - (void)_presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 waitForInteraction:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;

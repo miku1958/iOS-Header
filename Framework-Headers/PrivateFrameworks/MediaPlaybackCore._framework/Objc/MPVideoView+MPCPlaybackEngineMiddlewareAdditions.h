@@ -8,13 +8,14 @@
 
 #import <MediaPlaybackCore/MPCVideoView-Protocol.h>
 
-@class NSString;
+@class AVPlayerLayer, NSString;
 
 @interface MPVideoView (MPCPlaybackEngineMiddlewareAdditions) <MPCVideoView>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) AVPlayerLayer *playerLayer;
 @property (readonly, nonatomic) struct CGSize preferredContentSize;
 @property (readonly, nonatomic, getter=isReadyForDisplay) BOOL readyForDisplay;
 @property (readonly) Class superclass;

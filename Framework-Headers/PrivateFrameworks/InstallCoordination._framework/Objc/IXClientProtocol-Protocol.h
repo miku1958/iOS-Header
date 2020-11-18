@@ -54,6 +54,7 @@
 - (oneway void)_remote_IXSPlaceholder:(NSUUID *)arg1 getEntitlementsPromise:(void (^)(IXDataPromiseSeed *, NSError *))arg2;
 - (oneway void)_remote_IXSPlaceholder:(NSUUID *)arg1 getIconPromise:(void (^)(IXDataPromiseSeed *, NSError *))arg2;
 - (oneway void)_remote_IXSPlaceholder:(NSUUID *)arg1 getLaunchProhibitedWithCompletion:(void (^)(BOOL, NSError *))arg2;
+- (oneway void)_remote_IXSPlaceholder:(NSUUID *)arg1 getLocalizationDictionary:(void (^)(NSDictionary *, NSError *))arg2;
 - (oneway void)_remote_IXSPlaceholder:(NSUUID *)arg1 getMetadataWithCompletion:(void (^)(MIStoreMetadata *, NSError *))arg2;
 - (oneway void)_remote_IXSPlaceholder:(NSUUID *)arg1 getPlugInPlaceholderPromises:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)_remote_IXSPlaceholder:(NSUUID *)arg1 getSinfDataWithCompletion:(void (^)(NSData *, NSError *))arg2;
@@ -65,6 +66,7 @@
 - (oneway void)_remote_IXSPlaceholder:(NSUUID *)arg1 setEntitlementsPromiseUUID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)_remote_IXSPlaceholder:(NSUUID *)arg1 setIconPromiseUUID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)_remote_IXSPlaceholder:(NSUUID *)arg1 setLaunchProhibited:(BOOL)arg2 completion:(void (^)(NSError *))arg3;
+- (oneway void)_remote_IXSPlaceholder:(NSUUID *)arg1 setLocalizationPromiseUUID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)_remote_IXSPlaceholder:(NSUUID *)arg1 setMetadataPromiseUUID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)_remote_IXSPlaceholder:(NSUUID *)arg1 setPlugInPlaceholderPromiseUUIDs:(NSArray *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)_remote_IXSPlaceholder:(NSUUID *)arg1 setSinfPromiseUUID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;

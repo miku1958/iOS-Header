@@ -15,7 +15,7 @@
 #import <PassKitUI/PKPerformActionViewControllerDelegate-Protocol.h>
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, NSTimer, PKGroupsController, PKPassGroupStackView, PKPaymentService, PKPeerPaymentAccountResolutionController, PKPeerPaymentService, _UIBackdropView;
+@class NSArray, NSMutableArray, NSString, NSTimer, PKGroupsController, PKPassGroupStackView, PKPaymentService, PKPeerPaymentService, _UIBackdropView;
 @protocol NSObject, PKPassLibraryDataProvider;
 
 @interface PKPassGroupsViewController : UIViewController <PKGroupsControllerDelegate, PKPassGroupStackViewDatasource, PKPassGroupStackViewDelegate, UIScrollViewDelegate, PKPaymentServiceDelegate, PKPaymentSetupDelegate, PKPerformActionViewControllerDelegate, PKPassPersonalizationViewControllerDelegate>
@@ -43,7 +43,6 @@
     unsigned long long _instanceFooterSuppressionCounter;
     id<NSObject> _expressTransactionNotificationObserver;
     id<PKPassLibraryDataProvider> _passLibraryDataProvider;
-    PKPeerPaymentAccountResolutionController *_peerPaymentAccountResolutionController;
     PKPeerPaymentService *_peerPaymentService;
     BOOL _handleFieldDetection;
     BOOL _welcomeStateEnabled;
@@ -159,6 +158,7 @@
 - (void)presentPassWithUniqueID:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)presentPassWithUniqueID:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)presentPassWithUpdateUserNotificationIdentifier:(id)arg1;
+- (void)presentPaymentPassDetailsWithUniqueID:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)presentPaymentSetupController;
 - (void)presentPaymentSetupInMode:(long long)arg1 referrerIdentifier:(id)arg2;
 - (void)presentPileOffscreen;
@@ -183,6 +183,7 @@
 - (void)updateRegionSupportIfNecessary;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewSafeAreaInsetsDidChange;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 

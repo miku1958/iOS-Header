@@ -21,7 +21,6 @@
 
 - (void)_dispose;
 - (id)init;
-- (id)retain;
 
 @end
 

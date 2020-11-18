@@ -13,5 +13,6 @@
 
 @optional
 - (void)authorizationFooterViewDidChangeConstraints:(PKPaymentAuthorizationFooterView *)arg1;
+- (void)authorizationFooterViewWillChangeConstraints:(PKPaymentAuthorizationFooterView *)arg1;
 @end
 

@@ -6,12 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class UIButton, UILabel, UIScrollView;
+@class UILabel, UIScrollView;
 
 @interface PKPaymentSetupAboutView : UIView
 {
     UILabel *_aboutTextLabel;
-    UIButton *_actionButton;
     UIScrollView *_scrollView;
 }
 
@@ -22,7 +21,6 @@
 - (id)initWithBodyText:(id)arg1;
 - (id)initWithBodyText:(id)arg1 detailButtonText:(id)arg2;
 - (void)layoutSubviews;
-- (void)setButtonAction:(SEL)arg1;
 
 @end
 

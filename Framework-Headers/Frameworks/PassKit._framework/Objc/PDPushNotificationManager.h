@@ -8,7 +8,8 @@
 
 #import <PassKitCore/APSConnectionDelegate-Protocol.h>
 
-@class APSConnection, NSHashTable, NSMutableSet, NSString;
+@class APSConnection, NSArray, NSHashTable, NSLock, NSMutableSet, NSString;
+@protocol OS_dispatch_queue;
 
 @interface PDPushNotificationManager : NSObject <APSConnectionDelegate>
 {
@@ -16,13 +17,17 @@
     NSMutableSet *_registeredTopics;
     NSString *_pushToken;
     NSHashTable *_consumers;
+    NSLock *_consumersLock;
+    NSObject<OS_dispatch_queue> *_replyQueue;
 }
 
+@property (readonly, nonatomic) NSArray *currentConsumers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *pushToken; // @synthesize pushToken=_pushToken;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSArray *topics;
 
 - (void).cxx_destruct;
 - (void)connect;

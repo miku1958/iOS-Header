@@ -14,6 +14,7 @@
     BOOL _ancillary;
     BOOL _prefersPlatformLauncher;
     BOOL _doesNotHandleUIInterruptions;
+    BOOL _allowBackgroundInteraction;
     BOOL _idleAnimationWaitEnabled;
     XCUIApplicationOpenRequest *_lastLaunchRequest;
     XCUIElement *_keyboard;
@@ -25,6 +26,7 @@
 }
 
 @property (readonly) XCAccessibilityElement *accessibilityElement;
+@property BOOL allowBackgroundInteraction; // @synthesize allowBackgroundInteraction=_allowBackgroundInteraction;
 @property BOOL ancillary; // @synthesize ancillary=_ancillary;
 @property (readonly) XCUIApplicationImpl *applicationImpl; // @synthesize applicationImpl=_applicationImpl;
 @property (strong) XCApplicationQuery *applicationQuery; // @synthesize applicationQuery=_applicationQuery;
@@ -52,6 +54,7 @@
 + (id)keyPathsForValuesAffectingBackground;
 + (id)keyPathsForValuesAffectingForeground;
 + (id)keyPathsForValuesAffectingRunning;
++ (id)keyPathsForValuesAffectingState;
 + (id)keyPathsForValuesAffectingSuspended;
 + (id)new;
 - (id)_combinedLaunchArguments;
@@ -77,7 +80,7 @@
 - (void)resolveHandleUIInterruption:(BOOL)arg1;
 - (BOOL)setFauxCollectionViewCellsEnabled:(BOOL)arg1 error:(id *)arg2;
 - (void)terminate;
-- (void)waitForState:(unsigned long long)arg1 timeout:(double)arg2;
+- (BOOL)waitForState:(unsigned long long)arg1 timeout:(double)arg2;
 
 @end
 

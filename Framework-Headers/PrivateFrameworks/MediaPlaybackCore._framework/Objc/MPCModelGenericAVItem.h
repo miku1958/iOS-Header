@@ -8,13 +8,14 @@
 
 #import <MediaPlaybackCore/AVAssetResourceLoaderDelegate-Protocol.h>
 #import <MediaPlaybackCore/AVPlayerItemMetadataOutputPushDelegate-Protocol.h>
+#import <MediaPlaybackCore/ICEnvironmentMonitorObserver-Protocol.h>
 #import <MediaPlaybackCore/MPMusicSubscriptionLeasePlaybackParticipating-Protocol.h>
 #import <MediaPlaybackCore/MPRTCReportingItemSessionCreating-Protocol.h>
 
-@class ICMusicSubscriptionLeaseSession, ICStoreRequestContext, MPCAVItemNetworkPolicyHandler, MPCModelGenericAVItemTimedMetadataRequest, MPCModelGenericAVItemTimedMetadataResponse, MPCPlaybackRequestEnvironment, MPCSuzeLeaseSession, MPMediaLibrary, MPModelGenericObject, MPPropertySet, MPSubscriptionStatusPlaybackInformation, NSArray, NSData, NSNumber, NSObject, NSOperationQueue, NSString, NSURL;
+@class ICMusicSubscriptionLeaseSession, ICStoreRequestContext, MPCModelGenericAVItemTimedMetadataRequest, MPCModelGenericAVItemTimedMetadataResponse, MPCPlaybackRequestEnvironment, MPCSuzeLeaseSession, MPMediaLibrary, MPModelGenericObject, MPPropertySet, MPSubscriptionStatusPlaybackInformation, NSArray, NSData, NSNumber, NSObject, NSOperationQueue, NSString, NSURL;
 @protocol MPCModelPlaybackAssetCacheProviding, MPCReportingIdentityPropertiesLoading, OS_dispatch_queue;
 
-@interface MPCModelGenericAVItem : MPAVItem <AVAssetResourceLoaderDelegate, AVPlayerItemMetadataOutputPushDelegate, MPMusicSubscriptionLeasePlaybackParticipating, MPRTCReportingItemSessionCreating>
+@interface MPCModelGenericAVItem : MPAVItem <AVAssetResourceLoaderDelegate, AVPlayerItemMetadataOutputPushDelegate, ICEnvironmentMonitorObserver, MPMusicSubscriptionLeasePlaybackParticipating, MPRTCReportingItemSessionCreating>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     BOOL _allowsAirPlayFromCloud;
@@ -30,6 +31,8 @@
     BOOL _isAssetSubscriptionProtectionType;
     BOOL _isSubscriptionPolicyContent;
     BOOL _lastPreparedForNonZeroRate;
+    long long _subscriptionLeaseRequestCount;
+    BOOL _didDeferPreventionStatusUpdate;
     MPCSuzeLeaseSession *_suzeLeaseSession;
     BOOL _isAutomaticallyRefreshingSuzeLeaseSession;
     CDUnknownBlockType _firstBecomeActivePlayerItemBlock;
@@ -41,6 +44,9 @@
     id<MPCReportingIdentityPropertiesLoading> _identityPropertiesLoader;
     MPCModelGenericAVItemTimedMetadataRequest *_timedMetadataRequest;
     MPCModelGenericAVItemTimedMetadataResponse *_timedMetadataResponse;
+    NSOperationQueue *_timedMetadataOperationQueue;
+    BOOL _isMusicCellularStreamingAllowed;
+    NSNumber *_maximumSizeAllowedForCellularAccess;
     BOOL _isHLSAsset;
     BOOL _isiTunesStoreStream;
     ICStoreRequestContext *_storeRequestContext;
@@ -48,7 +54,6 @@
     NSURL *_streamingKeyServerURL;
     id _rtcReportingParentHierarchyToken;
     NSString *_rtcReportingServiceIdentifier;
-    MPCAVItemNetworkPolicyHandler *_networkPolicyHandler;
     BOOL supportsRadioTrackActions;
     BOOL _radioPlayback;
     BOOL _radioStreamPlayback;
@@ -86,9 +91,13 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsRadioTrackActions; // @synthesize supportsRadioTrackActions;
 
++ (BOOL)_prefersHighQualityAudioContentForNetworkType:(long long)arg1;
++ (BOOL)_prefersHighQualityVideoContentForNetworkType:(long long)arg1;
 - (void).cxx_destruct;
+- (void)_allowsHighQualityMusicStreamingOnCellularDidChangeNotification:(id)arg1;
 - (BOOL)_allowsStreamingPlayback;
 - (void)_applyLoudnessInfo;
+- (void)_applyPreferredPeakBitRateToPlayerItem:(id)arg1 withItemType:(long long)arg2;
 - (id)_bookmarkTime;
 - (void)_contentTasteControllerDidChangeNotification:(id)arg1;
 - (void)_currentPlaybackRateDidChange:(float)arg1;
@@ -144,6 +153,7 @@
 - (id)copyrightText;
 - (void)dealloc;
 - (double)durationFromExternalMetadata;
+- (void)environmentMonitorDidChangeNetworkType:(id)arg1;
 - (id)externalContentIdentifier;
 - (id)genre;
 - (unsigned long long)genrePersistentID;
@@ -177,6 +187,7 @@
 - (void)notePlaybackFinishedByHittingEnd;
 - (void)nowPlayingInfoCenter:(id)arg1 lyricsForContentItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)persistentID;
+- (id)playbackError;
 - (id)playbackInfo;
 - (BOOL)prefersSeekOverSkip;
 - (void)prepareForRate:(float)arg1 completionHandler:(CDUnknownBlockType)arg2;

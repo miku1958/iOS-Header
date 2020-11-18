@@ -215,7 +215,7 @@
 - (BOOL)isPortraitModeSupportedForDevice:(long long)arg1;
 - (BOOL)isSlomoSupportedForDevice:(long long)arg1;
 - (BOOL)isSupportedMode:(long long)arg1 withDevice:(long long)arg2;
-- (BOOL)isSupportedVideoConfiguration:(long long)arg1 forMode:(long long)arg2 device:(long long)arg3 encodingBehavior:(long long)arg4;
+- (BOOL)isSupportedVideoConfiguration:(long long)arg1 forMode:(long long)arg2 device:(long long)arg3;
 - (BOOL)isTelephotoSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isTimelapseSupportedForDevice:(long long)arg1;
 - (BOOL)isTorchPatternSupportedForDevice:(long long)arg1;

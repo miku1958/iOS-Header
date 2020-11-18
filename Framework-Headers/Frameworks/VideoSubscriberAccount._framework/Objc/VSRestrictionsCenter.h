@@ -25,7 +25,9 @@
 
 + (id)defaultRestrictionsCenter;
 - (void).cxx_destruct;
+- (BOOL)_canInstallAppsAtAll;
 - (void)_updateAccountModificationAllowed;
+- (BOOL)canInstallAppWithRating:(long long)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;

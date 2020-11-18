@@ -12,6 +12,7 @@
 {
 }
 
+@property (readonly, nonatomic, getter=isBreadcrumbDisabled) BOOL breadcrumbDisabled; // @dynamic breadcrumbDisabled;
 @property (readonly, nonatomic) long long medusaDeviceSimulation; // @dynamic medusaDeviceSimulation;
 @property (readonly, nonatomic, getter=isMedusaEnabled) BOOL medusaEnabled; // @dynamic medusaEnabled;
 @property (strong, nonatomic) NSData *mostRecentFloatingApplicationState; // @dynamic mostRecentFloatingApplicationState;

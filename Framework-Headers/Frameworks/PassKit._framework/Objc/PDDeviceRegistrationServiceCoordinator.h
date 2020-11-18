@@ -6,21 +6,42 @@
 
 #import <Foundation/NSObject.h>
 
-@class PDPaymentWebServiceCoordinator, PDPeerPaymentWebServiceCoordinator;
+#import <PassKitCore/PDScheduledActivityClient-Protocol.h>
 
-@interface PDDeviceRegistrationServiceCoordinator : NSObject
+@class NSMutableArray, NSString, PDPaymentWebServiceCoordinator, PDPeerPaymentWebServiceCoordinator;
+@protocol OS_dispatch_queue;
+
+@interface PDDeviceRegistrationServiceCoordinator : NSObject <PDScheduledActivityClient>
 {
+    NSObject<OS_dispatch_queue> *_workQueue;
+    NSMutableArray *_registrationTasks;
+    BOOL _isRegistering;
     PDPaymentWebServiceCoordinator *_paymentWebServiceCoordinator;
     PDPeerPaymentWebServiceCoordinator *_peerPaymentWebServiceCoordinator;
 }
 
-@property (strong, nonatomic) PDPaymentWebServiceCoordinator *paymentWebServiceCoordinator; // @synthesize paymentWebServiceCoordinator=_paymentWebServiceCoordinator;
-@property (strong, nonatomic) PDPeerPaymentWebServiceCoordinator *peerPaymentWebServiceCoordinator; // @synthesize peerPaymentWebServiceCoordinator=_peerPaymentWebServiceCoordinator;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) PDPaymentWebServiceCoordinator *paymentWebServiceCoordinator; // @synthesize paymentWebServiceCoordinator=_paymentWebServiceCoordinator;
+@property (readonly, nonatomic) PDPeerPaymentWebServiceCoordinator *peerPaymentWebServiceCoordinator; // @synthesize peerPaymentWebServiceCoordinator=_peerPaymentWebServiceCoordinator;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_canAutomaticallyRegisterWithWebService:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handleDeviceRegistrationCompleted;
+- (void)_handlePaymentWebServiceContextChanged:(id)arg1;
+- (void)_peerPaymentRegisterWithURL:(id)arg1 paymentWebService:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_performDeviceRegistrationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_performInitialPeerPaymentRegistrationActivity;
+- (void)_schedulePeerPaymentCoordinatorActivities;
+- (BOOL)_shouldAttemptBackgroundPeerPaymentRegistration;
+- (void)dealloc;
+- (id)init;
+- (id)initWithPaymentWebServiceCoordinator:(id)arg1 peerPaymentWebServiceCoordinator:(id)arg2;
 - (void)notePasscodeChanged;
 - (void)performDeviceRegistrationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)performScheduledActivityWithIdentifier:(id)arg1 activityCriteria:(id)arg2 activityContext:(id)arg3;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSDirectoryTraversalOperation.h>
+#import <extension/NSDirectoryTraversalOperation.h>
 
 @class NSMutableSet, NSString;
 

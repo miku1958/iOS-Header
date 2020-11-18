@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSNotificationCenter.h>
+#import <extension/NSNotificationCenter.h>
 
 @interface NSDistributedNotificationCenter : NSNotificationCenter
 {

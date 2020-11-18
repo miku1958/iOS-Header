@@ -124,6 +124,7 @@
 - (void)endHeartRateRecovery;
 - (void)foregroundClientProcessesDidChange:(id)arg1;
 - (void)generatePauseOrResumeRequestWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getCurrentWorkoutSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getFirstPartyWorkoutSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)hasActiveWorkoutServerForClient:(id)arg1;
 - (BOOL)hasAnyActiveWorkouts;

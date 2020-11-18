@@ -11,6 +11,7 @@
 
 @interface HDDeviceInformationService : HDHealthService
 {
+    BOOL _fetchLimitedCharacteristics;
     BOOL _deviceInformationHasBeenLoaded;
     NSMutableDictionary *_characteristics;
     NSMutableDictionary *_propertyValues;
@@ -21,6 +22,7 @@
 
 @property (strong, nonatomic) NSMutableDictionary *characteristics; // @synthesize characteristics=_characteristics;
 @property (nonatomic) BOOL deviceInformationHasBeenLoaded; // @synthesize deviceInformationHasBeenLoaded=_deviceInformationHasBeenLoaded;
+@property (nonatomic) BOOL fetchLimitedCharacteristics; // @synthesize fetchLimitedCharacteristics=_fetchLimitedCharacteristics;
 @property (readonly) NSString *firmwareRevision;
 @property (readonly) NSString *hardwareRevision;
 @property (readonly) NSString *manufacturerName;

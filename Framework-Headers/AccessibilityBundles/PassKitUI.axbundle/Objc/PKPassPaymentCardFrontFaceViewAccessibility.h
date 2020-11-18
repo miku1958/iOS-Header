@@ -13,7 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityIsApplePayCashCard;
 - (id)accessibilityLabel;
+- (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
 
 @end

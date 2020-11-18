@@ -594,7 +594,7 @@
 - (void)_resolveAndUpdatePotentiallyConflictingControls:(BOOL)arg1;
 - (void)_resolvePotentiallyConflictingControlsForGraphConfiguration:(id)arg1 resolvedFlashMode:(long long *)arg2 resolvedHDRMode:(long long *)arg3 resolvedLivePhotoMode:(long long *)arg4;
 - (void)_rotateTopBarAndControlsToOrientation:(long long)arg1 shouldAnimate:(BOOL)arg2;
-- (long long)_sanitizedVideoConfigurationForMode:(long long)arg1 device:(long long)arg2 encodingBehavior:(long long)arg3;
+- (long long)_sanitizedVideoConfigurationForMode:(long long)arg1 device:(long long)arg2;
 - (void)_setEffectFilterType:(long long)arg1 forMode:(long long)arg2;
 - (void)_setLightingType:(long long)arg1 forMode:(long long)arg2;
 - (void)_setModeDisabledForMultitasking:(BOOL)arg1 animateUIChanges:(BOOL)arg2;

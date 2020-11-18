@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSXPCProxyCreating-Protocol.h>
+#import <extension/NSXPCProxyCreating-Protocol.h>
 
 @class NSFileAccessProcessManager;
 @protocol NSFilePresenterXPCInterface><NSXPCProxyCreating;

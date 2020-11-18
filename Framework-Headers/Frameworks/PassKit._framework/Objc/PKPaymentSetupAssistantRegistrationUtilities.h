@@ -11,12 +11,12 @@
 }
 
 + (id)_bridgeContextDefaultLocalCredential;
-+ (void)_bridgeCredentials:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (BOOL)_bridgeNeedsToRun:(unsigned long long *)arg1;
 + (void)_bridgePreflight:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 + (void)_handlePreflightFinishedWithSuccess:(BOOL)arg1 paymentCredentials:(id)arg2 provisioningController:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (BOOL)_macNeedsToRun:(unsigned long long *)arg1;
 + (void)_macPreflight:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
++ (id)_peerPaymentCredentialFromPeerPaymentWebService:(id)arg1;
 + (BOOL)_phoneNeedsToRun:(unsigned long long *)arg1;
 + (void)_phonePreflight:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 + (void)preflightPaymentSetupProvisioningController:(id)arg1 forSetupAssistant:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;

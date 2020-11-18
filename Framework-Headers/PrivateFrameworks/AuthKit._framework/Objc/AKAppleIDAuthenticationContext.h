@@ -77,6 +77,7 @@
     NSNumber *_isAppleIDLoginEnabled;
     NSNumber *_hasEmptyPassword;
     NSSet *_desiredInternalTokens;
+    NSString *_securityUpgradeContext;
     AKAnisetteData *_proxiedDeviceAnisetteData;
     AKAnisetteData *_companionDeviceAnisetteData;
     NSString *_displayString;
@@ -134,6 +135,7 @@
 @property (copy, nonatomic) AKDevice *proxiedDevice;
 @property (strong, nonatomic) AKAnisetteData *proxiedDeviceAnisetteData; // @synthesize proxiedDeviceAnisetteData=_proxiedDeviceAnisetteData;
 @property (copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
+@property (copy, nonatomic) NSString *securityUpgradeContext; // @synthesize securityUpgradeContext=_securityUpgradeContext;
 @property (copy, nonatomic) NSString *serviceIdentifier;
 @property (copy, nonatomic) NSArray *serviceIdentifiers; // @synthesize serviceIdentifiers=_serviceIdentifiers;
 @property (nonatomic) long long serviceType; // @synthesize serviceType=_serviceType;

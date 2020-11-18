@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AssertionServices/BSXPCCoding-Protocol.h>
 #import <AssertionServices/NSCopying-Protocol.h>

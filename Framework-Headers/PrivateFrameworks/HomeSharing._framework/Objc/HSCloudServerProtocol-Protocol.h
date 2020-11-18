@@ -47,6 +47,7 @@
 - (void)isCellularDataRestrictedForMusicWithCompletion:(void (^)(BOOL))arg1;
 - (void)isCellularDataRestrictedForStoreAppsWithCompletion:(void (^)(BOOL))arg1;
 - (void)isCellularDataRestrictedForVideosWithCompletion:(void (^)(BOOL))arg1;
+- (void)isSagaAuthenticatedWithCompletion:(void (^)(NSError *, BOOL))arg1;
 - (void)jaliscoAppsImageDataForStoreID:(NSNumber *)arg1 completion:(void (^)(NSError *, NSData *))arg2;
 - (void)loadArtworkInfoForContainerSagaIDs:(NSArray *)arg1 completion:(void (^)(NSError *, NSArray *))arg2;
 - (void)loadArtworkInfoForPurchaseHistoryIDs:(NSArray *)arg1 completion:(void (^)(NSError *, NSArray *))arg2;

@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCopying-Protocol.h>
-#import <Foundation/NSSecureCoding-Protocol.h>
+#import <extension/NSCopying-Protocol.h>
+#import <extension/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSPredicate, NSString;
 

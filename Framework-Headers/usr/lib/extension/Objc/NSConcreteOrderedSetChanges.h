@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSOrderedSetChanges.h>
+#import <extension/NSOrderedSetChanges.h>
 
 __attribute__((visibility("hidden")))
 @interface NSConcreteOrderedSetChanges : NSOrderedSetChanges

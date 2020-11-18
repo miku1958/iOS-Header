@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSMutableString.h>
+#import <extension/NSMutableString.h>
 
 @class NSData;
 

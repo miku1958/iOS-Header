@@ -7,13 +7,15 @@
 #import <Foundation/NSObject.h>
 
 #import <PassKitCore/PKPaymentOptionsProtocol-Protocol.h>
+#import <PassKitCore/PKPaymentOptionsSynchronizationDelegate-Protocol.h>
 
-@class CNContact, NSDictionary, NSString;
+@class CNContact, NSDictionary, NSString, PKPaymentOptionsSynchronization;
 
-@interface PKPaymentOptionsDefaults : NSObject <PKPaymentOptionsProtocol>
+@interface PKPaymentOptionsDefaults : NSObject <PKPaymentOptionsSynchronizationDelegate, PKPaymentOptionsProtocol>
 {
     int _defaultsChangedNotifyToken;
     unsigned long long _postedNotificationCount;
+    PKPaymentOptionsSynchronization *_optionsSynchronization;
     NSDictionary *_defaultBillingAddresses;
     CNContact *_defaultShippingAddress;
     CNContact *_defaultContactName;
@@ -57,6 +59,7 @@
 - (void)deleteDefaultShippingAddress;
 - (id)init;
 - (void)migrateToSyncable;
+- (void)optionsSynchronizationDidChangeTo:(BOOL)arg1;
 - (void)setDefaultBillingAddress:(id)arg1 forPaymentPass:(id)arg2;
 - (void)setDefaultBillingAddress:(id)arg1 forPrimaryAccountIdentifier:(id)arg2;
 - (void)setDefaultBillingAddress:(id)arg1 forRemotePaymentInstrument:(id)arg2;

@@ -54,8 +54,6 @@
     PKPassView *_frontmostPassView;
     PKGroup *_group;
     PKReusablePassViewQueue *_passViewQueue;
-    double _verticalMotionRelativeValue;
-    double _horizontalMotionRelativeValue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -64,7 +62,6 @@
 @property (strong, nonatomic) PKPassView *frontmostPassView; // @synthesize frontmostPassView=_frontmostPassView;
 @property (readonly, nonatomic) PKGroup *group; // @synthesize group=_group;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) double horizontalMotionRelativeValue; // @synthesize horizontalMotionRelativeValue=_horizontalMotionRelativeValue;
 @property (nonatomic, getter=isModallyPresented) BOOL modallyPresented; // @synthesize modallyPresented=_modallyPresented;
 @property (readonly, nonatomic) struct UIOffset offsetForFrontmostPassWhileStacked;
 @property (readonly, nonatomic) UIPageControl *pageControl;
@@ -72,7 +69,6 @@
 @property (nonatomic) PKReusablePassViewQueue *passViewQueue; // @synthesize passViewQueue=_passViewQueue;
 @property (nonatomic) long long presentationState; // @synthesize presentationState=_presentationState;
 @property (readonly) Class superclass;
-@property (nonatomic) double verticalMotionRelativeValue; // @synthesize verticalMotionRelativeValue=_verticalMotionRelativeValue;
 
 - (void).cxx_destruct;
 - (void)_addPanAndLongPressGestureRecognizers;
@@ -139,7 +135,6 @@
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setDimmer:(double)arg1 animated:(BOOL)arg2;
 - (void)setFrontmostPassViewFromPassIndex:(long long)arg1;
-- (void)setPileMotionEffectsEnabled:(BOOL)arg1;
 - (void)setPresentationState:(long long)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)sizeToFit;

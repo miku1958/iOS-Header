@@ -38,6 +38,7 @@
 - (void)environmentMonitorDidChangeNetworkType:(id)arg1;
 - (id)initWithPlaybackEngine:(id)arg1;
 - (void)recordLyricsViewEvent:(id)arg1;
+- (void)reportUserSeekFromTime:(double)arg1 toTime:(double)arg2;
 
 @end
 

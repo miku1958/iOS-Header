@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSProgress.h>
+#import <extension/NSProgress.h>
 
 @class NSXPCConnection;
 

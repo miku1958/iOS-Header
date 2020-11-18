@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VoiceMemosFramework/__RCWaveformSelectionOverlayAccessibility_super.h>
+#import "__RCWaveformSelectionOverlayAccessibility_super.h"
 
 @interface RCWaveformSelectionOverlayAccessibility : __RCWaveformSelectionOverlayAccessibility_super
 {

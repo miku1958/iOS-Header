@@ -479,6 +479,10 @@ struct __wrap_iter<_PKStrokePoint *> {
     struct _PKStrokePoint *_field1;
 };
 
+struct atomic_flag {
+    _Atomic BOOL _Value;
+};
+
 struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>;
 
 struct pair<long, double>;

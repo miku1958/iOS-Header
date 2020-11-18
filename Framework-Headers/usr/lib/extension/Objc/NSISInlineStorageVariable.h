@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSISVariable.h>
+#import <extension/NSISVariable.h>
 
-#import <Foundation/NSISVariableDelegate-Protocol.h>
+#import <extension/NSISVariableDelegate-Protocol.h>
 
 @class NSString;
 

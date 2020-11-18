@@ -31,6 +31,7 @@
 - (id)initWithJsonString:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToFees:(id)arg1;
+- (id)jsonArrayRepresentation;
 - (id)jsonString;
 - (id)recordTypesAndNames;
 

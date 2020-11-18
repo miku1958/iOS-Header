@@ -6,37 +6,52 @@
 
 #import <PassKitUI/PKPaymentSetupTableViewController.h>
 
-#import <PassKitUI/PKPaymentSetupActivitySpinnerViewControllerProtocol-Protocol.h>
+#import <PassKitUI/PKPaymentSetupActivitySpinnerProtocol-Protocol.h>
+#import <PassKitUI/PKPaymentSetupBrowseProductsViewControllerDelegate-Protocol.h>
+#import <PassKitUI/PKPaymentSetupHideSetupLaterButtonProtocol-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, PKPaymentSetupFooterView, PKPaymentWebService, PKTableHeaderView;
+@class NSMutableArray, NSString, PKPaymentProvisioningController, PKPaymentSetupFooterView, PKTableHeaderView;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPaymentSetupFlowPickerViewController : PKPaymentSetupTableViewController <PKPaymentSetupActivitySpinnerViewControllerProtocol>
+@interface PKPaymentSetupFlowPickerViewController : PKPaymentSetupTableViewController <PKPaymentSetupActivitySpinnerProtocol, PKPaymentSetupBrowseProductsViewControllerDelegate, PKPaymentSetupHideSetupLaterButtonProtocol>
 {
     PKTableHeaderView *_headerView;
     PKPaymentSetupFooterView *_footerView;
     NSMutableArray *_pickerItems;
-    PKPaymentWebService *_webService;
+    BOOL _hideSetupLaterButton;
+    BOOL _allowsManualEntry;
+    PKPaymentProvisioningController *_provisioningController;
     id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
+    long long _setupContext;
 }
 
+@property (nonatomic) BOOL allowsManualEntry; // @synthesize allowsManualEntry=_allowsManualEntry;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PKTableHeaderView *headerView;
-@property (readonly, nonatomic) NSArray *pickerItems;
+@property (nonatomic) BOOL hideSetupLaterButton; // @synthesize hideSetupLaterButton=_hideSetupLaterButton;
+@property (readonly, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
+@property (readonly, nonatomic) long long setupContext; // @synthesize setupContext=_setupContext;
 @property (readonly, weak, nonatomic) id<PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) PKPaymentWebService *webService; // @synthesize webService=_webService;
 
++ (id)_filteredPaymentSetupProducts:(id)arg1 localCredential:(id)arg2;
++ (id)paymentSetupFlowPickerWithSetupDelegate:(id)arg1 context:(long long)arg2 provisioningController:(id)arg3;
 - (void).cxx_destruct;
+- (void)_didSelectProducts:(id)arg1;
 - (void)_setNavigationBarEnabled:(BOOL)arg1;
 - (void)_setupLater:(id)arg1;
+- (void)_terminateSetupFlow;
 - (void)addPickerItem:(id)arg1;
+- (void)browseProductsViewController:(id)arg1 didSelectProduct:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (id)footerView;
 - (void)hideActivitySpinner;
-- (id)initWithWebService:(id)arg1 setupDelegate:(id)arg2 context:(long long)arg3;
+- (id)initWithSetupDelegate:(id)arg1 context:(long long)arg2 provisioningController:(id)arg3;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (id)pickerItems;
+- (void)productSelectionViewController:(id)arg1 didSelectProduct:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)productSelectionViewController:(id)arg1 pushViewController:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)showActivitySpinner;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

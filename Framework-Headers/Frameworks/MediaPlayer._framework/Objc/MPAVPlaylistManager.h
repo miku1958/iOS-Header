@@ -35,6 +35,7 @@
     id<MPAVPlaylistManagerDelegate> _delegate;
 }
 
+@property (readonly, nonatomic) BOOL allowsQueueResetWhenReachingEnd;
 @property (readonly, nonatomic) BOOL allowsUserVisibleUpcomingItems;
 @property (weak, nonatomic) MPAVController *avController; // @synthesize avController=_avController;
 @property (readonly, nonatomic) BOOL canSeek;
@@ -53,6 +54,7 @@
 @property (readonly, nonatomic) MPQueueFeeder *playlistFeeder; // @synthesize playlistFeeder=_playlistFeeder;
 @property (readonly) MPAVQueueCoordinator *queueCoordinator; // @synthesize queueCoordinator=_queueCoordinator;
 @property (nonatomic) long long repeatMode;
+@property (nonatomic) BOOL shouldDeferItemLoading;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long upNextItemCount;
 @property (readonly, nonatomic) BOOL userCanChangeShuffleAndRepeatType;

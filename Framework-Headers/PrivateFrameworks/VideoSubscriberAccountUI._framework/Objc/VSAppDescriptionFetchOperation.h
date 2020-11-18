@@ -10,6 +10,8 @@
 
 @interface VSAppDescriptionFetchOperation : VSAsyncOperation
 {
+    BOOL _needsProductProfile;
+    BOOL _shouldPersonalizeResponse;
     BOOL _shouldPrecomposeIcon;
     NSSet *_appAdamIDs;
     VSAuditToken *_auditToken;
@@ -23,8 +25,10 @@
 @property (strong, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (strong, nonatomic) NSOperationQueue *imageLoadingQueue; // @synthesize imageLoadingQueue=_imageLoadingQueue;
 @property (strong, nonatomic) SSLookupRequest *lookupRequest; // @synthesize lookupRequest=_lookupRequest;
+@property (nonatomic) BOOL needsProductProfile; // @synthesize needsProductProfile=_needsProductProfile;
 @property (nonatomic) struct CGSize preferredArtworkSize; // @synthesize preferredArtworkSize=_preferredArtworkSize;
 @property (strong, nonatomic) VSOptional *result; // @synthesize result=_result;
+@property (nonatomic) BOOL shouldPersonalizeResponse; // @synthesize shouldPersonalizeResponse=_shouldPersonalizeResponse;
 @property (nonatomic) BOOL shouldPrecomposeIcon; // @synthesize shouldPrecomposeIcon=_shouldPrecomposeIcon;
 
 - (void).cxx_destruct;

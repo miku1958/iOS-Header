@@ -25,7 +25,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithGenericObject:(id)arg1 timedMetadataGroups:(id)arg2 storeRequestContext:(id)arg3;
-- (void)performWithResponseHandler:(CDUnknownBlockType)arg1;
+- (id)newOperationWithResponseHandler:(CDUnknownBlockType)arg1;
 
 @end
 

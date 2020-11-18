@@ -86,6 +86,7 @@
 - (void)savePaymentPass:(id)arg1 forDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setDefaultCardUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setDefaultPaymentApplication:(id)arg1 forPassWithUniqueID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setPeerPaymentAccount:(id)arg1 forDevice:(id)arg2;
 - (void)setSharedPaymentWebServiceContext:(id)arg1 forDevice:(id)arg2;
 - (void)setSharedPeerPaymentWebServiceContext:(id)arg1 forDevice:(id)arg2;
 - (id)sharedPaymentWebServiceContext;

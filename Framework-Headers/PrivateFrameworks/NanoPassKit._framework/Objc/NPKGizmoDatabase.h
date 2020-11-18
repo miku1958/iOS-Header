@@ -131,6 +131,7 @@
 - (BOOL)_repairEncodedImagesDuringMigration:(id)arg1;
 - (void)_saveDiffLocked:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)_savePassLocked:(id)arg1 locallyAdded:(BOOL)arg2 wasUpdate:(BOOL *)arg3;
+- (void)_saveTransaction:(id)arg1 forPassWithUniqueID:(id)arg2 withPaymentCredentialType:(long long)arg3 shouldTrim:(BOOL)arg4;
 - (void)_saveTransactionLocked:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)_setCurrentEphemeralTransactionIdentifier:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)_setFelicaTransitAppletStateLocked:(id)arg1 forPassWithUniqueID:(id)arg2;
@@ -177,6 +178,7 @@
 - (id)libraryHashForWatchOSMajorVersion:(unsigned long long)arg1;
 - (id)manifestHashesForWatchOSMajorVersion:(unsigned long long)arg1;
 - (id)passForUniqueID:(id)arg1;
+- (id)passForUniqueID:(id)arg1 includeImageSets:(BOOL)arg2;
 - (id)passUniqueIDForTransactionWithIdentifier:(id)arg1;
 - (id)passUniqueIDForTransactionWithServiceIdentifier:(id)arg1;
 - (id)pendingAddValueDateForPassWithUniqueID:(id)arg1;
@@ -189,6 +191,7 @@
 - (CDUnknownBlockType)restoreBlockForVolatilePassData;
 - (void)saveDiff:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (id)savePass:(id)arg1 isLocalPass:(BOOL)arg2;
+- (void)saveTransaction:(id)arg1 forPass:(id)arg2;
 - (void)saveTransaction:(id)arg1 forPassWithUniqueID:(id)arg2 withPaymentCredentialType:(long long)arg3;
 - (struct sqlite3_stmt *)selectDeletePendingStatement;
 - (struct sqlite3_stmt *)selectPassUniqueIDAsssociateToTransactionWithIdentifierStatement;

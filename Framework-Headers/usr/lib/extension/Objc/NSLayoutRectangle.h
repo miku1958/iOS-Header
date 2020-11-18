@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSLayoutRect.h>
+#import <extension/NSLayoutRect.h>
 
 @class NSLayoutPoint;
 

@@ -9,31 +9,33 @@
 #import <PassKitCore/IDSServiceDelegate-Protocol.h>
 
 @class IDSService, NSArray, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, PKProximityAdvertiser;
-@protocol OS_dispatch_queue, PKIDSManagerDataSource, PKIDSManagerDelegate;
+@protocol OS_dispatch_queue, PKIDSManagerDataSource;
 
 @interface PKIDSManager : NSObject <IDSServiceDelegate>
 {
-    NSObject<OS_dispatch_queue> *_idsQueue;
     NSMutableArray *_remoteDevices;
     NSMutableArray *_paymentRequests;
     NSMutableDictionary *_completionHandlers;
     NSMutableDictionary *_thumbnailCompletionHandlers;
     PKProximityAdvertiser *_proximityAdvertiser;
     NSHashTable *_delegates;
-    NSObject<OS_dispatch_queue> *_stateQueue;
+    NSObject<OS_dispatch_queue> *_callbackQueue;
+    int _requestCLTMThrottleUncapToken;
     id<PKIDSManagerDataSource> _dataSource;
     NSMutableArray *_pendingCancellations;
     NSMutableDictionary *_pendingDiscoveries;
     IDSService *_service;
     NSMutableDictionary *_recentlySeenUUIDs;
+    NSObject<OS_dispatch_queue> *_internalQueue;
 }
 
 @property (nonatomic) id<PKIDSManagerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, weak, nonatomic) NSArray<PKIDSManagerDelegate> *delegates;
+@property (readonly, nonatomic) NSArray *delegates;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, weak, nonatomic) NSArray *paymentRequests;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
+@property (readonly, nonatomic) NSArray *paymentRequests;
 @property (strong, nonatomic) NSMutableArray *pendingCancellations; // @synthesize pendingCancellations=_pendingCancellations;
 @property (strong, nonatomic) NSMutableDictionary *pendingDiscoveries; // @synthesize pendingDiscoveries=_pendingDiscoveries;
 @property (strong, nonatomic) NSMutableDictionary *recentlySeenUUIDs; // @synthesize recentlySeenUUIDs=_recentlySeenUUIDs;
@@ -43,10 +45,7 @@
 
 - (void).cxx_destruct;
 - (void)_archiveDevicesToDisk;
-- (BOOL)_deviceIsRegistered:(id)arg1;
 - (id)_fetchPaymentInstruments;
-- (BOOL)_hasRegisteredAccounts;
-- (void)_logCloudPairingState;
 - (void)_paymentCancellationReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)_paymentClientUpdateReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)_paymentDiscoveryRequestReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
@@ -57,15 +56,25 @@
 - (void)_paymentResultReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)_paymentSetupRequestReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)_populateDevicesIfNeeded;
+- (void)_postCTLMThrottleUncapNotification;
 - (id)_preparePaymentDeviceResponse;
 - (void)_queue_addThumbnailCompletionHandler:(CDUnknownBlockType)arg1 forKey:(id)arg2;
+- (id)_queue_cancelRemotePaymentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)_queue_deviceIsRegistered:(id)arg1;
+- (BOOL)_queue_hasRegisteredAccounts;
+- (BOOL)_queue_hasRemoteDevices;
+- (void)_queue_logCloudPairingState;
 - (void)_queue_removeThumbnailCompletionHandlersForKeys:(id)arg1;
+- (id)_queue_requestForIdentifier:(id)arg1;
+- (void)_queue_sendDeviceDiscoveryRequestToAllDevicesWithProximity:(BOOL)arg1;
+- (void)_queue_sendDeviceDiscoveryRequestWithProximity:(BOOL)arg1 devices:(id)arg2;
+- (void)_queue_sendDiscoveryResponse:(id)arg1 toDeviceWithFromID:(id)arg2;
+- (void)_registerCTLMThrottleUncapNotification;
 - (void)_registerListeners;
 - (id)_remoteDevicesWithArchive;
-- (void)_sendDeviceDiscoveryRequestWithProximity:(BOOL)arg1 devices:(id)arg2;
-- (void)_sendDiscoveryResponse:(id)arg1 toDeviceWithFromID:(id)arg2;
 - (void)_thumbnailRequestReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)_thumbnailResponseReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
+- (void)_unregisterCTLMThrottleUncapNotification;
 - (void)addDelegate:(id)arg1;
 - (id)cancelRemotePaymentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;

@@ -11,6 +11,7 @@
 - (void)__performUpdateWithReplyHandler:(void (^)(unsigned long long, BOOL))arg1;
 - (void)__requestEncodedLayerTreeToURL:(NSURL *)arg1 withCodingImageFormat:(NSString *)arg2 withReplyHandler:(void (^)(NSError *))arg3;
 - (void)__updateVisibilityState:(long long)arg1;
+- (void)__updateVisibleFrame:(struct CGRect)arg1 withReplyHandler:(void (^)(BOOL))arg2;
 
 @optional
 - (void)__setActiveDisplayMode:(long long)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSKeyValueMutableOrderedSet.h>
+#import <extension/NSKeyValueMutableOrderedSet.h>
 
 __attribute__((visibility("hidden")))
 @interface NSKeyValueIvarMutableOrderedSet : NSKeyValueMutableOrderedSet

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/PKModularService-Protocol.h>
+#import <extension/PKModularService-Protocol.h>
 
 @class NSDictionary, NSString;
 

@@ -175,6 +175,7 @@
 @property (readonly, nonatomic) unsigned long long persistentID;
 @property (readonly, nonatomic) double playableDuration;
 @property (readonly, nonatomic) double playableDurationIfAvailable;
+@property (readonly, copy, nonatomic) NSError *playbackError;
 @property (readonly, copy, nonatomic) NSDictionary *playbackInfo;
 @property (readonly, nonatomic) long long playbackMode; // @synthesize playbackMode=_playbackMode;
 @property (weak, nonatomic) MPAVController *player; // @synthesize player=_player;

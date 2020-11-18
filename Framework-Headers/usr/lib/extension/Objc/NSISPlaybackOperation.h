@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSISVariableDelegate-Protocol.h>
+#import <extension/NSISVariableDelegate-Protocol.h>
 
 @class NSMutableDictionary, NSMutableSet, NSString;
 

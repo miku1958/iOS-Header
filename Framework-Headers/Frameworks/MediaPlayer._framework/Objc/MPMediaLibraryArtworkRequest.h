@@ -14,15 +14,15 @@
     NSObject<OS_dispatch_queue> *_accessSerialQueue;
     unsigned long long _mediaType;
     BOOL _hasRetrievedTokens;
-    ML3MusicLibrary *_library;
-    long long _artworkType;
-    unsigned long long _libraryID;
-    long long _entityType;
-    MPMediaLibraryArtwork *_libraryArtwork;
     double _retrievalTime;
     NSString *_availableArtworkToken;
     NSString *_fetchableArtworkToken;
     NSNumber *_fetchableArtworkSource;
+    long long _entityType;
+    unsigned long long _libraryID;
+    long long _artworkType;
+    ML3MusicLibrary *_library;
+    MPMediaLibraryArtwork *_libraryArtwork;
 }
 
 @property (readonly, nonatomic) long long artworkType; // @synthesize artworkType=_artworkType;
@@ -31,13 +31,13 @@
 @property (copy, nonatomic) NSNumber *fetchableArtworkSource; // @synthesize fetchableArtworkSource=_fetchableArtworkSource;
 @property (copy, nonatomic) NSString *fetchableArtworkToken; // @synthesize fetchableArtworkToken=_fetchableArtworkToken;
 @property (readonly, nonatomic) ML3MusicLibrary *library; // @synthesize library=_library;
-@property (strong, nonatomic) MPMediaLibraryArtwork *libraryArtwork; // @synthesize libraryArtwork=_libraryArtwork;
+@property (readonly, nonatomic) MPMediaLibraryArtwork *libraryArtwork; // @synthesize libraryArtwork=_libraryArtwork;
 @property (readonly, nonatomic) unsigned long long libraryID; // @synthesize libraryID=_libraryID;
 @property (readonly, nonatomic) unsigned long long mediaType;
 @property (nonatomic) double retrievalTime; // @synthesize retrievalTime=_retrievalTime;
 
 - (void).cxx_destruct;
-- (void)_updateTokens;
+- (void)_onQueue_updateTokens;
 - (void)clearFailedFetchableToken;
 - (id)description;
 - (unsigned long long)hash;
@@ -46,6 +46,7 @@
 - (id)initWithML3Library:(id)arg1 identifier:(unsigned long long)arg2 entityType:(long long)arg3 artworkType:(long long)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (void)promoteFetchableArtworkTokenIfNeeded;
+- (void)setLibraryArtwork:(id)arg1;
 
 @end
 

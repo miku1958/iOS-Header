@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSMutableCharacterSet.h>
+#import <extension/NSMutableCharacterSet.h>
 
 __attribute__((visibility("hidden")))
 @interface NSCFCharacterSet : NSMutableCharacterSet

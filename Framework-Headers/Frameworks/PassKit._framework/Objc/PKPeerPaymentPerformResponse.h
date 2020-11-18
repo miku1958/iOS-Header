@@ -6,9 +6,21 @@
 
 #import <PassKitCore/PKPeerPaymentStatusResponse.h>
 
+@class NSUUID;
+
 @interface PKPeerPaymentPerformResponse : PKPeerPaymentStatusResponse
 {
+    NSUUID *_deviceScoreIdentifier;
 }
+
+@property (readonly, copy, nonatomic) NSUUID *deviceScoreIdentifier; // @synthesize deviceScoreIdentifier=_deviceScoreIdentifier;
+
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithData:(id)arg1;
+- (id)initWithData:(id)arg1 deviceScoreIdentifier:(id)arg2;
 
 @end
 

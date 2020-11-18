@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <Radio/ISURLBagObserver-Protocol.h>
+#import <Radio/ICEnvironmentMonitorObserver-Protocol.h>
 #import <Radio/MCProfileConnectionObserver-Protocol.h>
 
 @class NSNumber, NSString;
 @protocol OS_dispatch_queue;
 
-@interface RadioAvailabilityController : NSObject <ISURLBagObserver, MCProfileConnectionObserver>
+@interface RadioAvailabilityController : NSObject <ICEnvironmentMonitorObserver, MCProfileConnectionObserver>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_calloutSerialQueue;
@@ -39,8 +39,8 @@
 - (void)_updateRadioAvailabilityAllowingNotifications:(BOOL)arg1;
 - (void)_updateRadioAvailabilityWithStoreBagDictionary:(id)arg1 error:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_userDefaultsDomain;
-- (void)bagDidChange:(id)arg1;
 - (void)dealloc;
+- (void)environmentMonitorDidChangeNetworkReachability:(id)arg1;
 - (void)getRadioAvailabilityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;

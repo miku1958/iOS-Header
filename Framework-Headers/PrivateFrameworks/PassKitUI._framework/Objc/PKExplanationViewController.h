@@ -4,27 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <PassKitUI/PKViewController.h>
 
 #import <PassKitUI/PKPaymentSetupPrivacyFooterViewDelegate-Protocol.h>
 
 @class PKExplanationView;
+@protocol PKExplanationViewControllerDelegate;
 
-@interface PKExplanationViewController : UIViewController <PKPaymentSetupPrivacyFooterViewDelegate>
+@interface PKExplanationViewController : PKViewController <PKPaymentSetupPrivacyFooterViewDelegate>
 {
     BOOL _showCancelButton;
     BOOL _showDoneButton;
+    id<PKExplanationViewControllerDelegate> _explanationViewControllerDelegate;
     long long _context;
     PKExplanationView *_explanationView;
 }
 
 @property (readonly, nonatomic) long long context; // @synthesize context=_context;
 @property (readonly, nonatomic) PKExplanationView *explanationView; // @synthesize explanationView=_explanationView;
+@property (weak, nonatomic) id<PKExplanationViewControllerDelegate> explanationViewControllerDelegate; // @synthesize explanationViewControllerDelegate=_explanationViewControllerDelegate;
 @property (nonatomic) BOOL showCancelButton; // @synthesize showCancelButton=_showCancelButton;
 @property (nonatomic) BOOL showDoneButton; // @synthesize showDoneButton=_showDoneButton;
 
 - (void).cxx_destruct;
+- (void)_cancelPressed;
 - (void)_dismissViewController;
+- (void)_donePressed;
 - (id)init;
 - (id)initWithContext:(long long)arg1;
 - (void)loadView;

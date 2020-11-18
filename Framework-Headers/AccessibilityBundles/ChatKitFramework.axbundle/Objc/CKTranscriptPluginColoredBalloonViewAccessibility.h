@@ -15,7 +15,11 @@
 + (id)safeCategoryTargetClassName;
 - (id)_axBalloonContentDescription;
 - (id)_axChatItemPluginPayload;
+- (id)accessibilityElements;
 - (id)accessibilityLabel;
+- (id)contentElement;
+- (BOOL)isAccessibilityElement;
+- (void)setContentElement:(id)arg1;
 
 @end
 

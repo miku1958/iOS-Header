@@ -47,7 +47,6 @@ __attribute__((visibility("hidden")))
 - (void)clientRemote_deliverDiscoveryHealthService:(id)arg1 toClient:(unsigned long long)arg2 finished:(BOOL)arg3 withError:(id)arg4;
 - (void)clientRemote_deliverSessionCharacteristics:(id)arg1 forService:(id)arg2 toClient:(unsigned long long)arg3 withError:(id)arg4;
 - (void)clientRemote_deliverSessionHealthServiceStatus:(long long)arg1 toClient:(unsigned long long)arg2 finished:(BOOL)arg3 withError:(id)arg4;
-- (void)clientRemote_deliverSessionTransitoryData:(id)arg1 toClient:(unsigned long long)arg2 withError:(id)arg3;
 - (void)endBluetoothStatusUpdates;
 - (void)endHealthServiceDiscovery:(id)arg1;
 - (void)endHealthServiceSession:(id)arg1;

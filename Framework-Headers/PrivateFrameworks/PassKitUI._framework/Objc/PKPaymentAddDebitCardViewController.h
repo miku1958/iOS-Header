@@ -9,12 +9,12 @@
 #import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupDelegate-Protocol.h>
 
-@class NSString, PKPaymentWebService, UIImage;
+@class NSString, PKPaymentProvisioningController, UIImage;
 @protocol PKPaymentSetupViewControllerDelegate;
 
 @interface PKPaymentAddDebitCardViewController : PKExplanationViewController <PKExplanationViewDelegate, PKPaymentSetupDelegate>
 {
-    PKPaymentWebService *_webService;
+    PKPaymentProvisioningController *_provisioningController;
     id<PKPaymentSetupViewControllerDelegate> _delegate;
     UIImage *_passSnapShot;
 }
@@ -25,16 +25,17 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_completeAddDebitCardFlow;
+- (void)_handleNextStep;
 - (void)_handleProvisioningError:(id)arg1;
 - (id)_paymentSetupNavigationControllerForProvisioningController:(id)arg1;
 - (void)_presentPaymentSetupController;
 - (void)_setNavigationBarEnabled:(BOOL)arg1;
 - (void)_setViewEnabledState:(BOOL)arg1;
 - (void)_setupLater;
+- (void)_terminateSetupFlow;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
-- (id)initWithPaymentWebService:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 passSnapshot:(id)arg4;
+- (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 passSnapshot:(id)arg4;
 - (void)paymentSetupDidFinish:(id)arg1;
 - (void)viewDidLoad;
 

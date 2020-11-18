@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
         unsigned int implementsMarginInsets:1;
         unsigned int implementsActiveDisplayModeDidChange:1;
         unsigned int implementsDidBecomeForeground:1;
+        unsigned int implementsVisibleFrameDidChange:1;
     } _contentProvidingViewControllerFlags;
     UIViewController<NCWidgetProvidingPrivate> *_contentProvidingViewController;
     long long _visibilityState;
@@ -57,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)__setActiveDisplayMode:(long long)arg1;
 - (void)__setMaximumSize:(struct CGSize)arg1 forDisplayMode:(long long)arg2;
 - (void)__updateVisibilityState:(long long)arg1;
+- (void)__updateVisibleFrame:(struct CGRect)arg1 withReplyHandler:(CDUnknownBlockType)arg2;
 - (long long)_clientLargestSupportedDisplayMode;
 - (void)_clientLargestSupportedDisplayModeDidChange;
 - (double)_clientPreferredContentHeight;
@@ -76,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (void)_setContentProvidingViewController:(id)arg1;
 - (void)_setMaximumWidth:(double)arg1 forDisplayMode:(long long)arg2;
 - (void)_setVisibilityState:(long long)arg1 force:(BOOL)arg2;
+- (BOOL)_setVisibleFrame:(struct CGRect)arg1;
 - (BOOL)_shouldRemoveViewFromHierarchyOnDisappear;
 - (id)_widgetExtensionContext;
 - (void)beginRequestWithExtensionContext:(id)arg1;

@@ -74,7 +74,6 @@
 @property (readonly, nonatomic) long long slomoConfiguration; // @synthesize slomoConfiguration=_slomoConfiguration;
 @property (nonatomic) long long squareModeLastCapturedEffectFilterType; // @synthesize squareModeLastCapturedEffectFilterType=_squareModeLastCapturedEffectFilterType;
 @property (readonly, nonatomic) long long videoConfiguration; // @synthesize videoConfiguration=_videoConfiguration;
-@property (readonly, nonatomic) long long videoEncodingBehavior;
 
 + (id)_defaultCaptureConfiguration;
 + (BOOL)_fallBackToCameraDefaultsForBundleIdentifier:(id)arg1;
@@ -87,6 +86,7 @@
 - (id)filterTypesForMode:(long long)arg1;
 - (BOOL)readPreferencesWithLaunchOptions:(id)arg1 emulationMode:(long long)arg2 callActive:(BOOL)arg3;
 - (BOOL)shouldResetCaptureConfiguration;
+- (long long)videoEncodingBehaviorForConfiguration:(long long)arg1;
 - (void)writePreferences;
 
 @end

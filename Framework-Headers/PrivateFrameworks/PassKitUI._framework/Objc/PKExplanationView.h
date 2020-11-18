@@ -8,7 +8,7 @@
 
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 
-@class NSString, PKPaymentSetupDockView, PKPaymentSetupPrivacyFooterView, UIActivityIndicatorView, UIImage, UIImageView, UILabel, UIScrollView, _UIBackdropView;
+@class NSString, PKPaymentSetupDockView, PKPaymentSetupPrivacyFooterView, UIActivityIndicatorView, UIFont, UIImage, UIImageView, UILabel, UIScrollView, _UIBackdropView;
 @protocol PKExplanationViewDelegate;
 
 @interface PKExplanationView : UIView <UIScrollViewDelegate>
@@ -32,15 +32,18 @@
     double _topMargin;
     BOOL _forceShowSetupLaterButton;
     BOOL _hideTitleText;
+    BOOL _bodyTextIsLeftAlgined;
     id<PKExplanationViewDelegate> _delegate;
     UIImage *_image;
     UIView *_heroView;
+    UIFont *_titleFont;
     NSString *_bodyText;
     UIImageView *_logoImageView;
 }
 
 @property (readonly, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property (copy, nonatomic) NSString *bodyText; // @synthesize bodyText=_bodyText;
+@property (nonatomic) BOOL bodyTextIsLeftAlgined; // @synthesize bodyTextIsLeftAlgined=_bodyTextIsLeftAlgined;
 @property (readonly, nonatomic) UIImageView *checkmarkView; // @synthesize checkmarkView=_checkmarkView;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKExplanationViewDelegate> delegate; // @synthesize delegate=_delegate;
@@ -56,6 +59,7 @@
 @property (readonly, nonatomic) PKPaymentSetupPrivacyFooterView *privacyView;
 @property (nonatomic) BOOL showPrivacyView; // @synthesize showPrivacyView=_showPrivacyView;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
 @property (copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
 @property (nonatomic) double topMargin; // @synthesize topMargin=_topMargin;
 

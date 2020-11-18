@@ -20,6 +20,7 @@
 - (BOOL)pkui_setBounds:(struct CGRect)arg1 position:(struct CGPoint)arg2 animated:(BOOL)arg3;
 - (BOOL)pkui_setFrame:(struct CGRect)arg1 animated:(BOOL)arg2;
 - (void)pkui_shakeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)pkui_smallShakeWithCompletion:(CDUnknownBlockType)arg1;
 - (id)pkui_translationAnimation;
 - (id)pkui_viewControllerFromResponderChain;
 @end

@@ -84,6 +84,7 @@
 - (void)_updateMusicPlayerControllerQueueWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_willFinishReloadWithQueueFeeder:(id)arg1 fromPlaybackContext:(id)arg2;
 - (void)addPlaybackContext:(id)arg1 toQueueWithInsertionType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)allowsQueueResetWhenReachingEnd;
 - (BOOL)canSkipToPreviousItemForItem:(id)arg1;
 - (void)clearHardQueue;
 - (void)clearSoftQueue;

@@ -6,11 +6,13 @@
 
 #import <PassKitCore/PKPeerPaymentWebServiceResponse.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, PKPeerPaymentAccount;
 
 @interface PKPeerPaymentIdentityVerificationResponse : PKPeerPaymentWebServiceResponse
 {
     BOOL _complete;
+    BOOL _manuallyTriggered;
+    PKPeerPaymentAccount *_account;
     NSString *_contextLocalizedTitle;
     NSString *_contextLocalizedDescription;
     NSString *_localizedTitle;
@@ -22,6 +24,7 @@
 }
 
 @property (readonly, nonatomic) NSArray *acceptableDocuments; // @synthesize acceptableDocuments=_acceptableDocuments;
+@property (readonly, nonatomic) PKPeerPaymentAccount *account; // @synthesize account=_account;
 @property (readonly, nonatomic) BOOL complete; // @synthesize complete=_complete;
 @property (readonly, copy, nonatomic) NSString *contextLocalizedDescription; // @synthesize contextLocalizedDescription=_contextLocalizedDescription;
 @property (readonly, copy, nonatomic) NSString *contextLocalizedTitle; // @synthesize contextLocalizedTitle=_contextLocalizedTitle;
@@ -29,6 +32,7 @@
 @property (readonly, copy, nonatomic) NSString *encryptionVersion; // @synthesize encryptionVersion=_encryptionVersion;
 @property (readonly, copy, nonatomic) NSString *localizedDescription; // @synthesize localizedDescription=_localizedDescription;
 @property (readonly, copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
+@property (nonatomic) BOOL manuallyTriggered; // @synthesize manuallyTriggered=_manuallyTriggered;
 @property (readonly, copy, nonatomic) NSArray *requiredFieldsByPage; // @synthesize requiredFieldsByPage=_requiredFieldsByPage;
 
 - (void).cxx_destruct;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSProgressPublisher-Protocol.h>
+#import <extension/NSProgressPublisher-Protocol.h>
 
 @class NSDictionary, NSLock, NSMutableDictionary, NSMutableSet, NSNumber, NSString, NSURL;
 

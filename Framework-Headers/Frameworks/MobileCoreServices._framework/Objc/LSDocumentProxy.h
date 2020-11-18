@@ -46,7 +46,7 @@
 - (id)applicationsAvailableForOpeningFromAirDropWithError:(id *)arg1;
 - (id)applicationsAvailableForOpeningWithError:(id *)arg1;
 - (id)applicationsAvailableForOpeningWithHandlerRanks:(id)arg1 error:(id *)arg2;
-- (id)applicationsAvailableForOpeningWithTypeDeclarer:(BOOL)arg1 style:(unsigned char)arg2 error:(id *)arg3;
+- (id)applicationsAvailableForOpeningWithTypeDeclarer:(BOOL)arg1 style:(unsigned char)arg2 XPCConnection:(id)arg3 error:(id *)arg4;
 - (void)dealloc;
 - (id)debugDescription;
 - (id)description;

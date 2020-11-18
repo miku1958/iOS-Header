@@ -107,6 +107,7 @@
 - (CDUnknownBlockType)sampleAuthorizationFilter;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
+- (id)sanitizedSampleForQueryClient:(id)arg1;
 - (void)scheduleDatabaseAccessOnQueueWithBlock:(CDUnknownBlockType)arg1;
 - (void)setQueryDidFinishHandler:(CDUnknownBlockType)arg1;
 - (void)setShouldPause:(BOOL)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSDeserializerStream-Protocol.h>
+#import <extension/NSDeserializerStream-Protocol.h>
 
 @interface NSAKDeserializerStream : NSObject <NSDeserializerStream>
 {

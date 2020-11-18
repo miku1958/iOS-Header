@@ -146,6 +146,7 @@
 - (BOOL)isSyncingRestoringResettingOrUpdatingWithServerInstance:(id)arg1;
 - (BOOL)isSystemAppFrontmostExcludingSiri:(BOOL)arg1 withServerInstance:(id)arg2;
 - (BOOL)isSystemAppShowingAnAlertWithServerInstance:(id)arg1;
+- (BOOL)isSystemGestureActiveWithServerInstance:(id)arg1;
 - (BOOL)isSystemSleepingWithServerInstance:(id)arg1;
 - (BOOL)isVoiceControlRunningWithServerInstance:(id)arg1;
 - (void)launchApplication:(id)arg1;
@@ -171,6 +172,7 @@
 - (void)serverInstance:(id)arg1 pauseMedia:(BOOL)arg2 forBundleId:(id)arg3;
 - (BOOL)serverInstance:(id)arg1 performMedusaGesture:(unsigned long long)arg2;
 - (void)serverInstance:(id)arg1 setOrientationLocked:(BOOL)arg2;
+- (void)serverInstance:(id)arg1 setReachabilityEnabled:(BOOL)arg2;
 - (void)serverInstance:(id)arg1 showAlertType:(long long)arg2 withHandler:(CDUnknownBlockType)arg3 withData:(id)arg4;
 - (void)serverInstance:(id)arg1 showControlCenter:(BOOL)arg2;
 - (BOOL)serverInstance:(id)arg1 showNotificationCenter:(BOOL)arg2;

@@ -18,10 +18,10 @@
 - (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxyWithFailureHandler:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxyWithSemaphore:(id)arg1;
-- (void)allItemsOfClassType:(Class)arg1 storeLocally:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)fetchAndStoreRecordsForPaymentPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)allTransactionsAndStoreLocally:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchAndStoreRecordsForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
-- (void)removeItemsWithRecordNames:(id)arg1 itemClass:(Class)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)removeTransactionsWithRecordNames:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resetContainerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)simulateCloudStorePushWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateCloudStoreWithLocalItems:(id)arg1 recordSpecificKeys:(id)arg2 completion:(CDUnknownBlockType)arg3;

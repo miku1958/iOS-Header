@@ -52,7 +52,9 @@
 - (id)initWithMediaRemoteDictionary:(id)arg1 bundleID:(id)arg2 accountID:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToSummary:(id)arg1;
-- (BOOL)isEqualToSummaryExceptForCursor:(id)arg1;
+- (BOOL)isEqualToSummaryExcludingCursor:(id)arg1;
+- (BOOL)isEqualToSummaryExcludingTimestamp:(id)arg1;
+- (BOOL)isSameContent:(id)arg1;
 
 @end
 

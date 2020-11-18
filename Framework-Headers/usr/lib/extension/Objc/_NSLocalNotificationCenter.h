@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSDistributedNotificationCenter.h>
+#import <extension/NSDistributedNotificationCenter.h>
 
 __attribute__((visibility("hidden")))
 @interface _NSLocalNotificationCenter : NSDistributedNotificationCenter

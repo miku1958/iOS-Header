@@ -33,7 +33,6 @@
 
 - (void).cxx_destruct;
 - (BOOL)_isEqualToCredential:(id)arg1;
-- (long long)compare:(id)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;

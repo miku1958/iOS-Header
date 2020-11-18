@@ -66,7 +66,7 @@
 - (id)_bulletinWithPublisherBulletinID:(id)arg1 recordID:(id)arg2 sectionID:(id)arg3;
 - (BOOL)_enqueuBulletinUpdate:(unsigned long long)arg1 bulletin:(id)arg2 feed:(unsigned long long)arg3;
 - (void)_handleAddBulletin:(id)arg1 feed:(unsigned long long)arg2 shouldPlayLightsAndSirens:(BOOL)arg3 performedWithSuccess:(BOOL)arg4 sendAttemptTime:(id)arg5 connectionStatus:(unsigned long long)arg6 isGizmoReady:(BOOL)arg7 shouldSendReplyIfNeeded:(BOOL)arg8 replyToken:(id)arg9;
-- (void)_handleDidPlayLightsAndSirens:(BOOL)arg1 finalReply:(BOOL)arg2 replyToken:(id)arg3;
+- (void)_handleDidPlayLightsAndSirens:(BOOL)arg1 forBulletin:(id)arg2 inPhoneSection:(id)arg3 finalReply:(BOOL)arg4 replyToken:(id)arg5;
 - (void)_handleDidPlayLightsAndSirens:(BOOL)arg1 forBulletin:(id)arg2 inPhoneSection:(id)arg3 transmissionDate:(id)arg4 receptionDate:(id)arg5 fromGizmo:(BOOL)arg6 finalReply:(BOOL)arg7 replyToken:(id)arg8;
 - (void)_handleInitialSyncStateCompleteChanged:(id)arg1;
 - (void)_handleSyncStateChanged:(id)arg1;

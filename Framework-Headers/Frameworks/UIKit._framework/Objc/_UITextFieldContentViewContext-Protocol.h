@@ -6,8 +6,11 @@
 
 #import <UIKit/_UITextFieldContent_Internal-Protocol.h>
 
+@class UITextField;
+
 @protocol _UITextFieldContentViewContext <_UITextFieldContent_Internal>
 - (BOOL)_isPasscodeStyle;
+- (UITextField *)_ownerField;
 - (double)_passcodeStyleAlpha;
 - (struct _NSRange)_unobscuredSecureRange;
 - (struct CGPoint)textContainerOrigin;

@@ -172,6 +172,7 @@
 - (BOOL)isDaemonIdle;
 - (BOOL)isPaired;
 - (BOOL)isWatchSetupPushActive;
+- (void)keepPhoneUnlockedInternalTestSPI:(CDUnknownBlockType)arg1;
 - (long long)maxPairedDeviceCount;
 - (long long)minQuickSwitchCompatibilityVersion;
 - (void)notifyActivationCompleted:(id)arg1 withSuccess:(BOOL)arg2;

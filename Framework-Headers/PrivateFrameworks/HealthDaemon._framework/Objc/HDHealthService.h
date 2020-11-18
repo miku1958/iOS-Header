@@ -74,7 +74,6 @@
 - (void)setWritableCharacteristic:(id)arg1;
 - (BOOL)supportsOperation:(id)arg1;
 - (BOOL)supportsWritingCharacteristic:(id)arg1;
-- (void)transitoryDataReceived:(id)arg1 withError:(id)arg2;
 - (void)writeCharacteristic:(id)arg1 expectResponse:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

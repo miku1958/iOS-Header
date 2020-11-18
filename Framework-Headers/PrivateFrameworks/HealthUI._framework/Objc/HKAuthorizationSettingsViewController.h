@@ -24,6 +24,7 @@
     long long _style;
     NSString *_updateDescription;
     NSString *_shareDescription;
+    NSString *_researchStudyUsageDescription;
     NSSet *_typesToShare;
     NSSet *_typesToRead;
     HKDisplayCategoryController *_displayCategoryController;
@@ -42,6 +43,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property (readonly) BOOL isPrompting;
+@property (copy, nonatomic) NSString *researchStudyUsageDescription; // @synthesize researchStudyUsageDescription=_researchStudyUsageDescription;
 @property (copy, nonatomic) NSString *shareDescription; // @synthesize shareDescription=_shareDescription;
 @property (strong, nonatomic) HKSource *source; // @synthesize source=_source;
 @property (strong, nonatomic) HKSourceAuthorizationController *sourceAuthorizationController; // @synthesize sourceAuthorizationController=_sourceAuthorizationController;
@@ -60,6 +62,7 @@
 - (void)_finishWithError:(id)arg1;
 - (BOOL)_isTypeEnabledAtIndexPath:(id)arg1;
 - (id)_localizedNameForSection:(long long)arg1 type:(id)arg2;
+- (id)_openAppCell;
 - (BOOL)_shouldDisplayHealthRecordsRequests;
 - (BOOL)_shouldDisplayReadingSection;
 - (BOOL)_shouldDisplaySharingSection;

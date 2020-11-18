@@ -6,7 +6,7 @@
 
 #import <PassKitUI/PKTableViewCell.h>
 
-@class CNAvatarView, NSString, UIColor, UIFont, UILabel;
+@class CNAvatarView, NSAttributedString, NSString, UIColor, UIFont, UILabel;
 
 @interface PKPaymentTransactionTableCell : PKTableViewCell
 {
@@ -19,13 +19,12 @@
     UIColor *_primaryColor;
     UIColor *_secondaryColor;
     UIColor *_tertiaryColor;
-    UIColor *_transactionValueColor;
     UIFont *_primaryFont;
-    UIFont *_transactionValueFont;
+    UIFont *_secondaryFont;
     NSString *_primaryString;
     NSString *_secondaryString;
     NSString *_tertiaryString;
-    NSString *_transactionValueString;
+    NSAttributedString *_transactionValueAttributedText;
     NSString *_transactionIdentifier;
     CNAvatarView *_avatarView;
 }
@@ -35,29 +34,27 @@
 @property (strong, nonatomic) UIFont *primaryFont; // @synthesize primaryFont=_primaryFont;
 @property (strong, nonatomic) NSString *primaryString; // @synthesize primaryString=_primaryString;
 @property (strong, nonatomic) UIColor *secondaryColor; // @synthesize secondaryColor=_secondaryColor;
+@property (strong, nonatomic) UIFont *secondaryFont; // @synthesize secondaryFont=_secondaryFont;
 @property (strong, nonatomic) NSString *secondaryString; // @synthesize secondaryString=_secondaryString;
 @property (nonatomic) BOOL showsAvatarView; // @synthesize showsAvatarView=_showsAvatarView;
 @property (strong, nonatomic) UIColor *tertiaryColor; // @synthesize tertiaryColor=_tertiaryColor;
 @property (strong, nonatomic) NSString *tertiaryString; // @synthesize tertiaryString=_tertiaryString;
 @property (strong, nonatomic) NSString *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;
-@property (strong, nonatomic) UIColor *transactionValueColor; // @synthesize transactionValueColor=_transactionValueColor;
-@property (strong, nonatomic) UIFont *transactionValueFont; // @synthesize transactionValueFont=_transactionValueFont;
-@property (strong, nonatomic) NSString *transactionValueString; // @synthesize transactionValueString=_transactionValueString;
+@property (strong, nonatomic) NSAttributedString *transactionValueAttributedText; // @synthesize transactionValueAttributedText=_transactionValueAttributedText;
 
 + (id)defaultPrimaryLabelFont;
-+ (id)defaultTransactionValueFont;
-+ (double)rowHeightWithTransactionValueFont:(id)arg1;
-+ (id)secondaryLabelFont;
++ (id)defaultSecondaryLabelFont;
++ (double)rowHeightWithTransactionValueFont:(id)arg1 secondaryLabelFont:(id)arg2;
 + (id)tertiaryLabelFont;
 - (void).cxx_destruct;
 - (void)_updateAvatarView;
 - (id)defaultPrimaryColor;
 - (id)defaultSecondaryColor;
 - (id)defaultTertiaryColor;
-- (id)defaultTransactionValueColor;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (BOOL)shouldShowTransactionPreviewForTouchAtPoint:(struct CGPoint)arg1 inView:(id)arg2;
 
 @end
 

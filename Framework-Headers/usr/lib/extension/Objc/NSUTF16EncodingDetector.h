@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSUTF16BaseEncodingDetector.h>
+#import <extension/NSUTF16BaseEncodingDetector.h>
 
 __attribute__((visibility("hidden")))
 @interface NSUTF16EncodingDetector : NSUTF16BaseEncodingDetector

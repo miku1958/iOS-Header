@@ -13,19 +13,23 @@
 
 @interface CHRecognitionSessionResult : NSObject <NSCopying>
 {
+    long long __transcriptionCapability;
     id<CHStrokeProviderVersion> _strokeProviderVersion;
     NSArray *_locales;
+    NSArray *_preferredLocales;
     CHStrokeGroupingResult *_strokeGroupingResult;
     NSDictionary *__recognitionResultsByGroupID;
     CDStruct_a0ca6847 _generationDuration;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *_recognitionResultsByGroupID; // @synthesize _recognitionResultsByGroupID=__recognitionResultsByGroupID;
+@property (readonly, nonatomic) long long _transcriptionCapability;
 @property (readonly, nonatomic) NSString *allResultsDebugDescription;
 @property (readonly, nonatomic) NSArray *allResultsDebugDescriptionByGroup;
 @property (readonly, nonatomic) CDStruct_a0ca6847 generationDuration; // @synthesize generationDuration=_generationDuration;
 @property (readonly, nonatomic) NSString *highConfidenceDebugDescription;
 @property (readonly, copy, nonatomic) NSArray *locales; // @synthesize locales=_locales;
+@property (readonly, copy, nonatomic) NSArray *preferredLocales; // @synthesize preferredLocales=_preferredLocales;
 @property (readonly, strong, nonatomic) CHStrokeGroupingResult *strokeGroupingResult; // @synthesize strokeGroupingResult=_strokeGroupingResult;
 @property (readonly, strong, nonatomic) id<CHStrokeProviderVersion> strokeProviderVersion; // @synthesize strokeProviderVersion=_strokeProviderVersion;
 
@@ -36,7 +40,7 @@
 - (id)debugDescription;
 - (id)description;
 - (id)init;
-- (id)initWithStrokeProviderVersion:(id)arg1 locales:(id)arg2 strokeGroupingResult:(id)arg3 recognitionResults:(id)arg4 generationDuration:(CDStruct_a0ca6847)arg5;
+- (id)initWithStrokeProviderVersion:(id)arg1 locales:(id)arg2 preferredLocales:(id)arg3 strokeGroupingResult:(id)arg4 recognitionResults:(id)arg5 generationDuration:(CDStruct_a0ca6847)arg6;
 - (id)recognitionResultForStrokeGroupIdentifier:(long long)arg1;
 
 @end

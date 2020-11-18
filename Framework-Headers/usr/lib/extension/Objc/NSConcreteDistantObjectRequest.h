@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSDistantObjectRequest.h>
+#import <extension/NSDistantObjectRequest.h>
 
 @class NSArray, NSConnection, NSInvocation;
 

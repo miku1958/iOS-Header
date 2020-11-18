@@ -13,7 +13,7 @@
 #import <PassKitUI/PKPassPaymentSummaryViewDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 
-@class NSMutableArray, NSNumber, NSObject, NSString, PKAuthenticator, PKContactlessInterfaceSession, PKFooterTransactionView, PKPassLibrary, PKPassPaymentApplicationView, PKPassPaymentPayStateView, PKPassPaymentSummaryView, PKPassValueAddedServiceInfoView, PKPaymentService, PKPeerPaymentContactResolver, PKPeerPaymentService, PKPhysicalButtonView, UIButton, UIView, UIViewController;
+@class NSMutableArray, NSNumber, NSObject, NSString, PKAuthenticator, PKContactlessInterfaceSession, PKFooterTransactionView, PKPassLibrary, PKPassPaymentApplicationView, PKPassPaymentPayStateView, PKPassPaymentSummaryView, PKPassPeerPaymentAccountResolutionView, PKPassValueAddedServiceInfoView, PKPaymentService, PKPeerPaymentAccountResolutionController, PKPeerPaymentContactResolver, PKPeerPaymentService, PKPhysicalButtonView, UIButton, UIView, UIViewController;
 @protocol OS_dispatch_queue, OS_dispatch_source, UICoordinateSpace;
 
 @interface PKPassPaymentContainerView : PKPassFooterContentView <PKPaymentServiceDelegate, PKAuthenticatorDelegate, PKPassPaymentSummaryViewDelegate, PKPassPaymentPayStateViewDelegate, PKPassPaymentApplicationViewDelegate, PKContactlessInterfaceSessionDelegate>
@@ -25,6 +25,7 @@
     NSObject<OS_dispatch_queue> *_authorizationQueue;
     PKPeerPaymentService *_peerPaymentService;
     PKPeerPaymentContactResolver *_transactionFooterContactResolver;
+    PKPeerPaymentAccountResolutionController *_peerPaymentAccountResolutionController;
     id<UICoordinateSpace> _fixedScreenCoordinateSpace;
     PKPhysicalButtonView *_physicalButtonView;
     PKFooterTransactionView *_transactionView;
@@ -33,6 +34,7 @@
     NSString *_ignoringUpdatesFromTransactionIdentifier;
     PKPassLibrary *_passLibrary;
     PKPassPaymentSummaryView *_paymentSummaryView;
+    PKPassPeerPaymentAccountResolutionView *_peerPaymentAccountResolutionView;
     PKPassPaymentApplicationView *_applicationsView;
     PKPassValueAddedServiceInfoView *_valueAddedServiceInfoView;
     UIButton *_actionButton;
@@ -155,7 +157,10 @@
 - (void)_setValueAddedServiceInfoViewHidden:(BOOL)arg1;
 - (void)_setValueAddedServiceInfoViewHidden:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setValueAddedServicePasses:(id)arg1;
+- (BOOL)_shouldDisplayTransaction:(id)arg1;
+- (BOOL)_shouldDisplayTransactionView;
 - (BOOL)_shouldShowTerminalIsNotRequestingPaymentError;
+- (BOOL)_showPeerPaymentAccountResolutionView;
 - (BOOL)_showPhysicalButtonView;
 - (BOOL)_showSummaryState;
 - (void)_showTerminalIsNotRequestingPaymentError;

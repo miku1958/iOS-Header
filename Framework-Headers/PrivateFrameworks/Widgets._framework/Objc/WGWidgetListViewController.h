@@ -63,6 +63,7 @@
 - (id)_scrollViewLoadingIfNecessary:(BOOL)arg1;
 - (void)_updateBackgroundViewForPlatter:(id)arg1;
 - (void)_updateWidgetViewStateWithPreviouslyVisibleWidgetIdentifiers:(id)arg1;
+- (struct CGRect)_visibleContentFrame;
 - (id)_widgetIdentifiersForPlatterViewsVisibleInBounds;
 - (void)brokenViewDidAppearForWidget:(id)arg1;
 - (void)dealloc;
@@ -96,6 +97,7 @@
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (struct CGRect)visibleFrameForWidget:(id)arg1;
 - (id)visibleWidgetIdentifiers;
 - (void)widget:(id)arg1 didChangeLargestSupportedDisplayMode:(long long)arg2;
 - (id)widgetListItemViewController:(id)arg1 widgetHostWithIdentifier:(id)arg2;

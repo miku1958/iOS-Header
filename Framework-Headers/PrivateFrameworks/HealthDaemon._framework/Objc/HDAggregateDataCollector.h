@@ -6,12 +6,12 @@
 
 #import <HealthDaemon/HDDataCollector.h>
 
-@class NSDictionary, _HKDataCollectorDelayedOperation;
+@class NSDictionary, _HKDelayedOperation;
 @protocol HDSensorDatum;
 
 @interface HDAggregateDataCollector : HDDataCollector
 {
-    _HKDataCollectorDelayedOperation *_historicalFetchOperation;
+    _HKDelayedOperation *_historicalFetchOperation;
     id<HDSensorDatum> _lastReceivedSensorDatum;
     BOOL _didReceiveSensorDatum;
     NSDictionary *_lastReceivedSecondaryContext;
@@ -27,6 +27,7 @@
 - (double)_queue_aggregationInterval;
 - (void)_queue_beginStreaming;
 - (void)_queue_beginUpdates;
+- (void)_queue_executeHistoricalFetchOperation;
 - (void)_queue_fetchHistoricalDataForcedUpdate:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_fetchHistoricalDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_queue_handleCMDatabaseReset;

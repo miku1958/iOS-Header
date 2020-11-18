@@ -34,6 +34,7 @@
 - (BOOL)isDrawableAvailable;
 - (BOOL)isDrawableAvailableInternal;
 - (void)layerDidBecomeVisible:(BOOL)arg1;
+- (void)setPresentationHandler:(CDUnknownBlockType)arg1;
 - (BOOL)shouldArchiveValueForKey:(id)arg1;
 
 @end

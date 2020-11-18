@@ -39,9 +39,8 @@
 - (void)clientRemote_workoutAppReady;
 - (void)forbidConnectionForFitnessMachineSessionUUID:(id)arg1;
 - (void)peformServerOperation:(CDUnknownBlockType)arg1;
-- (void)permitConnectionForFitnessMachineSessionUUID:(id)arg1;
+- (void)permitConnectionForFitnessMachineSessionUUID:(id)arg1 activityType:(unsigned long long)arg2;
 - (void)registerClient;
-- (void)setActivityType:(unsigned long long)arg1;
 
 @end
 

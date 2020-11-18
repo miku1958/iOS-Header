@@ -34,6 +34,7 @@
     BOOL _showsLiveRendering;
     BOOL _clipsContent;
     BOOL _allowBackgroundPlaceHolders;
+    BOOL _liveMotionEnabled;
     id<PKPassFaceDelegate> _delegate;
     long long _backgroundMode;
     unsigned long long _visibleRegions;
@@ -56,6 +57,7 @@
 @property (nonatomic) id<PKPassFaceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) PKPassFaceTemplate *faceTemplate; // @synthesize faceTemplate=_faceTemplate;
 @property (strong, nonatomic) NSMutableArray *headerBucketViews; // @synthesize headerBucketViews=_headerBucketViews;
+@property (nonatomic) BOOL liveMotionEnabled; // @synthesize liveMotionEnabled=_liveMotionEnabled;
 @property (readonly, nonatomic) PKPass *pass;
 @property (readonly, nonatomic) struct UIEdgeInsets shadowInsets;
 @property (nonatomic) BOOL showsLiveRendering;
@@ -92,7 +94,6 @@
 - (void)presentDiff:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeContentView:(id)arg1 ofType:(long long)arg2;
 - (void)setDimmer:(double)arg1 animated:(BOOL)arg2;
-- (void)setLiveMotionEnabled:(BOOL)arg1;
 - (void)setPass:(id)arg1 colorProfile:(id)arg2;
 
 @end

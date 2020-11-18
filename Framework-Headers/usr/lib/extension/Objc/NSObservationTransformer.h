@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObservationSource.h>
+#import <extension/NSObservationSource.h>
 
-#import <Foundation/NSObserver-Protocol.h>
+#import <extension/NSObserver-Protocol.h>
 
 @class NSString;
 

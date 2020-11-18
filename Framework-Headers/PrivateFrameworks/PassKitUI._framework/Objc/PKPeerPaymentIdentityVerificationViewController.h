@@ -6,27 +6,40 @@
 
 #import <PassKitUI/PKPaymentSetupFieldsViewController.h>
 
+#import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
+#import <PassKitUI/PKPeerPaymentAccountResolutionControllerDelegate-Protocol.h>
+
 @class NSArray, NSString, PKPeerPaymentIdentityVerificationController;
 
-@interface PKPeerPaymentIdentityVerificationViewController : PKPaymentSetupFieldsViewController
+@interface PKPeerPaymentIdentityVerificationViewController : PKPaymentSetupFieldsViewController <PKExplanationViewDelegate, PKPeerPaymentAccountResolutionControllerDelegate>
 {
     PKPeerPaymentIdentityVerificationController *_controller;
     NSArray *_visibleFieldIdentifiers;
+    unsigned long long _identityVerificaionError;
     NSString *_headerTitle;
     NSString *_headerSubtitle;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *headerSubtitle; // @synthesize headerSubtitle=_headerSubtitle;
 @property (strong, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_handleCancelButtonTapped:(id)arg1;
+- (void)_showNavigationBarSpinner:(BOOL)arg1;
 - (void)_terminateFlow;
 - (id)defaultHeaderViewSubTitle;
 - (id)defaultHeaderViewTitle;
+- (void)explanationViewDidSelectContinue:(id)arg1;
+- (void)explanationViewDidSelectSetupLater:(id)arg1;
 - (void)handleNextButtonTapped:(id)arg1;
 - (id)initWithController:(id)arg1 setupDelegate:(id)arg2 visibleFieldIdentifiers:(id)arg3;
 - (id)initWithController:(id)arg1 visibleFieldIdentifiers:(id)arg2;
+- (void)peerPaymentAccountResolutionController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(BOOL)arg2;
+- (void)peerPaymentAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(BOOL)arg3;
 - (id)pkui_navigationBarTintColor;
 - (BOOL)pkui_prefersNavigationBarShadowHidden;
 - (id)visibleFieldIdentifiers;

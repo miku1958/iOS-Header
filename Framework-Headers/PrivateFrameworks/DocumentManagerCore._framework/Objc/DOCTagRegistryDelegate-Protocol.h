@@ -6,12 +6,14 @@
 
 #import <DocumentManagerCore/NSObject-Protocol.h>
 
-@class DOCTag, NSArray, NSString;
+@class DOCTag, NSArray, NSOrderedSet, NSString;
 
 @protocol DOCTagRegistryDelegate <NSObject>
 
+@property (readonly, nonatomic) NSOrderedSet *discoveredTags;
 @property (nonatomic) BOOL inBatchUpdate;
 @property (nonatomic) long long tagSerialNumber;
+@property (readonly, nonatomic) NSOrderedSet *userTags;
 
 - (BOOL)addTag:(DOCTag *)arg1;
 - (void)addTag:(DOCTag *)arg1 options:(long long)arg2;

@@ -13,6 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityCustomActionGroupIdentifier;
+- (BOOL)_accessibilityRetainsCustomRotorActionSetting;
 - (id)_accessibilitySupplementaryFooterViews;
 - (void)setFailed:(BOOL)arg1;
 

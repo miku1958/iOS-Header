@@ -36,7 +36,7 @@
 + (BOOL)_isWhiteListedURL:(id)arg1;
 + (id)_messageItemWithPartsDeleted:(id)arg1 fromMessageItem:(id)arg2;
 + (id)_newMessagePartsForMessageItem:(id)arg1;
-+ (id)_newMessagePartsForMessageItem:(id)arg1 shouldDisplayLink:(BOOL)arg2 isBusiness:(BOOL)arg3;
++ (id)_newMessagePartsForMessageItem:(id)arg1 shouldDisplayLink:(BOOL)arg2 isBusiness:(BOOL)arg3 hasKnownParticipants:(BOOL)arg4;
 + (BOOL)_testingSupportsURL:(id)arg1;
 - (void).cxx_destruct;
 - (id)_initWithItem:(id)arg1 messagePartRange:(struct _NSRange)arg2;

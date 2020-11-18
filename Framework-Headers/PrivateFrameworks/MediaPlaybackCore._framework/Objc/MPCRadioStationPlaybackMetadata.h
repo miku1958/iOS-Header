@@ -10,7 +10,7 @@
 #import <MediaPlaybackCore/NSMutableCopying-Protocol.h>
 #import <MediaPlaybackCore/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString, NSURL, RadioArtworkCollection, RadioStation;
+@class NSDictionary, NSString, NSURL, RadioArtworkCollection;
 
 @interface MPCRadioStationPlaybackMetadata : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
@@ -20,8 +20,6 @@
     BOOL _hasSetStationID;
     BOOL _hasSetStationName;
     BOOL _hasSetStationStringID;
-    BOOL _hasValidRadioStation;
-    RadioStation *_station;
     NSString *_stationHash;
     long long _stationID;
     NSString *_stationName;
@@ -29,25 +27,22 @@
     NSURL *_stationURL;
 }
 
-@property (readonly, nonatomic) RadioArtworkCollection *artworkCollection;
-@property (readonly, nonatomic) RadioStation *station; // @synthesize station=_station;
+@property (readonly, nonatomic) RadioArtworkCollection *artworkCollection; // @synthesize artworkCollection=_artworkCollection;
 @property (readonly, copy, nonatomic) NSDictionary *stationDictionary;
-@property (readonly, copy, nonatomic) NSString *stationHash;
-@property (readonly, nonatomic) long long stationID;
-@property (readonly, copy, nonatomic) NSString *stationName;
-@property (readonly, copy, nonatomic) NSString *stationStringID;
+@property (readonly, copy, nonatomic) NSString *stationHash; // @synthesize stationHash=_stationHash;
+@property (readonly, nonatomic) long long stationID; // @synthesize stationID=_stationID;
+@property (readonly, copy, nonatomic) NSString *stationName; // @synthesize stationName=_stationName;
+@property (readonly, copy, nonatomic) NSString *stationStringID; // @synthesize stationStringID=_stationStringID;
 @property (readonly, copy, nonatomic) NSURL *stationURL; // @synthesize stationURL=_stationURL;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_copyWithZone:(struct _NSZone *)arg1 class:(Class)arg2;
-- (id)_station;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithStation:(id)arg1;
 - (id)initWithStationStringID:(id)arg1;
 - (BOOL)isEffectivelyEqualStationWithPlaybackMetadata:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

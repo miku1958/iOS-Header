@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class AVPlayer, AVPlayerItem, AVPlayerLayer;
 @protocol OKVideoControllerDelegate, OS_dispatch_queue, OS_dispatch_semaphore;

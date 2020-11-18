@@ -87,6 +87,7 @@
 - (void)acceptTerms;
 - (void)addDelegate:(id)arg1;
 - (void)associateCredentials:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (id)associatedCredentialsForDefaultBehaviour;
 - (void)dealloc;
 - (id)displayableErrorForError:(id)arg1;
 - (id)displayableErrorForProvisioningError:(id)arg1;

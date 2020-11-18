@@ -34,16 +34,16 @@
 - (void)remote_endFitnessMachineConnectionWithUUID:(id)arg1;
 - (void)remote_forbidConnectionForFitnessMachineSessionUUID:(id)arg1 withConnectionUUID:(id)arg2;
 - (void)remote_generatePauseOrResumeRequestWithCompletion:(CDUnknownBlockType)arg1;
+- (void)remote_getCurrentWorkoutSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_getFirstPartyWorkoutSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_markClientReadyWithConnectionUUID:(id)arg1;
 - (void)remote_pauseAllActiveWorkoutsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_pauseWorkoutSessionWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)remote_permitConnectionForFitnessMachineSessionUUID:(id)arg1 withConnectionUUID:(id)arg2;
+- (void)remote_permitConnectionForFitnessMachineSessionUUID:(id)arg1 activityType:(unsigned long long)arg2 withConnectionUUID:(id)arg3;
 - (void)remote_registerClient:(id)arg1 withConnectionUUID:(id)arg2;
 - (void)remote_registerConnectionInitiatorClient:(id)arg1 withConnectionUUID:(id)arg2;
 - (void)remote_replaceWorkout:(id)arg1 withWorkout:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_resumeWorkoutSessionWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)remote_setActivityType:(unsigned long long)arg1;
 - (void)remote_simulateAccept;
 - (void)remote_simulateDisconnect;
 - (void)remote_simulateTapWithFitnessMachineType:(unsigned long long)arg1;

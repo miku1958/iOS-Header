@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/_NSPersonNameComponentsStyleFormatterShortVariantGeneral.h>
+#import <extension/_NSPersonNameComponentsStyleFormatterShortVariantGeneral.h>
 
 __attribute__((visibility("hidden")))
 @interface _NSPersonNameComponentsStyleFormatterGivenInitialVariant : _NSPersonNameComponentsStyleFormatterShortVariantGeneral

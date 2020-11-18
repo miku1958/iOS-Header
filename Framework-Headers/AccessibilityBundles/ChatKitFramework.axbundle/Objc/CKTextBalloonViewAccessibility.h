@@ -17,6 +17,7 @@
 - (id)_axInvisibleInkDescription;
 - (BOOL)_axIsInvisibleInk;
 - (id)_axMainContentStringForSpeakThis:(BOOL)arg1;
+- (id)_axMessageProvenanceDescription;
 - (void)_setAXInvisibleInkDescription:(id)arg1;
 - (id)accessibilityCustomRotors;
 - (id)accessibilityHint;

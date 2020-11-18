@@ -45,6 +45,7 @@
 - (void)appletWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)connectToServerWithPushTopic:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
+- (BOOL)hasRegistrationInformation;
 - (id)init;
 - (void)initializeSecureElementQueuingServerConnection:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)markAllAppletsForDeletionWithExternalAuthorization:(id)arg1 completion:(CDUnknownBlockType)arg2;

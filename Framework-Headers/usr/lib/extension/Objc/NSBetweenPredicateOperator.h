@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSPredicateOperator.h>
+#import <extension/NSPredicateOperator.h>
 
 __attribute__((visibility("hidden")))
 @interface NSBetweenPredicateOperator : NSPredicateOperator

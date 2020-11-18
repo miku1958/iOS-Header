@@ -21,7 +21,13 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 - (void).cxx_destruct;
+- (BOOL)disableFieldDiagnosticsWithError:(id *)arg1;
 - (id)eligibleForAugmentation:(id)arg1 error:(id *)arg2;
+- (BOOL)enableFieldDiagnosticsWithTatsuManifest:(id)arg1 error:(id *)arg2;
+- (id)fieldDiagnosticsEncryptionKeyWithError:(id *)arg1;
+- (id)fieldDiagnosticsRemainingTimeWithError:(id *)arg1;
+- (id)fieldDiagnosticsTatsuManifestWithError:(id *)arg1;
+- (id)generateFieldDiagnosticsNonceWithError:(id *)arg1;
 - (BOOL)setTemplate:(id)arg1 forIdentity:(id)arg2 error:(id *)arg3;
 
 @end

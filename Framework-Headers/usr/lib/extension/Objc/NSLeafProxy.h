@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSCopying-Protocol.h>
+#import <extension/NSCopying-Protocol.h>
 
 @class NSDocInfo, NSString;
 

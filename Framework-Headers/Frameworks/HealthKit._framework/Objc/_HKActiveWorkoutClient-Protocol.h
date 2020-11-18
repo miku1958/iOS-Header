@@ -9,7 +9,7 @@
 @class HKLocationSeriesSample, HKWorkoutRoute, NSArray, NSDate, NSDictionary, NSError, NSNumber, _HKWorkoutEvent;
 
 @protocol _HKActiveWorkoutClient <NSObject>
-- (void)clientRemote_receivedWorkoutEvent:(_HKWorkoutEvent *)arg1;
+- (void)clientRemote_receivedWorkoutEvent:(_HKWorkoutEvent *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)clientRemote_serverFailedWithError:(NSError *)arg1;
 - (void)clientRemote_serverPausedWithDate:(NSDate *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)clientRemote_serverStoppedWithDate:(NSDate *)arg1;

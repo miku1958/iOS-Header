@@ -36,6 +36,7 @@
 @property (nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 
 - (void).cxx_destruct;
+- (id)_attributedStringWithText:(id)arg1 strikethrough:(BOOL)arg2;
 - (double)_prepareViewForReuse:(id)arg1;
 - (void)_updateAlignmentAnimated:(BOOL)arg1;
 - (void)_updateSubviewsAnimated:(BOOL)arg1;

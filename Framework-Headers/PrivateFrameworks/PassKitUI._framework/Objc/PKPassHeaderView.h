@@ -21,6 +21,7 @@
     UILabel *_value;
     BOOL _largeStyle;
     BOOL _showModificationDate;
+    BOOL _valueLabelsShouldStack;
     PKPass *_pass;
     PKPassView *_passView;
     PKFelicaPassProperties *_felicaProperties;
@@ -43,6 +44,7 @@
 @property (strong, nonatomic) UIColor *secondaryTextColor; // @synthesize secondaryTextColor=_secondaryTextColor;
 @property (nonatomic) BOOL showModificationDate; // @synthesize showModificationDate=_showModificationDate;
 @property (nonatomic) unsigned long long suppressedContent; // @synthesize suppressedContent=_suppressedContent;
+@property (nonatomic) BOOL valueLabelsShouldStack; // @synthesize valueLabelsShouldStack=_valueLabelsShouldStack;
 
 - (void).cxx_destruct;
 - (void)_passLibraryDidChange:(id)arg1;
@@ -55,6 +57,8 @@
 - (void)layoutSubviews;
 - (CDStruct_bc00259c)passSizeInfoForHeight:(double)arg1;
 - (struct CGSize)passViewSizeForHeight:(double)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (BOOL)titleAndValueLabelCouldOverlapAtHeaderViewSize:(struct CGSize)arg1;
 - (void)updateModifiedDate;
 - (void)updateShadow:(double)arg1;
 

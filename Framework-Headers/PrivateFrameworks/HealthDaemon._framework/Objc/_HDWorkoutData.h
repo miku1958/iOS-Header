@@ -33,6 +33,7 @@
 - (void)deliverError:(id)arg1;
 - (void)deliverEvent:(id)arg1;
 - (void)deliverMetrics:(id)arg1;
+- (id)getSnapshot;
 - (id)initWithWorkoutSession:(id)arg1 client:(id)arg2 server:(id)arg3 isFirstParty:(BOOL)arg4;
 
 @end

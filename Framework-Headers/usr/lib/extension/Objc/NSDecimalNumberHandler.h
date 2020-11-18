@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCoding-Protocol.h>
-#import <Foundation/NSDecimalNumberBehaviors-Protocol.h>
+#import <extension/NSCoding-Protocol.h>
+#import <extension/NSDecimalNumberBehaviors-Protocol.h>
 
 @interface NSDecimalNumberHandler : NSObject <NSDecimalNumberBehaviors, NSCoding>
 {

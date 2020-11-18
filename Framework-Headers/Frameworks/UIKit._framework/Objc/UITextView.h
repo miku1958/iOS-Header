@@ -267,6 +267,7 @@
 - (void)_interactionStoppedFromPreviewItemController:(id)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (void)_invalidateContainerViewSize;
+- (BOOL)_isContentFormatEvaluationEnabled;
 - (BOOL)_isDisplayingLookupViewController;
 - (BOOL)_isDisplayingReferenceLibraryViewController;
 - (BOOL)_isDisplayingShareViewController;
@@ -318,6 +319,7 @@
 - (void)_scrollViewDidEndDraggingWithDeceleration:(BOOL)arg1;
 - (void)_scrollViewWillEndDraggingWithVelocity:(struct CGPoint)arg1 targetContentOffset:(struct CGPoint *)arg2;
 - (void)_selectionMayChange:(id)arg1;
+- (void)_setContentFormatEvaluationEnabled:(BOOL)arg1;
 - (void)_setContentOffsetWithoutRecordingScrollPosition:(struct CGPoint)arg1;
 - (void)_setCuiCatalog:(id)arg1;
 - (void)_setCuiStyleEffectConfiguration:(id)arg1;

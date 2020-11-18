@@ -6,18 +6,16 @@
 
 #import <Foundation/NSObject.h>
 
-@class PKAssertion, PKXPCService;
+@class PKXPCService;
 
 @interface PKDeviceRegistrationService : NSObject
 {
-    PKAssertion *_registrationAssertion;
     PKXPCService *_remoteService;
     BOOL _isRegistering;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_aquireAssertionWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxy;
 - (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxyWithFailureHandler:(CDUnknownBlockType)arg1;

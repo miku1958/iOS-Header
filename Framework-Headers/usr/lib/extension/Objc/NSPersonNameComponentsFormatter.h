@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSFormatter.h>
+#import <extension/NSFormatter.h>
 
-#import <Foundation/NSCopying-Protocol.h>
-#import <Foundation/NSSecureCoding-Protocol.h>
+#import <extension/NSCopying-Protocol.h>
+#import <extension/NSSecureCoding-Protocol.h>
 
 @class NSLocale;
 

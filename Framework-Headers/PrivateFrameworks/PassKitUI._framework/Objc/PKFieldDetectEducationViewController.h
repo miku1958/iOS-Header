@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <PassKitUI/PKViewController.h>
 
-@class AVPlayer, AVPlayerItem, AVPlayerLayer, PKContinuousButton, PKPaymentPass, PKTableHeaderView, UIImageView, UILabel;
+@class AVPlayer, AVPlayerItem, AVPlayerLayer, PKContinuousButton, PKMobileAssetManager, PKPaymentPass, PKTableHeaderView, UIImageView, UILabel;
 
-@interface PKFieldDetectEducationViewController : UIViewController
+@interface PKFieldDetectEducationViewController : PKViewController
 {
     UIImageView *_background;
-    AVPlayerLayer *_video;
     UIImageView *_passSnapshot;
     PKTableHeaderView *_subheader;
     UILabel *_instructionLabel;
     PKContinuousButton *_continueButton;
+    PKMobileAssetManager *_mobileAssetManager;
     PKPaymentPass *_paymentPass;
+    AVPlayerLayer *_video;
     AVPlayer *_player;
     AVPlayerItem *_playerItem;
     CDUnknownBlockType _continueHandler;
@@ -24,6 +25,7 @@
 
 @property (copy, nonatomic) CDUnknownBlockType continueHandler; // @synthesize continueHandler=_continueHandler;
 
++ (id)assetBackgroundColor;
 + (BOOL)shouldPresent;
 - (void).cxx_destruct;
 - (void)_removePlayerItem;
@@ -37,6 +39,7 @@
 - (void)loadView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)performContinue;
+- (void)startPlayingVideo;
 - (void)viewWillLayoutSubviews;
 
 @end

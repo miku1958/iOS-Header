@@ -15,8 +15,8 @@
     BOOL _showsSearchField;
 }
 
-@property (readonly, strong, nonatomic) UITextField *searchField;
-@property (readonly, strong, nonatomic) UILabel *searchFieldLabel;
+@property (readonly, nonatomic) UITextField *searchField;
+@property (readonly, nonatomic) UILabel *searchFieldLabel;
 @property (readonly, nonatomic) double searchFieldOffset;
 @property (nonatomic) BOOL showsSearchField; // @synthesize showsSearchField=_showsSearchField;
 

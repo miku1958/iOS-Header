@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSArrayChange.h>
+#import <extension/NSArrayChange.h>
 
 __attribute__((visibility("hidden")))
 @interface NSConcreteArrayChange : NSArrayChange

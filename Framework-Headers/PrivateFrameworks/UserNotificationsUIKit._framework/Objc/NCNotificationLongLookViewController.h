@@ -31,6 +31,7 @@
 - (void).cxx_destruct;
 - (void)_configureScrollViewIfNecessary;
 - (id)_extensionIdentifier;
+- (void)_fireHomeGesture;
 - (void)_handleBackgroundTap:(id)arg1;
 - (void)_handleCloseButton:(id)arg1;
 - (void)_handleCustomContentHomeAffordancePan:(id)arg1;
@@ -43,6 +44,7 @@
 - (struct CGSize)_preferredCustomContentSizeForSize:(struct CGSize)arg1 parentContentContainerBounds:(struct CGRect)arg2;
 - (id)_presentedLongLookViewController;
 - (void)_setPreferredCustomContentSize:(struct CGSize)arg1;
+- (void)_settleHomeAffordance;
 - (BOOL)_shouldPadScrollViewContentSizeHeight;
 - (double)_translationWithVelocity:(double)arg1 acceleration:(double)arg2;
 - (void)_updateTitleWithProvidedCustomContent;

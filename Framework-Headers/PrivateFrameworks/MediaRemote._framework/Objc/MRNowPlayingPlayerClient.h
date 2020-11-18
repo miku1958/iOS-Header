@@ -45,6 +45,7 @@
 @property (readonly, nonatomic) void *playerPath; // @synthesize playerPath=_playerPath;
 @property (copy, nonatomic) NSArray *supportedCommands;
 
+- (void *)_onQueue_nowPlayingContentItem;
 - (void)_onQueue_sendTransaction:(unsigned long long)arg1 withPackets:(id)arg2;
 - (void)beginSendingTransactions;
 - (void)contentItemsUpdatedNotification:(id)arg1;

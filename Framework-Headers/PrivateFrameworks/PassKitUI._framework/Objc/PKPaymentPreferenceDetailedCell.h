@@ -11,6 +11,7 @@
 @interface PKPaymentPreferenceDetailedCell : PKPaymentPreferenceCell
 {
     UITextField *_textField;
+    BOOL _isLeftToRight;
     BOOL _inlineEditingEnabled;
 }
 

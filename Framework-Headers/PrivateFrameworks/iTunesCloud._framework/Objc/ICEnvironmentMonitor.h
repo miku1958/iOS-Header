@@ -38,8 +38,10 @@
 + (id)sharedMonitor;
 - (void).cxx_destruct;
 - (long long)_currentNetworkType;
+- (void)_handleApplicationDidEnterForegroundNotification:(id)arg1;
 - (void)_updateNetworkReachabilityAndNotifyObservers:(BOOL)arg1;
 - (void)_updateTelephonyPropertiesForCTServerNotification:(id)arg1 userInfo:(id)arg2;
+- (void)_updateTelephonyState;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)init;

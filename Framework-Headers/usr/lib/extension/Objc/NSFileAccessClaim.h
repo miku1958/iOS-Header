@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSSecureCoding-Protocol.h>
+#import <extension/NSSecureCoding-Protocol.h>
 
 @class NSCountedSet, NSError, NSFileAccessProcessManager, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObservationTransformer.h>
+#import <extension/NSObservationTransformer.h>
 
 @interface NSReduceObservationTransformer : NSObservationTransformer
 {

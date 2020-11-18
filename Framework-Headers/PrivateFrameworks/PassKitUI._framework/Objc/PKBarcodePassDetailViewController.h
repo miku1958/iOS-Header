@@ -50,6 +50,7 @@
     double _headerHeight;
     struct UIEdgeInsets _headerContentInset;
     double _tabBarHeight;
+    double _previousLayoutTableViewWidth;
     BOOL _navigationControllerHidesShadow;
     UIView *_headerView;
     PKPassHeaderView *_passHeaderView;

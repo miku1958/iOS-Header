@@ -18,8 +18,15 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *appAdamID; // @synthesize appAdamID=_appAdamID;
 @property (copy, nonatomic) NSArray *channelIDs; // @synthesize channelIDs=_channelIDs;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

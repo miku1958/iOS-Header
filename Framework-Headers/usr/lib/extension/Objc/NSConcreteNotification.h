@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSNotification.h>
+#import <extension/NSNotification.h>
 
 @class NSDictionary, NSString;
 

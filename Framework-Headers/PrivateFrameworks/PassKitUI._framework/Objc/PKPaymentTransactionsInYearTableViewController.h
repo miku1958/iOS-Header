@@ -7,11 +7,12 @@
 #import <UIKit/UITableViewController.h>
 
 #import <PassKitUI/CNAvatarViewDelegate-Protocol.h>
+#import <PassKitUI/UIViewControllerPreviewingDelegate-Protocol.h>
 
 @class NSArray, NSCalendar, NSDate, NSDateFormatter, NSString, PKPaymentPass, PKPaymentTransactionCellController, PKPeerPaymentContactResolver, PKPeerPaymentController;
 @protocol PKPaymentDataProvider;
 
-@interface PKPaymentTransactionsInYearTableViewController : UITableViewController <CNAvatarViewDelegate>
+@interface PKPaymentTransactionsInYearTableViewController : UITableViewController <CNAvatarViewDelegate, UIViewControllerPreviewingDelegate>
 {
     NSDate *_dateFromYear;
     NSCalendar *_calendar;
@@ -22,6 +23,7 @@
     PKPeerPaymentContactResolver *_contactResolver;
     PKPeerPaymentController *_peerPaymentController;
     NSDateFormatter *_transactionMonthFormatter;
+    long long _detailViewStyle;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -31,11 +33,14 @@
 
 - (void).cxx_destruct;
 - (void)_fetchDataWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_transactionDetailViewControllerForTransaction:(id)arg1;
 - (id)_transactionMonthFormatter;
 - (id)_transactionsInYearTitleString;
-- (id)initWithDateFromYear:(id)arg1 calendar:(id)arg2 paymentPass:(id)arg3 paymentServiceDataProvider:(id)arg4 contactResolver:(id)arg5 peerPaymentController:(id)arg6;
+- (id)initWithDateFromYear:(id)arg1 calendar:(id)arg2 paymentPass:(id)arg3 detailViewStyle:(long long)arg4 paymentServiceDataProvider:(id)arg5 contactResolver:(id)arg6 peerPaymentController:(id)arg7;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
+- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
+- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;

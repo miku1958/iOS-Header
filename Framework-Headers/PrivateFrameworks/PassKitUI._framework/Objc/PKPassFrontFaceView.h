@@ -18,6 +18,7 @@
     BOOL _showsInfo;
     BOOL _showsBarcodeButton;
     BOOL _showsBarcodeView;
+    BOOL _showsLiveBalance;
     PKLinkedAppIconView *_linkedApp;
 }
 
@@ -27,6 +28,7 @@
 @property (nonatomic) BOOL showsBarcodeView; // @synthesize showsBarcodeView=_showsBarcodeView;
 @property (nonatomic) BOOL showsInfo; // @synthesize showsInfo=_showsInfo;
 @property (nonatomic) BOOL showsLinkedApp; // @synthesize showsLinkedApp=_showsLinkedApp;
+@property (nonatomic) BOOL showsLiveBalance; // @synthesize showsLiveBalance=_showsLiveBalance;
 
 - (void).cxx_destruct;
 - (void)_barcodeButtonPressed;

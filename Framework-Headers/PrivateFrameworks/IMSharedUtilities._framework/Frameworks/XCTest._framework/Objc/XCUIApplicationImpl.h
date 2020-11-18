@@ -17,6 +17,7 @@
 }
 
 @property (readonly) XCAccessibilityElement *accessibilityElement;
+@property (readonly) BOOL activated;
 @property (readonly) BOOL background;
 @property (readonly, copy) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (strong, nonatomic) XCUIApplicationProcess *currentProcess; // @synthesize currentProcess=_currentProcess;
@@ -28,17 +29,22 @@
 @property BOOL supportsAutomationSession; // @synthesize supportsAutomationSession=_supportsAutomationSession;
 @property (readonly) BOOL suspended;
 
++ (id)keyPathsForValuesAffectingActivated;
 + (id)keyPathsForValuesAffectingBackground;
 + (id)keyPathsForValuesAffectingForeground;
 + (id)keyPathsForValuesAffectingRunning;
++ (id)keyPathsForValuesAffectingState;
 + (id)keyPathsForValuesAffectingSuspended;
 - (void)_activate;
 - (void)_activateForPlatform;
+- (id)_activationExpectation;
 - (void)_awaitValidCurrentProcess;
 - (void)_launchUsingPlatformWithArguments:(id)arg1 environment:(id)arg2;
 - (void)_launchUsingXcodeWithArguments:(id)arg1 environment:(id)arg2;
 - (void)_launchWithRequest:(id)arg1;
 - (void)_waitForLaunchProgress;
+- (void)_waitForValidPID;
+- (void)_waitOnActivationExpectation:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)handleCrashUnderSymbol:(id)arg1;
@@ -46,8 +52,7 @@
 - (void)serviceOpenRequest:(id)arg1;
 - (void)terminate;
 - (void)waitForAccessibilityActive;
-- (void)waitForRunningForegroundStateAndRequireAccessibility:(BOOL)arg1;
-- (void)waitForState:(unsigned long long)arg1 timeout:(double)arg2;
+- (BOOL)waitForState:(unsigned long long)arg1 timeout:(double)arg2;
 - (void)waitForViewControllerViewDidDisappearWithTimeout:(double)arg1;
 
 @end

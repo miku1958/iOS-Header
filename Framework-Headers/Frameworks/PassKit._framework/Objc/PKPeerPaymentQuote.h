@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSDecimalNumber, NSString, NSURL, PKPeerPaymentRecipient;
+@class NSArray, NSData, NSDate, NSDecimalNumber, NSString, NSURL, PKCurrencyAmount, PKPeerPaymentRecipient;
 
 @interface PKPeerPaymentQuote : NSObject <NSSecureCoding>
 {
@@ -26,9 +26,15 @@
     NSString *_totalFeesCurrency;
     NSDate *_validUntil;
     PKPeerPaymentRecipient *_recipient;
+    NSString *_bankName;
+    NSString *_routingNumber;
+    NSString *_accountNumber;
 }
 
+@property (copy, nonatomic) NSString *accountNumber; // @synthesize accountNumber=_accountNumber;
 @property (readonly, copy, nonatomic) NSData *appleHash; // @synthesize appleHash=_appleHash;
+@property (copy, nonatomic) NSString *bankName; // @synthesize bankName=_bankName;
+@property (readonly, nonatomic) PKCurrencyAmount *calculatedTotalAmount;
 @property (readonly, copy, nonatomic) NSDecimalNumber *currentBalance; // @synthesize currentBalance=_currentBalance;
 @property (readonly, copy, nonatomic) NSString *currentBalanceCurrency; // @synthesize currentBalanceCurrency=_currentBalanceCurrency;
 @property (readonly, copy, nonatomic) NSString *disclosureText; // @synthesize disclosureText=_disclosureText;
@@ -37,6 +43,7 @@
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (strong, nonatomic) PKPeerPaymentRecipient *recipient; // @synthesize recipient=_recipient;
+@property (copy, nonatomic) NSString *routingNumber; // @synthesize routingNumber=_routingNumber;
 @property (readonly, copy, nonatomic) NSDecimalNumber *totalFees; // @synthesize totalFees=_totalFees;
 @property (readonly, copy, nonatomic) NSString *totalFeesCurrency; // @synthesize totalFeesCurrency=_totalFeesCurrency;
 @property (readonly, copy, nonatomic) NSDecimalNumber *totalReceiveAmount; // @synthesize totalReceiveAmount=_totalReceiveAmount;

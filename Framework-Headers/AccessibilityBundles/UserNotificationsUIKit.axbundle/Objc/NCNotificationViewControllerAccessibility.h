@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityAppearanceAnnouncementHandledByEnclosingEntity;
 - (Class)_axCoverSheetWindowClass;
 - (id)_axLongLookView;
 - (id)_axModalAncestorForLongLookView:(id)arg1;

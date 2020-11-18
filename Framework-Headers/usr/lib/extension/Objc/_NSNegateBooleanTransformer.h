@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/_NSSharedValueTransformer.h>
+#import <extension/_NSSharedValueTransformer.h>
 
 __attribute__((visibility("hidden")))
 @interface _NSNegateBooleanTransformer : _NSSharedValueTransformer

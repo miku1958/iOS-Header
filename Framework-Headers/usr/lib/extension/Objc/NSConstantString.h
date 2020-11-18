@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSSimpleCString.h>
+#import <extension/NSSimpleCString.h>
 
 @interface NSConstantString : NSSimpleCString
 {

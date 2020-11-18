@@ -20,7 +20,7 @@
 - (id)_constructRecordMapFromRawMap:(id)arg1 isTestDependencyMap:(BOOL)arg2;
 - (void)dealloc;
 - (id)initWithTestDependencies:(id)arg1 userOverrides:(id)arg2;
-- (id)recordForApplicationWithBundleIdentifier:(id)arg1;
+- (id)recordForApplicationWithBundleIdentifier:(id)arg1 error:(id *)arg2;
 - (BOOL)testDependencyExistsForApplicationAtURL:(id)arg1;
 
 @end

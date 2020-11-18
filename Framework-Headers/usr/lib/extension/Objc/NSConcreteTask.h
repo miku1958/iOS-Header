@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSTask.h>
+#import <extension/NSTask.h>
 
 @class NSMutableDictionary, NSObject, NSPort;
 @protocol OS_dispatch_source;

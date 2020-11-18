@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSExpression.h>
+#import <extension/NSExpression.h>
 
 @interface NSConstantValueExpression : NSExpression
 {

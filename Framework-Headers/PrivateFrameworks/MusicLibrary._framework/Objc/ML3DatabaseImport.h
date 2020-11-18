@@ -29,6 +29,7 @@
     BOOL _pendingMatch;
     BOOL _isServerImport;
     NSString *_syncLibraryID;
+    BOOL _suspendable;
 }
 
 @property (readonly, nonatomic) NSFileHandle *fileHandle; // @synthesize fileHandle=_fileHandle;
@@ -42,6 +43,7 @@
 @property (readonly, nonatomic, getter=isResetSync) BOOL resetSync; // @synthesize resetSync=_resetSync;
 @property (readonly, nonatomic, getter=isSagaEnabled) BOOL sagaEnabled; // @synthesize sagaEnabled=_sagaEnabled;
 @property (readonly, nonatomic) long long storeAccountID; // @synthesize storeAccountID=_storeAccountID;
+@property (readonly, nonatomic, getter=isSuspendable) BOOL suspendable; // @synthesize suspendable=_suspendable;
 @property (readonly, nonatomic) NSString *syncAnchor; // @synthesize syncAnchor=_syncAnchor;
 @property (readonly, nonatomic) NSString *syncLibraryID; // @synthesize syncLibraryID=_syncLibraryID;
 @property (readonly, nonatomic) NSData *trackData; // @synthesize trackData=_trackData;

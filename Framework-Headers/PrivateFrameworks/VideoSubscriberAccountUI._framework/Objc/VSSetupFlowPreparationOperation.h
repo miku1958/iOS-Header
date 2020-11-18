@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_checkAvailability;
 - (void)_checkForExistingAccounts;
-- (void)_checkForPersonalizedChannelsWithMappings:(id)arg1 identityProvider:(id)arg2;
+- (void)_checkForPersonalizedChannelsWithResponse:(id)arg1 identityProvider:(id)arg2;
 - (void)_checkForSupportedAppsButton;
 - (void)_checkForSupportedAppsFromProvider:(id)arg1;
 - (void)_checkPreferences;

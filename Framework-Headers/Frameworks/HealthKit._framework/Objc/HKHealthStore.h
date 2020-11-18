@@ -69,6 +69,7 @@
 - (id)_createFitnessMachineConnection;
 - (id)_createFitnessMachineConnectionInitiator;
 - (void)_currentValueForQuantityTypeCode:(long long)arg1 characteristicTypeCode:(long long)arg2 beforeDate:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_currentWorkoutSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_deleteObjects:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_endWorkoutSession:(id)arg1;
 - (void)_fetchBoolDaemonPreferenceForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;

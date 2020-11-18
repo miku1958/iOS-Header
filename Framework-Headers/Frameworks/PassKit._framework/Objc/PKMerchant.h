@@ -51,11 +51,14 @@
 - (id)description;
 - (void)encodeWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasCloudArchivableDeviceData;
 - (unsigned long long)hash;
 - (id)initWithCloudStoreCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isCloudArchivableDeviceDataEqual:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToMerchant:(id)arg1;
+- (id)jsonDictionaryRepresentation;
 - (id)recordTypesAndNames;
 
 @end

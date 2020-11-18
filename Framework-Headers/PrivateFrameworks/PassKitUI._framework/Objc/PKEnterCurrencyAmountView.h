@@ -8,7 +8,7 @@
 
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
-@class NSDecimalNumber, NSNumberFormatter, NSString, PKNumberPadInputView, UIColor, UILabel, UITextField;
+@class NSDecimalNumber, NSNumber, NSNumberFormatter, NSString, PKNumberPadInputView, UIColor, UIFont, UILabel, UITextField;
 @protocol PKEnterCurrencyAmountViewDelegate;
 
 @interface PKEnterCurrencyAmountView : UIView <UITextFieldDelegate>
@@ -19,6 +19,9 @@
     UITextField *_amountTextField;
     NSString *_currency;
     UIColor *_textColor;
+    UIFont *_amountFont;
+    NSNumber *_kerning;
+    UIFont *_currencySymbolFont;
     id<PKEnterCurrencyAmountViewDelegate> _delegate;
     UILabel *_currencySymbolLabel;
     UILabel *_amountLabel;
@@ -27,10 +30,12 @@
     NSString *_amountString;
 }
 
+@property (copy, nonatomic) UIFont *amountFont; // @synthesize amountFont=_amountFont;
 @property (strong, nonatomic) UILabel *amountLabel; // @synthesize amountLabel=_amountLabel;
 @property (strong, nonatomic) NSString *amountString; // @synthesize amountString=_amountString;
 @property (readonly, nonatomic) UITextField *amountTextField; // @synthesize amountTextField=_amountTextField;
 @property (strong, nonatomic) NSString *currency; // @synthesize currency=_currency;
+@property (copy, nonatomic) UIFont *currencySymbolFont; // @synthesize currencySymbolFont=_currencySymbolFont;
 @property (strong, nonatomic) UILabel *currencySymbolLabel; // @synthesize currencySymbolLabel=_currencySymbolLabel;
 @property (strong, nonatomic) NSDecimalNumber *currentAmount;
 @property (strong, nonatomic) NSNumberFormatter *currentAmountFormatter; // @synthesize currentAmountFormatter=_currentAmountFormatter;
@@ -40,6 +45,7 @@
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *inputAccessoryView;
+@property (copy, nonatomic) NSNumber *kerning; // @synthesize kerning=_kerning;
 @property (strong, nonatomic) PKNumberPadInputView *numberPad; // @synthesize numberPad=_numberPad;
 @property (nonatomic) BOOL showsDecimalPointButton; // @synthesize showsDecimalPointButton=_showsDecimalPointButton;
 @property (readonly) Class superclass;

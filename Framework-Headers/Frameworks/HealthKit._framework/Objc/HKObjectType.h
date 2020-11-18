@@ -33,6 +33,7 @@
 + (BOOL)_allowAuthorizationForReadingWithTypes:(id)arg1 entitlements:(id)arg2 disallowedTypes:(id)arg3;
 + (BOOL)_allowAuthorizationForSharing:(BOOL)arg1 types:(id)arg2 entitlements:(id)arg3 disallowedTypes:(id)arg4;
 + (BOOL)_allowAuthorizationForSharingWithTypes:(id)arg1 entitlements:(id)arg2 disallowedTypes:(id)arg3;
++ (void)_enumerateObjectTypesWithHandler:(CDUnknownBlockType)arg1;
 + (id)_objectTypeWithIdentifier:(id)arg1 class:(Class)arg2 lookupTable:(id)arg3;
 + (id)_typeWithIdentifier:(id)arg1;
 + (id)_typesIncludingParentTypes:(id)arg1;

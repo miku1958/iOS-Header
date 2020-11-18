@@ -83,6 +83,7 @@
 @property (readonly, nonatomic) BOOL wasDataDetected;
 @property (readonly, nonatomic) BOOL wasDowngraded;
 
++ (BOOL)messageContainsSurfDD:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void)_clearBodyData;
 - (void)_generateBodyDataIfNeeded;

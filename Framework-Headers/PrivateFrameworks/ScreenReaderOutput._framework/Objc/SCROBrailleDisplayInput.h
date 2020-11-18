@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _isQuiet;
     BOOL _newDown;
     BOOL _currentBrailleChordContainsSpacebar;
+    BOOL _currentBrailleChordBeganWithSpacebar;
     BOOL _currentBrailleChordContainsNonSpacebarChordableKey;
     BOOL _spacebarIsDown;
     BOOL _skipBrailleKeyboardKeyTranslation;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
     double _memorizeNextKeyImmediatelyTimeout;
     struct __CFArray *_currentChord;
     struct __CFSet *_downKeys;
+    double _lastBrailleChordTypingTime;
     struct __CFArray *_currentBrailleChord;
     struct __CFSet *_downBrailleDots;
     double _lastBrailleChordPosted;
@@ -40,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double brailleTranslationTimeout; // @synthesize brailleTranslationTimeout=_brailleTranslationTimeout;
 @property (nonatomic) double busySince; // @synthesize busySince=_busySince;
 @property (nonatomic) struct __CFArray *currentBrailleChord; // @synthesize currentBrailleChord=_currentBrailleChord;
+@property (nonatomic) BOOL currentBrailleChordBeganWithSpacebar; // @synthesize currentBrailleChordBeganWithSpacebar=_currentBrailleChordBeganWithSpacebar;
 @property (nonatomic) BOOL currentBrailleChordContainsNonSpacebarChordableKey; // @synthesize currentBrailleChordContainsNonSpacebarChordableKey=_currentBrailleChordContainsNonSpacebarChordableKey;
 @property (nonatomic) BOOL currentBrailleChordContainsSpacebar; // @synthesize currentBrailleChordContainsSpacebar=_currentBrailleChordContainsSpacebar;
 @property (nonatomic) unsigned int currentBrailleModifiers; // @synthesize currentBrailleModifiers=_currentBrailleModifiers;
@@ -50,6 +53,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct __CFSet *downKeys; // @synthesize downKeys=_downKeys;
 @property (nonatomic) BOOL isQuiet; // @synthesize isQuiet=_isQuiet;
 @property (nonatomic) double lastBrailleChordPosted; // @synthesize lastBrailleChordPosted=_lastBrailleChordPosted;
+@property (nonatomic) double lastBrailleChordTypingTime; // @synthesize lastBrailleChordTypingTime=_lastBrailleChordTypingTime;
 @property (nonatomic) BOOL memorizeNextKeyImmediately; // @synthesize memorizeNextKeyImmediately=_memorizeNextKeyImmediately;
 @property (nonatomic) double memorizeNextKeyImmediatelyTimeout; // @synthesize memorizeNextKeyImmediatelyTimeout=_memorizeNextKeyImmediatelyTimeout;
 @property (nonatomic) BOOL newDown; // @synthesize newDown=_newDown;

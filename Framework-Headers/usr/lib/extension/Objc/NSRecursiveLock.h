@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSLocking-Protocol.h>
+#import <extension/NSLocking-Protocol.h>
 
 @class NSString;
 

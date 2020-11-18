@@ -11,7 +11,7 @@
 @protocol DOCDocumentBrowserDelegate <NSObject>
 - (void)browser:(DOCBrowserViewController *)arg1 didCommitPreviewOfDocument:(DOCItem *)arg2;
 - (void)browser:(DOCBrowserViewController *)arg1 didPickItem:(DOCItem *)arg2;
-- (void)browser:(DOCBrowserViewController *)arg1 didResolveShownLocation:(DOCConcreteLocation *)arg2;
+- (void)browser:(DOCBrowserViewController *)arg1 didResolveShownLocation:(DOCConcreteLocation *)arg2 previousLocation:(DOCConcreteLocation *)arg3;
 - (void)browser:(DOCBrowserViewController *)arg1 didSelectItems:(NSArray *)arg2;
 - (void)browser:(DOCBrowserViewController *)arg1 didUpdateCurrentLocationCanSelect:(BOOL)arg2;
 - (void)browser:(DOCBrowserViewController *)arg1 didUpdateCurrentLocationIsWritable:(BOOL)arg2;

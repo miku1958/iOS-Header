@@ -31,6 +31,7 @@
     NSMutableDictionary *_preferredPaymentApplicationsCache;
     NSMutableDictionary *_passCache;
     NSObject<OS_dispatch_queue> *_passesQueue;
+    NSObject<OS_dispatch_queue> *_updatePassDescriptionsQueue;
     NSArray *_lastSeenRelevantPassTuples;
     NSTimer *_passLibraryChangedCoalescingTimer;
     NSMutableArray *_workToPerformAfterInitialLoad;
@@ -59,6 +60,7 @@
 @property BOOL serverHasPasses; // @synthesize serverHasPasses=_serverHasPasses;
 @property BOOL serverHasPotentiallyRelevantPasses; // @synthesize serverHasPotentiallyRelevantPasses=_serverHasPotentiallyRelevantPasses;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *updatePassDescriptionsQueue; // @synthesize updatePassDescriptionsQueue=_updatePassDescriptionsQueue;
 @property (nonatomic) BOOL updatingPassDescriptions; // @synthesize updatingPassDescriptions=_updatingPassDescriptions;
 @property (strong, nonatomic) NSMutableArray *workToPerformAfterInitialLoad; // @synthesize workToPerformAfterInitialLoad=_workToPerformAfterInitialLoad;
 @property (readonly) NSXPCConnection *xpcConnection; // @dynamic xpcConnection;
@@ -67,6 +69,7 @@
 - (void).cxx_destruct;
 - (id)_descriptionsWithFilter:(CDUnknownBlockType)arg1;
 - (id)_init;
+- (BOOL)_shouldUpdatePassDescriptionsWithHighPriority;
 - (void)_tearDownConnectionBecauseOfInvalidation;
 - (void)_updatePassDescriptions;
 - (void)_updatePassDescriptionsWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -100,6 +103,7 @@
 - (id)preferredPaymentApplicationForPaymentPass:(id)arg1;
 - (void)processFelicaTransitAppletState:(id)arg1 forPassUniqueID:(id)arg2;
 - (void)processFelicaTransitHistory:(id)arg1 forPaymentApplication:(id)arg2 withPassUniqueIdentifier:(id)arg3 transactionDate:(id)arg4;
+- (void)requestPeerAccountTermsAndConditionsAcceptance;
 - (void)setExpressTransitUniqueID:(id)arg1 applicationIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setPreferredPaymentApplication:(id)arg1 forPaymentPass:(id)arg2 completion:(CDUnknownBlockType)arg3;
 

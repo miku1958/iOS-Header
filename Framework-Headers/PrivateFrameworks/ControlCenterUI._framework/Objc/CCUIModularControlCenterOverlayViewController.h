@@ -38,6 +38,7 @@
     NSUUID *_currentTransitionUUID;
     CCUIOverlayTransitionState *_previousTransitionState;
     CCUIStatusBarStyleSnapshot *_hostStatusBarStyleSnapshot;
+    BOOL _reachabilityActive;
     unsigned long long _presentationState;
     id<CCUIHostStatusBarStyleProvider> _hostStatusBarStyleProvider;
 }
@@ -60,6 +61,8 @@
 @property (readonly, copy, nonatomic) CCUIStatusBarStyleSnapshot *overlayStatusBarStyle;
 @property (readonly, nonatomic) CCUIStatusLabelViewController *overlayStatusLabelViewController;
 @property (nonatomic) unsigned long long presentationState; // @synthesize presentationState=_presentationState;
+@property (nonatomic, getter=isReachabilityActive) BOOL reachabilityActive; // @synthesize reachabilityActive=_reachabilityActive;
+@property (readonly, nonatomic) double reachabilityOffset;
 @property (readonly) Class superclass;
 
 + (id)_presentationProviderForDevice;

@@ -19,6 +19,7 @@
     id<_MSMessageComposeExtensionImplProtocol> _appContext;
 }
 
+@property (readonly, nonatomic) struct UIEdgeInsets _balloonMaskEdgeInsets;
 @property (strong, nonatomic) MSConversation *activeConversation; // @synthesize activeConversation=_activeConversation;
 @property (strong, nonatomic) id<_MSMessageComposeExtensionImplProtocol> appContext; // @synthesize appContext=_appContext;
 @property (readonly, copy) NSString *debugDescription;
@@ -29,7 +30,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (struct CGSize)_contentSizeThatFits:(struct CGSize)arg1 presentationStyle:(unsigned long long)arg2;
 - (void)_conversation:(id)arg1 didSelectMessage:(id)arg2;
 - (void)_conversation:(id)arg1 willSelectMessage:(id)arg2;
 - (BOOL)_handleTextInputPayload:(id)arg1 withPayloadID:(id)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSProxy.h>
+#import <extension/NSProxy.h>
 
 __attribute__((visibility("hidden")))
 @interface NSAutoContentAccessingProxy : NSProxy

@@ -103,6 +103,7 @@
 - (struct CGPoint)_accessibilityConvertSystemBoundedScreenPointToContextSpace:(struct CGPoint)arg1;
 - (struct CGRect)_accessibilityConvertSystemBoundedScreenRectToContextSpace:(struct CGRect)arg1;
 - (id)_accessibilityCurrentStatus;
+- (id)_accessibilityCustomActionGroupIdentifier;
 - (id)_accessibilityCustomActionNamesAndIdentifiers;
 - (id)_accessibilityCustomActions;
 - (id)_accessibilityCustomRotorResultHelper:(id)arg1 array:(id)arg2;

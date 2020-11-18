@@ -30,6 +30,7 @@
 @property (strong, nonatomic) NSNumber *userID; // @synthesize userID=_userID;
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)init;
 - (void)simulateMatching:(BOOL)arg1 type:(long long)arg2;
 

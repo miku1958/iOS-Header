@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSCorrectionCheckingResult.h>
+#import <extension/NSCorrectionCheckingResult.h>
 
 @interface NSEmojiCheckingResult : NSCorrectionCheckingResult
 {

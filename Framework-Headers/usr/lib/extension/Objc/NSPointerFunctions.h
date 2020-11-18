@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCopying-Protocol.h>
+#import <extension/NSCopying-Protocol.h>
 
 @interface NSPointerFunctions : NSObject <NSCopying>
 {

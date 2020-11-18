@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIAccessibilityElement.h>
+#import "AXPDFNodeElement.h"
 
-@interface UICGPDFListContainerAccessibilityElement : UIAccessibilityElement
+@interface UICGPDFListContainerAccessibilityElement : AXPDFNodeElement
 {
 }
 
 - (long long)accessibilityContainerType;
+- (struct CGRect)accessibilityFrame;
 - (BOOL)isAccessibilityElement;
 
 @end

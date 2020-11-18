@@ -6,12 +6,13 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVOutputDevice, NSDictionary, NSLock, NSString;
+@class AVOutputDevice, NSDictionary, NSString;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MRAVOutputDevice : NSObject
 {
-    NSLock *_lock;
+    NSObject<OS_dispatch_queue> *_accessSerialQueue;
     NSString *_name;
     NSString *_uid;
     NSString *_modelID;
@@ -23,7 +24,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) NSString *MACAddress;
-@property (readonly, nonatomic) AVOutputDevice *avOutputDevice; // @synthesize avOutputDevice=_avOutputDevice;
+@property (strong, nonatomic, setter=setAVOutputDevice:) AVOutputDevice *avOutputDevice; // @synthesize avOutputDevice=_avOutputDevice;
 @property (readonly, nonatomic) float batteryLevel;
 @property (readonly, nonatomic) BOOL canAccessRemoteAssets;
 @property (readonly, nonatomic) unsigned int deviceSubtype;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL supportsExternalScreen;
 @property (readonly, nonatomic) NSString *uid;
 
+- (void)_onqueue_clearCachedAVOutputDeviceProperties;
 - (void)dealloc;
 - (id)description;
 - (id)initWithAVOutputDevice:(id)arg1;

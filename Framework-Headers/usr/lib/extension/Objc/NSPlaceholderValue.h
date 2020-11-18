@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSNumber.h>
+#import <extension/NSNumber.h>
 
 __attribute__((visibility("hidden")))
 @interface NSPlaceholderValue : NSNumber

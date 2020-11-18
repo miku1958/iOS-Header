@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSEncodingDetector.h>
+#import <extension/NSEncodingDetector.h>
 
 __attribute__((visibility("hidden")))
 @interface NSEUCGB2312EncodingDetector : NSEncodingDetector

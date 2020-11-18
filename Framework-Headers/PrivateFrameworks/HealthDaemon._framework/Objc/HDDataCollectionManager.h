@@ -39,6 +39,7 @@
 - (void).cxx_destruct;
 - (Class)_aggregatorClassForObjectType:(id)arg1;
 - (id)_dataCollectorsDiagnosticDescription;
+- (BOOL)_dataReceived:(id)arg1 provenance:(id)arg2 isDemoData:(BOOL)arg3 error:(id *)arg4;
 - (void)_demoObjectsReceived:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_observersDescription;
 - (void)_queue_addDataCollector:(id)arg1;
@@ -47,7 +48,6 @@
 - (void)_queue_alertCollectorsOfTypesWithObservers;
 - (CDStruct_0714bc26)_queue_collectionStateForType:(id)arg1;
 - (void)_queue_createBuiltinCollectors;
-- (BOOL)_queue_dataReceived:(id)arg1 provenance:(id)arg2 isDemoData:(BOOL)arg3 error:(id *)arg4;
 - (double)_queue_defaultCollectionIntervalForType:(id)arg1;
 - (id)_queue_demoManagerCreatingIfNecessary;
 - (id)_queue_observerMapForType:(id)arg1;
@@ -69,7 +69,7 @@
 - (id)pluginDataCollectors;
 - (void)removeDataCollectionObserver:(id)arg1;
 - (void)removeDataCollectionObserver:(id)arg1 type:(id)arg2;
-- (void)sensorDataArrayReceived:(id)arg1 deviceEntity:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (BOOL)sensorDataArrayReceived:(id)arg1 deviceEntity:(id)arg2 error:(id *)arg3;
 - (void)sensorDataReceived:(id)arg1 deviceEntity:(id)arg2;
 - (void)startDataCollectionForType:(id)arg1 observer:(id)arg2 collectionInterval:(double)arg3;
 - (void)startFakingDataWithActivityType:(long long)arg1 speed:(id)arg2;

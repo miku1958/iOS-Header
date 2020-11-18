@@ -6,12 +6,16 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSCalendar, NSData, NSDate, NSString, PKExpressPassInformation, PKPaymentWebServiceContext;
+@class NSCalendar, NSData, NSDate, NSString, PKExpressPassInformation, PKPaymentApplication, PKPaymentTransaction, PKPaymentWebServiceContext;
 
 @protocol PDPaymentServiceExportedInterface <PDXPCServiceExportedInterface>
 - (void)defaultPaymentPassUniqueIdentifier:(void (^)(NSString *))arg1;
+- (void)downloadAllPaymentPassesWithHandler:(void (^)(void))arg1;
 - (void)expressPassInformationForMode:(NSString *)arg1 withHandler:(void (^)(PKExpressPassInformation *))arg2;
 - (void)expressPassesInformationWithHandler:(void (^)(NSSet *))arg1;
+- (void)initializeSecureElement:(void (^)(BOOL))arg1;
+- (void)initializeSecureElementIfNecessaryWithHandler:(void (^)(BOOL, NSData *, NSData *))arg1;
+- (void)insertOrUpdatePaymentTransaction:(PKPaymentTransaction *)arg1 forPassUniqueIdentifier:(NSString *)arg2 paymentApplication:(PKPaymentApplication *)arg3 handler:(void (^)(PKPaymentTransaction *))arg4;
 - (void)passUniqueIdentifierForTransactionWithIdentifier:(NSString *)arg1 completion:(void (^)(NSString *))arg2;
 - (void)passUniqueIdentifierForTransactionWithServiceIdentifier:(NSString *)arg1 completion:(void (^)(NSString *))arg2;
 - (void)setDefaultPaymentPassUniqueIdentifier:(NSString *)arg1 handler:(void (^)(void))arg2;

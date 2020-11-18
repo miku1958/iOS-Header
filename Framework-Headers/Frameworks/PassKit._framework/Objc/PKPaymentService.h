@@ -46,7 +46,6 @@
 - (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxyWithFailureHandler:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxyWithSemaphore:(id)arg1;
-- (void)_sharedPaymentWebServiceContextWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)_transactionsAppLaunchTokenForPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)archiveMessageWithIdentifier:(id)arg1;
@@ -63,6 +62,7 @@
 - (void)felicaStateWithPassUniqueIdentifier:(id)arg1 paymentApplication:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
+- (void)initializeSecureElement:(CDUnknownBlockType)arg1;
 - (void)initializeSecureElementIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)insertOrUpdatePaymentTransaction:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)insertOrUpdateValueAddedServiceTransaction:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentTransaction:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -90,6 +90,7 @@
 - (void)setDefaultExpressFelicaTransitPassIdentifier:(id)arg1 withCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setDefaultPaymentApplication:(id)arg1 forPassUniqueIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setExpressWithPassInformation:(id)arg1 credential:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)sharedPaymentWebServiceContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)simulateDefaultExpressTransitPassIdentifier:(id)arg1;
 - (void)simulatePaymentPush;
 - (void)startBackgroundVerificationObserverForPass:(id)arg1 verificationMethod:(id)arg2;

@@ -19,6 +19,7 @@
     NSObject<OS_dispatch_source> *_sessionStartTimer;
     long long _paymentApplicationState;
     BOOL _isBackgrounded;
+    BOOL _isAssistantActive;
     BOOL _acquiringSession;
     unsigned long long _sessionToken;
     unsigned char _visibility;
@@ -52,12 +53,16 @@
 - (void)_deleteButtonTapped;
 - (void)_endSession;
 - (void)_endSessionStartTimer;
+- (void)_handleAddDeactivationReasonNotification:(id)arg1;
 - (void)_handleEnterBackgroundNotification:(id)arg1;
 - (void)_handleEnterForegroundNotification:(id)arg1;
+- (void)_handleRemoveDeactivationReasonNotification:(id)arg1;
 - (void)_lostModeButtonTapped;
 - (void)_setContentView:(id)arg1 animated:(BOOL)arg2;
 - (void)_setUserIntentRequired:(BOOL)arg1;
 - (void)_startContactlessInterfaceSessionWithSessionAvailable:(CDUnknownBlockType)arg1 sessionUnavailable:(CDUnknownBlockType)arg2;
+- (void)_updateForForegroundActivePresentationIfNecessaryAnimated:(BOOL)arg1;
+- (void)_updateForNonForegroundActivePresentationAnimated:(BOOL)arg1;
 - (void)configureForState:(long long)arg1 context:(id)arg2 passView:(id)arg3;
 - (void)dealloc;
 - (void)didBecomeHiddenAnimated:(BOOL)arg1;

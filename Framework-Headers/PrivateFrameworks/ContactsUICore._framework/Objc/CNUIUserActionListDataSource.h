@@ -53,6 +53,7 @@
 - (id)makeModelObservableForActionType:(id)arg1;
 - (id)modelsForActionType:(id)arg1;
 - (void)setContactStore:(id)arg1;
+- (BOOL)shouldUseLabelForButtonWithDefaultAction:(id)arg1;
 - (id)thirdPartyActionsForContactProperty:(id)arg1;
 - (id)thirdPartyActionsForCurrentContactAndPropertyKey:(id)arg1 identifier:(id)arg2;
 - (id)thirdPartyTargetsForActionTypes:(id)arg1;

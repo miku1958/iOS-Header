@@ -31,6 +31,7 @@
 @property (readonly) BOOL useLegacyEventCoordinateTransformationPath;
 @property (readonly) BOOL useLegacyScreenshotPath;
 @property (readonly) BOOL useLegacySnapshotPath;
+@property (readonly) BOOL usePointTransformationsForFrameConversions;
 
 + (BOOL)isSupported;
 + (id)sharedSession;

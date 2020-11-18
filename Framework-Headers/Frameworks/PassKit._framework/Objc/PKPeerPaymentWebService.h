@@ -37,6 +37,7 @@
 - (void).cxx_destruct;
 - (void)_archiveContext;
 - (id)_deviceIdentifier;
+- (id)_deviceMetadata;
 - (void)_deviceRegistrationDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_deviceScoreForEndpoint:(id)arg1 recipientAddress:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_deviceScoreForEndpoint:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -63,14 +64,17 @@
 - (unsigned long long)peerPaymentPreferencesWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)peerPaymentQuoteCertificatesForDestination:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)peerPaymentQuoteWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (unsigned long long)peerPaymentRecipientForRecipientAddress:(id)arg1 source:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (unsigned long long)peerPaymentReOpenAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (unsigned long long)peerPaymentRecipientForRecipientAddress:(id)arg1 senderAddress:(id)arg2 source:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (unsigned long long)peerPaymentRegisterWithURL:(id)arg1 pushToken:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)peerPaymentRequestStatementWithCompletion:(CDUnknownBlockType)arg1;
-- (unsigned long long)peerPaymentRequestTokenWithRequst:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)peerPaymentRequestTokenWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)peerPaymentStatusWithPaymentIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)peerPaymentUnregisterWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)peerPaymentUpdatePreferencesWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)performRequest:(id)arg1 taskIdentifier:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)sharedPeerPaymentServiceChanged:(id)arg1;
+- (unsigned long long)submitDeviceScoreIdentifiersWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

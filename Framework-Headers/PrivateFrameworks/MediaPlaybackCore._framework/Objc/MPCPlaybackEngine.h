@@ -41,6 +41,7 @@
 @property (nonatomic, getter=isVideoSupported) BOOL videoSupported; // @synthesize videoSupported=_videoSupported;
 @property (readonly, nonatomic) UIView *videoView;
 
++ (void)preheatPlayback;
 - (void).cxx_destruct;
 - (id)_playerForMusicPlayerServer;
 - (void)_preservePlaybackStateImmediately;
@@ -51,6 +52,7 @@
 - (id)initWithPlayerID:(id)arg1;
 - (void)removeEngineObserver:(id)arg1;
 - (void)removeSupportedSpecializedQueueIdentifier:(id)arg1;
+- (void)reportUserSeekFromTime:(double)arg1 toTime:(double)arg2;
 - (void)restoreStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)schedulePlaybackStatePreservation;
 - (void)start;

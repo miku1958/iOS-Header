@@ -10,7 +10,7 @@
 
 @interface PKPeerPaymentStatusResponse : PKPeerPaymentWebServiceResponse
 {
-    unsigned long long _status;
+    long long _status;
     NSString *_paymentIdentifier;
     NSString *_transactionIdentifier;
     NSArray *_actions;
@@ -20,7 +20,7 @@
 @property (readonly, copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property (readonly, copy, nonatomic) NSData *amountHash; // @synthesize amountHash=_amountHash;
 @property (readonly, copy, nonatomic) NSString *paymentIdentifier; // @synthesize paymentIdentifier=_paymentIdentifier;
-@property (readonly, nonatomic) unsigned long long status; // @synthesize status=_status;
+@property (readonly, nonatomic) long long status; // @synthesize status=_status;
 @property (readonly, copy, nonatomic) NSString *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;
 
 - (void).cxx_destruct;

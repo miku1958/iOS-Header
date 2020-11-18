@@ -18,8 +18,10 @@
     BOOL _useBuiltInDefaults;
     BOOL _hasValidDefaultSuggestions;
     NSDecimalNumber *_cardBalance;
-    NSDecimalNumber *_minAmount;
-    NSDecimalNumber *_maxAmount;
+    NSDecimalNumber *_minBalance;
+    NSDecimalNumber *_maxBalance;
+    NSDecimalNumber *_minLoadAmount;
+    NSDecimalNumber *_maxLoadAmount;
     NSArray *_defaultValues;
     long long _decimalPrecision;
     NSString *_currencyCode;
@@ -30,8 +32,10 @@
 @property (nonatomic) long long decimalPrecision; // @synthesize decimalPrecision=_decimalPrecision;
 @property (copy, nonatomic) NSArray *defaultValues; // @synthesize defaultValues=_defaultValues;
 @property (readonly, nonatomic) BOOL hasValidDefaultSuggestions; // @synthesize hasValidDefaultSuggestions=_hasValidDefaultSuggestions;
-@property (copy, nonatomic) NSDecimalNumber *maxAmount; // @synthesize maxAmount=_maxAmount;
-@property (copy, nonatomic) NSDecimalNumber *minAmount; // @synthesize minAmount=_minAmount;
+@property (copy, nonatomic) NSDecimalNumber *maxBalance; // @synthesize maxBalance=_maxBalance;
+@property (copy, nonatomic) NSDecimalNumber *maxLoadAmount; // @synthesize maxLoadAmount=_maxLoadAmount;
+@property (copy, nonatomic) NSDecimalNumber *minBalance; // @synthesize minBalance=_minBalance;
+@property (copy, nonatomic) NSDecimalNumber *minLoadAmount; // @synthesize minLoadAmount=_minLoadAmount;
 @property (nonatomic) unsigned long long powerOfTenFactor; // @synthesize powerOfTenFactor=_powerOfTenFactor;
 
 - (void).cxx_destruct;
@@ -43,6 +47,7 @@
 - (BOOL)_possibleAmountIsValidWithDefaultValue:(id)arg1 amount:(id)arg2;
 - (id)_possibleValueForAmount:(id)arg1;
 - (id)_useMaxAmountSuggestion;
+- (BOOL)_useMaximumAmountSuggestionWithAmount:(id)arg1;
 - (id)init;
 - (id)initWithLastInput:(id)arg1;
 - (void)setUseBuiltInDefaults:(BOOL)arg1;

@@ -23,13 +23,15 @@
 
 - (void).cxx_destruct;
 - (BOOL)_accessibilityCanPerformAction:(int)arg1;
-- (id)_accessibilityCustomActions;
+- (id)_accessibilityCustomActionGroupIdentifier;
 - (id)_accessibilityPreferredScrollActions;
+- (BOOL)_accessibilityRetainsCustomRotorActionSetting;
 - (id)_accessibilityScrollAncestor;
 - (id)_accessibilityScrollStatus;
 - (BOOL)_accessibilityScrollToVisible;
 - (id)_accessibilityUserTestingChildren;
 - (BOOL)accessibilityActivate;
+- (id)accessibilityCustomActions;
 - (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityHint;

@@ -16,6 +16,7 @@
     long long _style;
     double _glyphViewPadding;
     double _labelTopPadding;
+    BOOL _biometricsUnavailableHint;
     BOOL _touchRecognizingHint;
     BOOL _persistentEmulationHint;
     BOOL _accessPass;
@@ -27,6 +28,7 @@
 }
 
 @property (nonatomic) BOOL accessPass; // @synthesize accessPass=_accessPass;
+@property (nonatomic) BOOL biometricsUnavailableHint; // @synthesize biometricsUnavailableHint=_biometricsUnavailableHint;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<PKPassPaymentPayStateViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

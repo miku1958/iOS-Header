@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSKeyValueFastMutableArray.h>
+#import <extension/NSKeyValueFastMutableArray.h>
 
 @class NSKeyValueGetter;
 

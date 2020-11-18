@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSUnitConverter.h>
+#import <extension/NSUnitConverter.h>
 
-#import <Foundation/NSSecureCoding-Protocol.h>
+#import <extension/NSSecureCoding-Protocol.h>
 
 @interface NSUnitConverterLinear : NSUnitConverter <NSSecureCoding>
 {

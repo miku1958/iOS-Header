@@ -34,6 +34,7 @@
 @property (strong, nonatomic) NSMutableDictionary *pendingRequestToCompletionHandlers; // @synthesize pendingRequestToCompletionHandlers=_pendingRequestToCompletionHandlers;
 @property (readonly) Class superclass;
 
++ (void)_applyURLCachePolicy:(unsigned long long)arg1 cacheDiskPath:(id)arg2 toConfiguration:(id)arg3;
 - (void).cxx_destruct;
 - (id)_artworkRepresentationWithImageFromData:(id)arg1 forURLResponse:(id)arg2 size:(struct CGSize)arg3 immediateImageDecompressionAllowed:(BOOL)arg4;
 - (id)_existingRepresentationFromURLCacheForArtworkCatalog:(id)arg1 immediateImageDecompressionAllowed:(BOOL)arg2;
@@ -54,6 +55,7 @@
 - (BOOL)shouldLookForLargerRepresentationsWhenBestRepresentationIsUnavailable;
 - (id)sortedSupportedSizesForCatalog:(id)arg1;
 - (id)supportedSizesForCatalog:(id)arg1;
+- (void)updateURLSessionWithCachePolicy:(unsigned long long)arg1 cachePath:(id)arg2;
 - (id)visualIdenticalityIdentifierForCatalog:(id)arg1;
 - (BOOL)wantsBackgroundImageDecompression;
 

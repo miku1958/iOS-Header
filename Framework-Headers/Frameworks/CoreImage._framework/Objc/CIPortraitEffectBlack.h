@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
     NSNumber *inputGrainAmount;
     NSNumber *inputDepthDataScore;
     CIVector *inputFocusRect;
+    NSNumber *inputFocalLengthNormalized;
     NSNumber *inputAdaptiveThresholdFaceGroupRange;
     NSNumber *inputAdaptiveThresholdFaceErrorMargin;
     NSNumber *inputAdaptiveThresholdZRangeConst;
@@ -63,6 +64,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CIImage *inputDisparity; // @synthesize inputDisparity;
 @property (copy, nonatomic) NSNumber *inputFeatherBandRange; // @synthesize inputFeatherBandRange;
 @property (copy, nonatomic) NSNumber *inputFilterCut; // @synthesize inputFilterCut;
+@property (copy, nonatomic) NSNumber *inputFocalLengthNormalized; // @synthesize inputFocalLengthNormalized;
 @property (copy, nonatomic) CIVector *inputFocusRect; // @synthesize inputFocusRect;
 @property (strong, nonatomic) CIImage *inputFullSizeImage; // @synthesize inputFullSizeImage;
 @property (strong, nonatomic) NSNumber *inputGrainAmount; // @synthesize inputGrainAmount;

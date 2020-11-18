@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject-Protocol.h>
+#import <extension/NSObject-Protocol.h>
 
 @class NSError, NSObservation;
 @protocol NSObservable><NSObserver, NSObserver;

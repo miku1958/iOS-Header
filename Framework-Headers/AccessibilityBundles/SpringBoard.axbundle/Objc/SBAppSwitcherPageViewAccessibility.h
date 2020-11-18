@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityBundleIdentifier;
+- (id)_accessibilityCustomActionGroupIdentifier;
 - (BOOL)_accessibilityElementVisibilityAffectsLayout;
 - (BOOL)_accessibilityFrameShouldIncludeExtraSpaceBelow;
 - (BOOL)_accessibilityIsControlCenterContainer;

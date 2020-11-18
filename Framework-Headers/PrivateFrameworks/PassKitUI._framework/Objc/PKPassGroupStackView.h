@@ -95,7 +95,6 @@
     PKBacklightController *_backlightController;
     BOOL _footerSuppressed;
     BOOL _staggerPileAnimations;
-    BOOL _hasOutstandingPeerPaymentAccountActions;
     id<PKPassGroupStackViewDatasource> _datasource;
     UIColor *_pageIndicatorTintColor;
     UIColor *_currentPageIndicatorTintColor;
@@ -108,7 +107,6 @@
 @property (nonatomic) id<PKPassGroupStackViewDelegate><UIScrollViewDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL footerSuppressed; // @synthesize footerSuppressed=_footerSuppressed;
-@property (nonatomic) BOOL hasOutstandingPeerPaymentAccountActions; // @synthesize hasOutstandingPeerPaymentAccountActions=_hasOutstandingPeerPaymentAccountActions;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isModallyPresentedPassAuthorized;
 @property (readonly, nonatomic) BOOL isPresentingPassViewFront;
@@ -126,7 +124,6 @@
 + (id)backgroundColor;
 - (void).cxx_destruct;
 - (void)_addGroupViewAsSubview:(id)arg1 forIndex:(unsigned long long)arg2;
-- (void)_addMotionEffectsToModalPile;
 - (void)_addPanGestureRecognizerToGroupView:(id)arg1;
 - (void)_adjustPassFooterViewOpacityForYOffset:(double)arg1;
 - (void)_adjustSeparationGroupAndPassViewsForReordering;
@@ -202,7 +199,6 @@
 - (void)_refreshBacklightForFrontmostPassGroup;
 - (void)_refreshBrightness;
 - (void)_removeGroupViewAsSubviewWithGroupID:(id)arg1;
-- (void)_removeMotionEffectsFromModalPile;
 - (void)_reorderPositionChangedForReorderedGroupViewWithVelocity:(struct CGPoint)arg1;
 - (void)_resetBrightness;
 - (void)_resumeSuspendedTransition;
@@ -298,6 +294,7 @@
 - (void)moveGroup:(id)arg1 fromIndex:(unsigned long long)arg2 toIndex:(unsigned long long)arg3;
 - (void)noteDidEndScrollingForTesting;
 - (void)passFooterViewDidChangeUserIntentRequirement:(id)arg1;
+- (void)passFooterViewDidChangeUserIntentRequirement:(id)arg1 withContext:(id)arg2;
 - (void)paymentDeviceDidBecomeAvailable;
 - (void)paymentDeviceDidBecomeUnavailable;
 - (void)paymentDeviceDidEnterRestrictedMode;
@@ -320,6 +317,7 @@
 - (void)testGroupSelection;
 - (void)tilePassesEagerly:(BOOL)arg1;
 - (void)updateHeaderAndSubheaderViewsIfNecessary;
+- (void)updatePeerPaymentFooterViewIfNecessary;
 
 @end
 

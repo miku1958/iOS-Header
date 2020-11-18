@@ -54,7 +54,7 @@
 - (void)dealloc;
 - (void)dismissIdentityProviderViewController:(id)arg1;
 - (void)identityProviderPickerViewController:(id)arg1 didPickIdentityProvider:(id)arg2;
-- (void)identityProviderViewController:(id)arg1 didAuthenticateAccount:(id)arg2 supportingApps:(id)arg3 forRequest:(id)arg4;
+- (void)identityProviderViewController:(id)arg1 didAuthenticateAccount:(id)arg2 forRequest:(id)arg3;
 - (void)identityProviderViewController:(id)arg1 didFinishRequest:(id)arg2 withResult:(id)arg3;
 - (void)identityProviderViewControllerDidCancel:(id)arg1;
 - (id)init;

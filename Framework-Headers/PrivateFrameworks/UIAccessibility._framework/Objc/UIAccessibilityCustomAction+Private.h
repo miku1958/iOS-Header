@@ -12,6 +12,7 @@
 
 @property (nonatomic) BOOL ignoreWhenVoiceOverTouches;
 @property (strong, nonatomic, getter=_image, setter=_setImage:) UIImage *image;
+@property (strong, nonatomic, getter=_accessibilityInternalCustomActionIdentifier, setter=_accessibilitySetInternalCustomActionIdentifier:) NSString *internalCustomActionIdentifier;
 @property (strong, nonatomic, getter=_shortName, setter=_setShortName:) NSString *shortName;
 @property (nonatomic) BOOL shouldSuppressActionHint;
 

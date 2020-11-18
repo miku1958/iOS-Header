@@ -6,10 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCopying-Protocol.h>
-#import <Foundation/NSSecureCoding-Protocol.h>
-#import <Foundation/NSXPCListenerDelegate-Protocol.h>
-#import <Foundation/_NSExtensionAuxHostingBase-Protocol.h>
+#import <extension/NSCopying-Protocol.h>
+#import <extension/NSSecureCoding-Protocol.h>
+#import <extension/NSXPCListenerDelegate-Protocol.h>
+#import <extension/_NSExtensionAuxHostingBase-Protocol.h>
 
 @class NSArray, NSString, NSUUID, NSXPCConnection, NSXPCListener;
 @protocol OS_os_transaction, _NSExtensionContextHosting, _NSExtensionContextVending;

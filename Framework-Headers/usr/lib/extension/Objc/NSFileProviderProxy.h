@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSFileReactorProxy.h>
+#import <extension/NSFileReactorProxy.h>
 
 @class NSFileProviderXPCMessenger, NSString, NSUUID;
 @protocol NSFileProviderXPCInterface><NSXPCProxyCreating;

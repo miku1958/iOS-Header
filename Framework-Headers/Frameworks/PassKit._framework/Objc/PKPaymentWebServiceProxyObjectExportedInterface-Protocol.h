@@ -29,12 +29,15 @@
 - (void)noteProvisioningDidEnd;
 - (void)noteProvisioningUserInterfaceDidAppear;
 - (void)noteProvisioningUserInterfaceDidDisappear;
+- (void)passesOfType:(unsigned long long)arg1 completion:(void (^)(NSArray *))arg2;
 - (void)paymentSupportedInCurrentRegion:(void (^)(int))arg1;
 - (void)queueConnectionToTrustedServiceManagerForPushTopic:(NSString *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
 - (void)removePass:(PKPass *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)secureElementOwnershipStateForCurrentUserWithCompletion:(void (^)(unsigned long long))arg1;
+- (void)setNewAuthRandom:(void (^)(BOOL))arg1;
 - (void)setNewAuthRandomIfNecessaryReturningPairingState:(void (^)(BOOL, NSData *, NSData *))arg1;
 - (void)signData:(NSData *)arg1 signatureEntanglementMode:(unsigned long long)arg2 withCompletion:(void (^)(NSData *, PKSecureElementSignatureInfo *, NSError *))arg3;
+- (void)supportsPeerPaymentRegistrationWithCompletion:(void (^)(BOOL))arg1;
 - (void)validateAddPreconditionsWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)validateTransferPreconditionsWithCompletion:(void (^)(BOOL, NSError *))arg1;
 @end

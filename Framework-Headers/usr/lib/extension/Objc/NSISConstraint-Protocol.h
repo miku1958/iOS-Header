@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSISVariableDelegate-Protocol.h>
+#import <extension/NSISVariableDelegate-Protocol.h>
 
 @class NSISVariable;
 

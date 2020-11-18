@@ -14,7 +14,7 @@
 #import <PassKitUI/UITableViewDataSource-Protocol.h>
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSString, PKAuthenticator, PKPaymentAuthorizationFooterView, PKPaymentAuthorizationLayout, PKPaymentAuthorizationPasswordButtonView, PKPaymentAuthorizationStateMachine, PKPaymentAuthorizationSummaryItemsView, PKPaymentAuthorizationTotalView, PKPaymentPreferencesViewController, PKPhysicalButtonView, UITableView, UIView;
+@class NSLayoutConstraint, NSString, PKAuthenticator, PKPaymentAuthorizationFooterView, PKPaymentAuthorizationLayout, PKPaymentAuthorizationPasswordButtonView, PKPaymentAuthorizationStateMachine, PKPaymentAuthorizationSummaryItemsView, PKPaymentAuthorizationTotalView, PKPaymentPreferencesViewController, PKPhysicalButtonView, UIBarButtonItem, UITableView, UIView;
 @protocol PKPaymentAuthorizationServiceViewControllerDelegate><PKPaymentAuthorizationHostProtocol;
 
 @interface PKPaymentAuthorizationServiceViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, PKPaymentAuthorizationFooterViewDelegate, PKAuthenticatorDelegate, PKPaymentAuthorizationStateMachineDelegate, PKPaymentAuthorizationServiceProtocol>
@@ -28,6 +28,7 @@
     PKPaymentAuthorizationFooterView *_footerView;
     PKPaymentAuthorizationPasswordButtonView *_passwordButtonView;
     NSLayoutConstraint *_passphraseBottomConstraint;
+    UIBarButtonItem *_cancelBarButtonItem;
     UIView *_passphraseSeparatorView;
     NSLayoutConstraint *_contentViewRightConstraint;
     PKPaymentPreferencesViewController *_shippingMethodPreferencesController;
@@ -51,6 +52,7 @@
     unsigned long long _biometryAttempts;
     BOOL _userIntentRequired;
     BOOL _shouldIgnorePhysicalButton;
+    BOOL _cancelButtonDisabled;
     PKPaymentAuthorizationStateMachine *_stateMachine;
     PKAuthenticator *_authenticator;
     PKPhysicalButtonView *_physicalButtonView;
@@ -58,6 +60,7 @@
 }
 
 @property (strong, nonatomic) PKAuthenticator *authenticator; // @synthesize authenticator=_authenticator;
+@property (readonly, nonatomic) BOOL cancelButtonDisabled; // @synthesize cancelButtonDisabled=_cancelButtonDisabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKPaymentAuthorizationServiceViewControllerDelegate><PKPaymentAuthorizationHostProtocol> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -76,7 +79,7 @@
 - (void)_didCancel:(BOOL)arg1;
 - (void)_didFailWithError:(id)arg1;
 - (void)_didFailWithFatalError:(id)arg1;
-- (void)_didSucceed;
+- (void)_didSucceedWithAuthorizationStateParam:(id)arg1;
 - (id)_evaluationRequest;
 - (void)_handleModelUpdate;
 - (void)_hostApplicationDidEnterBackground;
@@ -105,6 +108,7 @@
 - (Class)_tableViewClassForDataItem:(id)arg1;
 - (long long)_totalViewStyle;
 - (void)_updateBackgroundedState:(BOOL)arg1;
+- (void)_updatePendingTransaction:(id)arg1 withAuthorizationStateParam:(id)arg2;
 - (void)_updatePhysicalButtonInstruction;
 - (void)_updatePreferencesWithErrors:(id)arg1;
 - (void)_updatePreferredContentSize;
@@ -125,6 +129,7 @@
 - (void)authorizationDidSelectShippingMethodCompleteWithUpdate:(id)arg1;
 - (void)authorizationFooterViewDidChangeConstraints:(id)arg1;
 - (void)authorizationFooterViewPasscodeButtonPressed:(id)arg1;
+- (void)authorizationFooterViewWillChangeConstraints:(id)arg1;
 - (void)biometricAttemptFailed;
 - (void)cancelPressed:(id)arg1;
 - (void)dealloc;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSISVariableDelegate-Protocol.h>
+#import <extension/NSISVariableDelegate-Protocol.h>
 
 @class NSHashTable, NSISVariable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSThread, _NSISVariableObservable;
 @protocol NSISEngineDelegate, NSObservable;

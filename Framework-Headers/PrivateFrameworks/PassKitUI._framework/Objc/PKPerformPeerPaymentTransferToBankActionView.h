@@ -12,7 +12,7 @@
 #import <PassKitUI/UITableViewDataSource-Protocol.h>
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 
-@class NSDecimalNumber, NSNumberFormatter, NSString, PKContinuousButton, PKEnterCurrencyAmountView, PKEnterValueNewBalanceView, PKPeerPaymentAccount, PKPeerPaymentBankAccountInformation, PKPeerPaymentService, UILabel, UITableView, UITextField;
+@class NSDecimalNumber, NSNumberFormatter, NSString, PKContinuousButton, PKEnterCurrencyAmountView, PKEnterValueNewBalanceView, PKPeerPaymentAccount, PKPeerPaymentBankAccountInformation, PKPeerPaymentService, UIImageView, UILabel, UITableView, UITextField;
 @protocol PKPerformActionViewDelegate;
 
 @interface PKPerformPeerPaymentTransferToBankActionView : UIView <PKEnterCurrencyAmountViewDelegate, PKPeerPaymentAddBankAcountInformationViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, PKPeerPaymentPerformActionView>
@@ -28,9 +28,15 @@
     PKContinuousButton *_addAccountButton;
     UILabel *_addAccountDetailLabel;
     UITableView *_tableView;
+    UIImageView *_checkmarkImageView;
+    UILabel *_tranferTitleLabel;
+    UILabel *_tranferMessageLabel;
+    BOOL _transferComplete;
     NSDecimalNumber *_cardBalance;
-    NSDecimalNumber *_minAmount;
-    NSDecimalNumber *_maxAmount;
+    NSDecimalNumber *_minBalance;
+    NSDecimalNumber *_maxBalance;
+    NSDecimalNumber *_minLoadAmount;
+    NSDecimalNumber *_maxLoadAmount;
 }
 
 @property (strong, nonatomic) PKPeerPaymentAccount *account; // @synthesize account=_account;
@@ -40,15 +46,18 @@
 @property (weak, nonatomic) id<PKPerformActionViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSDecimalNumber *maxAmount; // @synthesize maxAmount=_maxAmount;
-@property (copy, nonatomic) NSDecimalNumber *minAmount; // @synthesize minAmount=_minAmount;
+@property (copy, nonatomic) NSDecimalNumber *maxBalance; // @synthesize maxBalance=_maxBalance;
+@property (copy, nonatomic) NSDecimalNumber *maxLoadAmount; // @synthesize maxLoadAmount=_maxLoadAmount;
+@property (copy, nonatomic) NSDecimalNumber *minBalance; // @synthesize minBalance=_minBalance;
+@property (copy, nonatomic) NSDecimalNumber *minLoadAmount; // @synthesize minLoadAmount=_minLoadAmount;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL transferComplete; // @synthesize transferComplete=_transferComplete;
 
 - (void).cxx_destruct;
 - (id)_addAccountButton;
 - (id)_addAccountDetailLabel;
 - (void)_addAccountInformation:(id)arg1;
-- (double)_amountTopPadding;
+- (id)_checkmarkImageView;
 - (void)_createSubviews;
 - (void)_currentAmountDidChangeTo:(id)arg1 shouldGenerateNewSuggestions:(BOOL)arg2;
 - (void)_handleEditAccountInformationButtonPressed;
@@ -56,8 +65,11 @@
 - (void)_presentAddBankAccountViewController;
 - (void)_presentViewController:(id)arg1;
 - (void)_setRightBarButtonEnabledState;
-- (BOOL)_shouldShakeCard:(id)arg1;
+- (BOOL)_shouldShakeWithNewAmount:(id)arg1;
 - (id)_tableView;
+- (unsigned long long)_topPadding;
+- (id)_tranferMessageLabel;
+- (id)_tranferTitleLabel;
 - (void)_updateCurrentAmount:(id)arg1 shouldGenerateNewSuggestions:(BOOL)arg2;
 - (void)amountTextFieldShouldAcceptTouches:(BOOL)arg1;
 - (void)bankAccountInformationViewControllerChangedBankAccountInformation:(id)arg1;

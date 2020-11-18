@@ -9,7 +9,7 @@
 #import <HealthDaemon/HDFitnessMachinePairingManagerDelegate-Protocol.h>
 #import <HealthDaemon/HDFitnessMachineStateTimersDelegate-Protocol.h>
 
-@class HDFitnessMachineDataCollector, HDFitnessMachineDataProducer, HDFitnessMachinePairingManager, HDFitnessMachineSession, HDFitnessMachineStateTimers, HDHealthServiceManager, HDProfile, NSDate, NSMutableArray, NSString;
+@class HDFitnessMachineAnalyticsCollector, HDFitnessMachineDataCollector, HDFitnessMachineDataProducer, HDFitnessMachinePairingManager, HDFitnessMachineSession, HDFitnessMachineStateTimers, HDHealthServiceManager, HDProfile, NSDate, NSMutableArray, NSString;
 @protocol HDFitnessMachineConnectionInitiatorProtocol, OS_dispatch_queue;
 
 @interface HDFitnessMachineManager : NSObject <HDFitnessMachinePairingManagerDelegate, HDFitnessMachineStateTimersDelegate>
@@ -27,8 +27,10 @@
     NSDate *_machinePreferredUntilDate;
     HDHealthServiceManager *_serviceManager;
     HDFitnessMachineStateTimers *_fitnessMachineStateTimers;
+    HDFitnessMachineAnalyticsCollector *_analyticsCollector;
 }
 
+@property (strong, nonatomic) HDFitnessMachineAnalyticsCollector *analyticsCollector; // @synthesize analyticsCollector=_analyticsCollector;
 @property (readonly, nonatomic) id<HDFitnessMachineConnectionInitiatorProtocol> connectionInitiatorServer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -79,6 +81,7 @@
 - (void)_queue_setDeviceInformation:(id)arg1;
 - (void)_queue_setMachineState:(unsigned long long)arg1 date:(id)arg2;
 - (void)_queue_simulateDisconnect;
+- (void)_queue_tearDownAfterStopEvent;
 - (BOOL)_queue_waitingOnInitialStatusAndData;
 - (void)_setQueue:(id)arg1;
 - (void)clientInvalidatedWithConnectionUUID:(id)arg1;
@@ -93,9 +96,10 @@
 - (void)pairingManager:(id)arg1 discoveredHealthService:(id)arg2 machineType:(unsigned long long)arg3;
 - (void)pairingManager:(id)arg1 failedPairingWithError:(id)arg2;
 - (void)pairingManager:(id)arg1 updatedConnectionStateFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
+- (void)pairingManagerDidBeginPairing:(id)arg1;
 - (void)pairingManagerReadyToConnect:(id)arg1;
-- (id)pairingManagerRequestsOOBData:(id)arg1;
-- (void)pairingManagerUpdatedDataTransferRequirements:(id)arg1;
+- (void)pairingManagerReceivedActivityTypeAndPermission:(id)arg1;
+- (id)pairingManagerRequestsOOBData:(id)arg1 error:(id *)arg2;
 - (void)pairingManagerUpdatedMachineInformation:(id)arg1;
 - (void)pairingManagerWillBeginPairing:(id)arg1 fitnessMachineToken:(id)arg2;
 - (void)registerClient:(id)arg1 withConnectionUUID:(id)arg2;

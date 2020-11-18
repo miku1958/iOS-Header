@@ -8,7 +8,7 @@
 
 #import <SetupAssistantSupport/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSNumber, NSString;
+@class NSArray, NSData, NSDictionary, NSNumber, NSString;
 
 @interface SASProximityInformation : NSObject <NSSecureCoding>
 {
@@ -27,6 +27,7 @@
     NSString *_deviceClass;
     NSString *_deviceName;
     NSString *_backupUUID;
+    NSData *_backupMetadata;
     NSNumber *_findMyDeviceOptIn;
     NSNumber *_deviceAnalyticsOptIn;
     NSNumber *_appAnalyticsOptIn;
@@ -37,6 +38,7 @@
 @property (strong) NSNumber *appAnalyticsOptIn; // @synthesize appAnalyticsOptIn=_appAnalyticsOptIn;
 @property (copy) NSString *appleID; // @synthesize appleID=_appleID;
 @property BOOL automaticTimeZoneEnabled; // @synthesize automaticTimeZoneEnabled=_automaticTimeZoneEnabled;
+@property (strong) NSData *backupMetadata; // @synthesize backupMetadata=_backupMetadata;
 @property (copy) NSString *backupUUID; // @synthesize backupUUID=_backupUUID;
 @property (strong) NSNumber *deviceAnalyticsOptIn; // @synthesize deviceAnalyticsOptIn=_deviceAnalyticsOptIn;
 @property (copy) NSString *deviceClass; // @synthesize deviceClass=_deviceClass;

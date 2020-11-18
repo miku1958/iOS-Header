@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSCountedSet, NSDictionary, NSString, PLClientServerTransaction, PLKeywordManager, PLPhotoLibrary, PLSearchIndexDateFormatter, PLThrottleTimer, PSIDatabase;
 @protocol OS_dispatch_queue;

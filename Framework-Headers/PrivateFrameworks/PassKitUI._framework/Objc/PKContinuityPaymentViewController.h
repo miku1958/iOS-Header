@@ -55,7 +55,7 @@
 - (void)_didCancel;
 - (void)_didFailWithError:(id)arg1;
 - (void)_didFailWithFatalError:(id)arg1;
-- (void)_didSucceed;
+- (void)_didSucceedWithAuthorizationStateParam:(id)arg1;
 - (id)_evaluationRequest;
 - (void)_invalidPaymentDataWithParam:(id)arg1;
 - (void)_processClientCallback:(id)arg1;
@@ -68,6 +68,8 @@
 - (void)_startEvaluation;
 - (void)_suspendAuthentication;
 - (void)_timeoutFired;
+- (void)_updateCardView;
+- (void)_updatePendingTransaction:(id)arg1 withAuthorizationStateParam:(id)arg2;
 - (void)_updateUserIntentRequired;
 - (void)authenticator:(id)arg1 didRequestUserAction:(long long)arg2;
 - (void)authenticator:(id)arg1 didTransitionToPearlState:(long long)arg2;

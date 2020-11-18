@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VoiceMemosFramework/__RCRecorderStateButtonAccessibility_super.h>
+#import "__RCRecorderStateButtonAccessibility_super.h"
 
 @interface RCRecorderStateButtonAccessibility : __RCRecorderStateButtonAccessibility_super
 {

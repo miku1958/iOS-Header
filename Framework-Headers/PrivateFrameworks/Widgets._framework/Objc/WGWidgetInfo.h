@@ -11,6 +11,10 @@
 @interface WGWidgetInfo : NSObject
 {
     NSPointerArray *_registeredWidgetHosts;
+    struct {
+        unsigned int didInitializeWantsVisibleFrame:1;
+    } _widgetInfoFlags;
+    BOOL _wantsVisibleFrame;
     NSString *_sdkVersion;
     NSExtension *_extension;
     long long _initialDisplayMode;
@@ -31,6 +35,7 @@
 @property (nonatomic) struct CGSize preferredContentSize; // @synthesize preferredContentSize=_preferredContentSize;
 @property (readonly, copy, nonatomic, getter=_sdkVersion) NSString *sdkVersion; // @synthesize sdkVersion=_sdkVersion;
 @property (readonly, nonatomic) UIImage *settingsIcon;
+@property (nonatomic, setter=_setWantsVisibleFrame:) BOOL wantsVisibleFrame; // @synthesize wantsVisibleFrame=_wantsVisibleFrame;
 @property (readonly, copy, nonatomic) NSString *widgetIdentifier;
 
 + (id)_productVersion;

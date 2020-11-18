@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDecimalNumber, NSString, PKPeerPaymentQuoteCertificatesResponse;
+@class NSDecimalNumber, NSString, PKPeerPaymentQuoteCertificatesResponse, PKPeerPaymentRequestToken;
 
 @interface PKPeerPaymentQuoteRequest : PKPeerPaymentWebServiceRequest <NSSecureCoding>
 {
@@ -18,7 +18,7 @@
     unsigned long long _externalFundingSource;
     unsigned long long _destination;
     unsigned long long _context;
-    NSString *_requestToken;
+    PKPeerPaymentRequestToken *_requestToken;
     NSString *_dpanIdentifier;
     long long _paymentNetwork;
     unsigned long long _paymentMethodType;
@@ -43,7 +43,7 @@
 @property (nonatomic) long long paymentNetwork; // @synthesize paymentNetwork=_paymentNetwork;
 @property (strong, nonatomic) PKPeerPaymentQuoteCertificatesResponse *quoteCertificatesResponse; // @synthesize quoteCertificatesResponse=_quoteCertificatesResponse;
 @property (copy, nonatomic) NSString *recipientIdentifier; // @synthesize recipientIdentifier=_recipientIdentifier;
-@property (copy, nonatomic) NSString *requestToken; // @synthesize requestToken=_requestToken;
+@property (strong, nonatomic) PKPeerPaymentRequestToken *requestToken; // @synthesize requestToken=_requestToken;
 @property (copy, nonatomic) NSString *routingNumber; // @synthesize routingNumber=_routingNumber;
 @property (copy, nonatomic) NSString *senderAddress; // @synthesize senderAddress=_senderAddress;
 

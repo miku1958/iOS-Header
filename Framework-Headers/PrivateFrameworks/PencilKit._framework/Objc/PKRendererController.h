@@ -12,7 +12,9 @@
 @interface PKRendererController : NSObject
 {
     NSObject<OS_dispatch_queue> *_renderQueue;
-    NSObject<OS_dispatch_semaphore> *_completeRenderSemaphore;
+    NSObject<OS_dispatch_semaphore> *_canBeginRenderSemaphore;
+    struct atomic_flag _readyToBeginRender;
+    _Atomic double _lastFrameDuration;
     _Atomic int _cancelAllRendering;
     _Atomic int _cancelLongRunningRenderingCount;
     _Atomic int _queuedRenders;
@@ -57,7 +59,7 @@
 - (void)_deleteFramebuffer;
 - (void)_discard;
 - (struct CGRect)_getContentsBoundsInStrokeSpace;
-- (void)_present;
+- (void)_present:(double)arg1;
 - (void)_renderAheadWithTransform:(struct CGAffineTransform)arg1 at:(double)arg2;
 - (void)_renderAndPresent:(BOOL)arg1 withTransform:(struct CGAffineTransform)arg2;
 - (void)_renderDrawPoints;
@@ -69,6 +71,7 @@
 - (void)clear;
 - (void)copyIntoTiles:(id)arg1;
 - (void)dealloc;
+- (void)didFinishRendering:(CDUnknownBlockType)arg1;
 - (void)didTeardownTile;
 - (void)disableRendering;
 - (void)drawImage:(struct CGImage *)arg1 andMask:(struct CGImage *)arg2;
@@ -83,7 +86,6 @@
 - (void)drawingCancelledWithCompletion:(CDUnknownBlockType)arg1;
 - (void)drawingEnded:(id)arg1 finishStrokeBlock:(CDUnknownBlockType)arg2;
 - (void)enableRendering;
-- (void)finishRendering:(CDUnknownBlockType)arg1;
 - (void)flushMemoryIfPossible;
 - (struct CGRect)getContentsBoundsInStrokeSpace;
 - (id)init;

@@ -31,6 +31,7 @@
     NSString *_scriptUserInfo;
     BOOL _shouldAdjustContentOffsets;
     BOOL _useWebViewFastPath;
+    BOOL _isInBackground;
     SUStorePageProtocol *_lastValidProtocol;
     UIPopoverController *_navigationMenuPopover;
     SUNavigationMenuViewController *_navigationMenuViewController;

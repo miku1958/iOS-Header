@@ -15,6 +15,8 @@
 @property (readonly, nonatomic) struct CGSize overlayContentSize;
 @property (readonly, nonatomic) long long overlayInterfaceOrientation;
 @property (readonly, copy, nonatomic) CCUIStatusBarStyleSnapshot *overlayStatusBarStyle;
+@property (readonly, nonatomic, getter=isReachabilityActive) BOOL reachabilityActive;
+@property (readonly, nonatomic) double reachabilityOffset;
 
 @end
 

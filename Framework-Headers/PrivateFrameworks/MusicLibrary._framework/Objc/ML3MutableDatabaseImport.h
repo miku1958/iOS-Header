@@ -23,6 +23,7 @@
 @property (nonatomic, getter=isResetSync) BOOL resetSync; // @dynamic resetSync;
 @property (nonatomic, getter=isSagaEnabled) BOOL sagaEnabled; // @dynamic sagaEnabled;
 @property (nonatomic) long long storeAccountID; // @dynamic storeAccountID;
+@property (nonatomic, getter=isSuspendable) BOOL suspendable; // @dynamic suspendable;
 @property (copy, nonatomic) NSString *syncAnchor; // @dynamic syncAnchor;
 @property (copy, nonatomic) NSString *syncLibraryID; // @dynamic syncLibraryID;
 @property (copy, nonatomic) NSData *trackData; // @dynamic trackData;

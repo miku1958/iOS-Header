@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSLayoutXAxisAnchor.h>
+#import <extension/NSLayoutXAxisAnchor.h>
 
 @interface _NSAutoresizingMaskXAxisAnchor : NSLayoutXAxisAnchor
 {

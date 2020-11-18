@@ -25,6 +25,7 @@
 @property (readonly) XCUIElement *referencedElement;
 @property (readonly) struct CGPoint screenPoint;
 
+- (struct CGPoint)_untransformedScreenPoint;
 - (id)coordinateWithOffset:(struct CGVector)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

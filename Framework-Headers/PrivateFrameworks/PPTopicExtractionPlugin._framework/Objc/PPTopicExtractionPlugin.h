@@ -44,6 +44,7 @@
 - (void)extractAndDonateTopicsForText:(id)arg1 isReader:(BOOL)arg2 bundleId:(id)arg3 groupId:(id)arg4 documentId:(id)arg5 weight:(double)arg6;
 - (unsigned long long)hashForBlacklist:(id)arg1;
 - (id)init;
+- (BOOL)interestedInSearchableItem:(id)arg1;
 - (BOOL)logDailyMetricsWithError:(id *)arg1;
 - (void)logDonationErrorForReason:(struct PPMTopicDonationErrorReason_)arg1;
 - (void)logDonationForTopics:(id)arg1 isReader:(BOOL)arg2 bundleId:(id)arg3;

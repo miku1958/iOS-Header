@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSKeyValueProxyGetter.h>
+#import <extension/NSKeyValueProxyGetter.h>
 
 __attribute__((visibility("hidden")))
 @interface NSKeyValueNotifyingMutableCollectionGetter : NSKeyValueProxyGetter

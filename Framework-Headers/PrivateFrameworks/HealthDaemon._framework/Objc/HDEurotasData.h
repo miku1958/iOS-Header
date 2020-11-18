@@ -33,8 +33,10 @@
 - (void)addAverageHeartRate:(unsigned short)arg1;
 - (void)addHeartRate:(unsigned short)arg1;
 - (void)addTotalEnergy:(unsigned short)arg1;
+- (id)description;
 - (id)getBinaryValueWithError:(id *)arg1;
 - (id)initForWriting;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

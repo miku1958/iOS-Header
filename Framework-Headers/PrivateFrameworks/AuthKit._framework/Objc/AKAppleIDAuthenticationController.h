@@ -28,7 +28,7 @@
 - (id)activeLoginCode:(id *)arg1;
 - (void)authenticateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)checkInWithAuthenticationServerForAppleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)checkSecurityUpgradeEligibilityForAltDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)checkSecurityUpgradeEligibilityForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)configurationInfoWithIdentifiers:(id)arg1 forAltDSID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)emailsForAltDSID:(id)arg1;

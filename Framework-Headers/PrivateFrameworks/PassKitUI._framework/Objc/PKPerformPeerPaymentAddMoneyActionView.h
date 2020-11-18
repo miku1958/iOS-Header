@@ -26,8 +26,10 @@
     PKEnterValueNewBalanceView *_newBalanceView;
     PKNumberPadSuggestionsView *_suggestionView;
     NSDecimalNumber *_cardBalance;
-    NSDecimalNumber *_minAmount;
-    NSDecimalNumber *_maxAmount;
+    NSDecimalNumber *_minBalance;
+    NSDecimalNumber *_maxBalance;
+    NSDecimalNumber *_minLoadAmount;
+    NSDecimalNumber *_maxLoadAmount;
 }
 
 @property (strong, nonatomic) PKPeerPaymentAccount *account; // @synthesize account=_account;
@@ -37,8 +39,10 @@
 @property (weak, nonatomic) id<PKPerformActionViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSDecimalNumber *maxAmount; // @synthesize maxAmount=_maxAmount;
-@property (copy, nonatomic) NSDecimalNumber *minAmount; // @synthesize minAmount=_minAmount;
+@property (copy, nonatomic) NSDecimalNumber *maxBalance; // @synthesize maxBalance=_maxBalance;
+@property (copy, nonatomic) NSDecimalNumber *maxLoadAmount; // @synthesize maxLoadAmount=_maxLoadAmount;
+@property (copy, nonatomic) NSDecimalNumber *minBalance; // @synthesize minBalance=_minBalance;
+@property (copy, nonatomic) NSDecimalNumber *minLoadAmount; // @synthesize minLoadAmount=_minLoadAmount;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

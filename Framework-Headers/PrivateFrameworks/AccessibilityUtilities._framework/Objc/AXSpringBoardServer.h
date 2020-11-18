@@ -107,6 +107,7 @@
 - (BOOL)isSystemAppFrontmostExludingSiri;
 - (BOOL)isSystemAppShowingAnAlert;
 - (BOOL)isSystemSleeping;
+- (void)isSystemSleeping:(CDUnknownBlockType)arg1;
 - (BOOL)isVoiceControlRunning;
 - (void)launchMagnifierApp;
 - (BOOL)loadGAXBundleForUnmanagedASAM;
@@ -142,6 +143,7 @@
 - (void)setLockScreenDimTimerEnabled:(BOOL)arg1;
 - (void)setOrientationLocked:(BOOL)arg1;
 - (void)setReachabilityActive:(BOOL)arg1;
+- (void)setReachabilityEnabled:(BOOL)arg1;
 - (void)setShowSpeechPlaybackControls:(BOOL)arg1;
 - (void)setSiriIsTalking:(BOOL)arg1;
 - (void)setVolume:(double)arg1;
@@ -157,6 +159,7 @@
 - (void)toggleDock;
 - (BOOL)toggleIncomingCall;
 - (void)toggleNotificationCenter;
+- (void)toggleReachability;
 - (int)topEventPidOverride;
 - (void)unlockDevice;
 - (void)userEventOccurred;

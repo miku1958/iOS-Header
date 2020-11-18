@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSURLComponents.h>
+#import <extension/NSURLComponents.h>
 
-#import <Foundation/NSCopying-Protocol.h>
+#import <extension/NSCopying-Protocol.h>
 
 __attribute__((visibility("hidden")))
 @interface __NSConcreteURLComponents : NSURLComponents <NSCopying>

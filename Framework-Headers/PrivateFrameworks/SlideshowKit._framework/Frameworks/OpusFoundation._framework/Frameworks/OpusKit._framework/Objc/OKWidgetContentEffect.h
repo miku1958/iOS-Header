@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <OpusKit/CAAnimationDelegate-Protocol.h>
 #import <OpusKit/OKSettingsSupport-Protocol.h>

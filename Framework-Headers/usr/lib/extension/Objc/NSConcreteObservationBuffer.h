@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObservationBuffer.h>
+#import <extension/NSObservationBuffer.h>
 
 @class NSMutableArray, NSObject, NSOperationQueue;
 @protocol OS_dispatch_queue;

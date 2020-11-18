@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCoding-Protocol.h>
-#import <Foundation/NSCopying-Protocol.h>
+#import <extension/NSCoding-Protocol.h>
+#import <extension/NSCopying-Protocol.h>
 
 @class NSLayoutDimension, NSLayoutPoint, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSString;
 

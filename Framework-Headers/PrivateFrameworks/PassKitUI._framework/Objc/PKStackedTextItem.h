@@ -11,6 +11,8 @@
 @interface PKStackedTextItem : NSObject
 {
     BOOL _significantPrimary;
+    BOOL _deemphasizedPrimary;
+    BOOL _strikethroughPrimary;
     NSString *_groupingIdentifier;
     unsigned long long _numberOfContentRows;
     NSString *_title;
@@ -19,11 +21,13 @@
     NSString *_tertiary;
 }
 
+@property (nonatomic, getter=isDeemphasizedPrimary) BOOL deemphasizedPrimary; // @synthesize deemphasizedPrimary=_deemphasizedPrimary;
 @property (readonly, copy, nonatomic) NSString *groupingIdentifier; // @synthesize groupingIdentifier=_groupingIdentifier;
 @property (readonly, nonatomic) unsigned long long numberOfContentRows; // @synthesize numberOfContentRows=_numberOfContentRows;
 @property (copy, nonatomic) NSString *primary; // @synthesize primary=_primary;
 @property (copy, nonatomic) NSString *secondary; // @synthesize secondary=_secondary;
 @property (nonatomic, getter=isSignificantPrimary) BOOL significantPrimary; // @synthesize significantPrimary=_significantPrimary;
+@property (nonatomic, getter=isStrikethroughPrimary) BOOL strikethroughPrimary; // @synthesize strikethroughPrimary=_strikethroughPrimary;
 @property (copy, nonatomic) NSString *tertiary; // @synthesize tertiary=_tertiary;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 

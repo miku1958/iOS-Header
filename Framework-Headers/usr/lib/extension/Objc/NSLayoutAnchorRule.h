@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSLayoutRule-Protocol.h>
+#import <extension/NSLayoutRule-Protocol.h>
 
 @class NSLayoutAnchor, NSString;
 

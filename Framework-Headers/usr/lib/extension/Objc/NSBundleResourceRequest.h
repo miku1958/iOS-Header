@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSProgressReporting-Protocol.h>
+#import <extension/NSProgressReporting-Protocol.h>
 
 @class NSBundle, NSProgress, NSSet, NSString;
 

@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCopying-Protocol.h>
-#import <Foundation/NSMutableCopying-Protocol.h>
+#import <extension/NSCopying-Protocol.h>
+#import <extension/NSMutableCopying-Protocol.h>
 
 @interface NSRLEArray : NSObject <NSCopying, NSMutableCopying>
 {

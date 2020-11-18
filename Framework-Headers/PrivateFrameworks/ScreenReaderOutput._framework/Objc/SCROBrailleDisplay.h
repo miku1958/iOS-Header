@@ -9,7 +9,7 @@
 #import <ScreenReaderOutput/SCROBrailleDisplayCommandDispatcherDelegate-Protocol.h>
 #import <ScreenReaderOutput/SCROBrailleDriverDelegate-Protocol.h>
 
-@class NSLock, NSString, SCROBrailleDisplayInput, SCROBrailleDisplayStatus, SCROBrailleEventDispatcher, SCROBrailleLine;
+@class NSLock, NSMutableArray, NSString, SCROBrailleDisplayInput, SCROBrailleDisplayStatus, SCROBrailleEventDispatcher, SCROBrailleLine;
 @protocol SCROBrailleDisplayCommandDispatcherProtocol, SCROBrailleDisplayDelegate, SCROBrailleDriverProtocol, SCROIOElementProtocol;
 
 @interface SCROBrailleDisplay : NSObject <SCROBrailleDisplayCommandDispatcherDelegate, SCROBrailleDriverDelegate>
@@ -42,6 +42,9 @@
     BOOL _blinkingEnabled;
     BOOL _inputAllowed;
     BOOL _inputEnabled;
+    BOOL _inputPaused;
+    double _inputPausedTime;
+    NSMutableArray *_keyEventsQueue;
     SCROBrailleDisplayInput *_input;
     BOOL _isValid;
     BOOL _delegateWantsDisplayCallback;
@@ -81,13 +84,16 @@
 - (BOOL)_hasPressedBrailleKeys;
 - (id)_initWithDriver:(id)arg1 driverIdentifier:(id)arg2 ioElement:(id)arg3 delegate:(id)arg4;
 - (void)_inputEventHandler;
+- (BOOL)_inputPaused;
 - (BOOL)_isMemorizingKeys;
 - (void)_keyboardHelpHandler:(id)arg1;
 - (id)_newBrailleKeyForCurrentBrailleChord;
 - (id)_newBrailleKeyForCurrentKeyChord;
 - (id)_newBrailleKeyboardKeyForText:(id)arg1 modifiers:(unsigned int)arg2;
 - (void)_panHandler:(id)arg1;
+- (void)_pauseInput;
 - (void)_processKeyEvents:(id)arg1;
+- (void)_replaceRange:(struct _NSRange)arg1 withString:(id)arg2 cursor:(unsigned long long)arg3;
 - (void)_runThread;
 - (void)_setBatchUpdates:(id)arg1;
 - (void)_setBrailleFormatter:(id)arg1;
@@ -104,6 +110,7 @@
 - (id)_translatedBrailleStringAndKeyEvents:(out id *)arg1 replacementRange:(out struct _NSRange *)arg2 cursor:(out unsigned long long *)arg3;
 - (void)_unloadHandler;
 - (void)_unloadNotification:(id)arg1;
+- (void)_unpauseInput;
 - (void)_updateDisplay;
 - (id)aggregatedStatus;
 - (void)beginUpdates;

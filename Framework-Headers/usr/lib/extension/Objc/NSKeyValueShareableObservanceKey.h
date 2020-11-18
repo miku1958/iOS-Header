@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSKeyValueObservance.h>
+#import <extension/NSKeyValueObservance.h>
 
 __attribute__((visibility("hidden")))
 @interface NSKeyValueShareableObservanceKey : NSKeyValueObservance

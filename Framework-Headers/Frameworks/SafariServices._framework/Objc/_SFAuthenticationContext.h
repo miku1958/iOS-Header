@@ -44,15 +44,15 @@
 - (BOOL)_contextRequiresSessionBasedAuthentication;
 - (BOOL)_contextShouldAllowMultipleBiometricFailures;
 - (BOOL)_contextShouldAllowPasscodeFallback;
-- (void)_evaluatePolicyForClient:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)_evaluatePolicyForClient:(id)arg1 userInitiated:(BOOL)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)_handleTouchIDEventWithParameters:(id)arg1;
 - (BOOL)_hasAuthenticationCapability;
 - (void)_invalidateAuthentication;
 - (BOOL)_monotonicTimeIsWithinAuthenticationGracePeriod:(double)arg1;
-- (void)_processNextClientAwaitingAuthentication;
+- (void)_processNextClientAwaitingAuthenticationUserInitiated:(BOOL)arg1;
 - (void)applicationDidEnterBackground;
 - (void)applicationWillEnterForeground;
-- (void)authenticateForClient:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)authenticateForClient:(id)arg1 userInitiated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)authenticateWithNoPromptForClient:(id)arg1;
 - (void)dealloc;
 - (void)event:(long long)arg1 params:(id)arg2 reply:(CDUnknownBlockType)arg3;

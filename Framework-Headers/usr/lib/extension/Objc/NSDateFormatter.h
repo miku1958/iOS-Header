@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSFormatter.h>
+#import <extension/NSFormatter.h>
 
 @class NSArray, NSCalendar, NSDate, NSLocale, NSMutableDictionary, NSObject, NSString, NSTimeZone;
 @protocol OS_dispatch_semaphore;

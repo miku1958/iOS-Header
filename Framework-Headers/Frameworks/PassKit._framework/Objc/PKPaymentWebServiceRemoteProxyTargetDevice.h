@@ -49,12 +49,15 @@
 - (void)noteProvisioningDidEnd;
 - (void)noteProvisioningUserInterfaceDidAppear;
 - (void)noteProvisioningUserInterfaceDidDisappear;
+- (void)passesOfType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)paymentSupportedInCurrentRegion:(CDUnknownBlockType)arg1;
 - (void)queueConnectionToTrustedServiceManagerForPushTopic:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)removePass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)secureElementOwnershipStateForCurrentUserWithCompletion:(CDUnknownBlockType)arg1;
+- (void)setNewAuthRandom:(CDUnknownBlockType)arg1;
 - (void)setNewAuthRandomIfNecessaryReturningPairingState:(CDUnknownBlockType)arg1;
 - (void)signData:(id)arg1 signatureEntanglementMode:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)supportsPeerPaymentRegistrationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)validateAddPreconditionsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)validateTransferPreconditionsWithCompletion:(CDUnknownBlockType)arg1;
 

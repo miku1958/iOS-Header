@@ -98,9 +98,10 @@ struct AXObjectCache {
     struct Node *_field16;
     struct ListHashSet<WebCore::Node *, WTF::PtrHash<WebCore::Node *>> _field17;
     struct AXTextStateChangeIntent _field18;
-    BOOL _field19;
-    struct ListHashSet<WebCore::Element *, WTF::PtrHash<WebCore::Element *>> _field20;
-    struct ListHashSet<WebCore::Node *, WTF::PtrHash<WebCore::Node *>> _field21;
+    struct ListHashSet<WebCore::Element *, WTF::PtrHash<WebCore::Element *>> _field19;
+    struct ListHashSet<WebCore::Node *, WTF::PtrHash<WebCore::Node *>> _field20;
+    BOOL _field21;
+    BOOL _field22;
 };
 
 struct AXTextSelection {

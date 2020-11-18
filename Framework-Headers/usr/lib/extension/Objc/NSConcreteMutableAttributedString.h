@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSMutableAttributedString.h>
+#import <extension/NSMutableAttributedString.h>
 
 @class NSMutableRLEArray, NSMutableString;
 

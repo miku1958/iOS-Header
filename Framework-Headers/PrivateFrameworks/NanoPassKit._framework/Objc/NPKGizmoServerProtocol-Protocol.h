@@ -27,6 +27,7 @@
 - (void)noteWebServiceUpdateNeededWithCompletion:(void (^)(void))arg1;
 - (void)processFelicaTransitAppletState:(PKFelicaTransitAppletState *)arg1 forPassUniqueID:(NSString *)arg2;
 - (void)processFelicaTransitHistory:(PKFelicaAppletHistory *)arg1 forPaymentApplication:(PKPaymentApplication *)arg2 withPassUniqueIdentifier:(NSString *)arg3 transactionDate:(NSDate *)arg4;
+- (void)requestPeerAccountTermsAndConditionsAcceptance;
 - (void)setExpressTransitUniqueID:(NSString *)arg1 applicationIdentifier:(NSString *)arg2 completion:(void (^)(unsigned long long, NSString *))arg3;
 - (void)setNeedsRelevancyInformation:(BOOL)arg1;
 - (void)setPreferredPaymentApplicationAID:(NSString *)arg1 forPaymentPassWithID:(NSString *)arg2;

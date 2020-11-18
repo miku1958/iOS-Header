@@ -14,10 +14,11 @@
 {
     long long _amount;
     NSString *_currency;
-    NSString *_identifer;
+    NSString *_identifier;
     NSString *_memo;
     NSString *_paymentIdentifier;
     NSString *_recipientAddress;
+    NSString *_requestDeviceScoreIdentifier;
     NSString *_requestToken;
     NSString *_senderAddress;
     NSString *_transactionIdentifier;
@@ -30,18 +31,20 @@
 @property (strong, nonatomic) NSString *currency; // @synthesize currency=_currency;
 @property (nonatomic) BOOL hasAmount;
 @property (readonly, nonatomic) BOOL hasCurrency;
-@property (readonly, nonatomic) BOOL hasIdentifer;
+@property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasMemo;
 @property (readonly, nonatomic) BOOL hasPaymentIdentifier;
 @property (readonly, nonatomic) BOOL hasRecipientAddress;
+@property (readonly, nonatomic) BOOL hasRequestDeviceScoreIdentifier;
 @property (readonly, nonatomic) BOOL hasRequestToken;
 @property (readonly, nonatomic) BOOL hasSenderAddress;
 @property (readonly, nonatomic) BOOL hasTransactionIdentifier;
 @property (nonatomic) BOOL hasType;
-@property (strong, nonatomic) NSString *identifer; // @synthesize identifer=_identifer;
+@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSString *memo; // @synthesize memo=_memo;
 @property (strong, nonatomic) NSString *paymentIdentifier; // @synthesize paymentIdentifier=_paymentIdentifier;
 @property (strong, nonatomic) NSString *recipientAddress; // @synthesize recipientAddress=_recipientAddress;
+@property (strong, nonatomic) NSString *requestDeviceScoreIdentifier; // @synthesize requestDeviceScoreIdentifier=_requestDeviceScoreIdentifier;
 @property (strong, nonatomic) NSString *requestToken; // @synthesize requestToken=_requestToken;
 @property (strong, nonatomic) NSString *senderAddress; // @synthesize senderAddress=_senderAddress;
 @property (strong, nonatomic) NSString *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSSetChanges.h>
+#import <extension/NSSetChanges.h>
 
 @class NSMutableArray, NSSet;
 

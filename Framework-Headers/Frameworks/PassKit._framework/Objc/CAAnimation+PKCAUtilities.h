@@ -8,6 +8,8 @@
 
 @interface CAAnimation (PKCAUtilities)
 + (id)pkui_shakeAnimation;
++ (id)pkui_shakeAnimationWithInitalOffest:(double)arg1 springStiffness:(double)arg2 springDamping:(double)arg3;
++ (id)pkui_smallShakeAnimation;
 - (CDUnknownBlockType)pkui_completionHandler;
 - (CDUnknownBlockType)pkui_didStartHandler;
 - (void)pkui_setCompletionHandler:(CDUnknownBlockType)arg1;

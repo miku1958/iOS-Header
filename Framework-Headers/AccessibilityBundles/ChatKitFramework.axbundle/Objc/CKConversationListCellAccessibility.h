@@ -13,7 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityCustomActionGroupIdentifier;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (BOOL)_accessibilityRetainsCustomRotorActionSetting;
 - (BOOL)isAccessibilityElement;
 - (void)updateContentsForConversation:(id)arg1;
 

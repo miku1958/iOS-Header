@@ -46,6 +46,7 @@
 - (id)paymentServicesURLForRegion:(id)arg1;
 - (id)paymentSetupBrowsableProductTypesForRegion:(id)arg1;
 - (id)paymentSetupFeaturedNetworksForRegion:(id)arg1;
+- (BOOL)peerPaymentEnabledForRegion:(id)arg1;
 - (id)primaryFeaturedNetworkForRegion:(id)arg1;
 - (double)provisioningEnablementPercentageForRegion:(id)arg1;
 - (BOOL)regionHasProvisioningEnablementPercentage:(id)arg1;

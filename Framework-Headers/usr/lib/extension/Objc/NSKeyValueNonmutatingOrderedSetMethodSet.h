@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSKeyValueNonmutatingCollectionMethodSet.h>
+#import <extension/NSKeyValueNonmutatingCollectionMethodSet.h>
 
 __attribute__((visibility("hidden")))
 @interface NSKeyValueNonmutatingOrderedSetMethodSet : NSKeyValueNonmutatingCollectionMethodSet

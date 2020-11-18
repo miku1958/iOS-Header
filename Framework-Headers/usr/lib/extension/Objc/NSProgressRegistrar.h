@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSProgressRegistrar-Protocol.h>
-#import <Foundation/NSXPCListenerDelegate-Protocol.h>
+#import <extension/NSProgressRegistrar-Protocol.h>
+#import <extension/NSXPCListenerDelegate-Protocol.h>
 
 @class NSFileAccessNode, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;

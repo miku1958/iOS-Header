@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSFileHandle.h>
+#import <extension/NSFileHandle.h>
 
 @class NSObject;
 @protocol OS_dispatch_data, OS_dispatch_io, OS_dispatch_queue, OS_dispatch_source;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObservation.h>
+#import <extension/NSObservation.h>
 
 __attribute__((visibility("hidden")))
 @interface _NSPlaceholderObservation : NSObservation

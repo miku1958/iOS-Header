@@ -17,6 +17,7 @@
     NSString *_paymentNetwork;
     NSString *_deviceTypeName;
     UITextView *_messageView;
+    BOOL _showFooterLink;
     id<PKPaymentSetupPrivacyFooterViewDelegate> _delegate;
     NSString *_privacyText;
     UIColor *_messageColor;
@@ -30,6 +31,7 @@
 @property (copy, nonatomic) UIColor *linkColor; // @synthesize linkColor=_linkColor;
 @property (copy, nonatomic) UIColor *messageColor; // @synthesize messageColor=_messageColor;
 @property (copy, nonatomic) NSString *privacyText; // @synthesize privacyText=_privacyText;
+@property (nonatomic) BOOL showFooterLink; // @synthesize showFooterLink=_showFooterLink;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

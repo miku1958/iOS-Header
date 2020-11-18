@@ -20,6 +20,7 @@
     NSDictionary *_requiredDeviceCapabilities;
     NSArray *_sbAppTags;
     NSArray *_lsCounterpartIdentifiers;
+    NSString *_sbIconMasqueradeIdentifier;
 }
 
 @property (copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
@@ -29,6 +30,7 @@
 @property (copy, nonatomic) NSString *minimumOSVersion; // @synthesize minimumOSVersion=_minimumOSVersion;
 @property (copy, nonatomic) NSDictionary *requiredDeviceCapabilities; // @synthesize requiredDeviceCapabilities=_requiredDeviceCapabilities;
 @property (copy, nonatomic) NSArray *sbAppTags; // @synthesize sbAppTags=_sbAppTags;
+@property (copy, nonatomic) NSString *sbIconMasqueradeIdentifier; // @synthesize sbIconMasqueradeIdentifier=_sbIconMasqueradeIdentifier;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

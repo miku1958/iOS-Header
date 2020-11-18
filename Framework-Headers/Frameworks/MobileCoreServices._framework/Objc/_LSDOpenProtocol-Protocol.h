@@ -15,7 +15,7 @@
 - (void)openApplicationWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)openURL:(NSURL *)arg1 options:(NSDictionary *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)openUserActivityWithUniqueIdentifier:(NSUUID *)arg1 activityData:(NSData *)arg2 activityType:(NSString *)arg3 bundleIdentifier:(NSString *)arg4 options:(NSDictionary *)arg5 completionHandler:(void (^)(BOOL, NSError *))arg6;
-- (void)performOpenOperationWithURL:(NSURL *)arg1 applicationIdentifier:(NSString *)arg2 documentIdentifier:(NSString *)arg3 sourceIsManaged:(BOOL)arg4 userInfo:(NSDictionary *)arg5 options:(NSDictionary *)arg6 delegate:(id<LSOpenResourceOperationDelegate>)arg7 completionHandler:(void (^)(BOOL, NSError *))arg8;
+- (void)performOpenOperationWithURL:(NSURL *)arg1 applicationIdentifier:(NSString *)arg2 documentIdentifier:(NSString *)arg3 isContentManaged:(BOOL)arg4 sourceAuditToken:(const CDStruct_4c969caf *)arg5 userInfo:(NSDictionary *)arg6 options:(NSDictionary *)arg7 delegate:(id<LSOpenResourceOperationDelegate>)arg8 completionHandler:(void (^)(BOOL, NSError *))arg9;
 - (void)resolveAppLinksForURL:(NSURL *)arg1 limit:(unsigned long long)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
 - (void)setAppLinkOpenStrategy:(long long)arg1 forBundleIdentifier:(NSString *)arg2;
 @end

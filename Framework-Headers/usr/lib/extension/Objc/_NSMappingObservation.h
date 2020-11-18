@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/_NSConcreteObservation.h>
+#import <extension/_NSConcreteObservation.h>
 
-#import <Foundation/NSObservable-Protocol.h>
-#import <Foundation/NSObserver-Protocol.h>
+#import <extension/NSObservable-Protocol.h>
+#import <extension/NSObserver-Protocol.h>
 
 @class NSString;
 

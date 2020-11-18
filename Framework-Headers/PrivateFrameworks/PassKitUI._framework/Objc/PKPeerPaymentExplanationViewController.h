@@ -6,14 +6,17 @@
 
 #import <PassKitUI/PKExplanationViewController.h>
 
+#import <PassKitUI/AAUIDeviceToDeviceEncryptionHelperDelegate-Protocol.h>
+#import <PassKitUI/PKExplanationViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSelectPassesViewControllerDelegate-Protocol.h>
+#import <PassKitUI/PKPaymentSetupHideSetupLaterButtonProtocol-Protocol.h>
 #import <PassKitUI/RemoteUIControllerDelegate-Protocol.h>
 
 @class NSString, PKPaymentProvisioningController, PKPeerPaymentCredential, PKPeerPaymentWebService, RemoteUIController, UIImage;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPeerPaymentExplanationViewController : PKExplanationViewController <RemoteUIControllerDelegate, PKExplanationViewDelegate, PKPaymentSelectPassesViewControllerDelegate>
+@interface PKPeerPaymentExplanationViewController : PKExplanationViewController <RemoteUIControllerDelegate, PKExplanationViewDelegate, PKPaymentSelectPassesViewControllerDelegate, AAUIDeviceToDeviceEncryptionHelperDelegate, PKExplanationViewControllerDelegate, PKPaymentSetupHideSetupLaterButtonProtocol>
 {
     PKPaymentProvisioningController *_provisioningController;
     PKPeerPaymentCredential *_credential;
@@ -21,24 +24,37 @@
     RemoteUIController *_termsController;
     PKPeerPaymentWebService *_peerPaymentWebService;
     UIImage *_passSnapShot;
+    BOOL _hidesSetupLater;
+    BOOL _presentedDeviceToDeviceEncryptionFlow;
+    BOOL _allowsManualEntry;
 }
 
+@property (nonatomic) BOOL allowsManualEntry; // @synthesize allowsManualEntry=_allowsManualEntry;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_addDifferentCard;
 - (void)_continuePressed;
 - (void)_displayTermsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (BOOL)_isBuddyiPad;
+- (void)_handleNextStep;
+- (void)_presentAlertControllerForError:(id)arg1;
+- (void)_presentDeviceToDeviceEncryptionFlow;
 - (void)_presentNextViewController;
+- (void)_presentSetupWillCompleteLaterAlertController;
+- (void)_showSpinner:(BOOL)arg1;
 - (struct CGSize)_snapshotSize;
-- (void)_terminateFlow;
+- (void)_terminateSetupFlow;
+- (void)deviceToDeviceEncryptionHelper:(id)arg1 shouldContinueUpgradingUserToHSA2WithCompletion:(CDUnknownBlockType)arg2;
+- (void)explanationViewControllerDidSelectCancel:(id)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;
+- (void)explanationViewDidSelectSetupLater:(id)arg1;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 credential:(id)arg4;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
 - (void)selectPassesViewController:(id)arg1 didSelectPasses:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setHideSetupLaterButton:(BOOL)arg1;
 - (void)viewDidLoad;
 
 @end

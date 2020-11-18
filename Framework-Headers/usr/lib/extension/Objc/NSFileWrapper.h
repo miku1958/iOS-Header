@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCoding-Protocol.h>
+#import <extension/NSCoding-Protocol.h>
 
 @class NSData, NSDictionary, NSString, NSURL;
 

@@ -32,6 +32,7 @@
 }
 
 @property (nonatomic) long long activeShuffleType; // @synthesize activeShuffleType=_activeShuffleType;
+@property (readonly, nonatomic) BOOL allowsQueueResetWhenReachingEnd;
 @property (readonly, nonatomic) BOOL allowsUserVisibleUpcomingItems;
 @property (readonly, nonatomic) BOOL canReorder;
 @property (readonly, nonatomic) BOOL canSeek;

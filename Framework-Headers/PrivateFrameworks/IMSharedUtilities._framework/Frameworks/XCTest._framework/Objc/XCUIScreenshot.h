@@ -17,7 +17,7 @@
 @property (readonly, copy) UIImage *image;
 @property (strong) XCTImage *internalImage; // @synthesize internalImage=_internalImage;
 
-+ (void)load;
++ (void)initialize;
 + (void)setSystemScreenshotQuality:(long long)arg1;
 + (long long)systemScreenshotQuality;
 - (void)dealloc;

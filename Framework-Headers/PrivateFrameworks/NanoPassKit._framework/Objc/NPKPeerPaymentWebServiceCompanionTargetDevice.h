@@ -23,11 +23,14 @@
 @property (strong, nonatomic) NPSManager *preferencesSyncManager; // @synthesize preferencesSyncManager=_preferencesSyncManager;
 @property (readonly) Class superclass;
 
++ (void)attemptToDownloadPeerPaymentPassAtURL:(id)arg1 withWebService:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (id)account;
 - (id)bridgedClientInfo;
+- (void)cloudStoreStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)downloadPassIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)initalizeCloudStoreIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)provisionPeerPaymentPassWithProvisioningController:(id)arg1 credential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setUserHasDisabledPeerPayment:(BOOL)arg1;
 - (void)updateAccountWithCompletion:(CDUnknownBlockType)arg1;

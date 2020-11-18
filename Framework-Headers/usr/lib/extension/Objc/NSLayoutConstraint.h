@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSISConstraint-Protocol.h>
+#import <extension/NSISConstraint-Protocol.h>
 
 @class NSLayoutAnchor, NSSet, NSString, _NSConstraintDescriptionLayoutRuleNode;
 

@@ -32,6 +32,7 @@
 - (struct CGRect)_accessibilityChargedLineBoundsForRange:(struct _NSRange)arg1;
 - (long long)_accessibilityCompareElement:(id)arg1 toElement:(id)arg2;
 - (void)_accessibilityCopy;
+- (id)_accessibilityCustomActionGroupIdentifier;
 - (void)_accessibilityCut;
 - (id)_accessibilityDataDetectorScheme:(struct CGPoint)arg1;
 - (id)_accessibilityEquivalenceTag;

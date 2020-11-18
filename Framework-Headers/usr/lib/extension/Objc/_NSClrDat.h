@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSConcreteData.h>
+#import <extension/NSConcreteData.h>
 
 __attribute__((visibility("hidden")))
 @interface _NSClrDat : NSConcreteData

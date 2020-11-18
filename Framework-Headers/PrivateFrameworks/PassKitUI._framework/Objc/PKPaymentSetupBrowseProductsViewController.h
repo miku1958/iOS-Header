@@ -6,14 +6,14 @@
 
 #import <PassKitUI/PKPaymentSetupTableViewController.h>
 
-#import <PassKitUI/PKPaymentSetupActivitySpinnerViewControllerProtocol-Protocol.h>
+#import <PassKitUI/PKPaymentSetupActivitySpinnerProtocol-Protocol.h>
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
 @class NSString, PKPaymentSetupBrowseProductsModel, PKPaymentSetupProduct, PKSearchableTableHeaderView;
 @protocol PKPaymentSetupBrowseProductsViewControllerDelegate;
 
-@interface PKPaymentSetupBrowseProductsViewController : PKPaymentSetupTableViewController <UITableViewDelegate, UITextFieldDelegate, PKPaymentSetupActivitySpinnerViewControllerProtocol>
+@interface PKPaymentSetupBrowseProductsViewController : PKPaymentSetupTableViewController <UITableViewDelegate, UITextFieldDelegate, PKPaymentSetupActivitySpinnerProtocol>
 {
     PKPaymentSetupBrowseProductsModel *_model;
     PKSearchableTableHeaderView *_headerView;
@@ -22,11 +22,11 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<PKPaymentSetupBrowseProductsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKPaymentSetupBrowseProductsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PKPaymentSetupBrowseProductsModel *model; // @synthesize model=_model;
-@property (readonly, strong, nonatomic) PKPaymentSetupProduct *selectedProduct; // @synthesize selectedProduct=_selectedProduct;
+@property (readonly, nonatomic) PKPaymentSetupProduct *selectedProduct; // @synthesize selectedProduct=_selectedProduct;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

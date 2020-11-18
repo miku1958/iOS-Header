@@ -4,20 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIAccessibilityElement.h>
+#import "AXPDFNodeElement.h"
 
 #import "UIAccessibilityContainerDataTable-Protocol.h"
 #import "UIAccessibilityContainerDataTableCell-Protocol.h"
 
-@class NSMutableArray, NSString, PDFView;
+@class NSMutableArray, NSString, PDFPage;
 
-@interface UICGPDFNodeAccessibilityElement : UIAccessibilityElement <UIAccessibilityContainerDataTable, UIAccessibilityContainerDataTableCell>
+@interface UICGPDFNodeAccessibilityElement : AXPDFNodeElement <UIAccessibilityContainerDataTable, UIAccessibilityContainerDataTableCell>
 {
-    int _listItemNumber;
     struct CGPDFNode *_node;
-    PDFView *_view;
+    PDFPage *_page;
     NSMutableArray *_cachedAXElements;
     NSMutableArray *_cachedAXPDFLinks;
+    long long _listItemNumber;
     NSString *_listStyle;
 }
 
@@ -26,11 +26,11 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) int listItemNumber; // @synthesize listItemNumber=_listItemNumber;
+@property (nonatomic) long long listItemNumber; // @synthesize listItemNumber=_listItemNumber;
 @property (strong, nonatomic) NSString *listStyle; // @synthesize listStyle=_listStyle;
 @property (nonatomic) struct CGPDFNode *node; // @synthesize node=_node;
+@property (weak, nonatomic) PDFPage *page; // @synthesize page=_page;
 @property (readonly) Class superclass;
-@property (weak, nonatomic) PDFView *view; // @synthesize view=_view;
 
 + (void)_addPDFAnnotation:(id)arg1 toPDFAccessibilityNode:(id)arg2;
 + (void)_findClosestLineNodeForBounds:(struct CGRect)arg1 withRootNode:(id)arg2 withDistanceBetterThan:(double *)arg3 parentFound:(id *)arg4 siblingFound:(id *)arg5;
@@ -52,6 +52,7 @@
 - (id)accessibilityDataTableCellElementForRow:(unsigned long long)arg1 column:(unsigned long long)arg2;
 - (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
+- (struct CGRect)accessibilityFrameForScrolling;
 - (id)accessibilityHeaderElementsForColumn:(unsigned long long)arg1;
 - (id)accessibilityHeaderElementsForRow:(unsigned long long)arg1;
 - (id)accessibilityIdentification;
@@ -60,7 +61,7 @@
 - (unsigned long long)accessibilityRowCount;
 - (struct _NSRange)accessibilityRowRange;
 - (unsigned long long)accessibilityTraits;
-- (id)initWithAccessibilityContainer:(id)arg1 pdfNode:(struct CGPDFNode *)arg2 inPDFView:(id)arg3;
+- (id)initWithAccessibilityContainer:(id)arg1 pdfNode:(struct CGPDFNode *)arg2 withPage:(id)arg3;
 - (BOOL)isAccessibilityElement;
 
 @end

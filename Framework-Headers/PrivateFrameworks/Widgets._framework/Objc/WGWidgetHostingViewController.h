@@ -128,6 +128,7 @@
 - (void)_insertSnapshotWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_invalidateDisconnectionTimer;
 - (void)_invalidateSnapshotWithForce:(BOOL)arg1 removingSnapshotFilesForActiveDisplayMode:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_invalidateVisibleFrame;
 - (BOOL)_isActiveSequence:(id)arg1;
 - (void)_loadSnapshotViewFromDiskIfNecessary:(CDUnknownBlockType)arg1;
 - (BOOL)_managingContainerIsVisible;

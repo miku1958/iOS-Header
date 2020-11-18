@@ -7,17 +7,20 @@
 #import <objc/NSObject.h>
 
 #import <PassKitUI/MFMailComposeViewControllerDelegate-Protocol.h>
+#import <PassKitUI/PKPeerPaymentAccountResolutionControllerDelegate-Protocol.h>
+#import <PassKitUI/PKPeerPaymentPerformActionViewControllerDelegate-Protocol.h>
 
-@class NSString, PKPeerPaymentAccount, PKPeerPaymentWebService;
+@class NSString, PKPeerPaymentAccount, PKPeerPaymentPerformActionViewController, PKPeerPaymentWebService;
 @protocol PKPassLibraryDataProvider, PKPaymentSetupDelegate, PKPaymentSetupViewControllerDelegate, PKPeerPaymentAccountResolutionControllerDelegate;
 
-@interface PKPeerPaymentAccountResolutionController : NSObject <MFMailComposeViewControllerDelegate>
+@interface PKPeerPaymentAccountResolutionController : NSObject <MFMailComposeViewControllerDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKPeerPaymentPerformActionViewControllerDelegate>
 {
     id<PKPeerPaymentAccountResolutionControllerDelegate> _delegate;
     id<PKPassLibraryDataProvider> _passLibraryDataProvider;
     id<PKPaymentSetupViewControllerDelegate> _setupViewControllerDelegate;
     long long _context;
     PKPeerPaymentWebService *_webService;
+    PKPeerPaymentPerformActionViewController *_peerPaymentActionViewController;
     PKPeerPaymentAccount *_account;
     id<PKPaymentSetupDelegate> _setupDelegate;
 }
@@ -29,9 +32,14 @@
 @property (weak, nonatomic) id<PKPaymentSetupDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
 @property (readonly) Class superclass;
 
++ (BOOL)_canShowContactSupportForPass:(id)arg1;
++ (BOOL)_hasPeerPaymentPassProvisionedForAccount:(id)arg1 passLibraryDataProvider:(id)arg2;
++ (id)_peerPaymentPassForAccount:(id)arg1 passLibraryDataProvider:(id)arg2;
++ (BOOL)peerPaymentPassIsProvisionedOnDeviceForAccount:(id)arg1;
++ (BOOL)peerPaymentPassIsProvisionedOnDeviceForAccount:(id)arg1 passLibraryDataProvider:(id)arg2;
 - (void).cxx_destruct;
 - (void)_callSupportWithPhoneNumber:(id)arg1;
-- (BOOL)_canShowContactSupport;
+- (id)_contactAppleSupportAlertControllerForPass:(id)arg1;
 - (void)_dismissViewController;
 - (void)_emailSupportWithEmailAddress:(id)arg1;
 - (BOOL)_hasPeerPaymentPassProvisioned;
@@ -42,14 +50,21 @@
 - (id)_peerPaymentPass;
 - (void)_presentActivationFlowWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_presentContactAppleSupportAlertWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_presentIdentityVerificationFlowWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_presentIdentityVerificationWithManualTrigger:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_presentPeerPaymentAction:(unsigned long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_presentReOpenFlowWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_presentViewController:(id)arg1;
 - (unsigned long long)currentPeerPaymentAccountResolution;
 - (void)dealloc;
 - (id)initWithAccount:(id)arg1 webService:(id)arg2 context:(long long)arg3 delegate:(id)arg4 passLibraryDataProvider:(id)arg5;
 - (void)mailComposeController:(id)arg1 didFinishWithResult:(long long)arg2 error:(id)arg3;
+- (void)peerPaymentAccountResolutionController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(BOOL)arg2;
+- (void)peerPaymentAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(BOOL)arg3;
 - (BOOL)peerPaymentPassIsProvisionedOnDevice;
+- (void)peerPaymentPerformActionViewControllerDidCancel:(id)arg1;
+- (void)peerPaymentPerformActionViewControllerDidPerformAction:(id)arg1;
 - (void)presentFlowForAccountResolution:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)presentFlowForAccountResolution:(unsigned long long)arg1 manuallyTriggered:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentResolutionForCurrentAccountStateWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

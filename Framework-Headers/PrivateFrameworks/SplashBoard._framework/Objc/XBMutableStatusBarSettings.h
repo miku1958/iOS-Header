@@ -10,6 +10,7 @@
 {
 }
 
+@property (nonatomic, getter=isBackgroundActivityEnabled) BOOL backgroundActivityEnabled; // @dynamic backgroundActivityEnabled;
 @property (nonatomic, getter=isHidden) BOOL hidden; // @dynamic hidden;
 @property (nonatomic) long long style; // @dynamic style;
 

@@ -29,6 +29,8 @@
 @property (readonly) Class superclass;
 @property (readonly) XCTestConfiguration *testConfiguration; // @synthesize testConfiguration=_testConfiguration;
 
++ (double)IDEConnectionTimeout;
++ (void)initialize;
 + (id)sharedTestDriver;
 - (void)_queue_flushDebugMessageBufferWithBlock:(CDUnknownBlockType)arg1;
 - (id)_readyIDESession:(id *)arg1;

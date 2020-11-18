@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityApproximateVisibleSummaryText;
 - (BOOL)_accessibilityArchiveAction:(id)arg1;
+- (id)_accessibilityCustomActionGroupIdentifier;
 - (BOOL)_accessibilityDeleteAction:(id)arg1;
 - (id)_accessibilityEquivalenceTag;
 - (BOOL)_accessibilityIsThreadedChildCell;

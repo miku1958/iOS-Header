@@ -6,7 +6,7 @@
 
 #import <Foundation/NSMutableOrderedSet.h>
 
-#import <Foundation/NSCopying-Protocol.h>
+#import <extension/NSCopying-Protocol.h>
 
 @interface NSOrderedSetChanges : NSMutableOrderedSet <NSCopying>
 {

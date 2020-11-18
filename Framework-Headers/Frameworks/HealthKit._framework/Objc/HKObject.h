@@ -36,6 +36,7 @@
 + (id)_objectWithUUID:(id)arg1 metadata:(id)arg2 sourceBundleIdentifier:(id)arg3 creationDate:(double)arg4;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_copyByArchiving;
 - (long long)_externalSyncObjectCode;
 - (id)_init;
 - (void)_setDevice:(id)arg1;

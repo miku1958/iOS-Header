@@ -9,7 +9,7 @@
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 #import <PassKitUI/SBSHardwareButtonEventConsuming-Protocol.h>
 
-@class CLInUseAssertion, NSArray, NSObject, NSString, PKAssertion, PKFieldDetectEducationViewController, PKFieldProperties, PKPassGroupsViewController, PKPaymentService;
+@class CLInUseAssertion, NSArray, NSObject, NSString, PKAssertion, PKFieldDetectEducationViewController, PKFieldProperties, PKPassGroupsViewController, PKPaymentService, SBSAssertion;
 @protocol BSInvalidatable, OS_dispatch_group;
 
 @interface PKPaymentRemoteAlertViewController : SBUIRemoteAlertServiceViewController <PKPaymentServiceDelegate, SBSHardwareButtonEventConsuming>
@@ -21,6 +21,7 @@
     NSString *_passUniqueIdentifier;
     CLInUseAssertion *_passbookForegroundAssertion;
     id<BSInvalidatable> _lockButtonObserver;
+    SBSAssertion *_lockButtonAssertion;
     PKAssertion *_notificationSuppressionAssertion;
     NSObject<OS_dispatch_group> *_fieldPropertiesLookupGroup;
     long long _presentationSource;
@@ -28,9 +29,10 @@
     BOOL _backlightActive;
     BOOL _deviceUILocked;
     BOOL _processHomeButtonEvents;
-    BOOL _homeButtonDoubleTapAlertHasOccurred;
     PKFieldDetectEducationViewController *_educationVC;
     BOOL _appearedOnce;
+    BOOL _insertedGroupsVC;
+    BOOL _shouldInsertGroupsVC;
     BOOL _invalidated;
 }
 
@@ -43,10 +45,12 @@
 + (BOOL)_shouldForwardViewWillTransitionToSize;
 + (id)groupsControllerWithSource:(long long)arg1;
 - (void).cxx_destruct;
+- (void)_appearIfNecessary;
 - (void)_contactlessInterfaceSessionDidAuthorize:(id)arg1;
 - (void)_contactlessInterfaceSessionFinishTransaction:(id)arg1;
 - (void)_dismissForSource:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_dismissIfRestricted;
+- (void)_insertGroupController;
 - (void)_invalidate;
 - (BOOL)_notificationIsFromChildViewController:(id)arg1;
 - (void)_paymentDidReceiveSuccessfulTransactionNotification:(id)arg1;
@@ -62,6 +66,7 @@
 - (void)handleHomeButtonPressed;
 - (id)init;
 - (void)linkedApplicationOpen:(id)arg1;
+- (void)loadView;
 - (void)setUserInfo:(id)arg1;
 - (BOOL)shouldAutorotate;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;

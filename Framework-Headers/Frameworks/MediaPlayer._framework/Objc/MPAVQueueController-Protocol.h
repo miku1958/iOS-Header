@@ -11,6 +11,7 @@
 
 @protocol MPAVQueueController <NSObject>
 
+@property (readonly, nonatomic) BOOL allowsQueueResetWhenReachingEnd;
 @property (weak, nonatomic) MPAVController *avController;
 @property (readonly, nonatomic) BOOL canSkipToPreviousItem;
 @property (readonly, nonatomic) long long currentIndex;
@@ -19,6 +20,7 @@
 @property (readonly, nonatomic) BOOL isTransitioningSource;
 @property (readonly, nonatomic) MPQueuePlayer *player;
 @property (nonatomic) long long repeatMode;
+@property (nonatomic) BOOL shouldDeferItemLoading;
 @property (readonly, nonatomic) long long upNextItemCount;
 
 - (long long)_indexForStringIdentifier:(NSString *)arg1;

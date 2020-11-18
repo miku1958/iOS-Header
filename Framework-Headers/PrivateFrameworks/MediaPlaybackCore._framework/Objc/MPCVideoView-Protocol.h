@@ -6,10 +6,11 @@
 
 #import <MediaPlaybackCore/NSObject-Protocol.h>
 
-@class NSString;
+@class AVPlayerLayer, NSString;
 
 @protocol MPCVideoView <NSObject>
 
+@property (readonly, nonatomic) AVPlayerLayer *playerLayer;
 @property (readonly, nonatomic) struct CGSize preferredContentSize;
 @property (readonly, nonatomic, getter=isReadyForDisplay) BOOL readyForDisplay;
 @property (strong, nonatomic) NSString *videoGravity;

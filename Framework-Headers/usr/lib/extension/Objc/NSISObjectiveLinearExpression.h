@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSISRowBody-Protocol.h>
+#import <extension/NSISRowBody-Protocol.h>
 
 @class NSMutableArray, NSString;
 

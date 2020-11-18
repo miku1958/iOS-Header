@@ -6,12 +6,12 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSArray, PKPaymentPass;
+@class NSArray, NSString;
 
 @protocol PDCloudStoreServiceExportedInterface <PDXPCServiceExportedInterface>
-- (void)allItemsOfClassType:(Class)arg1 storeLocally:(BOOL)arg2 completion:(void (^)(PKCloudRecordArray *, NSError *))arg3;
-- (void)fetchAndStoreRecordsForPaymentPass:(PKPaymentPass *)arg1 completion:(void (^)(PKCloudRecordArray *, NSError *))arg2;
-- (void)removeItemsWithRecordNames:(NSArray *)arg1 itemClass:(Class)arg2 completion:(void (^)(NSError *))arg3;
+- (void)allTransactionsAndStoreLocally:(BOOL)arg1 completion:(void (^)(PKCloudRecordArray *, NSError *))arg2;
+- (void)fetchAndStoreRecordsForPaymentPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(PKCloudRecordArray *, NSError *))arg2;
+- (void)removeTransactionsWithRecordNames:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)resetContainerWithCompletion:(void (^)(BOOL))arg1;
 - (void)simulateCloudStorePushWithCompletion:(void (^)(PKCloudRecordArray *, NSArray *, NSError *))arg1;
 - (void)updateCloudStoreWithLocalItems:(NSArray *)arg1 recordSpecificKeys:(NSArray *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;

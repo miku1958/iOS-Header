@@ -6,7 +6,7 @@
 
 #import <Foundation/NSOrderedSet.h>
 
-#import <Foundation/NSKeyValueProxyCaching-Protocol.h>
+#import <extension/NSKeyValueProxyCaching-Protocol.h>
 
 @class NSKeyValueNonmutatingOrderedSetMethodSet, NSObject, NSString;
 

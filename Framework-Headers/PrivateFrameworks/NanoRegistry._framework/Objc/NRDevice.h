@@ -36,6 +36,7 @@
 - (BOOL)_setValue:(id)arg1 forProperty:(id)arg2;
 - (void)addPropertyObserver:(id)arg1 forPropertyChanges:(id)arg2;
 - (BOOL)archived;
+- (BOOL)canMigrate;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

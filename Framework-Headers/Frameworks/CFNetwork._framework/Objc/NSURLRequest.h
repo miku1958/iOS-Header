@@ -46,6 +46,7 @@
 - (id)HTTPUserAgent;
 - (struct _CFURLRequest *)_CFURLRequest;
 - (BOOL)_URLHasScheme:(id)arg1;
+- (id)_allHTTPHeaderFieldsAsArrays;
 - (id)_copyReplacingURLWithURL:(id)arg1;
 - (id)_initWithCFURLRequest:(struct _CFURLRequest *)arg1;
 - (BOOL)_isSafeRequestForBackgroundDownload;

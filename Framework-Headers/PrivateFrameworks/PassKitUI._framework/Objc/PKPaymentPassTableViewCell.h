@@ -6,7 +6,7 @@
 
 #import <PassKitUI/PKTableViewCell.h>
 
-@class PKPaymentPass, UILabel, UIView;
+@class PKPaymentPass, PKPeerPaymentAccount, UIColor, UILabel, UIView;
 
 @interface PKPaymentPassTableViewCell : PKTableViewCell
 {
@@ -14,17 +14,30 @@
     UILabel *_subTextLabel;
     UIView *_cardSnapshotView;
     PKPaymentPass *_pass;
+    PKPeerPaymentAccount *_peerPaymentAccount;
+    UIColor *_mainLabelColor;
+    UIColor *_subTextLabelColor;
+    UIColor *_disabledMainLabelColor;
+    UIColor *_disabledSubTextLabelColor;
 }
 
+@property (strong, nonatomic) UIColor *disabledMainLabelColor; // @synthesize disabledMainLabelColor=_disabledMainLabelColor;
+@property (strong, nonatomic) UIColor *disabledSubTextLabelColor; // @synthesize disabledSubTextLabelColor=_disabledSubTextLabelColor;
+@property (strong, nonatomic) UIColor *mainLabelColor; // @synthesize mainLabelColor=_mainLabelColor;
 @property (strong, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
+@property (strong, nonatomic) PKPeerPaymentAccount *peerPaymentAccount; // @synthesize peerPaymentAccount=_peerPaymentAccount;
+@property (strong, nonatomic) UIColor *subTextLabelColor; // @synthesize subTextLabelColor=_subTextLabelColor;
 
 + (double)heightForCellWithMinimum:(double)arg1 hasSubTitle:(BOOL)arg2;
 + (id)subTitleFont;
 + (id)titleFont;
 - (void).cxx_destruct;
 - (void)_updateLabelText;
+- (void)_updateLabelTextColors;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
+- (void)pk_applyAppearance:(id)arg1;
+- (void)setEnabled:(BOOL)arg1;
 
 @end
 

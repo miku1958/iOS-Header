@@ -6,8 +6,12 @@
 
 #import <Foundation/NSBundle.h>
 
+@class NSString;
+
 @interface NSBundle (XCTestAdditions)
+
+@property (readonly, copy) NSString *xct_bundleLinkageInfo;
+
 - (id)xct_frameworkBundleVersion;
-- (void)xct_logLinkedBundleInfo;
 @end
 

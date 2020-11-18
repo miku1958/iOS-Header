@@ -38,6 +38,7 @@
 - (struct NSArray *)_createGroupChatsArray;
 - (id)_existingChatForCKRecord:(id)arg1;
 - (id)_existingChatWithOriginalGroupID:(id)arg1 onService:(id)arg2;
+- (id)_existingiMessageChatForChatIdentifier:(id)arg1 style:(unsigned char)arg2;
 - (id)_findChatWinnerInDuplicateChatArray:(struct NSArray *)arg1;
 - (id)_findLosingChatGUIDsInArrayOfChats:(struct NSArray *)arg1 withWinner:(id)arg2;
 - (void)_forceReloadChats:(BOOL)arg1;

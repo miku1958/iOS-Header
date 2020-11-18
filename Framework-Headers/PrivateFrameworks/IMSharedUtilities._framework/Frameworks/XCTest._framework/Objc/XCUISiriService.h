@@ -14,6 +14,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, getter=isEnabled) BOOL enabled;
 @property (strong) XCUIApplication *siriApplication; // @synthesize siriApplication=_siriApplication;
 
 + (id)siriService;

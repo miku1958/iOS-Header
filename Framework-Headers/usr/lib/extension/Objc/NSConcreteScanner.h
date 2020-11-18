@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSScanner.h>
+#import <extension/NSScanner.h>
 
 @class NSCharacterSet, NSString;
 

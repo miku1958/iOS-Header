@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VoiceMemosFramework/__RCAudioRouteBarButtonAccessibility_super.h>
+#import "__RCAudioRouteBarButtonAccessibility_super.h"
 
 @interface RCAudioRouteBarButtonAccessibility : __RCAudioRouteBarButtonAccessibility_super
 {

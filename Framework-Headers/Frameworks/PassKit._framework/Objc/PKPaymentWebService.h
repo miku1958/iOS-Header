@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSURLSessionDownloadDelegate-Protocol.h>
 
-@class NSArray, NSHashTable, NSMutableDictionary, NSObject, NSString, NSURL, NSURLSession, PKPaymentDevice, PKPaymentHeroImageController, PKPaymentWebServiceBackgroundContext, PKPaymentWebServiceContext;
+@class NSArray, NSHashTable, NSMutableDictionary, NSObject, NSString, NSURL, NSURLSession, PKPaymentDevice, PKPaymentWebServiceBackgroundContext, PKPaymentWebServiceContext;
 @protocol OS_dispatch_queue, PKPaymentWebServiceArchiver, PKPaymentWebServiceBackgroundDelegate, PKPaymentWebServiceTargetDeviceProtocol;
 
 @interface PKPaymentWebService : PKWebService <NSURLSessionDownloadDelegate>
@@ -19,7 +19,6 @@
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_queue> *_backgroundDownloadQueue;
     NSHashTable *_delegates;
-    PKPaymentHeroImageController *_heroImageController;
     BOOL _sharedService;
     PKPaymentWebServiceContext *_context;
     PKPaymentWebServiceBackgroundContext *_backgroundContext;
@@ -54,6 +53,7 @@
 - (void)_archiveBackgroundContext;
 - (void)_archiveContext;
 - (BOOL)_canRegisterForPeerPayment;
+- (void)_canRegisterForPeerPaymentWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_cleanupPassDownloadCache;
 - (void)_deviceConfigurationDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_deviceProvisioningDataWithCompletion:(CDUnknownBlockType)arg1;
@@ -77,10 +77,12 @@
 - (id)_paymentDevice;
 - (unsigned long long)_performRewrapRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_performVerificationRequest:(id)arg1 selectedChannel:(id)arg2 paymentPass:(id)arg3 taskID:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_recentConfiguration:(CDUnknownBlockType)arg1;
 - (void)_removeVerificationRequestRecord:(id)arg1;
 - (unsigned long long)_resultForResponse:(id)arg1 error:(id)arg2 successHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)_resultForUnexpectedStatusCode:(long long)arg1;
 - (void)_startBackgroundURLSessionWithIdentifier:(id)arg1 context:(id)arg2 backgroundDelegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (unsigned long long)_updateContextWithRegistrationResponse:(id)arg1;
 - (void)_updateRequestWithCurrentTargetDevice:(id)arg1;
 - (void)addDelegate:(id)arg1;
 - (unsigned long long)availableDevicesWithCompletion:(CDUnknownBlockType)arg1;
@@ -143,6 +145,7 @@
 - (unsigned long long)submitVerificationCode:(id)arg1 verificationData:(id)arg2 forPass:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (unsigned long long)unregisterDeviceWithCompanionSerialNumber:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)unregisterDeviceWithCompletion:(CDUnknownBlockType)arg1;
+- (unsigned long long)updateRegistrationDataWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)updateVerification:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)verificationChannelsForPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)verificationOptionsForRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;

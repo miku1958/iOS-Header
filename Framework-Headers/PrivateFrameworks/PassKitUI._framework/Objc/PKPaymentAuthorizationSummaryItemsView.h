@@ -6,13 +6,15 @@
 
 #import <UIKit/UIView.h>
 
-@class NSMutableArray, PKPaymentAuthorizationLayout;
+@class NSLayoutConstraint, NSMutableArray, PKPaymentAuthorizationLayout;
 
 @interface PKPaymentAuthorizationSummaryItemsView : UIView
 {
     NSMutableArray *_labelViews;
     NSMutableArray *_valueViews;
+    NSMutableArray *_hasBottomPadding;
     NSMutableArray *_constraints;
+    NSLayoutConstraint *_emptyConstraint;
     PKPaymentAuthorizationLayout *_layout;
 }
 
@@ -21,7 +23,7 @@
 - (void).cxx_destruct;
 - (id)_labelAttributedStringWithString:(id)arg1;
 - (id)_valueAttributedStringWithString:(id)arg1 type:(unsigned long long)arg2;
-- (void)addLabel:(id)arg1 value:(id)arg2 itemType:(unsigned long long)arg3;
+- (void)addLabel:(id)arg1 value:(id)arg2 itemType:(unsigned long long)arg3 maxLabelLines:(long long)arg4 hasBottomPadding:(BOOL)arg5;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithLayout:(id)arg1;

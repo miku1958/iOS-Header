@@ -17,6 +17,7 @@
 + (id)_snapshotKeyForValue:(unsigned long long)arg1;
 + (id)optionWithStyle:(unsigned long long)arg1;
 - (id)_valueToFaceBundleStringDict;
+- (BOOL)optionExistsInOSVersion:(unsigned int)arg1;
 - (long long)swatchStyle;
 
 @end

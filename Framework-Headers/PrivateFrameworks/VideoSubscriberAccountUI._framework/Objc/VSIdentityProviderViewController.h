@@ -60,7 +60,7 @@
 - (void)authenticationViewControllerDidCancel:(id)arg1;
 - (void)dealloc;
 - (void)enqueueRequest:(id)arg1;
-- (void)identityProviderRequestManager:(id)arg1 didAuthenticateAccount:(id)arg2 supportingApps:(id)arg3 forRequest:(id)arg4;
+- (void)identityProviderRequestManager:(id)arg1 didAuthenticateAccount:(id)arg2 forRequest:(id)arg3;
 - (void)identityProviderRequestManager:(id)arg1 finishedRequest:(id)arg2 withResult:(id)arg3;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

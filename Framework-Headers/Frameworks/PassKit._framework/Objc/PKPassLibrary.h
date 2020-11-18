@@ -61,6 +61,7 @@
 - (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxyWithFailureHandler:(CDUnknownBlockType)arg1;
 - (BOOL)_setSetting:(unsigned long long)arg1 enabled:(BOOL)arg2 forPass:(id)arg3;
+- (id)_sortedPaymentPassesForPaymentRequest:(id)arg1;
 - (id)_synchronousExtendedRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_synchronousInAppRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;

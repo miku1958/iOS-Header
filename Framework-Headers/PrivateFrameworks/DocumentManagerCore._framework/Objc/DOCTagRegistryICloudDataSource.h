@@ -30,8 +30,9 @@
 - (id)initWithDelegate:(id)arg1;
 - (void)kvsStoreDidChange:(id)arg1;
 - (void)readTagsFromCloud:(BOOL)arg1;
-- (void)synchronizeTagsToCloud;
-- (void)ubiquityIdentityDidChange:(id)arg1;
+- (void)syncTagsWithCloud:(BOOL)arg1;
+- (void)ubiquityIdentityDidChange;
+- (void)writeTagsToCloud;
 
 @end
 

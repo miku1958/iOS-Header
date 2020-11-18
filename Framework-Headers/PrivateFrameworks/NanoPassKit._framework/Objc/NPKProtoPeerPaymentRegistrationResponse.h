@@ -13,6 +13,7 @@
 @interface NPKProtoPeerPaymentRegistrationResponse : PBCodable <NSCopying>
 {
     NSData *_errorData;
+    NSData *_peerPaymentAccountData;
     NSData *_peerPaymentWebServiceContextData;
     BOOL _pending;
     BOOL _success;
@@ -21,9 +22,11 @@
 
 @property (strong, nonatomic) NSData *errorData; // @synthesize errorData=_errorData;
 @property (readonly, nonatomic) BOOL hasErrorData;
+@property (readonly, nonatomic) BOOL hasPeerPaymentAccountData;
 @property (readonly, nonatomic) BOOL hasPeerPaymentWebServiceContextData;
 @property (nonatomic) BOOL hasPending;
 @property (nonatomic) BOOL hasSuccess;
+@property (strong, nonatomic) NSData *peerPaymentAccountData; // @synthesize peerPaymentAccountData=_peerPaymentAccountData;
 @property (strong, nonatomic) NSData *peerPaymentWebServiceContextData; // @synthesize peerPaymentWebServiceContextData=_peerPaymentWebServiceContextData;
 @property (nonatomic) BOOL pending; // @synthesize pending=_pending;
 @property (nonatomic) BOOL success; // @synthesize success=_success;

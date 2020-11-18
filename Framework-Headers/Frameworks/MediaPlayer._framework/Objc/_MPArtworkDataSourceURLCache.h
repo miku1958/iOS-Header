@@ -16,7 +16,7 @@
 }
 
 - (void).cxx_destruct;
-- (id)init;
+- (id)initWithMemoryCapacity:(unsigned long long)arg1 diskCapacity:(unsigned long long)arg2 diskPath:(id)arg3;
 - (void)setRepresentationSize:(struct CGSize)arg1 forRequest:(id)arg2;
 - (void)storeCachedResponse:(id)arg1 forRequest:(id)arg2;
 

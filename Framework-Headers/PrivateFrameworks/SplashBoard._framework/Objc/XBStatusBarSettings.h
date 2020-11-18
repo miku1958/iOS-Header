@@ -18,6 +18,7 @@
     BSMutableSettings *_settings;
 }
 
+@property (readonly, nonatomic, getter=isBackgroundActivityEnabled) BOOL backgroundActivityEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

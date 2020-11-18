@@ -100,6 +100,7 @@
 - (void)passwordUpdatedForAccount:(NSString *)arg1;
 - (void)reRegisterWithUserID:(NSString *)arg1 action:(NSNumber *)arg2 service:(NSString *)arg3;
 - (void)redeliverMessagesForDevice:(NSString *)arg1 requestID:(NSString *)arg2;
+- (void)regenerateRegisteredIdentity;
 - (void)registerAccount:(NSString *)arg1;
 - (void)registerForNotificationsOnServices:(NSSet *)arg1;
 - (void)registrationControlGetRegistrationStateForRegistrationType:(long long)arg1 requestID:(NSString *)arg2;
@@ -111,7 +112,6 @@
 - (void)reportiMessageUnknownSender:(NSString *)arg1 messageID:(NSString *)arg2 messageServerTimestamp:(NSNumber *)arg3 toURI:(NSString *)arg4;
 - (void)reunionSyncCompletedForServices:(NSArray *)arg1 requestID:(NSString *)arg2;
 - (void)reunionSyncStartedForServices:(NSArray *)arg1 requestID:(NSString *)arg2;
-- (void)rollKeys;
 - (void)sendAllocationRequest:(NSString *)arg1 options:(NSDictionary *)arg2;
 - (void)sendAppAckWithGUID:(NSString *)arg1 toDestination:(NSString *)arg2 forAccountWithUniqueID:(NSString *)arg3 connectionType:(long long)arg4;
 - (void)sendInvitation:(NSString *)arg1 withData:(NSData *)arg2 declineOnError:(BOOL)arg3;

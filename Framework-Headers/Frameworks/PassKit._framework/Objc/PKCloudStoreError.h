@@ -20,6 +20,7 @@
 - (BOOL)isKeychainSyncingInProgress;
 - (BOOL)isManateeNotAvailableError;
 - (BOOL)isNetworkUnavailable;
+- (BOOL)isPCSError;
 - (BOOL)isPartialError;
 - (BOOL)isUnrecoverableDecryptionError;
 

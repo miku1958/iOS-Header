@@ -821,7 +821,6 @@
 - (long long)_hiddenManagementCountForKey:(const char *)arg1 bitFlagValue:(BOOL)arg2;
 - (id)_hierarchyRepresentation;
 - (id)_hitTest:(struct CGPoint)arg1 withEvent:(id)arg2 windowServerHitTestWindow:(id)arg3;
-- (struct UIEdgeInsets)_horizontallyReversedInferredLayoutMargins;
 - (BOOL)_hostsLayoutEngine;
 - (BOOL)_hostsLayoutEngineAllowsTAMIC_NO;
 - (id)_idleModeLayoutAttributes;
@@ -832,6 +831,7 @@
 - (void)_incrementHiddenManagedByLayoutArrangementCount;
 - (void)_incrementPendingHiddenCount;
 - (void)_incrementUnsatisfiableConstraintsLoggingSuspensionCount;
+- (struct UIEdgeInsets)_inferredLayoutMarginsReversedHorizontallyIfNeeded:(BOOL)arg1 includingReversedSafeAreaInsets:(BOOL)arg2;
 - (void)_informContainerThatSubviewsNeedUpdateConstraints;
 - (void)_informContainerThatSubviewsNeedUpdateConstraintsNeedingLayout:(BOOL)arg1;
 - (void)_informSuperviewChainThatDescendantNeedsDoubleUpdateConstraintsPass;

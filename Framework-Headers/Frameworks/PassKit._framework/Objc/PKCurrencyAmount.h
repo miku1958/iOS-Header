@@ -34,6 +34,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToCurrencyAmount:(id)arg1;
 - (id)minimalFormattedStringValue;
+- (id)minimalFormattedStringValueInLocale:(id)arg1;
 - (id)negativeValue;
 
 @end

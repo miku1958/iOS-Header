@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSSerializerStream-Protocol.h>
+#import <extension/NSSerializerStream-Protocol.h>
 
 @interface NSAKSerializerStream : NSObject <NSSerializerStream>
 {

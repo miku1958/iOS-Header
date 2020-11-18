@@ -6,17 +6,10 @@
 
 #import <Preferences/PSSliderTableCell.h>
 
-@class UILabel;
-
 @interface FontSizeSliderCell : PSSliderTableCell
 {
-    UILabel *_smallSizeLabel;
-    UILabel *_largeSizeLabel;
-    UILabel *_veryLargeSizeLabel;
 }
 
-- (void).cxx_destruct;
-- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
 - (void)layoutSubviews;
 - (id)newControl;
 

@@ -44,7 +44,9 @@
 - (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (void)refreshPreferredContentSize;
+- (void)setBounds:(struct CGRect)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (struct CGRect)titleLabelBaselineAlignmentRectForLabel:(id)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;

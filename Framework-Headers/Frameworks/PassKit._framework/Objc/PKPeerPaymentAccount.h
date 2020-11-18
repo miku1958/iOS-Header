@@ -8,16 +8,18 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, PKCurrencyAmount;
+@class NSArray, NSDecimalNumber, NSDictionary, NSString, NSURL, PKCurrencyAmount;
 
 @interface PKPeerPaymentAccount : NSObject <NSSecureCoding>
 {
+    BOOL _accountStateDirty;
     BOOL _identityVerificationRequired;
     BOOL _termsAcceptanceRequired;
     unsigned long long _state;
     unsigned long long _stage;
     NSString *_countryCode;
     PKCurrencyAmount *_currentBalance;
+    NSDecimalNumber *_maximumBalance;
     NSString *_termsIdentifier;
     NSURL *_termsURL;
     NSURL *_associatedPassURL;
@@ -26,6 +28,7 @@
     NSString *_associatedPassTypeIdentifier;
 }
 
+@property (nonatomic, getter=isAccountStateDirty) BOOL accountStateDirty; // @synthesize accountStateDirty=_accountStateDirty;
 @property (copy, nonatomic) NSString *associatedPassSerialNumber; // @synthesize associatedPassSerialNumber=_associatedPassSerialNumber;
 @property (copy, nonatomic) NSString *associatedPassTypeIdentifier; // @synthesize associatedPassTypeIdentifier=_associatedPassTypeIdentifier;
 @property (copy, nonatomic) NSURL *associatedPassURL; // @synthesize associatedPassURL=_associatedPassURL;
@@ -33,6 +36,7 @@
 @property (copy, nonatomic) PKCurrencyAmount *currentBalance; // @synthesize currentBalance=_currentBalance;
 @property (readonly, copy, nonatomic) NSArray *defaultSuggestions;
 @property (nonatomic) BOOL identityVerificationRequired; // @synthesize identityVerificationRequired=_identityVerificationRequired;
+@property (copy, nonatomic) NSDecimalNumber *maximumBalance; // @synthesize maximumBalance=_maximumBalance;
 @property (readonly, nonatomic) NSDictionary *maximumTransferAmounts;
 @property (readonly, nonatomic) NSDictionary *minimumTransferAmounts;
 @property (nonatomic) unsigned long long stage; // @synthesize stage=_stage;

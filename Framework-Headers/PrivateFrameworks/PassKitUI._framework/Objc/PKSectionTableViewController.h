@@ -34,6 +34,7 @@
 - (long long)rowAnimationForReloadingSection:(unsigned long long)arg1;
 - (unsigned long long)sectionForIndex:(unsigned long long)arg1;
 - (BOOL)shouldMapSection:(unsigned long long)arg1;
+- (void)updateSectionVisibilityAndReloadIfNecessaryForAllSections;
 - (void)updateSectionVisibilityAndReloadIfNecessaryForSection:(unsigned long long)arg1;
 - (void)updateSectionVisibilityAndReloadIfNecessaryForSections:(id)arg1;
 - (void)viewDidLoad;

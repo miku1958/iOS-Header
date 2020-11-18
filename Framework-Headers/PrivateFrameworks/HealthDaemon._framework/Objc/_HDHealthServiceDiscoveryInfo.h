@@ -13,6 +13,7 @@
 {
     NSMutableSet *_peripheralsUUIDs;
     BOOL _alwaysNotify;
+    BOOL _requiresActiveScan;
     unsigned long long _discoveryIdentifier;
     CDUnknownBlockType _discoveryHandler;
     CBUUID *_serviceUUID;
@@ -22,12 +23,13 @@
 @property (readonly, nonatomic) BOOL alwaysNotify; // @synthesize alwaysNotify=_alwaysNotify;
 @property (readonly, nonatomic) CDUnknownBlockType discoveryHandler; // @synthesize discoveryHandler=_discoveryHandler;
 @property (nonatomic) unsigned long long discoveryIdentifier; // @synthesize discoveryIdentifier=_discoveryIdentifier;
+@property (readonly, nonatomic) BOOL requiresActiveScan; // @synthesize requiresActiveScan=_requiresActiveScan;
 @property (readonly, nonatomic) CBUUID *serviceUUID; // @synthesize serviceUUID=_serviceUUID;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *timeoutTimer; // @synthesize timeoutTimer=_timeoutTimer;
 
 - (void).cxx_destruct;
 - (BOOL)_addPeripheralUUID:(id)arg1;
-- (id)initWithHandler:(CDUnknownBlockType)arg1 serviceUUID:(id)arg2 alwaysNotify:(BOOL)arg3;
+- (id)initWithHandler:(CDUnknownBlockType)arg1 serviceUUID:(id)arg2 alwaysNotify:(BOOL)arg3 requiresActiveScan:(BOOL)arg4;
 
 @end
 

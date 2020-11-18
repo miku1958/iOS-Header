@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSXPCProxyCreating-Protocol.h>
+#import <extension/NSXPCProxyCreating-Protocol.h>
 
 @class NSString, NSXPCInterface, NSXPCListenerEndpoint;
 @protocol NSObject, OS_dispatch_queue;

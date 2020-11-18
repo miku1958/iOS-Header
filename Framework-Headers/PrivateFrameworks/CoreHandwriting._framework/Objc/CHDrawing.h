@@ -15,7 +15,6 @@
 
 @property (nonatomic) struct CJKChar drawing; // @synthesize drawing=_drawing;
 
-+ (double)_computeXProjectionBoundsOverlapFromReferenceBounds:(struct CGRect)arg1 toSubjectBounds:(struct CGRect)arg2;
 + (id)sortedArrayForPointIndices:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;

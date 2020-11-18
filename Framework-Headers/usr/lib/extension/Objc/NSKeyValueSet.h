@@ -6,7 +6,7 @@
 
 #import <Foundation/NSSet.h>
 
-#import <Foundation/NSKeyValueProxyCaching-Protocol.h>
+#import <extension/NSKeyValueProxyCaching-Protocol.h>
 
 @class NSKeyValueNonmutatingSetMethodSet, NSObject, NSString;
 

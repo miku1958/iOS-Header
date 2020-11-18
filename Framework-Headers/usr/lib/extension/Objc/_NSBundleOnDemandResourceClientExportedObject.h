@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/ODRClientProtocol-Protocol.h>
+#import <extension/ODRClientProtocol-Protocol.h>
 
 @class NSString;
 

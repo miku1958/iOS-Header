@@ -4,22 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UITableViewHeaderFooterView.h>
 
-@class NSString, UIActivityIndicatorView, UILabel, UITableView;
+@class NSString, UIActivityIndicatorView, UILabel;
 
-@interface PKSpinnerHeaderView : UIView
+@interface PKSpinnerHeaderView : UITableViewHeaderFooterView
 {
     UILabel *_headerLabel;
     UIActivityIndicatorView *_spinner;
     BOOL _showSpinner;
     NSString *_headerText;
-    UITableView *_tableView;
 }
 
 @property (strong, nonatomic) NSString *headerText; // @synthesize headerText=_headerText;
 @property (nonatomic) BOOL showSpinner; // @synthesize showSpinner=_showSpinner;
-@property (weak, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 
 + (id)_labelFont;
 + (double)sectionHeight;

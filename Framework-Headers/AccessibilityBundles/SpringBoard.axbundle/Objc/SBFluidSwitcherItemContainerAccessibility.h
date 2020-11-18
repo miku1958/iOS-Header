@@ -18,6 +18,7 @@
 - (BOOL)_accessibilityCanCloseApp;
 - (BOOL)_accessibilityCanPerformAction:(int)arg1;
 - (BOOL)_accessibilityCloseApp:(id)arg1;
+- (id)_accessibilityCustomActionGroupIdentifier;
 - (BOOL)_accessibilityElementVisibilityAffectsLayout;
 - (BOOL)_accessibilityIsControlCenterVisible;
 - (BOOL)_accessibilityIsNotFirstElement;

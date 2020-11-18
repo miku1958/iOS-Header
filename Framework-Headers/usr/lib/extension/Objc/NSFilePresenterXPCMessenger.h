@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSFilePresenterXPCInterface-Protocol.h>
+#import <extension/NSFilePresenterXPCInterface-Protocol.h>
 
 @class NSFilePresenterProxy, NSString;
 @protocol NSFilePresenter, OS_dispatch_queue;

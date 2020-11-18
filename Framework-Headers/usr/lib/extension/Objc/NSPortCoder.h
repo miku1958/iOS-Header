@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSCoder.h>
+#import <extension/NSCoder.h>
 
 @interface NSPortCoder : NSCoder
 {

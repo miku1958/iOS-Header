@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/_NSLayoutRuleNode.h>
+#import <extension/_NSLayoutRuleNode.h>
 
-#import <Foundation/_NSLayoutRuleNodeParent-Protocol.h>
+#import <extension/_NSLayoutRuleNodeParent-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString;
 

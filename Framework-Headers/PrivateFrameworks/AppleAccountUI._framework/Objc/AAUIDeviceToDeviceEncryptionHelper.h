@@ -6,27 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class UIViewController;
+@class AKAppleIDAuthenticationController, UIViewController;
 @protocol AAUIDeviceToDeviceEncryptionHelperDelegate;
 
 @interface AAUIDeviceToDeviceEncryptionHelper : NSObject
 {
     id<AAUIDeviceToDeviceEncryptionHelperDelegate> _delegate;
     UIViewController *_presentingViewController;
+    AKAppleIDAuthenticationController *_authController;
 }
 
+@property (strong, nonatomic) AKAppleIDAuthenticationController *authController; // @synthesize authController=_authController;
 @property (weak, nonatomic) id<AAUIDeviceToDeviceEncryptionHelperDelegate> delegate; // @synthesize delegate=_delegate;
 @property (weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 
-+ (id)helperWithPresentingViewController:(id)arg1;
 - (void).cxx_destruct;
-- (void)_askPermissionToContinueFlowForEligibleAccountWithCompletion:(CDUnknownBlockType)arg1;
-- (id)_errorWithUnderlyingError:(id)arg1;
+- (void)_askPermissionToContinueFlowForEligibleAccountForContext:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_authenticateContext:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)_encryptionErrorFromError:(id)arg1;
 - (BOOL)_hasPasscode;
-- (BOOL)_isHSA2AvailableForAltDSID:(id)arg1;
-- (void)_validateCDPStateWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)_isHSA2AvailableForAuthenticationContext:(id)arg1;
+- (void)_validateCDPStateForAuthResults:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_validatePasscodeWithCompletion:(CDUnknownBlockType)arg1;
-- (void)performDeviceToDeviceEncryptionStateRepairForAltDSID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)initWithPresentingViewController:(id)arg1;
+- (void)performDeviceToDeviceEncryptionStateRepairForContext:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -37,6 +37,7 @@
 - (void)_setActiveDisplayMode:(long long)arg1;
 - (void)_setMaximumSize:(struct CGSize)arg1 forDisplayMode:(long long)arg2;
 - (void)_updateVisibilityState:(long long)arg1;
+- (void)_updateVisibleFrame:(struct CGRect)arg1 withReplyHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)disconnect;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

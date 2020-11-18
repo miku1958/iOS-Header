@@ -15,7 +15,6 @@
     unsigned long long _sessionIdentifier;
     CDUnknownBlockType _sessionHandler;
     CDUnknownBlockType _dataHandler;
-    CDUnknownBlockType _transitoryHandler;
     CDUnknownBlockType _characteristicsHandler;
     CDUnknownBlockType _mfaSuccessHandler;
     unsigned long long _connectionOptions;
@@ -23,6 +22,7 @@
     NSData *_autoPairData;
     NSUUID *_peripheralUUID;
     long long _connectionState;
+    long long _pairingState;
     double _timeoutInterval;
     NSObject<OS_dispatch_source> *_timeoutTimer;
 }
@@ -35,15 +35,15 @@
 @property (readonly, nonatomic) long long mfaStatus; // @synthesize mfaStatus=_mfaStatus;
 @property (readonly, nonatomic) CDUnknownBlockType mfaSuccessHandler; // @synthesize mfaSuccessHandler=_mfaSuccessHandler;
 @property (nonatomic) BOOL pairingAttempted; // @synthesize pairingAttempted=_pairingAttempted;
+@property (nonatomic) long long pairingState; // @synthesize pairingState=_pairingState;
 @property (readonly, nonatomic) NSUUID *peripheralUUID; // @synthesize peripheralUUID=_peripheralUUID;
 @property (readonly, nonatomic) CDUnknownBlockType sessionHandler; // @synthesize sessionHandler=_sessionHandler;
 @property (nonatomic) unsigned long long sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property (readonly, nonatomic) double timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *timeoutTimer; // @synthesize timeoutTimer=_timeoutTimer;
-@property (readonly, nonatomic) CDUnknownBlockType transitoryHandler; // @synthesize transitoryHandler=_transitoryHandler;
 
 - (void).cxx_destruct;
-- (id)initWithSessionHandler:(CDUnknownBlockType)arg1 dataHandler:(CDUnknownBlockType)arg2 transitoryHandler:(CDUnknownBlockType)arg3 characteristicsHandler:(CDUnknownBlockType)arg4 mfaSuccessHandler:(CDUnknownBlockType)arg5 autoPairData:(id)arg6 connectionOptions:(unsigned long long)arg7 timeoutInterval:(double)arg8 peripheralUUID:(id)arg9;
+- (id)initWithSessionHandler:(CDUnknownBlockType)arg1 dataHandler:(CDUnknownBlockType)arg2 characteristicsHandler:(CDUnknownBlockType)arg3 mfaSuccessHandler:(CDUnknownBlockType)arg4 autoPairData:(id)arg5 connectionOptions:(unsigned long long)arg6 timeoutInterval:(double)arg7 peripheralUUID:(id)arg8;
 - (void)markMFAStatusComplete;
 
 @end

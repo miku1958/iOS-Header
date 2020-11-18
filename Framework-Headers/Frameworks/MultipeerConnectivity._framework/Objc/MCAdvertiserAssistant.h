@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <MultipeerConnectivity/MCNearbyServiceAdvertiserDelegate-Protocol.h>
 #import <MultipeerConnectivity/UIAlertViewDelegate-Protocol.h>

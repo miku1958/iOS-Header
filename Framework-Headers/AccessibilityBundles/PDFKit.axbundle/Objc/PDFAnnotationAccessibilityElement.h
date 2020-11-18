@@ -4,20 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIAccessibilityElement.h>
+#import "AXPDFNodeElement.h"
 
-@class PDFAnnotation, PDFView;
+@class PDFAnnotation, PDFPage;
 
-@interface PDFAnnotationAccessibilityElement : UIAccessibilityElement
+@interface PDFAnnotationAccessibilityElement : AXPDFNodeElement
 {
-    PDFView *_view;
+    PDFPage *_page;
     PDFAnnotation *_annotation;
-    UIAccessibilityElement *_parentNode;
 }
 
 @property (weak, nonatomic) PDFAnnotation *annotation; // @synthesize annotation=_annotation;
-@property (strong, nonatomic) UIAccessibilityElement *parentNode; // @synthesize parentNode=_parentNode;
-@property (weak, nonatomic) PDFView *view; // @synthesize view=_view;
+@property (weak, nonatomic) PDFPage *page; // @synthesize page=_page;
 
 - (void).cxx_destruct;
 - (id)_accessibilityAnnotationFieldType;
@@ -30,7 +28,7 @@
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
-- (id)initWithPDFView:(id)arg1 annotation:(id)arg2 withParent:(id)arg3;
+- (id)initWithPage:(id)arg1 annotation:(id)arg2 withParent:(id)arg3;
 - (BOOL)isAccessibilityElement;
 
 @end

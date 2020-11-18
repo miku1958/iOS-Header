@@ -6,20 +6,25 @@
 
 #import <UIKit/UIView.h>
 
-@class NSMutableArray, UIImageView, UILabel;
+@class NSLayoutConstraint, UIImageView, UILabel;
 
 @interface PKContinuityPaymentCardSummaryView : UIView
 {
-    NSMutableArray *_constraints;
+    UIImageView *_alertView;
+    NSLayoutConstraint *_textToTrailingConstraint;
+    NSLayoutConstraint *_textToAlertConstraint;
+    BOOL _showsAlert;
     UILabel *_valueView;
     UIImageView *_thumbnailView;
 }
 
+@property (nonatomic) BOOL showsAlert; // @synthesize showsAlert=_showsAlert;
 @property (readonly, nonatomic) UIImageView *thumbnailView; // @synthesize thumbnailView=_thumbnailView;
 @property (readonly, nonatomic) UILabel *valueView; // @synthesize valueView=_valueView;
 
 - (void).cxx_destruct;
 - (void)_createSubviews;
+- (void)_prepareImageAndValueConstraints;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)updateConstraints;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSError.h>
+#import <extension/NSError.h>
 
 @interface NSURLError : NSError
 {

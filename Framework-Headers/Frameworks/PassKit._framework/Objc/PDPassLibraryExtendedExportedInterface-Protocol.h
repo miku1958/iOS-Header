@@ -13,7 +13,6 @@
 - (void)fetchCurrentRelevantPassInfo:(void (^)(NSArray *))arg1;
 - (void)fetchHasCandidatePasses:(void (^)(BOOL))arg1;
 - (void)getArchivedObjectWithUniqueID:(NSString *)arg1 handler:(void (^)(NSData *))arg2;
-- (void)getDataForBundleResourceNamed:(NSString *)arg1 withExtension:(NSString *)arg2 objectUniqueIdentifier:(NSString *)arg3 handler:(void (^)(NSData *))arg4;
 - (void)getDiffForPassUpdateUserNotificationWithIdentifier:(NSString *)arg1 handler:(void (^)(PKDiff *))arg2;
 - (void)getImageSetContainerForUniqueID:(NSString *)arg1 ofType:(long long)arg2 displayProfile:(PKDisplayProfile *)arg3 handler:(void (^)(PKImageSetXPCContainer *))arg4;
 - (void)getPassUniqueIdentifiersForFieldProperties:(PKFieldProperties *)arg1 handler:(void (^)(NSArray *))arg2;

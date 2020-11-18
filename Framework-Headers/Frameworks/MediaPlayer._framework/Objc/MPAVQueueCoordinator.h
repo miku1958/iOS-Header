@@ -25,6 +25,7 @@
     BOOL _preventLoadingItems;
     double _rateQueueDepthAdjustmentDelay;
     NSMutableSet *_reusableItems;
+    BOOL _shouldDeferItemLoading;
     MPQueuePlayer *_player;
     id<MPAVQueueCoordinatorDataSource> _dataSource;
     MPAVItem *_currentItem;
@@ -37,6 +38,7 @@
 @property (copy, nonatomic) CDUnknownBlockType equilibriumAchievedHandler; // @synthesize equilibriumAchievedHandler=_equilibriumAchievedHandler;
 @property (readonly, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (readonly, nonatomic) MPQueuePlayer *player; // @synthesize player=_player;
+@property (nonatomic) BOOL shouldDeferItemLoading; // @synthesize shouldDeferItemLoading=_shouldDeferItemLoading;
 
 - (void).cxx_destruct;
 - (void)_beginBackgroundTaskAssertion;

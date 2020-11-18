@@ -37,13 +37,14 @@
 @property (readonly, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
 
 - (void).cxx_destruct;
-- (id)_amountText;
+- (BOOL)_deemphasizeAmount;
 - (id)_image;
 - (id)_locationText;
 - (id)_merchantText;
 - (id)_peerPaymentCounterpart;
 - (id)_relativeDateText;
 - (id)_statusText;
+- (BOOL)_strikethroughAmount;
 - (void)_updateContentAnimated:(BOOL)arg1;
 - (void)beginUpdates;
 - (void)contactsDidChangeForContactResolver:(id)arg1;

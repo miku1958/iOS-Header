@@ -10,5 +10,6 @@
 - (id)hk_croppedImageWithRect:(struct CGRect)arg1;
 - (id)hk_resizedImageWithSize:(struct CGSize)arg1;
 - (double)hk_scaledImageViewHeightWithScaledWidth:(double)arg1;
+- (id)hk_watchIconImage;
 @end
 

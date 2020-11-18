@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSValue.h>
+#import <extension/NSValue.h>
 
 __attribute__((visibility("hidden")))
 @interface NSWeakObjectValue : NSValue

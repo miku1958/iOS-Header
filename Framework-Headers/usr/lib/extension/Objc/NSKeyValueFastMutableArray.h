@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSKeyValueMutableArray.h>
+#import <extension/NSKeyValueMutableArray.h>
 
 @class NSKeyValueMutatingArrayMethodSet;
 

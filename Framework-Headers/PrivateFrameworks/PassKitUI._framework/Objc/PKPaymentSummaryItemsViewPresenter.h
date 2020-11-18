@@ -19,8 +19,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (void)presentCell:(id)arg1 withDataItem:(id)arg2 shouldShowSeperator:(BOOL)arg3;
-+ (void)presentView:(id)arg1 withDataItem:(id)arg2;
++ (void)presentCell:(id)arg1 withDataItem:(id)arg2 shouldShowSeperator:(BOOL)arg3 forPaymentRequest:(id)arg4;
++ (void)presentView:(id)arg1 withDataItem:(id)arg2 forPaymentRequest:(id)arg3;
 
 @end
 

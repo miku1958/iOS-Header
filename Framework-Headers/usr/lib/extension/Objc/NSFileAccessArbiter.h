@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSFileAccessArbiterXPCInterface-Protocol.h>
-#import <Foundation/NSXPCListenerDelegate-Protocol.h>
+#import <extension/NSFileAccessArbiterXPCInterface-Protocol.h>
+#import <extension/NSXPCListenerDelegate-Protocol.h>
 
 @class NSFileAccessNode, NSMutableDictionary, NSString, NSXPCConnection, NSXPCListener;
 @protocol OS_dispatch_queue, OS_dispatch_source;

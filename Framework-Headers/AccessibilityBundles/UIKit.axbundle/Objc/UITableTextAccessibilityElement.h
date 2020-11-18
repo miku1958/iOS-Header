@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 - (id)_accessibilityAllDragSourceDescriptors;
 - (id)_accessibilityAllDropPointDescriptors;
+- (id)_accessibilityCustomActionGroupIdentifier;
 - (double)_accessibilityDelayBeforeUpdatingOnActivation;
 - (id)_accessibilityEquivalenceTag;
 - (struct _NSRange)_accessibilityIndexPathAsRange;

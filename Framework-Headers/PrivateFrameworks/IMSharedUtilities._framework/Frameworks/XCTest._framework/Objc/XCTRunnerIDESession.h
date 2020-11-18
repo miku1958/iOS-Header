@@ -52,6 +52,7 @@
 - (id)initWithTransport:(id)arg1;
 - (void)launchProcessWithPath:(id)arg1 bundleID:(id)arg2 arguments:(id)arg3 environmentVariables:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)logDebugMessage:(id)arg1;
+- (void)reportSelfDiagnosisIssue:(id)arg1 description:(id)arg2;
 - (void)reportStallOnMainThreadInTestCase:(id)arg1 method:(id)arg2 file:(id)arg3 line:(unsigned long long)arg4;
 - (void)requestLaunchProgressForProcessWithToken:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestReadinessForTesting:(CDUnknownBlockType)arg1;

@@ -9,10 +9,10 @@
 @interface PKPeerPaymentPerformActionResponse : PKPeerPaymentWebServiceResponse
 {
     BOOL _success;
-    unsigned long long _status;
+    long long _status;
 }
 
-@property (readonly, nonatomic) unsigned long long status; // @synthesize status=_status;
+@property (readonly, nonatomic) long long status; // @synthesize status=_status;
 @property (readonly, nonatomic) BOOL success; // @synthesize success=_success;
 
 - (id)initWithData:(id)arg1;

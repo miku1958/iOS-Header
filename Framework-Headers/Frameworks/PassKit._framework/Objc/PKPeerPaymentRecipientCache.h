@@ -6,13 +6,13 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableDictionary, NSTimer;
+@class NSTimer, PKMapContainer;
 @protocol OS_dispatch_queue;
 
 @interface PKPeerPaymentRecipientCache : NSObject
 {
     NSObject<OS_dispatch_queue> *_mapAccessQueue;
-    NSMutableDictionary *_map;
+    PKMapContainer *_mapContainer;
     NSTimer *_mapNeedsWriteTimer;
 }
 
@@ -23,13 +23,16 @@
 - (BOOL)_canReadMap;
 - (BOOL)_canWriteMap;
 - (void)_handleDiskMapChangedNotification:(id)arg1;
+- (void)_handlePurgedNotification:(id)arg1;
 - (id)_keyForRecipientAddress:(id)arg1;
 - (void)_setMapNeedsWrite;
-- (void)_updateMapFromDisk;
+- (void)_updateMapsFromDisk;
 - (BOOL)_writeMapToDisk;
 - (void)cacheRecipient:(id)arg1 forRecipientAddress:(id)arg2;
 - (void)dealloc;
 - (id)init;
+- (BOOL)lowFrequencyDeviceScoreSubmissionRequiredForRecipientAddress:(id)arg1;
+- (void)noteSubmittedLowFrequencyDeviceScoreForRecipientAddress:(id)arg1;
 - (BOOL)purgeCache;
 - (void)purgeRecipientWithRecipientAddress:(id)arg1;
 - (id)recipientForRecipientAddress:(id)arg1;

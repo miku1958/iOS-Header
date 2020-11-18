@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObservedValue.h>
+#import <extension/NSObservedValue.h>
 
 __attribute__((visibility("hidden")))
 @interface NSStackObservedValue : NSObservedValue

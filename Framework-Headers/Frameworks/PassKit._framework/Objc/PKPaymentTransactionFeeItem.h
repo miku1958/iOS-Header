@@ -26,7 +26,6 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_initWithFeeDictionary:(id)arg1;
-- (id)_rawDictionary;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
@@ -34,6 +33,7 @@
 - (id)initWithFeeDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToFeeItem:(id)arg1;
+- (id)jsonDictionaryRepresentation;
 
 @end
 

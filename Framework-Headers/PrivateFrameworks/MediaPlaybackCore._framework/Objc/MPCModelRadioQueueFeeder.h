@@ -60,6 +60,7 @@
 - (void)_responseDidInvalidateNotification:(id)arg1;
 - (void)_savePlaybackHistoryWithCurrentIndex:(long long)arg1;
 - (id)_startPlaybackRequestWithPlaybackContext:(id)arg1;
+- (BOOL)allowsQueueResetWhenReachingEnd;
 - (BOOL)allowsUserVisibleUpcomingItems;
 - (id)audioSessionModeForItemAtIndex:(unsigned long long)arg1;
 - (BOOL)canReorder;
@@ -78,7 +79,6 @@
 - (unsigned long long)itemCount;
 - (id)modelPlayEvent;
 - (void)player:(id)arg1 currentItemDidChangeToItem:(id)arg2;
-- (BOOL)player:(id)arg1 shouldContinuePlaybackForNetworkType:(long long)arg2 returningError:(id *)arg3;
 - (BOOL)playerPreparesItemsForPlaybackAsynchronously;
 - (BOOL)preventsHardQueueModificationsForItem:(id)arg1;
 - (long long)realRepeatType;

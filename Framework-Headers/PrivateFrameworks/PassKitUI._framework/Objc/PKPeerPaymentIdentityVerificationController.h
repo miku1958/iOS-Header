@@ -30,10 +30,15 @@
 @property (readonly, nonatomic) PKPeerPaymentWebService *webService; // @synthesize webService=_webService;
 
 - (void).cxx_destruct;
+- (id)_accountLockedErrorViewController;
+- (id)_accountRestrictedErrorViewController;
 - (void)_formViewControllersWithExplanationView:(BOOL)arg1;
 - (id)_generateFieldsModel;
 - (BOOL)_hasRequiredFields;
+- (void)_identityVerificationResquestWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_nextLocalViewController;
+- (void)_resetViewControllers;
+- (id)_verificationErrorViewController;
 - (id)init;
 - (id)initWithPeerPaymentWebService:(id)arg1 identityVerificationResponse:(id)arg2 setupDelegate:(id)arg3 context:(long long)arg4;
 - (void)nextViewControllerWithCompletion:(CDUnknownBlockType)arg1;

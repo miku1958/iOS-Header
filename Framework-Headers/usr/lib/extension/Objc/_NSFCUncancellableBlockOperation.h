@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSBlockOperation.h>
+#import <extension/NSBlockOperation.h>
 
 __attribute__((visibility("hidden")))
 @interface _NSFCUncancellableBlockOperation : NSBlockOperation

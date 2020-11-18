@@ -11,26 +11,38 @@
 @interface PKEnterValueNewBalanceView : UIView
 {
     NSDecimalNumber *_additionalAmount;
+    BOOL _subtractAdditionalAmountFromCurrentAmount;
     BOOL _showSpinner;
     NSNumberFormatter *_currentAmountFormatter;
     UILabel *_newBalancePrompt;
     UILabel *_newBalanceAmount;
     UIActivityIndicatorView *_spinner;
+    NSString *_promptText;
+    NSString *_updatedBalancePromptText;
+    NSString *_maxLoadAmountText;
     NSString *_currencyCode;
     NSDecimalNumber *_cardBalance;
-    NSDecimalNumber *_maxAmount;
-    NSDecimalNumber *_minAmount;
+    NSDecimalNumber *_maxBalance;
+    NSDecimalNumber *_minBalance;
+    NSDecimalNumber *_maxLoadAmount;
+    NSDecimalNumber *_minLoadAmount;
 }
 
 @property (copy, nonatomic) NSDecimalNumber *cardBalance; // @synthesize cardBalance=_cardBalance;
 @property (copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
-@property (copy, nonatomic) NSDecimalNumber *maxAmount; // @synthesize maxAmount=_maxAmount;
-@property (copy, nonatomic) NSDecimalNumber *minAmount; // @synthesize minAmount=_minAmount;
+@property (copy, nonatomic) NSDecimalNumber *maxBalance; // @synthesize maxBalance=_maxBalance;
+@property (copy, nonatomic) NSDecimalNumber *maxLoadAmount; // @synthesize maxLoadAmount=_maxLoadAmount;
+@property (copy, nonatomic) NSString *maxLoadAmountText; // @synthesize maxLoadAmountText=_maxLoadAmountText;
+@property (copy, nonatomic) NSDecimalNumber *minBalance; // @synthesize minBalance=_minBalance;
+@property (copy, nonatomic) NSDecimalNumber *minLoadAmount; // @synthesize minLoadAmount=_minLoadAmount;
+@property (copy, nonatomic) NSString *promptText; // @synthesize promptText=_promptText;
+@property (copy, nonatomic) NSString *updatedBalancePromptText; // @synthesize updatedBalancePromptText=_updatedBalancePromptText;
 
 - (void).cxx_destruct;
 - (void)_addSubviews;
 - (void)_createAmountFormatter;
 - (id)_formattedStringForAmount:(id)arg1;
+- (void)_updateAdditionalAmount:(id)arg1 subtractAdditionalAmountFromCurrentAmount:(BOOL)arg2;
 - (void)_updateBalanceText;
 - (void)addAmountToBalance:(id)arg1;
 - (id)init;
@@ -38,6 +50,7 @@
 - (void)layoutSubviews;
 - (void)showSpinner:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)subtractAmountFromBalance:(id)arg1;
 
 @end
 

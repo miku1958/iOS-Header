@@ -73,6 +73,7 @@
 - (BOOL)isHandledByFirstPartyApp;
 - (id)performActionWithContext:(id)arg1;
 - (BOOL)shouldUseApplicationNameForLabel;
+- (BOOL)shouldUseLabelForQuickActionButtonTitle;
 - (id)url;
 
 @end

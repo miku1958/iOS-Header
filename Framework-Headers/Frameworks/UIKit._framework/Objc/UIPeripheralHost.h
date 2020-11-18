@@ -20,7 +20,6 @@
     BOOL _automaticAppearanceEnabledInternal;
     BOOL _automaticKeyboardAnimatingIn;
     BOOL _automaticKeyboardAnimatingOut;
-    int _automaticKeyboardState;
     int _ignoringReloadInputViews;
     int _ignoredReloads;
     BOOL _suppresingNotifications;
@@ -91,6 +90,7 @@
     BOOL _dontNeedAssistantBar;
     CDUnknownBlockType _deferredTransitionTask;
     double _lastKeyplaneResize;
+    int _currentState;
     UIInputViewSet *_transientInputViewSet;
     UITextInputMode *_documentInputMode;
 }
@@ -107,7 +107,7 @@
 @property (readonly, nonatomic) BOOL automaticAppearanceReallyEnabled;
 @property (readonly, nonatomic) UIKeyboard *automaticKeyboard;
 @property (readonly, nonatomic) UIKeyboardAutomatic *automaticKeyboard;
-@property (nonatomic) int currentState; // @synthesize currentState=_automaticKeyboardState;
+@property (nonatomic) int currentState; // @synthesize currentState=_currentState;
 @property (strong, nonatomic) UIInputViewTransition *currentTransition; // @synthesize currentTransition=_currentTransition;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -171,6 +171,7 @@
 - (BOOL)_isSuppressedByManualKeyboard;
 - (BOOL)_isTrackingResponder:(id)arg1;
 - (BOOL)_isTransitioning;
+- (void)_onScreenStateDidChange;
 - (void)_performRefreshCorners;
 - (void)_preserveInputViewsWithId:(id)arg1;
 - (void)_preserveInputViewsWithId:(id)arg1 animated:(BOOL)arg2;

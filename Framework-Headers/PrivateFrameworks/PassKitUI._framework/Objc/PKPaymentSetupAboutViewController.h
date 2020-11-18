@@ -8,12 +8,11 @@
 
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 
-@class NSString, PKPaymentSetupAboutView;
+@class NSMutableString, NSString, PKPaymentSetupAboutView;
 
 @interface PKPaymentSetupAboutViewController : UIViewController <UIScrollViewDelegate>
 {
-    BOOL _requiresPrivacy;
-    NSString *_bodyText;
+    NSMutableString *_bodyText;
     PKPaymentSetupAboutView *_aboutView;
     void *_navigationController;
     BOOL _navigationControllerHidesShadow;
@@ -27,10 +26,8 @@
 - (void).cxx_destruct;
 - (void)_done:(id)arg1;
 - (void)_setupNavigationItemWithTitle:(id)arg1 isPresented:(BOOL)arg2;
-- (void)_showPrivacyView:(id)arg1;
 - (void)dealloc;
-- (id)initForPrivacyPresented:(BOOL)arg1;
-- (id)initWithAboutText:(id)arg1 isPresented:(BOOL)arg2;
+- (id)initForPrivacyPresented:(BOOL)arg1 webService:(id)arg2;
 - (void)loadView;
 - (void)scrollViewDidScroll:(id)arg1;
 

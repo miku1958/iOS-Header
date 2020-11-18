@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSSingleByteEncodingDetector.h>
+#import <extension/NSSingleByteEncodingDetector.h>
 
 __attribute__((visibility("hidden")))
 @interface NSISOLATIN3EncodingDetector : NSSingleByteEncodingDetector

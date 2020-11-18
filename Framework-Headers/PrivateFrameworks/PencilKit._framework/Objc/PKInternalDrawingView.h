@@ -10,16 +10,14 @@
 #import <PencilKit/PKDrawingGestureTarget-Protocol.h>
 #import <PencilKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CADisplayLink, NSObject, NSString, NSTimer, PKController, PKDrawingGestureRecognizer, PKFreeTransformGestureRecognizer, PKInk, PKOpenGLESView, PKSelectionController, PKUndoSwipeGestureRecognizer, UIActivityIndicatorView, UIView;
-@protocol OS_dispatch_queue, PKInternalDrawingViewDelegate;
+@class CADisplayLink, NSString, NSTimer, PKController, PKDrawingGestureRecognizer, PKFreeTransformGestureRecognizer, PKInk, PKOpenGLESView, PKSelectionController, PKUndoSwipeGestureRecognizer, UIActivityIndicatorView, UIView;
+@protocol PKInternalDrawingViewDelegate;
 
 @interface PKInternalDrawingView : PKInternalDrawingLightView <PKControllerDelegate, PKDrawingGestureTarget, UIGestureRecognizerDelegate>
 {
     UIView *_transitionBackgroundView;
     UIView *_transitionImageView;
     CADisplayLink *_displayLink;
-    CDUnknownBlockType _drawTimerBlock;
-    NSObject<OS_dispatch_queue> *_drawTimerQueue;
     BOOL _shouldPause;
     struct CGAffineTransform _imageTransform;
     BOOL _didCancelSelection;
@@ -105,7 +103,7 @@
 + (void)setupDefaults;
 - (void).cxx_destruct;
 - (void)_closeLassoForTouch:(id)arg1;
-- (void)_drawingDisplay;
+- (void)_drawingDisplay:(double)arg1;
 - (void)_gestureRecognizerFailed:(id)arg1;
 - (void)_rebuildOpenGLView;
 - (void)_setDrawing:(id)arg1 tiles:(id)arg2 setupComplete:(CDUnknownBlockType)arg3 completionBlock:(CDUnknownBlockType)arg4;
@@ -131,7 +129,6 @@
 - (void)didMoveToWindow;
 - (void)dismissEditMenuIfNecessary;
 - (void)done;
-- (void)drawNowIfNeeded;
 - (void)drawStrokeWithPath:(struct CGPath *)arg1;
 - (void)drawingBegan:(id)arg1;
 - (void)drawingBeganForHIDPoint:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSObserver-Protocol.h>
+#import <extension/NSObserver-Protocol.h>
 
 @class NSString;
 

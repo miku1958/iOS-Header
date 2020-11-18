@@ -22,6 +22,7 @@
 - (void)remoteViewControllerViewDidAppearForWidget:(WGWidgetHostingViewController *)arg1;
 - (void)remoteViewControllerViewDidHideForWidget:(WGWidgetHostingViewController *)arg1;
 - (BOOL)shouldRequestWidgetRemoteViewControllers;
+- (struct CGRect)visibleFrameForWidget:(WGWidgetHostingViewController *)arg1;
 - (void)widget:(WGWidgetHostingViewController *)arg1 didChangeLargestSupportedDisplayMode:(long long)arg2;
 - (void (^)(void))widget:(WGWidgetHostingViewController *)arg1 didUpdatePreferredHeight:(double)arg2 completion:(void (^)(BOOL))arg3;
 @end

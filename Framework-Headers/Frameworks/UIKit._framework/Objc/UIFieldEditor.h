@@ -29,6 +29,7 @@
     _UIFieldEditorLayoutManager *_layoutManager;
     _UICascadingTextStorage *_textStorage;
     NSAttributedString *_originalAttributedString;
+    NSDictionary *_originalDefaultAttributes;
     struct {
         unsigned int delegateRespondsToFieldEditorDidChange:1;
         unsigned int delegateRespondsToShouldInsertText:1;
@@ -107,6 +108,7 @@
 - (BOOL)_isPasscodeStyle;
 - (id)_layoutManager;
 - (void)_obscureAllText;
+- (id)_ownerField;
 - (double)_passcodeStyleAlpha;
 - (void)_performPasteOfAttributedString:(id)arg1 toRange:(id)arg2 animator:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_performWhileSuppressingDelegateNotifications:(CDUnknownBlockType)arg1;

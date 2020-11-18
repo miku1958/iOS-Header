@@ -29,8 +29,9 @@
 
 - (void).cxx_destruct;
 - (void)_updateShouldSkipSetupWithNumber:(id)arg1;
-- (BOOL)hasAcknowledgedUnsupportedIdentityProvider:(id)arg1;
-- (void)noteDidAcknowledgeUnsupportedIdentityProvider:(id)arg1;
+- (void)_updateValue:(id)arg1 forKey:(id)arg2;
+- (BOOL)hasChosenDesiredApp;
+- (void)noteDesiredApp:(id)arg1;
 - (void)noteDidSendWelcomeMessage;
 - (void)noteShouldSkipSetup;
 

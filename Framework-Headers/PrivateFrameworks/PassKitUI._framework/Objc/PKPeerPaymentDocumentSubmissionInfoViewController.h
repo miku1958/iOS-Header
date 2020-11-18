@@ -6,21 +6,20 @@
 
 #import <PassKitUI/PKExplanationViewController.h>
 
+#import <PassKitUI/PKExplanationViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
 #import <PassKitUI/PKPeerPaymentDocumentSubmissionControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPeerPaymentDocumentSubmissionViewControllerResponder-Protocol.h>
 
-@class NSString, NSTimer, PKExplanationView, PKPeerPaymentDocumentSubmissionController, UIBarButtonItem;
+@class NSString, NSTimer, PKPeerPaymentDocumentSubmissionController;
 
-@interface PKPeerPaymentDocumentSubmissionInfoViewController : PKExplanationViewController <PKPeerPaymentDocumentSubmissionControllerDelegate, PKExplanationViewDelegate, PKPeerPaymentDocumentSubmissionViewControllerResponder>
+@interface PKPeerPaymentDocumentSubmissionInfoViewController : PKExplanationViewController <PKPeerPaymentDocumentSubmissionControllerDelegate, PKExplanationViewDelegate, PKExplanationViewControllerDelegate, PKPeerPaymentDocumentSubmissionViewControllerResponder>
 {
     PKPeerPaymentDocumentSubmissionController *_controller;
-    PKExplanationView *_explanationView;
     long long _context;
     long long _currentState;
     long long _currentSide;
     NSTimer *_timerDismissAfterSuccess;
-    UIBarButtonItem *_cancelButtonItem;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -29,7 +28,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)cancel;
+- (void)_cancelPressed;
 - (void)captureController:(id)arg1 didChangeStateTo:(long long)arg2;
 - (void)captureController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(BOOL)arg2;
 - (void)captureController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(BOOL)arg3;

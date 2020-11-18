@@ -192,6 +192,7 @@
 - (BOOL)isSearchResultsPopoverVisible;
 - (BOOL)isShowingFromAddressPickerWheel;
 - (void)layoutForChangedComposeHeaderView:(id)arg1 size:(struct CGSize)arg2;
+- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (void)menuDidHide;
 - (void)parentDidClose;

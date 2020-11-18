@@ -11,12 +11,18 @@
 __attribute__((visibility("hidden")))
 @interface VSAppDescription : NSObject
 {
+    BOOL _offersInAppPurchases;
     NSString *_displayName;
     NSNumber *_adamID;
     NSString *_buyParams;
     NSString *_bundleID;
     NSString *_sellerName;
+    NSString *_externalVersionID;
     NSURL *_appStoreURL;
+    NSURL *_privacyPolicyEndpointURL;
+    NSURL *_licenseAgreementEndpointURL;
+    NSString *_rating;
+    NSNumber *_contentRank;
     NSString *_artworkURLTemplate;
     UIImage *_icon;
 }
@@ -26,9 +32,16 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *artworkURLTemplate; // @synthesize artworkURLTemplate=_artworkURLTemplate;
 @property (copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (copy, nonatomic) NSString *buyParams; // @synthesize buyParams=_buyParams;
+@property (copy, nonatomic) NSNumber *contentRank; // @synthesize contentRank=_contentRank;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (copy, nonatomic) NSString *externalVersionID; // @synthesize externalVersionID=_externalVersionID;
 @property (strong, nonatomic) UIImage *icon; // @synthesize icon=_icon;
+@property (copy, nonatomic) NSURL *licenseAgreementEndpointURL; // @synthesize licenseAgreementEndpointURL=_licenseAgreementEndpointURL;
+@property (nonatomic) BOOL offersInAppPurchases; // @synthesize offersInAppPurchases=_offersInAppPurchases;
+@property (copy, nonatomic) NSURL *privacyPolicyEndpointURL; // @synthesize privacyPolicyEndpointURL=_privacyPolicyEndpointURL;
+@property (copy, nonatomic) NSString *rating; // @synthesize rating=_rating;
 @property (copy, nonatomic) NSString *sellerName; // @synthesize sellerName=_sellerName;
+@property (readonly, copy, nonatomic) NSString *shortenedDisplayName;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

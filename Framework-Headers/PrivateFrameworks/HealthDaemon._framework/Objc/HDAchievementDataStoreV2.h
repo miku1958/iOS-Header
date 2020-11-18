@@ -63,6 +63,7 @@
 @property (nonatomic) unsigned long long totalStandGoalsAttempted;
 @property (nonatomic) unsigned long long totalStandGoalsMade;
 
++ (BOOL)_isChallengeProgressInAverages:(id)arg1;
 + (id)createEvaluatedAchievementWithDefinition:(id)arg1 environment:(id)arg2;
 - (void).cxx_destruct;
 - (id)_allAchievementsInDatabaseWithError:(id *)arg1;

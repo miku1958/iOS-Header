@@ -6,19 +6,27 @@
 
 #import <PassKitCore/PKPaymentCredential.h>
 
-@class PKPeerPaymentAccount, PKPeerPaymentPassDetailsResponse;
+@class PKCurrencyAmount, PKPeerPaymentAccount, PKPeerPaymentPassDetailsResponse;
 
 @interface PKPeerPaymentCredential : PKPaymentCredential
 {
     PKPeerPaymentAccount *_account;
     PKPeerPaymentPassDetailsResponse *_passDetailsResponse;
+    PKCurrencyAmount *_amount;
+    unsigned long long _state;
 }
 
 @property (readonly, nonatomic) PKPeerPaymentAccount *account; // @synthesize account=_account;
+@property (strong, nonatomic) PKCurrencyAmount *amount; // @synthesize amount=_amount;
 @property (strong, nonatomic) PKPeerPaymentPassDetailsResponse *passDetailsResponse; // @synthesize passDetailsResponse=_passDetailsResponse;
+@property (nonatomic) unsigned long long state; // @synthesize state=_state;
 
 - (void).cxx_destruct;
+- (BOOL)_isEqualToCredential:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithPeerPaymentAccount:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (id)longDescription;
 
 @end
 
