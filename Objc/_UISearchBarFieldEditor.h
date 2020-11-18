@@ -6,21 +6,14 @@
 
 #import <UIKitCore/UIFieldEditor.h>
 
-@class NSMutableSet;
-
 __attribute__((visibility("hidden")))
 @interface _UISearchBarFieldEditor : UIFieldEditor
 {
     struct {
         unsigned int inLayoutSubviews:1;
     } _flags;
-    NSMutableSet *_atomViews;
 }
 
-@property (strong) NSMutableSet *_atomViews; // @synthesize _atomViews;
-
-- (void).cxx_destruct;
-- (double)_uiatom_currentScreenScale;
 - (void)_updateTokenViews;
 - (struct CGRect)_usedRectWithLayoutManager:(id)arg1 textContainer:(id)arg2;
 - (void)activateEditor;

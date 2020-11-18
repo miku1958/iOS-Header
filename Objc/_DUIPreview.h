@@ -18,13 +18,16 @@
     BOOL _hidesSourceView;
     BOOL _avoidAnimation;
     BOOL _wantsSuppressedMask;
+    unsigned int _coordinateSpaceSourceContextID;
     UIColor *_backgroundColor;
     UIBezierPath *_outline;
+    unsigned long long _coordinateSpaceSourceLayerRenderID;
     double _originalRotation;
     long long _previewMode;
     struct CGPoint _contentOffset;
     struct CGSize _contentSize;
     struct CGPoint _originalCenter;
+    struct CGPoint _originalCenterInCoordinateSpace;
     struct CGPoint _liftAnchorPoint;
     struct CGSize _viewScaleFactor;
 }
@@ -36,6 +39,8 @@
 @property (readonly, nonatomic) struct CGSize boundingSize;
 @property (readonly, nonatomic) struct CGPoint contentOffset; // @synthesize contentOffset=_contentOffset;
 @property (readonly, nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
+@property (nonatomic) unsigned int coordinateSpaceSourceContextID; // @synthesize coordinateSpaceSourceContextID=_coordinateSpaceSourceContextID;
+@property (nonatomic) unsigned long long coordinateSpaceSourceLayerRenderID; // @synthesize coordinateSpaceSourceLayerRenderID=_coordinateSpaceSourceLayerRenderID;
 @property (readonly, nonatomic) struct CGPoint croppedScaledAnchorPoint;
 @property (readonly, nonatomic) struct CGSize croppedScaledSize;
 @property (nonatomic) BOOL fadesHorizontally; // @synthesize fadesHorizontally=_fadesHorizontally;
@@ -45,6 +50,7 @@
 @property (nonatomic) struct CGPoint liftAnchorPoint; // @synthesize liftAnchorPoint=_liftAnchorPoint;
 @property (readonly, nonatomic) struct CGAffineTransform liftTransform;
 @property (nonatomic) struct CGPoint originalCenter; // @synthesize originalCenter=_originalCenter;
+@property (nonatomic) struct CGPoint originalCenterInCoordinateSpace; // @synthesize originalCenterInCoordinateSpace=_originalCenterInCoordinateSpace;
 @property (nonatomic) double originalRotation; // @synthesize originalRotation=_originalRotation;
 @property (copy, nonatomic) UIBezierPath *outline; // @synthesize outline=_outline;
 @property (readonly, nonatomic, getter=isOversized) BOOL oversized;

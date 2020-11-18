@@ -22,6 +22,7 @@
     UIView *_viewToSnapshot;
     id<_UIPreviewProvider> __PreviewProvider;
     id<NSCopying><NSObject> _internalIdentifer;
+    NSArray *_transferrableAnimationKeys;
     UIView *_overridePositionTrackingView;
     NSArray *__accessoryViews;
 }
@@ -30,6 +31,7 @@
 @property (strong, nonatomic, getter=_accessoryViews, setter=_setAccessoryViews:) NSArray *_accessoryViews; // @synthesize _accessoryViews=__accessoryViews;
 @property (nonatomic, getter=_prefersUnmaskedPlatterStyle, setter=_setPrefersUnmaskedPlatterStyle:) BOOL _prefersUnmaskedPlatterStyle;
 @property (nonatomic) BOOL _springboardPlatterStyle;
+@property (readonly, nonatomic, getter=_isVisible) BOOL _visible;
 @property (nonatomic, getter=_isDefaultPreview, setter=_setDefaultPreview:) BOOL defaultPreview; // @synthesize defaultPreview=_defaultPreview;
 @property (readonly, nonatomic) BOOL hasCustomTarget; // @synthesize hasCustomTarget=_hasCustomTarget;
 @property (copy, nonatomic) id<NSCopying><NSObject> internalIdentifer; // @synthesize internalIdentifer=_internalIdentifer;
@@ -39,6 +41,7 @@
 @property (readonly, nonatomic) struct CGSize size;
 @property (readonly, nonatomic) BOOL sourceViewIsInViewHierarchy; // @synthesize sourceViewIsInViewHierarchy=_sourceViewIsInViewHierarchy;
 @property (readonly, nonatomic) UIPreviewTarget *target; // @synthesize target=_target;
+@property (strong, nonatomic) NSArray *transferrableAnimationKeys; // @synthesize transferrableAnimationKeys=_transferrableAnimationKeys;
 @property (readonly, nonatomic) UIView *view; // @synthesize view=_view;
 @property (weak, nonatomic, getter=_viewToSnapshot, setter=_setViewToSnapshot:) UIView *viewToSnapshot; // @synthesize viewToSnapshot=_viewToSnapshot;
 
@@ -52,7 +55,6 @@
 - (id)initWithView:(id)arg1 parameters:(id)arg2 target:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (void)platterAnimator_getBounds:(struct CGRect *)arg1 center:(struct CGPoint *)arg2 transform:(struct CGAffineTransform *)arg3 forContainer:(id)arg4;
-- (BOOL)platterAnimator_isValidPreview;
 - (id)retargetedPreviewWithTarget:(id)arg1;
 
 @end

@@ -8,12 +8,12 @@
 
 #import <UIKitCore/UIAccessibilityHUDGestureDelegate-Protocol.h>
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
+#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString, UIAccessibilityHUDGestureManager, UIColor, UIGestureRecognizer, UIScreen, _UIStatusBarAction, _UIStatusBarData, _UIStatusBarDataAggregator, _UIStatusBarStyleAttributes;
+@class NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString, UIAccessibilityHUDGestureManager, UIColor, UIGestureRecognizer, UIPointerInteraction, UIScreen, _UIStatusBarAction, _UIStatusBarData, _UIStatusBarDataAggregator, _UIStatusBarStyleAttributes;
 @protocol _UIStatusBarActionable, _UIStatusBarVisualProvider;
 
-@interface _UIStatusBar : UIView <UIGestureRecognizerDelegate, UIAccessibilityHUDGestureDelegate, _UICursorInteractionDelegate>
+@interface _UIStatusBar : UIView <UIGestureRecognizerDelegate, UIAccessibilityHUDGestureDelegate, UIPointerInteractionDelegate>
 {
     id<_UIStatusBarVisualProvider> _visualProvider;
     UIScreen *_targetScreen;
@@ -29,6 +29,7 @@
     CDUnknownBlockType _updateCompletionHandler;
     UIView *_foregroundView;
     id<_UIStatusBarActionable> _targetActionable;
+    UIPointerInteraction *_pointerInteraction;
     id<_UIStatusBarActionable> _hoveredActionable;
     UIAccessibilityHUDGestureManager *_accessibilityHUDGestureManager;
     Class _visualProviderClass;
@@ -37,6 +38,7 @@
     _UIStatusBarData *_currentAggregatedData;
     _UIStatusBarStyleAttributes *_styleAttributes;
     _UIStatusBarAction *_action;
+    CDUnknownBlockType _regionActionValidationBlock;
     struct CGRect _avoidanceFrame;
 }
 
@@ -63,6 +65,8 @@
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (copy, nonatomic) _UIStatusBarData *overlayData;
+@property (strong, nonatomic) UIPointerInteraction *pointerInteraction; // @synthesize pointerInteraction=_pointerInteraction;
+@property (copy, nonatomic) CDUnknownBlockType regionActionValidationBlock; // @synthesize regionActionValidationBlock=_regionActionValidationBlock;
 @property (readonly, nonatomic) NSDictionary *regions; // @synthesize regions=_regions;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (strong, nonatomic) _UIStatusBarStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
@@ -116,10 +120,6 @@
 - (void)_updateWithData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)actionForPartWithIdentifier:(id)arg1;
 - (double)alphaForPartWithIdentifier:(id)arg1;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
-- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2;
-- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2;
 - (id)dataEntryKeysForItemsWithIdentifiers:(id)arg1;
 - (id)displayItemIdentifiersInRegionsWithIdentifiers:(id)arg1;
 - (id)displayItemWithIdentifier:(id)arg1;
@@ -134,6 +134,10 @@
 - (id)itemsDependingOnKeys:(id)arg1;
 - (void)layoutSubviews;
 - (struct UIOffset)offsetForPartWithIdentifier:(id)arg1;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
 - (id)regionWithIdentifier:(id)arg1;
 - (void)resetVisualProvider;
 - (void)resizeSubviewsWithOldSize:(struct CGSize)arg1;

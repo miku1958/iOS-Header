@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
 - (void)configureButton:(id)arg1 withAppearanceDelegate:(id)arg2 fromBarItem:(id)arg3;
 - (id)contentView;
 - (id)pointerShapeInContainer:(id)arg1;
+- (void)pointerWillEnter:(id)arg1;
+- (void)pointerWillExit:(id)arg1;
 - (void)updateButton:(id)arg1 forEnabledState:(BOOL)arg2;
 - (void)updateButton:(id)arg1 forHighlightedState:(BOOL)arg2;
 

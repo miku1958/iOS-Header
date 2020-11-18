@@ -16,6 +16,7 @@
 @property (nonatomic) struct UIEdgeInsets actionInsets;
 @property (nonatomic) struct NSDirectionalEdgeInsets extendedHoverInsets;
 @property (strong, nonatomic) _UIStatusBarAction *hoverAction;
+@property (readonly, nonatomic) BOOL hoverHighlightsAsRegion;
 @property (readonly, nonatomic) UIView *hoverView;
 @property (readonly, nonatomic) id<UILayoutItem> layoutItem;
 

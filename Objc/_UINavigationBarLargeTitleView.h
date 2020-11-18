@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long accessoryViewHorizontalAlignment; // @synthesize accessoryViewHorizontalAlignment=_accessoryViewHorizontalAlignment;
 @property (nonatomic) BOOL alignAccessoryViewToTitleBaseline; // @synthesize alignAccessoryViewToTitleBaseline=_alignAccessoryViewToTitleBaseline;
 @property (strong, nonatomic) NSArray *alternateTitles; // @synthesize alternateTitles=_alternateTitles;
-@property (strong, nonatomic) _UIPointerInteractionAssistant *assistant; // @synthesize assistant=_assistant;
+@property (weak, nonatomic) _UIPointerInteractionAssistant *assistant; // @synthesize assistant=_assistant;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *effectiveTitleAttributes; // @synthesize effectiveTitleAttributes=_effectiveTitleAttributes;

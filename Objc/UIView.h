@@ -1321,6 +1321,8 @@
 - (void)_uili_removeLayoutVariableObservationsOnlyToSupportTAMICChange:(BOOL)arg1;
 - (BOOL)_uili_requiresObservationForVariable:(id)arg1;
 - (void)_uili_stashLayoutVariableObservation:(id)arg1 forVariable:(id)arg2;
+- (double)_uimorphingView_getInitialAlpha;
+- (void)_uimorphingView_setInitialAlpha:(double)arg1;
 - (void)_uinavigationbar_prepareToAppearInNavigationItem:(id)arg1 onLeft:(BOOL)arg2;
 - (BOOL)_unapplyMotionEffect:(id)arg1;
 - (id)_undimmedTintColor;

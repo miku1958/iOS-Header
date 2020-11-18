@@ -19,7 +19,6 @@
 @property (readonly, nonatomic) long long _style;
 @property (readonly, nonatomic) UIColor *_tintColor;
 
-+ (void)_addBlurToEffectDescriptor:(id)arg1 blurRadius:(double)arg2 scale:(double)arg3 environment:(id)arg4;
 + (id)_coreUIImplementationForStyle:(long long)arg1;
 + (id)_effectForLightMaterial:(id)arg1 darkMaterial:(id)arg2 bundle:(id)arg3;
 + (id)_effectWithBlurRadius:(double)arg1 scale:(double)arg2;

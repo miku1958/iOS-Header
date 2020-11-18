@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (id)_setDownAnimation:(id)arg1 prepareForSetDownOfDragItem:(id)arg2 visibleDroppedItem:(id)arg3;
 - (BOOL)_setDownAnimation:(id)arg1 shouldDelaySetDownOfDragItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setDownAnimation:(id)arg1 willAnimateSetDownOfDragItem:(id)arg2 withAnimator:(id)arg3;
-- (id)_setDownAnimation:(id)arg1 windowSceneForSetDownOfDragItem:(id)arg2;
+- (id)_setDownAnimation:(id)arg1 windowForSetDownOfDragItem:(id)arg2;
 - (void)addItems:(id)arg1 forDragSourceInteraction:(id)arg2;
 - (BOOL)canLoadObjectsOfClass:(Class)arg1;
 - (id)dragSourceInteractionForDragItem:(id)arg1;

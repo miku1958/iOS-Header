@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class UIPointerInteractionAnimator, UIPointerRegion, UIPointerStyle, UIView, _UIPointerEffectPlatterView;
+#import <UIKitCore/_UIViewSubtreeMonitor-Protocol.h>
+
+@class NSString, UIPointerInteractionAnimator, UIPointerRegion, UIPointerStyle, UIView, UIWindow, _UIPointerEffectPlatterView;
 
 __attribute__((visibility("hidden")))
-@interface _UIPointerContentEffect : NSObject
+@interface _UIPointerContentEffect : NSObject <_UIViewSubtreeMonitor>
 {
     struct {
         BOOL isRearrangingEffectViews;
+        BOOL stopViewOrderPreservation;
         BOOL sourceViewDidAllowEdgeAntialiasing;
         BOOL sourceViewDidAlignContentsToPixels;
     } _flags;
@@ -28,6 +31,7 @@ __attribute__((visibility("hidden")))
     long long _state;
     unsigned long long _animationCount;
     UIView *_positionReferenceView;
+    UIWindow *_subtreeMonitoredWindow;
     UIView *_sublayerObservationView;
     UIView *_boundsObservationView;
     struct CGPoint _initialEffectPlatterPosition;
@@ -36,8 +40,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long animationCount; // @synthesize animationCount=_animationCount;
 @property (weak, nonatomic) UIView *boundsObservationView; // @synthesize boundsObservationView=_boundsObservationView;
 @property (copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIPointerInteractionAnimator *entranceAnimator; // @synthesize entranceAnimator=_entranceAnimator;
 @property (strong, nonatomic) UIPointerInteractionAnimator *exitAnimator; // @synthesize exitAnimator=_exitAnimator;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGPoint initialEffectPlatterPosition; // @synthesize initialEffectPlatterPosition=_initialEffectPlatterPosition;
 @property (weak, nonatomic) UIView *lumaSamplingBackdrop; // @synthesize lumaSamplingBackdrop=_lumaSamplingBackdrop;
 @property (strong, nonatomic) _UIPointerEffectPlatterView *platterView; // @synthesize platterView=_platterView;
@@ -48,6 +55,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (strong, nonatomic) UIPointerStyle *style; // @synthesize style=_style;
 @property (weak, nonatomic) UIView *sublayerObservationView; // @synthesize sublayerObservationView=_sublayerObservationView;
+@property (weak, nonatomic) UIWindow *subtreeMonitoredWindow; // @synthesize subtreeMonitoredWindow=_subtreeMonitoredWindow;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_anchorPlatterView:(id)arg1 toPreview:(id)arg2 updateBounds:(BOOL)arg3;
@@ -56,14 +65,18 @@ __attribute__((visibility("hidden")))
 - (void)_commitPointerStyleToArbiterWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_createAndInstallPlatterView;
 - (void)_ensureRelativeEffectViewOrderInContainer;
-- (void)_modifyEffectContainerViewHierarchy:(CDUnknownBlockType)arg1;
+- (void)_modifyEffectContainerViewHierarchy:(CDUnknownBlockType)arg1 waitForCACommit:(BOOL)arg2;
+- (void)_monitoredView:(id)arg1 didMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
+- (void)_monitoredView:(id)arg1 willMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
+- (BOOL)_monitorsView:(id)arg1;
+- (id)_positionReferenceViewForPreview:(id)arg1;
+- (id)_targetedPreviewForContinuingEffectWithPreview:(id)arg1;
 - (void)_tearDownPlatterView;
 - (void)_updateFromState:(long long)arg1 toState:(long long)arg2;
 - (void)_updatePlatterView:(id)arg1 forStyle:(id)arg2;
 - (void)begin;
 - (void)dealloc;
 - (void)end;
-- (unsigned long long)hash;
 - (id)initWithStyle:(id)arg1 region:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

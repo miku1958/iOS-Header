@@ -301,6 +301,7 @@
 - (void)_handleStatusBarOrientationChange:(id)arg1;
 - (BOOL)_hasAmbiguousLayout;
 - (BOOL)_hasContext;
+- (BOOL)_hasFocusDeferralToken;
 - (id)_hitTestLocation:(struct CGPoint)arg1 inScene:(id)arg2 withWindowServerHitTestWindow:(id)arg3 event:(id)arg4;
 - (id)_hostingHandle;
 - (id)_hostingWindow;

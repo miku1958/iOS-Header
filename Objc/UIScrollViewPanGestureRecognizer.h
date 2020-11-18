@@ -27,12 +27,14 @@ __attribute__((visibility("hidden")))
     BOOL _activeEventIsDiscrete;
     double _translationScaleFactor;
     UIScrollViewDirectionalPressGestureRecognizer *_directionalPressGestureRecognizer;
+    double _discreteFastScrollMultiplier;
 }
 
 @property (readonly, nonatomic, getter=_beganCaughtDeceleratingScrollViewAndMoved) BOOL beganCaughtDeceleratingScrollViewAndMoved;
 @property (readonly, nonatomic, getter=_caughtDeceleratingScrollView) BOOL caughtDeceleratingScrollView;
 @property (nonatomic, getter=isDirectionalLockEnabled) BOOL directionalLockEnabled;
 @property (weak, nonatomic) UIScrollViewDirectionalPressGestureRecognizer *directionalPressGestureRecognizer; // @synthesize directionalPressGestureRecognizer=_directionalPressGestureRecognizer;
+@property (nonatomic, getter=_discreteFastScrollMultiplier, setter=_setDiscreteFastScrollMultiplier:) double discreteFastScrollMultiplier; // @synthesize discreteFastScrollMultiplier=_discreteFastScrollMultiplier;
 @property (weak, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (nonatomic) double translationScaleFactor; // @synthesize translationScaleFactor=_translationScaleFactor;
 
@@ -56,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldReceiveTouch:(id)arg1 withEvent:(id)arg2;
 - (BOOL)_shouldTransferTrackingFromParentScrollViewForCurrentOffset;
 - (BOOL)_shouldTryToBeginWithEvent:(id)arg1;
+- (struct CGPoint)_velocityIncludingDiscreteScrollInView:(id)arg1;
 - (BOOL)canBePreventedByGestureRecognizer:(id)arg1;
 - (BOOL)delaysTouchesBegan;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;

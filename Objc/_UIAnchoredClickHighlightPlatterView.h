@@ -6,15 +6,15 @@
 
 #import <UIKitCore/_UIHighlightPlatterView.h>
 
-@class UIView;
+@class _UIMorphingView;
 
 __attribute__((visibility("hidden")))
 @interface _UIAnchoredClickHighlightPlatterView : _UIHighlightPlatterView
 {
-    UIView *_anchorView;
+    _UIMorphingView *_anchorView;
 }
 
-@property (weak, nonatomic) UIView *anchorView; // @synthesize anchorView=_anchorView;
+@property (weak, nonatomic) _UIMorphingView *anchorView; // @synthesize anchorView=_anchorView;
 
 - (void).cxx_destruct;
 - (void)anchorToContainer;

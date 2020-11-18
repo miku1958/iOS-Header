@@ -52,6 +52,7 @@
 @property (strong, nonatomic) UIColor *tokenBackgroundColor; // @synthesize tokenBackgroundColor=_tokenBackgroundColor;
 @property (copy, nonatomic) NSArray *tokens;
 
++ (Class)_canvasViewClass;
 + (Class)_fieldEditorClass;
 + (Class)_textPasteItemClass;
 + (BOOL)_wantsFadedEdges;

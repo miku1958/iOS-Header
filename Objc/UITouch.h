@@ -55,6 +55,7 @@
     BOOL _needsForceUpdate;
     BOOL _hasForceUpdate;
     unsigned char _forceStage;
+    BOOL __expectedToBecomeDrag;
     double _timestamp;
     long long _forceCorrelationToken;
     double _maximumPossiblePressure;
@@ -74,6 +75,7 @@
 @property (nonatomic, getter=_isEaten, setter=_setEaten:) BOOL _eaten; // @synthesize _eaten;
 @property (nonatomic, setter=_setEdgeAim:) unsigned long long _edgeAim; // @synthesize _edgeAim;
 @property (nonatomic, setter=_setEdgeType:) long long _edgeType; // @synthesize _edgeType;
+@property (nonatomic, getter=_expectedToBecomeDrag, setter=_setExpectedToBecomeDrag:) BOOL _expectedToBecomeDrag; // @synthesize _expectedToBecomeDrag=__expectedToBecomeDrag;
 @property (nonatomic, setter=_setForceCorrelationToken:) long long _forceCorrelationToken; // @synthesize _forceCorrelationToken;
 @property (nonatomic, setter=_setForceStage:) unsigned char _forceStage; // @synthesize _forceStage;
 @property (nonatomic, setter=_setForwardablePhase:) long long _forwardablePhase;

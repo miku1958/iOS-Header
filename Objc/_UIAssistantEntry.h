@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UIView<UIPointerInteractionDelegate> *view; // @synthesize view=_view;
+@property (weak, nonatomic) UIView<UIPointerInteractionDelegate> *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;
 - (id)initWithView:(id)arg1;

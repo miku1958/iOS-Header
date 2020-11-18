@@ -14,7 +14,9 @@
 {
     BOOL _supportsSystemDrag;
     BOOL _initiatedWithPointer;
+    unsigned int _coordinateSpaceSourceContextID;
     NSArray *_touchIDs;
+    unsigned long long _coordinateSpaceSourceLayerRenderID;
     UIDraggingSystemTouchRoutingPolicy *_routingPolicy;
     PBItemCollection *_itemCollection;
     NSXPCListenerEndpoint *_dataProviderEndpoint;
@@ -24,6 +26,8 @@
 }
 
 @property (strong, nonatomic) NSXPCListenerEndpoint *axEndpoint; // @synthesize axEndpoint=_axEndpoint;
+@property (nonatomic) unsigned int coordinateSpaceSourceContextID; // @synthesize coordinateSpaceSourceContextID=_coordinateSpaceSourceContextID;
+@property (nonatomic) unsigned long long coordinateSpaceSourceLayerRenderID; // @synthesize coordinateSpaceSourceLayerRenderID=_coordinateSpaceSourceLayerRenderID;
 @property (strong, nonatomic) NSXPCListenerEndpoint *dataProviderEndpoint; // @synthesize dataProviderEndpoint=_dataProviderEndpoint;
 @property (nonatomic) struct CGPoint initialCentroid; // @synthesize initialCentroid=_initialCentroid;
 @property (nonatomic) BOOL initiatedWithPointer; // @synthesize initiatedWithPointer=_initiatedWithPointer;

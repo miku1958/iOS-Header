@@ -51,7 +51,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) UIView *accessibilityBackButtonView;
 @property (readonly, nonatomic) UIView *accessibilityTitleView;
-@property (strong, nonatomic) _UIPointerInteractionAssistant *assistant; // @synthesize assistant=_assistant;
+@property (weak, nonatomic) _UIPointerInteractionAssistant *assistant; // @synthesize assistant=_assistant;
 @property (copy, nonatomic) _UIBarButtonItemData *backButtonAppearance;
 @property (nonatomic) BOOL backButtonHidden; // @synthesize backButtonHidden=_backButtonHidden;
 @property (strong, nonatomic) UIBarButtonItem *backButtonItem; // @synthesize backButtonItem=_backButtonItem;

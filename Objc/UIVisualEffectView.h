@@ -71,6 +71,7 @@
 - (id)_effectDescriptorForEffects:(id)arg1 usage:(long long)arg2;
 - (void)_ensureBackgroundHost;
 - (void)_ensureContentHostWithView:(id)arg1;
+- (id)_environment;
 - (void)_generateBackgroundEffects:(id)arg1 contentEffects:(id)arg2;
 - (void)_generateDeferredAnimations:(id)arg1;
 - (void)_generateEffectAnimations:(id)arg1;

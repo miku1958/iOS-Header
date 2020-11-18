@@ -23,7 +23,6 @@
 
 @property (readonly, nonatomic) id<_UIDragPreviewProvider> _dragPreviewProvider;
 @property (readonly, nonatomic) _DUIPreview *_duiPreview;
-@property (readonly, nonatomic) CDUnknownBlockType _duiPreviewProvider;
 @property (copy, nonatomic) NSDictionary *_springboardParameters; // @synthesize _springboardParameters=__springboardParameters;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, getter=_isDefaultPreview, setter=_setDefaultPreview:) BOOL defaultPreview;
