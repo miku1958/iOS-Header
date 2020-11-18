@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     struct CGPoint _reconsideredLockingLocation;
     unsigned int _lastLockingAxis:2;
     unsigned int _lockingAxis:2;
-    unsigned int _hasChildScrollView:1;
     unsigned int _hasParentScrollView:1;
     unsigned int _caughtDeceleratingScrollView:1;
     unsigned int _directionalLockEnabled:1;

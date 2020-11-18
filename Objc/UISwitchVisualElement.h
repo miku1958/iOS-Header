@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic) double enabledAlpha; // @synthesize enabledAlpha=_enabledAlpha;
 @property (strong, nonatomic) _UIFeedbackImpactBehavior *impactFeedbackBehavior; // @synthesize impactFeedbackBehavior=_impactFeedbackBehavior;
-@property (strong, nonatomic) id<UISwitchControl> switchControl; // @synthesize switchControl=_switchControl;
+@property (weak, nonatomic) id<UISwitchControl> switchControl; // @synthesize switchControl=_switchControl;
 
 + (struct CGSize)preferredContentSize;
 - (void).cxx_destruct;

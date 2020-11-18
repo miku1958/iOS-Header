@@ -229,6 +229,7 @@
 - (double)_baselineLayoutConstraintConstantForBounds:(struct CGRect)arg1;
 - (struct CGRect)_baselineLeftViewRectForBounds:(struct CGRect)arg1;
 - (void)_becomeFirstResponder;
+- (long long)_blurEffectStyle;
 - (long long)_blurEffectStyleForAppearance;
 - (BOOL)_blurEnabled;
 - (BOOL)_canDrawContent;
@@ -348,6 +349,7 @@
 - (void)_setSystemBackgroundViewActive:(BOOL)arg1;
 - (void)_setUpBaselineLayoutConstraintsForBounds:(struct CGRect)arg1;
 - (void)_share:(id)arg1;
+- (BOOL)_shouldDetermineInterfaceStyleTextColor;
 - (BOOL)_shouldEndEditing;
 - (BOOL)_shouldObscureInput;
 - (BOOL)_shouldSendContentChangedNotificationsIfOnlyMarkedTextChanged;

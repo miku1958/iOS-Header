@@ -8,8 +8,8 @@
 
 #import <UIKit/UIRecentsInputViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSMutableDictionary, NSString, UIButton, UICompatibilityInputViewController, UIKBSystemLayoutViewController, UIKeyboard, UILabel, UILexicon, UIRecentsInputViewController, UIResponder, UITextInputTraits, UITraitCollection, UIView;
-@protocol UISystemInputViewControllerDelegate, UITextInput;
+@class NSArray, NSLayoutConstraint, NSMutableDictionary, NSString, UIButton, UICompatibilityInputViewController, UIKBSystemLayoutViewController, UIKeyboard, UILabel, UILexicon, UIRecentsInputViewController, UIResponder, UITextInputTraits, UIView;
+@protocol UISystemInputViewControllerDelegate, UITextInput, UITraitEnvironment;
 
 @interface UISystemInputViewController : UIViewController <UIRecentsInputViewControllerDelegate>
 {
@@ -24,7 +24,7 @@
     BOOL _didDisplayRecents;
     id<UISystemInputViewControllerDelegate> _systemInputViewControllerDelegate;
     UIResponder<UITextInput> *_persistentDelegate;
-    UITraitCollection *_containingResponderTraitCollection;
+    UIResponder<UITraitEnvironment> *_containingResponder;
     UIKeyboard *_keyboard;
     NSArray *_keyboardConstraints;
     UICompatibilityInputViewController *_keyboardVC;
@@ -47,7 +47,7 @@
 @property (strong, nonatomic) UILabel *_promptLabel; // @synthesize _promptLabel;
 @property (nonatomic) long long blurEffectStyle; // @synthesize blurEffectStyle=_blurEffectStyle;
 @property (strong, nonatomic) UILexicon *cachedRecents; // @synthesize cachedRecents=_cachedRecents;
-@property (strong, nonatomic) UITraitCollection *containingResponderTraitCollection; // @synthesize containingResponderTraitCollection=_containingResponderTraitCollection;
+@property (strong, nonatomic) UIResponder<UITraitEnvironment> *containingResponder; // @synthesize containingResponder=_containingResponder;
 @property (strong, nonatomic) UIView *containingView; // @synthesize containingView=_containingView;
 @property (strong, nonatomic) UIView *contentLayoutView; // @synthesize contentLayoutView=_contentLayoutView;
 @property (readonly, copy) NSString *debugDescription;

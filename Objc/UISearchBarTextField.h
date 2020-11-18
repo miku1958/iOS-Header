@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_availableTextRectForBounds:(struct CGRect)arg1 forEditing:(BOOL)arg2;
 - (void)_becomeFirstResponder;
 - (BOOL)_becomeFirstResponderWhenPossible;
+- (long long)_blurEffectStyle;
 - (struct CGRect)_bookmarkViewRectForBounds:(struct CGRect)arg1;
 - (void)_clearBackgroundViews;
 - (id)_clearButtonImageForState:(unsigned long long)arg1;
@@ -49,10 +50,12 @@ __attribute__((visibility("hidden")))
 - (void)_setEnabled:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setOffsetValue:(id)arg1 forIcon:(long long)arg2;
 - (BOOL)_shouldCenterPlaceholder;
+- (BOOL)_shouldDetermineInterfaceStyleTextColor;
 - (BOOL)_shouldSendContentChangedNotificationsIfOnlyMarkedTextChanged;
 - (struct CGRect)_suffixFrame;
 - (long long)_suffixLabelTextAlignment;
 - (Class)_systemBackgroundViewClass;
+- (id)_tvDefaultTextColor;
 - (void)_updateBackgroundView:(id)arg1 withStyle:(unsigned long long)arg2 filter:(id)arg3;
 - (void)_updateBackgroundViewsAnimated:(BOOL)arg1;
 - (BOOL)canBecomeFirstResponder;

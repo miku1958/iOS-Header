@@ -115,6 +115,7 @@
         unsigned int systemLayoutFittingSizeNeedsUpdate:1;
         unsigned int systemLayoutFittingSizeNeedsUpdateInWholeSubtree:1;
         unsigned int isCalculatingSystemLayoutFittingSize:1;
+        unsigned int suppressEncapsulationConstraints:1;
         unsigned int stayHiddenAwaitingReuse:1;
         unsigned int stayHiddenAfterReuse:1;
         unsigned int skippedLayoutWhileHiddenForReuse:1;
@@ -229,6 +230,7 @@
 @property (nonatomic, setter=_setMayRemainFocused:) BOOL _mayRemainFocused;
 @property (readonly, strong, nonatomic) NSISVariable *_minXVariable; // @synthesize _minXVariable;
 @property (readonly, strong, nonatomic) NSISVariable *_minYVariable; // @synthesize _minYVariable;
+@property (nonatomic, setter=_setMultilineContextWidth:) double _multilineContextWidth; // @dynamic _multilineContextWidth;
 @property (readonly, strong, nonatomic) NSMutableArray *_mutableLayoutArrangements;
 @property (readonly, strong, nonatomic) NSMutableArray *_mutableLayoutGuides;
 @property (nonatomic, setter=_setNeedsContentsFormatUpdate:) BOOL _needsContentsFormatUpdate;
@@ -540,7 +542,7 @@
 - (struct CGRect)_boundsForAlignmentRect:(struct CGRect)arg1;
 - (BOOL)_cachedTraitCollectionIsValid;
 - (double)_calculatedIntrinsicHeight;
-- (struct CGSize)_calculatedSystemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3 hasIntentionallyCollapsedHeight:(BOOL *)arg4 shouldFlush:(BOOL)arg5;
+- (struct CGSize)_calculatedSystemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3 hasIntentionallyCollapsedHeight:(BOOL *)arg4;
 - (BOOL)_canBeReusedInPickerView;
 - (BOOL)_canBecomeFirstResponderWhenPossible;
 - (BOOL)_canBecomeLayoutEngineDelegate;
@@ -663,6 +665,7 @@
 - (void)_endSuspendingMotionEffects;
 - (struct CGRect)_engineFrameAtScreenScaleForItem:(id)arg1 inEngine:(id)arg2;
 - (void)_engineHostConstraints_frameDidChange;
+- (id)_engineHostingWidthConstraint;
 - (void)_enumerateDescendentViews:(CDUnknownBlockType)arg1;
 - (void)_evaluateContentsFormat;
 - (BOOL)_fakeShouldAnimatePropertyWithKey:(id)arg1;
@@ -802,7 +805,7 @@
 - (id)_lowerExpressionOneLevelWithCurrentXExpression:(id)arg1 YExpression:(id)arg2 vertical:(BOOL)arg3 container:(id)arg4;
 - (void)_makeSubtreePerformSelector:(SEL)arg1 withObject:(id)arg2;
 - (void)_makeSubtreePerformSelector:(SEL)arg1 withObject:(id)arg2 withObject:(id)arg3 copySublayers:(BOOL)arg4;
-- (void)_makeTemporaryInternalConstraintsWithEngine:(id)arg1 ignoreAutoresizingMaskConstraints:(BOOL)arg2 returningConstraintsForViewsNeedingSecondPass:(id *)arg3;
+- (void)_makeTemporaryInternalConstraintsWithEngine:(id)arg1 ignoreAutoresizingMaskConstraints:(BOOL)arg2 returningConstraintsForViewsNeedingSecondPass:(id *)arg3 currentTargetWidth:(double)arg4;
 - (void)_markClippingDetected;
 - (float)_minimumZoomScaleDelta;
 - (id)_motionEffects;
@@ -867,7 +870,7 @@
 - (BOOL)_recordBaselineLoweringInfo;
 - (void)_recordConstraintBrokenWhileUnsatisfiableConstraintsLoggingSuspended:(id)arg1;
 - (id)_recursiveAutolayoutTraceAtLevel:(long long)arg1;
-- (void)_recursiveCollectTemporaryInternalConstraintsWithEngine:(id)arg1 ignoreAutoresizingMaskConstraints:(BOOL)arg2 returningConstraintsForViewsNeedingSecondPass:(id *)arg3;
+- (void)_recursiveCollectTemporaryInternalConstraintsWithEngine:(id)arg1 ignoreAutoresizingMaskConstraints:(BOOL)arg2 returningConstraintsForViewsNeedingSecondPass:(id *)arg3 currentTargetWidth:(double)arg4;
 - (id)_recursiveConstraintsTraceAtLevel:(long long)arg1;
 - (void)_recursiveInvalidateDescendantsNeedingDoubleUpdateConstraints;
 - (id)_recursiveLayoutEngineDescription;
@@ -1071,9 +1074,9 @@
 - (void)_updateBackdropMaskViewsInScrollView:(id)arg1;
 - (void)_updateConstraintsAsNecessaryAndApplyLayoutFromEngine;
 - (void)_updateConstraintsAtEngineLevelIfNeeded;
-- (void)_updateConstraintsAtEngineLevelIfNeededPostponeVariableChangeNotifications:(BOOL)arg1;
+- (void)_updateConstraintsAtEngineLevelIfNeededWithViewForVariableChangeNotifications:(id)arg1;
 - (void)_updateConstraintsIfNeededCollectingViews:(id)arg1 forSecondPass:(BOOL)arg2;
-- (void)_updateConstraintsIfNeededPostponeVariableChangeNotifications:(BOOL)arg1;
+- (void)_updateConstraintsIfNeededWithViewForVariableChangeNotifications:(id)arg1;
 - (void)_updateContentSizeConstraints;
 - (void)_updateDirectionalConstraintsIfNeeded;
 - (void)_updateInferredLayoutMargins;

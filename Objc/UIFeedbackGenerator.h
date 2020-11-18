@@ -17,7 +17,6 @@
     NSMutableDictionary *_preparationTimers;
     double _currentDelay;
     NSSet *_usedFeedbacks;
-    BOOL _muted;
     BOOL _hasMutableFeedbackKeyPaths;
     long long _activationCount;
     long long _externalActivationCount;
@@ -37,7 +36,7 @@
 @property (readonly, nonatomic) NSSet *engines; // @synthesize engines=_engines;
 @property (nonatomic) long long externalActivationCount; // @synthesize externalActivationCount=_externalActivationCount;
 @property (readonly, nonatomic, getter=_hasMutableFeedbackKeyPaths) BOOL hasMutableFeedbackKeyPaths; // @synthesize hasMutableFeedbackKeyPaths=_hasMutableFeedbackKeyPaths;
-@property (nonatomic, getter=_isMuted, setter=_setMuted:) BOOL muted; // @synthesize muted=_muted;
+@property (nonatomic, getter=_isMuted, setter=_setMuted:) BOOL muted;
 
 + (Class)_configurationClass;
 + (void)_resetAutoDeactivateTimeout;
@@ -60,6 +59,7 @@
 - (void)_deactivateWithStyle:(long long)arg1;
 - (void)_deactivated;
 - (void)_forceDeactivationForStyle:(long long)arg1;
+- (long long)_outputMode;
 - (id)_playCountStatistics;
 - (void)_playFeedback:(id)arg1;
 - (void)_playFeedback:(id)arg1 withMinimumIntervalPassed:(double)arg2 since:(double *)arg3 prefersRegularPace:(BOOL)arg4;
@@ -69,6 +69,7 @@
 - (void)_prepare;
 - (void)_prepareWithStyle:(long long)arg1;
 - (void)_resetAutoDeactivationTimeout;
+- (void)_setOutputMode:(long long)arg1;
 - (void)_setPreparationTimer:(id)arg1 forStyle:(long long)arg2;
 - (void)_setupAutoDeactivateTimer;
 - (void)_setupEnginesIfNeeded;

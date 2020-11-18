@@ -6,51 +6,40 @@
 
 #import <Foundation/NSObject.h>
 
-@class EMFEmojiPreferencesClient, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary;
+@class EMFEmojiPreferencesClient, NSArray, NSDictionary;
+@protocol OS_dispatch_queue;
 
 @interface UIKeyboardEmojiPreferences : NSObject
 {
     EMFEmojiPreferencesClient *_preferencesClient;
-    NSMutableDictionary *_defaults;
-    BOOL _isDefaultDirty;
-    int _currentSequence;
-    NSMutableDictionary *_usageHistory;
-    NSMutableDictionary *_typingNames;
-    NSMutableArray *_recents;
-    NSMutableDictionary *_skinToneBaseKeyPreferences;
-    unsigned long long _maximumRecentsCount;
+    NSObject<OS_dispatch_queue> *_clientDispatchQueue;
 }
 
-@property (nonatomic) long long currentSequenceKey;
-@property (nonatomic) unsigned long long maximumRecentsCount; // @synthesize maximumRecentsCount=_maximumRecentsCount;
+@property (readonly, nonatomic) BOOL hasDisplayedSkinToneHelp;
+@property (nonatomic) unsigned long long maximumRecentsCount;
 @property (strong, nonatomic) NSArray *recents;
 @property (nonatomic) long long selectedCategoryType;
 @property (strong, nonatomic) NSDictionary *skinToneBaseKeyPreferences;
-@property (strong, nonatomic) NSDictionary *usageHistoryKey;
 
 + (id)sharedInstance;
 - (void)_createPreferencesClientIfNecessary;
-- (void)_emojiUsed:(id)arg1 language:(id)arg2;
-- (void)_readPreferencesFromDefaults;
-- (void)_usageForEmoji:(id)arg1 language:(id)arg2 mode:(id)arg3;
+- (void)_usageForEmoji:(id)arg1 language:(id)arg2 mode:(id)arg3 typingName:(id)arg4;
 - (void)dealloc;
-- (id)defaultsValueForKey:(id)arg1;
+- (void)didDisplaySkinToneHelp;
 - (long long)emojiCategoryDefaultsIndex:(id)arg1;
 - (void)emojiPredicted:(id)arg1 typingName:(id)arg2 language:(id)arg3;
 - (void)emojiUsed:(id)arg1;
 - (void)emojiUsed:(id)arg1 language:(id)arg2;
-- (id)emptyDefaultsDictionary;
+- (id)emojiWithoutDuplicateRecents:(id)arg1;
 - (void)handleRead:(id)arg1;
 - (void)handleWrite:(id)arg1;
+- (BOOL)hasLastUsedVariantForEmojiString:(id)arg1;
 - (id)init;
+- (id)lastUsedVariantEmojiForEmojiString:(id)arg1;
 - (void)readEmojiDefaults;
-- (double)scoreForEmoji:(id)arg1;
-- (double)scoreForSequence:(int)arg1;
-- (void)setDefaultsValue:(id)arg1 forKey:(id)arg2;
+- (id)recentEmojiAtIndex:(long long)arg1 size:(unsigned long long *)arg2;
 - (void)setEmojiCategoryDefaultsIndex:(long long)arg1 forCategory:(id)arg2;
-- (void)setTypingNames:(id)arg1;
 - (id)typingNameForEmoji:(id)arg1 language:(id)arg2;
-- (id)typingNames;
 - (void)updateSkinToneBaseKey:(id)arg1 variantUsed:(id)arg2;
 - (void)writeEmojiDefaults;
 

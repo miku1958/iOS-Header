@@ -6,17 +6,19 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class UILabel, _UIFloatingContentView;
+@class UILabel, UITextInputTraits, _UIFloatingContentView;
 
 __attribute__((visibility("hidden")))
 @interface UIRecentInputTableCell : UITableViewCell
 {
     UILabel *_floatingLabel;
     long long _blurEffectStyle;
+    UITextInputTraits *_textInputTraits;
 }
 
 @property (nonatomic) long long blurEffectStyle; // @synthesize blurEffectStyle=_blurEffectStyle;
 @property (strong, nonatomic) UILabel *floatingLabel; // @synthesize floatingLabel=_floatingLabel;
+@property (strong, nonatomic) UITextInputTraits *textInputTraits; // @synthesize textInputTraits=_textInputTraits;
 @property (readonly, nonatomic) _UIFloatingContentView *tvFloatingView;
 
 + (id)backgroundColorForBlurEffectStyle:(long long)arg1;

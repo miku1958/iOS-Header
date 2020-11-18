@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class NSLayoutConstraint, NSString, UILexicon;
+@class NSLayoutConstraint, NSString, UILabel, UILexicon;
 @protocol UIRecentsInputViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -20,11 +20,13 @@ __attribute__((visibility("hidden")))
     NSString *_previouslyUsedString;
     NSString *_clearAllString;
     NSString *_addNewString;
+    UILabel *_headerLabel;
 }
 
 @property (strong, nonatomic) NSString *addNewString; // @synthesize addNewString=_addNewString;
 @property (strong, nonatomic) NSString *clearAllString; // @synthesize clearAllString=_clearAllString;
 @property (nonatomic) long long containingEffectStyle; // @synthesize containingEffectStyle=_containingEffectStyle;
+@property (strong, nonatomic) UILabel *headerLabel; // @synthesize headerLabel=_headerLabel;
 @property (strong, nonatomic) NSLayoutConstraint *heightConstraint; // @synthesize heightConstraint=_heightConstraint;
 @property (strong, nonatomic) NSString *previouslyUsedString; // @synthesize previouslyUsedString=_previouslyUsedString;
 @property (weak, nonatomic) id<UIRecentsInputViewControllerDelegate> recentInputDelegate; // @synthesize recentInputDelegate=_recentInputDelegate;
@@ -49,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateTableViewWidth;
 - (void)viewDidLoad;
 

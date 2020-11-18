@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableArray, NSNumber, NSString;
+@class NSMutableArray, NSMutableDictionary, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface UISubTest : NSObject
@@ -18,11 +18,16 @@ __attribute__((visibility("hidden")))
     NSString *_testName;
     BOOL _showTime;
     BOOL _showFps;
+    NSMutableDictionary *_data;
 }
 
+@property (readonly) NSNumber *startTime; // @synthesize startTime=_startTime;
+
 - (void).cxx_destruct;
+- (id)getObjectForKey:(id)arg1;
 - (id)initWithName:(id)arg1 metrics:(id)arg2;
 - (id)outputData;
+- (void)setObject:(id)arg1 forKey:(id)arg2;
 - (void)startWithFrameCount:(id)arg1;
 - (void)stopWithFrameCount:(id)arg1;
 

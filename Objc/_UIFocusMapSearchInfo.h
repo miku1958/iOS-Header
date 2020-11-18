@@ -11,11 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface _UIFocusMapSearchInfo : NSObject
 {
+    BOOL _didFindFocusBlockingBoundary;
     NSMutableArray *_mutableSnapshots;
     NSMutableArray *_mutableDestinationRegions;
 }
 
 @property (readonly, copy, nonatomic) NSArray *destinationRegions;
+@property (nonatomic) BOOL didFindFocusBlockingBoundary; // @synthesize didFindFocusBlockingBoundary=_didFindFocusBlockingBoundary;
 @property (strong, nonatomic) NSMutableArray *mutableDestinationRegions; // @synthesize mutableDestinationRegions=_mutableDestinationRegions;
 @property (strong, nonatomic) NSMutableArray *mutableSnapshots; // @synthesize mutableSnapshots=_mutableSnapshots;
 @property (readonly, copy, nonatomic) NSArray *snapshots;

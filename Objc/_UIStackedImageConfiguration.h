@@ -12,6 +12,7 @@
 
 @interface _UIStackedImageConfiguration : NSObject <NSCopying>
 {
+    BOOL _overlayFixedFrame;
     BOOL _adjustMotionForSize;
     BOOL _flatImageContainsCornerRadius;
     BOOL _reduceShadowDepth;
@@ -93,6 +94,7 @@
 @property (nonatomic) unsigned long long maximumParallaxImages; // @synthesize maximumParallaxImages=_maximumParallaxImages;
 @property (nonatomic) double minimumFocusDuration; // @synthesize minimumFocusDuration=_minimumFocusDuration;
 @property (nonatomic) double overlayDepth; // @synthesize overlayDepth=_overlayDepth;
+@property (nonatomic) BOOL overlayFixedFrame; // @synthesize overlayFixedFrame=_overlayFixedFrame;
 @property (strong, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
 @property (nonatomic) double pressedDuration; // @synthesize pressedDuration=_pressedDuration;
 @property (nonatomic) double pressedScaleAdjustment; // @synthesize pressedScaleAdjustment=_pressedScaleAdjustment;

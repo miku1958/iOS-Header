@@ -198,6 +198,7 @@
 - (void)setVisualStyle:(int)arg1;
 - (void)setVisualStyling:(CDStruct_961fb75c)arg1;
 - (id)shape;
+- (id)shapeFromFrame:(struct CGRect)arg1 leftPadding:(double)arg2 rightPadding:(double)arg3;
 - (id)shiftAlternateKeyplaneName;
 - (BOOL)shouldCacheKey;
 - (BOOL)shouldSkipCandidateSelection;

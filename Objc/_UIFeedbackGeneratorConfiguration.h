@@ -19,6 +19,7 @@
     Class _clientClass;
     NSString *_usage;
     long long _activationStyle;
+    long long _outputMode;
     NSString *__stats_key;
 }
 
@@ -29,6 +30,7 @@
 @property (readonly, nonatomic) NSString *descriptionKey;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) NSArray *feedbackKeyPaths;
+@property (nonatomic) long long outputMode; // @synthesize outputMode=_outputMode;
 @property (copy, nonatomic) CDUnknownBlockType preparationBlock; // @synthesize preparationBlock=_preparationBlock;
 @property (nonatomic, getter=isPrepared) BOOL prepared; // @synthesize prepared=_prepared;
 @property (readonly, nonatomic) long long requiredSupportLevel;
@@ -43,6 +45,7 @@
 - (BOOL)_hasMutableFeedbackKeyPaths;
 - (void)_preferencesUpdated:(id)arg1;
 - (BOOL)_prepareRegardlessOfPreferences:(BOOL)arg1;
+- (BOOL)_shouldEnable;
 - (void)_updateEnabled;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

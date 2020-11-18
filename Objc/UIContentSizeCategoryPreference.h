@@ -10,23 +10,16 @@
 
 @interface UIContentSizeCategoryPreference : NSObject
 {
-    BOOL _observingNotification;
     NSString *_preferredContentSizeCategory;
 }
 
-@property (readonly, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
+@property (strong, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
 
 + (void)_forceSystemPreferenceToContentSizeCategory:(id)arg1;
 + (void)_resetSystemPreference;
 + (id)system;
 - (void).cxx_destruct;
-- (void)_beginObservingPreferredContentSizeChangedNotification;
-- (void)_endObservingPreferredContentSizeChangedNotification;
-- (void)_postContentSizeCategoryDidChangeNotification;
-- (void)_updateContentSizeCategory:(id)arg1 postingNotification:(BOOL)arg2;
-- (void)_updateContentSizeCategoryFromUserDefaultsPostingNotification:(BOOL)arg1;
 - (void)checkForChanges;
-- (void)dealloc;
 - (id)init;
 - (id)initWithContentSizeCategory:(id)arg1;
 

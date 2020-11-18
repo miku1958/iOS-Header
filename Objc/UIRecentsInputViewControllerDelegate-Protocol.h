@@ -6,8 +6,11 @@
 
 #import <UIKit/NSObject-Protocol.h>
 
+@class UITextInputTraits;
+
 @protocol UIRecentsInputViewControllerDelegate <NSObject>
 - (void)didSelectRecentInput;
 - (void)switchToKeyboard;
+- (UITextInputTraits *)textInputTraits;
 @end
 

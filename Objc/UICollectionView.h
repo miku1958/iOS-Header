@@ -83,6 +83,7 @@
     NSMutableArray *_reorderedItems;
     struct CGPoint _reorderingTargetPosition;
     NSTimer *_autoscrollTimer;
+    NSMutableDictionary *_dataSourceToLayoutIndexPathMappingDict;
     long long _focusedViewType;
     UIFocusContainerGuide *_contentFocusContainerGuide;
     struct {
@@ -284,7 +285,8 @@
 - (void)_highlightFirstVisibleItemIfAppropriate;
 - (BOOL)_highlightItemAtIndexPath:(id)arg1 animated:(BOOL)arg2 scrollPosition:(unsigned long long)arg3;
 - (BOOL)_highlightItemAtIndexPath:(id)arg1 animated:(BOOL)arg2 scrollPosition:(long long)arg3 notifyDelegate:(BOOL)arg4;
-- (id)_indexPathForView:(id)arg1 ofType:(unsigned long long)arg2;
+- (id)_indexPathForCell:(id)arg1 includePrefetchedCells:(BOOL)arg2;
+- (id)_indexPathForView:(id)arg1 ofType:(unsigned long long)arg2 includePrefetchedCells:(BOOL)arg3;
 - (BOOL)_indexPathIsValid:(id)arg1;
 - (id)_indexPathsForVisibleDecorationViewsOfKind:(id)arg1;
 - (id)_indexPathsForVisibleSupplementaryViewsOfKind:(id)arg1;
@@ -292,6 +294,7 @@
 - (void)_invalidateLayoutIfNecessaryForReload;
 - (void)_invalidateLayoutWithContext:(id)arg1;
 - (void)_invalidateWithBlock:(CDUnknownBlockType)arg1;
+- (BOOL)_isReordering;
 - (BOOL)_isViewInReuseQueue:(id)arg1;
 - (BOOL)_itemIndexPathIsReordered:(id)arg1;
 - (id)_keysForObject:(id)arg1 inDictionary:(id)arg2;
