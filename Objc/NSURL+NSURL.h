@@ -6,39 +6,87 @@
 
 #import <Foundation/NSURL.h>
 
-@interface NSURL (NSURL)
+#import <Foundation/NSItemProviderReading-Protocol.h>
+#import <Foundation/NSItemProviderWriting-Protocol.h>
+
+@class NSArray, NSString;
+
+@interface NSURL (NSURL) <NSItemProviderReading, NSItemProviderWriting>
+
+@property (readonly, copy) NSURL *URLByDeletingLastPathComponent;
+@property (readonly, copy) NSURL *URLByDeletingPathExtension;
+@property (readonly, copy) NSURL *URLByResolvingSymlinksInPath;
+@property (readonly, copy) NSURL *URLByStandardizingPath;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy) NSString *lastPathComponent;
+@property (readonly, copy) NSArray *pathComponents;
+@property (readonly, copy) NSString *pathExtension;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
+
 + (id)URLByResolvingAliasFileAtURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 + (id)URLByResolvingBookmarkData:(id)arg1 options:(unsigned long long)arg2 relativeToURL:(id)arg3 bookmarkDataIsStale:(BOOL *)arg4 error:(id *)arg5;
 + (id)URLWithDataRepresentation:(id)arg1 relativeToURL:(id)arg2;
 + (id)URLWithString:(id)arg1;
 + (id)URLWithString:(id)arg1 relativeToURL:(id)arg2;
++ (id)_URLWithData:(id)arg1 relativeToURL:(id)arg2;
++ (id)_URLWithDataAsString:(id)arg1 relativeToURL:(id)arg2;
++ (id)_fileURLWithPath:(id)arg1 cachingResourceValuesForKeys:(id)arg2 error:(id *)arg3;
++ (id)_web_URLWithComponents:(CDStruct_4f05a0fa)arg1;
++ (id)_web_URLWithString:(id)arg1 relativeToURL:(id)arg2;
 + (id)absoluteURLWithDataRepresentation:(id)arg1 relativeToURL:(id)arg2;
 + (id)allocWithZone:(struct _NSZone *)arg1;
++ (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)fileURLWithFileSystemRepresentation:(const char *)arg1 isDirectory:(BOOL)arg2 relativeToURL:(id)arg3;
 + (id)fileURLWithPath:(id)arg1;
 + (id)fileURLWithPath:(id)arg1 isDirectory:(BOOL)arg2;
 + (id)fileURLWithPath:(id)arg1 isDirectory:(BOOL)arg2 relativeToURL:(id)arg3;
 + (id)fileURLWithPath:(id)arg1 relativeToURL:(id)arg2;
++ (id)fileURLWithPathComponents:(id)arg1;
++ (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
++ (id)readableTypeIdentifiersForItemProvider;
++ (id)writableTypeIdentifiersForItemProvider;
+- (id)URLByAppendingPathComponent:(id)arg1;
+- (id)URLByAppendingPathComponent:(id)arg1 isDirectory:(BOOL)arg2;
+- (id)URLByAppendingPathExtension:(id)arg1;
+- (id)_URLArchive;
+- (id)_URLByEscapingSpacesAndControlChars;
 - (unsigned long long)_cfTypeID;
 - (struct __CFURL *)_cfurl;
 - (struct __CFDictionary *)_clientsCreatingIfNecessary:(BOOL)arg1;
+- (id)_fixedUpSideFaultError:(id)arg1;
 - (void)_freeClients;
+- (id)_hostString;
+- (id)_initFileURLWithPath:(id)arg1 cachingResourceValuesForKeys:(id)arg2 error:(id *)arg3;
 - (BOOL)_isAbsolute;
 - (BOOL)_isDeallocating;
+- (void)_performWithPhysicalURL:(CDUnknownBlockType)arg1;
+- (long long)_promiseExtensionConsume;
+- (void)_promiseExtensionRelease:(long long)arg1;
 - (BOOL)_tryRetain;
+- (id)_valueFromFaultDictionary:(id)arg1 forKey:(id)arg2;
+- (id)_web_URLByRemovingLastPathComponent_nowarn;
+- (id)_web_URLByRemovingUserAndPath_nowarn;
+- (id)_web_URLByRemovingUserAndQueryAndFragment_nowarn;
+- (CDStruct_4f05a0fa)_web_URLComponents;
+- (BOOL)_web_isJavaScriptURL;
+- (id)_web_scriptIfJavaScriptURL;
+- (id)_web_suggestedFilenameWithMIMEType:(id)arg1;
 - (id)absoluteString;
 - (id)absoluteURL;
 - (id)baseURL;
+- (BOOL)checkPromisedItemIsReachableAndReturnError:(id *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dataRepresentation;
 - (void)dealloc;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (const char *)fileSystemRepresentation;
 - (id)fragment;
 - (BOOL)getFileSystemRepresentation:(char *)arg1 maxLength:(unsigned long long)arg2;
+- (BOOL)getPromisedItemResourceValue:(out id *)arg1 forKey:(id)arg2 error:(out id *)arg3;
 - (BOOL)hasDirectoryPath;
-- (unsigned long long)hash;
 - (id)host;
 - (id)init;
 - (id)initAbsoluteURLWithDataRepresentation:(id)arg1 relativeToURL:(id)arg2;
@@ -58,10 +106,12 @@
 - (BOOL)isFileURL;
 - (BOOL)isKindOfClass:(Class)arg1;
 - (BOOL)isMemberOfClass:(Class)arg1;
+- (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)parameterString;
 - (id)password;
 - (id)path;
 - (id)port;
+- (id)promisedItemResourceValuesForKeys:(id)arg1 error:(id *)arg2;
 - (id)query;
 - (id)relativePath;
 - (id)relativeString;

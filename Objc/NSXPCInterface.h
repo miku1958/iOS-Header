@@ -19,6 +19,7 @@
 
 + (id)interfaceWithProtocol:(id)arg1;
 + (id)signatureForBlock:(id)arg1;
+- (const struct _xpc_type_s *)XPCTypeForSelector:(SEL)arg1 argumentIndex:(unsigned long long)arg2 ofReply:(BOOL)arg3;
 - (id)_allowedClassesForSelector:(SEL)arg1 reply:(BOOL)arg2;
 - (Class)_customSubclass;
 - (id)_generateAndCacheMethodSignatureForRemoteSelector:(SEL)arg1;
@@ -43,6 +44,7 @@
 - (void)setInterface:(id)arg1 forSelector:(SEL)arg2 argumentIndex:(unsigned long long)arg3 ofReply:(BOOL)arg4;
 - (void)setReplyBlockSignature:(id)arg1 forSelector:(SEL)arg2;
 - (void)setVersion:(unsigned long long)arg1 forSelector:(SEL)arg2;
+- (void)setXPCType:(struct _xpc_type_s *)arg1 forSelector:(SEL)arg2 argumentIndex:(unsigned long long)arg3 ofReply:(BOOL)arg4;
 - (void)set_remoteVersion:(unsigned long long)arg1;
 - (unsigned long long)version;
 - (unsigned long long)versionForSelector:(SEL)arg1;

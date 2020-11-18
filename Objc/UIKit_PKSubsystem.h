@@ -10,6 +10,7 @@
 
 @class NSDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface UIKit_PKSubsystem : NSObject <PKModularService>
 {
     BOOL _initialized;
@@ -25,8 +26,10 @@
 @property (readonly) Class superclass;
 
 + (id)initForPlugInKit;
++ (id)initForPlugInKitWithOptions:(id)arg1;
 + (id)sharedInstance;
 - (void)beginUsing:(id)arg1 withBundle:(id)arg2;
+- (void)dealloc;
 - (void)endUsing:(id)arg1;
 
 @end

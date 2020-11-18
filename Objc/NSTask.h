@@ -34,12 +34,14 @@
 - (id)currentDirectoryPath;
 - (id)init;
 - (void)interrupt;
+- (BOOL)isSpawnedProcessDisclaimed;
 - (void)launch;
 - (BOOL)launchAndReturnError:(id *)arg1;
 - (id)launchPath;
 - (BOOL)resume;
 - (void)setCurrentDirectoryPath:(id)arg1;
 - (void)setLaunchPath:(id)arg1;
+- (void)setSpawnedProcessDisclaimed:(BOOL)arg1;
 - (BOOL)suspend;
 - (long long)suspendCount;
 - (void)terminate;

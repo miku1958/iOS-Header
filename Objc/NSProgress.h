@@ -20,7 +20,6 @@
     CDUnknownBlockType _pausingHandler;
     CDUnknownBlockType _prioritizationHandler;
     unsigned long long _flags;
-    id _userInfoProxy;
     NSString *_publisherID;
     id _reserved5;
     long long _reserved6;
@@ -29,8 +28,9 @@
     NSMutableDictionary *_acknowledgementHandlersByLowercaseBundleID;
     NSMutableDictionary *_lastNotificationTimesByKey;
     NSMutableDictionary *_userInfoLastNotificationTimesByKey;
-    NSLock *_lock;
     NSMutableSet *_children;
+    id _userInfoProxy;
+    NSLock *_lock;
 }
 
 @property (getter=isCancellable) BOOL cancellable;
@@ -99,10 +99,10 @@
 - (void)_setRemoteUserInfoValue:(id)arg1 forKey:(id)arg2;
 - (void)_setRemoteValues:(id)arg1 forKeys:(id)arg2;
 - (void)_setUserInfoValue:(id)arg1 forKey:(id)arg2 fromChild:(BOOL)arg3;
-- (id)_setValueForKeys:(CDUnknownBlockType)arg1 settingBlock:(CDUnknownBlockType)arg2;
+- (void)_setValueForKeys:(CDUnknownBlockType)arg1 settingBlock:(CDUnknownBlockType)arg2;
 - (void)_unpublish;
-- (void)_updateChild:(id)arg1 fraction:(id)arg2 portion:(long long)arg3;
-- (void)_updateFractionCompleted:(id)arg1;
+- (void)_updateChild:(id)arg1 fraction:(struct _NSProgressFractionTuple)arg2 portion:(long long)arg3;
+- (void)_updateFractionCompleted:(struct _NSProgressFractionTuple)arg1;
 - (void)acknowledge;
 - (void)acknowledgeWithSuccess:(BOOL)arg1;
 - (CDUnknownBlockType)acknowledgementHandlerForAppBundleIdentifier:(id)arg1;

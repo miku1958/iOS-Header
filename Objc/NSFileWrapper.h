@@ -45,7 +45,7 @@
 - (id)_addChild:(id)arg1 forUniqueFileName:(id)arg2;
 - (void)_addParent:(id)arg1;
 - (id)_attributesToWrite;
-- (void)_forWritingToURL:(id)arg1 returnContentsLazyReadingError:(id *)arg2;
+- (BOOL)_forWritingToURL:(id)arg1 returnContentsLazyReadingError:(id *)arg2;
 - (id)_fullDescription:(BOOL)arg1;
 - (id)_init;
 - (void)_initDirectoryContents;

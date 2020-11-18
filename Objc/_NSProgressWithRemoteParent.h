@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 @property unsigned long long sequence; // @synthesize sequence=_sequence;
 
 - (void)_setUserInfoValue:(id)arg1 forKey:(id)arg2 fromChild:(BOOL)arg3;
-- (void)_updateFractionCompleted:(id)arg1;
+- (void)_updateFractionCompleted:(struct _NSProgressFractionTuple)arg1;
 - (void)dealloc;
 
 @end

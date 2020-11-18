@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (id)allValues;
 - (void)assign:(unsigned long long)arg1 key:(const void *)arg2 value:(const void *)arg3 isNew:(BOOL)arg4;
 - (void)checkCount:(const char *)arg1;
-- (Class)classForCoder;
 - (BOOL)containsKeys:(const void **)arg1 values:(const void **)arg2 count:(unsigned long long)arg3;
 - (id)copy;
 - (unsigned long long)count;

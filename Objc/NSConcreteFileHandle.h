@@ -12,11 +12,9 @@
 __attribute__((visibility("hidden")))
 @interface NSConcreteFileHandle : NSFileHandle
 {
-    struct __CFRunLoopSource *_source;
-    struct __CFRunLoop *_rl;
-    unsigned short _activity;
-    int _error;
-    int _resultSocket;
+    struct os_unfair_lock_s _lock;
+    _Atomic int _error;
+    _Atomic int _resultSocket;
     NSObject<OS_dispatch_source> *_dsrc;
     NSObject<OS_dispatch_data> *_resultData;
     NSObject<OS_dispatch_queue> *_fhQueue;
@@ -37,11 +35,13 @@ __attribute__((visibility("hidden")))
 - (void)acceptConnectionInBackgroundAndNotify;
 - (void)acceptConnectionInBackgroundAndNotifyForModes:(id)arg1;
 - (id)availableData;
+- (BOOL)closeAndReturnError:(out id *)arg1;
 - (void)closeFile;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (int)fileDescriptor;
+- (BOOL)getOffset:(out unsigned long long *)arg1 error:(out id *)arg2;
 - (id)init;
 - (id)initWithFileDescriptor:(int)arg1;
 - (id)initWithFileDescriptor:(int)arg1 closeOnDealloc:(BOOL)arg2;
@@ -54,21 +54,28 @@ __attribute__((visibility("hidden")))
 - (id)readDataOfLength:(unsigned long long)arg1;
 - (unsigned long long)readDataOfLength:(unsigned long long)arg1 buffer:(char *)arg2;
 - (id)readDataToEndOfFile;
+- (id)readDataToEndOfFileAndReturnError:(out id *)arg1;
+- (id)readDataUpToLength:(unsigned long long)arg1 error:(out id *)arg2;
 - (void)readInBackgroundAndNotify;
 - (void)readInBackgroundAndNotifyForModes:(id)arg1;
 - (void)readToEndOfFileInBackgroundAndNotify;
 - (void)readToEndOfFileInBackgroundAndNotifyForModes:(id)arg1;
 - (CDUnknownBlockType)readabilityHandler;
 - (unsigned long long)seekToEndOfFile;
+- (BOOL)seekToEndReturningOffset:(out unsigned long long *)arg1 error:(out id *)arg2;
 - (void)seekToFileOffset:(unsigned long long)arg1;
+- (BOOL)seekToOffset:(unsigned long long)arg1 error:(out id *)arg2;
 - (void)setPort:(id)arg1;
 - (void)setReadabilityHandler:(CDUnknownBlockType)arg1;
 - (void)setWriteabilityHandler:(CDUnknownBlockType)arg1;
+- (BOOL)synchronizeAndReturnError:(out id *)arg1;
 - (void)synchronizeFile;
+- (BOOL)truncateAtOffset:(unsigned long long)arg1 error:(out id *)arg2;
 - (void)truncateFileAtOffset:(unsigned long long)arg1;
 - (void)waitForDataInBackgroundAndNotify;
 - (void)waitForDataInBackgroundAndNotifyForModes:(id)arg1;
 - (void)writeData:(id)arg1;
+- (BOOL)writeData:(id)arg1 error:(out id *)arg2;
 - (CDUnknownBlockType)writeabilityHandler;
 
 @end

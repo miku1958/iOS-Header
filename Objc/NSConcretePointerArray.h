@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (void)_markNeedsCompaction;
 - (void)addPointer:(void *)arg1;
 - (void)arrayGrow:(unsigned long long)arg1;
-- (Class)classForCoder;
 - (void)compact;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;

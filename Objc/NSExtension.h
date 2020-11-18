@@ -67,6 +67,14 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *version; // @synthesize version=_version;
 
++ (id)_dictionaryIncludingOnlyItemsWithRegisteredTypeIdentifier:(id)arg1 fromMatchingDictionary:(id)arg2;
++ (BOOL)_evaluateActivationRule:(id)arg1 withDictionaryIfItMatchesActiveWebPageAlternative:(id)arg2 matchResult:(out long long *)arg3;
++ (BOOL)_evaluateActivationRule:(id)arg1 withInputItemsIfTheyMatchActiveWebPageAlternative:(id)arg2 matchResult:(out long long *)arg3;
++ (BOOL)_evaluateActivationRuleWithoutWorkarounds:(id)arg1 withExtensionItemsRepresentation:(id)arg2;
++ (BOOL)_genericValuesMatchActiveWebPageAlternativeWithExtensionItems:(id)arg1 attachmentsLens:(CDUnknownBlockType)arg2 registeredTypeIdentifiersLens:(CDUnknownBlockType)arg3 isActiveWebPageAttachmentCheck:(CDUnknownBlockType)arg4;
++ (id)_inputItemsByApplyingActiveWebPageAlternative:(id)arg1 ifNeededByActivationRule:(id)arg2;
++ (BOOL)_inputItemsMatchActiveWebPageAlternative:(id)arg1;
++ (BOOL)_matchingDictionaryMatchesActiveWebPageAlternative:(id)arg1;
 + (BOOL)_shouldLogExtensionDiscovery;
 + (id)beginMatchingExtensionsWithAttributes:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)endMatchingExtensions:(id)arg1;
@@ -94,6 +102,7 @@
 - (void)_hostWillEnterForegroundNote:(id)arg1;
 - (void)_hostWillResignActiveNote:(id)arg1;
 - (id)_initWithPKPlugin:(id)arg1;
+- (id)_inputItemsByApplyingActiveWebPageAlternativeIfNeeded:(id)arg1;
 - (BOOL)_isPhotoServiceAccessGranted;
 - (BOOL)_isSystemExtension;
 - (id)_itemProviderForPayload:(id)arg1 extensionContext:(id)arg2;

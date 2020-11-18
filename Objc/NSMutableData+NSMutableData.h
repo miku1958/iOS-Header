@@ -7,6 +7,7 @@
 #import <Foundation/NSMutableData.h>
 
 @interface NSMutableData (NSMutableData)
++ (id)_newZeroingDataWithBytes:(const void *)arg1 length:(unsigned long long)arg2;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)dataWithCapacity:(unsigned long long)arg1;
 + (id)dataWithLength:(unsigned long long)arg1;
@@ -14,6 +15,8 @@
 - (void)appendBytes:(const void *)arg1 length:(unsigned long long)arg2;
 - (void)appendData:(id)arg1;
 - (Class)classForCoder;
+- (BOOL)compressUsingAlgorithm:(long long)arg1 error:(id *)arg2;
+- (BOOL)decompressUsingAlgorithm:(long long)arg1 error:(id *)arg2;
 - (void)increaseLengthBy:(unsigned long long)arg1;
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (id)initWithLength:(unsigned long long)arg1;

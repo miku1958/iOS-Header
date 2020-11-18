@@ -29,6 +29,7 @@
 + (BOOL)supportsSecureCoding;
 + (id)weakObjectsHashTable;
 - (void)addObject:(id)arg1;
+- (Class)classForCoder;
 - (BOOL)containsObject:(id)arg1;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;

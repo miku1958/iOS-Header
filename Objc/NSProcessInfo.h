@@ -24,6 +24,7 @@
 @property (readonly, copy) NSString *fullUserName;
 @property (readonly, copy) NSString *globallyUniqueString;
 @property (readonly, copy) NSString *hostName;
+@property (readonly, getter=isMacCatalystApp) BOOL macCatalystApp;
 @property (readonly) CDStruct_2ec95fd7 operatingSystemVersion;
 @property (readonly, copy) NSString *operatingSystemVersionString;
 @property (readonly) unsigned long long physicalMemory;

@@ -41,6 +41,7 @@
 - (void)_hostDidEnterBackgroundForContextUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_hostWillEnterForegroundForContextUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_hostWillResignActiveForContextUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_onGlobalStateQueueOnly_setPrincipalObject:(id)arg1 forUUID:(id)arg2;
 - (void)_setPrincipalObject:(id)arg1 forUUID:(id)arg2;
 - (BOOL)_shouldCreatePrincipalObject;
 - (void)_tearDownContextWithUUID:(id)arg1;

@@ -49,7 +49,6 @@
 + (BOOL)__shortStyleRestrictionExistsForComponents:(id)arg1 shortStyle:(long long)arg2;
 + (BOOL)__shouldCacheFallbackToGivenNameInitialForAbbreviatedNameFormatFamilyNameOnly;
 + (BOOL)__shouldFallbackToGivenNameInitialForAbbreviatedNameFormatFamilyNameOnly;
-+ (BOOL)__shouldReturnEmptyString;
 + (id)__stringByStrippingNonInitialPunctuationFromString:(id)arg1;
 + (id)__stringValueForShortStyle:(long long)arg1;
 + (id)__stringValueForStyle:(long long)arg1;

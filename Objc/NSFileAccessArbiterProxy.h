@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_providers;
     NSMapTable *_providerMessengersByID;
     NSMutableArray *_providerListeners;
+    BOOL _disableFileProviderReregistration;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -59,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (id)replacementObjectForXPCConnection:(id)arg1 encoder:(id)arg2 object:(id)arg3;
 - (oneway void)revokeAccessClaimForID:(id)arg1;
 - (oneway void)revokeSubarbitrationClaimForID:(id)arg1;
+- (void)setAutomaticFileProviderReregistrationDisabled:(BOOL)arg1;
 - (oneway void)tiePresenterForID:(id)arg1 toItemAtURL:(id)arg2;
 - (oneway void)writerWithPurposeID:(id)arg1 didChangeItemAtURL:(id)arg2;
 - (oneway void)writerWithPurposeID:(id)arg1 didChangeSharingOfItemAtURL:(id)arg2;

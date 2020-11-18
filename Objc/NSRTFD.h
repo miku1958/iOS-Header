@@ -33,7 +33,7 @@
 - (id)getDirInfo:(BOOL)arg1;
 - (id)getDocument:(id)arg1 docInfo:(id)arg2;
 - (id)init;
-- (unsigned long long)initFromDocument:(id)arg1;
+- (id)initFromDocument:(id)arg1 error:(unsigned long long *)arg2;
 - (id)initFromElement:(id)arg1 ofDocument:(id)arg2;
 - (id)initFromSerialized:(id)arg1;
 - (unsigned long long)initUnixFile:(id)arg1;

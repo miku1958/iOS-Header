@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     long long totalDataWritten;
 }
 
-- (long long)appendString:(id)arg1 range:(struct _NSRange)arg2;
+- (BOOL)appendString:(id)arg1 range:(struct _NSRange)arg2 error:(id *)arg3;
 - (id)dataWithRootObject:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (void)dealloc;
 - (id)init;

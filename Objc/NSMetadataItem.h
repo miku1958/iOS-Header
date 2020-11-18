@@ -16,7 +16,7 @@
 
 @property (readonly, copy) NSArray *attributes;
 
-- (id)_init:(CDUnion_a1fd0927)arg1;
+- (id)_init:(id)arg1;
 - (id)_item;
 - (void)_setQuery:(id)arg1;
 - (void)dealloc;

@@ -24,8 +24,8 @@
 + (id)orPredicateWithSubpredicates:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void)_acceptSubpredicates:(id)arg1 flags:(unsigned long long)arg2;
+- (id)_copySubpredicateDescription:(id)arg1;
 - (id)_predicateOperator;
-- (id)_subpredicateDescription:(id)arg1;
 - (void)acceptVisitor:(id)arg1 flags:(unsigned long long)arg2;
 - (void)allowEvaluation;
 - (id)copyWithZone:(struct _NSZone *)arg1;

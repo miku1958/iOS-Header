@@ -35,9 +35,11 @@
 + (BOOL)supportsSecureCoding;
 - (void)_closeOnDealloc;
 - (Class)classForCoder;
+- (BOOL)closeAndReturnError:(out id *)arg1;
 - (void)closeFile;
 - (void)encodeWithCoder:(id)arg1;
 - (int)fileDescriptor;
+- (BOOL)getOffset:(out unsigned long long *)arg1 error:(out id *)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFileDescriptor:(int)arg1;
 - (id)initWithFileDescriptor:(int)arg1 closeOnDealloc:(BOOL)arg2;
@@ -46,14 +48,21 @@
 - (id)initWithURL:(id)arg1 flags:(long long)arg2 createMode:(long long)arg3 error:(id *)arg4;
 - (id)readDataOfLength:(unsigned long long)arg1;
 - (id)readDataToEndOfFile;
+- (id)readDataToEndOfFileAndReturnError:(out id *)arg1;
+- (id)readDataUpToLength:(unsigned long long)arg1 error:(out id *)arg2;
 - (CDUnknownBlockType)readabilityHandler;
 - (unsigned long long)seekToEndOfFile;
+- (BOOL)seekToEndReturningOffset:(out unsigned long long *)arg1 error:(out id *)arg2;
 - (void)seekToFileOffset:(unsigned long long)arg1;
+- (BOOL)seekToOffset:(unsigned long long)arg1 error:(out id *)arg2;
 - (void)setReadabilityHandler:(CDUnknownBlockType)arg1;
 - (void)setWriteabilityHandler:(CDUnknownBlockType)arg1;
+- (BOOL)synchronizeAndReturnError:(out id *)arg1;
 - (void)synchronizeFile;
+- (BOOL)truncateAtOffset:(unsigned long long)arg1 error:(out id *)arg2;
 - (void)truncateFileAtOffset:(unsigned long long)arg1;
 - (void)writeData:(id)arg1;
+- (BOOL)writeData:(id)arg1 error:(out id *)arg2;
 - (CDUnknownBlockType)writeabilityHandler;
 
 @end

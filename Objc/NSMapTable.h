@@ -35,6 +35,7 @@
 - (unsigned long long)__capacity;
 - (id)allKeys;
 - (id)allValues;
+- (Class)classForCoder;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;

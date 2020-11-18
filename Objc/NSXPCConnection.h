@@ -25,12 +25,12 @@
     id _importInfo;
     id<NSObject> _otherInfo;
     id _reserved1;
-    id _lock;
     NSXPCInterface *_remoteObjectInterface;
     NSString *_serviceName;
     NSXPCListenerEndpoint *_endpoint;
     id _eCache;
     id _dCache;
+    struct os_unfair_lock_s _lock;
 }
 
 @property (readonly) int auditSessionIdentifier;
@@ -102,6 +102,7 @@
 - (id)remoteObjectProxyWithUserInfo:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (id)replacementObjectForEncoder:(id)arg1 object:(id)arg2;
 - (void)resume;
+- (void)scheduleSendBarrierBlock:(CDUnknownBlockType)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setOptions:(unsigned long long)arg1;
 - (void)setUserInfo:(id)arg1;
