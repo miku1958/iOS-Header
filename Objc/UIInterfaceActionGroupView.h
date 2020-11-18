@@ -26,7 +26,9 @@
     NSString *_cachedSizeCategory;
     BOOL _springLoaded;
     BOOL _showsSeparatorAboveActions;
+    BOOL _scrubbingEnabled;
     BOOL _drawsBackground;
+    BOOL _alignActionSeparatorLeadingEdgeWithContent;
     id<UIInterfaceActionVisualStyleProviding> _visualStyleProvider;
     UIInterfaceActionSelectionTrackingController *_actionSelectionController;
     UIInterfaceActionGroup *_actionGroup;
@@ -42,10 +44,10 @@
     NSArray *_topLevelViewArrangementConstraints;
     NSMutableArray *_arrangedScrollableHeaderViews;
     UIView<UISeparatorDisplaying> *_actionSequenceTopSeparatorView;
-    _UIInterfaceActionRepresentationsSequenceView *_actionSequenceView;
     NSLayoutConstraint *_actionSequenceViewWidthAnchoredToConstantConstraint;
     NSLayoutConstraint *_actionSequenceViewWidthAnchoredToContentGuideConstraint;
     NSPointerArray *_weakSimultaneouslyPresentedGroupViews;
+    _UIInterfaceActionRepresentationsSequenceView *_actionSequenceView;
     UILongPressGestureRecognizer *_actionSelectionGestureRecognizer;
     double _requiredActionRepresentationWidth;
     UIInterfaceActionRepresentationView *_preferredActionRepresentation;
@@ -64,6 +66,7 @@
 @property (readonly, nonatomic) _UIInterfaceActionRepresentationsSequenceView *actionSequenceView; // @synthesize actionSequenceView=_actionSequenceView;
 @property (readonly, nonatomic) NSLayoutConstraint *actionSequenceViewWidthAnchoredToConstantConstraint; // @synthesize actionSequenceViewWidthAnchoredToConstantConstraint=_actionSequenceViewWidthAnchoredToConstantConstraint;
 @property (readonly, nonatomic) NSLayoutConstraint *actionSequenceViewWidthAnchoredToContentGuideConstraint; // @synthesize actionSequenceViewWidthAnchoredToContentGuideConstraint=_actionSequenceViewWidthAnchoredToContentGuideConstraint;
+@property (nonatomic, getter=_alignActionSeparatorLeadingEdgeWithContent, setter=_setAlignActionSeparatorLeadingEdgeWithContent:) BOOL alignActionSeparatorLeadingEdgeWithContent; // @synthesize alignActionSeparatorLeadingEdgeWithContent=_alignActionSeparatorLeadingEdgeWithContent;
 @property (strong, nonatomic) NSArray *allowedActionLayoutAxisByPriority; // @synthesize allowedActionLayoutAxisByPriority=_allowedActionLayoutAxisByPriority;
 @property (strong, nonatomic) UIInterfaceActionVisualStyle *appliedVisualStyle; // @synthesize appliedVisualStyle=_appliedVisualStyle;
 @property (readonly, nonatomic) NSArray *arrangedHeaderViews;
@@ -77,6 +80,7 @@
 @property (strong, nonatomic) UIInterfaceActionRepresentationView *preferredActionRepresentation; // @synthesize preferredActionRepresentation=_preferredActionRepresentation;
 @property (nonatomic) long long presentationStyle; // @synthesize presentationStyle=_presentationStyle;
 @property (nonatomic) double requiredActionRepresentationWidth; // @synthesize requiredActionRepresentationWidth=_requiredActionRepresentationWidth;
+@property (nonatomic) BOOL scrubbingEnabled; // @synthesize scrubbingEnabled=_scrubbingEnabled;
 @property (nonatomic, getter=_selectionHighlightContinuousCornerRadius, setter=_setSelectionHighlightContinuousCornerRadius:) double selectionHighlightContinuousCornerRadius; // @synthesize selectionHighlightContinuousCornerRadius=_selectionHighlightContinuousCornerRadius;
 @property (nonatomic) BOOL showsSeparatorAboveActions; // @synthesize showsSeparatorAboveActions=_showsSeparatorAboveActions;
 @property (nonatomic, getter=isSpringLoaded) BOOL springLoaded; // @synthesize springLoaded=_springLoaded;
@@ -109,7 +113,7 @@
 - (void)_associateWeakSimultaneouslyPresentedGroupViews:(id)arg1 bidirectional:(BOOL)arg2;
 - (struct UIEdgeInsets)_buttonEdgeInsetsFromGroupViewEdge;
 - (void)_commonInitWithActionGroup:(id)arg1 visualStyleProvider:(id)arg2 actionHandlerInvocationDelegate:(id)arg3;
-- (id)_constraintsToPinView:(id)arg1 layoutGuide:(id)arg2 identifier:(id)arg3;
+- (id)_constraintsToPinView:(id)arg1 toObject:(id)arg2 identifier:(id)arg3;
 - (struct CGRect)_contentEdgeFrame;
 - (id)_currentlyFocusedActionView;
 - (id)_defaultOrderingForActionRepresentationViews:(id)arg1;
@@ -141,6 +145,7 @@
 - (BOOL)_shouldAllowPassthroughToLayersBehindUsForTouches:(id)arg1;
 - (BOOL)_shouldInstallContentGuideConstraints;
 - (BOOL)_shouldShowSeparatorAboveActionsSequenceView;
+- (double)_topLevelItemsMargin;
 - (void)_updateActionSequenceScrollability;
 - (void)_updateActionSequenceViewActionLayoutAxis;
 - (void)_updateActionSequenceViewDebugLayoutIdentifier;

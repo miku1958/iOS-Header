@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) _UIAlertControllerTextFieldView *textFieldView; // @synthesize textFieldView=_textFieldView;
 
+- (void)setSecureTextEntry:(BOOL)arg1;
 
 @end
 

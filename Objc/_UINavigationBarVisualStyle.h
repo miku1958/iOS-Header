@@ -19,9 +19,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) double _legacyButtonFontSize;
 @property (readonly, nonatomic) double _legacyButtonImagePadding;
-@property (readonly, nonatomic) double _legacyLeftEdgeMargin;
 @property (readonly, nonatomic) double _legacyLeftTitleMargin;
-@property (readonly, nonatomic) double _legacyRightEdgeMargin;
 @property (readonly, nonatomic) double _legacyRightTitleMargin;
 @property (readonly, nonatomic) double backButtonIndicatorSpacing;
 @property (readonly, nonatomic) double backIndicatorBottomMargin;

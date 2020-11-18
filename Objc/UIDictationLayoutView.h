@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)globeButtonPressed:(id)arg1 withEvent:(id)arg2 location:(struct CGPoint)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isShowing;
-- (void)keyboardButtonPressed;
+- (void)keyboardButtonPressed:(id)arg1;
 - (void)layoutSubviews;
 - (void)returnToKeyboard;
 - (void)setRenderConfig:(id)arg1;

@@ -20,6 +20,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (id)_selectedCompactImage;
+- (id)_selectedImage;
+- (id)_unselectedCompactImage;
+- (id)_unselectedImage;
+- (void)didMoveToWindow;
 - (id)initWithImage:(id)arg1 alternateImage:(id)arg2 landscapeImage:(id)arg3 landscapeAlternateImage:(id)arg4;
 - (void)setAlternateImage:(id)arg1;
 - (void)setCurrentImage;

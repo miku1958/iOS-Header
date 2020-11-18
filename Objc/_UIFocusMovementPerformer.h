@@ -18,13 +18,18 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_bestCandidateForFocusMovement:(id)arg1;
+- (id)_bestCandidateForHierarchicalFocusMovement:(id)arg1;
 - (id)_bestCandidateForLinearFocusMovement:(id)arg1;
 - (id)_bestCandidateForNonLinearFocusMovement:(id)arg1;
+- (id)_fakeFocusedViewForFocusMovement:(id)arg1 searchArea:(struct CGRect)arg2;
 - (id)_findFocusCandidateByExhaustivelySearchingScrollableContainer:(id)arg1 forRequest:(id)arg2;
 - (id)_findFocusCandidateBySearchingLinearFocusMovementSequencesForRequest:(id)arg1;
 - (id)_findFocusCandidateWithoutLoadingScrollableContent:(id)arg1 forRequest:(id)arg2 minimumSearchArea:(struct CGRect)arg3;
-- (void)_loadScrollableContentForFocusMovement:(id)arg1;
+- (BOOL)_isMovementValidForFocusSequences:(id)arg1;
+- (id)_itemContainersToCheckForRequest:(id)arg1;
 - (struct CGRect)_minimumSearchAreaForContainer:(id)arg1 inWindow:(id)arg2;
+- (struct CGRect)_minimumSearchAreaForContainer:(id)arg1 inWindow:(id)arg2 shouldLoadScrollableContainer:(BOOL)arg3;
+- (id)_nextLinearCandidateLoadingScrollableContentForRequest:(id)arg1;
 - (BOOL)_shouldRecordDestinationItemDistanceOffscreenInWindow:(id)arg1;
 - (BOOL)performFocusMovement:(id)arg1;
 - (id)viewForFocusHeading:(unsigned long long)arg1 fromView:(id)arg2;

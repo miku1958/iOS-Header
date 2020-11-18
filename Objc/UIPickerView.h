@@ -50,14 +50,13 @@
         unsigned int isInLayoutSubviews:1;
         unsigned int usesDynamicRowHeight:1;
     } _pickerViewFlags;
-    BOOL _usesModernStyle;
     UIColor *_textColor;
     UIColor *_textShadowColor;
     _UIPickerViewTestParameters *_currentTestParameters;
     BOOL _magnifierEnabled;
     BOOL _enabled;
-    UIColor *_magnifierLineColor;
     UISelectionFeedbackGenerator *_selectionFeedbackGenerator;
+    UIColor *_magnifierLineColor;
 }
 
 @property (nonatomic, setter=_setMagnifierEnabled:) BOOL _magnifierEnabled; // @synthesize _magnifierEnabled;
@@ -76,7 +75,6 @@
 @property (strong, nonatomic, getter=_textColor, setter=_setTextColor:) UIColor *textColor;
 @property (strong, nonatomic, getter=_textShadowColor, setter=_setTextShadowColor:) UIColor *textShadowColor;
 @property (getter=_usesDynamicRowHeight, setter=_setUsesDynamicRowHeight:) BOOL usesDynamicRowHeight;
-@property (getter=_usesModernStyle, setter=_setUsesModernStyle:) BOOL usesModernStyle;
 
 + (struct CGSize)defaultSizeForCurrentOrientation;
 + (struct CGSize)defaultSizeForMainScreenTraits;
@@ -126,7 +124,6 @@
 - (void)_setColumnView:(id)arg1 enabled:(BOOL)arg2;
 - (void)_setDrawsBackground:(BOOL)arg1;
 - (void)_setUsesCheckedSelection:(BOOL)arg1;
-- (BOOL)_shouldDrawWithModernStyle;
 - (struct CGSize)_sizeThatFits:(struct CGSize)arg1;
 - (BOOL)_soundsEnabled;
 - (double)_tableRowHeight;

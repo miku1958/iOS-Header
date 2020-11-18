@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIView *snapshotView; // @synthesize snapshotView=_snapshotView;
 @property (strong, nonatomic) UIView *touchableView; // @synthesize touchableView=_touchableView;
 
-+ (BOOL)_retroactivelyRequiresConstraintBasedLayout;
++ (BOOL)requiresConstraintBasedLayout;
 - (struct CGRect)_compatibleBounds;
 - (void)_didChangeKeyplaneWithContext:(id)arg1;
 - (BOOL)_hasAutolayoutHeightConstraint;

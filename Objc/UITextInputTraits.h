@@ -43,11 +43,15 @@
     BOOL contentsIsSingleValue;
     BOOL acceptsEmoji;
     BOOL acceptsDictationSearchResults;
+    BOOL useAutomaticEndpointing;
+    BOOL showDictationButton;
     BOOL forceEnableDictation;
     BOOL forceDisableDictation;
     BOOL forceDefaultDictationInfo;
     BOOL returnKeyGoesToNextResponder;
     BOOL acceptsFloatingKeyboard;
+    BOOL forceFloatingKeyboard;
+    struct UIEdgeInsets floatingKeyboardEdgeInsets;
     BOOL acceptsSplitKeyboard;
     BOOL displaySecureTextUsingPlainText;
     BOOL learnsCorrections;
@@ -99,10 +103,12 @@
 @property (nonatomic) int emptyContentReturnKeyType; // @synthesize emptyContentReturnKeyType;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically; // @synthesize enablesReturnKeyAutomatically;
 @property (nonatomic) BOOL enablesReturnKeyOnNonWhiteSpaceContent; // @synthesize enablesReturnKeyOnNonWhiteSpaceContent;
+@property (nonatomic) struct UIEdgeInsets floatingKeyboardEdgeInsets; // @synthesize floatingKeyboardEdgeInsets;
 @property (nonatomic) BOOL forceDefaultDictationInfo; // @synthesize forceDefaultDictationInfo;
 @property (nonatomic) long long forceDictationKeyboardType; // @synthesize forceDictationKeyboardType;
 @property (nonatomic) BOOL forceDisableDictation; // @synthesize forceDisableDictation;
 @property (nonatomic) BOOL forceEnableDictation; // @synthesize forceEnableDictation;
+@property (nonatomic) BOOL forceFloatingKeyboard; // @synthesize forceFloatingKeyboard;
 @property (nonatomic) BOOL hasDefaultContents; // @synthesize hasDefaultContents;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hidePrediction; // @synthesize hidePrediction;
@@ -126,6 +132,7 @@
 @property (strong, nonatomic) UIImage *selectionDragDotImage; // @synthesize selectionDragDotImage;
 @property (strong, nonatomic) UIColor *selectionHighlightColor; // @synthesize selectionHighlightColor;
 @property (nonatomic) int shortcutConversionType; // @synthesize shortcutConversionType;
+@property (nonatomic) BOOL showDictationButton; // @synthesize showDictationButton;
 @property (nonatomic) long long smartDashesType; // @synthesize smartDashesType;
 @property (nonatomic) long long smartInsertDeleteType; // @synthesize smartInsertDeleteType;
 @property (nonatomic) long long smartQuotesType; // @synthesize smartQuotesType;
@@ -140,6 +147,7 @@
 @property (nonatomic) struct __CFCharacterSet *textTrimmingSet; // @dynamic textTrimmingSet;
 @property (strong, nonatomic) UIColor *underlineColorForSpelling; // @synthesize underlineColorForSpelling;
 @property (strong, nonatomic) UIColor *underlineColorForTextAlternatives; // @synthesize underlineColorForTextAlternatives;
+@property (nonatomic) BOOL useAutomaticEndpointing; // @synthesize useAutomaticEndpointing;
 @property (nonatomic) BOOL useInterfaceLanguageForLocalization; // @synthesize useInterfaceLanguageForLocalization;
 @property (nonatomic) struct _NSRange validTextRange; // @synthesize validTextRange;
 
@@ -147,6 +155,7 @@
 + (long long)configuredAppearanceForAppearance:(long long)arg1 withTraitEnvironment:(id)arg2;
 + (id)defaultTextInputTraits;
 + (BOOL)keyboardTypeRequiresASCIICapable:(long long)arg1;
++ (id)traitEnvironmentFromTraits:(id)arg1;
 + (id)traitsByAdoptingTraits:(id)arg1;
 + (id)traitsByAdoptingTraits:(id)arg1 lightweight:(BOOL)arg2;
 + (long long)translateToUIAutocapitalizationType:(unsigned long long)arg1;

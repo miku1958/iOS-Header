@@ -6,29 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class UIToolbar, UIView;
+@class NSString, UIToolbar, UIView;
+@protocol _UIBarAppearanceChangeObserver;
 
 __attribute__((visibility("hidden")))
 @interface _UIToolbarVisualProvider : NSObject
 {
     UIToolbar *_toolbar;
+    NSString *_backdropGroupName;
     UIView *_customBackgroundView;
     UIView *_currentBackgroundView;
 }
 
+@property (readonly, nonatomic) id<_UIBarAppearanceChangeObserver> appearanceObserver;
+@property (copy, nonatomic) NSString *backdropGroupName; // @synthesize backdropGroupName=_backdropGroupName;
 @property (readonly, nonatomic) struct CGRect backgroundFrame;
 @property (readonly, nonatomic) UIView *currentBackgroundView; // @synthesize currentBackgroundView=_currentBackgroundView;
 @property (strong, nonatomic) UIView *customBackgroundView; // @synthesize customBackgroundView=_customBackgroundView;
+@property (nonatomic) long long itemDistribution;
 @property (readonly, nonatomic) UIToolbar *toolbar; // @synthesize toolbar=_toolbar;
 @property (readonly, nonatomic) BOOL toolbarIsSmall;
+@property (nonatomic) BOOL useModernAppearance;
 
 - (void).cxx_destruct;
 - (void)customViewChangedForButtonItem:(id)arg1;
 - (struct CGSize)defaultSizeForOrientation:(long long)arg1;
 - (void)drawBackgroundViewInRect:(struct CGRect)arg1;
 - (id)initWithToolbar:(id)arg1;
+- (void)layoutSubviews;
 - (void)positionToolbarButtonsAndResetFontScaleAdjustment:(BOOL)arg1;
+- (id)traitCollectionForChild:(id)arg1 baseTraitCollection:(id)arg2;
+- (void)updateAppearance;
 - (void)updateArchivedSubviews:(id)arg1;
+- (void)updateBackgroundGroupName;
 - (void)updateBarBackground;
 - (void)updateBarBackgroundSize;
 - (void)updateBarForStyle:(long long)arg1;

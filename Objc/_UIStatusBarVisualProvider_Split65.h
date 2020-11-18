@@ -13,21 +13,27 @@ __attribute__((visibility("hidden")))
 
 + (double)baseIconScale;
 + (double)baselineBottomInset;
++ (double)bottomLeadingWidth;
 + (double)condensedPointSizeForCellularType:(long long)arg1 defaultPointSize:(double)arg2 baselineOffset:(double *)arg3;
++ (id)emphasizedFont;
 + (struct NSDirectionalEdgeInsets)expandedEdgeInsets;
 + (id)expandedFont;
 + (double)itemSpacing;
 + (double)leadingCenteringEdgeInset;
++ (double)leadingItemSpacing;
++ (double)leadingSmallPillSpacing;
 + (double)lowerExpandedBaselineOffset;
 + (id)normalFont;
 + (struct CGSize)notchSize;
 + (double)pillCenteringEdgeInset;
 + (id)pillFont;
 + (struct CGSize)pillSize;
++ (id)pillSmallFont;
 + (double)referenceWidth;
++ (id)smallFont;
++ (struct CGSize)smallPillSize;
 + (struct NSDirectionalEdgeInsets)trailingEdgeInsets;
 - (id)stringForCellularType:(long long)arg1 condensed:(BOOL)arg2;
-- (id)styleAttributes;
 
 @end
 

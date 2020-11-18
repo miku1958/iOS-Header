@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, UIImage;
+@class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface _UISegmentedControlAppearanceStorage : NSObject
 {
-    UIImage *_optionsBackgroundImage;
     NSMutableDictionary *_backgroundImages;
     NSMutableDictionary *_miniBackgroundImages;
     NSMutableDictionary *_dividerImages;
@@ -26,8 +25,6 @@ __attribute__((visibility("hidden")))
     unsigned long long _leftCapWidth;
     unsigned long long _rightCapWidth;
 }
-
-@property (strong, nonatomic) UIImage *optionsBackgroundImage; // @synthesize optionsBackgroundImage=_optionsBackgroundImage;
 
 - (void).cxx_destruct;
 - (id)anyDividerImage;

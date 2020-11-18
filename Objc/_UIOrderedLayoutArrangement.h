@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long distribution; // @synthesize distribution=_distribution;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSSet *invalidBaselineConstraints;
 @property (nonatomic) BOOL layoutFillsCanvas;
 @property (nonatomic) BOOL layoutUsesCanvasMarginsWhenFilling;
 @property (nonatomic) double spacing; // @synthesize spacing=_spacing;

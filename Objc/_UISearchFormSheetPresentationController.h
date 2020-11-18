@@ -61,7 +61,6 @@ __attribute__((visibility("hidden")))
 - (void)presentationTransitionWillBegin;
 - (id)presentedView;
 - (void)setContentVisible:(BOOL)arg1;
-- (BOOL)shouldRemovePresentersView;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

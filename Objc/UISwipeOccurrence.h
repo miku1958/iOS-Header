@@ -12,60 +12,87 @@
 
 @interface UISwipeOccurrence : NSObject <UISwipeActionPullViewDelegate>
 {
+    unsigned int _actionExecutionCounter;
+    struct {
+        unsigned int isTransitioning:1;
+        unsigned int didNotifyWillFinish:1;
+        unsigned int didNotifyDidFinish:1;
+    } _flags;
+    double _swipedViewRestingOffset;
+    BOOL _hasAmbiguousIndexPath;
     BOOL _active;
     BOOL _shouldReenableUserInteraction;
     NSIndexPath *_indexPath;
-    UIContextualAction *_currentAction;
-    unsigned long long _currentDirection;
+    long long _direction;
+    double _offset;
+    long long _state;
+    double _velocity;
+    unsigned long long _configuredDirection;
     UIView *_swipedView;
+    UIContextualAction *_currentAction;
     UISwipeActionController *_controller;
     UISwipeActionPullView *_leadingPullView;
     UISwipeActionPullView *_trailingPullView;
     NSDictionary *_swipeDirectionToPullView;
-    struct CGPoint _swipedViewInitialPosition;
     struct UIEdgeInsets _extraInsets;
     CDStruct_9b6dff2a _currentSwipeInfo;
 }
 
 @property (nonatomic) BOOL active; // @synthesize active=_active;
+@property (nonatomic) unsigned long long configuredDirection; // @synthesize configuredDirection=_configuredDirection;
 @property (weak, nonatomic) UISwipeActionController *controller; // @synthesize controller=_controller;
 @property (strong, nonatomic) UIContextualAction *currentAction; // @synthesize currentAction=_currentAction;
-@property (nonatomic) unsigned long long currentDirection; // @synthesize currentDirection=_currentDirection;
 @property (nonatomic) CDStruct_9b6dff2a currentSwipeInfo; // @synthesize currentSwipeInfo=_currentSwipeInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) long long direction; // @synthesize direction=_direction;
 @property (nonatomic) struct UIEdgeInsets extraInsets; // @synthesize extraInsets=_extraInsets;
+@property (readonly, nonatomic, getter=_hasAmbiguousIndexPath) BOOL hasAmbiguousIndexPath; // @synthesize hasAmbiguousIndexPath=_hasAmbiguousIndexPath;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
 @property (strong, nonatomic) UISwipeActionPullView *leadingPullView; // @synthesize leadingPullView=_leadingPullView;
+@property (nonatomic) double offset; // @synthesize offset=_offset;
 @property (nonatomic) BOOL shouldReenableUserInteraction; // @synthesize shouldReenableUserInteraction=_shouldReenableUserInteraction;
+@property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSDictionary *swipeDirectionToPullView; // @synthesize swipeDirectionToPullView=_swipeDirectionToPullView;
 @property (strong, nonatomic) UIView *swipedView; // @synthesize swipedView=_swipedView;
-@property (nonatomic) struct CGPoint swipedViewInitialPosition; // @synthesize swipedViewInitialPosition=_swipedViewInitialPosition;
 @property (strong, nonatomic) UISwipeActionPullView *trailingPullView; // @synthesize trailingPullView=_trailingPullView;
+@property (readonly, nonatomic) double velocity; // @synthesize velocity=_velocity;
 
 - (void).cxx_destruct;
+- (id)_actionView;
 - (void)_createPullViewsIfNeeded;
+- (void)_executeLifecycleForPerformedAction:(id)arg1 sourceView:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (double)_extraOffsetForOffset:(double)arg1 withDirection:(unsigned long long)arg2;
+- (void)_forceTeardown;
 - (struct CGRect)_frameForPullView:(id)arg1 inSwipedItem:(id)arg2 withContainer:(id)arg3;
-- (void)_performSwipeAction:(id)arg1 inPullview:(id)arg2 swipeInfo:(CDStruct_9b6dff2a)arg3;
+- (void)_moveItemWithSwipeInfo:(CDStruct_9b6dff2a)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_performSwipeAction:(id)arg1 inPullView:(id)arg2 swipeInfo:(CDStruct_9b6dff2a)arg3;
 - (id)_pullViewForSwipeDirection:(unsigned long long)arg1;
 - (void)_resetItemWithSwipeInfo:(CDStruct_9b6dff2a)arg1 animated:(BOOL)arg2 deletion:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_resetPullViewsImmediately;
+- (void)_setHasAmbiguousIndexPath;
 - (unsigned long long)_swipeDirectionForPullView:(id)arg1;
+- (void)_transitionToState:(long long)arg1;
 - (void)_updateLayoutUsingCurrentSwipeInfo:(BOOL)arg1;
 - (void)_updatePullView:(id)arg1;
+- (id)actionView;
 - (void)beginSwipe;
 - (double)confirmationDistanceForPrimaryActionInSwipeActionPullView:(id)arg1;
 - (void)endSwipe;
 - (id)initWithController:(id)arg1 indexPath:(id)arg2;
-- (void)moveItemWithSwipeInfo:(CDStruct_9b6dff2a)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)lockActionViewForAnimation;
 - (void)performPrimaryActionWithSwipeInfo:(CDStruct_9b6dff2a)arg1;
 - (CDStruct_324b76a9)prepareWithSwipeDirection:(unsigned long long)arg1 configuration:(id)arg2;
-- (void)resetItemWithSwipeInfo:(CDStruct_9b6dff2a)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)resetAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)shouldDismissWithTouchLocation:(struct CGPoint)arg1;
 - (void)swipeActionPullView:(id)arg1 tappedAction:(id)arg2;
+- (struct CGRect)swipedViewRestingFrame;
+- (void)unlockActionViewForAnimation:(id)arg1;
 - (void)updateLayout;
+- (void)updateOffsetWithSwipeInfo:(CDStruct_9b6dff2a)arg1 isTracking:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)updateSwipedView;
 
 @end
 

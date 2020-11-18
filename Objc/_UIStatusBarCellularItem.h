@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 @interface _UIStatusBarCellularItem : _UIStatusBarItem
 {
     BOOL _showsDisabledSignalBars;
+    BOOL _marqueesServiceName;
     id<_UIStatusBarCellularItemTypeStringProvider> _typeStringProvider;
     _UIStatusBarStringView *_serviceNameView;
     _UIStatusBarCellularSignalView *_signalView;
@@ -20,11 +21,14 @@ __attribute__((visibility("hidden")))
     _UIStatusBarImageView *_sosView;
     _UIStatusBarImageView *_warningView;
     _UIStatusBarImageView *_callForwardingView;
+    _UIStatusBarStringView *_rawStringView;
 }
 
 @property (strong, nonatomic) _UIStatusBarImageView *callForwardingView; // @synthesize callForwardingView=_callForwardingView;
 @property (readonly, nonatomic) NSString *cellularDataEntryKey;
+@property (nonatomic) BOOL marqueesServiceName; // @synthesize marqueesServiceName=_marqueesServiceName;
 @property (strong, nonatomic) _UIStatusBarStringView *networkTypeView; // @synthesize networkTypeView=_networkTypeView;
+@property (strong, nonatomic) _UIStatusBarStringView *rawStringView; // @synthesize rawStringView=_rawStringView;
 @property (strong, nonatomic) _UIStatusBarStringView *serviceNameView; // @synthesize serviceNameView=_serviceNameView;
 @property (nonatomic) BOOL showsDisabledSignalBars; // @synthesize showsDisabledSignalBars=_showsDisabledSignalBars;
 @property (strong, nonatomic) _UIStatusBarCellularSignalView *signalView; // @synthesize signalView=_signalView;
@@ -35,13 +39,21 @@ __attribute__((visibility("hidden")))
 + (id)callForwardingDisplayIdentifier;
 + (id)groupWithHighPriority:(long long)arg1 lowPriority:(long long)arg2;
 + (id)nameDisplayIdentifier;
++ (id)rawDisplayIdentifier;
 + (id)signalStrengthDisplayIdentifier;
 + (id)sosDisplayIdentifier;
 + (id)typeDisplayIdentifier;
 + (id)warningDisplayIdentifier;
 - (void).cxx_destruct;
-- (id)_backgroundColorForUpdate:(id)arg1;
-- (id)_fillColorForUpdate:(id)arg1;
+- (id)_backgroundColorForUpdate:(id)arg1 entry:(id)arg2;
+- (void)_create_callForwardingView;
+- (void)_create_networkTypeView;
+- (void)_create_rawStringView;
+- (void)_create_serviceNameView;
+- (void)_create_signalView;
+- (void)_create_sosView;
+- (void)_create_warningView;
+- (id)_fillColorForUpdate:(id)arg1 entry:(id)arg2;
 - (id)_stringForCellularType:(long long)arg1;
 - (BOOL)_updateSignalView:(id)arg1 withUpdate:(id)arg2 entry:(id)arg3;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;

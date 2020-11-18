@@ -16,6 +16,7 @@
     BOOL _shouldUpdateFromViewBeforePresentation;
     BOOL _shouldPresentAutomatically;
     UIViewController *_viewController;
+    UIView *_customContainerView;
     UIPreviewPresentationController *_presentationController;
     id<_UIPreviewInteractionViewControllerTransition> _appearanceTransition;
     id<_UIPreviewInteractionViewControllerTransition> _disappearanceTransition;
@@ -25,6 +26,7 @@
 }
 
 @property (strong, nonatomic) id<_UIPreviewInteractionViewControllerTransition> appearanceTransition; // @synthesize appearanceTransition=_appearanceTransition;
+@property (strong, nonatomic) UIView *customContainerView; // @synthesize customContainerView=_customContainerView;
 @property (weak, nonatomic) UIView *customViewForTouchContinuation; // @synthesize customViewForTouchContinuation=_customViewForTouchContinuation;
 @property (strong, nonatomic) id<_UIPreviewInteractionViewControllerTransition> disappearanceTransition; // @synthesize disappearanceTransition=_disappearanceTransition;
 @property (strong, nonatomic) UIPreviewPresentationController *presentationController; // @synthesize presentationController=_presentationController;

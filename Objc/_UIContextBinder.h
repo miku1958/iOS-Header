@@ -9,32 +9,29 @@
 #import <UIKitCore/_UIAnimationFenceCoordinating-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableOrderedSet, NSPointerArray, NSString;
-@protocol _UICanvasLifecycleStateMonitoring, _UIContextBinderDelegate, _UIContextBinding;
+@protocol _UIContextBinderContextCreationPolicyHolding, _UIContextBinding;
 
-__attribute__((visibility("hidden")))
 @interface _UIContextBinder : NSObject <_UIAnimationFenceCoordinating>
 {
-    id<_UIContextBinderDelegate> _delegate;
     NSPointerArray *_enrolledBindables;
     NSPointerArray *_attachedBindables;
     NSMutableOrderedSet *_contexts;
-    id<_UICanvasLifecycleStateMonitoring> _lifecycleMonitor;
     BOOL __registeredPreCommitHandler;
     NSMutableArray *__preCommitHandlers;
     CDUnknownBlockType __realPreCommitHandler;
     CDUnknownBlockType __realPostCommitHandler;
     id<_UIContextBinding> _substrate;
     long long _contextManagementPolicy;
+    id<_UIContextBinderContextCreationPolicyHolding> _contextCreationPolicyHolder;
 }
 
 @property (readonly, nonatomic) NSArray *attachedBindables;
+@property (weak, nonatomic) id<_UIContextBinderContextCreationPolicyHolding> contextCreationPolicyHolder; // @synthesize contextCreationPolicyHolder=_contextCreationPolicyHolder;
 @property (nonatomic) long long contextManagementPolicy; // @synthesize contextManagementPolicy=_contextManagementPolicy;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<_UIContextBinderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *enrolledBindables;
 @property (readonly) unsigned long long hash;
-@property (readonly, weak, nonatomic) id<_UICanvasLifecycleStateMonitoring> lifecycleMonitor; // @synthesize lifecycleMonitor=_lifecycleMonitor;
 @property (readonly, nonatomic) id<_UIContextBinding> substrate; // @synthesize substrate=_substrate;
 @property (readonly) Class superclass;
 
@@ -58,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)detachBindable:(id)arg1;
 - (void)enrollBindable:(id)arg1;
 - (void)expellBindable:(id)arg1;
-- (id)initWithSubstrate:(id)arg1 stateMonitor:(id)arg2;
+- (id)initWithSubstrate:(id)arg1;
 - (BOOL)permitContextCreationForBindable:(id)arg1;
 - (void)purgeContextsWithPurgeAction:(CDUnknownBlockType)arg1;
 - (void)recreateContextForBindable:(id)arg1;

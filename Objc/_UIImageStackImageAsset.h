@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSData *stackData; // @synthesize stackData=_stackData;
 
 - (void).cxx_destruct;
-- (id)imageWithTraitCollection:(id)arg1;
+- (id)imageWithConfiguration:(id)arg1;
 - (id)initWithContentsOfFile:(id)arg1;
 - (id)initWithData:(id)arg1;
 

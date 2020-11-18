@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (id)_dragDelegateProxy;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
+- (BOOL)_dragInteraction:(id)arg1 sessionSupportsSystemDrag:(id)arg2;
 - (id)_dragSourceDelegateActual;
 - (id)_dragSourceDelegateProxy;
 - (id)_filterCandidateIndexPaths:(id)arg1 forUserSelectedIndexPath:(id)arg2 session:(id)arg3;

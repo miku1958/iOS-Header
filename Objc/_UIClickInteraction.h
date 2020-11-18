@@ -10,14 +10,13 @@
 #import <UIKitCore/UIInteraction_Private-Protocol.h>
 #import <UIKitCore/_UIClickInteractionDriverDelegate-Protocol.h>
 
-@class NSString, UIView, _UIClickFeedbackGenerator;
+@class NSString, UIGestureRecognizer, UIView, _UIClickFeedbackGenerator;
 @protocol UIInteractionEffect, _UIClickInteractionDelegate, _UIClickInteractionDriving;
 
 @interface _UIClickInteraction : NSObject <_UIClickInteractionDriverDelegate, UIInteraction_Private, UIInteraction>
 {
-    BOOL _latching;
-    BOOL _selected;
     BOOL _delaysOtherPanRecognizers;
+    BOOL _hapticsEnabled;
     UIView *_view;
     id<UIInteractionEffect> _interactionEffect;
     id<_UIClickInteractionDelegate> _delegate;
@@ -33,13 +32,17 @@
 @property (weak, nonatomic) id<_UIClickInteractionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) id<_UIClickInteractionDriving> driver; // @synthesize driver=_driver;
+@property (nonatomic) BOOL driverCancelsTouchesInView;
+@property (readonly, nonatomic) BOOL driverPrefersCancelsTouchesInView;
+@property (readonly, nonatomic) UIGestureRecognizer *driverPrimaryGestureRecognizer;
 @property (strong, nonatomic) _UIClickFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
+@property (nonatomic) BOOL hapticsEnabled; // @synthesize hapticsEnabled=_hapticsEnabled;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<UIInteractionEffect> interactionEffect; // @synthesize interactionEffect=_interactionEffect;
-@property (nonatomic, getter=isLatching) BOOL latching; // @synthesize latching=_latching;
+@property (readonly, nonatomic) BOOL isDriverCurrentlyAcceleratedByForce;
 @property (nonatomic, setter=_setOverrideDriverClass:) Class overrideDriverClass; // @synthesize overrideDriverClass=_overrideDriverClass;
-@property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) double touchDuration;
 @property (readonly, weak, nonatomic) UIView *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;
@@ -50,8 +53,9 @@
 - (void)_updateDriver;
 - (void)_viewTraitCollectionDidChange:(id)arg1;
 - (void)cancelInteraction;
-- (void)clickDriver:(id)arg1 didPerformStateChange:(unsigned long long)arg2;
+- (void)clickDriver:(id)arg1 didPerformEvent:(unsigned long long)arg2;
 - (void)clickDriver:(id)arg1 didUpdateHighlightProgress:(double)arg2;
+- (void)clickDriver:(id)arg1 shouldBegin:(CDUnknownBlockType)arg2;
 - (BOOL)clickDriver:(id)arg1 shouldDelayGestureRecognizer:(id)arg2;
 - (BOOL)clickDriverShouldBegin:(id)arg1;
 - (void)didMoveToView:(id)arg1;

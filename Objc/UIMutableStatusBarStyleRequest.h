@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) double foregroundAlpha; // @dynamic foregroundAlpha;
 @property (strong, nonatomic) UIColor *foregroundColor; // @dynamic foregroundColor;
-@property (nonatomic, getter=isLegacy) BOOL legacy; // @dynamic legacy;
 @property (nonatomic) long long legibilityStyle; // @dynamic legibilityStyle;
 @property (strong, nonatomic) NSNumber *overrideHeight; // @dynamic overrideHeight;
 @property (nonatomic) long long style; // @dynamic style;

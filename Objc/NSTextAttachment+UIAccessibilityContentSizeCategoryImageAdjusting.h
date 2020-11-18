@@ -18,5 +18,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)_attachmentHasImage:(id)arg1;
++ (id)_imageFromAttachment:(id)arg1;
++ (id)textAttachmentWithImage:(id)arg1;
 @end
 

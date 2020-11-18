@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 - (double)_textLabelYAdjustmentForCell:(id)arg1 totalTextRect:(struct CGRect)arg2;
 - (id)defaultDetailTextLabelFontForCell:(id)arg1;
 - (double)defaultDetailTextLabelFontSizeForCell:(id)arg1;
-- (id)defaultTextLabelFontForCell:(id)arg1;
 - (double)defaultTextLabelFontSizeForCell:(id)arg1;
 - (id)detailTextLabelForCell:(id)arg1;
 - (void)getTextLabelRect:(struct CGRect *)arg1 detailTextLabelRect:(struct CGRect *)arg2 forCell:(id)arg3 rowWidth:(double)arg4 forSizing:(BOOL)arg5;

@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 #import <UIKitCore/UITimingCurveProvider-Protocol.h>
 
 @class UICubicTimingParameters;
 
-@interface UISpringTimingParameters : NSObject <UITimingCurveProvider>
+@interface UISpringTimingParameters : NSObject <NSSecureCoding, UITimingCurveProvider>
 {
     BOOL _implicitDuration;
     double _dampingRatio;
@@ -31,6 +32,9 @@
 @property (nonatomic) double stiffness; // @synthesize stiffness=_stiffness;
 @property (readonly, nonatomic) long long timingCurveType;
 
++ (void)_convertDampingRatio:(double)arg1 response:(double)arg2 toMass:(double *)arg3 stiffness:(double *)arg4 damping:(double *)arg5;
++ (void)_convertMass:(double)arg1 stiffness:(double)arg2 damping:(double)arg3 toDampingRatio:(double *)arg4 response:(double *)arg5;
++ (BOOL)supportsSecureCoding;
 - (id)_mediaTimingFunction;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -40,6 +44,8 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDampingRatio:(double)arg1;
 - (id)initWithDampingRatio:(double)arg1 initialVelocity:(struct CGVector)arg2;
+- (id)initWithDampingRatio:(double)arg1 response:(double)arg2;
+- (id)initWithDampingRatio:(double)arg1 response:(double)arg2 initialVelocity:(struct CGVector)arg3;
 - (id)initWithMass:(double)arg1 stiffness:(double)arg2 damping:(double)arg3 initialVelocity:(struct CGVector)arg4;
 - (BOOL)isEqual:(id)arg1;
 

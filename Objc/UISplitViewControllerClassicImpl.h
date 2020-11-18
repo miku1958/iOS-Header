@@ -26,13 +26,11 @@ __attribute__((visibility("hidden")))
     UIResponder *_postTransitionResponder;
     UISnapshotView *_collapsingMasterSnapshotView;
     UISnapshotView *_collapsingDetailSnapshotView;
-    double _masterColumnWidth;
     float _gutterWidth;
     long long _rotatingFromOrientation;
     long long _lastPresentedOrientation;
     struct CGRect _rotatingFromMasterViewFrame;
     struct CGRect _rotatingToMasterViewFrame;
-    NSArray *_cornerImageViews;
     UIView *_underBarSeparatorView;
     UITraitCollection *_traitCollectionWhenRemovedFromWindow;
     BOOL _presentsWithGesture;
@@ -99,7 +97,6 @@ __attribute__((visibility("hidden")))
 
 @property (copy, nonatomic, setter=_setClearPreventRotationHook:) CDUnknownBlockType _clearPreventRotationHook; // @synthesize _clearPreventRotationHook=__clearPreventRotationHook;
 @property (copy, nonatomic, setter=_setDisplayModeButtonItemTitle:) NSString *_displayModeButtonItemTitle; // @synthesize _displayModeButtonItemTitle;
-@property (readonly, nonatomic) BOOL _presentsInFadingPopover;
 @property (strong, nonatomic, setter=_setPreservedDetailController:) UIViewController *_preservedDetailController; // @synthesize _preservedDetailController=__preservedDetailController;
 @property (readonly, nonatomic, getter=isCollapsed) BOOL collapsed;
 @property (readonly, copy) NSString *debugDescription;
@@ -110,7 +107,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hidesMasterViewInPortrait;
 @property (readonly, nonatomic, getter=_lastFocusedChildViewControllerIndex) unsigned long long lastFocusedChildViewControllerIndex; // @synthesize lastFocusedChildViewControllerIndex=_lastFocusedChildViewControllerIndex;
-@property (nonatomic) float masterColumnWidth;
 @property (readonly, nonatomic, getter=_masterFocusContainerGuide) UIFocusContainerGuide *masterFocusContainerGuide; // @synthesize masterFocusContainerGuide=_masterFocusContainerGuide;
 @property (nonatomic) double maximumPrimaryColumnWidth; // @synthesize maximumPrimaryColumnWidth=_maximumPrimaryColumnWidth;
 @property (nonatomic) double minimumPrimaryColumnWidth; // @synthesize minimumPrimaryColumnWidth=_minimumPrimaryColumnWidth;
@@ -118,6 +114,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double preferredPrimaryColumnWidthFraction; // @synthesize preferredPrimaryColumnWidthFraction=_preferredPrimaryColumnWidthFraction;
 @property (nonatomic) BOOL prefersOverlayInRegularWidthPhone;
 @property (nonatomic) BOOL presentsWithGesture; // @synthesize presentsWithGesture=_presentsWithGesture;
+@property (nonatomic) long long primaryBackgroundStyle;
 @property (nonatomic) long long primaryEdge;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL usesDeviceOverlayPreferences;
@@ -210,7 +207,6 @@ __attribute__((visibility("hidden")))
 - (id)_primaryViewControllerForCollapsing;
 - (id)_primaryViewControllerForExpanding;
 - (void)_removeCollapsingSnapshotViews;
-- (void)_removeRoundedCorners;
 - (struct CGSize)_screenSizeInMainScene:(BOOL)arg1;
 - (id)_secondaryViewControllerForCollapsing;
 - (void)_separateMasterAndDetailWithTransitionCoordinator:(id)arg1;
@@ -223,14 +219,13 @@ __attribute__((visibility("hidden")))
 - (void)_setPrimaryHidingStateForCurrentOrientation:(long long)arg1;
 - (void)_setUpFocusContainerGuides;
 - (void)_setupHiddenPopoverControllerWithViewController:(id)arg1;
-- (void)_setupRoundedCorners;
 - (void)_setupUnderBarSeparatorView;
 - (BOOL)_shouldPersistViewWhenCoding;
 - (BOOL)_shouldPreventAutorotation;
-- (BOOL)_shouldSynthesizeSupportedOrientations;
 - (BOOL)_shouldUseRelativeInsets;
 - (void)_showMasterViewAnimated:(BOOL)arg1;
 - (unsigned long long)_targetEdgeForPopover;
+- (id)_traitCollectionForChildEnvironment:(id)arg1;
 - (void)_triggerDisplayModeAction:(id)arg1;
 - (void)_updateChildContentMargins;
 - (void)_updateDelegateHiddenMasterAspectRatios;
@@ -241,6 +236,7 @@ __attribute__((visibility("hidden")))
 - (void)_viewControllerHiding:(id)arg1;
 - (void)_willBeginSnapshotSession;
 - (void)_willShowCollapsedDetailViewController:(id)arg1 inTargetController:(id)arg2;
+- (id)childViewControllerForStatusBarStyle;
 - (void)dealloc;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (id)detailViewController;
@@ -258,8 +254,10 @@ __attribute__((visibility("hidden")))
 - (id)preferredFocusEnvironments;
 - (id)preferredFocusedView;
 - (long long)preferredInterfaceOrientationForPresentation;
+- (long long)preferredLeadingStatusBarStyle;
+- (long long)preferredTrailingStatusBarStyle;
 - (double)primaryColumnWidth;
-- (void)purgeMemoryForReason:(int)arg1;
+- (long long)primaryIsSidebar;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (BOOL)shouldUpdateFocusInContext:(id)arg1;
 - (void)showDetailViewController:(id)arg1 sender:(id)arg2;

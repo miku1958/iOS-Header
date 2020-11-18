@@ -6,11 +6,11 @@
 
 #import <UIKitCore/UIView.h>
 
-@class UIImageView, UILabel, UIProgressIndicator, UIWindow;
+@class UIActivityIndicatorView, UIImageView, UILabel, UIWindow;
 
 @interface UIProgressHUD : UIView
 {
-    UIProgressIndicator *_progressIndicator;
+    UIActivityIndicatorView *_progressIndicator;
     UILabel *_progressMessage;
     UIImageView *_doneView;
     UIWindow *_parentWindow;
@@ -22,7 +22,6 @@
     } _progressHUDFlags;
 }
 
-- (id)_progressIndicator;
 - (void)dealloc;
 - (void)done;
 - (void)drawRect:(struct CGRect)arg1;

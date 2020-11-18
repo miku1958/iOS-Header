@@ -6,9 +6,10 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIColor, UIView, UIVisualEffectView, _UITextFieldContentView;
+@class UIColor, UIView, UIVisualEffectView, _UITextFieldCanvasView;
 
 @protocol _UITextFieldVisualStyleSubject <NSObject>
+- (_UITextFieldCanvasView *)_canvasView;
 - (UIVisualEffectView *)_contentBackdropView;
 - (UIColor *)_currentTextColor;
 - (UIView *)_effectiveContentView;
@@ -19,7 +20,6 @@
 - (BOOL)_isFocused;
 - (long long)_keyboardAppearance;
 - (BOOL)_shouldDetermineInterfaceStyleTextColor;
-- (_UITextFieldContentView *)_textContentView;
 - (BOOL)_textShouldFillFieldEditorHeight;
 - (BOOL)_textShouldUseVibrancy;
 - (long long)_userInterfaceStyle;

@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
     long long _savedNumberOfLines;
     double _firstParagraphFirstLineHeadIndent;
     NSAttributedString *_shadowAttributedText;
+    BOOL _usingDefaultFont;
     UITableViewCell *_tableCell;
 }
 
 @property (weak, nonatomic) UITableViewCell *tableCell; // @synthesize tableCell=_tableCell;
+@property (readonly, nonatomic) BOOL usingDefaultFont; // @synthesize usingDefaultFont=_usingDefaultFont;
 
 - (void).cxx_destruct;
 - (BOOL)_attributedStringHasParagraphStyleWithNonzeroFirstLineHeadIndent:(id)arg1;
@@ -25,11 +27,13 @@ __attribute__((visibility("hidden")))
 - (void)_clearNumberOfLines;
 - (id)_disabledFontColor;
 - (void)_restoreNumberOfLines;
+- (void)_setDefaultFont:(id)arg1;
 - (void)_setFirstParagraphFirstLineHeadIndent:(double)arg1;
 - (void)_setNumberOfLinesForAXLayoutIfNecessary;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setAttributedText:(id)arg1;
+- (void)setFont:(id)arg1;
 - (void)setText:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 

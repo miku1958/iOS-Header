@@ -8,7 +8,7 @@
 
 #import <UIKitCore/UIDocumentBrowserViewControllerPrivateDelegate-Protocol.h>
 
-@class DOCConfiguration, NSArray, NSMutableArray, NSString;
+@class DOCConfiguration, NSArray, NSMutableArray, NSString, NSURL;
 @protocol UIDocumentPickerDelegate;
 
 @interface UIDocumentPickerViewController : UIViewController <UIDocumentBrowserViewControllerPrivateDelegate>
@@ -17,9 +17,11 @@
     NSMutableArray *_securityScopedURLs;
     BOOL _ignoreApplicationEntitlementForImport;
     BOOL _allowsMultipleSelection;
-    BOOL _sourceIsManaged;
+    BOOL _isContentManaged;
     id<UIDocumentPickerDelegate> _delegate;
     unsigned long long _documentPickerMode;
+    NSURL *_directoryURL;
+    NSArray *_documentTypes;
     UIViewController *_childViewController;
     NSArray *_uploadURLs;
     DOCConfiguration *_configuration;
@@ -33,9 +35,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UIDocumentPickerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSURL *directoryURL; // @synthesize directoryURL=_directoryURL;
 @property (nonatomic) unsigned long long documentPickerMode; // @synthesize documentPickerMode=_documentPickerMode;
+@property (copy, nonatomic) NSArray *documentTypes; // @synthesize documentTypes=_documentTypes;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, getter=_sourceIsManaged, setter=_setSourceIsManaged:) BOOL sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
+@property (nonatomic, getter=_isContentManaged, setter=_setIsContentManaged:) BOOL isContentManaged; // @synthesize isContentManaged=_isContentManaged;
+@property (nonatomic) unsigned long long pickerUserInterfaceStyle;
+@property (nonatomic) BOOL shouldShowFileExtensions;
+@property (nonatomic, getter=_sourceIsManaged, setter=_setSourceIsManaged:) BOOL sourceIsManaged; // @dynamic sourceIsManaged;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSArray *uploadURLs; // @synthesize uploadURLs=_uploadURLs;
 
@@ -48,6 +55,7 @@
 - (id)_initWithViewController:(id)arg1 inMode:(unsigned long long)arg2 uploadURLOrNil:(id)arg3;
 - (void)_tellDelegateDocumentPickerWasCancelled;
 - (void)dealloc;
+- (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)documentBrowser:(id)arg1 didPickDocumentURLs:(id)arg2;
 - (void)documentManagerWasCancelled:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -55,7 +63,9 @@
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithURL:(id)arg1 inMode:(unsigned long long)arg2;
 - (id)initWithURLs:(id)arg1 inMode:(unsigned long long)arg2;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

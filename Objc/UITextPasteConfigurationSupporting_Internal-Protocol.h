@@ -7,16 +7,20 @@
 #import <UIKitCore/UITextInput-Protocol.h>
 #import <UIKitCore/UITextPasteConfigurationSupporting-Protocol.h>
 
-@class NSArray, NSAttributedString, NSDictionary, UITextRange;
-@protocol UITextPasteAnimating;
+@class NSArray, NSAttributedString, UITextInputController, UITextRange;
+@protocol UITextPasteSession;
 
 @protocol UITextPasteConfigurationSupporting_Internal <UITextPasteConfigurationSupporting, UITextInput>
+- (NSAttributedString *)_attributedStringForInsertionOfAttributedString:(NSAttributedString *)arg1;
 - (NSArray *)_implicitPasteConfigurationClasses;
-- (void)_performPasteOfAttributedString:(NSAttributedString *)arg1 toRange:(UITextRange *)arg2 animator:(id<UITextPasteAnimating>)arg3 completion:(void (^)(UITextRange *, NSAttributedString *))arg4;
+- (UITextInputController *)_inputController;
+- (void)addInvisibleRange:(UITextRange *)arg1;
 - (BOOL)allowsEditingTextAttributes;
-- (NSDictionary *)typingAttributes;
+- (void)layoutIfNeeded;
+- (void)removeInvisibleRange:(UITextRange *)arg1;
 
 @optional
-- (void)_pasteSessionDidFinish;
++ (Class)_textPasteItemClass;
+- (void)_pasteSessionDidFinish:(id<UITextPasteSession>)arg1;
 @end
 

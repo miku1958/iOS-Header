@@ -16,6 +16,7 @@
 - (void)dealloc;
 - (id)hardwareLayout;
 - (BOOL)includeBarHeight;
+- (BOOL)isSpecializedInputMode;
 
 @end
 

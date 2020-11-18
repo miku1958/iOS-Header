@@ -11,8 +11,6 @@ __attribute__((visibility("hidden")))
 {
     struct __CFUserNotification *_userNotification;
     struct __CFRunLoopSource *_userNotificationRunLoopSource;
-    BOOL _runsModal;
-    BOOL _runningModal;
     id _strongDelegate;
     id _retainedSelf;
 }
@@ -26,10 +24,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)dismissWithClickedButtonIndex:(long long)arg1 animated:(BOOL)arg2;
 - (BOOL)isVisible;
-- (BOOL)runsModal;
 - (void)setHostedWindow:(id)arg1;
 - (void)setRemoteViewController:(id)arg1;
-- (void)setRunsModal:(BOOL)arg1;
 - (void)show;
 - (id)textFieldAtIndex:(long long)arg1;
 

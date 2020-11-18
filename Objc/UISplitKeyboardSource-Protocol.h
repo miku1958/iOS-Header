@@ -20,6 +20,8 @@
 @property (readonly, strong, nonatomic) UIView *view;
 
 - (UIInputViewSetNotificationInfo *)constructNotificationInfoForScrollWithMode:(unsigned long long)arg1;
+- (void)finishSplitTransition;
+- (void)prepareForSplitTransition;
 - (void)setInterfaceAutorotationDisabled:(BOOL)arg1;
 @end
 

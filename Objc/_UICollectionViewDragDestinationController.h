@@ -49,7 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)_commitCurrentInteractiveReordering;
 - (id)_computeNextItemAttributesStartingFromItemAttributes:(id)arg1 withCurrentDragLocation:(struct CGPoint)arg2;
 - (void)_configureInteraction;
-- (void)_configureReorderingDisplayLink;
+- (void)_configureReorderingDisplayLinkIfNeeded;
 - (BOOL)_delegateImplementsDidExit;
 - (BOOL)_delegateImplementsDropActionForIndexPath;
 - (BOOL)_delegateImplementsPerformDropFromIndexPathsWithAction;
@@ -76,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldQueryDropActionForIndexPath:(id)arg1;
 - (void)_updateDropProposalByQueryingClientIfNeeded:(id)arg1;
 - (void)applyingRebasingUpdatesWithUpdateMap:(id)arg1;
+- (void)deactivate;
 - (void)dealloc;
 - (void)dragSourceSelectedItemCountDidChangeWithCount:(long long)arg1;
 - (BOOL)dropInteraction:(id)arg1 canHandleSession:(id)arg2;

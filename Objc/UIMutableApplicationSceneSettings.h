@@ -28,12 +28,14 @@
 @property (nonatomic) double homeAffordanceOverlayAllowance;
 @property (nonatomic) BOOL idleModeEnabled;
 @property (nonatomic) struct UIEdgeInsets peripheryInsets;
+@property (strong, nonatomic) NSString *persistenceIdentifier;
 @property (nonatomic) struct UIEdgeInsets safeAreaInsetsLandscapeLeft;
 @property (nonatomic) struct UIEdgeInsets safeAreaInsetsLandscapeRight;
 @property (nonatomic) struct UIEdgeInsets safeAreaInsetsPortrait;
 @property (nonatomic) struct UIEdgeInsets safeAreaInsetsPortraitUpsideDown;
 @property (nonatomic) struct CGRect statusBarAvoidanceFrame;
 @property (nonatomic) BOOL statusBarDisabled;
+@property (nonatomic) double statusBarHeight;
 @property (nonatomic) long long statusBarParts;
 @property (nonatomic) int statusBarStyleOverridesToSuppress;
 @property (readonly) Class superclass;
@@ -41,10 +43,11 @@
 @property (nonatomic) BOOL underLock;
 @property (nonatomic) long long userInterfaceStyle;
 
-- (Class)canvasClass;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (double)defaultStatusBarHeightForOrientation:(long long)arg1;
 - (BOOL)isUISubclass;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
+- (void)setDefaultStatusBarHeight:(double)arg1 forOrientation:(long long)arg2;
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
 
 @end

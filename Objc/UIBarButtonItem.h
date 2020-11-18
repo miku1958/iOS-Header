@@ -9,7 +9,7 @@
 #import <UIKitCore/NSCoding-Protocol.h>
 #import <UIKitCore/UISpringLoadedInteractionSupporting-Protocol.h>
 
-@class NSArray, NSDictionary, NSSet, NSString, UIBarButtonItemGroup, UIColor, UIImage, UILayoutGuide, UINavigationItem, UIToolbarButton, UIView;
+@class NSArray, NSDictionary, NSSet, NSString, UIBarButtonItemGroup, UIColor, UIImage, UILayoutGuide, UINavigationItem, UIToolbarButton, UIView, _UIBarButtonItemAppearanceStorage;
 @protocol _UIBarButtonItemViewOwner;
 
 @interface UIBarButtonItem : UIBarItem <UISpringLoadedInteractionSupporting, NSCoding>
@@ -25,7 +25,7 @@
     struct UIEdgeInsets _additionalSelectionInsets;
     double _width;
     UIView *_view;
-    id _appearanceStorage;
+    _UIBarButtonItemAppearanceStorage *_appearanceStorage;
     struct {
         unsigned int enabled:1;
         unsigned int style:3;
@@ -89,6 +89,7 @@
 @property (nonatomic, setter=_setToolbarCharge:) double _toolbarCharge; // @synthesize _toolbarCharge;
 @property (weak, nonatomic, setter=_setViewOwner:) id<_UIBarButtonItemViewOwner> _viewOwner; // @synthesize _viewOwner=__viewOwner;
 @property (readonly, nonatomic) BOOL _viewWantsLetterpressImage; // @synthesize _viewWantsLetterpressImage=__viewWantsLetterpressImage;
+@property (nonatomic, getter=_width, setter=_setWidth:) double _width; // @dynamic _width;
 @property (nonatomic) SEL action; // @synthesize action=_action;
 @property (readonly, weak, nonatomic) UIBarButtonItemGroup *buttonGroup; // @synthesize buttonGroup=_buttonGroup;
 @property (strong, nonatomic) UIView *customView;
@@ -121,20 +122,21 @@
 - (BOOL)_actsAsFakeBackButton;
 - (id)_appearanceStorage;
 - (void)_applyPositionAdjustmentToSegmentedControl:(id)arg1;
+- (id)_backgroundImageForState:(unsigned long long)arg1 compact:(BOOL)arg2 type:(long long)arg3;
 - (void)_connectInterfaceBuilderEventConnection:(id)arg1;
 - (void)_executeValidationHandler;
 - (id)_foregroundColorForLetterpressWithView:(id)arg1;
 - (void)_getNavBarEdgeSizeAdjust:(struct CGSize *)arg1 imageInsets:(struct UIEdgeInsets *)arg2 landscape:(BOOL)arg3;
 - (void)_getSystemItemStyle:(long long *)arg1 title:(id *)arg2 image:(id *)arg3 selectedImage:(id *)arg4 action:(SEL *)arg5 forBarStyle:(long long)arg6 landscape:(BOOL)arg7 alwaysBordered:(BOOL)arg8;
 - (void)_getToolbarSystemItemEdgeInsetsWithImageInsets:(struct UIEdgeInsets *)arg1 forBarStyle:(long long)arg2 landscape:(BOOL)arg3 alwaysBordered:(BOOL)arg4;
-- (id)_imageForState:(unsigned long long)arg1 metrics:(long long)arg2 position:(long long)arg3 type:(long long)arg4;
-- (id)_internalLargeContentSizeImage;
+- (id)_imageForState:(unsigned long long)arg1 compact:(BOOL)arg2 type:(long long)arg3;
 - (BOOL)_isImageBarButtonItem;
 - (id)_itemForPresenting;
 - (double)_leftImagePaddingForEdgeMarginInNavBar;
 - (id)_miniImage;
 - (struct UIEdgeInsets)_miniImageInsets;
 - (struct CGRect)_rectForPresenting;
+- (BOOL)_resizesBackgroundImage;
 - (double)_rightImagePaddingForEdgeMarginInNavBar;
 - (void)_sendAction:(id)arg1 withEvent:(id)arg2;
 - (void)_setActsAsFakeBackButton:(BOOL)arg1;
@@ -145,13 +147,11 @@
 - (void)_setShowsChevron:(BOOL)arg1;
 - (void)_setSystemItem:(long long)arg1;
 - (void)_setWantsThreeUp:(BOOL)arg1;
-- (void)_setWidth:(double)arg1;
 - (BOOL)_shouldBezelSystemButtonImage;
 - (BOOL)_showsChevron;
 - (void)_updateView;
 - (id)_viewForPresenting;
 - (BOOL)_wantsThreeUp;
-- (double)_width;
 - (id)backButtonBackgroundImageForState:(unsigned long long)arg1 barMetrics:(long long)arg2;
 - (double)backButtonBackgroundVerticalPositionAdjustmentForBarMetrics:(long long)arg1;
 - (struct UIOffset)backButtonTitlePositionAdjustmentForBarMetrics:(long long)arg1;

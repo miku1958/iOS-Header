@@ -91,6 +91,7 @@
 @property (copy, nonatomic) NSString *searchResultsTitle; // @synthesize searchResultsTitle=_resultsTitle;
 @property (readonly) Class superclass;
 
++ (void)_uiibSetRequiresSearchDisplayControllerSupport;
 - (void).cxx_destruct;
 - (void)_adjustTableViewContentInsetsAndOffsetsIgnoringCurrent:(BOOL)arg1;
 - (BOOL)_allowDisablingNavigationBarHiding;
@@ -115,7 +116,6 @@
 - (void)_enableParentScrollViews;
 - (void)_hideVisibleRefreshControl;
 - (void)_hoistSearchBar;
-- (void)_indexBarFrameChanged:(id)arg1;
 - (BOOL)_isSearchBarInBar;
 - (void)_keyboardWillHide:(id)arg1;
 - (void)_keyboardWillShow:(id)arg1;

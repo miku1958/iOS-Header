@@ -6,12 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSCountedSet, NSMutableDictionary, NSSet;
+@class NSCountedSet, NSMutableDictionary, NSSet, _UIStatusBarData;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarDataAggregator : NSObject
 {
+    _UIStatusBarData *_overlayData;
     CDUnknownBlockType _updateBlock;
+    Class _dataClass;
     NSCountedSet *_delayedKeys;
     NSMutableDictionary *_pendingUpdates;
     NSMutableDictionary *_coalescedKeys;
@@ -21,8 +23,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSSet *coalescedEntryKeys;
 @property (strong, nonatomic) NSMutableDictionary *coalescedKeys; // @synthesize coalescedKeys=_coalescedKeys;
 @property (strong, nonatomic) NSMutableDictionary *coalescedTimers; // @synthesize coalescedTimers=_coalescedTimers;
+@property (copy, nonatomic) Class dataClass; // @synthesize dataClass=_dataClass;
 @property (readonly, copy, nonatomic) NSSet *delayedEntryKeys;
 @property (strong, nonatomic) NSCountedSet *delayedKeys; // @synthesize delayedKeys=_delayedKeys;
+@property (copy, nonatomic) _UIStatusBarData *overlayData; // @synthesize overlayData=_overlayData;
 @property (strong, nonatomic) NSMutableDictionary *pendingUpdates; // @synthesize pendingUpdates=_pendingUpdates;
 @property (copy, nonatomic) CDUnknownBlockType updateBlock; // @synthesize updateBlock=_updateBlock;
 
@@ -31,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)_coalescedUpdateForEntryKeys:(id)arg1;
 - (void)_updateForCoalescedKeysWithData:(id)arg1;
 - (void)_updateForDelayedKeysWithData:(id)arg1;
+- (void)_updateForOverlayWithData:(id)arg1;
 - (void)_updateFromPendingUpdatesForKeys:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)_updatedDataFromData:(id)arg1 delayedKeys:(id)arg2;
 - (void)beginCoalescingUpdatesForEntryKeys:(id)arg1 delay:(double)arg2;

@@ -6,11 +6,10 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, UIView, _UIStatusBarRegion;
+@class NSArray, _UIStatusBarRegion;
 
 @protocol _UIStatusBarRegionLayout <NSObject>
 
-@property (readonly, nonatomic) UIView *containerView;
 @property (copy, nonatomic) NSArray *displayItems;
 @property (readonly, nonatomic) BOOL fitsAllItems;
 @property (weak, nonatomic) _UIStatusBarRegion *region;

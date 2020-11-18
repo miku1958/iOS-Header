@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, UINavigationBar, UIView, _UIBarBackground, _UINavigationBarContentView, _UINavigationBarContentViewLayout, _UINavigationBarItemStack, _UINavigationBarLargeTitleView, _UINavigationBarLargeTitleViewLayout, _UINavigationBarModernPromptView;
+@class NSMutableSet, UINavigationBar, UIView, _UIBarBackground, _UINavigationBarContentView, _UINavigationBarContentViewLayout, _UINavigationBarItemStack, _UINavigationBarLargeTitleView, _UINavigationBarLargeTitleViewLayout, _UINavigationBarLayout, _UINavigationBarModernPromptView;
 
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarTransitionContext : NSObject
@@ -17,12 +17,17 @@ __attribute__((visibility("hidden")))
     _UINavigationBarContentView *_contentView;
     _UIBarBackground *_backgroundView;
     _UINavigationBarLargeTitleView *_largeTitleView;
+    _UINavigationBarLayout *_fromLayout;
+    _UINavigationBarLayout *_toLayout;
     _UINavigationBarContentViewLayout *_fromContentLayout;
     _UINavigationBarContentViewLayout *_toContentLayout;
     _UINavigationBarLargeTitleViewLayout *_fromLargeTitleLayout;
     _UINavigationBarLargeTitleViewLayout *_toLargeTitleLayout;
+    double _backgroundAlpha;
     int _largeTitleTransitionType;
+    long long _apiVersion;
     BOOL _isRTL;
+    BOOL _compact;
     BOOL _allowLargeTitles;
     BOOL _twoPart;
     BOOL _beginWithLargeTitle;
@@ -31,21 +36,22 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) BOOL allowLargeTitles; // @synthesize allowLargeTitles=_allowLargeTitles;
+@property (nonatomic) long long apiVersion; // @synthesize apiVersion=_apiVersion;
+@property (nonatomic) double backgroundAlpha; // @synthesize backgroundAlpha=_backgroundAlpha;
 @property (strong, nonatomic) _UIBarBackground *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (nonatomic) BOOL beginWithLargeTitle; // @synthesize beginWithLargeTitle=_beginWithLargeTitle;
+@property (nonatomic) BOOL compact; // @synthesize compact=_compact;
 @property (strong, nonatomic) _UINavigationBarContentView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, nonatomic) double contentViewFittingHeight;
 @property (readonly, nonatomic) double contentViewMaxY;
 @property (nonatomic) BOOL endWithLargeTitle; // @synthesize endWithLargeTitle=_endWithLargeTitle;
-@property (strong, nonatomic) _UINavigationBarContentViewLayout *fromContentLayout; // @synthesize fromContentLayout=_fromContentLayout;
-@property (strong, nonatomic) _UINavigationBarLargeTitleViewLayout *fromLargeTitleLayout; // @synthesize fromLargeTitleLayout=_fromLargeTitleLayout;
+@property (strong, nonatomic) _UINavigationBarLayout *fromLayout; // @synthesize fromLayout=_fromLayout;
 @property (nonatomic) BOOL isRTL; // @synthesize isRTL=_isRTL;
 @property (strong, nonatomic) _UINavigationBarLargeTitleView *largeTitleView; // @synthesize largeTitleView=_largeTitleView;
 @property (nonatomic) UINavigationBar *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property (strong, nonatomic) _UINavigationBarModernPromptView *promptView; // @synthesize promptView=_promptView;
 @property (strong, nonatomic) _UINavigationBarItemStack *stack; // @synthesize stack=_stack;
-@property (strong, nonatomic) _UINavigationBarContentViewLayout *toContentLayout; // @synthesize toContentLayout=_toContentLayout;
-@property (strong, nonatomic) _UINavigationBarLargeTitleViewLayout *toLargeTitleLayout; // @synthesize toLargeTitleLayout=_toLargeTitleLayout;
+@property (strong, nonatomic) _UINavigationBarLayout *toLayout; // @synthesize toLayout=_toLayout;
 @property (readonly, nonatomic) int transition; // @dynamic transition;
 @property (nonatomic) BOOL twoPart; // @synthesize twoPart=_twoPart;
 @property (readonly, nonatomic) UIView *viewFadingInFromCustomAlpha;
@@ -55,7 +61,15 @@ __attribute__((visibility("hidden")))
 + (id)contextForTransition:(int)arg1;
 - (void).cxx_destruct;
 - (void)_addClippingView:(id)arg1;
+- (void)_animateAsTwoPartsWithOverlap:(double)arg1 partOne:(CDUnknownBlockType)arg2 partTwo:(CDUnknownBlockType)arg3;
+- (void)_animateAsTwoPartsWithOverlapIfNecessaryPartOne:(CDUnknownBlockType)arg1 partTwo:(CDUnknownBlockType)arg2;
+- (void)_animateAsTwoPartsWithoutOverlap:(CDUnknownBlockType)arg1 partTwo:(CDUnknownBlockType)arg2;
+- (void)_animateBackgroundView;
+- (void)_animateFromBottomPaletteAtEdge:(unsigned long long)arg1;
+- (void)_prepareToBottomPaletteAtEdge:(unsigned long long)arg1;
 - (void)_removeAllClippingViews;
+- (void)_resetContentAndLargeTitleViewCompleted:(BOOL)arg1;
+- (void)_updateIncomingLayoutWidthToMatchOutgoingLayout;
 - (void)animate;
 - (void)cancel;
 - (void)complete;

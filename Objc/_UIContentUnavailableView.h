@@ -39,6 +39,7 @@
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 - (void).cxx_destruct;
+- (id)_actionButton;
 - (void)_actionButtonPressed:(id)arg1;
 - (double)_buttonAlpha;
 - (id)_buttonBackgroundImageForStyle:(unsigned long long)arg1 controlState:(unsigned long long)arg2;
@@ -46,14 +47,17 @@
 - (struct CGSize)_buttonSize;
 - (id)_buttonTextStyle;
 - (double)_buttonVerticalSpacing;
+- (struct CGColor *)_colorForButtonForStyle:(unsigned long long)arg1 controlState:(unsigned long long)arg2;
 - (id)_flatTextColor;
 - (BOOL)_hasVibrantButton;
 - (BOOL)_hasVibrantText;
 - (double)_labelAlpha;
 - (double)_labelVerticalSpacing;
+- (id)_messageLabel;
 - (id)_messageTextStyle;
 - (void)_rebuildConstraints;
 - (id)_titleFont;
+- (id)_titleLabel;
 - (void)_updateForCurrentContentSizeCategory;
 - (void)_updateViewHierarchy;
 - (id)_vibrantBaseColor;

@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/_UICollectionViewLayoutOrthogonalScrolling-Protocol.h>
 
-@class NSArray, NSIndexSet, NSMutableDictionary, NSMutableIndexSet, UICollectionView, UICollectionViewLayoutInvalidationContext, UIDynamicAnimator, _UICollectionViewCompositionLayout;
+@class NSArray, NSIndexSet, NSMutableDictionary, NSMutableIndexSet, NSString, UICollectionView, UICollectionViewLayoutInvalidationContext, UIDynamicAnimator, _UICollectionViewCompositionLayout;
 
-@interface UICollectionViewLayout : NSObject <NSCoding>
+@interface UICollectionViewLayout : NSObject <_UICollectionViewLayoutOrthogonalScrolling, NSCoding>
 {
     UICollectionView *_collectionView;
     struct CGSize _collectionViewBoundsSize;
@@ -48,9 +49,12 @@
 
 @property (readonly, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property (nonatomic, getter=_compositionLayout, setter=_setCompositionLayout:) _UICollectionViewCompositionLayout *compositionLayout;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic, getter=_elementKinds, setter=_setElementKinds:) NSArray *elementKinds;
 @property (readonly, nonatomic, getter=_focusFastScrollingIndexBarInsets) struct UIEdgeInsets focusFastScrollingIndexBarInsets;
 @property (nonatomic, getter=_frame, setter=_setFrame:) struct CGRect frame;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic, getter=_items, setter=_setItems:) NSIndexSet *items;
 @property (nonatomic, getter=_layoutOffset, setter=_setLayoutOffset:) struct CGPoint layoutOffset;
 @property (nonatomic, getter=_layoutOffsetEdges, setter=_setLayoutOffsetEdges:) unsigned long long layoutOffsetEdges;
@@ -58,6 +62,7 @@
 @property (copy, nonatomic, getter=_sections, setter=_setSections:) NSIndexSet *sections;
 @property (nonatomic, getter=_siblingLayout, setter=_setSiblingLayout:) UICollectionViewLayout *siblingLayout;
 @property (nonatomic, getter=_sublayoutType, setter=_setSublayoutType:) long long sublayoutType; // @synthesize sublayoutType=_sublayoutType;
+@property (readonly) Class superclass;
 
 + (Class)invalidationContextClass;
 + (Class)layoutAttributesClass;
@@ -73,10 +78,14 @@
 - (void)_didPerformUpdateVisibleCellsPass;
 - (id)_dynamicAnimator;
 - (struct CGRect)_dynamicReferenceBounds;
+- (unsigned long long)_edgesForSafeAreaPropagationToDescendants;
 - (BOOL)_estimatesSizes;
+- (BOOL)_estimatesSupplementaryItems;
+- (id)_extendedAttributesQueryIncludingOrthogonalScrollingRegions:(struct CGRect)arg1;
 - (struct CGSize)_fallbackItemSize;
 - (void)_finalizeCollectionViewItemAnimations;
 - (void)_finalizeLayoutTransition;
+- (BOOL)_hasOrthogonalScrollingSections;
 - (id)_indexPathsToDeleteForDecorationViewOfKind:(id)arg1;
 - (id)_indexPathsToDeleteForSupplementaryViewOfKind:(id)arg1;
 - (id)_indexPathsToInsertForDecorationViewOfKind:(id)arg1;
@@ -87,21 +96,49 @@
 - (id)_invalidationContextForUpdatedLayoutMargins:(struct UIEdgeInsets)arg1;
 - (id)_layoutAttributesForElementsInProjectedRect:(struct CGRect)arg1 withProjectionVector:(struct CGVector)arg2 projectionDistance:(double)arg3;
 - (id)_layoutAttributesForReorderedItemAtIndexPath:(id)arg1 withTargetPosition:(struct CGPoint)arg2;
+- (int)_layoutAxis;
+- (BOOL)_needsRecomputeOfPreferredAttributesForVisibleEstimatedItemsDuringUpdate;
+- (struct CGPoint)_offsetForOrthogonalScrollingSection:(long long)arg1;
 - (struct CGPoint)_offsetInTopParentLayout:(struct _UICollectionViewCompositionLayout **)arg1;
+- (struct CGRect)_orthogonalFrameWithOffsetElidedForItemWithLayoutAttributes:(id)arg1 frame:(struct CGRect)arg2;
+- (int)_orthogonalScrollingAxis;
+- (struct NSDirectionalEdgeInsets)_orthogonalScrollingContentInsetsForSection:(long long)arg1;
+- (struct CGRect)_orthogonalScrollingContentRectForSection:(long long)arg1;
+- (double)_orthogonalScrollingDecelerationRateForSection:(long long)arg1;
+- (BOOL)_orthogonalScrollingElementShouldAppearAboveForAttributes:(id)arg1;
+- (struct CGRect)_orthogonalScrollingLayoutRectForSection:(long long)arg1;
+- (double)_orthogonalScrollingPagingDimensionForSection:(long long)arg1;
+- (id)_orthogonalScrollingSections;
+- (BOOL)_orthogonalScrollingShouldCenterCustomPagingSizeForSection:(long long)arg1;
+- (struct CGPoint)_orthogonalScrollingTargetContentOffsetForOffset:(struct CGPoint)arg1 section:(long long)arg2;
+- (id)_orthogonalScrollingTrace;
+- (BOOL)_orthogonalScrollingUsesTargetContentOffsetForSection:(long long)arg1;
+- (BOOL)_overridesSafeAreaPropagationToDescendants;
 - (struct UIEdgeInsets)_preferredLayoutMargins;
+- (void)_prepareForCollectionViewUpdates:(id)arg1 withDataSourceTranslator:(id)arg2;
+- (void)_prepareForPreferredAttributesQueryForView:(id)arg1 withLayoutAttributes:(id)arg2;
 - (void)_prepareForTransitionFromLayout:(id)arg1;
 - (void)_prepareForTransitionToLayout:(id)arg1;
 - (void)_prepareToAnimateFromCollectionViewItems:(id)arg1 atContentOffset:(struct CGPoint)arg2 toItems:(id)arg3 atContentOffset:(struct CGPoint)arg4;
+- (BOOL)_preparedForBoundsChanges;
 - (id)_reorderingTargetItemIndexPathForPosition:(struct CGPoint)arg1 withPreviousIndexPath:(id)arg2;
+- (struct CGVector)_scrollingUnitVectorForOrthogonalScrollingSection:(long long)arg1;
 - (void)_setCollectionView:(id)arg1;
 - (void)_setCollectionViewBoundsSize:(struct CGSize)arg1;
 - (void)_setDynamicAnimator:(id)arg1;
 - (void)_setExternalObjectTable:(id)arg1 forNibLoadingOfDecorationViewOfKind:(id)arg2;
+- (void)_setOffset:(struct CGPoint)arg1 forOrthogonalScrollingSection:(long long)arg2;
 - (void)_setWantsRightToLeftHorizontalMirroringIfNeeded:(BOOL)arg1;
+- (BOOL)_shouldConfigureForPagingForOrthogonalScrollingSection:(long long)arg1;
+- (BOOL)_shouldOrthogonalScrollingSectionDecorationScrollWithContentForIndexPath:(id)arg1 elementKind:(id)arg2;
+- (BOOL)_shouldOrthogonalScrollingSectionSupplementaryScrollWithContentForIndexPath:(id)arg1 elementKind:(id)arg2;
 - (BOOL)_shouldScrollToContentBeginningInRightToLeft;
 - (BOOL)_supportsAdvancedTransitionAnimations;
+- (void)_traitCollectionDidChangeFromPreviousCollection:(id)arg1 newTraitCollection:(id)arg2;
 - (BOOL)_wantsRightToLeftHorizontalMirroringIfNeeded;
+- (BOOL)_wantsUntrackedAnimationCleanupForAuxillaryItems;
 - (void)_willPerformUpdateVisibleCellsPass;
+- (struct CGRect)bounds;
 - (BOOL)canBeEdited;
 - (struct CGSize)collectionViewContentSize;
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromLayout:(id)arg2;

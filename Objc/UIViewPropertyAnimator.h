@@ -49,6 +49,7 @@
     BOOL _scrubsLinearly;
     BOOL _starting;
     BOOL _pausedOnCompletion;
+    BOOL _shouldLayoutSubviews;
     BOOL _introspectable;
     UIViewAnimationState *_viewAnimationState;
     NSUUID *_trackingIdentifier;
@@ -84,6 +85,7 @@
 @property (nonatomic, getter=isReversed) BOOL reversed; // @synthesize reversed=_reversed;
 @property (readonly, nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
 @property (nonatomic) BOOL scrubsLinearly; // @synthesize scrubsLinearly=_scrubsLinearly;
+@property (nonatomic, setter=_setShouldLayoutSubviews:) BOOL shouldLayoutSubviews; // @synthesize shouldLayoutSubviews=_shouldLayoutSubviews;
 @property (nonatomic, getter=_isStarting, setter=_setStarting:) BOOL starting; // @synthesize starting=_starting;
 @property (readonly, nonatomic) long long state;
 @property (readonly) Class superclass;

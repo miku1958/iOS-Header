@@ -32,10 +32,12 @@
 @property (readonly, nonatomic) BOOL touchInput; // @synthesize touchInput=_touchInput;
 @property (readonly, nonatomic) BOOL touchpadInput; // @synthesize touchpadInput=_touchpadInput;
 
++ (id)fullScreenTraitsWithScreen:(id)arg1 orientation:(long long)arg2;
 + (id)traitsWithScreen:(id)arg1 orientation:(long long)arg2;
++ (id)traitsWithScreen:(id)arg1 orientation:(long long)arg2 ignoreRemoteKeyboard:(BOOL)arg3;
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithScreen:(id)arg1 orientation:(long long)arg2;
+- (id)initWithScreen:(id)arg1 orientation:(long long)arg2 allowFloating:(BOOL)arg3 ignoreRemoteKeyboard:(BOOL)arg4;
 - (void)updateForTextInputTraits:(id)arg1 supportedInteractionModel:(unsigned long long)arg2;
 
 @end

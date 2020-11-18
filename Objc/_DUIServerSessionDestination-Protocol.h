@@ -10,6 +10,7 @@
 - (oneway void)dirtyDestinationItems:(NSArray *)arg1;
 - (oneway void)enableKeyboardIfNeeded;
 - (oneway void)requestDropWithOperation:(unsigned long long)arg1;
+- (oneway void)requestVisibleItemsWithReply:(void (^)(NSArray *))arg1;
 - (oneway void)sawDragEndEvent;
 - (oneway void)takePotentialDrop:(_DUIPotentialDrop *)arg1;
 @end

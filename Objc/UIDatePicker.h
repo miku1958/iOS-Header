@@ -18,7 +18,6 @@
     BOOL shouldAnimateSetDateCall;
 }
 
-@property (nonatomic, getter=_usesModernStyle, setter=_setUsesModernStyle:) BOOL _usesModernStyle;
 @property (nonatomic, getter=_allowsZeroCountDownDuration, setter=_setAllowsZeroCountDownDuration:) BOOL allowsZeroCountDownDuration; // @dynamic allowsZeroCountDownDuration;
 @property (nonatomic, getter=_allowsZeroTimeInterval, setter=_setAllowsZeroTimeInterval:) BOOL allowsZeroTimeInterval; // @dynamic allowsZeroTimeInterval;
 @property (copy, nonatomic) NSCalendar *calendar; // @dynamic calendar;
@@ -31,6 +30,7 @@
 @property (strong, nonatomic, getter=_highlightColor, setter=_setHighlightColor:) UIColor *highlightColor;
 @property (readonly, nonatomic, getter=_isTimeIntervalMode) BOOL isTimeIntervalMode; // @dynamic isTimeIntervalMode;
 @property (strong, nonatomic) NSLocale *locale; // @dynamic locale;
+@property (strong, nonatomic, getter=_magnifierLineColor, setter=_setMagnifierLineColor:) UIColor *magnifierLineColor;
 @property (strong, nonatomic) NSDate *maximumDate; // @dynamic maximumDate;
 @property (strong, nonatomic) NSDate *minimumDate; // @dynamic minimumDate;
 @property (nonatomic) long long minuteInterval; // @dynamic minuteInterval;

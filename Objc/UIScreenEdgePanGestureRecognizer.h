@@ -6,54 +6,47 @@
 
 #import <UIKitCore/UIPanGestureRecognizer.h>
 
-#import <UIKitCore/_UIScreenEdgePanRecognizingDelegate-Protocol.h>
+#import <UIKitCore/_UISEGestureFeatureDelegate-Protocol.h>
 
-@class NSString;
-@protocol _UIScreenEdgePanRecognizing;
+@class NSString, _UISEGestureFeatureSettings, _UISEMuxGestureFeature;
 
-@interface UIScreenEdgePanGestureRecognizer : UIPanGestureRecognizer <_UIScreenEdgePanRecognizingDelegate>
+@interface UIScreenEdgePanGestureRecognizer : UIPanGestureRecognizer <_UISEGestureFeatureDelegate>
 {
-    id<_UIScreenEdgePanRecognizing> _recognizer;
-    BOOL _ignoreSubsequentTouches;
+    _UISEGestureFeatureSettings *_settings;
+    CDUnknownBlockType _createFeatureBlock;
+    _UISEMuxGestureFeature *_rootFeature;
+    unsigned long long _touchedEdges;
+    unsigned long long _edges;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) unsigned long long edges;
+@property (nonatomic) unsigned long long edges; // @synthesize edges=_edges;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (BOOL)_shouldDefaultToTouches;
 + (BOOL)_shouldSupportStylusTouches;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (double)_bottomEdgeRegionSize;
 - (double)_edgeRegionSize;
-- (struct CGPoint)_locationForTouch:(id)arg1;
-- (id)_recognizer;
+- (void)_setBottomEdgeRegionSize:(double)arg1;
 - (void)_setEdgeRegionSize:(double)arg1;
 - (void)_setHysteresis:(double)arg1;
 - (BOOL)_shouldTryToBeginWithEvent:(id)arg1;
-- (BOOL)_shouldUseGrapeFlags;
 - (long long)_touchInterfaceOrientation;
-- (double)bottomEdgeAngleWindow;
-- (void)dealloc;
+- (id)debugDictionary;
 - (void)encodeWithCoder:(id)arg1;
-- (BOOL)ignoreSubsequentTouches;
-- (void)incorporateTouches:(id)arg1 withEvent:(id)arg2;
+- (void)featureDidChangeState:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
-- (id)initWithTarget:(id)arg1 action:(SEL)arg2 type:(long long)arg3;
-- (id)initWithTarget:(id)arg1 action:(SEL)arg2 type:(long long)arg3 maxTouches:(unsigned long long)arg4;
-- (BOOL)isRequiringLongPress;
-- (BOOL)recognizeAlongEdge;
-- (BOOL)recognizeImmediatelyFromEdgeLocked;
-- (id)recognizerTouchesToIgnoreForEvent:(id)arg1;
+- (id)initWithTarget:(id)arg1 action:(SEL)arg2 type:(long long)arg3 options:(unsigned long long)arg4;
 - (void)reset;
-- (void)screenEdgePanRecognizingStateDidChange:(id)arg1;
-- (void)setBottomEdgeAngleWindow:(double)arg1;
-- (void)setRecognizeAlongEdge:(BOOL)arg1;
-- (void)setRecognizeImmediatelyFromEdgeLocked:(BOOL)arg1;
+- (void)setMinimumNumberOfTouches:(unsigned long long)arg1;
 - (unsigned long long)touchedEdges;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 
 @end

@@ -43,8 +43,6 @@
     BOOL _screenIsOff;
     unsigned long long _presentationModifierRequestCount;
     NSHashTable *_presentationGroups;
-    BOOL _performScheduledBlocksManually;
-    BOOL _commitsSynchronously;
     BOOL _usesMainThreadExecution;
     BOOL _advancingOnCommitDisabled;
     unsigned long long _executionMode;
@@ -58,13 +56,11 @@
 @property (weak) NSThread *animationThread; // @synthesize animationThread=_animationThread;
 @property (strong) NSObject<OS_dispatch_semaphore> *animationThreadKeepAliveSemaphore; // @synthesize animationThreadKeepAliveSemaphore=_animationThreadKeepAliveSemaphore;
 @property (weak) NSRunLoop *animationThreadRunLoop; // @synthesize animationThreadRunLoop=_animationThreadRunLoop;
-@property (nonatomic) BOOL commitsSynchronously; // @synthesize commitsSynchronously=_commitsSynchronously;
 @property (weak) NSThread *currentTickThread; // @synthesize currentTickThread=_currentTickThread;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long executionMode; // @synthesize executionMode=_executionMode;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, setter=_setPerformScheduledBlocksManually:) BOOL performScheduledBlocksManually; // @synthesize performScheduledBlocksManually=_performScheduledBlocksManually;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL usesMainThreadExecution; // @synthesize usesMainThreadExecution=_usesMainThreadExecution;
 

@@ -17,12 +17,16 @@
 - (struct CGRect)_incomingNavigationBarFrame;
 - (BOOL)_isInteractiveCustomNavigationTransition;
 - (struct NSDirectionalEdgeInsets)_layoutMarginsforNavigationBar:(UINavigationBar *)arg1;
+- (void)_navigationBar:(UINavigationBar *)arg1 itemEnabledAutoScrollTransition:(UINavigationItem *)arg2;
+- (double)_navigationBar:(UINavigationBar *)arg1 preferredHeightForTransitionToHeightRange:(CDStruct_39925896)arg2;
 - (void)_navigationBarChangedSize:(UINavigationBar *)arg1;
 - (void)_navigationBarDidChangeStyle:(UINavigationBar *)arg1;
 - (void)_navigationBarDidEndAnimation:(UINavigationBar *)arg1;
+- (BOOL)_navigationBarLayoutIsInInteractiveScroll;
 - (BOOL)_navigationBarShouldUpdateProgress;
 - (void)_navigationBarWillBeginCoordinatedTransitionAnimations:(UINavigationBar *)arg1;
 - (void)_navigationItemDidUpdateSearchController:(UINavigationItem *)arg1 oldSearchController:(UISearchController *)arg2;
+- (void)_popNavigationBar:(UINavigationBar *)arg1 item:(UINavigationItem *)arg2;
 - (BOOL)_shouldCrossFadeNavigationBar;
 - (id<UIViewControllerTransitionCoordinator>)_transitionCoordinator;
 - (void)_updatePaletteConstraints;

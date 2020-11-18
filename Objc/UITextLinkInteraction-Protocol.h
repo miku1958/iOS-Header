@@ -14,5 +14,8 @@
 - (void)updateInteractionWithLinkAtPoint:(struct CGPoint)arg1;
 - (void)validateInteractionWithLinkAtPoint:(struct CGPoint)arg1;
 - (BOOL)willInteractWithLinkAtPoint:(struct CGPoint)arg1;
+
+@optional
+- (BOOL)interactionDidStartWithLinkAtPoint:(struct CGPoint)arg1;
 @end
 

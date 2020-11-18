@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 + (id)badgeDisplayIdentifier;
 + (id)groupWithHighPriority:(long long)arg1 lowPriority:(long long)arg2;
 - (void).cxx_destruct;
+- (void)_create_badgeView;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)viewForIdentifier:(id)arg1;
 

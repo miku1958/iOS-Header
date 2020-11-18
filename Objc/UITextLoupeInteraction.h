@@ -6,20 +6,57 @@
 
 #import <UIKitCore/UITextInteraction.h>
 
+#import <UIKitCore/_UITextLoupeResponderProxyDelegate-Protocol.h>
+
+@class UIDelayedAction, UIResponder, UITextGestureTuning, _UITextLoupeResponderProxy;
+
 __attribute__((visibility("hidden")))
-@interface UITextLoupeInteraction : UITextInteraction
+@interface UITextLoupeInteraction : UITextInteraction <_UITextLoupeResponderProxyDelegate>
 {
     Class _configuratorClass;
+    UIDelayedAction *_delayedLoupeAction;
+    UIDelayedAction *_delayedSelectionAction;
+    BOOL _isShiftKeyBeingHeld;
+    UITextGestureTuning *_gestureTuning;
+    BOOL _hasPerformedInteraction;
+    BOOL _didChangeSelection;
+    struct CGPoint _initialPointFromPreviousInteraction;
+    _UITextLoupeResponderProxy *_responderProxy;
 }
 
-- (BOOL)_isShiftKeyBeingHeldForGesture:(id)arg1;
+@property (readonly, nonatomic) UIResponder *responder;
+@property (strong, nonatomic) _UITextLoupeResponderProxy *responderProxy; // @synthesize responderProxy=_responderProxy;
+@property (nonatomic) BOOL shouldUseLineThreshold;
+@property (nonatomic) BOOL strongerBiasAgainstUp;
+
+- (void).cxx_destruct;
+- (void)_createGestureTuningIfNecessary;
+- (void)_performGestureType:(long long)arg1 state:(long long)arg2 location:(struct CGPoint)arg3 locationOfFirstTouch:(struct CGPoint)arg4;
+- (void)_processGestureForCustomHighlighter:(id)arg1;
+- (void)assertInitialVerticalOffset:(double)arg1 fromTopOfCaret:(double)arg2;
 - (void)canBeginDragCursor:(id)arg1;
+- (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (void)cancelDelayedLoupeActionIfNecessary;
+- (void)delayedDisplayLoupe:(id)arg1;
+- (void)delayedLoupeAction:(id)arg1;
+- (void)delayedSelectionAction:(id)arg1;
+- (void)didMoveToView:(id)arg1;
 - (void)finishSetup;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)initWithConfigurator:(Class)arg1;
+- (BOOL)interaction_gestureRecognizerShouldBegin:(id)arg1;
 - (void)loupeGesture:(id)arg1;
-- (void)loupeGestureWithState:(long long)arg1 atGesturePoint:(CDUnknownBlockType)arg2 modifierFlags:(long long)arg3 shouldCancel:(BOOL *)arg4;
-- (void)loupeGestureWithState:(long long)arg1 atGesturePoint:(CDUnknownBlockType)arg2 shouldCancel:(BOOL *)arg3;
+- (void)loupeGestureWithState:(long long)arg1 location:(CDUnknownBlockType)arg2 translation:(CDUnknownBlockType)arg3 velocity:(CDUnknownBlockType)arg4 modifierFlags:(long long)arg5 shouldCancel:(BOOL *)arg6;
+- (struct CGPoint)pointIfPlacedCarefully:(struct CGPoint)arg1;
+- (void)selectToHere:(id)arg1;
+- (void)setupDelayedLoupeActionWithInitialPoint:(struct CGPoint)arg1;
+- (struct CGPoint)touchAlignedPointForPoint:(struct CGPoint)arg1 translation:(struct CGPoint)arg2;
+- (BOOL)translationIsWithinAllowableMovement:(struct CGPoint)arg1;
+- (void)updateInitialPoint:(struct CGPoint)arg1;
+- (void)updateOrCancelDelayedLoupeActionWithPoint:(struct CGPoint)arg1 translation:(struct CGPoint)arg2;
+- (void)updateVisibilityOffsetForGesture:(id)arg1;
+- (void)willBeginExternalGesture;
+- (void)willMoveToView:(id)arg1;
 
 @end
 

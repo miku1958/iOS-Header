@@ -20,6 +20,7 @@
     UITextChecker *_textChecker;
     unsigned long long _options;
     BOOL _shouldDelayActivatingSelectionView;
+    BOOL _hadCaretSelectionBeforeTap;
     NSString *_wordBeforeTap;
     struct CGRect _caretBeforeTap;
 }
@@ -28,6 +29,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) UILongPressGestureRecognizer *forcePressGesture; // @dynamic forcePressGesture;
+@property (nonatomic) BOOL hadCaretSelectionBeforeTap; // @synthesize hadCaretSelectionBeforeTap=_hadCaretSelectionBeforeTap;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UILongPressGestureRecognizer *loupeGesture; // @dynamic loupeGesture;
 @property (nonatomic) BOOL shouldDelayActivatingSelectionView; // @synthesize shouldDelayActivatingSelectionView=_shouldDelayActivatingSelectionView;
@@ -78,6 +80,7 @@
 - (void)updateActivatingSelectionView;
 - (void)updateSelectionWithPoint:(struct CGPoint)arg1;
 - (void)updateWithMagnifierTerminalPoint:(BOOL)arg1;
+- (BOOL)wantsLinkInteraction;
 
 @end
 

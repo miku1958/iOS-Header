@@ -49,7 +49,6 @@ __attribute__((visibility("hidden")))
 - (void)handleLongPress:(id)arg1;
 - (void)handleTap:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)menuDidHide:(id)arg1;
 - (void)prepareForReuse;
 - (void)removePage:(id)arg1;
 - (void)setEndPage:(id)arg1;

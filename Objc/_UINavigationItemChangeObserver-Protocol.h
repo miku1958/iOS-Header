@@ -4,16 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class UINavigationItem, UISearchController;
+@class UINavigationBarAppearance, UINavigationItem, UISearchController, _UINavigationBarPalette;
 
 @protocol _UINavigationItemChangeObserver
+- (void)navigationItem:(UINavigationItem *)arg1 appearance:(UINavigationBarAppearance *)arg2 categoriesChanged:(long long)arg3;
+- (BOOL)navigationItemIsBackItem:(UINavigationItem *)arg1;
+- (BOOL)navigationItemIsTopItem:(UINavigationItem *)arg1;
 - (void)navigationItemUpdatedBackButtonContent:(UINavigationItem *)arg1 animated:(BOOL)arg2;
-- (void)navigationItemUpdatedBackgroundAppearance:(UINavigationItem *)arg1 animated:(BOOL)arg2;
-- (void)navigationItemUpdatedCanvasView:(UINavigationItem *)arg1 animated:(BOOL)arg2;
+- (void)navigationItemUpdatedBackgroundAppearance:(UINavigationItem *)arg1;
+- (void)navigationItemUpdatedBottomPalette:(UINavigationItem *)arg1 oldPalette:(_UINavigationBarPalette *)arg2;
+- (void)navigationItemUpdatedCanvasView:(UINavigationItem *)arg1;
+- (void)navigationItemUpdatedContentLayout:(UINavigationItem *)arg1 animated:(BOOL)arg2;
+- (void)navigationItemUpdatedLargeTitleContent:(UINavigationItem *)arg1;
+- (void)navigationItemUpdatedLargeTitleDisplayMode:(UINavigationItem *)arg1;
 - (void)navigationItemUpdatedLeftBarButtonItems:(UINavigationItem *)arg1 animated:(BOOL)arg2;
-- (void)navigationItemUpdatedPromptContent:(UINavigationItem *)arg1 animated:(BOOL)arg2;
+- (void)navigationItemUpdatedPromptContent:(UINavigationItem *)arg1;
 - (void)navigationItemUpdatedRightBarButtonItems:(UINavigationItem *)arg1 animated:(BOOL)arg2;
-- (void)navigationItemUpdatedSearchController:(UINavigationItem *)arg1 oldSearchController:(UISearchController *)arg2 animated:(BOOL)arg3;
+- (void)navigationItemUpdatedScrollEdgeProgress:(UINavigationItem *)arg1;
+- (void)navigationItemUpdatedSearchController:(UINavigationItem *)arg1 oldSearchController:(UISearchController *)arg2;
 - (void)navigationItemUpdatedTitleContent:(UINavigationItem *)arg1 animated:(BOOL)arg2;
 @end
 

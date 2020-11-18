@@ -7,6 +7,12 @@
 #import <WebKitLegacy/DOMHTMLSelectElement.h>
 
 @interface DOMHTMLSelectElement (UIWebFormPeripheral)
+- (BOOL)_requiresAccessoryView;
+- (BOOL)_requiresInputView;
+- (void)_startAssistingDocumentView:(id)arg1;
+- (void)_stopAssistingDocumentView:(id)arg1;
+- (BOOL)_supportsAutoFill;
 - (id)createPeripheral;
+- (BOOL)nodeCanBecomeFirstResponder;
 @end
 

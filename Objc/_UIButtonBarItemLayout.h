@@ -22,12 +22,14 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_popoverGuideTop;
     NSLayoutConstraint *_popoverGuideHeight;
     BOOL _useGroupSizing;
+    BOOL _suppressSpacing;
     UILayoutGuide *_popoverLayoutGuide;
     CDUnknownBlockType _itemViewGenerator;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType itemViewGenerator; // @synthesize itemViewGenerator=_itemViewGenerator;
 @property (readonly, nonatomic) UILayoutGuide *popoverLayoutGuide; // @synthesize popoverLayoutGuide=_popoverLayoutGuide;
+@property (nonatomic) BOOL suppressSpacing; // @synthesize suppressSpacing=_suppressSpacing;
 @property (nonatomic) BOOL useGroupSizing; // @synthesize useGroupSizing=_useGroupSizing;
 
 - (void).cxx_destruct;
@@ -41,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateItemView;
 - (void)_updateItemViewSizing;
 - (id)description;
+- (void)dirtyLayoutForPlainAppearanceChange:(BOOL)arg1 doneAppearanceChanged:(BOOL)arg2;
 - (id)initWithLayoutMetrics:(id)arg1;
 - (id)initWithLayoutMetrics:(id)arg1 barButtonItem:(id)arg2;
 - (double)minimumLayoutWidthGivenMinimumSpaceWidth:(double)arg1;

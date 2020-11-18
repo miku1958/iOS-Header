@@ -11,23 +11,36 @@
 #import <UIKitCore/UIScrollViewDelegate-Protocol.h>
 #import <UIKitCore/UISpringLoadedInteractionSupporting-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSMutableArray, NSString, UIAlertAction, UIAlertController, UIAlertControllerVisualStyle, UILabel, _UIAlertControllerActionViewMetrics, _UIAlertControllerInterfaceActionGroupView, _UIFlexibleConstantConstraintSet, _UIKeyboardLayoutAlignmentView;
+@class NSArray, NSLayoutConstraint, NSMutableArray, NSString, UIAlertAction, UIAlertController, UIAlertControllerVisualStyle, UILabel, UIVisualEffectView, _UIAlertControllerActionViewMetrics, _UIAlertControllerInterfaceActionGroupView, _UIFlexibleConstantConstraintSet, _UIKeyboardLayoutAlignmentView;
 
 __attribute__((visibility("hidden")))
 @interface _UIAlertControllerView : UIView <UIInterfaceActionHandlerInvocationDelegate, UIScrollViewDelegate, UISpringLoadedInteractionSupporting, UIGestureRecognizerDelegatePrivate>
 {
     UIAlertController *_alertController;
     UIAlertControllerVisualStyle *_visualStyle;
+    struct {
+        unsigned int hasAppliedTitleAndMessageLabelVibrantContainerViewConstraints:1;
+        unsigned int hasAppliedTitleConstraints:1;
+        unsigned int hasAppliedMessageConstraints:1;
+        unsigned int hasAppliedDetailConstraints:1;
+        unsigned int presentedAsPopover:1;
+        unsigned int hasDimmingView:1;
+        unsigned int cancelActionIsDiscrete:1;
+        unsigned int shouldHaveBackdropView:1;
+        unsigned int alignsToKeyboard:1;
+        unsigned int hasCachedLargestActionDimension:1;
+        unsigned int needsActionsChangedHandling:1;
+        unsigned int needsUpdateForPropertyChange:1;
+    } _alertControllerViewFlags;
     UIView *_contentView;
     UIView *_contentViewTopItemsView;
     _UIAlertControllerInterfaceActionGroupView *_mainInterfaceActionsGroupView;
     _UIAlertControllerInterfaceActionGroupView *_discreteCancelActionGroupView;
+    UIVisualEffectView *_titleAndMessageLabelVibrantContainerView;
     UILabel *_titleLabel;
-    BOOL _hasAppliedTitleConstraints;
     UILabel *_messageLabel;
-    BOOL _hasAppliedMessageConstraints;
     UILabel *_detailMessageLabel;
-    BOOL _hasAppliedDetailConstraints;
+    UIView *_separatedHeaderContentViewControllerContainerView;
     UIView *_headerContentViewControllerContainerView;
     UIView *_contentViewControllerContainerView;
     UIView *_textFieldViewControllerContainerView;
@@ -36,12 +49,6 @@ __attribute__((visibility("hidden")))
     UIView *_dimmingView;
     NSMutableArray *_actionViews;
     struct CGPoint _actionSelectionInitialLocation;
-    BOOL _inPopover;
-    BOOL _hasDimmingView;
-    BOOL _showsCancelAction;
-    BOOL _cancelActionIsDiscrete;
-    BOOL _shouldHaveBackdropView;
-    BOOL _alignsToKeyboard;
     long long _layoutRequiresPositionUpdateCount;
     NSArray *_dimmingViewConstraints;
     NSArray *_dimmingViewForegroundViewTopConstraints;
@@ -51,11 +58,9 @@ __attribute__((visibility("hidden")))
     NSArray *_noDimmingViewConstraints;
     NSLayoutConstraint *_headerContentViewControllerPreferredWidthConstraint;
     NSLayoutConstraint *_headerContentViewControllerPreferredHeightConstraint;
-    BOOL _hasCachedLargestActionDimension;
     struct CGSize _largestActionDimension;
     UIAlertAction *_effectivePreferredAction;
     long long _batchActionChangesInProgressCount;
-    BOOL _needsActionsChangedHandling;
     BOOL _springLoaded;
     BOOL _actionsReversed;
     BOOL _presentationContextPrefersCancelActionShown;
@@ -65,6 +70,7 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_contentViewBottomConstraint;
     NSLayoutConstraint *_contentViewMaxHeightConstraint;
     NSLayoutConstraint *_headerContentViewControllerContainerViewTopAlignmentConstraint;
+    NSArray *_titleAndMessageLabelVibrantContainerViewVerticalConstraints;
     _UIFlexibleConstantConstraintSet *_titleLabelTopAlignmentConstraints;
     _UIFlexibleConstantConstraintSet *_messageLabelTopAlignmentConstraints;
     NSLayoutConstraint *_detailMessageLabelTopAlignmentConstraint;
@@ -81,6 +87,8 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_contentViewControllerContainerViewTopAlignmentConstraint;
     NSLayoutConstraint *_contentViewControllerContainerViewWidthConstraint;
     NSLayoutConstraint *_contentViewControllerContainerViewHeightConstraint;
+    NSLayoutConstraint *_separatedHeaderContentViewControllerContainerViewBottomConstraint;
+    NSLayoutConstraint *_separatedHeaderContentViewControllerContainerViewWidthConstraint;
     _UIFlexibleConstantConstraintSet *_textFieldViewControllerContainerViewTopAlignmentConstraints;
     NSLayoutConstraint *_textFieldViewControllerContainerViewWidthConstraint;
     NSLayoutConstraint *_textFieldViewControllerContainerViewHeightConstraint;
@@ -137,13 +145,15 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (strong) NSLayoutConstraint *headerContentViewControllerContainerViewTopAlignmentConstraint; // @synthesize headerContentViewControllerContainerViewTopAlignmentConstraint=_headerContentViewControllerContainerViewTopAlignmentConstraint;
 @property (strong) NSLayoutConstraint *heightConstraint; // @synthesize heightConstraint=_heightConstraint;
-@property BOOL inPopover;
 @property (nonatomic, getter=_layoutSize, setter=_setLayoutSize:) struct CGSize layoutSize; // @synthesize layoutSize=_layoutSize;
 @property (strong) NSLayoutConstraint *mainActionButtonSequenceViewHeightConstraint; // @synthesize mainActionButtonSequenceViewHeightConstraint=_mainActionButtonSequenceViewHeightConstraint;
 @property (strong) NSLayoutConstraint *mainActionButtonSequenceViewHorizontalAlignmentConstraint; // @synthesize mainActionButtonSequenceViewHorizontalAlignmentConstraint=_mainActionButtonSequenceViewHorizontalAlignmentConstraint;
 @property (strong) NSLayoutConstraint *mainActionButtonSequenceViewWidthConstraint; // @synthesize mainActionButtonSequenceViewWidthConstraint=_mainActionButtonSequenceViewWidthConstraint;
 @property (strong) _UIFlexibleConstantConstraintSet *messageLabelTopAlignmentConstraints; // @synthesize messageLabelTopAlignmentConstraints=_messageLabelTopAlignmentConstraints;
 @property (nonatomic) BOOL presentationContextPrefersCancelActionShown; // @synthesize presentationContextPrefersCancelActionShown=_presentationContextPrefersCancelActionShown;
+@property BOOL presentedAsPopover;
+@property (strong) NSLayoutConstraint *separatedHeaderContentViewControllerContainerViewBottomConstraint; // @synthesize separatedHeaderContentViewControllerContainerViewBottomConstraint=_separatedHeaderContentViewControllerContainerViewBottomConstraint;
+@property (strong) NSLayoutConstraint *separatedHeaderContentViewControllerContainerViewWidthConstraint; // @synthesize separatedHeaderContentViewControllerContainerViewWidthConstraint=_separatedHeaderContentViewControllerContainerViewWidthConstraint;
 @property BOOL shouldHaveBackdropView;
 @property (nonatomic, getter=isSpringLoaded) BOOL springLoaded; // @synthesize springLoaded=_springLoaded;
 @property (readonly) Class superclass;
@@ -154,11 +164,12 @@ __attribute__((visibility("hidden")))
 @property (strong) NSLayoutConstraint *textFieldViewControllerViewLeftConstraint; // @synthesize textFieldViewControllerViewLeftConstraint=_textFieldViewControllerViewLeftConstraint;
 @property (strong) NSLayoutConstraint *textFieldViewControllerViewRightConstraint; // @synthesize textFieldViewControllerViewRightConstraint=_textFieldViewControllerViewRightConstraint;
 @property (strong) NSLayoutConstraint *textFieldViewControllerViewTopConstraint; // @synthesize textFieldViewControllerViewTopConstraint=_textFieldViewControllerViewTopConstraint;
+@property (strong) NSArray *titleAndMessageLabelVibrantContainerViewVerticalConstraints; // @synthesize titleAndMessageLabelVibrantContainerViewVerticalConstraints=_titleAndMessageLabelVibrantContainerViewVerticalConstraints;
 @property (strong) _UIFlexibleConstantConstraintSet *titleLabelTopAlignmentConstraints; // @synthesize titleLabelTopAlignmentConstraints=_titleLabelTopAlignmentConstraints;
 @property (strong) NSLayoutConstraint *widthConstraint; // @synthesize widthConstraint=_widthConstraint;
 
-+ (BOOL)_retroactivelyRequiresConstraintBasedLayout;
 + (void)initialize;
++ (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (id)__cancelActionView;
 - (void)_accessibilityColorsChanged;
@@ -167,13 +178,16 @@ __attribute__((visibility("hidden")))
 - (void)_actionsChanged;
 - (void)_addContentViewControllerToViewHierarchy;
 - (void)_addHeaderContentViewControllerToViewHierarchy;
+- (void)_addSeparatedHeaderContentViewControllerToViewHierarchy;
 - (void)_applyContentViewControllerContainerViewConstraints;
 - (void)_applyDetailMessageConstraints;
 - (void)_applyHeaderContentViewControllerContainerViewConstraints;
 - (void)_applyISEngineLayoutValuesToBoundsOnly:(BOOL)arg1;
 - (void)_applyKeyboardAlignmentViewsConstraints;
 - (void)_applyMessageConstraints;
+- (void)_applySeparatedContentViewControllerContainerViewContraints;
 - (void)_applyTextFieldViewControllerContainerViewConstraints;
+- (void)_applyTitleAndMessageLabelVibrantContainerViewConstraints;
 - (void)_applyTitleConstraints;
 - (void)_applyViewConstraints;
 - (void)_associateActionsWithActionViews;
@@ -211,7 +225,7 @@ __attribute__((visibility("hidden")))
 - (void)_layoutAndPositionInParentIfNeeded;
 - (double)_layoutWidthForHorizontalLayout:(BOOL)arg1;
 - (struct CGSize)_mainActionButtonSequenceViewSizeForHorizontalLayout:(BOOL)arg1 itemSize:(struct CGSize)arg2;
-- (double)_marginBetweenContentAndDiscreteCancelAction;
+- (double)_marginBetweenInterfaceActionGroups;
 - (struct CGSize)_minimumSizeForAllActions;
 - (id)_newStyledBackgroundView;
 - (long long)_numberOfActionsForMainActionButtonSequenceView;
@@ -223,13 +237,14 @@ __attribute__((visibility("hidden")))
 - (void)_prepareDetailMessageLabel;
 - (void)_prepareDimmingView;
 - (void)_prepareDimmingViewConstraints;
-- (void)_prepareDimmingViewConstraintsIfNeeded;
 - (void)_prepareDiscreteCancelActionGroupView;
 - (void)_prepareHeaderContentViewControllerContainerView;
 - (void)_prepareKeyboardLayoutAlignmentViews;
 - (void)_prepareMainInterfaceActionsGroupView;
 - (void)_prepareMesssageLabel;
+- (void)_prepareSeparateContentViewControllerContainerView;
 - (void)_prepareTextFieldViewControllerContainerView;
+- (void)_prepareTitleAndMessageLabelVibrantContainer;
 - (void)_prepareTitleLabel;
 - (void)_prepareViewsAndAddConstraints;
 - (id)_presentableAlertActions;
@@ -241,12 +256,14 @@ __attribute__((visibility("hidden")))
 - (void)_reloadInterfaceActionsGroupViewPreferredAction;
 - (void)_removeContentViewControllerViewFromHierarchy;
 - (void)_removeHeaderContentViewControllerViewFromHierarchy;
+- (void)_removeSeparatedHeaderContentViewControllerFromHierarchy;
 - (void)_scrollInitialActionToVisibleForPresentation;
 - (void)_setAttributedDetailMessage:(id)arg1;
 - (void)_setAttributedMessage:(id)arg1;
 - (void)_setAttributedTitle:(id)arg1;
 - (void)_setMessage:(id)arg1;
 - (void)_setTitle:(id)arg1;
+- (void)_setupHorizontalConstraintsForLabelView:(id)arg1;
 - (BOOL)_shouldAllowPassthroughToLayersBehindUsForTouches:(id)arg1;
 - (BOOL)_shouldHaveCancelActionInMainActionButtonSequenceView;
 - (struct CGSize)_sizeForLayoutWidthDetermination;
@@ -256,6 +273,7 @@ __attribute__((visibility("hidden")))
 - (double)_spaceRequiredForActionSectionsSpacing;
 - (id)_textFieldViewController;
 - (void)_textFieldsChanged;
+- (BOOL)_titleAndMessageLabelUseVibrancy;
 - (id)_unlocalizedOrderedPresentableAlertActionViewRepresentations;
 - (id)_unlocalizedOrderedPresentableAlertActions;
 - (void)_updateActionViewHeight;
@@ -266,6 +284,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateContentView;
 - (void)_updateDetailLabelContents;
 - (void)_updateDetailLabelFontSize;
+- (void)_updateForPropertyChangeIfNeeded;
 - (void)_updateInsets;
 - (void)_updateLabelFontSizes;
 - (void)_updateLabelProperties;
@@ -279,6 +298,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateTitleLabelContents;
 - (void)_updateTitleLabelFontSize;
 - (double)_verticalLayoutWidth;
+- (id)_vibrancyEffectForTitleAndMessageLabel;
 - (id)actions;
 - (void)beginTrackingSessionByTakingOverForSystemProvidedGestureRecognizer:(id)arg1;
 - (id)cancelAction;
@@ -295,6 +315,7 @@ __attribute__((visibility("hidden")))
 - (id)message;
 - (id)preferredFocusedView;
 - (void)safeAreaInsetsDidChange;
+- (id)separatedHeaderContentViewController;
 - (void)setTintAdjustmentMode:(long long)arg1;
 - (BOOL)shouldUpdateFocusInContext:(id)arg1;
 - (BOOL)showsCancelAction;
@@ -305,6 +326,8 @@ __attribute__((visibility("hidden")))
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)updateConstraints;
+- (void)updateObservations:(id)arg1;
 
 @end
 

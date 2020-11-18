@@ -7,7 +7,7 @@
 #import <UIKitCore/UITextDroppable-Protocol.h>
 #import <UIKitCore/UITextPasteConfigurationSupporting-Protocol.h>
 
-@class NSMutableAttributedString;
+@class NSAttributedString, NSMutableAttributedString;
 
 @protocol UITextDropSupporting <UITextDroppable, UITextPasteConfigurationSupporting>
 
@@ -21,6 +21,7 @@
 - (void)resignDropResponderWithDropPerformed:(BOOL)arg1;
 
 @optional
+- (NSAttributedString *)_attributedStringForInsertionOfAttributedString:(NSAttributedString *)arg1;
 - (void)sanitizeAttributedText:(NSMutableAttributedString *)arg1;
 @end
 

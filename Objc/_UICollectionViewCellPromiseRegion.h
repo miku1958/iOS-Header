@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     UICollectionViewLayoutAttributes *_layoutAttributes;
 }
 
+@property (nonatomic) BOOL areChildrenFocused;
 @property (weak, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

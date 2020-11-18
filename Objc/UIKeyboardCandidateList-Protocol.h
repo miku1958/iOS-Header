@@ -34,11 +34,11 @@
 - (NSString *)inlineText;
 - (void)jumpToCompositions;
 - (void)revealHiddenCandidates;
-- (unsigned long long)rowForCandidateAtIndex:(unsigned long long)arg1;
+- (long long)rowForCandidateAtIndex:(unsigned long long)arg1;
 - (TIKeyboardSecureCandidateRenderTraits *)secureCandidateRenderTraits;
 - (void)setCandidates:(TIKeyboardCandidateResultSet *)arg1 type:(int)arg2 inlineText:(NSString *)arg3 inlineRect:(struct CGRect)arg4 maxX:(double)arg5 layout:(BOOL)arg6;
 - (void)setInlineText:(NSString *)arg1;
 - (void)showCaret:(BOOL)arg1 gradually:(BOOL)arg2;
-- (unsigned long long)viewOffsetForCandidateAtIndex:(unsigned long long)arg1;
+- (long long)viewOffsetForCandidateAtIndex:(unsigned long long)arg1;
 @end
 

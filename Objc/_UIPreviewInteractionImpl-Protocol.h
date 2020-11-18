@@ -16,6 +16,7 @@
 @property (strong, nonatomic) id<_UIPreviewInteractionTouchForceProviding> touchForceProvider;
 @property (readonly, weak, nonatomic) UIView *view;
 
+- (void)_startPreviewAtLocation:(struct CGPoint)arg1 inCoordinateSpace:(id<UICoordinateSpace>)arg2;
 - (void)cancelInteraction;
 - (id)initWithView:(UIView *)arg1 previewInteraction:(UIPreviewInteraction *)arg2;
 - (struct CGPoint)locationInCoordinateSpace:(id<UICoordinateSpace>)arg1;

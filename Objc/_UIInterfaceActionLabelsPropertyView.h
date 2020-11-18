@@ -46,6 +46,8 @@ __attribute__((visibility("hidden")))
 - (void)interfaceAction:(id)arg1 reloadDisplayedContentActionProperties:(id)arg2;
 - (void)interfaceAction:(id)arg1 reloadDisplayedContentVisualStyle:(id)arg2;
 - (void)tintColorDidChange;
+- (id)viewForFirstBaselineLayout;
+- (id)viewForLastBaselineLayout;
 
 @end
 

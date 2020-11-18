@@ -4,22 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/UITextInteraction.h>
+#import <UIKitCore/UITextItemInteractionInteraction.h>
 
 __attribute__((visibility("hidden")))
-@interface UITextLinkInteraction : UITextInteraction
+@interface UITextLinkInteraction : UITextItemInteractionInteraction
 {
-    BOOL _isTryingToHighlightLink;
 }
 
-- (void)_resetForLink;
-- (void)cancelInteractionWithLink;
-- (id)init;
-- (BOOL)interaction_gestureRecognizerShouldBegin:(id)arg1;
-- (void)linkTapRecognizer:(id)arg1;
-- (void)longDelayRecognizer:(id)arg1;
-- (void)smallDelayRecognizer:(id)arg1;
-- (BOOL)tapOnLinkWithGesture:(id)arg1;
++ (id)alloc;
+- (BOOL)_presentActionsForTextInteractableItem:(id)arg1;
 
 @end
 

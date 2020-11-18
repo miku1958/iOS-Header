@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/_UIBarAppearanceChangeObserver-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, UIBarButtonItem, UIImageView, UINavigationBar, UISearchController, UIView;
+@class NSArray, NSMutableDictionary, NSString, UIBarButtonItem, UIImageView, UINavigationBar, UINavigationBarAppearance, UISearchController, UIView, _UINavigationBarItemStackEntry, _UINavigationBarPalette;
 @protocol _UINavigationItemChangeObserver;
 
-@interface UINavigationItem : NSObject <NSCoding>
+@interface UINavigationItem : NSObject <_UIBarAppearanceChangeObserver, NSCoding>
 {
     NSString *_title;
     NSString *_backButtonTitle;
@@ -35,23 +36,32 @@
     UIImageView *_frozenTitleView;
     NSArray *_abbreviatedBackButtonTitles;
     NSMutableDictionary *_minimumDesiredHeights;
+    BOOL _manualScrollEdgeAppearanceEnabled;
     BOOL __alignLargeTitleAccessoryViewToBaseline;
-    BOOL __supportsTwoLineLargeTitles;
     BOOL __backgroundHidden;
     BOOL _useRelativeLargeTitleInsets;
+    BOOL __preserveSearchBarAcrossTransitions;
     double _fontScaleAdjustment;
+    _UINavigationBarPalette *_bottomPalette;
     NSString *_pendingTitle;
+    double _manualScrollEdgeAppearanceProgress;
+    double _autoScrollEdgeTransitionDistance;
     NSArray *_leftItemSpaceList;
     NSArray *_rightItemSpaceList;
     unsigned long long _leftFlexibleSpaceCount;
     unsigned long long _rightFlexibleSpaceCount;
     long long _largeTitleDisplayMode;
+    UINavigationBarAppearance *_standardAppearance;
+    UINavigationBarAppearance *_compactAppearance;
+    UINavigationBarAppearance *_scrollEdgeAppearance;
     id<_UINavigationItemChangeObserver> __changeObserver;
+    _UINavigationBarItemStackEntry *__stackEntry;
     double __titleViewWidthForAnimations;
     double __idealCustomTitleWidth;
     unsigned long long __largeTitleAccessoryViewHorizontalAlignment;
     UINavigationBar *__owningNavigationBar;
     UIView *__largeTitleAccessoryView;
+    unsigned long long __largeTitleTwoLineMode;
     NSString *__weeTitle;
     UIView *__canvasView;
     NSArray *__alternateLargeTitles;
@@ -61,31 +71,44 @@
 @property (copy, nonatomic, setter=_setAbbreviatedBackButtonTitles:) NSArray *_abbreviatedBackButtonTitles;
 @property (readonly, nonatomic) BOOL _alignLargeTitleAccessoryViewToBaseline; // @synthesize _alignLargeTitleAccessoryViewToBaseline=__alignLargeTitleAccessoryViewToBaseline;
 @property (strong, nonatomic) NSArray *_alternateLargeTitles; // @synthesize _alternateLargeTitles=__alternateLargeTitles;
+@property (nonatomic, setter=_setAutoScrollEdgeTransitionDistance:) double _autoScrollEdgeTransitionDistance; // @synthesize _autoScrollEdgeTransitionDistance;
 @property (nonatomic, setter=_setBackgroundHidden:) BOOL _backgroundHidden; // @synthesize _backgroundHidden=__backgroundHidden;
+@property (strong, nonatomic, setter=_setBottomPalette:) _UINavigationBarPalette *_bottomPalette; // @synthesize _bottomPalette;
 @property (strong, nonatomic, setter=_setCanvasView:) UIView *_canvasView; // @synthesize _canvasView=__canvasView;
 @property (weak, nonatomic, setter=_setChangeObserver:) id<_UINavigationItemChangeObserver> _changeObserver; // @synthesize _changeObserver=__changeObserver;
 @property (nonatomic, setter=_setFontScaleAdjustment:) double _fontScaleAdjustment; // @synthesize _fontScaleAdjustment;
+@property (readonly, nonatomic) BOOL _hidesSearchBarWhenScrollingIfAllowed;
 @property (nonatomic, setter=_setIdealCustomTitleWidth:) double _idealCustomTitleWidth; // @synthesize _idealCustomTitleWidth=__idealCustomTitleWidth;
 @property (nonatomic, setter=_setIndependentBarStyle:) long long _independentBarStyle;
 @property (strong, nonatomic, setter=_setLargeTitleAccessoryView:) UIView *_largeTitleAccessoryView; // @synthesize _largeTitleAccessoryView=__largeTitleAccessoryView;
 @property (readonly, nonatomic) unsigned long long _largeTitleAccessoryViewHorizontalAlignment; // @synthesize _largeTitleAccessoryViewHorizontalAlignment=__largeTitleAccessoryViewHorizontalAlignment;
+@property (nonatomic, setter=_setLargeTitleTwoLineMode:) unsigned long long _largeTitleTwoLineMode; // @synthesize _largeTitleTwoLineMode=__largeTitleTwoLineMode;
 @property (nonatomic, setter=_setLeftFlexibleSpaceCount:) unsigned long long _leftFlexibleSpaceCount; // @synthesize _leftFlexibleSpaceCount;
 @property (copy, nonatomic, setter=_setLeftItemSpaceList:) NSArray *_leftItemSpaceList; // @synthesize _leftItemSpaceList;
+@property (nonatomic, getter=_isManualScrollEdgeAppearanceEnabled, setter=_setManualScrollEdgeAppearanceEnabled:) BOOL _manualScrollEdgeAppearanceEnabled; // @synthesize _manualScrollEdgeAppearanceEnabled;
+@property (nonatomic, setter=_setManualScrollEdgeAppearanceProgress:) double _manualScrollEdgeAppearanceProgress; // @synthesize _manualScrollEdgeAppearanceProgress;
 @property (weak, nonatomic, getter=_owningNavigationBar, setter=_setOwningNavigationBar:) UINavigationBar *_owningNavigationBar; // @synthesize _owningNavigationBar=__owningNavigationBar;
 @property (copy, nonatomic, setter=_setPendingTitle:) NSString *_pendingTitle; // @synthesize _pendingTitle;
+@property (nonatomic, setter=_setPreserveSearchBarAcrossTransitions:) BOOL _preserveSearchBarAcrossTransitions; // @synthesize _preserveSearchBarAcrossTransitions=__preserveSearchBarAcrossTransitions;
 @property (nonatomic, setter=_setRightFlexibleSpaceCount:) unsigned long long _rightFlexibleSpaceCount; // @synthesize _rightFlexibleSpaceCount;
 @property (copy, nonatomic, setter=_setRightItemSpaceList:) NSArray *_rightItemSpaceList; // @synthesize _rightItemSpaceList;
-@property (nonatomic, setter=_setSupportsTwoLineLargeTitles:) BOOL _supportsTwoLineLargeTitles; // @synthesize _supportsTwoLineLargeTitles=__supportsTwoLineLargeTitles;
+@property (readonly, nonatomic) UISearchController *_searchControllerIfAllowed;
+@property (nonatomic, setter=_setStackEntry:) _UINavigationBarItemStackEntry *_stackEntry; // @synthesize _stackEntry=__stackEntry;
+@property (nonatomic, setter=_setSupportsTwoLineLargeTitles:) BOOL _supportsTwoLineLargeTitles;
 @property (nonatomic) double _titleViewWidthForAnimations; // @synthesize _titleViewWidthForAnimations=__titleViewWidthForAnimations;
 @property (copy, nonatomic, setter=_setWeeTitle:) NSString *_weeTitle; // @synthesize _weeTitle=__weeTitle;
 @property (strong, nonatomic) UIBarButtonItem *backBarButtonItem;
 @property (copy, nonatomic) NSString *backButtonTitle;
+@property (copy, nonatomic) UINavigationBarAppearance *compactAppearance; // @synthesize compactAppearance=_compactAppearance;
 @property (strong, nonatomic) id context; // @synthesize context=_context;
 @property (strong, nonatomic) UIBarButtonItem *customLeftItem;
 @property (strong, nonatomic) UIView *customLeftView;
 @property (strong, nonatomic) UIBarButtonItem *customRightItem;
 @property (strong, nonatomic) UIView *customRightView;
 @property (strong, nonatomic) UIView *customTitleView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hidesBackButton;
 @property (nonatomic) BOOL hidesSearchBarWhenScrolling;
 @property (nonatomic) long long largeTitleDisplayMode; // @synthesize largeTitleDisplayMode=_largeTitleDisplayMode;
@@ -97,7 +120,10 @@
 @property (copy, nonatomic) NSString *prompt;
 @property (strong, nonatomic) UIBarButtonItem *rightBarButtonItem;
 @property (copy, nonatomic) NSArray *rightBarButtonItems;
+@property (copy, nonatomic) UINavigationBarAppearance *scrollEdgeAppearance; // @synthesize scrollEdgeAppearance=_scrollEdgeAppearance;
 @property (strong, nonatomic) UISearchController *searchController;
+@property (copy, nonatomic) UINavigationBarAppearance *standardAppearance; // @synthesize standardAppearance=_standardAppearance;
+@property (readonly) Class superclass;
 @property (nonatomic) long long tag; // @synthesize tag=_tag;
 @property (copy, nonatomic) NSString *title;
 @property (strong, nonatomic) UIView *titleView; // @synthesize titleView=_titleView;
@@ -131,10 +157,14 @@
 - (id)_leftBarButtonItem;
 - (id)_leftBarButtonItems;
 - (BOOL)_leftItemsWantBackButton;
+- (void)_messageChangeObserver:(id)arg1 forTransitionFromSearchController:(id)arg2;
 - (double)_minimumDesiredHeightForBarMetrics:(long long)arg1;
 - (id)_minimumDesiredHeights;
+- (void)_movedFromTopOfStack:(BOOL)arg1;
+- (void)_movedToTopOfStack:(BOOL)arg1;
+- (void)_movingFromTopOfStack;
+- (void)_movingToTopOfStack;
 - (BOOL)_needsSizeTransitionToItem:(id)arg1 barMetrics:(long long)arg2 defaultHeightBlock:(CDUnknownBlockType)arg3;
-- (BOOL)_notifyObserver_navigationItemUpdatedTitleContentAnimated:(BOOL)arg1;
 - (void)_removeBackButtonView;
 - (void)_removeBarButtonItemViews;
 - (void)_removeContentInView:(id)arg1;
@@ -144,6 +174,8 @@
 - (id)_rightBarButtonItems;
 - (void)_setBackButtonPressed:(BOOL)arg1;
 - (void)_setBackButtonTitle:(id)arg1 lineBreakMode:(long long)arg2;
+- (void)_setBottomPaletteNeedsUpdate;
+- (void)_setBottomPaletteNeedsUpdate:(id)arg1;
 - (void)_setCustomLeftRightView:(id)arg1 left:(BOOL)arg2;
 - (void)_setCustomLeftView:(id)arg1;
 - (void)_setCustomLeftViews:(id)arg1;
@@ -166,10 +198,10 @@
 - (void)_updateItemsForLetterpressImagesVisualStateIfNecessary;
 - (void)_updateViewsForBarSizeChangeAndApply:(BOOL)arg1;
 - (BOOL)_wantsBackButtonIndicator;
+- (void)appearance:(id)arg1 categoriesChanged:(long long)arg2;
 - (id)backButtonView;
 - (id)currentBackButtonTitle;
 - (void)dealloc;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)existingBackButtonView;
 - (id)init;

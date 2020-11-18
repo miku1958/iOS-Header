@@ -22,8 +22,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic, setter=_setAppearanceGuideClass:) Class _appearanceGuideClass; // @synthesize _appearanceGuideClass;
-@property (weak, nonatomic, getter=_tabBarButton, setter=_setTabBarButton:) UITabBarButton *tabBarButton; // @synthesize tabBarButton=_tabBarButton;
-@property (strong, nonatomic, getter=_unselectedTintColor, setter=_setUnselectedTintColor:) UIColor *unselectedTintColor; // @synthesize unselectedTintColor=_unselectedTintColor;
+@property (weak, nonatomic) UITabBarButton *tabBarButton; // @synthesize tabBarButton=_tabBarButton;
+@property (strong, nonatomic) UIColor *unselectedTintColor; // @synthesize unselectedTintColor=_unselectedTintColor;
 
 + (double)_fontPointSizeForIdiom:(long long)arg1;
 - (void).cxx_destruct;
@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)_fontForIdiom:(long long)arg1;
 - (id)_fontForIdiom:(long long)arg1 forTabBarDisplayStyle:(long long)arg2;
 - (long long)_idiomForFontGivenIdiom:(long long)arg1;
+- (void)_legacyApperance_updateTextColorsForState;
 - (void)_setBadgeColor:(id)arg1;
 - (void)_setBadgeTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_setTitlePositionAdjustment:(struct UIOffset)arg1;
@@ -47,9 +48,9 @@ __attribute__((visibility("hidden")))
 - (void)_updateLabelsVibrancy;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithTabBarDisplayStyle:(long long)arg1;
+- (void)resizeToFitWidth:(double)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1;
-- (void)sizeToFitBounds:(struct CGRect)arg1;
 - (void)tintColorDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateTextColorsForState;

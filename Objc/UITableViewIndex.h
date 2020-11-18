@@ -6,10 +6,12 @@
 
 #import <UIKitCore/UIControl.h>
 
-@class NSArray, NSString, UIColor, UIFont;
+#import <UIKitCore/UIAccessibilityHUDGestureDelegate-Protocol.h>
+
+@class NSArray, NSString, UIAccessibilityHUDGestureManager, UIColor, UIFont;
 
 __attribute__((visibility("hidden")))
-@interface UITableViewIndex : UIControl
+@interface UITableViewIndex : UIControl <UIAccessibilityHUDGestureDelegate>
 {
     NSArray *_titles;
     UIFont *_font;
@@ -26,11 +28,15 @@ __attribute__((visibility("hidden")))
     double _verticalTextHeightEstimate;
     NSArray *_entries;
     long long _idiom;
+    UIAccessibilityHUDGestureManager *_axHUDGestureManager;
     struct UIEdgeInsets _drawingInsets;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) struct UIEdgeInsets drawingInsets; // @synthesize drawingInsets=_drawingInsets;
 @property (strong, nonatomic) UIFont *font;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIColor *indexBackgroundColor;
 @property (strong, nonatomic) UIColor *indexColor;
 @property (strong, nonatomic) UIColor *indexTrackingBackgroundColor;
@@ -38,9 +44,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL pastTop; // @synthesize pastTop=_pastTop;
 @property (readonly, nonatomic) long long selectedSection; // @synthesize selectedSection=_selectedSection;
 @property (readonly, nonatomic) NSString *selectedSectionTitle;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) NSArray *titles;
 
 - (void).cxx_destruct;
+- (id)_accessibilityHUDGestureManager:(id)arg1 HUDItemForPoint:(struct CGPoint)arg2;
+- (void)_accessibilityHUDGestureManager:(id)arg1 gestureLiftedAtPoint:(struct CGPoint)arg2;
+- (BOOL)_accessibilityHUDGestureManager:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (BOOL)_accessibilityHUDGestureManagerCancelsTouchesInView:(id)arg1;
 - (void)_cacheAndMeasureTitles;
 - (id)_displayTitles;
 - (id)_dotImage;
@@ -48,8 +59,11 @@ __attribute__((visibility("hidden")))
 - (id)_externalDotImage;
 - (id)_fontForIdiom:(long long)arg1;
 - (long long)_idiom;
+- (long long)_indexForEntryAtPoint:(struct CGPoint)arg1;
 - (double)_minLineSpacingForIdiom:(long long)arg1;
 - (void)_setIdiom:(long long)arg1;
+- (void)_setupAXHUDGestureIfNecessary;
+- (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (BOOL)_updateSectionForTouch:(id)arg1 withEvent:(id)arg2;
 - (struct CGRect)_visibleBoundsForRect:(struct CGRect)arg1 stride:(double *)arg2;
 - (void)_willChangeToIdiom:(long long)arg1 onScreen:(id)arg2;
@@ -57,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canBecomeFocused;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (void)didMoveToWindow;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -64,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (void)setFrame:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tintColorDidChange;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

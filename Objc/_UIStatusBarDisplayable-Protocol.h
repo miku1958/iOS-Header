@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) UIAccessibilityHUDItem *accessibilityHUDRepresentation;
 @property (readonly, nonatomic) long long overriddenVerticalAlignment;
+@property (readonly, nonatomic) BOOL prefersBaselineAlignment;
 @property (readonly, nonatomic) BOOL wantsCrossfade;
 
 

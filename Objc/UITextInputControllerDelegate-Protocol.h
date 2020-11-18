@@ -10,12 +10,17 @@
 
 @protocol UITextInputControllerDelegate <NSObject>
 
+@property (readonly, nonatomic) BOOL isSingleLineDocument;
+
+
 @optional
 - (void)textInput:(UITextInputController *)arg1 prepareAttributedTextForInsertion:(NSMutableAttributedString *)arg2;
 - (BOOL)textInput:(UITextInputController *)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementText:(NSString *)arg3;
 - (struct _NSRange)textInput:(UITextInputController *)arg1 willChangeSelectionFromCharacterRange:(struct _NSRange)arg2 toCharacterRange:(struct _NSRange)arg3;
+- (void)textInputDidAnimatePaste:(UITextInputController *)arg1;
 - (void)textInputDidChange:(UITextInputController *)arg1;
 - (void)textInputDidChangeSelection:(UITextInputController *)arg1;
 - (BOOL)textInputShouldBeginEditing:(UITextInputController *)arg1;
+- (void)textInputWillAnimatePaste:(UITextInputController *)arg1;
 @end
 

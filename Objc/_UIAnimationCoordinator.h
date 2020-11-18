@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)animateTransition:(id)arg1;
 - (void)animationEnded:(BOOL)arg1;
 - (void)cancelInteractiveAnimation;
+- (void)dealloc;
 - (void)finishInteractiveAnimation;
 - (double)transitionDuration:(id)arg1;
 - (void)updateInteractiveProgress:(double)arg1;

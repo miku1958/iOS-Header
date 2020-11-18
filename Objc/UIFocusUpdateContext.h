@@ -64,6 +64,7 @@
 - (id)_initWithFocusUpdateRequest:(id)arg1;
 - (BOOL)_isValidInFocusSystem:(id)arg1;
 - (id)_publicRegionMapSnapshots;
+- (void)_restoreRestrictedFocusMovementWithMovement:(id)arg1;
 - (void)_setFocusedGuide:(id)arg1;
 - (void)_setInitialDestinationEnvironment:(id)arg1;
 - (void)_setSourceItemInfo:(id)arg1;

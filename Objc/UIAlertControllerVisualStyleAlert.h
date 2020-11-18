@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (double)_marginAroundActionGroup;
 - (void)animateAlertControllerView:(id)arg1 ofAlertController:(id)arg2 forPresentation:(BOOL)arg3 inContainerView:(id)arg4 descendantOfContainerView:(id)arg5 duration:(double)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (struct UIEdgeInsets)contentInsetsForContainerView:(id)arg1;
 - (double)marginAboveMessageLabelFirstBaseline;
@@ -23,7 +24,8 @@ __attribute__((visibility("hidden")))
 - (id)messageLabelFont;
 - (long long)permittedActionLayoutDirection;
 - (BOOL)placementAvoidsKeyboard;
-- (id)textFieldContainingViewWithTextField:(id)arg1;
+- (id)textFieldContainingViewWithTextField:(id)arg1 position:(long long)arg2;
+- (double)textFieldHorizontalMargin;
 - (id)titleLabelColor;
 - (id)titleLabelFont;
 - (double)transitionDurationForPresentation:(BOOL)arg1 ofAlertController:(id)arg2;

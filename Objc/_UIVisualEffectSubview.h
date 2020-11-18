@@ -6,46 +6,41 @@
 
 #import <UIKitCore/UIView.h>
 
-#import <UIKitCore/_UIVisualEffectSubviewSource-Protocol.h>
+#import <UIKitCore/_UIVisualEffectViewParticipating-Protocol.h>
 
 @class NSArray, NSString, _UIVisualEffectViewBackdropCaptureGroup;
-@protocol _UIVisualEffectViewSubviewMonitoring;
+@protocol _UIVisualEffectViewParticipating, _UIVisualEffectViewSubviewMonitoring;
 
-__attribute__((visibility("hidden")))
-@interface _UIVisualEffectSubview : UIView <_UIVisualEffectSubviewSource>
+@interface _UIVisualEffectSubview : UIView <_UIVisualEffectViewParticipating>
 {
-    _UIVisualEffectViewBackdropCaptureGroup *_primaryCaptureGroup;
-    id<_UIVisualEffectViewSubviewMonitoring> _subviewMonitor;
-    NSArray *_viewEffects;
     NSArray *_filters;
+    _UIVisualEffectViewBackdropCaptureGroup *_primaryCaptureGroup;
+    UIView<_UIVisualEffectViewParticipating> *_containedView;
+    NSArray *_viewEffects;
+    id<_UIVisualEffectViewSubviewMonitoring> _subviewMonitor;
 }
 
+@property (strong, nonatomic) UIView<_UIVisualEffectViewParticipating> *containedView; // @synthesize containedView=_containedView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL disableGroupFiltering;
 @property (copy, nonatomic) NSArray *filters; // @synthesize filters=_filters;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _UIVisualEffectViewBackdropCaptureGroup *primaryCaptureGroup; // @synthesize primaryCaptureGroup=_primaryCaptureGroup;
 @property (weak, nonatomic) id<_UIVisualEffectViewSubviewMonitoring> subviewMonitor; // @synthesize subviewMonitor=_subviewMonitor;
 @property (readonly) Class superclass;
-@property (readonly, copy, nonatomic) NSArray *viewEffects; // @synthesize viewEffects=_viewEffects;
+@property (copy, nonatomic) NSArray *viewEffects; // @synthesize viewEffects=_viewEffects;
 
 - (void).cxx_destruct;
-- (void)_applyFilterValues:(id)arg1 baseName:(id)arg2 toLayer:(id)arg3;
-- (BOOL)_applyKeyPathsAndRelativeValues:(id)arg1 forMotionEffect:(id)arg2;
-- (void)_descendent:(id)arg1 willMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
 - (id)_initialValueForLayer:(id)arg1 keyPath:(id)arg2 usePresentationValue:(BOOL)arg3;
+- (void)_monitoredView:(id)arg1 willMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
-- (void)addViewEffects:(id)arg1;
 - (void)applyIdentityFilterEffects;
 - (void)applyIdentityViewEffects;
 - (void)applyRequestedFilterEffects;
 - (void)applyRequestedViewEffects;
-- (id)asBackdropView;
-- (id)asImageView;
-- (id)asLayer;
-- (id)asView;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)removeViewEffects;
+- (void)layoutSubviews;
 - (void)willMoveToWindow:(id)arg1;
 
 @end

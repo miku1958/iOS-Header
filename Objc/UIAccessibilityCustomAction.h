@@ -13,8 +13,10 @@
     NSAttributedString *_attributedName;
     id _target;
     SEL _selector;
+    CDUnknownBlockType _actionHandler;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType actionHandler; // @synthesize actionHandler=_actionHandler;
 @property (copy, nonatomic) NSAttributedString *attributedName; // @synthesize attributedName=_attributedName;
 @property (copy, nonatomic) NSString *name;
 @property (nonatomic) SEL selector; // @synthesize selector=_selector;
@@ -22,7 +24,9 @@
 
 - (void).cxx_destruct;
 - (id)init;
+- (id)initWithAttributedName:(id)arg1 actionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithAttributedName:(id)arg1 target:(id)arg2 selector:(SEL)arg3;
+- (id)initWithName:(id)arg1 actionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithName:(id)arg1 target:(id)arg2 selector:(SEL)arg3;
 
 @end

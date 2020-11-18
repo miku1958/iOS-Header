@@ -27,6 +27,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (long long)_indexForEntryAtPoint:(struct CGPoint)arg1;
+- (struct CGRect)_visibleBoundsForRect:(struct CGRect)arg1 stride:(double *)arg2;
 - (id)displayEntryFromEntry:(id)arg1;
 - (id)initWithView:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

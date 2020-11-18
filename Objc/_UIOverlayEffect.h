@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 
 - (void).cxx_destruct;
-- (void)_updateEffectNode:(id)arg1 forTraitCollection:(id)arg2;
+- (void)_updateEffectDescriptor:(id)arg1 forEnvironment:(id)arg2 usage:(long long)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

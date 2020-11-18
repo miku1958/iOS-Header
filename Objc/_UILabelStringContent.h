@@ -12,20 +12,25 @@ __attribute__((visibility("hidden")))
 @interface _UILabelStringContent : _UILabelContent
 {
     NSString *_string;
+    struct {
+        unsigned int isWidthVariant:1;
+    } _flags;
 }
 
 - (void).cxx_destruct;
+- (BOOL)_isContentEqualToContent:(id)arg1;
 - (id)attributedString;
 - (id)attributedStringContent;
 - (id)defaultValueForAttribute:(id)arg1;
-- (id)initWithString:(id)arg1 defaultAttributesProvider:(CDUnknownBlockType)arg2;
+- (unsigned long long)hash;
+- (id)initWithString:(id)arg1 defaultAttributesProvider:(id)arg2;
 - (BOOL)isAttributed;
 - (BOOL)isEqualToAttributedString:(id)arg1;
 - (BOOL)isEqualToString:(id)arg1;
 - (BOOL)isNil;
+- (BOOL)isWidthVariant;
 - (long long)length;
 - (id)string;
-- (id)valueForAttribute:(id)arg1 isUniform:(BOOL *)arg2;
 
 @end
 

@@ -23,7 +23,6 @@
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (void)applyIdentityFilterEffects;
 - (void)applyRequestedFilterEffects;
-- (id)asBackdropView;
 - (void)removeFromCurrentCaptureGroup;
 - (void)willMoveToWindow:(id)arg1;
 

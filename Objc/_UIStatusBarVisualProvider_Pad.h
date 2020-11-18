@@ -30,7 +30,11 @@ __attribute__((visibility("hidden")))
 + (id)expandedFont;
 + (double)height;
 + (id)normalFont;
++ (id)pillFont;
++ (struct CGSize)pillSize;
++ (id)pillSmallFont;
 + (double)regionSpacing;
++ (struct CGSize)smallPillSize;
 + (Class)visualProviderSubclassForScreen:(id)arg1;
 - (void).cxx_destruct;
 - (void)_dateTimePreferencesUpdated;
@@ -47,10 +51,11 @@ __attribute__((visibility("hidden")))
 - (void)itemCreated:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)orderedDisplayItemPlacementsInRegionWithIdentifier:(id)arg1;
+- (id)overriddenStyleAttributesForDisplayItemWithIdentifier:(id)arg1;
 - (id)regionIdentifiersForPartWithIdentifier:(id)arg1;
 - (id)setupInContainerView:(id)arg1;
 - (void)sizeUpdatedFromSize:(struct CGSize)arg1;
-- (id)styleAttributes;
+- (id)styleAttributesForStyle:(long long)arg1;
 
 @end
 

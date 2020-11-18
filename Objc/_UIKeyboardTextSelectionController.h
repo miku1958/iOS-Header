@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UIView *textInputView;
 
 - (void)beginFloatingCursorAtPoint:(struct CGPoint)arg1;
-- (BOOL)beginLoupeGestureAtPoint:(struct CGPoint)arg1;
+- (BOOL)beginLoupeGestureAtPoint:(struct CGPoint)arg1 translation:(struct CGPoint)arg2;
 - (void)beginLoupeMagnifierAtPoint:(struct CGPoint)arg1;
 - (void)beginRangedMagnifierAtPoint:(struct CGPoint)arg1;
 - (void)beginSelection;
@@ -51,7 +51,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)cursorPositionIsContainedByRange:(id)arg1;
 - (void)dealloc;
 - (void)endFloatingCursor;
-- (void)endLoupeGestureAtPoint:(struct CGPoint)arg1;
+- (void)endLoupeGestureAtPoint:(struct CGPoint)arg1 translation:(struct CGPoint)arg2;
 - (void)endLoupeMagnifierAtPoint:(struct CGPoint)arg1;
 - (void)endRangedMagnifierAtPoint:(struct CGPoint)arg1;
 - (void)endSelection;
@@ -66,15 +66,17 @@ __attribute__((visibility("hidden")))
 - (void)selectPositionAtPoint:(struct CGPoint)arg1 executionContext:(id)arg2;
 - (void)selectTextWithGranularity:(long long)arg1 atPoint:(struct CGPoint)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)selectTextWithGranularity:(long long)arg1 atPoint:(struct CGPoint)arg2 executionContext:(id)arg3;
+- (struct CGRect)selectedRectInLineWithPoint:(struct CGPoint)arg1;
 - (void)selectionDidChange;
 - (void)setRangedSelectionShouldShowGrabbers:(BOOL)arg1;
+- (void)setSelectedTextRange:(id)arg1;
 - (void)showSelectionCommands;
 - (void)switchToRangedSelection;
 - (void)textDidChange;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1;
 - (void)updateGestureRecognizers;
 - (void)updateImmediateSelectionWithExtentAtBoundary:(long long)arg1 inDirection:(long long)arg2 executionContext:(id)arg3;
-- (void)updateLoupeGestureAtPoint:(struct CGPoint)arg1;
+- (void)updateLoupeGestureAtPoint:(struct CGPoint)arg1 translation:(struct CGPoint)arg2 velocity:(struct CGPoint)arg3;
 - (void)updateLoupeMagnifierAtPoint:(struct CGPoint)arg1;
 - (void)updateRangedMagnifierAtPoint:(struct CGPoint)arg1;
 - (void)updateSelectionRects;
@@ -83,6 +85,8 @@ __attribute__((visibility("hidden")))
 - (void)updateSelectionWithExtentPoint:(struct CGPoint)arg1 executionContext:(id)arg2;
 - (void)updateSelectionWithExtentPoint:(struct CGPoint)arg1 withBoundary:(long long)arg2 executionContext:(id)arg3;
 - (void)updateSelectionWithExtentPosition:(id)arg1 executionContext:(id)arg2;
+- (void)willBeginFloatingCursor:(BOOL)arg1;
+- (void)willBeginHighlighterGesture;
 - (void)willHandoffLoupeMagnifier;
 
 @end

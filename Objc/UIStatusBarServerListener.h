@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, _UIStatusBarTimeStringServerCache;
+@class NSMutableArray, NSMutableDictionary;
 @protocol OS_dispatch_mach, OS_dispatch_workloop;
 
 __attribute__((visibility("hidden")))
@@ -16,17 +16,14 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_publishers;
     NSObject<OS_dispatch_workloop> *_workloop;
     NSObject<OS_dispatch_mach> *_channel;
-    CDStruct_1916f467 _statusBarData;
-    CDStruct_1916f467 _composedStatusBarData;
-    CDStruct_308dc736 _overrides;
+    CDStruct_0942cde0 _statusBarData;
+    CDStruct_0942cde0 _composedStatusBarData;
+    CDStruct_f9a79af9 _overrides;
     struct __CFDictionary *_doubleHeightStatusStrings;
     struct __CFDictionary *_glowAnimationStates;
     NSMutableDictionary *_glowAnimationEndTimes;
     BOOL _composedStatusBarDataValid;
-    _UIStatusBarTimeStringServerCache *_ioSurfaceCache;
 }
-
-@property (readonly, nonatomic) _UIStatusBarTimeStringServerCache *ioSurfaceCache; // @synthesize ioSurfaceCache=_ioSurfaceCache;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -41,8 +38,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)_permanentizeStatusBarOverrideData;
 - (void)_postDoubleHeightStatus:(char *)arg1 forStyle:(long long)arg2;
 - (void)_postGlowAnimationState:(BOOL)arg1 forStyle:(long long)arg2;
-- (void)_postStatusBarData:(CDStruct_1916f467 *)arg1 actions:(int)arg2 animated:(BOOL)arg3;
-- (void)_postStatusBarOverrideData:(CDStruct_308dc736 *)arg1;
+- (void)_postStatusBarData:(CDStruct_0942cde0 *)arg1 actions:(int)arg2 animated:(BOOL)arg3;
+- (void)_postStatusBarOverrideData:(CDStruct_f9a79af9 *)arg1;
 - (id)_publisherForPort:(unsigned int)arg1;
 - (void)_removeAnimationEndTimesForOverrides:(int)arg1;
 - (void)_removeClient:(struct __CFMachPort *)arg1;
@@ -50,8 +47,8 @@ __attribute__((visibility("hidden")))
 - (void)_removeStatusBarItem:(int)arg1 forPublisher:(id)arg2;
 - (void)_removeStyleOverrides:(int)arg1 forPublisher:(id)arg2;
 - (void)_setAnimationEndTimesForOverrides:(int)arg1;
-- (CDStruct_1916f467 *)_statusBarData;
-- (CDStruct_308dc736 *)_statusBarOverrideData;
+- (CDStruct_0942cde0 *)_statusBarData;
+- (CDStruct_f9a79af9 *)_statusBarOverrideData;
 - (int)_styleOverrides;
 - (void)async:(CDUnknownBlockType)arg1;
 - (id)init;

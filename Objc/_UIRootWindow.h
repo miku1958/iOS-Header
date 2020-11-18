@@ -6,25 +6,46 @@
 
 #import <UIKitCore/UIWindow.h>
 
+@class NSString, RBSAssertion;
+
 @interface _UIRootWindow : UIWindow
 {
     double _scale;
+    struct os_unfair_lock_s _visibilityLock;
+    BOOL _visibilityLock_enabled;
+    NSString *_visibilityLock_environment;
+    NSString *_visibilityLock_identifier;
+    BOOL _visibilityLock_updateEnqueued;
+    struct os_unfair_lock_s _visibilityProcessingLock;
+    NSString *_visibilityProcessingLock_identifier;
+    RBSAssertion *_visibilityProcessingLock_assertion;
+    struct CGAffineTransform _additionalRootLayerAffineTransform;
 }
 
-- (CDStruct_3cbf53c3)_bindingDescription;
+@property (nonatomic, getter=_additionalRootLayerAffineTransform, setter=_setAdditionalRootLayerAffineTransform:) struct CGAffineTransform additionalRootLayerAffineTransform; // @synthesize additionalRootLayerAffineTransform=_additionalRootLayerAffineTransform;
+@property (readonly, copy, nonatomic) NSString *visibilityEnvironment;
+
+- (void).cxx_destruct;
+- (CDStruct_a002d41c)_bindingDescription;
 - (void)_configureContextOptions:(id)arg1;
-- (void)_configureRootLayer:(id)arg1 transformLayer:(id)arg2;
+- (void)_configureRootLayer:(id)arg1 sceneTransformLayer:(id)arg2 transformLayer:(id)arg3;
 - (id)_context;
-- (BOOL)_isConstrainedByScreenJail;
+- (void)_didMoveFromScreen:(id)arg1 toScreen:(id)arg2;
+- (BOOL)_extendsScreenSceneLifetime;
 - (BOOL)_isWindowServerHostingManaged;
+- (id)_layerForCoordinateSpaceConversion;
 - (void)_noteScreenDidChangeMode:(id)arg1;
 - (BOOL)_touchesInsideShouldHideCalloutBar;
 - (BOOL)_transformLayerIncludesScreenRotation;
+- (void)_updateVisibility;
+- (void)_visibilityLock_enqueueUpdateIfNecessary;
+- (id)_visibilityLock_environment;
 - (BOOL)_wantsSceneAssociation;
 - (void)dealloc;
 - (id)initWithDisplay:(id)arg1;
 - (id)initWithScreen:(id)arg1;
-- (void)setScreen:(id)arg1;
+- (void)setHidden:(BOOL)arg1;
+- (void)setVisibilityIdentifier:(id)arg1;
 
 @end
 

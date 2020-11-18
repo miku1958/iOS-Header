@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UILabel *label; // @synthesize label=_label;
 @property (readonly, nonatomic) long long overriddenVerticalAlignment;
+@property (readonly, nonatomic) BOOL prefersBaselineAlignment;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *text;
 @property (readonly, nonatomic) BOOL wantsCrossfade;

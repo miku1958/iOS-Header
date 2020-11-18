@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     id<UIFocusItemContainer> _itemContainer;
 }
 
+@property (nonatomic) BOOL areChildrenFocused;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=_isEligibleForFocusInteraction) BOOL eligibleForFocusInteraction;

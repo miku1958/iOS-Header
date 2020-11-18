@@ -32,8 +32,8 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)shouldWrapView:(id)arg1;
 - (void).cxx_destruct;
-- (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
+- (void)didMoveToWindow;
 - (id)initWithView:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

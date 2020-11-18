@@ -35,6 +35,7 @@
 - (BOOL)_shouldSuppressSelectionCommands;
 - (void)_willShowCorrections;
 - (void)acceptedAutoFillWord:(NSString *)arg1;
+- (NSAttributedString *)annotatedSubstringForRange:(UITextRange *)arg1;
 - (NSAttributedString *)attributedTextInRange:(UITextRange *)arg1;
 - (UIView *)automaticallySelectedOverlay;
 - (UIFont *)fontForCaretSelection;
@@ -42,19 +43,24 @@
 - (void)handleKeyWebEvent:(WebEvent *)arg1 withCompletionHandler:(void (^)(WebEvent *, BOOL))arg2;
 - (void)insertAttributedText:(NSAttributedString *)arg1;
 - (void)insertDictationResult:(UIDictationSerializableResults *)arg1 withCorrectionIdentifier:(id)arg2;
+- (void)insertText:(NSString *)arg1 style:(long long)arg2 alternatives:(NSArray *)arg3;
 - (void)insertTextSuggestion:(UITextSuggestion *)arg1;
 - (BOOL)isAutoFillMode;
 - (NSArray *)metadataDictionariesForDictationResults;
+- (void)modifierFlagsDidChangeFrom:(long long)arg1 to:(long long)arg2;
 - (UITextRange *)rangeWithTextAlternatives:(id *)arg1 atPosition:(UITextPosition *)arg2;
+- (void)removeAnnotation:(NSString *)arg1 forRange:(UITextRange *)arg2;
+- (void)replaceRange:(UITextRange *)arg1 withAnnotatedString:(NSAttributedString *)arg2 relativeReplacementRange:(struct _NSRange)arg3;
+- (void)replaceRange:(UITextRange *)arg1 withAttributedText:(NSAttributedString *)arg2;
 - (void)replaceRangeWithTextWithoutClosingTyping:(UITextRange *)arg1 replacementText:(NSString *)arg2;
 - (BOOL)requiresKeyEvents;
 - (UIView *)selectionContainerView;
 - (id<UISelectionInteractionAssistant>)selectionInteractionAssistant;
-- (void)setAttributedMarkedText:(NSAttributedString *)arg1 selectedRange:(struct _NSRange)arg2;
 - (void)setBottomBufferHeight:(double)arg1;
 - (void)streamingDictationDidBegin;
 - (void)streamingDictationDidEnd;
 - (UIColor *)textColorForCaretSelection;
+- (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
 - (struct CGRect)visibleRect;
 @end
 

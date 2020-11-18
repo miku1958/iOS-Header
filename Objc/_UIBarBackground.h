@@ -6,59 +6,57 @@
 
 #import <UIKitCore/UIView.h>
 
-@class NSArray, NSString, UIColor, UIImage, UIImageView, UIVisualEffectView;
+@class NSString, UIImageView, UIVisualEffectView, _UIBarBackgroundLayout;
 
 __attribute__((visibility("hidden")))
 @interface _UIBarBackground : UIView
 {
-    long long _translucence;
-    UIImage *_backgroundImage;
-    UIColor *_backgroundTintColor;
-    NSArray *_backgroundEffects;
-    UIImage *_shadowImage;
-    UIColor *_shadowColor;
-    double _shadowHeight;
-    int _shadowPosition;
-    UIImageView *_backgroundImageView;
-    UIView *_backgroundTopInsetView;
-    UIImageView *_shadowView;
-    UIVisualEffectView *_backgroundEffectView;
-    BOOL _disableTinting;
+    UIVisualEffectView *_effectView1;
+    UIImageView *_colorAndImageView1;
+    UIImageView *_shadowView1;
+    UIVisualEffectView *_effectView2;
+    UIImageView *_colorAndImageView2;
+    UIImageView *_shadowView2;
+    UIView *_topInsetView;
+    double _bg1LastLayoutHeight;
+    double _bg2LastLayoutHeight;
+    struct {
+        unsigned int needsTopInsetView:1;
+        unsigned int needsEffectView1:1;
+        unsigned int needsColorAndImageView1:1;
+        unsigned int needsShadowView1:1;
+        unsigned int needsEffectView2:1;
+        unsigned int needsColorAndImageView2:1;
+        unsigned int needsShadowView2:1;
+    } _backgroundFlags;
+    BOOL _topAligned;
+    NSString *_groupName;
+    _UIBarBackgroundLayout *_layout;
     UIView *_customBackgroundView;
-    double _topInset;
 }
 
-@property (readonly, nonatomic) NSArray *backgroundEffects; // @synthesize backgroundEffects=_backgroundEffects;
 @property (strong, nonatomic) UIView *customBackgroundView; // @synthesize customBackgroundView=_customBackgroundView;
-@property (nonatomic) BOOL disableBlur;
-@property (nonatomic) BOOL disableTinting; // @synthesize disableTinting=_disableTinting;
-@property (copy, nonatomic) NSString *groupName;
-@property (readonly, nonatomic) BOOL hasBackgroundEffect;
-@property (nonatomic) double shadowAlpha;
-@property (readonly, nonatomic) UIImage *shim_shadowImage;
-@property (readonly, nonatomic) UIImageView *shim_shadowView;
-@property (nonatomic) double topInset; // @synthesize topInset=_topInset;
+@property (copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
+@property (strong, nonatomic) _UIBarBackgroundLayout *layout; // @synthesize layout=_layout;
+@property (nonatomic) BOOL topAligned; // @synthesize topAligned=_topAligned;
 
 - (void).cxx_destruct;
-- (id)_blurWithStyle:(long long)arg1 tint:(id)arg2;
-- (id)_colorForStyle:(long long)arg1;
+- (id)_backgroundEffectView;
 - (id)_encodableSubviews;
+- (void)_orderSubviews;
+- (void)_setupBackgroundValues;
+- (id)_shadowView;
+- (void)_updateBackgroundViewVisiblity;
 - (void)cleanupBackgroundViews;
-- (void)configureAsTransperant;
-- (void)configureBackgroundColor:(id)arg1 barStyle:(long long)arg2 translucent:(BOOL)arg3;
-- (void)configureColoredShadow:(id)arg1 pixelHeight:(double)arg2 topShadow:(BOOL)arg3;
-- (void)configureEffectForStyle:(long long)arg1 backgroundTintColor:(id)arg2 forceOpaque:(BOOL)arg3;
-- (void)configureImage:(id)arg1 forceOpaque:(BOOL)arg2 backgroundTintColor:(id)arg3;
-- (void)configureImage:(id)arg1 forceOpaque:(BOOL)arg2 barStyle:(long long)arg3;
-- (void)configureImage:(id)arg1 forceTranslucent:(BOOL)arg2;
-- (void)configureShadowImage:(id)arg1 topShadow:(BOOL)arg2;
-- (void)configureWithEffects:(id)arg1;
-- (void)configureWithoutShadow;
 - (void)encodeWithCoder:(id)arg1;
+- (struct CGRect)frameForYOrigin:(double)arg1 height:(double)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)prepareBackgroundViews;
+- (void)set_backgroundEffectView:(id)arg1;
+- (void)set_shadowView:(id)arg1;
+- (void)transition:(unsigned long long)arg1 toLayout:(id)arg2;
 - (void)transitionBackgroundViews;
 - (void)updateBackground;
 

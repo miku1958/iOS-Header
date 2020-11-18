@@ -15,7 +15,6 @@
 @property (nonatomic) double indexBarExtentFromEdge;
 @property (nonatomic) BOOL insetsContentViewsToSafeArea;
 @property (nonatomic) BOOL layoutMarginsFollowReadableWidth;
-@property (nonatomic) double sectionBorderWidth;
 @property (nonatomic) int sectionLocation;
 
 @end

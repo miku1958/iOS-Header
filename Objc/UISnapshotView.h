@@ -6,11 +6,9 @@
 
 #import <UIKitCore/UIView.h>
 
-#import <UIKitCore/UIStatusBarTinting-Protocol.h>
+@class NSMutableArray, UIColor, UIImageView;
 
-@class NSMutableArray, NSString, UIColor, UIImageView;
-
-@interface UISnapshotView : UIView <UIStatusBarTinting>
+@interface UISnapshotView : UIView
 {
     struct CGSize _contentSize;
     struct UIEdgeInsets _contentBeyondBounds;
@@ -24,28 +22,21 @@
     UIImageView *_shadowView;
     unsigned int _disableEdgeAntialiasing:1;
     unsigned int _disableVerticalStretch:1;
-    UIColor *_statusBarTintColor;
 }
 
-@property (strong, nonatomic, setter=_setStatusBarTintColor:) UIColor *_statusBarTintColor; // @synthesize _statusBarTintColor;
 @property (nonatomic, getter=_contentOffset, setter=_setContentOffset:) struct CGPoint contentOffset; // @synthesize contentOffset=_contentOffset;
 @property (readonly, nonatomic, getter=_contentSize) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEdgeAntialiasingEnabled) BOOL edgeAntialiasingEnabled;
 @property (nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
 @property (nonatomic) struct UIEdgeInsets edgePadding; // @synthesize edgePadding=_edgePadding;
 @property (strong, nonatomic) UIColor *edgePaddingColor; // @synthesize edgePaddingColor=_edgePaddingColor;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *shadowView; // @synthesize shadowView=_shadowView;
 @property (nonatomic, getter=_snapshotRect, setter=_setSnapshotRect:) struct CGRect snapshotRect;
 @property (readonly, nonatomic, getter=_snapshotView) UIView *snapshotView; // @synthesize snapshotView=_imageView;
-@property (readonly) Class superclass;
 @property (nonatomic, getter=isVerticalStretchEnabled) BOOL verticalStretchEnabled;
 
 - (void)_addEdgePaddingViewInRect:(struct CGRect)arg1;
 - (struct CGRect)_contentsCenterForEdgePadding:(struct UIEdgeInsets)arg1 withContentSize:(struct CGSize)arg2;
-- (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)_drawEdges:(struct UIEdgeInsets)arg1 withContentSize:(struct CGSize)arg2;
 - (struct UIEdgeInsets)_edgePadding;
 - (void)_positionImageView;

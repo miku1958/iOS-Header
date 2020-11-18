@@ -197,14 +197,14 @@
 - (BOOL)resignFirstResponder;
 - (void)rotateEnclosingScrollViewToFrame:(struct CGRect)arg1;
 - (double)scaleForProposedNewScale:(double)arg1 andOldScale:(double)arg2;
-- (CDStruct_57d825b2)scalesForContainerSize:(struct CGSize)arg1;
+- (CDStruct_39925896)scalesForContainerSize:(struct CGSize)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (BOOL)shouldIgnoreWebTouch;
 - (void)simulateDidScroll;
 - (id)textDocument;
 - (id)textFormElement;
-- (void)updateBoundariesOfScrollView:(id)arg1 withScales:(CDStruct_57d825b2)arg2;
+- (void)updateBoundariesOfScrollView:(id)arg1 withScales:(CDStruct_39925896)arg2;
 - (void)webView:(id)arg1 addMessageToConsole:(id)arg2 withSource:(id)arg3;
 - (void)webView:(id)arg1 didCreateOrUpdateScrollingLayer:(id)arg2 withContentsLayer:(id)arg3 scrollSize:(id)arg4 forNode:(id)arg5 allowHorizontalScrollbar:(BOOL)arg6 allowVerticalScrollbar:(BOOL)arg7;
 - (void)webView:(id)arg1 didFailLoadWithError:(id)arg2 forFrame:(id)arg3;

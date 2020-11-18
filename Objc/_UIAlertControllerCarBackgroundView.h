@@ -21,11 +21,13 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id)_colorForInterfaceStyle:(long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setCornerRadius:(double)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setPressed:(BOOL)arg1;
 - (void)setRoundedCornerPosition:(unsigned long long)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

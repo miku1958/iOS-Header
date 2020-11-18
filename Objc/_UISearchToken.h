@@ -4,29 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <UIKitCore/UISearchToken.h>
 
-@class NSString, UIImage;
-@protocol NSObject;
-
-@interface _UISearchToken : NSObject
+@interface _UISearchToken : UISearchToken
 {
-    id<NSObject> _representedObject;
-    NSString *_text;
-    UIImage *_image;
 }
-
-@property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
-@property (readonly, nonatomic) id<NSObject> representedObject; // @synthesize representedObject=_representedObject;
-@property (copy, nonatomic) NSString *text; // @synthesize text=_text;
-
-+ (id)tokenWithIcon:(id)arg1 text:(id)arg2;
-+ (id)tokenWithImage:(id)arg1;
-- (void).cxx_destruct;
-- (id)_initToken;
-- (id)_makeAtomView;
-- (id)init;
-- (id)initWithRepresentedObject:(id)arg1 text:(id)arg2 image:(id)arg3;
 
 @end
 

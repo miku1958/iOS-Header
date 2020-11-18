@@ -17,6 +17,7 @@
     _UIStatusBarIdentifier *_identifier;
     NSHashTable *_excludedPlacements;
     NSSet *_excludedRegionIdentifiers;
+    NSHashTable *_includedPlacements;
     NSHashTable *_allRequiredPlacements;
     NSHashTable *_anyRequiredPlacements;
     NSDictionary *_itemInfo;
@@ -28,6 +29,7 @@
 @property (readonly, copy, nonatomic) NSHashTable *excludedPlacements; // @synthesize excludedPlacements=_excludedPlacements;
 @property (readonly, copy, nonatomic) NSSet *excludedRegionIdentifiers; // @synthesize excludedRegionIdentifiers=_excludedRegionIdentifiers;
 @property (readonly, copy, nonatomic) _UIStatusBarIdentifier *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSHashTable *includedPlacements; // @synthesize includedPlacements=_includedPlacements;
 @property (readonly, copy, nonatomic) NSDictionary *itemInfo; // @synthesize itemInfo=_itemInfo;
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 
@@ -37,7 +39,9 @@
 - (id)description;
 - (id)disabledPlacement;
 - (id)excludingAllPlacementsInRegions:(id)arg1;
+- (id)excludingAllPlacementsInRegions:(id)arg1 exceptPlacements:(id)arg2;
 - (id)excludingPlacements:(id)arg1;
+- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (id)requiringAllPlacements:(id)arg1;
 - (id)requiringAnyPlacements:(id)arg1;

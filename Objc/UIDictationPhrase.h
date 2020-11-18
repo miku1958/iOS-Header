@@ -12,15 +12,18 @@
 {
     NSString *_text;
     NSArray *_alternativeInterpretations;
+    long long _style;
 }
 
 @property (readonly, nonatomic) NSArray *alternativeInterpretations; // @synthesize alternativeInterpretations=_alternativeInterpretations;
+@property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly, nonatomic) NSString *text; // @synthesize text=_text;
 
 + (id)phraseWithText:(id)arg1 alternativeInterpretations:(id)arg2;
++ (id)phraseWithText:(id)arg1 alternativeInterpretations:(id)arg2 style:(long long)arg3;
 - (void)dealloc;
 - (id)description;
-- (id)initWithText:(id)arg1 alternativeInterpretations:(id)arg2;
+- (id)initWithText:(id)arg1 alternativeInterpretations:(id)arg2 style:(long long)arg3;
 
 @end
 

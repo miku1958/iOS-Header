@@ -142,6 +142,7 @@
 - (struct CATransform3D)_specularTransformForCurrentState;
 - (double)_unfocusedShadowRadius;
 - (id)_unmaskedOverlayLayer;
+- (void)_updateContentProviderLayerFocusDirection;
 - (void)_updateCornerRadiusFromConfig;
 - (void)_updateFocusKeylineStrokeScale;
 - (void)_updateFocusKeylineStrokeTranslation:(struct CGPoint)arg1;

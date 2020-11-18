@@ -11,7 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (BOOL)supportsSecureCoding;
+- (id)_allEffects;
 - (void)_enumerateEffects:(CDUnknownBlockType)arg1;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -9,6 +9,7 @@
 @interface UIFont (UIFont_ContentSizeCategory)
 + (id)_normalizedContentSizeCategory:(id)arg1 default:(BOOL)arg2;
 + (id)_preferredContentSizeCategory:(unsigned long long)arg1;
++ (id)_ui_bulletFontForFont:(id)arg1;
 + (id)preferredContentSizeCategory;
 @end
 

@@ -14,7 +14,13 @@
 @property (nonatomic) long long preferredPresentationStyle;
 @property (copy, nonatomic) NSData *teamData;
 
++ (id)itemProviderWithURL:(id)arg1 title:(id)arg2;
 - (void)_NSItemProviderDidRegisterObject:(id)arg1;
 - (Class)_highestFidelityClassForLoading:(id)arg1;
+- (id)dataAvailabilityByTypeIdentifier;
+- (BOOL)isDataAvailableImmediatelyForTypeIdentifier:(id)arg1;
+- (void)registerFileProviderItemForTypeIdentifier:(id)arg1 visibility:(long long)arg2 loadHandler:(CDUnknownBlockType)arg3;
+- (void)registerFileRepresentationForTypeIdentifier:(id)arg1 dataAvailableImmediately:(BOOL)arg2 visibility:(long long)arg3 loadHandler:(CDUnknownBlockType)arg4;
+- (void)setDataAvailability:(BOOL)arg1 forTypeIdentifier:(id)arg2;
 @end
 

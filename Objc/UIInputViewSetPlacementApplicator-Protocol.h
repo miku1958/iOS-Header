@@ -15,6 +15,8 @@
 @property (readonly) struct UIEdgeInsets contentInsets;
 @property (readonly, strong) UIView *draggableView;
 @property (readonly) struct CGPoint origin;
+@property (readonly) struct CGRect popoverFrame;
+@property (readonly, strong) UIView *twoFingerDraggableView;
 
 + (id<UIInputViewSetPlacementApplicator>)applicatorForOwner:(id<UIInputViewSetPlacementOwner>)arg1 withPlacement:(UIInputViewSetPlacement *)arg2;
 - (BOOL)allConstraintsActive;

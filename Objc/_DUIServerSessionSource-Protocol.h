@@ -7,7 +7,7 @@
 @class NSArray, NSXPCListenerEndpoint, PBItemCollection;
 
 @protocol _DUIServerSessionSource
-- (oneway void)addItemsWithDetails:(NSArray *)arg1 itemCollection:(PBItemCollection *)arg2 dataProviderEndpoint:(NSXPCListenerEndpoint *)arg3;
+- (oneway void)addItemCollection:(PBItemCollection *)arg1 dataProviderEndpoint:(NSXPCListenerEndpoint *)arg2;
 - (oneway void)cancelDrag;
 - (oneway void)dirtySourceItems:(NSArray *)arg1;
 - (oneway void)dragDidExitSourceApp;

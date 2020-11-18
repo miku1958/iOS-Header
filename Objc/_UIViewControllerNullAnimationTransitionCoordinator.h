@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_alongsideAnimations:(BOOL)arg1;
 - (id)_alongsideCompletions:(BOOL)arg1;
-- (BOOL)_animateAlongsideTransitionInView:(id)arg1 systemCompletion:(BOOL)arg2 animation:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)_animateAlongsideTransitionInView:(id)arg1 systemAnimation:(BOOL)arg2 systemCompletion:(BOOL)arg3 animation:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_applyBlocks:(id)arg1 releaseBlocks:(CDUnknownBlockType)arg2;
 - (id)_mainContext;
 - (void)_runAlongsideAnimations;

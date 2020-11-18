@@ -6,86 +6,43 @@
 
 #import <UIKitCore/UIView.h>
 
-#import <UIKitCore/UIKeyboardCandidateGridCollectionViewControllerDelegate-Protocol.h>
-#import <UIKitCore/UIKeyboardCandidateList-Protocol.h>
-#import <UIKitCore/UIKeyboardCandidateListDelegate-Protocol.h>
-
-@class NSString, TIKeyboardCandidateResultSet, UIKeyboardCandidateGridCollectionViewController, UIKeyboardCandidateSortControl;
-@protocol UIKeyboardCandidateListDelegate;
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardCandidateInlineFloatingView : UIView <UIKeyboardCandidateList, UIKeyboardCandidateListDelegate, UIKeyboardCandidateGridCollectionViewControllerDelegate>
+@interface UIKeyboardCandidateInlineFloatingView : UIView
 {
     BOOL _reducedWidth;
+    BOOL _inlineRectIsVertical;
     int _position;
-    UIKeyboardCandidateGridCollectionViewController *_collectionViewController;
-    UIKeyboardCandidateSortControl *_sortSelectionBar;
-    TIKeyboardCandidateResultSet *_candidateSet;
     NSString *_inlineText;
     double _maxX;
-    id<UIKeyboardCandidateListDelegate> _candidateListDelegate;
+    double _extendedStateAdditionalHeight;
+    struct CGSize _preferredSize;
     struct CGRect _inlineRect;
     struct CGRect _previousCollapsedFrame;
 }
 
-@property (weak, nonatomic) id<UIKeyboardCandidateListDelegate> candidateListDelegate; // @synthesize candidateListDelegate=_candidateListDelegate;
-@property (strong, nonatomic) TIKeyboardCandidateResultSet *candidateSet; // @synthesize candidateSet=_candidateSet;
-@property (readonly, nonatomic) UIKeyboardCandidateGridCollectionViewController *collectionViewController; // @synthesize collectionViewController=_collectionViewController;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (nonatomic) double extendedStateAdditionalHeight; // @synthesize extendedStateAdditionalHeight=_extendedStateAdditionalHeight;
 @property (nonatomic) struct CGRect inlineRect; // @synthesize inlineRect=_inlineRect;
+@property (nonatomic) BOOL inlineRectIsVertical; // @synthesize inlineRectIsVertical=_inlineRectIsVertical;
 @property (copy, nonatomic) NSString *inlineText; // @synthesize inlineText=_inlineText;
 @property (nonatomic) double maxX; // @synthesize maxX=_maxX;
 @property (nonatomic) int position; // @synthesize position=_position;
+@property (nonatomic) struct CGSize preferredSize; // @synthesize preferredSize=_preferredSize;
 @property (nonatomic) struct CGRect previousCollapsedFrame; // @synthesize previousCollapsedFrame=_previousCollapsedFrame;
 @property (readonly, nonatomic, getter=isReducedWidth) BOOL reducedWidth; // @synthesize reducedWidth=_reducedWidth;
-@property (readonly, nonatomic) UIKeyboardCandidateSortControl *sortSelectionBar; // @synthesize sortSelectionBar=_sortSelectionBar;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_inheritedRenderConfig;
-- (id)activeCandidateList;
 - (void)adjustFrameForInlineText:(id)arg1 inlineRect:(struct CGRect)arg2 maxX:(double)arg3;
 - (struct CGRect)adjustedFrameFromDesiredFrame:(struct CGRect)arg1 textHeight:(double)arg2;
 - (struct CGRect)adjustedInlineRectFromInlineText:(id)arg1 inlineRect:(struct CGRect)arg2;
-- (void)candidateAcceptedAtIndex:(unsigned long long)arg1;
-- (void)candidateListAcceptCandidate:(id)arg1;
-- (void)candidateListSelectionDidChange:(id)arg1;
-- (void)candidateListShouldBeDismissed:(id)arg1;
-- (id)candidates;
-- (void)candidatesDidChange;
 - (struct CGRect)convertFromInputDelegateRect:(struct CGRect)arg1;
-- (id)currentCandidate;
-- (unsigned long long)currentIndex;
-- (void)dealloc;
-- (void)didMoveToWindow;
-- (void)expand;
-- (unsigned long long)gridCollectionViewNumberOfColumns:(id)arg1;
-- (unsigned long long)gridCollectionViewSelectedSortMethodIndex:(id)arg1;
-- (BOOL)handleNumberKey:(unsigned long long)arg1;
-- (BOOL)handleTabKeyWithShift:(BOOL)arg1;
-- (BOOL)hasCandidates;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isAcceptableFrame:(struct CGRect)arg1 afterScrollBy:(double)arg2;
-- (BOOL)isExtendedList;
-- (BOOL)isFloatingList;
-- (id)keyboardBehaviors;
-- (void)layout;
-- (void)padInlineFloatingViewExpand:(id)arg1;
-- (BOOL)padInlineFloatingViewIsExpanded:(id)arg1;
-- (unsigned long long)selectedSortIndex;
-- (void)setCandidates:(id)arg1 inlineText:(id)arg2 inlineRect:(struct CGRect)arg3 maxX:(double)arg4 layout:(BOOL)arg5;
-- (void)setCandidates:(id)arg1 type:(int)arg2 inlineText:(id)arg3 inlineRect:(struct CGRect)arg4 maxX:(double)arg5 layout:(BOOL)arg6;
-- (void)setFrame:(struct CGRect)arg1;
-- (void)setUIKeyboardCandidateListDelegate:(id)arg1;
-- (BOOL)showCandidate:(id)arg1;
-- (void)showCandidateAtIndex:(unsigned long long)arg1;
-- (void)showCandidateInForwardDirection:(BOOL)arg1 granularity:(int)arg2;
-- (struct CGSize)size;
-- (void)sortSelectionBarAction;
-- (id)statisticsIdentifier;
-- (void)updateLayerBorderWidth;
+- (void)layoutSubviews;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)setInlineText:(id)arg1 inlineRect:(struct CGRect)arg2 maxX:(double)arg3 layout:(BOOL)arg4;
+- (BOOL)shouldExtendUpwards;
 
 @end
 

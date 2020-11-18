@@ -15,11 +15,13 @@ __attribute__((visibility("hidden")))
     BOOL _scrubsLinearly;
     BOOL _userInteractionEnabled;
     BOOL _optimizationsEnabled;
+    BOOL _shouldLayoutSubviews;
     NSUUID *_uuid;
 }
 
 @property (nonatomic) BOOL optimizationsEnabled; // @synthesize optimizationsEnabled=_optimizationsEnabled;
 @property (nonatomic) BOOL scrubsLinearly; // @synthesize scrubsLinearly=_scrubsLinearly;
+@property (nonatomic) BOOL shouldLayoutSubviews; // @synthesize shouldLayoutSubviews=_shouldLayoutSubviews;
 @property (nonatomic) BOOL startPaused; // @synthesize startPaused=_startPaused;
 @property (nonatomic) BOOL userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;

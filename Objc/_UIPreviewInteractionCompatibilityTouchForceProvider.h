@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)cancelInteraction;
 - (void)dealloc;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithView:(id)arg1;
 - (struct CGPoint)locationInCoordinateSpace:(id)arg1;
 

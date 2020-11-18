@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     NSString *_startColorName;
     NSString *_endColorName;
     NSArray *_colors;
-    double _middleLocation;
+    NSArray *_middleLocations;
     double _opacity;
     BOOL _horizontal;
     BOOL _usesRGBColors;
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL usesRGBColors;
 
 + (id)gradientWith3Colors:(id)arg1 middleLocation:(double)arg2;
++ (id)gradientWithColors:(id)arg1 middleLocations:(id)arg2;
 + (id)gradientWithFlatColor:(id)arg1;
 + (id)gradientWithName:(id)arg1;
 + (id)gradientWithStartColor:(id)arg1 endColor:(id)arg2;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (id)initWith3Colors:(id)arg1 middleLocation:(double)arg2;
+- (id)initWithColors:(id)arg1 middleLocations:(id)arg2;
 - (id)initWithFlatColor:(id)arg1;
 - (id)initWithName:(id)arg1;
 - (id)initWithStartColor:(id)arg1 endColor:(id)arg2;

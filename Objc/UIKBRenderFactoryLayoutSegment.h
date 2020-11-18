@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     int _rectCount;
     struct CGRect _rects[10];
-    int _triangleCorners[10];
+    unsigned long long _triangleCorners[10];
     int _edgeCount;
     unsigned long long _edges[10];
     NSString *_cachedKeyNames[10];
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UIKBRenderTraits *traits; // @synthesize traits=_traits;
 
 + (id)segmentWithTraits:(id)arg1;
-- (void)addLayoutRect:(struct CGRect)arg1 asTriangle:(int)arg2;
+- (void)addLayoutRect:(struct CGRect)arg1 asTriangle:(unsigned long long)arg2;
 - (void)addRelativeLayoutRectFromEdge:(unsigned long long)arg1 ofCachedKey:(id)arg2;
 - (BOOL)containsPoint:(struct CGPoint)arg1 inRect:(struct CGRect)arg2 withKeyplane:(id)arg3;
 - (void)dealloc;

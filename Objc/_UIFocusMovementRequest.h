@@ -8,7 +8,7 @@
 
 #import <UIKitCore/_UIFocusUpdateRequesting-Protocol.h>
 
-@class NSString, UIFocusAnimationCoordinator, UIFocusSystem, UIWindow, _UIFocusInputDeviceInfo, _UIFocusItemInfo, _UIFocusMovementInfo;
+@class NSString, UIFocusAnimationCoordinator, UIFocusSystem, UIWindow, _UIFocusInputDeviceInfo, _UIFocusItemInfo, _UIFocusMovementInfo, _UIFocusSearchInfo;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusMovementRequest : NSObject <_UIFocusUpdateRequesting>
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     UIWindow *_window;
     _UIFocusItemInfo *_focusedItemInfo;
     _UIFocusMovementInfo *_movementInfo;
+    _UIFocusSearchInfo *_searchInfo;
 }
 
 @property (readonly, nonatomic) BOOL allowsDeferral;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIFocusMovementInfo *movementInfo; // @synthesize movementInfo=_movementInfo;
 @property (readonly, nonatomic) BOOL requiresEnvironmentValidation;
 @property (readonly, nonatomic) BOOL requiresNextFocusedItem;
+@property (strong, nonatomic) _UIFocusSearchInfo *searchInfo; // @synthesize searchInfo=_searchInfo;
 @property (nonatomic) BOOL shouldPerformHapticFeedback; // @synthesize shouldPerformHapticFeedback=_shouldPerformHapticFeedback;
 @property (readonly, nonatomic) BOOL shouldPlayFocusSound;
 @property (readonly) Class superclass;

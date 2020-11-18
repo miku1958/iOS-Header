@@ -17,6 +17,7 @@
 - (long long)_dataOwnerForDragSession:(id<UIDragSession>)arg1 atIndexPath:(NSIndexPath *)arg2;
 - (UIDragPreviewParameters *)_dragPreviewParametersForIndexPath:(NSIndexPath *)arg1;
 - (BOOL)_dragSessionAllowsMoveOperation:(id<UIDragSession>)arg1;
+- (BOOL)_dragSessionAllowsSystemDrag:(id<UIDragSession>)arg1;
 - (void)_dragSessionDidEnd:(id<UIDragSession>)arg1;
 - (BOOL)_dragSessionIsRestrictedToDraggingApplication:(id<UIDragSession>)arg1;
 - (void)_dragSessionWillBegin:(id<UIDragSession>)arg1;

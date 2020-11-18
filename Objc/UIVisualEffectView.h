@@ -8,7 +8,7 @@
 
 #import <UIKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, UIImage, UIVisualEffect, _UIVisualEffectBackdropView, _UIVisualEffectHost, _UIVisualEffectViewBackdropCaptureGroup, _UIVisualEffectViewCapturedState, _UIVisualEffectViewCornerMask;
+@class NSArray, NSString, UIImage, UIVisualEffect, _UIVisualEffectBackdropView, _UIVisualEffectEnvironment, _UIVisualEffectHost, _UIVisualEffectViewBackdropCaptureGroup, _UIVisualEffectViewCornerMask;
 
 @interface UIVisualEffectView : UIView <NSSecureCoding>
 {
@@ -17,34 +17,38 @@
     _UIVisualEffectViewBackdropCaptureGroup *_captureGroup;
     _UIVisualEffectHost *_backgroundHost;
     _UIVisualEffectHost *_contentHost;
+    _UIVisualEffectEnvironment *_environment;
     BOOL _backgroundHostNeedsUpdate;
     BOOL _contentHostNeedsUpdate;
     BOOL _isDependent;
-    BOOL _noiseEnabled;
+    BOOL _isUpdatingSubviews;
     double _backdropViewBackgroundColorAlpha;
     BOOL _useReducedTransparencyForContentHost;
     BOOL __useKeyframeWorkaround;
     BOOL _useLiveMasking;
+    BOOL _allowsDithering;
+    BOOL _allowsBlurring;
     UIVisualEffect *_effect;
     _UIVisualEffectViewCornerMask *__cornerMask;
-    _UIVisualEffectViewCapturedState *__capturedStateDuringAnimation;
     NSArray *__captureDependents;
     NSArray *_backgroundEffects;
     NSArray *_contentEffects;
 }
 
+@property (nonatomic, setter=_setAllowsGroupFiltering:) BOOL _allowsGroupFiltering;
 @property (readonly, nonatomic) BOOL _applyCornerMaskToSelf;
 @property (nonatomic, getter=_backdropViewBackgroundColorAlpha, setter=_setBackdropViewBackgroundColorAlpha:) double _backdropViewBackgroundColorAlpha;
 @property (copy, nonatomic, setter=_setCaptureDependents:) NSArray *_captureDependents; // @synthesize _captureDependents=__captureDependents;
 @property (readonly, nonatomic) _UIVisualEffectViewBackdropCaptureGroup *_captureGroup; // @synthesize _captureGroup;
 @property (weak, nonatomic, setter=_setCaptureView:) _UIVisualEffectBackdropView *_captureView;
-@property (strong, nonatomic, getter=_capturedStateDuringAnimation, setter=_setCapturedStateDuringAnimation:) _UIVisualEffectViewCapturedState *_capturedStateDuringAnimation; // @synthesize _capturedStateDuringAnimation=__capturedStateDuringAnimation;
 @property (strong, nonatomic, setter=_setCornerMask:) _UIVisualEffectViewCornerMask *_cornerMask; // @synthesize _cornerMask=__cornerMask;
 @property (nonatomic, setter=_setCornerRadius:) double _cornerRadius;
 @property (copy, nonatomic, setter=_setGroupName:) NSString *_groupName;
 @property (strong, nonatomic, setter=_setMaskImage:) UIImage *_maskImage;
-@property (nonatomic, getter=_isNoiseEnabled, setter=_setNoiseEnabled:) BOOL _noiseEnabled; // @synthesize _noiseEnabled;
+@property (nonatomic, getter=_isNoiseEnabled, setter=_setNoiseEnabled:) BOOL _noiseEnabled;
 @property (nonatomic, setter=_setUseKeyframeWorkaround:) BOOL _useKeyframeWorkaround; // @synthesize _useKeyframeWorkaround=__useKeyframeWorkaround;
+@property (nonatomic) BOOL allowsBlurring; // @synthesize allowsBlurring=_allowsBlurring;
+@property (nonatomic) BOOL allowsDithering; // @synthesize allowsDithering=_allowsDithering;
 @property (copy, nonatomic) NSArray *backgroundEffects; // @synthesize backgroundEffects=_backgroundEffects;
 @property (copy, nonatomic) NSArray *contentEffects; // @synthesize contentEffects=_contentEffects;
 @property (readonly, nonatomic) UIView *contentView;
@@ -56,21 +60,20 @@
 - (void).cxx_destruct;
 - (void)_addSubview:(id)arg1 positioned:(long long)arg2 relativeTo:(id)arg3;
 - (void)_applyCornerRadiusToSubviews;
-- (id)_backdropSubview;
 - (id)_backgroundHost;
-- (id)_captureStateForCurrentAnimationBlockCreatingIfNecessary:(BOOL)arg1 clearingCache:(BOOL)arg2;
+- (id)_colorViewBoundsOverlayCreateIfNecessary:(BOOL)arg1;
 - (void)_commonInit;
-- (void)_configureAllEffects;
 - (void)_configureEffects;
 - (id)_contentHost;
 - (double)_continuousCornerRadius;
 - (id)_debug;
-- (id)_effectNodeForEffects:(id)arg1 traits:(id)arg2 options:(id)arg3;
+- (id)_effectDescriptorForEffects:(id)arg1 usage:(long long)arg2;
 - (void)_ensureBackgroundHost;
 - (void)_ensureContentHostWithView:(id)arg1;
-- (void)_generateAnimationsForPendingKeyframes:(id)arg1 duration:(double)arg2;
+- (void)_generateBackgroundEffects:(id)arg1 contentEffects:(id)arg2;
+- (void)_generateDeferredAnimations:(id)arg1;
+- (void)_generateEffectAnimations:(id)arg1;
 - (void)_generateWorkaroundKeyframeAnimationsForEffects:(id)arg1;
-- (BOOL)_hasTransformForEffectSubview:(id)arg1;
 - (id)_initialValueForKey:(id)arg1;
 - (id)_maskImageForMaskView:(id)arg1;
 - (id)_maskView;
@@ -82,7 +85,7 @@
 - (void)_setEffect:(id)arg1;
 - (void)_setMaskView:(id)arg1;
 - (void)_setTintOpacity:(double)arg1;
-- (BOOL)_shouldManageCornerRadiusForEffectSubview:(id)arg1;
+- (id)_traitCollectionForChildEnvironment:(id)arg1;
 - (void)_unregisterNotifications;
 - (void)_updateEffectBackgroundColor;
 - (void)_updateEffectForAccessibilityChanges:(id)arg1;
@@ -92,9 +95,12 @@
 - (void)_updateEffectForSnapshotDidEnd:(id)arg1;
 - (void)_updateEffectForSnapshotWillBegin:(id)arg1;
 - (void)_updateEffectsFromLegacyEffect;
+- (void)_updateEnvironmentAndFlagUpdatesIfNecessary:(CDUnknownBlockType)arg1;
+- (void)_updateSubView:(id)arg1 frame:(struct CGRect)arg2;
 - (void)_updateSubviews;
 - (id)_whatsWrongWithThisEffect;
 - (void)dealloc;
+- (id)description;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
 - (void)encodeWithCoder:(id)arg1;

@@ -29,7 +29,7 @@
 
 - (void).cxx_destruct;
 - (id)_draggableTextInRange:(id)arg1;
-- (BOOL)_isUsableLink:(id)arg1;
+- (BOOL)_isActualLink:(id)arg1;
 - (CDUnknownBlockType)_previewProviderForTextInRange:(struct _NSRange)arg1;
 - (void)_renderTextInRange:(struct _NSRange)arg1 image:(out id *)arg2 boundingRectangles:(out id *)arg3 forLifting:(BOOL)arg4;
 - (CDUnknownBlockType)_targetedPreviewProviderForImage:(id)arg1 inRange:(struct _NSRange)arg2;
@@ -42,7 +42,8 @@
 - (id)draggableObjectsForTextRange:(id)arg1;
 - (id)initWithView:(id)arg1 layoutManager:(id)arg2;
 - (id)performSameViewDropOperation:(id)arg1;
-- (id)previewForDroppingText:(id)arg1 toPosition:(id)arg2 inContainerView:(id)arg3;
+- (id)previewForDroppingTextInRange:(id)arg1 toPosition:(id)arg2 inContainerView:(id)arg3;
+- (CDUnknownBlockType)targetedPreviewProviderForTextInRange:(struct _NSRange)arg1;
 - (id)textRangeForAttachmentInTextRange:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (id)textRangesForAttachmentsInTextRange:(id)arg1;
 

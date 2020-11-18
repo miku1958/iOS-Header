@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_presentationViewController;
 - (id)init;
+- (id)initWithWindowScene:(id)arg1;
 - (void)presentAlertController:(id)arg1 animated:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
 
 @end

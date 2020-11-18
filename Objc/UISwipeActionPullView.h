@@ -49,6 +49,8 @@
 - (void).cxx_destruct;
 - (Class)_buttonClass;
 - (double)_directionalMultiplier;
+- (id)_inferredAccessibilityIdentifierTemplate;
+- (void)_performAction:(id)arg1 offset:(double)arg2 extraOffset:(double)arg3;
 - (void)_pressedButton:(id)arg1;
 - (void)_rebuildButtons;
 - (unsigned long long)_swipeActionCount;
@@ -58,9 +60,9 @@
 - (id)description;
 - (void)freeze;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)initWithCellEdge:(unsigned long long)arg1 style:(unsigned long long)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 cellEdge:(unsigned long long)arg2 style:(unsigned long long)arg3;
 - (void)layoutSubviews;
-- (void)moveToOffset:(double)arg1 extraOffset:(double)arg2 animated:(BOOL)arg3 usingSpringWithStiffness:(double)arg4 initialVelocity:(double)arg5;
+- (void)moveToOffset:(double)arg1 extraOffset:(double)arg2 animator:(id)arg3 usingSpringWithStiffness:(double)arg4 initialVelocity:(double)arg5;
 - (void)resetView;
 - (id)sourceViewForAction:(id)arg1;
 

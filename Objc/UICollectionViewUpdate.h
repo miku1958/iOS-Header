@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, UICollectionView, UICollectionViewData;
+#import <UIKitCore/_UICollectionViewUpdateTranslating-Protocol.h>
+
+@class NSArray, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSString, UICollectionView, UICollectionViewData;
 
 __attribute__((visibility("hidden")))
-@interface UICollectionViewUpdate : NSObject
+@interface UICollectionViewUpdate : NSObject <_UICollectionViewUpdateTranslating>
 {
     UICollectionView *_collectionView;
     NSArray *_updateItems;
@@ -39,13 +41,29 @@ __attribute__((visibility("hidden")))
     long long _newFocusedViewType;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 - (void).cxx_destruct;
 - (void)_computeItemUpdates;
 - (void)_computeSectionUpdates;
 - (void)_computeSupplementaryUpdates;
 - (void)dealloc;
-- (id)description;
+- (long long)finalGlobalIndexForInitialGlobalIndex:(long long)arg1;
+- (id)finalIndexPathForInitialIndexPath:(id)arg1;
+- (id)finalIndexPathForSupplementaryElementOfKind:(id)arg1 forInitialIndexPath:(id)arg2;
+- (long long)finalSectionCount;
+- (struct _NSRange)finalSectionGlobalItemRangeForSection:(long long)arg1;
+- (long long)finalSectionIndexForInitialSectionIndex:(long long)arg1;
 - (id)initWithCollectionView:(id)arg1 updateItems:(id)arg2 oldModel:(id)arg3 newModel:(id)arg4 oldVisibleBounds:(struct CGRect)arg5 newVisibleBounds:(struct CGRect)arg6;
+- (struct _NSRange)initalSectionGlobalItemRangeForSection:(long long)arg1;
+- (long long)initialGlobalIndexForFinalGlobalIndex:(long long)arg1;
+- (id)initialIndexPathForFinalIndexPath:(id)arg1;
+- (id)initialIndexPathForSupplementaryElementOfKind:(id)arg1 forFinalIndexPath:(id)arg2;
+- (long long)initialSectionCount;
+- (long long)initialSectionIndexForFinalSectionIndex:(long long)arg1;
 - (id)newIndexPathForSupplementaryElementOfKind:(id)arg1 oldIndexPath:(id)arg2;
 - (id)oldIndexPathForSupplementaryElementOfKind:(id)arg1 newIndexPath:(id)arg2;
 

@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_containsTable:(id)arg1;
 - (id)_createContainerViewWithFrame:(struct CGRect)arg1;
 - (id)_createTableViewWithFrame:(struct CGRect)arg1 containingFrame:(struct CGRect)arg2;
+- (struct CGRect)_defaultFocusRegionFrame;
 - (double)_horizontalBiasForEndTables;
 - (void)_moveTableViewIfNecessary:(id)arg1 toContentOffset:(struct CGPoint)arg2;
 - (void)_pickerTableViewDidChangeContentOffset:(id)arg1;
@@ -62,9 +63,13 @@ __attribute__((visibility("hidden")))
 - (struct CATransform3D)_transformForTableWithPerspectiveTranslationX:(double)arg1;
 - (struct CATransform3D)_transformForTableWithTranslationX:(double)arg1;
 - (BOOL)_usesCheckSelection;
+- (id)_viewToAddFocusLayer;
 - (id)_visibleCellClosestToPoint:(struct CGPoint)arg1 inView:(id)arg2;
 - (struct _NSRange)_visibleGlobalRows;
+- (struct CGRect)accessibilityFrame;
+- (id)accessibilityPath;
 - (void)beginUpdates;
+- (BOOL)canBecomeFocused;
 - (id)cellForRowAtIndexPath:(id)arg1;
 - (void)endUpdates;
 - (id)initWithFrame:(struct CGRect)arg1 tableFrame:(struct CGRect)arg2 middleBarHeight:(double)arg3 rowHeight:(double)arg4 pickerView:(id)arg5 transform:(struct CATransform3D)arg6;

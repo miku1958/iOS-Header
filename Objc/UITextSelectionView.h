@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     BOOL m_wasShowingCommands;
     BOOL m_delayShowingCommands;
     BOOL m_dictationReplacementsMode;
+    BOOL m_shouldEmphasizeNextSelectionRects;
     int m_showingCommandsCounter;
     NSArray *m_replacements;
     BOOL m_deferSelectionCommands;
@@ -33,6 +34,9 @@ __attribute__((visibility("hidden")))
     BOOL m_isSuspended;
     int m_showingCommandsCounterForRotate;
     BOOL m_forceRangeView;
+    BOOL _isIndirectFloatingCaret;
+    struct CGRect _stashedCaretRect;
+    struct CGRect _previousGhostCaretRect;
 }
 
 @property (nonatomic) BOOL caretBlinks; // @synthesize caretBlinks=m_caretBlinks;
@@ -40,21 +44,28 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UIView *floatingCaretView; // @synthesize floatingCaretView=m_floatingCaretView;
 @property (nonatomic) BOOL forceRangeView; // @synthesize forceRangeView=m_forceRangeView;
 @property (readonly, weak, nonatomic) UITextInteractionAssistant *interactionAssistant; // @synthesize interactionAssistant=m_interactionAssistant;
+@property (nonatomic) BOOL isIndirectFloatingCaret; // @synthesize isIndirectFloatingCaret=_isIndirectFloatingCaret;
+@property (nonatomic) struct CGRect previousGhostCaretRect; // @synthesize previousGhostCaretRect=_previousGhostCaretRect;
 @property (readonly, nonatomic) UITextRangeView *rangeView;
 @property (strong, nonatomic) NSArray *replacements; // @synthesize replacements=m_replacements;
 @property (readonly, nonatomic) UITextSelection *selection;
 @property (readonly, nonatomic) BOOL selectionCommandsShowing;
+@property (nonatomic) struct CGRect stashedCaretRect; // @synthesize stashedCaretRect=_stashedCaretRect;
 @property (nonatomic) BOOL visible; // @synthesize visible=m_visible;
 
 - (void).cxx_destruct;
-- (void)_showCommandsWithReplacements:(id)arg1 isForContextMenu:(BOOL)arg2;
+- (void)_hideCaret:(int)arg1;
+- (BOOL)_shouldUseIndirectFloatingCaret;
+- (void)_showCaret:(int)arg1;
+- (void)_showCommandsWithReplacements:(id)arg1 isForContextMenu:(BOOL)arg2 rectsToEvade:(id)arg3;
 - (void)_showSelectionCommandsForContextMenu:(BOOL)arg1;
 - (void)activate;
 - (BOOL)affectedByScrollerNotification:(id)arg1;
 - (void)animateBoxShrinkOn:(id)arg1;
 - (void)animateCaret:(id)arg1 toPosition:(struct CGPoint)arg2 withSize:(struct CGSize)arg3;
 - (void)animateExpanderOn:(id)arg1;
-- (void)animatePulsingCaret:(id)arg1;
+- (void)animatePulsingDirectCaret:(id)arg1;
+- (void)animatePulsingIndirectCaret:(id)arg1;
 - (void)appearOrFadeIfNecessary;
 - (void)beginFloatingCaretView;
 - (void)beginFloatingCursorAtPoint:(struct CGPoint)arg1;
@@ -68,7 +79,6 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)clippedTargetRect:(struct CGRect)arg1;
 - (void)configureForHighlightMode;
 - (void)configureForReplacementMode;
-- (void)configureForRevealHighlightMode;
 - (void)configureForSelectionMode;
 - (void)deactivate;
 - (void)dealloc;
@@ -100,6 +110,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidate;
 - (BOOL)isValid;
 - (void)layoutChangedByScrolling:(BOOL)arg1;
+- (BOOL)point:(struct CGPoint)arg1 isNearCursorRect:(struct CGRect)arg2;
 - (void)prepareForMagnification;
 - (void)removeFromSuperview;
 - (void)scaleDidChange:(id)arg1;
@@ -111,6 +122,7 @@ __attribute__((visibility("hidden")))
 - (void)selectionDidTranslateForReachability:(id)arg1;
 - (void)selectionWillScroll:(id)arg1;
 - (void)selectionWillTranslateForReachability:(id)arg1;
+- (void)setEmphasisOnNextSelectionRects;
 - (BOOL)shouldBeVisible;
 - (void)showCalloutBarAfterDelay:(double)arg1;
 - (void)showCaret:(int)arg1;
@@ -124,9 +136,10 @@ __attribute__((visibility("hidden")))
 - (void)tintColorDidChange;
 - (void)touchCaretBlinkTimer;
 - (void)updateBaseIsStartWithDocumentPoint:(struct CGPoint)arg1;
-- (BOOL)updateCalloutBarRects:(id)arg1 effectsWindow:(id)arg2;
+- (BOOL)updateCalloutBarRects:(id)arg1 effectsWindow:(id)arg2 rectsToEvade:(id)arg3;
 - (void)updateDocumentHasContent:(BOOL)arg1;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1;
+- (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
 - (void)updateSelectionCommands;
 - (void)updateSelectionDots;
 - (void)updateSelectionRects;
@@ -135,6 +148,7 @@ __attribute__((visibility("hidden")))
 - (void)validateWithInteractionAssistant:(id)arg1;
 - (void)viewAnimate:(id)arg1;
 - (void)wilLResume:(id)arg1;
+- (void)willBeginFloatingCursor:(BOOL)arg1;
 - (void)willRotate:(id)arg1;
 - (void)windowDidResignOrBecomeKey;
 

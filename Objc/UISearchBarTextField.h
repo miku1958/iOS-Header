@@ -4,88 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/UITextField.h>
-
-#import <UIKitCore/_UISearchBarTextFieldOrMailReplacement-Protocol.h>
-
-@class NSMutableDictionary, NSString, NSValue, _UISearchBarSearchFieldBackgroundView;
+#import <UIKitCore/UISearchTextField.h>
 
 __attribute__((visibility("hidden")))
-@interface UISearchBarTextField : UITextField <_UISearchBarTextFieldOrMailReplacement>
+@interface UISearchBarTextField : UISearchTextField
 {
-    NSMutableDictionary *_customClearButtons;
-    NSMutableDictionary *_iconOffsets;
-    NSValue *_searchTextOffsetValue;
-    _UISearchBarSearchFieldBackgroundView *_effectBackgroundTop;
-    _UISearchBarSearchFieldBackgroundView *_effectBackgroundBottom;
-    BOOL _deferringFirstResponder;
-    BOOL _animatePlaceholderOnResignFirstResponder;
-    struct {
-        unsigned int delegateWantsShouldSendContentChangedNotificationsIfOnlyMarkedTextChanged:1;
-    } _searchBarTextFieldFlags;
-    BOOL __preventSelectionViewActivation;
-    long long __textInputSource;
 }
-
-@property (nonatomic, setter=_setPreventSelectionViewActivation:) BOOL _preventSelectionViewActivation; // @synthesize _preventSelectionViewActivation=__preventSelectionViewActivation;
-@property (strong, nonatomic, setter=_setSearchTextOffetValue:) NSValue *_searchTextOffsetValue;
-@property (nonatomic) long long _textInputSource; // @synthesize _textInputSource=__textInputSource;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
-- (void).cxx_destruct;
-- (void)_activateSelectionView;
-- (struct CGRect)_adjustedTextOrEditingRect:(struct CGRect)arg1 forBounds:(struct CGRect)arg2;
-- (struct CGRect)_adjustmentsForSearchIconViewRectForBounds:(struct CGRect)arg1;
-- (void)_applyHighlightedAnimated:(BOOL)arg1;
-- (struct CGRect)_availableTextRectForBounds:(struct CGRect)arg1 forEditing:(BOOL)arg2;
-- (void)_becomeFirstResponder;
-- (BOOL)_becomeFirstResponderWhenPossible;
-- (long long)_blurEffectStyle;
-- (struct CGRect)_bookmarkViewRectForBounds:(struct CGRect)arg1;
-- (void)_clearBackgroundViews;
-- (id)_clearButtonImageForState:(unsigned long long)arg1;
-- (struct CGSize)_clearButtonSize;
-- (id)_createEffectsBackgroundViewWithStyle:(unsigned long long)arg1 applyFilter:(id)arg2;
-- (id)_offsetValueForIcon:(long long)arg1;
-- (id)_placeholderColor;
-- (Class)_placeholderLabelClass;
-- (void)_removeEffectsBackgroundViews;
-- (struct CGRect)_searchIconViewRectForBounds:(struct CGRect)arg1;
-- (void)_setAnimatesBackgroundCornerRadius:(BOOL)arg1;
-- (void)_setBackgroundViewsAlpha:(double)arg1;
-- (void)_setBottomEffectBackgroundVisible:(BOOL)arg1;
-- (void)_setClearButtonImage:(id)arg1 forState:(unsigned long long)arg2;
-- (void)_setEnabled:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)_setOffsetValue:(id)arg1 forIcon:(long long)arg2;
-- (BOOL)_shouldCenterPlaceholder;
-- (BOOL)_shouldDetermineInterfaceStyleTextColor;
-- (BOOL)_shouldResignOnEditingDidEndOnExit;
-- (BOOL)_shouldSendContentChangedNotificationsIfOnlyMarkedTextChanged;
-- (struct CGRect)_suffixFrame;
-- (long long)_suffixLabelTextAlignment;
-- (Class)_systemBackgroundViewClass;
-- (BOOL)_textShouldFillFieldEditorHeight;
-- (void)_updateBackgroundView:(id)arg1 withStyle:(unsigned long long)arg2 filter:(id)arg3;
-- (void)_updateBackgroundViewsAnimated:(BOOL)arg1;
-- (BOOL)canBecomeFirstResponder;
-- (BOOL)canBecomeFocused;
-- (BOOL)canResignFirstResponder;
-- (struct CGRect)clearButtonRectForBounds:(struct CGRect)arg1;
-- (struct CGRect)editingRectForBounds:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)insertTextSuggestion:(id)arg1;
-- (struct CGRect)leftViewRectForBounds:(struct CGRect)arg1;
-- (struct CGRect)placeholderRectForBounds:(struct CGRect)arg1;
-- (BOOL)resignFirstResponder;
-- (struct CGRect)rightViewRectForBounds:(struct CGRect)arg1;
-- (void)setDelegate:(id)arg1;
-- (id)textInputTraits;
-- (struct CGRect)textRectForBounds:(struct CGRect)arg1;
-- (void)tintColorDidChange;
-- (void)updateForBackdropStyle:(unsigned long long)arg1;
 
 @end
 

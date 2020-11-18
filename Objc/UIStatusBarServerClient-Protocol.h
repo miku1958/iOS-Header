@@ -9,7 +9,7 @@
 @protocol UIStatusBarServerClient
 - (void)statusBarServer:(UIStatusBarServer *)arg1 didReceiveDoubleHeightStatusString:(NSString *)arg2 forStyle:(long long)arg3;
 - (void)statusBarServer:(UIStatusBarServer *)arg1 didReceiveGlowAnimationState:(BOOL)arg2 forStyle:(long long)arg3;
-- (void)statusBarServer:(UIStatusBarServer *)arg1 didReceiveStatusBarData:(const CDStruct_1916f467 *)arg2 withActions:(int)arg3;
+- (void)statusBarServer:(UIStatusBarServer *)arg1 didReceiveStatusBarData:(const CDStruct_0942cde0 *)arg2 withActions:(int)arg3;
 - (void)statusBarServer:(UIStatusBarServer *)arg1 didReceiveStyleOverrides:(int)arg2;
 @end
 

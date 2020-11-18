@@ -33,16 +33,17 @@ __attribute__((visibility("hidden")))
 - (BOOL)_disableGeometryObserverNotification;
 - (id)_inheritedRenderConfig;
 - (id)_inputWindowController;
+- (BOOL)_isTransparentFocusRegion;
 - (void)_setAccessoryViewFrame:(struct CGRect)arg1;
 - (void)_setRenderConfig:(id)arg1;
 - (void)addHostedView:(id)arg1 withViewRemovalHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
+- (void)didAddSubview:(id)arg1;
 - (BOOL)hasHostedViews;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)performWithoutGeometryObserverNotifications:(CDUnknownBlockType)arg1;
 - (void)setCenter:(struct CGPoint)arg1;
 - (void)setFrame:(struct CGRect)arg1;
-- (int)textEffectsVisibilityLevel;
 
 @end
 

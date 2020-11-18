@@ -7,13 +7,13 @@
 #import <UIKitCore/UIView.h>
 
 #import <UIKitCore/NSUITextViewCommonMethods-Protocol.h>
-#import <UIKitCore/_UITextTiledLayerDelegate-Protocol.h>
+#import <UIKitCore/_UITextViewCanvasViewContext-Protocol.h>
 
-@class NSArray, NSDictionary, NSLayoutManager, NSMutableSet, NSString, NSTextContainer, NSTextStorage;
+@class NSDictionary, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIColor, UITextView, _UITextViewCanvasView;
 @protocol _UITextContainerViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UITextContainerView : UIView <NSUITextViewCommonMethods, _UITextTiledLayerDelegate>
+@interface _UITextContainerView : UIView <NSUITextViewCommonMethods, _UITextViewCanvasViewContext>
 {
     struct UIEdgeInsets _textContainerInset;
     struct CGPoint _textContainerOrigin;
@@ -29,19 +29,21 @@ __attribute__((visibility("hidden")))
         unsigned int horizontallyResizable:1;
         unsigned int verticallyResizable:1;
         unsigned int freezeTextContainerSize:1;
-        unsigned int containedInTextView:1;
+        unsigned int usesStandardTextScaling:1;
     } _tcvFlags;
-    NSMutableSet *_ghostedRanges;
-    NSMutableSet *_hiddenAreaRects;
     struct CGRect _constrainedTiledRenderingRect;
-    NSArray *_maskedRectangles;
-    long long _contentsFormat;
+    UITextView *_textView;
+    _UITextViewCanvasView *_canvasView;
     id<_UITextContainerViewDelegate> _delegate;
 }
 
+@property (readonly, nonatomic) _UITextViewCanvasView *canvasView; // @synthesize canvasView=_canvasView;
+@property (readonly, nonatomic) struct CGRect constrainedTiledRenderingRect;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_UITextContainerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) struct CGPoint drawingScale;
+@property (readonly, nonatomic, getter=isEditable) BOOL editable;
 @property (nonatomic, getter=_freezeTextContainerSize, setter=_setFreezeTextContainerSize:) BOOL freezeTextContainerSize;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHorizontallyResizable) BOOL horizontallyResizable;
@@ -53,48 +55,44 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double maxTileHeight;
 @property (nonatomic) struct CGSize minSize; // @synthesize minSize=_minSize;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) UIColor *textColor;
 @property (weak, nonatomic) NSTextContainer *textContainer; // @synthesize textContainer=_textContainer;
 @property (nonatomic) struct UIEdgeInsets textContainerInset;
+@property (readonly, nonatomic) struct CGPoint textContainerOrigin;
 @property (readonly, nonatomic) NSTextStorage *textStorage;
+@property (nonatomic) BOOL usesStandardTextScaling;
 @property (nonatomic) BOOL usesTiledViews;
 @property (nonatomic, getter=isVerticallyResizable) BOOL verticallyResizable;
 
-+ (Class)layerClass;
 - (void).cxx_destruct;
-- (void)_addHiddenArea:(struct CGRect)arg1;
 - (void)_constrainTiledRenderingToRect:(struct CGRect)arg1;
-- (void)_didScroll;
-- (BOOL)_ensureLayoutCompleteForRect:(struct CGRect)arg1 withExtension:(BOOL)arg2;
-- (BOOL)_ensureLayoutCompleteForRect:(struct CGRect)arg1 withExtensionFactor:(double)arg2 minimumExtensionDistance:(double)arg3 repetitions:(unsigned long long)arg4;
+- (void)_ensureLayoutCompleteForRect:(struct CGRect)arg1;
 - (void)_ensureLayoutCompleteToEndOfCharacterRange:(struct _NSRange)arg1;
 - (void)_ensureMinAndMaxSizesConsistentWithBounds;
-- (struct _NSRange)_extendedGlyphRangeForRange:(struct _NSRange)arg1 maxGlyphIndex:(unsigned long long)arg2 drawingToScreen:(BOOL)arg3;
 - (struct CGRect)_intersectRectWithConstrainedTiledRenderingRect:(struct CGRect)arg1;
-- (void)_removeHiddenAreas;
-- (void)_resetMaskedRectangles;
-- (void)_setFrameOrBounds:(struct CGRect)arg1 oldRect:(struct CGRect)arg2 settingAction:(CDUnknownBlockType)arg3;
+- (void)_setFrameOrBounds:(struct CGRect)arg1 oldRect:(struct CGRect)arg2 isFrameRect:(BOOL)arg3 settingAction:(CDUnknownBlockType)arg4;
+- (void)_setNeedsContentsFormatUpdate;
+- (BOOL)_shouldCapSizeToFitLayoutRange:(out struct _NSRange *)arg1;
 - (void)_sizeToConstrainedContainerUsedRect;
-- (struct CGRect)_textTiledLayer:(id)arg1 constrainTileableBounds:(struct CGRect)arg2;
-- (id)_textTiledLayer:(id)arg1 maskedRectsInVisibleRect:(struct CGRect)arg2;
 - (void)_unconstrainTiledRendering;
 - (void)addGhostedRange:(struct _NSRange)arg1;
-- (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 textContainer:(id)arg2 delegate:(id)arg3;
 - (void)invalidateTextContainerOrigin;
-- (id)layer;
 - (id)layoutManager:(id)arg1 effectiveCUICatalogForTextEffect:(id)arg2;
+- (void)layoutSubviews;
 - (id)linkAttributesForLink:(id)arg1 forCharacterAtIndex:(unsigned long long)arg2;
 - (id)linkTextAttributes;
 - (void)removeAllGhostedRanges;
+- (void)setBackgroundColor:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setConstrainedFrameSize:(struct CGSize)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setLayoutOrientation:(long long)arg1;
+- (void)setNeedsDisplay;
+- (void)setNeedsDisplayInRect:(struct CGRect)arg1;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1 avoidAdditionalLayout:(BOOL)arg2;
-- (void)setNeedsLayout;
 - (void)sizeToFit;
-- (struct CGPoint)textContainerOrigin;
 - (void)tintColorDidChange;
 - (void)updateInsertionPointStateAndRestartTimer:(BOOL)arg1;
 - (struct CGRect)visibleRect;

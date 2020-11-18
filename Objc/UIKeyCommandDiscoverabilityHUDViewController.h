@@ -18,11 +18,13 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIKeyCommandDiscoverabilityHUDView *view; // @dynamic view;
 
 - (void).cxx_destruct;
+- (void)_updateVisualStyle;
 - (void)animateOutWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithKeyCommands:(id)arg1 keyboard:(struct __GSKeyboard *)arg2;
 - (void)loadView;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

@@ -18,6 +18,7 @@
     UITraitCollection *_traitCollection;
     long long _effectiveLayoutDirection;
     double _iconScale;
+    long long _symbolScale;
     UIFont *_font;
     UIFont *_emphasizedFont;
     UIFont *_smallFont;
@@ -27,7 +28,7 @@
     NSArray *_imageNamePrefixes;
 }
 
-@property (nonatomic) long long effectiveLayoutDirection; // @synthesize effectiveLayoutDirection=_effectiveLayoutDirection;
+@property (readonly, nonatomic) long long effectiveLayoutDirection; // @synthesize effectiveLayoutDirection=_effectiveLayoutDirection;
 @property (copy, nonatomic) UIFont *emphasizedFont; // @synthesize emphasizedFont=_emphasizedFont;
 @property (copy, nonatomic) UIFont *font; // @synthesize font=_font;
 @property (nonatomic) double iconScale; // @synthesize iconScale=_iconScale;
@@ -37,17 +38,19 @@
 @property (readonly, nonatomic) long long mode; // @synthesize mode=_mode;
 @property (copy, nonatomic) UIFont *smallFont; // @synthesize smallFont=_smallFont;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
+@property (nonatomic) long long symbolScale; // @synthesize symbolScale=_symbolScale;
 @property (copy, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property (copy, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 
 + (id)overriddenStyleAttributes;
++ (id)styleAttributesForStatusBar:(id)arg1 style:(long long)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)fontForStyle:(long long)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithStatusBar:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)styleAttributesWithOverrides:(id)arg1;
 

@@ -19,7 +19,9 @@
     _UIStatusBar *_statusBar;
     id<_UIStatusBarRegionLayout> _layout;
     NSSet *_dependentRegionIdentifiers;
+    _UIStatusBarRegion *_enabilityRegion;
     double _alpha;
+    long long _overriddenStyle;
     _UIStatusBarStyleAttributes *_overriddenStyleAttributes;
     UIView *_contentView;
     UIView *_backgroundView;
@@ -29,6 +31,7 @@
     UILayoutGuide *_layoutGuide;
     NSLayoutConstraint *_centerXConstraint;
     NSLayoutConstraint *_centerYConstraint;
+    UIView *_containerView;
     UIView *_frozenView;
     struct UIOffset _offset;
     struct UIEdgeInsets _actionInsets;
@@ -41,7 +44,7 @@
 @property (strong, nonatomic) NSLayoutConstraint *centerXConstraint; // @synthesize centerXConstraint=_centerXConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *centerYConstraint; // @synthesize centerYConstraint=_centerYConstraint;
 @property (readonly, nonatomic) id<UILayoutItem> containerItem;
-@property (readonly, nonatomic) UIView *containerView;
+@property (readonly, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, nonatomic) NSArray *currentEnabledDisplayItems;
 @property (readonly, copy) NSString *debugDescription;
@@ -50,6 +53,7 @@
 @property (strong, nonatomic) NSMutableIndexSet *disablingTokens; // @synthesize disablingTokens=_disablingTokens;
 @property (readonly, copy, nonatomic) NSDictionary *displayItemAbsoluteFrames;
 @property (strong, nonatomic) NSOrderedSet *displayItems; // @synthesize displayItems=_displayItems;
+@property (weak, nonatomic) _UIStatusBarRegion *enabilityRegion; // @synthesize enabilityRegion=_enabilityRegion;
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled;
 @property (readonly, nonatomic) NSArray *enabledDisplayItems;
 @property (nonatomic, getter=isFrozen) BOOL frozen;
@@ -63,14 +67,16 @@
 @property (nonatomic) struct UIOffset offset; // @synthesize offset=_offset;
 @property (nonatomic) BOOL offsetable; // @synthesize offsetable=_offsetable;
 @property (readonly, nonatomic) _UIStatusBarDisplayItem *overflowedDisplayItem;
+@property (nonatomic) long long overriddenStyle; // @synthesize overriddenStyle=_overriddenStyle;
 @property (strong, nonatomic) _UIStatusBarStyleAttributes *overriddenStyleAttributes; // @synthesize overriddenStyleAttributes=_overriddenStyleAttributes;
 @property (weak, nonatomic) _UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_addSubview:(id)arg1 atBack:(BOOL)arg2;
+- (void)_overriddenStyleAttributesChanged;
 - (void)disableWithToken:(unsigned long long)arg1;
-- (id)displayItemForHUDAtPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
+- (id)displayItemForHUDAtLocation:(struct CGPoint)arg1;
 - (void)enableWithToken:(unsigned long long)arg1;
 - (id)initWithIdentifier:(id)arg1;
 - (void)setIdentifier:(id)arg1;

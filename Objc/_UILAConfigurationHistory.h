@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 {
     NSMutableSet *_newlyHiddenItems;
     NSMutableSet *_newlyUnhiddenItems;
+    NSMutableSet *_invalidBaselineConstraints;
     BOOL _layoutFillsCanvas;
     BOOL _layoutUsesCanvasMarginsWhenFilling;
     BOOL _hasEstablishedBaseValues;
@@ -31,11 +32,13 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasEstablishedBaseValues; // @synthesize hasEstablishedBaseValues=_hasEstablishedBaseValues;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isInLayoutArrangementUpdateSection) BOOL inLayoutArrangementUpdateSection; // @synthesize inLayoutArrangementUpdateSection=_inLayoutArrangementUpdateSection;
+@property (readonly, nonatomic) NSSet *invalidBaselineConstraints; // @synthesize invalidBaselineConstraints=_invalidBaselineConstraints;
 @property (nonatomic) BOOL layoutFillsCanvas; // @synthesize layoutFillsCanvas=_layoutFillsCanvas;
 @property (nonatomic) BOOL layoutUsesCanvasMarginsWhenFilling; // @synthesize layoutUsesCanvasMarginsWhenFilling=_layoutUsesCanvasMarginsWhenFilling;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_invalidateBaselineConstraint:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

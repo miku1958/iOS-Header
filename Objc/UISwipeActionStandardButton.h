@@ -10,6 +10,9 @@ __attribute__((visibility("hidden")))
 @interface UISwipeActionStandardButton : UISwipeActionButton
 {
     double _buttonWidth;
+    struct {
+        unsigned int isInLayoutSubviews:1;
+    } _flags;
     double _extensionLength;
 }
 
@@ -19,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setTitle:(id)arg1 forState:(unsigned long long)arg2;
+- (id)titleLabel;
 
 @end
 

@@ -11,11 +11,11 @@
 __attribute__((visibility("hidden")))
 @interface _UITableViewCellSeparatorView : UIView
 {
-    BOOL _drawsWithVibrantLightMode;
     UIView *_backgroundView;
     UIView *_overlayView;
     UIVisualEffect *_separatorEffect;
     UIVisualEffectView *_effectView;
+    BOOL _drawsWithVibrantLightMode;
 }
 
 @property (nonatomic) BOOL drawsWithVibrantLightMode; // @synthesize drawsWithVibrantLightMode=_drawsWithVibrantLightMode;

@@ -7,12 +7,13 @@
 #import <UIKitCore/UIInputViewControllerInterface.h>
 
 #import <UIKitCore/UITextDocumentProxy-Protocol.h>
+#import <UIKitCore/UITextDocumentProxy_Private-Protocol.h>
 
 @class NSString, NSUUID, TIDocumentState, TIKeyboardOutput, TITextInputTraits, UITextInputMode, UITextInputPasswordRules, _UIInputViewControllerOutput, _UIInputViewControllerState;
 @protocol _UITextDocumentInterfaceDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UITextDocumentInterface : UIInputViewControllerInterface <UITextDocumentProxy>
+@interface _UITextDocumentInterface : UIInputViewControllerInterface <UITextDocumentProxy, UITextDocumentProxy_Private>
 {
     id<_UITextDocumentInterfaceDelegate> _delegate;
     _UIInputViewControllerState *_controllerState;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long keyboardAppearance;
 @property (readonly, nonatomic, getter=_keyboardOutput) TIKeyboardOutput *keyboardOutput; // @synthesize keyboardOutput=_keyboardOutput;
 @property (nonatomic) long long keyboardType;
+@property (readonly, nonatomic) NSString *markedText;
 @property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
@@ -66,6 +68,8 @@ __attribute__((visibility("hidden")))
 - (void)insertText:(id)arg1;
 - (BOOL)needsInputModeSwitchKey;
 - (void)setForwardingInterface:(id)arg1;
+- (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
+- (void)unmarkText;
 
 @end
 

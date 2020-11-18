@@ -11,12 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface UIInterfaceActionOverrideVisualStyle : UIInterfaceActionVisualStyle
 {
+    BOOL _alignActionSeparatorLeadingEdgeWithContent;
     double _customSelectionHighlightContinuousCornerRadius;
     UIInterfaceActionSeparatorAttributes *_customSeparatorAttributes;
     UIInterfaceActionHighlightAttributes *_customActionHighlightAttributes;
     CDUnknownBlockType _customTitleLabelFontProviderForViewState;
 }
 
+@property (nonatomic) BOOL alignActionSeparatorLeadingEdgeWithContent; // @synthesize alignActionSeparatorLeadingEdgeWithContent=_alignActionSeparatorLeadingEdgeWithContent;
 @property (strong, nonatomic) UIInterfaceActionHighlightAttributes *customActionHighlightAttributes; // @synthesize customActionHighlightAttributes=_customActionHighlightAttributes;
 @property double customSelectionHighlightContinuousCornerRadius; // @synthesize customSelectionHighlightContinuousCornerRadius=_customSelectionHighlightContinuousCornerRadius;
 @property (strong, nonatomic) UIInterfaceActionSeparatorAttributes *customSeparatorAttributes; // @synthesize customSeparatorAttributes=_customSeparatorAttributes;

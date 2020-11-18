@@ -8,24 +8,23 @@
 
 #import <UIKitCore/UIDragSession-Protocol.h>
 #import <UIKitCore/_UIDragDropSessionInternal-Protocol.h>
-#import <UIKitCore/_UIDraggingItemVisualTarget-Protocol.h>
+#import <UIKitCore/_UIDragSetDownAnimationTarget-Protocol.h>
 #import <UIKitCore/_UIDraggingSessionDelegate-Protocol.h>
 
-@class NSArray, NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSSet, NSString, UIDragInteraction, _UIDraggingSession, _UIInternalDraggingSessionSource;
+@class NSArray, NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSSet, NSString, UIDragInteraction, _UIInternalDraggingSessionSource;
 
 __attribute__((visibility("hidden")))
-@interface _UIDragSessionImpl : NSObject <_UIDraggingSessionDelegate, UIDragSession, _UIDraggingItemVisualTarget, _UIDragDropSessionInternal>
+@interface _UIDragSessionImpl : NSObject <_UIDraggingSessionDelegate, UIDragSession, _UIDragSetDownAnimationTarget, _UIDragDropSessionInternal>
 {
-    _UIDraggingSession *_session;
-    NSMapTable *_itemByDraggingItem;
     NSMutableArray *_allItems;
     NSMapTable *_dragSourceInteractionByItem;
     NSHashTable *_allInteractions;
-    _UIInternalDraggingSessionSource *_internalSessionSource;
     BOOL _didHandOffDragImage;
     NSMutableSet *_addedDraggingItemsWaitingForHandOffOfDragImage;
     NSMutableSet *_addedDragItemsPendingUpdate;
+    BOOL _sentSessionDidBegin;
     id _localContext;
+    _UIInternalDraggingSessionSource *_internalDragSession;
     UIDragInteraction *_primaryInteraction;
 }
 
@@ -35,10 +34,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic, getter=_internalDragSession, setter=_setInternalDragSession:) _UIInternalDraggingSessionSource *internalDragSession; // @synthesize internalDragSession=_internalDragSession;
 @property (readonly, nonatomic) NSArray *items;
 @property (strong, nonatomic) id localContext; // @synthesize localContext=_localContext;
 @property (readonly, weak, nonatomic) UIDragInteraction *primaryInteraction; // @synthesize primaryInteraction=_primaryInteraction;
 @property (readonly, nonatomic, getter=isRestrictedToDraggingApplication) BOOL restrictedToDraggingApplication;
+@property (nonatomic, getter=_sentSessionDidBegin, setter=_setSentSessionDidBegin:) BOOL sentSessionDidBegin; // @synthesize sentSessionDidBegin=_sentSessionDidBegin;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSSet *trackedInteractions;
 
@@ -47,22 +48,19 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)_canAddItems;
 - (void)_cancelDrag;
-- (BOOL)_draggingItem:(id)arg1 shouldDelaySetDownAnimationWithCompletion:(CDUnknownBlockType)arg2;
-- (void)_draggingItem:(id)arg1 willAnimateSetDownWithAnimator:(id)arg2;
-- (id)_draggingSession;
 - (void)_draggingSession:(id)arg1 handedOffDragImageForItem:(id)arg2;
-- (BOOL)_draggingSession:(id)arg1 shouldCancelOnAppDeactivationWithDefault:(BOOL)arg2;
 - (void)_draggingSessionHandedOffDragImage:(id)arg1;
+- (id)_internalSession;
 - (BOOL)_isActive;
 - (void)_itemsNeedUpdate:(id)arg1;
-- (void)_prepareForSetDownAnimationInWindow:(id)arg1 withDraggingItem:(id)arg2 visibleDroppedItem:(id)arg3;
-- (void)_setDraggingSession:(id)arg1;
-- (struct CGRect)_targetFrameOfDraggingItem:(id)arg1 inCoordinateSpace:(id)arg2;
+- (id)_setDownAnimation:(id)arg1 prepareForSetDownOfDragItem:(id)arg2 visibleDroppedItem:(id)arg3;
+- (BOOL)_setDownAnimation:(id)arg1 shouldDelaySetDownOfDragItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_setDownAnimation:(id)arg1 willAnimateSetDownOfDragItem:(id)arg2 withAnimator:(id)arg3;
+- (id)_setDownAnimation:(id)arg1 windowSceneForSetDownOfDragItem:(id)arg2;
 - (void)addItems:(id)arg1 forDragSourceInteraction:(id)arg2;
-- (void)associateItem:(id)arg1 withDraggingItem:(id)arg2;
 - (BOOL)canLoadObjectsOfClass:(Class)arg1;
 - (id)dragSourceInteractionForDragItem:(id)arg1;
-- (unsigned long long)draggingSession:(id)arg1 sourceOperationMaskForDraggingContext:(long long)arg2;
+- (unsigned long long)draggingSession:(id)arg1 sourceOperationMaskForDraggingWithinApp:(BOOL)arg2;
 - (void)draggingSession:(id)arg1 willAddItems:(id)arg2;
 - (void)draggingSessionDidEnd:(id)arg1 withOperation:(unsigned long long)arg2;
 - (void)draggingSessionDidMove:(id)arg1;
@@ -73,7 +71,6 @@ __attribute__((visibility("hidden")))
 - (void)draggingSessionWillEnd:(id)arg1 withOperation:(unsigned long long)arg2;
 - (BOOL)hasItemsConformingToTypeIdentifiers:(id)arg1;
 - (id)initWithInteraction:(id)arg1;
-- (id)itemForDraggingItem:(id)arg1;
 - (struct CGPoint)locationInView:(id)arg1;
 
 @end

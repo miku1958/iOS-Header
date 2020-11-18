@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_cellTapped:(id)arg1;
 - (void)_doneTapped;
-- (void)_invalidateTable;
 - (void)_setIndexColor:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;

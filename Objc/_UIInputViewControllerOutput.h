@@ -18,13 +18,17 @@ __attribute__((visibility("hidden")))
     BOOL _proceedShouldReturn;
     BOOL _shouldAdvanceInputMode;
     BOOL _hasDictation;
+    BOOL _setMarkedText;
+    BOOL _unmarkText;
     BOOL _requiresInputManagerSync;
     BOOL _shouldAdvanceResponder;
     BOOL _shouldPostReturnKeyNotification;
     NSArray *_keyboardOutputs;
     NSString *_primaryLanguage;
+    NSString *_markedText;
     long long _inputModeListTouchPhase;
     double _inputModeListTouchBegan;
+    struct _NSRange _selectedRange;
     struct CGPoint _inputModeListFromLocation;
     struct CGPoint _inputModeListUpdatePoint;
 }
@@ -35,13 +39,17 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long inputModeListTouchPhase; // @synthesize inputModeListTouchPhase=_inputModeListTouchPhase;
 @property (nonatomic) struct CGPoint inputModeListUpdatePoint; // @synthesize inputModeListUpdatePoint=_inputModeListUpdatePoint;
 @property (strong, nonatomic) NSArray *keyboardOutputs; // @synthesize keyboardOutputs=_keyboardOutputs;
+@property (copy, nonatomic) NSString *markedText; // @synthesize markedText=_markedText;
 @property (copy, nonatomic) NSString *primaryLanguage; // @synthesize primaryLanguage=_primaryLanguage;
 @property (nonatomic) BOOL proceedShouldReturn; // @synthesize proceedShouldReturn=_proceedShouldReturn;
 @property (nonatomic) BOOL requiresInputManagerSync; // @synthesize requiresInputManagerSync=_requiresInputManagerSync;
+@property (nonatomic) struct _NSRange selectedRange; // @synthesize selectedRange=_selectedRange;
+@property (nonatomic) BOOL setMarkedText; // @synthesize setMarkedText=_setMarkedText;
 @property (nonatomic) BOOL shouldAdvanceInputMode; // @synthesize shouldAdvanceInputMode=_shouldAdvanceInputMode;
 @property (nonatomic) BOOL shouldAdvanceResponder; // @synthesize shouldAdvanceResponder=_shouldAdvanceResponder;
 @property (nonatomic) BOOL shouldDismiss; // @synthesize shouldDismiss=_shouldDismiss;
 @property (nonatomic) BOOL shouldPostReturnKeyNotification; // @synthesize shouldPostReturnKeyNotification=_shouldPostReturnKeyNotification;
+@property (nonatomic) BOOL unmarkText; // @synthesize unmarkText=_unmarkText;
 
 + (BOOL)supportsSecureCoding;
 - (id)_currentKeyboardOutput;

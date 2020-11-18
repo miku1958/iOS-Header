@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/UIView.h>
+#import <UIKitCore/_UITableViewContainerView.h>
 
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface _UITableViewDropAnimationContainerView : UIView
+@interface _UITableViewDropAnimationContainerView : _UITableViewContainerView
 {
     long long _activeDropAnimationCount;
     double _originalTargetCenterY;

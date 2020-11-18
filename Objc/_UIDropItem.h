@@ -6,29 +6,24 @@
 
 #import <UIKitCore/UIDragItem.h>
 
-@class NSItemProvider, _UIDropSessionImpl;
-@protocol _UIDraggingItemVisualTarget;
+@class NSItemProvider;
 
 __attribute__((visibility("hidden")))
 @interface _UIDropItem : UIDragItem
 {
+    UIDragItem *_localDragItem;
     NSItemProvider *_dropItemProvider;
-    _UIDropSessionImpl *__dropSession;
 }
 
-@property (weak, nonatomic) _UIDropSessionImpl *_dropSession; // @synthesize _dropSession=__dropSession;
-@property (weak, nonatomic, getter=_visualTarget, setter=_setVisualTarget:) id<_UIDraggingItemVisualTarget> _visualTarget;
 @property (strong, nonatomic, getter=_dropItemProvider, setter=_setDropItemProvider:) NSItemProvider *dropItemProvider; // @synthesize dropItemProvider=_dropItemProvider;
+@property (strong, nonatomic, getter=_localDragItem, setter=_setLocalDragItem:) UIDragItem *localDragItem; // @synthesize localDragItem=_localDragItem;
 
 - (void).cxx_destruct;
-- (void)_didSetPreferredPreviewProvider;
-- (id)_draggingItem;
-- (id)_initWithInternalDraggingItem:(id)arg1;
 - (id)_privateLocalContext;
-- (struct CGSize)_visibleDropItemSize;
-- (id)initWithItemProvider:(id)arg1;
+- (void)_setPrivateLocalContext:(id)arg1;
 - (id)itemProvider;
 - (id)localObject;
+- (void)setLocalObject:(id)arg1;
 
 @end
 

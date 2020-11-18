@@ -47,10 +47,19 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)shouldExciseSearchBar:(id)arg1 duringPresentationWithPresenter:(id)arg2;
 - (id)_constraintCopyOfConstraint:(id)arg1 replaceItem:(id)arg2 withItem:(id)arg3;
+- (void)_dismissalTransitionWithSearchBarHostedByNavBarDidEnd:(BOOL)arg1;
+- (void)_dismissalTransitionWithSearchBarHostedByNavBarWillBegin;
+- (void)_dismissalTransitionWithSearchBarNotHostedByNavBarDidEnd:(BOOL)arg1;
+- (void)_dismissalTransitionWithSearchBarNotHostedByNavBarWillBegin;
 - (void)_exciseSearchBarFromCurrentContext;
+- (BOOL)_inheritsPresentingViewControllerThemeLevel;
 - (void)_layoutPresentationWithSize:(struct CGSize)arg1 transitionCoordinator:(id)arg2;
 - (void)_placeSearchBarBackIntoOriginalContext;
 - (id)_presentationControllerForTraitCollection:(id)arg1;
+- (void)_presentationTransitionWithSearchBarHostedByNavBarDidEnd:(BOOL)arg1;
+- (void)_presentationTransitionWithSearchBarHostedByNavBarWillBegin;
+- (void)_presentationTransitionWithSearchBarNotHostedByNavBarDidEnd:(BOOL)arg1;
+- (void)_presentationTransitionWithSearchBarNotHostedByNavBarWillBegin;
 - (id)_presentedViewControllerForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (BOOL)_shouldDisableInteractionDuringTransitions;
 - (BOOL)_shouldKeepCurrentFirstResponder;
@@ -75,7 +84,6 @@ __attribute__((visibility("hidden")))
 - (void)presentationTransitionWillBegin;
 - (void)setContentVisible:(BOOL)arg1;
 - (BOOL)shouldPresentInFullscreen;
-- (BOOL)shouldRemovePresentersView;
 - (void)showBackgroundObscuringView;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 

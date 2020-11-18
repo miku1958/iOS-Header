@@ -6,6 +6,7 @@
 
 #import <UIKitCore/_UINavigationBarVisualProvider.h>
 
+#import <UIKitCore/_UIBarAppearanceChangeObserver-Protocol.h>
 #import <UIKitCore/_UIBasicAnimationFactory-Protocol.h>
 #import <UIKitCore/_UINavigationBarContentViewDelegate-Protocol.h>
 #import <UIKitCore/_UINavigationControllerRefreshControlHostDelegate-Protocol.h>
@@ -14,7 +15,7 @@
 @class NSString, UILabel, UIView, _UIBarBackground, _UINavigationBarContentView, _UINavigationBarLargeTitleView, _UINavigationBarModernPromptView, _UINavigationBarTransitionContext, _UINavigationControllerRefreshControlHost;
 
 __attribute__((visibility("hidden")))
-@interface _UINavigationBarVisualProviderModernIOS : _UINavigationBarVisualProvider <_UINavigationBarContentViewDelegate, _UINavigationItemChangeObserver, _UINavigationControllerRefreshControlHostDelegate, _UIBasicAnimationFactory>
+@interface _UINavigationBarVisualProviderModernIOS : _UINavigationBarVisualProvider <_UINavigationBarContentViewDelegate, _UINavigationItemChangeObserver, _UIBarAppearanceChangeObserver, _UINavigationControllerRefreshControlHostDelegate, _UIBasicAnimationFactory>
 {
     _UIBarBackground *_backgroundView;
     _UINavigationBarContentView *_contentView;
@@ -24,8 +25,18 @@ __attribute__((visibility("hidden")))
     UILabel *_weeTitleLabel;
     _UINavigationBarTransitionContext *_transitionContext;
     struct CGSize _previousBarSize;
+    double _backgroundAlpha;
+    double _titleAlpha;
+    double _shadowAlpha;
     BOOL _hasIdiom;
+    BOOL _runningPaletteBasedSearchPresentation;
+    BOOL _useInlineBackgroundHeightWhenLarge;
     BOOL _backgroundTransparentWhenNotCollapsed;
+    BOOL _providesExtraSpaceForExcessiveLineHeights;
+    BOOL _isObservingDidEncounterFirstTitleWithExcessiveHeightChanged;
+    BOOL _useModernAppearanceAPI;
+    BOOL _forceScrollEdgeAppearance;
+    long long _appearanceAPIVersion;
     _UINavigationControllerRefreshControlHost *_refreshControlHost;
 }
 
@@ -34,88 +45,124 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (BOOL)supportsRefreshControlHosting;
 - (void).cxx_destruct;
 - (id)_accessibility_HUDItemForPoint:(struct CGPoint)arg1;
 - (id)_accessibility_controlToActivateForHUDGestureLiftAtPoint:(struct CGPoint)arg1;
+- (BOOL)_accessibility_shouldBeginHUDGestureAtPoint:(struct CGPoint)arg1;
+- (id)_backgroundLayoutOfClass:(Class)arg1 fromLayout:(id)arg2;
 - (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
+- (void)_beginOrEndObservingDidEncounterFirstTitleWithExcessiveHeightChangedIfNecessary;
+- (void)_computeProvidesExtraSpaceForExcessiveLineHeightsForTopItem:(id)arg1;
+- (void)_configureMarginsOnContentViewsAndPalette:(id)arg1 withContentMargin:(double)arg2;
 - (double)_contentBackgroundExtension;
-- (double)_contentViewFittingHeight;
-- (id)_defaultTitleAttributes;
 - (id)_defaultWeeTitleAttributes;
+- (void)_didEncounterFirstTitleWithExcessiveHeightChanged:(id)arg1;
 - (double)_effectiveBackIndicatorLeftMargin;
 - (void)_endTransitionCompleted:(BOOL)arg1;
 - (void)_enforceLayoutOrdering;
+- (void)_ensureLayoutsConfiguredForEntry:(id)arg1;
 - (void)_invalidateIntrinsicContentSizeAndNotifySizeChanged;
-- (BOOL)_isShowingExtendedContentView;
-- (void)_layoutInBounds:(struct CGRect)arg1 wantsExtendedContentView:(BOOL)arg2;
+- (BOOL)_isInInteractiveScroll;
+- (BOOL)_isInnerNavigationBarOfNestedNavigationController;
+- (void)_layoutInBounds:(struct CGRect)arg1 wantsExtendedContentView:(BOOL)arg2 wantsLargeTitle:(BOOL)arg3;
 - (void)_performAnimationWithTransitionCompletion:(CDUnknownBlockType)arg1 transition:(int)arg2;
-- (id)_resolveLargeTitleAttributes;
+- (void)_postDidEncounterFirstTitleWithExcessiveHeightChanged;
+- (void)_prepareLayouts;
+- (void)_presentOrDismissSearch:(int)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_setupTopNavigationItemAnimated:(BOOL)arg1;
 - (void)_setupTransitionContextForTransition:(int)arg1;
-- (id)_shim_backdropGroupName;
-- (double)_shim_backgroundAlpha;
 - (id)_shim_compatibilityBackgroundView;
 - (BOOL)_shim_disableBlurTinting;
-- (void)_shim_setBackdropGroupName:(id)arg1;
 - (void)_shim_setCustomBackgroundView:(id)arg1;
 - (void)_shim_setDisableBlurTinting:(BOOL)arg1;
 - (void)_shim_setShadowAlpha:(double)arg1;
 - (double)_shim_shadowAlpha;
 - (BOOL)_shouldAnimateAdditivelyForView:(id)arg1 withKeyPath:(id)arg2;
+- (BOOL)_stackWantsBottomPaletteDisplayedForItem:(id)arg1;
 - (BOOL)_stackWantsExtendedContentViewForItem:(id)arg1;
 - (BOOL)_stackWantsLargeTitleDisplayedForItem:(id)arg1;
-- (BOOL)_stackWantsSearchDisplayedForItem:(id)arg1;
+- (BOOL)_stackWantsLargeTitleDisplayedForItem:(id)arg1 hideLargeTitleForActiveSearch:(BOOL)arg2;
+- (BOOL)_stackWantsSearchDisplayedBelowContentViewForItem:(id)arg1;
 - (id)_timingFunctionForAnimationInView:(id)arg1 withKeyPath:(id)arg2;
 - (void)_updateAugmentedTitleDataSources;
 - (void)_updateBackground;
-- (void)_updateBackgrounds;
+- (id)_updateBackgroundLayout:(id)arg1 forNavigationItem:(id)arg2 compact:(BOOL)arg3;
 - (void)_updateCanvasView;
 - (void)_updateContentForTopItem:(id)arg1 backItem:(id)arg2;
 - (void)_updateContentForTopItem:(id)arg1 backItem:(id)arg2 animated:(BOOL)arg3;
 - (void)_updateContentPriorities;
-- (void)_updateLargeTitleBackgroundClipping;
+- (void)_updateLegacyLayout:(id)arg1 forNavigationItem:(id)arg2;
+- (void)_updateModernLayout:(id)arg1 forNavigationItem:(id)arg2 compact:(BOOL)arg3;
 - (void)_updatePromptViewAndActuallyHide:(BOOL)arg1;
-- (void)_updateShadowsForBarStyle:(long long)arg1;
-- (void)_updateTitleViewForOpacityChange;
 - (void)_updateTitleViewWithLargeTitle:(BOOL)arg1;
 - (void)_updateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_upgradeAppearanceAPIForItemIfNecessary:(id)arg1;
 - (BOOL)allowLargeTitleView;
 - (void)animateForSearchPresentation:(BOOL)arg1;
+- (void)appearance:(id)arg1 categoriesChanged:(long long)arg2;
+- (long long)appearanceAPIVersion;
+- (id)appearanceObserver;
+- (double)backgroundAlpha;
 - (void)changeAppearance;
 - (void)changeLayout;
 - (long long)currentContentSize;
-- (CDStruct_c3b9c2ee)heightRangeFittingWidth:(double)arg1;
+- (void)dismissHostedSearchWithTransitionCoordinator:(id)arg1;
+- (id)emptyLayout;
+- (BOOL)forceScrollEdgeAppearance;
 - (struct CGSize)intrinsicContentSize;
+- (CDStruct_39925896)layoutHeightsFittingWidth:(double)arg1;
 - (void)layoutSubviews;
 - (void)navigationBarContentViewDidChangeDesiredHeight:(id)arg1;
 - (void)navigationBarContentViewDidTriggerBackAction:(id)arg1 fromBackButtonItem:(id)arg2;
+- (void)navigationBarInvalidatedResolvedLayoutMargins;
 - (void)navigationControllerRefreshControlHostDidUpdateLayout:(id)arg1;
+- (void)navigationItem:(id)arg1 appearance:(id)arg2 categoriesChanged:(long long)arg3;
+- (BOOL)navigationItemIsBackItem:(id)arg1;
+- (BOOL)navigationItemIsTopItem:(id)arg1;
 - (void)navigationItemUpdatedBackButtonContent:(id)arg1 animated:(BOOL)arg2;
-- (void)navigationItemUpdatedBackgroundAppearance:(id)arg1 animated:(BOOL)arg2;
-- (void)navigationItemUpdatedCanvasView:(id)arg1 animated:(BOOL)arg2;
+- (void)navigationItemUpdatedBackgroundAppearance:(id)arg1;
+- (void)navigationItemUpdatedBottomPalette:(id)arg1 oldPalette:(id)arg2;
+- (void)navigationItemUpdatedCanvasView:(id)arg1;
+- (void)navigationItemUpdatedContentLayout:(id)arg1 animated:(BOOL)arg2;
+- (void)navigationItemUpdatedLargeTitleContent:(id)arg1;
+- (void)navigationItemUpdatedLargeTitleDisplayMode:(id)arg1;
 - (void)navigationItemUpdatedLeftBarButtonItems:(id)arg1 animated:(BOOL)arg2;
-- (void)navigationItemUpdatedPromptContent:(id)arg1 animated:(BOOL)arg2;
+- (void)navigationItemUpdatedPromptContent:(id)arg1;
 - (void)navigationItemUpdatedRightBarButtonItems:(id)arg1 animated:(BOOL)arg2;
-- (void)navigationItemUpdatedSearchController:(id)arg1 oldSearchController:(id)arg2 animated:(BOOL)arg3;
+- (void)navigationItemUpdatedScrollEdgeProgress:(id)arg1;
+- (void)navigationItemUpdatedSearchController:(id)arg1 oldSearchController:(id)arg2;
 - (void)navigationItemUpdatedTitleContent:(id)arg1 animated:(BOOL)arg2;
 - (void)popAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)prepare;
+- (void)prepareForPop;
+- (void)prepareForPush;
+- (void)presentHostedSearchWithTransitionCoordinator:(id)arg1;
 - (void)provideViewsForContents:(id)arg1 topItem:(id)arg2 backItem:(id)arg3;
 - (void)pushAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)recordBarSize:(struct CGSize)arg1;
 - (id)refreshControlHost;
+- (struct NSDirectionalEdgeInsets)resolvedLargeTitleMargins;
+- (id)restingHeights;
 - (void)safeAreaInsetsDidChange;
+- (void)setAppearanceAPIVersion:(long long)arg1;
+- (void)setBackgroundAlpha:(double)arg1;
+- (void)setForceScrollEdgeAppearance:(BOOL)arg1;
 - (void)setRefreshControlHost:(id)arg1;
-- (void)setupTopNavigationItem;
+- (void)setTitleAlpha:(double)arg1;
+- (void)setUseInlineBackgroundHeightWhenLarge:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)stackDidChangeFrom:(id)arg1;
 - (long long)statusBarStyle;
+- (BOOL)supportsRefreshControlHosting;
 - (void)teardown;
+- (double)titleAlpha;
+- (BOOL)topItemHasVariableHeight;
 - (void)traitCollectionDidChange:(id)arg1;
+- (id)traitCollectionForChild:(id)arg1 baseTraitCollection:(id)arg2;
 - (void)updateArchivedSubviews:(id)arg1;
-- (void)updateTopNavigationItemAnimated:(BOOL)arg1;
-- (void)updateTopNavigationItemTitleView;
+- (void)updateBackgroundGroupName;
+- (BOOL)useInlineBackgroundHeightWhenLarge;
+- (BOOL)useManualScrollEdgeAppearanceForItem:(id)arg1;
 - (BOOL)wantsExtendedContentView;
 - (BOOL)wantsLargeTitleDisplayed;
 

@@ -10,9 +10,10 @@
 {
 }
 
-- (CDStruct_d58201db)__sizeClassPair;
+- (CDStruct_912cb5d2)__sizeClassPair;
 - (id)_firstCurrentContextChildInWindow;
 - (struct CGRect)_frameOfPresentedViewControllerViewInSuperview;
+- (BOOL)_mayChildGrabPresentedViewControllerView;
 - (BOOL)_shouldPresentedViewControllerControlStatusBarAppearance;
 - (BOOL)_shouldRespectDefinesPresentationContext;
 - (struct CGRect)frameOfPresentedViewInContainerView;

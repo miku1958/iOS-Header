@@ -6,35 +6,42 @@
 
 #import <objc/NSObject.h>
 
-@class TIAutocorrectionList, TIKeyboardCandidate;
+@class NSHashTable, TIAutocorrectionList, TIKeyboardCandidate;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardAutocorrectionController : NSObject
 {
-    TIAutocorrectionList *_autocorrectionList;
-    TIAutocorrectionList *_textSuggestionList;
-    unsigned int _signpostToken;
+    unsigned long long _signpostToken;
+    BOOL _requestedAutocorrection;
     BOOL _needsAutocorrection;
     BOOL _deferredAutocorrection;
-    BOOL _requestedAutocorrection;
-    BOOL _preserveTextSuggestion;
+    TIAutocorrectionList *_autocorrectionList;
+    TIAutocorrectionList *_textSuggestionList;
+    NSHashTable *_autocorrectionObservers;
 }
 
 @property (readonly, nonatomic) TIKeyboardCandidate *autocorrection;
-@property (strong, nonatomic) TIAutocorrectionList *autocorrectionList;
+@property (strong, nonatomic) TIAutocorrectionList *autocorrectionList; // @synthesize autocorrectionList=_autocorrectionList;
+@property (strong, nonatomic) NSHashTable *autocorrectionObservers; // @synthesize autocorrectionObservers=_autocorrectionObservers;
 @property (nonatomic) BOOL deferredAutocorrection; // @synthesize deferredAutocorrection=_deferredAutocorrection;
 @property (nonatomic) BOOL needsAutocorrection; // @synthesize needsAutocorrection=_needsAutocorrection;
-@property (nonatomic) BOOL preserveTextSuggestion; // @synthesize preserveTextSuggestion=_preserveTextSuggestion;
 @property (nonatomic) BOOL requestedAutocorrection; // @synthesize requestedAutocorrection=_requestedAutocorrection;
-@property (strong, nonatomic) TIAutocorrectionList *textSuggestionList;
+@property (strong, nonatomic) TIAutocorrectionList *textSuggestionList; // @synthesize textSuggestionList=_textSuggestionList;
 
-+ (BOOL)isPersistentTextSuggestionFromApp:(id)arg1;
-+ (BOOL)isTextSuggestionFromApp:(id)arg1;
+- (void).cxx_destruct;
+- (void)_notifyObserversOfClearedAutocorrectionList;
+- (void)_notifyObserversOfUpdatedAutocorrectionList:(id)arg1;
+- (void)_setAutocorrectionList:(id)arg1 notifyObserver:(BOOL)arg2;
+- (void)addAutocorrectionObserver:(id)arg1;
 - (void)clearAutocorrection;
-- (void)clearAutocorrectionButPreserveTextSuggestion:(BOOL)arg1;
-- (void)dealloc;
+- (void)clearAutocorrectionAndNotifyObservers:(BOOL)arg1;
+- (void)clearAutofillAndTextSuggestions;
 - (BOOL)hasAutocorrection;
+- (BOOL)hasAutofillCandidates;
 - (BOOL)hasCaseableAutocorrection;
+- (BOOL)hasContinuousPathConversions;
+- (id)init;
+- (void)removeAutocorrectionObserver:(id)arg1;
 - (void)requestAutocorrectionWithExecutionContext:(id)arg1;
 - (void)setNeedsAutocorrection;
 - (void)updateSuggestionViews;

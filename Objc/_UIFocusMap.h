@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UIFocusSystem, _UIFocusMapSearchInfo;
+@class UIFocusSystem, _UIFocusMapSearchInfo, _UIFocusSearchInfo;
 @protocol UICoordinateSpace, _UIFocusRegionContainer;
 
 __attribute__((visibility("hidden")))
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     UIFocusSystem *_focusSystem;
     id<_UIFocusRegionContainer> _rootContainer;
     id<UICoordinateSpace> _coordinateSpace;
+    _UIFocusSearchInfo *_searchInfo;
     _UIFocusMapSearchInfo *_defaultItemSearchInfo;
     _UIFocusMapSearchInfo *_focusMovementSearchInfo;
     struct CGRect _minimumSearchArea;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, weak, nonatomic) UIFocusSystem *focusSystem; // @synthesize focusSystem=_focusSystem;
 @property (nonatomic) struct CGRect minimumSearchArea; // @synthesize minimumSearchArea=_minimumSearchArea;
 @property (readonly, weak, nonatomic) id<_UIFocusRegionContainer> rootContainer; // @synthesize rootContainer=_rootContainer;
+@property (readonly, nonatomic) _UIFocusSearchInfo *searchInfo; // @synthesize searchInfo=_searchInfo;
 
 - (void).cxx_destruct;
 - (id)_allDefaultFocusableRegionsInContainer:(id)arg1 intersectingRegion:(id)arg2;
@@ -41,16 +43,22 @@ __attribute__((visibility("hidden")))
 - (id)_defaultFocusItemInEnvironment:(id)arg1 limitScopeUsingFocusPreferences:(BOOL)arg2;
 - (id)_defaultMapSnapshotter;
 - (id)_findAllDefaultFocusableRegionsWithSnapshotter:(id)arg1;
+- (id)_linearlySortedFocusItemsForItems:(id)arg1;
 - (id)_nextFocusedItemForFocusMovementRequest:(id)arg1;
 - (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 focusedRegion:(id)arg2;
 - (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 inRegions:(id)arg2;
 - (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 startingFromRegion:(id)arg2 inRegions:(id)arg3;
+- (id)_nextFocusedItemForLinearFocusMovementRequest:(id)arg1 startingFromRegion:(id)arg2 inRegions:(id)arg3;
+- (id)_nextFocusedItemForNonLinearFocusMovementRequest:(id)arg1 startingFromRegion:(id)arg2 inRegions:(id)arg3;
 - (id)_stopTrackingSearches;
 - (void)_trackExternalSnapshot:(id)arg1;
 - (void)diagnoseFocusabilityForItem:(id)arg1 report:(id)arg2;
 - (id)init;
 - (id)initWithFocusSystem:(id)arg1 rootContainer:(id)arg2;
 - (id)initWithFocusSystem:(id)arg1 rootContainer:(id)arg2 coordinateSpace:(id)arg3;
+- (id)initWithFocusSystem:(id)arg1 rootContainer:(id)arg2 coordinateSpace:(id)arg3 searchInfo:(id)arg4;
+- (id)initWithFocusSystem:(id)arg1 rootContainer:(id)arg2 searchInfo:(id)arg3;
+- (id)linearlyOrderedFocusRegionMapEntriesForRequest:(id)arg1;
 
 @end
 

@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIKBBackdropView *inputBackdropRightView; // @synthesize inputBackdropRightView=_inputBackdropRightView;
 @property (readonly) long long style; // @synthesize style=_style;
 
-+ (BOOL)_retroactivelyRequiresConstraintBasedLayout;
++ (BOOL)requiresConstraintBasedLayout;
 - (void)_beginSplitTransitionIfNeeded:(double)arg1 gapWidth:(double)arg2;
 - (void)_endSplitTransitionIfNeeded:(BOOL)arg1;
 - (BOOL)_isTransitioning;
@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutInputBackdropToFullWithRect:(struct CGRect)arg1;
-- (void)layoutInputBackdropToSplitWithLeftViewRect:(struct CGRect)arg1 andRightViewRect:(struct CGRect)arg2 innerCorners:(int)arg3;
+- (void)layoutInputBackdropToSplitWithLeftViewRect:(struct CGRect)arg1 andRightViewRect:(struct CGRect)arg2 innerCorners:(unsigned long long)arg3;
 - (void)prepareForSnapshotting;
 - (void)restoreFromSnapshotting;
 - (int)textEffectsVisibilityLevel;

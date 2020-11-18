@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (void)_popDisableLayoutFlushingForTransition;
 - (void)_propagateBackgroundToContents;
 - (void)_pushDisableLayoutFlushingForTransition;
-- (BOOL)_shouldHideWhenScrolling;
 - (BOOL)_shouldUpdateBackground;
 - (BOOL)_supportsSpecialSearchBarTransitions;
 - (void)_updateLayoutForCurrentConfiguration;

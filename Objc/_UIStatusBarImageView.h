@@ -13,17 +13,20 @@
 @interface _UIStatusBarImageView : UIImageView <_UIStatusBarDisplayable>
 {
     BOOL _useDisabledAppearanceForAccessibilityHUD;
-    double _iconScale;
+    long long _fontStyle;
     UIImage *_accessibilityHUDImage;
+    double _iconScale;
 }
 
 @property (strong, nonatomic) UIImage *accessibilityHUDImage; // @synthesize accessibilityHUDImage=_accessibilityHUDImage;
 @property (readonly, nonatomic) UIAccessibilityHUDItem *accessibilityHUDRepresentation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) long long fontStyle; // @synthesize fontStyle=_fontStyle;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double iconScale; // @synthesize iconScale=_iconScale;
 @property (readonly, nonatomic) long long overriddenVerticalAlignment;
+@property (readonly, nonatomic) BOOL prefersBaselineAlignment;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL useDisabledAppearanceForAccessibilityHUD; // @synthesize useDisabledAppearanceForAccessibilityHUD=_useDisabledAppearanceForAccessibilityHUD;
 @property (readonly, nonatomic) BOOL wantsCrossfade;

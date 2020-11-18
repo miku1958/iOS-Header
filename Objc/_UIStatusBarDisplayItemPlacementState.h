@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_relations;
 }
 
+@property (readonly, nonatomic) BOOL canBeEnabled;
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled;
 @property (readonly, nonatomic) _UIStatusBarDisplayItemPlacement *placement; // @synthesize placement=_placement;
 @property (readonly, nonatomic) long long priority;

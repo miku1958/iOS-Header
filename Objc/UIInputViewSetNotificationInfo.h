@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface UIInputViewSetNotificationInfo : NSObject
 {
     BOOL _changedAccessoryOnly;
+    BOOL _assistantOnScreenOnly;
     BOOL _forceNotification;
     BOOL _wasCausedRemotely;
     BOOL _dueToRotation;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _bounds;
 }
 
+@property (nonatomic) BOOL assistantOnScreenOnly; // @synthesize assistantOnScreenOnly=_assistantOnScreenOnly;
 @property (nonatomic) struct CGPoint beginCenter; // @synthesize beginCenter=_beginCenter;
 @property (nonatomic) struct CGRect beginFrame; // @synthesize beginFrame=_beginFrame;
 @property (nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;

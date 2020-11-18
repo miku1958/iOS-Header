@@ -6,16 +6,12 @@
 
 #import <UIKitCore/UIWindow.h>
 
-@class UIStatusBar, UIStatusBarCorners;
+@class UIStatusBar;
 
 @interface UIStatusBarWindow : UIWindow
 {
     UIStatusBar *_statusBar;
     long long _orientation;
-    UIStatusBarCorners *_topCorners;
-    double _topCornersOffset;
-    UIStatusBarCorners *_bottomCorners;
-    BOOL _cornersHidden;
 }
 
 + (struct CGRect)_convertRect:(struct CGRect)arg1 fromSceneReferenceSpaceToSceneSpaceWithOrientation:(long long)arg2;
@@ -23,29 +19,23 @@
 + (struct CGRect)_defaultStatusBarSceneReferenceBounds;
 + (struct CGRect)_defaultStatusBarSceneReferenceBoundsForOrientation:(long long)arg1;
 + (BOOL)_isSystemWindow;
-+ (BOOL)_statusBarNeedsFrameUpdateOnRotation;
-+ (BOOL)isIncludedInClassicJail;
 + (struct CGRect)statusBarWindowFrame;
 - (void).cxx_destruct;
 - (BOOL)_canActAsKeyWindowForScreen:(id)arg1;
 - (struct CGRect)_defaultStatusBarSceneBoundsForOrientation:(long long)arg1;
+- (void)_didMoveFromScene:(id)arg1 toScene:(id)arg2;
 - (BOOL)_disableGroupOpacity;
-- (BOOL)_isConstrainedByScreenJail;
 - (BOOL)_isStatusBarWindow;
 - (void)_rotate;
 - (BOOL)_shouldAdjustSizeClassesAndResizeWindow;
-- (BOOL)_shouldZoom;
+- (BOOL)_shouldForceTraitPropagationThroughHierarchy;
 - (struct CGRect)_statusBarFrameForOrientation:(long long)arg1;
-- (void)_updateTransformLayerForClassicPresentation;
-- (void)dealloc;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (long long)orientation;
 - (struct UIEdgeInsets)safeAreaInsets;
-- (void)setCornersHidden:(BOOL)arg1 animationParameters:(id)arg2;
 - (void)setOrientation:(long long)arg1 animationParameters:(id)arg2;
 - (void)setStatusBar:(id)arg1;
-- (void)setTopCornerStyle:(int)arg1 topCornersOffset:(double)arg2 bottomCornerStyle:(int)arg3 animationParameters:(id)arg4;
 - (struct CGRect)statusBarWindowFrame;
 
 @end

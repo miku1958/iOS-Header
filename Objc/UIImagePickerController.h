@@ -7,11 +7,12 @@
 #import <UIKitCore/UINavigationController.h>
 
 #import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class NSArray, NSExtension, NSMutableDictionary, NSObject, NSString, UIView, UIViewController;
-@protocol OS_dispatch_queue, UINavigationControllerDelegate><UIImagePickerControllerDelegate;
+@class NSArray, NSExtension, NSMutableDictionary, NSString, UIView, UIViewController, _UIRemoteViewController;
+@protocol UINavigationControllerDelegate><UIImagePickerControllerDelegate;
 
-@interface UIImagePickerController : UINavigationController <NSCoding>
+@interface UIImagePickerController : UINavigationController <_UIRemoteViewControllerContaining, NSCoding>
 {
     long long _sourceType;
     id _image;
@@ -20,7 +21,6 @@
     NSMutableDictionary *_properties;
     int _previousStatusBarStyle;
     BOOL _previousStatusBarHidden;
-    NSObject<OS_dispatch_queue> *_photosExtensionDiscoveryQueue;
     Class _photoPickerRequestOptionsClass;
     CDUnknownBlockType _photoPickerDisplayCompletion;
     CDUnknownBlockType _photoPickerPreviewDisplayCompletion;
@@ -31,10 +31,9 @@
     CDStruct_d1897728 _imagePickerFlags;
     unsigned long long _savingOptions;
     NSExtension *_photosExtension;
-    id _photosExtensionDiscoveryDriver;
-    NSString *_initialViewControllerClassName;
 }
 
+@property (readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 @property (nonatomic) BOOL allowsEditing;
 @property (nonatomic) BOOL allowsImageEditing;
 @property (nonatomic) long long cameraCaptureMode;
@@ -42,16 +41,17 @@
 @property (nonatomic) long long cameraFlashMode;
 @property (strong, nonatomic) UIView *cameraOverlayView;
 @property (nonatomic) struct CGAffineTransform cameraViewTransform;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UINavigationControllerDelegate><UIImagePickerControllerDelegate> delegate; // @dynamic delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long imageExportPreset;
-@property (copy, nonatomic) NSString *initialViewControllerClassName; // @synthesize initialViewControllerClassName=_initialViewControllerClassName;
 @property (copy, nonatomic) NSArray *mediaTypes;
 @property (readonly, nonatomic) Class photoPickerRequestOptionsClass;
 @property (strong, nonatomic) NSExtension *photosExtension; // @synthesize photosExtension=_photosExtension;
-@property (strong, nonatomic) id photosExtensionDiscoveryDriver; // @synthesize photosExtensionDiscoveryDriver=_photosExtensionDiscoveryDriver;
-@property (readonly) NSObject<OS_dispatch_queue> *photosExtensionDiscoveryQueue;
 @property (nonatomic) BOOL showsCameraControls;
 @property (nonatomic) long long sourceType;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *videoExportPreset;
 @property (nonatomic) double videoMaximumDuration;
 @property (nonatomic) long long videoQuality;
@@ -75,7 +75,7 @@
 - (BOOL)_didRevertStatusBar;
 - (void)_handleEndingPhotoPickerPresentationDelay;
 - (void)_handleInstantiatedRemoteViewController:(id)arg1 request:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_handleMatchingExtensions:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_handleMatchingExtension:(id)arg1 viewControllerClassName:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_handlePushViewController:(id)arg1;
 - (void)_handleTopViewControllerReadyForDisplay:(id)arg1;
 - (void)_imagePickerDidCancel;
@@ -86,17 +86,17 @@
 - (void)_initializeProperties;
 - (void)_invalidatePhotoPickerServices;
 - (BOOL)_isCameraCaptureModeValid:(long long)arg1;
-- (BOOL)_isPhotoPickerExtensionEnabled;
 - (BOOL)_isSupportedInterfaceOrientation:(long long)arg1;
 - (unsigned long long)_multipleSelectionLimit;
 - (BOOL)_onlyShowAutoloops;
 - (CDUnknownBlockType)_photoPickerDisplayCompletion;
 - (CDUnknownBlockType)_photoPickerPreviewDisplayCompletion;
 - (void)_populateArchivedChildViewControllers:(id)arg1;
+- (long long)_preferredModalPresentationStyle;
 - (id)_properties;
 - (id)_propertiesForPhotoPickerExtension;
 - (void)_removeAllChildren;
-- (void)_serializeHandlingMatchingExtensions:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)_requiresPickingConfirmation;
 - (void)_setAllowsImageEditing:(BOOL)arg1;
 - (void)_setAllowsIris:(BOOL)arg1;
 - (void)_setAllowsMultipleSelection:(BOOL)arg1;
@@ -107,6 +107,8 @@
 - (void)_setPhotoPickerDisplayCompletion:(CDUnknownBlockType)arg1;
 - (void)_setPhotoPickerPreviewDisplayCompletion:(CDUnknownBlockType)arg1;
 - (void)_setProperties:(id)arg1;
+- (void)_setRequiresPickingConfirmation:(BOOL)arg1;
+- (void)_setShowsFileSizePicker:(BOOL)arg1;
 - (void)_setShowsPrompt:(BOOL)arg1;
 - (void)_setStaticPrompt:(id)arg1;
 - (void)_setTargetForPrompt:(id)arg1;
@@ -114,6 +116,7 @@
 - (void)_setupControllersForCurrentMediaTypes;
 - (void)_setupControllersForCurrentSourceTypeWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_shouldDelayPresentation;
+- (BOOL)_showsFileSizePicker;
 - (BOOL)_showsPrompt;
 - (BOOL)_sourceTypeIsCamera;
 - (id)_staticPrompt;

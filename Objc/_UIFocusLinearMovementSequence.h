@@ -11,16 +11,20 @@
 @interface _UIFocusLinearMovementSequence : NSObject
 {
     BOOL _looping;
+    BOOL _restrictEnteringSequence;
     NSArray *_items;
 }
 
 @property (readonly, copy, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (readonly, nonatomic, getter=isLooping) BOOL looping; // @synthesize looping=_looping;
+@property (readonly, nonatomic, getter=restrictsEnteringSequence) BOOL restrictEnteringSequence; // @synthesize restrictEnteringSequence=_restrictEnteringSequence;
 
 + (id)sequenceWithItems:(id)arg1 loops:(BOOL)arg2;
++ (id)sequenceWithItems:(id)arg1 loops:(BOOL)arg2 restrictEnteringSequence:(BOOL)arg3;
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithItems:(id)arg1 loops:(BOOL)arg2;
+- (id)initWithItems:(id)arg1 loops:(BOOL)arg2 restrictEnteringSequence:(BOOL)arg3;
 
 @end
 

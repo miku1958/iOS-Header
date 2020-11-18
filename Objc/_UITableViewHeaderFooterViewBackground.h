@@ -16,10 +16,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_opaqueBackgroundView;
 - (id)_transparentBackgroundView;
-- (void)_updateBackingView;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setBackgroundImage:(id)arg1;
-- (void)setOpaque:(BOOL)arg1;
 
 @end
 

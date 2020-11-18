@@ -6,14 +6,18 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIView;
+@class UITargetedPreview, UIView;
 
 @protocol _UIPreviewInteractionViewControllerTransition <NSObject>
+
+@property (copy, nonatomic) UITargetedPreview *sourcePreview;
+
 - (void)performTransitionFromView:(UIView *)arg1 toView:(UIView *)arg2 containerView:(UIView *)arg3;
 - (void)transitionDidEnd:(BOOL)arg1;
 
 @optional
 - (void)performWithCustomAnimator:(void (^)(void))arg1 completion:(void (^)(BOOL))arg2;
 - (void)prepareTransitionFromView:(UIView *)arg1 toView:(UIView *)arg2 containerView:(UIView *)arg3;
+- (void)transitionWillReverse;
 @end
 

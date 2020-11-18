@@ -25,10 +25,10 @@ __attribute__((visibility("hidden")))
     struct CGColor *_activeBackgroundColor;
     id _activeCompositingFilter;
     BOOL _singleRerender;
-    double _cachedOpacity;
+    double _cachedBackgroundOpacity;
     BOOL _cachedControlKeyRenderingPreference;
     BOOL _renderAsMask;
-    int _cachedAnchorCorner;
+    unsigned long long _cachedAnchorCorner;
     unsigned long long _cachedShiftState;
     long long _cachedSelector;
     UIKeyboardMenuView *_popupMenu;
@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long cacheDeferPriority;
 @property (readonly, nonatomic) BOOL cacheDeferable;
 @property (readonly, nonatomic) NSString *cacheKey;
-@property (nonatomic) int cachedAnchorCorner; // @synthesize cachedAnchorCorner=_cachedAnchorCorner;
+@property (nonatomic) unsigned long long cachedAnchorCorner; // @synthesize cachedAnchorCorner=_cachedAnchorCorner;
 @property (nonatomic) BOOL cachedControlKeyRenderingPreference; // @synthesize cachedControlKeyRenderingPreference=_cachedControlKeyRenderingPreference;
 @property (readonly) long long cachedRenderFlags;
 @property (nonatomic) long long cachedSelector; // @synthesize cachedSelector=_cachedSelector;
@@ -79,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (void)displayLayer:(id)arg1;
 - (void)drawContentsOfRenderers:(id)arg1;
 - (unsigned long long)focusableVariantCount;
+- (void)hideKeyCap:(BOOL)arg1;
 - (long long)imageOrientationForLayer:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 - (id)layerForRenderFlags:(long long)arg1;

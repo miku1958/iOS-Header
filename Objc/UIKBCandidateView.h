@@ -6,57 +6,26 @@
 
 #import <UIKitCore/UIKBKeyView.h>
 
-#import <UIKitCore/UIKeyboardCandidateGridCollectionViewControllerDelegate-Protocol.h>
-
-@class NSString, TIKeyboardCandidateResultSet, UIKeyboardCandidateGridCollectionViewController, UIKeyboardCandidateSortControl;
+@class UIView;
 
 __attribute__((visibility("hidden")))
-@interface UIKBCandidateView : UIKBKeyView <UIKeyboardCandidateGridCollectionViewControllerDelegate>
+@interface UIKBCandidateView : UIKBKeyView
 {
-    unsigned long long _selectedSortIndex;
-    UIKeyboardCandidateGridCollectionViewController *_collectionViewController;
-    UIKeyboardCandidateSortControl *_scrollViewSortControl;
     CDStruct_227bb23d _visualStyling;
+    UIView *_candidateKey;
 }
 
-@property (readonly, nonatomic) TIKeyboardCandidateResultSet *candidateResultSet;
-@property (strong, nonatomic) UIKeyboardCandidateGridCollectionViewController *collectionViewController; // @synthesize collectionViewController=_collectionViewController;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIKeyboardCandidateSortControl *scrollViewSortControl; // @synthesize scrollViewSortControl=_scrollViewSortControl;
-@property (nonatomic) unsigned long long selectedSortIndex; // @synthesize selectedSortIndex=_selectedSortIndex;
-@property (readonly) Class superclass;
+@property (strong, nonatomic) UIView *candidateKey; // @synthesize candidateKey=_candidateKey;
 @property (nonatomic) CDStruct_227bb23d visualStyling; // @synthesize visualStyling=_visualStyling;
 
 - (void).cxx_destruct;
-- (void)candidateAcceptedAtIndex:(unsigned long long)arg1;
 - (id)candidateList;
-- (void)clearCollectionViewController;
-- (id)currentCandidate;
-- (unsigned long long)currentIndex;
+- (void)clearCandidateKey;
 - (void)dealloc;
 - (void)displayLayer:(id)arg1;
-- (unsigned long long)gridCollectionViewNumberOfColumns:(id)arg1;
-- (unsigned long long)gridCollectionViewSelectedSortMethodIndex:(id)arg1;
-- (id)groupedCandidatesFromCandidateSet:(id)arg1 forSortIndex:(unsigned long long)arg2;
-- (BOOL)hasCandidates;
-- (id)headerViewForCandidateSet:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
-- (BOOL)isExtendedList;
-- (BOOL)isFloatingList;
 - (BOOL)isTenKey;
-- (id)keyboardBehaviors;
-- (void)setCandidates:(id)arg1 inlineText:(id)arg2 inlineRect:(struct CGRect)arg3 maxX:(double)arg4 layout:(BOOL)arg5;
-- (void)setRenderConfig:(id)arg1;
-- (void)setUIKeyboardCandidateListDelegate:(id)arg1;
-- (BOOL)showCandidate:(id)arg1;
-- (void)showCandidateAtIndex:(unsigned long long)arg1;
-- (void)showCandidateInForwardDirection:(BOOL)arg1 granularity:(int)arg2;
-- (void)sortSelectionBarAction:(id)arg1;
-- (id)statisticsIdentifier;
-- (void)updateCollectionViewController;
-- (void)updateCollectionViewController:(BOOL)arg1;
+- (void)updateCandidateKey;
 - (void)updateForKeyplane:(id)arg1 key:(id)arg2;
 
 @end

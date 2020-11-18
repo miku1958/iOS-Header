@@ -25,17 +25,15 @@ __attribute__((visibility("hidden")))
 - (void)addEffectToView:(id)arg1;
 - (void)applyEffectAsRequested:(BOOL)arg1 toView:(id)arg2;
 - (void)applyIdentityEffectToView:(id)arg1;
-- (BOOL)applyKeyPathsAndRelativeValues:(id)arg1 forMotionEffect:(id)arg2 toView:(id)arg3;
 - (void)applyRequestedEffectToView:(id)arg1;
 - (BOOL)canTransitionToEffect:(id)arg1;
+- (void)convertToIdentity;
 - (id)copyForTransitionOut;
 - (id)copyForTransitionToEffect:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (BOOL)hasTransform;
 - (BOOL)isSameTypeOfEffect:(id)arg1;
 - (void)removeEffectFromView:(id)arg1;
 - (BOOL)shouldAnimateProperty:(id)arg1;
-- (BOOL)shouldManageCornerRadius;
 
 @end
 

@@ -27,8 +27,8 @@ __attribute__((visibility("hidden")))
 + (Class)layerClass;
 - (void).cxx_destruct;
 - (id)_fillColor:(BOOL)arg1;
-- (id)_layer;
 - (double)_pathInset;
+- (id)_shapeLayer;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (id)_strokeColor:(BOOL)arg1;
 - (void)_updateLightingOutlinePath;

@@ -6,34 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, UINavigationBar, _UINavigationBarItemStack, _UINavigationControllerRefreshControlHost;
+@class NSString, UINavigationBar, UINavigationItem, _UINavigationBarItemStack, _UINavigationControllerRefreshControlHost;
+@protocol _UIBarAppearanceChangeObserver;
 
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarVisualProvider : NSObject
 {
     UINavigationBar *_navigationBar;
     _UINavigationBarItemStack *_stack;
-    NSDictionary *_overrides;
-    BOOL _usesLegacyUI;
-    _UINavigationControllerRefreshControlHost *_refreshControlHost;
+    NSString *_backdropGroupName;
+    UINavigationItem *_itemForMeasuring;
 }
 
+@property (nonatomic) long long appearanceAPIVersion;
+@property (readonly, nonatomic) id<_UIBarAppearanceChangeObserver> appearanceObserver;
+@property (copy, nonatomic) NSString *backdropGroupName; // @synthesize backdropGroupName=_backdropGroupName;
+@property (nonatomic) double backgroundAlpha;
 @property (readonly, nonatomic) long long currentContentSize;
+@property (nonatomic) BOOL forceScrollEdgeAppearance;
 @property (readonly, nonatomic) UINavigationBar *navigationBar; // @synthesize navigationBar=_navigationBar;
-@property (strong, nonatomic) _UINavigationControllerRefreshControlHost *refreshControlHost; // @synthesize refreshControlHost=_refreshControlHost;
+@property (strong, nonatomic) _UINavigationControllerRefreshControlHost *refreshControlHost;
 @property (strong, nonatomic) _UINavigationBarItemStack *stack; // @synthesize stack=_stack;
+@property (nonatomic) double titleAlpha;
+@property (nonatomic) BOOL useInlineBackgroundHeightWhenLarge;
 @property (readonly, nonatomic) BOOL wantsLargeTitleDisplayed;
 
-+ (BOOL)supportsRefreshControlHosting;
 - (void).cxx_destruct;
 - (id)_accessibility_HUDItemForPoint:(struct CGPoint)arg1;
 - (id)_accessibility_controlToActivateForHUDGestureLiftAtPoint:(struct CGPoint)arg1;
+- (BOOL)_accessibility_shouldBeginHUDGestureAtPoint:(struct CGPoint)arg1;
 - (void)_shim_30244716;
 - (BOOL)_shim_34415965;
 - (id)_shim_backIndicatorView;
-- (id)_shim_backdropGroupName;
 - (long long)_shim_backdropStyle;
-- (double)_shim_backgroundAlpha;
 - (double)_shim_backgroundHeight;
 - (id)_shim_compatibilityBackgroundView;
 - (id)_shim_contentView;
@@ -44,7 +49,6 @@ __attribute__((visibility("hidden")))
 - (void)_shim_popForCarplayPressAtFakePoint:(struct CGPoint)arg1;
 - (void)_shim_pressBackIndicator:(BOOL)arg1 initialPress:(BOOL)arg2;
 - (id)_shim_promptText;
-- (void)_shim_setBackdropGroupName:(id)arg1;
 - (void)_shim_setCustomBackgroundView:(id)arg1;
 - (void)_shim_setDisableBlurTinting:(BOOL)arg1;
 - (void)_shim_setPromptText:(id)arg1 animated:(BOOL)arg2;
@@ -57,33 +61,38 @@ __attribute__((visibility("hidden")))
 - (void)_shim_touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)_shim_touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)_shim_updateBackIndicator;
-- (void)_shim_updateBackdropView;
 - (void)_shim_updateBackgroundViewIgnoringFlag;
 - (void)_shim_updateUserContentGuideForTopItem:(id)arg1 backItem:(id)arg2;
 - (id)_shim_userContentGuide;
 - (BOOL)_shim_wantsCustomTouchHandlingForTouches:(id)arg1;
-- (void)_updateBackground;
-- (void)_updateTitleViewForOpacityChange;
 - (void)animateForSearchPresentation:(BOOL)arg1;
+- (void)appendToDescription:(id)arg1;
 - (void)barSizeChanged;
 - (BOOL)canHandleStatusBarTouchAtPoint:(struct CGPoint)arg1;
 - (void)changeAppearance;
 - (void)changeLayout;
+- (id)description;
+- (void)dismissHostedSearchWithTransitionCoordinator:(id)arg1;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1 defaultAnswer:(CDUnknownBlockType)arg2;
-- (CDStruct_c3b9c2ee)heightRangeFittingWidth:(double)arg1;
 - (id)initWithNavigationBar:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 - (void)invalidateIntrinsicContentSize;
+- (CDStruct_39925896)layoutHeightsFittingWidth:(double)arg1;
 - (void)layoutSubviews;
+- (void)navigationBarInvalidatedResolvedLayoutMargins;
 - (void)popAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)preferredFocusedView;
 - (void)prepare;
 - (void)prepareForPop;
 - (void)prepareForPush;
+- (void)presentHostedSearchWithTransitionCoordinator:(id)arg1;
+- (void)presentSearchWithTransitionCoordinator:(id)arg1;
 - (void)provideViewsForContents:(id)arg1 topItem:(id)arg2 backItem:(id)arg3;
 - (void)pushAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)recordBarSize:(struct CGSize)arg1;
+- (struct NSDirectionalEdgeInsets)resolvedLargeTitleMargins;
+- (id)restingHeights;
 - (void)safeAreaInsetsDidChange;
 - (void)setBackButtonVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSemanticContentAttribute:(long long)arg1;
@@ -92,9 +101,13 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)stackDidChangeFrom:(id)arg1;
 - (long long)statusBarStyle;
+- (BOOL)supportsRefreshControlHosting;
 - (void)teardown;
+- (BOOL)topItemHasVariableHeight;
 - (void)traitCollectionDidChange:(id)arg1;
+- (id)traitCollectionForChild:(id)arg1 baseTraitCollection:(id)arg2;
 - (void)updateArchivedSubviews:(id)arg1;
+- (void)updateBackgroundGroupName;
 - (void)updateConstraints;
 - (void)updateTopNavigationItemAnimated:(BOOL)arg1;
 - (void)updateTopNavigationItemTitleView;

@@ -33,6 +33,8 @@ __attribute__((visibility("hidden")))
 + (id)textDisplayIdentifier;
 - (void).cxx_destruct;
 - (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
+- (void)_create_lockView;
+- (void)_create_stringView;
 - (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (BOOL)canEnableDisplayItem:(id)arg1 fromData:(id)arg2;

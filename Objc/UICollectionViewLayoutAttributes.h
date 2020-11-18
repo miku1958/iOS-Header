@@ -30,6 +30,8 @@
         unsigned int isClone:1;
     } _layoutFlags;
     long long _zIndex;
+    unsigned long long _maskedCorners;
+    struct UIEdgeInsets _defaultLayoutMargins;
 }
 
 @property (nonatomic) double alpha; // @synthesize alpha=_alpha;
@@ -38,11 +40,13 @@
 @property (readonly, nonatomic) UIBezierPath *collisionBoundingPath;
 @property (readonly, nonatomic) unsigned long long collisionBoundsType;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, getter=_defaultLayoutMargins, setter=_setDefaultLayoutMargins:) struct UIEdgeInsets defaultLayoutMargins; // @synthesize defaultLayoutMargins=_defaultLayoutMargins;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) struct CGRect frame;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHidden) BOOL hidden;
 @property (strong, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
+@property (nonatomic, getter=_maskedCorners, setter=_setMaskedCorners:) unsigned long long maskedCorners; // @synthesize maskedCorners=_maskedCorners;
 @property (readonly, nonatomic) unsigned long long representedElementCategory;
 @property (readonly, nonatomic) NSString *representedElementKind;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
@@ -74,6 +78,7 @@
 - (id)init;
 - (id)initialLayoutAttributesForInsertedDecorationElementOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isSizeEqualForPreferredFittingAttributes:(id)arg1;
 
 @end
 

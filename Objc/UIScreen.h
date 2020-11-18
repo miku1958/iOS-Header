@@ -9,15 +9,16 @@
 #import <UIKitCore/UICoordinateSpace-Protocol.h>
 #import <UIKitCore/UIFocusItemContainer-Protocol.h>
 #import <UIKitCore/UITraitEnvironment-Protocol.h>
+#import <UIKitCore/_UIFallbackEnvironment-Protocol.h>
 #import <UIKitCore/_UIFocusEnvironmentInternal-Protocol.h>
 #import <UIKitCore/_UIFocusEnvironmentPrivate-Protocol.h>
 #import <UIKitCore/_UIFocusRegionContainer-Protocol.h>
 #import <UIKitCore/_UITraitEnvironmentInternal-Protocol.h>
 
-@class CARSessionStatus, FBSDisplayConfiguration, NSArray, NSDictionary, NSString, UIFocusSystem, UIScreenMode, UISoftwareDimmingWindow, UITraitCollection, UIView, UIWindow, _UIDisplayEdgeInfoProvider, _UIDragManager, _UIFocusMovementPerformer, _UIFocusScrollManager, _UIInteractiveHighlightEnvironment, _UIScreenBoundingPathUtilities, _UIScreenFixedCoordinateSpace, _UIScreenFocusSystemManager;
-@protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItem, UIFocusItemContainer, _UIFocusRegionContainer;
+@class CARSessionStatus, FBSDisplayConfiguration, NSArray, NSDictionary, NSString, UIFocusSystem, UISDisplayContext, UIScreenMode, UISoftwareDimmingWindow, UITraitCollection, UIView, UIWindow, _UIDragManager, _UIFocusMovementPerformer, _UIFocusScrollManager, _UIInteractiveHighlightEnvironment, _UIScreenBoundingPathUtilities, _UIScreenFixedCoordinateSpace, _UIScreenFocusSystemManager;
+@protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItem, UIFocusItemContainer, _UIDisplayInfoProviding, _UIFocusRegionContainer;
 
-@interface UIScreen : NSObject <UICoordinateSpace, _UITraitEnvironmentInternal, _UIFocusEnvironmentInternal, _UIFocusRegionContainer, UIFocusItemContainer, _UIFocusEnvironmentPrivate, UITraitEnvironment>
+@interface UIScreen : NSObject <_UIFallbackEnvironment, UICoordinateSpace, _UITraitEnvironmentInternal, _UIFocusEnvironmentInternal, _UIFocusRegionContainer, UIFocusItemContainer, _UIFocusEnvironmentPrivate, UITraitEnvironment>
 {
     struct CGRect _unjailedReferenceBounds;
     struct CGRect _referenceBounds;
@@ -25,15 +26,15 @@
     double _scale;
     long long _gamut;
     long long _userInterfaceIdiom;
-    unsigned long long _artworkSubtype;
+    UISDisplayContext *_initialDisplayContext;
     NSDictionary *_capabilities;
     NSArray *_availableDisplayModes;
     double _pointsPerInch;
     _UIScreenFixedCoordinateSpace *_fixedCoordinateSpace;
-    UITraitCollection *_contentSizeCategoryTraits;
-    _UIDisplayEdgeInfoProvider *_displayEdgeInfoProvider;
+    id<_UIDisplayInfoProviding> _displayInfoProvider;
     FBSDisplayConfiguration *__displayConfiguration;
     CARSessionStatus *_currentCarSessionStatus;
+    long long _lastUpdatedCanvasUserInterfaceStyle;
     struct {
         unsigned int bitsPerComponent:4;
         unsigned int initialized:1;
@@ -44,7 +45,6 @@
         unsigned int queriedDeviceContentMargins:1;
         unsigned int hasCalculatedPointsPerInch:1;
         unsigned int rightHandDrive:1;
-        unsigned int carPlayNightModeSupported:1;
         unsigned int carPlayNightModeEnabled:1;
     } _screenFlags;
     struct {
@@ -80,15 +80,19 @@
 @property (readonly, nonatomic) struct CGRect _referenceBounds; // @synthesize _referenceBounds;
 @property (strong, nonatomic, setter=_setSoftwareDimmingWindow:) UISoftwareDimmingWindow *_softwareDimmingWindow; // @synthesize _softwareDimmingWindow;
 @property (readonly, nonatomic) struct CGRect applicationFrame;
+@property (nonatomic) BOOL areChildrenFocused;
 @property (readonly, copy, nonatomic) NSArray *availableModes;
 @property (strong, nonatomic, getter=_boundingPathUtilities, setter=_setBoundingPathUtilities:) _UIScreenBoundingPathUtilities *boundingPathUtilities; // @synthesize boundingPathUtilities=_boundingPathUtilities;
 @property (readonly, nonatomic) struct CGRect bounds;
 @property (nonatomic) double brightness;
+@property (readonly, nonatomic) double calibratedLatency;
 @property (nonatomic, getter=isCaptured, setter=_setCaptured:) BOOL captured; // @synthesize captured=_captured;
 @property (readonly) id<UICoordinateSpace> coordinateSpace;
 @property (strong, nonatomic) UIScreenMode *currentMode;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic, getter=_defaultTraitCollection, setter=_setDefaultTraitCollection:) UITraitCollection *defaultTraitCollection; // @synthesize defaultTraitCollection=_defaultTraitCollection;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) FBSDisplayConfiguration *displayConfiguration;
 @property (readonly, nonatomic, getter=_dragManager) _UIDragManager *dragManager; // @synthesize dragManager=_dragManager;
@@ -102,6 +106,7 @@
 @property (readonly, nonatomic, getter=_focusSystemManager) _UIScreenFocusSystemManager *focusSystemManager; // @synthesize focusSystemManager=_focusSystemManager;
 @property (readonly, weak, nonatomic) id<UIFocusItem> focusedItem;
 @property (readonly, weak, nonatomic) UIView *focusedView;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=_interactiveHighlightEnvironment) _UIInteractiveHighlightEnvironment *interactiveHighlightEnvironment; // @synthesize interactiveHighlightEnvironment=_interactiveHighlightEnvironment;
 @property (strong, nonatomic, getter=_lastNotifiedTraitCollection, setter=_setLastNotifiedTraitCollection:) UITraitCollection *lastNotifiedTraitCollection; // @synthesize lastNotifiedTraitCollection=_lastNotifiedTraitCollection;
@@ -121,6 +126,7 @@
 @property (readonly, nonatomic) UIScreenMode *preferredMode;
 @property (readonly, nonatomic) double scale; // @synthesize scale=_scale;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsFocus;
 @property (readonly, nonatomic) UITraitCollection *traitCollection;
 @property (nonatomic) BOOL wantsSoftwareDimming; // @synthesize wantsSoftwareDimming=_wantsSoftwareDimming;
@@ -134,7 +140,6 @@
 + (void)_FBSDisplayDidPossiblyDisconnect:(id)arg1;
 + (void)_FBSDisplayDidPossiblyDisconnect:(id)arg1 forSceneDestruction:(id)arg2;
 + (void)_FBSDisplayIdentityDisconnected:(id)arg1;
-+ (id)__createPlugInScreenForFBSDisplay:(id)arg1;
 + (id)__displayConfigurationsIncludingMain:(BOOL)arg1;
 + (id)_carScreen;
 + (void)_enumerateScreensWithBlock:(CDUnknownBlockType)arg1;
@@ -157,7 +162,9 @@
 + (struct CGAffineTransform)transformForScreenOriginRotation:(double)arg1;
 + (struct CGAffineTransform)transformToRotateScreen:(double)arg1;
 - (void).cxx_destruct;
+- (void)_accessibilityBoldTextChanged:(id)arg1;
 - (void)_accessibilityForceTouchEnabledChanged:(id)arg1;
+- (void)_accessibilityTraitFlagsChanged:(id)arg1;
 - (struct CGRect)_applicationFrame;
 - (struct CGRect)_applicationFrameForInterfaceOrientation:(long long)arg1;
 - (struct CGRect)_applicationFrameForInterfaceOrientation:(long long)arg1 usingStatusbarHeight:(double)arg2;
@@ -179,14 +186,15 @@
 - (void)_disconnectScreen;
 - (id)_display;
 - (double)_displayCornerRadius;
-- (id)_displayEdgeInfoProvider;
 - (id)_displayID;
+- (id)_displayInfoProvider;
 - (struct UIEdgeInsets)_displayPeripheryInsets;
 - (long long)_effectiveUserInterfaceStyle;
 - (void)_endObservingBacklightLevelNotifications;
 - (void)_ensureFocusSystemIsLoaded;
 - (BOOL)_expectsSecureRendering;
 - (void)_externalDeviceNightModeDidChange:(id)arg1;
+- (id)_fallbackTraitCollection;
 - (void)_fetchInitialCarPlayHumanPresenceStatusIfNeeded;
 - (long long)_forceTouchCapability;
 - (void)_handleEffectiveUserInterfaceStyleChanged:(id)arg1;
@@ -197,11 +205,13 @@
 - (unsigned int)_integerDisplayID;
 - (long long)_interfaceOrientation;
 - (struct CGRect)_interfaceOrientedMainSceneBounds;
+- (void)_invalidate;
+- (BOOL)_isCarInstrumentsScreen;
 - (BOOL)_isCarPlayHumanPresenceInRange;
 - (BOOL)_isCarPlayNightModeEnabled;
-- (BOOL)_isCarPlayNightModeSupported;
 - (BOOL)_isCarScreen;
 - (BOOL)_isExternal;
+- (BOOL)_isFocusSystemLoaded;
 - (BOOL)_isForceTouchCapable;
 - (BOOL)_isMainScreenPointer;
 - (BOOL)_isOverscanned;
@@ -211,6 +221,7 @@
 - (BOOL)_isUserInterfaceLimited:(unsigned long long)arg1;
 - (BOOL)_isValidInterfaceOrientation:(long long)arg1;
 - (BOOL)_isWorkspaceCapable;
+- (double)_latency;
 - (id)_launchImageTraitCollectionForInterfaceOrientation:(long long)arg1 inBounds:(struct CGRect)arg2;
 - (id)_lazySoftwareDimmingWindow;
 - (void)_limitedUIDidChange:(id)arg1;
@@ -232,19 +243,20 @@
 - (void)_prepareForWindow;
 - (double)_refreshRate;
 - (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
+- (void)_resetUserInterfaceIdiom;
 - (double)_rotation;
 - (double)_scale;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
 - (unsigned int)_seed;
-- (void)_setArtworkSubtype:(unsigned long long)arg1;
 - (void)_setCapability:(id)arg1 forKey:(id)arg2;
 - (void)_setCarPlayHumanPresenceInRange:(BOOL)arg1;
-- (void)_setDefaultTraitCollection:(id)arg1 notify:(BOOL)arg2;
 - (void)_setExternalDeviceShouldInputText:(BOOL)arg1;
+- (void)_setInitialDisplayContext:(id)arg1;
 - (void)_setInterfaceOrientation:(long long)arg1;
 - (void)_setNeedsNonDeferredFocusUpdate;
 - (void)_setScale:(double)arg1;
 - (void)_setUserInterfaceIdiom:(long long)arg1;
+- (void)_setUserInterfaceStyleIfNecessary:(long long)arg1 firstTimeOnly:(BOOL)arg2;
 - (id)_snapshotExcludingWindows:(id)arg1 withRect:(struct CGRect)arg2;
 - (BOOL)_supportsBrightness;
 - (BOOL)_supportsCarPlayHumanPresence;

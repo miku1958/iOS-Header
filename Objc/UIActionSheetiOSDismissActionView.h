@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/UIView.h>
+#import <UIKitCore/_UIAlertControlleriOSActionSheetCancelBackgroundView.h>
 
 #import <UIKitCore/UIActionSheetPresentationControllerDismissActionView-Protocol.h>
 
 @class NSString, UIButton;
 
 __attribute__((visibility("hidden")))
-@interface UIActionSheetiOSDismissActionView : UIView <UIActionSheetPresentationControllerDismissActionView>
+@interface UIActionSheetiOSDismissActionView : _UIAlertControlleriOSActionSheetCancelBackgroundView <UIActionSheetPresentationControllerDismissActionView>
 {
     BOOL _usesShortCompactVerticalLayout;
     UIButton *_dismissButton;
@@ -26,12 +26,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL usesShortCompactVerticalLayout; // @synthesize usesShortCompactVerticalLayout=_usesShortCompactVerticalLayout;
 
 - (void).cxx_destruct;
-- (void)_applyContinuousCornerRadius:(double)arg1;
 - (double)_heightForTraitCollection:(id)arg1;
 - (void)_setupDismissButton;
-- (id)init;
 - (id)initWithContinuousCornerRadius:(double)arg1;
-- (void)setHighlighted:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface UIWKTextSelectionInteraction : UITextSelectionInteraction
 {
+    unsigned long long _repeatedTapCount;
 }
 
 - (void)oneFingerDoubleTap:(id)arg1;

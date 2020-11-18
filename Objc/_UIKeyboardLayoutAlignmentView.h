@@ -27,6 +27,8 @@ __attribute__((visibility("hidden")))
 - (void)_keyboardChanged:(id)arg1;
 - (void)_matchInitialKeyboardFrame;
 - (void)_removeConstraints;
+- (BOOL)_shouldIgnoreFrameChangeNotification:(id)arg1;
+- (BOOL)_shouldOverrideAnimationForFrameChangeNotification:(id)arg1;
 - (void)_startObservingKeyboardNotificationsForScreen:(id)arg1;
 - (void)_stopObservingKeyboardNotifications;
 - (void)_updateConstraintsForKeyboardNotification:(id)arg1;

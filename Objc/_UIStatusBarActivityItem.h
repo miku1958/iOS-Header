@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct UIEdgeInsets activityIndicatorAlignmentRectInsets;
 
 - (void).cxx_destruct;
+- (void)_create_activityIndicator;
 - (BOOL)_enableForType:(long long)arg1;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)dependentEntryKeys;

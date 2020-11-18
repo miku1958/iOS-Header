@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class _DUIItemDetail;
+@class NSIndexSet;
 
 @protocol _DUIClientSessionCommon
-- (oneway void)requestDetailForItemIndex:(unsigned long long)arg1 reply:(void (^)(_DUIItemDetail *))arg2;
-- (oneway void)requestImageForItemIndex:(unsigned long long)arg1 reply:(void (^)(NSArray *, _DUIPreview *, BKSAnimationFenceHandle *, long long))arg2;
-- (oneway void)updateDetail:(_DUIItemDetail *)arg1 forItemIndex:(unsigned long long)arg2;
+- (oneway void)requestDragPreviewsForIndexSet:(NSIndexSet *)arg1 reply:(void (^)(NSArray *, BKSAnimationFenceHandle *, long long))arg2;
 @end
 

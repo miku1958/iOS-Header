@@ -25,8 +25,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double timestampOfLastTouchesEnded;
 
 - (void).cxx_destruct;
+- (void)_setupControllersIfNecessaryWithView:(id)arg1;
 - (void)dealloc;
 - (void)didEndGesture;
+- (void)finishSetup;
 - (id)initWithView:(id)arg1;
 - (BOOL)shouldAllowSelectionGestures:(BOOL)arg1 atPoint:(struct CGPoint)arg2 toBegin:(BOOL)arg3;
 - (BOOL)shouldAllowWithTouchTypes:(id)arg1 atPoint:(struct CGPoint)arg2 toBegin:(BOOL)arg3;

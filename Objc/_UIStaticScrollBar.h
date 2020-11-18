@@ -31,9 +31,11 @@
 - (void).cxx_destruct;
 - (int)_axis;
 - (id)_constraintsForEdge:(long long)arg1;
+- (void)_setupSubviewsIfNeeded;
 - (void)buttonTapped:(id)arg1;
 - (struct CGRect)centeringBounds;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)update;
 - (void)updateConstraints;

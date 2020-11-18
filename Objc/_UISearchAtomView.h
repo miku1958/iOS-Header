@@ -8,20 +8,27 @@
 
 #import <UIKitCore/_UIAtomTextViewAtomLayout-Protocol.h>
 
-@class NSArray, NSString, UIImageView, UILabel, _UISearchAtomBackgroundView;
+@class NSArray, NSLayoutConstraint, NSString, UIColor, UIFont, UIImageView, UILabel, _UISearchAtomBackgroundView;
 
 __attribute__((visibility("hidden")))
 @interface _UISearchAtomView : UIView <_UIAtomTextViewAtomLayout>
 {
-    CDStruct_513ff01d _flags;
+    struct {
+        unsigned int enabled:1;
+    } _flags;
+    UIColor *_atomBackgroundColor;
     UILabel *_textLabel;
     UIImageView *_leadingImage;
     _UISearchAtomBackgroundView *_backgroundView;
     NSArray *_defaultConstraints;
+    NSLayoutConstraint *_imageBaselineConstraint;
+    NSLayoutConstraint *_imageCenterYConstraint;
     NSArray *_withImageConstraints;
     NSArray *_withoutImageConstraints;
 }
 
+@property (strong, nonatomic) UIColor *atomBackgroundColor; // @synthesize atomBackgroundColor=_atomBackgroundColor;
+@property (strong, nonatomic) UIFont *atomFont;
 @property (strong, nonatomic) _UISearchAtomBackgroundView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (readonly, nonatomic) long long baseWritingDirection;
 @property (readonly, copy) NSString *debugDescription;
@@ -29,6 +36,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEnabled) BOOL enabled;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSLayoutConstraint *imageBaselineConstraint; // @synthesize imageBaselineConstraint=_imageBaselineConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *imageCenterYConstraint; // @synthesize imageCenterYConstraint=_imageCenterYConstraint;
 @property (strong) UIImageView *leadingImage; // @synthesize leadingImage=_leadingImage;
 @property (readonly, nonatomic) struct CGRect selectionBounds;
 @property (nonatomic) long long selectionStyle;
@@ -37,16 +46,18 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSArray *withImageConstraints; // @synthesize withImageConstraints=_withImageConstraints;
 @property (copy, nonatomic) NSArray *withoutImageConstraints; // @synthesize withoutImageConstraints=_withoutImageConstraints;
 
++ (id)defaultAtomBackgroundColor;
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (double)_bottomMargin;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (id)_font;
 - (double)_topToBaselineDelta;
-- (void)_updateImageColor;
-- (void)_updateTextColor;
+- (void)_updateColors;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setEnabled:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelectionStyle:(long long)arg1 animated:(BOOL)arg2;
+- (void)tintColorDidChange;
 - (void)updateConstraints;
 - (id)viewForLastBaselineLayout;
 

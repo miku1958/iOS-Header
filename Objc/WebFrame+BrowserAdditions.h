@@ -7,6 +7,8 @@
 #import <WebKitLegacy/WebFrame.h>
 
 @interface WebFrame (BrowserAdditions)
+- (BOOL)containsOnlySelectableElements;
 - (BOOL)isMainFrame;
+- (BOOL)isTexty;
 @end
 

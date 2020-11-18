@@ -12,14 +12,15 @@
 
 @interface UISlidingBarState : NSObject <NSCopying>
 {
-    BOOL _trailingOverlapsMain;
     BOOL __treatLeadingHiddenAsOverlaps;
+    BOOL __treatTrailingHiddenAsOverlaps;
     double _leadingWidth;
     double _trailingWidth;
     double _leadingDragOffset;
     double _trailingDragOffset;
     UISlidingBarConfiguration *_configuration;
     double __leadingOverlayWidth;
+    double __trailingOverlayWidth;
     double __keyboardAdjustment;
     long long __collapsedState;
 }
@@ -27,7 +28,9 @@
 @property (nonatomic, setter=_setCollapsedState:) long long _collapsedState; // @synthesize _collapsedState=__collapsedState;
 @property (nonatomic) double _keyboardAdjustment; // @synthesize _keyboardAdjustment=__keyboardAdjustment;
 @property (nonatomic, setter=_setLeadingOverlayWidth:) double _leadingOverlayWidth; // @synthesize _leadingOverlayWidth=__leadingOverlayWidth;
+@property (nonatomic, setter=_setTrailingOverlayWidth:) double _trailingOverlayWidth; // @synthesize _trailingOverlayWidth=__trailingOverlayWidth;
 @property (nonatomic, setter=_setTreatLeadingHiddenAsOverlaps:) BOOL _treatLeadingHiddenAsOverlaps; // @synthesize _treatLeadingHiddenAsOverlaps=__treatLeadingHiddenAsOverlaps;
+@property (nonatomic, setter=_setTreatTrailingHiddenAsOverlaps:) BOOL _treatTrailingHiddenAsOverlaps; // @synthesize _treatTrailingHiddenAsOverlaps=__treatTrailingHiddenAsOverlaps;
 @property (readonly, nonatomic, getter=isCollapsed) BOOL collapsed;
 @property (strong, nonatomic) UISlidingBarConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, nonatomic) BOOL isLeadingVisible;
@@ -36,7 +39,7 @@
 @property (readonly, nonatomic) BOOL leadingOverlapsMain;
 @property (nonatomic) double leadingWidth; // @synthesize leadingWidth=_leadingWidth;
 @property (nonatomic) double trailingDragOffset; // @synthesize trailingDragOffset=_trailingDragOffset;
-@property (nonatomic) BOOL trailingOverlapsMain; // @synthesize trailingOverlapsMain=_trailingOverlapsMain;
+@property (readonly, nonatomic) BOOL trailingOverlapsMain;
 @property (nonatomic) double trailingWidth; // @synthesize trailingWidth=_trailingWidth;
 
 - (void).cxx_destruct;
@@ -44,7 +47,8 @@
 - (double)_distanceFromRequest:(id)arg1;
 - (id)_interactiveStateRequest;
 - (BOOL)_leadingEntirelyOverlapsMain;
-- (BOOL)_leadingShouldUseSlidingBars;
+- (BOOL)_shouldUseSlidingBars;
+- (BOOL)_trailingEntirelyOverlapsMain;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;

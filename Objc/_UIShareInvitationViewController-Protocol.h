@@ -6,19 +6,21 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class CKContainerID, CKShare, FPSandboxingURLWrapper, NSData, NSDictionary, NSString, UIColor, UIImage, UITraitCollection;
+@class CKContainerID, CKContainerSetupInfo, CKShare, FPSandboxingURLWrapper, NSData, NSDictionary, NSString, UIColor, UIImage, UITraitCollection;
 
 @protocol _UIShareInvitationViewController <NSObject>
 - (void)_prepareForDisplayWithCompletion:(void (^)(struct CGSize))arg1;
 - (void)_setAppName:(NSString *)arg1;
 - (void)_setAuxiliaryActionTitle:(NSString *)arg1;
 - (void)_setAvailablePermissions:(unsigned long long)arg1;
+- (void)_setCloudKitContainerSetupInfo:(CKContainerSetupInfo *)arg1;
 - (void)_setCloudKitShare:(CKShare *)arg1 containerID:(CKContainerID *)arg2;
 - (void)_setCloudKitThumbnail:(NSData *)arg1 title:(NSString *)arg2 type:(NSString *)arg3;
 - (void)_setCollaborationUIEnabled:(BOOL)arg1;
 - (void)_setHeaderActionTitle:(NSString *)arg1;
 - (void)_setHeaderSubtitle:(NSString *)arg1;
 - (void)_setInitialHeaderSubtitle:(NSString *)arg1;
+- (void)_setIsInPopoverMode:(BOOL)arg1;
 - (void)_setLegacyAppearance:(BOOL)arg1;
 - (void)_setMailSubject:(NSString *)arg1 template:(NSString *)arg2;
 - (void)_setMessageTemplate:(NSString *)arg1;
@@ -30,6 +32,7 @@
 - (void)_setSecondaryAuxiliarySwitchState:(BOOL)arg1;
 - (void)_setSecondaryAuxiliarySwitchTitle:(NSString *)arg1;
 - (void)_setShowAddPeople:(BOOL)arg1;
+- (void)_setShowRootFolder:(BOOL)arg1;
 - (void)_setThumbnail:(UIImage *)arg1;
 - (void)_setTintColor:(UIColor *)arg1;
 @end

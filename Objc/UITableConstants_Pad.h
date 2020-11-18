@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 - (double)defaultRowHeightForTableView:(id)arg1;
 - (double)defaultRowHeightForTableView:(id)arg1 cellStyle:(long long)arg2;
 - (BOOL)supportsUserInterfaceStyles;
-- (BOOL)useOffWhiteEtchedLook;
 
 @end
 

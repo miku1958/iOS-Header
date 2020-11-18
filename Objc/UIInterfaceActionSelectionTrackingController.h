@@ -9,17 +9,19 @@
 #import <UIKitCore/UIFocusedInterfaceActionPressDelegate-Protocol.h>
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSMutableSet, NSPointerArray, NSString, UIGestureRecognizer, UILongPressGestureRecognizer, UIScrollView, UISelectionFeedbackGenerator, UIView, _UIInterfaceActionSelectByPressGestureRecognizer;
+@class NSArray, NSMutableSet, NSPointerArray, NSString, UIGestureRecognizer, UILongPressGestureRecognizer, UIScrollView, UISelectionFeedbackGenerator, UIView, _UIInterfaceActionSelectByPressGestureRecognizer, _UIInterfaceActionSelectionDelayGestureRecognizer;
 
 __attribute__((visibility("hidden")))
 @interface UIInterfaceActionSelectionTrackingController : NSObject <UIGestureRecognizerDelegate, UIFocusedInterfaceActionPressDelegate>
 {
+    BOOL _scrubbingEnabled;
     BOOL _selectByPressGestureEnabled;
     BOOL _selectionFeedbackEnabled;
     UIView *_trackableContainerView;
     UIScrollView *_actionsScrollView;
     NSArray *_representationViews;
     UILongPressGestureRecognizer *_selectionGestureRecognizer;
+    _UIInterfaceActionSelectionDelayGestureRecognizer *_selectionDelayGestureRecognizer;
     UIGestureRecognizer *_systemProvidedGestureRecognizer;
     NSMutableSet *_viewsRequiringSelectionGestureDisabling;
     _UIInterfaceActionSelectByPressGestureRecognizer *_selectByPressGestureRecognizer;
@@ -40,8 +42,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) id scrollViewDidEndDeceleratingNotificationToken; // @synthesize scrollViewDidEndDeceleratingNotificationToken=_scrollViewDidEndDeceleratingNotificationToken;
 @property (strong, nonatomic) id scrollViewDidEndDraggingNotificationToken; // @synthesize scrollViewDidEndDraggingNotificationToken=_scrollViewDidEndDraggingNotificationToken;
 @property (strong, nonatomic) id scrollViewWillBeginDraggingNotificationToken; // @synthesize scrollViewWillBeginDraggingNotificationToken=_scrollViewWillBeginDraggingNotificationToken;
+@property (nonatomic) BOOL scrubbingEnabled; // @synthesize scrubbingEnabled=_scrubbingEnabled;
 @property (nonatomic) BOOL selectByPressGestureEnabled; // @synthesize selectByPressGestureEnabled=_selectByPressGestureEnabled;
 @property (strong, nonatomic) _UIInterfaceActionSelectByPressGestureRecognizer *selectByPressGestureRecognizer; // @synthesize selectByPressGestureRecognizer=_selectByPressGestureRecognizer;
+@property (readonly, nonatomic) _UIInterfaceActionSelectionDelayGestureRecognizer *selectionDelayGestureRecognizer; // @synthesize selectionDelayGestureRecognizer=_selectionDelayGestureRecognizer;
 @property (nonatomic) BOOL selectionFeedbackEnabled; // @synthesize selectionFeedbackEnabled=_selectionFeedbackEnabled;
 @property (readonly, nonatomic) UILongPressGestureRecognizer *selectionGestureRecognizer; // @synthesize selectionGestureRecognizer=_selectionGestureRecognizer;
 @property (strong, nonatomic) UISelectionFeedbackGenerator *selectionRetargetFeedbackGenerator; // @synthesize selectionRetargetFeedbackGenerator=_selectionRetargetFeedbackGenerator;
@@ -75,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (void)beginTrackingSessionByTakingOverForSystemProvidedGestureRecognizer:(id)arg1;
 - (void)dealloc;
 - (id)focusedInterfaceAction;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (void)handlePressedFocusedInterfaceAction:(id)arg1;
 - (id)initWithTrackableContainerView:(id)arg1 actionsScrollView:(id)arg2;
 - (void)setCooperatingSelectionTrackingControllers:(id)arg1;

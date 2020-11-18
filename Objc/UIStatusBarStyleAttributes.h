@@ -22,11 +22,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isPulsingAnimationEnabled) BOOL pulsingAnimationEnabled; // @synthesize pulsingAnimationEnabled=_pulsingAnimationEnabled;
 
 - (void).cxx_destruct;
-- (BOOL)areTopCornersRounded;
 - (id)backgroundColorWithTintColor:(id)arg1;
 - (id)backgroundImageName;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (int)cornerStyle;
 - (id)foregroundStyle;
 - (double)glowAnimationDuration;
 - (double)heightForMetrics:(long long)arg1;

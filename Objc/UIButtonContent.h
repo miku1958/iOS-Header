@@ -9,7 +9,7 @@
 #import <UIKitCore/NSCoding-Protocol.h>
 #import <UIKitCore/NSCopying-Protocol.h>
 
-@class NSAttributedString, NSNumber, NSString, UIColor, UIImage, _UIGraphicsLetterpressStyle;
+@class NSAttributedString, NSNumber, NSString, UIColor, UIImage, UIImageSymbolConfiguration, _UIGraphicsLetterpressStyle;
 
 __attribute__((visibility("hidden")))
 @interface UIButtonContent : NSObject <NSCoding, NSCopying>
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     UIColor *imageColor;
     UIColor *shadowColor;
     NSNumber *drawingStroke;
+    UIImageSymbolConfiguration *preferredSymbolConfiguration;
 }
 
 @property (strong, nonatomic) NSAttributedString *attributedTitle; // @synthesize attributedTitle;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIColor *imageColor; // @synthesize imageColor;
 @property (readonly, nonatomic) BOOL isEmpty; // @dynamic isEmpty;
 @property (strong, nonatomic) _UIGraphicsLetterpressStyle *letterpressStyle;
+@property (strong, nonatomic) UIImageSymbolConfiguration *preferredSymbolConfiguration; // @synthesize preferredSymbolConfiguration;
 @property (strong, nonatomic) UIColor *shadowColor; // @synthesize shadowColor;
 @property (strong, nonatomic) NSString *title; // @synthesize title;
 @property (strong, nonatomic) UIColor *titleColor; // @synthesize titleColor;

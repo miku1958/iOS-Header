@@ -6,27 +6,29 @@
 
 #import <UIKitCore/UIAutoRotatingWindow.h>
 
-#import <UIKitCore/_UIScreenBasedObject-Protocol.h>
+#import <UIKitCore/_UICanvasBasedObject-Protocol.h>
 
-@class NSDictionary, NSString, UIScreen;
+@class NSDictionary, NSString, UIEditingOverlayViewController, UIWindowScene;
 
-@interface UITextEffectsWindow : UIAutoRotatingWindow <_UIScreenBasedObject>
+@interface UITextEffectsWindow : UIAutoRotatingWindow <_UICanvasBasedObject>
 {
     BOOL _inDealloc;
     unsigned long long _activeEffectsCount;
+    BOOL _isFullscreen;
     double _defaultWindowLevel;
     struct CGPoint _hostedWindowOffset;
-    NSDictionary *_perScreenOptions;
-    UIScreen *__intendedScreen;
+    NSDictionary *_perCanvasOptions;
+    UIWindowScene *__intendedWindowScene;
     unsigned long long _activeRemoteViewCount;
     unsigned long long _windowLevelCount;
     double _windowLevelStack[5];
     struct CGSize _hostedSceneSize;
     BOOL _manualHostingOverride;
+    UIEditingOverlayViewController *_editingOverlayViewController;
     struct UIEdgeInsets _hostedSafeInsets;
 }
 
-@property (readonly) UIScreen *_intendedScreen;
+@property (readonly) UIWindowScene *_intendedCanvas;
 @property (readonly) NSDictionary *_options;
 @property (readonly) unsigned int contextID;
 @property (readonly, copy) NSString *debugDescription;
@@ -37,29 +39,41 @@
 @property (nonatomic) struct UIEdgeInsets hostedSafeInsets; // @synthesize hostedSafeInsets=_hostedSafeInsets;
 @property (nonatomic) struct CGSize hostedSceneSize; // @synthesize hostedSceneSize=_hostedSceneSize;
 @property (nonatomic) struct CGPoint hostedWindowOffset; // @synthesize hostedWindowOffset=_hostedWindowOffset;
+@property (readonly, nonatomic) BOOL isFullscreen; // @synthesize isFullscreen=_isFullscreen;
 @property (readonly) Class superclass;
 
-+ (id)_sharedTextEffectsWindowforScreen:(id)arg1 aboveStatusBar:(BOOL)arg2 allowHosted:(BOOL)arg3 matchesStatusBarOrientationOnAccess:(BOOL)arg4 shouldCreateIfNecessary:(BOOL)arg5;
++ (id)_canvasForScreen:(id)arg1;
++ (BOOL)_isSecure;
++ (id)_sharedTextEffectsWindowforWindowScene:(id)arg1 allowHosted:(BOOL)arg2 matchesStatusBarOrientationOnAccess:(BOOL)arg3 shouldCreateIfNecessary:(BOOL)arg4;
++ (BOOL)_shouldSoftAssertOnSetScreen;
++ (id)activeTextEffectsWindowForCanvas:(id)arg1;
 + (id)activeTextEffectsWindowForScreen:(id)arg1;
++ (id)activeTextEffectsWindowForWindowScene:(id)arg1;
 + (void)lowerTextEffectsWindowsForHideNotificationCenter;
 + (void)raiseTextEffectsWindowsForShowNotificationCenter;
 + (void)releaseSharedInstances;
 + (id)sharedTextEffectsWindow;
 + (id)sharedTextEffectsWindowAboveStatusBar;
++ (id)sharedTextEffectsWindowForCanvas:(id)arg1;
 + (id)sharedTextEffectsWindowForScreen:(id)arg1;
++ (id)sharedTextEffectsWindowForWindowScene:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_canActAsKeyWindowForScreen:(id)arg1;
 - (BOOL)_canAffectStatusBarAppearance;
+- (void)_commonInitWithOptions:(id)arg1;
 - (void)_commonTextEffectsInit;
 - (void)_configureContextOptions:(id)arg1;
 - (void)_createSystemGestureGateGestureRecognizerIfNeeded;
 - (void)_didRemoveSubview:(id)arg1;
 - (void)_didSnapshot;
+- (BOOL)_extendsScreenSceneLifetime;
 - (struct CGPoint)_forHostedProcessConvertPoint:(struct CGPoint)arg1 forWindow:(id)arg2 wasFromWindow:(BOOL)arg3;
 - (struct CGRect)_forHostedProcessConvertRect:(struct CGRect)arg1 forWindow:(id)arg2 wasFromWindow:(BOOL)arg3;
-- (id)_initBasicWithScreen:(id)arg1 options:(id)arg2;
+- (id)_initBasicWithCanvas:(id)arg1 options:(id)arg2;
+- (id)_initWithCanvas:(id)arg1 options:(id)arg2;
 - (id)_initWithFrame:(struct CGRect)arg1 attached:(BOOL)arg2;
-- (id)_initWithScreen:(id)arg1 options:(id)arg2;
+- (id)_initWithFrame:(struct CGRect)arg1 debugName:(id)arg2 windowScene:(id)arg3;
+- (id)_inputWindowController;
 - (BOOL)_isFullscreen;
 - (BOOL)_isTextEffectsWindow;
 - (void)_matchDeviceOrientation;
@@ -69,12 +83,14 @@
 - (void)_sceneBoundsDidChange;
 - (struct CGRect)_sceneReferenceBounds;
 - (void)_setWindowLevel:(double)arg1;
+- (BOOL)_shouldAutorotateToInterfaceOrientation:(long long)arg1;
+- (BOOL)_shouldInstallRootPresentationController;
 - (BOOL)_shouldResizeWithScene;
 - (BOOL)_shouldTextEffectsWindowBeHostedForView:(id)arg1;
-- (BOOL)_shouldTintStatusBar;
+- (void)_sortSubviewsOfView:(id)arg1;
 - (void)_updateRootViewConstraintsForInterfaceOrientationAndStatusBarHeight;
 - (void)_updateTransformLayer;
-- (void)_updateTransformLayerForClassicPresentation;
+- (struct CGRect)_usableSceneBounds;
 - (void)_willSnapshot;
 - (id)aboveStatusBarWindow;
 - (struct CGRect)actualSceneBounds;
@@ -102,6 +118,7 @@
 - (void)sendSubviewToBack:(id)arg1;
 - (void)setEnableRemoteHosting:(BOOL)arg1;
 - (void)sortSubviews;
+- (void)updateEditingOverlayContainer;
 - (void)updateForOrientation:(long long)arg1;
 - (void)updateForOrientation:(long long)arg1 forceResetTransform:(BOOL)arg2;
 - (void)updateSubviewOrdering;

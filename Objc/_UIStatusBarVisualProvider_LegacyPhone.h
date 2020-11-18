@@ -6,16 +6,37 @@
 
 #import <UIKitCore/_UIStatusBarVisualProvider_Phone.h>
 
+@class NSDictionary;
+
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarVisualProvider_LegacyPhone : _UIStatusBarVisualProvider_Phone
 {
+    NSDictionary *_orderedDisplayItemPlacements;
 }
 
+@property (strong, nonatomic) NSDictionary *orderedDisplayItemPlacements; // @synthesize orderedDisplayItemPlacements=_orderedDisplayItemPlacements;
+
++ (double)baselineOffset;
++ (struct NSDirectionalEdgeInsets)edgeInsets;
 + (double)height;
++ (id)normalFont;
++ (id)pillFont;
++ (struct CGSize)pillSize;
++ (double)regionSpacing;
++ (struct CGSize)smallPillSize;
++ (BOOL)wantsExpandedLeadingPlacements;
+- (void).cxx_destruct;
+- (id)_backgroundActivityDetailRemovalAnimation;
+- (void)actionable:(id)arg1 highlighted:(BOOL)arg2 initialPress:(BOOL)arg3;
+- (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
+- (void)itemCreated:(id)arg1;
 - (id)orderedDisplayItemPlacementsInRegionWithIdentifier:(id)arg1;
+- (id)overriddenStyleAttributesForDisplayItemWithIdentifier:(id)arg1;
 - (id)regionIdentifiersForPartWithIdentifier:(id)arg1;
+- (id)removalAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
 - (id)setupInContainerView:(id)arg1;
-- (id)styleAttributes;
+- (id)styleAttributesForStyle:(long long)arg1;
+- (void)updateDataForBackgroundActivity:(id)arg1;
 
 @end
 

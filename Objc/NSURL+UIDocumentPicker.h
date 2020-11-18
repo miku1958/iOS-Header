@@ -6,15 +6,46 @@
 
 #import <Foundation/NSURL.h>
 
-@interface NSURL (UIDocumentPicker)
+#import <UIKitCore/UIItemProviderReading-Protocol.h>
+#import <UIKitCore/UIItemProviderWriting-Protocol.h>
+
+@class NSArray, NSString;
+
+@interface NSURL (UIDocumentPicker) <UIItemProviderReading, UIItemProviderWriting>
+
+@property (copy, nonatomic, setter=_setTitle:) NSString *_title;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
+
++ (id)URLWithDisplayIdentifier:(id)arg1 forSearchResultDomain:(int)arg2 andIdentifier:(unsigned long long)arg3;
++ (id)mapsURLWithQuery:(id)arg1;
++ (id)mapsURLWithSourceAddress:(id)arg1 destinationAddress:(id)arg2;
 + (id)ui_URLFromExportBookmark:(id)arg1;
 + (id)ui_cloudDocsContainerURL;
 + (id)ui_incomingDirectory:(BOOL)arg1;
+- (id)_NSItemProviderArchive_customArchiveDictionary;
+- (void)_NSItemProviderArchive_didUnarchiveCustomDictionary:(id)arg1;
+- (void)_domain:(id *)arg1 subdomain:(id *)arg2;
+- (BOOL)isAccountURL;
+- (BOOL)isHTTPOrHTTPSURL;
+- (BOOL)isInternalUIKitURL;
+- (BOOL)isJavaScriptURL;
+- (BOOL)isSpringboardHandledURL;
+- (BOOL)isWebcalURL;
+- (id)phobosURL;
+- (id)radarWebURL;
+- (id)searchResultDomain;
+- (id)searchResultIdentifier;
+- (id)ui_URLByResolvingSymlinksAndCopyingSecurityScope;
 - (id)ui_bookmarkForExportWithError:(id *)arg1;
 - (BOOL)ui_canOpenInPlace;
 - (id)ui_downloadOperationForActivity:(id)arg1;
 - (BOOL)ui_hasReadSandboxExtended;
 - (BOOL)ui_hasSandboxExtendedForClass:(const char *)arg1;
+- (BOOL)ui_isContentManaged;
 - (BOOL)ui_isFileProviderURL;
 - (BOOL)ui_isUnfulfilledPromiseURL;
 - (id)ui_issueReadSandboxExtensionWithError:(id *)arg1;
@@ -22,8 +53,7 @@
 - (id)ui_issueSandboxExtensionOfClass:(const char *)arg1 error:(id *)arg2;
 - (id)ui_resolveOnDiskBookmarkAndPromise;
 - (void)ui_scheduleForCleanup;
+- (void)ui_setIsContentManaged:(BOOL)arg1;
 - (void)ui_setIsFileProviderURL:(BOOL)arg1;
-- (void)ui_setSourceIsManaged:(BOOL)arg1;
-- (BOOL)ui_sourceIsManaged;
 @end
 

@@ -6,16 +6,13 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, _UIDraggingSession;
 @protocol UICoordinateSpace;
 
 @protocol _UIDraggingInfo <NSObject>
 
 @property (readonly, nonatomic) unsigned long long draggingSourceOperationMask;
-@property (readonly, nonatomic) _UIDraggingSession *localDraggingSession;
-@property (nonatomic) long long numberOfValidItemsForDrop;
 
 - (struct CGPoint)draggingLocationInCoordinateSpace:(id<UICoordinateSpace>)arg1;
-- (void)enumerateItemsWithOptions:(unsigned long long)arg1 acceptableTypeIdentifiers:(NSArray *)arg2 usingBlock:(void (^)(_UIDraggingItem *, long long, BOOL *))arg3;
+- (void)enumerateItemsUsingBlock:(void (^)(UIDragItem *, long long, BOOL *))arg1;
 @end
 

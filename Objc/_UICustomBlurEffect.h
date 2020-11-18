@@ -33,7 +33,9 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)effectSettings;
+- (unsigned long long)hash;
 - (id)init;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableSet, NSString, UIBezierPath, UIKBHandwritingBezierPathPointFIFO, UIKBHandwritingBoxcarFilterPointFIFO, UIKBHandwritingQuadCurvePointFIFO, UIKBHandwritingStrokePointFIFO, UIKBHandwritingStrokeView;
+@class NSMutableArray, NSMutableSet, NSString, UIBezierPath, UIDelayedAction, UIImageView, UIKBHandwritingBezierPathPointFIFO, UIKBHandwritingBoxcarFilterPointFIFO, UIKBHandwritingInputSpeedModel, UIKBHandwritingQuadCurvePointFIFO, UIKBHandwritingStrokePointFIFO, UIKBHandwritingStrokeView;
 
 __attribute__((visibility("hidden")))
 @interface UIKBHandwritingView : UIKBKeyView <UIGestureRecognizerDelegate>
@@ -25,7 +25,11 @@ __attribute__((visibility("hidden")))
     UIKBHandwritingQuadCurvePointFIFO *_interpolatingFIFO;
     UIKBHandwritingBezierPathPointFIFO *_bezierPathFIFO;
     UIKBHandwritingStrokeView *_strokeView;
+    UIImageView *_snapshotView;
     NSMutableSet *_activeTouches;
+    double _pageOffset;
+    UIDelayedAction *_nextPageTimer;
+    UIKBHandwritingInputSpeedModel *_inputSpeedModel;
     CDStruct_23d8ee2f _previousPoint;
 }
 
@@ -40,30 +44,43 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGColor *inkColor; // @synthesize inkColor=_inkColor;
 @property (nonatomic) struct CGImage *inkMask; // @synthesize inkMask=_inkMask;
 @property (nonatomic) double inkWidth; // @synthesize inkWidth=_inkWidth;
+@property (strong, nonatomic) UIKBHandwritingInputSpeedModel *inputSpeedModel; // @synthesize inputSpeedModel=_inputSpeedModel;
 @property (strong, nonatomic) NSMutableArray *interpolatedPoints; // @synthesize interpolatedPoints=_interpolatedPoints;
 @property (strong, nonatomic) UIKBHandwritingQuadCurvePointFIFO *interpolatingFIFO; // @synthesize interpolatingFIFO=_interpolatingFIFO;
+@property (strong, nonatomic) UIDelayedAction *nextPageTimer; // @synthesize nextPageTimer=_nextPageTimer;
+@property (nonatomic) double pageOffset; // @synthesize pageOffset=_pageOffset;
 @property (nonatomic) CDStruct_19cde01f previousPoint; // @synthesize previousPoint=_previousPoint;
 @property (strong, nonatomic) UIKBHandwritingBoxcarFilterPointFIFO *smoothingFIFO; // @synthesize smoothingFIFO=_smoothingFIFO;
+@property (strong, nonatomic) UIImageView *snapshotView; // @synthesize snapshotView=_snapshotView;
 @property (strong, nonatomic) UIKBHandwritingStrokePointFIFO *strokeFIFO; // @synthesize strokeFIFO=_strokeFIFO;
 @property (strong, nonatomic) UIKBHandwritingStrokeView *strokeView; // @synthesize strokeView=_strokeView;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)addInkPoint:(struct CGPoint)arg1 value:(double)arg2;
+- (void)cancelPageOffsetTimer;
 - (BOOL)cancelTouchTracking;
 - (void)clearAndNotify:(BOOL)arg1;
 - (void)clearTouches;
 - (void)dealloc;
 - (void)deleteStrokesAtIndexes:(id)arg1;
+- (void)didMoveToWindow;
+- (void)displayLayer:(id)arg1;
 - (BOOL)endStrokeWithTouches:(id)arg1 event:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
+- (id)layerForRenderFlags:(long long)arg1;
+- (void)layoutSubviews;
 - (void)log;
 - (unsigned long long)numberOfStrokes;
+- (void)pageOffsetTimerFired;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)recreateInkMaskIfNeeded;
 - (void)send;
 - (void)setRenderConfig:(id)arg1;
 - (BOOL)shouldAllowSelectionGestures:(BOOL)arg1;
 - (BOOL)shouldCache;
+- (void)startFadeOutAnimation;
+- (void)touchPageOffsetTimer;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;

@@ -6,31 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class UIInputViewController, UIKeyboard, UIResponder, UIView;
+@class UIInputViewController, UIKBRenderConfig, UIKeyboard, UIResponder, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIInputViewSet : NSObject
 {
-    UIView *_inputView;
-    UIView *_inputAccessoryView;
-    UIView *_inputAssistantView;
     BOOL _isSplit;
     double _splitHeightDelta;
     UIResponder *_restorableResponder;
+    UIKBRenderConfig *_restorableRenderConfig;
     UIResponder *_accessoryViewNextResponder;
     BOOL _restoreUsingBecomeFirstResponder;
+    UIView *_inputView;
+    UIView *_inputAccessoryView;
+    UIView *_inputAssistantView;
+    UIInputViewController *_inputViewController;
+    UIInputViewController *_accessoryViewController;
+    UIInputViewController *_assistantViewController;
     BOOL _isNullInputView;
     BOOL _isCustomInputView;
     BOOL _isRemoteKeyboard;
-    UIInputViewController *_inputViewController;
-    UIInputViewController *_assistantViewController;
-    UIInputViewController *_accessoryViewController;
     struct CGRect _inputAssistantViewBounds;
 }
 
 @property (readonly, nonatomic) BOOL _inputViewIsSplit;
 @property (strong, nonatomic) UIInputViewController *accessoryViewController; // @synthesize accessoryViewController=_accessoryViewController;
-@property (nonatomic) UIResponder *accessoryViewNextResponder; // @synthesize accessoryViewNextResponder=_accessoryViewNextResponder;
+@property (weak, nonatomic) UIResponder *accessoryViewNextResponder; // @synthesize accessoryViewNextResponder=_accessoryViewNextResponder;
 @property (strong, nonatomic) UIInputViewController *assistantViewController; // @synthesize assistantViewController=_assistantViewController;
 @property (readonly, nonatomic, getter=isEmpty) BOOL empty;
 @property (strong, nonatomic) UIView *inputAccessoryView; // @synthesize inputAccessoryView=_inputAccessoryView;
@@ -50,16 +51,21 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isSplit; // @synthesize isSplit=_isSplit;
 @property (readonly, nonatomic) UIKeyboard *keyboard;
 @property (readonly, nonatomic) UIView *layeringView;
+@property (strong, nonatomic) UIKBRenderConfig *restorableRenderConfig; // @synthesize restorableRenderConfig=_restorableRenderConfig;
 @property (weak, nonatomic) UIResponder *restorableResponder; // @synthesize restorableResponder=_restorableResponder;
 @property (nonatomic) BOOL restoreUsingBecomeFirstResponder;
 @property (readonly, nonatomic) UIView *splitExemptSubview;
 @property (nonatomic) double splitHeightDelta; // @synthesize splitHeightDelta=_splitHeightDelta;
 @property (readonly, nonatomic) BOOL supportsSplit;
+@property (readonly, nonatomic) BOOL usesKeyClicks;
+@property (readonly, nonatomic) BOOL visible;
 
 + (id)emptyInputSet;
 + (id)inputSetWithInputView:(id)arg1 accessoryView:(id)arg2;
 + (id)inputSetWithInputView:(id)arg1 accessoryView:(id)arg2 assistantView:(id)arg3;
 + (id)inputSetWithKeyboardAndAccessoryView:(id)arg1;
++ (id)inputSetWithKeyboardAndAccessoryView:(id)arg1 assistantView:(id)arg2;
++ (id)inputSetWithOriginalInputSet:(id)arg1 duplicateInputView:(BOOL)arg2 duplicateInputAccessoryView:(BOOL)arg3 duplicateInputAssistantView:(BOOL)arg4;
 + (id)inputSetWithPlaceholderAndAccessoryView:(id)arg1;
 - (BOOL)__isCKAccessoryView;
 - (BOOL)_accessorySuppressesShadow;
@@ -84,6 +90,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)containsView:(id)arg1;
 - (void)dealloc;
 - (id)description;
+- (BOOL)hierarchyContainsView:(id)arg1;
 - (BOOL)inSyncWithOrientation:(long long)arg1 forKeyboard:(id)arg2;
 - (void)inheritNullState:(id)arg1;
 - (id)initWithInputView:(id)arg1 accessoryView:(id)arg2 assistantView:(id)arg3 isKeyboard:(BOOL)arg4;
@@ -92,13 +99,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isStrictSupersetOfViewSet:(id)arg1;
 - (long long)keyboardOrientation:(id)arg1;
-- (id)normalisePlaceholders;
+- (id)normalizePlaceholders;
 - (void)refreshPresentation;
 - (BOOL)setAccessoryViewVisible:(BOOL)arg1 delay:(double)arg2;
-- (void)setAssistantBarVisible:(BOOL)arg1 delay:(double)arg2 animated:(BOOL)arg3;
 - (void)setKeyboardAssistantBar:(id)arg1;
-- (BOOL)usesKeyClicks;
-- (BOOL)visible;
 
 @end
 

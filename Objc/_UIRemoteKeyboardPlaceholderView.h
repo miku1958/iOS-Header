@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)_beginSplitTransitionIfNeeded:(double)arg1 gapWidth:(double)arg2;
 - (struct CGRect)_compatibleBounds;
 - (void)_endSplitTransitionIfNeeded:(BOOL)arg1;
+- (void)_isPlaceholderViewSelector;
 - (void)_setLeftOffset:(double)arg1 gapWidth:(double)arg2;
 - (void)_setProgress:(double)arg1 boundedBy:(double)arg2;
 - (void)dealloc;
@@ -47,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutMergedSubviews;
 - (void)layoutSplitSubviewsWithLeftContentSize:(struct CGSize)arg1 rightContentSize:(struct CGSize)arg2;
 - (struct CGSize)leftContentViewSize;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)refreshPlaceholder;
 - (struct CGSize)rightContentViewSize;
 - (void)updateMergedSubviewConstraints;

@@ -6,16 +6,18 @@
 
 #import <UIKitCore/UITableViewController.h>
 
-@class NSArray, _UIDictionaryManager;
+@class NSArray, NSMutableDictionary, _UIDictionaryManager;
 
 __attribute__((visibility("hidden")))
 @interface _UIRemoteDictionaryViewController : UITableViewController
 {
     NSArray *_availableDictionaries;
     _UIDictionaryManager *_dictionaryAssetManager;
+    NSMutableDictionary *_downloadingAssets;
 }
 
 @property (strong, nonatomic) _UIDictionaryManager *dictionaryAssetManager; // @synthesize dictionaryAssetManager=_dictionaryAssetManager;
+@property (strong, nonatomic) NSMutableDictionary *downloadingAssets; // @synthesize downloadingAssets=_downloadingAssets;
 
 - (void).cxx_destruct;
 - (id)_cloudBackgroundImage;
@@ -23,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)_downloadButton;
 - (id)_downloadImageWithTintColor:(id)arg1;
 - (void)_handleDownloadButton:(id)arg1;
-- (BOOL)_isStalledAutoDownloadAsset:(id)arg1;
+- (void)_startDownloadForDictionary:(id)arg1;
 - (id)initWithStyle:(long long)arg1;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

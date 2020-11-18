@@ -21,12 +21,10 @@ __attribute__((visibility("hidden")))
 - (id)copyForTransitionOut;
 - (id)copyForTransitionToEffect:(id)arg1;
 - (id)description;
-- (BOOL)hasTransform;
 - (id)initWithSourceEntry:(id)arg1 destinationEntry:(id)arg2;
 - (BOOL)isSameTypeOfEffect:(id)arg1;
 - (void)removeEffectFromView:(id)arg1;
 - (BOOL)shouldAnimateProperty:(id)arg1;
-- (BOOL)shouldManageCornerRadius;
 
 @end
 

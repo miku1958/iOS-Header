@@ -18,6 +18,7 @@
 - (long long)_webView:(UIWebDocumentView *)arg1 dataOwnerForDragSession:(id<UIDragSession>)arg2;
 - (long long)_webView:(UIWebDocumentView *)arg1 dataOwnerForDropSession:(id<UIDropSession>)arg2;
 - (void)_webView:(UIWebDocumentView *)arg1 dragInteraction:(UIDragInteraction *)arg2 willAnimateLiftWithAnimator:(id<UIDragAnimating>)arg3 session:(id<UIDragSession>)arg4;
+- (BOOL)_webView:(UIWebDocumentView *)arg1 dragSessionSupportsSystemDrag:(id<UIDragSession>)arg2;
 - (void)_webView:(UIWebDocumentView *)arg1 dropInteraction:(UIDropInteraction *)arg2 concludeDrop:(id<UIDropSession>)arg3;
 - (void)_webView:(UIWebDocumentView *)arg1 dropInteraction:(UIDropInteraction *)arg2 item:(UIDragItem *)arg3 willAnimateDropWithAnimator:(id<UIDragAnimating>)arg4;
 - (void)_webView:(UIWebDocumentView *)arg1 dropWasHandled:(BOOL)arg2 forSession:(id)arg3 itemProviders:(NSArray *)arg4;

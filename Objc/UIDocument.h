@@ -9,7 +9,7 @@
 #import <UIKitCore/NSFilePresenter-Protocol.h>
 #import <UIKitCore/NSProgressReporting-Protocol.h>
 
-@class NSDate, NSDocumentDifferenceSize, NSLock, NSMutableArray, NSOperationQueue, NSProgress, NSSet, NSString, NSTimer, NSURL, NSUndoManager, NSUserActivity;
+@class NSDate, NSDocumentDifferenceSize, NSLock, NSMutableArray, NSMutableSet, NSOperationQueue, NSProgress, NSSet, NSString, NSTimer, NSURL, NSUndoManager, NSUserActivity;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface UIDocument : NSObject <NSFilePresenter, NSProgressReporting>
@@ -17,6 +17,7 @@
     NSUserActivity *_currentUserActivity;
     NSLock *_activityContinuationLock;
     NSURL *_fileURL;
+    NSString *_fileBookmark;
     NSString *_fileType;
     NSString *_localizedName;
     NSUndoManager *_undoManager;
@@ -33,13 +34,14 @@
     double _lastPreservationTime;
     id _versionWithoutRecentChanges;
     NSMutableArray *_versions;
-    NSLock *_documentPropertyLock;
     id _alertPresenter;
     id _progressSubscriber;
+    NSMutableSet *_progresses;
     struct __docFlags {
         unsigned int inClose:1;
         unsigned int isOpen:1;
         unsigned int inOpen:1;
+        unsigned int inRevert:1;
         unsigned int isAutosavingBecauseOfTimer:1;
         unsigned int versionWithoutRecentChangesIsNotLastOpened:1;
         unsigned int ignoreUndoAndRedoNotifications:1;
@@ -51,7 +53,6 @@
         unsigned int inConflict:1;
         unsigned int needToStopAccessingSecurityScopedResource:1;
     } _docFlags;
-    NSProgress *_progress;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -70,7 +71,7 @@
 @property (readonly, strong) NSOperationQueue *presentedItemOperationQueue;
 @property (readonly, copy) NSURL *presentedItemURL;
 @property (readonly, copy) NSURL *primaryPresentedItemURL;
-@property (strong, nonatomic, getter=progress, setter=_setProgress:) NSProgress *progress; // @synthesize progress=_progress;
+@property (readonly) NSProgress *progress;
 @property (readonly, nonatomic) NSString *savingFileType;
 @property (readonly) Class superclass;
 @property (strong) NSUndoManager *undoManager;
@@ -110,7 +111,7 @@
 - (void)_performBlockSynchronouslyOnMainThread:(CDUnknownBlockType)arg1;
 - (id)_presentableFileNameForSaveOperation:(long long)arg1 url:(id)arg2;
 - (void)_progressPublished:(id)arg1;
-- (void)_progressUnpublished;
+- (void)_progressUnpublished:(id)arg1;
 - (void)_reallyManageUserActivity;
 - (void)_registerAsFilePresenterIfNecessary;
 - (void)_releaseUndoManager;
@@ -137,6 +138,7 @@
 - (void)_updatePermissionsState:(BOOL)arg1;
 - (id)_userActivityWithActivityType:(id)arg1;
 - (id)_userInfoForActivityContinuation;
+- (id)_writingProgressForURL:(id)arg1 indeterminate:(BOOL)arg2;
 - (void)accommodatePresentedItemDeletionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)accommodatePresentedSubitemDeletionAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)autosaveWithCompletionHandler:(CDUnknownBlockType)arg1;

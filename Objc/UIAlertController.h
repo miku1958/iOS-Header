@@ -11,7 +11,7 @@
 #import <UIKitCore/UIPreviewInteractionControllerDelegate-Protocol.h>
 #import <UIKitCore/_UIAlertControllerTextFieldViewControllerContaining-Protocol.h>
 
-@class NSArray, NSAttributedString, NSIndexSet, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSPointerArray, NSSet, NSString, UIAlertAction, UIAlertControllerVisualStyle, UIGestureRecognizer, UIPopoverController, UIPreviewInteractionController, UITapGestureRecognizer, UIView, _UIAlertControllerShimPresenter, _UIAlertControllerTextFieldViewController, _UIAnimationCoordinator;
+@class NSArray, NSAttributedString, NSIndexSet, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSPointerArray, NSSet, NSString, UIAlertAction, UIAlertControllerStackManager, UIAlertControllerVisualStyle, UIGestureRecognizer, UIPopoverController, UIPreviewInteractionController, UITapGestureRecognizer, UIView, _UIAlertControllerShimPresenter, _UIAlertControllerTextFieldViewController, _UIAnimationCoordinator;
 @protocol UIAlertControllerCoordinatedActionPerforming, UIAlertControllerSystemProvidedPresentationDelegate, UIAlertControllerVisualStyleProviding;
 
 @interface UIAlertController : UIViewController <UIAlertControllerContaining, _UIAlertControllerTextFieldViewControllerContaining, UIPreviewInteractionControllerDelegate, UIAlertControllerVisualStyleProviding>
@@ -32,9 +32,11 @@
     id _ownedTransitioningDelegate;
     BOOL _addContentViewControllerToViewHierarchyNeeded;
     BOOL _isInSupportedInterfaceOrientations;
+    BOOL _isInRecomputePreferredContentSize;
     long long _batchActionChangesInProgressCount;
     _UIAlertControllerShimPresenter *_presenter;
     NSPointerArray *_actionsWithInvokedHandlers;
+    UIAlertControllerStackManager *_alertControllerStackManager;
     BOOL _hidden;
     BOOL _springLoaded;
     BOOL __shouldFlipFrameForShimDismissal;
@@ -42,6 +44,7 @@
     BOOL _hasPreservedInputViews;
     NSMutableArray *_actions;
     UIViewController *_headerContentViewController;
+    UIViewController *_separatedHeaderContentViewController;
     NSObject<UIAlertControllerVisualStyleProviding> *_styleProvider;
     UIAlertAction *_preferredAction;
     _UIAnimationCoordinator *_temporaryAnimationCoordinator;
@@ -71,6 +74,7 @@
 @property (nonatomic, getter=_isHidden, setter=_setHidden:) BOOL _hidden; // @synthesize _hidden;
 @property (strong, nonatomic, setter=_setPresentationSourceRepresentationView:) UIView *_presentationSourceRepresentationView; // @synthesize _presentationSourceRepresentationView=__presentationSourceRepresentationView;
 @property (readonly) long long _resolvedStyle; // @synthesize _resolvedStyle;
+@property (strong, nonatomic, setter=_setSeparatedHeaderContentViewController:) UIViewController *_separatedHeaderContentViewController; // @synthesize _separatedHeaderContentViewController;
 @property (readonly) BOOL _shouldAlignToKeyboard;
 @property (setter=_setShouldAllowNilParameters:) BOOL _shouldAllowNilParameters; // @synthesize _shouldAllowNilParameters=__shouldAllowNilParameters;
 @property BOOL _shouldFlipFrameForShimDismissal; // @synthesize _shouldFlipFrameForShimDismissal=__shouldFlipFrameForShimDismissal;
@@ -79,7 +83,6 @@
 @property (strong, nonatomic, setter=_setSystemProvidedPresentationDelegate:) id<UIAlertControllerSystemProvidedPresentationDelegate> _systemProvidedPresentationDelegate; // @synthesize _systemProvidedPresentationDelegate=__systemProvidedPresentationDelegate;
 @property (strong, nonatomic, setter=_setSystemProvidedPresentationView:) UIView *_systemProvidedPresentationView; // @synthesize _systemProvidedPresentationView=__systemProvidedPresentationView;
 @property (readonly) _UIAlertControllerTextFieldViewController *_textFieldViewController;
-@property (setter=_setTextFieldsHidden:) BOOL _textFieldsHidden;
 @property (strong, nonatomic, setter=_setVisualStyle:) UIAlertControllerVisualStyle *_visualStyle; // @synthesize _visualStyle=__visualStyle;
 @property (strong, nonatomic, setter=_setActions:) NSArray *actions;
 @property (copy, nonatomic, getter=_attributedMessage, setter=_setAttributedMessage:) NSAttributedString *attributedMessage;
@@ -158,7 +161,6 @@
 - (void)_invokeHandlersForAction:(id)arg1;
 - (BOOL)_isPresented;
 - (BOOL)_isPresentedAsPopover;
-- (BOOL)_isPresentedAsPopoverWithLegacyUI;
 - (BOOL)_isSupportedInterfaceOrientation:(long long)arg1;
 - (id)_keyCommandForAction:(id)arg1 input:(id)arg2 modifierFlags:(long long)arg3;
 - (long long)_modalPresentationStyleForResolvedStyle;
@@ -174,7 +176,6 @@
 - (void)_removeAllActions;
 - (void)_removeAllTextFields;
 - (void)_removeKeyCommandForAction:(id)arg1;
-- (id)_requiredNotificationsForRemoteServices;
 - (BOOL)_requiresCustomPresentationController;
 - (void)_resolvedStyleChanged;
 - (void)_restoreInputViewsAnimated:(BOOL)arg1;
@@ -189,7 +190,7 @@
 - (BOOL)_shouldSizeToFillSuperview;
 - (BOOL)_shouldSupportReturnKeyPresses;
 - (BOOL)_shouldTreatEmptyStringsAsNil;
-- (id)_textFieldContainingViewWithTextField:(id)arg1;
+- (id)_textFieldContainingViewWithTextField:(id)arg1 position:(long long)arg2;
 - (void)_uninstallBackGestureRecognizer;
 - (void)_updateModalPresentationStyle;
 - (void)_updateProvidedStyle;

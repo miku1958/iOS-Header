@@ -12,6 +12,7 @@
 {
 }
 
+@property (nonatomic) BOOL disableTouchCancellationOnRotation;
 @property (nonatomic) double execTime;
 @property (nonatomic) BOOL forTesting;
 @property (nonatomic, getter=_lifecycleActionType, setter=_setLifecycleActionType:) unsigned long long lifecycleActionType;
@@ -19,6 +20,7 @@
 @property (nonatomic) BOOL safeMode;
 @property (nonatomic) BOOL shouldTakeKeyboardFocus;
 @property (nonatomic) unsigned long long signpostID;
+@property (nonatomic) long long statusBarAnimation;
 @property (nonatomic) double userLaunchEventTime;
 @property (nonatomic) BOOL waitForBackgroundTaskCompletion;
 

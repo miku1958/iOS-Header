@@ -12,7 +12,10 @@
 
 + (id)_externalDetailTextColor;
 + (id)_externalTextColor;
++ (void)initialize;
 + (id)layoutManagerForTableViewCellStyle:(long long)arg1;
++ (BOOL)requiresLegacyLayout;
++ (id)sharedLayoutManager;
 - (struct CGRect)_accessoryRectForCell:(id)arg1 offscreen:(BOOL)arg2;
 - (struct CGRect)_accessoryRectForCell:(id)arg1 offscreen:(BOOL)arg2 rowWidth:(double)arg3;
 - (struct CGRect)_adjustedBackgroundContentRectForCell:(id)arg1 forIndentedState:(BOOL)arg2;
@@ -28,15 +31,21 @@
 - (struct CGRect)_editControlRectForCell:(id)arg1 offscreen:(BOOL)arg2;
 - (struct CGRect)_editingAccessoryRectForCell:(id)arg1 offscreen:(BOOL)arg2;
 - (void)_layoutFocusGuidesForCell:(id)arg1;
+- (void)_legacy_cell:(id)arg1 didTransitionToState:(unsigned long long)arg2;
+- (void)_legacy_cell:(id)arg1 willTransitionToState:(unsigned long long)arg2;
+- (struct CGRect)_legacy_contentRectForCell:(id)arg1 forEditingState:(BOOL)arg2 showingDeleteConfirmation:(BOOL)arg3 rowWidth:(double)arg4;
+- (void)_legacy_layoutSubviewsOfCell:(id)arg1;
+- (void)_modern_cell:(id)arg1 didTransitionToState:(unsigned long long)arg2;
+- (void)_modern_layoutSubviewsOfCell:(id)arg1;
+- (void)_reconfigureCell:(id)arg1;
 - (struct CGRect)_reorderControlRectForCell:(id)arg1 offscreen:(BOOL)arg2;
 - (struct CGRect)_reorderSeparatorRectForCell:(id)arg1 offscreen:(BOOL)arg2;
+- (void)_resetTextLabelDefaultFontInCell:(id)arg1;
 - (void)_updateFocusGuidesForCell:(id)arg1 editing:(BOOL)arg2;
 - (struct CGRect)accessoryEndingRectForCell:(id)arg1 forNewEditingState:(BOOL)arg2 showingDeleteConfirmation:(BOOL)arg3;
 - (BOOL)accessoryShouldAppearForCell:(id)arg1;
 - (BOOL)accessoryShouldFadeForCell:(id)arg1;
 - (struct CGRect)accessoryStartingRectForCell:(id)arg1 forNewEditingState:(BOOL)arg2 showingDeleteConfirmation:(BOOL)arg3;
-- (void)applyCarPlayDefaultValuesToDetailTextLabel:(id)arg1 inCell:(id)arg2;
-- (void)applyCarPlayDefaultValuesToTextLabel:(id)arg1 inCell:(id)arg2;
 - (struct CGRect)backgroundEndingRectForCell:(id)arg1 forNewEditingState:(BOOL)arg2;
 - (struct CGRect)backgroundStartingRectForCell:(id)arg1 forNewEditingState:(BOOL)arg2;
 - (id)badgeForCell:(id)arg1;
@@ -59,7 +68,6 @@
 - (id)defaultLabelForCell:(id)arg1 ofClass:(Class)arg2;
 - (id)defaultTextLabelFontForCell:(id)arg1;
 - (double)defaultTextLabelFontSizeForCell:(id)arg1;
-- (struct CGRect)deleteConfirmationRectForCell:(id)arg1;
 - (id)detailTextLabelForCell:(id)arg1;
 - (struct CGRect)editControlEndingRectForCell:(id)arg1 forNewEditingState:(BOOL)arg2;
 - (BOOL)editControlShouldAppearForCell:(id)arg1;
@@ -75,6 +83,7 @@
 - (struct CGSize)intrinsicContentSizeForCell:(id)arg1 rowWidth:(double)arg2;
 - (void)layoutSubviewsOfCell:(id)arg1;
 - (struct CGSize)optimumSizeForLabel:(id)arg1 inTotalTextRect:(struct CGRect)arg2 minimizeWidthOnVerticalOverflow:(BOOL)arg3 preferSingleLineWidth:(BOOL)arg4;
+- (void)prepareCellForReuse:(id)arg1;
 - (struct CGRect)reorderControlEndingRectForCell:(id)arg1 forNewEditingState:(BOOL)arg2 showingDeleteConfirmation:(BOOL)arg3;
 - (BOOL)reorderControlShouldAppearForCell:(id)arg1;
 - (BOOL)reorderControlShouldFadeForCell:(id)arg1;

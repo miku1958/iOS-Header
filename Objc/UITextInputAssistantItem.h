@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, UIBlurEffect, UIColor, UIKeyboardAssistantBar;
+@class NSArray, UIBlurEffect, UIColor;
 
 @interface UITextInputAssistantItem : NSObject
 {
-    UIKeyboardAssistantBar *_owner;
     BOOL _allowsHidingShortcuts;
+    BOOL _showsBarButtonItemsInline;
     BOOL _independentGroupSizes;
     NSArray *_leadingBarButtonGroups;
     NSArray *_trailingBarButtonGroups;
@@ -31,8 +31,8 @@
 @property (nonatomic, getter=_independentGroupSizes, setter=_setIndependentGroupSizes:) BOOL independentGroupSizes; // @synthesize independentGroupSizes=_independentGroupSizes;
 @property (copy, nonatomic) NSArray *leadingBarButtonGroups; // @synthesize leadingBarButtonGroups=_leadingBarButtonGroups;
 @property (nonatomic, getter=_marginOverride, setter=_setMarginOverride:) double marginOverride; // @synthesize marginOverride=_marginOverride;
-@property (weak, nonatomic, getter=_owner, setter=_setOwner:) UIKeyboardAssistantBar *owner;
 @property (readonly, nonatomic, getter=_requiresPredictionDisabled) BOOL requiresPredictionDisabled;
+@property (nonatomic, getter=_showsBarButtonItemsInline, setter=_setShowsBarButtonItemsInline:) BOOL showsBarButtonItemsInline; // @synthesize showsBarButtonItemsInline=_showsBarButtonItemsInline;
 @property (copy, nonatomic) NSArray *trailingBarButtonGroups; // @synthesize trailingBarButtonGroups=_trailingBarButtonGroups;
 
 + (id)_keyboardDeleteItem;

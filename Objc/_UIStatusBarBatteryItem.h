@@ -6,13 +6,14 @@
 
 #import <UIKitCore/_UIStatusBarItem.h>
 
-@class _UIBatteryView, _UIStatusBarImageView, _UIStatusBarStringView;
+@class _UIBatteryView, _UIStaticBatteryView, _UIStatusBarImageView, _UIStatusBarStringView;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarBatteryItem : _UIStatusBarItem
 {
     BOOL _highlighted;
     _UIBatteryView *_batteryView;
+    _UIStaticBatteryView *_staticBatteryView;
     _UIStatusBarImageView *_chargingView;
     _UIStatusBarStringView *_percentView;
 }
@@ -21,14 +22,19 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIStatusBarImageView *chargingView; // @synthesize chargingView=_chargingView;
 @property (nonatomic) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (strong, nonatomic) _UIStatusBarStringView *percentView; // @synthesize percentView=_percentView;
+@property (strong, nonatomic) _UIStaticBatteryView *staticBatteryView; // @synthesize staticBatteryView=_staticBatteryView;
 
 + (id)chargingDisplayIdentifier;
 + (id)iconDisplayIdentifier;
 + (id)percentDisplayIdentifier;
++ (id)staticIconDisplayIdentifier;
 - (void).cxx_destruct;
+- (void)_create_batteryView;
+- (void)_create_chargingView;
+- (void)_create_percentView;
+- (void)_create_staticBatteryView;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)dependentEntryKeys;
-- (void)prepareForHighlighting;
 - (id)viewForIdentifier:(id)arg1;
 
 @end

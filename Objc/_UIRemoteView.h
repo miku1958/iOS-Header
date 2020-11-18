@@ -6,37 +6,24 @@
 
 #import <UIKitCore/_UILayerHostView.h>
 
-#import <UIKitCore/UIStatusBarTinting-Protocol.h>
+@class _UIHostedWindowHostingHandle;
 
-@class NSString, UIColor, _UIHostedWindowHostingHandle;
-
-@interface _UIRemoteView : _UILayerHostView <UIStatusBarTinting>
+@interface _UIRemoteView : _UILayerHostView
 {
-    BOOL _actsAsTintView;
-    UIColor *_statusBarTintColor;
     _UIHostedWindowHostingHandle *_hostedWindowHostingHandle;
     CDUnknownBlockType _tintColorDidChangeHandler;
 }
 
-@property (nonatomic, setter=_setActsAsTintView:) BOOL _actsAsTintView; // @synthesize _actsAsTintView;
 @property (nonatomic, setter=_setInheritsSecurity:) BOOL _inheritsSecurity;
-@property (strong, nonatomic, setter=_setStatusBarTintColor:) UIColor *_statusBarTintColor; // @synthesize _statusBarTintColor;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _UIHostedWindowHostingHandle *hostedWindowHostingHandle; // @synthesize hostedWindowHostingHandle=_hostedWindowHostingHandle;
-@property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType tintColorDidChangeHandler; // @synthesize tintColorDidChangeHandler=_tintColorDidChangeHandler;
 
 + (BOOL)_requiresWindowTouches;
-+ (Class)layerClass;
 + (id)viewWithHostedWindowHostingHandle:(id)arg1;
-+ (id)viewWithRemoteContextID:(unsigned int)arg1;
 - (void).cxx_destruct;
-- (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (id)_hitTest:(struct CGPoint)arg1 withEvent:(id)arg2 windowServerHitTestWindow:(id)arg3;
-- (void)_setStatusBarTintColor:(id)arg1 duration:(double)arg2;
 - (void)applyTransformUndoingRemoteRootLayerTransform:(struct CGAffineTransform)arg1 frame:(struct CGRect)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 pid:(int)arg2 contextID:(unsigned int)arg3;
 - (void)tintColorDidChange;
 
 @end

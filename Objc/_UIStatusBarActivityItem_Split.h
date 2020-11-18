@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
 + (id)pillDisplayIdentifier;
 + (id)syncStartDisplayIdentifier;
 - (void).cxx_destruct;
+- (void)_create_activityView;
+- (void)_create_syncStartView;
 - (struct UIEdgeInsets)activityIndicatorAlignmentRectInsets;
 - (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;

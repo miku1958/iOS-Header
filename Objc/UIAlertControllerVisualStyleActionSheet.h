@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)titleLabelColor;
 - (id)titleLabelFont;
 - (double)transitionDurationForPresentation:(BOOL)arg1 ofAlertController:(id)arg2;
+- (id)vibrancyEffectForTitleAndMessageLabel;
 
 @end
 

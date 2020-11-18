@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 - (id)lightKeycapsFontName;
 - (double)popupFontSize;
 - (struct CGPoint)popupSymbolTextOffset;
-- (id)thinKeycapsFontName;
 - (struct UIEdgeInsets)variantPaddedFrameInsets;
 - (struct UIEdgeInsets)variantSymbolFrameInsets;
 - (struct CGPoint)variantSymbolTextOffset;

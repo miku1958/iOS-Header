@@ -13,7 +13,7 @@
 #import <UIKitCore/_UIScrollViewScrollObserver-Protocol.h>
 #import <UIKitCore/_UITVScrollViewManagerDelegate-Protocol.h>
 
-@class NSArray, NSMapTable, NSMutableArray, NSString, UIFocusContainerGuide, UIGestureRecognizer, UILayoutContainerView, UILongPressGestureRecognizer, UIMoreNavigationController, UINavigationController, UIScrollView, UITabBar, UITapGestureRecognizer, UIView, _UITVScrollViewManager;
+@class NSArray, NSMapTable, NSMutableArray, NSString, UIFocusContainerGuide, UIFocusGuide, UIGestureRecognizer, UILayoutContainerView, UILongPressGestureRecognizer, UIMoreNavigationController, UINavigationController, UIScrollView, UITabBar, UITapGestureRecognizer, UIView, _UITVScrollViewManager;
 @protocol UITabBarControllerDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning;
 
 @interface UITabBarController : UIViewController <UIGestureRecognizerDelegate, UILayoutContainerViewDelegate, _UIScrollViewScrollObserver, _UITVScrollViewManagerDelegate, UITabBarDelegate, NSCoding>
@@ -40,6 +40,7 @@
     UIScrollView *_observingScrollView;
     UIView *_tabBarContainerView;
     _UITVScrollViewManager *_scrollViewManager;
+    UIFocusGuide *_tabBarOffscreenFocusGuide;
     struct {
         unsigned int isShowingMoreItem:1;
         unsigned int needsToRebuildItems:1;
@@ -86,21 +87,21 @@
 + (Class)_moreNavigationControllerClass;
 + (BOOL)_shouldSendLegacyMethodsFromViewWillTransitionToSize;
 + (BOOL)doesOverridePreferredInterfaceOrientationForPresentation;
-+ (BOOL)doesOverrideSupportedInterfaceOrientations;
 - (void).cxx_destruct;
 - (void)__viewWillLayoutSubviews;
 - (id)_accessibilityHUDLongPressRecognizer;
 - (void)_accessibilityLongPressChanged:(id)arg1;
 - (id)_additionalViewControllersToCheckForUserActivity;
 - (struct CGRect)_adjustContentViewFrameForOffscreenFocus:(struct CGRect)arg1 viewController:(id)arg2;
-- (void)_adjustFloatingTabBarForContentScrollView:(id)arg1;
+- (void)_adjustTVTabBarForContentScrollView:(id)arg1;
 - (struct CGRect)_adjustTabBarFrameForOffscreenFocus:(struct CGRect)arg1 barPosition:(long long)arg2;
+- (struct CGRect)_adjustTabBarFrameForSafeAreas:(struct CGRect)arg1;
 - (id)_allContainedViewControllers;
-- (BOOL)_allowSelectionWithinMoreList;
 - (BOOL)_allowsAutorotation;
 - (BOOL)_allowsCustomizing;
 - (id)_backdropBarGroupName;
 - (BOOL)_canRestoreFocusAfterTransitionToRecalledItem:(id)arg1 inViewController:(id)arg2;
+- (void)_childViewController:(id)arg1 updatedObservedScrollView:(id)arg2;
 - (void)_configureTargetActionForTabBarItem:(id)arg1;
 - (id)_customAnimatorForFromViewController:(id)arg1 toViewController:(id)arg2;
 - (id)_customInteractionControllerForAnimator:(id)arg1;
@@ -122,7 +123,9 @@
 - (BOOL)_ignoreUnselectedTabsForStateRestoration;
 - (void)_invalidateBarLayoutIfNecessary;
 - (BOOL)_isBarHidden;
-- (BOOL)_isFloaty;
+- (BOOL)_isFocusedTabVisible;
+- (BOOL)_isLegacyTabBar;
+- (BOOL)_isModernTVTabBar;
 - (BOOL)_isPresentationContextByDefault;
 - (BOOL)_isSupportedInterfaceOrientation:(long long)arg1;
 - (BOOL)_isTabBarFocused;
@@ -160,7 +163,6 @@
 - (void)_setViewControllers:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)_shouldAdjustContentViewFrameForOffscreenFocus:(id)arg1 adjustedTabBarFrame:(struct CGRect)arg2;
 - (BOOL)_shouldPersistViewWhenCoding;
-- (BOOL)_shouldSynthesizeSupportedOrientations;
 - (BOOL)_shouldUseOnePartRotation;
 - (void)_showBarWithTransition:(int)arg1 isExplicit:(BOOL)arg2;
 - (void)_showBarWithTransition:(int)arg1 isExplicit:(BOOL)arg2 duration:(double)arg3;
@@ -172,9 +174,9 @@
 - (void)_updateGestureRecognizersForTraitCollection:(id)arg1;
 - (void)_updateLayoutForStatusBarAndInterfaceOrientation;
 - (void)_updateLayoutForTraitCollection:(id)arg1;
-- (void)_updateOffscreenStatus:(BOOL)arg1;
+- (void)_updateOffscreenStatus:(BOOL)arg1 withFocusAnimationCoordinator:(id)arg2;
 - (void)_updateTabBarLayout;
-- (void)_updateViewControllerForFloatingTabBar:(id)arg1;
+- (void)_updateViewController:(id)arg1 forTabbarObservedScrollView:(id)arg2;
 - (id)_viewControllerForSelectAtIndex:(unsigned long long)arg1;
 - (id)_viewControllerForTabBarItem:(id)arg1;
 - (id)_viewControllersInTabBar;
@@ -212,7 +214,6 @@
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesChanged:(id)arg1 withEvent:(id)arg2;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
-- (void)purgeMemoryForReason:(int)arg1;
 - (void)revealTabBarSelection;
 - (id)rotatingFooterView;
 - (id)rotatingHeaderView;

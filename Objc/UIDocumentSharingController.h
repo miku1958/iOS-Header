@@ -7,15 +7,17 @@
 #import <UIKitCore/UIViewController.h>
 
 #import <UIKitCore/UIActionSheetPresentationControllerDelegate-Protocol.h>
+#import <UIKitCore/_UIRemoteViewControllerContaining-Protocol.h>
 #import <UIKitCore/_UISharingPublicController-Protocol.h>
 
-@class NSString, UIImage, _UIResilientRemoteViewContainerViewController, _UIShareInvitationRemoteViewController;
+@class NSString, UIImage, _UIRemoteViewController, _UIResilientRemoteViewContainerViewController, _UIShareInvitationRemoteViewController;
 @protocol _UIDocumentSharingControllerDelegate_Private;
 
-@interface UIDocumentSharingController : UIViewController <UIActionSheetPresentationControllerDelegate, _UISharingPublicController>
+@interface UIDocumentSharingController : UIViewController <UIActionSheetPresentationControllerDelegate, _UIRemoteViewControllerContaining, _UISharingPublicController>
 {
     BOOL _collaborationUIEnabled;
     BOOL _showOnlyAddPeople;
+    BOOL _showRootFolder;
     BOOL _legacyAppearance;
     _UIResilientRemoteViewContainerViewController *_childViewController;
     UIViewController *_originalPresentingViewController;
@@ -33,6 +35,7 @@
     id<_UIDocumentSharingControllerDelegate_Private> __privateDelegate;
 }
 
+@property (readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 @property (weak, nonatomic, getter=_privateDelegate, setter=_setPrivateDelegate:) id<_UIDocumentSharingControllerDelegate_Private> _privateDelegate; // @synthesize _privateDelegate=__privateDelegate;
 @property (copy, nonatomic, getter=_appName, setter=_setAppName:) NSString *appName; // @synthesize appName=_appName;
 @property (copy, nonatomic, getter=_auxiliaryActionTitle, setter=_setAuxiliaryActionTitle:) NSString *auxiliaryActionTitle; // @synthesize auxiliaryActionTitle=_auxiliaryActionTitle;
@@ -52,6 +55,7 @@
 @property (weak, nonatomic, getter=_originalPresentingViewController, setter=_setOriginalPresentingViewController:) UIViewController *originalPresentingViewController; // @synthesize originalPresentingViewController=_originalPresentingViewController;
 @property (readonly, nonatomic, getter=_remoteViewController) _UIShareInvitationRemoteViewController *remoteViewController;
 @property (nonatomic, getter=_showOnlyAddPeople, setter=_setShowOnlyAddPeople:) BOOL showOnlyAddPeople; // @synthesize showOnlyAddPeople=_showOnlyAddPeople;
+@property (nonatomic, getter=_showRootFolder, setter=_setShowRootFolder:) BOOL showRootFolder; // @synthesize showRootFolder=_showRootFolder;
 @property (strong, nonatomic, getter=_strongReferenceToOurself, setter=_setStrongReferenceToOurself:) UIViewController *strongReferenceToOurself; // @synthesize strongReferenceToOurself=_strongReferenceToOurself;
 @property (readonly) Class superclass;
 @property (copy, nonatomic, getter=_thumbnail, setter=_setThumbnail:) UIImage *thumbnail; // @synthesize thumbnail=_thumbnail;

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _splitLeftCacheRect;
     struct CGRect _splitRightRect;
     struct CGRect _splitRightCacheRect;
-    int _topCorners;
+    unsigned long long _topCorners;
     BOOL _isSplit;
     BOOL _centerFilled;
     BOOL _hasCandidateKeys;

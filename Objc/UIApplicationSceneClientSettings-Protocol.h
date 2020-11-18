@@ -6,13 +6,15 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class FBSDisplayConfigurationRequest, FBSDisplayMode, NSArray, NSString;
+@class FBSDisplayConfigurationRequest, FBSDisplayMode, NSArray, NSData, NSDictionary, NSString;
 
 @protocol UIApplicationSceneClientSettings <NSObject>
 
+@property (readonly, nonatomic) NSData *activationConditionsData;
 @property (readonly, nonatomic) NSArray *audioCategoriesDisablingVolumeHUD;
 @property (readonly, nonatomic) long long backgroundStyle;
 @property (readonly, nonatomic) double brightnessLevel;
+@property (readonly, copy, nonatomic) NSString *canvasTitle;
 @property (readonly, nonatomic) long long compatibilityMode;
 @property (readonly, nonatomic) double controlCenterAmbiguousActivationMargin;
 @property (readonly, nonatomic) long long controlCenterRevealMode;
@@ -33,10 +35,14 @@
 @property (readonly, nonatomic) unsigned long long proximityDetectionModes;
 @property (readonly, nonatomic, getter=isReachabilitySupported) BOOL reachabilitySupported;
 @property (readonly, copy, nonatomic) FBSDisplayMode *requestedDisplayMode;
+@property (readonly, nonatomic) long long sceneActivationBias;
 @property (readonly, nonatomic) unsigned long long screenEdgesDeferringSystemGestures;
+@property (readonly, nonatomic) double statusBarAlpha;
 @property (readonly, nonatomic) unsigned int statusBarContextID;
 @property (readonly, nonatomic, getter=isStatusBarForegroundTransparent) BOOL statusBarForegroundTransparent;
 @property (readonly, nonatomic) BOOL statusBarHidden;
+@property (readonly, nonatomic) long long statusBarModernStyle;
+@property (readonly, copy, nonatomic) NSDictionary *statusBarPartStyles;
 @property (readonly, nonatomic) long long statusBarStyle;
 @property (readonly, nonatomic) unsigned long long supportedInterfaceOrientations;
 @property (readonly, nonatomic) long long userInterfaceStyle;

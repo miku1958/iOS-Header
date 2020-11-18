@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)applyRequestedEffectToView:(id)arg1;
 - (BOOL)canTransitionToEffect:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)removeEffectFromView:(id)arg1;
 
 @end

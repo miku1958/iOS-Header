@@ -13,12 +13,12 @@ __attribute__((visibility("hidden")))
     BOOL _drawsOpaque;
     BOOL _drawsBorder;
     BOOL _usesDarkTheme;
-    int _roundedCorners;
+    unsigned long long _roundedCorners;
 }
 
 @property (nonatomic) BOOL drawsBorder; // @synthesize drawsBorder=_drawsBorder;
 @property (nonatomic) BOOL drawsOpaque; // @synthesize drawsOpaque=_drawsOpaque;
-@property (nonatomic) int roundedCorners; // @synthesize roundedCorners=_roundedCorners;
+@property (nonatomic) unsigned long long roundedCorners; // @synthesize roundedCorners=_roundedCorners;
 @property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
 @property (nonatomic) BOOL usesDarkTheme; // @synthesize usesDarkTheme=_usesDarkTheme;
 

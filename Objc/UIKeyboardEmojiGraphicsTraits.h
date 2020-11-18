@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface UIKeyboardEmojiGraphicsTraits : NSObject
 {
     double _emojiKeyWidth;
@@ -46,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double scrubViewTopPadding; // @synthesize scrubViewTopPadding=_scrubViewTopPadding;
 @property (readonly, nonatomic) double sectionOffset; // @synthesize sectionOffset=_sectionOffset;
 
++ (id)emojiGraphicsTraitsForCurrentScreenTraits;
 + (id)emojiGraphicsTraitsWithScreenTraits:(id)arg1;
 - (id)initWithScreenTrait:(id)arg1;
 

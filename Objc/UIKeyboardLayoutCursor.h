@@ -78,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)ignoresShiftState;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isAlphabeticPlane;
+- (BOOL)isKanaPlane;
 - (BOOL)isKeyplaneDisabledWithName:(id)arg1;
 - (id)keyHitTestInSameRowAsCenter:(struct CGPoint)arg1 size:(struct CGSize)arg2;
 - (id)keyViewAnimator;
@@ -113,6 +114,7 @@ __attribute__((visibility("hidden")))
 - (void)showRecentInputsAlert;
 - (int)stateForCandidateListKey:(id)arg1;
 - (int)stateForKeyplaneSwitchKey:(id)arg1;
+- (BOOL)supportsContinuousPath;
 - (BOOL)supportsEmoji;
 - (void)switchToDictationKeyplaneWithActivationIdentifier:(id)arg1;
 - (void)takeKeyAction:(id)arg1;

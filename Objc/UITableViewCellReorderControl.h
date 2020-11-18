@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIControl.h>
 
-@class UITableViewCell;
+@class UIImageView, UITableViewCell;
 
 __attribute__((visibility("hidden")))
 @interface UITableViewCellReorderControl : UIControl
@@ -15,11 +15,13 @@ __attribute__((visibility("hidden")))
     struct CGPoint _downPoint;
     double _focalY;
     double _focalHeight;
+    UIImageView *_imageView;
 }
 
 @property (readonly, nonatomic) BOOL wantsMaskingWhileAnimatingDisabled;
 
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (id)_imageView;
 - (void)_updateImageView;
 - (void)adjustLayoutForFocalRect:(struct CGRect)arg1;
@@ -32,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)setFrame:(struct CGRect)arg1;
 - (BOOL)shouldTrack;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

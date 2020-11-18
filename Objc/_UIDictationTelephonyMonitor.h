@@ -6,25 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class CTCallCenter, IMAVCallManager;
-@protocol NSObject, OS_dispatch_queue;
+#import <UIKitCore/CXCallObserverDelegate-Protocol.h>
+
+@class CXCallObserver, NSString;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _UIDictationTelephonyMonitor : NSObject
+@interface _UIDictationTelephonyMonitor : NSObject <CXCallObserverDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    CTCallCenter *_callCentre;
-    IMAVCallManager *_facetimeCallManager;
-    id<NSObject> _notificationToken;
+    CXCallObserver *_callObserver;
     BOOL _telephonyActivity;
     CDUnknownBlockType _activityChanged;
 }
 
 @property (copy) CDUnknownBlockType activityChanged; // @synthesize activityChanged=_activityChanged;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL telephonyActivity; // @synthesize telephonyActivity=_telephonyActivity;
 
 - (void)_backgroundInit;
 - (void)_backgroundReset;
+- (void)callObserver:(id)arg1 callChanged:(id)arg2;
 - (void)dealloc;
 - (id)init;
 - (void)start;

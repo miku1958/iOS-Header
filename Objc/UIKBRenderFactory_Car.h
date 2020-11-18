@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (id)dividerColor;
 - (id)enabledKeyColor;
 - (id)globalKeyImageName;
+- (id)highlightedKeyColor;
 - (id)shiftKeyImageName;
 - (id)shiftLockImageName;
 - (id)shiftOnKeyImageName;

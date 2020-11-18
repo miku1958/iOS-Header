@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     UIViewController *_leadingViewController;
     UIViewController *_trailingViewController;
     UIViewController *_collapsedViewController;
+    UIViewController *_preservedDetailController;
     id<UIPanelControllerDelegate> _delegate;
     UISlidingBarConfiguration *_configuration;
     UISlidingBarStateRequest *_stateRequest;
@@ -25,12 +26,10 @@ __attribute__((visibility("hidden")))
     long long _externallyAnimatingAffectedSides;
     _UIPanelAnimationState *_animationState;
     long long _collapsedState;
-    long long _collapsedSecondaryIndex;
     double _keyboardAdjustment;
 }
 
 @property (strong, nonatomic) _UIPanelAnimationState *animationState; // @synthesize animationState=_animationState;
-@property (nonatomic) long long collapsedSecondaryIndex; // @synthesize collapsedSecondaryIndex=_collapsedSecondaryIndex;
 @property (nonatomic) long long collapsedState; // @synthesize collapsedState=_collapsedState;
 @property (strong, nonatomic) UIViewController *collapsedViewController; // @synthesize collapsedViewController=_collapsedViewController;
 @property (copy, nonatomic) UISlidingBarConfiguration *configuration; // @synthesize configuration=_configuration;
@@ -40,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double keyboardAdjustment; // @synthesize keyboardAdjustment=_keyboardAdjustment;
 @property (strong, nonatomic) UIViewController *leadingViewController; // @synthesize leadingViewController=_leadingViewController;
 @property (strong, nonatomic) UIViewController *mainViewController; // @synthesize mainViewController=_mainViewController;
+@property (strong, nonatomic) UIViewController *preservedDetailController; // @synthesize preservedDetailController=_preservedDetailController;
 @property (copy, nonatomic) UISlidingBarStateRequest *stateRequest; // @synthesize stateRequest=_stateRequest;
 @property (strong, nonatomic) UIViewController *trailingViewController; // @synthesize trailingViewController=_trailingViewController;
 

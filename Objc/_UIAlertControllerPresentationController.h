@@ -72,7 +72,6 @@ __attribute__((visibility("hidden")))
 - (void)presentationTransitionWillBegin;
 - (void)setDelegate:(id)arg1;
 - (BOOL)shouldPresentInFullscreen;
-- (BOOL)shouldRemovePresentersView;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

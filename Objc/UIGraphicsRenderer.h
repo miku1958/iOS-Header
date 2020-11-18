@@ -26,6 +26,7 @@
 - (void).cxx_destruct;
 - (void)_configureReuseState;
 - (struct CGContext *)_dequeueContextForReuse;
+- (void)_enqueueContextForReuse:(struct CGContext *)arg1;
 - (void)_prepareContextForReuse:(struct CGContext *)arg1;
 - (id)init;
 - (id)initWithBounds:(struct CGRect)arg1;

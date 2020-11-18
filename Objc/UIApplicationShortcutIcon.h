@@ -19,9 +19,9 @@
 
 + (id)iconWithCustomImage:(id)arg1;
 + (id)iconWithCustomImage:(id)arg1 isTemplate:(BOOL)arg2;
++ (id)iconWithSystemImageName:(id)arg1;
 + (id)iconWithTemplateImageName:(id)arg1;
 + (id)iconWithType:(long long)arg1;
-+ (long long)sbsIconTypeForIconType:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

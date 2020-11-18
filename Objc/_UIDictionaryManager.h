@@ -18,11 +18,11 @@ __attribute__((visibility("hidden")))
 
 + (id)assetManager;
 - (void).cxx_destruct;
-- (id)_allAvailableDefinitionDictionariesUsingRemoteInfo:(BOOL)arg1;
+- (id)_allAvailableDefinitionDictionaries;
 - (id)_availableDictionaryAssets;
-- (id)_availableDictionaryAssetsUsingRemoteInfo:(BOOL)arg1;
-- (id)_currentlyAvailableDefinitionDictionaries;
 - (id)_definitionValuesForTerm:(id)arg1;
+- (id)_dictionaryAssetType;
+- (void)_downloadDictionaryAssetCatalog:(CDUnknownBlockType)arg1;
 - (BOOL)_hasDefinitionForTerm:(id)arg1;
 - (BOOL)_isTTYEnabled;
 - (id)init;

@@ -18,23 +18,26 @@ __attribute__((visibility("hidden")))
     UIImageView *_backgroundGlow;
     NSArray *_passthroughViews;
     BOOL _ignoresTouches;
-    BOOL _displayed;
     BOOL _inPassthroughHitTest;
     UIColor *_dimmingColor;
     UITapGestureRecognizer *_singleFingerTapRecognizer;
     BOOL _suppressesBackdrops;
     id _delegate;
+    double _percentDisplayed;
+    double _percentLightened;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIColor *dimmingColor; // @synthesize dimmingColor=_dimmingColor;
-@property (nonatomic) BOOL displayed; // @synthesize displayed=_displayed;
+@property (readonly, nonatomic) BOOL displayed;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIBarButtonItem *highlightedBarButtonItem;
 @property (nonatomic) BOOL ignoresTouches; // @synthesize ignoresTouches=_ignoresTouches;
-@property (strong, nonatomic) NSArray *passthroughViews; // @synthesize passthroughViews=_passthroughViews;
+@property (copy, nonatomic) NSArray *passthroughViews; // @synthesize passthroughViews=_passthroughViews;
+@property (nonatomic) double percentDisplayed; // @synthesize percentDisplayed=_percentDisplayed;
+@property (nonatomic) double percentLightened; // @synthesize percentLightened=_percentLightened;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressesBackdrops; // @synthesize suppressesBackdrops=_suppressesBackdrops;
 
@@ -52,7 +55,9 @@ __attribute__((visibility("hidden")))
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)mouseUp:(struct __GSEvent *)arg1;
+- (int)textEffectsVisibilityLevel;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)updateBackgroundColor;
 
 @end
 

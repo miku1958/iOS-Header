@@ -13,10 +13,14 @@
     UICollectionViewLayoutAttributes *_layoutAttributes;
     UICollectionView *_collectionView;
     long long _updateAnimationCount;
+    BOOL _shouldConstrainWidth;
+    BOOL _shouldConstrainHeight;
     struct {
         unsigned int wasDequeued:1;
         unsigned int preferredAttributesValid:1;
         unsigned int generatingPreferredAttributes:1;
+        unsigned int didSetMaskedCorners:1;
+        unsigned int isBeingReused:1;
     } _reusableViewFlags;
     BOOL _preferredAttributesValid;
     NSString *_reuseIdentifier;
@@ -24,13 +28,17 @@
 
 @property (weak, nonatomic, getter=_collectionView, setter=_setCollectionView:) UICollectionView *collectionView;
 @property (readonly, nonatomic, getter=_isInUpdateAnimation) BOOL inUpdateAnimation;
+@property (nonatomic, getter=_isBeingReused, setter=_setIsBeingReused:) BOOL isBeingReused;
 @property (copy, nonatomic, getter=_layoutAttributes, setter=_setLayoutAttributes:) UICollectionViewLayoutAttributes *layoutAttributes;
 @property (nonatomic, getter=_arePreferredAttributesValid) BOOL preferredAttributesValid; // @synthesize preferredAttributesValid=_preferredAttributesValid;
 @property (copy, nonatomic, setter=_setReuseIdentifier:) NSString *reuseIdentifier; // @synthesize reuseIdentifier=_reuseIdentifier;
+@property (nonatomic, getter=_shouldConstrainHeight, setter=_setShouldConstrainHeight:) BOOL shouldConstrainHeight;
+@property (nonatomic, getter=_shouldConstrainWidth, setter=_setShouldConstrainWidth:) BOOL shouldConstrainWidth;
 
 - (void).cxx_destruct;
 - (void)_addUpdateAnimation;
 - (void)_clearUpdateAnimation;
+- (struct UIEdgeInsets)_concreteDefaultLayoutMargins;
 - (BOOL)_disableRasterizeInAnimations;
 - (void)_invalidatePreferredAttributes;
 - (void)_markAsDequeued;

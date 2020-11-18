@@ -6,17 +6,18 @@
 
 #import <UIKitCore/UIVisualEffect.h>
 
+@class _UICoreUIEffect;
+
 @interface _UIBlurThroughEffect : UIVisualEffect
 {
     long long _style;
+    _UICoreUIEffect *_reducedTransparencyEffect;
 }
 
 + (id)_blurThroughWithStyle:(long long)arg1;
-- (BOOL)_needsUpdateForMovingToSuperview:(id)arg1 fromSuperview:(id)arg2 inEffectView:(id)arg3;
-- (BOOL)_needsUpdateForMovingToWindow:(id)arg1 fromWindow:(id)arg2 inEffectView:(id)arg3;
-- (BOOL)_needsUpdateForOption:(id)arg1;
-- (BOOL)_needsUpdateForTransitionFromTraitCollection:(id)arg1 toTraitCollection:(id)arg2;
-- (void)_updateEffectNode:(id)arg1 forTraitCollection:(id)arg2;
+- (void).cxx_destruct;
+- (BOOL)_needsUpdateForTransitionFromEnvironment:(id)arg1 toEnvironment:(id)arg2 usage:(long long)arg3;
+- (void)_updateEffectDescriptor:(id)arg1 forEnvironment:(id)arg2 usage:(long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

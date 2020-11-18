@@ -13,13 +13,11 @@
 __attribute__((visibility("hidden")))
 @interface UIInterfaceActionVisualStyleViewState : NSObject <NSCopying>
 {
-    BOOL _isDark;
     UITraitCollection *_traitCollection;
     UIScreen *_screen;
     UIColor *_tintColor;
 }
 
-@property (readonly, nonatomic) BOOL isDark; // @synthesize isDark=_isDark;
 @property (readonly, nonatomic) UIScreen *screen; // @synthesize screen=_screen;
 @property (readonly, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property (readonly, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;

@@ -6,16 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, UIFont;
+@class NSArray, NSString, UIFont, UISwitch;
 
 __attribute__((visibility("hidden")))
 @interface UIInputSwitcherItem : NSObject
 {
+    BOOL _usesDeviceLanguage;
     NSString *_identifier;
     NSString *_localizedTitle;
     NSString *_localizedSubtitle;
     UIFont *_titleFont;
     UIFont *_subtitleFont;
+    UISwitch *_switchControl;
+    CDUnknownBlockType _switchIsOnBlock;
+    CDUnknownBlockType _switchToggleBlock;
     long long _selectedSegmentIndex;
     NSArray *_segmentTitles;
     NSArray *_segmentImages;
@@ -31,7 +35,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *segmentTitles; // @synthesize segmentTitles=_segmentTitles;
 @property (nonatomic) long long selectedSegmentIndex; // @synthesize selectedSegmentIndex=_selectedSegmentIndex;
 @property (strong, nonatomic) UIFont *subtitleFont; // @synthesize subtitleFont=_subtitleFont;
+@property (strong, nonatomic) UISwitch *switchControl; // @synthesize switchControl=_switchControl;
+@property (copy, nonatomic) CDUnknownBlockType switchIsOnBlock; // @synthesize switchIsOnBlock=_switchIsOnBlock;
+@property (copy, nonatomic) CDUnknownBlockType switchToggleBlock; // @synthesize switchToggleBlock=_switchToggleBlock;
 @property (strong, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
+@property (nonatomic) BOOL usesDeviceLanguage; // @synthesize usesDeviceLanguage=_usesDeviceLanguage;
 
 + (id)switcherItemWithIdentifier:(id)arg1;
 - (void)dealloc;

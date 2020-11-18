@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)afPreferencesChanged:(id)arg1;
 - (BOOL)dictationIsEnabled;
+- (id)dictationSLSEnabledLanguages;
 - (BOOL)ignoreServerManualEndpointingThreshold;
 - (id)initSingleton;
 - (id)languageCode;

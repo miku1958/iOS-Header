@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class CAContext, NSArray, NSMutableArray, UIScreen, _UIDruidSourceWarmUpConnection;
+@class CAContext, NSArray, NSMutableArray, UIScreen;
 
 __attribute__((visibility("hidden")))
 @interface _UIDragManager : NSObject
 {
-    _UIDruidSourceWarmUpConnection *_warmUpConnection;
     CAContext *_dragImageContext;
     long long _pendingSessionRequests;
     NSMutableArray *_pendingSessionRequestsCompletionBlocks;
@@ -25,9 +24,10 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSArray *dragSessionSources; // @synthesize dragSessionSources=_dragSessionSources;
 @property (readonly, weak, nonatomic) UIScreen *screen; // @synthesize screen=_screen;
 
++ (void)initializeDraggingSystem;
 - (void).cxx_destruct;
 - (void)_willAddDeactivationReason:(id)arg1;
-- (id)beginDragWithItems:(id)arg1 dataOwner:(long long)arg2 touches:(id)arg3 orInitialCentroid:(struct CGPoint)arg4 requiredContextIds:(id)arg5 shouldPerformHitTesting:(BOOL)arg6 sourceView:(id)arg7 accessibilityEndpoint:(id)arg8;
+- (id)beginDragWithSessionConfiguration:(id)arg1;
 - (void)deleteSlots:(id)arg1;
 - (id)dragDestinationWithEvent:(id)arg1;
 - (BOOL)hasPendingSessionRequests;
@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (void)sessionSourceDidEnd:(id)arg1;
 - (id)sessionSourceWithIdentifier:(unsigned int)arg1;
 - (unsigned int)uploadImage:(struct CGImage *)arg1;
-- (void)warmUpDruid;
 
 @end
 

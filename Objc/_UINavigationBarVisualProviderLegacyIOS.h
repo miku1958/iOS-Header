@@ -9,13 +9,14 @@
 #import <UIKitCore/_UIBasicAnimationFactory-Protocol.h>
 #import <UIKitCore/_UINavigationBarGestureHandlerDelegate-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSMutableArray, NSString, UIFocusContainerGuide, UIImageView, UILayoutGuide, UIView, _UIBarBackground, _UINavBarPrompt, _UINavigationBarGestureHandler, _UINavigationBarLegacyContentView;
+@class NSArray, NSLayoutConstraint, NSMutableArray, NSString, UIFocusContainerGuide, UIImageView, UILayoutGuide, UIView, _UIBarBackground, _UIBarBackgroundLayoutLegacy, _UINavBarPrompt, _UINavigationBarGestureHandler, _UINavigationBarLegacyContentView;
 @protocol UIViewControllerTransitionCoordinator;
 
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarVisualProviderLegacyIOS : _UINavigationBarVisualProvider <_UIBasicAnimationFactory, _UINavigationBarGestureHandlerDelegate>
 {
     _UIBarBackground *_backgroundView;
+    _UIBarBackgroundLayoutLegacy *_backgroundViewLayout;
     UIView *_customBackgroundView;
     UIView *_currentCanvasView;
     UIView *_titleView;
@@ -70,7 +71,6 @@ __attribute__((visibility("hidden")))
 - (void)_shim_30244716;
 - (BOOL)_shim_34415965;
 - (id)_shim_backIndicatorView;
-- (id)_shim_backdropGroupName;
 - (long long)_shim_backdropStyle;
 - (double)_shim_backgroundHeight;
 - (id)_shim_compatibilityBackgroundView;
@@ -82,7 +82,6 @@ __attribute__((visibility("hidden")))
 - (void)_shim_popForCarplayPressAtFakePoint:(struct CGPoint)arg1;
 - (void)_shim_pressBackIndicator:(BOOL)arg1 initialPress:(BOOL)arg2;
 - (id)_shim_promptText;
-- (void)_shim_setBackdropGroupName:(id)arg1;
 - (void)_shim_setCustomBackgroundView:(id)arg1;
 - (void)_shim_setDisableBlurTinting:(BOOL)arg1;
 - (void)_shim_setPromptText:(id)arg1 animated:(BOOL)arg2;
@@ -138,6 +137,7 @@ __attribute__((visibility("hidden")))
 - (void)teardown;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateArchivedSubviews:(id)arg1;
+- (void)updateBackgroundGroupName;
 - (void)updateTopNavigationItemAnimated:(BOOL)arg1;
 - (void)updateTopNavigationItemTitleView;
 

@@ -8,6 +8,7 @@
 
 #import <UIKitCore/NSSecureCoding-Protocol.h>
 
+@class NSArray;
 @protocol UIInputViewSetPlacementDelegate;
 
 __attribute__((visibility("hidden")))
@@ -16,31 +17,40 @@ __attribute__((visibility("hidden")))
     BOOL _dirty;
     id<UIInputViewSetPlacementDelegate> delegate;
     double _extendedHeight;
+    NSArray *_subPlacements;
 }
 
+@property (readonly, nonatomic) double alpha;
 @property (nonatomic) id<UIInputViewSetPlacementDelegate> delegate; // @synthesize delegate;
 @property (nonatomic) double extendedHeight; // @synthesize extendedHeight=_extendedHeight;
+@property (readonly, nonatomic) BOOL isFloating;
 @property (readonly, nonatomic) BOOL isInteractive;
 @property (readonly, nonatomic) BOOL isUndocked;
 @property (readonly, nonatomic) BOOL showsInputViews;
 @property (readonly, nonatomic) BOOL showsKeyboard;
+@property (strong, nonatomic) NSArray *subPlacements; // @synthesize subPlacements=_subPlacements;
 
 + (id)encodablePlacementsForXPC;
 + (id)placement;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (BOOL)accessoryViewWillAppear;
-- (double)alpha;
+- (struct CGRect)adjustBoundsForNotificationsWithOwner:(id)arg1;
 - (Class)applicatorClassForKeyboard:(BOOL)arg1;
 - (id)applicatorInfoForOwner:(id)arg1;
 - (void)checkSizeForOwner:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)expiringPlacement;
 - (id)horizontalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
+- (unsigned long long)indexForPurpose:(unsigned long long)arg1;
 - (id)initWithCoder:(id)arg1;
+- (double)inputAssistantViewHeightForInputViewSet:(id)arg1;
 - (BOOL)inputViewWillAppear;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)notificationsForTransitionToPlacement:(id)arg1;
 - (struct CGRect)remoteIntrinsicContentSizeForInputViewInSet:(id)arg1 includingIAV:(BOOL)arg2;
 - (void)setDirty;
+- (struct CGAffineTransform)transform;
 - (id)verticalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 - (id)widthConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 

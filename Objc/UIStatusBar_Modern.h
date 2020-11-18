@@ -15,33 +15,28 @@
 
 @property (strong, nonatomic) _UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
 
-+ (long long)_defaultStyleForRequestedStyle:(long long)arg1 styleOverrides:(int)arg2 simulateLegacyAppearance:(BOOL)arg3 activeStyleOverride:(int *)arg4;
++ (long long)_defaultStyleForRequestedStyle:(long long)arg1 styleOverrides:(int)arg2 activeStyleOverride:(int *)arg3;
 + (double)_heightForStyle:(long long)arg1 orientation:(long long)arg2 forStatusBarFrame:(BOOL)arg3;
 + (Class)_implementationClass;
-+ (double)_viewControllerAdjustmentForOrientation:(long long)arg1;
 - (void).cxx_destruct;
-- (BOOL)_canShowInOrientation:(long long)arg1;
-- (id)_dataFromLegacyData:(const CDStruct_1916f467 *)arg1;
-- (id)_effectiveDataFromData:(id)arg1 activeOverride:(int)arg2;
+- (id)_dataFromLegacyData:(const CDStruct_0942cde0 *)arg1;
+- (id)_effectiveDataFromData:(id)arg1 activeOverride:(int)arg2 canUpdateBackgroundActivity:(BOOL)arg3;
 - (long long)_effectiveStyleFromStyle:(long long)arg1;
 - (int)_implicitStyleOverrideForStyle:(long long)arg1;
-- (id)_initWithFrame:(struct CGRect)arg1 showForegroundView:(BOOL)arg2 inProcessStateProvider:(id)arg3;
-- (void)_requestStyle:(long long)arg1 animationParameters:(id)arg2 forced:(BOOL)arg3;
-- (void)_requestStyle:(long long)arg1 legibilityStyle:(long long)arg2 foregroundColor:(id)arg3 animationParameters:(id)arg4 forced:(BOOL)arg5;
-- (void)_updateSemanticContentAttributeFromLegacyData:(const CDStruct_1916f467 *)arg1;
+- (id)_initWithFrame:(struct CGRect)arg1 showForegroundView:(BOOL)arg2 wantsServer:(BOOL)arg3 inProcessStateProvider:(id)arg4;
+- (void)_requestStyle:(long long)arg1 partStyles:(id)arg2 animationParameters:(id)arg3 forced:(BOOL)arg4;
+- (void)_requestStyle:(long long)arg1 partStyles:(id)arg2 legibilityStyle:(long long)arg3 foregroundColor:(id)arg4 animationParameters:(id)arg5 forced:(BOOL)arg6;
+- (void)_updateSemanticContentAttributeFromLegacyData:(const CDStruct_0942cde0 *)arg1;
 - (void)_updateWithData:(id)arg1 force:(BOOL)arg2;
 - (id)actionForPartWithIdentifier:(id)arg1;
 - (double)alphaForPartWithIdentifier:(id)arg1;
 - (long long)currentStyle;
 - (double)defaultDoubleHeight;
-- (double)defaultHeight;
 - (id)enabledPartIdentifiers;
 - (void)forceUpdate:(BOOL)arg1;
 - (void)forceUpdateData:(BOOL)arg1;
 - (struct CGRect)frameForPartWithIdentifier:(id)arg1;
-- (double)heightForOrientation:(long long)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (BOOL)isTranslucent;
 - (void)jiggleLockIcon;
 - (void)layoutSubviews;
 - (struct UIOffset)offsetForPartWithIdentifier:(id)arg1;
@@ -56,8 +51,10 @@
 - (void)setOffset:(struct UIOffset)arg1 forPartWithIdentifier:(id)arg2;
 - (void)setOrientation:(long long)arg1;
 - (void)setStyleRequest:(id)arg1 animationParameters:(id)arg2;
-- (void)statusBarServer:(id)arg1 didReceiveStatusBarData:(const CDStruct_1916f467 *)arg2 withActions:(int)arg3;
+- (void)statusBarServer:(id)arg1 didReceiveDoubleHeightStatusString:(id)arg2 forStyle:(long long)arg3;
+- (void)statusBarServer:(id)arg1 didReceiveStatusBarData:(const CDStruct_0942cde0 *)arg2 withActions:(int)arg3;
 - (void)statusBarServer:(id)arg1 didReceiveStyleOverrides:(int)arg2;
+- (void)statusBarStateProvider:(id)arg1 didPostStatusBarData:(const CDStruct_0942cde0 *)arg2 withActions:(int)arg3;
 
 @end
 

@@ -31,6 +31,7 @@
 @property (nonatomic) long long numberOfActiveBars; // @synthesize numberOfActiveBars=_numberOfActiveBars;
 @property (nonatomic) long long numberOfBars; // @synthesize numberOfBars=_numberOfBars;
 @property (readonly, nonatomic) long long overriddenVerticalAlignment;
+@property (readonly, nonatomic) BOOL prefersBaselineAlignment;
 @property (nonatomic) long long signalMode; // @synthesize signalMode=_signalMode;
 @property (nonatomic) BOOL smallSize; // @synthesize smallSize=_smallSize;
 @property (readonly) Class superclass;

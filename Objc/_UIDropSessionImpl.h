@@ -8,12 +8,13 @@
 
 #import <UIKitCore/UIDropSession-Protocol.h>
 #import <UIKitCore/_UIDragDropSessionInternal-Protocol.h>
+#import <UIKitCore/_UIDropSessionPrivate-Protocol.h>
 
 @class NSArray, NSProgress, NSString, _UIInternalDraggingSessionDestination;
 @protocol UIDragSession;
 
 __attribute__((visibility("hidden")))
-@interface _UIDropSessionImpl : NSObject <UIDropSession, _UIDragDropSessionInternal>
+@interface _UIDropSessionImpl : NSObject <UIDropSession, _UIDragDropSessionInternal, _UIDropSessionPrivate>
 {
     NSArray *_items;
     id<UIDragSession> _localDragSession;
@@ -38,13 +39,14 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_createItemsOfClass:(Class)arg1 synchronouslyIfPossible:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)_draggingSession;
+- (id)_internalSession;
 - (void)_itemsNeedUpdate:(id)arg1;
 - (BOOL)canLoadObjectsOfClass:(Class)arg1;
 - (BOOL)hasItemsConformingToTypeIdentifiers:(id)arg1;
 - (id)initWithSessionDestination:(id)arg1;
 - (id)loadObjectsOfClass:(Class)arg1 completion:(CDUnknownBlockType)arg2;
 - (struct CGPoint)locationInView:(id)arg1;
+- (void)requestVisibleItems:(CDUnknownBlockType)arg1;
 
 @end
 

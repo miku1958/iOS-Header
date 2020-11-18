@@ -27,7 +27,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, strong) UIView *draggableView;
 @property (readonly) unsigned long long hash;
 @property (readonly) struct CGPoint origin;
+@property (readonly) struct CGRect popoverFrame;
 @property (readonly) Class superclass;
+@property (readonly, strong) UIView *twoFingerDraggableView;
 
 + (id)applicatorForOwner:(id)arg1 withPlacement:(id)arg2;
 - (void).cxx_destruct;

@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long numberOfLines; // @synthesize numberOfLines=_numberOfLines;
 @property (readonly, nonatomic) long long overriddenVerticalAlignment;
+@property (readonly, nonatomic) BOOL prefersBaselineAlignment;
 @property (strong, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 @property (readonly, nonatomic) NSArray *stringViews;
 @property (readonly) Class superclass;

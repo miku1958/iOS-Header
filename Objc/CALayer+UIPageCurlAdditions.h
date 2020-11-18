@@ -6,7 +6,18 @@
 
 #import <QuartzCore/CALayer.h>
 
+@protocol _UIVectorTextLayoutRun;
+
 @interface CALayer (UIPageCurlAdditions)
+
+@property (readonly, nonatomic) CALayer *_labelLayerToClipDuringBoundsSizeAnimation;
+@property (strong, nonatomic, setter=_ui_setLayoutRun:) id<_UIVectorTextLayoutRun> _ui_layoutRun;
+
+- (void)_setLabelMasksToBoundsForAnimation:(BOOL)arg1;
+- (void)_ui_animateKeyPath:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3 usingSpringWithStiffnessFactor:(double)arg4 initialVelocity:(double)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)_ui_removeAnimationForKeyPath:(id)arg1;
+- (long long)compareTextEffectsOrdering:(id)arg1;
+- (void)setPerspectiveDistance:(double)arg1;
 - (BOOL)uiHasFilterWithName:(id)arg1;
 @end
 

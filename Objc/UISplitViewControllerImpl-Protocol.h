@@ -7,7 +7,7 @@
 #import <UIKitCore/NSObject-Protocol.h>
 
 @class NSArray, NSCoder, NSString, UIBarButtonItem, UIDimmingView, UIFocusAnimationCoordinator, UIFocusUpdateContext, UIPopoverController, UIPresentationController, UIResponder, UISplitViewController, UISplitViewControllerDisplayModeBarButtonItem, UITraitCollection, UIView, UIViewController;
-@protocol UIContentContainer, UISplitViewControllerDelegate, UIViewControllerTransitionCoordinator;
+@protocol UIContentContainer, UISplitViewControllerDelegate, UITraitEnvironment, UIViewControllerTransitionCoordinator;
 
 @protocol UISplitViewControllerImpl <NSObject>
 
@@ -16,13 +16,13 @@
 @property (weak, nonatomic) id<UISplitViewControllerDelegate> delegate;
 @property (nonatomic) float gutterWidth;
 @property (nonatomic) BOOL hidesMasterViewInPortrait;
-@property (nonatomic) float masterColumnWidth;
 @property (nonatomic) double maximumPrimaryColumnWidth;
 @property (nonatomic) double minimumPrimaryColumnWidth;
 @property (nonatomic) long long preferredDisplayMode;
 @property (nonatomic) double preferredPrimaryColumnWidthFraction;
 @property (nonatomic) BOOL prefersOverlayInRegularWidthPhone;
 @property (nonatomic) BOOL presentsWithGesture;
+@property (nonatomic) long long primaryBackgroundStyle;
 @property (nonatomic) long long primaryEdge;
 @property (nonatomic) BOOL usesDeviceOverlayPreferences;
 @property (nonatomic, getter=_usesExtraWidePrimaryColumn, setter=_setUsesExtraWidePrimaryColumn:) BOOL usesExtraWidePrimaryColumn;
@@ -57,11 +57,12 @@
 - (UIResponder *)_primaryContentResponder;
 - (UIDimmingView *)_primaryDimmingView;
 - (BOOL)_shouldPersistViewWhenCoding;
-- (BOOL)_shouldSynthesizeSupportedOrientations;
+- (UITraitCollection *)_traitCollectionForChildEnvironment:(id<UITraitEnvironment>)arg1;
 - (void)_updateChildContentMargins;
 - (void)_updateLayoutForStatusBarAndInterfaceOrientation;
 - (void)_willBeginSnapshotSession;
 - (void)_willShowCollapsedDetailViewController:(UIViewController *)arg1 inTargetController:(UIViewController *)arg2;
+- (UIViewController *)childViewControllerForStatusBarStyle;
 - (void)decodeRestorableStateWithCoder:(NSCoder *)arg1;
 - (UIViewController *)detailViewController;
 - (void)didRotateFromInterfaceOrientation:(long long)arg1;
@@ -75,8 +76,9 @@
 - (NSArray *)preferredFocusEnvironments;
 - (UIView *)preferredFocusedView;
 - (long long)preferredInterfaceOrientationForPresentation;
+- (long long)preferredLeadingStatusBarStyle;
+- (long long)preferredTrailingStatusBarStyle;
 - (double)primaryColumnWidth;
-- (void)purgeMemoryForReason:(int)arg1;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (BOOL)shouldUpdateFocusInContext:(UIFocusUpdateContext *)arg1;
 - (void)showDetailViewController:(UIViewController *)arg1 sender:(id)arg2;

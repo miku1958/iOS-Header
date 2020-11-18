@@ -12,13 +12,14 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)_notifyOnExplicitLayout;
-+ (BOOL)_retroactivelyRequiresConstraintBasedLayout;
 + (BOOL)_shouldHitTestInputViewFirst;
-- (int)_clipCornersOfView:(id)arg1;
++ (BOOL)requiresConstraintBasedLayout;
+- (unsigned long long)_clipCornersOfView:(id)arg1;
 - (void)_didChangeKeyplaneWithContext:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)layoutIfNeeded;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (int)textEffectsVisibilityLevel;
 
 @end
 

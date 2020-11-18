@@ -11,11 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface _UIMirrorNinePatchView : UIView
 {
-    UIImage *_image;
+    UIImage *_originalImage;
+    struct UIEdgeInsets _insets;
     UIImageView *_imageViews[4];
 }
 
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (void)_updateResizableImageAndViews;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setImage:(id)arg1 withResizableCornerSize:(struct CGSize)arg2;

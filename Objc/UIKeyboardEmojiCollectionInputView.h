@@ -8,12 +8,13 @@
 
 #import <UIKitCore/UICollectionViewDataSource-Protocol.h>
 #import <UIKitCore/UICollectionViewDelegate-Protocol.h>
+#import <UIKitCore/UIKeyboardMediaControllerDelegate-Protocol.h>
 
 @class NSIndexPath, NSString, UICollectionViewFlowLayout, UIKeyboardEmojiCategory, UIKeyboardEmojiCollectionView, UIKeyboardEmojiGraphicsTraits, UIResponder;
 @protocol UIKBEmojiHitTestResponder;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardEmojiCollectionInputView : UIKeyboardEmojiKeyView <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface UIKeyboardEmojiCollectionInputView : UIKeyboardEmojiKeyView <UIKeyboardMediaControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 {
     UIKeyboardEmojiCollectionView *_collectionView;
     UICollectionViewFlowLayout *_flowLayout;
@@ -22,6 +23,11 @@ __attribute__((visibility("hidden")))
     UIKeyboardEmojiGraphicsTraits *_emojiGraphicsTraits;
     BOOL _isDraggingInputView;
     unsigned long long _currentSection;
+    BOOL _inputDelegateCanSupportAnimoji;
+    BOOL _hasShownAnimojiFirstTimeExperience;
+    BOOL _shouldRetryFetchingAnimojiRecents;
+    BOOL _useWideAnimojiCell;
+    BOOL _hasShownAnimojiCell;
     CDUnknownBlockType _completionBlock;
     UIResponder<UIKBEmojiHitTestResponder> *_hitTestResponder;
 }
@@ -37,18 +43,23 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) NSIndexPath *tappedSkinToneEmoji; // @synthesize tappedSkinToneEmoji=_tappedSkinToneEmoji;
 
 + (BOOL)shouldHighlightEmoji:(id)arg1;
+- (double)_recentlyUsedMediaRoundedOffset:(double)arg1 recentlyUsedMediaCellWidth:(double)arg2;
 - (void)_setUserHasSelectedSkinToneEmoji:(BOOL)arg1;
 - (BOOL)_shouldReverseLayoutDirection;
+- (BOOL)_shouldShowRecentlyUsedMedia;
 - (BOOL)_userHasSelectedSkinToneEmoji;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumInteritemSpacingForSectionAtIndex:(long long)arg3;
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumLineSpacingForSectionAtIndex:(long long)arg3;
+- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
+- (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)dealloc;
 - (long long)didInputSubTree:(id)arg1;
 - (void)didMoveToWindow;
+- (void)didTearDownRecentsViewForKeyboardMediaController:(id)arg1;
 - (void)dimKeys:(id)arg1;
 - (id)emojiBaseFirstCharacterString:(id)arg1;
 - (id)emojiBaseString:(id)arg1;

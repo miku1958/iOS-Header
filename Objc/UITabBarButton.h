@@ -8,22 +8,19 @@
 
 #import <UIKitCore/UISpringLoadedInteractionSupporting-Protocol.h>
 
-@class NSMutableDictionary, NSString, UIColor, UIImage, UIImageView, UITabBar, UITabBarButtonLabel, UITabBarSwappableImageView, UIView, UIVisualEffectView, _UIBadgeView;
+@class NSArray, NSMutableDictionary, NSString, UIColor, UIImage, UIImageView, UITabBar, UITabBarButtonLabel, UITabBarSwappableImageView, UIVibrancyEffect, UIView, UIVisualEffectView, _UIBadgeView, _UITabBarItemData;
 
 __attribute__((visibility("hidden")))
 @interface UITabBarButton : UIControl <UISpringLoadedInteractionSupporting>
 {
     struct CGRect _hitRect;
-    UITabBarSwappableImageView *_info;
+    UITabBarSwappableImageView *_imageView;
     UIVisualEffectView *_vibrancyEffectView;
     UITabBarButtonLabel *_label;
     _UIBadgeView *_badge;
     UIImageView *_selectedIndicator;
-    BOOL _selected;
-    struct UIEdgeInsets _infoInsets;
-    struct UIEdgeInsets _infoLandscapeInsets;
-    struct UIOffset _selectedInfoOffset;
-    struct UIOffset _infoOffset;
+    struct UIEdgeInsets _imageInsets;
+    struct UIEdgeInsets _imageLandscapeInsets;
     UIImage *_customSelectedIndicatorImage;
     struct UIOffset _labelOffset;
     NSMutableDictionary *_buttonTintColorsForState;
@@ -31,23 +28,31 @@ __attribute__((visibility("hidden")))
     UIColor *_defaultUnselectedLabelTintColor;
     UIColor *_badgeColor;
     NSMutableDictionary *_badgeTextAttributesForState;
-    BOOL _horizontalLayout;
+    struct UIOffset _badgeOffset;
     UIView *_highContrastFocusIndicator;
+    BOOL _selected;
     BOOL _showsHighlightedState;
-    BOOL _centerAllContents;
+    UIView *_focusView;
     Class _appearanceGuideClass;
+    long long _layoutStyle;
+    _UITabBarItemData *_itemAppearanceData;
+    UIVibrancyEffect *_itemVibrantEffect;
     UITabBar *_tabBar;
+    NSArray *_carplayConstraints;
 }
 
 @property (strong, nonatomic, setter=_setAppearanceGuideClass:) Class _appearanceGuideClass; // @synthesize _appearanceGuideClass;
-@property (nonatomic, setter=_setCenterAllContents:) BOOL _centerAllContents; // @synthesize _centerAllContents;
 @property (readonly, nonatomic) UIColor *_defaultUnselectedLabelTintColor;
-@property (nonatomic, setter=_setHorizontalLayout:) BOOL _horizontalLayout; // @synthesize _horizontalLayout;
 @property (nonatomic, getter=_isSelected, setter=_setSelected:) BOOL _selected;
 @property (nonatomic, setter=_setShowsHighlightedState:) BOOL _showsHighlightedState; // @synthesize _showsHighlightedState;
+@property (strong, nonatomic) NSArray *carplayConstraints; // @synthesize carplayConstraints=_carplayConstraints;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) UIView *focusView; // @synthesize focusView=_focusView;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) _UITabBarItemData *itemAppearanceData; // @synthesize itemAppearanceData=_itemAppearanceData;
+@property (strong, nonatomic) UIVibrancyEffect *itemVibrantEffect; // @synthesize itemVibrantEffect=_itemVibrantEffect;
+@property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property (nonatomic, getter=isSpringLoaded) BOOL springLoaded;
 @property (readonly) Class superclass;
 @property (readonly, weak, nonatomic) UITabBar *tabBar; // @synthesize tabBar=_tabBar;
@@ -64,55 +69,68 @@ __attribute__((visibility("hidden")))
 - (void)_applyTabBarButtonAppearanceStorage:(id)arg1 withTaggedSelectors:(id)arg2;
 - (id)_buttonTintColorForState:(unsigned long long)arg1;
 - (id)_contentTintColorForState:(unsigned long long)arg1;
+- (long long)_currentItemState;
 - (struct CGRect)_defaultFocusRegionFrame;
+- (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(BOOL)arg3;
 - (long long)_focusTouchSensitivityStyle;
 - (struct CGSize)_horizontalLayout_sizeThatFits:(struct CGSize)arg1;
+- (id)_info;
+- (void)_ios_layoutSubviews;
+- (BOOL)_isEligibleForFocusInteraction;
 - (void)_positionBadge;
 - (void)_positionBadgeAfterChangesIfNecessary:(CDUnknownBlockType)arg1;
+- (void)_removeCarplayConstraints;
 - (struct CGRect)_responderSelectionRect;
 - (struct CGRect)_responderSelectionRectForWindow:(id)arg1;
 - (id)_selectedIndicatorImage;
 - (id)_selectedIndicatorView;
 - (void)_sendFocusAction;
 - (void)_setBadgeColor:(id)arg1;
+- (void)_setBadgeOffset:(struct UIOffset)arg1;
 - (void)_setBadgeTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_setBadgeValue:(id)arg1;
 - (void)_setButtonTintColor:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_setContentTintColor:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_setCustomSelectedIndicatorImage:(id)arg1;
-- (void)_setImage:(id)arg1 selected:(BOOL)arg2 offset:(struct UIOffset)arg3;
-- (void)_setInfoOffset:(struct UIOffset)arg1;
-- (void)_setLabelCompositingMode:(long long)arg1;
-- (void)_setLabelHidden:(BOOL)arg1;
-- (void)_setSelectedInfoOffset:(struct UIOffset)arg1;
 - (void)_setTabBarHitRect:(struct CGRect)arg1;
 - (void)_setTitlePositionAdjustment:(struct UIOffset)arg1;
 - (void)_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
+- (void)_setupCarplayConstraints;
+- (void)_setupSymbolConfigurationsForIdiom:(long long)arg1;
 - (void)_showSelectedIndicator:(BOOL)arg1 changeSelection:(BOOL)arg2;
 - (id)_tabBar;
 - (struct CGRect)_tabBarHitRect;
 - (struct UIOffset)_titlePositionAdjustment;
 - (void)_updateBadgeAppearanceAndLayoutNow:(BOOL)arg1;
-- (void)_updateInfoFrame;
 - (void)_updateSelectedIndicatorFrame;
 - (void)_updateSelectedIndicatorView;
 - (void)_updateToMatchCurrentState;
 - (void)_updateVibrancyEffectView;
+- (id)badgeBackgroundColorForState:(long long)arg1;
+- (struct UIOffset)badgePositionAdjustmentForState:(long long)arg1;
+- (id)badgeTextAttributesForState:(long long)arg1;
+- (struct UIOffset)badgeTitlePositionAdjustmentForState:(long long)arg1;
 - (BOOL)canBecomeFocused;
+- (id)defaultColorForState:(long long)arg1;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (id)iconColorForState:(long long)arg1;
+- (BOOL)iconShouldUseVibrancyForState:(long long)arg1;
 - (id)initWithImage:(id)arg1 landscapeImage:(id)arg2 selectedImage:(id)arg3 landscapeSelectedImage:(id)arg4 label:(id)arg5 withInsets:(struct UIEdgeInsets)arg6 landscapeInsets:(struct UIEdgeInsets)arg7 tabBar:(id)arg8;
 - (id)initWithImage:(id)arg1 selectedImage:(id)arg2 label:(id)arg3 withInsets:(struct UIEdgeInsets)arg4 tabBar:(id)arg5;
+- (BOOL)labelShouldUseVibrancyForState:(long long)arg1;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)setEnabled:(BOOL)arg1;
-- (void)setFrame:(struct CGRect)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setImage:(id)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
+- (void)set_info:(id)arg1;
 - (BOOL)shouldUpdateFocusInContext:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct UIOffset)titlePositionAdjustmentForState:(long long)arg1;
+- (id)titleTextAttributesForState:(long long)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

@@ -12,11 +12,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)actionsForDeallocationOfLabel:(id)arg1;
-- (void)actionsForInitializitionOfLabel:(id)arg1;
+- (void)actionsForInitializationOfLabel:(id)arg1;
 - (id)defaultFont;
 - (BOOL)shouldDelayStartMarquee;
 - (BOOL)shouldDisableUpdateTextColorOnTraitCollectionChangeForAttributedString:(id)arg1 attributes:(id)arg2;
-- (BOOL)supportsUserInterfaceStyle;
+- (BOOL)updatesTextColorOnUserInterfaceStyleChanges;
 
 @end
 

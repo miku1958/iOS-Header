@@ -18,17 +18,14 @@ __attribute__((visibility("hidden")))
 }
 
 @property (copy, nonatomic) NSString *prompt; // @synthesize prompt=_prompt;
+@property (readonly, nonatomic) double promptHeight;
 @property (copy, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 
 - (void).cxx_destruct;
-- (double)_promptHeight;
-- (void)_updateFontFromPreviousTraitCollection:(id)arg1;
 - (void)_updatePromptLabel;
-- (id)defaultFontDescriptor;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

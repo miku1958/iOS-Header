@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
 
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 
++ (void)_clearPinnedItemProvidersForPasteboardNamed:(id)arg1;
 + (id)_pasteboardNamed:(id)arg1 createIfNotFound:(BOOL)arg2;
 + (id)_pasteboardWithName:(id)arg1 create:(BOOL)arg2;
 + (id)_pasteboardWithUniqueName;
++ (void)_pinItemProviders:(id)arg1 forPasteboardNamed:(id)arg2 withExpirationDate:(id)arg3;
 + (id)generalPasteboard;
 + (id)pasteboardWithName:(id)arg1 create:(BOOL)arg2;
 + (id)pasteboardWithUniqueName;
@@ -26,11 +28,15 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)URL;
 - (id)URLs;
+- (long long)_changeCountIgnoringPinningActivity;
+- (void)_clearPinnedItemProviders;
 - (id)_initWithName:(id)arg1;
 - (id)_itemsCoercibleToClass:(Class)arg1;
 - (BOOL)_pasteboardCacheQueue_isPersistent;
 - (BOOL)_pasteboardCacheQueue_saveItemCollection:(id)arg1 currentNotificationState:(unsigned long long)arg2 outNewNotificationState:(unsigned long long *)arg3;
 - (BOOL)_pasteboardCacheQueue_setPersistent:(BOOL)arg1 currentNotificationState:(unsigned long long)arg2 outNewNotificationState:(unsigned long long *)arg3;
+- (void)_pinItemCollection:(id)arg1;
+- (void)_pinItemProviders:(id)arg1 expirationDate:(id)arg2;
 - (void)_saveItemCollection:(id)arg1;
 - (void)_sendPasteboardTypesChangedNotificationOldTypes:(id)arg1 newTypes:(id)arg2;
 - (void)_setItemsAndSave:(id)arg1 options:(id)arg2;

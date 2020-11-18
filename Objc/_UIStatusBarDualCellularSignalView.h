@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long iconSize; // @synthesize iconSize=_iconSize;
 @property (readonly, nonatomic) long long overriddenVerticalAlignment;
+@property (readonly, nonatomic) BOOL prefersBaselineAlignment;
 @property (readonly) Class superclass;
 @property (readonly) _UIStatusBarCellularSignalView *topSignalView; // @synthesize topSignalView=_topSignalView;
 @property (strong, nonatomic) NSLayoutConstraint *verticalInterspaceConstraint; // @synthesize verticalInterspaceConstraint=_verticalInterspaceConstraint;

@@ -6,34 +6,44 @@
 
 #import <objc/NSObject.h>
 
-@class UITabBar;
+@class NSString, UITabBar;
+@protocol _UIBarAppearanceChangeObserver;
 
 __attribute__((visibility("hidden")))
 @interface _UITabBarVisualProvider : NSObject
 {
     UITabBar *_tabBar;
-    BOOL _usesLegacyUI;
+    NSString *_backdropGroupName;
 }
 
+@property (readonly, nonatomic) id<_UIBarAppearanceChangeObserver> appearanceObserver;
+@property (copy, nonatomic) NSString *backdropGroupName; // @synthesize backdropGroupName=_backdropGroupName;
+@property (nonatomic) double minimumWidthForHorizontalLayout;
 @property (readonly, nonatomic) UITabBar *tabBar; // @synthesize tabBar=_tabBar;
+@property (nonatomic) BOOL useModernAppearance;
 
+- (void).cxx_destruct;
 - (id)_shim_accessoryView;
-- (id)_shim_backdropGroupName;
 - (id)_shim_compatibilityBackgroundView;
+- (double)_shim_heightForCustomizingItems;
 - (void)_shim_layoutItemsOnly;
 - (void)_shim_setAccessoryView:(id)arg1;
-- (void)_shim_setBackdropGroupName:(id)arg1;
 - (void)_shim_setCustomBackgroundView:(id)arg1;
+- (void)_shim_setShadowAlpha:(double)arg1;
+- (void)_shim_setShadowHidden:(BOOL)arg1;
+- (double)_shim_shadowAlpha;
+- (BOOL)_shim_shadowHidden;
 - (id)_shim_shadowView;
-- (void)_shim_updateBackdropView;
 - (void)_shim_updateFocusHighlightVisibility;
 - (void)_shim_updateTabBarItemView:(id)arg1;
 - (void)changeAppearance;
 - (void)changeItemsTo:(id)arg1 removingItems:(id)arg2 selectedItem:(id)arg3 animate:(BOOL)arg4;
+- (void)changeItemsTo:(id)arg1 removingItems:(id)arg2 selectedItem:(id)arg3 oldSelectedItem:(id)arg4 animate:(BOOL)arg5;
 - (void)changeLayout;
 - (void)changeSelectedItem:(id)arg1 fromItem:(id)arg2;
 - (id)createViewForTabBarItem:(id)arg1;
 - (double)defaultAnimationDuration;
+- (id)defaultTintColor;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)exchangeItem:(id)arg1 withItem:(id)arg2;
 - (id)initWithTabBar:(id)arg1;
@@ -46,7 +56,9 @@ __attribute__((visibility("hidden")))
 - (void)tabBarSizeChanged:(struct CGSize)arg1;
 - (void)teardown;
 - (void)traitCollectionDidChange:(id)arg1;
+- (id)traitCollectionForChild:(id)arg1 baseTraitCollection:(id)arg2;
 - (void)updateArchivedSubviews:(id)arg1;
+- (void)updateBackgroundGroupName;
 - (void)updateConstraints;
 - (BOOL)wantsFocus;
 

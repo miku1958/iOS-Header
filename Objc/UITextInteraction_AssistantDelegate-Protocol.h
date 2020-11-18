@@ -13,10 +13,12 @@
 @protocol UITextInteraction_AssistantDelegate <UITextAutoscrolling, NSObject>
 
 @property (nonatomic) BOOL autoscrolled;
+@property (nonatomic) BOOL expectingCommit;
 @property (nonatomic) struct CGPoint loupeGestureEndPoint;
 @property (nonatomic) BOOL needsGestureUpdate;
 @property (readonly, nonatomic) BOOL willHandoffLoupeMagnifier;
 
+- (void)beginFloatingCursorAtPoint:(struct CGPoint)arg1;
 - (void)canBeginDragCursor:(UIDragRecognizer *)arg1;
 - (void)checkEditabilityAndSetFirstResponderIfNecessary;
 - (void)clearStashedSelection;
@@ -25,8 +27,10 @@
 - (BOOL)containerIsTextField;
 - (void)didEndSelectionInteraction;
 - (BOOL)didUseStashedSelection;
+- (void)endFloatingCursor;
 - (void)extendSelectionToLoupeOrSetToPoint:(struct CGPoint)arg1;
 - (void)extendSelectionToPoint:(struct CGPoint)arg1;
+- (void)lollipopGestureWithState:(long long)arg1 location:(struct CGPoint)arg2 locationOfFirstTouch:(struct CGPoint)arg3;
 - (void)notifyKeyboardSelectionChanged;
 - (UITextRange *)rangeForTextReplacement:(UITextRange *)arg1;
 - (void)resetWillHandoffLoupeMagnifier;
@@ -40,10 +44,12 @@
 - (void)setSelectionWithPoint:(struct CGPoint)arg1;
 - (void)setSuppressSystemUI:(BOOL)arg1;
 - (void)stashCurrentSelection;
+- (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
 - (void)updateWithMagnifierTerminalPoint:(BOOL)arg1;
 - (BOOL)useGesturesForEditableContent;
 - (UIView *)view;
 - (BOOL)viewCouldBecomeEditable:(UIResponder<UITextInput> *)arg1;
+- (void)willBeginFloatingCursor:(BOOL)arg1;
 - (void)willBeginSelectionInteraction;
 
 @optional

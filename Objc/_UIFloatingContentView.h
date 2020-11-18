@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIView.h>
 
-@class NSMutableArray, UIImage, _UIFloatingContentCornerRadiusAnimatingScreenScaleInheritingView, _UIFloatingContentCornerRadiusAnimatingView, _UIFloatingContentTransformView, _UIFocusAnimationConfiguration;
+@class NSMutableArray, NSString, UIImage, _UIFloatingContentCornerRadiusAnimatingScreenScaleInheritingView, _UIFloatingContentCornerRadiusAnimatingView, _UIFloatingContentTransformView, _UIFocusAnimationConfiguration;
 @protocol _UIFloatingContentViewDelegate;
 
 @interface _UIFloatingContentView : UIView
@@ -47,6 +47,7 @@
     UIImage *_shadowImage;
     unsigned long long _controlState;
     long long _highlightStyle;
+    NSString *_cornerCurve;
     CDUnknownBlockType _focusAnimationConfigurationHandler;
     struct CGPoint _focusScaleAnchorPoint;
     struct CGSize _shadowSize;
@@ -63,7 +64,9 @@
 @property (nonatomic) BOOL clipsContentToBounds;
 @property (nonatomic, getter=isContentOpaque) BOOL contentOpaque; // @synthesize contentOpaque=_contentOpaque;
 @property (readonly, nonatomic) UIView *contentView;
+@property (nonatomic, getter=isContinuousCornerEnabled) BOOL continuousCornerEnabled;
 @property (nonatomic) unsigned long long controlState; // @synthesize controlState=_controlState;
+@property (nonatomic) NSString *cornerCurve; // @synthesize cornerCurve=_cornerCurve;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (weak, nonatomic) id<_UIFloatingContentViewDelegate> floatingContentDelegate;
 @property (copy, nonatomic) _UIFocusAnimationConfiguration *focusAnimationConfiguration; // @synthesize focusAnimationConfiguration=_focusAnimationConfiguration;
@@ -109,6 +112,7 @@
 - (BOOL)_shouldApplyCornerRadiusForPrimaryState:(unsigned long long)arg1;
 - (void)_uninstallContentMotionEffects;
 - (void)_updateContainerLayerQualityForPrimaryState:(unsigned long long)arg1;
+- (void)_updateCornerRadiusLayers;
 - (void)_updateHighContrastFocusIndicatorForPrimaryState:(unsigned long long)arg1;
 - (void)_updateHighContrastFocusIndicatorView;
 - (void)_updateHighlightViewForPrimaryState:(unsigned long long)arg1;

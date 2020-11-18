@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasEstablishedAlignmentValues; // @synthesize hasEstablishedAlignmentValues=_hasEstablishedAlignmentValues;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isInAlignmentLayoutUpdateSection) BOOL inAlignmentLayoutUpdateSection; // @synthesize inAlignmentLayoutUpdateSection=_inAlignmentLayoutUpdateSection;
+@property (readonly, nonatomic) NSSet *invalidBaselineConstraints;
 @property (nonatomic) BOOL layoutFillsCanvas;
 @property (nonatomic) BOOL layoutUsesCanvasMarginsWhenFilling;
 @property (readonly) Class superclass;

@@ -23,6 +23,7 @@
 - (id)initWithDestinationContexts:(id)arg1 forResponseOnQueue:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (id)initWithInfo:(id)arg1 timeout:(double)arg2 forResponseOnQueue:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
+- (id)sceneIdentifierForDestination:(unsigned long long)arg1;
 - (BOOL)sendResponseForDestination:(unsigned long long)arg1;
 - (id)titleForDestination:(unsigned long long)arg1;
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;

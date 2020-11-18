@@ -18,12 +18,15 @@ __attribute__((visibility("hidden")))
     _UIRemoteViewController *_remoteViewController;
     id _viewControllerOperatorProxy;
     id _textEffectsOperatorProxy;
-    BOOL _hasIntrinsicContentSize;
     struct CGSize _intrinsicContentSize;
     struct CGRect _formerTextEffectsContentFrame;
-    BOOL _observingBoundingPathChanges;
-    BOOL _needsRemoteViewServiceBoundingPathUpdate;
-    BOOL _remoteViewServiceBoundingPathUpdateScheduled;
+    BOOL _observingTextEffectsWindowRotation;
+    struct {
+        unsigned int hasIntrinsicContentSize:1;
+        unsigned int observingBoundingPathChanges:1;
+        unsigned int needsRemoteViewServiceBoundingPathUpdate:1;
+        unsigned int remoteViewServiceBoundingPathUpdateScheduled:1;
+    } _sizeTrackingViewFlags;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -47,13 +50,17 @@ __attribute__((visibility("hidden")))
 - (BOOL)_needsTextEffectsUpdateToFrame:(struct CGRect)arg1;
 - (void)_scrollToTopFromTouchAtScreenLocation:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)_setNeedsRemoteViewServiceBoundingPathUpdate;
+- (void)_textEffectsWindowDidRotate:(id)arg1;
 - (void)_updateSceneGeometries:(id)arg1 forOrientation:(long long)arg2;
 - (void)_updateTextEffectsGeometries:(struct CGRect)arg1;
+- (void)_updateTextEffectsGeometries:(struct CGRect)arg1 textEffectsWindow:(id)arg2;
 - (void)_updateTextEffectsGeometriesImmediately;
 - (void)_willMoveToWindow:(id)arg1;
 - (BOOL)canBecomeFocused;
 - (void)dealloc;
 - (BOOL)isScrollEnabled;
+- (void)setBounds:(struct CGRect)arg1;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)updateIntrinsicContentSize:(struct CGSize)arg1;
 
 @end

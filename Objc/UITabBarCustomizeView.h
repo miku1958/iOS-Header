@@ -46,10 +46,12 @@ __attribute__((visibility("hidden")))
 - (void)tabBarTouchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)tabBarTouchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)tintTabBarItemsForEdit:(BOOL)arg1;
+- (id)titleLabelFont;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateProxiesSelection;
 
 @end

@@ -9,12 +9,13 @@
 #import <UIKitCore/UITableViewDataSource-Protocol.h>
 #import <UIKitCore/UITableViewDelegate-Protocol.h>
 
-@class NSString, UITableView;
+@class NSArray, NSString, UITableView;
 
 __attribute__((visibility("hidden")))
 @interface UIDebuggingInformationVCDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     UITableView *_tableView;
+    NSArray *_data;
     UIViewController *_inspectedVC;
 }
 
@@ -23,9 +24,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) UIViewController *inspectedVC; // @synthesize inspectedVC=_inspectedVC;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 
 - (void).cxx_destruct;
+- (void)_updateDataAndReload:(BOOL)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)inspectVC:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

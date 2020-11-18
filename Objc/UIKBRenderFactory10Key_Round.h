@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)defaultKeyShadowColorName;
 - (unsigned long long)edgesWithInsetsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (long long)lightHighQualityEnabledBlendForm;
-- (int)roundCornersForKey:(id)arg1 onKeyplane:(id)arg2;
+- (unsigned long long)roundCornersForKey:(id)arg1 onKeyplane:(id)arg2;
 - (id)shiftLockControlKeyTraits;
 - (id)shiftedControlKeyTraits;
 - (BOOL)shouldUseRoundCornerForKey:(id)arg1;

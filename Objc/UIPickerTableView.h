@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
     NSMutableIndexSet *_checkedRows;
     double _lastClickedOffset;
     long long _lastSelectedRow;
-    BOOL _usesModernStyle;
     UIColor *_textColor;
     struct CGRect _visibleRect;
     NSMutableArray *_referencingCells;
@@ -37,7 +36,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic, getter=_textColor, setter=_setTextColor:) UIColor *_textColor;
-@property (getter=_usesModernStyle, setter=_setUsesModernStyle:) BOOL _usesModernStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL generatorActivated; // @synthesize generatorActivated=_generatorActivated;
@@ -48,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setSelectionBarRow:) long long selectionBarRow; // @synthesize selectionBarRow=_selectionBarRow;
 @property (readonly) Class superclass;
 
++ (BOOL)_isInternalTableView;
 - (void).cxx_destruct;
 - (id)_anyDateLabel;
 - (BOOL)_beginTrackingWithEvent:(id)arg1;

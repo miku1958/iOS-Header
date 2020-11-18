@@ -9,12 +9,13 @@
 #import <UIKitCore/UIGestureRecognizerDelegatePrivate-Protocol.h>
 #import <UIKitCore/_UIClickInteractionDriving-Protocol.h>
 
-@class NSString, UITouchForceGestureRecognizer, UIView, _UIStateMachine;
+@class NSString, UIGestureRecognizer, UITouchForceGestureRecognizer, UIView, _UIStateMachine;
 @protocol _UIClickInteractionDriverDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UIForceClickInteractionDriver : NSObject <UIGestureRecognizerDelegatePrivate, _UIClickInteractionDriving>
 {
+    BOOL _cancelsTouchesInView;
     id<_UIClickInteractionDriverDelegate> _delegate;
     UIView *_view;
     _UIStateMachine *_stateMachine;
@@ -22,19 +23,29 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) double allowableMovement;
+@property (nonatomic) BOOL cancelsTouchesInView; // @synthesize cancelsTouchesInView=_cancelsTouchesInView;
+@property (readonly, nonatomic) BOOL clicksUpAutomaticallyAfterTimeout;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_UIClickInteractionDriverDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UITouchForceGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isCurrentlyAcceleratedByForce;
+@property (readonly, nonatomic) double maximumEffectProgress;
+@property (readonly, nonatomic) UIGestureRecognizer *primaryGestureRecognizer;
 @property (strong, nonatomic) _UIStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) double touchDuration;
 @property (readonly, nonatomic) double touchForce;
 @property (weak, nonatomic) UIView *view; // @synthesize view=_view;
 
++ (BOOL)prefersCancelsTouchesInView;
++ (BOOL)requiresForceCapability;
 - (void).cxx_destruct;
+- (void)_gestureRecognizerFailed:(id)arg1;
 - (void)_handleGestureRecognizer:(id)arg1;
 - (void)_prepareStateMachine;
+- (BOOL)allowsRepeatedClicks;
 - (void)cancelInteraction;
 - (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (id)init;

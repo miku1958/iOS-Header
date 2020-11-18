@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
+- (BOOL)_dragInteraction:(id)arg1 sessionSupportsSystemDrag:(id)arg2;
 - (BOOL)_dragInteractionDynamicallyUpdatesPrefersFullSizePreviews:(id)arg1;
 - (void)addTentativeRowAtIndexPath:(id)arg1;
 - (void)beginDragForTentativeRows;

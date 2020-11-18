@@ -32,6 +32,7 @@
 @property (strong, nonatomic) CALayer *mainLayer; // @synthesize mainLayer=_mainLayer;
 @property (readonly, nonatomic) long long overriddenVerticalAlignment;
 @property (strong, nonatomic) CALayer *pointLayer; // @synthesize pointLayer=_pointLayer;
+@property (readonly, nonatomic) BOOL prefersBaselineAlignment;
 @property (readonly) Class superclass;
 @property (nonatomic) double thickness; // @synthesize thickness=_thickness;
 @property (readonly, nonatomic) BOOL wantsCrossfade;

@@ -20,13 +20,13 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long searchBarStyle; // @synthesize searchBarStyle=_searchBarStyle;
 @property (nonatomic) BOOL showingTouch; // @synthesize showingTouch=_showingTouch;
 
+- (id)_automaticFillColorForActive:(BOOL)arg1;
 - (id)_fillColor:(BOOL)arg1;
 - (id)_strokeColor:(BOOL)arg1;
 - (id)_ultralightFillColorForOverlayFilter:(BOOL)arg1 active:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 active:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 active:(BOOL)arg2 updateView:(BOOL)arg3;
 - (void)setCornerRadius:(double)arg1;
-- (void)updateView;
 
 @end
 

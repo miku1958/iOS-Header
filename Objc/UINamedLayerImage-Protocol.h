@@ -7,10 +7,12 @@
 #import <UIKitCore/NSObject-Protocol.h>
 
 @class NSString, UIImage;
+@protocol UINamedLayerContentProvider;
 
 @protocol UINamedLayerImage <NSObject>
 
 @property (readonly, nonatomic) int blendMode;
+@property (readonly, nonatomic) id<UINamedLayerContentProvider> contentProvider;
 @property (nonatomic) BOOL fixedFrame;
 @property (readonly, nonatomic) struct CGRect frame;
 @property (readonly, nonatomic) NSString *name;

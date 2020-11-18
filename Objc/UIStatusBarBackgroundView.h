@@ -6,13 +6,12 @@
 
 #import <UIKitCore/UIView.h>
 
-@class UIImageView, UIStatusBarCorners, UIStatusBarStyleAttributes;
+@class UIImageView, UIStatusBarStyleAttributes;
 
 __attribute__((visibility("hidden")))
 @interface UIStatusBarBackgroundView : UIView
 {
     UIStatusBarStyleAttributes *_style;
-    UIStatusBarCorners *_topCorners;
     UIImageView *_glowView;
     BOOL _glowEnabled;
     BOOL _suppressGlow;
@@ -26,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (void)_startGlowAnimationWaitForNextCycle:(BOOL)arg1;
 - (void)_stopGlowAnimation;
 - (BOOL)_styleCanGlow;
-- (BOOL)_topCornersAreRounded;
 - (id)initWithFrame:(struct CGRect)arg1 style:(id)arg2 backgroundColor:(id)arg3;
 - (void)setGlowAnimationEnabled:(BOOL)arg1;
 - (void)setSuppressesGlow:(BOOL)arg1;

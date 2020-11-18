@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (double)_bottomMarginForTextFields;
 - (void)_returnKeyPressedInTextField:(id)arg1;
 - (void)_updatePreferredContentSize;
-- (id)addTextFieldWithPlaceholder:(id)arg1 isSecure:(BOOL)arg2;
+- (id)addTextFieldWithPlaceholder:(id)arg1;
 - (BOOL)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)removeAllTextFields;
 - (BOOL)resignFirstResponder;
 - (id)textFieldAtIndex:(long long)arg1;
+- (id)textFieldContainerViews;
 - (void)updateTextFieldStyle;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

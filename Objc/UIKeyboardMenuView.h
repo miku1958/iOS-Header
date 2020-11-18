@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_delayedFade;
-- (int)_internationalKeyRoundedCornerInLayout:(id)arg1;
+- (unsigned long long)_internationalKeyRoundedCornerInLayout:(id)arg1;
 - (void)applicationWillSuspend:(id)arg1;
 - (void)autoscrollTimerFired:(id)arg1;
 - (BOOL)centerPopUpOverKey;
@@ -66,11 +66,11 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (unsigned long long)defaultSelectedIndex;
 - (void)didSelectItemAtIndex:(unsigned long long)arg1;
+- (void)didShow;
 - (id)dimmingView;
 - (void)dimmingViewWasTapped:(id)arg1;
 - (void)endScrolling:(id)arg1;
 - (void)fade;
-- (void)fadeAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)fadeWithDelay:(double)arg1;
 - (void)fadeWithDelay:(double)arg1 forSelectionAtIndex:(unsigned long long)arg2;
 - (id)font;
@@ -83,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (void)insertSelExtraView;
 - (struct CGRect)interactiveBounds;
 - (BOOL)isVisible;
+- (BOOL)launchedFromKeyboard;
 - (id)localizedTitleForItemAtIndex:(unsigned long long)arg1;
 - (id)maskForShadowViewBlurredBackground;
 - (double)minYOfLastTableCellForSelectionExtraView;
@@ -91,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)popupRect;
 - (struct CGSize)preferredSize;
 - (void)removeFromSuperview;
+- (void)returnToKeyboardIfNeeded;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)selectItemAtPoint:(struct CGPoint)arg1;
 - (void)setFrame:(struct CGRect)arg1;
@@ -127,6 +129,7 @@ __attribute__((visibility("hidden")))
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)updateSelectionWithPoint:(struct CGPoint)arg1;
+- (BOOL)usesDeviceLanguageForItemAtIndex:(unsigned long long)arg1;
 - (BOOL)usesDimmingView;
 - (BOOL)usesShadowView;
 - (void)willFade;

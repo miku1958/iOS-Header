@@ -7,6 +7,6 @@
 @protocol _DUIClientSessionDestination;
 
 @protocol _DUIServerDestination
-- (oneway void)sawFirstDragEventWithSessionID:(unsigned int)arg1 destination:(id<_DUIClientSessionDestination>)arg2 reply:(void (^)(id<_DUIServerSessionDestination>, PBItemCollection *, NSArray *, unsigned long long, BOOL))arg3;
+- (oneway void)sawFirstDragEventWithSessionID:(unsigned int)arg1 systemPolicy:(BOOL)arg2 destination:(id<_DUIClientSessionDestination>)arg3 reply:(void (^)(id<_DUIServerSessionDestination>, PBItemCollection *, unsigned long long, BOOL))arg4;
 @end
 

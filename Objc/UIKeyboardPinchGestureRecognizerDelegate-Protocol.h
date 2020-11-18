@@ -8,7 +8,7 @@
 
 @protocol UIKeyboardPinchGestureRecognizerDelegate
 - (void)didDetectPinchWithSeparation:(double)arg1;
-- (BOOL)pinchCanBeginWithTouches:(NSSet *)arg1;
+- (BOOL)pinchCanBeginWithTouches:(NSSet *)arg1 andScale:(double)arg2;
 - (void)pinchDidConsumeTouch:(UITouch *)arg1;
 @end
 

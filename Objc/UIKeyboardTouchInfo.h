@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class UIKBTouchState, UIKBTree;
+@class NSMutableArray, UIKBTouchState, UIKBTree;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardTouchInfo : NSObject
 {
-    UIKBTouchState *_touch;
+    NSMutableArray *_touchHistory;
+    unsigned long long _processedTouchCount;
     UIKBTree *_key;
     UIKBTree *_keyplane;
     UIKBTree *_slidOffKey;
@@ -22,8 +23,10 @@ __attribute__((visibility("hidden")))
     int _fingerID;
     BOOL _maySuppressUpAction;
     int _initialKeyState;
+    long long _continuousPathState;
 }
 
+@property (nonatomic) long long continuousPathState; // @synthesize continuousPathState=_continuousPathState;
 @property (nonatomic) BOOL dragged; // @synthesize dragged=_dragged;
 @property (nonatomic) int fingerID; // @synthesize fingerID=_fingerID;
 @property (nonatomic) struct CGPoint initialDragPoint; // @synthesize initialDragPoint=_initialDragPoint;
@@ -32,11 +35,15 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIKBTree *key; // @synthesize key=_key;
 @property (strong, nonatomic) UIKBTree *keyplane; // @synthesize keyplane=_keyplane;
 @property (nonatomic) BOOL maySuppressUpAction; // @synthesize maySuppressUpAction=_maySuppressUpAction;
+@property (nonatomic) unsigned long long processedTouchCount; // @synthesize processedTouchCount=_processedTouchCount;
 @property (strong, nonatomic) UIKBTree *slidOffKey; // @synthesize slidOffKey=_slidOffKey;
 @property (nonatomic) int stage; // @synthesize stage=_stage;
-@property (strong, nonatomic) UIKBTouchState *touch; // @synthesize touch=_touch;
+@property (readonly, nonatomic) UIKBTouchState *touch;
+@property (readonly, nonatomic) NSMutableArray *touchHistory; // @synthesize touchHistory=_touchHistory;
 
+- (void)addTouch:(id)arg1;
 - (void)dealloc;
+- (id)init;
 
 @end
 

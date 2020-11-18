@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithLayoutMetrics:(id)arg1;
 - (id)initWithLayoutMetrics:(id)arg1 barButtonItem:(id)arg2;
 - (double)minimumLayoutWidthGivenMinimumSpaceWidth:(double)arg1;
+- (BOOL)suppressSpacing;
 
 @end
 

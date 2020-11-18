@@ -90,7 +90,7 @@ __attribute__((visibility("hidden")))
 - (void)selectionChanged;
 - (void)setOrientationOfMagnifier:(id)arg1 forHandleInText:(id)arg2;
 - (void)setSelectionFrame:(struct CGRect)arg1 animated:(BOOL)arg2;
-- (void)shiftWebRangeSelectionAnimationDidStop:(id)arg1 finished:(id)arg2;
+- (void)shiftWebRangeSelectionAnimationDidStop;
 - (void)showControls;
 - (void)showControlsAfterRotation;
 - (void)showCopyCalloutWithAnimation:(BOOL)arg1;

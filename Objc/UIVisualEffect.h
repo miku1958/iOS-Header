@@ -13,12 +13,11 @@
 
 @interface UIVisualEffect : NSObject <NSCopying, NSSecureCoding>
 {
-    _UIVisualEffectConfig *_effectConfig;
 }
 
 @property (readonly, nonatomic) BOOL _isATVStyle;
 @property (readonly, nonatomic) BOOL _isAutomaticStyle;
-@property (readonly, nonatomic) _UIVisualEffectConfig *effectConfig; // @synthesize effectConfig=_effectConfig;
+@property (readonly, nonatomic) _UIVisualEffectConfig *effectConfig;
 @property (readonly, nonatomic) _UIBackdropViewSettings *effectSettings;
 
 + (id)effectCombiningEffects:(id)arg1;
@@ -28,17 +27,13 @@
 + (id)effectCompositingImage:(id)arg1 withMode:(long long)arg2 alpha:(double)arg3;
 + (id)emptyEffect;
 + (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
+- (id)_allEffects;
 - (void)_enumerateEffects:(CDUnknownBlockType)arg1;
 - (long long)_expectedUsage;
-- (BOOL)_needsUpdateForMovingToSuperview:(id)arg1 fromSuperview:(id)arg2 inEffectView:(id)arg3;
-- (BOOL)_needsUpdateForMovingToWindow:(id)arg1 fromWindow:(id)arg2 inEffectView:(id)arg3;
-- (BOOL)_needsUpdateForOption:(id)arg1;
-- (BOOL)_needsUpdateForTransitionFromTraitCollection:(id)arg1 toTraitCollection:(id)arg2;
-- (BOOL)_selectorOverriden:(SEL)arg1;
-- (void)_updateEffectNode:(id)arg1 forTraitCollection:(id)arg2;
+- (BOOL)_needsUpdateForTransitionFromEnvironment:(id)arg1 toEnvironment:(id)arg2 usage:(long long)arg3;
+- (BOOL)_selectorOverridden:(SEL)arg1;
+- (void)_updateEffectDescriptor:(id)arg1 forEnvironment:(id)arg2 usage:(long long)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)effectConfigForOptions:(id)arg1;
 - (id)effectConfigForQuality:(long long)arg1;
 - (id)effectForUserInterfaceStyle:(long long)arg1;
 - (void)encodeWithCoder:(id)arg1;

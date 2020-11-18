@@ -9,19 +9,19 @@
 #import <UIKitCore/NSCopying-Protocol.h>
 #import <UIKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, UIBezierPath, UIColor, UIDragPreviewParameters;
+@class UIBezierPath, UIColor, UIDragPreviewParameters;
 
 @interface _DUIPreview : NSObject <NSSecureCoding, NSCopying>
 {
-    BOOL _springboardPlatterStyle;
     BOOL _fadesHorizontally;
     BOOL _fadesVertically;
     BOOL _hidesSourceView;
-    BOOL _textMode;
-    NSDictionary *_springboardParameters;
+    BOOL _avoidAnimation;
+    BOOL _wantsSuppressedMask;
     UIColor *_backgroundColor;
     UIBezierPath *_outline;
     double _originalRotation;
+    long long _previewMode;
     struct CGPoint _contentOffset;
     struct CGSize _contentSize;
     struct CGPoint _originalCenter;
@@ -29,8 +29,8 @@
     struct CGSize _viewScaleFactor;
 }
 
-@property (copy, nonatomic) NSDictionary *_springboardParameters; // @synthesize _springboardParameters;
-@property (nonatomic) BOOL _springboardPlatterStyle; // @synthesize _springboardPlatterStyle;
+@property (readonly, nonatomic) BOOL _springboardPlatterStyle;
+@property (nonatomic) BOOL avoidAnimation; // @synthesize avoidAnimation=_avoidAnimation;
 @property (readonly, nonatomic) double backAlpha;
 @property (copy, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (readonly, nonatomic) struct CGSize boundingSize;
@@ -49,14 +49,16 @@
 @property (copy, nonatomic) UIBezierPath *outline; // @synthesize outline=_outline;
 @property (readonly, nonatomic, getter=isOversized) BOOL oversized;
 @property (readonly, nonatomic) UIDragPreviewParameters *parameters;
+@property (nonatomic) long long previewMode; // @synthesize previewMode=_previewMode;
 @property (readonly, nonatomic) double scaleFactor;
 @property (readonly, nonatomic) struct CGSize scaledSize;
 @property (readonly, nonatomic) double stackAlpha;
-@property (nonatomic) BOOL textMode; // @synthesize textMode=_textMode;
+@property (nonatomic) BOOL textMode;
 @property (readonly, nonatomic) double topAlpha;
 @property (readonly, nonatomic) struct CGPoint unscaledAnchorPoint;
 @property (readonly, nonatomic) struct CGSize unscaledSize;
 @property (readonly, nonatomic) struct CGSize viewScaleFactor; // @synthesize viewScaleFactor=_viewScaleFactor;
+@property (nonatomic) BOOL wantsSuppressedMask; // @synthesize wantsSuppressedMask=_wantsSuppressedMask;
 
 + (id)defaultPreviewWithFrame:(struct CGRect)arg1;
 + (double)defaultStackAlpha;

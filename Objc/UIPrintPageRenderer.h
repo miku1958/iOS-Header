@@ -23,7 +23,7 @@
 @property (nonatomic) double headerHeight; // @synthesize headerHeight=_headerHeight;
 @property (readonly, nonatomic) long long numberOfPages;
 @property (nonatomic) struct CGRect paperRect; // @synthesize paperRect=_paperRect;
-@property (copy, nonatomic) NSArray *printFormatters; // @synthesize printFormatters=_printFormatters;
+@property (copy) NSArray *printFormatters; // @dynamic printFormatters;
 @property (nonatomic) struct CGRect printableRect; // @synthesize printableRect=_printableRect;
 
 - (void).cxx_destruct;

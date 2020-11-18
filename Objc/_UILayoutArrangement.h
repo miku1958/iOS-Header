@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_hiddenItems;
     NSMutableSet *_newlyHiddenItems;
     NSMutableSet *_newlyUnhiddenItems;
+    NSMutableSet *_invalidBaselineConstraints;
     NSMutableArray *_canvasConnectionConstraints;
     BOOL _awaitingAnimationLayoutPass;
     BOOL _layoutFillsCanvas;
@@ -47,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSSet *invalidBaselineConstraints; // @synthesize invalidBaselineConstraints=_invalidBaselineConstraints;
 @property (readonly, copy, nonatomic) NSArray *items;
 @property (nonatomic) BOOL layoutFillsCanvas; // @synthesize layoutFillsCanvas=_layoutFillsCanvas;
 @property (nonatomic) BOOL layoutUsesCanvasMarginsWhenFilling; // @synthesize layoutUsesCanvasMarginsWhenFilling=_layoutUsesCanvasMarginsWhenFilling;
@@ -56,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)_allItemsHidden;
 - (long long)_axisForSpanningLayoutGuide;
+- (id)_baselineDependentConstraints;
 - (BOOL)_canvasConnectionConstraintsNeedUpdatePass;
 - (long long)_centerAttributeForCanvasConnections;
 - (void)_clearAllConstraintsArrays;
@@ -65,16 +68,20 @@ __attribute__((visibility("hidden")))
 - (void)_createUnanimatedConfigurationTargetIfNecessary;
 - (void)_didEvaluateMultilineHeightForView:(id)arg1;
 - (long long)_dimensionAttributeForCurrentAxis;
+- (void)_hasBaselineChangedNotification:(id)arg1;
+- (void)_hasBaselineChangedNotificationRequirementDidChange;
 - (BOOL)_hasStaleConfiguration;
 - (id)_identifierForSpanningLayoutGuide;
 - (unsigned long long)_indexOfItemForLocationAttribute:(long long)arg1;
 - (void)_intrinsicContentSizeInvalidatedForItem:(id)arg1;
+- (void)_invalidateBaselineConstraint:(id)arg1;
 - (BOOL)_itemWantsLayoutAsIfVisible:(id)arg1;
 - (long long)_layoutRelationForCanvasConnectionForAttribute:(long long)arg1;
 - (long long)_minAttributeForCanvasConnections;
 - (BOOL)_monitorsSystemLayoutFittingSizeForItem:(id)arg1;
 - (void)_registerAnimationRequest;
 - (void)_removeSpanningLayoutGuide;
+- (BOOL)_requiresNotificationForHasBaselinePropertyChanges;
 - (void)_respondToChangesWithIncomingItem:(id)arg1 outgoingItem:(id)arg2 newlyHiddenItem:(id)arg3 newlyUnhiddenItem:(id)arg4;
 - (void)_setAxis:(long long)arg1 notify:(BOOL)arg2;
 - (void)_setLayoutFillsCanvas:(BOOL)arg1 notify:(BOOL)arg2;

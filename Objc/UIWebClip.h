@@ -18,6 +18,8 @@
     NSURL *startupImageURL;
     NSURL *startupLandscapeImageURL;
     NSString *title;
+    NSString *applicationBundleIdentifier;
+    unsigned long long bundleVersion;
     BOOL fullScreen;
     BOOL classicMode;
     BOOL removalDisallowed;
@@ -40,6 +42,9 @@
     unsigned long long _webClipStatusBarStyle;
 }
 
+@property (copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier;
+@property (readonly, nonatomic) NSURL *applicationLaunchURL;
+@property (readonly, nonatomic) unsigned long long bundleVersion; // @synthesize bundleVersion;
 @property BOOL classicMode; // @synthesize classicMode;
 @property (weak, nonatomic) id<WebClipDelegate> delegate; // @synthesize delegate;
 @property BOOL fullScreen; // @synthesize fullScreen;

@@ -20,8 +20,11 @@ __attribute__((visibility("hidden")))
 - (id)_init;
 - (void)_sendEventToInteractions;
 - (id)collectAllActiveInteractions;
+- (void)deregisterAllInteractionsForWindow:(id)arg1;
 - (void)deregisterInteraction:(id)arg1;
 - (void)registerInteraction:(id)arg1;
+- (long long)subtype;
+- (long long)type;
 
 @end
 

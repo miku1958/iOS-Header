@@ -60,6 +60,9 @@
 - (void)_didCompleteScrolling;
 - (void)_didRotate:(id)arg1;
 - (id)_documentView;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (BOOL)_effectiveAppearanceIsDark;
+- (BOOL)_effectiveAppearanceIsInactive;
 - (void)_finishRotation;
 - (void)_frameOrBoundsChanged;
 - (double)_gapBetweenPages;

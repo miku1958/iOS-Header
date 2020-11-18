@@ -9,6 +9,7 @@
 @protocol UISeparatorDisplaying <NSObject>
 
 @property (nonatomic) double constantAxisDimension;
+@property (nonatomic) double horizontalLineLeadingInset;
 
 - (void)setConstantSizedAxis:(long long)arg1;
 @end

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/UIImageView.h>
+#import <UIKitCore/UIView.h>
 
 @class UIColor;
 
-@interface _UITextFieldRoundedRectBackgroundViewNeue : UIImageView
+@interface _UITextFieldRoundedRectBackgroundViewNeue : UIView
 {
     BOOL _disabled;
     BOOL _hasFlexibleCornerRadius;

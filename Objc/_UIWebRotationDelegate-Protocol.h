@@ -16,8 +16,8 @@
 - (double)minimumScaleForSize:(struct CGSize)arg1;
 - (double)minimumVerticalContentOffset;
 - (struct CGRect)rectOfInterestForRotation;
-- (CDStruct_57d825b2)scalesForContainerSize:(struct CGSize)arg1;
-- (void)updateBoundariesOfScrollView:(UIScrollView *)arg1 withScales:(CDStruct_57d825b2)arg2;
+- (CDStruct_39925896)scalesForContainerSize:(struct CGSize)arg1;
+- (void)updateBoundariesOfScrollView:(UIScrollView *)arg1 withScales:(CDStruct_39925896)arg2;
 - (double)zoomedDocumentScale;
 
 @optional

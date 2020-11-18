@@ -6,20 +6,14 @@
 
 #import <UIKitCore/UIKBHandwritingCandidateView.h>
 
-@class UIKBCandidateCollectionView;
-
 __attribute__((visibility("hidden")))
 @interface UIKBLinearCandidateView : UIKBHandwritingCandidateView
 {
 }
 
-@property (readonly, nonatomic) UIKBCandidateCollectionView *candidatesCollectionView; // @dynamic candidatesCollectionView;
-
-+ (Class)cellClass;
 - (unsigned long long)focusableVariantCount;
 - (void)refreshSelectedCandidate;
-- (void)reloadDataByAppendingAtEnd:(BOOL)arg1;
-- (void)scrollViewDidChangeContentSize:(id)arg1;
+- (void)updateCandidateKey;
 
 @end
 

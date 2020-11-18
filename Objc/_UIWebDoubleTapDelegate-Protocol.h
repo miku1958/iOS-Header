@@ -10,7 +10,7 @@
 - (BOOL)considerHeightForDoubleTap;
 - (UIView *)contentView;
 - (double)currentDocumentScale;
-- (CDStruct_57d825b2)doubleTapScalesForSize:(struct CGSize)arg1;
+- (CDStruct_39925896)doubleTapScalesForSize:(struct CGSize)arg1;
 - (UIScrollView *)enclosingScrollView;
 - (double)minimumScaleForSize:(struct CGSize)arg1;
 - (struct CGRect)rectOfInterestForPoint:(struct CGPoint)arg1;

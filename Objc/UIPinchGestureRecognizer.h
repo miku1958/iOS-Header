@@ -36,6 +36,7 @@
 @property (readonly, nonatomic) double velocity;
 
 + (BOOL)_shouldDefaultToTouches;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_endsOnSingleTouch;
 - (void)_logStatisticsForScale:(double)arg1;

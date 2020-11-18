@@ -79,10 +79,11 @@ __attribute__((visibility("hidden")))
 - (id)localizedPageRangeText;
 - (void)lookupLastUsedPrinter;
 - (void)popoverControllerDidDismissPopover:(id)arg1;
-- (void)presentPrintPanelAnimated:(BOOL)arg1;
+- (void)presentPrintPanelAnimated:(BOOL)arg1 hostingScene:(id)arg2;
 - (void)presentPrintPanelFromBarButtonItem:(id)arg1 animated:(BOOL)arg2;
 - (void)presentPrintPanelFromRect:(struct CGRect)arg1 inView:(id)arg2 animated:(BOOL)arg3;
 - (void)printMoreOptionsViewDidDisappear;
+- (void)printNavigationConrollerDidDismiss;
 - (void)printPanelDidDisappear;
 - (void)printPaperViewDidDisappear;
 - (void)printRangeViewDidDisappear;
